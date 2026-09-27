@@ -93,7 +93,7 @@ def appended(current, additions):
    return merged
 
 
-PHASE_ORDER = ["unit-", "taxonomy-", "scoring-points", "command-verbs", "chief-reader-", "mcq-", "frq-", "difficulty-factors", "representation-map", "archetype-consolidation", "misconception-consolidation", "error-consolidation", "signal-reference-remap", "sync-dependents", "link-evidence-", "cite-sync-", "tag-policy-", "adaptive-", "post-sync-", "assessability-", "errors-enrich-", "signals-", "gap-", "error-links-", "parameter-spec-"]
+PHASE_ORDER = ["unit-", "taxonomy-", "scoring-points", "command-verbs", "chief-reader-", "mcq-", "frq-", "difficulty-factors", "representation-map", "archetype-consolidation", "misconception-consolidation", "error-consolidation", "signal-reference-remap", "sync-dependents", "link-evidence-", "cite-sync-", "tag-policy-", "adaptive-", "post-sync-", "assessability-", "errors-enrich-", "signals-", "gap-", "error-links-", "parameter-spec-", "corrections-"]
 
 
 def phase_rank(path):

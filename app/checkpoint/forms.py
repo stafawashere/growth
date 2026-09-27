@@ -15,6 +15,11 @@ A year is a form only when all of these hold, so every number the checkpoint rep
 - every question of the year has part records in data/frq_records.json with a point total, and
   each question's parts sum to 9, the per-question maximum the published means are out of.
 
+A point the scoring guidelines award in any one part of a question rather than inside a single
+part (2021 Question 4) is carried on the question's first part record as global_points. It is
+offered as its own scoring row, before the lettered parts, as the guidelines print it, so the
+student records it once whichever part earned it.
+
 Forms are offered in a fixed order: years whose per-question means are published come first,
 newest first, so the first checkpoints compare against the same year's population; the rest follow,
 newest first. A year already used is never offered again.
@@ -31,6 +36,7 @@ FRQ_RECORDS_PATH = REPOSITORY_ROOT / "data" / "frq_records.json"
 MANIFEST_PATH = REPOSITORY_ROOT / "cache" / "manifest.json"
 
 POINTS_PER_QUESTION = 9
+GLOBAL_PART_LABEL = "any one part"
 
 
 @dataclass(frozen=True)
@@ -83,6 +89,42 @@ def active_records(records_path=FRQ_RECORDS_PATH):
    return [record for record in records if record.get("status", "active") == "active"]
 
 
+def form_parts(year_records):
+   """The year's scoring rows in exam order: per question, any point awarded in any one part
+   first, then the lettered parts."""
+   parts = []
+
+   for record in sorted(year_records, key=lambda record: (record["question"], record["part"])):
+      global_points = record.get("global_points")
+
+      if global_points:
+         parts.append(
+            FormPart(
+               record_id=f"{record['id']}:global",
+               question=record["question"],
+               part=GLOBAL_PART_LABEL,
+               points=global_points,
+               point_types=tuple(record.get("global_point_types") or ()),
+               calculator=record["calculator"],
+            )
+         )
+
+      parts.append(
+         FormPart(
+            record_id=record["id"],
+            question=record["question"],
+            part=record["part"].upper(),
+            points=record["points"],
+            point_types=tuple(record.get("point_types") or ()),
+            calculator=record["calculator"],
+         )
+      )
+
+   parts.sort(key=lambda part: (part.question, part.part != GLOBAL_PART_LABEL))
+
+   return parts
+
+
 @lru_cache(maxsize=1)
 def catalogue(records_path=FRQ_RECORDS_PATH, manifest_path=MANIFEST_PATH):
    """Returns (forms in offering order, excluded years with the reason)."""
@@ -104,17 +146,7 @@ def catalogue(records_path=FRQ_RECORDS_PATH, manifest_path=MANIFEST_PATH):
          excluded.append(ExcludedYear(year, "the free-response document or the scoring guidelines is not cached with status ok"))
          continue
 
-      parts = tuple(
-         FormPart(
-            record_id=record["id"],
-            question=record["question"],
-            part=record["part"].upper(),
-            points=record["points"],
-            point_types=tuple(record.get("point_types") or ()),
-            calculator=record["calculator"],
-         )
-         for record in sorted(by_year[year], key=lambda record: (record["question"], record["part"]))
-      )
+      parts = tuple(form_parts(by_year[year]))
       totals = {}
 
       for part in parts:

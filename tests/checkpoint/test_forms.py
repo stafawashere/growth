@@ -59,3 +59,18 @@ def test_the_section_plan_takes_its_timing_from_exam_structure():
 
    assert [section["minutes"] for section in plan] == [part.minutes for part in library_parts]
    assert [len(section["questions"]) for section in plan] == [part.questions for part in library_parts]
+
+
+def test_a_point_the_guidelines_award_in_any_one_part_counts_toward_the_question():
+   offered, excluded = forms.catalogue()
+   form_2021 = forms.form_for(2021)
+   question_4 = form_2021.question_parts(4)
+   global_parts = [part for part in question_4 if part.part == forms.GLOBAL_PART_LABEL]
+
+   assert len(offered) == 7
+   assert 2021 not in {entry.year for entry in excluded}
+   assert sum(part.points for part in question_4) == forms.POINTS_PER_QUESTION
+   assert [(part.record_id, part.points, part.point_types) for part in global_parts] == [
+      ("BC-FRQ-2021-Q4-A:global", 1, ("BC-PT-99024",)),
+   ]
+   assert question_4[0] == global_parts[0]

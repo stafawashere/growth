@@ -204,7 +204,7 @@
    "units": [
     "BC-UNIT-10"
    ],
-   "updated": "2026-09-24",
+   "updated": "2026-09-26",
    "variants": [
     "BC-QV-10013-01",
     "BC-QV-10013-02",
@@ -426,7 +426,7 @@
    "units": [
     "BC-UNIT-10"
    ],
-   "updated": "2026-09-24",
+   "updated": "2026-09-26",
    "variants": [
     "BC-QV-10008-01",
     "BC-QV-10008-02",
@@ -617,7 +617,7 @@
    "units": [
     "BC-UNIT-10"
    ],
-   "updated": "2026-09-24",
+   "updated": "2026-09-26",
    "variants": [
     "BC-QV-10018-01",
     "BC-QV-10018-02",
@@ -970,7 +970,7 @@
     "BC-UNIT-06",
     "BC-UNIT-08"
    ],
-   "updated": "2026-09-24",
+   "updated": "2026-09-26",
    "variants": [
     "BC-QV-06005-01",
     "BC-QV-06005-02",
@@ -1235,7 +1235,7 @@
     "BC-UNIT-08",
     "BC-UNIT-06"
    ],
-   "updated": "2026-09-24",
+   "updated": "2026-09-26",
    "variants": [
     "BC-QV-06007-01",
     "BC-QV-06007-02",
@@ -1476,7 +1476,7 @@
    "units": [
     "BC-UNIT-08"
    ],
-   "updated": "2026-09-24",
+   "updated": "2026-09-26",
    "variants": [
     "BC-QV-08006-01",
     "BC-QV-08006-02",
@@ -1696,7 +1696,7 @@
    "units": [
     "BC-UNIT-04"
    ],
-   "updated": "2026-09-24",
+   "updated": "2026-09-26",
    "variants": [
     "BC-QV-04005-01",
     "BC-QV-04005-02",
@@ -1902,7 +1902,7 @@
    "units": [
     "BC-UNIT-09"
    ],
-   "updated": "2026-09-24",
+   "updated": "2026-09-26",
    "variants": [
     "BC-QV-09012-01",
     "BC-QV-09012-02",
@@ -2157,7 +2157,7 @@
    "units": [
     "BC-UNIT-06"
    ],
-   "updated": "2026-09-24",
+   "updated": "2026-09-26",
    "variants": [
     "BC-QV-06013-01",
     "BC-QV-06013-02",
@@ -2412,7 +2412,7 @@
    "units": [
     "BC-UNIT-06"
    ],
-   "updated": "2026-09-24",
+   "updated": "2026-09-26",
    "variants": [
     "BC-QV-06003-01",
     "BC-QV-06003-02",
@@ -2637,7 +2637,7 @@
    "units": [
     "BC-UNIT-01"
    ],
-   "updated": "2026-09-24"
+   "updated": "2026-09-26"
   },
   {
    "calculator_status": "either",
@@ -2867,7 +2867,7 @@
    "units": [
     "BC-UNIT-04"
    ],
-   "updated": "2026-09-24",
+   "updated": "2026-09-26",
    "variants": [
     "BC-QV-04006-01",
     "BC-QV-04006-02",
@@ -3080,7 +3080,7 @@
    "units": [
     "BC-UNIT-07"
    ],
-   "updated": "2026-09-24",
+   "updated": "2026-09-26",
    "variants": [
     "BC-QV-07010-01",
     "BC-QV-07010-02",
@@ -3308,7 +3308,7 @@
    "units": [
     "BC-UNIT-07"
    ],
-   "updated": "2026-09-24",
+   "updated": "2026-09-26",
    "variants": [
     "BC-QV-07003-01",
     "BC-QV-07003-02",
@@ -3497,7 +3497,7 @@
    "units": [
     "BC-UNIT-02"
    ],
-   "updated": "2026-09-24"
+   "updated": "2026-09-26"
   },
   {
    "calculator_status": "no_calculator",
@@ -3549,7 +3549,8 @@
     "constraints": [
      "leading * second_shift != first_shift",
      "gcd(leading, first_shift) == 1",
-     "(first_shift >= 0 and second_shift <= -1) or (first_shift <= -leading and second_shift >= 1)"
+     "(first_shift >= 0 and second_shift <= -1) or (first_shift <= -leading and second_shift >= 1)",
+     "-second_shift >= 2 or -first_shift >= 2 * leading"
     ],
     "derived": [
      {
@@ -3572,7 +3573,7 @@
      "exact(key)",
      "numerator_constant != 0"
     ],
-    "notes": "The denominator is (p x + a)(x + b) with p from 2 to 5, p and a coprime, and distinct roots; the numerator constant N = m (p b - a) makes the decomposition m p / (p x + a) - m / (x + b), with integer constants. The improper form adds the denominator to the numerator, so division leaves 1 plus the same proper fraction. The leading coefficient p is never 1, so dropping the 1/p from the first logarithm always changes the answer. One root is at most 0 and the other at least 1, so the two linear factors have opposite signs on (0, 1) and the answer without absolute values is not the same real function there.",
+    "notes": "The denominator is (p x + a)(x + b) with p from 2 to 5, p and a coprime, and distinct roots; the numerator constant N = m (p b - a) makes the decomposition m p / (p x + a) - m / (x + b), with integer constants. The improper form adds the denominator to the numerator, so division leaves 1 plus the same proper fraction. The leading coefficient p is never 1, so dropping the 1/p from the first logarithm always changes the answer. One root is at most 0 and the other at least 1, so the two linear factors have opposite signs on (0, 1) and the answer without absolute values is not the same real function there. The positive root is at least 2, so the dropped absolute value also shows between 1.1 and 2, where tools/key_recheck.py samples.",
     "parameters": [
      {
       "domain": {
@@ -3614,12 +3615,16 @@
      {
       "domain": {
        "values": [
+        -5,
+        -4,
         -3,
         -2,
         -1,
         1,
         2,
-        3
+        3,
+        4,
+        5
        ]
       },
       "name": "second_shift",
@@ -3692,7 +3697,7 @@
    "units": [
     "BC-UNIT-06"
    ],
-   "updated": "2026-09-24",
+   "updated": "2026-09-26",
    "variants": [
     "BC-QV-06010-01",
     "BC-QV-06010-02",
@@ -3915,7 +3920,7 @@
    "units": [
     "BC-UNIT-06"
    ],
-   "updated": "2026-09-24",
+   "updated": "2026-09-26",
    "variants": [
     "BC-QV-06011-01",
     "BC-QV-06011-02",
@@ -4114,7 +4119,7 @@
    "units": [
     "BC-UNIT-10"
    ],
-   "updated": "2026-09-24",
+   "updated": "2026-09-26",
    "variants": [
     "BC-QV-10011-01",
     "BC-QV-10011-02"
@@ -4315,7 +4320,7 @@
    "units": [
     "BC-UNIT-10"
    ],
-   "updated": "2026-09-24",
+   "updated": "2026-09-26",
    "variants": [
     "BC-QV-10012-01",
     "BC-QV-10012-02",
@@ -4510,7 +4515,7 @@
    "units": [
     "BC-UNIT-10"
    ],
-   "updated": "2026-09-24",
+   "updated": "2026-09-26",
    "variants": [
     "BC-QV-10019-01",
     "BC-QV-10019-02"
@@ -4718,7 +4723,7 @@
    "units": [
     "BC-UNIT-04"
    ],
-   "updated": "2026-09-24",
+   "updated": "2026-09-26",
    "variants": [
     "BC-QV-04001-01",
     "BC-QV-04001-02",
@@ -4952,7 +4957,7 @@
     "BC-UNIT-06",
     "BC-UNIT-08"
    ],
-   "updated": "2026-09-24",
+   "updated": "2026-09-26",
    "wrong_approaches": [
     "treating the part as a net change question because the stem gives an initial condition"
    ]
@@ -5046,7 +5051,7 @@
    "units": [
     "BC-UNIT-08"
    ],
-   "updated": "2026-09-19",
+   "updated": "2026-09-26",
    "variants": [
     "BC-QV-08005-01",
     "BC-QV-08005-02",
@@ -5244,7 +5249,7 @@
    "units": [
     "BC-UNIT-09"
    ],
-   "updated": "2026-09-24",
+   "updated": "2026-09-26",
    "variants": [
     "BC-QV-09013-01",
     "BC-QV-09013-02",
@@ -5461,7 +5466,7 @@
    "units": [
     "BC-UNIT-09"
    ],
-   "updated": "2026-09-24",
+   "updated": "2026-09-26",
    "wrong_approaches": [
     "equating the radial function to the stated coordinate value"
    ]
@@ -5671,7 +5676,7 @@
    "units": [
     "BC-UNIT-09"
    ],
-   "updated": "2026-09-24",
+   "updated": "2026-09-26",
    "wrong_approaches": [
     "differentiating the radial function alone and calling it the velocity"
    ]
@@ -5765,7 +5770,7 @@
    "units": [
     "BC-UNIT-02"
    ],
-   "updated": "2026-09-19"
+   "updated": "2026-09-26"
   },
   {
    "asked_to_produce": [
@@ -5994,7 +5999,7 @@
    "units": [
     "BC-UNIT-05"
    ],
-   "updated": "2026-09-24",
+   "updated": "2026-09-26",
    "variants": [
     "BC-QV-05001-01",
     "BC-QV-05001-02",
@@ -6094,7 +6099,7 @@
    "units": [
     "BC-UNIT-06"
    ],
-   "updated": "2026-09-19",
+   "updated": "2026-09-26",
    "variants": [
     "BC-QV-06007-01",
     "BC-QV-06007-02",
@@ -6309,7 +6314,7 @@
    "units": [
     "BC-UNIT-02"
    ],
-   "updated": "2026-09-24"
+   "updated": "2026-09-26"
   },
   {
    "asked_to_produce": [
@@ -6522,7 +6527,7 @@
    "units": [
     "BC-UNIT-05"
    ],
-   "updated": "2026-09-24",
+   "updated": "2026-09-26",
    "variants": [
     "BC-QV-05003-01",
     "BC-QV-05003-02",
@@ -6867,7 +6872,7 @@
    "units": [
     "BC-UNIT-05"
    ],
-   "updated": "2026-09-24",
+   "updated": "2026-09-26",
    "variants": [
     "BC-QV-05006-01",
     "BC-QV-05006-02",
@@ -7032,7 +7037,7 @@
    "units": [
     "BC-UNIT-05"
    ],
-   "updated": "2026-09-24",
+   "updated": "2026-09-26",
    "variants": [
     "BC-QV-05004-01",
     "BC-QV-05004-02",
@@ -7282,7 +7287,7 @@
    "units": [
     "BC-UNIT-03"
    ],
-   "updated": "2026-09-24",
+   "updated": "2026-09-26",
    "variants": [
     "BC-QV-03001-01",
     "BC-QV-03001-02",
@@ -7500,7 +7505,7 @@
    "units": [
     "BC-UNIT-04"
    ],
-   "updated": "2026-09-24",
+   "updated": "2026-09-26",
    "variants": [
     "BC-QV-04009-01",
     "BC-QV-04009-02",
@@ -7771,7 +7776,7 @@
    "units": [
     "BC-UNIT-07"
    ],
-   "updated": "2026-09-24",
+   "updated": "2026-09-26",
    "variants": [
     "BC-QV-07004-01",
     "BC-QV-07004-02",
@@ -7979,7 +7984,7 @@
    "units": [
     "BC-UNIT-10"
    ],
-   "updated": "2026-09-24",
+   "updated": "2026-09-26",
    "variants": [
     "BC-QV-10010-01",
     "BC-QV-10010-02",
@@ -8211,7 +8216,7 @@
     "BC-UNIT-04",
     "BC-UNIT-02"
    ],
-   "updated": "2026-09-24",
+   "updated": "2026-09-26",
    "variants": [
     "BC-QV-04002-01",
     "BC-QV-04002-02",
@@ -8510,7 +8515,7 @@
    "units": [
     "BC-UNIT-06"
    ],
-   "updated": "2026-09-24",
+   "updated": "2026-09-26",
    "variants": [
     "BC-QV-06001-01",
     "BC-QV-06001-02",
@@ -8723,7 +8728,7 @@
    "units": [
     "BC-UNIT-09"
    ],
-   "updated": "2026-09-24",
+   "updated": "2026-09-26",
    "variants": [
     "BC-QV-09006-01",
     "BC-QV-09006-02"
@@ -8937,7 +8942,7 @@
    "units": [
     "BC-UNIT-09"
    ],
-   "updated": "2026-09-24",
+   "updated": "2026-09-26",
    "variants": [
     "BC-QV-09007-01",
     "BC-QV-09007-02"
@@ -9209,7 +9214,7 @@
    "units": [
     "BC-UNIT-09"
    ],
-   "updated": "2026-09-24",
+   "updated": "2026-09-26",
    "variants": [
     "BC-QV-09005-01",
     "BC-QV-09005-02",
@@ -9449,7 +9454,7 @@
    "units": [
     "BC-UNIT-06"
    ],
-   "updated": "2026-09-24",
+   "updated": "2026-09-26",
    "variants": [
     "BC-QV-06008-01",
     "BC-QV-06008-02",
@@ -9694,7 +9699,7 @@
    "units": [
     "BC-UNIT-05"
    ],
-   "updated": "2026-09-24",
+   "updated": "2026-09-26",
    "variants": [
     "BC-QV-05007-01",
     "BC-QV-05007-02",
@@ -9937,7 +9942,7 @@
    "units": [
     "BC-UNIT-08"
    ],
-   "updated": "2026-09-24",
+   "updated": "2026-09-26",
    "variants": [
     "BC-QV-08012-01",
     "BC-QV-08012-02",
@@ -10174,7 +10179,7 @@
    "units": [
     "BC-UNIT-02"
    ],
-   "updated": "2026-09-24"
+   "updated": "2026-09-26"
   },
   {
    "calculator_status": "no_calculator",
@@ -10182,7 +10187,8 @@
     "listing fewer than three conditions",
     "starting the integral at an index the series does not use",
     "substituting the infinity symbol into the antiderivative",
-    "reporting the integral's value as the sum"
+    "reporting the integral's value as the sum",
+    "reporting the sum of the series as the integral's value"
    ],
    "created": "2026-09-19",
    "description": "The response states the three conditions the integral test requires, sets up the matching improper integral, evaluates it with limit notation, and transfers the conclusion.",
@@ -10340,7 +10346,7 @@
    "units": [
     "BC-UNIT-10"
    ],
-   "updated": "2026-09-24",
+   "updated": "2026-09-26",
    "variants": [
     "BC-QV-10005-01",
     "BC-QV-10005-02",
@@ -10570,7 +10576,7 @@
    "units": [
     "BC-UNIT-10"
    ],
-   "updated": "2026-09-24",
+   "updated": "2026-09-26",
    "variants": [
     "BC-QV-10006-01",
     "BC-QV-10006-02",
@@ -10760,7 +10766,7 @@
    "units": [
     "BC-UNIT-10"
    ],
-   "updated": "2026-09-24",
+   "updated": "2026-09-26",
    "variants": [
     "BC-QV-10014-01",
     "BC-QV-10014-02"
@@ -10972,7 +10978,7 @@
     "BC-UNIT-08",
     "BC-UNIT-02"
    ],
-   "updated": "2026-09-24",
+   "updated": "2026-09-26",
    "wrong_approaches": [
     "integrating the function and dividing by the interval length"
    ]
@@ -11223,7 +11229,7 @@
    "units": [
     "BC-UNIT-08"
    ],
-   "updated": "2026-09-24",
+   "updated": "2026-09-26",
    "variants": [
     "BC-QV-08002-01",
     "BC-QV-08002-02"
@@ -11447,7 +11453,7 @@
    "units": [
     "BC-UNIT-04"
    ],
-   "updated": "2026-09-24",
+   "updated": "2026-09-26",
    "variants": [
     "BC-QV-04008-01",
     "BC-QV-04008-02",
@@ -11663,7 +11669,7 @@
     "BC-UNIT-09",
     "BC-UNIT-03"
    ],
-   "updated": "2026-09-24",
+   "updated": "2026-09-26",
    "wrong_approaches": [
     "treating the coordinate as the radial function itself"
    ]
@@ -11893,7 +11899,7 @@
    "units": [
     "BC-UNIT-09"
    ],
-   "updated": "2026-09-24",
+   "updated": "2026-09-26",
    "wrong_approaches": [
     "measuring the gap as a Cartesian distance between two points"
    ]
@@ -12108,7 +12114,7 @@
    "units": [
     "BC-UNIT-09"
    ],
-   "updated": "2026-09-24",
+   "updated": "2026-09-26",
    "variants": [
     "BC-QV-09010-01",
     "BC-QV-09010-02"
@@ -12363,7 +12369,7 @@
    "units": [
     "BC-UNIT-04"
    ],
-   "updated": "2026-09-24",
+   "updated": "2026-09-26",
    "variants": [
     "BC-QV-04003-01",
     "BC-QV-04003-02",
@@ -12546,7 +12552,7 @@
    "units": [
     "BC-UNIT-01"
    ],
-   "updated": "2026-09-24"
+   "updated": "2026-09-26"
   },
   {
    "calculator_status": "no_calculator",
@@ -12769,7 +12775,7 @@
    "units": [
     "BC-UNIT-06"
    ],
-   "updated": "2026-09-24",
+   "updated": "2026-09-26",
    "variants": [
     "BC-QV-06002-01",
     "BC-QV-06002-02",
@@ -13025,7 +13031,7 @@
    "units": [
     "BC-UNIT-08"
    ],
-   "updated": "2026-09-24",
+   "updated": "2026-09-26",
    "variants": [
     "BC-QV-08008-01",
     "BC-QV-08008-02",
@@ -13271,7 +13277,7 @@
    "units": [
     "BC-UNIT-08"
    ],
-   "updated": "2026-09-24",
+   "updated": "2026-09-26",
    "variants": [
     "BC-QV-08013-01",
     "BC-QV-08013-02",
@@ -13514,7 +13520,7 @@
    "units": [
     "BC-UNIT-08"
    ],
-   "updated": "2026-09-24",
+   "updated": "2026-09-26",
    "variants": [
     "BC-QV-08014-01",
     "BC-QV-08014-02",
@@ -13606,7 +13612,7 @@
    "units": [
     "BC-UNIT-08"
    ],
-   "updated": "2026-09-19",
+   "updated": "2026-09-26",
    "variants": [
     "BC-QV-08007-01",
     "BC-QV-08007-02"
@@ -13837,7 +13843,7 @@
    "units": [
     "BC-UNIT-09"
    ],
-   "updated": "2026-09-24",
+   "updated": "2026-09-26",
    "variants": [
     "BC-QV-09001-01",
     "BC-QV-09001-02",
@@ -14056,7 +14062,7 @@
    "units": [
     "BC-UNIT-09"
    ],
-   "updated": "2026-09-24",
+   "updated": "2026-09-26",
    "variants": [
     "BC-QV-09004-01",
     "BC-QV-09004-02"
@@ -14200,7 +14206,7 @@
    "units": [
     "BC-UNIT-05"
    ],
-   "updated": "2026-09-24",
+   "updated": "2026-09-26",
    "variants": [
     "BC-QV-05005-01",
     "BC-QV-05005-02",
@@ -14435,7 +14441,7 @@
    "units": [
     "BC-UNIT-05"
    ],
-   "updated": "2026-09-24",
+   "updated": "2026-09-26",
    "variants": [
     "BC-QV-05008-01",
     "BC-QV-05008-02",
@@ -14765,7 +14771,7 @@
    "units": [
     "BC-UNIT-08"
    ],
-   "updated": "2026-09-24",
+   "updated": "2026-09-26",
    "variants": [
     "BC-QV-08011-01",
     "BC-QV-08011-02",
@@ -14987,7 +14993,7 @@
    "units": [
     "BC-UNIT-10"
    ],
-   "updated": "2026-09-24",
+   "updated": "2026-09-26",
    "variants": [
     "BC-QV-10003-01",
     "BC-QV-10003-02",
@@ -15248,7 +15254,7 @@
     "BC-UNIT-06",
     "BC-UNIT-08"
    ],
-   "updated": "2026-09-24",
+   "updated": "2026-09-26",
    "variants": [
     "BC-QV-06006-01",
     "BC-QV-06006-02",
@@ -15461,7 +15467,7 @@
    "units": [
     "BC-UNIT-07"
    ],
-   "updated": "2026-09-24",
+   "updated": "2026-09-26",
    "variants": [
     "BC-QV-07002-01",
     "BC-QV-07002-02",
@@ -15665,7 +15671,7 @@
    "units": [
     "BC-UNIT-07"
    ],
-   "updated": "2026-09-24",
+   "updated": "2026-09-26",
    "variants": [
     "BC-QV-07007-01",
     "BC-QV-07007-02",
@@ -15866,7 +15872,7 @@
    "units": [
     "BC-UNIT-02"
    ],
-   "updated": "2026-09-24"
+   "updated": "2026-09-26"
   },
   {
    "asked_to_produce": [
@@ -16077,7 +16083,7 @@
    "units": [
     "BC-UNIT-07"
    ],
-   "updated": "2026-09-24",
+   "updated": "2026-09-26",
    "variants": [
     "BC-QV-07001-01",
     "BC-QV-07001-02",
@@ -16320,7 +16326,7 @@
    "units": [
     "BC-UNIT-07"
    ],
-   "updated": "2026-09-24",
+   "updated": "2026-09-26",
    "variants": [
     "BC-QV-07005-01",
     "BC-QV-07005-02",
@@ -16533,7 +16539,7 @@
    "units": [
     "BC-UNIT-06"
    ],
-   "updated": "2026-09-24",
+   "updated": "2026-09-26",
    "variants": [
     "BC-QV-06009-01",
     "BC-QV-06009-02",
@@ -16737,7 +16743,7 @@
    "units": [
     "BC-UNIT-10"
    ],
-   "updated": "2026-09-24",
+   "updated": "2026-09-26",
    "variants": [
     "BC-QV-10009-01",
     "BC-QV-10009-02"
@@ -16971,7 +16977,7 @@
    "units": [
     "BC-UNIT-09"
    ],
-   "updated": "2026-09-24",
+   "updated": "2026-09-26",
    "variants": [
     "BC-QV-09008-01",
     "BC-QV-09008-02"
@@ -17156,7 +17162,7 @@
    "units": [
     "BC-UNIT-06"
    ],
-   "updated": "2026-09-24",
+   "updated": "2026-09-26",
    "variants": [
     "BC-QV-06004-01",
     "BC-QV-06004-02",
@@ -17388,7 +17394,7 @@
    "units": [
     "BC-UNIT-06"
    ],
-   "updated": "2026-09-24",
+   "updated": "2026-09-26",
    "variants": [
     "BC-QV-06012-01",
     "BC-QV-06012-02",
@@ -17610,7 +17616,7 @@
    "units": [
     "BC-UNIT-10"
    ],
-   "updated": "2026-09-24",
+   "updated": "2026-09-26",
    "variants": [
     "BC-QV-10004-01",
     "BC-QV-10004-02",
@@ -17796,7 +17802,7 @@
    "units": [
     "BC-UNIT-01"
    ],
-   "updated": "2026-09-24"
+   "updated": "2026-09-26"
   },
   {
    "asked_to_produce": [
@@ -18000,7 +18006,7 @@
    "units": [
     "BC-UNIT-09"
    ],
-   "updated": "2026-09-24",
+   "updated": "2026-09-26",
    "variants": [
     "BC-QV-09009-01",
     "BC-QV-09009-02"
@@ -18223,7 +18229,7 @@
    "units": [
     "BC-UNIT-09"
    ],
-   "updated": "2026-09-24",
+   "updated": "2026-09-26",
    "variants": [
     "BC-QV-09011-01",
     "BC-QV-09011-02",
@@ -18428,7 +18434,7 @@
    "units": [
     "BC-UNIT-03"
    ],
-   "updated": "2026-09-24",
+   "updated": "2026-09-26",
    "variants": [
     "BC-QV-03008-01",
     "BC-QV-03008-02",
@@ -18604,7 +18610,7 @@
    "units": [
     "BC-UNIT-10"
    ],
-   "updated": "2026-09-24",
+   "updated": "2026-09-26",
    "variants": [
     "BC-QV-10020-01",
     "BC-QV-10020-02"
@@ -18828,7 +18834,7 @@
     "BC-UNIT-09",
     "BC-UNIT-03"
    ],
-   "updated": "2026-09-24",
+   "updated": "2026-09-26",
    "wrong_approaches": [
     "differentiating the polar equation and reporting dr/dtheta"
    ]
@@ -19026,7 +19032,7 @@
    "units": [
     "BC-UNIT-10"
    ],
-   "updated": "2026-09-24",
+   "updated": "2026-09-26",
    "variants": [
     "BC-QV-10017-01",
     "BC-QV-10017-02",
@@ -19119,7 +19125,7 @@
    "units": [
     "BC-UNIT-08"
    ],
-   "updated": "2026-09-19",
+   "updated": "2026-09-26",
    "variants": [
     "BC-QV-08004-01",
     "BC-QV-08004-02",
@@ -19353,7 +19359,7 @@
     "BC-UNIT-08",
     "BC-UNIT-06"
    ],
-   "updated": "2026-09-24",
+   "updated": "2026-09-26",
    "wrong_approaches": [
     "treating the constant cross-section as a variable cross-section and squaring it"
    ]
@@ -19559,7 +19565,7 @@
     "BC-UNIT-06",
     "BC-UNIT-08"
    ],
-   "updated": "2026-09-24",
+   "updated": "2026-09-26",
    "wrong_approaches": [
     "claiming the total converges rather than bounding it"
    ]
@@ -19750,7 +19756,7 @@
     "BC-UNIT-09",
     "BC-UNIT-03"
    ],
-   "updated": "2026-09-24",
+   "updated": "2026-09-26",
    "wrong_approaches": [
     "using the parametric slope formula with the radial function as one coordinate"
    ]
@@ -19917,7 +19923,7 @@
    "units": [
     "BC-UNIT-01"
    ],
-   "updated": "2026-09-24"
+   "updated": "2026-09-26"
   },
   {
    "asked_to_produce": [],
@@ -20092,7 +20098,7 @@
    "units": [
     "BC-UNIT-02"
    ],
-   "updated": "2026-09-24"
+   "updated": "2026-09-26"
   },
   {
    "calculator_status": "no_calculator",
@@ -20315,7 +20321,7 @@
    "units": [
     "BC-UNIT-03"
    ],
-   "updated": "2026-09-24",
+   "updated": "2026-09-26",
    "variants": [
     "BC-QV-03004-01",
     "BC-QV-03004-02",
@@ -20513,7 +20519,7 @@
    "units": [
     "BC-UNIT-06"
    ],
-   "updated": "2026-09-24",
+   "updated": "2026-09-26",
    "variants": [
     "BC-QV-06014-01",
     "BC-QV-06014-02",
@@ -20738,7 +20744,7 @@
    "units": [
     "BC-UNIT-08"
    ],
-   "updated": "2026-09-24",
+   "updated": "2026-09-26",
    "variants": [
     "BC-QV-08009-01",
     "BC-QV-08009-02"
@@ -21012,7 +21018,7 @@
    "units": [
     "BC-UNIT-01"
    ],
-   "updated": "2026-09-24"
+   "updated": "2026-09-26"
   },
   {
    "asked_to_produce": [
@@ -21214,7 +21220,7 @@
    "units": [
     "BC-UNIT-07"
    ],
-   "updated": "2026-09-24",
+   "updated": "2026-09-26",
    "variants": [
     "BC-QV-07009-01",
     "BC-QV-07009-02",
@@ -21458,7 +21464,7 @@
    "units": [
     "BC-UNIT-09"
    ],
-   "updated": "2026-09-24",
+   "updated": "2026-09-26",
    "variants": [
     "BC-QV-09002-01",
     "BC-QV-09002-02"
@@ -21656,7 +21662,7 @@
    "units": [
     "BC-UNIT-10"
    ],
-   "updated": "2026-09-24",
+   "updated": "2026-09-26",
    "variants": [
     "BC-QV-10007-01",
     "BC-QV-10007-02"
@@ -21837,7 +21843,7 @@
    "units": [
     "BC-UNIT-02"
    ],
-   "updated": "2026-09-24"
+   "updated": "2026-09-26"
   },
   {
    "asked_to_produce": [
@@ -22042,7 +22048,7 @@
    "units": [
     "BC-UNIT-07"
    ],
-   "updated": "2026-09-24",
+   "updated": "2026-09-26",
    "variants": [
     "BC-QV-07008-01",
     "BC-QV-07008-02",
@@ -22126,14 +22132,14 @@
     ],
     "evidence_tag": "inferred",
     "invariants": [
-     "second_root - first_root >= 3"
+     "second_root - first_root >= 2"
     ],
     "notes": "The top function is a cubic whose derivative, a quadratic, has zeros at first_root and second_root; the second derivative is a line through the midpoint. All three are drawn on one set of axes and lettered by the lettering permutation. The antiderivative framing names the line g and asks for its antiderivatives, which reverses the direction of the reasoning.",
     "parameters": [
      {
       "domain": {
-       "max": 0,
-       "min": -3,
+       "max": 1,
+       "min": -4,
        "step": 1
       },
       "name": "first_root",
@@ -22143,9 +22149,11 @@
      {
       "domain": {
        "values": [
+        2,
         3,
         4,
-        5
+        5,
+        6
        ]
       },
       "name": "root_gap",
@@ -22271,7 +22279,7 @@
    "units": [
     "BC-UNIT-05"
    ],
-   "updated": "2026-09-24",
+   "updated": "2026-09-26",
    "variants": [
     "BC-QV-05009-01",
     "BC-QV-05009-02",
@@ -22535,7 +22543,7 @@
    "units": [
     "BC-UNIT-08"
    ],
-   "updated": "2026-09-24",
+   "updated": "2026-09-26",
    "variants": [
     "BC-QV-08003-01",
     "BC-QV-08003-02",
@@ -22749,7 +22757,7 @@
    "units": [
     "BC-UNIT-03"
    ],
-   "updated": "2026-09-24",
+   "updated": "2026-09-26",
    "variants": [
     "BC-QV-03007-01",
     "BC-QV-03007-02",
@@ -23028,7 +23036,7 @@
    "units": [
     "BC-UNIT-10"
    ],
-   "updated": "2026-09-24",
+   "updated": "2026-09-26",
    "variants": [
     "BC-QV-10001-01",
     "BC-QV-10001-02",
@@ -23222,7 +23230,7 @@
    "units": [
     "BC-UNIT-07"
    ],
-   "updated": "2026-09-24",
+   "updated": "2026-09-26",
    "variants": [
     "BC-QV-07006-01",
     "BC-QV-07006-02",
@@ -23441,7 +23449,7 @@
    "units": [
     "BC-UNIT-01"
    ],
-   "updated": "2026-09-24"
+   "updated": "2026-09-26"
   }
  ],
  "variants": [
@@ -23466,7 +23474,7 @@
     "sg-22:20",
     "sg-22:21"
    ],
-   "updated": "2026-09-19"
+   "updated": "2026-09-26"
   },
   {
    "archetype": "BC-QA-10008",
@@ -23490,7 +23498,7 @@
     "sg-24:21",
     "sg-21:25"
    ],
-   "updated": "2026-09-19"
+   "updated": "2026-09-26"
   },
   {
    "archetype": "BC-QA-10008",
@@ -23514,7 +23522,7 @@
     "sg-24:21",
     "sg-21:25"
    ],
-   "updated": "2026-09-19"
+   "updated": "2026-09-26"
   },
   {
    "archetype": "BC-QA-10018",
@@ -23538,7 +23546,7 @@
     "sg-25:26",
     "ced:198"
    ],
-   "updated": "2026-09-19"
+   "updated": "2026-09-26"
   },
   {
    "archetype": "BC-QA-06005",
@@ -23562,7 +23570,7 @@
     "sg-24:3",
     "sg-24:4"
    ],
-   "updated": "2026-09-19"
+   "updated": "2026-09-26"
   },
   {
    "archetype": "BC-QA-08001",
@@ -23585,7 +23593,7 @@
    "sources": [
     "sg-25:2"
    ],
-   "updated": "2026-09-19"
+   "updated": "2026-09-26"
   },
   {
    "archetype": "BC-QA-08006",
@@ -23603,7 +23611,7 @@
    "sources": [
     "sg-25:5"
    ],
-   "updated": "2026-09-19"
+   "updated": "2026-09-26"
   },
   {
    "archetype": "BC-QA-08006",
@@ -23625,7 +23633,7 @@
    "sources": [
     "sg-25:5"
    ],
-   "updated": "2026-09-19"
+   "updated": "2026-09-26"
   },
   {
    "archetype": "BC-QA-04005",
@@ -23644,7 +23652,7 @@
    "sources": [
     "sg-25:2"
    ],
-   "updated": "2026-09-19"
+   "updated": "2026-09-26"
   },
   {
    "archetype": "BC-QA-09012",
@@ -23663,7 +23671,7 @@
    "sources": [
     "frq-25:4"
    ],
-   "updated": "2026-09-19"
+   "updated": "2026-09-26"
   },
   {
    "archetype": "BC-QA-08001",
@@ -23684,7 +23692,7 @@
     "sg-19:3"
    ],
    "status": "active",
-   "updated": "2026-09-19"
+   "updated": "2026-09-26"
   },
   {
    "archetype": "BC-QA-09012",
@@ -23702,7 +23710,7 @@
    "sources": [
     "sg-25:8"
    ],
-   "updated": "2026-09-19"
+   "updated": "2026-09-26"
   },
   {
    "archetype": "BC-QA-09012",
@@ -23720,7 +23728,7 @@
    "sources": [
     "ced:178"
    ],
-   "updated": "2026-09-19"
+   "updated": "2026-09-26"
   },
   {
    "archetype": "BC-QA-06013",
@@ -23738,7 +23746,7 @@
    "sources": [
     "ced:123"
    ],
-   "updated": "2026-09-19"
+   "updated": "2026-09-26"
   },
   {
    "archetype": "BC-QA-06013",
@@ -23757,7 +23765,7 @@
    "sources": [
     "ced:123"
    ],
-   "updated": "2026-09-19"
+   "updated": "2026-09-26"
   },
   {
    "archetype": "BC-QA-06003",
@@ -23777,7 +23785,7 @@
     "sg-25:15",
     "sg-25:16"
    ],
-   "updated": "2026-09-19"
+   "updated": "2026-09-26"
   },
   {
    "archetype": "BC-QA-01003",
@@ -23795,7 +23803,7 @@
    "sources": [
     "ced:42"
    ],
-   "updated": "2026-09-19"
+   "updated": "2026-09-26"
   },
   {
    "archetype": "BC-QA-04006",
@@ -23816,7 +23824,7 @@
    "sources": [
     "ced:91"
    ],
-   "updated": "2026-09-19"
+   "updated": "2026-09-26"
   },
   {
    "archetype": "BC-QA-07010",
@@ -23834,7 +23842,7 @@
    "sources": [
     "sg-24:10"
    ],
-   "updated": "2026-09-19"
+   "updated": "2026-09-26"
   },
   {
    "archetype": "BC-QA-07003",
@@ -23853,7 +23861,7 @@
    "sources": [
     "sg-24:11"
    ],
-   "updated": "2026-09-19"
+   "updated": "2026-09-26"
   },
   {
    "archetype": "BC-QA-02008",
@@ -23871,7 +23879,7 @@
    "sources": [
     "ced:68"
    ],
-   "updated": "2026-09-19"
+   "updated": "2026-09-26"
   },
   {
    "archetype": "BC-QA-06010",
@@ -23890,7 +23898,7 @@
    "sources": [
     "ced:129"
    ],
-   "updated": "2026-09-19"
+   "updated": "2026-09-26"
   },
   {
    "archetype": "BC-QA-06011",
@@ -23909,7 +23917,7 @@
     "sg-23:17",
     "frq-23:9"
    ],
-   "updated": "2026-09-19"
+   "updated": "2026-09-26"
   },
   {
    "archetype": "BC-QA-06011",
@@ -23928,7 +23936,7 @@
     "sg-23:17",
     "frq-23:9"
    ],
-   "updated": "2026-09-19"
+   "updated": "2026-09-26"
   },
   {
    "archetype": "BC-QA-10011",
@@ -23947,7 +23955,7 @@
     "ced:196",
     "sg-23:19"
    ],
-   "updated": "2026-09-19"
+   "updated": "2026-09-26"
   },
   {
    "archetype": "BC-QA-10012",
@@ -23968,7 +23976,7 @@
     "sg-23:20",
     "sg-23:21"
    ],
-   "updated": "2026-09-19"
+   "updated": "2026-09-26"
   },
   {
    "archetype": "BC-QA-10019",
@@ -23987,7 +23995,7 @@
     "ced:200",
     "sg-23:21"
    ],
-   "updated": "2026-09-19"
+   "updated": "2026-09-26"
   },
   {
    "archetype": "BC-QA-04001",
@@ -24008,7 +24016,7 @@
    "sources": [
     "sg-24:2"
    ],
-   "updated": "2026-09-19"
+   "updated": "2026-09-26"
   },
   {
    "archetype": "BC-QA-04001",
@@ -24029,7 +24037,7 @@
    "sources": [
     "cr-24:4"
    ],
-   "updated": "2026-09-19"
+   "updated": "2026-09-26"
   },
   {
    "archetype": "BC-QA-04001",
@@ -24047,7 +24055,7 @@
    "sources": [
     "ced:87"
    ],
-   "updated": "2026-09-19"
+   "updated": "2026-09-26"
   },
   {
    "archetype": "BC-QA-06006",
@@ -24067,7 +24075,7 @@
    "sources": [
     "ced:154"
    ],
-   "updated": "2026-09-19"
+   "updated": "2026-09-26"
   },
   {
    "archetype": "BC-QA-06006",
@@ -24087,7 +24095,7 @@
    "sources": [
     "ced:154"
    ],
-   "updated": "2026-09-19"
+   "updated": "2026-09-26"
   },
   {
    "archetype": "BC-QA-08006",
@@ -24108,7 +24116,7 @@
    "sources": [
     "sg-25:5"
    ],
-   "updated": "2026-09-19"
+   "updated": "2026-09-26"
   },
   {
    "archetype": "BC-QA-09013",
@@ -24129,7 +24137,7 @@
    "sources": [
     "frq-25:4"
    ],
-   "updated": "2026-09-19"
+   "updated": "2026-09-26"
   },
   {
    "archetype": "BC-QA-09013",
@@ -24149,7 +24157,7 @@
    "sources": [
     "sg-25:7"
    ],
-   "updated": "2026-09-19"
+   "updated": "2026-09-26"
   },
   {
    "archetype": "BC-QA-09013",
@@ -24168,7 +24176,7 @@
    "sources": [
     "ced:179"
    ],
-   "updated": "2026-09-19"
+   "updated": "2026-09-26"
   },
   {
    "archetype": "BC-QA-02001",
@@ -24189,7 +24197,7 @@
    "sources": [
     "sg-24:2"
    ],
-   "updated": "2026-09-19"
+   "updated": "2026-09-26"
   },
   {
    "archetype": "BC-QA-02001",
@@ -24208,7 +24216,7 @@
    "sources": [
     "sg-25:11"
    ],
-   "updated": "2026-09-19"
+   "updated": "2026-09-26"
   },
   {
    "archetype": "BC-QA-05001",
@@ -24228,7 +24236,7 @@
    "sources": [
     "sg-25:4"
    ],
-   "updated": "2026-09-19"
+   "updated": "2026-09-26"
   },
   {
    "archetype": "BC-QA-05001",
@@ -24247,7 +24255,7 @@
    "sources": [
     "sg-23:3"
    ],
-   "updated": "2026-09-19"
+   "updated": "2026-09-26"
   },
   {
    "archetype": "BC-QA-08001",
@@ -24269,7 +24277,7 @@
     "sg-23:3",
     "sg-23:4"
    ],
-   "updated": "2026-09-19"
+   "updated": "2026-09-26"
   },
   {
    "archetype": "BC-QA-08001",
@@ -24287,7 +24295,7 @@
    "sources": [
     "sg-24:3"
    ],
-   "updated": "2026-09-19"
+   "updated": "2026-09-26"
   },
   {
    "archetype": "BC-QA-02007",
@@ -24306,7 +24314,7 @@
    "sources": [
     "ced:66"
    ],
-   "updated": "2026-09-19"
+   "updated": "2026-09-26"
   },
   {
    "archetype": "BC-QA-03001",
@@ -24324,7 +24332,7 @@
    "sources": [
     "ced:72"
    ],
-   "updated": "2026-09-19"
+   "updated": "2026-09-26"
   },
   {
    "archetype": "BC-QA-05003",
@@ -24343,7 +24351,7 @@
    "sources": [
     "sg-23:13"
    ],
-   "updated": "2026-09-19"
+   "updated": "2026-09-26"
   },
   {
    "archetype": "BC-QA-05006",
@@ -24366,7 +24374,7 @@
     "sg-25:18",
     "sg-25:19"
    ],
-   "updated": "2026-09-19"
+   "updated": "2026-09-26"
   },
   {
    "archetype": "BC-QA-05004",
@@ -24388,7 +24396,7 @@
    "sources": [
     "sg-23:14"
    ],
-   "updated": "2026-09-19"
+   "updated": "2026-09-26"
   },
   {
    "archetype": "BC-QA-05004",
@@ -24409,7 +24417,7 @@
    "sources": [
     "sg-23:14"
    ],
-   "updated": "2026-09-19"
+   "updated": "2026-09-26"
   },
   {
    "archetype": "BC-QA-03001",
@@ -24428,7 +24436,7 @@
    "sources": [
     "ced:79"
    ],
-   "updated": "2026-09-19"
+   "updated": "2026-09-26"
   },
   {
    "archetype": "BC-QA-04009",
@@ -24448,7 +24456,7 @@
    "sources": [
     "sg-23:14"
    ],
-   "updated": "2026-09-19"
+   "updated": "2026-09-26"
   },
   {
    "archetype": "BC-QA-07004",
@@ -24468,7 +24476,7 @@
    "sources": [
     "sg-25:23"
    ],
-   "updated": "2026-09-19"
+   "updated": "2026-09-26"
   },
   {
    "archetype": "BC-QA-07004",
@@ -24489,7 +24497,7 @@
    "sources": [
     "sg-25:23"
    ],
-   "updated": "2026-09-19"
+   "updated": "2026-09-26"
   },
   {
    "archetype": "BC-QA-07003",
@@ -24510,7 +24518,7 @@
    "sources": [
     "sg-24:11"
    ],
-   "updated": "2026-09-19"
+   "updated": "2026-09-26"
   },
   {
    "archetype": "BC-QA-10010",
@@ -24530,7 +24538,7 @@
    "sources": [
     "sg-23:19"
    ],
-   "updated": "2026-09-19"
+   "updated": "2026-09-26"
   },
   {
    "archetype": "BC-QA-10010",
@@ -24550,7 +24558,7 @@
    "sources": [
     "sg-23:19"
    ],
-   "updated": "2026-09-19"
+   "updated": "2026-09-26"
   },
   {
    "archetype": "BC-QA-10012",
@@ -24570,7 +24578,7 @@
     "sg-23:20",
     "sg-23:21"
    ],
-   "updated": "2026-09-19"
+   "updated": "2026-09-26"
   },
   {
    "archetype": "BC-QA-10012",
@@ -24590,7 +24598,7 @@
     "sg-23:20",
     "sg-23:21"
    ],
-   "updated": "2026-09-19"
+   "updated": "2026-09-26"
   },
   {
    "archetype": "BC-QA-04002",
@@ -24610,7 +24618,7 @@
    "sources": [
     "sg-25:11"
    ],
-   "updated": "2026-09-19"
+   "updated": "2026-09-26"
   },
   {
    "archetype": "BC-QA-04002",
@@ -24631,7 +24639,7 @@
    "sources": [
     "sg-25:11"
    ],
-   "updated": "2026-09-19"
+   "updated": "2026-09-26"
   },
   {
    "archetype": "BC-QA-06001",
@@ -24654,7 +24662,7 @@
     "sg-23:2",
     "sg-23:3"
    ],
-   "updated": "2026-09-19"
+   "updated": "2026-09-26"
   },
   {
    "archetype": "BC-QA-06001",
@@ -24673,7 +24681,7 @@
     "sg-23:2",
     "sg-23:3"
    ],
-   "updated": "2026-09-19"
+   "updated": "2026-09-26"
   },
   {
    "archetype": "BC-QA-09006",
@@ -24692,7 +24700,7 @@
    "sources": [
     "sg-24:5"
    ],
-   "updated": "2026-09-19"
+   "updated": "2026-09-26"
   },
   {
    "archetype": "BC-QA-09004",
@@ -24713,7 +24721,7 @@
    "sources": [
     "sg-23:6"
    ],
-   "updated": "2026-09-19"
+   "updated": "2026-09-26"
   },
   {
    "archetype": "BC-QA-09007",
@@ -24736,7 +24744,7 @@
    "sources": [
     "sg-24:6"
    ],
-   "updated": "2026-09-19"
+   "updated": "2026-09-26"
   },
   {
    "archetype": "BC-QA-09005",
@@ -24754,7 +24762,7 @@
    "sources": [
     "sg-23:7"
    ],
-   "updated": "2026-09-19"
+   "updated": "2026-09-26"
   },
   {
    "archetype": "BC-QA-06008",
@@ -24774,7 +24782,7 @@
     "ced:126",
     "sg-23:17"
    ],
-   "updated": "2026-09-19"
+   "updated": "2026-09-26"
   },
   {
    "archetype": "BC-QA-05007",
@@ -24793,7 +24801,7 @@
    "sources": [
     "sg-24:10"
    ],
-   "updated": "2026-09-19"
+   "updated": "2026-09-26"
   },
   {
    "archetype": "BC-QA-08012",
@@ -24813,7 +24821,7 @@
    "sources": [
     "ced:160"
    ],
-   "updated": "2026-09-19"
+   "updated": "2026-09-26"
   },
   {
    "archetype": "BC-QA-06003",
@@ -24833,7 +24841,7 @@
     "sg-25:15",
     "sg-25:16"
    ],
-   "updated": "2026-09-19"
+   "updated": "2026-09-26"
   },
   {
    "archetype": "BC-QA-02009",
@@ -24852,7 +24860,7 @@
     "ced:62",
     "ced:67"
    ],
-   "updated": "2026-09-19"
+   "updated": "2026-09-26"
   },
   {
    "archetype": "BC-QA-10011",
@@ -24871,7 +24879,7 @@
     "ced:196",
     "sg-23:19"
    ],
-   "updated": "2026-09-19"
+   "updated": "2026-09-26"
   },
   {
    "archetype": "BC-QA-07003",
@@ -24892,7 +24900,7 @@
    "sources": [
     "sg-23:12"
    ],
-   "updated": "2026-09-19"
+   "updated": "2026-09-26"
   },
   {
    "archetype": "BC-QA-10005",
@@ -24911,7 +24919,7 @@
     "sg-21:21",
     "sg-21:22"
    ],
-   "updated": "2026-09-19"
+   "updated": "2026-09-26"
   },
   {
    "archetype": "BC-QA-10006",
@@ -24929,7 +24937,7 @@
    "sources": [
     "sg-21:23"
    ],
-   "updated": "2026-09-19"
+   "updated": "2026-09-26"
   },
   {
    "archetype": "BC-QA-10006",
@@ -24947,7 +24955,7 @@
    "sources": [
     "sg-21:23"
    ],
-   "updated": "2026-09-19"
+   "updated": "2026-09-26"
   },
   {
    "archetype": "BC-QA-10014",
@@ -24968,7 +24976,7 @@
    "sources": [
     "sg-21:24"
    ],
-   "updated": "2026-09-19"
+   "updated": "2026-09-26"
   },
   {
    "archetype": "BC-QA-10014",
@@ -24986,7 +24994,7 @@
    "sources": [
     "sg-21:24"
    ],
-   "updated": "2026-09-19"
+   "updated": "2026-09-26"
   },
   {
    "archetype": "BC-QA-10008",
@@ -25007,7 +25015,7 @@
     "sg-24:21",
     "sg-21:25"
    ],
-   "updated": "2026-09-19"
+   "updated": "2026-09-26"
   },
   {
    "archetype": "BC-QA-08001",
@@ -25027,7 +25035,7 @@
     "sg-23:3",
     "sg-23:4"
    ],
-   "updated": "2026-09-19"
+   "updated": "2026-09-26"
   },
   {
    "archetype": "BC-QA-04008",
@@ -25045,7 +25053,7 @@
    "sources": [
     "cr-24:17"
    ],
-   "updated": "2026-09-19"
+   "updated": "2026-09-26"
   },
   {
    "archetype": "BC-QA-09010",
@@ -25065,7 +25073,7 @@
    "sources": [
     "sg-25:10"
    ],
-   "updated": "2026-09-19"
+   "updated": "2026-09-26"
   },
   {
    "archetype": "BC-QA-06004",
@@ -25088,7 +25096,7 @@
     "sg-25:18",
     "sg-24:12"
    ],
-   "updated": "2026-09-19"
+   "updated": "2026-09-26"
   },
   {
    "archetype": "BC-QA-06003",
@@ -25109,7 +25117,7 @@
     "sg-25:15",
     "sg-25:16"
    ],
-   "updated": "2026-09-19"
+   "updated": "2026-09-26"
   },
   {
    "archetype": "BC-QA-02008",
@@ -25127,7 +25135,7 @@
    "sources": [
     "ced:68"
    ],
-   "updated": "2026-09-19"
+   "updated": "2026-09-26"
   },
   {
    "archetype": "BC-QA-04003",
@@ -25146,7 +25154,7 @@
    "sources": [
     "crabbc-25:20"
    ],
-   "updated": "2026-09-19"
+   "updated": "2026-09-26"
   },
   {
    "archetype": "BC-QA-01011",
@@ -25166,7 +25174,7 @@
    "sources": [
     "sg-25:12"
    ],
-   "updated": "2026-09-19"
+   "updated": "2026-09-26"
   },
   {
    "archetype": "BC-QA-01011",
@@ -25187,7 +25195,7 @@
    "sources": [
     "sg-25:12"
    ],
-   "updated": "2026-09-19"
+   "updated": "2026-09-26"
   },
   {
    "archetype": "BC-QA-06002",
@@ -25208,7 +25216,7 @@
     "sg-25:13",
     "frq-25:6"
    ],
-   "updated": "2026-09-19"
+   "updated": "2026-09-26"
   },
   {
    "archetype": "BC-QA-06002",
@@ -25229,7 +25237,7 @@
     "sg-25:13",
     "frq-25:6"
    ],
-   "updated": "2026-09-19"
+   "updated": "2026-09-26"
   },
   {
    "archetype": "BC-QA-08008",
@@ -25248,7 +25256,7 @@
    "sources": [
     "ced:155"
    ],
-   "updated": "2026-09-19"
+   "updated": "2026-09-26"
   },
   {
    "archetype": "BC-QA-08013",
@@ -25266,7 +25274,7 @@
    "sources": [
     "ced:163"
    ],
-   "updated": "2026-09-19"
+   "updated": "2026-09-26"
   },
   {
    "archetype": "BC-QA-08014",
@@ -25286,7 +25294,7 @@
    "sources": [
     "sg-24:16"
    ],
-   "updated": "2026-09-19"
+   "updated": "2026-09-26"
   },
   {
    "archetype": "BC-QA-10013",
@@ -25309,7 +25317,7 @@
     "sg-22:20",
     "sg-22:21"
    ],
-   "updated": "2026-09-19"
+   "updated": "2026-09-26"
   },
   {
    "archetype": "BC-QA-10019",
@@ -25328,7 +25336,7 @@
     "ced:200",
     "sg-23:21"
    ],
-   "updated": "2026-09-19"
+   "updated": "2026-09-26"
   },
   {
    "archetype": "BC-QA-06015",
@@ -25347,7 +25355,7 @@
    "sources": [
     "sg-24:3"
    ],
-   "updated": "2026-09-19"
+   "updated": "2026-09-26"
   },
   {
    "archetype": "BC-QA-09001",
@@ -25367,7 +25375,7 @@
    "sources": [
     "frq-23:4"
    ],
-   "updated": "2026-09-19"
+   "updated": "2026-09-26"
   },
   {
    "archetype": "BC-QA-09004",
@@ -25387,7 +25395,7 @@
    "sources": [
     "frq-23:4"
    ],
-   "updated": "2026-09-19"
+   "updated": "2026-09-26"
   },
   {
    "archetype": "BC-QA-09005",
@@ -25405,7 +25413,7 @@
    "sources": [
     "ced:175"
    ],
-   "updated": "2026-09-19"
+   "updated": "2026-09-26"
   },
   {
    "archetype": "BC-QA-06005",
@@ -25425,7 +25433,7 @@
     "sg-24:3",
     "sg-24:4"
    ],
-   "updated": "2026-09-19"
+   "updated": "2026-09-26"
   },
   {
    "archetype": "BC-QA-05005",
@@ -25446,7 +25454,7 @@
    "sources": [
     "sg-25:17"
    ],
-   "updated": "2026-09-19"
+   "updated": "2026-09-26"
   },
   {
    "archetype": "BC-QA-05008",
@@ -25464,7 +25472,7 @@
    "sources": [
     "sg-25:17"
    ],
-   "updated": "2026-09-19"
+   "updated": "2026-09-26"
   },
   {
    "archetype": "BC-QA-05006",
@@ -25486,7 +25494,7 @@
    "sources": [
     "sg-25:19"
    ],
-   "updated": "2026-09-19"
+   "updated": "2026-09-26"
   },
   {
    "archetype": "BC-QA-04002",
@@ -25505,7 +25513,7 @@
    "sources": [
     "sg-24:2"
    ],
-   "updated": "2026-09-19"
+   "updated": "2026-09-26"
   },
   {
    "archetype": "BC-QA-08011",
@@ -25523,7 +25531,7 @@
    "sources": [
     "ced:158"
    ],
-   "updated": "2026-09-19"
+   "updated": "2026-09-26"
   },
   {
    "archetype": "BC-QA-10003",
@@ -25543,7 +25551,7 @@
     "sg-25:26",
     "ced:187"
    ],
-   "updated": "2026-09-19"
+   "updated": "2026-09-26"
   },
   {
    "archetype": "BC-QA-06006",
@@ -25563,7 +25571,7 @@
     "ced:124",
     "sg-24:4"
    ],
-   "updated": "2026-09-19"
+   "updated": "2026-09-26"
   },
   {
    "archetype": "BC-QA-06006",
@@ -25582,7 +25590,7 @@
     "ced:124",
     "sg-24:4"
    ],
-   "updated": "2026-09-19"
+   "updated": "2026-09-26"
   },
   {
    "archetype": "BC-QA-09005",
@@ -25601,7 +25609,7 @@
    "sources": [
     "sg-24:7"
    ],
-   "updated": "2026-09-19"
+   "updated": "2026-09-26"
   },
   {
    "archetype": "BC-QA-09001",
@@ -25621,7 +25629,7 @@
    "sources": [
     "sg-23:7"
    ],
-   "updated": "2026-09-19"
+   "updated": "2026-09-26"
   },
   {
    "archetype": "BC-QA-09006",
@@ -25640,7 +25648,7 @@
    "sources": [
     "sg-23:6"
    ],
-   "updated": "2026-09-19"
+   "updated": "2026-09-26"
   },
   {
    "archetype": "BC-QA-02001",
@@ -25660,7 +25668,7 @@
    "sources": [
     "sg-25:11"
    ],
-   "updated": "2026-09-19"
+   "updated": "2026-09-26"
   },
   {
    "archetype": "BC-QA-08001",
@@ -25681,7 +25689,7 @@
     "sg-23:3",
     "sg-23:4"
    ],
-   "updated": "2026-09-19"
+   "updated": "2026-09-26"
   },
   {
    "archetype": "BC-QA-07002",
@@ -25699,7 +25707,7 @@
    "sources": [
     "ced:139"
    ],
-   "updated": "2026-09-19"
+   "updated": "2026-09-26"
   },
   {
    "archetype": "BC-QA-07010",
@@ -25718,7 +25726,7 @@
    "sources": [
     "sg-24:10"
    ],
-   "updated": "2026-09-19"
+   "updated": "2026-09-26"
   },
   {
    "archetype": "BC-QA-05003",
@@ -25738,7 +25746,7 @@
    "sources": [
     "sg-23:13"
    ],
-   "updated": "2026-09-19"
+   "updated": "2026-09-26"
   },
   {
    "archetype": "BC-QA-07010",
@@ -25756,7 +25764,7 @@
    "sources": [
     "sg-24:10"
    ],
-   "updated": "2026-09-19"
+   "updated": "2026-09-26"
   },
   {
    "archetype": "BC-QA-07007",
@@ -25774,7 +25782,7 @@
    "sources": [
     "ced:138"
    ],
-   "updated": "2026-09-19"
+   "updated": "2026-09-26"
   },
   {
    "archetype": "BC-QA-07007",
@@ -25793,7 +25801,7 @@
     "ced:138",
     "ced-clarifications-2026:2"
    ],
-   "updated": "2026-09-19"
+   "updated": "2026-09-26"
   },
   {
    "archetype": "BC-QA-02011",
@@ -25811,7 +25819,7 @@
    "sources": [
     "ced:61"
    ],
-   "updated": "2026-09-19"
+   "updated": "2026-09-26"
   },
   {
    "archetype": "BC-QA-05007",
@@ -25831,7 +25839,7 @@
    "sources": [
     "sg-24:10"
    ],
-   "updated": "2026-09-19"
+   "updated": "2026-09-26"
   },
   {
    "archetype": "BC-QA-10017",
@@ -25852,7 +25860,7 @@
     "ced:200",
     "sg-23:21"
    ],
-   "updated": "2026-09-19"
+   "updated": "2026-09-26"
   },
   {
    "archetype": "BC-QA-10017",
@@ -25874,7 +25882,7 @@
     "ced:200",
     "sg-23:21"
    ],
-   "updated": "2026-09-19"
+   "updated": "2026-09-26"
   },
   {
    "archetype": "BC-QA-05001",
@@ -25892,7 +25900,7 @@
    "sources": [
     "sg-23:3"
    ],
-   "updated": "2026-09-19"
+   "updated": "2026-09-26"
   },
   {
    "archetype": "BC-QA-07001",
@@ -25910,7 +25918,7 @@
    "sources": [
     "sg-23:9"
    ],
-   "updated": "2026-09-19"
+   "updated": "2026-09-26"
   },
   {
    "archetype": "BC-QA-04008",
@@ -25928,7 +25936,7 @@
    "sources": [
     "ced:92"
    ],
-   "updated": "2026-09-19"
+   "updated": "2026-09-26"
   },
   {
    "archetype": "BC-QA-07005",
@@ -25947,7 +25955,7 @@
    "sources": [
     "sg-23:11"
    ],
-   "updated": "2026-09-19"
+   "updated": "2026-09-26"
   },
   {
    "archetype": "BC-QA-07005",
@@ -25966,7 +25974,7 @@
    "sources": [
     "sg-23:11"
    ],
-   "updated": "2026-09-19"
+   "updated": "2026-09-26"
   },
   {
    "archetype": "BC-QA-08008",
@@ -25984,7 +25992,7 @@
    "sources": [
     "sg-23:16"
    ],
-   "updated": "2026-09-19"
+   "updated": "2026-09-26"
   },
   {
    "archetype": "BC-QA-06011",
@@ -26004,7 +26012,7 @@
     "sg-23:17",
     "frq-23:9"
    ],
-   "updated": "2026-09-19"
+   "updated": "2026-09-26"
   },
   {
    "archetype": "BC-QA-06009",
@@ -26023,7 +26031,7 @@
     "sg-24:18",
     "sg-23:18"
    ],
-   "updated": "2026-09-19"
+   "updated": "2026-09-26"
   },
   {
    "archetype": "BC-QA-10010",
@@ -26041,7 +26049,7 @@
    "sources": [
     "sg-23:19"
    ],
-   "updated": "2026-09-19"
+   "updated": "2026-09-26"
   },
   {
    "archetype": "BC-QA-10009",
@@ -26060,7 +26068,7 @@
    "sources": [
     "sg-23:20"
    ],
-   "updated": "2026-09-19"
+   "updated": "2026-09-26"
   },
   {
    "archetype": "BC-QA-06005",
@@ -26083,7 +26091,7 @@
     "sg-24:3",
     "sg-24:4"
    ],
-   "updated": "2026-09-19"
+   "updated": "2026-09-26"
   },
   {
    "archetype": "BC-QA-05008",
@@ -26101,7 +26109,7 @@
    "sources": [
     "ced:101"
    ],
-   "updated": "2026-09-19"
+   "updated": "2026-09-26"
   },
   {
    "archetype": "BC-QA-09007",
@@ -26119,7 +26127,7 @@
    "sources": [
     "sg-24:6"
    ],
-   "updated": "2026-09-19"
+   "updated": "2026-09-26"
   },
   {
    "archetype": "BC-QA-09008",
@@ -26137,7 +26145,7 @@
    "sources": [
     "frq-24:4"
    ],
-   "updated": "2026-09-19"
+   "updated": "2026-09-26"
   },
   {
    "archetype": "BC-QA-09008",
@@ -26155,7 +26163,7 @@
    "sources": [
     "sg-24:8"
    ],
-   "updated": "2026-09-19"
+   "updated": "2026-09-26"
   },
   {
    "archetype": "BC-QA-07001",
@@ -26173,7 +26181,7 @@
    "sources": [
     "sg-24:9"
    ],
-   "updated": "2026-09-19"
+   "updated": "2026-09-26"
   },
   {
    "archetype": "BC-QA-06004",
@@ -26192,7 +26200,7 @@
     "sg-25:18",
     "sg-24:12"
    ],
-   "updated": "2026-09-19"
+   "updated": "2026-09-26"
   },
   {
    "archetype": "BC-QA-06012",
@@ -26213,7 +26221,7 @@
     "sg-24:15",
     "sg-25:16"
    ],
-   "updated": "2026-09-19"
+   "updated": "2026-09-26"
   },
   {
    "archetype": "BC-QA-06012",
@@ -26232,7 +26240,7 @@
     "sg-24:15",
     "sg-25:16"
    ],
-   "updated": "2026-09-19"
+   "updated": "2026-09-26"
   },
   {
    "archetype": "BC-QA-07004",
@@ -26251,7 +26259,7 @@
     "sg-24:17",
     "sg-25:23"
    ],
-   "updated": "2026-09-19"
+   "updated": "2026-09-26"
   },
   {
    "archetype": "BC-QA-06009",
@@ -26270,7 +26278,7 @@
     "sg-24:18",
     "sg-23:18"
    ],
-   "updated": "2026-09-19"
+   "updated": "2026-09-26"
   },
   {
    "archetype": "BC-QA-10004",
@@ -26290,7 +26298,7 @@
     "sg-24:20",
     "ced:191"
    ],
-   "updated": "2026-09-19"
+   "updated": "2026-09-26"
   },
   {
    "archetype": "BC-QA-10004",
@@ -26310,7 +26318,7 @@
     "sg-24:20",
     "ced:191"
    ],
-   "updated": "2026-09-19"
+   "updated": "2026-09-26"
   },
   {
    "archetype": "BC-QA-10016",
@@ -26331,7 +26339,7 @@
     "sg-25:26",
     "sg-24:22"
    ],
-   "updated": "2026-09-19"
+   "updated": "2026-09-26"
   },
   {
    "archetype": "BC-QA-08002",
@@ -26350,7 +26358,7 @@
    "sources": [
     "sg-25:4"
    ],
-   "updated": "2026-09-19"
+   "updated": "2026-09-26"
   },
   {
    "archetype": "BC-QA-08002",
@@ -26368,7 +26376,7 @@
    "sources": [
     "frq-25:3"
    ],
-   "updated": "2026-09-19"
+   "updated": "2026-09-26"
   },
   {
    "archetype": "BC-QA-01010",
@@ -26386,7 +26394,7 @@
    "sources": [
     "sg-25:4"
    ],
-   "updated": "2026-09-19"
+   "updated": "2026-09-26"
   },
   {
    "archetype": "BC-QA-01010",
@@ -26404,7 +26412,7 @@
    "sources": [
     "ced:52"
    ],
-   "updated": "2026-09-19"
+   "updated": "2026-09-26"
   },
   {
    "archetype": "BC-QA-05006",
@@ -26422,7 +26430,7 @@
    "sources": [
     "sg-23:15"
    ],
-   "updated": "2026-09-19"
+   "updated": "2026-09-26"
   },
   {
    "archetype": "BC-QA-09009",
@@ -26443,7 +26451,7 @@
    "sources": [
     "sg-25:7"
    ],
-   "updated": "2026-09-19"
+   "updated": "2026-09-26"
   },
   {
    "archetype": "BC-QA-09009",
@@ -26461,7 +26469,7 @@
    "sources": [
     "sg-25:7"
    ],
-   "updated": "2026-09-19"
+   "updated": "2026-09-26"
   },
   {
    "archetype": "BC-QA-09011",
@@ -26479,7 +26487,7 @@
    "sources": [
     "frq-25:4"
    ],
-   "updated": "2026-09-19"
+   "updated": "2026-09-26"
   },
   {
    "archetype": "BC-QA-09011",
@@ -26497,7 +26505,7 @@
    "sources": [
     "sg-25:9"
    ],
-   "updated": "2026-09-19"
+   "updated": "2026-09-26"
   },
   {
    "archetype": "BC-QA-09011",
@@ -26515,7 +26523,7 @@
    "sources": [
     "sg-25:9"
    ],
-   "updated": "2026-09-19"
+   "updated": "2026-09-26"
   },
   {
    "archetype": "BC-QA-09010",
@@ -26535,7 +26543,7 @@
    "sources": [
     "sg-25:10"
    ],
-   "updated": "2026-09-19"
+   "updated": "2026-09-26"
   },
   {
    "archetype": "BC-QA-06005",
@@ -26554,7 +26562,7 @@
    "sources": [
     "sg-25:14"
    ],
-   "updated": "2026-09-19"
+   "updated": "2026-09-26"
   },
   {
    "archetype": "BC-QA-05005",
@@ -26573,7 +26581,7 @@
    "sources": [
     "sg-25:17"
    ],
-   "updated": "2026-09-19"
+   "updated": "2026-09-26"
   },
   {
    "archetype": "BC-QA-06004",
@@ -26592,7 +26600,7 @@
     "sg-25:18",
     "sg-24:12"
    ],
-   "updated": "2026-09-19"
+   "updated": "2026-09-26"
   },
   {
    "archetype": "BC-QA-03008",
@@ -26610,7 +26618,7 @@
    "sources": [
     "sg-25:20"
    ],
-   "updated": "2026-09-19"
+   "updated": "2026-09-26"
   },
   {
    "archetype": "BC-QA-03008",
@@ -26628,7 +26636,7 @@
    "sources": [
     "ced:80"
    ],
-   "updated": "2026-09-19"
+   "updated": "2026-09-26"
   },
   {
    "archetype": "BC-QA-10013",
@@ -26650,7 +26658,7 @@
     "sg-22:20",
     "sg-22:21"
    ],
-   "updated": "2026-09-19"
+   "updated": "2026-09-26"
   },
   {
    "archetype": "BC-QA-10016",
@@ -26669,7 +26677,7 @@
     "sg-25:26",
     "sg-24:22"
    ],
-   "updated": "2026-09-19"
+   "updated": "2026-09-26"
   },
   {
    "archetype": "BC-QA-10003",
@@ -26689,7 +26697,7 @@
     "sg-25:26",
     "ced:187"
    ],
-   "updated": "2026-09-19"
+   "updated": "2026-09-26"
   },
   {
    "archetype": "BC-QA-10020",
@@ -26707,7 +26715,7 @@
    "sources": [
     "sg-25:27"
    ],
-   "updated": "2026-09-19"
+   "updated": "2026-09-26"
   },
   {
    "archetype": "BC-QA-10020",
@@ -26725,7 +26733,7 @@
    "sources": [
     "sg-25:27"
    ],
-   "updated": "2026-09-19"
+   "updated": "2026-09-26"
   },
   {
    "archetype": "BC-QA-06001",
@@ -26744,7 +26752,7 @@
     "sg-23:2",
     "sg-23:3"
    ],
-   "updated": "2026-09-19"
+   "updated": "2026-09-26"
   },
   {
    "archetype": "BC-QA-06005",
@@ -26764,7 +26772,7 @@
    "sources": [
     "sg-24:4"
    ],
-   "updated": "2026-09-19"
+   "updated": "2026-09-26"
   },
   {
    "archetype": "BC-QA-01011",
@@ -26783,7 +26791,7 @@
     "ced:49",
     "ced:53"
    ],
-   "updated": "2026-09-19"
+   "updated": "2026-09-26"
   },
   {
    "archetype": "BC-QA-07002",
@@ -26801,7 +26809,7 @@
    "sources": [
     "ced:139"
    ],
-   "updated": "2026-09-19"
+   "updated": "2026-09-26"
   },
   {
    "archetype": "BC-QA-10003",
@@ -26820,7 +26828,7 @@
     "sg-25:26",
     "ced:187"
    ],
-   "updated": "2026-09-19"
+   "updated": "2026-09-26"
   },
   {
    "archetype": "BC-QA-10016",
@@ -26839,7 +26847,7 @@
     "sg-25:26",
     "sg-24:22"
    ],
-   "updated": "2026-09-19"
+   "updated": "2026-09-26"
   },
   {
    "archetype": "BC-QA-10017",
@@ -26859,7 +26867,7 @@
     "ced:200",
     "sg-23:21"
    ],
-   "updated": "2026-09-19"
+   "updated": "2026-09-26"
   }
  ]
 }

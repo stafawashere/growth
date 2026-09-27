@@ -318,6 +318,7 @@ A prerequisite gap is one reading of an error, not the only one. Each row pairs 
 | BC-ERR-10011 | BC-PRQ-06005, BC-PRQ-06013, BC-PRQ-06002, BC-PRQ-06003 | time pressure; shorthand habit | Ask the student to write the integral with an upper bound b and then take the limit. |
 | BC-ERR-10012 | BC-PRQ-06005, BC-PRQ-06013 | misread of the starting index; habit of starting at one | Ask what the first term of the series is and which input produces it. |
 | BC-ERR-10013 | BC-PRQ-06005 | misread of what was asked; time pressure | Ask whether the first term of the series is larger or smaller than the area over the first subinterval. |
+| BC-ERR-10044 | BC-PRQ-06005 | misread of what was asked; the series summed because that was quicker | Ask whether the area under the curve from the starting index equals the sum of the rectangles of width one at the same inputs. |
 | BC-ERR-10014 | BC-PRQ-06002, BC-PRQ-10008, BC-PRQ-06005 | misread of the exponent; arithmetic slip converting a root to an exponent | Ask for the behaviour of the series with exponent one and with exponent two separately. |
 | BC-ERR-10015 | BC-PRQ-10008, BC-PRQ-10005, BC-PRQ-10004, BC-PRQ-06002 | pattern matching under time pressure; misread of the alternating factor | Ask the student to write out the first three terms at that endpoint before naming a test. |
 | BC-ERR-10016 | BC-PRQ-10004, BC-PRQ-06005 | sign slip in the inequality; time pressure | Ask which of the two series has the larger terms and what that implies in each direction. |

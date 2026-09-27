@@ -1,0 +1,39 @@
+{
+ "registry": "errors",
+ "errors": [
+  {
+   "id": "BC-ERR-10044",
+   "name": "Sum of the series reported as the value of the improper integral",
+   "scope": "BC_only",
+   "evidence_tag": "inferred",
+   "sources": [
+    "ced:189"
+   ],
+   "official_evidence": [
+    "ced:189"
+   ],
+   "archetypes": [
+    "BC-QA-10005"
+   ],
+   "skills": [
+    "BC-SKL-10016",
+    "BC-SKL-10017"
+   ],
+   "observed_behavior": "Asked for the value of the improper integral that matches a series, the response gives the sum of the series instead of evaluating the integral.",
+   "non_conceptual_causes": [
+    "the series summed as a geometric or known series because that was quicker than the integral",
+    "the question read as asking for the value the integral test is about",
+    "the integral evaluated on scratch work and the series sum copied to the answer line"
+   ],
+   "possible_misconceptions": [
+    "BC-MIS-10008"
+   ],
+   "related_errors": [
+    "BC-ERR-10013"
+   ],
+   "discriminating_probe": "Ask whether the area under the curve from the starting index equals the sum of the rectangles of width one at the same inputs; a student who says they are equal holds the belief, while one who sees the gap misread which quantity was asked for.",
+   "scoring_consequence": "The value of the integral is not given, so an answer point for the integral's value is not earned.",
+   "notes": "The reverse direction of BC-ERR-10013, which reports the integral's value as the series sum. Minted 2026-09-26 because the series-sum distractor on the BC-QA-10005 items that ask for the integral's value tests this direction, not that one."
+  }
+ ]
+}

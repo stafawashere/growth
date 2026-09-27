@@ -37,7 +37,7 @@ Counters are regenerated from `qa/12_report.py`; narrative status is updated by 
 | archetypes.json:archetypes | 144 |
 | archetypes.json:variants | 395 |
 | scoring_points.json:point_types | 76 |
-| errors.json:errors | 424 |
+| errors.json:errors | 425 |
 | misconceptions.json:misconceptions | 236 |
 | diagnostic_signals.json:signals | 711 |
 | taxonomies.json:representations | 14 |

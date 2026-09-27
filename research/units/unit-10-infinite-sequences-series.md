@@ -289,6 +289,7 @@ MCQ forms ask which series the integral test settles, or which hypothesis fails 
 - BC-ERR-10011 Improper integral evaluated without limit notation
 - BC-ERR-10012 Improper integral set up with the wrong lower limit
 - BC-ERR-10013 Value of the improper integral reported as the sum of the series
+- BC-ERR-10044 Sum of the series reported as the value of the improper integral
 - BC-MIS-10007 A convergence test can be applied without checking its conditions, severity high
 - BC-MIS-10008 The improper integral and the series have the same value, severity medium
 

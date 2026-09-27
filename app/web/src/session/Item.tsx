@@ -1,4 +1,5 @@
 import type { Confidence, ServedItem, ServedStep } from "../api/types";
+import { DesmosPanel } from "../input/DesmosPanel";
 import { MathAnswerField } from "../input/MathAnswerField";
 import { FigureView } from "../figures/FigureView";
 import { McqControl } from "../input/McqControl";
@@ -140,6 +141,8 @@ export function Item(props: ItemProps) {
          <p className="item-stem" data-testid="item-stem"><MathText text={item.stem} /></p>
 
          {allowsCalculator ? <p className="item-calculator" data-testid="calculator-note">{CALCULATOR_NOTE}</p> : null}
+
+         {allowsCalculator ? <DesmosPanel /> : null}
 
          {hasFigure ? <FigureView spec={item.figure_spec} /> : null}
 

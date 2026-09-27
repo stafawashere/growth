@@ -1194,6 +1194,26 @@ th {
    height: auto;
 }
 
+/* The Desmos calculator, framed from its own origin. */
+
+.desmos-frame {
+   display: block;
+   width: -webkit-fill-available;
+   width: stretch;
+   height: calc(var(--growth-space-96) * 5);
+   background: var(--growth-surface-raised);
+   border: var(--growth-stroke-hairline) solid var(--growth-border-hairline);
+   border-radius: var(--growth-space-4);
+}
+
+.desmos > * {
+   margin-block: 0;
+}
+
+.desmos > * + * {
+   margin-top: var(--growth-space-8);
+}
+
 /* Figures and charts drawn from data. */
 
 .item-figure {

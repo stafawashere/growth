@@ -388,6 +388,19 @@ export const SCREENS: Screen[] = [
       }
    },
    {
+      name: "session item on a calculator question, with Desmos open",
+      mount: async () => {
+         mocked.openSession.mockResolvedValue(SESSION);
+         mocked.readNextItem.mockResolvedValue({ item: servedItem({ figure_spec: null }) });
+
+         const container = inPage(<SessionScreen resumeSessionId={null} />);
+
+         fireEvent.click(await screen.findByRole("button", { name: "Open Desmos" }));
+
+         return container;
+      }
+   },
+   {
       name: "session item at completion, with a confidence chosen",
       mount: async () => {
          mocked.openSession.mockResolvedValue(SESSION);

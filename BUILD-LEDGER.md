@@ -1960,6 +1960,19 @@ items) and items 3 and 6 (Slices 3 and 4). Every gate 11 names for P2 now exists
   state scrolls the page sideways at 375 px (see `docs/operator/ui-redesign.md`, stage 11).
   Exit: all seven items built and merged.
 
+- 2026-09-27, Desmos in the page. The Desmos panel on calculator
+  questions and parts, with its tests red against three deliberate breaks and green restored;
+  `frame-src https://www.desmos.com` in the CSP and in 09. Checked in the real app in headless Brave by claude-opus-5-5: a 30-item diagnostic
+  skipped through the interface, then a calculator item's Desmos frame at 754 by 480 px, with no
+  horizontal scroll at 375 px. Checks: pytest `1365 passed in 2190.53s (0:36:30)`; vitest `Tests  672
+  passed (672)` in 54 files (a first vitest run beside the pytest run timed the contrast catalogue's
+  setup out at its 60 s budget; alone it passed, and the rerun without load passed whole);
+  `tsc --noEmit` exit 0; `qa/12_report.py` exit 0. After rebasing onto stage 11 (755c0c7), on the operator's instruction to skip
+  the full suite because it runs over half an hour, only these were rerun: vitest `Tests  701 passed
+  (701)` in 58 files, `tsc --noEmit` exit 0, `qa/12_report.py` exit 0, and
+  tests/api/test_security_headers.py with test_evaluation_routes.py, 16 passed. The full pytest was
+  not rerun on the merged tip.
+
 ## In progress [inferred]
 
 Stage 1, items for Units 4 to 10, is complete in the worktree `../growth-content` on branch
@@ -2703,7 +2716,6 @@ From the eleventh session, 2026-09-21, found and not fixed.
   sync. pytest collects them and reports `200 passed` instead of `161 passed`, so every count in
   this ledger is taken with `--ignore-glob="* 2.py"`. They are the operator's to delete.
 
-
 - From the fourth session's review, not fixed: `close_session` sweeps graded, unrated attempts and
   applies them with `Confidence.UNSURE`, which is an observation the student never rated entering
   `c_k`, `distinct_archetypes_succeeded` and `success_days`; it rests on the operator's second
@@ -3040,6 +3052,12 @@ From the eleventh session, 2026-09-21, found and not fixed.
   page body they move and choose as before (checked in the real app: "Question 30 of 42" to 31 and
   back).
 
+
+- 2026-09-27, open. The contrast catalogue's setup, which renders every catalogued screen, took about
+  59 s against its 60 s budget when vitest ran beside the full pytest run (9 to 14 s unloaded in
+  stage 9). Each catalogue screen added since pushes it closer. Run vitest and pytest one after the
+  other, or split the catalogue, before the budget is reached unloaded.
+
 ## Plan corrections applied [verified]
 
 Session 2026-09-23 (fourteenth). No plan file was edited. Readings applied in code:
@@ -3309,7 +3327,6 @@ Session 2026-09-20 (seventh).
   settles it. The divisor in particular is the unsafe direction: 07 records the Claude 4.7 tokenizer
   producing about 30 percent more tokens for the same text, so 4 likely under-estimates.
 
-
 - 03 Content part 2 gives the scoring consequence as the BC-PT `does_not_earn` text when no error
   matched. `app/content/loader.py` does read `data/scoring_points.json` and the archetypes carry
   BC-PT ids, but that text answers which point the response failed to earn, and naming one of an
@@ -3336,7 +3353,6 @@ Session 2026-09-20 (seventh).
 - `grade` takes the served format explicitly, because 04's Output schema lets an item carry options
   and be served either way, and R16 and R29 put the MCQ and short answer alternation on the attempt
   history rather than on the item.
-
 
 - 06 API surface has no row for the recovery ceremony, and 09's registration rule keeps
   `/auth/passkey/register/begin` closed once the installation has a user, so recovery runs at
@@ -3721,6 +3737,26 @@ brief delegates every decision) by claude-opus-5-5, not by a person.
 - Merges: slices 1 to 6 touch only the client, so they merged together after one full run of the
   checks at their tip, and slice 7, which touches the server, merged on its own after another. Each
   slice is its own commit, and each new test was shown red under its break and green restored.
+
+Desmos, on the operator's instruction of 2026-09-27 ("make it just open a webview of the Desmos
+calculator website"), decided by claude-opus-5-5, not by a person.
+
+- A calculator question in a session, and a calculator part in a timed drill or mock, carry an
+  "Open Desmos" button that opens https://www.desmos.com/calculator in a frame inside the page
+  (`app/web/src/input/DesmosPanel.tsx`), sandboxed and sent no referrer. A no-calculator item or
+  part carries no button. The app's own graphing panel stays on calculator parts beside it.
+- The CSP gains `frame-src https://www.desmos.com` and nothing else, recorded as the second
+  exception in 09's CSP paragraph, where `tests/api/test_security_headers.py` now enforces it
+  (red without the directive, green with it). In a real browser under the app's own header, the
+  Desmos frame loaded and rendered while a control frame of example.com was blocked with a
+  frame-src violation, with and without the component's sandbox attributes.
+- Desmos needs an internet connection, which the panel says; the offline session of P6 is
+  unaffected, because nothing loads until the button is pressed.
+- Found while checking it, and fixed on main by stage 11 at the same time (e9a69a0, with
+  tests/api/test_db_commits_before_reply.py): every route's database commit ran after its response
+  was sent, so a diagnostic answered at once was refused as "not in the queue" 4 times in 6 in the
+  running app. The same scope="function" change made here was dropped in favour of stage 11's.
+  On the fixed server the immediate-answer probe answered all 30 diagnostic items with 0 refusals.
 
 ## Decisions taken on the operator's instruction, 2026-09-26 [inferred]
 

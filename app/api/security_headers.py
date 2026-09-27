@@ -14,6 +14,10 @@ restricted to self, img-src 'self' blob: for camera capture, connect-src 'self',
 positions every formula box through run-time style attributes that no build hash can cover. The
 built index.html carries no inline style or script element, so style-src 'self' needs no hashes.
 
+frame-src names the Desmos origin and nothing else: on the operator's instruction of 2026-09-27 a
+calculator question opens the Desmos graphing calculator inside the page (09's CSP paragraph
+records the exception).
+
 09 sets no HSTS max-age and no per-IP rate-limit number, so neither is built here.
 """
 from starlette.middleware.base import BaseHTTPMiddleware
@@ -25,6 +29,7 @@ CONTENT_SECURITY_POLICY = (
    "style-src-attr 'unsafe-inline'; "
    "img-src 'self' blob:; "
    "connect-src 'self'; "
+   "frame-src https://www.desmos.com; "
    "frame-ancestors 'none'; "
    "object-src 'none'; "
    "base-uri 'none'"

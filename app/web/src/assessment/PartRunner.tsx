@@ -17,6 +17,7 @@ import { mathJsonToLatex } from "../math/mathjson";
 import { MathText } from "../math/MathText";
 import { clockText, FIVE_MINUTE_ANNOUNCEMENT, partHeading } from "./format";
 import { GraphingPanel } from "./graphing/GraphingPanel";
+import { DesmosPanel } from "../input/DesmosPanel";
 
 const PART_OPTION_KEYS = ["a", "b", "c", "d", "e"];
 
@@ -589,6 +590,8 @@ export function PartRunner({ part, radianNote, sectionCount, onSave, onSubmit, o
                }}
             />
          ) : null}
+
+         {offersGraphing ? <DesmosPanel /> : null}
 
          <div className="question-layout">
             {offersGraphing ? <GraphingPanel onOpenChange={setIsGraphingOpen} /> : null}

@@ -154,10 +154,10 @@ BC-QA-04006 has `calculator_status` either, so Section I Part A, 2.14 minutes (r
   {
    "id": "st-1",
    "archetype_id": "BC-QA-04006",
-   "cue": "A figure, one supplied rate, another rate asked at an instant.",
+   "cue": "A figure, one given rate, another asked at an instant.",
    "method": "First line: the figure's formula, then eliminate each dimension with no given or asked rate.",
-   "rival": "A varying dimension held constant (BC-ERR-99013).",
-   "separating_feature": "Count varying dimensions against supplied rates.",
+   "rival": "A varying dimension held constant.",
+   "separating_feature": "Count varying dimensions against given and asked rates.",
    "sources": [
     "BC-QA-04006"
    ],

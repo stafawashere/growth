@@ -3,7 +3,7 @@
  "version": 1,
  "kind": "concept",
  "target_id": "BC-CON-02004",
- "status": "draft",
+ "status": "signed_off",
  "snapshot_digest": "a6a8ec9d3f59ab8f712e33d30cc22fc64bf2c478fbe7312e3e3118d319c6a42f",
  "source_digest": "2bdad155abe559b81c2dd5b16a89b93259e6bd7e7c933a685bbb140c0e10aa8a",
  "read_minutes": {
@@ -11,8 +11,8 @@
   "brief": 2.8
  },
  "word_count": {
-  "full": 524,
-  "brief": 368
+  "full": 522,
+  "brief": 366
  },
  "sections": [
   {
@@ -392,35 +392,68 @@
    "observed_behavior": "The relating equation is differentiated with respect to a length or with respect to x, and the response stops there rather than continuing through the chain rule to a rate with respect to time.",
    "scoring_consequence": "The Chief Reader report for 2024 records that responses differentiating with respect to x needed to continue through the chain rule and that many provided no work beyond that step (cr-24:18); BC-ERR-99013 records the same family across years.",
    "wrong_step": {
-    "text": "\\(\\frac{dV}{dh}=-6\\), with \\(h\\) the depth: a rate per unit of depth.",
+    "text": "Given \\(V=3h^2\\) and \\(\\frac{dh}{dt}=-1\\) at \\(h=1\\): \\(\\frac{dV}{dh}=6h\\), and the work stops.",
     "expression": [
      "Equal",
      [
-      "Multiply",
-      "dV",
+      "D",
       [
-       "Power",
-       "dh",
-       -1
+       "Apply",
+       "V",
+       "h"
+      ],
+      [
+       "Tuple",
+       "h",
+       1
       ]
      ],
-     -6
+     [
+      "Multiply",
+      6,
+      "h"
+     ]
     ]
    },
    "right_step": {
-    "text": "\\(\\frac{dV}{dt}=-6\\) at \\(t=4\\): a rate per minute.",
+    "text": "Through the chain rule: \\(\\frac{dV}{dt}=6h\\frac{dh}{dt}=6(1)(-1)=-6\\).",
     "expression": [
      "Equal",
      [
-      "Multiply",
-      "dV",
+      "D",
       [
-       "Power",
-       "dt",
-       -1
+       "Apply",
+       "V",
+       "t"
+      ],
+      [
+       "Tuple",
+       "t",
+       1
       ]
      ],
-     -6
+     [
+      "Multiply",
+      6,
+      [
+       "D",
+       [
+        "Apply",
+        "h",
+        "t"
+       ],
+       [
+        "Tuple",
+        "t",
+        1
+       ]
+      ],
+      [
+       "Apply",
+       "h",
+       "t"
+      ]
+     ]
     ]
    },
    "relation": "distinct",
@@ -813,8 +846,8 @@
   "author": "tools/lesson_transcribe.py",
   "prompt_version": "generator/lesson_v1",
   "design_path": "docs/lessons/unit-02/LSN-CON-02004.md",
-  "signed_off_by": null,
-  "signed_off_at": null,
+  "signed_off_by": "claude-opus-5-5",
+  "signed_off_at": "2026-09-29",
   "not_human": true
  }
 }

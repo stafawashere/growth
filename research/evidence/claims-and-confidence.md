@@ -27,7 +27,7 @@ Two mechanical rules hold. `qa/04_tags.py` fails the build if a registry record 
 
 ## Tag statistics per registry [verified]
 
-Source: `../../tools/tag_stats.py`, run against `../../data/` on 2026-09-19.
+Source: `../../tools/tag_stats.py`, run against `../../data/` on 2026-09-19. The sources.json row and the ALL row were updated on 2026-09-29 for the 30 sources added since. The other rows are the 2026-09-19 run.
 
 Counts are records per `evidence_tag` per collection. The `other` column counts records whose tag is outside the four permitted values and is zero everywhere, which is what `qa/04_tags.py` enforces.
 
@@ -50,12 +50,12 @@ Counts are records per `evidence_tag` per collection. The `other` column counts 
 | skills.json | concepts | 170 | 0 | 0 | 0 | 0 | 170 |
 | skills.json | prerequisites | 0 | 0 | 77 | 0 | 0 | 77 |
 | skills.json | skills | 538 | 3 | 0 | 0 | 0 | 541 |
-| sources.json | sources | 107 | 1 | 0 | 0 | 0 | 108 |
+| sources.json | sources | 137 | 1 | 0 | 0 | 0 | 138 |
 | taxonomies.json | command_verbs | 22 | 7 | 0 | 0 | 0 | 29 |
 | taxonomies.json | difficulty_factors | 11 | 0 | 6 | 0 | 0 | 17 |
 | taxonomies.json | representations | 5 | 0 | 9 | 0 | 0 | 14 |
 | prereq_edges.csv | edges | 33 | 0 | 912 | 0 | 0 | 945 |
-| ALL | all collections | 2301 | 70 | 1785 | 0 | 0 | 4156 |
+| ALL | all collections | 2331 | 70 | 1785 | 0 | 0 | 4186 |
 
 Three shapes are visible. Collections transcribed directly from the CED are wholly `verified`. Collections that decompose CED content into machine units, meaning the prerequisite edges and the archetype variants, are dominated by `inferred`. Collections read out of rubrics and Chief Reader reports are mixed, with `single-source` marking the families and behaviours that appear once in the corpus. No record in any collection carries `uncertain`; uncertainty is carried by Markdown sections and by [unresolved-questions.md](unresolved-questions.md), not by records.
 
@@ -85,9 +85,11 @@ Tags in the Tag column are the tags the cited file already assigns. Source ids f
 | A graphing calculator for the exam is expected to have four built-in capabilities: plotting in an arbitrary window, solving numerically, numeric differentiation, numeric definite integration | verified | ced p.8 (PDF p.13) | [../exam/calculator-policy.md](../exam/calculator-policy.md); calculator relevance fields on skill records | A CED revision to the capability list |
 | A free-response result obtained from one of the four capabilities must show the setup together with the result | verified | ced p.8; sg-25:3 | [../exam/calculator-policy.md](../exam/calculator-policy.md); BC-PT-99005 | A CED revision to the answer-recording rule |
 | Use of calculator features outside the four capabilities requires the mathematical steps that produced the result | verified | ced p.8 | [../exam/calculator-policy.md](../exam/calculator-policy.md) | A CED revision to the same paragraph |
-| A student may bring up to two handheld graphing calculators | single-source | BC-SRC-web-calc-policy | [../exam/calculator-policy.md](../exam/calculator-policy.md) | A change to the published calculator policy page |
-| Bluebook includes a built-in Desmos graphing calculator whose availability follows the part boundaries exactly | single-source | BC-SRC-web-calc-policy; BC-SRC-web-bc-students | [../exam/calculator-policy.md](../exam/calculator-policy.md) | A policy change to in-application tool availability |
-| Whether the built-in Desmos satisfies all four CED capabilities, and how it counts against the two-handheld allowance, is not established | uncertain | BC-SRC-web-calc-policy | [../exam/calculator-policy.md](../exam/calculator-policy.md); [unresolved-questions.md](unresolved-questions.md) | A College Board statement on the in-application tool |
+| A student may bring up to two handheld graphing calculators in addition to the built-in Desmos | verified | BC-SRC-web-calc-policy; BC-SRC-web-calc-policy-central | [../exam/calculator-policy.md](../exam/calculator-policy.md) | A change to the published calculator policy page |
+| Bluebook includes a built-in Desmos graphing calculator whose availability follows the part boundaries exactly | verified | BC-SRC-web-calc-policy; BC-SRC-web-calc-policy-central; BC-SRC-desmos-help-assessment-faq | [../exam/calculator-policy.md](../exam/calculator-policy.md) | A policy change to in-application tool availability |
+| The built-in Desmos sits outside the two-handheld count, which settles the earlier open question | verified | BC-SRC-web-calc-policy; BC-SRC-web-calc-policy-central | [../exam/calculator-policy.md](../exam/calculator-policy.md); [unresolved-questions.md](unresolved-questions.md) | A change to the published calculator policy page |
+| The Bluebook graphing calculator has the four CED capabilities, with zeros found through points of interest rather than a solve command | inferred | BC-SRC-desmos-cb-calculators-pdf; BC-SRC-desmos-help-integrals; BC-SRC-desmos-help-derivatives; BC-SRC-desmos-help-graph-settings; BC-SRC-desmos-help-faqs; chain in [../exam/calculator-policy.md](../exam/calculator-policy.md) | [../exam/calculator-policy.md](../exam/calculator-policy.md); [unresolved-questions.md](unresolved-questions.md) | A College Board or Desmos statement, a Bluebook AP Calculus practice test, or a College Board PDF listing further disabled features |
+| The Bluebook graphing calculator disables images, folders and notes and auto-checks log mode for certain regressions, and otherwise matches desmos.com for SY2026-2027 | single-source | BC-SRC-desmos-cb-calculators-pdf | [../exam/calculator-policy.md](../exam/calculator-policy.md); ../../docs/calculator/ | A revised College Board PDF from Desmos |
 | A reported decimal approximation must be accurate to three places after the decimal point, and may be rounded or truncated | verified | sg-25:2; sg-25:3 | [../scoring/scoring-patterns.md](../scoring/scoring-patterns.md); precision fields on point types | A change to the general scoring notes |
 | Within a free-response question at most one point is not earned for inappropriate rounding | verified | sg-25:2; sg-26:2 | [../exam/calculator-policy.md](../exam/calculator-policy.md); [../scoring/scoring-patterns.md](../scoring/scoring-patterns.md) | A change to the general scoring notes |
 

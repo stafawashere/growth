@@ -44,10 +44,9 @@ None. BC-QA-02012 lists no `point_types`, so no step carries a point tag and the
 
 ## Traps
 
-Four active errors meet the concept's skills, in the bundle's order. Low band all four, mid band the first two.
+Four active errors meet the concept's skills; three are shown, in the bundle's order. Low band all three, mid band the first two. BC-ERR-04017 is not shown: its record is a related rates relation differentiated with respect to a length and stopped before the chain rule, which a notation conversion does not exhibit.
 
 - err-BC-ERR-02030 (BC-MIS-02015, BC-MIS-02014). Wrong step on ex-1's draw: \(\frac{dV}{dt}=-6\), the input dropped. Right step: \(\left.\frac{dV}{dt}\right|_{t=4}=-6\). Distinct. Possible reason from BC-MIS-02015.
-- err-BC-ERR-04017 (BC-MIS-04008, BC-MIS-99005). Wrong: \(\left.\frac{dt}{dV}\right|_{t=4}=-6\), differentiated with respect to the wrong variable. Right: \(\frac{dV}{dt}\). Distinct. Possible reason from BC-MIS-99005.
 - err-BC-ERR-02029 (BC-MIS-02015, BC-MIS-03003). Wrong: \(\frac{V(4)}{4}=-6\). Right: \(\left.\frac{dV}{dt}\right|_{t=4}=-6\). Distinct. Possible reason from BC-MIS-02015.
 - err-BC-ERR-03022 (BC-MIS-03014, BC-MIS-03003). Wrong: \(dV=-6\). Right: \(\frac{dV}{dt}=-6\) at \(t=4\). Distinct. Possible reason from BC-MIS-03014.
 
@@ -69,7 +68,7 @@ BC-QA-02012 is `no_calculator` and MCQ shaped: Section I Part A, 2.14 minutes (r
 
 - chk-1, completion of ex-1, both bands: the identification is given; the student writes the Leibniz statement. Key equal to ex-1's answer.
 - chk-2, isomorph on BC-QA-02012, both bands: order first, framing bare, supplied leibniz, setting 1 (\(w=g(t)\)), at 7, value 3. Key \(g'(7)=3\).
-- chk-3, MCQ on BC-QA-02012, low band: order first, framing context, supplied prime, setting 2 (the rod, \(T(x)\) degrees Celsius, \(x\) meters), at 3, value \(-4\). Statement options, as the published items on this archetype carry: the key; BC-ERR-02029 (\(\frac{T(3)}{3}\)); BC-ERR-04017 (\(\frac{dx}{dT}\)); BC-ERR-02030 (the input dropped).
+- chk-3, MCQ on BC-QA-02012, low band: order first, framing context, supplied prime, setting 2 (the rod, \(T(x)\) degrees Celsius, \(x\) meters), at 3, value \(-4\). Statement options, as the published items on this archetype carry: the key; BC-ERR-02029 (\(\frac{T(3)}{3}\)); BC-ERR-03022 (\(dT=-4\), the differential in place of the derivative); BC-ERR-02030 (the input dropped).
 
 No draw equals a published BC-QA-02012 `parameter_draw` (content/items_gen_unit02).
 
@@ -79,19 +78,19 @@ No draw equals a published BC-QA-02012 `parameter_draw` (content/items_gen_unit0
 - ki-1: text. Rule 5; the block is the reading of symbols.
 - ki-2: figure. Rule 3; BC-SKL-02011 lists BC-REP-02 and BC-REP-03, and the unit README's delivery map names a figure and a table. One screen, two representations: an illustrative curve with \(V'(4)=-6\) and its tangent, and a three-row table whose quotient gives \(-6\). The curve \(V(t)=100+2t-t^2\) is chosen for the figure only and is not part of the draw [inferred].
 - ex-1: step_reveal. Rule 1.
-- err-BC-ERR-02030, err-BC-ERR-04017, err-BC-ERR-02029, err-BC-ERR-03022: step_reveal. Rule 1.
+- err-BC-ERR-02030, err-BC-ERR-02029, err-BC-ERR-03022: step_reveal. Rule 1.
 
 ## Band plan
 
-- Low (full): orientation, ki-1, ki-2, st-1, ex-1, the four error blocks, chk-1, chk-2, chk-3, the bridge. 614 words, 4.1 minutes (cap 900 and 6).
-- Mid (brief): orientation, ki-1, st-1, ex-1, err-02030, err-04017, chk-1, chk-2, the bridge. 398 words, 2.7 minutes (cap 450 and 3).
-- Refresher: ki-1, err-BC-ERR-02030, err-BC-ERR-04017, err-BC-ERR-02029, err-BC-ERR-03022, ex-1.
+- Low (full): orientation, ki-1, ki-2, st-1, ex-1, the three error blocks, chk-1, chk-2, chk-3, the bridge. 614 words, 4.1 minutes (cap 900 and 6).
+- Mid (brief): orientation, ki-1, st-1, ex-1, err-02030, err-02029, chk-1, chk-2, the bridge. 398 words, 2.7 minutes (cap 450 and 3).
+- Refresher: ki-1, err-BC-ERR-02030, err-BC-ERR-02029, err-BC-ERR-03022, ex-1.
 
 ## Sources
 
 - BC-CON-02004; BC-SKL-02010, BC-SKL-02011; BC-EK-CHA-2B3, BC-EK-CHA-2B4; ced:61
 - BC-QA-02012
-- BC-ERR-02030, BC-ERR-04017, BC-ERR-02029, BC-ERR-03022; BC-MIS-02014, BC-MIS-02015, BC-MIS-03003, BC-MIS-03014, BC-MIS-04008, BC-MIS-99005; cr-24:18, crabbc-25:25
+- BC-ERR-02030, BC-ERR-02029, BC-ERR-03022; BC-MIS-02014, BC-MIS-02015, BC-MIS-03003, BC-MIS-03014; crabbc-25:25
 - BC-PRQ-02004
 - sg-25:7, sg-24:8
 - research/units/unit-02-differentiation-definition-properties.md#2.2 Defining the Derivative of a Function and Using Derivative Notation
@@ -175,16 +174,6 @@ No draw equals a published BC-QA-02012 `parameter_draw` (content/items_gen_unit0
    "sources": ["BC-ERR-02030", "BC-MIS-02015"]
   },
   {
-   "error_id": "BC-ERR-04017",
-   "observed_behavior": "The relating equation is differentiated with respect to a length or with respect to x, and the response stops there rather than continuing through the chain rule to a rate with respect to time.",
-   "scoring_consequence": "The Chief Reader report for 2024 records that responses differentiating with respect to x needed to continue through the chain rule and that many provided no work beyond that step (cr-24:18); BC-ERR-99013 records the same family across years.",
-   "wrong_step": {"text": "\\(\\left.\\frac{dt}{dV}\\right|_{t=4}=-6\\).", "expr": "Eq(dt/dV, -6)"},
-   "right_step": {"text": "With respect to \\(t\\): \\(\\frac{dV}{dt}=-6\\) at \\(t=4\\).", "expr": "Eq(dV/dt, -6)"},
-   "relation": "distinct",
-   "possible_reason": {"misconception_id": "BC-MIS-99005", "text": "The student does not distinguish the variable of differentiation"},
-   "sources": ["BC-ERR-04017", "BC-MIS-99005", "cr-24:18"]
-  },
-  {
    "error_id": "BC-ERR-02029",
    "observed_behavior": "The response treats the Leibniz form as a fraction whose parts can be separated and cancelled.",
    "scoring_consequence": "A notation point is lost where the meaning of the symbol is being assessed.",
@@ -257,7 +246,7 @@ No draw equals a published BC-QA-02012 `parameter_draw` (content/items_gen_unit0
    "options": [
     {"id": "A", "is_key": false, "label": "\\(\\frac{T(3)}{3}=-4\\): temperature divided by distance is \\(-4\\).", "error_path": "BC-ERR-02029", "derivation": "the Leibniz fraction read as the quotient of the two quantities at the point"},
     {"id": "B", "is_key": true, "label": "\\(\\left.\\frac{dT}{dx}\\right|_{x=3}=-4\\): at 3 meters the temperature is decreasing at 4 degrees Celsius per meter.", "error_path": null},
-    {"id": "C", "is_key": false, "label": "\\(\\left.\\frac{dx}{dT}\\right|_{x=3}=-4\\): distance changes at \\(-4\\) meters per degree.", "error_path": "BC-ERR-04017", "derivation": "the roles of the two variables exchanged"},
+    {"id": "C", "is_key": false, "label": "\\(dT=-4\\) at \\(x=3\\): the temperature changes by 4 degrees Celsius.", "error_path": "BC-ERR-03022", "derivation": "dT written in place of dT/dx, so the rate is read as a change in temperature"},
     {"id": "D", "is_key": false, "label": "\\(\\frac{dT}{dx}=-4\\): the temperature falls 4 degrees Celsius per meter at every point.", "error_path": "BC-ERR-02030", "derivation": "the input dropped, so a value at one point is read as the derivative function"}
    ],
    "calculator_status": "no_calculator",
@@ -278,11 +267,10 @@ No draw equals a published BC-QA-02012 `parameter_draw` (content/items_gen_unit0
    "keyboard": "none needed; the figure is static and its text alternative reads the slope, the table rows and the sentence in order"},
   {"block": "ex-1", "mode": "step_reveal", "reason": "rule 1", "sources": []},
   {"block": "err-BC-ERR-02030", "mode": "step_reveal", "reason": "rule 1", "sources": []},
-  {"block": "err-BC-ERR-04017", "mode": "step_reveal", "reason": "rule 1", "sources": []},
   {"block": "err-BC-ERR-02029", "mode": "step_reveal", "reason": "rule 1", "sources": []},
   {"block": "err-BC-ERR-03022", "mode": "step_reveal", "reason": "rule 1", "sources": []}
  ],
- "refresher": ["ki-1", "err-BC-ERR-02030", "err-BC-ERR-04017", "err-BC-ERR-02029", "err-BC-ERR-03022", "ex-1"],
+ "refresher": ["ki-1", "err-BC-ERR-02030", "err-BC-ERR-02029", "err-BC-ERR-03022", "ex-1"],
  "read_minutes": {"full": 4.1, "brief": 2.7},
  "word_count": {"full": 614, "brief": 398},
  "research_lines": [
@@ -293,6 +281,6 @@ No draw equals a published BC-QA-02012 `parameter_draw` (content/items_gen_unit0
   {"claim": "The curve V(t) = 100 + 2t - t^2 in ki-2's figure is illustrative, chosen so that V'(4) = -6; the draw gives only the value.", "settles": "A figure binding on the BC-QA-02012 parameter_spec."},
   {"claim": "A static figure with an inset table serves ki-2 better than text.", "settles": "The modality A/B in the build plan: skip rate and time to first credited success by mode."}
  ],
- "sources": ["BC-CON-02004", "BC-SKL-02010", "BC-SKL-02011", "BC-EK-CHA-2B3", "BC-EK-CHA-2B4", "ced:61", "BC-QA-02012", "BC-ERR-02030", "BC-ERR-04017", "BC-ERR-02029", "BC-ERR-03022", "BC-MIS-02014", "BC-MIS-02015", "BC-MIS-03003", "BC-MIS-03014", "BC-MIS-04008", "BC-MIS-99005", "cr-24:18", "crabbc-25:25", "BC-PRQ-02004", "sg-25:7", "sg-24:8", "research/units/unit-02-differentiation-definition-properties.md#2.2 Defining the Derivative of a Function and Using Derivative Notation", "research/scoring/notation-requirements.md#Derivative notation", "research/exam/exam-structure.md#Section and part layout"]
+ "sources": ["BC-CON-02004", "BC-SKL-02010", "BC-SKL-02011", "BC-EK-CHA-2B3", "BC-EK-CHA-2B4", "ced:61", "BC-QA-02012", "BC-ERR-02030", "BC-ERR-02029", "BC-ERR-03022", "BC-MIS-02014", "BC-MIS-02015", "BC-MIS-03003", "BC-MIS-03014", "crabbc-25:25", "BC-PRQ-02004", "sg-25:7", "sg-24:8", "research/units/unit-02-differentiation-definition-properties.md#2.2 Defining the Derivative of a Function and Using Derivative Notation", "research/scoring/notation-requirements.md#Derivative notation", "research/exam/exam-structure.md#Section and part layout"]
 }
 ```

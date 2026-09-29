@@ -1,3 +1,6 @@
+import { readFileSync } from "node:fs";
+import { join } from "node:path";
+
 import { cleanup, render, screen, within } from "@testing-library/react";
 import { afterEach, describe, expect, it } from "vitest";
 
@@ -113,6 +116,24 @@ describe("LessonFigure", () => {
          "corner",
          "each continuous at x = 0"
       ]);
+   });
+
+   it("lays panels out as a row under the app stylesheet, not as the figure's column", () => {
+      const sheet = document.createElement("style");
+      sheet.textContent = readFileSync(join(__dirname, "..", "styles", "app.css"), "utf8");
+      document.head.appendChild(sheet);
+
+      try {
+         const panelSpec = { curve: "Abs(x)", window: { x: [-2, 2], y: [-1, 2] } };
+         render(<LessonFigure spec={{ kind: "graph_panels", panels: [panelSpec, panelSpec] }} fallback="Two panels." />);
+
+         const panelRow = screen.getAllByTestId("lesson-figure-panel")[0].parentElement!;
+
+         expect(panelRow.dataset.layout).toBe("row");
+         expect(getComputedStyle(panelRow).flexDirection).toBe("row");
+      } finally {
+         sheet.remove();
+      }
    });
 
    it("draws graph_with_table as the graph and its table", () => {

@@ -2686,14 +2686,21 @@ h3.section-header {
    border-radius: var(--growth-space-4);
 }
 
+/* The panel row also carries .lesson-figure, whose column direction would turn the panels'
+   flex-basis into a fixed height and let each graph overflow onto the next. */
 .lesson-panels {
    display: flex;
+   flex-direction: row;
    flex-wrap: wrap;
    gap: var(--growth-space-16);
 }
 
 .lesson-panels[data-layout="stacked"] {
    flex-direction: column;
+}
+
+.lesson-panels[data-layout="stacked"] > .lesson-panel {
+   flex-basis: auto;
 }
 
 .lesson-panels > .lesson-panel {

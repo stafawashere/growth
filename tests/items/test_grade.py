@@ -358,3 +358,29 @@ def test_submission_shape_that_contradicts_the_served_format_is_refused():
 
    assert mathjson_on_an_mcq["correct"] is None
    assert "mcq" in mathjson_on_an_mcq["reason"]
+
+
+def power_key_item(key_mathjson):
+   return build_item({"form": "symbolic", "mathjson": key_mathjson})
+
+
+def test_square_from_the_web_field_grades_correct_against_a_power_key():
+   result = grade(power_key_item(["Power", "x", 2]), {"mathjson": ["Square", "x"]}, ERRORS)
+
+   assert result["correct"] is True
+
+
+def test_derivative_written_with_square_grades_correct():
+   key = [
+      "Subtract",
+      ["Multiply", 2, "x", ["Cos", "x"]],
+      ["Multiply", ["Add", ["Power", "x", 2], 3], ["Sin", "x"]],
+   ]
+   typed = [
+      "Subtract",
+      ["Multiply", 2, "x", ["Cos", "x"]],
+      ["Multiply", ["Add", ["Square", "x"], 3], ["Sin", "x"]],
+   ]
+   result = grade(power_key_item(key), {"mathjson": typed}, ERRORS)
+
+   assert result["correct"] is True

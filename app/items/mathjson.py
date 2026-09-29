@@ -6,10 +6,16 @@ ExponentialE. Lesson records add sets (Set, Interval with Open endpoints, Union,
 SetMinus), List and Tuple, the relations, the infinities and NaN, and the calculus
 operators Integrate, D, Limit, Sum and Subs with Apply for a named function, because the
 lesson designs state keys and steps in them (docs/lessons/BUILD-PLAN.md, The design to
-record path). Anything else raises UnsupportedMathJSON rather than guessing.
+record path). The web client's MathLive field adds what the Compute Engine 0.24 canonical form
+emits for typed answers: Square, Half, Delimiter around a group or a parenthesised pair, the
+{"num": ...} object for infinities and NaN, one-argument Log as base 10, the hyperbolic and
+remaining inverse trig heads, Floor, Ceil, Sign, Min, Max and an InverseFunction applied to a
+trig head. Anything else raises UnsupportedMathJSON rather than guessing.
 
 from_sympy is the inverse over the same heads, which tools/lesson_transcribe.py uses.
 """
+import re
+
 import sympy
 
 
@@ -19,6 +25,7 @@ class UnsupportedMathJSON(ValueError):
 
 _UNARY_FUNCTIONS = {
    "Negate": lambda a: -a,
+   "Square": lambda a: a ** 2,
    "Sqrt": sympy.sqrt,
    "Exp": sympy.exp,
    "Ln": sympy.log,
@@ -31,8 +38,38 @@ _UNARY_FUNCTIONS = {
    "Arcsin": sympy.asin,
    "Arccos": sympy.acos,
    "Arctan": sympy.atan,
+   "Arcsec": sympy.asec,
+   "Arccsc": sympy.acsc,
+   "Arccot": sympy.acot,
+   "Sinh": sympy.sinh,
+   "Cosh": sympy.cosh,
+   "Tanh": sympy.tanh,
+   "Coth": sympy.coth,
+   "Sech": sympy.sech,
+   "Csch": sympy.csch,
+   "Arsinh": sympy.asinh,
+   "Arcosh": sympy.acosh,
+   "Artanh": sympy.atanh,
+   "Arcoth": sympy.acoth,
+   "Arsech": sympy.asech,
+   "Arcsech": sympy.asech,
+   "Arcsch": sympy.acsch,
    "Abs": sympy.Abs,
    "Factorial": sympy.factorial,
+   "Floor": sympy.floor,
+   "Ceil": sympy.ceiling,
+   "Sign": sympy.sign,
+}
+
+# The Compute Engine parses \sin^{-1} straight to Arcsin but leaves \cot^{-1} as
+# ["Apply", ["InverseFunction", "Cot"], x].
+_INVERSE_FUNCTIONS = {
+   "Sin": sympy.asin,
+   "Cos": sympy.acos,
+   "Tan": sympy.atan,
+   "Sec": sympy.asec,
+   "Csc": sympy.acsc,
+   "Cot": sympy.acot,
 }
 
 _CONSTANTS = {
@@ -44,7 +81,22 @@ _CONSTANTS = {
    "NaN": sympy.nan,
    "True": sympy.true,
    "False": sympy.false,
+   "ImaginaryUnit": sympy.I,
 }
+
+# Read but never written, so from_sympy keeps Rational(1, 2) and the empty Set.
+_READ_ONLY_SYMBOLS = {
+   "Half": sympy.Rational(1, 2),
+   "EmptySet": sympy.S.EmptySet,
+}
+
+_NUMBER_OBJECT_VALUES = {
+   "+Infinity": sympy.oo,
+   "-Infinity": -sympy.oo,
+   "NaN": sympy.nan,
+}
+
+_PLAIN_DECIMAL = re.compile(r"-?\d+(\.\d+)?([eE][-+]?\d+)?")
 
 _RELATIONS = {
    "Equal": sympy.Eq,
@@ -71,6 +123,9 @@ def to_sympy(expr):
    if isinstance(expr, list):
       return _from_list(expr)
 
+   if isinstance(expr, dict):
+      return _number_object(expr)
+
    raise UnsupportedMathJSON(f"unsupported MathJSON node: {expr!r}")
 
 
@@ -80,7 +135,32 @@ def _symbol_or_constant(name):
    if is_constant:
       return _CONSTANTS[name]
 
+   is_read_only = name in _READ_ONLY_SYMBOLS
+
+   if is_read_only:
+      return _READ_ONLY_SYMBOLS[name]
+
    return sympy.Symbol(name)
+
+
+def _number_object(expr):
+   value = expr.get("num")
+   has_only_num = set(expr) == {"num"} and isinstance(value, str)
+
+   if not has_only_num:
+      raise UnsupportedMathJSON(f"unsupported MathJSON number object: {expr!r}")
+
+   is_named_value = value in _NUMBER_OBJECT_VALUES
+
+   if is_named_value:
+      return _NUMBER_OBJECT_VALUES[value]
+
+   is_plain_decimal = _PLAIN_DECIMAL.fullmatch(value) is not None
+
+   if is_plain_decimal:
+      return sympy.Rational(value)
+
+   raise UnsupportedMathJSON(f"unsupported MathJSON number object: {expr!r}")
 
 
 def _from_list(expr):
@@ -189,8 +269,9 @@ def _log(args):
    has_one_argument = len(args) == 1
    has_two_arguments = len(args) == 2
 
+   # The Compute Engine reads ["Log", x] as base 10 and writes \log_{10} x that way too.
    if has_one_argument:
-      return sympy.log(to_sympy(args[0]))
+      return sympy.log(to_sympy(args[0]), 10)
 
    if has_two_arguments:
       value, base = args
@@ -263,7 +344,54 @@ def _from_extended_head(head, args):
    if head == "Apply":
       return _apply(args)
 
+   if head == "Min":
+      return sympy.Min(*_at_least_one(head, args))
+
+   if head == "Max":
+      return sympy.Max(*_at_least_one(head, args))
+
+   if head == "Delimiter":
+      return _delimiter(args)
+
    return None
+
+
+def _at_least_one(head, args):
+   has_arguments = len(args) >= 1
+
+   if not has_arguments:
+      raise UnsupportedMathJSON(f"{head} expects at least one argument")
+
+   return [to_sympy(arg) for arg in args]
+
+
+def _delimiter(args):
+   has_body = len(args) in (1, 2)
+
+   if not has_body:
+      raise UnsupportedMathJSON("Delimiter expects a body and an optional delimiter string")
+
+   body = args[0]
+   delimiters = args[1] if len(args) == 2 else "'(,)'"
+   is_parentheses = delimiters == "'(,)'"
+
+   if not is_parentheses:
+      raise UnsupportedMathJSON(f"Delimiter {delimiters!r} is not parentheses")
+
+   is_sequence = isinstance(body, list) and len(body) >= 1 and body[0] == "Sequence"
+
+   if not is_sequence:
+      return to_sympy(body)
+
+   members = body[1:]
+
+   if len(members) == 0:
+      raise UnsupportedMathJSON("Delimiter around an empty Sequence")
+
+   if len(members) == 1:
+      return to_sympy(members[0])
+
+   return sympy.Tuple(*[to_sympy(member) for member in members])
 
 
 def _relation(head, args):
@@ -360,12 +488,41 @@ def _subs(args):
 
 
 def _apply(args):
-   has_name = len(args) >= 1 and isinstance(args[0], str)
+   has_function = len(args) >= 1
+   inverse = _inverse_function(args[0]) if has_function else None
+
+   if inverse is not None:
+      return _unary_inverse(inverse, args[1:])
+
+   has_name = has_function and isinstance(args[0], str)
 
    if not has_name:
       raise UnsupportedMathJSON("Apply expects a function name and its arguments")
 
    return sympy.Function(args[0])(*[to_sympy(arg) for arg in args[1:]])
+
+
+def _inverse_function(node):
+   is_inverse_node = isinstance(node, list) and len(node) == 2 and node[0] == "InverseFunction"
+
+   if not is_inverse_node:
+      return None
+
+   inverse = _INVERSE_FUNCTIONS.get(node[1]) if isinstance(node[1], str) else None
+
+   if inverse is None:
+      raise UnsupportedMathJSON(f"no inverse known for {node[1]!r}")
+
+   return inverse
+
+
+def _unary_inverse(inverse, args):
+   has_one_argument = len(args) == 1
+
+   if not has_one_argument:
+      raise UnsupportedMathJSON("an inverse function expects exactly one argument")
+
+   return inverse(to_sympy(args[0]))
 
 
 _FUNCTION_HEADS = {
@@ -378,6 +535,24 @@ _FUNCTION_HEADS = {
    sympy.asin: "Arcsin",
    sympy.acos: "Arccos",
    sympy.atan: "Arctan",
+   sympy.asec: "Arcsec",
+   sympy.acsc: "Arccsc",
+   sympy.acot: "Arccot",
+   sympy.sinh: "Sinh",
+   sympy.cosh: "Cosh",
+   sympy.tanh: "Tanh",
+   sympy.coth: "Coth",
+   sympy.sech: "Sech",
+   sympy.csch: "Csch",
+   sympy.asinh: "Arsinh",
+   sympy.acosh: "Arcosh",
+   sympy.atanh: "Artanh",
+   sympy.acoth: "Arcoth",
+   sympy.asech: "Arsech",
+   sympy.acsch: "Arcsch",
+   sympy.floor: "Floor",
+   sympy.ceiling: "Ceil",
+   sympy.sign: "Sign",
    sympy.exp: "Exp",
    sympy.log: "Ln",
    sympy.Abs: "Abs",
@@ -500,6 +675,12 @@ def _from_operator(expression):
       body, variables, points = expression.args
 
       return ["Subs", from_sympy(body), from_sympy(variables), from_sympy(points)]
+
+   if isinstance(expression, sympy.Min):
+      return ["Min", *[from_sympy(arg) for arg in expression.args]]
+
+   if isinstance(expression, sympy.Max):
+      return ["Max", *[from_sympy(arg) for arg in expression.args]]
 
    is_named_function = isinstance(expression, sympy.core.function.AppliedUndef)
 

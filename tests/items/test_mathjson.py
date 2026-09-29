@@ -134,3 +134,89 @@ def test_factorial_round_trips():
 def test_an_unknown_sympy_class_is_refused():
    with pytest.raises(UnsupportedMathJSON):
       from_sympy(sympy.Matrix([[1, 2]]))
+
+
+X = sympy.Symbol("x")
+
+
+def test_square_from_the_web_field_reads_as_a_power_of_two():
+   assert to_sympy(["Square", "x"]) == X ** 2
+   assert to_sympy(["Square", ["Add", "x", 1]]) == (X + 1) ** 2
+
+
+# Each MathJSON form is what the Compute Engine 0.24 bundled with the web client emits for the
+# LaTeX beside it (ComputeEngine().parse(latex).json).
+@pytest.mark.parametrize(
+   "latex, mathjson, expected",
+   [
+      (r"\frac12", "Half", sympy.Rational(1, 2)),
+      (r"\frac{1}{2}\ln|x|", ["Multiply", "Half", ["Ln", ["Abs", "x"]]], sympy.log(sympy.Abs(X)) / 2),
+      (r"\emptyset", "EmptySet", sympy.S.EmptySet),
+      ("i", "ImaginaryUnit", sympy.I),
+      (r"\infty", {"num": "+Infinity"}, sympy.oo),
+      (r"-\infty", {"num": "-Infinity"}, -sympy.oo),
+      (r"\frac{0}{0}", {"num": "NaN"}, sympy.nan),
+      (r"\log x", ["Log", "x"], sympy.log(X, 10)),
+      (r"\log_2 x", ["Log", "x", 2], sympy.log(X, 2)),
+      ("(x+1)", ["Delimiter", ["Add", "x", 1]], X + 1),
+      ("(1,2)", ["Delimiter", ["Sequence", 1, 2], "'(,)'"], sympy.Tuple(1, 2)),
+      (r"\sec^{-1}x", ["Arcsec", "x"], sympy.asec(X)),
+      (r"\cot^{-1}x", ["Apply", ["InverseFunction", "Cot"], "x"], sympy.acot(X)),
+      (r"\sinh x", ["Sinh", "x"], sympy.sinh(X)),
+      (r"\cosh x", ["Cosh", "x"], sympy.cosh(X)),
+      (r"\tanh x", ["Tanh", "x"], sympy.tanh(X)),
+      (r"\coth x", ["Coth", "x"], sympy.coth(X)),
+      (r"\sinh^{-1}x", ["Arsinh", "x"], sympy.asinh(X)),
+      (r"\lfloor x\rfloor", ["Floor", "x"], sympy.floor(X)),
+      (r"\lceil x\rceil", ["Ceil", "x"], sympy.ceiling(X)),
+      (r"\operatorname{sgn}(x)", ["Sign", "x"], sympy.sign(X)),
+      (r"\min(1,x)", ["Min", 1, "x"], sympy.Min(1, X)),
+      (r"\max(1,x)", ["Max", 1, "x"], sympy.Max(1, X)),
+   ],
+)
+def test_web_field_forms_convert(latex, mathjson, expected):
+   assert to_sympy(mathjson) == expected
+
+
+@pytest.mark.parametrize(
+   "function",
+   [
+      sympy.asec, sympy.acsc, sympy.acot,
+      sympy.sinh, sympy.cosh, sympy.tanh, sympy.coth, sympy.sech, sympy.csch,
+      sympy.asinh, sympy.acosh, sympy.atanh, sympy.acoth, sympy.asech, sympy.acsch,
+      sympy.floor, sympy.ceiling, sympy.sign,
+   ],
+)
+def test_added_function_heads_round_trip(function):
+   expression = function(X)
+
+   assert to_sympy(from_sympy(expression)) == expression
+
+
+def test_min_max_and_the_imaginary_unit_round_trip():
+   for expression in (sympy.Min(1, X), sympy.Max(X, sympy.Symbol("y")), 2 * sympy.I):
+      assert to_sympy(from_sympy(expression)) == expression
+
+
+def test_a_decimal_number_object_reads_exactly():
+   assert to_sympy({"num": "1.25"}) == sympy.Rational(5, 4)
+   assert to_sympy({"num": "-2e3"}) == -2000
+
+
+def test_arcsech_alias_reads_as_the_inverse_hyperbolic_secant():
+   assert to_sympy(["Arcsech", "x"]) == sympy.asech(X)
+
+
+@pytest.mark.parametrize(
+   "mathjson",
+   [
+      ["Delimiter", ["Add", "x", 1], "'|,|'"],
+      ["Delimiter", ["Sequence"]],
+      ["Apply", ["InverseFunction", "Ln"], "x"],
+      {"num": "0.(3)"},
+      {"num": "1", "extra": 2},
+   ],
+)
+def test_web_field_forms_without_a_clear_meaning_are_refused(mathjson):
+   with pytest.raises(UnsupportedMathJSON):
+      to_sympy(mathjson)

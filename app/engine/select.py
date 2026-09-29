@@ -400,15 +400,23 @@ def next_item_retrieval(
    user_attempts=(),
    rules=DEFAULT_RULES,
    unit_counts=None,
+   retrieval_ordering=None,
 ):
-   """Block 3: the retrieval-eligible pool is the candidate set, not a filter over a wider pick."""
+   """Block 3: the retrieval-eligible pool is the candidate set, not a filter over a wider pick.
+   retrieval_ordering replaces the two-term ordering only in simulation (app/sim/today_policies.py),
+   as ordering does in block 2; the running app never passes one."""
    retrievability = retrievability_map(states, today, retrievability)
    servable = [record for record in pool if bank.has_published_item(record["id"])]
    gated = gated_records(servable, states, graph)
    allowed, shortfalls = constrained_candidates(
       gated, history, graph, bank, excluded_ids, rules, unit_counts
    )
-   ordered = choose_by_due_coverage(allowed, states, graph, today, retrievability, rng)
+   has_ordering = retrieval_ordering is not None
+
+   if has_ordering:
+      ordered = retrieval_ordering(allowed, states, graph, today, retrievability, rng, history)
+   else:
+      ordered = choose_by_due_coverage(allowed, states, graph, today, retrievability, rng)
 
    for record in ordered:
       served = pick_item(

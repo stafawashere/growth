@@ -14,7 +14,7 @@ import math
 import statistics
 from concurrent.futures import ProcessPoolExecutor
 
-from app.sim import five_term, learning
+from app.sim import five_term, learning, today_policies
 
 ENGINE_SEED_SHIFT = 7_777_777
 WILSON_Z = 1.96
@@ -161,7 +161,7 @@ def paired_differences(challenger_runs, incumbent_runs, measure):
    ]
 
 
-ALL_ARMS = {**learning.ARMS, **STUDY_ARMS}
+ALL_ARMS = {**learning.ARMS, **STUDY_ARMS, **today_policies.TODAY_ARMS}
 WORLDS = {
    "fixed": learning.WORLD,
    "legacy": learning.LEGACY_WORLD,

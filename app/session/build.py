@@ -879,6 +879,7 @@ def assemble_session(
    retrieval_entry=None,
    openers=False,
    lessons=None,
+   retrieval_ordering=None,
 ):
    """openers places the productive-failure opener in block 2 and sets concept_opener_done on
    the in-memory state of the concept's first skill; the caller persists the flag. Only a learning
@@ -1085,6 +1086,7 @@ def assemble_session(
          user_attempts=attempts_history,
          rules=rules,
          unit_counts=session.unit_counts,
+         retrieval_ordering=retrieval_ordering,
       )
 
       if selection.item is None:

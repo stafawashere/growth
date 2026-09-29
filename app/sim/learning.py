@@ -87,7 +87,11 @@ LEGACY_WORLD = WorldRules(
 class Arm:
    """One row of 10's arm list. overrides patches app.engine.constants for the run only.
    world_ordering, when given, is called with the hidden world and returns a block 2 ordering; it
-   exists for the controls of docs/operator/selection-study.md, which may read what no policy can."""
+   exists for the controls of docs/operator/selection-study.md, which may read what no policy can.
+   retrieval_ordering does in block 3 what ordering does in block 2. learner, when given, is called
+   once per student and returns an object with a block 2 ordering and an observe(record,
+   is_correct, today) that sees every answer; it exists for policies that keep a running estimate,
+   which a module-level arm shared by every student in a worker cannot hold."""
    name: str
    control: bool = False
    ordering: object = None
@@ -95,6 +99,8 @@ class Arm:
    overrides: tuple = ()
    compensatory: bool = False
    world_ordering: object = None
+   retrieval_ordering: object = None
+   learner: object = None
 
 
 ARMS = {
@@ -432,7 +438,14 @@ def run_student(
       start_day=whole_graph.START_DAY,
    )
    engine_rng = random.Random(seed if engine_seed is None else engine_seed)
-   ordering = arm.world_ordering(world) if arm.world_ordering is not None else arm.ordering
+   learner = arm.learner() if arm.learner is not None else None
+   ordering = arm.ordering
+
+   if learner is not None:
+      ordering = learner.ordering
+
+   if arm.world_ordering is not None:
+      ordering = arm.world_ordering(world)
    attempts = []
    trace = []
    items = 0
@@ -451,6 +464,9 @@ def run_student(
          if ordering is not None:
             options["ordering"] = ordering
 
+         if arm.retrieval_ordering is not None:
+            options["retrieval_ordering"] = arm.retrieval_ordering
+
          session = assemble_session(
             states,
             graph,
@@ -466,6 +482,10 @@ def run_student(
          for item in session.served:
             record = graph.archetypes[item["archetype_id"]]
             is_correct = world.answer(record, item["format"], item["stage"], today)
+
+            if learner is not None:
+               learner.observe(record, is_correct, today)
+
             per_skill = rule_based_mastery_states(record, {"correct": is_correct})
             observation = Observation(
                archetype_id=record["id"],

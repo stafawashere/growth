@@ -66,6 +66,8 @@ function PointEntry(props: { point: GradedPoint; onAskForReread: (gradingId: str
 
 export function GradingView({ gradings, onAskForReread, rereadAskedFor }: GradingViewProps) {
    const hasProvisional = gradings.provisional > 0;
+   const explanation = gradings.tutor_explanation ?? "";
+   const hasExplanation = explanation.trim().length > 0;
 
    return (
       <section aria-labelledby="gradings-heading">
@@ -88,6 +90,12 @@ export function GradingView({ gradings, onAskForReread, rereadAskedFor }: Gradin
                />
             ))}
          </ul>
+
+         {hasExplanation ? (
+            <p className="tutor-note" data-testid="frq-tutor-explanation">
+               {explanation}
+            </p>
+         ) : null}
 
          {gradings.worked_solution.length > 0 ? (
             <section aria-labelledby="worked-heading">

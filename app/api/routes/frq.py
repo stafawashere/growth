@@ -24,6 +24,8 @@ from app.capture import booklet
 from app.db import models
 from app.frq import metrics, unit_check
 from app.frq.bank import ensure_item_rows
+from app.api.routes.sessions import tutor_call
+from app.feedback import tutor
 from app.grading import service, transcribe
 from app.grading.judge import ModelJudge
 from app.providers.router import chain_for
@@ -402,8 +404,44 @@ def submit_typed(
 def read_gradings(attempt_id: str, db=Depends(get_db, scope="function"), settings=Depends(get_settings), user=Depends(current_user)):
    attempt, _session_row = owned_attempt(db, attempt_id, user)
    record = record_of(settings, attempt)
+   context = frq_context(settings)
+   explanation, tutor_unavailable = frq_explanation_for(settings, db, user, attempt, record, context)
 
-   return gradings_payload(db, attempt, record, frq_context(settings))
+   return dict(
+      gradings_payload(db, attempt, record, context),
+      tutor_explanation=explanation,
+      tutor_unavailable=tutor_unavailable,
+   )
+
+
+def frq_explanation_for(settings, db, user, attempt, record, context):
+   """One tutor paragraph per graded question on the points it did not earn, composed the first
+   time the result is read once every point is decided, and stored on the attempt so every later
+   read returns the same words without a call. A re-grade clears it (app/grading/service.py
+   finish)."""
+   is_graded = attempt.grading_state == service.GRADED
+
+   if not is_graded:
+      return None, False
+
+   rows = service.gradings_of(db, attempt.id)
+   diagnosis = db.scalar(select(models.Diagnosis).where(models.Diagnosis.attempt_id == attempt.id))
+   observed = json.loads(diagnosis.observed_errors) if diagnosis is not None else []
+   observed_errors = [entry for entry in observed if isinstance(entry, dict)]
+
+   def compose(guarded):
+      return tutor.compose_frq_explanation(
+         guarded,
+         record,
+         rows,
+         observed_errors,
+         context.library.errors,
+         db=db,
+         attempt=attempt,
+         user_id=user.id,
+      )
+
+   return tutor_call(settings, db, user, compose)
 
 
 @router.post("/gradings/{grading_id}/dispute")

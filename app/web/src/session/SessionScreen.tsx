@@ -538,6 +538,8 @@ export function SessionScreen({ resumeSessionId }: SessionScreenProps) {
    const showsComparison = comparison !== null;
    const marksSteps = feedback !== null && feedback.stage !== "unsupported";
    const showsElaborated = feedback !== null && feedback.stage === "unsupported" && !showsComparison;
+   const reinforcement = feedback !== null && feedback.kind === "correct" ? feedback.sentence : null;
+   const showsReinforcement = reinforcement !== null && reinforcement.trim().length > 0;
 
    /* 11 P1 scope item 10: one note per corrected item, written before the retry is scheduled. An
       item the student got right is requeued by nothing and asks for nothing, and neither is an
@@ -680,6 +682,12 @@ export function SessionScreen({ resumeSessionId }: SessionScreenProps) {
                ) : null}
 
                {marksSteps ? <StepMarks marks={feedback.step_marks} /> : null}
+
+               {showsReinforcement ? (
+                  <p className="tutor-note" data-testid="tutor-sentence">
+                     {reinforcement}
+                  </p>
+               ) : null}
 
                {showsElaborated ? (
                   <ElaboratedPanel elaborated={feedback.elaborated} sentence={feedback.sentence} lessonLink={feedback.lesson_link ?? null} />

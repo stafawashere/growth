@@ -21,7 +21,7 @@ def idempotency_key_for(role, attempt_id):
    return f"{QUEUED_CALL_JOB_TYPE}:{role}:{attempt_id}"
 
 
-def queue_call(db, user_id, attempt_id, request, reason, now):
+def queue_call(db, user_id, attempt_id, request, reason, now, template=None):
    key = idempotency_key_for(request.role, attempt_id)
    existing = db.scalar(select(models.Job).where(models.Job.idempotency_key == key))
 
@@ -38,6 +38,11 @@ def queue_call(db, user_id, attempt_id, request, reason, now):
       "max_output_tokens": request.max_output_tokens,
       "messages": [{"role": message.role, "content": message.content} for message in request.messages],
    }
+   names_a_template = template is not None
+
+   if names_a_template:
+      payload["template"] = template
+
    job = models.Job(
       id=new_id("JOB"),
       type=QUEUED_CALL_JOB_TYPE,

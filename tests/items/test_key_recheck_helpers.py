@@ -105,3 +105,49 @@ def test_function_with_values_matches_the_stated_derivatives():
 
 def test_polar_slope_on_a_circle_is_perpendicular_to_the_radius():
    assert key_recheck.polar_slope(2 * sin(theta), pi / 6) == sqrt(3)
+
+
+def test_vertical_asymptotes_leave_out_a_removable_zero_of_the_denominator():
+   expression = (x**2 - 3 * x + 2) / ((x - 1) * (x + 3) * (x - 5))
+
+   assert key_recheck.vertical_asymptotes(expression) == [-3, 5]
+
+
+def test_crossings_are_the_sorted_real_intersections():
+   assert key_recheck.crossings(x**2, 2 * x + 3) == [-1, 3]
+   assert key_recheck.crossings(x**2 + 1, 0 * x) == []
+
+
+def test_area_between_curves_counts_each_piece_as_positive():
+   assert key_recheck.area_between_curves(x**2, 2 * x + 3, -1, 3) == Rational(32, 3)
+   assert key_recheck.area_between_curves(3 * x, 0 * x, -1, 2) == Rational(15, 2)
+
+
+def test_polar_area_takes_half_the_integral_of_the_squared_radius():
+   assert key_recheck.polar_area(3 + 0 * theta, 0, 2 * pi) == 9 * pi
+   assert key_recheck.polar_area(1 + cos(theta), 0, 2 * pi) == 3 * pi / 2
+
+
+def test_polar_coordinate_rates_differentiate_x_and_y_in_the_angle():
+   horizontal_rate, vertical_rate = key_recheck.polar_coordinate_rates(theta, pi / 4)
+
+   assert (horizontal_rate - (sqrt(2) / 2 - pi * sqrt(2) / 8)).simplify() == 0
+   assert (vertical_rate - (sqrt(2) / 2 + pi * sqrt(2) / 8)).simplify() == 0
+
+
+def test_mean_value_points_match_the_average_of_the_rate_inside_the_interval():
+   assert key_recheck.mean_value_points(3 * t**2, 0, 2) == [2 * sqrt(3) / 3]
+   assert key_recheck.mean_value_points(3 * t**2, -2, 2) == [-2 * sqrt(3) / 3, 2 * sqrt(3) / 3]
+
+
+def test_mean_value_points_fall_back_to_a_numeric_root():
+   points = key_recheck.mean_value_points(t + sin(t), 0, 3)
+
+   assert len(points) == 1
+   assert abs(float(points[0]) - 1.2231527244835694) < 1e-12
+
+
+def test_numeric_definite_integral_evaluates_an_integral_with_no_elementary_antiderivative():
+   value = key_recheck.numeric_definite_integral(exp(-(t**2)), 0, 2, t)
+
+   assert abs(float(value) - 0.8820813907624215) < 1e-12

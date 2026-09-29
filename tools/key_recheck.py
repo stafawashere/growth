@@ -360,6 +360,108 @@ def function_with_values(center, values, variable=x):
    return taylor_from_derivatives(values, center, variable)
 
 
+def vertical_asymptotes(expression, variable=x):
+   """Real zeros of the denominator at which a one-sided limit is infinite, so a removable zero
+   (a hole) is left out."""
+   denominator = sympy.denom(sympy.together(expression))
+   asymptotes = []
+
+   for candidate in sympy.solve(denominator, variable):
+      if not candidate.is_real:
+         continue
+
+      from_right = sympy.limit(expression, variable, candidate, "+")
+      from_left = sympy.limit(expression, variable, candidate, "-")
+      is_infinite = from_right.is_infinite or from_left.is_infinite
+
+      if is_infinite:
+         asymptotes.append(candidate)
+
+   return sorted(asymptotes)
+
+
+def crossings(first, second, variable=x):
+   """The sorted real inputs at which two graphs meet."""
+   meeting_points = sympy.solve(sympy.Eq(first, second), variable)
+
+   return sorted(point for point in meeting_points if point.is_real)
+
+
+def area_between_curves(first, second, lower, upper, variable=x):
+   """The area between two graphs over [lower, upper], split where they cross so that every piece
+   counts as positive."""
+   inside = [point for point in crossings(first, second, variable) if lower < point < upper]
+   bounds = [sympy.nsimplify(lower)] + inside + [sympy.nsimplify(upper)]
+   area = sympy.Integer(0)
+
+   for left_bound, right_bound in zip(bounds, bounds[1:]):
+      area += sympy.Abs(sympy.integrate(first - second, (variable, left_bound, right_bound)))
+
+   return sympy.simplify(area)
+
+
+def polar_area(radius, lower, upper, variable=theta):
+   return sympy.simplify(sympy.integrate(radius**2, (variable, lower, upper)) / 2)
+
+
+def polar_coordinate_rates(radius, at, variable=theta):
+   """(dx/dtheta, dy/dtheta) at the angle, for x = r cos(theta) and y = r sin(theta)."""
+   horizontal = radius * sympy.cos(variable)
+   vertical = radius * sympy.sin(variable)
+   horizontal_rate = sympy.diff(horizontal, variable).subs(variable, at)
+   vertical_rate = sympy.diff(vertical, variable).subs(variable, at)
+
+   return sympy.simplify(horizontal_rate), sympy.simplify(vertical_rate)
+
+
+def numeric_definite_integral(integrand, lower, upper, variable=t, digits=30):
+   """A calculator value for an integral with no elementary antiderivative."""
+   return sympy.Integral(integrand, (variable, lower, upper)).evalf(digits)
+
+
+def mean_value_points(rate, lower, upper, variable=t, grid=60, digits=30):
+   """The inputs strictly inside (lower, upper) at which the instantaneous rate equals the average
+   of the rate over the interval. Exact when SymPy can solve the equation, otherwise the distinct
+   roots found by a numeric solve from a grid of starting points."""
+   average = sympy.integrate(rate, (variable, lower, upper)) / (upper - lower)
+   equation = rate - average
+
+   try:
+      exact = sympy.solve(equation, variable)
+   except NotImplementedError:
+      exact = None
+
+   if exact is not None:
+      inside = []
+
+      for point in exact:
+         is_real = point.is_real
+         is_inside = is_real and bool(lower < point) and bool(point < upper)
+
+         if is_inside:
+            inside.append(sympy.simplify(point))
+
+      return sorted(inside, key=lambda point: float(point))
+
+   width = sympy.nsimplify(upper) - sympy.nsimplify(lower)
+   starts = [sympy.nsimplify(lower) + width * (index + sympy.Rational(1, 2)) / grid for index in range(grid)]
+   found = []
+
+   for start in starts:
+      try:
+         root = sympy.nsolve(equation, variable, start, prec=digits)
+      except (ValueError, ZeroDivisionError):
+         continue
+
+      is_inside = bool(lower < root) and bool(root < upper)
+      is_new = all(abs(root - earlier) > 10 ** (-digits // 2) for earlier in found)
+
+      if is_inside and is_new:
+         found.append(root)
+
+   return sorted(found)
+
+
 def equivalent(left, right):
    """Symbolic simplification, then numeric evaluation at seeded points between 1.1 and 2.9. Two
    antiderivatives written with the constant of integration C are equivalent when they differ by

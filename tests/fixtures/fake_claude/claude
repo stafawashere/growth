@@ -4,7 +4,9 @@
 It reads its mode from $HOME/fake_claude_mode, writes what it was given (argv, stdin, the
 environment and the working directory's contents) to $HOME/fake_claude_record.json, and prints
 a canned result for the mode. The consolidate mode returns $HOME/fake_claude_structured_output.json
-as its structured_output, or an empty consolidation when the file is absent.
+as its structured_output, or an empty consolidation when the file is absent. The stream_leak mode
+streams the text of $HOME/fake_claude_stream_text.txt as one delta, or the stream mode's deltas when
+the file is absent. The stream_limit mode reports a rejected usage window before its retry line.
 """
 import json
 import os
@@ -47,6 +49,16 @@ RATE_LIMIT_INFO = {
    "unifiedWindows": {
       "five_hour": {"utilization": 0.18, "resetsAt": 1790000000},
       "seven_day": {"utilization": 0.29, "resetsAt": 1790400000},
+   },
+}
+LIMITED_RATE_LIMIT_INFO = {
+   "status": "rejected",
+   "resetsAt": 1790000000,
+   "rateLimitType": "five_hour",
+   "overageStatus": "rejected",
+   "unifiedWindows": {
+      "five_hour": {"utilization": 1.0, "resetsAt": 1790000000},
+      "seven_day": {"utilization": 0.41, "resetsAt": 1790400000},
    },
 }
 HOLD_WAIT_SECONDS = 10
@@ -174,21 +186,25 @@ def main():
       print(json.dumps(result_event))
       return 0
 
-   if mode == "stream":
+   if mode in ("stream", "stream_leak"):
+      chosen_text = home / "fake_claude_stream_text.txt"
+      is_leaking = mode == "stream_leak" and chosen_text.exists()
+      deltas = (chosen_text.read_text(),) if is_leaking else STREAMED_DELTAS
+
       if not outputs_stream_json():
-         print(json.dumps(result_payload(result="".join(STREAMED_DELTAS))))
+         print(json.dumps(result_payload(result="".join(deltas))))
          return 0
 
       emit(init_event())
 
-      for index, delta in enumerate(STREAMED_DELTAS):
+      for index, delta in enumerate(deltas):
          emit(text_delta_event(delta))
 
          if index == 0:
             wait_for_release(home)
 
       emit({"type": "rate_limit_event", "rate_limit_info": RATE_LIMIT_INFO, "session_id": "fake-session-0001"})
-      emit(result_payload(result="".join(STREAMED_DELTAS)))
+      emit(result_payload(result="".join(deltas)))
       return 0
 
    if mode in ("stream_limit", "stream_auth"):
@@ -197,6 +213,10 @@ def main():
       signal.signal(signal.SIGINT, signal.default_int_handler)
       error = "rate_limit" if mode == "stream_limit" else "authentication_failed"
       emit(init_event())
+
+      if mode == "stream_limit":
+         emit({"type": "rate_limit_event", "rate_limit_info": LIMITED_RATE_LIMIT_INFO, "session_id": "fake-session-0001"})
+
       emit(api_retry_event(error))
       time.sleep(30)
       return 1

@@ -4,11 +4,23 @@ The Tutor tab in Settings reads and changes what the tutor remembers, the stored
 the pause switch and the tutoring profile. Every route needs a session, every query is scoped by
 the signed-in user, and a row of another user answers 404 exactly as a missing one does. Clearing
 everything needs the typed phrase "forget everything" (docs/agent/design.md, "Memory in
-settings"). The turn route arrives with Slice 4 of docs/agent/build-plan.md.
-"""
-from fastapi import APIRouter, Body, Depends, HTTPException
+settings").
 
-from app.agent import conversations, memory
+POST /agent/turns answers text/event-stream over app/agent/turn.py run_turn (docs/agent/
+architecture.md, Streaming end to end). The request's own database session commits when the
+handler returns, which is before the stream has finished, so the stream opens its own session on
+the application's engine and holds it for the life of the stream: run_turn commits the student's
+turn before the first byte and the reply after the end event. The route logs nothing of the turn;
+run_turn logs the turn id, the outcome, the link and the elapsed time.
+"""
+import json
+
+from fastapi import APIRouter, Body, Depends, HTTPException, Request
+from fastapi.responses import StreamingResponse
+from sqlalchemy.orm import Session as OrmSession
+
+from app.agent import consolidate, conversations, memory
+from app.agent.turn import run_turn
 from app.api.deps import current_user, get_db, get_settings
 from app.auth import service as auth_service
 from app.db import models
@@ -17,6 +29,8 @@ from app.experiments import switches
 router = APIRouter(tags=["agent"])
 
 CLEAR_CONFIRMATION = "forget everything"
+EVENT_STREAM = "text/event-stream"
+STREAM_HEADERS = {"Cache-Control": "no-store", "X-Accel-Buffering": "no"}
 PROFILE_EXPERIMENT = "tutor_profile"
 EXPERIMENT_ABSENT = "absent"
 KIND_LABELS = (
@@ -121,6 +135,48 @@ def read_conversation(conversation_id: str, db=Depends(get_db, scope="function")
       return conversations.read_conversation(db, user.id, conversation_id)
    except conversations.ConversationNotFound as missing:
       raise HTTPException(status_code=404, detail="no such conversation") from missing
+
+
+@router.post("/agent/conversations/{conversation_id}/close")
+def close_conversation(conversation_id: str, db=Depends(get_db, scope="function"), user=Depends(current_user)):
+   try:
+      conversation = conversations.owned_conversation(db, user.id, conversation_id)
+   except conversations.ConversationNotFound as missing:
+      raise HTTPException(status_code=404, detail="no such conversation") from missing
+
+   now = auth_service.utc_now()
+   was_open = conversation.closed_at is None
+   conversations.close_conversation(db, conversation, now)
+   has_turns = conversation.turn_count > 0
+   should_consolidate = was_open and has_turns
+
+   if should_consolidate:
+      consolidate.enqueue(db, user.id, conversation, now)
+
+   return {"closed": conversation_id}
+
+
+def sse_frame(turn_event):
+   return f"event: {turn_event['event']}\ndata: {json.dumps(turn_event['data'])}\n\n"
+
+
+def turn_stream(request, user_id, body, now):
+   settings = request.app.state.settings
+
+   with OrmSession(request.app.state.engine) as db:
+      user = db.get(models.User, user_id)
+
+      for turn_event in run_turn(settings, db, user, body, now):
+         yield sse_frame(turn_event)
+
+
+@router.post("/agent/turns")
+def post_turn(request: Request, payload: dict = Body(default=None), user=Depends(current_user)):
+   return StreamingResponse(
+      turn_stream(request, user.id, payload, auth_service.utc_now()),
+      media_type=EVENT_STREAM,
+      headers=dict(STREAM_HEADERS),
+   )
 
 
 @router.delete("/agent/conversations/{conversation_id}")

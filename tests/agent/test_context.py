@@ -3,7 +3,7 @@
 Before submission the packet is built from an allow-list, so the proof is a grep over the whole
 rendered prompt, prefix and variable section, for every form of the item's key, every option value,
 every worked solution step and every error or misconception id. After submission the packet carries
-the elaborated payload, exactly one error id and one scoring point. A browsing screen carries the
+the elaborated payload, exactly one error id and at most one scoring point. A browsing screen carries the
 section's own text. The screen shape is refused when it names an unknown kind or an extra field,
 and a timed part is flagged and refused. The context line is the one design.md's table gives.
 """
@@ -19,6 +19,7 @@ import sympy
 from app.agent.context import (
    TimedPartRefused,
    compose_packet,
+   point_type_for_step,
    render_prompt,
    screen_line,
    validate_screen,
@@ -160,7 +161,9 @@ def after_submission_packet(context, item):
    return packet, move
 
 
-def test_after_submission_the_packet_carries_the_elaborated_fields_one_error_and_one_point(context, item):
+def test_after_submission_the_packet_carries_the_elaborated_fields_one_error_and_no_two_word_point(context, item):
+   """The violated step shares only "form" and "trapezoid" with BC-PT-99018, below the three words
+   point_type_for_step asks for, so no point is named."""
    packet, move = after_submission_packet(context, item)
    rendered = render_prompt(packet, [], None, [], "why was B wrong")
    feedback = packet.body["feedback"]
@@ -176,8 +179,8 @@ def test_after_submission_the_packet_carries_the_elaborated_fields_one_error_and
    assert feedback["kind"] == "elaborated"
    assert feedback["correct"] is False
    assert error_ids == {"BC-ERR-06001"}
-   assert point_ids == {"BC-PT-99018"}
-   assert set(feedback["point"]) == {"id", "name", "earns", "does_not_earn"}
+   assert point_ids == set()
+   assert "point" not in feedback
    assert feedback["lesson_section"] == "LSN-CON-06003#err-BC-ERR-06001"
 
 
@@ -264,3 +267,23 @@ def test_screen_line_matches_the_design_table():
       validate_screen(screen)
 
       assert screen_line(screen, names) == expected, description
+
+
+def test_a_step_sharing_two_words_with_a_point_names_no_point(context):
+   """BC-QA-03008's fourth step substitutes the first derivative, and the only point it shares
+   words with is the higher-derivative point, on "deriv" and "point" alone."""
+   archetype = context.archetypes["BC-QA-03008"]
+   scoring_points = context.snapshot.scoring_points
+
+   assert archetype["expected_solution_path"][3] == "substitute the value of the first derivative at that point"
+   assert "BC-PT-99027" in archetype["point_types"]
+   assert point_type_for_step(archetype, 3, scoring_points) is None
+
+
+def test_a_unique_three_word_match_is_still_named(context):
+   archetype = context.archetypes["BC-QA-01011"]
+   point = point_type_for_step(archetype, 3, context.snapshot.scoring_points)
+
+   assert point is not None
+   assert point["id"] == "BC-PT-99016"
+   assert point["name"] == "Intermediate Value Theorem conclusion"

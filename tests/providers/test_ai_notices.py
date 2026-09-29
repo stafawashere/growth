@@ -8,11 +8,14 @@ exception, the accounting, the budget row and the audit rows are the same as wit
 No test here opens a socket. The wrapped providers are ReplayProvider doubles.
 """
 from datetime import datetime, timezone
+from types import SimpleNamespace
 
 import pytest
 from sqlalchemy import create_engine, select
 from sqlalchemy.orm import Session as SqlSession
 
+from app.agent import turn
+from app.agent.context import compose_packet, render_prompt
 from app.db import models
 from app.feedback import tutor
 from app.grading import judge, transcribe
@@ -433,3 +436,31 @@ def test_record_call_and_record_queued_never_raise_themselves(monkeypatch):
 
    assert notices.record_call(USER, "anthropic", tutor_request(), raised=RuntimeError("x")) is None
    assert notices.record_queued(USER, tutor_request(), "subscription_limit_reached") is None
+
+
+STUDENT_MARKER = "MARKER-7f3e my own words about the chain rule"
+REVIEW_LINE = "Can see: Review, your error notes and corrected items."
+
+
+def agent_request():
+   packet, _move = compose_packet(SimpleNamespace(archetypes={}), {"kind": "review"})
+   history = [{"role": "student", "text": f"{STUDENT_MARKER} earlier"}, {"role": "agent", "text": "Which rule applies?"}]
+   rendered = render_prompt(packet, [{"kind": "preference", "text": f"{STUDENT_MARKER} remembered"}], None, history, STUDENT_MARKER)
+
+   return turn.agent_request(rendered)
+
+
+def test_an_agent_notice_carries_the_screen_line_and_never_the_students_words():
+   db = database()
+   reply = f"You wrote {STUDENT_MARKER}, so look at the outer function."
+   guarded = GuardedProvider(ReplayProvider(cassette=cassette(reply)), db, user_id=USER, clock=clock, caps={"agent": ROOMY_CAPS})
+   list(guarded.stream(agent_request()))
+   recorded = held()[0]
+
+   assert recorded["role"] == "agent"
+   assert REVIEW_LINE in recorded["asked"]
+   assert "navigate" in recorded["asked"]
+
+   for brief in (recorded["asked"], recorded["answered"]):
+      assert "MARKER-7f3e" not in brief
+      assert len(brief) <= notices.BRIEF_LIMIT

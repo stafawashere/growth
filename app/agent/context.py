@@ -21,9 +21,11 @@ that show it (elaborated, correct and step verification). The verification-only 
 switch and the ungraded kind get none, so the tutor cannot undo the experiment or invent a verdict.
 
 The library records which point types an archetype scores but not which step each point belongs
-to. point_type_for_step picks the one point type whose name shares the most content words with the
-violated step, at least two, and none on a tie or a weaker overlap, so a point is named only when the app selected it
-for that step (docs/agent/research/math-tutoring.md, The library records a tutor can ground in).
+to. point_type_for_step names a point only when exactly one of the archetype's point types shares at
+least three content words with the violated step, and none otherwise, so a point is named only when
+the app selected it for that step (docs/agent/research/math-tutoring.md, The library records a tutor
+can ground in). Two shared words were too few: BC-QA-03008's first-derivative substitution step met
+the higher-derivative point on "derivative" and "point" alone (orchestrator ruling, 2026-09-29).
 """
 import json
 import re
@@ -75,7 +77,7 @@ SECTION_META_KEYS = frozenset({
 })
 CONTENT_WORD = re.compile(r"[a-z]{4,}")
 STEM_LENGTH = 5
-MINIMUM_SHARED_WORDS = 2
+MINIMUM_SHARED_WORDS = 3
 STOP_WORDS = frozenset({"with", "from", "that", "this", "each", "when", "then", "than", "their", "into", "have", "does"})
 
 _SCREEN_VALIDATOR = Draft202012Validator(json.loads(SCREEN_SCHEMA_PATH.read_text()))
@@ -377,7 +379,7 @@ def point_type_for_step(archetype, step_index, scoring_points):
       return None
 
    step_words = _content_words(path[step_index])
-   overlaps = []
+   matching_ids = []
 
    for point_id in point_ids:
       record = scoring_points.get(point_id)
@@ -386,21 +388,17 @@ def point_type_for_step(archetype, step_index, scoring_points):
          continue
 
       shared = len(step_words & _content_words(record.get("name", "")))
-      overlaps.append((shared, point_id))
+      is_match = shared >= MINIMUM_SHARED_WORDS
 
-   if not overlaps:
+      if is_match:
+         matching_ids.append(point_id)
+
+   is_unambiguous = len(matching_ids) == 1
+
+   if not is_unambiguous:
       return None
 
-   overlaps.sort(reverse=True)
-   best_count, best_id = overlaps[0]
-   is_tied = len(overlaps) > 1 and overlaps[1][0] == best_count
-
-   is_too_weak = best_count < MINIMUM_SHARED_WORDS
-   is_undecided = is_too_weak or is_tied
-
-   if is_undecided:
-      return None
-
+   best_id = matching_ids[0]
    record = scoring_points[best_id]
 
    return {

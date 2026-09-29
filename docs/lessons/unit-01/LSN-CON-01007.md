@@ -51,7 +51,7 @@ Point losses research/scoring names for this shape: an unrequired simplification
 Three active errors, in the bundle's order; the mid band shows the first two.
 
 - err-BC-ERR-01001 (BC-MIS-01001, BC-MIS-01003). On ex-1's draw: the tabulated \(f(1)=4\) and \(g(1)=-1\) used, giving \(-18\). Right: the limits give 2. Distinct.
-- err-BC-ERR-01006 (BC-MIS-01005, BC-MIS-01006). On ex-2's draw: the numerator limit divided by a denominator limit of zero (expr evaluating to an undefined quotient). Right: cancel first, \(-3\). Distinct. Possible reason from BC-MIS-01005.
+- err-BC-ERR-01006 (BC-MIS-01005, BC-MIS-01006). On ex-1's draw, so the mid band shows it beside the example it serves: the limit of \(f(x)/(g(x)-3)\) at 1 taken as 2 over \(3-3\) (an undefined quotient). Right: the denominator limit is 0, so the quotient theorem does not apply. Distinct. Possible reason from BC-MIS-01005.
 - err-BC-ERR-01007 (BC-MIS-01005, BC-MIS-01001). On ex-1's draw: \(f(h(1))=f(3)=-2\) over 3. Right: \(h(2)/3=2\). Distinct.
 
 ## Representations
@@ -84,7 +84,7 @@ Every non-text choice is [inferred], settled by the modality A/B.
 
 - Low (full): orientation, ki-1, st-1, st-2, ex-1 with its scoring line, three error blocks, chk-1, chk-2, chk-3, ex-2, bridges when gated.
 - Mid (brief): orientation, ki-1, st-1, ex-1 with its scoring line, err-BC-ERR-01001, err-BC-ERR-01006, chk-1, chk-2, bridges when gated.
-- Totals: full 651 words, 4.4 minutes (cap 900 and 6); brief 450 words, 3.0 minutes (cap 450 and 3).
+- Totals: full 649 words, 4.4 minutes (cap 900 and 6); brief 448 words, 3.0 minutes (cap 450 and 3).
 - Refresher: ki-1, the three error blocks, ex-1.
 
 ## Sources
@@ -120,7 +120,7 @@ Every non-text choice is [inferred], settled by the modality A/B.
   "BC-SKL-01022"
  ],
  "orientation": {
-  "text": "A response finds the limit of a sum, product, quotient or composite from the limits of its pieces and checks each theorem's condition. Stems supply limits beside table values that differ.",
+  "text": "A response finds the limit of a sum, product, quotient or composite from the limits of its pieces and checks each theorem's condition. Stems set limits beside differing table values.",
   "sources": [
    "BC-CON-01007",
    "research/units/unit-01-limits-continuity.md#1.5 Determining Limits Using Algebraic Properties of Limits"
@@ -148,7 +148,7 @@ Every non-text choice is [inferred], settled by the modality A/B.
    "cue": "Limits of f and g supplied at one input; the limit of a combination asked.",
    "method": "First line: record the supplied limits.",
    "rival": "A zero denominator limit divided by (BC-ERR-01006), or the composite reversed (BC-ERR-01007).",
-   "separating_feature": "Theorems take limits only; a quotient needs a nonzero denominator limit.",
+   "separating_feature": "Theorems take limits only; a quotient needs a nonzero denominator.",
    "sources": [
     "BC-QA-01003"
    ],
@@ -322,12 +322,12 @@ Every non-text choice is [inferred], settled by the modality A/B.
    "observed_behavior": "The response divides the limit of the numerator by the limit of the denominator although the denominator limit is zero.",
    "scoring_consequence": "The value point is lost and any justification naming the theorem is incorrect.",
    "wrong_step": {
-    "text": "In ex-2, limits divided: 0 over 0.",
-    "expr": "((2 - 2)*(2 + 1))/((2 - 2)*(2 - 3))"
+    "text": "f/(g - 3) at 1 as 2/0.",
+    "expr": "2/(3 - 3)"
    },
    "right_step": {
-    "text": "Cancel first: -3.",
-    "expr": "-3"
+    "text": "Denominator limit 0: theorem fails.",
+    "expr": "3 - 3"
    },
    "relation": "distinct",
    "possible_reason": {
@@ -735,8 +735,8 @@ Every non-text choice is [inferred], settled by the modality A/B.
   "brief": 3.0
  },
  "word_count": {
-  "full": 651,
-  "brief": 450
+  "full": 649,
+  "brief": 448
  },
  "research_lines": [
   {

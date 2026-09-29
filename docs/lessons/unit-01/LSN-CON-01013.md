@@ -450,7 +450,7 @@ BC-QA-01006 is `no_calculator`, one FRQ part or a single MCQ; the MCQ shape is S
     "right_limit": -2,
     "point_value": 1,
     "left_slope": 3,
-    "right_slope": 1
+    "right_slope": 3
    },
    "stem": {
     "text": "Let \\(f(x)=\\frac{3x^2-2x}{x}\\) for \\(x\\ne0\\), \\(f(0)=1\\). Which response gives a correct verdict with its reason?",

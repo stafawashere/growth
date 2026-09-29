@@ -38,7 +38,7 @@ Three strategy blocks, low band all, mid band st-1. None of the three archetypes
 ## Solution path
 
 - ex-1, BC-QA-01007, both bands: coefficient 2, cancelled_root 1, pole \(-1\), zero 3, form factored, target removable; \(f(x)=\frac{2(x-1)(x-3)}{(x-1)(x+1)^2}\) (the `parameter_spec` notes). Steps follow `expected_solution_path`: locate (the rule, `new`), reduce (`equivalent`), one sided limits at 1 (`limit`, value \(-1\)), classify removable; at \(-1\) the squared factor gives \(-\infty\) on both sides, stated in words since the checker cannot confirm an infinite value. Answer form statement.
-- ex-2, BC-QA-01006, low band: boundary 2, jump, closed side left, left_limit 3, right_limit \(-1\), slopes 1 and 2; \(x+1\) for \(x\le2\), \(2x-5\) for \(x>2\) [inferred shape]. Left limit 3 (`limit`, dir \(-\)), right limit \(-1\) (`limit`, dir +), jump.
+- ex-2, BC-QA-01006, low band: boundary 2, jump, closed side left, left_limit 3, right_limit \(-1\), slopes 1 and 2, point_value 3 (the closed left side gives \(f(2)=3\)); \(x+1\) for \(x\le2\), \(2x-5\) for \(x>2\) [inferred shape]. Left limit 3 (`limit`, dir \(-\)), right limit \(-1\) (`limit`, dir +), jump.
 
 No published draw matches either. A fluent solver writes the reduced form and the limits [inferred].
 
@@ -83,8 +83,8 @@ BC-QA-01007 is `no_calculator`, a single MCQ: Section I Part A, 2.14 minutes (re
 
 ## Band plan
 
-- Low (full): orientation, ki-1, st-1, st-2, st-3, ex-1, err-BC-ERR-01003, err-BC-ERR-01015, err-BC-ERR-01017, err-BC-ERR-01018, chk-1, ex-2, chk-2, chk-3, five bridges when gated in. 724 words, 4.9 minutes (cap 900 and 6).
-- Mid (brief): orientation, ki-1, st-1, ex-1, err-BC-ERR-01003, err-BC-ERR-01015, chk-1, chk-2, bridges when gated in. 433 words, 2.9 minutes (cap 450 and 3).
+- Low (full): orientation, ki-1, st-1, st-2, st-3, ex-1, err-BC-ERR-01003, err-BC-ERR-01015, err-BC-ERR-01017, err-BC-ERR-01018, chk-1, ex-2, chk-2, chk-3, five bridges when gated in. 722 words, 4.9 minutes (cap 900 and 6).
+- Mid (brief): orientation, ki-1, st-1, ex-1, err-BC-ERR-01003, err-BC-ERR-01015, chk-1, chk-2, bridges when gated in. 431 words, 2.9 minutes (cap 450 and 3).
 - Refresher: ki-1, the four error blocks, ex-1.
 
 ## Sources
@@ -248,7 +248,7 @@ BC-QA-01007 is `no_calculator`, a single MCQ: Section I Part A, 2.14 minutes (re
     "boundary": 2,
     "left_limit": 3,
     "right_limit": -1,
-    "point_value": 0,
+    "point_value": 3,
     "left_slope": 1,
     "right_slope": 2,
     "closed_side": "left",
@@ -827,7 +827,7 @@ BC-QA-01007 is `no_calculator`, a single MCQ: Section I Part A, 2.14 minutes (re
    "settles": "common_givens entries on those archetypes from official items."
   },
   {
-   "claim": "The piecewise rule of ex-2 follows the BC-QA-01006 notes: linear branches through the boundary at left_limit and right_limit, the boundary on the closed side's branch; point_value is unused for a jump.",
+   "claim": "The piecewise rule of ex-2 follows the BC-QA-01006 notes: linear branches through the boundary at left_limit and right_limit, the boundary on the closed side's branch, so point_value is the closed side's limit, f(2) = 3.",
    "settles": "The BC-QA-01006 item template."
   },
   {
@@ -874,8 +874,8 @@ BC-QA-01007 is `no_calculator`, a single MCQ: Section I Part A, 2.14 minutes (re
   "brief": 2.9
  },
  "word_count": {
-  "full": 724,
-  "brief": 433
+  "full": 722,
+  "brief": 431
  }
 }
 ```

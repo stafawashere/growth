@@ -39,5 +39,84 @@
    }
   ],
   "answers_file": "/tmp/claude-0/-home-user-growth/ac029253-8ff0-5a4b-8b5f-cdcaf5e8ff8d/scratchpad/verify/answers_04.json"
+ },
+ "audit": {
+  "date": "2026-09-29",
+  "auditor": "claude-opus-5-5",
+  "blocks": [
+   {
+    "id": "orientation",
+    "verdict": "ok",
+    "evidence": "Paraphrase of BC-CON-02008 and 2.4 Assessment behaviour (direction of the implication, limit replaced by a value, IVT hypothesis); 47 words."
+   },
+   {
+    "id": "ki-1",
+    "verdict": "ok",
+    "evidence": "BC-EK-FUN-2A1 quote verbatim on ced:63; contrapositive and justification standard from 2.4 Required knowledge (sg-25:12); 70 words."
+   },
+   {
+    "id": "st-1",
+    "verdict": "ok",
+    "evidence": "Cue, first line and both rivals (BC-ERR-02012, BC-ERR-99008) from BC-QA-02004 common_givens, expected_solution_path and wrong_approaches."
+   },
+   {
+    "id": "ex-1",
+    "verdict": "ok",
+    "evidence": "SymPy: 3*(-2)+5 = -1; continuity step from BC-QA-02004 path."
+   },
+   {
+    "id": "ex-2",
+    "verdict": "ok",
+    "evidence": "SymPy: (-3-1)*(7-1) = -24 < 0, so g(0) < 1 < g(8); IVT with continuity from differentiability."
+   },
+   {
+    "id": "err-BC-ERR-02011",
+    "verdict": "ok",
+    "evidence": "Verbatim record (sg-25:12); possible reason quotes BC-MIS-02005."
+   },
+   {
+    "id": "err-BC-ERR-02012",
+    "verdict": "ok",
+    "evidence": "Verbatim record; possible reason from BC-MIS-02006."
+   },
+   {
+    "id": "err-BC-ERR-99008",
+    "verdict": "ok",
+    "evidence": "Verbatim record; the wrong step omits the continuity condition the record names."
+   },
+   {
+    "id": "representations",
+    "verdict": "ok",
+    "evidence": "Figure: x+1 at 1 gives open point (1,2), x+3 at 1 gives filled point (1,4); contrapositive from 2.4 Required knowledge."
+   },
+   {
+    "id": "chk-1",
+    "verdict": "ok",
+    "evidence": "SymPy: 3*(-2)+5 = -1."
+   },
+   {
+    "id": "chk-2",
+    "verdict": "ok",
+    "evidence": "SymPy: 2*(-4)-1 = -9."
+   },
+   {
+    "id": "chk-3",
+    "verdict": "ok",
+    "evidence": "SymPy: (-5)(4) = -20 < 0; options A, B, C map to BC-ERR-02011, 02012, 99008; key D."
+   }
+  ],
+  "advice": [
+   "ki-1 phrase 'Read backwards as its contrapositive' risks suggesting the converse, the very error BC-ERR-02012 targets; 'Its contrapositive' alone is clearer.",
+   "The converse failure (BC-EK-FUN-2A2, corner of |x|, cusp of cube root on ced:63) is not taught though BC-SKL-02024 is listed; the figure shows only a jump.",
+   "err-BC-ERR-02012's wrong step asserts continuity when the stem supplies differentiability, an unnatural setting; a stem that gives continuity only would show the reversed implication more convincingly.",
+   "The lesson teaches the stem, the first written line ('g is differentiable, so continuous') and the scoring habit of stating the reason well; step_reveal suits the argument chains."
+  ],
+  "counts": {
+   "ok": 12,
+   "unsourced": 0,
+   "wrong": 0,
+   "over_cap": 0,
+   "lint": 0
+  }
  }
 }

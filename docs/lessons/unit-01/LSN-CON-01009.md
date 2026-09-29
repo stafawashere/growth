@@ -77,8 +77,8 @@ The README notes a decision lesson (`contrast`) would carry the method choice ac
 
 ## Band plan
 
-- Low (full): orientation, ki-1, st-1, ex-1, err-BC-ERR-01003, err-BC-ERR-01006, err-BC-ERR-01008, err-BC-ERR-01009, chk-1, chk-2, chk-3, two bridges when gated in. 586 words, 4.0 minutes (cap 900 and 6).
-- Mid (brief): orientation, ki-1, st-1, ex-1, err-BC-ERR-01003, err-BC-ERR-01006, chk-1, chk-2, bridges when gated in. 443 words, 3.0 minutes (cap 450 and 3).
+- Low (full): orientation, ki-1, st-1, ex-1, err-BC-ERR-01003, err-BC-ERR-01006, err-BC-ERR-01008, err-BC-ERR-01009, chk-1, chk-2, chk-3, two bridges when gated in. 581 words, 4.0 minutes (cap 900 and 6).
+- Mid (brief): orientation, ki-1, st-1, ex-1, err-BC-ERR-01003, err-BC-ERR-01006, chk-1, chk-2, bridges when gated in. 438 words, 3.0 minutes (cap 450 and 3).
 - Refresher: ki-1, the four error blocks, ex-1.
 
 ## Sources
@@ -607,8 +607,8 @@ The README notes a decision lesson (`contrast`) would carry the method choice ac
   "brief": 3.0
  },
  "word_count": {
-  "full": 586,
-  "brief": 443
+  "full": 581,
+  "brief": 438
  }
 }
 ```

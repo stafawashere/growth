@@ -17,7 +17,7 @@ Served text, from BC-CON-01018 `description_plain` and the topic's Assessment be
 
 One BC-EK maps to the skill, BC-EK-LIM-2D5 (ced:52), so one core block, both bands.
 
-- ki-1 (core), BC-EK-LIM-2D5. Paraphrase of the Relative magnitudes paragraph: relative magnitudes of functions and of their rates are compared by the limit of their quotient. The reading of the value (0: the denominator grows faster; unbounded: the numerator does; a finite nonzero number: neither outgrows the other) is [inferred], because the topic text names the comparison but not the three readings. Anchor quote (14 words) from ced:52. The concept's `notation` field is empty.
+- ki-1 (core), BC-EK-LIM-2D5. Paraphrase of the Relative magnitudes paragraph: relative magnitudes of functions and of their rates are compared by the limit of their quotient, and the value of that limit tells which quantity grows faster (BC-CON-01018 `description_plain`). No case by case reading of the value is served in ki-1, because neither ced:52 (LIM-2.D.5) nor the topic text states one; the finite nonzero reading in ex-1 stays [inferred]. Anchor quote (14 words) from ced:52. The concept's `notation` field is empty.
 
 ## Recognition
 
@@ -90,7 +90,7 @@ Two checks only: check 3 needs error blocks and the bundle holds none (listed un
 - research/question-analysis/question-archetypes.md#BC-QA-01010 End behaviour described by a limit at infinity
 - research/scoring/notation-requirements.md#Limit notation
 - research/exam/exam-structure.md#Section and part layout
-- [inferred] The three readings of the quotient's limit. Settled by a CED or scoring guideline page stating them.
+- [inferred] The finite nonzero reading in ex-1 (neither outgrows the other). Settled by a CED or scoring guideline page stating them.
 - [inferred] Two checks, because no BC-ERR names BC-SKL-01062. Settled by a library error record on the skill.
 - [inferred] Exam part I-A for `calculator_status` either. Settled by a plan 15 rule for either.
 - [inferred] The model table inside ex-1. Settled by the modality A/B.
@@ -113,7 +113,7 @@ Two checks only: check 3 needs error blocks and the bundle holds none (listed un
    "id": "ki-1",
    "ek_id": "BC-EK-LIM-2D5",
    "depth": "core",
-   "text": "Two quantities, or their rates, are compared by the limit of their quotient (BC-EK-LIM-2D5, ced:52). A limit of 0 says the denominator grows faster; an unbounded limit says the numerator does; a finite nonzero limit says neither outgrows the other [inferred].",
+   "text": "Two quantities, or their rates, are compared by the limit of their quotient (BC-EK-LIM-2D5, ced:52). The limit is taken as the variable grows without bound, and its value tells which quantity grows faster (BC-CON-01018).",
    "notation": "",
    "quote": {"text": "Relative magnitudes of functions and their rates of change can be compared using limits.", "source": "ced:52"},
    "sources": ["BC-EK-LIM-2D5", "ced:52", "research/units/unit-01-limits-continuity.md#1.15 Connecting Limits at Infinity and Horizontal Asymptotes"]
@@ -210,7 +210,7 @@ Two checks only: check 3 needs error blocks and the bundle holds none (listed un
   {"file": "research/units/unit-01-limits-continuity.md", "line": "Relative magnitudes of functions and their rates of change can be compared using limits (BC-EK-LIM-2D5)."}
  ],
  "inferred": [
-  {"claim": "The three readings of the quotient's limit (0, unbounded, finite nonzero) are not stated in the bundle's topic text or ced:52.", "settles": "A CED or scoring guideline page stating the readings."},
+  {"claim": "The finite nonzero reading in ex-1 (neither quantity outgrows the other) is not stated in the bundle's topic text or ced:52.", "settles": "A CED or scoring guideline page stating the reading."},
   {"claim": "The lesson carries two checks, because no active BC-ERR names BC-SKL-01062 and check 3 needs error blocks.", "settles": "A library error record on BC-SKL-01062."},
   {"claim": "BC-QA-01010 has calculator_status either, so the exam part is taken as I-A.", "settles": "A plan 15 budget rule for calculator_status either."},
   {"claim": "The model table inside ex-1 serves the idea better than the step reveal alone.", "settles": "The modality A/B in the build plan."}

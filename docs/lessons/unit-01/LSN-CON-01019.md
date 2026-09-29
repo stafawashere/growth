@@ -49,10 +49,10 @@ Point losses the scoring research names: hypotheses not verified, BC-ERR-99008 (
 
 Six active errors meet the skills; the first four in the bundle's order are served (BC-ERR-01028, wrong theorem named, and BC-ERR-99008 fall outside the cap of 4; the scoring line above covers the wrong theorem). Low band all four, mid band the first two.
 
-- err-BC-ERR-01016 (BC-MIS-01010, BC-MIS-01009): "continuous by definition" against "continuous because differentiable". Equivalent as values; the reason differs.
-- err-BC-ERR-01025 (BC-MIS-01015, BC-MIS-01010): "\(f\) is continuous" bare against the reason. Equivalent as values.
+- err-BC-ERR-01016 (BC-MIS-01010, BC-MIS-01009): the definition restated with no values or interval, \(\lim_{x\to c}f(x)-f(c)\), against "differentiable, so continuous on \([1,8]\)", the interval. Distinct.
+- err-BC-ERR-01025 (BC-MIS-01015, BC-MIS-01010): lines written {continuous} against {differentiable, continuous}. Distinct.
 - err-BC-ERR-01026 (BC-MIS-01016, BC-MIS-01015): \(f(3)=2\) and \(f(8)=1\), both above 0, against \(f(1)=-4<0<1=f(8)\). Distinct.
-- err-BC-ERR-01027 (BC-MIS-01016, BC-MIS-01010): "exactly one \(c\)" against "at least one \(c\)". Equivalent as values.
+- err-BC-ERR-01027 (BC-MIS-01016, BC-MIS-01010): "exactly one \(c\)", a single point, against "at least one \(c\)" somewhere in \((1,8)\). Distinct.
 
 ## Representations
 
@@ -164,9 +164,9 @@ No draw equals a published BC-QA-01011 `parameter_draw`.
    "error_id": "BC-ERR-01016",
    "observed_behavior": "The response asserts that the function is or is not continuous because of the definition of continuity, without naming the condition that fails or the values that show it.",
    "scoring_consequence": "The justification point is lost; a scoring guideline requires the reason rather than the assertion (sg-25:12).",
-   "wrong_step": {"text": "Continuous by definition.", "expr": "(-4 - 0)*(1 - 0)"},
-   "right_step": {"text": "Differentiable, so continuous.", "expr": "(-4 - 0)*(1 - 0)"},
-   "relation": "equivalent",
+   "wrong_step": {"text": "Continuous by definition: \\(\\lim_{x\\to c}f(x)=f(c)\\), no interval named.", "expr": "Limit(f(x), x, c) - f(c)"},
+   "right_step": {"text": "Differentiable, so continuous on \\([1,8]\\).", "expr": "Interval(1, 8)"},
+   "relation": "distinct",
    "possible_reason": {"misconception_id": "BC-MIS-01010", "text": "treats naming the definition or the theorem as the argument"},
    "sources": ["BC-ERR-01016", "BC-MIS-01010"]
   },
@@ -174,9 +174,9 @@ No draw equals a published BC-QA-01011 `parameter_draw`.
    "error_id": "BC-ERR-01025",
    "observed_behavior": "The response states that the function is continuous but gives no basis for the statement.",
    "scoring_consequence": "The point for the continuity hypothesis is not earned by a bare statement that the function is continuous; the response must say that it is continuous because it is differentiable or give an equivalent reason (sg-25:12).",
-   "wrong_step": {"text": "\\(f\\) is continuous.", "expr": "(-4 - 0)*(1 - 0)"},
-   "right_step": {"text": "\\(f\\) is continuous because differentiable.", "expr": "(-4 - 0)*(1 - 0)"},
-   "relation": "equivalent",
+   "wrong_step": {"text": "Lines written: continuous.", "expr": "FiniteSet(continuous)"},
+   "right_step": {"text": "Lines written: differentiable, so continuous.", "expr": "FiniteSet(differentiable, continuous)"},
+   "relation": "distinct",
    "possible_reason": {"misconception_id": "BC-MIS-01015", "text": "treats the stated setting as discharging the hypotheses of a theorem"},
    "sources": ["BC-ERR-01025", "BC-MIS-01015"]
   },
@@ -194,9 +194,9 @@ No draw equals a published BC-QA-01011 `parameter_draw`.
    "error_id": "BC-ERR-01027",
    "observed_behavior": "The response concludes that there is exactly one input with the required output.",
    "scoring_consequence": "The conclusion point is lost because the claim exceeds the theorem.",
-   "wrong_step": {"text": "Exactly one \\(c\\).", "expr": "(-4 - 0)*(1 - 0)"},
-   "right_step": {"text": "At least one \\(c\\).", "expr": "(-4 - 0)*(1 - 0)"},
-   "relation": "equivalent",
+   "wrong_step": {"text": "Exactly one \\(c\\): a single point.", "expr": "FiniteSet(c)"},
+   "right_step": {"text": "At least one \\(c\\), somewhere in \\((1,8)\\).", "expr": "Interval.open(1, 8)"},
+   "relation": "distinct",
    "possible_reason": {"misconception_id": "BC-MIS-01016", "text": "reads the conclusion of the Intermediate Value Theorem as producing a unique input"},
    "sources": ["BC-ERR-01027", "BC-MIS-01016"]
   }

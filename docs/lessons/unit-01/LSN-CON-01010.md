@@ -41,11 +41,10 @@ None. BC-QA-01005 lists no `point_types`; its `scoring_pattern` names three poin
 
 ## Traps
 
-Three active errors meet the skills, in the bundle's order (BC-ERR-01012 and 01013 link BC-MIS-01008, medium; BC-ERR-99008 links BC-MIS-99009, high). Low band all three, mid band the first two. All on ex-1's draw.
+Two error blocks, BC-ERR-01012 and BC-ERR-01013 (both link BC-MIS-01008, medium), both bands, both on ex-1's draw. The bundle's third error, BC-ERR-99008, is not served: its record describes the Mean Value Theorem, the Intermediate Value Theorem and L'Hospital's Rule, and no other error the skills hold describes an unverified squeeze inequality.
 
 - err-BC-ERR-01012. Wrong: \(2-3(x-1)\) as the lower bound. Right: \(2-3|x-1|\). Distinct. Reason, words from BC-MIS-01008.
 - err-BC-ERR-01013. Wrong: the bound evaluated at 1, value 2. Right: the bound's limit, 2. Equivalent: the value agrees, the theorem is not applied, which is the record's consequence. Reason, words from BC-MIS-01008.
-- err-BC-ERR-99008. Wrong: the conclusion 2 with no inequality. Right: the bound \(3|x-1|\) on the oscillating product shown first. Distinct. Reason, words from BC-MIS-99009. The record names other theorems; its skills include this concept's, and the block reads it as the squeeze hypotheses [inferred].
 
 ## Representations
 
@@ -63,27 +62,27 @@ BC-QA-01005 is `no_calculator`, one FRQ part or a single MCQ. The MCQ shape is S
 
 - chk-1, completion of ex-1, both bands: the inequality is given, the student takes the limits. Key 2.
 - chk-2, isomorph, both bands: target \(-2\), shift \(-1\), coefficient \(-2\), power 2, wave cos, naming named. Key \(-1\).
-- chk-3, MCQ, low band, key form statement: which line justifies \(\lim_{x\to0}(3+x^3\sin\frac1x)=3\). Every option reaches 3, so the options are justifications, not values: the three errors change the argument, not the number. Distractors carry BC-ERR-01013 (bounds evaluated at 0), BC-ERR-01012 (\(x^3\) bounds not reversed for \(x<0\)), BC-ERR-99008 (theorem named, hypotheses unshown).
+- chk-3, MCQ, low band, key form statement: which line justifies \(\lim_{x\to0}(3+x^3\sin\frac1x)=3\). Every option reaches 3, so the options are justifications, not values: the three errors change the argument, not the number. Distractors carry BC-ERR-01013 (both bounds evaluated at 0), BC-ERR-01012 (\(x^3\) bounds not reversed for \(x<0\)), BC-ERR-01013 again (the upper bound alone evaluated at 0).
 
 ## Delivery
 
 - orientation: figure. Rule 3, BC-REP-02 on BC-SKL-01033 and BC-SKL-01035; the unit-01 README gives figure. Spec: the two bounds dashed, \(f\) solid, the open point \((1,2)\), labels inside.
 - ki-1: motion. Rule 2, a limit being taken (the bounds pinching toward 1), as the README names. Three frames at half-widths 1, 0.1 and 0.01; arrow keys step; reduced motion cross-fades on key press; the fallback is the static strip.
-- ex-1 and the three error blocks: step_reveal. Rule 1.
+- ex-1 and the two error blocks: step_reveal. Rule 1.
 
 Every non-text choice is [inferred], settled by the modality A/B.
 
 ## Band plan
 
-- Low (full): orientation, ki-1, st-1, ex-1, err-BC-ERR-01012, err-BC-ERR-01013, err-BC-ERR-99008, chk-1, chk-2, chk-3, two bridges when gated in. 572 words, 3.9 minutes (cap 900 and 6).
-- Mid (brief): orientation, ki-1, st-1, ex-1, err-BC-ERR-01012, err-BC-ERR-01013, chk-1, chk-2, bridges when gated in. 449 words, 3.0 minutes (cap 450 and 3).
-- Refresher: ki-1, the three error blocks, ex-1.
+- Low (full): orientation, ki-1, st-1, ex-1, err-BC-ERR-01012, err-BC-ERR-01013, chk-1, chk-2, chk-3, two bridges when gated in. 494 words, 3.3 minutes (cap 900 and 6).
+- Mid (brief): orientation, ki-1, st-1, ex-1, err-BC-ERR-01012, err-BC-ERR-01013, chk-1, chk-2, bridges when gated in. 447 words, 3.0 minutes (cap 450 and 3).
+- Refresher: ki-1, the two error blocks, ex-1.
 
 ## Sources
 
 - BC-CON-01010; BC-SKL-01032, BC-SKL-01033, BC-SKL-01034, BC-SKL-01035; BC-EK-LIM-1E2; ced:45
 - BC-QA-01005
-- BC-ERR-01012, BC-ERR-01013, BC-ERR-99008; BC-MIS-01008, BC-MIS-99009
+- BC-ERR-01012, BC-ERR-01013; BC-MIS-01008
 - BC-PRQ-01005, BC-PRQ-01010
 - research/units/unit-01-limits-continuity.md#1.8 Determining Limits Using the Squeeze Theorem
 - research/question-analysis/question-archetypes.md#BC-QA-01005 Limit determined by the squeeze theorem with its hypotheses stated
@@ -92,7 +91,6 @@ Every non-text choice is [inferred], settled by the modality A/B.
 - research/scoring/justification-requirements.md#Theorem hypotheses
 - [inferred] Non-text delivery modes. Settled by the modality A/B.
 - [inferred] The absolute value form of the bound. Settled by an official guideline or CED example.
-- [inferred] BC-ERR-99008 read as the squeeze hypotheses. Settled by a squeeze-scoped error record.
 - [inferred] Part I-A for the squeeze archetype. Settled by an official FRQ part with a guideline.
 
 ## Machine record
@@ -257,28 +255,6 @@ Every non-text choice is [inferred], settled by the modality A/B.
    "sources": [
     "BC-ERR-01013",
     "BC-MIS-01008"
-   ]
-  },
-  {
-   "error_id": "BC-ERR-99008",
-   "observed_behavior": "Responses apply the Mean Value Theorem, the Intermediate Value Theorem or L'Hospital's Rule without establishing continuity from differentiability, without bounding the target value between two function values, or without confirming the indeterminate form.",
-   "scoring_consequence": "The condition point is not earned; in several years this was the point earned by the smallest proportion of responses on the question.",
-   "wrong_step": {
-    "text": "The limit is stated as 2 by the squeeze theorem, with no inequality shown.",
-    "expr": "2"
-   },
-   "right_step": {
-    "text": "First shown: \\(\\left|3(x-1)\\sin\\frac{1}{x-1}\\right|\\le3|x-1|\\) for \\(x\\ne1\\).",
-    "expr": "3*Abs(x-1)"
-   },
-   "relation": "distinct",
-   "possible_reason": {
-    "misconception_id": "BC-MIS-99009",
-    "text": "applies it without establishing the conditions"
-   },
-   "sources": [
-    "BC-ERR-99008",
-    "BC-MIS-99009"
    ]
   }
  ],
@@ -458,9 +434,9 @@ Every non-text choice is [inferred], settled by the modality A/B.
     {
      "id": "C",
      "is_key": false,
-     "label": "The limit is 3 by the squeeze theorem.",
-     "error_path": "BC-ERR-99008",
-     "derivation": "hypotheses not verified"
+     "label": "At \\(x=0\\) the upper bound \\(3+|x|^3\\) equals 3, so \\(f\\) tends to 3.",
+     "error_path": "BC-ERR-01013",
+     "derivation": "upper bound evaluated at the target"
     },
     {
      "id": "D",
@@ -663,19 +639,12 @@ Every non-text choice is [inferred], settled by the modality A/B.
    "mode": "step_reveal",
    "reason": "rule 1",
    "sources": []
-  },
-  {
-   "block": "err-BC-ERR-99008",
-   "mode": "step_reveal",
-   "reason": "rule 1",
-   "sources": []
   }
  ],
  "refresher": [
   "ki-1",
   "err-BC-ERR-01012",
   "err-BC-ERR-01013",
-  "err-BC-ERR-99008",
   "ex-1"
  ],
  "research_lines": [
@@ -694,10 +663,6 @@ Every non-text choice is [inferred], settled by the modality A/B.
    "settles": "An official scoring guideline or CED example writing the squeeze inequality with an absolute value."
   },
   {
-   "claim": "BC-ERR-99008 is linked to this concept's skills though its record names the Mean Value Theorem, the IVT and L'Hospital's Rule; its block is read here as the squeeze hypotheses not verified.",
-   "settles": "An error record scoped to the squeeze theorem's hypotheses, or a record note extending BC-ERR-99008 to it."
-  },
-  {
    "claim": "The squeeze archetype sits in Section I Part A; no free response part in 2023 to 2025 assesses it.",
    "settles": "An official free response part on the squeeze theorem with its scoring guideline."
   }
@@ -713,9 +678,7 @@ Every non-text choice is [inferred], settled by the modality A/B.
   "BC-QA-01005",
   "BC-ERR-01012",
   "BC-ERR-01013",
-  "BC-ERR-99008",
   "BC-MIS-01008",
-  "BC-MIS-99009",
   "BC-PRQ-01005",
   "BC-PRQ-01010",
   "research/units/unit-01-limits-continuity.md#1.8 Determining Limits Using the Squeeze Theorem",
@@ -725,12 +688,12 @@ Every non-text choice is [inferred], settled by the modality A/B.
   "research/scoring/common-point-losses.md#Justification points"
  ],
  "read_minutes": {
-  "full": 3.9,
+  "full": 3.3,
   "brief": 3.0
  },
  "word_count": {
-  "full": 572,
-  "brief": 449
+  "full": 494,
+  "brief": 447
  }
 }
 ```

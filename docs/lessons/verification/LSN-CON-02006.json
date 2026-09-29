@@ -33,5 +33,82 @@
    }
   ],
   "answers_file": "/tmp/claude-0/-home-user-growth/ac029253-8ff0-5a4b-8b5f-cdcaf5e8ff8d/scratchpad/verify/answers_04.json"
+ },
+ "audit": {
+  "date": "2026-09-29",
+  "auditor": "claude-opus-5-5",
+  "blocks": [
+   {
+    "id": "orientation",
+    "verdict": "ok",
+    "evidence": "Paraphrase of BC-CON-02006, BC-QA-02003 expected_solution_path and BC-ERR-02009; 48 words."
+   },
+   {
+    "id": "ki-1",
+    "verdict": "unsourced",
+    "evidence": "The rule (sqrt x)' = 1/(2 sqrt x) is attributed to BC-EK-FUN-3A4, which (ced:66 and 2.7 Required knowledge) covers sine, cosine, exponential and logarithmic functions only; the power rule is not in this bundle. The quote is verbatim on ced:66 and the math is correct."
+   },
+   {
+    "id": "st-1",
+    "verdict": "ok",
+    "evidence": "Cue, first line and rival (BC-ERR-02009) from BC-QA-02003 common_givens, expected_solution_path[0] and wrong_approaches."
+   },
+   {
+    "id": "ex-1",
+    "verdict": "ok",
+    "evidence": "SymPy: limit h to 0 of (4 sqrt(9+h) - 12)/h = 2/3; d/dx 4 sqrt x = 2/sqrt x."
+   },
+   {
+    "id": "err-BC-ERR-02009",
+    "verdict": "ok",
+    "evidence": "Verbatim from BC-ERR-02009; possible reason quotes BC-MIS-02004."
+   },
+   {
+    "id": "err-BC-ERR-02010",
+    "verdict": "ok",
+    "evidence": "Verbatim observed behaviour; wrong base 12 gives 2/sqrt 12, distinct from 2/3."
+   },
+   {
+    "id": "err-BC-ERR-02024",
+    "verdict": "unsourced",
+    "evidence": "BC-ERR-02024 records a function value placed where the product or quotient rule calls for a derivative value; the block's wrong step reports f(9)=12 as the limit, which is not that behaviour (closer to BC-MIS-02014, which has no matching error record here)."
+   },
+   {
+    "id": "representations",
+    "verdict": "ok",
+    "evidence": "Null; BC-SKL-02035 carries BC-REP-01 only."
+   },
+   {
+    "id": "BC-PRQ-02005",
+    "verdict": "ok",
+    "evidence": "Paraphrase of BC-PRQ-02005 description_plain and failure_signature."
+   },
+   {
+    "id": "chk-1",
+    "verdict": "ok",
+    "evidence": "SymPy: 2/sqrt(9) = 2/3."
+   },
+   {
+    "id": "chk-2",
+    "verdict": "ok",
+    "evidence": "SymPy: limit of (3 ln(1/2+t) - 3 ln(1/2))/t = 6."
+   },
+   {
+    "id": "chk-3",
+    "verdict": "unsourced",
+    "evidence": "SymPy: key 1 correct (2 cos(pi/3)); option B 2 cos(sqrt 3) matches BC-ERR-02010. Option A is tagged BC-ERR-02024, whose record concerns product and quotient rule positions, not reporting f at the base point."
+   }
+  ],
+  "advice": [
+   "A second example from a sin, cos, exp or ln family would align ex-1 with the rules FUN-3A4 names; ex-1 uses sqrt x, whose rule belongs to topic 2.5.",
+   "Text delivery suits a symbolic recognition; the lesson teaches the stem (0/0 difference quotient shape), the first line (match f and a) and the rival (does not exist) well."
+  ],
+  "counts": {
+   "ok": 9,
+   "unsourced": 3,
+   "wrong": 0,
+   "over_cap": 0,
+   "lint": 0
+  }
  }
 }

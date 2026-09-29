@@ -18,7 +18,7 @@ Served text, from BC-CON-01016 `description_plain` and the topic's Assessment be
 Two BC-EK map to the skills, both on ced:51: BC-EK-LIM-2D1 (BC-SKL-01054, 01055) and BC-EK-LIM-2D2 (BC-SKL-01055, 01056, 01057). Two core blocks, both bands.
 
 - ki-1 (core), BC-EK-LIM-2D1. Paraphrase of the Infinite limits and What the notation claims paragraphs: a limit written as infinite records unbounded growth and is not a claim that a real limit exists; each side is treated separately when the sign differs across the input. Anchor quote (12 words) from ced:51. Notation line: vertical asymptote.
-- ki-2 (core), BC-EK-LIM-2D2. Paraphrase of the Locating asymptotes paragraph: simplify first; a factor that divides out gives a removable break, not an asymptote. Anchor quote (13 words) from ced:51.
+- ki-2 (core), BC-EK-LIM-2D2. Paraphrase of the Locating asymptotes paragraph (research/units/unit-01-limits-continuity.md#1.14 Connecting Infinite Limits and Vertical Asymptotes, cited inline in place of ced:51): simplify first; a factor that divides out gives a removable break, not an asymptote. Anchor quote (13 words) from ced:51.
 
 ## Recognition
 
@@ -50,7 +50,7 @@ Three active errors meet the concept's skills, in the bundle's order (all linked
 
 - err-BC-ERR-01018 (BC-MIS-01011, BC-MIS-01012). Wrong step on ex-1's draw: asymptotes at \(x=-2\) and \(x=1\). Right step: at \(x=-2\) only; \(x=1\) is removable. Distinct. Possible reason, words from BC-MIS-01011.
 - err-BC-ERR-01019 (BC-MIS-01012, BC-MIS-01011). Wrong step: \(\lim_{x\to-2}f(x)=-\infty\). Right step: \(+\infty\) from the left, \(-\infty\) from the right. Distinct. Possible reason, words from BC-MIS-01012.
-- err-BC-ERR-01020 (BC-MIS-01012, BC-MIS-99008). Wrong step: "the limit is \(\infty\), so the limit exists". Right step: the same value read as unbounded growth, with no real limit. Equivalent as expressions; the claim differs. Possible reason, words from BC-MIS-01012.
+- err-BC-ERR-01020 (BC-MIS-01012, BC-MIS-99008). Wrong step: \(\infty\) read as a real value, "so the limit exists". Right step: \(\frac{1}{f(x)}=\frac{x+2}{2(x-3)}\to0\), so \(f\) passes every bound and no real limit exists. Distinct. Possible reason, words from BC-MIS-01012.
 
 ## Representations
 
@@ -127,7 +127,7 @@ Every non-text choice is [inferred], settled by the modality A/B in the build pl
    "id": "ki-2",
    "ek_id": "BC-EK-LIM-2D2",
    "depth": "core",
-   "text": "Simplify first (BC-EK-LIM-2D2, ced:51). A factor that divides out leaves a removable break; only a zero of the simplified denominator is an asymptote.",
+   "text": "Simplify first (research/units/unit-01-limits-continuity.md#1.14 Connecting Infinite Limits and Vertical Asymptotes). A factor that divides out leaves a removable break; only a zero of the simplified denominator is an asymptote.",
    "notation": "",
    "quote": {"text": "Asymptotic and unbounded behavior of functions can be described and explained using limits.", "source": "ced:51"},
    "sources": ["BC-EK-LIM-2D2", "ced:51", "research/units/unit-01-limits-continuity.md#1.14 Connecting Infinite Limits and Vertical Asymptotes"]
@@ -201,9 +201,9 @@ Every non-text choice is [inferred], settled by the modality A/B in the build pl
    "error_id": "BC-ERR-01020",
    "observed_behavior": "The response writes that the limit equals infinity and then treats that statement as an existence claim for a real limit.",
    "scoring_consequence": "A point requiring a statement about existence is lost.",
-   "wrong_step": {"text": "Left limit \\(\\infty\\), so it exists.", "expr": "2*(x-3)/(x+2)"},
-   "right_step": {"text": "Left limit \\(\\infty\\): unbounded, no real limit.", "expr": "2*(x-3)/(x+2)"},
-   "relation": "equivalent",
+   "wrong_step": {"text": "Left limit \\(\\infty\\) read as a real value, so it exists.", "expr": "oo"},
+   "right_step": {"text": "\\(\\frac{1}{f(x)}=\\frac{x+2}{2(x-3)}\\to0\\): \\(f\\) passes every bound, no real limit.", "expr": "(x+2)/(2*(x-3))"},
+   "relation": "distinct",
    "possible_reason": {"misconception_id": "BC-MIS-01012", "text": "reads the infinity symbol as a real value"},
    "sources": ["BC-ERR-01020", "BC-MIS-01012"]
   }

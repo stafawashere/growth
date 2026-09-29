@@ -79,8 +79,8 @@ Non-text choices are [inferred], settled by the modality A/B.
 
 ## Band plan
 
-- Low (full): orientation, ki-1, st-1, ex-1, err-BC-ERR-01002, err-BC-ERR-01020, err-BC-ERR-01033, err-BC-ERR-01021, chk-1, ex-2, chk-2, chk-3, two bridges when gated in. 623 words, 4.2 minutes (cap 900 and 6).
-- Mid (brief): orientation, ki-1, st-1, ex-1, err-BC-ERR-01002, err-BC-ERR-01020, chk-1, chk-2, bridges when gated in. 443 words, 3.0 minutes (cap 450 and 3).
+- Low (full): orientation, ki-1, st-1, ex-1, err-BC-ERR-01002, err-BC-ERR-01020, err-BC-ERR-01033, err-BC-ERR-01021, chk-1, ex-2, chk-2, chk-3, two bridges when gated in. 618 words, 4.2 minutes (cap 900 and 6).
+- Mid (brief): orientation, ki-1, st-1, ex-1, err-BC-ERR-01002, err-BC-ERR-01020, chk-1, chk-2, bridges when gated in. 438 words, 3.0 minutes (cap 450 and 3).
 - Refresher: ki-1, the four error blocks, ex-1.
 
 ## Sources
@@ -724,8 +724,8 @@ Non-text choices are [inferred], settled by the modality A/B.
   "brief": 3.0
  },
  "word_count": {
-  "full": 623,
-  "brief": 443
+  "full": 618,
+  "brief": 438
  }
 }
 ```

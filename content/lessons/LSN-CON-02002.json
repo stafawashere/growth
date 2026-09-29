@@ -7,8 +7,8 @@
  "snapshot_digest": "a6a8ec9d3f59ab8f712e33d30cc22fc64bf2c478fbe7312e3e3118d319c6a42f",
  "source_digest": "1f7e3018376f795cc448dbd3f49beb94bbe03a808337046c6ad7ad4dda059048",
  "read_minutes": {
-  "full": 3.4,
-  "brief": 2.1
+  "full": 3.8,
+  "brief": 2.4
  },
  "word_count": {
   "full": 502,
@@ -33,11 +33,14 @@
     "research/units/unit-02-differentiation-definition-properties.md#2.1 Defining Average and Instantaneous Rates of Change at a Point",
     "research/units/unit-02-differentiation-definition-properties.md#2.2 Defining the Derivative of a Function and Using Derivative Notation"
    ],
-   "evidence_tag": "verified",
+   "evidence_tag": "inferred",
    "text": "A response shows the rate at one instant as the value the average rates approach as the interval shrinks to nothing: the difference quotient at the point, inside a limit, simplified with the limit kept, then evaluated. An average over a whole interval is not the rate at an instant.",
    "delivery": {
     "mode": "text",
-    "reason": "rule 5: a statement of what a response shows"
+    "reason": "rule 5: a statement of what a response shows",
+    "sources": [
+     "BC-CON-02002"
+    ]
    }
   },
   {
@@ -70,6 +73,10 @@
    "delivery": {
     "mode": "motion",
     "reason": "rule 2: the key idea describes a limit being taken, a secant closing to a tangent (unit README delivery map)",
+    "sources": [
+     "BC-EK-CHA-2B1",
+     "BC-SKL-02005"
+    ],
     "spec": {
      "kind": "graph_sweep",
      "representations": [
@@ -82,7 +89,7 @@
       ],
       "y": [
        -1,
-       12
+       16
       ]
      },
      "curves": [
@@ -176,7 +183,8 @@
    "id": "LSN-CON-02002#s4",
    "type": "strategy",
    "bands": [
-    "low"
+    "low",
+    "mid"
    ],
    "skills": [
     "BC-SKL-02004"
@@ -205,7 +213,7 @@
    "sources": [
     "BC-QA-02002"
    ],
-   "evidence_tag": "verified",
+   "evidence_tag": "inferred",
    "archetype_id": "BC-QA-02002",
    "parameter_draw": {
     "leading": 2,
@@ -224,9 +232,20 @@
      "cue": "The stem says definition, at the input 2.",
      "why": "\\(f'(2)=\\lim_{h\\to0}\\frac{f(2+h)-f(2)}{h}\\), with \\(f(2)=3\\).",
      "expression": [
-      "Divide",
+      "Multiply",
+      [
+       "Power",
+       "h",
+       -1
+      ],
       [
        "Add",
+       -8,
+       [
+        "Multiply",
+        -3,
+        "h"
+       ],
        [
         "Multiply",
         2,
@@ -239,47 +258,32 @@
          ],
          2
         ]
-       ],
-       [
-        "Multiply",
-        -1,
-        [
-         "Multiply",
-         3,
-         [
-          "Add",
-          2,
-          "h"
-         ]
-        ]
-       ],
-       1,
-       [
-        "Multiply",
-        -1,
-        3
        ]
-      ],
-      "h"
-     ]
+      ]
+     ],
+     "relation": "new"
     },
     {
      "cue": "At \\(h=0\\) the quotient is \\(\\frac{0}{0}\\), so expand and divide out \\(h\\).",
      "why": "The numerator is \\(2h^2+5h\\); the limit symbol stays on this line.",
      "expression": [
       "Add",
+      5,
       [
        "Multiply",
        2,
        "h"
-      ],
-      5
-     ]
+      ]
+     ],
+     "relation": "equivalent"
     },
     {
      "cue": "Nothing divides by \\(h\\) now, so substitute \\(h=0\\).",
      "why": "The limit is the rate at 2.",
-     "expression": 5
+     "expression": 5,
+     "relation": "limit",
+     "variable": "h",
+     "point": "0"
     }
    ],
    "answer": {
@@ -288,7 +292,8 @@
    },
    "delivery": {
     "mode": "step_reveal",
-    "reason": "rule 1"
+    "reason": "rule 1",
+    "sources": []
    }
   },
   {
@@ -298,14 +303,14 @@
     "low"
    ],
    "skills": [
-    "BC-SKL-02005",
     "BC-SKL-02004",
+    "BC-SKL-02005",
     "BC-SKL-02006"
    ],
    "sources": [
     "BC-QA-02014"
    ],
-   "evidence_tag": "verified",
+   "evidence_tag": "inferred",
    "archetype_id": "BC-QA-02014",
    "parameter_draw": {
     "degree": 2,
@@ -325,9 +330,20 @@
      "cue": "One instant is named, so average over \\([2,2+h]\\).",
      "why": "The average rate is \\(\\frac{s(2+h)-s(2)}{h}\\), with \\(s(2)=10\\).",
      "expression": [
-      "Divide",
+      "Multiply",
+      [
+       "Power",
+       "h",
+       -1
+      ],
       [
        "Add",
+       -12,
+       [
+        "Multiply",
+        -4,
+        "h"
+       ],
        [
         "Multiply",
         3,
@@ -340,47 +356,32 @@
          ],
          2
         ]
-       ],
-       [
-        "Multiply",
-        -1,
-        [
-         "Multiply",
-         4,
-         [
-          "Add",
-          2,
-          "h"
-         ]
-        ]
-       ],
-       6,
-       [
-        "Multiply",
-        -1,
-        10
        ]
-      ],
-      "h"
-     ]
+      ]
+     ],
+     "relation": "new"
     },
     {
      "cue": "At \\(h=0\\) this is \\(\\frac{0}{0}\\): expand and divide out \\(h\\).",
      "why": "The average over \\([2,2+h]\\) is \\(8+3h\\).",
      "expression": [
       "Add",
+      8,
       [
        "Multiply",
        3,
        "h"
-      ],
-      8
-     ]
+      ]
+     ],
+     "relation": "equivalent"
     },
     {
      "cue": "The instant is the interval shrunk to zero length.",
      "why": "The averages approach 8, the rate at \\(t=2\\).",
-     "expression": 8
+     "expression": 8,
+     "relation": "limit",
+     "variable": "h",
+     "point": "0"
     }
    ],
    "answer": {
@@ -389,7 +390,8 @@
    },
    "delivery": {
     "mode": "step_reveal",
-    "reason": "rule 1"
+    "reason": "rule 1",
+    "sources": []
    }
   },
   {
@@ -406,7 +408,7 @@
     "BC-ERR-02006",
     "BC-MIS-02003"
    ],
-   "evidence_tag": "verified",
+   "evidence_tag": "inferred",
    "error_id": "BC-ERR-02006",
    "observed_behavior": "The response manipulates the difference quotient without carrying the limit symbol and attaches it only to the final line.",
    "scoring_consequence": "A notation point is lost where the definition itself is being assessed.",
@@ -414,12 +416,12 @@
     "text": "\\(f'(2)=\\frac{2h^2+5h}{h}=2h+5\\), with no limit written.",
     "expression": [
      "Add",
+     5,
      [
       "Multiply",
       2,
       "h"
-     ],
-     5
+     ]
     ]
    },
    "right_step": {
@@ -433,7 +435,8 @@
    },
    "delivery": {
     "mode": "step_reveal",
-    "reason": "rule 1"
+    "reason": "rule 1",
+    "sources": []
    }
   },
   {
@@ -450,7 +453,7 @@
     "BC-ERR-02030",
     "BC-MIS-02015"
    ],
-   "evidence_tag": "verified",
+   "evidence_tag": "inferred",
    "error_id": "BC-ERR-02030",
    "observed_behavior": "The response reports a function where a number is requested, or a number where the function is requested.",
    "scoring_consequence": "The conversion point is lost.",
@@ -458,15 +461,11 @@
     "text": "\\(4x-3\\), where \\(f'(2)\\) is asked.",
     "expression": [
      "Add",
+     -3,
      [
       "Multiply",
       4,
       "x"
-     ],
-     [
-      "Multiply",
-      -1,
-      3
      ]
     ]
    },
@@ -481,14 +480,16 @@
    },
    "delivery": {
     "mode": "step_reveal",
-    "reason": "rule 1"
+    "reason": "rule 1",
+    "sources": []
    }
   },
   {
    "id": "LSN-CON-02002#err-BC-ERR-02033",
    "type": "common_error",
    "bands": [
-    "low"
+    "low",
+    "mid"
    ],
    "skills": [
     "BC-SKL-02004",
@@ -497,33 +498,13 @@
    "sources": [
     "BC-ERR-02033"
    ],
-   "evidence_tag": "verified",
+   "evidence_tag": "inferred",
    "error_id": "BC-ERR-02033",
    "observed_behavior": "Asked for the rate of change at one instant, the response divides the change over a whole interval, usually from the starting time to that instant, by the length of the interval and reports that average.",
    "scoring_consequence": "The value reported is an average rate over an interval, so an answer point for the rate at the instant is not earned.",
    "wrong_step": {
     "text": "\\(\\frac{s(2)-s(0)}{2-0}=\\frac{10-6}{2}=2\\).",
-    "expression": [
-     "Divide",
-     [
-      "Add",
-      10,
-      [
-       "Multiply",
-       -1,
-       6
-      ]
-     ],
-     [
-      "Add",
-      2,
-      [
-       "Multiply",
-       -1,
-       0
-      ]
-     ]
-    ]
+    "expression": 2
    },
    "right_step": {
     "text": "\\(\\lim_{h\\to0}(8+3h)=8\\).",
@@ -532,7 +513,8 @@
    "relation": "distinct",
    "delivery": {
     "mode": "step_reveal",
-    "reason": "rule 1"
+    "reason": "rule 1",
+    "sources": []
    }
   },
   {
@@ -543,12 +525,14 @@
    ],
    "skills": [
     "BC-SKL-02004",
-    "BC-SKL-02005"
+    "BC-SKL-02005",
+    "BC-SKL-02006",
+    "BC-SKL-02007"
    ],
    "sources": [
     "research/units/unit-02-differentiation-definition-properties.md#2.1 Defining Average and Instantaneous Rates of Change at a Point"
    ],
-   "evidence_tag": "verified",
+   "evidence_tag": "inferred",
    "text": "Average rates of \\(s(t)=3t^2-4t+6\\) over \\([2,2+h]\\) for \\(h=1, 0.1, 0.01, 0.001\\): 11, 8.3, 8.03, 8.003. They settle on 8.",
    "figure": {
     "kind": "numeric_experiment",
@@ -575,6 +559,9 @@
    "delivery": {
     "mode": "model",
     "reason": "template model row: the meaning is a computed sequence of difference quotients at shrinking h, and BC-QA-02014 carries BC-DF-15 (productive-failure target)",
+    "sources": [
+     "BC-QA-02014"
+    ],
     "spec": {
      "kind": "numeric_experiment",
      "representations": [
@@ -624,7 +611,7 @@
    "sources": [
     "BC-PRQ-02005"
    ],
-   "evidence_tag": "verified",
+   "evidence_tag": "inferred",
    "prerequisite_id": "BC-PRQ-02005",
    "text": "In \\(f(a+h)\\) the base point is \\(a\\) and the increment \\(h\\); name both before writing the quotient."
   }
@@ -661,18 +648,22 @@
      "text": "The simplified quotient \\(2h+5\\).",
      "mathjson": [
       "Add",
+      5,
       [
        "Multiply",
        2,
        "h"
-      ],
-      5
-     ]
+      ]
+     ],
+     "relation": "new"
     },
     {
      "step": 2,
      "text": "Its limit as \\(h\\to0\\) is 5.",
-     "mathjson": 5
+     "mathjson": 5,
+     "relation": "limit",
+     "variable": "h",
+     "point": "0"
     }
    ],
    "calculator_status": "no_calculator",
@@ -710,9 +701,15 @@
      "step": 1,
      "text": "\\(\\lim_{h\\to0}\\frac{f(-1+h)-f(-1)}{h}\\), with \\(f(-1)=-7\\).",
      "mathjson": [
-      "Divide",
+      "Multiply",
+      [
+       "Power",
+       "h",
+       -1
+      ],
       [
        "Add",
+       1,
        [
         "Multiply",
         -1,
@@ -729,21 +726,11 @@
        [
         "Multiply",
         4,
-        [
-         "Add",
-         -1,
-         "h"
-        ]
-       ],
-       [
-        "Multiply",
-        -1,
-        2
-       ],
-       7
-      ],
-      "h"
-     ]
+        "h"
+       ]
+      ]
+     ],
+     "relation": "new"
     },
     {
      "step": 2,
@@ -756,12 +743,16 @@
        -1,
        "h"
       ]
-     ]
+     ],
+     "relation": "equivalent"
     },
     {
      "step": 3,
      "text": "The limit is 6.",
-     "mathjson": 6
+     "mathjson": 6,
+     "relation": "limit",
+     "variable": "h",
+     "point": "0"
     }
    ],
    "calculator_status": "no_calculator",
@@ -799,9 +790,16 @@
      "step": 1,
      "text": "The average over \\([3,3+h]\\), with \\(f(3)=24\\).",
      "mathjson": [
-      "Divide",
+      "Multiply",
+      [
+       "Power",
+       "h",
+       -1
+      ],
       [
        "Add",
+       -18,
+       "h",
        [
         "Multiply",
         2,
@@ -814,36 +812,32 @@
          ],
          2
         ]
-       ],
-       3,
-       "h",
-       3,
-       [
-        "Multiply",
-        -1,
-        24
        ]
-      ],
-      "h"
-     ]
+      ]
+     ],
+     "relation": "new"
     },
     {
      "step": 2,
      "text": "Dividing out \\(h\\) leaves \\(13+2h\\).",
      "mathjson": [
       "Add",
+      13,
       [
        "Multiply",
        2,
        "h"
-      ],
-      13
-     ]
+      ]
+     ],
+     "relation": "equivalent"
     },
     {
      "step": 3,
      "text": "The limit is 13.",
-     "mathjson": 13
+     "mathjson": 13,
+     "relation": "limit",
+     "variable": "h",
+     "point": "0"
     }
    ],
    "options": [
@@ -857,17 +851,9 @@
     {
      "id": "B",
      "is_key": false,
-     "error_path": "BC-ERR-02030",
-     "value": [
-      "Add",
-      [
-       "Multiply",
-       4,
-       "t"
-      ],
-      1
-     ],
-     "derivation": "the rate as a function of t reported where a number is asked"
+     "error_path": "BC-ERR-02033",
+     "value": 9,
+     "derivation": "the average over the whole interval [1, 3]: (24 - 6)/2"
     },
     {
      "id": "C",
@@ -878,17 +864,9 @@
     {
      "id": "D",
      "is_key": false,
-     "error_path": "BC-ERR-02006",
-     "value": [
-      "Add",
-      13,
-      [
-       "Multiply",
-       2,
-       "h"
-      ]
-     ],
-     "derivation": "the simplified quotient reported with the limit dropped"
+     "error_path": "BC-ERR-02033",
+     "value": 11,
+     "derivation": "the average over the whole interval [2, 3]: (24 - 13)/1"
     }
    ],
    "calculator_status": "no_calculator",
@@ -907,9 +885,8 @@
   "LSN-CON-02002#s5"
  ],
  "provenance": {
-  "author": "claude-opus-5-5",
+  "author": "tools/lesson_transcribe.py",
   "prompt_version": "generator/lesson_v1",
-  "generated_at": "2026-09-29T00:00:00Z",
   "design_path": "docs/lessons/unit-02/LSN-CON-02002.md",
   "signed_off_by": null,
   "signed_off_at": null,

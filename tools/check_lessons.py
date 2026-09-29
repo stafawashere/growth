@@ -712,16 +712,22 @@ def relation_holds(designs, relation, step, previous, current):
    return None if equivalent(expected, current) else "is not the limit of the step before it"
 
 
+def step_text(step):
+   return normalise_text(step.get("text") or f"{step.get('cue')} {step.get('why')}")
+
+
 def chain_messages(record):
    """tools/check_lesson_designs.check_chain over a record's valued steps: each follows from the
    one before under its relation, and a step without a relation is held to equivalence, the
-   design checker's default. A restatement is identical MathJSON, not an identical SymPy object,
-   because to_sympy evaluates products and quotients and a factored line would read as its
-   cancelled form. Returns the messages and the last converted expression."""
+   design checker's default. A restatement is a step whose words and MathJSON both repeat the
+   step before it: the design checker compares the SymPy strings as written, which the record
+   cannot keep, because parsing evaluates "(-2)*4 + 3*5" to the 7 of the next line, and to_sympy
+   evaluates a factored quotient to its cancelled form. Returns the messages and the last converted expression."""
    designs = design_rules()
    messages = []
    previous = None
    previous_value = None
+   previous_step = None
    last = None
 
    for index, value, step in valued_step_records(record):
@@ -737,7 +743,7 @@ def chain_messages(record):
 
       if relation not in designs.RELATIONS:
          messages.append(f"{record['id']} step {index + 1} relation {relation!r} is not one of {designs.RELATIONS}")
-      elif relation == "equivalent" and not is_first and previous_value == value:
+      elif relation == "equivalent" and not is_first and previous_step == step_text(step) and previous_value == value:
          messages.append(f"{record['id']} step {index + 1} restates the step before it")
       elif not is_first and relation != "new":
          try:
@@ -750,6 +756,7 @@ def chain_messages(record):
 
       previous = current
       previous_value = value
+      previous_step = step_text(step)
       last = current
 
    return messages, last

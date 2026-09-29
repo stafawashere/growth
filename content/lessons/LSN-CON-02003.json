@@ -11,7 +11,7 @@
   "brief": 2.4
  },
  "word_count": {
-  "full": 445,
+  "full": 458,
   "brief": 310
  },
  "sections": [
@@ -30,11 +30,14 @@
     "BC-CON-02003",
     "research/units/unit-02-differentiation-definition-properties.md#2.2 Defining the Derivative of a Function and Using Derivative Notation"
    ],
-   "evidence_tag": "verified",
+   "evidence_tag": "inferred",
    "text": "A response writes the derivative as a function: the limit as \\(h\\to0\\) of \\(\\frac{f(x+h)-f(x)}{h}\\), expanded, with \\(h\\) divided out and the limit carried on every line, then taken. When the stem says use the definition, the quotient and its simplification are the work.",
    "delivery": {
     "mode": "text",
-    "reason": "rule 5: skills BC-SKL-02008 and BC-SKL-02009 carry BC-REP-01 only"
+    "reason": "rule 5: skills BC-SKL-02008 and BC-SKL-02009 carry BC-REP-01 only",
+    "sources": [
+     "BC-SKL-02008"
+    ]
    }
   },
   {
@@ -64,7 +67,10 @@
    },
    "delivery": {
     "mode": "text",
-    "reason": "rule 5: the key idea is the algebra of the difference quotient (unit README delivery map)"
+    "reason": "rule 5: the key idea is the algebra of the difference quotient (unit README delivery map)",
+    "sources": [
+     "BC-SKL-02008"
+    ]
    }
   },
   {
@@ -81,14 +87,17 @@
     "ced:60",
     "research/units/unit-02-differentiation-definition-properties.md#2.2 Defining the Derivative of a Function and Using Derivative Notation"
    ],
-   "evidence_tag": "verified",
+   "evidence_tag": "inferred",
    "ek_id": "BC-EK-CHA-2B1",
    "depth": "extended",
    "text": "At one input the same limit gives a number: \\(f'(a)=\\lim_{h\\to0}\\frac{f(a+h)-f(a)}{h}\\), or \\(\\lim_{x\\to a}\\frac{f(x)-f(a)}{x-a}\\) (BC-EK-CHA-2B1). Substituting \\(a\\) into \\(f'(x)\\) gives the same number.",
    "notation": "f prime of a",
    "delivery": {
     "mode": "text",
-    "reason": "rule 5: BC-REP-01 only"
+    "reason": "rule 5: BC-REP-01 only",
+    "sources": [
+     "BC-SKL-02009"
+    ]
    }
   },
   {
@@ -126,7 +135,7 @@
    "sources": [
     "BC-QA-02002"
    ],
-   "evidence_tag": "verified",
+   "evidence_tag": "inferred",
    "archetype_id": "BC-QA-02002",
    "parameter_draw": {
     "leading": -1,
@@ -145,9 +154,19 @@
      "cue": "The stem says definition and asks for \\(f'(x)\\).",
      "why": "Keep \\(x\\) a letter: \\(\\lim_{h\\to0}\\frac{f(x+h)-f(x)}{h}\\).",
      "expression": [
-      "Divide",
+      "Multiply",
+      [
+       "Power",
+       "h",
+       -1
+      ],
       [
        "Add",
+       [
+        "Power",
+        "x",
+        2
+       ],
        [
         "Multiply",
         -1,
@@ -155,8 +174,8 @@
          "Power",
          [
           "Add",
-          "x",
-          "h"
+          "h",
+          "x"
          ],
          2
         ]
@@ -164,74 +183,55 @@
        [
         "Multiply",
         5,
-        [
-         "Add",
-         "x",
-         "h"
-        ]
-       ],
-       4,
-       [
-        "Multiply",
-        -1,
-        [
-         "Add",
-         [
-          "Multiply",
-          -1,
-          [
-           "Power",
-           "x",
-           2
-          ]
-         ],
-         [
-          "Multiply",
-          5,
-          "x"
-         ],
-         4
-        ]
+        "h"
        ]
-      ],
-      "h"
-     ]
+      ]
+     ],
+     "relation": "new"
     },
     {
      "cue": "At \\(h=0\\) this is \\(\\frac{0}{0}\\): expand \\((x+h)^2\\) in full.",
      "why": "The numerator is \\(-2xh-h^2+5h\\); dividing out \\(h\\) leaves \\(-2x-h+5\\).",
      "expression": [
       "Add",
-      [
-       "Multiply",
-       -2,
-       "x"
-      ],
+      5,
       [
        "Multiply",
        -1,
        "h"
       ],
-      5
-     ]
+      [
+       "Multiply",
+       -2,
+       "x"
+      ]
+     ],
+     "relation": "equivalent"
     },
     {
      "cue": "No \\(h\\) is left in a denominator, so let \\(h\\to0\\).",
      "why": "The limit is the derivative function.",
      "expression": [
       "Add",
+      5,
       [
        "Multiply",
        -2,
        "x"
-      ],
-      5
-     ]
+      ]
+     ],
+     "relation": "limit",
+     "variable": "h",
+     "point": "0"
     },
     {
      "cue": "The stem then asks for \\(f'(3)\\).",
      "why": "Substitute into the function: \\(-6+5\\).",
-     "expression": -1
+     "expression": -1,
+     "relation": "evaluate",
+     "subs": {
+      "x": "3"
+     }
     }
    ],
    "answer": {
@@ -240,7 +240,8 @@
    },
    "delivery": {
     "mode": "step_reveal",
-    "reason": "rule 1"
+    "reason": "rule 1",
+    "sources": []
    }
   },
   {
@@ -257,50 +258,24 @@
     "BC-ERR-02005",
     "BC-MIS-02002"
    ],
-   "evidence_tag": "verified",
+   "evidence_tag": "inferred",
    "error_id": "BC-ERR-02005",
    "observed_behavior": "The response substitutes zero for the increment while it is still in the denominator.",
    "scoring_consequence": "The simplification point and the value point are both lost.",
    "wrong_step": {
     "text": "\\(h=0\\) in \\(\\frac{-2xh-h^2+5h}{h}\\) gives \\(\\frac{0}{0}\\).",
-    "expression": [
-     "Divide",
-     [
-      "Add",
-      [
-       "Multiply",
-       -2,
-       "x",
-       0
-      ],
-      [
-       "Multiply",
-       -1,
-       [
-        "Power",
-        0,
-        2
-       ]
-      ],
-      [
-       "Multiply",
-       5,
-       0
-      ]
-     ],
-     0
-    ]
+    "expression": "NaN"
    },
    "right_step": {
     "text": "Divide out \\(h\\) first: \\(-2x-h+5\\), limit \\(-2x+5\\).",
     "expression": [
      "Add",
+     5,
      [
       "Multiply",
       -2,
       "x"
-     ],
-     5
+     ]
     ]
    },
    "relation": "distinct",
@@ -310,7 +285,8 @@
    },
    "delivery": {
     "mode": "step_reveal",
-    "reason": "rule 1"
+    "reason": "rule 1",
+    "sources": []
    }
   },
   {
@@ -328,7 +304,7 @@
     "BC-ERR-02006",
     "BC-MIS-02003"
    ],
-   "evidence_tag": "verified",
+   "evidence_tag": "inferred",
    "error_id": "BC-ERR-02006",
    "observed_behavior": "The response manipulates the difference quotient without carrying the limit symbol and attaches it only to the final line.",
    "scoring_consequence": "A notation point is lost where the definition itself is being assessed.",
@@ -336,29 +312,29 @@
     "text": "\\(f'(x)=-2x-h+5\\), no limit written.",
     "expression": [
      "Add",
-     [
-      "Multiply",
-      -2,
-      "x"
-     ],
+     5,
      [
       "Multiply",
       -1,
       "h"
      ],
-     5
+     [
+      "Multiply",
+      -2,
+      "x"
+     ]
     ]
    },
    "right_step": {
     "text": "\\(\\lim_{h\\to0}(-2x-h+5)=-2x+5\\).",
     "expression": [
      "Add",
+     5,
      [
       "Multiply",
       -2,
       "x"
-     ],
-     5
+     ]
     ]
    },
    "relation": "distinct",
@@ -368,14 +344,16 @@
    },
    "delivery": {
     "mode": "step_reveal",
-    "reason": "rule 1"
+    "reason": "rule 1",
+    "sources": []
    }
   },
   {
    "id": "LSN-CON-02003#err-BC-ERR-02007",
    "type": "common_error",
    "bands": [
-    "low"
+    "low",
+    "mid"
    ],
    "skills": [
     "BC-SKL-02009"
@@ -383,7 +361,7 @@
    "sources": [
     "BC-ERR-02007"
    ],
-   "evidence_tag": "verified",
+   "evidence_tag": "inferred",
    "error_id": "BC-ERR-02007",
    "observed_behavior": "The response expands the function evaluated at the shifted input as though the function distributed over the sum.",
    "scoring_consequence": "The simplification point and the value point are both lost.",
@@ -403,30 +381,32 @@
     "text": "\\(-(x+h)^2=-x^2-2xh-h^2\\); the quotient is \\(-2x-h+5\\).",
     "expression": [
      "Add",
-     [
-      "Multiply",
-      -2,
-      "x"
-     ],
+     5,
      [
       "Multiply",
       -1,
       "h"
      ],
-     5
+     [
+      "Multiply",
+      -2,
+      "x"
+     ]
     ]
    },
    "relation": "distinct",
    "delivery": {
     "mode": "step_reveal",
-    "reason": "rule 1"
+    "reason": "rule 1",
+    "sources": []
    }
   },
   {
    "id": "LSN-CON-02003#err-BC-ERR-02008",
    "type": "common_error",
    "bands": [
-    "low"
+    "low",
+    "mid"
    ],
    "skills": [
     "BC-SKL-02008"
@@ -435,46 +415,48 @@
     "BC-ERR-02008",
     "BC-MIS-02002"
    ],
-   "evidence_tag": "verified",
+   "evidence_tag": "inferred",
    "error_id": "BC-ERR-02008",
    "observed_behavior": "The response differentiates with the power rule and presents the result as an application of the definition.",
    "scoring_consequence": "The points attached to the difference quotient and its simplification are lost although the final value may be right.",
    "wrong_step": {
-    "text": "\\(-2x+5\\) by the power rule, the limit written around it.",
+    "text": "The limit is written, then \\(-2x+5\\) at once by the power rule, with no quotient line.",
     "expression": [
      "Add",
+     5,
      [
       "Multiply",
       -2,
       "x"
-     ],
-     5
+     ]
     ]
    },
    "right_step": {
-    "text": "\\(5-2x\\) as the limit of the simplified quotient.",
+    "text": "The quotient simplified to \\(-2x-h+5\\) inside the limit: the line the lost points attach to.",
     "expression": [
      "Add",
      5,
      [
       "Multiply",
       -1,
-      [
-       "Multiply",
-       2,
-       "x"
-      ]
+      "h"
+     ],
+     [
+      "Multiply",
+      -2,
+      "x"
      ]
     ]
    },
-   "relation": "equivalent",
+   "relation": "distinct",
    "possible_reason": {
     "misconception_id": "BC-MIS-02002",
     "text": "the answer is produced by a rule and the definition is copied around it"
    },
    "delivery": {
     "mode": "step_reveal",
-    "reason": "rule 1"
+    "reason": "rule 1",
+    "sources": []
    }
   },
   {
@@ -490,7 +472,7 @@
    "sources": [
     "BC-PRQ-02005"
    ],
-   "evidence_tag": "verified",
+   "evidence_tag": "inferred",
    "prerequisite_id": "BC-PRQ-02005",
    "text": "\\(f(x+h)\\) is \\(f\\) at the shifted input \\(x+h\\); \\(x\\) is the base."
   },
@@ -507,7 +489,7 @@
    "sources": [
     "BC-PRQ-02001"
    ],
-   "evidence_tag": "verified",
+   "evidence_tag": "inferred",
    "prerequisite_id": "BC-PRQ-02001",
    "text": "Expand, subtract, divide out the common factor: a quotient not reduced cannot have \\(h\\) set to zero."
   }
@@ -544,18 +526,23 @@
      "text": "\\(f'(x)=-2x+5\\).",
      "mathjson": [
       "Add",
+      5,
       [
        "Multiply",
        -2,
        "x"
-      ],
-      5
-     ]
+      ]
+     ],
+     "relation": "new"
     },
     {
      "step": 2,
      "text": "At 3: \\(-1\\).",
-     "mathjson": -1
+     "mathjson": -1,
+     "relation": "evaluate",
+     "subs": {
+      "x": "3"
+     }
     }
    ],
    "calculator_status": "no_calculator",
@@ -593,15 +580,20 @@
      "step": 1,
      "text": "The quotient at \\(x\\).",
      "mathjson": [
-      "Divide",
+      "Multiply",
+      [
+       "Power",
+       "h",
+       -1
+      ],
       [
        "Add",
        [
         "Power",
         [
          "Add",
-         "x",
-         "h"
+         "h",
+         "x"
         ],
         2
        ],
@@ -609,81 +601,59 @@
         "Multiply",
         -1,
         [
-         "Multiply",
-         2,
-         [
-          "Add",
-          "x",
-          "h"
-         ]
+         "Power",
+         "x",
+         2
         ]
        ],
-       3,
        [
         "Multiply",
-        -1,
-        [
-         "Add",
-         [
-          "Power",
-          "x",
-          2
-         ],
-         [
-          "Multiply",
-          -1,
-          [
-           "Multiply",
-           2,
-           "x"
-          ]
-         ],
-         3
-        ]
+        -2,
+        "h"
        ]
-      ],
-      "h"
-     ]
+      ]
+     ],
+     "relation": "new"
     },
     {
      "step": 2,
      "text": "Simplified: \\(2x+h-2\\).",
      "mathjson": [
       "Add",
+      -2,
+      "h",
       [
        "Multiply",
        2,
        "x"
-      ],
-      "h",
-      [
-       "Multiply",
-       -1,
-       2
       ]
-     ]
+     ],
+     "relation": "equivalent"
     },
     {
      "step": 3,
      "text": "Limit: \\(2x-2\\).",
      "mathjson": [
       "Add",
+      -2,
       [
        "Multiply",
        2,
        "x"
-      ],
-      [
-       "Multiply",
-       -1,
-       2
       ]
-     ]
+     ],
+     "relation": "limit",
+     "variable": "h",
+     "point": "0"
     },
     {
      "step": 4,
      "text": "At \\(-2\\): \\(-6\\).",
-     "mathjson": -6
+     "mathjson": -6,
+     "relation": "evaluate",
+     "subs": {
+      "x": "-2"
+     }
     }
    ],
    "calculator_status": "no_calculator",
@@ -721,9 +691,20 @@
      "step": 1,
      "text": "The quotient at 1, with \\(f(1)=4\\).",
      "mathjson": [
-      "Divide",
+      "Multiply",
+      [
+       "Power",
+       "h",
+       -1
+      ],
       [
        "Add",
+       -3,
+       [
+        "Multiply",
+        -1,
+        "h"
+       ],
        [
         "Multiply",
         3,
@@ -736,43 +717,32 @@
          ],
          2
         ]
-       ],
-       [
-        "Multiply",
-        -1,
-        [
-         "Add",
-         1,
-         "h"
-        ]
-       ],
-       2,
-       [
-        "Multiply",
-        -1,
-        4
        ]
-      ],
-      "h"
-     ]
+      ]
+     ],
+     "relation": "new"
     },
     {
      "step": 2,
      "text": "Simplified: \\(3h+5\\).",
      "mathjson": [
       "Add",
+      5,
       [
        "Multiply",
        3,
        "h"
-      ],
-      5
-     ]
+      ]
+     ],
+     "relation": "equivalent"
     },
     {
      "step": 3,
      "text": "Limit: 5.",
-     "mathjson": 5
+     "mathjson": 5,
+     "relation": "limit",
+     "variable": "h",
+     "point": "0"
     }
    ],
    "options": [
@@ -792,24 +762,16 @@
     {
      "id": "C",
      "is_key": false,
-     "error_path": "BC-ERR-02006",
-     "value": [
-      "Add",
-      [
-       "Multiply",
-       3,
-       "h"
-      ],
-      5
-     ],
-     "derivation": "the simplified quotient reported with the limit dropped"
+     "error_path": "BC-ERR-02007",
+     "value": "PositiveInfinity",
+     "derivation": "f(1 + h) taken as f(1) + f(h): the quotient is 3h - 1 + 2/h, which grows without bound as h shrinks to 0 from the right"
     },
     {
      "id": "D",
      "is_key": false,
      "error_path": "BC-ERR-02005",
-     "value": 0,
-     "derivation": "h set to 0 in the numerator before it is divided out, and the numerator's value reported"
+     "value": "NaN",
+     "derivation": "h set to 0 while still in the denominator: the quotient is 0/0, reported as undefined"
     }
    ],
    "calculator_status": "no_calculator",
@@ -828,9 +790,9 @@
   "LSN-CON-02003#s5"
  ],
  "provenance": {
-  "author": "claude-opus-5-5",
+  "author": "tools/lesson_transcribe.py",
   "prompt_version": "generator/lesson_v1",
-  "generated_at": "2026-09-29T00:00:00Z",
+  "design_path": "docs/lessons/unit-02/LSN-CON-02003.md",
   "signed_off_by": null,
   "signed_off_at": null,
   "not_human": true

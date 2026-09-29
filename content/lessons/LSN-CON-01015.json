@@ -11,8 +11,8 @@
   "brief": 3.0
  },
  "word_count": {
-  "full": 472,
-  "brief": 378
+  "full": 481,
+  "brief": 387
  },
  "sections": [
   {
@@ -32,11 +32,15 @@
     "BC-CON-01015",
     "research/units/unit-01-limits-continuity.md#1.13 Removing Discontinuities"
    ],
-   "evidence_tag": "verified",
-   "text": "A response writes one matching equation per boundary, using the branch on each side and the value at the boundary, then solves for the constants. A removable break is repaired by setting the value equal to the limit.",
+   "evidence_tag": "inferred",
+   "text": "A response writes one matching equation per boundary, from both branches and the boundary value, then solves for the constants. A removable break is repaired by setting the value equal to the limit.",
    "delivery": {
     "mode": "figure",
     "reason": "rule 3: BC-REP-02 on BC-SKL-01050 and BC-SKL-01053",
+    "sources": [
+     "BC-SKL-01050",
+     "BC-SKL-01053"
+    ],
     "spec": {
      "kind": "graph",
      "window": {
@@ -131,7 +135,6 @@
    "ek_id": "BC-EK-LIM-2C1",
    "depth": "extended",
    "text": "When the limit exists at a break, defining or redefining the value there as the limit removes the break (BC-EK-LIM-2C1, ced:50). A jump or an infinite break has no limit, so no value repairs it.",
-   "notation": "",
    "quote": {
     "text": "it is possible to remove the discontinuity by defining or redefining the value of the function at that point",
     "source": "ced:50"
@@ -139,6 +142,9 @@
    "delivery": {
     "mode": "figure",
     "reason": "rule 3: BC-REP-02 on BC-SKL-01050",
+    "sources": [
+     "BC-SKL-01050"
+    ],
     "spec": {
      "kind": "graph",
      "window": {
@@ -211,7 +217,6 @@
    "ek_id": "BC-EK-LIM-2C2",
    "depth": "core",
    "text": "At a boundary of a piecewise rule, the left expression, the right expression and the function value must agree (BC-EK-LIM-2C2, ced:50). All three enter, so each boundary gives one equation, and two unknowns need two boundaries.",
-   "notation": "",
    "quote": {
     "text": "as well as the value of the function at the boundary.",
     "source": "ced:50"
@@ -219,6 +224,10 @@
    "delivery": {
     "mode": "interactive",
     "reason": "rule 3 promoted: BC-QA-01008 common_givens name a piecewise rule with unknown constants and the stem asks for the joining value",
+    "sources": [
+     "BC-QA-01008",
+     "BC-SKL-01051"
+    ],
     "spec": {
      "kind": "graph",
      "window": {
@@ -307,7 +316,7 @@
    "archetype_id": "BC-QA-01008",
    "cue": "A piecewise rule with one or two unknown constants, and the stem asks for their values.",
    "method": "First written line: the one sided limit from each branch at the first boundary.",
-   "rival": "The rival matches the two one sided limits and ignores the defined value (BC-ERR-01015).",
+   "rival": "The rival matches the one sided limits and ignores the value (BC-ERR-01015).",
    "separating_feature": "The branch whose condition holds the equals sign supplies the value, and the value enters the equation."
   },
   {
@@ -347,37 +356,34 @@
      "expression": [
       "Multiply",
       [
+       "Power",
+       [
+        "Add",
+        -1,
+        "x"
+       ],
+       -1
+      ],
+      [
        "Add",
+       -1,
        [
         "Power",
         "x",
         2
-       ],
-       [
-        "Multiply",
-        -1,
-        1
        ]
-      ],
-      [
-       "Power",
-       [
-        "Add",
-        "x",
-        [
-         "Multiply",
-         -1,
-         1
-        ]
-       ],
-       -1
       ]
-     ]
+     ],
+     "relation": "new"
     },
     {
      "cue": "Substitution gives \\(\\frac00\\), so divide out \\(x-1\\).",
      "why": "The branch equals \\(x+1\\) away from 1.",
-     "expression": 2
+     "expression": 2,
+     "relation": "limit",
+     "variable": "x",
+     "point": "1",
+     "dir": "-"
     },
     {
      "cue": "\\(1\\le x\\) puts \\(x=1\\) in the middle branch.",
@@ -390,7 +396,8 @@
        "m"
       ],
       2
-     ]
+     ],
+     "relation": "new"
     },
     {
      "cue": "Boundary \\(x=3\\): \\(f(3)=3k+m\\); the right branch tends to \\(12\\).",
@@ -399,15 +406,16 @@
       "Equal",
       [
        "Add",
+       "m",
        [
         "Multiply",
         3,
         "k"
-       ],
-       "m"
+       ]
       ],
       12
-     ]
+     ],
+     "relation": "new"
     },
     {
      "cue": "Two equations share \\(m\\).",
@@ -415,38 +423,20 @@
      "expression": [
       "Equal",
       [
-       "Add",
-       [
-        "Multiply",
-        3,
-        "k"
-       ],
-       "m",
-       [
-        "Multiply",
-        -1,
-        [
-         "Add",
-         "k",
-         "m"
-        ]
-       ]
+       "Multiply",
+       2,
+       "k"
       ],
-      [
-       "Add",
-       12,
-       [
-        "Multiply",
-        -1,
-        2
-       ]
-      ]
-     ]
+      10
+     ],
+     "relation": "new"
     },
     {
      "cue": "One unknown left.",
      "why": "\\(2k=10\\).",
-     "expression": 5
+     "expression": 5,
+     "relation": "solve",
+     "variable": "k"
     },
     {
      "cue": "The stem asks for both constants.",
@@ -463,7 +453,8 @@
        "m",
        -3
       ]
-     ]
+     ],
+     "relation": "new"
     }
    ],
    "answer": {
@@ -484,7 +475,8 @@
    },
    "delivery": {
     "mode": "step_reveal",
-    "reason": "rule 1"
+    "reason": "rule 1",
+    "sources": []
    }
   },
   {
@@ -507,35 +499,7 @@
    "scoring_consequence": "Both the value point and any justification point are lost.",
    "wrong_step": {
     "text": "\\(\\frac{x^2-1}{x-1}\\) has no value at 1, so the left limit is called nonexistent.",
-    "expression": [
-     "Multiply",
-     [
-      "Add",
-      [
-       "Power",
-       1,
-       2
-      ],
-      [
-       "Multiply",
-       -1,
-       1
-      ]
-     ],
-     [
-      "Power",
-      [
-       "Add",
-       1,
-       [
-        "Multiply",
-        -1,
-        1
-       ]
-      ],
-      -1
-     ]
-    ]
+    "expression": "NaN"
    },
    "right_step": {
     "text": "The factor divides out: the left limit is 2.",
@@ -548,7 +512,8 @@
    },
    "delivery": {
     "mode": "step_reveal",
-    "reason": "rule 1"
+    "reason": "rule 1",
+    "sources": []
    }
   },
   {
@@ -570,48 +535,30 @@
    "observed_behavior": "The response concludes continuity because the two one sided limits agree, without comparing them with the function value.",
    "scoring_consequence": "The justification point is lost, and a parameter solved this way can be wrong when the defined value differs.",
    "wrong_step": {
-    "text": "Limits matched only: \\(k+m=2\\).",
-    "expression": [
-     "Equal",
-     [
-      "Add",
-      [
-       "Multiply",
-       "k",
-       1
-      ],
-      "m"
-     ],
-     2
-    ]
+    "text": "With \\(f(1)=4\\) set apart, both one sided limits are 2, so continuity is claimed.",
+    "expression": "True"
    },
    "right_step": {
-    "text": "\\(f(1)=k+m\\) compared too: \\(k+m=2\\).",
-    "expression": [
-     "Equal",
-     [
-      "Add",
-      "k",
-      "m"
-     ],
-     2
-    ]
+    "text": "\\(f(1)=4\\) differs from the limit 2: not continuous at 1.",
+    "expression": "False"
    },
-   "relation": "equivalent",
+   "relation": "distinct",
    "possible_reason": {
     "misconception_id": "BC-MIS-01009",
     "text": "most often that the function is defined there or that the one sided limits agree"
    },
    "delivery": {
     "mode": "step_reveal",
-    "reason": "rule 1"
+    "reason": "rule 1",
+    "sources": []
    }
   },
   {
    "id": "LSN-CON-01015#err-BC-ERR-01017",
    "type": "common_error",
    "bands": [
-    "low"
+    "low",
+    "mid"
    ],
    "skills": [
     "BC-SKL-01051"
@@ -632,15 +579,7 @@
       "k",
       "m"
      ],
-     [
-      "Add",
-      [
-       "Power",
-       1,
-       2
-      ],
-      3
-     ]
+     4
     ]
    },
    "right_step": {
@@ -658,7 +597,8 @@
    "relation": "distinct",
    "delivery": {
     "mode": "step_reveal",
-    "reason": "rule 1"
+    "reason": "rule 1",
+    "sources": []
    }
   },
   {
@@ -748,12 +688,15 @@
        "k"
       ],
       10
-     ]
+     ],
+     "relation": "new"
     },
     {
      "step": 2,
      "text": "\\(k=5\\).",
-     "mathjson": 5
+     "mathjson": 5,
+     "relation": "solve",
+     "variable": "k"
     },
     {
      "step": 3,
@@ -770,7 +713,8 @@
        "m",
        -3
       ]
-     ]
+     ],
+     "relation": "new"
     }
    ],
    "calculator_status": "no_calculator",
@@ -823,15 +767,16 @@
       "Equal",
       [
        "Add",
+       "m",
        [
         "Multiply",
         -1,
         "k"
-       ],
-       "m"
+       ]
       ],
       -2
-     ]
+     ],
+     "relation": "new"
     },
     {
      "step": 2,
@@ -840,15 +785,16 @@
       "Equal",
       [
        "Add",
+       "m",
        [
         "Multiply",
         2,
         "k"
-       ],
-       "m"
+       ]
       ],
       4
-     ]
+     ],
+     "relation": "new"
     },
     {
      "step": 3,
@@ -861,12 +807,15 @@
        "k"
       ],
       6
-     ]
+     ],
+     "relation": "new"
     },
     {
      "step": 4,
      "text": "\\(k=2\\).",
-     "mathjson": 2
+     "mathjson": 2,
+     "relation": "solve",
+     "variable": "k"
     },
     {
      "step": 5,
@@ -883,7 +832,8 @@
        "m",
        0
       ]
-     ]
+     ],
+     "relation": "new"
     }
    ],
    "calculator_status": "no_calculator",
@@ -912,7 +862,7 @@
     "command_verb": "find"
    },
    "answer_key": {
-    "form": "symbolic",
+    "form": "numeric",
     "mathjson": 5
    },
    "worked_solution": [
@@ -923,15 +873,16 @@
       "Equal",
       [
        "Add",
+       "m",
        [
         "Multiply",
         2,
         "k"
-       ],
-       "m"
+       ]
       ],
       4
-     ]
+     ],
+     "relation": "new"
     },
     {
      "step": 2,
@@ -940,15 +891,16 @@
       "Equal",
       [
        "Add",
+       "m",
        [
         "Multiply",
         4,
         "k"
-       ],
-       "m"
+       ]
       ],
       14
-     ]
+     ],
+     "relation": "new"
     },
     {
      "step": 3,
@@ -961,12 +913,15 @@
        "k"
       ],
       10
-     ]
+     ],
+     "relation": "new"
     },
     {
      "step": 4,
      "text": "\\(k=5\\).",
-     "mathjson": 5
+     "mathjson": 5,
+     "relation": "solve",
+     "variable": "k"
     }
    ],
    "options": [
@@ -1013,9 +968,9 @@
   "LSN-CON-01015#s5"
  ],
  "provenance": {
-  "author": "claude-opus-5-5",
+  "author": "tools/lesson_transcribe.py",
   "prompt_version": "generator/lesson_v1",
-  "generated_at": "2026-09-29T00:00:00Z",
+  "design_path": "docs/lessons/unit-01/LSN-CON-01015.md",
   "signed_off_by": null,
   "signed_off_at": null,
   "not_human": true

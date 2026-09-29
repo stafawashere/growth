@@ -12,6 +12,26 @@ a record under `content/lessons/<id>.json`. This file is the operating guide for
 that record afterwards: how the server ingests it, when it is served, and what the operator writes
 to move it to `signed_off`.
 
+## How a record is transcribed
+
+A record is never written by hand. `tools/lesson_transcribe.py` computes it from the design's
+machine record and the authoring bundle:
+
+```
+PYTHONPATH=. .venv/bin/python tools/lesson_transcribe.py docs/lessons/unit-NN/<id>.md [<out.json>]
+```
+
+Without `<out.json>` it writes `content/lessons/<id>.json`. The same design and snapshot always
+give the same bytes: texts verbatim, every SymPy string as MathJSON (`app/items/mathjson.py`
+`from_sympy`), step relations kept, each block's delivery from the design's `delivery` array,
+`word_count` from `app/lessons/plan.py` `band_words`, status `draft`, and provenance naming the
+tool and the `design_path`. A design field the record cannot express is refused with the field
+named, and the record is not written. Then run the checker on the file or the directory:
+
+```
+PYTHONPATH=. .venv/bin/python tools/check_lessons.py content/lessons/<id>.json
+```
+
 ## How a record is ingested
 
 `app/lessons/ingest.py` `ingest_lessons` runs when the server starts, before it accepts a

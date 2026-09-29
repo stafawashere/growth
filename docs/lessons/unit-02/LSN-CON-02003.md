@@ -280,8 +280,8 @@ No draw equals a published BC-QA-02002 `parameter_draw` (content/items_gen_unit0
   {"block": "err-BC-ERR-02008", "mode": "step_reveal", "reason": "rule 1", "sources": []}
  ],
  "refresher": ["ki-1", "err-BC-ERR-02005", "err-BC-ERR-02006", "err-BC-ERR-02007", "err-BC-ERR-02008", "ex-1"],
- "read_minutes": {"full": 3.4, "brief": 2.4},
- "word_count": {"full": 504, "brief": 358},
+ "read_minutes": {"full": 3.45, "brief": 2.4},
+ "word_count": {"full": 517, "brief": 358},
  "research_lines": [
   {"file": "research/units/unit-02-differentiation-definition-properties.md", "line": "The derivative of f is the function whose value at x is the limit as h tends to zero of the quotient of f(x plus h) minus f(x) by h, provided this limit exists"}
  ],

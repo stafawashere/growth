@@ -44,7 +44,7 @@ import type {
    RepresentationMatrixPayload,
    ReviewPayload,
    SavedQuestion,
-   ServedItem,
+   ServedEntry,
    SessionPayload,
    SettingsPayload,
    TimedKind,
@@ -66,7 +66,7 @@ export class ApiError extends Error {
 }
 
 export interface NextItemResponse {
-   item: ServedItem | null;
+   item: ServedEntry | null;
 }
 
 /* app/api/routes/sessions.py next_diagnostic_item. Once diagnostic_finished is true the item is

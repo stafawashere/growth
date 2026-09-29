@@ -91,6 +91,12 @@ export interface QueueSlot {
    /* app/session/build.py: the productive-failure opener, first ordinary item of block 2. */
    is_opener?: boolean;
    opener_concept?: string;
+   /* app/session/build.py: block 2 items carry kind "item"; an item a lesson went before names it,
+      and an item whose lesson was deferred or needed no insertion links it (15 Session assembly). */
+   kind?: "item";
+   preceded_by_lesson_id?: string;
+   preceded_by_lesson_version?: number;
+   lesson_link?: { lesson_id: string; version: number };
 }
 
 /* GET /sessions/{id}/next: the slot plus app/session/service.py served_item's steps and the
@@ -98,15 +104,42 @@ export interface QueueSlot {
 export interface ServedItem extends QueueSlot {
    served_steps: ServedStep[] | null;
    self_explanation_prompt: string | null;
+   concept_name?: string | null;
+}
+
+/* A lesson or refresher slot of block 1 or block 2 (app/session/build.py LessonPlacement,
+   app/lessons/refresh.py refresher_entry). GET /sessions/{id}/next serves it with the stored
+   record body as lesson and the concept's name for the top bar. */
+export interface SessionLessonSlot {
+   kind: "lesson" | "refresher";
+   lesson_id: string;
+   version: number;
+   band: LessonBand;
+   reason: LessonReason;
+   concept_id: string;
+   before_item_id: string;
+   minutes: number;
+   plan: LessonPlan;
+}
+
+export interface ServedLesson extends SessionLessonSlot {
+   lesson: LessonRecord | null;
+   concept_name: string | null;
+}
+
+export type ServedEntry = ServedItem | ServedLesson;
+
+export function isServedLesson(entry: ServedEntry): entry is ServedLesson {
+   return entry.kind === "lesson" || entry.kind === "refresher";
 }
 
 /* app/session/service.py queue_payload. Block 4 holds the ids of items corrected today, and
    forecasts maps an archetype id to its forecast minutes. */
 export interface SessionQueue {
-   block1: QueueSlot[];
-   block2: QueueSlot[];
+   block1: Array<QueueSlot | SessionLessonSlot>;
+   block2: Array<QueueSlot | SessionLessonSlot>;
    block3: QueueSlot[];
-   block4: string[];
+   block4: Array<string | { kind: "read_again"; lesson_id: string; version: number }>;
    forecasts: Record<string, number>;
    coverage_gaps: string[];
    interleaving_satisfied: boolean;
@@ -123,7 +156,7 @@ export interface SessionPayload {
    updates_mastery: boolean;
    snapshot_id: string | null;
    queue: SessionQueue;
-   remaining: QueueSlot[];
+   remaining: Array<QueueSlot | SessionLessonSlot>;
 }
 
 /* app/api/routes/sessions.py submit_attempt. */
@@ -178,6 +211,14 @@ export interface FeedbackPayload {
    comparison?: ComparisonPayload | null;
    sentence: string | null;
    tutor_unavailable: boolean;
+   /* 15 Diagnosis links: the concept lesson's block on the error the answer showed. */
+   lesson_link?: FeedbackLessonLink | null;
+}
+
+export interface FeedbackLessonLink {
+   lesson_id: string;
+   version: number;
+   anchor: string;
 }
 
 /* app/session/preview.py home_state. */

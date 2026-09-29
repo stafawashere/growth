@@ -32,10 +32,10 @@ async function settle() {
    });
 }
 
-function renderCheck(check: LessonCheckRecord, onCheckAnswer: ReturnType<typeof vi.fn>) {
+function renderCheck(check: LessonCheckRecord, onCheckAnswer: ReturnType<typeof vi.fn>, sections = LESSON.sections) {
    const withSolution = { ...check, worked_solution: [{ step: 1, text: "The rule gives two terms." }] };
 
-   render(<LessonCheck check={withSolution} sections={LESSON.sections} onCheckAnswer={onCheckAnswer} onOpenAnchor={vi.fn()} />);
+   render(<LessonCheck check={withSolution} sections={sections} onCheckAnswer={onCheckAnswer} onOpenAnchor={vi.fn()} />);
 }
 
 function chooseSecondOption() {
@@ -46,6 +46,10 @@ function chooseSecondOption() {
 async function submit() {
    activate(screen.getByTestId("lesson-check-submit"));
    await settle();
+}
+
+function sectionsWithRightStep(text: string, expression: unknown) {
+   return LESSON.sections.map((section) => (section.id === ERROR_ID ? { ...section, right_step: { text, expression } } : section));
 }
 
 function follows(first: HTMLElement, second: HTMLElement) {
@@ -98,6 +102,30 @@ describe("LessonCheck verdict", () => {
       expect(screen.getByTestId("lesson-verdict-right-step").textContent).toContain(`The right step: `);
       expect(screen.getByTestId("lesson-verdict-right-step").textContent).toContain("The rule adds two terms");
       expect(screen.getByTestId("lesson-verdict-consequence").textContent).toBe(`On the exam: ${errorBlock.scoring_consequence}`);
+   });
+
+   it("a right step whose text already ends with its value shows the value once", async () => {
+      renderCheck(MCQ, vi.fn().mockResolvedValue({ ...MATCHED, right_step: undefined }), sectionsWithRightStep("Divided by 0.1: 5.2.", 5.2));
+      chooseSecondOption();
+      await submit();
+
+      const rightStep = screen.getByTestId("lesson-verdict-right-step");
+
+      expect(rightStep.querySelectorAll(".katex")).toHaveLength(0);
+      expect(rightStep.textContent).toBe("The right step: Divided by 0.1: 5.2.");
+   });
+
+   it("a right step whose text does not carry its value shows the value after the text", async () => {
+      renderCheck(MCQ, vi.fn().mockResolvedValue({ ...MATCHED, right_step: undefined }), sectionsWithRightStep("Divide by the change in the input.", 5.2));
+      chooseSecondOption();
+      await submit();
+
+      const rightStep = screen.getByTestId("lesson-verdict-right-step");
+      const renderedValues = rightStep.querySelectorAll(".katex");
+
+      expect(renderedValues).toHaveLength(1);
+      expect(renderedValues[0].querySelector("annotation")?.textContent).toBe("5.2");
+      expect(rightStep.textContent).toMatch(/^The right step: Divide by the change in the input\. /);
    });
 
    it("Try again clears a choice for one retry, and a second wrong answer shows the worked solution with no retry", async () => {

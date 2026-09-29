@@ -10,6 +10,7 @@ import type {
 import { MathAnswerField } from "../input/MathAnswerField";
 import { McqControl } from "../input/McqControl";
 import { MathValue } from "../math/MathValue";
+import { latexToAccessibleText, mathJsonToLatex } from "../math/mathjson";
 import { LessonText } from "./LessonText";
 import { CORRECT_GLYPH, CORRECT_WORD, INCORRECT_GLYPH } from "../session/StepMarks";
 import { ActionFailed } from "../status/LoadState";
@@ -48,6 +49,33 @@ export function errorSectionFor(verdict: LessonCheckVerdict, sections: LessonSec
    const byError = verdict.error_id === null ? undefined : sections.find((section) => section.error_id === verdict.error_id);
 
    return byAnchor ?? byError ?? null;
+}
+
+function escapeForPattern(text: string) {
+   return text.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
+}
+
+/* The design texts mostly end with the value already ("Divided by 0.1: 5.2."), so the value is
+   appended only when the text does not carry it. A match must not sit inside a longer number, so
+   5 is not found in 0.5 or 5.2. */
+export function textCarriesValue(text: string, value: unknown) {
+   const plainForms = [latexToAccessibleText(mathJsonToLatex(value))];
+
+   if (typeof value === "number" || typeof value === "string") {
+      plainForms.push(String(value));
+   }
+
+   return plainForms.some((form) => {
+      const hasForm = form.trim().length > 0;
+
+      if (!hasForm) {
+         return false;
+      }
+
+      const standaloneForm = new RegExp(`(?<![\\d.])${escapeForPattern(form.trim())}(?!\\d|\\.\\d)`);
+
+      return standaloneForm.test(text);
+   });
 }
 
 type Answer = { kind: "none" } | { kind: "math"; value: unknown } | { kind: "option"; id: string };
@@ -97,6 +125,8 @@ export function LessonCheck({ check, sections, onCheckAnswer, onOpenAnchor, now 
    const showsSolution = isWrong && (!namesError || hasRetried);
    const rightStepText = verdict?.right_step ?? errorSection?.right_step?.text ?? null;
    const rightStepValue = errorSection?.right_step?.expression;
+   const hasRightStepValue = rightStepValue !== undefined && rightStepValue !== null;
+   const showsRightStepValue = hasRightStepValue && rightStepText !== null && !textCarriesValue(rightStepText, rightStepValue);
    const consequence = verdict?.scoring_consequence ?? errorSection?.scoring_consequence ?? null;
 
    return (
@@ -157,7 +187,7 @@ export function LessonCheck({ check, sections, onCheckAnswer, onOpenAnchor, now 
                         <p data-testid="lesson-verdict-right-step">
                            {RIGHT_STEP_PREFIX}
                            <LessonText text={rightStepText} />
-                           {rightStepValue !== undefined && rightStepValue !== null ? (
+                           {showsRightStepValue ? (
                               <>
                                  {" "}
                                  <MathValue value={rightStepValue} />

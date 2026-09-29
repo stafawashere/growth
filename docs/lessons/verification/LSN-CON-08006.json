@@ -33,5 +33,124 @@
    }
   ],
   "answers_file": "/tmp/claude-0/-home-user-growth/ac029253-8ff0-5a4b-8b5f-cdcaf5e8ff8d/scratchpad/verify/answers_12.json"
+ },
+ "audit": {
+  "date": "2026-09-29",
+  "auditor": "claude-opus-5-5",
+  "blocks": [
+   {
+    "id": "orientation",
+    "verdict": "ok",
+    "evidence": "Paraphrases BC-CON-08006 and the 8.3 Amount at a time paragraph and the Notation paragraph on the differential."
+   },
+   {
+    "id": "ki-1",
+    "verdict": "ok",
+    "evidence": "ced:154 CHA-4.D.1 and the 8.3 Amount at a time conclusion; 38 words."
+   },
+   {
+    "id": "ki-2",
+    "verdict": "ok",
+    "evidence": "ced:154 CHA-4.E.1 plus the 8.3 Interpretation line (sg-23:2, cached page confirms quantity, interval, units); the units product is dimensional arithmetic."
+   },
+   {
+    "id": "st-1",
+    "verdict": "ok",
+    "evidence": "Matches BC-QA-06005 expected_solution_path and wrong_approaches[0]."
+   },
+   {
+    "id": "st-2",
+    "verdict": "ok",
+    "evidence": "Method and rival match BC-QA-99008 expected_solution_path[0] and wrong_approaches[0]; cue matches common_givens."
+   },
+   {
+    "id": "st-3",
+    "verdict": "ok",
+    "evidence": "Method and rival match BC-QA-08006 expected_solution_path[0] and wrong_approaches[0]; cue 18 words."
+   },
+   {
+    "id": "ex-1",
+    "verdict": "ok",
+    "evidence": "SymPy: integrate(4t+3,(t,2,4)) = 30 (44 - 14), 40 + 30 = 70; draw square 2, linear 3 gives 4t+3."
+   },
+   {
+    "id": "reader-ex-1",
+    "verdict": "ok",
+    "evidence": "BC-PT-99033 line verbatim from the bundle record."
+   },
+   {
+    "id": "err-BC-ERR-08011",
+    "verdict": "ok",
+    "evidence": "Verbatim BC-ERR-08011; SymPy wrong 30, right 70."
+   },
+   {
+    "id": "err-BC-ERR-08012",
+    "verdict": "ok",
+    "evidence": "Verbatim BC-ERR-08012; 30 versus 70; reason is the tail of the BC-MIS-08006 description."
+   },
+   {
+    "id": "err-BC-ERR-99006",
+    "verdict": "ok",
+    "evidence": "Verbatim BC-ERR-99006; dx for a rate in t matches the setup loss row in common-point-losses.md Setup points."
+   },
+   {
+    "id": "err-BC-ERR-99005",
+    "verdict": "ok",
+    "evidence": "Verbatim BC-ERR-99005; units row in common-point-losses.md Units points."
+   },
+   {
+    "id": "representations",
+    "verdict": "ok",
+    "evidence": "null; the 8.3 conversions are verbal to symbolic, carried by the steps."
+   },
+   {
+    "id": "delivery-ki-1",
+    "verdict": "ok",
+    "evidence": "Motion curve 2x^2+3x+26 checked by SymPy: A(2)=40, A(3)=53, A(4)=70."
+   },
+   {
+    "id": "bridge-BC-PRQ-06005",
+    "verdict": "ok",
+    "evidence": "Paraphrases BC-PRQ-06005 distinguishing a function from its value."
+   },
+   {
+    "id": "bridge-BC-PRQ-08006",
+    "verdict": "ok",
+    "evidence": "Paraphrases BC-PRQ-08006 description_plain on precision and premature rounding."
+   },
+   {
+    "id": "time",
+    "verdict": "ok",
+    "evidence": "62/29 = 2.14 from exam-structure.md; either status tagged inferred."
+   },
+   {
+    "id": "chk-1",
+    "verdict": "ok",
+    "evidence": "SymPy: 40 + 30 = 70."
+   },
+   {
+    "id": "chk-2",
+    "verdict": "ok",
+    "evidence": "SymPy: 30 + integrate(-3t^2+6t+4,(t,1,2)) = 30 + 6 = 36; draw cubic -1, square 3, linear 4 matches."
+   },
+   {
+    "id": "chk-3",
+    "verdict": "ok",
+    "evidence": "SymPy: 20 + integrate(2t+4,(t,1,4)) = 47; B 27 (ERR-08011), C dx (ERR-99006), D gallons per hour (ERR-99005) each map to a bundle error."
+   }
+  ],
+  "advice": [
+   "The PRQ-08006 bridge speaks to a calculator form while every example and check in the lesson is no calculator, so the bridge has nothing to attach to.",
+   "st-3 (maximum time) is taught in the strategy block only; no example or check touches it, so the rival it names is recognised but never practised. It belongs to BC-CON-08008 and could be dropped here.",
+   "chk-3 option C: sg-22:2 accepts dx written for dt (BC-PT-99001 notation), so calling the dx response a full point loss is contestable; the error record itself says the setup point is lost only when the expression is ambiguous.",
+   "ex-1 tags only BC-PT-99033; the untagged integral and answer points are listed inferred, which leaves the scoring habit partly implicit."
+  ],
+  "counts": {
+   "ok": 20,
+   "unsourced": 0,
+   "wrong": 0,
+   "over_cap": 0,
+   "lint": 0
+  }
  }
 }

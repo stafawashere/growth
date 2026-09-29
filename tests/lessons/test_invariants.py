@@ -12,11 +12,12 @@ decayed skills), a lesson library over the live concepts and prerequisites, less
 switch arm and the forecast history, all from one seeded generator.
 """
 import copy
+import os
 import random
 from datetime import datetime, timedelta
 
 import pytest
-from hypothesis import HealthCheck, given, settings, strategies as st
+from hypothesis import HealthCheck, Phase, given, settings, strategies as st
 
 from app.engine.state import FadingStage
 from app.lessons import constants, gate, refresh
@@ -26,9 +27,16 @@ from app.sim import whole_graph
 from tests.session.test_lesson_gate import lesson_body
 
 PROPERTY_EXAMPLES = 1000
+# A red demonstration may run fewer cases without shrinking; the standing gate never sets it.
+DEMONSTRATION_EXAMPLES = os.environ.get("LESSON_INVARIANT_DEMO_EXAMPLES")
 TODAY = whole_graph.START_DAY
 STATUSES = (None, "unseen", "deferred", "served", "read", "skipped")
-PROPERTY = settings(max_examples=PROPERTY_EXAMPLES, deadline=None, suppress_health_check=[HealthCheck.function_scoped_fixture, HealthCheck.too_slow])
+PROPERTY = settings(
+   max_examples=int(DEMONSTRATION_EXAMPLES) if DEMONSTRATION_EXAMPLES else PROPERTY_EXAMPLES,
+   phases=(Phase.generate,) if DEMONSTRATION_EXAMPLES else tuple(Phase),
+   deadline=None,
+   suppress_health_check=[HealthCheck.function_scoped_fixture, HealthCheck.too_slow],
+)
 
 
 @pytest.fixture(scope="module")
@@ -282,7 +290,15 @@ def check_l5(session, states, graph, concept_id, lesson_id):
       band = gate.lesson_band(graph.archetypes[entry["archetype_id"]], states, graph, None)
       is_expert = band == "none"
 
-      if is_expert:
+      deferred_here = [
+         deferral for deferral in session.lesson_deferrals
+         if deferral["before_item_id"] == entry["id"] and deferral["reason"] in ("block_minutes", "reading_share")
+      ]
+      # The lesson waits again only when its minutes do not fit what is left of block 2 or of
+      # the reading share; the count cap cannot bind with one servable lesson.
+      is_postponed = len(deferred_here) > 0
+
+      if is_expert or is_postponed:
          assert entry["lesson_link"]["lesson_id"] == lesson_id
       else:
          assert session.block2[index - 1].get("lesson_id") == lesson_id

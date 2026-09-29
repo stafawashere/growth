@@ -46,7 +46,8 @@
    {
     "id": "ki-1",
     "verdict": "ok",
-    "evidence": "fixed 2026-09-29: record ids (BC-EK-LIM-1E2, ced:45) removed from the served text; both stay in the block sources."
+    "evidence": "Squeeze statement matches BC-EK-LIM-1E2 and the 1.8 paragraph; ced:45 quote verbatim; SymPy bounds 2 -/+ 3|x-1| tend to 2; motion windows 2 -/+ 3, 0.3, 0.03 match the bounds at half-widths 1, 0.1, 0.01.",
+    "reaudited": "2026-09-29"
    },
    {
     "id": "st-1",
@@ -70,8 +71,9 @@
    },
    {
     "id": "err-BC-ERR-99008",
-    "verdict": "ok",
-    "evidence": "re-added 2026-09-29: observed_behavior and scoring_consequence equal the BC-ERR-99008 record exactly; possible_reason is a substring of BC-MIS-99009, which the record links; SymPy: limits of 2 -/+ 3|x-1| at 1 are both 2, so wrong 2 and right 2 are equivalent. The served observed_behavior still names MVT, IVT and L'Hospital's Rule (see advice)."
+    "verdict": "wrong",
+    "evidence": "Record observed_behavior names the Mean Value Theorem, the Intermediate Value Theorem and L'Hospital's Rule and their specific conditions; the wrong step is a squeeze conclusion with no inequality, a theorem the record does not describe (tie is only BC-SKL-01032 in its skills), and the served consequence (FRQ condition point) conflicts with the design's own inferred note that squeeze sits in Section I Part A only.",
+    "reaudited": "2026-09-29"
    },
    {
     "id": "representations",
@@ -111,9 +113,9 @@
    "The lesson teaches the three lines scoring_pattern names (inequality, bound limits, conclusion) through ex-1, but no check asks the student to write the inequality line themselves; chk-3 recognises it only."
   ],
   "counts": {
-   "ok": 13,
+   "ok": 12,
    "unsourced": 0,
-   "wrong": 0,
+   "wrong": 1,
    "over_cap": 0,
    "lint": 0
   },

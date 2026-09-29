@@ -1,5 +1,8 @@
 {
- "id": "LSN-CON-04011",
+ "lesson_id": "LSN-CON-04011",
+ "version": 1,
+ "compared_on": "2026-09-29",
+ "auditor": "claude-opus-5-5",
  "resolve": {
   "date": "2026-09-29",
   "problems": 4,
@@ -125,11 +128,5 @@
    "over_cap": 0,
    "lint": 0
   }
- },
- "fix_notes": [
-  "Orientation and ki-1 figures now draw the true f(x) = 2x^3/3 - 3x + 19/3 (SymPy: f(1) = 4, f' = 2x^2 - 3, f''(1) = 4); ki-1 curve point y updated to 4 - h/2 + h^2/2 + h^3/12; orientation window [0.5, 1.5] x [3, 5] holds the curve (values 4.917, 4.083, min 3.884).",
-  "word_count.full 519 to 556, read_minutes.full 3.5 to 3.71 per checker.",
-  "Left as preferences: the over or under estimate judgement of BC-QA-04008 is not taught (judgement off throughout).",
-  "2026-09-29: error_blocks fix. err-BC-ERR-99022 replaced by err-BC-ERR-04027 as the fourth block (check_lessons.py expects 04024, 99035, 04023, 04027). Wrong f'(1.1) = 2(1.1)^2 - 3 = -29/50, right f'(1) = -1, distinct; possible_reason from BC-MIS-04012. The record's two-coordinate derivative shown as f' evaluated at the nearby input is listed as inferred. chk-3 option D pointed at the removed block (-4/5 via BC-ERR-99022), so it is recomputed as the BC-ERR-04027 value: slope f'(1.8) = 44/25 in 3 + (44/25)(x - 2) at 1.8 gives 331/125. Key 14/5 unchanged. word_count.full 551."
- ]
+ }
 }

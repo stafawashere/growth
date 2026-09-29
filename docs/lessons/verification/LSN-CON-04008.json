@@ -45,18 +45,21 @@
    },
    {
     "id": "ki-1",
-    "verdict": "ok",
-    "evidence": "Quote found verbatim on the cited CED page; claims match the EK and research section; within 120 words."
+    "verdict": "wrong",
+    "evidence": "'A varying dimension with no given rate is eliminated before differentiating' also covers the asked quantity: in ex-1 h has no given rate and is kept, in chk-2 the top height y has no given rate and is kept (its rate is the key -4); the sources (4.4 relating equation paragraph, BC-QA-04006 path) eliminate only a variable 'the supplied rates cannot support'. ced:90 quote verbatim.",
+    "reaudited": "2026-09-29"
    },
    {
     "id": "ki-2",
     "verdict": "ok",
-    "evidence": "Quote found verbatim on the cited CED page; claims match the EK and research section; within 120 words."
+    "evidence": "Now core; CHA-3.D.2 quote verbatim on ced:90; one rate factor per varying factor is the product rule on r^2 h.",
+    "reaudited": "2026-09-29"
    },
    {
     "id": "st-1",
-    "verdict": "ok",
-    "evidence": "Cue, method and rival match the archetype record; within 80 words."
+    "verdict": "wrong",
+    "evidence": "Method 'eliminate each dimension with no supplied rate' drops the condition in BC-QA-04006 expected_solution_path ('any variable the supplied rates cannot support'); applied to chk-2 it would eliminate y, whose rate is asked.",
+    "reaudited": "2026-09-29"
    },
    {
     "id": "st-2",
@@ -140,9 +143,9 @@
    "st-1 and st-2 teach recognition and first line well; the elimination step (similar triangles) is the lesson's core and is carried by ex-1 step 2, which has no expr."
   ],
   "counts": {
-   "ok": 19,
+   "ok": 17,
    "unsourced": 0,
-   "wrong": 0,
+   "wrong": 2,
    "over_cap": 0,
    "lint": 0
   }

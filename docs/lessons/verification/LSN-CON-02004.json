@@ -70,8 +70,9 @@
    },
    {
     "id": "err-BC-ERR-04017",
-    "verdict": "ok",
-    "evidence": "re-added 2026-09-29: observed_behavior and scoring_consequence equal the BC-ERR-04017 record exactly; possible_reason is a substring of BC-MIS-99005, which the record links; SymPy: Eq(dV/dh, -6) and Eq(dV/dt, -6) differ (dV/dh - dV/dt is not 0), so distinct holds."
+    "verdict": "wrong",
+    "evidence": "Record observed_behavior is a relating equation differentiated with respect to a length or x and stopped before the chain rule; ex-1 is a notation conversion with no relating equation, no chain rule and no depth variable, so dV/dh = -6 introduces an h the stem never names and is not the described move (carry-over listed as inferred).",
+    "reaudited": "2026-09-29"
    },
    {
     "id": "err-BC-ERR-02029",
@@ -106,7 +107,8 @@
    {
     "id": "chk-3",
     "verdict": "ok",
-    "evidence": "fixed 2026-09-29: option C re-derived from BC-ERR-03022, which has a block: label dT=-4 at x=3 (dT written in place of dT/dx). Key B unchanged."
+    "evidence": "Key B: T'(3) = -4 as dT/dx at x = 3, decreasing 4 degrees Celsius per meter; A quotient reading (BC-ERR-02029), C dT in place of dT/dx (BC-ERR-03022 'writes dy in place of dy/dx'), D evaluation bar dropped (BC-ERR-02030); all distinct.",
+    "reaudited": "2026-09-29"
    }
   ],
   "advice": [
@@ -116,9 +118,9 @@
    "The sources list names sg-25:7 and sg-24:8 though no block cites them."
   ],
   "counts": {
-   "ok": 14,
+   "ok": 13,
    "unsourced": 0,
-   "wrong": 0,
+   "wrong": 1,
    "over_cap": 0,
    "lint": 0
   },

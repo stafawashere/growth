@@ -65,8 +65,8 @@
    },
    {
     "id": "st-1.contrast",
-    "verdict": "unsourced",
-    "evidence": "this (Find g(6)) matches BC-QA-06003 asked_to_produce 'the values of g at stated inputs', but not_this (Find g'(6)) is BC-QA-06003's own typical_wording[0] 'find the value of g prime at a stated input', so the near miss is a stem of the block's archetype."
+    "verdict": "ok",
+    "evidence": "fixed 2026-09-29: not_this is now a BC-QA-06012 stem (typical_wording: the value of h prime at a stated input), 'For the graphed f, h(x)=∫_2^{x^2} f(t) dt. Find h'(2).', why_not 'A derivative: f(4) times the chain factor.', feature 'g itself is asked.'; BC-QA-06012 added to st-1's sources. SymPy: h'(x) = 2x f(x^2), h'(2) = 4 f(4)."
    },
    {
     "id": "st-2",
@@ -75,8 +75,8 @@
    },
    {
     "id": "st-3",
-    "verdict": "lint",
-    "evidence": "Label strip capitalized the function name: method reads \"H'(x) equals the integrand at the upper limit\" while every problem names h; H is a different function."
+    "verdict": "ok",
+    "evidence": "fixed 2026-09-29: method restored to \"h'(x) equals the integrand at the upper limit.\", matching the function h every problem names."
    },
    {
     "id": "ex-1",
@@ -159,11 +159,14 @@
    "Contrast not_this could come from a sibling archetype the bundle carries rather than BC-QA-06003's own g prime stem, for example a formula integral with numeric limits."
   ],
   "counts": {
-   "ok": 19,
-   "unsourced": 1,
+   "ok": 21,
+   "unsourced": 0,
    "wrong": 0,
    "over_cap": 0,
-   "lint": 1
+   "lint": 0
   }
- }
+ },
+ "fix_notes": [
+  "st-1.contrast: not_this moved to a BC-QA-06012 near miss; st-3 method lowercase h restored. Word counts 681 full, 447 brief from the checker."
+ ]
 }

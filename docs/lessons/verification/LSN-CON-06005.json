@@ -56,8 +56,8 @@
    },
    {
     "id": "st-1.contrast",
-    "verdict": "unsourced",
-    "evidence": "not_this ('Write lim as n -> infinity of ... as a definite integral') is BC-QA-06014's own typical_wording[0] ('express the given limit of a Riemann sum as a definite integral'), and this (a sigma sum with no limit) matches neither typical_wording nor asked_to_produce of BC-QA-06014; the math holds (SymPy limit = 124/3 = integral of x^2 on [1, 5])."
+    "verdict": "ok",
+    "evidence": "fixed 2026-09-29: this is now the limit-of-a-sum stem of BC-QA-06014 typical_wording[0] ('Write lim as n → ∞ of Σ (1 + 4i/n)^2 (4/n) as a definite integral.'); not_this is a plain sigma sum with no limit ('Evaluate Σ_{i=1}^{4} (1 + i)^2, the right sum for ∫_1^5 x^2 dx with n = 4.'), why_not 'No limit: add four terms to get a number.', feature 'lim as n → ∞ in front.'. SymPy: the limit is 124/3 = ∫_1^5 x^2 dx; the finite sum is 4 + 9 + 16 + 25 = 54."
    },
    {
     "id": "ex-1",
@@ -98,11 +98,14 @@
    "Carried from the earlier audit: ex-1 step_reveal suits the build of the general term."
   ],
   "counts": {
-   "ok": 9,
-   "unsourced": 1,
+   "ok": 10,
+   "unsourced": 0,
    "wrong": 0,
    "over_cap": 0,
    "lint": 0
   }
- }
+ },
+ "fix_notes": [
+  "st-1.contrast: this and not_this swapped roles as the audit advised (limit stem as this, sigma sum without a limit as not_this). Word counts 440 full, 440 brief from the checker."
+ ]
 }

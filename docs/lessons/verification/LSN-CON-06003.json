@@ -76,8 +76,8 @@
    },
    {
     "id": "st-1.contrast",
-    "verdict": "unsourced",
-    "evidence": "not_this ('Is a right sum ... over or under?') is BC-QA-06001's own stem: its asked_to_produce lists 'an over or under estimate decision with a reason'; the pair contrasts two parts of one archetype, so the 'not this' claim has no source."
+    "verdict": "ok",
+    "evidence": "fixed 2026-09-29: not_this is now a BC-QA-06017 near miss ('Right sum, three equal widths, for ∫_0^6 t^2 dt.'), whose common width is correct and whose wrong_approaches entry is the table-reading habit of unequal widths; why_not 'One common width fits a formula.', feature 'Unequal table gaps.'; BC-QA-06017 is in st-1's sources. SymPy: right sum 2(4 + 16 + 36) = 112, integral 72. Recognition prose updated."
    },
    {
     "id": "ex-1",
@@ -86,8 +86,8 @@
    },
    {
     "id": "ex-2",
-    "verdict": "wrong",
-    "evidence": "fade_from 2 shows step 1 only, and step 1's expression is 102, the answer (SymPy (5+9)/2*4 + (9+11)/2*2 + (11+7)/2*6 = 28 + 20 + 54 = 102); the withheld step 'Add.' is valued but equivalent, so the fade asks the student to produce a value already on screen."
+    "verdict": "ok",
+    "evidence": "fixed 2026-09-29: step 1 split into three valued steps 4*(5 + 9)/2, 2*(9 + 11)/2, 6*(11 + 7)/2 (SymPy 28, 20, 54), then 28 + 20 + 54 (new, BC-PT-99018) and 102 (equivalent, BC-PT-99019); fade_from 2 to 4, so the shown steps are the three products and the withheld steps hold the sum and the value, neither on screen. Problem text and answer 102 unchanged."
    },
    {
     "id": "what_a_reader_scores:ex-1",
@@ -123,8 +123,8 @@
    },
    {
     "id": "BC-PRQ-06005",
-    "verdict": "lint",
-    "evidence": "Served text shortened to 'Right row.', which in a lesson on left and right sums reads as the right-endpoint row rather than 'read the value from the correct row' (BC-PRQ-06005 failure_signature)."
+    "verdict": "ok",
+    "evidence": "fixed 2026-09-29: bridge text 'Right row.' replaced by 'Value at the stated input.', a paraphrase of BC-PRQ-06005 description_plain (evaluation at a stated input) that cannot be read as the right-endpoint row."
    },
    {
     "id": "BC-PRQ-06007",
@@ -167,11 +167,14 @@
    "Carried from the earlier audit: step_reveal for the sums and table data inline suit the process; a small table for the t and R(t) values would read better than inline lists."
   ],
   "counts": {
-   "ok": 18,
-   "unsourced": 1,
-   "wrong": 1,
+   "ok": 21,
+   "unsourced": 0,
+   "wrong": 0,
    "over_cap": 0,
-   "lint": 1
+   "lint": 0
   }
- }
+ },
+ "fix_notes": [
+  "st-1.contrast: not_this changed to a BC-QA-06017 equal-width formula stem; ex-2 steps split into the three trapezoid products with fade_from 4; BC-PRQ-06005 bridge reworded. Word counts 829 full, 446 brief from the checker; read_minutes full 5.6."
+ ]
 }

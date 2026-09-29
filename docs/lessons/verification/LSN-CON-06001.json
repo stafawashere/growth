@@ -86,8 +86,8 @@
    },
    {
     "id": "ex-2",
-    "verdict": "wrong",
-    "evidence": "fade_from 4 (1-based, LessonSection.tsx shows steps before fade_from) shows steps 1 to 3, which with the problem's limits suffice to write the sentence, but the withheld steps 4 and 5 carry no expression, so nothing withheld is valued; the graded answer is mathjson 'gallons', which would accept the BC-ERR-06029 answer (quantity and units without the interval) that the lesson's own error block and sg-23:2 say does not earn the point. Grader behaviour for a statement key was inferred, not traced."
+    "verdict": "ok",
+    "evidence": "fixed 2026-09-29: fade_from 4 to 3: steps 1 (rate, no value) and 2 (gallons/hour*hour, valued) are shown, and the withheld steps 3 to 5 now hold the valued step 3 (gallons, equivalent to step 2) plus the interval and the sentence, so a valued step is withheld and one precedes the fade. Problem text, answer text and answer expr unchanged as instructed; the checker reports zero findings."
    },
    {
     "id": "wars-ex-1",
@@ -164,15 +164,17 @@
    "Carried from the earlier audit: The lesson teaches recognition for both archetypes, the first written line (partition; units of the integrand) and the rivals, and the scoring habit through the BC-PT-99069 line and sg-23:2 interpretation requirement."
   ],
   "counts": {
-   "ok": 19,
+   "ok": 20,
    "unsourced": 0,
-   "wrong": 1,
+   "wrong": 0,
    "over_cap": 0,
    "lint": 0
   }
  },
  "fix_notes": [
   "Fixed representations field naming (advice defect): kept F in spec.function, since ModelTable evaluates spec.function directly at x_values; relabelled computed, the column header (F(x), running total) and the figure's function field to say it holds F, not the rate f.",
-  "Left as preferences: three figures of one graph; chk-3 options B and D sharing an error path."
+  "Left as preferences: three figures of one graph; chk-3 options B and D sharing an error path.",
+  "ex-2: fade moved from step 4 to step 3 so the units result is withheld as a valued step; problem and answer unchanged. Word counts unchanged at 795 full, 448 brief (checker).",
+  "Left open: the ex-2 answer key is still the statement with mathjson 'gallons'; whether the grader accepts a units-only reply was not traced, and the answer was kept by instruction."
  ]
 }

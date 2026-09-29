@@ -466,7 +466,7 @@ BC-QA-04006 has `calculator_status` either, so Section I Part A, 2.14 minutes (r
    },
    "completes": "ex-1",
    "stem": {
-    "text": "For the tank of ex-1, dV/dt = (pi h^2/4) dh/dt. With dV/dt = 6 and h = 4, find dh/dt.",
+    "text": "For the example's tank, dV/dt = (pi h^2/4) dh/dt. With dV/dt = 6 and h = 4, find dh/dt.",
     "command_verb": "find"
    },
    "key": {
@@ -1015,8 +1015,8 @@ BC-QA-04006 has `calculator_status` either, so Section I Part A, 2.14 minutes (r
   "research/exam/exam-structure.md#Section and part layout"
  ],
  "word_count": {
-  "full": 633,
-  "brief": 450
+  "full": 632,
+  "brief": 449
  },
  "read_minutes": {
   "full": 4.3,

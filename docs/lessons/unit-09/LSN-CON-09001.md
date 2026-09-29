@@ -9,9 +9,13 @@ purpose: Authoring spec for the concept lesson on BC-CON-09001, a curve whose tw
 
 Concept BC-CON-09001 (skill BC-SKL-09001), topic 9.1 of Unit 9, loaded by BC-QA-09001 only. It is the first concept of the unit (docs/lessons/unit-09/README.md, section 1): every later parametric and vector concept differentiates the components this lesson differentiates.
 
+## Prediction
+
+Posed on ex-1's numbers, both bands, before any rule. Stem: a particle at \((2t+\ln(1+t^2), 4\sin(t^2/2))\), and what \(dx/dt\) describes at \(t=3/2\). Form `mcq`, three options, key B, "How fast the horizontal coordinate changes per unit of \(t\)". The other two options, "The slope of the path" and "The rate of \(y\) with respect to \(x\)", are the slope readings BC-MIS-09001 and BC-MIS-09002 name, and neither is true of \(dx/dt\). The resolution states the core claim of ki-1: each coordinate is differentiated on its own, and the parameter is not a coordinate. Sources: BC-CON-09001, BC-EK-CHA-3G1 and the Required mathematical knowledge paragraph of topic 9.1.
+
 ## Orientation
 
-Served text (33 words), from BC-CON-09001 `description_plain` and the topic's Assessment behaviour paragraph (research/units/unit-09-parametric-polar-vector.md#9.1 Defining and Differentiating Parametric Equations): a response treats \(x(t)\) and \(y(t)\) as two separate functions of the parameter, differentiates each with respect to \(t\), and labels both rates before any slope is formed. No count, no frequency.
+Served text (18 words), from BC-CON-09001 `description_plain` and the topic's Assessment behaviour paragraph (research/units/unit-09-parametric-polar-vector.md#9.1 Defining and Differentiating Parametric Equations): a response treats \(x(t)\) and \(y(t)\) as two separate functions of the parameter, differentiates each with respect to \(t\), and labels both rates before any slope is formed. No count, no frequency.
 
 ## Key ideas
 
@@ -27,13 +31,15 @@ Stem features that say "this concept":
 
 What says "not this concept": a single function \(y=f(x)\) (ordinary differentiation); a polar equation \(r=f(\theta)\) (BC-CON-09013); an ordered pair of rates already given, where the work starts at the quotient (BC-CON-09002).
 
+The contrast pair in st-1 draws its near miss from outside the archetype: a stem for \(dy/dx\) of a single function \(y=f(x)\), where nothing is parametric and the ordinary derivative is the whole task. It is the first item above the line. The separating feature is whether a parameter appears at all.
+
 ## Method choice
 
 One strategy block, both bands.
 
-- st-1, BC-QA-09001. Cue: a path given as \((x(t), y(t))\) and a time, and the stem asks for a slope (`common_givens`, `asked_to_produce`). Method, `expected_solution_path[0]`: compute \(dy/dt\) and \(dx/dt\). First written line: both rates, labelled, each differentiated in \(t\). Rival, `wrong_approaches`: using a component derivative that was never declared. Separating feature: each rate is written and labelled before it enters any quotient, so a dropped chain factor is visible where it happens.
+- st-1, BC-QA-09001, with the contrast pair. Cue: a path given as \((x(t), y(t))\) and a time, and the stem asks for a slope (`common_givens`, `asked_to_produce`). Method, `expected_solution_path[0]`: compute \(dy/dt\) and \(dx/dt\). First written line: both rates, labelled, each differentiated in \(t\). Rival, `wrong_approaches`: using a component derivative that was never declared. Separating feature: each rate is written and labelled before it enters any quotient, so a dropped chain factor is visible where it happens.
 
-BC-QA-09001 carries `asked_to_produce` and `common_givens`, so the block is not tagged inferred.
+BC-QA-09001 carries `asked_to_produce` and `common_givens`, so the block is not tagged inferred. The pair: this, a drone at \((5t+\ln(1+t^2), 3\sin(t^2))\) and the slope at \(t=1\); not this, the slope of \(y=x^3-2x\) at \(x=2\), which calls for the ordinary derivative; feature, whether both coordinates are written in a parameter.
 
 ## Solution path
 
@@ -86,13 +92,13 @@ Every non-text mode is [inferred]; settled by the modality A/B in the build plan
 
 ## Band plan
 
-- Low (full): orientation, ki-1, st-1, ex-1 with its scoring line, err-BC-ERR-09001, chk-1, chk-2, chk-3, the bridge. 430 words, 3.0 minutes (cap 900 and 6).
-- Mid (brief): orientation, ki-1, st-1, ex-1 with its scoring line, err-BC-ERR-09001, chk-1, chk-2, the bridge. 408 words, 2.8 minutes (cap 450 and 3).
+- Low (full): prediction, orientation, bridge, ki-1, st-1 with the contrast pair, ex-1 with its scoring line, chk-1, err-BC-ERR-09001, chk-2, chk-3. 468 words, 3.2 minutes (cap 900 and 6).
+- Mid (brief): prediction, orientation, bridge, ki-1, st-1 with the contrast pair, ex-1 with its scoring line, chk-1, err-BC-ERR-09001, chk-2. 446 words, 3.0 minutes (cap 450 and 3).
 - Refresher: ki-1, err-BC-ERR-09001, ex-1.
 
 ## Sources
 
-- BC-CON-09001; BC-SKL-09001; BC-EK-CHA-3G1; ced:171
+- BC-CON-09001; BC-MIS-09002; BC-SKL-09001; BC-EK-CHA-3G1; ced:171
 - BC-QA-09001; BC-FRQ-2022-Q2-A, BC-FRQ-2015-Q2-B, BC-FRQ-2023-Q2-C, BC-FRQ-2026-Q2-B, BC-MCQ-SAMPLE-017, BC-MCQ-PE2012-002
 - BC-PT-99049; sg-23:7
 - BC-ERR-09001; BC-MIS-09001; BC-ERR-99029
@@ -113,8 +119,12 @@ Every non-text mode is [inferred]; settled by the modality A/B in the build plan
  "target_id": "BC-CON-09001",
  "unit": "09",
  "skills": ["BC-SKL-09001"],
+ "prediction": {"id": "pr-1", "stem": {"text": "Before the rule: a particle has position \\((2t+\\ln(1+t^2), 4\\sin(t^2/2))\\). What does \\(dx/dt\\) describe at \\(t=3/2\\)?", "command_verb": "predict"}, "format": "mcq",
+  "options": [{"id": "A", "label": "The slope of the path", "is_key": false}, {"id": "B", "label": "The rate of \\(x\\) per unit of \\(t\\)", "is_key": true}, {"id": "C", "label": "The rate of \\(y\\) with respect to \\(x\\)", "is_key": false}],
+  "resolution": "\\(dx/dt\\) is a rate in \\(t\\), here \\(38/13\\). The parameter is not a coordinate, so it is not a slope; each coordinate is differentiated on its own.",
+  "sources": ["BC-CON-09001", "BC-EK-CHA-3G1", "research/units/unit-09-parametric-polar-vector.md#9.1 Defining and Differentiating Parametric Equations"]},
  "orientation": {
-  "text": "A curve given by \\(x(t)\\) and \\(y(t)\\) is two functions of one parameter. A response differentiates each with respect to \\(t\\), chain rule included, and labels both rates before any slope is built.",
+  "text": "Each coordinate is a function of \\(t\\). A response differentiates both and labels the rates before any slope.",
   "sources": ["BC-CON-09001", "research/units/unit-09-parametric-polar-vector.md#9.1 Defining and Differentiating Parametric Equations"]
  },
  "key_ideas": [
@@ -122,7 +132,7 @@ Every non-text mode is [inferred]; settled by the modality A/B in the build plan
    "id": "ki-1",
    "ek_id": "BC-EK-CHA-3G1",
    "depth": "core",
-   "text": "Each coordinate is an ordinary function of the parameter, so the usual derivative rules apply one component at a time (BC-EK-CHA-3G1, ced:171). The parameter is not a coordinate: \\(dx/dt\\) and \\(dy/dt\\) are rates in time, not slopes. An inner function needs the chain rule.",
+   "text": "The usual derivative rules apply to each coordinate separately. The parameter is not a coordinate, so \\(dx/dt\\) and \\(dy/dt\\) are rates in time, not slopes. An inner function needs the chain rule.",
    "notation": "x(t), y(t); the parameter t",
    "quote": {"text": "Methods for calculating derivatives of real-valued functions can be extended to parametric functions.", "source": "ced:171"},
    "sources": ["BC-EK-CHA-3G1", "ced:171", "research/units/unit-09-parametric-polar-vector.md#9.1 Defining and Differentiating Parametric Equations"]
@@ -132,12 +142,17 @@ Every non-text mode is [inferred]; settled by the modality A/B in the build plan
   {
    "id": "st-1",
    "archetype_id": "BC-QA-09001",
-   "cue": "A path \\((x(t), y(t))\\), a time, and a request for a slope.",
-   "method": "First line: \\(dy/dt\\) and \\(dx/dt\\), both labelled.",
-   "rival": "Rival: a component derivative never declared.",
-   "separating_feature": "Each rate is labelled before the quotient, so a dropped chain factor shows.",
+   "cue": "A path in \\(t\\), a time, a slope.",
+   "method": "Both labelled rates, \\(dy/dt\\) and \\(dx/dt\\).",
+   "rival": "A component derivative never declared.",
+   "separating_feature": "Each rate is labelled before any quotient.",
    "sources": ["BC-QA-09001"],
-   "evidence_tag": "verified"
+   "evidence_tag": "verified",
+   "contrast": {
+    "this": {"text": "A drone has position \\((5t+\\ln(1+t^2), 3\\sin(t^2))\\). Find the tangent slope at \\(t=1\\).", "archetype_id": "BC-QA-09001"},
+    "not_this": {"text": "Find the tangent slope of \\(y=x^3-2x\\) at \\(x=2\\).", "why_not": "It asks for an ordinary derivative; no parameter appears."},
+    "feature": "Both coordinates are written in a parameter."
+   }
   }
  ],
  "worked_examples": [
@@ -149,11 +164,11 @@ Every non-text mode is [inferred]; settled by the modality A/B in the build plan
    "problem": {"text": "A particle has position \\((2t+\\ln(1+t^2), 4\\sin(t^2/2))\\). Using a calculator, find the slope of the tangent line to the path at \\(t=3/2\\), to three decimals.", "command_verb": "find"},
    "calculator_status": "calculator",
    "steps": [
-    {"cue": "Both coordinates are in \\(t\\): differentiate \\(x\\) in \\(t\\).", "why": "The logarithm's inner \\(1+t^2\\) gives the factor \\(2t\\).", "expr": "2 + 2*t/(1+t**2)", "relation": "new"},
-    {"cue": "The stem names \\(t=3/2\\).", "why": "\\(2+3/3.25=38/13\\).", "expr": "38/13", "relation": "evaluate", "subs": {"t": "3/2"}},
-    {"cue": "\\(y=4\\sin(t^2/2)\\) is a sine of an inner \\(t^2/2\\).", "why": "Chain rule: \\(4\\cos(t^2/2)\\) times the inner derivative \\(t\\).", "expr": "4*t*cos(t**2/2)", "relation": "new"},
+    {"cue": "Differentiate \\(x\\).", "why": "The logarithm's inner \\(1+t^2\\) gives the factor \\(2t\\).", "expr": "2 + 2*t/(1+t**2)", "relation": "new"},
+    {"cue": "The stem gives \\(t\\).", "why": "\\(2+3/3.25=38/13\\).", "expr": "38/13", "relation": "evaluate", "subs": {"t": "3/2"}},
+    {"cue": "The sine has an inner \\(t^2/2\\).", "why": "Chain rule: \\(4\\cos(t^2/2)\\) times the inner derivative \\(t\\).", "expr": "4*t*cos(t**2/2)", "relation": "new"},
     {"cue": "Same time.", "why": "Labelled \\(dy/dt\\), so the quotient cites a declared value.", "expr": "6*cos(9/8)", "relation": "evaluate", "subs": {"t": "3/2"}},
-    {"cue": "A slope in the plane: divide the labelled rates.", "why": "\\(dy/dx\\) is \\(dy/dt\\) over \\(dx/dt\\); the written quotient is scored.", "expr": "6*cos(9/8)/(38/13)", "relation": "new", "point_type_id": "BC-PT-99049"},
+    {"cue": "A slope: divide the rates.", "why": "\\(dy/dx\\) is \\(dy/dt\\) over \\(dx/dt\\); the written quotient is scored.", "expr": "6*cos(9/8)/(38/13)", "relation": "new", "point_type_id": "BC-PT-99049"},
     {"cue": "Three decimals asked.", "why": "Rounded only at the end.", "expr": "0.885", "relation": "evaluate", "subs": {}, "approx": true}
    ],
    "answer": {"form": "numeric", "expr": "0.885"}
@@ -170,13 +185,14 @@ Every non-text mode is [inferred]; settled by the modality A/B in the build plan
    "wrong_step": {"text": "Chain factor dropped: \\(4\\cos(9/8)\\).", "expr": "4*cos(9/8)"},
    "right_step": {"text": "With it, \\(6\\cos(9/8)\\).", "expr": "6*cos(9/8)"},
    "relation": "distinct",
+   "fix_prompt": true,
    "possible_reason": null,
    "sources": ["BC-ERR-09001"]
   }
  ],
  "representations": null,
  "prerequisite_bridges": [
-  {"prq_id": "BC-PRQ-06005", "text": "\\(x(t)\\) and \\(x'(t)\\) are different functions. Reading one for the other, or evaluating at the wrong input, spoils every later rate."}
+  {"prq_id": "BC-PRQ-06005", "text": "\\(x(t)\\) and \\(x'(t)\\) are different functions; confusing them spoils every later rate."}
  ],
  "time": {"exam_part": "II-A", "budget_minutes": 15.0, "source": "research/exam/exam-structure.md#Section and part layout", "written_steps": {"ex-1": [1, 3, 5]}, "skipped_steps": {"ex-1": [2, 4, 6]}},
  "checks": [
@@ -262,8 +278,8 @@ Every non-text mode is [inferred]; settled by the modality A/B in the build plan
   {"block": "err-BC-ERR-09001", "mode": "step_reveal", "reason": "rule 1", "sources": []}
  ],
  "refresher": ["ki-1", "err-BC-ERR-09001", "ex-1"],
- "read_minutes": {"full": 3.0, "brief": 2.8},
- "word_count": {"full": 430, "brief": 408},
+ "read_minutes": {"full": 3.2, "brief": 3.0},
+ "word_count": {"full": 468, "brief": 446},
  "research_lines": [
   {"file": "research/units/unit-09-parametric-polar-vector.md", "line": "The parameter is not a coordinate, so dy/dx and dy/dt are different objects and the response must say which is being reported."},
   {"file": "research/question-analysis/question-archetypes.md", "line": "using a component derivative that was never declared"}

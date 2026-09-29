@@ -84,7 +84,7 @@ BC-QA-04004 has calculator status either, so the lesson takes Section I Part A, 
 ## Delivery
 
 - pr-1: text. Rule 6, a prediction on ex-1's position; the drawn picture is held for ki-1 so the answer is not shown first.
-- orientation: text. Rule 6; the figure-bearing representation is served once, on ki-1.
+- orientation: text. Rule 6; the figure-bearing representation is served once, on the key idea.
 - ki-1: interactive. Rule 4 promoted: BC-REP-02 on BC-SKL-04009; BC-QA-04004 `difficulty_variables` "whether a zero of the velocity is not an integer" and "whether the velocity changes sign more than once" name what varies, and the stem asks for intervals of a direction (docs/lessons/unit-04/README.md, section 6) [inferred; settled by the modality A/B]. One slider on t, labels inside, fallback the static line with sign intervals, keyboard arrows. This is the lesson's drawn block, so no `no_figure_reason` is carried.
 - ex-1 and the four error blocks: step_reveal. Rule 1.
 
@@ -587,7 +587,7 @@ BC-QA-04004 has calculator status either, so the lesson takes Section I Part A, 
   {
    "block": "pr-1",
    "mode": "text",
-   "reason": "rule 6: a prediction on ex-1's position with the picture held for ki-1",
+   "reason": "rule 6: a prediction on the worked example's position with the picture held for the key idea",
    "sources": [
     "BC-SKL-04009"
    ]
@@ -595,7 +595,7 @@ BC-QA-04004 has calculator status either, so the lesson takes Section I Part A, 
   {
    "block": "orientation",
    "mode": "text",
-   "reason": "rule 5 for a statement of what a response shows; the figure-bearing BC-REP-02 is served once, on ki-1",
+   "reason": "rule 5 for a statement of what a response shows; the figure-bearing BC-REP-02 is served once, on the key idea",
    "sources": [
     "BC-SKL-04009"
    ]

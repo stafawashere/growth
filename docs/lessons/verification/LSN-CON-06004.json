@@ -60,8 +60,8 @@
    },
    {
     "id": "st-1.contrast",
-    "verdict": "unsourced",
-    "evidence": "not_this ('Find a left sum for ...') is BC-QA-06001's own stem: its typical_wording and asked_to_produce ('a left, right, or midpoint Riemann sum with every product shown') name it; the design attributes it to BC-CON-06003, but both stems sit on the one archetype."
+    "verdict": "ok",
+    "evidence": "fixed 2026-09-29: not_this is now a BC-QA-06002 near miss ('g is concave up. Is a trapezoidal sum for ∫_0^6 g(t) dt over or under?'), why_not 'Concavity decides a trapezoid.' (BC-CON-06004 description_formal: for a concave up integrand a trapezoidal sum overestimates), feature 'A left sum: monotonicity decides.'; BC-QA-06002 is in st-1's sources and st-1's rival (a trapezoid judged by increasing) is the mistake it invites. SymPy on g = (t - 7)^2, decreasing and concave up on [0, 6]: trapezoid 118 over the integral 114."
    },
    {
     "id": "ex-1",
@@ -124,11 +124,14 @@
    "Carried from the earlier audit: Option D in chk-3 ('since a sum only approximates') is labelled BC-ERR-06005 but gives a wrong direction; its derivation reads closer to BC-MIS-06003."
   ],
   "counts": {
-   "ok": 13,
-   "unsourced": 1,
+   "ok": 14,
+   "unsourced": 0,
    "wrong": 0,
    "over_cap": 0,
    "lint": 0
   }
- }
+ },
+ "fix_notes": [
+  "st-1.contrast: not_this changed to a BC-QA-06002 trapezoid direction stem. Word counts 549 full, 448 brief from the checker."
+ ]
 }

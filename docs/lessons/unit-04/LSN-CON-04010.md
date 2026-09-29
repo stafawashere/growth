@@ -400,7 +400,7 @@ BC-QA-04006 has `calculator_status` either, so Section I Part A, 2.14 minutes (r
    },
    "completes": "ex-1",
    "stem": {
-    "text": "For ex-1, 24 + 8 dy/dt = 0. Find dy/dt with units.",
+    "text": "For the worked example, 24 + 8 dy/dt = 0. Find dy/dt with units.",
     "command_verb": "find"
    },
    "key": {
@@ -632,8 +632,8 @@ BC-QA-04006 has `calculator_status` either, so Section I Part A, 2.14 minutes (r
   "research/exam/exam-structure.md#Section and part layout"
  ],
  "word_count": {
-  "full": 558,
-  "brief": 445
+  "full": 560,
+  "brief": 447
  },
  "read_minutes": {
   "full": 3.8,

@@ -399,7 +399,7 @@ No drawn block applies: no skill carries a figure-bearing BC-REP and the key ide
    },
    "completes": "ex-1",
    "stem": {
-    "text": "For ex-1, \\(f'(x)=3\\cos x-2\\sin x-e^x+\\frac4x\\). Find \\(f'(\\frac{\\pi}{2})\\).",
+    "text": "For the worked example, \\(f'(x)=3\\cos x-2\\sin x-e^x+\\frac4x\\). Find \\(f'(\\frac{\\pi}{2})\\).",
     "command_verb": "find"
    },
    "key": {
@@ -602,8 +602,8 @@ No drawn block applies: no skill carries a figure-bearing BC-REP and the key ide
   "brief": 3.0
  },
  "word_count": {
-  "full": 493,
-  "brief": 448
+  "full": 495,
+  "brief": 450
  },
  "research_lines": [
   {

@@ -39,96 +39,105 @@
   "auditor": "claude-opus-5-5",
   "blocks": [
    {
+    "id": "prediction",
+    "verdict": "ok",
+    "evidence": "SymPy: sqrt(x) = x - 2 at x = 4, y = 2; key B right minus left on [0, 2] = 10/3; A = -10/3, C (x limit 4) = -16/3, both false; resolution matches BC-CON-08012; 'left/right' are directions, no verdict word."
+   },
+   {
     "id": "orientation",
     "verdict": "ok",
-    "evidence": "Paraphrases BC-CON-08012 description_plain and the 8.5 Assessment behaviour paragraph (horizontal slice as the efficient choice); 34 words."
+    "evidence": "Shortened paraphrase of BC-CON-08012 description_plain and 8.5 Assessment behaviour."
    },
    {
     "id": "ki-1",
     "verdict": "ok",
-    "evidence": "8.5 Area in y, Choice of variable and Notation paragraphs; quote verbatim ced:156 CHA-5.A.2; 57 words."
+    "evidence": "Shortened 8.5 Area in y and Notation paraphrase; quote unchanged, verbatim on ced:156."
    },
    {
     "id": "st-1",
     "verdict": "ok",
-    "evidence": "Method is expected_solution_path[0]; rival is the single wrong_approaches entry; cue 20 words, total 49."
+    "evidence": "Method 'Both boundaries as x in terms of y' is expected_solution_path[0] with no label; rival matches wrong_approaches, no id."
+   },
+   {
+    "id": "st-1.contrast",
+    "verdict": "ok",
+    "evidence": "this fits BC-QA-08009 typical_wording ('by integrating with respect to y'); not_this is a dx stem of BC-QA-08008, SymPy meet -1, 2 with x + 2 on top; why_not and feature true."
    },
    {
     "id": "ex-1",
     "verdict": "ok",
-    "evidence": "Draw gives x = y**2 and x = y + 2 (offset 2); SymPy roots -1, 2, keep 2; 3 > 1 at y = 1; integral = 10/3 = area_value; x-slice check 10/3; constraints hold."
+    "evidence": "Only cue and why text changed; 2 + 4 - 8/3 = 10/3 (SymPy); 'Only y = 2 lies in R' true (roots -1, 2)."
    },
    {
     "id": "reader",
     "verdict": "ok",
-    "evidence": "Empty; BC-QA-08009 point_types is empty."
+    "evidence": "Empty; BC-QA-08009 point_types is empty. (unchanged since 2026-09-29)"
    },
    {
     "id": "err-BC-ERR-08020",
     "verdict": "ok",
-    "evidence": "Verbatim record; left minus right SymPy -10/3; reason fragment from BC-MIS-08011."
+    "evidence": "fix_prompt true with relation distinct; math unchanged from the earlier audit."
    },
    {
     "id": "err-BC-ERR-08023",
     "verdict": "ok",
-    "evidence": "Verbatim record; sqrt(x) - (x - 2) under dy is an x integrand with dy, SymPy value still holds x; reason fragment from BC-MIS-08013."
+    "evidence": "fix_prompt true with relation distinct; math unchanged from the earlier audit."
    },
    {
     "id": "err-BC-ERR-08024",
     "verdict": "ok",
-    "evidence": "Verbatim record; x limits 0 and 4 on the y integral give SymPy -16/3 = x_limits_value; reason fragment from BC-MIS-08012."
+    "evidence": "fix_prompt true with relation distinct; math unchanged from the earlier audit."
    },
    {
     "id": "err-BC-ERR-99006",
     "verdict": "ok",
-    "evidence": "Served record content/lessons/LSN-CON-08012.json carries identical MathJSON on both steps, so ErrorPair shows only the texts: integral from 0 to 2 of (y+2-y^2) with no dy against the same with dy, the record's missing-differential behaviour; SymPy value 10/3. The wrong text's 'dy' sits outside math delimiters, cosmetic.",
-    "reaudited": "2026-09-29"
+    "evidence": "fix_prompt false with relation equivalent, as the rule requires; otherwise unchanged."
    },
    {
     "id": "representations",
     "verdict": "ok",
-    "evidence": "null; the 8.5 figure to horizontal slice conversion is carried by the orientation and ki-1 figures."
+    "evidence": "null; the 8.5 figure to horizontal slice conversion is carried by the orientation and ki-1 figures. (unchanged since 2026-09-29)"
    },
    {
-    "id": "bridge-BC-PRQ-06005",
+    "id": "BC-PRQ-06005",
     "verdict": "ok",
-    "evidence": "Paraphrases BC-PRQ-06005 (wrong input, f' for f); 20 words."
+    "evidence": "Shortened paraphrase of BC-PRQ-06005."
    },
    {
-    "id": "bridge-BC-PRQ-08002",
+    "id": "BC-PRQ-08002",
     "verdict": "ok",
-    "evidence": "Paraphrases BC-PRQ-08002 description_plain and failure_signature; 23 words."
+    "evidence": "Shortened paraphrase of BC-PRQ-08002 description_plain."
    },
    {
     "id": "time",
     "verdict": "ok",
-    "evidence": "I-A 2.14 from exam-structure.md#Section and part layout; either status listed as inferred."
+    "evidence": "I-A 2.14 from exam-structure.md#Section and part layout; either status listed as inferred. (unchanged since 2026-09-29)"
    },
    {
     "id": "chk-1",
     "verdict": "ok",
-    "evidence": "Completion of ex-1; SymPy 10/3."
+    "evidence": "Completion of ex-1; SymPy 10/3. (unchanged since 2026-09-29)"
    },
    {
     "id": "chk-2",
     "verdict": "ok",
-    "evidence": "Draw gives x = y**2, x = y + 6 (offset 6); SymPy roots -2, 3, keep 3; area 27/2, same as the two-piece x integral; constraints hold."
+    "evidence": "Draw gives x = y**2, x = y + 6 (offset 6); SymPy roots -2, 3, keep 3; area 27/2, same as the two-piece x integral; constraints hold. (unchanged since 2026-09-29)"
    },
    {
     "id": "chk-3",
     "verdict": "ok",
-    "evidence": "Draw gives x = 2y**2, x = 2y + 4; key A 20/3 (SymPy, x-slice check agrees); B left minus right -20/3 (ERR-08020), C x forms under dy (ERR-08023), D x value 8 as upper limit = -736/3 (ERR-08024)."
+    "evidence": "Draw gives x = 2y**2, x = 2y + 4; key A 20/3 (SymPy, x-slice check agrees); B left minus right -20/3 (ERR-08020), C x forms under dy (ERR-08023), D x value 8 as upper limit = -736/3 (ERR-08024). (unchanged since 2026-09-29)"
    }
   ],
   "advice": [
-   "BC-ERR-99006: with a y integrand and y limits the omitted dy is not ambiguous, and research/scoring/notation-requirements.md#The differential is normally optional says a bare missing differential is forgiven; the block overstates the loss on this draw.",
-   "BC-SKL-08026 (choose x or y) is taught in ki-1 but no check asks the student to choose, or shows the two x integrals the region would need; a contrast of the two setups would test it.",
-   "chk-3 option C is an expression in x, not a number, which the MCQ form allows but a student may read as a trick option.",
-   "Served text carries the id '(BC-ERR-08023)' in the st-1 rival (recurring served-text class).",
-   "BC-PRQ-06005 bridge (function values at an input) fits loosely; which curve is right is read from x values, not function values."
+   "st-1 contrast this: x = y^2, x = y + 12 and the x-axis bound two regions (SymPy roots y = -3, 4, so pieces on [-3, 0] and [0, 4]); 'R' is ambiguous and 12 may be a typo. Stating the first quadrant, or y = sqrt(x) as ex-1 does, fixes it.",
+   "BC-ERR-99006: with a y integrand and y limits the omitted dy is not ambiguous, so the block shows a notation slip the rubric usually forgives.",
+   "BC-SKL-08026 (choose x or y) is taught but no check asks the student to choose.",
+   "chk-3 option C is an expression in x, not a number.",
+   "BC-PRQ-06005 bridge fits loosely; which curve is right is read from x values, not function values."
   ],
   "counts": {
-   "ok": 16,
+   "ok": 18,
    "unsourced": 0,
    "wrong": 0,
    "over_cap": 0,

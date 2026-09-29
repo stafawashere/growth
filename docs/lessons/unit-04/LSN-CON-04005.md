@@ -77,7 +77,7 @@ BC-QA-04003 has calculator status either, so the lesson takes Section I Part A, 
 
 ## Delivery
 
-- pr-1: text. Rule 6, a prediction on ex-1's values with nothing to draw.
+- pr-1: text. Rule 6, a prediction on the worked example's values with nothing to draw.
 - orientation, ki-1: text. Rule 6: no figure-bearing representation on BC-SKL-04010 or BC-SKL-04012 (docs/lessons/unit-04/README.md, section 6).
 - ex-1, err-BC-ERR-04011, err-BC-ERR-99003: step_reveal. Rule 1.
 
@@ -467,7 +467,7 @@ Figure presence: no drawn block. No rule of 2 to 5 applies, because the skills c
   {
    "block": "pr-1",
    "mode": "text",
-   "reason": "rule 6: a prediction on ex-1's values with no picture in the question",
+   "reason": "rule 6: a prediction on the worked example's values with no picture in the question",
    "sources": [
     "BC-SKL-04010"
    ]

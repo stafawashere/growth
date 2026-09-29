@@ -72,7 +72,7 @@ BC-QA-07001 is `no_calculator`, the opening part of a free-response question, so
 
 - orientation: interactive. Rule 4 promoted: BC-REP-07 and 02 on BC-SKL-07014 to 07017; BC-QA-07001 `common_givens` "an initial condition" and `difficulty_variables` "where the initial point sits relative to it", with a reading asked (docs/lessons/unit-07/README.md, section 6) [inferred].
 - ki-1: motion. Rule 2: a curve being traced through the field.
-- pr-1: text. Rule 6, a prediction on ex-1's equation with nothing to draw.
+- pr-1: text. Rule 6, a prediction on the first example's equation with nothing to draw.
 - ex-1, ex-2, error blocks: step_reveal. Rule 1.
 
 Figure presence: the orientation interactive and the ki-1 motion are drawn blocks, so the record carries no `no_figure_reason`.
@@ -654,7 +654,7 @@ Figure presence: the orientation interactive and the ki-1 motion are drawn block
   {
    "block": "pr-1",
    "mode": "text",
-   "reason": "rule 6: a prediction on ex-1's equation with nothing to draw",
+   "reason": "rule 6: a prediction on the first example's equation with nothing to draw",
    "sources": [
     "BC-SKL-07018"
    ]

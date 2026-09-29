@@ -39,114 +39,134 @@
   "auditor": "claude-opus-5-5",
   "blocks": [
    {
+    "id": "prediction",
+    "verdict": "ok",
+    "evidence": "SymPy: integrate(4t+3,(t,2,4)) = 30, key B 40 + 30 = 70; A gives 30 and C gives 40*R(4) = 760, both false; resolution restates ex-1; stem answerable from the example's numbers; no verdict word or id."
+   },
+   {
     "id": "orientation",
     "verdict": "ok",
-    "evidence": "Paraphrases BC-CON-08006 and the 8.3 Amount at a time paragraph and the Notation paragraph on the differential."
+    "evidence": "Shortened; still BC-CON-08006 description_plain (start plus accumulated) and the 8.3 units requirement."
    },
    {
     "id": "ki-1",
     "verdict": "ok",
-    "evidence": "ced:154 CHA-4.D.1 and the 8.3 Amount at a time conclusion; 38 words."
+    "evidence": "Shortened to BC-CON-08006 description_formal (Q(t) = Q(a) + integral of q), ced:154 CHA-4.D.1; no id in text."
    },
    {
     "id": "ki-2",
     "verdict": "ok",
-    "evidence": "ced:154 CHA-4.E.1 plus the 8.3 Interpretation line (sg-23:2, cached page confirms quantity, interval, units); the units product is dimensional arithmetic."
+    "evidence": "ced:154 CHA-4.E.1 plus the 8.3 Interpretation line (sg-23:2, cached page confirms quantity, interval, units); the units product is dimensional arithmetic.",
+    "note": "unchanged since 2026-09-29"
    },
    {
     "id": "st-1",
     "verdict": "ok",
-    "evidence": "Matches BC-QA-06005 expected_solution_path and wrong_approaches[0]."
+    "evidence": "Labels removed; method is BC-QA-06005 expected_solution_path[0], rival wrong_approaches[0]; no capitalised variable."
+   },
+   {
+    "id": "st-1.contrast",
+    "verdict": "ok",
+    "evidence": "this paraphrases BC-QA-06005 typical_wording[0] (rate modelled, later value, show setup); not_this is BC-QA-99008 typical_wording[1] (how many units flow in during the interval), a different archetype; why_not true, feature matches common_givens."
    },
    {
     "id": "st-2",
     "verdict": "ok",
-    "evidence": "Method and rival match BC-QA-99008 expected_solution_path[0] and wrong_approaches[0]; cue matches common_givens."
+    "evidence": "Labels removed; method BC-QA-99008 expected_solution_path[0] and [1], rival wrong_approaches[0]."
    },
    {
     "id": "st-3",
     "verdict": "ok",
-    "evidence": "Method and rival match BC-QA-08006 expected_solution_path[0] and wrong_approaches[0]; cue 18 words."
+    "evidence": "Labels removed; method BC-QA-08006 expected_solution_path[0], rival wrong_approaches[0]."
    },
    {
     "id": "ex-1",
     "verdict": "ok",
-    "evidence": "SymPy: integrate(4t+3,(t,2,4)) = 30 (44 - 14), 40 + 30 = 70; draw square 2, linear 3 gives 4t+3."
+    "evidence": "Only cue and why text shortened; SymPy 2t^2+3t gives 44 at 4 and 14 at 2, 30, 40 + 30 = 70; expr unchanged."
    },
    {
     "id": "reader-ex-1",
     "verdict": "ok",
-    "evidence": "BC-PT-99033 line verbatim from the bundle record."
+    "evidence": "BC-PT-99033 line verbatim from the bundle record.",
+    "note": "unchanged since 2026-09-29"
    },
    {
     "id": "err-BC-ERR-08011",
     "verdict": "ok",
-    "evidence": "Verbatim BC-ERR-08011; SymPy wrong 30, right 70."
+    "evidence": "relation distinct, fix_prompt true; SymPy wrong 30, right 70."
    },
    {
     "id": "err-BC-ERR-08012",
     "verdict": "ok",
-    "evidence": "Verbatim BC-ERR-08012; 30 versus 70; reason is the tail of the BC-MIS-08006 description."
+    "evidence": "relation distinct, fix_prompt true; 30 against 70."
    },
    {
     "id": "err-BC-ERR-99006",
     "verdict": "ok",
-    "evidence": "Verbatim BC-ERR-99006; dx for a rate in t matches the setup loss row in common-point-losses.md Setup points."
+    "evidence": "relation distinct, fix_prompt true; SymPy 40 + integral of 4t+3 in x gives 8t + 46, not 70."
    },
    {
     "id": "err-BC-ERR-99005",
     "verdict": "ok",
-    "evidence": "Verbatim BC-ERR-99005; units row in common-point-losses.md Units points."
+    "evidence": "relation equivalent, fix_prompt false; both 70, difference is the units text."
    },
    {
     "id": "representations",
     "verdict": "ok",
-    "evidence": "null; the 8.3 conversions are verbal to symbolic, carried by the steps."
+    "evidence": "null; the 8.3 conversions are verbal to symbolic, carried by the steps.",
+    "note": "unchanged since 2026-09-29"
    },
    {
-    "id": "delivery-ki-1",
+    "id": "delivery.ki-1",
     "verdict": "ok",
-    "evidence": "Motion curve 2x^2+3x+26 checked by SymPy: A(2)=40, A(3)=53, A(4)=70."
+    "evidence": "Motion curve 2x^2+3x+26 checked by SymPy: A(2)=40, A(3)=53, A(4)=70.",
+    "note": "unchanged since 2026-09-29"
    },
    {
-    "id": "bridge-BC-PRQ-06005",
+    "id": "BC-PRQ-06005",
     "verdict": "ok",
-    "evidence": "Paraphrases BC-PRQ-06005 distinguishing a function from its value."
+    "evidence": "Shortened; still BC-PRQ-06005 amount versus rate (function versus value)."
    },
    {
-    "id": "bridge-BC-PRQ-08006",
+    "id": "BC-PRQ-08006",
     "verdict": "ok",
-    "evidence": "Paraphrases BC-PRQ-08006 description_plain on precision and premature rounding."
+    "evidence": "Shortened; still BC-PRQ-08006 precision then three places."
    },
    {
     "id": "time",
     "verdict": "ok",
-    "evidence": "62/29 = 2.14 from exam-structure.md; either status tagged inferred."
+    "evidence": "62/29 = 2.14 from exam-structure.md; either status tagged inferred.",
+    "note": "unchanged since 2026-09-29"
    },
    {
     "id": "chk-1",
     "verdict": "ok",
-    "evidence": "SymPy: 40 + 30 = 70."
+    "evidence": "SymPy: 40 + 30 = 70.",
+    "note": "unchanged since 2026-09-29"
    },
    {
     "id": "chk-2",
     "verdict": "ok",
-    "evidence": "SymPy: 30 + integrate(-3t^2+6t+4,(t,1,2)) = 30 + 6 = 36; draw cubic -1, square 3, linear 4 matches."
+    "evidence": "SymPy: 30 + integrate(-3t^2+6t+4,(t,1,2)) = 30 + 6 = 36; draw cubic -1, square 3, linear 4 matches.",
+    "note": "unchanged since 2026-09-29"
    },
    {
     "id": "chk-3",
     "verdict": "ok",
-    "evidence": "SymPy: 20 + integrate(2t+4,(t,1,4)) = 47; B 27 (ERR-08011), C dx (ERR-99006), D gallons per hour (ERR-99005) each map to a bundle error."
+    "evidence": "SymPy: 20 + integrate(2t+4,(t,1,4)) = 47; B 27 (ERR-08011), C dx (ERR-99006), D gallons per hour (ERR-99005) each map to a bundle error.",
+    "note": "unchanged since 2026-09-29"
    }
   ],
   "advice": [
    "The PRQ-08006 bridge speaks to a calculator form while every example and check in the lesson is no calculator, so the bridge has nothing to attach to.",
    "st-3 (maximum time) is taught in the strategy block only; no example or check touches it, so the rival it names is recognised but never practised. It belongs to BC-CON-08008 and could be dropped here.",
    "chk-3 option C: sg-22:2 accepts dx written for dt (BC-PT-99001 notation), so calling the dx response a full point loss is contestable; the error record itself says the setup point is lost only when the expression is ambiguous.",
-   "ex-1 tags only BC-PT-99033; the untagged integral and answer points are listed inferred, which leaves the scoring habit partly implicit."
+   "ex-1 tags only BC-PT-99033; the untagged integral and answer points are listed inferred, which leaves the scoring habit partly implicit.",
+   "err-BC-ERR-08011 scoring_consequence carries (sg-24:7), verbatim record text the reader strips; no served-text defect.",
+   "reader-ex-1 line carries sg-24:3 and sg-22:8, verbatim record text the reader strips; no served-text defect."
   ],
   "counts": {
-   "ok": 20,
+   "ok": 22,
    "unsourced": 0,
    "wrong": 0,
    "over_cap": 0,

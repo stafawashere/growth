@@ -39,98 +39,115 @@
   "auditor": "claude-opus-5-5",
   "blocks": [
    {
+    "id": "prediction",
+    "verdict": "ok",
+    "evidence": "SymPy: f = g at x = 2, 5; f(3) = 2, g(3) = 0; min of f - g on [2,5] is 0; area f - g = 9/2, g - f = -9/2, f + g = 3/2; key A only; no verdict word or id."
+   },
+   {
     "id": "orientation",
     "verdict": "ok",
-    "evidence": "Paraphrases BC-CON-08010 description_plain and the 8.4 Assessment behaviour paragraph (integrand, antiderivative, answer scored separately); 24 words."
+    "evidence": "Shortened paraphrase of BC-CON-08010 and the 8.4 Assessment behaviour paragraph; figure spec unchanged."
    },
    {
     "id": "ki-1",
     "verdict": "ok",
-    "evidence": "Area in x from the 8.4 Area between curves paragraph; reversed-difference answer loss confirmed on cached sg-23 page 17; quote verbatim ced:155 CHA-5.A.1; 59 words."
+    "evidence": "Shortened, sg-23:17 cite removed from served text; quote unchanged verbatim ced:155; f at or above g gives integral of f - g, nonnegative."
    },
    {
     "id": "st-1",
     "verdict": "ok",
-    "evidence": "Cue now 20 words (cap 20), from BC-QA-08008 typical_wording and common_givens; method from expected_solution_path[0] and [1]; rival from wrong_approaches (negative value as area, BC-ERR-08020); design checker clean.",
-    "reaudited": "2026-09-29"
+    "evidence": "Labels and the BC-ERR-08020 id removed; method expected_solution_path[0] and [1], rival wrong_approaches[1]."
+   },
+   {
+    "id": "st-1.contrast",
+    "verdict": "ok",
+    "evidence": "this paraphrases BC-QA-08008 typical_wording[0] (area of the region enclosed by two graphs); SymPy p = q at -2, 1 and p - q >= 0 there. not_this: x^2 = x at 0, 1, x - x^2 is 0.25 at 0.5 and -0.75 at 1.5, so one integral fails; that is BC-QA-08010, a different archetype; feature true."
    },
    {
     "id": "ex-1",
     "verdict": "ok",
-    "evidence": "SymPy: f - g = -(x-2)(x-5), f(3) = 2 > g(3) = 0, integral 2 to 5 = 9/2 = bulge*width**3/6; F' matches the integrand; all four spec constraints hold."
+    "evidence": "Only cue and why text shortened; SymPy step 4 value 9/2, integral 9/2; expr unchanged."
    },
    {
     "id": "reader",
     "verdict": "ok",
-    "evidence": "BC-PT-99059 is listed on BC-QA-08008; the line is the checker-recomputed reader_checks text."
+    "evidence": "BC-PT-99059 is listed on BC-QA-08008; the line is the checker-recomputed reader_checks text.",
+    "note": "unchanged since 2026-09-29"
    },
    {
     "id": "err-BC-ERR-06018",
     "verdict": "ok",
-    "evidence": "Verbatim record; u = x - 2 gives u(3 - u), SymPy -15/2 on [2, 5] against 9/2 on [0, 3]; reason fragment from BC-MIS-06016."
+    "evidence": "relation distinct, fix_prompt true; SymPy -15/2 against 9/2."
    },
    {
     "id": "err-BC-ERR-08020",
     "verdict": "ok",
-    "evidence": "Verbatim record; SymPy g - f on [2, 5] = -9/2; reason fragment from BC-MIS-08011."
+    "evidence": "relation distinct, fix_prompt true; SymPy -9/2 against 9/2."
    },
    {
     "id": "err-BC-ERR-99006",
     "verdict": "ok",
-    "evidence": "Served record content/lessons/LSN-CON-08010.json carries identical MathJSON on both steps, so ErrorPair (isSameValue) shows no value and the texts carry the move: integral from 2 to 5 of (-x^2+7x-10) with no dx against the same with dx, the record's missing-differential behaviour; SymPy value 9/2.",
-    "reaudited": "2026-09-29"
+    "evidence": "relation equivalent, fix_prompt false; identical expr, difference is the dx text."
    },
    {
     "id": "err-BC-ERR-99011",
     "verdict": "ok",
-    "evidence": "Verbatim record; squaring the difference for an area is the first behaviour it names; SymPy 81/10 against 9/2; reason fragment from BC-MIS-99003."
+    "evidence": "relation distinct, fix_prompt true; SymPy 81/10 against 9/2."
    },
    {
     "id": "representations",
     "verdict": "ok",
-    "evidence": "null; the 8.4 Representations conversion BC-REP-02 to BC-REP-01 is carried by the orientation and ki-1 figures."
+    "evidence": "null; the 8.4 Representations conversion BC-REP-02 to BC-REP-01 is carried by the orientation and ki-1 figures.",
+    "note": "unchanged since 2026-09-29"
    },
    {
-    "id": "bridge-BC-PRQ-06002",
+    "id": "BC-PRQ-06002",
     "verdict": "ok",
-    "evidence": "Paraphrases BC-PRQ-06002 description_plain and failure_signature; 13 words."
+    "evidence": "Shortened; still BC-PRQ-06002 powers as exponents."
    },
    {
-    "id": "bridge-BC-PRQ-06005",
+    "id": "BC-PRQ-06005",
     "verdict": "ok",
-    "evidence": "Paraphrases BC-PRQ-06005 (wrong input, f' for f); 20 words."
+    "evidence": "Shortened; still BC-PRQ-06005 value at one input."
    },
    {
     "id": "time",
     "verdict": "ok",
-    "evidence": "I-A 2.14 from exam-structure.md#Section and part layout; either status listed as inferred."
+    "evidence": "I-A 2.14 from exam-structure.md#Section and part layout; either status listed as inferred.",
+    "note": "unchanged since 2026-09-29"
    },
    {
     "id": "chk-1",
     "verdict": "ok",
-    "evidence": "Completion of ex-1; SymPy integral of -x**2 + 7x - 10 on [2, 5] = 9/2."
+    "evidence": "Completion of ex-1; SymPy integral of -x**2 + 7x - 10 on [2, 5] = 9/2.",
+    "note": "unchanged since 2026-09-29"
    },
    {
     "id": "chk-2",
     "verdict": "ok",
-    "evidence": "Draw gives f = 6 - x - 2x**2, g = x + 2 meeting at -2 and 1; f(0) = 6 > 2; SymPy area 9; constraints hold."
+    "evidence": "Draw gives f = 6 - x - 2x**2, g = x + 2 meeting at -2 and 1; f(0) = 6 > 2; SymPy area 9; constraints hold.",
+    "note": "unchanged since 2026-09-29"
    },
    {
     "id": "chk-3",
     "verdict": "ok",
-    "evidence": "Key C = 8/3 (SymPy); A g - f = -8/3 (ERR-08020), B squared difference 64/15 (ERR-99011), D u = x - 1 with x limits 1, 3 kept = -4/3 (ERR-06018); values distinct."
+    "evidence": "Key C = 8/3 (SymPy); A g - f = -8/3 (ERR-08020), B squared difference 64/15 (ERR-99011), D u = x - 1 with x limits 1, 3 kept = -4/3 (ERR-06018); values distinct.",
+    "note": "unchanged since 2026-09-29"
    }
   ],
   "advice": [
    "BC-ERR-99006: the draw's omitted dx is not ambiguous (integrand and limits are all in x), and research/scoring/notation-requirements.md#The differential is normally optional says a bare missing differential is forgiven, so the block overstates the loss here; drop the wrong-step expr and pick a draw where the variable is in doubt, or cut the block.",
    "BC-ERR-08021 (reversed difference asserted equal to the positive area) is what ki-1 and the Scoring section teach, but the bundle order serves BC-ERR-06018 first, a substitution a polynomial draw never invites; a ruling on relevance over bundle order would let 08021 in.",
    "The topic's second named MCQ distractor, the integral of one function alone (BC-MIS-08010), appears in no block or option.",
-   "Served text carries ids and page cites: ki-1 '(sg-23:17)', st-1 rival '(BC-ERR-08020)' (recurring served-text class).",
    "The orientation and ki-1 show the same region twice; the orientation window y in [-3, 3] clips f for x above 5.24, outside the shaded part.",
-   "BC-PRQ-06002 (radicals and reciprocals as powers) has nothing to act on in a polynomial-only lesson."
+   "BC-PRQ-06002 (radicals and reciprocals as powers) has nothing to act on in a polynomial-only lesson.",
+   "st-1.contrast not_this rests on BC-CON-08013 and BC-QA-08010, neither in the Sources list; research/question-analysis/question-archetypes.md#BC-QA-08010 Area of a region whose boundary curves cross would close the trail.",
+   "err-BC-ERR-06018 scoring_consequence carries (sg-23:17, sg-23:16), verbatim record text the reader strips; no served-text defect.",
+   "err-BC-ERR-08020 scoring_consequence carries (sg-23:16, sg-23:17), verbatim record text the reader strips; no served-text defect.",
+   "reader-ex-1 line carries sg-23:16 and sg-23:17, verbatim record text the reader strips; no served-text defect."
   ],
   "counts": {
-   "ok": 16,
+   "ok": 18,
    "unsourced": 0,
    "wrong": 0,
    "over_cap": 0,

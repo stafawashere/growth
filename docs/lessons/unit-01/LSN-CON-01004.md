@@ -443,7 +443,7 @@ Every non-text choice is [inferred], settled by the modality A/B.
    },
    "completes": "ex-1",
    "stem": {
-    "text": "For ex-1's f, the one sided limits at x = 1 are 3 and 4. State the limit of f at x = 1.",
+    "text": "For the example's f, the one sided limits at x = 1 are 3 and 4. State the limit of f at x = 1.",
     "command_verb": "state"
    },
    "key": {
@@ -813,12 +813,12 @@ Every non-text choice is [inferred], settled by the modality A/B.
   "ex-1"
  ],
  "read_minutes": {
-  "full": 4.05,
+  "full": 4.06,
   "brief": 3.0
  },
  "word_count": {
-  "full": 607,
-  "brief": 449
+  "full": 608,
+  "brief": 450
  },
  "research_lines": [
   {

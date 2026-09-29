@@ -82,7 +82,7 @@ BC-QA-07011 is `no_calculator`, one FRQ part or one MCQ; the FRQ form is taken, 
 
 ## Delivery
 
-- pr-1: text. Rule 6, a prediction on ex-1's equation with nothing to draw.
+- pr-1: text. Rule 6, a prediction on the first example's equation with nothing to draw.
 - orientation, ki-1, ki-2: text, rule 6. BC-REP-01, 04, 06 only (docs/lessons/unit-07/README.md, section 6).
 - ex-1, ex-2 and the four error blocks: step_reveal, rule 1.
 
@@ -666,7 +666,7 @@ Figure presence: no drawn block. No rule of 2 to 5 applies, because the skills c
   {
    "block": "pr-1",
    "mode": "text",
-   "reason": "rule 6: a prediction on ex-1's equation with nothing to draw",
+   "reason": "rule 6: a prediction on the first example's equation with nothing to draw",
    "sources": [
     "BC-SKL-07033"
    ]

@@ -45,110 +45,126 @@
   "auditor": "claude-opus-5-5",
   "blocks": [
    {
+    "id": "prediction",
+    "verdict": "ok",
+    "evidence": "SymPy: semicircle on diameter s = pi*s**2/8 (key A); B pi*s**2/4 is the full circle on s/2, C pi*s**2/2 the semicircle of radius s, both false; resolution matches ki-2 and ced:159."
+   },
+   {
     "id": "orientation",
     "verdict": "ok",
-    "evidence": "Paraphrases BC-CON-08016 and 8.8 Assessment behaviour; 28 words."
+    "evidence": "Shortened paraphrase of BC-CON-08016 description_plain."
    },
    {
     "id": "ki-1",
     "verdict": "ok",
-    "evidence": "8.8 Triangular sections: equilateral s^2 sqrt(3)/4, leg s^2/2, hypotenuse s^2/4; quote found on ced:159."
+    "evidence": "Shortened 8.8 Triangular sections paraphrase, formulas unchanged; anchor quote dropped, disclosed in prose as the last resort for the brief cap; nothing to check against ced:159."
    },
    {
     "id": "ki-2",
     "verdict": "ok",
-    "evidence": "8.8 Semicircular sections: radius s/2, area pi s^2/8; SymPy pi*(s/2)**2/2 = pi*s**2/8."
+    "evidence": "8.8 Semicircular sections: radius s/2, area pi s^2/8; SymPy pi*(s/2)**2/2 = pi*s**2/8. (unchanged since 2026-09-29)"
    },
    {
     "id": "st-1",
     "verdict": "ok",
-    "evidence": "From BC-QA-08011 fields and 8.8 Conversions tested (role of the distance); within caps."
+    "evidence": "Method has no label; rival from wrong_approaches[0] and the distance-as-radius distractor; no id."
+   },
+   {
+    "id": "st-1.contrast",
+    "verdict": "ok",
+    "evidence": "this fits BC-QA-08011 (named shape, diameters in the base, find the volume); not_this is a BC-QA-08012 disc stem; why_not and feature true."
    },
    {
     "id": "ex-1",
     "verdict": "ok",
-    "evidence": "SymPy: Integral(pi*(x-1)^2(3-x)^2/8,(x,1,3)) = 2*pi/15; distance nonnegative on [1,3]."
+    "evidence": "Only cue and why text changed; limits 1 and 3 are the SymPy zeros of (x - 1)(3 - x)."
    },
    {
     "id": "ex-2",
     "verdict": "ok",
-    "evidence": "SymPy: hypotenuse 2x(2-x), area s^2/4 = x^2(2-x)^2, Integral over [0,2] = 16/15."
+    "evidence": "fade_from 3: shown steps give the hypotenuse 2x(2 - x), zeros 0 and 2, and the area x**2(2 - x)**2; withheld integral (BC-PT-99001) and value 16/15 (SymPy, BC-PT-99004) are valued."
    },
    {
     "id": "reader-ex-1",
     "verdict": "ok",
-    "evidence": "BC-PT-99001 line matches bundle fields."
+    "evidence": "BC-PT-99001 line matches bundle fields. (unchanged since 2026-09-29)"
    },
    {
     "id": "reader-ex-2",
     "verdict": "ok",
-    "evidence": "BC-PT-99001 and BC-PT-99004 lines match bundle fields (99004 carries precision_rules in place of the empty notation field)."
+    "evidence": "BC-PT-99001 and BC-PT-99004 lines match bundle fields (99004 carries precision_rules in place of the empty notation field). (unchanged since 2026-09-29)"
    },
    {
     "id": "err-BC-ERR-08030",
     "verdict": "ok",
-    "evidence": "Verbatim from bundle; SymPy wrong pi/8 (f^2-g^2) = 7*pi/15 vs right 2*pi/15."
+    "evidence": "fix_prompt true with relation distinct; math unchanged from the earlier audit."
    },
    {
     "id": "err-BC-ERR-08033",
     "verdict": "ok",
-    "evidence": "Verbatim from bundle; s^2/2 vs s^2/4, factor two as stated; reason slice of BC-MIS-08019."
+    "evidence": "fix_prompt true with relation distinct; math unchanged from the earlier audit."
    },
    {
     "id": "err-BC-ERR-08034",
     "verdict": "ok",
-    "evidence": "Verbatim; SymPy radius s gives 8*pi/15, four times 2*pi/15 as the consequence says."
+    "evidence": "fix_prompt true with relation distinct; math unchanged from the earlier audit."
    },
    {
     "id": "err-BC-ERR-06013",
     "verdict": "ok",
-    "evidence": "Verbatim; SymPy full circle on s/2 gives 4*pi/15 vs 2*pi/15; reason slice of BC-MIS-08019, which the error lists."
+    "evidence": "fix_prompt true with relation distinct; math unchanged from the earlier audit."
    },
    {
     "id": "representations",
     "verdict": "ok",
-    "evidence": "null; 8.8 Representations carried by ki figures."
+    "evidence": "null; 8.8 Representations carried by ki figures. (unchanged since 2026-09-29)"
    },
    {
-    "id": "bridge-BC-PRQ-06002",
+    "id": "BC-PRQ-06002",
     "verdict": "ok",
-    "evidence": "Paraphrase of BC-PRQ-06002 description_plain."
+    "evidence": "Shortened paraphrase of BC-PRQ-06002."
    },
    {
-    "id": "bridge-BC-PRQ-06007",
+    "id": "BC-PRQ-06007",
     "verdict": "ok",
-    "evidence": "Paraphrase of BC-PRQ-06007 (semicircular regions)."
+    "evidence": "Shortened paraphrase of BC-PRQ-06007."
    },
    {
-    "id": "bridge-BC-PRQ-08005",
+    "id": "BC-PRQ-08005",
     "verdict": "ok",
-    "evidence": "Paraphrase of BC-PRQ-08005 description_plain."
+    "evidence": "Shortened paraphrase of BC-PRQ-08005."
    },
    {
     "id": "chk-1",
     "verdict": "ok",
-    "evidence": "SymPy: 2*pi/15; shifted form over [-1,1] also 2*pi/15."
+    "evidence": "SymPy: 2*pi/15; shifted form over [-1,1] also 2*pi/15. (unchanged since 2026-09-29)"
    },
    {
     "id": "chk-2",
     "verdict": "ok",
-    "evidence": "SymPy: distance 1-x^2, Integral(sqrt(3)/4 (1-x^2)^2,(x,-1,1)) = 4*sqrt(3)/15."
+    "evidence": "SymPy: distance 1-x^2, Integral(sqrt(3)/4 (1-x^2)^2,(x,-1,1)) = 4*sqrt(3)/15. (unchanged since 2026-09-29)"
    },
    {
     "id": "chk-3",
     "verdict": "ok",
-    "evidence": "SymPy: key 81*pi/80; A 81*pi/20 (radius s), C 81*pi/40 (full circle), D -9*pi/80 (pi/8 (f^2-g^2)); distinct."
+    "evidence": "SymPy: key 81*pi/80; A 81*pi/20 (radius s), C 81*pi/40 (full circle), D -9*pi/80 (pi/8 (f^2-g^2)); distinct. (unchanged since 2026-09-29)"
+   },
+   {
+    "id": "time",
+    "verdict": "ok",
+    "evidence": "I-A 2.14 minutes = 62/29 from exam-structure.md#Section and part layout; the either placement is listed in the inferred array; block not in the earlier audit and not changed by the redesign."
    }
   ],
   "advice": [
-   "err-BC-ERR-08030 describes a washer integrand; here it is applied in the reverse direction (f^2 - g^2 in place of (f - g)^2); the served observed_behavior reads oddly against the semicircle example.",
-   "err-BC-ERR-06013 is a region area error from Unit 6 repurposed to a slice; consider whether it earns one of the four error slots over BC-ERR-08032.",
-   "Bridge BC-PRQ-06002 (radicals as powers) is not exercised by any draw in this lesson.",
-   "chk-3 option D is negative (-9*pi/80) and so implausible as a volume distractor.",
-   "Orientation is text; a small figure of the slice shapes could serve the comparison better. Stem recognition, first line and rival are well taught through the leg vs hypotenuse and radius vs diameter contrasts."
+   "With ki-1's quote dropped, the lesson serves no anchor quote at all (ki-2 had none).",
+   "The prediction stem and st-1's contrast this name no perpendicular axis, which BC-QA-08011's typical_wording carries.",
+   "err-BC-ERR-08030 describes a washer integrand applied here in reverse; the served observed_behavior reads oddly against the semicircle example.",
+   "err-BC-ERR-06013 is a Unit 6 region area error repurposed to a slice.",
+   "Bridge BC-PRQ-06002 is not exercised by any draw.",
+   "chk-3 option D is negative (-9*pi/80) and so implausible as a volume distractor."
   ],
   "counts": {
-   "ok": 19,
+   "ok": 22,
    "unsourced": 0,
    "wrong": 0,
    "over_cap": 0,

@@ -61,8 +61,8 @@
    },
    {
     "id": "st-1.contrast",
-    "verdict": "unsourced",
-    "evidence": "not_this (2x^2+7x+4)/(2x^2+7x+3) is numerator = denominator + 1, exactly BC-QA-06010's own improper form (parameter_spec degree 'improper'; notes: 'The improper form adds the denominator to the numerator, so division leaves 1 plus the same proper fraction'); SymPy apart = 1 + 2/(5(2x+1)) - 1/(5(x+3)). The archetype's own stem cannot be the near miss; a not_this from another archetype (for example an integrand with its inner derivative present) is needed."
+    "verdict": "ok",
+    "evidence": "fixed 2026-09-29: not_this is now a BC-QA-06008 substitution near miss, 'Find ∫ (4x+7)/(2x^2+7x+3) dx.', why_not \"The numerator is the denominator's derivative: substitute.\", feature \"Numerator not the denominator's derivative.\"; the research heading for BC-QA-06008 is in st-1's sources, and BC-QA-06008 is the archetype of the bundle's BC-ERR-06019. SymPy: d/dx(2x^2 + 7x + 3) = 4x + 7, antiderivative log(2x^2 + 7x + 3)."
    },
    {
     "id": "ex-1",
@@ -97,8 +97,8 @@
    },
    {
     "id": "BC-PRQ-06003",
-    "verdict": "wrong",
-    "evidence": "Shortened to 'ln carries absolute value bars.', a general claim that is false (ln(x^2 + 1), or ln(x - 3) on x > 3 as in the lesson's own keys, needs no bars). description_plain restricts it to 'the logarithm of a linear expression'; restoring 'of a linear factor' fixes it."
+    "verdict": "ok",
+    "evidence": "fixed 2026-09-29: bridge text now 'ln of a linear factor carries absolute value bars.', restricted as description_plain restricts it (the logarithm of a linear expression)."
    },
    {
     "id": "BC-PRQ-06011",
@@ -138,11 +138,15 @@
    "Scoring consequence of err-BC-ERR-06022 carries page citations (sg-23:18, sg-24:18); verbatim record text the reader strips, so not lint."
   ],
   "counts": {
-   "ok": 15,
-   "unsourced": 1,
-   "wrong": 1,
+   "ok": 17,
+   "unsourced": 0,
+   "wrong": 0,
    "over_cap": 0,
    "lint": 0
   }
- }
+ },
+ "fix_notes": [
+  "st-1.contrast: not_this moved to a substitution near miss; BC-PRQ-06003 bridge restricted to a linear factor. Word counts unchanged at 566 full, 446 brief (checker).",
+  "Left as advice: st-1.contrast this stem 9/((2x+1)(x+3)) sits outside BC-QA-06010 parameter_spec (non integer constants 18/5 and -9/5); not flagged, not changed."
+ ]
 }

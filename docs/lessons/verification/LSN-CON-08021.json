@@ -45,94 +45,120 @@
   "auditor": "claude-opus-5-5",
   "blocks": [
    {
+    "id": "prediction",
+    "verdict": "ok",
+    "evidence": "Stem on ex-1's own x ln x with f'(1) given; SymPy f'(1) = 1, sqrt(1+1) = sqrt(2); only B true, A dx (run alone) and C 2 dx (legs added, BC-PRQ-08007 failure_signature) false; resolution's hypotenuse reading is carried by the bundle (BC-PRQ-08007, 'the Pythagorean magnitude the integrand comes from') and the 8.13 Arc length paragraph; no verdict word, praise or id."
+   },
+   {
     "id": "orientation",
     "verdict": "ok",
-    "evidence": "Paraphrases BC-CON-08021 description_plain and the 8.13 Assessment behaviour paragraph (setup, value, or identification with interval); 30 words, no count."
+    "evidence": "'those limits' shortened to 'limits'; still BC-CON-08021 and the 8.13 Assessment behaviour paragraph; no id or citation."
+   },
+   {
+    "id": "no_figure_reason",
+    "verdict": "ok",
+    "evidence": "Bundle skills carry BC-REP-01, 04, 05, 09 only (taxonomy: symbolic, verbal, contextual, calculator), none figure-bearing; the single key idea is a formula, no process."
    },
    {
     "id": "ki-1",
     "verdict": "ok",
-    "evidence": "8.13 Arc length (hypothesis f' continuous on [a,b]), Notation and Identification paragraphs; EK BC-EK-CHA-6A1 on all four skills; sg-24:16 lines 6 to 19 carry length plus interval; no quote (allowed)."
+    "evidence": "'as the length of the graph' shortened to 'as a length'; still the 8.13 Arc length, Notation and Identification paragraphs; quote null."
    },
    {
     "id": "st-1",
     "verdict": "ok",
-    "evidence": "Method is expected_solution_path[0..2]; rival is common_distractors[0] and wrong_approaches[1]; cue 9 words from common_givens and typical_wording."
+    "evidence": "method '\\(f'(x)\\), then the integral' is expected_solution_path[0..2] with the 'First line:' label removed; cue from common_givens; rival from common_distractors[0] and wrong_approaches[1]; f kept lower case."
+   },
+   {
+    "id": "st-1.contrast",
+    "verdict": "ok",
+    "evidence": "this ('Find the length of the graph of f on [0,1]') matches BC-QA-08014 typical_wording 'find the length of the curve on the stated interval'; not_this (area under the graph) is common_distractors[0], not 08014's own stem; why_not and feature true."
    },
    {
     "id": "ex-1",
     "verdict": "ok",
-    "evidence": "Generator form log, scale 1 gives x*log(x) on [1,3]; SymPy f' - (log(x)+1) = 0; key integral unevaluated (value 3.86962); no ITM-GEN-08014 item has x ln x on [1,3]."
+    "evidence": "Cues shortened; the BC-PT-99022 tag moved off step 2 (ex-2 still carries it); SymPy f' - (log(x)+1) = 0; key integral unchanged (3.86962)."
    },
    {
     "id": "ex-2",
     "verdict": "ok",
-    "evidence": "Generator radical, scale 1 gives x*sqrt(x+1) on [1,3]; SymPy f' - (3x+2)/(2sqrt(x+1)) = 0; length 5.008182, reported 5.008 (rounded and truncated agree)."
+    "evidence": "fade_from 3: shown steps give f and f' = (3x+2)/(2 sqrt(x+1)) (SymPy difference 0), the stem gives [1,3] and a calculator, enough to finish; withheld steps 3 (integral, BC-PT-99051) and 4 (5.008, BC-PT-99004) valued; SymPy N = 5.008182."
    },
    {
-    "id": "reader",
+    "id": "reader-ex-1",
     "verdict": "ok",
-    "evidence": "BC-PT-99022, 99051, 99004 are on BC-QA-08014 point_types; line text equals the bundle records; checker reader_scores clean."
+    "evidence": "BC-PT-99022 line removed with the step tag; the BC-PT-99051 line is unchanged record text."
+   },
+   {
+    "id": "reader-ex-2",
+    "verdict": "ok",
+    "evidence": "BC-PT-99022, 99051, 99004 are on BC-QA-08014 point_types; line text equals the bundle records; checker reader_scores clean.",
+    "note": "unchanged since 2026-09-29"
    },
    {
     "id": "err-BC-ERR-08019",
     "verdict": "ok",
-    "evidence": "Verbatim record; wrong step integrates from 0, not the requested [1,3] (SymPy 5.18401 vs 3.86962); null reason allowed."
+    "evidence": "relation distinct, fix_prompt true; SymPy 5.18401 vs 3.86962; exprs unchanged."
    },
    {
     "id": "err-BC-ERR-08041",
     "verdict": "ok",
-    "evidence": "Verbatim record; wrong step is the integral of f' (record's first form), SymPy 3 log 3 = 3.29584 vs 3.86962; null reason allowed."
+    "evidence": "relation distinct, fix_prompt true; SymPy 3.29584 vs 3.86962; exprs unchanged."
    },
    {
     "id": "err-BC-ERR-08042",
     "verdict": "ok",
-    "evidence": "Verbatim record; sqrt(1 + f') is the observed behaviour, SymPy 3.24881 vs 3.86962; reason fragment is words from BC-MIS-08024 description, the only linked MIS."
+    "evidence": "relation distinct, fix_prompt true; SymPy 3.24881 vs 3.86962; exprs unchanged."
    },
    {
     "id": "err-BC-ERR-08043",
     "verdict": "ok",
-    "evidence": "Verbatim record; sentence without interval against [1,3] matches observed_behavior and sg-24:16; reason fragment from BC-MIS-08009 description, a linked MIS."
+    "evidence": "relation distinct, fix_prompt true; EmptySet vs Interval(1, 3); exprs unchanged."
    },
    {
     "id": "representations",
     "verdict": "ok",
-    "evidence": "null; 8.13 Representations names BC-REP-01, 04, 09 and symbolic to verbal and to calculator value, nothing figure-shaped."
+    "evidence": "null; 8.13 Representations names BC-REP-01, 04, 09 and symbolic to verbal and to calculator value, nothing figure-shaped.",
+    "note": "unchanged since 2026-09-29"
    },
    {
-    "id": "bridge-BC-PRQ-06005",
+    "id": "BC-PRQ-06005",
     "verdict": "ok",
-    "evidence": "fixed 2026-09-29: text now restates BC-PRQ-06005's failure_signature (f and f' interchanged): the radical needs f'(x), not f"
+    "evidence": "Shortened to 'The radical needs f'(x), not f.'; still BC-PRQ-06005 failure_signature (f' and f interchanged)."
    },
    {
-    "id": "bridge-BC-PRQ-08006",
+    "id": "BC-PRQ-08006",
     "verdict": "ok",
-    "evidence": "Paraphrases BC-PRQ-08006 description_plain (three places) and failure_signature (rounded intermediate); 8 words."
+    "evidence": "fixed 2026-09-29: bridge rewritten from 'Three places after the decimal point.' to 'Round last, to three places.', which restores the premature-rounding half of BC-PRQ-08006 description_plain and keeps the three-place rule. 'Round only the final value, to three places.' put the brief form at 452 words against the cap 450, so the five-word form was used. tools/lesson_transcribe.py then tools/check_lessons.py on /tmp/08021.json: 'lessons read: 1, clean: 1, with findings: 0', so the samples-22-q5/page-002 duplicate finding is gone."
    },
    {
-    "id": "bridge-BC-PRQ-08007",
+    "id": "BC-PRQ-08007",
     "verdict": "ok",
-    "evidence": "Paraphrases BC-PRQ-08007 description_plain and failure_signature (sum in place of squares); 12 words."
+    "evidence": "Shortened to 'Components combine as a root of squares.'; still BC-PRQ-08007 description_plain and failure_signature."
    },
    {
     "id": "time",
     "verdict": "ok",
-    "evidence": "I-A 2.14 from exam-structure.md#Section and part layout; unit-08 README section 5 lists I-A or I-B for BC-QA-08014; the choice and held steps are in inferred."
+    "evidence": "I-A 2.14 from exam-structure.md#Section and part layout; unit-08 README section 5 lists I-A or I-B for BC-QA-08014; the choice and held steps are in inferred.",
+    "note": "unchanged since 2026-09-29"
    },
    {
     "id": "chk-1",
     "verdict": "ok",
-    "evidence": "Completion of ex-1 with f' given; key equals ex-1 answer (SymPy); BC-SKL-08056 is the stating skill."
+    "evidence": "Completion of ex-1 with f' given; key equals ex-1 answer (SymPy); BC-SKL-08056 is the stating skill.",
+    "note": "unchanged since 2026-09-29"
    },
    {
     "id": "chk-2",
     "verdict": "ok",
-    "evidence": "Draw scale 1/2, left 2, width 1 gives x*sqrt(x+1)/2 on [2,3]; SymPy f' - (3x+2)/(4sqrt(x+1)) = 0; no published item on this draw (ITM-GEN-08014-06 is [1,3])."
+    "evidence": "Draw scale 1/2, left 2, width 1 gives x*sqrt(x+1)/2 on [2,3]; SymPy f' - (3x+2)/(4sqrt(x+1)) = 0; no published item on this draw (ITM-GEN-08014-06 is [1,3]).",
+    "note": "unchanged since 2026-09-29"
    },
    {
     "id": "chk-3",
     "verdict": "ok",
-    "evidence": "x*exp(x/4) on [2,4], SymPy f' matches; key 7.847687 -> 7.848; A sqrt(1+f') 4.358932 (ERR-08042); B f(4)-f(2) 7.575685 (ERR-08041, integral of the derivative); D from 0 11.729556 (ERR-08019); distinct."
+    "evidence": "x*exp(x/4) on [2,4], SymPy f' matches; key 7.847687 -> 7.848; A sqrt(1+f') 4.358932 (ERR-08042); B f(4)-f(2) 7.575685 (ERR-08041, integral of the derivative); D from 0 11.729556 (ERR-08019); distinct.",
+    "note": "unchanged since 2026-09-29"
    }
   ],
   "advice": [
@@ -143,10 +169,14 @@
    "Mid band serves err-BC-ERR-08019 and 08041 only, so the unsquared derivative that st-1 names as its rival (wrong_approaches[1]) and the missing interval (wrong_approaches[0]) never reach the mid band.",
    "BC-ERR-08044 (the radical integral described as an area) falls past the cap by id order although st-1's rival and the topic's MCQ distractor are the area form; chk-3 has no area distractor either.",
    "chk-3 option B uses the integral of f' (7.576), which matches BC-ERR-08041's observed_behavior; the generator's BC-ERR-08041 distractor for the same draw is the integral of 1 + f'**2 (32.150). The two disagree on what this error produces.",
-   "The Key ideas prose says the CHA-6.A.1 sentence on ced:164 costs 16 words; it is 17. Prose only, no served text affected."
+   "The Key ideas prose says the CHA-6.A.1 sentence on ced:164 costs 16 words; it is 17. Prose only, no served text affected.",
+   "err-BC-ERR-08019 scoring_consequence '(sg-23:16)' and err-BC-ERR-08043 scoring_consequence '(sg-24:16)' are verbatim record text the reader strips; not lint.",
+   "Reader lines for BC-PT-99051, 99022 and 99004 reader lines carry page citations (sg-...) inside verbatim BC-PT record text, which the reader strips at serve time; not lint.",
+   "A fix for the BC-PRQ-08006 bridge that keeps the no-premature-rounding half of the record (for example 'Round only the final value, to three places.') would clear the duplicate gate and restore the dropped meaning. Brief word count sits at 450.",
+   "st-1 separating_feature and st-1.contrast feature repeat each other almost word for word ('Length along the graph, not the region under it' and 'not area beneath it')."
   ],
   "counts": {
-   "ok": 18,
+   "ok": 22,
    "unsourced": 0,
    "wrong": 0,
    "over_cap": 0,
@@ -154,10 +184,7 @@
   }
  },
  "fix_notes": [
-  {
-   "date": "2026-09-29",
-   "by": "claude-opus-5-5",
-   "note": "bridge BC-PRQ-06005 rewritten from the record's failure_signature; the prose no longer calls 0 part of the domain of ln x; word counts 839 and 441"
-  }
+  "BC-PRQ-08006 bridge: 'Round last, to three places.'. Word counts 847 full, 449 brief from the checker (read minutes 5.7 and 3.0 unchanged).",
+  "No worked example problem, check stem or key changed. Delivery rule numbers (6, 1) already match the current TEMPLATE order."
  ]
 }

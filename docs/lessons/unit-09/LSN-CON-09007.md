@@ -9,9 +9,13 @@ purpose: Authoring spec for the concept lesson on BC-CON-09007, integrating a ve
 
 Concept BC-CON-09007 (skills BC-SKL-09019, BC-SKL-09020), topic 9.5 of Unit 9, loaded by one archetype, BC-QA-09005 (family parametric-motion). Neither skill is independently assessable (`assessability_basis`: assessable only inside multi-skill parts), so the lesson works inside the coordinate-recovery shape and stresses what is this concept's own: one component integrated on its own, with its own starting value, and the vector of component integrals read as displacement.
 
+## Prediction
+
+Posed on ex-1's numbers, both bands, before any rule. Stem: a particle with velocity \(\langle 3\cos(t^2/2), 2\sqrt{t}e^{-t/2}\rangle\), \(x(1)=2\), \(y(1)=-3\), and which starting value goes with the integral of \(x'(t)\) when finding \(x(3)\). Form `mcq`, three options, key A, \(x(1)=2\). The distractors, \(y(1)=-3\) and the sum of both starts, are the single-constant and wrong-start moves of BC-ERR-09019, and neither is true of this integral. The resolution states ki-1's claim that each component carries its own constant, fixed by its own initial value. Sources: BC-CON-09007, BC-EK-FUN-8A1 and the Required mathematical knowledge paragraph of topic 9.5.
+
 ## Orientation
 
-Served text (41 words), from BC-CON-09007 `description_plain` and the topic's Assessment behaviour paragraph (research/units/unit-09-parametric-polar-vector.md#9.5 Integrating Vector-Valued Functions): a response integrates each velocity component on its own, each with its own starting value, and the free-response part scores the definite integral, the use of the initial condition and the value (sg-24:7, sg-23:7).
+Served text (25 words), from BC-CON-09007 `description_plain` and the topic's Assessment behaviour paragraph (research/units/unit-09-parametric-polar-vector.md#9.5 Integrating Vector-Valued Functions): a response integrates each velocity component on its own, each with its own starting value, and the free-response part scores the definite integral, the use of the initial condition and the value (sg-24:7, sg-23:7).
 
 ## Key ideas
 
@@ -25,11 +29,13 @@ One BC-EK maps to both skills, BC-EK-FUN-8A1 (ced:175), so one core block, both 
 
 What in the stem says "this concept": a rate given as a vector \(\langle x'(t), y'(t)\rangle\) and a position given as two coordinates or a point. The requested letter selects the one component to integrate and the one starting value that belongs to it. What says "not this one": "total distance travelled" (the integral of speed, BC-CON-09010), "speed" (a magnitude, BC-CON-09009), or "acceleration vector" (differentiate, BC-CON-09006).
 
+The contrast pair in st-1 takes its near miss from the first of these, a distance stem from outside the archetype: it also gives a velocity vector and two times, but asks for the integral of speed. The separating feature is whether one component and its start are asked for.
+
 ## Method choice
 
 One strategy block (one archetype family), low and mid bands.
 
-- st-1, BC-QA-09005. Cue from `common_givens` and `asked_to_produce`. Method, `expected_solution_path[0]`: write the coordinate as the known value plus the definite integral of the velocity component. First written line: \(x(3)=x(1)+\int_1^3 x'(t)\,dt\). Rival, `wrong_approaches`: omitting the initial condition; the concept's own rival is starting from the other coordinate's value (BC-ERR-09019). Separating feature: the requested letter names both the component and its starting value.
+- st-1, BC-QA-09005, with the contrast pair. Cue from `common_givens` and `asked_to_produce`. Method, `expected_solution_path[0]`: write the coordinate as the known value plus the definite integral of the velocity component. First written line: \(x(3)=x(1)+\int_1^3 x'(t)\,dt\). Rival, `wrong_approaches`: omitting the initial condition; the concept's own rival is starting from the other coordinate's value (BC-ERR-09019). Separating feature: the requested letter names both the component and its starting value. The pair: this, a velocity \(\langle 4\cos(t^2/3), \sqrt t\rangle\) with \(x(2)=1\), \(y(2)=5\) and \(x(4)\) asked; not this, the total distance travelled by a particle over two times, which integrates speed; feature, whether a single coordinate at a time is requested.
 
 ## Solution path
 
@@ -84,8 +90,8 @@ Every non-text choice is [inferred], settled by the modality A/B in the build pl
 
 ## Band plan
 
-- Low (full): orientation, ki-1, st-1, ex-1 with its scoring line, err-09019, err-99010, chk-1, chk-2, both bridges. 422 words, 3.0 minutes (cap 900 and 6).
-- Mid (brief): the same blocks, since the lesson has one key idea, one strategy block, one example, two error blocks and two checks. 422 words, 3.0 minutes (cap 450 and 3).
+- Low (full): prediction, orientation, both bridges, ki-1, st-1 with the contrast pair, ex-1 with its scoring line, chk-1, err-09019, err-99010, chk-2. 447 words, 3.0 minutes (cap 900 and 6).
+- Mid (brief): prediction, orientation, both bridges, ki-1, st-1 with the contrast pair, ex-1 with its scoring line, chk-1, err-09019, err-99010, chk-2. 447 words, 3.0 minutes (cap 450 and 3).
 - Refresher: ki-1, err-BC-ERR-09019, err-BC-ERR-99010, ex-1.
 
 ## Sources
@@ -115,8 +121,12 @@ Every non-text choice is [inferred], settled by the modality A/B in the build pl
  "target_id": "BC-CON-09007",
  "unit": "09",
  "skills": ["BC-SKL-09019", "BC-SKL-09020"],
+ "prediction": {"id": "pr-1", "stem": {"text": "Before the rule: a particle has velocity \\(\\langle 3\\cos(t^2/2), 2\\sqrt{t}e^{-t/2}\\rangle\\), \\(x(1)=2\\) and \\(y(1)=-3\\). Which start goes with the integral of \\(x'(t)\\) when finding \\(x(3)\\)?", "command_verb": "predict"}, "format": "mcq",
+  "options": [{"id": "A", "label": "\\(x(1)=2\\)", "is_key": true}, {"id": "B", "label": "\\(y(1)=-3\\)", "is_key": false}, {"id": "C", "label": "The sum of both starts", "is_key": false}],
+  "resolution": "Each component carries its own constant, fixed by its own initial value, so \\(x(3)=2+\\int_1^3 x'(t)\\,dt\\).",
+  "sources": ["BC-CON-09007", "BC-EK-FUN-8A1", "research/units/unit-09-parametric-polar-vector.md#9.5 Integrating Vector-Valued Functions"]},
  "orientation": {
-  "text": "Each velocity component is integrated on its own, from its own starting value. A coordinate at a new time is its known value plus the definite integral of its component. Free-response parts score the integral, the initial condition and the value.",
+  "text": "Each velocity component is integrated on its own, from its own start. A coordinate is its known value plus the definite integral of its component.",
   "sources": ["BC-CON-09007", "research/units/unit-09-parametric-polar-vector.md#9.5 Integrating Vector-Valued Functions", "sg-24:7"]
  },
  "key_ideas": [
@@ -124,7 +134,7 @@ Every non-text choice is [inferred], settled by the modality A/B in the build pl
    "id": "ki-1",
    "ek_id": "BC-EK-FUN-8A1",
    "depth": "core",
-   "text": "Integrate a vector-valued rate one component at a time. Each component of an antiderivative carries its own constant, fixed by its own initial value. Over an interval, the vector of the two definite integrals is the displacement, the net change in position.",
+   "text": "Integrate a vector-valued rate one component at a time. Each component carries its own constant, fixed by its own initial value. Over an interval, the vector of the two definite integrals is the displacement.",
    "notation": "component wise integration",
    "quote": {"text": "Methods for calculating integrals of real-valued functions can be extended to parametric or vector-valued functions.", "source": "ced:175"},
    "sources": ["BC-EK-FUN-8A1", "ced:175", "BC-EK-FUN-8B2", "ced:176", "research/units/unit-09-parametric-polar-vector.md#9.5 Integrating Vector-Valued Functions"]
@@ -134,12 +144,17 @@ Every non-text choice is [inferred], settled by the modality A/B in the build pl
   {
    "id": "st-1",
    "archetype_id": "BC-QA-09005",
-   "cue": "The stem gives a velocity component, the position at one time and a second time.",
-   "method": "First written line: the known value plus the definite integral of the velocity component, \\(x(3)=x(1)+\\int_1^3 x'(t)\\,dt\\).",
-   "rival": "The rival omits the initial condition, or starts from the other coordinate's value (BC-ERR-09019).",
-   "separating_feature": "The requested letter names both the component and its starting value.",
+   "cue": "A velocity component, a position at one time, and a second time.",
+   "method": "Known value plus the integral, \\(x(3)=x(1)+\\int_1^3 x'(t)\\,dt\\).",
+   "rival": "Starting from the other coordinate's value.",
+   "separating_feature": "The requested letter names the component and its start.",
    "sources": ["BC-QA-09005", "BC-ERR-09019"],
-   "evidence_tag": "verified"
+   "evidence_tag": "verified",
+   "contrast": {
+    "this": {"text": "Velocity \\(\\langle 4\\cos(t^2/3), \\sqrt{t}\\rangle\\), \\(x(2)=1\\), \\(y(2)=5\\). Find \\(x(4)\\).", "archetype_id": "BC-QA-09005"},
+    "not_this": {"text": "Velocity \\(\\langle 4\\cos(t^2/3), \\sqrt{t}\\rangle\\). Find the total distance travelled from \\(t=2\\) to \\(t=4\\).", "why_not": "It asks for the integral of speed, not one coordinate."},
+    "feature": "One coordinate at a later time is asked for."
+   }
   }
  ],
  "worked_examples": [
@@ -152,7 +167,7 @@ Every non-text choice is [inferred], settled by the modality A/B in the build pl
    "calculator_status": "calculator",
    "steps": [
     {"cue": "The stem asks for \\(x(3)\\).", "why": "Only \\(x'(t)\\) and its own start \\(x(1)=2\\) are used."},
-    {"cue": "Known at \\(t=1\\), asked at the later \\(t=3\\).", "why": "Start plus forward accumulation: \\(x(3)=2+\\int_1^3 3\\cos(t^2/2)\\,dt\\).", "expr": "2 + Integral(3*cos(t**2/2), (t, 1, 3))", "relation": "new", "point_type_id": "BC-PT-99033"},
+    {"cue": "Known at 1, asked at 3.", "why": "Start plus forward accumulation: \\(x(3)=2+\\int_1^3 3\\cos(t^2/2)\\,dt\\).", "expr": "2 + Integral(3*cos(t**2/2), (t, 1, 3))", "relation": "new", "point_type_id": "BC-PT-99033"},
     {"cue": "No elementary antiderivative.", "why": "The calculator gives the integral as about \\(-1.196\\), so \\(x(3)\\approx0.804\\).", "expr": "0.804", "relation": "evaluate", "subs": {}, "approx": true}
    ],
    "answer": {"form": "numeric", "expr": "0.804"}
@@ -166,9 +181,10 @@ Every non-text choice is [inferred], settled by the modality A/B in the build pl
    "error_id": "BC-ERR-09019",
    "observed_behavior": "A vector antiderivative carries a single constant rather than one in each component.",
    "scoring_consequence": "The particular solution cannot satisfy both initial conditions, so the answer is wrong.",
-   "wrong_step": {"text": "The \\(y\\) start used for \\(x\\): \\(-3+\\int_1^3 x'(t)\\,dt\\approx-4.196\\).", "expr": "-3 + Integral(3*cos(t**2/2), (t, 1, 3))"},
-   "right_step": {"text": "The \\(x\\) start: \\(2+\\int_1^3 x'(t)\\,dt\\approx0.804\\).", "expr": "2 + Integral(3*cos(t**2/2), (t, 1, 3))"},
+   "wrong_step": {"text": "The \\(y\\) start used for \\(x\\): \\(-3+\\int_1^3 x'(t)\\,dt\\approx-4.196\\).", "expr": "-4.196"},
+   "right_step": {"text": "The \\(x\\) start: \\(2+\\int_1^3 x'(t)\\,dt\\approx0.804\\).", "expr": "0.804"},
    "relation": "distinct",
+   "fix_prompt": true,
    "possible_reason": {"misconception_id": "BC-MIS-09009", "text": "a single constant of integration all look immaterial"},
    "sources": ["BC-ERR-09019", "BC-MIS-09009"]
   },
@@ -179,14 +195,15 @@ Every non-text choice is [inferred], settled by the modality A/B in the build pl
    "wrong_step": {"text": "Displacement \\(\\int_1^3 x'(t)\\,dt\\) reported as distance.", "expr": "Integral(3*cos(t**2/2), (t, 1, 3))"},
    "right_step": {"text": "Distance integrates speed: \\(\\int_1^3\\sqrt{x'^2+y'^2}\\,dt\\).", "expr": "Integral(sqrt(9*cos(t**2/2)**2 + 4*t*exp(-t)), (t, 1, 3))"},
    "relation": "distinct",
+   "fix_prompt": true,
    "possible_reason": null,
    "sources": ["BC-ERR-99010"]
   }
  ],
  "representations": null,
  "prerequisite_bridges": [
-  {"prq_id": "BC-PRQ-06005", "text": "The setup reads \\(x'(t)\\) as a rate and \\(x(1)\\) as a value at one input. The gap shows as \\(x'\\) and \\(x\\) interchanged."},
-  {"prq_id": "BC-PRQ-09001", "text": "In \\(\\langle x'(t), y'(t)\\rangle\\) the horizontal component comes first. Components listed separately need labels; two correct numbers without saying which is which is the gap."}
+  {"prq_id": "BC-PRQ-06005", "text": "Do not swap the rate \\(x'(t)\\) and the value \\(x(1)\\)."},
+  {"prq_id": "BC-PRQ-09001", "text": "In \\(\\langle x'(t), y'(t)\\rangle\\) the horizontal component is first."}
  ],
  "time": {"exam_part": "II-A", "budget_minutes": 15.0, "source": "research/exam/exam-structure.md#Section and part layout", "written_steps": {"ex-1": [2, 3]}, "skipped_steps": {"ex-1": [1]}},
  "checks": [
@@ -237,7 +254,7 @@ Every non-text choice is [inferred], settled by the modality A/B in the build pl
  ],
  "refresher": ["ki-1", "err-BC-ERR-09019", "err-BC-ERR-99010", "ex-1"],
  "read_minutes": {"full": 3.0, "brief": 3.0},
- "word_count": {"full": 438, "brief": 438},
+ "word_count": {"full": 447, "brief": 447},
  "research_lines": [
   {"file": "research/units/unit-09-parametric-polar-vector.md", "line": "Each component carries its own constant of integration."},
   {"file": "research/scoring/common-point-losses.md", "line": "Displacement setup given where total distance was asked"}

@@ -83,7 +83,7 @@ BC-QA-07003 is `no_calculator` and the closing part of a multipart FRQ, so Secti
 
 ## Delivery
 
-- pr-1: text. Rule 6, a prediction on ex-1's equation with nothing to draw.
+- pr-1: text. Rule 6, a prediction on the worked example's equation with nothing to draw.
 - orientation, ki-1, ki-2: text. Rule 6: the representations are BC-REP-01 and BC-REP-06, none figure-bearing, and the content is a sequence of written lines (docs/lessons/unit-07/README.md, section 6).
 - ex-1 and the four error blocks: step_reveal, rule 1.
 
@@ -644,7 +644,7 @@ Figure presence: no drawn block. No rule of 2 to 5 applies, because the topic's 
   {
    "block": "pr-1",
    "mode": "text",
-   "reason": "rule 6: a prediction on ex-1's equation with nothing to draw",
+   "reason": "rule 6: a prediction on the worked example's equation with nothing to draw",
    "sources": [
     "BC-SKL-07024"
    ]

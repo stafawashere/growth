@@ -66,8 +66,8 @@
    },
    {
     "id": "st-1.contrast",
-    "verdict": "unsourced",
-    "evidence": "this matches BC-QA-06008 (SymPy integral sin(x^2)); but not_this's why_not 'it calls for integration by parts' is carried by neither the bundle (archetypes BC-QA-06008, BC-QA-06018 only, no parts reference) nor the cited 6.9 heading; the design sources it to BC-CON-06017, which lives under the uncited 6.11 heading. The claim is true."
+    "verdict": "ok",
+    "evidence": "fixed 2026-09-29: research/units/unit-06-integration-accumulation.md#6.11 Integrating Using Integration by Parts added to st-1's sources and the Sources list (BC-CON-06017, the product rule in reverse), and why_not reworded to 'No composite with its inner derivative; it calls for integration by parts.', which drops the loose 'no inner derivative'."
    },
    {
     "id": "ex-1",
@@ -141,11 +141,14 @@
    "Carried from the earlier audit: err-BC-ERR-06020 is shown where the inner derivative is present; chk-3 options A and D share BC-ERR-06018."
   ],
   "counts": {
-   "ok": 17,
-   "unsourced": 1,
+   "ok": 18,
+   "unsourced": 0,
    "wrong": 0,
    "over_cap": 0,
    "lint": 0
   }
- }
+ },
+ "fix_notes": [
+  "st-1.contrast: 6.11 heading cited, why_not tightened. Word counts 611 full, 447 brief from the checker."
+ ]
 }

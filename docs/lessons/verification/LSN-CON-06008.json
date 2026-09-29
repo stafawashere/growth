@@ -49,8 +49,8 @@
    },
    {
     "id": "st-1",
-    "verdict": "lint",
-    "evidence": "Label strip capitalized the function name: method reads \"H' equals the integrand at the upper limit\" while the problems name h."
+    "verdict": "ok",
+    "evidence": "fixed 2026-09-29: method restored to \"h' equals the integrand at the upper limit.\""
    },
    {
     "id": "st-1.contrast",
@@ -59,8 +59,8 @@
    },
    {
     "id": "st-2",
-    "verdict": "lint",
-    "evidence": "Label strip capitalized the function name: method reads 'G as signed areas' while the function is g."
+    "verdict": "ok",
+    "evidence": "fixed 2026-09-29: method restored to 'g as signed areas; for g prime, g' = f read at the input.'"
    },
    {
     "id": "ex-1",
@@ -121,11 +121,14 @@
    "err-BC-ERR-06027 scoring_consequence carries (sg-24:15); verbatim record text the reader strips."
   ],
   "counts": {
-   "ok": 13,
+   "ok": 15,
    "unsourced": 0,
    "wrong": 0,
    "over_cap": 0,
-   "lint": 2
+   "lint": 0
   }
- }
+ },
+ "fix_notes": [
+  "st-1 and st-2: capitalised function names from the label strip restored to h and g. Word counts unchanged (checker clean)."
+ ]
 }

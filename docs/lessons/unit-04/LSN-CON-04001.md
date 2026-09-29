@@ -80,7 +80,7 @@ BC-QA-04001 has calculator status either, so the lesson takes Section I Part A, 
 
 ## Delivery
 
-- pr-1: text. Rule 6, a prediction on ex-1's numbers with nothing to draw.
+- pr-1: text. Rule 6, a prediction on the worked example's numbers with nothing to draw.
 - orientation, ki-1, ki-2: text. Rule 5: the three skills carry BC-REP-04 and BC-REP-05 only (docs/lessons/unit-04/README.md, section 6).
 - ex-1 and the four error blocks: step_reveal. Rule 1.
 
@@ -546,7 +546,7 @@ Figure presence: no drawn block. No rule of 2 to 5 applies, because BC-REP-04 an
   {
    "block": "pr-1",
    "mode": "text",
-   "reason": "rule 6: a prediction on ex-1's numbers with no picture in the question",
+   "reason": "rule 6: a prediction on the worked example's numbers with no picture in the question",
    "sources": [
     "BC-SKL-04003"
    ]

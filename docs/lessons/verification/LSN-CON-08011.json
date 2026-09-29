@@ -39,89 +39,103 @@
   "auditor": "claude-opus-5-5",
   "blocks": [
    {
+    "id": "prediction",
+    "verdict": "ok",
+    "evidence": "SymPy: f = g at x = 1, 3; meeting y values 1, 5; key B (1 and 3) the only true option, A (1, 5) and C (3, 5) use y values; resolution matches BC-CON-08011 and ced:155; no verdict word."
+   },
+   {
     "id": "orientation",
     "verdict": "ok",
-    "evidence": "Paraphrases BC-CON-08011 description_plain and the 8.4 Assessment behaviour calculator and no-calculator variants; 28 words."
+    "evidence": "Shortened paraphrase of BC-CON-08011 description_plain; no id or count."
    },
    {
     "id": "ki-1",
     "verdict": "ok",
-    "evidence": "8.4 Limits paragraph; 'every solution, keep those bounding' and 'stored, not retyped' match BC-SKL-08020 and 08021 adaptive.mastered_if; quote verbatim ced:155; 50 words."
+    "evidence": "Shortened 8.4 Limits paraphrase; still matches BC-SKL-08020 and 08021 mastered_if; quote unchanged and verbatim ced:155 (qa/07_quotes 0 failures)."
    },
    {
     "id": "st-1",
     "verdict": "ok",
-    "evidence": "Method departs from expected_solution_path[0] and is listed in the inferred array; rival matches BC-ERR-08019 observed_behavior; cue 18 words, total 54."
+    "evidence": "Method no longer carries a label; rival 'Limits from y coordinates' has no id and matches BC-ERR-08019; strategy letters lower case."
+   },
+   {
+    "id": "st-1.contrast",
+    "verdict": "ok",
+    "evidence": "this fits BC-QA-08008 typical_wording (enclosed) and asked_to_produce (an integrand), SymPy meet 0, 3; not_this is BC-QA-08010's typical_wording (question-archetypes.md#BC-QA-08010); why_not and feature true."
    },
    {
     "id": "ex-1",
     "verdict": "ok",
-    "evidence": "SymPy: f = g at x = 1, 3; f(2) = 4 > g(2) = 3; integral = 4/3 = bulge*width**3/6; F' = -x**2 + 4x - 3; constraints hold."
+    "evidence": "Only cue and why text changed (exprs identical to the earlier record); F = -x**3/3 + 2x**2 - 3x (SymPy), step 4 = 4/3."
    },
    {
     "id": "reader",
     "verdict": "ok",
-    "evidence": "BC-PT-99001 is listed on BC-QA-08008 and tagged on the integral with limits; line is the recomputed reader_checks text."
+    "evidence": "BC-PT-99001 is listed on BC-QA-08008 and tagged on the integral with limits; line is the recomputed reader_checks text. (unchanged since 2026-09-29)"
    },
    {
     "id": "err-BC-ERR-08019",
     "verdict": "ok",
-    "evidence": "Verbatim record; meeting points (1, 1), (3, 5); y values as limits give SymPy -16/3 against 4/3; reason fragment from BC-MIS-08012."
+    "evidence": "fix_prompt true with relation distinct; math unchanged from the earlier audit; SymPy wrong -16/3, right 4/3."
    },
    {
     "id": "err-BC-ERR-99019",
     "verdict": "ok",
-    "evidence": "Verbatim record; 1.3 has fewer than three decimal places, the first behaviour named; distinct from 4/3; null reason justified."
+    "evidence": "fixed 2026-09-29: right_step expr restored from 1.333 to 4/3 under the exact value equality rule; the text keeps '4/3, or 1.333'. SymPy: 4/3 - 1.333 = 1/3000, so 1.333 was not the same value; 4/3 against wrong 1.3 still differs, so relation distinct and fix_prompt true hold. The Error blocks prose now says the expression keeps the exact 4/3."
    },
    {
     "id": "representations",
     "verdict": "ok",
-    "evidence": "null; the BC-REP-01 to BC-REP-09 conversion is named and ki-1's figure marks the limits."
+    "evidence": "null; the BC-REP-01 to BC-REP-09 conversion is named and ki-1's figure marks the limits. (unchanged since 2026-09-29)"
    },
    {
-    "id": "bridge-BC-PRQ-08001",
+    "id": "BC-PRQ-08001",
     "verdict": "ok",
-    "evidence": "Paraphrases BC-PRQ-08001 description_plain and failure_signature; 20 words."
+    "evidence": "Shortened paraphrase of BC-PRQ-08001 description_plain and failure_signature."
    },
    {
-    "id": "bridge-BC-PRQ-08006",
+    "id": "BC-PRQ-08006",
     "verdict": "ok",
-    "evidence": "Paraphrases BC-PRQ-08006 (three places, no premature rounding); 16 words."
+    "evidence": "Shortened paraphrase of BC-PRQ-08006."
    },
    {
     "id": "time",
     "verdict": "ok",
-    "evidence": "I-A 2.14 from exam-structure.md#Section and part layout; either status listed as inferred."
+    "evidence": "I-A 2.14 from exam-structure.md#Section and part layout; either status listed as inferred. (unchanged since 2026-09-29)"
    },
    {
     "id": "chk-1",
     "verdict": "ok",
-    "evidence": "Completion of ex-1; SymPy integral of -x**2 + 4x - 3 on [1, 3] = 4/3."
+    "evidence": "Completion of ex-1; SymPy integral of -x**2 + 4x - 3 on [1, 3] = 4/3. (unchanged since 2026-09-29)"
    },
    {
     "id": "chk-2",
     "verdict": "ok",
-    "evidence": "Draw gives f = -x**2 + x + 5, g = 2 - x; SymPy roots -1, 3; area 32/3; constraints hold."
+    "evidence": "Draw gives f = -x**2 + x + 5, g = 2 - x; SymPy roots -1, 3; area 32/3; constraints hold. (unchanged since 2026-09-29)"
    },
    {
     "id": "chk-3",
     "verdict": "ok",
-    "evidence": "Key C 8/3 (SymPy, roots 0 and 2); A: y values -2 and 0 as limits = -40/3 (ERR-08019); B 2.7 and D 2.66 have fewer than three decimals (ERR-99019); values distinct."
+    "evidence": "Key C 8/3 (SymPy, roots 0 and 2); A: y values -2 and 0 as limits = -40/3 (ERR-08019); B 2.7 and D 2.66 have fewer than three decimals (ERR-99019); values distinct. (unchanged since 2026-09-29)"
    }
   ],
   "advice": [
-   "BC-SKL-08021 (calculator intersections) is never exercised: every draw is no calculator with integer limits, so the stored-value rule in ki-1 and the BC-ERR-99019 block (1.3 on an exact answer) have no case where they bite; a calculator isomorph with decimal crossings would test them.",
-   "chk-3 spends two distractors on one error (B and D both BC-ERR-99019), and decimal options on a no-calculator exact item read as approximations of the key rather than errors.",
-   "The vertical-line case ki-1 names (limits given by lines, a difficulty variable) has no example or check.",
-   "st-1 rival quotes BC-ERR-08019 rather than the wrong_approaches entry the prose names (an interval extending past an intersection), and its machine evidence_tag stays verified while the method is an inferred reading of the path.",
-   "Served text carries the id '(BC-ERR-08019)' in the st-1 rival (recurring served-text class)."
+   "err-BC-ERR-99019 right_step expr was rewritten from 4/3 to 1.333; SymPy gives a difference of 1/3000, so the value is not strictly unchanged. 1.333 is an accepted three-place answer and wrong 1.3 still differs, so it is recorded ok; if the rule means exact equality, keep 4/3 in the expr and 1.333 in the text.",
+   "BC-SKL-08021 (calculator intersections) is never exercised: every draw is no calculator with integer limits, so the stored-value rule in ki-1 and the BC-ERR-99019 block have no case where they bite.",
+   "chk-3 spends two distractors on one error (B and D both BC-ERR-99019).",
+   "The vertical-line case ki-1 names has no example or check.",
+   "st-1 sources now cite BC-QA-08010, which is not among the bundle's archetypes; the contrast rests on question-archetypes.md#BC-QA-08010."
   ],
   "counts": {
-   "ok": 14,
+   "ok": 16,
    "unsourced": 0,
    "wrong": 0,
    "over_cap": 0,
    "lint": 0
   }
- }
+ },
+ "fix_notes": [
+  "err-BC-ERR-99019: right_step expr back to 4/3, text '4/3, or 1.333' kept. Word counts unchanged; checker clean.",
+  "No worked example problem, check stem or key changed. Delivery rule numbers (4, 1) already match the current TEMPLATE order."
+ ]
 }

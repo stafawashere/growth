@@ -33,78 +33,101 @@
   "auditor": "claude-opus-5-5",
   "blocks": [
    {
+    "id": "prediction",
+    "verdict": "ok",
+    "evidence": "Key B E(t) minus L(t) is BC-CON-08007 description_formal (inflow minus outflow); A (sum) and C (reversed) are false; answerable from the verbs enters and leaves; no verdict word or id."
+   },
+   {
     "id": "orientation",
     "verdict": "ok",
-    "evidence": "Paraphrases BC-CON-08007 and the BC-QA-06006 solution path; three decimals from BC-PT-99004 precision."
+    "evidence": "Shortened paraphrase of BC-QA-06006 expected_solution_path (net rate, integral, add initial amount) and three decimals from BC-PT-99004."
    },
    {
     "id": "ki-1",
     "verdict": "ok",
-    "evidence": "ced:154 CHA-4.D.2 plus the 8.3 Net rate paragraph."
+    "evidence": "Shortened; ced:154 CHA-4.D.2 net change plus BC-CON-08007 difference of the two rates."
    },
    {
     "id": "ki-2",
     "verdict": "ok",
-    "evidence": "ced:154 CHA-4.E.1 and the Amount at a time conclusion; units product is dimensional arithmetic."
+    "evidence": "ced:154 CHA-4.E.1 and the Amount at a time conclusion; units product is dimensional arithmetic.",
+    "note": "unchanged since 2026-09-29"
    },
    {
     "id": "st-1",
     "verdict": "ok",
-    "evidence": "Method and rival match BC-QA-06006 expected_solution_path[0] and both wrong_approaches; cue matches common_givens; 17 word cue."
+    "evidence": "Labels removed; method BC-QA-06006 expected_solution_path[0], rival both wrong_approaches; no capitalised variable."
+   },
+   {
+    "id": "st-1.contrast",
+    "verdict": "ok",
+    "evidence": "this paraphrases BC-QA-06006 typical_wording[1] (enters at one rate, leaves at another, amount at the stated time, setup); not_this is a BC-QA-99008 inflow-only stem, whose prohibited_shortcuts name subtracting the second rate; why_not and feature true."
    },
    {
     "id": "ex-1",
     "verdict": "ok",
-    "evidence": "SymPy: N(50 + Integral(6+2sin(t^2/3)-(3+cos(t/2)),(t,0,3))) = 60.09487, reported 60.095; rates match the BC-QA-06006 spec notes."
+    "evidence": "Only cue and why text shortened; SymPy N(50 + Integral(E - L,(t,0,3))) = 60.09487; expr unchanged."
    },
    {
     "id": "reader-ex-1",
     "verdict": "ok",
-    "evidence": "BC-PT-99001 line verbatim from the bundle."
+    "evidence": "BC-PT-99001 line verbatim from the bundle.",
+    "note": "unchanged since 2026-09-29"
    },
    {
     "id": "err-BC-ERR-08013",
     "verdict": "ok",
-    "evidence": "Verbatim BC-ERR-08013; SymPy E+L gives 82.085, distinct from 60.095."
+    "evidence": "relation distinct, fix_prompt true; SymPy E+L 82.085 against 60.095."
    },
    {
     "id": "err-BC-ERR-99009",
     "verdict": "ok",
-    "evidence": "Verbatim BC-ERR-99009; SymPy unparenthesised integrand gives 64.085, distinct; reason fragment from BC-MIS-08007."
+    "evidence": "relation distinct, fix_prompt true; SymPy unparenthesised 64.085 against 60.095."
    },
    {
     "id": "representations",
     "verdict": "ok",
-    "evidence": "null; no figure conversion named for a net rate."
+    "evidence": "null; no figure conversion named for a net rate.",
+    "note": "unchanged since 2026-09-29"
    },
    {
-    "id": "bridge-BC-PRQ-06005",
+    "id": "BC-PRQ-06005",
     "verdict": "ok",
-    "evidence": "Paraphrases BC-PRQ-06005 function versus value."
+    "evidence": "Shortened; still BC-PRQ-06005 amount versus rate."
    },
    {
     "id": "time",
     "verdict": "ok",
-    "evidence": "exam-structure.md: Section II Part A 30 minutes for 2 questions, 15.0 per question."
+    "evidence": "exam-structure.md: Section II Part A 30 minutes for 2 questions, 15.0 per question.",
+    "note": "unchanged since 2026-09-29"
    },
    {
     "id": "chk-1",
     "verdict": "ok",
-    "evidence": "SymPy: 60.09487 rounds to 60.095."
+    "evidence": "SymPy: 60.09487 rounds to 60.095.",
+    "note": "unchanged since 2026-09-29"
    },
    {
     "id": "chk-2",
     "verdict": "ok",
-    "evidence": "SymPy: N(30 + Integral(8+sin(t^2/4)-(2+2cos(t/2)),(t,0,2))) = 39.25465, key 39.255; draw matches spec."
+    "evidence": "SymPy: N(30 + Integral(8+sin(t^2/4)-(2+2cos(t/2)),(t,0,2))) = 39.25465, key 39.255; draw matches spec.",
+    "note": "unchanged since 2026-09-29"
+   },
+   {
+    "id": "no_figure_reason",
+    "verdict": "ok",
+    "evidence": "BC-SKL-08013 representations BC-REP-05 (contextual model) and BC-REP-01 (symbolic), neither figure-bearing (01-learning-model: 02, 03, 07, 08); ki-1 and ki-2 state a difference and a net change, no process; 26 words."
    }
   ],
   "advice": [
    "ex-1 tags BC-PT-99001 only, though BC-PT-99068 is in the bundle and the answer point is where three decimals matter; the scoring habit of reporting three places is stated but no reader line shows it.",
    "The lesson never shows the change ask (no initial amount added), which is the difficulty dial in BC-QA-06006; a check with ask change would test the recognition half of the orientation.",
-   "A signed net rate is well served by a short graph of E minus L crossing zero; text only is adequate but ki-1's 'rises where positive' claim has no picture."
+   "The orientation now says plus the initial amount unconditionally; BC-QA-06006 expected_solution_path adds it only when an amount is requested, and the earlier text kept that condition, which is the recognition half the change ask tests.",
+   "st-1.contrast not_this rests on BC-QA-99008, listed by id in Sources but not in the bundle and without its research heading (question-archetypes.md#BC-QA-99008); citing the heading would close the trail.",
+   "reader-ex-1 line carries sg-26:4, sg-22:2, sg-22:18 and sg-23:8, verbatim record text the reader strips; no served-text defect."
   ],
   "counts": {
-   "ok": 13,
+   "ok": 16,
    "unsourced": 0,
    "wrong": 0,
    "over_cap": 0,

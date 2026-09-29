@@ -84,7 +84,7 @@ BC-QA-04002 has calculator status either, so the lesson takes Section I Part A, 
 
 ## Delivery
 
-- pr-1: text. Rule 6, a prediction on ex-1's numbers asking for units.
+- pr-1: text. Rule 6, a prediction on the worked example's numbers asking for units.
 - orientation: text. Rule 6.
 - ki-1: text. Rule 6, the units rule (docs/lessons/unit-04/README.md, section 6).
 - ki-2: table. Rule 5: BC-REP-03 in BC-SKL-04004 and in BC-QA-04002 `common_givens` [inferred; settled by the modality A/B]. Fallback: the table as text rows. Keyboard: Tab between cells. This is the lesson's drawn block, so no `no_figure_reason` is carried.
@@ -506,7 +506,7 @@ BC-QA-04002 has calculator status either, so the lesson takes Section I Part A, 
   {
    "block": "pr-1",
    "mode": "text",
-   "reason": "rule 6: a prediction on ex-1's numbers, asking for units",
+   "reason": "rule 6: a prediction on the worked example's numbers, asking for units",
    "sources": [
     "BC-SKL-04001"
    ]

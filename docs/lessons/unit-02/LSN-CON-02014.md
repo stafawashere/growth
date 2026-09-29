@@ -425,7 +425,7 @@ No motion, interactive or model mode applies: the concept has no parameter that 
    "observed_behavior": "The response substitutes the value of a function into a position in the product or quotient rule that calls for the value of its derivative.",
    "scoring_consequence": "The value point is lost.",
    "wrong_step": {
-    "text": "On ex-2, \\(f(1)\\) for \\(f'(1)\\): \\(\\frac{2(-3)-(-3)(-2)}{4}=-3\\).",
+    "text": "On the second example, \\(f(1)\\) for \\(f'(1)\\): \\(\\frac{2(-3)-(-3)(-2)}{4}=-3\\).",
     "expr": "(2*(-3)-(-3)*(-2))/2**2"
    },
    "right_step": {
@@ -770,11 +770,11 @@ No motion, interactive or model mode applies: the concept has no parameter that 
   "ex-1"
  ],
  "read_minutes": {
-  "full": 4.8,
+  "full": 4.82,
   "brief": 3.0
  },
  "word_count": {
-  "full": 720,
+  "full": 722,
   "brief": 442
  },
  "research_lines": [

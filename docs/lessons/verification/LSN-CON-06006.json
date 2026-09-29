@@ -40,8 +40,8 @@
   "blocks": [
    {
     "id": "prediction",
-    "verdict": "wrong",
-    "evidence": "Key From 1 to 3 is right (SymPy limit 26 equals Integral(3x^2, 1, 3); 0 to 2 gives 8, 1 to 2 gives 7), but the resolution says the first sample point is 1: at i = 1 the term gives 1 + 2/n (SymPy), which is 1 only at i = 0 or in the limit. BC-QA-06014 expected_solution_path says the sample point expression gives the lower limit, not the first sample point."
+    "verdict": "ok",
+    "evidence": "fixed 2026-09-29: resolution now reads 'The width 2/n gives length 2, and 1+2i/n gives 1 at i=0. The interval is [1,3] ...'; SymPy: 1 + 2i/n is 1 at i = 0 and 1 + 2/n at i = 1, the limit is 26 = ∫_1^3 3x^2 dx. Stem, options and key unchanged; design prose updated."
    },
    {
     "id": "orientation",
@@ -55,8 +55,8 @@
    },
    {
     "id": "ki-2",
-    "verdict": "wrong",
-    "evidence": "Now says the first sample point fixes a; for the right-endpoint forms this lesson uses (ex-1, chk-3) the first sample point is a + width/n (SymPy: 1 + 2/n at i = 1). The earlier text (sample point at i = 0) was true; BC-QA-06014 expected_solution_path[2] reads the lower limit from the sample point expression."
+    "verdict": "ok",
+    "evidence": "fixed 2026-09-29: text now 'Split the term: width fixes b - a, the sample point at i = 0 fixes a, height gives f.', true for the right endpoint forms of ex-1 and chk-3 (SymPy 1 + 2i/n at i = 0 is 1) and matching BC-QA-06014 expected_solution_path[2], now added to ki-2's sources. Brief count held at 450."
    },
    {
     "id": "ki-3",
@@ -128,11 +128,14 @@
    "Fix for prediction and ki-2: say the sample point expression 1 + 2i/n gives 1 at i = 0 (or in the limit), so a = 1, which also covers the left form in chk-2."
   ],
   "counts": {
-   "ok": 13,
+   "ok": 15,
    "unsourced": 0,
-   "wrong": 2,
+   "wrong": 0,
    "over_cap": 0,
    "lint": 0
   }
- }
+ },
+ "fix_notes": [
+  "prediction and ki-2: 'the first sample point' replaced by the sample point expression at i = 0. Word counts unchanged at 515 full, 450 brief (checker)."
+ ]
 }

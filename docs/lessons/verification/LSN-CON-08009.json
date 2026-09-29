@@ -39,83 +39,107 @@
   "auditor": "claude-opus-5-5",
   "blocks": [
    {
+    "id": "prediction",
+    "verdict": "ok",
+    "evidence": "SymPy (ft**3/hour)*hour = ft**3; key B cubic feet only true, A is the rate's units, C the input's; resolution (amount added from 4 to 10) is ki-2; no verdict word or id."
+   },
+   {
     "id": "orientation",
     "verdict": "ok",
-    "evidence": "Paraphrases BC-QA-06015 expected_solution_path and the 8.3 Interpretation line."
+    "evidence": "Shortened paraphrase of BC-QA-06015 asked_to_produce (quantity, interval, units in a sentence)."
    },
    {
     "id": "ki-1",
     "verdict": "ok",
-    "evidence": "Quote is verbatim ced:154 CHA-4.D.1; gallons per hour times hours gives gallons, dimensional arithmetic; 44 words."
+    "evidence": "Shortened; quote unchanged and verbatim ced:154; units product checked by SymPy."
    },
    {
     "id": "ki-2",
     "verdict": "ok",
-    "evidence": "Quote is verbatim ced:154 CHA-4.D.2; quantity, interval, units confirmed on cached sg-23 page 2."
+    "evidence": "Shortened, sg-23:2 cite removed from served text; quote unchanged; quantity, interval, units still the 8.3 Interpretation line."
    },
    {
     "id": "st-1",
     "verdict": "ok",
-    "evidence": "Method and rival match BC-QA-06015 expected_solution_path[0] and both wrong_approaches; cue 19 words."
+    "evidence": "Labels and the BC-ERR-08017 id removed; method expected_solution_path[0] and [1], rival both wrong_approaches."
+   },
+   {
+    "id": "st-1.contrast",
+    "verdict": "ok",
+    "evidence": "this is BC-QA-06015 typical_wording[0] ('Using correct units, interpret the meaning of' the integral); not_this adds 1/(5-2) = 1/3, the average value reading of sibling BC-CON-08002; why_not and feature true."
    },
    {
     "id": "ex-1",
     "verdict": "ok",
-    "evidence": "SymPy: (ft**3/hour)*hour simplifies to ft**3; limits 4 and 4+6 = 10 match the draw."
+    "evidence": "Only cue and why text shortened; expr unchanged; SymPy hours cancel."
    },
    {
     "id": "reader",
     "verdict": "ok",
-    "evidence": "Empty; the bundle carries no point types for BC-SKL-08015."
+    "evidence": "Empty; the bundle carries no point types for BC-SKL-08015.",
+    "note": "unchanged since 2026-09-29"
    },
    {
     "id": "err-BC-ERR-08017",
     "verdict": "ok",
-    "evidence": "Verbatim BC-ERR-08017; reason fragment from BC-MIS-08009."
+    "evidence": "relation equivalent (ft**3 both), fix_prompt false."
    },
    {
     "id": "err-BC-ERR-99005",
     "verdict": "ok",
-    "evidence": "Verbatim BC-ERR-99005; SymPy ft**3/hour differs from ft**3."
+    "evidence": "relation distinct, fix_prompt true; SymPy ft**3/hour differs from ft**3."
    },
    {
     "id": "representations",
     "verdict": "ok",
-    "evidence": "null; BC-REP-04 and 05 are verbal."
+    "evidence": "null; BC-REP-04 and 05 are verbal.",
+    "note": "unchanged since 2026-09-29"
    },
    {
-    "id": "bridge-BC-PRQ-06005",
+    "id": "BC-PRQ-06005",
     "verdict": "ok",
-    "evidence": "Paraphrases BC-PRQ-06005 on reading inputs."
+    "evidence": "Shortened; still BC-PRQ-06005 rate versus input."
    },
    {
     "id": "time",
     "verdict": "ok",
-    "evidence": "62/29 = 2.14 from exam-structure.md; either status tagged inferred."
+    "evidence": "62/29 = 2.14 from exam-structure.md; either status tagged inferred.",
+    "note": "unchanged since 2026-09-29"
    },
    {
     "id": "chk-1",
     "verdict": "ok",
-    "evidence": "Units product simplifies to ft**3; interval 4 to 10."
+    "evidence": "Units product simplifies to ft**3; interval 4 to 10.",
+    "note": "unchanged since 2026-09-29"
    },
    {
     "id": "chk-2",
     "verdict": "ok",
-    "evidence": "people/minute times minute simplifies to people; limits 9 and 9+3 = 12; depletes direction reads as leave."
+    "evidence": "people/minute times minute simplifies to people; limits 9 and 9+3 = 12; depletes direction reads as leave.",
+    "note": "unchanged since 2026-09-29"
    },
    {
     "id": "chk-3",
     "verdict": "ok",
-    "evidence": "Key B names quantity, interval and units; A omits interval (ERR-08017), C keeps rate units and D omits units (ERR-99005)."
+    "evidence": "Key B names quantity, interval and units; A omits interval (ERR-08017), C keeps rate units and D omits units (ERR-99005).",
+    "note": "unchanged since 2026-09-29"
+   },
+   {
+    "id": "no_figure_reason",
+    "verdict": "ok",
+    "evidence": "BC-SKL-08015 representations BC-REP-04 (verbal) and BC-REP-05 (contextual), neither figure-bearing; the deliverable is a sentence; 25 words."
    }
   ],
   "advice": [
    "BC-ERR-08017 has relation equivalent with identical expr on both sides, so a step renderer comparing expressions will show no difference; the difference is only in the sentence text.",
    "The average display dial in BC-QA-06015 is never shown; a check with the 1 over the interval length factor would test the rival reading of units.",
-   "With no reader lines, the scoring habit rests on ki-2 and the errors; quoting the sg-23:2 requirement for the interval as a reader line would make it concrete."
+   "With no reader lines, the scoring habit rests on ki-2 and the errors; quoting the sg-23:2 requirement for the interval as a reader line would make it concrete.",
+   "no_figure_reason says the key ideas describe no process, while ki-1's quote ('an accumulation of a rate of change', ced:154) is the phrase LSN-CON-08006 cites under rule 2 to make its ki-1 motion; the two sibling lessons read the same sentence two ways.",
+   "st-1.contrast not_this rests on BC-CON-08002, which is not in the Sources list; adding it would close the trail.",
+   "err-BC-ERR-08017 scoring_consequence carries (sg-23:2), verbatim record text the reader strips; no served-text defect."
   ],
   "counts": {
-   "ok": 14,
+   "ok": 17,
    "unsourced": 0,
    "wrong": 0,
    "over_cap": 0,

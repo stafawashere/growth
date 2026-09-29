@@ -60,8 +60,8 @@
    },
    {
     "id": "st-1.contrast",
-    "verdict": "unsourced",
-    "evidence": "this (where g has a relative maximum) matches BC-QA-06003 asked_to_produce 'the critical points of g with a reason', but not_this (Find g(8)) is BC-QA-06003's own asked_to_produce 'the values of g at stated inputs', so the near miss is a stem of the block's archetype."
+    "verdict": "ok",
+    "evidence": "fixed 2026-09-29: not_this is now 'From the graph, where does f have a relative maximum?', the earlier part about features of f that BC-ERR-06008 non_conceptual_causes names ('answered from the previous part, which did ask about features of f'), read directly off the drawn curve, which is st-1's rival; why_not 'It asks about f itself.', feature 'A feature of g is asked.'. BC-ERR-06008 is in st-1's sources and in the bundle."
    },
    {
     "id": "ex-1",
@@ -134,11 +134,14 @@
    "Contrast not_this could come from a sibling archetype rather than BC-QA-06003's own value-of-g stem."
   ],
   "counts": {
-   "ok": 15,
-   "unsourced": 1,
+   "ok": 16,
+   "unsourced": 0,
    "wrong": 0,
    "over_cap": 0,
    "lint": 0
   }
- }
+ },
+ "fix_notes": [
+  "st-1.contrast: not_this moved off BC-QA-06003's own value-of-g stem to the f-features part BC-ERR-06008 records. Word counts 623 full, 445 brief from the checker."
+ ]
 }

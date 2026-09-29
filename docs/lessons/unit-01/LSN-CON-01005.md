@@ -396,7 +396,7 @@ Every non-text choice is [inferred], settled by the modality A/B.
    },
    "completes": "ex-1",
    "stem": {
-    "text": "In ex-1 the left height at x = 5 is 4, the right 0. State the limit and why.",
+    "text": "The example's left height at x = 5 is 4, its right 0. State the limit and why.",
     "command_verb": "state"
    },
    "key": {
@@ -728,8 +728,8 @@ Every non-text choice is [inferred], settled by the modality A/B.
   "brief": 3.0
  },
  "word_count": {
-  "full": 529,
-  "brief": 450
+  "full": 528,
+  "brief": 449
  },
  "research_lines": [
   {

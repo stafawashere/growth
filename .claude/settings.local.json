@@ -1,6 +1,5 @@
 {
   "permissions": {
-    "defaultMode": "bypassPermissions",
     "allow": [
       "Bash",
       "Read",
@@ -9,6 +8,14 @@
       "WebFetch",
       "WebSearch",
       "NotebookEdit"
+    ]
+  },
+  "autoMode": {
+    "allow": [
+      "$defaults",
+      "Any file edits anywhere in this repository",
+      "Running any shell commands, scripts, tests, and simulations",
+      "Any git operations, including committing, pushing, and fast-forwarding branches"
     ]
   }
 }

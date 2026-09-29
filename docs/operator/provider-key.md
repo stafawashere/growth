@@ -92,3 +92,9 @@ spent only on a call the subscription could not take.
 Building the composition root, including constructing an `anthropic` provider, never dials out by
 itself: `app/main.py`'s own docstring states building it makes no network call, since the tutor
 provider is only constructed, never called, at build time.
+
+## The live tutor agent on the subscription, added 2026-09-29
+
+The agent role (the tutor panel opened from the top bar) runs on the same login as the tutor, one `claude -p` process per turn, and is paced separately: 80 calls a day and 6 a minute by default (`GROWTH_SUBSCRIPTION_AGENT_CALLS_PER_DAY`, `GROWTH_SUBSCRIPTION_AGENT_CALLS_PER_MINUTE`), with the memory consolidation job at 10 a day and 2 a minute (`GROWTH_SUBSCRIPTION_MEMORY_CALLS_PER_DAY`, `GROWTH_SUBSCRIPTION_MEMORY_CALLS_PER_MINUTE`). On `GROWTH_AI_BACKEND=api` the two roles carry `GROWTH_AGENT_CAP_USD`, `GROWTH_AGENT_CAP_TOKENS`, `GROWTH_MEMORY_CAP_USD` and `GROWTH_MEMORY_CAP_TOKENS` under the same $15.00 developer cap.
+
+Two things only you can check. First, the student's typed questions travel to Anthropic under your consumer account, and the model-improvement setting in your Claude account decides whether that content may be kept de-identified for up to 5 years; the application cannot read that setting, so open Settings then Privacy in your Claude account and read it. Second, the CLI reports the five-hour and seven-day utilisation of your plan on every call, and the application shows the reset time when a limit stops the agent; if the seven-day bar climbs faster than your own work allows, lower the agent's daily count with the variable above.

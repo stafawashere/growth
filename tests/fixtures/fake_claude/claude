@@ -7,7 +7,9 @@ a canned result for the mode.
 """
 import json
 import os
+import signal
 import sys
+import time
 from pathlib import Path
 
 USAGE = {
@@ -33,6 +35,73 @@ def result_payload(**overrides):
    payload.update(overrides)
 
    return payload
+
+
+STREAMED_DELTAS = ("First sentence. ", "Second ", "sentence?")
+RATE_LIMIT_INFO = {
+   "status": "allowed",
+   "resetsAt": 1790000000,
+   "rateLimitType": "five_hour",
+   "overageStatus": "rejected",
+   "unifiedWindows": {
+      "five_hour": {"utilization": 0.18, "resetsAt": 1790000000},
+      "seven_day": {"utilization": 0.29, "resetsAt": 1790400000},
+   },
+}
+HOLD_WAIT_SECONDS = 10
+
+
+def emit(event):
+   print(json.dumps(event), flush=True)
+
+
+def init_event():
+   return {"type": "system", "subtype": "init", "tools": [], "mcp_servers": []}
+
+
+def text_delta_event(text):
+   return {
+      "type": "stream_event",
+      "event": {"type": "content_block_delta", "index": 0, "delta": {"type": "text_delta", "text": text}},
+   }
+
+
+def wait_for_release(home):
+   """With fake_claude_hold present, the first delta waits until the test writes
+   fake_claude_release, so a caller that shows nothing before exit is caught."""
+   is_held = (home / "fake_claude_hold").exists()
+
+   if not is_held:
+      return
+
+   deadline = time.monotonic() + HOLD_WAIT_SECONDS
+
+   while time.monotonic() < deadline:
+      if (home / "fake_claude_release").exists():
+         return
+
+      time.sleep(0.02)
+
+
+def api_retry_event(error):
+   return {
+      "type": "system",
+      "subtype": "api_retry",
+      "attempt": 1,
+      "max_retries": 1,
+      "retry_delay_ms": 1000,
+      "error_status": 429 if error == "rate_limit" else 401,
+      "error": error,
+   }
+
+
+def outputs_stream_json():
+   has_output_format = "--output-format" in sys.argv
+
+   if not has_output_format:
+      return False
+
+   return sys.argv[sys.argv.index("--output-format") + 1] == "stream-json"
 
 
 def main():
@@ -95,6 +164,33 @@ def main():
       print(json.dumps({"type": "assistant", "message": {"content": []}}))
       print(json.dumps(result_event))
       return 0
+
+   if mode == "stream":
+      if not outputs_stream_json():
+         print(json.dumps(result_payload(result="".join(STREAMED_DELTAS))))
+         return 0
+
+      emit(init_event())
+
+      for index, delta in enumerate(STREAMED_DELTAS):
+         emit(text_delta_event(delta))
+
+         if index == 0:
+            wait_for_release(home)
+
+      emit({"type": "rate_limit_event", "rate_limit_info": RATE_LIMIT_INFO, "session_id": "fake-session-0001"})
+      emit(result_payload(result="".join(STREAMED_DELTAS)))
+      return 0
+
+   if mode in ("stream_limit", "stream_auth"):
+      # The real CLI handles SIGINT itself. A test run started from a background shell inherits
+      # SIGINT ignored, and this fake would keep that without the default handler put back.
+      signal.signal(signal.SIGINT, signal.default_int_handler)
+      error = "rate_limit" if mode == "stream_limit" else "authentication_failed"
+      emit(init_event())
+      emit(api_retry_event(error))
+      time.sleep(30)
+      return 1
 
    if mode == "malformed":
       print("this is not json")

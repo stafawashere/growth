@@ -428,3 +428,28 @@ def test_put_budgets_refuses_a_cap_that_is_not_a_finite_number(world):
 
    assert budget_rows(world.engine) == []
    assert cap_changes(world.engine) == []
+
+
+def test_providers_lists_the_agent_roles_on_the_tutors_chain(world):
+   world.settings.tutor = CountingProvider()
+   client = world.client()
+   world.register(client)
+   view = client.get("/settings/providers").json()
+   by_role = {entry["role"]: entry for entry in view["roles"]}
+
+   assert by_role["agent"] == {"role": "agent", "provider": "replay", "model": "claude-sonnet-5-5", "wired": True}
+   assert by_role["memory"] == {"role": "memory", "provider": "replay", "model": "claude-sonnet-5-5", "wired": True}
+   assert view["chains"]["agent"] == view["chains"]["tutor"]
+   assert set(view["chains"]) == {"tutor", "grading", "agent"}
+
+
+def test_providers_reports_the_agent_roles_unwired_without_a_tutor(world):
+   world.settings.tutor = None
+   client = world.client()
+   world.register(client)
+   view = client.get("/settings/providers").json()
+   by_role = {entry["role"]: entry for entry in view["roles"]}
+
+   assert by_role["agent"] == {"role": "agent", "provider": None, "model": None, "wired": False}
+   assert by_role["memory"] == {"role": "memory", "provider": None, "model": None, "wired": False}
+   assert view["chains"]["agent"] == []

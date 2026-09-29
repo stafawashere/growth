@@ -4,11 +4,16 @@ P1 wires one role, the tutor on the model app/feedback/tutor.py sends, and only 
 provider is configured (docs/plan/07-ai-provider-layer.md, "Roles and routing"). Every other role
 is reported unwired with no provider and no model, because nothing in this process would answer
 it. No key material and no sign of whether a key exists is read here.
+
+The live tutor agent's two roles, agent and memory (docs/agent/architecture.md, "Roles, models,
+caps and the chain"), run on the tutor's chain with guards of their own, so they are wired
+whenever that chain is, and report the model app/providers/model_routing.py routes them to.
 """
 from app.auth.service import utc_now
 from app.feedback.tutor import TUTOR_MODEL
 from app.providers.anthropic import AnthropicProvider
 from app.providers.guard import ROLES
+from app.providers.model_routing import model_for
 from app.providers.replay import ReplayProvider
 from app.providers.router import links_from_settings
 from app.providers.subscription import SubscriptionProvider
@@ -18,6 +23,8 @@ PROVIDER_NAMES = {
    ReplayProvider: "replay",
    SubscriptionProvider: "subscription",
 }
+
+AGENT_ROLES = ("agent", "memory")
 
 
 def provider_name_of(provider):
@@ -32,7 +39,23 @@ def unwired(role):
    return {"role": role, "provider": None, "model": None, "wired": False}
 
 
+def agent_role_entry(role, settings):
+   agent_links = links_from_settings(settings, "agent_links", "tutor")
+
+   if not agent_links:
+      return unwired(role)
+
+   first_provider = agent_links[0].provider
+
+   return {"role": role, "provider": provider_name_of(first_provider), "model": model_for(role), "wired": True}
+
+
 def role_entry(role, settings):
+   is_agent_role = role in AGENT_ROLES
+
+   if is_agent_role:
+      return agent_role_entry(role, settings)
+
    is_tutor = role == "tutor"
    has_tutor = settings.tutor is not None
    is_wired = is_tutor and has_tutor
@@ -57,6 +80,7 @@ def providers_view(settings, now=None):
       "chains": {
          "tutor": chain_names(settings, "tutor_links", "tutor"),
          "grading": chain_names(settings, "ai_links", "ai_provider"),
+         "agent": chain_names(settings, "agent_links", "tutor"),
       },
       "cooling": board.snapshot(now or utc_now()),
    }

@@ -31,6 +31,11 @@ flags that switch every tool, setting source and MCP server off are the same on 
 run on 2026-09-24 (tools/subscription_image_smoke.py, BUILD-LEDGER.md) confirmed the CLI then
 loads only its internal StructuredOutput tool and reads the image.
 
+A request with stream set and no schema (the live agent's turn) runs with --output-format
+stream-json --include-partial-messages --verbose and is read line by line as the CLI writes it, so
+text reaches the student about 3 s into a 5 s reply rather than at exit (docs/agent/architecture.md,
+Streaming end to end; docs/agent/research/providers.md, Measured on 2026-09-29).
+
 A usage-limit answer (5-hour or weekly) raises SubscriptionLimitReached. The caller degrades as
 docs/plan/07-ai-provider-layer.md degrades a hard stop and queues the call; nothing here falls
 through to the API.
@@ -41,8 +46,10 @@ import logging
 import os
 import re
 import shutil
+import signal
 import subprocess
 import tempfile
+import threading
 
 from app.providers.base import Provider, ProviderResult, RefusedBeforeWire, Usage
 from app.providers.guard import SubscriptionSpendLedger
@@ -59,6 +66,15 @@ ENV_ALLOWLIST = ("PATH", "HOME", "USER", "LANG", "TMPDIR")
 # tutor's do, runs the CLI with this fixed value, never one copied from the host.
 THINKING_ENV_VAR = "MAX_THINKING_TOKENS"
 THINKING_DISABLED_VALUE = "0"
+
+# The live agent and its memory job must fail in seconds when a usage window is closed, not after
+# the CLI's default ten retries (docs/agent/research/providers.md, What this means for Growth, item
+# 5). Fixed values, never copied from the host, in the way THINKING_DISABLED_VALUE is.
+BOUNDED_RETRY_ROLES = ("agent", "memory")
+MAX_RETRIES_ENV_VAR = "CLAUDE_CODE_MAX_RETRIES"
+BOUNDED_MAX_RETRIES_VALUE = "1"
+API_TIMEOUT_ENV_VAR = "API_TIMEOUT_MS"
+BOUNDED_API_TIMEOUT_VALUE = "20000"
 
 DISALLOWED_TOOLS = (
    "Agent",
@@ -89,10 +105,13 @@ EMPTY_MCP_CONFIG = json.dumps({"mcpServers": {}})
 DEFAULT_MAX_BUDGET_USD = 0.25
 ROLE_MAX_BUDGET_USD = {
    "tutor": 0.10,
+   "agent": 0.15,
+   "memory": 0.10,
 }
 
 TEMP_DIR_PREFIX = "growth-claude-"
 DEFAULT_TIMEOUT_SECONDS = 120
+INTERRUPT_WAIT_SECONDS = 5
 
 # No live call has met a usage limit yet, so the wording comes from the CLI itself: claude 2.1.277
 # composes its limit line as "You've hit your <limit>" and keeps a list of the prefixes it treats as
@@ -152,6 +171,12 @@ class SubscriptionSingleUserError(RuntimeError):
    pass
 
 
+RETRY_FAILURES = {
+   "rate_limit": SubscriptionLimitReached,
+   "authentication_failed": SubscriptionAuthFailed,
+}
+
+
 def max_budget_for(role):
    return ROLE_MAX_BUDGET_USD.get(role, DEFAULT_MAX_BUDGET_USD)
 
@@ -194,7 +219,7 @@ def effort_of(provider_options):
    return output_config.get("effort")
 
 
-def build_env(host_environ, disable_thinking=False):
+def build_env(host_environ, disable_thinking=False, bounded_retries=False):
    env = {}
 
    for name in ENV_ALLOWLIST:
@@ -211,7 +236,19 @@ def build_env(host_environ, disable_thinking=False):
    if disable_thinking:
       env[THINKING_ENV_VAR] = THINKING_DISABLED_VALUE
 
+   if bounded_retries:
+      env[MAX_RETRIES_ENV_VAR] = BOUNDED_MAX_RETRIES_VALUE
+      env[API_TIMEOUT_ENV_VAR] = BOUNDED_API_TIMEOUT_VALUE
+
    return env
+
+
+def env_for(host_environ, request):
+   return build_env(
+      host_environ,
+      disable_thinking=thinking_disabled(request.provider_options),
+      bounded_retries=request.role in BOUNDED_RETRY_ROLES,
+   )
 
 
 def build_argv(
@@ -222,13 +259,16 @@ def build_argv(
    max_budget_usd=DEFAULT_MAX_BUDGET_USD,
    effort=None,
    streams_json=False,
+   streams_partial=False,
 ):
    """The system prompt rides in the --system-prompt=value form because the tutor template opens
    with front matter, and a bare value starting with --- could be read as an option.
 
    streams_json is the image path: stream-json on both sides, which the CLI accepts only with
-   --verbose."""
-   output_format = "stream-json" if streams_json else "json"
+   --verbose. streams_partial is the incremental text path: stream-json output with the partial
+   message events, which also needs --verbose. The two combine."""
+   outputs_stream_json = streams_json or streams_partial
+   output_format = "stream-json" if outputs_stream_json else "json"
    argv = [
       binary,
       "-p",
@@ -247,7 +287,13 @@ def build_argv(
    ]
 
    if streams_json:
-      argv.extend(["--input-format", "stream-json", "--verbose"])
+      argv.extend(["--input-format", "stream-json"])
+
+   if streams_partial:
+      argv.append("--include-partial-messages")
+
+   if outputs_stream_json:
+      argv.append("--verbose")
 
    has_effort = effort is not None and effort != ""
 
@@ -294,6 +340,42 @@ def stream_json_input(request):
    return json.dumps(message) + "\n"
 
 
+def stream_line_event(line):
+   """One stdout line as a JSON object, or None for anything else."""
+   try:
+      event = json.loads(line)
+   except ValueError:
+      return None
+
+   is_object = isinstance(event, dict)
+
+   return event if is_object else None
+
+
+def text_delta_of(event):
+   inner = event.get("event")
+   delta = inner.get("delta") if isinstance(inner, dict) else None
+   is_text_delta = isinstance(delta, dict) and delta.get("type") == "text_delta"
+
+   if not is_text_delta:
+      return None
+
+   text = delta.get("text")
+   is_text = isinstance(text, str) and text != ""
+
+   return text if is_text else None
+
+
+def retry_failure_of(event):
+   """The exception class an api_retry line calls for, or None when the retry may run."""
+   is_retry = event.get("type") == "system" and event.get("subtype") == "api_retry"
+
+   if not is_retry:
+      return None
+
+   return RETRY_FAILURES.get(event.get("error"))
+
+
 def result_event_of(stdout):
    """The last stream-json line whose type is result, or None."""
    found = None
@@ -332,6 +414,36 @@ def usage_from(payload):
    )
 
 
+def send_stdin(process, stdin_text):
+   """A CLI that exits before reading its input closes the pipe; its exit status says why."""
+   try:
+      process.stdin.write(stdin_text)
+      process.stdin.close()
+   except (BrokenPipeError, OSError):
+      pass
+
+
+def kill_on_timeout(process, timed_out):
+   timed_out.set()
+   process.kill()
+
+
+def interrupt(process):
+   """SIGINT, then a kill if the CLI has not exited within INTERRUPT_WAIT_SECONDS."""
+   is_running = process.poll() is None
+
+   if not is_running:
+      return
+
+   process.send_signal(signal.SIGINT)
+
+   try:
+      process.wait(timeout=INTERRUPT_WAIT_SECONDS)
+   except subprocess.TimeoutExpired:
+      process.kill()
+      process.wait()
+
+
 class SubscriptionProvider(Provider):
    name = "subscription"
 
@@ -358,9 +470,10 @@ class SubscriptionProvider(Provider):
       self._binary = binary or (configured_binary if has_configured_binary else DEFAULT_BINARY)
       self._timeout_seconds = timeout_seconds
       self._ledger = subscription_ledger if subscription_ledger is not None else SubscriptionSpendLedger()
+      self.last_rate_limit = None
 
    def generate(self, request):
-      env = build_env(self._environ, disable_thinking=thinking_disabled(request.provider_options))
+      env = env_for(self._environ, request)
       binary_path = resolve_binary(self._binary, env.get("PATH"))
       carries_images = len(request.images) > 0
       argv = build_argv(
@@ -399,7 +512,15 @@ class SubscriptionProvider(Provider):
       return self._to_result(request, completed, streamed=carries_images)
 
    def stream(self, request):
-      """The json output format has no incremental text, so the whole result is one delta."""
+      """A request that streams without a schema is read incrementally. Any other request keeps
+      the json output format, which has no incremental text, so its whole result is one delta."""
+      streams_incrementally = request.stream and request.output_schema is None
+
+      if streams_incrementally:
+         result = yield from self._stream_partial(request)
+
+         return result
+
       result = self.generate(request)
 
       if result.text:
@@ -407,8 +528,128 @@ class SubscriptionProvider(Provider):
 
       return result
 
+   def _stream_partial(self, request):
+      """One `claude -p` process per turn, started with Popen and read line by line. A process per
+      turn, not one held for the conversation, because on 2026-09-29 separate processes read the
+      system prompt from the prompt cache and the multi-turn behaviour of a long-lived process
+      without session persistence has not been run.
+
+      A text_delta stream_event is yielded as it arrives. A rate_limit_event's rate_limit_info is
+      kept on last_rate_limit. An api_retry line for a closed usage window or a rejected sign-in
+      ends the process with SIGINT, not SIGTERM, because the headless docs say SIGTERM leaves the
+      turn with no result, and raises at once rather than waiting through the retry. The last
+      result line becomes the ProviderResult, which is this generator's return value. No line is
+      logged."""
+      env = env_for(self._environ, request)
+      binary_path = resolve_binary(self._binary, env.get("PATH"))
+      carries_images = len(request.images) > 0
+      argv = build_argv(
+         binary_path,
+         request.model,
+         request.system,
+         max_budget_usd=max_budget_for(request.role),
+         effort=effort_of(request.provider_options),
+         streams_json=carries_images,
+         streams_partial=True,
+      )
+      stdin_text = stream_json_input(request) if carries_images else prompt_text(request.messages)
+      work_dir = tempfile.mkdtemp(prefix=TEMP_DIR_PREFIX)
+      stderr_file = None
+      process = None
+      watchdog = None
+      timed_out = threading.Event()
+
+      try:
+         stderr_file = tempfile.TemporaryFile(mode="w+")
+
+         try:
+            process = subprocess.Popen(
+               argv,
+               stdin=subprocess.PIPE,
+               stdout=subprocess.PIPE,
+               stderr=stderr_file,
+               text=True,
+               cwd=work_dir,
+               env=env,
+            )
+         except OSError as raised:
+            raise SubscriptionBinaryMissing(f"the claude CLI could not start: {type(raised).__name__}") from None
+
+         watchdog = threading.Timer(self._timeout_seconds, kill_on_timeout, args=(process, timed_out))
+         watchdog.daemon = True
+         watchdog.start()
+         send_stdin(process, stdin_text)
+         payload = None
+         stdout_lines = []
+
+         for line in iter(process.stdout.readline, ""):
+            stdout_lines.append(line)
+            event = stream_line_event(line)
+
+            if event is None:
+               continue
+
+            event_type = event.get("type")
+            retry_failure = retry_failure_of(event)
+
+            if event_type == "stream_event":
+               delta = text_delta_of(event)
+
+               if delta is not None:
+                  yield {"type": "text", "delta": delta}
+            elif event_type == "rate_limit_event":
+               self._keep_rate_limit(event)
+            elif retry_failure is not None:
+               interrupt(process)
+               raise self._retry_failure(request, retry_failure)
+            elif event_type == "result":
+               payload = event
+
+         process.wait()
+
+         if timed_out.is_set():
+            raise SubscriptionTransportError(f"the claude CLI timed out on role {request.role}")
+
+         stderr_file.seek(0)
+         completed = subprocess.CompletedProcess(argv, process.returncode, "".join(stdout_lines), stderr_file.read())
+
+         return self._settle_payload(request, completed, payload)
+      finally:
+         if watchdog is not None:
+            watchdog.cancel()
+
+         if process is not None:
+            interrupt(process)
+            process.stdout.close()
+
+         if stderr_file is not None:
+            stderr_file.close()
+
+         shutil.rmtree(work_dir, ignore_errors=True)
+
+   def _keep_rate_limit(self, event):
+      info = event.get("rate_limit_info")
+      is_object = isinstance(info, dict)
+
+      if is_object:
+         self.last_rate_limit = info
+
+   def _retry_failure(self, request, failure_class):
+      is_auth = failure_class is SubscriptionAuthFailed
+
+      if is_auth:
+         warn_sign_in_failed_once()
+
+         return SubscriptionAuthFailed(f"the Claude sign-in expired or was rejected on role {request.role}")
+
+      return SubscriptionLimitReached(f"the Claude subscription usage limit stopped role {request.role}")
+
    def _to_result(self, request, completed, streamed=False):
       payload = result_event_of(completed.stdout) if streamed else self._payload_of(completed.stdout)
+
+      return self._settle_payload(request, completed, payload)
+
+   def _settle_payload(self, request, completed, payload):
       exit_failed = completed.returncode != 0
       has_payload = payload is not None
 

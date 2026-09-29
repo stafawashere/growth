@@ -85,9 +85,11 @@ class Settings:
    experiment_default_state: str | dict | None = None
    ai_provider: Any = None
    tutor_links: tuple = ()
+   agent_links: tuple = ()
    ai_links: tuple = ()
    provider_cooldowns: Any = field(default_factory=CooldownBoard)
    grading_caps: dict = field(default_factory=dict)
+   agent_caps: dict = field(default_factory=dict)
    frq: Any = None
    grading_sleep: Any = None
    timed_assessments: bool = True

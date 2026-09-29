@@ -8,6 +8,9 @@ the two agree role by role, so the two cannot drift apart silently.
 P1 wires only the tutor (app/feedback/tutor.py TUTOR_MODEL), so this table is ahead of the code
 for every other role today. That is deliberate: the table is what a role reads from when it is
 built, not a record of what is already wired.
+
+The agent and memory roles arrived on 2026-09-29 for the live tutor agent, both on Sonnet 5.5
+(docs/agent/architecture.md, "Roles, models, caps and the chain").
 """
 from app.providers.guard import ROLES
 
@@ -18,6 +21,8 @@ ROLE_MODELS = {
    "diagnostician": "claude-sonnet-5-5",
    "generator": "claude-opus-5-5",
    "verifier": "claude-haiku-4-5",
+   "agent": "claude-sonnet-5-5",
+   "memory": "claude-sonnet-5-5",
 }
 
 

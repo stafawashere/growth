@@ -74,6 +74,43 @@ class ScriptedProvider(Provider):
       return self.inner.stream(request)
 
 
+class StreamingProvider(Provider):
+   """Streams deltas and then raises what raises names, or answers from the cassette. generate
+   fails, so a chain that waits for a whole result instead of streaming is caught."""
+
+   def __init__(self, deltas=(), raises=None):
+      self.stream_calls = 0
+      self.deltas = tuple(deltas)
+      self.raises = raises
+      self.inner = ReplayProvider(cassette=CASSETTE)
+
+   def generate(self, request):
+      raise AssertionError("the chain must stream this link")
+
+   def stream(self, request):
+      self.stream_calls = self.stream_calls + 1
+
+      for delta in self.deltas:
+         yield {"type": "text", "delta": delta}
+
+      if self.raises is not None:
+         raise self.raises("scripted failure")
+
+      result = yield from self.inner.stream(request)
+
+      return result
+
+
+def drain(generator):
+   events = []
+
+   with pytest.raises(StopIteration) as finished:
+      while True:
+         events.append(next(generator))
+
+   return events, finished.value.value
+
+
 def request_for(role):
    return ProviderRequest(
       role=role,
@@ -268,3 +305,40 @@ def test_a_role_with_no_cap_on_the_api_link_is_refused_there(role, tmp_path):
       chain.generate(request_for(role))
 
    assert api.calls == 0
+
+
+def test_a_link_that_fails_before_its_first_delta_hands_the_stream_to_the_next_link(tmp_path):
+   subscription = StreamingProvider(raises=SubscriptionTransportError)
+   api = StreamingProvider()
+   board = CooldownBoard()
+   clock = Clock(START)
+   chain = chain_of(subscription_and_api(subscription, api), tmp_path, clock, board)
+
+   events, result = drain(chain.stream(request_for("agent")))
+
+   assert events == [{"type": "text", "delta": CASSETTE["text"]}]
+   assert result.text == CASSETTE["text"]
+   assert chain.served_by == API_LINK
+   assert chain.last_accounting is not None
+   assert (subscription.stream_calls, api.stream_calls) == (1, 1)
+   assert board.states[("agent", SUBSCRIPTION_LINK)].consecutive_failures == 1
+
+
+def test_a_link_that_fails_after_its_first_delta_ends_the_stream_without_the_next_link(tmp_path):
+   """Splicing a second model's words onto the first would show one answer as another."""
+   subscription = StreamingProvider(deltas=("First sentence. ",), raises=SubscriptionTransportError)
+   api = StreamingProvider()
+   board = CooldownBoard()
+   chain = chain_of(subscription_and_api(subscription, api), tmp_path, Clock(START), board)
+   generator = chain.stream(request_for("agent"))
+
+   first_event = next(generator)
+
+   with pytest.raises(ProviderCallFailed) as raised:
+      next(generator)
+
+   assert first_event == {"type": "text", "delta": "First sentence. "}
+   assert raised.value.exception_type == SubscriptionTransportError.__name__
+   assert (subscription.stream_calls, api.stream_calls) == (1, 0)
+   assert chain.served_by is None
+   assert board.states[("agent", SUBSCRIPTION_LINK)].consecutive_failures == 1

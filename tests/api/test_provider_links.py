@@ -7,6 +7,7 @@ from datetime import datetime, timedelta, timezone
 
 from app.main import settings_from_environment
 from app.providers.anthropic import AnthropicProvider
+from app.providers.guard import BudgetCaps
 from app.providers.router import API_LINK, REPLAY_LINK, SUBSCRIPTION_LINK
 from app.providers.subscription import SubscriptionLimitReached, SubscriptionProvider
 from app.settings.providers import providers_view
@@ -92,3 +93,35 @@ def test_settings_shows_each_chain_and_what_is_cooling(tmp_path):
       ("tutor", SUBSCRIPTION_LINK, SubscriptionLimitReached.__name__)
    ]
    assert providers_view(settings, now=now + timedelta(hours=1))["cooling"] == []
+
+
+def test_the_agent_runs_on_the_tutors_chain_with_caps_of_its_own(tmp_path):
+   settings = settings_from_environment(env_for(tmp_path))
+   on_the_api = settings_from_environment(env_for(tmp_path, GROWTH_AI_BACKEND="api", ANTHROPIC_API_KEY="test-key-not-real"))
+
+   assert names(settings.agent_links) == names(settings.tutor_links) == [SUBSCRIPTION_LINK]
+   assert settings.agent_links[0].provider is settings.tutor
+   assert names(on_the_api.agent_links) == names(on_the_api.tutor_links) == [SUBSCRIPTION_LINK, API_LINK]
+   assert on_the_api.agent_links[1].provider is on_the_api.tutor
+   assert on_the_api.agent_links[1].pays is True
+   assert settings.agent_caps == {
+      "agent": BudgetCaps(cap_tokens=1500000, cap_usd=1.50),
+      "memory": BudgetCaps(cap_tokens=300000, cap_usd=0.50),
+   }
+
+
+def test_the_agent_caps_read_the_four_variables(tmp_path):
+   settings = settings_from_environment(
+      env_for(
+         tmp_path,
+         GROWTH_AGENT_CAP_USD="2.25",
+         GROWTH_AGENT_CAP_TOKENS="900000",
+         GROWTH_MEMORY_CAP_USD="0.10",
+         GROWTH_MEMORY_CAP_TOKENS="50000",
+      )
+   )
+
+   assert settings.agent_caps == {
+      "agent": BudgetCaps(cap_tokens=900000, cap_usd=2.25),
+      "memory": BudgetCaps(cap_tokens=50000, cap_usd=0.10),
+   }

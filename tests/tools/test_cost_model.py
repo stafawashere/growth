@@ -154,3 +154,49 @@ def test_every_dollar_figure_in_the_document_is_emitted_by_the_calculator(docume
    unknown = cost_model.check(document, figures)
 
    assert unknown == [], f"{document.name} prints dollar figures the calculator does not emit: {unknown}"
+
+
+AGENT_FIGURE_NAMES = (
+   "agent.prefix_tokens",
+   "agent.uncached_input_per_turn",
+   "agent.output_per_turn",
+   "agent.turns_per_conversation",
+   "agent.conversations_per_day",
+   "agent.turns_per_day",
+   "agent.turn_usd",
+   "agent.conversation_usd",
+   "agent.day_usd",
+   "agent.cycle_usd",
+   "agent.cap_usd",
+   "agent.cap_tokens",
+   "agent.worst_case_turn_usd",
+   "memory.input_tokens",
+   "memory.output_tokens",
+   "memory.consolidation_usd",
+   "memory.calls_per_day",
+   "memory.cycle_usd",
+   "memory.cap_usd",
+   "memory.cap_tokens",
+)
+
+
+def test_the_live_tutor_agent_figures_are_emitted():
+   figures = cost_model.figures()
+
+   missing = [name for name in AGENT_FIGURE_NAMES if name not in figures]
+
+   assert missing == []
+
+
+def test_an_agent_turn_is_one_prefix_read_the_uncached_input_and_the_output():
+   """docs/agent/architecture.md prices a turn as a 2,500-token cached prefix read, 5,075
+   uncached input tokens and 400 output tokens on Sonnet 5.5. Charging the prefix as a write on
+   every turn, or dropping the history from the uncached input, moves this number."""
+   figures = cost_model.figures()
+   sonnet = cost_model.PRICES["claude-sonnet-5-5"]
+
+   by_hand = (2500 * sonnet["read"] + 5075 * sonnet["input"] + 400 * sonnet["output"]) / 1e6
+
+   assert figures["agent.uncached_input_per_turn"] == 5075
+   assert figures["agent.turn_usd"] == pytest.approx(by_hand)
+   assert by_hand == pytest.approx(0.01465)

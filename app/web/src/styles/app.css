@@ -197,6 +197,14 @@ th:last-child {
    overflow-y: hidden;
 }
 
+/* A holder of math that may be wider than a phone screen: it shrinks inside a flex row and scrolls
+   instead of widening the page. */
+.math-overflow {
+   min-width: 0;
+   overflow-x: auto;
+   overflow-y: hidden;
+}
+
 .visually-hidden {
    position: absolute;
    width: var(--growth-stroke-hairline);
@@ -1393,8 +1401,15 @@ textarea.input {
    min-width: 0;
 }
 
+.today-overview {
+   display: flex;
+   flex-direction: column;
+   flex: auto;
+   gap: var(--growth-space-16);
+   min-width: 0;
+}
+
 .today-beyond {
-   flex-basis: 100%;
    margin: 0;
 }
 

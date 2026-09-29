@@ -41,7 +41,7 @@ export function CorrectResult({ answer }: { answer: CorrectAnswer | null | undef
       <div className="stack stack-tight" data-testid="correct-answer">
          <p className="eyebrow">{CORRECT_RESULT_LABEL}</p>
 
-         <p className="note-quote">
+         <p className="note-quote math-overflow">
             {hasLabel ? <MathText text={answer.label as string} /> : <MathValue value={answer.mathjson} />}
          </p>
       </div>

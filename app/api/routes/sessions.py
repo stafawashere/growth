@@ -127,6 +127,14 @@ def open_session(
    fields = body_of(payload)
    context = settings.session_context
    today, rng = assembly_inputs_of(settings, user, fields)
+
+   # The bank ingests on its own connection, so it has to finish before this request's
+   # transaction takes the write lock (the selection switch writes its row before assembly).
+   ingests = getattr(context.bank, "ensure_ingested", None)
+
+   if ingests is not None:
+      ingests()
+
    probe_rows, probe_queue = probes.load_queue(db, user.id, datetime.now(timezone.utc))
    row = service.open_session(
       db,

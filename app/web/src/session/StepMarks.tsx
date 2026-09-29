@@ -32,7 +32,7 @@ function GivenStep({ mark }: { mark: StepMark }) {
          data-given="true"
          style={{ color: "var(--growth-text-secondary)" }}
       >
-         <span><MathText text={mark.text} /></span>
+         <span className="math-overflow"><MathText text={mark.text} /></span>
          <span>{GIVEN_WORD}</span>
       </li>
    );
@@ -44,7 +44,7 @@ function BlankStep({ mark }: { mark: StepMark }) {
    if (!hasVerdict) {
       return (
          <li data-testid={`step-mark-${mark.index}`}>
-            <span><MathText text={mark.text} /></span>
+            <span className="math-overflow"><MathText text={mark.text} /></span>
          </li>
       );
    }
@@ -59,7 +59,7 @@ function BlankStep({ mark }: { mark: StepMark }) {
             {glyph}
          </span>
          <span>{word}</span>
-         <span><MathText text={mark.text} /></span>
+         <span className="math-overflow"><MathText text={mark.text} /></span>
       </li>
    );
 }

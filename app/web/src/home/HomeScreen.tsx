@@ -147,26 +147,28 @@ function ReadyQueue(props: HomeScreenProps) {
    return (
       <>
          <div className="card card-raised today-summary">
-            <div className="today-metrics">
-               <div className="metric" data-testid="queue-minutes">
-                  <Icon name="clock" size="lg" />
-
-                  <div className="metric-copy">
-                     <span className="stat-value">{`${queueMinutes} minutes`}</span>
-                     <span className="stat-label">Estimated time</span>
-                  </div>
-               </div>
-
-               {shownLines.map((line) => (
-                  <div key={line.id} data-testid="queue-line" className="metric">
-                     <Icon name={METRIC_ICON[line.id] ?? "doc"} size="lg" />
+            <div className="today-overview">
+               <div className="today-metrics">
+                  <div className="metric" data-testid="queue-minutes">
+                     <Icon name="clock" size="lg" />
 
                      <div className="metric-copy">
-                        <span className="stat-value">{line.count}</span>{" "}
-                        <span className="stat-label">{line.label}</span>
+                        <span className="stat-value">{`${queueMinutes} minutes`}</span>
+                        <span className="stat-label">Estimated time</span>
                      </div>
                   </div>
-               ))}
+
+                  {shownLines.map((line) => (
+                     <div key={line.id} data-testid="queue-line" className="metric">
+                        <Icon name={METRIC_ICON[line.id] ?? "doc"} size="lg" />
+
+                        <div className="metric-copy">
+                           <span className="stat-value">{line.count}</span>{" "}
+                           <span className="stat-label">{line.label}</span>
+                        </div>
+                     </div>
+                  ))}
+               </div>
 
                {beyondSet !== null ? (
                   <p className="helper today-beyond" data-testid="due-beyond-set">

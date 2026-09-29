@@ -1,0 +1,509 @@
+{
+ "id": "LSN-CON-04014",
+ "version": 1,
+ "kind": "concept",
+ "target_id": "BC-CON-04014",
+ "status": "signed_off",
+ "snapshot_digest": "a6a8ec9d3f59ab8f712e33d30cc22fc64bf2c478fbe7312e3e3118d319c6a42f",
+ "source_digest": "675dd60b102bfdf60f96017de131e26d704d72cfca850b8d9e310f146e0c3b9a",
+ "read_minutes": {
+  "full": 2.9,
+  "brief": 2.9
+ },
+ "word_count": {
+  "full": 385,
+  "brief": 385
+ },
+ "sections": [
+  {
+   "id": "LSN-CON-04014#s1",
+   "type": "orientation",
+   "bands": [
+    "low",
+    "mid"
+   ],
+   "skills": [
+    "BC-SKL-04034",
+    "BC-SKL-04038"
+   ],
+   "sources": [
+    "BC-CON-04014",
+    "research/units/unit-04-contextual-applications-differentiation.md#4.7 Using L'Hospital's Rule for Determining Limits of Indeterminate Forms"
+   ],
+   "evidence_tag": "inferred",
+   "text": "Before using the rule, show the form is indeterminate with two separate limits, each with its reason.",
+   "delivery": {
+    "mode": "text",
+    "reason": "rule 5: a statement of what a response shows",
+    "sources": [
+     "BC-SKL-04034"
+    ]
+   }
+  },
+  {
+   "id": "LSN-CON-04014#s2",
+   "type": "key_ideas",
+   "bands": [
+    "low",
+    "mid"
+   ],
+   "skills": [
+    "BC-SKL-04034"
+   ],
+   "sources": [
+    "BC-EK-LIM-4A2",
+    "ced:93",
+    "ced:84",
+    "sg-23:14",
+    "research/units/unit-04-contextual-applications-differentiation.md#4.7 Using L'Hospital's Rule for Determining Limits of Indeterminate Forms"
+   ],
+   "evidence_tag": "verified",
+   "ek_id": "BC-EK-LIM-4A2",
+   "depth": "core",
+   "text": "The rule's hypothesis: numerator and denominator both tend to 0, or both to infinity. It is checked first, as two separate limits, before any derivative.",
+   "notation": "separate limits of numerator and denominator",
+   "quote": {
+    "text": "Limits of the indeterminate forms 0 over 0",
+    "source": "ced:93"
+   },
+   "delivery": {
+    "mode": "text",
+    "reason": "rule 5: BC-SKL-04034 carries BC-REP-01 and BC-REP-04",
+    "sources": [
+     "BC-SKL-04034"
+    ]
+   }
+  },
+  {
+   "id": "LSN-CON-04014#s3",
+   "type": "key_ideas",
+   "bands": [
+    "low",
+    "mid"
+   ],
+   "skills": [
+    "BC-SKL-04038"
+   ],
+   "sources": [
+    "BC-EK-LIM-4A1",
+    "ced:93",
+    "sg-23:14",
+    "research/units/unit-04-contextual-applications-differentiation.md#4.7 Using L'Hospital's Rule for Determining Limits of Indeterminate Forms"
+   ],
+   "evidence_tag": "verified",
+   "ek_id": "BC-EK-LIM-4A1",
+   "depth": "core",
+   "text": "When the numerator holds a function known only through values, its limit comes from differentiability: differentiable at the point means continuous there, so the limit equals the value.",
+   "notation": "differentiable implies continuous",
+   "quote": {
+    "text": "such forms are said to be indeterminate",
+    "source": "ced:93"
+   },
+   "delivery": {
+    "mode": "figure",
+    "reason": "rule 3: BC-REP-02 in BC-SKL-04038 and BC-QA-04009 common_givens; no varying quantity is read, so no promotion",
+    "sources": [
+     "BC-SKL-04038",
+     "BC-QA-04009"
+    ],
+    "spec": {
+     "kind": "graph",
+     "representations": [
+      "BC-REP-02"
+     ],
+     "window": {
+      "x": [
+       3,
+       5
+      ],
+      "y": [
+       1,
+       7
+      ]
+     },
+     "curves": [
+      {
+       "expr": "4 - 3*(x - 4) + (x - 4)**3/2"
+      }
+     ],
+     "points": [
+      {
+       "x": 4,
+       "y": 4,
+       "style": "closed"
+      }
+     ],
+     "labels": [
+      {
+       "text": "(4, 4): no hole, no jump",
+       "placement": "inside"
+      },
+      {
+       "text": "differentiable here, so continuous",
+       "placement": "inside"
+      }
+     ]
+    },
+    "fallback": "the same graph as a static image with its two labels",
+    "keyboard": "none needed: the figure has no control"
+   }
+  },
+  {
+   "id": "LSN-CON-04014#s4",
+   "type": "strategy",
+   "bands": [
+    "low",
+    "mid"
+   ],
+   "skills": [
+    "BC-SKL-04034",
+    "BC-SKL-04038"
+   ],
+   "sources": [
+    "BC-QA-04009"
+   ],
+   "evidence_tag": "verified",
+   "archetype_id": "BC-QA-04009",
+   "cue": "An unknown f in the numerator, with f and f' given at the inner point.",
+   "method": "First line: the numerator's limit, citing differentiability for continuity.",
+   "rival": "Rival: the rule applied with no form checked (BC-ERR-04029).",
+   "separating_feature": "f known only through values."
+  },
+  {
+   "id": "LSN-CON-04014#s5",
+   "type": "worked_example",
+   "bands": [
+    "low",
+    "mid"
+   ],
+   "skills": [
+    "BC-SKL-04034",
+    "BC-SKL-04038"
+   ],
+   "sources": [
+    "BC-QA-04009"
+   ],
+   "evidence_tag": "inferred",
+   "archetype_id": "BC-QA-04009",
+   "parameter_draw": {
+    "anchor": 2,
+    "stretch": 2,
+    "far_value": 4,
+    "far_slope": -3,
+    "near_value": 1,
+    "near_slope": 5,
+    "denominator": "exponential"
+   },
+   "problem": {
+    "text": "f is differentiable, f(4) = 4, f'(4) = -3. Find the limit of (f(2x) - 4)/(e^(x - 2) - 1) as x tends to 2.",
+    "command_verb": "find"
+   },
+   "calculator_status": "no_calculator",
+   "steps": [
+    {
+     "cue": "Unknown f in the numerator.",
+     "why": "Differentiable, so continuous: f(2x) tends to f(4) = 4.",
+     "expression": 0,
+     "relation": "new"
+    },
+    {
+     "cue": "Numerator limit.",
+     "why": "Stated alone.",
+     "expression": 0,
+     "point_type_id": "BC-PT-99055",
+     "relation": "equivalent"
+    },
+    {
+     "cue": "Denominator next.",
+     "why": "Its own limit.",
+     "expression": [
+      "Add",
+      -1,
+      [
+       "Exp",
+       [
+        "Add",
+        -2,
+        "x"
+       ]
+      ]
+     ],
+     "relation": "new"
+    },
+    {
+     "cue": "x tends to 2.",
+     "why": "Also 0.",
+     "expression": 0,
+     "relation": "limit",
+     "variable": "x",
+     "point": "2"
+    },
+    {
+     "cue": "Hypothesis met.",
+     "why": "0/0 stated in words."
+    },
+    {
+     "cue": "Rule applies.",
+     "why": "2f'(2x) over e^(x - 2), at x = 2.",
+     "expression": -6,
+     "relation": "new"
+    }
+   ],
+   "answer": {
+    "form": "symbolic",
+    "mathjson": -6
+   },
+   "delivery": {
+    "mode": "step_reveal",
+    "reason": "rule 1",
+    "sources": []
+   }
+  },
+  {
+   "id": "LSN-CON-04014#s6",
+   "type": "what_a_reader_scores",
+   "bands": [
+    "low",
+    "mid"
+   ],
+   "skills": [
+    "BC-SKL-04034",
+    "BC-SKL-04038"
+   ],
+   "sources": [
+    "BC-PT-99055"
+   ],
+   "evidence_tag": "verified",
+   "example_id": "LSN-CON-04014#s5",
+   "lines": [
+    {
+     "point_type_id": "BC-PT-99055",
+     "text": "L'Hospital's Rule application. Earned by: Separate limits for numerator and denominator establishing the indeterminate form, then a ratio of derivatives with at least one derivative correct (sg-23:14). Not earned by: A limit written explicitly as zero over zero, which sg-23:14 states does not earn the form point."
+    }
+   ]
+  },
+  {
+   "id": "LSN-CON-04014#err-BC-ERR-04028",
+   "type": "common_error",
+   "bands": [
+    "low",
+    "mid"
+   ],
+   "skills": [
+    "BC-SKL-04038"
+   ],
+   "sources": [
+    "BC-ERR-04028",
+    "BC-MIS-04014"
+   ],
+   "evidence_tag": "inferred",
+   "error_id": "BC-ERR-04028",
+   "observed_behavior": "The response writes the limit of the quotient equal to zero over zero rather than presenting the two limits separately.",
+   "scoring_consequence": "The 2023 rubric states that a response presenting a limit explicitly equal to zero over zero does not earn the first point, and the Chief Reader report names this arithmetic with infinity (sg-23:14, cr-23:15).",
+   "wrong_step": {
+    "text": "Limit = 0/0.",
+    "expression": "NaN"
+   },
+   "right_step": {
+    "text": "Two limits, each 0.",
+    "expression": 0
+   },
+   "relation": "distinct",
+   "possible_reason": {
+    "misconception_id": "BC-MIS-04014",
+    "text": "as values that may be written on the right of an equals sign"
+   },
+   "delivery": {
+    "mode": "step_reveal",
+    "reason": "rule 1",
+    "sources": []
+   }
+  },
+  {
+   "id": "LSN-CON-04014#err-BC-ERR-04029",
+   "type": "common_error",
+   "bands": [
+    "low",
+    "mid"
+   ],
+   "skills": [
+    "BC-SKL-04034"
+   ],
+   "sources": [
+    "BC-ERR-04029",
+    "BC-MIS-04015"
+   ],
+   "evidence_tag": "inferred",
+   "error_id": "BC-ERR-04029",
+   "observed_behavior": "The derivatives of numerator and denominator are taken with no statement that the limit was indeterminate.",
+   "scoring_consequence": "The hypothesis point is lost; the CED unit overview states that students must show that the rule applies, and BC-ERR-99008 records unverified hypotheses across years (ced:84).",
+   "wrong_step": {
+    "text": "-6, form unstated.",
+    "expression": -6
+   },
+   "right_step": {
+    "text": "Form stated, then -6.",
+    "expression": -6
+   },
+   "relation": "equivalent",
+   "possible_reason": {
+    "misconception_id": "BC-MIS-04015",
+    "text": "treats the rule as a general device for limits that resist substitution"
+   },
+   "delivery": {
+    "mode": "step_reveal",
+    "reason": "rule 1",
+    "sources": []
+   }
+  },
+  {
+   "id": "LSN-CON-04014#prq-BC-PRQ-04008",
+   "type": "prerequisite_bridge",
+   "bands": [
+    "low",
+    "mid"
+   ],
+   "skills": [
+    "BC-SKL-04034",
+    "BC-SKL-04038"
+   ],
+   "sources": [
+    "BC-PRQ-04008"
+   ],
+   "evidence_tag": "inferred",
+   "prerequisite_id": "BC-PRQ-04008",
+   "text": "Name each quantity given in the stem and whether it varies."
+  }
+ ],
+ "checks": [
+  {
+   "id": "LSN-CON-04014#chk-1",
+   "check_kind": "completion",
+   "bands": [
+    "low",
+    "mid"
+   ],
+   "format": "short_answer",
+   "archetype_id": "BC-QA-04009",
+   "parameter_draw": {
+    "anchor": 2,
+    "stretch": 2,
+    "far_value": 4,
+    "far_slope": -3,
+    "near_value": 1,
+    "near_slope": 5,
+    "denominator": "exponential"
+   },
+   "completes": "LSN-CON-04014#s5",
+   "stem": {
+    "text": "For ex-1 the form is 0/0. Finish with the ratio of derivatives.",
+    "command_verb": "find"
+   },
+   "answer_key": {
+    "form": "symbolic",
+    "mathjson": -6
+   },
+   "worked_solution": [
+    {
+     "step": 1,
+     "text": "2f'(4)/e^0.",
+     "mathjson": -6,
+     "relation": "new"
+    }
+   ],
+   "calculator_status": "no_calculator",
+   "representation": "BC-REP-01",
+   "skills": [
+    "BC-SKL-04034"
+   ]
+  },
+  {
+   "id": "LSN-CON-04014#chk-2",
+   "check_kind": "isomorph",
+   "bands": [
+    "low",
+    "mid"
+   ],
+   "format": "short_answer",
+   "archetype_id": "BC-QA-04009",
+   "parameter_draw": {
+    "anchor": 1,
+    "stretch": 3,
+    "far_value": -1,
+    "far_slope": 2,
+    "near_value": 3,
+    "near_slope": 4,
+    "denominator": "sine"
+   },
+   "stem": {
+    "text": "f is differentiable, f(3) = -1, f'(3) = 2. Verify the form, then find the limit of (f(3x) + 1)/sin(x - 1) as x tends to 1.",
+    "command_verb": "find"
+   },
+   "answer_key": {
+    "form": "symbolic",
+    "mathjson": 6
+   },
+   "worked_solution": [
+    {
+     "step": 1,
+     "text": "Numerator, by continuity.",
+     "mathjson": 0,
+     "relation": "new"
+    },
+    {
+     "step": 2,
+     "text": "0.",
+     "mathjson": 0,
+     "relation": "equivalent"
+    },
+    {
+     "step": 3,
+     "text": "Denominator.",
+     "mathjson": [
+      "Sin",
+      [
+       "Add",
+       -1,
+       "x"
+      ]
+     ],
+     "relation": "new"
+    },
+    {
+     "step": 4,
+     "text": "0.",
+     "mathjson": 0,
+     "relation": "limit",
+     "variable": "x",
+     "point": "1"
+    },
+    {
+     "step": 5,
+     "text": "3f'(3)/cos(0).",
+     "mathjson": 6,
+     "relation": "new"
+    }
+   ],
+   "calculator_status": "no_calculator",
+   "representation": "BC-REP-01",
+   "skills": [
+    "BC-SKL-04038"
+   ]
+  }
+ ],
+ "refresher": [
+  "LSN-CON-04014#s2",
+  "LSN-CON-04014#s3",
+  "LSN-CON-04014#err-BC-ERR-04028",
+  "LSN-CON-04014#err-BC-ERR-04029",
+  "LSN-CON-04014#s5"
+ ],
+ "provenance": {
+  "author": "tools/lesson_transcribe.py",
+  "prompt_version": "generator/lesson_v1",
+  "design_path": "docs/lessons/unit-04/LSN-CON-04014.md",
+  "signed_off_by": "claude-opus-5-5",
+  "signed_off_at": "2026-09-29",
+  "not_human": true
+ }
+}

@@ -1,0 +1,635 @@
+{
+ "id": "LSN-CON-04012",
+ "version": 1,
+ "kind": "concept",
+ "target_id": "BC-CON-04012",
+ "status": "signed_off",
+ "snapshot_digest": "a6a8ec9d3f59ab8f712e33d30cc22fc64bf2c478fbe7312e3e3118d319c6a42f",
+ "source_digest": "d5428c63e9fdc6beb49d76324108e4a96ed4bc0684a27e6fe9916d584016885a",
+ "read_minutes": {
+  "full": 3.7,
+  "brief": 3.0
+ },
+ "word_count": {
+  "full": 451,
+  "brief": 400
+ },
+ "sections": [
+  {
+   "id": "LSN-CON-04012#s1",
+   "type": "orientation",
+   "bands": [
+    "low",
+    "mid"
+   ],
+   "skills": [
+    "BC-SKL-04030",
+    "BC-SKL-04031"
+   ],
+   "sources": [
+    "BC-CON-04012",
+    "research/units/unit-04-contextual-applications-differentiation.md#4.6 Approximating Values of a Function Using Local Linearity and Linearization"
+   ],
+   "evidence_tag": "inferred",
+   "text": "State the sign of f'' between the point of tangency and the nearby input, name the concavity, and conclude over or under from it.",
+   "delivery": {
+    "mode": "figure",
+    "reason": "rule 3: BC-REP-02 on BC-SKL-04030",
+    "sources": [
+     "BC-SKL-04030"
+    ],
+    "spec": {
+     "kind": "graph",
+     "representations": [
+      "BC-REP-02"
+     ],
+     "window": {
+      "x": [
+       0.6,
+       1.4
+      ],
+      "y": [
+       1.5,
+       2.6
+      ]
+     },
+     "curves": [
+      {
+       "expr": "2 + (x - 1) - (x - 1)**2/2"
+      },
+      {
+       "expr": "2 + (x - 1)"
+      }
+     ],
+     "labels": [
+      {
+       "text": "line above curve",
+       "placement": "inside"
+      },
+      {
+       "text": "f'' < 0",
+       "placement": "inside"
+      }
+     ]
+    },
+    "fallback": "the same graph as a static image with its two labels",
+    "keyboard": "none needed: the figure has no control"
+   }
+  },
+  {
+   "id": "LSN-CON-04012#s2",
+   "type": "key_ideas",
+   "bands": [
+    "low",
+    "mid"
+   ],
+   "skills": [
+    "BC-SKL-04030",
+    "BC-SKL-04031"
+   ],
+   "sources": [
+    "BC-EK-CHA-3F2",
+    "ced:92",
+    "research/units/unit-04-contextual-applications-differentiation.md#4.6 Approximating Values of a Function Using Local Linearity and Linearization"
+   ],
+   "evidence_tag": "verified",
+   "ek_id": "BC-EK-CHA-3F2",
+   "depth": "core",
+   "text": "With the concavity known on an interval holding both inputs: concave up puts the tangent line below the curve, an underestimate; concave down puts it above, an overestimate. Whether f increases decides nothing.",
+   "notation": "sign of f'' near the point",
+   "quote": {
+    "text": "may determine whether a tangent line value is an underestimate or an overestimate",
+    "source": "ced:92"
+   },
+   "delivery": {
+    "mode": "interactive",
+    "reason": "rule 3 promoted: BC-REP-02 on BC-SKL-04030; BC-QA-04008 common_givens name the point of tangency and a nearby input, and the stem asks over or under",
+    "sources": [
+     "BC-SKL-04030",
+     "BC-QA-04008"
+    ],
+    "spec": {
+     "kind": "graph",
+     "representations": [
+      "BC-REP-02",
+      "BC-REP-04"
+     ],
+     "curve": {
+      "expr": "x**3"
+     },
+     "controls": [
+      {
+       "type": "draggable_point",
+       "constrained_to": "curve",
+       "start": [
+        1,
+        1
+       ]
+      }
+     ],
+     "drawn": [
+      "the tangent line at the point",
+      "the sign of f'' at the point"
+     ],
+     "labels": [
+      {
+       "text": "line above curve",
+       "placement": "inside"
+      },
+      {
+       "text": "line below curve",
+       "placement": "inside"
+      }
+     ],
+     "question": "At the chosen point, does the tangent line over or underestimate nearby values?",
+     "window": {
+      "x": [
+       -1.5,
+       1.5
+      ],
+      "y": [
+       -3.5,
+       3.5
+      ]
+     },
+     "tangent": {
+      "at": "x",
+      "slope": "3*x**2"
+     }
+    },
+    "fallback": "two static frames, one point in each concavity region, with the label that holds",
+    "keyboard": "Tab focuses the point; left and right arrow keys move it along the curve"
+   }
+  },
+  {
+   "id": "LSN-CON-04012#s3",
+   "type": "strategy",
+   "bands": [
+    "low",
+    "mid"
+   ],
+   "skills": [
+    "BC-SKL-04030",
+    "BC-SKL-04031"
+   ],
+   "sources": [
+    "BC-QA-04008"
+   ],
+   "evidence_tag": "verified",
+   "archetype_id": "BC-QA-04008",
+   "cue": "\"Overestimate or underestimate? Give a reason.\"",
+   "method": "First line: f'' and its sign between the two inputs.",
+   "rival": "Rival: the sign of f' (BC-ERR-99020).",
+   "separating_feature": "The asked word is estimate direction, which is bending, not rising."
+  },
+  {
+   "id": "LSN-CON-04012#s4",
+   "type": "worked_example",
+   "bands": [
+    "low",
+    "mid"
+   ],
+   "skills": [
+    "BC-SKL-04030",
+    "BC-SKL-04031"
+   ],
+   "sources": [
+    "BC-QA-04008"
+   ],
+   "evidence_tag": "inferred",
+   "archetype_id": "BC-QA-04008",
+   "parameter_draw": {
+    "curvature": -2,
+    "offset": 3,
+    "anchor": 1,
+    "height": 2,
+    "step": "1/5",
+    "judgement": "on"
+   },
+   "problem": {
+    "text": "f(1) = 2, f'(x) = -2x^2 + 3; the tangent line at x = 1 gives f(1.2) about 2.2. Over or underestimate? Give a reason.",
+    "command_verb": "justify"
+   },
+   "calculator_status": "no_calculator",
+   "steps": [
+    {
+     "cue": "Direction asked: bending decides.",
+     "why": "Start from f'.",
+     "expression": [
+      "Add",
+      3,
+      [
+       "Multiply",
+       -2,
+       [
+        "Power",
+        "x",
+        2
+       ]
+      ]
+     ],
+     "relation": "new"
+    },
+    {
+     "cue": "Bending is f''.",
+     "why": "Differentiate f'.",
+     "expression": [
+      "Multiply",
+      -4,
+      "x"
+     ],
+     "relation": "differentiate",
+     "variable": "x"
+    },
+    {
+     "cue": "Sign on [1, 1.2].",
+     "why": "Negative, concave down: line above curve, so overestimate.",
+     "point_type_id": "BC-PT-99005"
+    }
+   ],
+   "answer": {
+    "form": "statement",
+    "mathjson": "overestimate"
+   },
+   "delivery": {
+    "mode": "step_reveal",
+    "reason": "rule 1",
+    "sources": []
+   }
+  },
+  {
+   "id": "LSN-CON-04012#s5",
+   "type": "what_a_reader_scores",
+   "bands": [
+    "low",
+    "mid"
+   ],
+   "skills": [
+    "BC-SKL-04030",
+    "BC-SKL-04031"
+   ],
+   "sources": [
+    "BC-PT-99005"
+   ],
+   "evidence_tag": "verified",
+   "example_id": "LSN-CON-04012#s4",
+   "lines": [
+    {
+     "point_type_id": "BC-PT-99005",
+     "text": "Answer with supporting work or setup shown. Earned by: The correct value together with the setup the prompt demanded, such as a difference and a quotient from a table or an equation that produces the value (sg-26:2, sg-25:4). Not earned by: An unsupported value (sg-23:10, sg-22:9), or a setup with no value (sg-26:2). Notation: sg-22:6 withholds this point for an equation of the form function equals constant, such as a derivative expression set equal to a number without evaluation. Precision: A reported decimal answer must be accurate to three places after the decimal point, rounded or truncated; at most one point per question is lost to inappropriate rounding (sg-25:2, sg-26:2)."
+    }
+   ]
+  },
+  {
+   "id": "LSN-CON-04012#err-BC-ERR-04026",
+   "type": "common_error",
+   "bands": [
+    "low",
+    "mid"
+   ],
+   "skills": [
+    "BC-SKL-04031"
+   ],
+   "sources": [
+    "BC-ERR-04026",
+    "BC-MIS-05022"
+   ],
+   "evidence_tag": "inferred",
+   "error_id": "BC-ERR-04026",
+   "observed_behavior": "The response states that the second derivative has a sign without connecting that claim to the graph, table, or formula supplied.",
+   "scoring_consequence": "The justification point is lost; BC-ERR-99001 records vague referents in justifications and the 2023 report records reasons not connected to the given graph (cr-23:15).",
+   "wrong_step": {
+    "text": "f'' < 0, unlinked.",
+    "expression": "fpp"
+   },
+   "right_step": {
+    "text": "f''(x) = -4x < 0.",
+    "expression": [
+     "Multiply",
+     -4,
+     "x"
+    ]
+   },
+   "relation": "distinct",
+   "possible_reason": {
+    "misconception_id": "BC-MIS-05022",
+    "text": "supplies derivative notation in place of a statement about the object"
+   },
+   "delivery": {
+    "mode": "step_reveal",
+    "reason": "rule 1",
+    "sources": []
+   }
+  },
+  {
+   "id": "LSN-CON-04012#err-BC-ERR-99020",
+   "type": "common_error",
+   "bands": [
+    "low",
+    "mid"
+   ],
+   "skills": [
+    "BC-SKL-04030",
+    "BC-SKL-04031"
+   ],
+   "sources": [
+    "BC-ERR-99020",
+    "BC-MIS-07010"
+   ],
+   "evidence_tag": "inferred",
+   "error_id": "BC-ERR-99020",
+   "observed_behavior": "Responses decide whether a tangent line approximation is an overestimate or an underestimate without using the sign of the second derivative, or state the correct conclusion with reasoning that does not mention concavity.",
+   "scoring_consequence": "The reasoning point is not earned; in 2022 this part was the most challenging of its question.",
+   "wrong_step": {
+    "text": "f'(1) = 1.",
+    "expression": 1
+   },
+   "right_step": {
+    "text": "f''(x) = -4x.",
+    "expression": [
+     "Multiply",
+     -4,
+     "x"
+    ]
+   },
+   "relation": "distinct",
+   "possible_reason": {
+    "misconception_id": "BC-MIS-07010",
+    "text": "from the monotonicity of the solution rather than from its concavity"
+   },
+   "delivery": {
+    "mode": "step_reveal",
+    "reason": "rule 1",
+    "sources": []
+   }
+  },
+  {
+   "id": "LSN-CON-04012#err-BC-ERR-99022",
+   "type": "common_error",
+   "bands": [
+    "low",
+    "mid"
+   ],
+   "skills": [
+    "BC-SKL-04030"
+   ],
+   "sources": [
+    "BC-ERR-99022"
+   ],
+   "evidence_tag": "inferred",
+   "error_id": "BC-ERR-99022",
+   "observed_behavior": "Responses simplify a numerical or algebraic expression that the exam does not require to be simplified, and introduce sign, order of operations or fraction errors that spoil an otherwise correct result.",
+   "scoring_consequence": "A point already secured by the correct setup can be lost when the simplified final form is wrong.",
+   "wrong_step": {
+    "text": "9/5.",
+    "expression": [
+     "Rational",
+     9,
+     5
+    ]
+   },
+   "right_step": {
+    "text": "11/5.",
+    "expression": [
+     "Rational",
+     11,
+     5
+    ]
+   },
+   "relation": "distinct",
+   "delivery": {
+    "mode": "step_reveal",
+    "reason": "rule 1",
+    "sources": []
+   }
+  },
+  {
+   "id": "LSN-CON-04012#prq-BC-PRQ-04008",
+   "type": "prerequisite_bridge",
+   "bands": [
+    "low",
+    "mid"
+   ],
+   "skills": [
+    "BC-SKL-04030",
+    "BC-SKL-04031"
+   ],
+   "sources": [
+    "BC-PRQ-04008"
+   ],
+   "evidence_tag": "inferred",
+   "prerequisite_id": "BC-PRQ-04008",
+   "text": "Name each quantity in the setting, its unit, and whether it varies."
+  }
+ ],
+ "checks": [
+  {
+   "id": "LSN-CON-04012#chk-1",
+   "check_kind": "completion",
+   "bands": [
+    "low",
+    "mid"
+   ],
+   "format": "short_answer",
+   "archetype_id": "BC-QA-04008",
+   "parameter_draw": {
+    "curvature": -2,
+    "offset": 3,
+    "anchor": 1,
+    "height": 2,
+    "step": "1/5",
+    "judgement": "on"
+   },
+   "completes": "LSN-CON-04012#s4",
+   "stem": {
+    "text": "For ex-1, f''(x) = -4x. Is 2.2 an over or underestimate of f(1.2)?",
+    "command_verb": "justify"
+   },
+   "answer_key": {
+    "form": "statement",
+    "mathjson": "overestimate"
+   },
+   "worked_solution": [
+    {
+     "step": 1,
+     "text": "f'' negative on [1, 1.2].",
+     "mathjson": [
+      "Multiply",
+      -4,
+      "x"
+     ],
+     "relation": "new"
+    }
+   ],
+   "calculator_status": "no_calculator",
+   "representation": "BC-REP-01",
+   "skills": [
+    "BC-SKL-04031"
+   ]
+  },
+  {
+   "id": "LSN-CON-04012#chk-2",
+   "check_kind": "isomorph",
+   "bands": [
+    "low",
+    "mid"
+   ],
+   "format": "short_answer",
+   "archetype_id": "BC-QA-04008",
+   "parameter_draw": {
+    "curvature": 1,
+    "offset": -4,
+    "anchor": 1,
+    "height": 3,
+    "step": "1/10",
+    "judgement": "on"
+   },
+   "stem": {
+    "text": "f(1) = 3, f'(x) = x^2 - 4; the tangent line gives f(1.1) about 2.7. Over or underestimate? Why?",
+    "command_verb": "justify"
+   },
+   "answer_key": {
+    "form": "statement",
+    "mathjson": "underestimate"
+   },
+   "worked_solution": [
+    {
+     "step": 1,
+     "text": "f'.",
+     "mathjson": [
+      "Add",
+      -4,
+      [
+       "Power",
+       "x",
+       2
+      ]
+     ],
+     "relation": "new"
+    },
+    {
+     "step": 2,
+     "text": "f'' positive: concave up.",
+     "mathjson": [
+      "Multiply",
+      2,
+      "x"
+     ],
+     "relation": "differentiate",
+     "variable": "x"
+    }
+   ],
+   "calculator_status": "no_calculator",
+   "representation": "BC-REP-01",
+   "skills": [
+    "BC-SKL-04030"
+   ]
+  },
+  {
+   "id": "LSN-CON-04012#chk-3",
+   "check_kind": "mcq",
+   "bands": [
+    "low"
+   ],
+   "format": "mcq",
+   "archetype_id": "BC-QA-04008",
+   "parameter_draw": {
+    "curvature": -3,
+    "offset": 7,
+    "anchor": 1,
+    "height": 1,
+    "step": "1/10",
+    "judgement": "on"
+   },
+   "stem": {
+    "text": "f(1) = 1 and f'(x) = -3x^2 + 7. Which response approximates f(1.1) with the tangent line and judges it correctly?",
+    "command_verb": "identify"
+   },
+   "answer_key": {
+    "form": "statement",
+    "mathjson": "overestimate",
+    "label": "1.4, an overestimate, because f''(x) = -6x < 0 on [1, 1.1]."
+   },
+   "worked_solution": [
+    {
+     "step": 1,
+     "text": "f'.",
+     "mathjson": [
+      "Add",
+      7,
+      [
+       "Multiply",
+       -3,
+       [
+        "Power",
+        "x",
+        2
+       ]
+      ]
+     ],
+     "relation": "new"
+    },
+    {
+     "step": 2,
+     "text": "f''.",
+     "mathjson": [
+      "Multiply",
+      -6,
+      "x"
+     ],
+     "relation": "differentiate",
+     "variable": "x"
+    }
+   ],
+   "options": [
+    {
+     "id": "A",
+     "is_key": false,
+     "error_path": "BC-ERR-99020",
+     "label": "1.4, an underestimate, because f'(1) = 4 > 0.",
+     "derivation": "verdict from the sign of f'"
+    },
+    {
+     "id": "B",
+     "is_key": true,
+     "error_path": null,
+     "label": "1.4, an overestimate, because f''(x) = -6x < 0 on [1, 1.1]."
+    },
+    {
+     "id": "C",
+     "is_key": false,
+     "error_path": "BC-ERR-04026",
+     "label": "1.4, an overestimate, because the graph is concave down.",
+     "derivation": "concavity asserted with no link to the given f'"
+    },
+    {
+     "id": "D",
+     "is_key": false,
+     "error_path": "BC-ERR-99022",
+     "label": "0.6, an overestimate, because f''(x) = -6x < 0.",
+     "derivation": "1 + 4(0.1) simplified as 1 - 0.4"
+    }
+   ],
+   "calculator_status": "no_calculator",
+   "representation": "BC-REP-01",
+   "skills": [
+    "BC-SKL-04031"
+   ]
+  }
+ ],
+ "refresher": [
+  "LSN-CON-04012#s2",
+  "LSN-CON-04012#err-BC-ERR-04026",
+  "LSN-CON-04012#err-BC-ERR-99020",
+  "LSN-CON-04012#err-BC-ERR-99022",
+  "LSN-CON-04012#s4"
+ ],
+ "provenance": {
+  "author": "tools/lesson_transcribe.py",
+  "prompt_version": "generator/lesson_v1",
+  "design_path": "docs/lessons/unit-04/LSN-CON-04012.md",
+  "signed_off_by": "claude-opus-5-5",
+  "signed_off_at": "2026-09-29",
+  "not_human": true
+ }
+}

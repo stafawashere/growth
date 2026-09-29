@@ -1,0 +1,893 @@
+{
+ "id": "LSN-CON-05006",
+ "version": 1,
+ "kind": "concept",
+ "target_id": "BC-CON-05006",
+ "status": "signed_off",
+ "snapshot_digest": "a6a8ec9d3f59ab8f712e33d30cc22fc64bf2c478fbe7312e3e3118d319c6a42f",
+ "source_digest": "11d5de174e8000ae571dc78e31cd30ac2a0ea0df94ee46b73183af4b74d9f7fd",
+ "read_minutes": {
+  "full": 4.4,
+  "brief": 2.8
+ },
+ "word_count": {
+  "full": 536,
+  "brief": 365
+ },
+ "sections": [
+  {
+   "id": "LSN-CON-05006#s1",
+   "type": "orientation",
+   "bands": [
+    "low",
+    "mid"
+   ],
+   "skills": [
+    "BC-SKL-05024",
+    "BC-SKL-05025",
+    "BC-SKL-05026",
+    "BC-SKL-05027",
+    "BC-SKL-05028",
+    "BC-SKL-05029"
+   ],
+   "sources": [
+    "BC-CON-05006",
+    "research/units/unit-05-analytical-applications-differentiation.md#5.5 Using the Candidates Test to Determine Absolute (Global) Extrema"
+   ],
+   "evidence_tag": "inferred",
+   "text": "A response writes f'(x) = 0, lists the critical points inside the interval and both endpoints, evaluates f at each and nothing else, and reports the extreme value.",
+   "delivery": {
+    "mode": "text",
+    "reason": "rule 5: a statement of what a response shows; unit README delivery map",
+    "sources": [
+     "BC-SKL-05028"
+    ]
+   }
+  },
+  {
+   "id": "LSN-CON-05006#s2",
+   "type": "key_ideas",
+   "bands": [
+    "low",
+    "mid"
+   ],
+   "skills": [
+    "BC-SKL-05024",
+    "BC-SKL-05025",
+    "BC-SKL-05026",
+    "BC-SKL-05027",
+    "BC-SKL-05028",
+    "BC-SKL-05029"
+   ],
+   "sources": [
+    "BC-EK-FUN-4A3",
+    "ced:103",
+    "sg-25:19",
+    "sg-23:15",
+    "research/units/unit-05-analytical-applications-differentiation.md#5.5 Using the Candidates Test to Determine Absolute (Global) Extrema"
+   ],
+   "evidence_tag": "verified",
+   "ek_id": "BC-EK-FUN-4A3",
+   "depth": "core",
+   "text": "On [a, b] the candidates are the interior critical points and both endpoints. Evaluate f at every one and at no other input; one wrong value or a missing endpoint loses the justification. Report the value, not only where it occurs.",
+   "notation": "candidate list; absolute extreme value",
+   "quote": {
+    "text": "Absolute (global) extrema of a function on a closed interval can only occur at critical points or at endpoints.",
+    "source": "ced:103"
+   },
+   "delivery": {
+    "mode": "figure",
+    "reason": "rule 3: BC-REP-02 on BC-SKL-05024, 05025; the candidate list read from a graph of f'",
+    "sources": [
+     "BC-SKL-05024",
+     "BC-SKL-05025"
+    ],
+    "spec": {
+     "kind": "graph",
+     "representations": [
+      "BC-REP-02"
+     ],
+     "curve": "f'(x) = 3x^2 - 3",
+     "window": {
+      "x": [
+       -2,
+       3
+      ],
+      "y": [
+       -4,
+       24
+      ]
+     },
+     "marks": [
+      "zeros at x = -1 and x = 1",
+      "endpoints x = -2 and x = 3 as vertical lines"
+     ],
+     "labels": [
+      {
+       "text": "graph of f'",
+       "placement": "inside"
+      },
+      {
+       "text": "candidates: -2, -1, 1, 3",
+       "placement": "inside"
+      }
+     ]
+    },
+    "fallback": "the same graph static with the four candidates marked and labelled",
+    "keyboard": "no control; the figure description is reached with Tab"
+   }
+  },
+  {
+   "id": "LSN-CON-05006#s3",
+   "type": "strategy",
+   "bands": [
+    "low",
+    "mid"
+   ],
+   "skills": [
+    "BC-SKL-05024",
+    "BC-SKL-05025",
+    "BC-SKL-05026",
+    "BC-SKL-05027",
+    "BC-SKL-05028",
+    "BC-SKL-05029"
+   ],
+   "sources": [
+    "BC-QA-05006",
+    "BC-ERR-99004"
+   ],
+   "evidence_tag": "verified",
+   "archetype_id": "BC-QA-05006",
+   "cue": "Absolute maximum or minimum value on a closed interval, justified?",
+   "method": "First line: f'(x) = 0, as an equation.",
+   "rival": "Rival: a sign change at one point, a local test.",
+   "separating_feature": "Absolute makes every candidate, endpoints included, a competitor."
+  },
+  {
+   "id": "LSN-CON-05006#s4",
+   "type": "worked_example",
+   "bands": [
+    "low",
+    "mid"
+   ],
+   "skills": [
+    "BC-SKL-05024",
+    "BC-SKL-05025",
+    "BC-SKL-05026",
+    "BC-SKL-05027",
+    "BC-SKL-05028",
+    "BC-SKL-05029"
+   ],
+   "sources": [
+    "BC-QA-05006"
+   ],
+   "evidence_tag": "inferred",
+   "archetype_id": "BC-QA-05006",
+   "parameter_draw": {
+    "first_critical": -1,
+    "gap": 2,
+    "left": 1,
+    "right": 2,
+    "orientation": 1,
+    "shift": 0,
+    "extreme": "maximum",
+    "root": 2,
+    "coefficient": 1,
+    "family": "cubic"
+   },
+   "problem": {
+    "text": "f(x) = x^3 - 3x. Find the absolute maximum value of f on [-2, 3]. Justify.",
+    "command_verb": "find"
+   },
+   "calculator_status": "no_calculator",
+   "steps": [
+    {
+     "cue": "Absolute on [-2, 3]: candidates.",
+     "why": "Write f'(x) = 0 as an equation.",
+     "expression": [
+      "Equal",
+      [
+       "Add",
+       -3,
+       [
+        "Multiply",
+        3,
+        [
+         "Power",
+         "x",
+         2
+        ]
+       ]
+      ],
+      0
+     ],
+     "relation": "new"
+    },
+    {
+     "cue": "Solve.",
+     "why": "Both inside.",
+     "expression": [
+      "Set",
+      -1,
+      1
+     ],
+     "relation": "solve",
+     "variable": "x"
+    },
+    {
+     "cue": "Add both endpoints.",
+     "why": "Endpoints compete.",
+     "expression": [
+      "Set",
+      -2,
+      -1,
+      1,
+      3
+     ],
+     "relation": "new"
+    },
+    {
+     "cue": "Evaluate f at each.",
+     "why": "f at -2, -1, 1, 3.",
+     "expression": [
+      "Tuple",
+      -2,
+      2,
+      -2,
+      18
+     ],
+     "relation": "new"
+    },
+    {
+     "cue": "Compare all four.",
+     "why": "18 is the largest candidate value, so the absolute maximum value is 18.",
+     "expression": 18,
+     "point_type_id": "BC-PT-99011",
+     "relation": "new"
+    }
+   ],
+   "answer": {
+    "form": "numeric",
+    "mathjson": 18
+   },
+   "delivery": {
+    "mode": "step_reveal",
+    "reason": "rule 1",
+    "sources": []
+   }
+  },
+  {
+   "id": "LSN-CON-05006#s5",
+   "type": "worked_example",
+   "bands": [
+    "low"
+   ],
+   "skills": [
+    "BC-SKL-05024",
+    "BC-SKL-05025",
+    "BC-SKL-05026",
+    "BC-SKL-05027",
+    "BC-SKL-05028",
+    "BC-SKL-05029"
+   ],
+   "sources": [
+    "BC-QA-05006"
+   ],
+   "evidence_tag": "inferred",
+   "archetype_id": "BC-QA-05006",
+   "parameter_draw": {
+    "first_critical": 0,
+    "gap": 2,
+    "left": 1,
+    "right": 2,
+    "orientation": 1,
+    "shift": 0,
+    "extreme": "minimum",
+    "root": 2,
+    "coefficient": 1,
+    "family": "reciprocal"
+   },
+   "problem": {
+    "text": "f(x) = x + 4/x. Find the absolute minimum value on [1, 4]. Justify.",
+    "command_verb": "find"
+   },
+   "calculator_status": "no_calculator",
+   "steps": [
+    {
+     "cue": "Absolute: f'(x) = 0.",
+     "why": "f'(x) = 1 - 4/x^2.",
+     "expression": [
+      "Equal",
+      [
+       "Add",
+       1,
+       [
+        "Multiply",
+        -4,
+        [
+         "Power",
+         "x",
+         -2
+        ]
+       ]
+      ],
+      0
+     ],
+     "relation": "new"
+    },
+    {
+     "cue": "Solve.",
+     "why": "Two roots.",
+     "expression": [
+      "Set",
+      -2,
+      2
+     ],
+     "relation": "solve",
+     "variable": "x"
+    },
+    {
+     "cue": "Inside [1, 4]?",
+     "why": "-2 is not a candidate.",
+     "expression": [
+      "Set",
+      1,
+      2,
+      4
+     ],
+     "relation": "new"
+    },
+    {
+     "cue": "Evaluate.",
+     "why": "f(1) = 5, f(2) = 4, f(4) = 5.",
+     "expression": [
+      "Tuple",
+      5,
+      4,
+      5
+     ],
+     "relation": "new"
+    },
+    {
+     "cue": "Compare.",
+     "why": "Smallest is 4.",
+     "expression": 4,
+     "relation": "new"
+    }
+   ],
+   "answer": {
+    "form": "numeric",
+    "mathjson": 4
+   },
+   "delivery": {
+    "mode": "step_reveal",
+    "reason": "rule 1",
+    "sources": []
+   }
+  },
+  {
+   "id": "LSN-CON-05006#s6",
+   "type": "what_a_reader_scores",
+   "bands": [
+    "low",
+    "mid"
+   ],
+   "skills": [
+    "BC-SKL-05024",
+    "BC-SKL-05025",
+    "BC-SKL-05026",
+    "BC-SKL-05027",
+    "BC-SKL-05028",
+    "BC-SKL-05029"
+   ],
+   "sources": [
+    "BC-PT-99011"
+   ],
+   "evidence_tag": "verified",
+   "example_id": "LSN-CON-05006#s4",
+   "lines": [
+    {
+     "point_type_id": "BC-PT-99011",
+     "text": "Justification by candidates test. Earned by: A global argument that evaluates the function at every interior critical point and at both endpoints, with the evaluations correct to the stated precision (sg-25:5, sg-25:19). Not earned by: A candidates table missing an endpoint (sg-23:15), containing an evaluation error (sg-23:15), or listing extra x-values (sg-25:19). Precision: sg-25:5 and sg-25:9 require candidate evaluations correct to the first digit after the decimal, rounded or truncated; sg-22:5 allows up to three decimals or correctly rounded integers."
+    }
+   ]
+  },
+  {
+   "id": "LSN-CON-05006#err-BC-ERR-05011",
+   "type": "common_error",
+   "bands": [
+    "low",
+    "mid"
+   ],
+   "skills": [
+    "BC-SKL-05024"
+   ],
+   "sources": [
+    "BC-ERR-05011",
+    "BC-MIS-05009"
+   ],
+   "evidence_tag": "inferred",
+   "error_id": "BC-ERR-05011",
+   "observed_behavior": "The response finds only the zeros of the derivative and skips corners, cusps, and vertical tangents.",
+   "scoring_consequence": "A candidate is missing, so the comparison may select the wrong extremum and the justification is incomplete.",
+   "wrong_step": {
+    "text": "Only where f' = 0.",
+    "expression": "zeros_of_f_prime_only"
+   },
+   "right_step": {
+    "text": "Also where f' fails to exist.",
+    "expression": "zeros_and_undefined_points_of_f_prime"
+   },
+   "relation": "distinct",
+   "possible_reason": {
+    "misconception_id": "BC-MIS-05009",
+    "text": "does not look for corners, cusps, or vertical tangents"
+   },
+   "delivery": {
+    "mode": "step_reveal",
+    "reason": "rule 1",
+    "sources": []
+   }
+  },
+  {
+   "id": "LSN-CON-05006#err-BC-ERR-05025",
+   "type": "common_error",
+   "bands": [
+    "low",
+    "mid"
+   ],
+   "skills": [
+    "BC-SKL-05024"
+   ],
+   "sources": [
+    "BC-ERR-05025"
+   ],
+   "evidence_tag": "inferred",
+   "error_id": "BC-ERR-05025",
+   "observed_behavior": "The response carries a critical point that lies outside the closed interval into the candidate comparison.",
+   "scoring_consequence": "The justification point is lost because inputs other than the candidates appear in the argument.",
+   "wrong_step": {
+    "text": "x = -2 kept: -4.",
+    "expression": -4
+   },
+   "right_step": {
+    "text": "Inside [1, 4] only: 4.",
+    "expression": 4
+   },
+   "relation": "distinct",
+   "delivery": {
+    "mode": "step_reveal",
+    "reason": "rule 1",
+    "sources": []
+   }
+  },
+  {
+   "id": "LSN-CON-05006#err-BC-ERR-05026",
+   "type": "common_error",
+   "bands": [
+    "low",
+    "mid"
+   ],
+   "skills": [
+    "BC-SKL-05024",
+    "BC-SKL-05028"
+   ],
+   "sources": [
+    "BC-ERR-05026",
+    "BC-MIS-05016"
+   ],
+   "evidence_tag": "inferred",
+   "error_id": "BC-ERR-05026",
+   "observed_behavior": "The response compares values only at the interior critical points and never evaluates at the ends of the interval.",
+   "scoring_consequence": "The justification point is lost; the 2023 guideline states that a response not considering both endpoints does not earn it.",
+   "wrong_step": {
+    "text": "Endpoints dropped: 2.",
+    "expression": 2
+   },
+   "right_step": {
+    "text": "f(3) = 18 wins.",
+    "expression": 18
+   },
+   "relation": "distinct",
+   "possible_reason": {
+    "misconception_id": "BC-MIS-05016",
+    "text": "builds the candidate list from the interior critical points and does not regard the endpoints as competitors"
+   },
+   "delivery": {
+    "mode": "step_reveal",
+    "reason": "rule 1",
+    "sources": []
+   }
+  },
+  {
+   "id": "LSN-CON-05006#err-BC-ERR-05027",
+   "type": "common_error",
+   "bands": [
+    "low",
+    "mid"
+   ],
+   "skills": [
+    "BC-SKL-05025"
+   ],
+   "sources": [
+    "BC-ERR-05027"
+   ],
+   "evidence_tag": "inferred",
+   "error_id": "BC-ERR-05027",
+   "observed_behavior": "One entry of the candidate table is wrong, whether by substitution or by an area computation.",
+   "scoring_consequence": "The justification point is lost outright; the 2023 guideline withholds it for any evaluation error at a candidate.",
+   "wrong_step": {
+    "text": "f(3) = 27 - 3 = 24.",
+    "expression": 24
+   },
+   "right_step": {
+    "text": "f(3) = 27 - 9 = 18.",
+    "expression": 18
+   },
+   "relation": "distinct",
+   "delivery": {
+    "mode": "step_reveal",
+    "reason": "rule 1",
+    "sources": []
+   }
+  },
+  {
+   "id": "LSN-CON-05006#s7",
+   "type": "representations",
+   "bands": [
+    "low"
+   ],
+   "skills": [
+    "BC-SKL-05024",
+    "BC-SKL-05025",
+    "BC-SKL-05026",
+    "BC-SKL-05027",
+    "BC-SKL-05028",
+    "BC-SKL-05029"
+   ],
+   "sources": [
+    "BC-CON-05006"
+   ],
+   "evidence_tag": "inferred",
+   "text": "Every candidate, one row each; the answer is the value column's extreme.",
+   "figure": {
+    "kind": "table",
+    "columns": [
+     "x",
+     "-2",
+     "-1",
+     "1",
+     "3"
+    ],
+    "rows": [
+     [
+      "f(x)",
+      "-2",
+      "2",
+      "-2",
+      "18"
+     ]
+    ],
+    "labels": [
+     {
+      "text": "largest: 18",
+      "placement": "inside"
+     }
+    ]
+   },
+   "delivery": {
+    "mode": "table",
+    "reason": "rule 4: BC-REP-03 on BC-SKL-05026, 05028",
+    "sources": [
+     "BC-SKL-05026",
+     "BC-SKL-05028"
+    ],
+    "spec": {
+     "kind": "table",
+     "representations": [
+      "BC-REP-03"
+     ],
+     "columns": [
+      "x",
+      "-2",
+      "-1",
+      "1",
+      "3"
+     ],
+     "rows": [
+      [
+       "f(x)",
+       "-2",
+       "2",
+       "-2",
+       "18"
+      ],
+      [
+       "role",
+       "endpoint",
+       "critical",
+       "critical",
+       "endpoint"
+      ]
+     ],
+     "labels": [
+      {
+       "text": "largest value: 18, at x = 3",
+       "placement": "inside"
+      }
+     ]
+    },
+    "fallback": "the table as plain text rows with the largest value named",
+    "keyboard": "Tab moves between cells; no control"
+   }
+  },
+  {
+   "id": "LSN-CON-05006#prq-BC-PRQ-05004",
+   "type": "prerequisite_bridge",
+   "bands": [
+    "low",
+    "mid"
+   ],
+   "skills": [
+    "BC-SKL-05024"
+   ],
+   "sources": [
+    "BC-PRQ-05004"
+   ],
+   "evidence_tag": "inferred",
+   "prerequisite_id": "BC-PRQ-05004",
+   "text": "[a, b] includes both endpoints as candidates."
+  },
+  {
+   "id": "LSN-CON-05006#prq-BC-PRQ-06005",
+   "type": "prerequisite_bridge",
+   "bands": [
+    "low",
+    "mid"
+   ],
+   "skills": [
+    "BC-SKL-05025"
+   ],
+   "sources": [
+    "BC-PRQ-06005"
+   ],
+   "evidence_tag": "inferred",
+   "prerequisite_id": "BC-PRQ-06005",
+   "text": "f(3) is a value of f, not of f'."
+  }
+ ],
+ "checks": [
+  {
+   "id": "LSN-CON-05006#chk-1",
+   "check_kind": "completion",
+   "bands": [
+    "low",
+    "mid"
+   ],
+   "format": "short_answer",
+   "archetype_id": "BC-QA-05006",
+   "parameter_draw": {
+    "first_critical": -1,
+    "gap": 2,
+    "left": 1,
+    "right": 2,
+    "orientation": 1,
+    "shift": 0,
+    "extreme": "maximum",
+    "root": 2,
+    "coefficient": 1,
+    "family": "cubic"
+   },
+   "completes": "LSN-CON-05006#s4",
+   "stem": {
+    "text": "f(-2) = -2, f(-1) = 2, f(1) = -2, f(3) = 18. Absolute maximum value on [-2, 3]?",
+    "command_verb": "find"
+   },
+   "answer_key": {
+    "form": "numeric",
+    "mathjson": 18
+   },
+   "worked_solution": [
+    {
+     "step": 1,
+     "text": "The values.",
+     "mathjson": [
+      "Tuple",
+      -2,
+      2,
+      -2,
+      18
+     ],
+     "relation": "new"
+    },
+    {
+     "step": 2,
+     "text": "Largest.",
+     "mathjson": 18,
+     "relation": "new"
+    }
+   ],
+   "calculator_status": "no_calculator",
+   "representation": "BC-REP-01",
+   "skills": [
+    "BC-SKL-05026",
+    "BC-SKL-05027"
+   ]
+  },
+  {
+   "id": "LSN-CON-05006#chk-2",
+   "check_kind": "isomorph",
+   "bands": [
+    "low",
+    "mid"
+   ],
+   "format": "short_answer",
+   "archetype_id": "BC-QA-05006",
+   "parameter_draw": {
+    "first_critical": 0,
+    "gap": 2,
+    "left": 2,
+    "right": 3,
+    "orientation": -1,
+    "shift": 4,
+    "extreme": "minimum",
+    "root": 2,
+    "coefficient": 1,
+    "family": "cubic"
+   },
+   "stem": {
+    "text": "f(x) = -x^3 + 3x^2 + 4. Absolute minimum value on [-2, 5]? Justify.",
+    "command_verb": "find"
+   },
+   "answer_key": {
+    "form": "numeric",
+    "mathjson": -46
+   },
+   "worked_solution": [
+    {
+     "step": 1,
+     "text": "f' = 0.",
+     "mathjson": [
+      "Equal",
+      [
+       "Add",
+       [
+        "Multiply",
+        -3,
+        [
+         "Power",
+         "x",
+         2
+        ]
+       ],
+       [
+        "Multiply",
+        6,
+        "x"
+       ]
+      ],
+      0
+     ],
+     "relation": "new"
+    },
+    {
+     "step": 2,
+     "text": "x = 0, 2.",
+     "mathjson": [
+      "Set",
+      0,
+      2
+     ],
+     "relation": "solve",
+     "variable": "x"
+    },
+    {
+     "step": 3,
+     "text": "f at -2, 0, 2, 5.",
+     "mathjson": [
+      "Tuple",
+      24,
+      4,
+      8,
+      -46
+     ],
+     "relation": "new"
+    },
+    {
+     "step": 4,
+     "text": "Smallest.",
+     "mathjson": -46,
+     "relation": "new"
+    }
+   ],
+   "calculator_status": "no_calculator",
+   "representation": "BC-REP-01",
+   "skills": [
+    "BC-SKL-05024",
+    "BC-SKL-05026"
+   ]
+  },
+  {
+   "id": "LSN-CON-05006#chk-3",
+   "check_kind": "mcq",
+   "bands": [
+    "low"
+   ],
+   "format": "mcq",
+   "archetype_id": "BC-QA-05006",
+   "parameter_draw": {
+    "first_critical": 0,
+    "gap": 2,
+    "left": 2,
+    "right": 3,
+    "orientation": 1,
+    "shift": 0,
+    "extreme": "minimum",
+    "root": 3,
+    "coefficient": 1,
+    "family": "reciprocal"
+   },
+   "stem": {
+    "text": "f(x) = x + 9/x, f'(x) = 1 - 9/x^2. Which response justifies the absolute minimum value on [1, 6]?",
+    "command_verb": "identify"
+   },
+   "answer_key": {
+    "form": "statement",
+    "mathjson": "6",
+    "label": "f(1) = 10, f(3) = 6, f(6) = 7.5: minimum value 6."
+   },
+   "worked_solution": [],
+   "options": [
+    {
+     "id": "A",
+     "is_key": false,
+     "error_path": "BC-ERR-05025",
+     "label": "f(-3) = -6, f(1) = 10, f(3) = 6, f(6) = 7.5: minimum value -6.",
+     "derivation": "the critical point -3, outside [1, 6], kept"
+    },
+    {
+     "id": "B",
+     "is_key": false,
+     "error_path": "BC-ERR-05026",
+     "label": "f(3) = 6, a relative minimum: minimum value 6.",
+     "derivation": "both endpoints left out of the comparison"
+    },
+    {
+     "id": "C",
+     "is_key": true,
+     "error_path": null,
+     "label": "f(1) = 10, f(3) = 6, f(6) = 7.5: minimum value 6."
+    },
+    {
+     "id": "D",
+     "is_key": false,
+     "error_path": "BC-ERR-05027",
+     "label": "f(1) = 10, f(3) = 10/3, f(6) = 7.5: minimum value 10/3.",
+     "derivation": "9/3 taken as 1/3 at the candidate x = 3"
+    }
+   ],
+   "calculator_status": "no_calculator",
+   "representation": "BC-REP-01",
+   "skills": [
+    "BC-SKL-05024",
+    "BC-SKL-05028"
+   ]
+  }
+ ],
+ "refresher": [
+  "LSN-CON-05006#s2",
+  "LSN-CON-05006#err-BC-ERR-05011",
+  "LSN-CON-05006#err-BC-ERR-05025",
+  "LSN-CON-05006#err-BC-ERR-05026",
+  "LSN-CON-05006#err-BC-ERR-05027",
+  "LSN-CON-05006#s4"
+ ],
+ "provenance": {
+  "author": "tools/lesson_transcribe.py",
+  "prompt_version": "generator/lesson_v1",
+  "design_path": "docs/lessons/unit-05/LSN-CON-05006.md",
+  "signed_off_by": "claude-opus-5-5",
+  "signed_off_at": "2026-09-29",
+  "not_human": true
+ }
+}

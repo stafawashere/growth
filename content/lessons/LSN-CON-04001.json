@@ -1,0 +1,636 @@
+{
+ "id": "LSN-CON-04001",
+ "version": 1,
+ "kind": "concept",
+ "target_id": "BC-CON-04001",
+ "status": "signed_off",
+ "snapshot_digest": "a6a8ec9d3f59ab8f712e33d30cc22fc64bf2c478fbe7312e3e3118d319c6a42f",
+ "source_digest": "c9ada5fb9dbccefd07074e0df091c8f03a6fc2b31230bbf5ef81d2cd8293e0a3",
+ "read_minutes": {
+  "full": 4.6,
+  "brief": 2.9
+ },
+ "word_count": {
+  "full": 545,
+  "brief": 366
+ },
+ "sections": [
+  {
+   "id": "LSN-CON-04001#s1",
+   "type": "orientation",
+   "bands": [
+    "low",
+    "mid"
+   ],
+   "skills": [
+    "BC-SKL-04002",
+    "BC-SKL-04003",
+    "BC-SKL-04005"
+   ],
+   "sources": [
+    "BC-CON-04001",
+    "research/units/unit-04-contextual-applications-differentiation.md#4.1 Interpreting the Meaning of the Derivative in Context"
+   ],
+   "evidence_tag": "inferred",
+   "text": "A derivative value says how fast the modelled quantity changes at one instant. A response interprets it in one sentence: the quantity, the instant, increasing or decreasing, the size, and the units.",
+   "delivery": {
+    "mode": "text",
+    "reason": "rule 5: BC-SKL-04002, 04003, 04005 carry BC-REP-04 and BC-REP-05 only",
+    "sources": [
+     "BC-SKL-04002"
+    ]
+   }
+  },
+  {
+   "id": "LSN-CON-04001#s2",
+   "type": "key_ideas",
+   "bands": [
+    "low",
+    "mid"
+   ],
+   "skills": [
+    "BC-SKL-04002",
+    "BC-SKL-04003"
+   ],
+   "sources": [
+    "BC-EK-CHA-3A1",
+    "ced:87",
+    "research/units/unit-04-contextual-applications-differentiation.md#4.1 Interpreting the Meaning of the Derivative in Context"
+   ],
+   "evidence_tag": "inferred",
+   "ek_id": "BC-EK-CHA-3A1",
+   "depth": "core",
+   "text": "The derivative at an input is the instantaneous rate of change of the quantity there: how fast, not how much. \\(W'(9)\\) is a rate at \\(t=9\\), not an amount of water.",
+   "notation": "f prime of a as a rate at the instant a",
+   "delivery": {
+    "mode": "text",
+    "reason": "rule 5: a definition with BC-REP-04 and BC-REP-05 givens",
+    "sources": [
+     "BC-SKL-04003"
+    ]
+   }
+  },
+  {
+   "id": "LSN-CON-04001#s3",
+   "type": "key_ideas",
+   "bands": [
+    "low"
+   ],
+   "skills": [
+    "BC-SKL-04002",
+    "BC-SKL-04005"
+   ],
+   "sources": [
+    "BC-EK-CHA-3A2",
+    "ced:87",
+    "sg-24:2",
+    "sg-25:11",
+    "research/units/unit-04-contextual-applications-differentiation.md#4.1 Interpreting the Meaning of the Derivative in Context"
+   ],
+   "evidence_tag": "verified",
+   "ek_id": "BC-EK-CHA-3A2",
+   "depth": "extended",
+   "text": "A complete interpretation names the quantity, the instant, the direction of change, and the units. A negative rate means the quantity is decreasing; the size is the rate's magnitude.",
+   "notation": "units of f per unit of t",
+   "quote": {
+    "text": "The derivative can be used to express information about rates of change in applied contexts.",
+    "source": "ced:87"
+   },
+   "delivery": {
+    "mode": "text",
+    "reason": "rule 5: a rule for the sentence, BC-REP-04 and BC-REP-05",
+    "sources": [
+     "BC-SKL-04005"
+    ]
+   }
+  },
+  {
+   "id": "LSN-CON-04001#s4",
+   "type": "strategy",
+   "bands": [
+    "low",
+    "mid"
+   ],
+   "skills": [
+    "BC-SKL-04002",
+    "BC-SKL-04003",
+    "BC-SKL-04005"
+   ],
+   "sources": [
+    "BC-QA-04001"
+   ],
+   "evidence_tag": "verified",
+   "archetype_id": "BC-QA-04001",
+   "cue": "A derivative value is given with the words interpret, using correct units.",
+   "method": "First line: name the quantity and the instant.",
+   "rival": "Rival: the value read as an amount (BC-ERR-04003).",
+   "separating_feature": "The prime on the given symbol makes it a rate."
+  },
+  {
+   "id": "LSN-CON-04001#s5",
+   "type": "worked_example",
+   "bands": [
+    "low",
+    "mid"
+   ],
+   "skills": [
+    "BC-SKL-04002",
+    "BC-SKL-04003",
+    "BC-SKL-04005"
+   ],
+   "sources": [
+    "BC-QA-04001"
+   ],
+   "evidence_tag": "inferred",
+   "archetype_id": "BC-QA-04001",
+   "parameter_draw": {
+    "context": "tank",
+    "instant": 9,
+    "magnitude": "7/2",
+    "sign": "negative",
+    "order": "first"
+   },
+   "problem": {
+    "text": "\\(W(t)\\) is the water in a tank, in liters, at \\(t\\) minutes. \\(W'(9)=-3.5\\). Using correct units, interpret \\(W'(9)=-3.5\\).",
+    "command_verb": "interpret"
+   },
+   "calculator_status": "no_calculator",
+   "steps": [
+    {
+     "cue": "The given value carries a prime.",
+     "why": "A rate at \\(t=9\\), not an amount.",
+     "expression": [
+      "Rational",
+      -7,
+      2
+     ],
+     "relation": "new"
+    },
+    {
+     "cue": "The value is negative.",
+     "why": "The water is decreasing."
+    },
+    {
+     "cue": "\\(W\\) in liters, \\(t\\) in minutes.",
+     "why": "Liters per minute."
+    },
+    {
+     "cue": "Interpret: one sentence.",
+     "why": "At \\(t=9\\) minutes the water decreases at 3.5 liters per minute.",
+     "point_type_id": "BC-PT-99008"
+    }
+   ],
+   "answer": {
+    "form": "statement",
+    "mathjson": "-7/2",
+    "text": "At t = 9 minutes the amount of water in the tank is decreasing at 3.5 liters per minute."
+   },
+   "delivery": {
+    "mode": "step_reveal",
+    "reason": "rule 1",
+    "sources": []
+   }
+  },
+  {
+   "id": "LSN-CON-04001#s6",
+   "type": "what_a_reader_scores",
+   "bands": [
+    "low",
+    "mid"
+   ],
+   "skills": [
+    "BC-SKL-04002",
+    "BC-SKL-04003",
+    "BC-SKL-04005"
+   ],
+   "sources": [
+    "BC-PT-99008"
+   ],
+   "evidence_tag": "verified",
+   "example_id": "LSN-CON-04001#s5",
+   "lines": [
+    {
+     "point_type_id": "BC-PT-99008",
+     "text": "Interpretation of a derivative value in context with units. Earned by: A sentence giving the rate of change of the named quantity, its value, its units, and the instant it applies to (sg-21:3, sg-23:4). Not earned by: An interpretation whose sign language contradicts the presented value, such as decreasing at a rate of a negative number (sg-23:4). Units are required on the answer."
+    }
+   ]
+  },
+  {
+   "id": "LSN-CON-04001#err-BC-ERR-04001",
+   "type": "common_error",
+   "bands": [
+    "low",
+    "mid"
+   ],
+   "skills": [
+    "BC-SKL-04002"
+   ],
+   "sources": [
+    "BC-ERR-04001",
+    "BC-MIS-04003"
+   ],
+   "evidence_tag": "inferred",
+   "error_id": "BC-ERR-04001",
+   "observed_behavior": "A correct numerical rate is reported with no units, or with the units of the quantity alone, or with the numerator and denominator units exchanged.",
+   "scoring_consequence": "The units point is a separate point in the 2024 and 2025 table based questions and is lost outright (sg-24:2, sg-25:11); BC-ERR-99005 records the same behaviour across years.",
+   "wrong_step": {
+    "text": "Decreasing at 3.5 minutes per liter.",
+    "expression": [
+     "Multiply",
+     [
+      "Rational",
+      7,
+      2
+     ],
+     "minute",
+     [
+      "Power",
+      "liter",
+      -1
+     ]
+    ]
+   },
+   "right_step": {
+    "text": "Decreasing at 3.5 liters per minute.",
+    "expression": [
+     "Multiply",
+     [
+      "Rational",
+      7,
+      2
+     ],
+     "liter",
+     [
+      "Power",
+      "minute",
+      -1
+     ]
+    ]
+   },
+   "relation": "distinct",
+   "possible_reason": {
+    "misconception_id": "BC-MIS-04003",
+    "text": "the unit as something added at the end"
+   },
+   "delivery": {
+    "mode": "step_reveal",
+    "reason": "rule 1",
+    "sources": []
+   }
+  },
+  {
+   "id": "LSN-CON-04001#err-BC-ERR-04003",
+   "type": "common_error",
+   "bands": [
+    "low",
+    "mid"
+   ],
+   "skills": [
+    "BC-SKL-04003"
+   ],
+   "sources": [
+    "BC-ERR-04003",
+    "BC-MIS-04001"
+   ],
+   "evidence_tag": "inferred",
+   "error_id": "BC-ERR-04003",
+   "observed_behavior": "The response supplies a value of the modelled function where the question asked for a value of its derivative, or the reverse.",
+   "scoring_consequence": "The answer point is lost; BC-ERR-99030 records confusion of the direction of change with the quantity itself.",
+   "wrong_step": {
+    "text": "3.5 liters in the tank.",
+    "expression": [
+     "Multiply",
+     [
+      "Rational",
+      7,
+      2
+     ],
+     "liter"
+    ]
+   },
+   "right_step": {
+    "text": "A rate, liters per minute.",
+    "expression": [
+     "Multiply",
+     [
+      "Rational",
+      -7,
+      2
+     ],
+     "liter",
+     [
+      "Power",
+      "minute",
+      -1
+     ]
+    ]
+   },
+   "relation": "distinct",
+   "possible_reason": {
+    "misconception_id": "BC-MIS-04001",
+    "text": "its amount or its rate of change"
+   },
+   "delivery": {
+    "mode": "step_reveal",
+    "reason": "rule 1",
+    "sources": []
+   }
+  },
+  {
+   "id": "LSN-CON-04001#err-BC-ERR-04005",
+   "type": "common_error",
+   "bands": [
+    "low",
+    "mid"
+   ],
+   "skills": [
+    "BC-SKL-04005"
+   ],
+   "sources": [
+    "BC-ERR-04005",
+    "BC-MIS-04002"
+   ],
+   "evidence_tag": "inferred",
+   "error_id": "BC-ERR-04005",
+   "observed_behavior": "A negative rate is reported as a magnitude or is described as an increase.",
+   "scoring_consequence": "The interpretation point is lost; BC-ERR-99030 records the same confusion of direction with quantity.",
+   "wrong_step": {
+    "text": "Increasing at 3.5 liters per minute.",
+    "expression": [
+     "Rational",
+     7,
+     2
+    ]
+   },
+   "right_step": {
+    "text": "Decreasing at 3.5 liters per minute.",
+    "expression": [
+     "Rational",
+     -7,
+     2
+    ]
+   },
+   "relation": "distinct",
+   "possible_reason": {
+    "misconception_id": "BC-MIS-04002",
+    "text": "treats its sign as a formatting detail rather than as the statement that the quantity is falling"
+   },
+   "delivery": {
+    "mode": "step_reveal",
+    "reason": "rule 1",
+    "sources": []
+   }
+  },
+  {
+   "id": "LSN-CON-04001#err-BC-ERR-99027",
+   "type": "common_error",
+   "bands": [
+    "low",
+    "mid"
+   ],
+   "skills": [
+    "BC-SKL-04002"
+   ],
+   "sources": [
+    "BC-ERR-99027"
+   ],
+   "evidence_tag": "inferred",
+   "error_id": "BC-ERR-99027",
+   "observed_behavior": "Responses interpret a derivative or an integral without naming the quantity, the interval, or the fact that a rate is itself changing, or they answer a different question than the one asked.",
+   "scoring_consequence": "The interpretation point requires the key phrases, so an answer missing the interval or the rate of a rate is not earned.",
+   "wrong_step": {
+    "text": "It changes at 3.5 liters per minute.",
+    "expression": [
+     "Rational",
+     -7,
+     2
+    ]
+   },
+   "right_step": {
+    "text": "At \\(t=9\\) the water decreases at 3.5 liters per minute.",
+    "expression": [
+     "Rational",
+     -7,
+     2
+    ]
+   },
+   "relation": "equivalent",
+   "delivery": {
+    "mode": "step_reveal",
+    "reason": "rule 1",
+    "sources": []
+   }
+  },
+  {
+   "id": "LSN-CON-04001#prq-BC-PRQ-04004",
+   "type": "prerequisite_bridge",
+   "bands": [
+    "low",
+    "mid"
+   ],
+   "skills": [
+    "BC-SKL-04002"
+   ],
+   "sources": [
+    "BC-PRQ-04004"
+   ],
+   "evidence_tag": "inferred",
+   "prerequisite_id": "BC-PRQ-04004",
+   "text": "A compound unit is a quotient, such as liters per minute, attached to the value; otherwise it goes missing or upside down."
+  },
+  {
+   "id": "LSN-CON-04001#prq-BC-PRQ-04008",
+   "type": "prerequisite_bridge",
+   "bands": [
+    "low",
+    "mid"
+   ],
+   "skills": [
+    "BC-SKL-04002",
+    "BC-SKL-04003",
+    "BC-SKL-04005"
+   ],
+   "sources": [
+    "BC-PRQ-04008"
+   ],
+   "evidence_tag": "inferred",
+   "prerequisite_id": "BC-PRQ-04008",
+   "text": "Name each quantity, its unit, and whether it varies; unnamed quantities leave the sentence nothing to be about."
+  }
+ ],
+ "checks": [
+  {
+   "id": "LSN-CON-04001#chk-1",
+   "check_kind": "completion",
+   "bands": [
+    "low",
+    "mid"
+   ],
+   "format": "short_answer",
+   "archetype_id": "BC-QA-04001",
+   "parameter_draw": {
+    "context": "tank",
+    "instant": 9,
+    "magnitude": "7/2",
+    "sign": "negative",
+    "order": "first"
+   },
+   "completes": "LSN-CON-04001#s5",
+   "stem": {
+    "text": "\\(W'(9)=-3.5\\), liters and minutes. Complete: at \\(t=9\\) minutes, the water in the tank is ...",
+    "command_verb": "complete"
+   },
+   "answer_key": {
+    "form": "statement",
+    "mathjson": "-7/2",
+    "text": "decreasing at 3.5 liters per minute"
+   },
+   "worked_solution": [
+    {
+     "step": 1,
+     "text": "A negative rate: decreasing, size 3.5, liters per minute.",
+     "mathjson": [
+      "Rational",
+      -7,
+      2
+     ],
+     "relation": "new"
+    }
+   ],
+   "calculator_status": "no_calculator",
+   "representation": "BC-REP-04",
+   "skills": [
+    "BC-SKL-04002"
+   ]
+  },
+  {
+   "id": "LSN-CON-04001#chk-2",
+   "check_kind": "isomorph",
+   "bands": [
+    "low",
+    "mid"
+   ],
+   "format": "short_answer",
+   "archetype_id": "BC-QA-04001",
+   "parameter_draw": {
+    "context": "snow",
+    "instant": 10,
+    "magnitude": "5/2",
+    "sign": "positive",
+    "order": "first"
+   },
+   "stem": {
+    "text": "\\(S(t)\\) is snow depth in centimeters at \\(t\\) hours. Interpret \\(S'(10)=2.5\\) with units.",
+    "command_verb": "interpret"
+   },
+   "answer_key": {
+    "form": "statement",
+    "mathjson": "5/2",
+    "text": "At t = 10 hours the snow depth is increasing at 2.5 centimeters per hour."
+   },
+   "worked_solution": [
+    {
+     "step": 1,
+     "text": "Positive rate: increasing, centimeters per hour.",
+     "mathjson": [
+      "Rational",
+      5,
+      2
+     ],
+     "relation": "new"
+    }
+   ],
+   "calculator_status": "no_calculator",
+   "representation": "BC-REP-04",
+   "skills": [
+    "BC-SKL-04002",
+    "BC-SKL-04005"
+   ]
+  },
+  {
+   "id": "LSN-CON-04001#chk-3",
+   "check_kind": "mcq",
+   "bands": [
+    "low"
+   ],
+   "format": "mcq",
+   "archetype_id": "BC-QA-04001",
+   "parameter_draw": {
+    "context": "balloon",
+    "instant": 3,
+    "magnitude": 4,
+    "sign": "negative",
+    "order": "first"
+   },
+   "stem": {
+    "text": "\\(V(t)\\) is a balloon's volume in cubic centimeters at \\(t\\) seconds, and \\(V'(3)=-4\\). Which interprets \\(V'(3)\\)?",
+    "command_verb": "identify"
+   },
+   "answer_key": {
+    "form": "statement",
+    "mathjson": "-4",
+    "text": "A"
+   },
+   "worked_solution": [
+    {
+     "step": 1,
+     "text": "Negative rate at t = 3: decreasing, cubic centimeters per second.",
+     "mathjson": -4,
+     "relation": "new"
+    }
+   ],
+   "options": [
+    {
+     "id": "A",
+     "is_key": true,
+     "error_path": null,
+     "label": "At t = 3 seconds the volume is decreasing at 4 cubic centimeters per second."
+    },
+    {
+     "id": "B",
+     "is_key": false,
+     "error_path": "BC-ERR-04003",
+     "label": "At t = 3 seconds the balloon holds 4 cubic centimeters of air.",
+     "derivation": "the rate read as an amount"
+    },
+    {
+     "id": "C",
+     "is_key": false,
+     "error_path": "BC-ERR-04005",
+     "label": "At t = 3 seconds the volume is increasing at 4 cubic centimeters per second.",
+     "derivation": "the negative sign dropped and read as an increase"
+    },
+    {
+     "id": "D",
+     "is_key": false,
+     "error_path": "BC-ERR-04001",
+     "label": "At t = 3 seconds the volume is decreasing at 4 seconds per cubic centimeter.",
+     "derivation": "the units assembled the wrong way round"
+    }
+   ],
+   "calculator_status": "no_calculator",
+   "representation": "BC-REP-04",
+   "skills": [
+    "BC-SKL-04002",
+    "BC-SKL-04003",
+    "BC-SKL-04005"
+   ]
+  }
+ ],
+ "refresher": [
+  "LSN-CON-04001#s2",
+  "LSN-CON-04001#err-BC-ERR-04001",
+  "LSN-CON-04001#err-BC-ERR-04003",
+  "LSN-CON-04001#err-BC-ERR-04005",
+  "LSN-CON-04001#err-BC-ERR-99027",
+  "LSN-CON-04001#s5"
+ ],
+ "provenance": {
+  "author": "tools/lesson_transcribe.py",
+  "prompt_version": "generator/lesson_v1",
+  "design_path": "docs/lessons/unit-04/LSN-CON-04001.md",
+  "signed_off_by": "claude-opus-5-5",
+  "signed_off_at": "2026-09-29",
+  "not_human": true
+ }
+}

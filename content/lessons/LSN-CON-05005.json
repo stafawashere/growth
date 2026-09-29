@@ -1,0 +1,584 @@
+{
+ "id": "LSN-CON-05005",
+ "version": 1,
+ "kind": "concept",
+ "target_id": "BC-CON-05005",
+ "status": "signed_off",
+ "snapshot_digest": "a6a8ec9d3f59ab8f712e33d30cc22fc64bf2c478fbe7312e3e3118d319c6a42f",
+ "source_digest": "2f8a1bb94bf20489502820b61924d8c300100b2aa0a4ee619c9c48bb25571e9c",
+ "read_minutes": {
+  "full": 4.0,
+  "brief": 2.8
+ },
+ "word_count": {
+  "full": 506,
+  "brief": 377
+ },
+ "sections": [
+  {
+   "id": "LSN-CON-05005#s1",
+   "type": "orientation",
+   "bands": [
+    "low",
+    "mid"
+   ],
+   "skills": [
+    "BC-SKL-05019",
+    "BC-SKL-05020",
+    "BC-SKL-05021",
+    "BC-SKL-05022",
+    "BC-SKL-05023"
+   ],
+   "sources": [
+    "BC-CON-05005",
+    "research/units/unit-05-analytical-applications-differentiation.md#5.4 Using the First Derivative Test to Determine Relative (Local) Extrema",
+    "sg-23:13"
+   ],
+   "evidence_tag": "inferred",
+   "text": "A response classifies the critical point and gives, as its reason, how the sign of f' behaves there, in one sentence that names f'. A classification with no reason earns nothing.",
+   "delivery": {
+    "mode": "text",
+    "reason": "rule 5: a statement of what a response shows; the figure-bearing BC-REP-02 is served once, on ki-1",
+    "sources": [
+     "BC-SKL-05022"
+    ]
+   }
+  },
+  {
+   "id": "LSN-CON-05005#s2",
+   "type": "key_ideas",
+   "bands": [
+    "low",
+    "mid"
+   ],
+   "skills": [
+    "BC-SKL-05019",
+    "BC-SKL-05020",
+    "BC-SKL-05021",
+    "BC-SKL-05022",
+    "BC-SKL-05023"
+   ],
+   "sources": [
+    "BC-EK-FUN-4A2",
+    "ced:102",
+    "sg-23:13",
+    "research/units/unit-05-analytical-applications-differentiation.md#5.4 Using the First Derivative Test to Determine Relative (Local) Extrema"
+   ],
+   "evidence_tag": "verified",
+   "ek_id": "BC-EK-FUN-4A2",
+   "depth": "core",
+   "text": "At a critical point c: f' from positive to negative is a relative maximum, negative to positive a relative minimum, no sign change neither. Write \"f' does not change sign\", not \"positive before and after\". The extreme value is f(c), found separately.",
+   "notation": "sign change of f'",
+   "quote": {
+    "text": "The first derivative of a function can determine the location of relative (local) extrema of the function.",
+    "source": "ced:102"
+   },
+   "delivery": {
+    "mode": "interactive",
+    "reason": "rule 3 promoted: BC-REP-02 on BC-SKL-05019 to 05021; BC-QA-05003 common_givens a named input and difficulty_variables whether the answer is neither",
+    "sources": [
+     "BC-SKL-05020",
+     "BC-SKL-05021",
+     "BC-QA-05003"
+    ],
+    "spec": {
+     "kind": "graph",
+     "representations": [
+      "BC-REP-02"
+     ],
+     "curve": "f'(x) = 3(x - 1)^2(x + 2)",
+     "window": {
+      "x": [
+       -3,
+       2
+      ],
+      "y": [
+       -50,
+       15
+      ]
+     },
+     "controls": [
+      {
+       "type": "slider",
+       "name": "x",
+       "domain": [
+        -3,
+        2
+       ],
+       "step": 0.1,
+       "readout": "sign of f'(x)"
+      }
+     ],
+     "question": "Does the sign of f' change as x passes -2? As x passes 1?",
+     "labels": [
+      {
+       "text": "graph of f'",
+       "placement": "inside"
+      },
+      {
+       "text": "x = -2: minus to plus",
+       "placement": "inside"
+      },
+      {
+       "text": "x = 1: plus to plus",
+       "placement": "inside"
+      }
+     ]
+    },
+    "fallback": "three static frames at x = -2.5, 0 and 1.5 with the sign of f' beside each, and the two labels",
+    "keyboard": "Tab focuses the slider; Left and Right arrow keys move x by 0.1; Home and End jump to the window edges"
+   }
+  },
+  {
+   "id": "LSN-CON-05005#s3",
+   "type": "strategy",
+   "bands": [
+    "low",
+    "mid"
+   ],
+   "skills": [
+    "BC-SKL-05019",
+    "BC-SKL-05020",
+    "BC-SKL-05021",
+    "BC-SKL-05022",
+    "BC-SKL-05023"
+   ],
+   "sources": [
+    "BC-QA-05003"
+   ],
+   "evidence_tag": "verified",
+   "archetype_id": "BC-QA-05003",
+   "cue": "Maximum, minimum or neither at a named input, from f' as a graph or formula?",
+   "method": "First line: locate the input on f'.",
+   "rival": "Rival: the second derivative test, slope of f' undiscussed.",
+   "separating_feature": "f' is given; read its sign each side."
+  },
+  {
+   "id": "LSN-CON-05005#s4",
+   "type": "strategy",
+   "bands": [
+    "low",
+    "mid"
+   ],
+   "skills": [
+    "BC-SKL-05020"
+   ],
+   "sources": [
+    "BC-QA-05007"
+   ],
+   "evidence_tag": "verified",
+   "archetype_id": "BC-QA-05007",
+   "cue": "Critical point of a quantity given by a differential equation or an accumulation function.",
+   "method": "First line: the derivative from the relation.",
+   "rival": "Rival: solving the differential equation first.",
+   "separating_feature": "The relation already is the derivative."
+  },
+  {
+   "id": "LSN-CON-05005#s5",
+   "type": "worked_example",
+   "bands": [
+    "low",
+    "mid"
+   ],
+   "skills": [
+    "BC-SKL-05019",
+    "BC-SKL-05020",
+    "BC-SKL-05021",
+    "BC-SKL-05022",
+    "BC-SKL-05023"
+   ],
+   "sources": [
+    "BC-QA-05003"
+   ],
+   "evidence_tag": "inferred",
+   "archetype_id": "BC-QA-05003",
+   "parameter_draw": {
+    "named": 1,
+    "other": -2,
+    "scale": 3,
+    "sign": "positive",
+    "multiplicity": 2,
+    "factor": "none"
+   },
+   "problem": {
+    "text": "f'(x) = 3(x - 1)^2(x + 2). Does f have a relative minimum, relative maximum, or neither at x = 1? Give a reason.",
+    "command_verb": "determine"
+   },
+   "calculator_status": "no_calculator",
+   "steps": [
+    {
+     "cue": "Named input: locate it on f'.",
+     "why": "The test reads f' only.",
+     "expression": [
+      "Multiply",
+      3,
+      [
+       "Power",
+       [
+        "Add",
+        -1,
+        "x"
+       ],
+       2
+      ],
+      [
+       "Add",
+       2,
+       "x"
+      ]
+     ],
+     "relation": "new"
+    },
+    {
+     "cue": "At x = 1.",
+     "why": "A critical point.",
+     "expression": 0,
+     "relation": "evaluate",
+     "subs": {
+      "x": "1"
+     }
+    },
+    {
+     "cue": "Sign each side of 1.",
+     "why": "(x - 1)^2 > 0 and x + 2 > 0 near 1: f' > 0 on both sides."
+    },
+    {
+     "cue": "No change.",
+     "why": "Neither, because f' does not change sign at x = 1.",
+     "point_type_id": "BC-PT-99012"
+    }
+   ],
+   "answer": {
+    "form": "statement",
+    "mathjson": "neither_at_1",
+    "label": "Neither: f' does not change sign at x = 1."
+   },
+   "delivery": {
+    "mode": "step_reveal",
+    "reason": "rule 1",
+    "sources": []
+   }
+  },
+  {
+   "id": "LSN-CON-05005#s6",
+   "type": "what_a_reader_scores",
+   "bands": [
+    "low",
+    "mid"
+   ],
+   "skills": [
+    "BC-SKL-05019",
+    "BC-SKL-05020",
+    "BC-SKL-05021",
+    "BC-SKL-05022",
+    "BC-SKL-05023"
+   ],
+   "sources": [
+    "BC-PT-99012"
+   ],
+   "evidence_tag": "verified",
+   "example_id": "LSN-CON-05005#s5",
+   "lines": [
+    {
+     "point_type_id": "BC-PT-99012",
+     "text": "Classification of a critical point by a derivative test. Earned by: Correct classification of the critical point as a relative maximum, relative minimum, or neither, with analysis using a first or second derivative test; the test need not be named (sg-26:8). Not earned by: A candidates test, which sg-26:8 states is not sufficient justification here; an assertion with no supporting sign or second-derivative analysis."
+    }
+   ]
+  },
+  {
+   "id": "LSN-CON-05005#err-BC-ERR-05013",
+   "type": "common_error",
+   "bands": [
+    "low",
+    "mid"
+   ],
+   "skills": [
+    "BC-SKL-05021"
+   ],
+   "sources": [
+    "BC-ERR-05013",
+    "BC-MIS-05008"
+   ],
+   "evidence_tag": "inferred",
+   "error_id": "BC-ERR-05013",
+   "observed_behavior": "The response reports a relative maximum or minimum at an input where the derivative is zero but keeps its sign on both sides.",
+   "scoring_consequence": "The single answer with reason point is lost.",
+   "wrong_step": {
+    "text": "Extremum at 1, since f'(1) = 0.",
+    "expression": "extremum_at_1"
+   },
+   "right_step": {
+    "text": "Neither: no sign change.",
+    "expression": "neither_at_1"
+   },
+   "relation": "distinct",
+   "possible_reason": {
+    "misconception_id": "BC-MIS-05008",
+    "text": "reads the derivative being zero as the definition of a turning point, so no sign change is checked"
+   },
+   "delivery": {
+    "mode": "step_reveal",
+    "reason": "rule 1",
+    "sources": []
+   }
+  },
+  {
+   "id": "LSN-CON-05005#err-BC-ERR-05018",
+   "type": "common_error",
+   "bands": [
+    "low",
+    "mid"
+   ],
+   "skills": [
+    "BC-SKL-05022"
+   ],
+   "sources": [
+    "BC-ERR-05018"
+   ],
+   "evidence_tag": "inferred",
+   "error_id": "BC-ERR-05018",
+   "observed_behavior": "The reason says that the function or the graph changes sign, without naming which object is meant.",
+   "scoring_consequence": "The reason point is lost; the 2025 guideline names an ambiguous referent as disqualifying.",
+   "wrong_step": {
+    "text": "It does not change sign.",
+    "expression": "it_does_not_change_sign"
+   },
+   "right_step": {
+    "text": "f' does not change sign.",
+    "expression": "f_prime_does_not_change_sign"
+   },
+   "relation": "distinct",
+   "delivery": {
+    "mode": "step_reveal",
+    "reason": "rule 1",
+    "sources": []
+   }
+  },
+  {
+   "id": "LSN-CON-05005#err-BC-ERR-05020",
+   "type": "common_error",
+   "bands": [
+    "low",
+    "mid"
+   ],
+   "skills": [
+    "BC-SKL-05019"
+   ],
+   "sources": [
+    "BC-ERR-05020"
+   ],
+   "evidence_tag": "inferred",
+   "error_id": "BC-ERR-05020",
+   "observed_behavior": "The response tests inputs that are neither critical points nor endpoints when hunting for a relative extremum.",
+   "scoring_consequence": "Time is spent on inputs that cannot be extrema, and in a candidates argument extra inputs cost the justification point.",
+   "wrong_step": {
+    "text": "Tests x = 0 and 2.",
+    "expression": [
+     "Set",
+     0,
+     2
+    ]
+   },
+   "right_step": {
+    "text": "Critical points -2 and 1.",
+    "expression": [
+     "Set",
+     -2,
+     1
+    ]
+   },
+   "relation": "distinct",
+   "delivery": {
+    "mode": "step_reveal",
+    "reason": "rule 1",
+    "sources": []
+   }
+  },
+  {
+   "id": "LSN-CON-05005#err-BC-ERR-05021",
+   "type": "common_error",
+   "bands": [
+    "low",
+    "mid"
+   ],
+   "skills": [
+    "BC-SKL-05020"
+   ],
+   "sources": [
+    "BC-ERR-05021",
+    "BC-MIS-05014"
+   ],
+   "evidence_tag": "inferred",
+   "error_id": "BC-ERR-05021",
+   "observed_behavior": "The response reports a relative maximum where the derivative changes from negative to positive, or the reverse.",
+   "scoring_consequence": "The answer with reason point is lost.",
+   "wrong_step": {
+    "text": "Maximum at -2.",
+    "expression": "relative_maximum_at_minus_2"
+   },
+   "right_step": {
+    "text": "f' negative to positive: minimum.",
+    "expression": "relative_minimum_at_minus_2"
+   },
+   "relation": "distinct",
+   "possible_reason": {
+    "misconception_id": "BC-MIS-05014",
+    "text": "reads the size or the sign of the derivative at one nearby input as the classification"
+   },
+   "delivery": {
+    "mode": "step_reveal",
+    "reason": "rule 1",
+    "sources": []
+   }
+  }
+ ],
+ "checks": [
+  {
+   "id": "LSN-CON-05005#chk-1",
+   "check_kind": "completion",
+   "bands": [
+    "low",
+    "mid"
+   ],
+   "format": "short_answer",
+   "archetype_id": "BC-QA-05003",
+   "parameter_draw": {
+    "named": 1,
+    "other": -2,
+    "scale": 3,
+    "sign": "positive",
+    "multiplicity": 2,
+    "factor": "none"
+   },
+   "completes": "LSN-CON-05005#s5",
+   "stem": {
+    "text": "f'(1) = 0 and f' > 0 on both sides of 1. Classify x = 1, with a reason.",
+    "command_verb": "determine"
+   },
+   "answer_key": {
+    "form": "statement",
+    "mathjson": "neither_at_1",
+    "label": "Neither: f' does not change sign at x = 1."
+   },
+   "worked_solution": [],
+   "calculator_status": "no_calculator",
+   "representation": "BC-REP-01",
+   "skills": [
+    "BC-SKL-05021",
+    "BC-SKL-05022"
+   ]
+  },
+  {
+   "id": "LSN-CON-05005#chk-2",
+   "check_kind": "isomorph",
+   "bands": [
+    "low",
+    "mid"
+   ],
+   "format": "short_answer",
+   "archetype_id": "BC-QA-05003",
+   "parameter_draw": {
+    "named": -1,
+    "other": 3,
+    "scale": 2,
+    "sign": "positive",
+    "multiplicity": 1,
+    "factor": "none"
+   },
+   "stem": {
+    "text": "f'(x) = 2(x + 1)(x - 3). Classify x = -1, with a reason.",
+    "command_verb": "determine"
+   },
+   "answer_key": {
+    "form": "statement",
+    "mathjson": "relative_maximum_at_minus_1",
+    "label": "Relative maximum: f' changes from positive to negative at x = -1."
+   },
+   "worked_solution": [],
+   "calculator_status": "no_calculator",
+   "representation": "BC-REP-01",
+   "skills": [
+    "BC-SKL-05020",
+    "BC-SKL-05022"
+   ]
+  },
+  {
+   "id": "LSN-CON-05005#chk-3",
+   "check_kind": "mcq",
+   "bands": [
+    "low"
+   ],
+   "format": "mcq",
+   "archetype_id": "BC-QA-05003",
+   "parameter_draw": {
+    "named": 0,
+    "other": -3,
+    "scale": 1,
+    "sign": "positive",
+    "multiplicity": 2,
+    "factor": "none"
+   },
+   "stem": {
+    "text": "f'(x) = x^2(x + 3). Which response gives the relative extrema of f with a reason?",
+    "command_verb": "identify"
+   },
+   "answer_key": {
+    "form": "statement",
+    "mathjson": "relative_minimum_at_minus_3_only",
+    "label": "Minimum at -3 only: f' goes negative to positive there, no change at 0."
+   },
+   "worked_solution": [],
+   "options": [
+    {
+     "id": "A",
+     "is_key": false,
+     "error_path": "BC-ERR-05013",
+     "label": "Minima at -3 and 0, since f'(0) = 0.",
+     "derivation": "x = 0 declared an extremum with no sign change"
+    },
+    {
+     "id": "B",
+     "is_key": false,
+     "error_path": "BC-ERR-05021",
+     "label": "Maximum at -3 only.",
+     "derivation": "negative to positive read as a maximum"
+    },
+    {
+     "id": "C",
+     "is_key": true,
+     "error_path": null,
+     "label": "Minimum at -3 only: f' goes negative to positive there, no change at 0."
+    },
+    {
+     "id": "D",
+     "is_key": false,
+     "error_path": "BC-ERR-05018",
+     "label": "Minimum at -3 only: it goes negative to positive there.",
+     "derivation": "the referent it names no object"
+    }
+   ],
+   "calculator_status": "no_calculator",
+   "representation": "BC-REP-01",
+   "skills": [
+    "BC-SKL-05020",
+    "BC-SKL-05021"
+   ]
+  }
+ ],
+ "refresher": [
+  "LSN-CON-05005#s2",
+  "LSN-CON-05005#err-BC-ERR-05013",
+  "LSN-CON-05005#err-BC-ERR-05018",
+  "LSN-CON-05005#err-BC-ERR-05020",
+  "LSN-CON-05005#err-BC-ERR-05021",
+  "LSN-CON-05005#s5"
+ ],
+ "provenance": {
+  "author": "tools/lesson_transcribe.py",
+  "prompt_version": "generator/lesson_v1",
+  "design_path": "docs/lessons/unit-05/LSN-CON-05005.md",
+  "signed_off_by": "claude-opus-5-5",
+  "signed_off_at": "2026-09-29",
+  "not_human": true
+ }
+}

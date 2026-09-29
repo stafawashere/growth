@@ -1,0 +1,1199 @@
+{
+ "id": "LSN-CON-05013",
+ "version": 1,
+ "kind": "concept",
+ "target_id": "BC-CON-05013",
+ "status": "signed_off",
+ "snapshot_digest": "a6a8ec9d3f59ab8f712e33d30cc22fc64bf2c478fbe7312e3e3118d319c6a42f",
+ "source_digest": "8059dd1c4a40f1d75502af6321e9b50675874ceb14ceba735ebd4456b8b84b31",
+ "read_minutes": {
+  "full": 4.0,
+  "brief": 3.0
+ },
+ "word_count": {
+  "full": 459,
+  "brief": 362
+ },
+ "sections": [
+  {
+   "id": "LSN-CON-05013#s1",
+   "type": "orientation",
+   "bands": [
+    "low",
+    "mid"
+   ],
+   "skills": [
+    "BC-SKL-05049",
+    "BC-SKL-05050",
+    "BC-SKL-05051",
+    "BC-SKL-05052",
+    "BC-SKL-05053"
+   ],
+   "sources": [
+    "BC-CON-05013",
+    "research/units/unit-05-analytical-applications-differentiation.md#5.10 Introduction to Optimization Problems"
+   ],
+   "evidence_tag": "inferred",
+   "text": "A response names each variable with its units, writes the quantity to optimise in one variable by substituting the constraint, states the domain the situation allows, then finds the critical point and shows it gives the extremum on that domain.",
+   "delivery": {
+    "mode": "text",
+    "reason": "rule 5: a statement of what a response shows; the diagram is served once, on ki-1",
+    "sources": [
+     "BC-SKL-05049"
+    ]
+   }
+  },
+  {
+   "id": "LSN-CON-05013#s2",
+   "type": "key_ideas",
+   "bands": [
+    "low",
+    "mid"
+   ],
+   "skills": [
+    "BC-SKL-05049",
+    "BC-SKL-05050",
+    "BC-SKL-05051",
+    "BC-SKL-05052",
+    "BC-SKL-05053"
+   ],
+   "sources": [
+    "BC-EK-FUN-4B1",
+    "ced:108",
+    "research/units/unit-05-analytical-applications-differentiation.md#5.10 Introduction to Optimization Problems"
+   ],
+   "evidence_tag": "inferred",
+   "ek_id": "BC-EK-FUN-4B1",
+   "depth": "core",
+   "text": "An objective and a constraint link two variables; substituting the constraint leaves one. The context sets the domain, and a closed domain makes the endpoints candidates. A candidates test on a closed domain, or the sole critical point rule on an open one, closes the argument.",
+   "notation": "objective function; constraint; domain",
+   "delivery": {
+    "mode": "figure",
+    "reason": "rule 3: BC-REP-08 on BC-SKL-05049; not promoted, BC-QA-05011 difficulty_variables are yes or no features",
+    "sources": [
+     "BC-SKL-05049",
+     "BC-QA-05011"
+    ],
+    "spec": {
+     "kind": "geometric_diagram",
+     "representations": [
+      "BC-REP-08"
+     ],
+     "labels": [
+      {
+       "text": "x",
+       "placement": "inside",
+       "at": [
+        1,
+        1.5
+       ]
+      },
+      {
+       "text": "24 - 2x",
+       "placement": "inside",
+       "at": [
+        8,
+        1.5
+       ]
+      },
+      {
+       "text": "V = x(24 - 2x)^2",
+       "placement": "inside",
+       "at": [
+        30,
+        16
+       ]
+      },
+      {
+       "text": "0 <= x <= 12",
+       "placement": "inside",
+       "at": [
+        30,
+        20
+       ]
+      }
+     ],
+     "window": {
+      "x": [
+       -2,
+       56
+      ],
+      "y": [
+       -2,
+       26
+      ]
+     },
+     "segments": [
+      {
+       "from": [
+        4,
+        0
+       ],
+       "to": [
+        20,
+        0
+       ]
+      },
+      {
+       "from": [
+        20,
+        0
+       ],
+       "to": [
+        20,
+        4
+       ]
+      },
+      {
+       "from": [
+        20,
+        4
+       ],
+       "to": [
+        24,
+        4
+       ]
+      },
+      {
+       "from": [
+        24,
+        4
+       ],
+       "to": [
+        24,
+        20
+       ]
+      },
+      {
+       "from": [
+        24,
+        20
+       ],
+       "to": [
+        20,
+        20
+       ]
+      },
+      {
+       "from": [
+        20,
+        20
+       ],
+       "to": [
+        20,
+        24
+       ]
+      },
+      {
+       "from": [
+        20,
+        24
+       ],
+       "to": [
+        4,
+        24
+       ]
+      },
+      {
+       "from": [
+        4,
+        24
+       ],
+       "to": [
+        4,
+        20
+       ]
+      },
+      {
+       "from": [
+        4,
+        20
+       ],
+       "to": [
+        0,
+        20
+       ]
+      },
+      {
+       "from": [
+        0,
+        20
+       ],
+       "to": [
+        0,
+        4
+       ]
+      },
+      {
+       "from": [
+        0,
+        4
+       ],
+       "to": [
+        4,
+        4
+       ]
+      },
+      {
+       "from": [
+        4,
+        4
+       ],
+       "to": [
+        4,
+        0
+       ]
+      },
+      {
+       "from": [
+        0,
+        0
+       ],
+       "to": [
+        4,
+        0
+       ],
+       "style": "dashed"
+      },
+      {
+       "from": [
+        0,
+        0
+       ],
+       "to": [
+        0,
+        4
+       ],
+       "style": "dashed"
+      },
+      {
+       "from": [
+        20,
+        0
+       ],
+       "to": [
+        24,
+        0
+       ],
+       "style": "dashed"
+      },
+      {
+       "from": [
+        24,
+        0
+       ],
+       "to": [
+        24,
+        4
+       ],
+       "style": "dashed"
+      },
+      {
+       "from": [
+        24,
+        24
+       ],
+       "to": [
+        20,
+        24
+       ],
+       "style": "dashed"
+      },
+      {
+       "from": [
+        24,
+        24
+       ],
+       "to": [
+        24,
+        20
+       ],
+       "style": "dashed"
+      },
+      {
+       "from": [
+        0,
+        24
+       ],
+       "to": [
+        4,
+        24
+       ],
+       "style": "dashed"
+      },
+      {
+       "from": [
+        0,
+        24
+       ],
+       "to": [
+        0,
+        20
+       ],
+       "style": "dashed"
+      },
+      {
+       "from": [
+        4,
+        4
+       ],
+       "to": [
+        20,
+        4
+       ],
+       "style": "dashed"
+      },
+      {
+       "from": [
+        20,
+        4
+       ],
+       "to": [
+        20,
+        20
+       ],
+       "style": "dashed"
+      },
+      {
+       "from": [
+        20,
+        20
+       ],
+       "to": [
+        4,
+        20
+       ],
+       "style": "dashed"
+      },
+      {
+       "from": [
+        4,
+        20
+       ],
+       "to": [
+        4,
+        4
+       ],
+       "style": "dashed"
+      },
+      {
+       "from": [
+        30,
+        0
+       ],
+       "to": [
+        46,
+        0
+       ]
+      },
+      {
+       "from": [
+        46,
+        0
+       ],
+       "to": [
+        46,
+        4
+       ]
+      },
+      {
+       "from": [
+        46,
+        4
+       ],
+       "to": [
+        30,
+        4
+       ]
+      },
+      {
+       "from": [
+        30,
+        4
+       ],
+       "to": [
+        30,
+        0
+       ]
+      },
+      {
+       "from": [
+        30,
+        4
+       ],
+       "to": [
+        36,
+        10
+       ]
+      },
+      {
+       "from": [
+        36,
+        10
+       ],
+       "to": [
+        52,
+        10
+       ]
+      },
+      {
+       "from": [
+        52,
+        10
+       ],
+       "to": [
+        46,
+        4
+       ]
+      },
+      {
+       "from": [
+        46,
+        0
+       ],
+       "to": [
+        52,
+        6
+       ]
+      },
+      {
+       "from": [
+        52,
+        6
+       ],
+       "to": [
+        52,
+        10
+       ]
+      }
+     ]
+    },
+    "fallback": "the same sheet and box, static, as a described diagram with the four labels inside",
+    "keyboard": "none needed; no control"
+   }
+  },
+  {
+   "id": "LSN-CON-05013#s3",
+   "type": "strategy",
+   "bands": [
+    "low",
+    "mid"
+   ],
+   "skills": [
+    "BC-SKL-05049",
+    "BC-SKL-05050",
+    "BC-SKL-05051",
+    "BC-SKL-05052",
+    "BC-SKL-05053"
+   ],
+   "sources": [
+    "BC-QA-05011"
+   ],
+   "evidence_tag": "inferred",
+   "archetype_id": "BC-QA-05011",
+   "cue": "The stem asks for the largest or least quantity, from a situation or diagram with a fixed total.",
+   "method": "First written line: define the variables and write the objective.",
+   "rival": "Rival: substituting a numerical value before differentiating.",
+   "separating_feature": "The constraint reduces the objective to one variable on a stated domain; numbers enter after the derivative."
+  },
+  {
+   "id": "LSN-CON-05013#s4",
+   "type": "worked_example",
+   "bands": [
+    "low",
+    "mid"
+   ],
+   "skills": [
+    "BC-SKL-05049",
+    "BC-SKL-05050",
+    "BC-SKL-05051",
+    "BC-SKL-05052",
+    "BC-SKL-05053"
+   ],
+   "sources": [
+    "BC-QA-05011"
+   ],
+   "evidence_tag": "inferred",
+   "archetype_id": "BC-QA-05011",
+   "parameter_draw": {
+    "scale": 4,
+    "height_cap": 2,
+    "sheet_shape": "square",
+    "material": "cardboard",
+    "purpose": "tray",
+    "length_unit": "inches",
+    "domain_limit": "none"
+   },
+   "problem": {
+    "text": "Squares of side \\(x\\) inches are cut from the corners of a 24 by 24 inch cardboard sheet and the sides folded up to make a tray. Find \\(x\\) giving the largest volume. Justify.",
+    "command_verb": "find"
+   },
+   "calculator_status": "no_calculator",
+   "steps": [
+    {
+     "cue": "Largest volume: the objective is \\(V\\); the base side is \\(24-2x\\).",
+     "why": "The constraint is folded in, so one variable remains.",
+     "expression": [
+      "Multiply",
+      "x",
+      [
+       "Power",
+       [
+        "Add",
+        24,
+        [
+         "Multiply",
+         -2,
+         "x"
+        ]
+       ],
+       2
+      ]
+     ],
+     "relation": "new"
+    },
+    {
+     "cue": "The cut cannot be negative or exceed half the side.",
+     "why": "Domain \\(0\\le x\\le 12\\), so the endpoints are candidates."
+    },
+    {
+     "cue": "One variable, so differentiate.",
+     "why": "\\(V'(x)=(24-2x)(24-6x)\\).",
+     "expression": [
+      "Multiply",
+      [
+       "Add",
+       24,
+       [
+        "Multiply",
+        -6,
+        "x"
+       ]
+      ],
+      [
+       "Add",
+       24,
+       [
+        "Multiply",
+        -2,
+        "x"
+       ]
+      ]
+     ],
+     "relation": "differentiate",
+     "variable": "x"
+    },
+    {
+     "cue": "Critical points: \\(V'(x)=0\\).",
+     "why": "\\(x=4\\) or \\(x=12\\).",
+     "expression": [
+      "Set",
+      4,
+      12
+     ],
+     "relation": "solve",
+     "variable": "x"
+    },
+    {
+     "cue": "Closed domain: evaluate \\(V\\) at each candidate.",
+     "why": "Back to the objective.",
+     "expression": [
+      "Multiply",
+      "x",
+      [
+       "Power",
+       [
+        "Add",
+        24,
+        [
+         "Multiply",
+         -2,
+         "x"
+        ]
+       ],
+       2
+      ]
+     ],
+     "relation": "new"
+    },
+    {
+     "cue": "Interior candidate \\(x=4\\).",
+     "why": "\\(V(4)=4\\cdot16^2=1024\\).",
+     "expression": 1024,
+     "relation": "evaluate",
+     "subs": {
+      "x": "4"
+     }
+    },
+    {
+     "cue": "The stem says justify: compare with the endpoints.",
+     "why": "\\(V(0)=V(12)=0<1024\\), so the maximum on \\([0,12]\\) is at \\(x=4\\)."
+    },
+    {
+     "cue": "The stem asks for \\(x\\).",
+     "why": "4 inches.",
+     "expression": 4,
+     "relation": "new"
+    }
+   ],
+   "answer": {
+    "form": "numeric",
+    "mathjson": 4
+   },
+   "delivery": {
+    "mode": "step_reveal",
+    "reason": "rule 1",
+    "sources": []
+   }
+  },
+  {
+   "id": "LSN-CON-05013#err-BC-ERR-05050",
+   "type": "common_error",
+   "bands": [
+    "low",
+    "mid"
+   ],
+   "skills": [
+    "BC-SKL-05049"
+   ],
+   "sources": [
+    "BC-ERR-05050"
+   ],
+   "evidence_tag": "inferred",
+   "error_id": "BC-ERR-05050",
+   "observed_behavior": "The response writes an objective and a constraint in letters that are never given meanings or units.",
+   "scoring_consequence": "The setup point is at risk and the interpretation that follows has nothing to name.",
+   "wrong_step": {
+    "text": "\\(V=xy^2\\), with \\(x\\) and \\(y\\) never defined.",
+    "expression": "letters_without_meaning"
+   },
+   "right_step": {
+    "text": "\\(x\\) is the cut in inches, \\(V\\) the volume in cubic inches.",
+    "expression": "letters_defined_with_units"
+   },
+   "relation": "distinct",
+   "delivery": {
+    "mode": "step_reveal",
+    "reason": "rule 1",
+    "sources": []
+   }
+  },
+  {
+   "id": "LSN-CON-05013#err-BC-ERR-05051",
+   "type": "common_error",
+   "bands": [
+    "low",
+    "mid"
+   ],
+   "skills": [
+    "BC-SKL-05050"
+   ],
+   "sources": [
+    "BC-ERR-05051",
+    "BC-MIS-05027"
+   ],
+   "evidence_tag": "inferred",
+   "error_id": "BC-ERR-05051",
+   "observed_behavior": "The response differentiates an expression that still contains both unknowns.",
+   "scoring_consequence": "The derivative is not the derivative of a one variable objective, so the critical point is wrong.",
+   "wrong_step": {
+    "text": "\\(V=xw^2\\) differentiated in \\(x\\) with \\(w\\) held fixed: \\(w^2\\).",
+    "expression": [
+     "Power",
+     "w",
+     2
+    ]
+   },
+   "right_step": {
+    "text": "\\(w=24-2x\\) substituted first: \\((24-2x)(24-6x)\\).",
+    "expression": [
+     "Multiply",
+     [
+      "Add",
+      24,
+      [
+       "Multiply",
+       -6,
+       "x"
+      ]
+     ],
+     [
+      "Add",
+      24,
+      [
+       "Multiply",
+       -2,
+       "x"
+      ]
+     ]
+    ]
+   },
+   "relation": "distinct",
+   "possible_reason": {
+    "misconception_id": "BC-MIS-05027",
+    "text": "differentiates the first expression written down"
+   },
+   "delivery": {
+    "mode": "step_reveal",
+    "reason": "rule 1",
+    "sources": []
+   }
+  },
+  {
+   "id": "LSN-CON-05013#err-BC-ERR-05052",
+   "type": "common_error",
+   "bands": [
+    "low",
+    "mid"
+   ],
+   "skills": [
+    "BC-SKL-05051"
+   ],
+   "sources": [
+    "BC-ERR-05052",
+    "BC-MIS-05028"
+   ],
+   "evidence_tag": "inferred",
+   "error_id": "BC-ERR-05052",
+   "observed_behavior": "The response never states the range of inputs the situation allows and treats the objective as defined everywhere.",
+   "scoring_consequence": "Endpoints that could hold the extremum are never considered and the verification is incomplete.",
+   "wrong_step": {
+    "text": "\\(V\\) treated on all real \\(x\\).",
+    "expression": [
+     "Interval",
+     [
+      "Open",
+      "NegativeInfinity"
+     ],
+     [
+      "Open",
+      "PositiveInfinity"
+     ]
+    ]
+   },
+   "right_step": {
+    "text": "\\(0\\le x\\le 12\\).",
+    "expression": [
+     "Interval",
+     0,
+     12
+    ]
+   },
+   "relation": "distinct",
+   "possible_reason": {
+    "misconception_id": "BC-MIS-05028",
+    "text": "ignores what the situation permits"
+   },
+   "delivery": {
+    "mode": "step_reveal",
+    "reason": "rule 1",
+    "sources": []
+   }
+  },
+  {
+   "id": "LSN-CON-05013#err-BC-ERR-05053",
+   "type": "common_error",
+   "bands": [
+    "low",
+    "mid"
+   ],
+   "skills": [
+    "BC-SKL-05052"
+   ],
+   "sources": [
+    "BC-ERR-05053",
+    "BC-MIS-05033"
+   ],
+   "evidence_tag": "inferred",
+   "error_id": "BC-ERR-05053",
+   "observed_behavior": "The response differentiates with respect to a variable that the constraint has already eliminated.",
+   "scoring_consequence": "The derivative is meaningless for the reduced objective and the critical point is wrong.",
+   "wrong_step": {
+    "text": "\\(\\frac{dV}{dw}=0\\) once \\(w\\) is replaced by \\(24-2x\\), so every \\(x\\) is critical.",
+    "expression": 0
+   },
+   "right_step": {
+    "text": "\\(\\frac{dV}{dx}=(24-2x)(24-6x)\\).",
+    "expression": [
+     "Multiply",
+     [
+      "Add",
+      24,
+      [
+       "Multiply",
+       -6,
+       "x"
+      ]
+     ],
+     [
+      "Add",
+      24,
+      [
+       "Multiply",
+       -2,
+       "x"
+      ]
+     ]
+    ]
+   },
+   "relation": "distinct",
+   "possible_reason": {
+    "misconception_id": "BC-MIS-05033",
+    "text": "differentiates expressions in the second variable without the chain rule"
+   },
+   "delivery": {
+    "mode": "step_reveal",
+    "reason": "rule 1",
+    "sources": []
+   }
+  },
+  {
+   "id": "LSN-CON-05013#prq-BC-PRQ-05003",
+   "type": "prerequisite_bridge",
+   "bands": [
+    "low",
+    "mid"
+   ],
+   "skills": [
+    "BC-SKL-05051"
+   ],
+   "sources": [
+    "BC-PRQ-05003"
+   ],
+   "evidence_tag": "inferred",
+   "prerequisite_id": "BC-PRQ-05003",
+   "text": "State the inputs the situation allows; a result outside them is not an answer."
+  },
+  {
+   "id": "LSN-CON-05013#prq-BC-PRQ-05005",
+   "type": "prerequisite_bridge",
+   "bands": [
+    "low",
+    "mid"
+   ],
+   "skills": [
+    "BC-SKL-05049",
+    "BC-SKL-05050"
+   ],
+   "sources": [
+    "BC-PRQ-05005"
+   ],
+   "evidence_tag": "inferred",
+   "prerequisite_id": "BC-PRQ-05005",
+   "text": "Write the figure's volume or area in the named dimensions, tied by the fixed total, before any derivative."
+  }
+ ],
+ "checks": [
+  {
+   "id": "LSN-CON-05013#chk-1",
+   "check_kind": "completion",
+   "bands": [
+    "low",
+    "mid"
+   ],
+   "format": "short_answer",
+   "archetype_id": "BC-QA-05011",
+   "parameter_draw": {
+    "scale": 4,
+    "height_cap": 2,
+    "sheet_shape": "square",
+    "material": "cardboard",
+    "purpose": "tray",
+    "length_unit": "inches",
+    "domain_limit": "none"
+   },
+   "completes": "LSN-CON-05013#s4",
+   "stem": {
+    "text": "\\(V(x)=x(24-2x)^2\\) on \\(0\\le x\\le 12\\) has critical points 4 and 12. Give the \\(x\\) of the largest volume.",
+    "command_verb": "find"
+   },
+   "answer_key": {
+    "form": "numeric",
+    "mathjson": 4
+   },
+   "worked_solution": [
+    {
+     "step": 1,
+     "text": "The objective.",
+     "mathjson": [
+      "Multiply",
+      "x",
+      [
+       "Power",
+       [
+        "Add",
+        24,
+        [
+         "Multiply",
+         -2,
+         "x"
+        ]
+       ],
+       2
+      ]
+     ],
+     "relation": "new"
+    },
+    {
+     "step": 2,
+     "text": "\\(V(4)=1024\\); \\(V(0)=V(12)=0\\).",
+     "mathjson": 1024,
+     "relation": "evaluate",
+     "subs": {
+      "x": "4"
+     }
+    },
+    {
+     "step": 3,
+     "text": "Largest at \\(x=4\\).",
+     "mathjson": 4,
+     "relation": "new"
+    }
+   ],
+   "calculator_status": "no_calculator",
+   "representation": "BC-REP-01",
+   "skills": [
+    "BC-SKL-05053"
+   ]
+  },
+  {
+   "id": "LSN-CON-05013#chk-2",
+   "check_kind": "isomorph",
+   "bands": [
+    "low",
+    "mid"
+   ],
+   "format": "short_answer",
+   "archetype_id": "BC-QA-05011",
+   "parameter_draw": {
+    "scale": 3,
+    "height_cap": 1,
+    "sheet_shape": "rectangle",
+    "material": "steel",
+    "purpose": "planter",
+    "length_unit": "centimeters",
+    "domain_limit": "none"
+   },
+   "stem": {
+    "text": "Corner squares of side \\(x\\) cm are cut from a 15 by 24 cm steel sheet to make a planter. Find \\(x\\) giving the largest volume.",
+    "command_verb": "find"
+   },
+   "answer_key": {
+    "form": "numeric",
+    "mathjson": 3
+   },
+   "worked_solution": [
+    {
+     "step": 1,
+     "text": "\\(V(x)=x(15-2x)(24-2x)\\) on \\(0\\le x\\le 7.5\\).",
+     "mathjson": [
+      "Multiply",
+      "x",
+      [
+       "Add",
+       15,
+       [
+        "Multiply",
+        -2,
+        "x"
+       ]
+      ],
+      [
+       "Add",
+       24,
+       [
+        "Multiply",
+        -2,
+        "x"
+       ]
+      ]
+     ],
+     "relation": "new"
+    },
+    {
+     "step": 2,
+     "text": "\\(V'(x)=12(x-3)(x-10)\\).",
+     "mathjson": [
+      "Multiply",
+      [
+       "Add",
+       -36,
+       [
+        "Multiply",
+        12,
+        "x"
+       ]
+      ],
+      [
+       "Add",
+       -10,
+       "x"
+      ]
+     ],
+     "relation": "differentiate",
+     "variable": "x"
+    },
+    {
+     "step": 3,
+     "text": "Critical points 3 and 10; only 3 is in the domain.",
+     "mathjson": [
+      "Set",
+      3,
+      10
+     ],
+     "relation": "solve",
+     "variable": "x"
+    },
+    {
+     "step": 4,
+     "text": "\\(V(3)=486>0=V(0)=V(7.5)\\).",
+     "mathjson": 3,
+     "relation": "new"
+    }
+   ],
+   "calculator_status": "no_calculator",
+   "representation": "BC-REP-01",
+   "skills": [
+    "BC-SKL-05052"
+   ]
+  },
+  {
+   "id": "LSN-CON-05013#chk-3",
+   "check_kind": "mcq",
+   "bands": [
+    "low"
+   ],
+   "format": "mcq",
+   "archetype_id": "BC-QA-05011",
+   "parameter_draw": {
+    "scale": 2,
+    "height_cap": 1,
+    "sheet_shape": "square",
+    "material": "tin",
+    "purpose": "storage bin",
+    "length_unit": "inches",
+    "domain_limit": "none"
+   },
+   "stem": {
+    "text": "Corner squares of side \\(x\\) in are cut from a 12 by 12 in tin sheet, base side \\(w=12-2x\\). Which conclusion is correct?",
+    "command_verb": "identify"
+   },
+   "answer_key": {
+    "form": "statement",
+    "mathjson": "largest_volume_at_x_equals_2"
+   },
+   "worked_solution": [
+    {
+     "step": 1,
+     "text": "\\(V(x)=x(12-2x)^2\\) on \\(0\\le x\\le 6\\).",
+     "mathjson": [
+      "Multiply",
+      "x",
+      [
+       "Power",
+       [
+        "Add",
+        12,
+        [
+         "Multiply",
+         -2,
+         "x"
+        ]
+       ],
+       2
+      ]
+     ],
+     "relation": "new"
+    },
+    {
+     "step": 2,
+     "text": "\\(V'(x)=(12-2x)(12-6x)\\).",
+     "mathjson": [
+      "Multiply",
+      [
+       "Add",
+       12,
+       [
+        "Multiply",
+        -6,
+        "x"
+       ]
+      ],
+      [
+       "Add",
+       12,
+       [
+        "Multiply",
+        -2,
+        "x"
+       ]
+      ]
+     ],
+     "relation": "differentiate",
+     "variable": "x"
+    },
+    {
+     "step": 3,
+     "text": "Zeros 2 and 6; \\(V(2)=128\\), \\(V(0)=V(6)=0\\).",
+     "mathjson": [
+      "Set",
+      2,
+      6
+     ],
+     "relation": "solve",
+     "variable": "x"
+    }
+   ],
+   "options": [
+    {
+     "id": "A",
+     "is_key": true,
+     "error_path": null,
+     "label": "\\(x=2\\) in, since \\(V(2)=128\\) exceeds \\(V(0)=V(6)=0\\)."
+    },
+    {
+     "id": "B",
+     "is_key": false,
+     "error_path": "BC-ERR-05052",
+     "label": "No largest volume: \\(V(x)\\) grows without bound as \\(x\\) grows.",
+     "derivation": "the domain never stated, so V is read on all real x"
+    },
+    {
+     "id": "C",
+     "is_key": false,
+     "error_path": "BC-ERR-05051",
+     "label": "\\(x=6\\) in, where \\(w^2\\), the derivative with \\(w\\) held fixed, is zero.",
+     "derivation": "x w^2 differentiated in x with w held fixed, giving w = 0"
+    },
+    {
+     "id": "D",
+     "is_key": false,
+     "error_path": "BC-ERR-05053",
+     "label": "Every \\(x\\): \\(\\frac{dV}{dw}=0\\) once \\(w\\) is replaced by \\(12-2x\\).",
+     "derivation": "derivative taken in the eliminated variable w"
+    }
+   ],
+   "calculator_status": "no_calculator",
+   "representation": "BC-REP-01",
+   "skills": [
+    "BC-SKL-05051"
+   ]
+  }
+ ],
+ "refresher": [
+  "LSN-CON-05013#s2",
+  "LSN-CON-05013#err-BC-ERR-05050",
+  "LSN-CON-05013#err-BC-ERR-05051",
+  "LSN-CON-05013#err-BC-ERR-05052",
+  "LSN-CON-05013#err-BC-ERR-05053",
+  "LSN-CON-05013#s4"
+ ],
+ "provenance": {
+  "author": "tools/lesson_transcribe.py",
+  "prompt_version": "generator/lesson_v1",
+  "design_path": "docs/lessons/unit-05/LSN-CON-05013.md",
+  "signed_off_by": "claude-opus-5-5",
+  "signed_off_at": "2026-09-29",
+  "not_human": true
+ }
+}

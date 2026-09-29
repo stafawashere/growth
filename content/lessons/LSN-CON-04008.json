@@ -1,0 +1,1391 @@
+{
+ "id": "LSN-CON-04008",
+ "version": 1,
+ "kind": "concept",
+ "target_id": "BC-CON-04008",
+ "status": "draft",
+ "snapshot_digest": "a6a8ec9d3f59ab8f712e33d30cc22fc64bf2c478fbe7312e3e3118d319c6a42f",
+ "source_digest": "600154d474a9faf508a835fb243fb98331412bb2bf03afbf9867ed16ba07b58d",
+ "read_minutes": {
+  "full": 4.4,
+  "brief": 3.0
+ },
+ "word_count": {
+  "full": 526,
+  "brief": 360
+ },
+ "sections": [
+  {
+   "id": "LSN-CON-04008#s1",
+   "type": "orientation",
+   "bands": [
+    "low",
+    "mid"
+   ],
+   "skills": [
+    "BC-SKL-04018",
+    "BC-SKL-04020",
+    "BC-SKL-04021"
+   ],
+   "sources": [
+    "BC-CON-04008",
+    "research/units/unit-04-contextual-applications-differentiation.md#4.4 Introduction to Related Rates"
+   ],
+   "evidence_tag": "inferred",
+   "text": "Before differentiating, write one equation tying the figure's quantities together, from a formula, the Pythagorean theorem or similar triangles, cut to the variables the given rates support.",
+   "delivery": {
+    "mode": "figure",
+    "reason": "rule 3: BC-REP-08 on BC-SKL-04018 and BC-SKL-04021",
+    "sources": [
+     "BC-SKL-04018",
+     "BC-SKL-04021"
+    ],
+    "spec": {
+     "kind": "diagram",
+     "representations": [
+      "BC-REP-08"
+     ],
+     "labels": [
+      {
+       "text": "h",
+       "placement": "inside",
+       "at": [
+        0.2,
+        2
+       ]
+      },
+      {
+       "text": "r",
+       "placement": "inside",
+       "at": [
+        0.6,
+        4.5
+       ]
+      },
+      {
+       "text": "height = 2 times top radius",
+       "placement": "inside",
+       "at": [
+        -3.8,
+        6.8
+       ]
+      }
+     ],
+     "window": {
+      "x": [
+       -4,
+       4
+      ],
+      "y": [
+       -0.5,
+       7
+      ]
+     },
+     "segments": [
+      {
+       "from": [
+        -3,
+        6
+       ],
+       "to": [
+        0,
+        0
+       ]
+      },
+      {
+       "from": [
+        0,
+        0
+       ],
+       "to": [
+        3,
+        6
+       ]
+      },
+      {
+       "from": [
+        3,
+        6
+       ],
+       "to": [
+        -3,
+        6
+       ]
+      },
+      {
+       "from": [
+        -2,
+        4
+       ],
+       "to": [
+        2,
+        4
+       ]
+      },
+      {
+       "from": [
+        0,
+        0
+       ],
+       "to": [
+        0,
+        4
+       ],
+       "style": "dashed"
+      },
+      {
+       "from": [
+        0,
+        4
+       ],
+       "to": [
+        2,
+        4
+       ],
+       "style": "dashed"
+      }
+     ],
+     "points": [
+      [
+       0,
+       0
+      ],
+      [
+       2,
+       4
+      ]
+     ]
+    },
+    "fallback": "the same labelled cone as a static image",
+    "keyboard": "none needed: the figure has no control"
+   }
+  },
+  {
+   "id": "LSN-CON-04008#s2",
+   "type": "key_ideas",
+   "bands": [
+    "low",
+    "mid"
+   ],
+   "skills": [
+    "BC-SKL-04018",
+    "BC-SKL-04021"
+   ],
+   "sources": [
+    "BC-EK-CHA-3D1",
+    "ced:90",
+    "research/units/unit-04-contextual-applications-differentiation.md#4.4 Introduction to Related Rates"
+   ],
+   "evidence_tag": "verified",
+   "ek_id": "BC-EK-CHA-3D1",
+   "depth": "core",
+   "text": "Each quantity is a function of time, and one equation ties them. A varying dimension with no given rate is eliminated before differentiating.",
+   "notation": "dV/dt, dr/dt, dh/dt",
+   "quote": {
+    "text": "The chain rule is the basis for differentiating variables in a related rates problem",
+    "source": "ced:90"
+   },
+   "delivery": {
+    "mode": "interactive",
+    "reason": "rule 3 promoted: BC-REP-08 on BC-SKL-04018; BC-QA-04006 difficulty_variables name a second variable eliminated by similar triangles, and the reading is which labels move",
+    "sources": [
+     "BC-SKL-04018",
+     "BC-QA-04006"
+    ],
+    "spec": {
+     "kind": "diagram",
+     "representations": [
+      "BC-REP-08",
+      "BC-REP-01"
+     ],
+     "controls": [
+      {
+       "type": "slider",
+       "parameter": "h",
+       "range": [
+        0.5,
+        6
+       ],
+       "step": 0.5,
+       "start": 4
+      }
+     ],
+     "drawn": [
+      "the water surface at depth h",
+      "r read from the similar triangle"
+     ],
+     "labels": [
+      {
+       "text": "h: varies",
+       "placement": "inside",
+       "at": [
+        0.2,
+        1
+       ]
+      },
+      {
+       "text": "r = h/2: varies",
+       "placement": "inside",
+       "at": [
+        -3.8,
+        0.5
+       ]
+      },
+      {
+       "text": "cone shape: fixed",
+       "placement": "inside",
+       "at": [
+        -3.8,
+        6.8
+       ]
+      }
+     ],
+     "question": "Which labels change as the depth changes, and which equation ties them?",
+     "window": {
+      "x": [
+       -4,
+       4
+      ],
+      "y": [
+       -0.5,
+       7
+      ]
+     },
+     "segments": [
+      {
+       "from": [
+        -3,
+        6
+       ],
+       "to": [
+        0,
+        0
+       ]
+      },
+      {
+       "from": [
+        0,
+        0
+       ],
+       "to": [
+        3,
+        6
+       ]
+      },
+      {
+       "from": [
+        3,
+        6
+       ],
+       "to": [
+        -3,
+        6
+       ]
+      },
+      {
+       "from": [
+        0,
+        0
+       ],
+       "to": [
+        0,
+        6
+       ],
+       "style": "dashed"
+      }
+     ],
+     "curves": [
+      {
+       "expr": "h + 0*sqrt(h**2/4 - x**2)"
+      }
+     ],
+     "points": [
+      {
+       "x": "-h/2",
+       "y": "h"
+      },
+      {
+       "x": "h/2",
+       "y": "h"
+      }
+     ]
+    },
+    "fallback": "two static frames of the cone at h = 2 and h = 4 with the same labels",
+    "keyboard": "Tab focuses the slider; left and right arrow keys step h by 0.5"
+   }
+  },
+  {
+   "id": "LSN-CON-04008#s3",
+   "type": "key_ideas",
+   "bands": [
+    "low",
+    "mid"
+   ],
+   "skills": [
+    "BC-SKL-04020"
+   ],
+   "sources": [
+    "BC-EK-CHA-3D2",
+    "ced:90",
+    "research/units/unit-04-contextual-applications-differentiation.md#4.4 Introduction to Related Rates"
+   ],
+   "evidence_tag": "verified",
+   "ek_id": "BC-EK-CHA-3D2",
+   "depth": "core",
+   "text": "A term multiplying two varying quantities, such as r squared times h, takes the product rule, giving one rate factor for each.",
+   "notation": "product rule",
+   "quote": {
+    "text": "such as the product rule and the quotient rule, may also be necessary",
+    "source": "ced:90"
+   },
+   "delivery": {
+    "mode": "text",
+    "reason": "rule 5: BC-SKL-04020 carries BC-REP-01 only",
+    "sources": [
+     "BC-SKL-04020"
+    ]
+   }
+  },
+  {
+   "id": "LSN-CON-04008#s4",
+   "type": "strategy",
+   "bands": [
+    "low",
+    "mid"
+   ],
+   "skills": [
+    "BC-SKL-04018",
+    "BC-SKL-04021"
+   ],
+   "sources": [
+    "BC-QA-04006"
+   ],
+   "evidence_tag": "verified",
+   "archetype_id": "BC-QA-04006",
+   "cue": "A figure, one supplied rate, another rate asked at an instant.",
+   "method": "First line: the figure's formula, then eliminate each dimension with no supplied rate.",
+   "rival": "A varying dimension held constant (BC-ERR-99013).",
+   "separating_feature": "Count the varying dimensions against the supplied rates."
+  },
+  {
+   "id": "LSN-CON-04008#s5",
+   "type": "strategy",
+   "bands": [
+    "low",
+    "mid"
+   ],
+   "skills": [
+    "BC-SKL-04020"
+   ],
+   "sources": [
+    "BC-QA-04007"
+   ],
+   "evidence_tag": "verified",
+   "archetype_id": "BC-QA-04007",
+   "cue": "A curve in x and y, a point and one coordinate rate.",
+   "method": "First line: the curve equation differentiated with respect to t.",
+   "rival": "Rival: xy differentiated with one factor constant (BC-ERR-04018).",
+   "separating_feature": "A product of two varying quantities."
+  },
+  {
+   "id": "LSN-CON-04008#s6",
+   "type": "worked_example",
+   "bands": [
+    "low",
+    "mid"
+   ],
+   "skills": [
+    "BC-SKL-04018",
+    "BC-SKL-04021"
+   ],
+   "sources": [
+    "BC-QA-04006"
+   ],
+   "evidence_tag": "inferred",
+   "archetype_id": "BC-QA-04006",
+   "parameter_draw": {
+    "shape": "cone",
+    "size": 4,
+    "rate": 6,
+    "ratio": 1,
+    "leg": "short",
+    "length_unit": "foot",
+    "time_unit": "minute"
+   },
+   "problem": {
+    "text": "Water enters a vertex-down cone, height 2 times top radius, at 6 cubic feet per minute. Find dh/dt at depth 4 feet.",
+    "command_verb": "find"
+   },
+   "calculator_status": "no_calculator",
+   "steps": [
+    {
+     "cue": "A cone of water.",
+     "why": "Its volume formula ties V, r and h.",
+     "expression": [
+      "Equal",
+      "V",
+      [
+       "Multiply",
+       [
+        "Rational",
+        1,
+        3
+       ],
+       "Pi",
+       "h",
+       [
+        "Power",
+        "r",
+        2
+       ]
+      ]
+     ],
+     "relation": "new"
+    },
+    {
+     "cue": "Only dV/dt is given.",
+     "why": "Similar triangles: r = h/2."
+    },
+    {
+     "cue": "r has no rate.",
+     "why": "Eliminate it.",
+     "expression": [
+      "Equal",
+      "V",
+      [
+       "Multiply",
+       [
+        "Rational",
+        1,
+        12
+       ],
+       "Pi",
+       [
+        "Power",
+        "h",
+        3
+       ]
+      ]
+     ],
+     "relation": "evaluate",
+     "subs": {
+      "r": "h/2"
+     }
+    },
+    {
+     "cue": "One variable left.",
+     "why": "Differentiate with respect to t.",
+     "expression": [
+      "Equal",
+      "dVdt",
+      [
+       "Multiply",
+       [
+        "Rational",
+        1,
+        4
+       ],
+       "Pi",
+       "dhdt",
+       [
+        "Power",
+        "h",
+        2
+       ]
+      ]
+     ],
+     "point_type_id": "BC-PT-99023",
+     "relation": "new"
+    },
+    {
+     "cue": "Now the instant.",
+     "why": "h = 4, dV/dt = 6.",
+     "expression": [
+      "Equal",
+      6,
+      [
+       "Multiply",
+       4,
+       "Pi",
+       "dhdt"
+      ]
+     ],
+     "relation": "evaluate",
+     "subs": {
+      "h": "4",
+      "dVdt": "6"
+     }
+    },
+    {
+     "cue": "One unknown rate.",
+     "why": "Feet per minute.",
+     "expression": [
+      "Multiply",
+      [
+       "Rational",
+       3,
+       2
+      ],
+      [
+       "Power",
+       "Pi",
+       -1
+      ]
+     ],
+     "relation": "solve",
+     "variable": "dhdt"
+    }
+   ],
+   "answer": {
+    "form": "symbolic",
+    "mathjson": [
+     "Multiply",
+     [
+      "Rational",
+      3,
+      2
+     ],
+     [
+      "Power",
+      "Pi",
+      -1
+     ]
+    ]
+   },
+   "delivery": {
+    "mode": "step_reveal",
+    "reason": "rule 1",
+    "sources": []
+   }
+  },
+  {
+   "id": "LSN-CON-04008#s7",
+   "type": "what_a_reader_scores",
+   "bands": [
+    "low",
+    "mid"
+   ],
+   "skills": [
+    "BC-SKL-04018",
+    "BC-SKL-04021"
+   ],
+   "sources": [
+    "BC-PT-99023"
+   ],
+   "evidence_tag": "verified",
+   "example_id": "LSN-CON-04008#s6",
+   "lines": [
+    {
+     "point_type_id": "BC-PT-99023",
+     "text": "Chain rule. Earned by: Correct differentiation of the inner function, including the required differentials (sg-22:16, sg-25:21). Not earned by: A product rule written without one or both differentials, which sg-22:16 states earns the product rule point but not this one. Notation: sg-22:16 treats a missing differential as the defining failure for this point."
+    }
+   ]
+  },
+  {
+   "id": "LSN-CON-04008#err-BC-ERR-04016",
+   "type": "common_error",
+   "bands": [
+    "low",
+    "mid"
+   ],
+   "skills": [
+    "BC-SKL-04018"
+   ],
+   "sources": [
+    "BC-ERR-04016",
+    "BC-MIS-04010"
+   ],
+   "evidence_tag": "inferred",
+   "error_id": "BC-ERR-04016",
+   "observed_behavior": "No equation ties the quantities together, or the formula used does not describe the configuration.",
+   "scoring_consequence": "Nothing downstream can be earned; BC-ERR-99011 records integrands chosen from the wrong area or volume family as the analogous failure in Unit 8.",
+   "wrong_step": {
+    "text": "Cylinder.",
+    "expression": [
+     "Equal",
+     "V",
+     [
+      "Multiply",
+      "Pi",
+      "h",
+      [
+       "Power",
+       "r",
+       2
+      ]
+     ]
+    ]
+   },
+   "right_step": {
+    "text": "Cone.",
+    "expression": [
+     "Equal",
+     "V",
+     [
+      "Multiply",
+      [
+       "Rational",
+       1,
+       3
+      ],
+      "Pi",
+      "h",
+      [
+       "Power",
+       "r",
+       2
+      ]
+     ]
+    ]
+   },
+   "relation": "distinct",
+   "possible_reason": {
+    "misconception_id": "BC-MIS-04010",
+    "text": "the equation is skipped or is chosen by resemblance"
+   },
+   "delivery": {
+    "mode": "step_reveal",
+    "reason": "rule 1",
+    "sources": []
+   }
+  },
+  {
+   "id": "LSN-CON-04008#err-BC-ERR-04018",
+   "type": "common_error",
+   "bands": [
+    "low",
+    "mid"
+   ],
+   "skills": [
+    "BC-SKL-04020"
+   ],
+   "sources": [
+    "BC-ERR-04018",
+    "BC-MIS-04009"
+   ],
+   "evidence_tag": "inferred",
+   "error_id": "BC-ERR-04018",
+   "observed_behavior": "A term that multiplies two varying quantities is differentiated as though one of them were constant.",
+   "scoring_consequence": "The completely correct differentiation point is lost; BC-ERR-99013 names the missing product rule explicitly.",
+   "wrong_step": {
+    "text": "r held constant.",
+    "expression": [
+     "Equal",
+     "dVdt",
+     [
+      "Multiply",
+      [
+       "Rational",
+       1,
+       3
+      ],
+      "Pi",
+      "dhdt",
+      [
+       "Power",
+       "r",
+       2
+      ]
+     ]
+    ]
+   },
+   "right_step": {
+    "text": "Product rule.",
+    "expression": [
+     "Equal",
+     "dVdt",
+     [
+      "Multiply",
+      [
+       "Rational",
+       1,
+       3
+      ],
+      "Pi",
+      [
+       "Add",
+       [
+        "Multiply",
+        "dhdt",
+        [
+         "Power",
+         "r",
+         2
+        ]
+       ],
+       [
+        "Multiply",
+        2,
+        "drdt",
+        "h",
+        "r"
+       ]
+      ]
+     ]
+    ]
+   },
+   "relation": "distinct",
+   "possible_reason": {
+    "misconception_id": "BC-MIS-04009",
+    "text": "only one rate factor appears where two are needed"
+   },
+   "delivery": {
+    "mode": "step_reveal",
+    "reason": "rule 1",
+    "sources": []
+   }
+  },
+  {
+   "id": "LSN-CON-04008#err-BC-ERR-04019",
+   "type": "common_error",
+   "bands": [
+    "low",
+    "mid"
+   ],
+   "skills": [
+    "BC-SKL-04021"
+   ],
+   "sources": [
+    "BC-ERR-04019",
+    "BC-MIS-04010"
+   ],
+   "evidence_tag": "inferred",
+   "error_id": "BC-ERR-04019",
+   "observed_behavior": "The relating equation keeps two varying dimensions that the supplied rates cannot support, and the differentiation produces an equation with two unknown rates.",
+   "scoring_consequence": "The requested rate cannot be isolated, so the answer point is lost.",
+   "wrong_step": {
+    "text": "r kept: two unknown rates.",
+    "expression": [
+     "Equal",
+     6,
+     [
+      "Multiply",
+      [
+       "Rational",
+       1,
+       3
+      ],
+      "Pi",
+      [
+       "Add",
+       [
+        "Multiply",
+        4,
+        "dhdt"
+       ],
+       [
+        "Multiply",
+        16,
+        "drdt"
+       ]
+      ]
+     ]
+    ]
+   },
+   "right_step": {
+    "text": "r eliminated.",
+    "expression": [
+     "Equal",
+     6,
+     [
+      "Multiply",
+      4,
+      "Pi",
+      "dhdt"
+     ]
+    ]
+   },
+   "relation": "distinct",
+   "possible_reason": {
+    "misconception_id": "BC-MIS-04010",
+    "text": "expects the supplied rates to determine the answer without a geometric relation"
+   },
+   "delivery": {
+    "mode": "step_reveal",
+    "reason": "rule 1",
+    "sources": []
+   }
+  },
+  {
+   "id": "LSN-CON-04008#err-BC-ERR-99013",
+   "type": "common_error",
+   "bands": [
+    "low",
+    "mid"
+   ],
+   "skills": [
+    "BC-SKL-04020",
+    "BC-SKL-04021"
+   ],
+   "sources": [
+    "BC-ERR-99013",
+    "BC-MIS-04008"
+   ],
+   "evidence_tag": "inferred",
+   "error_id": "BC-ERR-99013",
+   "observed_behavior": "Responses differentiate an implicit relation with respect to x when time is the independent variable, omit the product rule on a product of two changing quantities, or treat one quantity as constant, and confuse the notations for the several derivatives in play.",
+   "scoring_consequence": "The differentiation points in the part are not earned, and the numerical answer point depends on them.",
+   "wrong_step": {
+    "text": "With respect to h.",
+    "expression": [
+     "Equal",
+     "dVdh",
+     [
+      "Multiply",
+      [
+       "Rational",
+       1,
+       4
+      ],
+      "Pi",
+      [
+       "Power",
+       "h",
+       2
+      ]
+     ]
+    ]
+   },
+   "right_step": {
+    "text": "With respect to t.",
+    "expression": [
+     "Equal",
+     "dVdt",
+     [
+      "Multiply",
+      [
+       "Rational",
+       1,
+       4
+      ],
+      "Pi",
+      "dhdt",
+      [
+       "Power",
+       "h",
+       2
+      ]
+     ]
+    ]
+   },
+   "relation": "distinct",
+   "possible_reason": {
+    "misconception_id": "BC-MIS-04008",
+    "text": "so the rates with respect to time never appear"
+   },
+   "delivery": {
+    "mode": "step_reveal",
+    "reason": "rule 1",
+    "sources": []
+   }
+  },
+  {
+   "id": "LSN-CON-04008#prq-BC-PRQ-04001",
+   "type": "prerequisite_bridge",
+   "bands": [
+    "low",
+    "mid"
+   ],
+   "skills": [
+    "BC-SKL-04018"
+   ],
+   "sources": [
+    "BC-PRQ-04001"
+   ],
+   "evidence_tag": "inferred",
+   "prerequisite_id": "BC-PRQ-04001",
+   "text": "Standard volume and area formulas; without them no relating equation starts."
+  },
+  {
+   "id": "LSN-CON-04008#prq-BC-PRQ-04002",
+   "type": "prerequisite_bridge",
+   "bands": [
+    "low",
+    "mid"
+   ],
+   "skills": [
+    "BC-SKL-04018"
+   ],
+   "sources": [
+    "BC-PRQ-04002"
+   ],
+   "evidence_tag": "inferred",
+   "prerequisite_id": "BC-PRQ-04002",
+   "text": "The Pythagorean theorem; without it a ladder distance has no equation."
+  },
+  {
+   "id": "LSN-CON-04008#prq-BC-PRQ-04003",
+   "type": "prerequisite_bridge",
+   "bands": [
+    "low",
+    "mid"
+   ],
+   "skills": [
+    "BC-SKL-04021"
+   ],
+   "sources": [
+    "BC-PRQ-04003"
+   ],
+   "evidence_tag": "inferred",
+   "prerequisite_id": "BC-PRQ-04003",
+   "text": "Similar triangles remove one variable; without them two stay."
+  },
+  {
+   "id": "LSN-CON-04008#prq-BC-PRQ-04008",
+   "type": "prerequisite_bridge",
+   "bands": [
+    "low",
+    "mid"
+   ],
+   "skills": [
+    "BC-SKL-04020"
+   ],
+   "sources": [
+    "BC-PRQ-04008"
+   ],
+   "evidence_tag": "inferred",
+   "prerequisite_id": "BC-PRQ-04008",
+   "text": "Name each quantity, its unit, and whether it varies."
+  }
+ ],
+ "checks": [
+  {
+   "id": "LSN-CON-04008#chk-1",
+   "check_kind": "completion",
+   "bands": [
+    "low",
+    "mid"
+   ],
+   "format": "short_answer",
+   "archetype_id": "BC-QA-04006",
+   "parameter_draw": {
+    "shape": "cone",
+    "size": 4,
+    "rate": 6,
+    "ratio": 1,
+    "leg": "short",
+    "length_unit": "foot",
+    "time_unit": "minute"
+   },
+   "completes": "LSN-CON-04008#s6",
+   "stem": {
+    "text": "For the tank of ex-1, dV/dt = (pi h^2/4) dh/dt. With dV/dt = 6 and h = 4, find dh/dt.",
+    "command_verb": "find"
+   },
+   "answer_key": {
+    "form": "symbolic",
+    "mathjson": [
+     "Multiply",
+     [
+      "Rational",
+      3,
+      2
+     ],
+     [
+      "Power",
+      "Pi",
+      -1
+     ]
+    ]
+   },
+   "worked_solution": [
+    {
+     "step": 1,
+     "text": "Differentiated equation.",
+     "mathjson": [
+      "Equal",
+      "dVdt",
+      [
+       "Multiply",
+       [
+        "Rational",
+        1,
+        4
+       ],
+       "Pi",
+       "dhdt",
+       [
+        "Power",
+        "h",
+        2
+       ]
+      ]
+     ],
+     "relation": "new"
+    },
+    {
+     "step": 2,
+     "text": "The instant.",
+     "mathjson": [
+      "Equal",
+      6,
+      [
+       "Multiply",
+       4,
+       "Pi",
+       "dhdt"
+      ]
+     ],
+     "relation": "evaluate",
+     "subs": {
+      "h": "4",
+      "dVdt": "6"
+     }
+    },
+    {
+     "step": 3,
+     "text": "Solve.",
+     "mathjson": [
+      "Multiply",
+      [
+       "Rational",
+       3,
+       2
+      ],
+      [
+       "Power",
+       "Pi",
+       -1
+      ]
+     ],
+     "relation": "solve",
+     "variable": "dhdt"
+    }
+   ],
+   "calculator_status": "no_calculator",
+   "representation": "BC-REP-08",
+   "skills": [
+    "BC-SKL-04021"
+   ]
+  },
+  {
+   "id": "LSN-CON-04008#chk-2",
+   "check_kind": "isomorph",
+   "bands": [
+    "low",
+    "mid"
+   ],
+   "format": "short_answer",
+   "archetype_id": "BC-QA-04006",
+   "parameter_draw": {
+    "shape": "ladder",
+    "size": 8,
+    "rate": 3,
+    "ratio": 2,
+    "leg": "long",
+    "length_unit": "foot",
+    "time_unit": "second"
+   },
+   "stem": {
+    "text": "A 10 foot ladder's foot slides from a wall at 3 feet per second. Find the rate of change of the top's height when the foot is 8 feet out.",
+    "command_verb": "find"
+   },
+   "answer_key": {
+    "form": "symbolic",
+    "mathjson": -4
+   },
+   "worked_solution": [
+    {
+     "step": 1,
+     "text": "Pythagorean theorem.",
+     "mathjson": [
+      "Equal",
+      [
+       "Add",
+       [
+        "Power",
+        "x",
+        2
+       ],
+       [
+        "Power",
+        "y",
+        2
+       ]
+      ],
+      100
+     ],
+     "relation": "new"
+    },
+    {
+     "step": 2,
+     "text": "x = 8.",
+     "mathjson": [
+      "Equal",
+      [
+       "Add",
+       64,
+       [
+        "Power",
+        "y",
+        2
+       ]
+      ],
+      100
+     ],
+     "relation": "evaluate",
+     "subs": {
+      "x": "8"
+     }
+    },
+    {
+     "step": 3,
+     "text": "y = 6.",
+     "mathjson": 6,
+     "relation": "solve",
+     "variable": "y"
+    },
+    {
+     "step": 4,
+     "text": "Differentiate in t.",
+     "mathjson": [
+      "Equal",
+      [
+       "Add",
+       [
+        "Multiply",
+        2,
+        "dxdt",
+        "x"
+       ],
+       [
+        "Multiply",
+        2,
+        "dydt",
+        "y"
+       ]
+      ],
+      0
+     ],
+     "relation": "new"
+    },
+    {
+     "step": 5,
+     "text": "Substitute.",
+     "mathjson": [
+      "Equal",
+      [
+       "Add",
+       48,
+       [
+        "Multiply",
+        12,
+        "dydt"
+       ]
+      ],
+      0
+     ],
+     "relation": "evaluate",
+     "subs": {
+      "x": "8",
+      "y": "6",
+      "dxdt": "3"
+     }
+    },
+    {
+     "step": 6,
+     "text": "Solve.",
+     "mathjson": -4,
+     "relation": "solve",
+     "variable": "dydt"
+    }
+   ],
+   "calculator_status": "no_calculator",
+   "representation": "BC-REP-08",
+   "skills": [
+    "BC-SKL-04018"
+   ]
+  },
+  {
+   "id": "LSN-CON-04008#chk-3",
+   "check_kind": "mcq",
+   "bands": [
+    "low"
+   ],
+   "format": "mcq",
+   "archetype_id": "BC-QA-04006",
+   "parameter_draw": {
+    "shape": "cone",
+    "size": 3,
+    "rate": 9,
+    "ratio": 2,
+    "leg": "long",
+    "length_unit": "centimeter",
+    "time_unit": "second"
+   },
+   "stem": {
+    "text": "Water enters a vertex-down cone, height 3 times top radius, at 9 cubic centimeters per second. Find dh/dt when the depth is 3 centimeters.",
+    "command_verb": "find"
+   },
+   "answer_key": {
+    "form": "symbolic",
+    "mathjson": [
+     "Multiply",
+     9,
+     [
+      "Power",
+      "Pi",
+      -1
+     ]
+    ]
+   },
+   "worked_solution": [
+    {
+     "step": 1,
+     "text": "r = h/3 eliminated.",
+     "mathjson": [
+      "Equal",
+      "V",
+      [
+       "Multiply",
+       [
+        "Rational",
+        1,
+        27
+       ],
+       "Pi",
+       [
+        "Power",
+        "h",
+        3
+       ]
+      ]
+     ],
+     "relation": "new"
+    },
+    {
+     "step": 2,
+     "text": "Differentiate in t.",
+     "mathjson": [
+      "Equal",
+      "dVdt",
+      [
+       "Multiply",
+       [
+        "Rational",
+        1,
+        9
+       ],
+       "Pi",
+       "dhdt",
+       [
+        "Power",
+        "h",
+        2
+       ]
+      ]
+     ],
+     "relation": "new"
+    },
+    {
+     "step": 3,
+     "text": "h = 3, dV/dt = 9.",
+     "mathjson": [
+      "Equal",
+      9,
+      [
+       "Multiply",
+       "Pi",
+       "dhdt"
+      ]
+     ],
+     "relation": "evaluate",
+     "subs": {
+      "h": "3",
+      "dVdt": "9"
+     }
+    },
+    {
+     "step": 4,
+     "text": "Solve.",
+     "mathjson": [
+      "Multiply",
+      9,
+      [
+       "Power",
+       "Pi",
+       -1
+      ]
+     ],
+     "relation": "solve",
+     "variable": "dhdt"
+    }
+   ],
+   "options": [
+    {
+     "id": "A",
+     "is_key": false,
+     "error_path": "BC-ERR-04016",
+     "value": [
+      "Multiply",
+      3,
+      [
+       "Power",
+       "Pi",
+       -1
+      ]
+     ],
+     "derivation": "cylinder formula, which drops the factor 1/3"
+    },
+    {
+     "id": "B",
+     "is_key": true,
+     "error_path": null,
+     "value": [
+      "Multiply",
+      9,
+      [
+       "Power",
+       "Pi",
+       -1
+      ]
+     ]
+    },
+    {
+     "id": "C",
+     "is_key": false,
+     "error_path": "BC-ERR-04018",
+     "value": [
+      "Multiply",
+      27,
+      [
+       "Power",
+       "Pi",
+       -1
+      ]
+     ],
+     "derivation": "radius frozen at 1, so dV/dt = (pi/3) dh/dt"
+    },
+    {
+     "id": "D",
+     "is_key": false,
+     "error_path": "BC-ERR-99013",
+     "value": "Pi",
+     "derivation": "dV/dh = pi h^2/9 at h = 3 reported"
+    }
+   ],
+   "calculator_status": "no_calculator",
+   "representation": "BC-REP-08",
+   "skills": [
+    "BC-SKL-04018"
+   ]
+  }
+ ],
+ "refresher": [
+  "LSN-CON-04008#s2",
+  "LSN-CON-04008#s3",
+  "LSN-CON-04008#err-BC-ERR-04016",
+  "LSN-CON-04008#err-BC-ERR-04018",
+  "LSN-CON-04008#err-BC-ERR-04019",
+  "LSN-CON-04008#err-BC-ERR-99013",
+  "LSN-CON-04008#s6"
+ ],
+ "provenance": {
+  "author": "tools/lesson_transcribe.py",
+  "prompt_version": "generator/lesson_v1",
+  "design_path": "docs/lessons/unit-04/LSN-CON-04008.md",
+  "signed_off_by": null,
+  "signed_off_at": null,
+  "not_human": true
+ }
+}

@@ -52,7 +52,7 @@ Point losses from research: the interval omitted from an arc length interpretati
 
 Four errors meet the skills, in bundle order: BC-ERR-08019, BC-ERR-08041, BC-ERR-08042, BC-ERR-08043 (each linked to a high severity BC-MIS, then by id). BC-ERR-08044, 08045, 99019 and 99021 fall past the cap of 4. Low band all four, mid band the first two. All on ex-1's draw.
 
-- err-BC-ERR-08019: lower limit 0, the left end of the domain of \(\ln x\), in place of 1. No possible reason line (brief band words); the record links BC-MIS-08012 and 08014.
+- err-BC-ERR-08019: lower limit 0 in place of 1. No possible reason line (brief band words); the record links BC-MIS-08012 and 08014.
 - err-BC-ERR-08041: the integral of \(f'\) with no radical, the record's first form. No possible reason line (brief band words); the record links BC-MIS-08024 and 08019.
 - err-BC-ERR-08042: \(\sqrt{1+f'}\). Possible reason, BC-MIS-08024.
 - err-BC-ERR-08043: the sentence names the length with no interval; the SymPy pair is the interval the sentence names, the empty set against \([1,3]\). Possible reason, BC-MIS-08009.
@@ -82,8 +82,8 @@ ex-1 is the setup draw, `no_calculator` in the generator, the MCQ form "which in
 
 ## Band plan
 
-- Low (full): orientation, ki-1, st-1, ex-1 and its lines, the four error blocks, chk-1 to chk-3, ex-2 and its lines, the bridges. 840 words, 5.6 minutes.
-- Mid (brief): orientation, ki-1, st-1, ex-1 and its lines, err-BC-ERR-08019, err-BC-ERR-08041, chk-1, chk-2, the bridges. 442 words, 3.0 minutes.
+- Low (full): orientation, ki-1, st-1, ex-1 and its lines, the four error blocks, chk-1 to chk-3, ex-2 and its lines, the bridges. 839 words, 5.6 minutes.
+- Mid (brief): orientation, ki-1, st-1, ex-1 and its lines, err-BC-ERR-08019, err-BC-ERR-08041, chk-1, chk-2, the bridges. 441 words, 3.0 minutes.
 - Refresher: ki-1, the four error blocks, ex-1.
 
 ## Sources
@@ -223,7 +223,7 @@ ex-1 is the setup draw, `no_calculator` in the generator, the MCQ form "which in
  ],
  "representations": null,
  "prerequisite_bridges": [
-  {"prq_id": "BC-PRQ-06005", "text": "\\(f'\\) is the derivative of f; putting f under the radical measures nothing."},
+  {"prq_id": "BC-PRQ-06005", "text": "\\(f'\\) is the derivative of f, the radical needs \\(f'(x)\\), not f."},
   {"prq_id": "BC-PRQ-08006", "text": "Three places after the decimal point, from stored values."},
   {"prq_id": "BC-PRQ-08007", "text": "Two components combine as the root of their squares, not their sum."}
  ],
@@ -300,7 +300,7 @@ ex-1 is the setup draw, `no_calculator` in the generator, the MCQ form "which in
  ],
  "refresher": ["ki-1", "err-BC-ERR-08019", "err-BC-ERR-08041", "err-BC-ERR-08042", "err-BC-ERR-08043", "ex-1"],
  "read_minutes": {"full": 5.6, "brief": 3.0},
- "word_count": {"full": 840, "brief": 442},
+ "word_count": {"full": 839, "brief": 441},
  "research_lines": [
   {"file": "research/units/unit-08-applications-integration.md", "line": "The derivative is squared inside the radical; the radical covers the whole sum."}
  ],

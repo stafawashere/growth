@@ -1,0 +1,1161 @@
+{
+ "id": "LSN-CON-06001",
+ "version": 1,
+ "kind": "concept",
+ "target_id": "BC-CON-06001",
+ "status": "signed_off",
+ "snapshot_digest": "a6a8ec9d3f59ab8f712e33d30cc22fc64bf2c478fbe7312e3e3118d319c6a42f",
+ "source_digest": "9a04ede404b3fc44d02f178574738d8adaf6ed009a4eb9545ee4f387fb34c8da",
+ "read_minutes": {
+  "full": 5.3,
+  "brief": 3.0
+ },
+ "word_count": {
+  "full": 648,
+  "brief": 365
+ },
+ "sections": [
+  {
+   "id": "LSN-CON-06001#s1",
+   "type": "orientation",
+   "bands": [
+    "low",
+    "mid"
+   ],
+   "skills": [
+    "BC-SKL-06001",
+    "BC-SKL-06004"
+   ],
+   "sources": [
+    "BC-CON-06001",
+    "research/units/unit-06-integration-accumulation.md#6.1 Exploring Accumulations of Change"
+   ],
+   "evidence_tag": "inferred",
+   "text": "Area between a rate graph and the axis is the change in the quantity. A response computes it as signed area, or names quantity, units and interval.",
+   "delivery": {
+    "mode": "figure",
+    "reason": "rule 4: BC-REP-02 on BC-SKL-06001 and BC-SKL-06004 (unit README delivery map)",
+    "sources": [
+     "BC-SKL-06001",
+     "BC-SKL-06004"
+    ],
+    "spec": {
+     "kind": "graph",
+     "representations": [
+      "BC-REP-02"
+     ],
+     "window": {
+      "x": [
+       0,
+       8
+      ],
+      "y": [
+       -3,
+       3
+      ]
+     },
+     "curves": [
+      {
+       "type": "polyline",
+       "points": [
+        [
+         0,
+         2
+        ],
+        [
+         1,
+         2
+        ],
+        [
+         2,
+         0
+        ],
+        [
+         3,
+         -2
+        ],
+        [
+         4,
+         0
+        ]
+       ]
+      },
+      {
+       "type": "semicircle",
+       "center": [
+        6,
+        0
+       ],
+       "radius": 2,
+       "side": "below"
+      }
+     ],
+     "shading": [
+      {
+       "between": "graph and x axis",
+       "interval": [
+        0,
+        8
+       ]
+      }
+     ],
+     "labels": [
+      {
+       "text": "rate f",
+       "placement": "inside",
+       "at": "near (0.5, 2)"
+      },
+      {
+       "text": "shaded: change in the quantity",
+       "placement": "inside",
+       "at": "top right"
+      }
+     ]
+    },
+    "fallback": "the same shaded graph as a static image with its two labels",
+    "keyboard": "none needed: the figure has no control"
+   }
+  },
+  {
+   "id": "LSN-CON-06001#s2",
+   "type": "key_ideas",
+   "bands": [
+    "low",
+    "mid"
+   ],
+   "skills": [
+    "BC-SKL-06001"
+   ],
+   "sources": [
+    "BC-EK-CHA-4A1",
+    "ced:118",
+    "research/units/unit-06-integration-accumulation.md#6.1 Exploring Accumulations of Change"
+   ],
+   "evidence_tag": "inferred",
+   "ek_id": "BC-EK-CHA-4A1",
+   "depth": "core",
+   "text": "Over [a, b], the region between a rate graph f and the axis measures the change in the quantity whose rate is f: gain above, loss below.",
+   "notation": "signed area; accumulated change",
+   "delivery": {
+    "mode": "figure",
+    "reason": "rule 4: BC-REP-02 on BC-SKL-06001; not promoted, since the stems ask for a sentence or a value, not a reading of a varying quantity",
+    "sources": [
+     "BC-SKL-06001"
+    ],
+    "spec": {
+     "kind": "graph",
+     "representations": [
+      "BC-REP-02"
+     ],
+     "window": {
+      "x": [
+       0,
+       8
+      ],
+      "y": [
+       -3,
+       3
+      ]
+     },
+     "curves": [
+      {
+       "type": "polyline",
+       "points": [
+        [
+         0,
+         2
+        ],
+        [
+         1,
+         2
+        ],
+        [
+         2,
+         0
+        ],
+        [
+         3,
+         -2
+        ],
+        [
+         4,
+         0
+        ]
+       ]
+      },
+      {
+       "type": "semicircle",
+       "center": [
+        6,
+        0
+       ],
+       "radius": 2,
+       "side": "below"
+      }
+     ],
+     "shading": [
+      {
+       "interval": [
+        0,
+        2
+       ],
+       "sign": "plus"
+      },
+      {
+       "interval": [
+        2,
+        8
+       ],
+       "sign": "minus"
+      }
+     ],
+     "labels": [
+      {
+       "text": "gain",
+       "placement": "inside",
+       "at": "region on [0, 2]"
+      },
+      {
+       "text": "loss",
+       "placement": "inside",
+       "at": "region on [2, 8]"
+      }
+     ]
+    },
+    "fallback": "the same graph, static, with the gain and loss regions labelled",
+    "keyboard": "none needed: the figure has no control"
+   }
+  },
+  {
+   "id": "LSN-CON-06001#s3",
+   "type": "key_ideas",
+   "bands": [
+    "low",
+    "mid"
+   ],
+   "skills": [
+    "BC-SKL-06004"
+   ],
+   "sources": [
+    "BC-EK-CHA-4A2",
+    "ced:118",
+    "research/units/unit-06-integration-accumulation.md#6.1 Exploring Accumulations of Change"
+   ],
+   "evidence_tag": "inferred",
+   "ek_id": "BC-EK-CHA-4A2",
+   "depth": "core",
+   "text": "When the rate graph is segments and arcs, the change is found by geometry: one area formula per piece, pieces below the axis negative.",
+   "notation": "signed area",
+   "delivery": {
+    "mode": "figure",
+    "reason": "rule 4: BC-REP-02 on BC-SKL-06004; the pieces and their formulas sit on one static graph",
+    "sources": [
+     "BC-SKL-06004"
+    ],
+    "spec": {
+     "kind": "graph",
+     "representations": [
+      "BC-REP-02"
+     ],
+     "window": {
+      "x": [
+       0,
+       8
+      ],
+      "y": [
+       -3,
+       3
+      ]
+     },
+     "curves": [
+      {
+       "type": "polyline",
+       "points": [
+        [
+         0,
+         2
+        ],
+        [
+         1,
+         2
+        ],
+        [
+         2,
+         0
+        ],
+        [
+         3,
+         -2
+        ],
+        [
+         4,
+         0
+        ]
+       ]
+      },
+      {
+       "type": "semicircle",
+       "center": [
+        6,
+        0
+       ],
+       "radius": 2,
+       "side": "below"
+      }
+     ],
+     "partition": [
+      0,
+      2,
+      4,
+      8
+     ],
+     "labels": [
+      {
+       "text": "3",
+       "placement": "inside",
+       "at": "region on [0, 2]"
+      },
+      {
+       "text": "-(1/2)(2)(2)",
+       "placement": "inside",
+       "at": "region on [2, 4]"
+      },
+      {
+       "text": "-(1/2)π(2)^2",
+       "placement": "inside",
+       "at": "semicircle"
+      }
+     ]
+    },
+    "fallback": "the same graph, static, with the three signed areas written in their regions",
+    "keyboard": "none needed: the figure has no control"
+   }
+  },
+  {
+   "id": "LSN-CON-06001#s4",
+   "type": "strategy",
+   "bands": [
+    "low",
+    "mid"
+   ],
+   "skills": [
+    "BC-SKL-06004"
+   ],
+   "sources": [
+    "BC-QA-06004"
+   ],
+   "evidence_tag": "verified",
+   "archetype_id": "BC-QA-06004",
+   "cue": "A graph of f in segments and semicircles; an integral's value asked.",
+   "method": "Partition where the graph changes character.",
+   "rival": "Rival: every piece added as positive area.",
+   "separating_feature": "The change is signed: the side of the axis fixes each sign."
+  },
+  {
+   "id": "LSN-CON-06001#s5",
+   "type": "strategy",
+   "bands": [
+    "low",
+    "mid"
+   ],
+   "skills": [
+    "BC-SKL-06001"
+   ],
+   "sources": [
+    "BC-QA-06015"
+   ],
+   "evidence_tag": "verified",
+   "archetype_id": "BC-QA-06015",
+   "cue": "A contextual rate and a displayed integral; a sentence with quantity, interval and units asked.",
+   "method": "Identify what the integrand measures per unit input.",
+   "rival": "Rival: naming the quantity without the interval, or with the rate's units.",
+   "separating_feature": "The integral is an amount over an interval, so it carries the product of the units and both limits."
+  },
+  {
+   "id": "LSN-CON-06001#s6",
+   "type": "worked_example",
+   "bands": [
+    "low",
+    "mid"
+   ],
+   "skills": [
+    "BC-SKL-06004"
+   ],
+   "sources": [
+    "BC-QA-06004"
+   ],
+   "evidence_tag": "inferred",
+   "archetype_id": "BC-QA-06004",
+   "parameter_draw": {
+    "heights": [
+     2,
+     2,
+     0,
+     -2
+    ],
+    "lower": 0,
+    "circle": "below",
+    "direction": "forward"
+   },
+   "problem": {
+    "text": "Rate f: segments through (0, 2), (1, 2), (2, 0), (3, -2), (4, 0), then a radius 2 semicircle below [4, 8]. Find ∫_0^8 f(x) dx.",
+    "command_verb": "find"
+   },
+   "calculator_status": "no_calculator",
+   "steps": [
+    {
+     "cue": "Segments and an arc: split at x = 2 and 4.",
+     "why": "One shape per piece."
+    },
+    {
+     "cue": "[0, 2]: rectangle and triangle above.",
+     "why": "Gain.",
+     "expression": 3,
+     "relation": "new"
+    },
+    {
+     "cue": "[2, 4]: triangle below.",
+     "why": "Loss enters negatively.",
+     "expression": -2,
+     "relation": "new"
+    },
+    {
+     "cue": "[4, 8]: semicircle below.",
+     "why": "Half of pi r squared.",
+     "expression": [
+      "Multiply",
+      -2,
+      "Pi"
+     ],
+     "relation": "new"
+    },
+    {
+     "cue": "The change is the signed total.",
+     "why": "Adjacent intervals add.",
+     "expression": [
+      "Add",
+      1,
+      [
+       "Multiply",
+       -2,
+       "Pi"
+      ]
+     ],
+     "point_type_id": "BC-PT-99069",
+     "relation": "new"
+    },
+    {
+     "cue": "Label the value.",
+     "why": "Negative: a net loss.",
+     "expression": [
+      "Add",
+      1,
+      [
+       "Multiply",
+       -2,
+       "Pi"
+      ]
+     ],
+     "relation": "equivalent"
+    }
+   ],
+   "answer": {
+    "form": "symbolic",
+    "mathjson": [
+     "Add",
+     1,
+     [
+      "Multiply",
+      -2,
+      "Pi"
+     ]
+    ]
+   },
+   "delivery": {
+    "mode": "step_reveal",
+    "reason": "rule 1",
+    "sources": []
+   }
+  },
+  {
+   "id": "LSN-CON-06001#s7",
+   "type": "worked_example",
+   "bands": [
+    "low"
+   ],
+   "skills": [
+    "BC-SKL-06001"
+   ],
+   "sources": [
+    "BC-QA-06015"
+   ],
+   "evidence_tag": "inferred",
+   "archetype_id": "BC-QA-06015",
+   "parameter_draw": {
+    "context": "water",
+    "start": 2,
+    "length": 4,
+    "display": "total",
+    "direction": "accumulates"
+   },
+   "problem": {
+    "text": "Water flows into a tank at R(t) gallons per hour, t in hours. Interpret ∫_2^6 R(t) dt with units.",
+    "command_verb": "interpret"
+   },
+   "calculator_status": "no_calculator",
+   "steps": [
+    {
+     "cue": "The integrand is a rate: gallons per hour.",
+     "why": "The integral accumulates what the rate measures."
+    },
+    {
+     "cue": "Multiply the units.",
+     "why": "Rate units times input units.",
+     "expression": "gallons",
+     "relation": "new"
+    },
+    {
+     "cue": "Hours cancel.",
+     "why": "An amount, not a rate.",
+     "expression": "gallons",
+     "relation": "equivalent"
+    },
+    {
+     "cue": "The limits name the interval.",
+     "why": "The interval is required (sg-23:2)."
+    },
+    {
+     "cue": "Write the sentence.",
+     "why": "Quantity, units and interval together."
+    }
+   ],
+   "answer": {
+    "form": "statement",
+    "mathjson": "gallons",
+    "text": "The number of gallons of water that flow into the tank from t = 2 to t = 6 hours."
+   },
+   "delivery": {
+    "mode": "step_reveal",
+    "reason": "rule 1",
+    "sources": []
+   }
+  },
+  {
+   "id": "LSN-CON-06001#s8",
+   "type": "what_a_reader_scores",
+   "bands": [
+    "low",
+    "mid"
+   ],
+   "skills": [
+    "BC-SKL-06004"
+   ],
+   "sources": [
+    "BC-PT-99069"
+   ],
+   "evidence_tag": "verified",
+   "example_id": "LSN-CON-06001#s6",
+   "lines": [
+    {
+     "point_type_id": "BC-PT-99069",
+     "text": "Value of an accumulation function found from geometry of a graph. Earned by: The value of the accumulation function at the requested input, computed from areas of the regions under the graph, with the correct sign for reversed limits (sg-25:18, sg-24:12). Not earned by: A value from the wrong starting limit; sg-24:13 has a special case where an explicitly wrong lower limit forfeits the first point it would otherwise have earned."
+    }
+   ]
+  },
+  {
+   "id": "LSN-CON-06001#err-BC-ERR-06014",
+   "type": "common_error",
+   "bands": [
+    "low",
+    "mid"
+   ],
+   "skills": [
+    "BC-SKL-06004"
+   ],
+   "sources": [
+    "BC-ERR-06014",
+    "BC-MIS-08024"
+   ],
+   "evidence_tag": "inferred",
+   "error_id": "BC-ERR-06014",
+   "observed_behavior": "Every piece of the region is added with a positive sign, so a signed integral is reported as a plain area.",
+   "scoring_consequence": "The value point is lost, and any later part that imports the value inherits the error.",
+   "wrong_step": {
+    "text": "Losses added.",
+    "expression": [
+     "Add",
+     5,
+     [
+      "Multiply",
+      2,
+      "Pi"
+     ]
+    ]
+   },
+   "right_step": {
+    "text": "Losses subtracted.",
+    "expression": [
+     "Add",
+     1,
+     [
+      "Multiply",
+      -2,
+      "Pi"
+     ]
+    ]
+   },
+   "relation": "distinct",
+   "possible_reason": {
+    "misconception_id": "BC-MIS-08024",
+    "text": "reads every definite integral as area"
+   },
+   "delivery": {
+    "mode": "step_reveal",
+    "reason": "rule 1",
+    "sources": []
+   }
+  },
+  {
+   "id": "LSN-CON-06001#err-BC-ERR-06030",
+   "type": "common_error",
+   "bands": [
+    "low",
+    "mid"
+   ],
+   "skills": [
+    "BC-SKL-06001"
+   ],
+   "sources": [
+    "BC-ERR-06030"
+   ],
+   "evidence_tag": "inferred",
+   "error_id": "BC-ERR-06030",
+   "observed_behavior": "A displayed average value expression is described as the total amount accumulated over the interval.",
+   "scoring_consequence": "The interpretation point is not earned because the description must say average over the interval (sg-24:3).",
+   "wrong_step": {
+    "text": "(1/8)∫_0^8 f called the total change.",
+    "expression": [
+     "Add",
+     1,
+     [
+      "Multiply",
+      -2,
+      "Pi"
+     ]
+    ]
+   },
+   "right_step": {
+    "text": "It is the average of f on [0, 8].",
+    "expression": [
+     "Add",
+     [
+      "Rational",
+      1,
+      8
+     ],
+     [
+      "Multiply",
+      [
+       "Rational",
+       -1,
+       4
+      ],
+      "Pi"
+     ]
+    ]
+   },
+   "relation": "distinct",
+   "delivery": {
+    "mode": "step_reveal",
+    "reason": "rule 1",
+    "sources": []
+   }
+  },
+  {
+   "id": "LSN-CON-06001#err-BC-ERR-06013",
+   "type": "common_error",
+   "bands": [
+    "low",
+    "mid"
+   ],
+   "skills": [
+    "BC-SKL-06004"
+   ],
+   "sources": [
+    "BC-ERR-06013",
+    "BC-MIS-08019"
+   ],
+   "evidence_tag": "inferred",
+   "error_id": "BC-ERR-06013",
+   "observed_behavior": "The area of a semicircular piece of the region is computed as pi times the radius squared.",
+   "scoring_consequence": "The value point for that integral is lost.",
+   "wrong_step": {
+    "text": "Semicircle as 4π.",
+    "expression": [
+     "Add",
+     1,
+     [
+      "Multiply",
+      -4,
+      "Pi"
+     ]
+    ]
+   },
+   "right_step": {
+    "text": "Semicircle as 2π.",
+    "expression": [
+     "Add",
+     1,
+     [
+      "Multiply",
+      -2,
+      "Pi"
+     ]
+    ]
+   },
+   "relation": "distinct",
+   "possible_reason": {
+    "misconception_id": "BC-MIS-08019",
+    "text": "remembers the squared dimension but not the fraction in front of it"
+   },
+   "delivery": {
+    "mode": "step_reveal",
+    "reason": "rule 1",
+    "sources": []
+   }
+  },
+  {
+   "id": "LSN-CON-06001#err-BC-ERR-06029",
+   "type": "common_error",
+   "bands": [
+    "low",
+    "mid"
+   ],
+   "skills": [
+    "BC-SKL-06001"
+   ],
+   "sources": [
+    "BC-ERR-06029",
+    "BC-MIS-08009"
+   ],
+   "evidence_tag": "inferred",
+   "error_id": "BC-ERR-06029",
+   "observed_behavior": "The response names the accumulated quantity but not the interval over which it accumulates, or gives the units of the rate.",
+   "scoring_consequence": "The interpretation point requires both the accumulated quantity with units and the interval, so it is not earned (sg-23:2).",
+   "wrong_step": {
+    "text": "Water in, in gallons per hour.",
+    "expression": [
+     "Multiply",
+     "gallons",
+     [
+      "Power",
+      "hour",
+      -1
+     ]
+    ]
+   },
+   "right_step": {
+    "text": "Gallons in, from t = 2 to t = 6.",
+    "expression": "gallons"
+   },
+   "relation": "distinct",
+   "possible_reason": {
+    "misconception_id": "BC-MIS-08009",
+    "text": "treats the sentence as a label for the integral rather than as a statement that must fix the quantity, the interval, and the units"
+   },
+   "delivery": {
+    "mode": "step_reveal",
+    "reason": "rule 1",
+    "sources": []
+   }
+  },
+  {
+   "id": "LSN-CON-06001#s9",
+   "type": "representations",
+   "bands": [
+    "low"
+   ],
+   "skills": [
+    "BC-SKL-06001",
+    "BC-SKL-06004"
+   ],
+   "sources": [
+    "research/units/unit-06-integration-accumulation.md#6.1 Exploring Accumulations of Change",
+    "BC-QA-06004"
+   ],
+   "evidence_tag": "inferred",
+   "text": "Run the running total of ex-1's rate from x = 0: 2, 3, 2, 1, then 1 - π at 6 and 1 - 2π at 8. It rises while f is positive and falls while f is negative.",
+   "figure": {
+    "kind": "numeric_experiment",
+    "function": "F(x) = ∫_0^x f(t) dt, the running total of ex-1's rate f",
+    "computed": "F(x), evaluated at each x",
+    "x_values": [
+     1,
+     2,
+     3,
+     4,
+     6,
+     8
+    ],
+    "values": [
+     "2",
+     "3",
+     "2",
+     "1",
+     "1 - pi",
+     "1 - 2*pi"
+    ],
+    "labels": [
+     {
+      "text": "total rises while f > 0",
+      "placement": "inside",
+      "at": "rows x = 1 to 2"
+     },
+     {
+      "text": "total falls while f < 0",
+      "placement": "inside",
+      "at": "rows x = 3 to 8"
+     }
+    ]
+   },
+   "delivery": {
+    "mode": "model",
+    "reason": "template model row: BC-CON-06001 is the unit's productive-failure target (app/engine/constants.py PRODUCTIVE_FAILURE_TARGETS) through BC-QA-06004, which carries BC-DF-13; the running total is a computed sequence of values",
+    "sources": [
+     "BC-QA-06004",
+     "BC-CON-06001"
+    ],
+    "spec": {
+     "kind": "numeric_experiment",
+     "representations": [
+      "BC-REP-02",
+      "BC-REP-03"
+     ],
+     "function": "2*(abs(x) - abs(x - 1) + 1)/2 + 4*((abs(x - 1) - abs(x - 3) + 4)/2 - 1) - (((abs(x - 1) - abs(x - 3) + 4)/2)**2 - 1) + (((abs(x - 3) - abs(x - 4) + 7)/2)**2 - 9) - 8*((abs(x - 3) - abs(x - 4) + 7)/2 - 3) - (((abs(x - 4) - abs(x - 8))/2)*sqrt(4 - ((abs(x - 4) - abs(x - 8))/2)**2)/2 + 2*asin((abs(x - 4) - abs(x - 8))/4) + pi)",
+     "computed": "F(x) = ∫_0^x f(t) dt, the running total; the field function holds F, not the rate f",
+     "x_values": [
+      1,
+      2,
+      3,
+      4,
+      6,
+      8
+     ],
+     "columns": [
+      "x",
+      "F(x), running total"
+     ],
+     "labels": [
+      {
+       "text": "x",
+       "placement": "inside",
+       "at": "first column header"
+      },
+      {
+       "text": "rises while f > 0, falls while f < 0",
+       "placement": "inside",
+       "at": "row below the last value"
+      }
+     ]
+    },
+    "fallback": "the six computed rows printed as a static table beside the static graph, with the closing label",
+    "keyboard": "a Run control reached by Tab and pressed with Enter or Space adds one row per press; the table is read in row order"
+   }
+  },
+  {
+   "id": "LSN-CON-06001#prq-BC-PRQ-06005",
+   "type": "prerequisite_bridge",
+   "bands": [
+    "low",
+    "mid"
+   ],
+   "skills": [
+    "BC-SKL-06001"
+   ],
+   "sources": [
+    "BC-PRQ-06005"
+   ],
+   "evidence_tag": "inferred",
+   "prerequisite_id": "BC-PRQ-06005",
+   "text": "f(t) is the rate at input t; reading the wrong input, or swapping f and f prime, breaks the value."
+  },
+  {
+   "id": "LSN-CON-06001#prq-BC-PRQ-06007",
+   "type": "prerequisite_bridge",
+   "bands": [
+    "low",
+    "mid"
+   ],
+   "skills": [
+    "BC-SKL-06004"
+   ],
+   "sources": [
+    "BC-PRQ-06007"
+   ],
+   "evidence_tag": "inferred",
+   "prerequisite_id": "BC-PRQ-06007",
+   "text": "Area formulas read off a figure: a trapezoid is not a rectangle, and a semicircle is half a circle."
+  }
+ ],
+ "checks": [
+  {
+   "id": "LSN-CON-06001#chk-1",
+   "check_kind": "completion",
+   "bands": [
+    "low",
+    "mid"
+   ],
+   "format": "short_answer",
+   "archetype_id": "BC-QA-06004",
+   "parameter_draw": {
+    "heights": [
+     2,
+     2,
+     0,
+     -2
+    ],
+    "lower": 0,
+    "circle": "below",
+    "direction": "forward"
+   },
+   "completes": "LSN-CON-06001#s6",
+   "stem": {
+    "text": "The signed pieces of ∫_0^8 f(x) dx are 3, -2 and -2π. Find the integral.",
+    "command_verb": "find"
+   },
+   "answer_key": {
+    "form": "symbolic",
+    "mathjson": [
+     "Add",
+     1,
+     [
+      "Multiply",
+      -2,
+      "Pi"
+     ]
+    ]
+   },
+   "worked_solution": [
+    {
+     "step": 1,
+     "text": "Add the signed pieces.",
+     "mathjson": [
+      "Add",
+      1,
+      [
+       "Multiply",
+       -2,
+       "Pi"
+      ]
+     ],
+     "relation": "new"
+    },
+    {
+     "step": 2,
+     "text": "Simplify.",
+     "mathjson": [
+      "Add",
+      1,
+      [
+       "Multiply",
+       -2,
+       "Pi"
+      ]
+     ],
+     "relation": "equivalent"
+    }
+   ],
+   "calculator_status": "no_calculator",
+   "representation": "BC-REP-02",
+   "skills": [
+    "BC-SKL-06004"
+   ]
+  },
+  {
+   "id": "LSN-CON-06001#chk-2",
+   "check_kind": "isomorph",
+   "bands": [
+    "low",
+    "mid"
+   ],
+   "format": "short_answer",
+   "archetype_id": "BC-QA-06004",
+   "parameter_draw": {
+    "heights": [
+     3,
+     3,
+     0,
+     -3
+    ],
+    "lower": 1,
+    "circle": "above",
+    "direction": "forward"
+   },
+   "stem": {
+    "text": "f: segments through (0, 3), (1, 3), (2, 0), (3, -3), (4, 0), then a radius 2 semicircle above [4, 8]. Find ∫_1^8 f(x) dx.",
+    "command_verb": "find"
+   },
+   "answer_key": {
+    "form": "symbolic",
+    "mathjson": [
+     "Add",
+     [
+      "Rational",
+      -3,
+      2
+     ],
+     [
+      "Multiply",
+      2,
+      "Pi"
+     ]
+    ]
+   },
+   "worked_solution": [
+    {
+     "step": 1,
+     "text": "Triangle above on [1, 2].",
+     "mathjson": [
+      "Rational",
+      3,
+      2
+     ],
+     "relation": "new"
+    },
+    {
+     "step": 2,
+     "text": "Triangle below on [2, 4].",
+     "mathjson": -3,
+     "relation": "new"
+    },
+    {
+     "step": 3,
+     "text": "Semicircle above.",
+     "mathjson": [
+      "Multiply",
+      2,
+      "Pi"
+     ],
+     "relation": "new"
+    },
+    {
+     "step": 4,
+     "text": "Sum.",
+     "mathjson": [
+      "Add",
+      [
+       "Rational",
+       -3,
+       2
+      ],
+      [
+       "Multiply",
+       2,
+       "Pi"
+      ]
+     ],
+     "relation": "new"
+    },
+    {
+     "step": 5,
+     "text": "Simplify.",
+     "mathjson": [
+      "Add",
+      [
+       "Rational",
+       -3,
+       2
+      ],
+      [
+       "Multiply",
+       2,
+       "Pi"
+      ]
+     ],
+     "relation": "equivalent"
+    }
+   ],
+   "calculator_status": "no_calculator",
+   "representation": "BC-REP-02",
+   "skills": [
+    "BC-SKL-06004"
+   ]
+  },
+  {
+   "id": "LSN-CON-06001#chk-3",
+   "check_kind": "mcq",
+   "bands": [
+    "low"
+   ],
+   "format": "mcq",
+   "archetype_id": "BC-QA-06015",
+   "parameter_draw": {
+    "context": "water",
+    "start": 2,
+    "length": 4,
+    "display": "average",
+    "direction": "accumulates"
+   },
+   "stem": {
+    "text": "Water flows into a tank at R(t) gallons per hour. Which interprets (1/4)∫_2^6 R(t) dt?",
+    "command_verb": "interpret"
+   },
+   "answer_key": {
+    "form": "statement",
+    "mathjson": "average_rate_gallons_per_hour_on_2_to_6"
+   },
+   "worked_solution": [],
+   "options": [
+    {
+     "id": "A",
+     "is_key": true,
+     "error_path": null,
+     "label": "The average rate of flow, in gallons per hour, over 2 ≤ t ≤ 6."
+    },
+    {
+     "id": "B",
+     "is_key": false,
+     "error_path": "BC-ERR-06030",
+     "label": "The total gallons that flow in over 2 ≤ t ≤ 6.",
+     "derivation": "the average value expression read as a total"
+    },
+    {
+     "id": "C",
+     "is_key": false,
+     "error_path": "BC-ERR-06029",
+     "label": "The average rate of flow, in gallons per hour.",
+     "derivation": "the interval omitted"
+    },
+    {
+     "id": "D",
+     "is_key": false,
+     "error_path": "BC-ERR-06030",
+     "label": "The change in gallons in the tank from t = 2 to t = 6.",
+     "derivation": "the leading one quarter ignored, the expression read as the change"
+    }
+   ],
+   "calculator_status": "no_calculator",
+   "representation": "BC-REP-04",
+   "skills": [
+    "BC-SKL-06001"
+   ]
+  }
+ ],
+ "refresher": [
+  "LSN-CON-06001#s2",
+  "LSN-CON-06001#s3",
+  "LSN-CON-06001#err-BC-ERR-06014",
+  "LSN-CON-06001#err-BC-ERR-06030",
+  "LSN-CON-06001#err-BC-ERR-06013",
+  "LSN-CON-06001#err-BC-ERR-06029",
+  "LSN-CON-06001#s6"
+ ],
+ "provenance": {
+  "author": "tools/lesson_transcribe.py",
+  "prompt_version": "generator/lesson_v1",
+  "design_path": "docs/lessons/unit-06/LSN-CON-06001.md",
+  "signed_off_by": "claude-opus-5-5",
+  "signed_off_at": "2026-09-29",
+  "not_human": true
+ }
+}

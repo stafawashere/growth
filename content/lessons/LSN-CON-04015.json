@@ -1,0 +1,635 @@
+{
+ "id": "LSN-CON-04015",
+ "version": 1,
+ "kind": "concept",
+ "target_id": "BC-CON-04015",
+ "status": "signed_off",
+ "snapshot_digest": "a6a8ec9d3f59ab8f712e33d30cc22fc64bf2c478fbe7312e3e3118d319c6a42f",
+ "source_digest": "7a3d7ca80a6dac58500ad1bc1e13a1cbf2aee994812f9e4550181200684a700f",
+ "read_minutes": {
+  "full": 3.6,
+  "brief": 2.6
+ },
+ "word_count": {
+  "full": 459,
+  "brief": 343
+ },
+ "sections": [
+  {
+   "id": "LSN-CON-04015#s1",
+   "type": "orientation",
+   "bands": [
+    "low",
+    "mid"
+   ],
+   "skills": [
+    "BC-SKL-04035",
+    "BC-SKL-04036",
+    "BC-SKL-04037"
+   ],
+   "sources": [
+    "BC-CON-04015",
+    "research/units/unit-04-contextual-applications-differentiation.md#4.7 Using L'Hospital's Rule for Determining Limits of Indeterminate Forms"
+   ],
+   "evidence_tag": "inferred",
+   "text": "Once the form is shown indeterminate, differentiate numerator and denominator separately, keep limit notation, and evaluate. If the new limit is still indeterminate, apply the rule again.",
+   "delivery": {
+    "mode": "text",
+    "reason": "rule 5: BC-SKL-04035, BC-SKL-04036 and BC-SKL-04037 carry BC-REP-01 only",
+    "sources": [
+     "BC-SKL-04035"
+    ]
+   }
+  },
+  {
+   "id": "LSN-CON-04015#s2",
+   "type": "key_ideas",
+   "bands": [
+    "low",
+    "mid"
+   ],
+   "skills": [
+    "BC-SKL-04035",
+    "BC-SKL-04036",
+    "BC-SKL-04037"
+   ],
+   "sources": [
+    "BC-EK-LIM-4A2",
+    "ced:93",
+    "ced:84",
+    "research/units/unit-04-contextual-applications-differentiation.md#4.7 Using L'Hospital's Rule for Determining Limits of Indeterminate Forms"
+   ],
+   "evidence_tag": "verified",
+   "ek_id": "BC-EK-LIM-4A2",
+   "depth": "core",
+   "text": "Under the hypothesis, the limit of the quotient equals the limit of the numerator's derivative over the denominator's derivative: the ratio of the derivatives, not the derivative of the ratio. An inner function keeps its chain rule factor.",
+   "notation": "limit of f'/g'",
+   "quote": {
+    "text": "Limits of the indeterminate forms 0 over 0",
+    "source": "ced:93"
+   },
+   "delivery": {
+    "mode": "text",
+    "reason": "rule 5: a symbolic rule",
+    "sources": [
+     "BC-SKL-04035"
+    ]
+   }
+  },
+  {
+   "id": "LSN-CON-04015#s3",
+   "type": "strategy",
+   "bands": [
+    "low",
+    "mid"
+   ],
+   "skills": [
+    "BC-SKL-04035",
+    "BC-SKL-04036",
+    "BC-SKL-04037"
+   ],
+   "sources": [
+    "BC-QA-04009"
+   ],
+   "evidence_tag": "verified",
+   "archetype_id": "BC-QA-04009",
+   "cue": "Form shown 0/0; the value is asked.",
+   "method": "Next line: the limit of the numerator's derivative over the denominator's derivative.",
+   "rival": "Rival: the quotient rule on the whole ratio (BC-ERR-04030).",
+   "separating_feature": "Two separate derivatives, one ratio."
+  },
+  {
+   "id": "LSN-CON-04015#s4",
+   "type": "worked_example",
+   "bands": [
+    "low",
+    "mid"
+   ],
+   "skills": [
+    "BC-SKL-04035",
+    "BC-SKL-04036",
+    "BC-SKL-04037"
+   ],
+   "sources": [
+    "BC-QA-04009"
+   ],
+   "evidence_tag": "inferred",
+   "archetype_id": "BC-QA-04009",
+   "parameter_draw": {
+    "anchor": 1,
+    "stretch": 2,
+    "far_value": 3,
+    "far_slope": 5,
+    "near_value": -2,
+    "near_slope": -1,
+    "denominator": "sine"
+   },
+   "problem": {
+    "text": "f is differentiable, f(2) = 3, f'(2) = 5, f(1) = -2, f'(1) = -1. Find the limit of (f(2x) - 3)/sin(x - 1) as x tends to 1.",
+    "command_verb": "find"
+   },
+   "calculator_status": "no_calculator",
+   "steps": [
+    {
+     "cue": "Both limits are 0.",
+     "why": "Form 0/0 stated, so the rule applies."
+    },
+    {
+     "cue": "Numerator f(2x): inner 2x.",
+     "why": "2f'(2x); at x = 1 read f' at 2.",
+     "expression": 10,
+     "point_type_id": "BC-PT-99055",
+     "relation": "new"
+    },
+    {
+     "cue": "Denominator separately.",
+     "why": "Its own derivative.",
+     "expression": [
+      "Cos",
+      [
+       "Add",
+       -1,
+       "x"
+      ]
+     ],
+     "relation": "new"
+    },
+    {
+     "cue": "At x = 1.",
+     "why": "Nonzero: no second application.",
+     "expression": 1,
+     "relation": "evaluate",
+     "subs": {
+      "x": "1"
+     }
+    },
+    {
+     "cue": "Ratio of the two.",
+     "why": "Limit notation kept.",
+     "expression": 10,
+     "relation": "new"
+    }
+   ],
+   "answer": {
+    "form": "symbolic",
+    "mathjson": 10
+   },
+   "delivery": {
+    "mode": "step_reveal",
+    "reason": "rule 1",
+    "sources": []
+   }
+  },
+  {
+   "id": "LSN-CON-04015#s5",
+   "type": "what_a_reader_scores",
+   "bands": [
+    "low",
+    "mid"
+   ],
+   "skills": [
+    "BC-SKL-04035",
+    "BC-SKL-04036",
+    "BC-SKL-04037"
+   ],
+   "sources": [
+    "BC-PT-99055"
+   ],
+   "evidence_tag": "verified",
+   "example_id": "LSN-CON-04015#s4",
+   "lines": [
+    {
+     "point_type_id": "BC-PT-99055",
+     "text": "L'Hospital's Rule application. Earned by: Separate limits for numerator and denominator establishing the indeterminate form, then a ratio of derivatives with at least one derivative correct (sg-23:14). Not earned by: A limit written explicitly as zero over zero, which sg-23:14 states does not earn the form point."
+    }
+   ]
+  },
+  {
+   "id": "LSN-CON-04015#err-BC-ERR-03003",
+   "type": "common_error",
+   "bands": [
+    "low",
+    "mid"
+   ],
+   "skills": [
+    "BC-SKL-04035"
+   ],
+   "sources": [
+    "BC-ERR-03003",
+    "BC-MIS-03002"
+   ],
+   "evidence_tag": "inferred",
+   "error_id": "BC-ERR-03003",
+   "observed_behavior": "In a table or graph based composite, the derivative of the outer function is read at the stated input instead of at the value the inner function produces.",
+   "scoring_consequence": "The numerical answer is wrong even though the chain rule structure was written correctly.",
+   "wrong_step": {
+    "text": "2f'(1).",
+    "expression": -2
+   },
+   "right_step": {
+    "text": "2f'(2).",
+    "expression": 10
+   },
+   "relation": "distinct",
+   "possible_reason": {
+    "misconception_id": "BC-MIS-03002",
+    "text": "the inner output plays no part in where the outer derivative is read"
+   },
+   "delivery": {
+    "mode": "step_reveal",
+    "reason": "rule 1",
+    "sources": []
+   }
+  },
+  {
+   "id": "LSN-CON-04015#err-BC-ERR-04029",
+   "type": "common_error",
+   "bands": [
+    "low",
+    "mid"
+   ],
+   "skills": [
+    "BC-SKL-04037"
+   ],
+   "sources": [
+    "BC-ERR-04029",
+    "BC-MIS-04015"
+   ],
+   "evidence_tag": "inferred",
+   "error_id": "BC-ERR-04029",
+   "observed_behavior": "The derivatives of numerator and denominator are taken with no statement that the limit was indeterminate.",
+   "scoring_consequence": "The hypothesis point is lost; the CED unit overview states that students must show that the rule applies, and BC-ERR-99008 records unverified hypotheses across years (ced:84).",
+   "wrong_step": {
+    "text": "10, form unstated.",
+    "expression": 10
+   },
+   "right_step": {
+    "text": "Form stated, then 10.",
+    "expression": 10
+   },
+   "relation": "equivalent",
+   "possible_reason": {
+    "misconception_id": "BC-MIS-04015",
+    "text": "no form is checked before it is used"
+   },
+   "delivery": {
+    "mode": "step_reveal",
+    "reason": "rule 1",
+    "sources": []
+   }
+  },
+  {
+   "id": "LSN-CON-04015#err-BC-ERR-04030",
+   "type": "common_error",
+   "bands": [
+    "low",
+    "mid"
+   ],
+   "skills": [
+    "BC-SKL-04035"
+   ],
+   "sources": [
+    "BC-ERR-04030",
+    "BC-MIS-04016"
+   ],
+   "evidence_tag": "inferred",
+   "error_id": "BC-ERR-04030",
+   "observed_behavior": "The derivative of the whole quotient is taken rather than the quotient of the two derivatives.",
+   "scoring_consequence": "The application point is lost; the CED unit overview emphasises that the conclusion features the ratio of the derivatives rather than the derivative of the ratio (ced:84).",
+   "wrong_step": {
+    "text": "Quotient rule.",
+    "expression": [
+     "Multiply",
+     [
+      "Power",
+      [
+       "Sin",
+       [
+        "Add",
+        -1,
+        "x"
+       ]
+      ],
+      -2
+     ],
+     [
+      "Add",
+      [
+       "Multiply",
+       -1,
+       [
+        "Add",
+        -3,
+        "f2"
+       ],
+       [
+        "Cos",
+        [
+         "Add",
+         -1,
+         "x"
+        ]
+       ]
+      ],
+      [
+       "Multiply",
+       2,
+       "fp",
+       [
+        "Sin",
+        [
+         "Add",
+         -1,
+         "x"
+        ]
+       ]
+      ]
+     ]
+    ]
+   },
+   "right_step": {
+    "text": "Separate derivatives.",
+    "expression": [
+     "Multiply",
+     2,
+     "fp",
+     [
+      "Power",
+      [
+       "Cos",
+       [
+        "Add",
+        -1,
+        "x"
+       ]
+      ],
+      -1
+     ]
+    ]
+   },
+   "relation": "distinct",
+   "possible_reason": {
+    "misconception_id": "BC-MIS-04016",
+    "text": "reads the conclusion as the limit of the derivative of the quotient"
+   },
+   "delivery": {
+    "mode": "step_reveal",
+    "reason": "rule 1",
+    "sources": []
+   }
+  },
+  {
+   "id": "LSN-CON-04015#err-BC-ERR-04031",
+   "type": "common_error",
+   "bands": [
+    "low",
+    "mid"
+   ],
+   "skills": [
+    "BC-SKL-04036"
+   ],
+   "sources": [
+    "BC-ERR-04031"
+   ],
+   "evidence_tag": "inferred",
+   "error_id": "BC-ERR-04031",
+   "observed_behavior": "The numerator contains a function known only through supplied properties and its derivative is mishandled, so the resulting limit is wrong.",
+   "scoring_consequence": "The answer point is lost although the hypothesis and application points may be earned; the 2023 report records incorrect derivatives of the numerator or denominator as the common failure after a correct application (cr-23:15).",
+   "wrong_step": {
+    "text": "f'(2).",
+    "expression": 5
+   },
+   "right_step": {
+    "text": "2f'(2).",
+    "expression": 10
+   },
+   "relation": "distinct",
+   "delivery": {
+    "mode": "step_reveal",
+    "reason": "rule 1",
+    "sources": []
+   }
+  },
+  {
+   "id": "LSN-CON-04015#prq-BC-PRQ-04008",
+   "type": "prerequisite_bridge",
+   "bands": [
+    "low",
+    "mid"
+   ],
+   "skills": [
+    "BC-SKL-04035",
+    "BC-SKL-04036",
+    "BC-SKL-04037"
+   ],
+   "sources": [
+    "BC-PRQ-04008"
+   ],
+   "evidence_tag": "inferred",
+   "prerequisite_id": "BC-PRQ-04008",
+   "text": "Name each quantity given in the stem and whether it varies."
+  }
+ ],
+ "checks": [
+  {
+   "id": "LSN-CON-04015#chk-1",
+   "check_kind": "completion",
+   "bands": [
+    "low",
+    "mid"
+   ],
+   "format": "short_answer",
+   "archetype_id": "BC-QA-04009",
+   "parameter_draw": {
+    "anchor": 1,
+    "stretch": 2,
+    "far_value": 3,
+    "far_slope": 5,
+    "near_value": -2,
+    "near_slope": -1,
+    "denominator": "sine"
+   },
+   "completes": "LSN-CON-04015#s4",
+   "stem": {
+    "text": "For ex-1 the derivatives are 2f'(2x) and cos(x - 1). Evaluate the limit.",
+    "command_verb": "find"
+   },
+   "answer_key": {
+    "form": "symbolic",
+    "mathjson": 10
+   },
+   "worked_solution": [
+    {
+     "step": 1,
+     "text": "2f'(2)/cos(0).",
+     "mathjson": 10,
+     "relation": "new"
+    }
+   ],
+   "calculator_status": "no_calculator",
+   "representation": "BC-REP-01",
+   "skills": [
+    "BC-SKL-04036"
+   ]
+  },
+  {
+   "id": "LSN-CON-04015#chk-2",
+   "check_kind": "isomorph",
+   "bands": [
+    "low",
+    "mid"
+   ],
+   "format": "short_answer",
+   "archetype_id": "BC-QA-04009",
+   "parameter_draw": {
+    "anchor": 1,
+    "stretch": 3,
+    "far_value": 0,
+    "far_slope": -2,
+    "near_value": 2,
+    "near_slope": 4,
+    "denominator": "cube"
+   },
+   "stem": {
+    "text": "f(3) = 0, f'(3) = -2, and the form is 0/0. Find the limit of f(3x)/(x^3 - 1) as x tends to 1.",
+    "command_verb": "find"
+   },
+   "answer_key": {
+    "form": "symbolic",
+    "mathjson": -2
+   },
+   "worked_solution": [
+    {
+     "step": 1,
+     "text": "Numerator derivative.",
+     "mathjson": -6,
+     "relation": "new"
+    },
+    {
+     "step": 2,
+     "text": "Denominator derivative.",
+     "mathjson": [
+      "Multiply",
+      3,
+      [
+       "Power",
+       "x",
+       2
+      ]
+     ],
+     "relation": "new"
+    },
+    {
+     "step": 3,
+     "text": "At 1.",
+     "mathjson": 3,
+     "relation": "evaluate",
+     "subs": {
+      "x": "1"
+     }
+    },
+    {
+     "step": 4,
+     "text": "Ratio.",
+     "mathjson": -2,
+     "relation": "new"
+    }
+   ],
+   "calculator_status": "no_calculator",
+   "representation": "BC-REP-01",
+   "skills": [
+    "BC-SKL-04035"
+   ]
+  },
+  {
+   "id": "LSN-CON-04015#chk-3",
+   "check_kind": "mcq",
+   "bands": [
+    "low"
+   ],
+   "format": "mcq",
+   "archetype_id": "BC-QA-04009",
+   "parameter_draw": {
+    "anchor": 2,
+    "stretch": 3,
+    "far_value": -1,
+    "far_slope": 2,
+    "near_value": 4,
+    "near_slope": -3,
+    "denominator": "linear"
+   },
+   "stem": {
+    "text": "f(6) = -1, f'(6) = 2, f(2) = 4, f'(2) = -3. The limit of (f(3x) + 1)/(x - 2) as x tends to 2 is",
+    "command_verb": "identify"
+   },
+   "answer_key": {
+    "form": "symbolic",
+    "mathjson": 6
+   },
+   "worked_solution": [
+    {
+     "step": 1,
+     "text": "3f'(6).",
+     "mathjson": 6,
+     "relation": "new"
+    },
+    {
+     "step": 2,
+     "text": "Over 1.",
+     "mathjson": 6,
+     "relation": "equivalent"
+    }
+   ],
+   "options": [
+    {
+     "id": "A",
+     "is_key": false,
+     "error_path": "BC-ERR-03003",
+     "value": -9,
+     "derivation": "3f'(2) read in place of 3f'(6)"
+    },
+    {
+     "id": "B",
+     "is_key": false,
+     "error_path": "BC-ERR-04030",
+     "value": 0,
+     "derivation": "quotient rule numerator N'D - ND' evaluated at x = 2"
+    },
+    {
+     "id": "C",
+     "is_key": false,
+     "error_path": "BC-ERR-04031",
+     "value": 2,
+     "derivation": "chain factor 3 dropped"
+    },
+    {
+     "id": "D",
+     "is_key": true,
+     "error_path": null,
+     "value": 6
+    }
+   ],
+   "calculator_status": "no_calculator",
+   "representation": "BC-REP-01",
+   "skills": [
+    "BC-SKL-04035"
+   ]
+  }
+ ],
+ "refresher": [
+  "LSN-CON-04015#s2",
+  "LSN-CON-04015#err-BC-ERR-03003",
+  "LSN-CON-04015#err-BC-ERR-04029",
+  "LSN-CON-04015#err-BC-ERR-04030",
+  "LSN-CON-04015#err-BC-ERR-04031",
+  "LSN-CON-04015#s4"
+ ],
+ "provenance": {
+  "author": "tools/lesson_transcribe.py",
+  "prompt_version": "generator/lesson_v1",
+  "design_path": "docs/lessons/unit-04/LSN-CON-04015.md",
+  "signed_off_by": "claude-opus-5-5",
+  "signed_off_at": "2026-09-29",
+  "not_human": true
+ }
+}

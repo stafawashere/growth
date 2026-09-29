@@ -1,0 +1,919 @@
+{
+ "id": "LSN-CON-06010",
+ "version": 1,
+ "kind": "concept",
+ "target_id": "BC-CON-06010",
+ "status": "signed_off",
+ "snapshot_digest": "a6a8ec9d3f59ab8f712e33d30cc22fc64bf2c478fbe7312e3e3118d319c6a42f",
+ "source_digest": "cad78d1ecd305b803bede14eb7c5a0880a1573b31fd68acb6b3fbe40bcc03c1d",
+ "read_minutes": {
+  "full": 3.1,
+  "brief": 2.9
+ },
+ "word_count": {
+  "full": 368,
+  "brief": 368
+ },
+ "sections": [
+  {
+   "id": "LSN-CON-06010#s1",
+   "type": "orientation",
+   "bands": [
+    "low",
+    "mid"
+   ],
+   "skills": [
+    "BC-SKL-06028"
+   ],
+   "sources": [
+    "BC-CON-06010",
+    "research/units/unit-06-integration-accumulation.md#6.6 Applying Properties of Definite Integrals"
+   ],
+   "evidence_tag": "inferred",
+   "text": "For a graph of segments and arcs, a response writes the integral as a sum of signed areas, pieces below the axis negative, and labels the value.",
+   "delivery": {
+    "mode": "figure",
+    "reason": "rule 4: BC-REP-02 on BC-SKL-06028; not promoted, since BC-QA-06004's difficulty_variables are presence flags, not a varying quantity (unit README delivery map)",
+    "sources": [
+     "BC-SKL-06028",
+     "BC-QA-06004"
+    ],
+    "spec": {
+     "kind": "graph",
+     "representations": [
+      "BC-REP-02"
+     ],
+     "window": {
+      "x": [
+       0,
+       8
+      ],
+      "y": [
+       -3,
+       4
+      ]
+     },
+     "curves": [
+      {
+       "type": "polyline",
+       "points": [
+        [
+         0,
+         1
+        ],
+        [
+         1,
+         3
+        ],
+        [
+         2,
+         0
+        ],
+        [
+         3,
+         -2
+        ],
+        [
+         4,
+         0
+        ]
+       ]
+      },
+      {
+       "type": "semicircle",
+       "center": [
+        6,
+        0
+       ],
+       "radius": 2,
+       "side": "above"
+      }
+     ],
+     "shading": [
+      {
+       "between": "graph and x axis",
+       "interval": [
+        1,
+        8
+       ],
+       "above": "plus",
+       "below": "minus"
+      }
+     ],
+     "labels": [
+      {
+       "text": "+",
+       "placement": "inside",
+       "at": "region on [1, 2]"
+      },
+      {
+       "text": "-",
+       "placement": "inside",
+       "at": "region on [2, 4]"
+      },
+      {
+       "text": "+",
+       "placement": "inside",
+       "at": "semicircle"
+      }
+     ]
+    },
+    "fallback": "the same graph as a static image with the three signed regions marked",
+    "keyboard": "none needed: the figure has no control"
+   }
+  },
+  {
+   "id": "LSN-CON-06010#s2",
+   "type": "key_ideas",
+   "bands": [
+    "low",
+    "mid"
+   ],
+   "skills": [
+    "BC-SKL-06028"
+   ],
+   "sources": [
+    "BC-EK-FUN-6A1",
+    "ced:123",
+    "research/units/unit-06-integration-accumulation.md#6.6 Applying Properties of Definite Integrals"
+   ],
+   "evidence_tag": "verified",
+   "ek_id": "BC-EK-FUN-6A1",
+   "depth": "core",
+   "text": "Split where the graph changes character. Each piece has an area formula; a piece below the axis enters negatively. The integral is the signed sum, not the shaded area.",
+   "notation": "signed area",
+   "quote": {
+    "text": "In some cases, a definite integral can be evaluated by using geometry and the connection between the definite integral and area.",
+    "source": "ced:123"
+   },
+   "delivery": {
+    "mode": "figure",
+    "reason": "rule 4: BC-REP-02 on BC-SKL-06028; the pieces and their formulas are read off one static graph",
+    "sources": [
+     "BC-SKL-06028"
+    ],
+    "spec": {
+     "kind": "graph",
+     "representations": [
+      "BC-REP-02"
+     ],
+     "window": {
+      "x": [
+       0,
+       8
+      ],
+      "y": [
+       -3,
+       4
+      ]
+     },
+     "curves": [
+      {
+       "type": "polyline",
+       "points": [
+        [
+         0,
+         1
+        ],
+        [
+         1,
+         3
+        ],
+        [
+         2,
+         0
+        ],
+        [
+         3,
+         -2
+        ],
+        [
+         4,
+         0
+        ]
+       ]
+      },
+      {
+       "type": "semicircle",
+       "center": [
+        6,
+        0
+       ],
+       "radius": 2,
+       "side": "above"
+      }
+     ],
+     "partition": [
+      1,
+      2,
+      4,
+      8
+     ],
+     "labels": [
+      {
+       "text": "(1/2)(1)(3)",
+       "placement": "inside",
+       "at": "triangle on [1, 2]"
+      },
+      {
+       "text": "-(1/2)(2)(2)",
+       "placement": "inside",
+       "at": "triangle on [2, 4]"
+      },
+      {
+       "text": "(1/2)π(2)^2",
+       "placement": "inside",
+       "at": "semicircle"
+      }
+     ]
+    },
+    "fallback": "the same graph, static, with the three area formulas written in their regions",
+    "keyboard": "none needed: the figure has no control"
+   }
+  },
+  {
+   "id": "LSN-CON-06010#s3",
+   "type": "strategy",
+   "bands": [
+    "low",
+    "mid"
+   ],
+   "skills": [
+    "BC-SKL-06028"
+   ],
+   "sources": [
+    "BC-QA-06004"
+   ],
+   "evidence_tag": "verified",
+   "archetype_id": "BC-QA-06004",
+   "cue": "A graph of segments and semicircles; the value of an integral asked.",
+   "method": "Partition where the graph changes character.",
+   "rival": "Rival: every piece added as positive area.",
+   "separating_feature": "The integral is signed: the side of the axis fixes each sign."
+  },
+  {
+   "id": "LSN-CON-06010#s4",
+   "type": "worked_example",
+   "bands": [
+    "low",
+    "mid"
+   ],
+   "skills": [
+    "BC-SKL-06028"
+   ],
+   "sources": [
+    "BC-QA-06004"
+   ],
+   "evidence_tag": "inferred",
+   "archetype_id": "BC-QA-06004",
+   "parameter_draw": {
+    "heights": [
+     1,
+     3,
+     0,
+     -2
+    ],
+    "lower": 1,
+    "circle": "above",
+    "direction": "forward"
+   },
+   "problem": {
+    "text": "f: segments through (0, 1), (1, 3), (2, 0), (3, -2), (4, 0), then a radius 2 semicircle above [4, 8]. Find ∫_1^8 f(x) dx.",
+    "command_verb": "find"
+   },
+   "calculator_status": "no_calculator",
+   "steps": [
+    {
+     "cue": "Segments and an arc: split at x = 2 and x = 4.",
+     "why": "One shape per piece, one side of the axis."
+    },
+    {
+     "cue": "[1, 2]: triangle above.",
+     "why": "Added.",
+     "expression": [
+      "Rational",
+      3,
+      2
+     ],
+     "relation": "new"
+    },
+    {
+     "cue": "[2, 4]: triangle below.",
+     "why": "Enters negatively.",
+     "expression": -2,
+     "relation": "new"
+    },
+    {
+     "cue": "[4, 8]: semicircle above.",
+     "why": "Half of pi r squared.",
+     "expression": [
+      "Multiply",
+      2,
+      "Pi"
+     ],
+     "relation": "new"
+    },
+    {
+     "cue": "The integral is the signed total.",
+     "why": "Adjacent intervals add.",
+     "expression": [
+      "Add",
+      [
+       "Rational",
+       -1,
+       2
+      ],
+      [
+       "Multiply",
+       2,
+       "Pi"
+      ]
+     ],
+     "point_type_id": "BC-PT-99069",
+     "relation": "new"
+    },
+    {
+     "cue": "Label the value.",
+     "why": "A mislabelled value is scratch work (sg-25:18).",
+     "expression": [
+      "Add",
+      [
+       "Rational",
+       -1,
+       2
+      ],
+      [
+       "Multiply",
+       2,
+       "Pi"
+      ]
+     ],
+     "relation": "equivalent"
+    }
+   ],
+   "answer": {
+    "form": "symbolic",
+    "mathjson": [
+     "Add",
+     [
+      "Rational",
+      -1,
+      2
+     ],
+     [
+      "Multiply",
+      2,
+      "Pi"
+     ]
+    ]
+   },
+   "delivery": {
+    "mode": "step_reveal",
+    "reason": "rule 1",
+    "sources": []
+   }
+  },
+  {
+   "id": "LSN-CON-06010#s5",
+   "type": "what_a_reader_scores",
+   "bands": [
+    "low",
+    "mid"
+   ],
+   "skills": [
+    "BC-SKL-06028"
+   ],
+   "sources": [
+    "BC-PT-99069"
+   ],
+   "evidence_tag": "verified",
+   "example_id": "LSN-CON-06010#s4",
+   "lines": [
+    {
+     "point_type_id": "BC-PT-99069",
+     "text": "Value of an accumulation function found from geometry of a graph. Earned by: The value of the accumulation function at the requested input, computed from areas of the regions under the graph, with the correct sign for reversed limits (sg-25:18, sg-24:12). Not earned by: A value from the wrong starting limit; sg-24:13 has a special case where an explicitly wrong lower limit forfeits the first point it would otherwise have earned."
+    }
+   ]
+  },
+  {
+   "id": "LSN-CON-06010#err-BC-ERR-06014",
+   "type": "common_error",
+   "bands": [
+    "low",
+    "mid"
+   ],
+   "skills": [
+    "BC-SKL-06028"
+   ],
+   "sources": [
+    "BC-ERR-06014",
+    "BC-MIS-08024"
+   ],
+   "evidence_tag": "inferred",
+   "error_id": "BC-ERR-06014",
+   "observed_behavior": "Every piece of the region is added with a positive sign, so a signed integral is reported as a plain area.",
+   "scoring_consequence": "The value point is lost, and any later part that imports the value inherits the error.",
+   "wrong_step": {
+    "text": "[2, 4] added.",
+    "expression": [
+     "Add",
+     [
+      "Rational",
+      7,
+      2
+     ],
+     [
+      "Multiply",
+      2,
+      "Pi"
+     ]
+    ]
+   },
+   "right_step": {
+    "text": "[2, 4] subtracted.",
+    "expression": [
+     "Add",
+     [
+      "Rational",
+      -1,
+      2
+     ],
+     [
+      "Multiply",
+      2,
+      "Pi"
+     ]
+    ]
+   },
+   "relation": "distinct",
+   "possible_reason": {
+    "misconception_id": "BC-MIS-08024",
+    "text": "reads every definite integral as area under a graph"
+   },
+   "delivery": {
+    "mode": "step_reveal",
+    "reason": "rule 1",
+    "sources": []
+   }
+  },
+  {
+   "id": "LSN-CON-06010#err-BC-ERR-06013",
+   "type": "common_error",
+   "bands": [
+    "low",
+    "mid"
+   ],
+   "skills": [
+    "BC-SKL-06028"
+   ],
+   "sources": [
+    "BC-ERR-06013",
+    "BC-MIS-08019"
+   ],
+   "evidence_tag": "inferred",
+   "error_id": "BC-ERR-06013",
+   "observed_behavior": "The area of a semicircular piece of the region is computed as pi times the radius squared.",
+   "scoring_consequence": "The value point for that integral is lost.",
+   "wrong_step": {
+    "text": "Semicircle as 4π.",
+    "expression": [
+     "Add",
+     [
+      "Rational",
+      -1,
+      2
+     ],
+     [
+      "Multiply",
+      4,
+      "Pi"
+     ]
+    ]
+   },
+   "right_step": {
+    "text": "Semicircle as 2π.",
+    "expression": [
+     "Add",
+     [
+      "Rational",
+      -1,
+      2
+     ],
+     [
+      "Multiply",
+      2,
+      "Pi"
+     ]
+    ]
+   },
+   "relation": "distinct",
+   "possible_reason": {
+    "misconception_id": "BC-MIS-08019",
+    "text": "remembers the squared dimension but not the fraction in front of it"
+   },
+   "delivery": {
+    "mode": "step_reveal",
+    "reason": "rule 1",
+    "sources": []
+   }
+  },
+  {
+   "id": "LSN-CON-06010#prq-BC-PRQ-06007",
+   "type": "prerequisite_bridge",
+   "bands": [
+    "low",
+    "mid"
+   ],
+   "skills": [
+    "BC-SKL-06028"
+   ],
+   "sources": [
+    "BC-PRQ-06007"
+   ],
+   "evidence_tag": "inferred",
+   "prerequisite_id": "BC-PRQ-06007",
+   "text": "Area formulas read off a figure: a trapezoid is not a rectangle, and a semicircle is half a circle."
+  }
+ ],
+ "checks": [
+  {
+   "id": "LSN-CON-06010#chk-1",
+   "check_kind": "completion",
+   "bands": [
+    "low",
+    "mid"
+   ],
+   "format": "short_answer",
+   "archetype_id": "BC-QA-06004",
+   "parameter_draw": {
+    "heights": [
+     1,
+     3,
+     0,
+     -2
+    ],
+    "lower": 1,
+    "circle": "above",
+    "direction": "forward"
+   },
+   "completes": "LSN-CON-06010#s4",
+   "stem": {
+    "text": "The signed pieces of ∫_1^8 f(x) dx are 3/2, -2 and 2π. Find the integral.",
+    "command_verb": "find"
+   },
+   "answer_key": {
+    "form": "symbolic",
+    "mathjson": [
+     "Add",
+     [
+      "Rational",
+      -1,
+      2
+     ],
+     [
+      "Multiply",
+      2,
+      "Pi"
+     ]
+    ]
+   },
+   "worked_solution": [
+    {
+     "step": 1,
+     "text": "Add the signed pieces.",
+     "mathjson": [
+      "Add",
+      [
+       "Rational",
+       -1,
+       2
+      ],
+      [
+       "Multiply",
+       2,
+       "Pi"
+      ]
+     ],
+     "relation": "new"
+    },
+    {
+     "step": 2,
+     "text": "Simplify.",
+     "mathjson": [
+      "Add",
+      [
+       "Rational",
+       -1,
+       2
+      ],
+      [
+       "Multiply",
+       2,
+       "Pi"
+      ]
+     ],
+     "relation": "equivalent"
+    }
+   ],
+   "calculator_status": "no_calculator",
+   "representation": "BC-REP-02",
+   "skills": [
+    "BC-SKL-06028"
+   ]
+  },
+  {
+   "id": "LSN-CON-06010#chk-2",
+   "check_kind": "isomorph",
+   "bands": [
+    "low",
+    "mid"
+   ],
+   "format": "short_answer",
+   "archetype_id": "BC-QA-06004",
+   "parameter_draw": {
+    "heights": [
+     -2,
+     0,
+     2,
+     2
+    ],
+    "lower": 0,
+    "circle": "below",
+    "direction": "forward"
+   },
+   "stem": {
+    "text": "f: segments through (0, -2), (1, 0), (2, 2), (3, 2), (4, 0), then a radius 2 semicircle below [4, 8]. Find ∫_0^8 f(x) dx.",
+    "command_verb": "find"
+   },
+   "answer_key": {
+    "form": "symbolic",
+    "mathjson": [
+     "Add",
+     3,
+     [
+      "Multiply",
+      -2,
+      "Pi"
+     ]
+    ]
+   },
+   "worked_solution": [
+    {
+     "step": 1,
+     "text": "Triangle below on [0, 1].",
+     "mathjson": -1,
+     "relation": "new"
+    },
+    {
+     "step": 2,
+     "text": "Trapezoid above on [1, 4], parallel sides 3 and 1, height 2.",
+     "mathjson": 4,
+     "relation": "new"
+    },
+    {
+     "step": 3,
+     "text": "Semicircle below on [4, 8].",
+     "mathjson": [
+      "Multiply",
+      -2,
+      "Pi"
+     ],
+     "relation": "new"
+    },
+    {
+     "step": 4,
+     "text": "Sum.",
+     "mathjson": [
+      "Add",
+      3,
+      [
+       "Multiply",
+       -2,
+       "Pi"
+      ]
+     ],
+     "relation": "new"
+    },
+    {
+     "step": 5,
+     "text": "Simplify.",
+     "mathjson": [
+      "Add",
+      3,
+      [
+       "Multiply",
+       -2,
+       "Pi"
+      ]
+     ],
+     "relation": "equivalent"
+    }
+   ],
+   "calculator_status": "no_calculator",
+   "representation": "BC-REP-02",
+   "skills": [
+    "BC-SKL-06028"
+   ]
+  },
+  {
+   "id": "LSN-CON-06010#chk-3",
+   "check_kind": "mcq",
+   "bands": [
+    "low"
+   ],
+   "format": "mcq",
+   "archetype_id": "BC-QA-06004",
+   "parameter_draw": {
+    "heights": [
+     3,
+     1,
+     0,
+     -1
+    ],
+    "lower": 0,
+    "circle": "below",
+    "direction": "forward"
+   },
+   "stem": {
+    "text": "f: segments through (0, 3), (1, 1), (2, 0), (3, -1), (4, 0), then a radius 2 semicircle below [4, 8]. Find ∫_0^8 f(x) dx.",
+    "command_verb": "identify"
+   },
+   "answer_key": {
+    "form": "symbolic",
+    "mathjson": [
+     "Add",
+     [
+      "Rational",
+      3,
+      2
+     ],
+     [
+      "Multiply",
+      -2,
+      "Pi"
+     ]
+    ]
+   },
+   "worked_solution": [
+    {
+     "step": 1,
+     "text": "Above on [0, 2].",
+     "mathjson": [
+      "Rational",
+      5,
+      2
+     ],
+     "relation": "new"
+    },
+    {
+     "step": 2,
+     "text": "Below on [2, 4].",
+     "mathjson": -1,
+     "relation": "new"
+    },
+    {
+     "step": 3,
+     "text": "Semicircle below.",
+     "mathjson": [
+      "Multiply",
+      -2,
+      "Pi"
+     ],
+     "relation": "new"
+    },
+    {
+     "step": 4,
+     "text": "Sum.",
+     "mathjson": [
+      "Add",
+      [
+       "Rational",
+       3,
+       2
+      ],
+      [
+       "Multiply",
+       -2,
+       "Pi"
+      ]
+     ],
+     "relation": "new"
+    },
+    {
+     "step": 5,
+     "text": "Simplify.",
+     "mathjson": [
+      "Add",
+      [
+       "Rational",
+       3,
+       2
+      ],
+      [
+       "Multiply",
+       -2,
+       "Pi"
+      ]
+     ],
+     "relation": "equivalent"
+    }
+   ],
+   "options": [
+    {
+     "id": "A",
+     "is_key": false,
+     "error_path": "BC-ERR-06014",
+     "value": [
+      "Add",
+      [
+       "Rational",
+       7,
+       2
+      ],
+      [
+       "Multiply",
+       2,
+       "Pi"
+      ]
+     ],
+     "derivation": "every piece added as positive area"
+    },
+    {
+     "id": "B",
+     "is_key": false,
+     "error_path": "BC-ERR-06014",
+     "value": [
+      "Add",
+      [
+       "Rational",
+       3,
+       2
+      ],
+      [
+       "Multiply",
+       2,
+       "Pi"
+      ]
+     ],
+     "derivation": "the semicircle below the axis added as positive area"
+    },
+    {
+     "id": "C",
+     "is_key": true,
+     "error_path": null,
+     "value": [
+      "Add",
+      [
+       "Rational",
+       3,
+       2
+      ],
+      [
+       "Multiply",
+       -2,
+       "Pi"
+      ]
+     ]
+    },
+    {
+     "id": "D",
+     "is_key": false,
+     "error_path": "BC-ERR-06013",
+     "value": [
+      "Add",
+      [
+       "Rational",
+       3,
+       2
+      ],
+      [
+       "Multiply",
+       -4,
+       "Pi"
+      ]
+     ],
+     "derivation": "the semicircle given the full circle's area 4π"
+    }
+   ],
+   "calculator_status": "no_calculator",
+   "representation": "BC-REP-02",
+   "skills": [
+    "BC-SKL-06028"
+   ]
+  }
+ ],
+ "refresher": [
+  "LSN-CON-06010#s2",
+  "LSN-CON-06010#err-BC-ERR-06014",
+  "LSN-CON-06010#err-BC-ERR-06013",
+  "LSN-CON-06010#s4"
+ ],
+ "provenance": {
+  "author": "tools/lesson_transcribe.py",
+  "prompt_version": "generator/lesson_v1",
+  "design_path": "docs/lessons/unit-06/LSN-CON-06010.md",
+  "signed_off_by": "claude-opus-5-5",
+  "signed_off_at": "2026-09-29",
+  "not_human": true
+ }
+}

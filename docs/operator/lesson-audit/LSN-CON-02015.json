@@ -1,0 +1,119 @@
+{
+ "lesson_id": "LSN-CON-02015",
+ "version": 1,
+ "compared_on": "2026-09-29",
+ "auditor": "claude-opus-5-5",
+ "resolve": {
+  "date": "2026-09-29",
+  "problems": 4,
+  "agreed": 4,
+  "judgments_pending": 0,
+  "all_agree": true,
+  "verdicts": [
+   {
+    "id": "LSN-CON-02015#ex-1",
+    "agree": true,
+    "detail": "agree (symbolic)",
+    "method": "hand differentiation/evaluation"
+   },
+   {
+    "id": "LSN-CON-02015#chk-1",
+    "agree": true,
+    "detail": "agree (symbolic)",
+    "method": "hand differentiation/evaluation"
+   },
+   {
+    "id": "LSN-CON-02015#chk-2",
+    "agree": true,
+    "detail": "agree (symbolic)",
+    "method": "hand differentiation/evaluation"
+   },
+   {
+    "id": "LSN-CON-02015#chk-3",
+    "agree": true,
+    "detail": "agree (symbolic)",
+    "method": "hand differentiation/evaluation"
+   }
+  ],
+  "answers_file": "/tmp/claude-0/-home-user-growth/ac029253-8ff0-5a4b-8b5f-cdcaf5e8ff8d/scratchpad/verify/answers_02.json"
+ },
+ "audit": {
+  "date": "2026-09-29",
+  "auditor": "claude-opus-5-5",
+  "blocks": [
+   {
+    "id": "orientation",
+    "verdict": "ok",
+    "evidence": "Paraphrases BC-CON-02015 description_plain and BC-QA-02010 expected_solution_path; 43 words; no lint."
+   },
+   {
+    "id": "ki-1",
+    "verdict": "ok",
+    "evidence": "Paraphrase of the 2.10 Rewriting, Results and Why the rewriting matters paragraphs; quote matches ced:69 FUN-3.B.3 verbatim; four results checked in SymPy (diff(tan)=sec^2 etc.); 44 words."
+   },
+   {
+    "id": "st-1",
+    "verdict": "ok",
+    "evidence": "Method is expected_solution_path[0], rival is BC-QA-02010 wrong_approaches verbatim; cue 15 words, body 38."
+   },
+   {
+    "id": "ex-1",
+    "verdict": "ok",
+    "evidence": "SymPy: diff(3/cos(x)-2*cos(x)/sin(x)) equals step 2; steps 3 and 4 simplify to 0 difference; answer 3 sec x tan x + 2 csc^2 x."
+   },
+   {
+    "id": "err-BC-ERR-02021",
+    "verdict": "ok",
+    "evidence": "Observed behavior and consequence verbatim from BC-ERR-02021; reversed numerator on 3/cos x gives -3 sec x tan x (SymPy); reason text from BC-MIS-02012."
+   },
+   {
+    "id": "err-BC-ERR-02025",
+    "verdict": "ok",
+    "evidence": "Record text verbatim; cot derivative taken as +csc^2 x gives 3 sec x tan x - 2 csc^2 x; reason text from BC-MIS-02013."
+   },
+   {
+    "id": "err-BC-ERR-02026",
+    "verdict": "ok",
+    "evidence": "Record text verbatim; term by term: 3(0/(-sin x)) - 2(-sin x/cos x) = 2 tan x, confirmed."
+   },
+   {
+    "id": "representations",
+    "verdict": "ok",
+    "evidence": "null; topic Representations paragraph names only BC-REP-01 to BC-REP-01, symbolic."
+   },
+   {
+    "id": "BC-PRQ-02002",
+    "verdict": "ok",
+    "evidence": "Paraphrase of BC-PRQ-02002 description_plain and failure_signature; 30 words."
+   },
+   {
+    "id": "chk-1",
+    "verdict": "ok",
+    "evidence": "SymPy: 3 sin x/cos^2 x + 2/sin^2 x minus 3 sec x tan x + 2 csc^2 x simplifies to 0."
+   },
+   {
+    "id": "chk-2",
+    "verdict": "ok",
+    "evidence": "SymPy: diff(4 tan x + cot x) = 4 sec^2 x - csc^2 x; steps chain."
+   },
+   {
+    "id": "chk-3",
+    "verdict": "ok",
+    "evidence": "fixed 2026-09-29 by the orchestrator at the design (wrong): Key 4-3*sqrt(2) and options B, C, D check, but option A -4-3*sqrt(2) is not the spec option: parameter_spec options[1] = -a*first_slope - b*second_slope = -4+3*sqrt(2); the design prose says the distractors match the spec options. A is internally consistent with its stated derivation (tangent term reversed only)."
+   }
+  ],
+  "advice": [
+   "ex-1 and all three error blocks as step_reveal suit the process; the error blocks would read better as a contrast (wrong beside right) than as a reveal.",
+   "Recognition of the stem, first written line and rival are taught (st-1); scoring habits are absent because BC-QA-02010 lists no point_types, which is correct but leaves the scoring_pattern (one point for rewriting and rule, one for the simplified result) unused.",
+   "err-BC-ERR-02021 archetypes list BC-QA-02008 and BC-QA-02009 only; the skill link to BC-SKL-02043 to 02045 justifies it, but the record says the consequence is a sign error, which on 3 sec x only flips one term.",
+   "chk-3 option A: either use the spec value -4+3*sqrt(2) with derivation both terms negated, or change the prose so it no longer claims the options match the spec."
+  ],
+  "counts": {
+   "ok": 12,
+   "unsourced": 0,
+   "wrong": 0,
+   "over_cap": 0,
+   "lint": 0
+  }
+ }
+}

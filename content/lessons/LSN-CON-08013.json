@@ -1,0 +1,1477 @@
+{
+ "id": "LSN-CON-08013",
+ "version": 1,
+ "kind": "concept",
+ "target_id": "BC-CON-08013",
+ "status": "signed_off",
+ "snapshot_digest": "a6a8ec9d3f59ab8f712e33d30cc22fc64bf2c478fbe7312e3e3118d319c6a42f",
+ "source_digest": "dd2c3c1defe93eb79b0e3bf39114b5d465145b221693e9a2ddb40158adc0505d",
+ "read_minutes": {
+  "full": 3.6,
+  "brief": 3.0
+ },
+ "word_count": {
+  "full": 456,
+  "brief": 374
+ },
+ "sections": [
+  {
+   "id": "LSN-CON-08013#s1",
+   "type": "orientation",
+   "bands": [
+    "low",
+    "mid"
+   ],
+   "skills": [
+    "BC-SKL-08027",
+    "BC-SKL-08028",
+    "BC-SKL-08029",
+    "BC-SKL-08030"
+   ],
+   "sources": [
+    "BC-CON-08013",
+    "research/units/unit-08-applications-integration.md#8.6 Finding the Area Between Curves That Intersect at More Than Two Points"
+   ],
+   "evidence_tag": "inferred",
+   "text": "A response finds every crossing of the two curves inside the interval, integrates upper minus lower on each piece and adds the pieces, or integrates the absolute value of the difference once.",
+   "delivery": {
+    "mode": "figure",
+    "reason": "rule 4: BC-REP-02 on BC-SKL-08027 and BC-SKL-08028; unit README delivery map",
+    "sources": [
+     "BC-SKL-08027",
+     "BC-SKL-08028"
+    ],
+    "spec": {
+     "kind": "graph",
+     "representations": [
+      "BC-REP-02"
+     ],
+     "window": {
+      "x": [
+       -0.5,
+       4
+      ],
+      "y": [
+       0,
+       6
+      ]
+     },
+     "curves": [
+      {
+       "expr": "x**2 - 3*x + 4",
+       "domain": [
+        0,
+        3.5
+       ]
+      },
+      {
+       "expr": "x + 1",
+       "domain": [
+        0,
+        3.5
+       ]
+      }
+     ],
+     "shade": {
+      "between": [
+       "x**2 - 3*x + 4",
+       "x + 1"
+      ],
+      "x": [
+       0,
+       3.5
+      ]
+     },
+     "labels": [
+      {
+       "text": "f",
+       "placement": "inside"
+      },
+      {
+       "text": "g",
+       "placement": "inside"
+      },
+      {
+       "text": "three pieces",
+       "placement": "inside"
+      }
+     ]
+    },
+    "fallback": "the same shaded region static with the curve labels",
+    "keyboard": "no control; the figure description is reached with Tab"
+   }
+  },
+  {
+   "id": "LSN-CON-08013#s2",
+   "type": "key_ideas",
+   "bands": [
+    "low",
+    "mid"
+   ],
+   "skills": [
+    "BC-SKL-08027",
+    "BC-SKL-08028",
+    "BC-SKL-08029",
+    "BC-SKL-08030"
+   ],
+   "sources": [
+    "BC-EK-CHA-5A3",
+    "ced:157",
+    "research/units/unit-08-applications-integration.md#8.6 Finding the Area Between Curves That Intersect at More Than Two Points"
+   ],
+   "evidence_tag": "verified",
+   "ek_id": "BC-EK-CHA-5A3",
+   "depth": "core",
+   "text": "Where the curves cross, the upper curve changes, so the region is cut at every solution of f = g inside the interval. The area is a sum of integrals with the order fixed on each piece, or one integral of the absolute value of the difference: the same number, and the form a calculator evaluates. The bars go inside the integral.",
+   "notation": "sum of definite integrals; absolute value of a difference",
+   "quote": {
+    "text": "a sum of two or more definite integrals or by evaluating a definite integral of the absolute value of the difference of two functions",
+    "source": "ced:157"
+   },
+   "delivery": {
+    "mode": "interactive",
+    "reason": "rule 4 promoted: BC-REP-02 on BC-SKL-08027 and BC-SKL-08028; BC-QA-08010 difficulty_variables name the number of interior crossings, and the stem asks which curve is greater on each piece",
+    "sources": [
+     "BC-SKL-08027",
+     "BC-SKL-08028",
+     "BC-QA-08010"
+    ],
+    "spec": {
+     "kind": "graph",
+     "representations": [
+      "BC-REP-02",
+      "BC-REP-01"
+     ],
+     "window": {
+      "x": [
+       -0.5,
+       4
+      ],
+      "y": [
+       0,
+       6
+      ]
+     },
+     "curves": [
+      {
+       "expr": "x**2 - 3*x + 4",
+       "domain": [
+        0,
+        3.5
+       ]
+      },
+      {
+       "expr": "x + 1",
+       "domain": [
+        0,
+        3.5
+       ]
+      }
+     ],
+     "controls": [
+      {
+       "type": "draggable_rectangle",
+       "name": "x",
+       "domain": [
+        0,
+        3.5
+       ],
+       "step": 0.25,
+       "start": 0.5,
+       "readout": "f(x) - g(x) and which curve is on top"
+      }
+     ],
+     "drawn": [
+      "a vertical rectangle from the lower curve to the upper curve at the dragged input",
+      "the crossings at x = 1 and x = 3 marked"
+     ],
+     "labels": [
+      {
+       "text": "x = 1: curves cross",
+       "placement": "inside"
+      },
+      {
+       "text": "x = 3: curves cross",
+       "placement": "inside"
+      },
+      {
+       "text": "top curve at this x",
+       "placement": "inside"
+      }
+     ],
+     "question": "On which pieces is f on top, and where does f(x) - g(x) change sign?"
+    },
+    "fallback": "three static frames side by side, the rectangle at x = 0.5, 2 and 3.25, each labelled with the top curve and the sign of f(x) - g(x)",
+    "keyboard": "Tab focuses the rectangle; left and right arrow keys move it by 0.25; Home and End jump to 0 and 3.5; Enter reads out the top curve and f(x) - g(x)"
+   }
+  },
+  {
+   "id": "LSN-CON-08013#s3",
+   "type": "strategy",
+   "bands": [
+    "low",
+    "mid"
+   ],
+   "skills": [
+    "BC-SKL-08027",
+    "BC-SKL-08028",
+    "BC-SKL-08029",
+    "BC-SKL-08030"
+   ],
+   "sources": [
+    "BC-QA-08010"
+   ],
+   "evidence_tag": "verified",
+   "archetype_id": "BC-QA-08010",
+   "cue": "The stem asks for the total area between two graphs over a stated interval, from two curve equations.",
+   "method": "First written line: \\(f(x)=g(x)\\), solved for every input in the interval.",
+   "rival": "Rival: one fixed difference integrated across a crossing (BC-ERR-08026).",
+   "separating_feature": "A solution of f = g strictly inside the interval."
+  },
+  {
+   "id": "LSN-CON-08013#s4",
+   "type": "worked_example",
+   "bands": [
+    "low",
+    "mid"
+   ],
+   "skills": [
+    "BC-SKL-08027",
+    "BC-SKL-08028",
+    "BC-SKL-08029",
+    "BC-SKL-08030"
+   ],
+   "sources": [
+    "BC-QA-08010"
+   ],
+   "evidence_tag": "inferred",
+   "archetype_id": "BC-QA-08010",
+   "parameter_draw": {
+    "start": 0,
+    "lead": "1",
+    "gap": 2,
+    "overrun": "1/2",
+    "bulge": 1,
+    "slope": 1,
+    "intercept": 1,
+    "presentation": "formula"
+   },
+   "problem": {
+    "text": "Find the total area between \\(f(x)=x^2-3x+4\\) and \\(g(x)=x+1\\) for \\(0\\le x\\le 7/2\\).",
+    "command_verb": "find"
+   },
+   "calculator_status": "no_calculator",
+   "steps": [
+    {
+     "cue": "Total area over a stated interval: do the curves cross inside it?",
+     "why": "Every crossing is a cut.",
+     "expression": [
+      "Equal",
+      [
+       "Add",
+       4,
+       [
+        "Power",
+        "x",
+        2
+       ],
+       [
+        "Multiply",
+        -3,
+        "x"
+       ]
+      ],
+      [
+       "Add",
+       1,
+       "x"
+      ]
+     ],
+     "relation": "new"
+    },
+    {
+     "cue": "Factor.",
+     "why": "\\((x-1)(x-3)=0\\): two crossings inside, three pieces.",
+     "expression": [
+      "Set",
+      1,
+      3
+     ],
+     "relation": "solve",
+     "variable": "x"
+    },
+    {
+     "cue": "Sign of \\(f-g\\) on each piece: test 0, 2, 13/4.",
+     "why": "Positive, negative, positive: \\(f\\), then \\(g\\), then \\(f\\) on top."
+    },
+    {
+     "cue": "One integral per piece, upper minus lower.",
+     "why": "Each piece nonnegative.",
+     "expression": [
+      "Add",
+      [
+       "Integrate",
+       [
+        "Add",
+        -3,
+        [
+         "Multiply",
+         -1,
+         [
+          "Power",
+          "x",
+          2
+         ]
+        ],
+        [
+         "Multiply",
+         4,
+         "x"
+        ]
+       ],
+       [
+        "Tuple",
+        "x",
+        1,
+        3
+       ]
+      ],
+      [
+       "Integrate",
+       [
+        "Add",
+        3,
+        [
+         "Power",
+         "x",
+         2
+        ],
+        [
+         "Multiply",
+         -4,
+         "x"
+        ]
+       ],
+       [
+        "Tuple",
+        "x",
+        0,
+        1
+       ]
+      ],
+      [
+       "Integrate",
+       [
+        "Add",
+        3,
+        [
+         "Power",
+         "x",
+         2
+        ],
+        [
+         "Multiply",
+         -4,
+         "x"
+        ]
+       ],
+       [
+        "Tuple",
+        "x",
+        3,
+        [
+         "Rational",
+         7,
+         2
+        ]
+       ]
+      ]
+     ],
+     "relation": "new"
+    },
+    {
+     "cue": "Evaluate each piece.",
+     "why": "\\(F(x)=x^3/3-2x^2+3x\\) on each.",
+     "expression": [
+      "Rational",
+      71,
+      24
+     ],
+     "relation": "equivalent"
+    },
+    {
+     "cue": "The stem asks for the total.",
+     "why": "The sum of the pieces.",
+     "expression": [
+      "Rational",
+      71,
+      24
+     ],
+     "relation": "equivalent"
+    }
+   ],
+   "answer": {
+    "form": "numeric",
+    "mathjson": [
+     "Rational",
+     71,
+     24
+    ]
+   },
+   "delivery": {
+    "mode": "step_reveal",
+    "reason": "rule 1",
+    "sources": []
+   }
+  },
+  {
+   "id": "LSN-CON-08013#err-BC-ERR-08020",
+   "type": "common_error",
+   "bands": [
+    "low",
+    "mid"
+   ],
+   "skills": [
+    "BC-SKL-08028"
+   ],
+   "sources": [
+    "BC-ERR-08020",
+    "BC-MIS-08011"
+   ],
+   "evidence_tag": "inferred",
+   "error_id": "BC-ERR-08020",
+   "observed_behavior": "The integrand is the lower curve minus the upper curve, or the left curve minus the right curve.",
+   "scoring_consequence": "The integrand point may survive, since either order earned it in 2023, but a negative value reported as an area loses the answer point (sg-23:16, sg-23:17).",
+   "wrong_step": {
+    "text": "Lower minus upper on each piece: \\(-71/24\\).",
+    "expression": [
+     "Add",
+     [
+      "Integrate",
+      [
+       "Add",
+       -3,
+       [
+        "Multiply",
+        -1,
+        [
+         "Power",
+         "x",
+         2
+        ]
+       ],
+       [
+        "Multiply",
+        4,
+        "x"
+       ]
+      ],
+      [
+       "Tuple",
+       "x",
+       0,
+       1
+      ]
+     ],
+     [
+      "Integrate",
+      [
+       "Add",
+       -3,
+       [
+        "Multiply",
+        -1,
+        [
+         "Power",
+         "x",
+         2
+        ]
+       ],
+       [
+        "Multiply",
+        4,
+        "x"
+       ]
+      ],
+      [
+       "Tuple",
+       "x",
+       3,
+       [
+        "Rational",
+        7,
+        2
+       ]
+      ]
+     ],
+     [
+      "Integrate",
+      [
+       "Add",
+       3,
+       [
+        "Power",
+        "x",
+        2
+       ],
+       [
+        "Multiply",
+        -4,
+        "x"
+       ]
+      ],
+      [
+       "Tuple",
+       "x",
+       1,
+       3
+      ]
+     ]
+    ]
+   },
+   "right_step": {
+    "text": "Upper minus lower: \\(71/24\\).",
+    "expression": [
+     "Add",
+     [
+      "Integrate",
+      [
+       "Add",
+       -3,
+       [
+        "Multiply",
+        -1,
+        [
+         "Power",
+         "x",
+         2
+        ]
+       ],
+       [
+        "Multiply",
+        4,
+        "x"
+       ]
+      ],
+      [
+       "Tuple",
+       "x",
+       1,
+       3
+      ]
+     ],
+     [
+      "Integrate",
+      [
+       "Add",
+       3,
+       [
+        "Power",
+        "x",
+        2
+       ],
+       [
+        "Multiply",
+        -4,
+        "x"
+       ]
+      ],
+      [
+       "Tuple",
+       "x",
+       0,
+       1
+      ]
+     ],
+     [
+      "Integrate",
+      [
+       "Add",
+       3,
+       [
+        "Power",
+        "x",
+        2
+       ],
+       [
+        "Multiply",
+        -4,
+        "x"
+       ]
+      ],
+      [
+       "Tuple",
+       "x",
+       3,
+       [
+        "Rational",
+        7,
+        2
+       ]
+      ]
+     ]
+    ]
+   },
+   "relation": "distinct",
+   "possible_reason": {
+    "misconception_id": "BC-MIS-08011",
+    "text": "any sign problem can be repaired at the end"
+   },
+   "delivery": {
+    "mode": "step_reveal",
+    "reason": "rule 1",
+    "sources": []
+   }
+  },
+  {
+   "id": "LSN-CON-08013#err-BC-ERR-08025",
+   "type": "common_error",
+   "bands": [
+    "low",
+    "mid"
+   ],
+   "skills": [
+    "BC-SKL-08027"
+   ],
+   "sources": [
+    "BC-ERR-08025",
+    "BC-MIS-08014"
+   ],
+   "evidence_tag": "inferred",
+   "error_id": "BC-ERR-08025",
+   "observed_behavior": "Only the outer two crossings are used, so an interior crossing is integrated across.",
+   "scoring_consequence": "The setup point is lost because part of the region is subtracted rather than added.",
+   "wrong_step": {
+    "text": "Crossing 3 missed: \\(19/8\\).",
+    "expression": [
+     "Add",
+     [
+      "Integrate",
+      [
+       "Add",
+       -3,
+       [
+        "Multiply",
+        -1,
+        [
+         "Power",
+         "x",
+         2
+        ]
+       ],
+       [
+        "Multiply",
+        4,
+        "x"
+       ]
+      ],
+      [
+       "Tuple",
+       "x",
+       1,
+       [
+        "Rational",
+        7,
+        2
+       ]
+      ]
+     ],
+     [
+      "Integrate",
+      [
+       "Add",
+       3,
+       [
+        "Power",
+        "x",
+        2
+       ],
+       [
+        "Multiply",
+        -4,
+        "x"
+       ]
+      ],
+      [
+       "Tuple",
+       "x",
+       0,
+       1
+      ]
+     ]
+    ]
+   },
+   "right_step": {
+    "text": "Cut at 1 and 3: \\(71/24\\).",
+    "expression": [
+     "Add",
+     [
+      "Integrate",
+      [
+       "Add",
+       -3,
+       [
+        "Multiply",
+        -1,
+        [
+         "Power",
+         "x",
+         2
+        ]
+       ],
+       [
+        "Multiply",
+        4,
+        "x"
+       ]
+      ],
+      [
+       "Tuple",
+       "x",
+       1,
+       3
+      ]
+     ],
+     [
+      "Integrate",
+      [
+       "Add",
+       3,
+       [
+        "Power",
+        "x",
+        2
+       ],
+       [
+        "Multiply",
+        -4,
+        "x"
+       ]
+      ],
+      [
+       "Tuple",
+       "x",
+       0,
+       1
+      ]
+     ],
+     [
+      "Integrate",
+      [
+       "Add",
+       3,
+       [
+        "Power",
+        "x",
+        2
+       ],
+       [
+        "Multiply",
+        -4,
+        "x"
+       ]
+      ],
+      [
+       "Tuple",
+       "x",
+       3,
+       [
+        "Rational",
+        7,
+        2
+       ]
+      ]
+     ]
+    ]
+   },
+   "relation": "distinct",
+   "possible_reason": {
+    "misconception_id": "BC-MIS-08014",
+    "text": "a crossing inside the interval does not signal that the region has pieces"
+   },
+   "delivery": {
+    "mode": "step_reveal",
+    "reason": "rule 1",
+    "sources": []
+   }
+  },
+  {
+   "id": "LSN-CON-08013#err-BC-ERR-08026",
+   "type": "common_error",
+   "bands": [
+    "low",
+    "mid"
+   ],
+   "skills": [
+    "BC-SKL-08028",
+    "BC-SKL-08029"
+   ],
+   "sources": [
+    "BC-ERR-08026",
+    "BC-MIS-08014"
+   ],
+   "evidence_tag": "inferred",
+   "error_id": "BC-ERR-08026",
+   "observed_behavior": "A fixed order of subtraction is integrated over an interval in which the curves exchange places.",
+   "scoring_consequence": "The reported area is smaller than the true area and the setup point is lost.",
+   "wrong_step": {
+    "text": "One integral: \\(7/24\\).",
+    "expression": [
+     "Integrate",
+     [
+      "Add",
+      3,
+      [
+       "Power",
+       "x",
+       2
+      ],
+      [
+       "Multiply",
+       -4,
+       "x"
+      ]
+     ],
+     [
+      "Tuple",
+      "x",
+      0,
+      [
+       "Rational",
+       7,
+       2
+      ]
+     ]
+    ]
+   },
+   "right_step": {
+    "text": "Three pieces: \\(71/24\\).",
+    "expression": [
+     "Rational",
+     71,
+     24
+    ]
+   },
+   "relation": "distinct",
+   "possible_reason": {
+    "misconception_id": "BC-MIS-08014",
+    "text": "treats the area formula as a template applied once"
+   },
+   "delivery": {
+    "mode": "step_reveal",
+    "reason": "rule 1",
+    "sources": []
+   }
+  },
+  {
+   "id": "LSN-CON-08013#err-BC-ERR-08027",
+   "type": "common_error",
+   "bands": [
+    "low",
+    "mid"
+   ],
+   "skills": [
+    "BC-SKL-08030"
+   ],
+   "sources": [
+    "BC-ERR-08027"
+   ],
+   "evidence_tag": "inferred",
+   "error_id": "BC-ERR-08027",
+   "observed_behavior": "The single integral form is written without the absolute value bars around the difference.",
+   "scoring_consequence": "The value returned is the signed difference of the lobes, so the answer point is lost.",
+   "wrong_step": {
+    "text": "No bars: \\(7/24\\).",
+    "expression": [
+     "Integrate",
+     [
+      "Add",
+      3,
+      [
+       "Power",
+       "x",
+       2
+      ],
+      [
+       "Multiply",
+       -4,
+       "x"
+      ]
+     ],
+     [
+      "Tuple",
+      "x",
+      0,
+      [
+       "Rational",
+       7,
+       2
+      ]
+     ]
+    ]
+   },
+   "right_step": {
+    "text": "Bars inside: \\(71/24\\).",
+    "expression": [
+     "Integrate",
+     [
+      "Abs",
+      [
+       "Add",
+       3,
+       [
+        "Power",
+        "x",
+        2
+       ],
+       [
+        "Multiply",
+        -4,
+        "x"
+       ]
+      ]
+     ],
+     [
+      "Tuple",
+      "x",
+      0,
+      [
+       "Rational",
+       7,
+       2
+      ]
+     ]
+    ]
+   },
+   "relation": "distinct",
+   "delivery": {
+    "mode": "step_reveal",
+    "reason": "rule 1",
+    "sources": []
+   }
+  },
+  {
+   "id": "LSN-CON-08013#prq-BC-PRQ-06005",
+   "type": "prerequisite_bridge",
+   "bands": [
+    "low",
+    "mid"
+   ],
+   "skills": [
+    "BC-SKL-08028",
+    "BC-SKL-08029"
+   ],
+   "sources": [
+    "BC-PRQ-06005"
+   ],
+   "evidence_tag": "inferred",
+   "prerequisite_id": "BC-PRQ-06005",
+   "text": "\\(f(2)\\) is one value at one input; reading another input names the wrong upper curve."
+  },
+  {
+   "id": "LSN-CON-08013#prq-BC-PRQ-08001",
+   "type": "prerequisite_bridge",
+   "bands": [
+    "low",
+    "mid"
+   ],
+   "skills": [
+    "BC-SKL-08027"
+   ],
+   "sources": [
+    "BC-PRQ-08001"
+   ],
+   "evidence_tag": "inferred",
+   "prerequisite_id": "BC-PRQ-08001",
+   "text": "Every solution of \\(f=g\\) in the interval, not only the first; else the cuts are missing."
+  },
+  {
+   "id": "LSN-CON-08013#prq-BC-PRQ-08003",
+   "type": "prerequisite_bridge",
+   "bands": [
+    "low",
+    "mid"
+   ],
+   "skills": [
+    "BC-SKL-08030"
+   ],
+   "sources": [
+    "BC-PRQ-08003"
+   ],
+   "evidence_tag": "inferred",
+   "prerequisite_id": "BC-PRQ-08003",
+   "text": "\\(\\lvert h\\rvert\\) is \\(h\\) where \\(h\\ge0\\) and \\(-h\\) elsewhere; else a signed total replaces the area."
+  }
+ ],
+ "checks": [
+  {
+   "id": "LSN-CON-08013#chk-1",
+   "check_kind": "completion",
+   "bands": [
+    "low",
+    "mid"
+   ],
+   "format": "short_answer",
+   "archetype_id": "BC-QA-08010",
+   "parameter_draw": {
+    "start": 0,
+    "lead": "1",
+    "gap": 2,
+    "overrun": "1/2",
+    "bulge": 1,
+    "slope": 1,
+    "intercept": 1,
+    "presentation": "formula"
+   },
+   "completes": "LSN-CON-08013#s4",
+   "stem": {
+    "text": "The three pieces are \\(4/3\\), \\(4/3\\) and \\(7/24\\). Find the total area.",
+    "command_verb": "find"
+   },
+   "answer_key": {
+    "form": "numeric",
+    "mathjson": [
+     "Rational",
+     71,
+     24
+    ]
+   },
+   "worked_solution": [
+    {
+     "step": 1,
+     "text": "Sum.",
+     "mathjson": [
+      "Rational",
+      71,
+      24
+     ],
+     "relation": "new"
+    },
+    {
+     "step": 2,
+     "text": "Total.",
+     "mathjson": [
+      "Rational",
+      71,
+      24
+     ],
+     "relation": "equivalent"
+    }
+   ],
+   "calculator_status": "no_calculator",
+   "representation": "BC-REP-02",
+   "skills": [
+    "BC-SKL-08029"
+   ]
+  },
+  {
+   "id": "LSN-CON-08013#chk-2",
+   "check_kind": "isomorph",
+   "bands": [
+    "low",
+    "mid"
+   ],
+   "format": "short_answer",
+   "archetype_id": "BC-QA-08010",
+   "parameter_draw": {
+    "start": -1,
+    "lead": "1",
+    "gap": 3,
+    "overrun": "1",
+    "bulge": 1,
+    "slope": 0,
+    "intercept": 2,
+    "presentation": "formula"
+   },
+   "stem": {
+    "text": "Find the total area between \\(f(x)=x^2-3x+2\\) and \\(g(x)=2\\) for \\(-1\\le x\\le 4\\).",
+    "command_verb": "find"
+   },
+   "answer_key": {
+    "form": "numeric",
+    "mathjson": [
+     "Rational",
+     49,
+     6
+    ]
+   },
+   "worked_solution": [
+    {
+     "step": 1,
+     "text": "\\(f=g\\).",
+     "mathjson": [
+      "Equal",
+      [
+       "Add",
+       2,
+       [
+        "Power",
+        "x",
+        2
+       ],
+       [
+        "Multiply",
+        -3,
+        "x"
+       ]
+      ],
+      2
+     ],
+     "relation": "new"
+    },
+    {
+     "step": 2,
+     "text": "Crossings 0 and 3.",
+     "mathjson": [
+      "Set",
+      0,
+      3
+     ],
+     "relation": "solve",
+     "variable": "x"
+    },
+    {
+     "step": 3,
+     "text": "Three pieces.",
+     "mathjson": [
+      "Add",
+      [
+       "Integrate",
+       [
+        "Add",
+        [
+         "Power",
+         "x",
+         2
+        ],
+        [
+         "Multiply",
+         -3,
+         "x"
+        ]
+       ],
+       [
+        "Tuple",
+        "x",
+        -1,
+        0
+       ]
+      ],
+      [
+       "Integrate",
+       [
+        "Add",
+        [
+         "Power",
+         "x",
+         2
+        ],
+        [
+         "Multiply",
+         -3,
+         "x"
+        ]
+       ],
+       [
+        "Tuple",
+        "x",
+        3,
+        4
+       ]
+      ],
+      [
+       "Integrate",
+       [
+        "Add",
+        [
+         "Multiply",
+         -1,
+         [
+          "Power",
+          "x",
+          2
+         ]
+        ],
+        [
+         "Multiply",
+         3,
+         "x"
+        ]
+       ],
+       [
+        "Tuple",
+        "x",
+        0,
+        3
+       ]
+      ]
+     ],
+     "relation": "new"
+    },
+    {
+     "step": 4,
+     "text": "\\(11/6+9/2+11/6\\).",
+     "mathjson": [
+      "Rational",
+      49,
+      6
+     ],
+     "relation": "equivalent"
+    }
+   ],
+   "calculator_status": "no_calculator",
+   "representation": "BC-REP-02",
+   "skills": [
+    "BC-SKL-08029"
+   ]
+  },
+  {
+   "id": "LSN-CON-08013#chk-3",
+   "check_kind": "mcq",
+   "bands": [
+    "low"
+   ],
+   "format": "mcq",
+   "archetype_id": "BC-QA-08010",
+   "parameter_draw": {
+    "start": 0,
+    "lead": "3/2",
+    "gap": 2,
+    "overrun": "1/2",
+    "bulge": 1,
+    "slope": -1,
+    "intercept": 0,
+    "presentation": "formula"
+   },
+   "stem": {
+    "text": "What is the total area between \\(f(x)=x^2-6x+21/4\\) and \\(g(x)=-x\\) for \\(0\\le x\\le 4\\)?",
+    "command_verb": "find"
+   },
+   "answer_key": {
+    "form": "numeric",
+    "mathjson": 5
+   },
+   "worked_solution": [
+    {
+     "step": 1,
+     "text": "\\(f-g=(x-3/2)(x-7/2)\\).",
+     "mathjson": [
+      "Equal",
+      [
+       "Add",
+       [
+        "Rational",
+        21,
+        4
+       ],
+       [
+        "Power",
+        "x",
+        2
+       ],
+       [
+        "Multiply",
+        -5,
+        "x"
+       ]
+      ],
+      0
+     ],
+     "relation": "new"
+    },
+    {
+     "step": 2,
+     "text": "Crossings.",
+     "mathjson": [
+      "Set",
+      [
+       "Rational",
+       3,
+       2
+      ],
+      [
+       "Rational",
+       7,
+       2
+      ]
+     ],
+     "relation": "solve",
+     "variable": "x"
+    },
+    {
+     "step": 3,
+     "text": "Three pieces.",
+     "mathjson": [
+      "Add",
+      [
+       "Integrate",
+       [
+        "Add",
+        [
+         "Rational",
+         -21,
+         4
+        ],
+        [
+         "Multiply",
+         -1,
+         [
+          "Power",
+          "x",
+          2
+         ]
+        ],
+        [
+         "Multiply",
+         5,
+         "x"
+        ]
+       ],
+       [
+        "Tuple",
+        "x",
+        [
+         "Rational",
+         3,
+         2
+        ],
+        [
+         "Rational",
+         7,
+         2
+        ]
+       ]
+      ],
+      [
+       "Integrate",
+       [
+        "Add",
+        [
+         "Rational",
+         21,
+         4
+        ],
+        [
+         "Power",
+         "x",
+         2
+        ],
+        [
+         "Multiply",
+         -5,
+         "x"
+        ]
+       ],
+       [
+        "Tuple",
+        "x",
+        0,
+        [
+         "Rational",
+         3,
+         2
+        ]
+       ]
+      ],
+      [
+       "Integrate",
+       [
+        "Add",
+        [
+         "Rational",
+         21,
+         4
+        ],
+        [
+         "Power",
+         "x",
+         2
+        ],
+        [
+         "Multiply",
+         -5,
+         "x"
+        ]
+       ],
+       [
+        "Tuple",
+        "x",
+        [
+         "Rational",
+         7,
+         2
+        ],
+        4
+       ]
+      ]
+     ],
+     "relation": "new"
+    },
+    {
+     "step": 4,
+     "text": "\\(27/8+4/3+7/24\\).",
+     "mathjson": 5,
+     "relation": "equivalent"
+    }
+   ],
+   "options": [
+    {
+     "id": "A",
+     "is_key": false,
+     "error_path": "BC-ERR-08020",
+     "value": -5,
+     "derivation": "lower minus upper on every piece"
+    },
+    {
+     "id": "B",
+     "is_key": false,
+     "error_path": "BC-ERR-08025",
+     "value": [
+      "Rational",
+      53,
+      12
+     ],
+     "derivation": "the crossing at 7/2 missed, two pieces"
+    },
+    {
+     "id": "C",
+     "is_key": false,
+     "error_path": "BC-ERR-08026",
+     "value": [
+      "Rational",
+      7,
+      3
+     ],
+     "derivation": "one integral of f minus g over [0, 4]"
+    },
+    {
+     "id": "D",
+     "is_key": true,
+     "error_path": null,
+     "value": 5
+    }
+   ],
+   "calculator_status": "no_calculator",
+   "representation": "BC-REP-02",
+   "skills": [
+    "BC-SKL-08029"
+   ]
+  }
+ ],
+ "refresher": [
+  "LSN-CON-08013#s2",
+  "LSN-CON-08013#err-BC-ERR-08020",
+  "LSN-CON-08013#err-BC-ERR-08025",
+  "LSN-CON-08013#err-BC-ERR-08026",
+  "LSN-CON-08013#err-BC-ERR-08027",
+  "LSN-CON-08013#s4"
+ ],
+ "provenance": {
+  "author": "tools/lesson_transcribe.py",
+  "prompt_version": "generator/lesson_v1",
+  "design_path": "docs/lessons/unit-08/LSN-CON-08013.md",
+  "signed_off_by": "claude-opus-5-5",
+  "signed_off_at": "2026-09-29",
+  "not_human": true
+ }
+}

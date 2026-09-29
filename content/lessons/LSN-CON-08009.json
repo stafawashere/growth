@@ -1,0 +1,490 @@
+{
+ "id": "LSN-CON-08009",
+ "version": 1,
+ "kind": "concept",
+ "target_id": "BC-CON-08009",
+ "status": "signed_off",
+ "snapshot_digest": "a6a8ec9d3f59ab8f712e33d30cc22fc64bf2c478fbe7312e3e3118d319c6a42f",
+ "source_digest": "3c6f99b19a23256cbe377e4325f2db9f7a675cbda042292395a51fa599d061c9",
+ "read_minutes": {
+  "full": 3.4,
+  "brief": 2.8
+ },
+ "word_count": {
+  "full": 366,
+  "brief": 366
+ },
+ "sections": [
+  {
+   "id": "LSN-CON-08009#s1",
+   "type": "orientation",
+   "bands": [
+    "low",
+    "mid"
+   ],
+   "skills": [
+    "BC-SKL-08015"
+   ],
+   "sources": [
+    "BC-CON-08009",
+    "research/units/unit-08-applications-integration.md#8.3 Using Accumulation Functions and Definite Integrals in Applied Contexts"
+   ],
+   "evidence_tag": "inferred",
+   "text": "A response writes one sentence naming the quantity that accumulates, the interval taken from the limits, and units that multiply the rate's units by the input's units.",
+   "delivery": {
+    "mode": "text",
+    "reason": "rule 6: BC-REP-04 and BC-REP-05 on BC-SKL-08015 draw nothing; unit README delivery map",
+    "sources": [
+     "BC-SKL-08015"
+    ]
+   }
+  },
+  {
+   "id": "LSN-CON-08009#s2",
+   "type": "key_ideas",
+   "bands": [
+    "low",
+    "mid"
+   ],
+   "skills": [
+    "BC-SKL-08015"
+   ],
+   "sources": [
+    "BC-EK-CHA-4D1",
+    "ced:154",
+    "research/units/unit-08-applications-integration.md#8.3 Using Accumulation Functions and Definite Integrals in Applied Contexts"
+   ],
+   "evidence_tag": "verified",
+   "ek_id": "BC-EK-CHA-4D1",
+   "depth": "core",
+   "text": "An integral of a rate accumulates that rate. The integrand says what changes per unit of input; the integral says how much changes across the limits. Its units are the rate's units times the input's units: gallons per hour over hours give gallons.",
+   "notation": "interpretation with units",
+   "quote": {
+    "text": "A function defined as an integral represents an accumulation of a rate of change.",
+    "source": "ced:154"
+   },
+   "delivery": {
+    "mode": "text",
+    "reason": "rule 6: a units rule in words",
+    "sources": [
+     "BC-SKL-08015"
+    ]
+   }
+  },
+  {
+   "id": "LSN-CON-08009#s3",
+   "type": "key_ideas",
+   "bands": [
+    "low",
+    "mid"
+   ],
+   "skills": [
+    "BC-SKL-08015"
+   ],
+   "sources": [
+    "BC-EK-CHA-4D2",
+    "ced:154",
+    "sg-23:2",
+    "research/units/unit-08-applications-integration.md#8.3 Using Accumulation Functions and Definite Integrals in Applied Contexts"
+   ],
+   "evidence_tag": "verified",
+   "ek_id": "BC-EK-CHA-4D2",
+   "depth": "core",
+   "text": "Over an interval, the integral of a rate is the change in the quantity across that interval, not the amount present. A complete interpretation names the quantity, the interval and the units (sg-23:2).",
+   "notation": "interpretation with units",
+   "quote": {
+    "text": "The definite integral of the rate of change of a quantity over an interval gives the net change of that quantity over that interval.",
+    "source": "ced:154"
+   },
+   "delivery": {
+    "mode": "text",
+    "reason": "rule 6: what a sentence must name",
+    "sources": [
+     "BC-SKL-08015"
+    ]
+   }
+  },
+  {
+   "id": "LSN-CON-08009#s4",
+   "type": "strategy",
+   "bands": [
+    "low",
+    "mid"
+   ],
+   "skills": [
+    "BC-SKL-08015"
+   ],
+   "sources": [
+    "BC-QA-06015"
+   ],
+   "evidence_tag": "verified",
+   "archetype_id": "BC-QA-06015",
+   "cue": "The stem asks for a sentence with quantity, interval and units, from a contextual rate and a displayed integral.",
+   "method": "First written line: what the integrand measures per unit input, units multiplied.",
+   "rival": "Rival: the quantity without the interval, or the rate's units (BC-ERR-08017).",
+   "separating_feature": "An accumulation carries the product of units and both limits."
+  },
+  {
+   "id": "LSN-CON-08009#s5",
+   "type": "worked_example",
+   "bands": [
+    "low",
+    "mid"
+   ],
+   "skills": [
+    "BC-SKL-08015"
+   ],
+   "sources": [
+    "BC-QA-06015"
+   ],
+   "evidence_tag": "inferred",
+   "archetype_id": "BC-QA-06015",
+   "parameter_draw": {
+    "context": "snow",
+    "start": 4,
+    "length": 6,
+    "display": "total",
+    "direction": "accumulates"
+   },
+   "problem": {
+    "text": "Snow piles onto a driveway at \\(S(t)\\) cubic feet per hour, \\(t\\) in hours. Using correct units, interpret \\(\\int_4^{10} S(t)\\,dt\\).",
+    "command_verb": "interpret"
+   },
+   "calculator_status": "no_calculator",
+   "steps": [
+    {
+     "cue": "The integrand is a rate.",
+     "why": "Cubic feet per hour."
+    },
+    {
+     "cue": "Multiply the units.",
+     "why": "Rate units times hours.",
+     "expression": [
+      "Power",
+      "feet",
+      3
+     ],
+     "relation": "new"
+    },
+    {
+     "cue": "Hours cancel.",
+     "why": "An amount, not a rate.",
+     "expression": [
+      "Power",
+      "feet",
+      3
+     ],
+     "relation": "equivalent"
+    },
+    {
+     "cue": "The limits name the interval.",
+     "why": "From \\(t=4\\) to \\(t=10\\) hours."
+    },
+    {
+     "cue": "Write the sentence.",
+     "why": "Quantity, units, interval together (sg-23:2)."
+    }
+   ],
+   "answer": {
+    "form": "statement",
+    "mathjson": "feet**3",
+    "text": "The cubic feet of snow that pile onto the driveway from t = 4 to t = 10 hours."
+   },
+   "delivery": {
+    "mode": "step_reveal",
+    "reason": "rule 1",
+    "sources": []
+   }
+  },
+  {
+   "id": "LSN-CON-08009#err-BC-ERR-08017",
+   "type": "common_error",
+   "bands": [
+    "low",
+    "mid"
+   ],
+   "skills": [
+    "BC-SKL-08015"
+   ],
+   "sources": [
+    "BC-ERR-08017",
+    "BC-MIS-08009"
+   ],
+   "evidence_tag": "inferred",
+   "error_id": "BC-ERR-08017",
+   "observed_behavior": "The sentence says what is accumulating without saying between which inputs.",
+   "scoring_consequence": "The interpretation point is lost because the guideline requires the interval as well as the quantity (sg-23:2).",
+   "wrong_step": {
+    "text": "The cubic feet of snow on the driveway.",
+    "expression": [
+     "Power",
+     "feet",
+     3
+    ]
+   },
+   "right_step": {
+    "text": "The cubic feet that pile on from \\(t=4\\) to \\(t=10\\).",
+    "expression": [
+     "Power",
+     "feet",
+     3
+    ]
+   },
+   "relation": "equivalent",
+   "possible_reason": {
+    "misconception_id": "BC-MIS-08009",
+    "text": "the sentence as a label for the integral"
+   },
+   "delivery": {
+    "mode": "step_reveal",
+    "reason": "rule 1",
+    "sources": []
+   }
+  },
+  {
+   "id": "LSN-CON-08009#err-BC-ERR-99005",
+   "type": "common_error",
+   "bands": [
+    "low",
+    "mid"
+   ],
+   "skills": [
+    "BC-SKL-08015"
+   ],
+   "sources": [
+    "BC-ERR-99005",
+    "BC-MIS-02008"
+   ],
+   "evidence_tag": "inferred",
+   "error_id": "BC-ERR-99005",
+   "observed_behavior": "Responses give no units where units are requested, or report units of the original quantity instead of the derived one, for example words per minute for a second difference quotient.",
+   "scoring_consequence": "The units point is not earned; it is scored separately from the value.",
+   "wrong_step": {
+    "text": "Cubic feet per hour.",
+    "expression": [
+     "Multiply",
+     [
+      "Power",
+      "feet",
+      3
+     ],
+     [
+      "Power",
+      "hour",
+      -1
+     ]
+    ]
+   },
+   "right_step": {
+    "text": "Cubic feet.",
+    "expression": [
+     "Power",
+     "feet",
+     3
+    ]
+   },
+   "relation": "distinct",
+   "possible_reason": {
+    "misconception_id": "BC-MIS-02008",
+    "text": "units as optional"
+   },
+   "delivery": {
+    "mode": "step_reveal",
+    "reason": "rule 1",
+    "sources": []
+   }
+  },
+  {
+   "id": "LSN-CON-08009#prq-BC-PRQ-06005",
+   "type": "prerequisite_bridge",
+   "bands": [
+    "low",
+    "mid"
+   ],
+   "skills": [
+    "BC-SKL-08015"
+   ],
+   "sources": [
+    "BC-PRQ-06005"
+   ],
+   "evidence_tag": "inferred",
+   "prerequisite_id": "BC-PRQ-06005",
+   "text": "\\(S(t)\\) is the rate at time \\(t\\), and the limits are times; reading them as amounts misplaces the interval."
+  }
+ ],
+ "checks": [
+  {
+   "id": "LSN-CON-08009#chk-1",
+   "check_kind": "completion",
+   "bands": [
+    "low",
+    "mid"
+   ],
+   "format": "short_answer",
+   "archetype_id": "BC-QA-06015",
+   "parameter_draw": {
+    "context": "snow",
+    "start": 4,
+    "length": 6,
+    "display": "total",
+    "direction": "accumulates"
+   },
+   "completes": "LSN-CON-08009#s5",
+   "stem": {
+    "text": "The units are cubic feet and the limits 4 and 10 hours. Write the interpretation of \\(\\int_4^{10} S(t)\\,dt\\).",
+    "command_verb": "interpret"
+   },
+   "answer_key": {
+    "form": "statement",
+    "mathjson": "feet**3",
+    "text": "The cubic feet of snow that pile onto the driveway from t = 4 to t = 10 hours."
+   },
+   "worked_solution": [
+    {
+     "step": 1,
+     "text": "Units.",
+     "mathjson": [
+      "Power",
+      "feet",
+      3
+     ],
+     "relation": "new"
+    },
+    {
+     "step": 2,
+     "text": "Cubic feet.",
+     "mathjson": [
+      "Power",
+      "feet",
+      3
+     ],
+     "relation": "equivalent"
+    }
+   ],
+   "calculator_status": "no_calculator",
+   "representation": "BC-REP-04",
+   "skills": [
+    "BC-SKL-08015"
+   ]
+  },
+  {
+   "id": "LSN-CON-08009#chk-2",
+   "check_kind": "isomorph",
+   "bands": [
+    "low",
+    "mid"
+   ],
+   "format": "short_answer",
+   "archetype_id": "BC-QA-06015",
+   "parameter_draw": {
+    "context": "people",
+    "start": 9,
+    "length": 3,
+    "display": "total",
+    "direction": "depletes"
+   },
+   "stem": {
+    "text": "People leave a stadium at \\(L(t)\\) people per minute, \\(t\\) in minutes. Interpret \\(\\int_9^{12} L(t)\\,dt\\) with units.",
+    "command_verb": "interpret"
+   },
+   "answer_key": {
+    "form": "statement",
+    "mathjson": "people",
+    "text": "The number of people who leave the stadium from t = 9 to t = 12 minutes."
+   },
+   "worked_solution": [
+    {
+     "step": 1,
+     "text": "Units.",
+     "mathjson": "people",
+     "relation": "new"
+    },
+    {
+     "step": 2,
+     "text": "People.",
+     "mathjson": "people",
+     "relation": "equivalent"
+    }
+   ],
+   "calculator_status": "no_calculator",
+   "representation": "BC-REP-04",
+   "skills": [
+    "BC-SKL-08015"
+   ]
+  },
+  {
+   "id": "LSN-CON-08009#chk-3",
+   "check_kind": "mcq",
+   "bands": [
+    "low"
+   ],
+   "format": "mcq",
+   "archetype_id": "BC-QA-06015",
+   "parameter_draw": {
+    "context": "oil",
+    "start": 1,
+    "length": 5,
+    "display": "total",
+    "direction": "accumulates"
+   },
+   "stem": {
+    "text": "Oil flows into a tank at \\(R(t)\\) gallons per hour. Which interprets \\(\\int_1^6 R(t)\\,dt\\)?",
+    "command_verb": "interpret"
+   },
+   "answer_key": {
+    "form": "statement",
+    "mathjson": "gallons_into_tank_on_1_to_6"
+   },
+   "worked_solution": [],
+   "options": [
+    {
+     "id": "A",
+     "is_key": false,
+     "error_path": "BC-ERR-08017",
+     "label": "The gallons of oil that flow into the tank.",
+     "derivation": "the interval omitted"
+    },
+    {
+     "id": "B",
+     "is_key": true,
+     "error_path": null,
+     "label": "The gallons of oil that flow into the tank from t = 1 to t = 6 hours."
+    },
+    {
+     "id": "C",
+     "is_key": false,
+     "error_path": "BC-ERR-99005",
+     "label": "The gallons per hour of oil that flow into the tank from t = 1 to t = 6 hours.",
+     "derivation": "the rate's units kept"
+    },
+    {
+     "id": "D",
+     "is_key": false,
+     "error_path": "BC-ERR-99005",
+     "label": "The oil that flows into the tank from t = 1 to t = 6.",
+     "derivation": "no units"
+    }
+   ],
+   "calculator_status": "no_calculator",
+   "representation": "BC-REP-04",
+   "skills": [
+    "BC-SKL-08015"
+   ]
+  }
+ ],
+ "refresher": [
+  "LSN-CON-08009#s2",
+  "LSN-CON-08009#s3",
+  "LSN-CON-08009#err-BC-ERR-08017",
+  "LSN-CON-08009#err-BC-ERR-99005",
+  "LSN-CON-08009#s5"
+ ],
+ "provenance": {
+  "author": "tools/lesson_transcribe.py",
+  "prompt_version": "generator/lesson_v1",
+  "design_path": "docs/lessons/unit-08/LSN-CON-08009.md",
+  "signed_off_by": "claude-opus-5-5",
+  "signed_off_at": "2026-09-29",
+  "not_human": true
+ }
+}

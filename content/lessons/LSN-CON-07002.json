@@ -1,0 +1,933 @@
+{
+ "id": "LSN-CON-07002",
+ "version": 1,
+ "kind": "concept",
+ "target_id": "BC-CON-07002",
+ "status": "signed_off",
+ "snapshot_digest": "a6a8ec9d3f59ab8f712e33d30cc22fc64bf2c478fbe7312e3e3118d319c6a42f",
+ "source_digest": "1b229013d2b5cbf59d0fd518107ce0ed9b9872a0f16c1561ff1b0920c36ab3c4",
+ "read_minutes": {
+  "full": 5.1,
+  "brief": 2.9
+ },
+ "word_count": {
+  "full": 646,
+  "brief": 365
+ },
+ "sections": [
+  {
+   "id": "LSN-CON-07002#s1",
+   "type": "orientation",
+   "bands": [
+    "low",
+    "mid"
+   ],
+   "skills": [
+    "BC-SKL-07006",
+    "BC-SKL-07007",
+    "BC-SKL-07008"
+   ],
+   "sources": [
+    "BC-CON-07002",
+    "research/units/unit-07-differential-equations.md#7.2 Verifying Solutions for Differential Equations"
+   ],
+   "evidence_tag": "inferred",
+   "text": "Differentiate the candidate, put it and its derivative into both sides, compare, and check the stated point before calling it the particular solution.",
+   "delivery": {
+    "mode": "text",
+    "reason": "rule 6: BC-REP-01, 06 on BC-SKL-07006 to 07008, none figure-bearing",
+    "sources": [
+     "BC-SKL-07006"
+    ]
+   }
+  },
+  {
+   "id": "LSN-CON-07002#s2",
+   "type": "key_ideas",
+   "bands": [
+    "low",
+    "mid"
+   ],
+   "skills": [
+    "BC-SKL-07006",
+    "BC-SKL-07007",
+    "BC-SKL-07008"
+   ],
+   "sources": [
+    "BC-EK-FUN-7B1",
+    "ced:138",
+    "research/units/unit-07-differential-equations.md#7.2 Verifying Solutions for Differential Equations"
+   ],
+   "evidence_tag": "verified",
+   "ek_id": "BC-EK-FUN-7B1",
+   "depth": "core",
+   "text": "A candidate solves the equation on an interval when its derivative, and the candidate itself, substituted into the two sides give a true statement there. One input where the sides differ shows it is not a solution. Meeting the initial condition is a separate test.",
+   "notation": "substitution; satisfies the differential equation",
+   "quote": {
+    "text": "Derivatives can be used to verify that a function is a solution to a given differential equation.",
+    "source": "ced:138"
+   },
+   "delivery": {
+    "mode": "text",
+    "reason": "rule 6: a rule about substitution with no figure-bearing representation",
+    "sources": [
+     "BC-SKL-07006",
+     "BC-SKL-07008"
+    ]
+   }
+  },
+  {
+   "id": "LSN-CON-07002#s3",
+   "type": "strategy",
+   "bands": [
+    "low",
+    "mid"
+   ],
+   "skills": [
+    "BC-SKL-07006",
+    "BC-SKL-07007",
+    "BC-SKL-07008"
+   ],
+   "sources": [
+    "BC-QA-07007"
+   ],
+   "evidence_tag": "verified",
+   "archetype_id": "BC-QA-07007",
+   "cue": "A function is printed beside the equation: show that it is a solution, or pick which one is.",
+   "method": "First line: the derivative of the candidate.",
+   "rival": "Rival: solving the equation from scratch.",
+   "separating_feature": "A candidate is supplied, so it is tested, not derived."
+  },
+  {
+   "id": "LSN-CON-07002#s4",
+   "type": "worked_example",
+   "bands": [
+    "low",
+    "mid"
+   ],
+   "skills": [
+    "BC-SKL-07006",
+    "BC-SKL-07007",
+    "BC-SKL-07008"
+   ],
+   "sources": [
+    "BC-QA-07007"
+   ],
+   "evidence_tag": "inferred",
+   "archetype_id": "BC-QA-07007",
+   "parameter_draw": {
+    "case": "solution",
+    "rate": 2,
+    "level": 3,
+    "initial": 1,
+    "shift": 1
+   },
+   "problem": {
+    "text": "Show that y = 3 - 2e^(2x) is the solution of dy/dx = 2(y - 3) with y(0) = 1.",
+    "command_verb": "show"
+   },
+   "calculator_status": "no_calculator",
+   "steps": [
+    {
+     "cue": "A printed candidate: start from it.",
+     "why": "The candidate is tested, not derived.",
+     "expression": [
+      "Add",
+      3,
+      [
+       "Multiply",
+       -2,
+       [
+        "Exp",
+        [
+         "Multiply",
+         2,
+         "x"
+        ]
+       ]
+      ]
+     ],
+     "relation": "new"
+    },
+    {
+     "cue": "The left side is dy/dx.",
+     "why": "Without the derivative the equation is never tested.",
+     "expression": [
+      "Multiply",
+      -4,
+      [
+       "Exp",
+       [
+        "Multiply",
+        2,
+        "x"
+       ]
+      ]
+     ],
+     "relation": "differentiate",
+     "variable": "x"
+    },
+    {
+     "cue": "The right side takes the candidate for y.",
+     "why": "2((3 - 2e^(2x)) - 3).",
+     "expression": [
+      "Multiply",
+      -4,
+      [
+       "Exp",
+       [
+        "Multiply",
+        2,
+        "x"
+       ]
+      ]
+     ],
+     "relation": "new"
+    },
+    {
+     "cue": "Simplify and compare with the left side.",
+     "why": "Both sides are -4e^(2x): the equation holds.",
+     "expression": [
+      "Multiply",
+      -4,
+      [
+       "Exp",
+       [
+        "Multiply",
+        2,
+        "x"
+       ]
+      ]
+     ],
+     "point_type_id": "BC-PT-99068",
+     "relation": "equivalent"
+    },
+    {
+     "cue": "The stem names y(0) = 1.",
+     "why": "Many functions solve the equation; the point selects one.",
+     "expression": [
+      "Add",
+      3,
+      [
+       "Multiply",
+       -2,
+       [
+        "Exp",
+        [
+         "Multiply",
+         2,
+         "x"
+        ]
+       ]
+      ]
+     ],
+     "relation": "new"
+    },
+    {
+     "cue": "Evaluate at x = 0.",
+     "why": "3 - 2 = 1 matches, so it is the particular solution.",
+     "expression": 1,
+     "relation": "evaluate",
+     "subs": {
+      "x": "0"
+     }
+    }
+   ],
+   "answer": {
+    "form": "statement",
+    "mathjson": "y = 3 - 2*exp(2*x) solves dy/dx = 2*(y - 3) and y(0) = 1"
+   },
+   "delivery": {
+    "mode": "step_reveal",
+    "reason": "rule 1",
+    "sources": []
+   }
+  },
+  {
+   "id": "LSN-CON-07002#s5",
+   "type": "worked_example",
+   "bands": [
+    "low"
+   ],
+   "skills": [
+    "BC-SKL-07006",
+    "BC-SKL-07007",
+    "BC-SKL-07008"
+   ],
+   "sources": [
+    "BC-QA-07007"
+   ],
+   "evidence_tag": "inferred",
+   "archetype_id": "BC-QA-07007",
+   "parameter_draw": {
+    "case": "wrong_initial_value",
+    "rate": -1,
+    "level": 2,
+    "initial": 4,
+    "shift": 1
+   },
+   "problem": {
+    "text": "Is y = 2 + 3e^(-x) the solution of dy/dx = -(y - 2) with y(0) = 4?",
+    "command_verb": "determine"
+   },
+   "calculator_status": "no_calculator",
+   "steps": [
+    {
+     "cue": "A candidate is printed.",
+     "why": "Test it.",
+     "expression": [
+      "Add",
+      2,
+      [
+       "Multiply",
+       3,
+       [
+        "Exp",
+        [
+         "Multiply",
+         -1,
+         "x"
+        ]
+       ]
+      ]
+     ],
+     "relation": "new"
+    },
+    {
+     "cue": "Left side first.",
+     "why": "The derivative.",
+     "expression": [
+      "Multiply",
+      -3,
+      [
+       "Exp",
+       [
+        "Multiply",
+        -1,
+        "x"
+       ]
+      ]
+     ],
+     "relation": "differentiate",
+     "variable": "x"
+    },
+    {
+     "cue": "Right side with the candidate.",
+     "why": "-((2 + 3e^(-x)) - 2).",
+     "expression": [
+      "Multiply",
+      -3,
+      [
+       "Exp",
+       [
+        "Multiply",
+        -1,
+        "x"
+       ]
+      ]
+     ],
+     "relation": "new"
+    },
+    {
+     "cue": "Compare.",
+     "why": "Both -3e^(-x): the equation holds.",
+     "expression": [
+      "Multiply",
+      -3,
+      [
+       "Exp",
+       [
+        "Multiply",
+        -1,
+        "x"
+       ]
+      ]
+     ],
+     "point_type_id": "BC-PT-99068",
+     "relation": "equivalent"
+    },
+    {
+     "cue": "The condition y(0) = 4 remains.",
+     "why": "The evidence for a no is a displayed value.",
+     "expression": [
+      "Add",
+      2,
+      [
+       "Multiply",
+       3,
+       [
+        "Exp",
+        [
+         "Multiply",
+         -1,
+         "x"
+        ]
+       ]
+      ]
+     ],
+     "relation": "new"
+    },
+    {
+     "cue": "Evaluate at x = 0.",
+     "why": "5, not 4: a solution, but not this one.",
+     "expression": 5,
+     "point_type_id": "BC-PT-99005",
+     "relation": "evaluate",
+     "subs": {
+      "x": "0"
+     }
+    }
+   ],
+   "answer": {
+    "form": "statement",
+    "mathjson": "solves the equation but y(0) = 5, not 4"
+   },
+   "delivery": {
+    "mode": "step_reveal",
+    "reason": "rule 1",
+    "sources": []
+   }
+  },
+  {
+   "id": "LSN-CON-07002#s6",
+   "type": "what_a_reader_scores",
+   "bands": [
+    "low",
+    "mid"
+   ],
+   "skills": [
+    "BC-SKL-07006",
+    "BC-SKL-07007",
+    "BC-SKL-07008"
+   ],
+   "sources": [
+    "BC-PT-99068"
+   ],
+   "evidence_tag": "verified",
+   "example_id": "LSN-CON-07002#s4",
+   "lines": [
+    {
+     "point_type_id": "BC-PT-99068",
+     "text": "Verification for a show-that prompt. Earned by: An algebraic chain that lands on the stated target expression or inequality, closed with the target itself (sg-25:26). Not earned by: A chain that stops before the target, or that asserts equality where the prompt asked for a bound (sg-25:22, sg-22:21)."
+    }
+   ]
+  },
+  {
+   "id": "LSN-CON-07002#s7",
+   "type": "what_a_reader_scores",
+   "bands": [
+    "low"
+   ],
+   "skills": [
+    "BC-SKL-07006",
+    "BC-SKL-07007",
+    "BC-SKL-07008"
+   ],
+   "sources": [
+    "BC-PT-99068",
+    "BC-PT-99005"
+   ],
+   "evidence_tag": "verified",
+   "example_id": "LSN-CON-07002#s5",
+   "lines": [
+    {
+     "point_type_id": "BC-PT-99068",
+     "text": "Verification for a show-that prompt. Earned by: An algebraic chain that lands on the stated target expression or inequality, closed with the target itself (sg-25:26). Not earned by: A chain that stops before the target, or that asserts equality where the prompt asked for a bound (sg-25:22, sg-22:21)."
+    },
+    {
+     "point_type_id": "BC-PT-99005",
+     "text": "Answer with supporting work or setup shown. Earned by: The correct value together with the setup the prompt demanded, such as a difference and a quotient from a table or an equation that produces the value (sg-26:2, sg-25:4). Not earned by: An unsupported value (sg-23:10, sg-22:9), or a setup with no value (sg-26:2). Notation: sg-22:6 withholds this point for an equation of the form function equals constant, such as a derivative expression set equal to a number without evaluation. Precision: A reported decimal answer must be accurate to three places after the decimal point, rounded or truncated; at most one point per question is lost to inappropriate rounding (sg-25:2, sg-26:2)."
+    }
+   ]
+  },
+  {
+   "id": "LSN-CON-07002#err-BC-ERR-07006",
+   "type": "common_error",
+   "bands": [
+    "low",
+    "mid"
+   ],
+   "skills": [
+    "BC-SKL-07006"
+   ],
+   "sources": [
+    "BC-ERR-07006"
+   ],
+   "evidence_tag": "inferred",
+   "error_id": "BC-ERR-07006",
+   "observed_behavior": "The verification puts the candidate into both sides and never produces its derivative.",
+   "scoring_consequence": "The check does not test the equation, so the conclusion is unsupported.",
+   "wrong_step": {
+    "text": "Candidate as the left side.",
+    "expression": [
+     "Add",
+     3,
+     [
+      "Multiply",
+      -2,
+      [
+       "Exp",
+       [
+        "Multiply",
+        2,
+        "x"
+       ]
+      ]
+     ]
+    ]
+   },
+   "right_step": {
+    "text": "Its derivative.",
+    "expression": [
+     "Multiply",
+     -4,
+     [
+      "Exp",
+      [
+       "Multiply",
+       2,
+       "x"
+      ]
+     ]
+    ]
+   },
+   "relation": "distinct",
+   "delivery": {
+    "mode": "step_reveal",
+    "reason": "rule 1",
+    "sources": []
+   }
+  },
+  {
+   "id": "LSN-CON-07002#err-BC-ERR-07007",
+   "type": "common_error",
+   "bands": [
+    "low",
+    "mid"
+   ],
+   "skills": [
+    "BC-SKL-07007"
+   ],
+   "sources": [
+    "BC-ERR-07007",
+    "BC-MIS-07005"
+   ],
+   "evidence_tag": "inferred",
+   "error_id": "BC-ERR-07007",
+   "observed_behavior": "The response verifies the equation and declares the candidate the particular solution without testing the stated point.",
+   "scoring_consequence": "A member of the family is reported where a specific one was asked for.",
+   "wrong_step": {
+    "text": "Verdict with no value at 0.",
+    "expression": [
+     "Add",
+     3,
+     [
+      "Multiply",
+      -2,
+      [
+       "Exp",
+       [
+        "Multiply",
+        2,
+        "x"
+       ]
+      ]
+     ]
+    ]
+   },
+   "right_step": {
+    "text": "Value at 0 is 1.",
+    "expression": 1
+   },
+   "relation": "distinct",
+   "possible_reason": {
+    "misconception_id": "BC-MIS-07005",
+    "text": "reads the equation as determining a single function"
+   },
+   "delivery": {
+    "mode": "step_reveal",
+    "reason": "rule 1",
+    "sources": []
+   }
+  },
+  {
+   "id": "LSN-CON-07002#err-BC-ERR-07008",
+   "type": "common_error",
+   "bands": [
+    "low",
+    "mid"
+   ],
+   "skills": [
+    "BC-SKL-07008"
+   ],
+   "sources": [
+    "BC-ERR-07008"
+   ],
+   "evidence_tag": "inferred",
+   "error_id": "BC-ERR-07008",
+   "observed_behavior": "The response says a candidate is not a solution and shows nothing that fails.",
+   "scoring_consequence": "The verdict is unsupported even when correct.",
+   "wrong_step": {
+    "text": "y = 2 + 3e^x for dy/dx = -(y - 2): no, with nothing shown.",
+    "expression": [
+     "Add",
+     2,
+     [
+      "Multiply",
+      3,
+      [
+       "Exp",
+       "x"
+      ]
+     ]
+    ]
+   },
+   "right_step": {
+    "text": "At x = 0 the left side is 3, the right side -3.",
+    "expression": -3
+   },
+   "relation": "distinct",
+   "delivery": {
+    "mode": "step_reveal",
+    "reason": "rule 1",
+    "sources": []
+   }
+  },
+  {
+   "id": "LSN-CON-07002#prq-BC-PRQ-06005",
+   "type": "prerequisite_bridge",
+   "bands": [
+    "low",
+    "mid"
+   ],
+   "skills": [
+    "BC-SKL-07007"
+   ],
+   "sources": [
+    "BC-PRQ-06005"
+   ],
+   "evidence_tag": "inferred",
+   "prerequisite_id": "BC-PRQ-06005",
+   "text": "y(0) is the candidate's value at input 0; f and f' are different objects."
+  },
+  {
+   "id": "LSN-CON-07002#prq-BC-PRQ-07002",
+   "type": "prerequisite_bridge",
+   "bands": [
+    "low",
+    "mid"
+   ],
+   "skills": [
+    "BC-SKL-07006"
+   ],
+   "sources": [
+    "BC-PRQ-07002"
+   ],
+   "evidence_tag": "inferred",
+   "prerequisite_id": "BC-PRQ-07002",
+   "text": "dy/dx is the derivative of the candidate, the left side to compute."
+  }
+ ],
+ "checks": [
+  {
+   "id": "LSN-CON-07002#chk-1",
+   "check_kind": "completion",
+   "bands": [
+    "low",
+    "mid"
+   ],
+   "format": "short_answer",
+   "archetype_id": "BC-QA-07007",
+   "parameter_draw": {
+    "case": "solution",
+    "rate": 2,
+    "level": 3,
+    "initial": 1,
+    "shift": 1
+   },
+   "completes": "LSN-CON-07002#s4",
+   "stem": {
+    "text": "y = 3 - 2e^(2x) makes both sides of dy/dx = 2(y - 3) equal. Finish: is it the solution with y(0) = 1?",
+    "command_verb": "determine"
+   },
+   "answer_key": {
+    "form": "statement",
+    "mathjson": "y = 3 - 2*exp(2*x) solves dy/dx = 2*(y - 3) and y(0) = 1"
+   },
+   "worked_solution": [
+    {
+     "step": 1,
+     "text": "The candidate.",
+     "mathjson": [
+      "Add",
+      3,
+      [
+       "Multiply",
+       -2,
+       [
+        "Exp",
+        [
+         "Multiply",
+         2,
+         "x"
+        ]
+       ]
+      ]
+     ],
+     "relation": "new"
+    },
+    {
+     "step": 2,
+     "text": "At x = 0.",
+     "mathjson": 1,
+     "relation": "evaluate",
+     "subs": {
+      "x": "0"
+     }
+    }
+   ],
+   "calculator_status": "no_calculator",
+   "representation": "BC-REP-01",
+   "skills": [
+    "BC-SKL-07007"
+   ]
+  },
+  {
+   "id": "LSN-CON-07002#chk-2",
+   "check_kind": "isomorph",
+   "bands": [
+    "low",
+    "mid"
+   ],
+   "format": "short_answer",
+   "archetype_id": "BC-QA-07007",
+   "parameter_draw": {
+    "case": "solution",
+    "rate": -3,
+    "level": -1,
+    "initial": 2,
+    "shift": 2
+   },
+   "stem": {
+    "text": "Is y = -1 + 3e^(-3x) the solution of dy/dx = -3(y + 1) with y(0) = 2?",
+    "command_verb": "determine"
+   },
+   "answer_key": {
+    "form": "statement",
+    "mathjson": "yes: both sides are -9*exp(-3*x) and y(0) = 2"
+   },
+   "worked_solution": [
+    {
+     "step": 1,
+     "text": "Candidate.",
+     "mathjson": [
+      "Add",
+      -1,
+      [
+       "Multiply",
+       3,
+       [
+        "Exp",
+        [
+         "Multiply",
+         -3,
+         "x"
+        ]
+       ]
+      ]
+     ],
+     "relation": "new"
+    },
+    {
+     "step": 2,
+     "text": "Derivative.",
+     "mathjson": [
+      "Multiply",
+      -9,
+      [
+       "Exp",
+       [
+        "Multiply",
+        -3,
+        "x"
+       ]
+      ]
+     ],
+     "relation": "differentiate",
+     "variable": "x"
+    },
+    {
+     "step": 3,
+     "text": "Right side.",
+     "mathjson": [
+      "Multiply",
+      -9,
+      [
+       "Exp",
+       [
+        "Multiply",
+        -3,
+        "x"
+       ]
+      ]
+     ],
+     "relation": "new"
+    },
+    {
+     "step": 4,
+     "text": "Equal.",
+     "mathjson": [
+      "Multiply",
+      -9,
+      [
+       "Exp",
+       [
+        "Multiply",
+        -3,
+        "x"
+       ]
+      ]
+     ],
+     "relation": "equivalent"
+    },
+    {
+     "step": 5,
+     "text": "Candidate again.",
+     "mathjson": [
+      "Add",
+      -1,
+      [
+       "Multiply",
+       3,
+       [
+        "Exp",
+        [
+         "Multiply",
+         -3,
+         "x"
+        ]
+       ]
+      ]
+     ],
+     "relation": "new"
+    },
+    {
+     "step": 6,
+     "text": "At 0.",
+     "mathjson": 2,
+     "relation": "evaluate",
+     "subs": {
+      "x": "0"
+     }
+    }
+   ],
+   "calculator_status": "no_calculator",
+   "representation": "BC-REP-01",
+   "skills": [
+    "BC-SKL-07006",
+    "BC-SKL-07007"
+   ]
+  },
+  {
+   "id": "LSN-CON-07002#chk-3",
+   "check_kind": "mcq",
+   "bands": [
+    "low"
+   ],
+   "format": "mcq",
+   "archetype_id": "BC-QA-07007",
+   "parameter_draw": {
+    "case": "wrong_initial_value",
+    "rate": 1,
+    "level": -2,
+    "initial": 0,
+    "shift": 2
+   },
+   "stem": {
+    "text": "For dy/dx = y + 2 with y(0) = 0, which verdict on y = -2 + 4e^x is supported?",
+    "command_verb": "identify"
+   },
+   "answer_key": {
+    "form": "statement",
+    "mathjson": "solves the equation; y(0) = 2, not 0"
+   },
+   "worked_solution": [
+    {
+     "step": 1,
+     "text": "Derivative 4e^x equals y + 2.",
+     "mathjson": [
+      "Add",
+      -2,
+      [
+       "Multiply",
+       4,
+       [
+        "Exp",
+        "x"
+       ]
+      ]
+     ],
+     "relation": "new"
+    },
+    {
+     "step": 2,
+     "text": "At 0.",
+     "mathjson": 2,
+     "relation": "evaluate",
+     "subs": {
+      "x": "0"
+     }
+    }
+   ],
+   "options": [
+    {
+     "id": "A",
+     "is_key": false,
+     "error_path": "BC-ERR-07006",
+     "label": "Not a solution: y put into both sides gives -2 + 4e^x against 4e^x.",
+     "derivation": "the candidate used where its derivative belongs"
+    },
+    {
+     "id": "B",
+     "is_key": false,
+     "error_path": "BC-ERR-07007",
+     "label": "The particular solution: dy/dx = 4e^x equals y + 2.",
+     "derivation": "the condition at 0 never tested"
+    },
+    {
+     "id": "C",
+     "is_key": false,
+     "error_path": "BC-ERR-07008",
+     "label": "Not a solution: it does not fit the equation.",
+     "derivation": "a negative verdict with nothing exhibited"
+    },
+    {
+     "id": "D",
+     "is_key": true,
+     "error_path": null,
+     "label": "It solves the equation, but y(0) = 2, not 0."
+    }
+   ],
+   "calculator_status": "no_calculator",
+   "representation": "BC-REP-01",
+   "skills": [
+    "BC-SKL-07007"
+   ]
+  }
+ ],
+ "refresher": [
+  "LSN-CON-07002#s2",
+  "LSN-CON-07002#err-BC-ERR-07006",
+  "LSN-CON-07002#err-BC-ERR-07007",
+  "LSN-CON-07002#err-BC-ERR-07008",
+  "LSN-CON-07002#s4"
+ ],
+ "provenance": {
+  "author": "tools/lesson_transcribe.py",
+  "prompt_version": "generator/lesson_v1",
+  "design_path": "docs/lessons/unit-07/LSN-CON-07002.md",
+  "signed_off_by": "claude-opus-5-5",
+  "signed_off_at": "2026-09-29",
+  "not_human": true
+ }
+}

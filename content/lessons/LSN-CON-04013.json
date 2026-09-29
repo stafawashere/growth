@@ -1,0 +1,639 @@
+{
+ "id": "LSN-CON-04013",
+ "version": 1,
+ "kind": "concept",
+ "target_id": "BC-CON-04013",
+ "status": "signed_off",
+ "snapshot_digest": "a6a8ec9d3f59ab8f712e33d30cc22fc64bf2c478fbe7312e3e3118d319c6a42f",
+ "source_digest": "c149f6ec998fe847c0ed79ed3b849bb82d683460e08a2d55216f277df9514e76",
+ "read_minutes": {
+  "full": 3.4,
+  "brief": 2.7
+ },
+ "word_count": {
+  "full": 401,
+  "brief": 344
+ },
+ "sections": [
+  {
+   "id": "LSN-CON-04013#s1",
+   "type": "orientation",
+   "bands": [
+    "low",
+    "mid"
+   ],
+   "skills": [
+    "BC-SKL-04033"
+   ],
+   "sources": [
+    "BC-CON-04013",
+    "research/units/unit-04-contextual-applications-differentiation.md#4.7 Using L'Hospital's Rule for Determining Limits of Indeterminate Forms"
+   ],
+   "evidence_tag": "inferred",
+   "text": "Take the limit of the numerator and of the denominator as two separate statements, then name the form in words. 0/0 is a signal to keep working, never the answer.",
+   "delivery": {
+    "mode": "text",
+    "reason": "rule 5: BC-SKL-04033 carries BC-REP-01 only",
+    "sources": [
+     "BC-SKL-04033"
+    ]
+   }
+  },
+  {
+   "id": "LSN-CON-04013#s2",
+   "type": "key_ideas",
+   "bands": [
+    "low",
+    "mid"
+   ],
+   "skills": [
+    "BC-SKL-04033"
+   ],
+   "sources": [
+    "BC-EK-LIM-4A1",
+    "ced:93",
+    "ced:84",
+    "sg-23:14",
+    "research/units/unit-04-contextual-applications-differentiation.md#4.7 Using L'Hospital's Rule for Determining Limits of Indeterminate Forms"
+   ],
+   "evidence_tag": "verified",
+   "ek_id": "BC-EK-LIM-4A1",
+   "depth": "core",
+   "text": "When numerator and denominator both tend to 0, or both to infinity, the ratio's limit is not yet settled: the form is indeterminate. The form is shown by two separate limits; writing the quotient equal to 0/0 is marked wrong.",
+   "notation": "0/0 and infinity/infinity",
+   "quote": {
+    "text": "such forms are said to be indeterminate",
+    "source": "ced:93"
+   },
+   "delivery": {
+    "mode": "motion",
+    "reason": "rule 2: BC-EK-LIM-4A1 describes a ratio tending to 0/0 in the limit, a limit being taken",
+    "sources": [
+     "BC-SKL-04033"
+    ],
+    "spec": {
+     "kind": "number_line_pair",
+     "representations": [
+      "BC-REP-01"
+     ],
+     "frames": [
+      {
+       "x": 1.1,
+       "numerator": -1.2,
+       "denominator": 0.1
+      },
+      {
+       "x": 1.01,
+       "numerator": -0.12,
+       "denominator": 0.01
+      },
+      {
+       "x": 1.001,
+       "numerator": -0.012,
+       "denominator": 0.001
+      }
+     ],
+     "labels": [
+      {
+       "text": "numerator tends to 0",
+       "placement": "inside"
+      },
+      {
+       "text": "denominator tends to 0",
+       "placement": "inside"
+      },
+      {
+       "text": "ratio stays near -12",
+       "placement": "inside"
+      }
+     ]
+    },
+    "fallback": "the three frames as one static table",
+    "keyboard": "Right arrow steps to the next frame, Left arrow to the previous; Space pauses auto-advance",
+    "reduced_motion": "no auto-advance; each key press cross-fades to the next frame"
+   }
+  },
+  {
+   "id": "LSN-CON-04013#s3",
+   "type": "strategy",
+   "bands": [
+    "low",
+    "mid"
+   ],
+   "skills": [
+    "BC-SKL-04033"
+   ],
+   "sources": [
+    "BC-QA-04009"
+   ],
+   "evidence_tag": "verified",
+   "archetype_id": "BC-QA-04009",
+   "cue": "A quotient whose parts both vanish at the limit point.",
+   "method": "First lines: the numerator's limit, then the denominator's, separately.",
+   "rival": "Rival: 0 reported from the numerator alone (BC-ERR-01008).",
+   "separating_feature": "The denominator's own limit."
+  },
+  {
+   "id": "LSN-CON-04013#s4",
+   "type": "worked_example",
+   "bands": [
+    "low",
+    "mid"
+   ],
+   "skills": [
+    "BC-SKL-04033"
+   ],
+   "sources": [
+    "BC-QA-04009"
+   ],
+   "evidence_tag": "inferred",
+   "archetype_id": "BC-QA-04009",
+   "parameter_draw": {
+    "anchor": 1,
+    "stretch": 3,
+    "far_value": 2,
+    "far_slope": -4,
+    "near_value": 5,
+    "near_slope": 1,
+    "denominator": "linear"
+   },
+   "problem": {
+    "text": "f is differentiable, f(3) = 2, f'(3) = -4, f(1) = 5, f'(1) = 1. Find the limit of (f(3x) - 2)/(x - 1) as x tends to 1.",
+    "command_verb": "find"
+   },
+   "calculator_status": "no_calculator",
+   "steps": [
+    {
+     "cue": "Numerator first.",
+     "why": "Differentiable, so continuous: f(3x) tends to f(3) = 2.",
+     "expression": 0,
+     "relation": "new"
+    },
+    {
+     "cue": "Its limit.",
+     "why": "A separate statement.",
+     "expression": 0,
+     "point_type_id": "BC-PT-99055",
+     "relation": "equivalent"
+    },
+    {
+     "cue": "Denominator next.",
+     "why": "Its own limit.",
+     "expression": [
+      "Add",
+      -1,
+      "x"
+     ],
+     "relation": "new"
+    },
+    {
+     "cue": "x tends to 1.",
+     "why": "Also 0.",
+     "expression": 0,
+     "relation": "limit",
+     "variable": "x",
+     "point": "1"
+    },
+    {
+     "cue": "Both zero.",
+     "why": "Form 0/0 in words: the rule applies."
+    },
+    {
+     "cue": "Ratio of derivatives.",
+     "why": "3f'(3x) over 1, at x = 1.",
+     "expression": -12,
+     "relation": "new"
+    }
+   ],
+   "answer": {
+    "form": "symbolic",
+    "mathjson": -12
+   },
+   "delivery": {
+    "mode": "step_reveal",
+    "reason": "rule 1; rule 2 names a computed sequence as the idea, so the reveal carries a model table of numerator, denominator and ratio at shrinking distance",
+    "sources": [
+     "BC-SKL-04033"
+    ],
+    "spec": {
+     "kind": "table",
+     "columns": [
+      "x",
+      "numerator",
+      "denominator",
+      "ratio"
+     ],
+     "rows": [
+      [
+       "1.1",
+       "-1.2",
+       "0.1",
+       "-12"
+      ],
+      [
+       "1.01",
+       "-0.12",
+       "0.01",
+       "-12"
+      ],
+      [
+       "1.001",
+       "-0.012",
+       "0.001",
+       "-12"
+      ]
+     ],
+     "labels": [
+      {
+       "text": "both parts shrink; the ratio does not",
+       "placement": "inside"
+      }
+     ]
+    },
+    "fallback": "the same three rows as static text",
+    "keyboard": "Tab moves between rows; no control"
+   }
+  },
+  {
+   "id": "LSN-CON-04013#s5",
+   "type": "what_a_reader_scores",
+   "bands": [
+    "low",
+    "mid"
+   ],
+   "skills": [
+    "BC-SKL-04033"
+   ],
+   "sources": [
+    "BC-PT-99055"
+   ],
+   "evidence_tag": "verified",
+   "example_id": "LSN-CON-04013#s4",
+   "lines": [
+    {
+     "point_type_id": "BC-PT-99055",
+     "text": "L'Hospital's Rule application. Earned by: Separate limits for numerator and denominator establishing the indeterminate form, then a ratio of derivatives with at least one derivative correct (sg-23:14). Not earned by: A limit written explicitly as zero over zero, which sg-23:14 states does not earn the form point."
+    }
+   ]
+  },
+  {
+   "id": "LSN-CON-04013#err-BC-ERR-01008",
+   "type": "common_error",
+   "bands": [
+    "low",
+    "mid"
+   ],
+   "skills": [
+    "BC-SKL-04033"
+   ],
+   "sources": [
+    "BC-ERR-01008",
+    "BC-MIS-01006"
+   ],
+   "evidence_tag": "inferred",
+   "error_id": "BC-ERR-01008",
+   "observed_behavior": "The response reports zero because the numerator tends to zero, without attending to the denominator.",
+   "scoring_consequence": "The value point is lost and the rewriting step is absent.",
+   "wrong_step": {
+    "text": "0.",
+    "expression": 0
+   },
+   "right_step": {
+    "text": "-12.",
+    "expression": -12
+   },
+   "relation": "distinct",
+   "possible_reason": {
+    "misconception_id": "BC-MIS-01006",
+    "text": "treats the symbol zero over zero as an answer"
+   },
+   "delivery": {
+    "mode": "step_reveal",
+    "reason": "rule 1",
+    "sources": []
+   }
+  },
+  {
+   "id": "LSN-CON-04013#err-BC-ERR-04028",
+   "type": "common_error",
+   "bands": [
+    "low",
+    "mid"
+   ],
+   "skills": [
+    "BC-SKL-04033"
+   ],
+   "sources": [
+    "BC-ERR-04028",
+    "BC-MIS-04014"
+   ],
+   "evidence_tag": "inferred",
+   "error_id": "BC-ERR-04028",
+   "observed_behavior": "The response writes the limit of the quotient equal to zero over zero rather than presenting the two limits separately.",
+   "scoring_consequence": "The 2023 rubric states that a response presenting a limit explicitly equal to zero over zero does not earn the first point, and the Chief Reader report names this arithmetic with infinity (sg-23:14, cr-23:15).",
+   "wrong_step": {
+    "text": "Limit = 0/0.",
+    "expression": "NaN"
+   },
+   "right_step": {
+    "text": "Two limits, each 0.",
+    "expression": 0
+   },
+   "relation": "distinct",
+   "possible_reason": {
+    "misconception_id": "BC-MIS-04014",
+    "text": "as values that may be written on the right of an equals sign"
+   },
+   "delivery": {
+    "mode": "step_reveal",
+    "reason": "rule 1",
+    "sources": []
+   }
+  },
+  {
+   "id": "LSN-CON-04013#err-BC-ERR-04029",
+   "type": "common_error",
+   "bands": [
+    "low",
+    "mid"
+   ],
+   "skills": [
+    "BC-SKL-04033"
+   ],
+   "sources": [
+    "BC-ERR-04029",
+    "BC-MIS-04015"
+   ],
+   "evidence_tag": "inferred",
+   "error_id": "BC-ERR-04029",
+   "observed_behavior": "The derivatives of numerator and denominator are taken with no statement that the limit was indeterminate.",
+   "scoring_consequence": "The hypothesis point is lost; the CED unit overview states that students must show that the rule applies, and BC-ERR-99008 records unverified hypotheses across years (ced:84).",
+   "wrong_step": {
+    "text": "-12, form unstated.",
+    "expression": -12
+   },
+   "right_step": {
+    "text": "Form stated, then -12.",
+    "expression": -12
+   },
+   "relation": "equivalent",
+   "possible_reason": {
+    "misconception_id": "BC-MIS-04015",
+    "text": "no form is checked before it is used"
+   },
+   "delivery": {
+    "mode": "step_reveal",
+    "reason": "rule 1",
+    "sources": []
+   }
+  },
+  {
+   "id": "LSN-CON-04013#prq-BC-PRQ-04008",
+   "type": "prerequisite_bridge",
+   "bands": [
+    "low",
+    "mid"
+   ],
+   "skills": [
+    "BC-SKL-04033"
+   ],
+   "sources": [
+    "BC-PRQ-04008"
+   ],
+   "evidence_tag": "inferred",
+   "prerequisite_id": "BC-PRQ-04008",
+   "text": "Name each quantity given in the stem and whether it varies."
+  }
+ ],
+ "checks": [
+  {
+   "id": "LSN-CON-04013#chk-1",
+   "check_kind": "completion",
+   "bands": [
+    "low",
+    "mid"
+   ],
+   "format": "short_answer",
+   "archetype_id": "BC-QA-04009",
+   "parameter_draw": {
+    "anchor": 1,
+    "stretch": 3,
+    "far_value": 2,
+    "far_slope": -4,
+    "near_value": 5,
+    "near_slope": 1,
+    "denominator": "linear"
+   },
+   "completes": "LSN-CON-04013#s4",
+   "stem": {
+    "text": "For ex-1 both limits are 0. Finish with the ratio of derivatives.",
+    "command_verb": "find"
+   },
+   "answer_key": {
+    "form": "symbolic",
+    "mathjson": -12
+   },
+   "worked_solution": [
+    {
+     "step": 1,
+     "text": "3f'(3)/1.",
+     "mathjson": -12,
+     "relation": "new"
+    }
+   ],
+   "calculator_status": "no_calculator",
+   "representation": "BC-REP-01",
+   "skills": [
+    "BC-SKL-04033"
+   ]
+  },
+  {
+   "id": "LSN-CON-04013#chk-2",
+   "check_kind": "isomorph",
+   "bands": [
+    "low",
+    "mid"
+   ],
+   "format": "short_answer",
+   "archetype_id": "BC-QA-04009",
+   "parameter_draw": {
+    "anchor": 2,
+    "stretch": 2,
+    "far_value": -3,
+    "far_slope": 5,
+    "near_value": 1,
+    "near_slope": 2,
+    "denominator": "square"
+   },
+   "stem": {
+    "text": "f(4) = -3, f'(4) = 5. Show the form, then find the limit of (f(2x) + 3)/(x^2 - 4) as x tends to 2.",
+    "command_verb": "find"
+   },
+   "answer_key": {
+    "form": "symbolic",
+    "mathjson": [
+     "Rational",
+     5,
+     2
+    ]
+   },
+   "worked_solution": [
+    {
+     "step": 1,
+     "text": "Numerator.",
+     "mathjson": 0,
+     "relation": "new"
+    },
+    {
+     "step": 2,
+     "text": "0.",
+     "mathjson": 0,
+     "relation": "equivalent"
+    },
+    {
+     "step": 3,
+     "text": "Denominator.",
+     "mathjson": [
+      "Add",
+      -4,
+      [
+       "Power",
+       "x",
+       2
+      ]
+     ],
+     "relation": "new"
+    },
+    {
+     "step": 4,
+     "text": "0.",
+     "mathjson": 0,
+     "relation": "limit",
+     "variable": "x",
+     "point": "2"
+    },
+    {
+     "step": 5,
+     "text": "2f'(4)/(2x) at 2.",
+     "mathjson": [
+      "Rational",
+      5,
+      2
+     ],
+     "relation": "new"
+    }
+   ],
+   "calculator_status": "no_calculator",
+   "representation": "BC-REP-01",
+   "skills": [
+    "BC-SKL-04033"
+   ]
+  },
+  {
+   "id": "LSN-CON-04013#chk-3",
+   "check_kind": "mcq",
+   "bands": [
+    "low"
+   ],
+   "format": "mcq",
+   "archetype_id": "BC-QA-04009",
+   "parameter_draw": {
+    "anchor": 2,
+    "stretch": 2,
+    "far_value": 1,
+    "far_slope": 3,
+    "near_value": -2,
+    "near_slope": -1,
+    "denominator": "cube"
+   },
+   "stem": {
+    "text": "f(4) = 1, f'(4) = 3. Which opening line for the limit of (f(2x) - 1)/(x^3 - 8) as x tends to 2 earns the form point?",
+    "command_verb": "identify"
+   },
+   "answer_key": {
+    "form": "statement",
+    "mathjson": "separate_limits",
+    "label": "The numerator's limit is f(4) - 1 = 0 and the denominator's is 0."
+   },
+   "worked_solution": [
+    {
+     "step": 1,
+     "text": "Numerator.",
+     "mathjson": 0,
+     "relation": "new"
+    },
+    {
+     "step": 2,
+     "text": "Denominator.",
+     "mathjson": [
+      "Add",
+      -8,
+      [
+       "Power",
+       "x",
+       3
+      ]
+     ],
+     "relation": "new"
+    },
+    {
+     "step": 3,
+     "text": "0.",
+     "mathjson": 0,
+     "relation": "limit",
+     "variable": "x",
+     "point": "2"
+    }
+   ],
+   "options": [
+    {
+     "id": "A",
+     "is_key": false,
+     "error_path": "BC-ERR-01008",
+     "label": "The numerator tends to 0, so the limit is 0.",
+     "derivation": "denominator ignored"
+    },
+    {
+     "id": "B",
+     "is_key": false,
+     "error_path": "BC-ERR-04028",
+     "label": "The limit equals 0/0.",
+     "derivation": "quotient written equal to the form"
+    },
+    {
+     "id": "C",
+     "is_key": true,
+     "error_path": null,
+     "label": "The numerator's limit is f(4) - 1 = 0 and the denominator's is 0."
+    },
+    {
+     "id": "D",
+     "is_key": false,
+     "error_path": "BC-ERR-04029",
+     "label": "By L'Hospital's rule the limit is 2f'(4)/12.",
+     "derivation": "rule applied with no form stated"
+    }
+   ],
+   "calculator_status": "no_calculator",
+   "representation": "BC-REP-01",
+   "skills": [
+    "BC-SKL-04033"
+   ]
+  }
+ ],
+ "refresher": [
+  "LSN-CON-04013#s2",
+  "LSN-CON-04013#err-BC-ERR-01008",
+  "LSN-CON-04013#err-BC-ERR-04028",
+  "LSN-CON-04013#err-BC-ERR-04029",
+  "LSN-CON-04013#s4"
+ ],
+ "provenance": {
+  "author": "tools/lesson_transcribe.py",
+  "prompt_version": "generator/lesson_v1",
+  "design_path": "docs/lessons/unit-04/LSN-CON-04013.md",
+  "signed_off_by": "claude-opus-5-5",
+  "signed_off_at": "2026-09-29",
+  "not_human": true
+ }
+}

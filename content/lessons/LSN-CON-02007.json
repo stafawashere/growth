@@ -1,0 +1,999 @@
+{
+ "id": "LSN-CON-02007",
+ "version": 1,
+ "kind": "concept",
+ "target_id": "BC-CON-02007",
+ "status": "draft",
+ "snapshot_digest": "a6a8ec9d3f59ab8f712e33d30cc22fc64bf2c478fbe7312e3e3118d319c6a42f",
+ "source_digest": "86e5d3a91322d732683ab04f013f3a28e91f63b1d87dadec4f74af41bafa22ee",
+ "read_minutes": {
+  "full": 4.7,
+  "brief": 2.8
+ },
+ "word_count": {
+  "full": 639,
+  "brief": 380
+ },
+ "sections": [
+  {
+   "id": "LSN-CON-02007#s1",
+   "type": "orientation",
+   "bands": [
+    "low",
+    "mid"
+   ],
+   "skills": [
+    "BC-SKL-02014",
+    "BC-SKL-02015",
+    "BC-SKL-02016",
+    "BC-SKL-02017",
+    "BC-SKL-02018"
+   ],
+   "sources": [
+    "BC-CON-02007",
+    "research/units/unit-02-differentiation-definition-properties.md#2.3 Estimating Derivatives of a Function at a Point"
+   ],
+   "evidence_tag": "inferred",
+   "text": "A response estimates a derivative at a point from nearby values: the average rate over rows that bracket the point, with the difference, the quotient and compound units shown. From a graph it is the tangent's slope; from a calculator, a value with its setup named.",
+   "delivery": {
+    "mode": "text",
+    "reason": "rule 5: a statement of what a response shows",
+    "sources": [
+     "BC-CON-02007"
+    ]
+   }
+  },
+  {
+   "id": "LSN-CON-02007#s2",
+   "type": "key_ideas",
+   "bands": [
+    "low",
+    "mid"
+   ],
+   "skills": [
+    "BC-SKL-02014",
+    "BC-SKL-02015",
+    "BC-SKL-02016",
+    "BC-SKL-02017"
+   ],
+   "sources": [
+    "BC-EK-CHA-2D1",
+    "ced:62",
+    "research/units/unit-02-differentiation-definition-properties.md#2.3 Estimating Derivatives of a Function at a Point"
+   ],
+   "evidence_tag": "verified",
+   "ek_id": "BC-EK-CHA-2D1",
+   "depth": "core",
+   "text": "From a table (BC-EK-CHA-2D1, ced:62): the average rate over an interval that contains or abuts the point, difference and quotient both shown. From a graph: the slope of the tangent at the point, from two points on it. Units: the quantity's units per unit of input.",
+   "notation": "approximately equal to",
+   "quote": {
+    "text": "The derivative at a point can be estimated from information given in tables or graphs.",
+    "source": "ced:62"
+   },
+   "delivery": {
+    "mode": "table",
+    "reason": "rule 4: BC-SKL-02014 and BC-SKL-02016 list BC-REP-03 (unit README delivery map)",
+    "sources": [
+     "BC-SKL-02014",
+     "BC-SKL-02016"
+    ],
+    "spec": {
+     "kind": "table",
+     "representations": [
+      "BC-REP-03"
+     ],
+     "columns": [
+      "t (minutes)",
+      "H(t) (degrees Fahrenheit)"
+     ],
+     "rows": [
+      [
+       0,
+       86
+      ],
+      [
+       4,
+       71
+      ],
+      [
+       6,
+       50
+      ],
+      [
+       10,
+       38
+      ],
+      [
+       12,
+       25
+      ]
+     ],
+     "marked_rows": [
+      2,
+      3,
+      4
+     ],
+     "labels": [
+      {
+       "text": "point t = 6",
+       "placement": "inside",
+       "at": "row 3, right margin inside the frame"
+      },
+      {
+       "text": "bracketing rows t = 4 and t = 10",
+       "placement": "inside",
+       "at": "bracket joining rows 2 and 4"
+      },
+      {
+       "text": "(38 - 71)/(10 - 4) = -11/2 degrees Fahrenheit per minute",
+       "placement": "inside",
+       "at": "last line of the table frame"
+      }
+     ]
+    },
+    "fallback": "the five rows as a text list with the point row and the bracketing rows named, followed by the quotient",
+    "keyboard": "none needed; the table is read row by row by a screen reader, with the marked rows announced"
+   }
+  },
+  {
+   "id": "LSN-CON-02007#s3",
+   "type": "key_ideas",
+   "bands": [
+    "low",
+    "mid"
+   ],
+   "skills": [
+    "BC-SKL-02018"
+   ],
+   "sources": [
+    "BC-EK-CHA-2D2",
+    "ced:62",
+    "BC-QA-02013"
+   ],
+   "evidence_tag": "verified",
+   "ek_id": "BC-EK-CHA-2D2",
+   "depth": "core",
+   "text": "Technology gives the derivative of a supplied model at a point (BC-EK-CHA-2D2, ced:62). The written line names what was computed, such as \\(W'(2)\\), and the value is reported to three decimal places.",
+   "notation": "approximately equal to",
+   "quote": {
+    "text": "Technology can be used to calculate or estimate the value of a derivative of a function at a point.",
+    "source": "ced:62"
+   },
+   "delivery": {
+    "mode": "text",
+    "reason": "rule 5: BC-REP-09 and BC-REP-01 on BC-SKL-02018, neither figure-bearing",
+    "sources": [
+     "BC-SKL-02018"
+    ]
+   }
+  },
+  {
+   "id": "LSN-CON-02007#s4",
+   "type": "strategy",
+   "bands": [
+    "low",
+    "mid"
+   ],
+   "skills": [
+    "BC-SKL-02014",
+    "BC-SKL-02015",
+    "BC-SKL-02016"
+   ],
+   "sources": [
+    "BC-QA-04002"
+   ],
+   "evidence_tag": "verified",
+   "archetype_id": "BC-QA-04002",
+   "cue": "A table of a contextual quantity; the stem asks to approximate a derivative at a tabulated input, with units.",
+   "method": "First line: the two rows that bracket the point, differenced, over their inputs' difference.",
+   "rival": "Rival: a pair of rows other than the bracketing pair (BC-ERR-02004).",
+   "separating_feature": "The two rows sit on either side of the point."
+  },
+  {
+   "id": "LSN-CON-02007#s5",
+   "type": "strategy",
+   "bands": [
+    "low",
+    "mid"
+   ],
+   "skills": [
+    "BC-SKL-02018"
+   ],
+   "sources": [
+    "BC-QA-02013",
+    "BC-ERR-02031"
+   ],
+   "evidence_tag": "verified",
+   "archetype_id": "BC-QA-02013",
+   "cue": "A function model in a calculator part; the stem asks for the derivative at an input, with setup.",
+   "method": "First line: the setup naming the quantity, such as \\(W'(2)\\), then the calculator value.",
+   "rival": "Rival: a bare calculator number with no setup (BC-ERR-02031).",
+   "separating_feature": "A formula and a calculator part, not a table."
+  },
+  {
+   "id": "LSN-CON-02007#s6",
+   "type": "worked_example",
+   "bands": [
+    "low",
+    "mid"
+   ],
+   "skills": [
+    "BC-SKL-02014",
+    "BC-SKL-02015",
+    "BC-SKL-02016"
+   ],
+   "sources": [
+    "BC-QA-04002"
+   ],
+   "evidence_tag": "inferred",
+   "archetype_id": "BC-QA-04002",
+   "parameter_draw": {
+    "times": [
+     0,
+     4,
+     6,
+     10,
+     12
+    ],
+    "readings": [
+     86,
+     71,
+     50,
+     38,
+     25
+    ],
+    "context": "oven",
+    "trend": "decreasing"
+   },
+   "problem": {
+    "text": "An oven is at \\(H(t)\\) degrees Fahrenheit at \\(t\\) minutes: \\(H(0)=86\\), \\(H(4)=71\\), \\(H(6)=50\\), \\(H(10)=38\\), \\(H(12)=25\\). Approximate \\(H'(6)\\) from the rows that bracket \\(t=6\\), with units.",
+    "command_verb": "approximate"
+   },
+   "calculator_status": "no_calculator",
+   "steps": [
+    {
+     "cue": "The point 6 is a row; its neighbours 4 and 10 bracket it.",
+     "why": "Use \\(H(4)=71\\) and \\(H(10)=38\\)."
+    },
+    {
+     "cue": "An estimate from data is an average rate.",
+     "why": "Difference and quotient both go on the page.",
+     "expression": [
+      "Rational",
+      -11,
+      2
+     ],
+     "relation": "new"
+    },
+    {
+     "cue": "The stem asks for a value; no calculator.",
+     "why": "\\(-\\frac{33}{6}=-\\frac{11}{2}\\).",
+     "expression": [
+      "Rational",
+      -11,
+      2
+     ],
+     "relation": "equivalent"
+    },
+    {
+     "cue": "The stem says units.",
+     "why": "Degrees Fahrenheit per minute."
+    }
+   ],
+   "answer": {
+    "form": "numeric",
+    "mathjson": [
+     "Rational",
+     -11,
+     2
+    ]
+   },
+   "delivery": {
+    "mode": "step_reveal",
+    "reason": "rule 1",
+    "sources": []
+   }
+  },
+  {
+   "id": "LSN-CON-02007#s7",
+   "type": "worked_example",
+   "bands": [
+    "low"
+   ],
+   "skills": [
+    "BC-SKL-02018"
+   ],
+   "sources": [
+    "BC-QA-02013"
+   ],
+   "evidence_tag": "inferred",
+   "archetype_id": "BC-QA-02013",
+   "parameter_draw": {
+    "level": 24,
+    "swing": 3,
+    "scale": 4,
+    "at": 2,
+    "context": "traffic",
+    "framing": "context"
+   },
+   "problem": {
+    "text": "Cars on a highway number \\(W(t)=24+3\\sin(\\frac{t^2}{4})+\\ln(1+t)\\) hundred at \\(t\\) hours, \\(0\\le t\\le4\\). Using a calculator, find \\(W'(2)\\) to three decimal places, with units.",
+    "command_verb": "find"
+   },
+   "calculator_status": "calculator",
+   "steps": [
+    {
+     "cue": "The stem asks for \\(W'(2)\\) with a calculator: name it first.",
+     "why": "The setup line says what is computed.",
+     "expression": [
+      "Add",
+      24,
+      [
+       "Multiply",
+       3,
+       [
+        "Sin",
+        [
+         "Multiply",
+         [
+          "Rational",
+          1,
+          4
+         ],
+         [
+          "Power",
+          "t",
+          2
+         ]
+        ]
+       ]
+      ],
+      [
+       "Ln",
+       [
+        "Add",
+        1,
+        "t"
+       ]
+      ]
+     ],
+     "relation": "new"
+    },
+    {
+     "cue": "The calculator differentiates the entered \\(W\\) numerically, in radian mode.",
+     "why": "It evaluates \\(W'(t)=\\frac{3t}{2}\\cos(\\frac{t^2}{4})+\\frac{1}{1+t}\\).",
+     "expression": [
+      "Add",
+      [
+       "Power",
+       [
+        "Add",
+        1,
+        "t"
+       ],
+       -1
+      ],
+      [
+       "Multiply",
+       [
+        "Rational",
+        3,
+        2
+       ],
+       "t",
+       [
+        "Cos",
+        [
+         "Multiply",
+         [
+          "Rational",
+          1,
+          4
+         ],
+         [
+          "Power",
+          "t",
+          2
+         ]
+        ]
+       ]
+      ]
+     ],
+     "relation": "differentiate",
+     "variable": "t"
+    },
+    {
+     "cue": "The stem says three decimal places.",
+     "why": "\\(W'(2)\\approx1.954\\) hundred cars per hour.",
+     "expression": 1.954,
+     "relation": "evaluate",
+     "subs": {
+      "t": "2"
+     },
+     "approx": true
+    }
+   ],
+   "answer": {
+    "form": "numeric",
+    "mathjson": 1.954
+   },
+   "delivery": {
+    "mode": "step_reveal",
+    "reason": "rule 1",
+    "sources": []
+   }
+  },
+  {
+   "id": "LSN-CON-02007#err-BC-ERR-02001",
+   "type": "common_error",
+   "bands": [
+    "low",
+    "mid"
+   ],
+   "skills": [
+    "BC-SKL-02014"
+   ],
+   "sources": [
+    "BC-ERR-02001",
+    "BC-MIS-02001"
+   ],
+   "evidence_tag": "inferred",
+   "error_id": "BC-ERR-02001",
+   "observed_behavior": "The response reports the change in the function values over the interval without dividing by the change in the inputs.",
+   "scoring_consequence": "The answer point requires both a difference and a quotient using values from the table, so a difference alone does not earn it (sg-25:11).",
+   "wrong_step": {
+    "text": "\\(38-71=-33\\).",
+    "expression": -33
+   },
+   "right_step": {
+    "text": "\\(\\frac{38-71}{10-4}\\).",
+    "expression": [
+     "Rational",
+     -11,
+     2
+    ]
+   },
+   "relation": "distinct",
+   "possible_reason": {
+    "misconception_id": "BC-MIS-02001",
+    "text": "the division by the change in the input is omitted"
+   },
+   "delivery": {
+    "mode": "step_reveal",
+    "reason": "rule 1",
+    "sources": []
+   }
+  },
+  {
+   "id": "LSN-CON-02007#err-BC-ERR-02002",
+   "type": "common_error",
+   "bands": [
+    "low",
+    "mid"
+   ],
+   "skills": [
+    "BC-SKL-02014"
+   ],
+   "sources": [
+    "BC-ERR-02002"
+   ],
+   "evidence_tag": "inferred",
+   "error_id": "BC-ERR-02002",
+   "observed_behavior": "The response writes the difference quotient correctly but stops before producing a number.",
+   "scoring_consequence": "The quotient presented by itself is not sufficient for the answer point (sg-25:11).",
+   "wrong_step": {
+    "text": "\\(\\frac{38-71}{10-4}\\), and no number.",
+    "expression": [
+     "Rational",
+     -11,
+     2
+    ]
+   },
+   "right_step": {
+    "text": "\\(-\\frac{11}{2}\\).",
+    "expression": [
+     "Rational",
+     -11,
+     2
+    ]
+   },
+   "relation": "equivalent",
+   "delivery": {
+    "mode": "step_reveal",
+    "reason": "rule 1",
+    "sources": []
+   }
+  },
+  {
+   "id": "LSN-CON-02007#err-BC-ERR-02003",
+   "type": "common_error",
+   "bands": [
+    "low",
+    "mid"
+   ],
+   "skills": [
+    "BC-SKL-02015"
+   ],
+   "sources": [
+    "BC-ERR-02003",
+    "BC-MIS-02008"
+   ],
+   "evidence_tag": "inferred",
+   "error_id": "BC-ERR-02003",
+   "observed_behavior": "The response reports an estimated derivative with no units, or with the units of the modelled quantity rather than of its rate.",
+   "scoring_consequence": "The units point is lost; it is earned for the correct compound units whether or not they are attached to a value, and an equivalent compound form is accepted (sg-25:11).",
+   "wrong_step": {
+    "text": "\\(-\\frac{11}{2}\\) degrees Fahrenheit.",
+    "expression": [
+     "Rational",
+     -11,
+     2
+    ]
+   },
+   "right_step": {
+    "text": "\\(-\\frac{11}{2}\\) degrees Fahrenheit per minute.",
+    "expression": [
+     "Rational",
+     -11,
+     2
+    ]
+   },
+   "relation": "equivalent",
+   "possible_reason": {
+    "misconception_id": "BC-MIS-02008",
+    "text": "copies them from the table header"
+   },
+   "delivery": {
+    "mode": "step_reveal",
+    "reason": "rule 1",
+    "sources": []
+   }
+  },
+  {
+   "id": "LSN-CON-02007#err-BC-ERR-02004",
+   "type": "common_error",
+   "bands": [
+    "low",
+    "mid"
+   ],
+   "skills": [
+    "BC-SKL-02014",
+    "BC-SKL-02016"
+   ],
+   "sources": [
+    "BC-ERR-02004",
+    "BC-MIS-02001"
+   ],
+   "evidence_tag": "inferred",
+   "error_id": "BC-ERR-02004",
+   "observed_behavior": "The response estimates the derivative from a pair of tabulated inputs other than the pair the question names or the pair that brackets the point.",
+   "scoring_consequence": "The answer point is lost because the supporting work does not use the values the question specifies.",
+   "wrong_step": {
+    "text": "Rows 4 and 6: \\(\\frac{50-71}{6-4}=-\\frac{21}{2}\\).",
+    "expression": [
+     "Rational",
+     -21,
+     2
+    ]
+   },
+   "right_step": {
+    "text": "Rows 4 and 10: \\(-\\frac{11}{2}\\).",
+    "expression": [
+     "Rational",
+     -11,
+     2
+    ]
+   },
+   "relation": "distinct",
+   "possible_reason": {
+    "misconception_id": "BC-MIS-02001",
+    "text": "applied to the wrong pair of values"
+   },
+   "delivery": {
+    "mode": "step_reveal",
+    "reason": "rule 1",
+    "sources": []
+   }
+  },
+  {
+   "id": "LSN-CON-02007#s8",
+   "type": "representations",
+   "bands": [
+    "low"
+   ],
+   "skills": [
+    "BC-SKL-02014",
+    "BC-SKL-02015",
+    "BC-SKL-02016",
+    "BC-SKL-02017",
+    "BC-SKL-02018"
+   ],
+   "sources": [
+    "BC-SKL-02017",
+    "research/units/unit-02-differentiation-definition-properties.md#2.3 Estimating Derivatives of a Function at a Point"
+   ],
+   "evidence_tag": "inferred",
+   "text": "From a graph: draw the tangent at the point, read two points on it, and take rise over run.",
+   "figure": {
+    "kind": "graph",
+    "curves": [
+     {
+      "expr": "x**2/4 + 1",
+      "domain": [
+       -1,
+       5
+      ]
+     }
+    ],
+    "tangent": {
+     "at": 2,
+     "slope": 1
+    },
+    "labels": [
+     {
+      "text": "(0, 0) and (4, 4) on the tangent: slope 4/4 = 1",
+      "placement": "inside",
+      "at": "beside the tangent"
+     }
+    ]
+   },
+   "delivery": {
+    "mode": "figure",
+    "reason": "rule 3: BC-SKL-02017 lists BC-REP-02; static, since the stem asks for one reading of a fixed graph",
+    "sources": [
+     "BC-SKL-02017"
+    ],
+    "spec": {
+     "kind": "graph",
+     "representations": [
+      "BC-REP-02"
+     ],
+     "axes": {
+      "x": [
+       -1,
+       5
+      ],
+      "y": [
+       -1,
+       7
+      ]
+     },
+     "curves": [
+      {
+       "expr": "x**2/4 + 1",
+       "domain": [
+        -1,
+        5
+       ],
+       "role": "illustrative"
+      },
+      {
+       "expr": "x",
+       "domain": [
+        -0.5,
+        4.5
+       ],
+       "role": "tangent at x = 2"
+      }
+     ],
+     "points": [
+      {
+       "at": [
+        2,
+        2
+       ],
+       "label": {
+        "text": "(2, 2)",
+        "placement": "inside",
+        "at": "left of the point"
+       }
+      },
+      {
+       "at": [
+        0,
+        0
+       ],
+       "label": {
+        "text": "(0, 0)",
+        "placement": "inside",
+        "at": "below right of the point"
+       }
+      },
+      {
+       "at": [
+        4,
+        4
+       ],
+       "label": {
+        "text": "(4, 4)",
+        "placement": "inside",
+        "at": "below right of the point"
+       }
+      }
+     ],
+     "labels": [
+      {
+       "text": "tangent slope = (4 - 0)/(4 - 0) = 1",
+       "placement": "inside",
+       "at": "upper left corner"
+      }
+     ]
+    },
+    "fallback": "the text: the tangent at (2, 2) passes through (0, 0) and (4, 4), so the estimated derivative is 1",
+    "keyboard": "none needed; the figure is static and its text alternative reads the two points and the slope"
+   }
+  },
+  {
+   "id": "LSN-CON-02007#prq-BC-PRQ-02004",
+   "type": "prerequisite_bridge",
+   "bands": [
+    "low",
+    "mid"
+   ],
+   "skills": [
+    "BC-SKL-02018"
+   ],
+   "sources": [
+    "BC-PRQ-02004"
+   ],
+   "evidence_tag": "inferred",
+   "prerequisite_id": "BC-PRQ-02004",
+   "text": "The setup names the variable: \\(W'(2)\\) is \\(\\frac{dW}{dt}\\) at \\(t=2\\)."
+  }
+ ],
+ "checks": [
+  {
+   "id": "LSN-CON-02007#chk-1",
+   "check_kind": "completion",
+   "bands": [
+    "low",
+    "mid"
+   ],
+   "format": "short_answer",
+   "archetype_id": "BC-QA-04002",
+   "parameter_draw": {
+    "times": [
+     0,
+     4,
+     6,
+     10,
+     12
+    ],
+    "readings": [
+     86,
+     71,
+     50,
+     38,
+     25
+    ],
+    "context": "oven",
+    "trend": "decreasing"
+   },
+   "completes": "LSN-CON-02007#s6",
+   "stem": {
+    "text": "The work reads \\(H'(6)\\approx\\frac{38-71}{10-4}\\). Give the value.",
+    "command_verb": "give"
+   },
+   "answer_key": {
+    "form": "numeric",
+    "mathjson": [
+     "Rational",
+     -11,
+     2
+    ]
+   },
+   "worked_solution": [
+    {
+     "step": 1,
+     "text": "\\(\\frac{38-71}{10-4}\\).",
+     "mathjson": [
+      "Rational",
+      -11,
+      2
+     ],
+     "relation": "new"
+    },
+    {
+     "step": 2,
+     "text": "\\(-\\frac{11}{2}\\).",
+     "mathjson": [
+      "Rational",
+      -11,
+      2
+     ],
+     "relation": "equivalent"
+    }
+   ],
+   "calculator_status": "no_calculator",
+   "representation": "BC-REP-03",
+   "skills": [
+    "BC-SKL-02014"
+   ]
+  },
+  {
+   "id": "LSN-CON-02007#chk-2",
+   "check_kind": "isomorph",
+   "bands": [
+    "low",
+    "mid"
+   ],
+   "format": "short_answer",
+   "archetype_id": "BC-QA-04002",
+   "parameter_draw": {
+    "times": [
+     1,
+     3,
+     4,
+     8,
+     9
+    ],
+    "readings": [
+     12,
+     20,
+     27,
+     44,
+     60
+    ],
+    "context": "download",
+    "trend": "increasing"
+   },
+   "stem": {
+    "text": "\\(F(t)\\) megabytes have downloaded at \\(t\\) seconds: \\(F(1)=12\\), \\(F(3)=20\\), \\(F(4)=27\\), \\(F(8)=44\\), \\(F(9)=60\\). Approximate \\(F'(4)\\) from the rows that bracket \\(t=4\\).",
+    "command_verb": "approximate"
+   },
+   "answer_key": {
+    "form": "numeric",
+    "mathjson": [
+     "Rational",
+     24,
+     5
+    ]
+   },
+   "worked_solution": [
+    {
+     "step": 1,
+     "text": "\\(\\frac{44-20}{8-3}\\).",
+     "mathjson": [
+      "Rational",
+      24,
+      5
+     ],
+     "relation": "new"
+    },
+    {
+     "step": 2,
+     "text": "\\(\\frac{24}{5}\\) megabytes per second.",
+     "mathjson": [
+      "Rational",
+      24,
+      5
+     ],
+     "relation": "equivalent"
+    }
+   ],
+   "calculator_status": "no_calculator",
+   "representation": "BC-REP-03",
+   "skills": [
+    "BC-SKL-02014",
+    "BC-SKL-02016"
+   ]
+  },
+  {
+   "id": "LSN-CON-02007#chk-3",
+   "check_kind": "mcq",
+   "bands": [
+    "low"
+   ],
+   "format": "mcq",
+   "archetype_id": "BC-QA-04002",
+   "parameter_draw": {
+    "times": [
+     0,
+     2,
+     5,
+     6,
+     10
+    ],
+    "readings": [
+     10,
+     14,
+     23,
+     35,
+     40
+    ],
+    "context": "rainfall",
+    "trend": "increasing"
+   },
+   "stem": {
+    "text": "A barrel holds water \\(W(t)\\) centimeters deep at \\(t\\) hours: \\(W(0)=10\\), \\(W(2)=14\\), \\(W(5)=23\\), \\(W(6)=35\\), \\(W(10)=40\\). From the rows bracketing \\(t=5\\), \\(W'(5)\\) is approximately",
+    "command_verb": "approximate"
+   },
+   "answer_key": {
+    "form": "numeric",
+    "mathjson": [
+     "Rational",
+     21,
+     4
+    ]
+   },
+   "worked_solution": [
+    {
+     "step": 1,
+     "text": "\\(\\frac{35-14}{6-2}\\).",
+     "mathjson": [
+      "Rational",
+      21,
+      4
+     ],
+     "relation": "new"
+    },
+    {
+     "step": 2,
+     "text": "\\(\\frac{21}{4}\\).",
+     "mathjson": [
+      "Rational",
+      21,
+      4
+     ],
+     "relation": "equivalent"
+    }
+   ],
+   "options": [
+    {
+     "id": "A",
+     "is_key": false,
+     "error_path": "BC-ERR-02001",
+     "value": 21,
+     "derivation": "the difference 35 - 14 without the division"
+    },
+    {
+     "id": "B",
+     "is_key": false,
+     "error_path": "BC-ERR-02004",
+     "value": 3,
+     "derivation": "rows 2 and 5: (23 - 14)/3"
+    },
+    {
+     "id": "C",
+     "is_key": true,
+     "error_path": null,
+     "value": [
+      "Rational",
+      21,
+      4
+     ]
+    },
+    {
+     "id": "D",
+     "is_key": false,
+     "error_path": "BC-ERR-02004",
+     "value": 12,
+     "derivation": "rows 5 and 6: (35 - 23)/1"
+    }
+   ],
+   "calculator_status": "no_calculator",
+   "representation": "BC-REP-03",
+   "skills": [
+    "BC-SKL-02014",
+    "BC-SKL-02016"
+   ]
+  }
+ ],
+ "refresher": [
+  "LSN-CON-02007#s2",
+  "LSN-CON-02007#s3",
+  "LSN-CON-02007#err-BC-ERR-02001",
+  "LSN-CON-02007#err-BC-ERR-02002",
+  "LSN-CON-02007#err-BC-ERR-02003",
+  "LSN-CON-02007#err-BC-ERR-02004",
+  "LSN-CON-02007#s6"
+ ],
+ "provenance": {
+  "author": "tools/lesson_transcribe.py",
+  "prompt_version": "generator/lesson_v1",
+  "design_path": "docs/lessons/unit-02/LSN-CON-02007.md",
+  "signed_off_by": null,
+  "signed_off_at": null,
+  "not_human": true
+ }
+}

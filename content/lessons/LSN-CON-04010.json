@@ -1,0 +1,650 @@
+{
+ "id": "LSN-CON-04010",
+ "version": 1,
+ "kind": "concept",
+ "target_id": "BC-CON-04010",
+ "status": "signed_off",
+ "snapshot_digest": "a6a8ec9d3f59ab8f712e33d30cc22fc64bf2c478fbe7312e3e3118d319c6a42f",
+ "source_digest": "3b6e54eb7aa90adb06624573d253b86cd5af74ae6f5fb04a608ab5d8c386c946",
+ "read_minutes": {
+  "full": 3.5,
+  "brief": 2.7
+ },
+ "word_count": {
+  "full": 398,
+  "brief": 340
+ },
+ "sections": [
+  {
+   "id": "LSN-CON-04010#s1",
+   "type": "orientation",
+   "bands": [
+    "low",
+    "mid"
+   ],
+   "skills": [
+    "BC-SKL-04024",
+    "BC-SKL-04025"
+   ],
+   "sources": [
+    "BC-CON-04010",
+    "research/units/unit-04-contextual-applications-differentiation.md#4.5 Solving Related Rates Problems"
+   ],
+   "evidence_tag": "inferred",
+   "text": "Solve the differentiated equation for the requested rate, then report it with the quantity's units over time units, and read a negative sign as the quantity decreasing.",
+   "delivery": {
+    "mode": "text",
+    "reason": "rule 5: BC-SKL-04024 and BC-SKL-04025 carry no figure-bearing representation",
+    "sources": [
+     "BC-SKL-04024",
+     "BC-SKL-04025"
+    ]
+   }
+  },
+  {
+   "id": "LSN-CON-04010#s2",
+   "type": "key_ideas",
+   "bands": [
+    "low",
+    "mid"
+   ],
+   "skills": [
+    "BC-SKL-04024",
+    "BC-SKL-04025"
+   ],
+   "sources": [
+    "BC-EK-CHA-3E1",
+    "ced:91",
+    "research/units/unit-04-contextual-applications-differentiation.md#4.5 Solving Related Rates Problems"
+   ],
+   "evidence_tag": "verified",
+   "ek_id": "BC-EK-CHA-3E1",
+   "depth": "core",
+   "text": "Once the instant's values are in, one unknown rate is left, isolated by algebra. The answer has units of the quantity divided by units of time, and its sign says whether the quantity grows or shrinks.",
+   "notation": "units and sign of the rate",
+   "quote": {
+    "text": "finding a rate at which one quantity is changing",
+    "source": "ced:91"
+   },
+   "delivery": {
+    "mode": "text",
+    "reason": "rule 5: a rule for units and sign",
+    "sources": [
+     "BC-SKL-04025"
+    ]
+   }
+  },
+  {
+   "id": "LSN-CON-04010#s3",
+   "type": "strategy",
+   "bands": [
+    "low",
+    "mid"
+   ],
+   "skills": [
+    "BC-SKL-04024",
+    "BC-SKL-04025"
+   ],
+   "sources": [
+    "BC-QA-04006"
+   ],
+   "evidence_tag": "verified",
+   "archetype_id": "BC-QA-04006",
+   "cue": "\"Find the rate\" with units asked.",
+   "method": "Solve for that rate; state value, units and direction.",
+   "rival": "Rival: stopping at the equation (BC-ERR-04021).",
+   "separating_feature": "The stem names one target rate."
+  },
+  {
+   "id": "LSN-CON-04010#s4",
+   "type": "strategy",
+   "bands": [
+    "low",
+    "mid"
+   ],
+   "skills": [
+    "BC-SKL-04024"
+   ],
+   "sources": [
+    "BC-QA-04007"
+   ],
+   "evidence_tag": "verified",
+   "archetype_id": "BC-QA-04007",
+   "cue": "One coordinate's rate given on a curve.",
+   "method": "Solve the differentiated curve equation for the other rate.",
+   "rival": "Rival: dy/dx reported (BC-ERR-99013).",
+   "separating_feature": "The given rate is in time."
+  },
+  {
+   "id": "LSN-CON-04010#s5",
+   "type": "worked_example",
+   "bands": [
+    "low",
+    "mid"
+   ],
+   "skills": [
+    "BC-SKL-04024",
+    "BC-SKL-04025"
+   ],
+   "sources": [
+    "BC-QA-04006"
+   ],
+   "evidence_tag": "inferred",
+   "archetype_id": "BC-QA-04006",
+   "parameter_draw": {
+    "shape": "ladder",
+    "size": 3,
+    "rate": 4,
+    "ratio": 1,
+    "leg": "short",
+    "length_unit": "meter",
+    "time_unit": "minute"
+   },
+   "problem": {
+    "text": "A 5 meter ladder's foot slides from a wall at 4 meters per minute. When the foot is 3 meters out, how is the top's height changing?",
+    "command_verb": "find"
+   },
+   "calculator_status": "no_calculator",
+   "steps": [
+    {
+     "cue": "Wall, ground, ladder.",
+     "why": "Right triangle.",
+     "expression": [
+      "Equal",
+      [
+       "Add",
+       [
+        "Power",
+        "x",
+        2
+       ],
+       [
+        "Power",
+        "y",
+        2
+       ]
+      ],
+      25
+     ],
+     "relation": "new"
+    },
+    {
+     "cue": "Rates in time asked.",
+     "why": "Differentiate in t.",
+     "expression": [
+      "Equal",
+      [
+       "Add",
+       [
+        "Multiply",
+        2,
+        "dxdt",
+        "x"
+       ],
+       [
+        "Multiply",
+        2,
+        "dydt",
+        "y"
+       ]
+      ],
+      0
+     ],
+     "relation": "new"
+    },
+    {
+     "cue": "The instant: y = 4.",
+     "why": "x = 3, dx/dt = 4.",
+     "expression": [
+      "Equal",
+      [
+       "Add",
+       24,
+       [
+        "Multiply",
+        8,
+        "dydt"
+       ]
+      ],
+      0
+     ],
+     "relation": "evaluate",
+     "subs": {
+      "x": "3",
+      "y": "4",
+      "dxdt": "4"
+     }
+    },
+    {
+     "cue": "One unknown rate.",
+     "why": "Meters over minutes.",
+     "expression": -3,
+     "point_type_id": "BC-PT-99006",
+     "relation": "solve",
+     "variable": "dydt"
+    },
+    {
+     "cue": "\"How is it changing\" asks direction.",
+     "why": "Negative: the height decreases at 3 meters per minute."
+    }
+   ],
+   "answer": {
+    "form": "symbolic",
+    "mathjson": -3
+   },
+   "delivery": {
+    "mode": "step_reveal",
+    "reason": "rule 1",
+    "sources": []
+   }
+  },
+  {
+   "id": "LSN-CON-04010#s6",
+   "type": "what_a_reader_scores",
+   "bands": [
+    "low",
+    "mid"
+   ],
+   "skills": [
+    "BC-SKL-04024",
+    "BC-SKL-04025"
+   ],
+   "sources": [
+    "BC-PT-99006"
+   ],
+   "evidence_tag": "verified",
+   "example_id": "LSN-CON-04010#s5",
+   "lines": [
+    {
+     "point_type_id": "BC-PT-99006",
+     "text": "Units. Earned by: Correct units, whether or not they are attached to a numerical value (sg-25:11, sg-26:2); equivalent compact forms such as birds per day squared are accepted (sg-26:2). Not earned by: Units with no value present at all where the rubric ties them to a presented value (sg-22:13). Units are required on the answer."
+    }
+   ]
+  },
+  {
+   "id": "LSN-CON-04010#err-BC-ERR-04001",
+   "type": "common_error",
+   "bands": [
+    "low",
+    "mid"
+   ],
+   "skills": [
+    "BC-SKL-04025"
+   ],
+   "sources": [
+    "BC-ERR-04001",
+    "BC-MIS-04003"
+   ],
+   "evidence_tag": "inferred",
+   "error_id": "BC-ERR-04001",
+   "observed_behavior": "A correct numerical rate is reported with no units, or with the units of the quantity alone, or with the numerator and denominator units exchanged.",
+   "scoring_consequence": "The units point is a separate point in the 2024 and 2025 table based questions and is lost outright (sg-24:2, sg-25:11); BC-ERR-99005 records the same behaviour across years.",
+   "wrong_step": {
+    "text": "-3 meters.",
+    "expression": -3
+   },
+   "right_step": {
+    "text": "-3 meters per minute.",
+    "expression": -3
+   },
+   "relation": "equivalent",
+   "possible_reason": {
+    "misconception_id": "BC-MIS-04003",
+    "text": "treats the unit as something added at the end"
+   },
+   "delivery": {
+    "mode": "step_reveal",
+    "reason": "rule 1",
+    "sources": []
+   }
+  },
+  {
+   "id": "LSN-CON-04010#err-BC-ERR-04005",
+   "type": "common_error",
+   "bands": [
+    "low",
+    "mid"
+   ],
+   "skills": [
+    "BC-SKL-04025"
+   ],
+   "sources": [
+    "BC-ERR-04005",
+    "BC-MIS-04002"
+   ],
+   "evidence_tag": "inferred",
+   "error_id": "BC-ERR-04005",
+   "observed_behavior": "A negative rate is reported as a magnitude or is described as an increase.",
+   "scoring_consequence": "The interpretation point is lost; BC-ERR-99030 records the same confusion of direction with quantity.",
+   "wrong_step": {
+    "text": "Increases at 3.",
+    "expression": 3
+   },
+   "right_step": {
+    "text": "Decreases at 3.",
+    "expression": -3
+   },
+   "relation": "distinct",
+   "possible_reason": {
+    "misconception_id": "BC-MIS-04002",
+    "text": "treats its sign as a formatting detail"
+   },
+   "delivery": {
+    "mode": "step_reveal",
+    "reason": "rule 1",
+    "sources": []
+   }
+  },
+  {
+   "id": "LSN-CON-04010#err-BC-ERR-04021",
+   "type": "common_error",
+   "bands": [
+    "low",
+    "mid"
+   ],
+   "skills": [
+    "BC-SKL-04024"
+   ],
+   "sources": [
+    "BC-ERR-04021"
+   ],
+   "evidence_tag": "inferred",
+   "error_id": "BC-ERR-04021",
+   "observed_behavior": "The differentiated equation is correct and the response stops without solving for the unknown rate.",
+   "scoring_consequence": "The final scoring point is lost although the differentiation points may be earned (cr-24:18).",
+   "wrong_step": {
+    "text": "Stops here.",
+    "expression": [
+     "Equal",
+     [
+      "Add",
+      24,
+      [
+       "Multiply",
+       8,
+       "dydt"
+      ]
+     ],
+     0
+    ]
+   },
+   "right_step": {
+    "text": "Solved.",
+    "expression": -3
+   },
+   "relation": "distinct",
+   "delivery": {
+    "mode": "step_reveal",
+    "reason": "rule 1",
+    "sources": []
+   }
+  },
+  {
+   "id": "LSN-CON-04010#prq-BC-PRQ-04004",
+   "type": "prerequisite_bridge",
+   "bands": [
+    "low",
+    "mid"
+   ],
+   "skills": [
+    "BC-SKL-04025"
+   ],
+   "sources": [
+    "BC-PRQ-04004"
+   ],
+   "evidence_tag": "inferred",
+   "prerequisite_id": "BC-PRQ-04004",
+   "text": "Compound units such as meters per minute; without them the unit is absent or inverted."
+  },
+  {
+   "id": "LSN-CON-04010#prq-BC-PRQ-04007",
+   "type": "prerequisite_bridge",
+   "bands": [
+    "low",
+    "mid"
+   ],
+   "skills": [
+    "BC-SKL-04024"
+   ],
+   "sources": [
+    "BC-PRQ-04007"
+   ],
+   "evidence_tag": "inferred",
+   "prerequisite_id": "BC-PRQ-04007",
+   "text": "Isolate one unknown in a linear equation; otherwise the rate is never extracted."
+  }
+ ],
+ "checks": [
+  {
+   "id": "LSN-CON-04010#chk-1",
+   "check_kind": "completion",
+   "bands": [
+    "low",
+    "mid"
+   ],
+   "format": "short_answer",
+   "archetype_id": "BC-QA-04006",
+   "parameter_draw": {
+    "shape": "ladder",
+    "size": 3,
+    "rate": 4,
+    "ratio": 1,
+    "leg": "short",
+    "length_unit": "meter",
+    "time_unit": "minute"
+   },
+   "completes": "LSN-CON-04010#s5",
+   "stem": {
+    "text": "For ex-1, 24 + 8 dy/dt = 0. Find dy/dt with units.",
+    "command_verb": "find"
+   },
+   "answer_key": {
+    "form": "symbolic",
+    "mathjson": -3
+   },
+   "worked_solution": [
+    {
+     "step": 1,
+     "text": "Substituted.",
+     "mathjson": [
+      "Equal",
+      [
+       "Add",
+       24,
+       [
+        "Multiply",
+        8,
+        "dydt"
+       ]
+      ],
+      0
+     ],
+     "relation": "new"
+    },
+    {
+     "step": 2,
+     "text": "Solve; meters per minute.",
+     "mathjson": -3,
+     "relation": "solve",
+     "variable": "dydt"
+    }
+   ],
+   "calculator_status": "no_calculator",
+   "representation": "BC-REP-08",
+   "skills": [
+    "BC-SKL-04024"
+   ]
+  },
+  {
+   "id": "LSN-CON-04010#chk-2",
+   "check_kind": "isomorph",
+   "bands": [
+    "low",
+    "mid"
+   ],
+   "format": "short_answer",
+   "archetype_id": "BC-QA-04006",
+   "parameter_draw": {
+    "shape": "sphere",
+    "size": 5,
+    "rate": 3,
+    "ratio": 1,
+    "leg": "short",
+    "length_unit": "meter",
+    "time_unit": "second"
+   },
+   "stem": {
+    "text": "A sphere's radius grows at 3 meters per second. Find dV/dt, with units, when the radius is 5 meters.",
+    "command_verb": "find"
+   },
+   "answer_key": {
+    "form": "symbolic",
+    "mathjson": [
+     "Multiply",
+     300,
+     "Pi"
+    ]
+   },
+   "worked_solution": [
+    {
+     "step": 1,
+     "text": "dV/dt = 4 pi r^2 dr/dt.",
+     "mathjson": [
+      "Multiply",
+      4,
+      "Pi",
+      "drdt",
+      [
+       "Power",
+       "r",
+       2
+      ]
+     ],
+     "relation": "new"
+    },
+    {
+     "step": 2,
+     "text": "r = 5, dr/dt = 3; cubic meters per second.",
+     "mathjson": [
+      "Multiply",
+      300,
+      "Pi"
+     ],
+     "relation": "evaluate",
+     "subs": {
+      "r": "5",
+      "drdt": "3"
+     }
+    }
+   ],
+   "calculator_status": "no_calculator",
+   "representation": "BC-REP-08",
+   "skills": [
+    "BC-SKL-04025"
+   ]
+  },
+  {
+   "id": "LSN-CON-04010#chk-3",
+   "check_kind": "mcq",
+   "bands": [
+    "low"
+   ],
+   "format": "mcq",
+   "archetype_id": "BC-QA-04006",
+   "parameter_draw": {
+    "shape": "ladder",
+    "size": 8,
+    "rate": 3,
+    "ratio": 2,
+    "leg": "long",
+    "length_unit": "foot",
+    "time_unit": "minute"
+   },
+   "stem": {
+    "text": "A 10 foot ladder's foot slides out at 3 feet per minute. When it is 8 feet out, which statement answers how the top's height changes?",
+    "command_verb": "identify"
+   },
+   "answer_key": {
+    "form": "statement",
+    "mathjson": "dydt = -4",
+    "label": "The height decreases at 4 feet per minute."
+   },
+   "worked_solution": [
+    {
+     "step": 1,
+     "text": "Differentiated, instant.",
+     "mathjson": [
+      "Equal",
+      [
+       "Add",
+       48,
+       [
+        "Multiply",
+        12,
+        "dydt"
+       ]
+      ],
+      0
+     ],
+     "relation": "new"
+    },
+    {
+     "step": 2,
+     "text": "Solve.",
+     "mathjson": -4,
+     "relation": "solve",
+     "variable": "dydt"
+    }
+   ],
+   "options": [
+    {
+     "id": "A",
+     "is_key": true,
+     "error_path": null,
+     "label": "The height decreases at 4 feet per minute."
+    },
+    {
+     "id": "B",
+     "is_key": false,
+     "error_path": "BC-ERR-04005",
+     "label": "The height increases at 4 feet per minute.",
+     "derivation": "the sign dropped"
+    },
+    {
+     "id": "C",
+     "is_key": false,
+     "error_path": "BC-ERR-04001",
+     "label": "The height changes by -4 feet.",
+     "derivation": "units of the quantity alone"
+    },
+    {
+     "id": "D",
+     "is_key": false,
+     "error_path": "BC-ERR-04021",
+     "label": "The rate satisfies 48 + 12 dy/dt = 0.",
+     "derivation": "stops before isolating dy/dt"
+    }
+   ],
+   "calculator_status": "no_calculator",
+   "representation": "BC-REP-08",
+   "skills": [
+    "BC-SKL-04025"
+   ]
+  }
+ ],
+ "refresher": [
+  "LSN-CON-04010#s2",
+  "LSN-CON-04010#err-BC-ERR-04001",
+  "LSN-CON-04010#err-BC-ERR-04005",
+  "LSN-CON-04010#err-BC-ERR-04021",
+  "LSN-CON-04010#s5"
+ ],
+ "provenance": {
+  "author": "tools/lesson_transcribe.py",
+  "prompt_version": "generator/lesson_v1",
+  "design_path": "docs/lessons/unit-04/LSN-CON-04010.md",
+  "signed_off_by": "claude-opus-5-5",
+  "signed_off_at": "2026-09-29",
+  "not_human": true
+ }
+}

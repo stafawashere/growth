@@ -1,0 +1,504 @@
+{
+ "id": "LSN-CON-08003",
+ "version": 1,
+ "kind": "concept",
+ "target_id": "BC-CON-08003",
+ "status": "signed_off",
+ "snapshot_digest": "a6a8ec9d3f59ab8f712e33d30cc22fc64bf2c478fbe7312e3e3118d319c6a42f",
+ "source_digest": "48059dbf0ff20305ce6b5831f9dec5adf60220ffb6419f4c76b4b7e0fd343a16",
+ "read_minutes": {
+  "full": 2.0,
+  "brief": 2.0
+ },
+ "word_count": {
+  "full": 240,
+  "brief": 240
+ },
+ "sections": [
+  {
+   "id": "LSN-CON-08003#s1",
+   "type": "orientation",
+   "bands": [
+    "low",
+    "mid"
+   ],
+   "skills": [
+    "BC-SKL-08006"
+   ],
+   "sources": [
+    "BC-CON-08003",
+    "research/units/unit-08-applications-integration.md#8.2 Connecting Position, Velocity, and Acceleration of Functions Using Integrals"
+   ],
+   "evidence_tag": "inferred",
+   "text": "A response integrates velocity itself over the stated interval, keeps the sign, and names the result displacement, the net change in position, not distance.",
+   "delivery": {
+    "mode": "text",
+    "reason": "rule 6: a statement of what a response shows",
+    "sources": [
+     "BC-SKL-08006"
+    ]
+   }
+  },
+  {
+   "id": "LSN-CON-08003#s2",
+   "type": "key_ideas",
+   "bands": [
+    "low",
+    "mid"
+   ],
+   "skills": [
+    "BC-SKL-08006"
+   ],
+   "sources": [
+    "BC-EK-CHA-4C1",
+    "ced:153",
+    "research/units/unit-08-applications-integration.md#8.2 Connecting Position, Velocity, and Acceleration of Functions Using Integrals"
+   ],
+   "evidence_tag": "inferred",
+   "ek_id": "BC-EK-CHA-4C1",
+   "depth": "core",
+   "text": "For a particle moving on a line, the integral of velocity over [a, b] is the displacement. Where v is negative the particle moves in the negative direction and that stretch subtracts. A negative displacement is net movement in the negative direction.",
+   "notation": "displacement; net change in position",
+   "delivery": {
+    "mode": "figure",
+    "reason": "rule 4 through the topic Representations paragraph, velocity graph to signed and unsigned area (BC-REP-02 to BC-REP-01); unit README delivery map",
+    "sources": [
+     "BC-SKL-08006",
+     "BC-QA-08003"
+    ],
+    "spec": {
+     "kind": "graph",
+     "representations": [
+      "BC-REP-02"
+     ],
+     "window": {
+      "x": [
+       0,
+       3.5
+      ],
+      "y": [
+       -3.5,
+       1.5
+      ]
+     },
+     "curves": [
+      {
+       "expr": "-t**2 + 4*t - 3",
+       "domain": [
+        0,
+        3.5
+       ]
+      }
+     ],
+     "shaded": [
+      {
+       "between": [
+        "-t**2 + 4*t - 3",
+        "0"
+       ],
+       "domain": [
+        0,
+        1
+       ],
+       "sign": "negative"
+      },
+      {
+       "between": [
+        "-t**2 + 4*t - 3",
+        "0"
+       ],
+       "domain": [
+        1,
+        3
+       ],
+       "sign": "positive"
+      },
+      {
+       "between": [
+        "-t**2 + 4*t - 3",
+        "0"
+       ],
+       "domain": [
+        3,
+        3.5
+       ],
+       "sign": "negative"
+      }
+     ],
+     "labels": [
+      {
+       "text": "-4/3",
+       "placement": "inside"
+      },
+      {
+       "text": "+4/3",
+       "placement": "inside"
+      },
+      {
+       "text": "-7/24",
+       "placement": "inside"
+      },
+      {
+       "text": "sum: displacement -7/24",
+       "placement": "inside"
+      }
+     ]
+    },
+    "fallback": "the same graph, static, with the three signed areas and the sum labelled inside",
+    "keyboard": "no control; the figure description is reached with Tab"
+   }
+  },
+  {
+   "id": "LSN-CON-08003#s3",
+   "type": "strategy",
+   "bands": [
+    "low",
+    "mid"
+   ],
+   "skills": [
+    "BC-SKL-08006"
+   ],
+   "sources": [
+    "BC-QA-08003"
+   ],
+   "evidence_tag": "verified",
+   "archetype_id": "BC-QA-08003",
+   "cue": "A velocity function or graph and a time interval, with displacement or change in position asked.",
+   "method": "First: classify the requested quantity. Displacement: the integral of v over the interval.",
+   "rival": "Rival: integrating velocity and taking the absolute value of the result.",
+   "separating_feature": "Displacement keeps the sign; only total distance removes it."
+  },
+  {
+   "id": "LSN-CON-08003#s4",
+   "type": "worked_example",
+   "bands": [
+    "low",
+    "mid"
+   ],
+   "skills": [
+    "BC-SKL-08006"
+   ],
+   "sources": [
+    "BC-QA-08003"
+   ],
+   "evidence_tag": "inferred",
+   "archetype_id": "BC-QA-08003",
+   "parameter_draw": {
+    "size": 1,
+    "direction": "left_first",
+    "first_zero": 1,
+    "gap": 2,
+    "overrun": "1/2",
+    "context": "particle",
+    "units": "meters",
+    "framing": "bare"
+   },
+   "problem": {
+    "text": "A particle moves on the x-axis with velocity v(t) = -t^2 + 4t - 3 meters per second. Find its displacement over [0, 7/2].",
+    "command_verb": "find"
+   },
+   "calculator_status": "no_calculator",
+   "steps": [
+    {
+     "cue": "The stem says displacement.",
+     "why": "Net change in position: velocity itself, sign kept."
+    },
+    {
+     "cue": "Displacement over [0, 7/2] names the integral of v.",
+     "why": "One integral; the left stretches subtract.",
+     "expression": [
+      "Integrate",
+      [
+       "Add",
+       -3,
+       [
+        "Multiply",
+        -1,
+        [
+         "Power",
+         "t",
+         2
+        ]
+       ],
+       [
+        "Multiply",
+        4,
+        "t"
+       ]
+      ],
+      [
+       "Tuple",
+       "t",
+       0,
+       [
+        "Rational",
+        7,
+        2
+       ]
+      ]
+     ],
+     "relation": "new"
+    },
+    {
+     "cue": "No calculator: antiderivative at 7/2 minus at 0.",
+     "why": "Meters; negative means net movement left.",
+     "expression": [
+      "Rational",
+      -7,
+      24
+     ],
+     "relation": "equivalent"
+    }
+   ],
+   "answer": {
+    "form": "symbolic",
+    "mathjson": [
+     "Rational",
+     -7,
+     24
+    ]
+   },
+   "delivery": {
+    "mode": "step_reveal",
+    "reason": "rule 1",
+    "sources": []
+   }
+  },
+  {
+   "id": "LSN-CON-08003#err-BC-ERR-99010",
+   "type": "common_error",
+   "bands": [
+    "low",
+    "mid"
+   ],
+   "skills": [
+    "BC-SKL-08006"
+   ],
+   "sources": [
+    "BC-ERR-99010",
+    "BC-MIS-08004"
+   ],
+   "evidence_tag": "inferred",
+   "error_id": "BC-ERR-99010",
+   "observed_behavior": "Responses integrate velocity without an absolute value, or split the interval incorrectly, and report the net change as the total distance travelled.",
+   "scoring_consequence": "The setup point for total distance is not earned; the numerical answer point follows the setup.",
+   "wrong_step": {
+    "text": "Distance asked, -7/24 reported.",
+    "expression": [
+     "Rational",
+     -7,
+     24
+    ]
+   },
+   "right_step": {
+    "text": "Distance: 71/24.",
+    "expression": [
+     "Rational",
+     71,
+     24
+    ]
+   },
+   "relation": "distinct",
+   "possible_reason": {
+    "misconception_id": "BC-MIS-08004",
+    "text": "treats the integral of velocity as the length of the trip"
+   },
+   "delivery": {
+    "mode": "step_reveal",
+    "reason": "rule 1",
+    "sources": []
+   }
+  },
+  {
+   "id": "LSN-CON-08003#prq-BC-PRQ-06005",
+   "type": "prerequisite_bridge",
+   "bands": [
+    "low",
+    "mid"
+   ],
+   "skills": [
+    "BC-SKL-08006"
+   ],
+   "sources": [
+    "BC-PRQ-06005"
+   ],
+   "evidence_tag": "inferred",
+   "prerequisite_id": "BC-PRQ-06005",
+   "text": "v(t) is the rate the integral accumulates; reading position for velocity puts the wrong function inside."
+  }
+ ],
+ "checks": [
+  {
+   "id": "LSN-CON-08003#chk-1",
+   "check_kind": "completion",
+   "bands": [
+    "low",
+    "mid"
+   ],
+   "format": "short_answer",
+   "archetype_id": "BC-QA-08003",
+   "parameter_draw": {
+    "size": 1,
+    "direction": "left_first",
+    "first_zero": 1,
+    "gap": 2,
+    "overrun": "1/2",
+    "context": "particle",
+    "units": "meters",
+    "framing": "bare"
+   },
+   "completes": "LSN-CON-08003#s4",
+   "stem": {
+    "text": "The displacement is the integral of -t^2 + 4t - 3 from 0 to 7/2. Evaluate it.",
+    "command_verb": "evaluate"
+   },
+   "answer_key": {
+    "form": "symbolic",
+    "mathjson": [
+     "Rational",
+     -7,
+     24
+    ]
+   },
+   "worked_solution": [
+    {
+     "step": 1,
+     "text": "The integral.",
+     "mathjson": [
+      "Integrate",
+      [
+       "Add",
+       -3,
+       [
+        "Multiply",
+        -1,
+        [
+         "Power",
+         "t",
+         2
+        ]
+       ],
+       [
+        "Multiply",
+        4,
+        "t"
+       ]
+      ],
+      [
+       "Tuple",
+       "t",
+       0,
+       [
+        "Rational",
+        7,
+        2
+       ]
+      ]
+     ],
+     "relation": "new"
+    },
+    {
+     "step": 2,
+     "text": "Its value.",
+     "mathjson": [
+      "Rational",
+      -7,
+      24
+     ],
+     "relation": "equivalent"
+    }
+   ],
+   "calculator_status": "no_calculator",
+   "representation": "BC-REP-01",
+   "skills": [
+    "BC-SKL-08006"
+   ]
+  },
+  {
+   "id": "LSN-CON-08003#chk-2",
+   "check_kind": "isomorph",
+   "bands": [
+    "low",
+    "mid"
+   ],
+   "format": "short_answer",
+   "archetype_id": "BC-QA-08003",
+   "parameter_draw": {
+    "size": 2,
+    "direction": "right_first",
+    "first_zero": 1,
+    "gap": 4,
+    "overrun": "1",
+    "context": "cart",
+    "units": "feet",
+    "framing": "context"
+   },
+   "stem": {
+    "text": "A cart's velocity is v(t) = 2t^2 - 12t + 10 feet per second. Find its displacement over [0, 6].",
+    "command_verb": "find"
+   },
+   "answer_key": {
+    "form": "symbolic",
+    "mathjson": -12
+   },
+   "worked_solution": [
+    {
+     "step": 1,
+     "text": "The integral.",
+     "mathjson": [
+      "Integrate",
+      [
+       "Add",
+       10,
+       [
+        "Multiply",
+        -12,
+        "t"
+       ],
+       [
+        "Multiply",
+        2,
+        [
+         "Power",
+         "t",
+         2
+        ]
+       ]
+      ],
+      [
+       "Tuple",
+       "t",
+       0,
+       6
+      ]
+     ],
+     "relation": "new"
+    },
+    {
+     "step": 2,
+     "text": "Its value.",
+     "mathjson": -12,
+     "relation": "equivalent"
+    }
+   ],
+   "calculator_status": "no_calculator",
+   "representation": "BC-REP-01",
+   "skills": [
+    "BC-SKL-08006"
+   ]
+  }
+ ],
+ "refresher": [
+  "LSN-CON-08003#s2",
+  "LSN-CON-08003#err-BC-ERR-99010",
+  "LSN-CON-08003#s4"
+ ],
+ "provenance": {
+  "author": "tools/lesson_transcribe.py",
+  "prompt_version": "generator/lesson_v1",
+  "design_path": "docs/lessons/unit-08/LSN-CON-08003.md",
+  "signed_off_by": "claude-opus-5-5",
+  "signed_off_at": "2026-09-29",
+  "not_human": true
+ }
+}

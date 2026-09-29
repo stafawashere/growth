@@ -1,0 +1,590 @@
+{
+ "id": "LSN-CON-02006",
+ "version": 1,
+ "kind": "concept",
+ "target_id": "BC-CON-02006",
+ "status": "draft",
+ "snapshot_digest": "a6a8ec9d3f59ab8f712e33d30cc22fc64bf2c478fbe7312e3e3118d319c6a42f",
+ "source_digest": "e1b13ac542c788275bf7b12814c2fa147a2615c50b451a731f6656f018619c03",
+ "read_minutes": {
+  "full": 2.8,
+  "brief": 2.3
+ },
+ "word_count": {
+  "full": 354,
+  "brief": 304
+ },
+ "sections": [
+  {
+   "id": "LSN-CON-02006#s1",
+   "type": "orientation",
+   "bands": [
+    "low",
+    "mid"
+   ],
+   "skills": [
+    "BC-SKL-02035"
+   ],
+   "sources": [
+    "BC-CON-02006",
+    "research/units/unit-02-differentiation-definition-properties.md#2.7 Derivatives of cos x, sin x, e^x, and ln x"
+   ],
+   "evidence_tag": "inferred",
+   "text": "A response reads a limit shaped like a difference quotient as a derivative already known: it names the function and the base point, states the limit as that derivative there, and evaluates by the rule. Substitution gives \\(\\frac{0}{0}\\); that form does not mean the limit fails to exist.",
+   "delivery": {
+    "mode": "text",
+    "reason": "rule 5: BC-SKL-02035 carries BC-REP-01 only",
+    "sources": [
+     "BC-SKL-02035"
+    ]
+   }
+  },
+  {
+   "id": "LSN-CON-02006#s2",
+   "type": "key_ideas",
+   "bands": [
+    "low",
+    "mid"
+   ],
+   "skills": [
+    "BC-SKL-02035"
+   ],
+   "sources": [
+    "BC-EK-LIM-3A1",
+    "BC-EK-FUN-3A4",
+    "ced:66",
+    "research/units/unit-02-differentiation-definition-properties.md#2.7 Derivatives of cos x, sin x, e^x, and ln x"
+   ],
+   "evidence_tag": "verified",
+   "ek_id": "BC-EK-LIM-3A1",
+   "depth": "core",
+   "text": "If the numerator is a known function at a shifted input minus the same function at the base, over the shift, the limit is that function's derivative at the base (BC-EK-LIM-3A1, ced:66). Match \\(\\frac{f(a+h)-f(a)}{h}\\) or \\(\\frac{f(x)-f(a)}{x-a}\\), name \\(f\\) and \\(a\\), then use the rule (BC-EK-FUN-3A4): \\((\\sin x)'=\\cos x\\), \\((\\cos x)'=-\\sin x\\), \\((e^x)'=e^x\\), \\((\\ln x)'=\\frac{1}{x}\\).",
+   "quote": {
+    "text": "recognizing an expression for the definition of the derivative of a function whose derivative is known offers a strategy for determining a limit",
+    "source": "ced:66"
+   },
+   "delivery": {
+    "mode": "text",
+    "reason": "rule 5: BC-REP-01 only (unit README delivery map)",
+    "sources": [
+     "BC-SKL-02035"
+    ]
+   }
+  },
+  {
+   "id": "LSN-CON-02006#s3",
+   "type": "strategy",
+   "bands": [
+    "low",
+    "mid"
+   ],
+   "skills": [
+    "BC-SKL-02035"
+   ],
+   "sources": [
+    "BC-QA-02003"
+   ],
+   "evidence_tag": "verified",
+   "archetype_id": "BC-QA-02003",
+   "cue": "A limit in difference quotient form; the stem asks for its value.",
+   "method": "First line: compare the numerator with a difference of values of a known function.",
+   "rival": "Rival: \\(\\frac{0}{0}\\) read as unresolvable, the limit reported as nonexistent (BC-ERR-02009).",
+   "separating_feature": "The constant in the numerator is the same function's value at the base."
+  },
+  {
+   "id": "LSN-CON-02006#s4",
+   "type": "worked_example",
+   "bands": [
+    "low",
+    "mid"
+   ],
+   "skills": [
+    "BC-SKL-02035"
+   ],
+   "sources": [
+    "BC-QA-02003"
+   ],
+   "evidence_tag": "inferred",
+   "archetype_id": "BC-QA-02003",
+   "parameter_draw": {
+    "family": "sqrt",
+    "base_index": 1,
+    "coefficient": 4,
+    "increment": "h",
+    "shape": "increment"
+   },
+   "problem": {
+    "text": "Find \\(\\lim_{h\\to0}\\frac{4\\sqrt{9+h}-12}{h}\\).",
+    "command_verb": "find"
+   },
+   "calculator_status": "no_calculator",
+   "steps": [
+    {
+     "cue": "Substitution gives \\(\\frac{0}{0}\\), and the numerator holds a shifted and a base value.",
+     "why": "\\(12=4\\sqrt{9}\\): the numerator is \\(f(9+h)-f(9)\\) for \\(f(x)=4\\sqrt{x}\\).",
+     "expression": [
+      "Multiply",
+      4,
+      [
+       "Power",
+       "x",
+       [
+        "Rational",
+        1,
+        2
+       ]
+      ]
+     ],
+     "relation": "new"
+    },
+    {
+     "cue": "That numerator over \\(h\\) is the definition of \\(f'(9)\\).",
+     "why": "The rule gives \\(f'(x)=\\frac{2}{\\sqrt{x}}\\).",
+     "expression": [
+      "Multiply",
+      2,
+      [
+       "Power",
+       "x",
+       [
+        "Rational",
+        -1,
+        2
+       ]
+      ]
+     ],
+     "relation": "differentiate",
+     "variable": "x"
+    },
+    {
+     "cue": "The base point is 9, the input inside the root at \\(h=0\\).",
+     "why": "\\(f'(9)=\\frac{2}{3}\\).",
+     "expression": [
+      "Rational",
+      2,
+      3
+     ],
+     "relation": "evaluate",
+     "subs": {
+      "x": "9"
+     }
+    }
+   ],
+   "answer": {
+    "form": "numeric",
+    "mathjson": [
+     "Rational",
+     2,
+     3
+    ]
+   },
+   "delivery": {
+    "mode": "step_reveal",
+    "reason": "rule 1",
+    "sources": []
+   }
+  },
+  {
+   "id": "LSN-CON-02006#err-BC-ERR-02009",
+   "type": "common_error",
+   "bands": [
+    "low",
+    "mid"
+   ],
+   "skills": [
+    "BC-SKL-02035"
+   ],
+   "sources": [
+    "BC-ERR-02009",
+    "BC-MIS-02004"
+   ],
+   "evidence_tag": "inferred",
+   "error_id": "BC-ERR-02009",
+   "observed_behavior": "The response treats a limit having the shape of a difference quotient as indeterminate and unresolvable.",
+   "scoring_consequence": "The value point is lost.",
+   "wrong_step": {
+    "text": "Substitution gives \\(\\frac{0}{0}\\), reported as: the limit does not exist.",
+    "expression": "NaN"
+   },
+   "right_step": {
+    "text": "The limit is \\(f'(9)=\\frac{2}{3}\\).",
+    "expression": [
+     "Rational",
+     2,
+     3
+    ]
+   },
+   "relation": "distinct",
+   "possible_reason": {
+    "misconception_id": "BC-MIS-02004",
+    "text": "a difference quotient whose underlying derivative is known is not recognised as such"
+   },
+   "delivery": {
+    "mode": "step_reveal",
+    "reason": "rule 1",
+    "sources": []
+   }
+  },
+  {
+   "id": "LSN-CON-02006#err-BC-ERR-02010",
+   "type": "common_error",
+   "bands": [
+    "low",
+    "mid"
+   ],
+   "skills": [
+    "BC-SKL-02035"
+   ],
+   "sources": [
+    "BC-ERR-02010"
+   ],
+   "evidence_tag": "inferred",
+   "error_id": "BC-ERR-02010",
+   "observed_behavior": "The response identifies the underlying function correctly but evaluates its derivative at the wrong input.",
+   "scoring_consequence": "The value point is lost.",
+   "wrong_step": {
+    "text": "The constant 12 taken as the base: \\(f'(12)=\\frac{2}{\\sqrt{12}}\\).",
+    "expression": [
+     "Multiply",
+     [
+      "Rational",
+      1,
+      3
+     ],
+     [
+      "Power",
+      3,
+      [
+       "Rational",
+       1,
+       2
+      ]
+     ]
+    ]
+   },
+   "right_step": {
+    "text": "The base is 9: \\(f'(9)=\\frac{2}{3}\\).",
+    "expression": [
+     "Rational",
+     2,
+     3
+    ]
+   },
+   "relation": "distinct",
+   "delivery": {
+    "mode": "step_reveal",
+    "reason": "rule 1",
+    "sources": []
+   }
+  },
+  {
+   "id": "LSN-CON-02006#err-BC-ERR-02024",
+   "type": "common_error",
+   "bands": [
+    "low",
+    "mid"
+   ],
+   "skills": [
+    "BC-SKL-02035"
+   ],
+   "sources": [
+    "BC-ERR-02024",
+    "BC-MIS-02014"
+   ],
+   "evidence_tag": "inferred",
+   "error_id": "BC-ERR-02024",
+   "observed_behavior": "The response substitutes the value of a function into a position in the product or quotient rule that calls for the value of its derivative.",
+   "scoring_consequence": "The value point is lost.",
+   "wrong_step": {
+    "text": "The height \\(f(9)=4\\sqrt{9}=12\\) reported as the limit.",
+    "expression": 12
+   },
+   "right_step": {
+    "text": "The slope \\(f'(9)=\\frac{2}{3}\\) is the limit.",
+    "expression": [
+     "Rational",
+     2,
+     3
+    ]
+   },
+   "relation": "distinct",
+   "possible_reason": {
+    "misconception_id": "BC-MIS-02014",
+    "text": "the height is used as a slope"
+   },
+   "delivery": {
+    "mode": "step_reveal",
+    "reason": "rule 1",
+    "sources": []
+   }
+  },
+  {
+   "id": "LSN-CON-02006#prq-BC-PRQ-02005",
+   "type": "prerequisite_bridge",
+   "bands": [
+    "low",
+    "mid"
+   ],
+   "skills": [
+    "BC-SKL-02035"
+   ],
+   "sources": [
+    "BC-PRQ-02005"
+   ],
+   "evidence_tag": "inferred",
+   "prerequisite_id": "BC-PRQ-02005",
+   "text": "The base point is the input left when the increment is 0; the constant in the numerator is \\(f\\) there, a value, not an input."
+  }
+ ],
+ "checks": [
+  {
+   "id": "LSN-CON-02006#chk-1",
+   "check_kind": "completion",
+   "bands": [
+    "low",
+    "mid"
+   ],
+   "format": "short_answer",
+   "archetype_id": "BC-QA-02003",
+   "parameter_draw": {
+    "family": "sqrt",
+    "base_index": 1,
+    "coefficient": 4,
+    "increment": "h",
+    "shape": "increment"
+   },
+   "completes": "LSN-CON-02006#s4",
+   "stem": {
+    "text": "The limit is \\(f'(9)\\) for \\(f(x)=4\\sqrt{x}\\), and \\(f'(x)=\\frac{2}{\\sqrt{x}}\\). Find the limit.",
+    "command_verb": "find"
+   },
+   "answer_key": {
+    "form": "numeric",
+    "mathjson": [
+     "Rational",
+     2,
+     3
+    ]
+   },
+   "worked_solution": [
+    {
+     "step": 1,
+     "text": "\\(f'(x)=\\frac{2}{\\sqrt{x}}\\).",
+     "mathjson": [
+      "Multiply",
+      2,
+      [
+       "Power",
+       "x",
+       [
+        "Rational",
+        -1,
+        2
+       ]
+      ]
+     ],
+     "relation": "new"
+    },
+    {
+     "step": 2,
+     "text": "At 9: \\(\\frac{2}{3}\\).",
+     "mathjson": [
+      "Rational",
+      2,
+      3
+     ],
+     "relation": "evaluate",
+     "subs": {
+      "x": "9"
+     }
+    }
+   ],
+   "calculator_status": "no_calculator",
+   "representation": "BC-REP-01",
+   "skills": [
+    "BC-SKL-02035"
+   ]
+  },
+  {
+   "id": "LSN-CON-02006#chk-2",
+   "check_kind": "isomorph",
+   "bands": [
+    "low",
+    "mid"
+   ],
+   "format": "short_answer",
+   "archetype_id": "BC-QA-02003",
+   "parameter_draw": {
+    "family": "ln",
+    "base_index": 2,
+    "coefficient": 3,
+    "increment": "t",
+    "shape": "increment"
+   },
+   "stem": {
+    "text": "Find \\(\\lim_{t\\to0}\\frac{3\\ln(\\frac{1}{2}+t)-3\\ln\\frac{1}{2}}{t}\\).",
+    "command_verb": "find"
+   },
+   "answer_key": {
+    "form": "numeric",
+    "mathjson": 6
+   },
+   "worked_solution": [
+    {
+     "step": 1,
+     "text": "\\(f(x)=3\\ln x\\), base \\(\\frac{1}{2}\\).",
+     "mathjson": [
+      "Multiply",
+      3,
+      [
+       "Ln",
+       "x"
+      ]
+     ],
+     "relation": "new"
+    },
+    {
+     "step": 2,
+     "text": "\\(f'(x)=\\frac{3}{x}\\).",
+     "mathjson": [
+      "Multiply",
+      3,
+      [
+       "Power",
+       "x",
+       -1
+      ]
+     ],
+     "relation": "differentiate",
+     "variable": "x"
+    },
+    {
+     "step": 3,
+     "text": "\\(f'(\\frac{1}{2})=6\\).",
+     "mathjson": 6,
+     "relation": "evaluate",
+     "subs": {
+      "x": "1/2"
+     }
+    }
+   ],
+   "calculator_status": "no_calculator",
+   "representation": "BC-REP-01",
+   "skills": [
+    "BC-SKL-02035"
+   ]
+  },
+  {
+   "id": "LSN-CON-02006#chk-3",
+   "check_kind": "mcq",
+   "bands": [
+    "low"
+   ],
+   "format": "mcq",
+   "archetype_id": "BC-QA-02003",
+   "parameter_draw": {
+    "family": "sin",
+    "base_index": 1,
+    "coefficient": 2,
+    "increment": "h",
+    "shape": "increment"
+   },
+   "stem": {
+    "text": "Find \\(\\lim_{h\\to0}\\frac{2\\sin(\\frac{\\pi}{3}+h)-\\sqrt{3}}{h}\\).",
+    "command_verb": "find"
+   },
+   "answer_key": {
+    "form": "statement",
+    "mathjson": "1",
+    "label": "The limit is 1."
+   },
+   "worked_solution": [
+    {
+     "step": 1,
+     "text": "\\(f(x)=2\\sin x\\), base \\(\\frac{\\pi}{3}\\).",
+     "mathjson": [
+      "Multiply",
+      2,
+      [
+       "Sin",
+       "x"
+      ]
+     ],
+     "relation": "new"
+    },
+    {
+     "step": 2,
+     "text": "\\(f'(x)=2\\cos x\\).",
+     "mathjson": [
+      "Multiply",
+      2,
+      [
+       "Cos",
+       "x"
+      ]
+     ],
+     "relation": "differentiate",
+     "variable": "x"
+    },
+    {
+     "step": 3,
+     "text": "\\(f'(\\frac{\\pi}{3})=1\\).",
+     "mathjson": 1,
+     "relation": "evaluate",
+     "subs": {
+      "x": "pi/3"
+     }
+    }
+   ],
+   "options": [
+    {
+     "id": "A",
+     "is_key": false,
+     "error_path": "BC-ERR-02010",
+     "label": "The limit is 2.",
+     "derivation": "the derivative 2cos x evaluated at 0, the value the increment approaches, instead of at the base point pi/3"
+    },
+    {
+     "id": "B",
+     "is_key": false,
+     "error_path": "BC-ERR-02010",
+     "label": "The limit is \\(2\\cos\\sqrt{3}\\).",
+     "derivation": "the constant in the numerator, f at the base point, taken as the base point"
+    },
+    {
+     "id": "C",
+     "is_key": true,
+     "error_path": null,
+     "label": "The limit is 1."
+    },
+    {
+     "id": "D",
+     "is_key": false,
+     "error_path": "BC-ERR-02009",
+     "label": "The limit does not exist.",
+     "derivation": "the zero over zero form taken to mean the limit does not exist"
+    }
+   ],
+   "calculator_status": "no_calculator",
+   "representation": "BC-REP-01",
+   "skills": [
+    "BC-SKL-02035"
+   ]
+  }
+ ],
+ "refresher": [
+  "LSN-CON-02006#s2",
+  "LSN-CON-02006#err-BC-ERR-02009",
+  "LSN-CON-02006#err-BC-ERR-02010",
+  "LSN-CON-02006#err-BC-ERR-02024",
+  "LSN-CON-02006#s4"
+ ],
+ "provenance": {
+  "author": "tools/lesson_transcribe.py",
+  "prompt_version": "generator/lesson_v1",
+  "design_path": "docs/lessons/unit-02/LSN-CON-02006.md",
+  "signed_off_by": null,
+  "signed_off_at": null,
+  "not_human": true
+ }
+}

@@ -1,0 +1,900 @@
+{
+ "id": "LSN-CON-06012",
+ "version": 1,
+ "kind": "concept",
+ "target_id": "BC-CON-06012",
+ "status": "signed_off",
+ "snapshot_digest": "a6a8ec9d3f59ab8f712e33d30cc22fc64bf2c478fbe7312e3e3118d319c6a42f",
+ "source_digest": "b56bf2c1d6bc3d5e7f3db5aa000b0f256996797251800bb24a7df04b4355501b",
+ "read_minutes": {
+  "full": 4.8,
+  "brief": 3.0
+ },
+ "word_count": {
+  "full": 636,
+  "brief": 395
+ },
+ "sections": [
+  {
+   "id": "LSN-CON-06012#s1",
+   "type": "orientation",
+   "bands": [
+    "low",
+    "mid"
+   ],
+   "skills": [
+    "BC-SKL-06034",
+    "BC-SKL-06035",
+    "BC-SKL-06036",
+    "BC-SKL-06037",
+    "BC-SKL-06039"
+   ],
+   "sources": [
+    "BC-CON-06012",
+    "research/units/unit-06-integration-accumulation.md#6.7 The Fundamental Theorem of Calculus and Definite Integrals"
+   ],
+   "evidence_tag": "inferred",
+   "text": "The integral of a rate is the change in the quantity. A later value is the known value plus that integral.",
+   "delivery": {
+    "mode": "text",
+    "reason": "rule 6: a statement of what a response writes",
+    "sources": [
+     "BC-SKL-06036"
+    ]
+   }
+  },
+  {
+   "id": "LSN-CON-06012#s2",
+   "type": "key_ideas",
+   "bands": [
+    "low",
+    "mid"
+   ],
+   "skills": [
+    "BC-SKL-06034",
+    "BC-SKL-06035",
+    "BC-SKL-06036",
+    "BC-SKL-06037",
+    "BC-SKL-06039"
+   ],
+   "sources": [
+    "BC-EK-FUN-6B3",
+    "ced:124",
+    "research/units/unit-06-integration-accumulation.md#6.7 The Fundamental Theorem of Calculus and Definite Integrals"
+   ],
+   "evidence_tag": "inferred",
+   "ek_id": "BC-EK-FUN-6B3",
+   "depth": "core",
+   "text": "With f continuous on [a, b] and F an antiderivative, the integral of f from a to b is F(b) - F(a). So A(b) = A(a) + the integral of the rate.",
+   "notation": "F(b) - F(a)",
+   "delivery": {
+    "mode": "table",
+    "reason": "rule 5: BC-REP-03 on BC-SKL-06037, the known value plus the accumulated change",
+    "sources": [
+     "BC-SKL-06037"
+    ],
+    "spec": {
+     "kind": "table",
+     "representations": [
+      "BC-REP-03"
+     ],
+     "columns": [
+      "t",
+      "1",
+      "3"
+     ],
+     "rows": [
+      [
+       "A(t), liters",
+       "40",
+       "40 + 38 = 78"
+      ],
+      [
+       "change since t = 1",
+       "0",
+       "38"
+      ]
+     ],
+     "labels": [
+      {
+       "text": "change = integral of the rate from 1 to 3",
+       "placement": "inside"
+      }
+     ]
+    },
+    "fallback": "the table as plain text rows",
+    "keyboard": "Tab moves between cells; no control"
+   }
+  },
+  {
+   "id": "LSN-CON-06012#s3",
+   "type": "key_ideas",
+   "bands": [
+    "low"
+   ],
+   "skills": [
+    "BC-SKL-06034"
+   ],
+   "sources": [
+    "BC-EK-FUN-6B1",
+    "ced:124"
+   ],
+   "evidence_tag": "verified",
+   "ek_id": "BC-EK-FUN-6B1",
+   "depth": "extended",
+   "text": "An antiderivative of f is any function whose derivative is f.",
+   "notation": "F' = f",
+   "quote": {
+    "text": "An antiderivative of a function f is a function g whose derivative is f.",
+    "source": "ced:124"
+   },
+   "delivery": {
+    "mode": "text",
+    "reason": "rule 6: a definition, BC-REP-01 only",
+    "sources": [
+     "BC-SKL-06034"
+    ]
+   }
+  },
+  {
+   "id": "LSN-CON-06012#s4",
+   "type": "key_ideas",
+   "bands": [
+    "low"
+   ],
+   "skills": [
+    "BC-SKL-06035"
+   ],
+   "sources": [
+    "BC-EK-FUN-6B2",
+    "ced:124"
+   ],
+   "evidence_tag": "inferred",
+   "ek_id": "BC-EK-FUN-6B2",
+   "depth": "extended",
+   "text": "With f continuous on an interval containing a, the integral of f from a to x is an antiderivative of f there.",
+   "notation": "F(x) = integral from a to x of f(t) dt",
+   "delivery": {
+    "mode": "text",
+    "reason": "rule 6: a theorem statement, BC-REP-04",
+    "sources": [
+     "BC-SKL-06035"
+    ]
+   }
+  },
+  {
+   "id": "LSN-CON-06012#s5",
+   "type": "strategy",
+   "bands": [
+    "low",
+    "mid"
+   ],
+   "skills": [
+    "BC-SKL-06034",
+    "BC-SKL-06036",
+    "BC-SKL-06037"
+   ],
+   "sources": [
+    "BC-QA-06005"
+   ],
+   "evidence_tag": "verified",
+   "archetype_id": "BC-QA-06005",
+   "cue": "A rate, a known value at one time, a later value asked.",
+   "method": "First line: A(b) = A(a) + integral of the rate.",
+   "rival": "Rival: net change reported as the amount (BC-ERR-06015).",
+   "separating_feature": "The known value."
+  },
+  {
+   "id": "LSN-CON-06012#s6",
+   "type": "strategy",
+   "bands": [
+    "low",
+    "mid"
+   ],
+   "skills": [
+    "BC-SKL-06036",
+    "BC-SKL-06037",
+    "BC-SKL-06039"
+   ],
+   "sources": [
+    "BC-QA-06006"
+   ],
+   "evidence_tag": "verified",
+   "archetype_id": "BC-QA-06006",
+   "cue": "An inflow rate, an outflow rate and an initial amount.",
+   "method": "First line: which rate increases the quantity and which decreases it, then one integral of inflow minus outflow.",
+   "rival": "Rival: the parentheses around the outflow dropped.",
+   "separating_feature": "Two rates acting in opposite directions."
+  },
+  {
+   "id": "LSN-CON-06012#s7",
+   "type": "strategy",
+   "bands": [
+    "low",
+    "mid"
+   ],
+   "skills": [
+    "BC-SKL-06036",
+    "BC-SKL-06037"
+   ],
+   "sources": [
+    "BC-QA-99008"
+   ],
+   "evidence_tag": "verified",
+   "archetype_id": "BC-QA-99008",
+   "cue": "A rate over a closed interval; the total that arrives asked.",
+   "method": "First line: the interval read from the wording, then the integral of the rate.",
+   "rival": "Rival: the stem's initial amount added, as for net change.",
+   "separating_feature": "Arrives or total, with no amount present asked."
+  },
+  {
+   "id": "LSN-CON-06012#s8",
+   "type": "worked_example",
+   "bands": [
+    "low",
+    "mid"
+   ],
+   "skills": [
+    "BC-SKL-06034",
+    "BC-SKL-06036",
+    "BC-SKL-06037"
+   ],
+   "sources": [
+    "BC-QA-06005"
+   ],
+   "evidence_tag": "inferred",
+   "archetype_id": "BC-QA-06005",
+   "parameter_draw": {
+    "cubic": 1,
+    "square": 1,
+    "linear": 2,
+    "start": 1,
+    "span": 2,
+    "known": 40,
+    "base_rate": 5,
+    "swing": 2,
+    "stretch": 3,
+    "horizon": 3,
+    "context": "tank",
+    "tool": "exact",
+    "direction": "forward"
+   },
+   "problem": {
+    "text": "Water enters a tank at 3t^2 + 2t + 2 liters per hour. At t = 1 the tank holds 40 liters. Find the amount at t = 3.",
+    "command_verb": "find"
+   },
+   "calculator_status": "no_calculator",
+   "steps": [
+    {
+     "cue": "A later amount, with a known amount at t = 1.",
+     "why": "Known value plus the change.",
+     "expression": [
+      "Add",
+      40,
+      [
+       "Integrate",
+       [
+        "Add",
+        2,
+        [
+         "Multiply",
+         2,
+         "t"
+        ],
+        [
+         "Multiply",
+         3,
+         [
+          "Power",
+          "t",
+          2
+         ]
+        ]
+       ],
+       [
+        "Tuple",
+        "t",
+        1,
+        3
+       ]
+      ]
+     ],
+     "point_type_id": "BC-PT-99033",
+     "relation": "new"
+    },
+    {
+     "cue": "No calculator: an antiderivative first.",
+     "why": "Power rule, term by term.",
+     "expression": [
+      "Add",
+      [
+       "Power",
+       "t",
+       2
+      ],
+      [
+       "Power",
+       "t",
+       3
+      ],
+      [
+       "Multiply",
+       2,
+       "t"
+      ]
+     ],
+     "point_type_id": "BC-PT-99003",
+     "relation": "new"
+    },
+    {
+     "cue": "Both limits.",
+     "why": "F(3) - F(1).",
+     "expression": 78,
+     "relation": "new"
+    },
+    {
+     "cue": "The stem asks for an amount.",
+     "why": "78 liters.",
+     "expression": 78,
+     "relation": "equivalent"
+    }
+   ],
+   "answer": {
+    "form": "numeric",
+    "mathjson": 78
+   },
+   "delivery": {
+    "mode": "step_reveal",
+    "reason": "rule 1",
+    "sources": []
+   }
+  },
+  {
+   "id": "LSN-CON-06012#s9",
+   "type": "what_a_reader_scores",
+   "bands": [
+    "low",
+    "mid"
+   ],
+   "skills": [
+    "BC-SKL-06034",
+    "BC-SKL-06036",
+    "BC-SKL-06037"
+   ],
+   "sources": [
+    "BC-PT-99033",
+    "BC-PT-99003"
+   ],
+   "evidence_tag": "verified",
+   "example_id": "LSN-CON-06012#s8",
+   "lines": [
+    {
+     "point_type_id": "BC-PT-99033",
+     "text": "Uses the initial condition in an accumulation expression. Earned by: Adding the known function value at one endpoint to a definite integral of the rate (sg-24:3, sg-22:8). Not earned by: A definite integral alone with the known value never added (sg-22:8). Notation: sg-22:8 lists cases where a missing differential shifts which of the three points are available."
+    },
+    {
+     "point_type_id": "BC-PT-99003",
+     "text": "Antiderivative. Earned by: A correct antiderivative of the presented integrand, with or without the constant of integration (sg-25:14). Not earned by: An antiderivative of the wrong form, or a jump from integral to value with no antiderivative shown (sg-26:18)."
+    }
+   ]
+  },
+  {
+   "id": "LSN-CON-06012#err-BC-ERR-06015",
+   "type": "common_error",
+   "bands": [
+    "low",
+    "mid"
+   ],
+   "skills": [
+    "BC-SKL-06036",
+    "BC-SKL-06037"
+   ],
+   "sources": [
+    "BC-ERR-06015",
+    "BC-MIS-08006"
+   ],
+   "evidence_tag": "inferred",
+   "error_id": "BC-ERR-06015",
+   "observed_behavior": "The definite integral of the rate is reported as the value of the quantity at the later input.",
+   "scoring_consequence": "The initial condition point is not earned; the response that presents only the integral value does not earn it (sg-24:4).",
+   "wrong_step": {
+    "text": "38.",
+    "expression": 38
+   },
+   "right_step": {
+    "text": "40 + 38.",
+    "expression": 78
+   },
+   "relation": "distinct",
+   "possible_reason": {
+    "misconception_id": "BC-MIS-08006",
+    "text": "reads an accumulation integral as the quantity itself rather than as the change in it"
+   },
+   "delivery": {
+    "mode": "step_reveal",
+    "reason": "rule 1",
+    "sources": []
+   }
+  },
+  {
+   "id": "LSN-CON-06012#err-BC-ERR-99012",
+   "type": "common_error",
+   "bands": [
+    "low",
+    "mid"
+   ],
+   "skills": [
+    "BC-SKL-06037"
+   ],
+   "sources": [
+    "BC-ERR-99012",
+    "BC-MIS-99004"
+   ],
+   "evidence_tag": "inferred",
+   "error_id": "BC-ERR-99012",
+   "observed_behavior": "Responses write the integral of f prime from a to x as f of x, ignoring the value at the lower limit, or mishandle a reversed pair of limits and report the wrong sign for an accumulated area.",
+   "scoring_consequence": "The value or setup point in that part is not earned, and the error usually propagates to later parts that build on the value.",
+   "wrong_step": {
+    "text": "40 + F(3).",
+    "expression": 82
+   },
+   "right_step": {
+    "text": "40 + F(3) - F(1).",
+    "expression": 78
+   },
+   "relation": "distinct",
+   "possible_reason": {
+    "misconception_id": "BC-MIS-99004",
+    "text": "the value at the lower limit and the direction of the limits play no role"
+   },
+   "delivery": {
+    "mode": "step_reveal",
+    "reason": "rule 1",
+    "sources": []
+   }
+  },
+  {
+   "id": "LSN-CON-06012#err-BC-ERR-06032",
+   "type": "common_error",
+   "bands": [
+    "low",
+    "mid"
+   ],
+   "skills": [
+    "BC-SKL-06034",
+    "BC-SKL-06036"
+   ],
+   "sources": [
+    "BC-ERR-06032"
+   ],
+   "evidence_tag": "inferred",
+   "error_id": "BC-ERR-06032",
+   "observed_behavior": "Numerical values of an integral or of a rate involving a trigonometric function are computed in degree mode.",
+   "scoring_consequence": "The first point that the value would otherwise earn is not earned, and the response remains eligible for subsequent points (sg-23:4).",
+   "wrong_step": {
+    "text": "Degree mode.",
+    "expression": [
+     "Add",
+     40,
+     [
+      "Integrate",
+      [
+       "Add",
+       5,
+       [
+        "Multiply",
+        2,
+        [
+         "Sin",
+         [
+          "Multiply",
+          [
+           "Rational",
+           1,
+           540
+          ],
+          "Pi",
+          [
+           "Power",
+           "t",
+           2
+          ]
+         ]
+        ]
+       ]
+      ],
+      [
+       "Tuple",
+       "t",
+       0,
+       3
+      ]
+     ]
+    ]
+   },
+   "right_step": {
+    "text": "Radian mode.",
+    "expression": [
+     "Add",
+     40,
+     [
+      "Integrate",
+      [
+       "Add",
+       5,
+       [
+        "Multiply",
+        2,
+        [
+         "Sin",
+         [
+          "Multiply",
+          [
+           "Rational",
+           1,
+           3
+          ],
+          [
+           "Power",
+           "t",
+           2
+          ]
+         ]
+        ]
+       ]
+      ],
+      [
+       "Tuple",
+       "t",
+       0,
+       3
+      ]
+     ]
+    ]
+   },
+   "relation": "distinct",
+   "delivery": {
+    "mode": "step_reveal",
+    "reason": "rule 1",
+    "sources": []
+   }
+  },
+  {
+   "id": "LSN-CON-06012#err-BC-ERR-99022",
+   "type": "common_error",
+   "bands": [
+    "low",
+    "mid"
+   ],
+   "skills": [
+    "BC-SKL-06034"
+   ],
+   "sources": [
+    "BC-ERR-99022"
+   ],
+   "evidence_tag": "inferred",
+   "error_id": "BC-ERR-99022",
+   "observed_behavior": "Responses simplify a numerical or algebraic expression that the exam does not require to be simplified, and introduce sign, order of operations or fraction errors that spoil an otherwise correct result.",
+   "scoring_consequence": "A point already secured by the correct setup can be lost when the simplified final form is wrong.",
+   "wrong_step": {
+    "text": "Parentheses dropped.",
+    "expression": 84
+   },
+   "right_step": {
+    "text": "F(1) subtracted whole.",
+    "expression": 78
+   },
+   "relation": "distinct",
+   "delivery": {
+    "mode": "step_reveal",
+    "reason": "rule 1",
+    "sources": []
+   }
+  },
+  {
+   "id": "LSN-CON-06012#prq-BC-PRQ-06002",
+   "type": "prerequisite_bridge",
+   "bands": [
+    "low",
+    "mid"
+   ],
+   "skills": [
+    "BC-SKL-06034"
+   ],
+   "sources": [
+    "BC-PRQ-06002"
+   ],
+   "evidence_tag": "inferred",
+   "prerequisite_id": "BC-PRQ-06002",
+   "text": "Radicals and reciprocals become powers; exponent -1 is excluded."
+  },
+  {
+   "id": "LSN-CON-06012#prq-BC-PRQ-06005",
+   "type": "prerequisite_bridge",
+   "bands": [
+    "low",
+    "mid"
+   ],
+   "skills": [
+    "BC-SKL-06036",
+    "BC-SKL-06037"
+   ],
+   "sources": [
+    "BC-PRQ-06005"
+   ],
+   "evidence_tag": "inferred",
+   "prerequisite_id": "BC-PRQ-06005",
+   "text": "A(3) is an amount; the rate is not."
+  }
+ ],
+ "checks": [
+  {
+   "id": "LSN-CON-06012#chk-1",
+   "check_kind": "completion",
+   "bands": [
+    "low",
+    "mid"
+   ],
+   "format": "short_answer",
+   "archetype_id": "BC-QA-06005",
+   "parameter_draw": {
+    "cubic": 1,
+    "square": 1,
+    "linear": 2,
+    "start": 1,
+    "span": 2,
+    "known": 40,
+    "base_rate": 5,
+    "swing": 2,
+    "stretch": 3,
+    "horizon": 3,
+    "context": "tank",
+    "tool": "exact",
+    "direction": "forward"
+   },
+   "completes": "LSN-CON-06012#s8",
+   "stem": {
+    "text": "Given F(t) = t^3 + t^2 + 2t, find A(3).",
+    "command_verb": "find"
+   },
+   "answer_key": {
+    "form": "numeric",
+    "mathjson": 78
+   },
+   "worked_solution": [
+    {
+     "step": 1,
+     "text": "Both limits.",
+     "mathjson": 78,
+     "relation": "new"
+    },
+    {
+     "step": 2,
+     "text": "Value.",
+     "mathjson": 78,
+     "relation": "equivalent"
+    }
+   ],
+   "calculator_status": "no_calculator",
+   "representation": "BC-REP-01",
+   "skills": [
+    "BC-SKL-06037"
+   ]
+  },
+  {
+   "id": "LSN-CON-06012#chk-2",
+   "check_kind": "isomorph",
+   "bands": [
+    "low",
+    "mid"
+   ],
+   "format": "short_answer",
+   "archetype_id": "BC-QA-06005",
+   "parameter_draw": {
+    "cubic": -1,
+    "square": 3,
+    "linear": 4,
+    "start": 1,
+    "span": 2,
+    "known": 30,
+    "base_rate": 5,
+    "swing": 2,
+    "stretch": 3,
+    "horizon": 3,
+    "context": "pile",
+    "tool": "exact",
+    "direction": "forward"
+   },
+   "stem": {
+    "text": "Rate -3t^2 + 6t + 4 tons per hour; 30 tons at t = 1. Amount at t = 3?",
+    "command_verb": "find"
+   },
+   "answer_key": {
+    "form": "numeric",
+    "mathjson": 36
+   },
+   "worked_solution": [
+    {
+     "step": 1,
+     "text": "Setup.",
+     "mathjson": [
+      "Add",
+      30,
+      [
+       "Integrate",
+       [
+        "Add",
+        4,
+        [
+         "Multiply",
+         -3,
+         [
+          "Power",
+          "t",
+          2
+         ]
+        ],
+        [
+         "Multiply",
+         6,
+         "t"
+        ]
+       ],
+       [
+        "Tuple",
+        "t",
+        1,
+        3
+       ]
+      ]
+     ],
+     "relation": "new"
+    },
+    {
+     "step": 2,
+     "text": "F(3) - F(1).",
+     "mathjson": 36,
+     "relation": "equivalent"
+    },
+    {
+     "step": 3,
+     "text": "Value.",
+     "mathjson": 36,
+     "relation": "equivalent"
+    }
+   ],
+   "calculator_status": "no_calculator",
+   "representation": "BC-REP-01",
+   "skills": [
+    "BC-SKL-06037"
+   ]
+  },
+  {
+   "id": "LSN-CON-06012#chk-3",
+   "check_kind": "mcq",
+   "bands": [
+    "low"
+   ],
+   "format": "mcq",
+   "archetype_id": "BC-QA-06005",
+   "parameter_draw": {
+    "cubic": 2,
+    "square": 0,
+    "linear": 1,
+    "start": 2,
+    "span": 1,
+    "known": 50,
+    "base_rate": 5,
+    "swing": 2,
+    "stretch": 3,
+    "horizon": 3,
+    "context": "balloon",
+    "tool": "exact",
+    "direction": "forward"
+   },
+   "stem": {
+    "text": "Air enters a balloon at 6t^2 + 1 liters per second; 50 liters at t = 2. The amount at t = 3 is",
+    "command_verb": "identify"
+   },
+   "answer_key": {
+    "form": "numeric",
+    "mathjson": 89
+   },
+   "worked_solution": [
+    {
+     "step": 1,
+     "text": "Setup.",
+     "mathjson": [
+      "Add",
+      50,
+      [
+       "Integrate",
+       [
+        "Add",
+        1,
+        [
+         "Multiply",
+         6,
+         [
+          "Power",
+          "t",
+          2
+         ]
+        ]
+       ],
+       [
+        "Tuple",
+        "t",
+        2,
+        3
+       ]
+      ]
+     ],
+     "relation": "new"
+    },
+    {
+     "step": 2,
+     "text": "F(t) = 2t^3 + t.",
+     "mathjson": 89,
+     "relation": "equivalent"
+    },
+    {
+     "step": 3,
+     "text": "Value.",
+     "mathjson": 89,
+     "relation": "equivalent"
+    }
+   ],
+   "options": [
+    {
+     "id": "A",
+     "is_key": false,
+     "error_path": "BC-ERR-06015",
+     "value": 39,
+     "derivation": "the integral alone, 57 - 18"
+    },
+    {
+     "id": "B",
+     "is_key": true,
+     "error_path": null,
+     "value": 89
+    },
+    {
+     "id": "C",
+     "is_key": false,
+     "error_path": "BC-ERR-99022",
+     "value": 93,
+     "derivation": "50 + 57 - 16 + 2, parentheses dropped around F(2)"
+    },
+    {
+     "id": "D",
+     "is_key": false,
+     "error_path": "BC-ERR-99012",
+     "value": 107,
+     "derivation": "50 + F(3), the lower limit ignored"
+    }
+   ],
+   "calculator_status": "no_calculator",
+   "representation": "BC-REP-01",
+   "skills": [
+    "BC-SKL-06037"
+   ]
+  }
+ ],
+ "refresher": [
+  "LSN-CON-06012#s2",
+  "LSN-CON-06012#err-BC-ERR-06015",
+  "LSN-CON-06012#err-BC-ERR-99012",
+  "LSN-CON-06012#err-BC-ERR-06032",
+  "LSN-CON-06012#err-BC-ERR-99022",
+  "LSN-CON-06012#s8"
+ ],
+ "provenance": {
+  "author": "tools/lesson_transcribe.py",
+  "prompt_version": "generator/lesson_v1",
+  "design_path": "docs/lessons/unit-06/LSN-CON-06012.md",
+  "signed_off_by": "claude-opus-5-5",
+  "signed_off_at": "2026-09-29",
+  "not_human": true
+ }
+}

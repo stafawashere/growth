@@ -1,0 +1,155 @@
+{
+ "lesson_id": "LSN-CON-01017",
+ "version": 1,
+ "compared_on": "2026-09-29",
+ "auditor": "claude-opus-5-5",
+ "resolve": {
+  "date": "2026-09-29",
+  "problems": 5,
+  "agreed": 5,
+  "judgments_pending": 0,
+  "all_agree": true,
+  "verdicts": [
+   {
+    "id": "LSN-CON-01017#ex-1",
+    "agree": true,
+    "detail": "agree (symbolic)",
+    "method": "divide by |x|"
+   },
+   {
+    "id": "LSN-CON-01017#ex-2",
+    "agree": true,
+    "detail": "agree (symbolic)",
+    "method": "limit of A'(t)=6/(2t+1)^2 as t->oo; (if average rate meant, 3)"
+   },
+   {
+    "id": "LSN-CON-01017#chk-1",
+    "agree": true,
+    "detail": "agree (symbolic)",
+    "method": "divide by |x|"
+   },
+   {
+    "id": "LSN-CON-01017#chk-2",
+    "agree": true,
+    "detail": "agree (symbolic)",
+    "method": "divide by |x|"
+   },
+   {
+    "id": "LSN-CON-01017#chk-3",
+    "agree": true,
+    "detail": "agree (symbolic)",
+    "method": "divide by |x|"
+   }
+  ],
+  "answers_file": "/tmp/claude-0/-home-user-growth/ac029253-8ff0-5a4b-8b5f-cdcaf5e8ff8d/scratchpad/verify/answers_04.json"
+ },
+ "audit": {
+  "date": "2026-09-29",
+  "auditor": "claude-opus-5-5",
+  "blocks": [
+   {
+    "id": "orientation",
+    "verdict": "ok",
+    "evidence": "Paraphrases BC-QA-01010 expected_solution_path and the 1.15 Horizontal asymptotes paragraph."
+   },
+   {
+    "id": "ki-1",
+    "verdict": "ok",
+    "evidence": "Dominant power and sign under the root are in the 1.15 Method paragraph; quote on ced:52 (LIM-2.D.3)."
+   },
+   {
+    "id": "ki-2",
+    "verdict": "ok",
+    "evidence": "Finite L gives y=L and ends checked separately are in the 1.15 Horizontal asymptotes paragraph; quote on ced:52."
+   },
+   {
+    "id": "st-1",
+    "verdict": "ok",
+    "evidence": "Method is expected_solution_path[1] of BC-QA-01010; rival BC-ERR-01021 in wrong_approaches; common_givens present so verified."
+   },
+   {
+    "id": "ex-1",
+    "verdict": "ok",
+    "evidence": "SymPy: limit sqrt(4x^2+5)/(3x+1) as x->-oo is -2/3."
+   },
+   {
+    "id": "ex-2",
+    "verdict": "ok",
+    "evidence": "SymPy: A'(t)=6/(2t+1)^2, limit 0 as t->oo."
+   },
+   {
+    "id": "reader-ex-1",
+    "verdict": "ok",
+    "evidence": "Lines are the BC-PT-99054 and BC-PT-99004 records from the bundle, both named in BC-QA-01010 point_types."
+   },
+   {
+    "id": "reader-ex-2",
+    "verdict": "ok",
+    "evidence": "Same point type records; ex-2 asks for the limit expression, which is what BC-PT-99054 scores."
+   },
+   {
+    "id": "err-BC-ERR-01022",
+    "verdict": "ok",
+    "evidence": "Verbatim from BC-ERR-01022; SymPy: limit of A is 3, of A' is 0."
+   },
+   {
+    "id": "err-BC-ERR-01023",
+    "verdict": "ok",
+    "evidence": "Verbatim from BC-ERR-01023; 4/3 against -2/3 checked."
+   },
+   {
+    "id": "err-BC-ERR-01033",
+    "verdict": "ok",
+    "evidence": "Verbatim from BC-ERR-01033; SymPy: 3x+1=0 at -1/3; end value -2/3."
+   },
+   {
+    "id": "err-BC-ERR-01021",
+    "verdict": "ok",
+    "evidence": "Verbatim from BC-ERR-01021 including sg-25:4."
+   },
+   {
+    "id": "representations",
+    "verdict": "ok",
+    "evidence": "null."
+   },
+   {
+    "id": "bridge-BC-PRQ-01004",
+    "verdict": "ok",
+    "evidence": "Paraphrases BC-PRQ-01004 description_plain and failure_signature."
+   },
+   {
+    "id": "bridge-BC-PRQ-06005",
+    "verdict": "ok",
+    "evidence": "Paraphrases BC-PRQ-06005, f and f' interchanged."
+   },
+   {
+    "id": "chk-1",
+    "verdict": "ok",
+    "evidence": "SymPy: -2/3."
+   },
+   {
+    "id": "chk-2",
+    "verdict": "ok",
+    "evidence": "SymPy: limit (4x-1)/sqrt(9x^2+7) as x->-oo is -4/3."
+   },
+   {
+    "id": "chk-3",
+    "verdict": "ok",
+    "evidence": "SymPy: limit sqrt(25x^2+2)/(-2x+3) as x->-oo is 5/2; A -25/2, B 3/2 (solve -2x+3=0), C -5/2 all derivable."
+   }
+  ],
+  "advice": [
+   "BC-ERR-01024 (no sign correction under the radical at negative infinity) is the error ex-1, chk-1, chk-2 and chk-3 are built around, yet it gets no error block; it is left to ki-1. chk-3 option C (-5/2) is exactly the BC-ERR-01024 value and would be better tagged to it than to BC-ERR-01021.",
+   "ex-1 tags step 1 with BC-PT-99054 and has a reader-scores entry, but its stem gives the limit already (\"Find lim ...\"), so no expression point is at stake; the expression point habit is taught properly only by ex-2.",
+   "The BC-PT-99004 precision text about three decimal places is irrelevant to exact rational answers on a no calculator item and adds reading load.",
+   "ki-1 as motion (x running to -oo with |x|/x = -1) fits a process."
+  ],
+  "counts": {
+   "ok": 18,
+   "unsourced": 0,
+   "wrong": 0,
+   "over_cap": 0,
+   "lint": 0
+  }
+ }
+}

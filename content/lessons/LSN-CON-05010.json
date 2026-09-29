@@ -1,0 +1,403 @@
+{
+ "id": "LSN-CON-05010",
+ "version": 1,
+ "kind": "concept",
+ "target_id": "BC-CON-05010",
+ "status": "signed_off",
+ "snapshot_digest": "a6a8ec9d3f59ab8f712e33d30cc22fc64bf2c478fbe7312e3e3118d319c6a42f",
+ "source_digest": "9d8b61f0ce0317cbee66d85a506b959adb79d48154117b9318607374475fa1cb",
+ "read_minutes": {
+  "full": 3.0,
+  "brief": 3.0
+ },
+ "word_count": {
+  "full": 362,
+  "brief": 362
+ },
+ "sections": [
+  {
+   "id": "LSN-CON-05010#s1",
+   "type": "orientation",
+   "bands": [
+    "low",
+    "mid"
+   ],
+   "skills": [
+    "BC-SKL-05038"
+   ],
+   "sources": [
+    "BC-CON-05010",
+    "research/units/unit-05-analytical-applications-differentiation.md#5.7 Using the Second Derivative Test to Determine Extrema"
+   ],
+   "evidence_tag": "inferred",
+   "text": "A derivative test classifies a critical point only locally. To claim an absolute maximum or minimum from it, a response writes that the function is continuous and that this is the only critical point on the interval.",
+   "delivery": {
+    "mode": "text",
+    "reason": "rule 5: BC-SKL-05038 carries BC-REP-01, 04, 05 only",
+    "sources": [
+     "BC-SKL-05038"
+    ]
+   }
+  },
+  {
+   "id": "LSN-CON-05010#s2",
+   "type": "key_ideas",
+   "bands": [
+    "low",
+    "mid"
+   ],
+   "skills": [
+    "BC-SKL-05038"
+   ],
+   "sources": [
+    "BC-EK-FUN-4A8",
+    "ced:105",
+    "sg-22:12",
+    "sg-25:5",
+    "research/units/unit-05-analytical-applications-differentiation.md#5.7 Using the Second Derivative Test to Determine Extrema"
+   ],
+   "evidence_tag": "verified",
+   "ek_id": "BC-EK-FUN-4A8",
+   "depth": "core",
+   "text": "Three facts together make a local verdict global: \\(f\\) is continuous on the interval, \\(f\\) has exactly one critical point there, and that point is a relative extremum. Then it is the absolute extremum on the interval. The first or second derivative test supplies only the third fact. The sentence \"the only critical point on the interval\" supplies the second, and it is written, not implied.",
+   "notation": "sole critical point",
+   "quote": {
+    "text": "When a continuous function has only one critical point on an interval on its domain",
+    "source": "ced:105"
+   },
+   "delivery": {
+    "mode": "text",
+    "reason": "rule 5: a theorem statement with no figure-bearing representation",
+    "sources": [
+     "BC-SKL-05038"
+    ]
+   }
+  },
+  {
+   "id": "LSN-CON-05010#s3",
+   "type": "strategy",
+   "bands": [
+    "low",
+    "mid"
+   ],
+   "skills": [
+    "BC-SKL-05038"
+   ],
+   "sources": [
+    "BC-QA-05013"
+   ],
+   "evidence_tag": "verified",
+   "archetype_id": "BC-QA-05013",
+   "cue": "The stem asks for an absolute extremum on an interval, from a function whose derivative has one zero there.",
+   "method": "First written line: confirm the first derivative is zero at the point, then list every zero of \\(f'\\) in the interval.",
+   "rival": "Rival: classifying from the sign of the function value.",
+   "separating_feature": "The word absolute: the local verdict needs \"the only critical point on the interval\" beside it."
+  },
+  {
+   "id": "LSN-CON-05010#s4",
+   "type": "worked_example",
+   "bands": [
+    "low",
+    "mid"
+   ],
+   "skills": [
+    "BC-SKL-05038"
+   ],
+   "sources": [
+    "BC-QA-05013"
+   ],
+   "evidence_tag": "inferred",
+   "archetype_id": "BC-QA-05013",
+   "parameter_draw": {
+    "first_root": 0,
+    "second_root": 3,
+    "other_input": -2,
+    "tested_root": "second",
+    "leading_sign": 1,
+    "constant": 1,
+    "letter": "g",
+    "given": "function"
+   },
+   "problem": {
+    "text": "Let \\(g(x)=2x^3-9x^2+1\\) for \\(x>0\\). Does \\(g\\) have an absolute minimum on \\(x>0\\)? Justify.",
+    "command_verb": "justify"
+   },
+   "calculator_status": "no_calculator",
+   "steps": [
+    {
+     "cue": "An extremum question starts at the critical points.",
+     "why": "\\(g'(x)=6x^2-18x\\).",
+     "expression": [
+      "Add",
+      [
+       "Multiply",
+       -18,
+       "x"
+      ],
+      [
+       "Multiply",
+       6,
+       [
+        "Power",
+        "x",
+        2
+       ]
+      ]
+     ],
+     "relation": "new"
+    },
+    {
+     "cue": "Critical points: \\(g'(x)=0\\).",
+     "why": "\\(6x(x-3)=0\\).",
+     "expression": [
+      "Set",
+      0,
+      3
+     ],
+     "relation": "solve",
+     "variable": "x"
+    },
+    {
+     "cue": "The stem fixes the interval \\(x>0\\).",
+     "why": "\\(x=0\\) is outside it, so \\(x=3\\) is the only critical point on the interval."
+    },
+    {
+     "cue": "One critical point: classify it with the second derivative.",
+     "why": "\\(g''(x)=12x-18\\).",
+     "expression": [
+      "Add",
+      -18,
+      [
+       "Multiply",
+       12,
+       "x"
+      ]
+     ],
+     "relation": "new"
+    },
+    {
+     "cue": "Evaluate at \\(x=3\\).",
+     "why": "\\(g''(3)=18>0\\): a relative minimum.",
+     "expression": 18,
+     "relation": "evaluate",
+     "subs": {
+      "x": "3"
+     }
+    },
+    {
+     "cue": "The stem says absolute, so the local verdict needs uniqueness.",
+     "why": "\\(g\\) is continuous and \\(x=3\\) is its only critical point on \\(x>0\\), so the relative minimum is the absolute minimum."
+    }
+   ],
+   "answer": {
+    "form": "statement",
+    "mathjson": "absolute_minimum_at_3"
+   },
+   "delivery": {
+    "mode": "step_reveal",
+    "reason": "rule 1",
+    "sources": []
+   }
+  },
+  {
+   "id": "LSN-CON-05010#err-BC-ERR-05039",
+   "type": "common_error",
+   "bands": [
+    "low",
+    "mid"
+   ],
+   "skills": [
+    "BC-SKL-05038"
+   ],
+   "sources": [
+    "BC-ERR-05039",
+    "BC-MIS-05018"
+   ],
+   "evidence_tag": "inferred",
+   "error_id": "BC-ERR-05039",
+   "observed_behavior": "The response extends a relative extremum to an absolute one without saying that there is only one critical point on the interval.",
+   "scoring_consequence": "The justification is incomplete because the step that makes the local claim global is missing.",
+   "wrong_step": {
+    "text": "\\(g''(3)=18>0\\), so \\(g\\) has an absolute minimum at \\(x=3\\).",
+    "expression": "absolute_claim_from_local_test_alone"
+   },
+   "right_step": {
+    "text": "\\(g''(3)>0\\), and \\(x=3\\) is the only critical point on \\(x>0\\), so the minimum is absolute.",
+    "expression": "absolute_claim_with_uniqueness_clause"
+   },
+   "relation": "distinct",
+   "possible_reason": {
+    "misconception_id": "BC-MIS-05018",
+    "text": "treats a first or second derivative test as a proof that the extremum is the largest or smallest on the whole interval"
+   },
+   "delivery": {
+    "mode": "step_reveal",
+    "reason": "rule 1",
+    "sources": []
+   }
+  }
+ ],
+ "checks": [
+  {
+   "id": "LSN-CON-05010#chk-1",
+   "check_kind": "completion",
+   "bands": [
+    "low",
+    "mid"
+   ],
+   "format": "short_answer",
+   "archetype_id": "BC-QA-05013",
+   "parameter_draw": {
+    "first_root": 0,
+    "second_root": 3,
+    "other_input": -2,
+    "tested_root": "second",
+    "leading_sign": 1,
+    "constant": 1,
+    "letter": "g",
+    "given": "function"
+   },
+   "completes": "LSN-CON-05010#s4",
+   "stem": {
+    "text": "For \\(g(x)=2x^3-9x^2+1\\) on \\(x>0\\): \\(g'(3)=0\\), \\(g''(3)=18\\), and \\(g'\\) has no other zero there. Write the conclusion with its reason.",
+    "command_verb": "justify"
+   },
+   "answer_key": {
+    "form": "statement",
+    "mathjson": "absolute_minimum_at_3"
+   },
+   "worked_solution": [
+    {
+     "step": 1,
+     "text": "\\(g''(x)=12x-18\\).",
+     "mathjson": [
+      "Add",
+      -18,
+      [
+       "Multiply",
+       12,
+       "x"
+      ]
+     ],
+     "relation": "new"
+    },
+    {
+     "step": 2,
+     "text": "\\(g''(3)=18>0\\), and \\(x=3\\) is the only critical point on \\(x>0\\).",
+     "mathjson": 18,
+     "relation": "evaluate",
+     "subs": {
+      "x": "3"
+     }
+    }
+   ],
+   "calculator_status": "no_calculator",
+   "representation": "BC-REP-01",
+   "skills": [
+    "BC-SKL-05038"
+   ]
+  },
+  {
+   "id": "LSN-CON-05010#chk-2",
+   "check_kind": "isomorph",
+   "bands": [
+    "low",
+    "mid"
+   ],
+   "format": "short_answer",
+   "archetype_id": "BC-QA-05013",
+   "parameter_draw": {
+    "first_root": -3,
+    "second_root": 2,
+    "other_input": 4,
+    "tested_root": "first",
+    "leading_sign": -1,
+    "constant": 0,
+    "letter": "f",
+    "given": "derivative"
+   },
+   "stem": {
+    "text": "\\(f'(x)=-6(x+3)(x-2)\\) and \\(f\\) is continuous. Does \\(f\\) have an absolute extremum on \\(x<0\\)? Justify.",
+    "command_verb": "justify"
+   },
+   "answer_key": {
+    "form": "statement",
+    "mathjson": "absolute_minimum_at_minus_3"
+   },
+   "worked_solution": [
+    {
+     "step": 1,
+     "text": "Zeros of \\(f'\\): \\(-3\\) and \\(2\\); only \\(-3\\) lies in \\(x<0\\).",
+     "mathjson": [
+      "Multiply",
+      [
+       "Add",
+       -18,
+       [
+        "Multiply",
+        -6,
+        "x"
+       ]
+      ],
+      [
+       "Add",
+       -2,
+       "x"
+      ]
+     ],
+     "relation": "new"
+    },
+    {
+     "step": 2,
+     "text": "\\(f'(-3)=0\\).",
+     "mathjson": 0,
+     "relation": "evaluate",
+     "subs": {
+      "x": "-3"
+     }
+    },
+    {
+     "step": 3,
+     "text": "\\(f''(x)=-12x-6\\).",
+     "mathjson": [
+      "Add",
+      -6,
+      [
+       "Multiply",
+       -12,
+       "x"
+      ]
+     ],
+     "relation": "new"
+    },
+    {
+     "step": 4,
+     "text": "\\(f''(-3)=30>0\\): relative minimum, the only critical point on \\(x<0\\), so absolute.",
+     "mathjson": 30,
+     "relation": "evaluate",
+     "subs": {
+      "x": "-3"
+     }
+    }
+   ],
+   "calculator_status": "no_calculator",
+   "representation": "BC-REP-01",
+   "skills": [
+    "BC-SKL-05038"
+   ]
+  }
+ ],
+ "refresher": [
+  "LSN-CON-05010#s2",
+  "LSN-CON-05010#err-BC-ERR-05039",
+  "LSN-CON-05010#s4"
+ ],
+ "provenance": {
+  "author": "tools/lesson_transcribe.py",
+  "prompt_version": "generator/lesson_v1",
+  "design_path": "docs/lessons/unit-05/LSN-CON-05010.md",
+  "signed_off_by": "claude-opus-5-5",
+  "signed_off_at": "2026-09-29",
+  "not_human": true
+ }
+}

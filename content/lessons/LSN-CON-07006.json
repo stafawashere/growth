@@ -1,0 +1,934 @@
+{
+ "id": "LSN-CON-07006",
+ "version": 1,
+ "kind": "concept",
+ "target_id": "BC-CON-07006",
+ "status": "draft",
+ "snapshot_digest": "a6a8ec9d3f59ab8f712e33d30cc22fc64bf2c478fbe7312e3e3118d319c6a42f",
+ "source_digest": "00ae4148dfa851404fcab43d626b904a721057f48f2a5162259cb2f0db9f8d20",
+ "read_minutes": {
+  "full": 4.0,
+  "brief": 2.9
+ },
+ "word_count": {
+  "full": 528,
+  "brief": 388
+ },
+ "sections": [
+  {
+   "id": "LSN-CON-07006#s1",
+   "type": "orientation",
+   "bands": [
+    "low",
+    "mid"
+   ],
+   "skills": [
+    "BC-SKL-07019",
+    "BC-SKL-07020",
+    "BC-SKL-07021",
+    "BC-SKL-07022",
+    "BC-SKL-07023"
+   ],
+   "sources": [
+    "BC-CON-07006",
+    "research/units/unit-07-differential-equations.md#7.5 Approximating Solutions Using Euler's Method"
+   ],
+   "evidence_tag": "inferred",
+   "text": "Compute the step size, then each new value as the old one plus the step times the slope at the current point. Show every step, or a labelled table.",
+   "delivery": {
+    "mode": "table",
+    "reason": "rule 5: BC-REP-03 on BC-SKL-07019 to 07022 and BC-QA-07004 representations",
+    "sources": [
+     "BC-SKL-07022",
+     "BC-QA-07004"
+    ],
+    "spec": {
+     "kind": "table",
+     "representations": [
+      "BC-REP-03"
+     ],
+     "columns": [
+      "x",
+      "y",
+      "slope",
+      "increment"
+     ],
+     "rows": [
+      [
+       "0",
+       "1",
+       "2",
+       "1"
+      ],
+      [
+       "1/2",
+       "2",
+       "4",
+       "2"
+      ],
+      [
+       "1",
+       "4",
+       "",
+       ""
+      ]
+     ],
+     "labels": [
+      {
+       "text": "step 1/2",
+       "placement": "inside",
+       "at": "table caption row"
+      }
+     ]
+    },
+    "fallback": "the table as plain text rows",
+    "keyboard": "Tab moves between cells; no control"
+   }
+  },
+  {
+   "id": "LSN-CON-07006#s2",
+   "type": "key_ideas",
+   "bands": [
+    "low",
+    "mid"
+   ],
+   "skills": [
+    "BC-SKL-07019",
+    "BC-SKL-07020",
+    "BC-SKL-07021",
+    "BC-SKL-07022",
+    "BC-SKL-07023"
+   ],
+   "sources": [
+    "BC-EK-FUN-7C4",
+    "ced:141",
+    "research/units/unit-07-differential-equations.md#7.5 Approximating Solutions Using Euler's Method"
+   ],
+   "evidence_tag": "verified",
+   "ek_id": "BC-EK-FUN-7C4",
+   "depth": "core",
+   "text": "Step size is the interval length over the number of steps. From the current point, follow the tangent: new y equals old y plus step times the right side there. The new point then replaces the old one.",
+   "notation": "step size; y sub n plus one",
+   "quote": {
+    "text": "Euler's method provides a procedure for approximating a solution to a differential equation or a point on a solution curve.",
+    "source": "ced:141"
+   },
+   "delivery": {
+    "mode": "motion",
+    "reason": "rule 2: the new point replaces the old, a process",
+    "sources": [
+     "BC-EK-FUN-7C4",
+     "BC-SKL-07021"
+    ],
+    "spec": {
+     "kind": "euler_steps",
+     "representations": [
+      "BC-REP-02",
+      "BC-REP-06"
+     ],
+     "equation": "dy/dx = 2*x + y + 1",
+     "window": {
+      "x": [
+       0,
+       1.2
+      ],
+      "y": [
+       0,
+       8
+      ]
+     },
+     "start": [
+      0,
+      1
+     ],
+     "step": 0.5,
+     "frames": [
+      {
+       "point": [
+        0,
+        1
+       ]
+      },
+      {
+       "point": [
+        0.5,
+        2
+       ]
+      },
+      {
+       "point": [
+        1,
+        4
+       ]
+      }
+     ],
+     "true_curve": "y = 4*exp(x) - 2*x - 3",
+     "labels": [
+      {
+       "text": "tangent segment from the current point",
+       "placement": "inside",
+       "at": "along the segment"
+      },
+      {
+       "text": "true solution",
+       "placement": "inside",
+       "at": "near the curve's right end"
+      }
+     ]
+    },
+    "fallback": "the three frames as small static panels in one row",
+    "keyboard": "Right arrow steps to the next frame, Left arrow back; Space pauses auto-advance",
+    "reduced_motion": "no auto-advance; each key press cross-fades to the next frame"
+   }
+  },
+  {
+   "id": "LSN-CON-07006#s3",
+   "type": "strategy",
+   "bands": [
+    "low",
+    "mid"
+   ],
+   "skills": [
+    "BC-SKL-07019",
+    "BC-SKL-07020",
+    "BC-SKL-07021",
+    "BC-SKL-07022",
+    "BC-SKL-07023"
+   ],
+   "sources": [
+    "BC-QA-07004"
+   ],
+   "evidence_tag": "verified",
+   "archetype_id": "BC-QA-07004",
+   "cue": "Euler's method, a number of equal steps and a target input.",
+   "method": "First line: the step size, then y1 = y0 + step times f(x0, y0).",
+   "rival": "Rival: solving the equation and evaluating.",
+   "separating_feature": "The stem names Euler and steps."
+  },
+  {
+   "id": "LSN-CON-07006#s4",
+   "type": "worked_example",
+   "bands": [
+    "low",
+    "mid"
+   ],
+   "skills": [
+    "BC-SKL-07019",
+    "BC-SKL-07020",
+    "BC-SKL-07021",
+    "BC-SKL-07022",
+    "BC-SKL-07023"
+   ],
+   "sources": [
+    "BC-QA-07004"
+   ],
+   "evidence_tag": "inferred",
+   "archetype_id": "BC-QA-07004",
+   "parameter_draw": {
+    "form": "both",
+    "x_coefficient": 2,
+    "y_coefficient": 1,
+    "constant": 1,
+    "start_x": 0,
+    "start_y": 1,
+    "span": 1
+   },
+   "problem": {
+    "text": "dy/dx = 2x + y + 1, y(0) = 1. Use Euler's method with two equal steps to approximate y(1).",
+    "command_verb": "approximate"
+   },
+   "calculator_status": "no_calculator",
+   "steps": [
+    {
+     "cue": "Two equal steps from 0 to 1.",
+     "why": "1/2.",
+     "expression": [
+      "Rational",
+      1,
+      2
+     ],
+     "relation": "new"
+    },
+    {
+     "cue": "Slope at the initial point.",
+     "why": "At (0, 1).",
+     "expression": [
+      "Add",
+      1,
+      "y",
+      [
+       "Multiply",
+       2,
+       "x"
+      ]
+     ],
+     "relation": "new"
+    },
+    {
+     "cue": "Evaluate.",
+     "why": "2.",
+     "expression": 2,
+     "relation": "evaluate",
+     "subs": {
+      "x": "0",
+      "y": "1"
+     }
+    },
+    {
+     "cue": "Advance.",
+     "why": "1 + (1/2)(2).",
+     "expression": 2,
+     "point_type_id": "BC-PT-99034",
+     "relation": "new"
+    },
+    {
+     "cue": "New point (1/2, 2) replaces the old.",
+     "why": "Slope there.",
+     "expression": [
+      "Add",
+      1,
+      "y",
+      [
+       "Multiply",
+       2,
+       "x"
+      ]
+     ],
+     "relation": "new"
+    },
+    {
+     "cue": "Evaluate.",
+     "why": "4.",
+     "expression": 4,
+     "relation": "evaluate",
+     "subs": {
+      "x": "1/2",
+      "y": "2"
+     }
+    },
+    {
+     "cue": "Advance again.",
+     "why": "2 + (1/2)(4).",
+     "expression": 4,
+     "relation": "new"
+    }
+   ],
+   "answer": {
+    "form": "numeric",
+    "mathjson": 4
+   },
+   "delivery": {
+    "mode": "step_reveal",
+    "reason": "rule 1",
+    "sources": []
+   }
+  },
+  {
+   "id": "LSN-CON-07006#s5",
+   "type": "what_a_reader_scores",
+   "bands": [
+    "low",
+    "mid"
+   ],
+   "skills": [
+    "BC-SKL-07019",
+    "BC-SKL-07020",
+    "BC-SKL-07021",
+    "BC-SKL-07022",
+    "BC-SKL-07023"
+   ],
+   "sources": [
+    "BC-PT-99034"
+   ],
+   "evidence_tag": "verified",
+   "example_id": "LSN-CON-07006#s4",
+   "lines": [
+    {
+     "point_type_id": "BC-PT-99034",
+     "text": "Euler method step. Earned by: Demonstrating the required number of steps with the correct initial condition, correct step size, and the correct or imported derivative expression (sg-25:23, sg-21:19). Not earned by: A single step where two were asked for (sg-24:17); a table that is neither labelled nor accompanied by a correct answer (sg-25:23, sg-21:19). Notation: Steps may be explicit expressions or a table; sg-25:23 and sg-21:19 state an unlabelled table suffices when the answer is correct, and must be labelled when it is not."
+    }
+   ]
+  },
+  {
+   "id": "LSN-CON-07006#err-BC-ERR-07018",
+   "type": "common_error",
+   "bands": [
+    "low",
+    "mid"
+   ],
+   "skills": [
+    "BC-SKL-07023"
+   ],
+   "sources": [
+    "BC-ERR-07018",
+    "BC-MIS-07010"
+   ],
+   "evidence_tag": "inferred",
+   "error_id": "BC-ERR-07018",
+   "observed_behavior": "The response argues that the estimate is high or low because the solution is increasing or decreasing.",
+   "scoring_consequence": "The reason point is lost; the guideline requires the second derivative, the monotonicity of the first derivative, or the concavity.",
+   "wrong_step": {
+    "text": "Sign of dy/dx.",
+    "expression": [
+     "Add",
+     1,
+     "y",
+     [
+      "Multiply",
+      2,
+      "x"
+     ]
+    ]
+   },
+   "right_step": {
+    "text": "Sign of the second derivative.",
+    "expression": [
+     "Add",
+     3,
+     "y",
+     [
+      "Multiply",
+      2,
+      "x"
+     ]
+    ]
+   },
+   "relation": "distinct",
+   "possible_reason": {
+    "misconception_id": "BC-MIS-07010",
+    "text": "decides whether an estimate is high or low from the monotonicity of the solution rather than from its concavity"
+   },
+   "delivery": {
+    "mode": "step_reveal",
+    "reason": "rule 1",
+    "sources": []
+   }
+  },
+  {
+   "id": "LSN-CON-07006#err-BC-ERR-07019",
+   "type": "common_error",
+   "bands": [
+    "low",
+    "mid"
+   ],
+   "skills": [
+    "BC-SKL-07019"
+   ],
+   "sources": [
+    "BC-ERR-07019",
+    "BC-MIS-07011"
+   ],
+   "evidence_tag": "inferred",
+   "error_id": "BC-ERR-07019",
+   "observed_behavior": "The response uses the full distance to the target input as one step although several equal steps were asked for.",
+   "scoring_consequence": "The demonstration point is lost because the step size is wrong.",
+   "wrong_step": {
+    "text": "One step of 1.",
+    "expression": 3
+   },
+   "right_step": {
+    "text": "Two of 1/2.",
+    "expression": 4
+   },
+   "relation": "distinct",
+   "possible_reason": {
+    "misconception_id": "BC-MIS-07011",
+    "text": "treats the procedure as a single tangent line extended over the whole interval"
+   },
+   "delivery": {
+    "mode": "step_reveal",
+    "reason": "rule 1",
+    "sources": []
+   }
+  },
+  {
+   "id": "LSN-CON-07006#err-BC-ERR-07020",
+   "type": "common_error",
+   "bands": [
+    "low",
+    "mid"
+   ],
+   "skills": [
+    "BC-SKL-07020"
+   ],
+   "sources": [
+    "BC-ERR-07020"
+   ],
+   "evidence_tag": "inferred",
+   "error_id": "BC-ERR-07020",
+   "observed_behavior": "The first step starts from a point other than the given initial condition, or evaluates the derivative at the target input.",
+   "scoring_consequence": "The demonstration point is lost; the 2025 guideline names the correct initial condition as one of its three conditions.",
+   "wrong_step": {
+    "text": "First slope taken at (1, 1) is 4; resulting y(1) is 11/2.",
+    "expression": [
+     "Rational",
+     11,
+     2
+    ]
+   },
+   "right_step": {
+    "text": "First slope at (0, 1) is 2; resulting y(1) is 4.",
+    "expression": 4
+   },
+   "relation": "distinct",
+   "delivery": {
+    "mode": "step_reveal",
+    "reason": "rule 1",
+    "sources": []
+   }
+  },
+  {
+   "id": "LSN-CON-07006#err-BC-ERR-07021",
+   "type": "common_error",
+   "bands": [
+    "low",
+    "mid"
+   ],
+   "skills": [
+    "BC-SKL-07021"
+   ],
+   "sources": [
+    "BC-ERR-07021",
+    "BC-MIS-07012"
+   ],
+   "evidence_tag": "inferred",
+   "error_id": "BC-ERR-07021",
+   "observed_behavior": "The response evaluates the derivative again at the initial point instead of at the approximation the first step produced.",
+   "scoring_consequence": "The demonstration point is lost in the 2024 shape, where two correct steps are required.",
+   "wrong_step": {
+    "text": "Second slope at (1/2, 1) is 3; resulting y(1) is 7/2.",
+    "expression": [
+     "Rational",
+     7,
+     2
+    ]
+   },
+   "right_step": {
+    "text": "Second slope at (1/2, 2) is 4; resulting y(1) is 4.",
+    "expression": 4
+   },
+   "relation": "distinct",
+   "possible_reason": {
+    "misconception_id": "BC-MIS-07012",
+    "text": "advances the input but not the output"
+   },
+   "delivery": {
+    "mode": "step_reveal",
+    "reason": "rule 1",
+    "sources": []
+   }
+  },
+  {
+   "id": "LSN-CON-07006#s6",
+   "type": "representations",
+   "bands": [
+    "low"
+   ],
+   "skills": [
+    "BC-SKL-07019",
+    "BC-SKL-07020",
+    "BC-SKL-07021",
+    "BC-SKL-07022",
+    "BC-SKL-07023"
+   ],
+   "sources": [
+    "BC-CON-07006"
+   ],
+   "evidence_tag": "inferred",
+   "text": "The equation and initial condition become a table of approximations, one row per step.",
+   "delivery": {
+    "mode": "model",
+    "reason": "rule 2: a computed sequence of approximations is the idea, so model on the example's draw",
+    "sources": [
+     "BC-QA-07004"
+    ],
+    "spec": {
+     "kind": "numeric_experiment",
+     "representations": [
+      "BC-REP-03",
+      "BC-REP-06"
+     ],
+     "equation": "dy/dx = 2*x + y + 1",
+     "start": [
+      0,
+      1
+     ],
+     "step": 0.5,
+     "computed": "y + step*(2*x + y + 1)",
+     "columns": [
+      "x",
+      "y",
+      "slope"
+     ],
+     "labels": [
+      {
+       "text": "each row starts from the row above",
+       "placement": "inside",
+       "at": "row below the last value"
+      }
+     ]
+    },
+    "fallback": "the computed rows printed as a static table",
+    "keyboard": "a Step control reached by Tab and pressed with Enter or Space adds one row per press"
+   }
+  },
+  {
+   "id": "LSN-CON-07006#prq-BC-PRQ-07005",
+   "type": "prerequisite_bridge",
+   "bands": [
+    "low",
+    "mid"
+   ],
+   "skills": [
+    "BC-SKL-07019",
+    "BC-SKL-07021"
+   ],
+   "sources": [
+    "BC-PRQ-07005"
+   ],
+   "evidence_tag": "inferred",
+   "prerequisite_id": "BC-PRQ-07005",
+   "text": "Each row starts from the previous row's output, not the initial value."
+  }
+ ],
+ "checks": [
+  {
+   "id": "LSN-CON-07006#chk-1",
+   "check_kind": "completion",
+   "bands": [
+    "low",
+    "mid"
+   ],
+   "format": "short_answer",
+   "archetype_id": "BC-QA-07004",
+   "parameter_draw": {
+    "form": "both",
+    "x_coefficient": 2,
+    "y_coefficient": 1,
+    "constant": 1,
+    "start_x": 0,
+    "start_y": 1,
+    "span": 1
+   },
+   "completes": "LSN-CON-07006#s4",
+   "stem": {
+    "text": "dy/dx = 2x + y + 1, step 1/2, first step gives y(1/2) = 2. Finish to approximate y(1).",
+    "command_verb": "approximate"
+   },
+   "answer_key": {
+    "form": "numeric",
+    "mathjson": 4
+   },
+   "worked_solution": [
+    {
+     "step": 1,
+     "text": "Slope.",
+     "mathjson": [
+      "Add",
+      1,
+      "y",
+      [
+       "Multiply",
+       2,
+       "x"
+      ]
+     ],
+     "relation": "new"
+    },
+    {
+     "step": 2,
+     "text": "At (1/2, 2).",
+     "mathjson": 4,
+     "relation": "evaluate",
+     "subs": {
+      "x": "1/2",
+      "y": "2"
+     }
+    },
+    {
+     "step": 3,
+     "text": "Advance.",
+     "mathjson": 4,
+     "relation": "new"
+    }
+   ],
+   "calculator_status": "no_calculator",
+   "representation": "BC-REP-03",
+   "skills": [
+    "BC-SKL-07021"
+   ]
+  },
+  {
+   "id": "LSN-CON-07006#chk-2",
+   "check_kind": "isomorph",
+   "bands": [
+    "low",
+    "mid"
+   ],
+   "format": "short_answer",
+   "archetype_id": "BC-QA-07004",
+   "parameter_draw": {
+    "form": "x_only",
+    "x_coefficient": 2,
+    "y_coefficient": 1,
+    "constant": -1,
+    "start_x": 1,
+    "start_y": 3,
+    "span": 1
+   },
+   "stem": {
+    "text": "dy/dx = 2x - 1, y(1) = 3. Two equal Euler steps: approximate y(2).",
+    "command_verb": "approximate"
+   },
+   "answer_key": {
+    "form": "numeric",
+    "mathjson": [
+     "Rational",
+     9,
+     2
+    ]
+   },
+   "worked_solution": [
+    {
+     "step": 1,
+     "text": "Step.",
+     "mathjson": [
+      "Rational",
+      1,
+      2
+     ],
+     "relation": "new"
+    },
+    {
+     "step": 2,
+     "text": "Slope.",
+     "mathjson": [
+      "Add",
+      -1,
+      [
+       "Multiply",
+       2,
+       "x"
+      ]
+     ],
+     "relation": "new"
+    },
+    {
+     "step": 3,
+     "text": "At 1.",
+     "mathjson": 1,
+     "relation": "evaluate",
+     "subs": {
+      "x": "1"
+     }
+    },
+    {
+     "step": 4,
+     "text": "y1.",
+     "mathjson": [
+      "Rational",
+      7,
+      2
+     ],
+     "relation": "new"
+    },
+    {
+     "step": 5,
+     "text": "Slope.",
+     "mathjson": [
+      "Add",
+      -1,
+      [
+       "Multiply",
+       2,
+       "x"
+      ]
+     ],
+     "relation": "new"
+    },
+    {
+     "step": 6,
+     "text": "At 3/2.",
+     "mathjson": 2,
+     "relation": "evaluate",
+     "subs": {
+      "x": "3/2"
+     }
+    },
+    {
+     "step": 7,
+     "text": "y2.",
+     "mathjson": [
+      "Rational",
+      9,
+      2
+     ],
+     "relation": "new"
+    }
+   ],
+   "calculator_status": "no_calculator",
+   "representation": "BC-REP-03",
+   "skills": [
+    "BC-SKL-07019",
+    "BC-SKL-07021"
+   ]
+  },
+  {
+   "id": "LSN-CON-07006#chk-3",
+   "check_kind": "mcq",
+   "bands": [
+    "low"
+   ],
+   "format": "mcq",
+   "archetype_id": "BC-QA-07004",
+   "parameter_draw": {
+    "form": "both",
+    "x_coefficient": 1,
+    "y_coefficient": 2,
+    "constant": 0,
+    "start_x": 0,
+    "start_y": 1,
+    "span": 1
+   },
+   "stem": {
+    "text": "dy/dx = x + 2y, y(0) = 1. Two equal Euler steps approximate y(1) as",
+    "command_verb": "identify"
+   },
+   "answer_key": {
+    "form": "numeric",
+    "mathjson": [
+     "Rational",
+     17,
+     4
+    ]
+   },
+   "worked_solution": [
+    {
+     "step": 1,
+     "text": "Slope.",
+     "mathjson": [
+      "Add",
+      "x",
+      [
+       "Multiply",
+       2,
+       "y"
+      ]
+     ],
+     "relation": "new"
+    },
+    {
+     "step": 2,
+     "text": "At (0, 1).",
+     "mathjson": 2,
+     "relation": "evaluate",
+     "subs": {
+      "x": "0",
+      "y": "1"
+     }
+    },
+    {
+     "step": 3,
+     "text": "y1 = 2.",
+     "mathjson": [
+      "Add",
+      "x",
+      [
+       "Multiply",
+       2,
+       "y"
+      ]
+     ],
+     "relation": "new"
+    },
+    {
+     "step": 4,
+     "text": "At (1/2, 2).",
+     "mathjson": [
+      "Rational",
+      9,
+      2
+     ],
+     "relation": "evaluate",
+     "subs": {
+      "x": "1/2",
+      "y": "2"
+     }
+    },
+    {
+     "step": 5,
+     "text": "y2.",
+     "mathjson": [
+      "Rational",
+      17,
+      4
+     ],
+     "relation": "new"
+    }
+   ],
+   "options": [
+    {
+     "id": "A",
+     "is_key": false,
+     "error_path": "BC-ERR-07019",
+     "value": 3,
+     "derivation": "one step of size 1"
+    },
+    {
+     "id": "B",
+     "is_key": false,
+     "error_path": "BC-ERR-07020",
+     "value": [
+      "Rational",
+      21,
+      4
+     ],
+     "derivation": "first slope taken at x = 1"
+    },
+    {
+     "id": "C",
+     "is_key": false,
+     "error_path": "BC-ERR-07021",
+     "value": [
+      "Rational",
+      13,
+      4
+     ],
+     "derivation": "second slope at (1/2, 1)"
+    },
+    {
+     "id": "D",
+     "is_key": true,
+     "error_path": null,
+     "value": [
+      "Rational",
+      17,
+      4
+     ]
+    }
+   ],
+   "calculator_status": "no_calculator",
+   "representation": "BC-REP-03",
+   "skills": [
+    "BC-SKL-07020",
+    "BC-SKL-07021"
+   ]
+  }
+ ],
+ "refresher": [
+  "LSN-CON-07006#s2",
+  "LSN-CON-07006#err-BC-ERR-07018",
+  "LSN-CON-07006#err-BC-ERR-07019",
+  "LSN-CON-07006#err-BC-ERR-07020",
+  "LSN-CON-07006#err-BC-ERR-07021",
+  "LSN-CON-07006#s4"
+ ],
+ "provenance": {
+  "author": "tools/lesson_transcribe.py",
+  "prompt_version": "generator/lesson_v1",
+  "design_path": "docs/lessons/unit-07/LSN-CON-07006.md",
+  "signed_off_by": null,
+  "signed_off_at": null,
+  "not_human": true
+ }
+}

@@ -1,0 +1,1039 @@
+{
+ "id": "LSN-CON-03005",
+ "version": 1,
+ "kind": "concept",
+ "target_id": "BC-CON-03005",
+ "status": "signed_off",
+ "snapshot_digest": "a6a8ec9d3f59ab8f712e33d30cc22fc64bf2c478fbe7312e3e3118d319c6a42f",
+ "source_digest": "d1eac813d832b590f56a12221acc21a79ddc8cb1550c5fd9dbd96f7dba09d24e",
+ "read_minutes": {
+  "full": 3.5,
+  "brief": 3.0
+ },
+ "word_count": {
+  "full": 439,
+  "brief": 385
+ },
+ "sections": [
+  {
+   "id": "LSN-CON-03005#s1",
+   "type": "orientation",
+   "bands": [
+    "low",
+    "mid"
+   ],
+   "skills": [
+    "BC-SKL-03012",
+    "BC-SKL-03013"
+   ],
+   "sources": [
+    "BC-CON-03005",
+    "research/units/unit-03-differentiation-composite-implicit-inverse.md#3.2 Implicit Differentiation"
+   ],
+   "evidence_tag": "inferred",
+   "text": "A response sets the numerator of dy/dx to zero for a horizontal tangent, or the denominator for a vertical one, then puts each candidate into the curve equation and keeps only points of the curve.",
+   "delivery": {
+    "mode": "text",
+    "reason": "rule 5 for a statement of what a response shows; the figure-bearing BC-REP-02 is served once, on ki-1",
+    "sources": [
+     "BC-SKL-03012"
+    ]
+   }
+  },
+  {
+   "id": "LSN-CON-03005#s2",
+   "type": "key_ideas",
+   "bands": [
+    "low",
+    "mid"
+   ],
+   "skills": [
+    "BC-SKL-03012",
+    "BC-SKL-03013"
+   ],
+   "sources": [
+    "BC-EK-FUN-3D1",
+    "ced:76",
+    "cr-23:22",
+    "cr-24:17",
+    "research/units/unit-03-differentiation-composite-implicit-inverse.md#3.2 Implicit Differentiation"
+   ],
+   "evidence_tag": "inferred",
+   "ek_id": "BC-EK-FUN-3D1",
+   "depth": "core",
+   "text": "On an implicit curve dy/dx is a quotient. The tangent is horizontal where the numerator is zero and the denominator is not, vertical where the denominator is zero and the numerator is not. A value meeting the condition is only a candidate: the curve equation gives the other coordinate, and a candidate off the curve, or with both parts zero, is discarded.",
+   "notation": "dy/dx equals zero; denominator of dy/dx equals zero",
+   "delivery": {
+    "mode": "interactive",
+    "reason": "rule 3 promoted: BC-REP-02 on BC-SKL-03012 and BC-SKL-03013; BC-QA-03005 common_givens and difficulty_variables name a varying point and the stem asks for a reading",
+    "sources": [
+     "BC-SKL-03012",
+     "BC-SKL-03013",
+     "BC-QA-03005"
+    ],
+    "spec": {
+     "kind": "implicit_curve",
+     "representations": [
+      "BC-REP-02",
+      "BC-REP-01"
+     ],
+     "curve": "(y - 2)^2 = (x - 1)^2 (x + 2)",
+     "window": {
+      "x": [
+       -3,
+       3
+      ],
+      "y": [
+       -2,
+       6
+      ]
+     },
+     "controls": [
+      {
+       "type": "draggable_point",
+       "constrained_to": "curve",
+       "start": [
+        -2,
+        2
+       ]
+      }
+     ],
+     "drawn": [
+      "the tangent line at the point",
+      "dy/dx at the point shown as numerator over denominator"
+     ],
+     "labels": [
+      {
+       "text": "numerator 3(x - 1)(x + 1)",
+       "placement": "inside"
+      },
+      {
+       "text": "denominator 2(y - 2)",
+       "placement": "inside"
+      },
+      {
+       "text": "(1, 2): both zero",
+       "placement": "inside"
+      }
+     ],
+     "question": "At which points of the curve is the tangent horizontal, and at which is it vertical?"
+    },
+    "fallback": "a static figure of the curve with (-1, 0) and (-1, 4) marked horizontal, (-2, 2) marked vertical and (1, 2) marked both zero, each label inside the figure",
+    "keyboard": "Tab focuses the point; left and right arrow keys move it along the curve; Enter reads out dy/dx at the point"
+   }
+  },
+  {
+   "id": "LSN-CON-03005#s3",
+   "type": "strategy",
+   "bands": [
+    "low",
+    "mid"
+   ],
+   "skills": [
+    "BC-SKL-03012",
+    "BC-SKL-03013"
+   ],
+   "sources": [
+    "BC-QA-03005"
+   ],
+   "evidence_tag": "verified",
+   "archetype_id": "BC-QA-03005",
+   "cue": "The stem asks for a point with a horizontal or vertical tangent, from a curve equation and its dy/dx.",
+   "method": "First written line: set the numerator or the denominator of dy/dx equal to zero as the direction requires.",
+   "rival": "Rival: the denominator set to zero for a horizontal tangent (BC-ERR-03012).",
+   "separating_feature": "Horizontal: slope zero, numerator. Vertical: slope undefined, denominator."
+  },
+  {
+   "id": "LSN-CON-03005#s4",
+   "type": "worked_example",
+   "bands": [
+    "low",
+    "mid"
+   ],
+   "skills": [
+    "BC-SKL-03012",
+    "BC-SKL-03013"
+   ],
+   "sources": [
+    "BC-QA-03005"
+   ],
+   "evidence_tag": "inferred",
+   "archetype_id": "BC-QA-03005",
+   "parameter_draw": {
+    "stretch": 1,
+    "spread": 1,
+    "opening": "left",
+    "h": 1,
+    "v": 2
+   },
+   "problem": {
+    "text": "For (y - 2)^2 = (x - 1)^2 (x + 2), dy/dx = 3(x - 1)(x + 1)/(2(y - 2)). Find each point where the tangent line is horizontal.",
+    "command_verb": "find"
+   },
+   "calculator_status": "no_calculator",
+   "steps": [
+    {
+     "cue": "Horizontal: slope zero, so the numerator.",
+     "why": "The denominator must stay nonzero.",
+     "expression": [
+      "Equal",
+      [
+       "Multiply",
+       [
+        "Add",
+        1,
+        "x"
+       ],
+       [
+        "Add",
+        -3,
+        [
+         "Multiply",
+         3,
+         "x"
+        ]
+       ]
+      ],
+      0
+     ],
+     "relation": "new"
+    },
+    {
+     "cue": "The condition fixes x.",
+     "why": "Two candidates.",
+     "expression": [
+      "Set",
+      -1,
+      1
+     ],
+     "relation": "solve",
+     "variable": "x"
+    },
+    {
+     "cue": "A candidate is a point only on the curve.",
+     "why": "The curve equation gives y.",
+     "expression": [
+      "Equal",
+      [
+       "Power",
+       [
+        "Add",
+        -2,
+        "y"
+       ],
+       2
+      ],
+      [
+       "Multiply",
+       [
+        "Power",
+        [
+         "Add",
+         -1,
+         "x"
+        ],
+        2
+       ],
+       [
+        "Add",
+        2,
+        "x"
+       ]
+      ]
+     ],
+     "relation": "new"
+    },
+    {
+     "cue": "Candidate x = -1.",
+     "why": "(-2)^2 (1) = 4.",
+     "expression": [
+      "Equal",
+      [
+       "Power",
+       [
+        "Add",
+        -2,
+        "y"
+       ],
+       2
+      ],
+      4
+     ],
+     "relation": "evaluate",
+     "subs": {
+      "x": "-1"
+     }
+    },
+    {
+     "cue": "Solve for y.",
+     "why": "y - 2 is 2 or -2: denominator nonzero.",
+     "expression": [
+      "Set",
+      0,
+      4
+     ],
+     "relation": "solve",
+     "variable": "y"
+    },
+    {
+     "cue": "Candidate x = 1 gives y = 2.",
+     "why": "Denominator zero there too: discarded."
+    },
+    {
+     "cue": "The stem asks for points.",
+     "why": "Numerator zero, denominator nonzero, on the curve.",
+     "expression": [
+      "Set",
+      [
+       "Tuple",
+       -1,
+       0
+      ],
+      [
+       "Tuple",
+       -1,
+       4
+      ]
+     ],
+     "relation": "new"
+    }
+   ],
+   "answer": {
+    "form": "symbolic",
+    "mathjson": [
+     "Set",
+     [
+      "Tuple",
+      -1,
+      0
+     ],
+     [
+      "Tuple",
+      -1,
+      4
+     ]
+    ]
+   },
+   "delivery": {
+    "mode": "step_reveal",
+    "reason": "rule 1",
+    "sources": []
+   }
+  },
+  {
+   "id": "LSN-CON-03005#err-BC-ERR-03012",
+   "type": "common_error",
+   "bands": [
+    "low",
+    "mid"
+   ],
+   "skills": [
+    "BC-SKL-03012",
+    "BC-SKL-03013"
+   ],
+   "sources": [
+    "BC-ERR-03012"
+   ],
+   "evidence_tag": "inferred",
+   "error_id": "BC-ERR-03012",
+   "observed_behavior": "The denominator of dy/dx is set to zero when a horizontal tangent is requested, or the numerator when a vertical tangent is requested.",
+   "scoring_consequence": "The reported point is wrong and the reasoning point is not available.",
+   "wrong_step": {
+    "text": "Denominator set to zero.",
+    "expression": [
+     "Equal",
+     [
+      "Add",
+      -4,
+      [
+       "Multiply",
+       2,
+       "y"
+      ]
+     ],
+     0
+    ]
+   },
+   "right_step": {
+    "text": "Numerator set to zero.",
+    "expression": [
+     "Equal",
+     [
+      "Multiply",
+      [
+       "Add",
+       1,
+       "x"
+      ],
+      [
+       "Add",
+       -3,
+       [
+        "Multiply",
+        3,
+        "x"
+       ]
+      ]
+     ],
+     0
+    ]
+   },
+   "relation": "distinct",
+   "delivery": {
+    "mode": "step_reveal",
+    "reason": "rule 1",
+    "sources": []
+   }
+  },
+  {
+   "id": "LSN-CON-03005#err-BC-ERR-03013",
+   "type": "common_error",
+   "bands": [
+    "low",
+    "mid"
+   ],
+   "skills": [
+    "BC-SKL-03012",
+    "BC-SKL-03013"
+   ],
+   "sources": [
+    "BC-ERR-03013",
+    "BC-MIS-03007"
+   ],
+   "evidence_tag": "inferred",
+   "error_id": "BC-ERR-03013",
+   "observed_behavior": "A coordinate satisfying the condition on dy/dx is reported as a point of the curve without substituting it into the defining equation.",
+   "scoring_consequence": "The Chief Reader reports record responses failing to connect dy/dx with the defining equation, which costs the point for the coordinates (cr-23:23, cr-24:18).",
+   "wrong_step": {
+    "text": "x = -1 and x = 1 reported.",
+    "expression": [
+     "Set",
+     -1,
+     1
+    ]
+   },
+   "right_step": {
+    "text": "(-1, 0) and (-1, 4).",
+    "expression": [
+     "Set",
+     [
+      "Tuple",
+      -1,
+      0
+     ],
+     [
+      "Tuple",
+      -1,
+      4
+     ]
+    ]
+   },
+   "relation": "distinct",
+   "possible_reason": {
+    "misconception_id": "BC-MIS-03007",
+    "text": "a value satisfying it is reported without checking that a point with that value lies on the curve"
+   },
+   "delivery": {
+    "mode": "step_reveal",
+    "reason": "rule 1",
+    "sources": []
+   }
+  },
+  {
+   "id": "LSN-CON-03005#err-BC-ERR-05057",
+   "type": "common_error",
+   "bands": [
+    "low",
+    "mid"
+   ],
+   "skills": [
+    "BC-SKL-03012"
+   ],
+   "sources": [
+    "BC-ERR-05057",
+    "BC-MIS-05031"
+   ],
+   "evidence_tag": "inferred",
+   "error_id": "BC-ERR-05057",
+   "observed_behavior": "The response sets the numerator of the derivative to zero and reports points where the denominator also vanishes.",
+   "scoring_consequence": "The reported points may have no tangent at all, so the critical point list is wrong.",
+   "wrong_step": {
+    "text": "(1, 2) kept.",
+    "expression": [
+     "Set",
+     [
+      "Tuple",
+      -1,
+      0
+     ],
+     [
+      "Tuple",
+      -1,
+      4
+     ],
+     [
+      "Tuple",
+      1,
+      2
+     ]
+    ]
+   },
+   "right_step": {
+    "text": "(1, 2) discarded.",
+    "expression": [
+     "Set",
+     [
+      "Tuple",
+      -1,
+      0
+     ],
+     [
+      "Tuple",
+      -1,
+      4
+     ]
+    ]
+   },
+   "relation": "distinct",
+   "possible_reason": {
+    "misconception_id": "BC-MIS-05031",
+    "text": "looks only at the numerator of the derivative expression and never at the denominator"
+   },
+   "delivery": {
+    "mode": "step_reveal",
+    "reason": "rule 1",
+    "sources": []
+   }
+  },
+  {
+   "id": "LSN-CON-03005#prq-BC-PRQ-03007",
+   "type": "prerequisite_bridge",
+   "bands": [
+    "low",
+    "mid"
+   ],
+   "skills": [
+    "BC-SKL-03012",
+    "BC-SKL-03013"
+   ],
+   "sources": [
+    "BC-PRQ-03007"
+   ],
+   "evidence_tag": "inferred",
+   "prerequisite_id": "BC-PRQ-03007",
+   "text": "Set a numerator or denominator to zero, solve, and check which candidates are admissible; otherwise a candidate is reported unchecked."
+  }
+ ],
+ "checks": [
+  {
+   "id": "LSN-CON-03005#chk-1",
+   "check_kind": "completion",
+   "bands": [
+    "low",
+    "mid"
+   ],
+   "format": "short_answer",
+   "archetype_id": "BC-QA-03005",
+   "parameter_draw": {
+    "stretch": 1,
+    "spread": 1,
+    "opening": "left",
+    "h": 1,
+    "v": 2
+   },
+   "completes": "LSN-CON-03005#s4",
+   "stem": {
+    "text": "On (y - 2)^2 = (x - 1)^2 (x + 2), the numerator gives x = -1 or 1. Find the points.",
+    "command_verb": "find"
+   },
+   "answer_key": {
+    "form": "symbolic",
+    "mathjson": [
+     "Set",
+     [
+      "Tuple",
+      -1,
+      0
+     ],
+     [
+      "Tuple",
+      -1,
+      4
+     ]
+    ]
+   },
+   "worked_solution": [
+    {
+     "step": 1,
+     "text": "The curve.",
+     "mathjson": [
+      "Equal",
+      [
+       "Power",
+       [
+        "Add",
+        -2,
+        "y"
+       ],
+       2
+      ],
+      [
+       "Multiply",
+       [
+        "Power",
+        [
+         "Add",
+         -1,
+         "x"
+        ],
+        2
+       ],
+       [
+        "Add",
+        2,
+        "x"
+       ]
+      ]
+     ],
+     "relation": "new"
+    },
+    {
+     "step": 2,
+     "text": "x = -1.",
+     "mathjson": [
+      "Equal",
+      [
+       "Power",
+       [
+        "Add",
+        -2,
+        "y"
+       ],
+       2
+      ],
+      4
+     ],
+     "relation": "evaluate",
+     "subs": {
+      "x": "-1"
+     }
+    },
+    {
+     "step": 3,
+     "text": "y = 0 or 4.",
+     "mathjson": [
+      "Set",
+      0,
+      4
+     ],
+     "relation": "solve",
+     "variable": "y"
+    },
+    {
+     "step": 4,
+     "text": "x = 1 gives (1, 2), where the denominator is zero.",
+     "mathjson": [
+      "Set",
+      [
+       "Tuple",
+       -1,
+       0
+      ],
+      [
+       "Tuple",
+       -1,
+       4
+      ]
+     ],
+     "relation": "new"
+    }
+   ],
+   "calculator_status": "no_calculator",
+   "representation": "BC-REP-01",
+   "skills": [
+    "BC-SKL-03012"
+   ]
+  },
+  {
+   "id": "LSN-CON-03005#chk-2",
+   "check_kind": "isomorph",
+   "bands": [
+    "low",
+    "mid"
+   ],
+   "format": "short_answer",
+   "archetype_id": "BC-QA-03005",
+   "parameter_draw": {
+    "stretch": 2,
+    "spread": 1,
+    "opening": "left",
+    "h": 0,
+    "v": 1
+   },
+   "stem": {
+    "text": "For 2(y - 1)^2 = x^2 (x + 6), dy/dx = 3x(x + 4)/(4(y - 1)). Find vertical tangent points.",
+    "command_verb": "find"
+   },
+   "answer_key": {
+    "form": "symbolic",
+    "mathjson": [
+     "Set",
+     [
+      "Tuple",
+      -6,
+      1
+     ]
+    ]
+   },
+   "worked_solution": [
+    {
+     "step": 1,
+     "text": "Denominator zero.",
+     "mathjson": [
+      "Equal",
+      [
+       "Add",
+       -4,
+       [
+        "Multiply",
+        4,
+        "y"
+       ]
+      ],
+      0
+     ],
+     "relation": "new"
+    },
+    {
+     "step": 2,
+     "text": "y = 1.",
+     "mathjson": 1,
+     "relation": "solve",
+     "variable": "y"
+    },
+    {
+     "step": 3,
+     "text": "The curve.",
+     "mathjson": [
+      "Equal",
+      [
+       "Multiply",
+       2,
+       [
+        "Power",
+        [
+         "Add",
+         -1,
+         "y"
+        ],
+        2
+       ]
+      ],
+      [
+       "Multiply",
+       [
+        "Power",
+        "x",
+        2
+       ],
+       [
+        "Add",
+        6,
+        "x"
+       ]
+      ]
+     ],
+     "relation": "new"
+    },
+    {
+     "step": 4,
+     "text": "y = 1.",
+     "mathjson": [
+      "Equal",
+      0,
+      [
+       "Multiply",
+       [
+        "Power",
+        "x",
+        2
+       ],
+       [
+        "Add",
+        6,
+        "x"
+       ]
+      ]
+     ],
+     "relation": "evaluate",
+     "subs": {
+      "y": "1"
+     }
+    },
+    {
+     "step": 5,
+     "text": "x = -6 or 0.",
+     "mathjson": [
+      "Set",
+      -6,
+      0
+     ],
+     "relation": "solve",
+     "variable": "x"
+    },
+    {
+     "step": 6,
+     "text": "At (0, 1) the numerator is zero too, so only (-6, 1).",
+     "mathjson": [
+      "Set",
+      [
+       "Tuple",
+       -6,
+       1
+      ]
+     ],
+     "relation": "new"
+    }
+   ],
+   "calculator_status": "no_calculator",
+   "representation": "BC-REP-01",
+   "skills": [
+    "BC-SKL-03013"
+   ]
+  },
+  {
+   "id": "LSN-CON-03005#chk-3",
+   "check_kind": "mcq",
+   "bands": [
+    "low"
+   ],
+   "format": "mcq",
+   "archetype_id": "BC-QA-03005",
+   "parameter_draw": {
+    "stretch": 1,
+    "spread": 1,
+    "opening": "left",
+    "h": 0,
+    "v": 0
+   },
+   "stem": {
+    "text": "For y^2 = x^2 (x + 3), dy/dx = 3x(x + 2)/(2y). Which gives every horizontal tangent point?",
+    "command_verb": "identify"
+   },
+   "answer_key": {
+    "form": "symbolic",
+    "mathjson": [
+     "Set",
+     [
+      "Tuple",
+      -2,
+      -2
+     ],
+     [
+      "Tuple",
+      -2,
+      2
+     ]
+    ]
+   },
+   "worked_solution": [
+    {
+     "step": 1,
+     "text": "Numerator zero.",
+     "mathjson": [
+      "Equal",
+      [
+       "Multiply",
+       3,
+       "x",
+       [
+        "Add",
+        2,
+        "x"
+       ]
+      ],
+      0
+     ],
+     "relation": "new"
+    },
+    {
+     "step": 2,
+     "text": "x = -2 or 0.",
+     "mathjson": [
+      "Set",
+      -2,
+      0
+     ],
+     "relation": "solve",
+     "variable": "x"
+    },
+    {
+     "step": 3,
+     "text": "The curve.",
+     "mathjson": [
+      "Equal",
+      [
+       "Power",
+       "y",
+       2
+      ],
+      [
+       "Multiply",
+       [
+        "Power",
+        "x",
+        2
+       ],
+       [
+        "Add",
+        3,
+        "x"
+       ]
+      ]
+     ],
+     "relation": "new"
+    },
+    {
+     "step": 4,
+     "text": "x = -2.",
+     "mathjson": [
+      "Equal",
+      [
+       "Power",
+       "y",
+       2
+      ],
+      4
+     ],
+     "relation": "evaluate",
+     "subs": {
+      "x": "-2"
+     }
+    },
+    {
+     "step": 5,
+     "text": "y = -2 or 2.",
+     "mathjson": [
+      "Set",
+      -2,
+      2
+     ],
+     "relation": "solve",
+     "variable": "y"
+    },
+    {
+     "step": 6,
+     "text": "x = 0 gives (0, 0), where the denominator is zero.",
+     "mathjson": [
+      "Set",
+      [
+       "Tuple",
+       -2,
+       -2
+      ],
+      [
+       "Tuple",
+       -2,
+       2
+      ]
+     ],
+     "relation": "new"
+    }
+   ],
+   "options": [
+    {
+     "id": "A",
+     "is_key": false,
+     "error_path": "BC-ERR-03012",
+     "value": [
+      "Set",
+      [
+       "Tuple",
+       -3,
+       0
+      ],
+      [
+       "Tuple",
+       0,
+       0
+      ]
+     ],
+     "derivation": "denominator 2y set to zero: y = 0, then x = 0 or -3"
+    },
+    {
+     "id": "B",
+     "is_key": true,
+     "error_path": null,
+     "value": [
+      "Set",
+      [
+       "Tuple",
+       -2,
+       -2
+      ],
+      [
+       "Tuple",
+       -2,
+       2
+      ]
+     ]
+    },
+    {
+     "id": "C",
+     "is_key": false,
+     "error_path": "BC-ERR-03013",
+     "value": [
+      "Set",
+      -2,
+      0
+     ],
+     "derivation": "the x values from the numerator, never put into the curve"
+    },
+    {
+     "id": "D",
+     "is_key": false,
+     "error_path": "BC-ERR-05057",
+     "value": [
+      "Set",
+      [
+       "Tuple",
+       -2,
+       -2
+      ],
+      [
+       "Tuple",
+       -2,
+       2
+      ],
+      [
+       "Tuple",
+       0,
+       0
+      ]
+     ],
+     "derivation": "(0, 0) kept although the denominator is zero there"
+    }
+   ],
+   "calculator_status": "no_calculator",
+   "representation": "BC-REP-01",
+   "skills": [
+    "BC-SKL-03012"
+   ]
+  }
+ ],
+ "refresher": [
+  "LSN-CON-03005#s2",
+  "LSN-CON-03005#err-BC-ERR-03012",
+  "LSN-CON-03005#err-BC-ERR-03013",
+  "LSN-CON-03005#err-BC-ERR-05057",
+  "LSN-CON-03005#s4"
+ ],
+ "provenance": {
+  "author": "tools/lesson_transcribe.py",
+  "prompt_version": "generator/lesson_v1",
+  "design_path": "docs/lessons/unit-03/LSN-CON-03005.md",
+  "signed_off_by": "claude-opus-5-5",
+  "signed_off_at": "2026-09-29",
+  "not_human": true
+ }
+}

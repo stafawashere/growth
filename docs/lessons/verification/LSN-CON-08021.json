@@ -39,5 +39,125 @@
    }
   ],
   "answers_file": "docs/lessons/verification/answers/delta-2026-09-29-b.json"
- }
+ },
+ "audit": {
+  "date": "2026-09-29",
+  "auditor": "claude-opus-5-5",
+  "blocks": [
+   {
+    "id": "orientation",
+    "verdict": "ok",
+    "evidence": "Paraphrases BC-CON-08021 description_plain and the 8.13 Assessment behaviour paragraph (setup, value, or identification with interval); 30 words, no count."
+   },
+   {
+    "id": "ki-1",
+    "verdict": "ok",
+    "evidence": "8.13 Arc length (hypothesis f' continuous on [a,b]), Notation and Identification paragraphs; EK BC-EK-CHA-6A1 on all four skills; sg-24:16 lines 6 to 19 carry length plus interval; no quote (allowed)."
+   },
+   {
+    "id": "st-1",
+    "verdict": "ok",
+    "evidence": "Method is expected_solution_path[0..2]; rival is common_distractors[0] and wrong_approaches[1]; cue 9 words from common_givens and typical_wording."
+   },
+   {
+    "id": "ex-1",
+    "verdict": "ok",
+    "evidence": "Generator form log, scale 1 gives x*log(x) on [1,3]; SymPy f' - (log(x)+1) = 0; key integral unevaluated (value 3.86962); no ITM-GEN-08014 item has x ln x on [1,3]."
+   },
+   {
+    "id": "ex-2",
+    "verdict": "ok",
+    "evidence": "Generator radical, scale 1 gives x*sqrt(x+1) on [1,3]; SymPy f' - (3x+2)/(2sqrt(x+1)) = 0; length 5.008182, reported 5.008 (rounded and truncated agree)."
+   },
+   {
+    "id": "reader",
+    "verdict": "ok",
+    "evidence": "BC-PT-99022, 99051, 99004 are on BC-QA-08014 point_types; line text equals the bundle records; checker reader_scores clean."
+   },
+   {
+    "id": "err-BC-ERR-08019",
+    "verdict": "ok",
+    "evidence": "Verbatim record; wrong step integrates from 0, not the requested [1,3] (SymPy 5.18401 vs 3.86962); null reason allowed."
+   },
+   {
+    "id": "err-BC-ERR-08041",
+    "verdict": "ok",
+    "evidence": "Verbatim record; wrong step is the integral of f' (record's first form), SymPy 3 log 3 = 3.29584 vs 3.86962; null reason allowed."
+   },
+   {
+    "id": "err-BC-ERR-08042",
+    "verdict": "ok",
+    "evidence": "Verbatim record; sqrt(1 + f') is the observed behaviour, SymPy 3.24881 vs 3.86962; reason fragment is words from BC-MIS-08024 description, the only linked MIS."
+   },
+   {
+    "id": "err-BC-ERR-08043",
+    "verdict": "ok",
+    "evidence": "Verbatim record; sentence without interval against [1,3] matches observed_behavior and sg-24:16; reason fragment from BC-MIS-08009 description, a linked MIS."
+   },
+   {
+    "id": "representations",
+    "verdict": "ok",
+    "evidence": "null; 8.13 Representations names BC-REP-01, 04, 09 and symbolic to verbal and to calculator value, nothing figure-shaped."
+   },
+   {
+    "id": "bridge-BC-PRQ-06005",
+    "verdict": "ok",
+    "evidence": "fixed 2026-09-29: text now restates BC-PRQ-06005's failure_signature (f and f' interchanged): the radical needs f'(x), not f"
+   },
+   {
+    "id": "bridge-BC-PRQ-08006",
+    "verdict": "ok",
+    "evidence": "Paraphrases BC-PRQ-08006 description_plain (three places) and failure_signature (rounded intermediate); 8 words."
+   },
+   {
+    "id": "bridge-BC-PRQ-08007",
+    "verdict": "ok",
+    "evidence": "Paraphrases BC-PRQ-08007 description_plain and failure_signature (sum in place of squares); 12 words."
+   },
+   {
+    "id": "time",
+    "verdict": "ok",
+    "evidence": "I-A 2.14 from exam-structure.md#Section and part layout; unit-08 README section 5 lists I-A or I-B for BC-QA-08014; the choice and held steps are in inferred."
+   },
+   {
+    "id": "chk-1",
+    "verdict": "ok",
+    "evidence": "Completion of ex-1 with f' given; key equals ex-1 answer (SymPy); BC-SKL-08056 is the stating skill."
+   },
+   {
+    "id": "chk-2",
+    "verdict": "ok",
+    "evidence": "Draw scale 1/2, left 2, width 1 gives x*sqrt(x+1)/2 on [2,3]; SymPy f' - (3x+2)/(4sqrt(x+1)) = 0; no published item on this draw (ITM-GEN-08014-06 is [1,3])."
+   },
+   {
+    "id": "chk-3",
+    "verdict": "ok",
+    "evidence": "x*exp(x/4) on [2,4], SymPy f' matches; key 7.847687 -> 7.848; A sqrt(1+f') 4.358932 (ERR-08042); B f(4)-f(2) 7.575685 (ERR-08041, integral of the derivative); D from 0 11.729556 (ERR-08019); distinct."
+   }
+  ],
+  "advice": [
+   "err-BC-ERR-08019 serves the record's scoring_consequence about an answer point and a 2023 area point (sg-23:16), but ex-1 is an arc length setup with no answer point, and the BC-PT-99051 line in the same lesson says sg-26:19 requires the limits to be numerical but not correct for the form point. A student reading both gets two different consequences for the same wrong limit.",
+   "The lower limit 0 on x ln x makes the BC-ERR-08019 integral improper (the integrand is unbounded at 0), and the prose calls 0 'the left end of the domain of ln x' although 0 is not in that domain. The generator's wording, 'the start of the axis', is the more accurate account; chk-3 on x e^(x/4) has no such problem.",
+   "err-BC-ERR-08042's reason fragment 'its own form is not examined' is lifted from a BC-MIS-08024 clause about describing a radical integrand as an area; standing alone in the block, 'its' has no antecedent and the fragment does not explain an unsquared derivative.",
+   "BC-SKL-08058 (identify a displayed integral and name the interval, two points in 2024 per sg-24:16) has no worked example and no check; it is reached only through ki-1 and err-BC-ERR-08043, which the mid band does not serve. The inferred entry already names the missing interpret task in the parameter_spec.",
+   "Mid band serves err-BC-ERR-08019 and 08041 only, so the unsquared derivative that st-1 names as its rival (wrong_approaches[1]) and the missing interval (wrong_approaches[0]) never reach the mid band.",
+   "BC-ERR-08044 (the radical integral described as an area) falls past the cap by id order although st-1's rival and the topic's MCQ distractor are the area form; chk-3 has no area distractor either.",
+   "chk-3 option B uses the integral of f' (7.576), which matches BC-ERR-08041's observed_behavior; the generator's BC-ERR-08041 distractor for the same draw is the integral of 1 + f'**2 (32.150). The two disagree on what this error produces.",
+   "The Key ideas prose says the CHA-6.A.1 sentence on ced:164 costs 16 words; it is 17. Prose only, no served text affected."
+  ],
+  "counts": {
+   "ok": 18,
+   "unsourced": 0,
+   "wrong": 0,
+   "over_cap": 0,
+   "lint": 0
+  }
+ },
+ "fix_notes": [
+  {
+   "date": "2026-09-29",
+   "by": "claude-opus-5-5",
+   "note": "bridge BC-PRQ-06005 rewritten from the record's failure_signature; the prose no longer calls 0 part of the domain of ln x; word counts 839 and 441"
+  }
+ ]
 }

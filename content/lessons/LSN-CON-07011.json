@@ -1,0 +1,718 @@
+{
+ "id": "LSN-CON-07011",
+ "version": 1,
+ "kind": "concept",
+ "target_id": "BC-CON-07011",
+ "status": "signed_off",
+ "snapshot_digest": "a6a8ec9d3f59ab8f712e33d30cc22fc64bf2c478fbe7312e3e3118d319c6a42f",
+ "source_digest": "629627c543a81fd3eb47a62b0ea37d70499cbaf1a31c128f4f19da114f2741ca",
+ "read_minutes": {
+  "full": 3.5,
+  "brief": 2.7
+ },
+ "word_count": {
+  "full": 431,
+  "brief": 349
+ },
+ "sections": [
+  {
+   "id": "LSN-CON-07011#s1",
+   "type": "orientation",
+   "bands": [
+    "low",
+    "mid"
+   ],
+   "skills": [
+    "BC-SKL-07039",
+    "BC-SKL-07043"
+   ],
+   "sources": [
+    "BC-CON-07011",
+    "research/units/unit-07-differential-equations.md#7.9 Logistic Models with Differential Equations"
+   ],
+   "evidence_tag": "inferred",
+   "text": "A response writes dy/dt = ky(a - y) from the joint proportionality statement, reads the model without solving it, and says what the numbers mean, with units.",
+   "delivery": {
+    "mode": "text",
+    "reason": "rule 6: a statement of what a response shows; BC-REP-04, BC-REP-05, BC-REP-06",
+    "sources": [
+     "BC-SKL-07039"
+    ]
+   }
+  },
+  {
+   "id": "LSN-CON-07011#s2",
+   "type": "key_ideas",
+   "bands": [
+    "low",
+    "mid"
+   ],
+   "skills": [
+    "BC-SKL-07039"
+   ],
+   "sources": [
+    "BC-EK-FUN-7H1",
+    "ced:145",
+    "research/units/unit-07-differential-equations.md#7.9 Logistic Models with Differential Equations"
+   ],
+   "evidence_tag": "inferred",
+   "ek_id": "BC-EK-FUN-7H1",
+   "depth": "core",
+   "text": "A rate jointly proportional to y and to a - y gives dy/dt = ky(a - y). The factor a - y makes the rate vanish at a; without it there is no ceiling.",
+   "notation": "dy/dt = ky(a - y)",
+   "delivery": {
+    "mode": "text",
+    "reason": "rule 6: a verbal statement to an equation; BC-REP-04, BC-REP-06 on BC-SKL-07039, none figure-bearing",
+    "sources": [
+     "BC-SKL-07039"
+    ]
+   }
+  },
+  {
+   "id": "LSN-CON-07011#s3",
+   "type": "key_ideas",
+   "bands": [
+    "low",
+    "mid"
+   ],
+   "skills": [
+    "BC-SKL-07043"
+   ],
+   "sources": [
+    "BC-EK-FUN-7H2",
+    "ced:145",
+    "research/units/unit-07-differential-equations.md#7.9 Logistic Models with Differential Equations"
+   ],
+   "evidence_tag": "inferred",
+   "ek_id": "BC-EK-FUN-7H2",
+   "depth": "core",
+   "text": "The equation is read without solving: the right side is zero at 0 and a, positive between, so a solution starting between rises toward a. The sentence names quantity, units and direction.",
+   "notation": "the limit as t grows without bound",
+   "delivery": {
+    "mode": "text",
+    "reason": "rule 6: a reading of the equation; BC-REP-04, BC-REP-05 on BC-SKL-07043. The stepped logistic curve that rule 3 allows is served once, in LSN-CON-07012, where the limit and the fastest change are the idea",
+    "sources": [
+     "BC-SKL-07043"
+    ]
+   }
+  },
+  {
+   "id": "LSN-CON-07011#s4",
+   "type": "strategy",
+   "bands": [
+    "low",
+    "mid"
+   ],
+   "skills": [
+    "BC-SKL-07039",
+    "BC-SKL-07043"
+   ],
+   "sources": [
+    "BC-QA-07009"
+   ],
+   "evidence_tag": "verified",
+   "archetype_id": "BC-QA-07009",
+   "cue": "A logistic equation and an initial value between 0 and the capacity; the stem asks a limit or meaning.",
+   "method": "First written line: the right side set equal to zero.",
+   "rival": "Rival: separating the logistic equation with partial fractions when only the limit was asked for.",
+   "separating_feature": "The stem asks for a value or a meaning, not a formula for y."
+  },
+  {
+   "id": "LSN-CON-07011#s5",
+   "type": "worked_example",
+   "bands": [
+    "low",
+    "mid"
+   ],
+   "skills": [
+    "BC-SKL-07039",
+    "BC-SKL-07043"
+   ],
+   "sources": [
+    "BC-QA-07009"
+   ],
+   "evidence_tag": "inferred",
+   "archetype_id": "BC-QA-07009",
+   "parameter_draw": {
+    "form": "factored",
+    "capacity": 600,
+    "rate": "1/4",
+    "start_share": "1/5",
+    "context": "deer"
+   },
+   "problem": {
+    "text": "Deer P grow at a rate jointly proportional to P and 600 - P, constant 1/2400; P(0) = 120. Write the equation; find and interpret the limit of P(t).",
+    "command_verb": "find"
+   },
+   "calculator_status": "no_calculator",
+   "steps": [
+    {
+     "cue": "Jointly proportional.",
+     "why": "A constant times the product.",
+     "expression": [
+      "Equal",
+      "dPdt",
+      [
+       "Multiply",
+       [
+        "Rational",
+        1,
+        2400
+       ],
+       "P",
+       [
+        "Add",
+        600,
+        [
+         "Multiply",
+         -1,
+         "P"
+        ]
+       ]
+      ]
+     ],
+     "relation": "new"
+    },
+    {
+     "cue": "A limit, not a formula.",
+     "why": "Equilibria: zeros of the right side.",
+     "expression": [
+      "Equal",
+      [
+       "Multiply",
+       [
+        "Rational",
+        1,
+        2400
+       ],
+       "P",
+       [
+        "Add",
+        600,
+        [
+         "Multiply",
+         -1,
+         "P"
+        ]
+       ]
+      ],
+      0
+     ],
+     "relation": "new"
+    },
+    {
+     "cue": "Solve.",
+     "why": "The nonzero zero is the capacity.",
+     "expression": [
+      "Set",
+      0,
+      600
+     ],
+     "relation": "solve",
+     "variable": "P"
+    },
+    {
+     "cue": "P(0) = 120 is between.",
+     "why": "The sign there gives the direction.",
+     "expression": [
+      "Multiply",
+      [
+       "Rational",
+       1,
+       2400
+      ],
+      "P",
+      [
+       "Add",
+       600,
+       [
+        "Multiply",
+        -1,
+        "P"
+       ]
+      ]
+     ],
+     "relation": "new"
+    },
+    {
+     "cue": "At P = 120.",
+     "why": "Positive: P rises.",
+     "expression": 24,
+     "relation": "evaluate",
+     "subs": {
+      "P": "120"
+     }
+    },
+    {
+     "cue": "The limit.",
+     "why": "P cannot cross the equilibrium 600.",
+     "expression": 600,
+     "relation": "new"
+    },
+    {
+     "cue": "Interpret.",
+     "why": "The deer population approaches 600 deer."
+    }
+   ],
+   "answer": {
+    "form": "numeric",
+    "mathjson": 600
+   },
+   "delivery": {
+    "mode": "step_reveal",
+    "reason": "rule 1: a worked example or an error block",
+    "sources": []
+   }
+  },
+  {
+   "id": "LSN-CON-07011#err-BC-ERR-07039",
+   "type": "common_error",
+   "bands": [
+    "low",
+    "mid"
+   ],
+   "skills": [
+    "BC-SKL-07039"
+   ],
+   "sources": [
+    "BC-ERR-07039",
+    "BC-MIS-07024"
+   ],
+   "evidence_tag": "inferred",
+   "error_id": "BC-ERR-07039",
+   "observed_behavior": "The response writes a constant multiple of the quantity alone, losing the factor that encodes the carrying capacity.",
+   "scoring_consequence": "The model is exponential rather than logistic and has no ceiling.",
+   "wrong_step": {
+    "text": "dP/dt = kP.",
+    "expression": [
+     "Equal",
+     "dPdt",
+     [
+      "Multiply",
+      "P",
+      "k"
+     ]
+    ]
+   },
+   "right_step": {
+    "text": "dP/dt = kP(600 - P).",
+    "expression": [
+     "Equal",
+     "dPdt",
+     [
+      "Multiply",
+      "P",
+      "k",
+      [
+       "Add",
+       600,
+       [
+        "Multiply",
+        -1,
+        "P"
+       ]
+      ]
+     ]
+    ]
+   },
+   "relation": "distinct",
+   "possible_reason": {
+    "misconception_id": "BC-MIS-07024",
+    "text": "without the factor that makes the rate vanish at the carrying capacity"
+   },
+   "delivery": {
+    "mode": "step_reveal",
+    "reason": "rule 1: a worked example or an error block",
+    "sources": []
+   }
+  },
+  {
+   "id": "LSN-CON-07011#err-BC-ERR-07043",
+   "type": "common_error",
+   "bands": [
+    "low",
+    "mid"
+   ],
+   "skills": [
+    "BC-SKL-07043"
+   ],
+   "sources": [
+    "BC-ERR-07043",
+    "BC-MIS-07023"
+   ],
+   "evidence_tag": "inferred",
+   "error_id": "BC-ERR-07043",
+   "observed_behavior": "The response gives the two numbers and never says what they mean for the population being modelled.",
+   "scoring_consequence": "An interpretation point is lost because the sentence is incomplete.",
+   "wrong_step": {
+    "text": "600, with no sentence.",
+    "expression": 600
+   },
+   "right_step": {
+    "text": "The deer population approaches 600 deer.",
+    "expression": 600
+   },
+   "relation": "equivalent",
+   "possible_reason": {
+    "misconception_id": "BC-MIS-07023",
+    "text": "reports the number and leaves the quantity, the units, and the direction implicit"
+   },
+   "delivery": {
+    "mode": "step_reveal",
+    "reason": "rule 1: a worked example or an error block",
+    "sources": []
+   }
+  },
+  {
+   "id": "LSN-CON-07011#err-BC-ERR-07044",
+   "type": "common_error",
+   "bands": [
+    "low",
+    "mid"
+   ],
+   "skills": [
+    "BC-SKL-07043"
+   ],
+   "sources": [
+    "BC-ERR-07044",
+    "BC-MIS-07025"
+   ],
+   "evidence_tag": "inferred",
+   "error_id": "BC-ERR-07044",
+   "observed_behavior": "The response separates the logistic equation with partial fractions and solves it in order to report a limit the equation gives directly.",
+   "scoring_consequence": "Time is spent on work the question did not ask for, and an error inside it costs the value that the equation alone would have given.",
+   "wrong_step": {
+    "text": "Partial fractions, the solved formula, then its limit.",
+    "expression": [
+     "Multiply",
+     600,
+     [
+      "Power",
+      [
+       "Add",
+       1,
+       [
+        "Multiply",
+        4,
+        [
+         "Exp",
+         [
+          "Multiply",
+          [
+           "Rational",
+           -1,
+           4
+          ],
+          "t"
+         ]
+        ]
+       ]
+      ],
+      -1
+     ]
+    ]
+   },
+   "right_step": {
+    "text": "Zeros 0 and 600, rate positive at 120.",
+    "expression": 600
+   },
+   "relation": "distinct",
+   "possible_reason": {
+    "misconception_id": "BC-MIS-07025",
+    "text": "does not read the capacity off the zeros of the right side and reaches for partial fractions instead"
+   },
+   "delivery": {
+    "mode": "step_reveal",
+    "reason": "rule 1: a worked example or an error block",
+    "sources": []
+   }
+  },
+  {
+   "id": "LSN-CON-07011#prq-BC-PRQ-07003",
+   "type": "prerequisite_bridge",
+   "bands": [
+    "low",
+    "mid"
+   ],
+   "skills": [
+    "BC-SKL-07039"
+   ],
+   "sources": [
+    "BC-PRQ-07003"
+   ],
+   "evidence_tag": "inferred",
+   "prerequisite_id": "BC-PRQ-07003",
+   "text": "Jointly proportional means a constant times the product; without it, the constant is omitted."
+  }
+ ],
+ "checks": [
+  {
+   "id": "LSN-CON-07011#chk-1",
+   "check_kind": "completion",
+   "bands": [
+    "low",
+    "mid"
+   ],
+   "format": "short_answer",
+   "archetype_id": "BC-QA-07009",
+   "parameter_draw": {
+    "form": "factored",
+    "capacity": 600,
+    "rate": "1/4",
+    "start_share": "1/5",
+    "context": "deer"
+   },
+   "completes": "LSN-CON-07011#s5",
+   "stem": {
+    "text": "dP/dt = P(600 - P)/2400, P(0) = 120, zeros 0 and 600. Find the limit of P(t).",
+    "command_verb": "find"
+   },
+   "answer_key": {
+    "form": "numeric",
+    "mathjson": 600
+   },
+   "worked_solution": [
+    {
+     "step": 1,
+     "text": "The right side.",
+     "mathjson": [
+      "Multiply",
+      [
+       "Rational",
+       1,
+       2400
+      ],
+      "P",
+      [
+       "Add",
+       600,
+       [
+        "Multiply",
+        -1,
+        "P"
+       ]
+      ]
+     ],
+     "relation": "new"
+    },
+    {
+     "step": 2,
+     "text": "At P = 120.",
+     "mathjson": 24,
+     "relation": "evaluate",
+     "subs": {
+      "P": "120"
+     }
+    },
+    {
+     "step": 3,
+     "text": "Positive, so P rises to 600.",
+     "mathjson": 600,
+     "relation": "new"
+    }
+   ],
+   "calculator_status": "no_calculator",
+   "representation": "BC-REP-06",
+   "skills": [
+    "BC-SKL-07043"
+   ]
+  },
+  {
+   "id": "LSN-CON-07011#chk-2",
+   "check_kind": "isomorph",
+   "bands": [
+    "low",
+    "mid"
+   ],
+   "format": "short_answer",
+   "archetype_id": "BC-QA-07009",
+   "parameter_draw": {
+    "form": "expanded",
+    "capacity": 900,
+    "rate": "1/3",
+    "start_share": "1/10",
+    "context": "fish"
+   },
+   "stem": {
+    "text": "Fish: dF/dt = F/3 - F^2/2700, F(0) = 90. Find the limit of F(t).",
+    "command_verb": "find"
+   },
+   "answer_key": {
+    "form": "numeric",
+    "mathjson": 900
+   },
+   "worked_solution": [
+    {
+     "step": 1,
+     "text": "Right side zero.",
+     "mathjson": [
+      "Equal",
+      [
+       "Add",
+       [
+        "Multiply",
+        [
+         "Rational",
+         -1,
+         2700
+        ],
+        [
+         "Power",
+         "F",
+         2
+        ]
+       ],
+       [
+        "Multiply",
+        [
+         "Rational",
+         1,
+         3
+        ],
+        "F"
+       ]
+      ],
+      0
+     ],
+     "relation": "new"
+    },
+    {
+     "step": 2,
+     "text": "Zeros.",
+     "mathjson": [
+      "Set",
+      0,
+      900
+     ],
+     "relation": "solve",
+     "variable": "F"
+    },
+    {
+     "step": 3,
+     "text": "The right side.",
+     "mathjson": [
+      "Add",
+      [
+       "Multiply",
+       [
+        "Rational",
+        -1,
+        2700
+       ],
+       [
+        "Power",
+        "F",
+        2
+       ]
+      ],
+      [
+       "Multiply",
+       [
+        "Rational",
+        1,
+        3
+       ],
+       "F"
+      ]
+     ],
+     "relation": "new"
+    },
+    {
+     "step": 4,
+     "text": "At F = 90.",
+     "mathjson": 27,
+     "relation": "evaluate",
+     "subs": {
+      "F": "90"
+     }
+    },
+    {
+     "step": 5,
+     "text": "Positive, so F rises to 900.",
+     "mathjson": 900,
+     "relation": "new"
+    }
+   ],
+   "calculator_status": "no_calculator",
+   "representation": "BC-REP-06",
+   "skills": [
+    "BC-SKL-07043"
+   ]
+  },
+  {
+   "id": "LSN-CON-07011#chk-3",
+   "check_kind": "mcq",
+   "bands": [
+    "low"
+   ],
+   "format": "mcq",
+   "archetype_id": "BC-QA-07009",
+   "parameter_draw": {
+    "form": "factored",
+    "capacity": 400,
+    "rate": "1/2",
+    "start_share": "1/4",
+    "context": "rumor"
+   },
+   "stem": {
+    "text": "R people have heard a rumor, dR/dt = (1/2)R(1 - R/400), R(0) = 100. Which answer is complete?",
+    "command_verb": "identify"
+   },
+   "answer_key": {
+    "form": "statement",
+    "mathjson": "rumor_count_approaches_400_people"
+   },
+   "worked_solution": [],
+   "options": [
+    {
+     "id": "A",
+     "is_key": false,
+     "error_path": "BC-ERR-07039",
+     "label": "R grows without bound.",
+     "derivation": "the factor 1 - R/400 dropped, leaving exponential growth"
+    },
+    {
+     "id": "B",
+     "is_key": true,
+     "error_path": null,
+     "label": "The number who have heard the rumor rises toward 400 people."
+    },
+    {
+     "id": "C",
+     "is_key": false,
+     "error_path": "BC-ERR-07043",
+     "label": "400.",
+     "derivation": "the number with no quantity, units or direction"
+    },
+    {
+     "id": "D",
+     "is_key": false,
+     "error_path": "BC-ERR-07044",
+     "label": "Nothing, until R(t) is solved by partial fractions.",
+     "derivation": "the equation solved before the limit is read"
+    }
+   ],
+   "calculator_status": "no_calculator",
+   "representation": "BC-REP-06",
+   "skills": [
+    "BC-SKL-07043"
+   ]
+  }
+ ],
+ "refresher": [
+  "LSN-CON-07011#s2",
+  "LSN-CON-07011#s3",
+  "LSN-CON-07011#err-BC-ERR-07039",
+  "LSN-CON-07011#err-BC-ERR-07043",
+  "LSN-CON-07011#err-BC-ERR-07044",
+  "LSN-CON-07011#s5"
+ ],
+ "provenance": {
+  "author": "tools/lesson_transcribe.py",
+  "prompt_version": "generator/lesson_v1",
+  "design_path": "docs/lessons/unit-07/LSN-CON-07011.md",
+  "signed_off_by": "claude-opus-5-5",
+  "signed_off_at": "2026-09-29",
+  "not_human": true
+ }
+}

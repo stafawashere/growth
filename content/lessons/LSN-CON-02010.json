@@ -1,0 +1,1208 @@
+{
+ "id": "LSN-CON-02010",
+ "version": 1,
+ "kind": "concept",
+ "target_id": "BC-CON-02010",
+ "status": "signed_off",
+ "snapshot_digest": "a6a8ec9d3f59ab8f712e33d30cc22fc64bf2c478fbe7312e3e3118d319c6a42f",
+ "source_digest": "af3c1ea38338b57ddf6bbff2200999c836a35c6033fffec8d3c015f420e70546",
+ "read_minutes": {
+  "full": 4.2,
+  "brief": 2.9
+ },
+ "word_count": {
+  "full": 574,
+  "brief": 377
+ },
+ "sections": [
+  {
+   "id": "LSN-CON-02010#s1",
+   "type": "orientation",
+   "bands": [
+    "low",
+    "mid"
+   ],
+   "skills": [
+    "BC-SKL-02025",
+    "BC-SKL-02026",
+    "BC-SKL-02027"
+   ],
+   "sources": [
+    "BC-CON-02010",
+    "research/units/unit-02-differentiation-definition-properties.md#2.5 Applying the Power Rule"
+   ],
+   "evidence_tag": "inferred",
+   "text": "A response differentiates a power by multiplying by the exponent and lowering the exponent by one, after rewriting any radical or reciprocal as a power. Questions ask for the derivative of a power or of an expression that becomes one after rewriting, and some ask for a case derived from the definition.",
+   "delivery": {
+    "mode": "text",
+    "reason": "rule 5: BC-REP-01 only on BC-SKL-02025 to 02027; unit README delivery map",
+    "sources": [
+     "BC-SKL-02025"
+    ]
+   }
+  },
+  {
+   "id": "LSN-CON-02010#s2",
+   "type": "key_ideas",
+   "bands": [
+    "low",
+    "mid"
+   ],
+   "skills": [
+    "BC-SKL-02025",
+    "BC-SKL-02026",
+    "BC-SKL-02027"
+   ],
+   "sources": [
+    "BC-EK-FUN-3A1",
+    "ced:64",
+    "research/units/unit-02-differentiation-definition-properties.md#2.5 Applying the Power Rule"
+   ],
+   "evidence_tag": "verified",
+   "ek_id": "BC-EK-FUN-3A1",
+   "depth": "core",
+   "text": "For \\(f(x)=x^r\\) the derivative is \\(rx^{r-1}\\) (BC-EK-FUN-3A1, ced:64). Two moves, never one: multiply by the old exponent, then lower it by one. The rule holds for a general real exponent, so a radical or a reciprocal is first rewritten as a power: \\(\\sqrt{x}=x^{1/2}\\), \\(\\frac{1}{x^2}=x^{-2}\\). For one specific exponent the rule also comes out of the difference quotient, by expanding and dividing out the increment.",
+   "notation": "power rule; the exponent written as a fraction or a negative number",
+   "quote": {
+    "text": "Direct application of the definition of the derivative and specific rules can be used to calculate the derivative",
+    "source": "ced:64"
+   },
+   "delivery": {
+    "mode": "text",
+    "reason": "rule 5: a symbolic rule with no figure-bearing BC-REP; unit README delivery map",
+    "sources": [
+     "BC-SKL-02025",
+     "BC-SKL-02026"
+    ]
+   }
+  },
+  {
+   "id": "LSN-CON-02010#s3",
+   "type": "strategy",
+   "bands": [
+    "low",
+    "mid"
+   ],
+   "skills": [
+    "BC-SKL-02025",
+    "BC-SKL-02026"
+   ],
+   "sources": [
+    "BC-QA-02006",
+    "BC-ERR-02015"
+   ],
+   "evidence_tag": "inferred",
+   "archetype_id": "BC-QA-02006",
+   "cue": "The stem asks for the derivative of an expression built from powers, radicals and reciprocals.",
+   "method": "First written line: the expression with every radical and reciprocal rewritten as a power.",
+   "rival": "The rival is lowering the exponent without multiplying by it (BC-ERR-02015) [inferred: the archetype records no wrong approach].",
+   "separating_feature": "Each term changes coefficient and exponent together."
+  },
+  {
+   "id": "LSN-CON-02010#s4",
+   "type": "strategy",
+   "bands": [
+    "low",
+    "mid"
+   ],
+   "skills": [
+    "BC-SKL-02027"
+   ],
+   "sources": [
+    "BC-QA-02002"
+   ],
+   "evidence_tag": "verified",
+   "archetype_id": "BC-QA-02002",
+   "cue": "The stem says use the definition of the derivative, from a function rule.",
+   "method": "First written line: the difference quotient for the given rule inside the limit.",
+   "rival": "The rival is differentiating by the power rule and presenting it as the definition (BC-ERR-02008).",
+   "separating_feature": "The word definition in the stem forbids the rule as the route."
+  },
+  {
+   "id": "LSN-CON-02010#s5",
+   "type": "worked_example",
+   "bands": [
+    "low",
+    "mid"
+   ],
+   "skills": [
+    "BC-SKL-02025",
+    "BC-SKL-02026"
+   ],
+   "sources": [
+    "BC-QA-02006"
+   ],
+   "evidence_tag": "inferred",
+   "archetype_id": "BC-QA-02006",
+   "parameter_draw": {
+    "leading": "4",
+    "degree": "3",
+    "second": "radical",
+    "second_coefficient": "6",
+    "root_index": "2",
+    "reciprocal_power": "1",
+    "constant": "-5"
+   },
+   "problem": {
+    "text": "Let \\(f(x)=4x^3+6\\sqrt{x}-5\\). Find \\(f'(x)\\).",
+    "command_verb": "find"
+   },
+   "calculator_status": "no_calculator",
+   "steps": [
+    {
+     "cue": "The stem gives a radical term.",
+     "why": "The rule needs every term as a power.",
+     "expression": [
+      "Add",
+      -5,
+      [
+       "Multiply",
+       4,
+       [
+        "Power",
+        "x",
+        3
+       ]
+      ],
+      [
+       "Multiply",
+       6,
+       [
+        "Power",
+        "x",
+        [
+         "Rational",
+         1,
+         2
+        ]
+       ]
+      ]
+     ],
+     "relation": "new"
+    },
+    {
+     "cue": "Rewrite \\(\\sqrt{x}\\) as \\(x^{1/2}\\).",
+     "why": "Now each term is a power of \\(x\\).",
+     "expression": [
+      "Add",
+      -5,
+      [
+       "Multiply",
+       4,
+       [
+        "Power",
+        "x",
+        3
+       ]
+      ],
+      [
+       "Multiply",
+       6,
+       [
+        "Power",
+        "x",
+        [
+         "Rational",
+         1,
+         2
+        ]
+       ]
+      ]
+     ],
+     "relation": "equivalent"
+    },
+    {
+     "cue": "Differentiate term by term: multiply by each exponent, lower it by one.",
+     "why": "\\(3\\cdot4=12\\), \\(\\frac12\\cdot6=3\\); the constant goes to 0.",
+     "expression": [
+      "Add",
+      [
+       "Multiply",
+       3,
+       [
+        "Power",
+        "x",
+        [
+         "Rational",
+         -1,
+         2
+        ]
+       ]
+      ],
+      [
+       "Multiply",
+       12,
+       [
+        "Power",
+        "x",
+        2
+       ]
+      ]
+     ],
+     "relation": "differentiate",
+     "variable": "x"
+    },
+    {
+     "cue": "The stem gave a radical, so return to that form.",
+     "why": "\\(x^{-1/2}=\\frac{1}{\\sqrt{x}}\\).",
+     "expression": [
+      "Add",
+      [
+       "Multiply",
+       3,
+       [
+        "Power",
+        "x",
+        [
+         "Rational",
+         -1,
+         2
+        ]
+       ]
+      ],
+      [
+       "Multiply",
+       12,
+       [
+        "Power",
+        "x",
+        2
+       ]
+      ]
+     ],
+     "relation": "equivalent"
+    }
+   ],
+   "answer": {
+    "form": "symbolic",
+    "mathjson": [
+     "Add",
+     [
+      "Multiply",
+      3,
+      [
+       "Power",
+       "x",
+       [
+        "Rational",
+        -1,
+        2
+       ]
+      ]
+     ],
+     [
+      "Multiply",
+      12,
+      [
+       "Power",
+       "x",
+       2
+      ]
+     ]
+    ]
+   },
+   "delivery": {
+    "mode": "step_reveal",
+    "reason": "rule 1",
+    "sources": []
+   }
+  },
+  {
+   "id": "LSN-CON-02010#s6",
+   "type": "worked_example",
+   "bands": [
+    "low"
+   ],
+   "skills": [
+    "BC-SKL-02027"
+   ],
+   "sources": [
+    "BC-QA-02002"
+   ],
+   "evidence_tag": "inferred",
+   "archetype_id": "BC-QA-02002",
+   "parameter_draw": {
+    "leading": "2",
+    "linear": "-3",
+    "constant": "1",
+    "point": "1",
+    "degree": "2"
+   },
+   "problem": {
+    "text": "Let \\(f(x)=2x^2-3x+1\\). Use the definition of the derivative to find \\(f'(1)\\).",
+    "command_verb": "find"
+   },
+   "calculator_status": "no_calculator",
+   "steps": [
+    {
+     "cue": "The stem says use the definition: write the quotient, \\(f(1)=0\\).",
+     "why": "The quotient is the demanded work, not a ritual line.",
+     "expression": [
+      "Multiply",
+      [
+       "Power",
+       "h",
+       -1
+      ],
+      [
+       "Add",
+       -2,
+       [
+        "Multiply",
+        -3,
+        "h"
+       ],
+       [
+        "Multiply",
+        2,
+        [
+         "Power",
+         [
+          "Add",
+          1,
+          "h"
+         ],
+         2
+        ]
+       ]
+      ]
+     ],
+     "relation": "new"
+    },
+    {
+     "cue": "Expand and simplify the numerator.",
+     "why": "The constant and linear parts cancel down to \\(2h^2+h\\).",
+     "expression": [
+      "Multiply",
+      [
+       "Power",
+       "h",
+       -1
+      ],
+      [
+       "Add",
+       "h",
+       [
+        "Multiply",
+        2,
+        [
+         "Power",
+         "h",
+         2
+        ]
+       ]
+      ]
+     ],
+     "relation": "equivalent"
+    },
+    {
+     "cue": "Divide out the increment before any substitution.",
+     "why": "\\(h\\) is not zero inside the limit.",
+     "expression": [
+      "Add",
+      1,
+      [
+       "Multiply",
+       2,
+       "h"
+      ]
+     ],
+     "relation": "equivalent"
+    },
+    {
+     "cue": "Now let \\(h\\to0\\).",
+     "why": "Substitution is safe once \\(h\\) is gone from the denominator.",
+     "expression": 1,
+     "relation": "limit",
+     "variable": "h",
+     "point": "0"
+    }
+   ],
+   "answer": {
+    "form": "numeric",
+    "mathjson": 1
+   },
+   "delivery": {
+    "mode": "step_reveal",
+    "reason": "rule 1",
+    "sources": []
+   }
+  },
+  {
+   "id": "LSN-CON-02010#err-BC-ERR-02005",
+   "type": "common_error",
+   "bands": [
+    "low",
+    "mid"
+   ],
+   "skills": [
+    "BC-SKL-02027"
+   ],
+   "sources": [
+    "BC-ERR-02005",
+    "BC-MIS-02002"
+   ],
+   "evidence_tag": "inferred",
+   "error_id": "BC-ERR-02005",
+   "observed_behavior": "The response substitutes zero for the increment while it is still in the denominator.",
+   "scoring_consequence": "The simplification point and the value point are both lost.",
+   "wrong_step": {
+    "text": "On ex-2: \\(h=0\\) put into \\(\\frac{2h^2+h}{h}\\) at once; the numerator is read as 0.",
+    "expression": 0
+   },
+   "right_step": {
+    "text": "Divide out \\(h\\) first: \\(2h+1\\to1\\).",
+    "expression": 1
+   },
+   "relation": "distinct",
+   "possible_reason": {
+    "misconception_id": "BC-MIS-02002",
+    "text": "the increment is set to zero immediately"
+   },
+   "delivery": {
+    "mode": "step_reveal",
+    "reason": "rule 1",
+    "sources": []
+   }
+  },
+  {
+   "id": "LSN-CON-02010#err-BC-ERR-02008",
+   "type": "common_error",
+   "bands": [
+    "low",
+    "mid"
+   ],
+   "skills": [
+    "BC-SKL-02027"
+   ],
+   "sources": [
+    "BC-ERR-02008",
+    "BC-MIS-02002"
+   ],
+   "evidence_tag": "inferred",
+   "error_id": "BC-ERR-02008",
+   "observed_behavior": "The response differentiates with the power rule and presents the result as an application of the definition.",
+   "scoring_consequence": "The points attached to the difference quotient and its simplification are lost although the final value may be right.",
+   "wrong_step": {
+    "text": "On ex-2: \\(f'(x)=4x-3\\) by rule, so \\(f'(1)=1\\), labelled the definition.",
+    "expression": 1
+   },
+   "right_step": {
+    "text": "The quotient simplified to \\(2h+1\\), limit 1.",
+    "expression": 1
+   },
+   "relation": "equivalent",
+   "possible_reason": {
+    "misconception_id": "BC-MIS-02002",
+    "text": "the answer is produced by a rule and the definition is copied around it"
+   },
+   "delivery": {
+    "mode": "step_reveal",
+    "reason": "rule 1",
+    "sources": []
+   }
+  },
+  {
+   "id": "LSN-CON-02010#err-BC-ERR-02015",
+   "type": "common_error",
+   "bands": [
+    "low",
+    "mid"
+   ],
+   "skills": [
+    "BC-SKL-02025",
+    "BC-SKL-02026"
+   ],
+   "sources": [
+    "BC-ERR-02015",
+    "BC-MIS-02009"
+   ],
+   "evidence_tag": "inferred",
+   "error_id": "BC-ERR-02015",
+   "observed_behavior": "The response lowers the exponent by one but omits the factor of the original exponent.",
+   "scoring_consequence": "The derivative point is lost.",
+   "wrong_step": {
+    "text": "\\(4x^2+6x^{-1/2}\\): exponents lowered, factors 3 and \\(\\frac12\\) missing.",
+    "expression": [
+     "Add",
+     [
+      "Multiply",
+      4,
+      [
+       "Power",
+       "x",
+       2
+      ]
+     ],
+     [
+      "Multiply",
+      6,
+      [
+       "Power",
+       "x",
+       [
+        "Rational",
+        -1,
+        2
+       ]
+      ]
+     ]
+    ]
+   },
+   "right_step": {
+    "text": "\\(12x^2+3x^{-1/2}\\).",
+    "expression": [
+     "Add",
+     [
+      "Multiply",
+      3,
+      [
+       "Power",
+       "x",
+       [
+        "Rational",
+        -1,
+        2
+       ]
+      ]
+     ],
+     [
+      "Multiply",
+      12,
+      [
+       "Power",
+       "x",
+       2
+      ]
+     ]
+    ]
+   },
+   "relation": "distinct",
+   "possible_reason": {
+    "misconception_id": "BC-MIS-02009",
+    "text": "the exponent decreasing but not the multiplication by the original exponent"
+   },
+   "delivery": {
+    "mode": "step_reveal",
+    "reason": "rule 1",
+    "sources": []
+   }
+  },
+  {
+   "id": "LSN-CON-02010#err-BC-ERR-02017",
+   "type": "common_error",
+   "bands": [
+    "low",
+    "mid"
+   ],
+   "skills": [
+    "BC-SKL-02026"
+   ],
+   "sources": [
+    "BC-ERR-02017",
+    "BC-MIS-02009"
+   ],
+   "evidence_tag": "inferred",
+   "error_id": "BC-ERR-02017",
+   "observed_behavior": "The response differentiates the polynomial terms and copies a radical or reciprocal term unchanged.",
+   "scoring_consequence": "The derivative point is lost.",
+   "wrong_step": {
+    "text": "\\(12x^2+6\\sqrt{x}\\): the radical copied.",
+    "expression": [
+     "Add",
+     [
+      "Multiply",
+      6,
+      [
+       "Power",
+       "x",
+       [
+        "Rational",
+        1,
+        2
+       ]
+      ]
+     ],
+     [
+      "Multiply",
+      12,
+      [
+       "Power",
+       "x",
+       2
+      ]
+     ]
+    ]
+   },
+   "right_step": {
+    "text": "\\(12x^2+\\frac{3}{\\sqrt{x}}\\).",
+    "expression": [
+     "Add",
+     [
+      "Multiply",
+      3,
+      [
+       "Power",
+       "x",
+       [
+        "Rational",
+        -1,
+        2
+       ]
+      ]
+     ],
+     [
+      "Multiply",
+      12,
+      [
+       "Power",
+       "x",
+       2
+      ]
+     ]
+    ]
+   },
+   "relation": "distinct",
+   "possible_reason": {
+    "misconception_id": "BC-MIS-02009",
+    "text": "does not see constants and radicals as powers"
+   },
+   "delivery": {
+    "mode": "step_reveal",
+    "reason": "rule 1",
+    "sources": []
+   }
+  },
+  {
+   "id": "LSN-CON-02010#prq-BC-PRQ-06002",
+   "type": "prerequisite_bridge",
+   "bands": [
+    "low",
+    "mid"
+   ],
+   "skills": [
+    "BC-SKL-02025",
+    "BC-SKL-02026"
+   ],
+   "sources": [
+    "BC-PRQ-06002"
+   ],
+   "evidence_tag": "inferred",
+   "prerequisite_id": "BC-PRQ-06002",
+   "text": "The rule runs on exponents, so radicals and reciprocals are converted to powers first: \\(\\sqrt[3]{x}=x^{1/3}\\), \\(\\frac{1}{x}=x^{-1}\\). A radical or reciprocal left unrewritten is the gap to close first."
+  }
+ ],
+ "checks": [
+  {
+   "id": "LSN-CON-02010#chk-1",
+   "check_kind": "completion",
+   "bands": [
+    "low",
+    "mid"
+   ],
+   "format": "short_answer",
+   "archetype_id": "BC-QA-02006",
+   "parameter_draw": {
+    "leading": "4",
+    "degree": "3",
+    "second": "radical",
+    "second_coefficient": "6",
+    "root_index": "2",
+    "reciprocal_power": "1",
+    "constant": "-5"
+   },
+   "completes": "LSN-CON-02010#s5",
+   "stem": {
+    "text": "For \\(f(x)=4x^3+6\\sqrt{x}-5\\), the rule gives \\(12x^2+3x^{-1/2}\\). Write \\(f'(x)\\) with the radical restored.",
+    "command_verb": "write"
+   },
+   "answer_key": {
+    "form": "symbolic",
+    "mathjson": [
+     "Add",
+     [
+      "Multiply",
+      3,
+      [
+       "Power",
+       "x",
+       [
+        "Rational",
+        -1,
+        2
+       ]
+      ]
+     ],
+     [
+      "Multiply",
+      12,
+      [
+       "Power",
+       "x",
+       2
+      ]
+     ]
+    ]
+   },
+   "worked_solution": [
+    {
+     "step": 1,
+     "text": "The rule line.",
+     "mathjson": [
+      "Add",
+      [
+       "Multiply",
+       3,
+       [
+        "Power",
+        "x",
+        [
+         "Rational",
+         -1,
+         2
+        ]
+       ]
+      ],
+      [
+       "Multiply",
+       12,
+       [
+        "Power",
+        "x",
+        2
+       ]
+      ]
+     ],
+     "relation": "new"
+    },
+    {
+     "step": 2,
+     "text": "\\(x^{-1/2}=\\frac{1}{\\sqrt{x}}\\).",
+     "mathjson": [
+      "Add",
+      [
+       "Multiply",
+       3,
+       [
+        "Power",
+        "x",
+        [
+         "Rational",
+         -1,
+         2
+        ]
+       ]
+      ],
+      [
+       "Multiply",
+       12,
+       [
+        "Power",
+        "x",
+        2
+       ]
+      ]
+     ],
+     "relation": "equivalent"
+    }
+   ],
+   "calculator_status": "no_calculator",
+   "representation": "BC-REP-01",
+   "skills": [
+    "BC-SKL-02026"
+   ]
+  },
+  {
+   "id": "LSN-CON-02010#chk-2",
+   "check_kind": "isomorph",
+   "bands": [
+    "low",
+    "mid"
+   ],
+   "format": "short_answer",
+   "archetype_id": "BC-QA-02006",
+   "parameter_draw": {
+    "leading": "-2",
+    "degree": "4",
+    "second": "reciprocal",
+    "second_coefficient": "5",
+    "root_index": "2",
+    "reciprocal_power": "2",
+    "constant": "7"
+   },
+   "stem": {
+    "text": "Let \\(f(x)=-2x^4+\\frac{5}{x^2}+7\\). Find \\(f'(x)\\).",
+    "command_verb": "find"
+   },
+   "answer_key": {
+    "form": "symbolic",
+    "mathjson": [
+     "Add",
+     [
+      "Multiply",
+      -10,
+      [
+       "Power",
+       "x",
+       -3
+      ]
+     ],
+     [
+      "Multiply",
+      -8,
+      [
+       "Power",
+       "x",
+       3
+      ]
+     ]
+    ]
+   },
+   "worked_solution": [
+    {
+     "step": 1,
+     "text": "Rewrite: \\(-2x^4+5x^{-2}+7\\).",
+     "mathjson": [
+      "Add",
+      7,
+      [
+       "Multiply",
+       -2,
+       [
+        "Power",
+        "x",
+        4
+       ]
+      ],
+      [
+       "Multiply",
+       5,
+       [
+        "Power",
+        "x",
+        -2
+       ]
+      ]
+     ],
+     "relation": "new"
+    },
+    {
+     "step": 2,
+     "text": "Differentiate.",
+     "mathjson": [
+      "Add",
+      [
+       "Multiply",
+       -10,
+       [
+        "Power",
+        "x",
+        -3
+       ]
+      ],
+      [
+       "Multiply",
+       -8,
+       [
+        "Power",
+        "x",
+        3
+       ]
+      ]
+     ],
+     "relation": "differentiate",
+     "variable": "x"
+    },
+    {
+     "step": 3,
+     "text": "Return to fraction form.",
+     "mathjson": [
+      "Add",
+      [
+       "Multiply",
+       -10,
+       [
+        "Power",
+        "x",
+        -3
+       ]
+      ],
+      [
+       "Multiply",
+       -8,
+       [
+        "Power",
+        "x",
+        3
+       ]
+      ]
+     ],
+     "relation": "equivalent"
+    }
+   ],
+   "calculator_status": "no_calculator",
+   "representation": "BC-REP-01",
+   "skills": [
+    "BC-SKL-02026"
+   ]
+  },
+  {
+   "id": "LSN-CON-02010#chk-3",
+   "check_kind": "mcq",
+   "bands": [
+    "low"
+   ],
+   "format": "mcq",
+   "archetype_id": "BC-QA-02006",
+   "parameter_draw": {
+    "leading": "3",
+    "degree": "5",
+    "second": "reciprocal",
+    "second_coefficient": "4",
+    "root_index": "2",
+    "reciprocal_power": "1",
+    "constant": "-6"
+   },
+   "stem": {
+    "text": "If \\(f(x)=3x^5+\\frac{4}{x}-6\\), then \\(f'(x)=\\)",
+    "command_verb": "find"
+   },
+   "answer_key": {
+    "form": "symbolic",
+    "mathjson": [
+     "Add",
+     [
+      "Multiply",
+      -4,
+      [
+       "Power",
+       "x",
+       -2
+      ]
+     ],
+     [
+      "Multiply",
+      15,
+      [
+       "Power",
+       "x",
+       4
+      ]
+     ]
+    ]
+   },
+   "worked_solution": [
+    {
+     "step": 1,
+     "text": "Rewrite: \\(3x^5+4x^{-1}-6\\).",
+     "mathjson": [
+      "Add",
+      -6,
+      [
+       "Multiply",
+       3,
+       [
+        "Power",
+        "x",
+        5
+       ]
+      ],
+      [
+       "Multiply",
+       4,
+       [
+        "Power",
+        "x",
+        -1
+       ]
+      ]
+     ],
+     "relation": "new"
+    },
+    {
+     "step": 2,
+     "text": "Differentiate.",
+     "mathjson": [
+      "Add",
+      [
+       "Multiply",
+       -4,
+       [
+        "Power",
+        "x",
+        -2
+       ]
+      ],
+      [
+       "Multiply",
+       15,
+       [
+        "Power",
+        "x",
+        4
+       ]
+      ]
+     ],
+     "relation": "differentiate",
+     "variable": "x"
+    },
+    {
+     "step": 3,
+     "text": "Fraction form.",
+     "mathjson": [
+      "Add",
+      [
+       "Multiply",
+       -4,
+       [
+        "Power",
+        "x",
+        -2
+       ]
+      ],
+      [
+       "Multiply",
+       15,
+       [
+        "Power",
+        "x",
+        4
+       ]
+      ]
+     ],
+     "relation": "equivalent"
+    }
+   ],
+   "options": [
+    {
+     "id": "A",
+     "is_key": false,
+     "error_path": "BC-ERR-02015",
+     "value": [
+      "Add",
+      [
+       "Multiply",
+       3,
+       [
+        "Power",
+        "x",
+        4
+       ]
+      ],
+      [
+       "Multiply",
+       4,
+       [
+        "Power",
+        "x",
+        -2
+       ]
+      ]
+     ],
+     "derivation": "exponents lowered on both terms, factors 5 and -1 omitted"
+    },
+    {
+     "id": "B",
+     "is_key": true,
+     "error_path": null,
+     "value": [
+      "Add",
+      [
+       "Multiply",
+       -4,
+       [
+        "Power",
+        "x",
+        -2
+       ]
+      ],
+      [
+       "Multiply",
+       15,
+       [
+        "Power",
+        "x",
+        4
+       ]
+      ]
+     ]
+    },
+    {
+     "id": "C",
+     "is_key": false,
+     "error_path": "BC-ERR-02017",
+     "value": [
+      "Add",
+      [
+       "Multiply",
+       4,
+       [
+        "Power",
+        "x",
+        -1
+       ]
+      ],
+      [
+       "Multiply",
+       15,
+       [
+        "Power",
+        "x",
+        4
+       ]
+      ]
+     ],
+     "derivation": "the reciprocal term copied unchanged"
+    },
+    {
+     "id": "D",
+     "is_key": false,
+     "error_path": "BC-ERR-02015",
+     "value": [
+      "Add",
+      [
+       "Multiply",
+       4,
+       [
+        "Power",
+        "x",
+        -2
+       ]
+      ],
+      [
+       "Multiply",
+       15,
+       [
+        "Power",
+        "x",
+        4
+       ]
+      ]
+     ],
+     "derivation": "the factor -1 omitted on the reciprocal term"
+    }
+   ],
+   "calculator_status": "no_calculator",
+   "representation": "BC-REP-01",
+   "skills": [
+    "BC-SKL-02026"
+   ]
+  }
+ ],
+ "refresher": [
+  "LSN-CON-02010#s2",
+  "LSN-CON-02010#err-BC-ERR-02005",
+  "LSN-CON-02010#err-BC-ERR-02008",
+  "LSN-CON-02010#err-BC-ERR-02015",
+  "LSN-CON-02010#err-BC-ERR-02017",
+  "LSN-CON-02010#s5"
+ ],
+ "provenance": {
+  "author": "tools/lesson_transcribe.py",
+  "prompt_version": "generator/lesson_v1",
+  "design_path": "docs/lessons/unit-02/LSN-CON-02010.md",
+  "signed_off_by": "claude-opus-5-5",
+  "signed_off_at": "2026-09-29",
+  "not_human": true
+ }
+}

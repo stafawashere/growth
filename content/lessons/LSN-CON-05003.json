@@ -1,0 +1,1153 @@
+{
+ "id": "LSN-CON-05003",
+ "version": 1,
+ "kind": "concept",
+ "target_id": "BC-CON-05003",
+ "status": "signed_off",
+ "snapshot_digest": "a6a8ec9d3f59ab8f712e33d30cc22fc64bf2c478fbe7312e3e3118d319c6a42f",
+ "source_digest": "4fd1184f6c87dec8f746814ef4aa37db1875cf66f143ec370d4fccce805471ac",
+ "read_minutes": {
+  "full": 4.7,
+  "brief": 3.0
+ },
+ "word_count": {
+  "full": 589,
+  "brief": 392
+ },
+ "sections": [
+  {
+   "id": "LSN-CON-05003#s1",
+   "type": "orientation",
+   "bands": [
+    "low",
+    "mid"
+   ],
+   "skills": [
+    "BC-SKL-05010",
+    "BC-SKL-05011",
+    "BC-SKL-05012",
+    "BC-SKL-05013"
+   ],
+   "sources": [
+    "BC-CON-05003",
+    "research/units/unit-05-analytical-applications-differentiation.md#5.2 Extreme Value Theorem, Global Versus Local Extrema, and Critical Points"
+   ],
+   "evidence_tag": "inferred",
+   "text": "A response writes f'(x) = 0 as an equation, adds the inputs in the domain where f' fails to exist, and never calls a critical point an extremum, or a relative extremum absolute, without an argument.",
+   "delivery": {
+    "mode": "figure",
+    "reason": "rule 3: BC-REP-02 on BC-SKL-05010 to 05013; unit README delivery map",
+    "sources": [
+     "BC-SKL-05010",
+     "BC-SKL-05011"
+    ],
+    "spec": {
+     "kind": "graph",
+     "representations": [
+      "BC-REP-02"
+     ],
+     "curve": "3(x - 1)^(2/3)/(x + 2)",
+     "window": {
+      "x": [
+       -1,
+       12
+      ],
+      "y": [
+       -0.5,
+       2
+      ]
+     },
+     "points": [
+      {
+       "at": [
+        1,
+        0
+       ],
+       "style": "filled"
+      },
+      {
+       "at": [
+        7,
+        1.1
+       ],
+       "style": "filled"
+      }
+     ],
+     "labels": [
+      {
+       "text": "x = 1: f' does not exist (cusp)",
+       "placement": "inside"
+      },
+      {
+       "text": "x = 7: f' = 0",
+       "placement": "inside"
+      }
+     ]
+    },
+    "fallback": "the same graph static, both points and labels shown",
+    "keyboard": "no control; the figure description is reached with Tab"
+   }
+  },
+  {
+   "id": "LSN-CON-05003#s2",
+   "type": "key_ideas",
+   "bands": [
+    "low",
+    "mid"
+   ],
+   "skills": [
+    "BC-SKL-05010",
+    "BC-SKL-05011"
+   ],
+   "sources": [
+    "BC-EK-FUN-1C2",
+    "ced:100",
+    "research/units/unit-05-analytical-applications-differentiation.md#5.2 Extreme Value Theorem, Global Versus Local Extrema, and Critical Points"
+   ],
+   "evidence_tag": "verified",
+   "ek_id": "BC-EK-FUN-1C2",
+   "depth": "core",
+   "text": "Critical points come from two sources: f'(c) = 0, and f'(c) failing to exist (a cusp, corner or vertical tangent). Either way c must be in the domain of f.",
+   "notation": "critical point",
+   "quote": {
+    "text": "A point on a function where the first derivative equals zero or fails to exist is a critical point of the function.",
+    "source": "ced:100"
+   },
+   "delivery": {
+    "mode": "figure",
+    "reason": "rule 3: BC-REP-02 on BC-SKL-05010, 05011; BC-QA-05014 difficulty_variables name a categorical shape, so static",
+    "sources": [
+     "BC-SKL-05011",
+     "BC-QA-05014"
+    ],
+    "spec": {
+     "kind": "graph_panels",
+     "representations": [
+      "BC-REP-02"
+     ],
+     "panels": [
+      {
+       "curves": [
+        {
+         "expr": "2 - x**2"
+        }
+       ],
+       "points": [
+        {
+         "x": 0
+        }
+       ]
+      },
+      {
+       "curves": [
+        {
+         "expr": "abs(x)**(2/3)"
+        }
+       ],
+       "points": [
+        {
+         "x": 0
+        }
+       ]
+      },
+      {
+       "curves": [
+        {
+         "expr": "abs(x)"
+        }
+       ],
+       "points": [
+        {
+         "x": 0
+        }
+       ]
+      },
+      {
+       "curves": [
+        {
+         "expr": "x**(1/3)"
+        }
+       ],
+       "points": [
+        {
+         "x": 0
+        }
+       ]
+      }
+     ],
+     "labels": [
+      {
+       "text": "f' = 0",
+       "placement": "inside"
+      },
+      {
+       "text": "cusp: f' does not exist",
+       "placement": "inside"
+      },
+      {
+       "text": "corner: f' does not exist",
+       "placement": "inside"
+      },
+      {
+       "text": "vertical tangent: f' does not exist",
+       "placement": "inside"
+      }
+     ],
+     "window": {
+      "x": [
+       -2,
+       2
+      ],
+      "y": [
+       -2,
+       3
+      ]
+     }
+    },
+    "fallback": "four static panels in a row with the same labels",
+    "keyboard": "no control; the panels are read in order with Tab"
+   }
+  },
+  {
+   "id": "LSN-CON-05003#s3",
+   "type": "key_ideas",
+   "bands": [
+    "low",
+    "mid"
+   ],
+   "skills": [
+    "BC-SKL-05012",
+    "BC-SKL-05013"
+   ],
+   "sources": [
+    "BC-EK-FUN-1C3",
+    "ced:100",
+    "sg-23:13",
+    "research/units/unit-05-analytical-applications-differentiation.md#5.2 Extreme Value Theorem, Global Versus Local Extrema, and Critical Points"
+   ],
+   "evidence_tag": "inferred",
+   "ek_id": "BC-EK-FUN-1C3",
+   "depth": "core",
+   "text": "Every relative extremum sits at a critical point, not conversely: f' can be zero with no sign change. A relative extremum beats nearby values only; an absolute one beats every value on the interval.",
+   "notation": "relative extremum; absolute extremum",
+   "delivery": {
+    "mode": "figure",
+    "reason": "rule 3: BC-REP-02 on BC-SKL-05012, 05013",
+    "sources": [
+     "BC-SKL-05012",
+     "BC-SKL-05013"
+    ],
+    "spec": {
+     "kind": "graph_panels",
+     "representations": [
+      "BC-REP-02"
+     ],
+     "panels": [
+      {
+       "window": {
+        "x": [
+         -1,
+         4.5
+        ],
+        "y": [
+         2,
+         8
+        ]
+       },
+       "curves": [
+        {
+         "expr": "-x**3/3 + 2*x**2 - 3*x + 5",
+         "domain": [
+          -0.5,
+          4
+         ]
+        }
+       ],
+       "points": [
+        {
+         "x": -0.5
+        },
+        {
+         "x": 3
+        },
+        {
+         "x": 4
+        }
+       ],
+       "labels": [
+        {
+         "text": "relative max, not absolute",
+         "placement": "inside",
+         "at": "above (3, 5)"
+        },
+        {
+         "text": "endpoint higher",
+         "placement": "inside",
+         "at": "right (-0.5, 7.042)"
+        }
+       ]
+      },
+      {
+       "window": {
+        "x": [
+         -2,
+         2
+        ],
+        "y": [
+         -3,
+         3
+        ]
+       },
+       "curves": [
+        {
+         "expr": "x**3"
+        }
+       ],
+       "points": [
+        {
+         "x": 0,
+         "y": 0
+        }
+       ],
+       "labels": [
+        {
+         "text": "f' = 0, no sign change: neither",
+         "placement": "inside"
+        }
+       ]
+      }
+     ]
+    },
+    "fallback": "the two panels static with the same labels",
+    "keyboard": "no control; the panels are read in order with Tab"
+   }
+  },
+  {
+   "id": "LSN-CON-05003#s4",
+   "type": "strategy",
+   "bands": [
+    "low",
+    "mid"
+   ],
+   "skills": [
+    "BC-SKL-05010",
+    "BC-SKL-05011"
+   ],
+   "sources": [
+    "BC-QA-05014"
+   ],
+   "evidence_tag": "verified",
+   "archetype_id": "BC-QA-05014",
+   "cue": "Find all critical points, from a quotient with a fractional power or absolute value.",
+   "method": "First line: f'(x).",
+   "rival": "Rival: setting only f'(x) = 0.",
+   "separating_feature": "The power or absolute value makes f' fail to exist somewhere."
+  },
+  {
+   "id": "LSN-CON-05003#s5",
+   "type": "strategy",
+   "bands": [
+    "low",
+    "mid"
+   ],
+   "skills": [
+    "BC-SKL-05010"
+   ],
+   "sources": [
+    "BC-QA-05006"
+   ],
+   "evidence_tag": "verified",
+   "archetype_id": "BC-QA-05006",
+   "cue": "Absolute extremum on a closed interval, from f or f' and the interval.",
+   "method": "First line: f'(x) = 0, as an equation.",
+   "rival": "Rival: citing the Extreme Value Theorem to locate it.",
+   "separating_feature": "Absolute asks for a comparison with every candidate."
+  },
+  {
+   "id": "LSN-CON-05003#s6",
+   "type": "strategy",
+   "bands": [
+    "low",
+    "mid"
+   ],
+   "skills": [
+    "BC-SKL-05013"
+   ],
+   "sources": [
+    "BC-QA-05003"
+   ],
+   "evidence_tag": "verified",
+   "archetype_id": "BC-QA-05003",
+   "cue": "Maximum, minimum or neither at a named input, from f' information.",
+   "method": "First line: locate the input on f'.",
+   "rival": "Rival: the second derivative test with the slope of f' never discussed.",
+   "separating_feature": "No sign change means neither."
+  },
+  {
+   "id": "LSN-CON-05003#s7",
+   "type": "worked_example",
+   "bands": [
+    "low",
+    "mid"
+   ],
+   "skills": [
+    "BC-SKL-05010",
+    "BC-SKL-05011"
+   ],
+   "sources": [
+    "BC-QA-05014"
+   ],
+   "evidence_tag": "inferred",
+   "archetype_id": "BC-QA-05014",
+   "parameter_draw": {
+    "shape": "cusp",
+    "root": 1,
+    "pole": -2,
+    "multiplier": 3
+   },
+   "problem": {
+    "text": "Find all critical points of f(x) = 3(x - 1)^(2/3)/(x + 2).",
+    "command_verb": "find"
+   },
+   "calculator_status": "no_calculator",
+   "steps": [
+    {
+     "cue": "All critical points: start from f.",
+     "why": "Both sources come from f'.",
+     "expression": [
+      "Multiply",
+      3,
+      [
+       "Power",
+       [
+        "Add",
+        -1,
+        "x"
+       ],
+       [
+        "Rational",
+        2,
+        3
+       ]
+      ],
+      [
+       "Power",
+       [
+        "Add",
+        2,
+        "x"
+       ],
+       -1
+      ]
+     ],
+     "relation": "new"
+    },
+    {
+     "cue": "Differentiate.",
+     "why": "Quotient rule, then factor.",
+     "expression": [
+      "Multiply",
+      [
+       "Power",
+       [
+        "Add",
+        -1,
+        "x"
+       ],
+       [
+        "Rational",
+        -1,
+        3
+       ]
+      ],
+      [
+       "Power",
+       [
+        "Add",
+        2,
+        "x"
+       ],
+       -2
+      ],
+      [
+       "Add",
+       7,
+       [
+        "Multiply",
+        -1,
+        "x"
+       ]
+      ]
+     ],
+     "relation": "differentiate",
+     "variable": "x"
+    },
+    {
+     "cue": "Source one: f' = 0.",
+     "why": "The equation is the scored line.",
+     "expression": [
+      "Equal",
+      [
+       "Add",
+       7,
+       [
+        "Multiply",
+        -1,
+        "x"
+       ]
+      ],
+      0
+     ],
+     "point_type_id": "BC-PT-99013",
+     "relation": "new"
+    },
+    {
+     "cue": "Solve.",
+     "why": "One zero.",
+     "expression": 7,
+     "relation": "solve",
+     "variable": "x"
+    },
+    {
+     "cue": "Source two: denominator zero.",
+     "why": "f' fails to exist there.",
+     "expression": [
+      "Equal",
+      [
+       "Multiply",
+       [
+        "Power",
+        [
+         "Add",
+         -1,
+         "x"
+        ],
+        [
+         "Rational",
+         1,
+         3
+        ]
+       ],
+       [
+        "Power",
+        [
+         "Add",
+         2,
+         "x"
+        ],
+        2
+       ]
+      ],
+      0
+     ],
+     "relation": "new"
+    },
+    {
+     "cue": "Solve.",
+     "why": "Two inputs.",
+     "expression": [
+      "Set",
+      -2,
+      1
+     ],
+     "relation": "solve",
+     "variable": "x"
+    },
+    {
+     "cue": "Is f defined there?",
+     "why": "f(-2) is undefined: out. f(1) = 0: a cusp, kept."
+    },
+    {
+     "cue": "Collect.",
+     "why": "Both sources, domain checked.",
+     "expression": [
+      "Set",
+      1,
+      7
+     ],
+     "relation": "new"
+    }
+   ],
+   "answer": {
+    "form": "symbolic",
+    "mathjson": [
+     "Set",
+     1,
+     7
+    ]
+   },
+   "delivery": {
+    "mode": "step_reveal",
+    "reason": "rule 1",
+    "sources": []
+   }
+  },
+  {
+   "id": "LSN-CON-05003#s8",
+   "type": "what_a_reader_scores",
+   "bands": [
+    "low",
+    "mid"
+   ],
+   "skills": [
+    "BC-SKL-05010",
+    "BC-SKL-05011"
+   ],
+   "sources": [
+    "BC-PT-99013"
+   ],
+   "evidence_tag": "verified",
+   "example_id": "LSN-CON-05003#s7",
+   "lines": [
+    {
+     "point_type_id": "BC-PT-99013",
+     "text": "Considers the derivative set equal to zero. Earned by: Presenting the equation derivative equals zero, or an equivalent equation, or discussing the sign change of the derivative, or using the phrase critical points of the function (sg-25:5, sg-26:17). Not earned by: Presenting only the solved critical value, which sg-25:5, sg-25:9, sg-26:17 and sg-25:19 all state is not sufficient."
+    }
+   ]
+  },
+  {
+   "id": "LSN-CON-05003#err-BC-ERR-05009",
+   "type": "common_error",
+   "bands": [
+    "low",
+    "mid"
+   ],
+   "skills": [
+    "BC-SKL-05010"
+   ],
+   "sources": [
+    "BC-ERR-05009"
+   ],
+   "evidence_tag": "inferred",
+   "error_id": "BC-ERR-05009",
+   "observed_behavior": "The response writes down the inputs at which the derivative vanishes but never presents the equation setting the derivative equal to zero.",
+   "scoring_consequence": "The first point of the candidates test is lost; the 2023 guideline states that listing the zeros is not sufficient.",
+   "wrong_step": {
+    "text": "x = 7 written alone.",
+    "expression": "zeros_listed_only"
+   },
+   "right_step": {
+    "text": "7 - x = 0 written.",
+    "expression": "derivative_set_equal_to_zero"
+   },
+   "relation": "distinct",
+   "delivery": {
+    "mode": "step_reveal",
+    "reason": "rule 1",
+    "sources": []
+   }
+  },
+  {
+   "id": "LSN-CON-05003#err-BC-ERR-05010",
+   "type": "common_error",
+   "bands": [
+    "low",
+    "mid"
+   ],
+   "skills": [
+    "BC-SKL-05010"
+   ],
+   "sources": [
+    "BC-ERR-05010"
+   ],
+   "evidence_tag": "inferred",
+   "error_id": "BC-ERR-05010",
+   "observed_behavior": "The response keeps an input at which the derivative expression vanishes although the function itself is undefined there.",
+   "scoring_consequence": "The candidate list is wrong and the comparison that follows cannot be correct.",
+   "wrong_step": {
+    "text": "Unreduced f' numerator (7 - x)(x + 2) vanishes at -2: kept.",
+    "expression": [
+     "Set",
+     -2,
+     1,
+     7
+    ]
+   },
+   "right_step": {
+    "text": "f(-2) undefined: dropped.",
+    "expression": [
+     "Set",
+     1,
+     7
+    ]
+   },
+   "relation": "distinct",
+   "delivery": {
+    "mode": "step_reveal",
+    "reason": "rule 1",
+    "sources": []
+   }
+  },
+  {
+   "id": "LSN-CON-05003#err-BC-ERR-05011",
+   "type": "common_error",
+   "bands": [
+    "low",
+    "mid"
+   ],
+   "skills": [
+    "BC-SKL-05011"
+   ],
+   "sources": [
+    "BC-ERR-05011",
+    "BC-MIS-05009"
+   ],
+   "evidence_tag": "inferred",
+   "error_id": "BC-ERR-05011",
+   "observed_behavior": "The response finds only the zeros of the derivative and skips corners, cusps, and vertical tangents.",
+   "scoring_consequence": "A candidate is missing, so the comparison may select the wrong extremum and the justification is incomplete.",
+   "wrong_step": {
+    "text": "Only x = 7.",
+    "expression": [
+     "Set",
+     7
+    ]
+   },
+   "right_step": {
+    "text": "x = 1 and x = 7.",
+    "expression": [
+     "Set",
+     1,
+     7
+    ]
+   },
+   "relation": "distinct",
+   "possible_reason": {
+    "misconception_id": "BC-MIS-05009",
+    "text": "does not look for corners, cusps, or vertical tangents"
+   },
+   "delivery": {
+    "mode": "step_reveal",
+    "reason": "rule 1",
+    "sources": []
+   }
+  },
+  {
+   "id": "LSN-CON-05003#err-BC-ERR-05012",
+   "type": "common_error",
+   "bands": [
+    "low",
+    "mid"
+   ],
+   "skills": [
+    "BC-SKL-05012"
+   ],
+   "sources": [
+    "BC-ERR-05012",
+    "BC-MIS-05007"
+   ],
+   "evidence_tag": "inferred",
+   "error_id": "BC-ERR-05012",
+   "observed_behavior": "The response finds a local high or low point and reports it as the largest or smallest value on the interval without comparing the rest.",
+   "scoring_consequence": "The justification point is lost because the argument is local where a global claim was asked for.",
+   "wrong_step": {
+    "text": "On [0, 10], the maximum is f(7).",
+    "expression": [
+     "Multiply",
+     [
+      "Rational",
+      1,
+      3
+     ],
+     [
+      "Power",
+      6,
+      [
+       "Rational",
+       2,
+       3
+      ]
+     ]
+    ]
+   },
+   "right_step": {
+    "text": "f(0) = 3/2 is larger.",
+    "expression": [
+     "Rational",
+     3,
+     2
+    ]
+   },
+   "relation": "distinct",
+   "possible_reason": {
+    "misconception_id": "BC-MIS-05007",
+    "text": "takes a local high or low point as the largest or smallest value on the whole interval"
+   },
+   "delivery": {
+    "mode": "step_reveal",
+    "reason": "rule 1",
+    "sources": []
+   }
+  },
+  {
+   "id": "LSN-CON-05003#prq-BC-PRQ-05001",
+   "type": "prerequisite_bridge",
+   "bands": [
+    "low",
+    "mid"
+   ],
+   "skills": [
+    "BC-SKL-05010",
+    "BC-SKL-05011"
+   ],
+   "sources": [
+    "BC-PRQ-05001"
+   ],
+   "evidence_tag": "inferred",
+   "prerequisite_id": "BC-PRQ-05001",
+   "text": "Set a factor to zero; find where a denominator vanishes."
+  },
+  {
+   "id": "LSN-CON-05003#prq-BC-PRQ-05003",
+   "type": "prerequisite_bridge",
+   "bands": [
+    "low",
+    "mid"
+   ],
+   "skills": [
+    "BC-SKL-05010",
+    "BC-SKL-05011"
+   ],
+   "sources": [
+    "BC-PRQ-05003"
+   ],
+   "evidence_tag": "inferred",
+   "prerequisite_id": "BC-PRQ-05003",
+   "text": "Keep only inputs where f is defined."
+  },
+  {
+   "id": "LSN-CON-05003#prq-BC-PRQ-05006",
+   "type": "prerequisite_bridge",
+   "bands": [
+    "low",
+    "mid"
+   ],
+   "skills": [
+    "BC-SKL-05012"
+   ],
+   "sources": [
+    "BC-PRQ-05006"
+   ],
+   "evidence_tag": "inferred",
+   "prerequisite_id": "BC-PRQ-05006",
+   "text": "Check whether the plotted curve is f or f'."
+  }
+ ],
+ "checks": [
+  {
+   "id": "LSN-CON-05003#chk-1",
+   "check_kind": "completion",
+   "bands": [
+    "low",
+    "mid"
+   ],
+   "format": "short_answer",
+   "archetype_id": "BC-QA-05014",
+   "parameter_draw": {
+    "shape": "cusp",
+    "root": 1,
+    "pole": -2,
+    "multiplier": 3
+   },
+   "completes": "LSN-CON-05003#s7",
+   "stem": {
+    "text": "f'(x) = (7 - x)/((x - 1)^(1/3)(x + 2)^2), zero at 7. Finish the critical point list.",
+    "command_verb": "find"
+   },
+   "answer_key": {
+    "form": "symbolic",
+    "mathjson": [
+     "Set",
+     1,
+     7
+    ]
+   },
+   "worked_solution": [
+    {
+     "step": 1,
+     "text": "Denominator zero.",
+     "mathjson": [
+      "Equal",
+      [
+       "Multiply",
+       [
+        "Power",
+        [
+         "Add",
+         -1,
+         "x"
+        ],
+        [
+         "Rational",
+         1,
+         3
+        ]
+       ],
+       [
+        "Power",
+        [
+         "Add",
+         2,
+         "x"
+        ],
+        2
+       ]
+      ],
+      0
+     ],
+     "relation": "new"
+    },
+    {
+     "step": 2,
+     "text": "x = -2 or 1.",
+     "mathjson": [
+      "Set",
+      -2,
+      1
+     ],
+     "relation": "solve",
+     "variable": "x"
+    },
+    {
+     "step": 3,
+     "text": "-2 is outside the domain.",
+     "mathjson": [
+      "Set",
+      1,
+      7
+     ],
+     "relation": "new"
+    }
+   ],
+   "calculator_status": "no_calculator",
+   "representation": "BC-REP-01",
+   "skills": [
+    "BC-SKL-05011"
+   ]
+  },
+  {
+   "id": "LSN-CON-05003#chk-2",
+   "check_kind": "isomorph",
+   "bands": [
+    "low",
+    "mid"
+   ],
+   "format": "short_answer",
+   "archetype_id": "BC-QA-05014",
+   "parameter_draw": {
+    "shape": "vertical",
+    "root": 3,
+    "pole": 1,
+    "multiplier": 2
+   },
+   "stem": {
+    "text": "Find all critical points of f(x) = 2(x - 3)^(1/3)/(x - 1).",
+    "command_verb": "find"
+   },
+   "answer_key": {
+    "form": "symbolic",
+    "mathjson": [
+     "Set",
+     3,
+     4
+    ]
+   },
+   "worked_solution": [
+    {
+     "step": 1,
+     "text": "f.",
+     "mathjson": [
+      "Multiply",
+      2,
+      [
+       "Power",
+       [
+        "Add",
+        -1,
+        "x"
+       ],
+       -1
+      ],
+      [
+       "Power",
+       [
+        "Add",
+        -3,
+        "x"
+       ],
+       [
+        "Rational",
+        1,
+        3
+       ]
+      ]
+     ],
+     "relation": "new"
+    },
+    {
+     "step": 2,
+     "text": "f'.",
+     "mathjson": [
+      "Multiply",
+      [
+       "Rational",
+       1,
+       3
+      ],
+      [
+       "Power",
+       [
+        "Add",
+        -1,
+        "x"
+       ],
+       -2
+      ],
+      [
+       "Power",
+       [
+        "Add",
+        -3,
+        "x"
+       ],
+       [
+        "Rational",
+        -2,
+        3
+       ]
+      ],
+      [
+       "Add",
+       16,
+       [
+        "Multiply",
+        -4,
+        "x"
+       ]
+      ]
+     ],
+     "relation": "differentiate",
+     "variable": "x"
+    },
+    {
+     "step": 3,
+     "text": "f' = 0.",
+     "mathjson": [
+      "Equal",
+      [
+       "Add",
+       8,
+       [
+        "Multiply",
+        -2,
+        "x"
+       ]
+      ],
+      0
+     ],
+     "relation": "new"
+    },
+    {
+     "step": 4,
+     "text": "x = 4.",
+     "mathjson": 4,
+     "relation": "solve",
+     "variable": "x"
+    },
+    {
+     "step": 5,
+     "text": "f' fails at 3 (f defined) and 1 (not in domain).",
+     "mathjson": [
+      "Set",
+      3,
+      4
+     ],
+     "relation": "new"
+    }
+   ],
+   "calculator_status": "no_calculator",
+   "representation": "BC-REP-01",
+   "skills": [
+    "BC-SKL-05010",
+    "BC-SKL-05011"
+   ]
+  },
+  {
+   "id": "LSN-CON-05003#chk-3",
+   "check_kind": "mcq",
+   "bands": [
+    "low"
+   ],
+   "format": "mcq",
+   "archetype_id": "BC-QA-05014",
+   "parameter_draw": {
+    "shape": "cusp",
+    "root": -1,
+    "pole": 2,
+    "multiplier": -2
+   },
+   "stem": {
+    "text": "f(x) = -2(x + 1)^(2/3)/(x - 2), f'(x) = 2(x + 7)/(3(x + 1)^(1/3)(x - 2)^2). Which response is complete?",
+    "command_verb": "identify"
+   },
+   "answer_key": {
+    "form": "statement",
+    "mathjson": "FiniteSet(-7, -1)",
+    "label": "f'(x) = 0 at -7; f' undefined at -1: -7, -1."
+   },
+   "worked_solution": [],
+   "options": [
+    {
+     "id": "A",
+     "is_key": false,
+     "error_path": "BC-ERR-05009",
+     "label": "-7 and -1, no equation written.",
+     "derivation": "the list with the equation f'(x) = 0 never presented"
+    },
+    {
+     "id": "B",
+     "is_key": false,
+     "error_path": "BC-ERR-05010",
+     "label": "f'(x) = 0 at -7; undefined at -1 and 2: -7, -1, 2.",
+     "derivation": "x = 2 kept although f is undefined there"
+    },
+    {
+     "id": "C",
+     "is_key": false,
+     "error_path": "BC-ERR-05011",
+     "label": "f'(x) = 0 at -7: -7 only.",
+     "derivation": "the cusp at x = -1 skipped"
+    },
+    {
+     "id": "D",
+     "is_key": true,
+     "error_path": null,
+     "label": "f'(x) = 0 at -7; f' undefined at -1: -7, -1."
+    }
+   ],
+   "calculator_status": "no_calculator",
+   "representation": "BC-REP-01",
+   "skills": [
+    "BC-SKL-05010",
+    "BC-SKL-05011"
+   ]
+  }
+ ],
+ "refresher": [
+  "LSN-CON-05003#s2",
+  "LSN-CON-05003#s3",
+  "LSN-CON-05003#err-BC-ERR-05009",
+  "LSN-CON-05003#err-BC-ERR-05010",
+  "LSN-CON-05003#err-BC-ERR-05011",
+  "LSN-CON-05003#err-BC-ERR-05012",
+  "LSN-CON-05003#s7"
+ ],
+ "provenance": {
+  "author": "tools/lesson_transcribe.py",
+  "prompt_version": "generator/lesson_v1",
+  "design_path": "docs/lessons/unit-05/LSN-CON-05003.md",
+  "signed_off_by": "claude-opus-5-5",
+  "signed_off_at": "2026-09-29",
+  "not_human": true
+ }
+}

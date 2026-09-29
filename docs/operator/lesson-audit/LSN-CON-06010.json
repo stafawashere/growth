@@ -1,0 +1,119 @@
+{
+ "lesson_id": "LSN-CON-06010",
+ "version": 1,
+ "compared_on": "2026-09-29",
+ "auditor": "claude-opus-5-5",
+ "resolve": {
+  "date": "2026-09-29",
+  "problems": 4,
+  "agreed": 4,
+  "judgments_pending": 0,
+  "all_agree": true,
+  "verdicts": [
+   {
+    "id": "LSN-CON-06010#ex-1",
+    "agree": true,
+    "detail": "agree (symbolic)",
+    "method": "Hand computation (areas, FTC, substitution)."
+   },
+   {
+    "id": "LSN-CON-06010#chk-1",
+    "agree": true,
+    "detail": "agree (symbolic)",
+    "method": "Hand computation (areas, FTC, substitution)."
+   },
+   {
+    "id": "LSN-CON-06010#chk-2",
+    "agree": true,
+    "detail": "agree (symbolic)",
+    "method": "Hand computation (areas, FTC, substitution)."
+   },
+   {
+    "id": "LSN-CON-06010#chk-3",
+    "agree": true,
+    "detail": "agree (symbolic)",
+    "method": "Hand computation (areas, FTC, substitution)."
+   }
+  ],
+  "answers_file": "/tmp/claude-0/-home-user-growth/ac029253-8ff0-5a4b-8b5f-cdcaf5e8ff8d/scratchpad/verify/answers_09.json"
+ },
+ "audit": {
+  "date": "2026-09-29",
+  "auditor": "claude-opus-5-5",
+  "blocks": [
+   {
+    "id": "orientation",
+    "verdict": "ok",
+    "evidence": "27 words; paraphrase of BC-CON-06010 and BC-QA-06004 scoring_pattern on labels."
+   },
+   {
+    "id": "ki-1",
+    "verdict": "ok",
+    "evidence": "29 words; quote matches ced:123 FUN-6.A.1 verbatim."
+   },
+   {
+    "id": "st-1",
+    "verdict": "ok",
+    "evidence": "Matches BC-QA-06004 path and BC-ERR-06014 wrong approach; 25 words."
+   },
+   {
+    "id": "ex-1",
+    "verdict": "ok",
+    "evidence": "SymPy: 3/2-2+2*pi equals 2*pi-1/2; triangle 3/2 on [1,2], triangle -2 on [2,4], semicircle 2*pi."
+   },
+   {
+    "id": "reader-scores:ex-1",
+    "verdict": "ok",
+    "evidence": "BC-PT-99069 line verbatim; BC-QA-06004 lists BC-PT-99069."
+   },
+   {
+    "id": "err-BC-ERR-06014",
+    "verdict": "ok",
+    "evidence": "Bundle text verbatim; 3/2+2+2*pi."
+   },
+   {
+    "id": "err-BC-ERR-06013",
+    "verdict": "ok",
+    "evidence": "Bundle text verbatim; 4*pi for the semicircle."
+   },
+   {
+    "id": "representations",
+    "verdict": "ok",
+    "evidence": "null."
+   },
+   {
+    "id": "bridge:BC-PRQ-06007",
+    "verdict": "ok",
+    "evidence": "19 words; paraphrase of failure_signature."
+   },
+   {
+    "id": "chk-1",
+    "verdict": "ok",
+    "evidence": "SymPy: 3/2-2+2*pi = 2*pi-1/2."
+   },
+   {
+    "id": "chk-2",
+    "verdict": "ok",
+    "evidence": "SymPy: -1+4-2*pi = 3-2*pi; trapezoid bases 3 and 1, height 2."
+   },
+   {
+    "id": "chk-3",
+    "verdict": "ok",
+    "evidence": "SymPy: 2+1/2-1-2*pi = 3/2-2*pi; distractors 7/2+2*pi, 3/2+2*pi, 3/2-4*pi match their paths."
+   }
+  ],
+  "advice": [
+   "ex-1 step 6 why says a mislabelled value is scratch work (sg-25:18); true, but it does not motivate labelling. The motivating fact is that unlabelled values earn neither point (BC-QA-06004 scoring_pattern).",
+   "BC-QA-06004 wrong_approaches name reversed limits (BC-ERR-99012) and no block covers it.",
+   "st-1 method drops the sign; the sign is left to the separating feature.",
+   "Static figures fit a geometry reading."
+  ],
+  "counts": {
+   "ok": 12,
+   "unsourced": 0,
+   "wrong": 0,
+   "over_cap": 0,
+   "lint": 0
+  }
+ }
+}

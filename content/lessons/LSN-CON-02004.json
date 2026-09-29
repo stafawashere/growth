@@ -1,0 +1,820 @@
+{
+ "id": "LSN-CON-02004",
+ "version": 1,
+ "kind": "concept",
+ "target_id": "BC-CON-02004",
+ "status": "draft",
+ "snapshot_digest": "a6a8ec9d3f59ab8f712e33d30cc22fc64bf2c478fbe7312e3e3118d319c6a42f",
+ "source_digest": "2bdad155abe559b81c2dd5b16a89b93259e6bd7e7c933a685bbb140c0e10aa8a",
+ "read_minutes": {
+  "full": 4.2,
+  "brief": 2.8
+ },
+ "word_count": {
+  "full": 524,
+  "brief": 368
+ },
+ "sections": [
+  {
+   "id": "LSN-CON-02004#s1",
+   "type": "orientation",
+   "bands": [
+    "low",
+    "mid"
+   ],
+   "skills": [
+    "BC-SKL-02010",
+    "BC-SKL-02011"
+   ],
+   "sources": [
+    "BC-CON-02004",
+    "research/units/unit-02-differentiation-definition-properties.md#2.2 Defining the Derivative of a Function and Using Derivative Notation"
+   ],
+   "evidence_tag": "inferred",
+   "text": "A response reads derivative notation as naming a function, the variable it is differentiated with respect to, and, where shown, the input: \\(f'(a)\\), \\(\\left.\\frac{dy}{dx}\\right|_{x=a}\\) and \\(y'\\) at \\(a\\) are one number. Stems ask which expression denotes the same quantity, or what it means.",
+   "delivery": {
+    "mode": "text",
+    "reason": "rule 5: a statement of what a response shows",
+    "sources": [
+     "BC-CON-02004"
+    ]
+   }
+  },
+  {
+   "id": "LSN-CON-02004#s2",
+   "type": "key_ideas",
+   "bands": [
+    "low",
+    "mid"
+   ],
+   "skills": [
+    "BC-SKL-02010"
+   ],
+   "sources": [
+    "BC-EK-CHA-2B3",
+    "ced:61",
+    "BC-MIS-02015",
+    "research/units/unit-02-differentiation-definition-properties.md#2.2 Defining the Derivative of a Function and Using Derivative Notation"
+   ],
+   "evidence_tag": "verified",
+   "ek_id": "BC-EK-CHA-2B3",
+   "depth": "core",
+   "text": "For \\(y=f(x)\\) the derivative is written \\(\\frac{dy}{dx}\\), \\(f'(x)\\) or \\(y'\\) (BC-EK-CHA-2B3, ced:61). Each names a function and the variable of differentiation. A value at one input carries the input: \\(f'(4)\\) is \\(\\left.\\frac{dy}{dx}\\right|_{x=4}\\). \\(\\frac{dy}{dx}\\) is one symbol, not a quotient.",
+   "notation": "dy by dx; f prime of x; y prime",
+   "quote": {
+    "text": "notations for the derivative",
+    "source": "ced:61"
+   },
+   "delivery": {
+    "mode": "text",
+    "reason": "rule 5: the reading of symbols, BC-REP-01 and BC-REP-04 on BC-SKL-02010",
+    "sources": [
+     "BC-SKL-02010"
+    ]
+   }
+  },
+  {
+   "id": "LSN-CON-02004#s3",
+   "type": "key_ideas",
+   "bands": [
+    "low"
+   ],
+   "skills": [
+    "BC-SKL-02010",
+    "BC-SKL-02011"
+   ],
+   "sources": [
+    "BC-EK-CHA-2B4",
+    "ced:61"
+   ],
+   "evidence_tag": "verified",
+   "ek_id": "BC-EK-CHA-2B4",
+   "depth": "extended",
+   "text": "One derivative value has four faces (BC-EK-CHA-2B4, ced:61): a tangent slope on a graph, a quotient from a table, a formula, a sentence with units. \\(V'(4)=-6\\) reads: at \\(t=4\\) the volume is falling at 6 liters per minute.",
+   "notation": "dy by dx",
+   "quote": {
+    "text": "The derivative can be represented graphically, numerically, analytically, and verbally.",
+    "source": "ced:61"
+   },
+   "delivery": {
+    "mode": "figure",
+    "reason": "rule 3: BC-SKL-02011 lists BC-REP-02 (with BC-REP-03 carried as an inset table under rule 4); the unit README delivery map names a figure and a table",
+    "sources": [
+     "BC-SKL-02011"
+    ],
+    "spec": {
+     "kind": "graph_with_table",
+     "representations": [
+      "BC-REP-02",
+      "BC-REP-03"
+     ],
+     "axes": {
+      "x": [
+       0,
+       8
+      ],
+      "y": [
+       60,
+       110
+      ]
+     },
+     "curves": [
+      {
+       "expr": "100 + 2*t - t**2",
+       "domain": [
+        0,
+        8
+       ],
+       "role": "illustrative V"
+      }
+     ],
+     "points": [
+      {
+       "at": [
+        4,
+        92
+       ],
+       "label": {
+        "text": "(4, 92)",
+        "placement": "inside",
+        "at": "just right of the point"
+       }
+      }
+     ],
+     "tangent": {
+      "at": 4,
+      "slope": -6
+     },
+     "table": {
+      "columns": [
+       "t",
+       "V(t)"
+      ],
+      "rows": [
+       [
+        3.9,
+        92.59
+       ],
+       [
+        4,
+        92
+       ],
+       [
+        4.1,
+        91.39
+       ]
+      ],
+      "position": "upper right inset"
+     },
+     "labels": [
+      {
+       "text": "slope -6 = V'(4)",
+       "placement": "inside",
+       "at": "along the tangent"
+      },
+      {
+       "text": "(91.39 - 92.59)/0.2 = -6",
+       "placement": "inside",
+       "at": "last line of the inset table"
+      },
+      {
+       "text": "at t = 4, falling 6 liters per minute",
+       "placement": "inside",
+       "at": "lower left corner"
+      }
+     ]
+    },
+    "fallback": "the same content as text: the tangent slope, the three table rows with their quotient, and the sentence",
+    "keyboard": "none needed; the figure is static and its text alternative reads the slope, the table rows and the sentence in order"
+   }
+  },
+  {
+   "id": "LSN-CON-02004#s4",
+   "type": "strategy",
+   "bands": [
+    "low",
+    "mid"
+   ],
+   "skills": [
+    "BC-SKL-02010",
+    "BC-SKL-02011"
+   ],
+   "sources": [
+    "BC-QA-02012"
+   ],
+   "evidence_tag": "verified",
+   "archetype_id": "BC-QA-02012",
+   "cue": "A derivative in one notation; the stem asks for the same quantity in another, or what it denotes.",
+   "method": "First line: name the function, the independent variable, and the input if shown.",
+   "rival": "Rival: the Leibniz form split and cancelled as a fraction (BC-ERR-02029).",
+   "separating_feature": "A value at an input keeps the input in every notation."
+  },
+  {
+   "id": "LSN-CON-02004#s5",
+   "type": "worked_example",
+   "bands": [
+    "low",
+    "mid"
+   ],
+   "skills": [
+    "BC-SKL-02010",
+    "BC-SKL-02011"
+   ],
+   "sources": [
+    "BC-QA-02012"
+   ],
+   "evidence_tag": "inferred",
+   "archetype_id": "BC-QA-02012",
+   "parameter_draw": {
+    "order": "first",
+    "framing": "context",
+    "supplied": "prime",
+    "setting": 0,
+    "at": 4,
+    "value": -6
+   },
+   "problem": {
+    "text": "The volume of water in a tank is \\(V(t)\\) liters, \\(t\\) minutes after a valve opens, and \\(V'(4)=-6\\). Write this in Leibniz notation and state its meaning.",
+    "command_verb": "write"
+   },
+   "calculator_status": "no_calculator",
+   "steps": [
+    {
+     "cue": "\\(V'(4)\\) names the function \\(V\\), the variable \\(t\\), the input 4.",
+     "why": "The statement is about one input, so the input stays in every form."
+    },
+    {
+     "cue": "The stem asks for Leibniz notation.",
+     "why": "\\(V\\) over \\(t\\), evaluated at 4: \\(\\left.\\frac{dV}{dt}\\right|_{t=4}=-6\\).",
+     "expression": [
+      "Equal",
+      [
+       "Subs",
+       [
+        "D",
+        [
+         "Apply",
+         "V",
+         "t"
+        ],
+        [
+         "Tuple",
+         "t",
+         1
+        ]
+       ],
+       [
+        "Tuple",
+        "t"
+       ],
+       [
+        "Tuple",
+        4
+       ]
+      ],
+      -6
+     ],
+     "relation": "new"
+    },
+    {
+     "cue": "The stem asks for its meaning; units are liters over minutes.",
+     "why": "At \\(t=4\\) the volume is decreasing at 6 liters per minute."
+    }
+   ],
+   "answer": {
+    "form": "statement",
+    "mathjson": "Eq(Subs(Derivative(V(t), t), t, 4), -6)",
+    "label": "\\(\\left.\\frac{dV}{dt}\\right|_{t=4}=-6\\): at \\(t=4\\) the volume is decreasing at 6 liters per minute."
+   },
+   "delivery": {
+    "mode": "step_reveal",
+    "reason": "rule 1",
+    "sources": []
+   }
+  },
+  {
+   "id": "LSN-CON-02004#err-BC-ERR-02030",
+   "type": "common_error",
+   "bands": [
+    "low",
+    "mid"
+   ],
+   "skills": [
+    "BC-SKL-02010"
+   ],
+   "sources": [
+    "BC-ERR-02030",
+    "BC-MIS-02015"
+   ],
+   "evidence_tag": "inferred",
+   "error_id": "BC-ERR-02030",
+   "observed_behavior": "The response reports a function where a number is requested, or a number where the function is requested.",
+   "scoring_consequence": "The conversion point is lost.",
+   "wrong_step": {
+    "text": "\\(\\frac{dV}{dt}=-6\\): the input is gone.",
+    "expression": [
+     "Equal",
+     [
+      "D",
+      [
+       "Apply",
+       "V",
+       "t"
+      ],
+      [
+       "Tuple",
+       "t",
+       1
+      ]
+     ],
+     -6
+    ]
+   },
+   "right_step": {
+    "text": "\\(\\left.\\frac{dV}{dt}\\right|_{t=4}=-6\\).",
+    "expression": [
+     "Equal",
+     [
+      "Subs",
+      [
+       "D",
+       [
+        "Apply",
+        "V",
+        "t"
+       ],
+       [
+        "Tuple",
+        "t",
+        1
+       ]
+      ],
+      [
+       "Tuple",
+       "t"
+      ],
+      [
+       "Tuple",
+       4
+      ]
+     ],
+     -6
+    ]
+   },
+   "relation": "distinct",
+   "possible_reason": {
+    "misconception_id": "BC-MIS-02015",
+    "text": "the derivative function is confused with its value"
+   },
+   "delivery": {
+    "mode": "step_reveal",
+    "reason": "rule 1",
+    "sources": []
+   }
+  },
+  {
+   "id": "LSN-CON-02004#err-BC-ERR-04017",
+   "type": "common_error",
+   "bands": [
+    "low",
+    "mid"
+   ],
+   "skills": [
+    "BC-SKL-02010"
+   ],
+   "sources": [
+    "BC-ERR-04017",
+    "BC-MIS-99005",
+    "cr-24:18"
+   ],
+   "evidence_tag": "inferred",
+   "error_id": "BC-ERR-04017",
+   "observed_behavior": "The relating equation is differentiated with respect to a length or with respect to x, and the response stops there rather than continuing through the chain rule to a rate with respect to time.",
+   "scoring_consequence": "The Chief Reader report for 2024 records that responses differentiating with respect to x needed to continue through the chain rule and that many provided no work beyond that step (cr-24:18); BC-ERR-99013 records the same family across years.",
+   "wrong_step": {
+    "text": "\\(\\frac{dV}{dh}=-6\\), with \\(h\\) the depth: a rate per unit of depth.",
+    "expression": [
+     "Equal",
+     [
+      "Multiply",
+      "dV",
+      [
+       "Power",
+       "dh",
+       -1
+      ]
+     ],
+     -6
+    ]
+   },
+   "right_step": {
+    "text": "\\(\\frac{dV}{dt}=-6\\) at \\(t=4\\): a rate per minute.",
+    "expression": [
+     "Equal",
+     [
+      "Multiply",
+      "dV",
+      [
+       "Power",
+       "dt",
+       -1
+      ]
+     ],
+     -6
+    ]
+   },
+   "relation": "distinct",
+   "possible_reason": {
+    "misconception_id": "BC-MIS-99005",
+    "text": "does not distinguish the variable of differentiation"
+   },
+   "delivery": {
+    "mode": "step_reveal",
+    "reason": "rule 1",
+    "sources": []
+   }
+  },
+  {
+   "id": "LSN-CON-02004#err-BC-ERR-02029",
+   "type": "common_error",
+   "bands": [
+    "low",
+    "mid"
+   ],
+   "skills": [
+    "BC-SKL-02010",
+    "BC-SKL-02011"
+   ],
+   "sources": [
+    "BC-ERR-02029",
+    "BC-MIS-02015"
+   ],
+   "evidence_tag": "inferred",
+   "error_id": "BC-ERR-02029",
+   "observed_behavior": "The response treats the Leibniz form as a fraction whose parts can be separated and cancelled.",
+   "scoring_consequence": "A notation point is lost where the meaning of the symbol is being assessed.",
+   "wrong_step": {
+    "text": "\\(\\frac{V(4)}{4}=-6\\): volume over time.",
+    "expression": [
+     "Equal",
+     [
+      "Multiply",
+      "V",
+      [
+       "Power",
+       "t",
+       -1
+      ]
+     ],
+     -6
+    ]
+   },
+   "right_step": {
+    "text": "\\(\\frac{dV}{dt}=-6\\) at \\(t=4\\): a rate.",
+    "expression": [
+     "Equal",
+     [
+      "Multiply",
+      "dV",
+      [
+       "Power",
+       "dt",
+       -1
+      ]
+     ],
+     -6
+    ]
+   },
+   "relation": "distinct",
+   "possible_reason": {
+    "misconception_id": "BC-MIS-02015",
+    "text": "the Leibniz form is treated as a fraction"
+   },
+   "delivery": {
+    "mode": "step_reveal",
+    "reason": "rule 1",
+    "sources": []
+   }
+  },
+  {
+   "id": "LSN-CON-02004#err-BC-ERR-03022",
+   "type": "common_error",
+   "bands": [
+    "low",
+    "mid"
+   ],
+   "skills": [
+    "BC-SKL-02010"
+   ],
+   "sources": [
+    "BC-ERR-03022",
+    "BC-MIS-03014",
+    "crabbc-25:25"
+   ],
+   "evidence_tag": "inferred",
+   "error_id": "BC-ERR-03022",
+   "observed_behavior": "The response writes dy in place of dy/dx, or uses dy/dx where the operator d/dx is meant, or mixes the two notations inside one line.",
+   "scoring_consequence": "The 2025 Chief Reader report lists this notation as a misconception seen in implicit differentiation responses, and poor notation cost points there (crabbc-25:25).",
+   "wrong_step": {
+    "text": "\\(dV=-6\\).",
+    "expression": [
+     "Equal",
+     "dV",
+     -6
+    ]
+   },
+   "right_step": {
+    "text": "\\(\\frac{dV}{dt}=-6\\) at \\(t=4\\).",
+    "expression": [
+     "Equal",
+     [
+      "Multiply",
+      "dV",
+      [
+       "Power",
+       "dt",
+       -1
+      ]
+     ],
+     -6
+    ]
+   },
+   "relation": "distinct",
+   "possible_reason": {
+    "misconception_id": "BC-MIS-03014",
+    "text": "notation is mixed within a line"
+   },
+   "delivery": {
+    "mode": "step_reveal",
+    "reason": "rule 1",
+    "sources": []
+   }
+  },
+  {
+   "id": "LSN-CON-02004#prq-BC-PRQ-02004",
+   "type": "prerequisite_bridge",
+   "bands": [
+    "low",
+    "mid"
+   ],
+   "skills": [
+    "BC-SKL-02010"
+   ],
+   "sources": [
+    "BC-PRQ-02004"
+   ],
+   "evidence_tag": "inferred",
+   "prerequisite_id": "BC-PRQ-02004",
+   "text": "Each form names the variable it differentiates with respect to; one expression keeps one form."
+  }
+ ],
+ "checks": [
+  {
+   "id": "LSN-CON-02004#chk-1",
+   "check_kind": "completion",
+   "bands": [
+    "low",
+    "mid"
+   ],
+   "format": "short_answer",
+   "archetype_id": "BC-QA-02012",
+   "parameter_draw": {
+    "order": "first",
+    "framing": "context",
+    "supplied": "prime",
+    "setting": 0,
+    "at": 4,
+    "value": -6
+   },
+   "completes": "LSN-CON-02004#s5",
+   "stem": {
+    "text": "\\(V'(4)=-6\\) names \\(V\\), the variable \\(t\\) and the input 4. Write it in Leibniz notation.",
+    "command_verb": "write"
+   },
+   "answer_key": {
+    "form": "statement",
+    "mathjson": "Eq(Subs(Derivative(V(t), t), t, 4), -6)",
+    "label": "\\(\\left.\\frac{dV}{dt}\\right|_{t=4}=-6\\)"
+   },
+   "worked_solution": [
+    {
+     "step": 1,
+     "text": "\\(\\left.\\frac{dV}{dt}\\right|_{t=4}=-6\\).",
+     "mathjson": [
+      "Equal",
+      [
+       "Subs",
+       [
+        "D",
+        [
+         "Apply",
+         "V",
+         "t"
+        ],
+        [
+         "Tuple",
+         "t",
+         1
+        ]
+       ],
+       [
+        "Tuple",
+        "t"
+       ],
+       [
+        "Tuple",
+        4
+       ]
+      ],
+      -6
+     ],
+     "relation": "new"
+    }
+   ],
+   "calculator_status": "no_calculator",
+   "representation": "BC-REP-01",
+   "skills": [
+    "BC-SKL-02010"
+   ]
+  },
+  {
+   "id": "LSN-CON-02004#chk-2",
+   "check_kind": "isomorph",
+   "bands": [
+    "low",
+    "mid"
+   ],
+   "format": "short_answer",
+   "archetype_id": "BC-QA-02012",
+   "parameter_draw": {
+    "order": "first",
+    "framing": "bare",
+    "supplied": "leibniz",
+    "setting": 1,
+    "at": 7,
+    "value": 3
+   },
+   "stem": {
+    "text": "\\(w=g(t)\\) and \\(\\left.\\frac{dw}{dt}\\right|_{t=7}=3\\). Write this in prime notation.",
+    "command_verb": "write"
+   },
+   "answer_key": {
+    "form": "statement",
+    "mathjson": "Eq(Subs(Derivative(g(t), t), t, 7), 3)",
+    "label": "\\(g'(7)=3\\)"
+   },
+   "worked_solution": [
+    {
+     "step": 1,
+     "text": "\\(g'(7)=3\\).",
+     "mathjson": [
+      "Equal",
+      [
+       "Subs",
+       [
+        "D",
+        [
+         "Apply",
+         "g",
+         "t"
+        ],
+        [
+         "Tuple",
+         "t",
+         1
+        ]
+       ],
+       [
+        "Tuple",
+        "t"
+       ],
+       [
+        "Tuple",
+        7
+       ]
+      ],
+      3
+     ],
+     "relation": "new"
+    }
+   ],
+   "calculator_status": "no_calculator",
+   "representation": "BC-REP-01",
+   "skills": [
+    "BC-SKL-02010"
+   ]
+  },
+  {
+   "id": "LSN-CON-02004#chk-3",
+   "check_kind": "mcq",
+   "bands": [
+    "low"
+   ],
+   "format": "mcq",
+   "archetype_id": "BC-QA-02012",
+   "parameter_draw": {
+    "order": "first",
+    "framing": "context",
+    "supplied": "prime",
+    "setting": 2,
+    "at": 3,
+    "value": -4
+   },
+   "stem": {
+    "text": "A rod's temperature \\(x\\) meters from one end is \\(T(x)\\) degrees Celsius, and \\(T'(3)=-4\\). Which statement says the same?",
+    "command_verb": "choose"
+   },
+   "answer_key": {
+    "form": "statement",
+    "mathjson": "Eq(Subs(Derivative(T(x), x), x, 3), -4)",
+    "label": "\\(\\left.\\frac{dT}{dx}\\right|_{x=3}=-4\\): at 3 meters the temperature is decreasing at 4 degrees Celsius per meter."
+   },
+   "worked_solution": [
+    {
+     "step": 1,
+     "text": "\\(\\left.\\frac{dT}{dx}\\right|_{x=3}=-4\\).",
+     "mathjson": [
+      "Equal",
+      [
+       "Subs",
+       [
+        "D",
+        [
+         "Apply",
+         "T",
+         "x"
+        ],
+        [
+         "Tuple",
+         "x",
+         1
+        ]
+       ],
+       [
+        "Tuple",
+        "x"
+       ],
+       [
+        "Tuple",
+        3
+       ]
+      ],
+      -4
+     ],
+     "relation": "new"
+    }
+   ],
+   "options": [
+    {
+     "id": "A",
+     "is_key": false,
+     "error_path": "BC-ERR-02029",
+     "label": "\\(\\frac{T(3)}{3}=-4\\): temperature divided by distance is \\(-4\\).",
+     "derivation": "the Leibniz fraction read as the quotient of the two quantities at the point"
+    },
+    {
+     "id": "B",
+     "is_key": true,
+     "error_path": null,
+     "label": "\\(\\left.\\frac{dT}{dx}\\right|_{x=3}=-4\\): at 3 meters the temperature is decreasing at 4 degrees Celsius per meter."
+    },
+    {
+     "id": "C",
+     "is_key": false,
+     "error_path": "BC-ERR-03022",
+     "label": "\\(dT=-4\\) at \\(x=3\\): the temperature changes by 4 degrees Celsius.",
+     "derivation": "dT written in place of dT/dx, so the rate is read as a change in temperature"
+    },
+    {
+     "id": "D",
+     "is_key": false,
+     "error_path": "BC-ERR-02030",
+     "label": "\\(\\frac{dT}{dx}=-4\\): the temperature falls 4 degrees Celsius per meter at every point.",
+     "derivation": "the input dropped, so a value at one point is read as the derivative function"
+    }
+   ],
+   "calculator_status": "no_calculator",
+   "representation": "BC-REP-01",
+   "skills": [
+    "BC-SKL-02010",
+    "BC-SKL-02011"
+   ]
+  }
+ ],
+ "refresher": [
+  "LSN-CON-02004#s2",
+  "LSN-CON-02004#err-BC-ERR-02030",
+  "LSN-CON-02004#err-BC-ERR-04017",
+  "LSN-CON-02004#err-BC-ERR-02029",
+  "LSN-CON-02004#err-BC-ERR-03022",
+  "LSN-CON-02004#s5"
+ ],
+ "provenance": {
+  "author": "tools/lesson_transcribe.py",
+  "prompt_version": "generator/lesson_v1",
+  "design_path": "docs/lessons/unit-02/LSN-CON-02004.md",
+  "signed_off_by": null,
+  "signed_off_at": null,
+  "not_human": true
+ }
+}

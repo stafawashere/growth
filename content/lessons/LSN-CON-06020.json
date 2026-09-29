@@ -1,0 +1,1098 @@
+{
+ "id": "LSN-CON-06020",
+ "version": 1,
+ "kind": "concept",
+ "target_id": "BC-CON-06020",
+ "status": "signed_off",
+ "snapshot_digest": "a6a8ec9d3f59ab8f712e33d30cc22fc64bf2c478fbe7312e3e3118d319c6a42f",
+ "source_digest": "61409705637f74d884bf1ef1459b150c9852c455b3f2fdc5e1eb1c4f05e9c974",
+ "read_minutes": {
+  "full": 3.2,
+  "brief": 2.4
+ },
+ "word_count": {
+  "full": 396,
+  "brief": 315
+ },
+ "sections": [
+  {
+   "id": "LSN-CON-06020#s1",
+   "type": "orientation",
+   "bands": [
+    "low",
+    "mid"
+   ],
+   "skills": [
+    "BC-SKL-06071",
+    "BC-SKL-06072",
+    "BC-SKL-06073",
+    "BC-SKL-06074"
+   ],
+   "sources": [
+    "BC-CON-06020",
+    "research/units/unit-06-integration-accumulation.md#6.14 Selecting Techniques for Antidifferentiation"
+   ],
+   "evidence_tag": "inferred",
+   "text": "When no technique is named, the integrand's structure picks one. A response names the marker, rules out the techniques whose preconditions fail, then writes the chosen technique's first line.",
+   "delivery": {
+    "mode": "text",
+    "reason": "rule 6: BC-REP-01 only on BC-SKL-06071 to 06073 (unit README delivery map)",
+    "sources": [
+     "BC-SKL-06071"
+    ]
+   }
+  },
+  {
+   "id": "LSN-CON-06020#s2",
+   "type": "key_ideas",
+   "bands": [
+    "low",
+    "mid"
+   ],
+   "skills": [
+    "BC-SKL-06071",
+    "BC-SKL-06072"
+   ],
+   "sources": [
+    "BC-EK-FUN-6C2",
+    "ced:131",
+    "research/units/unit-06-integration-accumulation.md#6.14 Selecting Techniques for Antidifferentiation"
+   ],
+   "evidence_tag": "verified",
+   "ek_id": "BC-EK-FUN-6C2",
+   "depth": "core",
+   "text": "Each technique reverses a derivative rule and has a precondition. A composite with its inner derivative present selects substitution; a product of unlike factors, parts; a proper fraction over distinct linear factors, partial fractions.",
+   "notation": "technique classification",
+   "quote": {
+    "text": "This topic is intended to focus on the skill of selecting an appropriate procedure for antidifferentiation.",
+    "source": "ced:131"
+   },
+   "delivery": {
+    "mode": "text",
+    "reason": "rule 6: a classification by structure with BC-REP-01 alone",
+    "sources": [
+     "BC-SKL-06071",
+     "BC-SKL-06072"
+    ]
+   }
+  },
+  {
+   "id": "LSN-CON-06020#s3",
+   "type": "key_ideas",
+   "bands": [
+    "low",
+    "mid"
+   ],
+   "skills": [
+    "BC-SKL-06071",
+    "BC-SKL-06073"
+   ],
+   "sources": [
+    "BC-EK-FUN-6D3",
+    "ced:131",
+    "research/units/unit-06-integration-accumulation.md#6.14 Selecting Techniques for Antidifferentiation"
+   ],
+   "evidence_tag": "inferred",
+   "ek_id": "BC-EK-FUN-6D3",
+   "depth": "core",
+   "text": "Some integrands need a rearrangement first: numerator degree at least the denominator's selects long division, and a technique may leave a second integral that needs another.",
+   "notation": "chained techniques",
+   "delivery": {
+    "mode": "text",
+    "reason": "rule 6: a rewriting rule with BC-REP-01 alone",
+    "sources": [
+     "BC-SKL-06073"
+    ]
+   }
+  },
+  {
+   "id": "LSN-CON-06020#s4",
+   "type": "key_ideas",
+   "bands": [
+    "low"
+   ],
+   "skills": [
+    "BC-SKL-06074"
+   ],
+   "sources": [
+    "BC-EK-FUN-6C3",
+    "research/units/unit-06-integration-accumulation.md#6.14 Selecting Techniques for Antidifferentiation"
+   ],
+   "evidence_tag": "inferred",
+   "ek_id": "BC-EK-FUN-6C3",
+   "depth": "extended",
+   "text": "Some integrands have no closed-form antiderivative; the answer then stays a definite integral or a numerical value.",
+   "notation": "integral or numerical representation",
+   "delivery": {
+    "mode": "text",
+    "reason": "rule 6: BC-REP-09 on BC-SKL-06074 is not figure-bearing",
+    "sources": [
+     "BC-SKL-06074"
+    ]
+   }
+  },
+  {
+   "id": "LSN-CON-06020#s5",
+   "type": "strategy",
+   "bands": [
+    "low",
+    "mid"
+   ],
+   "skills": [
+    "BC-SKL-06071",
+    "BC-SKL-06072",
+    "BC-SKL-06073",
+    "BC-SKL-06074"
+   ],
+   "sources": [
+    "BC-QA-06016"
+   ],
+   "evidence_tag": "verified",
+   "archetype_id": "BC-QA-06016",
+   "cue": "An unsignalled integrand, a product of a linear factor and a transcendental factor; an indefinite integral asked.",
+   "method": "Inspect the integrand for structural markers.",
+   "rival": "Rival: substituting for the exponent although its derivative is not the other factor (BC-ERR-06020).",
+   "separating_feature": "The linear factor is not the inner derivative, so parts, not substitution."
+  },
+  {
+   "id": "LSN-CON-06020#s6",
+   "type": "worked_example",
+   "bands": [
+    "low",
+    "mid"
+   ],
+   "skills": [
+    "BC-SKL-06071",
+    "BC-SKL-06072",
+    "BC-SKL-06073",
+    "BC-SKL-06074"
+   ],
+   "sources": [
+    "BC-QA-06016"
+   ],
+   "evidence_tag": "inferred",
+   "archetype_id": "BC-QA-06016",
+   "parameter_draw": {
+    "structure": "product",
+    "multiplier": 3,
+    "rate": 2,
+    "rate_sign": -1,
+    "shift": 1,
+    "constant": 1
+   },
+   "problem": {
+    "text": "Find ∫ 3x e^(-2x) dx.",
+    "command_verb": "find"
+   },
+   "calculator_status": "no_calculator",
+   "steps": [
+    {
+     "cue": "A linear factor times an exponential.",
+     "why": "Marker: a product of unlike factors."
+    },
+    {
+     "cue": "Substitution u = -2x needs the other factor constant; 3x is not.",
+     "why": "Precondition fails: substitution is ruled out."
+    },
+    {
+     "cue": "Parts: u = 3x, dv = e^(-2x) dx, v = -(1/2) e^(-2x).",
+     "why": "3x differentiates to a constant.",
+     "expression": [
+      "Add",
+      [
+       "Multiply",
+       [
+        "Rational",
+        -3,
+        2
+       ],
+       "x",
+       [
+        "Exp",
+        [
+         "Multiply",
+         -2,
+         "x"
+        ]
+       ]
+      ],
+      [
+       "Integrate",
+       [
+        "Multiply",
+        [
+         "Rational",
+         3,
+         2
+        ],
+        [
+         "Exp",
+         [
+          "Multiply",
+          -2,
+          "x"
+         ]
+        ]
+       ],
+       [
+        "Tuple",
+        "x"
+       ]
+      ]
+     ],
+     "relation": "new"
+    },
+    {
+     "cue": "The remaining integral is basic.",
+     "why": "Finish, then add C.",
+     "expression": [
+      "Add",
+      [
+       "Multiply",
+       [
+        "Rational",
+        -3,
+        4
+       ],
+       [
+        "Exp",
+        [
+         "Multiply",
+         -2,
+         "x"
+        ]
+       ]
+      ],
+      [
+       "Multiply",
+       [
+        "Rational",
+        -3,
+        2
+       ],
+       "x",
+       [
+        "Exp",
+        [
+         "Multiply",
+         -2,
+         "x"
+        ]
+       ]
+      ]
+     ],
+     "relation": "equivalent"
+    }
+   ],
+   "answer": {
+    "form": "symbolic",
+    "mathjson": [
+     "Add",
+     [
+      "Multiply",
+      [
+       "Rational",
+       -3,
+       4
+      ],
+      [
+       "Exp",
+       [
+        "Multiply",
+        -2,
+        "x"
+       ]
+      ]
+     ],
+     [
+      "Multiply",
+      [
+       "Rational",
+       -3,
+       2
+      ],
+      "x",
+      [
+       "Exp",
+       [
+        "Multiply",
+        -2,
+        "x"
+       ]
+      ]
+     ]
+    ]
+   },
+   "delivery": {
+    "mode": "step_reveal",
+    "reason": "rule 1",
+    "sources": []
+   }
+  },
+  {
+   "id": "LSN-CON-06020#s7",
+   "type": "worked_example",
+   "bands": [
+    "low"
+   ],
+   "skills": [
+    "BC-SKL-06071",
+    "BC-SKL-06072",
+    "BC-SKL-06073",
+    "BC-SKL-06074"
+   ],
+   "sources": [
+    "BC-QA-06016"
+   ],
+   "evidence_tag": "inferred",
+   "archetype_id": "BC-QA-06016",
+   "parameter_draw": {
+    "structure": "improper_rational",
+    "multiplier": 4,
+    "rate": 1,
+    "rate_sign": 1,
+    "shift": -2,
+    "constant": 5
+   },
+   "problem": {
+    "text": "Find ∫ 4(x^2 + 5)/(x - 2) dx for x > 2.",
+    "command_verb": "find"
+   },
+   "calculator_status": "no_calculator",
+   "steps": [
+    {
+     "cue": "Numerator degree 2 over degree 1.",
+     "why": "Marker: improper rational, so long division first."
+    },
+    {
+     "cue": "The integrand as given.",
+     "why": "Divide before any other technique.",
+     "expression": [
+      "Multiply",
+      [
+       "Power",
+       [
+        "Add",
+        -2,
+        "x"
+       ],
+       -1
+      ],
+      [
+       "Add",
+       20,
+       [
+        "Multiply",
+        4,
+        [
+         "Power",
+         "x",
+         2
+        ]
+       ]
+      ]
+     ],
+     "relation": "new"
+    },
+    {
+     "cue": "x^2 + 5 = (x - 2)(x + 2) + 9.",
+     "why": "Quotient plus remainder over divisor.",
+     "expression": [
+      "Add",
+      8,
+      [
+       "Multiply",
+       4,
+       "x"
+      ],
+      [
+       "Multiply",
+       36,
+       [
+        "Power",
+        [
+         "Add",
+         -2,
+         "x"
+        ],
+        -1
+       ]
+      ]
+     ],
+     "relation": "equivalent"
+    },
+    {
+     "cue": "Each piece is basic.",
+     "why": "Power rule and ln; add C.",
+     "expression": [
+      "Add",
+      "C",
+      [
+       "Multiply",
+       2,
+       [
+        "Power",
+        "x",
+        2
+       ]
+      ],
+      [
+       "Multiply",
+       8,
+       "x"
+      ],
+      [
+       "Multiply",
+       36,
+       [
+        "Ln",
+        [
+         "Add",
+         -2,
+         "x"
+        ]
+       ]
+      ]
+     ],
+     "relation": "integrate",
+     "variable": "x"
+    }
+   ],
+   "answer": {
+    "form": "symbolic",
+    "mathjson": [
+     "Add",
+     "C",
+     [
+      "Multiply",
+      2,
+      [
+       "Power",
+       "x",
+       2
+      ]
+     ],
+     [
+      "Multiply",
+      8,
+      "x"
+     ],
+     [
+      "Multiply",
+      36,
+      [
+       "Ln",
+       [
+        "Add",
+        -2,
+        "x"
+       ]
+      ]
+     ]
+    ]
+   },
+   "delivery": {
+    "mode": "step_reveal",
+    "reason": "rule 1",
+    "sources": []
+   }
+  },
+  {
+   "id": "LSN-CON-06020#err-BC-ERR-06020",
+   "type": "common_error",
+   "bands": [
+    "low",
+    "mid"
+   ],
+   "skills": [
+    "BC-SKL-06071",
+    "BC-SKL-06072"
+   ],
+   "sources": [
+    "BC-ERR-06020",
+    "BC-MIS-06017"
+   ],
+   "evidence_tag": "inferred",
+   "error_id": "BC-ERR-06020",
+   "observed_behavior": "A composite is substituted although no constant multiple of the derivative of the inner expression appears in the integrand.",
+   "scoring_consequence": "The setup point for the technique is not earned and the work does not lead to the antiderivative.",
+   "wrong_step": {
+    "text": "u = -2x, the 3x treated as constant.",
+    "expression": [
+     "Multiply",
+     [
+      "Rational",
+      -3,
+      2
+     ],
+     "x",
+     [
+      "Exp",
+      [
+       "Multiply",
+       -2,
+       "x"
+      ]
+     ]
+    ]
+   },
+   "right_step": {
+    "text": "Parts.",
+    "expression": [
+     "Add",
+     [
+      "Multiply",
+      [
+       "Rational",
+       -3,
+       4
+      ],
+      [
+       "Exp",
+       [
+        "Multiply",
+        -2,
+        "x"
+       ]
+      ]
+     ],
+     [
+      "Multiply",
+      [
+       "Rational",
+       -3,
+       2
+      ],
+      "x",
+      [
+       "Exp",
+       [
+        "Multiply",
+        -2,
+        "x"
+       ]
+      ]
+     ]
+    ]
+   },
+   "relation": "distinct",
+   "possible_reason": {
+    "misconception_id": "BC-MIS-06017",
+    "text": "selects substitution from the presence of an inner function alone"
+   },
+   "delivery": {
+    "mode": "step_reveal",
+    "reason": "rule 1",
+    "sources": []
+   }
+  },
+  {
+   "id": "LSN-CON-06020#err-BC-ERR-06022",
+   "type": "common_error",
+   "bands": [
+    "low",
+    "mid"
+   ],
+   "skills": [
+    "BC-SKL-06071"
+   ],
+   "sources": [
+    "BC-ERR-06022",
+    "BC-MIS-06019"
+   ],
+   "evidence_tag": "inferred",
+   "error_id": "BC-ERR-06022",
+   "observed_behavior": "The response antidifferentiates each factor of a product and multiplies the results.",
+   "scoring_consequence": "Neither the u and dv point nor the expression point is earned (sg-23:18, sg-24:18).",
+   "wrong_step": {
+    "text": "Antiderivatives of 3x and e^(-2x) multiplied.",
+    "expression": [
+     "Multiply",
+     [
+      "Rational",
+      -3,
+      4
+     ],
+     [
+      "Power",
+      "x",
+      2
+     ],
+     [
+      "Exp",
+      [
+       "Multiply",
+       -2,
+       "x"
+      ]
+     ]
+    ]
+   },
+   "right_step": {
+    "text": "Parts.",
+    "expression": [
+     "Add",
+     [
+      "Multiply",
+      [
+       "Rational",
+       -3,
+       4
+      ],
+      [
+       "Exp",
+       [
+        "Multiply",
+        -2,
+        "x"
+       ]
+      ]
+     ],
+     [
+      "Multiply",
+      [
+       "Rational",
+       -3,
+       2
+      ],
+      "x",
+      [
+       "Exp",
+       [
+        "Multiply",
+        -2,
+        "x"
+       ]
+      ]
+     ]
+    ]
+   },
+   "relation": "distinct",
+   "possible_reason": {
+    "misconception_id": "BC-MIS-06019",
+    "text": "each factor is antidifferentiated on its own"
+   },
+   "delivery": {
+    "mode": "step_reveal",
+    "reason": "rule 1",
+    "sources": []
+   }
+  },
+  {
+   "id": "LSN-CON-06020#prq-BC-PRQ-06001",
+   "type": "prerequisite_bridge",
+   "bands": [
+    "low",
+    "mid"
+   ],
+   "skills": [
+    "BC-SKL-06071"
+   ],
+   "sources": [
+    "BC-PRQ-06001"
+   ],
+   "evidence_tag": "inferred",
+   "prerequisite_id": "BC-PRQ-06001",
+   "text": "Rewrite first: factor out constants and split fractions, so a composite's inner derivative shows or is seen to be absent."
+  }
+ ],
+ "checks": [
+  {
+   "id": "LSN-CON-06020#chk-1",
+   "check_kind": "completion",
+   "bands": [
+    "low",
+    "mid"
+   ],
+   "format": "short_answer",
+   "archetype_id": "BC-QA-06016",
+   "parameter_draw": {
+    "structure": "product",
+    "multiplier": 3,
+    "rate": 2,
+    "rate_sign": -1,
+    "shift": 1,
+    "constant": 1
+   },
+   "completes": "LSN-CON-06020#s6",
+   "stem": {
+    "text": "∫ 3x e^(-2x) dx = -(3x/2) e^(-2x) + ∫ (3/2) e^(-2x) dx. Finish.",
+    "command_verb": "find"
+   },
+   "answer_key": {
+    "form": "symbolic",
+    "mathjson": [
+     "Add",
+     [
+      "Multiply",
+      [
+       "Rational",
+       -3,
+       4
+      ],
+      [
+       "Exp",
+       [
+        "Multiply",
+        -2,
+        "x"
+       ]
+      ]
+     ],
+     [
+      "Multiply",
+      [
+       "Rational",
+       -3,
+       2
+      ],
+      "x",
+      [
+       "Exp",
+       [
+        "Multiply",
+        -2,
+        "x"
+       ]
+      ]
+     ]
+    ]
+   },
+   "worked_solution": [
+    {
+     "step": 1,
+     "text": "Parts expression.",
+     "mathjson": [
+      "Add",
+      [
+       "Multiply",
+       [
+        "Rational",
+        -3,
+        2
+       ],
+       "x",
+       [
+        "Exp",
+        [
+         "Multiply",
+         -2,
+         "x"
+        ]
+       ]
+      ],
+      [
+       "Integrate",
+       [
+        "Multiply",
+        [
+         "Rational",
+         3,
+         2
+        ],
+        [
+         "Exp",
+         [
+          "Multiply",
+          -2,
+          "x"
+         ]
+        ]
+       ],
+       [
+        "Tuple",
+        "x"
+       ]
+      ]
+     ],
+     "relation": "new"
+    },
+    {
+     "step": 2,
+     "text": "Remaining integral.",
+     "mathjson": [
+      "Add",
+      [
+       "Multiply",
+       [
+        "Rational",
+        -3,
+        4
+       ],
+       [
+        "Exp",
+        [
+         "Multiply",
+         -2,
+         "x"
+        ]
+       ]
+      ],
+      [
+       "Multiply",
+       [
+        "Rational",
+        -3,
+        2
+       ],
+       "x",
+       [
+        "Exp",
+        [
+         "Multiply",
+         -2,
+         "x"
+        ]
+       ]
+      ]
+     ],
+     "relation": "equivalent"
+    }
+   ],
+   "calculator_status": "no_calculator",
+   "representation": "BC-REP-01",
+   "skills": [
+    "BC-SKL-06071",
+    "BC-SKL-06073"
+   ]
+  },
+  {
+   "id": "LSN-CON-06020#chk-2",
+   "check_kind": "isomorph",
+   "bands": [
+    "low",
+    "mid"
+   ],
+   "format": "short_answer",
+   "archetype_id": "BC-QA-06016",
+   "parameter_draw": {
+    "structure": "product",
+    "multiplier": 2,
+    "rate": 3,
+    "rate_sign": 1,
+    "shift": -2,
+    "constant": 4
+   },
+   "stem": {
+    "text": "Find ∫ 2x e^(3x) dx.",
+    "command_verb": "find"
+   },
+   "answer_key": {
+    "form": "symbolic",
+    "mathjson": [
+     "Add",
+     [
+      "Multiply",
+      [
+       "Rational",
+       -2,
+       9
+      ],
+      [
+       "Exp",
+       [
+        "Multiply",
+        3,
+        "x"
+       ]
+      ]
+     ],
+     [
+      "Multiply",
+      [
+       "Rational",
+       2,
+       3
+      ],
+      "x",
+      [
+       "Exp",
+       [
+        "Multiply",
+        3,
+        "x"
+       ]
+      ]
+     ]
+    ]
+   },
+   "worked_solution": [
+    {
+     "step": 1,
+     "text": "Parts, u = 2x, v = (1/3) e^(3x).",
+     "mathjson": [
+      "Add",
+      [
+       "Multiply",
+       -1,
+       [
+        "Integrate",
+        [
+         "Multiply",
+         [
+          "Rational",
+          2,
+          3
+         ],
+         [
+          "Exp",
+          [
+           "Multiply",
+           3,
+           "x"
+          ]
+         ]
+        ],
+        [
+         "Tuple",
+         "x"
+        ]
+       ]
+      ],
+      [
+       "Multiply",
+       [
+        "Rational",
+        2,
+        3
+       ],
+       "x",
+       [
+        "Exp",
+        [
+         "Multiply",
+         3,
+         "x"
+        ]
+       ]
+      ]
+     ],
+     "relation": "new"
+    },
+    {
+     "step": 2,
+     "text": "Remaining integral.",
+     "mathjson": [
+      "Add",
+      [
+       "Multiply",
+       [
+        "Rational",
+        -2,
+        9
+       ],
+       [
+        "Exp",
+        [
+         "Multiply",
+         3,
+         "x"
+        ]
+       ]
+      ],
+      [
+       "Multiply",
+       [
+        "Rational",
+        2,
+        3
+       ],
+       "x",
+       [
+        "Exp",
+        [
+         "Multiply",
+         3,
+         "x"
+        ]
+       ]
+      ]
+     ],
+     "relation": "equivalent"
+    }
+   ],
+   "calculator_status": "no_calculator",
+   "representation": "BC-REP-01",
+   "skills": [
+    "BC-SKL-06071",
+    "BC-SKL-06072"
+   ]
+  },
+  {
+   "id": "LSN-CON-06020#chk-3",
+   "check_kind": "mcq",
+   "bands": [
+    "low"
+   ],
+   "format": "mcq",
+   "archetype_id": "BC-QA-06016",
+   "parameter_draw": {
+    "structure": "product",
+    "multiplier": 5,
+    "rate": 1,
+    "rate_sign": -1,
+    "shift": 3,
+    "constant": 2
+   },
+   "stem": {
+    "text": "The first line for ∫ 5x e^(-x) dx is",
+    "command_verb": "identify"
+   },
+   "answer_key": {
+    "form": "statement",
+    "mathjson": "integration by parts, u = 5x, dv = e^(-x) dx"
+   },
+   "worked_solution": [],
+   "options": [
+    {
+     "id": "A",
+     "is_key": false,
+     "error_path": "BC-ERR-06020",
+     "label": "u = -x, du = -dx, then 5x e^u (-du)",
+     "derivation": "substitution for the exponent with the 5x left behind"
+    },
+    {
+     "id": "B",
+     "is_key": false,
+     "error_path": "BC-ERR-06022",
+     "label": "(5x^2/2)(-e^(-x))",
+     "derivation": "each factor antidifferentiated and multiplied"
+    },
+    {
+     "id": "C",
+     "is_key": true,
+     "error_path": null,
+     "label": "u = 5x, dv = e^(-x) dx"
+    },
+    {
+     "id": "D",
+     "is_key": false,
+     "error_path": "BC-ERR-06020",
+     "label": "u = 5x, du = 5 dx, then e^(-x) du/5",
+     "derivation": "substitution for the linear factor, whose derivative is not the other factor"
+    }
+   ],
+   "calculator_status": "no_calculator",
+   "representation": "BC-REP-01",
+   "skills": [
+    "BC-SKL-06071",
+    "BC-SKL-06072"
+   ]
+  }
+ ],
+ "refresher": [
+  "LSN-CON-06020#s2",
+  "LSN-CON-06020#s3",
+  "LSN-CON-06020#err-BC-ERR-06020",
+  "LSN-CON-06020#err-BC-ERR-06022",
+  "LSN-CON-06020#s6"
+ ],
+ "provenance": {
+  "author": "tools/lesson_transcribe.py",
+  "prompt_version": "generator/lesson_v1",
+  "design_path": "docs/lessons/unit-06/LSN-CON-06020.md",
+  "signed_off_by": "claude-opus-5-5",
+  "signed_off_at": "2026-09-29",
+  "not_human": true
+ }
+}

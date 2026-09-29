@@ -1,0 +1,900 @@
+{
+ "id": "LSN-CON-06004",
+ "version": 1,
+ "kind": "concept",
+ "target_id": "BC-CON-06004",
+ "status": "signed_off",
+ "snapshot_digest": "a6a8ec9d3f59ab8f712e33d30cc22fc64bf2c478fbe7312e3e3118d319c6a42f",
+ "source_digest": "b2e728863fdf7f7b42b208b7e2898e35c400d9e1ee94ac6c4699cafc837455ca",
+ "read_minutes": {
+  "full": 3.6,
+  "brief": 2.9
+ },
+ "word_count": {
+  "full": 422,
+  "brief": 367
+ },
+ "sections": [
+  {
+   "id": "LSN-CON-06004#s1",
+   "type": "orientation",
+   "bands": [
+    "low",
+    "mid"
+   ],
+   "skills": [
+    "BC-SKL-06010",
+    "BC-SKL-06011"
+   ],
+   "sources": [
+    "BC-CON-06004",
+    "research/units/unit-06-integration-accumulation.md#6.2 Approximating Areas with Riemann Sums"
+   ],
+   "evidence_tag": "inferred",
+   "text": "Whether a sum is too big or too small follows from how the function rises, falls or bends. A response names that property of the given function, then the direction.",
+   "delivery": {
+    "mode": "figure",
+    "reason": "rule 4: BC-REP-02 on BC-SKL-06010 and BC-SKL-06011 (unit README delivery map)",
+    "sources": [
+     "BC-SKL-06010",
+     "BC-SKL-06011"
+    ],
+    "spec": {
+     "kind": "graph",
+     "representations": [
+      "BC-REP-02"
+     ],
+     "curve": {
+      "expr": "x**2/8 + 1",
+      "domain": [
+       0,
+       8
+      ]
+     },
+     "rectangles": {
+      "sum": "left",
+      "n": 4
+     },
+     "labels": [
+      {
+       "text": "gap above each rectangle: left sum too small",
+       "placement": "inside",
+       "at": "top left"
+      }
+     ]
+    },
+    "fallback": "the same graph as a static image with its label",
+    "keyboard": "none needed: the figure has no control"
+   }
+  },
+  {
+   "id": "LSN-CON-06004#s2",
+   "type": "key_ideas",
+   "bands": [
+    "low",
+    "mid"
+   ],
+   "skills": [
+    "BC-SKL-06010",
+    "BC-SKL-06011"
+   ],
+   "sources": [
+    "BC-EK-LIM-5A4",
+    "ced:119",
+    "research/units/unit-06-integration-accumulation.md#6.2 Approximating Areas with Riemann Sums"
+   ],
+   "evidence_tag": "inferred",
+   "ek_id": "BC-EK-LIM-5A4",
+   "depth": "core",
+   "text": "Left and right sums: monotonicity decides. Increasing f: left under, right over; decreasing reverses. Trapezoid and midpoint: concavity decides. Concave up: trapezoid over, midpoint under; concave down reverses.",
+   "notation": "underestimate, overestimate",
+   "delivery": {
+    "mode": "figure",
+    "reason": "rule 4: BC-REP-02 on BC-SKL-06010 and BC-SKL-06011; not promoted, since BC-QA-06001's difficulty_variables name a property (whether the table is monotone), not a varying quantity",
+    "sources": [
+     "BC-SKL-06010",
+     "BC-SKL-06011",
+     "BC-QA-06001"
+    ],
+    "spec": {
+     "kind": "graph_panels",
+     "representations": [
+      "BC-REP-02"
+     ],
+     "panels": [
+      {
+       "sums": [
+        "left",
+        "right"
+       ],
+       "curves": [
+        {
+         "expr": "x**2/8 + 1",
+         "domain": [
+          0,
+          8
+         ]
+        }
+       ],
+       "window": {
+        "x": [
+         -0.5,
+         8.5
+        ],
+        "y": [
+         -0.5,
+         10
+        ]
+       },
+       "rectangles": {
+        "sum": "left",
+        "n": 4
+       },
+       "segments": [
+        {
+         "from": [
+          0,
+          0
+         ],
+         "to": [
+          0,
+          1.5
+         ],
+         "style": "dashed"
+        },
+        {
+         "from": [
+          2,
+          0
+         ],
+         "to": [
+          2,
+          3
+         ],
+         "style": "dashed"
+        },
+        {
+         "from": [
+          4,
+          0
+         ],
+         "to": [
+          4,
+          5.5
+         ],
+         "style": "dashed"
+        },
+        {
+         "from": [
+          6,
+          0
+         ],
+         "to": [
+          6,
+          9
+         ],
+         "style": "dashed"
+        },
+        {
+         "from": [
+          0,
+          1.5
+         ],
+         "to": [
+          2,
+          1.5
+         ],
+         "style": "dashed"
+        },
+        {
+         "from": [
+          2,
+          3
+         ],
+         "to": [
+          4,
+          3
+         ],
+         "style": "dashed"
+        },
+        {
+         "from": [
+          4,
+          5.5
+         ],
+         "to": [
+          6,
+          5.5
+         ],
+         "style": "dashed"
+        },
+        {
+         "from": [
+          6,
+          9
+         ],
+         "to": [
+          8,
+          9
+         ],
+         "style": "dashed"
+        },
+        {
+         "from": [
+          8,
+          0
+         ],
+         "to": [
+          8,
+          9
+         ],
+         "style": "dashed"
+        }
+       ]
+      },
+      {
+       "sums": [
+        "trapezoid",
+        "midpoint"
+       ],
+       "curves": [
+        {
+         "expr": "(x - 4)**2/4 + 1",
+         "domain": [
+          0,
+          8
+         ]
+        }
+       ],
+       "window": {
+        "x": [
+         -0.5,
+         8.5
+        ],
+        "y": [
+         -0.5,
+         6
+        ]
+       },
+       "rectangles": {
+        "sum": "midpoint",
+        "n": 4
+       },
+       "segments": [
+        {
+         "from": [
+          0,
+          5
+         ],
+         "to": [
+          2,
+          2
+         ]
+        },
+        {
+         "from": [
+          2,
+          2
+         ],
+         "to": [
+          4,
+          1
+         ]
+        },
+        {
+         "from": [
+          4,
+          1
+         ],
+         "to": [
+          6,
+          2
+         ]
+        },
+        {
+         "from": [
+          6,
+          2
+         ],
+         "to": [
+          8,
+          5
+         ]
+        },
+        {
+         "from": [
+          0,
+          0
+         ],
+         "to": [
+          0,
+          5
+         ]
+        },
+        {
+         "from": [
+          2,
+          0
+         ],
+         "to": [
+          2,
+          2
+         ]
+        },
+        {
+         "from": [
+          4,
+          0
+         ],
+         "to": [
+          4,
+          1
+         ]
+        },
+        {
+         "from": [
+          6,
+          0
+         ],
+         "to": [
+          6,
+          2
+         ]
+        },
+        {
+         "from": [
+          8,
+          0
+         ],
+         "to": [
+          8,
+          5
+         ]
+        }
+       ]
+      }
+     ],
+     "labels": [
+      {
+       "text": "increasing: left under, right over",
+       "placement": "inside",
+       "at": "panel 1 top"
+      },
+      {
+       "text": "concave up: trapezoid over, midpoint under",
+       "placement": "inside",
+       "at": "panel 2 top"
+      }
+     ]
+    },
+    "fallback": "the two panels as one static image with their labels",
+    "keyboard": "none needed: the figure has no control"
+   }
+  },
+  {
+   "id": "LSN-CON-06004#s3",
+   "type": "strategy",
+   "bands": [
+    "low",
+    "mid"
+   ],
+   "skills": [
+    "BC-SKL-06010"
+   ],
+   "sources": [
+    "BC-QA-06001",
+    "BC-QA-06002"
+   ],
+   "evidence_tag": "verified",
+   "archetype_id": "BC-QA-06001",
+   "cue": "A sum from a table, a stated increasing, decreasing or concavity property, and over or under asked.",
+   "method": "Name the sum type: left or right uses monotonicity, trapezoid or midpoint uses concavity.",
+   "rival": "Rival: a trapezoid judged by increasing.",
+   "separating_feature": "The named sum type."
+  },
+  {
+   "id": "LSN-CON-06004#s4",
+   "type": "worked_example",
+   "bands": [
+    "low",
+    "mid"
+   ],
+   "skills": [
+    "BC-SKL-06010"
+   ],
+   "sources": [
+    "BC-QA-06001"
+   ],
+   "evidence_tag": "inferred",
+   "archetype_id": "BC-QA-06001",
+   "parameter_draw": {
+    "gaps": [
+     2,
+     2,
+     1,
+     3
+    ],
+    "even_gap": 2,
+    "rates": [
+     3,
+     5,
+     8,
+     12,
+     17
+    ],
+    "endpoint": "left",
+    "context": "rain",
+    "spacing": "nonuniform",
+    "framing": "context"
+   },
+   "problem": {
+    "text": "Rain falls at r(t) mm per hour, r increasing. t: 0, 2, 4, 5, 8; r(t): 3, 5, 8, 12, 17. Find the left sum for ∫_0^8 r(t) dt. Under or over?",
+    "command_verb": "find"
+   },
+   "calculator_status": "calculator",
+   "steps": [
+    {
+     "cue": "Left ends times widths 2, 2, 1, 3.",
+     "why": "Products shown.",
+     "expression": 60,
+     "point_type_id": "BC-PT-99018",
+     "relation": "new"
+    },
+    {
+     "cue": "Add.",
+     "why": "The value with its products.",
+     "expression": 60,
+     "point_type_id": "BC-PT-99019",
+     "relation": "equivalent"
+    },
+    {
+     "cue": "Left sum and r increasing: monotonicity decides.",
+     "why": "Each left height is the least on its subinterval."
+    },
+    {
+     "cue": "Write direction and reason.",
+     "why": "A bare direction earns nothing."
+    }
+   ],
+   "answer": {
+    "form": "statement",
+    "mathjson": "underestimate",
+    "text": "60, an underestimate, because r is increasing on [0, 8]."
+   },
+   "delivery": {
+    "mode": "step_reveal",
+    "reason": "rule 1",
+    "sources": []
+   }
+  },
+  {
+   "id": "LSN-CON-06004#s5",
+   "type": "what_a_reader_scores",
+   "bands": [
+    "low",
+    "mid"
+   ],
+   "skills": [
+    "BC-SKL-06010"
+   ],
+   "sources": [
+    "BC-PT-99018",
+    "BC-PT-99019"
+   ],
+   "evidence_tag": "verified",
+   "example_id": "LSN-CON-06004#s4",
+   "lines": [
+    {
+     "point_type_id": "BC-PT-99018",
+     "text": "Form of a Riemann or trapezoidal sum. Earned by: A sum whose terms each show a value factor and a width factor, with at least five of the six factors correct for three subintervals (sg-25:13, sg-26:3, sg-23:2) or seven of eight for four subintervals (sg-22:15). Not earned by: A left or right sum where a midpoint or trapezoidal sum was asked for (sg-26:3, sg-25:13); an unsupported total (sg-26:3, sg-22:15). Notation: sg-25:13 and sg-26:3 instruct readers to read an equals sign as approximately equal for this point."
+    },
+    {
+     "point_type_id": "BC-PT-99019",
+     "text": "Approximation value supported by the sum. Earned by: The numerical value of the sum with the supporting products present (sg-25:13, sg-23:2). Not earned by: The value alone with no work (sg-26:3, sg-22:15, sg-23:2)."
+    }
+   ]
+  },
+  {
+   "id": "LSN-CON-06004#err-BC-ERR-06005",
+   "type": "common_error",
+   "bands": [
+    "low",
+    "mid"
+   ],
+   "skills": [
+    "BC-SKL-06010",
+    "BC-SKL-06011"
+   ],
+   "sources": [
+    "BC-ERR-06005"
+   ],
+   "evidence_tag": "inferred",
+   "error_id": "BC-ERR-06005",
+   "observed_behavior": "The response asserts that an approximation is an underestimate or an overestimate but cites no monotonicity or concavity evidence.",
+   "scoring_consequence": "The justification point is not earned even when the direction stated is correct.",
+   "wrong_step": {
+    "text": "Underestimate.",
+    "expression": [
+     "Less",
+     60,
+     [
+      "Integrate",
+      [
+       "Apply",
+       "r",
+       "t"
+      ],
+      [
+       "Tuple",
+       "t",
+       0,
+       8
+      ]
+     ]
+    ]
+   },
+   "right_step": {
+    "text": "Underestimate, r increasing.",
+    "expression": [
+     "Less",
+     60,
+     [
+      "Integrate",
+      [
+       "Apply",
+       "r",
+       "t"
+      ],
+      [
+       "Tuple",
+       "t",
+       0,
+       8
+      ]
+     ]
+    ]
+   },
+   "relation": "equivalent",
+   "delivery": {
+    "mode": "step_reveal",
+    "reason": "rule 1",
+    "sources": []
+   }
+  },
+  {
+   "id": "LSN-CON-06004#err-BC-ERR-06006",
+   "type": "common_error",
+   "bands": [
+    "low",
+    "mid"
+   ],
+   "skills": [
+    "BC-SKL-06010"
+   ],
+   "sources": [
+    "BC-ERR-06006"
+   ],
+   "evidence_tag": "inferred",
+   "error_id": "BC-ERR-06006",
+   "observed_behavior": "A left sum is called an overestimate for an increasing function, or a right sum an underestimate.",
+   "scoring_consequence": "The justification point is lost and the answer point with it when the direction is part of the answer.",
+   "wrong_step": {
+    "text": "Overestimate.",
+    "expression": [
+     "Greater",
+     60,
+     [
+      "Integrate",
+      [
+       "Apply",
+       "r",
+       "t"
+      ],
+      [
+       "Tuple",
+       "t",
+       0,
+       8
+      ]
+     ]
+    ]
+   },
+   "right_step": {
+    "text": "Underestimate.",
+    "expression": [
+     "Less",
+     60,
+     [
+      "Integrate",
+      [
+       "Apply",
+       "r",
+       "t"
+      ],
+      [
+       "Tuple",
+       "t",
+       0,
+       8
+      ]
+     ]
+    ]
+   },
+   "relation": "distinct",
+   "delivery": {
+    "mode": "step_reveal",
+    "reason": "rule 1",
+    "sources": []
+   }
+  },
+  {
+   "id": "LSN-CON-06004#err-BC-ERR-06007",
+   "type": "common_error",
+   "bands": [
+    "low",
+    "mid"
+   ],
+   "skills": [
+    "BC-SKL-06011"
+   ],
+   "sources": [
+    "BC-ERR-06007",
+    "BC-MIS-05020"
+   ],
+   "evidence_tag": "inferred",
+   "error_id": "BC-ERR-06007",
+   "observed_behavior": "The response argues that a trapezoidal sum overestimates because the function is increasing.",
+   "scoring_consequence": "The justification point is not earned because the stated reason does not support the conclusion.",
+   "wrong_step": {
+    "text": "Same table, trapezoidal sum 74.5, called an overestimate because r increases.",
+    "expression": [
+     "Greater",
+     [
+      "Rational",
+      149,
+      2
+     ],
+     [
+      "Integrate",
+      [
+       "Apply",
+       "r",
+       "t"
+      ],
+      [
+       "Tuple",
+       "t",
+       0,
+       8
+      ]
+     ]
+    ]
+   },
+   "right_step": {
+    "text": "74.5, with no concavity given, so no direction follows.",
+    "expression": [
+     "Rational",
+     149,
+     2
+    ]
+   },
+   "relation": "distinct",
+   "possible_reason": {
+    "misconception_id": "BC-MIS-05020",
+    "text": "does not distinguish rising from bending upward"
+   },
+   "delivery": {
+    "mode": "step_reveal",
+    "reason": "rule 1",
+    "sources": []
+   }
+  },
+  {
+   "id": "LSN-CON-06004#prq-BC-PRQ-06008",
+   "type": "prerequisite_bridge",
+   "bands": [
+    "low",
+    "mid"
+   ],
+   "skills": [
+    "BC-SKL-06010",
+    "BC-SKL-06011"
+   ],
+   "sources": [
+    "BC-PRQ-06008"
+   ],
+   "evidence_tag": "inferred",
+   "prerequisite_id": "BC-PRQ-06008",
+   "text": "Say which is larger, estimate or exact, from how f rises, falls or bends; a claim with no such reason fails."
+  }
+ ],
+ "checks": [
+  {
+   "id": "LSN-CON-06004#chk-1",
+   "check_kind": "completion",
+   "bands": [
+    "low",
+    "mid"
+   ],
+   "format": "short_answer",
+   "archetype_id": "BC-QA-06001",
+   "parameter_draw": {
+    "gaps": [
+     2,
+     2,
+     1,
+     3
+    ],
+    "even_gap": 2,
+    "rates": [
+     3,
+     5,
+     8,
+     12,
+     17
+    ],
+    "endpoint": "left",
+    "context": "rain",
+    "spacing": "nonuniform",
+    "framing": "context"
+   },
+   "completes": "LSN-CON-06004#s4",
+   "stem": {
+    "text": "The left sum is 60 and r is increasing. Under or over, with the reason?",
+    "command_verb": "determine"
+   },
+   "answer_key": {
+    "form": "statement",
+    "mathjson": "underestimate",
+    "text": "An underestimate, because r is increasing on [0, 8]."
+   },
+   "worked_solution": [],
+   "calculator_status": "calculator",
+   "representation": "BC-REP-03",
+   "skills": [
+    "BC-SKL-06010"
+   ]
+  },
+  {
+   "id": "LSN-CON-06004#chk-2",
+   "check_kind": "isomorph",
+   "bands": [
+    "low",
+    "mid"
+   ],
+   "format": "short_answer",
+   "archetype_id": "BC-QA-06001",
+   "parameter_draw": {
+    "gaps": [
+     1,
+     3,
+     2,
+     2
+    ],
+    "even_gap": 2,
+    "rates": [
+     18,
+     14,
+     9,
+     6,
+     2
+    ],
+    "endpoint": "right",
+    "context": "tank",
+    "spacing": "nonuniform",
+    "framing": "context"
+   },
+   "stem": {
+    "text": "R decreasing; t: 0, 1, 4, 6, 8; R(t): 18, 14, 9, 6, 2. Right sum for ∫_0^8 R(t) dt, under or over?",
+    "command_verb": "find"
+   },
+   "answer_key": {
+    "form": "statement",
+    "mathjson": "underestimate",
+    "text": "57, an underestimate, because R is decreasing on [0, 8]."
+   },
+   "worked_solution": [
+    {
+     "step": 1,
+     "text": "Right ends times widths 1, 3, 2, 2.",
+     "mathjson": 57,
+     "relation": "new"
+    },
+    {
+     "step": 2,
+     "text": "Add.",
+     "mathjson": 57,
+     "relation": "equivalent"
+    }
+   ],
+   "calculator_status": "calculator",
+   "representation": "BC-REP-03",
+   "skills": [
+    "BC-SKL-06010"
+   ]
+  },
+  {
+   "id": "LSN-CON-06004#chk-3",
+   "check_kind": "mcq",
+   "bands": [
+    "low"
+   ],
+   "format": "mcq",
+   "archetype_id": "BC-QA-06002",
+   "parameter_draw": {
+    "gaps": [
+     2,
+     4,
+     6
+    ],
+    "rates": [
+     2,
+     3,
+     6,
+     15
+    ],
+    "initial": 30,
+    "context": "download",
+    "ask": "integral"
+   },
+   "stem": {
+    "text": "r is increasing and concave up; t: 0, 2, 6, 12; r(t): 2, 3, 6, 15. The trapezoidal sum for ∫_0^12 r(t) dt is 86. Which is right?",
+    "command_verb": "identify"
+   },
+   "answer_key": {
+    "form": "statement",
+    "mathjson": "overestimate_concave_up"
+   },
+   "worked_solution": [],
+   "options": [
+    {
+     "id": "A",
+     "is_key": true,
+     "error_path": null,
+     "label": "Overestimate, because r is concave up."
+    },
+    {
+     "id": "B",
+     "is_key": false,
+     "error_path": "BC-ERR-06007",
+     "label": "Overestimate, because r is increasing.",
+     "derivation": "the trapezoid judged by monotonicity"
+    },
+    {
+     "id": "C",
+     "is_key": false,
+     "error_path": "BC-ERR-06005",
+     "label": "Overestimate.",
+     "derivation": "a direction with no property cited"
+    },
+    {
+     "id": "D",
+     "is_key": false,
+     "error_path": "BC-ERR-06005",
+     "label": "Underestimate, since a sum only approximates.",
+     "derivation": "a direction with no monotonicity or concavity evidence"
+    }
+   ],
+   "calculator_status": "no_calculator",
+   "representation": "BC-REP-03",
+   "skills": [
+    "BC-SKL-06011"
+   ]
+  }
+ ],
+ "refresher": [
+  "LSN-CON-06004#s2",
+  "LSN-CON-06004#err-BC-ERR-06005",
+  "LSN-CON-06004#err-BC-ERR-06006",
+  "LSN-CON-06004#err-BC-ERR-06007",
+  "LSN-CON-06004#s4"
+ ],
+ "provenance": {
+  "author": "tools/lesson_transcribe.py",
+  "prompt_version": "generator/lesson_v1",
+  "design_path": "docs/lessons/unit-06/LSN-CON-06004.md",
+  "signed_off_by": "claude-opus-5-5",
+  "signed_off_at": "2026-09-29",
+  "not_human": true
+ }
+}

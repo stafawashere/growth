@@ -1,0 +1,894 @@
+{
+ "id": "LSN-CON-05012",
+ "version": 1,
+ "kind": "concept",
+ "target_id": "BC-CON-05012",
+ "status": "signed_off",
+ "snapshot_digest": "a6a8ec9d3f59ab8f712e33d30cc22fc64bf2c478fbe7312e3e3118d319c6a42f",
+ "source_digest": "b1a6810c817f72347a2c173ce7d1449cd580a81685f697345c4d0af450692cd9",
+ "read_minutes": {
+  "full": 5.0,
+  "brief": 3.0
+ },
+ "word_count": {
+  "full": 535,
+  "brief": 369
+ },
+ "sections": [
+  {
+   "id": "LSN-CON-05012#s1",
+   "type": "orientation",
+   "bands": [
+    "low",
+    "mid"
+   ],
+   "skills": [
+    "BC-SKL-05045",
+    "BC-SKL-05046",
+    "BC-SKL-05047",
+    "BC-SKL-05048"
+   ],
+   "sources": [
+    "BC-CON-05012",
+    "research/units/unit-05-analytical-applications-differentiation.md#5.9 Connecting a Function, Its First Derivative, and Its Second Derivative"
+   ],
+   "evidence_tag": "inferred",
+   "text": "Three curves are \\(f\\), \\(f'\\) and \\(f''\\) in some order. A response matches the turning points of one curve with the sign-changing zeros of another, twice, and names the object each reason is about.",
+   "delivery": {
+    "mode": "figure",
+    "reason": "rule 3: BC-REP-02 on BC-SKL-05045; three fixed curves",
+    "sources": [
+     "BC-SKL-05045"
+    ],
+    "spec": {
+     "kind": "graph",
+     "representations": [
+      "BC-REP-02"
+     ],
+     "curves": [
+      {
+       "expr": "-x**3/3 + x**2/2 + 2*x",
+       "name": "B"
+      },
+      {
+       "expr": "-(x + 1)*(x - 2)",
+       "name": "C"
+      },
+      {
+       "expr": "1 - 2*x",
+       "name": "A"
+      }
+     ],
+     "window": {
+      "x": [
+       -3,
+       4
+      ],
+      "y": [
+       -5,
+       5
+      ]
+     },
+     "labels": [
+      {
+       "text": "A",
+       "placement": "inside"
+      },
+      {
+       "text": "B",
+       "placement": "inside"
+      },
+      {
+       "text": "C",
+       "placement": "inside"
+      }
+     ]
+    },
+    "fallback": "the same three curves, static, each lettered inside the figure",
+    "keyboard": "none needed; no control"
+   }
+  },
+  {
+   "id": "LSN-CON-05012#s2",
+   "type": "key_ideas",
+   "bands": [
+    "low",
+    "mid"
+   ],
+   "skills": [
+    "BC-SKL-05045",
+    "BC-SKL-05046",
+    "BC-SKL-05047",
+    "BC-SKL-05048"
+   ],
+   "sources": [
+    "BC-EK-FUN-4A11",
+    "ced:107",
+    "research/units/unit-05-analytical-applications-differentiation.md#5.9 Connecting a Function, Its First Derivative, and Its Second Derivative"
+   ],
+   "evidence_tag": "verified",
+   "ek_id": "BC-EK-FUN-4A11",
+   "depth": "core",
+   "text": "Extrema of \\(f\\) sit where \\(f'\\) changes sign. Inflection points of \\(f\\) sit where \\(f''\\) changes sign, which are the turning points of \\(f'\\). Concavity of \\(f\\) is the sign of \\(f''\\). So a curve whose sign-changing zeros line up with another curve's turning points is its derivative. Applied twice, this orders all three.",
+   "notation": "f, f', f''",
+   "quote": {
+    "text": "Key features of the graphs of f, f', and f\" are related to one another.",
+    "source": "ced:107"
+   },
+   "delivery": {
+    "mode": "interactive",
+    "reason": "rule 3 promoted: BC-REP-02 on BC-SKL-05045; BC-QA-05009 difficulty_variables 'whether three objects are in play rather than two' and the stem asks for a reading along x",
+    "sources": [
+     "BC-SKL-05045",
+     "BC-QA-05009"
+    ],
+    "spec": {
+     "kind": "stacked_graphs",
+     "representations": [
+      "BC-REP-02"
+     ],
+     "panels": [
+      {
+       "curve": "-x**3/3 + x**2/2 + 2*x",
+       "name": "f"
+      },
+      {
+       "curve": "-(x + 1)*(x - 2)",
+       "name": "f'"
+      },
+      {
+       "curve": "1 - 2*x",
+       "name": "f''"
+      }
+     ],
+     "window": {
+      "x": [
+       -3,
+       4
+      ]
+     },
+     "controls": [
+      {
+       "type": "slider",
+       "parameter": "x",
+       "range": [
+        -3,
+        4
+       ],
+       "step": 0.5,
+       "start": -2
+      }
+     ],
+     "drawn": [
+      "one vertical line through all three panels at x",
+      "the signs of f' and f'' at x"
+     ],
+     "labels": [
+      {
+       "text": "sign of f'",
+       "placement": "inside"
+      },
+      {
+       "text": "sign of f''",
+       "placement": "inside"
+      },
+      {
+       "text": "f turns where f' crosses",
+       "placement": "inside"
+      }
+     ],
+     "question": "At this x, is f rising or falling, and concave up or down?"
+    },
+    "fallback": "the three panels, static, with vertical lines at x = -1, 1/2 and 2 and the signs written in each piece",
+    "keyboard": "Tab focuses the slider; left and right arrow keys move x by 0.5; the two signs are announced"
+   }
+  },
+  {
+   "id": "LSN-CON-05012#s3",
+   "type": "strategy",
+   "bands": [
+    "low",
+    "mid"
+   ],
+   "skills": [
+    "BC-SKL-05045",
+    "BC-SKL-05046",
+    "BC-SKL-05047",
+    "BC-SKL-05048"
+   ],
+   "sources": [
+    "BC-QA-05009"
+   ],
+   "evidence_tag": "inferred",
+   "archetype_id": "BC-QA-05009",
+   "cue": "The stem asks for an assignment of roles, from two or three plotted curves.",
+   "method": "First written line: find the turning points of each curve.",
+   "rival": "Rival: deciding the order from the vertical scale of the plots.",
+   "separating_feature": "Zeros under another curve's turning points mark its derivative; scale plays no part."
+  },
+  {
+   "id": "LSN-CON-05012#s4",
+   "type": "worked_example",
+   "bands": [
+    "low",
+    "mid"
+   ],
+   "skills": [
+    "BC-SKL-05045",
+    "BC-SKL-05046",
+    "BC-SKL-05047",
+    "BC-SKL-05048"
+   ],
+   "sources": [
+    "BC-QA-05009"
+   ],
+   "evidence_tag": "inferred",
+   "archetype_id": "BC-QA-05009",
+   "parameter_draw": {
+    "first_root": -1,
+    "root_gap": 3,
+    "steepness": "1",
+    "orientation": -1,
+    "lift": 0,
+    "lettering": "BCA",
+    "framing": "derivatives"
+   },
+   "problem": {
+    "text": "Curves A, B, C are \\(f\\), \\(f'\\), \\(f''\\) in some order. B has horizontal tangents at \\(x=-1\\) and \\(x=2\\). C is \\(y=-(x+1)(x-2)\\). A is \\(y=1-2x\\). Identify each.",
+    "command_verb": "identify"
+   },
+   "calculator_status": "no_calculator",
+   "steps": [
+    {
+     "cue": "Turning points first: B turns at \\(-1\\) and \\(2\\).",
+     "why": "Which curve crosses the axis there?",
+     "expression": [
+      "Multiply",
+      [
+       "Add",
+       -1,
+       [
+        "Multiply",
+        -1,
+        "x"
+       ]
+      ],
+      [
+       "Add",
+       -2,
+       "x"
+      ]
+     ],
+     "relation": "new"
+    },
+    {
+     "cue": "Zeros of C.",
+     "why": "C changes sign at \\(-1\\) and \\(2\\).",
+     "expression": [
+      "Set",
+      -1,
+      2
+     ],
+     "relation": "solve",
+     "variable": "x"
+    },
+    {
+     "cue": "C's zeros sit under B's turning points.",
+     "why": "So C is the derivative of B."
+    },
+    {
+     "cue": "Apply the rule again: C turns at its vertex.",
+     "why": "Which curve crosses there?",
+     "expression": [
+      "Add",
+      1,
+      [
+       "Multiply",
+       -2,
+       "x"
+      ]
+     ],
+     "relation": "new"
+    },
+    {
+     "cue": "Zero of A.",
+     "why": "A changes sign at \\(\\frac{1}{2}\\), the vertex of C.",
+     "expression": [
+      "Rational",
+      1,
+      2
+     ],
+     "relation": "solve",
+     "variable": "x"
+    },
+    {
+     "cue": "Two links: B to C, C to A.",
+     "why": "B is \\(f\\), C is \\(f'\\), A is \\(f''\\)."
+    }
+   ],
+   "answer": {
+    "form": "statement",
+    "mathjson": "B_is_f_C_is_f1_A_is_f2"
+   },
+   "delivery": {
+    "mode": "step_reveal",
+    "reason": "rule 1",
+    "sources": []
+   }
+  },
+  {
+   "id": "LSN-CON-05012#err-BC-ERR-05046",
+   "type": "common_error",
+   "bands": [
+    "low",
+    "mid"
+   ],
+   "skills": [
+    "BC-SKL-05045"
+   ],
+   "sources": [
+    "BC-ERR-05046",
+    "BC-MIS-05011"
+   ],
+   "evidence_tag": "inferred",
+   "error_id": "BC-ERR-05046",
+   "observed_behavior": "The response labels the function as the second derivative and the second derivative as the function.",
+   "scoring_consequence": "Every feature question about the triple is answered about the wrong object.",
+   "wrong_step": {
+    "text": "A is \\(f\\), C is \\(f'\\), B is \\(f''\\).",
+    "expression": "A_is_f_C_is_f1_B_is_f2"
+   },
+   "right_step": {
+    "text": "B is \\(f\\), C is \\(f'\\), A is \\(f''\\).",
+    "expression": "B_is_f_C_is_f1_A_is_f2"
+   },
+   "relation": "distinct",
+   "possible_reason": {
+    "misconception_id": "BC-MIS-05011",
+    "text": "reading features of whatever curve is drawn"
+   },
+   "delivery": {
+    "mode": "step_reveal",
+    "reason": "rule 1",
+    "sources": []
+   }
+  },
+  {
+   "id": "LSN-CON-05012#err-BC-ERR-05047",
+   "type": "common_error",
+   "bands": [
+    "low",
+    "mid"
+   ],
+   "skills": [
+    "BC-SKL-05046"
+   ],
+   "sources": [
+    "BC-ERR-05047",
+    "BC-MIS-05020"
+   ],
+   "evidence_tag": "inferred",
+   "error_id": "BC-ERR-05047",
+   "observed_behavior": "The response states that the graph is concave up where the second derivative is decreasing rather than positive.",
+   "scoring_consequence": "The concavity claim is wrong and any inflection list built from it inherits the error.",
+   "wrong_step": {
+    "text": "\\(f''\\) decreases everywhere, so concave up everywhere.",
+    "expression": [
+     "Interval",
+     [
+      "Open",
+      "NegativeInfinity"
+     ],
+     [
+      "Open",
+      "PositiveInfinity"
+     ]
+    ]
+   },
+   "right_step": {
+    "text": "\\(f''=1-2x>0\\) for \\(x<\\frac{1}{2}\\).",
+    "expression": [
+     "Interval",
+     [
+      "Open",
+      "NegativeInfinity"
+     ],
+     [
+      "Open",
+      [
+       "Rational",
+       1,
+       2
+      ]
+     ]
+    ]
+   },
+   "relation": "distinct",
+   "possible_reason": {
+    "misconception_id": "BC-MIS-05020",
+    "text": "the sign and the direction of the derivative are used interchangeably"
+   },
+   "delivery": {
+    "mode": "step_reveal",
+    "reason": "rule 1",
+    "sources": []
+   }
+  },
+  {
+   "id": "LSN-CON-05012#err-BC-ERR-05048",
+   "type": "common_error",
+   "bands": [
+    "low",
+    "mid"
+   ],
+   "skills": [
+    "BC-SKL-05047"
+   ],
+   "sources": [
+    "BC-ERR-05048",
+    "BC-MIS-05010"
+   ],
+   "evidence_tag": "inferred",
+   "error_id": "BC-ERR-05048",
+   "observed_behavior": "The response partitions the number line at the zeros of the function instead of at the zeros of its derivatives.",
+   "scoring_consequence": "The partition does not align with the sign changes that matter, so the reported behaviour is wrong.",
+   "wrong_step": {
+    "text": "Sign table cut where B crosses the axis.",
+    "expression": "cut_at_zeros_of_f"
+   },
+   "right_step": {
+    "text": "Cut at \\(-1\\), \\(\\frac{1}{2}\\), \\(2\\), the zeros of \\(f'\\) and \\(f''\\).",
+    "expression": "cut_at_zeros_of_f1_and_f2"
+   },
+   "relation": "distinct",
+   "possible_reason": {
+    "misconception_id": "BC-MIS-05010",
+    "text": "decides increase and decrease from whether the function values are positive or negative"
+   },
+   "delivery": {
+    "mode": "step_reveal",
+    "reason": "rule 1",
+    "sources": []
+   }
+  },
+  {
+   "id": "LSN-CON-05012#err-BC-ERR-05049",
+   "type": "common_error",
+   "bands": [
+    "low",
+    "mid"
+   ],
+   "skills": [
+    "BC-SKL-05048"
+   ],
+   "sources": [
+    "BC-ERR-05049",
+    "BC-MIS-05026"
+   ],
+   "evidence_tag": "inferred",
+   "error_id": "BC-ERR-05049",
+   "observed_behavior": "The response claims monotonicity or concavity across a whole interval from three tabulated derivative values.",
+   "scoring_consequence": "The claim exceeds what the data support and cannot earn a justification point.",
+   "wrong_step": {
+    "text": "\\(f'(-2)=-4\\), \\(f'(2.5)=-1.75\\), \\(f'(3)=-4\\), so \\(f\\) decreases on \\([-2,3]\\).",
+    "expression": "decreasing_on_whole_interval"
+   },
+   "right_step": {
+    "text": "The table gives \\(f'<0\\) at three inputs only; between them \\(f'>0\\) on \\((-1,2)\\), so \\(f\\) rises there.",
+    "expression": "negative_at_listed_inputs_only"
+   },
+   "relation": "distinct",
+   "possible_reason": {
+    "misconception_id": "BC-MIS-05026",
+    "text": "treats a finite table of derivative values as a full description of the function"
+   },
+   "delivery": {
+    "mode": "step_reveal",
+    "reason": "rule 1",
+    "sources": []
+   }
+  },
+  {
+   "id": "LSN-CON-05012#s5",
+   "type": "representations",
+   "bands": [
+    "low"
+   ],
+   "skills": [
+    "BC-SKL-05045",
+    "BC-SKL-05046",
+    "BC-SKL-05047",
+    "BC-SKL-05048"
+   ],
+   "sources": [
+    "BC-SKL-05047",
+    "research/units/unit-05-analytical-applications-differentiation.md#5.9 Connecting a Function, Its First Derivative, and Its Second Derivative"
+   ],
+   "evidence_tag": "inferred",
+   "text": "Sign table for ex-1: cut at \\(-1\\), \\(\\frac{1}{2}\\), \\(2\\). Each piece carries the sign of \\(f'\\) and of \\(f''\\), read together as rising or falling and concave up or down.",
+   "figure": {
+    "kind": "table",
+    "representations": [
+     "BC-REP-03"
+    ],
+    "columns": [
+     "x",
+     "x < -1",
+     "-1 < x < 1/2",
+     "1/2 < x < 2",
+     "x > 2"
+    ],
+    "rows": [
+     [
+      "f'",
+      "negative",
+      "positive",
+      "positive",
+      "negative"
+     ],
+     [
+      "f''",
+      "positive",
+      "positive",
+      "negative",
+      "negative"
+     ],
+     [
+      "f",
+      "falling, concave up",
+      "rising, concave up",
+      "rising, concave down",
+      "falling, concave down"
+     ]
+    ],
+    "labels": [
+     {
+      "text": "cuts at zeros of f' and f'' only",
+      "placement": "inside"
+     }
+    ]
+   },
+   "delivery": {
+    "mode": "table",
+    "reason": "rule 4: BC-REP-03 on BC-SKL-05047 and 05048",
+    "sources": [
+     "BC-SKL-05047",
+     "BC-SKL-05048"
+    ],
+    "spec": {
+     "kind": "table",
+     "representations": [
+      "BC-REP-03"
+     ],
+     "columns": [
+      "x",
+      "x < -1",
+      "-1 < x < 1/2",
+      "1/2 < x < 2",
+      "x > 2"
+     ],
+     "rows": [
+      [
+       "f'",
+       "-",
+       "+",
+       "+",
+       "-"
+      ],
+      [
+       "f''",
+       "+",
+       "+",
+       "-",
+       "-"
+      ]
+     ],
+     "labels": [
+      {
+       "text": "cuts at zeros of f' and f'' only",
+       "placement": "inside"
+      }
+     ]
+    },
+    "fallback": "the table as plain text rows",
+    "keyboard": "Tab moves between cells; no control"
+   }
+  },
+  {
+   "id": "LSN-CON-05012#prq-BC-PRQ-06005",
+   "type": "prerequisite_bridge",
+   "bands": [
+    "low",
+    "mid"
+   ],
+   "skills": [
+    "BC-SKL-05048"
+   ],
+   "sources": [
+    "BC-PRQ-06005"
+   ],
+   "evidence_tag": "inferred",
+   "prerequisite_id": "BC-PRQ-06005",
+   "text": "\\(f'\\) and \\(f\\) are different objects. Name which curve or table row is which before reading a value, or values are pulled for the wrong object."
+  }
+ ],
+ "checks": [
+  {
+   "id": "LSN-CON-05012#chk-1",
+   "check_kind": "completion",
+   "bands": [
+    "low",
+    "mid"
+   ],
+   "format": "short_answer",
+   "archetype_id": "BC-QA-05009",
+   "parameter_draw": {
+    "first_root": -1,
+    "root_gap": 3,
+    "steepness": "1",
+    "orientation": -1,
+    "lift": 0,
+    "lettering": "BCA",
+    "framing": "derivatives"
+   },
+   "completes": "LSN-CON-05012#s4",
+   "stem": {
+    "text": "C crosses the axis where B turns; A crosses where C turns. Assign \\(f\\), \\(f'\\), \\(f''\\).",
+    "command_verb": "identify"
+   },
+   "answer_key": {
+    "form": "statement",
+    "mathjson": "B_is_f_C_is_f1_A_is_f2"
+   },
+   "worked_solution": [
+    {
+     "step": 1,
+     "text": "Zeros of C.",
+     "mathjson": [
+      "Multiply",
+      [
+       "Add",
+       -1,
+       [
+        "Multiply",
+        -1,
+        "x"
+       ]
+      ],
+      [
+       "Add",
+       -2,
+       "x"
+      ]
+     ],
+     "relation": "new"
+    },
+    {
+     "step": 2,
+     "text": "At the turning points of B.",
+     "mathjson": [
+      "Set",
+      -1,
+      2
+     ],
+     "relation": "solve",
+     "variable": "x"
+    }
+   ],
+   "calculator_status": "no_calculator",
+   "representation": "BC-REP-01",
+   "skills": [
+    "BC-SKL-05045"
+   ]
+  },
+  {
+   "id": "LSN-CON-05012#chk-2",
+   "check_kind": "isomorph",
+   "bands": [
+    "low",
+    "mid"
+   ],
+   "format": "short_answer",
+   "archetype_id": "BC-QA-05009",
+   "parameter_draw": {
+    "first_root": -4,
+    "root_gap": 5,
+    "steepness": "1/3",
+    "orientation": 1,
+    "lift": -1,
+    "lettering": "CAB",
+    "framing": "derivatives"
+   },
+   "stem": {
+    "text": "C turns at \\(x=-4\\) and \\(x=1\\). A is \\(y=\\frac{1}{3}(x+4)(x-1)\\). B crosses the axis only at \\(x=-\\frac{3}{2}\\). Assign roles.",
+    "command_verb": "identify"
+   },
+   "answer_key": {
+    "form": "statement",
+    "mathjson": "C_is_f_A_is_f1_B_is_f2"
+   },
+   "worked_solution": [
+    {
+     "step": 1,
+     "text": "A.",
+     "mathjson": [
+      "Multiply",
+      [
+       "Rational",
+       1,
+       3
+      ],
+      [
+       "Add",
+       -1,
+       "x"
+      ],
+      [
+       "Add",
+       4,
+       "x"
+      ]
+     ],
+     "relation": "new"
+    },
+    {
+     "step": 2,
+     "text": "A crosses at C's turning points.",
+     "mathjson": [
+      "Set",
+      -4,
+      1
+     ],
+     "relation": "solve",
+     "variable": "x"
+    },
+    {
+     "step": 3,
+     "text": "Slope of A.",
+     "mathjson": [
+      "Add",
+      1,
+      [
+       "Multiply",
+       [
+        "Rational",
+        2,
+        3
+       ],
+       "x"
+      ]
+     ],
+     "relation": "new"
+    },
+    {
+     "step": 4,
+     "text": "A turns where B crosses.",
+     "mathjson": [
+      "Rational",
+      -3,
+      2
+     ],
+     "relation": "solve",
+     "variable": "x"
+    }
+   ],
+   "calculator_status": "no_calculator",
+   "representation": "BC-REP-01",
+   "skills": [
+    "BC-SKL-05045"
+   ]
+  },
+  {
+   "id": "LSN-CON-05012#chk-3",
+   "check_kind": "mcq",
+   "bands": [
+    "low"
+   ],
+   "format": "mcq",
+   "archetype_id": "BC-QA-05009",
+   "parameter_draw": {
+    "first_root": 1,
+    "root_gap": 2,
+    "steepness": "1/2",
+    "orientation": 1,
+    "lift": -2,
+    "lettering": "BAC",
+    "framing": "derivatives"
+   },
+   "stem": {
+    "text": "B turns at \\(x=1\\) and \\(x=3\\). A crosses the axis at 1 and 3 and turns at 2. C crosses at 2. Which is true?",
+    "command_verb": "identify"
+   },
+   "answer_key": {
+    "form": "statement",
+    "mathjson": "B_is_f_C_is_f2_concave_up_where_C_positive"
+   },
+   "worked_solution": [
+    {
+     "step": 1,
+     "text": "A is \\(\\frac{1}{2}(x-1)(x-3)\\).",
+     "mathjson": [
+      "Multiply",
+      [
+       "Rational",
+       1,
+       2
+      ],
+      [
+       "Add",
+       -1,
+       "x"
+      ],
+      [
+       "Add",
+       -3,
+       "x"
+      ]
+     ],
+     "relation": "new"
+    },
+    {
+     "step": 2,
+     "text": "A crosses at B's turning points.",
+     "mathjson": [
+      "Set",
+      1,
+      3
+     ],
+     "relation": "solve",
+     "variable": "x"
+    }
+   ],
+   "options": [
+    {
+     "id": "A",
+     "is_key": true,
+     "error_path": null,
+     "label": "B is \\(f\\) and C is \\(f''\\); \\(f\\) is concave up where C is positive."
+    },
+    {
+     "id": "B",
+     "is_key": false,
+     "error_path": "BC-ERR-05046",
+     "label": "C is \\(f\\) and B is \\(f''\\); \\(f\\) is concave up where B is positive.",
+     "derivation": "the function and the second derivative exchanged"
+    },
+    {
+     "id": "C",
+     "is_key": false,
+     "error_path": "BC-ERR-05047",
+     "label": "B is \\(f\\) and C is \\(f''\\); \\(f\\) is concave up where C is decreasing.",
+     "derivation": "concavity read from the direction of f'' instead of its sign"
+    },
+    {
+     "id": "D",
+     "is_key": false,
+     "error_path": "BC-ERR-05048",
+     "label": "B is \\(f\\) and C is \\(f''\\); the sign table is cut where B crosses the axis.",
+     "derivation": "partition at the zeros of f"
+    }
+   ],
+   "calculator_status": "no_calculator",
+   "representation": "BC-REP-01",
+   "skills": [
+    "BC-SKL-05045"
+   ]
+  }
+ ],
+ "refresher": [
+  "LSN-CON-05012#s2",
+  "LSN-CON-05012#err-BC-ERR-05046",
+  "LSN-CON-05012#err-BC-ERR-05047",
+  "LSN-CON-05012#err-BC-ERR-05048",
+  "LSN-CON-05012#err-BC-ERR-05049",
+  "LSN-CON-05012#s4"
+ ],
+ "provenance": {
+  "author": "tools/lesson_transcribe.py",
+  "prompt_version": "generator/lesson_v1",
+  "design_path": "docs/lessons/unit-05/LSN-CON-05012.md",
+  "signed_off_by": "claude-opus-5-5",
+  "signed_off_at": "2026-09-29",
+  "not_human": true
+ }
+}

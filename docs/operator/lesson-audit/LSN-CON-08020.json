@@ -1,0 +1,155 @@
+{
+ "lesson_id": "LSN-CON-08020",
+ "version": 1,
+ "compared_on": "2026-09-29",
+ "auditor": "claude-opus-5-5",
+ "resolve": {
+  "date": "2026-09-29",
+  "problems": 5,
+  "agreed": 5,
+  "judgments_pending": 0,
+  "all_agree": true,
+  "verdicts": [
+   {
+    "id": "LSN-CON-08020#ex-1",
+    "agree": true,
+    "detail": "agree (symbolic)",
+    "method": "Washers about y=3: outer radius 3-g, inner 3-f, on [0,2]."
+   },
+   {
+    "id": "LSN-CON-08020#ex-2",
+    "agree": true,
+    "detail": "agree (symbolic)",
+    "method": "Washers about y=-1 on [1,3], outer f+1, inner 3."
+   },
+   {
+    "id": "LSN-CON-08020#chk-1",
+    "agree": true,
+    "detail": "agree (symbolic)",
+    "method": "Direct integration."
+   },
+   {
+    "id": "LSN-CON-08020#chk-2",
+    "agree": true,
+    "detail": "agree (symbolic)",
+    "method": "Washers about y=4 on [1,2], outer 4-g, inner 4-f."
+   },
+   {
+    "id": "LSN-CON-08020#chk-3",
+    "agree": true,
+    "detail": "agree (symbolic)",
+    "method": "Washers about y=4 on [0,1], outer 2, inner 2-x(1-x)."
+   }
+  ],
+  "answers_file": "/tmp/claude-0/-home-user-growth/ac029253-8ff0-5a4b-8b5f-cdcaf5e8ff8d/scratchpad/verify/answers_13.json"
+ },
+ "audit": {
+  "date": "2026-09-29",
+  "auditor": "claude-opus-5-5",
+  "blocks": [
+   {
+    "id": "orientation",
+    "verdict": "ok",
+    "evidence": "Paraphrases BC-CON-08020 description_plain and the 8.12 Assessment behaviour paragraph; 24 words."
+   },
+   {
+    "id": "ki-1",
+    "verdict": "ok",
+    "evidence": "Matches the 8.12 Which radius is outer and Notation paragraphs and CHA-5.C.4 on ced:163; 25 words."
+   },
+   {
+    "id": "st-1",
+    "verdict": "ok",
+    "evidence": "Cue from common_givens, method from BC-SKL-08054, rival from common_distractors and wrong_approaches of BC-QA-08013."
+   },
+   {
+    "id": "ex-1",
+    "verdict": "ok",
+    "evidence": "SymPy: 3-(1+2x-x^2)=x^2-2x+2; pi*integrate(4-(x^2-2x+2)^2,(x,0,2)) = 64*pi/15."
+   },
+   {
+    "id": "ex-2",
+    "verdict": "ok",
+    "evidence": "SymPy: f=g at x=1,3; pi*integrate((4x-x^2)^2-9,(x,1,3)) = 136*pi/15."
+   },
+   {
+    "id": "what_a_reader_scores:ex-1",
+    "verdict": "ok",
+    "evidence": "BC-PT-99058 and BC-PT-99001 lines quote the bundle's earns, does_not_earn and notation fields."
+   },
+   {
+    "id": "what_a_reader_scores:ex-2",
+    "verdict": "ok",
+    "evidence": "BC-PT-99058 line quotes the bundle record."
+   },
+   {
+    "id": "err-BC-ERR-08023",
+    "verdict": "ok",
+    "evidence": "Observed behaviour and consequence verbatim from BC-ERR-08023; right step integral is 64*pi/15."
+   },
+   {
+    "id": "err-BC-ERR-08030",
+    "verdict": "ok",
+    "evidence": "Verbatim record; SymPy: wrong integrand pi*(2-(x^2-2x+2))^2 on [0,2] gives 16*pi/15, distinct from 64*pi/15."
+   },
+   {
+    "id": "err-BC-ERR-08038",
+    "verdict": "ok",
+    "evidence": "Verbatim record; SymPy: pi*integrate(f^2-1,(x,0,2)) = 56*pi/15, distinct."
+   },
+   {
+    "id": "err-BC-ERR-08040",
+    "verdict": "ok",
+    "evidence": "Verbatim record; wrong integrand is the negative of the right one, giving -64*pi/15."
+   },
+   {
+    "id": "representations",
+    "verdict": "ok",
+    "evidence": "null; the 8.12 Representations conversion is carried by ki-1's interactive."
+   },
+   {
+    "id": "bridge-BC-PRQ-08002",
+    "verdict": "ok",
+    "evidence": "Paraphrase of BC-PRQ-08002 description_plain; 10 words."
+   },
+   {
+    "id": "bridge-BC-PRQ-08004",
+    "verdict": "ok",
+    "evidence": "Paraphrase of BC-PRQ-08004 description_plain and failure_signature; 14 words."
+   },
+   {
+    "id": "time",
+    "verdict": "ok",
+    "evidence": "62 minutes over 29 questions in Section I Part A = 2.14 (exam-structure.md Section and part layout); inferred part disclosed."
+   },
+   {
+    "id": "chk-1",
+    "verdict": "ok",
+    "evidence": "SymPy: 64*pi/15; the u = x - 1 substitution gives integral of 4-(x^2+1)^2 on [-1,1], same value."
+   },
+   {
+    "id": "chk-2",
+    "verdict": "ok",
+    "evidence": "SymPy: curves meet at 1 and 2; at x=1.5 distance to g is 1.5, to f is 1, so g outer; value 13*pi/15."
+   },
+   {
+    "id": "chk-3",
+    "verdict": "ok",
+    "evidence": "SymPy: key 19*pi/30; distractors pi/30 ((R-r)^2), 7*pi/10 (f^2-g^2), -19*pi/30 (swapped) all reproduce."
+   }
+  ],
+  "advice": [
+   "ki-1 as an interactive with the axis slider fits the idea: the radii exchange as the line moves, which is a reading the learner performs.",
+   "BC-SKL-08053 (vertical line) is stated in no served block and worked nowhere; ki-1 text mentions only a horizontal axis, so the vertical case is not taught.",
+   "ex-1 step 4 cue 'Ring area.' and why 'Squares, then subtract.' are thin for the step that carries the setup point; naming R squared minus r squared would make the scoring habit explicit.",
+   "The lesson teaches the stem signal, the first line (which curve is farther) and the rival (higher as outer) well; chk-3 tests all three rivals as distractors."
+  ],
+  "counts": {
+   "ok": 18,
+   "unsourced": 0,
+   "wrong": 0,
+   "over_cap": 0,
+   "lint": 0
+  }
+ }
+}

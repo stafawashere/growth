@@ -1,0 +1,683 @@
+{
+ "id": "LSN-CON-06011",
+ "version": 1,
+ "kind": "concept",
+ "target_id": "BC-CON-06011",
+ "status": "draft",
+ "snapshot_digest": "a6a8ec9d3f59ab8f712e33d30cc22fc64bf2c478fbe7312e3e3118d319c6a42f",
+ "source_digest": "9892acc822df521818ebfec6ea1103a6e1aa5da232f2f4f8ed8407ee4e1f4187",
+ "read_minutes": {
+  "full": 4.4,
+  "brief": 3.0
+ },
+ "word_count": {
+  "full": 566,
+  "brief": 403
+ },
+ "sections": [
+  {
+   "id": "LSN-CON-06011#s1",
+   "type": "orientation",
+   "bands": [
+    "low",
+    "mid"
+   ],
+   "skills": [
+    "BC-SKL-06029",
+    "BC-SKL-06030",
+    "BC-SKL-06031",
+    "BC-SKL-06032",
+    "BC-SKL-06033"
+   ],
+   "sources": [
+    "BC-CON-06011",
+    "research/units/unit-06-integration-accumulation.md#6.6 Applying Properties of Definite Integrals"
+   ],
+   "evidence_tag": "inferred",
+   "text": "A response rewrites the requested integral in terms of the supplied ones, by splitting, joining, factoring and reversing, and substitutes the numbers only at the end.",
+   "delivery": {
+    "mode": "text",
+    "reason": "rule 6: a statement of what a response writes",
+    "sources": [
+     "BC-SKL-06029"
+    ]
+   }
+  },
+  {
+   "id": "LSN-CON-06011#s2",
+   "type": "key_ideas",
+   "bands": [
+    "low",
+    "mid"
+   ],
+   "skills": [
+    "BC-SKL-06029",
+    "BC-SKL-06030",
+    "BC-SKL-06031",
+    "BC-SKL-06032"
+   ],
+   "sources": [
+    "BC-EK-FUN-6A2",
+    "ced:123",
+    "research/units/unit-06-integration-accumulation.md#6.6 Applying Properties of Definite Integrals"
+   ],
+   "evidence_tag": "inferred",
+   "ek_id": "BC-EK-FUN-6A2",
+   "depth": "core",
+   "text": "Constants factor out; sums split. Reversed limits change the sign. Adjacent intervals add: a to b plus b to c is a to c. From a to a is 0.",
+   "notation": "integral from a to b = minus integral from b to a",
+   "delivery": {
+    "mode": "table",
+    "reason": "rule 5: BC-REP-03 on BC-SKL-06031, supplied integral values over adjacent intervals",
+    "sources": [
+     "BC-SKL-06031"
+    ],
+    "spec": {
+     "kind": "table",
+     "representations": [
+      "BC-REP-03"
+     ],
+     "columns": [
+      "interval",
+      "[0, 1]",
+      "[1, 4]",
+      "[0, 4]"
+     ],
+     "rows": [
+      [
+       "integral of f",
+       "4",
+       "?",
+       "9"
+      ]
+     ],
+     "labels": [
+      {
+       "text": "[0, 1] + [1, 4] = [0, 4]",
+       "placement": "inside"
+      },
+      {
+       "text": "? = 9 - 4",
+       "placement": "inside"
+      }
+     ]
+    },
+    "fallback": "the table as plain text rows",
+    "keyboard": "Tab moves between cells; no control"
+   }
+  },
+  {
+   "id": "LSN-CON-06011#s3",
+   "type": "key_ideas",
+   "bands": [
+    "low"
+   ],
+   "skills": [
+    "BC-SKL-06033"
+   ],
+   "sources": [
+    "BC-EK-FUN-6A3",
+    "ced:123",
+    "research/units/unit-06-integration-accumulation.md#6.6 Applying Properties of Definite Integrals"
+   ],
+   "evidence_tag": "inferred",
+   "ek_id": "BC-EK-FUN-6A3",
+   "depth": "extended",
+   "text": "A function with a jump is integrated piece by piece, split at the jump. One point's value changes nothing.",
+   "notation": "split at the discontinuity",
+   "delivery": {
+    "mode": "figure",
+    "reason": "rule 4: BC-REP-02 on BC-SKL-06033, a jump discontinuity with the integral split at the jump",
+    "sources": [
+     "BC-SKL-06033"
+    ],
+    "spec": {
+     "kind": "graph",
+     "representations": [
+      "BC-REP-02"
+     ],
+     "window": {
+      "x": [
+       0,
+       5
+      ],
+      "y": [
+       -2,
+       3
+      ]
+     },
+     "curves": [
+      {
+       "expr": "2",
+       "domain": [
+        1,
+        3
+       ],
+       "open_end": 3
+      },
+      {
+       "expr": "-1",
+       "domain": [
+        3,
+        4
+       ],
+       "closed_start": 3
+      }
+     ],
+     "drawn": [
+      "rectangle of height 2 on [1, 3] shaded above",
+      "rectangle of height -1 on [3, 4] shaded below"
+     ],
+     "labels": [
+      {
+       "text": "jump at 3: split here",
+       "placement": "inside"
+      },
+      {
+       "text": "2 times 2 = 4",
+       "placement": "inside"
+      },
+      {
+       "text": "-1 times 1 = -1",
+       "placement": "inside"
+      }
+     ]
+    },
+    "fallback": "the same figure described in text: h is 2 on [1, 3] and -1 on [3, 4], integrated as 4 plus -1",
+    "keyboard": "none needed; the figure has no control"
+   }
+  },
+  {
+   "id": "LSN-CON-06011#s4",
+   "type": "strategy",
+   "bands": [
+    "low",
+    "mid"
+   ],
+   "skills": [
+    "BC-SKL-06029",
+    "BC-SKL-06030",
+    "BC-SKL-06031",
+    "BC-SKL-06032",
+    "BC-SKL-06033"
+   ],
+   "sources": [
+    "BC-QA-06013"
+   ],
+   "evidence_tag": "verified",
+   "archetype_id": "BC-QA-06013",
+   "cue": "Values of two integrals supplied; a third, over another interval or integrand, asked.",
+   "method": "First line: the requested integral matched to the supplied ones.",
+   "rival": "Rival: the sign kept on reversed limits (BC-ERR-99012).",
+   "separating_feature": "A requested lower limit above the upper."
+  },
+  {
+   "id": "LSN-CON-06011#s5",
+   "type": "strategy",
+   "bands": [
+    "low",
+    "mid"
+   ],
+   "skills": [
+    "BC-SKL-06029",
+    "BC-SKL-06030"
+   ],
+   "sources": [
+    "BC-QA-99010"
+   ],
+   "evidence_tag": "verified",
+   "archetype_id": "BC-QA-99010",
+   "cue": "A model on a first interval, a comparison function beyond, its improper integral supplied; a bound asked.",
+   "method": "First line: the accumulation split where the model changes.",
+   "rival": "Rival: claiming the total converges rather than bounding it.",
+   "separating_feature": "The second function is unknown, so only a bound is available."
+  },
+  {
+   "id": "LSN-CON-06011#s6",
+   "type": "worked_example",
+   "bands": [
+    "low",
+    "mid"
+   ],
+   "skills": [
+    "BC-SKL-06029",
+    "BC-SKL-06030",
+    "BC-SKL-06031",
+    "BC-SKL-06032",
+    "BC-SKL-06033"
+   ],
+   "sources": [
+    "BC-QA-06013"
+   ],
+   "evidence_tag": "inferred",
+   "archetype_id": "BC-QA-06013",
+   "parameter_draw": {
+    "direction": "reversed",
+    "start": 0,
+    "gaps": [
+     1,
+     2,
+     1
+    ],
+    "first_value": 4,
+    "whole_value": 9,
+    "multiple": 3,
+    "steps": [
+     2,
+     -1
+    ]
+   },
+   "problem": {
+    "text": "f from 0 to 1 is 4; from 0 to 4 is 9. h = 2 for x < 3, -1 after. Find the integral from 4 to 1 of (3f + h).",
+    "command_verb": "find"
+   },
+   "calculator_status": "no_calculator",
+   "steps": [
+    {
+     "cue": "Request spans 1 to 4; supplied ones start at 0.",
+     "why": "Adjacent intervals.",
+     "expression": 5,
+     "relation": "new"
+    },
+    {
+     "cue": "Subtract.",
+     "why": "f from 1 to 4.",
+     "expression": 5,
+     "relation": "equivalent"
+    },
+    {
+     "cue": "h jumps at 3.",
+     "why": "Factor 3; split h at 3.",
+     "expression": 18,
+     "relation": "new"
+    },
+    {
+     "cue": "Add.",
+     "why": "Forward value.",
+     "expression": 18,
+     "relation": "equivalent"
+    },
+    {
+     "cue": "The stem runs 4 to 1.",
+     "why": "Reversal changes the sign.",
+     "expression": -18,
+     "point_type_id": "BC-PT-99004",
+     "relation": "new"
+    }
+   ],
+   "answer": {
+    "form": "symbolic",
+    "mathjson": -18
+   },
+   "delivery": {
+    "mode": "step_reveal",
+    "reason": "rule 1",
+    "sources": []
+   }
+  },
+  {
+   "id": "LSN-CON-06011#s7",
+   "type": "what_a_reader_scores",
+   "bands": [
+    "low",
+    "mid"
+   ],
+   "skills": [
+    "BC-SKL-06029",
+    "BC-SKL-06030",
+    "BC-SKL-06031",
+    "BC-SKL-06032",
+    "BC-SKL-06033"
+   ],
+   "sources": [
+    "BC-PT-99004"
+   ],
+   "evidence_tag": "verified",
+   "example_id": "LSN-CON-06011#s6",
+   "lines": [
+    {
+     "point_type_id": "BC-PT-99004",
+     "text": "Answer with or without supporting work. Earned by: The correct value on its own, with no supporting work required (sg-25:3, sg-26:4). Not earned by: A value outside the accepted precision, or a value inconsistent with a required earlier step where the rubric imposes one. Precision: A reported decimal answer must be accurate to three places after the decimal point, rounded or truncated; at most one point per question is lost to inappropriate rounding (sg-25:2, sg-26:2). sg-26:4 also accepts a stated rounding to the nearest integer and several truncations."
+    }
+   ]
+  },
+  {
+   "id": "LSN-CON-06011#err-BC-ERR-06031",
+   "type": "common_error",
+   "bands": [
+    "low",
+    "mid"
+   ],
+   "skills": [
+    "BC-SKL-06033"
+   ],
+   "sources": [
+    "BC-ERR-06031",
+    "BC-MIS-06026"
+   ],
+   "evidence_tag": "inferred",
+   "error_id": "BC-ERR-06031",
+   "observed_behavior": "A function with a jump on the interval of integration is antidifferentiated as a single expression across the jump.",
+   "scoring_consequence": "The value point is lost because the antiderivative used is not valid across the whole interval.",
+   "wrong_step": {
+    "text": "h as -1 on all of [1, 4].",
+    "expression": -12
+   },
+   "right_step": {
+    "text": "h split at 3.",
+    "expression": -18
+   },
+   "relation": "distinct",
+   "possible_reason": {
+    "misconception_id": "BC-MIS-06026",
+    "text": "applies F(b) minus F(a) without checking that the integrand is continuous on the interval"
+   },
+   "delivery": {
+    "mode": "step_reveal",
+    "reason": "rule 1",
+    "sources": []
+   }
+  },
+  {
+   "id": "LSN-CON-06011#err-BC-ERR-99012",
+   "type": "common_error",
+   "bands": [
+    "low",
+    "mid"
+   ],
+   "skills": [
+    "BC-SKL-06030"
+   ],
+   "sources": [
+    "BC-ERR-99012",
+    "BC-MIS-99004"
+   ],
+   "evidence_tag": "inferred",
+   "error_id": "BC-ERR-99012",
+   "observed_behavior": "Responses write the integral of f prime from a to x as f of x, ignoring the value at the lower limit, or mishandle a reversed pair of limits and report the wrong sign for an accumulated area.",
+   "scoring_consequence": "The value or setup point in that part is not earned, and the error usually propagates to later parts that build on the value.",
+   "wrong_step": {
+    "text": "Sign kept.",
+    "expression": 18
+   },
+   "right_step": {
+    "text": "Sign changed.",
+    "expression": -18
+   },
+   "relation": "distinct",
+   "possible_reason": {
+    "misconception_id": "BC-MIS-99004",
+    "text": "the direction of the limits play no role"
+   },
+   "delivery": {
+    "mode": "step_reveal",
+    "reason": "rule 1",
+    "sources": []
+   }
+  },
+  {
+   "id": "LSN-CON-06011#err-BC-ERR-99032",
+   "type": "common_error",
+   "bands": [
+    "low",
+    "mid"
+   ],
+   "skills": [
+    "BC-SKL-06030"
+   ],
+   "sources": [
+    "BC-ERR-99032",
+    "cr-22:3"
+   ],
+   "evidence_tag": "inferred",
+   "error_id": "BC-ERR-99032",
+   "observed_behavior": "Responses asked for an integral expression write statements that are not integral expressions, such as the function set equal to its own integral, a summation sign placed in front of an integral, or a constant of integration attached to a definite integral, and some reverse the limits or use limits that were never given.",
+   "scoring_consequence": "The expression point is not earned, since the requested object is an integral expression and nothing else is being scored in that part.",
+   "wrong_step": {
+    "text": "A constant attached to the definite integral: -18 + C.",
+    "expression": [
+     "Add",
+     -18,
+     "C"
+    ]
+   },
+   "right_step": {
+    "text": "A definite integral is a number: -18.",
+    "expression": -18
+   },
+   "relation": "distinct",
+   "delivery": {
+    "mode": "step_reveal",
+    "reason": "rule 1",
+    "sources": []
+   }
+  }
+ ],
+ "checks": [
+  {
+   "id": "LSN-CON-06011#chk-1",
+   "check_kind": "completion",
+   "bands": [
+    "low",
+    "mid"
+   ],
+   "format": "short_answer",
+   "archetype_id": "BC-QA-06013",
+   "parameter_draw": {
+    "direction": "reversed",
+    "start": 0,
+    "gaps": [
+     1,
+     2,
+     1
+    ],
+    "first_value": 4,
+    "whole_value": 9,
+    "multiple": 3,
+    "steps": [
+     2,
+     -1
+    ]
+   },
+   "completes": "LSN-CON-06011#s6",
+   "stem": {
+    "text": "From 1 to 4 it is 18. Find it from 4 to 1.",
+    "command_verb": "find"
+   },
+   "answer_key": {
+    "form": "symbolic",
+    "mathjson": -18
+   },
+   "worked_solution": [
+    {
+     "step": 1,
+     "text": "Forward value.",
+     "mathjson": 18,
+     "relation": "new"
+    },
+    {
+     "step": 2,
+     "text": "Reversed.",
+     "mathjson": -18,
+     "relation": "new"
+    }
+   ],
+   "calculator_status": "no_calculator",
+   "representation": "BC-REP-01",
+   "skills": [
+    "BC-SKL-06030"
+   ]
+  },
+  {
+   "id": "LSN-CON-06011#chk-2",
+   "check_kind": "isomorph",
+   "bands": [
+    "low",
+    "mid"
+   ],
+   "format": "short_answer",
+   "archetype_id": "BC-QA-06013",
+   "parameter_draw": {
+    "direction": "forward",
+    "start": -1,
+    "gaps": [
+     2,
+     1,
+     2
+    ],
+    "first_value": -3,
+    "whole_value": 5,
+    "multiple": 2,
+    "steps": [
+     1,
+     3
+    ]
+   },
+   "stem": {
+    "text": "f from -1 to 1 is -3; from -1 to 4 is 5. h = 1 for x < 2, 3 after. Find 1 to 4 of (2f + h).",
+    "command_verb": "find"
+   },
+   "answer_key": {
+    "form": "symbolic",
+    "mathjson": 23
+   },
+   "worked_solution": [
+    {
+     "step": 1,
+     "text": "f from 1 to 4.",
+     "mathjson": 8,
+     "relation": "new"
+    },
+    {
+     "step": 2,
+     "text": "Combination.",
+     "mathjson": 23,
+     "relation": "new"
+    },
+    {
+     "step": 3,
+     "text": "Value.",
+     "mathjson": 23,
+     "relation": "equivalent"
+    }
+   ],
+   "calculator_status": "no_calculator",
+   "representation": "BC-REP-01",
+   "skills": [
+    "BC-SKL-06031"
+   ]
+  },
+  {
+   "id": "LSN-CON-06011#chk-3",
+   "check_kind": "mcq",
+   "bands": [
+    "low"
+   ],
+   "format": "mcq",
+   "archetype_id": "BC-QA-06013",
+   "parameter_draw": {
+    "direction": "reversed",
+    "start": 1,
+    "gaps": [
+     2,
+     1,
+     1
+    ],
+    "first_value": -2,
+    "whole_value": 6,
+    "multiple": -2,
+    "steps": [
+     3,
+     -2
+    ]
+   },
+   "stem": {
+    "text": "f from 1 to 3 is -2; from 1 to 5 is 6. h = 3 for x < 4, -2 after. The integral from 5 to 3 of (-2f + h) is",
+    "command_verb": "identify"
+   },
+   "answer_key": {
+    "form": "symbolic",
+    "mathjson": 15
+   },
+   "worked_solution": [
+    {
+     "step": 1,
+     "text": "f from 3 to 5.",
+     "mathjson": 8,
+     "relation": "new"
+    },
+    {
+     "step": 2,
+     "text": "Forward combination.",
+     "mathjson": -15,
+     "relation": "new"
+    },
+    {
+     "step": 3,
+     "text": "Value.",
+     "mathjson": -15,
+     "relation": "equivalent"
+    },
+    {
+     "step": 4,
+     "text": "Reversed.",
+     "mathjson": 15,
+     "relation": "new"
+    }
+   ],
+   "options": [
+    {
+     "id": "A",
+     "is_key": false,
+     "error_path": "BC-ERR-06031",
+     "value": 20,
+     "derivation": "h taken as -2 across the whole interval, no split at the jump"
+    },
+    {
+     "id": "B",
+     "is_key": false,
+     "error_path": "BC-ERR-99012",
+     "value": -15,
+     "derivation": "the forward value, sign kept on reversal"
+    },
+    {
+     "id": "C",
+     "is_key": true,
+     "error_path": null,
+     "value": 15
+    },
+    {
+     "id": "D",
+     "is_key": false,
+     "error_path": "BC-ERR-99032",
+     "value": [
+      "Add",
+      15,
+      "C"
+     ],
+     "derivation": "a constant of integration attached to the definite integral's value"
+    }
+   ],
+   "calculator_status": "no_calculator",
+   "representation": "BC-REP-01",
+   "skills": [
+    "BC-SKL-06030"
+   ]
+  }
+ ],
+ "refresher": [
+  "LSN-CON-06011#s2",
+  "LSN-CON-06011#err-BC-ERR-06031",
+  "LSN-CON-06011#err-BC-ERR-99012",
+  "LSN-CON-06011#err-BC-ERR-99032",
+  "LSN-CON-06011#s6"
+ ],
+ "provenance": {
+  "author": "tools/lesson_transcribe.py",
+  "prompt_version": "generator/lesson_v1",
+  "design_path": "docs/lessons/unit-06/LSN-CON-06011.md",
+  "signed_off_by": null,
+  "signed_off_at": null,
+  "not_human": true
+ }
+}

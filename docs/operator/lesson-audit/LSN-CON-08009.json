@@ -1,0 +1,128 @@
+{
+ "lesson_id": "LSN-CON-08009",
+ "version": 1,
+ "compared_on": "2026-09-29",
+ "auditor": "claude-opus-5-5",
+ "resolve": {
+  "date": "2026-09-29",
+  "problems": 4,
+  "agreed": 4,
+  "judgments_pending": 0,
+  "all_agree": true,
+  "verdicts": [
+   {
+    "id": "LSN-CON-08009#ex-1",
+    "agree": true,
+    "detail": "judged: Same conclusion and numbers as the key; checked values (limits, signs, sums, derivatives) are consistent.",
+    "method": "Integral of a rate is accumulated amount, with units of rate times time."
+   },
+   {
+    "id": "LSN-CON-08009#chk-1",
+    "agree": true,
+    "detail": "judged: Same conclusion and numbers as the key; checked values (limits, signs, sums, derivatives) are consistent.",
+    "method": "Integral of a rate is accumulated amount in cubic feet."
+   },
+   {
+    "id": "LSN-CON-08009#chk-2",
+    "agree": true,
+    "detail": "judged: Same conclusion and numbers as the key; checked values (limits, signs, sums, derivatives) are consistent.",
+    "method": "Integral of a rate is accumulated number of people."
+   },
+   {
+    "id": "LSN-CON-08009#chk-3",
+    "agree": true,
+    "detail": "key option B, re-solver B",
+    "method": "Interpretation needs the quantity, correct units (gallons), and the time interval."
+   }
+  ],
+  "answers_file": "/tmp/claude-0/-home-user-growth/ac029253-8ff0-5a4b-8b5f-cdcaf5e8ff8d/scratchpad/verify/answers_12.json"
+ },
+ "audit": {
+  "date": "2026-09-29",
+  "auditor": "claude-opus-5-5",
+  "blocks": [
+   {
+    "id": "orientation",
+    "verdict": "ok",
+    "evidence": "Paraphrases BC-QA-06015 expected_solution_path and the 8.3 Interpretation line."
+   },
+   {
+    "id": "ki-1",
+    "verdict": "ok",
+    "evidence": "Quote is verbatim ced:154 CHA-4.D.1; gallons per hour times hours gives gallons, dimensional arithmetic; 44 words."
+   },
+   {
+    "id": "ki-2",
+    "verdict": "ok",
+    "evidence": "Quote is verbatim ced:154 CHA-4.D.2; quantity, interval, units confirmed on cached sg-23 page 2."
+   },
+   {
+    "id": "st-1",
+    "verdict": "ok",
+    "evidence": "Method and rival match BC-QA-06015 expected_solution_path[0] and both wrong_approaches; cue 19 words."
+   },
+   {
+    "id": "ex-1",
+    "verdict": "ok",
+    "evidence": "SymPy: (ft**3/hour)*hour simplifies to ft**3; limits 4 and 4+6 = 10 match the draw."
+   },
+   {
+    "id": "reader",
+    "verdict": "ok",
+    "evidence": "Empty; the bundle carries no point types for BC-SKL-08015."
+   },
+   {
+    "id": "err-BC-ERR-08017",
+    "verdict": "ok",
+    "evidence": "Verbatim BC-ERR-08017; reason fragment from BC-MIS-08009."
+   },
+   {
+    "id": "err-BC-ERR-99005",
+    "verdict": "ok",
+    "evidence": "Verbatim BC-ERR-99005; SymPy ft**3/hour differs from ft**3."
+   },
+   {
+    "id": "representations",
+    "verdict": "ok",
+    "evidence": "null; BC-REP-04 and 05 are verbal."
+   },
+   {
+    "id": "bridge-BC-PRQ-06005",
+    "verdict": "ok",
+    "evidence": "Paraphrases BC-PRQ-06005 on reading inputs."
+   },
+   {
+    "id": "time",
+    "verdict": "ok",
+    "evidence": "62/29 = 2.14 from exam-structure.md; either status tagged inferred."
+   },
+   {
+    "id": "chk-1",
+    "verdict": "ok",
+    "evidence": "Units product simplifies to ft**3; interval 4 to 10."
+   },
+   {
+    "id": "chk-2",
+    "verdict": "ok",
+    "evidence": "people/minute times minute simplifies to people; limits 9 and 9+3 = 12; depletes direction reads as leave."
+   },
+   {
+    "id": "chk-3",
+    "verdict": "ok",
+    "evidence": "Key B names quantity, interval and units; A omits interval (ERR-08017), C keeps rate units and D omits units (ERR-99005)."
+   }
+  ],
+  "advice": [
+   "BC-ERR-08017 has relation equivalent with identical expr on both sides, so a step renderer comparing expressions will show no difference; the difference is only in the sentence text.",
+   "The average display dial in BC-QA-06015 is never shown; a check with the 1 over the interval length factor would test the rival reading of units.",
+   "With no reader lines, the scoring habit rests on ki-2 and the errors; quoting the sg-23:2 requirement for the interval as a reader line would make it concrete."
+  ],
+  "counts": {
+   "ok": 14,
+   "unsourced": 0,
+   "wrong": 0,
+   "over_cap": 0,
+   "lint": 0
+  }
+ }
+}

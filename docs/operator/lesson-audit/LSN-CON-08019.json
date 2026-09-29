@@ -1,0 +1,155 @@
+{
+ "lesson_id": "LSN-CON-08019",
+ "version": 1,
+ "compared_on": "2026-09-29",
+ "auditor": "claude-opus-5-5",
+ "resolve": {
+  "date": "2026-09-29",
+  "problems": 5,
+  "agreed": 5,
+  "judgments_pending": 0,
+  "all_agree": true,
+  "verdicts": [
+   {
+    "id": "LSN-CON-08019#ex-1",
+    "agree": true,
+    "detail": "agree (symbolic)",
+    "method": "Washers pi integral of f^2-g^2 on [0,2]."
+   },
+   {
+    "id": "LSN-CON-08019#ex-2",
+    "agree": true,
+    "detail": "agree (symbolic)",
+    "method": "Washers on [1,2] where f>=g>0."
+   },
+   {
+    "id": "LSN-CON-08019#chk-1",
+    "agree": true,
+    "detail": "agree (symbolic)",
+    "method": "Direct integration."
+   },
+   {
+    "id": "LSN-CON-08019#chk-2",
+    "agree": true,
+    "detail": "agree (symbolic)",
+    "method": "Washers on [0,2]."
+   },
+   {
+    "id": "LSN-CON-08019#chk-3",
+    "agree": true,
+    "detail": "agree (symbolic)",
+    "method": "Washers on [0,2] with outer 3+x(2-x), inner 3."
+   }
+  ],
+  "answers_file": "/tmp/claude-0/-home-user-growth/ac029253-8ff0-5a4b-8b5f-cdcaf5e8ff8d/scratchpad/verify/answers_13.json"
+ },
+ "audit": {
+  "date": "2026-09-29",
+  "auditor": "claude-opus-5-5",
+  "blocks": [
+   {
+    "id": "orientation",
+    "verdict": "ok",
+    "evidence": "Paraphrases BC-CON-08019 and 8.11 Washer method paragraph; 26 words."
+   },
+   {
+    "id": "ki-1",
+    "verdict": "ok",
+    "evidence": "8.11 Washer method and Order of operations paragraphs; 33 words."
+   },
+   {
+    "id": "st-1",
+    "verdict": "ok",
+    "evidence": "From BC-QA-08013 and 8.11 MCQ distractor (squared difference); within caps."
+   },
+   {
+    "id": "ex-1",
+    "verdict": "ok",
+    "evidence": "SymPy: f >= 1 on [0,2]; Integral(pi*((1+2x-x^2)^2-1),(x,0,2)) = 56*pi/15."
+   },
+   {
+    "id": "ex-2",
+    "verdict": "ok",
+    "evidence": "SymPy: f-g = -2(x-1)(x-2) >= 0 on [1,2], both positive; integral = 9*pi/5."
+   },
+   {
+    "id": "reader-ex-1",
+    "verdict": "ok",
+    "evidence": "BC-PT-99058 line matches bundle fields."
+   },
+   {
+    "id": "reader-ex-2",
+    "verdict": "ok",
+    "evidence": "BC-PT-99001 and 99058 lines match bundle fields."
+   },
+   {
+    "id": "err-BC-ERR-08023",
+    "verdict": "ok",
+    "evidence": "Verbatim; SymPy dy integral leaves x free, not a number."
+   },
+   {
+    "id": "err-BC-ERR-08024",
+    "verdict": "ok",
+    "evidence": "Verbatim record text, shown mirrored and disclosed; region y spans 1 to 2; SymPy 28*pi/15 vs 56*pi/15."
+   },
+   {
+    "id": "err-BC-ERR-08030",
+    "verdict": "ok",
+    "evidence": "Verbatim; SymPy pi(2x-x^2)^2 gives 16*pi/15 vs 56*pi/15."
+   },
+   {
+    "id": "err-BC-ERR-08037",
+    "verdict": "ok",
+    "evidence": "Verbatim; 56/15 vs 56*pi/15."
+   },
+   {
+    "id": "representations",
+    "verdict": "ok",
+    "evidence": "null; 8.11 ring diagram carried by ki-1 figure."
+   },
+   {
+    "id": "bridge-BC-PRQ-06002",
+    "verdict": "ok",
+    "evidence": "Paraphrase of BC-PRQ-06002."
+   },
+   {
+    "id": "bridge-BC-PRQ-08002",
+    "verdict": "ok",
+    "evidence": "Paraphrase of BC-PRQ-08002."
+   },
+   {
+    "id": "bridge-BC-PRQ-08004",
+    "verdict": "ok",
+    "evidence": "Paraphrase of BC-PRQ-08004."
+   },
+   {
+    "id": "chk-1",
+    "verdict": "ok",
+    "evidence": "SymPy: 56*pi/15, expanded form x^4-4x^3+2x^2+4x equal."
+   },
+   {
+    "id": "chk-2",
+    "verdict": "ok",
+    "evidence": "SymPy: f-g = 2x-x^2 >= 0 on [0,2]; value 32*pi/5."
+   },
+   {
+    "id": "chk-3",
+    "verdict": "ok",
+    "evidence": "SymPy: key 136*pi/15; A (f-3)^2 gives 16*pi/15; C 136/15; D limits 3 to 4 give -22*pi/15; distinct."
+   }
+  ],
+  "advice": [
+   "chk-3 option D is negative (-22*pi/15), implausible as a volume distractor.",
+   "err-BC-ERR-08024 served observed_behavior does not match the mirrored step shown.",
+   "Bridge BC-PRQ-06002 is not exercised by the polynomial draws.",
+   "No answer point tagged since BC-QA-08013 lists none; disclosed. Stem, first line (which curve is outer) and rival (squared difference) are taught clearly."
+  ],
+  "counts": {
+   "ok": 18,
+   "unsourced": 0,
+   "wrong": 0,
+   "over_cap": 0,
+   "lint": 0
+  }
+ }
+}

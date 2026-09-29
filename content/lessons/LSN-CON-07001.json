@@ -1,0 +1,980 @@
+{
+ "id": "LSN-CON-07001",
+ "version": 1,
+ "kind": "concept",
+ "target_id": "BC-CON-07001",
+ "status": "signed_off",
+ "snapshot_digest": "a6a8ec9d3f59ab8f712e33d30cc22fc64bf2c478fbe7312e3e3118d319c6a42f",
+ "source_digest": "900f60f3b45473d77d14324b57cee7ab8181d91571caec8416dff7ca905ab186",
+ "read_minutes": {
+  "full": 3.8,
+  "brief": 3.0
+ },
+ "word_count": {
+  "full": 446,
+  "brief": 350
+ },
+ "sections": [
+  {
+   "id": "LSN-CON-07001#s1",
+   "type": "orientation",
+   "bands": [
+    "low",
+    "mid"
+   ],
+   "skills": [
+    "BC-SKL-07001",
+    "BC-SKL-07002",
+    "BC-SKL-07003",
+    "BC-SKL-07004",
+    "BC-SKL-07005"
+   ],
+   "sources": [
+    "BC-CON-07001",
+    "research/units/unit-07-differential-equations.md#7.1 Modeling Situations with Differential Equations"
+   ],
+   "evidence_tag": "inferred",
+   "text": "A rate sentence becomes an equation: the derivative equals a named constant times the quantity or the stated difference. The value at a stated time is written apart, as the initial condition.",
+   "delivery": {
+    "mode": "text",
+    "reason": "rule 6: BC-REP-04, 05, 06 on BC-SKL-07001 to 07005, none figure-bearing",
+    "sources": [
+     "BC-SKL-07001"
+    ]
+   }
+  },
+  {
+   "id": "LSN-CON-07001#s2",
+   "type": "key_ideas",
+   "bands": [
+    "low",
+    "mid"
+   ],
+   "skills": [
+    "BC-SKL-07001",
+    "BC-SKL-07002",
+    "BC-SKL-07003",
+    "BC-SKL-07004",
+    "BC-SKL-07005"
+   ],
+   "sources": [
+    "BC-EK-FUN-7A1",
+    "ced:137",
+    "research/units/unit-07-differential-equations.md#7.1 Modeling Situations with Differential Equations"
+   ],
+   "evidence_tag": "verified",
+   "ek_id": "BC-EK-FUN-7A1",
+   "depth": "core",
+   "text": "Proportional to the quantity gives k times the quantity; proportional to the difference from a fixed level gives k times that difference, oriented so the quantity moves toward the level. The derivative carries quantity units per time unit. A value at a stated time is the initial condition, kept outside the equation.",
+   "notation": "dy/dt; k for the constant of proportionality",
+   "quote": {
+    "text": "Differential equations relate a function of an independent variable and the function's derivatives.",
+    "source": "ced:137"
+   },
+   "delivery": {
+    "mode": "text",
+    "reason": "rule 6: a translation rule with no figure-bearing representation",
+    "sources": [
+     "BC-SKL-07001",
+     "BC-SKL-07002"
+    ]
+   }
+  },
+  {
+   "id": "LSN-CON-07001#s3",
+   "type": "strategy",
+   "bands": [
+    "low",
+    "mid"
+   ],
+   "skills": [
+    "BC-SKL-07001",
+    "BC-SKL-07002",
+    "BC-SKL-07003",
+    "BC-SKL-07004",
+    "BC-SKL-07005"
+   ],
+   "sources": [
+    "BC-QA-07006"
+   ],
+   "evidence_tag": "verified",
+   "archetype_id": "BC-QA-07006",
+   "cue": "A rate is proportional to something, a value at one time is given, and no equation is printed.",
+   "method": "First line: name the variables, then write the derivative equal to k times the named expression.",
+   "rival": "Rival: an exponential formula for the quantity (BC-ERR-07005).",
+   "separating_feature": "The stem asks for the rate, so the left side is a derivative."
+  },
+  {
+   "id": "LSN-CON-07001#s4",
+   "type": "worked_example",
+   "bands": [
+    "low",
+    "mid"
+   ],
+   "skills": [
+    "BC-SKL-07001",
+    "BC-SKL-07002",
+    "BC-SKL-07003",
+    "BC-SKL-07004",
+    "BC-SKL-07005"
+   ],
+   "sources": [
+    "BC-QA-07006"
+   ],
+   "evidence_tag": "inferred",
+   "archetype_id": "BC-QA-07006",
+   "parameter_draw": {
+    "context": "temperature",
+    "level": 70,
+    "gap": 25,
+    "approach": "from_above",
+    "time_unit": "minutes"
+   },
+   "problem": {
+    "text": "Tea is 95 degrees at t = 0 minutes. Its temperature changes at a rate proportional to the difference between 70 degrees and its temperature, constant k > 0. Write the differential equation and initial condition.",
+    "command_verb": "write"
+   },
+   "calculator_status": "no_calculator",
+   "steps": [
+    {
+     "cue": "The stem names a temperature and a time.",
+     "why": "H degrees, t minutes; dH/dt degrees per minute."
+    },
+    {
+     "cue": "Proportional to the difference selects k times that difference.",
+     "why": "Negative above 70, so H falls toward 70.",
+     "expression": [
+      "Multiply",
+      "k",
+      [
+       "Add",
+       70,
+       [
+        "Multiply",
+        -1,
+        "H"
+       ]
+      ]
+     ],
+     "relation": "new"
+    },
+    {
+     "cue": "The rate is the derivative of H.",
+     "why": "An equation about the rate, not a formula for H.",
+     "expression": [
+      "Equal",
+      [
+       "Multiply",
+       "dH",
+       [
+        "Power",
+        "dt",
+        -1
+       ]
+      ],
+      [
+       "Multiply",
+       "k",
+       [
+        "Add",
+        70,
+        [
+         "Multiply",
+         -1,
+         "H"
+        ]
+       ]
+      ]
+     ],
+     "relation": "new"
+    },
+    {
+     "cue": "At time t = 0 marks a stated value.",
+     "why": "It selects one solution, so it stands apart.",
+     "expression": [
+      "Equal",
+      [
+       "Apply",
+       "H",
+       0
+      ],
+      95
+     ],
+     "relation": "new"
+    }
+   ],
+   "answer": {
+    "form": "statement",
+    "mathjson": "dH/dt = k*(70 - H) with H(0) = 95"
+   },
+   "delivery": {
+    "mode": "step_reveal",
+    "reason": "rule 1",
+    "sources": []
+   }
+  },
+  {
+   "id": "LSN-CON-07001#err-BC-ERR-07001",
+   "type": "common_error",
+   "bands": [
+    "low",
+    "mid"
+   ],
+   "skills": [
+    "BC-SKL-07001"
+   ],
+   "sources": [
+    "BC-ERR-07001",
+    "BC-MIS-07001"
+   ],
+   "evidence_tag": "inferred",
+   "error_id": "BC-ERR-07001",
+   "observed_behavior": "The response writes the derivative equal to the quantity itself, with no constant of proportionality.",
+   "scoring_consequence": "The model is wrong by a factor and every later value built on it is wrong.",
+   "wrong_step": {
+    "text": "No constant.",
+    "expression": [
+     "Equal",
+     [
+      "Multiply",
+      "dH",
+      [
+       "Power",
+       "dt",
+       -1
+      ]
+     ],
+     [
+      "Add",
+      70,
+      [
+       "Multiply",
+       -1,
+       "H"
+      ]
+     ]
+    ]
+   },
+   "right_step": {
+    "text": "k written.",
+    "expression": [
+     "Equal",
+     [
+      "Multiply",
+      "dH",
+      [
+       "Power",
+       "dt",
+       -1
+      ]
+     ],
+     [
+      "Multiply",
+      "k",
+      [
+       "Add",
+       70,
+       [
+        "Multiply",
+        -1,
+        "H"
+       ]
+      ]
+     ]
+    ]
+   },
+   "relation": "distinct",
+   "possible_reason": {
+    "misconception_id": "BC-MIS-07001",
+    "text": "drops the constant of proportionality"
+   },
+   "delivery": {
+    "mode": "step_reveal",
+    "reason": "rule 1",
+    "sources": []
+   }
+  },
+  {
+   "id": "LSN-CON-07001#err-BC-ERR-07002",
+   "type": "common_error",
+   "bands": [
+    "low",
+    "mid"
+   ],
+   "skills": [
+    "BC-SKL-07002"
+   ],
+   "sources": [
+    "BC-ERR-07002"
+   ],
+   "evidence_tag": "inferred",
+   "error_id": "BC-ERR-07002",
+   "observed_behavior": "The response writes the difference the other way round, so the modelled quantity moves away from the fixed level instead of toward it.",
+   "scoring_consequence": "The sign of the solution's approach is wrong, and the slope field and the particular solution both follow it.",
+   "wrong_step": {
+    "text": "H - 70.",
+    "expression": [
+     "Equal",
+     [
+      "Multiply",
+      "dH",
+      [
+       "Power",
+       "dt",
+       -1
+      ]
+     ],
+     [
+      "Multiply",
+      "k",
+      [
+       "Add",
+       -70,
+       "H"
+      ]
+     ]
+    ]
+   },
+   "right_step": {
+    "text": "70 - H.",
+    "expression": [
+     "Equal",
+     [
+      "Multiply",
+      "dH",
+      [
+       "Power",
+       "dt",
+       -1
+      ]
+     ],
+     [
+      "Multiply",
+      "k",
+      [
+       "Add",
+       70,
+       [
+        "Multiply",
+        -1,
+        "H"
+       ]
+      ]
+     ]
+    ]
+   },
+   "relation": "distinct",
+   "delivery": {
+    "mode": "step_reveal",
+    "reason": "rule 1",
+    "sources": []
+   }
+  },
+  {
+   "id": "LSN-CON-07001#err-BC-ERR-07003",
+   "type": "common_error",
+   "bands": [
+    "low",
+    "mid"
+   ],
+   "skills": [
+    "BC-SKL-07003"
+   ],
+   "sources": [
+    "BC-ERR-07003"
+   ],
+   "evidence_tag": "inferred",
+   "error_id": "BC-ERR-07003",
+   "observed_behavior": "The equation is written in letters that are never given meanings or units.",
+   "scoring_consequence": "An interpretation point that requires the quantity and its units is lost.",
+   "wrong_step": {
+    "text": "Unnamed y and x.",
+    "expression": [
+     "Equal",
+     [
+      "Multiply",
+      "dy",
+      [
+       "Power",
+       "dx",
+       -1
+      ]
+     ],
+     [
+      "Multiply",
+      "k",
+      [
+       "Add",
+       70,
+       [
+        "Multiply",
+        -1,
+        "y"
+       ]
+      ]
+     ]
+    ]
+   },
+   "right_step": {
+    "text": "H degrees, t minutes.",
+    "expression": [
+     "Equal",
+     [
+      "Multiply",
+      "dH",
+      [
+       "Power",
+       "dt",
+       -1
+      ]
+     ],
+     [
+      "Multiply",
+      "k",
+      [
+       "Add",
+       70,
+       [
+        "Multiply",
+        -1,
+        "H"
+       ]
+      ]
+     ]
+    ]
+   },
+   "relation": "distinct",
+   "delivery": {
+    "mode": "step_reveal",
+    "reason": "rule 1",
+    "sources": []
+   }
+  },
+  {
+   "id": "LSN-CON-07001#err-BC-ERR-07004",
+   "type": "common_error",
+   "bands": [
+    "low",
+    "mid"
+   ],
+   "skills": [
+    "BC-SKL-07004"
+   ],
+   "sources": [
+    "BC-ERR-07004",
+    "BC-MIS-07003"
+   ],
+   "evidence_tag": "inferred",
+   "error_id": "BC-ERR-07004",
+   "observed_behavior": "The response writes the stated value as part of the equation rather than as a separate condition.",
+   "scoring_consequence": "The equation is not the model asked for and the constant of integration has nothing to be fixed by.",
+   "wrong_step": {
+    "text": "95 inside the equation.",
+    "expression": [
+     "Equal",
+     [
+      "Multiply",
+      "dH",
+      [
+       "Power",
+       "dt",
+       -1
+      ]
+     ],
+     [
+      "Multiply",
+      -25,
+      "k"
+     ]
+    ]
+   },
+   "right_step": {
+    "text": "95 as the condition.",
+    "expression": [
+     "Equal",
+     [
+      "Apply",
+      "H",
+      0
+     ],
+     95
+    ]
+   },
+   "relation": "distinct",
+   "possible_reason": {
+    "misconception_id": "BC-MIS-07003",
+    "text": "treats the stated value as a term of the equation rather than as the condition that selects one solution"
+   },
+   "delivery": {
+    "mode": "step_reveal",
+    "reason": "rule 1",
+    "sources": []
+   }
+  },
+  {
+   "id": "LSN-CON-07001#prq-BC-PRQ-06005",
+   "type": "prerequisite_bridge",
+   "bands": [
+    "low",
+    "mid"
+   ],
+   "skills": [
+    "BC-SKL-07003",
+    "BC-SKL-07004"
+   ],
+   "sources": [
+    "BC-PRQ-06005"
+   ],
+   "evidence_tag": "inferred",
+   "prerequisite_id": "BC-PRQ-06005",
+   "text": "H(0) is the value of H at input 0; misread, a value for the wrong input is used."
+  },
+  {
+   "id": "LSN-CON-07001#prq-BC-PRQ-07002",
+   "type": "prerequisite_bridge",
+   "bands": [
+    "low",
+    "mid"
+   ],
+   "skills": [
+    "BC-SKL-07005"
+   ],
+   "sources": [
+    "BC-PRQ-07002"
+   ],
+   "evidence_tag": "inferred",
+   "prerequisite_id": "BC-PRQ-07002",
+   "text": "dH/dt is the rate of H per unit t; its letters name what changes and against what."
+  },
+  {
+   "id": "LSN-CON-07001#prq-BC-PRQ-07003",
+   "type": "prerequisite_bridge",
+   "bands": [
+    "low",
+    "mid"
+   ],
+   "skills": [
+    "BC-SKL-07001",
+    "BC-SKL-07002"
+   ],
+   "sources": [
+    "BC-PRQ-07003"
+   ],
+   "evidence_tag": "inferred",
+   "prerequisite_id": "BC-PRQ-07003",
+   "text": "Proportional to means a constant multiple; an equality in its place drops the constant."
+  }
+ ],
+ "checks": [
+  {
+   "id": "LSN-CON-07001#chk-1",
+   "check_kind": "completion",
+   "bands": [
+    "low",
+    "mid"
+   ],
+   "format": "short_answer",
+   "archetype_id": "BC-QA-07006",
+   "parameter_draw": {
+    "context": "temperature",
+    "level": 70,
+    "gap": 25,
+    "approach": "from_above",
+    "time_unit": "minutes"
+   },
+   "completes": "LSN-CON-07001#s4",
+   "stem": {
+    "text": "Tea: H degrees at t minutes, H = 95 at t = 0, rate proportional to 70 - H. Write both lines.",
+    "command_verb": "write"
+   },
+   "answer_key": {
+    "form": "statement",
+    "mathjson": "dH/dt = k*(70 - H) with H(0) = 95"
+   },
+   "worked_solution": [
+    {
+     "step": 1,
+     "text": "The equation.",
+     "mathjson": [
+      "Equal",
+      [
+       "Multiply",
+       "dH",
+       [
+        "Power",
+        "dt",
+        -1
+       ]
+      ],
+      [
+       "Multiply",
+       "k",
+       [
+        "Add",
+        70,
+        [
+         "Multiply",
+         -1,
+         "H"
+        ]
+       ]
+      ]
+     ],
+     "relation": "new"
+    },
+    {
+     "step": 2,
+     "text": "The condition.",
+     "mathjson": [
+      "Equal",
+      [
+       "Apply",
+       "H",
+       0
+      ],
+      95
+     ],
+     "relation": "new"
+    }
+   ],
+   "calculator_status": "no_calculator",
+   "representation": "BC-REP-04",
+   "skills": [
+    "BC-SKL-07002",
+    "BC-SKL-07004"
+   ]
+  },
+  {
+   "id": "LSN-CON-07001#chk-2",
+   "check_kind": "isomorph",
+   "bands": [
+    "low",
+    "mid"
+   ],
+   "format": "short_answer",
+   "archetype_id": "BC-QA-07006",
+   "parameter_draw": {
+    "context": "concentration",
+    "level": 40,
+    "gap": 15,
+    "approach": "from_below",
+    "time_unit": "minutes"
+   },
+   "stem": {
+    "text": "A concentration C, 25 at t = 0 minutes, changes at a rate proportional to 40 minus C, with constant k > 0. Write the differential equation.",
+    "command_verb": "write"
+   },
+   "answer_key": {
+    "form": "symbolic",
+    "mathjson": [
+     "Equal",
+     [
+      "Multiply",
+      "dC",
+      [
+       "Power",
+       "dt",
+       -1
+      ]
+     ],
+     [
+      "Multiply",
+      "k",
+      [
+       "Add",
+       40,
+       [
+        "Multiply",
+        -1,
+        "C"
+       ]
+      ]
+     ]
+    ]
+   },
+   "worked_solution": [
+    {
+     "step": 1,
+     "text": "k times the difference.",
+     "mathjson": [
+      "Multiply",
+      "k",
+      [
+       "Add",
+       40,
+       [
+        "Multiply",
+        -1,
+        "C"
+       ]
+      ]
+     ],
+     "relation": "new"
+    },
+    {
+     "step": 2,
+     "text": "The derivative equals it.",
+     "mathjson": [
+      "Equal",
+      [
+       "Multiply",
+       "dC",
+       [
+        "Power",
+        "dt",
+        -1
+       ]
+      ],
+      [
+       "Multiply",
+       "k",
+       [
+        "Add",
+        40,
+        [
+         "Multiply",
+         -1,
+         "C"
+        ]
+       ]
+      ]
+     ],
+     "relation": "new"
+    }
+   ],
+   "calculator_status": "no_calculator",
+   "representation": "BC-REP-04",
+   "skills": [
+    "BC-SKL-07002"
+   ]
+  },
+  {
+   "id": "LSN-CON-07001#chk-3",
+   "check_kind": "mcq",
+   "bands": [
+    "low"
+   ],
+   "format": "mcq",
+   "archetype_id": "BC-QA-07006",
+   "parameter_draw": {
+    "context": "price",
+    "level": 50,
+    "gap": 10,
+    "approach": "from_above",
+    "time_unit": "hours"
+   },
+   "stem": {
+    "text": "A price P is 60 at t = 0 hours and changes at a rate proportional to 50 minus P. Which models it, k > 0?",
+    "command_verb": "identify"
+   },
+   "answer_key": {
+    "form": "symbolic",
+    "mathjson": [
+     "Equal",
+     [
+      "Multiply",
+      "dP",
+      [
+       "Power",
+       "dt",
+       -1
+      ]
+     ],
+     [
+      "Multiply",
+      "k",
+      [
+       "Add",
+       50,
+       [
+        "Multiply",
+        -1,
+        "P"
+       ]
+      ]
+     ]
+    ]
+   },
+   "worked_solution": [
+    {
+     "step": 1,
+     "text": "k times the difference.",
+     "mathjson": [
+      "Multiply",
+      "k",
+      [
+       "Add",
+       50,
+       [
+        "Multiply",
+        -1,
+        "P"
+       ]
+      ]
+     ],
+     "relation": "new"
+    },
+    {
+     "step": 2,
+     "text": "The derivative equals it.",
+     "mathjson": [
+      "Equal",
+      [
+       "Multiply",
+       "dP",
+       [
+        "Power",
+        "dt",
+        -1
+       ]
+      ],
+      [
+       "Multiply",
+       "k",
+       [
+        "Add",
+        50,
+        [
+         "Multiply",
+         -1,
+         "P"
+        ]
+       ]
+      ]
+     ],
+     "relation": "new"
+    }
+   ],
+   "options": [
+    {
+     "id": "A",
+     "is_key": false,
+     "error_path": "BC-ERR-07001",
+     "value": [
+      "Equal",
+      [
+       "Multiply",
+       "dP",
+       [
+        "Power",
+        "dt",
+        -1
+       ]
+      ],
+      [
+       "Add",
+       50,
+       [
+        "Multiply",
+        -1,
+        "P"
+       ]
+      ]
+     ],
+     "derivation": "the constant of proportionality dropped"
+    },
+    {
+     "id": "B",
+     "is_key": false,
+     "error_path": "BC-ERR-07002",
+     "value": [
+      "Equal",
+      [
+       "Multiply",
+       "dP",
+       [
+        "Power",
+        "dt",
+        -1
+       ]
+      ],
+      [
+       "Multiply",
+       "k",
+       [
+        "Add",
+        -50,
+        "P"
+       ]
+      ]
+     ],
+     "derivation": "the difference reversed"
+    },
+    {
+     "id": "C",
+     "is_key": true,
+     "error_path": null,
+     "value": [
+      "Equal",
+      [
+       "Multiply",
+       "dP",
+       [
+        "Power",
+        "dt",
+        -1
+       ]
+      ],
+      [
+       "Multiply",
+       "k",
+       [
+        "Add",
+        50,
+        [
+         "Multiply",
+         -1,
+         "P"
+        ]
+       ]
+      ]
+     ]
+    },
+    {
+     "id": "D",
+     "is_key": false,
+     "error_path": "BC-ERR-07004",
+     "value": [
+      "Equal",
+      [
+       "Multiply",
+       "dP",
+       [
+        "Power",
+        "dt",
+        -1
+       ]
+      ],
+      [
+       "Multiply",
+       -10,
+       "k"
+      ]
+     ],
+     "derivation": "the starting value 60 put into the equation"
+    }
+   ],
+   "calculator_status": "no_calculator",
+   "representation": "BC-REP-04",
+   "skills": [
+    "BC-SKL-07002"
+   ]
+  }
+ ],
+ "refresher": [
+  "LSN-CON-07001#s2",
+  "LSN-CON-07001#err-BC-ERR-07001",
+  "LSN-CON-07001#err-BC-ERR-07002",
+  "LSN-CON-07001#err-BC-ERR-07003",
+  "LSN-CON-07001#err-BC-ERR-07004",
+  "LSN-CON-07001#s4"
+ ],
+ "provenance": {
+  "author": "tools/lesson_transcribe.py",
+  "prompt_version": "generator/lesson_v1",
+  "design_path": "docs/lessons/unit-07/LSN-CON-07001.md",
+  "signed_off_by": "claude-opus-5-5",
+  "signed_off_at": "2026-09-29",
+  "not_human": true
+ }
+}

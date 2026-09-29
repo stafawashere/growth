@@ -1,0 +1,578 @@
+{
+ "id": "LSN-CON-01018",
+ "version": 1,
+ "kind": "concept",
+ "target_id": "BC-CON-01018",
+ "status": "signed_off",
+ "snapshot_digest": "a6a8ec9d3f59ab8f712e33d30cc22fc64bf2c478fbe7312e3e3118d319c6a42f",
+ "source_digest": "c7525f365a382235eb1b1f0ec8e3f1e4866e713102152b21eb544d04c2d89b9e",
+ "read_minutes": {
+  "full": 2.5,
+  "brief": 2.5
+ },
+ "word_count": {
+  "full": 320,
+  "brief": 320
+ },
+ "sections": [
+  {
+   "id": "LSN-CON-01018#s1",
+   "type": "orientation",
+   "bands": [
+    "low",
+    "mid"
+   ],
+   "skills": [
+    "BC-SKL-01062"
+   ],
+   "sources": [
+    "BC-CON-01018",
+    "research/units/unit-01-limits-continuity.md#1.15 Connecting Limits at Infinity and Horizontal Asymptotes"
+   ],
+   "evidence_tag": "inferred",
+   "text": "A response writes the limit of the quotient of two quantities as the variable grows without bound, evaluates it, and reads from the value which quantity grows faster.",
+   "delivery": {
+    "mode": "text",
+    "reason": "rule 5: BC-SKL-01062 carries BC-REP-01 only",
+    "sources": [
+     "BC-SKL-01062"
+    ]
+   }
+  },
+  {
+   "id": "LSN-CON-01018#s2",
+   "type": "key_ideas",
+   "bands": [
+    "low",
+    "mid"
+   ],
+   "skills": [
+    "BC-SKL-01062"
+   ],
+   "sources": [
+    "BC-EK-LIM-2D5",
+    "ced:52",
+    "research/units/unit-01-limits-continuity.md#1.15 Connecting Limits at Infinity and Horizontal Asymptotes"
+   ],
+   "evidence_tag": "verified",
+   "ek_id": "BC-EK-LIM-2D5",
+   "depth": "core",
+   "text": "Two quantities, or their rates, are compared by the limit of their quotient (BC-EK-LIM-2D5, ced:52). The limit is taken as the variable grows without bound, and its value tells which quantity grows faster (BC-CON-01018).",
+   "quote": {
+    "text": "Relative magnitudes of functions and their rates of change can be compared using limits.",
+    "source": "ced:52"
+   },
+   "delivery": {
+    "mode": "text",
+    "reason": "rule 5: BC-REP-01 only, so no figure exists for motion",
+    "sources": [
+     "BC-SKL-01062"
+    ]
+   }
+  },
+  {
+   "id": "LSN-CON-01018#s3",
+   "type": "strategy",
+   "bands": [
+    "low",
+    "mid"
+   ],
+   "skills": [
+    "BC-SKL-01062"
+   ],
+   "sources": [
+    "BC-QA-01010"
+   ],
+   "evidence_tag": "verified",
+   "archetype_id": "BC-QA-01010",
+   "cue": "Two quantities, and the stem asks which grows faster for large inputs.",
+   "method": "First written line: the limit of their quotient as the variable grows without bound.",
+   "rival": "Substituting infinity into the expression as a number (BC-ERR-01021).",
+   "separating_feature": "The limit is taken on the quotient, with infinity under the arrow."
+  },
+  {
+   "id": "LSN-CON-01018#s4",
+   "type": "worked_example",
+   "bands": [
+    "low",
+    "mid"
+   ],
+   "skills": [
+    "BC-SKL-01062"
+   ],
+   "sources": [
+    "BC-QA-01010"
+   ],
+   "evidence_tag": "inferred",
+   "archetype_id": "BC-QA-01010",
+   "parameter_draw": {
+    "root_coef": "4",
+    "linear_coef": "5",
+    "linear_const": "2",
+    "inner_const": "3",
+    "radical_place": "denominator"
+   },
+   "problem": {
+    "text": "Compare \\(f(x)=5x+2\\) and \\(g(x)=\\sqrt{16x^2+3}\\) as \\(x\\to-\\infty\\) using \\(\\lim\\frac{f(x)}{g(x)}\\).",
+    "command_verb": "compare"
+   },
+   "calculator_status": "no_calculator",
+   "steps": [
+    {
+     "cue": "\"Compare\" two quantities: take the limit of their quotient.",
+     "why": "The written limit is the expression point.",
+     "expression": [
+      "Multiply",
+      [
+       "Power",
+       [
+        "Add",
+        3,
+        [
+         "Multiply",
+         16,
+         [
+          "Power",
+          "x",
+          2
+         ]
+        ]
+       ],
+       [
+        "Rational",
+        -1,
+        2
+       ]
+      ],
+      [
+       "Add",
+       2,
+       [
+        "Multiply",
+        5,
+        "x"
+       ]
+      ]
+     ],
+     "point_type_id": "BC-PT-99054",
+     "relation": "new"
+    },
+    {
+     "cue": "Both grow like \\(|x|\\); factor it out.",
+     "why": "\\(\\sqrt{16x^2}=4|x|\\).",
+     "expression": [
+      "Multiply",
+      "x",
+      [
+       "Power",
+       [
+        "Add",
+        16,
+        [
+         "Multiply",
+         3,
+         [
+          "Power",
+          "x",
+          -2
+         ]
+        ]
+       ],
+       [
+        "Rational",
+        -1,
+        2
+       ]
+      ],
+      [
+       "Power",
+       [
+        "Abs",
+        "x"
+       ],
+       -1
+      ],
+      [
+       "Add",
+       5,
+       [
+        "Multiply",
+        2,
+        [
+         "Power",
+         "x",
+         -1
+        ]
+       ]
+      ]
+     ],
+     "relation": "equivalent"
+    },
+    {
+     "cue": "\\(x<0\\), so \\(\\frac{x}{|x|}=-1\\).",
+     "why": "The value is \\(-\\frac54\\).",
+     "expression": [
+      "Rational",
+      -5,
+      4
+     ],
+     "point_type_id": "BC-PT-99004",
+     "relation": "limit",
+     "variable": "x",
+     "point": "-oo"
+    },
+    {
+     "cue": "The value is finite and nonzero.",
+     "why": "Neither outgrows the other; \\(|f|\\) is about \\(\\frac54\\) of \\(g\\)."
+    }
+   ],
+   "answer": {
+    "form": "numeric",
+    "mathjson": [
+     "Rational",
+     -5,
+     4
+    ]
+   },
+   "delivery": {
+    "mode": "step_reveal",
+    "reason": "rule 1; rule 2 names a computed sequence as the idea, so the reveal carries a model table of the quotient at growing |x|",
+    "sources": [
+     "BC-SKL-01062"
+    ],
+    "spec": {
+     "kind": "table",
+     "columns": [
+      "x",
+      "f(x)/g(x)"
+     ],
+     "rows": [
+      [
+       "-10",
+       "-1.1989"
+      ],
+      [
+       "-100",
+       "-1.2450"
+      ],
+      [
+       "-1000",
+       "-1.2495"
+      ]
+     ],
+     "labels": [
+      {
+       "text": "quotient settles at -5/4",
+       "placement": "inside"
+      }
+     ]
+    },
+    "fallback": "the same three rows as static text",
+    "keyboard": "Tab moves between rows; no control"
+   }
+  },
+  {
+   "id": "LSN-CON-01018#s5",
+   "type": "what_a_reader_scores",
+   "bands": [
+    "low",
+    "mid"
+   ],
+   "skills": [
+    "BC-SKL-01062"
+   ],
+   "sources": [
+    "BC-PT-99054",
+    "BC-PT-99004"
+   ],
+   "evidence_tag": "verified",
+   "example_id": "LSN-CON-01018#s4",
+   "lines": [
+    {
+     "point_type_id": "BC-PT-99054",
+     "text": "Limit expression for end behaviour. Earned by: Writing the requested limit symbolically as the variable tends to infinity, for either the function or its derivative (sg-25:4). Not earned by: Setting up the limit so the variable tends to zero (crabbc-25:3); arithmetic with infinity in place of the value, which sg-25:4 treats as scratch work."
+    },
+    {
+     "point_type_id": "BC-PT-99004",
+     "text": "Answer with or without supporting work. Earned by: The correct value on its own, with no supporting work required (sg-25:3, sg-26:4). Not earned by: A value outside the accepted precision, or a value inconsistent with a required earlier step where the rubric imposes one. Precision: A reported decimal answer must be accurate to three places after the decimal point, rounded or truncated; at most one point per question is lost to inappropriate rounding (sg-25:2, sg-26:2). sg-26:4 also accepts a stated rounding to the nearest integer and several truncations."
+    }
+   ]
+  },
+  {
+   "id": "LSN-CON-01018#prq-BC-PRQ-01004",
+   "type": "prerequisite_bridge",
+   "bands": [
+    "low",
+    "mid"
+   ],
+   "skills": [
+    "BC-SKL-01062"
+   ],
+   "sources": [
+    "BC-PRQ-01004"
+   ],
+   "evidence_tag": "inferred",
+   "prerequisite_id": "BC-PRQ-01004",
+   "text": "Compare the degree of a numerator with the degree of its denominator to describe large inputs. The slip: computing values instead of reading degrees."
+  }
+ ],
+ "checks": [
+  {
+   "id": "LSN-CON-01018#chk-1",
+   "check_kind": "completion",
+   "bands": [
+    "low",
+    "mid"
+   ],
+   "format": "short_answer",
+   "archetype_id": "BC-QA-01010",
+   "parameter_draw": {
+    "root_coef": "4",
+    "linear_coef": "5",
+    "linear_const": "2",
+    "inner_const": "3",
+    "radical_place": "denominator"
+   },
+   "completes": "LSN-CON-01018#s4",
+   "stem": {
+    "text": "\\(\\frac{5x+2}{\\sqrt{16x^2+3}}=\\frac{x(5+2/x)}{|x|\\sqrt{16+3/x^2}}\\). Evaluate the limit as \\(x\\to-\\infty\\).",
+    "command_verb": "evaluate"
+   },
+   "answer_key": {
+    "form": "numeric",
+    "mathjson": [
+     "Rational",
+     -5,
+     4
+    ]
+   },
+   "worked_solution": [
+    {
+     "step": 1,
+     "text": "The \\(|x|\\) form.",
+     "mathjson": [
+      "Multiply",
+      "x",
+      [
+       "Power",
+       [
+        "Add",
+        16,
+        [
+         "Multiply",
+         3,
+         [
+          "Power",
+          "x",
+          -2
+         ]
+        ]
+       ],
+       [
+        "Rational",
+        -1,
+        2
+       ]
+      ],
+      [
+       "Power",
+       [
+        "Abs",
+        "x"
+       ],
+       -1
+      ],
+      [
+       "Add",
+       5,
+       [
+        "Multiply",
+        2,
+        [
+         "Power",
+         "x",
+         -1
+        ]
+       ]
+      ]
+     ],
+     "relation": "new"
+    },
+    {
+     "step": 2,
+     "text": "\\(\\frac{x}{|x|}=-1\\).",
+     "mathjson": [
+      "Rational",
+      -5,
+      4
+     ],
+     "relation": "limit",
+     "variable": "x",
+     "point": "-oo"
+    }
+   ],
+   "calculator_status": "no_calculator",
+   "representation": "BC-REP-01",
+   "skills": [
+    "BC-SKL-01062"
+   ]
+  },
+  {
+   "id": "LSN-CON-01018#chk-2",
+   "check_kind": "isomorph",
+   "bands": [
+    "low",
+    "mid"
+   ],
+   "format": "short_answer",
+   "archetype_id": "BC-QA-01010",
+   "parameter_draw": {
+    "root_coef": "2",
+    "linear_coef": "5",
+    "linear_const": "-1",
+    "inner_const": "3",
+    "radical_place": "numerator"
+   },
+   "stem": {
+    "text": "Compare \\(\\sqrt{4x^2+3}\\) with \\(5x-1\\) as \\(x\\to-\\infty\\): find the limit of their quotient.",
+    "command_verb": "find"
+   },
+   "answer_key": {
+    "form": "numeric",
+    "mathjson": [
+     "Rational",
+     -2,
+     5
+    ]
+   },
+   "worked_solution": [
+    {
+     "step": 1,
+     "text": "The quotient.",
+     "mathjson": [
+      "Multiply",
+      [
+       "Power",
+       [
+        "Add",
+        -1,
+        [
+         "Multiply",
+         5,
+         "x"
+        ]
+       ],
+       -1
+      ],
+      [
+       "Power",
+       [
+        "Add",
+        3,
+        [
+         "Multiply",
+         4,
+         [
+          "Power",
+          "x",
+          2
+         ]
+        ]
+       ],
+       [
+        "Rational",
+        1,
+        2
+       ]
+      ]
+     ],
+     "relation": "new"
+    },
+    {
+     "step": 2,
+     "text": "Factor out \\(|x|\\) and \\(x\\).",
+     "mathjson": [
+      "Multiply",
+      [
+       "Power",
+       "x",
+       -1
+      ],
+      [
+       "Power",
+       [
+        "Add",
+        4,
+        [
+         "Multiply",
+         3,
+         [
+          "Power",
+          "x",
+          -2
+         ]
+        ]
+       ],
+       [
+        "Rational",
+        1,
+        2
+       ]
+      ],
+      [
+       "Power",
+       [
+        "Add",
+        5,
+        [
+         "Multiply",
+         -1,
+         [
+          "Power",
+          "x",
+          -1
+         ]
+        ]
+       ],
+       -1
+      ],
+      [
+       "Abs",
+       "x"
+      ]
+     ],
+     "relation": "equivalent"
+    },
+    {
+     "step": 3,
+     "text": "\\(\\frac{|x|}{x}=-1\\).",
+     "mathjson": [
+      "Rational",
+      -2,
+      5
+     ],
+     "relation": "limit",
+     "variable": "x",
+     "point": "-oo"
+    }
+   ],
+   "calculator_status": "no_calculator",
+   "representation": "BC-REP-01",
+   "skills": [
+    "BC-SKL-01062"
+   ]
+  }
+ ],
+ "refresher": [
+  "LSN-CON-01018#s2",
+  "LSN-CON-01018#s4"
+ ],
+ "provenance": {
+  "author": "tools/lesson_transcribe.py",
+  "prompt_version": "generator/lesson_v1",
+  "design_path": "docs/lessons/unit-01/LSN-CON-01018.md",
+  "signed_off_by": "claude-opus-5-5",
+  "signed_off_at": "2026-09-29",
+  "not_human": true
+ }
+}

@@ -1,0 +1,898 @@
+{
+ "id": "LSN-CON-05011",
+ "version": 1,
+ "kind": "concept",
+ "target_id": "BC-CON-05011",
+ "status": "signed_off",
+ "snapshot_digest": "a6a8ec9d3f59ab8f712e33d30cc22fc64bf2c478fbe7312e3e3118d319c6a42f",
+ "source_digest": "de7a997ba13de315f67d1c9410da2080f6ba44ba7e82fa86d4ef6dd78a9d2505",
+ "read_minutes": {
+  "full": 5.0,
+  "brief": 3.0
+ },
+ "word_count": {
+  "full": 593,
+  "brief": 395
+ },
+ "sections": [
+  {
+   "id": "LSN-CON-05011#s1",
+   "type": "orientation",
+   "bands": [
+    "low",
+    "mid"
+   ],
+   "skills": [
+    "BC-SKL-05040",
+    "BC-SKL-05041",
+    "BC-SKL-05042",
+    "BC-SKL-05043",
+    "BC-SKL-05044"
+   ],
+   "sources": [
+    "BC-CON-05011",
+    "research/units/unit-05-analytical-applications-differentiation.md#5.8 Sketching Graphs of Functions and Their Derivatives"
+   ],
+   "evidence_tag": "inferred",
+   "text": "Given the graph of \\(f'\\), a response reads \\(f\\): an extremum of \\(f\\) where the graph of \\(f'\\) crosses the axis, an inflection point where it turns. The reason names the graph of \\(f'\\), never \"the function\" or \"the graph\".",
+   "delivery": {
+    "mode": "figure",
+    "reason": "rule 3: BC-REP-02 on BC-SKL-05040 to 05044; a fixed feature, not promoted",
+    "sources": [
+     "BC-SKL-05040"
+    ],
+    "spec": {
+     "kind": "graph",
+     "representations": [
+      "BC-REP-02"
+     ],
+     "curves": [
+      {
+       "expr": "x**2/2 - 2",
+       "domain": [
+        -4,
+        4
+       ]
+      }
+     ],
+     "window": {
+      "x": [
+       -4,
+       4
+      ],
+      "y": [
+       -3,
+       5
+      ]
+     },
+     "labels": [
+      {
+       "text": "graph of f'",
+       "placement": "inside"
+      },
+      {
+       "text": "crosses: extremum of f",
+       "placement": "inside"
+      },
+      {
+       "text": "turns: inflection of f",
+       "placement": "inside"
+      }
+     ]
+    },
+    "fallback": "the same parabola, static, with the two crossings and the vertex marked and each label inside",
+    "keyboard": "none needed; no control"
+   }
+  },
+  {
+   "id": "LSN-CON-05011#s2",
+   "type": "key_ideas",
+   "bands": [
+    "low",
+    "mid"
+   ],
+   "skills": [
+    "BC-SKL-05040",
+    "BC-SKL-05042"
+   ],
+   "sources": [
+    "BC-EK-FUN-4A9",
+    "ced:106",
+    "research/units/unit-05-analytical-applications-differentiation.md#5.8 Sketching Graphs of Functions and Their Derivatives"
+   ],
+   "evidence_tag": "inferred",
+   "ek_id": "BC-EK-FUN-4A9",
+   "depth": "core",
+   "text": "Each feature of \\(f\\) has a partner one derivative down. A zero of \\(f'\\) where \\(f'\\) changes sign is an extremum of \\(f\\). A turning point of the graph of \\(f'\\) is an inflection point of \\(f\\). Read the crossing for extrema and the turning for inflection.",
+   "notation": "graph of f; graph of f'",
+   "delivery": {
+    "mode": "figure",
+    "reason": "rule 3: BC-REP-02 on BC-SKL-05040 and 05042; the correspondence is a fixed feature, so static",
+    "sources": [
+     "BC-SKL-05040",
+     "BC-SKL-05042"
+    ],
+    "spec": {
+     "kind": "stacked_graphs",
+     "representations": [
+      "BC-REP-02"
+     ],
+     "panels": [
+      {
+       "curve": "x**3/6 - 2*x + 1",
+       "name": "f"
+      },
+      {
+       "curve": "x**2/2 - 2",
+       "name": "f'"
+      }
+     ],
+     "window": {
+      "x": [
+       -4,
+       4
+      ]
+     },
+     "guides": [
+      "vertical line at x = -2",
+      "vertical line at x = 0",
+      "vertical line at x = 2"
+     ],
+     "labels": [
+      {
+       "text": "f' crosses: f max at -2, f min at 2",
+       "placement": "inside"
+      },
+      {
+       "text": "f' turns: f inflects at 0",
+       "placement": "inside"
+      }
+     ]
+    },
+    "fallback": "the two panels, static, with the three guide lines and labels inside",
+    "keyboard": "none needed; no control"
+   }
+  },
+  {
+   "id": "LSN-CON-05011#s3",
+   "type": "key_ideas",
+   "bands": [
+    "low"
+   ],
+   "skills": [
+    "BC-SKL-05041",
+    "BC-SKL-05043",
+    "BC-SKL-05044"
+   ],
+   "sources": [
+    "BC-EK-FUN-4A10",
+    "ced:106",
+    "research/units/unit-05-analytical-applications-differentiation.md#5.8 Sketching Graphs of Functions and Their Derivatives"
+   ],
+   "evidence_tag": "verified",
+   "ek_id": "BC-EK-FUN-4A10",
+   "depth": "extended",
+   "text": "Where \\(f'>0\\), \\(f\\) rises; where \\(f'\\) is increasing, \\(f\\) is concave up. Rising of \\(f'\\) is about concavity, not about \\(f\\) rising. The graph of \\(f'\\) fixes the shape of \\(f\\) but not its height: any vertical shift has the same derivative. One given value of \\(f\\) pins the curve down.",
+   "notation": "sketch a possible graph of f",
+   "quote": {
+    "text": "Graphical, numerical, and analytical information from f' and f\" can be used to predict and explain the behavior of f.",
+    "source": "ced:106"
+   },
+   "delivery": {
+    "mode": "interactive",
+    "reason": "rule 3 promoted: BC-REP-02 on BC-SKL-05041, 05043, 05044; BC-QA-05009 difficulty_variables 'whether a known value is supplied to fix the sketch' names a varying quantity and the stem asks for a reading",
+    "sources": [
+     "BC-SKL-05044",
+     "BC-QA-05009"
+    ],
+    "spec": {
+     "kind": "stacked_graphs",
+     "representations": [
+      "BC-REP-02"
+     ],
+     "panels": [
+      {
+       "curve": "x**3/6 - 2*x + C",
+       "name": "f"
+      },
+      {
+       "curve": "x**2/2 - 2",
+       "name": "f'"
+      }
+     ],
+     "window": {
+      "x": [
+       -4,
+       4
+      ]
+     },
+     "controls": [
+      {
+       "type": "slider",
+       "parameter": "C",
+       "range": [
+        -3,
+        3
+       ],
+       "step": 1,
+       "start": 1
+      }
+     ],
+     "labels": [
+      {
+       "text": "f' unchanged for every C",
+       "placement": "inside"
+      },
+      {
+       "text": "extrema and inflection stay at the same x",
+       "placement": "inside"
+      }
+     ],
+     "question": "Which features of f stay fixed as C moves, and what one fact would fix C?"
+    },
+    "fallback": "three static copies of the f panel at C = -2, 1 and 3 above one f' panel, labels inside",
+    "keyboard": "Tab focuses the slider; left and right arrow keys change C by 1; the reading is announced"
+   }
+  },
+  {
+   "id": "LSN-CON-05011#s4",
+   "type": "strategy",
+   "bands": [
+    "low",
+    "mid"
+   ],
+   "skills": [
+    "BC-SKL-05040",
+    "BC-SKL-05041",
+    "BC-SKL-05042",
+    "BC-SKL-05043",
+    "BC-SKL-05044"
+   ],
+   "sources": [
+    "BC-QA-05009"
+   ],
+   "evidence_tag": "verified",
+   "archetype_id": "BC-QA-05009",
+   "cue": "The stem asks for a sketch with the correct features, or roles, from plotted curves or a sign table.",
+   "method": "First written line: find the turning points of each curve, then match them with the zeros of the other.",
+   "rival": "Rival: deciding the order from the vertical scale of the plots.",
+   "separating_feature": "A sign-changing zero of \\(f'\\) sits under an extremum of \\(f\\), whatever the scale."
+  },
+  {
+   "id": "LSN-CON-05011#s5",
+   "type": "worked_example",
+   "bands": [
+    "low",
+    "mid"
+   ],
+   "skills": [
+    "BC-SKL-05040",
+    "BC-SKL-05041",
+    "BC-SKL-05042",
+    "BC-SKL-05043",
+    "BC-SKL-05044"
+   ],
+   "sources": [
+    "BC-QA-05009"
+   ],
+   "evidence_tag": "inferred",
+   "archetype_id": "BC-QA-05009",
+   "parameter_draw": {
+    "first_root": -2,
+    "root_gap": 4,
+    "steepness": "1/2",
+    "orientation": 1,
+    "lift": 1,
+    "lettering": "ABC",
+    "framing": "derivatives"
+   },
+   "problem": {
+    "text": "The graph of \\(f'\\) is the parabola \\(y=\\frac{x^2}{2}-2\\). Find the \\(x\\)-coordinate of the relative minimum of \\(f\\) and of the inflection point of \\(f\\). Give reasons.",
+    "command_verb": "find"
+   },
+   "calculator_status": "no_calculator",
+   "steps": [
+    {
+     "cue": "The plot is \\(f'\\); the question is about \\(f\\).",
+     "why": "Read one derivative down.",
+     "expression": [
+      "Add",
+      -2,
+      [
+       "Multiply",
+       [
+        "Rational",
+        1,
+        2
+       ],
+       [
+        "Power",
+        "x",
+        2
+       ]
+      ]
+     ],
+     "relation": "new"
+    },
+    {
+     "cue": "Extrema of \\(f\\): where the graph of \\(f'\\) crosses the axis.",
+     "why": "Zeros at \\(-2\\) and \\(2\\).",
+     "expression": [
+      "Set",
+      -2,
+      2
+     ],
+     "relation": "solve",
+     "variable": "x"
+    },
+    {
+     "cue": "Minimum asked: which crossing goes from below to above?",
+     "why": "At \\(x=2\\) the graph of \\(f'\\) changes from negative to positive: relative minimum."
+    },
+    {
+     "cue": "Inflection of \\(f\\): where the graph of \\(f'\\) turns.",
+     "why": "The slope of the parabola is \\(x\\).",
+     "expression": "x",
+     "relation": "new"
+    },
+    {
+     "cue": "The vertex of the graph of \\(f'\\).",
+     "why": "At \\(x=0\\) the graph of \\(f'\\) changes from decreasing to increasing.",
+     "expression": 0,
+     "relation": "solve",
+     "variable": "x"
+    },
+    {
+     "cue": "Both inputs asked.",
+     "why": "Minimum at 2, inflection at 0.",
+     "expression": [
+      "Tuple",
+      2,
+      0
+     ],
+     "relation": "new"
+    }
+   ],
+   "answer": {
+    "form": "symbolic",
+    "mathjson": [
+     "Tuple",
+     2,
+     0
+    ]
+   },
+   "delivery": {
+    "mode": "step_reveal",
+    "reason": "rule 1",
+    "sources": []
+   }
+  },
+  {
+   "id": "LSN-CON-05011#err-BC-ERR-05016",
+   "type": "common_error",
+   "bands": [
+    "low",
+    "mid"
+   ],
+   "skills": [
+    "BC-SKL-05041"
+   ],
+   "sources": [
+    "BC-ERR-05016",
+    "BC-MIS-05020"
+   ],
+   "evidence_tag": "inferred",
+   "error_id": "BC-ERR-05016",
+   "observed_behavior": "The response reports concavity where monotonicity was asked for, or reports increase of the function where the derivative graph is rising.",
+   "scoring_consequence": "The intervals reported belong to the other question and the reason point is unavailable.",
+   "wrong_step": {
+    "text": "The graph of \\(f'\\) rises on \\(x>0\\), so \\(f\\) increases there.",
+    "expression": [
+     "Interval",
+     [
+      "Open",
+      0
+     ],
+     [
+      "Open",
+      "PositiveInfinity"
+     ]
+    ]
+   },
+   "right_step": {
+    "text": "\\(f'>0\\) on \\(x<-2\\) and \\(x>2\\), so \\(f\\) increases there.",
+    "expression": [
+     "Union",
+     [
+      "Interval",
+      [
+       "Open",
+       "NegativeInfinity"
+      ],
+      [
+       "Open",
+       -2
+      ]
+     ],
+     [
+      "Interval",
+      [
+       "Open",
+       2
+      ],
+      [
+       "Open",
+       "PositiveInfinity"
+      ]
+     ]
+    ]
+   },
+   "relation": "distinct",
+   "possible_reason": {
+    "misconception_id": "BC-MIS-05020",
+    "text": "does not distinguish rising from bending upward"
+   },
+   "delivery": {
+    "mode": "step_reveal",
+    "reason": "rule 1",
+    "sources": []
+   }
+  },
+  {
+   "id": "LSN-CON-05011#err-BC-ERR-05041",
+   "type": "common_error",
+   "bands": [
+    "low",
+    "mid"
+   ],
+   "skills": [
+    "BC-SKL-05040"
+   ],
+   "sources": [
+    "BC-ERR-05041",
+    "BC-MIS-05011"
+   ],
+   "evidence_tag": "inferred",
+   "error_id": "BC-ERR-05041",
+   "observed_behavior": "The response places the extrema of the derivative sketch where the original curve crosses the axis.",
+   "scoring_consequence": "The sketch fails every feature check that follows.",
+   "wrong_step": {
+    "text": "Sketching \\(f'\\) from \\(f\\): an extremum of \\(f'\\) drawn where \\(f\\) crosses the axis.",
+    "expression": "extremum_of_f_prime_at_zero_of_f"
+   },
+   "right_step": {
+    "text": "The extremum of \\(f'\\) sits at the inflection point of \\(f\\), \\(x=0\\).",
+    "expression": "extremum_of_f_prime_at_inflection_of_f"
+   },
+   "relation": "distinct",
+   "possible_reason": {
+    "misconception_id": "BC-MIS-05011",
+    "text": "reading features of whatever curve is drawn"
+   },
+   "delivery": {
+    "mode": "step_reveal",
+    "reason": "rule 1",
+    "sources": []
+   }
+  },
+  {
+   "id": "LSN-CON-05011#err-BC-ERR-05042",
+   "type": "common_error",
+   "bands": [
+    "low",
+    "mid"
+   ],
+   "skills": [
+    "BC-SKL-05041"
+   ],
+   "sources": [
+    "BC-ERR-05042",
+    "BC-MIS-05011"
+   ],
+   "evidence_tag": "inferred",
+   "error_id": "BC-ERR-05042",
+   "observed_behavior": "The response draws the function with extrema where the derivative graph turns rather than where it crosses the axis.",
+   "scoring_consequence": "Extrema and points of inflection are interchanged throughout the sketch.",
+   "wrong_step": {
+    "text": "Extremum of \\(f\\) at the vertex of the graph of \\(f'\\).",
+    "expression": [
+     "Set",
+     0
+    ]
+   },
+   "right_step": {
+    "text": "Extrema of \\(f\\) at the crossings of the graph of \\(f'\\).",
+    "expression": [
+     "Set",
+     -2,
+     2
+    ]
+   },
+   "relation": "distinct",
+   "possible_reason": {
+    "misconception_id": "BC-MIS-05011",
+    "text": "reading features of whatever curve is drawn"
+   },
+   "delivery": {
+    "mode": "step_reveal",
+    "reason": "rule 1",
+    "sources": []
+   }
+  },
+  {
+   "id": "LSN-CON-05011#err-BC-ERR-05043",
+   "type": "common_error",
+   "bands": [
+    "low",
+    "mid"
+   ],
+   "skills": [
+    "BC-SKL-05042"
+   ],
+   "sources": [
+    "BC-ERR-05043",
+    "BC-MIS-05020"
+   ],
+   "evidence_tag": "inferred",
+   "error_id": "BC-ERR-05043",
+   "observed_behavior": "The response pairs a point of inflection with a zero of the first derivative, or an extremum with a zero of the second.",
+   "scoring_consequence": "Every answer that rests on the correspondence is displaced by one derivative.",
+   "wrong_step": {
+    "text": "Inflection of \\(f\\) at the zeros of \\(f'\\).",
+    "expression": [
+     "Set",
+     -2,
+     2
+    ]
+   },
+   "right_step": {
+    "text": "Inflection of \\(f\\) where the graph of \\(f'\\) turns.",
+    "expression": [
+     "Set",
+     0
+    ]
+   },
+   "relation": "distinct",
+   "possible_reason": {
+    "misconception_id": "BC-MIS-05020",
+    "text": "the sign and the direction of the derivative are used interchangeably"
+   },
+   "delivery": {
+    "mode": "step_reveal",
+    "reason": "rule 1",
+    "sources": []
+   }
+  },
+  {
+   "id": "LSN-CON-05011#prq-BC-PRQ-05006",
+   "type": "prerequisite_bridge",
+   "bands": [
+    "low",
+    "mid"
+   ],
+   "skills": [
+    "BC-SKL-05040"
+   ],
+   "sources": [
+    "BC-PRQ-05006"
+   ],
+   "evidence_tag": "inferred",
+   "prerequisite_id": "BC-PRQ-05006",
+   "text": "Label the plotted curve and the function asked about first. Reading the plotted derivative as the function misplaces every feature."
+  }
+ ],
+ "checks": [
+  {
+   "id": "LSN-CON-05011#chk-1",
+   "check_kind": "completion",
+   "bands": [
+    "low",
+    "mid"
+   ],
+   "format": "short_answer",
+   "archetype_id": "BC-QA-05009",
+   "parameter_draw": {
+    "first_root": -2,
+    "root_gap": 4,
+    "steepness": "1/2",
+    "orientation": 1,
+    "lift": 1,
+    "lettering": "ABC",
+    "framing": "derivatives"
+   },
+   "completes": "LSN-CON-05011#s5",
+   "stem": {
+    "text": "\\(f'\\) is negative on \\((-2, 2)\\), zero at \\(-2\\) and \\(2\\), and turns at \\(0\\). Give (minimum, inflection) of \\(f\\).",
+    "command_verb": "find"
+   },
+   "answer_key": {
+    "form": "symbolic",
+    "mathjson": [
+     "Tuple",
+     2,
+     0
+    ]
+   },
+   "worked_solution": [
+    {
+     "step": 1,
+     "text": "The graph of \\(f'\\) goes from negative to positive at 2.",
+     "mathjson": [
+      "Add",
+      -2,
+      [
+       "Multiply",
+       [
+        "Rational",
+        1,
+        2
+       ],
+       [
+        "Power",
+        "x",
+        2
+       ]
+      ]
+     ],
+     "relation": "new"
+    },
+    {
+     "step": 2,
+     "text": "Crossings.",
+     "mathjson": [
+      "Set",
+      -2,
+      2
+     ],
+     "relation": "solve",
+     "variable": "x"
+    },
+    {
+     "step": 3,
+     "text": "Minimum at 2; the graph of \\(f'\\) turns at 0.",
+     "mathjson": [
+      "Tuple",
+      2,
+      0
+     ],
+     "relation": "new"
+    }
+   ],
+   "calculator_status": "no_calculator",
+   "representation": "BC-REP-01",
+   "skills": [
+    "BC-SKL-05043"
+   ]
+  },
+  {
+   "id": "LSN-CON-05011#chk-2",
+   "check_kind": "isomorph",
+   "bands": [
+    "low",
+    "mid"
+   ],
+   "format": "short_answer",
+   "archetype_id": "BC-QA-05009",
+   "parameter_draw": {
+    "first_root": -3,
+    "root_gap": 2,
+    "steepness": "1",
+    "orientation": -1,
+    "lift": 0,
+    "lettering": "ACB",
+    "framing": "derivatives"
+   },
+   "stem": {
+    "text": "The graph of \\(f'\\) is \\(y=-(x+3)(x+1)\\). Give (relative minimum of \\(f\\), inflection of \\(f\\)).",
+    "command_verb": "find"
+   },
+   "answer_key": {
+    "form": "symbolic",
+    "mathjson": [
+     "Tuple",
+     -3,
+     -2
+    ]
+   },
+   "worked_solution": [
+    {
+     "step": 1,
+     "text": "The graph of \\(f'\\).",
+     "mathjson": [
+      "Multiply",
+      [
+       "Add",
+       1,
+       "x"
+      ],
+      [
+       "Add",
+       -3,
+       [
+        "Multiply",
+        -1,
+        "x"
+       ]
+      ]
+     ],
+     "relation": "new"
+    },
+    {
+     "step": 2,
+     "text": "Crossings at \\(-3\\) and \\(-1\\); negative to positive at \\(-3\\).",
+     "mathjson": [
+      "Set",
+      -3,
+      -1
+     ],
+     "relation": "solve",
+     "variable": "x"
+    },
+    {
+     "step": 3,
+     "text": "Slope of the graph of \\(f'\\).",
+     "mathjson": [
+      "Add",
+      -4,
+      [
+       "Multiply",
+       -2,
+       "x"
+      ]
+     ],
+     "relation": "new"
+    },
+    {
+     "step": 4,
+     "text": "It turns at \\(-2\\).",
+     "mathjson": -2,
+     "relation": "solve",
+     "variable": "x"
+    },
+    {
+     "step": 5,
+     "text": "The pair.",
+     "mathjson": [
+      "Tuple",
+      -3,
+      -2
+     ],
+     "relation": "new"
+    }
+   ],
+   "calculator_status": "no_calculator",
+   "representation": "BC-REP-01",
+   "skills": [
+    "BC-SKL-05043"
+   ]
+  },
+  {
+   "id": "LSN-CON-05011#chk-3",
+   "check_kind": "mcq",
+   "bands": [
+    "low"
+   ],
+   "format": "mcq",
+   "archetype_id": "BC-QA-05009",
+   "parameter_draw": {
+    "first_root": 0,
+    "root_gap": 2,
+    "steepness": "1",
+    "orientation": 1,
+    "lift": 2,
+    "lettering": "CBA",
+    "framing": "derivatives"
+   },
+   "stem": {
+    "text": "The graph of \\(f'\\) is \\(y=x^2-2x\\). Which statement about \\(f\\) is true?",
+    "command_verb": "identify"
+   },
+   "answer_key": {
+    "form": "statement",
+    "mathjson": "minimum_at_2_inflection_at_1"
+   },
+   "worked_solution": [
+    {
+     "step": 1,
+     "text": "Crossings of the graph of \\(f'\\).",
+     "mathjson": [
+      "Add",
+      [
+       "Power",
+       "x",
+       2
+      ],
+      [
+       "Multiply",
+       -2,
+       "x"
+      ]
+     ],
+     "relation": "new"
+    },
+    {
+     "step": 2,
+     "text": "At 0 and 2; negative to positive at 2.",
+     "mathjson": [
+      "Set",
+      0,
+      2
+     ],
+     "relation": "solve",
+     "variable": "x"
+    },
+    {
+     "step": 3,
+     "text": "It turns at 1.",
+     "mathjson": [
+      "Add",
+      -2,
+      [
+       "Multiply",
+       2,
+       "x"
+      ]
+     ],
+     "relation": "new"
+    },
+    {
+     "step": 4,
+     "text": "Vertex.",
+     "mathjson": 1,
+     "relation": "solve",
+     "variable": "x"
+    }
+   ],
+   "options": [
+    {
+     "id": "A",
+     "is_key": false,
+     "error_path": "BC-ERR-05042",
+     "label": "\\(f\\) has a relative minimum at \\(x=1\\).",
+     "derivation": "the extremum placed where the graph of f' turns"
+    },
+    {
+     "id": "B",
+     "is_key": false,
+     "error_path": "BC-ERR-05016",
+     "label": "\\(f\\) is increasing on \\(x>1\\).",
+     "derivation": "f read as increasing where the graph of f' rises"
+    },
+    {
+     "id": "C",
+     "is_key": true,
+     "error_path": null,
+     "label": "\\(f\\) has a relative minimum at \\(x=2\\) and an inflection point at \\(x=1\\)."
+    },
+    {
+     "id": "D",
+     "is_key": false,
+     "error_path": "BC-ERR-05043",
+     "label": "\\(f\\) has inflection points at \\(x=0\\) and \\(x=2\\).",
+     "derivation": "inflection paired with the zeros of f'"
+    }
+   ],
+   "calculator_status": "no_calculator",
+   "representation": "BC-REP-01",
+   "skills": [
+    "BC-SKL-05043"
+   ]
+  }
+ ],
+ "refresher": [
+  "LSN-CON-05011#s2",
+  "LSN-CON-05011#err-BC-ERR-05016",
+  "LSN-CON-05011#err-BC-ERR-05041",
+  "LSN-CON-05011#err-BC-ERR-05042",
+  "LSN-CON-05011#err-BC-ERR-05043",
+  "LSN-CON-05011#s5"
+ ],
+ "provenance": {
+  "author": "tools/lesson_transcribe.py",
+  "prompt_version": "generator/lesson_v1",
+  "design_path": "docs/lessons/unit-05/LSN-CON-05011.md",
+  "signed_off_by": "claude-opus-5-5",
+  "signed_off_at": "2026-09-29",
+  "not_human": true
+ }
+}

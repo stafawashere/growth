@@ -1,0 +1,628 @@
+{
+ "id": "LSN-CON-05009",
+ "version": 1,
+ "kind": "concept",
+ "target_id": "BC-CON-05009",
+ "status": "signed_off",
+ "snapshot_digest": "a6a8ec9d3f59ab8f712e33d30cc22fc64bf2c478fbe7312e3e3118d319c6a42f",
+ "source_digest": "3f2947379b17adc0e118d6e07011cf9054559f90e4048c24ba6aa233acce650a",
+ "read_minutes": {
+  "full": 4.0,
+  "brief": 3.0
+ },
+ "word_count": {
+  "full": 475,
+  "brief": 377
+ },
+ "sections": [
+  {
+   "id": "LSN-CON-05009#s1",
+   "type": "orientation",
+   "bands": [
+    "low",
+    "mid"
+   ],
+   "skills": [
+    "BC-SKL-05036",
+    "BC-SKL-05037",
+    "BC-SKL-05039"
+   ],
+   "sources": [
+    "BC-CON-05009",
+    "research/units/unit-05-analytical-applications-differentiation.md#5.7 Using the Second Derivative Test to Determine Extrema"
+   ],
+   "evidence_tag": "inferred",
+   "text": "A response classifies a critical point by first stating that \\(f'(c)=0\\), then stating the sign of \\(f''(c)\\): negative gives a relative maximum, positive a relative minimum. A zero second derivative settles nothing, and the first derivative test takes over.",
+   "delivery": {
+    "mode": "text",
+    "reason": "rule 5: BC-SKL-05036 and 05037 carry BC-REP-01, 04, 06 only",
+    "sources": [
+     "BC-SKL-05036",
+     "BC-SKL-05037"
+    ]
+   }
+  },
+  {
+   "id": "LSN-CON-05009#s2",
+   "type": "key_ideas",
+   "bands": [
+    "low",
+    "mid"
+   ],
+   "skills": [
+    "BC-SKL-05036",
+    "BC-SKL-05037",
+    "BC-SKL-05039"
+   ],
+   "sources": [
+    "BC-EK-FUN-4A7",
+    "ced:105",
+    "sg-25:19",
+    "research/units/unit-05-analytical-applications-differentiation.md#5.7 Using the Second Derivative Test to Determine Extrema"
+   ],
+   "evidence_tag": "verified",
+   "ek_id": "BC-EK-FUN-4A7",
+   "depth": "core",
+   "text": "The test has one hypothesis to write down: \\(f'(c)=0\\). Then \\(f''(c)<0\\) gives a relative maximum at \\(c\\) and \\(f''(c)>0\\) a relative minimum. If \\(f''(c)=0\\) the test is inconclusive: the sign of \\(f'\\) on each side of \\(c\\) decides. The test is local. Where the question asks for an absolute extremum, it does not carry the justification.",
+   "notation": "f''(c)",
+   "quote": {
+    "text": "The second derivative of a function may determine whether a critical point is the location of a relative (local) maximum or minimum.",
+    "source": "ced:105"
+   },
+   "delivery": {
+    "mode": "text",
+    "reason": "rule 5: a test statement; BC-REP-02 on BC-SKL-05039 serves the choice of test, stated in words",
+    "sources": [
+     "BC-SKL-05039"
+    ]
+   }
+  },
+  {
+   "id": "LSN-CON-05009#s3",
+   "type": "strategy",
+   "bands": [
+    "low",
+    "mid"
+   ],
+   "skills": [
+    "BC-SKL-05036",
+    "BC-SKL-05037",
+    "BC-SKL-05039"
+   ],
+   "sources": [
+    "BC-QA-05013"
+   ],
+   "evidence_tag": "verified",
+   "archetype_id": "BC-QA-05013",
+   "cue": "The stem asks for the classification, from a function and a critical point, with the word relative.",
+   "method": "First written line: confirm the first derivative is zero at the point, \\(f'(c)=0\\).",
+   "rival": "Rival: classifying from the sign of the function value \\(f(c)\\).",
+   "separating_feature": "The verdict reads the sign of \\(f''(c)\\) where \\(f'(c)=0\\). If \\(f''(c)=0\\), switch to the sign of \\(f'\\) on each side."
+  },
+  {
+   "id": "LSN-CON-05009#s4",
+   "type": "worked_example",
+   "bands": [
+    "low",
+    "mid"
+   ],
+   "skills": [
+    "BC-SKL-05036",
+    "BC-SKL-05037",
+    "BC-SKL-05039"
+   ],
+   "sources": [
+    "BC-QA-05013"
+   ],
+   "evidence_tag": "inferred",
+   "archetype_id": "BC-QA-05013",
+   "parameter_draw": {
+    "first_root": -1,
+    "second_root": 2,
+    "other_input": 4,
+    "tested_root": "second",
+    "leading_sign": 1,
+    "constant": 2,
+    "letter": "f",
+    "given": "function"
+   },
+   "problem": {
+    "text": "Let \\(f(x)=2x^3-3x^2-12x+2\\). Determine whether \\(x=2\\) is the location of a relative minimum, a relative maximum, or neither. Justify.",
+    "command_verb": "determine"
+   },
+   "calculator_status": "no_calculator",
+   "steps": [
+    {
+     "cue": "The test starts at a critical point, so differentiate first.",
+     "why": "\\(f'(x)=6x^2-6x-12\\).",
+     "expression": [
+      "Add",
+      -12,
+      [
+       "Multiply",
+       -6,
+       "x"
+      ],
+      [
+       "Multiply",
+       6,
+       [
+        "Power",
+        "x",
+        2
+       ]
+      ]
+     ],
+     "relation": "new"
+    },
+    {
+     "cue": "The hypothesis to write: \\(f'(2)=0\\).",
+     "why": "Without it the second derivative says nothing about an extremum.",
+     "expression": 0,
+     "relation": "evaluate",
+     "subs": {
+      "x": "2"
+     }
+    },
+    {
+     "cue": "Hypothesis met, so differentiate again.",
+     "why": "\\(f''(x)=12x-6\\).",
+     "expression": [
+      "Add",
+      -6,
+      [
+       "Multiply",
+       12,
+       "x"
+      ]
+     ],
+     "relation": "new"
+    },
+    {
+     "cue": "Evaluate at the critical point only.",
+     "why": "\\(f''(2)=18\\), positive.",
+     "expression": 18,
+     "relation": "evaluate",
+     "subs": {
+      "x": "2"
+     }
+    },
+    {
+     "cue": "The stem asks for a classification with a reason.",
+     "why": "\\(f'(2)=0\\) and \\(f''(2)>0\\), so \\(f\\) has a relative minimum at \\(x=2\\)."
+    }
+   ],
+   "answer": {
+    "form": "statement",
+    "mathjson": "relative_minimum_at_2"
+   },
+   "delivery": {
+    "mode": "step_reveal",
+    "reason": "rule 1",
+    "sources": []
+   }
+  },
+  {
+   "id": "LSN-CON-05009#err-BC-ERR-05037",
+   "type": "common_error",
+   "bands": [
+    "low",
+    "mid"
+   ],
+   "skills": [
+    "BC-SKL-05036"
+   ],
+   "sources": [
+    "BC-ERR-05037"
+   ],
+   "evidence_tag": "inferred",
+   "error_id": "BC-ERR-05037",
+   "observed_behavior": "The response reports a relative minimum where the second derivative is negative, or the reverse.",
+   "scoring_consequence": "The classification is wrong and the point is lost.",
+   "wrong_step": {
+    "text": "\\(f''(2)=18\\), so a relative maximum.",
+    "expression": "relative_maximum_at_2"
+   },
+   "right_step": {
+    "text": "\\(f''(2)=18>0\\), so a relative minimum: the graph is concave up there.",
+    "expression": "relative_minimum_at_2"
+   },
+   "relation": "distinct",
+   "delivery": {
+    "mode": "step_reveal",
+    "reason": "rule 1",
+    "sources": []
+   }
+  },
+  {
+   "id": "LSN-CON-05009#err-BC-ERR-05040",
+   "type": "common_error",
+   "bands": [
+    "low",
+    "mid"
+   ],
+   "skills": [
+    "BC-SKL-05039"
+   ],
+   "sources": [
+    "BC-ERR-05040",
+    "BC-MIS-05024"
+   ],
+   "evidence_tag": "inferred",
+   "error_id": "BC-ERR-05040",
+   "observed_behavior": "The response reaches for a second derivative test when only a graph of the first derivative is given and its slope is never discussed.",
+   "scoring_consequence": "The argument cannot be completed from the given information, so the justification point is lost.",
+   "wrong_step": {
+    "text": "Given only a graph of \\(f'\\): \"\\(f''(2)>0\\)\", with the slope of that graph never mentioned.",
+    "expression": "second_derivative_claimed_without_slope_of_graph"
+   },
+   "right_step": {
+    "text": "\\(f'\\) changes from negative to positive at \\(x=2\\), read from the graph of \\(f'\\).",
+    "expression": "sign_change_of_f_prime_at_2"
+   },
+   "relation": "distinct",
+   "possible_reason": {
+    "misconception_id": "BC-MIS-05024",
+    "text": "picks a test by habit rather than by what the given representation supports"
+   },
+   "delivery": {
+    "mode": "step_reveal",
+    "reason": "rule 1",
+    "sources": []
+   }
+  },
+  {
+   "id": "LSN-CON-05009#err-BC-ERR-05036",
+   "type": "common_error",
+   "bands": [
+    "low",
+    "mid"
+   ],
+   "skills": [
+    "BC-SKL-05036"
+   ],
+   "sources": [
+    "BC-ERR-05036"
+   ],
+   "evidence_tag": "inferred",
+   "error_id": "BC-ERR-05036",
+   "observed_behavior": "The response evaluates the second derivative at an input that is not a critical point and classifies it.",
+   "scoring_consequence": "The conclusion does not follow and the justification point is lost.",
+   "wrong_step": {
+    "text": "\\(f''(4)=42>0\\), so a minimum at \\(x=4\\), where \\(f'(4)=60\\).",
+    "expression": 42
+   },
+   "right_step": {
+    "text": "\\(f''(2)=18\\), at the critical point \\(x=2\\).",
+    "expression": 18
+   },
+   "relation": "distinct",
+   "delivery": {
+    "mode": "step_reveal",
+    "reason": "rule 1",
+    "sources": []
+   }
+  },
+  {
+   "id": "LSN-CON-05009#err-BC-ERR-05038",
+   "type": "common_error",
+   "bands": [
+    "low",
+    "mid"
+   ],
+   "skills": [
+    "BC-SKL-05037"
+   ],
+   "sources": [
+    "BC-ERR-05038",
+    "BC-MIS-05023"
+   ],
+   "evidence_tag": "inferred",
+   "error_id": "BC-ERR-05038",
+   "observed_behavior": "The response reports neither a maximum nor a minimum because the second derivative is zero at the critical point.",
+   "scoring_consequence": "The classification is unsupported, since the test settles nothing in that case.",
+   "wrong_step": {
+    "text": "\\(f''(c)=0\\), so neither.",
+    "expression": "neither_from_zero_second_derivative"
+   },
+   "right_step": {
+    "text": "\\(f''(c)=0\\): inconclusive, so read the sign of \\(f'\\) on each side of \\(c\\).",
+    "expression": "inconclusive_then_first_derivative_test"
+   },
+   "relation": "distinct",
+   "possible_reason": {
+    "misconception_id": "BC-MIS-05023",
+    "text": "reads a zero second derivative as a verdict"
+   },
+   "delivery": {
+    "mode": "step_reveal",
+    "reason": "rule 1",
+    "sources": []
+   }
+  }
+ ],
+ "checks": [
+  {
+   "id": "LSN-CON-05009#chk-1",
+   "check_kind": "completion",
+   "bands": [
+    "low",
+    "mid"
+   ],
+   "format": "short_answer",
+   "archetype_id": "BC-QA-05013",
+   "parameter_draw": {
+    "first_root": -1,
+    "second_root": 2,
+    "other_input": 4,
+    "tested_root": "second",
+    "leading_sign": 1,
+    "constant": 2,
+    "letter": "f",
+    "given": "function"
+   },
+   "completes": "LSN-CON-05009#s4",
+   "stem": {
+    "text": "For \\(f(x)=2x^3-3x^2-12x+2\\), \\(f'(2)=0\\) and \\(f''(x)=12x-6\\). Classify \\(x=2\\) and give the reason.",
+    "command_verb": "determine"
+   },
+   "answer_key": {
+    "form": "statement",
+    "mathjson": "relative_minimum_at_2"
+   },
+   "worked_solution": [
+    {
+     "step": 1,
+     "text": "The second derivative.",
+     "mathjson": [
+      "Add",
+      -6,
+      [
+       "Multiply",
+       12,
+       "x"
+      ]
+     ],
+     "relation": "new"
+    },
+    {
+     "step": 2,
+     "text": "At the critical point, 18.",
+     "mathjson": 18,
+     "relation": "evaluate",
+     "subs": {
+      "x": "2"
+     }
+    }
+   ],
+   "calculator_status": "no_calculator",
+   "representation": "BC-REP-01",
+   "skills": [
+    "BC-SKL-05036"
+   ]
+  },
+  {
+   "id": "LSN-CON-05009#chk-2",
+   "check_kind": "isomorph",
+   "bands": [
+    "low",
+    "mid"
+   ],
+   "format": "short_answer",
+   "archetype_id": "BC-QA-05013",
+   "parameter_draw": {
+    "first_root": 1,
+    "second_root": 4,
+    "other_input": -2,
+    "tested_root": "second",
+    "leading_sign": -1,
+    "constant": 0,
+    "letter": "h",
+    "given": "derivative"
+   },
+   "stem": {
+    "text": "\\(h'(x)=-6(x-1)(x-4)\\). Classify the critical point \\(x=4\\) with the second derivative test.",
+    "command_verb": "determine"
+   },
+   "answer_key": {
+    "form": "statement",
+    "mathjson": "relative_maximum_at_4"
+   },
+   "worked_solution": [
+    {
+     "step": 1,
+     "text": "\\(h'(x)\\) expanded.",
+     "mathjson": [
+      "Add",
+      -24,
+      [
+       "Multiply",
+       -6,
+       [
+        "Power",
+        "x",
+        2
+       ]
+      ],
+      [
+       "Multiply",
+       30,
+       "x"
+      ]
+     ],
+     "relation": "new"
+    },
+    {
+     "step": 2,
+     "text": "\\(h'(4)=0\\).",
+     "mathjson": 0,
+     "relation": "evaluate",
+     "subs": {
+      "x": "4"
+     }
+    },
+    {
+     "step": 3,
+     "text": "\\(h''(x)=-12x+30\\).",
+     "mathjson": [
+      "Add",
+      30,
+      [
+       "Multiply",
+       -12,
+       "x"
+      ]
+     ],
+     "relation": "new"
+    },
+    {
+     "step": 4,
+     "text": "\\(h''(4)=-18<0\\): relative maximum.",
+     "mathjson": -18,
+     "relation": "evaluate",
+     "subs": {
+      "x": "4"
+     }
+    }
+   ],
+   "calculator_status": "no_calculator",
+   "representation": "BC-REP-01",
+   "skills": [
+    "BC-SKL-05036"
+   ]
+  },
+  {
+   "id": "LSN-CON-05009#chk-3",
+   "check_kind": "mcq",
+   "bands": [
+    "low"
+   ],
+   "format": "mcq",
+   "archetype_id": "BC-QA-05013",
+   "parameter_draw": {
+    "first_root": -3,
+    "second_root": 1,
+    "other_input": 2,
+    "tested_root": "first",
+    "leading_sign": -1,
+    "constant": 0,
+    "letter": "g",
+    "given": "derivative"
+   },
+   "stem": {
+    "text": "\\(g'(x)=-6(x+3)(x-1)\\), so \\(g''(x)=-12x-12\\). Which statement about \\(g\\) is justified?",
+    "command_verb": "identify"
+   },
+   "answer_key": {
+    "form": "statement",
+    "mathjson": "relative_minimum_at_minus_3"
+   },
+   "worked_solution": [
+    {
+     "step": 1,
+     "text": "\\(g'(x)=-6(x+3)(x-1)\\).",
+     "mathjson": [
+      "Multiply",
+      [
+       "Add",
+       -1,
+       "x"
+      ],
+      [
+       "Add",
+       -18,
+       [
+        "Multiply",
+        -6,
+        "x"
+       ]
+      ]
+     ],
+     "relation": "new"
+    },
+    {
+     "step": 2,
+     "text": "\\(g'(-3)=0\\): a critical point.",
+     "mathjson": 0,
+     "relation": "evaluate",
+     "subs": {
+      "x": "-3"
+     }
+    },
+    {
+     "step": 3,
+     "text": "\\(g''(x)=-12x-12\\).",
+     "mathjson": [
+      "Add",
+      -12,
+      [
+       "Multiply",
+       -12,
+       "x"
+      ]
+     ],
+     "relation": "new"
+    },
+    {
+     "step": 4,
+     "text": "\\(g''(-3)=24>0\\): relative minimum.",
+     "mathjson": 24,
+     "relation": "evaluate",
+     "subs": {
+      "x": "-3"
+     }
+    }
+   ],
+   "options": [
+    {
+     "id": "A",
+     "is_key": true,
+     "error_path": null,
+     "label": "Relative minimum at \\(x=-3\\), since \\(g'(-3)=0\\) and \\(g''(-3)=24>0\\)."
+    },
+    {
+     "id": "B",
+     "is_key": false,
+     "error_path": "BC-ERR-05037",
+     "label": "Relative maximum at \\(x=-3\\), since \\(g''(-3)=24\\).",
+     "derivation": "sign convention reversed"
+    },
+    {
+     "id": "C",
+     "is_key": false,
+     "error_path": "BC-ERR-05036",
+     "label": "Relative maximum at \\(x=2\\), since \\(g''(2)=-36<0\\).",
+     "derivation": "the test applied at x = 2, where g'(2) = -30, not 0"
+    },
+    {
+     "id": "D",
+     "is_key": false,
+     "error_path": "BC-ERR-05038",
+     "label": "Neither at \\(x=-3\\): the second derivative test gives no extremum.",
+     "derivation": "the inconclusive outcome reported as a verdict of neither"
+    }
+   ],
+   "calculator_status": "no_calculator",
+   "representation": "BC-REP-01",
+   "skills": [
+    "BC-SKL-05036"
+   ]
+  }
+ ],
+ "refresher": [
+  "LSN-CON-05009#s2",
+  "LSN-CON-05009#err-BC-ERR-05037",
+  "LSN-CON-05009#err-BC-ERR-05040",
+  "LSN-CON-05009#err-BC-ERR-05036",
+  "LSN-CON-05009#err-BC-ERR-05038",
+  "LSN-CON-05009#s4"
+ ],
+ "provenance": {
+  "author": "tools/lesson_transcribe.py",
+  "prompt_version": "generator/lesson_v1",
+  "design_path": "docs/lessons/unit-05/LSN-CON-05009.md",
+  "signed_off_by": "claude-opus-5-5",
+  "signed_off_at": "2026-09-29",
+  "not_human": true
+ }
+}

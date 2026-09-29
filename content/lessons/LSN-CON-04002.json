@@ -1,0 +1,556 @@
+{
+ "id": "LSN-CON-04002",
+ "version": 1,
+ "kind": "concept",
+ "target_id": "BC-CON-04002",
+ "status": "draft",
+ "snapshot_digest": "a6a8ec9d3f59ab8f712e33d30cc22fc64bf2c478fbe7312e3e3118d319c6a42f",
+ "source_digest": "94d38e317ab67012ab343849ce0a79e0176a2259d54c9cf667ca99b2cd8d8173",
+ "read_minutes": {
+  "full": 4.2,
+  "brief": 3.0
+ },
+ "word_count": {
+  "full": 515,
+  "brief": 395
+ },
+ "sections": [
+  {
+   "id": "LSN-CON-04002#s1",
+   "type": "orientation",
+   "bands": [
+    "low",
+    "mid"
+   ],
+   "skills": [
+    "BC-SKL-04001",
+    "BC-SKL-04004",
+    "BC-SKL-04014"
+   ],
+   "sources": [
+    "BC-CON-04002",
+    "research/units/unit-04-contextual-applications-differentiation.md#4.1 Interpreting the Meaning of the Derivative in Context"
+   ],
+   "evidence_tag": "inferred",
+   "text": "A response shows a difference of values over a difference of inputs, the value, then its units, the function's unit over the input's unit.",
+   "delivery": {
+    "mode": "text",
+    "reason": "rule 5: a statement of what a response shows, BC-REP-04 and BC-REP-05 on BC-SKL-04001",
+    "sources": [
+     "BC-SKL-04001"
+    ]
+   }
+  },
+  {
+   "id": "LSN-CON-04002#s2",
+   "type": "key_ideas",
+   "bands": [
+    "low",
+    "mid"
+   ],
+   "skills": [
+    "BC-SKL-04001"
+   ],
+   "sources": [
+    "BC-EK-CHA-3A3",
+    "ced:87",
+    "sg-25:11",
+    "research/units/unit-04-contextual-applications-differentiation.md#4.1 Interpreting the Meaning of the Derivative in Context"
+   ],
+   "evidence_tag": "inferred",
+   "ek_id": "BC-EK-CHA-3A3",
+   "depth": "core",
+   "text": "A derivative's unit is the function's unit over the input's unit, as in degrees Celsius per minute. A second derivative divides by the input's unit twice (sg-25:11). Units carry their own point.",
+   "notation": "units of f per unit of x",
+   "delivery": {
+    "mode": "text",
+    "reason": "rule 5: CHA-3A3 is a rule about units with BC-REP-04 and BC-REP-05 givens",
+    "sources": [
+     "BC-SKL-04001"
+    ]
+   }
+  },
+  {
+   "id": "LSN-CON-04002#s3",
+   "type": "key_ideas",
+   "bands": [
+    "low"
+   ],
+   "skills": [
+    "BC-SKL-04004"
+   ],
+   "sources": [
+    "BC-EK-CHA-3A1",
+    "ced:87",
+    "sg-25:11",
+    "research/units/unit-04-contextual-applications-differentiation.md#4.1 Interpreting the Meaning of the Derivative in Context"
+   ],
+   "evidence_tag": "verified",
+   "ek_id": "BC-EK-CHA-3A1",
+   "depth": "extended",
+   "text": "The derivative at an input is the instantaneous rate of change there. From a table, the average rate of change over an interval containing the input approximates it, written as a difference of values divided by a difference of inputs (sg-25:11).",
+   "notation": "f prime of a",
+   "quote": {
+    "text": "The derivative of a function can be interpreted as the instantaneous rate of change with respect to its independent variable.",
+    "source": "ced:87"
+   },
+   "delivery": {
+    "mode": "table",
+    "reason": "rule 4: BC-REP-03 in BC-SKL-04004 representations and BC-QA-04002 common_givens, a table of values of a contextual quantity",
+    "sources": [
+     "BC-SKL-04004",
+     "BC-QA-04002"
+    ],
+    "spec": {
+     "kind": "table",
+     "columns": [
+      "t (minutes)",
+      "0",
+      "2",
+      "4",
+      "6",
+      "10"
+     ],
+     "rows": [
+      [
+       "T(t) (degrees Celsius)",
+       "20",
+       "31",
+       "40",
+       "55",
+       "70"
+      ]
+     ],
+     "labels": [
+      {
+       "text": "interval [2, 6] brackets t = 4",
+       "placement": "inside"
+      },
+      {
+       "text": "(55 - 31)/(6 - 2) degrees Celsius per minute",
+       "placement": "inside"
+      }
+     ],
+     "representations": [
+      "BC-REP-03"
+     ]
+    },
+    "fallback": "the table as plain text rows with the bracketing pair and the quotient named",
+    "keyboard": "Tab moves between cells; no control"
+   }
+  },
+  {
+   "id": "LSN-CON-04002#s4",
+   "type": "key_ideas",
+   "bands": [
+    "low",
+    "mid"
+   ],
+   "skills": [
+    "BC-SKL-04014"
+   ],
+   "sources": [
+    "BC-EK-CHA-3C1",
+    "ced:89",
+    "research/units/unit-04-contextual-applications-differentiation.md#4.3 Rates of Change in Applied Contexts Other Than Motion"
+   ],
+   "evidence_tag": "inferred",
+   "ek_id": "BC-EK-CHA-3C1",
+   "depth": "core",
+   "text": "A model's rate is its derivative at the named instant. For \\(V(t)\\) liters at \\(t\\) hours, \\(V'(2)\\) is in liters per hour, in the context's words.",
+   "delivery": {
+    "mode": "text",
+    "reason": "rule 5: CHA-3C1 on BC-SKL-04014 carries BC-REP-01, BC-REP-05 and BC-REP-09, none figure-bearing",
+    "sources": [
+     "BC-SKL-04014"
+    ]
+   }
+  },
+  {
+   "id": "LSN-CON-04002#s5",
+   "type": "strategy",
+   "bands": [
+    "low",
+    "mid"
+   ],
+   "skills": [
+    "BC-SKL-04001",
+    "BC-SKL-04004"
+   ],
+   "sources": [
+    "BC-QA-04002"
+   ],
+   "evidence_tag": "verified",
+   "archetype_id": "BC-QA-04002",
+   "cue": "A table, a named interval, and the words approximate the derivative, show the work, indicate units.",
+   "method": "First line: the difference of the two named rows over the difference of their inputs.",
+   "rival": "The difference never divided (BC-ERR-02001), or a one-sided pair of rows (BC-ERR-02004).",
+   "separating_feature": "The named interval fixes both rows, which bracket the input."
+  },
+  {
+   "id": "LSN-CON-04002#s6",
+   "type": "strategy",
+   "bands": [
+    "low",
+    "mid"
+   ],
+   "skills": [
+    "BC-SKL-04001"
+   ],
+   "sources": [
+    "BC-QA-04001"
+   ],
+   "evidence_tag": "verified",
+   "archetype_id": "BC-QA-04001",
+   "cue": "A value of a derivative is given, and the stem says using correct units, interpret it in context.",
+   "method": "First line: name the quantity and the instant, then the direction and the units.",
+   "rival": "Rival: reading the value as an amount of the quantity (BC-ERR-04003).",
+   "separating_feature": "A derivative value is a rate, so its unit has a per."
+  },
+  {
+   "id": "LSN-CON-04002#s7",
+   "type": "worked_example",
+   "bands": [
+    "low",
+    "mid"
+   ],
+   "skills": [
+    "BC-SKL-04001",
+    "BC-SKL-04004"
+   ],
+   "sources": [
+    "BC-QA-04002"
+   ],
+   "evidence_tag": "inferred",
+   "archetype_id": "BC-QA-04002",
+   "parameter_draw": {
+    "times": [
+     0,
+     2,
+     4,
+     6,
+     10
+    ],
+    "readings": [
+     20,
+     31,
+     40,
+     55,
+     70
+    ],
+    "context": "oven",
+    "trend": "increasing"
+   },
+   "problem": {
+    "text": "An oven's temperature \\(T(t)\\), degrees Celsius, is tabulated at \\(t=0,2,4,6,10\\) minutes: 20, 31, 40, 55, 70. Approximate \\(T'(4)\\) using the average rate of change over \\([2,6]\\). Indicate units.",
+    "command_verb": "approximate"
+   },
+   "calculator_status": "no_calculator",
+   "steps": [
+    {
+     "cue": "The interval \\([2,6]\\) names the rows \\(t=2\\) and \\(t=6\\).",
+     "why": "They bracket \\(t=4\\)."
+    },
+    {
+     "cue": "Average rate: difference over difference.",
+     "why": "The setup shows table values.",
+     "expression": 6,
+     "relation": "new"
+    },
+    {
+     "cue": "Divide.",
+     "why": "The value beside its setup.",
+     "expression": 6,
+     "relation": "equivalent"
+    },
+    {
+     "cue": "\\(T\\) in degrees Celsius, \\(t\\) in minutes.",
+     "why": "Units: degrees Celsius per minute.",
+     "point_type_id": "BC-PT-99006"
+    }
+   ],
+   "answer": {
+    "form": "numeric",
+    "mathjson": 6
+   },
+   "delivery": {
+    "mode": "step_reveal",
+    "reason": "rule 1",
+    "sources": []
+   }
+  },
+  {
+   "id": "LSN-CON-04002#s8",
+   "type": "what_a_reader_scores",
+   "bands": [
+    "low",
+    "mid"
+   ],
+   "skills": [
+    "BC-SKL-04001",
+    "BC-SKL-04004"
+   ],
+   "sources": [
+    "BC-PT-99006"
+   ],
+   "evidence_tag": "verified",
+   "example_id": "LSN-CON-04002#s7",
+   "lines": [
+    {
+     "point_type_id": "BC-PT-99006",
+     "text": "Units. Earned by: Correct units, whether or not they are attached to a numerical value (sg-25:11, sg-26:2); equivalent compact forms such as birds per day squared are accepted (sg-26:2). Not earned by: Units with no value present at all where the rubric ties them to a presented value (sg-22:13). Units are required on the answer."
+    }
+   ]
+  },
+  {
+   "id": "LSN-CON-04002#err-BC-ERR-04001",
+   "type": "common_error",
+   "bands": [
+    "low",
+    "mid"
+   ],
+   "skills": [
+    "BC-SKL-04001",
+    "BC-SKL-04004",
+    "BC-SKL-04014"
+   ],
+   "sources": [
+    "BC-ERR-04001",
+    "BC-MIS-04003"
+   ],
+   "evidence_tag": "inferred",
+   "error_id": "BC-ERR-04001",
+   "observed_behavior": "A correct numerical rate is reported with no units, or with the units of the quantity alone, or with the numerator and denominator units exchanged.",
+   "scoring_consequence": "The units point is a separate point in the 2024 and 2025 table based questions and is lost outright (sg-24:2, sg-25:11); BC-ERR-99005 records the same behaviour across years.",
+   "wrong_step": {
+    "text": "6 minutes per degree Celsius.",
+    "expression": [
+     "Multiply",
+     6,
+     "minute",
+     [
+      "Power",
+      "celsius",
+      -1
+     ]
+    ]
+   },
+   "right_step": {
+    "text": "6 degrees Celsius per minute.",
+    "expression": [
+     "Multiply",
+     6,
+     "celsius",
+     [
+      "Power",
+      "minute",
+      -1
+     ]
+    ]
+   },
+   "relation": "distinct",
+   "possible_reason": {
+    "misconception_id": "BC-MIS-04003",
+    "text": "the unit as something added at the end"
+   },
+   "delivery": {
+    "mode": "step_reveal",
+    "reason": "rule 1",
+    "sources": []
+   }
+  },
+  {
+   "id": "LSN-CON-04002#err-BC-ERR-04004",
+   "type": "common_error",
+   "bands": [
+    "low",
+    "mid"
+   ],
+   "skills": [
+    "BC-SKL-04004"
+   ],
+   "sources": [
+    "BC-ERR-04004"
+   ],
+   "evidence_tag": "inferred",
+   "error_id": "BC-ERR-04004",
+   "observed_behavior": "The approximation is written as a single quotient or as a bare number with no visible difference of tabulated values.",
+   "scoring_consequence": "The 2025 rubric states that the setup expression by itself is not sufficient for the point, which requires the answer together with a difference and a quotient using values from the table (sg-25:11).",
+   "wrong_step": {
+    "text": "6, with no difference shown.",
+    "expression": 6
+   },
+   "right_step": {
+    "text": "\\((55-31)/(6-2)=6\\).",
+    "expression": 6
+   },
+   "relation": "equivalent",
+   "delivery": {
+    "mode": "step_reveal",
+    "reason": "rule 1",
+    "sources": []
+   }
+  },
+  {
+   "id": "LSN-CON-04002#prq-BC-PRQ-04004",
+   "type": "prerequisite_bridge",
+   "bands": [
+    "low",
+    "mid"
+   ],
+   "skills": [
+    "BC-SKL-04001",
+    "BC-SKL-04004",
+    "BC-SKL-04014"
+   ],
+   "sources": [
+    "BC-PRQ-04004"
+   ],
+   "evidence_tag": "inferred",
+   "prerequisite_id": "BC-PRQ-04004",
+   "text": "A compound unit is a quotient, such as degrees Celsius per minute, attached to the value. The failure: a correct number with the unit missing or upside down."
+  }
+ ],
+ "checks": [
+  {
+   "id": "LSN-CON-04002#chk-1",
+   "check_kind": "completion",
+   "bands": [
+    "low",
+    "mid"
+   ],
+   "format": "short_answer",
+   "archetype_id": "BC-QA-04002",
+   "parameter_draw": {
+    "times": [
+     0,
+     2,
+     4,
+     6,
+     10
+    ],
+    "readings": [
+     20,
+     31,
+     40,
+     55,
+     70
+    ],
+    "context": "oven",
+    "trend": "increasing"
+   },
+   "completes": "LSN-CON-04002#s7",
+   "stem": {
+    "text": "The setup is \\((55-31)/(6-2)\\). Give \\(T'(4)\\) with its units.",
+    "command_verb": "give"
+   },
+   "answer_key": {
+    "form": "numeric",
+    "mathjson": 6
+   },
+   "worked_solution": [
+    {
+     "step": 1,
+     "text": "Setup.",
+     "mathjson": 6,
+     "relation": "new"
+    },
+    {
+     "step": 2,
+     "text": "Value, in degrees Celsius per minute.",
+     "mathjson": 6,
+     "relation": "equivalent"
+    }
+   ],
+   "calculator_status": "no_calculator",
+   "representation": "BC-REP-03",
+   "skills": [
+    "BC-SKL-04004",
+    "BC-SKL-04001"
+   ]
+  },
+  {
+   "id": "LSN-CON-04002#chk-2",
+   "check_kind": "isomorph",
+   "bands": [
+    "low",
+    "mid"
+   ],
+   "format": "short_answer",
+   "archetype_id": "BC-QA-04002",
+   "parameter_draw": {
+    "times": [
+     1,
+     3,
+     5,
+     7,
+     9
+    ],
+    "readings": [
+     12,
+     20,
+     33,
+     50,
+     60
+    ],
+    "context": "download",
+    "trend": "increasing"
+   },
+   "stem": {
+    "text": "Megabytes downloaded \\(D(t)\\) at \\(t=1,3,5,7,9\\) seconds: 12, 20, 33, 50, 60. Approximate \\(D'(5)\\) over \\([3,7]\\), with units.",
+    "command_verb": "approximate"
+   },
+   "answer_key": {
+    "form": "numeric",
+    "mathjson": [
+     "Rational",
+     15,
+     2
+    ]
+   },
+   "worked_solution": [
+    {
+     "step": 1,
+     "text": "Rows \\(t=3\\) and \\(t=7\\).",
+     "mathjson": [
+      "Rational",
+      15,
+      2
+     ],
+     "relation": "new"
+    },
+    {
+     "step": 2,
+     "text": "7.5 megabytes per second.",
+     "mathjson": [
+      "Rational",
+      15,
+      2
+     ],
+     "relation": "equivalent"
+    }
+   ],
+   "calculator_status": "no_calculator",
+   "representation": "BC-REP-03",
+   "skills": [
+    "BC-SKL-04004",
+    "BC-SKL-04001"
+   ]
+  }
+ ],
+ "refresher": [
+  "LSN-CON-04002#s2",
+  "LSN-CON-04002#s4",
+  "LSN-CON-04002#err-BC-ERR-04001",
+  "LSN-CON-04002#err-BC-ERR-04004",
+  "LSN-CON-04002#s7"
+ ],
+ "provenance": {
+  "author": "tools/lesson_transcribe.py",
+  "prompt_version": "generator/lesson_v1",
+  "design_path": "docs/lessons/unit-04/LSN-CON-04002.md",
+  "signed_off_by": null,
+  "signed_off_at": null,
+  "not_human": true
+ }
+}

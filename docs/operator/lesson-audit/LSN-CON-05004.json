@@ -1,0 +1,144 @@
+{
+ "lesson_id": "LSN-CON-05004",
+ "version": 1,
+ "compared_on": "2026-09-29",
+ "auditor": "claude-opus-5-5",
+ "resolve": {
+  "date": "2026-09-29",
+  "problems": 4,
+  "agreed": 4,
+  "judgments_pending": 0,
+  "all_agree": true,
+  "verdicts": [
+   {
+    "id": "LSN-CON-05004#ex-1",
+    "agree": true,
+    "detail": "agree (symbolic)",
+    "method": "sign chart of f' with critical points -1, 3 and asymptote at 1"
+   },
+   {
+    "id": "LSN-CON-05004#chk-1",
+    "agree": true,
+    "detail": "agree (symbolic)",
+    "method": "f'>0 on (-1,1) and (3,oo)"
+   },
+   {
+    "id": "LSN-CON-05004#chk-2",
+    "agree": true,
+    "detail": "agree (symbolic)",
+    "method": "f'<0 between the roots"
+   },
+   {
+    "id": "LSN-CON-05004#chk-3",
+    "agree": true,
+    "detail": "agree (symbolic)",
+    "method": "sign chart of x(x-4)/(x-2), excluding x=2"
+   }
+  ],
+  "answers_file": "docs/lessons/verification/answers/delta-2026-09-29-a.json"
+ },
+ "audit": {
+  "date": "2026-09-29",
+  "auditor": "claude-opus-5-5",
+  "blocks": [
+   {
+    "id": "orientation",
+    "verdict": "ok",
+    "evidence": "Paraphrase of BC-CON-05004 and the 5.3 topic; 30 words."
+   },
+   {
+    "id": "ki-1",
+    "verdict": "ok",
+    "evidence": "Quote is a substring of ced:101 FUN-4.A.1 verbatim; 41 words."
+   },
+   {
+    "id": "st-1",
+    "verdict": "ok",
+    "evidence": "BC-QA-05008 path[0] and wrong_approaches (testing a single input and generalising)."
+   },
+   {
+    "id": "ex-1",
+    "verdict": "ok",
+    "evidence": "SymPy: f'(0) = 6, f'(2) = -6, f'(-2) = -10/3, f'(4) = 10/3; positive on (-1, 1) and (3, oo)."
+   },
+   {
+    "id": "reader-ex-1",
+    "verdict": "ok",
+    "evidence": "fixed 2026-09-29: ex-1 reason step and scoring line retagged BC-PT-99005 (answer with supporting work), listed by BC-QA-05008, since ex-1 asks a single condition and BC-PT-99063 earns only a compound condition reason (sg-26:16); line is reader_checks(['BC-PT-99005']). Brief text trimmed to the cap (orientation, ki-1, st-1, ex-1 wording, chk-2 stem, bridges) with the teaching kept; word counts 585 and 450."
+   },
+   {
+    "id": "err-BC-ERR-05014",
+    "verdict": "ok",
+    "evidence": "Record text verbatim; f'(-2) < 0 so (-oo, -1) is wrongly added."
+   },
+   {
+    "id": "err-BC-ERR-05015",
+    "verdict": "ok",
+    "evidence": "Record text verbatim; BC-MIS-05011 paraphrased."
+   },
+   {
+    "id": "err-BC-ERR-05016",
+    "verdict": "ok",
+    "evidence": "Record text verbatim; BC-MIS-05020 paraphrased."
+   },
+   {
+    "id": "err-BC-ERR-05017",
+    "verdict": "ok",
+    "evidence": "Record text verbatim; with no split at 1 the test value f'(0) = 6 marks (-1, 3)."
+   },
+   {
+    "id": "representations",
+    "verdict": "ok",
+    "evidence": "null."
+   },
+   {
+    "id": "bridge-BC-PRQ-05001",
+    "verdict": "ok",
+    "evidence": "Paraphrase of description_plain."
+   },
+   {
+    "id": "bridge-BC-PRQ-05002",
+    "verdict": "ok",
+    "evidence": "Paraphrase of description_plain."
+   },
+   {
+    "id": "bridge-BC-PRQ-05003",
+    "verdict": "ok",
+    "evidence": "Paraphrase of description_plain."
+   },
+   {
+    "id": "bridge-BC-PRQ-05006",
+    "verdict": "ok",
+    "evidence": "Paraphrase of failure_signature."
+   },
+   {
+    "id": "chk-1",
+    "verdict": "ok",
+    "evidence": "Signs -, +, -, + match ex-1; key (-1, 1) U (3, oo)."
+   },
+   {
+    "id": "chk-2",
+    "verdict": "ok",
+    "evidence": "f'(0) = -4; decreasing on (-2, 2)."
+   },
+   {
+    "id": "chk-3",
+    "verdict": "ok",
+    "evidence": "SymPy: sign of x(x-4)/(x-2) positive on (0, 2) and (4, oo); derivative of f' is (x^2 - 4x + 8)/(x - 2)^2 > 0, so option C value checks."
+   }
+  ],
+  "advice": [
+   "Replace BC-PT-99063 on ex-1 with a point type whose earning text fits a single increasing question, or add the compound condition to the stem; otherwise the reader-scores line teaches a criterion the example does not meet.",
+   "Orientation is delivered as a figure while the unit pattern serves orientation as text; the ki-1 interactive already carries the same curve, so the orientation figure duplicates it.",
+   "ki-1 interactive (drag a point and read the sign) matches a reading task; good fit.",
+   "BC-ERR-05019 (two intervals merged across a gap) and BC-ERR-99001 (unnamed referent) are in the bundle and relevant; 05017 covers most of 05019."
+  ],
+  "counts": {
+   "ok": 17,
+   "unsourced": 0,
+   "wrong": 0,
+   "over_cap": 0,
+   "lint": 0
+  }
+ }
+}

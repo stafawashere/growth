@@ -1,0 +1,1330 @@
+{
+ "id": "LSN-CON-07008",
+ "version": 1,
+ "kind": "concept",
+ "target_id": "BC-CON-07008",
+ "status": "signed_off",
+ "snapshot_digest": "a6a8ec9d3f59ab8f712e33d30cc22fc64bf2c478fbe7312e3e3118d319c6a42f",
+ "source_digest": "fba39164e8948b807392ed24cc44d13f86447bd97360079ddb6015df5e5c5cf5",
+ "read_minutes": {
+  "full": 6.0,
+  "brief": 2.6
+ },
+ "word_count": {
+  "full": 825,
+  "brief": 318
+ },
+ "sections": [
+  {
+   "id": "LSN-CON-07008#s1",
+   "type": "orientation",
+   "bands": [
+    "low",
+    "mid"
+   ],
+   "skills": [
+    "BC-SKL-07029",
+    "BC-SKL-07030",
+    "BC-SKL-07032",
+    "BC-SKL-07033"
+   ],
+   "sources": [
+    "BC-CON-07008",
+    "research/units/unit-07-differential-equations.md#7.7 Finding Particular Solutions Using Initial Conditions and Separation of Variables"
+   ],
+   "evidence_tag": "inferred",
+   "text": "A response substitutes the initial values into the equation that holds the constant, before the form of the constant changes, and uses the same values to choose the sign. The answer is one function, not a family.",
+   "delivery": {
+    "mode": "text",
+    "reason": "rule 6: a statement of what a response shows; BC-REP-01, BC-REP-04, BC-REP-06 only",
+    "sources": [
+     "BC-SKL-07029"
+    ]
+   }
+  },
+  {
+   "id": "LSN-CON-07008#s2",
+   "type": "key_ideas",
+   "bands": [
+    "low",
+    "mid"
+   ],
+   "skills": [
+    "BC-SKL-07029",
+    "BC-SKL-07030",
+    "BC-SKL-07033"
+   ],
+   "sources": [
+    "BC-EK-FUN-7E1",
+    "ced:143",
+    "research/units/unit-07-differential-equations.md#7.7 Finding Particular Solutions Using Initial Conditions and Separation of Variables",
+    "sg-23:12"
+   ],
+   "evidence_tag": "inferred",
+   "ek_id": "BC-EK-FUN-7E1",
+   "depth": "core",
+   "text": "A general solution describes infinitely many solutions; exactly one passes through a given point. The initial values go into the equation holding C, before exponentiating or squaring changes its form, and they settle the sign of the branch.",
+   "notation": "particular solution; initial condition",
+   "delivery": {
+    "mode": "text",
+    "reason": "rule 6: a rule about the constant and the branch; BC-REP-01, BC-REP-04, BC-REP-06 on BC-SKL-07029, BC-SKL-07030, BC-SKL-07033",
+    "sources": [
+     "BC-SKL-07029",
+     "BC-SKL-07030",
+     "BC-SKL-07033"
+    ]
+   }
+  },
+  {
+   "id": "LSN-CON-07008#s3",
+   "type": "key_ideas",
+   "bands": [
+    "low"
+   ],
+   "skills": [
+    "BC-SKL-07032"
+   ],
+   "sources": [
+    "BC-EK-FUN-7E2",
+    "ced:143",
+    "research/units/unit-07-differential-equations.md#7.7 Finding Particular Solutions Using Initial Conditions and Separation of Variables"
+   ],
+   "evidence_tag": "inferred",
+   "ek_id": "BC-EK-FUN-7E2",
+   "depth": "extended",
+   "text": "When dy/dx depends on x alone, the solution through (a, y0) is y0 plus the integral of the right side from a to x. At x = a the integral is zero, so the condition holds.",
+   "notation": "F(a) equal to the initial value",
+   "delivery": {
+    "mode": "text",
+    "reason": "rule 6: a symbolic form; BC-REP-01, BC-REP-06 on BC-SKL-07032",
+    "sources": [
+     "BC-SKL-07032"
+    ]
+   }
+  },
+  {
+   "id": "LSN-CON-07008#s4",
+   "type": "strategy",
+   "bands": [
+    "low",
+    "mid"
+   ],
+   "skills": [
+    "BC-SKL-07030",
+    "BC-SKL-07032"
+   ],
+   "sources": [
+    "BC-QA-07011"
+   ],
+   "evidence_tag": "verified",
+   "archetype_id": "BC-QA-07011",
+   "cue": "A differential equation in x alone and an initial condition; the stem asks for the particular solution.",
+   "method": "First written line: the initial value plus an integral from the initial input to x.",
+   "rival": "Rival: choosing the branch by the sign of the constant rather than by the initial condition.",
+   "separating_feature": "The initial condition, not C, fixes the value and the branch."
+  },
+  {
+   "id": "LSN-CON-07008#s5",
+   "type": "strategy",
+   "bands": [
+    "low",
+    "mid"
+   ],
+   "skills": [
+    "BC-SKL-07029",
+    "BC-SKL-07030",
+    "BC-SKL-07033"
+   ],
+   "sources": [
+    "BC-QA-07003"
+   ],
+   "evidence_tag": "verified",
+   "archetype_id": "BC-QA-07003",
+   "cue": "Separation with an initial condition; the stem asks for the evaluated constant and the explicit solution.",
+   "method": "First written line after the antiderivatives: the initial values substituted into the equation holding C.",
+   "rival": "Rival: treating the equation as though the dependent variable were a constant.",
+   "separating_feature": "C is fixed while it still stands alone."
+  },
+  {
+   "id": "LSN-CON-07008#s6",
+   "type": "worked_example",
+   "bands": [
+    "low",
+    "mid"
+   ],
+   "skills": [
+    "BC-SKL-07030",
+    "BC-SKL-07032"
+   ],
+   "sources": [
+    "BC-QA-07011"
+   ],
+   "evidence_tag": "inferred",
+   "archetype_id": "BC-QA-07011",
+   "parameter_draw": {
+    "form": "accumulation",
+    "rate": 2,
+    "initial": "3",
+    "start": 1,
+    "integrand": "gauss"
+   },
+   "problem": {
+    "text": "dy/dx = 2e^(-x^2) with y(1) = 3. Write the particular solution.",
+    "command_verb": "write"
+   },
+   "calculator_status": "no_calculator",
+   "steps": [
+    {
+     "cue": "The right side holds x only, with no elementary antiderivative.",
+     "why": "So the solution is an accumulation function.",
+     "expression": [
+      "Multiply",
+      2,
+      [
+       "Exp",
+       [
+        "Multiply",
+        -1,
+        [
+         "Power",
+         "x",
+         2
+        ]
+       ]
+      ]
+     ],
+     "relation": "new"
+    },
+    {
+     "cue": "The initial input is 1 and the initial value 3.",
+     "why": "The integral starts at 1, where it is zero, so 3 is added."
+    },
+    {
+     "cue": "Initial value plus the integral from 1 to x.",
+     "why": "Its derivative is 2e^(-x^2) and F(1) = 3.",
+     "expression": [
+      "Equal",
+      "y",
+      [
+       "Add",
+       3,
+       [
+        "Integrate",
+        [
+         "Multiply",
+         2,
+         [
+          "Exp",
+          [
+           "Multiply",
+           -1,
+           [
+            "Power",
+            "t",
+            2
+           ]
+          ]
+         ]
+        ],
+        [
+         "Tuple",
+         "t",
+         1,
+         "x"
+        ]
+       ]
+      ]
+     ],
+     "relation": "integrate",
+     "variable": "x"
+    }
+   ],
+   "answer": {
+    "form": "symbolic",
+    "mathjson": [
+     "Add",
+     3,
+     [
+      "Integrate",
+      [
+       "Multiply",
+       2,
+       [
+        "Exp",
+        [
+         "Multiply",
+         -1,
+         [
+          "Power",
+          "t",
+          2
+         ]
+        ]
+       ]
+      ],
+      [
+       "Tuple",
+       "t",
+       1,
+       "x"
+      ]
+     ]
+    ]
+   },
+   "delivery": {
+    "mode": "step_reveal",
+    "reason": "rule 1: a worked example or an error block",
+    "sources": []
+   }
+  },
+  {
+   "id": "LSN-CON-07008#s7",
+   "type": "worked_example",
+   "bands": [
+    "low"
+   ],
+   "skills": [
+    "BC-SKL-07029",
+    "BC-SKL-07030",
+    "BC-SKL-07033"
+   ],
+   "sources": [
+    "BC-QA-07003"
+   ],
+   "evidence_tag": "inferred",
+   "archetype_id": "BC-QA-07003",
+   "parameter_draw": {
+    "form": "square_root",
+    "rate": 2,
+    "power": 1,
+    "start": 1,
+    "initial": 3
+   },
+   "problem": {
+    "text": "dy/dx = 2x/y with y(1) = 3. Find the particular solution y = f(x).",
+    "command_verb": "find"
+   },
+   "calculator_status": "no_calculator",
+   "steps": [
+    {
+     "cue": "2x/y is 2x times 1/y.",
+     "why": "Multiply by y and by dx.",
+     "expression": [
+      "Equal",
+      [
+       "Multiply",
+       "dy",
+       "y"
+      ],
+      [
+       "Multiply",
+       2,
+       "dx",
+       "x"
+      ]
+     ],
+     "point_type_id": "BC-PT-99028",
+     "relation": "new"
+    },
+    {
+     "cue": "One variable per side.",
+     "why": "Integrate each; one C.",
+     "expression": [
+      "Equal",
+      [
+       "Multiply",
+       [
+        "Rational",
+        1,
+        2
+       ],
+       [
+        "Power",
+        "y",
+        2
+       ]
+      ],
+      [
+       "Add",
+       "C",
+       [
+        "Power",
+        "x",
+        2
+       ]
+      ]
+     ],
+     "point_type_id": "BC-PT-99029",
+     "relation": "new"
+    },
+    {
+     "cue": "y(1) = 3, and C still stands alone.",
+     "why": "Substitute now, before squaring or rooting.",
+     "expression": [
+      "Equal",
+      [
+       "Rational",
+       9,
+       2
+      ],
+      [
+       "Add",
+       1,
+       "C"
+      ]
+     ],
+     "point_type_id": "BC-PT-99031",
+     "relation": "evaluate",
+     "subs": {
+      "x": "1",
+      "y": "3"
+     }
+    },
+    {
+     "cue": "One unknown.",
+     "why": "Solve for C.",
+     "expression": [
+      "Rational",
+      7,
+      2
+     ],
+     "relation": "solve",
+     "variable": "C"
+    },
+    {
+     "cue": "The stem asks for y; y(1) = 3 > 0.",
+     "why": "The positive root is the branch through (1, 3).",
+     "expression": [
+      "Equal",
+      "y",
+      [
+       "Power",
+       [
+        "Add",
+        7,
+        [
+         "Multiply",
+         2,
+         [
+          "Power",
+          "x",
+          2
+         ]
+        ]
+       ],
+       [
+        "Rational",
+        1,
+        2
+       ]
+      ]
+     ],
+     "point_type_id": "BC-PT-99032",
+     "relation": "new"
+    }
+   ],
+   "answer": {
+    "form": "symbolic",
+    "mathjson": [
+     "Power",
+     [
+      "Add",
+      7,
+      [
+       "Multiply",
+       2,
+       [
+        "Power",
+        "x",
+        2
+       ]
+      ]
+     ],
+     [
+      "Rational",
+      1,
+      2
+     ]
+    ]
+   },
+   "delivery": {
+    "mode": "step_reveal",
+    "reason": "rule 1: a worked example or an error block",
+    "sources": []
+   }
+  },
+  {
+   "id": "LSN-CON-07008#s8",
+   "type": "what_a_reader_scores",
+   "bands": [
+    "low"
+   ],
+   "skills": [
+    "BC-SKL-07029",
+    "BC-SKL-07030",
+    "BC-SKL-07033"
+   ],
+   "sources": [
+    "BC-PT-99028",
+    "BC-PT-99029",
+    "BC-PT-99031",
+    "BC-PT-99032"
+   ],
+   "evidence_tag": "verified",
+   "example_id": "LSN-CON-07008#s7",
+   "lines": [
+    {
+     "point_type_id": "BC-PT-99028",
+     "text": "Separation of variables. Earned by: Rearranging the differential equation so each variable sits with its own differential, in the form constant times the dependent differential over the dependent expression equals constant times the independent differential (sg-26:13). Not earned by: Any attempt that leaves both variables on the same side; sg-26:13, sg-23:12, sg-21:20 and sg-19:5 all state that without separation the entire part scores zero."
+    },
+    {
+     "point_type_id": "BC-PT-99029",
+     "text": "First antiderivative in a separated equation. Earned by: One consistent antiderivative, either the logarithmic side written with parentheses or absolute value, or the independent-variable side (sg-26:13). Not earned by: An antiderivative inconsistent with the separated form (sg-26:13). Notation: sg-26:13 accepts either parentheses or absolute value on the logarithm; sg-23:12 states an antiderivative written without absolute value symbols stays eligible for all points; sg-21:20 accepts either form."
+    },
+    {
+     "point_type_id": "BC-PT-99031",
+     "text": "Constant of integration used with the initial condition. Earned by: Including the constant in an equation and substituting the given initial values to solve for it (sg-26:13, sg-21:20). Not earned by: Work with no constant of integration at all, which sg-26:13 and sg-23:12 state blocks this point and the solve point."
+    },
+    {
+     "point_type_id": "BC-PT-99032",
+     "text": "Solves for the particular solution. Earned by: Isolating the dependent variable to give the particular solution, in any equivalent exponential form (sg-26:13). Not earned by: A solution left in implicit logarithmic form; a solution with no constant of integration shown anywhere (sg-26:13)."
+    }
+   ]
+  },
+  {
+   "id": "LSN-CON-07008#err-BC-ERR-07009",
+   "type": "common_error",
+   "bands": [
+    "low",
+    "mid"
+   ],
+   "skills": [
+    "BC-SKL-07033"
+   ],
+   "sources": [
+    "BC-ERR-07009",
+    "BC-MIS-07005"
+   ],
+   "evidence_tag": "inferred",
+   "error_id": "BC-ERR-07009",
+   "observed_behavior": "The response treats the family with its constant as a single function.",
+   "scoring_consequence": "The distinction the essential knowledge draws between a family and a particular solution is lost.",
+   "wrong_step": {
+    "text": "y = sqrt(2x^2 + C) given as the solution.",
+    "expression": [
+     "Equal",
+     "y",
+     [
+      "Power",
+      [
+       "Add",
+       "C",
+       [
+        "Multiply",
+        2,
+        [
+         "Power",
+         "x",
+         2
+        ]
+       ]
+      ],
+      [
+       "Rational",
+       1,
+       2
+      ]
+     ]
+    ]
+   },
+   "right_step": {
+    "text": "y(1) = 3 picks one member.",
+    "expression": [
+     "Equal",
+     "y",
+     [
+      "Power",
+      [
+       "Add",
+       7,
+       [
+        "Multiply",
+        2,
+        [
+         "Power",
+         "x",
+         2
+        ]
+       ]
+      ],
+      [
+       "Rational",
+       1,
+       2
+      ]
+     ]
+    ]
+   },
+   "relation": "distinct",
+   "possible_reason": {
+    "misconception_id": "BC-MIS-07005",
+    "text": "the family and the constant have no role"
+   },
+   "delivery": {
+    "mode": "step_reveal",
+    "reason": "rule 1: a worked example or an error block",
+    "sources": []
+   }
+  },
+  {
+   "id": "LSN-CON-07008#err-BC-ERR-07029",
+   "type": "common_error",
+   "bands": [
+    "low",
+    "mid"
+   ],
+   "skills": [
+    "BC-SKL-07029"
+   ],
+   "sources": [
+    "BC-ERR-07029"
+   ],
+   "evidence_tag": "inferred",
+   "error_id": "BC-ERR-07029",
+   "observed_behavior": "The response exponentiates first and then substitutes the initial condition into an expression where the constant has changed form.",
+   "scoring_consequence": "The constant point is at risk; the guideline earns it for including the constant in an equation and substituting the initial values into it.",
+   "wrong_step": {
+    "text": "C = 7/2 put into y = sqrt(2x^2 + C).",
+    "expression": [
+     "Equal",
+     "y",
+     [
+      "Power",
+      [
+       "Add",
+       [
+        "Rational",
+        7,
+        2
+       ],
+       [
+        "Multiply",
+        2,
+        [
+         "Power",
+         "x",
+         2
+        ]
+       ]
+      ],
+      [
+       "Rational",
+       1,
+       2
+      ]
+     ]
+    ]
+   },
+   "right_step": {
+    "text": "C = 7/2 in y^2/2 = x^2 + C.",
+    "expression": [
+     "Equal",
+     "y",
+     [
+      "Power",
+      [
+       "Add",
+       7,
+       [
+        "Multiply",
+        2,
+        [
+         "Power",
+         "x",
+         2
+        ]
+       ]
+      ],
+      [
+       "Rational",
+       1,
+       2
+      ]
+     ]
+    ]
+   },
+   "relation": "distinct",
+   "delivery": {
+    "mode": "step_reveal",
+    "reason": "rule 1: a worked example or an error block",
+    "sources": []
+   }
+  },
+  {
+   "id": "LSN-CON-07008#err-BC-ERR-07033",
+   "type": "common_error",
+   "bands": [
+    "low",
+    "mid"
+   ],
+   "skills": [
+    "BC-SKL-07033"
+   ],
+   "sources": [
+    "BC-ERR-07033"
+   ],
+   "evidence_tag": "inferred",
+   "error_id": "BC-ERR-07033",
+   "observed_behavior": "The response reports a formula with an undetermined constant where a particular solution was asked for, or fixes the constant where the general solution was asked for.",
+   "scoring_consequence": "The answer is of the wrong kind for the question posed.",
+   "wrong_step": {
+    "text": "General solution asked; C fixed at 7/2 anyway.",
+    "expression": [
+     "Equal",
+     [
+      "Power",
+      "y",
+      2
+     ],
+     [
+      "Add",
+      7,
+      [
+       "Multiply",
+       2,
+       [
+        "Power",
+        "x",
+        2
+       ]
+      ]
+     ]
+    ]
+   },
+   "right_step": {
+    "text": "General solution: C left free.",
+    "expression": [
+     "Equal",
+     [
+      "Power",
+      "y",
+      2
+     ],
+     [
+      "Add",
+      "C",
+      [
+       "Multiply",
+       2,
+       [
+        "Power",
+        "x",
+        2
+       ]
+      ]
+     ]
+    ]
+   },
+   "relation": "distinct",
+   "delivery": {
+    "mode": "step_reveal",
+    "reason": "rule 1: a worked example or an error block",
+    "sources": []
+   }
+  },
+  {
+   "id": "LSN-CON-07008#err-BC-ERR-99014",
+   "type": "common_error",
+   "bands": [
+    "low",
+    "mid"
+   ],
+   "skills": [
+    "BC-SKL-07030"
+   ],
+   "sources": [
+    "BC-ERR-99014"
+   ],
+   "evidence_tag": "inferred",
+   "error_id": "BC-ERR-99014",
+   "observed_behavior": "Responses leave a variable on the wrong side of the separation, misplace a constant factor, produce an incorrect antiderivative of a trigonometric or reciprocal term, or mishandle the sign and the absolute value in a logarithm before solving for the dependent variable.",
+   "scoring_consequence": "The separation, antiderivative and constant points are assessed separately, so an early slip costs several points in the part.",
+   "wrong_step": {
+    "text": "y left in the denominator.",
+    "expression": [
+     "Equal",
+     [
+      "Multiply",
+      "dy",
+      [
+       "Power",
+       "y",
+       -1
+      ]
+     ],
+     [
+      "Multiply",
+      2,
+      "dx",
+      "x"
+     ]
+    ]
+   },
+   "right_step": {
+    "text": "y multiplied across.",
+    "expression": [
+     "Equal",
+     [
+      "Multiply",
+      "dy",
+      "y"
+     ],
+     [
+      "Multiply",
+      2,
+      "dx",
+      "x"
+     ]
+    ]
+   },
+   "relation": "distinct",
+   "delivery": {
+    "mode": "step_reveal",
+    "reason": "rule 1: a worked example or an error block",
+    "sources": []
+   }
+  },
+  {
+   "id": "LSN-CON-07008#prq-BC-PRQ-07004",
+   "type": "prerequisite_bridge",
+   "bands": [
+    "low",
+    "mid"
+   ],
+   "skills": [
+    "BC-SKL-07030"
+   ],
+   "sources": [
+    "BC-PRQ-07004"
+   ],
+   "evidence_tag": "inferred",
+   "prerequisite_id": "BC-PRQ-07004",
+   "text": "The given point decides the sign inside an absolute value or a root. Without it, both signs are kept or the branch contradicts the initial condition."
+  }
+ ],
+ "checks": [
+  {
+   "id": "LSN-CON-07008#chk-1",
+   "check_kind": "completion",
+   "bands": [
+    "low",
+    "mid"
+   ],
+   "format": "short_answer",
+   "archetype_id": "BC-QA-07011",
+   "parameter_draw": {
+    "form": "accumulation",
+    "rate": 2,
+    "initial": "3",
+    "start": 1,
+    "integrand": "gauss"
+   },
+   "completes": "LSN-CON-07008#s6",
+   "stem": {
+    "text": "dy/dx = 2e^(-x^2), y(1) = 3. The integral from 1 to x of 2e^(-t^2) dt is zero at x = 1. Write y.",
+    "command_verb": "write"
+   },
+   "answer_key": {
+    "form": "symbolic",
+    "mathjson": [
+     "Add",
+     3,
+     [
+      "Integrate",
+      [
+       "Multiply",
+       2,
+       [
+        "Exp",
+        [
+         "Multiply",
+         -1,
+         [
+          "Power",
+          "t",
+          2
+         ]
+        ]
+       ]
+      ],
+      [
+       "Tuple",
+       "t",
+       1,
+       "x"
+      ]
+     ]
+    ]
+   },
+   "worked_solution": [
+    {
+     "step": 1,
+     "text": "The right side.",
+     "mathjson": [
+      "Multiply",
+      2,
+      [
+       "Exp",
+       [
+        "Multiply",
+        -1,
+        [
+         "Power",
+         "x",
+         2
+        ]
+       ]
+      ]
+     ],
+     "relation": "new"
+    },
+    {
+     "step": 2,
+     "text": "Initial value plus the integral from 1.",
+     "mathjson": [
+      "Add",
+      3,
+      [
+       "Integrate",
+       [
+        "Multiply",
+        2,
+        [
+         "Exp",
+         [
+          "Multiply",
+          -1,
+          [
+           "Power",
+           "t",
+           2
+          ]
+         ]
+        ]
+       ],
+       [
+        "Tuple",
+        "t",
+        1,
+        "x"
+       ]
+      ]
+     ],
+     "relation": "integrate",
+     "variable": "x"
+    }
+   ],
+   "calculator_status": "no_calculator",
+   "representation": "BC-REP-01",
+   "skills": [
+    "BC-SKL-07032"
+   ]
+  },
+  {
+   "id": "LSN-CON-07008#chk-2",
+   "check_kind": "isomorph",
+   "bands": [
+    "low",
+    "mid"
+   ],
+   "format": "short_answer",
+   "archetype_id": "BC-QA-07011",
+   "parameter_draw": {
+    "form": "accumulation",
+    "rate": -1,
+    "initial": "2",
+    "start": 0,
+    "integrand": "sine"
+   },
+   "stem": {
+    "text": "dy/dx = -sin(x^2) with y(0) = 2. Write the particular solution.",
+    "command_verb": "write"
+   },
+   "answer_key": {
+    "form": "symbolic",
+    "mathjson": [
+     "Add",
+     2,
+     [
+      "Integrate",
+      [
+       "Multiply",
+       -1,
+       [
+        "Sin",
+        [
+         "Power",
+         "t",
+         2
+        ]
+       ]
+      ],
+      [
+       "Tuple",
+       "t",
+       0,
+       "x"
+      ]
+     ]
+    ]
+   },
+   "worked_solution": [
+    {
+     "step": 1,
+     "text": "The right side.",
+     "mathjson": [
+      "Multiply",
+      -1,
+      [
+       "Sin",
+       [
+        "Power",
+        "x",
+        2
+       ]
+      ]
+     ],
+     "relation": "new"
+    },
+    {
+     "step": 2,
+     "text": "Initial value plus the integral from 0.",
+     "mathjson": [
+      "Add",
+      2,
+      [
+       "Integrate",
+       [
+        "Multiply",
+        -1,
+        [
+         "Sin",
+         [
+          "Power",
+          "t",
+          2
+         ]
+        ]
+       ],
+       [
+        "Tuple",
+        "t",
+        0,
+        "x"
+       ]
+      ]
+     ],
+     "relation": "integrate",
+     "variable": "x"
+    }
+   ],
+   "calculator_status": "no_calculator",
+   "representation": "BC-REP-01",
+   "skills": [
+    "BC-SKL-07032"
+   ]
+  },
+  {
+   "id": "LSN-CON-07008#chk-3",
+   "check_kind": "mcq",
+   "bands": [
+    "low"
+   ],
+   "format": "mcq",
+   "archetype_id": "BC-QA-07003",
+   "parameter_draw": {
+    "form": "square_root",
+    "rate": 3,
+    "power": 1,
+    "start": 2,
+    "initial": 4
+   },
+   "stem": {
+    "text": "dy/dx = 3x/y with y(2) = 4. Which is the particular solution?",
+    "command_verb": "identify"
+   },
+   "answer_key": {
+    "form": "symbolic",
+    "mathjson": [
+     "Power",
+     [
+      "Add",
+      4,
+      [
+       "Multiply",
+       3,
+       [
+        "Power",
+        "x",
+        2
+       ]
+      ]
+     ],
+     [
+      "Rational",
+      1,
+      2
+     ]
+    ]
+   },
+   "worked_solution": [
+    {
+     "step": 1,
+     "text": "Separate.",
+     "mathjson": [
+      "Equal",
+      [
+       "Multiply",
+       "dy",
+       "y"
+      ],
+      [
+       "Multiply",
+       3,
+       "dx",
+       "x"
+      ]
+     ],
+     "relation": "new"
+    },
+    {
+     "step": 2,
+     "text": "Integrate.",
+     "mathjson": [
+      "Equal",
+      [
+       "Multiply",
+       [
+        "Rational",
+        1,
+        2
+       ],
+       [
+        "Power",
+        "y",
+        2
+       ]
+      ],
+      [
+       "Add",
+       "C",
+       [
+        "Multiply",
+        [
+         "Rational",
+         3,
+         2
+        ],
+        [
+         "Power",
+         "x",
+         2
+        ]
+       ]
+      ]
+     ],
+     "relation": "new"
+    },
+    {
+     "step": 3,
+     "text": "x = 2, y = 4.",
+     "mathjson": [
+      "Equal",
+      8,
+      [
+       "Add",
+       6,
+       "C"
+      ]
+     ],
+     "relation": "evaluate",
+     "subs": {
+      "x": "2",
+      "y": "4"
+     }
+    },
+    {
+     "step": 4,
+     "text": "C.",
+     "mathjson": 2,
+     "relation": "solve",
+     "variable": "C"
+    },
+    {
+     "step": 5,
+     "text": "Positive root, since y(2) > 0.",
+     "mathjson": [
+      "Equal",
+      "y",
+      [
+       "Power",
+       [
+        "Add",
+        4,
+        [
+         "Multiply",
+         3,
+         [
+          "Power",
+          "x",
+          2
+         ]
+        ]
+       ],
+       [
+        "Rational",
+        1,
+        2
+       ]
+      ]
+     ],
+     "relation": "new"
+    }
+   ],
+   "options": [
+    {
+     "id": "A",
+     "is_key": false,
+     "error_path": "BC-ERR-07009",
+     "value": [
+      "Power",
+      [
+       "Add",
+       "C",
+       [
+        "Multiply",
+        3,
+        [
+         "Power",
+         "x",
+         2
+        ]
+       ]
+      ],
+      [
+       "Rational",
+       1,
+       2
+      ]
+     ],
+     "derivation": "the family reported with C left in"
+    },
+    {
+     "id": "B",
+     "is_key": true,
+     "error_path": null,
+     "value": [
+      "Power",
+      [
+       "Add",
+       4,
+       [
+        "Multiply",
+        3,
+        [
+         "Power",
+         "x",
+         2
+        ]
+       ]
+      ],
+      [
+       "Rational",
+       1,
+       2
+      ]
+     ]
+    },
+    {
+     "id": "C",
+     "is_key": false,
+     "error_path": "BC-ERR-07029",
+     "value": [
+      "Power",
+      [
+       "Add",
+       2,
+       [
+        "Multiply",
+        3,
+        [
+         "Power",
+         "x",
+         2
+        ]
+       ]
+      ],
+      [
+       "Rational",
+       1,
+       2
+      ]
+     ],
+     "derivation": "C = 2 from y^2/2 = 3x^2/2 + C put into y = sqrt(3x^2 + C)"
+    },
+    {
+     "id": "D",
+     "is_key": false,
+     "error_path": "BC-ERR-99014",
+     "value": [
+      "Multiply",
+      4,
+      [
+       "Exp",
+       [
+        "Add",
+        -6,
+        [
+         "Multiply",
+         [
+          "Rational",
+          3,
+          2
+         ],
+         [
+          "Power",
+          "x",
+          2
+         ]
+        ]
+       ]
+      ]
+     ],
+     "derivation": "y left in the denominator: dy/y = 3x dx"
+    }
+   ],
+   "calculator_status": "no_calculator",
+   "representation": "BC-REP-01",
+   "skills": [
+    "BC-SKL-07029",
+    "BC-SKL-07030"
+   ]
+  }
+ ],
+ "refresher": [
+  "LSN-CON-07008#s2",
+  "LSN-CON-07008#err-BC-ERR-07009",
+  "LSN-CON-07008#err-BC-ERR-07029",
+  "LSN-CON-07008#err-BC-ERR-07033",
+  "LSN-CON-07008#err-BC-ERR-99014",
+  "LSN-CON-07008#s6"
+ ],
+ "provenance": {
+  "author": "tools/lesson_transcribe.py",
+  "prompt_version": "generator/lesson_v1",
+  "design_path": "docs/lessons/unit-07/LSN-CON-07008.md",
+  "signed_off_by": "claude-opus-5-5",
+  "signed_off_at": "2026-09-29",
+  "not_human": true
+ }
+}

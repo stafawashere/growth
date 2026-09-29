@@ -1,0 +1,125 @@
+{
+ "lesson_id": "LSN-CON-05013",
+ "version": 1,
+ "compared_on": "2026-09-29",
+ "auditor": "claude-opus-5-5",
+ "resolve": {
+  "date": "2026-09-29",
+  "problems": 4,
+  "agreed": 4,
+  "judgments_pending": 0,
+  "all_agree": true,
+  "verdicts": [
+   {
+    "id": "LSN-CON-05013#ex-1",
+    "agree": true,
+    "detail": "agree (symbolic)",
+    "method": "V=x(24-2x)^2, critical points and endpoint test."
+   },
+   {
+    "id": "LSN-CON-05013#chk-1",
+    "agree": true,
+    "detail": "agree (symbolic)",
+    "method": "V(4)=1024 beats V(0)=V(12)=0."
+   },
+   {
+    "id": "LSN-CON-05013#chk-2",
+    "agree": true,
+    "detail": "agree (symbolic)",
+    "method": "V'=12(x-3)(x-10), only 3 lies in (0,7.5); volume is maximal there."
+   },
+   {
+    "id": "LSN-CON-05013#chk-3",
+    "agree": true,
+    "detail": "key option A, re-solver A",
+    "method": "V=x(12-2x)^2, max at x=2 with V=128."
+   }
+  ],
+  "answers_file": "/tmp/claude-0/-home-user-growth/ac029253-8ff0-5a4b-8b5f-cdcaf5e8ff8d/scratchpad/verify/answers_08.json"
+ },
+ "audit": {
+  "date": "2026-09-29",
+  "auditor": "claude-opus-5-5",
+  "blocks": [
+   {
+    "id": "orientation",
+    "verdict": "ok",
+    "evidence": "Paraphrase of BC-CON-05013 and the 5.10 Domain and Closing the argument paragraphs; 39 words."
+   },
+   {
+    "id": "ki-1",
+    "verdict": "ok",
+    "evidence": "Paraphrase of 5.10 Domain and Closing the argument paragraphs and FUN-4.B.1 on ced:108; 48 words."
+   },
+   {
+    "id": "st-1",
+    "verdict": "ok",
+    "evidence": "fixed 2026-09-29: evidence_tag set to inferred"
+   },
+   {
+    "id": "ex-1",
+    "verdict": "ok",
+    "evidence": "SymPy: factor(diff(x*(24-2*x)**2)) = 12(x-4)(x-12), i.e. (24-2x)(24-6x); V(4)=1024, V(0)=V(12)=0; key 4."
+   },
+   {
+    "id": "err-BC-ERR-05050",
+    "verdict": "ok",
+    "evidence": "Bundle text verbatim; no misconception attached, reason null."
+   },
+   {
+    "id": "err-BC-ERR-05051",
+    "verdict": "ok",
+    "evidence": "Bundle text verbatim; d/dx of x*w**2 with w fixed is w**2 (SymPy); reason paraphrases BC-MIS-05027."
+   },
+   {
+    "id": "err-BC-ERR-05052",
+    "verdict": "ok",
+    "evidence": "Bundle text verbatim; domain [0,12] from 24-2x>=0 and x>=0; BC-MIS-05028 paraphrase."
+   },
+   {
+    "id": "err-BC-ERR-05053",
+    "verdict": "ok",
+    "evidence": "Bundle text verbatim; SymPy diff(x*w**2, w) = 2xw; BC-MIS-05033 paraphrase."
+   },
+   {
+    "id": "bridge-BC-PRQ-05003",
+    "verdict": "ok",
+    "evidence": "Paraphrase of BC-PRQ-05003 description_plain; 14 words."
+   },
+   {
+    "id": "bridge-BC-PRQ-05005",
+    "verdict": "ok",
+    "evidence": "Paraphrase of BC-PRQ-05005 description_plain and failure_signature; 18 words."
+   },
+   {
+    "id": "chk-1",
+    "verdict": "ok",
+    "evidence": "SymPy: V(4)=1024 greater than V(0)=V(12)=0; key 4."
+   },
+   {
+    "id": "chk-2",
+    "verdict": "ok",
+    "evidence": "SymPy: diff(x*(15-2*x)*(24-2*x)) = 12(x-3)(x-10); 10 outside [0,7.5]; V(3)=486; key 3."
+   },
+   {
+    "id": "chk-3",
+    "verdict": "ok",
+    "evidence": "SymPy: diff(x*(12-2*x)**2) = (12-2x)(12-6x), zeros 2 and 6; V(2)=128; distractors B (unbounded as x grows, true off domain), C (w=0 at x=6), D (dV/dw=0 once w eliminated) match their error paths."
+   }
+  ],
+  "advice": [
+   "The design sources list sg-25:19 while the research line quotes sg-25:5; both appear under The candidates test, but the sources array could name sg-25:5 as well.",
+   "ki-1 as a static diagram of the cut sheet and folded box fits; the orientation as text fits.",
+   "err-BC-ERR-05053 wrong step writes dV/dw = 2xw while chk-3 option D says dV/dw = 0 for the same error; the two readings of the error differ and could confuse a reader.",
+   "BC-ERR-05054 (no verification) is in the bundle and the research but not taught as an error block; ex-1 step 7 covers the habit only positively.",
+   "Recognition, first line and rival are taught; the scoring habit (candidates test with both endpoints) is shown in ex-1 but not named as a scored point, since BC-QA-05011 has no point_types."
+  ],
+  "counts": {
+   "ok": 13,
+   "unsourced": 0,
+   "wrong": 0,
+   "over_cap": 0,
+   "lint": 0
+  }
+ }
+}

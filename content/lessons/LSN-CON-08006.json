@@ -1,0 +1,818 @@
+{
+ "id": "LSN-CON-08006",
+ "version": 1,
+ "kind": "concept",
+ "target_id": "BC-CON-08006",
+ "status": "signed_off",
+ "snapshot_digest": "a6a8ec9d3f59ab8f712e33d30cc22fc64bf2c478fbe7312e3e3118d319c6a42f",
+ "source_digest": "d68c12b6b5e30c5dae4715bea38a38d84f4b8de53575a2aa99903ff5251d4c14",
+ "read_minutes": {
+  "full": 5.0,
+  "brief": 2.9
+ },
+ "word_count": {
+  "full": 601,
+  "brief": 359
+ },
+ "sections": [
+  {
+   "id": "LSN-CON-08006#s1",
+   "type": "orientation",
+   "bands": [
+    "low",
+    "mid"
+   ],
+   "skills": [
+    "BC-SKL-08012",
+    "BC-SKL-08016",
+    "BC-SKL-08017"
+   ],
+   "sources": [
+    "BC-CON-08006",
+    "research/units/unit-08-applications-integration.md#8.3 Using Accumulation Functions and Definite Integrals in Applied Contexts"
+   ],
+   "evidence_tag": "inferred",
+   "text": "A response writes the amount at the asked time as the known amount plus the definite integral of the rate, with its differential, then reports the value with units.",
+   "delivery": {
+    "mode": "text",
+    "reason": "rule 6: a statement of what a response shows",
+    "sources": [
+     "BC-SKL-08012"
+    ]
+   }
+  },
+  {
+   "id": "LSN-CON-08006#s2",
+   "type": "key_ideas",
+   "bands": [
+    "low",
+    "mid"
+   ],
+   "skills": [
+    "BC-SKL-08012"
+   ],
+   "sources": [
+    "BC-EK-CHA-4D1",
+    "ced:154",
+    "sg-24:4",
+    "research/units/unit-08-applications-integration.md#8.3 Using Accumulation Functions and Definite Integrals in Applied Contexts"
+   ],
+   "evidence_tag": "inferred",
+   "ek_id": "BC-EK-CHA-4D1",
+   "depth": "core",
+   "text": "A function defined as an integral accumulates a rate. The amount at t is the amount at a plus the integral of the rate from a to t: it starts at the known amount and grows by what the rate adds.",
+   "notation": "Q(t) = Q(a) + integral of q",
+   "delivery": {
+    "mode": "motion",
+    "reason": "rule 2: an accumulation of a rate of change (ced:154) is a quantity accumulating; unit README delivery map, the amount traced from its initial value",
+    "sources": [
+     "BC-SKL-08012"
+    ],
+    "spec": {
+     "kind": "graph",
+     "representations": [
+      "BC-REP-05",
+      "BC-REP-01"
+     ],
+     "window": {
+      "x": [
+       2,
+       4
+      ],
+      "y": [
+       0,
+       80
+      ]
+     },
+     "curves": [
+      {
+       "expr": "2*x**2 + 3*x + 26",
+       "domain": [
+        2,
+        4
+       ],
+       "name": "A(x) = 40 + integral from 2 to x of R(t) dt"
+      }
+     ],
+     "frames": [
+      {
+       "x": 2,
+       "y": 40
+      },
+      {
+       "x": 3,
+       "y": 53
+      },
+      {
+       "x": 4,
+       "y": 70
+      }
+     ],
+     "labels": [
+      {
+       "text": "A(2) = 40: the start",
+       "placement": "inside"
+      },
+      {
+       "text": "A(x) = 40 + integral from 2 to x of R",
+       "placement": "inside"
+      },
+      {
+       "text": "A(4) = 70",
+       "placement": "inside"
+      }
+     ]
+    },
+    "reduced_motion": "a cross-fade between the three frames on the student's own key press; no auto-advance",
+    "fallback": "the three frames side by side, static, each with its label inside",
+    "keyboard": "Right arrow steps to the next frame, Left arrow to the previous; Space pauses auto-advance"
+   }
+  },
+  {
+   "id": "LSN-CON-08006#s3",
+   "type": "key_ideas",
+   "bands": [
+    "low"
+   ],
+   "skills": [
+    "BC-SKL-08012",
+    "BC-SKL-08016",
+    "BC-SKL-08017"
+   ],
+   "sources": [
+    "BC-EK-CHA-4E1",
+    "ced:154",
+    "sg-23:2",
+    "research/units/unit-08-applications-integration.md#8.3 Using Accumulation Functions and Definite Integrals in Applied Contexts"
+   ],
+   "evidence_tag": "inferred",
+   "ek_id": "BC-EK-CHA-4E1",
+   "depth": "extended",
+   "text": "In context, the integral of a rate over an interval is the amount gained over that interval, in the rate's units times the input's units. A complete statement names the quantity, the interval and the units.",
+   "delivery": {
+    "mode": "text",
+    "reason": "rule 6: an interpretation habit, BC-REP-05 and 01",
+    "sources": [
+     "BC-SKL-08016",
+     "BC-SKL-08017"
+    ]
+   }
+  },
+  {
+   "id": "LSN-CON-08006#s4",
+   "type": "strategy",
+   "bands": [
+    "low",
+    "mid"
+   ],
+   "skills": [
+    "BC-SKL-08012",
+    "BC-SKL-08016",
+    "BC-SKL-08017"
+   ],
+   "sources": [
+    "BC-QA-06005"
+   ],
+   "evidence_tag": "verified",
+   "archetype_id": "BC-QA-06005",
+   "cue": "A rate function and a known amount at one time; the amount at another time is asked.",
+   "method": "First line: the known amount plus the definite integral of the rate.",
+   "rival": "Rival: reporting the net change as the amount.",
+   "separating_feature": "A stated amount plus how much at time t."
+  },
+  {
+   "id": "LSN-CON-08006#s5",
+   "type": "strategy",
+   "bands": [
+    "low",
+    "mid"
+   ],
+   "skills": [
+    "BC-SKL-08012"
+   ],
+   "sources": [
+    "BC-QA-99008"
+   ],
+   "evidence_tag": "verified",
+   "archetype_id": "BC-QA-99008",
+   "cue": "A rate function and a closed interval; the total that arrives is asked.",
+   "method": "First: read the interval out of the wording, then the integral of the rate over it.",
+   "rival": "Rival: treating the part as a net change question because the stem gives an initial condition.",
+   "separating_feature": "How much entered asks for the change, not the amount."
+  },
+  {
+   "id": "LSN-CON-08006#s6",
+   "type": "strategy",
+   "bands": [
+    "low",
+    "mid"
+   ],
+   "skills": [
+    "BC-SKL-08012"
+   ],
+   "sources": [
+    "BC-QA-08006"
+   ],
+   "evidence_tag": "verified",
+   "archetype_id": "BC-QA-08006",
+   "cue": "An amount defined with a definite integral and a closed interval; the time of the maximum is asked.",
+   "method": "First line: differentiate the amount function.",
+   "rival": "Rival: presenting a local argument for a global claim.",
+   "separating_feature": "Greatest asks for a time, with both endpoints as candidates."
+  },
+  {
+   "id": "LSN-CON-08006#s7",
+   "type": "worked_example",
+   "bands": [
+    "low",
+    "mid"
+   ],
+   "skills": [
+    "BC-SKL-08012",
+    "BC-SKL-08016",
+    "BC-SKL-08017"
+   ],
+   "sources": [
+    "BC-QA-06005"
+   ],
+   "evidence_tag": "inferred",
+   "archetype_id": "BC-QA-06005",
+   "parameter_draw": {
+    "cubic": 0,
+    "square": 2,
+    "linear": 3,
+    "start": 2,
+    "span": 2,
+    "known": 40,
+    "base_rate": 6,
+    "swing": 2,
+    "stretch": 4,
+    "horizon": 3,
+    "context": "tank",
+    "tool": "exact",
+    "direction": "forward"
+   },
+   "problem": {
+    "text": "Water enters a tank at R(t) = 4t + 3 gallons per hour. At t = 2 the tank holds 40 gallons. Find A(4), showing the setup.",
+    "command_verb": "find"
+   },
+   "calculator_status": "no_calculator",
+   "steps": [
+    {
+     "cue": "Amount at t = 4 with a known amount at t = 2.",
+     "why": "The integral of R is the change in gallons; the start is added.",
+     "expression": [
+      "Add",
+      40,
+      [
+       "Integrate",
+       [
+        "Add",
+        3,
+        [
+         "Multiply",
+         4,
+         "t"
+        ]
+       ],
+       [
+        "Tuple",
+        "t",
+        2,
+        4
+       ]
+      ]
+     ],
+     "point_type_id": "BC-PT-99033",
+     "relation": "new"
+    },
+    {
+     "cue": "No calculator: 2t^2 + 3t from 2 to 4.",
+     "why": "44 - 14 = 30 gallons gained.",
+     "expression": 70,
+     "relation": "equivalent"
+    },
+    {
+     "cue": "Add the known amount.",
+     "why": "Gallons in the tank at t = 4.",
+     "expression": 70,
+     "relation": "equivalent"
+    }
+   ],
+   "answer": {
+    "form": "symbolic",
+    "mathjson": 70
+   },
+   "delivery": {
+    "mode": "step_reveal",
+    "reason": "rule 1",
+    "sources": []
+   }
+  },
+  {
+   "id": "LSN-CON-08006#s8",
+   "type": "what_a_reader_scores",
+   "bands": [
+    "low",
+    "mid"
+   ],
+   "skills": [
+    "BC-SKL-08012",
+    "BC-SKL-08016",
+    "BC-SKL-08017"
+   ],
+   "sources": [
+    "BC-PT-99033"
+   ],
+   "evidence_tag": "verified",
+   "example_id": "LSN-CON-08006#s7",
+   "lines": [
+    {
+     "point_type_id": "BC-PT-99033",
+     "text": "Uses the initial condition in an accumulation expression. Earned by: Adding the known function value at one endpoint to a definite integral of the rate (sg-24:3, sg-22:8). Not earned by: A definite integral alone with the known value never added (sg-22:8). Notation: sg-22:8 lists cases where a missing differential shifts which of the three points are available."
+    }
+   ]
+  },
+  {
+   "id": "LSN-CON-08006#err-BC-ERR-08011",
+   "type": "common_error",
+   "bands": [
+    "low",
+    "mid"
+   ],
+   "skills": [
+    "BC-SKL-08012"
+   ],
+   "sources": [
+    "BC-ERR-08011",
+    "BC-MIS-08006"
+   ],
+   "evidence_tag": "inferred",
+   "error_id": "BC-ERR-08011",
+   "observed_behavior": "The response evaluates the integral of the rate and reports it as the value of the quantity.",
+   "scoring_consequence": "The initial condition point is lost and the answer point falls with it (sg-24:7).",
+   "wrong_step": {
+    "text": "The integral alone.",
+    "expression": [
+     "Integrate",
+     [
+      "Add",
+      3,
+      [
+       "Multiply",
+       4,
+       "t"
+      ]
+     ],
+     [
+      "Tuple",
+      "t",
+      2,
+      4
+     ]
+    ]
+   },
+   "right_step": {
+    "text": "40 plus the integral.",
+    "expression": [
+     "Add",
+     40,
+     [
+      "Integrate",
+      [
+       "Add",
+       3,
+       [
+        "Multiply",
+        4,
+        "t"
+       ]
+      ],
+      [
+       "Tuple",
+       "t",
+       2,
+       4
+      ]
+     ]
+    ]
+   },
+   "relation": "distinct",
+   "possible_reason": {
+    "misconception_id": "BC-MIS-08006",
+    "text": "reads an accumulation integral as the quantity itself rather than as the change in it"
+   },
+   "delivery": {
+    "mode": "step_reveal",
+    "reason": "rule 1",
+    "sources": []
+   }
+  },
+  {
+   "id": "LSN-CON-08006#err-BC-ERR-08012",
+   "type": "common_error",
+   "bands": [
+    "low",
+    "mid"
+   ],
+   "skills": [
+    "BC-SKL-08012",
+    "BC-SKL-08017"
+   ],
+   "sources": [
+    "BC-ERR-08012",
+    "BC-MIS-08006"
+   ],
+   "evidence_tag": "inferred",
+   "error_id": "BC-ERR-08012",
+   "observed_behavior": "A question asking how much is present at a time is answered with the net change over the interval.",
+   "scoring_consequence": "The answer point is lost even when the integral is correct.",
+   "wrong_step": {
+    "text": "30 gallons reported as present.",
+    "expression": 30
+   },
+   "right_step": {
+    "text": "70 gallons present.",
+    "expression": 70
+   },
+   "relation": "distinct",
+   "possible_reason": {
+    "misconception_id": "BC-MIS-08006",
+    "text": "so the initial value has no role"
+   },
+   "delivery": {
+    "mode": "step_reveal",
+    "reason": "rule 1",
+    "sources": []
+   }
+  },
+  {
+   "id": "LSN-CON-08006#err-BC-ERR-99006",
+   "type": "common_error",
+   "bands": [
+    "low",
+    "mid"
+   ],
+   "skills": [
+    "BC-SKL-08016"
+   ],
+   "sources": [
+    "BC-ERR-99006",
+    "BC-MIS-08013"
+   ],
+   "evidence_tag": "inferred",
+   "error_id": "BC-ERR-99006",
+   "observed_behavior": "Responses present a definite integral with no differential, or with a differential in the wrong variable, producing a setup the reader cannot interpret.",
+   "scoring_consequence": "The setup point is not earned when the resulting expression is ambiguous; in some parts later points in that part are also lost.",
+   "wrong_step": {
+    "text": "dx for a rate in t.",
+    "expression": [
+     "Add",
+     40,
+     [
+      "Integrate",
+      [
+       "Add",
+       3,
+       [
+        "Multiply",
+        4,
+        "t"
+       ]
+      ],
+      [
+       "Tuple",
+       "x",
+       2,
+       4
+      ]
+     ]
+    ]
+   },
+   "right_step": {
+    "text": "dt.",
+    "expression": [
+     "Add",
+     40,
+     [
+      "Integrate",
+      [
+       "Add",
+       3,
+       [
+        "Multiply",
+        4,
+        "t"
+       ]
+      ],
+      [
+       "Tuple",
+       "t",
+       2,
+       4
+      ]
+     ]
+    ]
+   },
+   "relation": "distinct",
+   "possible_reason": {
+    "misconception_id": "BC-MIS-08013",
+    "text": "treats dx and dy as labels"
+   },
+   "delivery": {
+    "mode": "step_reveal",
+    "reason": "rule 1",
+    "sources": []
+   }
+  },
+  {
+   "id": "LSN-CON-08006#err-BC-ERR-99005",
+   "type": "common_error",
+   "bands": [
+    "low",
+    "mid"
+   ],
+   "skills": [
+    "BC-SKL-08017"
+   ],
+   "sources": [
+    "BC-ERR-99005"
+   ],
+   "evidence_tag": "inferred",
+   "error_id": "BC-ERR-99005",
+   "observed_behavior": "Responses give no units where units are requested, or report units of the original quantity instead of the derived one, for example words per minute for a second difference quotient.",
+   "scoring_consequence": "The units point is not earned; it is scored separately from the value.",
+   "wrong_step": {
+    "text": "70 gallons per hour.",
+    "expression": 70
+   },
+   "right_step": {
+    "text": "70 gallons.",
+    "expression": 70
+   },
+   "relation": "equivalent",
+   "delivery": {
+    "mode": "step_reveal",
+    "reason": "rule 1",
+    "sources": []
+   }
+  },
+  {
+   "id": "LSN-CON-08006#prq-BC-PRQ-06005",
+   "type": "prerequisite_bridge",
+   "bands": [
+    "low",
+    "mid"
+   ],
+   "skills": [
+    "BC-SKL-08012",
+    "BC-SKL-08016"
+   ],
+   "sources": [
+    "BC-PRQ-06005"
+   ],
+   "evidence_tag": "inferred",
+   "prerequisite_id": "BC-PRQ-06005",
+   "text": "A(2) = 40 is the amount at input 2; R is its rate, not the amount."
+  },
+  {
+   "id": "LSN-CON-08006#prq-BC-PRQ-08006",
+   "type": "prerequisite_bridge",
+   "bands": [
+    "low",
+    "mid"
+   ],
+   "skills": [
+    "BC-SKL-08017"
+   ],
+   "sources": [
+    "BC-PRQ-08006"
+   ],
+   "evidence_tag": "inferred",
+   "prerequisite_id": "BC-PRQ-08006",
+   "text": "On a calculator form, full precision until the last line, then three places."
+  }
+ ],
+ "checks": [
+  {
+   "id": "LSN-CON-08006#chk-1",
+   "check_kind": "completion",
+   "bands": [
+    "low",
+    "mid"
+   ],
+   "format": "short_answer",
+   "archetype_id": "BC-QA-06005",
+   "parameter_draw": {
+    "cubic": 0,
+    "square": 2,
+    "linear": 3,
+    "start": 2,
+    "span": 2,
+    "known": 40,
+    "base_rate": 6,
+    "swing": 2,
+    "stretch": 4,
+    "horizon": 3,
+    "context": "tank",
+    "tool": "exact",
+    "direction": "forward"
+   },
+   "completes": "LSN-CON-08006#s7",
+   "stem": {
+    "text": "A(2) = 40 gallons and the integral of R from 2 to 4 is 30. Find A(4).",
+    "command_verb": "find"
+   },
+   "answer_key": {
+    "form": "symbolic",
+    "mathjson": 70
+   },
+   "worked_solution": [
+    {
+     "step": 1,
+     "text": "Known amount plus change.",
+     "mathjson": 70,
+     "relation": "new"
+    },
+    {
+     "step": 2,
+     "text": "Add.",
+     "mathjson": 70,
+     "relation": "equivalent"
+    }
+   ],
+   "calculator_status": "no_calculator",
+   "representation": "BC-REP-01",
+   "skills": [
+    "BC-SKL-08012"
+   ]
+  },
+  {
+   "id": "LSN-CON-08006#chk-2",
+   "check_kind": "isomorph",
+   "bands": [
+    "low",
+    "mid"
+   ],
+   "format": "short_answer",
+   "archetype_id": "BC-QA-06005",
+   "parameter_draw": {
+    "cubic": -1,
+    "square": 3,
+    "linear": 4,
+    "start": 1,
+    "span": 1,
+    "known": 30,
+    "base_rate": 6,
+    "swing": 2,
+    "stretch": 4,
+    "horizon": 3,
+    "context": "tank",
+    "tool": "exact",
+    "direction": "forward"
+   },
+   "stem": {
+    "text": "R(t) = -3t^2 + 6t + 4 gallons per hour and A(1) = 30 gallons. Find A(2).",
+    "command_verb": "find"
+   },
+   "answer_key": {
+    "form": "symbolic",
+    "mathjson": 36
+   },
+   "worked_solution": [
+    {
+     "step": 1,
+     "text": "Setup.",
+     "mathjson": [
+      "Add",
+      30,
+      [
+       "Integrate",
+       [
+        "Add",
+        4,
+        [
+         "Multiply",
+         -3,
+         [
+          "Power",
+          "t",
+          2
+         ]
+        ],
+        [
+         "Multiply",
+         6,
+         "t"
+        ]
+       ],
+       [
+        "Tuple",
+        "t",
+        1,
+        2
+       ]
+      ]
+     ],
+     "relation": "new"
+    },
+    {
+     "step": 2,
+     "text": "30 + 6.",
+     "mathjson": 36,
+     "relation": "equivalent"
+    }
+   ],
+   "calculator_status": "no_calculator",
+   "representation": "BC-REP-01",
+   "skills": [
+    "BC-SKL-08012"
+   ]
+  },
+  {
+   "id": "LSN-CON-08006#chk-3",
+   "check_kind": "mcq",
+   "bands": [
+    "low"
+   ],
+   "format": "mcq",
+   "archetype_id": "BC-QA-06005",
+   "parameter_draw": {
+    "cubic": 0,
+    "square": 1,
+    "linear": 4,
+    "start": 1,
+    "span": 3,
+    "known": 20,
+    "base_rate": 6,
+    "swing": 2,
+    "stretch": 4,
+    "horizon": 3,
+    "context": "tank",
+    "tool": "exact",
+    "direction": "forward"
+   },
+   "stem": {
+    "text": "R(t) = 2t + 4 gallons per hour and A(1) = 20 gallons. Which response earns every point for A(4)?",
+    "command_verb": "identify"
+   },
+   "answer_key": {
+    "form": "statement",
+    "mathjson": "20 + Integral(2*t + 4, (t, 1, 4))"
+   },
+   "worked_solution": [],
+   "options": [
+    {
+     "id": "A",
+     "is_key": true,
+     "error_path": null,
+     "label": "20 + integral from 1 to 4 of R(t) dt = 47 gallons"
+    },
+    {
+     "id": "B",
+     "is_key": false,
+     "error_path": "BC-ERR-08011",
+     "label": "integral from 1 to 4 of R(t) dt = 27 gallons",
+     "derivation": "the integral reported with the 20 gallons left out"
+    },
+    {
+     "id": "C",
+     "is_key": false,
+     "error_path": "BC-ERR-99006",
+     "label": "20 + integral from 1 to 4 of R(t) dx = 47 gallons",
+     "derivation": "the differential in the wrong variable"
+    },
+    {
+     "id": "D",
+     "is_key": false,
+     "error_path": "BC-ERR-99005",
+     "label": "20 + integral from 1 to 4 of R(t) dt = 47 gallons per hour",
+     "derivation": "the rate's units on an amount"
+    }
+   ],
+   "calculator_status": "no_calculator",
+   "representation": "BC-REP-01",
+   "skills": [
+    "BC-SKL-08012",
+    "BC-SKL-08016",
+    "BC-SKL-08017"
+   ]
+  }
+ ],
+ "refresher": [
+  "LSN-CON-08006#s2",
+  "LSN-CON-08006#err-BC-ERR-08011",
+  "LSN-CON-08006#err-BC-ERR-08012",
+  "LSN-CON-08006#err-BC-ERR-99006",
+  "LSN-CON-08006#err-BC-ERR-99005",
+  "LSN-CON-08006#s7"
+ ],
+ "provenance": {
+  "author": "tools/lesson_transcribe.py",
+  "prompt_version": "generator/lesson_v1",
+  "design_path": "docs/lessons/unit-08/LSN-CON-08006.md",
+  "signed_off_by": "claude-opus-5-5",
+  "signed_off_at": "2026-09-29",
+  "not_human": true
+ }
+}

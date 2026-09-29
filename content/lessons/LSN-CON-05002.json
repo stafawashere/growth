@@ -1,0 +1,585 @@
+{
+ "id": "LSN-CON-05002",
+ "version": 1,
+ "kind": "concept",
+ "target_id": "BC-CON-05002",
+ "status": "signed_off",
+ "snapshot_digest": "a6a8ec9d3f59ab8f712e33d30cc22fc64bf2c478fbe7312e3e3118d319c6a42f",
+ "source_digest": "b570036893f2a964e8217afc1fcfd1efd098f61ef5398dda8d4a3dc254cf8324",
+ "read_minutes": {
+  "full": 3.5,
+  "brief": 2.4
+ },
+ "word_count": {
+  "full": 427,
+  "brief": 299
+ },
+ "sections": [
+  {
+   "id": "LSN-CON-05002#s1",
+   "type": "orientation",
+   "bands": [
+    "low",
+    "mid"
+   ],
+   "skills": [
+    "BC-SKL-05007",
+    "BC-SKL-05008",
+    "BC-SKL-05009"
+   ],
+   "sources": [
+    "BC-CON-05002",
+    "research/units/unit-05-analytical-applications-differentiation.md#5.2 Extreme Value Theorem, Global Versus Local Extrema, and Critical Points"
+   ],
+   "evidence_tag": "inferred",
+   "text": "A response checks that the interval is closed and that f is continuous on it, saying where continuity comes from, then answers that a maximum and a minimum value are attained.",
+   "delivery": {
+    "mode": "text",
+    "reason": "rule 5: a statement of what a response shows; the figure-bearing BC-REP-02 is served once, on ki-1",
+    "sources": [
+     "BC-SKL-05007"
+    ]
+   }
+  },
+  {
+   "id": "LSN-CON-05002#s2",
+   "type": "key_ideas",
+   "bands": [
+    "low",
+    "mid"
+   ],
+   "skills": [
+    "BC-SKL-05007",
+    "BC-SKL-05008",
+    "BC-SKL-05009"
+   ],
+   "sources": [
+    "BC-EK-FUN-1C1",
+    "ced:100",
+    "research/units/unit-05-analytical-applications-differentiation.md#5.2 Extreme Value Theorem, Global Versus Local Extrema, and Critical Points"
+   ],
+   "evidence_tag": "verified",
+   "ek_id": "BC-EK-FUN-1C1",
+   "depth": "core",
+   "text": "The Extreme Value Theorem has one hypothesis: f continuous on a closed interval [a, b]. A break inside, or an open interval, and the theorem gives nothing. Its conclusion is existence: it says a largest and a smallest value occur, not where.",
+   "notation": "absolute maximum; absolute minimum",
+   "quote": {
+    "text": "f has at least one minimum value and at least one maximum value on [a, b]",
+    "source": "ced:100"
+   },
+   "delivery": {
+    "mode": "figure",
+    "reason": "rule 3: BC-REP-02 on BC-SKL-05008; not promoted, BC-QA-05010 difficulty_variables are yes or no features",
+    "sources": [
+     "BC-SKL-05008",
+     "BC-QA-05010"
+    ],
+    "spec": {
+     "kind": "graph_panels",
+     "representations": [
+      "BC-REP-02"
+     ],
+     "window": {
+      "x": [
+       -1,
+       7
+      ],
+      "y": [
+       -1,
+       6
+      ]
+     },
+     "panels": [
+      {
+       "curves": [
+        {
+         "expr": "3 + 2*sin(x)",
+         "domain": [
+          0,
+          6
+         ]
+        }
+       ],
+       "points": [
+        {
+         "x": 0
+        },
+        {
+         "x": 6
+        },
+        {
+         "x": 1.5708
+        },
+        {
+         "x": 4.7124
+        }
+       ]
+      },
+      {
+       "curves": [
+        {
+         "expr": "3 + 2*sin(x)",
+         "domain": [
+          0,
+          2
+         ]
+        },
+        {
+         "expr": "1.5 + 2*sin(x)",
+         "domain": [
+          2,
+          6
+         ]
+        }
+       ],
+       "points": [
+        {
+         "x": 0
+        },
+        {
+         "x": 6
+        },
+        {
+         "x": 2,
+         "y": 4.819,
+         "style": "open"
+        },
+        {
+         "x": 2,
+         "y": 3.319
+        }
+       ]
+      }
+     ],
+     "labels": [
+      {
+       "text": "continuous on [0, 6]: max and min attained",
+       "placement": "inside"
+      },
+      {
+       "text": "jump at x = 2: theorem gives nothing",
+       "placement": "inside"
+      }
+     ]
+    },
+    "fallback": "the two panels as static images with the same inside labels, and a sentence naming the jump",
+    "keyboard": "no control; the figure description is reached with Tab"
+   }
+  },
+  {
+   "id": "LSN-CON-05002#s3",
+   "type": "strategy",
+   "bands": [
+    "low",
+    "mid"
+   ],
+   "skills": [
+    "BC-SKL-05007",
+    "BC-SKL-05008",
+    "BC-SKL-05009"
+   ],
+   "sources": [
+    "BC-QA-05010"
+   ],
+   "evidence_tag": "verified",
+   "archetype_id": "BC-QA-05010",
+   "cue": "Must f attain a maximum or minimum value, from a continuity statement and an interval?",
+   "method": "First line: the interval is closed.",
+   "rival": "Rival: differentiating to locate the extremum.",
+   "separating_feature": "Must attain asks existence; nothing is located."
+  },
+  {
+   "id": "LSN-CON-05002#s4",
+   "type": "worked_example",
+   "bands": [
+    "low",
+    "mid"
+   ],
+   "skills": [
+    "BC-SKL-05007",
+    "BC-SKL-05008",
+    "BC-SKL-05009"
+   ],
+   "sources": [
+    "BC-QA-05010"
+   ],
+   "evidence_tag": "inferred",
+   "archetype_id": "BC-QA-05010",
+   "parameter_draw": {
+    "left_end": -1,
+    "length": 5,
+    "jump_offset": 3,
+    "critical_offset": 2,
+    "letter": "f",
+    "extreme": "maximum",
+    "situation": "differentiable"
+   },
+   "problem": {
+    "text": "f is differentiable on [-1, 4], with a relative maximum at x = 1. Must f attain a maximum value on [-1, 4]? Justify.",
+    "command_verb": "justify"
+   },
+   "calculator_status": "no_calculator",
+   "steps": [
+    {
+     "cue": "Brackets in [-1, 4].",
+     "why": "The theorem needs a closed interval."
+    },
+    {
+     "cue": "Stem says differentiable.",
+     "why": "Differentiable on [-1, 4], so continuous there."
+    },
+    {
+     "cue": "Both checks written.",
+     "why": "Yes: by the Extreme Value Theorem f attains a maximum value on [-1, 4]."
+    },
+    {
+     "cue": "The relative maximum at x = 1.",
+     "why": "Not asked; the theorem does not place the maximum."
+    }
+   ],
+   "answer": {
+    "form": "statement",
+    "mathjson": "maximum_value_attained_on_closed_interval",
+    "label": "Yes, by the Extreme Value Theorem."
+   },
+   "delivery": {
+    "mode": "step_reveal",
+    "reason": "rule 1",
+    "sources": []
+   }
+  },
+  {
+   "id": "LSN-CON-05002#s5",
+   "type": "worked_example",
+   "bands": [
+    "low"
+   ],
+   "skills": [
+    "BC-SKL-05007",
+    "BC-SKL-05008",
+    "BC-SKL-05009"
+   ],
+   "sources": [
+    "BC-QA-05010"
+   ],
+   "evidence_tag": "inferred",
+   "archetype_id": "BC-QA-05010",
+   "parameter_draw": {
+    "left_end": 0,
+    "length": 6,
+    "jump_offset": 2,
+    "critical_offset": 4,
+    "letter": "g",
+    "extreme": "minimum",
+    "situation": "jump"
+   },
+   "problem": {
+    "text": "g has a jump at x = 2 and a relative minimum at x = 4. Must g attain a minimum value on [0, 6]?",
+    "command_verb": "justify"
+   },
+   "calculator_status": "no_calculator",
+   "steps": [
+    {
+     "cue": "Closed interval [0, 6].",
+     "why": "First check passes."
+    },
+    {
+     "cue": "Jump at x = 2, inside.",
+     "why": "g is not continuous on [0, 6]."
+    },
+    {
+     "cue": "A hypothesis fails.",
+     "why": "The theorem does not apply, so no minimum is assured."
+    }
+   ],
+   "answer": {
+    "form": "statement",
+    "mathjson": "theorem_does_not_apply",
+    "label": "No: the Extreme Value Theorem does not apply."
+   },
+   "delivery": {
+    "mode": "step_reveal",
+    "reason": "rule 1",
+    "sources": []
+   }
+  },
+  {
+   "id": "LSN-CON-05002#err-BC-ERR-05007",
+   "type": "common_error",
+   "bands": [
+    "low",
+    "mid"
+   ],
+   "skills": [
+    "BC-SKL-05007",
+    "BC-SKL-05008"
+   ],
+   "sources": [
+    "BC-ERR-05007",
+    "BC-MIS-05006"
+   ],
+   "evidence_tag": "inferred",
+   "error_id": "BC-ERR-05007",
+   "observed_behavior": "The response claims that a maximum and a minimum are attained for a function with a break inside the interval, or on an open interval.",
+   "scoring_consequence": "The hypothesis point is lost and the conclusion is unsupported.",
+   "wrong_step": {
+    "text": "Yes, by the theorem.",
+    "expression": "yes_by_extreme_value_theorem"
+   },
+   "right_step": {
+    "text": "Jump at 2: no conclusion.",
+    "expression": "theorem_does_not_apply"
+   },
+   "relation": "distinct",
+   "possible_reason": {
+    "misconception_id": "BC-MIS-05006",
+    "text": "applies the Extreme Value Theorem to open intervals or across discontinuities"
+   },
+   "delivery": {
+    "mode": "step_reveal",
+    "reason": "rule 1",
+    "sources": []
+   }
+  },
+  {
+   "id": "LSN-CON-05002#err-BC-ERR-05008",
+   "type": "common_error",
+   "bands": [
+    "low",
+    "mid"
+   ],
+   "skills": [
+    "BC-SKL-05009"
+   ],
+   "sources": [
+    "BC-ERR-05008"
+   ],
+   "evidence_tag": "inferred",
+   "error_id": "BC-ERR-05008",
+   "observed_behavior": "The response treats the Extreme Value Theorem as though it named the input at which the extremum occurs.",
+   "scoring_consequence": "The response answers a different question and the location it reports is unsupported.",
+   "wrong_step": {
+    "text": "Maximum at x = 1.",
+    "expression": [
+     "Equal",
+     "x",
+     1
+    ]
+   },
+   "right_step": {
+    "text": "A maximum value exists.",
+    "expression": "maximum_value_attained_on_closed_interval"
+   },
+   "relation": "distinct",
+   "delivery": {
+    "mode": "step_reveal",
+    "reason": "rule 1",
+    "sources": []
+   }
+  },
+  {
+   "id": "LSN-CON-05002#err-BC-ERR-99008",
+   "type": "common_error",
+   "bands": [
+    "low",
+    "mid"
+   ],
+   "skills": [
+    "BC-SKL-05007"
+   ],
+   "sources": [
+    "BC-ERR-99008",
+    "BC-MIS-99009"
+   ],
+   "evidence_tag": "inferred",
+   "error_id": "BC-ERR-99008",
+   "observed_behavior": "Responses apply the Mean Value Theorem, the Intermediate Value Theorem or L'Hospital's Rule without establishing continuity from differentiability, without bounding the target value between two function values, or without confirming the indeterminate form.",
+   "scoring_consequence": "The condition point is not earned; in several years this was the point earned by the smallest proportion of responses on the question.",
+   "wrong_step": {
+    "text": "f is continuous.",
+    "expression": "continuous_asserted"
+   },
+   "right_step": {
+    "text": "Continuous because differentiable.",
+    "expression": "continuous_because_differentiable"
+   },
+   "relation": "distinct",
+   "possible_reason": {
+    "misconception_id": "BC-MIS-99009",
+    "text": "continuity is asserted rather than derived from differentiability"
+   },
+   "delivery": {
+    "mode": "step_reveal",
+    "reason": "rule 1",
+    "sources": []
+   }
+  },
+  {
+   "id": "LSN-CON-05002#prq-BC-PRQ-05004",
+   "type": "prerequisite_bridge",
+   "bands": [
+    "low",
+    "mid"
+   ],
+   "skills": [
+    "BC-SKL-05007"
+   ],
+   "sources": [
+    "BC-PRQ-05004"
+   ],
+   "evidence_tag": "inferred",
+   "prerequisite_id": "BC-PRQ-05004",
+   "text": "[a, b] includes its endpoints; (a, b) does not. Read the brackets first."
+  }
+ ],
+ "checks": [
+  {
+   "id": "LSN-CON-05002#chk-1",
+   "check_kind": "completion",
+   "bands": [
+    "low",
+    "mid"
+   ],
+   "format": "short_answer",
+   "archetype_id": "BC-QA-05010",
+   "parameter_draw": {
+    "left_end": -1,
+    "length": 5,
+    "jump_offset": 3,
+    "critical_offset": 2,
+    "letter": "f",
+    "extreme": "maximum",
+    "situation": "differentiable"
+   },
+   "completes": "LSN-CON-05002#s4",
+   "stem": {
+    "text": "[-1, 4] is closed; f is continuous there because differentiable. Finish: must f attain a maximum value?",
+    "command_verb": "justify"
+   },
+   "answer_key": {
+    "form": "statement",
+    "mathjson": "maximum_value_attained_on_closed_interval",
+    "label": "Yes, by the Extreme Value Theorem."
+   },
+   "worked_solution": [],
+   "calculator_status": "no_calculator",
+   "representation": "BC-REP-02",
+   "skills": [
+    "BC-SKL-05009"
+   ]
+  },
+  {
+   "id": "LSN-CON-05002#chk-2",
+   "check_kind": "isomorph",
+   "bands": [
+    "low",
+    "mid"
+   ],
+   "format": "short_answer",
+   "archetype_id": "BC-QA-05010",
+   "parameter_draw": {
+    "left_end": 1,
+    "length": 3,
+    "jump_offset": 2,
+    "critical_offset": 1,
+    "letter": "h",
+    "extreme": "minimum",
+    "situation": "continuous"
+   },
+   "stem": {
+    "text": "h is continuous on [1, 4] with a relative minimum at x = 2. Must h attain a minimum value on [1, 4]?",
+    "command_verb": "justify"
+   },
+   "answer_key": {
+    "form": "statement",
+    "mathjson": "minimum_value_attained_on_closed_interval",
+    "label": "Yes: continuous on the closed interval, Extreme Value Theorem."
+   },
+   "worked_solution": [],
+   "calculator_status": "no_calculator",
+   "representation": "BC-REP-02",
+   "skills": [
+    "BC-SKL-05008",
+    "BC-SKL-05009"
+   ]
+  },
+  {
+   "id": "LSN-CON-05002#chk-3",
+   "check_kind": "mcq",
+   "bands": [
+    "low"
+   ],
+   "format": "mcq",
+   "archetype_id": "BC-QA-05010",
+   "parameter_draw": {
+    "left_end": -2,
+    "length": 5,
+    "jump_offset": 4,
+    "critical_offset": 2,
+    "letter": "g",
+    "extreme": "minimum",
+    "situation": "open"
+   },
+   "stem": {
+    "text": "g is differentiable on (-2, 3), relative minimum at x = 0. Must g attain a minimum value on (-2, 3)?",
+    "command_verb": "identify"
+   },
+   "answer_key": {
+    "form": "statement",
+    "mathjson": "theorem_does_not_apply",
+    "label": "No conclusion: the interval is open."
+   },
+   "worked_solution": [],
+   "options": [
+    {
+     "id": "A",
+     "is_key": false,
+     "error_path": "BC-ERR-05007",
+     "label": "Yes, by the Extreme Value Theorem.",
+     "derivation": "the theorem applied on an open interval"
+    },
+    {
+     "id": "B",
+     "is_key": false,
+     "error_path": "BC-ERR-05008",
+     "label": "Yes, at x = 0.",
+     "derivation": "the theorem used to place the extremum at the relative minimum"
+    },
+    {
+     "id": "C",
+     "is_key": true,
+     "error_path": null,
+     "label": "No conclusion: the interval is open."
+    },
+    {
+     "id": "D",
+     "is_key": false,
+     "error_path": "BC-ERR-05008",
+     "label": "Yes, the minimum value is g(0).",
+     "derivation": "the theorem read as naming the minimum value at the relative minimum x = 0"
+    }
+   ],
+   "calculator_status": "no_calculator",
+   "representation": "BC-REP-02",
+   "skills": [
+    "BC-SKL-05007",
+    "BC-SKL-05008"
+   ]
+  }
+ ],
+ "refresher": [
+  "LSN-CON-05002#s2",
+  "LSN-CON-05002#err-BC-ERR-05007",
+  "LSN-CON-05002#err-BC-ERR-05008",
+  "LSN-CON-05002#err-BC-ERR-99008",
+  "LSN-CON-05002#s4"
+ ],
+ "provenance": {
+  "author": "tools/lesson_transcribe.py",
+  "prompt_version": "generator/lesson_v1",
+  "design_path": "docs/lessons/unit-05/LSN-CON-05002.md",
+  "signed_off_by": "claude-opus-5-5",
+  "signed_off_at": "2026-09-29",
+  "not_human": true
+ }
+}

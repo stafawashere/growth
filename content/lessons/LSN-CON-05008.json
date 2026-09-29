@@ -1,0 +1,732 @@
+{
+ "id": "LSN-CON-05008",
+ "version": 1,
+ "kind": "concept",
+ "target_id": "BC-CON-05008",
+ "status": "signed_off",
+ "snapshot_digest": "a6a8ec9d3f59ab8f712e33d30cc22fc64bf2c478fbe7312e3e3118d319c6a42f",
+ "source_digest": "2b061bac4241a2819108c7e2ce0d492f05196f1df84ee575db263c4ed7343351",
+ "read_minutes": {
+  "full": 3.9,
+  "brief": 3.0
+ },
+ "word_count": {
+  "full": 506,
+  "brief": 392
+ },
+ "sections": [
+  {
+   "id": "LSN-CON-05008#s1",
+   "type": "orientation",
+   "bands": [
+    "low",
+    "mid"
+   ],
+   "skills": [
+    "BC-SKL-05032",
+    "BC-SKL-05033",
+    "BC-SKL-05034",
+    "BC-SKL-05035"
+   ],
+   "sources": [
+    "BC-CON-05008",
+    "research/units/unit-05-analytical-applications-differentiation.md#5.6 Determining Concavity of Functions over Their Domains"
+   ],
+   "evidence_tag": "inferred",
+   "text": "A response lists exactly the inputs where the concavity changes, and gives its reason through the graph the stem supplied, such as f' changing from increasing to decreasing there.",
+   "delivery": {
+    "mode": "text",
+    "reason": "rule 5: a statement of what a response shows; unit README delivery map",
+    "sources": [
+     "BC-SKL-05035"
+    ]
+   }
+  },
+  {
+   "id": "LSN-CON-05008#s2",
+   "type": "key_ideas",
+   "bands": [
+    "low",
+    "mid"
+   ],
+   "skills": [
+    "BC-SKL-05032",
+    "BC-SKL-05033",
+    "BC-SKL-05034",
+    "BC-SKL-05035"
+   ],
+   "sources": [
+    "BC-EK-FUN-4A6",
+    "ced:104",
+    "sg-25:17",
+    "research/units/unit-05-analytical-applications-differentiation.md#5.6 Determining Concavity of Functions over Their Domains"
+   ],
+   "evidence_tag": "verified",
+   "ek_id": "BC-EK-FUN-4A6",
+   "depth": "core",
+   "text": "An inflection point at c, in the domain, needs f'' to change sign; a zero of f'' alone is only a candidate. On a graph of f', f' turns from rising to falling or back. The reason names f'.",
+   "notation": "point of inflection; sign change of f''",
+   "quote": {
+    "text": "The second derivative of a function may be used to locate points of inflection for the graph of the original function.",
+    "source": "ced:104"
+   },
+   "delivery": {
+    "mode": "interactive",
+    "reason": "rule 3 promoted: BC-REP-02 on BC-SKL-05032 to 05035; BC-QA-05005 difficulty_variables how many points of inflection there are and whether a candidate is a touching zero",
+    "sources": [
+     "BC-SKL-05033",
+     "BC-SKL-05034",
+     "BC-QA-05005"
+    ],
+    "spec": {
+     "kind": "graph",
+     "representations": [
+      "BC-REP-02"
+     ],
+     "curve": "f' through (0, -3), (1, -1), (2, 2), (3, 3), (4, 1), (5, 0), (6, -2)",
+     "window": {
+      "x": [
+       0,
+       6
+      ],
+      "y": [
+       -4,
+       4
+      ]
+     },
+     "controls": [
+      {
+       "type": "draggable_point",
+       "constrained_to": "curve",
+       "start": [
+        0.5,
+        -2
+       ]
+      }
+     ],
+     "drawn": [
+      "a sign row for f'' under the graph, filled in as the point passes each segment"
+     ],
+     "question": "At which corners does the sign of f'' change?",
+     "labels": [
+      {
+       "text": "graph of f'",
+       "placement": "inside"
+      },
+      {
+       "text": "sign of f'' (slope of f')",
+       "placement": "inside"
+      }
+     ]
+    },
+    "fallback": "the graph static with the completed sign row: +, +, +, -, -, - and x = 3 marked",
+    "keyboard": "Tab focuses the point; Left and Right arrow keys move it by 0.25; Enter records the sign of f'' at the point"
+   }
+  },
+  {
+   "id": "LSN-CON-05008#s3",
+   "type": "strategy",
+   "bands": [
+    "low",
+    "mid"
+   ],
+   "skills": [
+    "BC-SKL-05032",
+    "BC-SKL-05033",
+    "BC-SKL-05034",
+    "BC-SKL-05035"
+   ],
+   "sources": [
+    "BC-QA-05005"
+   ],
+   "evidence_tag": "verified",
+   "archetype_id": "BC-QA-05005",
+   "cue": "All points of inflection, from a graph of f' on an open interval?",
+   "method": "First line: where the plotted f' turns.",
+   "rival": "Rival: the zeros of f', or every corner.",
+   "separating_feature": "f' must switch rising and falling."
+  },
+  {
+   "id": "LSN-CON-05008#s4",
+   "type": "worked_example",
+   "bands": [
+    "low",
+    "mid"
+   ],
+   "skills": [
+    "BC-SKL-05032",
+    "BC-SKL-05033",
+    "BC-SKL-05034",
+    "BC-SKL-05035"
+   ],
+   "sources": [
+    "BC-QA-05005"
+   ],
+   "evidence_tag": "inferred",
+   "archetype_id": "BC-QA-05005",
+   "parameter_draw": {
+    "heights": [
+     -3,
+     -1,
+     2,
+     3,
+     1,
+     0,
+     -2
+    ]
+   },
+   "problem": {
+    "text": "The graph of f' joins (0, -3), (1, -1), (2, 2), (3, 3), (4, 1), (5, 0), (6, -2) by segments. Find every inflection point of f, with a reason.",
+    "command_verb": "find"
+   },
+   "calculator_status": "no_calculator",
+   "steps": [
+    {
+     "cue": "Inflection from a graph of f': where it turns.",
+     "why": "Slopes 2, 3, 1, -2, -1, -2: one switch, at x = 3."
+    },
+    {
+     "cue": "List exactly those.",
+     "why": "Other corners keep the slope's sign.",
+     "expression": [
+      "Set",
+      3
+     ],
+     "relation": "new"
+    },
+    {
+     "cue": "Reason through the graph given.",
+     "why": "At x = 3, f' changes from increasing to decreasing.",
+     "point_type_id": "BC-PT-99061"
+    }
+   ],
+   "answer": {
+    "form": "symbolic",
+    "mathjson": [
+     "Set",
+     3
+    ]
+   },
+   "delivery": {
+    "mode": "step_reveal",
+    "reason": "rule 1",
+    "sources": []
+   }
+  },
+  {
+   "id": "LSN-CON-05008#s5",
+   "type": "what_a_reader_scores",
+   "bands": [
+    "low",
+    "mid"
+   ],
+   "skills": [
+    "BC-SKL-05032",
+    "BC-SKL-05033",
+    "BC-SKL-05034",
+    "BC-SKL-05035"
+   ],
+   "sources": [
+    "BC-PT-99061"
+   ],
+   "evidence_tag": "verified",
+   "example_id": "LSN-CON-05008#s4",
+   "lines": [
+    {
+     "point_type_id": "BC-PT-99061",
+     "text": "Reason for a point of inflection tied to the given graph. Earned by: A reason stated in terms of the graphed derivative changing from increasing to decreasing or the reverse, the slope of that graph changing sign, or that graph attaining a relative extremum (sg-25:17, sg-26:15). Not earned by: A reason in terms of the function changing concavity, or in terms of the second derivative changing sign, both of which sg-25:17 and sg-26:15 state earn the answer point but not this one; a reason using an ambiguous term such as the function or the graph."
+    }
+   ]
+  },
+  {
+   "id": "LSN-CON-05008#err-BC-ERR-05032",
+   "type": "common_error",
+   "bands": [
+    "low",
+    "mid"
+   ],
+   "skills": [
+    "BC-SKL-05032"
+   ],
+   "sources": [
+    "BC-ERR-05032"
+   ],
+   "evidence_tag": "inferred",
+   "error_id": "BC-ERR-05032",
+   "observed_behavior": "The response lists a candidate point of inflection at an input where the function is not defined.",
+   "scoring_consequence": "The declared list contains an extra input, which costs the answer point.",
+   "wrong_step": {
+    "text": "Input outside the domain listed.",
+    "expression": "input_outside_domain_listed"
+   },
+   "right_step": {
+    "text": "Only inputs where f is defined.",
+    "expression": "inputs_in_domain_only"
+   },
+   "relation": "distinct",
+   "delivery": {
+    "mode": "step_reveal",
+    "reason": "rule 1",
+    "sources": []
+   }
+  },
+  {
+   "id": "LSN-CON-05008#err-BC-ERR-05033",
+   "type": "common_error",
+   "bands": [
+    "low",
+    "mid"
+   ],
+   "skills": [
+    "BC-SKL-05033"
+   ],
+   "sources": [
+    "BC-ERR-05033",
+    "BC-MIS-05021"
+   ],
+   "evidence_tag": "inferred",
+   "error_id": "BC-ERR-05033",
+   "observed_behavior": "The response reports every zero of the second derivative, or every zero of the plotted curve, as a point of inflection.",
+   "scoring_consequence": "An extra input in the list costs the answer point outright.",
+   "wrong_step": {
+    "text": "Zeros of f'.",
+    "expression": [
+     "Set",
+     [
+      "Rational",
+      4,
+      3
+     ],
+     5
+    ]
+   },
+   "right_step": {
+    "text": "Where f' turns.",
+    "expression": [
+     "Set",
+     3
+    ]
+   },
+   "relation": "distinct",
+   "possible_reason": {
+    "misconception_id": "BC-MIS-05021",
+    "text": "equates the candidate condition with the conclusion and never checks the sign change"
+   },
+   "delivery": {
+    "mode": "step_reveal",
+    "reason": "rule 1",
+    "sources": []
+   }
+  },
+  {
+   "id": "LSN-CON-05008#err-BC-ERR-05034",
+   "type": "common_error",
+   "bands": [
+    "low",
+    "mid"
+   ],
+   "skills": [
+    "BC-SKL-05034"
+   ],
+   "sources": [
+    "BC-ERR-05034"
+   ],
+   "evidence_tag": "inferred",
+   "error_id": "BC-ERR-05034",
+   "observed_behavior": "The response keeps an input where the second derivative reaches zero and returns to the same sign.",
+   "scoring_consequence": "The list has an extra entry, so the answer point is lost.",
+   "wrong_step": {
+    "text": "Every corner.",
+    "expression": [
+     "Set",
+     1,
+     2,
+     3,
+     4,
+     5
+    ]
+   },
+   "right_step": {
+    "text": "Only the turning corner.",
+    "expression": [
+     "Set",
+     3
+    ]
+   },
+   "relation": "distinct",
+   "delivery": {
+    "mode": "step_reveal",
+    "reason": "rule 1",
+    "sources": []
+   }
+  },
+  {
+   "id": "LSN-CON-05008#err-BC-ERR-05035",
+   "type": "common_error",
+   "bands": [
+    "low",
+    "mid"
+   ],
+   "skills": [
+    "BC-SKL-05035"
+   ],
+   "sources": [
+    "BC-ERR-05035",
+    "BC-MIS-05022"
+   ],
+   "evidence_tag": "inferred",
+   "error_id": "BC-ERR-05035",
+   "observed_behavior": "The reason says that the second derivative changes sign there, without tying the claim to the plotted object the question supplied.",
+   "scoring_consequence": "The reason point is lost while the answer point stands; the 2025 guideline names this split directly.",
+   "wrong_step": {
+    "text": "f'' changes sign at 3.",
+    "expression": "f_double_prime_changes_sign"
+   },
+   "right_step": {
+    "text": "f' changes from increasing to decreasing at 3.",
+    "expression": "f_prime_increasing_to_decreasing"
+   },
+   "relation": "distinct",
+   "possible_reason": {
+    "misconception_id": "BC-MIS-05022",
+    "text": "supplies derivative notation in place of a statement about the object the question gave"
+   },
+   "delivery": {
+    "mode": "step_reveal",
+    "reason": "rule 1",
+    "sources": []
+   }
+  },
+  {
+   "id": "LSN-CON-05008#s6",
+   "type": "representations",
+   "bands": [
+    "low"
+   ],
+   "skills": [
+    "BC-SKL-05032",
+    "BC-SKL-05033",
+    "BC-SKL-05034",
+    "BC-SKL-05035"
+   ],
+   "sources": [
+    "BC-CON-05008"
+   ],
+   "evidence_tag": "inferred",
+   "text": "Only a turn of f' is an inflection; a change of steepness is not.",
+   "figure": {
+    "kind": "graph",
+    "labels": [
+     {
+      "text": "x = 3: f' turns",
+      "placement": "inside"
+     },
+     {
+      "text": "x = 1: steeper, same sign",
+      "placement": "inside"
+     }
+    ]
+   },
+   "delivery": {
+    "mode": "figure",
+    "reason": "rule 3: BC-REP-02 on BC-SKL-05034; unit README delivery map, the touching-zero case",
+    "sources": [
+     "BC-SKL-05034"
+    ],
+    "spec": {
+     "kind": "graph",
+     "representations": [
+      "BC-REP-02"
+     ],
+     "curve": "f' through (0, -3), (1, -1), (2, 2), (3, 3), (4, 1), (5, 0), (6, -2)",
+     "window": {
+      "x": [
+       0,
+       6
+      ],
+      "y": [
+       -4,
+       4
+      ]
+     },
+     "labels": [
+      {
+       "text": "x = 3: f' turns, inflection",
+       "placement": "inside"
+      },
+      {
+       "text": "x = 1: steeper, same sign, not one",
+       "placement": "inside"
+      },
+      {
+       "text": "x = 4/3: f' = 0, not one",
+       "placement": "inside"
+      }
+     ]
+    },
+    "fallback": "the same static figure with its labels read as a list",
+    "keyboard": "no control; the figure description is reached with Tab"
+   }
+  },
+  {
+   "id": "LSN-CON-05008#prq-BC-PRQ-05001",
+   "type": "prerequisite_bridge",
+   "bands": [
+    "low",
+    "mid"
+   ],
+   "skills": [
+    "BC-SKL-05032"
+   ],
+   "sources": [
+    "BC-PRQ-05001"
+   ],
+   "evidence_tag": "inferred",
+   "prerequisite_id": "BC-PRQ-05001",
+   "text": "Find where an expression is zero or undefined."
+  },
+  {
+   "id": "LSN-CON-05008#prq-BC-PRQ-05003",
+   "type": "prerequisite_bridge",
+   "bands": [
+    "low",
+    "mid"
+   ],
+   "skills": [
+    "BC-SKL-05032"
+   ],
+   "sources": [
+    "BC-PRQ-05003"
+   ],
+   "evidence_tag": "inferred",
+   "prerequisite_id": "BC-PRQ-05003",
+   "text": "List only inputs where f is defined."
+  }
+ ],
+ "checks": [
+  {
+   "id": "LSN-CON-05008#chk-1",
+   "check_kind": "completion",
+   "bands": [
+    "low",
+    "mid"
+   ],
+   "format": "short_answer",
+   "archetype_id": "BC-QA-05005",
+   "parameter_draw": {
+    "heights": [
+     -3,
+     -1,
+     2,
+     3,
+     1,
+     0,
+     -2
+    ]
+   },
+   "completes": "LSN-CON-05008#s4",
+   "stem": {
+    "text": "The ex-1 f' has slopes 2, 3, 1, -2, -1, -2 on its six segments. List the inflection points.",
+    "command_verb": "find"
+   },
+   "answer_key": {
+    "form": "symbolic",
+    "mathjson": [
+     "Set",
+     3
+    ]
+   },
+   "worked_solution": [
+    {
+     "step": 1,
+     "text": "One switch, at 3.",
+     "mathjson": [
+      "Set",
+      3
+     ],
+     "relation": "new"
+    }
+   ],
+   "calculator_status": "no_calculator",
+   "representation": "BC-REP-02",
+   "skills": [
+    "BC-SKL-05033"
+   ]
+  },
+  {
+   "id": "LSN-CON-05008#chk-2",
+   "check_kind": "isomorph",
+   "bands": [
+    "low",
+    "mid"
+   ],
+   "format": "short_answer",
+   "archetype_id": "BC-QA-05005",
+   "parameter_draw": {
+    "heights": [
+     2,
+     0,
+     -1,
+     1,
+     2,
+     1,
+     -2
+    ]
+   },
+   "stem": {
+    "text": "f' joins heights 2, 0, -1, 1, 2, 1, -2 at x = 0 to 6. List the inflection points of f.",
+    "command_verb": "find"
+   },
+   "answer_key": {
+    "form": "symbolic",
+    "mathjson": [
+     "Set",
+     2,
+     4
+    ]
+   },
+   "worked_solution": [
+    {
+     "step": 1,
+     "text": "Slopes -2, -1, 2, 1, -1, -3: switches at 2 and 4.",
+     "mathjson": [
+      "Set",
+      2,
+      4
+     ],
+     "relation": "new"
+    }
+   ],
+   "calculator_status": "no_calculator",
+   "representation": "BC-REP-02",
+   "skills": [
+    "BC-SKL-05033",
+    "BC-SKL-05034"
+   ]
+  },
+  {
+   "id": "LSN-CON-05008#chk-3",
+   "check_kind": "mcq",
+   "bands": [
+    "low"
+   ],
+   "format": "mcq",
+   "archetype_id": "BC-QA-05005",
+   "parameter_draw": {
+    "heights": [
+     1,
+     3,
+     2,
+     -1,
+     -2,
+     0,
+     1
+    ]
+   },
+   "stem": {
+    "text": "f' joins heights 1, 3, 2, -1, -2, 0, 1 at x = 0 to 6. Which lists every inflection point of f?",
+    "command_verb": "identify"
+   },
+   "answer_key": {
+    "form": "symbolic",
+    "mathjson": [
+     "Set",
+     1,
+     4
+    ]
+   },
+   "worked_solution": [
+    {
+     "step": 1,
+     "text": "Slopes 2, -1, -3, -1, 2, 1: switches at 1 and 4.",
+     "mathjson": [
+      "Set",
+      1,
+      4
+     ],
+     "relation": "new"
+    }
+   ],
+   "options": [
+    {
+     "id": "A",
+     "is_key": false,
+     "error_path": "BC-ERR-05033",
+     "value": [
+      "Set",
+      [
+       "Rational",
+       8,
+       3
+      ],
+      5
+     ],
+     "derivation": "the zeros of f' listed"
+    },
+    {
+     "id": "B",
+     "is_key": false,
+     "error_path": "BC-ERR-05034",
+     "value": [
+      "Set",
+      1,
+      2,
+      3,
+      4,
+      5
+     ],
+     "derivation": "every corner kept, including those where the slope keeps its sign"
+    },
+    {
+     "id": "C",
+     "is_key": true,
+     "error_path": null,
+     "value": [
+      "Set",
+      1,
+      4
+     ]
+    },
+    {
+     "id": "D",
+     "is_key": false,
+     "error_path": "BC-ERR-05033",
+     "value": [
+      "Set",
+      1,
+      [
+       "Rational",
+       8,
+       3
+      ],
+      4,
+      5
+     ],
+     "derivation": "the zeros of f' added to the turns"
+    }
+   ],
+   "calculator_status": "no_calculator",
+   "representation": "BC-REP-02",
+   "skills": [
+    "BC-SKL-05033",
+    "BC-SKL-05034"
+   ]
+  }
+ ],
+ "refresher": [
+  "LSN-CON-05008#s2",
+  "LSN-CON-05008#err-BC-ERR-05032",
+  "LSN-CON-05008#err-BC-ERR-05033",
+  "LSN-CON-05008#err-BC-ERR-05034",
+  "LSN-CON-05008#err-BC-ERR-05035",
+  "LSN-CON-05008#s4"
+ ],
+ "provenance": {
+  "author": "tools/lesson_transcribe.py",
+  "prompt_version": "generator/lesson_v1",
+  "design_path": "docs/lessons/unit-05/LSN-CON-05008.md",
+  "signed_off_by": "claude-opus-5-5",
+  "signed_off_at": "2026-09-29",
+  "not_human": true
+ }
+}

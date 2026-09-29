@@ -1,0 +1,991 @@
+{
+ "id": "LSN-CON-07012",
+ "version": 1,
+ "kind": "concept",
+ "target_id": "BC-CON-07012",
+ "status": "signed_off",
+ "snapshot_digest": "a6a8ec9d3f59ab8f712e33d30cc22fc64bf2c478fbe7312e3e3118d319c6a42f",
+ "source_digest": "9536893f286eacf23790c841b0d92e8bd069d7822b6b3353968fa9e2786719d5",
+ "read_minutes": {
+  "full": 3.8,
+  "brief": 2.8
+ },
+ "word_count": {
+  "full": 502,
+  "brief": 369
+ },
+ "sections": [
+  {
+   "id": "LSN-CON-07012#s1",
+   "type": "orientation",
+   "bands": [
+    "low",
+    "mid"
+   ],
+   "skills": [
+    "BC-SKL-07040",
+    "BC-SKL-07041",
+    "BC-SKL-07042"
+   ],
+   "sources": [
+    "BC-CON-07012",
+    "research/units/unit-07-differential-equations.md#7.9 Logistic Models with Differential Equations"
+   ],
+   "evidence_tag": "inferred",
+   "text": "A response reads the carrying capacity from the zeros of the right side, gives the limit with the sign of the rate at the initial value as its reason, and places the fastest change at half the carrying capacity. Nothing is solved.",
+   "delivery": {
+    "mode": "text",
+    "reason": "rule 6: a statement of what a response shows; BC-REP-06, BC-REP-04, BC-REP-01",
+    "sources": [
+     "BC-SKL-07040"
+    ]
+   }
+  },
+  {
+   "id": "LSN-CON-07012#s2",
+   "type": "key_ideas",
+   "bands": [
+    "low",
+    "mid"
+   ],
+   "skills": [
+    "BC-SKL-07040",
+    "BC-SKL-07041"
+   ],
+   "sources": [
+    "BC-EK-FUN-7H3",
+    "ced:145",
+    "research/units/unit-07-differential-equations.md#7.9 Logistic Models with Differential Equations"
+   ],
+   "evidence_tag": "inferred",
+   "ek_id": "BC-EK-FUN-7H3",
+   "depth": "core",
+   "text": "The right side ky(a - y) is zero at y = 0 and y = a. A solution starting strictly between them has a positive rate and rises toward a, so a is the limit as t grows without bound. The reason is the sign of the rate, not a solved formula.",
+   "notation": "carrying capacity",
+   "delivery": {
+    "mode": "interactive",
+    "reason": "rule 3: the limit as t grows without bound is a process idea, and its parameter, the initial value, is discrete and chosen by the student with one stepper; BC-QA-07009 difficulty_variables names whether the initial value is above or below the carrying capacity. The curve is the process's own picture, not a representation the stem carries (BC-SKL-07041 lists no figure-bearing BC-REP)",
+    "sources": [
+     "BC-SKL-07041",
+     "BC-QA-07009"
+    ],
+    "spec": {
+     "kind": "solution_curves",
+     "representations": [
+      "BC-REP-06"
+     ],
+     "equation": "dP/dt = 2P/5 - P^2/2000",
+     "window": {
+      "t": [
+       0,
+       30
+      ],
+      "P": [
+       0,
+       1000
+      ]
+     },
+     "controls": [
+      {
+       "type": "stepper",
+       "parameter": "P(0)",
+       "values": [
+        160,
+        400,
+        640,
+        960
+       ],
+       "start": 160
+      }
+     ],
+     "drawn": [
+      "the solution curve from the chosen P(0)",
+      "the equilibrium lines P = 0 and P = 800",
+      "the sign of dP/dt at P(0)"
+     ],
+     "labels": [
+      {
+       "text": "P = 800: rate zero",
+       "placement": "inside"
+      },
+      {
+       "text": "P = 400: rate largest",
+       "placement": "inside"
+      },
+      {
+       "text": "sign of dP/dt at P(0)",
+       "placement": "inside"
+      }
+     ],
+     "question": "From each starting value, which level does the curve approach, and what does the sign of dP/dt at the start say?"
+    },
+    "fallback": "a static figure of the four solution curves from P(0) = 160, 400, 640 and 960, with P = 800 and P = 400 marked, each label inside the figure",
+    "keyboard": "Tab focuses the stepper; up and down arrow keys change P(0) through the four values; Enter reads the sign of dP/dt at P(0) and the level approached"
+   }
+  },
+  {
+   "id": "LSN-CON-07012#s3",
+   "type": "key_ideas",
+   "bands": [
+    "low",
+    "mid"
+   ],
+   "skills": [
+    "BC-SKL-07042"
+   ],
+   "sources": [
+    "BC-EK-FUN-7H4",
+    "ced:145",
+    "research/units/unit-07-differential-equations.md#7.9 Logistic Models with Differential Equations"
+   ],
+   "evidence_tag": "inferred",
+   "ek_id": "BC-EK-FUN-7H4",
+   "depth": "core",
+   "text": "As a function of y the right side is a quadratic with zeros 0 and a, so it is largest at y = a/2. The quantity changes fastest at half the carrying capacity; at a the rate is zero.",
+   "notation": "half of the carrying capacity",
+   "delivery": {
+    "mode": "text",
+    "reason": "rule 6: a quadratic's vertex; BC-REP-06, BC-REP-01 on BC-SKL-07042, and the curve on ki-1 already marks P = 400",
+    "sources": [
+     "BC-SKL-07042"
+    ]
+   }
+  },
+  {
+   "id": "LSN-CON-07012#s4",
+   "type": "key_ideas",
+   "bands": [
+    "low"
+   ],
+   "skills": [
+    "BC-SKL-07041"
+   ],
+   "sources": [
+    "BC-EK-FUN-7H2",
+    "ced:145",
+    "research/units/unit-07-differential-equations.md#7.9 Logistic Models with Differential Equations"
+   ],
+   "evidence_tag": "inferred",
+   "ek_id": "BC-EK-FUN-7H2",
+   "depth": "extended",
+   "text": "Both values come from the equation and the initial value alone. The solution also has a point of inflection at a/2.",
+   "notation": "the limit as t grows without bound",
+   "delivery": {
+    "mode": "text",
+    "reason": "rule 6: a statement about reading without solving",
+    "sources": [
+     "BC-SKL-07041"
+    ]
+   }
+  },
+  {
+   "id": "LSN-CON-07012#s5",
+   "type": "strategy",
+   "bands": [
+    "low",
+    "mid"
+   ],
+   "skills": [
+    "BC-SKL-07040",
+    "BC-SKL-07041",
+    "BC-SKL-07042"
+   ],
+   "sources": [
+    "BC-QA-07009"
+   ],
+   "evidence_tag": "verified",
+   "archetype_id": "BC-QA-07009",
+   "cue": "A logistic equation and an initial value; the stem asks for the limit, or the value when changing fastest.",
+   "method": "First written line: the zeros of the right side; then the sign, or the vertex.",
+   "rival": "Rival: separating the logistic equation with partial fractions when only the limit was asked for.",
+   "separating_feature": "Limit: zeros and sign. Fastest: vertex of the right side."
+  },
+  {
+   "id": "LSN-CON-07012#s6",
+   "type": "worked_example",
+   "bands": [
+    "low",
+    "mid"
+   ],
+   "skills": [
+    "BC-SKL-07040",
+    "BC-SKL-07041",
+    "BC-SKL-07042"
+   ],
+   "sources": [
+    "BC-QA-07009"
+   ],
+   "evidence_tag": "inferred",
+   "archetype_id": "BC-QA-07009",
+   "parameter_draw": {
+    "form": "expanded",
+    "capacity": 800,
+    "rate": "2/5",
+    "start_share": "1/5",
+    "context": "fish"
+   },
+   "problem": {
+    "text": "Fish P: dP/dt = 2P/5 - P^2/2000, P(0) = 160. Find the limit of P(t) and the value of P when it grows fastest.",
+    "command_verb": "find"
+   },
+   "calculator_status": "no_calculator",
+   "steps": [
+    {
+     "cue": "A limit: the equilibria.",
+     "why": "Zeros of the right side.",
+     "expression": [
+      "Equal",
+      [
+       "Add",
+       [
+        "Multiply",
+        [
+         "Rational",
+         -1,
+         2000
+        ],
+        [
+         "Power",
+         "P",
+         2
+        ]
+       ],
+       [
+        "Multiply",
+        [
+         "Rational",
+         2,
+         5
+        ],
+        "P"
+       ]
+      ],
+      0
+     ],
+     "relation": "new"
+    },
+    {
+     "cue": "Solve.",
+     "why": "800 is the carrying capacity.",
+     "expression": [
+      "Set",
+      0,
+      800
+     ],
+     "relation": "solve",
+     "variable": "P"
+    },
+    {
+     "cue": "P(0) = 160 is between.",
+     "why": "The sign there gives the direction.",
+     "expression": [
+      "Add",
+      [
+       "Multiply",
+       [
+        "Rational",
+        -1,
+        2000
+       ],
+       [
+        "Power",
+        "P",
+        2
+       ]
+      ],
+      [
+       "Multiply",
+       [
+        "Rational",
+        2,
+        5
+       ],
+       "P"
+      ]
+     ],
+     "relation": "new"
+    },
+    {
+     "cue": "At P = 160.",
+     "why": "Positive: P rises toward 800.",
+     "expression": [
+      "Rational",
+      256,
+      5
+     ],
+     "relation": "evaluate",
+     "subs": {
+      "P": "160"
+     }
+    },
+    {
+     "cue": "Fastest: the largest rate.",
+     "why": "Maximise the quadratic right side.",
+     "expression": [
+      "Add",
+      [
+       "Multiply",
+       [
+        "Rational",
+        -1,
+        2000
+       ],
+       [
+        "Power",
+        "P",
+        2
+       ]
+      ],
+      [
+       "Multiply",
+       [
+        "Rational",
+        2,
+        5
+       ],
+       "P"
+      ]
+     ],
+     "relation": "new"
+    },
+    {
+     "cue": "Differentiate in P.",
+     "why": "The vertex is where this is zero.",
+     "expression": [
+      "Add",
+      [
+       "Rational",
+       2,
+       5
+      ],
+      [
+       "Multiply",
+       [
+        "Rational",
+        -1,
+        1000
+       ],
+       "P"
+      ]
+     ],
+     "relation": "differentiate",
+     "variable": "P"
+    },
+    {
+     "cue": "Solve.",
+     "why": "Half of 800.",
+     "expression": 400,
+     "relation": "solve",
+     "variable": "P"
+    },
+    {
+     "cue": "Both values asked.",
+     "why": "Limit 800; fastest at 400.",
+     "expression": [
+      "Tuple",
+      800,
+      400
+     ],
+     "relation": "new"
+    }
+   ],
+   "answer": {
+    "form": "symbolic",
+    "mathjson": [
+     "Tuple",
+     800,
+     400
+    ]
+   },
+   "delivery": {
+    "mode": "step_reveal",
+    "reason": "rule 1: a worked example or an error block",
+    "sources": []
+   }
+  },
+  {
+   "id": "LSN-CON-07012#err-BC-ERR-07040",
+   "type": "common_error",
+   "bands": [
+    "low",
+    "mid"
+   ],
+   "skills": [
+    "BC-SKL-07040"
+   ],
+   "sources": [
+    "BC-ERR-07040",
+    "BC-MIS-07025"
+   ],
+   "evidence_tag": "inferred",
+   "error_id": "BC-ERR-07040",
+   "observed_behavior": "The response reports the constant of proportionality, or zero, as the carrying capacity.",
+   "scoring_consequence": "Every later value built on the capacity is wrong.",
+   "wrong_step": {
+    "text": "2/5 read as the capacity.",
+    "expression": [
+     "Rational",
+     2,
+     5
+    ]
+   },
+   "right_step": {
+    "text": "The nonzero zero.",
+    "expression": 800
+   },
+   "relation": "distinct",
+   "possible_reason": {
+    "misconception_id": "BC-MIS-07025",
+    "text": "does not read the capacity off the zeros of the right side"
+   },
+   "delivery": {
+    "mode": "step_reveal",
+    "reason": "rule 1: a worked example or an error block",
+    "sources": []
+   }
+  },
+  {
+   "id": "LSN-CON-07012#err-BC-ERR-07041",
+   "type": "common_error",
+   "bands": [
+    "low",
+    "mid"
+   ],
+   "skills": [
+    "BC-SKL-07041"
+   ],
+   "sources": [
+    "BC-ERR-07041"
+   ],
+   "evidence_tag": "inferred",
+   "error_id": "BC-ERR-07041",
+   "observed_behavior": "The response names a limit without saying why solutions move toward it from the given initial value.",
+   "scoring_consequence": "The reason point is lost even when the value is right.",
+   "wrong_step": {
+    "text": "800, no reason.",
+    "expression": 800
+   },
+   "right_step": {
+    "text": "Rate positive at 160, zero at 800.",
+    "expression": 800
+   },
+   "relation": "equivalent",
+   "delivery": {
+    "mode": "step_reveal",
+    "reason": "rule 1: a worked example or an error block",
+    "sources": []
+   }
+  },
+  {
+   "id": "LSN-CON-07012#err-BC-ERR-07042",
+   "type": "common_error",
+   "bands": [
+    "low",
+    "mid"
+   ],
+   "skills": [
+    "BC-SKL-07042"
+   ],
+   "sources": [
+    "BC-ERR-07042",
+    "BC-MIS-07027"
+   ],
+   "evidence_tag": "inferred",
+   "error_id": "BC-ERR-07042",
+   "observed_behavior": "The response says the quantity changes fastest when it reaches its ceiling.",
+   "scoring_consequence": "The value is wrong, and it contradicts the equation the response itself wrote.",
+   "wrong_step": {
+    "text": "Fastest at 800.",
+    "expression": 800
+   },
+   "right_step": {
+    "text": "Fastest at 400.",
+    "expression": 400
+   },
+   "relation": "distinct",
+   "possible_reason": {
+    "misconception_id": "BC-MIS-07027",
+    "text": "equates the largest value of the quantity with the largest value of its rate"
+   },
+   "delivery": {
+    "mode": "step_reveal",
+    "reason": "rule 1: a worked example or an error block",
+    "sources": []
+   }
+  },
+  {
+   "id": "LSN-CON-07012#err-BC-ERR-07044",
+   "type": "common_error",
+   "bands": [
+    "low",
+    "mid"
+   ],
+   "skills": [
+    "BC-SKL-07041"
+   ],
+   "sources": [
+    "BC-ERR-07044",
+    "BC-MIS-07025"
+   ],
+   "evidence_tag": "inferred",
+   "error_id": "BC-ERR-07044",
+   "observed_behavior": "The response separates the logistic equation with partial fractions and solves it in order to report a limit the equation gives directly.",
+   "scoring_consequence": "Time is spent on work the question did not ask for, and an error inside it costs the value that the equation alone would have given.",
+   "wrong_step": {
+    "text": "The solved formula first.",
+    "expression": [
+     "Multiply",
+     800,
+     [
+      "Power",
+      [
+       "Add",
+       1,
+       [
+        "Multiply",
+        4,
+        [
+         "Exp",
+         [
+          "Multiply",
+          [
+           "Rational",
+           -2,
+           5
+          ],
+          "t"
+         ]
+        ]
+       ]
+      ],
+      -1
+     ]
+    ]
+   },
+   "right_step": {
+    "text": "Zeros and sign.",
+    "expression": 800
+   },
+   "relation": "distinct",
+   "possible_reason": {
+    "misconception_id": "BC-MIS-07025",
+    "text": "reaches for partial fractions instead"
+   },
+   "delivery": {
+    "mode": "step_reveal",
+    "reason": "rule 1: a worked example or an error block",
+    "sources": []
+   }
+  },
+  {
+   "id": "LSN-CON-07012#prq-BC-PRQ-05001",
+   "type": "prerequisite_bridge",
+   "bands": [
+    "low",
+    "mid"
+   ],
+   "skills": [
+    "BC-SKL-07040"
+   ],
+   "sources": [
+    "BC-PRQ-05001"
+   ],
+   "evidence_tag": "inferred",
+   "prerequisite_id": "BC-PRQ-05001",
+   "text": "Setting a factored expression equal to zero lists its zeros; without it, no equilibrium appears."
+  }
+ ],
+ "checks": [
+  {
+   "id": "LSN-CON-07012#chk-1",
+   "check_kind": "completion",
+   "bands": [
+    "low",
+    "mid"
+   ],
+   "format": "short_answer",
+   "archetype_id": "BC-QA-07009",
+   "parameter_draw": {
+    "form": "expanded",
+    "capacity": 800,
+    "rate": "2/5",
+    "start_share": "1/5",
+    "context": "fish"
+   },
+   "completes": "LSN-CON-07012#s6",
+   "stem": {
+    "text": "dP/dt = 2P/5 - P^2/2000, P(0) = 160; the limit is 800. Find P when fastest; give (limit, fastest).",
+    "command_verb": "find"
+   },
+   "answer_key": {
+    "form": "symbolic",
+    "mathjson": [
+     "Tuple",
+     800,
+     400
+    ]
+   },
+   "worked_solution": [
+    {
+     "step": 1,
+     "text": "The right side.",
+     "mathjson": [
+      "Add",
+      [
+       "Multiply",
+       [
+        "Rational",
+        -1,
+        2000
+       ],
+       [
+        "Power",
+        "P",
+        2
+       ]
+      ],
+      [
+       "Multiply",
+       [
+        "Rational",
+        2,
+        5
+       ],
+       "P"
+      ]
+     ],
+     "relation": "new"
+    },
+    {
+     "step": 2,
+     "text": "Its derivative in P.",
+     "mathjson": [
+      "Add",
+      [
+       "Rational",
+       2,
+       5
+      ],
+      [
+       "Multiply",
+       [
+        "Rational",
+        -1,
+        1000
+       ],
+       "P"
+      ]
+     ],
+     "relation": "differentiate",
+     "variable": "P"
+    },
+    {
+     "step": 3,
+     "text": "Vertex.",
+     "mathjson": 400,
+     "relation": "solve",
+     "variable": "P"
+    },
+    {
+     "step": 4,
+     "text": "Both values.",
+     "mathjson": [
+      "Tuple",
+      800,
+      400
+     ],
+     "relation": "new"
+    }
+   ],
+   "calculator_status": "no_calculator",
+   "representation": "BC-REP-06",
+   "skills": [
+    "BC-SKL-07042"
+   ]
+  },
+  {
+   "id": "LSN-CON-07012#chk-2",
+   "check_kind": "isomorph",
+   "bands": [
+    "low",
+    "mid"
+   ],
+   "format": "short_answer",
+   "archetype_id": "BC-QA-07009",
+   "parameter_draw": {
+    "form": "factored",
+    "capacity": 1200,
+    "rate": "1/3",
+    "start_share": "1/4",
+    "context": "app"
+   },
+   "stem": {
+    "text": "App users: dA/dt = (A/3)(1 - A/1200), A(0) = 300. Give (limit, value when fastest).",
+    "command_verb": "find"
+   },
+   "answer_key": {
+    "form": "symbolic",
+    "mathjson": [
+     "Tuple",
+     1200,
+     600
+    ]
+   },
+   "worked_solution": [
+    {
+     "step": 1,
+     "text": "Zeros.",
+     "mathjson": [
+      "Equal",
+      [
+       "Multiply",
+       [
+        "Rational",
+        1,
+        3
+       ],
+       "A",
+       [
+        "Add",
+        1,
+        [
+         "Multiply",
+         [
+          "Rational",
+          -1,
+          1200
+         ],
+         "A"
+        ]
+       ]
+      ],
+      0
+     ],
+     "relation": "new"
+    },
+    {
+     "step": 2,
+     "text": "0 and 1200.",
+     "mathjson": [
+      "Set",
+      0,
+      1200
+     ],
+     "relation": "solve",
+     "variable": "A"
+    },
+    {
+     "step": 3,
+     "text": "Right side.",
+     "mathjson": [
+      "Multiply",
+      [
+       "Rational",
+       1,
+       3
+      ],
+      "A",
+      [
+       "Add",
+       1,
+       [
+        "Multiply",
+        [
+         "Rational",
+         -1,
+         1200
+        ],
+        "A"
+       ]
+      ]
+     ],
+     "relation": "new"
+    },
+    {
+     "step": 4,
+     "text": "Derivative.",
+     "mathjson": [
+      "Add",
+      [
+       "Rational",
+       1,
+       3
+      ],
+      [
+       "Multiply",
+       [
+        "Rational",
+        -1,
+        1800
+       ],
+       "A"
+      ]
+     ],
+     "relation": "differentiate",
+     "variable": "A"
+    },
+    {
+     "step": 5,
+     "text": "Vertex.",
+     "mathjson": 600,
+     "relation": "solve",
+     "variable": "A"
+    },
+    {
+     "step": 6,
+     "text": "Both.",
+     "mathjson": [
+      "Tuple",
+      1200,
+      600
+     ],
+     "relation": "new"
+    }
+   ],
+   "calculator_status": "no_calculator",
+   "representation": "BC-REP-06",
+   "skills": [
+    "BC-SKL-07041",
+    "BC-SKL-07042"
+   ]
+  },
+  {
+   "id": "LSN-CON-07012#chk-3",
+   "check_kind": "mcq",
+   "bands": [
+    "low"
+   ],
+   "format": "mcq",
+   "archetype_id": "BC-QA-07009",
+   "parameter_draw": {
+    "form": "factored",
+    "capacity": 1000,
+    "rate": "1/5",
+    "start_share": "1/10",
+    "context": "fish"
+   },
+   "stem": {
+    "text": "dF/dt = (F/5)(1 - F/1000), F(0) = 100. At what F is the fish population growing fastest?",
+    "command_verb": "identify"
+   },
+   "answer_key": {
+    "form": "numeric",
+    "mathjson": 500
+   },
+   "worked_solution": [
+    {
+     "step": 1,
+     "text": "Right side.",
+     "mathjson": [
+      "Multiply",
+      [
+       "Rational",
+       1,
+       5
+      ],
+      "F",
+      [
+       "Add",
+       1,
+       [
+        "Multiply",
+        [
+         "Rational",
+         -1,
+         1000
+        ],
+        "F"
+       ]
+      ]
+     ],
+     "relation": "new"
+    },
+    {
+     "step": 2,
+     "text": "Derivative.",
+     "mathjson": [
+      "Add",
+      [
+       "Rational",
+       1,
+       5
+      ],
+      [
+       "Multiply",
+       [
+        "Rational",
+        -1,
+        2500
+       ],
+       "F"
+      ]
+     ],
+     "relation": "differentiate",
+     "variable": "F"
+    },
+    {
+     "step": 3,
+     "text": "Vertex.",
+     "mathjson": 500,
+     "relation": "solve",
+     "variable": "F"
+    }
+   ],
+   "options": [
+    {
+     "id": "A",
+     "is_key": false,
+     "error_path": "BC-ERR-07042",
+     "value": 1000,
+     "derivation": "fastest placed at the ceiling"
+    },
+    {
+     "id": "B",
+     "is_key": true,
+     "error_path": null,
+     "value": 500
+    },
+    {
+     "id": "C",
+     "is_key": false,
+     "error_path": "BC-ERR-07040",
+     "value": [
+      "Rational",
+      1,
+      10
+     ],
+     "derivation": "the constant 1/5 read as the capacity, then halved"
+    },
+    {
+     "id": "D",
+     "is_key": false,
+     "error_path": "BC-ERR-07040",
+     "value": 0,
+     "derivation": "zero read as the capacity, then halved"
+    }
+   ],
+   "calculator_status": "no_calculator",
+   "representation": "BC-REP-06",
+   "skills": [
+    "BC-SKL-07042"
+   ]
+  }
+ ],
+ "refresher": [
+  "LSN-CON-07012#s2",
+  "LSN-CON-07012#s3",
+  "LSN-CON-07012#err-BC-ERR-07040",
+  "LSN-CON-07012#err-BC-ERR-07041",
+  "LSN-CON-07012#err-BC-ERR-07042",
+  "LSN-CON-07012#err-BC-ERR-07044",
+  "LSN-CON-07012#s6"
+ ],
+ "provenance": {
+  "author": "tools/lesson_transcribe.py",
+  "prompt_version": "generator/lesson_v1",
+  "design_path": "docs/lessons/unit-07/LSN-CON-07012.md",
+  "signed_off_by": "claude-opus-5-5",
+  "signed_off_at": "2026-09-29",
+  "not_human": true
+ }
+}

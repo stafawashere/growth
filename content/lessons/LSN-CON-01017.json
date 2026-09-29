@@ -1,0 +1,1285 @@
+{
+ "id": "LSN-CON-01017",
+ "version": 1,
+ "kind": "concept",
+ "target_id": "BC-CON-01017",
+ "status": "signed_off",
+ "snapshot_digest": "a6a8ec9d3f59ab8f712e33d30cc22fc64bf2c478fbe7312e3e3118d319c6a42f",
+ "source_digest": "66d8a054b3e6d322d30c8204f99dabf5ceab49116ad5285dafae737d0f194417",
+ "read_minutes": {
+  "full": 5.0,
+  "brief": 3.0
+ },
+ "word_count": {
+  "full": 711,
+  "brief": 416
+ },
+ "sections": [
+  {
+   "id": "LSN-CON-01017#s1",
+   "type": "orientation",
+   "bands": [
+    "low",
+    "mid"
+   ],
+   "skills": [
+    "BC-SKL-01058",
+    "BC-SKL-01059",
+    "BC-SKL-01060",
+    "BC-SKL-01061",
+    "BC-SKL-01063"
+   ],
+   "sources": [
+    "BC-CON-01017",
+    "research/units/unit-01-limits-continuity.md#1.15 Connecting Limits at Infinity and Horizontal Asymptotes"
+   ],
+   "evidence_tag": "inferred",
+   "text": "A response writes the limit with the variable growing without bound, for the function the stem names, then its value. A finite value is a horizontal asymptote.",
+   "delivery": {
+    "mode": "figure",
+    "reason": "rule 3: BC-REP-02 on BC-SKL-01059 and BC-SKL-01063",
+    "sources": [
+     "BC-SKL-01059",
+     "BC-SKL-01063"
+    ],
+    "spec": {
+     "kind": "graph",
+     "window": {
+      "x": [
+       -20,
+       20
+      ],
+      "y": [
+       -3,
+       3
+      ]
+     },
+     "curves": [
+      {
+       "expr": "sqrt(4*x**2+5)/(3*x+1)",
+       "domain": [
+        -20,
+        20
+       ],
+       "break_at": [
+        -0.3333
+       ]
+      }
+     ],
+     "asymptotes": [
+      {
+       "type": "horizontal",
+       "y": "2/3",
+       "style": "dashed"
+      },
+      {
+       "type": "horizontal",
+       "y": "-2/3",
+       "style": "dashed"
+      }
+     ],
+     "labels": [
+      {
+       "text": "y = 2/3 as x grows",
+       "placement": "inside"
+      },
+      {
+       "text": "y = -2/3 as x falls",
+       "placement": "inside"
+      }
+     ],
+     "representations": [
+      "BC-REP-02"
+     ]
+    },
+    "fallback": "the same graph as a static image with its two labels",
+    "keyboard": "none needed: the figure has no control"
+   }
+  },
+  {
+   "id": "LSN-CON-01017#s2",
+   "type": "key_ideas",
+   "bands": [
+    "low",
+    "mid"
+   ],
+   "skills": [
+    "BC-SKL-01058",
+    "BC-SKL-01059",
+    "BC-SKL-01061",
+    "BC-SKL-01063"
+   ],
+   "sources": [
+    "BC-EK-LIM-2D3",
+    "ced:52",
+    "research/units/unit-01-limits-continuity.md#1.15 Connecting Limits at Infinity and Horizontal Asymptotes"
+   ],
+   "evidence_tag": "verified",
+   "ek_id": "BC-EK-LIM-2D3",
+   "depth": "core",
+   "text": "Divide by the dominant power (BC-EK-LIM-2D3, ced:52). Under a square root it carries the sign of the end: \\(\\sqrt{x^2}=|x|\\), which is \\(-x\\) as \\(x\\to-\\infty\\).",
+   "notation": "horizontal asymptote; end behaviour",
+   "quote": {
+    "text": "The concept of a limit can be extended to include limits at infinity.",
+    "source": "ced:52"
+   },
+   "delivery": {
+    "mode": "motion",
+    "reason": "rule 2: a limit process, the window widening toward negative infinity; rule 3, BC-REP-02 on BC-SKL-01063",
+    "sources": [
+     "BC-SKL-01061",
+     "BC-SKL-01063"
+    ],
+    "spec": {
+     "kind": "graph",
+     "curves": [
+      {
+       "expr": "sqrt(4*x**2+5)/(3*x+1)"
+      }
+     ],
+     "frames": [
+      {
+       "window": {
+        "x": [
+         -10,
+         0
+        ],
+        "y": [
+         -2,
+         1
+        ]
+       }
+      },
+      {
+       "window": {
+        "x": [
+         -100,
+         0
+        ],
+        "y": [
+         -2,
+         1
+        ]
+       }
+      },
+      {
+       "window": {
+        "x": [
+         -1000,
+         0
+        ],
+        "y": [
+         -2,
+         1
+        ]
+       }
+      }
+     ],
+     "asymptotes": [
+      {
+       "type": "horizontal",
+       "y": "-2/3",
+       "style": "dashed"
+      }
+     ],
+     "labels": [
+      {
+       "text": "y = -2/3",
+       "placement": "inside"
+      },
+      {
+       "text": "sqrt(x^2) = -x here",
+       "placement": "inside"
+      }
+     ],
+     "representations": [
+      "BC-REP-02"
+     ]
+    },
+    "fallback": "the three windows side by side as static images",
+    "keyboard": "Right arrow steps to the next window, Left arrow to the previous; Space pauses auto-advance",
+    "reduced_motion": "no auto-advance; each key press cross-fades to the next window"
+   }
+  },
+  {
+   "id": "LSN-CON-01017#s3",
+   "type": "key_ideas",
+   "bands": [
+    "low",
+    "mid"
+   ],
+   "skills": [
+    "BC-SKL-01058",
+    "BC-SKL-01059",
+    "BC-SKL-01060",
+    "BC-SKL-01063"
+   ],
+   "sources": [
+    "BC-EK-LIM-2D4",
+    "ced:52",
+    "research/units/unit-01-limits-continuity.md#1.15 Connecting Limits at Infinity and Horizontal Asymptotes"
+   ],
+   "evidence_tag": "verified",
+   "ek_id": "BC-EK-LIM-2D4",
+   "depth": "core",
+   "text": "A finite limit \\(L\\) at either end gives the horizontal asymptote \\(y=L\\) (BC-EK-LIM-2D4, ced:52). Each end is checked on its own.",
+   "quote": {
+    "text": "Limits at infinity describe end behavior.",
+    "source": "ced:52"
+   },
+   "delivery": {
+    "mode": "figure",
+    "reason": "rule 3: BC-REP-02 on BC-SKL-01059",
+    "sources": [
+     "BC-SKL-01059"
+    ],
+    "spec": {
+     "kind": "graph",
+     "window": {
+      "x": [
+       -20,
+       20
+      ],
+      "y": [
+       -3,
+       3
+      ]
+     },
+     "curves": [
+      {
+       "expr": "sqrt(4*x**2+5)/(3*x+1)",
+       "domain": [
+        -20,
+        20
+       ],
+       "break_at": [
+        -0.3333
+       ]
+      }
+     ],
+     "asymptotes": [
+      {
+       "type": "horizontal",
+       "y": "2/3",
+       "style": "dashed"
+      },
+      {
+       "type": "horizontal",
+       "y": "-2/3",
+       "style": "dashed"
+      }
+     ],
+     "labels": [
+      {
+       "text": "right end",
+       "placement": "inside"
+      },
+      {
+       "text": "left end",
+       "placement": "inside"
+      }
+     ],
+     "representations": [
+      "BC-REP-02"
+     ]
+    },
+    "fallback": "the same graph as a static image with its two labels",
+    "keyboard": "none needed: the figure has no control"
+   }
+  },
+  {
+   "id": "LSN-CON-01017#s4",
+   "type": "strategy",
+   "bands": [
+    "low",
+    "mid"
+   ],
+   "skills": [
+    "BC-SKL-01058",
+    "BC-SKL-01059",
+    "BC-SKL-01060",
+    "BC-SKL-01061",
+    "BC-SKL-01063"
+   ],
+   "sources": [
+    "BC-QA-01010"
+   ],
+   "evidence_tag": "verified",
+   "archetype_id": "BC-QA-01010",
+   "cue": "A model or rule, and the stem asks for a limit expression for long run behaviour and its value.",
+   "method": "First written line: the limit of the named function as the variable grows without bound.",
+   "rival": "Substituting infinity into the expression as a number (BC-ERR-01021).",
+   "separating_feature": "Infinity sits under the arrow, never inside the expression."
+  },
+  {
+   "id": "LSN-CON-01017#s5",
+   "type": "worked_example",
+   "bands": [
+    "low",
+    "mid"
+   ],
+   "skills": [
+    "BC-SKL-01058",
+    "BC-SKL-01059",
+    "BC-SKL-01060",
+    "BC-SKL-01061",
+    "BC-SKL-01063"
+   ],
+   "sources": [
+    "BC-QA-01010"
+   ],
+   "evidence_tag": "inferred",
+   "archetype_id": "BC-QA-01010",
+   "parameter_draw": {
+    "root_coef": "2",
+    "linear_coef": "3",
+    "linear_const": "1",
+    "inner_const": "5",
+    "radical_place": "numerator"
+   },
+   "problem": {
+    "text": "Find \\(\\lim_{x\\to-\\infty}\\frac{\\sqrt{4x^2+5}}{3x+1}\\).",
+    "command_verb": "find"
+   },
+   "calculator_status": "no_calculator",
+   "steps": [
+    {
+     "cue": "The arrow points to \\(-\\infty\\).",
+     "why": "The limit is written first; it is the expression point.",
+     "expression": [
+      "Multiply",
+      [
+       "Power",
+       [
+        "Add",
+        1,
+        [
+         "Multiply",
+         3,
+         "x"
+        ]
+       ],
+       -1
+      ],
+      [
+       "Power",
+       [
+        "Add",
+        5,
+        [
+         "Multiply",
+         4,
+         [
+          "Power",
+          "x",
+          2
+         ]
+        ]
+       ],
+       [
+        "Rational",
+        1,
+        2
+       ]
+      ]
+     ],
+     "point_type_id": "BC-PT-99054",
+     "relation": "new"
+    },
+    {
+     "cue": "The dominant power is \\(x\\); under the root it is \\(|x|\\).",
+     "why": "\\(\\sqrt{x^2}=|x|\\).",
+     "expression": [
+      "Multiply",
+      [
+       "Power",
+       "x",
+       -1
+      ],
+      [
+       "Power",
+       [
+        "Add",
+        3,
+        [
+         "Power",
+         "x",
+         -1
+        ]
+       ],
+       -1
+      ],
+      [
+       "Power",
+       [
+        "Add",
+        4,
+        [
+         "Multiply",
+         5,
+         [
+          "Power",
+          "x",
+          -2
+         ]
+        ]
+       ],
+       [
+        "Rational",
+        1,
+        2
+       ]
+      ],
+      [
+       "Abs",
+       "x"
+      ]
+     ],
+     "relation": "equivalent"
+    },
+    {
+     "cue": "\\(x<0\\), so \\(\\frac{|x|}{x}=-1\\).",
+     "why": "The \\(\\frac1x\\) terms vanish: \\(-\\frac23\\).",
+     "expression": [
+      "Rational",
+      -2,
+      3
+     ],
+     "point_type_id": "BC-PT-99004",
+     "relation": "limit",
+     "variable": "x",
+     "point": "-oo"
+    }
+   ],
+   "answer": {
+    "form": "numeric",
+    "mathjson": [
+     "Rational",
+     -2,
+     3
+    ]
+   },
+   "delivery": {
+    "mode": "step_reveal",
+    "reason": "rule 1",
+    "sources": []
+   }
+  },
+  {
+   "id": "LSN-CON-01017#s6",
+   "type": "worked_example",
+   "bands": [
+    "low"
+   ],
+   "skills": [
+    "BC-SKL-01058",
+    "BC-SKL-01059",
+    "BC-SKL-01060",
+    "BC-SKL-01061",
+    "BC-SKL-01063"
+   ],
+   "sources": [
+    "BC-QA-01010"
+   ],
+   "evidence_tag": "inferred",
+   "archetype_id": "BC-QA-01010",
+   "parameter_draw": {
+    "context": "amount_and_rate",
+    "amount": "6*t/(2*t+1)",
+    "subject": "rate"
+   },
+   "problem": {
+    "text": "An amount is \\(A(t)=\\frac{6t}{2t+1}\\). Write a limit expression for the long run rate of change of \\(A\\) and evaluate it.",
+    "command_verb": "write"
+   },
+   "calculator_status": "no_calculator",
+   "steps": [
+    {
+     "cue": "\"Rate of change of \\(A\\)\" names \\(A'\\).",
+     "why": "The value point goes to the rate's limit only.",
+     "expression": [
+      "Multiply",
+      6,
+      "t",
+      [
+       "Power",
+       [
+        "Add",
+        1,
+        [
+         "Multiply",
+         2,
+         "t"
+        ]
+       ],
+       -1
+      ]
+     ],
+     "relation": "new"
+    },
+    {
+     "cue": "Quotient rule on \\(A\\).",
+     "why": "The limit is written on this.",
+     "expression": [
+      "Multiply",
+      6,
+      [
+       "Power",
+       [
+        "Add",
+        1,
+        [
+         "Multiply",
+         2,
+         "t"
+        ]
+       ],
+       -2
+      ]
+     ],
+     "point_type_id": "BC-PT-99054",
+     "relation": "differentiate",
+     "variable": "t"
+    },
+    {
+     "cue": "Denominator grows without bound.",
+     "why": "The rate tends to 0.",
+     "expression": 0,
+     "point_type_id": "BC-PT-99004",
+     "relation": "limit",
+     "variable": "t",
+     "point": "oo"
+    }
+   ],
+   "answer": {
+    "form": "numeric",
+    "mathjson": 0
+   },
+   "delivery": {
+    "mode": "step_reveal",
+    "reason": "rule 1",
+    "sources": []
+   }
+  },
+  {
+   "id": "LSN-CON-01017#s7",
+   "type": "what_a_reader_scores",
+   "bands": [
+    "low",
+    "mid"
+   ],
+   "skills": [
+    "BC-SKL-01058",
+    "BC-SKL-01059",
+    "BC-SKL-01060",
+    "BC-SKL-01061",
+    "BC-SKL-01063"
+   ],
+   "sources": [
+    "BC-PT-99054",
+    "BC-PT-99004"
+   ],
+   "evidence_tag": "verified",
+   "example_id": "LSN-CON-01017#s5",
+   "lines": [
+    {
+     "point_type_id": "BC-PT-99054",
+     "text": "Limit expression for end behaviour. Earned by: Writing the requested limit symbolically as the variable tends to infinity, for either the function or its derivative (sg-25:4). Not earned by: Setting up the limit so the variable tends to zero (crabbc-25:3); arithmetic with infinity in place of the value, which sg-25:4 treats as scratch work."
+    },
+    {
+     "point_type_id": "BC-PT-99004",
+     "text": "Answer with or without supporting work. Earned by: The correct value on its own, with no supporting work required (sg-25:3, sg-26:4). Not earned by: A value outside the accepted precision, or a value inconsistent with a required earlier step where the rubric imposes one. Precision: A reported decimal answer must be accurate to three places after the decimal point, rounded or truncated; at most one point per question is lost to inappropriate rounding (sg-25:2, sg-26:2). sg-26:4 also accepts a stated rounding to the nearest integer and several truncations."
+    }
+   ]
+  },
+  {
+   "id": "LSN-CON-01017#s8",
+   "type": "what_a_reader_scores",
+   "bands": [
+    "low"
+   ],
+   "skills": [
+    "BC-SKL-01058",
+    "BC-SKL-01059",
+    "BC-SKL-01060",
+    "BC-SKL-01061",
+    "BC-SKL-01063"
+   ],
+   "sources": [
+    "BC-PT-99054",
+    "BC-PT-99004"
+   ],
+   "evidence_tag": "verified",
+   "example_id": "LSN-CON-01017#s6",
+   "lines": [
+    {
+     "point_type_id": "BC-PT-99054",
+     "text": "Limit expression for end behaviour. Earned by: Writing the requested limit symbolically as the variable tends to infinity, for either the function or its derivative (sg-25:4). Not earned by: Setting up the limit so the variable tends to zero (crabbc-25:3); arithmetic with infinity in place of the value, which sg-25:4 treats as scratch work."
+    },
+    {
+     "point_type_id": "BC-PT-99004",
+     "text": "Answer with or without supporting work. Earned by: The correct value on its own, with no supporting work required (sg-25:3, sg-26:4). Not earned by: A value outside the accepted precision, or a value inconsistent with a required earlier step where the rubric imposes one. Precision: A reported decimal answer must be accurate to three places after the decimal point, rounded or truncated; at most one point per question is lost to inappropriate rounding (sg-25:2, sg-26:2). sg-26:4 also accepts a stated rounding to the nearest integer and several truncations."
+    }
+   ]
+  },
+  {
+   "id": "LSN-CON-01017#err-BC-ERR-01022",
+   "type": "common_error",
+   "bands": [
+    "low",
+    "mid"
+   ],
+   "skills": [
+    "BC-SKL-01060"
+   ],
+   "sources": [
+    "BC-ERR-01022",
+    "BC-MIS-01014"
+   ],
+   "evidence_tag": "inferred",
+   "error_id": "BC-ERR-01022",
+   "observed_behavior": "The response writes the end behaviour limit of the modelled quantity rather than of its rate of change.",
+   "scoring_consequence": "The expression point may still be earned, but a response presenting the limit of the amount is not eligible for the value point (sg-25:4).",
+   "wrong_step": {
+    "text": "\\(\\lim_{t\\to\\infty}A(t)=3\\).",
+    "expression": 3
+   },
+   "right_step": {
+    "text": "\\(\\lim_{t\\to\\infty}A'(t)=0\\).",
+    "expression": 0
+   },
+   "relation": "distinct",
+   "possible_reason": {
+    "misconception_id": "BC-MIS-01014",
+    "text": "treats a statement about the long run rate as a statement about the long run amount"
+   },
+   "delivery": {
+    "mode": "step_reveal",
+    "reason": "rule 1",
+    "sources": []
+   }
+  },
+  {
+   "id": "LSN-CON-01017#err-BC-ERR-01023",
+   "type": "common_error",
+   "bands": [
+    "low",
+    "mid"
+   ],
+   "skills": [
+    "BC-SKL-01058",
+    "BC-SKL-01059"
+   ],
+   "sources": [
+    "BC-ERR-01023"
+   ],
+   "evidence_tag": "inferred",
+   "error_id": "BC-ERR-01023",
+   "observed_behavior": "The response reports the ratio of the leading coefficients as the limit at infinity although the degrees differ.",
+   "scoring_consequence": "The value point is lost.",
+   "wrong_step": {
+    "text": "\\(\\frac43\\) from 4 and 3.",
+    "expression": [
+     "Rational",
+     4,
+     3
+    ]
+   },
+   "right_step": {
+    "text": "\\(\\sqrt{4x^2}=2|x|\\): \\(-\\frac23\\).",
+    "expression": [
+     "Rational",
+     -2,
+     3
+    ]
+   },
+   "relation": "distinct",
+   "delivery": {
+    "mode": "step_reveal",
+    "reason": "rule 1",
+    "sources": []
+   }
+  },
+  {
+   "id": "LSN-CON-01017#err-BC-ERR-01033",
+   "type": "common_error",
+   "bands": [
+    "low",
+    "mid"
+   ],
+   "skills": [
+    "BC-SKL-01059"
+   ],
+   "sources": [
+    "BC-ERR-01033",
+    "BC-MIS-01018"
+   ],
+   "evidence_tag": "inferred",
+   "error_id": "BC-ERR-01033",
+   "observed_behavior": "The response treats a vertical asymptote statement as an end behaviour statement or the reverse.",
+   "scoring_consequence": "The conversion point is lost.",
+   "wrong_step": {
+    "text": "End behaviour given as \\(x=-\\frac13\\).",
+    "expression": [
+     "Equal",
+     "x",
+     [
+      "Rational",
+      -1,
+      3
+     ]
+    ]
+   },
+   "right_step": {
+    "text": "End behaviour \\(y=-\\frac23\\).",
+    "expression": [
+     "Equal",
+     "y",
+     [
+      "Rational",
+      -2,
+      3
+     ]
+    ]
+   },
+   "relation": "distinct",
+   "possible_reason": {
+    "misconception_id": "BC-MIS-01018",
+    "text": "does not separate a limit whose value is infinite from a limit taken as the variable grows without bound"
+   },
+   "delivery": {
+    "mode": "step_reveal",
+    "reason": "rule 1",
+    "sources": []
+   }
+  },
+  {
+   "id": "LSN-CON-01017#err-BC-ERR-01021",
+   "type": "common_error",
+   "bands": [
+    "low",
+    "mid"
+   ],
+   "skills": [
+    "BC-SKL-01058",
+    "BC-SKL-01060",
+    "BC-SKL-01061"
+   ],
+   "sources": [
+    "BC-ERR-01021",
+    "BC-MIS-99008"
+   ],
+   "evidence_tag": "inferred",
+   "error_id": "BC-ERR-01021",
+   "observed_behavior": "The response substitutes the infinity symbol into the expression and performs arithmetic with it.",
+   "scoring_consequence": "Arithmetic performed with the infinity symbol is treated as scratch work and does not earn the value point (sg-25:4).",
+   "wrong_step": {
+    "text": "\\(\\frac{\\sqrt{4\\cdot\\infty^2+5}}{3\\cdot\\infty+1}\\).",
+    "expression": "NaN"
+   },
+   "right_step": {
+    "text": "The \\(|x|\\) form, then \\(-\\frac23\\).",
+    "expression": [
+     "Rational",
+     -2,
+     3
+    ]
+   },
+   "relation": "distinct",
+   "possible_reason": {
+    "misconception_id": "BC-MIS-99008",
+    "text": "substitutes the infinity symbol for the variable and computes with the result"
+   },
+   "delivery": {
+    "mode": "step_reveal",
+    "reason": "rule 1",
+    "sources": []
+   }
+  },
+  {
+   "id": "LSN-CON-01017#prq-BC-PRQ-01004",
+   "type": "prerequisite_bridge",
+   "bands": [
+    "low",
+    "mid"
+   ],
+   "skills": [
+    "BC-SKL-01058",
+    "BC-SKL-01059",
+    "BC-SKL-01061",
+    "BC-SKL-01063"
+   ],
+   "sources": [
+    "BC-PRQ-01004"
+   ],
+   "evidence_tag": "inferred",
+   "prerequisite_id": "BC-PRQ-01004",
+   "text": "Compare numerator and denominator degrees for large inputs. The slip: computing values instead."
+  },
+  {
+   "id": "LSN-CON-01017#prq-BC-PRQ-06005",
+   "type": "prerequisite_bridge",
+   "bands": [
+    "low",
+    "mid"
+   ],
+   "skills": [
+    "BC-SKL-01060"
+   ],
+   "sources": [
+    "BC-PRQ-06005"
+   ],
+   "evidence_tag": "inferred",
+   "prerequisite_id": "BC-PRQ-06005",
+   "text": "\\(A\\) and \\(A'\\) are different functions. The slip: \\(f\\) and \\(f'\\) interchanged."
+  }
+ ],
+ "checks": [
+  {
+   "id": "LSN-CON-01017#chk-1",
+   "check_kind": "completion",
+   "bands": [
+    "low",
+    "mid"
+   ],
+   "format": "short_answer",
+   "archetype_id": "BC-QA-01010",
+   "parameter_draw": {
+    "root_coef": "2",
+    "linear_coef": "3",
+    "linear_const": "1",
+    "inner_const": "5",
+    "radical_place": "numerator"
+   },
+   "completes": "LSN-CON-01017#s5",
+   "stem": {
+    "text": "\\(\\frac{\\sqrt{4x^2+5}}{3x+1}=\\frac{|x|\\sqrt{4+5/x^2}}{x(3+1/x)}\\). Evaluate the limit as \\(x\\to-\\infty\\).",
+    "command_verb": "evaluate"
+   },
+   "answer_key": {
+    "form": "numeric",
+    "mathjson": [
+     "Rational",
+     -2,
+     3
+    ]
+   },
+   "worked_solution": [
+    {
+     "step": 1,
+     "text": "The \\(|x|\\) form.",
+     "mathjson": [
+      "Multiply",
+      [
+       "Power",
+       "x",
+       -1
+      ],
+      [
+       "Power",
+       [
+        "Add",
+        3,
+        [
+         "Power",
+         "x",
+         -1
+        ]
+       ],
+       -1
+      ],
+      [
+       "Power",
+       [
+        "Add",
+        4,
+        [
+         "Multiply",
+         5,
+         [
+          "Power",
+          "x",
+          -2
+         ]
+        ]
+       ],
+       [
+        "Rational",
+        1,
+        2
+       ]
+      ],
+      [
+       "Abs",
+       "x"
+      ]
+     ],
+     "relation": "new"
+    },
+    {
+     "step": 2,
+     "text": "\\(\\frac{|x|}{x}=-1\\).",
+     "mathjson": [
+      "Rational",
+      -2,
+      3
+     ],
+     "relation": "limit",
+     "variable": "x",
+     "point": "-oo"
+    }
+   ],
+   "calculator_status": "no_calculator",
+   "representation": "BC-REP-01",
+   "skills": [
+    "BC-SKL-01061",
+    "BC-SKL-01063"
+   ]
+  },
+  {
+   "id": "LSN-CON-01017#chk-2",
+   "check_kind": "isomorph",
+   "bands": [
+    "low",
+    "mid"
+   ],
+   "format": "short_answer",
+   "archetype_id": "BC-QA-01010",
+   "parameter_draw": {
+    "root_coef": "3",
+    "linear_coef": "4",
+    "linear_const": "-1",
+    "inner_const": "7",
+    "radical_place": "denominator"
+   },
+   "stem": {
+    "text": "Find \\(\\lim_{x\\to-\\infty}\\frac{4x-1}{\\sqrt{9x^2+7}}\\).",
+    "command_verb": "find"
+   },
+   "answer_key": {
+    "form": "numeric",
+    "mathjson": [
+     "Rational",
+     -4,
+     3
+    ]
+   },
+   "worked_solution": [
+    {
+     "step": 1,
+     "text": "The limit.",
+     "mathjson": [
+      "Multiply",
+      [
+       "Power",
+       [
+        "Add",
+        7,
+        [
+         "Multiply",
+         9,
+         [
+          "Power",
+          "x",
+          2
+         ]
+        ]
+       ],
+       [
+        "Rational",
+        -1,
+        2
+       ]
+      ],
+      [
+       "Add",
+       -1,
+       [
+        "Multiply",
+        4,
+        "x"
+       ]
+      ]
+     ],
+     "relation": "new"
+    },
+    {
+     "step": 2,
+     "text": "Factor out \\(x\\) and \\(|x|\\).",
+     "mathjson": [
+      "Multiply",
+      "x",
+      [
+       "Power",
+       [
+        "Add",
+        9,
+        [
+         "Multiply",
+         7,
+         [
+          "Power",
+          "x",
+          -2
+         ]
+        ]
+       ],
+       [
+        "Rational",
+        -1,
+        2
+       ]
+      ],
+      [
+       "Power",
+       [
+        "Abs",
+        "x"
+       ],
+       -1
+      ],
+      [
+       "Add",
+       4,
+       [
+        "Multiply",
+        -1,
+        [
+         "Power",
+         "x",
+         -1
+        ]
+       ]
+      ]
+     ],
+     "relation": "equivalent"
+    },
+    {
+     "step": 3,
+     "text": "\\(\\frac{x}{|x|}=-1\\).",
+     "mathjson": [
+      "Rational",
+      -4,
+      3
+     ],
+     "relation": "limit",
+     "variable": "x",
+     "point": "-oo"
+    }
+   ],
+   "calculator_status": "no_calculator",
+   "representation": "BC-REP-01",
+   "skills": [
+    "BC-SKL-01061",
+    "BC-SKL-01063"
+   ]
+  },
+  {
+   "id": "LSN-CON-01017#chk-3",
+   "check_kind": "mcq",
+   "bands": [
+    "low"
+   ],
+   "format": "mcq",
+   "archetype_id": "BC-QA-01010",
+   "parameter_draw": {
+    "root_coef": "5",
+    "linear_coef": "-2",
+    "linear_const": "3",
+    "inner_const": "2",
+    "radical_place": "numerator"
+   },
+   "stem": {
+    "text": "Find \\(\\lim_{x\\to-\\infty}\\frac{\\sqrt{25x^2+2}}{-2x+3}\\).",
+    "command_verb": "find"
+   },
+   "answer_key": {
+    "form": "numeric",
+    "mathjson": [
+     "Rational",
+     5,
+     2
+    ]
+   },
+   "worked_solution": [
+    {
+     "step": 1,
+     "text": "The limit.",
+     "mathjson": [
+      "Multiply",
+      [
+       "Power",
+       [
+        "Add",
+        2,
+        [
+         "Multiply",
+         25,
+         [
+          "Power",
+          "x",
+          2
+         ]
+        ]
+       ],
+       [
+        "Rational",
+        1,
+        2
+       ]
+      ],
+      [
+       "Power",
+       [
+        "Add",
+        3,
+        [
+         "Multiply",
+         -2,
+         "x"
+        ]
+       ],
+       -1
+      ]
+     ],
+     "relation": "new"
+    },
+    {
+     "step": 2,
+     "text": "Factor out \\(|x|\\) and \\(x\\).",
+     "mathjson": [
+      "Multiply",
+      [
+       "Power",
+       "x",
+       -1
+      ],
+      [
+       "Power",
+       [
+        "Add",
+        -2,
+        [
+         "Multiply",
+         3,
+         [
+          "Power",
+          "x",
+          -1
+         ]
+        ]
+       ],
+       -1
+      ],
+      [
+       "Power",
+       [
+        "Add",
+        25,
+        [
+         "Multiply",
+         2,
+         [
+          "Power",
+          "x",
+          -2
+         ]
+        ]
+       ],
+       [
+        "Rational",
+        1,
+        2
+       ]
+      ],
+      [
+       "Abs",
+       "x"
+      ]
+     ],
+     "relation": "equivalent"
+    },
+    {
+     "step": 3,
+     "text": "\\(\\frac{|x|}{x}=-1\\).",
+     "mathjson": [
+      "Rational",
+      5,
+      2
+     ],
+     "relation": "limit",
+     "variable": "x",
+     "point": "-oo"
+    }
+   ],
+   "options": [
+    {
+     "id": "A",
+     "is_key": false,
+     "error_path": "BC-ERR-01023",
+     "value": [
+      "Rational",
+      -25,
+      2
+     ],
+     "derivation": "leading coefficients 25 and -2 divided"
+    },
+    {
+     "id": "B",
+     "is_key": false,
+     "error_path": "BC-ERR-01033",
+     "value": [
+      "Rational",
+      3,
+      2
+     ],
+     "derivation": "the vertical asymptote input reported"
+    },
+    {
+     "id": "C",
+     "is_key": false,
+     "error_path": "BC-ERR-01021",
+     "value": [
+      "Rational",
+      -5,
+      2
+     ],
+     "derivation": "5 times infinity over -2 times infinity cancelled as numbers"
+    },
+    {
+     "id": "D",
+     "is_key": true,
+     "error_path": null,
+     "value": [
+      "Rational",
+      5,
+      2
+     ]
+    }
+   ],
+   "calculator_status": "no_calculator",
+   "representation": "BC-REP-01",
+   "skills": [
+    "BC-SKL-01058",
+    "BC-SKL-01061"
+   ]
+  }
+ ],
+ "refresher": [
+  "LSN-CON-01017#s2",
+  "LSN-CON-01017#s3",
+  "LSN-CON-01017#err-BC-ERR-01022",
+  "LSN-CON-01017#err-BC-ERR-01023",
+  "LSN-CON-01017#err-BC-ERR-01033",
+  "LSN-CON-01017#err-BC-ERR-01021",
+  "LSN-CON-01017#s5"
+ ],
+ "provenance": {
+  "author": "tools/lesson_transcribe.py",
+  "prompt_version": "generator/lesson_v1",
+  "design_path": "docs/lessons/unit-01/LSN-CON-01017.md",
+  "signed_off_by": "claude-opus-5-5",
+  "signed_off_at": "2026-09-29",
+  "not_human": true
+ }
+}

@@ -1,0 +1,1145 @@
+{
+ "id": "LSN-CON-08010",
+ "version": 1,
+ "kind": "concept",
+ "target_id": "BC-CON-08010",
+ "status": "draft",
+ "snapshot_digest": "a6a8ec9d3f59ab8f712e33d30cc22fc64bf2c478fbe7312e3e3118d319c6a42f",
+ "source_digest": "d792211db7fae96b21fb408eef514ae0c2f0fc0e20913cdeb5623fd761a49b26",
+ "read_minutes": {
+  "full": 3.9,
+  "brief": 3.0
+ },
+ "word_count": {
+  "full": 509,
+  "brief": 391
+ },
+ "sections": [
+  {
+   "id": "LSN-CON-08010#s1",
+   "type": "orientation",
+   "bands": [
+    "low",
+    "mid"
+   ],
+   "skills": [
+    "BC-SKL-08018",
+    "BC-SKL-08019",
+    "BC-SKL-08022"
+   ],
+   "sources": [
+    "BC-CON-08010",
+    "research/units/unit-08-applications-integration.md#8.4 Finding the Area Between Curves Expressed as Functions of x"
+   ],
+   "evidence_tag": "inferred",
+   "text": "A response writes one definite integral of upper curve minus lower curve in x, with the region's limits, antidifferentiates, and reports a nonnegative area.",
+   "delivery": {
+    "mode": "figure",
+    "reason": "rule 4: BC-REP-02 on BC-SKL-08018 and BC-SKL-08019; unit README delivery map",
+    "sources": [
+     "BC-SKL-08018",
+     "BC-SKL-08019"
+    ],
+    "spec": {
+     "kind": "graph",
+     "representations": [
+      "BC-REP-02"
+     ],
+     "window": {
+      "x": [
+       1,
+       6
+      ],
+      "y": [
+       -3,
+       3
+      ]
+     },
+     "curves": [
+      {
+       "expr": "-x**2 + 6*x - 7",
+       "domain": [
+        1,
+        6
+       ]
+      },
+      {
+       "expr": "3 - x",
+       "domain": [
+        1,
+        6
+       ]
+      }
+     ],
+     "shade": {
+      "between": [
+       "-x**2 + 6*x - 7",
+       "3 - x"
+      ],
+      "x": [
+       2,
+       5
+      ]
+     },
+     "labels": [
+      {
+       "text": "f, upper",
+       "placement": "inside"
+      },
+      {
+       "text": "g, lower",
+       "placement": "inside"
+      },
+      {
+       "text": "area = integral of f minus g",
+       "placement": "inside"
+      }
+     ]
+    },
+    "fallback": "the same shaded region static, with both labels and the area label",
+    "keyboard": "no control; the figure description is reached with Tab"
+   }
+  },
+  {
+   "id": "LSN-CON-08010#s2",
+   "type": "key_ideas",
+   "bands": [
+    "low",
+    "mid"
+   ],
+   "skills": [
+    "BC-SKL-08018",
+    "BC-SKL-08019",
+    "BC-SKL-08022"
+   ],
+   "sources": [
+    "BC-EK-CHA-5A1",
+    "ced:155",
+    "sg-23:17",
+    "research/units/unit-08-applications-integration.md#8.4 Finding the Area Between Curves Expressed as Functions of x"
+   ],
+   "evidence_tag": "verified",
+   "ek_id": "BC-EK-CHA-5A1",
+   "depth": "core",
+   "text": "With f at or above g on [a, b], the area between the graphs is the integral of f minus g in x. The upper curve, named from the figure or from one interior input, fixes the order of subtraction. The area is nonnegative; writing the reversed difference as equal to the positive area loses the answer point (sg-23:17).",
+   "notation": "upper minus lower; dx",
+   "quote": {
+    "text": "Areas of regions in the plane can be calculated with definite integrals.",
+    "source": "ced:155"
+   },
+   "delivery": {
+    "mode": "figure",
+    "reason": "rule 4: BC-REP-02 on BC-SKL-08018 and BC-SKL-08019; not promoted, BC-QA-08008 difficulty_variables are presence flags",
+    "sources": [
+     "BC-SKL-08018",
+     "BC-SKL-08019",
+     "BC-QA-08008"
+    ],
+    "spec": {
+     "kind": "graph",
+     "representations": [
+      "BC-REP-02",
+      "BC-REP-01"
+     ],
+     "window": {
+      "x": [
+       1,
+       6
+      ],
+      "y": [
+       -3,
+       3
+      ]
+     },
+     "curves": [
+      {
+       "expr": "-x**2 + 6*x - 7",
+       "domain": [
+        1,
+        6
+       ]
+      },
+      {
+       "expr": "3 - x",
+       "domain": [
+        1,
+        6
+       ]
+      }
+     ],
+     "rectangles": [
+      {
+       "x": 3,
+       "from": "3 - x",
+       "to": "-x**2 + 6*x - 7",
+       "width": 0.2
+      }
+     ],
+     "labels": [
+      {
+       "text": "height f(x) - g(x)",
+       "placement": "inside"
+      },
+      {
+       "text": "x = 2",
+       "placement": "inside"
+      },
+      {
+       "text": "x = 5",
+       "placement": "inside"
+      }
+     ]
+    },
+    "fallback": "the static region with one vertical rectangle from g up to f at x = 3 and both limits marked",
+    "keyboard": "no control; the figure description is reached with Tab"
+   }
+  },
+  {
+   "id": "LSN-CON-08010#s3",
+   "type": "strategy",
+   "bands": [
+    "low",
+    "mid"
+   ],
+   "skills": [
+    "BC-SKL-08018",
+    "BC-SKL-08019",
+    "BC-SKL-08022"
+   ],
+   "sources": [
+    "BC-QA-08008"
+   ],
+   "evidence_tag": "verified",
+   "archetype_id": "BC-QA-08008",
+   "cue": "The stem asks for the area of a region between two graphs, from the curve equations or a shaded figure.",
+   "method": "First written line: the upper curve named, then the integral of upper minus lower with its limits.",
+   "rival": "Rival: the reversed order, reported as a negative area (BC-ERR-08020).",
+   "separating_feature": "One interior input in both functions fixes the order."
+  },
+  {
+   "id": "LSN-CON-08010#s4",
+   "type": "worked_example",
+   "bands": [
+    "low",
+    "mid"
+   ],
+   "skills": [
+    "BC-SKL-08018",
+    "BC-SKL-08019",
+    "BC-SKL-08022"
+   ],
+   "sources": [
+    "BC-QA-08008"
+   ],
+   "evidence_tag": "inferred",
+   "archetype_id": "BC-QA-08008",
+   "parameter_draw": {
+    "left": 2,
+    "width": 3,
+    "bulge": 1,
+    "slope": -1,
+    "intercept": 3,
+    "lift": 1,
+    "presentation": "formula",
+    "limits": "intersections"
+   },
+   "problem": {
+    "text": "\\(f(x)=-x^2+6x-7\\) and \\(g(x)=3-x\\) meet at \\(x=2\\) and \\(x=5\\). Find the area of the region they enclose.",
+    "command_verb": "find"
+   },
+   "calculator_status": "no_calculator",
+   "steps": [
+    {
+     "cue": "Area between two graphs: which is upper?",
+     "why": "At \\(x=3\\): \\(f=2\\), \\(g=0\\), so \\(f\\) is upper."
+    },
+    {
+     "cue": "Upper minus lower, limits at the meeting points.",
+     "why": "\\(f\\) stays upper on \\([2,5]\\), so one integral.",
+     "expression": [
+      "Integrate",
+      [
+       "Add",
+       -10,
+       [
+        "Multiply",
+        -1,
+        [
+         "Power",
+         "x",
+         2
+        ]
+       ],
+       [
+        "Multiply",
+        7,
+        "x"
+       ]
+      ],
+      [
+       "Tuple",
+       "x",
+       2,
+       5
+      ]
+     ],
+     "point_type_id": "BC-PT-99059",
+     "relation": "new"
+    },
+    {
+     "cue": "Parentheses around \\(g\\), then collect.",
+     "why": "\\(-(3-x)=x-3\\).",
+     "expression": [
+      "Integrate",
+      [
+       "Add",
+       -10,
+       [
+        "Multiply",
+        -1,
+        [
+         "Power",
+         "x",
+         2
+        ]
+       ],
+       [
+        "Multiply",
+        7,
+        "x"
+       ]
+      ],
+      [
+       "Tuple",
+       "x",
+       2,
+       5
+      ]
+     ],
+     "relation": "equivalent"
+    },
+    {
+     "cue": "Antiderivative, upper limit minus lower limit.",
+     "why": "\\(F(x)=-x^3/3+7x^2/2-10x\\).",
+     "expression": [
+      "Rational",
+      9,
+      2
+     ],
+     "relation": "equivalent"
+    },
+    {
+     "cue": "The stem asks for an area.",
+     "why": "Positive, so the order was right.",
+     "expression": [
+      "Rational",
+      9,
+      2
+     ],
+     "relation": "equivalent"
+    }
+   ],
+   "answer": {
+    "form": "numeric",
+    "mathjson": [
+     "Rational",
+     9,
+     2
+    ]
+   },
+   "delivery": {
+    "mode": "step_reveal",
+    "reason": "rule 1",
+    "sources": []
+   }
+  },
+  {
+   "id": "LSN-CON-08010#s5",
+   "type": "what_a_reader_scores",
+   "bands": [
+    "low",
+    "mid"
+   ],
+   "skills": [
+    "BC-SKL-08018",
+    "BC-SKL-08019",
+    "BC-SKL-08022"
+   ],
+   "sources": [
+    "BC-PT-99059"
+   ],
+   "evidence_tag": "verified",
+   "example_id": "LSN-CON-08010#s4",
+   "lines": [
+    {
+     "point_type_id": "BC-PT-99059",
+     "text": "Area integrand for a region between curves. Earned by: The difference of the two functions, in either order or inside an absolute value, placed in a definite integral (sg-23:16). Not earned by: An integrand with incorrect limits, which sg-23:16 states blocks the answer point; incorrect u-substitution limits, which sg-23:17 states also block it."
+    }
+   ]
+  },
+  {
+   "id": "LSN-CON-08010#err-BC-ERR-06018",
+   "type": "common_error",
+   "bands": [
+    "low",
+    "mid"
+   ],
+   "skills": [
+    "BC-SKL-08022"
+   ],
+   "sources": [
+    "BC-ERR-06018",
+    "BC-MIS-06016"
+   ],
+   "evidence_tag": "inferred",
+   "error_id": "BC-ERR-06018",
+   "observed_behavior": "The antiderivative is written in the substituted variable and the original x limits are substituted into it.",
+   "scoring_consequence": "The response is not eligible for the answer point even when the numerical value is correct (sg-23:17, sg-23:16).",
+   "wrong_step": {
+    "text": "\\(u=x-2\\), limits 2 and 5 kept.",
+    "expression": [
+     "Integrate",
+     [
+      "Multiply",
+      "u",
+      [
+       "Add",
+       3,
+       [
+        "Multiply",
+        -1,
+        "u"
+       ]
+      ]
+     ],
+     [
+      "Tuple",
+      "u",
+      2,
+      5
+     ]
+    ]
+   },
+   "right_step": {
+    "text": "Limits become 0 and 3.",
+    "expression": [
+     "Integrate",
+     [
+      "Multiply",
+      "u",
+      [
+       "Add",
+       3,
+       [
+        "Multiply",
+        -1,
+        "u"
+       ]
+      ]
+     ],
+     [
+      "Tuple",
+      "u",
+      0,
+      3
+     ]
+    ]
+   },
+   "relation": "distinct",
+   "possible_reason": {
+    "misconception_id": "BC-MIS-06016",
+    "text": "limits of integration and differentials carry over unchanged"
+   },
+   "delivery": {
+    "mode": "step_reveal",
+    "reason": "rule 1",
+    "sources": []
+   }
+  },
+  {
+   "id": "LSN-CON-08010#err-BC-ERR-08020",
+   "type": "common_error",
+   "bands": [
+    "low",
+    "mid"
+   ],
+   "skills": [
+    "BC-SKL-08018",
+    "BC-SKL-08019"
+   ],
+   "sources": [
+    "BC-ERR-08020",
+    "BC-MIS-08011"
+   ],
+   "evidence_tag": "inferred",
+   "error_id": "BC-ERR-08020",
+   "observed_behavior": "The integrand is the lower curve minus the upper curve, or the left curve minus the right curve.",
+   "scoring_consequence": "The integrand point may survive, since either order earned it in 2023, but a negative value reported as an area loses the answer point (sg-23:16, sg-23:17).",
+   "wrong_step": {
+    "text": "\\(g-f\\): \\(-9/2\\).",
+    "expression": [
+     "Integrate",
+     [
+      "Add",
+      10,
+      [
+       "Power",
+       "x",
+       2
+      ],
+      [
+       "Multiply",
+       -7,
+       "x"
+      ]
+     ],
+     [
+      "Tuple",
+      "x",
+      2,
+      5
+     ]
+    ]
+   },
+   "right_step": {
+    "text": "\\(f-g\\): \\(9/2\\).",
+    "expression": [
+     "Integrate",
+     [
+      "Add",
+      -10,
+      [
+       "Multiply",
+       -1,
+       [
+        "Power",
+        "x",
+        2
+       ]
+      ],
+      [
+       "Multiply",
+       7,
+       "x"
+      ]
+     ],
+     [
+      "Tuple",
+      "x",
+      2,
+      5
+     ]
+    ]
+   },
+   "relation": "distinct",
+   "possible_reason": {
+    "misconception_id": "BC-MIS-08011",
+    "text": "any sign problem can be repaired at the end"
+   },
+   "delivery": {
+    "mode": "step_reveal",
+    "reason": "rule 1",
+    "sources": []
+   }
+  },
+  {
+   "id": "LSN-CON-08010#err-BC-ERR-99006",
+   "type": "common_error",
+   "bands": [
+    "low",
+    "mid"
+   ],
+   "skills": [
+    "BC-SKL-08019"
+   ],
+   "sources": [
+    "BC-ERR-99006"
+   ],
+   "evidence_tag": "inferred",
+   "error_id": "BC-ERR-99006",
+   "observed_behavior": "Responses present a definite integral with no differential, or with a differential in the wrong variable, producing a setup the reader cannot interpret.",
+   "scoring_consequence": "The setup point is not earned when the resulting expression is ambiguous; in some parts later points in that part are also lost.",
+   "wrong_step": {
+    "text": "\\(\\int_2^5 (-x^2+7x-10)\\) with no \\(dx\\).",
+    "expression": [
+     "Integrate",
+     [
+      "Add",
+      -10,
+      [
+       "Multiply",
+       -1,
+       [
+        "Power",
+        "x",
+        2
+       ]
+      ],
+      [
+       "Multiply",
+       7,
+       "x"
+      ]
+     ],
+     [
+      "Tuple",
+      "x",
+      2,
+      5
+     ]
+    ]
+   },
+   "right_step": {
+    "text": "\\(\\int_2^5 (-x^2+7x-10)\\,dx\\).",
+    "expression": [
+     "Integrate",
+     [
+      "Add",
+      -10,
+      [
+       "Multiply",
+       -1,
+       [
+        "Power",
+        "x",
+        2
+       ]
+      ],
+      [
+       "Multiply",
+       7,
+       "x"
+      ]
+     ],
+     [
+      "Tuple",
+      "x",
+      2,
+      5
+     ]
+    ]
+   },
+   "relation": "equivalent",
+   "delivery": {
+    "mode": "step_reveal",
+    "reason": "rule 1",
+    "sources": []
+   }
+  },
+  {
+   "id": "LSN-CON-08010#err-BC-ERR-99011",
+   "type": "common_error",
+   "bands": [
+    "low",
+    "mid"
+   ],
+   "skills": [
+    "BC-SKL-08019"
+   ],
+   "sources": [
+    "BC-ERR-99011",
+    "BC-MIS-99003"
+   ],
+   "evidence_tag": "inferred",
+   "error_id": "BC-ERR-99011",
+   "observed_behavior": "Responses square a difference of functions when an area was asked, insert pi where no revolution occurs, square each function separately instead of squaring their difference, or revolve about the wrong line.",
+   "scoring_consequence": "The integrand point is not earned; where the form point is separate, an eligible form may still earn it.",
+   "wrong_step": {
+    "text": "Difference squared: \\(81/10\\).",
+    "expression": [
+     "Integrate",
+     [
+      "Power",
+      [
+       "Add",
+       -10,
+       [
+        "Multiply",
+        -1,
+        [
+         "Power",
+         "x",
+         2
+        ]
+       ],
+       [
+        "Multiply",
+        7,
+        "x"
+       ]
+      ],
+      2
+     ],
+     [
+      "Tuple",
+      "x",
+      2,
+      5
+     ]
+    ]
+   },
+   "right_step": {
+    "text": "Difference itself: \\(9/2\\).",
+    "expression": [
+     "Integrate",
+     [
+      "Add",
+      -10,
+      [
+       "Multiply",
+       -1,
+       [
+        "Power",
+        "x",
+        2
+       ]
+      ],
+      [
+       "Multiply",
+       7,
+       "x"
+      ]
+     ],
+     [
+      "Tuple",
+      "x",
+      2,
+      5
+     ]
+    ]
+   },
+   "relation": "distinct",
+   "possible_reason": {
+    "misconception_id": "BC-MIS-99003",
+    "text": "squaring a difference of functions for an area"
+   },
+   "delivery": {
+    "mode": "step_reveal",
+    "reason": "rule 1",
+    "sources": []
+   }
+  },
+  {
+   "id": "LSN-CON-08010#prq-BC-PRQ-06002",
+   "type": "prerequisite_bridge",
+   "bands": [
+    "low",
+    "mid"
+   ],
+   "skills": [
+    "BC-SKL-08022"
+   ],
+   "sources": [
+    "BC-PRQ-06002"
+   ],
+   "evidence_tag": "inferred",
+   "prerequisite_id": "BC-PRQ-06002",
+   "text": "Powers rewritten as exponents before the reverse power rule; otherwise the antiderivative stalls."
+  },
+  {
+   "id": "LSN-CON-08010#prq-BC-PRQ-06005",
+   "type": "prerequisite_bridge",
+   "bands": [
+    "low",
+    "mid"
+   ],
+   "skills": [
+    "BC-SKL-08018",
+    "BC-SKL-08019"
+   ],
+   "sources": [
+    "BC-PRQ-06005"
+   ],
+   "evidence_tag": "inferred",
+   "prerequisite_id": "BC-PRQ-06005",
+   "text": "\\(f(3)\\) is a value at one input; reading the wrong input, or \\(f'\\) for \\(f\\), names the wrong upper curve."
+  }
+ ],
+ "checks": [
+  {
+   "id": "LSN-CON-08010#chk-1",
+   "check_kind": "completion",
+   "bands": [
+    "low",
+    "mid"
+   ],
+   "format": "short_answer",
+   "archetype_id": "BC-QA-08008",
+   "parameter_draw": {
+    "left": 2,
+    "width": 3,
+    "bulge": 1,
+    "slope": -1,
+    "intercept": 3,
+    "lift": 1,
+    "presentation": "formula",
+    "limits": "intersections"
+   },
+   "completes": "LSN-CON-08010#s4",
+   "stem": {
+    "text": "Evaluate the area \\(\\int_2^5 (-x^2+7x-10)\\,dx\\).",
+    "command_verb": "evaluate"
+   },
+   "answer_key": {
+    "form": "numeric",
+    "mathjson": [
+     "Rational",
+     9,
+     2
+    ]
+   },
+   "worked_solution": [
+    {
+     "step": 1,
+     "text": "The collected integral.",
+     "mathjson": [
+      "Integrate",
+      [
+       "Add",
+       -10,
+       [
+        "Multiply",
+        -1,
+        [
+         "Power",
+         "x",
+         2
+        ]
+       ],
+       [
+        "Multiply",
+        7,
+        "x"
+       ]
+      ],
+      [
+       "Tuple",
+       "x",
+       2,
+       5
+      ]
+     ],
+     "relation": "new"
+    },
+    {
+     "step": 2,
+     "text": "\\(F(5)-F(2)\\).",
+     "mathjson": [
+      "Rational",
+      9,
+      2
+     ],
+     "relation": "equivalent"
+    }
+   ],
+   "calculator_status": "no_calculator",
+   "representation": "BC-REP-02",
+   "skills": [
+    "BC-SKL-08022"
+   ]
+  },
+  {
+   "id": "LSN-CON-08010#chk-2",
+   "check_kind": "isomorph",
+   "bands": [
+    "low",
+    "mid"
+   ],
+   "format": "short_answer",
+   "archetype_id": "BC-QA-08008",
+   "parameter_draw": {
+    "left": -2,
+    "width": 3,
+    "bulge": 2,
+    "slope": 1,
+    "intercept": 2,
+    "lift": 1,
+    "presentation": "formula",
+    "limits": "intersections"
+   },
+   "stem": {
+    "text": "\\(f(x)=6-x-2x^2\\) and \\(g(x)=x+2\\) meet at \\(x=-2\\) and \\(x=1\\). Find the enclosed area.",
+    "command_verb": "find"
+   },
+   "answer_key": {
+    "form": "numeric",
+    "mathjson": 9
+   },
+   "worked_solution": [
+    {
+     "step": 1,
+     "text": "\\(f\\) is upper: \\(f(0)=6\\), \\(g(0)=2\\).",
+     "mathjson": [
+      "Integrate",
+      [
+       "Add",
+       4,
+       [
+        "Multiply",
+        -2,
+        "x"
+       ],
+       [
+        "Multiply",
+        -2,
+        [
+         "Power",
+         "x",
+         2
+        ]
+       ]
+      ],
+      [
+       "Tuple",
+       "x",
+       -2,
+       1
+      ]
+     ],
+     "point_type_id": "BC-PT-99059",
+     "relation": "new"
+    },
+    {
+     "step": 2,
+     "text": "Evaluated.",
+     "mathjson": 9,
+     "relation": "equivalent"
+    }
+   ],
+   "calculator_status": "no_calculator",
+   "representation": "BC-REP-02",
+   "skills": [
+    "BC-SKL-08019"
+   ]
+  },
+  {
+   "id": "LSN-CON-08010#chk-3",
+   "check_kind": "mcq",
+   "bands": [
+    "low"
+   ],
+   "format": "mcq",
+   "archetype_id": "BC-QA-08008",
+   "parameter_draw": {
+    "left": 1,
+    "width": 2,
+    "bulge": 2,
+    "slope": 1,
+    "intercept": 1,
+    "lift": 2,
+    "presentation": "formula",
+    "limits": "intersections"
+   },
+   "stem": {
+    "text": "\\(f(x)=-2x^2+9x-5\\) and \\(g(x)=x+1\\) meet at \\(x=1\\) and \\(x=3\\). Which gives the enclosed area?",
+    "command_verb": "identify"
+   },
+   "answer_key": {
+    "form": "numeric",
+    "mathjson": [
+     "Rational",
+     8,
+     3
+    ]
+   },
+   "worked_solution": [
+    {
+     "step": 1,
+     "text": "\\(f\\) is upper on \\([1,3]\\).",
+     "mathjson": [
+      "Integrate",
+      [
+       "Add",
+       -6,
+       [
+        "Multiply",
+        -2,
+        [
+         "Power",
+         "x",
+         2
+        ]
+       ],
+       [
+        "Multiply",
+        8,
+        "x"
+       ]
+      ],
+      [
+       "Tuple",
+       "x",
+       1,
+       3
+      ]
+     ],
+     "relation": "new"
+    },
+    {
+     "step": 2,
+     "text": "Evaluated.",
+     "mathjson": [
+      "Rational",
+      8,
+      3
+     ],
+     "relation": "equivalent"
+    }
+   ],
+   "options": [
+    {
+     "id": "A",
+     "is_key": false,
+     "error_path": "BC-ERR-08020",
+     "value": [
+      "Integrate",
+      [
+       "Add",
+       6,
+       [
+        "Multiply",
+        -8,
+        "x"
+       ],
+       [
+        "Multiply",
+        2,
+        [
+         "Power",
+         "x",
+         2
+        ]
+       ]
+      ],
+      [
+       "Tuple",
+       "x",
+       1,
+       3
+      ]
+     ],
+     "derivation": "g minus f, value -8/3"
+    },
+    {
+     "id": "B",
+     "is_key": false,
+     "error_path": "BC-ERR-99011",
+     "value": [
+      "Integrate",
+      [
+       "Power",
+       [
+        "Add",
+        -6,
+        [
+         "Multiply",
+         -2,
+         [
+          "Power",
+          "x",
+          2
+         ]
+        ],
+        [
+         "Multiply",
+         8,
+         "x"
+        ]
+       ],
+       2
+      ],
+      [
+       "Tuple",
+       "x",
+       1,
+       3
+      ]
+     ],
+     "derivation": "the difference squared, value 64/15"
+    },
+    {
+     "id": "C",
+     "is_key": true,
+     "error_path": null,
+     "value": [
+      "Integrate",
+      [
+       "Add",
+       -6,
+       [
+        "Multiply",
+        -2,
+        [
+         "Power",
+         "x",
+         2
+        ]
+       ],
+       [
+        "Multiply",
+        8,
+        "x"
+       ]
+      ],
+      [
+       "Tuple",
+       "x",
+       1,
+       3
+      ]
+     ]
+    },
+    {
+     "id": "D",
+     "is_key": false,
+     "error_path": "BC-ERR-06018",
+     "value": [
+      "Integrate",
+      [
+       "Multiply",
+       2,
+       "u",
+       [
+        "Add",
+        2,
+        [
+         "Multiply",
+         -1,
+         "u"
+        ]
+       ]
+      ],
+      [
+       "Tuple",
+       "u",
+       1,
+       3
+      ]
+     ],
+     "derivation": "u = x - 1 with the x limits kept, value -4/3"
+    }
+   ],
+   "calculator_status": "no_calculator",
+   "representation": "BC-REP-02",
+   "skills": [
+    "BC-SKL-08019"
+   ]
+  }
+ ],
+ "refresher": [
+  "LSN-CON-08010#s2",
+  "LSN-CON-08010#err-BC-ERR-06018",
+  "LSN-CON-08010#err-BC-ERR-08020",
+  "LSN-CON-08010#err-BC-ERR-99006",
+  "LSN-CON-08010#err-BC-ERR-99011",
+  "LSN-CON-08010#s4"
+ ],
+ "provenance": {
+  "author": "tools/lesson_transcribe.py",
+  "prompt_version": "generator/lesson_v1",
+  "design_path": "docs/lessons/unit-08/LSN-CON-08010.md",
+  "signed_off_by": null,
+  "signed_off_at": null,
+  "not_human": true
+ }
+}

@@ -1,0 +1,1114 @@
+{
+ "id": "LSN-CON-08015",
+ "version": 1,
+ "kind": "concept",
+ "target_id": "BC-CON-08015",
+ "status": "signed_off",
+ "snapshot_digest": "a6a8ec9d3f59ab8f712e33d30cc22fc64bf2c478fbe7312e3e3118d319c6a42f",
+ "source_digest": "4a024aa093027039139f910dadc0cea31f8c7825cdd7474248d068c4151b65ac",
+ "read_minutes": {
+  "full": 3.6,
+  "brief": 3.0
+ },
+ "word_count": {
+  "full": 473,
+  "brief": 402
+ },
+ "sections": [
+  {
+   "id": "LSN-CON-08015#s1",
+   "type": "orientation",
+   "bands": [
+    "low",
+    "mid"
+   ],
+   "skills": [
+    "BC-SKL-08031"
+   ],
+   "sources": [
+    "BC-CON-08015",
+    "research/units/unit-08-applications-integration.md#8.7 Volumes with Cross Sections: Squares and Rectangles"
+   ],
+   "evidence_tag": "inferred",
+   "text": "A response writes the side of each slice as the distance between the two boundary curves of the base, upper minus lower, before any area formula.",
+   "delivery": {
+    "mode": "figure",
+    "reason": "rule 4: BC-REP-08 on BC-SKL-08031; unit README delivery map",
+    "sources": [
+     "BC-SKL-08031"
+    ],
+    "spec": {
+     "kind": "region",
+     "representations": [
+      "BC-REP-08"
+     ],
+     "window": {
+      "x": [
+       -0.5,
+       2.5
+      ],
+      "y": [
+       0,
+       4
+      ]
+     },
+     "curves": [
+      {
+       "expr": "-x**2 + 3*x + 1",
+       "domain": [
+        0,
+        2
+       ]
+      },
+      {
+       "expr": "x + 1",
+       "domain": [
+        0,
+        2
+       ]
+      }
+     ],
+     "shade": {
+      "between": [
+       "-x**2 + 3*x + 1",
+       "x + 1"
+      ],
+      "x": [
+       0,
+       2
+      ]
+     },
+     "labels": [
+      {
+       "text": "base region",
+       "placement": "inside"
+      },
+      {
+       "text": "square slices stand on it",
+       "placement": "inside"
+      }
+     ]
+    },
+    "fallback": "the same base region static with its labels",
+    "keyboard": "no control; the figure description is reached with Tab"
+   }
+  },
+  {
+   "id": "LSN-CON-08015#s2",
+   "type": "key_ideas",
+   "bands": [
+    "low",
+    "mid"
+   ],
+   "skills": [
+    "BC-SKL-08031"
+   ],
+   "sources": [
+    "BC-EK-CHA-5B1",
+    "ced:158",
+    "research/units/unit-08-applications-integration.md#8.7 Volumes with Cross Sections: Squares and Rectangles"
+   ],
+   "evidence_tag": "verified",
+   "ek_id": "BC-EK-CHA-5B1",
+   "depth": "core",
+   "text": "The volume is the integral of one slice's area over the interval the solid spans. The side of a slice is a distance in the base: the upper boundary minus the lower, or one function only when the other boundary is an axis. A square or rectangular slice carries no pi.",
+   "notation": "side length as a difference of functions",
+   "quote": {
+    "text": "Volumes of solids with square and rectangular cross sections can be found using definite integrals",
+    "source": "ced:158"
+   },
+   "delivery": {
+    "mode": "figure",
+    "reason": "rule 4: BC-REP-08 on BC-SKL-08031; not promoted, BC-QA-08011 difficulty_variables vary a category",
+    "sources": [
+     "BC-SKL-08031",
+     "BC-QA-08011"
+    ],
+    "spec": {
+     "kind": "region",
+     "representations": [
+      "BC-REP-08",
+      "BC-REP-01"
+     ],
+     "window": {
+      "x": [
+       -0.5,
+       2.5
+      ],
+      "y": [
+       0,
+       4
+      ]
+     },
+     "curves": [
+      {
+       "expr": "-x**2 + 3*x + 1",
+       "domain": [
+        0,
+        2
+       ]
+      },
+      {
+       "expr": "x + 1",
+       "domain": [
+        0,
+        2
+       ]
+      }
+     ],
+     "segments": [
+      {
+       "x": 1,
+       "from": [
+        1,
+        2
+       ],
+       "to": [
+        1,
+        3
+       ]
+      }
+     ],
+     "labels": [
+      {
+       "text": "top end on f: (1, 3)",
+       "placement": "inside"
+      },
+      {
+       "text": "bottom end on g: (1, 2)",
+       "placement": "inside"
+      },
+      {
+       "text": "side = f(x) - g(x)",
+       "placement": "inside"
+      }
+     ]
+    },
+    "fallback": "the static base with one slice at x = 1 and both endpoints labelled",
+    "keyboard": "no control; the figure description is reached with Tab"
+   }
+  },
+  {
+   "id": "LSN-CON-08015#s3",
+   "type": "strategy",
+   "bands": [
+    "low",
+    "mid"
+   ],
+   "skills": [
+    "BC-SKL-08031"
+   ],
+   "sources": [
+    "BC-QA-08011"
+   ],
+   "evidence_tag": "verified",
+   "archetype_id": "BC-QA-08011",
+   "cue": "The stem asks for a volume from a base region, a cross section shape, and the perpendicular axis.",
+   "method": "First written line: the side as the distance between the boundary curves.",
+   "rival": "Rival: each boundary function squared separately (BC-ERR-99011).",
+   "separating_feature": "The slice has one end on each curve."
+  },
+  {
+   "id": "LSN-CON-08015#s4",
+   "type": "worked_example",
+   "bands": [
+    "low",
+    "mid"
+   ],
+   "skills": [
+    "BC-SKL-08031"
+   ],
+   "sources": [
+    "BC-QA-08011"
+   ],
+   "evidence_tag": "inferred",
+   "archetype_id": "BC-QA-08011",
+   "parameter_draw": {
+    "shape": "square",
+    "tool": "by_hand",
+    "left": 0,
+    "width": 2,
+    "bulge": 1,
+    "slope": 1,
+    "intercept": 1,
+    "height_ratio": 2,
+    "peak": 2,
+    "spread": 2,
+    "drop": "1",
+    "reach": "2",
+    "presentation": "formula"
+   },
+   "problem": {
+    "text": "A solid's base lies between \\(f(x)=-x^2+3x+1\\) and \\(g(x)=x+1\\) for \\(0\\le x\\le 2\\). Cross sections perpendicular to the x-axis are squares. Find the volume.",
+    "command_verb": "find"
+   },
+   "calculator_status": "no_calculator",
+   "steps": [
+    {
+     "cue": "Perpendicular to the x-axis: vertical slices. Which end is upper?",
+     "why": "\\(f(1)=3\\), \\(g(1)=2\\)."
+    },
+    {
+     "cue": "Side: distance between the curves.",
+     "why": "Both ends of the slice appear.",
+     "expression": [
+      "Add",
+      [
+       "Multiply",
+       -1,
+       [
+        "Power",
+        "x",
+        2
+       ]
+      ],
+      [
+       "Multiply",
+       2,
+       "x"
+      ]
+     ],
+     "relation": "new"
+    },
+    {
+     "cue": "Simplify.",
+     "why": "The side at \\(x\\).",
+     "expression": [
+      "Add",
+      [
+       "Multiply",
+       -1,
+       [
+        "Power",
+        "x",
+        2
+       ]
+      ],
+      [
+       "Multiply",
+       2,
+       "x"
+      ]
+     ],
+     "relation": "equivalent"
+    },
+    {
+     "cue": "Square: area is side squared, integrated over \\([0,2]\\).",
+     "why": "No pi for a square.",
+     "expression": [
+      "Integrate",
+      [
+       "Power",
+       [
+        "Add",
+        [
+         "Multiply",
+         -1,
+         [
+          "Power",
+          "x",
+          2
+         ]
+        ],
+        [
+         "Multiply",
+         2,
+         "x"
+        ]
+       ],
+       2
+      ],
+      [
+       "Tuple",
+       "x",
+       0,
+       2
+      ]
+     ],
+     "point_type_id": "BC-PT-99001",
+     "relation": "new"
+    },
+    {
+     "cue": "Expand, then integrate.",
+     "why": "\\(4x^2-4x^3+x^4\\).",
+     "expression": [
+      "Rational",
+      16,
+      15
+     ],
+     "relation": "equivalent"
+    },
+    {
+     "cue": "The stem asks for the volume.",
+     "why": "Exact.",
+     "expression": [
+      "Rational",
+      16,
+      15
+     ],
+     "relation": "equivalent"
+    }
+   ],
+   "answer": {
+    "form": "numeric",
+    "mathjson": [
+     "Rational",
+     16,
+     15
+    ]
+   },
+   "delivery": {
+    "mode": "step_reveal",
+    "reason": "rule 1",
+    "sources": []
+   }
+  },
+  {
+   "id": "LSN-CON-08015#s5",
+   "type": "what_a_reader_scores",
+   "bands": [
+    "low",
+    "mid"
+   ],
+   "skills": [
+    "BC-SKL-08031"
+   ],
+   "sources": [
+    "BC-PT-99001"
+   ],
+   "evidence_tag": "verified",
+   "example_id": "LSN-CON-08015#s4",
+   "lines": [
+    {
+     "point_type_id": "BC-PT-99001",
+     "text": "Definite integral expression with correct limits. Earned by: A definite integral whose limits match the requested interval and whose integrand matches the requested quantity, with or without the differential (sg-26:4, sg-22:2). Not earned by: An unsupported numerical value, or a definite integral whose bounds are wrong (sg-22:18). Notation: Differential may be omitted; sg-22:2 accepts dx written for dt. sg-23:8 treats a missing differential as recoverable for this point but restricts later eligibility."
+    }
+   ]
+  },
+  {
+   "id": "LSN-CON-08015#err-BC-ERR-08028",
+   "type": "common_error",
+   "bands": [
+    "low",
+    "mid"
+   ],
+   "skills": [
+    "BC-SKL-08031"
+   ],
+   "sources": [
+    "BC-ERR-08028",
+    "BC-MIS-08016"
+   ],
+   "evidence_tag": "inferred",
+   "error_id": "BC-ERR-08028",
+   "observed_behavior": "The side of the slice is taken as the upper curve alone although the region is bounded by two curves.",
+   "scoring_consequence": "The integrand is wrong, so the setup point is lost.",
+   "wrong_step": {
+    "text": "Side \\(f(x)\\).",
+    "expression": [
+     "Add",
+     1,
+     [
+      "Multiply",
+      -1,
+      [
+       "Power",
+       "x",
+       2
+      ]
+     ],
+     [
+      "Multiply",
+      3,
+      "x"
+     ]
+    ]
+   },
+   "right_step": {
+    "text": "Side \\(f(x)-g(x)\\).",
+    "expression": [
+     "Add",
+     [
+      "Multiply",
+      -1,
+      [
+       "Power",
+       "x",
+       2
+      ]
+     ],
+     [
+      "Multiply",
+      2,
+      "x"
+     ]
+    ]
+   },
+   "relation": "distinct",
+   "possible_reason": {
+    "misconception_id": "BC-MIS-08016",
+    "text": "reads the slice as reaching from the axis to the curve"
+   },
+   "delivery": {
+    "mode": "step_reveal",
+    "reason": "rule 1",
+    "sources": []
+   }
+  },
+  {
+   "id": "LSN-CON-08015#err-BC-ERR-99011",
+   "type": "common_error",
+   "bands": [
+    "low",
+    "mid"
+   ],
+   "skills": [
+    "BC-SKL-08031"
+   ],
+   "sources": [
+    "BC-ERR-99011",
+    "BC-MIS-08015"
+   ],
+   "evidence_tag": "inferred",
+   "error_id": "BC-ERR-99011",
+   "observed_behavior": "Responses square a difference of functions when an area was asked, insert pi where no revolution occurs, square each function separately instead of squaring their difference, or revolve about the wrong line.",
+   "scoring_consequence": "The integrand point is not earned; where the form point is separate, an eligible form may still earn it.",
+   "wrong_step": {
+    "text": "pi in front.",
+    "expression": [
+     "Multiply",
+     "Pi",
+     [
+      "Integrate",
+      [
+       "Power",
+       [
+        "Add",
+        [
+         "Multiply",
+         -1,
+         [
+          "Power",
+          "x",
+          2
+         ]
+        ],
+        [
+         "Multiply",
+         2,
+         "x"
+        ]
+       ],
+       2
+      ],
+      [
+       "Tuple",
+       "x",
+       0,
+       2
+      ]
+     ]
+    ]
+   },
+   "right_step": {
+    "text": "No pi.",
+    "expression": [
+     "Integrate",
+     [
+      "Power",
+      [
+       "Add",
+       [
+        "Multiply",
+        -1,
+        [
+         "Power",
+         "x",
+         2
+        ]
+       ],
+       [
+        "Multiply",
+        2,
+        "x"
+       ]
+      ],
+      2
+     ],
+     [
+      "Tuple",
+      "x",
+      0,
+      2
+     ]
+    ]
+   },
+   "relation": "distinct",
+   "possible_reason": {
+    "misconception_id": "BC-MIS-08015",
+    "text": "associates pi with volume rather than with circular cross sections"
+   },
+   "delivery": {
+    "mode": "step_reveal",
+    "reason": "rule 1",
+    "sources": []
+   }
+  },
+  {
+   "id": "LSN-CON-08015#err-BC-ERR-99033",
+   "type": "common_error",
+   "bands": [
+    "low",
+    "mid"
+   ],
+   "skills": [
+    "BC-SKL-08031"
+   ],
+   "sources": [
+    "BC-ERR-99033"
+   ],
+   "evidence_tag": "inferred",
+   "error_id": "BC-ERR-99033",
+   "observed_behavior": "Responses invent a symbol for an intermediate quantity, differentiate with it, and never state what it stands for, so the connection between the new symbol and the functions given in the stem cannot be read.",
+   "scoring_consequence": "The point for expressing the quantity as a function of the given variable is not earned, and the chain rule step that depends on it is unreachable.",
+   "wrong_step": {
+    "text": "\\(\\int_0^2 s^2\\,dx\\), s never defined.",
+    "expression": [
+     "Integrate",
+     [
+      "Power",
+      "s",
+      2
+     ],
+     [
+      "Tuple",
+      "x",
+      0,
+      2
+     ]
+    ]
+   },
+   "right_step": {
+    "text": "s written as \\(2x-x^2\\).",
+    "expression": [
+     "Integrate",
+     [
+      "Power",
+      [
+       "Add",
+       [
+        "Multiply",
+        -1,
+        [
+         "Power",
+         "x",
+         2
+        ]
+       ],
+       [
+        "Multiply",
+        2,
+        "x"
+       ]
+      ],
+      2
+     ],
+     [
+      "Tuple",
+      "x",
+      0,
+      2
+     ]
+    ]
+   },
+   "relation": "distinct",
+   "delivery": {
+    "mode": "step_reveal",
+    "reason": "rule 1",
+    "sources": []
+   }
+  },
+  {
+   "id": "LSN-CON-08015#prq-BC-PRQ-08004",
+   "type": "prerequisite_bridge",
+   "bands": [
+    "low",
+    "mid"
+   ],
+   "skills": [
+    "BC-SKL-08031"
+   ],
+   "sources": [
+    "BC-PRQ-08004"
+   ],
+   "evidence_tag": "inferred",
+   "prerequisite_id": "BC-PRQ-08004",
+   "text": "A distance along an axis is the larger value minus the smaller; a bare function value is only the distance to the axis."
+  }
+ ],
+ "checks": [
+  {
+   "id": "LSN-CON-08015#chk-1",
+   "check_kind": "completion",
+   "bands": [
+    "low",
+    "mid"
+   ],
+   "format": "short_answer",
+   "archetype_id": "BC-QA-08011",
+   "parameter_draw": {
+    "shape": "square",
+    "tool": "by_hand",
+    "left": 0,
+    "width": 2,
+    "bulge": 1,
+    "slope": 1,
+    "intercept": 1,
+    "height_ratio": 2,
+    "peak": 2,
+    "spread": 2,
+    "drop": "1",
+    "reach": "2",
+    "presentation": "formula"
+   },
+   "completes": "LSN-CON-08015#s4",
+   "stem": {
+    "text": "Evaluate \\(\\int_0^2 (2x-x^2)^2\\,dx\\).",
+    "command_verb": "evaluate"
+   },
+   "answer_key": {
+    "form": "numeric",
+    "mathjson": [
+     "Rational",
+     16,
+     15
+    ]
+   },
+   "worked_solution": [
+    {
+     "step": 1,
+     "text": "The integral.",
+     "mathjson": [
+      "Integrate",
+      [
+       "Power",
+       [
+        "Add",
+        [
+         "Multiply",
+         -1,
+         [
+          "Power",
+          "x",
+          2
+         ]
+        ],
+        [
+         "Multiply",
+         2,
+         "x"
+        ]
+       ],
+       2
+      ],
+      [
+       "Tuple",
+       "x",
+       0,
+       2
+      ]
+     ],
+     "relation": "new"
+    },
+    {
+     "step": 2,
+     "text": "Evaluated.",
+     "mathjson": [
+      "Rational",
+      16,
+      15
+     ],
+     "relation": "equivalent"
+    }
+   ],
+   "calculator_status": "no_calculator",
+   "representation": "BC-REP-08",
+   "skills": [
+    "BC-SKL-08031"
+   ]
+  },
+  {
+   "id": "LSN-CON-08015#chk-2",
+   "check_kind": "isomorph",
+   "bands": [
+    "low",
+    "mid"
+   ],
+   "format": "short_answer",
+   "archetype_id": "BC-QA-08011",
+   "parameter_draw": {
+    "shape": "square",
+    "tool": "by_hand",
+    "left": 1,
+    "width": 3,
+    "bulge": 1,
+    "slope": -1,
+    "intercept": 2,
+    "height_ratio": 2,
+    "peak": 2,
+    "spread": 2,
+    "drop": "1",
+    "reach": "2",
+    "presentation": "formula"
+   },
+   "stem": {
+    "text": "Base between \\(-x^2+4x-2\\) and \\(2-x\\) on \\([1,4]\\); square slices perpendicular to the x-axis. Find the volume.",
+    "command_verb": "find"
+   },
+   "answer_key": {
+    "form": "numeric",
+    "mathjson": [
+     "Rational",
+     81,
+     10
+    ]
+   },
+   "worked_solution": [
+    {
+     "step": 1,
+     "text": "Side.",
+     "mathjson": [
+      "Add",
+      -4,
+      [
+       "Multiply",
+       -1,
+       [
+        "Power",
+        "x",
+        2
+       ]
+      ],
+      [
+       "Multiply",
+       5,
+       "x"
+      ]
+     ],
+     "relation": "new"
+    },
+    {
+     "step": 2,
+     "text": "Simplified.",
+     "mathjson": [
+      "Add",
+      -4,
+      [
+       "Multiply",
+       -1,
+       [
+        "Power",
+        "x",
+        2
+       ]
+      ],
+      [
+       "Multiply",
+       5,
+       "x"
+      ]
+     ],
+     "relation": "equivalent"
+    },
+    {
+     "step": 3,
+     "text": "Integral of the side squared.",
+     "mathjson": [
+      "Integrate",
+      [
+       "Power",
+       [
+        "Add",
+        -4,
+        [
+         "Multiply",
+         -1,
+         [
+          "Power",
+          "x",
+          2
+         ]
+        ],
+        [
+         "Multiply",
+         5,
+         "x"
+        ]
+       ],
+       2
+      ],
+      [
+       "Tuple",
+       "x",
+       1,
+       4
+      ]
+     ],
+     "point_type_id": "BC-PT-99001",
+     "relation": "new"
+    },
+    {
+     "step": 4,
+     "text": "Evaluated.",
+     "mathjson": [
+      "Rational",
+      81,
+      10
+     ],
+     "relation": "equivalent"
+    }
+   ],
+   "calculator_status": "no_calculator",
+   "representation": "BC-REP-08",
+   "skills": [
+    "BC-SKL-08031"
+   ]
+  },
+  {
+   "id": "LSN-CON-08015#chk-3",
+   "check_kind": "mcq",
+   "bands": [
+    "low"
+   ],
+   "format": "mcq",
+   "archetype_id": "BC-QA-08011",
+   "parameter_draw": {
+    "shape": "square",
+    "tool": "by_hand",
+    "left": -1,
+    "width": 2,
+    "bulge": 2,
+    "slope": 0,
+    "intercept": 1,
+    "height_ratio": 2,
+    "peak": 2,
+    "spread": 2,
+    "drop": "1",
+    "reach": "2",
+    "presentation": "formula"
+   },
+   "stem": {
+    "text": "Base between \\(y=3-2x^2\\) and \\(y=1\\); square slices perpendicular to the x-axis. Which gives the volume?",
+    "command_verb": "identify"
+   },
+   "answer_key": {
+    "form": "numeric",
+    "mathjson": [
+     "Rational",
+     64,
+     15
+    ]
+   },
+   "worked_solution": [
+    {
+     "step": 1,
+     "text": "Side \\(2-2x^2\\) on \\([-1,1]\\).",
+     "mathjson": [
+      "Integrate",
+      [
+       "Power",
+       [
+        "Add",
+        2,
+        [
+         "Multiply",
+         -2,
+         [
+          "Power",
+          "x",
+          2
+         ]
+        ]
+       ],
+       2
+      ],
+      [
+       "Tuple",
+       "x",
+       -1,
+       1
+      ]
+     ],
+     "relation": "new"
+    },
+    {
+     "step": 2,
+     "text": "Evaluated.",
+     "mathjson": [
+      "Rational",
+      64,
+      15
+     ],
+     "relation": "equivalent"
+    }
+   ],
+   "options": [
+    {
+     "id": "A",
+     "is_key": false,
+     "error_path": "BC-ERR-08028",
+     "value": [
+      "Integrate",
+      [
+       "Power",
+       [
+        "Add",
+        3,
+        [
+         "Multiply",
+         -2,
+         [
+          "Power",
+          "x",
+          2
+         ]
+        ]
+       ],
+       2
+      ],
+      [
+       "Tuple",
+       "x",
+       -1,
+       1
+      ]
+     ],
+     "derivation": "the upper curve alone as the side"
+    },
+    {
+     "id": "B",
+     "is_key": true,
+     "error_path": null,
+     "value": [
+      "Integrate",
+      [
+       "Power",
+       [
+        "Add",
+        2,
+        [
+         "Multiply",
+         -2,
+         [
+          "Power",
+          "x",
+          2
+         ]
+        ]
+       ],
+       2
+      ],
+      [
+       "Tuple",
+       "x",
+       -1,
+       1
+      ]
+     ]
+    },
+    {
+     "id": "C",
+     "is_key": false,
+     "error_path": "BC-ERR-99011",
+     "value": [
+      "Multiply",
+      "Pi",
+      [
+       "Integrate",
+       [
+        "Power",
+        [
+         "Add",
+         2,
+         [
+          "Multiply",
+          -2,
+          [
+           "Power",
+           "x",
+           2
+          ]
+         ]
+        ],
+        2
+       ],
+       [
+        "Tuple",
+        "x",
+        -1,
+        1
+       ]
+      ]
+     ],
+     "derivation": "pi placed in front of a square slice"
+    },
+    {
+     "id": "D",
+     "is_key": false,
+     "error_path": "BC-ERR-99011",
+     "value": [
+      "Integrate",
+      [
+       "Add",
+       -1,
+       [
+        "Power",
+        [
+         "Add",
+         3,
+         [
+          "Multiply",
+          -2,
+          [
+           "Power",
+           "x",
+           2
+          ]
+         ]
+        ],
+        2
+       ]
+      ],
+      [
+       "Tuple",
+       "x",
+       -1,
+       1
+      ]
+     ],
+     "derivation": "each boundary squared separately"
+    }
+   ],
+   "calculator_status": "no_calculator",
+   "representation": "BC-REP-08",
+   "skills": [
+    "BC-SKL-08031"
+   ]
+  }
+ ],
+ "refresher": [
+  "LSN-CON-08015#s2",
+  "LSN-CON-08015#err-BC-ERR-08028",
+  "LSN-CON-08015#err-BC-ERR-99011",
+  "LSN-CON-08015#err-BC-ERR-99033",
+  "LSN-CON-08015#s4"
+ ],
+ "provenance": {
+  "author": "tools/lesson_transcribe.py",
+  "prompt_version": "generator/lesson_v1",
+  "design_path": "docs/lessons/unit-08/LSN-CON-08015.md",
+  "signed_off_by": "claude-opus-5-5",
+  "signed_off_at": "2026-09-29",
+  "not_human": true
+ }
+}

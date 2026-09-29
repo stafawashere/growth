@@ -1,0 +1,933 @@
+{
+ "id": "LSN-CON-08011",
+ "version": 1,
+ "kind": "concept",
+ "target_id": "BC-CON-08011",
+ "status": "signed_off",
+ "snapshot_digest": "a6a8ec9d3f59ab8f712e33d30cc22fc64bf2c478fbe7312e3e3118d319c6a42f",
+ "source_digest": "038ae2a9177a38a3e1df4de7ec0dbed77974f990e965bc4b51e74b8c41ff8121",
+ "read_minutes": {
+  "full": 3.1,
+  "brief": 3.0
+ },
+ "word_count": {
+  "full": 393,
+  "brief": 393
+ },
+ "sections": [
+  {
+   "id": "LSN-CON-08011#s1",
+   "type": "orientation",
+   "bands": [
+    "low",
+    "mid"
+   ],
+   "skills": [
+    "BC-SKL-08020",
+    "BC-SKL-08021"
+   ],
+   "sources": [
+    "BC-CON-08011",
+    "research/units/unit-08-applications-integration.md#8.4 Finding the Area Between Curves Expressed as Functions of x"
+   ],
+   "evidence_tag": "inferred",
+   "text": "A response takes the limits from where the curves meet, solving f(x) = g(x) by hand or on a calculator, or from the vertical lines bounding the region.",
+   "delivery": {
+    "mode": "figure",
+    "reason": "rule 4: BC-REP-02 on BC-SKL-08021; unit README delivery map",
+    "sources": [
+     "BC-SKL-08021"
+    ],
+    "spec": {
+     "kind": "graph",
+     "representations": [
+      "BC-REP-02"
+     ],
+     "window": {
+      "x": [
+       0,
+       4
+      ],
+      "y": [
+       -1,
+       6
+      ]
+     },
+     "curves": [
+      {
+       "expr": "-x**2 + 6*x - 4",
+       "domain": [
+        0,
+        4
+       ]
+      },
+      {
+       "expr": "2*x - 1",
+       "domain": [
+        0,
+        4
+       ]
+      }
+     ],
+     "shade": {
+      "between": [
+       "-x**2 + 6*x - 4",
+       "2*x - 1"
+      ],
+      "x": [
+       1,
+       3
+      ]
+     },
+     "labels": [
+      {
+       "text": "region enclosed by f and g",
+       "placement": "inside"
+      }
+     ]
+    },
+    "fallback": "the same shaded region static with its label",
+    "keyboard": "no control; the figure description is reached with Tab"
+   }
+  },
+  {
+   "id": "LSN-CON-08011#s2",
+   "type": "key_ideas",
+   "bands": [
+    "low",
+    "mid"
+   ],
+   "skills": [
+    "BC-SKL-08020",
+    "BC-SKL-08021"
+   ],
+   "sources": [
+    "BC-EK-CHA-5A1",
+    "ced:155",
+    "BC-SKL-08020",
+    "BC-SKL-08021",
+    "research/units/unit-08-applications-integration.md#8.4 Finding the Area Between Curves Expressed as Functions of x"
+   ],
+   "evidence_tag": "verified",
+   "ek_id": "BC-EK-CHA-5A1",
+   "depth": "core",
+   "text": "The limits are the inputs where the region begins and ends: vertical lines the stem names, or the solutions of f(x) = g(x). Every solution is found; those bounding the region are kept. On a calculator the crossings are stored, not retyped, so the area stays correct to three places.",
+   "notation": "intersection points as limits",
+   "quote": {
+    "text": "Areas of regions in the plane can be calculated with definite integrals.",
+    "source": "ced:155"
+   },
+   "delivery": {
+    "mode": "figure",
+    "reason": "rule 4: BC-REP-02 on BC-SKL-08021; not promoted, BC-QA-08008 difficulty_variables are presence flags",
+    "sources": [
+     "BC-SKL-08021",
+     "BC-QA-08008"
+    ],
+    "spec": {
+     "kind": "graph",
+     "representations": [
+      "BC-REP-02",
+      "BC-REP-01"
+     ],
+     "window": {
+      "x": [
+       0,
+       4
+      ],
+      "y": [
+       -1,
+       6
+      ]
+     },
+     "curves": [
+      {
+       "expr": "-x**2 + 6*x - 4",
+       "domain": [
+        0,
+        4
+       ]
+      },
+      {
+       "expr": "2*x - 1",
+       "domain": [
+        0,
+        4
+       ]
+      }
+     ],
+     "points": [
+      {
+       "at": [
+        1,
+        1
+       ],
+       "style": "filled"
+      },
+      {
+       "at": [
+        3,
+        5
+       ],
+       "style": "filled"
+      }
+     ],
+     "guides": [
+      {
+       "vertical": 1
+      },
+      {
+       "vertical": 3
+      }
+     ],
+     "labels": [
+      {
+       "text": "(1, 1): lower limit x = 1",
+       "placement": "inside"
+      },
+      {
+       "text": "(3, 5): upper limit x = 3",
+       "placement": "inside"
+      },
+      {
+       "text": "limits are x values, not y values",
+       "placement": "inside"
+      }
+     ]
+    },
+    "fallback": "the static region with both meeting points, their vertical guides and labels",
+    "keyboard": "no control; the figure description is reached with Tab"
+   }
+  },
+  {
+   "id": "LSN-CON-08011#s3",
+   "type": "strategy",
+   "bands": [
+    "low",
+    "mid"
+   ],
+   "skills": [
+    "BC-SKL-08020",
+    "BC-SKL-08021"
+   ],
+   "sources": [
+    "BC-QA-08008"
+   ],
+   "evidence_tag": "verified",
+   "archetype_id": "BC-QA-08008",
+   "cue": "The stem asks for the area enclosed by two graphs, from curve equations with no vertical line named.",
+   "method": "First written line: \\(f(x)=g(x)\\), solved for every input; the solutions are the limits.",
+   "rival": "Rival: limits from other inputs, such as y coordinates (BC-ERR-08019).",
+   "separating_feature": "No vertical line in the stem: the limits come from f = g."
+  },
+  {
+   "id": "LSN-CON-08011#s4",
+   "type": "worked_example",
+   "bands": [
+    "low",
+    "mid"
+   ],
+   "skills": [
+    "BC-SKL-08020",
+    "BC-SKL-08021"
+   ],
+   "sources": [
+    "BC-QA-08008"
+   ],
+   "evidence_tag": "inferred",
+   "archetype_id": "BC-QA-08008",
+   "parameter_draw": {
+    "left": 1,
+    "width": 2,
+    "bulge": 1,
+    "slope": 2,
+    "intercept": -1,
+    "lift": 1,
+    "presentation": "formula",
+    "limits": "intersections"
+   },
+   "problem": {
+    "text": "Find the area of the region enclosed by \\(f(x)=-x^2+6x-4\\) and \\(g(x)=2x-1\\).",
+    "command_verb": "find"
+   },
+   "calculator_status": "no_calculator",
+   "steps": [
+    {
+     "cue": "Enclosed, no vertical line: limits where the graphs meet.",
+     "why": "The region begins and ends at \\(f=g\\).",
+     "expression": [
+      "Equal",
+      [
+       "Add",
+       -4,
+       [
+        "Multiply",
+        -1,
+        [
+         "Power",
+         "x",
+         2
+        ]
+       ],
+       [
+        "Multiply",
+        6,
+        "x"
+       ]
+      ],
+      [
+       "Add",
+       -1,
+       [
+        "Multiply",
+        2,
+        "x"
+       ]
+      ]
+     ],
+     "relation": "new"
+    },
+    {
+     "cue": "Collect and factor.",
+     "why": "\\(x^2-4x+3=(x-1)(x-3)\\).",
+     "expression": [
+      "Set",
+      1,
+      3
+     ],
+     "relation": "solve",
+     "variable": "x"
+    },
+    {
+     "cue": "Limits 1 and 3; \\(f(2)=4\\) tops \\(g(2)=3\\).",
+     "why": "Upper minus lower between the meeting points.",
+     "expression": [
+      "Integrate",
+      [
+       "Add",
+       -3,
+       [
+        "Multiply",
+        -1,
+        [
+         "Power",
+         "x",
+         2
+        ]
+       ],
+       [
+        "Multiply",
+        4,
+        "x"
+       ]
+      ],
+      [
+       "Tuple",
+       "x",
+       1,
+       3
+      ]
+     ],
+     "point_type_id": "BC-PT-99001",
+     "relation": "new"
+    },
+    {
+     "cue": "Antiderivative at the limits.",
+     "why": "\\(F(x)=-x^3/3+2x^2-3x\\).",
+     "expression": [
+      "Rational",
+      4,
+      3
+     ],
+     "relation": "equivalent"
+    },
+    {
+     "cue": "The stem asks for an area.",
+     "why": "Exact, nonnegative.",
+     "expression": [
+      "Rational",
+      4,
+      3
+     ],
+     "relation": "equivalent"
+    }
+   ],
+   "answer": {
+    "form": "numeric",
+    "mathjson": [
+     "Rational",
+     4,
+     3
+    ]
+   },
+   "delivery": {
+    "mode": "step_reveal",
+    "reason": "rule 1",
+    "sources": []
+   }
+  },
+  {
+   "id": "LSN-CON-08011#s5",
+   "type": "what_a_reader_scores",
+   "bands": [
+    "low",
+    "mid"
+   ],
+   "skills": [
+    "BC-SKL-08020",
+    "BC-SKL-08021"
+   ],
+   "sources": [
+    "BC-PT-99001"
+   ],
+   "evidence_tag": "verified",
+   "example_id": "LSN-CON-08011#s4",
+   "lines": [
+    {
+     "point_type_id": "BC-PT-99001",
+     "text": "Definite integral expression with correct limits. Earned by: A definite integral whose limits match the requested interval and whose integrand matches the requested quantity, with or without the differential (sg-26:4, sg-22:2). Not earned by: An unsupported numerical value, or a definite integral whose bounds are wrong (sg-22:18). Notation: Differential may be omitted; sg-22:2 accepts dx written for dt. sg-23:8 treats a missing differential as recoverable for this point but restricts later eligibility."
+    }
+   ]
+  },
+  {
+   "id": "LSN-CON-08011#err-BC-ERR-08019",
+   "type": "common_error",
+   "bands": [
+    "low",
+    "mid"
+   ],
+   "skills": [
+    "BC-SKL-08020",
+    "BC-SKL-08021"
+   ],
+   "sources": [
+    "BC-ERR-08019",
+    "BC-MIS-08012"
+   ],
+   "evidence_tag": "inferred",
+   "error_id": "BC-ERR-08019",
+   "observed_behavior": "The integral is set up with limits that are not the boundary of the region or the interval requested.",
+   "scoring_consequence": "The answer point is lost, and in 2023 incorrect limits also made a response ineligible for the final area point (sg-23:16).",
+   "wrong_step": {
+    "text": "The y values 1 and 5 as limits.",
+    "expression": [
+     "Integrate",
+     [
+      "Add",
+      -3,
+      [
+       "Multiply",
+       -1,
+       [
+        "Power",
+        "x",
+        2
+       ]
+      ],
+      [
+       "Multiply",
+       4,
+       "x"
+      ]
+     ],
+     [
+      "Tuple",
+      "x",
+      1,
+      5
+     ]
+    ]
+   },
+   "right_step": {
+    "text": "The x values 1 and 3.",
+    "expression": [
+     "Integrate",
+     [
+      "Add",
+      -3,
+      [
+       "Multiply",
+       -1,
+       [
+        "Power",
+        "x",
+        2
+       ]
+      ],
+      [
+       "Multiply",
+       4,
+       "x"
+      ]
+     ],
+     [
+      "Tuple",
+      "x",
+      1,
+      3
+     ]
+    ]
+   },
+   "relation": "distinct",
+   "possible_reason": {
+    "misconception_id": "BC-MIS-08012",
+    "text": "chooses limits from the axes of the picture"
+   },
+   "delivery": {
+    "mode": "step_reveal",
+    "reason": "rule 1",
+    "sources": []
+   }
+  },
+  {
+   "id": "LSN-CON-08011#err-BC-ERR-99019",
+   "type": "common_error",
+   "bands": [
+    "low",
+    "mid"
+   ],
+   "skills": [
+    "BC-SKL-08021"
+   ],
+   "sources": [
+    "BC-ERR-99019"
+   ],
+   "evidence_tag": "inferred",
+   "error_id": "BC-ERR-99019",
+   "observed_behavior": "Responses report fewer than three digits after the decimal point, round an intermediate value before it is used again, or read a value off a trace rather than solving for it.",
+   "scoring_consequence": "The answer point is not earned; the report notes this recurs across several parts of the same response.",
+   "wrong_step": {
+    "text": "1.3",
+    "expression": 1.3
+   },
+   "right_step": {
+    "text": "4/3, or 1.333",
+    "expression": [
+     "Rational",
+     4,
+     3
+    ]
+   },
+   "relation": "distinct",
+   "delivery": {
+    "mode": "step_reveal",
+    "reason": "rule 1",
+    "sources": []
+   }
+  },
+  {
+   "id": "LSN-CON-08011#prq-BC-PRQ-08001",
+   "type": "prerequisite_bridge",
+   "bands": [
+    "low",
+    "mid"
+   ],
+   "skills": [
+    "BC-SKL-08020"
+   ],
+   "sources": [
+    "BC-PRQ-08001"
+   ],
+   "evidence_tag": "inferred",
+   "prerequisite_id": "BC-PRQ-08001",
+   "text": "Two expressions set equal and every solution in the interval found, by hand or solver; else the limits are missing."
+  },
+  {
+   "id": "LSN-CON-08011#prq-BC-PRQ-08006",
+   "type": "prerequisite_bridge",
+   "bands": [
+    "low",
+    "mid"
+   ],
+   "skills": [
+    "BC-SKL-08021"
+   ],
+   "sources": [
+    "BC-PRQ-08006"
+   ],
+   "evidence_tag": "inferred",
+   "prerequisite_id": "BC-PRQ-08006",
+   "text": "Decimals kept to three places, nothing rounded mid computation; else a right setup loses its value."
+  }
+ ],
+ "checks": [
+  {
+   "id": "LSN-CON-08011#chk-1",
+   "check_kind": "completion",
+   "bands": [
+    "low",
+    "mid"
+   ],
+   "format": "short_answer",
+   "archetype_id": "BC-QA-08008",
+   "parameter_draw": {
+    "left": 1,
+    "width": 2,
+    "bulge": 1,
+    "slope": 2,
+    "intercept": -1,
+    "lift": 1,
+    "presentation": "formula",
+    "limits": "intersections"
+   },
+   "completes": "LSN-CON-08011#s4",
+   "stem": {
+    "text": "The limits are 1 and 3. Evaluate \\(\\int_1^3 (-x^2+4x-3)\\,dx\\).",
+    "command_verb": "evaluate"
+   },
+   "answer_key": {
+    "form": "numeric",
+    "mathjson": [
+     "Rational",
+     4,
+     3
+    ]
+   },
+   "worked_solution": [
+    {
+     "step": 1,
+     "text": "The integral.",
+     "mathjson": [
+      "Integrate",
+      [
+       "Add",
+       -3,
+       [
+        "Multiply",
+        -1,
+        [
+         "Power",
+         "x",
+         2
+        ]
+       ],
+       [
+        "Multiply",
+        4,
+        "x"
+       ]
+      ],
+      [
+       "Tuple",
+       "x",
+       1,
+       3
+      ]
+     ],
+     "relation": "new"
+    },
+    {
+     "step": 2,
+     "text": "\\(F(3)-F(1)\\).",
+     "mathjson": [
+      "Rational",
+      4,
+      3
+     ],
+     "relation": "equivalent"
+    }
+   ],
+   "calculator_status": "no_calculator",
+   "representation": "BC-REP-02",
+   "skills": [
+    "BC-SKL-08020"
+   ]
+  },
+  {
+   "id": "LSN-CON-08011#chk-2",
+   "check_kind": "isomorph",
+   "bands": [
+    "low",
+    "mid"
+   ],
+   "format": "short_answer",
+   "archetype_id": "BC-QA-08008",
+   "parameter_draw": {
+    "left": -1,
+    "width": 4,
+    "bulge": 1,
+    "slope": -1,
+    "intercept": 2,
+    "lift": 2,
+    "presentation": "formula",
+    "limits": "intersections"
+   },
+   "stem": {
+    "text": "Find the area enclosed by \\(f(x)=-x^2+x+5\\) and \\(g(x)=2-x\\).",
+    "command_verb": "find"
+   },
+   "answer_key": {
+    "form": "numeric",
+    "mathjson": [
+     "Rational",
+     32,
+     3
+    ]
+   },
+   "worked_solution": [
+    {
+     "step": 1,
+     "text": "\\(f=g\\).",
+     "mathjson": [
+      "Equal",
+      [
+       "Add",
+       5,
+       "x",
+       [
+        "Multiply",
+        -1,
+        [
+         "Power",
+         "x",
+         2
+        ]
+       ]
+      ],
+      [
+       "Add",
+       2,
+       [
+        "Multiply",
+        -1,
+        "x"
+       ]
+      ]
+     ],
+     "relation": "new"
+    },
+    {
+     "step": 2,
+     "text": "Limits.",
+     "mathjson": [
+      "Set",
+      -1,
+      3
+     ],
+     "relation": "solve",
+     "variable": "x"
+    },
+    {
+     "step": 3,
+     "text": "The integral.",
+     "mathjson": [
+      "Integrate",
+      [
+       "Add",
+       3,
+       [
+        "Multiply",
+        -1,
+        [
+         "Power",
+         "x",
+         2
+        ]
+       ],
+       [
+        "Multiply",
+        2,
+        "x"
+       ]
+      ],
+      [
+       "Tuple",
+       "x",
+       -1,
+       3
+      ]
+     ],
+     "point_type_id": "BC-PT-99001",
+     "relation": "new"
+    },
+    {
+     "step": 4,
+     "text": "Evaluated.",
+     "mathjson": [
+      "Rational",
+      32,
+      3
+     ],
+     "relation": "equivalent"
+    }
+   ],
+   "calculator_status": "no_calculator",
+   "representation": "BC-REP-02",
+   "skills": [
+    "BC-SKL-08020"
+   ]
+  },
+  {
+   "id": "LSN-CON-08011#chk-3",
+   "check_kind": "mcq",
+   "bands": [
+    "low"
+   ],
+   "format": "mcq",
+   "archetype_id": "BC-QA-08008",
+   "parameter_draw": {
+    "left": 0,
+    "width": 2,
+    "bulge": 2,
+    "slope": 1,
+    "intercept": -2,
+    "lift": 1,
+    "presentation": "formula",
+    "limits": "intersections"
+   },
+   "stem": {
+    "text": "What is the area enclosed by \\(f(x)=-2x^2+5x-2\\) and \\(g(x)=x-2\\)?",
+    "command_verb": "find"
+   },
+   "answer_key": {
+    "form": "numeric",
+    "mathjson": [
+     "Rational",
+     8,
+     3
+    ]
+   },
+   "worked_solution": [
+    {
+     "step": 1,
+     "text": "\\(f=g\\).",
+     "mathjson": [
+      "Equal",
+      [
+       "Add",
+       -2,
+       [
+        "Multiply",
+        -2,
+        [
+         "Power",
+         "x",
+         2
+        ]
+       ],
+       [
+        "Multiply",
+        5,
+        "x"
+       ]
+      ],
+      [
+       "Add",
+       -2,
+       "x"
+      ]
+     ],
+     "relation": "new"
+    },
+    {
+     "step": 2,
+     "text": "Limits 0 and 2.",
+     "mathjson": [
+      "Set",
+      0,
+      2
+     ],
+     "relation": "solve",
+     "variable": "x"
+    },
+    {
+     "step": 3,
+     "text": "The integral.",
+     "mathjson": [
+      "Integrate",
+      [
+       "Add",
+       [
+        "Multiply",
+        -2,
+        [
+         "Power",
+         "x",
+         2
+        ]
+       ],
+       [
+        "Multiply",
+        4,
+        "x"
+       ]
+      ],
+      [
+       "Tuple",
+       "x",
+       0,
+       2
+      ]
+     ],
+     "relation": "new"
+    },
+    {
+     "step": 4,
+     "text": "Evaluated.",
+     "mathjson": [
+      "Rational",
+      8,
+      3
+     ],
+     "relation": "equivalent"
+    }
+   ],
+   "options": [
+    {
+     "id": "A",
+     "is_key": false,
+     "error_path": "BC-ERR-08019",
+     "value": [
+      "Rational",
+      -40,
+      3
+     ],
+     "derivation": "the y coordinates -2 and 0 of the meeting points used as limits"
+    },
+    {
+     "id": "B",
+     "is_key": false,
+     "error_path": "BC-ERR-99019",
+     "value": 2.7,
+     "derivation": "8/3 rounded to one decimal place"
+    },
+    {
+     "id": "C",
+     "is_key": true,
+     "error_path": null,
+     "value": [
+      "Rational",
+      8,
+      3
+     ]
+    },
+    {
+     "id": "D",
+     "is_key": false,
+     "error_path": "BC-ERR-99019",
+     "value": 2.66,
+     "derivation": "8/3 truncated to two decimal places"
+    }
+   ],
+   "calculator_status": "no_calculator",
+   "representation": "BC-REP-02",
+   "skills": [
+    "BC-SKL-08020"
+   ]
+  }
+ ],
+ "refresher": [
+  "LSN-CON-08011#s2",
+  "LSN-CON-08011#err-BC-ERR-08019",
+  "LSN-CON-08011#err-BC-ERR-99019",
+  "LSN-CON-08011#s4"
+ ],
+ "provenance": {
+  "author": "tools/lesson_transcribe.py",
+  "prompt_version": "generator/lesson_v1",
+  "design_path": "docs/lessons/unit-08/LSN-CON-08011.md",
+  "signed_off_by": "claude-opus-5-5",
+  "signed_off_at": "2026-09-29",
+  "not_human": true
+ }
+}

@@ -1,0 +1,801 @@
+{
+ "id": "LSN-CON-01013",
+ "version": 1,
+ "kind": "concept",
+ "target_id": "BC-CON-01013",
+ "status": "signed_off",
+ "snapshot_digest": "a6a8ec9d3f59ab8f712e33d30cc22fc64bf2c478fbe7312e3e3118d319c6a42f",
+ "source_digest": "872d0bf44f9b0e596e33f8e738bb7db4d438d4bc2f4192b25f45b864c2fbd108",
+ "read_minutes": {
+  "full": 4.1,
+  "brief": 2.9
+ },
+ "word_count": {
+  "full": 493,
+  "brief": 358
+ },
+ "sections": [
+  {
+   "id": "LSN-CON-01013#s1",
+   "type": "orientation",
+   "bands": [
+    "low",
+    "mid"
+   ],
+   "skills": [
+    "BC-SKL-01043",
+    "BC-SKL-01044",
+    "BC-SKL-01045"
+   ],
+   "sources": [
+    "BC-CON-01013",
+    "research/units/unit-01-limits-continuity.md#1.11 Defining Continuity at a Point"
+   ],
+   "evidence_tag": "inferred",
+   "text": "A response checks three conditions at the named input, the value, the limit and their agreement, and gives the reason: the condition that fails with the values that show it. Questions ask whether a piecewise function is continuous at a boundary.",
+   "delivery": {
+    "mode": "figure",
+    "reason": "rule 3: BC-REP-02 on BC-SKL-01044 (unit-01 README delivery map)",
+    "sources": [
+     "BC-SKL-01044"
+    ],
+    "spec": {
+     "kind": "graph",
+     "window": {
+      "x": [
+       0,
+       4
+      ],
+      "y": [
+       -2,
+       7
+      ]
+     },
+     "curves": [
+      {
+       "expr": "2*x - 1",
+       "label": {
+        "text": "f",
+        "placement": "inside"
+       }
+      }
+     ],
+     "points": [
+      {
+       "x": 2,
+       "y": 3,
+       "style": "open",
+       "label": {
+        "text": "limit 3",
+        "placement": "inside"
+       }
+      },
+      {
+       "x": 2,
+       "y": -1,
+       "style": "closed",
+       "label": {
+        "text": "f(2) = -1",
+        "placement": "inside"
+       }
+      }
+     ],
+     "labels": [
+      {
+       "text": "value, limit, agreement",
+       "placement": "inside"
+      }
+     ],
+     "representations": [
+      "graph"
+     ]
+    },
+    "fallback": "Alt text: the line \\(y=2x-1\\) with an open circle at \\((2,3)\\) and a filled point at \\((2,-1)\\).",
+    "keyboard": "none needed: a static figure"
+   }
+  },
+  {
+   "id": "LSN-CON-01013#s2",
+   "type": "key_ideas",
+   "bands": [
+    "low",
+    "mid"
+   ],
+   "skills": [
+    "BC-SKL-01043",
+    "BC-SKL-01044",
+    "BC-SKL-01045"
+   ],
+   "sources": [
+    "BC-EK-LIM-2A2",
+    "ced:48",
+    "sg-25:12",
+    "research/units/unit-01-limits-continuity.md#1.11 Defining Continuity at a Point"
+   ],
+   "evidence_tag": "verified",
+   "ek_id": "BC-EK-LIM-2A2",
+   "depth": "core",
+   "text": "\\(f\\) is continuous at \\(x=c\\) when \\(f(c)\\) exists, \\(\\lim_{x\\to c}f(x)\\) exists, and the two are equal (BC-EK-LIM-2A2, ced:48). They are separate demands, and the third presupposes the first two. A reason names the failed condition with its values, not the definition; a bare continuity statement earns no credit in sg-25:12.",
+   "notation": "continuous at a point; the three conditions written as separate lines",
+   "quote": {
+    "text": "A function f is continuous at x equals c provided that f of c exists",
+    "source": "ced:48"
+   },
+   "delivery": {
+    "mode": "interactive",
+    "reason": "rule 3 promoted: BC-REP-02 on BC-SKL-01044, and BC-QA-01006 difficulty_variables vary whether the function value is defined at the boundary and whether the one sided limits agree; the stem asks for a reading of which condition fails",
+    "sources": [
+     "BC-SKL-01044",
+     "BC-QA-01006"
+    ],
+    "spec": {
+     "kind": "graph",
+     "window": {
+      "x": [
+       0,
+       4
+      ],
+      "y": [
+       -5,
+       7
+      ]
+     },
+     "curves": [
+      {
+       "expr": "2*x - 1",
+       "label": {
+        "text": "f for x not 2",
+        "placement": "inside"
+       }
+      }
+     ],
+     "points": [
+      {
+       "x": 2,
+       "y": 3,
+       "style": "open",
+       "label": {
+        "text": "limit 3",
+        "placement": "inside"
+       }
+      },
+      {
+       "x": 2,
+       "y": "c",
+       "style": "closed",
+       "draggable": false,
+       "label": {
+        "text": "f(2) = c",
+        "placement": "inside"
+       }
+      }
+     ],
+     "controls": [
+      {
+       "type": "slider",
+       "parameter": "c",
+       "domain": {
+        "min": -4,
+        "max": 4,
+        "step": 1
+       },
+       "initial": -1,
+       "label": {
+        "text": "f(2)",
+        "placement": "inside"
+       }
+      }
+     ],
+     "question": {
+      "text": "At this setting, which of the three conditions fails, if any?",
+      "placement": "inside"
+     },
+     "labels": [
+      {
+       "text": "x = 2",
+       "placement": "inside"
+      }
+     ],
+     "representations": [
+      "graph"
+     ]
+    },
+    "fallback": "Static figure at \\(c=-1\\) with a table of the settings \\(c=-1\\) and \\(c=3\\) and the verdict for each.",
+    "keyboard": "Tab focuses the slider; left and right arrow keys move c by 1; Home and End jump to -4 and 4."
+   }
+  },
+  {
+   "id": "LSN-CON-01013#s3",
+   "type": "strategy",
+   "bands": [
+    "low",
+    "mid"
+   ],
+   "skills": [
+    "BC-SKL-01043",
+    "BC-SKL-01044",
+    "BC-SKL-01045"
+   ],
+   "sources": [
+    "BC-QA-01006"
+   ],
+   "evidence_tag": "inferred",
+   "archetype_id": "BC-QA-01006",
+   "cue": "Is the given function continuous at the named input? Justify.",
+   "method": "First line: evaluate the function at the named input.",
+   "rival": "Rival: continuity from matching one sided limits alone (BC-ERR-01015).",
+   "separating_feature": "Agreeing limits settle condition two only; the value still has to match them."
+  },
+  {
+   "id": "LSN-CON-01013#s4",
+   "type": "worked_example",
+   "bands": [
+    "low",
+    "mid"
+   ],
+   "skills": [
+    "BC-SKL-01043",
+    "BC-SKL-01044",
+    "BC-SKL-01045"
+   ],
+   "sources": [
+    "BC-QA-01006"
+   ],
+   "evidence_tag": "inferred",
+   "archetype_id": "BC-QA-01006",
+   "parameter_draw": {
+    "boundary": 2,
+    "break_kind": "value",
+    "closed_side": "right",
+    "left_limit": 3,
+    "right_limit": 3,
+    "point_value": -1,
+    "left_slope": 2,
+    "right_slope": 2
+   },
+   "problem": {
+    "text": "Let \\(f(x)=\\frac{2x^2-5x+2}{x-2}\\) for \\(x\\ne2\\), \\(f(2)=-1\\). Is \\(f\\) continuous at \\(x=2\\)? Justify.",
+    "command_verb": "determine"
+   },
+   "calculator_status": "no_calculator",
+   "steps": [
+    {
+     "cue": "The stem names \\(x=2\\): evaluate \\(f(2)\\) first.",
+     "why": "The second line gives \\(f(2)=-1\\): condition one holds.",
+     "expression": -1,
+     "relation": "new"
+    },
+    {
+     "cue": "For \\(x\\ne2\\) the quotient gives zero over zero at 2.",
+     "why": "Rewrite before taking the limit.",
+     "expression": [
+      "Multiply",
+      [
+       "Power",
+       [
+        "Add",
+        -2,
+        "x"
+       ],
+       -1
+      ],
+      [
+       "Add",
+       2,
+       [
+        "Multiply",
+        -5,
+        "x"
+       ],
+       [
+        "Multiply",
+        2,
+        [
+         "Power",
+         "x",
+         2
+        ]
+       ]
+      ]
+     ],
+     "relation": "new"
+    },
+    {
+     "cue": "\\(2x^2-5x+2=(x-2)(2x-1)\\): a common factor.",
+     "why": "Dividing out \\(x-2\\) is valid for \\(x\\ne2\\).",
+     "expression": [
+      "Add",
+      -1,
+      [
+       "Multiply",
+       2,
+       "x"
+      ]
+     ],
+     "relation": "equivalent"
+    },
+    {
+     "cue": "The same rule holds on both sides of 2.",
+     "why": "Both one sided limits are 3: condition two holds.",
+     "expression": 3,
+     "relation": "limit",
+     "variable": "x",
+     "point": "2"
+    },
+    {
+     "cue": "Compare the limit with the value.",
+     "why": "\\(3\\ne-1\\): condition three fails, so \\(f\\) is not continuous at 2."
+    }
+   ],
+   "answer": {
+    "form": "statement",
+    "mathjson": "x = 2"
+   },
+   "delivery": {
+    "mode": "step_reveal",
+    "reason": "rule 1",
+    "sources": []
+   }
+  },
+  {
+   "id": "LSN-CON-01013#err-BC-ERR-01001",
+   "type": "common_error",
+   "bands": [
+    "low",
+    "mid"
+   ],
+   "skills": [
+    "BC-SKL-01044"
+   ],
+   "sources": [
+    "BC-ERR-01001",
+    "BC-MIS-01001"
+   ],
+   "evidence_tag": "inferred",
+   "error_id": "BC-ERR-01001",
+   "observed_behavior": "The response gives the plotted or defined value of the function at the input in place of the value the function approaches there.",
+   "scoring_consequence": "The reading point is lost, and in a continuity part the comparison of limit with value collapses.",
+   "wrong_step": {
+    "text": "The limit at 2 is reported as \\(f(2)=-1\\).",
+    "expression": -1
+   },
+   "right_step": {
+    "text": "The limit is 3, from \\(2x-1\\).",
+    "expression": 3
+   },
+   "relation": "distinct",
+   "possible_reason": {
+    "misconception_id": "BC-MIS-01001",
+    "text": "treats the limit as another name for evaluation"
+   },
+   "delivery": {
+    "mode": "step_reveal",
+    "reason": "rule 1",
+    "sources": []
+   }
+  },
+  {
+   "id": "LSN-CON-01013#err-BC-ERR-01014",
+   "type": "common_error",
+   "bands": [
+    "low",
+    "mid"
+   ],
+   "skills": [
+    "BC-SKL-01043",
+    "BC-SKL-01044"
+   ],
+   "sources": [
+    "BC-ERR-01014",
+    "BC-MIS-01009"
+   ],
+   "evidence_tag": "inferred",
+   "error_id": "BC-ERR-01014",
+   "observed_behavior": "The response concludes continuity at a point because the function is defined there.",
+   "scoring_consequence": "The justification point is lost because the limit condition is never addressed.",
+   "wrong_step": {
+    "text": "\\(f(2)=-1\\) exists, so \\(f\\) is called continuous.",
+    "expression": -1
+   },
+   "right_step": {
+    "text": "The limit, 3, is also needed, and it differs.",
+    "expression": 3
+   },
+   "relation": "distinct",
+   "possible_reason": {
+    "misconception_id": "BC-MIS-01009",
+    "text": "holds one of the three conditions as the whole definition"
+   },
+   "delivery": {
+    "mode": "step_reveal",
+    "reason": "rule 1",
+    "sources": []
+   }
+  },
+  {
+   "id": "LSN-CON-01013#err-BC-ERR-01015",
+   "type": "common_error",
+   "bands": [
+    "low",
+    "mid"
+   ],
+   "skills": [
+    "BC-SKL-01044"
+   ],
+   "sources": [
+    "BC-ERR-01015",
+    "BC-MIS-01009"
+   ],
+   "evidence_tag": "inferred",
+   "error_id": "BC-ERR-01015",
+   "observed_behavior": "The response concludes continuity because the two one sided limits agree, without comparing them with the function value.",
+   "scoring_consequence": "The justification point is lost, and a parameter solved this way can be wrong when the defined value differs.",
+   "wrong_step": {
+    "text": "The sides are compared: \\(3-3=0\\), so \\(f\\) is called continuous.",
+    "expression": 0
+   },
+   "right_step": {
+    "text": "Limit against value: \\(3-(-1)=4\\ne0\\).",
+    "expression": 4
+   },
+   "relation": "distinct",
+   "possible_reason": {
+    "misconception_id": "BC-MIS-01009",
+    "text": "most often that the function is defined there or that the one sided limits agree"
+   },
+   "delivery": {
+    "mode": "step_reveal",
+    "reason": "rule 1",
+    "sources": []
+   }
+  },
+  {
+   "id": "LSN-CON-01013#err-BC-ERR-01016",
+   "type": "common_error",
+   "bands": [
+    "low",
+    "mid"
+   ],
+   "skills": [
+    "BC-SKL-01045"
+   ],
+   "sources": [
+    "BC-ERR-01016",
+    "BC-MIS-01010"
+   ],
+   "evidence_tag": "inferred",
+   "error_id": "BC-ERR-01016",
+   "observed_behavior": "The response asserts that the function is or is not continuous because of the definition of continuity, without naming the condition that fails or the values that show it.",
+   "scoring_consequence": "The justification point is lost; a scoring guideline requires the reason rather than the assertion (sg-25:12).",
+   "wrong_step": {
+    "text": "Not continuous, by the definition: \\(\\lim_{x\\to2}f(x)\\ne f(2)\\) with no values.",
+    "expression": [
+     "Add",
+     [
+      "Multiply",
+      -1,
+      [
+       "Apply",
+       "f",
+       2
+      ]
+     ],
+     [
+      "Limit",
+      [
+       "Apply",
+       "f",
+       "x"
+      ],
+      "x",
+      2,
+      "+"
+     ]
+    ]
+   },
+   "right_step": {
+    "text": "\\(\\lim_{x\\to2}f(x)=3\\) and \\(f(2)=-1\\) differ.",
+    "expression": 4
+   },
+   "relation": "distinct",
+   "possible_reason": {
+    "misconception_id": "BC-MIS-01010",
+    "text": "treats naming the definition or the theorem as the argument"
+   },
+   "delivery": {
+    "mode": "step_reveal",
+    "reason": "rule 1",
+    "sources": []
+   }
+  },
+  {
+   "id": "LSN-CON-01013#prq-BC-PRQ-01003",
+   "type": "prerequisite_bridge",
+   "bands": [
+    "low",
+    "mid"
+   ],
+   "skills": [
+    "BC-SKL-01044"
+   ],
+   "sources": [
+    "BC-PRQ-01003"
+   ],
+   "evidence_tag": "inferred",
+   "prerequisite_id": "BC-PRQ-01003",
+   "text": "Pick the branch of a piecewise rule for an input. Evaluating the wrong branch at a boundary marks this gap."
+  },
+  {
+   "id": "LSN-CON-01013#prq-BC-PRQ-06005",
+   "type": "prerequisite_bridge",
+   "bands": [
+    "low",
+    "mid"
+   ],
+   "skills": [
+    "BC-SKL-01043",
+    "BC-SKL-01045"
+   ],
+   "sources": [
+    "BC-PRQ-06005"
+   ],
+   "evidence_tag": "inferred",
+   "prerequisite_id": "BC-PRQ-06005",
+   "text": "Tell a function from its value at a point, \\(f\\) from \\(f(c)\\). Values read for the wrong input mark this gap."
+  }
+ ],
+ "checks": [
+  {
+   "id": "LSN-CON-01013#chk-1",
+   "check_kind": "completion",
+   "bands": [
+    "low",
+    "mid"
+   ],
+   "format": "short_answer",
+   "archetype_id": "BC-QA-01006",
+   "parameter_draw": {
+    "boundary": 2,
+    "break_kind": "value",
+    "closed_side": "right",
+    "left_limit": 3,
+    "right_limit": 3,
+    "point_value": -1,
+    "left_slope": 2,
+    "right_slope": 2
+   },
+   "completes": "LSN-CON-01013#s4",
+   "stem": {
+    "text": "For the \\(f\\) above, \\(f(2)=-1\\) and \\(\\lim_{x\\to2}f(x)=3\\). Is \\(f\\) continuous at 2? Name the failed condition.",
+    "command_verb": "determine"
+   },
+   "answer_key": {
+    "form": "statement",
+    "mathjson": "x = 2"
+   },
+   "worked_solution": [
+    {
+     "step": 1,
+     "text": "Limit minus value is 4, not 0: condition three fails.",
+     "mathjson": 4,
+     "relation": "new"
+    }
+   ],
+   "calculator_status": "no_calculator",
+   "representation": "BC-REP-01",
+   "skills": [
+    "BC-SKL-01045"
+   ]
+  },
+  {
+   "id": "LSN-CON-01013#chk-2",
+   "check_kind": "isomorph",
+   "bands": [
+    "low",
+    "mid"
+   ],
+   "format": "short_answer",
+   "archetype_id": "BC-QA-01006",
+   "parameter_draw": {
+    "boundary": -1,
+    "break_kind": "jump",
+    "closed_side": "left",
+    "left_limit": 2,
+    "right_limit": -3,
+    "left_slope": 1,
+    "right_slope": -2,
+    "point_value": 0
+   },
+   "stem": {
+    "text": "Let \\(f(x)=x+3\\) for \\(x\\le-1\\), \\(f(x)=-2x-5\\) for \\(x>-1\\). Is \\(f\\) continuous at \\(-1\\)? Justify.",
+    "command_verb": "determine"
+   },
+   "answer_key": {
+    "form": "statement",
+    "mathjson": "x = -1"
+   },
+   "worked_solution": [
+    {
+     "step": 1,
+     "text": "Left branch.",
+     "mathjson": [
+      "Add",
+      3,
+      "x"
+     ],
+     "relation": "new"
+    },
+    {
+     "step": 2,
+     "text": "Left limit 2.",
+     "mathjson": 2,
+     "relation": "limit",
+     "variable": "x",
+     "point": "-1",
+     "dir": "-"
+    },
+    {
+     "step": 3,
+     "text": "Right branch.",
+     "mathjson": [
+      "Add",
+      -5,
+      [
+       "Multiply",
+       -2,
+       "x"
+      ]
+     ],
+     "relation": "new"
+    },
+    {
+     "step": 4,
+     "text": "Right limit \\(-3\\): no limit, condition two fails.",
+     "mathjson": -3,
+     "relation": "limit",
+     "variable": "x",
+     "point": "-1",
+     "dir": "+"
+    }
+   ],
+   "calculator_status": "no_calculator",
+   "representation": "BC-REP-01",
+   "skills": [
+    "BC-SKL-01044",
+    "BC-SKL-01045"
+   ]
+  },
+  {
+   "id": "LSN-CON-01013#chk-3",
+   "check_kind": "mcq",
+   "bands": [
+    "low"
+   ],
+   "format": "mcq",
+   "archetype_id": "BC-QA-01006",
+   "parameter_draw": {
+    "boundary": 0,
+    "break_kind": "value",
+    "closed_side": "left",
+    "left_limit": -2,
+    "right_limit": -2,
+    "point_value": 1,
+    "left_slope": 3,
+    "right_slope": 3
+   },
+   "stem": {
+    "text": "Let \\(f(x)=\\frac{3x^2-2x}{x}\\) for \\(x\\ne0\\), \\(f(0)=1\\). Which response gives a correct verdict with its reason?",
+    "command_verb": "identify"
+   },
+   "answer_key": {
+    "form": "statement",
+    "mathjson": "x = 0"
+   },
+   "worked_solution": [
+    {
+     "step": 1,
+     "text": "The quotient.",
+     "mathjson": [
+      "Multiply",
+      [
+       "Power",
+       "x",
+       -1
+      ],
+      [
+       "Add",
+       [
+        "Multiply",
+        -2,
+        "x"
+       ],
+       [
+        "Multiply",
+        3,
+        [
+         "Power",
+         "x",
+         2
+        ]
+       ]
+      ]
+     ],
+     "relation": "new"
+    },
+    {
+     "step": 2,
+     "text": "Divide out \\(x\\).",
+     "mathjson": [
+      "Add",
+      -2,
+      [
+       "Multiply",
+       3,
+       "x"
+      ]
+     ],
+     "relation": "equivalent"
+    },
+    {
+     "step": 3,
+     "text": "Limit \\(-2\\), against \\(f(0)=1\\).",
+     "mathjson": -2,
+     "relation": "limit",
+     "variable": "x",
+     "point": "0"
+    }
+   ],
+   "options": [
+    {
+     "id": "A",
+     "is_key": false,
+     "error_path": "BC-ERR-01014",
+     "label": "Continuous at 0, because \\(f(0)=1\\) is defined.",
+     "derivation": "the value alone"
+    },
+    {
+     "id": "B",
+     "is_key": false,
+     "error_path": "BC-ERR-01015",
+     "label": "Continuous at 0, because both one sided limits equal \\(-2\\).",
+     "derivation": "matching limits alone"
+    },
+    {
+     "id": "C",
+     "is_key": true,
+     "error_path": null,
+     "label": "Not continuous at 0: \\(\\lim_{x\\to0}f(x)=-2\\) but \\(f(0)=1\\)."
+    },
+    {
+     "id": "D",
+     "is_key": false,
+     "error_path": "BC-ERR-01016",
+     "label": "Not continuous at 0, by the definition of continuity.",
+     "derivation": "definition restated without values"
+    }
+   ],
+   "calculator_status": "no_calculator",
+   "representation": "BC-REP-01",
+   "skills": [
+    "BC-SKL-01044",
+    "BC-SKL-01045"
+   ]
+  }
+ ],
+ "refresher": [
+  "LSN-CON-01013#s2",
+  "LSN-CON-01013#err-BC-ERR-01001",
+  "LSN-CON-01013#err-BC-ERR-01014",
+  "LSN-CON-01013#err-BC-ERR-01015",
+  "LSN-CON-01013#err-BC-ERR-01016",
+  "LSN-CON-01013#s4"
+ ],
+ "provenance": {
+  "author": "tools/lesson_transcribe.py",
+  "prompt_version": "generator/lesson_v1",
+  "design_path": "docs/lessons/unit-01/LSN-CON-01013.md",
+  "signed_off_by": "claude-opus-5-5",
+  "signed_off_at": "2026-09-29",
+  "not_human": true
+ }
+}

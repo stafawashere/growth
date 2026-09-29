@@ -1,0 +1,148 @@
+{
+ "lesson_id": "LSN-CON-08001",
+ "version": 1,
+ "compared_on": "2026-09-29",
+ "auditor": "claude-opus-5-5",
+ "resolve": {
+  "date": "2026-09-29",
+  "problems": 4,
+  "agreed": 4,
+  "judgments_pending": 0,
+  "all_agree": true,
+  "verdicts": [
+   {
+    "id": "LSN-CON-08001#ex-1",
+    "agree": true,
+    "detail": "agree (symbolic)",
+    "method": "(1/3) integral of W from 0 to 3, numerically."
+   },
+   {
+    "id": "LSN-CON-08001#chk-1",
+    "agree": true,
+    "detail": "agree (symbolic)",
+    "method": "Numerical integration."
+   },
+   {
+    "id": "LSN-CON-08001#chk-2",
+    "agree": true,
+    "detail": "agree (symbolic)",
+    "method": "(1/2) integral from 0 to 2, numerically."
+   },
+   {
+    "id": "LSN-CON-08001#chk-3",
+    "agree": true,
+    "detail": "agree (symbolic)",
+    "method": "(1/4) integral from 0 to 4, numerically."
+   }
+  ],
+  "answers_file": "/tmp/claude-0/-home-user-growth/ac029253-8ff0-5a4b-8b5f-cdcaf5e8ff8d/scratchpad/verify/answers_11.json"
+ },
+ "audit": {
+  "date": "2026-09-29",
+  "auditor": "claude-opus-5-5",
+  "blocks": [
+   {
+    "id": "orientation",
+    "verdict": "ok",
+    "evidence": "Paraphrases BC-QA-08001 expected_solution_path (integral, divide by length, three places); 28 words."
+   },
+   {
+    "id": "ki-1",
+    "verdict": "ok",
+    "evidence": "CHA-4.B.1 on ced:152; units of the integrand from research 8.1 Units paragraph."
+   },
+   {
+    "id": "st-1",
+    "verdict": "ok",
+    "evidence": "Rival 'averaging the two endpoint values' is a BC-QA-08001 wrong_approach."
+   },
+   {
+    "id": "st-2",
+    "verdict": "ok",
+    "evidence": "BC-QA-99007 expected path and wrong_approach 'integrating the function and dividing by the interval length'."
+   },
+   {
+    "id": "st-3",
+    "verdict": "ok",
+    "evidence": "BC-QA-08002 expected path and wrong_approach 'reporting the average rate of change itself as the time'."
+   },
+   {
+    "id": "ex-1",
+    "verdict": "ok",
+    "evidence": "SymPy: integral of 5cos(t^2/2) + 1 on [0, 3] is 5.88245, divided by 3 is 1.96082, reported 1.961."
+   },
+   {
+    "id": "rs-0",
+    "verdict": "ok",
+    "evidence": "Line reproduces BC-PT-99020 earns, does_not_earn and notation_requirements from the bundle."
+   },
+   {
+    "id": "err-BC-ERR-06014",
+    "verdict": "ok",
+    "evidence": "Record text matches; SymPy: absolute value version gives 3.866, distinct from 1.961."
+   },
+   {
+    "id": "err-BC-ERR-08001",
+    "verdict": "ok",
+    "evidence": "Record text matches; SymPy: undivided integral 5.882, distinct."
+   },
+   {
+    "id": "err-BC-ERR-08002",
+    "verdict": "ok",
+    "evidence": "Record text matches; SymPy: integral over [1, 3] divided by 2 is 0.003, distinct."
+   },
+   {
+    "id": "err-BC-ERR-99019",
+    "verdict": "ok",
+    "evidence": "Record text matches; 5.9/3 = 1.9667, distinct from 1.961."
+   },
+   {
+    "id": "representations",
+    "verdict": "ok",
+    "evidence": "null; nothing to audit."
+   },
+   {
+    "id": "BC-PRQ-06005",
+    "verdict": "ok",
+    "evidence": "In bundle prerequisites; paraphrases its failure_signature."
+   },
+   {
+    "id": "BC-PRQ-06007",
+    "verdict": "ok",
+    "evidence": "In bundle prerequisites; paraphrases its description_plain."
+   },
+   {
+    "id": "BC-PRQ-08006",
+    "verdict": "ok",
+    "evidence": "In bundle prerequisites; paraphrases its description (no premature rounding, three places)."
+   },
+   {
+    "id": "chk-1",
+    "verdict": "ok",
+    "evidence": "SymPy: 1.96082, key 1.961."
+   },
+   {
+    "id": "chk-2",
+    "verdict": "ok",
+    "evidence": "SymPy: integral of 4cos(t^2) - 1 on [0, 2] over 2 is -0.07708, key -0.077."
+   },
+   {
+    "id": "chk-3",
+    "verdict": "ok",
+    "evidence": "SymPy: integral 8.61035, average 2.15259 (key 2.153); A 4.391 is the absolute value version over 4; C 8.610 undivided; D 8.6/4 = 2.150; all match derivations."
+   }
+  ],
+  "advice": [
+   "ki-1 as a static figure of the average value rectangle suits the idea.",
+   "st-2 and st-3 are rival archetypes with no worked example or check in this lesson; they teach recognition of the rival only in words, which is fine, but a contrast block with 08002 would carry it better.",
+   "ex-1 has only two steps; the units of the answer are not stated although the research names units of f as part of the idea."
+  ],
+  "counts": {
+   "ok": 18,
+   "unsourced": 0,
+   "wrong": 0,
+   "over_cap": 0,
+   "lint": 0
+  }
+ }
+}

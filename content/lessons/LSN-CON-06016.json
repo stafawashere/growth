@@ -1,0 +1,1133 @@
+{
+ "id": "LSN-CON-06016",
+ "version": 1,
+ "kind": "concept",
+ "target_id": "BC-CON-06016",
+ "status": "signed_off",
+ "snapshot_digest": "a6a8ec9d3f59ab8f712e33d30cc22fc64bf2c478fbe7312e3e3118d319c6a42f",
+ "source_digest": "d0ee868aec76a27ff0fed2b437186ec502786cc71b0a641c30d88fd1582af385",
+ "read_minutes": {
+  "full": 3.4,
+  "brief": 2.7
+ },
+ "word_count": {
+  "full": 409,
+  "brief": 306
+ },
+ "sections": [
+  {
+   "id": "LSN-CON-06016#s1",
+   "type": "orientation",
+   "bands": [
+    "low",
+    "mid"
+   ],
+   "skills": [
+    "BC-SKL-06053",
+    "BC-SKL-06054",
+    "BC-SKL-06055",
+    "BC-SKL-06056"
+   ],
+   "sources": [
+    "BC-CON-06016",
+    "research/units/unit-06-integration-accumulation.md#6.10 Integrating Functions Using Long Division and Completing the Square"
+   ],
+   "evidence_tag": "inferred",
+   "text": "When the numerator's degree is at least the denominator's, or a quadratic hides a square, the integrand is rewritten first. A response shows the divided or completed-square form, then antidifferentiates each piece.",
+   "delivery": {
+    "mode": "text",
+    "reason": "rule 6: BC-REP-01 only on the concept's skills (unit README delivery map)",
+    "sources": [
+     "BC-SKL-06053"
+    ]
+   }
+  },
+  {
+   "id": "LSN-CON-06016#s2",
+   "type": "key_ideas",
+   "bands": [
+    "low",
+    "mid"
+   ],
+   "skills": [
+    "BC-SKL-06053",
+    "BC-SKL-06054",
+    "BC-SKL-06055",
+    "BC-SKL-06056"
+   ],
+   "sources": [
+    "BC-EK-FUN-6D3",
+    "ced:127",
+    "research/units/unit-06-integration-accumulation.md#6.10 Integrating Functions Using Long Division and Completing the Square"
+   ],
+   "evidence_tag": "verified",
+   "ek_id": "BC-EK-FUN-6D3",
+   "depth": "core",
+   "text": "Rearrange before antidifferentiating. Numerator degree at least the denominator's: divide, giving a polynomial plus a proper remainder over the divisor, each piece basic. A quadratic denominator: complete the square to expose a logarithm or inverse tangent form.",
+   "notation": "quotient plus remainder over divisor",
+   "quote": {
+    "text": "Techniques for finding antiderivatives include rearrangements into equivalent forms, such as long division and completing the square.",
+    "source": "ced:127"
+   },
+   "delivery": {
+    "mode": "text",
+    "reason": "rule 6: a rewriting rule with BC-REP-01 alone; no process, no figure-bearing representation",
+    "sources": [
+     "BC-SKL-06053",
+     "BC-SKL-06054"
+    ]
+   }
+  },
+  {
+   "id": "LSN-CON-06016#s3",
+   "type": "strategy",
+   "bands": [
+    "low",
+    "mid"
+   ],
+   "skills": [
+    "BC-SKL-06053",
+    "BC-SKL-06056"
+   ],
+   "sources": [
+    "BC-QA-06016"
+   ],
+   "evidence_tag": "inferred",
+   "archetype_id": "BC-QA-06016",
+   "cue": "A rational integrand whose numerator degree is at least the denominator's; an indefinite integral asked.",
+   "method": "Inspect the integrand for structural markers: compare the degrees.",
+   "rival": "Rival: partial fractions straight away (BC-ERR-06026).",
+   "separating_feature": "A degree at least the denominator's means divide first; decomposition fits only a proper fraction."
+  },
+  {
+   "id": "LSN-CON-06016#s4",
+   "type": "strategy",
+   "bands": [
+    "low",
+    "mid"
+   ],
+   "skills": [
+    "BC-SKL-06054"
+   ],
+   "sources": [
+    "BC-QA-06018"
+   ],
+   "evidence_tag": "verified",
+   "archetype_id": "BC-QA-06018",
+   "cue": "A constant over an expanded quadratic or its square root; an antiderivative with C asked.",
+   "method": "Complete the square in the quadratic when it is expanded.",
+   "rival": "Rival: a logarithm with the quadratic as u.",
+   "separating_feature": "The numerator is a constant, not the quadratic's derivative, so the square gives arctan or arcsin."
+  },
+  {
+   "id": "LSN-CON-06016#s5",
+   "type": "worked_example",
+   "bands": [
+    "low",
+    "mid"
+   ],
+   "skills": [
+    "BC-SKL-06053",
+    "BC-SKL-06056"
+   ],
+   "sources": [
+    "BC-QA-06016"
+   ],
+   "evidence_tag": "inferred",
+   "archetype_id": "BC-QA-06016",
+   "parameter_draw": {
+    "structure": "improper_rational",
+    "multiplier": 2,
+    "rate": 2,
+    "rate_sign": 1,
+    "shift": 2,
+    "constant": 3
+   },
+   "problem": {
+    "text": "Find ∫ 2(x^2 + 3)/(x + 2) dx for x > -2.",
+    "command_verb": "find"
+   },
+   "calculator_status": "no_calculator",
+   "steps": [
+    {
+     "cue": "Numerator degree 2, denominator degree 1.",
+     "why": "Improper rational: division comes before any other technique."
+    },
+    {
+     "cue": "The integrand as given.",
+     "why": "Divide it before antidifferentiating.",
+     "expression": [
+      "Multiply",
+      [
+       "Power",
+       [
+        "Add",
+        2,
+        "x"
+       ],
+       -1
+      ],
+      [
+       "Add",
+       6,
+       [
+        "Multiply",
+        2,
+        [
+         "Power",
+         "x",
+         2
+        ]
+       ]
+      ]
+     ],
+     "relation": "new"
+    },
+    {
+     "cue": "x^2 + 3 = (x + 2)(x - 2) + 7.",
+     "why": "Quotient plus proper remainder over divisor.",
+     "expression": [
+      "Add",
+      -4,
+      [
+       "Multiply",
+       2,
+       "x"
+      ],
+      [
+       "Multiply",
+       14,
+       [
+        "Power",
+        [
+         "Add",
+         2,
+         "x"
+        ],
+        -1
+       ]
+      ]
+     ],
+     "relation": "equivalent"
+    },
+    {
+     "cue": "2x - 4 by the power rule; 14/(x + 2) is derivative over function.",
+     "why": "Each piece is basic; add C.",
+     "expression": [
+      "Add",
+      "C",
+      [
+       "Power",
+       "x",
+       2
+      ],
+      [
+       "Multiply",
+       -4,
+       "x"
+      ],
+      [
+       "Multiply",
+       14,
+       [
+        "Ln",
+        [
+         "Add",
+         2,
+         "x"
+        ]
+       ]
+      ]
+     ],
+     "relation": "integrate",
+     "variable": "x"
+    }
+   ],
+   "answer": {
+    "form": "symbolic",
+    "mathjson": [
+     "Add",
+     "C",
+     [
+      "Power",
+      "x",
+      2
+     ],
+     [
+      "Multiply",
+      -4,
+      "x"
+     ],
+     [
+      "Multiply",
+      14,
+      [
+       "Ln",
+       [
+        "Add",
+        2,
+        "x"
+       ]
+      ]
+     ]
+    ]
+   },
+   "delivery": {
+    "mode": "step_reveal",
+    "reason": "rule 1",
+    "sources": []
+   }
+  },
+  {
+   "id": "LSN-CON-06016#err-BC-ERR-06022",
+   "type": "common_error",
+   "bands": [
+    "low",
+    "mid"
+   ],
+   "skills": [
+    "BC-SKL-06055"
+   ],
+   "sources": [
+    "BC-ERR-06022",
+    "BC-MIS-06019"
+   ],
+   "evidence_tag": "inferred",
+   "error_id": "BC-ERR-06022",
+   "observed_behavior": "The response antidifferentiates each factor of a product and multiplies the results.",
+   "scoring_consequence": "Neither the u and dv point nor the expression point is earned (sg-23:18, sg-24:18).",
+   "wrong_step": {
+    "text": "Top and bottom antidifferentiated apart, multiplied.",
+    "expression": [
+     "Multiply",
+     [
+      "Add",
+      [
+       "Multiply",
+       6,
+       "x"
+      ],
+      [
+       "Multiply",
+       [
+        "Rational",
+        2,
+        3
+       ],
+       [
+        "Power",
+        "x",
+        3
+       ]
+      ]
+     ],
+     [
+      "Ln",
+      [
+       "Add",
+       2,
+       "x"
+      ]
+     ]
+    ]
+   },
+   "right_step": {
+    "text": "Divided first.",
+    "expression": [
+     "Add",
+     "C",
+     [
+      "Power",
+      "x",
+      2
+     ],
+     [
+      "Multiply",
+      -4,
+      "x"
+     ],
+     [
+      "Multiply",
+      14,
+      [
+       "Ln",
+       [
+        "Add",
+        2,
+        "x"
+       ]
+      ]
+     ]
+    ]
+   },
+   "relation": "distinct",
+   "possible_reason": {
+    "misconception_id": "BC-MIS-06019",
+    "text": "each factor is antidifferentiated on its own"
+   },
+   "delivery": {
+    "mode": "step_reveal",
+    "reason": "rule 1",
+    "sources": []
+   }
+  },
+  {
+   "id": "LSN-CON-06016#err-BC-ERR-06026",
+   "type": "common_error",
+   "bands": [
+    "low",
+    "mid"
+   ],
+   "skills": [
+    "BC-SKL-06053",
+    "BC-SKL-06056"
+   ],
+   "sources": [
+    "BC-ERR-06026",
+    "BC-MIS-06022"
+   ],
+   "evidence_tag": "inferred",
+   "error_id": "BC-ERR-06026",
+   "observed_behavior": "A rational integrand whose numerator degree is at least the denominator degree is split into partial fractions directly.",
+   "scoring_consequence": "The decomposition cannot be solved consistently and the antiderivative point is not earned.",
+   "wrong_step": {
+    "text": "Split as A/(x + 2): A = 14.",
+    "expression": [
+     "Multiply",
+     14,
+     [
+      "Power",
+      [
+       "Add",
+       2,
+       "x"
+      ],
+      -1
+     ]
+    ]
+   },
+   "right_step": {
+    "text": "Divided: 2x - 4 + 14/(x + 2).",
+    "expression": [
+     "Add",
+     -4,
+     [
+      "Multiply",
+      2,
+      "x"
+     ],
+     [
+      "Multiply",
+      14,
+      [
+       "Power",
+       [
+        "Add",
+        2,
+        "x"
+       ],
+       -1
+      ]
+     ]
+    ]
+   },
+   "relation": "distinct",
+   "possible_reason": {
+    "misconception_id": "BC-MIS-06022",
+    "text": "selects a technique from a visual resemblance to a worked example"
+   },
+   "delivery": {
+    "mode": "step_reveal",
+    "reason": "rule 1",
+    "sources": []
+   }
+  },
+  {
+   "id": "LSN-CON-06016#err-BC-ERR-06033",
+   "type": "common_error",
+   "bands": [
+    "low",
+    "mid"
+   ],
+   "skills": [
+    "BC-SKL-06055"
+   ],
+   "sources": [
+    "BC-ERR-06033"
+   ],
+   "evidence_tag": "inferred",
+   "error_id": "BC-ERR-06033",
+   "observed_behavior": "The response raises each exponent by one but does not divide by the new exponent, or divides by the old exponent instead.",
+   "scoring_consequence": "The proposed function does not differentiate to the integrand, so an antiderivative point is not earned.",
+   "wrong_step": {
+    "text": "2x - 4 to 2x^2 - 4x, no divisor.",
+    "expression": [
+     "Add",
+     "C",
+     [
+      "Multiply",
+      -4,
+      "x"
+     ],
+     [
+      "Multiply",
+      2,
+      [
+       "Power",
+       "x",
+       2
+      ]
+     ],
+     [
+      "Multiply",
+      14,
+      [
+       "Ln",
+       [
+        "Add",
+        2,
+        "x"
+       ]
+      ]
+     ]
+    ]
+   },
+   "right_step": {
+    "text": "2x - 4 to x^2 - 4x.",
+    "expression": [
+     "Add",
+     "C",
+     [
+      "Power",
+      "x",
+      2
+     ],
+     [
+      "Multiply",
+      -4,
+      "x"
+     ],
+     [
+      "Multiply",
+      14,
+      [
+       "Ln",
+       [
+        "Add",
+        2,
+        "x"
+       ]
+      ]
+     ]
+    ]
+   },
+   "relation": "distinct",
+   "delivery": {
+    "mode": "step_reveal",
+    "reason": "rule 1",
+    "sources": []
+   }
+  },
+  {
+   "id": "LSN-CON-06016#prq-BC-PRQ-06001",
+   "type": "prerequisite_bridge",
+   "bands": [
+    "low",
+    "mid"
+   ],
+   "skills": [
+    "BC-SKL-06055"
+   ],
+   "sources": [
+    "BC-PRQ-06001"
+   ],
+   "evidence_tag": "inferred",
+   "prerequisite_id": "BC-PRQ-06001",
+   "text": "Split a fraction into terms and factor out constants before choosing a technique."
+  },
+  {
+   "id": "LSN-CON-06016#prq-BC-PRQ-06002",
+   "type": "prerequisite_bridge",
+   "bands": [
+    "low",
+    "mid"
+   ],
+   "skills": [
+    "BC-SKL-06055"
+   ],
+   "sources": [
+    "BC-PRQ-06002"
+   ],
+   "evidence_tag": "inferred",
+   "prerequisite_id": "BC-PRQ-06002",
+   "text": "Radicals and reciprocals become powers; the power rule never takes an exponent of -1."
+  },
+  {
+   "id": "LSN-CON-06016#prq-BC-PRQ-06009",
+   "type": "prerequisite_bridge",
+   "bands": [
+    "low",
+    "mid"
+   ],
+   "skills": [
+    "BC-SKL-06053",
+    "BC-SKL-06056"
+   ],
+   "sources": [
+    "BC-PRQ-06009"
+   ],
+   "evidence_tag": "inferred",
+   "prerequisite_id": "BC-PRQ-06009",
+   "text": "Long division writes an improper rational expression as a polynomial plus a proper remainder."
+  },
+  {
+   "id": "LSN-CON-06016#prq-BC-PRQ-06010",
+   "type": "prerequisite_bridge",
+   "bands": [
+    "low",
+    "mid"
+   ],
+   "skills": [
+    "BC-SKL-06054",
+    "BC-SKL-06056"
+   ],
+   "sources": [
+    "BC-PRQ-06010"
+   ],
+   "evidence_tag": "inferred",
+   "prerequisite_id": "BC-PRQ-06010",
+   "text": "Completing the square writes a quadratic as a square plus a constant, exposing a standard form."
+  }
+ ],
+ "checks": [
+  {
+   "id": "LSN-CON-06016#chk-1",
+   "check_kind": "completion",
+   "bands": [
+    "low",
+    "mid"
+   ],
+   "format": "short_answer",
+   "archetype_id": "BC-QA-06016",
+   "parameter_draw": {
+    "structure": "improper_rational",
+    "multiplier": 2,
+    "rate": 2,
+    "rate_sign": 1,
+    "shift": 2,
+    "constant": 3
+   },
+   "completes": "LSN-CON-06016#s5",
+   "stem": {
+    "text": "2(x^2 + 3)/(x + 2) = 2x - 4 + 14/(x + 2) for x > -2. Find the antiderivative.",
+    "command_verb": "find"
+   },
+   "answer_key": {
+    "form": "symbolic",
+    "mathjson": [
+     "Add",
+     "C",
+     [
+      "Power",
+      "x",
+      2
+     ],
+     [
+      "Multiply",
+      -4,
+      "x"
+     ],
+     [
+      "Multiply",
+      14,
+      [
+       "Ln",
+       [
+        "Add",
+        2,
+        "x"
+       ]
+      ]
+     ]
+    ]
+   },
+   "worked_solution": [
+    {
+     "step": 1,
+     "text": "Divided form.",
+     "mathjson": [
+      "Add",
+      -4,
+      [
+       "Multiply",
+       2,
+       "x"
+      ],
+      [
+       "Multiply",
+       14,
+       [
+        "Power",
+        [
+         "Add",
+         2,
+         "x"
+        ],
+        -1
+       ]
+      ]
+     ],
+     "relation": "new"
+    },
+    {
+     "step": 2,
+     "text": "Antidifferentiate each piece.",
+     "mathjson": [
+      "Add",
+      "C",
+      [
+       "Power",
+       "x",
+       2
+      ],
+      [
+       "Multiply",
+       -4,
+       "x"
+      ],
+      [
+       "Multiply",
+       14,
+       [
+        "Ln",
+        [
+         "Add",
+         2,
+         "x"
+        ]
+       ]
+      ]
+     ],
+     "relation": "integrate",
+     "variable": "x"
+    }
+   ],
+   "calculator_status": "no_calculator",
+   "representation": "BC-REP-01",
+   "skills": [
+    "BC-SKL-06053"
+   ]
+  },
+  {
+   "id": "LSN-CON-06016#chk-2",
+   "check_kind": "isomorph",
+   "bands": [
+    "low",
+    "mid"
+   ],
+   "format": "short_answer",
+   "archetype_id": "BC-QA-06016",
+   "parameter_draw": {
+    "structure": "improper_rational",
+    "multiplier": 3,
+    "rate": 1,
+    "rate_sign": -1,
+    "shift": -1,
+    "constant": 2
+   },
+   "stem": {
+    "text": "Find ∫ 3(x^2 + 2)/(x - 1) dx for x > 1.",
+    "command_verb": "find"
+   },
+   "answer_key": {
+    "form": "symbolic",
+    "mathjson": [
+     "Add",
+     "C",
+     [
+      "Multiply",
+      3,
+      "x"
+     ],
+     [
+      "Multiply",
+      9,
+      [
+       "Ln",
+       [
+        "Add",
+        -1,
+        "x"
+       ]
+      ]
+     ],
+     [
+      "Multiply",
+      [
+       "Rational",
+       3,
+       2
+      ],
+      [
+       "Power",
+       "x",
+       2
+      ]
+     ]
+    ]
+   },
+   "worked_solution": [
+    {
+     "step": 1,
+     "text": "x^2 + 2 = (x - 1)(x + 1) + 3.",
+     "mathjson": [
+      "Add",
+      3,
+      [
+       "Multiply",
+       3,
+       "x"
+      ],
+      [
+       "Multiply",
+       9,
+       [
+        "Power",
+        [
+         "Add",
+         -1,
+         "x"
+        ],
+        -1
+       ]
+      ]
+     ],
+     "relation": "new"
+    },
+    {
+     "step": 2,
+     "text": "Antidifferentiate.",
+     "mathjson": [
+      "Add",
+      "C",
+      [
+       "Multiply",
+       3,
+       "x"
+      ],
+      [
+       "Multiply",
+       9,
+       [
+        "Ln",
+        [
+         "Add",
+         -1,
+         "x"
+        ]
+       ]
+      ],
+      [
+       "Multiply",
+       [
+        "Rational",
+        3,
+        2
+       ],
+       [
+        "Power",
+        "x",
+        2
+       ]
+      ]
+     ],
+     "relation": "integrate",
+     "variable": "x"
+    }
+   ],
+   "calculator_status": "no_calculator",
+   "representation": "BC-REP-01",
+   "skills": [
+    "BC-SKL-06053",
+    "BC-SKL-06056"
+   ]
+  },
+  {
+   "id": "LSN-CON-06016#chk-3",
+   "check_kind": "mcq",
+   "bands": [
+    "low"
+   ],
+   "format": "mcq",
+   "archetype_id": "BC-QA-06016",
+   "parameter_draw": {
+    "structure": "improper_rational",
+    "multiplier": 1,
+    "rate": 3,
+    "rate_sign": 1,
+    "shift": 3,
+    "constant": 1
+   },
+   "stem": {
+    "text": "For x > -3, ∫ (x^2 + 1)/(x + 3) dx =",
+    "command_verb": "identify"
+   },
+   "answer_key": {
+    "form": "symbolic",
+    "mathjson": [
+     "Add",
+     "C",
+     [
+      "Multiply",
+      [
+       "Rational",
+       1,
+       2
+      ],
+      [
+       "Power",
+       "x",
+       2
+      ]
+     ],
+     [
+      "Multiply",
+      -3,
+      "x"
+     ],
+     [
+      "Multiply",
+      10,
+      [
+       "Ln",
+       [
+        "Add",
+        3,
+        "x"
+       ]
+      ]
+     ]
+    ]
+   },
+   "worked_solution": [
+    {
+     "step": 1,
+     "text": "x^2 + 1 = (x + 3)(x - 3) + 10.",
+     "mathjson": [
+      "Add",
+      -3,
+      "x",
+      [
+       "Multiply",
+       10,
+       [
+        "Power",
+        [
+         "Add",
+         3,
+         "x"
+        ],
+        -1
+       ]
+      ]
+     ],
+     "relation": "new"
+    },
+    {
+     "step": 2,
+     "text": "Antidifferentiate.",
+     "mathjson": [
+      "Add",
+      "C",
+      [
+       "Multiply",
+       [
+        "Rational",
+        1,
+        2
+       ],
+       [
+        "Power",
+        "x",
+        2
+       ]
+      ],
+      [
+       "Multiply",
+       -3,
+       "x"
+      ],
+      [
+       "Multiply",
+       10,
+       [
+        "Ln",
+        [
+         "Add",
+         3,
+         "x"
+        ]
+       ]
+      ]
+     ],
+     "relation": "integrate",
+     "variable": "x"
+    }
+   ],
+   "options": [
+    {
+     "id": "A",
+     "is_key": false,
+     "error_path": "BC-ERR-06026",
+     "value": [
+      "Add",
+      "C",
+      [
+       "Multiply",
+       10,
+       [
+        "Ln",
+        [
+         "Add",
+         3,
+         "x"
+        ]
+       ]
+      ]
+     ],
+     "derivation": "split as A/(x + 3) with A = 10, the quotient lost"
+    },
+    {
+     "id": "B",
+     "is_key": true,
+     "error_path": null,
+     "value": [
+      "Add",
+      "C",
+      [
+       "Multiply",
+       [
+        "Rational",
+        1,
+        2
+       ],
+       [
+        "Power",
+        "x",
+        2
+       ]
+      ],
+      [
+       "Multiply",
+       -3,
+       "x"
+      ],
+      [
+       "Multiply",
+       10,
+       [
+        "Ln",
+        [
+         "Add",
+         3,
+         "x"
+        ]
+       ]
+      ]
+     ]
+    },
+    {
+     "id": "C",
+     "is_key": false,
+     "error_path": "BC-ERR-06033",
+     "value": [
+      "Add",
+      "C",
+      [
+       "Power",
+       "x",
+       2
+      ],
+      [
+       "Multiply",
+       -3,
+       "x"
+      ],
+      [
+       "Multiply",
+       10,
+       [
+        "Ln",
+        [
+         "Add",
+         3,
+         "x"
+        ]
+       ]
+      ]
+     ],
+     "derivation": "x raised to x^2 without dividing by 2"
+    },
+    {
+     "id": "D",
+     "is_key": false,
+     "error_path": "BC-ERR-06022",
+     "value": [
+      "Add",
+      "C",
+      [
+       "Multiply",
+       [
+        "Add",
+        "x",
+        [
+         "Multiply",
+         [
+          "Rational",
+          1,
+          3
+         ],
+         [
+          "Power",
+          "x",
+          3
+         ]
+        ]
+       ],
+       [
+        "Ln",
+        [
+         "Add",
+         3,
+         "x"
+        ]
+       ]
+      ]
+     ],
+     "derivation": "numerator and 1/(x + 3) antidifferentiated apart and multiplied"
+    }
+   ],
+   "calculator_status": "no_calculator",
+   "representation": "BC-REP-01",
+   "skills": [
+    "BC-SKL-06053",
+    "BC-SKL-06056"
+   ]
+  }
+ ],
+ "refresher": [
+  "LSN-CON-06016#s2",
+  "LSN-CON-06016#err-BC-ERR-06022",
+  "LSN-CON-06016#err-BC-ERR-06026",
+  "LSN-CON-06016#err-BC-ERR-06033",
+  "LSN-CON-06016#s5"
+ ],
+ "provenance": {
+  "author": "tools/lesson_transcribe.py",
+  "prompt_version": "generator/lesson_v1",
+  "design_path": "docs/lessons/unit-06/LSN-CON-06016.md",
+  "signed_off_by": "claude-opus-5-5",
+  "signed_off_at": "2026-09-29",
+  "not_human": true
+ }
+}

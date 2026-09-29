@@ -1,0 +1,754 @@
+{
+ "id": "LSN-CON-01001",
+ "version": 1,
+ "kind": "concept",
+ "target_id": "BC-CON-01001",
+ "status": "signed_off",
+ "snapshot_digest": "a6a8ec9d3f59ab8f712e33d30cc22fc64bf2c478fbe7312e3e3118d319c6a42f",
+ "source_digest": "5ba19fedb4278c0bf06f9d55180aed24df912a35f6d206036141735ac5dccfae",
+ "read_minutes": {
+  "full": 3.9,
+  "brief": 2.95
+ },
+ "word_count": {
+  "full": 474,
+  "brief": 363
+ },
+ "sections": [
+  {
+   "id": "LSN-CON-01001#s1",
+   "type": "orientation",
+   "bands": [
+    "low",
+    "mid"
+   ],
+   "skills": [
+    "BC-SKL-01001",
+    "BC-SKL-01002",
+    "BC-SKL-01003",
+    "BC-SKL-01004"
+   ],
+   "sources": [
+    "BC-CON-01001",
+    "research/units/unit-01-limits-continuity.md#1.1 Introducing Calculus: Can Change Occur at an Instant?"
+   ],
+   "evidence_tag": "inferred",
+   "text": "A response divides the change in a quantity by the change in the input over intervals closing on an instant, then names the value those averages approach as the rate at that instant. Stems give a formula or a table.",
+   "delivery": {
+    "mode": "table",
+    "reason": "rule 4: BC-REP-03 on BC-SKL-01001 and BC-SKL-01004; unit README delivery map",
+    "sources": [
+     "BC-SKL-01001",
+     "BC-SKL-01004"
+    ],
+    "spec": {
+     "kind": "table",
+     "columns": [
+      "interval",
+      "change in s",
+      "change in t",
+      "average rate"
+     ],
+     "rows": [
+      [
+       "[1, 1.1]",
+       "0.52",
+       "0.1",
+       "5.2"
+      ],
+      [
+       "[1, 1.01]",
+       "0.0502",
+       "0.01",
+       "5.02"
+      ],
+      [
+       "[1, 1.001]",
+       "0.005002",
+       "0.001",
+       "5.002"
+      ]
+     ],
+     "labels": [
+      {
+       "text": "s(t) = 2t^2 + t + 3",
+       "placement": "inside"
+      },
+      {
+       "text": "average rate = change in s / change in t",
+       "placement": "inside"
+      }
+     ]
+    },
+    "fallback": "the same three rows as static text beside the orientation",
+    "keyboard": "no control; table cells are reached in reading order with Tab"
+   }
+  },
+  {
+   "id": "LSN-CON-01001#s2",
+   "type": "key_ideas",
+   "bands": [
+    "low",
+    "mid"
+   ],
+   "skills": [
+    "BC-SKL-01003",
+    "BC-SKL-01004"
+   ],
+   "sources": [
+    "BC-EK-CHA-1A3",
+    "ced:38",
+    "research/units/unit-01-limits-continuity.md#1.1 Introducing Calculus: Can Change Occur at an Instant?"
+   ],
+   "evidence_tag": "inferred",
+   "ek_id": "BC-EK-CHA-1A3",
+   "depth": "core",
+   "text": "The rate at an instant is the value that average rates approach as intervals containing the point shrink toward it (BC-EK-CHA-1A3, ced:38). It is never the quotient evaluated at the point itself.",
+   "notation": "instantaneous rate of change",
+   "delivery": {
+    "mode": "motion",
+    "reason": "rule 2: a limit process, averages over shrinking intervals (BC-SKL-01003, BC-SKL-01004)",
+    "sources": [
+     "BC-SKL-01003",
+     "BC-SKL-01004"
+    ],
+    "spec": {
+     "kind": "graph_sweep",
+     "curves": [
+      {
+       "id": "s",
+       "expr": "2*t**2 + t + 3",
+       "domain": [
+        0,
+        2.2
+       ]
+      }
+     ],
+     "parameter": {
+      "name": "h",
+      "frames": [
+       1,
+       0.5,
+       0.1,
+       0.01
+      ]
+     },
+     "overlays": [
+      {
+       "kind": "secant",
+       "through": [
+        "1",
+        "1 + h"
+       ]
+      },
+      {
+       "kind": "tangent",
+       "at": "1",
+       "shown": "last frame"
+      }
+     ],
+     "labels": [
+      {
+       "text": "s(t) = 2t^2 + t + 3",
+       "placement": "inside"
+      },
+      {
+       "text": "secant slope 5 + 2h",
+       "placement": "inside"
+      },
+      {
+       "text": "tangent slope 5 at t = 1",
+       "placement": "inside"
+      }
+     ]
+    },
+    "fallback": "four static frames in a row, secant slopes 7, 6, 5.2 and 5.02 labelled inside each, the tangent drawn in the last",
+    "keyboard": "Right and Left arrow keys step the frames; Space pauses auto-advance",
+    "reduced_motion": "no auto-advance; each key press cross-fades to the next frame"
+   }
+  },
+  {
+   "id": "LSN-CON-01001#s3",
+   "type": "key_ideas",
+   "bands": [
+    "low"
+   ],
+   "skills": [
+    "BC-SKL-01001",
+    "BC-SKL-01002"
+   ],
+   "sources": [
+    "BC-EK-CHA-1A2",
+    "ced:38"
+   ],
+   "evidence_tag": "verified",
+   "ek_id": "BC-EK-CHA-1A2",
+   "depth": "extended",
+   "text": "The average rate of change of f from a to b is (f(b) - f(a))/(b - a), with a not equal to b. At a single point the change in the input is zero, so the quotient divides by zero and no average rate exists there (BC-EK-CHA-1A2, ced:38).",
+   "notation": "average rate of change",
+   "quote": {
+    "text": "the average rate of change is undefined at a point where the change in the independent variable would be zero.",
+    "source": "ced:38"
+   },
+   "delivery": {
+    "mode": "text",
+    "reason": "rule 5: a definition; BC-SKL-01002 carries BC-REP-04 only",
+    "sources": [
+     "BC-SKL-01002"
+    ]
+   }
+  },
+  {
+   "id": "LSN-CON-01001#s4",
+   "type": "key_ideas",
+   "bands": [
+    "low"
+   ],
+   "skills": [
+    "BC-SKL-01003"
+   ],
+   "sources": [
+    "BC-EK-CHA-1A1",
+    "ced:38",
+    "BC-TOP-0201"
+   ],
+   "evidence_tag": "verified",
+   "ek_id": "BC-EK-CHA-1A1",
+   "depth": "extended",
+   "text": "Calculus models change through limits (BC-EK-CHA-1A1, ced:38). The rate at an instant is the first such limit, and it is the definition the derivative of Unit 2 is built on.",
+   "quote": {
+    "text": "Calculus uses limits to understand and model dynamic change.",
+    "source": "ced:38"
+   },
+   "delivery": {
+    "mode": "text",
+    "reason": "rule 5: a statement about the course with no figure-bearing representation",
+    "sources": [
+     "BC-SKL-01003"
+    ]
+   }
+  },
+  {
+   "id": "LSN-CON-01001#s5",
+   "type": "strategy",
+   "bands": [
+    "low",
+    "mid"
+   ],
+   "skills": [
+    "BC-SKL-01001",
+    "BC-SKL-01002",
+    "BC-SKL-01003",
+    "BC-SKL-01004"
+   ],
+   "sources": [
+    "BC-QA-01012"
+   ],
+   "evidence_tag": "verified",
+   "archetype_id": "BC-QA-01012",
+   "cue": "Intervals closing on one instant, with a formula or table, and a question about what the averages indicate.",
+   "method": "First line: the quotient over the first interval.",
+   "rival": "The change reported undivided (BC-ERR-01029), or one average taken as the exact rate (BC-ERR-01030).",
+   "separating_feature": "Each average has a denominator; only their limit is the rate at the instant."
+  },
+  {
+   "id": "LSN-CON-01001#s6",
+   "type": "worked_example",
+   "bands": [
+    "low",
+    "mid"
+   ],
+   "skills": [
+    "BC-SKL-01001",
+    "BC-SKL-01002",
+    "BC-SKL-01003",
+    "BC-SKL-01004"
+   ],
+   "sources": [
+    "BC-QA-01012"
+   ],
+   "evidence_tag": "inferred",
+   "archetype_id": "BC-QA-01012",
+   "parameter_draw": {
+    "quadratic": 2,
+    "linear": 1,
+    "constant": 3,
+    "point": 1,
+    "context": "particle",
+    "source": "formula",
+    "framing": "bare"
+   },
+   "problem": {
+    "text": "Let s(t) = 2t^2 + t + 3. Find the average rate of change of s over [1, 1 + h] for h = 0.1, 0.01, 0.001, and state what these indicate about the rate at t = 1.",
+    "command_verb": "compute"
+   },
+   "calculator_status": "no_calculator",
+   "steps": [
+    {
+     "cue": "Every interval starts at t = 1: one quotient over [1, 1 + h].",
+     "why": "Change in s over change in t, with s(1) = 6.",
+     "expression": [
+      "Multiply",
+      [
+       "Power",
+       "h",
+       -1
+      ],
+      [
+       "Add",
+       -2,
+       "h",
+       [
+        "Multiply",
+        2,
+        [
+         "Power",
+         [
+          "Add",
+          1,
+          "h"
+         ],
+         2
+        ]
+       ]
+      ]
+     ],
+     "relation": "new"
+    },
+    {
+     "cue": "The numerator is 5h + 2h^2, so divide by h.",
+     "why": "Averages: 5.2, 5.02, 5.002.",
+     "expression": [
+      "Add",
+      5,
+      [
+       "Multiply",
+       2,
+       "h"
+      ]
+     ],
+     "relation": "equivalent"
+    },
+    {
+     "cue": "The stem asks what they indicate: take their limit as h shrinks.",
+     "why": "5 + 2h approaches 5; no single interval gives 5.",
+     "expression": 5,
+     "relation": "limit",
+     "variable": "h",
+     "point": "0"
+    },
+    {
+     "cue": "The stem asks about t = 1: name the limit as that rate.",
+     "why": "That limit is the definition of the rate."
+    }
+   ],
+   "answer": {
+    "form": "numeric",
+    "mathjson": 5
+   },
+   "delivery": {
+    "mode": "step_reveal",
+    "reason": "rule 1; the three averages render as a table inside step 2",
+    "sources": [
+     "BC-SKL-01004"
+    ]
+   }
+  },
+  {
+   "id": "LSN-CON-01001#err-BC-ERR-01029",
+   "type": "common_error",
+   "bands": [
+    "low",
+    "mid"
+   ],
+   "skills": [
+    "BC-SKL-01001",
+    "BC-SKL-01004"
+   ],
+   "sources": [
+    "BC-ERR-01029",
+    "BC-MIS-02001"
+   ],
+   "evidence_tag": "inferred",
+   "error_id": "BC-ERR-01029",
+   "observed_behavior": "The response reports the change in the function over the interval without dividing by the change in the input.",
+   "scoring_consequence": "The point for the average rate with supporting work is lost because the quotient is absent.",
+   "wrong_step": {
+    "text": "s(1.1) - s(1) = 0.52 reported as the rate.",
+    "expression": [
+     "Rational",
+     13,
+     25
+    ]
+   },
+   "right_step": {
+    "text": "Divided by 0.1: 5.2.",
+    "expression": [
+     "Rational",
+     26,
+     5
+    ]
+   },
+   "relation": "distinct",
+   "possible_reason": {
+    "misconception_id": "BC-MIS-02001",
+    "text": "the division by the change in the input is omitted"
+   },
+   "delivery": {
+    "mode": "step_reveal",
+    "reason": "rule 1",
+    "sources": []
+   }
+  },
+  {
+   "id": "LSN-CON-01001#err-BC-ERR-01030",
+   "type": "common_error",
+   "bands": [
+    "low",
+    "mid"
+   ],
+   "skills": [
+    "BC-SKL-01003",
+    "BC-SKL-01004"
+   ],
+   "sources": [
+    "BC-ERR-01030",
+    "BC-MIS-01017"
+   ],
+   "evidence_tag": "inferred",
+   "error_id": "BC-ERR-01030",
+   "observed_behavior": "The response gives an average rate as the exact instantaneous rate at a point.",
+   "scoring_consequence": "A point requiring the limiting description is lost, although an approximation phrased as an estimate can still earn credit.",
+   "wrong_step": {
+    "text": "5.2, the average over [1, 1.1], given as the rate.",
+    "expression": [
+     "Rational",
+     26,
+     5
+    ]
+   },
+   "right_step": {
+    "text": "The averages approach 5, the rate.",
+    "expression": 5
+   },
+   "relation": "distinct",
+   "possible_reason": {
+    "misconception_id": "BC-MIS-01017",
+    "text": "no limiting process is invoked"
+   },
+   "delivery": {
+    "mode": "step_reveal",
+    "reason": "rule 1",
+    "sources": []
+   }
+  },
+  {
+   "id": "LSN-CON-01001#prq-BC-PRQ-06005",
+   "type": "prerequisite_bridge",
+   "bands": [
+    "low",
+    "mid"
+   ],
+   "skills": [
+    "BC-SKL-01001",
+    "BC-SKL-01002",
+    "BC-SKL-01003",
+    "BC-SKL-01004"
+   ],
+   "sources": [
+    "BC-PRQ-06005"
+   ],
+   "evidence_tag": "inferred",
+   "prerequisite_id": "BC-PRQ-06005",
+   "text": "Each average needs the quantity at both ends of its interval. The failure: a value read for the wrong input, or f and f' interchanged."
+  }
+ ],
+ "checks": [
+  {
+   "id": "LSN-CON-01001#chk-1",
+   "check_kind": "completion",
+   "bands": [
+    "low",
+    "mid"
+   ],
+   "format": "short_answer",
+   "archetype_id": "BC-QA-01012",
+   "parameter_draw": {
+    "quadratic": 2,
+    "linear": 1,
+    "constant": 3,
+    "point": 1,
+    "context": "particle",
+    "source": "formula",
+    "framing": "bare"
+   },
+   "completes": "LSN-CON-01001#s6",
+   "stem": {
+    "text": "For s(t) = 2t^2 + t + 3 the averages over [1, 1 + h] are 5 + 2h. Find the rate of s at t = 1.",
+    "command_verb": "find"
+   },
+   "answer_key": {
+    "form": "numeric",
+    "mathjson": 5
+   },
+   "worked_solution": [
+    {
+     "step": 1,
+     "text": "The averages are 5 + 2h.",
+     "mathjson": [
+      "Add",
+      5,
+      [
+       "Multiply",
+       2,
+       "h"
+      ]
+     ],
+     "relation": "new"
+    },
+    {
+     "step": 2,
+     "text": "As h approaches 0 they approach 5.",
+     "mathjson": 5,
+     "relation": "limit",
+     "variable": "h",
+     "point": "0"
+    }
+   ],
+   "calculator_status": "no_calculator",
+   "representation": "BC-REP-03",
+   "skills": [
+    "BC-SKL-01004"
+   ]
+  },
+  {
+   "id": "LSN-CON-01001#chk-2",
+   "check_kind": "isomorph",
+   "bands": [
+    "low",
+    "mid"
+   ],
+   "format": "short_answer",
+   "archetype_id": "BC-QA-01012",
+   "parameter_draw": {
+    "quadratic": 3,
+    "linear": -2,
+    "constant": 1,
+    "point": 1,
+    "context": "particle",
+    "source": "formula",
+    "framing": "bare"
+   },
+   "stem": {
+    "text": "Let s(t) = 3t^2 - 2t + 1. From average rates over [1, 1 + h], find the rate of s at t = 1.",
+    "command_verb": "find"
+   },
+   "answer_key": {
+    "form": "numeric",
+    "mathjson": 4
+   },
+   "worked_solution": [
+    {
+     "step": 1,
+     "text": "The quotient over [1, 1 + h], with s(1) = 2.",
+     "mathjson": [
+      "Multiply",
+      [
+       "Power",
+       "h",
+       -1
+      ],
+      [
+       "Add",
+       -3,
+       [
+        "Multiply",
+        -2,
+        "h"
+       ],
+       [
+        "Multiply",
+        3,
+        [
+         "Power",
+         [
+          "Add",
+          1,
+          "h"
+         ],
+         2
+        ]
+       ]
+      ]
+     ],
+     "relation": "new"
+    },
+    {
+     "step": 2,
+     "text": "It simplifies to 4 + 3h.",
+     "mathjson": [
+      "Add",
+      4,
+      [
+       "Multiply",
+       3,
+       "h"
+      ]
+     ],
+     "relation": "equivalent"
+    },
+    {
+     "step": 3,
+     "text": "The averages approach 4.",
+     "mathjson": 4,
+     "relation": "limit",
+     "variable": "h",
+     "point": "0"
+    }
+   ],
+   "calculator_status": "no_calculator",
+   "representation": "BC-REP-03",
+   "skills": [
+    "BC-SKL-01004"
+   ]
+  },
+  {
+   "id": "LSN-CON-01001#chk-3",
+   "check_kind": "mcq",
+   "bands": [
+    "low"
+   ],
+   "format": "mcq",
+   "archetype_id": "BC-QA-01012",
+   "parameter_draw": {
+    "quadratic": 1,
+    "linear": 2,
+    "constant": 4,
+    "point": 2,
+    "context": "tank",
+    "source": "formula",
+    "framing": "bare"
+   },
+   "stem": {
+    "text": "Let V(t) = t^2 + 2t + 4. Which value do average rates of V over [2, 2 + h] approach as h shrinks?",
+    "command_verb": "find"
+   },
+   "answer_key": {
+    "form": "numeric",
+    "mathjson": 6
+   },
+   "worked_solution": [
+    {
+     "step": 1,
+     "text": "The quotient over [2, 2 + h], with V(2) = 12.",
+     "mathjson": [
+      "Multiply",
+      [
+       "Power",
+       "h",
+       -1
+      ],
+      [
+       "Add",
+       -4,
+       [
+        "Power",
+        [
+         "Add",
+         2,
+         "h"
+        ],
+        2
+       ],
+       [
+        "Multiply",
+        2,
+        "h"
+       ]
+      ]
+     ],
+     "relation": "new"
+    },
+    {
+     "step": 2,
+     "text": "It simplifies to 6 + h.",
+     "mathjson": [
+      "Add",
+      6,
+      "h"
+     ],
+     "relation": "equivalent"
+    },
+    {
+     "step": 3,
+     "text": "The averages approach 6.",
+     "mathjson": 6,
+     "relation": "limit",
+     "variable": "h",
+     "point": "0"
+    }
+   ],
+   "options": [
+    {
+     "id": "A",
+     "is_key": false,
+     "error_path": "BC-ERR-01029",
+     "value": [
+      "Rational",
+      61,
+      100
+     ],
+     "derivation": "V(2.1) - V(2) = 0.61, the change with no division"
+    },
+    {
+     "id": "B",
+     "is_key": false,
+     "error_path": "BC-ERR-01030",
+     "value": [
+      "Rational",
+      61,
+      10
+     ],
+     "derivation": "the average over [2, 2.1], 6.1, taken as the exact rate"
+    },
+    {
+     "id": "C",
+     "is_key": true,
+     "error_path": null,
+     "value": 6
+    },
+    {
+     "id": "D",
+     "is_key": false,
+     "error_path": "BC-ERR-01030",
+     "value": [
+      "Rational",
+      601,
+      100
+     ],
+     "derivation": "the average over [2, 2.01], 6.01, taken as the exact rate"
+    }
+   ],
+   "calculator_status": "no_calculator",
+   "representation": "BC-REP-03",
+   "skills": [
+    "BC-SKL-01001",
+    "BC-SKL-01004"
+   ]
+  }
+ ],
+ "refresher": [
+  "LSN-CON-01001#s2",
+  "LSN-CON-01001#err-BC-ERR-01029",
+  "LSN-CON-01001#err-BC-ERR-01030",
+  "LSN-CON-01001#s6"
+ ],
+ "provenance": {
+  "author": "tools/lesson_transcribe.py",
+  "prompt_version": "generator/lesson_v1",
+  "design_path": "docs/lessons/unit-01/LSN-CON-01001.md",
+  "signed_off_by": "claude-opus-5-5",
+  "signed_off_at": "2026-09-29",
+  "not_human": true
+ }
+}

@@ -1,0 +1,936 @@
+{
+ "id": "LSN-CON-02005",
+ "version": 1,
+ "kind": "concept",
+ "target_id": "BC-CON-02005",
+ "status": "signed_off",
+ "snapshot_digest": "a6a8ec9d3f59ab8f712e33d30cc22fc64bf2c478fbe7312e3e3118d319c6a42f",
+ "source_digest": "9d1512369a94fd4b91d4b9aa16b62655f36ae594eb892b8012a6cd37ac6125b5",
+ "read_minutes": {
+  "full": 3.8,
+  "brief": 3.0
+ },
+ "word_count": {
+  "full": 506,
+  "brief": 405
+ },
+ "sections": [
+  {
+   "id": "LSN-CON-02005#s1",
+   "type": "orientation",
+   "bands": [
+    "low",
+    "mid"
+   ],
+   "skills": [
+    "BC-SKL-02012",
+    "BC-SKL-02013"
+   ],
+   "sources": [
+    "BC-CON-02005",
+    "research/units/unit-02-differentiation-definition-properties.md#2.2 Defining the Derivative of a Function and Using Derivative Notation"
+   ],
+   "evidence_tag": "inferred",
+   "text": "A response reads \\(f'(a)\\) as the slope of the line touching the curve at \\((a,f(a))\\), and writes that line from two numbers with different roles: the slope \\(f'(a)\\) and the height \\(f(a)\\). Stems ask for the tangent line at a named point.",
+   "delivery": {
+    "mode": "figure",
+    "reason": "rule 3: BC-SKL-02012 and BC-SKL-02013 list BC-REP-02 (unit README delivery map)",
+    "sources": [
+     "BC-SKL-02012"
+    ],
+    "spec": {
+     "kind": "graph",
+     "representations": [
+      "BC-REP-02"
+     ],
+     "axes": {
+      "x": [
+       -1,
+       5
+      ],
+      "y": [
+       -4,
+       8
+      ]
+     },
+     "curves": [
+      {
+       "expr": "-x**2 + 4*x + 2",
+       "domain": [
+        -1,
+        5
+       ]
+      },
+      {
+       "expr": "5 - 2*(x - 3)",
+       "domain": [
+        1.5,
+        4.5
+       ],
+       "role": "tangent"
+      }
+     ],
+     "points": [
+      {
+       "at": [
+        3,
+        5
+       ],
+       "label": {
+        "text": "(3, 5)",
+        "placement": "inside",
+        "at": "just above the point"
+       }
+      }
+     ],
+     "labels": [
+      {
+       "text": "y = f(x)",
+       "placement": "inside",
+       "at": "near the vertex of the curve"
+      },
+      {
+       "text": "tangent at x = 3",
+       "placement": "inside",
+       "at": "along the tangent, right of the point"
+      }
+     ]
+    },
+    "fallback": "the text: the tangent to y = -x^2 + 4x + 2 touches the curve at (3, 5)",
+    "keyboard": "none needed; the figure is static and its text alternative is read in place"
+   }
+  },
+  {
+   "id": "LSN-CON-02005#s2",
+   "type": "key_ideas",
+   "bands": [
+    "low",
+    "mid"
+   ],
+   "skills": [
+    "BC-SKL-02012",
+    "BC-SKL-02013"
+   ],
+   "sources": [
+    "BC-EK-CHA-2C1",
+    "ced:61",
+    "BC-MIS-02014",
+    "research/units/unit-02-differentiation-definition-properties.md#2.2 Defining the Derivative of a Function and Using Derivative Notation"
+   ],
+   "evidence_tag": "verified",
+   "ek_id": "BC-EK-CHA-2C1",
+   "depth": "core",
+   "text": "\\(f'(a)\\) is the slope of the tangent at \\((a,f(a))\\) (BC-EK-CHA-2C1, ced:61), and with that point it fixes the line: \\(y=f(a)+f'(a)(x-a)\\). One input gives two numbers: the height places the line, the slope tilts it.",
+   "notation": "tangent line",
+   "quote": {
+    "text": "The derivative of a function at a point is the slope of the line tangent to a graph of the function at that point.",
+    "source": "ced:61"
+   },
+   "delivery": {
+    "mode": "figure",
+    "reason": "rule 3: BC-REP-02 on BC-SKL-02012; no promotion, BC-QA-02011 names no varying quantity read as a relationship",
+    "sources": [
+     "BC-SKL-02012",
+     "BC-QA-02011"
+    ],
+    "spec": {
+     "kind": "graph",
+     "representations": [
+      "BC-REP-02"
+     ],
+     "axes": {
+      "x": [
+       -1,
+       5
+      ],
+      "y": [
+       -4,
+       8
+      ]
+     },
+     "curves": [
+      {
+       "expr": "-x**2 + 4*x + 2",
+       "domain": [
+        -1,
+        5
+       ]
+      },
+      {
+       "expr": "5 - 2*(x - 3)",
+       "domain": [
+        1.5,
+        4.5
+       ],
+       "role": "tangent"
+      }
+     ],
+     "points": [
+      {
+       "at": [
+        3,
+        5
+       ],
+       "label": {
+        "text": "(3, f(3)) = (3, 5)",
+        "placement": "inside",
+        "at": "just above the point"
+       }
+      }
+     ],
+     "segments": [
+      {
+       "from": [
+        3,
+        0
+       ],
+       "to": [
+        3,
+        5
+       ],
+       "style": "dashed"
+      },
+      {
+       "from": [
+        3,
+        5
+       ],
+       "to": [
+        4,
+        5
+       ],
+       "style": "run"
+      },
+      {
+       "from": [
+        4,
+        5
+       ],
+       "to": [
+        4,
+        3
+       ],
+       "style": "rise"
+      }
+     ],
+     "labels": [
+      {
+       "text": "height f(3) = 5",
+       "placement": "inside",
+       "at": "beside the dashed vertical segment"
+      },
+      {
+       "text": "run 1, rise -2: slope f'(3) = -2",
+       "placement": "inside",
+       "at": "beside the slope triangle"
+      },
+      {
+       "text": "y = 5 - 2(x - 3)",
+       "placement": "inside",
+       "at": "along the tangent"
+      }
+     ]
+    },
+    "fallback": "the text: height f(3) = 5 places the line; slope f'(3) = -2 tilts it; y = 5 - 2(x - 3)",
+    "keyboard": "none needed; the figure is static and its text alternative reads the height, the slope and the line in order"
+   }
+  },
+  {
+   "id": "LSN-CON-02005#s3",
+   "type": "strategy",
+   "bands": [
+    "low",
+    "mid"
+   ],
+   "skills": [
+    "BC-SKL-02012",
+    "BC-SKL-02013"
+   ],
+   "sources": [
+    "BC-QA-02011"
+   ],
+   "evidence_tag": "verified",
+   "archetype_id": "BC-QA-02011",
+   "cue": "A function rule and a named point or input; the stem asks for the tangent line.",
+   "method": "First line: differentiate the function.",
+   "rival": "Rival: the function value used as the slope (BC-ERR-02027).",
+   "separating_feature": "The slope comes from \\(f'\\), the point from \\(f\\)."
+  },
+  {
+   "id": "LSN-CON-02005#s4",
+   "type": "strategy",
+   "bands": [
+    "low",
+    "mid"
+   ],
+   "skills": [
+    "BC-SKL-02012"
+   ],
+   "sources": [
+    "BC-QA-02014"
+   ],
+   "evidence_tag": "verified",
+   "archetype_id": "BC-QA-02014",
+   "cue": "A polynomial model and one named instant; the stem asks for the rate at that instant.",
+   "method": "First line: the average rate over a short interval starting at the instant.",
+   "rival": "Rival: averaging over the whole interval from the start.",
+   "separating_feature": "One instant: its rate is the tangent slope there."
+  },
+  {
+   "id": "LSN-CON-02005#s5",
+   "type": "worked_example",
+   "bands": [
+    "low",
+    "mid"
+   ],
+   "skills": [
+    "BC-SKL-02012",
+    "BC-SKL-02013"
+   ],
+   "sources": [
+    "BC-QA-02011"
+   ],
+   "evidence_tag": "inferred",
+   "archetype_id": "BC-QA-02011",
+   "parameter_draw": {
+    "square": -1,
+    "linear": 4,
+    "constant": 2,
+    "at": 3,
+    "given": "input"
+   },
+   "problem": {
+    "text": "Let \\(f(x)=-x^2+4x+2\\). Write an equation for the line tangent to the graph of \\(f\\) at \\(x=3\\).",
+    "command_verb": "write"
+   },
+   "calculator_status": "no_calculator",
+   "steps": [
+    {
+     "cue": "The stem asks for a tangent line; its slope comes from \\(f'\\).",
+     "why": "Differentiate first.",
+     "expression": [
+      "Add",
+      4,
+      [
+       "Multiply",
+       -2,
+       "x"
+      ]
+     ],
+     "relation": "new"
+    },
+    {
+     "cue": "The tangency is at \\(x=3\\).",
+     "why": "The slope is \\(f'(3)=-2\\).",
+     "expression": -2,
+     "point_type_id": "BC-PT-99082",
+     "relation": "evaluate",
+     "subs": {
+      "x": "3"
+     }
+    },
+    {
+     "cue": "The stem gives the input only, so the height is computed.",
+     "why": "\\(f(3)=5\\): the point is \\((3,5)\\).",
+     "expression": 5,
+     "relation": "new"
+    },
+    {
+     "cue": "Slope and point in hand: point slope form.",
+     "why": "The slope multiplies \\(x-3\\); the height stands alone.",
+     "expression": [
+      "Equal",
+      "y",
+      [
+       "Add",
+       11,
+       [
+        "Multiply",
+        -2,
+        "x"
+       ]
+      ]
+     ],
+     "point_type_id": "BC-PT-99082",
+     "relation": "new"
+    }
+   ],
+   "answer": {
+    "form": "symbolic",
+    "mathjson": [
+     "Equal",
+     "y",
+     [
+      "Add",
+      11,
+      [
+       "Multiply",
+       -2,
+       "x"
+      ]
+     ]
+    ]
+   },
+   "delivery": {
+    "mode": "step_reveal",
+    "reason": "rule 1",
+    "sources": []
+   }
+  },
+  {
+   "id": "LSN-CON-02005#s6",
+   "type": "what_a_reader_scores",
+   "bands": [
+    "low",
+    "mid"
+   ],
+   "skills": [
+    "BC-SKL-02012",
+    "BC-SKL-02013"
+   ],
+   "sources": [
+    "BC-PT-99082"
+   ],
+   "evidence_tag": "verified",
+   "example_id": "LSN-CON-02005#s5",
+   "lines": [
+    {
+     "point_type_id": "BC-PT-99082",
+     "text": "Slope and equation of a tangent line at a point on a curve. Earned by: Two separable pieces of work: the value of the derivative at the stated input, and an equation of the line through the point on the curve with that slope. samples-15-q5:1 awards one point for the slope and a second for the tangent line equation, so a correct slope earns its point even when no line is written. Not earned by: A line written through the point with an unstated or incorrect slope, or a slope reported with no equation when the part asks for an equation; the two points are awarded separately (samples-15-q5:1)."
+    }
+   ]
+  },
+  {
+   "id": "LSN-CON-02005#err-BC-ERR-02027",
+   "type": "common_error",
+   "bands": [
+    "low",
+    "mid"
+   ],
+   "skills": [
+    "BC-SKL-02012",
+    "BC-SKL-02013"
+   ],
+   "sources": [
+    "BC-ERR-02027",
+    "BC-MIS-02014"
+   ],
+   "evidence_tag": "inferred",
+   "error_id": "BC-ERR-02027",
+   "observed_behavior": "The response writes the tangent line using the value of the function at the point as its slope.",
+   "scoring_consequence": "The slope point and the equation point are both lost.",
+   "wrong_step": {
+    "text": "Slope \\(f(3)=5\\): \\(y=5+5(x-3)\\).",
+    "expression": [
+     "Equal",
+     "y",
+     [
+      "Add",
+      -10,
+      [
+       "Multiply",
+       5,
+       "x"
+      ]
+     ]
+    ]
+   },
+   "right_step": {
+    "text": "Slope \\(f'(3)=-2\\): \\(y=5-2(x-3)\\).",
+    "expression": [
+     "Equal",
+     "y",
+     [
+      "Add",
+      11,
+      [
+       "Multiply",
+       -2,
+       "x"
+      ]
+     ]
+    ]
+   },
+   "relation": "distinct",
+   "possible_reason": {
+    "misconception_id": "BC-MIS-02014",
+    "text": "the height is used as a slope"
+   },
+   "delivery": {
+    "mode": "step_reveal",
+    "reason": "rule 1",
+    "sources": []
+   }
+  },
+  {
+   "id": "LSN-CON-02005#err-BC-ERR-02028",
+   "type": "common_error",
+   "bands": [
+    "low",
+    "mid"
+   ],
+   "skills": [
+    "BC-SKL-02013"
+   ],
+   "sources": [
+    "BC-ERR-02028",
+    "BC-MIS-02014"
+   ],
+   "evidence_tag": "inferred",
+   "error_id": "BC-ERR-02028",
+   "observed_behavior": "The response differentiates correctly but substitutes an input other than the point of tangency.",
+   "scoring_consequence": "The slope point is lost and the equation point with it.",
+   "wrong_step": {
+    "text": "\\(f'(5)=-6\\): \\(y=5-6(x-3)\\).",
+    "expression": [
+     "Equal",
+     "y",
+     [
+      "Add",
+      23,
+      [
+       "Multiply",
+       -6,
+       "x"
+      ]
+     ]
+    ]
+   },
+   "right_step": {
+    "text": "\\(f'(3)=-2\\): \\(y=5-2(x-3)\\).",
+    "expression": [
+     "Equal",
+     "y",
+     [
+      "Add",
+      11,
+      [
+       "Multiply",
+       -2,
+       "x"
+      ]
+     ]
+    ]
+   },
+   "relation": "distinct",
+   "possible_reason": {
+    "misconception_id": "BC-MIS-02014",
+    "text": "treats the two numbers computed at the point of tangency as playing the same role"
+   },
+   "delivery": {
+    "mode": "step_reveal",
+    "reason": "rule 1",
+    "sources": []
+   }
+  },
+  {
+   "id": "LSN-CON-02005#err-BC-ERR-04023",
+   "type": "common_error",
+   "bands": [
+    "low",
+    "mid"
+   ],
+   "skills": [
+    "BC-SKL-02013"
+   ],
+   "sources": [
+    "BC-ERR-04023",
+    "crabbc-25:25"
+   ],
+   "evidence_tag": "inferred",
+   "error_id": "BC-ERR-04023",
+   "observed_behavior": "The point-slope form is assembled incorrectly, so the coordinates appear where the slope belongs or the line does not pass through the point.",
+   "scoring_consequence": "The approximation point is lost; the 2025 report records multiple sign and parenthesis errors arising while isolating the dependent variable, which was not required (crabbc-25:25).",
+   "wrong_step": {
+    "text": "\\(y=-2+5(x-3)\\): height and slope exchanged.",
+    "expression": [
+     "Equal",
+     "y",
+     [
+      "Add",
+      -17,
+      [
+       "Multiply",
+       5,
+       "x"
+      ]
+     ]
+    ]
+   },
+   "right_step": {
+    "text": "\\(y=5-2(x-3)\\).",
+    "expression": [
+     "Equal",
+     "y",
+     [
+      "Add",
+      11,
+      [
+       "Multiply",
+       -2,
+       "x"
+      ]
+     ]
+    ]
+   },
+   "relation": "distinct",
+   "delivery": {
+    "mode": "step_reveal",
+    "reason": "rule 1",
+    "sources": []
+   }
+  },
+  {
+   "id": "LSN-CON-02005#prq-BC-PRQ-02003",
+   "type": "prerequisite_bridge",
+   "bands": [
+    "low",
+    "mid"
+   ],
+   "skills": [
+    "BC-SKL-02012",
+    "BC-SKL-02013"
+   ],
+   "sources": [
+    "BC-PRQ-02003"
+   ],
+   "evidence_tag": "inferred",
+   "prerequisite_id": "BC-PRQ-02003",
+   "text": "Through \\((a,b)\\) with slope \\(m\\): \\(y=b+m(x-a)\\). A correct slope with no line is this gap."
+  }
+ ],
+ "checks": [
+  {
+   "id": "LSN-CON-02005#chk-1",
+   "check_kind": "completion",
+   "bands": [
+    "low",
+    "mid"
+   ],
+   "format": "short_answer",
+   "archetype_id": "BC-QA-02011",
+   "parameter_draw": {
+    "square": -1,
+    "linear": 4,
+    "constant": 2,
+    "at": 3,
+    "given": "input"
+   },
+   "completes": "LSN-CON-02005#s5",
+   "stem": {
+    "text": "\\(f'(3)=-2\\) and \\(f(3)=5\\). Write the tangent line at \\(x=3\\).",
+    "command_verb": "write"
+   },
+   "answer_key": {
+    "form": "symbolic",
+    "mathjson": [
+     "Equal",
+     "y",
+     [
+      "Add",
+      11,
+      [
+       "Multiply",
+       -2,
+       "x"
+      ]
+     ]
+    ]
+   },
+   "worked_solution": [
+    {
+     "step": 1,
+     "text": "\\(y=5-2(x-3)\\).",
+     "mathjson": [
+      "Equal",
+      "y",
+      [
+       "Add",
+       11,
+       [
+        "Multiply",
+        -2,
+        "x"
+       ]
+      ]
+     ],
+     "point_type_id": "BC-PT-99082",
+     "relation": "new"
+    }
+   ],
+   "calculator_status": "no_calculator",
+   "representation": "BC-REP-01",
+   "skills": [
+    "BC-SKL-02013"
+   ]
+  },
+  {
+   "id": "LSN-CON-02005#chk-2",
+   "check_kind": "isomorph",
+   "bands": [
+    "low",
+    "mid"
+   ],
+   "format": "short_answer",
+   "archetype_id": "BC-QA-02011",
+   "parameter_draw": {
+    "square": 1,
+    "linear": -2,
+    "constant": 4,
+    "at": -1,
+    "given": "input"
+   },
+   "stem": {
+    "text": "Let \\(f(x)=x^2-2x+4\\). Write an equation for the line tangent to the graph of \\(f\\) at \\(x=-1\\).",
+    "command_verb": "write"
+   },
+   "answer_key": {
+    "form": "symbolic",
+    "mathjson": [
+     "Equal",
+     "y",
+     [
+      "Add",
+      3,
+      [
+       "Multiply",
+       -4,
+       "x"
+      ]
+     ]
+    ]
+   },
+   "worked_solution": [
+    {
+     "step": 1,
+     "text": "\\(f'(x)=2x-2\\).",
+     "mathjson": [
+      "Add",
+      -2,
+      [
+       "Multiply",
+       2,
+       "x"
+      ]
+     ],
+     "relation": "new"
+    },
+    {
+     "step": 2,
+     "text": "\\(f'(-1)=-4\\).",
+     "mathjson": -4,
+     "point_type_id": "BC-PT-99082",
+     "relation": "evaluate",
+     "subs": {
+      "x": "-1"
+     }
+    },
+    {
+     "step": 3,
+     "text": "\\(f(-1)=7\\).",
+     "mathjson": 7,
+     "relation": "new"
+    },
+    {
+     "step": 4,
+     "text": "\\(y=7-4(x+1)\\).",
+     "mathjson": [
+      "Equal",
+      "y",
+      [
+       "Add",
+       3,
+       [
+        "Multiply",
+        -4,
+        "x"
+       ]
+      ]
+     ],
+     "point_type_id": "BC-PT-99082",
+     "relation": "new"
+    }
+   ],
+   "calculator_status": "no_calculator",
+   "representation": "BC-REP-01",
+   "skills": [
+    "BC-SKL-02012",
+    "BC-SKL-02013"
+   ]
+  },
+  {
+   "id": "LSN-CON-02005#chk-3",
+   "check_kind": "mcq",
+   "bands": [
+    "low"
+   ],
+   "format": "mcq",
+   "archetype_id": "BC-QA-02011",
+   "parameter_draw": {
+    "square": -2,
+    "linear": 1,
+    "constant": 3,
+    "at": 1,
+    "given": "point"
+   },
+   "stem": {
+    "text": "Which is the line tangent to \\(y=-2x^2+x+3\\) at \\((1,2)\\)?",
+    "command_verb": "choose"
+   },
+   "answer_key": {
+    "form": "symbolic",
+    "mathjson": [
+     "Equal",
+     "y",
+     [
+      "Add",
+      5,
+      [
+       "Multiply",
+       -3,
+       "x"
+      ]
+     ]
+    ]
+   },
+   "worked_solution": [
+    {
+     "step": 1,
+     "text": "\\(y'=-4x+1\\).",
+     "mathjson": [
+      "Add",
+      1,
+      [
+       "Multiply",
+       -4,
+       "x"
+      ]
+     ],
+     "relation": "new"
+    },
+    {
+     "step": 2,
+     "text": "At 1 the slope is \\(-3\\).",
+     "mathjson": -3,
+     "point_type_id": "BC-PT-99082",
+     "relation": "evaluate",
+     "subs": {
+      "x": "1"
+     }
+    },
+    {
+     "step": 3,
+     "text": "\\(y=2-3(x-1)\\).",
+     "mathjson": [
+      "Equal",
+      "y",
+      [
+       "Add",
+       5,
+       [
+        "Multiply",
+        -3,
+        "x"
+       ]
+      ]
+     ],
+     "point_type_id": "BC-PT-99082",
+     "relation": "new"
+    }
+   ],
+   "options": [
+    {
+     "id": "A",
+     "is_key": false,
+     "error_path": "BC-ERR-02027",
+     "value": [
+      "Equal",
+      "y",
+      [
+       "Multiply",
+       2,
+       "x"
+      ]
+     ],
+     "derivation": "the height 2 used as the slope"
+    },
+    {
+     "id": "B",
+     "is_key": true,
+     "error_path": null,
+     "value": [
+      "Equal",
+      "y",
+      [
+       "Add",
+       5,
+       [
+        "Multiply",
+        -3,
+        "x"
+       ]
+      ]
+     ]
+    },
+    {
+     "id": "C",
+     "is_key": false,
+     "error_path": "BC-ERR-02028",
+     "value": [
+      "Equal",
+      "y",
+      [
+       "Add",
+       9,
+       [
+        "Multiply",
+        -7,
+        "x"
+       ]
+      ]
+     ],
+     "derivation": "the derivative evaluated at the height 2: -4(2) + 1"
+    },
+    {
+     "id": "D",
+     "is_key": false,
+     "error_path": "BC-ERR-04023",
+     "value": [
+      "Equal",
+      "y",
+      [
+       "Add",
+       -5,
+       [
+        "Multiply",
+        2,
+        "x"
+       ]
+      ]
+     ],
+     "derivation": "height and slope exchanged in point slope form"
+    }
+   ],
+   "calculator_status": "no_calculator",
+   "representation": "BC-REP-01",
+   "skills": [
+    "BC-SKL-02013"
+   ]
+  }
+ ],
+ "refresher": [
+  "LSN-CON-02005#s2",
+  "LSN-CON-02005#err-BC-ERR-02027",
+  "LSN-CON-02005#err-BC-ERR-02028",
+  "LSN-CON-02005#err-BC-ERR-04023",
+  "LSN-CON-02005#s5"
+ ],
+ "provenance": {
+  "author": "tools/lesson_transcribe.py",
+  "prompt_version": "generator/lesson_v1",
+  "design_path": "docs/lessons/unit-02/LSN-CON-02005.md",
+  "signed_off_by": "claude-opus-5-5",
+  "signed_off_at": "2026-09-29",
+  "not_human": true
+ }
+}

@@ -1,0 +1,144 @@
+{
+ "lesson_id": "LSN-CON-04007",
+ "version": 1,
+ "compared_on": "2026-09-29",
+ "auditor": "claude-opus-5-5",
+ "resolve": {
+  "date": "2026-09-29",
+  "problems": 5,
+  "agreed": 5,
+  "judgments_pending": 0,
+  "all_agree": true,
+  "verdicts": [
+   {
+    "id": "LSN-CON-04007#ex-1",
+    "agree": true,
+    "detail": "agree (symbolic)",
+    "method": "y=12, x x'+y y'=0, so 18+12y'=0 (ft/s, top moving down)"
+   },
+   {
+    "id": "LSN-CON-04007#ex-2",
+    "agree": true,
+    "detail": "agree (symbolic)",
+    "method": "differentiate 4xx'+x'y+xy'+2yy'=0 at (1,-2)"
+   },
+   {
+    "id": "LSN-CON-04007#chk-1",
+    "agree": true,
+    "detail": "judged by claude-opus-5-5: re-solver slip: 2(9)(2) is 36, not 18; SymPy solve(36 + 24*y) gives -3/2, the key",
+    "method": "18+24 y'=0 (ft/s)"
+   },
+   {
+    "id": "LSN-CON-04007#chk-2",
+    "agree": true,
+    "detail": "agree (symbolic)",
+    "method": "dA/dt=2*pi*r*dr/dt (cm^2/min)"
+   },
+   {
+    "id": "LSN-CON-04007#chk-3",
+    "agree": true,
+    "detail": "agree (symbolic)",
+    "method": "2xx'+3yx'+3xy'+4yy'=0 at (1,1), x'=2"
+   }
+  ],
+  "answers_file": "docs/lessons/verification/answers/delta-2026-09-29-a.json"
+ },
+ "audit": {
+  "date": "2026-09-29",
+  "auditor": "claude-opus-5-5",
+  "blocks": [
+   {
+    "id": "orientation",
+    "verdict": "ok",
+    "evidence": "Paraphrases the concept description and unit research section; within 60 words; no lint."
+   },
+   {
+    "id": "ki-1",
+    "verdict": "ok",
+    "evidence": "Quote found verbatim on the cited CED page; claims match the EK and research section; within 120 words."
+   },
+   {
+    "id": "ki-2",
+    "verdict": "ok",
+    "evidence": "Quote found verbatim on the cited CED page; claims match the EK and research section; within 120 words."
+   },
+   {
+    "id": "st-1",
+    "verdict": "ok",
+    "evidence": "Cue, method and rival match the archetype record; within 80 words."
+   },
+   {
+    "id": "ex-1",
+    "verdict": "ok",
+    "evidence": "Every step and the key verified by SymPy; cues within 20 and whys within 25 words."
+   },
+   {
+    "id": "ex-2",
+    "verdict": "ok",
+    "evidence": "Every step and the key verified by SymPy; cues within 20 and whys within 25 words."
+   },
+   {
+    "id": "scores-ex-1",
+    "verdict": "ok",
+    "evidence": "Line built from the point type record fields in the bundle (name, rubric citations, notation requirements)."
+   },
+   {
+    "id": "err-BC-ERR-04015",
+    "verdict": "ok",
+    "evidence": "observed_behavior, scoring_consequence and misconception text found verbatim in the bundle; wrong and right values verified by SymPy."
+   },
+   {
+    "id": "err-BC-ERR-04017",
+    "verdict": "ok",
+    "evidence": "observed_behavior, scoring_consequence and misconception text found verbatim in the bundle; wrong and right values verified by SymPy."
+   },
+   {
+    "id": "err-BC-ERR-04018",
+    "verdict": "ok",
+    "evidence": "observed_behavior, scoring_consequence and misconception text found verbatim in the bundle; wrong and right values verified by SymPy."
+   },
+   {
+    "id": "err-BC-ERR-99013",
+    "verdict": "ok",
+    "evidence": "observed_behavior, scoring_consequence and misconception text found verbatim in the bundle; wrong and right values verified by SymPy."
+   },
+   {
+    "id": "representations",
+    "verdict": "ok",
+    "evidence": "No representations block; null."
+   },
+   {
+    "id": "BC-PRQ-04008",
+    "verdict": "ok",
+    "evidence": "Paraphrase of the prerequisite record in the bundle; within 60 words."
+   },
+   {
+    "id": "chk-1",
+    "verdict": "ok",
+    "evidence": "Key and every option or step value verified by SymPy."
+   },
+   {
+    "id": "chk-2",
+    "verdict": "ok",
+    "evidence": "Key and every option or step value verified by SymPy."
+   },
+   {
+    "id": "chk-3",
+    "verdict": "ok",
+    "evidence": "fixed 2026-09-29: option C recomputed on its BC-ERR-04018 path (3xy with x held constant loses 3y dx/dt): 4 + 7 dy/dt = 0 gives -4/7 (SymPy solve), replacing -5/2; options -10/7, 2, -4/7, -5/7 distinct; prose Checks line updated."
+   }
+  ],
+  "advice": [
+   "ki-1's interactive slider on the ladder foot serves the reading of which labels move; good fit for a reading.",
+   "chk-3 option C: relabel the derivation as y held constant, or recompute with x held constant (that path gives -4/7).",
+   "The lesson teaches the stem signal, the first written line (named quantities and rates in t) and the rival dy/dx; BC-PT-99023 scoring line is attached. Units habit appears only in ex-1 step 5 and chk-1."
+  ],
+  "counts": {
+   "ok": 16,
+   "unsourced": 0,
+   "wrong": 0,
+   "over_cap": 0,
+   "lint": 0
+  }
+ }
+}

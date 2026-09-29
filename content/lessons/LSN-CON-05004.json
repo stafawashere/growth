@@ -1,0 +1,1135 @@
+{
+ "id": "LSN-CON-05004",
+ "version": 1,
+ "kind": "concept",
+ "target_id": "BC-CON-05004",
+ "status": "signed_off",
+ "snapshot_digest": "a6a8ec9d3f59ab8f712e33d30cc22fc64bf2c478fbe7312e3e3118d319c6a42f",
+ "source_digest": "8421ac506a6bfec3799d735824950e4f0b76e4c897198e7912241266317ef1c9",
+ "read_minutes": {
+  "full": 3.9,
+  "brief": 3.0
+ },
+ "word_count": {
+  "full": 511,
+  "brief": 395
+ },
+ "sections": [
+  {
+   "id": "LSN-CON-05004#s1",
+   "type": "orientation",
+   "bands": [
+    "low",
+    "mid"
+   ],
+   "skills": [
+    "BC-SKL-05014",
+    "BC-SKL-05015",
+    "BC-SKL-05016",
+    "BC-SKL-05017",
+    "BC-SKL-05018"
+   ],
+   "sources": [
+    "BC-CON-05004",
+    "research/units/unit-05-analytical-applications-differentiation.md#5.3 Determining Intervals on Which a Function is Increasing or Decreasing"
+   ],
+   "evidence_tag": "inferred",
+   "text": "A response splits at zeros of f' and where f' or f is undefined, reports open intervals, and cites the sign of f'.",
+   "delivery": {
+    "mode": "figure",
+    "reason": "rule 3: BC-REP-02 on BC-SKL-05015; unit README delivery map",
+    "sources": [
+     "BC-SKL-05015"
+    ],
+    "spec": {
+     "kind": "graph",
+     "representations": [
+      "BC-REP-02"
+     ],
+     "curve": "f'(x) = 2(x + 1)(x - 3)/(x - 1)",
+     "window": {
+      "x": [
+       -3,
+       6
+      ],
+      "y": [
+       -15,
+       15
+      ]
+     },
+     "shade": "where f' > 0",
+     "labels": [
+      {
+       "text": "f' > 0: f increasing",
+       "placement": "inside"
+      },
+      {
+       "text": "f' < 0: f decreasing",
+       "placement": "inside"
+      },
+      {
+       "text": "x = 1: f undefined",
+       "placement": "inside"
+      }
+     ]
+    },
+    "fallback": "the same graph static with the shading and labels",
+    "keyboard": "no control; the figure description is reached with Tab"
+   }
+  },
+  {
+   "id": "LSN-CON-05004#s2",
+   "type": "key_ideas",
+   "bands": [
+    "low",
+    "mid"
+   ],
+   "skills": [
+    "BC-SKL-05014",
+    "BC-SKL-05015",
+    "BC-SKL-05016",
+    "BC-SKL-05017",
+    "BC-SKL-05018"
+   ],
+   "sources": [
+    "BC-EK-FUN-4A1",
+    "ced:101",
+    "sg-25:17",
+    "research/units/unit-05-analytical-applications-differentiation.md#5.3 Determining Intervals on Which a Function is Increasing or Decreasing"
+   ],
+   "evidence_tag": "verified",
+   "ek_id": "BC-EK-FUN-4A1",
+   "depth": "core",
+   "text": "f' > 0 on an open interval means f increases there; f' < 0 means it decreases. Intervals end at zeros of f' and where f' or f is undefined. The reason cites the sign of f'.",
+   "notation": "f' > 0; f' < 0",
+   "quote": {
+    "text": "including intervals where the function is increasing or decreasing.",
+    "source": "ced:101"
+   },
+   "delivery": {
+    "mode": "interactive",
+    "reason": "rule 3 promoted: BC-REP-02 on BC-SKL-05015; BC-QA-05008 difficulty_variables whether the derivative changes sign at an undefined point, and the stem asks for a reading of intervals",
+    "sources": [
+     "BC-SKL-05015",
+     "BC-QA-05008"
+    ],
+    "spec": {
+     "kind": "graph",
+     "representations": [
+      "BC-REP-02"
+     ],
+     "curve": "f'(x) = 2(x + 1)(x - 3)/(x - 1)",
+     "window": {
+      "x": [
+       -3,
+       6
+      ],
+      "y": [
+       -15,
+       15
+      ]
+     },
+     "controls": [
+      {
+       "type": "draggable_point",
+       "constrained_to": "curve",
+       "start": [
+        -2,
+        -3.33
+       ],
+       "exclude": [
+        1
+       ]
+      }
+     ],
+     "readout": "sign of f' at the point",
+     "question": "Is f rising here?",
+     "labels": [
+      {
+       "text": "graph of f'",
+       "placement": "inside"
+      },
+      {
+       "text": "x = 1: no point",
+       "placement": "inside"
+      }
+     ]
+    },
+    "fallback": "three static frames with the point at x = -2, 0 and 2, the sign of f' and the answer beside each",
+    "keyboard": "Tab focuses the point; Left and Right arrow keys move it by 0.1; Enter reads the sign of f' aloud"
+   }
+  },
+  {
+   "id": "LSN-CON-05004#s3",
+   "type": "strategy",
+   "bands": [
+    "low",
+    "mid"
+   ],
+   "skills": [
+    "BC-SKL-05014",
+    "BC-SKL-05015",
+    "BC-SKL-05016",
+    "BC-SKL-05017",
+    "BC-SKL-05018"
+   ],
+   "sources": [
+    "BC-QA-05008"
+   ],
+   "evidence_tag": "verified",
+   "archetype_id": "BC-QA-05008",
+   "cue": "Intervals of increase, from f or f'?",
+   "method": "First line: zeros of f' and where f' or f is undefined.",
+   "rival": "Rival: one test input, generalised.",
+   "separating_feature": "Every partition point, including a domain gap, ends an interval."
+  },
+  {
+   "id": "LSN-CON-05004#s4",
+   "type": "worked_example",
+   "bands": [
+    "low",
+    "mid"
+   ],
+   "skills": [
+    "BC-SKL-05014",
+    "BC-SKL-05015",
+    "BC-SKL-05016",
+    "BC-SKL-05017",
+    "BC-SKL-05018"
+   ],
+   "sources": [
+    "BC-QA-05008"
+   ],
+   "evidence_tag": "inferred",
+   "archetype_id": "BC-QA-05008",
+   "parameter_draw": {
+    "first_zero": -1,
+    "second_zero": 3,
+    "gap": 1,
+    "scale": 2,
+    "direction": "increasing",
+    "leading_sign": 1,
+    "domain_break": "odd"
+   },
+   "problem": {
+    "text": "For x ≠ 1, f'(x) = 2(x + 1)(x - 3)/(x - 1). On what open intervals is f increasing? Give a reason.",
+    "command_verb": "find"
+   },
+   "calculator_status": "no_calculator",
+   "steps": [
+    {
+     "cue": "Partition first.",
+     "why": "Numerator zeros.",
+     "expression": [
+      "Equal",
+      [
+       "Multiply",
+       [
+        "Add",
+        -3,
+        "x"
+       ],
+       [
+        "Add",
+        2,
+        [
+         "Multiply",
+         2,
+         "x"
+        ]
+       ]
+      ],
+      0
+     ],
+     "relation": "new"
+    },
+    {
+     "cue": "Solve.",
+     "why": "Two zeros.",
+     "expression": [
+      "Set",
+      -1,
+      3
+     ],
+     "relation": "solve",
+     "variable": "x"
+    },
+    {
+     "cue": "Denominator x - 1.",
+     "why": "Undefined at 1: a partition point."
+    },
+    {
+     "cue": "Sign on each piece.",
+     "why": "f'(0) = 6, f'(2) = -6, f'(4) > 0, f'(-2) < 0."
+    },
+    {
+     "cue": "Positive pieces.",
+     "why": "Open intervals, split at 1.",
+     "expression": [
+      "Union",
+      [
+       "Interval",
+       [
+        "Open",
+        -1
+       ],
+       [
+        "Open",
+        1
+       ]
+      ],
+      [
+       "Interval",
+       [
+        "Open",
+        3
+       ],
+       [
+        "Open",
+        "PositiveInfinity"
+       ]
+      ]
+     ],
+     "relation": "new"
+    },
+    {
+     "cue": "Give a reason.",
+     "why": "f'(x) > 0 on (-1, 1) and (3, oo), so f increases there.",
+     "point_type_id": "BC-PT-99005"
+    }
+   ],
+   "answer": {
+    "form": "symbolic",
+    "mathjson": [
+     "Union",
+     [
+      "Interval",
+      [
+       "Open",
+       -1
+      ],
+      [
+       "Open",
+       1
+      ]
+     ],
+     [
+      "Interval",
+      [
+       "Open",
+       3
+      ],
+      [
+       "Open",
+       "PositiveInfinity"
+      ]
+     ]
+    ]
+   },
+   "delivery": {
+    "mode": "step_reveal",
+    "reason": "rule 1",
+    "sources": []
+   }
+  },
+  {
+   "id": "LSN-CON-05004#s5",
+   "type": "what_a_reader_scores",
+   "bands": [
+    "low",
+    "mid"
+   ],
+   "skills": [
+    "BC-SKL-05014",
+    "BC-SKL-05015",
+    "BC-SKL-05016",
+    "BC-SKL-05017",
+    "BC-SKL-05018"
+   ],
+   "sources": [
+    "BC-PT-99005"
+   ],
+   "evidence_tag": "verified",
+   "example_id": "LSN-CON-05004#s4",
+   "lines": [
+    {
+     "point_type_id": "BC-PT-99005",
+     "text": "Answer with supporting work or setup shown. Earned by: The correct value together with the setup the prompt demanded, such as a difference and a quotient from a table or an equation that produces the value (sg-26:2, sg-25:4). Not earned by: An unsupported value (sg-23:10, sg-22:9), or a setup with no value (sg-26:2). Notation: sg-22:6 withholds this point for an equation of the form function equals constant, such as a derivative expression set equal to a number without evaluation. Precision: A reported decimal answer must be accurate to three places after the decimal point, rounded or truncated; at most one point per question is lost to inappropriate rounding (sg-25:2, sg-26:2)."
+    }
+   ]
+  },
+  {
+   "id": "LSN-CON-05004#err-BC-ERR-05014",
+   "type": "common_error",
+   "bands": [
+    "low",
+    "mid"
+   ],
+   "skills": [
+    "BC-SKL-05014"
+   ],
+   "sources": [
+    "BC-ERR-05014"
+   ],
+   "evidence_tag": "inferred",
+   "error_id": "BC-ERR-05014",
+   "observed_behavior": "The response assigns the wrong sign to the derivative expression on one of the intervals of its sign chart.",
+   "scoring_consequence": "The reported intervals are wrong, which also forfeits the reason point.",
+   "wrong_step": {
+    "text": "(-oo, -1) added.",
+    "expression": [
+     "Union",
+     [
+      "Interval",
+      [
+       "Open",
+       "NegativeInfinity"
+      ],
+      [
+       "Open",
+       -1
+      ]
+     ],
+     [
+      "Interval",
+      [
+       "Open",
+       -1
+      ],
+      [
+       "Open",
+       1
+      ]
+     ],
+     [
+      "Interval",
+      [
+       "Open",
+       3
+      ],
+      [
+       "Open",
+       "PositiveInfinity"
+      ]
+     ]
+    ]
+   },
+   "right_step": {
+    "text": "f'(-2) < 0: left out.",
+    "expression": [
+     "Union",
+     [
+      "Interval",
+      [
+       "Open",
+       -1
+      ],
+      [
+       "Open",
+       1
+      ]
+     ],
+     [
+      "Interval",
+      [
+       "Open",
+       3
+      ],
+      [
+       "Open",
+       "PositiveInfinity"
+      ]
+     ]
+    ]
+   },
+   "relation": "distinct",
+   "delivery": {
+    "mode": "step_reveal",
+    "reason": "rule 1",
+    "sources": []
+   }
+  },
+  {
+   "id": "LSN-CON-05004#err-BC-ERR-05015",
+   "type": "common_error",
+   "bands": [
+    "low",
+    "mid"
+   ],
+   "skills": [
+    "BC-SKL-05015"
+   ],
+   "sources": [
+    "BC-ERR-05015",
+    "BC-MIS-05011"
+   ],
+   "evidence_tag": "inferred",
+   "error_id": "BC-ERR-05015",
+   "observed_behavior": "The response answers a question about the function by describing features of the curve shown, which is the derivative.",
+   "scoring_consequence": "Every part that rests on the plotted object is answered about the wrong function.",
+   "wrong_step": {
+    "text": "Where the plotted f' rises.",
+    "expression": "plotted_curve_rises"
+   },
+   "right_step": {
+    "text": "Where the plotted f' is above the axis.",
+    "expression": "plotted_curve_above_axis"
+   },
+   "relation": "distinct",
+   "possible_reason": {
+    "misconception_id": "BC-MIS-05011",
+    "text": "answers questions about the function by reading features of whatever curve is drawn"
+   },
+   "delivery": {
+    "mode": "step_reveal",
+    "reason": "rule 1",
+    "sources": []
+   }
+  },
+  {
+   "id": "LSN-CON-05004#err-BC-ERR-05016",
+   "type": "common_error",
+   "bands": [
+    "low",
+    "mid"
+   ],
+   "skills": [
+    "BC-SKL-05015"
+   ],
+   "sources": [
+    "BC-ERR-05016",
+    "BC-MIS-05020"
+   ],
+   "evidence_tag": "inferred",
+   "error_id": "BC-ERR-05016",
+   "observed_behavior": "The response reports concavity where monotonicity was asked for, or reports increase of the function where the derivative graph is rising.",
+   "scoring_consequence": "The intervals reported belong to the other question and the reason point is unavailable.",
+   "wrong_step": {
+    "text": "Because f' is increasing.",
+    "expression": "f_prime_increasing"
+   },
+   "right_step": {
+    "text": "Because f' > 0.",
+    "expression": "f_prime_positive"
+   },
+   "relation": "distinct",
+   "possible_reason": {
+    "misconception_id": "BC-MIS-05020",
+    "text": "the sign and the direction of the derivative are used interchangeably"
+   },
+   "delivery": {
+    "mode": "step_reveal",
+    "reason": "rule 1",
+    "sources": []
+   }
+  },
+  {
+   "id": "LSN-CON-05004#err-BC-ERR-05017",
+   "type": "common_error",
+   "bands": [
+    "low",
+    "mid"
+   ],
+   "skills": [
+    "BC-SKL-05016"
+   ],
+   "sources": [
+    "BC-ERR-05017",
+    "BC-MIS-05012"
+   ],
+   "evidence_tag": "inferred",
+   "error_id": "BC-ERR-05017",
+   "observed_behavior": "The response partitions the number line at the zeros of the derivative only and ignores a vertical asymptote or a domain gap.",
+   "scoring_consequence": "An interval spans a break, so the reported behaviour is claimed where the function does not exist.",
+   "wrong_step": {
+    "text": "No split at 1.",
+    "expression": [
+     "Union",
+     [
+      "Interval",
+      [
+       "Open",
+       -1
+      ],
+      [
+       "Open",
+       3
+      ]
+     ],
+     [
+      "Interval",
+      [
+       "Open",
+       3
+      ],
+      [
+       "Open",
+       "PositiveInfinity"
+      ]
+     ]
+    ]
+   },
+   "right_step": {
+    "text": "Split at 1.",
+    "expression": [
+     "Union",
+     [
+      "Interval",
+      [
+       "Open",
+       -1
+      ],
+      [
+       "Open",
+       1
+      ]
+     ],
+     [
+      "Interval",
+      [
+       "Open",
+       3
+      ],
+      [
+       "Open",
+       "PositiveInfinity"
+      ]
+     ]
+    ]
+   },
+   "relation": "distinct",
+   "possible_reason": {
+    "misconception_id": "BC-MIS-05012",
+    "text": "reports one interval of increase or concavity spanning an input where the function does not exist"
+   },
+   "delivery": {
+    "mode": "step_reveal",
+    "reason": "rule 1",
+    "sources": []
+   }
+  },
+  {
+   "id": "LSN-CON-05004#prq-BC-PRQ-05001",
+   "type": "prerequisite_bridge",
+   "bands": [
+    "low",
+    "mid"
+   ],
+   "skills": [
+    "BC-SKL-05014"
+   ],
+   "sources": [
+    "BC-PRQ-05001"
+   ],
+   "evidence_tag": "inferred",
+   "prerequisite_id": "BC-PRQ-05001",
+   "text": "Zero each factor and the denominator."
+  },
+  {
+   "id": "LSN-CON-05004#prq-BC-PRQ-05002",
+   "type": "prerequisite_bridge",
+   "bands": [
+    "low",
+    "mid"
+   ],
+   "skills": [
+    "BC-SKL-05014"
+   ],
+   "sources": [
+    "BC-PRQ-05002"
+   ],
+   "evidence_tag": "inferred",
+   "prerequisite_id": "BC-PRQ-05002",
+   "text": "One test value fixes each piece's sign."
+  },
+  {
+   "id": "LSN-CON-05004#prq-BC-PRQ-05003",
+   "type": "prerequisite_bridge",
+   "bands": [
+    "low",
+    "mid"
+   ],
+   "skills": [
+    "BC-SKL-05016",
+    "BC-SKL-05018"
+   ],
+   "sources": [
+    "BC-PRQ-05003"
+   ],
+   "evidence_tag": "inferred",
+   "prerequisite_id": "BC-PRQ-05003",
+   "text": "No interval crosses an undefined input."
+  },
+  {
+   "id": "LSN-CON-05004#prq-BC-PRQ-05006",
+   "type": "prerequisite_bridge",
+   "bands": [
+    "low",
+    "mid"
+   ],
+   "skills": [
+    "BC-SKL-05015"
+   ],
+   "sources": [
+    "BC-PRQ-05006"
+   ],
+   "evidence_tag": "inferred",
+   "prerequisite_id": "BC-PRQ-05006",
+   "text": "Axis label: f or f'?"
+  }
+ ],
+ "checks": [
+  {
+   "id": "LSN-CON-05004#chk-1",
+   "check_kind": "completion",
+   "bands": [
+    "low",
+    "mid"
+   ],
+   "format": "short_answer",
+   "archetype_id": "BC-QA-05008",
+   "parameter_draw": {
+    "first_zero": -1,
+    "second_zero": 3,
+    "gap": 1,
+    "scale": 2,
+    "direction": "increasing",
+    "leading_sign": 1,
+    "domain_break": "odd"
+   },
+   "completes": "LSN-CON-05004#s4",
+   "stem": {
+    "text": "Signs of f' on (-oo, -1), (-1, 1), (1, 3), (3, oo): -, +, -, +. Where is f increasing?",
+    "command_verb": "find"
+   },
+   "answer_key": {
+    "form": "symbolic",
+    "mathjson": [
+     "Union",
+     [
+      "Interval",
+      [
+       "Open",
+       -1
+      ],
+      [
+       "Open",
+       1
+      ]
+     ],
+     [
+      "Interval",
+      [
+       "Open",
+       3
+      ],
+      [
+       "Open",
+       "PositiveInfinity"
+      ]
+     ]
+    ]
+   },
+   "worked_solution": [
+    {
+     "step": 1,
+     "text": "The positive pieces.",
+     "mathjson": [
+      "Union",
+      [
+       "Interval",
+       [
+        "Open",
+        -1
+       ],
+       [
+        "Open",
+        1
+       ]
+      ],
+      [
+       "Interval",
+       [
+        "Open",
+        3
+       ],
+       [
+        "Open",
+        "PositiveInfinity"
+       ]
+      ]
+     ],
+     "relation": "new"
+    }
+   ],
+   "calculator_status": "no_calculator",
+   "representation": "BC-REP-01",
+   "skills": [
+    "BC-SKL-05016"
+   ]
+  },
+  {
+   "id": "LSN-CON-05004#chk-2",
+   "check_kind": "isomorph",
+   "bands": [
+    "low",
+    "mid"
+   ],
+   "format": "short_answer",
+   "archetype_id": "BC-QA-05008",
+   "parameter_draw": {
+    "first_zero": -2,
+    "second_zero": 2,
+    "gap": 0,
+    "scale": 1,
+    "direction": "decreasing",
+    "leading_sign": 1,
+    "domain_break": "none"
+   },
+   "stem": {
+    "text": "f'(x) = (x + 2)(x - 2). Where is f decreasing?",
+    "command_verb": "find"
+   },
+   "answer_key": {
+    "form": "symbolic",
+    "mathjson": [
+     "Interval",
+     [
+      "Open",
+      -2
+     ],
+     [
+      "Open",
+      2
+     ]
+    ]
+   },
+   "worked_solution": [
+    {
+     "step": 1,
+     "text": "Zeros.",
+     "mathjson": [
+      "Equal",
+      [
+       "Multiply",
+       [
+        "Add",
+        -2,
+        "x"
+       ],
+       [
+        "Add",
+        2,
+        "x"
+       ]
+      ],
+      0
+     ],
+     "relation": "new"
+    },
+    {
+     "step": 2,
+     "text": "x = -2, 2.",
+     "mathjson": [
+      "Set",
+      -2,
+      2
+     ],
+     "relation": "solve",
+     "variable": "x"
+    },
+    {
+     "step": 3,
+     "text": "f'(0) = -4 < 0.",
+     "mathjson": [
+      "Interval",
+      [
+       "Open",
+       -2
+      ],
+      [
+       "Open",
+       2
+      ]
+     ],
+     "relation": "new"
+    }
+   ],
+   "calculator_status": "no_calculator",
+   "representation": "BC-REP-01",
+   "skills": [
+    "BC-SKL-05014",
+    "BC-SKL-05016"
+   ]
+  },
+  {
+   "id": "LSN-CON-05004#chk-3",
+   "check_kind": "mcq",
+   "bands": [
+    "low"
+   ],
+   "format": "mcq",
+   "archetype_id": "BC-QA-05008",
+   "parameter_draw": {
+    "first_zero": 0,
+    "second_zero": 4,
+    "gap": 2,
+    "scale": 1,
+    "direction": "increasing",
+    "leading_sign": 1,
+    "domain_break": "odd"
+   },
+   "stem": {
+    "text": "f is undefined at x = 2 and f'(x) = x(x - 4)/(x - 2). Where is f increasing?",
+    "command_verb": "identify"
+   },
+   "answer_key": {
+    "form": "symbolic",
+    "mathjson": [
+     "Union",
+     [
+      "Interval",
+      [
+       "Open",
+       0
+      ],
+      [
+       "Open",
+       2
+      ]
+     ],
+     [
+      "Interval",
+      [
+       "Open",
+       4
+      ],
+      [
+       "Open",
+       "PositiveInfinity"
+      ]
+     ]
+    ]
+   },
+   "worked_solution": [
+    {
+     "step": 1,
+     "text": "Zeros.",
+     "mathjson": [
+      "Equal",
+      [
+       "Multiply",
+       "x",
+       [
+        "Add",
+        -4,
+        "x"
+       ]
+      ],
+      0
+     ],
+     "relation": "new"
+    },
+    {
+     "step": 2,
+     "text": "x = 0, 4.",
+     "mathjson": [
+      "Set",
+      0,
+      4
+     ],
+     "relation": "solve",
+     "variable": "x"
+    },
+    {
+     "step": 3,
+     "text": "Split also at 2; positive on (0, 2) and (4, oo).",
+     "mathjson": [
+      "Union",
+      [
+       "Interval",
+       [
+        "Open",
+        0
+       ],
+       [
+        "Open",
+        2
+       ]
+      ],
+      [
+       "Interval",
+       [
+        "Open",
+        4
+       ],
+       [
+        "Open",
+        "PositiveInfinity"
+       ]
+      ]
+     ],
+     "relation": "new"
+    }
+   ],
+   "options": [
+    {
+     "id": "A",
+     "is_key": false,
+     "error_path": "BC-ERR-05014",
+     "value": [
+      "Union",
+      [
+       "Interval",
+       [
+        "Open",
+        "NegativeInfinity"
+       ],
+       [
+        "Open",
+        0
+       ]
+      ],
+      [
+       "Interval",
+       [
+        "Open",
+        0
+       ],
+       [
+        "Open",
+        2
+       ]
+      ],
+      [
+       "Interval",
+       [
+        "Open",
+        4
+       ],
+       [
+        "Open",
+        "PositiveInfinity"
+       ]
+      ]
+     ],
+     "derivation": "the sign on (-oo, 0) misread as positive"
+    },
+    {
+     "id": "B",
+     "is_key": true,
+     "error_path": null,
+     "value": [
+      "Union",
+      [
+       "Interval",
+       [
+        "Open",
+        0
+       ],
+       [
+        "Open",
+        2
+       ]
+      ],
+      [
+       "Interval",
+       [
+        "Open",
+        4
+       ],
+       [
+        "Open",
+        "PositiveInfinity"
+       ]
+      ]
+     ]
+    },
+    {
+     "id": "C",
+     "is_key": false,
+     "error_path": "BC-ERR-05016",
+     "value": [
+      "Union",
+      [
+       "Interval",
+       [
+        "Open",
+        "NegativeInfinity"
+       ],
+       [
+        "Open",
+        2
+       ]
+      ],
+      [
+       "Interval",
+       [
+        "Open",
+        2
+       ],
+       [
+        "Open",
+        "PositiveInfinity"
+       ]
+      ]
+     ],
+     "derivation": "where f' rises: f''(x) = (x^2 - 4x + 8)/(x - 2)^2 > 0"
+    },
+    {
+     "id": "D",
+     "is_key": false,
+     "error_path": "BC-ERR-05017",
+     "value": [
+      "Union",
+      [
+       "Interval",
+       [
+        "Open",
+        0
+       ],
+       [
+        "Open",
+        4
+       ]
+      ],
+      [
+       "Interval",
+       [
+        "Open",
+        4
+       ],
+       [
+        "Open",
+        "PositiveInfinity"
+       ]
+      ]
+     ],
+     "derivation": "x = 2 left off the partition"
+    }
+   ],
+   "calculator_status": "no_calculator",
+   "representation": "BC-REP-01",
+   "skills": [
+    "BC-SKL-05014",
+    "BC-SKL-05018"
+   ]
+  }
+ ],
+ "refresher": [
+  "LSN-CON-05004#s2",
+  "LSN-CON-05004#err-BC-ERR-05014",
+  "LSN-CON-05004#err-BC-ERR-05015",
+  "LSN-CON-05004#err-BC-ERR-05016",
+  "LSN-CON-05004#err-BC-ERR-05017",
+  "LSN-CON-05004#s4"
+ ],
+ "provenance": {
+  "author": "tools/lesson_transcribe.py",
+  "prompt_version": "generator/lesson_v1",
+  "design_path": "docs/lessons/unit-05/LSN-CON-05004.md",
+  "signed_off_by": "claude-opus-5-5",
+  "signed_off_at": "2026-09-29",
+  "not_human": true
+ }
+}

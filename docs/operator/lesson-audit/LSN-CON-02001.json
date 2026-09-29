@@ -1,0 +1,133 @@
+{
+ "lesson_id": "LSN-CON-02001",
+ "version": 1,
+ "compared_on": "2026-09-29",
+ "auditor": "claude-opus-5-5",
+ "resolve": {
+  "date": "2026-09-29",
+  "problems": 4,
+  "agreed": 4,
+  "judgments_pending": 0,
+  "all_agree": true,
+  "verdicts": [
+   {
+    "id": "LSN-CON-02001#ex-1",
+    "agree": true,
+    "detail": "agree (symbolic)",
+    "method": "(52-31)/(8-3) meters per minute"
+   },
+   {
+    "id": "LSN-CON-02001#chk-1",
+    "agree": true,
+    "detail": "agree (symbolic)",
+    "method": "21/5"
+   },
+   {
+    "id": "LSN-CON-02001#chk-2",
+    "agree": true,
+    "detail": "agree (symbolic)",
+    "method": "(41-18)/(7-2)"
+   },
+   {
+    "id": "LSN-CON-02001#chk-3",
+    "agree": true,
+    "detail": "key option B, re-solver B",
+    "method": "(22-58)/5 = -36/5 F per minute"
+   }
+  ],
+  "answers_file": "docs/lessons/verification/answers/delta-2026-09-29-a.json"
+ },
+ "audit": {
+  "date": "2026-09-29",
+  "auditor": "claude-opus-5-5",
+  "blocks": [
+   {
+    "id": "orientation",
+    "verdict": "ok",
+    "evidence": "Paraphrase of BC-CON-02001 description_plain and the 2.1 Assessment behaviour paragraph (difference and quotient, separate units point, table or formula by calculator variant); 44 words."
+   },
+   {
+    "id": "ki-1",
+    "verdict": "ok",
+    "evidence": "Both quotients paraphrase BC-EK-CHA-2A1; quote 'express the average rate of change of a function over an interval' is on ced:60; units rule from 2.3 Units paragraph; 43 words."
+   },
+   {
+    "id": "st-1",
+    "verdict": "ok",
+    "evidence": "Cue, first line and rival (BC-ERR-02001) from BC-QA-04002 common_givens, asked_to_produce, expected_solution_path and wrong_approaches."
+   },
+   {
+    "id": "st-2",
+    "verdict": "ok",
+    "evidence": "Cue, method and rival from BC-QA-02014 common_givens, expected_solution_path[0] and wrong_approaches."
+   },
+   {
+    "id": "ex-1",
+    "verdict": "ok",
+    "evidence": "SymPy: (52-31)/(8-3) = 21/5; steps follow BC-QA-04002 expected_solution_path."
+   },
+   {
+    "id": "reader-scores:ex-1",
+    "verdict": "ok",
+    "evidence": "Empty entry; the omission is recorded as inferred with the library gap it depends on."
+   },
+   {
+    "id": "err-BC-ERR-02001",
+    "verdict": "ok",
+    "evidence": "Observed behaviour and scoring consequence verbatim from BC-ERR-02001; SymPy 52-31 = 21 versus 21/5."
+   },
+   {
+    "id": "err-BC-ERR-02003",
+    "verdict": "ok",
+    "evidence": "Verbatim from BC-ERR-02003; possible reason quotes BC-MIS-02008 'copies them from the table header'."
+   },
+   {
+    "id": "representations",
+    "verdict": "ok",
+    "evidence": "Null; the 2.1 conversion table to average rate is carried by ki-1's table."
+   },
+   {
+    "id": "BC-PRQ-02005",
+    "verdict": "ok",
+    "evidence": "Paraphrase of BC-PRQ-02005 description_plain (base point and increment)."
+   },
+   {
+    "id": "BC-PRQ-02001",
+    "verdict": "ok",
+    "evidence": "Paraphrase of BC-PRQ-02001 description_plain and failure_signature."
+   },
+   {
+    "id": "chk-1",
+    "verdict": "ok",
+    "evidence": "SymPy: key 21/5 equals ex-1's answer."
+   },
+   {
+    "id": "chk-2",
+    "verdict": "ok",
+    "evidence": "SymPy: (41-18)/(7-2) = 23/5."
+   },
+   {
+    "id": "chk-3",
+    "verdict": "ok",
+    "evidence": "fixed 2026-09-29: parameter_draw readings reordered to [75,58,40,22,15] so H(4)=58, H(9)=22 as served; SymPy (22-58)/(9-4) = -36/5 unchanged key B."
+   }
+  ],
+  "advice": [
+   "chk-3 parameter_draw pairs readings [15,22,40,58,75] with times [2,4,5,9,12] in ascending order, which would give H(4)=22, H(9)=58 and a key of +36/5; the served stem reverses the pairing to match trend decreasing. The draw record should list the readings in the served order.",
+   "st-2 teaches BC-QA-02014 but the lesson has no example or check for it; recognition of that stem rests on one strategy block.",
+   "ki-1 as a table serves the tabulated reading well; the increment form in ki-1 is not exercised by any example or check although BC-SKL-02001 is a listed skill.",
+   "The lesson teaches the stem, the first written line (quotient) and the rival (difference alone) clearly, and the units habit through two error blocks."
+  ],
+  "counts": {
+   "ok": 14,
+   "unsourced": 0,
+   "wrong": 0,
+   "over_cap": 0,
+   "lint": 0
+  },
+  "fix_notes": [
+   "Fixed advice defect: chk-3 parameter_draw readings now list the served pairing [75,58,40,22,15] (machine record and Checks prose).",
+   "Left as preferences: st-2 has no example or check; ki-1 increment form not exercised."
+  ]
+ }
+}

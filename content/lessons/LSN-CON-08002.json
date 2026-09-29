@@ -1,0 +1,819 @@
+{
+ "id": "LSN-CON-08002",
+ "version": 1,
+ "kind": "concept",
+ "target_id": "BC-CON-08002",
+ "status": "signed_off",
+ "snapshot_digest": "a6a8ec9d3f59ab8f712e33d30cc22fc64bf2c478fbe7312e3e3118d319c6a42f",
+ "source_digest": "2f5b5fcfb945818280e76e99e8eebaea9af942a3c084f1c1a1c70f0dfdd2bb07",
+ "read_minutes": {
+  "full": 3.5,
+  "brief": 3.0
+ },
+ "word_count": {
+  "full": 457,
+  "brief": 388
+ },
+ "sections": [
+  {
+   "id": "LSN-CON-08002#s1",
+   "type": "orientation",
+   "bands": [
+    "low",
+    "mid"
+   ],
+   "skills": [
+    "BC-SKL-08004",
+    "BC-SKL-08005"
+   ],
+   "sources": [
+    "BC-CON-08002",
+    "research/units/unit-08-applications-integration.md#8.1 Finding the Average Value of a Function on an Interval"
+   ],
+   "evidence_tag": "inferred",
+   "text": "The wording picks the formula: average value of f, an integral quotient in the units of f; average rate of change, a difference quotient in units per unit input.",
+   "delivery": {
+    "mode": "text",
+    "reason": "rule 6: BC-REP-04, 01 and 05 on the skills, none figure-bearing",
+    "sources": [
+     "BC-SKL-08004",
+     "BC-SKL-08005"
+    ]
+   }
+  },
+  {
+   "id": "LSN-CON-08002#s2",
+   "type": "key_ideas",
+   "bands": [
+    "low",
+    "mid"
+   ],
+   "skills": [
+    "BC-SKL-08004",
+    "BC-SKL-08005"
+   ],
+   "sources": [
+    "BC-EK-CHA-4B1",
+    "ced:152",
+    "sg-25:4",
+    "research/units/unit-08-applications-integration.md#8.1 Finding the Average Value of a Function on an Interval"
+   ],
+   "evidence_tag": "inferred",
+   "ek_id": "BC-EK-CHA-4B1",
+   "depth": "core",
+   "text": "Average value of f on [a, b]: the integral of f over [a, b] divided by b minus a. Average rate of change of F: F(b) minus F(a), over b minus a. When F is an antiderivative of f the two numbers agree.",
+   "notation": "average value; average rate of change",
+   "delivery": {
+    "mode": "text",
+    "reason": "rule 6: two quotients side by side with units; the unit README delivery map names text",
+    "sources": [
+     "BC-SKL-08004"
+    ]
+   }
+  },
+  {
+   "id": "LSN-CON-08002#s3",
+   "type": "strategy",
+   "bands": [
+    "low",
+    "mid"
+   ],
+   "skills": [
+    "BC-SKL-08004"
+   ],
+   "sources": [
+    "BC-QA-08002"
+   ],
+   "evidence_tag": "verified",
+   "archetype_id": "BC-QA-08002",
+   "cue": "A time when the instantaneous rate equals the average rate of change, from a model and its derivative.",
+   "method": "First line: the average rate of change over the interval.",
+   "rival": "Rival: reporting that average rate itself as the time.",
+   "separating_feature": "The stem asks for a time, so the rate is the right side of an equation."
+  },
+  {
+   "id": "LSN-CON-08002#s4",
+   "type": "strategy",
+   "bands": [
+    "low",
+    "mid"
+   ],
+   "skills": [
+    "BC-SKL-08004"
+   ],
+   "sources": [
+    "BC-QA-99007"
+   ],
+   "evidence_tag": "verified",
+   "archetype_id": "BC-QA-99007",
+   "cue": "The average rate of change with units, from a modelling function and a closed interval.",
+   "method": "First line: the function at both endpoints.",
+   "rival": "Rival: integrating the function and dividing by the interval length.",
+   "separating_feature": "The words rate of change."
+  },
+  {
+   "id": "LSN-CON-08002#s5",
+   "type": "strategy",
+   "bands": [
+    "low",
+    "mid"
+   ],
+   "skills": [
+    "BC-SKL-08005"
+   ],
+   "sources": [
+    "BC-QA-08001"
+   ],
+   "evidence_tag": "verified",
+   "archetype_id": "BC-QA-08001",
+   "cue": "The average value of a model function over a closed interval.",
+   "method": "First line: the integral of the function over the interval.",
+   "rival": "Rival: averaging the two endpoint values.",
+   "separating_feature": "The words average value of."
+  },
+  {
+   "id": "LSN-CON-08002#s6",
+   "type": "worked_example",
+   "bands": [
+    "low",
+    "mid"
+   ],
+   "skills": [
+    "BC-SKL-08004"
+   ],
+   "sources": [
+    "BC-QA-08002"
+   ],
+   "evidence_tag": "inferred",
+   "archetype_id": "BC-QA-08002",
+   "parameter_draw": {
+    "model": "exponential",
+    "coefficient": 3,
+    "linear_rate": 1,
+    "scale": 2,
+    "start": 1,
+    "length": "2",
+    "context": "water",
+    "framing": "context",
+    "presentation": "formula"
+   },
+   "problem": {
+    "text": "A tank holds W(t) = 3e^(t/2) + t gallons at t hours. Find t in (1, 3) where W'(t) equals W's average rate of change over [1, 3].",
+    "command_verb": "find"
+   },
+   "calculator_status": "calculator",
+   "steps": [
+    {
+     "cue": "Rate of change over [1, 3]: the difference quotient.",
+     "why": "Endpoint values, not an integral. Gallons per hour.",
+     "expression": [
+      "Add",
+      1,
+      [
+       "Multiply",
+       [
+        "Rational",
+        -3,
+        2
+       ],
+       [
+        "Exp",
+        [
+         "Rational",
+         1,
+         2
+        ]
+       ]
+      ],
+      [
+       "Multiply",
+       [
+        "Rational",
+        3,
+        2
+       ],
+       [
+        "Exp",
+        [
+         "Rational",
+         3,
+         2
+        ]
+       ]
+      ]
+     ],
+     "point_type_id": "BC-PT-99021",
+     "relation": "new"
+    },
+    {
+     "cue": "Instantaneous rate equals that average: W'(t) set equal to it.",
+     "why": "The equation is the setup the answer needs.",
+     "expression": [
+      "Equal",
+      [
+       "Add",
+       1,
+       [
+        "Multiply",
+        [
+         "Rational",
+         3,
+         2
+        ],
+        [
+         "Exp",
+         [
+          "Multiply",
+          [
+           "Rational",
+           1,
+           2
+          ],
+          "t"
+         ]
+        ]
+       ]
+      ],
+      [
+       "Add",
+       1,
+       [
+        "Multiply",
+        [
+         "Rational",
+         -3,
+         2
+        ],
+        [
+         "Exp",
+         [
+          "Rational",
+          1,
+          2
+         ]
+        ]
+       ],
+       [
+        "Multiply",
+        [
+         "Rational",
+         3,
+         2
+        ],
+        [
+         "Exp",
+         [
+          "Rational",
+          3,
+          2
+         ]
+        ]
+       ]
+      ]
+     ],
+     "relation": "new"
+    },
+    {
+     "cue": "The stem asks for t.",
+     "why": "The calculator solve on (1, 3).",
+     "expression": [
+      "Multiply",
+      2,
+      [
+       "Ln",
+       [
+        "Add",
+        [
+         "Multiply",
+         -1,
+         [
+          "Exp",
+          [
+           "Rational",
+           1,
+           2
+          ]
+         ]
+        ],
+        [
+         "Exp",
+         [
+          "Rational",
+          3,
+          2
+         ]
+        ]
+       ]
+      ]
+     ],
+     "relation": "solve",
+     "variable": "t"
+    },
+    {
+     "cue": "Three decimals.",
+     "why": "Hours, inside (1, 3).",
+     "expression": 2.083,
+     "relation": "evaluate",
+     "subs": {},
+     "approx": true
+    }
+   ],
+   "answer": {
+    "form": "numeric",
+    "mathjson": 2.083
+   },
+   "delivery": {
+    "mode": "step_reveal",
+    "reason": "rule 1",
+    "sources": []
+   }
+  },
+  {
+   "id": "LSN-CON-08002#s7",
+   "type": "what_a_reader_scores",
+   "bands": [
+    "low",
+    "mid"
+   ],
+   "skills": [
+    "BC-SKL-08004"
+   ],
+   "sources": [
+    "BC-PT-99021"
+   ],
+   "evidence_tag": "verified",
+   "example_id": "LSN-CON-08002#s6",
+   "lines": [
+    {
+     "point_type_id": "BC-PT-99021",
+     "text": "Average rate of change expression. Earned by: An expression showing both a difference of function values and a quotient by the difference of inputs, or its correct value (sg-26:2, sg-25:11). Not earned by: A bare quotient template with no values substituted (sg-25:11, sg-26:2); the solved value alone where the prompt demanded the setup (sg-25:4). Precision: sg-22:13 and sg-21:17 do not require simplification, but any simplification presented must be correct."
+    }
+   ]
+  },
+  {
+   "id": "LSN-CON-08002#err-BC-ERR-99015",
+   "type": "common_error",
+   "bands": [
+    "low",
+    "mid"
+   ],
+   "skills": [
+    "BC-SKL-08004",
+    "BC-SKL-08005"
+   ],
+   "sources": [
+    "BC-ERR-99015",
+    "BC-MIS-99006"
+   ],
+   "evidence_tag": "inferred",
+   "error_id": "BC-ERR-99015",
+   "observed_behavior": "Responses compute a difference quotient where the average value of a function was asked, or integrate the derivative instead of the function, or divide by the wrong quantity.",
+   "scoring_consequence": "The setup point is not earned and the numerical answer point follows it.",
+   "wrong_step": {
+    "text": "Average value of W.",
+    "expression": [
+     "Multiply",
+     [
+      "Rational",
+      1,
+      2
+     ],
+     [
+      "Integrate",
+      [
+       "Add",
+       "t",
+       [
+        "Multiply",
+        3,
+        [
+         "Exp",
+         [
+          "Multiply",
+          [
+           "Rational",
+           1,
+           2
+          ],
+          "t"
+         ]
+        ]
+       ]
+      ],
+      [
+       "Tuple",
+       "t",
+       1,
+       3
+      ]
+     ]
+    ]
+   },
+   "right_step": {
+    "text": "Average rate of change.",
+    "expression": [
+     "Add",
+     1,
+     [
+      "Multiply",
+      [
+       "Rational",
+       -3,
+       2
+      ],
+      [
+       "Exp",
+       [
+        "Rational",
+        1,
+        2
+       ]
+      ]
+     ],
+     [
+      "Multiply",
+      [
+       "Rational",
+       3,
+       2
+      ],
+      [
+       "Exp",
+       [
+        "Rational",
+        3,
+        2
+       ]
+      ]
+     ]
+    ]
+   },
+   "relation": "distinct",
+   "possible_reason": {
+    "misconception_id": "BC-MIS-99006",
+    "text": "treats the two phrases as synonyms"
+   },
+   "delivery": {
+    "mode": "step_reveal",
+    "reason": "rule 1",
+    "sources": []
+   }
+  },
+  {
+   "id": "LSN-CON-08002#err-BC-ERR-99005",
+   "type": "common_error",
+   "bands": [
+    "low",
+    "mid"
+   ],
+   "skills": [
+    "BC-SKL-08005"
+   ],
+   "sources": [
+    "BC-ERR-99005",
+    "BC-MIS-02008"
+   ],
+   "evidence_tag": "inferred",
+   "error_id": "BC-ERR-99005",
+   "observed_behavior": "Responses give no units where units are requested, or report units of the original quantity instead of the derived one, for example words per minute for a second difference quotient.",
+   "scoring_consequence": "The units point is not earned; it is scored separately from the value.",
+   "wrong_step": {
+    "text": "5.249 gallons.",
+    "expression": 5.249
+   },
+   "right_step": {
+    "text": "5.249 gallons per hour.",
+    "expression": 5.249
+   },
+   "relation": "equivalent",
+   "possible_reason": {
+    "misconception_id": "BC-MIS-02008",
+    "text": "treats units as optional"
+   },
+   "delivery": {
+    "mode": "step_reveal",
+    "reason": "rule 1",
+    "sources": []
+   }
+  },
+  {
+   "id": "LSN-CON-08002#prq-BC-PRQ-06005",
+   "type": "prerequisite_bridge",
+   "bands": [
+    "low",
+    "mid"
+   ],
+   "skills": [
+    "BC-SKL-08004",
+    "BC-SKL-08005"
+   ],
+   "sources": [
+    "BC-PRQ-06005"
+   ],
+   "evidence_tag": "inferred",
+   "prerequisite_id": "BC-PRQ-06005",
+   "text": "W is the amount and W' its rate; swapping them changes which quotient is written."
+  }
+ ],
+ "checks": [
+  {
+   "id": "LSN-CON-08002#chk-1",
+   "check_kind": "completion",
+   "bands": [
+    "low",
+    "mid"
+   ],
+   "format": "short_answer",
+   "archetype_id": "BC-QA-08002",
+   "parameter_draw": {
+    "model": "exponential",
+    "coefficient": 3,
+    "linear_rate": 1,
+    "scale": 2,
+    "start": 1,
+    "length": "2",
+    "context": "water",
+    "framing": "context",
+    "presentation": "formula"
+   },
+   "completes": "LSN-CON-08002#s6",
+   "stem": {
+    "text": "W(t) = 3e^(t/2) + t. Solve W'(t) = (W(3) - W(1))/2 on (1, 3), to three places.",
+    "command_verb": "solve"
+   },
+   "answer_key": {
+    "form": "numeric",
+    "mathjson": 2.083
+   },
+   "worked_solution": [
+    {
+     "step": 1,
+     "text": "The equation.",
+     "mathjson": [
+      "Equal",
+      [
+       "Add",
+       1,
+       [
+        "Multiply",
+        [
+         "Rational",
+         3,
+         2
+        ],
+        [
+         "Exp",
+         [
+          "Multiply",
+          [
+           "Rational",
+           1,
+           2
+          ],
+          "t"
+         ]
+        ]
+       ]
+      ],
+      [
+       "Add",
+       1,
+       [
+        "Multiply",
+        [
+         "Rational",
+         -3,
+         2
+        ],
+        [
+         "Exp",
+         [
+          "Rational",
+          1,
+          2
+         ]
+        ]
+       ],
+       [
+        "Multiply",
+        [
+         "Rational",
+         3,
+         2
+        ],
+        [
+         "Exp",
+         [
+          "Rational",
+          3,
+          2
+         ]
+        ]
+       ]
+      ]
+     ],
+     "relation": "new"
+    },
+    {
+     "step": 2,
+     "text": "Solve.",
+     "mathjson": [
+      "Multiply",
+      2,
+      [
+       "Ln",
+       [
+        "Add",
+        [
+         "Multiply",
+         -1,
+         [
+          "Exp",
+          [
+           "Rational",
+           1,
+           2
+          ]
+         ]
+        ],
+        [
+         "Exp",
+         [
+          "Rational",
+          3,
+          2
+         ]
+        ]
+       ]
+      ]
+     ],
+     "relation": "solve",
+     "variable": "t"
+    },
+    {
+     "step": 3,
+     "text": "Three places.",
+     "mathjson": 2.083,
+     "relation": "evaluate",
+     "subs": {},
+     "approx": true
+    }
+   ],
+   "calculator_status": "calculator",
+   "representation": "BC-REP-01",
+   "skills": [
+    "BC-SKL-08004"
+   ]
+  },
+  {
+   "id": "LSN-CON-08002#chk-2",
+   "check_kind": "isomorph",
+   "bands": [
+    "low",
+    "mid"
+   ],
+   "format": "short_answer",
+   "archetype_id": "BC-QA-08002",
+   "parameter_draw": {
+    "model": "exponential",
+    "coefficient": 4,
+    "linear_rate": 2,
+    "scale": 2,
+    "start": 2,
+    "length": "2",
+    "context": "water",
+    "framing": "bare",
+    "presentation": "formula"
+   },
+   "stem": {
+    "text": "W(t) = 4e^(t/2) + 2t. Find t in (2, 4) where W'(t) equals the average rate of change of W over [2, 4].",
+    "command_verb": "find"
+   },
+   "answer_key": {
+    "form": "numeric",
+    "mathjson": 3.083
+   },
+   "worked_solution": [
+    {
+     "step": 1,
+     "text": "Average rate.",
+     "mathjson": [
+      "Add",
+      2,
+      [
+       "Multiply",
+       -2,
+       "ExponentialE"
+      ],
+      [
+       "Multiply",
+       2,
+       [
+        "Exp",
+        2
+       ]
+      ]
+     ],
+     "relation": "new"
+    },
+    {
+     "step": 2,
+     "text": "The equation.",
+     "mathjson": [
+      "Equal",
+      [
+       "Add",
+       2,
+       [
+        "Multiply",
+        2,
+        [
+         "Exp",
+         [
+          "Multiply",
+          [
+           "Rational",
+           1,
+           2
+          ],
+          "t"
+         ]
+        ]
+       ]
+      ],
+      [
+       "Add",
+       2,
+       [
+        "Multiply",
+        -2,
+        "ExponentialE"
+       ],
+       [
+        "Multiply",
+        2,
+        [
+         "Exp",
+         2
+        ]
+       ]
+      ]
+     ],
+     "relation": "new"
+    },
+    {
+     "step": 3,
+     "text": "Solve.",
+     "mathjson": [
+      "Multiply",
+      2,
+      [
+       "Ln",
+       [
+        "Add",
+        [
+         "Multiply",
+         -1,
+         "ExponentialE"
+        ],
+        [
+         "Exp",
+         2
+        ]
+       ]
+      ]
+     ],
+     "relation": "solve",
+     "variable": "t"
+    },
+    {
+     "step": 4,
+     "text": "Three places.",
+     "mathjson": 3.083,
+     "relation": "evaluate",
+     "subs": {},
+     "approx": true
+    }
+   ],
+   "calculator_status": "calculator",
+   "representation": "BC-REP-01",
+   "skills": [
+    "BC-SKL-08004"
+   ]
+  }
+ ],
+ "refresher": [
+  "LSN-CON-08002#s2",
+  "LSN-CON-08002#err-BC-ERR-99015",
+  "LSN-CON-08002#err-BC-ERR-99005",
+  "LSN-CON-08002#s6"
+ ],
+ "provenance": {
+  "author": "tools/lesson_transcribe.py",
+  "prompt_version": "generator/lesson_v1",
+  "design_path": "docs/lessons/unit-08/LSN-CON-08002.md",
+  "signed_off_by": "claude-opus-5-5",
+  "signed_off_at": "2026-09-29",
+  "not_human": true
+ }
+}

@@ -1,0 +1,787 @@
+{
+ "id": "LSN-CON-02009",
+ "version": 1,
+ "kind": "concept",
+ "target_id": "BC-CON-02009",
+ "status": "signed_off",
+ "snapshot_digest": "a6a8ec9d3f59ab8f712e33d30cc22fc64bf2c478fbe7312e3e3118d319c6a42f",
+ "source_digest": "931c874dc380376b0626624fc26c011fb29d25d9f1912fa09edfe94f85286159",
+ "read_minutes": {
+  "full": 4.2,
+  "brief": 2.94
+ },
+ "word_count": {
+  "full": 495,
+  "brief": 365
+ },
+ "sections": [
+  {
+   "id": "LSN-CON-02009#s1",
+   "type": "orientation",
+   "bands": [
+    "low",
+    "mid"
+   ],
+   "skills": [
+    "BC-SKL-02021",
+    "BC-SKL-02022",
+    "BC-SKL-02023"
+   ],
+   "sources": [
+    "BC-CON-02009",
+    "research/units/unit-02-differentiation-definition-properties.md#2.4 Connecting Differentiability and Continuity: Determining When Derivatives Do and Do Not Exist"
+   ],
+   "evidence_tag": "inferred",
+   "text": "A response decides whether a derivative exists where the function is continuous, and names the reason from the one sided difference quotients: a corner, a cusp or a vertical tangent means no derivative. Continuity alone never settles it.",
+   "delivery": {
+    "mode": "figure",
+    "reason": "rule 3: BC-REP-02 on BC-SKL-02021, 02022 and 02023; unit README delivery map; the orientation names three fixed shapes, nothing varies",
+    "sources": [
+     "BC-SKL-02021",
+     "BC-SKL-02022",
+     "BC-SKL-02023"
+    ],
+    "spec": {
+     "kind": "graph_panels",
+     "panels": [
+      {
+       "curve": "Abs(x)",
+       "window": {
+        "x": [
+         -2,
+         2
+        ],
+        "y": [
+         -1,
+         2
+        ]
+       },
+       "labels": [
+        {
+         "text": "corner: slopes -1 and 1",
+         "placement": "inside"
+        }
+       ]
+      },
+      {
+       "curve": "Abs(x)**(2/3)",
+       "window": {
+        "x": [
+         -2,
+         2
+        ],
+        "y": [
+         -1,
+         2
+        ]
+       },
+       "labels": [
+        {
+         "text": "cusp: quotients to -oo and oo",
+         "placement": "inside"
+        }
+       ]
+      },
+      {
+       "curve": "sign(x)*Abs(x)**(1/3)",
+       "window": {
+        "x": [
+         -2,
+         2
+        ],
+        "y": [
+         -2,
+         2
+        ]
+       },
+       "labels": [
+        {
+         "text": "vertical tangent: no slope",
+         "placement": "inside"
+        }
+       ]
+      }
+     ],
+     "labels": [
+      {
+       "text": "each continuous at x = 0, none differentiable there",
+       "placement": "inside"
+      }
+     ]
+    },
+    "fallback": "Alt text naming the three graphs, each continuous at 0, with the one sided behaviour of each written in words.",
+    "keyboard": "none needed: a static figure; panels reached in reading order with Tab"
+   }
+  },
+  {
+   "id": "LSN-CON-02009#s2",
+   "type": "key_ideas",
+   "bands": [
+    "low",
+    "mid"
+   ],
+   "skills": [
+    "BC-SKL-02021",
+    "BC-SKL-02022",
+    "BC-SKL-02023"
+   ],
+   "sources": [
+    "BC-EK-FUN-2A2",
+    "ced:63",
+    "research/units/unit-02-differentiation-definition-properties.md#2.4 Connecting Differentiability and Continuity: Determining When Derivatives Do and Do Not Exist"
+   ],
+   "evidence_tag": "verified",
+   "ek_id": "BC-EK-FUN-2A2",
+   "depth": "core",
+   "text": "A continuous function can fail to be differentiable at a point of its domain (BC-EK-FUN-2A2, ced:63). At a corner, as for \\(|x|\\) at 0, the quotient has different limits from left and right. At a vertical tangent, as for the cube root at 0, the tangent has no slope. The verdict comes from the one sided quotients, not the look of the graph.",
+   "notation": "corner; vertical tangent",
+   "quote": {
+    "text": "A continuous function may fail to be differentiable at a point in its domain.",
+    "source": "ced:63"
+   },
+   "delivery": {
+    "mode": "motion",
+    "reason": "rule 2: the key idea describes a one sided limit being taken, left and right secants closing to two slopes; unit README delivery map",
+    "sources": [
+     "BC-SKL-02022",
+     "BC-QA-02005"
+    ],
+    "spec": {
+     "kind": "graph_sweep",
+     "parameter": "h, the run of each secant from (0, 0)",
+     "curves": [
+      {
+       "expr": "Abs(x)",
+       "label": {
+        "text": "y = |x|",
+        "placement": "inside"
+       }
+      }
+     ],
+     "frames": [
+      {
+       "h": 1
+      },
+      {
+       "h": 0.5
+      },
+      {
+       "h": 0.1
+      },
+      {
+       "h": 0.01
+      }
+     ],
+     "secants": [
+      {
+       "from": [
+        0,
+        0
+       ],
+       "to": "(h, |h|)",
+       "label": {
+        "text": "right secant slope 1",
+        "placement": "inside"
+       }
+      },
+      {
+       "from": [
+        0,
+        0
+       ],
+       "to": "(-h, |h|)",
+       "label": {
+        "text": "left secant slope -1",
+        "placement": "inside"
+       }
+      }
+     ],
+     "labels": [
+      {
+       "text": "two slopes, no single tangent",
+       "placement": "inside"
+      }
+     ]
+    },
+    "fallback": "The last frame static, with a two row table of secant slopes at h = 1, 0.5, 0.1, 0.01: right 1, 1, 1, 1; left -1, -1, -1, -1.",
+    "reduced_motion": "No auto-advance; each frame cross-fades to the next on the student's key press.",
+    "keyboard": "Right and Left arrow keys step the frames; Home returns to h = 1"
+   }
+  },
+  {
+   "id": "LSN-CON-02009#s3",
+   "type": "strategy",
+   "bands": [
+    "low",
+    "mid"
+   ],
+   "skills": [
+    "BC-SKL-02021",
+    "BC-SKL-02022",
+    "BC-SKL-02023"
+   ],
+   "sources": [
+    "BC-QA-02005"
+   ],
+   "evidence_tag": "verified",
+   "archetype_id": "BC-QA-02005",
+   "cue": "The stem names an input of continuity and asks whether the function is differentiable there, with a reason.",
+   "method": "First line: continuity at the input, then the two one sided quotients.",
+   "rival": "Rival: differentiability from continuity (BC-ERR-02012), or the look of the graph (BC-ERR-02013).",
+   "separating_feature": "Continuity is only the entry condition; the verdict needs both one sided limits of the quotient."
+  },
+  {
+   "id": "LSN-CON-02009#s4",
+   "type": "strategy",
+   "bands": [
+    "low",
+    "mid"
+   ],
+   "skills": [
+    "BC-SKL-02022",
+    "BC-SKL-02023"
+   ],
+   "sources": [
+    "BC-QA-05014"
+   ],
+   "evidence_tag": "verified",
+   "archetype_id": "BC-QA-05014",
+   "cue": "The stem asks for all critical points of a quotient with a fractional power or an absolute value.",
+   "method": "First written line: the derivative, then its zeros and the inputs where it fails to exist.",
+   "rival": "The rival is setting only the derivative equal to zero.",
+   "separating_feature": "A fractional power or absolute value marks an input where the function is defined but has no derivative."
+  },
+  {
+   "id": "LSN-CON-02009#s5",
+   "type": "worked_example",
+   "bands": [
+    "low",
+    "mid"
+   ],
+   "skills": [
+    "BC-SKL-02021",
+    "BC-SKL-02022",
+    "BC-SKL-02023"
+   ],
+   "sources": [
+    "BC-QA-02005"
+   ],
+   "evidence_tag": "inferred",
+   "archetype_id": "BC-QA-02005",
+   "parameter_draw": {
+    "coefficient": "2",
+    "exponent": "2/3",
+    "point": "1",
+    "shift": "3"
+   },
+   "problem": {
+    "text": "Let \\(f(x)=2(x-1)^{2/3}+3\\), the power read as a real cube root. Is \\(f\\) differentiable at \\(x=1\\)? Give a reason.",
+    "command_verb": "determine"
+   },
+   "calculator_status": "no_calculator",
+   "steps": [
+    {
+     "cue": "The stem asks about \\(x=1\\): confirm continuity first.",
+     "why": "\\(f(1)=3\\) and the power is continuous."
+    },
+    {
+     "cue": "Right side, \\(h>0\\): write the quotient.",
+     "why": "\\(\\frac{f(1+h)-f(1)}{h}=\\frac{2h^{2/3}}{h}\\).",
+     "expression": [
+      "Multiply",
+      2,
+      [
+       "Power",
+       "h",
+       [
+        "Rational",
+        -1,
+        3
+       ]
+      ]
+     ],
+     "relation": "new"
+    },
+    {
+     "cue": "Let \\(h\\to0^+\\).",
+     "why": "\\(2h^{-1/3}\\) grows without bound.",
+     "expression": "PositiveInfinity",
+     "relation": "limit",
+     "variable": "h",
+     "point": "0",
+     "dir": "+"
+    },
+    {
+     "cue": "Left side, \\(h<0\\), where \\(h^{2/3}=(-h)^{2/3}\\).",
+     "why": "Positive numerator, negative \\(h\\).",
+     "expression": [
+      "Multiply",
+      2,
+      [
+       "Power",
+       "h",
+       -1
+      ],
+      [
+       "Power",
+       [
+        "Multiply",
+        -1,
+        "h"
+       ],
+       [
+        "Rational",
+        2,
+        3
+       ]
+      ]
+     ],
+     "relation": "new"
+    },
+    {
+     "cue": "Let \\(h\\to0^-\\).",
+     "why": "The quotient falls without bound.",
+     "expression": "NegativeInfinity",
+     "relation": "limit",
+     "variable": "h",
+     "point": "0",
+     "dir": "-"
+    },
+    {
+     "cue": "Verdict with reason: compare the sides.",
+     "why": "Opposite infinite limits: a cusp. Not differentiable at 1."
+    }
+   ],
+   "answer": {
+    "form": "statement",
+    "mathjson": "not differentiable",
+    "text": "f is not differentiable at x = 1: the one sided quotients tend to infinity and negative infinity."
+   },
+   "delivery": {
+    "mode": "step_reveal",
+    "reason": "rule 1",
+    "sources": []
+   }
+  },
+  {
+   "id": "LSN-CON-02009#err-BC-ERR-02012",
+   "type": "common_error",
+   "bands": [
+    "low",
+    "mid"
+   ],
+   "skills": [
+    "BC-SKL-02021"
+   ],
+   "sources": [
+    "BC-ERR-02012",
+    "BC-MIS-02006"
+   ],
+   "evidence_tag": "inferred",
+   "error_id": "BC-ERR-02012",
+   "observed_behavior": "The response concludes that a function is differentiable at a point because it is continuous there.",
+   "scoring_consequence": "A justification point is lost because the claim is not supported by the theorem.",
+   "wrong_step": {
+    "text": "\\(f(1+h)-f(1)\\to0\\), so \\(f\\) is continuous at 1 and so differentiable at 1.",
+    "expression": 0
+   },
+   "right_step": {
+    "text": "The right quotient tends to \\(\\infty\\).",
+    "expression": "PositiveInfinity"
+   },
+   "relation": "distinct",
+   "possible_reason": {
+    "misconception_id": "BC-MIS-02006",
+    "text": "continuity at a point is taken to supply a derivative there"
+   },
+   "delivery": {
+    "mode": "step_reveal",
+    "reason": "rule 1",
+    "sources": []
+   }
+  },
+  {
+   "id": "LSN-CON-02009#err-BC-ERR-02013",
+   "type": "common_error",
+   "bands": [
+    "low",
+    "mid"
+   ],
+   "skills": [
+    "BC-SKL-02021",
+    "BC-SKL-02022"
+   ],
+   "sources": [
+    "BC-ERR-02013",
+    "BC-MIS-02007"
+   ],
+   "evidence_tag": "inferred",
+   "error_id": "BC-ERR-02013",
+   "observed_behavior": "The response says the derivative does not exist because the graph looks sharp, without reference to the one sided slopes.",
+   "scoring_consequence": "The reason point is lost although the verdict may be correct.",
+   "wrong_step": {
+    "text": "The graph looks sharp at 1.",
+    "expression": [
+     "Add",
+     3,
+     [
+      "Multiply",
+      2,
+      [
+       "Power",
+       [
+        "Add",
+        -1,
+        "x"
+       ],
+       [
+        "Rational",
+        2,
+        3
+       ]
+      ]
+     ]
+    ]
+   },
+   "right_step": {
+    "text": "One sided quotient limits \\(\\infty\\) and \\(-\\infty\\).",
+    "expression": [
+     "Multiply",
+     2,
+     [
+      "Power",
+      "h",
+      [
+       "Rational",
+       -1,
+       3
+      ]
+     ]
+    ]
+   },
+   "relation": "distinct",
+   "possible_reason": {
+    "misconception_id": "BC-MIS-02007",
+    "text": "decides whether a derivative exists from how the curve looks"
+   },
+   "delivery": {
+    "mode": "step_reveal",
+    "reason": "rule 1",
+    "sources": []
+   }
+  },
+  {
+   "id": "LSN-CON-02009#err-BC-ERR-03012",
+   "type": "common_error",
+   "bands": [
+    "low",
+    "mid"
+   ],
+   "skills": [
+    "BC-SKL-02023"
+   ],
+   "sources": [
+    "BC-ERR-03012",
+    "BC-MIS-02007"
+   ],
+   "evidence_tag": "inferred",
+   "error_id": "BC-ERR-03012",
+   "observed_behavior": "The denominator of dy/dx is set to zero when a horizontal tangent is requested, or the numerator when a vertical tangent is requested.",
+   "scoring_consequence": "The reported point is wrong and the reasoning point is not available.",
+   "wrong_step": {
+    "text": "For the vertical tangent of \\(g(x)=6(x-1)^{1/3}+3\\), the numerator 2 of \\(g'(x)=\\frac{2}{(x-1)^{2/3}}\\) is set to zero: no solution.",
+    "expression": 2
+   },
+   "right_step": {
+    "text": "The denominator \\((x-1)^{2/3}\\) is set to zero: \\(x=1\\).",
+    "expression": 1
+   },
+   "relation": "distinct",
+   "possible_reason": {
+    "misconception_id": "BC-MIS-02007",
+    "text": "a vertical tangent is read as a slope"
+   },
+   "delivery": {
+    "mode": "step_reveal",
+    "reason": "rule 1",
+    "sources": []
+   }
+  },
+  {
+   "id": "LSN-CON-02009#prq-BC-PRQ-02001",
+   "type": "prerequisite_bridge",
+   "bands": [
+    "low",
+    "mid"
+   ],
+   "skills": [
+    "BC-SKL-02022"
+   ],
+   "sources": [
+    "BC-PRQ-02001"
+   ],
+   "evidence_tag": "inferred",
+   "prerequisite_id": "BC-PRQ-02001",
+   "text": "One sided quotients rest on simplifying a difference quotient: evaluate at the shifted input, subtract, divide out the common factor. A quotient written but never reduced to a form where the increment can go to zero is the gap to close first."
+  }
+ ],
+ "checks": [
+  {
+   "id": "LSN-CON-02009#chk-1",
+   "check_kind": "completion",
+   "bands": [
+    "low",
+    "mid"
+   ],
+   "format": "short_answer",
+   "archetype_id": "BC-QA-02005",
+   "parameter_draw": {
+    "coefficient": "2",
+    "exponent": "2/3",
+    "point": "1",
+    "shift": "3"
+   },
+   "completes": "LSN-CON-02009#s5",
+   "stem": {
+    "text": "The quotients at 1 tend to \\(\\infty\\) (right) and \\(-\\infty\\) (left). State the verdict and reason.",
+    "command_verb": "state"
+   },
+   "answer_key": {
+    "form": "statement",
+    "mathjson": "not differentiable",
+    "text": "Not differentiable: the one sided quotients have opposite infinite limits, a cusp."
+   },
+   "worked_solution": [
+    {
+     "step": 1,
+     "text": "Right quotient \\(2h^{2/3}/h\\).",
+     "mathjson": [
+      "Multiply",
+      2,
+      [
+       "Power",
+       "h",
+       [
+        "Rational",
+        -1,
+        3
+       ]
+      ]
+     ],
+     "relation": "new"
+    },
+    {
+     "step": 2,
+     "text": "It tends to \\(\\infty\\).",
+     "mathjson": "PositiveInfinity",
+     "relation": "limit",
+     "variable": "h",
+     "point": "0",
+     "dir": "+"
+    }
+   ],
+   "calculator_status": "no_calculator",
+   "representation": "BC-REP-01",
+   "skills": [
+    "BC-SKL-02022"
+   ]
+  },
+  {
+   "id": "LSN-CON-02009#chk-2",
+   "check_kind": "isomorph",
+   "bands": [
+    "low",
+    "mid"
+   ],
+   "format": "short_answer",
+   "archetype_id": "BC-QA-02005",
+   "parameter_draw": {
+    "coefficient": "3",
+    "exponent": "1/5",
+    "point": "-2",
+    "shift": "1"
+   },
+   "stem": {
+    "text": "Let \\(f(x)=3(x+2)^{1/5}+1\\), the power read as a real fifth root. Is \\(f\\) differentiable at \\(x=-2\\)? Give a reason.",
+    "command_verb": "determine"
+   },
+   "answer_key": {
+    "form": "statement",
+    "mathjson": "not differentiable",
+    "text": "Not differentiable: both one sided quotients grow without bound, a vertical tangent."
+   },
+   "worked_solution": [
+    {
+     "step": 1,
+     "text": "Right quotient \\(3h^{1/5}/h\\).",
+     "mathjson": [
+      "Multiply",
+      3,
+      [
+       "Power",
+       "h",
+       [
+        "Rational",
+        -4,
+        5
+       ]
+      ]
+     ],
+     "relation": "new"
+    },
+    {
+     "step": 2,
+     "text": "It tends to \\(\\infty\\).",
+     "mathjson": "PositiveInfinity",
+     "relation": "limit",
+     "variable": "h",
+     "point": "0",
+     "dir": "+"
+    },
+    {
+     "step": 3,
+     "text": "Left quotient, \\(h<0\\): \\(-3(-h)^{1/5}/h\\).",
+     "mathjson": [
+      "Multiply",
+      -3,
+      [
+       "Power",
+       "h",
+       -1
+      ],
+      [
+       "Power",
+       [
+        "Multiply",
+        -1,
+        "h"
+       ],
+       [
+        "Rational",
+        1,
+        5
+       ]
+      ]
+     ],
+     "relation": "new"
+    },
+    {
+     "step": 4,
+     "text": "It also tends to \\(\\infty\\).",
+     "mathjson": "PositiveInfinity",
+     "relation": "limit",
+     "variable": "h",
+     "point": "0",
+     "dir": "-"
+    }
+   ],
+   "calculator_status": "no_calculator",
+   "representation": "BC-REP-01",
+   "skills": [
+    "BC-SKL-02023"
+   ]
+  },
+  {
+   "id": "LSN-CON-02009#chk-3",
+   "check_kind": "mcq",
+   "bands": [
+    "low"
+   ],
+   "format": "mcq",
+   "archetype_id": "BC-QA-02005",
+   "parameter_draw": {
+    "coefficient": "-1",
+    "exponent": "1/3",
+    "point": "2",
+    "shift": "0"
+   },
+   "stem": {
+    "text": "Let \\(f(x)=-(x-2)^{1/3}\\), the power read as a real cube root. Which statement about \\(f\\) at \\(x=2\\) is correct?",
+    "command_verb": "choose"
+   },
+   "answer_key": {
+    "form": "statement",
+    "mathjson": "D",
+    "text": "Not differentiable: both one sided quotients tend to negative infinity, a vertical tangent."
+   },
+   "worked_solution": [
+    {
+     "step": 1,
+     "text": "Right quotient \\(-h^{1/3}/h\\).",
+     "mathjson": [
+      "Multiply",
+      -1,
+      [
+       "Power",
+       "h",
+       [
+        "Rational",
+        -2,
+        3
+       ]
+      ]
+     ],
+     "relation": "new"
+    },
+    {
+     "step": 2,
+     "text": "It tends to \\(-\\infty\\).",
+     "mathjson": "NegativeInfinity",
+     "relation": "limit",
+     "variable": "h",
+     "point": "0",
+     "dir": "+"
+    }
+   ],
+   "options": [
+    {
+     "id": "A",
+     "is_key": false,
+     "error_path": "BC-ERR-02012",
+     "label": "Differentiable, because \\(f\\) is continuous at \\(x=2\\).",
+     "derivation": "continuity taken to supply a derivative"
+    },
+    {
+     "id": "B",
+     "is_key": false,
+     "error_path": "BC-ERR-02013",
+     "label": "Not differentiable, because the graph has a sharp point at \\(x=2\\).",
+     "derivation": "verdict from the look of the graph"
+    },
+    {
+     "id": "C",
+     "is_key": false,
+     "error_path": "BC-ERR-03012",
+     "label": "Differentiable: the numerator of \\(f'(x)=\\frac{-1}{3(x-2)^{2/3}}\\) is never zero, so there is no vertical tangent.",
+     "derivation": "numerator set to zero for a vertical tangent"
+    },
+    {
+     "id": "D",
+     "is_key": true,
+     "error_path": null,
+     "label": "Not differentiable: both one sided quotients tend to \\(-\\infty\\)."
+    }
+   ],
+   "calculator_status": "no_calculator",
+   "representation": "BC-REP-01",
+   "skills": [
+    "BC-SKL-02023"
+   ]
+  }
+ ],
+ "refresher": [
+  "LSN-CON-02009#s2",
+  "LSN-CON-02009#err-BC-ERR-02012",
+  "LSN-CON-02009#err-BC-ERR-02013",
+  "LSN-CON-02009#err-BC-ERR-03012",
+  "LSN-CON-02009#s5"
+ ],
+ "provenance": {
+  "author": "tools/lesson_transcribe.py",
+  "prompt_version": "generator/lesson_v1",
+  "design_path": "docs/lessons/unit-02/LSN-CON-02009.md",
+  "signed_off_by": "claude-opus-5-5",
+  "signed_off_at": "2026-09-29",
+  "not_human": true
+ }
+}

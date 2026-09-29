@@ -1,0 +1,1133 @@
+{
+ "id": "LSN-CON-06017",
+ "version": 1,
+ "kind": "concept",
+ "target_id": "BC-CON-06017",
+ "status": "signed_off",
+ "snapshot_digest": "a6a8ec9d3f59ab8f712e33d30cc22fc64bf2c478fbe7312e3e3118d319c6a42f",
+ "source_digest": "7f35317389239a15ae6004eced41ceb67380cba7b23b1c2b35e962a597033a4e",
+ "read_minutes": {
+  "full": 3.5,
+  "brief": 2.9
+ },
+ "word_count": {
+  "full": 481,
+  "brief": 401
+ },
+ "sections": [
+  {
+   "id": "LSN-CON-06017#s1",
+   "type": "orientation",
+   "bands": [
+    "low",
+    "mid"
+   ],
+   "skills": [
+    "BC-SKL-06057",
+    "BC-SKL-06058",
+    "BC-SKL-06059",
+    "BC-SKL-06060",
+    "BC-SKL-06061"
+   ],
+   "sources": [
+    "BC-CON-06017",
+    "research/units/unit-06-integration-accumulation.md#6.11 Integrating Using Integration by Parts"
+   ],
+   "evidence_tag": "inferred",
+   "text": "Unlike factors multiplied, one simpler once differentiated: a response declares u and dv, writes uv minus ∫v du, and finishes.",
+   "delivery": {
+    "mode": "text",
+    "reason": "rule 6: BC-REP-01 only on the archetype; a statement of what a response shows (unit README delivery map)",
+    "sources": [
+     "BC-SKL-06057"
+    ]
+   }
+  },
+  {
+   "id": "LSN-CON-06017#s2",
+   "type": "key_ideas",
+   "bands": [
+    "low",
+    "mid"
+   ],
+   "skills": [
+    "BC-SKL-06057",
+    "BC-SKL-06058",
+    "BC-SKL-06059",
+    "BC-SKL-06060",
+    "BC-SKL-06061"
+   ],
+   "sources": [
+    "BC-EK-FUN-6E1",
+    "ced:128",
+    "research/units/unit-06-integration-accumulation.md#6.11 Integrating Using Integration by Parts"
+   ],
+   "evidence_tag": "inferred",
+   "ek_id": "BC-EK-FUN-6E1",
+   "depth": "core",
+   "text": "The product rule read backwards: ∫u dv = uv - ∫v du. Pick u to simplify when differentiated, dv integrable. With limits, uv takes both limits and the remaining integral is subtracted.",
+   "notation": "u, dv, du, v",
+   "delivery": {
+    "mode": "text",
+    "reason": "rule 6: a symbolic rule with BC-REP-01 and BC-REP-04, neither figure-bearing",
+    "sources": [
+     "BC-SKL-06058",
+     "BC-SKL-06061"
+    ]
+   }
+  },
+  {
+   "id": "LSN-CON-06017#s3",
+   "type": "strategy",
+   "bands": [
+    "low",
+    "mid"
+   ],
+   "skills": [
+    "BC-SKL-06057",
+    "BC-SKL-06058",
+    "BC-SKL-06059",
+    "BC-SKL-06060",
+    "BC-SKL-06061"
+   ],
+   "sources": [
+    "BC-QA-06009"
+   ],
+   "evidence_tag": "verified",
+   "archetype_id": "BC-QA-06009",
+   "cue": "A product of a linear factor and a cosine; u and dv, the expression, or a value asked.",
+   "method": "Declare u and dv and compute du and v.",
+   "rival": "Rival: antidifferentiating each factor and multiplying (BC-ERR-06022).",
+   "separating_feature": "No inner derivative pairs the factors; a product's antiderivative is not a product of antiderivatives."
+  },
+  {
+   "id": "LSN-CON-06017#s4",
+   "type": "worked_example",
+   "bands": [
+    "low",
+    "mid"
+   ],
+   "skills": [
+    "BC-SKL-06057",
+    "BC-SKL-06058",
+    "BC-SKL-06059",
+    "BC-SKL-06060",
+    "BC-SKL-06061"
+   ],
+   "sources": [
+    "BC-QA-06009"
+   ],
+   "evidence_tag": "inferred",
+   "archetype_id": "BC-QA-06009",
+   "parameter_draw": {
+    "multiplier": 3,
+    "rate": 2,
+    "variable": "x",
+    "reach": 1,
+    "partner": "cosine",
+    "form": "definite"
+   },
+   "problem": {
+    "text": "Evaluate ∫_0^(π/6) 3x cos(2x) dx.",
+    "command_verb": "evaluate"
+   },
+   "calculator_status": "no_calculator",
+   "steps": [
+    {
+     "cue": "3x differentiates to a constant; cos 2x integrates.",
+     "why": "u = 3x, dv = cos 2x dx, du = 3 dx, v = (1/2) sin 2x."
+    },
+    {
+     "cue": "Write uv minus the integral of v du.",
+     "why": "Readers check the subtracted integral (sg-23:18).",
+     "expression": [
+      "Add",
+      [
+       "Multiply",
+       -1,
+       [
+        "Integrate",
+        [
+         "Multiply",
+         [
+          "Rational",
+          3,
+          2
+         ],
+         [
+          "Sin",
+          [
+           "Multiply",
+           2,
+           "x"
+          ]
+         ]
+        ],
+        [
+         "Tuple",
+         "x"
+        ]
+       ]
+      ],
+      [
+       "Multiply",
+       [
+        "Rational",
+        3,
+        2
+       ],
+       "x",
+       [
+        "Sin",
+        [
+         "Multiply",
+         2,
+         "x"
+        ]
+       ]
+      ]
+     ],
+     "point_type_id": "BC-PT-99057",
+     "relation": "new"
+    },
+    {
+     "cue": "(3/2) sin 2x integrates to -(3/4) cos 2x.",
+     "why": "The minus in front turns it to plus.",
+     "expression": [
+      "Add",
+      [
+       "Multiply",
+       [
+        "Rational",
+        3,
+        4
+       ],
+       [
+        "Cos",
+        [
+         "Multiply",
+         2,
+         "x"
+        ]
+       ]
+      ],
+      [
+       "Multiply",
+       [
+        "Rational",
+        3,
+        2
+       ],
+       "x",
+       [
+        "Sin",
+        [
+         "Multiply",
+         2,
+         "x"
+        ]
+       ]
+      ]
+     ],
+     "relation": "equivalent"
+    },
+    {
+     "cue": "Apply 0 and π/6 to both terms.",
+     "why": "At 0 only the cosine term survives.",
+     "expression": [
+      "Add",
+      [
+       "Rational",
+       -3,
+       8
+      ],
+      [
+       "Multiply",
+       [
+        "Rational",
+        1,
+        8
+       ],
+       "Pi",
+       [
+        "Power",
+        3,
+        [
+         "Rational",
+         1,
+         2
+        ]
+       ]
+      ]
+     ],
+     "relation": "new"
+    },
+    {
+     "cue": "Simplify.",
+     "why": "The value.",
+     "expression": [
+      "Add",
+      [
+       "Rational",
+       -3,
+       8
+      ],
+      [
+       "Multiply",
+       [
+        "Rational",
+        1,
+        8
+       ],
+       "Pi",
+       [
+        "Power",
+        3,
+        [
+         "Rational",
+         1,
+         2
+        ]
+       ]
+      ]
+     ],
+     "point_type_id": "BC-PT-99004",
+     "relation": "equivalent"
+    }
+   ],
+   "answer": {
+    "form": "symbolic",
+    "mathjson": [
+     "Add",
+     [
+      "Rational",
+      -3,
+      8
+     ],
+     [
+      "Multiply",
+      [
+       "Rational",
+       1,
+       8
+      ],
+      "Pi",
+      [
+       "Power",
+       3,
+       [
+        "Rational",
+        1,
+        2
+       ]
+      ]
+     ]
+    ]
+   },
+   "delivery": {
+    "mode": "step_reveal",
+    "reason": "rule 1",
+    "sources": []
+   }
+  },
+  {
+   "id": "LSN-CON-06017#s5",
+   "type": "what_a_reader_scores",
+   "bands": [
+    "low",
+    "mid"
+   ],
+   "skills": [
+    "BC-SKL-06057",
+    "BC-SKL-06058",
+    "BC-SKL-06059",
+    "BC-SKL-06060",
+    "BC-SKL-06061"
+   ],
+   "sources": [
+    "BC-PT-99057",
+    "BC-PT-99004"
+   ],
+   "evidence_tag": "verified",
+   "example_id": "LSN-CON-06017#s4",
+   "lines": [
+    {
+     "point_type_id": "BC-PT-99057",
+     "text": "Integration by parts expression uv minus the integral of v du. Earned by: The parts expression written out with the remaining integral (sg-23:18, sg-22:18). Not earned by: An expression missing the subtracted integral term (sg-24:18). Notation: sg-23:18 and sg-22:18 state limits of integration may be present, omitted, or partially present in the parts work."
+    },
+    {
+     "point_type_id": "BC-PT-99004",
+     "text": "Answer with or without supporting work. Earned by: The correct value on its own, with no supporting work required (sg-25:3, sg-26:4). Not earned by: A value outside the accepted precision, or a value inconsistent with a required earlier step where the rubric imposes one. Precision: A reported decimal answer must be accurate to three places after the decimal point, rounded or truncated; at most one point per question is lost to inappropriate rounding (sg-25:2, sg-26:2). sg-26:4 also accepts a stated rounding to the nearest integer and several truncations."
+    }
+   ]
+  },
+  {
+   "id": "LSN-CON-06017#err-BC-ERR-06022",
+   "type": "common_error",
+   "bands": [
+    "low",
+    "mid"
+   ],
+   "skills": [
+    "BC-SKL-06057",
+    "BC-SKL-06058"
+   ],
+   "sources": [
+    "BC-ERR-06022",
+    "BC-MIS-06019"
+   ],
+   "evidence_tag": "inferred",
+   "error_id": "BC-ERR-06022",
+   "observed_behavior": "The response antidifferentiates each factor of a product and multiplies the results.",
+   "scoring_consequence": "Neither the u and dv point nor the expression point is earned (sg-23:18, sg-24:18).",
+   "wrong_step": {
+    "text": "Antiderivatives of 3x and cos 2x multiplied.",
+    "expression": [
+     "Multiply",
+     [
+      "Rational",
+      3,
+      4
+     ],
+     [
+      "Power",
+      "x",
+      2
+     ],
+     [
+      "Sin",
+      [
+       "Multiply",
+       2,
+       "x"
+      ]
+     ]
+    ]
+   },
+   "right_step": {
+    "text": "uv minus ∫v du.",
+    "expression": [
+     "Add",
+     [
+      "Multiply",
+      [
+       "Rational",
+       3,
+       4
+      ],
+      [
+       "Cos",
+       [
+        "Multiply",
+        2,
+        "x"
+       ]
+      ]
+     ],
+     [
+      "Multiply",
+      [
+       "Rational",
+       3,
+       2
+      ],
+      "x",
+      [
+       "Sin",
+       [
+        "Multiply",
+        2,
+        "x"
+       ]
+      ]
+     ]
+    ]
+   },
+   "relation": "distinct",
+   "possible_reason": {
+    "misconception_id": "BC-MIS-06019",
+    "text": "extends the sum rule to products"
+   },
+   "delivery": {
+    "mode": "step_reveal",
+    "reason": "rule 1",
+    "sources": []
+   }
+  },
+  {
+   "id": "LSN-CON-06017#err-BC-ERR-06023",
+   "type": "common_error",
+   "bands": [
+    "low",
+    "mid"
+   ],
+   "skills": [
+    "BC-SKL-06058",
+    "BC-SKL-06059"
+   ],
+   "sources": [
+    "BC-ERR-06023"
+   ],
+   "evidence_tag": "inferred",
+   "error_id": "BC-ERR-06023",
+   "observed_behavior": "The response writes u times v plus the integral of v du.",
+   "scoring_consequence": "The expression point is not earned, and the answer point depends on it (sg-23:18).",
+   "wrong_step": {
+    "text": "uv plus ∫v du.",
+    "expression": [
+     "Add",
+     [
+      "Multiply",
+      [
+       "Rational",
+       -3,
+       4
+      ],
+      [
+       "Cos",
+       [
+        "Multiply",
+        2,
+        "x"
+       ]
+      ]
+     ],
+     [
+      "Multiply",
+      [
+       "Rational",
+       3,
+       2
+      ],
+      "x",
+      [
+       "Sin",
+       [
+        "Multiply",
+        2,
+        "x"
+       ]
+      ]
+     ]
+    ]
+   },
+   "right_step": {
+    "text": "uv minus ∫v du.",
+    "expression": [
+     "Add",
+     [
+      "Multiply",
+      [
+       "Rational",
+       3,
+       4
+      ],
+      [
+       "Cos",
+       [
+        "Multiply",
+        2,
+        "x"
+       ]
+      ]
+     ],
+     [
+      "Multiply",
+      [
+       "Rational",
+       3,
+       2
+      ],
+      "x",
+      [
+       "Sin",
+       [
+        "Multiply",
+        2,
+        "x"
+       ]
+      ]
+     ]
+    ]
+   },
+   "relation": "distinct",
+   "delivery": {
+    "mode": "step_reveal",
+    "reason": "rule 1",
+    "sources": []
+   }
+  },
+  {
+   "id": "LSN-CON-06017#err-BC-ERR-99025",
+   "type": "common_error",
+   "bands": [
+    "low",
+    "mid"
+   ],
+   "skills": [
+    "BC-SKL-06057",
+    "BC-SKL-06058",
+    "BC-SKL-06060"
+   ],
+   "sources": [
+    "BC-ERR-99025"
+   ],
+   "evidence_tag": "inferred",
+   "error_id": "BC-ERR-99025",
+   "observed_behavior": "Responses add instead of subtract the second integral, choose u and dv the wrong way round, multiply two antiderivatives together, antidifferentiate the second factor incorrectly, or misplace the limits of integration between the uv term and the remaining integral.",
+   "scoring_consequence": "The technique point and the evaluation point are separate, so an unlabelled or mis-signed application loses at least one of them.",
+   "wrong_step": {
+    "text": "u = cos 2x, dv = 3x dx: a harder integral left.",
+    "expression": [
+     "Add",
+     [
+      "Multiply",
+      [
+       "Rational",
+       3,
+       2
+      ],
+      [
+       "Power",
+       "x",
+       2
+      ],
+      [
+       "Cos",
+       [
+        "Multiply",
+        2,
+        "x"
+       ]
+      ]
+     ],
+     [
+      "Integrate",
+      [
+       "Multiply",
+       3,
+       [
+        "Power",
+        "x",
+        2
+       ],
+       [
+        "Sin",
+        [
+         "Multiply",
+         2,
+         "x"
+        ]
+       ]
+      ],
+      [
+       "Tuple",
+       "x"
+      ]
+     ]
+    ]
+   },
+   "right_step": {
+    "text": "u = 3x, dv = cos 2x dx.",
+    "expression": [
+     "Add",
+     [
+      "Multiply",
+      [
+       "Rational",
+       3,
+       4
+      ],
+      [
+       "Cos",
+       [
+        "Multiply",
+        2,
+        "x"
+       ]
+      ]
+     ],
+     [
+      "Multiply",
+      [
+       "Rational",
+       3,
+       2
+      ],
+      "x",
+      [
+       "Sin",
+       [
+        "Multiply",
+        2,
+        "x"
+       ]
+      ]
+     ]
+    ]
+   },
+   "relation": "equivalent",
+   "delivery": {
+    "mode": "step_reveal",
+    "reason": "rule 1",
+    "sources": []
+   }
+  },
+  {
+   "id": "LSN-CON-06017#prq-BC-PRQ-06005",
+   "type": "prerequisite_bridge",
+   "bands": [
+    "low",
+    "mid"
+   ],
+   "skills": [
+    "BC-SKL-06061"
+   ],
+   "sources": [
+    "BC-PRQ-06005"
+   ],
+   "evidence_tag": "inferred",
+   "prerequisite_id": "BC-PRQ-06005",
+   "text": "Keep f and f' apart when importing supplied values."
+  }
+ ],
+ "checks": [
+  {
+   "id": "LSN-CON-06017#chk-1",
+   "check_kind": "completion",
+   "bands": [
+    "low",
+    "mid"
+   ],
+   "format": "short_answer",
+   "archetype_id": "BC-QA-06009",
+   "parameter_draw": {
+    "multiplier": 3,
+    "rate": 2,
+    "variable": "x",
+    "reach": 1,
+    "partner": "cosine",
+    "form": "definite"
+   },
+   "completes": "LSN-CON-06017#s4",
+   "stem": {
+    "text": "Evaluate [(3x/2) sin 2x + (3/4) cos 2x] from 0 to π/6.",
+    "command_verb": "find"
+   },
+   "answer_key": {
+    "form": "symbolic",
+    "mathjson": [
+     "Add",
+     [
+      "Rational",
+      -3,
+      8
+     ],
+     [
+      "Multiply",
+      [
+       "Rational",
+       1,
+       8
+      ],
+      "Pi",
+      [
+       "Power",
+       3,
+       [
+        "Rational",
+        1,
+        2
+       ]
+      ]
+     ]
+    ]
+   },
+   "worked_solution": [
+    {
+     "step": 1,
+     "text": "Both limits.",
+     "mathjson": [
+      "Add",
+      [
+       "Rational",
+       -3,
+       8
+      ],
+      [
+       "Multiply",
+       [
+        "Rational",
+        1,
+        8
+       ],
+       "Pi",
+       [
+        "Power",
+        3,
+        [
+         "Rational",
+         1,
+         2
+        ]
+       ]
+      ]
+     ],
+     "relation": "new"
+    },
+    {
+     "step": 2,
+     "text": "Value.",
+     "mathjson": [
+      "Add",
+      [
+       "Rational",
+       -3,
+       8
+      ],
+      [
+       "Multiply",
+       [
+        "Rational",
+        1,
+        8
+       ],
+       "Pi",
+       [
+        "Power",
+        3,
+        [
+         "Rational",
+         1,
+         2
+        ]
+       ]
+      ]
+     ],
+     "relation": "equivalent"
+    }
+   ],
+   "calculator_status": "no_calculator",
+   "representation": "BC-REP-01",
+   "skills": [
+    "BC-SKL-06060"
+   ]
+  },
+  {
+   "id": "LSN-CON-06017#chk-2",
+   "check_kind": "isomorph",
+   "bands": [
+    "low",
+    "mid"
+   ],
+   "format": "short_answer",
+   "archetype_id": "BC-QA-06009",
+   "parameter_draw": {
+    "multiplier": 2,
+    "rate": 3,
+    "variable": "t",
+    "reach": 1,
+    "partner": "sine",
+    "form": "definite"
+   },
+   "stem": {
+    "text": "Evaluate ∫_0^(π/9) 2t sin(3t) dt.",
+    "command_verb": "evaluate"
+   },
+   "answer_key": {
+    "form": "symbolic",
+    "mathjson": [
+     "Add",
+     [
+      "Multiply",
+      [
+       "Rational",
+       -1,
+       27
+      ],
+      "Pi"
+     ],
+     [
+      "Multiply",
+      [
+       "Rational",
+       1,
+       9
+      ],
+      [
+       "Power",
+       3,
+       [
+        "Rational",
+        1,
+        2
+       ]
+      ]
+     ]
+    ]
+   },
+   "worked_solution": [
+    {
+     "step": 1,
+     "text": "u = 2t, v = -(1/3) cos 3t.",
+     "mathjson": [
+      "Add",
+      [
+       "Multiply",
+       [
+        "Rational",
+        2,
+        9
+       ],
+       [
+        "Sin",
+        [
+         "Multiply",
+         3,
+         "t"
+        ]
+       ]
+      ],
+      [
+       "Multiply",
+       [
+        "Rational",
+        -2,
+        3
+       ],
+       "t",
+       [
+        "Cos",
+        [
+         "Multiply",
+         3,
+         "t"
+        ]
+       ]
+      ]
+     ],
+     "relation": "new"
+    },
+    {
+     "step": 2,
+     "text": "At π/9; the value at 0 is 0.",
+     "mathjson": [
+      "Add",
+      [
+       "Multiply",
+       [
+        "Rational",
+        -1,
+        27
+       ],
+       "Pi"
+      ],
+      [
+       "Multiply",
+       [
+        "Rational",
+        1,
+        9
+       ],
+       [
+        "Power",
+        3,
+        [
+         "Rational",
+         1,
+         2
+        ]
+       ]
+      ]
+     ],
+     "relation": "evaluate",
+     "subs": {
+      "t": "pi/9"
+     }
+    }
+   ],
+   "calculator_status": "no_calculator",
+   "representation": "BC-REP-01",
+   "skills": [
+    "BC-SKL-06057",
+    "BC-SKL-06058",
+    "BC-SKL-06060"
+   ]
+  },
+  {
+   "id": "LSN-CON-06017#chk-3",
+   "check_kind": "mcq",
+   "bands": [
+    "low"
+   ],
+   "format": "mcq",
+   "archetype_id": "BC-QA-06009",
+   "parameter_draw": {
+    "multiplier": 4,
+    "rate": 2,
+    "variable": "x",
+    "reach": 1,
+    "partner": "exponential",
+    "form": "definite"
+   },
+   "stem": {
+    "text": "∫_0^1 4x e^(2x) dx =",
+    "command_verb": "identify"
+   },
+   "answer_key": {
+    "form": "symbolic",
+    "mathjson": [
+     "Add",
+     1,
+     [
+      "Exp",
+      2
+     ]
+    ]
+   },
+   "worked_solution": [
+    {
+     "step": 1,
+     "text": "u = 4x, v = (1/2) e^(2x).",
+     "mathjson": [
+      "Add",
+      [
+       "Multiply",
+       -1,
+       [
+        "Exp",
+        [
+         "Multiply",
+         2,
+         "x"
+        ]
+       ]
+      ],
+      [
+       "Multiply",
+       2,
+       "x",
+       [
+        "Exp",
+        [
+         "Multiply",
+         2,
+         "x"
+        ]
+       ]
+      ]
+     ],
+     "relation": "new"
+    },
+    {
+     "step": 2,
+     "text": "At 1 minus at 0.",
+     "mathjson": [
+      "Add",
+      1,
+      [
+       "Exp",
+       2
+      ]
+     ],
+     "relation": "new"
+    },
+    {
+     "step": 3,
+     "text": "Value.",
+     "mathjson": [
+      "Add",
+      1,
+      [
+       "Exp",
+       2
+      ]
+     ],
+     "relation": "equivalent"
+    }
+   ],
+   "options": [
+    {
+     "id": "A",
+     "is_key": false,
+     "error_path": "BC-ERR-06023",
+     "value": [
+      "Add",
+      -1,
+      [
+       "Multiply",
+       3,
+       [
+        "Exp",
+        2
+       ]
+      ]
+     ],
+     "derivation": "uv plus the integral of v du"
+    },
+    {
+     "id": "B",
+     "is_key": false,
+     "error_path": "BC-ERR-06022",
+     "value": [
+      "Exp",
+      2
+     ],
+     "derivation": "2x^2 times (1/2) e^(2x), factors antidifferentiated apart"
+    },
+    {
+     "id": "C",
+     "is_key": true,
+     "error_path": null,
+     "value": [
+      "Add",
+      1,
+      [
+       "Exp",
+       2
+      ]
+     ]
+    },
+    {
+     "id": "D",
+     "is_key": false,
+     "error_path": "BC-ERR-99025",
+     "value": [
+      "Add",
+      1,
+      [
+       "Multiply",
+       -1,
+       [
+        "Exp",
+        2
+       ]
+      ]
+     ],
+     "derivation": "the uv boundary term dropped, only the remaining integral kept"
+    }
+   ],
+   "calculator_status": "no_calculator",
+   "representation": "BC-REP-01",
+   "skills": [
+    "BC-SKL-06058",
+    "BC-SKL-06060"
+   ]
+  }
+ ],
+ "refresher": [
+  "LSN-CON-06017#s2",
+  "LSN-CON-06017#err-BC-ERR-06022",
+  "LSN-CON-06017#err-BC-ERR-06023",
+  "LSN-CON-06017#err-BC-ERR-99025",
+  "LSN-CON-06017#s4"
+ ],
+ "provenance": {
+  "author": "tools/lesson_transcribe.py",
+  "prompt_version": "generator/lesson_v1",
+  "design_path": "docs/lessons/unit-06/LSN-CON-06017.md",
+  "signed_off_by": "claude-opus-5-5",
+  "signed_off_at": "2026-09-29",
+  "not_human": true
+ }
+}

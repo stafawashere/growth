@@ -1,0 +1,1017 @@
+{
+ "id": "LSN-CON-06003",
+ "version": 1,
+ "kind": "concept",
+ "target_id": "BC-CON-06003",
+ "status": "draft",
+ "snapshot_digest": "a6a8ec9d3f59ab8f712e33d30cc22fc64bf2c478fbe7312e3e3118d319c6a42f",
+ "source_digest": "930768ed5d63c7716553ac9fc25c38fef16302342c75a7a22ba1ea4a70aab9a8",
+ "read_minutes": {
+  "full": 5.7,
+  "brief": 3.0
+ },
+ "word_count": {
+  "full": 715,
+  "brief": 382
+ },
+ "sections": [
+  {
+   "id": "LSN-CON-06003#s1",
+   "type": "orientation",
+   "bands": [
+    "low",
+    "mid"
+   ],
+   "skills": [
+    "BC-SKL-06005",
+    "BC-SKL-06006",
+    "BC-SKL-06007",
+    "BC-SKL-06008",
+    "BC-SKL-06009"
+   ],
+   "sources": [
+    "BC-CON-06003",
+    "research/units/unit-06-integration-accumulation.md#6.2 Approximating Areas with Riemann Sums"
+   ],
+   "evidence_tag": "inferred",
+   "text": "A response estimates the integral by writing each subinterval's value times width, then their sum.",
+   "delivery": {
+    "mode": "table",
+    "reason": "rule 5: BC-REP-03 on BC-SKL-06005, 06006, 06008 (unit README delivery map)",
+    "sources": [
+     "BC-SKL-06005",
+     "BC-SKL-06006",
+     "BC-SKL-06008"
+    ],
+    "spec": {
+     "kind": "table",
+     "representations": [
+      "BC-REP-03"
+     ],
+     "columns": [
+      "t",
+      "0",
+      "2",
+      "3",
+      "6",
+      "8"
+     ],
+     "rows": [
+      [
+       "R(t)",
+       "6",
+       "10",
+       "13",
+       "9",
+       "4"
+      ],
+      [
+       "width",
+       "",
+       "2",
+       "1",
+       "3",
+       "2"
+      ]
+     ],
+     "labels": [
+      {
+       "text": "widths from the inputs",
+       "placement": "inside",
+       "at": "width row"
+      }
+     ]
+    },
+    "fallback": "the table as plain text rows",
+    "keyboard": "Tab moves between cells; no control"
+   }
+  },
+  {
+   "id": "LSN-CON-06003#s2",
+   "type": "key_ideas",
+   "bands": [
+    "low",
+    "mid"
+   ],
+   "skills": [
+    "BC-SKL-06005",
+    "BC-SKL-06006",
+    "BC-SKL-06007",
+    "BC-SKL-06008"
+   ],
+   "sources": [
+    "BC-EK-LIM-5A2",
+    "ced:119",
+    "research/units/unit-06-integration-accumulation.md#6.2 Approximating Areas with Riemann Sums"
+   ],
+   "evidence_tag": "inferred",
+   "ek_id": "BC-EK-LIM-5A2",
+   "depth": "core",
+   "text": "Each subinterval gives width times one height. Left, right and midpoint differ only in the sample point; a trapezoid averages the end values. Widths may be unequal.",
+   "notation": "L sub n, R sub n, M sub n, T sub n",
+   "delivery": {
+    "mode": "figure",
+    "reason": "rule 4: BC-REP-02 on BC-SKL-06007 and BC-SKL-06009; one static figure of the four sample-point choices at a fixed n (unit README delivery map)",
+    "sources": [
+     "BC-SKL-06007",
+     "BC-SKL-06009"
+    ],
+    "spec": {
+     "kind": "graph_panels",
+     "representations": [
+      "BC-REP-02"
+     ],
+     "n": 4,
+     "panels": [
+      {
+       "sum": "left",
+       "rectangles": {
+        "sum": "left",
+        "n": 4
+       }
+      },
+      {
+       "sum": "right",
+       "rectangles": {
+        "sum": "right",
+        "n": 4
+       }
+      },
+      {
+       "sum": "midpoint",
+       "rectangles": {
+        "sum": "midpoint",
+        "n": 4
+       }
+      },
+      {
+       "sum": "trapezoid",
+       "segments": [
+        {
+         "from": [
+          0,
+          0
+         ],
+         "to": [
+          1,
+          1.75
+         ]
+        },
+        {
+         "from": [
+          1,
+          1.75
+         ],
+         "to": [
+          2,
+          3
+         ]
+        },
+        {
+         "from": [
+          2,
+          3
+         ],
+         "to": [
+          3,
+          3.75
+         ]
+        },
+        {
+         "from": [
+          3,
+          3.75
+         ],
+         "to": [
+          4,
+          4
+         ]
+        },
+        {
+         "from": [
+          1,
+          0
+         ],
+         "to": [
+          1,
+          1.75
+         ]
+        },
+        {
+         "from": [
+          2,
+          0
+         ],
+         "to": [
+          2,
+          3
+         ]
+        },
+        {
+         "from": [
+          3,
+          0
+         ],
+         "to": [
+          3,
+          3.75
+         ]
+        },
+        {
+         "from": [
+          4,
+          0
+         ],
+         "to": [
+          4,
+          4
+         ]
+        }
+       ]
+      }
+     ],
+     "labels": [
+      {
+       "text": "left",
+       "placement": "inside",
+       "at": "panel 1 top"
+      },
+      {
+       "text": "right",
+       "placement": "inside",
+       "at": "panel 2 top"
+      },
+      {
+       "text": "midpoint",
+       "placement": "inside",
+       "at": "panel 3 top"
+      },
+      {
+       "text": "trapezoid",
+       "placement": "inside",
+       "at": "panel 4 top"
+      }
+     ],
+     "curves": [
+      {
+       "expr": "2*x - x**2/4",
+       "domain": [
+        0,
+        4
+       ]
+      }
+     ],
+     "window": {
+      "x": [
+       -0.5,
+       4.5
+      ],
+      "y": [
+       -0.5,
+       4.5
+      ]
+     }
+    },
+    "fallback": "the four panels as one static image with their labels",
+    "keyboard": "none needed: the figure has no control"
+   }
+  },
+  {
+   "id": "LSN-CON-06003#s3",
+   "type": "key_ideas",
+   "bands": [
+    "low",
+    "mid"
+   ],
+   "skills": [
+    "BC-SKL-06005",
+    "BC-SKL-06006",
+    "BC-SKL-06009"
+   ],
+   "sources": [
+    "BC-EK-LIM-5A1",
+    "ced:119",
+    "research/units/unit-06-integration-accumulation.md#6.2 Approximating Areas with Riemann Sums"
+   ],
+   "evidence_tag": "inferred",
+   "ek_id": "BC-EK-LIM-5A1",
+   "depth": "core",
+   "text": "Each height is read from a table or graph, or evaluated from a formula.",
+   "delivery": {
+    "mode": "table",
+    "reason": "rule 5: BC-REP-03 on BC-SKL-06005 and BC-SKL-06006; the tabulated case of the heights",
+    "sources": [
+     "BC-SKL-06005",
+     "BC-SKL-06006"
+    ],
+    "spec": {
+     "kind": "table",
+     "representations": [
+      "BC-REP-03"
+     ],
+     "columns": [
+      "subinterval",
+      "[0, 2]",
+      "[2, 3]",
+      "[3, 6]",
+      "[6, 8]"
+     ],
+     "rows": [
+      [
+       "width",
+       "2",
+       "1",
+       "3",
+       "2"
+      ],
+      [
+       "left height",
+       "6",
+       "10",
+       "13",
+       "9"
+      ],
+      [
+       "product",
+       "12",
+       "10",
+       "39",
+       "18"
+      ]
+     ],
+     "labels": [
+      {
+       "text": "sum of products 79",
+       "placement": "inside",
+       "at": "row below the products"
+      }
+     ]
+    },
+    "fallback": "the table as plain text rows",
+    "keyboard": "Tab moves between cells; no control"
+   }
+  },
+  {
+   "id": "LSN-CON-06003#s4",
+   "type": "key_ideas",
+   "bands": [
+    "low"
+   ],
+   "skills": [
+    "BC-SKL-06009"
+   ],
+   "sources": [
+    "BC-EK-LIM-5A3",
+    "ced:119",
+    "sg-23:3",
+    "research/units/unit-06-integration-accumulation.md#6.2 Approximating Areas with Riemann Sums"
+   ],
+   "evidence_tag": "verified",
+   "ek_id": "BC-EK-LIM-5A3",
+   "depth": "extended",
+   "text": "The sum is computed by hand or on a calculator; either way the products are written before the value (sg-23:3).",
+   "notation": "L sub n, R sub n, M sub n, T sub n",
+   "quote": {
+    "text": "Definite integrals can be approximated using numerical methods, with or without technology.",
+    "source": "ced:119"
+   },
+   "delivery": {
+    "mode": "text",
+    "reason": "rule 6: a statement about computation, no figure-bearing representation needed",
+    "sources": [
+     "BC-SKL-06009"
+    ]
+   }
+  },
+  {
+   "id": "LSN-CON-06003#s5",
+   "type": "strategy",
+   "bands": [
+    "low",
+    "mid"
+   ],
+   "skills": [
+    "BC-SKL-06005",
+    "BC-SKL-06006"
+   ],
+   "sources": [
+    "BC-QA-06001",
+    "BC-QA-06002",
+    "BC-QA-06017"
+   ],
+   "evidence_tag": "verified",
+   "archetype_id": "BC-QA-06001",
+   "cue": "A table of rates and a named sum on the table's subintervals.",
+   "method": "Identify the subintervals and their widths from the table.",
+   "rival": "One common width on unevenly spaced data.",
+   "separating_feature": "Unequal gaps between inputs mean unequal widths."
+  },
+  {
+   "id": "LSN-CON-06003#s6",
+   "type": "worked_example",
+   "bands": [
+    "low",
+    "mid"
+   ],
+   "skills": [
+    "BC-SKL-06005",
+    "BC-SKL-06006"
+   ],
+   "sources": [
+    "BC-QA-06001"
+   ],
+   "evidence_tag": "inferred",
+   "archetype_id": "BC-QA-06001",
+   "parameter_draw": {
+    "gaps": [
+     2,
+     1,
+     3,
+     2
+    ],
+    "even_gap": 2,
+    "rates": [
+     6,
+     10,
+     13,
+     9,
+     4
+    ],
+    "endpoint": "left",
+    "context": "tank",
+    "spacing": "nonuniform",
+    "framing": "context"
+   },
+   "problem": {
+    "text": "Water enters a tank at R(t) gallons per hour. t: 0, 2, 3, 6, 8; R(t): 6, 10, 13, 9, 4. Approximate ∫_0^8 R(t) dt by a left Riemann sum on these subintervals.",
+    "command_verb": "approximate"
+   },
+   "calculator_status": "calculator",
+   "steps": [
+    {
+     "cue": "Table inputs fix the subintervals.",
+     "why": "Widths 2, 1, 3, 2."
+    },
+    {
+     "cue": "Left sum: left-end values 6, 10, 13, 9.",
+     "why": "Each times its own width.",
+     "expression": 79,
+     "point_type_id": "BC-PT-99018",
+     "relation": "new"
+    },
+    {
+     "cue": "Add.",
+     "why": "The value with products shown.",
+     "expression": 79,
+     "point_type_id": "BC-PT-99019",
+     "relation": "equivalent"
+    }
+   ],
+   "answer": {
+    "form": "numeric",
+    "mathjson": 79
+   },
+   "delivery": {
+    "mode": "step_reveal",
+    "reason": "rule 1",
+    "sources": []
+   }
+  },
+  {
+   "id": "LSN-CON-06003#s7",
+   "type": "worked_example",
+   "bands": [
+    "low"
+   ],
+   "skills": [
+    "BC-SKL-06008"
+   ],
+   "sources": [
+    "BC-QA-06002"
+   ],
+   "evidence_tag": "inferred",
+   "archetype_id": "BC-QA-06002",
+   "parameter_draw": {
+    "gaps": [
+     4,
+     2,
+     6
+    ],
+    "rates": [
+     5,
+     9,
+     11,
+     7
+    ],
+    "initial": 40,
+    "context": "rain",
+    "ask": "integral"
+   },
+   "problem": {
+    "text": "Rain falls at r(t) millimetres per hour. t: 0, 4, 6, 12; r(t): 5, 9, 11, 7. Approximate ∫_0^12 r(t) dt with a trapezoidal sum on these subintervals.",
+    "command_verb": "approximate"
+   },
+   "calculator_status": "no_calculator",
+   "steps": [
+    {
+     "cue": "Trapezoidal: average of the two end values times the width.",
+     "why": "Widths 4, 2, 6, the half in every term.",
+     "expression": 102,
+     "point_type_id": "BC-PT-99018",
+     "relation": "new"
+    },
+    {
+     "cue": "Add.",
+     "why": "28 + 20 + 54.",
+     "expression": 102,
+     "point_type_id": "BC-PT-99019",
+     "relation": "equivalent"
+    }
+   ],
+   "answer": {
+    "form": "numeric",
+    "mathjson": 102
+   },
+   "delivery": {
+    "mode": "step_reveal",
+    "reason": "rule 1",
+    "sources": []
+   }
+  },
+  {
+   "id": "LSN-CON-06003#s8",
+   "type": "what_a_reader_scores",
+   "bands": [
+    "low",
+    "mid"
+   ],
+   "skills": [
+    "BC-SKL-06005",
+    "BC-SKL-06006"
+   ],
+   "sources": [
+    "BC-PT-99018",
+    "BC-PT-99019"
+   ],
+   "evidence_tag": "verified",
+   "example_id": "LSN-CON-06003#s6",
+   "lines": [
+    {
+     "point_type_id": "BC-PT-99018",
+     "text": "Form of a Riemann or trapezoidal sum. Earned by: A sum whose terms each show a value factor and a width factor, with at least five of the six factors correct for three subintervals (sg-25:13, sg-26:3, sg-23:2) or seven of eight for four subintervals (sg-22:15). Not earned by: A left or right sum where a midpoint or trapezoidal sum was asked for (sg-26:3, sg-25:13); an unsupported total (sg-26:3, sg-22:15). Notation: sg-25:13 and sg-26:3 instruct readers to read an equals sign as approximately equal for this point."
+    },
+    {
+     "point_type_id": "BC-PT-99019",
+     "text": "Approximation value supported by the sum. Earned by: The numerical value of the sum with the supporting products present (sg-25:13, sg-23:2). Not earned by: The value alone with no work (sg-26:3, sg-22:15, sg-23:2)."
+    }
+   ]
+  },
+  {
+   "id": "LSN-CON-06003#s9",
+   "type": "what_a_reader_scores",
+   "bands": [
+    "low"
+   ],
+   "skills": [
+    "BC-SKL-06008"
+   ],
+   "sources": [
+    "BC-PT-99018",
+    "BC-PT-99019"
+   ],
+   "evidence_tag": "verified",
+   "example_id": "LSN-CON-06003#s7",
+   "lines": [
+    {
+     "point_type_id": "BC-PT-99018",
+     "text": "Form of a Riemann or trapezoidal sum. Earned by: A sum whose terms each show a value factor and a width factor, with at least five of the six factors correct for three subintervals (sg-25:13, sg-26:3, sg-23:2) or seven of eight for four subintervals (sg-22:15). Not earned by: A left or right sum where a midpoint or trapezoidal sum was asked for (sg-26:3, sg-25:13); an unsupported total (sg-26:3, sg-22:15). Notation: sg-25:13 and sg-26:3 instruct readers to read an equals sign as approximately equal for this point."
+    },
+    {
+     "point_type_id": "BC-PT-99019",
+     "text": "Approximation value supported by the sum. Earned by: The numerical value of the sum with the supporting products present (sg-25:13, sg-23:2). Not earned by: The value alone with no work (sg-26:3, sg-22:15, sg-23:2)."
+    }
+   ]
+  },
+  {
+   "id": "LSN-CON-06003#err-BC-ERR-06001",
+   "type": "common_error",
+   "bands": [
+    "low",
+    "mid"
+   ],
+   "skills": [
+    "BC-SKL-06005",
+    "BC-SKL-06006",
+    "BC-SKL-06008"
+   ],
+   "sources": [
+    "BC-ERR-06001"
+   ],
+   "evidence_tag": "inferred",
+   "error_id": "BC-ERR-06001",
+   "observed_behavior": "The response multiplies every tabulated value by one common width although the table inputs are unevenly spaced.",
+   "scoring_consequence": "The form point is lost because more than one of the six factors is incorrect, and the answer point is lost with it.",
+   "wrong_step": {
+    "text": "Width 2 for all.",
+    "expression": 76
+   },
+   "right_step": {
+    "text": "Widths 2, 1, 3, 2.",
+    "expression": 79
+   },
+   "relation": "distinct",
+   "delivery": {
+    "mode": "step_reveal",
+    "reason": "rule 1",
+    "sources": []
+   }
+  },
+  {
+   "id": "LSN-CON-06003#err-BC-ERR-06002",
+   "type": "common_error",
+   "bands": [
+    "low",
+    "mid"
+   ],
+   "skills": [
+    "BC-SKL-06005",
+    "BC-SKL-06006"
+   ],
+   "sources": [
+    "BC-ERR-06002"
+   ],
+   "evidence_tag": "inferred",
+   "error_id": "BC-ERR-06002",
+   "observed_behavior": "A completely correct Riemann sum is built with left endpoints when right endpoints were requested, or the reverse.",
+   "scoring_consequence": "A completely correct sum of the wrong type earns one of the two remaining points in 2023 and the form point only in 2025 (sg-23:3, sg-25:13).",
+   "wrong_step": {
+    "text": "Right ends used.",
+    "expression": 68
+   },
+   "right_step": {
+    "text": "Left ends.",
+    "expression": 79
+   },
+   "relation": "distinct",
+   "delivery": {
+    "mode": "step_reveal",
+    "reason": "rule 1",
+    "sources": []
+   }
+  },
+  {
+   "id": "LSN-CON-06003#err-BC-ERR-06003",
+   "type": "common_error",
+   "bands": [
+    "low",
+    "mid"
+   ],
+   "skills": [
+    "BC-SKL-06005",
+    "BC-SKL-06006"
+   ],
+   "sources": [
+    "BC-ERR-06003",
+    "BC-MIS-06001"
+   ],
+   "evidence_tag": "inferred",
+   "error_id": "BC-ERR-06003",
+   "observed_behavior": "The response adds the tabulated rate values without multiplying each by a subinterval width.",
+   "scoring_consequence": "Neither the form point nor the answer point is earned because no products appear.",
+   "wrong_step": {
+    "text": "Values added, no widths.",
+    "expression": 38
+   },
+   "right_step": {
+    "text": "Each value times its width.",
+    "expression": 79
+   },
+   "relation": "distinct",
+   "possible_reason": {
+    "misconception_id": "BC-MIS-06001",
+    "text": "treats a Riemann sum as an operation on the list of function values alone, so the partition widths play no role"
+   },
+   "delivery": {
+    "mode": "step_reveal",
+    "reason": "rule 1",
+    "sources": []
+   }
+  },
+  {
+   "id": "LSN-CON-06003#err-BC-ERR-06004",
+   "type": "common_error",
+   "bands": [
+    "low",
+    "mid"
+   ],
+   "skills": [
+    "BC-SKL-06008"
+   ],
+   "sources": [
+    "BC-ERR-06004",
+    "BC-MIS-06004"
+   ],
+   "evidence_tag": "inferred",
+   "error_id": "BC-ERR-06004",
+   "observed_behavior": "One or two trapezoid terms are halved and the remaining term is not.",
+   "scoring_consequence": "At least one of the six factors is incorrect, so the form point may survive but the answer point is lost (sg-25:13).",
+   "wrong_step": {
+    "text": "Same table, trapezoids: only the first halved.",
+    "expression": 131
+   },
+   "right_step": {
+    "text": "Every term halved.",
+    "expression": [
+     "Rational",
+     147,
+     2
+    ]
+   },
+   "relation": "distinct",
+   "possible_reason": {
+    "misconception_id": "BC-MIS-06004",
+    "text": "averages across the entire interval rather than forming a separate trapezoid on each subinterval"
+   },
+   "delivery": {
+    "mode": "step_reveal",
+    "reason": "rule 1",
+    "sources": []
+   }
+  },
+  {
+   "id": "LSN-CON-06003#prq-BC-PRQ-06005",
+   "type": "prerequisite_bridge",
+   "bands": [
+    "low",
+    "mid"
+   ],
+   "skills": [
+    "BC-SKL-06005",
+    "BC-SKL-06006",
+    "BC-SKL-06009"
+   ],
+   "sources": [
+    "BC-PRQ-06005"
+   ],
+   "evidence_tag": "inferred",
+   "prerequisite_id": "BC-PRQ-06005",
+   "text": "A value read from the wrong row changes a factor."
+  },
+  {
+   "id": "LSN-CON-06003#prq-BC-PRQ-06007",
+   "type": "prerequisite_bridge",
+   "bands": [
+    "low",
+    "mid"
+   ],
+   "skills": [
+    "BC-SKL-06008"
+   ],
+   "sources": [
+    "BC-PRQ-06007"
+   ],
+   "evidence_tag": "inferred",
+   "prerequisite_id": "BC-PRQ-06007",
+   "text": "A trapezoid's area averages its parallel sides; it is not a rectangle."
+  },
+  {
+   "id": "LSN-CON-06003#prq-BC-PRQ-06012",
+   "type": "prerequisite_bridge",
+   "bands": [
+    "low",
+    "mid"
+   ],
+   "skills": [
+    "BC-SKL-06005",
+    "BC-SKL-06006",
+    "BC-SKL-06007",
+    "BC-SKL-06008"
+   ],
+   "sources": [
+    "BC-PRQ-06012"
+   ],
+   "evidence_tag": "inferred",
+   "prerequisite_id": "BC-PRQ-06012",
+   "text": "Each width is a difference of consecutive inputs, not one common width."
+  }
+ ],
+ "checks": [
+  {
+   "id": "LSN-CON-06003#chk-1",
+   "check_kind": "completion",
+   "bands": [
+    "low",
+    "mid"
+   ],
+   "format": "short_answer",
+   "archetype_id": "BC-QA-06001",
+   "parameter_draw": {
+    "gaps": [
+     2,
+     1,
+     3,
+     2
+    ],
+    "even_gap": 2,
+    "rates": [
+     6,
+     10,
+     13,
+     9,
+     4
+    ],
+    "endpoint": "left",
+    "context": "tank",
+    "spacing": "nonuniform",
+    "framing": "context"
+   },
+   "completes": "LSN-CON-06003#s6",
+   "stem": {
+    "text": "The left sum is 2(6) + 1(10) + 3(13) + 2(9). Give its value.",
+    "command_verb": "find"
+   },
+   "answer_key": {
+    "form": "numeric",
+    "mathjson": 79
+   },
+   "worked_solution": [
+    {
+     "step": 1,
+     "text": "The products.",
+     "mathjson": 79,
+     "relation": "new"
+    },
+    {
+     "step": 2,
+     "text": "Add.",
+     "mathjson": 79,
+     "relation": "equivalent"
+    }
+   ],
+   "calculator_status": "calculator",
+   "representation": "BC-REP-03",
+   "skills": [
+    "BC-SKL-06005"
+   ]
+  },
+  {
+   "id": "LSN-CON-06003#chk-2",
+   "check_kind": "isomorph",
+   "bands": [
+    "low",
+    "mid"
+   ],
+   "format": "short_answer",
+   "archetype_id": "BC-QA-06001",
+   "parameter_draw": {
+    "gaps": [
+     1,
+     3,
+     2,
+     2
+    ],
+    "even_gap": 1,
+    "rates": [
+     2,
+     7,
+     5,
+     11,
+     8
+    ],
+    "endpoint": "right",
+    "context": "download",
+    "spacing": "nonuniform",
+    "framing": "context"
+   },
+   "stem": {
+    "text": "t: 0, 1, 4, 6, 8; D(t): 2, 7, 5, 11, 8. Right Riemann sum for ∫_0^8 D(t) dt?",
+    "command_verb": "approximate"
+   },
+   "answer_key": {
+    "form": "numeric",
+    "mathjson": 60
+   },
+   "worked_solution": [
+    {
+     "step": 1,
+     "text": "Right ends times widths 1, 3, 2, 2.",
+     "mathjson": 60,
+     "relation": "new"
+    },
+    {
+     "step": 2,
+     "text": "Add.",
+     "mathjson": 60,
+     "relation": "equivalent"
+    }
+   ],
+   "calculator_status": "calculator",
+   "representation": "BC-REP-03",
+   "skills": [
+    "BC-SKL-06006"
+   ]
+  },
+  {
+   "id": "LSN-CON-06003#chk-3",
+   "check_kind": "mcq",
+   "bands": [
+    "low"
+   ],
+   "format": "mcq",
+   "archetype_id": "BC-QA-06001",
+   "parameter_draw": {
+    "gaps": [
+     3,
+     1,
+     2,
+     2
+    ],
+    "even_gap": 2,
+    "rates": [
+     5,
+     8,
+     14,
+     9,
+     3
+    ],
+    "endpoint": "left",
+    "context": "traffic",
+    "spacing": "nonuniform",
+    "framing": "bare"
+   },
+   "stem": {
+    "text": "t: 0, 3, 4, 6, 8; f(t): 5, 8, 14, 9, 3. Which is the left Riemann sum for ∫_0^8 f(t) dt on these subintervals?",
+    "command_verb": "identify"
+   },
+   "answer_key": {
+    "form": "numeric",
+    "mathjson": 69
+   },
+   "worked_solution": [
+    {
+     "step": 1,
+     "text": "Left ends times widths 3, 1, 2, 2.",
+     "mathjson": 69,
+     "relation": "new"
+    },
+    {
+     "step": 2,
+     "text": "Add.",
+     "mathjson": 69,
+     "relation": "equivalent"
+    }
+   ],
+   "options": [
+    {
+     "id": "A",
+     "is_key": false,
+     "error_path": "BC-ERR-06003",
+     "value": 36,
+     "derivation": "the four left values added with no widths"
+    },
+    {
+     "id": "B",
+     "is_key": false,
+     "error_path": "BC-ERR-06002",
+     "value": 62,
+     "derivation": "right endpoints used: 3(8) + 1(14) + 2(9) + 2(3)"
+    },
+    {
+     "id": "C",
+     "is_key": true,
+     "error_path": null,
+     "value": 69
+    },
+    {
+     "id": "D",
+     "is_key": false,
+     "error_path": "BC-ERR-06001",
+     "value": 72,
+     "derivation": "one common width 2 times the four left values"
+    }
+   ],
+   "calculator_status": "calculator",
+   "representation": "BC-REP-03",
+   "skills": [
+    "BC-SKL-06005"
+   ]
+  }
+ ],
+ "refresher": [
+  "LSN-CON-06003#s2",
+  "LSN-CON-06003#s3",
+  "LSN-CON-06003#err-BC-ERR-06001",
+  "LSN-CON-06003#err-BC-ERR-06002",
+  "LSN-CON-06003#err-BC-ERR-06003",
+  "LSN-CON-06003#err-BC-ERR-06004",
+  "LSN-CON-06003#s6"
+ ],
+ "provenance": {
+  "author": "tools/lesson_transcribe.py",
+  "prompt_version": "generator/lesson_v1",
+  "design_path": "docs/lessons/unit-06/LSN-CON-06003.md",
+  "signed_off_by": null,
+  "signed_off_at": null,
+  "not_human": true
+ }
+}

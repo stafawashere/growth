@@ -1,0 +1,1034 @@
+{
+ "id": "LSN-CON-08017",
+ "version": 1,
+ "kind": "concept",
+ "target_id": "BC-CON-08017",
+ "status": "signed_off",
+ "snapshot_digest": "a6a8ec9d3f59ab8f712e33d30cc22fc64bf2c478fbe7312e3e3118d319c6a42f",
+ "source_digest": "0f00ba7799e03666ff68ea9f42966eb68e72a29acccbac72e50ac693d12074c1",
+ "read_minutes": {
+  "full": 4.9,
+  "brief": 3.0
+ },
+ "word_count": {
+  "full": 644,
+  "brief": 382
+ },
+ "sections": [
+  {
+   "id": "LSN-CON-08017#s1",
+   "type": "orientation",
+   "bands": [
+    "low",
+    "mid"
+   ],
+   "skills": [
+    "BC-SKL-08040",
+    "BC-SKL-08041",
+    "BC-SKL-08042",
+    "BC-SKL-08043"
+   ],
+   "sources": [
+    "BC-CON-08017",
+    "research/units/unit-08-applications-integration.md#8.9 Volume with Disc Method: Revolving Around the x- or y-Axis"
+   ],
+   "evidence_tag": "inferred",
+   "text": "A region touching its axis, revolved, is a stack of discs. A response writes pi times the integral of the squared radius, with limits, and reports the volume, as a multiple of pi without a calculator.",
+   "delivery": {
+    "mode": "text",
+    "reason": "rule 6: a statement of what a response shows",
+    "sources": [
+     "BC-CON-08017"
+    ]
+   }
+  },
+  {
+   "id": "LSN-CON-08017#s2",
+   "type": "key_ideas",
+   "bands": [
+    "low",
+    "mid"
+   ],
+   "skills": [
+    "BC-SKL-08040",
+    "BC-SKL-08041",
+    "BC-SKL-08042",
+    "BC-SKL-08043"
+   ],
+   "sources": [
+    "BC-EK-CHA-5C1",
+    "ced:160",
+    "research/units/unit-08-applications-integration.md#8.9 Volume with Disc Method: Revolving Around the x- or y-Axis"
+   ],
+   "evidence_tag": "inferred",
+   "ek_id": "BC-EK-CHA-5C1",
+   "depth": "core",
+   "text": "The region meets the axis, so each slice is a disc; its radius is the distance from curve to axis. About the x-axis, integrate in x. Pi multiplies the integral; the radius is squared before integrating.",
+   "notation": "pi times the integral of the radius squared",
+   "delivery": {
+    "mode": "motion",
+    "reason": "rule 2: a region revolved about its axis into a solid, a process; rule 4, BC-REP-08 on BC-SKL-08040, for the static fallback",
+    "sources": [
+     "BC-SKL-08040",
+     "BC-SKL-08041"
+    ],
+    "spec": {
+     "kind": "solid_of_revolution",
+     "representations": [
+      "BC-REP-02",
+      "BC-REP-08"
+     ],
+     "curve": "y = sqrt(x)",
+     "interval": [
+      0,
+      4
+     ],
+     "axis": "y = 0",
+     "frames": [
+      {
+       "angle_degrees": 0
+      },
+      {
+       "angle_degrees": 90
+      },
+      {
+       "angle_degrees": 180
+      },
+      {
+       "angle_degrees": 270
+      },
+      {
+       "angle_degrees": 360
+      }
+     ],
+     "highlight": {
+      "disc_at_x": 2,
+      "radius": "sqrt(2)"
+     },
+     "labels": [
+      {
+       "text": "axis of revolution",
+       "placement": "inside"
+      },
+      {
+       "text": "r = sqrt(x)",
+       "placement": "inside"
+      },
+      {
+       "text": "disc area pi r^2",
+       "placement": "inside"
+      }
+     ]
+    },
+    "fallback": "three frames side by side (0, 180 and 360 degrees), static, the disc at x = 2 marked with its radius, labels inside",
+    "keyboard": "Right arrow steps to the next frame, Left arrow to the previous; Space pauses auto-advance",
+    "reduced_motion": "no auto-advance; each key press cross-fades to the next frame"
+   }
+  },
+  {
+   "id": "LSN-CON-08017#s3",
+   "type": "strategy",
+   "bands": [
+    "low",
+    "mid"
+   ],
+   "skills": [
+    "BC-SKL-08040",
+    "BC-SKL-08041",
+    "BC-SKL-08042",
+    "BC-SKL-08043"
+   ],
+   "sources": [
+    "BC-QA-08012"
+   ],
+   "evidence_tag": "verified",
+   "archetype_id": "BC-QA-08012",
+   "cue": "A region against its axis, revolved; asked for the volume.",
+   "method": "First line: the radius as distance to the axis.",
+   "rival": "Radius unsquared, or pi dropped.",
+   "separating_feature": "A disc is a circle: pi r squared."
+  },
+  {
+   "id": "LSN-CON-08017#s4",
+   "type": "worked_example",
+   "bands": [
+    "low",
+    "mid"
+   ],
+   "skills": [
+    "BC-SKL-08040",
+    "BC-SKL-08041",
+    "BC-SKL-08042",
+    "BC-SKL-08043"
+   ],
+   "sources": [
+    "BC-QA-08012"
+   ],
+   "evidence_tag": "inferred",
+   "archetype_id": "BC-QA-08012",
+   "parameter_draw": {
+    "form": "root",
+    "scale": 1,
+    "left": 0,
+    "width": 4,
+    "level": 1,
+    "presentation": "formula",
+    "axis": "x_axis"
+   },
+   "problem": {
+    "text": "R is bounded by y = sqrt(x), the x-axis and x = 4. Find the volume when R is revolved about the x-axis.",
+    "command_verb": "find"
+   },
+   "calculator_status": "no_calculator",
+   "steps": [
+    {
+     "cue": "R touches the x-axis, the axis.",
+     "why": "Radius: curve to axis.",
+     "expression": [
+      "Power",
+      "x",
+      [
+       "Rational",
+       1,
+       2
+      ]
+     ],
+     "relation": "new"
+    },
+    {
+     "cue": "Each slice is a disc.",
+     "why": "pi r squared.",
+     "expression": [
+      "Multiply",
+      "Pi",
+      "x"
+     ],
+     "point_type_id": "BC-PT-99058",
+     "relation": "new"
+    },
+    {
+     "cue": "R runs from x = 0 to 4.",
+     "why": "Slices in x.",
+     "expression": [
+      "Integrate",
+      [
+       "Multiply",
+       "Pi",
+       "x"
+      ],
+      [
+       "Tuple",
+       "x",
+       0,
+       4
+      ]
+     ],
+     "point_type_id": "BC-PT-99001",
+     "relation": "new"
+    },
+    {
+     "cue": "Integrate.",
+     "why": "Keep pi.",
+     "expression": [
+      "Multiply",
+      8,
+      "Pi"
+     ],
+     "relation": "equivalent"
+    }
+   ],
+   "answer": {
+    "form": "symbolic",
+    "mathjson": [
+     "Multiply",
+     8,
+     "Pi"
+    ]
+   },
+   "delivery": {
+    "mode": "step_reveal",
+    "reason": "rule 1",
+    "sources": []
+   }
+  },
+  {
+   "id": "LSN-CON-08017#s5",
+   "type": "worked_example",
+   "bands": [
+    "low"
+   ],
+   "skills": [
+    "BC-SKL-08040",
+    "BC-SKL-08041",
+    "BC-SKL-08042",
+    "BC-SKL-08043"
+   ],
+   "sources": [
+    "BC-QA-08012"
+   ],
+   "evidence_tag": "inferred",
+   "archetype_id": "BC-QA-08012",
+   "parameter_draw": {
+    "form": "square",
+    "scale": 1,
+    "left": 0,
+    "width": 2,
+    "level": 1,
+    "presentation": "formula",
+    "axis": "x_axis"
+   },
+   "problem": {
+    "text": "R is bounded by y = x^2, the x-axis and x = 2. Find the volume when R is revolved about the x-axis.",
+    "command_verb": "find"
+   },
+   "calculator_status": "no_calculator",
+   "steps": [
+    {
+     "cue": "R touches the axis.",
+     "why": "Radius x^2.",
+     "expression": [
+      "Power",
+      "x",
+      2
+     ],
+     "relation": "new"
+    },
+    {
+     "cue": "Disc area.",
+     "why": "pi r squared.",
+     "expression": [
+      "Multiply",
+      "Pi",
+      [
+       "Power",
+       "x",
+       4
+      ]
+     ],
+     "point_type_id": "BC-PT-99058",
+     "relation": "new"
+    },
+    {
+     "cue": "x from 0 to 2.",
+     "why": "Limits.",
+     "expression": [
+      "Integrate",
+      [
+       "Multiply",
+       "Pi",
+       [
+        "Power",
+        "x",
+        4
+       ]
+      ],
+      [
+       "Tuple",
+       "x",
+       0,
+       2
+      ]
+     ],
+     "relation": "new"
+    },
+    {
+     "cue": "Integrate.",
+     "why": "Keep pi.",
+     "expression": [
+      "Multiply",
+      [
+       "Rational",
+       32,
+       5
+      ],
+      "Pi"
+     ],
+     "point_type_id": "BC-PT-99004",
+     "relation": "equivalent"
+    }
+   ],
+   "answer": {
+    "form": "symbolic",
+    "mathjson": [
+     "Multiply",
+     [
+      "Rational",
+      32,
+      5
+     ],
+     "Pi"
+    ]
+   },
+   "delivery": {
+    "mode": "step_reveal",
+    "reason": "rule 1",
+    "sources": []
+   }
+  },
+  {
+   "id": "LSN-CON-08017#s6",
+   "type": "what_a_reader_scores",
+   "bands": [
+    "low",
+    "mid"
+   ],
+   "skills": [
+    "BC-SKL-08040",
+    "BC-SKL-08041",
+    "BC-SKL-08042",
+    "BC-SKL-08043"
+   ],
+   "sources": [
+    "BC-PT-99058",
+    "BC-PT-99001"
+   ],
+   "evidence_tag": "verified",
+   "example_id": "LSN-CON-08017#s4",
+   "lines": [
+    {
+     "point_type_id": "BC-PT-99058",
+     "text": "Volume integrand form. Earned by: An integrand of the correct volume form, a nonzero constant times the square of the function for a disc, or the stated cross-section area (sg-26:19, sg-22:18). Not earned by: A constant other than pi where pi is required, which sg-22:19 states blocks the answer point; a rotation about the wrong axis, which sg-26:19 lets earn the form point only."
+    },
+    {
+     "point_type_id": "BC-PT-99001",
+     "text": "Definite integral expression with correct limits. Earned by: A definite integral whose limits match the requested interval and whose integrand matches the requested quantity, with or without the differential (sg-26:4, sg-22:2). Not earned by: An unsupported numerical value, or a definite integral whose bounds are wrong (sg-22:18). Notation: Differential may be omitted; sg-22:2 accepts dx written for dt. sg-23:8 treats a missing differential as recoverable for this point but restricts later eligibility."
+    }
+   ]
+  },
+  {
+   "id": "LSN-CON-08017#s7",
+   "type": "what_a_reader_scores",
+   "bands": [
+    "low"
+   ],
+   "skills": [
+    "BC-SKL-08040",
+    "BC-SKL-08041",
+    "BC-SKL-08042",
+    "BC-SKL-08043"
+   ],
+   "sources": [
+    "BC-PT-99058",
+    "BC-PT-99004"
+   ],
+   "evidence_tag": "verified",
+   "example_id": "LSN-CON-08017#s5",
+   "lines": [
+    {
+     "point_type_id": "BC-PT-99058",
+     "text": "Volume integrand form. Earned by: An integrand of the correct volume form, a nonzero constant times the square of the function for a disc, or the stated cross-section area (sg-26:19, sg-22:18). Not earned by: A constant other than pi where pi is required, which sg-22:19 states blocks the answer point; a rotation about the wrong axis, which sg-26:19 lets earn the form point only."
+    },
+    {
+     "point_type_id": "BC-PT-99004",
+     "text": "Answer with or without supporting work. Earned by: The correct value on its own, with no supporting work required (sg-25:3, sg-26:4). Not earned by: A value outside the accepted precision, or a value inconsistent with a required earlier step where the rubric imposes one. Precision: A reported decimal answer must be accurate to three places after the decimal point, rounded or truncated; at most one point per question is lost to inappropriate rounding (sg-25:2, sg-26:2). sg-26:4 also accepts a stated rounding to the nearest integer and several truncations."
+    }
+   ]
+  },
+  {
+   "id": "LSN-CON-08017#err-BC-ERR-08023",
+   "type": "common_error",
+   "bands": [
+    "low",
+    "mid"
+   ],
+   "skills": [
+    "BC-SKL-08042"
+   ],
+   "sources": [
+    "BC-ERR-08023",
+    "BC-MIS-08013"
+   ],
+   "evidence_tag": "inferred",
+   "error_id": "BC-ERR-08023",
+   "observed_behavior": "A function of x is integrated with respect to y, or the reverse, without being rewritten.",
+   "scoring_consequence": "The setup point is lost because the expression does not define a number.",
+   "wrong_step": {
+    "text": "dy.",
+    "expression": [
+     "Integrate",
+     [
+      "Multiply",
+      "Pi",
+      "x"
+     ],
+     [
+      "Tuple",
+      "y",
+      0,
+      4
+     ]
+    ]
+   },
+   "right_step": {
+    "text": "dx.",
+    "expression": [
+     "Integrate",
+     [
+      "Multiply",
+      "Pi",
+      "x"
+     ],
+     [
+      "Tuple",
+      "x",
+      0,
+      4
+     ]
+    ]
+   },
+   "relation": "distinct",
+   "possible_reason": {
+    "misconception_id": "BC-MIS-08013",
+    "text": "treats dx and dy as labels for the direction of slicing"
+   },
+   "delivery": {
+    "mode": "step_reveal",
+    "reason": "rule 1",
+    "sources": []
+   }
+  },
+  {
+   "id": "LSN-CON-08017#err-BC-ERR-08024",
+   "type": "common_error",
+   "bands": [
+    "low",
+    "mid"
+   ],
+   "skills": [
+    "BC-SKL-08042"
+   ],
+   "sources": [
+    "BC-ERR-08024",
+    "BC-MIS-08012"
+   ],
+   "evidence_tag": "inferred",
+   "error_id": "BC-ERR-08024",
+   "observed_behavior": "An integral in y carries x values as its limits.",
+   "scoring_consequence": "The setup point is lost and the value is wrong.",
+   "wrong_step": {
+    "text": "y values as limits.",
+    "expression": [
+     "Integrate",
+     [
+      "Multiply",
+      "Pi",
+      "x"
+     ],
+     [
+      "Tuple",
+      "x",
+      0,
+      2
+     ]
+    ]
+   },
+   "right_step": {
+    "text": "x from 0 to 4.",
+    "expression": [
+     "Integrate",
+     [
+      "Multiply",
+      "Pi",
+      "x"
+     ],
+     [
+      "Tuple",
+      "x",
+      0,
+      4
+     ]
+    ]
+   },
+   "relation": "distinct",
+   "possible_reason": {
+    "misconception_id": "BC-MIS-08012",
+    "text": "chooses limits from the axes of the picture"
+   },
+   "delivery": {
+    "mode": "step_reveal",
+    "reason": "rule 1",
+    "sources": []
+   }
+  },
+  {
+   "id": "LSN-CON-08017#err-BC-ERR-08036",
+   "type": "common_error",
+   "bands": [
+    "low",
+    "mid"
+   ],
+   "skills": [
+    "BC-SKL-08040",
+    "BC-SKL-08041"
+   ],
+   "sources": [
+    "BC-ERR-08036",
+    "BC-MIS-08020"
+   ],
+   "evidence_tag": "inferred",
+   "error_id": "BC-ERR-08036",
+   "observed_behavior": "The disc integrand is pi times the function rather than pi times the square of the function.",
+   "scoring_consequence": "The setup point is lost.",
+   "wrong_step": {
+    "text": "Unsquared.",
+    "expression": [
+     "Integrate",
+     [
+      "Multiply",
+      "Pi",
+      [
+       "Power",
+       "x",
+       [
+        "Rational",
+        1,
+        2
+       ]
+      ]
+     ],
+     [
+      "Tuple",
+      "x",
+      0,
+      4
+     ]
+    ]
+   },
+   "right_step": {
+    "text": "Squared.",
+    "expression": [
+     "Integrate",
+     [
+      "Multiply",
+      "Pi",
+      "x"
+     ],
+     [
+      "Tuple",
+      "x",
+      0,
+      4
+     ]
+    ]
+   },
+   "relation": "distinct",
+   "possible_reason": {
+    "misconception_id": "BC-MIS-08020",
+    "text": "carries the circle formula only as far as the factor pi"
+   },
+   "delivery": {
+    "mode": "step_reveal",
+    "reason": "rule 1",
+    "sources": []
+   }
+  },
+  {
+   "id": "LSN-CON-08017#err-BC-ERR-08037",
+   "type": "common_error",
+   "bands": [
+    "low",
+    "mid"
+   ],
+   "skills": [
+    "BC-SKL-08041",
+    "BC-SKL-08043"
+   ],
+   "sources": [
+    "BC-ERR-08037",
+    "BC-MIS-08019"
+   ],
+   "evidence_tag": "inferred",
+   "error_id": "BC-ERR-08037",
+   "observed_behavior": "A disc or washer volume is reported without the constant factor pi.",
+   "scoring_consequence": "The answer point is lost.",
+   "wrong_step": {
+    "text": "No pi.",
+    "expression": [
+     "Integrate",
+     "x",
+     [
+      "Tuple",
+      "x",
+      0,
+      4
+     ]
+    ]
+   },
+   "right_step": {
+    "text": "pi.",
+    "expression": [
+     "Integrate",
+     [
+      "Multiply",
+      "Pi",
+      "x"
+     ],
+     [
+      "Tuple",
+      "x",
+      0,
+      4
+     ]
+    ]
+   },
+   "relation": "distinct",
+   "possible_reason": {
+    "misconception_id": "BC-MIS-08019",
+    "text": "remembers the squared dimension but not the fraction in front of it"
+   },
+   "delivery": {
+    "mode": "step_reveal",
+    "reason": "rule 1",
+    "sources": []
+   }
+  },
+  {
+   "id": "LSN-CON-08017#prq-BC-PRQ-06002",
+   "type": "prerequisite_bridge",
+   "bands": [
+    "low",
+    "mid"
+   ],
+   "skills": [
+    "BC-SKL-08043"
+   ],
+   "sources": [
+    "BC-PRQ-06002"
+   ],
+   "evidence_tag": "inferred",
+   "prerequisite_id": "BC-PRQ-06002",
+   "text": "Rewrite radicals as powers before antidifferentiating."
+  },
+  {
+   "id": "LSN-CON-08017#prq-BC-PRQ-08002",
+   "type": "prerequisite_bridge",
+   "bands": [
+    "low",
+    "mid"
+   ],
+   "skills": [
+    "BC-SKL-08042"
+   ],
+   "sources": [
+    "BC-PRQ-08002"
+   ],
+   "evidence_tag": "inferred",
+   "prerequisite_id": "BC-PRQ-08002",
+   "text": "Integrating in y needs x as a function of y."
+  },
+  {
+   "id": "LSN-CON-08017#prq-BC-PRQ-08004",
+   "type": "prerequisite_bridge",
+   "bands": [
+    "low",
+    "mid"
+   ],
+   "skills": [
+    "BC-SKL-08040",
+    "BC-SKL-08041"
+   ],
+   "sources": [
+    "BC-PRQ-08004"
+   ],
+   "evidence_tag": "inferred",
+   "prerequisite_id": "BC-PRQ-08004",
+   "text": "A distance is larger minus smaller, not a bare function value."
+  }
+ ],
+ "checks": [
+  {
+   "id": "LSN-CON-08017#chk-1",
+   "check_kind": "completion",
+   "bands": [
+    "low",
+    "mid"
+   ],
+   "format": "short_answer",
+   "archetype_id": "BC-QA-08012",
+   "parameter_draw": {
+    "form": "root",
+    "scale": 1,
+    "left": 0,
+    "width": 4,
+    "level": 1,
+    "presentation": "formula",
+    "axis": "x_axis"
+   },
+   "completes": "LSN-CON-08017#s4",
+   "stem": {
+    "text": "Evaluate pi times the integral of x from 0 to 4.",
+    "command_verb": "evaluate"
+   },
+   "answer_key": {
+    "form": "symbolic",
+    "mathjson": [
+     "Multiply",
+     8,
+     "Pi"
+    ]
+   },
+   "worked_solution": [
+    {
+     "step": 1,
+     "text": "The integral.",
+     "mathjson": [
+      "Integrate",
+      [
+       "Multiply",
+       "Pi",
+       "x"
+      ],
+      [
+       "Tuple",
+       "x",
+       0,
+       4
+      ]
+     ],
+     "relation": "new"
+    },
+    {
+     "step": 2,
+     "text": "pi x^2/2 from 0 to 4.",
+     "mathjson": [
+      "Multiply",
+      8,
+      "Pi"
+     ],
+     "relation": "equivalent"
+    }
+   ],
+   "calculator_status": "no_calculator",
+   "representation": "BC-REP-08",
+   "skills": [
+    "BC-SKL-08043"
+   ]
+  },
+  {
+   "id": "LSN-CON-08017#chk-2",
+   "check_kind": "isomorph",
+   "bands": [
+    "low",
+    "mid"
+   ],
+   "format": "short_answer",
+   "archetype_id": "BC-QA-08012",
+   "parameter_draw": {
+    "form": "linear",
+    "scale": 3,
+    "left": 0,
+    "width": 2,
+    "level": 1,
+    "presentation": "formula",
+    "axis": "x_axis"
+   },
+   "stem": {
+    "text": "R is bounded by y = 3x, the x-axis and x = 2. Find the volume about the x-axis.",
+    "command_verb": "find"
+   },
+   "answer_key": {
+    "form": "symbolic",
+    "mathjson": [
+     "Multiply",
+     24,
+     "Pi"
+    ]
+   },
+   "worked_solution": [
+    {
+     "step": 1,
+     "text": "Disc area.",
+     "mathjson": [
+      "Multiply",
+      9,
+      "Pi",
+      [
+       "Power",
+       "x",
+       2
+      ]
+     ],
+     "relation": "new"
+    },
+    {
+     "step": 2,
+     "text": "Limits 0 and 2.",
+     "mathjson": [
+      "Integrate",
+      [
+       "Multiply",
+       9,
+       "Pi",
+       [
+        "Power",
+        "x",
+        2
+       ]
+      ],
+      [
+       "Tuple",
+       "x",
+       0,
+       2
+      ]
+     ],
+     "relation": "new"
+    },
+    {
+     "step": 3,
+     "text": "Value.",
+     "mathjson": [
+      "Multiply",
+      24,
+      "Pi"
+     ],
+     "relation": "equivalent"
+    }
+   ],
+   "calculator_status": "no_calculator",
+   "representation": "BC-REP-08",
+   "skills": [
+    "BC-SKL-08041"
+   ]
+  },
+  {
+   "id": "LSN-CON-08017#chk-3",
+   "check_kind": "mcq",
+   "bands": [
+    "low"
+   ],
+   "format": "mcq",
+   "archetype_id": "BC-QA-08012",
+   "parameter_draw": {
+    "form": "root",
+    "scale": 2,
+    "left": 1,
+    "width": 3,
+    "level": 2,
+    "presentation": "formula",
+    "axis": "x_axis"
+   },
+   "stem": {
+    "text": "R is bounded by y = 2 sqrt(x), the x-axis, x = 1 and x = 4. The volume about the x-axis is",
+    "command_verb": "identify"
+   },
+   "answer_key": {
+    "form": "symbolic",
+    "mathjson": [
+     "Multiply",
+     30,
+     "Pi"
+    ]
+   },
+   "worked_solution": [
+    {
+     "step": 1,
+     "text": "Disc area 4 pi x.",
+     "mathjson": [
+      "Multiply",
+      4,
+      "Pi",
+      "x"
+     ],
+     "relation": "new"
+    },
+    {
+     "step": 2,
+     "text": "Limits 1 and 4.",
+     "mathjson": [
+      "Integrate",
+      [
+       "Multiply",
+       4,
+       "Pi",
+       "x"
+      ],
+      [
+       "Tuple",
+       "x",
+       1,
+       4
+      ]
+     ],
+     "relation": "new"
+    },
+    {
+     "step": 3,
+     "text": "Value.",
+     "mathjson": [
+      "Multiply",
+      30,
+      "Pi"
+     ],
+     "relation": "equivalent"
+    }
+   ],
+   "options": [
+    {
+     "id": "A",
+     "is_key": false,
+     "error_path": "BC-ERR-08024",
+     "value": [
+      "Multiply",
+      24,
+      "Pi"
+     ],
+     "derivation": "the y values 2 and 4 used as the limits"
+    },
+    {
+     "id": "B",
+     "is_key": false,
+     "error_path": "BC-ERR-08036",
+     "value": [
+      "Multiply",
+      [
+       "Rational",
+       28,
+       3
+      ],
+      "Pi"
+     ],
+     "derivation": "pi times 2 sqrt(x), unsquared"
+    },
+    {
+     "id": "C",
+     "is_key": true,
+     "error_path": null,
+     "value": [
+      "Multiply",
+      30,
+      "Pi"
+     ]
+    },
+    {
+     "id": "D",
+     "is_key": false,
+     "error_path": "BC-ERR-08037",
+     "value": 30,
+     "derivation": "pi dropped"
+    }
+   ],
+   "calculator_status": "no_calculator",
+   "representation": "BC-REP-08",
+   "skills": [
+    "BC-SKL-08041"
+   ]
+  }
+ ],
+ "refresher": [
+  "LSN-CON-08017#s2",
+  "LSN-CON-08017#err-BC-ERR-08023",
+  "LSN-CON-08017#err-BC-ERR-08024",
+  "LSN-CON-08017#err-BC-ERR-08036",
+  "LSN-CON-08017#err-BC-ERR-08037",
+  "LSN-CON-08017#s4"
+ ],
+ "provenance": {
+  "author": "tools/lesson_transcribe.py",
+  "prompt_version": "generator/lesson_v1",
+  "design_path": "docs/lessons/unit-08/LSN-CON-08017.md",
+  "signed_off_by": "claude-opus-5-5",
+  "signed_off_at": "2026-09-29",
+  "not_human": true
+ }
+}

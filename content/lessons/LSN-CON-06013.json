@@ -1,0 +1,977 @@
+{
+ "id": "LSN-CON-06013",
+ "version": 1,
+ "kind": "concept",
+ "target_id": "BC-CON-06013",
+ "status": "signed_off",
+ "snapshot_digest": "a6a8ec9d3f59ab8f712e33d30cc22fc64bf2c478fbe7312e3e3118d319c6a42f",
+ "source_digest": "6b68b47c2c5f9bda7cff9993bffe25baa814a1bff366b647ca1241d9bb9c3005",
+ "read_minutes": {
+  "full": 4.0,
+  "brief": 3.0
+ },
+ "word_count": {
+  "full": 561,
+  "brief": 420
+ },
+ "sections": [
+  {
+   "id": "LSN-CON-06013#s1",
+   "type": "orientation",
+   "bands": [
+    "low",
+    "mid"
+   ],
+   "skills": [
+    "BC-SKL-06038"
+   ],
+   "sources": [
+    "BC-CON-06013",
+    "research/units/unit-06-integration-accumulation.md#6.7 The Fundamental Theorem of Calculus and Definite Integrals"
+   ],
+   "evidence_tag": "inferred",
+   "text": "A response writes the integral over the interval divided by the interval's length, evaluates it, and calls the result an average over that interval.",
+   "delivery": {
+    "mode": "text",
+    "reason": "rule 6: BC-REP-01, 05 and 09 on BC-SKL-06038, none figure-bearing",
+    "sources": [
+     "BC-SKL-06038"
+    ]
+   }
+  },
+  {
+   "id": "LSN-CON-06013#s2",
+   "type": "key_ideas",
+   "bands": [
+    "low",
+    "mid"
+   ],
+   "skills": [
+    "BC-SKL-06038"
+   ],
+   "sources": [
+    "BC-EK-FUN-6B3",
+    "ced:124",
+    "research/units/unit-06-integration-accumulation.md#6.7 The Fundamental Theorem of Calculus and Definite Integrals"
+   ],
+   "evidence_tag": "inferred",
+   "ek_id": "BC-EK-FUN-6B3",
+   "depth": "core",
+   "text": "The average value of f on [a, b] is 1/(b - a) times the integral of f from a to b: the accumulated amount spread evenly over the interval's length.",
+   "notation": "1/(b-a) times integral from a to b",
+   "delivery": {
+    "mode": "text",
+    "reason": "rule 6: a formula, BC-REP-01",
+    "sources": [
+     "BC-SKL-06038"
+    ]
+   }
+  },
+  {
+   "id": "LSN-CON-06013#s3",
+   "type": "strategy",
+   "bands": [
+    "low",
+    "mid"
+   ],
+   "skills": [
+    "BC-SKL-06038"
+   ],
+   "sources": [
+    "BC-QA-08001"
+   ],
+   "evidence_tag": "verified",
+   "archetype_id": "BC-QA-08001",
+   "cue": "Average value of a model over a stated interval, setup shown.",
+   "method": "First line: the integral over the interval, divided by its length.",
+   "rival": "Rival: the two endpoint values averaged.",
+   "separating_feature": "Every value on the interval counts, so an integral."
+  },
+  {
+   "id": "LSN-CON-06013#s4",
+   "type": "strategy",
+   "bands": [
+    "low",
+    "mid"
+   ],
+   "skills": [
+    "BC-SKL-06038"
+   ],
+   "sources": [
+    "BC-QA-06015"
+   ],
+   "evidence_tag": "verified",
+   "archetype_id": "BC-QA-06015",
+   "cue": "A displayed integral of a contextual rate; its meaning with units asked.",
+   "method": "First line: what the integrand measures per unit input.",
+   "rival": "Rival: the quantity named without the interval.",
+   "separating_feature": "The limits name the interval; a factor 1/(b - a) makes it an average."
+  },
+  {
+   "id": "LSN-CON-06013#s5",
+   "type": "worked_example",
+   "bands": [
+    "low",
+    "mid"
+   ],
+   "skills": [
+    "BC-SKL-06038"
+   ],
+   "sources": [
+    "BC-QA-08001"
+   ],
+   "evidence_tag": "inferred",
+   "archetype_id": "BC-QA-08001",
+   "parameter_draw": {
+    "amplitude": 4,
+    "shift": 1,
+    "scale": 2,
+    "length": 3,
+    "context": "temperature",
+    "framing": "context"
+   },
+   "problem": {
+    "text": "A temperature is W(t) = 4 cos(t^2/2) + 1 degrees for 0 <= t <= 3 hours. Find its average value, showing the setup.",
+    "command_verb": "find"
+   },
+   "calculator_status": "calculator",
+   "steps": [
+    {
+     "cue": "Average value over [0, 3].",
+     "why": "Integral over the interval, divided by length 3.",
+     "expression": [
+      "Multiply",
+      [
+       "Rational",
+       1,
+       3
+      ],
+      [
+       "Integrate",
+       [
+        "Add",
+        1,
+        [
+         "Multiply",
+         4,
+         [
+          "Cos",
+          [
+           "Multiply",
+           [
+            "Rational",
+            1,
+            2
+           ],
+           [
+            "Power",
+            "t",
+            2
+           ]
+          ]
+         ]
+        ]
+       ],
+       [
+        "Tuple",
+        "t",
+        0,
+        3
+       ]
+      ]
+     ],
+     "point_type_id": "BC-PT-99020",
+     "relation": "new"
+    },
+    {
+     "cue": "Calculator allowed.",
+     "why": "Radian mode, three places.",
+     "expression": 1.769,
+     "point_type_id": "BC-PT-99004",
+     "relation": "evaluate",
+     "subs": {},
+     "approx": true
+    }
+   ],
+   "answer": {
+    "form": "numeric",
+    "mathjson": 1.769
+   },
+   "delivery": {
+    "mode": "step_reveal",
+    "reason": "rule 1",
+    "sources": []
+   }
+  },
+  {
+   "id": "LSN-CON-06013#s6",
+   "type": "what_a_reader_scores",
+   "bands": [
+    "low",
+    "mid"
+   ],
+   "skills": [
+    "BC-SKL-06038"
+   ],
+   "sources": [
+    "BC-PT-99020",
+    "BC-PT-99004"
+   ],
+   "evidence_tag": "verified",
+   "example_id": "LSN-CON-06013#s5",
+   "lines": [
+    {
+     "point_type_id": "BC-PT-99020",
+     "text": "Average value formula. Earned by: The definite integral over the interval together with evidence of division by the interval length; a correct answer alongside a correct integral counts as that evidence (sg-25:3, sg-26:9). Not earned by: An integral with the wrong integrand, such as the derivative in place of the function (crabbc-25:3); a formula divided by the wrong length (sg-22:3). Notation: Differential optional (sg-26:9). The formula may be presented in one step or across several (sg-25:3, sg-22:3)."
+    },
+    {
+     "point_type_id": "BC-PT-99004",
+     "text": "Answer with or without supporting work. Earned by: The correct value on its own, with no supporting work required (sg-25:3, sg-26:4). Not earned by: A value outside the accepted precision, or a value inconsistent with a required earlier step where the rubric imposes one. Precision: A reported decimal answer must be accurate to three places after the decimal point, rounded or truncated; at most one point per question is lost to inappropriate rounding (sg-25:2, sg-26:2). sg-26:4 also accepts a stated rounding to the nearest integer and several truncations."
+    }
+   ]
+  },
+  {
+   "id": "LSN-CON-06013#err-BC-ERR-06016",
+   "type": "common_error",
+   "bands": [
+    "low",
+    "mid"
+   ],
+   "skills": [
+    "BC-SKL-06038"
+   ],
+   "sources": [
+    "BC-ERR-06016",
+    "BC-MIS-06014"
+   ],
+   "evidence_tag": "inferred",
+   "error_id": "BC-ERR-06016",
+   "observed_behavior": "The definite integral is presented as the average value with no division by the length of the interval.",
+   "scoring_consequence": "The average value formula point is lost; a correct integral together with the correct quotient value earns both points even when the linkage is unclear (sg-25:3).",
+   "wrong_step": {
+    "text": "No division.",
+    "expression": [
+     "Integrate",
+     [
+      "Add",
+      1,
+      [
+       "Multiply",
+       4,
+       [
+        "Cos",
+        [
+         "Multiply",
+         [
+          "Rational",
+          1,
+          2
+         ],
+         [
+          "Power",
+          "t",
+          2
+         ]
+        ]
+       ]
+      ]
+     ],
+     [
+      "Tuple",
+      "t",
+      0,
+      3
+     ]
+    ]
+   },
+   "right_step": {
+    "text": "Divided by 3.",
+    "expression": [
+     "Multiply",
+     [
+      "Rational",
+      1,
+      3
+     ],
+     [
+      "Integrate",
+      [
+       "Add",
+       1,
+       [
+        "Multiply",
+        4,
+        [
+         "Cos",
+         [
+          "Multiply",
+          [
+           "Rational",
+           1,
+           2
+          ],
+          [
+           "Power",
+           "t",
+           2
+          ]
+         ]
+        ]
+       ]
+      ],
+      [
+       "Tuple",
+       "t",
+       0,
+       3
+      ]
+     ]
+    ]
+   },
+   "relation": "distinct",
+   "possible_reason": {
+    "misconception_id": "BC-MIS-06014",
+    "text": "does not separate the integral from the integral divided by the interval length"
+   },
+   "delivery": {
+    "mode": "step_reveal",
+    "reason": "rule 1",
+    "sources": []
+   }
+  },
+  {
+   "id": "LSN-CON-06013#err-BC-ERR-06030",
+   "type": "common_error",
+   "bands": [
+    "low",
+    "mid"
+   ],
+   "skills": [
+    "BC-SKL-06038"
+   ],
+   "sources": [
+    "BC-ERR-06030",
+    "BC-MIS-06014"
+   ],
+   "evidence_tag": "inferred",
+   "error_id": "BC-ERR-06030",
+   "observed_behavior": "A displayed average value expression is described as the total amount accumulated over the interval.",
+   "scoring_consequence": "The interpretation point is not earned because the description must say average over the interval (sg-24:3).",
+   "wrong_step": {
+    "text": "Total over 0 to 3 hours.",
+    "expression": [
+     "Integrate",
+     [
+      "Add",
+      1,
+      [
+       "Multiply",
+       4,
+       [
+        "Cos",
+        [
+         "Multiply",
+         [
+          "Rational",
+          1,
+          2
+         ],
+         [
+          "Power",
+          "t",
+          2
+         ]
+        ]
+       ]
+      ]
+     ],
+     [
+      "Tuple",
+      "t",
+      0,
+      3
+     ]
+    ]
+   },
+   "right_step": {
+    "text": "Average degrees over 0 to 3 hours.",
+    "expression": [
+     "Multiply",
+     [
+      "Rational",
+      1,
+      3
+     ],
+     [
+      "Integrate",
+      [
+       "Add",
+       1,
+       [
+        "Multiply",
+        4,
+        [
+         "Cos",
+         [
+          "Multiply",
+          [
+           "Rational",
+           1,
+           2
+          ],
+          [
+           "Power",
+           "t",
+           2
+          ]
+         ]
+        ]
+       ]
+      ],
+      [
+       "Tuple",
+       "t",
+       0,
+       3
+      ]
+     ]
+    ]
+   },
+   "relation": "distinct",
+   "possible_reason": {
+    "misconception_id": "BC-MIS-06014",
+    "text": "the two expressions are described and computed interchangeably"
+   },
+   "delivery": {
+    "mode": "step_reveal",
+    "reason": "rule 1",
+    "sources": []
+   }
+  },
+  {
+   "id": "LSN-CON-06013#err-BC-ERR-99015",
+   "type": "common_error",
+   "bands": [
+    "low",
+    "mid"
+   ],
+   "skills": [
+    "BC-SKL-06038"
+   ],
+   "sources": [
+    "BC-ERR-99015",
+    "BC-MIS-99006"
+   ],
+   "evidence_tag": "inferred",
+   "error_id": "BC-ERR-99015",
+   "observed_behavior": "Responses compute a difference quotient where the average value of a function was asked, or integrate the derivative instead of the function, or divide by the wrong quantity.",
+   "scoring_consequence": "The setup point is not earned and the numerical answer point follows it.",
+   "wrong_step": {
+    "text": "(W(3) - W(0))/3.",
+    "expression": [
+     "Add",
+     [
+      "Rational",
+      -4,
+      3
+     ],
+     [
+      "Multiply",
+      [
+       "Rational",
+       4,
+       3
+      ],
+      [
+       "Cos",
+       [
+        "Rational",
+        9,
+        2
+       ]
+      ]
+     ]
+    ]
+   },
+   "right_step": {
+    "text": "The integral quotient.",
+    "expression": [
+     "Multiply",
+     [
+      "Rational",
+      1,
+      3
+     ],
+     [
+      "Integrate",
+      [
+       "Add",
+       1,
+       [
+        "Multiply",
+        4,
+        [
+         "Cos",
+         [
+          "Multiply",
+          [
+           "Rational",
+           1,
+           2
+          ],
+          [
+           "Power",
+           "t",
+           2
+          ]
+         ]
+        ]
+       ]
+      ],
+      [
+       "Tuple",
+       "t",
+       0,
+       3
+      ]
+     ]
+    ]
+   },
+   "relation": "distinct",
+   "possible_reason": {
+    "misconception_id": "BC-MIS-99006",
+    "text": "a difference quotient is offered for an average value"
+   },
+   "delivery": {
+    "mode": "step_reveal",
+    "reason": "rule 1",
+    "sources": []
+   }
+  },
+  {
+   "id": "LSN-CON-06013#err-BC-ERR-06032",
+   "type": "common_error",
+   "bands": [
+    "low",
+    "mid"
+   ],
+   "skills": [
+    "BC-SKL-06038"
+   ],
+   "sources": [
+    "BC-ERR-06032"
+   ],
+   "evidence_tag": "inferred",
+   "error_id": "BC-ERR-06032",
+   "observed_behavior": "Numerical values of an integral or of a rate involving a trigonometric function are computed in degree mode.",
+   "scoring_consequence": "The first point that the value would otherwise earn is not earned, and the response remains eligible for subsequent points (sg-23:4).",
+   "wrong_step": {
+    "text": "Degree mode.",
+    "expression": [
+     "Multiply",
+     [
+      "Rational",
+      1,
+      3
+     ],
+     [
+      "Integrate",
+      [
+       "Add",
+       1,
+       [
+        "Multiply",
+        4,
+        [
+         "Cos",
+         [
+          "Multiply",
+          [
+           "Rational",
+           1,
+           360
+          ],
+          "Pi",
+          [
+           "Power",
+           "t",
+           2
+          ]
+         ]
+        ]
+       ]
+      ],
+      [
+       "Tuple",
+       "t",
+       0,
+       3
+      ]
+     ]
+    ]
+   },
+   "right_step": {
+    "text": "Radian mode.",
+    "expression": [
+     "Multiply",
+     [
+      "Rational",
+      1,
+      3
+     ],
+     [
+      "Integrate",
+      [
+       "Add",
+       1,
+       [
+        "Multiply",
+        4,
+        [
+         "Cos",
+         [
+          "Multiply",
+          [
+           "Rational",
+           1,
+           2
+          ],
+          [
+           "Power",
+           "t",
+           2
+          ]
+         ]
+        ]
+       ]
+      ],
+      [
+       "Tuple",
+       "t",
+       0,
+       3
+      ]
+     ]
+    ]
+   },
+   "relation": "distinct",
+   "delivery": {
+    "mode": "step_reveal",
+    "reason": "rule 1",
+    "sources": []
+   }
+  }
+ ],
+ "checks": [
+  {
+   "id": "LSN-CON-06013#chk-1",
+   "check_kind": "completion",
+   "bands": [
+    "low",
+    "mid"
+   ],
+   "format": "short_answer",
+   "archetype_id": "BC-QA-08001",
+   "parameter_draw": {
+    "amplitude": 4,
+    "shift": 1,
+    "scale": 2,
+    "length": 3,
+    "context": "temperature",
+    "framing": "context"
+   },
+   "completes": "LSN-CON-06013#s5",
+   "stem": {
+    "text": "Evaluate (1/3) times the integral from 0 to 3 of W(t) dt.",
+    "command_verb": "evaluate"
+   },
+   "answer_key": {
+    "form": "numeric",
+    "mathjson": 1.769
+   },
+   "worked_solution": [
+    {
+     "step": 1,
+     "text": "The quotient.",
+     "mathjson": [
+      "Multiply",
+      [
+       "Rational",
+       1,
+       3
+      ],
+      [
+       "Integrate",
+       [
+        "Add",
+        1,
+        [
+         "Multiply",
+         4,
+         [
+          "Cos",
+          [
+           "Multiply",
+           [
+            "Rational",
+            1,
+            2
+           ],
+           [
+            "Power",
+            "t",
+            2
+           ]
+          ]
+         ]
+        ]
+       ],
+       [
+        "Tuple",
+        "t",
+        0,
+        3
+       ]
+      ]
+     ],
+     "relation": "new"
+    },
+    {
+     "step": 2,
+     "text": "Calculator.",
+     "mathjson": 1.769,
+     "relation": "evaluate",
+     "subs": {},
+     "approx": true
+    }
+   ],
+   "calculator_status": "calculator",
+   "representation": "BC-REP-01",
+   "skills": [
+    "BC-SKL-06038"
+   ]
+  },
+  {
+   "id": "LSN-CON-06013#chk-2",
+   "check_kind": "isomorph",
+   "bands": [
+    "low",
+    "mid"
+   ],
+   "format": "short_answer",
+   "archetype_id": "BC-QA-08001",
+   "parameter_draw": {
+    "amplitude": 3,
+    "shift": -1,
+    "scale": 2,
+    "length": 3.5,
+    "context": "depth",
+    "framing": "bare"
+   },
+   "stem": {
+    "text": "W(t) = 3 cos(t^2/2) - 1. Find its average value on [0, 3.5].",
+    "command_verb": "find"
+   },
+   "answer_key": {
+    "form": "numeric",
+    "mathjson": -0.297
+   },
+   "worked_solution": [
+    {
+     "step": 1,
+     "text": "The quotient.",
+     "mathjson": [
+      "Multiply",
+      [
+       "Rational",
+       2,
+       7
+      ],
+      [
+       "Integrate",
+       [
+        "Add",
+        -1,
+        [
+         "Multiply",
+         3,
+         [
+          "Cos",
+          [
+           "Multiply",
+           [
+            "Rational",
+            1,
+            2
+           ],
+           [
+            "Power",
+            "t",
+            2
+           ]
+          ]
+         ]
+        ]
+       ],
+       [
+        "Tuple",
+        "t",
+        0,
+        [
+         "Rational",
+         7,
+         2
+        ]
+       ]
+      ]
+     ],
+     "relation": "new"
+    },
+    {
+     "step": 2,
+     "text": "Calculator.",
+     "mathjson": -0.297,
+     "relation": "evaluate",
+     "subs": {},
+     "approx": true
+    }
+   ],
+   "calculator_status": "calculator",
+   "representation": "BC-REP-01",
+   "skills": [
+    "BC-SKL-06038"
+   ]
+  },
+  {
+   "id": "LSN-CON-06013#chk-3",
+   "check_kind": "mcq",
+   "bands": [
+    "low"
+   ],
+   "format": "mcq",
+   "archetype_id": "BC-QA-08001",
+   "parameter_draw": {
+    "amplitude": 6,
+    "shift": 2,
+    "scale": 3,
+    "length": 4,
+    "context": "flow",
+    "framing": "bare"
+   },
+   "stem": {
+    "text": "The average value of W(t) = 6 cos(t^2/3) + 2 on [0, 4] is",
+    "command_verb": "identify"
+   },
+   "answer_key": {
+    "form": "numeric",
+    "mathjson": 3.153
+   },
+   "worked_solution": [
+    {
+     "step": 1,
+     "text": "The quotient.",
+     "mathjson": [
+      "Multiply",
+      [
+       "Rational",
+       1,
+       4
+      ],
+      [
+       "Integrate",
+       [
+        "Add",
+        2,
+        [
+         "Multiply",
+         6,
+         [
+          "Cos",
+          [
+           "Multiply",
+           [
+            "Rational",
+            1,
+            3
+           ],
+           [
+            "Power",
+            "t",
+            2
+           ]
+          ]
+         ]
+        ]
+       ],
+       [
+        "Tuple",
+        "t",
+        0,
+        4
+       ]
+      ]
+     ],
+     "relation": "new"
+    },
+    {
+     "step": 2,
+     "text": "Calculator.",
+     "mathjson": 3.153,
+     "relation": "evaluate",
+     "subs": {},
+     "approx": true
+    }
+   ],
+   "options": [
+    {
+     "id": "A",
+     "is_key": false,
+     "error_path": "BC-ERR-99015",
+     "value": -0.627,
+     "derivation": "(W(4) - W(0))/4, a difference quotient"
+    },
+    {
+     "id": "B",
+     "is_key": true,
+     "error_path": null,
+     "value": 3.153
+    },
+    {
+     "id": "C",
+     "is_key": false,
+     "error_path": "BC-ERR-06032",
+     "value": 7.995,
+     "derivation": "the quotient evaluated in degree mode"
+    },
+    {
+     "id": "D",
+     "is_key": false,
+     "error_path": "BC-ERR-06016",
+     "value": 12.61,
+     "derivation": "the integral with no division by 4"
+    }
+   ],
+   "calculator_status": "calculator",
+   "representation": "BC-REP-01",
+   "skills": [
+    "BC-SKL-06038"
+   ]
+  }
+ ],
+ "refresher": [
+  "LSN-CON-06013#s2",
+  "LSN-CON-06013#err-BC-ERR-06016",
+  "LSN-CON-06013#err-BC-ERR-06030",
+  "LSN-CON-06013#err-BC-ERR-99015",
+  "LSN-CON-06013#err-BC-ERR-06032",
+  "LSN-CON-06013#s5"
+ ],
+ "provenance": {
+  "author": "tools/lesson_transcribe.py",
+  "prompt_version": "generator/lesson_v1",
+  "design_path": "docs/lessons/unit-06/LSN-CON-06013.md",
+  "signed_off_by": "claude-opus-5-5",
+  "signed_off_at": "2026-09-29",
+  "not_human": true
+ }
+}

@@ -1,0 +1,135 @@
+{
+ "lesson_id": "LSN-CON-05002",
+ "version": 1,
+ "compared_on": "2026-09-29",
+ "auditor": "claude-opus-5-5",
+ "resolve": {
+  "date": "2026-09-29",
+  "problems": 5,
+  "agreed": 5,
+  "judgments_pending": 0,
+  "all_agree": true,
+  "verdicts": [
+   {
+    "id": "LSN-CON-05002#ex-1",
+    "agree": true,
+    "detail": "judged by claude-opus-5-5: yes by the Extreme Value Theorem: matches",
+    "method": "EVT"
+   },
+   {
+    "id": "LSN-CON-05002#ex-2",
+    "agree": true,
+    "detail": "judged by claude-opus-5-5: no minimum assured, the theorem does not apply: matches",
+    "method": "EVT hypothesis fails"
+   },
+   {
+    "id": "LSN-CON-05002#chk-1",
+    "agree": true,
+    "detail": "judged by claude-opus-5-5: yes by the Extreme Value Theorem: matches",
+    "method": "EVT"
+   },
+   {
+    "id": "LSN-CON-05002#chk-2",
+    "agree": true,
+    "detail": "judged by claude-opus-5-5: yes by the Extreme Value Theorem: matches",
+    "method": "EVT"
+   },
+   {
+    "id": "LSN-CON-05002#chk-3",
+    "agree": true,
+    "detail": "key option C, re-solver C",
+    "method": "open interval, EVT does not apply, a relative min need not be absolute"
+   }
+  ],
+  "answers_file": "docs/lessons/verification/answers/delta-2026-09-29-a.json"
+ },
+ "audit": {
+  "date": "2026-09-29",
+  "auditor": "claude-opus-5-5",
+  "blocks": [
+   {
+    "id": "orientation",
+    "verdict": "ok",
+    "evidence": "Paraphrases BC-CON-05002 description_plain and BC-QA-05010 expected_solution_path; 31 words."
+   },
+   {
+    "id": "ki-1",
+    "verdict": "ok",
+    "evidence": "Quote matches ced:100 FUN-1.C.1 verbatim; existence not location from FUN-1 enduring understanding; 42 words."
+   },
+   {
+    "id": "st-1",
+    "verdict": "ok",
+    "evidence": "Method is expected_solution_path[0], rival is wrong_approaches[0] of BC-QA-05010."
+   },
+   {
+    "id": "ex-1",
+    "verdict": "ok",
+    "evidence": "Differentiable implies continuous on closed [-1, 4], so EVT gives a maximum value; location step matches BC-ERR-05008."
+   },
+   {
+    "id": "ex-2",
+    "verdict": "ok",
+    "evidence": "Jump at x = 2 inside [0, 6] breaks continuity, so EVT does not apply; matches BC-ERR-05007."
+   },
+   {
+    "id": "what_a_reader_scores",
+    "verdict": "ok",
+    "evidence": "Empty; BC-QA-05010 point_types is [] in the bundle."
+   },
+   {
+    "id": "err-BC-ERR-05007",
+    "verdict": "ok",
+    "evidence": "observed_behavior and scoring_consequence verbatim; BC-MIS-05006 paraphrased."
+   },
+   {
+    "id": "err-BC-ERR-05008",
+    "verdict": "ok",
+    "evidence": "observed_behavior and scoring_consequence verbatim; possible_reason null."
+   },
+   {
+    "id": "err-BC-ERR-99008",
+    "verdict": "ok",
+    "evidence": "observed_behavior and scoring_consequence verbatim; BC-MIS-99009 paraphrased."
+   },
+   {
+    "id": "representations",
+    "verdict": "ok",
+    "evidence": "null; figure served on ki-1. Figure values 3 + 2 sin 2 = 4.819 and 1.5 + 2 sin 2 = 3.319 check."
+   },
+   {
+    "id": "bridge-BC-PRQ-05004",
+    "verdict": "ok",
+    "evidence": "Paraphrase of BC-PRQ-05004 open versus closed notation; 13 words."
+   },
+   {
+    "id": "chk-1",
+    "verdict": "ok",
+    "evidence": "Key yes by EVT follows from the given closed interval and continuity."
+   },
+   {
+    "id": "chk-2",
+    "verdict": "ok",
+    "evidence": "h continuous on closed [1, 4]: minimum value attained."
+   },
+   {
+    "id": "chk-3",
+    "verdict": "ok",
+    "evidence": "fixed 2026-09-29: option D relabelled 'Yes, the minimum value is g(0).' with error_path BC-ERR-05008 (the theorem read as naming the minimum value at the relative minimum), replacing BC-ERR-99008 whose continuity label read as the same open interval error as option A; key C unchanged; word_count.full 524."
+   }
+  ],
+  "advice": [
+   "chk-3 option D (yes because g is continuous) is tagged BC-ERR-99008, but on an open interval the failure is the closed interval check, which is BC-ERR-05007; a reader would see D as the same error as A.",
+   "The rival (differentiating to locate) appears in st-1 and ex-1 step 4 but no check asks the student to reject it on a stem that tempts differentiation.",
+   "No official item exists for BC-QA-05010, so recognition rests on the archetype wording alone; the lesson is honest about this.",
+   "Figure on ki-1 suits a comparison (continuous versus jump) and is the right mode."
+  ],
+  "counts": {
+   "ok": 14,
+   "unsourced": 0,
+   "wrong": 0,
+   "over_cap": 0,
+   "lint": 0
+  }
+ }
+}

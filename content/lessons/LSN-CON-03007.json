@@ -1,0 +1,1212 @@
+{
+ "id": "LSN-CON-03007",
+ "version": 1,
+ "kind": "concept",
+ "target_id": "BC-CON-03007",
+ "status": "signed_off",
+ "snapshot_digest": "a6a8ec9d3f59ab8f712e33d30cc22fc64bf2c478fbe7312e3e3118d319c6a42f",
+ "source_digest": "dd6a1d10a38c6a969e91c046efca870a00cb4c6a3e41919eb31463726164a20c",
+ "read_minutes": {
+  "full": 3.91,
+  "brief": 2.8
+ },
+ "word_count": {
+  "full": 518,
+  "brief": 348
+ },
+ "sections": [
+  {
+   "id": "LSN-CON-03007#s1",
+   "type": "orientation",
+   "bands": [
+    "low",
+    "mid"
+   ],
+   "skills": [
+    "BC-SKL-03021",
+    "BC-SKL-03022",
+    "BC-SKL-03023",
+    "BC-SKL-03024",
+    "BC-SKL-03025"
+   ],
+   "sources": [
+    "BC-CON-03007",
+    "research/units/unit-03-differentiation-composite-implicit-inverse.md#3.4 Differentiating Inverse Trigonometric Functions"
+   ],
+   "evidence_tag": "inferred",
+   "text": "A response writes the standard inverse trigonometric formula with the inner expression in place of x, multiplies by the inner derivative, and keeps any product rule around it.",
+   "delivery": {
+    "mode": "text",
+    "reason": "rule 5: the skills carry BC-REP-01 and BC-REP-09, neither figure-bearing",
+    "sources": [
+     "BC-SKL-03021"
+    ]
+   }
+  },
+  {
+   "id": "LSN-CON-03007#s2",
+   "type": "key_ideas",
+   "bands": [
+    "low",
+    "mid"
+   ],
+   "skills": [
+    "BC-SKL-03021",
+    "BC-SKL-03022",
+    "BC-SKL-03023",
+    "BC-SKL-03024",
+    "BC-SKL-03025"
+   ],
+   "sources": [
+    "BC-EK-FUN-3E2",
+    "ced:78",
+    "research/units/unit-03-differentiation-composite-implicit-inverse.md#3.4 Differentiating Inverse Trigonometric Functions"
+   ],
+   "evidence_tag": "inferred",
+   "ek_id": "BC-EK-FUN-3E2",
+   "depth": "core",
+   "text": "arcsin x has derivative 1/sqrt(1 - x^2), arccos x its negative, arctan x has 1/(1 + x^2). With an inner function u, the formula takes u in place of x and gains the factor u'. Each formula comes back from the trigonometric equation, such as tan y = x, differentiated implicitly with a Pythagorean identity.",
+   "notation": "derivative of arctan u equals u prime over one plus u squared",
+   "delivery": {
+    "mode": "text",
+    "reason": "rule 5: three formulas and a chain rule factor, symbolic only",
+    "sources": [
+     "BC-SKL-03021",
+     "BC-SKL-03022"
+    ]
+   }
+  },
+  {
+   "id": "LSN-CON-03007#s3",
+   "type": "strategy",
+   "bands": [
+    "low",
+    "mid"
+   ],
+   "skills": [
+    "BC-SKL-03021",
+    "BC-SKL-03022",
+    "BC-SKL-03024",
+    "BC-SKL-03025"
+   ],
+   "sources": [
+    "BC-QA-03007"
+   ],
+   "evidence_tag": "verified",
+   "archetype_id": "BC-QA-03007",
+   "cue": "arcsin or arctan of an inner expression, often one factor of a product, and a derivative or rate asked.",
+   "method": "First line: the standard formula with the inner expression for x, times its derivative.",
+   "rival": "Rival: the arcsin formula used for arctan (BC-ERR-03017).",
+   "separating_feature": "arctan: u' over 1 + u^2, no radical. arcsin: a root of 1 - u^2."
+  },
+  {
+   "id": "LSN-CON-03007#s4",
+   "type": "strategy",
+   "bands": [
+    "low",
+    "mid"
+   ],
+   "skills": [
+    "BC-SKL-03022",
+    "BC-SKL-03023"
+   ],
+   "sources": [
+    "BC-QA-03010"
+   ],
+   "evidence_tag": "verified",
+   "archetype_id": "BC-QA-03010",
+   "cue": "An identity such as tan(g(x)) = u is supplied and g' is asked for in x.",
+   "method": "First line: differentiate both sides, chain rule on the left.",
+   "rival": "Rival: a remembered formula without the inner factor.",
+   "separating_feature": "The stem supplies the identity, so the derivation is the answer."
+  },
+  {
+   "id": "LSN-CON-03007#s5",
+   "type": "strategy",
+   "bands": [
+    "low",
+    "mid"
+   ],
+   "skills": [
+    "BC-SKL-03021"
+   ],
+   "sources": [
+    "BC-QA-06018"
+   ],
+   "evidence_tag": "verified",
+   "archetype_id": "BC-QA-06018",
+   "cue": "A constant over a quadratic, or over its square root, to be integrated.",
+   "method": "First line: complete the square when the quadratic is expanded.",
+   "rival": "Rival: a logarithm, with the quadratic as u and its derivative absent.",
+   "separating_feature": "The numerator is a constant, so u'/u is not there."
+  },
+  {
+   "id": "LSN-CON-03007#s6",
+   "type": "worked_example",
+   "bands": [
+    "low",
+    "mid"
+   ],
+   "skills": [
+    "BC-SKL-03021",
+    "BC-SKL-03022",
+    "BC-SKL-03024",
+    "BC-SKL-03025"
+   ],
+   "sources": [
+    "BC-QA-03007"
+   ],
+   "evidence_tag": "inferred",
+   "archetype_id": "BC-QA-03007",
+   "parameter_draw": {
+    "family": "arctan",
+    "inner": "linear",
+    "slope": 2,
+    "at": 2,
+    "coefficient": 3,
+    "power": 1,
+    "sign": 1
+   },
+   "problem": {
+    "text": "h(x) = 3x arctan(2x - 3). Find h'(2).",
+    "command_verb": "find"
+   },
+   "calculator_status": "no_calculator",
+   "steps": [
+    {
+     "cue": "Last operation: 3x times arctan(2x - 3), a product.",
+     "why": "Product rule outside; the arctan factor needs its own derivative.",
+     "expression": [
+      "Arctan",
+      [
+       "Add",
+       -3,
+       [
+        "Multiply",
+        2,
+        "x"
+       ]
+      ]
+     ],
+     "relation": "new"
+    },
+    {
+     "cue": "arctan of u, with u = 2x - 3.",
+     "why": "u' over 1 + u^2; u' = 2.",
+     "expression": [
+      "Multiply",
+      2,
+      [
+       "Power",
+       [
+        "Add",
+        1,
+        [
+         "Power",
+         [
+          "Add",
+          -3,
+          [
+           "Multiply",
+           2,
+           "x"
+          ]
+         ],
+         2
+        ]
+       ],
+       -1
+      ]
+     ],
+     "relation": "differentiate",
+     "variable": "x"
+    },
+    {
+     "cue": "Product rule on 3x and the arctan factor.",
+     "why": "Both terms: 3 times arctan, plus 3x times its derivative.",
+     "expression": [
+      "Add",
+      [
+       "Multiply",
+       3,
+       [
+        "Arctan",
+        [
+         "Add",
+         -3,
+         [
+          "Multiply",
+          2,
+          "x"
+         ]
+        ]
+       ]
+      ],
+      [
+       "Multiply",
+       6,
+       "x",
+       [
+        "Power",
+        [
+         "Add",
+         1,
+         [
+          "Power",
+          [
+           "Add",
+           -3,
+           [
+            "Multiply",
+            2,
+            "x"
+           ]
+          ],
+          2
+         ]
+        ],
+        -1
+       ]
+      ]
+     ],
+     "relation": "new"
+    },
+    {
+     "cue": "The stem asks for x = 2, where u = 1.",
+     "why": "arctan(1) = π/4, and 1 + u^2 = 2.",
+     "expression": [
+      "Add",
+      6,
+      [
+       "Multiply",
+       [
+        "Rational",
+        3,
+        4
+       ],
+       "Pi"
+      ]
+     ],
+     "relation": "evaluate",
+     "subs": {
+      "x": "2"
+     }
+    }
+   ],
+   "answer": {
+    "form": "symbolic",
+    "mathjson": [
+     "Add",
+     6,
+     [
+      "Multiply",
+      [
+       "Rational",
+       3,
+       4
+      ],
+      "Pi"
+     ]
+    ]
+   },
+   "delivery": {
+    "mode": "step_reveal",
+    "reason": "rule 1",
+    "sources": []
+   }
+  },
+  {
+   "id": "LSN-CON-03007#err-BC-ERR-03006",
+   "type": "common_error",
+   "bands": [
+    "low",
+    "mid"
+   ],
+   "skills": [
+    "BC-SKL-03025"
+   ],
+   "sources": [
+    "BC-ERR-03006",
+    "BC-MIS-03012"
+   ],
+   "evidence_tag": "inferred",
+   "error_id": "BC-ERR-03006",
+   "observed_behavior": "The composite factor is differentiated correctly but the enclosing product or quotient rule is not applied.",
+   "scoring_consequence": "The derivative is wrong; in the 2025 implicit differentiation task the product rule carries its own scoring point (sg-25:20).",
+   "wrong_step": {
+    "text": "3x times the arctan derivative only.",
+    "expression": [
+     "Multiply",
+     6,
+     "x",
+     [
+      "Power",
+      [
+       "Add",
+       1,
+       [
+        "Power",
+        [
+         "Add",
+         -3,
+         [
+          "Multiply",
+          2,
+          "x"
+         ]
+        ],
+        2
+       ]
+      ],
+      -1
+     ]
+    ]
+   },
+   "right_step": {
+    "text": "Both product rule terms.",
+    "expression": [
+     "Add",
+     [
+      "Multiply",
+      3,
+      [
+       "Arctan",
+       [
+        "Add",
+        -3,
+        [
+         "Multiply",
+         2,
+         "x"
+        ]
+       ]
+      ]
+     ],
+     [
+      "Multiply",
+      6,
+      "x",
+      [
+       "Power",
+       [
+        "Add",
+        1,
+        [
+         "Power",
+         [
+          "Add",
+          -3,
+          [
+           "Multiply",
+           2,
+           "x"
+          ]
+         ],
+         2
+        ]
+       ],
+       -1
+      ]
+     ]
+    ]
+   },
+   "relation": "distinct",
+   "possible_reason": {
+    "misconception_id": "BC-MIS-03012",
+    "text": "selects a rule by the visual pattern of the expression rather than by the operation applied last"
+   },
+   "delivery": {
+    "mode": "step_reveal",
+    "reason": "rule 1",
+    "sources": []
+   }
+  },
+  {
+   "id": "LSN-CON-03007#err-BC-ERR-03018",
+   "type": "common_error",
+   "bands": [
+    "low",
+    "mid"
+   ],
+   "skills": [
+    "BC-SKL-03022",
+    "BC-SKL-03024"
+   ],
+   "sources": [
+    "BC-ERR-03018",
+    "BC-MIS-03001"
+   ],
+   "evidence_tag": "inferred",
+   "error_id": "BC-ERR-03018",
+   "observed_behavior": "The standard formula is written with the variable rather than the inner expression in the denominator, or the inner derivative factor is omitted.",
+   "scoring_consequence": "The derivative is wrong; the missing factor is the chain rule element the formula requires.",
+   "wrong_step": {
+    "text": "The factor 2 dropped.",
+    "expression": [
+     "Add",
+     [
+      "Multiply",
+      3,
+      [
+       "Arctan",
+       [
+        "Add",
+        -3,
+        [
+         "Multiply",
+         2,
+         "x"
+        ]
+       ]
+      ]
+     ],
+     [
+      "Multiply",
+      3,
+      "x",
+      [
+       "Power",
+       [
+        "Add",
+        1,
+        [
+         "Power",
+         [
+          "Add",
+          -3,
+          [
+           "Multiply",
+           2,
+           "x"
+          ]
+         ],
+         2
+        ]
+       ],
+       -1
+      ]
+     ]
+    ]
+   },
+   "right_step": {
+    "text": "Times u' = 2.",
+    "expression": [
+     "Add",
+     [
+      "Multiply",
+      3,
+      [
+       "Arctan",
+       [
+        "Add",
+        -3,
+        [
+         "Multiply",
+         2,
+         "x"
+        ]
+       ]
+      ]
+     ],
+     [
+      "Multiply",
+      6,
+      "x",
+      [
+       "Power",
+       [
+        "Add",
+        1,
+        [
+         "Power",
+         [
+          "Add",
+          -3,
+          [
+           "Multiply",
+           2,
+           "x"
+          ]
+         ],
+         2
+        ]
+       ],
+       -1
+      ]
+     ]
+    ]
+   },
+   "relation": "distinct",
+   "possible_reason": {
+    "misconception_id": "BC-MIS-03001",
+    "text": "whatever sits inside is copied across unchanged"
+   },
+   "delivery": {
+    "mode": "step_reveal",
+    "reason": "rule 1",
+    "sources": []
+   }
+  },
+  {
+   "id": "LSN-CON-03007#err-BC-ERR-03017",
+   "type": "common_error",
+   "bands": [
+    "low",
+    "mid"
+   ],
+   "skills": [
+    "BC-SKL-03021",
+    "BC-SKL-03023"
+   ],
+   "sources": [
+    "BC-ERR-03017",
+    "BC-MIS-03010"
+   ],
+   "evidence_tag": "inferred",
+   "error_id": "BC-ERR-03017",
+   "observed_behavior": "The derivative of the inverse sine is used for the inverse tangent, or a sign or a radical is misplaced in the recalled formula.",
+   "scoring_consequence": "The derivative is wrong from the first line.",
+   "wrong_step": {
+    "text": "A radical misplaced: the arctan form written with a root, 6x over the root of 1 + (2x - 3)^2; at x = 2 it gives 3π/4 + 6√2.",
+    "expression": [
+     "Add",
+     [
+      "Multiply",
+      3,
+      [
+       "Arctan",
+       [
+        "Add",
+        -3,
+        [
+         "Multiply",
+         2,
+         "x"
+        ]
+       ]
+      ]
+     ],
+     [
+      "Multiply",
+      6,
+      "x",
+      [
+       "Power",
+       [
+        "Add",
+        1,
+        [
+         "Power",
+         [
+          "Add",
+          -3,
+          [
+           "Multiply",
+           2,
+           "x"
+          ]
+         ],
+         2
+        ]
+       ],
+       [
+        "Rational",
+        -1,
+        2
+       ]
+      ]
+     ]
+    ]
+   },
+   "right_step": {
+    "text": "The arctan form, no radical; at x = 2 it gives 3π/4 + 6.",
+    "expression": [
+     "Add",
+     [
+      "Multiply",
+      3,
+      [
+       "Arctan",
+       [
+        "Add",
+        -3,
+        [
+         "Multiply",
+         2,
+         "x"
+        ]
+       ]
+      ]
+     ],
+     [
+      "Multiply",
+      6,
+      "x",
+      [
+       "Power",
+       [
+        "Add",
+        1,
+        [
+         "Power",
+         [
+          "Add",
+          -3,
+          [
+           "Multiply",
+           2,
+           "x"
+          ]
+         ],
+         2
+        ]
+       ],
+       -1
+      ]
+     ]
+    ]
+   },
+   "relation": "distinct",
+   "possible_reason": {
+    "misconception_id": "BC-MIS-03010",
+    "text": "selects among them by resemblance"
+   },
+   "delivery": {
+    "mode": "step_reveal",
+    "reason": "rule 1",
+    "sources": []
+   }
+  },
+  {
+   "id": "LSN-CON-03007#prq-BC-PRQ-03004",
+   "type": "prerequisite_bridge",
+   "bands": [
+    "low",
+    "mid"
+   ],
+   "skills": [
+    "BC-SKL-03021",
+    "BC-SKL-03022",
+    "BC-SKL-03023",
+    "BC-SKL-03024",
+    "BC-SKL-03025"
+   ],
+   "sources": [
+    "BC-PRQ-03004"
+   ],
+   "evidence_tag": "inferred",
+   "prerequisite_id": "BC-PRQ-03004",
+   "text": "Exact values such as arctan(1) = π/4 and the Pythagorean identities carry the evaluation and the derivation; without them the derivative cannot be derived or evaluated."
+  },
+  {
+   "id": "LSN-CON-03007#prq-BC-PRQ-03006",
+   "type": "prerequisite_bridge",
+   "bands": [
+    "low",
+    "mid"
+   ],
+   "skills": [
+    "BC-SKL-03024",
+    "BC-SKL-03025"
+   ],
+   "sources": [
+    "BC-PRQ-03006"
+   ],
+   "evidence_tag": "inferred",
+   "prerequisite_id": "BC-PRQ-03006",
+   "text": "A wrong simplification after a correct derivative changes the value reported."
+  }
+ ],
+ "checks": [
+  {
+   "id": "LSN-CON-03007#chk-1",
+   "check_kind": "completion",
+   "bands": [
+    "low",
+    "mid"
+   ],
+   "format": "short_answer",
+   "archetype_id": "BC-QA-03007",
+   "parameter_draw": {
+    "family": "arctan",
+    "inner": "linear",
+    "slope": 2,
+    "at": 2,
+    "coefficient": 3,
+    "power": 1,
+    "sign": 1
+   },
+   "completes": "LSN-CON-03007#s6",
+   "stem": {
+    "text": "h'(x) = 3 arctan(2x - 3) + 6x/(1 + (2x - 3)^2). Find h'(2).",
+    "command_verb": "find"
+   },
+   "answer_key": {
+    "form": "symbolic",
+    "mathjson": [
+     "Add",
+     6,
+     [
+      "Multiply",
+      [
+       "Rational",
+       3,
+       4
+      ],
+      "Pi"
+     ]
+    ]
+   },
+   "worked_solution": [
+    {
+     "step": 1,
+     "text": "The derivative.",
+     "mathjson": [
+      "Add",
+      [
+       "Multiply",
+       3,
+       [
+        "Arctan",
+        [
+         "Add",
+         -3,
+         [
+          "Multiply",
+          2,
+          "x"
+         ]
+        ]
+       ]
+      ],
+      [
+       "Multiply",
+       6,
+       "x",
+       [
+        "Power",
+        [
+         "Add",
+         1,
+         [
+          "Power",
+          [
+           "Add",
+           -3,
+           [
+            "Multiply",
+            2,
+            "x"
+           ]
+          ],
+          2
+         ]
+        ],
+        -1
+       ]
+      ]
+     ],
+     "relation": "new"
+    },
+    {
+     "step": 2,
+     "text": "x = 2.",
+     "mathjson": [
+      "Add",
+      6,
+      [
+       "Multiply",
+       [
+        "Rational",
+        3,
+        4
+       ],
+       "Pi"
+      ]
+     ],
+     "relation": "evaluate",
+     "subs": {
+      "x": "2"
+     }
+    }
+   ],
+   "calculator_status": "no_calculator",
+   "representation": "BC-REP-01",
+   "skills": [
+    "BC-SKL-03024"
+   ]
+  },
+  {
+   "id": "LSN-CON-03007#chk-2",
+   "check_kind": "isomorph",
+   "bands": [
+    "low",
+    "mid"
+   ],
+   "format": "short_answer",
+   "archetype_id": "BC-QA-03007",
+   "parameter_draw": {
+    "family": "arcsin",
+    "inner": "linear",
+    "slope": 3,
+    "at": 1,
+    "coefficient": 2,
+    "power": 1,
+    "sign": 1
+   },
+   "stem": {
+    "text": "h(x) = 2x arcsin(3x - 5/2). Find h'(1).",
+    "command_verb": "find"
+   },
+   "answer_key": {
+    "form": "symbolic",
+    "mathjson": [
+     "Add",
+     [
+      "Multiply",
+      4,
+      [
+       "Power",
+       3,
+       [
+        "Rational",
+        1,
+        2
+       ]
+      ]
+     ],
+     [
+      "Multiply",
+      [
+       "Rational",
+       1,
+       3
+      ],
+      "Pi"
+     ]
+    ]
+   },
+   "worked_solution": [
+    {
+     "step": 1,
+     "text": "h(x).",
+     "mathjson": [
+      "Multiply",
+      2,
+      "x",
+      [
+       "Arcsin",
+       [
+        "Add",
+        [
+         "Rational",
+         -5,
+         2
+        ],
+        [
+         "Multiply",
+         3,
+         "x"
+        ]
+       ]
+      ]
+     ],
+     "relation": "new"
+    },
+    {
+     "step": 2,
+     "text": "Product rule, arcsin of u times u' = 3.",
+     "mathjson": [
+      "Add",
+      [
+       "Multiply",
+       2,
+       [
+        "Arcsin",
+        [
+         "Add",
+         [
+          "Rational",
+          -5,
+          2
+         ],
+         [
+          "Multiply",
+          3,
+          "x"
+         ]
+        ]
+       ]
+      ],
+      [
+       "Multiply",
+       6,
+       "x",
+       [
+        "Power",
+        [
+         "Add",
+         1,
+         [
+          "Multiply",
+          -1,
+          [
+           "Power",
+           [
+            "Add",
+            [
+             "Rational",
+             -5,
+             2
+            ],
+            [
+             "Multiply",
+             3,
+             "x"
+            ]
+           ],
+           2
+          ]
+         ]
+        ],
+        [
+         "Rational",
+         -1,
+         2
+        ]
+       ]
+      ]
+     ],
+     "relation": "differentiate",
+     "variable": "x"
+    },
+    {
+     "step": 3,
+     "text": "x = 1, u = 1/2.",
+     "mathjson": [
+      "Add",
+      [
+       "Multiply",
+       4,
+       [
+        "Power",
+        3,
+        [
+         "Rational",
+         1,
+         2
+        ]
+       ]
+      ],
+      [
+       "Multiply",
+       [
+        "Rational",
+        1,
+        3
+       ],
+       "Pi"
+      ]
+     ],
+     "relation": "evaluate",
+     "subs": {
+      "x": "1"
+     }
+    }
+   ],
+   "calculator_status": "no_calculator",
+   "representation": "BC-REP-01",
+   "skills": [
+    "BC-SKL-03022",
+    "BC-SKL-03025"
+   ]
+  },
+  {
+   "id": "LSN-CON-03007#chk-3",
+   "check_kind": "mcq",
+   "bands": [
+    "low"
+   ],
+   "format": "mcq",
+   "archetype_id": "BC-QA-03007",
+   "parameter_draw": {
+    "family": "arctan",
+    "inner": "linear",
+    "slope": 3,
+    "at": -2,
+    "coefficient": 1,
+    "power": 2,
+    "sign": -1
+   },
+   "stem": {
+    "text": "h(x) = x^2 arctan(3x + 5). What is h'(-2)?",
+    "command_verb": "identify"
+   },
+   "answer_key": {
+    "form": "symbolic",
+    "mathjson": [
+     "Add",
+     6,
+     "Pi"
+    ]
+   },
+   "worked_solution": [
+    {
+     "step": 1,
+     "text": "h(x).",
+     "mathjson": [
+      "Multiply",
+      [
+       "Power",
+       "x",
+       2
+      ],
+      [
+       "Arctan",
+       [
+        "Add",
+        5,
+        [
+         "Multiply",
+         3,
+         "x"
+        ]
+       ]
+      ]
+     ],
+     "relation": "new"
+    },
+    {
+     "step": 2,
+     "text": "Product rule, arctan of u times u' = 3.",
+     "mathjson": [
+      "Add",
+      [
+       "Multiply",
+       2,
+       "x",
+       [
+        "Arctan",
+        [
+         "Add",
+         5,
+         [
+          "Multiply",
+          3,
+          "x"
+         ]
+        ]
+       ]
+      ],
+      [
+       "Multiply",
+       3,
+       [
+        "Power",
+        "x",
+        2
+       ],
+       [
+        "Power",
+        [
+         "Add",
+         1,
+         [
+          "Power",
+          [
+           "Add",
+           5,
+           [
+            "Multiply",
+            3,
+            "x"
+           ]
+          ],
+          2
+         ]
+        ],
+        -1
+       ]
+      ]
+     ],
+     "relation": "differentiate",
+     "variable": "x"
+    },
+    {
+     "step": 3,
+     "text": "x = -2, u = -1.",
+     "mathjson": [
+      "Add",
+      6,
+      "Pi"
+     ],
+     "relation": "evaluate",
+     "subs": {
+      "x": "-2"
+     }
+    }
+   ],
+   "options": [
+    {
+     "id": "A",
+     "is_key": true,
+     "error_path": null,
+     "value": [
+      "Add",
+      6,
+      "Pi"
+     ]
+    },
+    {
+     "id": "B",
+     "is_key": false,
+     "error_path": "BC-ERR-03006",
+     "value": 6,
+     "derivation": "product rule dropped: x^2 times 3/(1 + u^2) only"
+    },
+    {
+     "id": "C",
+     "is_key": false,
+     "error_path": "BC-ERR-03018",
+     "value": [
+      "Add",
+      2,
+      "Pi"
+     ],
+     "derivation": "inner factor 3 dropped"
+    },
+    {
+     "id": "D",
+     "is_key": false,
+     "error_path": "BC-ERR-03017",
+     "value": [
+      "Add",
+      -6,
+      "Pi"
+     ],
+     "derivation": "sign misplaced in the recalled arctan formula"
+    }
+   ],
+   "calculator_status": "no_calculator",
+   "representation": "BC-REP-01",
+   "skills": [
+    "BC-SKL-03025"
+   ]
+  }
+ ],
+ "refresher": [
+  "LSN-CON-03007#s2",
+  "LSN-CON-03007#err-BC-ERR-03006",
+  "LSN-CON-03007#err-BC-ERR-03018",
+  "LSN-CON-03007#err-BC-ERR-03017",
+  "LSN-CON-03007#s6"
+ ],
+ "provenance": {
+  "author": "tools/lesson_transcribe.py",
+  "prompt_version": "generator/lesson_v1",
+  "design_path": "docs/lessons/unit-03/LSN-CON-03007.md",
+  "signed_off_by": "claude-opus-5-5",
+  "signed_off_at": "2026-09-29",
+  "not_human": true
+ }
+}

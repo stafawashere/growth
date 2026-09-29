@@ -1,0 +1,774 @@
+{
+ "id": "LSN-CON-01004",
+ "version": 1,
+ "kind": "concept",
+ "target_id": "BC-CON-01004",
+ "status": "signed_off",
+ "snapshot_digest": "a6a8ec9d3f59ab8f712e33d30cc22fc64bf2c478fbe7312e3e3118d319c6a42f",
+ "source_digest": "cc4a6b059eedb7ee673e158b9e6955b84c99858c2c04dce8a23d9b38f3495b40",
+ "read_minutes": {
+  "full": 4.1,
+  "brief": 2.95
+ },
+ "word_count": {
+  "full": 512,
+  "brief": 342
+ },
+ "sections": [
+  {
+   "id": "LSN-CON-01004#s1",
+   "type": "orientation",
+   "bands": [
+    "low",
+    "mid"
+   ],
+   "skills": [
+    "BC-SKL-01010",
+    "BC-SKL-01016",
+    "BC-SKL-01023"
+   ],
+   "sources": [
+    "BC-CON-01004",
+    "research/units/unit-01-limits-continuity.md#1.3 Estimating Limit Values from Graphs",
+    "research/units/unit-01-limits-continuity.md#1.5 Determining Limits Using Algebraic Properties of Limits"
+   ],
+   "evidence_tag": "inferred",
+   "text": "A response finds the limit from the left and the limit from the right separately, then reports a two sided limit only when the two agree. Stems give a piecewise rule, a graph or a table, often at a boundary where the rule changes.",
+   "delivery": {
+    "mode": "figure",
+    "reason": "rule 3: BC-REP-02 on BC-SKL-01010 and BC-SKL-01023; unit README delivery map",
+    "sources": [
+     "BC-SKL-01010",
+     "BC-SKL-01023"
+    ],
+    "spec": {
+     "kind": "graph",
+     "window": {
+      "x": [
+       -1,
+       3
+      ],
+      "y": [
+       -1,
+       6
+      ]
+     },
+     "curves": [
+      {
+       "expr": "2*x + 1",
+       "domain": [
+        -1,
+        1
+       ]
+      },
+      {
+       "expr": "5 - x",
+       "domain": [
+        1,
+        3
+       ]
+      }
+     ],
+     "points": [
+      {
+       "at": [
+        1,
+        3
+       ],
+       "style": "open"
+      },
+      {
+       "at": [
+        1,
+        4
+       ],
+       "style": "filled"
+      }
+     ],
+     "labels": [
+      {
+       "text": "from the left: 3",
+       "placement": "inside"
+      },
+      {
+       "text": "from the right: 4",
+       "placement": "inside"
+      }
+     ]
+    },
+    "fallback": "the same graph static with both labels",
+    "keyboard": "no control; the figure description is reached with Tab"
+   }
+  },
+  {
+   "id": "LSN-CON-01004#s2",
+   "type": "key_ideas",
+   "bands": [
+    "low",
+    "mid"
+   ],
+   "skills": [
+    "BC-SKL-01010",
+    "BC-SKL-01016"
+   ],
+   "sources": [
+    "BC-EK-LIM-1C1",
+    "ced:40",
+    "research/units/unit-01-limits-continuity.md#1.3 Estimating Limit Values from Graphs"
+   ],
+   "evidence_tag": "inferred",
+   "ek_id": "BC-EK-LIM-1C1",
+   "depth": "core",
+   "text": "A limit can be taken from one side only (BC-EK-LIM-1C1, ced:40). The two sided limit exists exactly when both one sided limits exist and agree; different values mean it does not exist.",
+   "notation": "left hand limit; right hand limit",
+   "delivery": {
+    "mode": "interactive",
+    "reason": "rule 3 promoted: BC-QA-01001 and BC-QA-01006 difficulty_variables vary whether the one sided limits agree, and the stem asks for that reading",
+    "sources": [
+     "BC-SKL-01010",
+     "BC-QA-01001",
+     "BC-QA-01006"
+    ],
+    "spec": {
+     "kind": "graph",
+     "curves": [
+      {
+       "expr": "2*x + 1",
+       "domain": [
+        -1,
+        1
+       ]
+      },
+      {
+       "expr": "5 - x",
+       "domain": [
+        1,
+        3
+       ]
+      }
+     ],
+     "points": [
+      {
+       "at": [
+        1,
+        3
+       ],
+       "style": "open"
+      },
+      {
+       "at": [
+        1,
+        4
+       ],
+       "style": "filled"
+      }
+     ],
+     "controls": [
+      {
+       "type": "slider",
+       "name": "x",
+       "domain": [
+        -1,
+        3
+       ],
+       "step": 0.05,
+       "exclude": [
+        1
+       ],
+       "readout": "f(x)"
+      }
+     ],
+     "question": "As x reaches 1 from each side, do the two heights agree?",
+     "labels": [
+      {
+       "text": "moving point (x, f(x))",
+       "placement": "inside"
+      },
+      {
+       "text": "x = 1",
+       "placement": "inside"
+      }
+     ]
+    },
+    "fallback": "two static frames, the point at x = 0.95 (height 2.9) and at x = 1.05 (height 3.95), with the question below",
+    "keyboard": "Left and Right arrow keys move the point by 0.05; Home and End jump to the window edges"
+   }
+  },
+  {
+   "id": "LSN-CON-01004#s3",
+   "type": "key_ideas",
+   "bands": [
+    "low"
+   ],
+   "skills": [
+    "BC-SKL-01023"
+   ],
+   "sources": [
+    "BC-EK-LIM-1D1",
+    "ced:42"
+   ],
+   "evidence_tag": "verified",
+   "ek_id": "BC-EK-LIM-1D1",
+   "depth": "extended",
+   "text": "On a piecewise rule, each side of a boundary takes the branch whose condition holds on that side (BC-EK-LIM-1D1, ced:42).",
+   "quote": {
+    "text": "One sided limits can be determined analytically or graphically.",
+    "source": "ced:42"
+   },
+   "delivery": {
+    "mode": "figure",
+    "reason": "rule 3: BC-REP-02 on BC-SKL-01023",
+    "sources": [
+     "BC-SKL-01023"
+    ],
+    "spec": {
+     "kind": "graph",
+     "curves": [
+      {
+       "expr": "2*x + 1",
+       "domain": [
+        -1,
+        1
+       ]
+      },
+      {
+       "expr": "5 - x",
+       "domain": [
+        1,
+        3
+       ]
+      }
+     ],
+     "labels": [
+      {
+       "text": "x < 1: 2x + 1",
+       "placement": "inside"
+      },
+      {
+       "text": "x ≥ 1: 5 - x",
+       "placement": "inside"
+      }
+     ]
+    },
+    "fallback": "the static graph with both condition labels",
+    "keyboard": "no control"
+   }
+  },
+  {
+   "id": "LSN-CON-01004#s4",
+   "type": "key_ideas",
+   "bands": [
+    "low"
+   ],
+   "skills": [
+    "BC-SKL-01010"
+   ],
+   "sources": [
+    "BC-EK-LIM-1C2",
+    "ced:40"
+   ],
+   "evidence_tag": "verified",
+   "ek_id": "BC-EK-LIM-1C2",
+   "depth": "extended",
+   "text": "On a graph, each side is read as the height approached from that side (BC-EK-LIM-1C2, ced:40).",
+   "quote": {
+    "text": "Graphical information about a function can be used to estimate limits.",
+    "source": "ced:40"
+   },
+   "delivery": {
+    "mode": "figure",
+    "reason": "rule 3: BC-REP-02 on BC-SKL-01010",
+    "sources": [
+     "BC-SKL-01010"
+    ],
+    "spec": {
+     "kind": "graph",
+     "curves": [
+      {
+       "expr": "2*x + 1",
+       "domain": [
+        -1,
+        1
+       ]
+      },
+      {
+       "expr": "5 - x",
+       "domain": [
+        1,
+        3
+       ]
+      }
+     ],
+     "arrows": [
+      {
+       "along": "left branch",
+       "toward": [
+        1,
+        3
+       ]
+      },
+      {
+       "along": "right branch",
+       "toward": [
+        1,
+        4
+       ]
+      }
+     ],
+     "labels": [
+      {
+       "text": "left height 3",
+       "placement": "inside"
+      },
+      {
+       "text": "right height 4",
+       "placement": "inside"
+      }
+     ]
+    },
+    "fallback": "the static graph with both arrows and labels",
+    "keyboard": "no control"
+   }
+  },
+  {
+   "id": "LSN-CON-01004#s5",
+   "type": "key_ideas",
+   "bands": [
+    "low"
+   ],
+   "skills": [
+    "BC-SKL-01016"
+   ],
+   "sources": [
+    "BC-EK-LIM-1C5",
+    "ced:41",
+    "research/units/unit-01-limits-continuity.md#1.4 Estimating Limit Values from Tables"
+   ],
+   "evidence_tag": "verified",
+   "ek_id": "BC-EK-LIM-1C5",
+   "depth": "extended",
+   "text": "In a table, the rows on one side support that side's estimate only (BC-EK-LIM-1C5, ced:41).",
+   "quote": {
+    "text": "Numerical information can be used to estimate limits.",
+    "source": "ced:41"
+   },
+   "delivery": {
+    "mode": "table",
+    "reason": "rule 4: BC-REP-03 on BC-SKL-01016",
+    "sources": [
+     "BC-SKL-01016"
+    ],
+    "spec": {
+     "kind": "table",
+     "columns": [
+      "x",
+      "f(x)"
+     ],
+     "rows": [
+      [
+       "1.1",
+       "3.9"
+      ],
+      [
+       "1.01",
+       "3.99"
+      ],
+      [
+       "1.001",
+       "3.999"
+      ]
+     ],
+     "labels": [
+      {
+       "text": "rows from the right only: right hand estimate 4",
+       "placement": "inside"
+      }
+     ]
+    },
+    "fallback": "the three rows as static text",
+    "keyboard": "no control; cells reached in reading order with Tab"
+   }
+  },
+  {
+   "id": "LSN-CON-01004#s6",
+   "type": "strategy",
+   "bands": [
+    "low",
+    "mid"
+   ],
+   "skills": [
+    "BC-SKL-01023"
+   ],
+   "sources": [
+    "BC-QA-01006"
+   ],
+   "evidence_tag": "inferred",
+   "archetype_id": "BC-QA-01006",
+   "cue": "A piecewise rule with a named boundary, and a question about the limit or continuity there.",
+   "method": "First line: f at the boundary, then each one sided limit from its own branch.",
+   "rival": "Evaluating the branch that does not apply on that side (BC-ERR-01017).",
+   "separating_feature": "Each side takes the branch whose condition holds there."
+  },
+  {
+   "id": "LSN-CON-01004#s7",
+   "type": "strategy",
+   "bands": [
+    "low",
+    "mid"
+   ],
+   "skills": [
+    "BC-SKL-01010"
+   ],
+   "sources": [
+    "BC-QA-01001"
+   ],
+   "evidence_tag": "verified",
+   "archetype_id": "BC-QA-01001",
+   "cue": "A graph with a break, and one sided or two sided limits asked at a named input.",
+   "method": "First line: locate the input, then read the left and right heights.",
+   "rival": "One side reported as the two sided limit (BC-ERR-01002).",
+   "separating_feature": "A two sided answer needs both sides read and compared."
+  },
+  {
+   "id": "LSN-CON-01004#s8",
+   "type": "strategy",
+   "bands": [
+    "low",
+    "mid"
+   ],
+   "skills": [
+    "BC-SKL-01016"
+   ],
+   "sources": [
+    "BC-QA-01002"
+   ],
+   "evidence_tag": "verified",
+   "archetype_id": "BC-QA-01002",
+   "cue": "A table approaching the target from both sides, and a one sided or two sided estimate asked.",
+   "method": "First line: identify the rows approaching from the left.",
+   "rival": "One side's rows reported as the limit (BC-ERR-01002).",
+   "separating_feature": "A one sided estimate uses only that side's rows."
+  },
+  {
+   "id": "LSN-CON-01004#s9",
+   "type": "worked_example",
+   "bands": [
+    "low",
+    "mid"
+   ],
+   "skills": [
+    "BC-SKL-01023"
+   ],
+   "sources": [
+    "BC-QA-01006"
+   ],
+   "evidence_tag": "inferred",
+   "archetype_id": "BC-QA-01006",
+   "parameter_draw": {
+    "boundary": 1,
+    "left_limit": 3,
+    "right_limit": 4,
+    "point_value": 4,
+    "left_slope": 2,
+    "right_slope": -1,
+    "closed_side": "right",
+    "break_kind": "jump"
+   },
+   "problem": {
+    "text": "Let f(x) = 2x + 1 for x < 1 and f(x) = 5 - x for x ≥ 1. Find both one sided limits of f at x = 1. Does the limit at x = 1 exist?",
+    "command_verb": "find"
+   },
+   "calculator_status": "no_calculator",
+   "steps": [
+    {
+     "cue": "Left of 1 the condition x < 1 holds.",
+     "why": "So the left side uses 2x + 1.",
+     "expression": [
+      "Add",
+      1,
+      [
+       "Multiply",
+       2,
+       "x"
+      ]
+     ],
+     "relation": "new"
+    },
+    {
+     "cue": "Approach 1 from the left.",
+     "why": "2x + 1 heads to 3.",
+     "expression": 3,
+     "relation": "limit",
+     "variable": "x",
+     "point": "1",
+     "dir": "-"
+    },
+    {
+     "cue": "Right of 1 the condition x ≥ 1 holds.",
+     "why": "So the right side uses 5 - x.",
+     "expression": [
+      "Add",
+      5,
+      [
+       "Multiply",
+       -1,
+       "x"
+      ]
+     ],
+     "relation": "new"
+    },
+    {
+     "cue": "Approach 1 from the right.",
+     "why": "5 - x heads to 4.",
+     "expression": 4,
+     "relation": "limit",
+     "variable": "x",
+     "point": "1",
+     "dir": "+"
+    },
+    {
+     "cue": "The stem asks about existence: compare.",
+     "why": "3 and 4 differ, so the limit does not exist."
+    }
+   ],
+   "answer": {
+    "form": "statement",
+    "mathjson": "DNE",
+    "text": "The left hand limit is 3, the right hand limit is 4, so the limit of f at x = 1 does not exist."
+   },
+   "delivery": {
+    "mode": "step_reveal",
+    "reason": "rule 1",
+    "sources": []
+   }
+  },
+  {
+   "id": "LSN-CON-01004#err-BC-ERR-01002",
+   "type": "common_error",
+   "bands": [
+    "low",
+    "mid"
+   ],
+   "skills": [
+    "BC-SKL-01010",
+    "BC-SKL-01016"
+   ],
+   "sources": [
+    "BC-ERR-01002",
+    "BC-MIS-01002"
+   ],
+   "evidence_tag": "inferred",
+   "error_id": "BC-ERR-01002",
+   "observed_behavior": "The response reports the value approached from one side as the limit although the two sides differ.",
+   "scoring_consequence": "The value point is lost because the correct response is that the limit does not exist.",
+   "wrong_step": {
+    "text": "The left value 3 reported as the limit.",
+    "expression": 3
+   },
+   "right_step": {
+    "text": "Sides 3 and 4 differ: no limit.",
+    "expression": "DNE"
+   },
+   "relation": "distinct",
+   "possible_reason": {
+    "misconception_id": "BC-MIS-01002",
+    "text": "a single one sided approach as sufficient"
+   },
+   "delivery": {
+    "mode": "step_reveal",
+    "reason": "rule 1",
+    "sources": []
+   }
+  },
+  {
+   "id": "LSN-CON-01004#err-BC-ERR-01017",
+   "type": "common_error",
+   "bands": [
+    "low",
+    "mid"
+   ],
+   "skills": [
+    "BC-SKL-01023"
+   ],
+   "sources": [
+    "BC-ERR-01017"
+   ],
+   "evidence_tag": "inferred",
+   "error_id": "BC-ERR-01017",
+   "observed_behavior": "The response substitutes the boundary input into the branch that does not apply on that side.",
+   "scoring_consequence": "The one sided limit is wrong and every point depending on it is lost.",
+   "wrong_step": {
+    "text": "Right hand limit from 2x + 1: 3.",
+    "expression": 3
+   },
+   "right_step": {
+    "text": "From 5 - x: 4.",
+    "expression": 4
+   },
+   "relation": "distinct",
+   "delivery": {
+    "mode": "step_reveal",
+    "reason": "rule 1",
+    "sources": []
+   }
+  },
+  {
+   "id": "LSN-CON-01004#prq-BC-PRQ-01003",
+   "type": "prerequisite_bridge",
+   "bands": [
+    "low",
+    "mid"
+   ],
+   "skills": [
+    "BC-SKL-01023"
+   ],
+   "sources": [
+    "BC-PRQ-01003"
+   ],
+   "evidence_tag": "inferred",
+   "prerequisite_id": "BC-PRQ-01003",
+   "text": "A piecewise rule is read by choosing the branch whose condition holds for the input. The failure: the wrong branch at a boundary."
+  },
+  {
+   "id": "LSN-CON-01004#prq-BC-PRQ-06005",
+   "type": "prerequisite_bridge",
+   "bands": [
+    "low",
+    "mid"
+   ],
+   "skills": [
+    "BC-SKL-01010",
+    "BC-SKL-01016"
+   ],
+   "sources": [
+    "BC-PRQ-06005"
+   ],
+   "evidence_tag": "inferred",
+   "prerequisite_id": "BC-PRQ-06005",
+   "text": "Reading f at a stated input from a graph or table. The failure: a value read at the wrong input."
+  }
+ ],
+ "checks": [
+  {
+   "id": "LSN-CON-01004#chk-1",
+   "check_kind": "completion",
+   "bands": [
+    "low",
+    "mid"
+   ],
+   "format": "short_answer",
+   "archetype_id": "BC-QA-01006",
+   "parameter_draw": {
+    "boundary": 1,
+    "left_limit": 3,
+    "right_limit": 4,
+    "point_value": 4,
+    "left_slope": 2,
+    "right_slope": -1,
+    "closed_side": "right",
+    "break_kind": "jump"
+   },
+   "completes": "LSN-CON-01004#s9",
+   "stem": {
+    "text": "For ex-1's f, the one sided limits at x = 1 are 3 and 4. State the limit of f at x = 1.",
+    "command_verb": "state"
+   },
+   "answer_key": {
+    "form": "statement",
+    "mathjson": "DNE",
+    "text": "The limit does not exist."
+   },
+   "worked_solution": [
+    {
+     "step": 1,
+     "text": "Left 3.",
+     "mathjson": 3,
+     "relation": "new"
+    },
+    {
+     "step": 2,
+     "text": "Right 4, which differs.",
+     "mathjson": 4,
+     "relation": "new"
+    }
+   ],
+   "calculator_status": "no_calculator",
+   "representation": "BC-REP-01",
+   "skills": [
+    "BC-SKL-01023"
+   ]
+  },
+  {
+   "id": "LSN-CON-01004#chk-2",
+   "check_kind": "isomorph",
+   "bands": [
+    "low",
+    "mid"
+   ],
+   "format": "short_answer",
+   "archetype_id": "BC-QA-01006",
+   "parameter_draw": {
+    "boundary": 2,
+    "left_limit": -1,
+    "right_limit": 3,
+    "point_value": -1,
+    "left_slope": 3,
+    "right_slope": -2,
+    "closed_side": "left",
+    "break_kind": "jump"
+   },
+   "stem": {
+    "text": "Let f(x) = 3x - 7 for x ≤ 2 and f(x) = -2x + 7 for x > 2. Find the right hand limit of f at x = 2.",
+    "command_verb": "find"
+   },
+   "answer_key": {
+    "form": "numeric",
+    "mathjson": 3
+   },
+   "worked_solution": [
+    {
+     "step": 1,
+     "text": "Right of 2 the branch is -2x + 7.",
+     "mathjson": [
+      "Add",
+      7,
+      [
+       "Multiply",
+       -2,
+       "x"
+      ]
+     ],
+     "relation": "new"
+    },
+    {
+     "step": 2,
+     "text": "It heads to 3.",
+     "mathjson": 3,
+     "relation": "limit",
+     "variable": "x",
+     "point": "2",
+     "dir": "+"
+    }
+   ],
+   "calculator_status": "no_calculator",
+   "representation": "BC-REP-01",
+   "skills": [
+    "BC-SKL-01023"
+   ]
+  }
+ ],
+ "refresher": [
+  "LSN-CON-01004#s2",
+  "LSN-CON-01004#err-BC-ERR-01002",
+  "LSN-CON-01004#err-BC-ERR-01017",
+  "LSN-CON-01004#s9"
+ ],
+ "provenance": {
+  "author": "tools/lesson_transcribe.py",
+  "prompt_version": "generator/lesson_v1",
+  "design_path": "docs/lessons/unit-01/LSN-CON-01004.md",
+  "signed_off_by": "claude-opus-5-5",
+  "signed_off_at": "2026-09-29",
+  "not_human": true
+ }
+}

@@ -1,0 +1,743 @@
+{
+ "id": "LSN-CON-03004",
+ "version": 1,
+ "kind": "concept",
+ "target_id": "BC-CON-03004",
+ "status": "signed_off",
+ "snapshot_digest": "a6a8ec9d3f59ab8f712e33d30cc22fc64bf2c478fbe7312e3e3118d319c6a42f",
+ "source_digest": "891ab4888ff0a8c97e1d9bc8f9380c648747e16144606093f9b2d23651cfc175",
+ "read_minutes": {
+  "full": 2.8,
+  "brief": 2.8
+ },
+ "word_count": {
+  "full": 335,
+  "brief": 335
+ },
+ "sections": [
+  {
+   "id": "LSN-CON-03004#s1",
+   "type": "orientation",
+   "bands": [
+    "low",
+    "mid"
+   ],
+   "skills": [
+    "BC-SKL-03010",
+    "BC-SKL-03011",
+    "BC-SKL-03014"
+   ],
+   "sources": [
+    "BC-CON-03004",
+    "research/units/unit-03-differentiation-composite-implicit-inverse.md#3.2 Implicit Differentiation"
+   ],
+   "evidence_tag": "inferred",
+   "text": "After both sides are differentiated, a response collects the dy/dx terms, factors dy/dx out and divides; a slope at a point needs both coordinates. Stems ask to find dy/dx, to show that it equals a stated expression, or for a slope.",
+   "delivery": {
+    "mode": "text",
+    "reason": "rule 5: BC-REP-01 only on the skills",
+    "sources": [
+     "BC-SKL-03010"
+    ]
+   }
+  },
+  {
+   "id": "LSN-CON-03004#s2",
+   "type": "key_ideas",
+   "bands": [
+    "low",
+    "mid"
+   ],
+   "skills": [
+    "BC-SKL-03010",
+    "BC-SKL-03011",
+    "BC-SKL-03014"
+   ],
+   "sources": [
+    "BC-EK-FUN-3D1",
+    "ced:76",
+    "research/units/unit-03-differentiation-composite-implicit-inverse.md#3.2 Implicit Differentiation"
+   ],
+   "evidence_tag": "verified",
+   "ek_id": "BC-EK-FUN-3D1",
+   "depth": "core",
+   "text": "Implicit differentiation gives an equation linear in dy/dx. Collect every dy/dx term on one side and everything else on the other, factor dy/dx out, then divide by its bracket. The result is a quotient in x and y, so a slope at a point takes both coordinates. Verifying a stated dy/dx means deriving it.",
+   "notation": "dy/dx expressed as a quotient in x and y",
+   "quote": {
+    "text": "The chain rule is the basis for implicit differentiation.",
+    "source": "ced:76"
+   },
+   "delivery": {
+    "mode": "text",
+    "reason": "rule 5: an algebraic procedure with no figure-bearing BC-REP",
+    "sources": [
+     "BC-SKL-03010",
+     "BC-SKL-03011",
+     "BC-SKL-03014"
+    ]
+   }
+  },
+  {
+   "id": "LSN-CON-03004#s3",
+   "type": "strategy",
+   "bands": [
+    "low",
+    "mid"
+   ],
+   "skills": [
+    "BC-SKL-03010",
+    "BC-SKL-03011",
+    "BC-SKL-03014"
+   ],
+   "sources": [
+    "BC-QA-03004"
+   ],
+   "evidence_tag": "verified",
+   "archetype_id": "BC-QA-03004",
+   "cue": "Asked for dy/dx, a verification of a stated dy/dx, or a slope, from an equation in x and y.",
+   "method": "First written line: differentiate every term of both sides with respect to x.",
+   "rival": "Rival: differentiating one side and dropping the right side (BC-ERR-03009).",
+   "separating_feature": "The line is an equation: collect the dy/dx terms, then divide."
+  },
+  {
+   "id": "LSN-CON-03004#s4",
+   "type": "worked_example",
+   "bands": [
+    "low",
+    "mid"
+   ],
+   "skills": [
+    "BC-SKL-03010",
+    "BC-SKL-03011",
+    "BC-SKL-03014"
+   ],
+   "sources": [
+    "BC-QA-03004"
+   ],
+   "evidence_tag": "inferred",
+   "archetype_id": "BC-QA-03004",
+   "parameter_draw": {
+    "mixed": -1,
+    "y_coefficient": 1,
+    "right_slope": 2,
+    "x_at": 2,
+    "y_at": 1,
+    "y_power": 3
+   },
+   "problem": {
+    "text": "For x^2 - xy + y^3 = 2x - 1, show that dy/dx = (2 - 2x + y)/(3y^2 - x). Find dy/dx at (2, 1).",
+    "command_verb": "show"
+   },
+   "calculator_status": "no_calculator",
+   "steps": [
+    {
+     "cue": "Show that: dy/dx is derived, not assumed.",
+     "why": "-xy takes the product rule; y^3 gives 3y^2 dy/dx.",
+     "expression": [
+      "Equal",
+      [
+       "Add",
+       [
+        "Multiply",
+        -1,
+        "y"
+       ],
+       [
+        "Multiply",
+        2,
+        "x"
+       ],
+       [
+        "Multiply",
+        -1,
+        "dydx",
+        "x"
+       ],
+       [
+        "Multiply",
+        3,
+        "dydx",
+        [
+         "Power",
+         "y",
+         2
+        ]
+       ]
+      ],
+      2
+     ],
+     "relation": "new"
+    },
+    {
+     "cue": "dy/dx sits in two terms.",
+     "why": "Collect them before dividing, then factor.",
+     "expression": [
+      "Equal",
+      [
+       "Multiply",
+       "dydx",
+       [
+        "Add",
+        [
+         "Multiply",
+         -1,
+         "x"
+        ],
+        [
+         "Multiply",
+         3,
+         [
+          "Power",
+          "y",
+          2
+         ]
+        ]
+       ]
+      ],
+      [
+       "Add",
+       2,
+       "y",
+       [
+        "Multiply",
+        -2,
+        "x"
+       ]
+      ]
+     ],
+     "relation": "equivalent"
+    },
+    {
+     "cue": "One bracket multiplies dy/dx.",
+     "why": "Dividing gives the stated expression: verified.",
+     "expression": [
+      "Equal",
+      "dydx",
+      [
+       "Multiply",
+       [
+        "Power",
+        [
+         "Add",
+         [
+          "Multiply",
+          -1,
+          "x"
+         ],
+         [
+          "Multiply",
+          3,
+          [
+           "Power",
+           "y",
+           2
+          ]
+         ]
+        ],
+        -1
+       ],
+       [
+        "Add",
+        2,
+        "y",
+        [
+         "Multiply",
+         -2,
+         "x"
+        ]
+       ]
+      ]
+     ],
+     "relation": "solve",
+     "variable": "dydx"
+    },
+    {
+     "cue": "The point gives both coordinates.",
+     "why": "(2 - 4 + 1)/(3 - 2).",
+     "expression": -1,
+     "relation": "evaluate",
+     "subs": {
+      "x": "2",
+      "y": "1"
+     }
+    }
+   ],
+   "answer": {
+    "form": "numeric",
+    "mathjson": -1
+   },
+   "delivery": {
+    "mode": "step_reveal",
+    "reason": "rule 1",
+    "sources": []
+   }
+  },
+  {
+   "id": "LSN-CON-03004#err-BC-ERR-03010",
+   "type": "common_error",
+   "bands": [
+    "low",
+    "mid"
+   ],
+   "skills": [
+    "BC-SKL-03010",
+    "BC-SKL-03014"
+   ],
+   "sources": [
+    "BC-ERR-03010"
+   ],
+   "evidence_tag": "inferred",
+   "error_id": "BC-ERR-03010",
+   "observed_behavior": "The response divides by a factor while dy/dx still appears on both sides, so the isolated expression is not dy/dx.",
+   "scoring_consequence": "The stated expression for dy/dx does not match the verification requested, and later parts built on it are compromised.",
+   "wrong_step": {
+    "text": "Divided by 3y^2 with x dy/dx still on the right.",
+    "expression": [
+     "Multiply",
+     [
+      "Rational",
+      1,
+      3
+     ],
+     [
+      "Power",
+      "y",
+      -2
+     ],
+     [
+      "Add",
+      2,
+      "y",
+      [
+       "Multiply",
+       -2,
+       "x"
+      ],
+      [
+       "Multiply",
+       "dydx",
+       "x"
+      ]
+     ]
+    ]
+   },
+   "right_step": {
+    "text": "Collected first.",
+    "expression": [
+     "Multiply",
+     [
+      "Power",
+      [
+       "Add",
+       [
+        "Multiply",
+        -1,
+        "x"
+       ],
+       [
+        "Multiply",
+        3,
+        [
+         "Power",
+         "y",
+         2
+        ]
+       ]
+      ],
+      -1
+     ],
+     [
+      "Add",
+      2,
+      "y",
+      [
+       "Multiply",
+       -2,
+       "x"
+      ]
+     ]
+    ]
+   },
+   "relation": "distinct",
+   "delivery": {
+    "mode": "step_reveal",
+    "reason": "rule 1",
+    "sources": []
+   }
+  },
+  {
+   "id": "LSN-CON-03004#err-BC-ERR-03011",
+   "type": "common_error",
+   "bands": [
+    "low",
+    "mid"
+   ],
+   "skills": [
+    "BC-SKL-03011"
+   ],
+   "sources": [
+    "BC-ERR-03011"
+   ],
+   "evidence_tag": "inferred",
+   "error_id": "BC-ERR-03011",
+   "observed_behavior": "The response substitutes the x coordinate into an expression containing both variables and reports a slope still containing y.",
+   "scoring_consequence": "No numerical slope is produced, so the evaluation point is lost.",
+   "wrong_step": {
+    "text": "Only x = 2 substituted.",
+    "expression": [
+     "Multiply",
+     [
+      "Power",
+      [
+       "Add",
+       -2,
+       [
+        "Multiply",
+        3,
+        [
+         "Power",
+         "y",
+         2
+        ]
+       ]
+      ],
+      -1
+     ],
+     [
+      "Add",
+      -2,
+      "y"
+     ]
+    ]
+   },
+   "right_step": {
+    "text": "x = 2 and y = 1: -1.",
+    "expression": -1
+   },
+   "relation": "distinct",
+   "delivery": {
+    "mode": "step_reveal",
+    "reason": "rule 1",
+    "sources": []
+   }
+  },
+  {
+   "id": "LSN-CON-03004#prq-BC-PRQ-03002",
+   "type": "prerequisite_bridge",
+   "bands": [
+    "low",
+    "mid"
+   ],
+   "skills": [
+    "BC-SKL-03010",
+    "BC-SKL-03014"
+   ],
+   "sources": [
+    "BC-PRQ-03002"
+   ],
+   "evidence_tag": "inferred",
+   "prerequisite_id": "BC-PRQ-03002",
+   "text": "Collect the terms in an unknown that appears in several places, factor it out, then divide. Otherwise dy/dx is never isolated, or is divided before collection."
+  },
+  {
+   "id": "LSN-CON-03004#prq-BC-PRQ-03006",
+   "type": "prerequisite_bridge",
+   "bands": [
+    "low",
+    "mid"
+   ],
+   "skills": [
+    "BC-SKL-03011",
+    "BC-SKL-03014"
+   ],
+   "sources": [
+    "BC-PRQ-03006"
+   ],
+   "evidence_tag": "inferred",
+   "prerequisite_id": "BC-PRQ-03006",
+   "text": "Combine fractions and cancel factors without changing the value. A wrong simplification after a correct derivative changes the value reported."
+  }
+ ],
+ "checks": [
+  {
+   "id": "LSN-CON-03004#chk-1",
+   "check_kind": "completion",
+   "bands": [
+    "low",
+    "mid"
+   ],
+   "format": "short_answer",
+   "archetype_id": "BC-QA-03004",
+   "parameter_draw": {
+    "mixed": -1,
+    "y_coefficient": 1,
+    "right_slope": 2,
+    "x_at": 2,
+    "y_at": 1,
+    "y_power": 3
+   },
+   "completes": "LSN-CON-03004#s4",
+   "stem": {
+    "text": "Given dy/dx (3y^2 - x) = 2 - 2x + y, find dy/dx at (2, 1).",
+    "command_verb": "find"
+   },
+   "answer_key": {
+    "form": "numeric",
+    "mathjson": -1
+   },
+   "worked_solution": [
+    {
+     "step": 1,
+     "text": "The collected line.",
+     "mathjson": [
+      "Equal",
+      [
+       "Multiply",
+       "dydx",
+       [
+        "Add",
+        [
+         "Multiply",
+         -1,
+         "x"
+        ],
+        [
+         "Multiply",
+         3,
+         [
+          "Power",
+          "y",
+          2
+         ]
+        ]
+       ]
+      ],
+      [
+       "Add",
+       2,
+       "y",
+       [
+        "Multiply",
+        -2,
+        "x"
+       ]
+      ]
+     ],
+     "relation": "new"
+    },
+    {
+     "step": 2,
+     "text": "Divided.",
+     "mathjson": [
+      "Equal",
+      "dydx",
+      [
+       "Multiply",
+       [
+        "Power",
+        [
+         "Add",
+         [
+          "Multiply",
+          -1,
+          "x"
+         ],
+         [
+          "Multiply",
+          3,
+          [
+           "Power",
+           "y",
+           2
+          ]
+         ]
+        ],
+        -1
+       ],
+       [
+        "Add",
+        2,
+        "y",
+        [
+         "Multiply",
+         -2,
+         "x"
+        ]
+       ]
+      ]
+     ],
+     "relation": "solve",
+     "variable": "dydx"
+    },
+    {
+     "step": 3,
+     "text": "At (2, 1).",
+     "mathjson": -1,
+     "relation": "evaluate",
+     "subs": {
+      "x": "2",
+      "y": "1"
+     }
+    }
+   ],
+   "calculator_status": "no_calculator",
+   "representation": "BC-REP-01",
+   "skills": [
+    "BC-SKL-03010",
+    "BC-SKL-03011"
+   ]
+  },
+  {
+   "id": "LSN-CON-03004#chk-2",
+   "check_kind": "isomorph",
+   "bands": [
+    "low",
+    "mid"
+   ],
+   "format": "short_answer",
+   "archetype_id": "BC-QA-03004",
+   "parameter_draw": {
+    "mixed": 2,
+    "y_coefficient": -1,
+    "right_slope": 1,
+    "x_at": 1,
+    "y_at": 2,
+    "y_power": 3
+   },
+   "stem": {
+    "text": "For x^2 + 2xy - y^3 = x - 4, find dy/dx at (1, 2).",
+    "command_verb": "find"
+   },
+   "answer_key": {
+    "form": "numeric",
+    "mathjson": [
+     "Rational",
+     1,
+     2
+    ]
+   },
+   "worked_solution": [
+    {
+     "step": 1,
+     "text": "Both sides differentiated.",
+     "mathjson": [
+      "Equal",
+      [
+       "Add",
+       [
+        "Multiply",
+        2,
+        "x"
+       ],
+       [
+        "Multiply",
+        2,
+        "y"
+       ],
+       [
+        "Multiply",
+        -3,
+        "dydx",
+        [
+         "Power",
+         "y",
+         2
+        ]
+       ],
+       [
+        "Multiply",
+        2,
+        "dydx",
+        "x"
+       ]
+      ],
+      1
+     ],
+     "relation": "new"
+    },
+    {
+     "step": 2,
+     "text": "Collected and divided.",
+     "mathjson": [
+      "Equal",
+      "dydx",
+      [
+       "Multiply",
+       [
+        "Power",
+        [
+         "Add",
+         [
+          "Multiply",
+          -3,
+          [
+           "Power",
+           "y",
+           2
+          ]
+         ],
+         [
+          "Multiply",
+          2,
+          "x"
+         ]
+        ],
+        -1
+       ],
+       [
+        "Add",
+        1,
+        [
+         "Multiply",
+         -2,
+         "x"
+        ],
+        [
+         "Multiply",
+         -2,
+         "y"
+        ]
+       ]
+      ]
+     ],
+     "relation": "solve",
+     "variable": "dydx"
+    },
+    {
+     "step": 3,
+     "text": "At (1, 2).",
+     "mathjson": [
+      "Rational",
+      1,
+      2
+     ],
+     "relation": "evaluate",
+     "subs": {
+      "x": "1",
+      "y": "2"
+     }
+    }
+   ],
+   "calculator_status": "no_calculator",
+   "representation": "BC-REP-01",
+   "skills": [
+    "BC-SKL-03010",
+    "BC-SKL-03011"
+   ]
+  }
+ ],
+ "refresher": [
+  "LSN-CON-03004#s2",
+  "LSN-CON-03004#err-BC-ERR-03010",
+  "LSN-CON-03004#err-BC-ERR-03011",
+  "LSN-CON-03004#s4"
+ ],
+ "provenance": {
+  "author": "tools/lesson_transcribe.py",
+  "prompt_version": "generator/lesson_v1",
+  "design_path": "docs/lessons/unit-03/LSN-CON-03004.md",
+  "signed_off_by": "claude-opus-5-5",
+  "signed_off_at": "2026-09-29",
+  "not_human": true
+ }
+}

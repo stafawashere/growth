@@ -1,0 +1,154 @@
+{
+ "lesson_id": "LSN-CON-06007",
+ "version": 1,
+ "compared_on": "2026-09-29",
+ "auditor": "claude-opus-5-5",
+ "resolve": {
+  "date": "2026-09-29",
+  "problems": 4,
+  "agreed": 4,
+  "judgments_pending": 0,
+  "all_agree": true,
+  "verdicts": [
+   {
+    "id": "LSN-CON-06007#ex-1",
+    "agree": true,
+    "detail": "agree (symbolic)",
+    "method": "Hand computation (areas, FTC, substitution)."
+   },
+   {
+    "id": "LSN-CON-06007#chk-1",
+    "agree": true,
+    "detail": "agree (symbolic)",
+    "method": "Hand computation (areas, FTC, substitution)."
+   },
+   {
+    "id": "LSN-CON-06007#chk-2",
+    "agree": true,
+    "detail": "agree (symbolic)",
+    "method": "Hand computation (areas, FTC, substitution)."
+   },
+   {
+    "id": "LSN-CON-06007#chk-3",
+    "agree": true,
+    "detail": "agree (symbolic)",
+    "method": "Hand computation (areas, FTC, substitution)."
+   }
+  ],
+  "answers_file": "/tmp/claude-0/-home-user-growth/ac029253-8ff0-5a4b-8b5f-cdcaf5e8ff8d/scratchpad/verify/answers_09.json"
+ },
+ "audit": {
+  "date": "2026-09-29",
+  "auditor": "claude-opus-5-5",
+  "blocks": [
+   {
+    "id": "orientation",
+    "verdict": "ok",
+    "evidence": "21 words; paraphrases BC-CON-06007 description_plain and the 6.4 Notation line; no lint."
+   },
+   {
+    "id": "ki-1",
+    "verdict": "ok",
+    "evidence": "32 words; quote matches ced:121 FUN-5.A.1 verbatim; bound t from the 6.4 Notation paragraph."
+   },
+   {
+    "id": "ki-2",
+    "verdict": "ok",
+    "evidence": "30 words; signed area and reversed-limit sign match BC-PT-99069 earns and ced:122 FUN-5.A.3."
+   },
+   {
+    "id": "st-1",
+    "verdict": "ok",
+    "evidence": "Method is BC-QA-06003 expected_solution_path[0]; rival BC-ERR-06008 is in its wrong_approaches; 27 words, cue 16."
+   },
+   {
+    "id": "st-2",
+    "verdict": "ok",
+    "evidence": "Method and rival BC-ERR-06014 match BC-QA-06004 expected_solution_path and wrong_approaches; 35 words."
+   },
+   {
+    "id": "st-3",
+    "verdict": "ok",
+    "evidence": "Method and rival BC-ERR-06027 match BC-QA-06012; 28 words, cue 8."
+   },
+   {
+    "id": "ex-1",
+    "verdict": "ok",
+    "evidence": "SymPy: -2-4-2+pi*2**2/2 equals -8+2*pi; pieces on [2,8] are triangle -2, rectangle -4, triangle -2."
+   },
+   {
+    "id": "reader-scores:ex-1",
+    "verdict": "ok",
+    "evidence": "Line is BC-PT-99069 name, earns and does_not_earn verbatim from the bundle."
+   },
+   {
+    "id": "err-BC-ERR-06014",
+    "verdict": "ok",
+    "evidence": "Behavior, consequence, BC-MIS-08024 text in bundle; wrong 8+2*pi is all pieces positive."
+   },
+   {
+    "id": "err-BC-ERR-99012",
+    "verdict": "ok",
+    "evidence": "Bundle text verbatim; from x=0 adds triangle +2 so 2-8+2*pi = -6+2*pi (SymPy)."
+   },
+   {
+    "id": "err-BC-ERR-06013",
+    "verdict": "ok",
+    "evidence": "Bundle text verbatim; full circle 4*pi gives -8+4*pi."
+   },
+   {
+    "id": "err-BC-ERR-06028",
+    "verdict": "ok",
+    "evidence": "Bundle text verbatim; f(5) on segment (4,-2) to (6,-2) is -2."
+   },
+   {
+    "id": "representations",
+    "verdict": "ok",
+    "evidence": "null; the 6.4 conversion is carried by ki-1 and ki-2."
+   },
+   {
+    "id": "bridge:BC-PRQ-06005",
+    "verdict": "ok",
+    "evidence": "12 words; paraphrase of failure_signature."
+   },
+   {
+    "id": "bridge:BC-PRQ-06007",
+    "verdict": "ok",
+    "evidence": "12 words; paraphrase of failure_signature."
+   },
+   {
+    "id": "bridge:BC-PRQ-06013",
+    "verdict": "ok",
+    "evidence": "8 words; paraphrase of description_plain."
+   },
+   {
+    "id": "chk-1",
+    "verdict": "ok",
+    "evidence": "SymPy: -8+pi*2**2/2 equals -8+2*pi."
+   },
+   {
+    "id": "chk-2",
+    "verdict": "ok",
+    "evidence": "SymPy: -1-2-1-2*pi equals -4-2*pi."
+   },
+   {
+    "id": "chk-3",
+    "verdict": "ok",
+    "evidence": "SymPy: 2+3+1-2*pi = 6-2*pi; distractors 6+2*pi, 4-2*pi (triangle -2 on [0,2]), 6-4*pi each match their error path."
+   }
+  ],
+  "advice": [
+   "st-3 method names only the integrand at the upper limit while its rival is the dropped chain factor; the method line should carry the factor so the first written line beats the rival.",
+   "No block practises the reversed-limit case that ki-2 and the BC-PT-99069 line both stress (b left of a); a check with an input left of the lower limit would exercise it.",
+   "err-BC-ERR-06028 is a derivative error inside a value lesson with no derivative example; it depends on LSN-CON-06008 for context.",
+   "Delivery fits: accumulation as motion and a draggable upper limit as interactive serve the ideas well."
+  ],
+  "counts": {
+   "ok": 19,
+   "unsourced": 0,
+   "wrong": 0,
+   "over_cap": 0,
+   "lint": 0
+  }
+ }
+}

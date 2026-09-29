@@ -1,0 +1,1121 @@
+{
+ "id": "LSN-CON-08012",
+ "version": 1,
+ "kind": "concept",
+ "target_id": "BC-CON-08012",
+ "status": "draft",
+ "snapshot_digest": "a6a8ec9d3f59ab8f712e33d30cc22fc64bf2c478fbe7312e3e3118d319c6a42f",
+ "source_digest": "5c6dce1fb3f13826fe68a9247f8f95e846f2c8b0b31b6c9c85d95ad1ce9bfc03",
+ "read_minutes": {
+  "full": 3.5,
+  "brief": 2.8
+ },
+ "word_count": {
+  "full": 438,
+  "brief": 346
+ },
+ "sections": [
+  {
+   "id": "LSN-CON-08012#s1",
+   "type": "orientation",
+   "bands": [
+    "low",
+    "mid"
+   ],
+   "skills": [
+    "BC-SKL-08023",
+    "BC-SKL-08024",
+    "BC-SKL-08025",
+    "BC-SKL-08026"
+   ],
+   "sources": [
+    "BC-CON-08012",
+    "research/units/unit-08-applications-integration.md#8.5 Finding the Area Between Curves Expressed as Functions of y"
+   ],
+   "evidence_tag": "inferred",
+   "text": "A response rewrites both boundaries as x in terms of y, then integrates the right curve minus the left curve in dy between y limits: one integral where slicing in x would need two.",
+   "delivery": {
+    "mode": "figure",
+    "reason": "rule 4: BC-REP-02 on BC-SKL-08024 and BC-SKL-08025; unit README delivery map",
+    "sources": [
+     "BC-SKL-08024",
+     "BC-SKL-08025"
+    ],
+    "spec": {
+     "kind": "graph",
+     "representations": [
+      "BC-REP-02"
+     ],
+     "window": {
+      "x": [
+       -1,
+       5
+      ],
+      "y": [
+       -1,
+       3
+      ]
+     },
+     "curves": [
+      {
+       "expr": "sqrt(x)",
+       "domain": [
+        0,
+        5
+       ]
+      },
+      {
+       "expr": "x - 2",
+       "domain": [
+        2,
+        5
+       ]
+      }
+     ],
+     "shade": {
+      "region": "between x = y**2 and x = y + 2 for 0 <= y <= 2"
+     },
+     "labels": [
+      {
+       "text": "left: x = y^2",
+       "placement": "inside"
+      },
+      {
+       "text": "right: x = y + 2",
+       "placement": "inside"
+      }
+     ]
+    },
+    "fallback": "the same shaded region static with both labels",
+    "keyboard": "no control; the figure description is reached with Tab"
+   }
+  },
+  {
+   "id": "LSN-CON-08012#s2",
+   "type": "key_ideas",
+   "bands": [
+    "low",
+    "mid"
+   ],
+   "skills": [
+    "BC-SKL-08023",
+    "BC-SKL-08024",
+    "BC-SKL-08025",
+    "BC-SKL-08026"
+   ],
+   "sources": [
+    "BC-EK-CHA-5A2",
+    "ced:156",
+    "research/units/unit-08-applications-integration.md#8.5 Finding the Area Between Curves Expressed as Functions of y"
+   ],
+   "evidence_tag": "verified",
+   "ek_id": "BC-EK-CHA-5A2",
+   "depth": "core",
+   "text": "With both boundaries written as x in terms of y, the area is the integral of right minus left with respect to y. A region whose top changes curve needs two integrals in x but one in y, when each side stays one curve. With dy, the integrand holds only y and the limits are y values.",
+   "notation": "right minus left; dy",
+   "quote": {
+    "text": "Areas of regions in the plane can be calculated using functions of either x or y.",
+    "source": "ced:156"
+   },
+   "delivery": {
+    "mode": "figure",
+    "reason": "rule 4: BC-REP-08 on BC-SKL-08026 and BC-REP-02 on BC-SKL-08024; not promoted, BC-QA-08009 difficulty_variables are presence flags",
+    "sources": [
+     "BC-SKL-08026",
+     "BC-SKL-08024",
+     "BC-QA-08009"
+    ],
+    "spec": {
+     "kind": "graph",
+     "representations": [
+      "BC-REP-02",
+      "BC-REP-08"
+     ],
+     "window": {
+      "x": [
+       -1,
+       5
+      ],
+      "y": [
+       -1,
+       3
+      ]
+     },
+     "curves": [
+      {
+       "expr": "sqrt(x)",
+       "domain": [
+        0,
+        5
+       ]
+      },
+      {
+       "expr": "x - 2",
+       "domain": [
+        2,
+        5
+       ]
+      }
+     ],
+     "rectangles": [
+      {
+       "y": 1,
+       "from_x": "y**2",
+       "to_x": "y + 2",
+       "height": 0.15
+      }
+     ],
+     "labels": [
+      {
+       "text": "width (y + 2) - y^2",
+       "placement": "inside"
+      },
+      {
+       "text": "y = 0",
+       "placement": "inside"
+      },
+      {
+       "text": "y = 2",
+       "placement": "inside"
+      }
+     ]
+    },
+    "fallback": "the static region with one horizontal rectangle at y = 1 and the y limits marked on the axis",
+    "keyboard": "no control; the figure description is reached with Tab"
+   }
+  },
+  {
+   "id": "LSN-CON-08012#s3",
+   "type": "strategy",
+   "bands": [
+    "low",
+    "mid"
+   ],
+   "skills": [
+    "BC-SKL-08023",
+    "BC-SKL-08024",
+    "BC-SKL-08025",
+    "BC-SKL-08026"
+   ],
+   "sources": [
+    "BC-QA-08009"
+   ],
+   "evidence_tag": "verified",
+   "archetype_id": "BC-QA-08009",
+   "cue": "The stem asks for an area by integrating in y, from a figure and curve equations in x or y.",
+   "method": "First written line: both boundaries as x in terms of y.",
+   "rival": "Rival: the original functions of x integrated between y limits (BC-ERR-08023).",
+   "separating_feature": "dy demands an integrand with no x."
+  },
+  {
+   "id": "LSN-CON-08012#s4",
+   "type": "worked_example",
+   "bands": [
+    "low",
+    "mid"
+   ],
+   "skills": [
+    "BC-SKL-08023",
+    "BC-SKL-08024",
+    "BC-SKL-08025",
+    "BC-SKL-08026"
+   ],
+   "sources": [
+    "BC-QA-08009"
+   ],
+   "evidence_tag": "inferred",
+   "archetype_id": "BC-QA-08009",
+   "parameter_draw": {
+    "stretch": 1,
+    "height": 2,
+    "run": "1",
+    "shift": 0,
+    "letters": "fg",
+    "presentation": "formula"
+   },
+   "problem": {
+    "text": "R is bounded by \\(y=\\sqrt{x}\\), \\(y=x-2\\) and the x-axis. Find its area by integrating in y.",
+    "command_verb": "find"
+   },
+   "calculator_status": "no_calculator",
+   "steps": [
+    {
+     "cue": "In y: each boundary as x in terms of y.",
+     "why": "\\(x=y^2\\) and \\(x=y+2\\)."
+    },
+    {
+     "cue": "Which is right? Test \\(y=1\\).",
+     "why": "\\(y+2=3\\) exceeds \\(y^2=1\\): the line is right."
+    },
+    {
+     "cue": "y limits: the x-axis, \\(y=0\\), and where the curves meet.",
+     "why": "Only \\(y=2\\) lies in R; \\(y=-1\\) is on the discarded branch.",
+     "expression": [
+      "Equal",
+      [
+       "Power",
+       "y",
+       2
+      ],
+      [
+       "Add",
+       2,
+       "y"
+      ]
+     ],
+     "relation": "new"
+    },
+    {
+     "cue": "Solve.",
+     "why": "Top of R.",
+     "expression": [
+      "Set",
+      2
+     ],
+     "relation": "solve",
+     "variable": "y"
+    },
+    {
+     "cue": "Right minus left, dy, limits 0 and 2.",
+     "why": "One integral covers R.",
+     "expression": [
+      "Integrate",
+      [
+       "Add",
+       2,
+       "y",
+       [
+        "Multiply",
+        -1,
+        [
+         "Power",
+         "y",
+         2
+        ]
+       ]
+      ],
+      [
+       "Tuple",
+       "y",
+       0,
+       2
+      ]
+     ],
+     "relation": "new"
+    },
+    {
+     "cue": "Evaluate.",
+     "why": "\\(2+4-8/3\\).",
+     "expression": [
+      "Rational",
+      10,
+      3
+     ],
+     "relation": "equivalent"
+    }
+   ],
+   "answer": {
+    "form": "numeric",
+    "mathjson": [
+     "Rational",
+     10,
+     3
+    ]
+   },
+   "delivery": {
+    "mode": "step_reveal",
+    "reason": "rule 1",
+    "sources": []
+   }
+  },
+  {
+   "id": "LSN-CON-08012#err-BC-ERR-08020",
+   "type": "common_error",
+   "bands": [
+    "low",
+    "mid"
+   ],
+   "skills": [
+    "BC-SKL-08024"
+   ],
+   "sources": [
+    "BC-ERR-08020",
+    "BC-MIS-08011"
+   ],
+   "evidence_tag": "inferred",
+   "error_id": "BC-ERR-08020",
+   "observed_behavior": "The integrand is the lower curve minus the upper curve, or the left curve minus the right curve.",
+   "scoring_consequence": "The integrand point may survive, since either order earned it in 2023, but a negative value reported as an area loses the answer point (sg-23:16, sg-23:17).",
+   "wrong_step": {
+    "text": "Left minus right: \\(-10/3\\).",
+    "expression": [
+     "Integrate",
+     [
+      "Add",
+      -2,
+      [
+       "Power",
+       "y",
+       2
+      ],
+      [
+       "Multiply",
+       -1,
+       "y"
+      ]
+     ],
+     [
+      "Tuple",
+      "y",
+      0,
+      2
+     ]
+    ]
+   },
+   "right_step": {
+    "text": "Right minus left: \\(10/3\\).",
+    "expression": [
+     "Integrate",
+     [
+      "Add",
+      2,
+      "y",
+      [
+       "Multiply",
+       -1,
+       [
+        "Power",
+        "y",
+        2
+       ]
+      ]
+     ],
+     [
+      "Tuple",
+      "y",
+      0,
+      2
+     ]
+    ]
+   },
+   "relation": "distinct",
+   "possible_reason": {
+    "misconception_id": "BC-MIS-08011",
+    "text": "any sign problem can be repaired at the end"
+   },
+   "delivery": {
+    "mode": "step_reveal",
+    "reason": "rule 1",
+    "sources": []
+   }
+  },
+  {
+   "id": "LSN-CON-08012#err-BC-ERR-08023",
+   "type": "common_error",
+   "bands": [
+    "low",
+    "mid"
+   ],
+   "skills": [
+    "BC-SKL-08023",
+    "BC-SKL-08025"
+   ],
+   "sources": [
+    "BC-ERR-08023",
+    "BC-MIS-08013"
+   ],
+   "evidence_tag": "inferred",
+   "error_id": "BC-ERR-08023",
+   "observed_behavior": "A function of x is integrated with respect to y, or the reverse, without being rewritten.",
+   "scoring_consequence": "The setup point is lost because the expression does not define a number.",
+   "wrong_step": {
+    "text": "\\(\\sqrt{x}-(x-2)\\) under dy.",
+    "expression": [
+     "Integrate",
+     [
+      "Add",
+      2,
+      [
+       "Power",
+       "x",
+       [
+        "Rational",
+        1,
+        2
+       ]
+      ],
+      [
+       "Multiply",
+       -1,
+       "x"
+      ]
+     ],
+     [
+      "Tuple",
+      "y",
+      0,
+      2
+     ]
+    ]
+   },
+   "right_step": {
+    "text": "\\(y+2-y^2\\) under dy.",
+    "expression": [
+     "Integrate",
+     [
+      "Add",
+      2,
+      "y",
+      [
+       "Multiply",
+       -1,
+       [
+        "Power",
+        "y",
+        2
+       ]
+      ]
+     ],
+     [
+      "Tuple",
+      "y",
+      0,
+      2
+     ]
+    ]
+   },
+   "relation": "distinct",
+   "possible_reason": {
+    "misconception_id": "BC-MIS-08013",
+    "text": "dx and dy as labels for the direction of slicing"
+   },
+   "delivery": {
+    "mode": "step_reveal",
+    "reason": "rule 1",
+    "sources": []
+   }
+  },
+  {
+   "id": "LSN-CON-08012#err-BC-ERR-08024",
+   "type": "common_error",
+   "bands": [
+    "low",
+    "mid"
+   ],
+   "skills": [
+    "BC-SKL-08025"
+   ],
+   "sources": [
+    "BC-ERR-08024",
+    "BC-MIS-08012"
+   ],
+   "evidence_tag": "inferred",
+   "error_id": "BC-ERR-08024",
+   "observed_behavior": "An integral in y carries x values as its limits.",
+   "scoring_consequence": "The setup point is lost and the value is wrong.",
+   "wrong_step": {
+    "text": "x limits 0 and 4: \\(-16/3\\).",
+    "expression": [
+     "Integrate",
+     [
+      "Add",
+      2,
+      "y",
+      [
+       "Multiply",
+       -1,
+       [
+        "Power",
+        "y",
+        2
+       ]
+      ]
+     ],
+     [
+      "Tuple",
+      "y",
+      0,
+      4
+     ]
+    ]
+   },
+   "right_step": {
+    "text": "y limits 0 and 2.",
+    "expression": [
+     "Integrate",
+     [
+      "Add",
+      2,
+      "y",
+      [
+       "Multiply",
+       -1,
+       [
+        "Power",
+        "y",
+        2
+       ]
+      ]
+     ],
+     [
+      "Tuple",
+      "y",
+      0,
+      2
+     ]
+    ]
+   },
+   "relation": "distinct",
+   "possible_reason": {
+    "misconception_id": "BC-MIS-08012",
+    "text": "chooses limits from the axes of the picture"
+   },
+   "delivery": {
+    "mode": "step_reveal",
+    "reason": "rule 1",
+    "sources": []
+   }
+  },
+  {
+   "id": "LSN-CON-08012#err-BC-ERR-99006",
+   "type": "common_error",
+   "bands": [
+    "low",
+    "mid"
+   ],
+   "skills": [
+    "BC-SKL-08025"
+   ],
+   "sources": [
+    "BC-ERR-99006"
+   ],
+   "evidence_tag": "inferred",
+   "error_id": "BC-ERR-99006",
+   "observed_behavior": "Responses present a definite integral with no differential, or with a differential in the wrong variable, producing a setup the reader cannot interpret.",
+   "scoring_consequence": "The setup point is not earned when the resulting expression is ambiguous; in some parts later points in that part are also lost.",
+   "wrong_step": {
+    "text": "\\(\\int_0^2 (y+2-y^2)\\) with no dy.",
+    "expression": [
+     "Integrate",
+     [
+      "Add",
+      2,
+      "y",
+      [
+       "Multiply",
+       -1,
+       [
+        "Power",
+        "y",
+        2
+       ]
+      ]
+     ],
+     [
+      "Tuple",
+      "y",
+      0,
+      2
+     ]
+    ]
+   },
+   "right_step": {
+    "text": "\\(\\int_0^2 (y+2-y^2)\\,dy\\).",
+    "expression": [
+     "Integrate",
+     [
+      "Add",
+      2,
+      "y",
+      [
+       "Multiply",
+       -1,
+       [
+        "Power",
+        "y",
+        2
+       ]
+      ]
+     ],
+     [
+      "Tuple",
+      "y",
+      0,
+      2
+     ]
+    ]
+   },
+   "relation": "equivalent",
+   "delivery": {
+    "mode": "step_reveal",
+    "reason": "rule 1",
+    "sources": []
+   }
+  },
+  {
+   "id": "LSN-CON-08012#prq-BC-PRQ-06005",
+   "type": "prerequisite_bridge",
+   "bands": [
+    "low",
+    "mid"
+   ],
+   "skills": [
+    "BC-SKL-08024"
+   ],
+   "sources": [
+    "BC-PRQ-06005"
+   ],
+   "evidence_tag": "inferred",
+   "prerequisite_id": "BC-PRQ-06005",
+   "text": "\\(f(1)\\) is one value at one input; reading the wrong input, or \\(f'\\) for \\(f\\), names the wrong right curve."
+  },
+  {
+   "id": "LSN-CON-08012#prq-BC-PRQ-08002",
+   "type": "prerequisite_bridge",
+   "bands": [
+    "low",
+    "mid"
+   ],
+   "skills": [
+    "BC-SKL-08023",
+    "BC-SKL-08025",
+    "BC-SKL-08026"
+   ],
+   "sources": [
+    "BC-PRQ-08002"
+   ],
+   "evidence_tag": "inferred",
+   "prerequisite_id": "BC-PRQ-08002",
+   "text": "An equation solved for x in terms of y, with the branch the region needs; without it, dy gets an integrand in x."
+  }
+ ],
+ "checks": [
+  {
+   "id": "LSN-CON-08012#chk-1",
+   "check_kind": "completion",
+   "bands": [
+    "low",
+    "mid"
+   ],
+   "format": "short_answer",
+   "archetype_id": "BC-QA-08009",
+   "parameter_draw": {
+    "stretch": 1,
+    "height": 2,
+    "run": "1",
+    "shift": 0,
+    "letters": "fg",
+    "presentation": "formula"
+   },
+   "completes": "LSN-CON-08012#s4",
+   "stem": {
+    "text": "Evaluate \\(\\int_0^2 (y+2-y^2)\\,dy\\).",
+    "command_verb": "evaluate"
+   },
+   "answer_key": {
+    "form": "numeric",
+    "mathjson": [
+     "Rational",
+     10,
+     3
+    ]
+   },
+   "worked_solution": [
+    {
+     "step": 1,
+     "text": "The integral.",
+     "mathjson": [
+      "Integrate",
+      [
+       "Add",
+       2,
+       "y",
+       [
+        "Multiply",
+        -1,
+        [
+         "Power",
+         "y",
+         2
+        ]
+       ]
+      ],
+      [
+       "Tuple",
+       "y",
+       0,
+       2
+      ]
+     ],
+     "relation": "new"
+    },
+    {
+     "step": 2,
+     "text": "Evaluated.",
+     "mathjson": [
+      "Rational",
+      10,
+      3
+     ],
+     "relation": "equivalent"
+    }
+   ],
+   "calculator_status": "no_calculator",
+   "representation": "BC-REP-02",
+   "skills": [
+    "BC-SKL-08025"
+   ]
+  },
+  {
+   "id": "LSN-CON-08012#chk-2",
+   "check_kind": "isomorph",
+   "bands": [
+    "low",
+    "mid"
+   ],
+   "format": "short_answer",
+   "archetype_id": "BC-QA-08009",
+   "parameter_draw": {
+    "stretch": 1,
+    "height": 3,
+    "run": "1",
+    "shift": 0,
+    "letters": "hk",
+    "presentation": "formula"
+   },
+   "stem": {
+    "text": "R is bounded by \\(y=\\sqrt{x}\\), \\(y=x-6\\) and the x-axis. Find its area in y.",
+    "command_verb": "find"
+   },
+   "answer_key": {
+    "form": "numeric",
+    "mathjson": [
+     "Rational",
+     27,
+     2
+    ]
+   },
+   "worked_solution": [
+    {
+     "step": 1,
+     "text": "\\(x=y^2\\), \\(x=y+6\\) meet at \\(y=3\\).",
+     "mathjson": [
+      "Equal",
+      [
+       "Power",
+       "y",
+       2
+      ],
+      [
+       "Add",
+       6,
+       "y"
+      ]
+     ],
+     "relation": "new"
+    },
+    {
+     "step": 2,
+     "text": "The root in R.",
+     "mathjson": [
+      "Set",
+      3
+     ],
+     "relation": "solve",
+     "variable": "y"
+    },
+    {
+     "step": 3,
+     "text": "Right minus left.",
+     "mathjson": [
+      "Integrate",
+      [
+       "Add",
+       6,
+       "y",
+       [
+        "Multiply",
+        -1,
+        [
+         "Power",
+         "y",
+         2
+        ]
+       ]
+      ],
+      [
+       "Tuple",
+       "y",
+       0,
+       3
+      ]
+     ],
+     "relation": "new"
+    },
+    {
+     "step": 4,
+     "text": "Evaluated.",
+     "mathjson": [
+      "Rational",
+      27,
+      2
+     ],
+     "relation": "equivalent"
+    }
+   ],
+   "calculator_status": "no_calculator",
+   "representation": "BC-REP-02",
+   "skills": [
+    "BC-SKL-08025"
+   ]
+  },
+  {
+   "id": "LSN-CON-08012#chk-3",
+   "check_kind": "mcq",
+   "bands": [
+    "low"
+   ],
+   "format": "mcq",
+   "archetype_id": "BC-QA-08009",
+   "parameter_draw": {
+    "stretch": 2,
+    "height": 2,
+    "run": "2",
+    "shift": 0,
+    "letters": "pq",
+    "presentation": "formula"
+   },
+   "stem": {
+    "text": "R is bounded by \\(y=\\sqrt{x/2}\\), \\(y=(x-4)/2\\) and the x-axis. Which gives its area?",
+    "command_verb": "identify"
+   },
+   "answer_key": {
+    "form": "numeric",
+    "mathjson": [
+     "Rational",
+     20,
+     3
+    ]
+   },
+   "worked_solution": [
+    {
+     "step": 1,
+     "text": "\\(x=2y^2\\) left, \\(x=2y+4\\) right, meeting at \\(y=2\\).",
+     "mathjson": [
+      "Integrate",
+      [
+       "Add",
+       4,
+       [
+        "Multiply",
+        -2,
+        [
+         "Power",
+         "y",
+         2
+        ]
+       ],
+       [
+        "Multiply",
+        2,
+        "y"
+       ]
+      ],
+      [
+       "Tuple",
+       "y",
+       0,
+       2
+      ]
+     ],
+     "relation": "new"
+    },
+    {
+     "step": 2,
+     "text": "Evaluated.",
+     "mathjson": [
+      "Rational",
+      20,
+      3
+     ],
+     "relation": "equivalent"
+    }
+   ],
+   "options": [
+    {
+     "id": "A",
+     "is_key": true,
+     "error_path": null,
+     "value": [
+      "Integrate",
+      [
+       "Add",
+       4,
+       [
+        "Multiply",
+        -2,
+        [
+         "Power",
+         "y",
+         2
+        ]
+       ],
+       [
+        "Multiply",
+        2,
+        "y"
+       ]
+      ],
+      [
+       "Tuple",
+       "y",
+       0,
+       2
+      ]
+     ]
+    },
+    {
+     "id": "B",
+     "is_key": false,
+     "error_path": "BC-ERR-08020",
+     "value": [
+      "Integrate",
+      [
+       "Add",
+       -4,
+       [
+        "Multiply",
+        -2,
+        "y"
+       ],
+       [
+        "Multiply",
+        2,
+        [
+         "Power",
+         "y",
+         2
+        ]
+       ]
+      ],
+      [
+       "Tuple",
+       "y",
+       0,
+       2
+      ]
+     ],
+     "derivation": "left minus right"
+    },
+    {
+     "id": "C",
+     "is_key": false,
+     "error_path": "BC-ERR-08023",
+     "value": [
+      "Integrate",
+      [
+       "Add",
+       2,
+       [
+        "Multiply",
+        [
+         "Rational",
+         -1,
+         2
+        ],
+        "x"
+       ],
+       [
+        "Multiply",
+        [
+         "Rational",
+         1,
+         2
+        ],
+        [
+         "Power",
+         2,
+         [
+          "Rational",
+          1,
+          2
+         ]
+        ],
+        [
+         "Power",
+         "x",
+         [
+          "Rational",
+          1,
+          2
+         ]
+        ]
+       ]
+      ],
+      [
+       "Tuple",
+       "y",
+       0,
+       2
+      ]
+     ],
+     "derivation": "the given functions of x under dy"
+    },
+    {
+     "id": "D",
+     "is_key": false,
+     "error_path": "BC-ERR-08024",
+     "value": [
+      "Integrate",
+      [
+       "Add",
+       4,
+       [
+        "Multiply",
+        -2,
+        [
+         "Power",
+         "y",
+         2
+        ]
+       ],
+       [
+        "Multiply",
+        2,
+        "y"
+       ]
+      ],
+      [
+       "Tuple",
+       "y",
+       0,
+       8
+      ]
+     ],
+     "derivation": "the x value 8 of the meeting point used as the upper limit"
+    }
+   ],
+   "calculator_status": "no_calculator",
+   "representation": "BC-REP-02",
+   "skills": [
+    "BC-SKL-08025"
+   ]
+  }
+ ],
+ "refresher": [
+  "LSN-CON-08012#s2",
+  "LSN-CON-08012#err-BC-ERR-08020",
+  "LSN-CON-08012#err-BC-ERR-08023",
+  "LSN-CON-08012#err-BC-ERR-08024",
+  "LSN-CON-08012#err-BC-ERR-99006",
+  "LSN-CON-08012#s4"
+ ],
+ "provenance": {
+  "author": "tools/lesson_transcribe.py",
+  "prompt_version": "generator/lesson_v1",
+  "design_path": "docs/lessons/unit-08/LSN-CON-08012.md",
+  "signed_off_by": null,
+  "signed_off_at": null,
+  "not_human": true
+ }
+}

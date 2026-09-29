@@ -1,0 +1,128 @@
+{
+ "lesson_id": "LSN-CON-08004",
+ "version": 1,
+ "compared_on": "2026-09-29",
+ "auditor": "claude-opus-5-5",
+ "resolve": {
+  "date": "2026-09-29",
+  "problems": 4,
+  "agreed": 4,
+  "judgments_pending": 0,
+  "all_agree": true,
+  "verdicts": [
+   {
+    "id": "LSN-CON-08004#ex-1",
+    "agree": true,
+    "detail": "agree (symbolic)",
+    "method": "Split at sign changes t=1,4 and sum absolute values; units meters."
+   },
+   {
+    "id": "LSN-CON-08004#chk-1",
+    "agree": true,
+    "detail": "agree (symbolic)",
+    "method": "Sum absolute values of pieces."
+   },
+   {
+    "id": "LSN-CON-08004#chk-2",
+    "agree": true,
+    "detail": "agree (symbolic)",
+    "method": "Split at t=2,4: 20/3+4/3+7/24."
+   },
+   {
+    "id": "LSN-CON-08004#chk-3",
+    "agree": true,
+    "detail": "agree (symbolic)",
+    "method": "Split at t=1,5: 7/3+32/3+45/8."
+   }
+  ],
+  "answers_file": "/tmp/claude-0/-home-user-growth/ac029253-8ff0-5a4b-8b5f-cdcaf5e8ff8d/scratchpad/verify/answers_11.json"
+ },
+ "audit": {
+  "date": "2026-09-29",
+  "auditor": "claude-opus-5-5",
+  "blocks": [
+   {
+    "id": "orientation",
+    "verdict": "ok",
+    "evidence": "Paraphrases BC-CON-08004 and research 8.2 Total distance paragraph; 27 words."
+   },
+   {
+    "id": "ki-1",
+    "verdict": "ok",
+    "evidence": "Research 8.2 Total distance paragraph states the agree up to sign claim; CHA-4.C.1 on ced:153."
+   },
+   {
+    "id": "st-1",
+    "verdict": "ok",
+    "evidence": "BC-QA-08003 path and wrong_approach 'integrating velocity and taking the absolute value of the result'."
+   },
+   {
+    "id": "ex-1",
+    "verdict": "ok",
+    "evidence": "SymPy: v = 2(t - 1)(t - 4); pieces 11/3, -9, 11/3; integral of |v| on [0, 5] is 49/3."
+   },
+   {
+    "id": "err-BC-ERR-08009",
+    "verdict": "ok",
+    "evidence": "Record text matches; SymPy: integral of v on [0, 5] is -5/3, distinct from 49/3."
+   },
+   {
+    "id": "err-BC-ERR-08010",
+    "verdict": "ok",
+    "evidence": "Record text matches; |-5/3| = 5/3, distinct from 49/3."
+   },
+   {
+    "id": "err-BC-ERR-99010",
+    "verdict": "ok",
+    "evidence": "Record text matches; 11/3 + |-9 + 11/3| = 9, distinct from 49/3."
+   },
+   {
+    "id": "representations",
+    "verdict": "ok",
+    "evidence": "null; nothing to audit."
+   },
+   {
+    "id": "BC-PRQ-06005",
+    "verdict": "ok",
+    "evidence": "In bundle prerequisites."
+   },
+   {
+    "id": "BC-PRQ-08001",
+    "verdict": "ok",
+    "evidence": "In bundle prerequisites."
+   },
+   {
+    "id": "BC-PRQ-08003",
+    "verdict": "ok",
+    "evidence": "In bundle prerequisites."
+   },
+   {
+    "id": "chk-1",
+    "verdict": "ok",
+    "evidence": "SymPy: 11/3 + 9 + 11/3 = 49/3."
+   },
+   {
+    "id": "chk-2",
+    "verdict": "ok",
+    "evidence": "SymPy: pieces -20/3, 4/3, -7/24; total 199/24."
+   },
+   {
+    "id": "chk-3",
+    "verdict": "ok",
+    "evidence": "SymPy: pieces 7/3, -32/3, 45/8, total 149/8; A -65/24 signed integral; B 65/24 one absolute value; D 7/3 + |integral on [1, 13/2]| = 59/8; all match derivations."
+   }
+  ],
+  "advice": [
+   "ki-1 as a static figure with the negative piece reflected suits a comparison of signed and unsigned area.",
+   "No reader-scores entry although BC-ERR-08009 and BC-ERR-99010 cite a setup point; the scoring habit (write the integral of |v| as the setup line) is not shown as a scored line.",
+   "The strategy block names only one archetype; displacement (BC-CON-08003) as the rival stem is carried by the rival sentence only."
+  ],
+  "counts": {
+   "ok": 14,
+   "unsourced": 0,
+   "wrong": 0,
+   "over_cap": 0,
+   "lint": 0
+  }
+ }
+}

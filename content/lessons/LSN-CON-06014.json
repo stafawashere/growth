@@ -1,0 +1,890 @@
+{
+ "id": "LSN-CON-06014",
+ "version": 1,
+ "kind": "concept",
+ "target_id": "BC-CON-06014",
+ "status": "signed_off",
+ "snapshot_digest": "a6a8ec9d3f59ab8f712e33d30cc22fc64bf2c478fbe7312e3e3118d319c6a42f",
+ "source_digest": "c8f64227c9c46f91d46869b6617086550213633ac09ea913a3a1ad71a7122bdc",
+ "read_minutes": {
+  "full": 3.0,
+  "brief": 2.5
+ },
+ "word_count": {
+  "full": 384,
+  "brief": 311
+ },
+ "sections": [
+  {
+   "id": "LSN-CON-06014#s1",
+   "type": "orientation",
+   "bands": [
+    "low",
+    "mid"
+   ],
+   "skills": [
+    "BC-SKL-06040",
+    "BC-SKL-06041",
+    "BC-SKL-06042",
+    "BC-SKL-06043",
+    "BC-SKL-06044",
+    "BC-SKL-06045"
+   ],
+   "sources": [
+    "BC-CON-06014",
+    "research/units/unit-06-integration-accumulation.md#6.8 Finding Antiderivatives and Indefinite Integrals: Basic Rules and Notation"
+   ],
+   "evidence_tag": "inferred",
+   "text": "A response rewrites the integrand as a sum of basic forms, reverses a derivative rule on each, writes + C, and can confirm the result by differentiating it.",
+   "delivery": {
+    "mode": "text",
+    "reason": "rule 6: BC-REP-01 only",
+    "sources": [
+     "BC-SKL-06040"
+    ]
+   }
+  },
+  {
+   "id": "LSN-CON-06014#s2",
+   "type": "key_ideas",
+   "bands": [
+    "low",
+    "mid"
+   ],
+   "skills": [
+    "BC-SKL-06040",
+    "BC-SKL-06044",
+    "BC-SKL-06045"
+   ],
+   "sources": [
+    "BC-EK-FUN-6C1",
+    "ced:125",
+    "research/units/unit-06-integration-accumulation.md#6.8 Finding Antiderivatives and Indefinite Integrals: Basic Rules and Notation"
+   ],
+   "evidence_tag": "inferred",
+   "ek_id": "BC-EK-FUN-6C1",
+   "depth": "core",
+   "text": "The indefinite integral of f is the whole family F(x) + C, where F' = f and C is any constant. Differentiating a candidate and getting f back confirms it.",
+   "notation": "integral of f(x) dx = F(x) + C",
+   "delivery": {
+    "mode": "text",
+    "reason": "rule 6: a definition, BC-REP-01 only",
+    "sources": [
+     "BC-SKL-06044",
+     "BC-SKL-06045"
+    ]
+   }
+  },
+  {
+   "id": "LSN-CON-06014#s3",
+   "type": "key_ideas",
+   "bands": [
+    "low",
+    "mid"
+   ],
+   "skills": [
+    "BC-SKL-06040",
+    "BC-SKL-06041",
+    "BC-SKL-06042",
+    "BC-SKL-06043",
+    "BC-SKL-06045"
+   ],
+   "sources": [
+    "BC-EK-FUN-6C2",
+    "ced:125",
+    "research/units/unit-06-integration-accumulation.md#6.8 Finding Antiderivatives and Indefinite Integrals: Basic Rules and Notation"
+   ],
+   "evidence_tag": "verified",
+   "ek_id": "BC-EK-FUN-6C2",
+   "depth": "core",
+   "text": "Each derivative rule read backwards is an antiderivative rule. Powers: raise the exponent by one and divide by the new exponent, for every exponent except -1. Also the exponential, logarithm, trigonometric and inverse trigonometric forms.",
+   "notation": "integral of x^n dx = x^(n+1)/(n+1) + C, n not -1",
+   "quote": {
+    "text": "Differentiation rules provide the foundation for finding antiderivatives.",
+    "source": "ced:125"
+   },
+   "delivery": {
+    "mode": "text",
+    "reason": "rule 6: rules, BC-REP-01 only",
+    "sources": [
+     "BC-SKL-06040",
+     "BC-SKL-06041",
+     "BC-SKL-06042",
+     "BC-SKL-06043"
+    ]
+   }
+  },
+  {
+   "id": "LSN-CON-06014#s4",
+   "type": "strategy",
+   "bands": [
+    "low",
+    "mid"
+   ],
+   "skills": [
+    "BC-SKL-06040",
+    "BC-SKL-06045"
+   ],
+   "sources": [
+    "BC-QA-06019"
+   ],
+   "evidence_tag": "verified",
+   "archetype_id": "BC-QA-06019",
+   "cue": "An indefinite integral of a product of binomials, or a fraction whose numerator is a sum.",
+   "method": "First line: the product expanded or the fraction split into a sum of powers.",
+   "rival": "Rival: each factor antidifferentiated separately.",
+   "separating_feature": "A product or quotient has no rule of its own."
+  },
+  {
+   "id": "LSN-CON-06014#s5",
+   "type": "strategy",
+   "bands": [
+    "low",
+    "mid"
+   ],
+   "skills": [
+    "BC-SKL-06041"
+   ],
+   "sources": [
+    "BC-QA-06016"
+   ],
+   "evidence_tag": "verified",
+   "archetype_id": "BC-QA-06016",
+   "cue": "An indefinite integral with supporting work, the technique left to the reader.",
+   "method": "First line: the structural markers of the integrand named.",
+   "rival": "Rival: substitution with the inner derivative absent (BC-ERR-06020).",
+   "separating_feature": "Whether the inner derivative is present."
+  },
+  {
+   "id": "LSN-CON-06014#s6",
+   "type": "strategy",
+   "bands": [
+    "low",
+    "mid"
+   ],
+   "skills": [
+    "BC-SKL-06040"
+   ],
+   "sources": [
+    "BC-QA-06011"
+   ],
+   "evidence_tag": "verified",
+   "archetype_id": "BC-QA-06011",
+   "cue": "An integral on an infinite interval, or unbounded at a point; value or divergence asked.",
+   "method": "First line: the offending limit replaced by a variable.",
+   "rival": "Rival: infinity substituted and computed with (BC-ERR-99007).",
+   "separating_feature": "An infinite limit or an unbounded integrand."
+  },
+  {
+   "id": "LSN-CON-06014#s7",
+   "type": "worked_example",
+   "bands": [
+    "low",
+    "mid"
+   ],
+   "skills": [
+    "BC-SKL-06040",
+    "BC-SKL-06045"
+   ],
+   "sources": [
+    "BC-QA-06019"
+   ],
+   "evidence_tag": "inferred",
+   "archetype_id": "BC-QA-06019",
+   "parameter_draw": {
+    "structure": "root",
+    "coefficient": 3,
+    "first": -2,
+    "second": 1,
+    "power": 2
+   },
+   "problem": {
+    "text": "Find the indefinite integral of (3x - 2)/sqrt(x) dx.",
+    "command_verb": "find"
+   },
+   "calculator_status": "no_calculator",
+   "steps": [
+    {
+     "cue": "A fraction over sqrt(x): no quotient rule backwards.",
+     "why": "Split it.",
+     "expression": [
+      "Multiply",
+      [
+       "Power",
+       "x",
+       [
+        "Rational",
+        -1,
+        2
+       ]
+      ],
+      [
+       "Add",
+       -2,
+       [
+        "Multiply",
+        3,
+        "x"
+       ]
+      ]
+     ],
+     "relation": "new"
+    },
+    {
+     "cue": "sqrt(x) is x^(1/2).",
+     "why": "Each term becomes a power.",
+     "expression": [
+      "Add",
+      [
+       "Multiply",
+       -2,
+       [
+        "Power",
+        "x",
+        [
+         "Rational",
+         -1,
+         2
+        ]
+       ]
+      ],
+      [
+       "Multiply",
+       3,
+       [
+        "Power",
+        "x",
+        [
+         "Rational",
+         1,
+         2
+        ]
+       ]
+      ]
+     ],
+     "relation": "equivalent"
+    },
+    {
+     "cue": "Powers, neither -1.",
+     "why": "Raise by one, divide by the new exponent; + C.",
+     "expression": [
+      "Add",
+      "C",
+      [
+       "Multiply",
+       -4,
+       [
+        "Power",
+        "x",
+        [
+         "Rational",
+         1,
+         2
+        ]
+       ]
+      ],
+      [
+       "Multiply",
+       2,
+       [
+        "Power",
+        "x",
+        [
+         "Rational",
+         3,
+         2
+        ]
+       ]
+      ]
+     ],
+     "relation": "integrate",
+     "variable": "x"
+    },
+    {
+     "cue": "Check: differentiate back.",
+     "why": "3x^(1/2) - 2x^(-1/2), the integrand."
+    }
+   ],
+   "answer": {
+    "form": "symbolic",
+    "mathjson": [
+     "Add",
+     "C",
+     [
+      "Multiply",
+      -4,
+      [
+       "Power",
+       "x",
+       [
+        "Rational",
+        1,
+        2
+       ]
+      ]
+     ],
+     [
+      "Multiply",
+      2,
+      [
+       "Power",
+       "x",
+       [
+        "Rational",
+        3,
+        2
+       ]
+      ]
+     ]
+    ]
+   },
+   "delivery": {
+    "mode": "step_reveal",
+    "reason": "rule 1",
+    "sources": []
+   }
+  },
+  {
+   "id": "LSN-CON-06014#err-BC-ERR-06033",
+   "type": "common_error",
+   "bands": [
+    "low",
+    "mid"
+   ],
+   "skills": [
+    "BC-SKL-06040"
+   ],
+   "sources": [
+    "BC-ERR-06033",
+    "BC-MIS-02009"
+   ],
+   "evidence_tag": "inferred",
+   "error_id": "BC-ERR-06033",
+   "observed_behavior": "The response raises each exponent by one but does not divide by the new exponent, or divides by the old exponent instead.",
+   "scoring_consequence": "The proposed function does not differentiate to the integrand, so an antiderivative point is not earned.",
+   "wrong_step": {
+    "text": "No division.",
+    "expression": [
+     "Add",
+     "C",
+     [
+      "Multiply",
+      -2,
+      [
+       "Power",
+       "x",
+       [
+        "Rational",
+        1,
+        2
+       ]
+      ]
+     ],
+     [
+      "Multiply",
+      3,
+      [
+       "Power",
+       "x",
+       [
+        "Rational",
+        3,
+        2
+       ]
+      ]
+     ]
+    ]
+   },
+   "right_step": {
+    "text": "Divided by 3/2 and 1/2.",
+    "expression": [
+     "Add",
+     "C",
+     [
+      "Multiply",
+      -4,
+      [
+       "Power",
+       "x",
+       [
+        "Rational",
+        1,
+        2
+       ]
+      ]
+     ],
+     [
+      "Multiply",
+      2,
+      [
+       "Power",
+       "x",
+       [
+        "Rational",
+        3,
+        2
+       ]
+      ]
+     ]
+    ]
+   },
+   "relation": "distinct",
+   "possible_reason": {
+    "misconception_id": "BC-MIS-02009",
+    "text": "does not see constants and radicals as powers"
+   },
+   "delivery": {
+    "mode": "step_reveal",
+    "reason": "rule 1",
+    "sources": []
+   }
+  },
+  {
+   "id": "LSN-CON-06014#err-BC-ERR-07026",
+   "type": "common_error",
+   "bands": [
+    "low",
+    "mid"
+   ],
+   "skills": [
+    "BC-SKL-06044"
+   ],
+   "sources": [
+    "BC-ERR-07026",
+    "BC-MIS-06018"
+   ],
+   "evidence_tag": "inferred",
+   "error_id": "BC-ERR-07026",
+   "observed_behavior": "The antiderivative equation is written with no constant.",
+   "scoring_consequence": "At most the first two points are available; the guideline caps the response there.",
+   "wrong_step": {
+    "text": "No + C.",
+    "expression": [
+     "Add",
+     [
+      "Multiply",
+      -4,
+      [
+       "Power",
+       "x",
+       [
+        "Rational",
+        1,
+        2
+       ]
+      ]
+     ],
+     [
+      "Multiply",
+      2,
+      [
+       "Power",
+       "x",
+       [
+        "Rational",
+        3,
+        2
+       ]
+      ]
+     ]
+    ]
+   },
+   "right_step": {
+    "text": "With + C.",
+    "expression": [
+     "Add",
+     "C",
+     [
+      "Multiply",
+      -4,
+      [
+       "Power",
+       "x",
+       [
+        "Rational",
+        1,
+        2
+       ]
+      ]
+     ],
+     [
+      "Multiply",
+      2,
+      [
+       "Power",
+       "x",
+       [
+        "Rational",
+        3,
+        2
+       ]
+      ]
+     ]
+    ]
+   },
+   "relation": "distinct",
+   "possible_reason": {
+    "misconception_id": "BC-MIS-06018",
+    "text": "treats the antiderivative as unique, so the arbitrary constant is decoration rather than part of the answer"
+   },
+   "delivery": {
+    "mode": "step_reveal",
+    "reason": "rule 1",
+    "sources": []
+   }
+  },
+  {
+   "id": "LSN-CON-06014#prq-BC-PRQ-06002",
+   "type": "prerequisite_bridge",
+   "bands": [
+    "low",
+    "mid"
+   ],
+   "skills": [
+    "BC-SKL-06040"
+   ],
+   "sources": [
+    "BC-PRQ-06002"
+   ],
+   "evidence_tag": "inferred",
+   "prerequisite_id": "BC-PRQ-06002",
+   "text": "Radicals and reciprocals become powers before the power rule; exponent -1 is excluded."
+  },
+  {
+   "id": "LSN-CON-06014#prq-BC-PRQ-06003",
+   "type": "prerequisite_bridge",
+   "bands": [
+    "low",
+    "mid"
+   ],
+   "skills": [
+    "BC-SKL-06041"
+   ],
+   "sources": [
+    "BC-PRQ-06003"
+   ],
+   "evidence_tag": "inferred",
+   "prerequisite_id": "BC-PRQ-06003",
+   "text": "ln needs an absolute value around a linear expression that can be negative."
+  },
+  {
+   "id": "LSN-CON-06014#prq-BC-PRQ-06004",
+   "type": "prerequisite_bridge",
+   "bands": [
+    "low",
+    "mid"
+   ],
+   "skills": [
+    "BC-SKL-06042",
+    "BC-SKL-06043"
+   ],
+   "sources": [
+    "BC-PRQ-06004"
+   ],
+   "evidence_tag": "inferred",
+   "prerequisite_id": "BC-PRQ-06004",
+   "text": "A squared trigonometric integrand is rewritten by an identity first."
+  }
+ ],
+ "checks": [
+  {
+   "id": "LSN-CON-06014#chk-1",
+   "check_kind": "completion",
+   "bands": [
+    "low",
+    "mid"
+   ],
+   "format": "short_answer",
+   "archetype_id": "BC-QA-06019",
+   "parameter_draw": {
+    "structure": "root",
+    "coefficient": 3,
+    "first": -2,
+    "second": 1,
+    "power": 2
+   },
+   "completes": "LSN-CON-06014#s7",
+   "stem": {
+    "text": "(3x - 2)/sqrt(x) = 3x^(1/2) - 2x^(-1/2). Find its indefinite integral.",
+    "command_verb": "find"
+   },
+   "answer_key": {
+    "form": "symbolic",
+    "mathjson": [
+     "Add",
+     "C",
+     [
+      "Multiply",
+      -4,
+      [
+       "Power",
+       "x",
+       [
+        "Rational",
+        1,
+        2
+       ]
+      ]
+     ],
+     [
+      "Multiply",
+      2,
+      [
+       "Power",
+       "x",
+       [
+        "Rational",
+        3,
+        2
+       ]
+      ]
+     ]
+    ]
+   },
+   "worked_solution": [
+    {
+     "step": 1,
+     "text": "The split.",
+     "mathjson": [
+      "Add",
+      [
+       "Multiply",
+       -2,
+       [
+        "Power",
+        "x",
+        [
+         "Rational",
+         -1,
+         2
+        ]
+       ]
+      ],
+      [
+       "Multiply",
+       3,
+       [
+        "Power",
+        "x",
+        [
+         "Rational",
+         1,
+         2
+        ]
+       ]
+      ]
+     ],
+     "relation": "new"
+    },
+    {
+     "step": 2,
+     "text": "Power rule, + C.",
+     "mathjson": [
+      "Add",
+      "C",
+      [
+       "Multiply",
+       -4,
+       [
+        "Power",
+        "x",
+        [
+         "Rational",
+         1,
+         2
+        ]
+       ]
+      ],
+      [
+       "Multiply",
+       2,
+       [
+        "Power",
+        "x",
+        [
+         "Rational",
+         3,
+         2
+        ]
+       ]
+      ]
+     ],
+     "relation": "integrate",
+     "variable": "x"
+    }
+   ],
+   "calculator_status": "no_calculator",
+   "representation": "BC-REP-01",
+   "skills": [
+    "BC-SKL-06040"
+   ]
+  },
+  {
+   "id": "LSN-CON-06014#chk-2",
+   "check_kind": "isomorph",
+   "bands": [
+    "low",
+    "mid"
+   ],
+   "format": "short_answer",
+   "archetype_id": "BC-QA-06019",
+   "parameter_draw": {
+    "structure": "product",
+    "coefficient": 2,
+    "first": 3,
+    "second": -1,
+    "power": 2
+   },
+   "stem": {
+    "text": "Find the indefinite integral of (x + 3)(2x - 1) dx.",
+    "command_verb": "find"
+   },
+   "answer_key": {
+    "form": "symbolic",
+    "mathjson": [
+     "Add",
+     "C",
+     [
+      "Multiply",
+      -3,
+      "x"
+     ],
+     [
+      "Multiply",
+      [
+       "Rational",
+       2,
+       3
+      ],
+      [
+       "Power",
+       "x",
+       3
+      ]
+     ],
+     [
+      "Multiply",
+      [
+       "Rational",
+       5,
+       2
+      ],
+      [
+       "Power",
+       "x",
+       2
+      ]
+     ]
+    ]
+   },
+   "worked_solution": [
+    {
+     "step": 1,
+     "text": "Product.",
+     "mathjson": [
+      "Multiply",
+      [
+       "Add",
+       -1,
+       [
+        "Multiply",
+        2,
+        "x"
+       ]
+      ],
+      [
+       "Add",
+       3,
+       "x"
+      ]
+     ],
+     "relation": "new"
+    },
+    {
+     "step": 2,
+     "text": "Expanded.",
+     "mathjson": [
+      "Add",
+      -3,
+      [
+       "Multiply",
+       2,
+       [
+        "Power",
+        "x",
+        2
+       ]
+      ],
+      [
+       "Multiply",
+       5,
+       "x"
+      ]
+     ],
+     "relation": "equivalent"
+    },
+    {
+     "step": 3,
+     "text": "Power rule, + C.",
+     "mathjson": [
+      "Add",
+      "C",
+      [
+       "Multiply",
+       -3,
+       "x"
+      ],
+      [
+       "Multiply",
+       [
+        "Rational",
+        2,
+        3
+       ],
+       [
+        "Power",
+        "x",
+        3
+       ]
+      ],
+      [
+       "Multiply",
+       [
+        "Rational",
+        5,
+        2
+       ],
+       [
+        "Power",
+        "x",
+        2
+       ]
+      ]
+     ],
+     "relation": "integrate",
+     "variable": "x"
+    }
+   ],
+   "calculator_status": "no_calculator",
+   "representation": "BC-REP-01",
+   "skills": [
+    "BC-SKL-06040"
+   ]
+  }
+ ],
+ "refresher": [
+  "LSN-CON-06014#s2",
+  "LSN-CON-06014#s3",
+  "LSN-CON-06014#err-BC-ERR-06033",
+  "LSN-CON-06014#err-BC-ERR-07026",
+  "LSN-CON-06014#s7"
+ ],
+ "provenance": {
+  "author": "tools/lesson_transcribe.py",
+  "prompt_version": "generator/lesson_v1",
+  "design_path": "docs/lessons/unit-06/LSN-CON-06014.md",
+  "signed_off_by": "claude-opus-5-5",
+  "signed_off_at": "2026-09-29",
+  "not_human": true
+ }
+}

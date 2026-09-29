@@ -1,0 +1,135 @@
+{
+ "lesson_id": "LSN-CON-01014",
+ "version": 1,
+ "compared_on": "2026-09-29",
+ "auditor": "claude-opus-5-5",
+ "resolve": {
+  "date": "2026-09-29",
+  "problems": 4,
+  "agreed": 4,
+  "judgments_pending": 0,
+  "all_agree": true,
+  "verdicts": [
+   {
+    "id": "LSN-CON-01014#ex-1",
+    "agree": true,
+    "detail": "agree (symbolic)",
+    "method": "denominator (x+2)(x-1); rational function continuous on its domain"
+   },
+   {
+    "id": "LSN-CON-01014#chk-1",
+    "agree": true,
+    "detail": "agree (symbolic)",
+    "method": "exclude -2 and 1"
+   },
+   {
+    "id": "LSN-CON-01014#chk-2",
+    "agree": true,
+    "detail": "agree (symbolic)",
+    "method": "x>=-3 and x!=2"
+   },
+   {
+    "id": "LSN-CON-01014#chk-3",
+    "agree": true,
+    "detail": "agree (symbolic)",
+    "method": "denominator (x-4)(x+3)"
+   }
+  ],
+  "answers_file": "docs/lessons/verification/answers/delta-2026-09-29-a.json"
+ },
+ "audit": {
+  "date": "2026-09-29",
+  "auditor": "claude-opus-5-5",
+  "blocks": [
+   {
+    "id": "orientation",
+    "verdict": "ok",
+    "evidence": "Paraphrases BC-CON-01014 and the BC-QA-01015 asked_to_produce (intervals plus a reason naming the family); 31 words."
+   },
+   {
+    "id": "ki-1",
+    "verdict": "ok",
+    "evidence": "Quote matches ced page 49 LIM-2.B.1; the one sided endpoint condition paraphrases the 1.12 Interval continuity paragraph."
+   },
+   {
+    "id": "ki-2",
+    "verdict": "ok",
+    "evidence": "fixed 2026-09-29: answer restated as the domain cut at each undefined input, open there and closed at an included endpoint such as a radicand's zero, matching chk-2's key [-3,2) U (2,oo); prose Key ideas line matched."
+   },
+   {
+    "id": "st-1",
+    "verdict": "ok",
+    "evidence": "fixed 2026-09-29: cue cut to 17 words; separating feature restated as the domain cut at each undefined input, with the piece count limited to a rational rule, so the radical family in chk-2 no longer contradicts it; prose Method choice line matched."
+   },
+   {
+    "id": "ex-1",
+    "verdict": "ok",
+    "evidence": "SymPy: solve(x^2+x-2) = {-2, 1}; answer three open intervals; zero 3 differs from both roots per the constraint."
+   },
+   {
+    "id": "err-BC-ERR-01031",
+    "verdict": "ok",
+    "evidence": "Record text verbatim; SymPy sets differ (1 left inside); reason words from BC-MIS-01019."
+   },
+   {
+    "id": "err-BC-ERR-01032",
+    "verdict": "ok",
+    "evidence": "fixed 2026-09-29: wrong step is now the piece Interval.Lopen(-2, 1) against Interval.open(-2, 1); SymPy: 1 lies in the wrong set only, and it differs from err-BC-ERR-01031's wrong set. Earlier: Record text verbatim; SymPy wrong set contains 1 and differs from the right set; possible_reason null."
+   },
+   {
+    "id": "representations",
+    "verdict": "ok",
+    "evidence": "Null; 1.12 Representations names BC-REP-01 and BC-REP-04 conversions only."
+   },
+   {
+    "id": "BC-PRQ-01003",
+    "verdict": "ok",
+    "evidence": "Restates description_plain; slip matches failure_signature (wrong branch at a boundary)."
+   },
+   {
+    "id": "BC-PRQ-01008",
+    "verdict": "ok",
+    "evidence": "Restates description_plain; slip matches failure_signature (intervals including points outside the domain)."
+   },
+   {
+    "id": "BC-PRQ-01010",
+    "verdict": "ok",
+    "evidence": "fixed 2026-09-29: slip now states the record's failure_signature: a conclusion stated on a closed interval when the theorem gives an interior point."
+   },
+   {
+    "id": "chk-1",
+    "verdict": "ok",
+    "evidence": "SymPy: excluded {-2, 1}, three open pieces, equal to ex-1."
+   },
+   {
+    "id": "chk-2",
+    "verdict": "ok",
+    "evidence": "SymPy: Interval(-3, oo) minus {2} equals Union(Interval.Ropen(-3, 2), Interval.open(2, oo)); matches the radical family notes."
+   },
+   {
+    "id": "chk-3",
+    "verdict": "ok",
+    "evidence": "SymPy: solve(x^2-x-12) = {-3, 4}; key three open pieces; option C label and expr are the same set (-oo, 4) U (4, oo); A and B are distinct wrong sets."
+   }
+  ],
+  "advice": [
+   "st-1's separating feature (\"one more piece than there are excluded inputs\") only holds for isolated excluded inputs; in the radical family (chk-2) a whole ray is excluded and the count fails. Restrict the feature to rational rules or restate it.",
+   "BC-PRQ-01003 (piecewise rules) is bridged but the lesson has no piecewise example or check; BC-SKL-01048 is otherwise untaught.",
+   "err-BC-ERR-01032 wrong expr, as a SymPy set, loses the bracket: Union with Interval.Lopen(-2, 1) evaluates to (-oo, -2) U (-2, oo), the same set as err-BC-ERR-01031's wrong step, so the two error blocks are indistinguishable to a set comparison.",
+   "The BC-QA-01015 invariant \"'continuous on' in key\" is not met by any check key string; confirm it applies to lesson checks.",
+   "Delivery: text is adequate, but an answer that is a union of intervals is a reading on a number line; a small number line figure with open and closed endpoints would serve err-BC-ERR-01032 better than text.",
+   "Recognition, first written line (denominator set to zero) and rival are taught; the scoring habit of naming the family is taught in ex-1 step 3 but no check asks for the reason."
+  ],
+  "counts": {
+   "ok": 14,
+   "unsourced": 0,
+   "wrong": 0,
+   "over_cap": 0,
+   "lint": 0
+  },
+  "fix_notes": [
+   "Fixed ki-2 (wrong), st-1 (over_cap and separating feature contradicted by chk-2), BC-PRQ-01010 (unsourced), and err-BC-ERR-01032 whose wrong set equalled err-BC-ERR-01031's: wrong is now Interval.Lopen(-2, 1), right Interval.open(-2, 1), the piece itself, so 1 is in the wrong set and the two error blocks differ. word_count 531/448, read_minutes 3.54/2.99.",
+   "Left: BC-PRQ-01003 bridged without a piecewise example (structural); 'continuous on' key invariant (needs a ruling); number line figure (delivery preference); no check asking for the reason (structural)."
+  ]
+ }
+}

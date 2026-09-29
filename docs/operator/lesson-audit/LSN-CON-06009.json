@@ -1,0 +1,128 @@
+{
+ "lesson_id": "LSN-CON-06009",
+ "version": 1,
+ "compared_on": "2026-09-29",
+ "auditor": "claude-opus-5-5",
+ "resolve": {
+  "date": "2026-09-29",
+  "problems": 4,
+  "agreed": 4,
+  "judgments_pending": 0,
+  "all_agree": true,
+  "verdicts": [
+   {
+    "id": "LSN-CON-06009#ex-1",
+    "agree": true,
+    "detail": "agree (symbolic)",
+    "method": "Hand computation (areas, FTC, substitution)."
+   },
+   {
+    "id": "LSN-CON-06009#chk-1",
+    "agree": true,
+    "detail": "agree (symbolic)",
+    "method": "Hand computation (areas, FTC, substitution)."
+   },
+   {
+    "id": "LSN-CON-06009#chk-2",
+    "agree": true,
+    "detail": "agree (symbolic)",
+    "method": "Hand computation (areas, FTC, substitution)."
+   },
+   {
+    "id": "LSN-CON-06009#chk-3",
+    "agree": true,
+    "detail": "key option B, re-solver B",
+    "method": "Hand computation (areas, FTC, substitution)."
+   }
+  ],
+  "answers_file": "/tmp/claude-0/-home-user-growth/ac029253-8ff0-5a4b-8b5f-cdcaf5e8ff8d/scratchpad/verify/answers_09.json"
+ },
+ "audit": {
+  "date": "2026-09-29",
+  "auditor": "claude-opus-5-5",
+  "blocks": [
+   {
+    "id": "orientation",
+    "verdict": "ok",
+    "evidence": "24 words; paraphrase of BC-CON-06009 and the justification-requirements heading."
+   },
+   {
+    "id": "ki-1",
+    "verdict": "ok",
+    "evidence": "35 words; g'=f, g''=f', candidates test all sourced in 6.5 and BC-PT-99011."
+   },
+   {
+    "id": "st-1",
+    "verdict": "ok",
+    "evidence": "Matches BC-QA-06003 path entries two and three and BC-ERR-06008; 32 words."
+   },
+   {
+    "id": "ex-1",
+    "verdict": "ok",
+    "evidence": "Zeros of f: 1, 10/3, 5, 8; f changes + to - at 10/3 and 8 (hand sign chart on linear pieces, SymPy solve)."
+   },
+   {
+    "id": "reader-scores:ex-1",
+    "verdict": "ok",
+    "evidence": "BC-PT-99024 and BC-PT-99013 lines verbatim from the bundle."
+   },
+   {
+    "id": "err-BC-ERR-06008",
+    "verdict": "ok",
+    "evidence": "Bundle text verbatim; drawn peaks of f at x=2 and 6."
+   },
+   {
+    "id": "err-BC-ERR-06009",
+    "verdict": "ok",
+    "evidence": "Bundle text verbatim; turning points of f at 2, 4, 6, 10 (8 is not: f decreasing both sides)."
+   },
+   {
+    "id": "err-BC-ERR-06010",
+    "verdict": "ok",
+    "evidence": "Bundle text verbatim; reason tied to g not f, per sg-25:17 in justification-requirements."
+   },
+   {
+    "id": "err-BC-ERR-06012",
+    "verdict": "ok",
+    "evidence": "Bundle text verbatim; candidates add endpoints 0 and 12."
+   },
+   {
+    "id": "representations",
+    "verdict": "ok",
+    "evidence": "null."
+   },
+   {
+    "id": "bridge:BC-PRQ-06007",
+    "verdict": "ok",
+    "evidence": "12 words; paraphrase of failure_signature."
+   },
+   {
+    "id": "chk-1",
+    "verdict": "ok",
+    "evidence": "Same f; maxima 10/3 and 8."
+   },
+   {
+    "id": "chk-2",
+    "verdict": "ok",
+    "evidence": "Zeros 2/3, 3, 16/3, 8; + to - at 2/3 and 16/3; 8 is a minimum with the semicircle above."
+   },
+   {
+    "id": "chk-3",
+    "verdict": "ok",
+    "evidence": "Key 2, 4, 6, 10 with an f-based reason; distractors match BC-ERR-06009, 06010, 06008."
+   }
+  ],
+  "advice": [
+   "The single bridge (area formulas) does not serve a feature lesson; nothing on reading sign and slope of f.",
+   "ki-1 and err-BC-ERR-06012 name the absolute extremum candidates test but no example or check asks for an absolute extremum.",
+   "Interactive reading of f's sign and slope at a dragged input suits a reading idea."
+  ],
+  "counts": {
+   "ok": 14,
+   "unsourced": 0,
+   "wrong": 0,
+   "over_cap": 0,
+   "lint": 0
+  }
+ }
+}

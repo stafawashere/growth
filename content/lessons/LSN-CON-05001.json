@@ -1,0 +1,917 @@
+{
+ "id": "LSN-CON-05001",
+ "version": 1,
+ "kind": "concept",
+ "target_id": "BC-CON-05001",
+ "status": "signed_off",
+ "snapshot_digest": "a6a8ec9d3f59ab8f712e33d30cc22fc64bf2c478fbe7312e3e3118d319c6a42f",
+ "source_digest": "602c65cd4468d7be9d74177eb7b5479c565008f9e7d2c8e6b718cc55fd45c22f",
+ "read_minutes": {
+  "full": 4.8,
+  "brief": 3.0
+ },
+ "word_count": {
+  "full": 574,
+  "brief": 367
+ },
+ "sections": [
+  {
+   "id": "LSN-CON-05001#s1",
+   "type": "orientation",
+   "bands": [
+    "low",
+    "mid"
+   ],
+   "skills": [
+    "BC-SKL-05001",
+    "BC-SKL-05002",
+    "BC-SKL-05003",
+    "BC-SKL-05004",
+    "BC-SKL-05005",
+    "BC-SKL-05006"
+   ],
+   "sources": [
+    "BC-CON-05001",
+    "research/units/unit-05-analytical-applications-differentiation.md#5.1 Using the Mean Value Theorem"
+   ],
+   "evidence_tag": "inferred",
+   "text": "A response states f is continuous because differentiable, writes the average rate as a difference of outputs over a difference of inputs, and answers yes by the Mean Value Theorem.",
+   "delivery": {
+    "mode": "text",
+    "reason": "rule 5: a statement of what a response shows; no figure-bearing BC-REP on the skills",
+    "sources": [
+     "BC-SKL-05001"
+    ]
+   }
+  },
+  {
+   "id": "LSN-CON-05001#s2",
+   "type": "key_ideas",
+   "bands": [
+    "low",
+    "mid"
+   ],
+   "skills": [
+    "BC-SKL-05001",
+    "BC-SKL-05002",
+    "BC-SKL-05003",
+    "BC-SKL-05004",
+    "BC-SKL-05005",
+    "BC-SKL-05006"
+   ],
+   "sources": [
+    "BC-EK-FUN-1B1",
+    "ced:99",
+    "sg-23:3",
+    "research/units/unit-05-analytical-applications-differentiation.md#5.1 Using the Mean Value Theorem"
+   ],
+   "evidence_tag": "verified",
+   "ek_id": "BC-EK-FUN-1B1",
+   "depth": "core",
+   "text": "Continuous on [a, b] and differentiable on (a, b): some c in (a, b) has f'(c) equal to the average rate. If f(a) = f(b) that rate is 0 (Rolle). Differentiability supplies continuity, and the response says so.",
+   "notation": "f'(c); average rate of change",
+   "quote": {
+    "text": "guarantees a point within that open interval where the instantaneous rate of change equals the average rate of change",
+    "source": "ced:99"
+   },
+   "delivery": {
+    "mode": "text",
+    "reason": "rule 5: hypotheses and conclusion of a theorem, BC-REP-04 on BC-SKL-05001 and 05004",
+    "sources": [
+     "BC-SKL-05001",
+     "BC-SKL-05004"
+    ]
+   }
+  },
+  {
+   "id": "LSN-CON-05001#s3",
+   "type": "strategy",
+   "bands": [
+    "low",
+    "mid"
+   ],
+   "skills": [
+    "BC-SKL-05001",
+    "BC-SKL-05002",
+    "BC-SKL-05003",
+    "BC-SKL-05004",
+    "BC-SKL-05006"
+   ],
+   "sources": [
+    "BC-QA-05001"
+   ],
+   "evidence_tag": "verified",
+   "archetype_id": "BC-QA-05001",
+   "cue": "Must some c give f' a stated value? A differentiable f and a table.",
+   "method": "First line: f is differentiable, so continuous on the closed interval.",
+   "rival": "Rival: solving for c.",
+   "separating_feature": "Must there be asks existence; no c is located."
+  },
+  {
+   "id": "LSN-CON-05001#s4",
+   "type": "strategy",
+   "bands": [
+    "low",
+    "mid"
+   ],
+   "skills": [
+    "BC-SKL-05003",
+    "BC-SKL-05005"
+   ],
+   "sources": [
+    "BC-QA-05002"
+   ],
+   "evidence_tag": "verified",
+   "archetype_id": "BC-QA-05002",
+   "cue": "Find the value in the open interval, from a formula and a closed interval.",
+   "method": "First line: the average rate of change.",
+   "rival": "Rival: differentiating the average rate expression.",
+   "separating_feature": "The average rate is a number; f' is set equal to it."
+  },
+  {
+   "id": "LSN-CON-05001#s5",
+   "type": "worked_example",
+   "bands": [
+    "low",
+    "mid"
+   ],
+   "skills": [
+    "BC-SKL-05001",
+    "BC-SKL-05002",
+    "BC-SKL-05003",
+    "BC-SKL-05004",
+    "BC-SKL-05006"
+   ],
+   "sources": [
+    "BC-QA-05001"
+   ],
+   "evidence_tag": "inferred",
+   "archetype_id": "BC-QA-05001",
+   "parameter_draw": {
+    "inputs": [
+     1,
+     3,
+     4,
+     6,
+     9
+    ],
+    "outputs": [
+     2,
+     5,
+     -3,
+     17,
+     8
+    ],
+    "rows": "0-3",
+    "context": "bare",
+    "hypothesis": "differentiable"
+   },
+   "problem": {
+    "text": "f differentiable; x: 1, 3, 4, 6, 9; f(x): 2, 5, -3, 17, 8. Must some c in (1, 6) have f'(c) = 3?",
+    "command_verb": "justify"
+   },
+   "calculator_status": "no_calculator",
+   "steps": [
+    {
+     "cue": "Stem says differentiable.",
+     "why": "Continuous on [1, 6] because differentiable."
+    },
+    {
+     "cue": "Rows x = 1 and x = 6.",
+     "why": "Difference of outputs over difference of inputs.",
+     "expression": 3,
+     "relation": "new"
+    },
+    {
+     "cue": "Compare with the named 3.",
+     "why": "They match.",
+     "expression": 3,
+     "relation": "equivalent"
+    },
+    {
+     "cue": "Hypotheses hold, rate equals 3.",
+     "why": "Yes: by the Mean Value Theorem some c in (1, 6) has f'(c) = 3.",
+     "point_type_id": "BC-PT-99017"
+    }
+   ],
+   "answer": {
+    "form": "statement",
+    "mathjson": "Eq(Subs(Derivative(f(x), x), x, c), 3)",
+    "label": "Yes, by the Mean Value Theorem."
+   },
+   "delivery": {
+    "mode": "step_reveal",
+    "reason": "rule 1",
+    "sources": []
+   }
+  },
+  {
+   "id": "LSN-CON-05001#s6",
+   "type": "worked_example",
+   "bands": [
+    "low"
+   ],
+   "skills": [
+    "BC-SKL-05003",
+    "BC-SKL-05005"
+   ],
+   "sources": [
+    "BC-QA-05002"
+   ],
+   "evidence_tag": "inferred",
+   "archetype_id": "BC-QA-05002",
+   "parameter_draw": {
+    "cubic": 1,
+    "linear": 2,
+    "constant": 5,
+    "low": 0,
+    "width": 3
+   },
+   "problem": {
+    "text": "f(x) = x^3 + 2x + 5. Find c in (0, 3) where f'(c) equals the average rate over [0, 3].",
+    "command_verb": "find"
+   },
+   "calculator_status": "no_calculator",
+   "steps": [
+    {
+     "cue": "Find the value: average rate first.",
+     "why": "It is the target for f'.",
+     "expression": 11,
+     "relation": "new"
+    },
+    {
+     "cue": "Evaluate.",
+     "why": "33 over 3.",
+     "expression": 11,
+     "relation": "equivalent"
+    },
+    {
+     "cue": "f'(c) equals that rate.",
+     "why": "f'(x) = 3x^2 + 2.",
+     "expression": [
+      "Equal",
+      [
+       "Add",
+       2,
+       [
+        "Multiply",
+        3,
+        [
+         "Power",
+         "c",
+         2
+        ]
+       ]
+      ],
+      11
+     ],
+     "relation": "new"
+    },
+    {
+     "cue": "Solve.",
+     "why": "c^2 = 3.",
+     "expression": [
+      "Set",
+      [
+       "Power",
+       3,
+       [
+        "Rational",
+        1,
+        2
+       ]
+      ],
+      [
+       "Multiply",
+       -1,
+       [
+        "Power",
+        3,
+        [
+         "Rational",
+         1,
+         2
+        ]
+       ]
+      ]
+     ],
+     "relation": "solve",
+     "variable": "c"
+    },
+    {
+     "cue": "Open interval (0, 3).",
+     "why": "The negative root lies outside.",
+     "expression": [
+      "Power",
+      3,
+      [
+       "Rational",
+       1,
+       2
+      ]
+     ],
+     "relation": "new"
+    }
+   ],
+   "answer": {
+    "form": "symbolic",
+    "mathjson": [
+     "Power",
+     3,
+     [
+      "Rational",
+      1,
+      2
+     ]
+    ]
+   },
+   "delivery": {
+    "mode": "step_reveal",
+    "reason": "rule 1",
+    "sources": []
+   }
+  },
+  {
+   "id": "LSN-CON-05001#s7",
+   "type": "what_a_reader_scores",
+   "bands": [
+    "low",
+    "mid"
+   ],
+   "skills": [
+    "BC-SKL-05001",
+    "BC-SKL-05002",
+    "BC-SKL-05003",
+    "BC-SKL-05004",
+    "BC-SKL-05006"
+   ],
+   "sources": [
+    "BC-PT-99017"
+   ],
+   "evidence_tag": "verified",
+   "example_id": "LSN-CON-05001#s5",
+   "lines": [
+    {
+     "point_type_id": "BC-PT-99017",
+     "text": "Mean Value Theorem or Rolle conclusion. Earned by: A correct average rate of change together with a statement of differentiability on the open interval and continuity on the closed interval, and a yes (sg-23:3, sg-21:17). Not earned by: An appeal to the Intermediate Value Theorem, which sg-23:3 states cannot earn the conclusion point here. The hypotheses of the theorem must be stated."
+    }
+   ]
+  },
+  {
+   "id": "LSN-CON-05001#err-BC-ERR-05002",
+   "type": "common_error",
+   "bands": [
+    "low",
+    "mid"
+   ],
+   "skills": [
+    "BC-SKL-05002",
+    "BC-SKL-05004"
+   ],
+   "sources": [
+    "BC-ERR-05002",
+    "BC-MIS-99009"
+   ],
+   "evidence_tag": "inferred",
+   "error_id": "BC-ERR-05002",
+   "observed_behavior": "The response asserts that the function is continuous without saying that differentiability supplies it, or omits continuity altogether.",
+   "scoring_consequence": "The point tied to the hypothesis is lost; the 2025 guideline refused a bare statement that the function is continuous.",
+   "wrong_step": {
+    "text": "f is continuous.",
+    "expression": "continuous_asserted"
+   },
+   "right_step": {
+    "text": "Continuous because differentiable.",
+    "expression": "continuous_because_differentiable"
+   },
+   "relation": "distinct",
+   "possible_reason": {
+    "misconception_id": "BC-MIS-99009",
+    "text": "continuity is asserted rather than derived from differentiability"
+   },
+   "delivery": {
+    "mode": "step_reveal",
+    "reason": "rule 1",
+    "sources": []
+   }
+  },
+  {
+   "id": "LSN-CON-05001#err-BC-ERR-05004",
+   "type": "common_error",
+   "bands": [
+    "low",
+    "mid"
+   ],
+   "skills": [
+    "BC-SKL-05004",
+    "BC-SKL-05006"
+   ],
+   "sources": [
+    "BC-ERR-05004",
+    "BC-MIS-05002"
+   ],
+   "evidence_tag": "inferred",
+   "error_id": "BC-ERR-05004",
+   "observed_behavior": "The response computes the needed arithmetic but never says yes and never names a theorem.",
+   "scoring_consequence": "The justification point is lost; the guideline requires an affirmative answer in some form.",
+   "wrong_step": {
+    "text": "Rate is 3.",
+    "expression": "rate_only"
+   },
+   "right_step": {
+    "text": "Yes, by the Mean Value Theorem.",
+    "expression": "yes_by_mean_value_theorem"
+   },
+   "relation": "distinct",
+   "possible_reason": {
+    "misconception_id": "BC-MIS-05002",
+    "text": "the verified hypothesis and the affirmative conclusion are left out"
+   },
+   "delivery": {
+    "mode": "step_reveal",
+    "reason": "rule 1",
+    "sources": []
+   }
+  },
+  {
+   "id": "LSN-CON-05001#err-BC-ERR-05005",
+   "type": "common_error",
+   "bands": [
+    "low",
+    "mid"
+   ],
+   "skills": [
+    "BC-SKL-05005"
+   ],
+   "sources": [
+    "BC-ERR-05005"
+   ],
+   "evidence_tag": "inferred",
+   "error_id": "BC-ERR-05005",
+   "observed_behavior": "The response solves the derivative equation and reports a solution that is an endpoint or lies outside the interval.",
+   "scoring_consequence": "The answer point is lost because the theorem places the point strictly inside the interval.",
+   "wrong_step": {
+    "text": "Both roots.",
+    "expression": [
+     "Set",
+     [
+      "Power",
+      3,
+      [
+       "Rational",
+       1,
+       2
+      ]
+     ],
+     [
+      "Multiply",
+      -1,
+      [
+       "Power",
+       3,
+       [
+        "Rational",
+        1,
+        2
+       ]
+      ]
+     ]
+    ]
+   },
+   "right_step": {
+    "text": "Only the root inside (0, 3).",
+    "expression": [
+     "Power",
+     3,
+     [
+      "Rational",
+      1,
+      2
+     ]
+    ]
+   },
+   "relation": "distinct",
+   "delivery": {
+    "mode": "step_reveal",
+    "reason": "rule 1",
+    "sources": []
+   }
+  },
+  {
+   "id": "LSN-CON-05001#err-BC-ERR-05006",
+   "type": "common_error",
+   "bands": [
+    "low",
+    "mid"
+   ],
+   "skills": [
+    "BC-SKL-05006"
+   ],
+   "sources": [
+    "BC-ERR-05006",
+    "BC-MIS-05005"
+   ],
+   "evidence_tag": "inferred",
+   "error_id": "BC-ERR-05006",
+   "observed_behavior": "The response justifies the existence of an input with a given derivative value by appealing to the Intermediate Value Theorem.",
+   "scoring_consequence": "The justification point is lost outright; the 2023 guideline names this as disqualifying.",
+   "wrong_step": {
+    "text": "By the Intermediate Value Theorem.",
+    "expression": "by_intermediate_value_theorem"
+   },
+   "right_step": {
+    "text": "By the Mean Value Theorem.",
+    "expression": "by_mean_value_theorem"
+   },
+   "relation": "distinct",
+   "possible_reason": {
+    "misconception_id": "BC-MIS-05005",
+    "text": "the Intermediate Value Theorem and the Mean Value Theorem are used interchangeably"
+   },
+   "delivery": {
+    "mode": "step_reveal",
+    "reason": "rule 1",
+    "sources": []
+   }
+  },
+  {
+   "id": "LSN-CON-05001#s8",
+   "type": "representations",
+   "bands": [
+    "low"
+   ],
+   "skills": [
+    "BC-SKL-05001",
+    "BC-SKL-05002",
+    "BC-SKL-05003",
+    "BC-SKL-05004",
+    "BC-SKL-05005",
+    "BC-SKL-05006"
+   ],
+   "sources": [
+    "BC-CON-05001"
+   ],
+   "evidence_tag": "inferred",
+   "text": "The table gives the rate; the rate with continuity gives the claim.",
+   "figure": {
+    "kind": "table",
+    "columns": [
+     "x",
+     "1",
+     "3",
+     "4",
+     "6",
+     "9"
+    ],
+    "rows": [
+     [
+      "f(x)",
+      "2",
+      "5",
+      "-3",
+      "17",
+      "8"
+     ]
+    ],
+    "labels": [
+     {
+      "text": "rows used: x = 1 and x = 6",
+      "placement": "inside"
+     }
+    ]
+   },
+   "delivery": {
+    "mode": "table",
+    "reason": "rule 4: BC-REP-03 on BC-SKL-05002, 05003, 05006 and BC-QA-05001 common_givens a short table of values",
+    "sources": [
+     "BC-SKL-05003",
+     "BC-QA-05001"
+    ],
+    "spec": {
+     "kind": "table",
+     "columns": [
+      "x",
+      "1",
+      "3",
+      "4",
+      "6",
+      "9"
+     ],
+     "rows": [
+      [
+       "f(x)",
+       "2",
+       "5",
+       "-3",
+       "17",
+       "8"
+      ]
+     ],
+     "labels": [
+      {
+       "text": "rows used: x = 1 and x = 6",
+       "placement": "inside"
+      },
+      {
+       "text": "(17 - 2)/(6 - 1) = 3",
+       "placement": "inside"
+      }
+     ],
+     "representations": [
+      "BC-REP-03"
+     ]
+    },
+    "fallback": "the table as plain text rows with the two rows named",
+    "keyboard": "Tab moves between cells; no control"
+   }
+  },
+  {
+   "id": "LSN-CON-05001#prq-BC-PRQ-05001",
+   "type": "prerequisite_bridge",
+   "bands": [
+    "low",
+    "mid"
+   ],
+   "skills": [
+    "BC-SKL-05005"
+   ],
+   "sources": [
+    "BC-PRQ-05001"
+   ],
+   "evidence_tag": "inferred",
+   "prerequisite_id": "BC-PRQ-05001",
+   "text": "Set an expression to zero and solve it."
+  },
+  {
+   "id": "LSN-CON-05001#prq-BC-PRQ-05004",
+   "type": "prerequisite_bridge",
+   "bands": [
+    "low",
+    "mid"
+   ],
+   "skills": [
+    "BC-SKL-05001"
+   ],
+   "sources": [
+    "BC-PRQ-05004"
+   ],
+   "evidence_tag": "inferred",
+   "prerequisite_id": "BC-PRQ-05004",
+   "text": "Open (a, b) excludes its ends; [a, b] includes them."
+  },
+  {
+   "id": "LSN-CON-05001#prq-BC-PRQ-05008",
+   "type": "prerequisite_bridge",
+   "bands": [
+    "low",
+    "mid"
+   ],
+   "skills": [
+    "BC-SKL-05003"
+   ],
+   "sources": [
+    "BC-PRQ-05008"
+   ],
+   "evidence_tag": "inferred",
+   "prerequisite_id": "BC-PRQ-05008",
+   "text": "Change in output over change in input, endpoints in matching order."
+  },
+  {
+   "id": "LSN-CON-05001#prq-BC-PRQ-06005",
+   "type": "prerequisite_bridge",
+   "bands": [
+    "low",
+    "mid"
+   ],
+   "skills": [
+    "BC-SKL-05003"
+   ],
+   "sources": [
+    "BC-PRQ-06005"
+   ],
+   "evidence_tag": "inferred",
+   "prerequisite_id": "BC-PRQ-06005",
+   "text": "f(6) is a value of f; f'(c) of f'."
+  }
+ ],
+ "checks": [
+  {
+   "id": "LSN-CON-05001#chk-1",
+   "check_kind": "completion",
+   "bands": [
+    "low",
+    "mid"
+   ],
+   "format": "short_answer",
+   "archetype_id": "BC-QA-05001",
+   "parameter_draw": {
+    "inputs": [
+     1,
+     3,
+     4,
+     6,
+     9
+    ],
+    "outputs": [
+     2,
+     5,
+     -3,
+     17,
+     8
+    ],
+    "rows": "0-3",
+    "context": "bare",
+    "hypothesis": "differentiable"
+   },
+   "completes": "LSN-CON-05001#s5",
+   "stem": {
+    "text": "Same table; (17 - 2)/(6 - 1) = 3. Finish: must some c in (1, 6) have f'(c) = 3?",
+    "command_verb": "justify"
+   },
+   "answer_key": {
+    "form": "statement",
+    "mathjson": "Eq(Subs(Derivative(f(x), x), x, c), 3)",
+    "label": "Yes: f is continuous because differentiable, so by the Mean Value Theorem."
+   },
+   "worked_solution": [
+    {
+     "step": 1,
+     "text": "The rate.",
+     "mathjson": 3,
+     "relation": "new"
+    },
+    {
+     "step": 2,
+     "text": "Equals 3.",
+     "mathjson": 3,
+     "relation": "equivalent"
+    }
+   ],
+   "calculator_status": "no_calculator",
+   "representation": "BC-REP-03",
+   "skills": [
+    "BC-SKL-05004"
+   ]
+  },
+  {
+   "id": "LSN-CON-05001#chk-2",
+   "check_kind": "isomorph",
+   "bands": [
+    "low",
+    "mid"
+   ],
+   "format": "short_answer",
+   "archetype_id": "BC-QA-05001",
+   "parameter_draw": {
+    "inputs": [
+     0,
+     2,
+     5,
+     7,
+     10
+    ],
+    "outputs": [
+     4,
+     -2,
+     9,
+     18,
+     6
+    ],
+    "rows": "1-3",
+    "context": "bare",
+    "hypothesis": "differentiable"
+   },
+   "stem": {
+    "text": "f differentiable; x: 0, 2, 5, 7, 10; f(x): 4, -2, 9, 18, 6. Must some c in (2, 7) have f'(c) = 4?",
+    "command_verb": "justify"
+   },
+   "answer_key": {
+    "form": "statement",
+    "mathjson": "Eq(Subs(Derivative(f(x), x), x, c), 4)",
+    "label": "Yes: continuous because differentiable, rate (18 + 2)/5 = 4, Mean Value Theorem."
+   },
+   "worked_solution": [
+    {
+     "step": 1,
+     "text": "The rate.",
+     "mathjson": 4,
+     "relation": "new"
+    },
+    {
+     "step": 2,
+     "text": "Equals 4.",
+     "mathjson": 4,
+     "relation": "equivalent"
+    }
+   ],
+   "calculator_status": "no_calculator",
+   "representation": "BC-REP-03",
+   "skills": [
+    "BC-SKL-05002",
+    "BC-SKL-05004"
+   ]
+  },
+  {
+   "id": "LSN-CON-05001#chk-3",
+   "check_kind": "mcq",
+   "bands": [
+    "low"
+   ],
+   "format": "mcq",
+   "archetype_id": "BC-QA-05001",
+   "parameter_draw": {
+    "inputs": [
+     2,
+     4,
+     5,
+     8,
+     11
+    ],
+    "outputs": [
+     7,
+     1,
+     -4,
+     19,
+     10
+    ],
+    "rows": "0-3",
+    "context": "bare",
+    "hypothesis": "differentiable"
+   },
+   "stem": {
+    "text": "f is differentiable; f(2) = 7, f(8) = 19. Which response justifies that f'(c) = 2 for some c in (2, 8)?",
+    "command_verb": "identify"
+   },
+   "answer_key": {
+    "form": "statement",
+    "mathjson": "Eq(Subs(Derivative(f(x), x), x, c), 2)",
+    "label": "Rate 2; continuous because differentiable; yes, Mean Value Theorem."
+   },
+   "worked_solution": [
+    {
+     "step": 1,
+     "text": "The rate.",
+     "mathjson": 2,
+     "relation": "new"
+    },
+    {
+     "step": 2,
+     "text": "Equals 2.",
+     "mathjson": 2,
+     "relation": "equivalent"
+    }
+   ],
+   "options": [
+    {
+     "id": "A",
+     "is_key": false,
+     "error_path": "BC-ERR-05002",
+     "label": "Rate 2; f is continuous; yes, Mean Value Theorem.",
+     "derivation": "continuity asserted, not drawn from differentiability"
+    },
+    {
+     "id": "B",
+     "is_key": true,
+     "error_path": null,
+     "label": "Rate 2; continuous because differentiable; yes, Mean Value Theorem."
+    },
+    {
+     "id": "C",
+     "is_key": false,
+     "error_path": "BC-ERR-05004",
+     "label": "Rate 2, so the average rate is 2.",
+     "derivation": "arithmetic with no yes and no theorem"
+    },
+    {
+     "id": "D",
+     "is_key": false,
+     "error_path": "BC-ERR-05006",
+     "label": "Rate 2; continuous because differentiable; yes, Intermediate Value Theorem.",
+     "derivation": "a theorem about values of f cited for f'"
+    }
+   ],
+   "calculator_status": "no_calculator",
+   "representation": "BC-REP-03",
+   "skills": [
+    "BC-SKL-05002",
+    "BC-SKL-05004"
+   ]
+  }
+ ],
+ "refresher": [
+  "LSN-CON-05001#s2",
+  "LSN-CON-05001#err-BC-ERR-05002",
+  "LSN-CON-05001#err-BC-ERR-05004",
+  "LSN-CON-05001#err-BC-ERR-05005",
+  "LSN-CON-05001#err-BC-ERR-05006",
+  "LSN-CON-05001#s5"
+ ],
+ "provenance": {
+  "author": "tools/lesson_transcribe.py",
+  "prompt_version": "generator/lesson_v1",
+  "design_path": "docs/lessons/unit-05/LSN-CON-05001.md",
+  "signed_off_by": "claude-opus-5-5",
+  "signed_off_at": "2026-09-29",
+  "not_human": true
+ }
+}

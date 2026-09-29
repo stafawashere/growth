@@ -1,0 +1,651 @@
+{
+ "id": "LSN-CON-04006",
+ "version": 1,
+ "kind": "concept",
+ "target_id": "BC-CON-04006",
+ "status": "signed_off",
+ "snapshot_digest": "a6a8ec9d3f59ab8f712e33d30cc22fc64bf2c478fbe7312e3e3118d319c6a42f",
+ "source_digest": "34e7e883225e00722d1d47e10e17100ce8811ea485dd15d1569321e7d8d78505",
+ "read_minutes": {
+  "full": 3.8,
+  "brief": 3.0
+ },
+ "word_count": {
+  "full": 472,
+  "brief": 409
+ },
+ "sections": [
+  {
+   "id": "LSN-CON-04006#s1",
+   "type": "orientation",
+   "bands": [
+    "low",
+    "mid"
+   ],
+   "skills": [
+    "BC-SKL-04013",
+    "BC-SKL-04015",
+    "BC-SKL-04016"
+   ],
+   "sources": [
+    "BC-CON-04006",
+    "research/units/unit-04-contextual-applications-differentiation.md#4.3 Rates of Change in Applied Contexts Other Than Motion"
+   ],
+   "evidence_tag": "inferred",
+   "text": "A contextual rate problem has one structure: a named quantity, its input, a derivative read as a rate. A response names both, uses the context's words and units, and keeps limit notation.",
+   "delivery": {
+    "mode": "text",
+    "reason": "rule 5: BC-SKL-04013 and BC-SKL-04015 carry BC-REP-04 and BC-REP-05",
+    "sources": [
+     "BC-SKL-04013"
+    ]
+   }
+  },
+  {
+   "id": "LSN-CON-04006#s2",
+   "type": "key_ideas",
+   "bands": [
+    "low",
+    "mid"
+   ],
+   "skills": [
+    "BC-SKL-04013",
+    "BC-SKL-04015",
+    "BC-SKL-04016"
+   ],
+   "sources": [
+    "BC-EK-CHA-3C1",
+    "ced:89",
+    "ced:84",
+    "sg-25:4",
+    "research/units/unit-04-contextual-applications-differentiation.md#4.3 Rates of Change in Applied Contexts Other Than Motion"
+   ],
+   "evidence_tag": "verified",
+   "ek_id": "BC-EK-CHA-3C1",
+   "depth": "core",
+   "text": "Motion's mathematics carries over, its vocabulary does not: a drug amount's rate is not a velocity (ced:84). Each rate carries quantity units per input unit. Long run behaviour of a rate is a limit as the input grows, written with the limit kept, never infinity substituted (sg-25:4).",
+   "notation": "rate of change of the named quantity",
+   "quote": {
+    "text": "The derivative can be used to solve problems involving rates of change in applied contexts.",
+    "source": "ced:89"
+   },
+   "delivery": {
+    "mode": "text",
+    "reason": "rule 5: BC-REP-01, 04, 05; the end behaviour limit is scored as notation retained (sg-25:4), not as a process to watch",
+    "sources": [
+     "BC-SKL-04016"
+    ]
+   }
+  },
+  {
+   "id": "LSN-CON-04006#s3",
+   "type": "strategy",
+   "bands": [
+    "low",
+    "mid"
+   ],
+   "skills": [
+    "BC-SKL-04013",
+    "BC-SKL-04015",
+    "BC-SKL-04016"
+   ],
+   "sources": [
+    "BC-QA-04005"
+   ],
+   "evidence_tag": "verified",
+   "archetype_id": "BC-QA-04005",
+   "cue": "A model or its rate over a time interval; the stem asks a rate, its meaning or long run value.",
+   "method": "First line: name the quantity and its input, then the rate at the instant.",
+   "rival": "Rival: infinity substituted into the rate in place of a limit expression (BC-ERR-99007).",
+   "separating_feature": "End behaviour asked: write the limit first."
+  },
+  {
+   "id": "LSN-CON-04006#s4",
+   "type": "worked_example",
+   "bands": [
+    "low",
+    "mid"
+   ],
+   "skills": [
+    "BC-SKL-04013",
+    "BC-SKL-04015",
+    "BC-SKL-04016"
+   ],
+   "sources": [
+    "BC-QA-04005"
+   ],
+   "evidence_tag": "inferred",
+   "archetype_id": "BC-QA-04005",
+   "parameter_draw": {
+    "context": "medicine",
+    "base": 20,
+    "amount": 60,
+    "scale": 8,
+    "instant": 4,
+    "trend": "rising",
+    "supplied": "model"
+   },
+   "problem": {
+    "text": "The medicine in a patient, in milligrams, is \\(M(t)=20+60(1-e^{-t/8})\\) at \\(t\\) hours. Write and evaluate \\(\\lim_{t\\to\\infty}M'(t)\\), and find \\(M'(4)\\).",
+    "command_verb": "find"
+   },
+   "calculator_status": "calculator",
+   "steps": [
+    {
+     "cue": "Quantity: medicine, milligrams; input: hours.",
+     "why": "Rates will be milligrams per hour.",
+     "expression": [
+      "Add",
+      80,
+      [
+       "Multiply",
+       -60,
+       [
+        "Exp",
+        [
+         "Multiply",
+         [
+          "Rational",
+          -1,
+          8
+         ],
+         "t"
+        ]
+       ]
+      ]
+     ],
+     "relation": "new"
+    },
+    {
+     "cue": "Rate of the model.",
+     "why": "\\(M'(t)=7.5e^{-t/8}\\).",
+     "expression": [
+      "Multiply",
+      [
+       "Rational",
+       15,
+       2
+      ],
+      [
+       "Exp",
+       [
+        "Multiply",
+        [
+         "Rational",
+         -1,
+         8
+        ],
+        "t"
+       ]
+      ]
+     ],
+     "relation": "differentiate",
+     "variable": "t"
+    },
+    {
+     "cue": "\\(M'(t)>0\\) for every \\(t\\).",
+     "why": "The amount of medicine is increasing.",
+     "point_type_id": "BC-PT-99014"
+    },
+    {
+     "cue": "End behaviour: the limit written first.",
+     "why": "\\(\\lim_{t\\to\\infty}7.5e^{-t/8}=0\\) milligrams per hour.",
+     "expression": 0,
+     "relation": "limit",
+     "variable": "t",
+     "point": "oo"
+    },
+    {
+     "cue": "Rate at \\(t=4\\).",
+     "why": "The rate again.",
+     "expression": [
+      "Multiply",
+      [
+       "Rational",
+       15,
+       2
+      ],
+      [
+       "Exp",
+       [
+        "Multiply",
+        [
+         "Rational",
+         -1,
+         8
+        ],
+        "t"
+       ]
+      ]
+     ],
+     "relation": "new"
+    },
+    {
+     "cue": "Calculator, three decimals.",
+     "why": "4.549 milligrams per hour.",
+     "expression": 4.549,
+     "relation": "evaluate",
+     "subs": {
+      "t": "4"
+     },
+     "approx": true
+    }
+   ],
+   "answer": {
+    "form": "numeric",
+    "mathjson": 4.549
+   },
+   "delivery": {
+    "mode": "step_reveal",
+    "reason": "rule 1",
+    "sources": []
+   }
+  },
+  {
+   "id": "LSN-CON-04006#s5",
+   "type": "what_a_reader_scores",
+   "bands": [
+    "low",
+    "mid"
+   ],
+   "skills": [
+    "BC-SKL-04013",
+    "BC-SKL-04015",
+    "BC-SKL-04016"
+   ],
+   "sources": [
+    "BC-PT-99014"
+   ],
+   "evidence_tag": "verified",
+   "example_id": "LSN-CON-04006#s4",
+   "lines": [
+    {
+     "point_type_id": "BC-PT-99014",
+     "text": "Considers the sign of a derivative. Earned by: An explicit statement about whether a first or second derivative is positive, negative, or zero on the relevant interval, symbolically or in words (sg-26:12, sg-24:8). Not earned by: A statement about the sign of the function rather than the derivative, or a reference to the concavity of the derivative itself (sg-26:12)."
+    }
+   ]
+  },
+  {
+   "id": "LSN-CON-04006#err-BC-ERR-04012",
+   "type": "common_error",
+   "bands": [
+    "low",
+    "mid"
+   ],
+   "skills": [
+    "BC-SKL-04013"
+   ],
+   "sources": [
+    "BC-ERR-04012"
+   ],
+   "evidence_tag": "inferred",
+   "error_id": "BC-ERR-04012",
+   "observed_behavior": "The response computes without saying which quantity is modelled or what the input variable measures.",
+   "scoring_consequence": "Later interpretation points become unavailable because the answer cannot be tied to the situation; BC-ERR-99033 records variables introduced without being defined.",
+   "wrong_step": {
+    "text": "4.549, nothing named.",
+    "expression": 4.549
+   },
+   "right_step": {
+    "text": "Medicine rises at 4.549 milligrams per hour.",
+    "expression": [
+     "Multiply",
+     4.549,
+     "milligram",
+     [
+      "Power",
+      "hour",
+      -1
+     ]
+    ]
+   },
+   "relation": "distinct",
+   "delivery": {
+    "mode": "step_reveal",
+    "reason": "rule 1",
+    "sources": []
+   }
+  },
+  {
+   "id": "LSN-CON-04006#err-BC-ERR-04013",
+   "type": "common_error",
+   "bands": [
+    "low",
+    "mid"
+   ],
+   "skills": [
+    "BC-SKL-04015"
+   ],
+   "sources": [
+    "BC-ERR-04013",
+    "BC-MIS-04007"
+   ],
+   "evidence_tag": "inferred",
+   "error_id": "BC-ERR-04013",
+   "observed_behavior": "The response calls the rate of change of a temperature, a population, or an area a velocity.",
+   "scoring_consequence": "The 2025 scoring notes show a response calling an average value an average velocity treated as unclear communication and scored as scratch work, so the points survived in that instance (sg-25:3); the CED nonetheless directs that context vocabulary be used (ced:84).",
+   "wrong_step": {
+    "text": "The velocity is 4.549.",
+    "expression": 4.549
+   },
+   "right_step": {
+    "text": "The amount rises at 4.549 milligrams per hour.",
+    "expression": 4.549
+   },
+   "relation": "equivalent",
+   "possible_reason": {
+    "misconception_id": "BC-MIS-04007",
+    "text": "maps every rate context onto the vocabulary of a moving particle"
+   },
+   "delivery": {
+    "mode": "step_reveal",
+    "reason": "rule 1",
+    "sources": []
+   }
+  },
+  {
+   "id": "LSN-CON-04006#err-BC-ERR-99007",
+   "type": "common_error",
+   "bands": [
+    "low",
+    "mid"
+   ],
+   "skills": [
+    "BC-SKL-04016"
+   ],
+   "sources": [
+    "BC-ERR-99007",
+    "BC-MIS-99008"
+   ],
+   "evidence_tag": "inferred",
+   "error_id": "BC-ERR-99007",
+   "observed_behavior": "Responses substitute the infinity symbol for the variable and compute with it, or open an improper integral with limit notation and then abandon it before the evaluation is complete.",
+   "scoring_consequence": "The response becomes ineligible for the final point of the part; in improper integral parts the evaluation points are lost.",
+   "wrong_step": {
+    "text": "\\(M'(\\infty)=7.5e^{-\\infty}=0\\).",
+    "expression": 0
+   },
+   "right_step": {
+    "text": "\\(\\lim_{t\\to\\infty}7.5e^{-t/8}=0\\).",
+    "expression": 0
+   },
+   "relation": "equivalent",
+   "possible_reason": {
+    "misconception_id": "BC-MIS-99008",
+    "text": "substitutes the infinity symbol for the variable and computes with the result"
+   },
+   "delivery": {
+    "mode": "step_reveal",
+    "reason": "rule 1",
+    "sources": []
+   }
+  },
+  {
+   "id": "LSN-CON-04006#prq-BC-PRQ-04008",
+   "type": "prerequisite_bridge",
+   "bands": [
+    "low",
+    "mid"
+   ],
+   "skills": [
+    "BC-SKL-04013",
+    "BC-SKL-04015",
+    "BC-SKL-04016"
+   ],
+   "sources": [
+    "BC-PRQ-04008"
+   ],
+   "evidence_tag": "inferred",
+   "prerequisite_id": "BC-PRQ-04008",
+   "text": "Name each quantity, its unit, and whether it varies. Unnamed, the response cannot begin (ced:84)."
+  }
+ ],
+ "checks": [
+  {
+   "id": "LSN-CON-04006#chk-1",
+   "check_kind": "completion",
+   "bands": [
+    "low",
+    "mid"
+   ],
+   "format": "short_answer",
+   "archetype_id": "BC-QA-04005",
+   "parameter_draw": {
+    "context": "medicine",
+    "base": 20,
+    "amount": 60,
+    "scale": 8,
+    "instant": 4,
+    "trend": "rising",
+    "supplied": "model"
+   },
+   "completes": "LSN-CON-04006#s4",
+   "stem": {
+    "text": "\\(M'(t)=7.5e^{-t/8}\\) milligrams per hour. Give \\(M'(4)\\) to three decimals.",
+    "command_verb": "give"
+   },
+   "answer_key": {
+    "form": "numeric",
+    "mathjson": 4.549
+   },
+   "worked_solution": [
+    {
+     "step": 1,
+     "text": "Rate.",
+     "mathjson": [
+      "Multiply",
+      [
+       "Rational",
+       15,
+       2
+      ],
+      [
+       "Exp",
+       [
+        "Multiply",
+        [
+         "Rational",
+         -1,
+         8
+        ],
+        "t"
+       ]
+      ]
+     ],
+     "relation": "new"
+    },
+    {
+     "step": 2,
+     "text": "At t = 4.",
+     "mathjson": 4.549,
+     "relation": "evaluate",
+     "subs": {
+      "t": "4"
+     },
+     "approx": true
+    }
+   ],
+   "calculator_status": "calculator",
+   "representation": "BC-REP-05",
+   "skills": [
+    "BC-SKL-04013"
+   ]
+  },
+  {
+   "id": "LSN-CON-04006#chk-2",
+   "check_kind": "isomorph",
+   "bands": [
+    "low",
+    "mid"
+   ],
+   "format": "short_answer",
+   "archetype_id": "BC-QA-04005",
+   "parameter_draw": {
+    "context": "battery",
+    "base": 20,
+    "amount": 50,
+    "scale": 5,
+    "instant": 3,
+    "trend": "rising",
+    "supplied": "rate"
+   },
+   "stem": {
+    "text": "A battery's charge rises at \\(B'(t)=10e^{-t/5}\\) percent per minute. Find \\(B'(3)\\).",
+    "command_verb": "find"
+   },
+   "answer_key": {
+    "form": "numeric",
+    "mathjson": 5.488
+   },
+   "worked_solution": [
+    {
+     "step": 1,
+     "text": "Rate supplied.",
+     "mathjson": [
+      "Multiply",
+      10,
+      [
+       "Exp",
+       [
+        "Multiply",
+        [
+         "Rational",
+         -1,
+         5
+        ],
+        "t"
+       ]
+      ]
+     ],
+     "relation": "new"
+    },
+    {
+     "step": 2,
+     "text": "At t = 3.",
+     "mathjson": 5.488,
+     "relation": "evaluate",
+     "subs": {
+      "t": "3"
+     },
+     "approx": true
+    }
+   ],
+   "calculator_status": "calculator",
+   "representation": "BC-REP-05",
+   "skills": [
+    "BC-SKL-04013"
+   ]
+  },
+  {
+   "id": "LSN-CON-04006#chk-3",
+   "check_kind": "mcq",
+   "bands": [
+    "low"
+   ],
+   "format": "mcq",
+   "archetype_id": "BC-QA-04005",
+   "parameter_draw": {
+    "context": "pollutant",
+    "base": 30,
+    "amount": 40,
+    "scale": 10,
+    "instant": 5,
+    "trend": "falling",
+    "supplied": "rate"
+   },
+   "stem": {
+    "text": "A pollutant, \\(P(t)\\) grams at \\(t\\) hours, changes at \\(P'(t)=-4e^{-t/10}\\). Which response is correct?",
+    "command_verb": "identify"
+   },
+   "answer_key": {
+    "form": "statement",
+    "mathjson": "-2.426",
+    "text": "A"
+   },
+   "worked_solution": [
+    {
+     "step": 1,
+     "text": "Rate.",
+     "mathjson": [
+      "Multiply",
+      -4,
+      [
+       "Exp",
+       [
+        "Multiply",
+        [
+         "Rational",
+         -1,
+         10
+        ],
+        "t"
+       ]
+      ]
+     ],
+     "relation": "new"
+    },
+    {
+     "step": 2,
+     "text": "At t = 5.",
+     "mathjson": -2.426,
+     "relation": "evaluate",
+     "subs": {
+      "t": "5"
+     },
+     "approx": true
+    }
+   ],
+   "options": [
+    {
+     "id": "A",
+     "is_key": true,
+     "error_path": null,
+     "label": "At t = 5 hours the pollutant decreases at 2.426 grams per hour; its limit as t grows is 0."
+    },
+    {
+     "id": "B",
+     "is_key": false,
+     "error_path": "BC-ERR-04012",
+     "label": "P'(5) = -2.426, with no quantity or input named.",
+     "derivation": "the value computed without naming the quantity or its input"
+    },
+    {
+     "id": "C",
+     "is_key": false,
+     "error_path": "BC-ERR-04013",
+     "label": "At t = 5 the pollutant's velocity is -2.426.",
+     "derivation": "motion vocabulary used for a mass"
+    },
+    {
+     "id": "D",
+     "is_key": false,
+     "error_path": "BC-ERR-99007",
+     "label": "P'(infinity) = -4e^(-infinity) = 0.",
+     "derivation": "infinity substituted and limit notation dropped"
+    }
+   ],
+   "calculator_status": "calculator",
+   "representation": "BC-REP-05",
+   "skills": [
+    "BC-SKL-04013",
+    "BC-SKL-04015",
+    "BC-SKL-04016"
+   ]
+  }
+ ],
+ "refresher": [
+  "LSN-CON-04006#s2",
+  "LSN-CON-04006#err-BC-ERR-04012",
+  "LSN-CON-04006#err-BC-ERR-04013",
+  "LSN-CON-04006#err-BC-ERR-99007",
+  "LSN-CON-04006#s4"
+ ],
+ "provenance": {
+  "author": "tools/lesson_transcribe.py",
+  "prompt_version": "generator/lesson_v1",
+  "design_path": "docs/lessons/unit-04/LSN-CON-04006.md",
+  "signed_off_by": "claude-opus-5-5",
+  "signed_off_at": "2026-09-29",
+  "not_human": true
+ }
+}

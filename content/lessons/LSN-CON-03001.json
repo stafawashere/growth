@@ -1,0 +1,730 @@
+{
+ "id": "LSN-CON-03001",
+ "version": 1,
+ "kind": "concept",
+ "target_id": "BC-CON-03001",
+ "status": "signed_off",
+ "snapshot_digest": "a6a8ec9d3f59ab8f712e33d30cc22fc64bf2c478fbe7312e3e3118d319c6a42f",
+ "source_digest": "e0c5620c90ba436d91aa72441b70231af97f441edc465f117fd4750cc19c2daa",
+ "read_minutes": {
+  "full": 3.0,
+  "brief": 3.0
+ },
+ "word_count": {
+  "full": 397,
+  "brief": 397
+ },
+ "sections": [
+  {
+   "id": "LSN-CON-03001#s1",
+   "type": "orientation",
+   "bands": [
+    "low",
+    "mid"
+   ],
+   "skills": [
+    "BC-SKL-03001",
+    "BC-SKL-03003"
+   ],
+   "sources": [
+    "BC-CON-03001",
+    "research/units/unit-03-differentiation-composite-implicit-inverse.md#3.1 The Chain Rule"
+   ],
+   "evidence_tag": "inferred",
+   "text": "A response names the outer and inner functions before differentiating, then gives one factor per layer: the outer derivative read at the inner expression, times the inner derivative. Stems supply a formula, often with the composite as one factor of a product.",
+   "delivery": {
+    "mode": "text",
+    "reason": "rule 5: BC-REP-01 and BC-REP-04 on the skills, no figure-bearing representation",
+    "sources": [
+     "BC-SKL-03001"
+    ]
+   }
+  },
+  {
+   "id": "LSN-CON-03001#s2",
+   "type": "key_ideas",
+   "bands": [
+    "low",
+    "mid"
+   ],
+   "skills": [
+    "BC-SKL-03001",
+    "BC-SKL-03003"
+   ],
+   "sources": [
+    "BC-EK-FUN-3C1",
+    "ced:75",
+    "research/units/unit-03-differentiation-composite-implicit-inverse.md#3.1 The Chain Rule"
+   ],
+   "evidence_tag": "inferred",
+   "ek_id": "BC-EK-FUN-3C1",
+   "depth": "core",
+   "text": "A composite is one function evaluated at the output of another. The operation applied last is the outer function, the one applied first the inner. When g is differentiable at x and f at g(x), the derivative of f(g(x)) is f'(g(x)) times g'(x). With more layers, repeat inward.",
+   "notation": "f of g of x; y as a function of u and u as a function of x",
+   "delivery": {
+    "mode": "text",
+    "reason": "rule 5: an order-of-operations statement with no figure-bearing BC-REP",
+    "sources": [
+     "BC-SKL-03001",
+     "BC-SKL-03003"
+    ]
+   }
+  },
+  {
+   "id": "LSN-CON-03001#s3",
+   "type": "strategy",
+   "bands": [
+    "low",
+    "mid"
+   ],
+   "skills": [
+    "BC-SKL-03001",
+    "BC-SKL-03003"
+   ],
+   "sources": [
+    "BC-QA-03001"
+   ],
+   "evidence_tag": "verified",
+   "archetype_id": "BC-QA-03001",
+   "cue": "The stem asks for a composite's derivative, from a formula built by composition, alone or as a product factor.",
+   "method": "First written line: identify the outer and inner functions, u = inner expression.",
+   "rival": "Rival: differentiating the outer function and leaving out the inner derivative (BC-ERR-03001).",
+   "separating_feature": "Each named layer owns one factor of the derivative."
+  },
+  {
+   "id": "LSN-CON-03001#s4",
+   "type": "worked_example",
+   "bands": [
+    "low",
+    "mid"
+   ],
+   "skills": [
+    "BC-SKL-03001",
+    "BC-SKL-03003"
+   ],
+   "sources": [
+    "BC-QA-03001"
+   ],
+   "evidence_tag": "inferred",
+   "archetype_id": "BC-QA-03001",
+   "parameter_draw": {
+    "family": "power",
+    "exponent": 3,
+    "inner_slope": 2,
+    "at": 1,
+    "outside_power": 1,
+    "target": 1,
+    "scale": 1
+   },
+   "problem": {
+    "text": "Let h(x) = x(2x^2 - 1)^3. Find h'(1).",
+    "command_verb": "find"
+   },
+   "calculator_status": "no_calculator",
+   "steps": [
+    {
+     "cue": "Last operation in h: multiplication. The factor (2x^2 - 1)^3 is a composite.",
+     "why": "Outer u^3, inner u = 2x^2 - 1.",
+     "expression": [
+      "Power",
+      [
+       "Add",
+       -1,
+       [
+        "Multiply",
+        2,
+        [
+         "Power",
+         "x",
+         2
+        ]
+       ]
+      ],
+      3
+     ],
+     "relation": "new"
+    },
+    {
+     "cue": "Composite factor: cube read at the inner expression.",
+     "why": "Then times the inner derivative 4x.",
+     "expression": [
+      "Multiply",
+      12,
+      "x",
+      [
+       "Power",
+       [
+        "Add",
+        -1,
+        [
+         "Multiply",
+         2,
+         [
+          "Power",
+          "x",
+          2
+         ]
+        ]
+       ],
+       2
+      ]
+     ],
+     "point_type_id": "BC-PT-99023",
+     "relation": "differentiate",
+     "variable": "x"
+    },
+    {
+     "cue": "h is x times the composite: product rule.",
+     "why": "Each term differentiates one factor.",
+     "expression": [
+      "Add",
+      [
+       "Power",
+       [
+        "Add",
+        -1,
+        [
+         "Multiply",
+         2,
+         [
+          "Power",
+          "x",
+          2
+         ]
+        ]
+       ],
+       3
+      ],
+      [
+       "Multiply",
+       12,
+       [
+        "Power",
+        "x",
+        2
+       ],
+       [
+        "Power",
+        [
+         "Add",
+         -1,
+         [
+          "Multiply",
+          2,
+          [
+           "Power",
+           "x",
+           2
+          ]
+         ]
+        ],
+        2
+       ]
+      ]
+     ],
+     "relation": "new"
+    },
+    {
+     "cue": "The stem asks for h'(1).",
+     "why": "Inner value 1 at x = 1: 1 + 12.",
+     "expression": 13,
+     "relation": "evaluate",
+     "subs": {
+      "x": "1"
+     }
+    }
+   ],
+   "answer": {
+    "form": "numeric",
+    "mathjson": 13
+   },
+   "delivery": {
+    "mode": "step_reveal",
+    "reason": "rule 1",
+    "sources": []
+   }
+  },
+  {
+   "id": "LSN-CON-03001#s5",
+   "type": "what_a_reader_scores",
+   "bands": [
+    "low",
+    "mid"
+   ],
+   "skills": [
+    "BC-SKL-03001",
+    "BC-SKL-03003"
+   ],
+   "sources": [
+    "BC-PT-99023"
+   ],
+   "evidence_tag": "verified",
+   "example_id": "LSN-CON-03001#s4",
+   "lines": [
+    {
+     "point_type_id": "BC-PT-99023",
+     "text": "Chain rule. Earned by: Correct differentiation of the inner function, including the required differentials (sg-22:16, sg-25:21). Not earned by: A product rule written without one or both differentials, which sg-22:16 states earns the product rule point but not this one. Notation: sg-22:16 treats a missing differential as the defining failure for this point."
+    }
+   ]
+  },
+  {
+   "id": "LSN-CON-03001#err-BC-ERR-03001",
+   "type": "common_error",
+   "bands": [
+    "low",
+    "mid"
+   ],
+   "skills": [
+    "BC-SKL-03001"
+   ],
+   "sources": [
+    "BC-ERR-03001",
+    "BC-MIS-03001"
+   ],
+   "evidence_tag": "inferred",
+   "error_id": "BC-ERR-03001",
+   "observed_behavior": "The response differentiates the outer function correctly and stops, leaving the derivative of the inner function out of the product.",
+   "scoring_consequence": "The derivative is wrong, and in a multipart question the error propagates into every later part that uses it.",
+   "wrong_step": {
+    "text": "Inner factor 4x dropped: value 4.",
+    "expression": [
+     "Add",
+     [
+      "Power",
+      [
+       "Add",
+       -1,
+       [
+        "Multiply",
+        2,
+        [
+         "Power",
+         "x",
+         2
+        ]
+       ]
+      ],
+      3
+     ],
+     [
+      "Multiply",
+      3,
+      "x",
+      [
+       "Power",
+       [
+        "Add",
+        -1,
+        [
+         "Multiply",
+         2,
+         [
+          "Power",
+          "x",
+          2
+         ]
+        ]
+       ],
+       2
+      ]
+     ]
+    ]
+   },
+   "right_step": {
+    "text": "With 4x: value 13.",
+    "expression": [
+     "Add",
+     [
+      "Power",
+      [
+       "Add",
+       -1,
+       [
+        "Multiply",
+        2,
+        [
+         "Power",
+         "x",
+         2
+        ]
+       ]
+      ],
+      3
+     ],
+     [
+      "Multiply",
+      12,
+      [
+       "Power",
+       "x",
+       2
+      ],
+      [
+       "Power",
+       [
+        "Add",
+        -1,
+        [
+         "Multiply",
+         2,
+         [
+          "Power",
+          "x",
+          2
+         ]
+        ]
+       ],
+       2
+      ]
+     ]
+    ]
+   },
+   "relation": "distinct",
+   "possible_reason": {
+    "misconception_id": "BC-MIS-03001",
+    "text": "differentiation as an operation on the visible outer function"
+   },
+   "delivery": {
+    "mode": "step_reveal",
+    "reason": "rule 1",
+    "sources": []
+   }
+  },
+  {
+   "id": "LSN-CON-03001#err-BC-ERR-03002",
+   "type": "common_error",
+   "bands": [
+    "low",
+    "mid"
+   ],
+   "skills": [
+    "BC-SKL-03003"
+   ],
+   "sources": [
+    "BC-ERR-03002",
+    "BC-MIS-03012"
+   ],
+   "evidence_tag": "inferred",
+   "error_id": "BC-ERR-03002",
+   "observed_behavior": "A composition of three functions is differentiated through the first two layers and the innermost derivative is omitted.",
+   "scoring_consequence": "The derivative is wrong; no credit is available for a partially applied rule in a single answer item.",
+   "wrong_step": {
+    "text": "Inner derivative 4x omitted: value 4.",
+    "expression": [
+     "Add",
+     [
+      "Power",
+      [
+       "Add",
+       -1,
+       [
+        "Multiply",
+        2,
+        [
+         "Power",
+         "x",
+         2
+        ]
+       ]
+      ],
+      3
+     ],
+     [
+      "Multiply",
+      3,
+      "x",
+      [
+       "Power",
+       [
+        "Add",
+        -1,
+        [
+         "Multiply",
+         2,
+         [
+          "Power",
+          "x",
+          2
+         ]
+        ]
+       ],
+       2
+      ]
+     ]
+    ]
+   },
+   "right_step": {
+    "text": "Cube differentiated: value 13.",
+    "expression": [
+     "Add",
+     [
+      "Power",
+      [
+       "Add",
+       -1,
+       [
+        "Multiply",
+        2,
+        [
+         "Power",
+         "x",
+         2
+        ]
+       ]
+      ],
+      3
+     ],
+     [
+      "Multiply",
+      12,
+      [
+       "Power",
+       "x",
+       2
+      ],
+      [
+       "Power",
+       [
+        "Add",
+        -1,
+        [
+         "Multiply",
+         2,
+         [
+          "Power",
+          "x",
+          2
+         ]
+        ]
+       ],
+       2
+      ]
+     ]
+    ]
+   },
+   "relation": "distinct",
+   "possible_reason": {
+    "misconception_id": "BC-MIS-03012",
+    "text": "nested structures are handled in the wrong order"
+   },
+   "delivery": {
+    "mode": "step_reveal",
+    "reason": "rule 1",
+    "sources": []
+   }
+  },
+  {
+   "id": "LSN-CON-03001#prq-BC-PRQ-03001",
+   "type": "prerequisite_bridge",
+   "bands": [
+    "low",
+    "mid"
+   ],
+   "skills": [
+    "BC-SKL-03001",
+    "BC-SKL-03003"
+   ],
+   "sources": [
+    "BC-PRQ-03001"
+   ],
+   "evidence_tag": "inferred",
+   "prerequisite_id": "BC-PRQ-03001",
+   "text": "Read a formula by naming the operation applied last and the one applied first. Without that reading, the outer shell is differentiated and the work stops."
+  }
+ ],
+ "checks": [
+  {
+   "id": "LSN-CON-03001#chk-1",
+   "check_kind": "completion",
+   "bands": [
+    "low",
+    "mid"
+   ],
+   "format": "short_answer",
+   "archetype_id": "BC-QA-03001",
+   "parameter_draw": {
+    "family": "power",
+    "exponent": 3,
+    "inner_slope": 2,
+    "at": 1,
+    "outside_power": 1,
+    "target": 1,
+    "scale": 1
+   },
+   "completes": "LSN-CON-03001#s4",
+   "stem": {
+    "text": "h'(x) = (2x^2 - 1)^3 + 3x(2x^2 - 1)^2(4x). Find h'(1).",
+    "command_verb": "find"
+   },
+   "answer_key": {
+    "form": "numeric",
+    "mathjson": 13
+   },
+   "worked_solution": [
+    {
+     "step": 1,
+     "text": "The product line.",
+     "mathjson": [
+      "Add",
+      [
+       "Power",
+       [
+        "Add",
+        -1,
+        [
+         "Multiply",
+         2,
+         [
+          "Power",
+          "x",
+          2
+         ]
+        ]
+       ],
+       3
+      ],
+      [
+       "Multiply",
+       12,
+       [
+        "Power",
+        "x",
+        2
+       ],
+       [
+        "Power",
+        [
+         "Add",
+         -1,
+         [
+          "Multiply",
+          2,
+          [
+           "Power",
+           "x",
+           2
+          ]
+         ]
+        ],
+        2
+       ]
+      ]
+     ],
+     "point_type_id": "BC-PT-99023",
+     "relation": "new"
+    },
+    {
+     "step": 2,
+     "text": "At x = 1.",
+     "mathjson": 13,
+     "relation": "evaluate",
+     "subs": {
+      "x": "1"
+     }
+    }
+   ],
+   "calculator_status": "no_calculator",
+   "representation": "BC-REP-01",
+   "skills": [
+    "BC-SKL-03001"
+   ]
+  },
+  {
+   "id": "LSN-CON-03001#chk-2",
+   "check_kind": "isomorph",
+   "bands": [
+    "low",
+    "mid"
+   ],
+   "format": "short_answer",
+   "archetype_id": "BC-QA-03001",
+   "parameter_draw": {
+    "family": "power",
+    "exponent": 2,
+    "inner_slope": 1,
+    "at": 1,
+    "outside_power": 1,
+    "target": 3,
+    "scale": 1
+   },
+   "stem": {
+    "text": "Let h(x) = x(x^2 + 2)^2. Find h'(1).",
+    "command_verb": "find"
+   },
+   "answer_key": {
+    "form": "numeric",
+    "mathjson": 21
+   },
+   "worked_solution": [
+    {
+     "step": 1,
+     "text": "Product rule outside, chain rule on the square.",
+     "mathjson": [
+      "Add",
+      [
+       "Power",
+       [
+        "Add",
+        2,
+        [
+         "Power",
+         "x",
+         2
+        ]
+       ],
+       2
+      ],
+      [
+       "Multiply",
+       4,
+       [
+        "Power",
+        "x",
+        2
+       ],
+       [
+        "Add",
+        2,
+        [
+         "Power",
+         "x",
+         2
+        ]
+       ]
+      ]
+     ],
+     "point_type_id": "BC-PT-99023",
+     "relation": "new"
+    },
+    {
+     "step": 2,
+     "text": "At x = 1.",
+     "mathjson": 21,
+     "relation": "evaluate",
+     "subs": {
+      "x": "1"
+     }
+    }
+   ],
+   "calculator_status": "no_calculator",
+   "representation": "BC-REP-01",
+   "skills": [
+    "BC-SKL-03001"
+   ]
+  }
+ ],
+ "refresher": [
+  "LSN-CON-03001#s2",
+  "LSN-CON-03001#err-BC-ERR-03001",
+  "LSN-CON-03001#err-BC-ERR-03002",
+  "LSN-CON-03001#s4"
+ ],
+ "provenance": {
+  "author": "tools/lesson_transcribe.py",
+  "prompt_version": "generator/lesson_v1",
+  "design_path": "docs/lessons/unit-03/LSN-CON-03001.md",
+  "signed_off_by": "claude-opus-5-5",
+  "signed_off_at": "2026-09-29",
+  "not_human": true
+ }
+}

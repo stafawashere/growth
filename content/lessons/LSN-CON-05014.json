@@ -1,0 +1,655 @@
+{
+ "id": "LSN-CON-05014",
+ "version": 1,
+ "kind": "concept",
+ "target_id": "BC-CON-05014",
+ "status": "signed_off",
+ "snapshot_digest": "a6a8ec9d3f59ab8f712e33d30cc22fc64bf2c478fbe7312e3e3118d319c6a42f",
+ "source_digest": "6f34ee492d67520d33f132cff973bd2139bca8e6f4f78889d3268bb18c1f3ce7",
+ "read_minutes": {
+  "full": 3.5,
+  "brief": 2.5
+ },
+ "word_count": {
+  "full": 443,
+  "brief": 317
+ },
+ "sections": [
+  {
+   "id": "LSN-CON-05014#s1",
+   "type": "orientation",
+   "bands": [
+    "low",
+    "mid"
+   ],
+   "skills": [
+    "BC-SKL-05054",
+    "BC-SKL-05055",
+    "BC-SKL-05056",
+    "BC-SKL-05057"
+   ],
+   "sources": [
+    "BC-CON-05014",
+    "research/units/unit-05-analytical-applications-differentiation.md#5.11 Solving Optimization Problems"
+   ],
+   "evidence_tag": "inferred",
+   "text": "A response compares the interior candidate with the ends of the allowed range, returns what the question asked for, the value or the input, and states it as a sentence about the situation: the quantity, its units, and where it occurs.",
+   "delivery": {
+    "mode": "text",
+    "reason": "rule 5: BC-SKL-05054 to 05057 carry BC-REP-01, 04, 05 only",
+    "sources": [
+     "BC-SKL-05054"
+    ]
+   }
+  },
+  {
+   "id": "LSN-CON-05014#s2",
+   "type": "key_ideas",
+   "bands": [
+    "low",
+    "mid"
+   ],
+   "skills": [
+    "BC-SKL-05054",
+    "BC-SKL-05055",
+    "BC-SKL-05056",
+    "BC-SKL-05057"
+   ],
+   "sources": [
+    "BC-EK-FUN-4C1",
+    "ced:109",
+    "sg-23:2",
+    "research/units/unit-05-analytical-applications-differentiation.md#5.11 Solving Optimization Problems"
+   ],
+   "evidence_tag": "verified",
+   "ek_id": "BC-EK-FUN-4C1",
+   "depth": "core",
+   "text": "The optimal value and the input where it occurs both mean something in the situation and both carry units. An interpretation names the quantity, its units and the input together. \"Largest volume\" asks for the volume; \"the dimensions that give it\" asks for the input.",
+   "notation": "units; optimal value",
+   "quote": {
+    "text": "Minimum and maximum values of a function take on specific meanings in applied contexts.",
+    "source": "ced:109"
+   },
+   "delivery": {
+    "mode": "text",
+    "reason": "rule 5: a statement about meaning and units",
+    "sources": [
+     "BC-SKL-05055"
+    ]
+   }
+  },
+  {
+   "id": "LSN-CON-05014#s3",
+   "type": "strategy",
+   "bands": [
+    "low",
+    "mid"
+   ],
+   "skills": [
+    "BC-SKL-05054",
+    "BC-SKL-05055",
+    "BC-SKL-05056",
+    "BC-SKL-05057"
+   ],
+   "sources": [
+    "BC-QA-05011"
+   ],
+   "evidence_tag": "inferred",
+   "archetype_id": "BC-QA-05011",
+   "cue": "The stem asks for the interpreted value, using correct units, on a contextual range.",
+   "method": "First written line: define the variables and write the objective, each letter with its units.",
+   "rival": "Rival: substituting a numerical value before differentiating.",
+   "separating_feature": "The last line answers the asked quantity, value or input, with units."
+  },
+  {
+   "id": "LSN-CON-05014#s4",
+   "type": "worked_example",
+   "bands": [
+    "low",
+    "mid"
+   ],
+   "skills": [
+    "BC-SKL-05054",
+    "BC-SKL-05055",
+    "BC-SKL-05056",
+    "BC-SKL-05057"
+   ],
+   "sources": [
+    "BC-QA-05011"
+   ],
+   "evidence_tag": "inferred",
+   "archetype_id": "BC-QA-05011",
+   "parameter_draw": {
+    "scale": 2,
+    "height_cap": 1,
+    "sheet_shape": "strip",
+    "material": "cardboard",
+    "purpose": "planter",
+    "length_unit": "centimeters",
+    "domain_limit": "none"
+   },
+   "problem": {
+    "text": "A planter is folded from an 18 by 48 cm sheet after cutting corner squares of side \\(x\\) cm, \\(0\\le x\\le 9\\). The only critical point inside is \\(x=4\\). Using correct units, state the largest volume.",
+    "command_verb": "state"
+   },
+   "calculator_status": "no_calculator",
+   "steps": [
+    {
+     "cue": "Volume in cubic centimeters, from the cut \\(x\\).",
+     "why": "\\(V(x)=x(18-2x)(48-2x)\\).",
+     "expression": [
+      "Multiply",
+      "x",
+      [
+       "Add",
+       18,
+       [
+        "Multiply",
+        -2,
+        "x"
+       ]
+      ],
+      [
+       "Add",
+       48,
+       [
+        "Multiply",
+        -2,
+        "x"
+       ]
+      ]
+     ],
+     "relation": "new"
+    },
+    {
+     "cue": "Interior candidate \\(x=4\\).",
+     "why": "\\(4\\cdot10\\cdot40\\).",
+     "expression": 1600,
+     "relation": "evaluate",
+     "subs": {
+      "x": "4"
+     }
+    },
+    {
+     "cue": "Closed range: the ends compete.",
+     "why": "\\(V(0)=V(9)=0<1600\\)."
+    },
+    {
+     "cue": "The stem asks for the volume, with units.",
+     "why": "The largest volume is 1600 cubic centimeters, when the cut is 4 cm."
+    }
+   ],
+   "answer": {
+    "form": "numeric",
+    "mathjson": 1600
+   },
+   "delivery": {
+    "mode": "step_reveal",
+    "reason": "rule 1",
+    "sources": []
+   }
+  },
+  {
+   "id": "LSN-CON-05014#err-BC-ERR-05026",
+   "type": "common_error",
+   "bands": [
+    "low",
+    "mid"
+   ],
+   "skills": [
+    "BC-SKL-05056"
+   ],
+   "sources": [
+    "BC-ERR-05026",
+    "BC-MIS-05016"
+   ],
+   "evidence_tag": "inferred",
+   "error_id": "BC-ERR-05026",
+   "observed_behavior": "The response compares values only at the interior critical points and never evaluates at the ends of the interval.",
+   "scoring_consequence": "The justification point is lost; the 2023 guideline states that a response not considering both endpoints does not earn it.",
+   "wrong_step": {
+    "text": "\\(V'(4)=0\\), so 1600 is the largest.",
+    "expression": "interior_only"
+   },
+   "right_step": {
+    "text": "\\(V(0)=0\\), \\(V(4)=1600\\), \\(V(9)=0\\).",
+    "expression": "interior_and_both_ends"
+   },
+   "relation": "distinct",
+   "possible_reason": {
+    "misconception_id": "BC-MIS-05016",
+    "text": "does not regard the endpoints as competitors"
+   },
+   "delivery": {
+    "mode": "step_reveal",
+    "reason": "rule 1",
+    "sources": []
+   }
+  },
+  {
+   "id": "LSN-CON-05014#err-BC-ERR-05055",
+   "type": "common_error",
+   "bands": [
+    "low",
+    "mid"
+   ],
+   "skills": [
+    "BC-SKL-05054"
+   ],
+   "sources": [
+    "BC-ERR-05055",
+    "BC-MIS-07023"
+   ],
+   "evidence_tag": "inferred",
+   "error_id": "BC-ERR-05055",
+   "observed_behavior": "The response gives a number for the optimal value and never names its units.",
+   "scoring_consequence": "An interpretation point that requires units is lost.",
+   "wrong_step": {
+    "text": "1600.",
+    "expression": 1600
+   },
+   "right_step": {
+    "text": "1600 cubic centimeters.",
+    "expression": [
+     "Multiply",
+     1600,
+     [
+      "Power",
+      "cm",
+      3
+     ]
+    ]
+   },
+   "relation": "distinct",
+   "possible_reason": {
+    "misconception_id": "BC-MIS-07023",
+    "text": "leaves the quantity, the units, and the direction implicit"
+   },
+   "delivery": {
+    "mode": "step_reveal",
+    "reason": "rule 1",
+    "sources": []
+   }
+  },
+  {
+   "id": "LSN-CON-05014#err-BC-ERR-05024",
+   "type": "common_error",
+   "bands": [
+    "low",
+    "mid"
+   ],
+   "skills": [
+    "BC-SKL-05057"
+   ],
+   "sources": [
+    "BC-ERR-05024",
+    "BC-MIS-05015"
+   ],
+   "evidence_tag": "inferred",
+   "error_id": "BC-ERR-05024",
+   "observed_behavior": "The response names the input at which the extremum occurs when the question asked for the extreme value, or the reverse.",
+   "scoring_consequence": "The answer point is lost; the 2023 guideline awarded it only for the minimum value, not for the input.",
+   "wrong_step": {
+    "text": "The largest volume is at 4 cm.",
+    "expression": [
+     "Multiply",
+     4,
+     "cm"
+    ]
+   },
+   "right_step": {
+    "text": "The largest volume is 1600 cubic centimeters.",
+    "expression": [
+     "Multiply",
+     1600,
+     [
+      "Power",
+      "cm",
+      3
+     ]
+    ]
+   },
+   "relation": "distinct",
+   "possible_reason": {
+    "misconception_id": "BC-MIS-05015",
+    "text": "does not separate the input at which the extremum occurs from the extreme value itself"
+   },
+   "delivery": {
+    "mode": "step_reveal",
+    "reason": "rule 1",
+    "sources": []
+   }
+  },
+  {
+   "id": "LSN-CON-05014#err-BC-ERR-05056",
+   "type": "common_error",
+   "bands": [
+    "low",
+    "mid"
+   ],
+   "skills": [
+    "BC-SKL-05055"
+   ],
+   "sources": [
+    "BC-ERR-05056",
+    "BC-MIS-07023"
+   ],
+   "evidence_tag": "inferred",
+   "error_id": "BC-ERR-05056",
+   "observed_behavior": "The interpretation sentence names a number without saying what it measures or when it is attained.",
+   "scoring_consequence": "The interpretation point is lost because the sentence is incomplete.",
+   "wrong_step": {
+    "text": "The maximum is 1600.",
+    "expression": "number_only_sentence"
+   },
+   "right_step": {
+    "text": "The planter's volume is largest, 1600 cubic centimeters, when the cut is 4 cm.",
+    "expression": "quantity_units_and_input_named"
+   },
+   "relation": "distinct",
+   "possible_reason": {
+    "misconception_id": "BC-MIS-07023",
+    "text": "reports the number and leaves the quantity, the units, and the direction implicit"
+   },
+   "delivery": {
+    "mode": "step_reveal",
+    "reason": "rule 1",
+    "sources": []
+   }
+  }
+ ],
+ "checks": [
+  {
+   "id": "LSN-CON-05014#chk-1",
+   "check_kind": "completion",
+   "bands": [
+    "low",
+    "mid"
+   ],
+   "format": "short_answer",
+   "archetype_id": "BC-QA-05011",
+   "parameter_draw": {
+    "scale": 2,
+    "height_cap": 1,
+    "sheet_shape": "strip",
+    "material": "cardboard",
+    "purpose": "planter",
+    "length_unit": "centimeters",
+    "domain_limit": "none"
+   },
+   "completes": "LSN-CON-05014#s4",
+   "stem": {
+    "text": "\\(V(x)=x(18-2x)(48-2x)\\) on \\(0\\le x\\le 9\\), critical point 4. Give the largest volume in cubic centimeters.",
+    "command_verb": "state"
+   },
+   "answer_key": {
+    "form": "numeric",
+    "mathjson": 1600
+   },
+   "worked_solution": [
+    {
+     "step": 1,
+     "text": "The objective.",
+     "mathjson": [
+      "Multiply",
+      "x",
+      [
+       "Add",
+       18,
+       [
+        "Multiply",
+        -2,
+        "x"
+       ]
+      ],
+      [
+       "Add",
+       48,
+       [
+        "Multiply",
+        -2,
+        "x"
+       ]
+      ]
+     ],
+     "relation": "new"
+    },
+    {
+     "step": 2,
+     "text": "\\(V(4)=1600\\); the ends give 0.",
+     "mathjson": 1600,
+     "relation": "evaluate",
+     "subs": {
+      "x": "4"
+     }
+    }
+   ],
+   "calculator_status": "no_calculator",
+   "representation": "BC-REP-01",
+   "skills": [
+    "BC-SKL-05054"
+   ]
+  },
+  {
+   "id": "LSN-CON-05014#chk-2",
+   "check_kind": "isomorph",
+   "bands": [
+    "low",
+    "mid"
+   ],
+   "format": "short_answer",
+   "archetype_id": "BC-QA-05011",
+   "parameter_draw": {
+    "scale": 5,
+    "height_cap": 3,
+    "sheet_shape": "square",
+    "material": "plastic",
+    "purpose": "storage bin",
+    "length_unit": "inches",
+    "domain_limit": "none"
+   },
+   "stem": {
+    "text": "A bin has \\(V(x)=x(30-2x)^2\\) cubic inches, \\(0\\le x\\le 15\\); the only interior critical point is 5. Give the largest volume.",
+    "command_verb": "state"
+   },
+   "answer_key": {
+    "form": "numeric",
+    "mathjson": 2000
+   },
+   "worked_solution": [
+    {
+     "step": 1,
+     "text": "The objective.",
+     "mathjson": [
+      "Multiply",
+      "x",
+      [
+       "Power",
+       [
+        "Add",
+        30,
+        [
+         "Multiply",
+         -2,
+         "x"
+        ]
+       ],
+       2
+      ]
+     ],
+     "relation": "new"
+    },
+    {
+     "step": 2,
+     "text": "\\(V(5)=2000\\); \\(V(0)=V(15)=0\\): 2000 cubic inches.",
+     "mathjson": 2000,
+     "relation": "evaluate",
+     "subs": {
+      "x": "5"
+     }
+    }
+   ],
+   "calculator_status": "no_calculator",
+   "representation": "BC-REP-01",
+   "skills": [
+    "BC-SKL-05054"
+   ]
+  },
+  {
+   "id": "LSN-CON-05014#chk-3",
+   "check_kind": "mcq",
+   "bands": [
+    "low"
+   ],
+   "format": "mcq",
+   "archetype_id": "BC-QA-05011",
+   "parameter_draw": {
+    "scale": 3,
+    "height_cap": 2,
+    "sheet_shape": "rectangle",
+    "material": "tin",
+    "purpose": "tray",
+    "length_unit": "centimeters",
+    "domain_limit": "binding"
+   },
+   "stem": {
+    "text": "A tray: \\(V(x)=x(15-2x)(24-2x)\\), height \\(x\\) at most 2 cm; \\(V'(x)=12(x-3)(x-10)\\). What is the largest volume?",
+    "command_verb": "identify"
+   },
+   "answer_key": {
+    "form": "numeric",
+    "mathjson": [
+     "Multiply",
+     440,
+     [
+      "Power",
+      "cm",
+      3
+     ]
+    ]
+   },
+   "worked_solution": [
+    {
+     "step": 1,
+     "text": "The objective.",
+     "mathjson": [
+      "Multiply",
+      "x",
+      [
+       "Add",
+       15,
+       [
+        "Multiply",
+        -2,
+        "x"
+       ]
+      ],
+      [
+       "Add",
+       24,
+       [
+        "Multiply",
+        -2,
+        "x"
+       ]
+      ]
+     ],
+     "relation": "new"
+    },
+    {
+     "step": 2,
+     "text": "\\(V'>0\\) on \\([0,2]\\), so the right end: \\(V(2)=440\\).",
+     "mathjson": 440,
+     "relation": "evaluate",
+     "subs": {
+      "x": "2"
+     }
+    },
+    {
+     "step": 3,
+     "text": "With units.",
+     "mathjson": [
+      "Multiply",
+      440,
+      [
+       "Power",
+       "cm",
+       3
+      ]
+     ],
+     "relation": "new"
+    }
+   ],
+   "options": [
+    {
+     "id": "A",
+     "is_key": false,
+     "error_path": "BC-ERR-05026",
+     "value": [
+      "Multiply",
+      486,
+      [
+       "Power",
+       "cm",
+       3
+      ]
+     ],
+     "derivation": "V(3) at the critical point, with the ends never evaluated and x = 3 outside the range"
+    },
+    {
+     "id": "B",
+     "is_key": false,
+     "error_path": "BC-ERR-05055",
+     "value": 440,
+     "derivation": "the value with no units"
+    },
+    {
+     "id": "C",
+     "is_key": true,
+     "error_path": null,
+     "value": [
+      "Multiply",
+      440,
+      [
+       "Power",
+       "cm",
+       3
+      ]
+     ]
+    },
+    {
+     "id": "D",
+     "is_key": false,
+     "error_path": "BC-ERR-05024",
+     "value": [
+      "Multiply",
+      2,
+      "cm"
+     ],
+     "derivation": "the input reported for the value"
+    }
+   ],
+   "calculator_status": "no_calculator",
+   "representation": "BC-REP-01",
+   "skills": [
+    "BC-SKL-05056"
+   ]
+  }
+ ],
+ "refresher": [
+  "LSN-CON-05014#s2",
+  "LSN-CON-05014#err-BC-ERR-05026",
+  "LSN-CON-05014#err-BC-ERR-05055",
+  "LSN-CON-05014#err-BC-ERR-05024",
+  "LSN-CON-05014#err-BC-ERR-05056",
+  "LSN-CON-05014#s4"
+ ],
+ "provenance": {
+  "author": "tools/lesson_transcribe.py",
+  "prompt_version": "generator/lesson_v1",
+  "design_path": "docs/lessons/unit-05/LSN-CON-05014.md",
+  "signed_off_by": "claude-opus-5-5",
+  "signed_off_at": "2026-09-29",
+  "not_human": true
+ }
+}

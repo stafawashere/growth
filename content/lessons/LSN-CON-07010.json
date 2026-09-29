@@ -1,0 +1,1164 @@
+{
+ "id": "LSN-CON-07010",
+ "version": 1,
+ "kind": "concept",
+ "target_id": "BC-CON-07010",
+ "status": "signed_off",
+ "snapshot_digest": "a6a8ec9d3f59ab8f712e33d30cc22fc64bf2c478fbe7312e3e3118d319c6a42f",
+ "source_digest": "ed64a75abb68a27e475487f46bd7a4b15a16270937865da7bac0886fe1d9d050",
+ "read_minutes": {
+  "full": 3.7,
+  "brief": 2.8
+ },
+ "word_count": {
+  "full": 463,
+  "brief": 334
+ },
+ "sections": [
+  {
+   "id": "LSN-CON-07010#s1",
+   "type": "orientation",
+   "bands": [
+    "low",
+    "mid"
+   ],
+   "skills": [
+    "BC-SKL-07034",
+    "BC-SKL-07035",
+    "BC-SKL-07036",
+    "BC-SKL-07037",
+    "BC-SKL-07038"
+   ],
+   "sources": [
+    "BC-CON-07010",
+    "research/units/unit-07-differential-equations.md#7.8 Exponential Models with Differential Equations"
+   ],
+   "evidence_tag": "inferred",
+   "text": "A response writes dy/dt = ky, then y = y0 e^(kt) with the initial value as coefficient, finds k from a second data pair, and says what k means, with direction and units.",
+   "delivery": {
+    "mode": "text",
+    "reason": "rule 6: a statement of what a response shows; BC-REP-04, BC-REP-05, BC-REP-06",
+    "sources": [
+     "BC-SKL-07034"
+    ]
+   }
+  },
+  {
+   "id": "LSN-CON-07010#s2",
+   "type": "key_ideas",
+   "bands": [
+    "low",
+    "mid"
+   ],
+   "skills": [
+    "BC-SKL-07034",
+    "BC-SKL-07037"
+   ],
+   "sources": [
+    "BC-EK-FUN-7F2",
+    "ced:144",
+    "research/units/unit-07-differential-equations.md#7.8 Exponential Models with Differential Equations"
+   ],
+   "evidence_tag": "inferred",
+   "ek_id": "BC-EK-FUN-7F2",
+   "depth": "core",
+   "text": "A rate proportional to the size of the quantity gives dy/dt = ky. Positive k is growth, negative k decay; the size of k sets how fast.",
+   "notation": "dy/dt = ky",
+   "delivery": {
+    "mode": "text",
+    "reason": "rule 6: a verbal statement to an equation; BC-REP-04, BC-REP-06 on BC-SKL-07034",
+    "sources": [
+     "BC-SKL-07034",
+     "BC-SKL-07037"
+    ]
+   }
+  },
+  {
+   "id": "LSN-CON-07010#s3",
+   "type": "key_ideas",
+   "bands": [
+    "low",
+    "mid"
+   ],
+   "skills": [
+    "BC-SKL-07035",
+    "BC-SKL-07036"
+   ],
+   "sources": [
+    "BC-EK-FUN-7G1",
+    "ced:144",
+    "research/units/unit-07-differential-equations.md#7.8 Exponential Models with Differential Equations"
+   ],
+   "evidence_tag": "inferred",
+   "ek_id": "BC-EK-FUN-7G1",
+   "depth": "core",
+   "text": "With y = y0 at t = 0, y = y0 e^(kt): the initial value is the coefficient, k is in the exponent. A second data pair fixes k through a logarithm.",
+   "notation": "y = y sub 0 e^(kt)",
+   "delivery": {
+    "mode": "table",
+    "reason": "rule 5: BC-REP-03 on BC-SKL-07036, two data pairs that fix k (docs/lessons/unit-07/README.md, section 6)",
+    "sources": [
+     "BC-SKL-07036"
+    ],
+    "spec": {
+     "kind": "table",
+     "representations": [
+      "BC-REP-03"
+     ],
+     "columns": [
+      "t (hours)",
+      "P(t)",
+      "what it fixes"
+     ],
+     "rows": [
+      [
+       "0",
+       "200",
+       "the coefficient y0"
+      ],
+      [
+       "2",
+       "600",
+       "k, through ln 3 = 2k"
+      ]
+     ],
+     "labels": [
+      {
+       "text": "initial value: coefficient",
+       "placement": "inside"
+      },
+      {
+       "text": "second pair: exponent",
+       "placement": "inside"
+      }
+     ]
+    },
+    "fallback": "the same two rows as a sentence: P(0) = 200 fixes the coefficient; P(2) = 600 fixes k = (ln 3)/2",
+    "keyboard": "static table; Tab reaches it and a screen reader reads rows in order"
+   }
+  },
+  {
+   "id": "LSN-CON-07010#s4",
+   "type": "key_ideas",
+   "bands": [
+    "low"
+   ],
+   "skills": [
+    "BC-SKL-07038"
+   ],
+   "sources": [
+    "BC-EK-FUN-7F1",
+    "ced:144",
+    "research/units/unit-07-differential-equations.md#7.8 Exponential Models with Differential Equations"
+   ],
+   "evidence_tag": "inferred",
+   "ek_id": "BC-EK-FUN-7F1",
+   "depth": "extended",
+   "text": "Motion along a line is the other application: a velocity or position given by a differential equation is solved the same way, and the answer is the quantity asked for, not the one a derivative away.",
+   "notation": "motion along a line",
+   "delivery": {
+    "mode": "text",
+    "reason": "rule 6: BC-REP-01, BC-REP-05, BC-REP-06 on BC-SKL-07038",
+    "sources": [
+     "BC-SKL-07038"
+    ]
+   }
+  },
+  {
+   "id": "LSN-CON-07010#s5",
+   "type": "strategy",
+   "bands": [
+    "low",
+    "mid"
+   ],
+   "skills": [
+    "BC-SKL-07034",
+    "BC-SKL-07035",
+    "BC-SKL-07036",
+    "BC-SKL-07037",
+    "BC-SKL-07038"
+   ],
+   "sources": [
+    "BC-QA-07008"
+   ],
+   "evidence_tag": "verified",
+   "archetype_id": "BC-QA-07008",
+   "cue": "The rate of change is proportional to the quantity, with an initial value and a second data pair.",
+   "method": "First written line: dy/dt = ky, then y = y0 e^(kt).",
+   "rival": "Rival: treating the constant of proportionality and the constant of integration as the same object.",
+   "separating_feature": "y0 is the coefficient; k needs the second pair."
+  },
+  {
+   "id": "LSN-CON-07010#s6",
+   "type": "worked_example",
+   "bands": [
+    "low",
+    "mid"
+   ],
+   "skills": [
+    "BC-SKL-07034",
+    "BC-SKL-07035",
+    "BC-SKL-07036",
+    "BC-SKL-07037",
+    "BC-SKL-07038"
+   ],
+   "sources": [
+    "BC-QA-07008"
+   ],
+   "evidence_tag": "inferred",
+   "archetype_id": "BC-QA-07008",
+   "parameter_draw": {
+    "change": "growth",
+    "factor": "3",
+    "initial": 200,
+    "elapsed": 2,
+    "context": "bacteria"
+   },
+   "problem": {
+    "text": "Bacteria P grow at a rate proportional to P; P(0) = 200, P(2) = 600, t in hours. Find P(t); interpret k.",
+    "command_verb": "find"
+   },
+   "calculator_status": "no_calculator",
+   "steps": [
+    {
+     "cue": "Proportional to P.",
+     "why": "A constant multiple, k.",
+     "expression": [
+      "Equal",
+      "dPdt",
+      [
+       "Multiply",
+       "P",
+       "k"
+      ]
+     ],
+     "relation": "new"
+    },
+    {
+     "cue": "P(0) = 200.",
+     "why": "The coefficient.",
+     "expression": [
+      "Equal",
+      "P",
+      [
+       "Multiply",
+       200,
+       [
+        "Exp",
+        [
+         "Multiply",
+         "k",
+         "t"
+        ]
+       ]
+      ]
+     ],
+     "relation": "new"
+    },
+    {
+     "cue": "P(2) = 600.",
+     "why": "Only a second pair reaches k.",
+     "expression": [
+      "Equal",
+      600,
+      [
+       "Multiply",
+       200,
+       [
+        "Exp",
+        [
+         "Multiply",
+         2,
+         "k"
+        ]
+       ]
+      ]
+     ],
+     "relation": "evaluate",
+     "subs": {
+      "t": "2"
+     }
+    },
+    {
+     "cue": "k is in the exponent.",
+     "why": "e^(2k) = 3, take ln.",
+     "expression": [
+      "Multiply",
+      [
+       "Rational",
+       1,
+       2
+      ],
+      [
+       "Ln",
+       3
+      ]
+     ],
+     "relation": "solve",
+     "variable": "k"
+    },
+    {
+     "cue": "The stem asks for P(t).",
+     "why": "Put k back.",
+     "expression": [
+      "Equal",
+      "P",
+      [
+       "Multiply",
+       200,
+       [
+        "Exp",
+        [
+         "Multiply",
+         [
+          "Rational",
+          1,
+          2
+         ],
+         "t",
+         [
+          "Ln",
+          3
+         ]
+        ]
+       ]
+      ]
+     ],
+     "relation": "new"
+    },
+    {
+     "cue": "The stem asks what k means.",
+     "why": "k = (ln 3)/2 > 0: growth, per hour; the count triples every 2 hours."
+    }
+   ],
+   "answer": {
+    "form": "symbolic",
+    "mathjson": [
+     "Multiply",
+     200,
+     [
+      "Exp",
+      [
+       "Multiply",
+       [
+        "Rational",
+        1,
+        2
+       ],
+       "t",
+       [
+        "Ln",
+        3
+       ]
+      ]
+     ]
+    ]
+   },
+   "delivery": {
+    "mode": "step_reveal",
+    "reason": "rule 1: a worked example or an error block",
+    "sources": []
+   }
+  },
+  {
+   "id": "LSN-CON-07010#err-BC-ERR-07001",
+   "type": "common_error",
+   "bands": [
+    "low",
+    "mid"
+   ],
+   "skills": [
+    "BC-SKL-07034"
+   ],
+   "sources": [
+    "BC-ERR-07001",
+    "BC-MIS-07001"
+   ],
+   "evidence_tag": "inferred",
+   "error_id": "BC-ERR-07001",
+   "observed_behavior": "The response writes the derivative equal to the quantity itself, with no constant of proportionality.",
+   "scoring_consequence": "The model is wrong by a factor and every later value built on it is wrong.",
+   "wrong_step": {
+    "text": "dP/dt = P.",
+    "expression": [
+     "Equal",
+     "dPdt",
+     "P"
+    ]
+   },
+   "right_step": {
+    "text": "dP/dt = kP.",
+    "expression": [
+     "Equal",
+     "dPdt",
+     [
+      "Multiply",
+      "P",
+      "k"
+     ]
+    ]
+   },
+   "relation": "distinct",
+   "possible_reason": {
+    "misconception_id": "BC-MIS-07001",
+    "text": "drops the constant of proportionality"
+   },
+   "delivery": {
+    "mode": "step_reveal",
+    "reason": "rule 1: a worked example or an error block",
+    "sources": []
+   }
+  },
+  {
+   "id": "LSN-CON-07010#err-BC-ERR-07034",
+   "type": "common_error",
+   "bands": [
+    "low",
+    "mid"
+   ],
+   "skills": [
+    "BC-SKL-07034"
+   ],
+   "sources": [
+    "BC-ERR-07034",
+    "BC-MIS-07021"
+   ],
+   "evidence_tag": "inferred",
+   "error_id": "BC-ERR-07034",
+   "observed_behavior": "The response writes the quantity as the initial value plus a constant multiple of the independent variable.",
+   "scoring_consequence": "The model is the wrong family and no later value is right.",
+   "wrong_step": {
+    "text": "A line through (0, 200) and (2, 600).",
+    "expression": [
+     "Equal",
+     "P",
+     [
+      "Add",
+      200,
+      [
+       "Multiply",
+       200,
+       "t"
+      ]
+     ]
+    ]
+   },
+   "right_step": {
+    "text": "An exponential through both.",
+    "expression": [
+     "Equal",
+     "P",
+     [
+      "Multiply",
+      200,
+      [
+       "Exp",
+       [
+        "Multiply",
+        [
+         "Rational",
+         1,
+         2
+        ],
+        "t",
+        [
+         "Ln",
+         3
+        ]
+       ]
+      ]
+     ]
+    ]
+   },
+   "relation": "distinct",
+   "possible_reason": {
+    "misconception_id": "BC-MIS-07021",
+    "text": "treats a constant rate constant as a constant rate, so the model comes out linear"
+   },
+   "delivery": {
+    "mode": "step_reveal",
+    "reason": "rule 1: a worked example or an error block",
+    "sources": []
+   }
+  },
+  {
+   "id": "LSN-CON-07010#err-BC-ERR-07035",
+   "type": "common_error",
+   "bands": [
+    "low",
+    "mid"
+   ],
+   "skills": [
+    "BC-SKL-07035"
+   ],
+   "sources": [
+    "BC-ERR-07035",
+    "BC-MIS-07022"
+   ],
+   "evidence_tag": "inferred",
+   "error_id": "BC-ERR-07035",
+   "observed_behavior": "The response writes the initial value inside the exponent, or the rate constant as a multiplier outside it.",
+   "scoring_consequence": "The formula fails the initial condition or the differential equation.",
+   "wrong_step": {
+    "text": "200 inside the exponent.",
+    "expression": [
+     "Equal",
+     "P",
+     [
+      "Exp",
+      [
+       "Multiply",
+       200,
+       "k",
+       "t"
+      ]
+     ]
+    ]
+   },
+   "right_step": {
+    "text": "200 as the coefficient.",
+    "expression": [
+     "Equal",
+     "P",
+     [
+      "Multiply",
+      200,
+      [
+       "Exp",
+       [
+        "Multiply",
+        "k",
+        "t"
+       ]
+      ]
+     ]
+    ]
+   },
+   "relation": "distinct",
+   "possible_reason": {
+    "misconception_id": "BC-MIS-07022",
+    "text": "does not see that the initial value fixes the leading coefficient"
+   },
+   "delivery": {
+    "mode": "step_reveal",
+    "reason": "rule 1: a worked example or an error block",
+    "sources": []
+   }
+  },
+  {
+   "id": "LSN-CON-07010#err-BC-ERR-07036",
+   "type": "common_error",
+   "bands": [
+    "low",
+    "mid"
+   ],
+   "skills": [
+    "BC-SKL-07036"
+   ],
+   "sources": [
+    "BC-ERR-07036",
+    "BC-MIS-07022"
+   ],
+   "evidence_tag": "inferred",
+   "error_id": "BC-ERR-07036",
+   "observed_behavior": "The response computes the constant from the initial condition alone, with no second value.",
+   "scoring_consequence": "The constant is undetermined and the reported value is arbitrary.",
+   "wrong_step": {
+    "text": "k taken from 200 alone.",
+    "expression": [
+     "Equal",
+     "k",
+     [
+      "Ln",
+      200
+     ]
+    ]
+   },
+   "right_step": {
+    "text": "k from P(2) = 600.",
+    "expression": [
+     "Equal",
+     "k",
+     [
+      "Multiply",
+      [
+       "Rational",
+       1,
+       2
+      ],
+      [
+       "Ln",
+       3
+      ]
+     ]
+    ]
+   },
+   "relation": "distinct",
+   "possible_reason": {
+    "misconception_id": "BC-MIS-07022",
+    "text": "a second pair is needed for the exponent"
+   },
+   "delivery": {
+    "mode": "step_reveal",
+    "reason": "rule 1: a worked example or an error block",
+    "sources": []
+   }
+  },
+  {
+   "id": "LSN-CON-07010#prq-BC-PRQ-06003",
+   "type": "prerequisite_bridge",
+   "bands": [
+    "low",
+    "mid"
+   ],
+   "skills": [
+    "BC-SKL-07036"
+   ],
+   "sources": [
+    "BC-PRQ-06003"
+   ],
+   "evidence_tag": "inferred",
+   "prerequisite_id": "BC-PRQ-06003",
+   "text": "ln turns e^(2k) = 3 into 2k = ln 3; without it, logarithms stay uncombined."
+  },
+  {
+   "id": "LSN-CON-07010#prq-BC-PRQ-07001",
+   "type": "prerequisite_bridge",
+   "bands": [
+    "low",
+    "mid"
+   ],
+   "skills": [
+    "BC-SKL-07036"
+   ],
+   "sources": [
+    "BC-PRQ-07001"
+   ],
+   "evidence_tag": "inferred",
+   "prerequisite_id": "BC-PRQ-07001",
+   "text": "A logarithm of both sides isolates k; without it, the second pair gives no k."
+  },
+  {
+   "id": "LSN-CON-07010#prq-BC-PRQ-07003",
+   "type": "prerequisite_bridge",
+   "bands": [
+    "low",
+    "mid"
+   ],
+   "skills": [
+    "BC-SKL-07034"
+   ],
+   "sources": [
+    "BC-PRQ-07003"
+   ],
+   "evidence_tag": "inferred",
+   "prerequisite_id": "BC-PRQ-07003",
+   "text": "Proportional to means a constant multiple; without it, the constant is lost."
+  }
+ ],
+ "checks": [
+  {
+   "id": "LSN-CON-07010#chk-1",
+   "check_kind": "completion",
+   "bands": [
+    "low",
+    "mid"
+   ],
+   "format": "short_answer",
+   "archetype_id": "BC-QA-07008",
+   "parameter_draw": {
+    "change": "growth",
+    "factor": "3",
+    "initial": 200,
+    "elapsed": 2,
+    "context": "bacteria"
+   },
+   "completes": "LSN-CON-07010#s6",
+   "stem": {
+    "text": "P = 200e^(kt), and P(2) = 600 gives k = (ln 3)/2. Write P(t).",
+    "command_verb": "write"
+   },
+   "answer_key": {
+    "form": "symbolic",
+    "mathjson": [
+     "Multiply",
+     200,
+     [
+      "Exp",
+      [
+       "Multiply",
+       [
+        "Rational",
+        1,
+        2
+       ],
+       "t",
+       [
+        "Ln",
+        3
+       ]
+      ]
+     ]
+    ]
+   },
+   "worked_solution": [
+    {
+     "step": 1,
+     "text": "The model.",
+     "mathjson": [
+      "Equal",
+      "P",
+      [
+       "Multiply",
+       200,
+       [
+        "Exp",
+        [
+         "Multiply",
+         "k",
+         "t"
+        ]
+       ]
+      ]
+     ],
+     "relation": "new"
+    },
+    {
+     "step": 2,
+     "text": "k substituted.",
+     "mathjson": [
+      "Equal",
+      "P",
+      [
+       "Multiply",
+       200,
+       [
+        "Exp",
+        [
+         "Multiply",
+         [
+          "Rational",
+          1,
+          2
+         ],
+         "t",
+         [
+          "Ln",
+          3
+         ]
+        ]
+       ]
+      ]
+     ],
+     "relation": "evaluate",
+     "subs": {
+      "k": "log(3)/2"
+     }
+    }
+   ],
+   "calculator_status": "no_calculator",
+   "representation": "BC-REP-01",
+   "skills": [
+    "BC-SKL-07035"
+   ]
+  },
+  {
+   "id": "LSN-CON-07010#chk-2",
+   "check_kind": "isomorph",
+   "bands": [
+    "low",
+    "mid"
+   ],
+   "format": "short_answer",
+   "archetype_id": "BC-QA-07008",
+   "parameter_draw": {
+    "change": "decay",
+    "factor": "5/2",
+    "initial": 500,
+    "elapsed": 2,
+    "context": "users"
+   },
+   "stem": {
+    "text": "Users U decrease at a rate proportional to U; U(0) = 500, U(2) = 200. Find U(t).",
+    "command_verb": "find"
+   },
+   "answer_key": {
+    "form": "symbolic",
+    "mathjson": [
+     "Multiply",
+     500,
+     [
+      "Exp",
+      [
+       "Multiply",
+       [
+        "Rational",
+        1,
+        2
+       ],
+       "t",
+       [
+        "Ln",
+        [
+         "Rational",
+         2,
+         5
+        ]
+       ]
+      ]
+     ]
+    ]
+   },
+   "worked_solution": [
+    {
+     "step": 1,
+     "text": "Model with the initial value.",
+     "mathjson": [
+      "Equal",
+      "U",
+      [
+       "Multiply",
+       500,
+       [
+        "Exp",
+        [
+         "Multiply",
+         "k",
+         "t"
+        ]
+       ]
+      ]
+     ],
+     "relation": "new"
+    },
+    {
+     "step": 2,
+     "text": "Second pair.",
+     "mathjson": [
+      "Equal",
+      200,
+      [
+       "Multiply",
+       500,
+       [
+        "Exp",
+        [
+         "Multiply",
+         2,
+         "k"
+        ]
+       ]
+      ]
+     ],
+     "relation": "evaluate",
+     "subs": {
+      "t": "2"
+     }
+    },
+    {
+     "step": 3,
+     "text": "k.",
+     "mathjson": [
+      "Multiply",
+      [
+       "Rational",
+       1,
+       2
+      ],
+      [
+       "Ln",
+       [
+        "Rational",
+        2,
+        5
+       ]
+      ]
+     ],
+     "relation": "solve",
+     "variable": "k"
+    },
+    {
+     "step": 4,
+     "text": "Put k back.",
+     "mathjson": [
+      "Equal",
+      "U",
+      [
+       "Multiply",
+       500,
+       [
+        "Exp",
+        [
+         "Multiply",
+         [
+          "Rational",
+          1,
+          2
+         ],
+         "t",
+         [
+          "Ln",
+          [
+           "Rational",
+           2,
+           5
+          ]
+         ]
+        ]
+       ]
+      ]
+     ],
+     "relation": "new"
+    }
+   ],
+   "calculator_status": "no_calculator",
+   "representation": "BC-REP-01",
+   "skills": [
+    "BC-SKL-07035",
+    "BC-SKL-07036"
+   ]
+  },
+  {
+   "id": "LSN-CON-07010#chk-3",
+   "check_kind": "mcq",
+   "bands": [
+    "low"
+   ],
+   "format": "mcq",
+   "archetype_id": "BC-QA-07008",
+   "parameter_draw": {
+    "change": "decay",
+    "factor": "2",
+    "initial": 400,
+    "elapsed": 3,
+    "context": "mold"
+   },
+   "stem": {
+    "text": "Mold M decays at a rate proportional to M. M(0) = 400 and M(3) = 200. Which is M(t)?",
+    "command_verb": "identify"
+   },
+   "answer_key": {
+    "form": "symbolic",
+    "mathjson": [
+     "Multiply",
+     400,
+     [
+      "Exp",
+      [
+       "Multiply",
+       [
+        "Rational",
+        -1,
+        3
+       ],
+       "t",
+       [
+        "Ln",
+        2
+       ]
+      ]
+     ]
+    ]
+   },
+   "worked_solution": [
+    {
+     "step": 1,
+     "text": "Model with the initial value.",
+     "mathjson": [
+      "Equal",
+      "M",
+      [
+       "Multiply",
+       400,
+       [
+        "Exp",
+        [
+         "Multiply",
+         "k",
+         "t"
+        ]
+       ]
+      ]
+     ],
+     "relation": "new"
+    },
+    {
+     "step": 2,
+     "text": "Second pair.",
+     "mathjson": [
+      "Equal",
+      200,
+      [
+       "Multiply",
+       400,
+       [
+        "Exp",
+        [
+         "Multiply",
+         3,
+         "k"
+        ]
+       ]
+      ]
+     ],
+     "relation": "evaluate",
+     "subs": {
+      "t": "3"
+     }
+    },
+    {
+     "step": 3,
+     "text": "k.",
+     "mathjson": [
+      "Multiply",
+      [
+       "Rational",
+       -1,
+       3
+      ],
+      [
+       "Ln",
+       2
+      ]
+     ],
+     "relation": "solve",
+     "variable": "k"
+    },
+    {
+     "step": 4,
+     "text": "Put k back.",
+     "mathjson": [
+      "Equal",
+      "M",
+      [
+       "Multiply",
+       400,
+       [
+        "Exp",
+        [
+         "Multiply",
+         [
+          "Rational",
+          -1,
+          3
+         ],
+         "t",
+         [
+          "Ln",
+          2
+         ]
+        ]
+       ]
+      ]
+     ],
+     "relation": "new"
+    }
+   ],
+   "options": [
+    {
+     "id": "A",
+     "is_key": false,
+     "error_path": "BC-ERR-07001",
+     "value": [
+      "Multiply",
+      400,
+      [
+       "Exp",
+       "t"
+      ]
+     ],
+     "derivation": "dM/dt = M, no constant of proportionality"
+    },
+    {
+     "id": "B",
+     "is_key": true,
+     "error_path": null,
+     "value": [
+      "Multiply",
+      400,
+      [
+       "Exp",
+       [
+        "Multiply",
+        [
+         "Rational",
+         -1,
+         3
+        ],
+        "t",
+        [
+         "Ln",
+         2
+        ]
+       ]
+      ]
+     ]
+    },
+    {
+     "id": "C",
+     "is_key": false,
+     "error_path": "BC-ERR-07034",
+     "value": [
+      "Add",
+      400,
+      [
+       "Multiply",
+       [
+        "Rational",
+        -200,
+        3
+       ],
+       "t"
+      ]
+     ],
+     "derivation": "a line through (0, 400) and (3, 200)"
+    },
+    {
+     "id": "D",
+     "is_key": false,
+     "error_path": "BC-ERR-07035",
+     "value": [
+      "Exp",
+      [
+       "Multiply",
+       [
+        "Rational",
+        -400,
+        3
+       ],
+       "t",
+       [
+        "Ln",
+        2
+       ]
+      ]
+     ],
+     "derivation": "400 written inside the exponent"
+    }
+   ],
+   "calculator_status": "no_calculator",
+   "representation": "BC-REP-01",
+   "skills": [
+    "BC-SKL-07034",
+    "BC-SKL-07035"
+   ]
+  }
+ ],
+ "refresher": [
+  "LSN-CON-07010#s2",
+  "LSN-CON-07010#s3",
+  "LSN-CON-07010#err-BC-ERR-07001",
+  "LSN-CON-07010#err-BC-ERR-07034",
+  "LSN-CON-07010#err-BC-ERR-07035",
+  "LSN-CON-07010#err-BC-ERR-07036",
+  "LSN-CON-07010#s6"
+ ],
+ "provenance": {
+  "author": "tools/lesson_transcribe.py",
+  "prompt_version": "generator/lesson_v1",
+  "design_path": "docs/lessons/unit-07/LSN-CON-07010.md",
+  "signed_off_by": "claude-opus-5-5",
+  "signed_off_at": "2026-09-29",
+  "not_human": true
+ }
+}

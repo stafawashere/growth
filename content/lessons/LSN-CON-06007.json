@@ -1,0 +1,1030 @@
+{
+ "id": "LSN-CON-06007",
+ "version": 1,
+ "kind": "concept",
+ "target_id": "BC-CON-06007",
+ "status": "signed_off",
+ "snapshot_digest": "a6a8ec9d3f59ab8f712e33d30cc22fc64bf2c478fbe7312e3e3118d319c6a42f",
+ "source_digest": "b25fd188cb611a75c164c417dfbe1380d8ad4a8f826582fadf5de0df0ce7555f",
+ "read_minutes": {
+  "full": 4.7,
+  "brief": 3.0
+ },
+ "word_count": {
+  "full": 599,
+  "brief": 387
+ },
+ "sections": [
+  {
+   "id": "LSN-CON-06007#s1",
+   "type": "orientation",
+   "bands": [
+    "low",
+    "mid"
+   ],
+   "skills": [
+    "BC-SKL-06017",
+    "BC-SKL-06020"
+   ],
+   "sources": [
+    "BC-CON-06007",
+    "research/units/unit-06-integration-accumulation.md#6.4 The Fundamental Theorem of Calculus and Accumulation Functions"
+   ],
+   "evidence_tag": "inferred",
+   "text": "A response finds g at an input as signed area from the fixed lower limit, with t kept inside the integral.",
+   "delivery": {
+    "mode": "text",
+    "reason": "rule 6: a statement of what a response shows; BC-REP-02 is served on ki-1 and ki-2",
+    "sources": [
+     "BC-SKL-06017"
+    ]
+   }
+  },
+  {
+   "id": "LSN-CON-06007#s2",
+   "type": "key_ideas",
+   "bands": [
+    "low",
+    "mid"
+   ],
+   "skills": [
+    "BC-SKL-06017",
+    "BC-SKL-06020"
+   ],
+   "sources": [
+    "BC-EK-FUN-5A1",
+    "ced:121",
+    "research/units/unit-06-integration-accumulation.md#6.4 The Fundamental Theorem of Calculus and Accumulation Functions"
+   ],
+   "evidence_tag": "verified",
+   "ek_id": "BC-EK-FUN-5A1",
+   "depth": "core",
+   "text": "For each x, the integral of f from a fixed a to x is one number, so it defines a function of x. t is bound; x sits only in the limit.",
+   "notation": "g(x) = integral from a to x of f(t) dt",
+   "quote": {
+    "text": "The definite integral can be used to define new functions.",
+    "source": "ced:121"
+   },
+   "delivery": {
+    "mode": "motion",
+    "reason": "rule 2: a quantity accumulating as the upper limit moves, per the unit delivery map for FUN-5A1",
+    "sources": [
+     "BC-SKL-06017",
+     "BC-SKL-06020"
+    ],
+    "spec": {
+     "kind": "graph",
+     "representations": [
+      "BC-REP-02"
+     ],
+     "window": {
+      "x": [
+       0,
+       12
+      ],
+      "y": [
+       -3,
+       3
+      ]
+     },
+     "curves": [
+      {
+       "piecewise_linear": [
+        [
+         0,
+         2
+        ],
+        [
+         2,
+         0
+        ],
+        [
+         4,
+         -2
+        ],
+        [
+         6,
+         -2
+        ],
+        [
+         8,
+         0
+        ]
+       ]
+      },
+      {
+       "semicircle": {
+        "centre": [
+         10,
+         0
+        ],
+        "radius": 2,
+        "side": "above"
+       }
+      }
+     ],
+     "frames": [
+      {
+       "x": 2,
+       "g": "0"
+      },
+      {
+       "x": 4,
+       "g": "-2"
+      },
+      {
+       "x": 6,
+       "g": "-6"
+      },
+      {
+       "x": 8,
+       "g": "-8"
+      },
+      {
+       "x": 10,
+       "g": "-8 + pi"
+      },
+      {
+       "x": 12,
+       "g": "-8 + 2 pi"
+      }
+     ],
+     "drawn": [
+      "the region from 2 to the frame's x shaded, above the axis in one colour and below in another"
+     ],
+     "labels": [
+      {
+       "text": "lower limit 2",
+       "placement": "inside"
+      },
+      {
+       "text": "g(x) = shaded signed area",
+       "placement": "inside"
+      },
+      {
+       "text": "below the axis: subtract",
+       "placement": "inside"
+      }
+     ]
+    },
+    "fallback": "three frames side by side, at x = 4, 8 and 12, each with its shaded region and its g value inside the figure",
+    "reduced_motion": "no auto-advance; each key press cross-fades to the next frame",
+    "keyboard": "Right arrow steps to the next frame, Left arrow to the previous; Space pauses auto-advance"
+   }
+  },
+  {
+   "id": "LSN-CON-06007#s3",
+   "type": "key_ideas",
+   "bands": [
+    "low"
+   ],
+   "skills": [
+    "BC-SKL-06020"
+   ],
+   "sources": [
+    "BC-EK-FUN-5A3",
+    "ced:122",
+    "research/units/unit-06-integration-accumulation.md#6.4 The Fundamental Theorem of Calculus and Accumulation Functions"
+   ],
+   "evidence_tag": "inferred",
+   "ek_id": "BC-EK-FUN-5A3",
+   "depth": "extended",
+   "text": "From a graph of f, g(b) is the signed area from a to b: pieces above the axis add, pieces below subtract, and b left of a flips the sign.",
+   "notation": "g(a) = 0",
+   "delivery": {
+    "mode": "interactive",
+    "reason": "rule 4 promoted: BC-REP-02 on BC-SKL-06020; BC-QA-06003 common_givens and difficulty_variables name a varying upper limit and regions below the axis, and the stem asks for values of g",
+    "sources": [
+     "BC-SKL-06020",
+     "BC-QA-06003"
+    ],
+    "spec": {
+     "kind": "graph",
+     "representations": [
+      "BC-REP-02"
+     ],
+     "window": {
+      "x": [
+       0,
+       12
+      ],
+      "y": [
+       -3,
+       3
+      ]
+     },
+     "curves": [
+      {
+       "piecewise_linear": [
+        [
+         0,
+         2
+        ],
+        [
+         2,
+         0
+        ],
+        [
+         4,
+         -2
+        ],
+        [
+         6,
+         -2
+        ],
+        [
+         8,
+         0
+        ]
+       ]
+      },
+      {
+       "semicircle": {
+        "centre": [
+         10,
+         0
+        ],
+        "radius": 2,
+        "side": "above"
+       }
+      }
+     ],
+     "controls": [
+      {
+       "type": "draggable_point",
+       "constrained_to": "x-axis",
+       "range": [
+        0,
+        12
+       ],
+       "start": 2,
+       "name": "upper limit b"
+      }
+     ],
+     "drawn": [
+      "signed area from 2 to b shaded",
+      "the value of g(b) shown beside the point"
+     ],
+     "labels": [
+      {
+       "text": "b",
+       "placement": "inside"
+      },
+      {
+       "text": "g(b)",
+       "placement": "inside"
+      },
+      {
+       "text": "b left of 2: sign flips",
+       "placement": "inside"
+      }
+     ],
+     "question": "As b moves right across a piece below the axis, does g(b) rise or fall?"
+    },
+    "fallback": "a static figure with g marked at x = 0, 2, 4, 6, 8 and 12, each label inside the figure",
+    "keyboard": "Tab focuses the point; left and right arrow keys move b by 1; Enter reads out g(b)"
+   }
+  },
+  {
+   "id": "LSN-CON-06007#s4",
+   "type": "strategy",
+   "bands": [
+    "low",
+    "mid"
+   ],
+   "skills": [
+    "BC-SKL-06020"
+   ],
+   "sources": [
+    "BC-QA-06003"
+   ],
+   "evidence_tag": "verified",
+   "archetype_id": "BC-QA-06003",
+   "cue": "g is an integral of a graphed f from a fixed input; values of g asked.",
+   "method": "First line: g(b) as signed areas from the lower limit to b.",
+   "rival": "Rival: features read off the plotted f (BC-ERR-06008).",
+   "separating_feature": "The curve drawn is f, not g."
+  },
+  {
+   "id": "LSN-CON-06007#s5",
+   "type": "strategy",
+   "bands": [
+    "low",
+    "mid"
+   ],
+   "skills": [
+    "BC-SKL-06020"
+   ],
+   "sources": [
+    "BC-QA-06004"
+   ],
+   "evidence_tag": "verified",
+   "archetype_id": "BC-QA-06004",
+   "cue": "Segments and semicircles, with numerical limits.",
+   "method": "First line: the region split where the graph changes character, each piece with its sign.",
+   "rival": "Rival: regions below the axis added as positive area (BC-ERR-06014).",
+   "separating_feature": "A piece below the axis enters with a minus sign."
+  },
+  {
+   "id": "LSN-CON-06007#s6",
+   "type": "strategy",
+   "bands": [
+    "low",
+    "mid"
+   ],
+   "skills": [
+    "BC-SKL-06017"
+   ],
+   "sources": [
+    "BC-QA-06012"
+   ],
+   "evidence_tag": "verified",
+   "archetype_id": "BC-QA-06012",
+   "cue": "The same definition, but h prime is asked.",
+   "method": "First line: h'(x) equals the integrand at the upper limit.",
+   "rival": "Rival: the chain factor dropped (BC-ERR-06027).",
+   "separating_feature": "An upper limit that is a function of x, not x itself."
+  },
+  {
+   "id": "LSN-CON-06007#s7",
+   "type": "worked_example",
+   "bands": [
+    "low",
+    "mid"
+   ],
+   "skills": [
+    "BC-SKL-06020"
+   ],
+   "sources": [
+    "BC-QA-06003"
+   ],
+   "evidence_tag": "inferred",
+   "archetype_id": "BC-QA-06003",
+   "parameter_draw": {
+    "heights": [
+     2,
+     0,
+     -2,
+     -2
+    ],
+    "lower": 2,
+    "circle": "above",
+    "half_point": "1/2",
+    "letters": "fg",
+    "ask": "value"
+   },
+   "problem": {
+    "text": "f: segments through (0, 2), (2, 0), (4, -2), (6, -2), (8, 0), then a radius 2 semicircle above the axis. g(x) = integral of f from 2 to x. Find g(12).",
+    "command_verb": "find"
+   },
+   "calculator_status": "no_calculator",
+   "steps": [
+    {
+     "cue": "Start at the lower limit 2.",
+     "why": "Three pieces below the axis.",
+     "expression": -8,
+     "relation": "new"
+    },
+    {
+     "cue": "Add them.",
+     "why": "Signed total to 8.",
+     "expression": -8,
+     "relation": "equivalent"
+    },
+    {
+     "cue": "Semicircle above the axis.",
+     "why": "Half of pi r squared, positive.",
+     "expression": [
+      "Add",
+      -8,
+      [
+       "Multiply",
+       2,
+       "Pi"
+      ]
+     ],
+     "relation": "new"
+    },
+    {
+     "cue": "The stem asks for g(12).",
+     "why": "The value is scored.",
+     "expression": [
+      "Add",
+      -8,
+      [
+       "Multiply",
+       2,
+       "Pi"
+      ]
+     ],
+     "point_type_id": "BC-PT-99069",
+     "relation": "equivalent"
+    }
+   ],
+   "answer": {
+    "form": "symbolic",
+    "mathjson": [
+     "Add",
+     -8,
+     [
+      "Multiply",
+      2,
+      "Pi"
+     ]
+    ]
+   },
+   "delivery": {
+    "mode": "step_reveal",
+    "reason": "rule 1",
+    "sources": []
+   }
+  },
+  {
+   "id": "LSN-CON-06007#s8",
+   "type": "what_a_reader_scores",
+   "bands": [
+    "low",
+    "mid"
+   ],
+   "skills": [
+    "BC-SKL-06020"
+   ],
+   "sources": [
+    "BC-PT-99069"
+   ],
+   "evidence_tag": "verified",
+   "example_id": "LSN-CON-06007#s7",
+   "lines": [
+    {
+     "point_type_id": "BC-PT-99069",
+     "text": "Value of an accumulation function found from geometry of a graph. Earned by: The value of the accumulation function at the requested input, computed from areas of the regions under the graph, with the correct sign for reversed limits (sg-25:18, sg-24:12). Not earned by: A value from the wrong starting limit; sg-24:13 has a special case where an explicitly wrong lower limit forfeits the first point it would otherwise have earned."
+    }
+   ]
+  },
+  {
+   "id": "LSN-CON-06007#err-BC-ERR-06014",
+   "type": "common_error",
+   "bands": [
+    "low",
+    "mid"
+   ],
+   "skills": [
+    "BC-SKL-06020"
+   ],
+   "sources": [
+    "BC-ERR-06014",
+    "BC-MIS-08024"
+   ],
+   "evidence_tag": "inferred",
+   "error_id": "BC-ERR-06014",
+   "observed_behavior": "Every piece of the region is added with a positive sign, so a signed integral is reported as a plain area.",
+   "scoring_consequence": "The value point is lost, and any later part that imports the value inherits the error.",
+   "wrong_step": {
+    "text": "8 + 2 pi.",
+    "expression": [
+     "Add",
+     8,
+     [
+      "Multiply",
+      2,
+      "Pi"
+     ]
+    ]
+   },
+   "right_step": {
+    "text": "-8 + 2 pi.",
+    "expression": [
+     "Add",
+     -8,
+     [
+      "Multiply",
+      2,
+      "Pi"
+     ]
+    ]
+   },
+   "relation": "distinct",
+   "possible_reason": {
+    "misconception_id": "BC-MIS-08024",
+    "text": "reads every definite integral as area under a graph"
+   },
+   "delivery": {
+    "mode": "step_reveal",
+    "reason": "rule 1",
+    "sources": []
+   }
+  },
+  {
+   "id": "LSN-CON-06007#err-BC-ERR-99012",
+   "type": "common_error",
+   "bands": [
+    "low",
+    "mid"
+   ],
+   "skills": [
+    "BC-SKL-06017",
+    "BC-SKL-06020"
+   ],
+   "sources": [
+    "BC-ERR-99012",
+    "BC-MIS-08012"
+   ],
+   "evidence_tag": "inferred",
+   "error_id": "BC-ERR-99012",
+   "observed_behavior": "Responses write the integral of f prime from a to x as f of x, ignoring the value at the lower limit, or mishandle a reversed pair of limits and report the wrong sign for an accumulated area.",
+   "scoring_consequence": "The value or setup point in that part is not earned, and the error usually propagates to later parts that build on the value.",
+   "wrong_step": {
+    "text": "From x = 0.",
+    "expression": [
+     "Add",
+     -6,
+     [
+      "Multiply",
+      2,
+      "Pi"
+     ]
+    ]
+   },
+   "right_step": {
+    "text": "From x = 2.",
+    "expression": [
+     "Add",
+     -8,
+     [
+      "Multiply",
+      2,
+      "Pi"
+     ]
+    ]
+   },
+   "relation": "distinct",
+   "possible_reason": {
+    "misconception_id": "BC-MIS-08012",
+    "text": "chooses limits from the axes of the picture"
+   },
+   "delivery": {
+    "mode": "step_reveal",
+    "reason": "rule 1",
+    "sources": []
+   }
+  },
+  {
+   "id": "LSN-CON-06007#err-BC-ERR-06013",
+   "type": "common_error",
+   "bands": [
+    "low",
+    "mid"
+   ],
+   "skills": [
+    "BC-SKL-06020"
+   ],
+   "sources": [
+    "BC-ERR-06013",
+    "BC-MIS-08019"
+   ],
+   "evidence_tag": "inferred",
+   "error_id": "BC-ERR-06013",
+   "observed_behavior": "The area of a semicircular piece of the region is computed as pi times the radius squared.",
+   "scoring_consequence": "The value point for that integral is lost.",
+   "wrong_step": {
+    "text": "Semicircle as 4 pi.",
+    "expression": [
+     "Add",
+     -8,
+     [
+      "Multiply",
+      4,
+      "Pi"
+     ]
+    ]
+   },
+   "right_step": {
+    "text": "Semicircle as 2 pi.",
+    "expression": [
+     "Add",
+     -8,
+     [
+      "Multiply",
+      2,
+      "Pi"
+     ]
+    ]
+   },
+   "relation": "distinct",
+   "possible_reason": {
+    "misconception_id": "BC-MIS-08019",
+    "text": "remembers the squared dimension but not the fraction in front of it"
+   },
+   "delivery": {
+    "mode": "step_reveal",
+    "reason": "rule 1",
+    "sources": []
+   }
+  },
+  {
+   "id": "LSN-CON-06007#err-BC-ERR-06028",
+   "type": "common_error",
+   "bands": [
+    "low",
+    "mid"
+   ],
+   "skills": [
+    "BC-SKL-06017"
+   ],
+   "sources": [
+    "BC-ERR-06028",
+    "BC-MIS-06024"
+   ],
+   "evidence_tag": "inferred",
+   "error_id": "BC-ERR-06028",
+   "observed_behavior": "The response evaluates the integrand at the dummy variable or leaves the answer in terms of t.",
+   "scoring_consequence": "The answer point is not earned because the derivative is not expressed in the independent variable.",
+   "wrong_step": {
+    "text": "g'(5) = f(t).",
+    "expression": [
+     "Apply",
+     "f",
+     "t"
+    ]
+   },
+   "right_step": {
+    "text": "g'(5) = f(5) = -2.",
+    "expression": -2
+   },
+   "relation": "distinct",
+   "possible_reason": {
+    "misconception_id": "BC-MIS-06024",
+    "text": "does not distinguish the bound variable inside the integral from the variable in the upper limit"
+   },
+   "delivery": {
+    "mode": "step_reveal",
+    "reason": "rule 1",
+    "sources": []
+   }
+  },
+  {
+   "id": "LSN-CON-06007#prq-BC-PRQ-06005",
+   "type": "prerequisite_bridge",
+   "bands": [
+    "low",
+    "mid"
+   ],
+   "skills": [
+    "BC-SKL-06017"
+   ],
+   "sources": [
+    "BC-PRQ-06005"
+   ],
+   "evidence_tag": "inferred",
+   "prerequisite_id": "BC-PRQ-06005",
+   "text": "Read f at the stated input; keep f and f prime apart."
+  },
+  {
+   "id": "LSN-CON-06007#prq-BC-PRQ-06007",
+   "type": "prerequisite_bridge",
+   "bands": [
+    "low",
+    "mid"
+   ],
+   "skills": [
+    "BC-SKL-06020"
+   ],
+   "sources": [
+    "BC-PRQ-06007"
+   ],
+   "evidence_tag": "inferred",
+   "prerequisite_id": "BC-PRQ-06007",
+   "text": "A trapezoid is not a rectangle; a semicircle is half a circle."
+  },
+  {
+   "id": "LSN-CON-06007#prq-BC-PRQ-06013",
+   "type": "prerequisite_bridge",
+   "bands": [
+    "low",
+    "mid"
+   ],
+   "skills": [
+    "BC-SKL-06017"
+   ],
+   "sources": [
+    "BC-PRQ-06013"
+   ],
+   "evidence_tag": "inferred",
+   "prerequisite_id": "BC-PRQ-06013",
+   "text": "t stays inside; only the limits carry x."
+  }
+ ],
+ "checks": [
+  {
+   "id": "LSN-CON-06007#chk-1",
+   "check_kind": "completion",
+   "bands": [
+    "low",
+    "mid"
+   ],
+   "format": "short_answer",
+   "archetype_id": "BC-QA-06003",
+   "parameter_draw": {
+    "heights": [
+     2,
+     0,
+     -2,
+     -2
+    ],
+    "lower": 2,
+    "circle": "above",
+    "half_point": "1/2",
+    "letters": "fg",
+    "ask": "value"
+   },
+   "completes": "LSN-CON-06007#s7",
+   "stem": {
+    "text": "Same f. Pieces from 2 to 8 total -8. Find g(12).",
+    "command_verb": "find"
+   },
+   "answer_key": {
+    "form": "symbolic",
+    "mathjson": [
+     "Add",
+     -8,
+     [
+      "Multiply",
+      2,
+      "Pi"
+     ]
+    ]
+   },
+   "worked_solution": [
+    {
+     "step": 1,
+     "text": "Semicircle added.",
+     "mathjson": [
+      "Add",
+      -8,
+      [
+       "Multiply",
+       2,
+       "Pi"
+      ]
+     ],
+     "relation": "new"
+    },
+    {
+     "step": 2,
+     "text": "g(12).",
+     "mathjson": [
+      "Add",
+      -8,
+      [
+       "Multiply",
+       2,
+       "Pi"
+      ]
+     ],
+     "relation": "equivalent"
+    }
+   ],
+   "calculator_status": "no_calculator",
+   "representation": "BC-REP-02",
+   "skills": [
+    "BC-SKL-06020"
+   ]
+  },
+  {
+   "id": "LSN-CON-06007#chk-2",
+   "check_kind": "isomorph",
+   "bands": [
+    "low",
+    "mid"
+   ],
+   "format": "short_answer",
+   "archetype_id": "BC-QA-06003",
+   "parameter_draw": {
+    "heights": [
+     1,
+     0,
+     -1,
+     -1
+    ],
+    "lower": 2,
+    "circle": "below",
+    "half_point": "1/2",
+    "letters": "fg",
+    "ask": "value"
+   },
+   "stem": {
+    "text": "As ex-1, with vertices (0, 1), (2, 0), (4, -1), (6, -1), (8, 0) and the semicircle below. Find g(12).",
+    "command_verb": "find"
+   },
+   "answer_key": {
+    "form": "symbolic",
+    "mathjson": [
+     "Add",
+     -4,
+     [
+      "Multiply",
+      -2,
+      "Pi"
+     ]
+    ]
+   },
+   "worked_solution": [
+    {
+     "step": 1,
+     "text": "Linear pieces from 2 to 8.",
+     "mathjson": -4,
+     "relation": "new"
+    },
+    {
+     "step": 2,
+     "text": "Semicircle below.",
+     "mathjson": [
+      "Add",
+      -4,
+      [
+       "Multiply",
+       -2,
+       "Pi"
+      ]
+     ],
+     "relation": "new"
+    },
+    {
+     "step": 3,
+     "text": "g(12).",
+     "mathjson": [
+      "Add",
+      -4,
+      [
+       "Multiply",
+       -2,
+       "Pi"
+      ]
+     ],
+     "relation": "equivalent"
+    }
+   ],
+   "calculator_status": "no_calculator",
+   "representation": "BC-REP-02",
+   "skills": [
+    "BC-SKL-06020"
+   ]
+  },
+  {
+   "id": "LSN-CON-06007#chk-3",
+   "check_kind": "mcq",
+   "bands": [
+    "low"
+   ],
+   "format": "mcq",
+   "archetype_id": "BC-QA-06003",
+   "parameter_draw": {
+    "heights": [
+     -2,
+     0,
+     2,
+     1
+    ],
+    "lower": 2,
+    "circle": "below",
+    "half_point": "1/2",
+    "letters": "fg",
+    "ask": "value"
+   },
+   "stem": {
+    "text": "f joins (0, -2), (2, 0), (4, 2), (6, 1), (8, 0), then a semicircle of radius 2 below the axis. g(x) = integral of f from 2 to x. g(12) is",
+    "command_verb": "identify"
+   },
+   "answer_key": {
+    "form": "symbolic",
+    "mathjson": [
+     "Add",
+     6,
+     [
+      "Multiply",
+      -2,
+      "Pi"
+     ]
+    ]
+   },
+   "worked_solution": [
+    {
+     "step": 1,
+     "text": "Linear pieces from 2 to 8.",
+     "mathjson": 6,
+     "relation": "new"
+    },
+    {
+     "step": 2,
+     "text": "Semicircle below.",
+     "mathjson": [
+      "Add",
+      6,
+      [
+       "Multiply",
+       -2,
+       "Pi"
+      ]
+     ],
+     "relation": "new"
+    },
+    {
+     "step": 3,
+     "text": "g(12).",
+     "mathjson": [
+      "Add",
+      6,
+      [
+       "Multiply",
+       -2,
+       "Pi"
+      ]
+     ],
+     "relation": "equivalent"
+    }
+   ],
+   "options": [
+    {
+     "id": "A",
+     "is_key": false,
+     "error_path": "BC-ERR-06014",
+     "value": [
+      "Add",
+      6,
+      [
+       "Multiply",
+       2,
+       "Pi"
+      ]
+     ],
+     "derivation": "the semicircle below the axis added as positive area"
+    },
+    {
+     "id": "B",
+     "is_key": false,
+     "error_path": "BC-ERR-99012",
+     "value": [
+      "Add",
+      4,
+      [
+       "Multiply",
+       -2,
+       "Pi"
+      ]
+     ],
+     "derivation": "the area counted from x = 0 instead of the lower limit 2"
+    },
+    {
+     "id": "C",
+     "is_key": true,
+     "error_path": null,
+     "value": [
+      "Add",
+      6,
+      [
+       "Multiply",
+       -2,
+       "Pi"
+      ]
+     ]
+    },
+    {
+     "id": "D",
+     "is_key": false,
+     "error_path": "BC-ERR-06013",
+     "value": [
+      "Add",
+      6,
+      [
+       "Multiply",
+       -4,
+       "Pi"
+      ]
+     ],
+     "derivation": "the semicircle given the area of a full circle"
+    }
+   ],
+   "calculator_status": "no_calculator",
+   "representation": "BC-REP-02",
+   "skills": [
+    "BC-SKL-06020"
+   ]
+  }
+ ],
+ "refresher": [
+  "LSN-CON-06007#s2",
+  "LSN-CON-06007#err-BC-ERR-06014",
+  "LSN-CON-06007#err-BC-ERR-99012",
+  "LSN-CON-06007#err-BC-ERR-06013",
+  "LSN-CON-06007#err-BC-ERR-06028",
+  "LSN-CON-06007#s7"
+ ],
+ "provenance": {
+  "author": "tools/lesson_transcribe.py",
+  "prompt_version": "generator/lesson_v1",
+  "design_path": "docs/lessons/unit-06/LSN-CON-06007.md",
+  "signed_off_by": "claude-opus-5-5",
+  "signed_off_at": "2026-09-29",
+  "not_human": true
+ }
+}

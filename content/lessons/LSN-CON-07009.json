@@ -1,0 +1,647 @@
+{
+ "id": "LSN-CON-07009",
+ "version": 1,
+ "kind": "concept",
+ "target_id": "BC-CON-07009",
+ "status": "signed_off",
+ "snapshot_digest": "a6a8ec9d3f59ab8f712e33d30cc22fc64bf2c478fbe7312e3e3118d319c6a42f",
+ "source_digest": "43ec227e700f5426d269ff4346c50b4e666dafc664ef6d6e70e78e3e952abbbd",
+ "read_minutes": {
+  "full": 2.8,
+  "brief": 2.8
+ },
+ "word_count": {
+  "full": 341,
+  "brief": 341
+ },
+ "sections": [
+  {
+   "id": "LSN-CON-07009#s1",
+   "type": "orientation",
+   "bands": [
+    "low",
+    "mid"
+   ],
+   "skills": [
+    "BC-SKL-07031"
+   ],
+   "sources": [
+    "BC-CON-07009",
+    "research/units/unit-07-differential-equations.md#7.7 Finding Particular Solutions Using Initial Conditions and Separation of Variables"
+   ],
+   "evidence_tag": "inferred",
+   "text": "A response gives the particular solution and the interval on which it holds: the largest open interval containing the initial input on which the formula is defined. A formula claimed for every input, or an interval missing the initial input, loses the domain statement.",
+   "delivery": {
+    "mode": "text",
+    "reason": "rule 6: a statement of what a response shows; BC-REP-01 and BC-REP-04 only on BC-SKL-07031",
+    "sources": [
+     "BC-SKL-07031"
+    ]
+   }
+  },
+  {
+   "id": "LSN-CON-07009#s2",
+   "type": "key_ideas",
+   "bands": [
+    "low",
+    "mid"
+   ],
+   "skills": [
+    "BC-SKL-07031"
+   ],
+   "sources": [
+    "BC-EK-FUN-7E3",
+    "ced:143",
+    "research/units/unit-07-differential-equations.md#7.7 Finding Particular Solutions Using Initial Conditions and Separation of Variables"
+   ],
+   "evidence_tag": "inferred",
+   "ek_id": "BC-EK-FUN-7E3",
+   "depth": "core",
+   "text": "A solution formula can fail to be defined at some input, where a denominator vanishes or a logarithm or root loses its domain. The particular solution is taken on the largest interval containing the initial input on which the formula is defined and continuous. The piece on the other side of the break belongs to a different solution, since the curve through the initial point cannot cross it.",
+   "notation": "domain restriction; interval containing the initial input",
+   "delivery": {
+    "mode": "text",
+    "reason": "rule 6: a rule about where a formula is defined; BC-REP-01, BC-REP-04 on BC-SKL-07031, none figure-bearing",
+    "sources": [
+     "BC-SKL-07031"
+    ]
+   }
+  },
+  {
+   "id": "LSN-CON-07009#s3",
+   "type": "strategy",
+   "bands": [
+    "low",
+    "mid"
+   ],
+   "skills": [
+    "BC-SKL-07031"
+   ],
+   "sources": [
+    "BC-QA-07011"
+   ],
+   "evidence_tag": "verified",
+   "archetype_id": "BC-QA-07011",
+   "cue": "The stem asks for the particular solution and the interval on which it is valid.",
+   "method": "First written line after the solution: its denominator set equal to zero.",
+   "rival": "Rival: choosing the branch by the sign of the constant rather than by the initial condition.",
+   "separating_feature": "The interval must contain the initial input."
+  },
+  {
+   "id": "LSN-CON-07009#s4",
+   "type": "worked_example",
+   "bands": [
+    "low",
+    "mid"
+   ],
+   "skills": [
+    "BC-SKL-07031"
+   ],
+   "sources": [
+    "BC-QA-07011"
+   ],
+   "evidence_tag": "inferred",
+   "archetype_id": "BC-QA-07011",
+   "parameter_draw": {
+    "form": "restricted",
+    "rate": 2,
+    "initial": "1/2",
+    "start": 1,
+    "integrand": "gauss"
+   },
+   "problem": {
+    "text": "dy/dx = 2y^2 with y(1) = 1/2. Find the interval on which the particular solution is valid.",
+    "command_verb": "find"
+   },
+   "calculator_status": "no_calculator",
+   "steps": [
+    {
+     "cue": "2y^2 is 2 times a y part.",
+     "why": "Separate: y with dy.",
+     "expression": [
+      "Equal",
+      [
+       "Multiply",
+       "dy",
+       [
+        "Power",
+        "y",
+        -2
+       ]
+      ],
+      [
+       "Multiply",
+       2,
+       "dx"
+      ]
+     ],
+     "relation": "new"
+    },
+    {
+     "cue": "One variable per side.",
+     "why": "Integrate each; one C.",
+     "expression": [
+      "Equal",
+      [
+       "Multiply",
+       -1,
+       [
+        "Power",
+        "y",
+        -1
+       ]
+      ],
+      [
+       "Add",
+       "C",
+       [
+        "Multiply",
+        2,
+        "x"
+       ]
+      ]
+     ],
+     "relation": "new"
+    },
+    {
+     "cue": "y(1) = 1/2.",
+     "why": "Fix C before solving for y.",
+     "expression": [
+      "Equal",
+      -2,
+      [
+       "Add",
+       2,
+       "C"
+      ]
+     ],
+     "relation": "evaluate",
+     "subs": {
+      "x": "1",
+      "y": "1/2"
+     }
+    },
+    {
+     "cue": "One unknown.",
+     "why": "Solve for C.",
+     "expression": -4,
+     "relation": "solve",
+     "variable": "C"
+    },
+    {
+     "cue": "The stem asks for y.",
+     "why": "-1/y = 2x - 4, so y = 1/(4 - 2x).",
+     "expression": [
+      "Equal",
+      "y",
+      [
+       "Power",
+       [
+        "Add",
+        4,
+        [
+         "Multiply",
+         -2,
+         "x"
+        ]
+       ],
+       -1
+      ]
+     ],
+     "relation": "new"
+    },
+    {
+     "cue": "A quotient: where is it undefined?",
+     "why": "The denominator vanishes there.",
+     "expression": [
+      "Equal",
+      [
+       "Add",
+       4,
+       [
+        "Multiply",
+        -2,
+        "x"
+       ]
+      ],
+      0
+     ],
+     "relation": "new"
+    },
+    {
+     "cue": "Solve for the break.",
+     "why": "x = 2 splits the line.",
+     "expression": 2,
+     "relation": "solve",
+     "variable": "x"
+    },
+    {
+     "cue": "The initial input 1 lies left of 2.",
+     "why": "Largest interval containing 1 with the formula defined.",
+     "expression": [
+      "Interval",
+      [
+       "Open",
+       "NegativeInfinity"
+      ],
+      [
+       "Open",
+       2
+      ]
+     ],
+     "relation": "new"
+    }
+   ],
+   "answer": {
+    "form": "symbolic",
+    "mathjson": [
+     "Interval",
+     [
+      "Open",
+      "NegativeInfinity"
+     ],
+     [
+      "Open",
+      2
+     ]
+    ]
+   },
+   "delivery": {
+    "mode": "step_reveal",
+    "reason": "rule 1: a worked example or an error block",
+    "sources": []
+   }
+  },
+  {
+   "id": "LSN-CON-07009#err-BC-ERR-07031",
+   "type": "common_error",
+   "bands": [
+    "low",
+    "mid"
+   ],
+   "skills": [
+    "BC-SKL-07031"
+   ],
+   "sources": [
+    "BC-ERR-07031",
+    "BC-MIS-07019"
+   ],
+   "evidence_tag": "inferred",
+   "error_id": "BC-ERR-07031",
+   "observed_behavior": "The response claims the solution formula holds for every input, or reports an interval that does not contain the initial input.",
+   "scoring_consequence": "A demanded domain statement is lost and the reported solution overreaches.",
+   "wrong_step": {
+    "text": "y = 1/(4 - 2x) claimed for every x.",
+    "expression": [
+     "Interval",
+     [
+      "Open",
+      "NegativeInfinity"
+     ],
+     [
+      "Open",
+      "PositiveInfinity"
+     ]
+    ]
+   },
+   "right_step": {
+    "text": "Only x < 2, the side holding x = 1.",
+    "expression": [
+     "Interval",
+     [
+      "Open",
+      "NegativeInfinity"
+     ],
+     [
+      "Open",
+      2
+     ]
+    ]
+   },
+   "relation": "distinct",
+   "possible_reason": {
+    "misconception_id": "BC-MIS-07019",
+    "text": "reports the algebraic expression with no regard for where it is defined or which branch contains the initial point"
+   },
+   "delivery": {
+    "mode": "step_reveal",
+    "reason": "rule 1: a worked example or an error block",
+    "sources": []
+   }
+  },
+  {
+   "id": "LSN-CON-07009#prq-BC-PRQ-05003",
+   "type": "prerequisite_bridge",
+   "bands": [
+    "low",
+    "mid"
+   ],
+   "skills": [
+    "BC-SKL-07031"
+   ],
+   "sources": [
+    "BC-PRQ-05003"
+   ],
+   "evidence_tag": "inferred",
+   "prerequisite_id": "BC-PRQ-05003",
+   "text": "The domain of a function is the set of inputs where it is defined, and every conclusion is restricted to it. Without this, a result is reported at an input where the function is not defined."
+  }
+ ],
+ "checks": [
+  {
+   "id": "LSN-CON-07009#chk-1",
+   "check_kind": "completion",
+   "bands": [
+    "low",
+    "mid"
+   ],
+   "format": "short_answer",
+   "archetype_id": "BC-QA-07011",
+   "parameter_draw": {
+    "form": "restricted",
+    "rate": 2,
+    "initial": "1/2",
+    "start": 1,
+    "integrand": "gauss"
+   },
+   "completes": "LSN-CON-07009#s4",
+   "stem": {
+    "text": "y = 1/(4 - 2x) solves dy/dx = 2y^2 with y(1) = 1/2. State the interval on which it is the particular solution.",
+    "command_verb": "state"
+   },
+   "answer_key": {
+    "form": "symbolic",
+    "mathjson": [
+     "Interval",
+     [
+      "Open",
+      "NegativeInfinity"
+     ],
+     [
+      "Open",
+      2
+     ]
+    ]
+   },
+   "worked_solution": [
+    {
+     "step": 1,
+     "text": "Denominator zero.",
+     "mathjson": [
+      "Equal",
+      [
+       "Add",
+       4,
+       [
+        "Multiply",
+        -2,
+        "x"
+       ]
+      ],
+      0
+     ],
+     "relation": "new"
+    },
+    {
+     "step": 2,
+     "text": "The break.",
+     "mathjson": 2,
+     "relation": "solve",
+     "variable": "x"
+    },
+    {
+     "step": 3,
+     "text": "The side holding x = 1.",
+     "mathjson": [
+      "Interval",
+      [
+       "Open",
+       "NegativeInfinity"
+      ],
+      [
+       "Open",
+       2
+      ]
+     ],
+     "relation": "new"
+    }
+   ],
+   "calculator_status": "no_calculator",
+   "representation": "BC-REP-01",
+   "skills": [
+    "BC-SKL-07031"
+   ]
+  },
+  {
+   "id": "LSN-CON-07009#chk-2",
+   "check_kind": "isomorph",
+   "bands": [
+    "low",
+    "mid"
+   ],
+   "format": "short_answer",
+   "archetype_id": "BC-QA-07011",
+   "parameter_draw": {
+    "form": "restricted",
+    "rate": -1,
+    "initial": "2",
+    "start": 0,
+    "integrand": "gauss"
+   },
+   "stem": {
+    "text": "dy/dx = -y^2 with y(0) = 2. Find the interval on which the particular solution is valid.",
+    "command_verb": "find"
+   },
+   "answer_key": {
+    "form": "symbolic",
+    "mathjson": [
+     "Interval",
+     [
+      "Open",
+      [
+       "Rational",
+       -1,
+       2
+      ]
+     ],
+     [
+      "Open",
+      "PositiveInfinity"
+     ]
+    ]
+   },
+   "worked_solution": [
+    {
+     "step": 1,
+     "text": "Separate.",
+     "mathjson": [
+      "Equal",
+      [
+       "Multiply",
+       "dy",
+       [
+        "Power",
+        "y",
+        -2
+       ]
+      ],
+      [
+       "Multiply",
+       -1,
+       "dx"
+      ]
+     ],
+     "relation": "new"
+    },
+    {
+     "step": 2,
+     "text": "Integrate.",
+     "mathjson": [
+      "Equal",
+      [
+       "Multiply",
+       -1,
+       [
+        "Power",
+        "y",
+        -1
+       ]
+      ],
+      [
+       "Add",
+       "C",
+       [
+        "Multiply",
+        -1,
+        "x"
+       ]
+      ]
+     ],
+     "relation": "new"
+    },
+    {
+     "step": 3,
+     "text": "x = 0, y = 2.",
+     "mathjson": [
+      "Equal",
+      [
+       "Rational",
+       -1,
+       2
+      ],
+      "C"
+     ],
+     "relation": "evaluate",
+     "subs": {
+      "x": "0",
+      "y": "2"
+     }
+    },
+    {
+     "step": 4,
+     "text": "C.",
+     "mathjson": [
+      "Rational",
+      -1,
+      2
+     ],
+     "relation": "solve",
+     "variable": "C"
+    },
+    {
+     "step": 5,
+     "text": "Solve for y.",
+     "mathjson": [
+      "Equal",
+      "y",
+      [
+       "Multiply",
+       2,
+       [
+        "Power",
+        [
+         "Add",
+         1,
+         [
+          "Multiply",
+          2,
+          "x"
+         ]
+        ],
+        -1
+       ]
+      ]
+     ],
+     "relation": "new"
+    },
+    {
+     "step": 6,
+     "text": "Denominator zero.",
+     "mathjson": [
+      "Equal",
+      [
+       "Add",
+       1,
+       [
+        "Multiply",
+        2,
+        "x"
+       ]
+      ],
+      0
+     ],
+     "relation": "new"
+    },
+    {
+     "step": 7,
+     "text": "The break.",
+     "mathjson": [
+      "Rational",
+      -1,
+      2
+     ],
+     "relation": "solve",
+     "variable": "x"
+    },
+    {
+     "step": 8,
+     "text": "The side holding x = 0.",
+     "mathjson": [
+      "Interval",
+      [
+       "Open",
+       [
+        "Rational",
+        -1,
+        2
+       ]
+      ],
+      [
+       "Open",
+       "PositiveInfinity"
+      ]
+     ],
+     "relation": "new"
+    }
+   ],
+   "calculator_status": "no_calculator",
+   "representation": "BC-REP-01",
+   "skills": [
+    "BC-SKL-07031"
+   ]
+  }
+ ],
+ "refresher": [
+  "LSN-CON-07009#s2",
+  "LSN-CON-07009#err-BC-ERR-07031",
+  "LSN-CON-07009#s4"
+ ],
+ "provenance": {
+  "author": "tools/lesson_transcribe.py",
+  "prompt_version": "generator/lesson_v1",
+  "design_path": "docs/lessons/unit-07/LSN-CON-07009.md",
+  "signed_off_by": "claude-opus-5-5",
+  "signed_off_at": "2026-09-29",
+  "not_human": true
+ }
+}

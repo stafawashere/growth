@@ -1,0 +1,969 @@
+{
+ "id": "LSN-CON-01016",
+ "version": 1,
+ "kind": "concept",
+ "target_id": "BC-CON-01016",
+ "status": "signed_off",
+ "snapshot_digest": "a6a8ec9d3f59ab8f712e33d30cc22fc64bf2c478fbe7312e3e3118d319c6a42f",
+ "source_digest": "9a32899471d351a10dcb741acef74b70f6f425712843c8a4242c30288b18768f",
+ "read_minutes": {
+  "full": 3.7,
+  "brief": 2.9
+ },
+ "word_count": {
+  "full": 465,
+  "brief": 364
+ },
+ "sections": [
+  {
+   "id": "LSN-CON-01016#s1",
+   "type": "orientation",
+   "bands": [
+    "low",
+    "mid"
+   ],
+   "skills": [
+    "BC-SKL-01054",
+    "BC-SKL-01055",
+    "BC-SKL-01056",
+    "BC-SKL-01057"
+   ],
+   "sources": [
+    "BC-CON-01016",
+    "research/units/unit-01-limits-continuity.md#1.14 Connecting Infinite Limits and Vertical Asymptotes"
+   ],
+   "evidence_tag": "inferred",
+   "text": "A response simplifies first, places a vertical asymptote at each zero of the denominator that survives, and states the behaviour on each side as a one sided infinite limit.",
+   "delivery": {
+    "mode": "figure",
+    "reason": "rule 3: BC-REP-02 on BC-SKL-01056 and BC-SKL-01057",
+    "sources": [
+     "BC-SKL-01056",
+     "BC-SKL-01057"
+    ],
+    "spec": {
+     "kind": "graph",
+     "window": {
+      "x": [
+       -8,
+       6
+      ],
+      "y": [
+       -20,
+       20
+      ]
+     },
+     "curves": [
+      {
+       "expr": "2*(x-3)/(x+2)",
+       "domain": [
+        -8,
+        6
+       ],
+       "break_at": [
+        -2
+       ]
+      }
+     ],
+     "asymptotes": [
+      {
+       "type": "vertical",
+       "x": -2,
+       "style": "dashed"
+      }
+     ],
+     "points": [
+      {
+       "x": 1,
+       "y": "-4/3",
+       "style": "open"
+      }
+     ],
+     "labels": [
+      {
+       "text": "x = -2",
+       "placement": "inside"
+      },
+      {
+       "text": "hole at (1, -4/3)",
+       "placement": "inside"
+      }
+     ],
+     "representations": [
+      "BC-REP-02"
+     ]
+    },
+    "fallback": "the same graph as a static image with its two labels",
+    "keyboard": "none needed: the figure has no control"
+   }
+  },
+  {
+   "id": "LSN-CON-01016#s2",
+   "type": "key_ideas",
+   "bands": [
+    "low",
+    "mid"
+   ],
+   "skills": [
+    "BC-SKL-01054",
+    "BC-SKL-01055"
+   ],
+   "sources": [
+    "BC-EK-LIM-2D1",
+    "ced:51",
+    "research/units/unit-01-limits-continuity.md#1.14 Connecting Infinite Limits and Vertical Asymptotes"
+   ],
+   "evidence_tag": "verified",
+   "ek_id": "BC-EK-LIM-2D1",
+   "depth": "core",
+   "text": "A limit written as \\(\\infty\\) records growth without bound; it does not say a real limit exists (BC-EK-LIM-2D1, ced:51). Each side is written separately whenever the sign differs across the input.",
+   "notation": "vertical asymptote",
+   "quote": {
+    "text": "The concept of a limit can be extended to include infinite limits.",
+    "source": "ced:51"
+   },
+   "delivery": {
+    "mode": "motion",
+    "reason": "rule 2: a limit being taken; rule 3, BC-REP-02 on BC-SKL-01056",
+    "sources": [
+     "BC-SKL-01055",
+     "BC-SKL-01056"
+    ],
+    "spec": {
+     "kind": "graph",
+     "window": {
+      "x": [
+       -4,
+       0
+      ],
+      "y": [
+       -1000,
+       1000
+      ]
+     },
+     "curves": [
+      {
+       "expr": "2*(x-3)/(x+2)",
+       "domain": [
+        -4,
+        0
+       ],
+       "break_at": [
+        -2
+       ]
+      }
+     ],
+     "frames": [
+      {
+       "x": -2.5,
+       "y": 22,
+       "side": "left"
+      },
+      {
+       "x": -2.1,
+       "y": 102,
+       "side": "left"
+      },
+      {
+       "x": -2.01,
+       "y": 1002,
+       "side": "left"
+      },
+      {
+       "x": -1.5,
+       "y": -18,
+       "side": "right"
+      },
+      {
+       "x": -1.9,
+       "y": -98,
+       "side": "right"
+      },
+      {
+       "x": -1.99,
+       "y": -998,
+       "side": "right"
+      }
+     ],
+     "labels": [
+      {
+       "text": "from the left: up without bound",
+       "placement": "inside"
+      },
+      {
+       "text": "from the right: down without bound",
+       "placement": "inside"
+      },
+      {
+       "text": "x = -2",
+       "placement": "inside"
+      }
+     ],
+     "representations": [
+      "BC-REP-02"
+     ]
+    },
+    "fallback": "the six frames as one static graph with the six points marked and their values in a two-row table beneath",
+    "keyboard": "Right arrow steps to the next frame, Left arrow to the previous; Space pauses auto-advance",
+    "reduced_motion": "no auto-advance; each key press cross-fades to the next frame"
+   }
+  },
+  {
+   "id": "LSN-CON-01016#s3",
+   "type": "key_ideas",
+   "bands": [
+    "low",
+    "mid"
+   ],
+   "skills": [
+    "BC-SKL-01055",
+    "BC-SKL-01056",
+    "BC-SKL-01057"
+   ],
+   "sources": [
+    "BC-EK-LIM-2D2",
+    "ced:51",
+    "research/units/unit-01-limits-continuity.md#1.14 Connecting Infinite Limits and Vertical Asymptotes"
+   ],
+   "evidence_tag": "verified",
+   "ek_id": "BC-EK-LIM-2D2",
+   "depth": "core",
+   "text": "Simplify first (research/units/unit-01-limits-continuity.md#1.14 Connecting Infinite Limits and Vertical Asymptotes). A factor that divides out leaves a removable break; only a zero of the simplified denominator is an asymptote.",
+   "quote": {
+    "text": "Asymptotic and unbounded behavior of functions can be described and explained using limits.",
+    "source": "ced:51"
+   },
+   "delivery": {
+    "mode": "figure",
+    "reason": "rule 3: BC-REP-02 on BC-SKL-01057",
+    "sources": [
+     "BC-SKL-01057"
+    ],
+    "spec": {
+     "kind": "graph",
+     "window": {
+      "x": [
+       -8,
+       6
+      ],
+      "y": [
+       -20,
+       20
+      ]
+     },
+     "curves": [
+      {
+       "expr": "2*(x-3)/(x+2)",
+       "domain": [
+        -8,
+        6
+       ],
+       "break_at": [
+        -2
+       ]
+      }
+     ],
+     "asymptotes": [
+      {
+       "type": "vertical",
+       "x": -2,
+       "style": "dashed"
+      }
+     ],
+     "points": [
+      {
+       "x": 1,
+       "y": "-4/3",
+       "style": "open"
+      }
+     ],
+     "labels": [
+      {
+       "text": "x - 1 cancels: removable",
+       "placement": "inside"
+      },
+      {
+       "text": "x + 2 survives: asymptote",
+       "placement": "inside"
+      }
+     ],
+     "representations": [
+      "BC-REP-02"
+     ]
+    },
+    "fallback": "the same graph as a static image with its two labels",
+    "keyboard": "none needed: the figure has no control"
+   }
+  },
+  {
+   "id": "LSN-CON-01016#s4",
+   "type": "strategy",
+   "bands": [
+    "low",
+    "mid"
+   ],
+   "skills": [
+    "BC-SKL-01054",
+    "BC-SKL-01055",
+    "BC-SKL-01056"
+   ],
+   "sources": [
+    "BC-QA-01009"
+   ],
+   "evidence_tag": "inferred",
+   "archetype_id": "BC-QA-01009",
+   "cue": "A rational rule; the stem asks for the vertical asymptotes and the behaviour near each.",
+   "method": "First written line: factor numerator and denominator.",
+   "rival": "One two sided infinite limit where the sides differ in sign (BC-ERR-01019).",
+   "separating_feature": "The sign of the simplified quotient on each side."
+  },
+  {
+   "id": "LSN-CON-01016#s5",
+   "type": "strategy",
+   "bands": [
+    "low",
+    "mid"
+   ],
+   "skills": [
+    "BC-SKL-01057"
+   ],
+   "sources": [
+    "BC-QA-01007"
+   ],
+   "evidence_tag": "inferred",
+   "archetype_id": "BC-QA-01007",
+   "cue": "A function with breaks; the stem asks to classify each and give a reason.",
+   "method": "First written line: the inputs where the function is undefined or the rule changes.",
+   "rival": "A vertical asymptote named at a factor that divides out (BC-ERR-01018).",
+   "separating_feature": "Whether the factor survives cancellation."
+  },
+  {
+   "id": "LSN-CON-01016#s6",
+   "type": "worked_example",
+   "bands": [
+    "low",
+    "mid"
+   ],
+   "skills": [
+    "BC-SKL-01054",
+    "BC-SKL-01055",
+    "BC-SKL-01056"
+   ],
+   "sources": [
+    "BC-QA-01009"
+   ],
+   "evidence_tag": "inferred",
+   "archetype_id": "BC-QA-01009",
+   "parameter_draw": {
+    "coefficient": "2",
+    "cancelled_root": "1",
+    "pole": "-2",
+    "zero": "3",
+    "form": "factored"
+   },
+   "problem": {
+    "text": "Let \\(f(x)=\\frac{2(x-1)(x-3)}{(x-1)(x+2)}\\). Find the vertical asymptotes and describe \\(f\\) near each.",
+    "command_verb": "find"
+   },
+   "calculator_status": "no_calculator",
+   "steps": [
+    {
+     "cue": "Both parts arrive factored.",
+     "why": "Factors are what cancel, so the factored form is read first."
+    },
+    {
+     "cue": "\\(x-1\\) sits in both parts.",
+     "why": "A shared factor divides out.",
+     "expression": [
+      "Multiply",
+      [
+       "Power",
+       [
+        "Add",
+        -1,
+        "x"
+       ],
+       -1
+      ],
+      [
+       "Power",
+       [
+        "Add",
+        2,
+        "x"
+       ],
+       -1
+      ],
+      [
+       "Add",
+       -3,
+       "x"
+      ],
+      [
+       "Add",
+       -2,
+       [
+        "Multiply",
+        2,
+        "x"
+       ]
+      ]
+     ],
+     "relation": "new"
+    },
+    {
+     "cue": "Divide out \\(x-1\\), recording \\(x\\ne1\\).",
+     "why": "At 1 the break is removable.",
+     "expression": [
+      "Multiply",
+      [
+       "Power",
+       [
+        "Add",
+        2,
+        "x"
+       ],
+       -1
+      ],
+      [
+       "Add",
+       -6,
+       [
+        "Multiply",
+        2,
+        "x"
+       ]
+      ]
+     ],
+     "relation": "equivalent"
+    },
+    {
+     "cue": "The simplified denominator is \\(x+2\\).",
+     "why": "Only a surviving zero gives an asymptote: \\(x=-2\\)."
+    },
+    {
+     "cue": "Just right of \\(-2\\): numerator near \\(-10\\), denominator small positive.",
+     "why": "Negative over small positive.",
+     "expression": "NegativeInfinity",
+     "relation": "limit",
+     "variable": "x",
+     "point": "-2",
+     "dir": "+"
+    },
+    {
+     "cue": "Left of \\(-2\\), the same simplified form.",
+     "why": "Each side is taken on its own.",
+     "expression": [
+      "Multiply",
+      [
+       "Power",
+       [
+        "Add",
+        2,
+        "x"
+       ],
+       -1
+      ],
+      [
+       "Add",
+       -6,
+       [
+        "Multiply",
+        2,
+        "x"
+       ]
+      ]
+     ],
+     "relation": "new"
+    },
+    {
+     "cue": "Just left of \\(-2\\): the denominator is small negative.",
+     "why": "Opposite sign, so each side gets its own statement.",
+     "expression": "PositiveInfinity",
+     "relation": "limit",
+     "variable": "x",
+     "point": "-2",
+     "dir": "-"
+    }
+   ],
+   "answer": {
+    "form": "statement",
+    "mathjson": "x = -2 only; left limit oo, right limit -oo"
+   },
+   "delivery": {
+    "mode": "step_reveal",
+    "reason": "rule 1",
+    "sources": []
+   }
+  },
+  {
+   "id": "LSN-CON-01016#err-BC-ERR-01018",
+   "type": "common_error",
+   "bands": [
+    "low",
+    "mid"
+   ],
+   "skills": [
+    "BC-SKL-01056",
+    "BC-SKL-01057"
+   ],
+   "sources": [
+    "BC-ERR-01018",
+    "BC-MIS-01011"
+   ],
+   "evidence_tag": "inferred",
+   "error_id": "BC-ERR-01018",
+   "observed_behavior": "The response names a vertical asymptote at an input where the factor divides out of the rational expression.",
+   "scoring_consequence": "The location point is lost and the classification is wrong.",
+   "wrong_step": {
+    "text": "Asymptotes at \\(-2\\) and \\(1\\).",
+    "expression": [
+     "Set",
+     -2,
+     1
+    ]
+   },
+   "right_step": {
+    "text": "At \\(-2\\) only.",
+    "expression": [
+     "Set",
+     -2
+    ]
+   },
+   "relation": "distinct",
+   "possible_reason": {
+    "misconception_id": "BC-MIS-01011",
+    "text": "any zero of the original denominator as unbounded behaviour without simplifying first"
+   },
+   "delivery": {
+    "mode": "step_reveal",
+    "reason": "rule 1",
+    "sources": []
+   }
+  },
+  {
+   "id": "LSN-CON-01016#err-BC-ERR-01019",
+   "type": "common_error",
+   "bands": [
+    "low",
+    "mid"
+   ],
+   "skills": [
+    "BC-SKL-01054",
+    "BC-SKL-01055"
+   ],
+   "sources": [
+    "BC-ERR-01019",
+    "BC-MIS-01012"
+   ],
+   "evidence_tag": "inferred",
+   "error_id": "BC-ERR-01019",
+   "observed_behavior": "The response writes a single infinite limit at an input where one side increases without bound and the other decreases without bound.",
+   "scoring_consequence": "The behaviour point is lost because the notation asserts behaviour the function does not have.",
+   "wrong_step": {
+    "text": "\\(\\lim_{x\\to-2}f(x)=-\\infty\\).",
+    "expression": "NegativeInfinity"
+   },
+   "right_step": {
+    "text": "From the left, \\(\\infty\\).",
+    "expression": "PositiveInfinity"
+   },
+   "relation": "distinct",
+   "possible_reason": {
+    "misconception_id": "BC-MIS-01012",
+    "text": "writes one statement where the two sides carry opposite signs"
+   },
+   "delivery": {
+    "mode": "step_reveal",
+    "reason": "rule 1",
+    "sources": []
+   }
+  },
+  {
+   "id": "LSN-CON-01016#err-BC-ERR-01020",
+   "type": "common_error",
+   "bands": [
+    "low",
+    "mid"
+   ],
+   "skills": [
+    "BC-SKL-01054"
+   ],
+   "sources": [
+    "BC-ERR-01020",
+    "BC-MIS-01012"
+   ],
+   "evidence_tag": "inferred",
+   "error_id": "BC-ERR-01020",
+   "observed_behavior": "The response writes that the limit equals infinity and then treats that statement as an existence claim for a real limit.",
+   "scoring_consequence": "A point requiring a statement about existence is lost.",
+   "wrong_step": {
+    "text": "Left limit \\(\\infty\\) read as a real value, so it exists.",
+    "expression": "PositiveInfinity"
+   },
+   "right_step": {
+    "text": "\\(\\frac{1}{f(x)}=\\frac{x+2}{2(x-3)}\\to0\\): \\(f\\) passes every bound, no real limit.",
+    "expression": [
+     "Multiply",
+     [
+      "Power",
+      [
+       "Add",
+       -6,
+       [
+        "Multiply",
+        2,
+        "x"
+       ]
+      ],
+      -1
+     ],
+     [
+      "Add",
+      2,
+      "x"
+     ]
+    ]
+   },
+   "relation": "distinct",
+   "possible_reason": {
+    "misconception_id": "BC-MIS-01012",
+    "text": "reads the infinity symbol as a real value"
+   },
+   "delivery": {
+    "mode": "step_reveal",
+    "reason": "rule 1",
+    "sources": []
+   }
+  },
+  {
+   "id": "LSN-CON-01016#prq-BC-PRQ-01001",
+   "type": "prerequisite_bridge",
+   "bands": [
+    "low",
+    "mid"
+   ],
+   "skills": [
+    "BC-SKL-01056",
+    "BC-SKL-01057"
+   ],
+   "sources": [
+    "BC-PRQ-01001"
+   ],
+   "evidence_tag": "inferred",
+   "prerequisite_id": "BC-PRQ-01001",
+   "text": "Factor and cancel a common factor. The slip: stopping at zero over zero with no factoring tried."
+  },
+  {
+   "id": "LSN-CON-01016#prq-BC-PRQ-01009",
+   "type": "prerequisite_bridge",
+   "bands": [
+    "low",
+    "mid"
+   ],
+   "skills": [
+    "BC-SKL-01054",
+    "BC-SKL-01055"
+   ],
+   "sources": [
+    "BC-PRQ-01009"
+   ],
+   "evidence_tag": "inferred",
+   "prerequisite_id": "BC-PRQ-01009",
+   "text": "Find the sign of a quotient on each side of a zero of its denominator. The slip: one two sided infinite limit where the signs differ."
+  }
+ ],
+ "checks": [
+  {
+   "id": "LSN-CON-01016#chk-1",
+   "check_kind": "completion",
+   "bands": [
+    "low",
+    "mid"
+   ],
+   "format": "short_answer",
+   "archetype_id": "BC-QA-01009",
+   "parameter_draw": {
+    "coefficient": "2",
+    "cancelled_root": "1",
+    "pole": "-2",
+    "zero": "3",
+    "form": "factored"
+   },
+   "completes": "LSN-CON-01016#s6",
+   "stem": {
+    "text": "For \\(f(x)=\\frac{2(x-3)}{x+2}\\), \\(x\\ne1\\), \\(\\lim_{x\\to-2^+}f(x)=-\\infty\\). State \\(\\lim_{x\\to-2^-}f(x)\\).",
+    "command_verb": "state"
+   },
+   "answer_key": {
+    "form": "statement",
+    "mathjson": "lim from the left at -2 is oo"
+   },
+   "worked_solution": [
+    {
+     "step": 1,
+     "text": "Left of \\(-2\\): negative over small negative.",
+     "mathjson": [
+      "Multiply",
+      [
+       "Power",
+       [
+        "Add",
+        2,
+        "x"
+       ],
+       -1
+      ],
+      [
+       "Add",
+       -6,
+       [
+        "Multiply",
+        2,
+        "x"
+       ]
+      ]
+     ],
+     "relation": "new"
+    },
+    {
+     "step": 2,
+     "text": "Positive and unbounded.",
+     "mathjson": "PositiveInfinity",
+     "relation": "limit",
+     "variable": "x",
+     "point": "-2",
+     "dir": "-"
+    }
+   ],
+   "calculator_status": "no_calculator",
+   "representation": "BC-REP-01",
+   "skills": [
+    "BC-SKL-01055"
+   ]
+  },
+  {
+   "id": "LSN-CON-01016#chk-2",
+   "check_kind": "isomorph",
+   "bands": [
+    "low",
+    "mid"
+   ],
+   "format": "short_answer",
+   "archetype_id": "BC-QA-01009",
+   "parameter_draw": {
+    "coefficient": "-1",
+    "cancelled_root": "-3",
+    "pole": "2",
+    "zero": "0",
+    "form": "factored"
+   },
+   "stem": {
+    "text": "Let \\(g(x)=\\frac{-x(x+3)}{(x+3)(x-2)}\\). Locate the vertical asymptote and state \\(\\lim_{x\\to2^+}g(x)\\).",
+    "command_verb": "state"
+   },
+   "answer_key": {
+    "form": "statement",
+    "mathjson": "x = 2 only; right limit -oo"
+   },
+   "worked_solution": [
+    {
+     "step": 1,
+     "text": "Divide out \\(x+3\\).",
+     "mathjson": [
+      "Multiply",
+      -1,
+      "x",
+      [
+       "Power",
+       [
+        "Add",
+        -2,
+        "x"
+       ],
+       -1
+      ]
+     ],
+     "relation": "new"
+    },
+    {
+     "step": 2,
+     "text": "\\(g(x)=\\frac{-x}{x-2}\\), \\(x\\ne-3\\).",
+     "mathjson": [
+      "Multiply",
+      -1,
+      "x",
+      [
+       "Power",
+       [
+        "Add",
+        -2,
+        "x"
+       ],
+       -1
+      ]
+     ],
+     "relation": "equivalent"
+    },
+    {
+     "step": 3,
+     "text": "Right of 2: negative over small positive.",
+     "mathjson": "NegativeInfinity",
+     "relation": "limit",
+     "variable": "x",
+     "point": "2",
+     "dir": "+"
+    }
+   ],
+   "calculator_status": "no_calculator",
+   "representation": "BC-REP-01",
+   "skills": [
+    "BC-SKL-01055",
+    "BC-SKL-01056"
+   ]
+  },
+  {
+   "id": "LSN-CON-01016#chk-3",
+   "check_kind": "mcq",
+   "bands": [
+    "low"
+   ],
+   "format": "mcq",
+   "archetype_id": "BC-QA-01009",
+   "parameter_draw": {
+    "coefficient": "3",
+    "cancelled_root": "2",
+    "pole": "-1",
+    "zero": "4",
+    "form": "factored"
+   },
+   "stem": {
+    "text": "Let \\(h(x)=\\frac{3(x-2)(x-4)}{(x-2)(x+1)}\\). Which statement is true?",
+    "command_verb": "identify"
+   },
+   "answer_key": {
+    "form": "statement",
+    "mathjson": "asymptote x = -1 only; left oo, right -oo"
+   },
+   "worked_solution": [
+    {
+     "step": 1,
+     "text": "Divide out \\(x-2\\).",
+     "mathjson": [
+      "Multiply",
+      [
+       "Power",
+       [
+        "Add",
+        1,
+        "x"
+       ],
+       -1
+      ],
+      [
+       "Power",
+       [
+        "Add",
+        -2,
+        "x"
+       ],
+       -1
+      ],
+      [
+       "Add",
+       -6,
+       [
+        "Multiply",
+        3,
+        "x"
+       ]
+      ],
+      [
+       "Add",
+       -4,
+       "x"
+      ]
+     ],
+     "relation": "new"
+    },
+    {
+     "step": 2,
+     "text": "\\(h(x)=\\frac{3(x-4)}{x+1}\\), \\(x\\ne2\\).",
+     "mathjson": [
+      "Multiply",
+      [
+       "Power",
+       [
+        "Add",
+        1,
+        "x"
+       ],
+       -1
+      ],
+      [
+       "Add",
+       -12,
+       [
+        "Multiply",
+        3,
+        "x"
+       ]
+      ]
+     ],
+     "relation": "equivalent"
+    }
+   ],
+   "options": [
+    {
+     "id": "A",
+     "is_key": false,
+     "error_path": "BC-ERR-01018",
+     "label": "Asymptotes at \\(x=-1\\) and \\(x=2\\).",
+     "derivation": "the cancelled factor x-2 kept as an asymptote"
+    },
+    {
+     "id": "B",
+     "is_key": false,
+     "error_path": "BC-ERR-01019",
+     "label": "\\(\\lim_{x\\to-1}h(x)=-\\infty\\).",
+     "derivation": "the right side's sign written for both sides"
+    },
+    {
+     "id": "C",
+     "is_key": true,
+     "error_path": null,
+     "label": "Only \\(x=-1\\); \\(\\infty\\) from the left, \\(-\\infty\\) from the right."
+    },
+    {
+     "id": "D",
+     "is_key": false,
+     "error_path": "BC-ERR-01020",
+     "label": "The limit at \\(-1\\) exists and equals \\(\\infty\\).",
+     "derivation": "an infinite limit read as an existing real limit"
+    }
+   ],
+   "calculator_status": "no_calculator",
+   "representation": "BC-REP-01",
+   "skills": [
+    "BC-SKL-01054",
+    "BC-SKL-01057"
+   ]
+  }
+ ],
+ "refresher": [
+  "LSN-CON-01016#s2",
+  "LSN-CON-01016#s3",
+  "LSN-CON-01016#err-BC-ERR-01018",
+  "LSN-CON-01016#err-BC-ERR-01019",
+  "LSN-CON-01016#err-BC-ERR-01020",
+  "LSN-CON-01016#s6"
+ ],
+ "provenance": {
+  "author": "tools/lesson_transcribe.py",
+  "prompt_version": "generator/lesson_v1",
+  "design_path": "docs/lessons/unit-01/LSN-CON-01016.md",
+  "signed_off_by": "claude-opus-5-5",
+  "signed_off_at": "2026-09-29",
+  "not_human": true
+ }
+}

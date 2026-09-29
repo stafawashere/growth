@@ -1,0 +1,1211 @@
+{
+ "id": "LSN-CON-07007",
+ "version": 1,
+ "kind": "concept",
+ "target_id": "BC-CON-07007",
+ "status": "signed_off",
+ "snapshot_digest": "a6a8ec9d3f59ab8f712e33d30cc22fc64bf2c478fbe7312e3e3118d319c6a42f",
+ "source_digest": "9ed59686cab05bbecdd0faa369e4105ccef31cd9fef57041357b4c8abb5d5396",
+ "read_minutes": {
+  "full": 4.1,
+  "brief": 3.0
+ },
+ "word_count": {
+  "full": 548,
+  "brief": 387
+ },
+ "sections": [
+  {
+   "id": "LSN-CON-07007#s1",
+   "type": "orientation",
+   "bands": [
+    "low",
+    "mid"
+   ],
+   "skills": [
+    "BC-SKL-07024",
+    "BC-SKL-07025",
+    "BC-SKL-07026",
+    "BC-SKL-07027",
+    "BC-SKL-07028"
+   ],
+   "sources": [
+    "BC-CON-07007",
+    "research/units/unit-07-differential-equations.md#7.6 Finding General Solutions Using Separation of Variables",
+    "sg-23:12"
+   ],
+   "evidence_tag": "inferred",
+   "text": "Separate with a differential on each side, antidifferentiate both sides with one constant, solve for y. No separation, no points (sg-23:12).",
+   "delivery": {
+    "mode": "text",
+    "reason": "rule 6: a statement of what a response shows; BC-REP-01 and BC-REP-06 only, no figure-bearing representation",
+    "sources": [
+     "BC-SKL-07024"
+    ]
+   }
+  },
+  {
+   "id": "LSN-CON-07007#s2",
+   "type": "key_ideas",
+   "bands": [
+    "low",
+    "mid"
+   ],
+   "skills": [
+    "BC-SKL-07024",
+    "BC-SKL-07028"
+   ],
+   "sources": [
+    "BC-EK-FUN-7D1",
+    "ced:142",
+    "research/units/unit-07-differential-equations.md#7.6 Finding General Solutions Using Separation of Variables"
+   ],
+   "evidence_tag": "inferred",
+   "ek_id": "BC-EK-FUN-7D1",
+   "depth": "core",
+   "text": "If the right side is an x part times a y part, y goes with dy and x with dx. A sum with no common factor does not separate.",
+   "notation": "separated form",
+   "delivery": {
+    "mode": "text",
+    "reason": "rule 6: a rule about the form of the right side; BC-REP-01, BC-REP-06 on BC-SKL-07024 and BC-SKL-07028",
+    "sources": [
+     "BC-SKL-07024",
+     "BC-SKL-07028"
+    ]
+   }
+  },
+  {
+   "id": "LSN-CON-07007#s3",
+   "type": "key_ideas",
+   "bands": [
+    "low",
+    "mid"
+   ],
+   "skills": [
+    "BC-SKL-07025",
+    "BC-SKL-07026",
+    "BC-SKL-07027"
+   ],
+   "sources": [
+    "BC-EK-FUN-7D2",
+    "ced:142",
+    "research/units/unit-07-differential-equations.md#7.6 Finding General Solutions Using Separation of Variables"
+   ],
+   "evidence_tag": "inferred",
+   "ek_id": "BC-EK-FUN-7D2",
+   "depth": "core",
+   "text": "Integrate each side in its own variable, one constant on one side. The initial condition fixes it; then solve for y.",
+   "notation": "one constant of integration",
+   "delivery": {
+    "mode": "text",
+    "reason": "rule 6: a sequence of written lines that the worked example carries in step reveal; BC-REP-01 on BC-SKL-07025 to BC-SKL-07027",
+    "sources": [
+     "BC-SKL-07025",
+     "BC-SKL-07026",
+     "BC-SKL-07027"
+    ]
+   }
+  },
+  {
+   "id": "LSN-CON-07007#s4",
+   "type": "strategy",
+   "bands": [
+    "low",
+    "mid"
+   ],
+   "skills": [
+    "BC-SKL-07024",
+    "BC-SKL-07025",
+    "BC-SKL-07026",
+    "BC-SKL-07027"
+   ],
+   "sources": [
+    "BC-QA-07003"
+   ],
+   "evidence_tag": "verified",
+   "archetype_id": "BC-QA-07003",
+   "cue": "Use separation of variables, with an initial condition.",
+   "method": "First line: y with dy, x with dx.",
+   "rival": "Rival: integrating with y held constant.",
+   "separating_feature": "y varies, so it moves first."
+  },
+  {
+   "id": "LSN-CON-07007#s5",
+   "type": "strategy",
+   "bands": [
+    "low",
+    "mid"
+   ],
+   "skills": [
+    "BC-SKL-07024",
+    "BC-SKL-07028"
+   ],
+   "sources": [
+    "BC-QA-07012"
+   ],
+   "evidence_tag": "verified",
+   "archetype_id": "BC-QA-07012",
+   "cue": "The stem asks whether the equation separates, with the right side printed expanded.",
+   "method": "First written line: the right side factored as an x part times a y part.",
+   "rival": "Rival: dividing each term by y separately.",
+   "separating_feature": "A common factor exists, or a leftover constant term blocks it."
+  },
+  {
+   "id": "LSN-CON-07007#s6",
+   "type": "worked_example",
+   "bands": [
+    "low",
+    "mid"
+   ],
+   "skills": [
+    "BC-SKL-07024",
+    "BC-SKL-07025",
+    "BC-SKL-07026",
+    "BC-SKL-07027"
+   ],
+   "sources": [
+    "BC-QA-07003"
+   ],
+   "evidence_tag": "inferred",
+   "archetype_id": "BC-QA-07003",
+   "parameter_draw": {
+    "form": "exponential",
+    "rate": 2,
+    "power": 1,
+    "start": 1,
+    "initial": 3
+   },
+   "problem": {
+    "text": "dy/dx = 2xy, y(1) = 3. Find y by separation.",
+    "command_verb": "find"
+   },
+   "calculator_status": "no_calculator",
+   "steps": [
+    {
+     "cue": "2xy is 2x times y.",
+     "why": "Divide by y, multiply by dx.",
+     "expression": [
+      "Equal",
+      [
+       "Multiply",
+       "dy",
+       [
+        "Power",
+        "y",
+        -1
+       ]
+      ],
+      [
+       "Multiply",
+       2,
+       "dx",
+       "x"
+      ]
+     ],
+     "point_type_id": "BC-PT-99028",
+     "relation": "new"
+    },
+    {
+     "cue": "One variable per side.",
+     "why": "Integrate each; one C.",
+     "expression": [
+      "Equal",
+      [
+       "Ln",
+       [
+        "Abs",
+        "y"
+       ]
+      ],
+      [
+       "Add",
+       "C",
+       [
+        "Power",
+        "x",
+        2
+       ]
+      ]
+     ],
+     "relation": "new"
+    },
+    {
+     "cue": "y(1) = 3.",
+     "why": "Substitute before exponentiating.",
+     "expression": [
+      "Equal",
+      [
+       "Ln",
+       3
+      ],
+      [
+       "Add",
+       1,
+       "C"
+      ]
+     ],
+     "point_type_id": "BC-PT-99031",
+     "relation": "evaluate",
+     "subs": {
+      "x": "1",
+      "y": "3"
+     }
+    },
+    {
+     "cue": "One unknown.",
+     "why": "Solve for C.",
+     "expression": [
+      "Add",
+      -1,
+      [
+       "Ln",
+       3
+      ]
+     ],
+     "relation": "solve",
+     "variable": "C"
+    },
+    {
+     "cue": "The stem asks for y.",
+     "why": "y(1) > 0, so |y| = y.",
+     "expression": [
+      "Equal",
+      "y",
+      [
+       "Multiply",
+       3,
+       [
+        "Exp",
+        [
+         "Add",
+         -1,
+         [
+          "Power",
+          "x",
+          2
+         ]
+        ]
+       ]
+      ]
+     ],
+     "point_type_id": "BC-PT-99032",
+     "relation": "new"
+    }
+   ],
+   "answer": {
+    "form": "symbolic",
+    "mathjson": [
+     "Multiply",
+     3,
+     [
+      "Exp",
+      [
+       "Add",
+       -1,
+       [
+        "Power",
+        "x",
+        2
+       ]
+      ]
+     ]
+    ]
+   },
+   "delivery": {
+    "mode": "step_reveal",
+    "reason": "rule 1: a worked example or an error block",
+    "sources": []
+   }
+  },
+  {
+   "id": "LSN-CON-07007#s7",
+   "type": "what_a_reader_scores",
+   "bands": [
+    "low",
+    "mid"
+   ],
+   "skills": [
+    "BC-SKL-07024",
+    "BC-SKL-07025",
+    "BC-SKL-07026",
+    "BC-SKL-07027"
+   ],
+   "sources": [
+    "BC-PT-99028",
+    "BC-PT-99031",
+    "BC-PT-99032"
+   ],
+   "evidence_tag": "verified",
+   "example_id": "LSN-CON-07007#s6",
+   "lines": [
+    {
+     "point_type_id": "BC-PT-99028",
+     "text": "Separation of variables. Earned by: Rearranging the differential equation so each variable sits with its own differential, in the form constant times the dependent differential over the dependent expression equals constant times the independent differential (sg-26:13). Not earned by: Any attempt that leaves both variables on the same side; sg-26:13, sg-23:12, sg-21:20 and sg-19:5 all state that without separation the entire part scores zero."
+    },
+    {
+     "point_type_id": "BC-PT-99031",
+     "text": "Constant of integration used with the initial condition. Earned by: Including the constant in an equation and substituting the given initial values to solve for it (sg-26:13, sg-21:20). Not earned by: Work with no constant of integration at all, which sg-26:13 and sg-23:12 state blocks this point and the solve point."
+    },
+    {
+     "point_type_id": "BC-PT-99032",
+     "text": "Solves for the particular solution. Earned by: Isolating the dependent variable to give the particular solution, in any equivalent exponential form (sg-26:13). Not earned by: A solution left in implicit logarithmic form; a solution with no constant of integration shown anywhere (sg-26:13)."
+    }
+   ]
+  },
+  {
+   "id": "LSN-CON-07007#err-BC-ERR-07024",
+   "type": "common_error",
+   "bands": [
+    "low",
+    "mid"
+   ],
+   "skills": [
+    "BC-SKL-07024"
+   ],
+   "sources": [
+    "BC-ERR-07024"
+   ],
+   "evidence_tag": "inferred",
+   "error_id": "BC-ERR-07024",
+   "observed_behavior": "The response antidifferentiates the equation as written, with both variables on the same side.",
+   "scoring_consequence": "All four points of the separation part are lost; the guideline states that a response with no separation earns none of them.",
+   "wrong_step": {
+    "text": "y held fixed.",
+    "expression": [
+     "Equal",
+     "y",
+     [
+      "Add",
+      "C",
+      [
+       "Multiply",
+       "y",
+       [
+        "Power",
+        "x",
+        2
+       ]
+      ]
+     ]
+    ]
+   },
+   "right_step": {
+    "text": "Separated first.",
+    "expression": [
+     "Equal",
+     [
+      "Ln",
+      "y"
+     ],
+     [
+      "Add",
+      "C",
+      [
+       "Power",
+       "x",
+       2
+      ]
+     ]
+    ]
+   },
+   "relation": "distinct",
+   "delivery": {
+    "mode": "step_reveal",
+    "reason": "rule 1: a worked example or an error block",
+    "sources": []
+   }
+  },
+  {
+   "id": "LSN-CON-07007#err-BC-ERR-07025",
+   "type": "common_error",
+   "bands": [
+    "low",
+    "mid"
+   ],
+   "skills": [
+    "BC-SKL-07025"
+   ],
+   "sources": [
+    "BC-ERR-07025"
+   ],
+   "evidence_tag": "inferred",
+   "error_id": "BC-ERR-07025",
+   "observed_behavior": "The response integrates the dependent side and leaves the independent side untouched, or the reverse.",
+   "scoring_consequence": "The antiderivative point is lost and every later point with it.",
+   "wrong_step": {
+    "text": "2x left untouched.",
+    "expression": [
+     "Equal",
+     [
+      "Ln",
+      "y"
+     ],
+     [
+      "Multiply",
+      2,
+      "x"
+     ]
+    ]
+   },
+   "right_step": {
+    "text": "Both sides integrated.",
+    "expression": [
+     "Equal",
+     [
+      "Ln",
+      "y"
+     ],
+     [
+      "Add",
+      "C",
+      [
+       "Power",
+       "x",
+       2
+      ]
+     ]
+    ]
+   },
+   "relation": "distinct",
+   "delivery": {
+    "mode": "step_reveal",
+    "reason": "rule 1: a worked example or an error block",
+    "sources": []
+   }
+  },
+  {
+   "id": "LSN-CON-07007#err-BC-ERR-07026",
+   "type": "common_error",
+   "bands": [
+    "low",
+    "mid"
+   ],
+   "skills": [
+    "BC-SKL-07026"
+   ],
+   "sources": [
+    "BC-ERR-07026",
+    "BC-MIS-07016"
+   ],
+   "evidence_tag": "inferred",
+   "error_id": "BC-ERR-07026",
+   "observed_behavior": "The antiderivative equation is written with no constant.",
+   "scoring_consequence": "At most the first two points are available; the guideline caps the response there.",
+   "wrong_step": {
+    "text": "No C, so y(1) = 3 cannot act.",
+    "expression": [
+     "Equal",
+     [
+      "Ln",
+      "y"
+     ],
+     [
+      "Power",
+      "x",
+      2
+     ]
+    ]
+   },
+   "right_step": {
+    "text": "One C, fixed by y(1) = 3.",
+    "expression": [
+     "Equal",
+     [
+      "Ln",
+      "y"
+     ],
+     [
+      "Add",
+      "C",
+      [
+       "Power",
+       "x",
+       2
+      ]
+     ]
+    ]
+   },
+   "relation": "distinct",
+   "possible_reason": {
+    "misconception_id": "BC-MIS-07016",
+    "text": "the family collapses and the initial condition has nothing to act on"
+   },
+   "delivery": {
+    "mode": "step_reveal",
+    "reason": "rule 1: a worked example or an error block",
+    "sources": []
+   }
+  },
+  {
+   "id": "LSN-CON-07007#err-BC-ERR-07028",
+   "type": "common_error",
+   "bands": [
+    "low",
+    "mid"
+   ],
+   "skills": [
+    "BC-SKL-07028"
+   ],
+   "sources": [
+    "BC-ERR-07028",
+    "BC-MIS-07014"
+   ],
+   "evidence_tag": "inferred",
+   "error_id": "BC-ERR-07028",
+   "observed_behavior": "The response moves terms across as though the right side factored when it is a sum in both variables.",
+   "scoring_consequence": "The separated form is not equivalent to the equation, so nothing that follows is valid.",
+   "wrong_step": {
+    "text": "dy/dx = 2xy + 3 split as if it factored.",
+    "expression": [
+     "Equal",
+     [
+      "Multiply",
+      "dy",
+      [
+       "Power",
+       "y",
+       -1
+      ]
+     ],
+     [
+      "Multiply",
+      "dx",
+      [
+       "Add",
+       3,
+       [
+        "Multiply",
+        2,
+        "x"
+       ]
+      ]
+     ]
+    ]
+   },
+   "right_step": {
+    "text": "No common factor: not separable, left as given.",
+    "expression": [
+     "Equal",
+     [
+      "Multiply",
+      "dy",
+      [
+       "Power",
+       "dx",
+       -1
+      ]
+     ],
+     [
+      "Add",
+      3,
+      [
+       "Multiply",
+       2,
+       "x",
+       "y"
+      ]
+     ]
+    ]
+   },
+   "relation": "distinct",
+   "possible_reason": {
+    "misconception_id": "BC-MIS-07014",
+    "text": "applies the separation move to every equation, whether or not the right side factors"
+   },
+   "delivery": {
+    "mode": "step_reveal",
+    "reason": "rule 1: a worked example or an error block",
+    "sources": []
+   }
+  },
+  {
+   "id": "LSN-CON-07007#prq-BC-PRQ-06003",
+   "type": "prerequisite_bridge",
+   "bands": [
+    "low",
+    "mid"
+   ],
+   "skills": [
+    "BC-SKL-07025"
+   ],
+   "sources": [
+    "BC-PRQ-06003"
+   ],
+   "evidence_tag": "inferred",
+   "prerequisite_id": "BC-PRQ-06003",
+   "text": "1/y integrates to ln|y|; without it ln of a negative quantity appears."
+  },
+  {
+   "id": "LSN-CON-07007#prq-BC-PRQ-07001",
+   "type": "prerequisite_bridge",
+   "bands": [
+    "low",
+    "mid"
+   ],
+   "skills": [
+    "BC-SKL-07027"
+   ],
+   "sources": [
+    "BC-PRQ-07001"
+   ],
+   "evidence_tag": "inferred",
+   "prerequisite_id": "BC-PRQ-07001",
+   "text": "Exponentiating isolates y; without it y stays implicit."
+  },
+  {
+   "id": "LSN-CON-07007#prq-BC-PRQ-07002",
+   "type": "prerequisite_bridge",
+   "bands": [
+    "low",
+    "mid"
+   ],
+   "skills": [
+    "BC-SKL-07024"
+   ],
+   "sources": [
+    "BC-PRQ-07002"
+   ],
+   "evidence_tag": "inferred",
+   "prerequisite_id": "BC-PRQ-07002",
+   "text": "dy/dx splits into dy and dx; without it dx never moves across."
+  }
+ ],
+ "checks": [
+  {
+   "id": "LSN-CON-07007#chk-1",
+   "check_kind": "completion",
+   "bands": [
+    "low",
+    "mid"
+   ],
+   "format": "short_answer",
+   "archetype_id": "BC-QA-07003",
+   "parameter_draw": {
+    "form": "exponential",
+    "rate": 2,
+    "power": 1,
+    "start": 1,
+    "initial": 3
+   },
+   "completes": "LSN-CON-07007#s6",
+   "stem": {
+    "text": "ln|y| = x^2 + C, C = ln 3 - 1. Write y.",
+    "command_verb": "write"
+   },
+   "answer_key": {
+    "form": "symbolic",
+    "mathjson": [
+     "Multiply",
+     3,
+     [
+      "Exp",
+      [
+       "Add",
+       -1,
+       [
+        "Power",
+        "x",
+        2
+       ]
+      ]
+     ]
+    ]
+   },
+   "worked_solution": [
+    {
+     "step": 1,
+     "text": "C substituted.",
+     "mathjson": [
+      "Equal",
+      [
+       "Ln",
+       "y"
+      ],
+      [
+       "Add",
+       -1,
+       [
+        "Power",
+        "x",
+        2
+       ],
+       [
+        "Ln",
+        3
+       ]
+      ]
+     ],
+     "relation": "new"
+    },
+    {
+     "step": 2,
+     "text": "Exponentiated.",
+     "mathjson": [
+      "Equal",
+      "y",
+      [
+       "Multiply",
+       3,
+       [
+        "Exp",
+        [
+         "Add",
+         -1,
+         [
+          "Power",
+          "x",
+          2
+         ]
+        ]
+       ]
+      ]
+     ],
+     "relation": "new"
+    }
+   ],
+   "calculator_status": "no_calculator",
+   "representation": "BC-REP-01",
+   "skills": [
+    "BC-SKL-07027"
+   ]
+  },
+  {
+   "id": "LSN-CON-07007#chk-2",
+   "check_kind": "isomorph",
+   "bands": [
+    "low",
+    "mid"
+   ],
+   "format": "short_answer",
+   "archetype_id": "BC-QA-07003",
+   "parameter_draw": {
+    "form": "exponential",
+    "rate": -2,
+    "power": 2,
+    "start": 0,
+    "initial": 5
+   },
+   "stem": {
+    "text": "dy/dx = -2x^2 y, y(0) = 5. Find y.",
+    "command_verb": "find"
+   },
+   "answer_key": {
+    "form": "symbolic",
+    "mathjson": [
+     "Multiply",
+     5,
+     [
+      "Exp",
+      [
+       "Multiply",
+       [
+        "Rational",
+        -2,
+        3
+       ],
+       [
+        "Power",
+        "x",
+        3
+       ]
+      ]
+     ]
+    ]
+   },
+   "worked_solution": [
+    {
+     "step": 1,
+     "text": "Separate.",
+     "mathjson": [
+      "Equal",
+      [
+       "Multiply",
+       "dy",
+       [
+        "Power",
+        "y",
+        -1
+       ]
+      ],
+      [
+       "Multiply",
+       -2,
+       "dx",
+       [
+        "Power",
+        "x",
+        2
+       ]
+      ]
+     ],
+     "point_type_id": "BC-PT-99028",
+     "relation": "new"
+    },
+    {
+     "step": 2,
+     "text": "Integrate.",
+     "mathjson": [
+      "Equal",
+      [
+       "Ln",
+       [
+        "Abs",
+        "y"
+       ]
+      ],
+      [
+       "Add",
+       "C",
+       [
+        "Multiply",
+        [
+         "Rational",
+         -2,
+         3
+        ],
+        [
+         "Power",
+         "x",
+         3
+        ]
+       ]
+      ]
+     ],
+     "relation": "new"
+    },
+    {
+     "step": 3,
+     "text": "x = 0, y = 5.",
+     "mathjson": [
+      "Equal",
+      [
+       "Ln",
+       5
+      ],
+      "C"
+     ],
+     "relation": "evaluate",
+     "subs": {
+      "x": "0",
+      "y": "5"
+     }
+    },
+    {
+     "step": 4,
+     "text": "C.",
+     "mathjson": [
+      "Ln",
+      5
+     ],
+     "relation": "solve",
+     "variable": "C"
+    },
+    {
+     "step": 5,
+     "text": "Solve for y.",
+     "mathjson": [
+      "Equal",
+      "y",
+      [
+       "Multiply",
+       5,
+       [
+        "Exp",
+        [
+         "Multiply",
+         [
+          "Rational",
+          -2,
+          3
+         ],
+         [
+          "Power",
+          "x",
+          3
+         ]
+        ]
+       ]
+      ]
+     ],
+     "relation": "new"
+    }
+   ],
+   "calculator_status": "no_calculator",
+   "representation": "BC-REP-01",
+   "skills": [
+    "BC-SKL-07024",
+    "BC-SKL-07027"
+   ]
+  },
+  {
+   "id": "LSN-CON-07007#chk-3",
+   "check_kind": "mcq",
+   "bands": [
+    "low"
+   ],
+   "format": "mcq",
+   "archetype_id": "BC-QA-07003",
+   "parameter_draw": {
+    "form": "exponential",
+    "rate": 4,
+    "power": 1,
+    "start": 1,
+    "initial": 2
+   },
+   "stem": {
+    "text": "dy/dx = 4xy with y(1) = 2. Which is the particular solution?",
+    "command_verb": "identify"
+   },
+   "answer_key": {
+    "form": "symbolic",
+    "mathjson": [
+     "Multiply",
+     2,
+     [
+      "Exp",
+      [
+       "Add",
+       -2,
+       [
+        "Multiply",
+        2,
+        [
+         "Power",
+         "x",
+         2
+        ]
+       ]
+      ]
+     ]
+    ]
+   },
+   "worked_solution": [
+    {
+     "step": 1,
+     "text": "Separate.",
+     "mathjson": [
+      "Equal",
+      [
+       "Multiply",
+       "dy",
+       [
+        "Power",
+        "y",
+        -1
+       ]
+      ],
+      [
+       "Multiply",
+       4,
+       "dx",
+       "x"
+      ]
+     ],
+     "relation": "new"
+    },
+    {
+     "step": 2,
+     "text": "Integrate.",
+     "mathjson": [
+      "Equal",
+      [
+       "Ln",
+       [
+        "Abs",
+        "y"
+       ]
+      ],
+      [
+       "Add",
+       "C",
+       [
+        "Multiply",
+        2,
+        [
+         "Power",
+         "x",
+         2
+        ]
+       ]
+      ]
+     ],
+     "relation": "new"
+    },
+    {
+     "step": 3,
+     "text": "x = 1, y = 2.",
+     "mathjson": [
+      "Equal",
+      [
+       "Ln",
+       2
+      ],
+      [
+       "Add",
+       2,
+       "C"
+      ]
+     ],
+     "relation": "evaluate",
+     "subs": {
+      "x": "1",
+      "y": "2"
+     }
+    },
+    {
+     "step": 4,
+     "text": "C.",
+     "mathjson": [
+      "Add",
+      -2,
+      [
+       "Ln",
+       2
+      ]
+     ],
+     "relation": "solve",
+     "variable": "C"
+    },
+    {
+     "step": 5,
+     "text": "Solve for y.",
+     "mathjson": [
+      "Equal",
+      "y",
+      [
+       "Multiply",
+       2,
+       [
+        "Exp",
+        [
+         "Add",
+         -2,
+         [
+          "Multiply",
+          2,
+          [
+           "Power",
+           "x",
+           2
+          ]
+         ]
+        ]
+       ]
+      ]
+     ],
+     "relation": "new"
+    }
+   ],
+   "options": [
+    {
+     "id": "A",
+     "is_key": false,
+     "error_path": "BC-ERR-07024",
+     "value": [
+      "Add",
+      -2,
+      [
+       "Multiply",
+       4,
+       [
+        "Power",
+        "x",
+        2
+       ]
+      ]
+     ],
+     "derivation": "4xy integrated in x with y held at 2, then y(1) = 2 used"
+    },
+    {
+     "id": "B",
+     "is_key": true,
+     "error_path": null,
+     "value": [
+      "Multiply",
+      2,
+      [
+       "Exp",
+       [
+        "Add",
+        -2,
+        [
+         "Multiply",
+         2,
+         [
+          "Power",
+          "x",
+          2
+         ]
+        ]
+       ]
+      ]
+     ]
+    },
+    {
+     "id": "C",
+     "is_key": false,
+     "error_path": "BC-ERR-07025",
+     "value": [
+      "Multiply",
+      2,
+      [
+       "Exp",
+       [
+        "Add",
+        -4,
+        [
+         "Multiply",
+         4,
+         "x"
+        ]
+       ]
+      ]
+     ],
+     "derivation": "the x side left as 4x, not antidifferentiated"
+    },
+    {
+     "id": "D",
+     "is_key": false,
+     "error_path": "BC-ERR-07026",
+     "value": [
+      "Exp",
+      [
+       "Multiply",
+       2,
+       [
+        "Power",
+        "x",
+        2
+       ]
+      ]
+     ],
+     "derivation": "no constant, so y(1) = 2 never enters"
+    }
+   ],
+   "calculator_status": "no_calculator",
+   "representation": "BC-REP-01",
+   "skills": [
+    "BC-SKL-07024",
+    "BC-SKL-07025",
+    "BC-SKL-07026"
+   ]
+  }
+ ],
+ "refresher": [
+  "LSN-CON-07007#s2",
+  "LSN-CON-07007#s3",
+  "LSN-CON-07007#err-BC-ERR-07024",
+  "LSN-CON-07007#err-BC-ERR-07025",
+  "LSN-CON-07007#err-BC-ERR-07026",
+  "LSN-CON-07007#err-BC-ERR-07028",
+  "LSN-CON-07007#s6"
+ ],
+ "provenance": {
+  "author": "tools/lesson_transcribe.py",
+  "prompt_version": "generator/lesson_v1",
+  "design_path": "docs/lessons/unit-07/LSN-CON-07007.md",
+  "signed_off_by": "claude-opus-5-5",
+  "signed_off_at": "2026-09-29",
+  "not_human": true
+ }
+}

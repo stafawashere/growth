@@ -1,0 +1,590 @@
+{
+ "id": "LSN-CON-07003",
+ "version": 1,
+ "kind": "concept",
+ "target_id": "BC-CON-07003",
+ "status": "signed_off",
+ "snapshot_digest": "a6a8ec9d3f59ab8f712e33d30cc22fc64bf2c478fbe7312e3e3118d319c6a42f",
+ "source_digest": "1da66f6085e5a0b967fdb39923f88cff5c3568b8d191ffbb65901da576d6e125",
+ "read_minutes": {
+  "full": 3.0,
+  "brief": 3.0
+ },
+ "word_count": {
+  "full": 406,
+  "brief": 406
+ },
+ "sections": [
+  {
+   "id": "LSN-CON-07003#s1",
+   "type": "orientation",
+   "bands": [
+    "low",
+    "mid"
+   ],
+   "skills": [
+    "BC-SKL-07009"
+   ],
+   "sources": [
+    "BC-CON-07003",
+    "research/units/unit-07-differential-equations.md#7.2 Verifying Solutions for Differential Equations"
+   ],
+   "evidence_tag": "inferred",
+   "text": "A response shows the formula with its constant C satisfies the equation for every C, then lets the initial condition select one member.",
+   "delivery": {
+    "mode": "text",
+    "reason": "rule 6: BC-REP-01, 04, 06 on BC-SKL-07009, none figure-bearing",
+    "sources": [
+     "BC-SKL-07009"
+    ]
+   }
+  },
+  {
+   "id": "LSN-CON-07003#s2",
+   "type": "key_ideas",
+   "bands": [
+    "low",
+    "mid"
+   ],
+   "skills": [
+    "BC-SKL-07009"
+   ],
+   "sources": [
+    "BC-EK-FUN-7B2",
+    "ced:138",
+    "research/units/unit-07-differential-equations.md#7.2 Verifying Solutions for Differential Equations"
+   ],
+   "evidence_tag": "verified",
+   "ek_id": "BC-EK-FUN-7B2",
+   "depth": "core",
+   "text": "The equation fixes a rate, not a function, so infinitely many functions satisfy it. A formula with a constant C names them all, one curve through each point. A stated point selects one member.",
+   "notation": "general solution; family of solutions; the constant C",
+   "quote": {
+    "text": "There may be infinitely many solutions to a differential equation.",
+    "source": "ced:138"
+   },
+   "delivery": {
+    "mode": "text",
+    "reason": "rule 6: a statement about how many solutions exist, no figure-bearing representation",
+    "sources": [
+     "BC-SKL-07009"
+    ]
+   }
+  },
+  {
+   "id": "LSN-CON-07003#s3",
+   "type": "strategy",
+   "bands": [
+    "low",
+    "mid"
+   ],
+   "skills": [
+    "BC-SKL-07009"
+   ],
+   "sources": [
+    "BC-QA-07007"
+   ],
+   "evidence_tag": "verified",
+   "archetype_id": "BC-QA-07007",
+   "cue": "A candidate with a constant C is printed beside the equation.",
+   "method": "First line: its derivative, C held constant.",
+   "rival": "Rival: solving the equation from scratch.",
+   "separating_feature": "The family is supplied: verify, then fix C."
+  },
+  {
+   "id": "LSN-CON-07003#s4",
+   "type": "worked_example",
+   "bands": [
+    "low",
+    "mid"
+   ],
+   "skills": [
+    "BC-SKL-07009"
+   ],
+   "sources": [
+    "BC-QA-07007"
+   ],
+   "evidence_tag": "inferred",
+   "archetype_id": "BC-QA-07007",
+   "parameter_draw": {
+    "case": "solution",
+    "rate": 1,
+    "level": 4,
+    "initial": 2,
+    "shift": -1
+   },
+   "problem": {
+    "text": "Show that y = 4 + Ce^x solves dy/dx = y - 4 for every C, and find the solution with y(0) = 2.",
+    "command_verb": "show"
+   },
+   "calculator_status": "no_calculator",
+   "steps": [
+    {
+     "cue": "A family is printed: start from it.",
+     "why": "C stays a letter.",
+     "expression": [
+      "Add",
+      4,
+      [
+       "Multiply",
+       "C",
+       [
+        "Exp",
+        "x"
+       ]
+      ]
+     ],
+     "relation": "new"
+    },
+    {
+     "cue": "The left side is dy/dx.",
+     "why": "C is a constant.",
+     "expression": [
+      "Multiply",
+      "C",
+      [
+       "Exp",
+       "x"
+      ]
+     ],
+     "relation": "differentiate",
+     "variable": "x"
+    },
+    {
+     "cue": "Right side, the family for y.",
+     "why": "(4 + Ce^x) - 4.",
+     "expression": [
+      "Multiply",
+      "C",
+      [
+       "Exp",
+       "x"
+      ]
+     ],
+     "relation": "new"
+    },
+    {
+     "cue": "Compare with the left side.",
+     "why": "Equal for every C.",
+     "expression": [
+      "Multiply",
+      "C",
+      [
+       "Exp",
+       "x"
+      ]
+     ],
+     "point_type_id": "BC-PT-99068",
+     "relation": "equivalent"
+    },
+    {
+     "cue": "The stem names y(0) = 2.",
+     "why": "The point selects one member.",
+     "expression": [
+      "Equal",
+      [
+       "Add",
+       4,
+       "C"
+      ],
+      2
+     ],
+     "relation": "new"
+    },
+    {
+     "cue": "Solve for C.",
+     "why": "One curve.",
+     "expression": -2,
+     "relation": "solve",
+     "variable": "C"
+    },
+    {
+     "cue": "Put C back.",
+     "why": "The particular solution.",
+     "expression": [
+      "Add",
+      4,
+      [
+       "Multiply",
+       -2,
+       [
+        "Exp",
+        "x"
+       ]
+      ]
+     ],
+     "point_type_id": "BC-PT-99005",
+     "relation": "new"
+    }
+   ],
+   "answer": {
+    "form": "symbolic",
+    "mathjson": [
+     "Add",
+     4,
+     [
+      "Multiply",
+      -2,
+      [
+       "Exp",
+       "x"
+      ]
+     ]
+    ]
+   },
+   "delivery": {
+    "mode": "step_reveal",
+    "reason": "rule 1",
+    "sources": []
+   }
+  },
+  {
+   "id": "LSN-CON-07003#s5",
+   "type": "what_a_reader_scores",
+   "bands": [
+    "low",
+    "mid"
+   ],
+   "skills": [
+    "BC-SKL-07009"
+   ],
+   "sources": [
+    "BC-PT-99068",
+    "BC-PT-99005"
+   ],
+   "evidence_tag": "verified",
+   "example_id": "LSN-CON-07003#s4",
+   "lines": [
+    {
+     "point_type_id": "BC-PT-99068",
+     "text": "Verification for a show-that prompt. Earned by: An algebraic chain that lands on the stated target expression or inequality, closed with the target itself (sg-25:26). Not earned by: A chain that stops before the target, or that asserts equality where the prompt asked for a bound (sg-25:22, sg-22:21)."
+    },
+    {
+     "point_type_id": "BC-PT-99005",
+     "text": "Answer with supporting work or setup shown. Earned by: The correct value together with the setup the prompt demanded, such as a difference and a quotient from a table or an equation that produces the value (sg-26:2, sg-25:4). Not earned by: An unsupported value (sg-23:10, sg-22:9), or a setup with no value (sg-26:2). Notation: sg-22:6 withholds this point for an equation of the form function equals constant, such as a derivative expression set equal to a number without evaluation. Precision: A reported decimal answer must be accurate to three places after the decimal point, rounded or truncated; at most one point per question is lost to inappropriate rounding (sg-25:2, sg-26:2)."
+    }
+   ]
+  },
+  {
+   "id": "LSN-CON-07003#err-BC-ERR-07009",
+   "type": "common_error",
+   "bands": [
+    "low",
+    "mid"
+   ],
+   "skills": [
+    "BC-SKL-07009"
+   ],
+   "sources": [
+    "BC-ERR-07009",
+    "BC-MIS-07005"
+   ],
+   "evidence_tag": "inferred",
+   "error_id": "BC-ERR-07009",
+   "observed_behavior": "The response treats the family with its constant as a single function.",
+   "scoring_consequence": "The distinction the essential knowledge draws between a family and a particular solution is lost.",
+   "wrong_step": {
+    "text": "4 + Ce^x reported as the one solution; C left unfixed.",
+    "expression": [
+     "Add",
+     4,
+     [
+      "Multiply",
+      "C",
+      [
+       "Exp",
+       "x"
+      ]
+     ]
+    ]
+   },
+   "right_step": {
+    "text": "A family; y(0) = 2 fixes C = -2.",
+    "expression": [
+     "Add",
+     4,
+     [
+      "Multiply",
+      -2,
+      [
+       "Exp",
+       "x"
+      ]
+     ]
+    ]
+   },
+   "relation": "distinct",
+   "possible_reason": {
+    "misconception_id": "BC-MIS-07005",
+    "text": "reads the equation as determining a single function"
+   },
+   "delivery": {
+    "mode": "step_reveal",
+    "reason": "rule 1",
+    "sources": []
+   }
+  }
+ ],
+ "checks": [
+  {
+   "id": "LSN-CON-07003#chk-1",
+   "check_kind": "completion",
+   "bands": [
+    "low",
+    "mid"
+   ],
+   "format": "short_answer",
+   "archetype_id": "BC-QA-07007",
+   "parameter_draw": {
+    "case": "solution",
+    "rate": 1,
+    "level": 4,
+    "initial": 2,
+    "shift": -1
+   },
+   "completes": "LSN-CON-07003#s4",
+   "stem": {
+    "text": "Every y = 4 + Ce^x solves dy/dx = y - 4. Find the one with y(0) = 2.",
+    "command_verb": "find"
+   },
+   "answer_key": {
+    "form": "symbolic",
+    "mathjson": [
+     "Add",
+     4,
+     [
+      "Multiply",
+      -2,
+      [
+       "Exp",
+       "x"
+      ]
+     ]
+    ]
+   },
+   "worked_solution": [
+    {
+     "step": 1,
+     "text": "The point.",
+     "mathjson": [
+      "Equal",
+      [
+       "Add",
+       4,
+       "C"
+      ],
+      2
+     ],
+     "relation": "new"
+    },
+    {
+     "step": 2,
+     "text": "C.",
+     "mathjson": -2,
+     "relation": "solve",
+     "variable": "C"
+    },
+    {
+     "step": 3,
+     "text": "The member.",
+     "mathjson": [
+      "Add",
+      4,
+      [
+       "Multiply",
+       -2,
+       [
+        "Exp",
+        "x"
+       ]
+      ]
+     ],
+     "relation": "new"
+    }
+   ],
+   "calculator_status": "no_calculator",
+   "representation": "BC-REP-01",
+   "skills": [
+    "BC-SKL-07009"
+   ]
+  },
+  {
+   "id": "LSN-CON-07003#chk-2",
+   "check_kind": "isomorph",
+   "bands": [
+    "low",
+    "mid"
+   ],
+   "format": "short_answer",
+   "archetype_id": "BC-QA-07007",
+   "parameter_draw": {
+    "case": "solution",
+    "rate": -2,
+    "level": 1,
+    "initial": 3,
+    "shift": 1
+   },
+   "stem": {
+    "text": "y = 1 + Ce^(-2x) and dy/dx = -2(y - 1): verify, then find the member with y(0) = 3.",
+    "command_verb": "find"
+   },
+   "answer_key": {
+    "form": "symbolic",
+    "mathjson": [
+     "Add",
+     1,
+     [
+      "Multiply",
+      2,
+      [
+       "Exp",
+       [
+        "Multiply",
+        -2,
+        "x"
+       ]
+      ]
+     ]
+    ]
+   },
+   "worked_solution": [
+    {
+     "step": 1,
+     "text": "Family.",
+     "mathjson": [
+      "Add",
+      1,
+      [
+       "Multiply",
+       "C",
+       [
+        "Exp",
+        [
+         "Multiply",
+         -2,
+         "x"
+        ]
+       ]
+      ]
+     ],
+     "relation": "new"
+    },
+    {
+     "step": 2,
+     "text": "Derivative.",
+     "mathjson": [
+      "Multiply",
+      -2,
+      "C",
+      [
+       "Exp",
+       [
+        "Multiply",
+        -2,
+        "x"
+       ]
+      ]
+     ],
+     "relation": "differentiate",
+     "variable": "x"
+    },
+    {
+     "step": 3,
+     "text": "Right side.",
+     "mathjson": [
+      "Multiply",
+      -2,
+      "C",
+      [
+       "Exp",
+       [
+        "Multiply",
+        -2,
+        "x"
+       ]
+      ]
+     ],
+     "relation": "new"
+    },
+    {
+     "step": 4,
+     "text": "Equal for every C.",
+     "mathjson": [
+      "Multiply",
+      -2,
+      "C",
+      [
+       "Exp",
+       [
+        "Multiply",
+        -2,
+        "x"
+       ]
+      ]
+     ],
+     "relation": "equivalent"
+    },
+    {
+     "step": 5,
+     "text": "The point.",
+     "mathjson": [
+      "Equal",
+      [
+       "Add",
+       1,
+       "C"
+      ],
+      3
+     ],
+     "relation": "new"
+    },
+    {
+     "step": 6,
+     "text": "C.",
+     "mathjson": 2,
+     "relation": "solve",
+     "variable": "C"
+    },
+    {
+     "step": 7,
+     "text": "The member.",
+     "mathjson": [
+      "Add",
+      1,
+      [
+       "Multiply",
+       2,
+       [
+        "Exp",
+        [
+         "Multiply",
+         -2,
+         "x"
+        ]
+       ]
+      ]
+     ],
+     "relation": "new"
+    }
+   ],
+   "calculator_status": "no_calculator",
+   "representation": "BC-REP-01",
+   "skills": [
+    "BC-SKL-07009"
+   ]
+  }
+ ],
+ "refresher": [
+  "LSN-CON-07003#s2",
+  "LSN-CON-07003#err-BC-ERR-07009",
+  "LSN-CON-07003#s4"
+ ],
+ "provenance": {
+  "author": "tools/lesson_transcribe.py",
+  "prompt_version": "generator/lesson_v1",
+  "design_path": "docs/lessons/unit-07/LSN-CON-07003.md",
+  "signed_off_by": "claude-opus-5-5",
+  "signed_off_at": "2026-09-29",
+  "not_human": true
+ }
+}

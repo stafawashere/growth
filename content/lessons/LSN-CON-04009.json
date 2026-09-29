@@ -1,0 +1,1118 @@
+{
+ "id": "LSN-CON-04009",
+ "version": 1,
+ "kind": "concept",
+ "target_id": "BC-CON-04009",
+ "status": "signed_off",
+ "snapshot_digest": "a6a8ec9d3f59ab8f712e33d30cc22fc64bf2c478fbe7312e3e3118d319c6a42f",
+ "source_digest": "b1f1c307b2de031a2bcd42283d5a7658900d97b0a3a318d15409b2150b403727",
+ "read_minutes": {
+  "full": 3.8,
+  "brief": 2.9
+ },
+ "word_count": {
+  "full": 472,
+  "brief": 367
+ },
+ "sections": [
+  {
+   "id": "LSN-CON-04009#s1",
+   "type": "orientation",
+   "bands": [
+    "low",
+    "mid"
+   ],
+   "skills": [
+    "BC-SKL-04023",
+    "BC-SKL-04026",
+    "BC-SKL-04027"
+   ],
+   "sources": [
+    "BC-CON-04009",
+    "research/units/unit-04-contextual-applications-differentiation.md#4.5 Solving Related Rates Problems"
+   ],
+   "evidence_tag": "inferred",
+   "text": "Keep every varying quantity as a variable through the differentiation. Put the instant's values in afterwards, and find any missing value from the relating equation at that instant.",
+   "delivery": {
+    "mode": "figure",
+    "reason": "rule 3: BC-REP-08 on BC-SKL-04026 and BC-SKL-04027",
+    "sources": [
+     "BC-SKL-04026",
+     "BC-SKL-04027"
+    ],
+    "spec": {
+     "kind": "diagram",
+     "representations": [
+      "BC-REP-08"
+     ],
+     "labels": [
+      {
+       "text": "15: fixed",
+       "placement": "inside",
+       "at": [
+        5,
+        7
+       ]
+      },
+      {
+       "text": "x: varies",
+       "placement": "inside",
+       "at": [
+        4,
+        1
+       ]
+      },
+      {
+       "text": "y: varies",
+       "placement": "inside",
+       "at": [
+        0.5,
+        6
+       ]
+      }
+     ],
+     "window": {
+      "x": [
+       -1,
+       16
+      ],
+      "y": [
+       -1,
+       16
+      ]
+     },
+     "segments": [
+      {
+       "from": [
+        0,
+        0
+       ],
+       "to": [
+        0,
+        15.5
+       ]
+      },
+      {
+       "from": [
+        0,
+        0
+       ],
+       "to": [
+        15.5,
+        0
+       ]
+      },
+      {
+       "from": [
+        9,
+        0
+       ],
+       "to": [
+        0,
+        12
+       ]
+      }
+     ],
+     "points": [
+      [
+       9,
+       0
+      ],
+      [
+       0,
+       12
+      ]
+     ]
+    },
+    "fallback": "the same labelled ladder as a static image",
+    "keyboard": "none needed: the figure has no control"
+   }
+  },
+  {
+   "id": "LSN-CON-04009#s2",
+   "type": "key_ideas",
+   "bands": [
+    "low",
+    "mid"
+   ],
+   "skills": [
+    "BC-SKL-04023",
+    "BC-SKL-04026",
+    "BC-SKL-04027"
+   ],
+   "sources": [
+    "BC-EK-CHA-3E1",
+    "ced:91",
+    "ced:86",
+    "research/units/unit-04-contextual-applications-differentiation.md#4.5 Solving Related Rates Problems"
+   ],
+   "evidence_tag": "verified",
+   "ek_id": "BC-EK-CHA-3E1",
+   "depth": "core",
+   "text": "A value stated for one instant is not a constant: it goes in after the differentiation. A quantity fixed for the whole motion may go in at any stage. A value the substitution needs but the stem omits comes from the relating equation at that instant.",
+   "notation": "values substituted into the differentiated equation",
+   "quote": {
+    "text": "relating it to other quantities whose rates of change are known",
+    "source": "ced:91"
+   },
+   "delivery": {
+    "mode": "interactive",
+    "reason": "rule 3 promoted: BC-REP-08 on BC-SKL-04026 and BC-SKL-04027; BC-QA-04006 common_givens name the dimensions at the instant, and the reading is which labels change as time moves",
+    "sources": [
+     "BC-SKL-04026",
+     "BC-SKL-04027",
+     "BC-QA-04006"
+    ],
+    "spec": {
+     "kind": "diagram",
+     "representations": [
+      "BC-REP-08",
+      "BC-REP-01"
+     ],
+     "controls": [
+      {
+       "type": "slider",
+       "parameter": "x",
+       "range": [
+        3,
+        14
+       ],
+       "step": 1,
+       "start": 9
+      }
+     ],
+     "drawn": [
+      "the ladder at foot distance x",
+      "y from x squared plus y squared equals 225"
+     ],
+     "labels": [
+      {
+       "text": "x: changes",
+       "placement": "inside",
+       "at": [
+        3,
+        1
+       ]
+      },
+      {
+       "text": "y: changes",
+       "placement": "inside",
+       "at": [
+        0.5,
+        14.5
+       ]
+      },
+      {
+       "text": "15: stays",
+       "placement": "inside",
+       "at": [
+        5,
+        7
+       ]
+      }
+     ],
+     "question": "Which of the stated numbers would still hold one second later?",
+     "window": {
+      "x": [
+       -1,
+       16
+      ],
+      "y": [
+       -1,
+       16
+      ]
+     },
+     "segments": [
+      {
+       "from": [
+        0,
+        0
+       ],
+       "to": [
+        0,
+        15.5
+       ]
+      },
+      {
+       "from": [
+        0,
+        0
+       ],
+       "to": [
+        15.5,
+        0
+       ]
+      },
+      {
+       "from": [
+        9,
+        0
+       ],
+       "to": [
+        0,
+        12
+       ]
+      }
+     ],
+     "points": [
+      {
+       "x": "x",
+       "y": 0
+      },
+      {
+       "x": 0,
+       "y": "sqrt(225 - x**2)"
+      }
+     ]
+    },
+    "fallback": "two static frames at x = 9 and x = 11 with the same labels",
+    "keyboard": "Tab focuses the slider; left and right arrow keys step x by 1"
+   }
+  },
+  {
+   "id": "LSN-CON-04009#s3",
+   "type": "strategy",
+   "bands": [
+    "low",
+    "mid"
+   ],
+   "skills": [
+    "BC-SKL-04023",
+    "BC-SKL-04026",
+    "BC-SKL-04027"
+   ],
+   "sources": [
+    "BC-QA-04006"
+   ],
+   "evidence_tag": "verified",
+   "archetype_id": "BC-QA-04006",
+   "cue": "\"At the instant when\" a dimension has a value.",
+   "method": "Differentiate the relating equation first; substitute after.",
+   "rival": "Rival: the value put in first (BC-ERR-04020).",
+   "separating_feature": "Instant values change; fixed lengths do not."
+  },
+  {
+   "id": "LSN-CON-04009#s4",
+   "type": "strategy",
+   "bands": [
+    "low",
+    "mid"
+   ],
+   "skills": [
+    "BC-SKL-04023"
+   ],
+   "sources": [
+    "BC-QA-04007"
+   ],
+   "evidence_tag": "verified",
+   "archetype_id": "BC-QA-04007",
+   "cue": "A point on a curve and one coordinate rate.",
+   "method": "Differentiate the curve in t, then put in the point and the rate.",
+   "rival": "Rival: the point substituted before differentiating.",
+   "separating_feature": "The point holds for one instant only."
+  },
+  {
+   "id": "LSN-CON-04009#s5",
+   "type": "worked_example",
+   "bands": [
+    "low",
+    "mid"
+   ],
+   "skills": [
+    "BC-SKL-04023",
+    "BC-SKL-04026",
+    "BC-SKL-04027"
+   ],
+   "sources": [
+    "BC-QA-04006"
+   ],
+   "evidence_tag": "inferred",
+   "archetype_id": "BC-QA-04006",
+   "parameter_draw": {
+    "shape": "ladder",
+    "size": 9,
+    "rate": 2,
+    "ratio": 3,
+    "leg": "short",
+    "length_unit": "meter",
+    "time_unit": "second"
+   },
+   "problem": {
+    "text": "A 15 meter ladder leans on a wall; its foot slides away at 2 meters per second. Find dy/dt for the top when the foot is 9 meters out.",
+    "command_verb": "find"
+   },
+   "calculator_status": "no_calculator",
+   "steps": [
+    {
+     "cue": "The ladder's length is fixed.",
+     "why": "Only 15 is constant.",
+     "expression": [
+      "Equal",
+      [
+       "Add",
+       [
+        "Power",
+        "x",
+        2
+       ],
+       [
+        "Power",
+        "y",
+        2
+       ]
+      ],
+      225
+     ],
+     "relation": "new"
+    },
+    {
+     "cue": "y is not given.",
+     "why": "Recover it at the instant.",
+     "expression": [
+      "Equal",
+      [
+       "Add",
+       81,
+       [
+        "Power",
+        "y",
+        2
+       ]
+      ],
+      225
+     ],
+     "relation": "evaluate",
+     "subs": {
+      "x": "9"
+     }
+    },
+    {
+     "cue": "Solve for y.",
+     "why": "Height is positive.",
+     "expression": 12,
+     "relation": "solve",
+     "variable": "y"
+    },
+    {
+     "cue": "Back to the general equation.",
+     "why": "x and y both vary.",
+     "expression": [
+      "Equal",
+      [
+       "Add",
+       [
+        "Multiply",
+        2,
+        "dxdt",
+        "x"
+       ],
+       [
+        "Multiply",
+        2,
+        "dydt",
+        "y"
+       ]
+      ],
+      0
+     ],
+     "point_type_id": "BC-PT-99023",
+     "relation": "new"
+    },
+    {
+     "cue": "Now the instant.",
+     "why": "x = 9, y = 12, dx/dt = 2.",
+     "expression": [
+      "Equal",
+      [
+       "Add",
+       36,
+       [
+        "Multiply",
+        24,
+        "dydt"
+       ]
+      ],
+      0
+     ],
+     "relation": "evaluate",
+     "subs": {
+      "x": "9",
+      "y": "12",
+      "dxdt": "2"
+     }
+    },
+    {
+     "cue": "One unknown.",
+     "why": "Meters per second, falling.",
+     "expression": [
+      "Rational",
+      -3,
+      2
+     ],
+     "relation": "solve",
+     "variable": "dydt"
+    }
+   ],
+   "answer": {
+    "form": "symbolic",
+    "mathjson": [
+     "Rational",
+     -3,
+     2
+    ]
+   },
+   "delivery": {
+    "mode": "step_reveal",
+    "reason": "rule 1",
+    "sources": []
+   }
+  },
+  {
+   "id": "LSN-CON-04009#s6",
+   "type": "what_a_reader_scores",
+   "bands": [
+    "low",
+    "mid"
+   ],
+   "skills": [
+    "BC-SKL-04023",
+    "BC-SKL-04026",
+    "BC-SKL-04027"
+   ],
+   "sources": [
+    "BC-PT-99023"
+   ],
+   "evidence_tag": "verified",
+   "example_id": "LSN-CON-04009#s5",
+   "lines": [
+    {
+     "point_type_id": "BC-PT-99023",
+     "text": "Chain rule. Earned by: Correct differentiation of the inner function, including the required differentials (sg-22:16, sg-25:21). Not earned by: A product rule written without one or both differentials, which sg-22:16 states earns the product rule point but not this one. Notation: sg-22:16 treats a missing differential as the defining failure for this point."
+    }
+   ]
+  },
+  {
+   "id": "LSN-CON-04009#err-BC-ERR-04020",
+   "type": "common_error",
+   "bands": [
+    "low",
+    "mid"
+   ],
+   "skills": [
+    "BC-SKL-04023",
+    "BC-SKL-04027"
+   ],
+   "sources": [
+    "BC-ERR-04020",
+    "BC-MIS-04011"
+   ],
+   "evidence_tag": "inferred",
+   "error_id": "BC-ERR-04020",
+   "observed_behavior": "A dimension that varies with time is replaced by its value at the instant before the equation is differentiated, so its rate never appears.",
+   "scoring_consequence": "The differentiated equation is wrong and the answer follows it; the CED sample activity asks students to mark which given information always applies and which applies only at an instant, which is the distinction at stake (ced:86).",
+   "wrong_step": {
+    "text": "x = 9 first.",
+    "expression": [
+     "Equal",
+     [
+      "Multiply",
+      2,
+      "dydt",
+      "y"
+     ],
+     0
+    ]
+   },
+   "right_step": {
+    "text": "Differentiate first.",
+    "expression": [
+     "Equal",
+     [
+      "Add",
+      [
+       "Multiply",
+       2,
+       "dxdt",
+       "x"
+      ],
+      [
+       "Multiply",
+       2,
+       "dydt",
+       "y"
+      ]
+     ],
+     0
+    ]
+   },
+   "relation": "distinct",
+   "possible_reason": {
+    "misconception_id": "BC-MIS-04011",
+    "text": "so they are substituted before the differentiation"
+   },
+   "delivery": {
+    "mode": "step_reveal",
+    "reason": "rule 1",
+    "sources": []
+   }
+  },
+  {
+   "id": "LSN-CON-04009#err-BC-ERR-04022",
+   "type": "common_error",
+   "bands": [
+    "low",
+    "mid"
+   ],
+   "skills": [
+    "BC-SKL-04026"
+   ],
+   "sources": [
+    "BC-ERR-04022"
+   ],
+   "evidence_tag": "inferred",
+   "error_id": "BC-ERR-04022",
+   "observed_behavior": "A quantity needed for the substitution is absent from the stem and the response substitutes nothing in its place or invents a value.",
+   "scoring_consequence": "The substitution is incomplete and the answer point is lost.",
+   "wrong_step": {
+    "text": "y left.",
+    "expression": [
+     "Multiply",
+     -18,
+     [
+      "Power",
+      "y",
+      -1
+     ]
+    ]
+   },
+   "right_step": {
+    "text": "y = 12.",
+    "expression": [
+     "Rational",
+     -3,
+     2
+    ]
+   },
+   "relation": "distinct",
+   "delivery": {
+    "mode": "step_reveal",
+    "reason": "rule 1",
+    "sources": []
+   }
+  },
+  {
+   "id": "LSN-CON-04009#err-BC-ERR-99013",
+   "type": "common_error",
+   "bands": [
+    "low",
+    "mid"
+   ],
+   "skills": [
+    "BC-SKL-04023"
+   ],
+   "sources": [
+    "BC-ERR-99013",
+    "BC-MIS-04008"
+   ],
+   "evidence_tag": "inferred",
+   "error_id": "BC-ERR-99013",
+   "observed_behavior": "Responses differentiate an implicit relation with respect to x when time is the independent variable, omit the product rule on a product of two changing quantities, or treat one quantity as constant, and confuse the notations for the several derivatives in play.",
+   "scoring_consequence": "The differentiation points in the part are not earned, and the numerical answer point depends on them.",
+   "wrong_step": {
+    "text": "dy/dx.",
+    "expression": [
+     "Rational",
+     -3,
+     4
+    ]
+   },
+   "right_step": {
+    "text": "dy/dt.",
+    "expression": [
+     "Rational",
+     -3,
+     2
+    ]
+   },
+   "relation": "distinct",
+   "possible_reason": {
+    "misconception_id": "BC-MIS-04008",
+    "text": "so the rates with respect to time never appear"
+   },
+   "delivery": {
+    "mode": "step_reveal",
+    "reason": "rule 1",
+    "sources": []
+   }
+  },
+  {
+   "id": "LSN-CON-04009#prq-BC-PRQ-04007",
+   "type": "prerequisite_bridge",
+   "bands": [
+    "low",
+    "mid"
+   ],
+   "skills": [
+    "BC-SKL-04026"
+   ],
+   "sources": [
+    "BC-PRQ-04007"
+   ],
+   "evidence_tag": "inferred",
+   "prerequisite_id": "BC-PRQ-04007",
+   "text": "Isolate one unknown in a linear equation; otherwise the rate is never extracted."
+  },
+  {
+   "id": "LSN-CON-04009#prq-BC-PRQ-04008",
+   "type": "prerequisite_bridge",
+   "bands": [
+    "low",
+    "mid"
+   ],
+   "skills": [
+    "BC-SKL-04023",
+    "BC-SKL-04027"
+   ],
+   "sources": [
+    "BC-PRQ-04008"
+   ],
+   "evidence_tag": "inferred",
+   "prerequisite_id": "BC-PRQ-04008",
+   "text": "Name each quantity, its unit, and whether it varies."
+  }
+ ],
+ "checks": [
+  {
+   "id": "LSN-CON-04009#chk-1",
+   "check_kind": "completion",
+   "bands": [
+    "low",
+    "mid"
+   ],
+   "format": "short_answer",
+   "archetype_id": "BC-QA-04006",
+   "parameter_draw": {
+    "shape": "ladder",
+    "size": 9,
+    "rate": 2,
+    "ratio": 3,
+    "leg": "short",
+    "length_unit": "meter",
+    "time_unit": "second"
+   },
+   "completes": "LSN-CON-04009#s5",
+   "stem": {
+    "text": "For ex-1, 2x dx/dt + 2y dy/dt = 0 and y = 12 when x = 9. Find dy/dt.",
+    "command_verb": "find"
+   },
+   "answer_key": {
+    "form": "symbolic",
+    "mathjson": [
+     "Rational",
+     -3,
+     2
+    ]
+   },
+   "worked_solution": [
+    {
+     "step": 1,
+     "text": "Differentiated.",
+     "mathjson": [
+      "Equal",
+      [
+       "Add",
+       [
+        "Multiply",
+        2,
+        "dxdt",
+        "x"
+       ],
+       [
+        "Multiply",
+        2,
+        "dydt",
+        "y"
+       ]
+      ],
+      0
+     ],
+     "relation": "new"
+    },
+    {
+     "step": 2,
+     "text": "Instant.",
+     "mathjson": [
+      "Equal",
+      [
+       "Add",
+       36,
+       [
+        "Multiply",
+        24,
+        "dydt"
+       ]
+      ],
+      0
+     ],
+     "relation": "evaluate",
+     "subs": {
+      "x": "9",
+      "y": "12",
+      "dxdt": "2"
+     }
+    },
+    {
+     "step": 3,
+     "text": "Solve.",
+     "mathjson": [
+      "Rational",
+      -3,
+      2
+     ],
+     "relation": "solve",
+     "variable": "dydt"
+    }
+   ],
+   "calculator_status": "no_calculator",
+   "representation": "BC-REP-08",
+   "skills": [
+    "BC-SKL-04023"
+   ]
+  },
+  {
+   "id": "LSN-CON-04009#chk-2",
+   "check_kind": "isomorph",
+   "bands": [
+    "low",
+    "mid"
+   ],
+   "format": "short_answer",
+   "archetype_id": "BC-QA-04006",
+   "parameter_draw": {
+    "shape": "ladder",
+    "size": 6,
+    "rate": 5,
+    "ratio": 2,
+    "leg": "short",
+    "length_unit": "foot",
+    "time_unit": "minute"
+   },
+   "stem": {
+    "text": "A 10 foot ladder's foot slides out at 5 feet per minute. Find dy/dt for the top when the foot is 6 feet out.",
+    "command_verb": "find"
+   },
+   "answer_key": {
+    "form": "symbolic",
+    "mathjson": [
+     "Rational",
+     -15,
+     4
+    ]
+   },
+   "worked_solution": [
+    {
+     "step": 1,
+     "text": "Relation.",
+     "mathjson": [
+      "Equal",
+      [
+       "Add",
+       [
+        "Power",
+        "x",
+        2
+       ],
+       [
+        "Power",
+        "y",
+        2
+       ]
+      ],
+      100
+     ],
+     "relation": "new"
+    },
+    {
+     "step": 2,
+     "text": "x = 6.",
+     "mathjson": [
+      "Equal",
+      [
+       "Add",
+       36,
+       [
+        "Power",
+        "y",
+        2
+       ]
+      ],
+      100
+     ],
+     "relation": "evaluate",
+     "subs": {
+      "x": "6"
+     }
+    },
+    {
+     "step": 3,
+     "text": "y = 8.",
+     "mathjson": 8,
+     "relation": "solve",
+     "variable": "y"
+    },
+    {
+     "step": 4,
+     "text": "Differentiate.",
+     "mathjson": [
+      "Equal",
+      [
+       "Add",
+       [
+        "Multiply",
+        2,
+        "dxdt",
+        "x"
+       ],
+       [
+        "Multiply",
+        2,
+        "dydt",
+        "y"
+       ]
+      ],
+      0
+     ],
+     "relation": "new"
+    },
+    {
+     "step": 5,
+     "text": "Instant.",
+     "mathjson": [
+      "Equal",
+      [
+       "Add",
+       60,
+       [
+        "Multiply",
+        16,
+        "dydt"
+       ]
+      ],
+      0
+     ],
+     "relation": "evaluate",
+     "subs": {
+      "x": "6",
+      "y": "8",
+      "dxdt": "5"
+     }
+    },
+    {
+     "step": 6,
+     "text": "Solve.",
+     "mathjson": [
+      "Rational",
+      -15,
+      4
+     ],
+     "relation": "solve",
+     "variable": "dydt"
+    }
+   ],
+   "calculator_status": "no_calculator",
+   "representation": "BC-REP-08",
+   "skills": [
+    "BC-SKL-04026"
+   ]
+  },
+  {
+   "id": "LSN-CON-04009#chk-3",
+   "check_kind": "mcq",
+   "bands": [
+    "low"
+   ],
+   "format": "mcq",
+   "archetype_id": "BC-QA-04006",
+   "parameter_draw": {
+    "shape": "ladder",
+    "size": 4,
+    "rate": 6,
+    "ratio": 1,
+    "leg": "long",
+    "length_unit": "foot",
+    "time_unit": "second"
+   },
+   "stem": {
+    "text": "A 5 foot ladder's foot slides out at 6 feet per second. Find dy/dt for the top when the foot is 4 feet out.",
+    "command_verb": "find"
+   },
+   "answer_key": {
+    "form": "symbolic",
+    "mathjson": -8
+   },
+   "worked_solution": [
+    {
+     "step": 1,
+     "text": "Relation.",
+     "mathjson": [
+      "Equal",
+      [
+       "Add",
+       [
+        "Power",
+        "x",
+        2
+       ],
+       [
+        "Power",
+        "y",
+        2
+       ]
+      ],
+      25
+     ],
+     "relation": "new"
+    },
+    {
+     "step": 2,
+     "text": "x = 4.",
+     "mathjson": [
+      "Equal",
+      [
+       "Add",
+       16,
+       [
+        "Power",
+        "y",
+        2
+       ]
+      ],
+      25
+     ],
+     "relation": "evaluate",
+     "subs": {
+      "x": "4"
+     }
+    },
+    {
+     "step": 3,
+     "text": "y = 3.",
+     "mathjson": 3,
+     "relation": "solve",
+     "variable": "y"
+    },
+    {
+     "step": 4,
+     "text": "Differentiate.",
+     "mathjson": [
+      "Equal",
+      [
+       "Add",
+       [
+        "Multiply",
+        2,
+        "dxdt",
+        "x"
+       ],
+       [
+        "Multiply",
+        2,
+        "dydt",
+        "y"
+       ]
+      ],
+      0
+     ],
+     "relation": "new"
+    },
+    {
+     "step": 5,
+     "text": "Instant.",
+     "mathjson": [
+      "Equal",
+      [
+       "Add",
+       48,
+       [
+        "Multiply",
+        6,
+        "dydt"
+       ]
+      ],
+      0
+     ],
+     "relation": "evaluate",
+     "subs": {
+      "x": "4",
+      "y": "3",
+      "dxdt": "6"
+     }
+    },
+    {
+     "step": 6,
+     "text": "Solve.",
+     "mathjson": -8,
+     "relation": "solve",
+     "variable": "dydt"
+    }
+   ],
+   "options": [
+    {
+     "id": "A",
+     "is_key": false,
+     "error_path": "BC-ERR-04020",
+     "value": 0,
+     "derivation": "x = 4 put in first, so 2y dy/dt = 0"
+    },
+    {
+     "id": "B",
+     "is_key": false,
+     "error_path": "BC-ERR-04022",
+     "value": [
+      "Rational",
+      -24,
+      5
+     ],
+     "derivation": "y never computed; the ladder length 5 used in its place"
+    },
+    {
+     "id": "C",
+     "is_key": true,
+     "error_path": null,
+     "value": -8
+    },
+    {
+     "id": "D",
+     "is_key": false,
+     "error_path": "BC-ERR-99013",
+     "value": [
+      "Rational",
+      -4,
+      3
+     ],
+     "derivation": "dy/dx = -x/y reported"
+    }
+   ],
+   "calculator_status": "no_calculator",
+   "representation": "BC-REP-08",
+   "skills": [
+    "BC-SKL-04023"
+   ]
+  }
+ ],
+ "refresher": [
+  "LSN-CON-04009#s2",
+  "LSN-CON-04009#err-BC-ERR-04020",
+  "LSN-CON-04009#err-BC-ERR-04022",
+  "LSN-CON-04009#err-BC-ERR-99013",
+  "LSN-CON-04009#s5"
+ ],
+ "provenance": {
+  "author": "tools/lesson_transcribe.py",
+  "prompt_version": "generator/lesson_v1",
+  "design_path": "docs/lessons/unit-04/LSN-CON-04009.md",
+  "signed_off_by": "claude-opus-5-5",
+  "signed_off_at": "2026-09-29",
+  "not_human": true
+ }
+}

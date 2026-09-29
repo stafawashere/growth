@@ -1,0 +1,741 @@
+{
+ "id": "LSN-CON-01011",
+ "version": 1,
+ "kind": "concept",
+ "target_id": "BC-CON-01011",
+ "status": "signed_off",
+ "snapshot_digest": "a6a8ec9d3f59ab8f712e33d30cc22fc64bf2c478fbe7312e3e3118d319c6a42f",
+ "source_digest": "dd653d96eaf12894b403a92505d5e79ebcb953b6f0aec5383e896d264e592d04",
+ "read_minutes": {
+  "full": 4.2,
+  "brief": 3.0
+ },
+ "word_count": {
+  "full": 514,
+  "brief": 376
+ },
+ "sections": [
+  {
+   "id": "LSN-CON-01011#s1",
+   "type": "orientation",
+   "bands": [
+    "low",
+    "mid"
+   ],
+   "skills": [
+    "BC-SKL-01036",
+    "BC-SKL-01037",
+    "BC-SKL-01038"
+   ],
+   "sources": [
+    "BC-CON-01011",
+    "research/units/unit-01-limits-continuity.md#1.9 Connecting Multiple Representations of Limits"
+   ],
+   "evidence_tag": "inferred",
+   "text": "A graph, a table, a formula and a sentence can carry one limit fact. A response converts between them keeping the input, the side of approach and the value, or states the behaviour in words.",
+   "delivery": {
+    "mode": "figure",
+    "reason": "rule 3: BC-REP-02 on BC-SKL-01036 and BC-SKL-01038 (unit-01 README delivery map)",
+    "sources": [
+     "BC-SKL-01036",
+     "BC-SKL-01038"
+    ],
+    "spec": {
+     "kind": "graph",
+     "window": {
+      "x": [
+       0,
+       5
+      ],
+      "y": [
+       -4,
+       10
+      ]
+     },
+     "curves": [
+      {
+       "expr": "1/(3-x)",
+       "domain": [
+        0,
+        2.9
+       ],
+       "label": {
+        "text": "g",
+        "placement": "inside"
+       }
+      }
+     ],
+     "asymptotes": [
+      {
+       "x": 3,
+       "style": "dashed",
+       "label": {
+        "text": "x = 3",
+        "placement": "inside"
+       }
+      }
+     ],
+     "labels": [
+      {
+       "text": "one fact, four forms: graph, table, symbols, words",
+       "placement": "inside"
+      }
+     ],
+     "representations": [
+      "graph"
+     ]
+    },
+    "fallback": "Alt text: the curve rises without bound as \\(x\\) approaches 3 from the left, beside a dashed line \\(x=3\\).",
+    "keyboard": "none needed: a static figure"
+   }
+  },
+  {
+   "id": "LSN-CON-01011#s2",
+   "type": "key_ideas",
+   "bands": [
+    "low",
+    "mid"
+   ],
+   "skills": [
+    "BC-SKL-01036",
+    "BC-SKL-01037",
+    "BC-SKL-01038"
+   ],
+   "sources": [
+    "ced:46",
+    "research/units/unit-01-limits-continuity.md#1.9 Connecting Multiple Representations of Limits"
+   ],
+   "evidence_tag": "verified",
+   "ek_id": null,
+   "depth": "core",
+   "text": "A conversion keeps three things: the input approached, the direction of approach, the claimed value. It must not lose three distinctions: the limit against the function value, one sided against two sided, and an infinite limit against a limit at infinity. Infinity in the value slot, as in \\(\\lim_{x\\to3^-}g(x)=\\infty\\), says a vertical asymptote; infinity under the arrow, as in \\(\\lim_{x\\to\\infty}k(x)=-2\\), says end behaviour.",
+   "notation": "the limit notation of topic 1.2 with the infinite forms of topics 1.14 and 1.15",
+   "quote": {
+    "text": "This topic is intended to focus on connecting representations.",
+    "source": "ced:46"
+   },
+   "delivery": {
+    "mode": "figure",
+    "reason": "rule 3: BC-REP-02 on BC-SKL-01036 and BC-SKL-01038, with rule 4 for BC-REP-03 on BC-SKL-01036: a figure with a table beside it, two representations, the cap",
+    "sources": [
+     "BC-SKL-01036"
+    ],
+    "spec": {
+     "kind": "graph_with_table",
+     "curves": [
+      {
+       "expr": "1/(3-x)",
+       "domain": [
+        0,
+        2.9
+       ],
+       "label": {
+        "text": "value slot: infinity",
+        "placement": "inside"
+       }
+      },
+      {
+       "expr": "-2 + 1/x",
+       "domain": [
+        1,
+        20
+       ],
+       "label": {
+        "text": "under the arrow: infinity",
+        "placement": "inside"
+       }
+      }
+     ],
+     "table": {
+      "columns": [
+       "x",
+       "g(x)"
+      ],
+      "rows": [
+       [
+        "2.9",
+        "10"
+       ],
+       [
+        "2.99",
+        "100"
+       ],
+       [
+        "2.999",
+        "1000"
+       ]
+      ],
+      "label": {
+       "text": "x approaching 3 from the left",
+       "placement": "inside"
+      }
+     },
+     "labels": [
+      {
+       "text": "x = 3",
+       "placement": "inside"
+      },
+      {
+       "text": "y = -2",
+       "placement": "inside"
+      }
+     ],
+     "representations": [
+      "graph",
+      "table"
+     ]
+    },
+    "fallback": "The table alone with the two statements in words beneath it.",
+    "keyboard": "Tab moves between the graph and the table; arrow keys move through table rows."
+   }
+  },
+  {
+   "id": "LSN-CON-01011#s3",
+   "type": "strategy",
+   "bands": [
+    "low",
+    "mid"
+   ],
+   "skills": [
+    "BC-SKL-01036",
+    "BC-SKL-01037",
+    "BC-SKL-01038"
+   ],
+   "sources": [
+    "BC-QA-01013"
+   ],
+   "evidence_tag": "verified",
+   "archetype_id": "BC-QA-01013",
+   "cue": "A limit fact in one representation and candidate graphs, tables or sentences; the stem asks which matches.",
+   "method": "First line: read the limit behaviour from the supplied representation.",
+   "rival": "Rival: reading a vertical asymptote statement as end behaviour (BC-ERR-01033).",
+   "separating_feature": "Where the infinity symbol sits: in the value, a vertical asymptote; under the arrow, end behaviour."
+  },
+  {
+   "id": "LSN-CON-01011#s4",
+   "type": "worked_example",
+   "bands": [
+    "low",
+    "mid"
+   ],
+   "skills": [
+    "BC-SKL-01036",
+    "BC-SKL-01037",
+    "BC-SKL-01038"
+   ],
+   "sources": [
+    "BC-QA-01013"
+   ],
+   "evidence_tag": "inferred",
+   "archetype_id": "BC-QA-01013",
+   "parameter_draw": {
+    "number": 3,
+    "side": "left",
+    "growth": "up",
+    "direction": "positive",
+    "letter": "g",
+    "statement": "infinite_limit"
+   },
+   "problem": {
+    "text": "Given \\(\\lim_{x\\to3^-}g(x)=\\infty\\), describe the graph of \\(g\\) near \\(x=3\\).",
+    "command_verb": "describe"
+   },
+   "calculator_status": "no_calculator",
+   "steps": [
+    {
+     "cue": "The arrow points to 3 with a minus sign.",
+     "why": "The input approaches 3 from the left only; the right side is not given."
+    },
+    {
+     "cue": "The value slot holds \\(\\infty\\), not a number.",
+     "why": "Outputs grow without bound, so no real limit exists."
+    },
+    {
+     "cue": "Infinity sits in the value, not under the arrow.",
+     "why": "That is a vertical asymptote at \\(x=3\\), not end behaviour."
+    },
+    {
+     "cue": "The stem asks for the behaviour in words.",
+     "why": "Left of 3, \\(g(x)\\) increases without bound: vertical asymptote \\(x=3\\)."
+    }
+   ],
+   "answer": {
+    "form": "statement",
+    "mathjson": "x = 3"
+   },
+   "delivery": {
+    "mode": "step_reveal",
+    "reason": "rule 1",
+    "sources": []
+   }
+  },
+  {
+   "id": "LSN-CON-01011#s5",
+   "type": "worked_example",
+   "bands": [
+    "low"
+   ],
+   "skills": [
+    "BC-SKL-01036",
+    "BC-SKL-01037",
+    "BC-SKL-01038"
+   ],
+   "sources": [
+    "BC-QA-01013"
+   ],
+   "evidence_tag": "inferred",
+   "archetype_id": "BC-QA-01013",
+   "parameter_draw": {
+    "number": -2,
+    "side": "left",
+    "growth": "up",
+    "direction": "positive",
+    "letter": "k",
+    "statement": "limit_at_infinity"
+   },
+   "problem": {
+    "text": "Given \\(\\lim_{x\\to\\infty}k(x)=-2\\), describe the graph of \\(k\\).",
+    "command_verb": "describe"
+   },
+   "calculator_status": "no_calculator",
+   "steps": [
+    {
+     "cue": "Infinity sits under the arrow: \\(x\\) grows without bound.",
+     "why": "This is end behaviour on the right, not behaviour near a finite input."
+    },
+    {
+     "cue": "The value is the number \\(-2\\).",
+     "why": "As \\(x\\) grows, \\(k(x)\\) approaches \\(-2\\): horizontal asymptote \\(y=-2\\) on the right."
+    }
+   ],
+   "answer": {
+    "form": "statement",
+    "mathjson": "y = -2"
+   },
+   "delivery": {
+    "mode": "step_reveal",
+    "reason": "rule 1",
+    "sources": []
+   }
+  },
+  {
+   "id": "LSN-CON-01011#err-BC-ERR-01002",
+   "type": "common_error",
+   "bands": [
+    "low",
+    "mid"
+   ],
+   "skills": [
+    "BC-SKL-01037"
+   ],
+   "sources": [
+    "BC-ERR-01002",
+    "BC-MIS-01002"
+   ],
+   "evidence_tag": "inferred",
+   "error_id": "BC-ERR-01002",
+   "observed_behavior": "The response reports the value approached from one side as the limit although the two sides differ.",
+   "scoring_consequence": "The value point is lost because the correct response is that the limit does not exist.",
+   "wrong_step": {
+    "text": "The left side is written as the two sided claim \\(\\lim_{x\\to3}g(x)=\\infty\\).",
+    "expression": [
+     "Limit",
+     [
+      "Apply",
+      "g",
+      "x"
+     ],
+     "x",
+     3,
+     "+-"
+    ]
+   },
+   "right_step": {
+    "text": "Only \\(\\lim_{x\\to3^-}g(x)=\\infty\\) is given.",
+    "expression": [
+     "Limit",
+     [
+      "Apply",
+      "g",
+      "x"
+     ],
+     "x",
+     3,
+     "-"
+    ]
+   },
+   "relation": "distinct",
+   "possible_reason": {
+    "misconception_id": "BC-MIS-01002",
+    "text": "treats a single one sided approach as sufficient"
+   },
+   "delivery": {
+    "mode": "step_reveal",
+    "reason": "rule 1",
+    "sources": []
+   }
+  },
+  {
+   "id": "LSN-CON-01011#err-BC-ERR-01020",
+   "type": "common_error",
+   "bands": [
+    "low",
+    "mid"
+   ],
+   "skills": [
+    "BC-SKL-01037"
+   ],
+   "sources": [
+    "BC-ERR-01020",
+    "BC-MIS-01012"
+   ],
+   "evidence_tag": "inferred",
+   "error_id": "BC-ERR-01020",
+   "observed_behavior": "The response writes that the limit equals infinity and then treats that statement as an existence claim for a real limit.",
+   "scoring_consequence": "A point requiring a statement about existence is lost.",
+   "wrong_step": {
+    "text": "The limit is recorded as \\(L=\\infty\\) and said to exist.",
+    "expression": [
+     "Equal",
+     "L",
+     "PositiveInfinity"
+    ]
+   },
+   "right_step": {
+    "text": "No real limit exists; the graph has the vertical asymptote \\(x=3\\).",
+    "expression": [
+     "Equal",
+     "x",
+     3
+    ]
+   },
+   "relation": "distinct",
+   "possible_reason": {
+    "misconception_id": "BC-MIS-01012",
+    "text": "reads the infinity symbol as a real value"
+   },
+   "delivery": {
+    "mode": "step_reveal",
+    "reason": "rule 1",
+    "sources": []
+   }
+  },
+  {
+   "id": "LSN-CON-01011#err-BC-ERR-01033",
+   "type": "common_error",
+   "bands": [
+    "low",
+    "mid"
+   ],
+   "skills": [
+    "BC-SKL-01036",
+    "BC-SKL-01037"
+   ],
+   "sources": [
+    "BC-ERR-01033",
+    "BC-MIS-01018"
+   ],
+   "evidence_tag": "inferred",
+   "error_id": "BC-ERR-01033",
+   "observed_behavior": "The response treats a vertical asymptote statement as an end behaviour statement or the reverse.",
+   "scoring_consequence": "The conversion point is lost.",
+   "wrong_step": {
+    "text": "From \\(\\lim_{x\\to\\infty}k(x)=-2\\): a vertical asymptote \\(x=-2\\).",
+    "expression": [
+     "Equal",
+     "x",
+     -2
+    ]
+   },
+   "right_step": {
+    "text": "A horizontal asymptote \\(y=-2\\) on the right.",
+    "expression": [
+     "Equal",
+     "y",
+     -2
+    ]
+   },
+   "relation": "distinct",
+   "possible_reason": {
+    "misconception_id": "BC-MIS-01018",
+    "text": "vertical and horizontal asymptote statements are exchanged"
+   },
+   "delivery": {
+    "mode": "step_reveal",
+    "reason": "rule 1",
+    "sources": []
+   }
+  },
+  {
+   "id": "LSN-CON-01011#err-BC-ERR-01021",
+   "type": "common_error",
+   "bands": [
+    "low",
+    "mid"
+   ],
+   "skills": [
+    "BC-SKL-01037"
+   ],
+   "sources": [
+    "BC-ERR-01021",
+    "BC-MIS-99008"
+   ],
+   "evidence_tag": "inferred",
+   "error_id": "BC-ERR-01021",
+   "observed_behavior": "The response substitutes the infinity symbol into the expression and performs arithmetic with it.",
+   "scoring_consequence": "Arithmetic performed with the infinity symbol is treated as scratch work and does not earn the value point (sg-25:4).",
+   "wrong_step": {
+    "text": "The statement is rewritten as \\(k(\\infty)=-2\\).",
+    "expression": [
+     "Equal",
+     [
+      "Apply",
+      "k",
+      "PositiveInfinity"
+     ],
+     -2
+    ]
+   },
+   "right_step": {
+    "text": "It stays a limit: \\(\\lim_{x\\to\\infty}k(x)=-2\\).",
+    "expression": [
+     "Equal",
+     [
+      "Limit",
+      [
+       "Apply",
+       "k",
+       "x"
+      ],
+      "x",
+      "PositiveInfinity",
+      "-"
+     ],
+     -2
+    ]
+   },
+   "relation": "distinct",
+   "possible_reason": {
+    "misconception_id": "BC-MIS-99008",
+    "text": "substitutes the infinity symbol for the variable"
+   },
+   "delivery": {
+    "mode": "step_reveal",
+    "reason": "rule 1",
+    "sources": []
+   }
+  },
+  {
+   "id": "LSN-CON-01011#prq-BC-PRQ-01003",
+   "type": "prerequisite_bridge",
+   "bands": [
+    "low",
+    "mid"
+   ],
+   "skills": [
+    "BC-SKL-01038"
+   ],
+   "sources": [
+    "BC-PRQ-01003"
+   ],
+   "evidence_tag": "inferred",
+   "prerequisite_id": "BC-PRQ-01003",
+   "text": "Pick the branch of a piecewise rule for an input. Evaluating the wrong branch at a boundary marks this gap."
+  },
+  {
+   "id": "LSN-CON-01011#prq-BC-PRQ-06005",
+   "type": "prerequisite_bridge",
+   "bands": [
+    "low",
+    "mid"
+   ],
+   "skills": [
+    "BC-SKL-01036",
+    "BC-SKL-01037"
+   ],
+   "sources": [
+    "BC-PRQ-06005"
+   ],
+   "evidence_tag": "inferred",
+   "prerequisite_id": "BC-PRQ-06005",
+   "text": "Read \\(f(t)\\) and evaluation at a stated input. Pulling values for the wrong input marks this gap."
+  }
+ ],
+ "checks": [
+  {
+   "id": "LSN-CON-01011#chk-1",
+   "check_kind": "completion",
+   "bands": [
+    "low",
+    "mid"
+   ],
+   "format": "short_answer",
+   "archetype_id": "BC-QA-01013",
+   "parameter_draw": {
+    "number": 3,
+    "side": "left",
+    "growth": "up",
+    "direction": "positive",
+    "letter": "g",
+    "statement": "infinite_limit"
+   },
+   "completes": "LSN-CON-01011#s4",
+   "stem": {
+    "text": "In \\(\\lim_{x\\to3^-}g(x)=\\infty\\) the side is left and the value is infinite. Describe the graph near \\(x=3\\).",
+    "command_verb": "describe"
+   },
+   "answer_key": {
+    "form": "statement",
+    "mathjson": "x = 3"
+   },
+   "worked_solution": [
+    {
+     "step": 1,
+     "text": "Vertical asymptote \\(x=3\\), approached upward from the left.",
+     "mathjson": [
+      "Equal",
+      "x",
+      3
+     ],
+     "relation": "new"
+    }
+   ],
+   "calculator_status": "no_calculator",
+   "representation": "BC-REP-01",
+   "skills": [
+    "BC-SKL-01037"
+   ]
+  },
+  {
+   "id": "LSN-CON-01011#chk-2",
+   "check_kind": "isomorph",
+   "bands": [
+    "low",
+    "mid"
+   ],
+   "format": "short_answer",
+   "archetype_id": "BC-QA-01013",
+   "parameter_draw": {
+    "number": -1,
+    "side": "right",
+    "growth": "down",
+    "direction": "negative",
+    "letter": "f",
+    "statement": "infinite_limit"
+   },
+   "stem": {
+    "text": "Given \\(\\lim_{x\\to-1^+}f(x)=-\\infty\\), describe the graph of \\(f\\) near \\(x=-1\\).",
+    "command_verb": "describe"
+   },
+   "answer_key": {
+    "form": "statement",
+    "mathjson": "x = -1"
+   },
+   "worked_solution": [
+    {
+     "step": 1,
+     "text": "Right of \\(-1\\), \\(f(x)\\) decreases without bound: vertical asymptote \\(x=-1\\).",
+     "mathjson": [
+      "Equal",
+      "x",
+      -1
+     ],
+     "relation": "new"
+    }
+   ],
+   "calculator_status": "no_calculator",
+   "representation": "BC-REP-01",
+   "skills": [
+    "BC-SKL-01037"
+   ]
+  },
+  {
+   "id": "LSN-CON-01011#chk-3",
+   "check_kind": "mcq",
+   "bands": [
+    "low"
+   ],
+   "format": "mcq",
+   "archetype_id": "BC-QA-01013",
+   "parameter_draw": {
+    "number": 2,
+    "side": "right",
+    "growth": "down",
+    "direction": "positive",
+    "letter": "h",
+    "statement": "infinite_limit"
+   },
+   "stem": {
+    "text": "Which description matches \\(\\lim_{x\\to2^+}h(x)=-\\infty\\)?",
+    "command_verb": "identify"
+   },
+   "answer_key": {
+    "form": "statement",
+    "mathjson": "x = 2"
+   },
+   "worked_solution": [
+    {
+     "step": 1,
+     "text": "Vertical asymptote \\(x=2\\), approached downward from the right.",
+     "mathjson": [
+      "Equal",
+      "x",
+      2
+     ],
+     "relation": "new"
+    }
+   ],
+   "options": [
+    {
+     "id": "A",
+     "is_key": true,
+     "error_path": null,
+     "label": "Right of 2, \\(h(x)\\) decreases without bound; vertical asymptote \\(x=2\\)."
+    },
+    {
+     "id": "B",
+     "is_key": false,
+     "error_path": "BC-ERR-01033",
+     "label": "As \\(x\\) grows, \\(h(x)\\) approaches 2; horizontal asymptote \\(y=2\\).",
+     "derivation": "infinite limit read as end behaviour"
+    },
+    {
+     "id": "C",
+     "is_key": false,
+     "error_path": "BC-ERR-01002",
+     "label": "\\(h(x)\\) decreases without bound on both sides of 2.",
+     "derivation": "one side read as both"
+    },
+    {
+     "id": "D",
+     "is_key": false,
+     "error_path": "BC-ERR-01020",
+     "label": "The limit of \\(h\\) at 2 exists and equals \\(-\\infty\\).",
+     "derivation": "infinite limit read as an existing limit"
+    }
+   ],
+   "calculator_status": "no_calculator",
+   "representation": "BC-REP-01",
+   "skills": [
+    "BC-SKL-01036",
+    "BC-SKL-01037"
+   ]
+  }
+ ],
+ "refresher": [
+  "LSN-CON-01011#s2",
+  "LSN-CON-01011#err-BC-ERR-01002",
+  "LSN-CON-01011#err-BC-ERR-01020",
+  "LSN-CON-01011#err-BC-ERR-01033",
+  "LSN-CON-01011#err-BC-ERR-01021",
+  "LSN-CON-01011#s4"
+ ],
+ "provenance": {
+  "author": "tools/lesson_transcribe.py",
+  "prompt_version": "generator/lesson_v1",
+  "design_path": "docs/lessons/unit-01/LSN-CON-01011.md",
+  "signed_off_by": "claude-opus-5-5",
+  "signed_off_at": "2026-09-29",
+  "not_human": true
+ }
+}

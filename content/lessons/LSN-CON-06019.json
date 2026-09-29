@@ -1,0 +1,1029 @@
+{
+ "id": "LSN-CON-06019",
+ "version": 1,
+ "kind": "concept",
+ "target_id": "BC-CON-06019",
+ "status": "signed_off",
+ "snapshot_digest": "a6a8ec9d3f59ab8f712e33d30cc22fc64bf2c478fbe7312e3e3118d319c6a42f",
+ "source_digest": "b4d944579f8b40c0b515f909eca38255aafa6f4b6ef3d509dc3a2d7fd1df00f0",
+ "read_minutes": {
+  "full": 3.8,
+  "brief": 3.0
+ },
+ "word_count": {
+  "full": 523,
+  "brief": 410
+ },
+ "sections": [
+  {
+   "id": "LSN-CON-06019#s1",
+   "type": "orientation",
+   "bands": [
+    "low",
+    "mid"
+   ],
+   "skills": [
+    "BC-SKL-06066",
+    "BC-SKL-06067",
+    "BC-SKL-06068",
+    "BC-SKL-06069",
+    "BC-SKL-06070"
+   ],
+   "sources": [
+    "BC-CON-06019",
+    "research/units/unit-06-integration-accumulation.md#6.13 Evaluating Improper Integrals"
+   ],
+   "evidence_tag": "inferred",
+   "text": "An infinite limit or an unbounded integrand makes an integral improper. A response replaces the offending limit by a variable, carries the limit on every line, and states convergence with a value or divergence.",
+   "delivery": {
+    "mode": "text",
+    "reason": "rule 6: a statement of what a response shows; the figure-bearing representation is served once, on ki-1",
+    "sources": [
+     "BC-SKL-06066"
+    ]
+   }
+  },
+  {
+   "id": "LSN-CON-06019#s2",
+   "type": "key_ideas",
+   "bands": [
+    "low",
+    "mid"
+   ],
+   "skills": [
+    "BC-SKL-06066",
+    "BC-SKL-06070"
+   ],
+   "sources": [
+    "BC-EK-LIM-6A1",
+    "ced:130",
+    "research/units/unit-06-integration-accumulation.md#6.13 Evaluating Improper Integrals"
+   ],
+   "evidence_tag": "inferred",
+   "ek_id": "BC-EK-LIM-6A1",
+   "depth": "core",
+   "text": "An integral is improper when a limit of integration is infinite or the integrand is unbounded on the interval. Name which, and where.",
+   "notation": "limit as b approaches infinity",
+   "delivery": {
+    "mode": "figure",
+    "reason": "rule 4: BC-REP-02 in BC-QA-06011 representations and the topic's conversion 'unbounded graph to a finite value statement' (unit README delivery map); not promoted, since no stem asks for a reading of a varying relationship here",
+    "sources": [
+     "BC-QA-06011",
+     "BC-SKL-06066"
+    ],
+    "spec": {
+     "kind": "stacked_graphs",
+     "representations": [
+      "BC-REP-02"
+     ],
+     "panels": [
+      {
+       "curve": "6*x/(x**2 + 2)**2",
+       "window": {
+        "x": [
+         0,
+         8
+        ],
+        "y": [
+         0,
+         0.8
+        ]
+       },
+       "shade": {
+        "from": 1,
+        "to": 8,
+        "open_right": true
+       },
+       "labels": [
+        {
+         "text": "upper limit infinite",
+         "placement": "inside",
+         "at": "right end of the shaded region"
+        }
+       ]
+      },
+      {
+       "curve": "3*x**2/sqrt(x**3 - 1)",
+       "window": {
+        "x": [
+         1,
+         2
+        ],
+        "y": [
+         0,
+         20
+        ]
+       },
+       "asymptotes": [
+        {
+         "type": "vertical",
+         "x": 1,
+         "style": "dashed"
+        }
+       ],
+       "labels": [
+        {
+         "text": "integrand unbounded at x = 1",
+         "placement": "inside",
+         "at": "beside the asymptote"
+        }
+       ]
+      }
+     ]
+    },
+    "fallback": "the two panels as one static image with their labels",
+    "keyboard": "none needed: the figure has no control"
+   }
+  },
+  {
+   "id": "LSN-CON-06019#s3",
+   "type": "key_ideas",
+   "bands": [
+    "low",
+    "mid"
+   ],
+   "skills": [
+    "BC-SKL-06067",
+    "BC-SKL-06068",
+    "BC-SKL-06069",
+    "BC-SKL-06070"
+   ],
+   "sources": [
+    "BC-EK-LIM-6A2",
+    "ced:130",
+    "research/units/unit-06-integration-accumulation.md#6.13 Evaluating Improper Integrals"
+   ],
+   "evidence_tag": "inferred",
+   "ek_id": "BC-EK-LIM-6A2",
+   "depth": "core",
+   "text": "Replace the offending limit by b and take the limit of the definite integral as b moves out. A finite limit means convergence; otherwise the integral diverges.",
+   "notation": "lim_(b→∞) ∫_a^b f(x) dx",
+   "delivery": {
+    "mode": "motion",
+    "reason": "rule 2: 'determined using limits of definite integrals' is a limit being taken, the upper limit b moving outward (unit README delivery map)",
+    "sources": [
+     "BC-SKL-06067",
+     "BC-SKL-06068"
+    ],
+    "spec": {
+     "kind": "graph",
+     "representations": [
+      "BC-REP-02"
+     ],
+     "window": {
+      "x": [
+       0,
+       12
+      ],
+      "y": [
+       0,
+       0.8
+      ]
+     },
+     "curves": [
+      {
+       "expr": "6*x/(x**2 + 2)**2",
+       "domain": [
+        0,
+        12
+       ]
+      }
+     ],
+     "frames": [
+      {
+       "b": 2,
+       "area": 0.5
+      },
+      {
+       "b": 5,
+       "area": 0.889
+      },
+      {
+       "b": 10,
+       "area": 0.971
+      },
+      {
+       "b": 50,
+       "area": 0.999
+      }
+     ],
+     "shade": {
+      "from": 1,
+      "to": "b"
+     },
+     "labels": [
+      {
+       "text": "area from 1 to b = 1 - 3/(b^2 + 2)",
+       "placement": "inside"
+      },
+      {
+       "text": "b",
+       "placement": "inside",
+       "at": "the moving right edge"
+      },
+      {
+       "text": "approaches 1",
+       "placement": "inside"
+      }
+     ]
+    },
+    "fallback": "the frames at b = 2, 5 and 50 side by side with their areas",
+    "keyboard": "Right arrow steps to the next frame, Left arrow to the previous; Space pauses auto-advance",
+    "reduced_motion": "no auto-advance; each key press cross-fades to the next frame"
+   }
+  },
+  {
+   "id": "LSN-CON-06019#s4",
+   "type": "strategy",
+   "bands": [
+    "low",
+    "mid"
+   ],
+   "skills": [
+    "BC-SKL-06066",
+    "BC-SKL-06067",
+    "BC-SKL-06068",
+    "BC-SKL-06069",
+    "BC-SKL-06070"
+   ],
+   "sources": [
+    "BC-QA-06011"
+   ],
+   "evidence_tag": "verified",
+   "archetype_id": "BC-QA-06011",
+   "cue": "An integrand on an infinite interval, or unbounded inside it; a value or divergence asked.",
+   "method": "Name the impropriety and replace the offending limit by a variable.",
+   "rival": "Rival: computing with ∞ as a number (BC-ERR-99007).",
+   "separating_feature": "∞ is not a value: only a limit of ordinary integrals is written."
+  },
+  {
+   "id": "LSN-CON-06019#s5",
+   "type": "worked_example",
+   "bands": [
+    "low",
+    "mid"
+   ],
+   "skills": [
+    "BC-SKL-06066",
+    "BC-SKL-06067",
+    "BC-SKL-06068",
+    "BC-SKL-06069",
+    "BC-SKL-06070"
+   ],
+   "sources": [
+    "BC-QA-06011"
+   ],
+   "evidence_tag": "inferred",
+   "archetype_id": "BC-QA-06011",
+   "parameter_draw": {
+    "impropriety": "infinite",
+    "outcome": "converges",
+    "coefficient": 6,
+    "degree": 2,
+    "lower": 1,
+    "shift": 2,
+    "root": 1,
+    "gap": 1
+   },
+   "problem": {
+    "text": "Evaluate ∫_1^∞ 6x/(x^2 + 2)^2 dx or show it diverges.",
+    "command_verb": "evaluate"
+   },
+   "calculator_status": "no_calculator",
+   "steps": [
+    {
+     "cue": "Upper limit ∞.",
+     "why": "Replace it by b."
+    },
+    {
+     "cue": "Write lim_(b→∞) of the integral to b.",
+     "why": "Limit notation on every line (sg-23:17).",
+     "expression": [
+      "Integrate",
+      [
+       "Multiply",
+       6,
+       "x",
+       [
+        "Power",
+        [
+         "Add",
+         2,
+         [
+          "Power",
+          "x",
+          2
+         ]
+        ],
+        -2
+       ]
+      ],
+      [
+       "Tuple",
+       "x",
+       1,
+       "b"
+      ]
+     ],
+     "relation": "new"
+    },
+    {
+     "cue": "u = x^2 + 2, 6x dx = 3 du: antiderivative -3/(x^2 + 2).",
+     "why": "Evaluated from 1 to b.",
+     "expression": [
+      "Add",
+      1,
+      [
+       "Multiply",
+       -3,
+       [
+        "Power",
+        [
+         "Add",
+         2,
+         [
+          "Power",
+          "b",
+          2
+         ]
+        ],
+        -1
+       ]
+      ]
+     ],
+     "point_type_id": "BC-PT-99003",
+     "relation": "equivalent"
+    },
+    {
+     "cue": "b → ∞: 3/(b^2 + 2) → 0.",
+     "why": "Finite limit: converges to 1.",
+     "expression": 1,
+     "point_type_id": "BC-PT-99004",
+     "relation": "limit",
+     "variable": "b",
+     "point": "oo"
+    }
+   ],
+   "answer": {
+    "form": "symbolic",
+    "mathjson": 1
+   },
+   "delivery": {
+    "mode": "step_reveal",
+    "reason": "rule 1",
+    "sources": []
+   }
+  },
+  {
+   "id": "LSN-CON-06019#s6",
+   "type": "what_a_reader_scores",
+   "bands": [
+    "low",
+    "mid"
+   ],
+   "skills": [
+    "BC-SKL-06066",
+    "BC-SKL-06067",
+    "BC-SKL-06068",
+    "BC-SKL-06069",
+    "BC-SKL-06070"
+   ],
+   "sources": [
+    "BC-PT-99003",
+    "BC-PT-99004"
+   ],
+   "evidence_tag": "verified",
+   "example_id": "LSN-CON-06019#s5",
+   "lines": [
+    {
+     "point_type_id": "BC-PT-99003",
+     "text": "Antiderivative. Earned by: A correct antiderivative of the presented integrand, with or without the constant of integration (sg-25:14). Not earned by: An antiderivative of the wrong form, or a jump from integral to value with no antiderivative shown (sg-26:18)."
+    },
+    {
+     "point_type_id": "BC-PT-99004",
+     "text": "Answer with or without supporting work. Earned by: The correct value on its own, with no supporting work required (sg-25:3, sg-26:4). Not earned by: A value outside the accepted precision, or a value inconsistent with a required earlier step where the rubric imposes one. Precision: A reported decimal answer must be accurate to three places after the decimal point, rounded or truncated; at most one point per question is lost to inappropriate rounding (sg-25:2, sg-26:2). sg-26:4 also accepts a stated rounding to the nearest integer and several truncations."
+    }
+   ]
+  },
+  {
+   "id": "LSN-CON-06019#err-BC-ERR-06018",
+   "type": "common_error",
+   "bands": [
+    "low",
+    "mid"
+   ],
+   "skills": [
+    "BC-SKL-06068"
+   ],
+   "sources": [
+    "BC-ERR-06018"
+   ],
+   "evidence_tag": "inferred",
+   "error_id": "BC-ERR-06018",
+   "observed_behavior": "The antiderivative is written in the substituted variable and the original x limits are substituted into it.",
+   "scoring_consequence": "The response is not eligible for the answer point even when the numerical value is correct (sg-23:17, sg-23:16).",
+   "wrong_step": {
+    "text": "-3/u at x = 1, b.",
+    "expression": [
+     "Add",
+     3,
+     [
+      "Multiply",
+      -3,
+      [
+       "Power",
+       "b",
+       -1
+      ]
+     ]
+    ]
+   },
+   "right_step": {
+    "text": "-3/u at u = 3, b^2 + 2.",
+    "expression": [
+     "Add",
+     1,
+     [
+      "Multiply",
+      -3,
+      [
+       "Power",
+       [
+        "Add",
+        2,
+        [
+         "Power",
+         "b",
+         2
+        ]
+       ],
+       -1
+      ]
+     ]
+    ]
+   },
+   "relation": "distinct",
+   "delivery": {
+    "mode": "step_reveal",
+    "reason": "rule 1",
+    "sources": []
+   }
+  },
+  {
+   "id": "LSN-CON-06019#err-BC-ERR-06019",
+   "type": "common_error",
+   "bands": [
+    "low",
+    "mid"
+   ],
+   "skills": [
+    "BC-SKL-06068"
+   ],
+   "sources": [
+    "BC-ERR-06019"
+   ],
+   "evidence_tag": "inferred",
+   "error_id": "BC-ERR-06019",
+   "observed_behavior": "The substitution is carried out without the reciprocal constant that du introduces.",
+   "scoring_consequence": "The antiderivative point is lost and the value point with it.",
+   "wrong_step": {
+    "text": "6x dx = du.",
+    "expression": [
+     "Add",
+     2,
+     [
+      "Multiply",
+      -6,
+      [
+       "Power",
+       [
+        "Add",
+        2,
+        [
+         "Power",
+         "b",
+         2
+        ]
+       ],
+       -1
+      ]
+     ]
+    ]
+   },
+   "right_step": {
+    "text": "6x dx = 3 du.",
+    "expression": [
+     "Add",
+     1,
+     [
+      "Multiply",
+      -3,
+      [
+       "Power",
+       [
+        "Add",
+        2,
+        [
+         "Power",
+         "b",
+         2
+        ]
+       ],
+       -1
+      ]
+     ]
+    ]
+   },
+   "relation": "distinct",
+   "delivery": {
+    "mode": "step_reveal",
+    "reason": "rule 1",
+    "sources": []
+   }
+  },
+  {
+   "id": "LSN-CON-06019#err-BC-ERR-99007",
+   "type": "common_error",
+   "bands": [
+    "low",
+    "mid"
+   ],
+   "skills": [
+    "BC-SKL-06067",
+    "BC-SKL-06068"
+   ],
+   "sources": [
+    "BC-ERR-99007",
+    "BC-MIS-99008"
+   ],
+   "evidence_tag": "inferred",
+   "error_id": "BC-ERR-99007",
+   "observed_behavior": "Responses substitute the infinity symbol for the variable and compute with it, or open an improper integral with limit notation and then abandon it before the evaluation is complete.",
+   "scoring_consequence": "The response becomes ineligible for the final point of the part; in improper integral parts the evaluation points are lost.",
+   "wrong_step": {
+    "text": "1 - 3/(∞^2 + 2) written.",
+    "expression": 1
+   },
+   "right_step": {
+    "text": "The limit as b → ∞.",
+    "expression": [
+     "Limit",
+     [
+      "Add",
+      1,
+      [
+       "Multiply",
+       -3,
+       [
+        "Power",
+        [
+         "Add",
+         2,
+         [
+          "Power",
+          "b",
+          2
+         ]
+        ],
+        -1
+       ]
+      ]
+     ],
+     "b",
+     "PositiveInfinity",
+     "-"
+    ]
+   },
+   "relation": "equivalent",
+   "possible_reason": {
+    "misconception_id": "BC-MIS-99008",
+    "text": "substitutes the infinity symbol for the variable and computes with the result"
+   },
+   "delivery": {
+    "mode": "step_reveal",
+    "reason": "rule 1",
+    "sources": []
+   }
+  },
+  {
+   "id": "LSN-CON-06019#err-BC-ERR-06025",
+   "type": "common_error",
+   "bands": [
+    "low",
+    "mid"
+   ],
+   "skills": [
+    "BC-SKL-06066",
+    "BC-SKL-06068",
+    "BC-SKL-06069"
+   ],
+   "sources": [
+    "BC-ERR-06025",
+    "BC-MIS-06021"
+   ],
+   "evidence_tag": "inferred",
+   "error_id": "BC-ERR-06025",
+   "observed_behavior": "The response produces a finite number although the limit is infinite or fails to exist.",
+   "scoring_consequence": "The answer point is not earned because the required conclusion is a statement of divergence.",
+   "wrong_step": {
+    "text": "Power 1/2 form: -6√3 reported.",
+    "expression": [
+     "Multiply",
+     -6,
+     [
+      "Power",
+      3,
+      [
+       "Rational",
+       1,
+       2
+      ]
+     ]
+    ]
+   },
+   "right_step": {
+    "text": "6√(b^2 + 2) grows: diverges.",
+    "expression": "PositiveInfinity"
+   },
+   "relation": "distinct",
+   "delivery": {
+    "mode": "step_reveal",
+    "reason": "rule 1",
+    "sources": []
+   }
+  }
+ ],
+ "checks": [
+  {
+   "id": "LSN-CON-06019#chk-1",
+   "check_kind": "completion",
+   "bands": [
+    "low",
+    "mid"
+   ],
+   "format": "short_answer",
+   "archetype_id": "BC-QA-06011",
+   "parameter_draw": {
+    "impropriety": "infinite",
+    "outcome": "converges",
+    "coefficient": 6,
+    "degree": 2,
+    "lower": 1,
+    "shift": 2,
+    "root": 1,
+    "gap": 1
+   },
+   "completes": "LSN-CON-06019#s5",
+   "stem": {
+    "text": "∫_1^b 6x/(x^2 + 2)^2 dx = 1 - 3/(b^2 + 2). Find the improper integral to ∞.",
+    "command_verb": "find"
+   },
+   "answer_key": {
+    "form": "symbolic",
+    "mathjson": 1
+   },
+   "worked_solution": [
+    {
+     "step": 1,
+     "text": "Integral to b.",
+     "mathjson": [
+      "Add",
+      1,
+      [
+       "Multiply",
+       -3,
+       [
+        "Power",
+        [
+         "Add",
+         2,
+         [
+          "Power",
+          "b",
+          2
+         ]
+        ],
+        -1
+       ]
+      ]
+     ],
+     "relation": "new"
+    },
+    {
+     "step": 2,
+     "text": "Limit.",
+     "mathjson": 1,
+     "relation": "limit",
+     "variable": "b",
+     "point": "oo"
+    }
+   ],
+   "calculator_status": "no_calculator",
+   "representation": "BC-REP-01",
+   "skills": [
+    "BC-SKL-06068"
+   ]
+  },
+  {
+   "id": "LSN-CON-06019#chk-2",
+   "check_kind": "isomorph",
+   "bands": [
+    "low",
+    "mid"
+   ],
+   "format": "short_answer",
+   "archetype_id": "BC-QA-06011",
+   "parameter_draw": {
+    "impropriety": "infinite",
+    "outcome": "converges",
+    "coefficient": 4,
+    "degree": 3,
+    "lower": 1,
+    "shift": 1,
+    "root": 1,
+    "gap": 1
+   },
+   "stem": {
+    "text": "Evaluate ∫_1^∞ 4x^2/(x^3 + 1)^2 dx or show it diverges.",
+    "command_verb": "evaluate"
+   },
+   "answer_key": {
+    "form": "symbolic",
+    "mathjson": [
+     "Rational",
+     2,
+     3
+    ]
+   },
+   "worked_solution": [
+    {
+     "step": 1,
+     "text": "Limit of the integral to b.",
+     "mathjson": [
+      "Integrate",
+      [
+       "Multiply",
+       4,
+       [
+        "Power",
+        "x",
+        2
+       ],
+       [
+        "Power",
+        [
+         "Add",
+         1,
+         [
+          "Power",
+          "x",
+          3
+         ]
+        ],
+        -2
+       ]
+      ],
+      [
+       "Tuple",
+       "x",
+       1,
+       "b"
+      ]
+     ],
+     "relation": "new"
+    },
+    {
+     "step": 2,
+     "text": "u = x^3 + 1: antiderivative -4/(3u).",
+     "mathjson": [
+      "Add",
+      [
+       "Rational",
+       2,
+       3
+      ],
+      [
+       "Multiply",
+       -4,
+       [
+        "Power",
+        [
+         "Add",
+         3,
+         [
+          "Multiply",
+          3,
+          [
+           "Power",
+           "b",
+           3
+          ]
+         ]
+        ],
+        -1
+       ]
+      ]
+     ],
+     "relation": "equivalent"
+    },
+    {
+     "step": 3,
+     "text": "b → ∞.",
+     "mathjson": [
+      "Rational",
+      2,
+      3
+     ],
+     "relation": "limit",
+     "variable": "b",
+     "point": "oo"
+    }
+   ],
+   "calculator_status": "no_calculator",
+   "representation": "BC-REP-01",
+   "skills": [
+    "BC-SKL-06067",
+    "BC-SKL-06068"
+   ]
+  },
+  {
+   "id": "LSN-CON-06019#chk-3",
+   "check_kind": "mcq",
+   "bands": [
+    "low"
+   ],
+   "format": "mcq",
+   "archetype_id": "BC-QA-06011",
+   "parameter_draw": {
+    "impropriety": "infinite",
+    "outcome": "converges",
+    "coefficient": 3,
+    "degree": 2,
+    "lower": 2,
+    "shift": 5,
+    "root": 1,
+    "gap": 1
+   },
+   "stem": {
+    "text": "∫_2^∞ 3x/(x^2 + 5)^2 dx =",
+    "command_verb": "identify"
+   },
+   "answer_key": {
+    "form": "symbolic",
+    "mathjson": [
+     "Rational",
+     1,
+     6
+    ]
+   },
+   "worked_solution": [
+    {
+     "step": 1,
+     "text": "Limit of the integral to b.",
+     "mathjson": [
+      "Integrate",
+      [
+       "Multiply",
+       3,
+       "x",
+       [
+        "Power",
+        [
+         "Add",
+         5,
+         [
+          "Power",
+          "x",
+          2
+         ]
+        ],
+        -2
+       ]
+      ],
+      [
+       "Tuple",
+       "x",
+       2,
+       "b"
+      ]
+     ],
+     "relation": "new"
+    },
+    {
+     "step": 2,
+     "text": "Antiderivative -3/(2(x^2 + 5)) from 2 to b.",
+     "mathjson": [
+      "Add",
+      [
+       "Rational",
+       1,
+       6
+      ],
+      [
+       "Multiply",
+       -3,
+       [
+        "Power",
+        [
+         "Add",
+         10,
+         [
+          "Multiply",
+          2,
+          [
+           "Power",
+           "b",
+           2
+          ]
+         ]
+        ],
+        -1
+       ]
+      ]
+     ],
+     "relation": "equivalent"
+    },
+    {
+     "step": 3,
+     "text": "b → ∞.",
+     "mathjson": [
+      "Rational",
+      1,
+      6
+     ],
+     "relation": "limit",
+     "variable": "b",
+     "point": "oo"
+    }
+   ],
+   "options": [
+    {
+     "id": "A",
+     "is_key": false,
+     "error_path": "BC-ERR-06018",
+     "value": [
+      "Rational",
+      3,
+      4
+     ],
+     "derivation": "-3/(2u) evaluated at the x limits 2 and b"
+    },
+    {
+     "id": "B",
+     "is_key": false,
+     "error_path": "BC-ERR-06019",
+     "value": [
+      "Rational",
+      1,
+      3
+     ],
+     "derivation": "3x dx read as 3 du, the 1/2 dropped"
+    },
+    {
+     "id": "C",
+     "is_key": true,
+     "error_path": null,
+     "value": [
+      "Rational",
+      1,
+      6
+     ]
+    },
+    {
+     "id": "D",
+     "is_key": false,
+     "error_path": "BC-ERR-06019",
+     "value": [
+      "Rational",
+      2,
+      3
+     ],
+     "derivation": "the constant multiplied by 2 instead of its reciprocal"
+    }
+   ],
+   "calculator_status": "no_calculator",
+   "representation": "BC-REP-01",
+   "skills": [
+    "BC-SKL-06067",
+    "BC-SKL-06068"
+   ]
+  }
+ ],
+ "refresher": [
+  "LSN-CON-06019#s2",
+  "LSN-CON-06019#s3",
+  "LSN-CON-06019#err-BC-ERR-06018",
+  "LSN-CON-06019#err-BC-ERR-06019",
+  "LSN-CON-06019#err-BC-ERR-99007",
+  "LSN-CON-06019#err-BC-ERR-06025",
+  "LSN-CON-06019#s5"
+ ],
+ "provenance": {
+  "author": "tools/lesson_transcribe.py",
+  "prompt_version": "generator/lesson_v1",
+  "design_path": "docs/lessons/unit-06/LSN-CON-06019.md",
+  "signed_off_by": "claude-opus-5-5",
+  "signed_off_at": "2026-09-29",
+  "not_human": true
+ }
+}

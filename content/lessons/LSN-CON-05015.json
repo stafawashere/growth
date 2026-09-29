@@ -1,0 +1,1261 @@
+{
+ "id": "LSN-CON-05015",
+ "version": 1,
+ "kind": "concept",
+ "target_id": "BC-CON-05015",
+ "status": "signed_off",
+ "snapshot_digest": "a6a8ec9d3f59ab8f712e33d30cc22fc64bf2c478fbe7312e3e3118d319c6a42f",
+ "source_digest": "0119ba457d94f1da104c3e82f4c3421648270fd3c23b2497303f1024b9002bdb",
+ "read_minutes": {
+  "full": 4.5,
+  "brief": 3.0
+ },
+ "word_count": {
+  "full": 527,
+  "brief": 343
+ },
+ "sections": [
+  {
+   "id": "LSN-CON-05015#s1",
+   "type": "orientation",
+   "bands": [
+    "low",
+    "mid"
+   ],
+   "skills": [
+    "BC-SKL-05058",
+    "BC-SKL-05059",
+    "BC-SKL-05060",
+    "BC-SKL-05061",
+    "BC-SKL-05062",
+    "BC-SKL-05063"
+   ],
+   "sources": [
+    "BC-CON-05015",
+    "research/units/unit-05-analytical-applications-differentiation.md#5.12 Exploring Behaviors of Implicit Relations"
+   ],
+   "evidence_tag": "inferred",
+   "text": "A response finds \\(\\frac{dy}{dx}\\) implicitly, keeps only points that satisfy both the relation and the condition on \\(\\frac{dy}{dx}\\), and classifies from the sign of the second derivative after substituting the value of \\(\\frac{dy}{dx}\\).",
+   "delivery": {
+    "mode": "text",
+    "reason": "rule 5: a statement of what a response shows; the curve is drawn once, on ki-1",
+    "sources": [
+     "BC-SKL-05058"
+    ]
+   }
+  },
+  {
+   "id": "LSN-CON-05015#s2",
+   "type": "key_ideas",
+   "bands": [
+    "low",
+    "mid"
+   ],
+   "skills": [
+    "BC-SKL-05058",
+    "BC-SKL-05059",
+    "BC-SKL-05060"
+   ],
+   "sources": [
+    "BC-EK-FUN-4D1",
+    "ced:110",
+    "research/units/unit-05-analytical-applications-differentiation.md#5.12 Exploring Behaviors of Implicit Relations"
+   ],
+   "evidence_tag": "verified",
+   "ek_id": "BC-EK-FUN-4D1",
+   "depth": "core",
+   "text": "On a relation, \\(\\frac{dy}{dx}\\) is a quotient. It is zero where the numerator is zero and the denominator is not; it fails to exist where the denominator is zero. A critical point is a point of the curve, so its coordinates satisfy both the relation and that condition.",
+   "notation": "dy/dx",
+   "quote": {
+    "text": "A point on an implicit relation where the first derivative equals zero or does not exist is a critical point of the function.",
+    "source": "ced:110"
+   },
+   "delivery": {
+    "mode": "figure",
+    "reason": "rule 3: BC-REP-02 on BC-SKL-05060; not promoted, BC-QA-05012 difficulty_variables name no varying quantity",
+    "sources": [
+     "BC-SKL-05060",
+     "BC-QA-05012"
+    ],
+    "spec": {
+     "kind": "implicit_curve",
+     "representations": [
+      "BC-REP-02",
+      "BC-REP-01"
+     ],
+     "curve": "(y - 1)^2 = x^2 (x + 3)",
+     "window": {
+      "x": [
+       -4,
+       2
+      ],
+      "y": [
+       -3,
+       5
+      ]
+     },
+     "marks": [
+      "(-2, -1)",
+      "(-2, 3)",
+      "(-3, 1)",
+      "(0, 1)"
+     ],
+     "labels": [
+      {
+       "text": "horizontal: numerator 0",
+       "placement": "inside"
+      },
+      {
+       "text": "vertical: denominator 0",
+       "placement": "inside"
+      },
+      {
+       "text": "(0, 1): both 0",
+       "placement": "inside"
+      }
+     ]
+    },
+    "fallback": "the same curve, static, with the four points marked and each label inside",
+    "keyboard": "none needed; no control"
+   }
+  },
+  {
+   "id": "LSN-CON-05015#s3",
+   "type": "key_ideas",
+   "bands": [
+    "low",
+    "mid"
+   ],
+   "skills": [
+    "BC-SKL-05061",
+    "BC-SKL-05062"
+   ],
+   "sources": [
+    "BC-EK-FUN-4E2",
+    "ced:110",
+    "sg-25:21",
+    "research/units/unit-05-analytical-applications-differentiation.md#5.12 Exploring Behaviors of Implicit Relations"
+   ],
+   "evidence_tag": "inferred",
+   "ek_id": "BC-EK-FUN-4E2",
+   "depth": "core",
+   "text": "Differentiating again gives an expression in \\(x\\), \\(y\\) and \\(\\frac{dy}{dx}\\), with the chain rule on every \\(y\\). A number results only after the value of \\(\\frac{dy}{dx}\\) at the point is substituted.",
+   "notation": "d2y/dx2",
+   "delivery": {
+    "mode": "text",
+    "reason": "rule 5: BC-SKL-05061 and 05062 carry BC-REP-01, 06 only",
+    "sources": [
+     "BC-SKL-05061",
+     "BC-SKL-05062"
+    ]
+   }
+  },
+  {
+   "id": "LSN-CON-05015#s4",
+   "type": "key_ideas",
+   "bands": [
+    "low"
+   ],
+   "skills": [
+    "BC-SKL-05063"
+   ],
+   "sources": [
+    "BC-EK-FUN-4E1",
+    "ced:110",
+    "research/units/unit-05-analytical-applications-differentiation.md#5.12 Exploring Behaviors of Implicit Relations"
+   ],
+   "evidence_tag": "verified",
+   "ek_id": "BC-EK-FUN-4E1",
+   "depth": "extended",
+   "text": "The second derivative test carries over: where \\(\\frac{dy}{dx}=0\\) on the curve, a negative \\(\\frac{d^2y}{dx^2}\\) gives a relative maximum of \\(y\\), a positive one a relative minimum.",
+   "notation": "d2y/dx2",
+   "quote": {
+    "text": "Applications of derivatives can be extended to implicitly defined functions.",
+    "source": "ced:110"
+   },
+   "delivery": {
+    "mode": "figure",
+    "reason": "rule 3: BC-REP-02 on BC-SKL-05063; a fixed feature, not promoted",
+    "sources": [
+     "BC-SKL-05063"
+    ],
+    "spec": {
+     "kind": "implicit_curve",
+     "representations": [
+      "BC-REP-02"
+     ],
+     "curve": "(y - 1)^2 = x^2 (x + 3)",
+     "window": {
+      "x": [
+       -4,
+       2
+      ],
+      "y": [
+       -3,
+       5
+      ]
+     },
+     "marks": [
+      "(-2, 3)",
+      "(-2, -1)"
+     ],
+     "labels": [
+      {
+       "text": "(-2, 3): second derivative -3/2, maximum",
+       "placement": "inside"
+      },
+      {
+       "text": "(-2, -1): second derivative 3/2, minimum",
+       "placement": "inside"
+      }
+     ]
+    },
+    "fallback": "the same curve, static, with the two points and labels inside",
+    "keyboard": "none needed; no control"
+   }
+  },
+  {
+   "id": "LSN-CON-05015#s5",
+   "type": "strategy",
+   "bands": [
+    "low",
+    "mid"
+   ],
+   "skills": [
+    "BC-SKL-05058",
+    "BC-SKL-05059",
+    "BC-SKL-05060",
+    "BC-SKL-05061",
+    "BC-SKL-05062",
+    "BC-SKL-05063"
+   ],
+   "sources": [
+    "BC-QA-05012"
+   ],
+   "evidence_tag": "verified",
+   "archetype_id": "BC-QA-05012",
+   "cue": "The stem asks for coordinates or a second derivative value, from an implicit equation and a point on the curve.",
+   "method": "First written line: differentiate the relation implicitly.",
+   "rival": "Rival: solving the relation explicitly when it is not solvable.",
+   "separating_feature": "Not solved for \\(y\\): both variables stay, and each candidate goes back into the relation."
+  },
+  {
+   "id": "LSN-CON-05015#s6",
+   "type": "worked_example",
+   "bands": [
+    "low",
+    "mid"
+   ],
+   "skills": [
+    "BC-SKL-05058",
+    "BC-SKL-05059",
+    "BC-SKL-05060",
+    "BC-SKL-05061",
+    "BC-SKL-05062",
+    "BC-SKL-05063"
+   ],
+   "sources": [
+    "BC-QA-05012"
+   ],
+   "evidence_tag": "inferred",
+   "archetype_id": "BC-QA-05012",
+   "parameter_draw": {
+    "across": 0,
+    "up": 1,
+    "loop": "q1s1",
+    "facing": 1,
+    "derivative": "derive"
+   },
+   "problem": {
+    "text": "Find every point on \\((y-1)^2=x^2(x+3)\\) where the tangent line is horizontal.",
+    "command_verb": "find"
+   },
+   "calculator_status": "no_calculator",
+   "steps": [
+    {
+     "cue": "Not solved for \\(y\\): differentiate implicitly.",
+     "why": "\\(2(y-1)y'=3x^2+6x\\).",
+     "expression": [
+      "Multiply",
+      [
+       "Power",
+       [
+        "Add",
+        -2,
+        [
+         "Multiply",
+         2,
+         "y"
+        ]
+       ],
+       -1
+      ],
+      [
+       "Add",
+       [
+        "Multiply",
+        3,
+        [
+         "Power",
+         "x",
+         2
+        ]
+       ],
+       [
+        "Multiply",
+        6,
+        "x"
+       ]
+      ]
+     ],
+     "relation": "new"
+    },
+    {
+     "cue": "Horizontal: numerator zero.",
+     "why": "The denominator must stay nonzero.",
+     "expression": [
+      "Equal",
+      [
+       "Multiply",
+       3,
+       "x",
+       [
+        "Add",
+        2,
+        "x"
+       ]
+      ],
+      0
+     ],
+     "relation": "new"
+    },
+    {
+     "cue": "Candidates.",
+     "why": "\\(x=-2\\) or \\(x=0\\).",
+     "expression": [
+      "Set",
+      -2,
+      0
+     ],
+     "relation": "solve",
+     "variable": "x"
+    },
+    {
+     "cue": "Points must lie on the curve.",
+     "why": "Back to the relation.",
+     "expression": [
+      "Equal",
+      [
+       "Power",
+       [
+        "Add",
+        -1,
+        "y"
+       ],
+       2
+      ],
+      [
+       "Multiply",
+       [
+        "Power",
+        "x",
+        2
+       ],
+       [
+        "Add",
+        3,
+        "x"
+       ]
+      ]
+     ],
+     "relation": "new"
+    },
+    {
+     "cue": "\\(x=-2\\).",
+     "why": "\\(4\\cdot1=4\\).",
+     "expression": [
+      "Equal",
+      [
+       "Power",
+       [
+        "Add",
+        -1,
+        "y"
+       ],
+       2
+      ],
+      4
+     ],
+     "relation": "evaluate",
+     "subs": {
+      "x": "-2"
+     }
+    },
+    {
+     "cue": "Solve for \\(y\\).",
+     "why": "\\(y-1=\\pm2\\); denominator nonzero.",
+     "expression": [
+      "Set",
+      -1,
+      3
+     ],
+     "relation": "solve",
+     "variable": "y"
+    },
+    {
+     "cue": "\\(x=0\\) gives \\(y=1\\).",
+     "why": "Denominator zero too: discarded."
+    },
+    {
+     "cue": "Points asked.",
+     "why": "Both conditions hold.",
+     "expression": [
+      "Set",
+      [
+       "Tuple",
+       -2,
+       -1
+      ],
+      [
+       "Tuple",
+       -2,
+       3
+      ]
+     ],
+     "relation": "new"
+    }
+   ],
+   "answer": {
+    "form": "symbolic",
+    "mathjson": [
+     "Set",
+     [
+      "Tuple",
+      -2,
+      -1
+     ],
+     [
+      "Tuple",
+      -2,
+      3
+     ]
+    ]
+   },
+   "delivery": {
+    "mode": "step_reveal",
+    "reason": "rule 1",
+    "sources": []
+   }
+  },
+  {
+   "id": "LSN-CON-05015#s7",
+   "type": "worked_example",
+   "bands": [
+    "low"
+   ],
+   "skills": [
+    "BC-SKL-05058",
+    "BC-SKL-05059",
+    "BC-SKL-05060",
+    "BC-SKL-05061",
+    "BC-SKL-05062",
+    "BC-SKL-05063"
+   ],
+   "sources": [
+    "BC-QA-05012"
+   ],
+   "evidence_tag": "inferred",
+   "archetype_id": "BC-QA-05012",
+   "parameter_draw": {
+    "across": 0,
+    "up": 1,
+    "loop": "q1s1",
+    "facing": 1,
+    "derivative": "derive"
+   },
+   "problem": {
+    "text": "On \\((y-1)^2=x^2(x+3)\\), find \\(\\frac{d^2y}{dx^2}\\) at \\((-2,3)\\) and classify the point. Write \\(p=\\frac{dy}{dx}\\), \\(q=\\frac{d^2y}{dx^2}\\).",
+    "command_verb": "find"
+   },
+   "calculator_status": "no_calculator",
+   "steps": [
+    {
+     "cue": "First derivative, implicit.",
+     "why": "Chain rule on \\(y\\).",
+     "expression": [
+      "Equal",
+      [
+       "Multiply",
+       "p",
+       [
+        "Add",
+        -2,
+        [
+         "Multiply",
+         2,
+         "y"
+        ]
+       ]
+      ],
+      [
+       "Add",
+       [
+        "Multiply",
+        3,
+        [
+         "Power",
+         "x",
+         2
+        ]
+       ],
+       [
+        "Multiply",
+        6,
+        "x"
+       ]
+      ]
+     ],
+     "relation": "new"
+    },
+    {
+     "cue": "Differentiate again, keeping both variables.",
+     "why": "Product rule: \\(2p\\cdot p+2(y-1)q\\).",
+     "expression": [
+      "Equal",
+      [
+       "Add",
+       [
+        "Multiply",
+        2,
+        [
+         "Power",
+         "p",
+         2
+        ]
+       ],
+       [
+        "Multiply",
+        "q",
+        [
+         "Add",
+         -2,
+         [
+          "Multiply",
+          2,
+          "y"
+         ]
+        ]
+       ]
+      ],
+      [
+       "Add",
+       6,
+       [
+        "Multiply",
+        6,
+        "x"
+       ]
+      ]
+     ],
+     "relation": "new"
+    },
+    {
+     "cue": "Substitute \\(p=0\\) and the point.",
+     "why": "\\(p\\) is zero at a horizontal tangent.",
+     "expression": [
+      "Equal",
+      [
+       "Multiply",
+       4,
+       "q"
+      ],
+      -6
+     ],
+     "relation": "evaluate",
+     "subs": {
+      "x": "-2",
+      "y": "3",
+      "p": "0"
+     }
+    },
+    {
+     "cue": "Solve for \\(q\\).",
+     "why": "Negative.",
+     "expression": [
+      "Rational",
+      -3,
+      2
+     ],
+     "relation": "solve",
+     "variable": "q"
+    },
+    {
+     "cue": "Classify with a reason.",
+     "why": "\\(\\frac{dy}{dx}=0\\) and \\(\\frac{d^2y}{dx^2}<0\\): relative maximum at \\((-2,3)\\)."
+    }
+   ],
+   "answer": {
+    "form": "symbolic",
+    "mathjson": [
+     "Rational",
+     -3,
+     2
+    ]
+   },
+   "delivery": {
+    "mode": "step_reveal",
+    "reason": "rule 1",
+    "sources": []
+   }
+  },
+  {
+   "id": "LSN-CON-05015#err-BC-ERR-03012",
+   "type": "common_error",
+   "bands": [
+    "low",
+    "mid"
+   ],
+   "skills": [
+    "BC-SKL-05058"
+   ],
+   "sources": [
+    "BC-ERR-03012"
+   ],
+   "evidence_tag": "inferred",
+   "error_id": "BC-ERR-03012",
+   "observed_behavior": "The denominator of dy/dx is set to zero when a horizontal tangent is requested, or the numerator when a vertical tangent is requested.",
+   "scoring_consequence": "The reported point is wrong and the reasoning point is not available.",
+   "wrong_step": {
+    "text": "Denominator zero.",
+    "expression": [
+     "Equal",
+     [
+      "Add",
+      -2,
+      [
+       "Multiply",
+       2,
+       "y"
+      ]
+     ],
+     0
+    ]
+   },
+   "right_step": {
+    "text": "Numerator zero.",
+    "expression": [
+     "Equal",
+     [
+      "Multiply",
+      3,
+      "x",
+      [
+       "Add",
+       2,
+       "x"
+      ]
+     ],
+     0
+    ]
+   },
+   "relation": "distinct",
+   "delivery": {
+    "mode": "step_reveal",
+    "reason": "rule 1",
+    "sources": []
+   }
+  },
+  {
+   "id": "LSN-CON-05015#err-BC-ERR-03023",
+   "type": "common_error",
+   "bands": [
+    "low",
+    "mid"
+   ],
+   "skills": [
+    "BC-SKL-05062"
+   ],
+   "sources": [
+    "BC-ERR-03023",
+    "BC-MIS-05033"
+   ],
+   "evidence_tag": "inferred",
+   "error_id": "BC-ERR-03023",
+   "observed_behavior": "An expression for the second derivative containing dy/dx is evaluated without first computing the value of dy/dx at the point.",
+   "scoring_consequence": "The numerical second derivative is wrong, although the product and chain rule points described in the 2025 scoring guidelines may still be earned (sg-25:20).",
+   "wrong_step": {
+    "text": "\\(q=\\frac{-6-2p^2}{4}\\) left with \\(p\\).",
+    "expression": [
+     "Add",
+     [
+      "Rational",
+      -3,
+      2
+     ],
+     [
+      "Multiply",
+      [
+       "Rational",
+       -1,
+       2
+      ],
+      [
+       "Power",
+       "p",
+       2
+      ]
+     ]
+    ]
+   },
+   "right_step": {
+    "text": "\\(p=0\\): \\(q=-\\frac{3}{2}\\).",
+    "expression": [
+     "Rational",
+     -3,
+     2
+    ]
+   },
+   "relation": "distinct",
+   "possible_reason": {
+    "misconception_id": "BC-MIS-05033",
+    "text": "leaves the derivative symbol unsubstituted"
+   },
+   "delivery": {
+    "mode": "step_reveal",
+    "reason": "rule 1",
+    "sources": []
+   }
+  },
+  {
+   "id": "LSN-CON-05015#err-BC-ERR-05060",
+   "type": "common_error",
+   "bands": [
+    "low",
+    "mid"
+   ],
+   "skills": [
+    "BC-SKL-05061"
+   ],
+   "sources": [
+    "BC-ERR-05060",
+    "BC-MIS-05033"
+   ],
+   "evidence_tag": "inferred",
+   "error_id": "BC-ERR-05060",
+   "observed_behavior": "The response differentiates the derivative expression without applying the chain rule to the dependent variable.",
+   "scoring_consequence": "The differentiation point is lost, and the value point remains available only through a correct substitution.",
+   "wrong_step": {
+    "text": "At \\((1,3)\\), \\(y-1\\) treated as constant: \\(2(y-1)q=6x+6\\) gives \\(4q=12\\), \\(q=3\\).",
+    "expression": 3
+   },
+   "right_step": {
+    "text": "\\(2p^2+2(y-1)q=6x+6\\) with \\(p=\\frac{9}{4}\\) gives \\(q=\\frac{15}{32}\\).",
+    "expression": [
+     "Rational",
+     15,
+     32
+    ]
+   },
+   "relation": "distinct",
+   "possible_reason": {
+    "misconception_id": "BC-MIS-05033",
+    "text": "differentiates expressions in the second variable without the chain rule"
+   },
+   "delivery": {
+    "mode": "step_reveal",
+    "reason": "rule 1",
+    "sources": []
+   }
+  },
+  {
+   "id": "LSN-CON-05015#err-BC-ERR-05062",
+   "type": "common_error",
+   "bands": [
+    "low",
+    "mid"
+   ],
+   "skills": [
+    "BC-SKL-05063"
+   ],
+   "sources": [
+    "BC-ERR-05062"
+   ],
+   "evidence_tag": "inferred",
+   "error_id": "BC-ERR-05062",
+   "observed_behavior": "The response evaluates the second derivative on a relation correctly but classifies the point the wrong way round.",
+   "scoring_consequence": "The classification is wrong although the computation was right.",
+   "wrong_step": {
+    "text": "\\(q=-\\frac{3}{2}\\), so a relative minimum.",
+    "expression": "relative_minimum_at_minus2_3"
+   },
+   "right_step": {
+    "text": "\\(q<0\\): relative maximum.",
+    "expression": "relative_maximum_at_minus2_3"
+   },
+   "relation": "distinct",
+   "delivery": {
+    "mode": "step_reveal",
+    "reason": "rule 1",
+    "sources": []
+   }
+  },
+  {
+   "id": "LSN-CON-05015#prq-BC-PRQ-05001",
+   "type": "prerequisite_bridge",
+   "bands": [
+    "low",
+    "mid"
+   ],
+   "skills": [
+    "BC-SKL-05058",
+    "BC-SKL-05059"
+   ],
+   "sources": [
+    "BC-PRQ-05001"
+   ],
+   "evidence_tag": "inferred",
+   "prerequisite_id": "BC-PRQ-05001",
+   "text": "List the zeros of the numerator and of the denominator first; without them there are no candidate points."
+  },
+  {
+   "id": "LSN-CON-05015#prq-BC-PRQ-05007",
+   "type": "prerequisite_bridge",
+   "bands": [
+    "low",
+    "mid"
+   ],
+   "skills": [
+    "BC-SKL-05058",
+    "BC-SKL-05059",
+    "BC-SKL-05060",
+    "BC-SKL-05061"
+   ],
+   "sources": [
+    "BC-PRQ-05007"
+   ],
+   "evidence_tag": "inferred",
+   "prerequisite_id": "BC-PRQ-05007",
+   "text": "Solve the relation and the derived equation together; an input alone, with no matching output on the relation, is not a point."
+  }
+ ],
+ "checks": [
+  {
+   "id": "LSN-CON-05015#chk-1",
+   "check_kind": "completion",
+   "bands": [
+    "low",
+    "mid"
+   ],
+   "format": "short_answer",
+   "archetype_id": "BC-QA-05012",
+   "parameter_draw": {
+    "across": 0,
+    "up": 1,
+    "loop": "q1s1",
+    "facing": 1,
+    "derivative": "derive"
+   },
+   "completes": "LSN-CON-05015#s6",
+   "stem": {
+    "text": "On \\((y-1)^2=x^2(x+3)\\) the numerator gives \\(x=-2\\) or \\(0\\). Find the horizontal tangent points.",
+    "command_verb": "find"
+   },
+   "answer_key": {
+    "form": "symbolic",
+    "mathjson": [
+     "Set",
+     [
+      "Tuple",
+      -2,
+      -1
+     ],
+     [
+      "Tuple",
+      -2,
+      3
+     ]
+    ]
+   },
+   "worked_solution": [
+    {
+     "step": 1,
+     "text": "The relation.",
+     "mathjson": [
+      "Equal",
+      [
+       "Power",
+       [
+        "Add",
+        -1,
+        "y"
+       ],
+       2
+      ],
+      [
+       "Multiply",
+       [
+        "Power",
+        "x",
+        2
+       ],
+       [
+        "Add",
+        3,
+        "x"
+       ]
+      ]
+     ],
+     "relation": "new"
+    },
+    {
+     "step": 2,
+     "text": "\\(x=-2\\).",
+     "mathjson": [
+      "Equal",
+      [
+       "Power",
+       [
+        "Add",
+        -1,
+        "y"
+       ],
+       2
+      ],
+      4
+     ],
+     "relation": "evaluate",
+     "subs": {
+      "x": "-2"
+     }
+    },
+    {
+     "step": 3,
+     "text": "\\(y=-1\\) or \\(3\\).",
+     "mathjson": [
+      "Set",
+      -1,
+      3
+     ],
+     "relation": "solve",
+     "variable": "y"
+    },
+    {
+     "step": 4,
+     "text": "\\(x=0\\) gives the node \\((0,1)\\), discarded.",
+     "mathjson": [
+      "Set",
+      [
+       "Tuple",
+       -2,
+       -1
+      ],
+      [
+       "Tuple",
+       -2,
+       3
+      ]
+     ],
+     "relation": "new"
+    }
+   ],
+   "calculator_status": "no_calculator",
+   "representation": "BC-REP-01",
+   "skills": [
+    "BC-SKL-05060"
+   ]
+  },
+  {
+   "id": "LSN-CON-05015#chk-2",
+   "check_kind": "isomorph",
+   "bands": [
+    "low",
+    "mid"
+   ],
+   "format": "short_answer",
+   "archetype_id": "BC-QA-05012",
+   "parameter_draw": {
+    "across": 0,
+    "up": 0,
+    "loop": "q2s1",
+    "facing": -1,
+    "derivative": "given"
+   },
+   "stem": {
+    "text": "For \\(y^2=2x^2(6-x)\\), \\(\\frac{dy}{dx}=\\frac{3x(4-x)}{y}\\). Find every horizontal tangent point.",
+    "command_verb": "find"
+   },
+   "answer_key": {
+    "form": "symbolic",
+    "mathjson": [
+     "Set",
+     [
+      "Tuple",
+      4,
+      -8
+     ],
+     [
+      "Tuple",
+      4,
+      8
+     ]
+    ]
+   },
+   "worked_solution": [
+    {
+     "step": 1,
+     "text": "Numerator zero.",
+     "mathjson": [
+      "Equal",
+      [
+       "Multiply",
+       3,
+       "x",
+       [
+        "Add",
+        4,
+        [
+         "Multiply",
+         -1,
+         "x"
+        ]
+       ]
+      ],
+      0
+     ],
+     "relation": "new"
+    },
+    {
+     "step": 2,
+     "text": "\\(x=0\\) or \\(4\\).",
+     "mathjson": [
+      "Set",
+      0,
+      4
+     ],
+     "relation": "solve",
+     "variable": "x"
+    },
+    {
+     "step": 3,
+     "text": "The relation.",
+     "mathjson": [
+      "Equal",
+      [
+       "Power",
+       "y",
+       2
+      ],
+      [
+       "Multiply",
+       2,
+       [
+        "Power",
+        "x",
+        2
+       ],
+       [
+        "Add",
+        6,
+        [
+         "Multiply",
+         -1,
+         "x"
+        ]
+       ]
+      ]
+     ],
+     "relation": "new"
+    },
+    {
+     "step": 4,
+     "text": "\\(x=4\\).",
+     "mathjson": [
+      "Equal",
+      [
+       "Power",
+       "y",
+       2
+      ],
+      64
+     ],
+     "relation": "evaluate",
+     "subs": {
+      "x": "4"
+     }
+    },
+    {
+     "step": 5,
+     "text": "\\(y=\\pm8\\).",
+     "mathjson": [
+      "Set",
+      -8,
+      8
+     ],
+     "relation": "solve",
+     "variable": "y"
+    },
+    {
+     "step": 6,
+     "text": "\\(x=0\\) gives \\(y=0\\), denominator zero: discarded.",
+     "mathjson": [
+      "Set",
+      [
+       "Tuple",
+       4,
+       -8
+      ],
+      [
+       "Tuple",
+       4,
+       8
+      ]
+     ],
+     "relation": "new"
+    }
+   ],
+   "calculator_status": "no_calculator",
+   "representation": "BC-REP-01",
+   "skills": [
+    "BC-SKL-05058"
+   ]
+  },
+  {
+   "id": "LSN-CON-05015#chk-3",
+   "check_kind": "mcq",
+   "bands": [
+    "low"
+   ],
+   "format": "mcq",
+   "archetype_id": "BC-QA-05012",
+   "parameter_draw": {
+    "across": 0,
+    "up": 0,
+    "loop": "q1s2",
+    "facing": 1,
+    "derivative": "derive"
+   },
+   "stem": {
+    "text": "On \\(y^2=4x^2(x+3)\\), \\(\\frac{dy}{dx}=0\\) at \\((-2,4)\\) and \\(2p^2+2yq=24x+24\\). Which is true?",
+    "command_verb": "identify"
+   },
+   "answer_key": {
+    "form": "statement",
+    "mathjson": "relative_maximum_at_minus2_4"
+   },
+   "worked_solution": [
+    {
+     "step": 1,
+     "text": "The second implicit derivative.",
+     "mathjson": [
+      "Equal",
+      [
+       "Add",
+       [
+        "Multiply",
+        2,
+        [
+         "Power",
+         "p",
+         2
+        ]
+       ],
+       [
+        "Multiply",
+        2,
+        "q",
+        "y"
+       ]
+      ],
+      [
+       "Add",
+       24,
+       [
+        "Multiply",
+        24,
+        "x"
+       ]
+      ]
+     ],
+     "relation": "new"
+    },
+    {
+     "step": 2,
+     "text": "\\(p=0\\), \\((-2,4)\\).",
+     "mathjson": [
+      "Equal",
+      [
+       "Multiply",
+       8,
+       "q"
+      ],
+      -24
+     ],
+     "relation": "evaluate",
+     "subs": {
+      "x": "-2",
+      "y": "4",
+      "p": "0"
+     }
+    },
+    {
+     "step": 3,
+     "text": "\\(q=-3\\).",
+     "mathjson": -3,
+     "relation": "solve",
+     "variable": "q"
+    }
+   ],
+   "options": [
+    {
+     "id": "A",
+     "is_key": false,
+     "error_path": "BC-ERR-05062",
+     "label": "\\(\\frac{d^2y}{dx^2}=-3\\), so a relative minimum at \\((-2,4)\\).",
+     "derivation": "sign read the wrong way round"
+    },
+    {
+     "id": "B",
+     "is_key": true,
+     "error_path": null,
+     "label": "\\(\\frac{d^2y}{dx^2}=-3\\), so a relative maximum at \\((-2,4)\\)."
+    },
+    {
+     "id": "C",
+     "is_key": false,
+     "error_path": "BC-ERR-03023",
+     "label": "\\(\\frac{d^2y}{dx^2}=-3-\\frac{p^2}{4}\\), so no sign can be read.",
+     "derivation": "p left unsubstituted"
+    },
+    {
+     "id": "D",
+     "is_key": false,
+     "error_path": "BC-ERR-03012",
+     "label": "The horizontal tangents are at \\((0,0)\\) and \\((-3,0)\\), not \\((-2,4)\\).",
+     "derivation": "denominator 2y set to zero for a horizontal tangent"
+    }
+   ],
+   "calculator_status": "no_calculator",
+   "representation": "BC-REP-01",
+   "skills": [
+    "BC-SKL-05063"
+   ]
+  }
+ ],
+ "refresher": [
+  "LSN-CON-05015#s2",
+  "LSN-CON-05015#s3",
+  "LSN-CON-05015#err-BC-ERR-03012",
+  "LSN-CON-05015#err-BC-ERR-03023",
+  "LSN-CON-05015#err-BC-ERR-05060",
+  "LSN-CON-05015#err-BC-ERR-05062",
+  "LSN-CON-05015#s6"
+ ],
+ "provenance": {
+  "author": "tools/lesson_transcribe.py",
+  "prompt_version": "generator/lesson_v1",
+  "design_path": "docs/lessons/unit-05/LSN-CON-05015.md",
+  "signed_off_by": "claude-opus-5-5",
+  "signed_off_at": "2026-09-29",
+  "not_human": true
+ }
+}

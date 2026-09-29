@@ -1,0 +1,724 @@
+{
+ "id": "LSN-CON-02008",
+ "version": 1,
+ "kind": "concept",
+ "target_id": "BC-CON-02008",
+ "status": "signed_off",
+ "snapshot_digest": "a6a8ec9d3f59ab8f712e33d30cc22fc64bf2c478fbe7312e3e3118d319c6a42f",
+ "source_digest": "cc77b0674108ddc42857809517f7352d045fd3b202bd44713591034f1e09b342",
+ "read_minutes": {
+  "full": 4.7,
+  "brief": 3.0
+ },
+ "word_count": {
+  "full": 605,
+  "brief": 415
+ },
+ "sections": [
+  {
+   "id": "LSN-CON-02008#s1",
+   "type": "orientation",
+   "bands": [
+    "low",
+    "mid"
+   ],
+   "skills": [
+    "BC-SKL-02019",
+    "BC-SKL-02020",
+    "BC-SKL-02024"
+   ],
+   "sources": [
+    "BC-CON-02008",
+    "research/units/unit-02-differentiation-definition-properties.md#2.4 Connecting Differentiability and Continuity: Determining When Derivatives Do and Do Not Exist"
+   ],
+   "evidence_tag": "inferred",
+   "text": "A response writes continuity as derived from a stated differentiability: the function is continuous because it is differentiable. Questions ask which direction of the implication holds, or use it inside an argument to replace a limit by a value or to meet an existence theorem's continuity hypothesis.",
+   "delivery": {
+    "mode": "text",
+    "reason": "rule 5: BC-REP-04 verbal statements on BC-SKL-02019; unit README delivery map",
+    "sources": [
+     "BC-SKL-02019"
+    ]
+   }
+  },
+  {
+   "id": "LSN-CON-02008#s2",
+   "type": "key_ideas",
+   "bands": [
+    "low",
+    "mid"
+   ],
+   "skills": [
+    "BC-SKL-02019",
+    "BC-SKL-02020",
+    "BC-SKL-02024"
+   ],
+   "sources": [
+    "BC-EK-FUN-2A1",
+    "ced:63",
+    "research/units/unit-02-differentiation-definition-properties.md#2.4 Connecting Differentiability and Continuity: Determining When Derivatives Do and Do Not Exist"
+   ],
+   "evidence_tag": "verified",
+   "ek_id": "BC-EK-FUN-2A1",
+   "depth": "core",
+   "text": "If a function is differentiable at a point, it is continuous there, and an input outside the domain of \\(f\\) is outside the domain of \\(f'\\) (BC-EK-FUN-2A1, ced:63). The implication runs one way. Its contrapositive: if a function is not continuous at a point, it is not differentiable there. Continuity alone supplies nothing about the derivative. In an argument the step carries its reason: \\(g\\) is continuous because it is differentiable.",
+   "notation": "differentiable implies continuous",
+   "quote": {
+    "text": "If a function is differentiable at a point, then it is continuous at that point.",
+    "source": "ced:63"
+   },
+   "delivery": {
+    "mode": "text",
+    "reason": "rule 5: the implication is a verbal rule (BC-REP-04 on BC-SKL-02019 and 02020); unit README delivery map",
+    "sources": [
+     "BC-SKL-02019",
+     "BC-SKL-02020"
+    ]
+   }
+  },
+  {
+   "id": "LSN-CON-02008#s3",
+   "type": "strategy",
+   "bands": [
+    "low",
+    "mid"
+   ],
+   "skills": [
+    "BC-SKL-02019",
+    "BC-SKL-02020",
+    "BC-SKL-02024"
+   ],
+   "sources": [
+    "BC-QA-02004"
+   ],
+   "evidence_tag": "verified",
+   "archetype_id": "BC-QA-02004",
+   "cue": "The stem states that the function is differentiable and asks for a justified conclusion or a limit value.",
+   "method": "First written line: \\(g\\) is differentiable, so \\(g\\) is continuous.",
+   "rival": "The rival is reversing the implication (BC-ERR-02012), or applying the theorem without establishing continuity from differentiability (BC-ERR-99008).",
+   "separating_feature": "The stem supplies differentiability, so continuity is the conclusion drawn from it, never the premise."
+  },
+  {
+   "id": "LSN-CON-02008#s4",
+   "type": "worked_example",
+   "bands": [
+    "low",
+    "mid"
+   ],
+   "skills": [
+    "BC-SKL-02019",
+    "BC-SKL-02020",
+    "BC-SKL-02024"
+   ],
+   "sources": [
+    "BC-QA-02004"
+   ],
+   "evidence_tag": "inferred",
+   "archetype_id": "BC-QA-02004",
+   "parameter_draw": {
+    "inputs": [
+     "0",
+     "2",
+     "5",
+     "8"
+    ],
+    "values": [
+     "-3",
+     "-2",
+     "3",
+     "7"
+    ],
+    "slopes": [
+     "1",
+     "-3",
+     "2",
+     "4"
+    ],
+    "scale": "3",
+    "offset": "5",
+    "target": "1",
+    "argument": "limit"
+   },
+   "problem": {
+    "text": "The function \\(g\\) is differentiable for all \\(x\\). A table gives \\(g(0)=-3\\), \\(g(2)=-2\\), \\(g(5)=3\\), \\(g(8)=7\\) and \\(g'(0)=1\\), \\(g'(2)=-3\\), \\(g'(5)=2\\), \\(g'(8)=4\\). Find \\(\\lim_{x\\to2}(3g(x)+5)\\), justifying the step.",
+    "command_verb": "find"
+   },
+   "calculator_status": "no_calculator",
+   "steps": [
+    {
+     "cue": "The stem states that \\(g\\) is differentiable.",
+     "why": "Differentiability at 2 forces continuity at 2, the hypothesis the limit step needs: \\(g\\) is continuous because it is differentiable."
+    },
+    {
+     "cue": "Continuity at 2 lets the limit be replaced by the value.",
+     "why": "\\(\\lim_{x\\to2}g(x)=g(2)\\), so the limit is \\(3g(2)+5\\).",
+     "expression": -1,
+     "relation": "new"
+    },
+    {
+     "cue": "The stem asks for a value.",
+     "why": "Arithmetic on the substituted line.",
+     "expression": -1,
+     "relation": "equivalent"
+    }
+   ],
+   "answer": {
+    "form": "numeric",
+    "mathjson": -1
+   },
+   "delivery": {
+    "mode": "step_reveal",
+    "reason": "rule 1; the supplied values render as a table inside the problem (BC-REP-03 on BC-SKL-02020)",
+    "sources": [
+     "BC-SKL-02020"
+    ]
+   }
+  },
+  {
+   "id": "LSN-CON-02008#s5",
+   "type": "worked_example",
+   "bands": [
+    "low"
+   ],
+   "skills": [
+    "BC-SKL-02019",
+    "BC-SKL-02020",
+    "BC-SKL-02024"
+   ],
+   "sources": [
+    "BC-QA-02004"
+   ],
+   "evidence_tag": "inferred",
+   "archetype_id": "BC-QA-02004",
+   "parameter_draw": {
+    "inputs": [
+     "0",
+     "2",
+     "5",
+     "8"
+    ],
+    "values": [
+     "-3",
+     "-2",
+     "3",
+     "7"
+    ],
+    "slopes": [
+     "1",
+     "-3",
+     "2",
+     "4"
+    ],
+    "scale": "3",
+    "offset": "5",
+    "target": "1",
+    "argument": "existence"
+   },
+   "problem": {
+    "text": "For the same \\(g\\), must there be a value \\(c\\) with \\(0<c<8\\) and \\(g(c)=1\\)? Justify the answer.",
+    "command_verb": "justify"
+   },
+   "calculator_status": "no_calculator",
+   "steps": [
+    {
+     "cue": "The theorem needs continuity on \\([0,8]\\); the stem gives differentiability.",
+     "why": "\\(g\\) is differentiable, so \\(g\\) is continuous on \\([0,8]\\)."
+    },
+    {
+     "cue": "The target 1 must lie between the endpoint values.",
+     "why": "A negative product of the two differences puts 1 between \\(g(0)\\) and \\(g(8)\\).",
+     "expression": -24,
+     "relation": "new"
+    },
+    {
+     "cue": "Evaluate the product.",
+     "why": "It is negative, so \\(g(0)<1<g(8)\\).",
+     "expression": -24,
+     "relation": "equivalent"
+    },
+    {
+     "cue": "The stem asks whether there must be such a value.",
+     "why": "Yes: by the Intermediate Value Theorem some \\(c\\) in \\((0,8)\\) has \\(g(c)=1\\)."
+    }
+   ],
+   "answer": {
+    "form": "statement",
+    "mathjson": "yes",
+    "text": "Yes. g is continuous because it is differentiable, and g(0) < 1 < g(8)."
+   },
+   "delivery": {
+    "mode": "step_reveal",
+    "reason": "rule 1",
+    "sources": []
+   }
+  },
+  {
+   "id": "LSN-CON-02008#err-BC-ERR-02011",
+   "type": "common_error",
+   "bands": [
+    "low",
+    "mid"
+   ],
+   "skills": [
+    "BC-SKL-02019",
+    "BC-SKL-02020"
+   ],
+   "sources": [
+    "BC-ERR-02011",
+    "BC-MIS-02005"
+   ],
+   "evidence_tag": "inferred",
+   "error_id": "BC-ERR-02011",
+   "observed_behavior": "The response states that the function is continuous without saying that it is continuous because it is differentiable.",
+   "scoring_consequence": "The continuity point requires the reason; a bare statement that the function is continuous does not earn it (sg-25:12).",
+   "wrong_step": {
+    "text": "\\(g\\) is continuous, so the limit is \\(3g(2)+5=-1\\).",
+    "expression": -1
+   },
+   "right_step": {
+    "text": "\\(g\\) is differentiable, so continuous at 2, and the limit is \\(3g(2)+5=-1\\).",
+    "expression": -1
+   },
+   "relation": "equivalent",
+   "possible_reason": {
+    "misconception_id": "BC-MIS-02005",
+    "text": "continuity is asserted rather than derived from the differentiability stated in the stem"
+   },
+   "delivery": {
+    "mode": "step_reveal",
+    "reason": "rule 1",
+    "sources": []
+   }
+  },
+  {
+   "id": "LSN-CON-02008#err-BC-ERR-02012",
+   "type": "common_error",
+   "bands": [
+    "low",
+    "mid"
+   ],
+   "skills": [
+    "BC-SKL-02019"
+   ],
+   "sources": [
+    "BC-ERR-02012",
+    "BC-MIS-02006"
+   ],
+   "evidence_tag": "inferred",
+   "error_id": "BC-ERR-02012",
+   "observed_behavior": "The response concludes that a function is differentiable at a point because it is continuous there.",
+   "scoring_consequence": "A justification point is lost because the claim is not supported by the theorem.",
+   "wrong_step": {
+    "text": "\\(g\\) is continuous at 2, so \\(g\\) is differentiable at 2, and the limit is \\(-1\\).",
+    "expression": -1
+   },
+   "right_step": {
+    "text": "\\(g\\) is differentiable at 2, so \\(g\\) is continuous at 2, and the limit is \\(3g(2)+5\\).",
+    "expression": -1
+   },
+   "relation": "equivalent",
+   "possible_reason": {
+    "misconception_id": "BC-MIS-02006",
+    "text": "the implication as running in both directions"
+   },
+   "delivery": {
+    "mode": "step_reveal",
+    "reason": "rule 1",
+    "sources": []
+   }
+  },
+  {
+   "id": "LSN-CON-02008#err-BC-ERR-99008",
+   "type": "common_error",
+   "bands": [
+    "low",
+    "mid"
+   ],
+   "skills": [
+    "BC-SKL-02020"
+   ],
+   "sources": [
+    "BC-ERR-99008",
+    "BC-MIS-99009"
+   ],
+   "evidence_tag": "inferred",
+   "error_id": "BC-ERR-99008",
+   "observed_behavior": "Responses apply the Mean Value Theorem, the Intermediate Value Theorem or L'Hospital's Rule without establishing continuity from differentiability, without bounding the target value between two function values, or without confirming the indeterminate form.",
+   "scoring_consequence": "The condition point is not earned; in several years this was the point earned by the smallest proportion of responses on the question.",
+   "wrong_step": {
+    "text": "On ex-2: yes, by the Intermediate Value Theorem, since \\(g(0)<1<g(8)\\).",
+    "expression": -24
+   },
+   "right_step": {
+    "text": "\\(g\\) is differentiable, so continuous on \\([0,8]\\); \\(g(0)<1<g(8)\\), so yes.",
+    "expression": -24
+   },
+   "relation": "equivalent",
+   "possible_reason": {
+    "misconception_id": "BC-MIS-99009",
+    "text": "continuity is asserted rather than derived from differentiability"
+   },
+   "delivery": {
+    "mode": "step_reveal",
+    "reason": "rule 1",
+    "sources": []
+   }
+  },
+  {
+   "id": "LSN-CON-02008#s6",
+   "type": "representations",
+   "bands": [
+    "low"
+   ],
+   "skills": [
+    "BC-SKL-02019",
+    "BC-SKL-02020",
+    "BC-SKL-02024"
+   ],
+   "sources": [
+    "BC-CON-02008"
+   ],
+   "evidence_tag": "inferred",
+   "text": "By the contrapositive: where the graph breaks, the function is not continuous, so it has no derivative there.",
+   "figure": {
+    "kind": "graph",
+    "curves": [
+     {
+      "expr": "x + 1",
+      "domain": [
+       -1,
+       1
+      ]
+     },
+     {
+      "expr": "x + 3",
+      "domain": [
+       1,
+       3
+      ]
+     }
+    ],
+    "points": [
+     {
+      "at": [
+       1,
+       2
+      ],
+      "style": "open"
+     },
+     {
+      "at": [
+       1,
+       4
+      ],
+      "style": "filled"
+     }
+    ],
+    "labels": [
+     {
+      "text": "jump at x = 1",
+      "placement": "inside"
+     },
+     {
+      "text": "not continuous, so no derivative at x = 1",
+      "placement": "inside"
+     }
+    ]
+   },
+   "delivery": {
+    "mode": "figure",
+    "reason": "rule 3: BC-REP-02 on BC-SKL-02024, a discontinuity concluding non-differentiability; unit README delivery map; nothing varies, so no promotion",
+    "sources": [
+     "BC-SKL-02024"
+    ],
+    "spec": {
+     "kind": "graph",
+     "window": {
+      "x": [
+       -1,
+       3
+      ],
+      "y": [
+       0,
+       6
+      ]
+     },
+     "curves": [
+      {
+       "expr": "x + 1",
+       "domain": [
+        -1,
+        1
+       ]
+      },
+      {
+       "expr": "x + 3",
+       "domain": [
+        1,
+        3
+       ]
+      }
+     ],
+     "points": [
+      {
+       "at": [
+        1,
+        2
+       ],
+       "style": "open"
+      },
+      {
+       "at": [
+        1,
+        4
+       ],
+       "style": "filled"
+      }
+     ],
+     "labels": [
+      {
+       "text": "jump at x = 1",
+       "placement": "inside"
+      },
+      {
+       "text": "not continuous, so no derivative at x = 1",
+       "placement": "inside"
+      }
+     ]
+    },
+    "fallback": "Alt text: a line with a jump from height 2 to height 4 at x = 1, and the sentence that a function not continuous at 1 has no derivative there.",
+    "keyboard": "none needed: a static figure; its description is reached with Tab"
+   }
+  }
+ ],
+ "checks": [
+  {
+   "id": "LSN-CON-02008#chk-1",
+   "check_kind": "completion",
+   "bands": [
+    "low",
+    "mid"
+   ],
+   "format": "short_answer",
+   "archetype_id": "BC-QA-02004",
+   "parameter_draw": {
+    "inputs": [
+     "0",
+     "2",
+     "5",
+     "8"
+    ],
+    "values": [
+     "-3",
+     "-2",
+     "3",
+     "7"
+    ],
+    "slopes": [
+     "1",
+     "-3",
+     "2",
+     "4"
+    ],
+    "scale": "3",
+    "offset": "5",
+    "target": "1",
+    "argument": "limit"
+   },
+   "completes": "LSN-CON-02008#s4",
+   "stem": {
+    "text": "\\(g\\) is differentiable, so \\(g\\) is continuous at 2 and \\(\\lim_{x\\to2}(3g(x)+5)=3g(2)+5\\), with \\(g(2)=-2\\). Write the value of the limit.",
+    "command_verb": "write"
+   },
+   "answer_key": {
+    "form": "numeric",
+    "mathjson": -1
+   },
+   "worked_solution": [
+    {
+     "step": 1,
+     "text": "By continuity the limit is \\(3g(2)+5\\).",
+     "mathjson": -1,
+     "relation": "new"
+    },
+    {
+     "step": 2,
+     "text": "That is \\(-1\\).",
+     "mathjson": -1,
+     "relation": "equivalent"
+    }
+   ],
+   "calculator_status": "no_calculator",
+   "representation": "BC-REP-04",
+   "skills": [
+    "BC-SKL-02020"
+   ]
+  },
+  {
+   "id": "LSN-CON-02008#chk-2",
+   "check_kind": "isomorph",
+   "bands": [
+    "low",
+    "mid"
+   ],
+   "format": "short_answer",
+   "archetype_id": "BC-QA-02004",
+   "parameter_draw": {
+    "inputs": [
+     "1",
+     "3",
+     "4",
+     "6"
+    ],
+    "values": [
+     "-5",
+     "-4",
+     "2",
+     "4"
+    ],
+    "slopes": [
+     "2",
+     "-1",
+     "3",
+     "0"
+    ],
+    "scale": "2",
+    "offset": "-1",
+    "target": "0",
+    "argument": "limit"
+   },
+   "stem": {
+    "text": "\\(g\\) is differentiable for all \\(x\\), with \\(g(3)=-4\\) and \\(g'(3)=-1\\). Find \\(\\lim_{x\\to3}(2g(x)-1)\\).",
+    "command_verb": "find"
+   },
+   "answer_key": {
+    "form": "numeric",
+    "mathjson": -9
+   },
+   "worked_solution": [
+    {
+     "step": 1,
+     "text": "\\(g\\) is differentiable, so continuous at 3, and the limit is \\(2g(3)-1\\).",
+     "mathjson": -9,
+     "relation": "new"
+    },
+    {
+     "step": 2,
+     "text": "That is \\(-9\\).",
+     "mathjson": -9,
+     "relation": "equivalent"
+    }
+   ],
+   "calculator_status": "no_calculator",
+   "representation": "BC-REP-04",
+   "skills": [
+    "BC-SKL-02020"
+   ]
+  },
+  {
+   "id": "LSN-CON-02008#chk-3",
+   "check_kind": "mcq",
+   "bands": [
+    "low"
+   ],
+   "format": "mcq",
+   "archetype_id": "BC-QA-02004",
+   "parameter_draw": {
+    "inputs": [
+     "1",
+     "3",
+     "4",
+     "6"
+    ],
+    "values": [
+     "-5",
+     "-4",
+     "2",
+     "4"
+    ],
+    "slopes": [
+     "2",
+     "-1",
+     "3",
+     "0"
+    ],
+    "scale": "2",
+    "offset": "-1",
+    "target": "0",
+    "argument": "existence"
+   },
+   "stem": {
+    "text": "\\(g\\) is differentiable for all \\(x\\), \\(g(1)=-5\\) and \\(g(6)=4\\). Which response justifies that \\(g(c)=0\\) for some \\(c\\) in \\((1,6)\\)?",
+    "command_verb": "choose"
+   },
+   "answer_key": {
+    "form": "statement",
+    "mathjson": "D",
+    "text": "g is differentiable, so continuous on [1,6], and g(1) < 0 < g(6)."
+   },
+   "worked_solution": [
+    {
+     "step": 1,
+     "text": "The differences from the target have product \\((-5-0)(4-0)\\).",
+     "mathjson": -20,
+     "relation": "new"
+    },
+    {
+     "step": 2,
+     "text": "It is negative, so 0 lies between \\(g(1)\\) and \\(g(6)\\).",
+     "mathjson": -20,
+     "relation": "equivalent"
+    }
+   ],
+   "options": [
+    {
+     "id": "A",
+     "is_key": false,
+     "error_path": "BC-ERR-02011",
+     "label": "Yes: \\(g\\) is continuous and \\(g(1)<0<g(6)\\).",
+     "derivation": "continuity stated with no reason"
+    },
+    {
+     "id": "B",
+     "is_key": false,
+     "error_path": "BC-ERR-02012",
+     "label": "Yes: \\(g\\) is continuous, so \\(g\\) is differentiable, and \\(g(1)<0<g(6)\\).",
+     "derivation": "the implication run from continuity to differentiability"
+    },
+    {
+     "id": "C",
+     "is_key": false,
+     "error_path": "BC-ERR-99008",
+     "label": "Yes, by the Intermediate Value Theorem, since \\(g(1)<0<g(6)\\).",
+     "derivation": "the theorem applied without establishing continuity"
+    },
+    {
+     "id": "D",
+     "is_key": true,
+     "error_path": null,
+     "label": "Yes: \\(g\\) is differentiable, so \\(g\\) is continuous on \\([1,6]\\), and \\(g(1)<0<g(6)\\)."
+    }
+   ],
+   "calculator_status": "no_calculator",
+   "representation": "BC-REP-04",
+   "skills": [
+    "BC-SKL-02020"
+   ]
+  }
+ ],
+ "refresher": [
+  "LSN-CON-02008#s2",
+  "LSN-CON-02008#err-BC-ERR-02011",
+  "LSN-CON-02008#err-BC-ERR-02012",
+  "LSN-CON-02008#err-BC-ERR-99008",
+  "LSN-CON-02008#s4"
+ ],
+ "provenance": {
+  "author": "tools/lesson_transcribe.py",
+  "prompt_version": "generator/lesson_v1",
+  "design_path": "docs/lessons/unit-02/LSN-CON-02008.md",
+  "signed_off_by": "claude-opus-5-5",
+  "signed_off_at": "2026-09-29",
+  "not_human": true
+ }
+}

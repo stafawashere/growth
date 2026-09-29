@@ -1,0 +1,766 @@
+{
+ "id": "LSN-CON-01009",
+ "version": 1,
+ "kind": "concept",
+ "target_id": "BC-CON-01009",
+ "status": "signed_off",
+ "snapshot_digest": "a6a8ec9d3f59ab8f712e33d30cc22fc64bf2c478fbe7312e3e3118d319c6a42f",
+ "source_digest": "d1d1dc3f91a935f9d1d1ebcb1657ce5a0e1eaeee488fda12ee055503429be81e",
+ "read_minutes": {
+  "full": 4.0,
+  "brief": 3.0
+ },
+ "word_count": {
+  "full": 483,
+  "brief": 379
+ },
+ "sections": [
+  {
+   "id": "LSN-CON-01009#s1",
+   "type": "orientation",
+   "bands": [
+    "low",
+    "mid"
+   ],
+   "skills": [
+    "BC-SKL-01029",
+    "BC-SKL-01030",
+    "BC-SKL-01031"
+   ],
+   "sources": [
+    "BC-CON-01009",
+    "research/units/unit-01-limits-continuity.md#1.7 Selecting Procedures for Determining Limits"
+   ],
+   "evidence_tag": "inferred",
+   "text": "A response substitutes the target first and names what comes out: a value, zero over zero, or a nonzero number over zero. That form picks the procedure: a value is the answer, zero over zero calls for rewriting, nonzero over zero calls for the sign on each side.",
+   "delivery": {
+    "mode": "text",
+    "reason": "rule 5: BC-SKL-01029 to 01031 carry BC-REP-01 and BC-REP-04 only (unit-01 README delivery map)",
+    "sources": [
+     "BC-SKL-01030"
+    ]
+   }
+  },
+  {
+   "id": "LSN-CON-01009#s2",
+   "type": "key_ideas",
+   "bands": [
+    "low",
+    "mid"
+   ],
+   "skills": [
+    "BC-SKL-01029",
+    "BC-SKL-01030",
+    "BC-SKL-01031"
+   ],
+   "sources": [
+    "ced:44",
+    "research/units/unit-01-limits-continuity.md#1.7 Selecting Procedures for Determining Limits"
+   ],
+   "evidence_tag": "verified",
+   "ek_id": null,
+   "depth": "core",
+   "text": "Substituting the target gives one of three forms. A determinate value is the limit; rewriting stops there. Zero over zero calls for rewriting. A nonzero number over zero calls for the sign on each side. L'Hospital's rule is not in the Unit 1 set; it enters at topic 4.7.",
+   "notation": "the classification stated in words before any computation",
+   "quote": {
+    "text": "This topic is intended to focus on the skill of selecting an appropriate procedure for determining limits.",
+    "source": "ced:44"
+   },
+   "delivery": {
+    "mode": "text",
+    "reason": "rule 5: a classification rule with no figure-bearing BC-REP",
+    "sources": [
+     "BC-SKL-01029"
+    ]
+   }
+  },
+  {
+   "id": "LSN-CON-01009#s3",
+   "type": "strategy",
+   "bands": [
+    "low",
+    "mid"
+   ],
+   "skills": [
+    "BC-SKL-01029",
+    "BC-SKL-01030",
+    "BC-SKL-01031"
+   ],
+   "sources": [
+    "BC-QA-01014"
+   ],
+   "evidence_tag": "inferred",
+   "archetype_id": "BC-QA-01014",
+   "cue": "For each given limit, identify a method and use it: the stem names no method.",
+   "method": "First line: substitute the target and classify the form.",
+   "rival": "Rival: dividing the numerator limit by a zero denominator limit (BC-ERR-01006).",
+   "separating_feature": "The quotient theorem needs a nonzero denominator limit; zero there sends the choice to rewriting or signs."
+  },
+  {
+   "id": "LSN-CON-01009#s4",
+   "type": "worked_example",
+   "bands": [
+    "low",
+    "mid"
+   ],
+   "skills": [
+    "BC-SKL-01029",
+    "BC-SKL-01030",
+    "BC-SKL-01031"
+   ],
+   "sources": [
+    "BC-QA-01014"
+   ],
+   "evidence_tag": "inferred",
+   "archetype_id": "BC-QA-01014",
+   "parameter_draw": {
+    "target": -2,
+    "top_root": 1,
+    "bottom_root": 3,
+    "root_value": 1,
+    "lead_top": 2,
+    "lead_bottom": 3,
+    "form": "factor",
+    "pole_power": 1
+   },
+   "problem": {
+    "text": "Identify a method for \\(\\lim_{x\\to-2}\\frac{x^2+x-2}{x^2-x-6}\\) and use it.",
+    "command_verb": "find"
+   },
+   "calculator_status": "no_calculator",
+   "steps": [
+    {
+     "cue": "No method is named, so substitute the target first.",
+     "why": "Top: \\(4-2-2=0\\). Bottom: \\(4+2-6=0\\).",
+     "expression": [
+      "Multiply",
+      [
+       "Power",
+       [
+        "Add",
+        -6,
+        [
+         "Power",
+         "x",
+         2
+        ],
+        [
+         "Multiply",
+         -1,
+         "x"
+        ]
+       ],
+       -1
+      ],
+      [
+       "Add",
+       -2,
+       "x",
+       [
+        "Power",
+        "x",
+        2
+       ]
+      ]
+     ],
+     "relation": "new"
+    },
+    {
+     "cue": "Both parts are 0: the form is zero over zero.",
+     "why": "Zero over zero is indeterminate, so the procedure is rewriting; both polynomials factor."
+    },
+    {
+     "cue": "Each polynomial vanishes at \\(-2\\), so each holds \\(x+2\\).",
+     "why": "Dividing out \\(x+2\\) is valid for every \\(x\\ne-2\\).",
+     "expression": [
+      "Multiply",
+      [
+       "Power",
+       [
+        "Add",
+        -3,
+        "x"
+       ],
+       -1
+      ],
+      [
+       "Add",
+       -1,
+       "x"
+      ]
+     ],
+     "relation": "equivalent"
+    },
+    {
+     "cue": "The new quotient is defined at \\(-2\\): substitution now settles it.",
+     "why": "\\(\\frac{-3}{-5}=\\frac{3}{5}\\).",
+     "expression": [
+      "Rational",
+      3,
+      5
+     ],
+     "relation": "limit",
+     "variable": "x",
+     "point": "-2"
+    }
+   ],
+   "answer": {
+    "form": "numeric",
+    "mathjson": [
+     "Rational",
+     3,
+     5
+    ]
+   },
+   "delivery": {
+    "mode": "step_reveal",
+    "reason": "rule 1",
+    "sources": []
+   }
+  },
+  {
+   "id": "LSN-CON-01009#err-BC-ERR-01003",
+   "type": "common_error",
+   "bands": [
+    "low",
+    "mid"
+   ],
+   "skills": [
+    "BC-SKL-01029"
+   ],
+   "sources": [
+    "BC-ERR-01003",
+    "BC-MIS-01001"
+   ],
+   "evidence_tag": "inferred",
+   "error_id": "BC-ERR-01003",
+   "observed_behavior": "The response states that the limit does not exist on the grounds that the function has no value at the input.",
+   "scoring_consequence": "Both the value point and any justification point are lost.",
+   "wrong_step": {
+    "text": "The quotient is undefined at \\(-2\\), so the limit is reported not to exist.",
+    "expression": "NaN"
+   },
+   "right_step": {
+    "text": "The limit uses inputs near \\(-2\\) only: \\(\\frac{3}{5}\\).",
+    "expression": [
+     "Rational",
+     3,
+     5
+    ]
+   },
+   "relation": "distinct",
+   "possible_reason": {
+    "misconception_id": "BC-MIS-01001",
+    "text": "a missing or displaced function value is read as a missing or displaced limit"
+   },
+   "delivery": {
+    "mode": "step_reveal",
+    "reason": "rule 1",
+    "sources": []
+   }
+  },
+  {
+   "id": "LSN-CON-01009#err-BC-ERR-01006",
+   "type": "common_error",
+   "bands": [
+    "low",
+    "mid"
+   ],
+   "skills": [
+    "BC-SKL-01029"
+   ],
+   "sources": [
+    "BC-ERR-01006",
+    "BC-MIS-01005"
+   ],
+   "evidence_tag": "inferred",
+   "error_id": "BC-ERR-01006",
+   "observed_behavior": "The response divides the limit of the numerator by the limit of the denominator although the denominator limit is zero.",
+   "scoring_consequence": "The value point is lost and any justification naming the theorem is incorrect.",
+   "wrong_step": {
+    "text": "The quotient theorem gives \\(\\frac{0}{0}\\).",
+    "expression": "NaN"
+   },
+   "right_step": {
+    "text": "The denominator limit is 0, so the theorem does not apply; rewrite to \\(\\frac{3}{5}\\).",
+    "expression": [
+     "Rational",
+     3,
+     5
+    ]
+   },
+   "relation": "distinct",
+   "possible_reason": {
+    "misconception_id": "BC-MIS-01005",
+    "text": "applies the quotient and composite theorems as formal rules without the denominator condition"
+   },
+   "delivery": {
+    "mode": "step_reveal",
+    "reason": "rule 1",
+    "sources": []
+   }
+  },
+  {
+   "id": "LSN-CON-01009#err-BC-ERR-01008",
+   "type": "common_error",
+   "bands": [
+    "low",
+    "mid"
+   ],
+   "skills": [
+    "BC-SKL-01029"
+   ],
+   "sources": [
+    "BC-ERR-01008",
+    "BC-MIS-01006"
+   ],
+   "evidence_tag": "inferred",
+   "error_id": "BC-ERR-01008",
+   "observed_behavior": "The response reports zero because the numerator tends to zero, without attending to the denominator.",
+   "scoring_consequence": "The value point is lost and the rewriting step is absent.",
+   "wrong_step": {
+    "text": "The numerator tends to 0, so 0 is reported.",
+    "expression": 0
+   },
+   "right_step": {
+    "text": "Both parts tend to 0, so rewrite: \\(\\frac{3}{5}\\).",
+    "expression": [
+     "Rational",
+     3,
+     5
+    ]
+   },
+   "relation": "distinct",
+   "possible_reason": {
+    "misconception_id": "BC-MIS-01006",
+    "text": "the symbol zero over zero as an answer, reading it as zero"
+   },
+   "delivery": {
+    "mode": "step_reveal",
+    "reason": "rule 1",
+    "sources": []
+   }
+  },
+  {
+   "id": "LSN-CON-01009#err-BC-ERR-01009",
+   "type": "common_error",
+   "bands": [
+    "low",
+    "mid"
+   ],
+   "skills": [
+    "BC-SKL-01029",
+    "BC-SKL-01030"
+   ],
+   "sources": [
+    "BC-ERR-01009",
+    "BC-MIS-01006"
+   ],
+   "evidence_tag": "inferred",
+   "error_id": "BC-ERR-01009",
+   "observed_behavior": "The response states that the limit does not exist because substitution gives zero over zero.",
+   "scoring_consequence": "The value point and the rewriting point are lost.",
+   "wrong_step": {
+    "text": "Zero over zero is reported as no limit.",
+    "expression": "NaN"
+   },
+   "right_step": {
+    "text": "Zero over zero calls for rewriting: \\(\\frac{3}{5}\\).",
+    "expression": [
+     "Rational",
+     3,
+     5
+    ]
+   },
+   "relation": "distinct",
+   "possible_reason": {
+    "misconception_id": "BC-MIS-01006",
+    "text": "a nonexistence verdict rather than as a signal to rewrite"
+   },
+   "delivery": {
+    "mode": "step_reveal",
+    "reason": "rule 1",
+    "sources": []
+   }
+  },
+  {
+   "id": "LSN-CON-01009#prq-BC-PRQ-01001",
+   "type": "prerequisite_bridge",
+   "bands": [
+    "low",
+    "mid"
+   ],
+   "skills": [
+    "BC-SKL-01029",
+    "BC-SKL-01030"
+   ],
+   "sources": [
+    "BC-PRQ-01001"
+   ],
+   "evidence_tag": "inferred",
+   "prerequisite_id": "BC-PRQ-01001",
+   "text": "Factor, then cancel a common factor. Stopping at zero over zero unfactored marks this gap."
+  },
+  {
+   "id": "LSN-CON-01009#prq-BC-PRQ-01008",
+   "type": "prerequisite_bridge",
+   "bands": [
+    "low",
+    "mid"
+   ],
+   "skills": [
+    "BC-SKL-01031"
+   ],
+   "sources": [
+    "BC-PRQ-01008"
+   ],
+   "evidence_tag": "inferred",
+   "prerequisite_id": "BC-PRQ-01008",
+   "text": "State where an expression is defined, including zeros of a denominator. Counting points outside the domain marks this gap."
+  }
+ ],
+ "checks": [
+  {
+   "id": "LSN-CON-01009#chk-1",
+   "check_kind": "completion",
+   "bands": [
+    "low",
+    "mid"
+   ],
+   "format": "short_answer",
+   "archetype_id": "BC-QA-01014",
+   "parameter_draw": {
+    "target": -2,
+    "top_root": 1,
+    "bottom_root": 3,
+    "root_value": 1,
+    "lead_top": 2,
+    "lead_bottom": 3,
+    "form": "factor",
+    "pole_power": 1
+   },
+   "completes": "LSN-CON-01009#s4",
+   "stem": {
+    "text": "The form is zero over zero and factoring leaves \\(\\frac{x-1}{x-3}\\) for \\(x\\ne-2\\). Find the limit at \\(-2\\).",
+    "command_verb": "find"
+   },
+   "answer_key": {
+    "form": "numeric",
+    "mathjson": [
+     "Rational",
+     3,
+     5
+    ]
+   },
+   "worked_solution": [
+    {
+     "step": 1,
+     "text": "The rewritten quotient \\(\\frac{x-1}{x-3}\\).",
+     "mathjson": [
+      "Multiply",
+      [
+       "Power",
+       [
+        "Add",
+        -3,
+        "x"
+       ],
+       -1
+      ],
+      [
+       "Add",
+       -1,
+       "x"
+      ]
+     ],
+     "relation": "new"
+    },
+    {
+     "step": 2,
+     "text": "Substitution gives \\(\\frac{3}{5}\\).",
+     "mathjson": [
+      "Rational",
+      3,
+      5
+     ],
+     "relation": "limit",
+     "variable": "x",
+     "point": "-2"
+    }
+   ],
+   "calculator_status": "no_calculator",
+   "representation": "BC-REP-01",
+   "skills": [
+    "BC-SKL-01030"
+   ]
+  },
+  {
+   "id": "LSN-CON-01009#chk-2",
+   "check_kind": "isomorph",
+   "bands": [
+    "low",
+    "mid"
+   ],
+   "format": "short_answer",
+   "archetype_id": "BC-QA-01014",
+   "parameter_draw": {
+    "target": 1,
+    "top_root": -4,
+    "bottom_root": 5,
+    "root_value": 3,
+    "lead_top": 1,
+    "lead_bottom": 2,
+    "form": "factor",
+    "pole_power": 2
+   },
+   "stem": {
+    "text": "Identify a method for \\(\\lim_{x\\to1}\\frac{x^2+3x-4}{x^2-6x+5}\\) and use it.",
+    "command_verb": "find"
+   },
+   "answer_key": {
+    "form": "numeric",
+    "mathjson": [
+     "Rational",
+     -5,
+     4
+    ]
+   },
+   "worked_solution": [
+    {
+     "step": 1,
+     "text": "Substitution gives zero over zero.",
+     "mathjson": [
+      "Multiply",
+      [
+       "Power",
+       [
+        "Add",
+        5,
+        [
+         "Power",
+         "x",
+         2
+        ],
+        [
+         "Multiply",
+         -6,
+         "x"
+        ]
+       ],
+       -1
+      ],
+      [
+       "Add",
+       -4,
+       [
+        "Power",
+        "x",
+        2
+       ],
+       [
+        "Multiply",
+        3,
+        "x"
+       ]
+      ]
+     ],
+     "relation": "new"
+    },
+    {
+     "step": 2,
+     "text": "Divide out \\(x-1\\).",
+     "mathjson": [
+      "Multiply",
+      [
+       "Power",
+       [
+        "Add",
+        -5,
+        "x"
+       ],
+       -1
+      ],
+      [
+       "Add",
+       4,
+       "x"
+      ]
+     ],
+     "relation": "equivalent"
+    },
+    {
+     "step": 3,
+     "text": "Substitute 1.",
+     "mathjson": [
+      "Rational",
+      -5,
+      4
+     ],
+     "relation": "limit",
+     "variable": "x",
+     "point": "1"
+    }
+   ],
+   "calculator_status": "no_calculator",
+   "representation": "BC-REP-01",
+   "skills": [
+    "BC-SKL-01029",
+    "BC-SKL-01030"
+   ]
+  },
+  {
+   "id": "LSN-CON-01009#chk-3",
+   "check_kind": "mcq",
+   "bands": [
+    "low"
+   ],
+   "format": "mcq",
+   "archetype_id": "BC-QA-01014",
+   "parameter_draw": {
+    "target": 4,
+    "top_root": -1,
+    "bottom_root": 2,
+    "root_value": 2,
+    "lead_top": 3,
+    "lead_bottom": 1,
+    "form": "factor",
+    "pole_power": 1
+   },
+   "stem": {
+    "text": "Substitution into \\(\\frac{x^2-3x-4}{x^2-6x+8}\\) at \\(x=4\\) gives 0 over 0. Which step comes next?",
+    "command_verb": "identify"
+   },
+   "answer_key": {
+    "form": "statement",
+    "mathjson": "rewrite_by_factoring"
+   },
+   "worked_solution": [
+    {
+     "step": 1,
+     "text": "The quotient.",
+     "mathjson": [
+      "Multiply",
+      [
+       "Power",
+       [
+        "Add",
+        8,
+        [
+         "Power",
+         "x",
+         2
+        ],
+        [
+         "Multiply",
+         -6,
+         "x"
+        ]
+       ],
+       -1
+      ],
+      [
+       "Add",
+       -4,
+       [
+        "Power",
+        "x",
+        2
+       ],
+       [
+        "Multiply",
+        -3,
+        "x"
+       ]
+      ]
+     ],
+     "relation": "new"
+    },
+    {
+     "step": 2,
+     "text": "Divide out \\(x-4\\).",
+     "mathjson": [
+      "Multiply",
+      [
+       "Power",
+       [
+        "Add",
+        -2,
+        "x"
+       ],
+       -1
+      ],
+      [
+       "Add",
+       1,
+       "x"
+      ]
+     ],
+     "relation": "equivalent"
+    },
+    {
+     "step": 3,
+     "text": "Substitute 4.",
+     "mathjson": [
+      "Rational",
+      5,
+      2
+     ],
+     "relation": "limit",
+     "variable": "x",
+     "point": "4"
+    }
+   ],
+   "options": [
+    {
+     "id": "A",
+     "is_key": false,
+     "error_path": "BC-ERR-01008",
+     "label": "Report the limit as 0",
+     "derivation": "the numerator limit alone"
+    },
+    {
+     "id": "B",
+     "is_key": false,
+     "error_path": "BC-ERR-01009",
+     "label": "Report that the limit does not exist",
+     "derivation": "zero over zero read as nonexistence"
+    },
+    {
+     "id": "C",
+     "is_key": false,
+     "error_path": "BC-ERR-01006",
+     "label": "Divide the numerator limit by the denominator limit",
+     "derivation": "quotient theorem with a zero denominator limit"
+    },
+    {
+     "id": "D",
+     "is_key": true,
+     "error_path": null,
+     "label": "Factor, divide out \\(x-4\\), and substitute"
+    }
+   ],
+   "calculator_status": "no_calculator",
+   "representation": "BC-REP-01",
+   "skills": [
+    "BC-SKL-01029",
+    "BC-SKL-01030"
+   ]
+  }
+ ],
+ "refresher": [
+  "LSN-CON-01009#s2",
+  "LSN-CON-01009#err-BC-ERR-01003",
+  "LSN-CON-01009#err-BC-ERR-01006",
+  "LSN-CON-01009#err-BC-ERR-01008",
+  "LSN-CON-01009#err-BC-ERR-01009",
+  "LSN-CON-01009#s4"
+ ],
+ "provenance": {
+  "author": "tools/lesson_transcribe.py",
+  "prompt_version": "generator/lesson_v1",
+  "design_path": "docs/lessons/unit-01/LSN-CON-01009.md",
+  "signed_off_by": "claude-opus-5-5",
+  "signed_off_at": "2026-09-29",
+  "not_human": true
+ }
+}

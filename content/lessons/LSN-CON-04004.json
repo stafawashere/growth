@@ -1,0 +1,952 @@
+{
+ "id": "LSN-CON-04004",
+ "version": 1,
+ "kind": "concept",
+ "target_id": "BC-CON-04004",
+ "status": "signed_off",
+ "snapshot_digest": "a6a8ec9d3f59ab8f712e33d30cc22fc64bf2c478fbe7312e3e3118d319c6a42f",
+ "source_digest": "aeefa89eb66702a23c88c843faae7968035e08f5b393bfe45ff4b3f467a5fbbd",
+ "read_minutes": {
+  "full": 3.6,
+  "brief": 2.3
+ },
+ "word_count": {
+  "full": 416,
+  "brief": 269
+ },
+ "sections": [
+  {
+   "id": "LSN-CON-04004#s1",
+   "type": "orientation",
+   "bands": [
+    "low",
+    "mid"
+   ],
+   "skills": [
+    "BC-SKL-04008",
+    "BC-SKL-04009",
+    "BC-SKL-04011"
+   ],
+   "sources": [
+    "BC-CON-04004",
+    "research/units/unit-04-contextual-applications-differentiation.md#4.2 Straight-Line Motion: Connecting Position, Velocity, and Acceleration"
+   ],
+   "evidence_tag": "inferred",
+   "text": "The sign of velocity gives the direction of motion; speed is its size with the sign removed. For intervals of a direction, a response solves v(t) = 0, reads the sign on each piece, and covers the whole stated interval.",
+   "delivery": {
+    "mode": "text",
+    "reason": "rule 5 for a statement of what a response shows; the figure-bearing BC-REP-02 is served once, on ki-1",
+    "sources": [
+     "BC-SKL-04009"
+    ]
+   }
+  },
+  {
+   "id": "LSN-CON-04004#s2",
+   "type": "key_ideas",
+   "bands": [
+    "low",
+    "mid"
+   ],
+   "skills": [
+    "BC-SKL-04008",
+    "BC-SKL-04009",
+    "BC-SKL-04011"
+   ],
+   "sources": [
+    "BC-EK-CHA-3B1",
+    "ced:88",
+    "crabbc-25:22",
+    "research/units/unit-04-contextual-applications-differentiation.md#4.2 Straight-Line Motion: Connecting Position, Velocity, and Acceleration"
+   ],
+   "evidence_tag": "inferred",
+   "ek_id": "BC-EK-CHA-3B1",
+   "depth": "core",
+   "text": "Velocity positive: moving right; negative: moving left; zero: at rest. Speed is \\(|v(t)|\\), never negative. The zeros of \\(v\\) split the interval and the sign is constant between consecutive zeros, so the conclusion rests on solved zeros, not sampled inputs (crabbc-25:22).",
+   "notation": "speed equals the absolute value of v of t",
+   "delivery": {
+    "mode": "interactive",
+    "reason": "rule 3 promoted: BC-REP-02 in BC-SKL-04009 representations; BC-QA-04004 difficulty_variables name a non-integer zero and more than one sign change, and the stem asks for intervals of a direction",
+    "sources": [
+     "BC-SKL-04009",
+     "BC-QA-04004"
+    ],
+    "spec": {
+     "kind": "particle_on_line",
+     "representations": [
+      "BC-REP-02",
+      "BC-REP-01"
+     ],
+     "position": "(t - 2)^2 (t - 4)",
+     "velocity": "(t - 2)(3t - 10)",
+     "window": {
+      "t": [
+       0,
+       8
+      ],
+      "x": [
+       -2,
+       25
+      ]
+     },
+     "controls": [
+      {
+       "type": "slider",
+       "variable": "t",
+       "range": [
+        0,
+        8
+       ],
+       "step": 0.1,
+       "start": 1
+      }
+     ],
+     "drawn": [
+      "the particle as a point on a horizontal line at x(t)",
+      "an arrow showing the direction of v(t)",
+      "the value of v(t) at the slider"
+     ],
+     "labels": [
+      {
+       "text": "v(t) > 0: moving right",
+       "placement": "inside"
+      },
+      {
+       "text": "v(t) < 0: moving left",
+       "placement": "inside"
+      },
+      {
+       "text": "v = 0 at t = 2 and t = 10/3",
+       "placement": "inside"
+      },
+      {
+       "text": "speed = |v(t)|",
+       "placement": "inside"
+      }
+     ],
+     "question": "On which intervals of 0 < t < 8 is the particle moving left?"
+    },
+    "fallback": "the static line with the sign intervals of v labelled inside: right on (0, 2), left on (2, 10/3), right on (10/3, 8)",
+    "keyboard": "Tab focuses the slider; left and right arrow keys step t by 0.1; Enter reads out v(t) and the direction"
+   }
+  },
+  {
+   "id": "LSN-CON-04004#s3",
+   "type": "strategy",
+   "bands": [
+    "low",
+    "mid"
+   ],
+   "skills": [
+    "BC-SKL-04009",
+    "BC-SKL-04011"
+   ],
+   "sources": [
+    "BC-QA-04004"
+   ],
+   "evidence_tag": "verified",
+   "archetype_id": "BC-QA-04004",
+   "cue": "A position or velocity function on an open interval; the stem asks when the particle moves a stated way.",
+   "method": "First line: \\(v(t)=0\\), solved on the interval.",
+   "rival": "Rival: integer times sampled (BC-ERR-04010), or direction read from the position (BC-ERR-04008).",
+   "separating_feature": "The word interval: only solved zeros can bound it."
+  },
+  {
+   "id": "LSN-CON-04004#s4",
+   "type": "strategy",
+   "bands": [
+    "low",
+    "mid"
+   ],
+   "skills": [
+    "BC-SKL-04011"
+   ],
+   "sources": [
+    "BC-QA-04010"
+   ],
+   "evidence_tag": "verified",
+   "archetype_id": "BC-QA-04010",
+   "cue": "Velocity and the position at one time given; position at another time asked.",
+   "method": "First line: position equals the known position plus the integral of velocity.",
+   "rival": "Rival: the integral reported as the position (BC-ERR-08011).",
+   "separating_feature": "A known position is supplied beside the velocity."
+  },
+  {
+   "id": "LSN-CON-04004#s5",
+   "type": "worked_example",
+   "bands": [
+    "low",
+    "mid"
+   ],
+   "skills": [
+    "BC-SKL-04009",
+    "BC-SKL-04011"
+   ],
+   "sources": [
+    "BC-QA-04004"
+   ],
+   "evidence_tag": "inferred",
+   "archetype_id": "BC-QA-04004",
+   "parameter_draw": {
+    "double_root": 2,
+    "single_root": 4,
+    "size": 1,
+    "leading": "positive",
+    "horizon": 8,
+    "direction": "left",
+    "time_units": "seconds"
+   },
+   "problem": {
+    "text": "A particle's position is \\(x(t)=(t-2)^2(t-4)\\) for \\(0<t<8\\) seconds. Find every interval on which the particle moves left.",
+    "command_verb": "find"
+   },
+   "calculator_status": "no_calculator",
+   "steps": [
+    {
+     "cue": "Direction asked: velocity decides.",
+     "why": "Position is given.",
+     "expression": [
+      "Multiply",
+      [
+       "Power",
+       [
+        "Add",
+        -2,
+        "t"
+       ],
+       2
+      ],
+      [
+       "Add",
+       -4,
+       "t"
+      ]
+     ],
+     "relation": "new"
+    },
+    {
+     "cue": "Differentiate position.",
+     "why": "\\(v(t)=(t-2)(3t-10)\\).",
+     "expression": [
+      "Multiply",
+      [
+       "Add",
+       -10,
+       [
+        "Multiply",
+        3,
+        "t"
+       ]
+      ],
+      [
+       "Add",
+       -2,
+       "t"
+      ]
+     ],
+     "relation": "differentiate",
+     "variable": "t"
+    },
+    {
+     "cue": "Interval asked: solve \\(v(t)=0\\).",
+     "why": "\\(10/3\\) is not an integer.",
+     "expression": [
+      "Set",
+      2,
+      [
+       "Rational",
+       10,
+       3
+      ]
+     ],
+     "relation": "solve",
+     "variable": "t"
+    },
+    {
+     "cue": "Sign on each piece.",
+     "why": "\\(v>0\\) on \\((0,2)\\), \\(v<0\\) on \\((2,10/3)\\), \\(v>0\\) on \\((10/3,8)\\)."
+    },
+    {
+     "cue": "Left means \\(v<0\\).",
+     "why": "Stated in words for the whole interval.",
+     "expression": [
+      "Interval",
+      [
+       "Open",
+       2
+      ],
+      [
+       "Open",
+       [
+        "Rational",
+        10,
+        3
+       ]
+      ]
+     ],
+     "relation": "new"
+    }
+   ],
+   "answer": {
+    "form": "symbolic",
+    "mathjson": [
+     "Interval",
+     [
+      "Open",
+      2
+     ],
+     [
+      "Open",
+      [
+       "Rational",
+       10,
+       3
+      ]
+     ]
+    ]
+   },
+   "delivery": {
+    "mode": "step_reveal",
+    "reason": "rule 1",
+    "sources": []
+   }
+  },
+  {
+   "id": "LSN-CON-04004#err-BC-ERR-04007",
+   "type": "common_error",
+   "bands": [
+    "low",
+    "mid"
+   ],
+   "skills": [
+    "BC-SKL-04008"
+   ],
+   "sources": [
+    "BC-ERR-04007",
+    "BC-MIS-04005"
+   ],
+   "evidence_tag": "inferred",
+   "error_id": "BC-ERR-04007",
+   "observed_behavior": "A negative number is reported as the speed of the particle.",
+   "scoring_consequence": "The answer point is lost.",
+   "wrong_step": {
+    "text": "Speed at \\(t=3\\) is \\(-1\\).",
+    "expression": -1
+   },
+   "right_step": {
+    "text": "Speed is \\(|v(3)|=1\\).",
+    "expression": 1
+   },
+   "relation": "distinct",
+   "possible_reason": {
+    "misconception_id": "BC-MIS-04005",
+    "text": "reported as part of a speed"
+   },
+   "delivery": {
+    "mode": "step_reveal",
+    "reason": "rule 1",
+    "sources": []
+   }
+  },
+  {
+   "id": "LSN-CON-04004#err-BC-ERR-04008",
+   "type": "common_error",
+   "bands": [
+    "low",
+    "mid"
+   ],
+   "skills": [
+    "BC-SKL-04009"
+   ],
+   "sources": [
+    "BC-ERR-04008"
+   ],
+   "evidence_tag": "inferred",
+   "error_id": "BC-ERR-04008",
+   "observed_behavior": "The response argues the direction of travel from whether the position is positive or negative.",
+   "scoring_consequence": "The reasoning point is lost; the 2022 Chief Reader report records responses arguing from the wrong function in a related part (cr-22:20).",
+   "wrong_step": {
+    "text": "Left where \\(x(t)<0\\).",
+    "expression": [
+     "Union",
+     [
+      "Interval",
+      [
+       "Open",
+       0
+      ],
+      [
+       "Open",
+       2
+      ]
+     ],
+     [
+      "Interval",
+      [
+       "Open",
+       2
+      ],
+      [
+       "Open",
+       4
+      ]
+     ]
+    ]
+   },
+   "right_step": {
+    "text": "Left where \\(v(t)<0\\).",
+    "expression": [
+     "Interval",
+     [
+      "Open",
+      2
+     ],
+     [
+      "Open",
+      [
+       "Rational",
+       10,
+       3
+      ]
+     ]
+    ]
+   },
+   "relation": "distinct",
+   "delivery": {
+    "mode": "step_reveal",
+    "reason": "rule 1",
+    "sources": []
+   }
+  },
+  {
+   "id": "LSN-CON-04004#err-BC-ERR-04010",
+   "type": "common_error",
+   "bands": [
+    "low",
+    "mid"
+   ],
+   "skills": [
+    "BC-SKL-04011"
+   ],
+   "sources": [
+    "BC-ERR-04010",
+    "BC-MIS-04017"
+   ],
+   "evidence_tag": "inferred",
+   "error_id": "BC-ERR-04010",
+   "observed_behavior": "Integer times are substituted into the velocity in place of solving the equation velocity equal to zero, so a non-integer zero is missed.",
+   "scoring_consequence": "The 2025 Chief Reader report records this behaviour directly and links it to the loss of the two analysis points, whose mean scores were 0.04 and 0.03 (crabbc-25:20, crabbc-25:22).",
+   "wrong_step": {
+    "text": "Integers sampled: left on \\((2,3)\\).",
+    "expression": [
+     "Interval",
+     [
+      "Open",
+      2
+     ],
+     [
+      "Open",
+      3
+     ]
+    ]
+   },
+   "right_step": {
+    "text": "Zeros solved: left on \\((2,10/3)\\).",
+    "expression": [
+     "Interval",
+     [
+      "Open",
+      2
+     ],
+     [
+      "Open",
+      [
+       "Rational",
+       10,
+       3
+      ]
+     ]
+    ]
+   },
+   "relation": "distinct",
+   "possible_reason": {
+    "misconception_id": "BC-MIS-04017",
+    "text": "zeros between samples are missed"
+   },
+   "delivery": {
+    "mode": "step_reveal",
+    "reason": "rule 1",
+    "sources": []
+   }
+  },
+  {
+   "id": "LSN-CON-04004#err-BC-ERR-07026",
+   "type": "common_error",
+   "bands": [
+    "low",
+    "mid"
+   ],
+   "skills": [
+    "BC-SKL-04011"
+   ],
+   "sources": [
+    "BC-ERR-07026",
+    "BC-MIS-07016"
+   ],
+   "evidence_tag": "inferred",
+   "error_id": "BC-ERR-07026",
+   "observed_behavior": "The antiderivative equation is written with no constant.",
+   "scoring_consequence": "At most the first two points are available; the guideline caps the response there.",
+   "wrong_step": {
+    "text": "Given \\(v(t)=(t-2)(3t-10)\\) and \\(x(0)=-16\\), find \\(x(t)\\): \\(x=t^3-8t^2+20t\\), no constant.",
+    "expression": [
+     "Add",
+     [
+      "Power",
+      "t",
+      3
+     ],
+     [
+      "Multiply",
+      -8,
+      [
+       "Power",
+       "t",
+       2
+      ]
+     ],
+     [
+      "Multiply",
+      20,
+      "t"
+     ]
+    ]
+   },
+   "right_step": {
+    "text": "Constant from \\(x(0)=-16\\): \\(x=t^3-8t^2+20t-16\\).",
+    "expression": [
+     "Add",
+     -16,
+     [
+      "Power",
+      "t",
+      3
+     ],
+     [
+      "Multiply",
+      -8,
+      [
+       "Power",
+       "t",
+       2
+      ]
+     ],
+     [
+      "Multiply",
+      20,
+      "t"
+     ]
+    ]
+   },
+   "relation": "distinct",
+   "possible_reason": {
+    "misconception_id": "BC-MIS-07016",
+    "text": "antidifferentiates without a constant"
+   },
+   "delivery": {
+    "mode": "step_reveal",
+    "reason": "rule 1",
+    "sources": []
+   }
+  },
+  {
+   "id": "LSN-CON-04004#prq-BC-PRQ-04005",
+   "type": "prerequisite_bridge",
+   "bands": [
+    "low",
+    "mid"
+   ],
+   "skills": [
+    "BC-SKL-04008"
+   ],
+   "sources": [
+    "BC-PRQ-04005"
+   ],
+   "evidence_tag": "inferred",
+   "prerequisite_id": "BC-PRQ-04005",
+   "text": "Absolute value is size without sign; speed uses it, direction does not. The failure: a negative speed, or a direction answered with a size."
+  },
+  {
+   "id": "LSN-CON-04004#prq-BC-PRQ-04009",
+   "type": "prerequisite_bridge",
+   "bands": [
+    "low",
+    "mid"
+   ],
+   "skills": [
+    "BC-SKL-04009",
+    "BC-SKL-04011"
+   ],
+   "sources": [
+    "BC-PRQ-04009"
+   ],
+   "evidence_tag": "inferred",
+   "prerequisite_id": "BC-PRQ-04009",
+   "text": "Solve for the zeros, split the interval there, and find the sign on each piece. The failure: intervals reported from sampled integers."
+  }
+ ],
+ "checks": [
+  {
+   "id": "LSN-CON-04004#chk-1",
+   "check_kind": "completion",
+   "bands": [
+    "low",
+    "mid"
+   ],
+   "format": "short_answer",
+   "archetype_id": "BC-QA-04004",
+   "parameter_draw": {
+    "double_root": 2,
+    "single_root": 4,
+    "size": 1,
+    "leading": "positive",
+    "horizon": 8,
+    "direction": "left",
+    "time_units": "seconds"
+   },
+   "completes": "LSN-CON-04004#s5",
+   "stem": {
+    "text": "\\(v(t)=(t-2)(3t-10)\\) on \\(0<t<8\\). From its zeros, find where the particle moves left.",
+    "command_verb": "find"
+   },
+   "answer_key": {
+    "form": "symbolic",
+    "mathjson": [
+     "Interval",
+     [
+      "Open",
+      2
+     ],
+     [
+      "Open",
+      [
+       "Rational",
+       10,
+       3
+      ]
+     ]
+    ]
+   },
+   "worked_solution": [
+    {
+     "step": 1,
+     "text": "v(t).",
+     "mathjson": [
+      "Multiply",
+      [
+       "Add",
+       -10,
+       [
+        "Multiply",
+        3,
+        "t"
+       ]
+      ],
+      [
+       "Add",
+       -2,
+       "t"
+      ]
+     ],
+     "relation": "new"
+    },
+    {
+     "step": 2,
+     "text": "Zeros.",
+     "mathjson": [
+      "Set",
+      2,
+      [
+       "Rational",
+       10,
+       3
+      ]
+     ],
+     "relation": "solve",
+     "variable": "t"
+    },
+    {
+     "step": 3,
+     "text": "v < 0 between them.",
+     "mathjson": [
+      "Interval",
+      [
+       "Open",
+       2
+      ],
+      [
+       "Open",
+       [
+        "Rational",
+        10,
+        3
+       ]
+      ]
+     ],
+     "relation": "new"
+    }
+   ],
+   "calculator_status": "no_calculator",
+   "representation": "BC-REP-01",
+   "skills": [
+    "BC-SKL-04009",
+    "BC-SKL-04011"
+   ]
+  },
+  {
+   "id": "LSN-CON-04004#chk-2",
+   "check_kind": "isomorph",
+   "bands": [
+    "low",
+    "mid"
+   ],
+   "format": "short_answer",
+   "archetype_id": "BC-QA-04004",
+   "parameter_draw": {
+    "double_root": 1,
+    "single_root": 3,
+    "size": 2,
+    "leading": "negative",
+    "horizon": 6,
+    "direction": "right",
+    "time_units": "minutes"
+   },
+   "stem": {
+    "text": "\\(x(t)=-2(t-1)^2(t-3)\\) for \\(0<t<6\\) minutes. Find where the particle moves right.",
+    "command_verb": "find"
+   },
+   "answer_key": {
+    "form": "symbolic",
+    "mathjson": [
+     "Interval",
+     [
+      "Open",
+      1
+     ],
+     [
+      "Open",
+      [
+       "Rational",
+       7,
+       3
+      ]
+     ]
+    ]
+   },
+   "worked_solution": [
+    {
+     "step": 1,
+     "text": "Position.",
+     "mathjson": [
+      "Multiply",
+      -2,
+      [
+       "Power",
+       [
+        "Add",
+        -1,
+        "t"
+       ],
+       2
+      ],
+      [
+       "Add",
+       -3,
+       "t"
+      ]
+     ],
+     "relation": "new"
+    },
+    {
+     "step": 2,
+     "text": "Velocity.",
+     "mathjson": [
+      "Multiply",
+      [
+       "Add",
+       -7,
+       [
+        "Multiply",
+        3,
+        "t"
+       ]
+      ],
+      [
+       "Add",
+       2,
+       [
+        "Multiply",
+        -2,
+        "t"
+       ]
+      ]
+     ],
+     "relation": "differentiate",
+     "variable": "t"
+    },
+    {
+     "step": 3,
+     "text": "Zeros.",
+     "mathjson": [
+      "Set",
+      1,
+      [
+       "Rational",
+       7,
+       3
+      ]
+     ],
+     "relation": "solve",
+     "variable": "t"
+    },
+    {
+     "step": 4,
+     "text": "v > 0 between them.",
+     "mathjson": [
+      "Interval",
+      [
+       "Open",
+       1
+      ],
+      [
+       "Open",
+       [
+        "Rational",
+        7,
+        3
+       ]
+      ]
+     ],
+     "relation": "new"
+    }
+   ],
+   "calculator_status": "no_calculator",
+   "representation": "BC-REP-01",
+   "skills": [
+    "BC-SKL-04009",
+    "BC-SKL-04011"
+   ]
+  },
+  {
+   "id": "LSN-CON-04004#chk-3",
+   "check_kind": "mcq",
+   "bands": [
+    "low"
+   ],
+   "format": "mcq",
+   "archetype_id": "BC-QA-04004",
+   "parameter_draw": {
+    "double_root": 3,
+    "single_root": 1,
+    "size": 1,
+    "leading": "positive",
+    "horizon": 6,
+    "direction": "left",
+    "time_units": "seconds"
+   },
+   "stem": {
+    "text": "\\(x(t)=(t-3)^2(t-1)\\), so \\(v(t)=(t-3)(3t-5)\\). Which statement about \\(t=2\\) is correct?",
+    "command_verb": "identify"
+   },
+   "answer_key": {
+    "form": "statement",
+    "mathjson": "-1",
+    "text": "A"
+   },
+   "worked_solution": [
+    {
+     "step": 1,
+     "text": "v(t).",
+     "mathjson": [
+      "Multiply",
+      [
+       "Add",
+       -5,
+       [
+        "Multiply",
+        3,
+        "t"
+       ]
+      ],
+      [
+       "Add",
+       -3,
+       "t"
+      ]
+     ],
+     "relation": "new"
+    },
+    {
+     "step": 2,
+     "text": "v(2) = -1.",
+     "mathjson": -1,
+     "relation": "evaluate",
+     "subs": {
+      "t": "2"
+     }
+    }
+   ],
+   "options": [
+    {
+     "id": "A",
+     "is_key": true,
+     "error_path": null,
+     "label": "Speed 1; moving left, since v(2) = -1 < 0."
+    },
+    {
+     "id": "B",
+     "is_key": false,
+     "error_path": "BC-ERR-04007",
+     "label": "Speed -1; moving left.",
+     "derivation": "the signed velocity reported as the speed"
+    },
+    {
+     "id": "C",
+     "is_key": false,
+     "error_path": "BC-ERR-04008",
+     "label": "Speed 1; moving right, since x(2) = 1 > 0.",
+     "derivation": "direction read from the sign of the position"
+    },
+    {
+     "id": "D",
+     "is_key": false,
+     "error_path": "BC-ERR-04010",
+     "label": "Moving left on all of (1, 3), since v(2) < 0.",
+     "derivation": "one sampled time taken to settle the sign on the interval, missing the zero at 5/3"
+    }
+   ],
+   "calculator_status": "no_calculator",
+   "representation": "BC-REP-01",
+   "skills": [
+    "BC-SKL-04008",
+    "BC-SKL-04009"
+   ]
+  }
+ ],
+ "refresher": [
+  "LSN-CON-04004#s2",
+  "LSN-CON-04004#err-BC-ERR-04007",
+  "LSN-CON-04004#err-BC-ERR-04008",
+  "LSN-CON-04004#err-BC-ERR-04010",
+  "LSN-CON-04004#err-BC-ERR-07026",
+  "LSN-CON-04004#s5"
+ ],
+ "provenance": {
+  "author": "tools/lesson_transcribe.py",
+  "prompt_version": "generator/lesson_v1",
+  "design_path": "docs/lessons/unit-04/LSN-CON-04004.md",
+  "signed_off_by": "claude-opus-5-5",
+  "signed_off_at": "2026-09-29",
+  "not_human": true
+ }
+}

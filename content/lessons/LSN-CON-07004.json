@@ -1,0 +1,994 @@
+{
+ "id": "LSN-CON-07004",
+ "version": 1,
+ "kind": "concept",
+ "target_id": "BC-CON-07004",
+ "status": "draft",
+ "snapshot_digest": "a6a8ec9d3f59ab8f712e33d30cc22fc64bf2c478fbe7312e3e3118d319c6a42f",
+ "source_digest": "8a8e23fba6f47fb6f61a47f4ce09bd4e6ed4bf57f163392774be348bcf5a562f",
+ "read_minutes": {
+  "full": 4.0,
+  "brief": 3.0
+ },
+ "word_count": {
+  "full": 512,
+  "brief": 387
+ },
+ "sections": [
+  {
+   "id": "LSN-CON-07004#s1",
+   "type": "orientation",
+   "bands": [
+    "low",
+    "mid"
+   ],
+   "skills": [
+    "BC-SKL-07010",
+    "BC-SKL-07011",
+    "BC-SKL-07012",
+    "BC-SKL-07013"
+   ],
+   "sources": [
+    "BC-CON-07004",
+    "research/units/unit-07-differential-equations.md#7.3 Sketching Slope Fields"
+   ],
+   "evidence_tag": "inferred",
+   "text": "Each lattice point gets a segment whose slope is the right side there. Segments are flat where the right side is zero.",
+   "delivery": {
+    "mode": "figure",
+    "reason": "rule 4: BC-REP-07 on BC-SKL-07010 to 07013; not promoted, the difficulty_variables vary a form",
+    "sources": [
+     "BC-SKL-07010"
+    ],
+    "spec": {
+     "kind": "slope_field",
+     "representations": [
+      "BC-REP-07",
+      "BC-REP-06"
+     ],
+     "equation": "dy/dx = 2*(y - x + 1)",
+     "window": {
+      "x": [
+       -2,
+       2
+      ],
+      "y": [
+       -2,
+       2
+      ]
+     },
+     "lattice_step": 1,
+     "labels": [
+      {
+       "text": "dy/dx = 2(y - x + 1)",
+       "placement": "inside",
+       "at": "top left corner"
+      }
+     ]
+    },
+    "fallback": "a static grid of segments with the equation written inside",
+    "keyboard": "no control; Tab reaches the figure's text description"
+   }
+  },
+  {
+   "id": "LSN-CON-07004#s2",
+   "type": "key_ideas",
+   "bands": [
+    "low",
+    "mid"
+   ],
+   "skills": [
+    "BC-SKL-07010",
+    "BC-SKL-07011"
+   ],
+   "sources": [
+    "BC-EK-FUN-7C1",
+    "ced:139",
+    "research/units/unit-07-differential-equations.md#7.3 Sketching Slope Fields"
+   ],
+   "evidence_tag": "inferred",
+   "ek_id": "BC-EK-FUN-7C1",
+   "depth": "core",
+   "text": "At each grid point, put the coordinates into the right side and draw a short segment of that slope.",
+   "notation": "slope field; lattice point",
+   "delivery": {
+    "mode": "figure",
+    "reason": "rule 4: BC-REP-07 on BC-SKL-07010, 07011",
+    "sources": [
+     "BC-SKL-07010",
+     "BC-SKL-07011"
+    ],
+    "spec": {
+     "kind": "slope_field",
+     "representations": [
+      "BC-REP-07"
+     ],
+     "equation": "dy/dx = 2*(y - x + 1)",
+     "window": {
+      "x": [
+       -2,
+       2
+      ],
+      "y": [
+       -2,
+       2
+      ]
+     },
+     "lattice_step": 1,
+     "marked": [
+      [
+       0,
+       0
+      ],
+      [
+       0,
+       1
+      ]
+     ],
+     "labels": [
+      {
+       "text": "slope 2 at (0, 0)",
+       "placement": "inside",
+       "at": "beside (0, 0)"
+      },
+      {
+       "text": "slope 4 at (0, 1)",
+       "placement": "inside",
+       "at": "beside (0, 1)"
+      }
+     ]
+    },
+    "fallback": "the same grid, static, with the two slope values listed inside",
+    "keyboard": "no control; Tab reaches the figure's text description"
+   }
+  },
+  {
+   "id": "LSN-CON-07004#s3",
+   "type": "key_ideas",
+   "bands": [
+    "low",
+    "mid"
+   ],
+   "skills": [
+    "BC-SKL-07012",
+    "BC-SKL-07013"
+   ],
+   "sources": [
+    "BC-EK-FUN-7C2",
+    "ced:139",
+    "BC-SKL-07013",
+    "BC-ERR-07013",
+    "research/units/unit-07-differential-equations.md#7.3 Sketching Slope Fields"
+   ],
+   "evidence_tag": "verified",
+   "ek_id": "BC-EK-FUN-7C2",
+   "depth": "core",
+   "text": "Segments are horizontal where the right side vanishes. With no x in the right side, segments are identical along each horizontal line; with no y, along each vertical line.",
+   "notation": "segment slope",
+   "quote": {
+    "text": "Slope fields provide information about the behavior of solutions to first-order differential equations.",
+    "source": "ced:139"
+   },
+   "delivery": {
+    "mode": "figure",
+    "reason": "rule 4: BC-REP-07 on BC-SKL-07012, 07013",
+    "sources": [
+     "BC-SKL-07012",
+     "BC-SKL-07013"
+    ],
+    "spec": {
+     "kind": "slope_field",
+     "representations": [
+      "BC-REP-07"
+     ],
+     "equation": "dy/dx = 2*(y - x + 1)",
+     "window": {
+      "x": [
+       -2,
+       2
+      ],
+      "y": [
+       -2,
+       2
+      ]
+     },
+     "lattice_step": 1,
+     "highlight": "the flat segments on y = x - 1",
+     "labels": [
+      {
+       "text": "flat on y = x - 1",
+       "placement": "inside",
+       "at": "along the flat segments"
+      }
+     ]
+    },
+    "fallback": "the same grid, static, with the flat segments drawn heavier and labelled inside",
+    "keyboard": "no control; Tab reaches the figure's text description"
+   }
+  },
+  {
+   "id": "LSN-CON-07004#s4",
+   "type": "strategy",
+   "bands": [
+    "low",
+    "mid"
+   ],
+   "skills": [
+    "BC-SKL-07010",
+    "BC-SKL-07011",
+    "BC-SKL-07012",
+    "BC-SKL-07013"
+   ],
+   "sources": [
+    "BC-QA-07002"
+   ],
+   "evidence_tag": "verified",
+   "archetype_id": "BC-QA-07002",
+   "cue": "Named lattice points, or a field to match.",
+   "method": "First line: the right side set to zero, then its value at each point.",
+   "rival": "Rival: solving the equation and differentiating the solution.",
+   "separating_feature": "Points are named, so each slope is a substitution."
+  },
+  {
+   "id": "LSN-CON-07004#s5",
+   "type": "strategy",
+   "bands": [
+    "low",
+    "mid"
+   ],
+   "skills": [
+    "BC-SKL-07012"
+   ],
+   "sources": [
+    "BC-QA-07010"
+   ],
+   "evidence_tag": "verified",
+   "archetype_id": "BC-QA-07010",
+   "cue": "An equation, a bound on the quantity, and a request for a critical point.",
+   "method": "First line: the right side set equal to zero.",
+   "rival": "Rival: solving the differential equation first.",
+   "separating_feature": "The equation already gives dy/dx, so zero slope is read from it."
+  },
+  {
+   "id": "LSN-CON-07004#s6",
+   "type": "worked_example",
+   "bands": [
+    "low",
+    "mid"
+   ],
+   "skills": [
+    "BC-SKL-07010",
+    "BC-SKL-07011",
+    "BC-SKL-07012",
+    "BC-SKL-07013"
+   ],
+   "sources": [
+    "BC-QA-07002"
+   ],
+   "evidence_tag": "inferred",
+   "archetype_id": "BC-QA-07002",
+   "parameter_draw": {
+    "locus": "line",
+    "slope": 1,
+    "intercept": -1,
+    "orientation": 1,
+    "scale": 2,
+    "letters": "xy"
+   },
+   "problem": {
+    "text": "For dy/dx = 2(y - x + 1), sketch the slope field at (0, 0), (1, 0) and (0, 1).",
+    "command_verb": "sketch"
+   },
+   "calculator_status": "no_calculator",
+   "steps": [
+    {
+     "cue": "Horizontal segments first: right side zero.",
+     "why": "Flat segments.",
+     "expression": [
+      "Equal",
+      [
+       "Add",
+       2,
+       [
+        "Multiply",
+        -2,
+        "x"
+       ],
+       [
+        "Multiply",
+        2,
+        "y"
+       ]
+      ],
+      0
+     ],
+     "relation": "new"
+    },
+    {
+     "cue": "Solve for y.",
+     "why": "Flat along y = x - 1.",
+     "expression": [
+      "Add",
+      -1,
+      "x"
+     ],
+     "relation": "solve",
+     "variable": "y"
+    },
+    {
+     "cue": "Each named point is a substitution.",
+     "why": "Slope.",
+     "expression": [
+      "Add",
+      2,
+      [
+       "Multiply",
+       -2,
+       "x"
+      ],
+      [
+       "Multiply",
+       2,
+       "y"
+      ]
+     ],
+     "relation": "new"
+    },
+    {
+     "cue": "At (0, 0).",
+     "why": "Slope 2.",
+     "expression": 2,
+     "relation": "evaluate",
+     "subs": {
+      "x": "0",
+      "y": "0"
+     }
+    },
+    {
+     "cue": "Next point.",
+     "why": "Same right side.",
+     "expression": [
+      "Add",
+      2,
+      [
+       "Multiply",
+       -2,
+       "x"
+      ],
+      [
+       "Multiply",
+       2,
+       "y"
+      ]
+     ],
+     "relation": "new"
+    },
+    {
+     "cue": "At (1, 0).",
+     "why": "On the locus: flat.",
+     "expression": 0,
+     "relation": "evaluate",
+     "subs": {
+      "x": "1",
+      "y": "0"
+     }
+    },
+    {
+     "cue": "Next point.",
+     "why": "Same right side.",
+     "expression": [
+      "Add",
+      2,
+      [
+       "Multiply",
+       -2,
+       "x"
+      ],
+      [
+       "Multiply",
+       2,
+       "y"
+      ]
+     ],
+     "relation": "new"
+    },
+    {
+     "cue": "At (0, 1).",
+     "why": "Slope 4, steeper.",
+     "expression": 4,
+     "relation": "evaluate",
+     "subs": {
+      "x": "0",
+      "y": "1"
+     }
+    },
+    {
+     "cue": "Draw each segment at its point.",
+     "why": "Only the named points are scored.",
+     "expression": [
+      "Tuple",
+      2,
+      0,
+      4
+     ],
+     "point_type_id": "BC-PT-99083",
+     "relation": "new"
+    }
+   ],
+   "answer": {
+    "form": "symbolic",
+    "mathjson": [
+     "Tuple",
+     2,
+     0,
+     4
+    ]
+   },
+   "delivery": {
+    "mode": "step_reveal",
+    "reason": "rule 1",
+    "sources": []
+   }
+  },
+  {
+   "id": "LSN-CON-07004#s7",
+   "type": "what_a_reader_scores",
+   "bands": [
+    "low",
+    "mid"
+   ],
+   "skills": [
+    "BC-SKL-07010",
+    "BC-SKL-07011",
+    "BC-SKL-07012",
+    "BC-SKL-07013"
+   ],
+   "sources": [
+    "BC-PT-99083"
+   ],
+   "evidence_tag": "verified",
+   "example_id": "LSN-CON-07004#s6",
+   "lines": [
+    {
+     "point_type_id": "BC-PT-99083",
+     "text": "Slope field drawn at the indicated points. Earned by: Short segments drawn at the indicated points whose slopes match the differential equation there. samples-15-q4:1 splits the two points of the part by the value of the independent variable, so the segments at each value of that variable are scored as a group. Not earned by: Segments drawn at points other than the indicated ones, or a solution curve drawn in place of the field; the rubric scores the segments at the indicated points only (samples-15-q4:1)."
+    }
+   ]
+  },
+  {
+   "id": "LSN-CON-07004#err-BC-ERR-07010",
+   "type": "common_error",
+   "bands": [
+    "low",
+    "mid"
+   ],
+   "skills": [
+    "BC-SKL-07010"
+   ],
+   "sources": [
+    "BC-ERR-07010"
+   ],
+   "evidence_tag": "inferred",
+   "error_id": "BC-ERR-07010",
+   "observed_behavior": "The response computes the segment slope using coordinates taken from a neighbouring point of the grid.",
+   "scoring_consequence": "The drawn or matched field is wrong at the points that distinguish the candidates.",
+   "wrong_step": {
+    "text": "At (1, 0), x and y swapped.",
+    "expression": 4
+   },
+   "right_step": {
+    "text": "At (1, 0).",
+    "expression": 0
+   },
+   "relation": "distinct",
+   "delivery": {
+    "mode": "step_reveal",
+    "reason": "rule 1",
+    "sources": []
+   }
+  },
+  {
+   "id": "LSN-CON-07004#err-BC-ERR-07011",
+   "type": "common_error",
+   "bands": [
+    "low",
+    "mid"
+   ],
+   "skills": [
+    "BC-SKL-07011"
+   ],
+   "sources": [
+    "BC-ERR-07011",
+    "BC-MIS-99015"
+   ],
+   "evidence_tag": "inferred",
+   "error_id": "BC-ERR-07011",
+   "observed_behavior": "The drawn field uses the same steepness everywhere regardless of the computed slopes.",
+   "scoring_consequence": "The field carries no information and no solution curve can be read from it.",
+   "wrong_step": {
+    "text": "At (1, 0), the tilt of (0, 0).",
+    "expression": 2
+   },
+   "right_step": {
+    "text": "Computed.",
+    "expression": 0
+   },
+   "relation": "distinct",
+   "possible_reason": {
+    "misconception_id": "BC-MIS-99015",
+    "text": "takes the slope field to show one tangent line through the chosen point"
+   },
+   "delivery": {
+    "mode": "step_reveal",
+    "reason": "rule 1",
+    "sources": []
+   }
+  },
+  {
+   "id": "LSN-CON-07004#err-BC-ERR-07012",
+   "type": "common_error",
+   "bands": [
+    "low",
+    "mid"
+   ],
+   "skills": [
+    "BC-SKL-07012"
+   ],
+   "sources": [
+    "BC-ERR-07012"
+   ],
+   "evidence_tag": "inferred",
+   "error_id": "BC-ERR-07012",
+   "observed_behavior": "The response never solves the right side equal to zero, so the horizontal segments are missed.",
+   "scoring_consequence": "The equilibrium level is unavailable, which costs the sketch point and the critical point work that follows.",
+   "wrong_step": {
+    "text": "Right side left unsolved.",
+    "expression": [
+     "Add",
+     2,
+     [
+      "Multiply",
+      -2,
+      "x"
+     ],
+     [
+      "Multiply",
+      2,
+      "y"
+     ]
+    ]
+   },
+   "right_step": {
+    "text": "Flat on y = x - 1.",
+    "expression": [
+     "Equal",
+     "y",
+     [
+      "Add",
+      -1,
+      "x"
+     ]
+    ]
+   },
+   "relation": "distinct",
+   "delivery": {
+    "mode": "step_reveal",
+    "reason": "rule 1",
+    "sources": []
+   }
+  },
+  {
+   "id": "LSN-CON-07004#err-BC-ERR-07013",
+   "type": "common_error",
+   "bands": [
+    "low",
+    "mid"
+   ],
+   "skills": [
+    "BC-SKL-07013"
+   ],
+   "sources": [
+    "BC-ERR-07013"
+   ],
+   "evidence_tag": "inferred",
+   "error_id": "BC-ERR-07013",
+   "observed_behavior": "The response claims the slope varies along a line on which the printed segments are identical, or the reverse.",
+   "scoring_consequence": "The match to a candidate equation is made on a false feature.",
+   "wrong_step": {
+    "text": "Read as depending on y only.",
+    "expression": [
+     "Add",
+     2,
+     [
+      "Multiply",
+      2,
+      "y"
+     ]
+    ]
+   },
+   "right_step": {
+    "text": "Depends on both.",
+    "expression": [
+     "Add",
+     2,
+     [
+      "Multiply",
+      -2,
+      "x"
+     ],
+     [
+      "Multiply",
+      2,
+      "y"
+     ]
+    ]
+   },
+   "relation": "distinct",
+   "delivery": {
+    "mode": "step_reveal",
+    "reason": "rule 1",
+    "sources": []
+   }
+  },
+  {
+   "id": "LSN-CON-07004#prq-BC-PRQ-06005",
+   "type": "prerequisite_bridge",
+   "bands": [
+    "low",
+    "mid"
+   ],
+   "skills": [
+    "BC-SKL-07010"
+   ],
+   "sources": [
+    "BC-PRQ-06005"
+   ],
+   "evidence_tag": "inferred",
+   "prerequisite_id": "BC-PRQ-06005",
+   "text": "At (1, 0): x = 1, y = 0."
+  },
+  {
+   "id": "LSN-CON-07004#prq-BC-PRQ-07006",
+   "type": "prerequisite_bridge",
+   "bands": [
+    "low",
+    "mid"
+   ],
+   "skills": [
+    "BC-SKL-07010",
+    "BC-SKL-07011"
+   ],
+   "sources": [
+    "BC-PRQ-07006"
+   ],
+   "evidence_tag": "inferred",
+   "prerequisite_id": "BC-PRQ-07006",
+   "text": "A neighbouring point's coordinates give the wrong slope."
+  }
+ ],
+ "checks": [
+  {
+   "id": "LSN-CON-07004#chk-1",
+   "check_kind": "completion",
+   "bands": [
+    "low",
+    "mid"
+   ],
+   "format": "short_answer",
+   "archetype_id": "BC-QA-07002",
+   "parameter_draw": {
+    "locus": "line",
+    "slope": 1,
+    "intercept": -1,
+    "orientation": 1,
+    "scale": 2,
+    "letters": "xy"
+   },
+   "completes": "LSN-CON-07004#s6",
+   "stem": {
+    "text": "dy/dx = 2(y - x + 1) has slopes 2 at (0, 0) and 0 at (1, 0). Give the slopes at (0, 0), (1, 0), (0, 1).",
+    "command_verb": "find"
+   },
+   "answer_key": {
+    "form": "symbolic",
+    "mathjson": [
+     "Tuple",
+     2,
+     0,
+     4
+    ]
+   },
+   "worked_solution": [
+    {
+     "step": 1,
+     "text": "Right side.",
+     "mathjson": [
+      "Add",
+      2,
+      [
+       "Multiply",
+       -2,
+       "x"
+      ],
+      [
+       "Multiply",
+       2,
+       "y"
+      ]
+     ],
+     "relation": "new"
+    },
+    {
+     "step": 2,
+     "text": "At (0, 1).",
+     "mathjson": 4,
+     "relation": "evaluate",
+     "subs": {
+      "x": "0",
+      "y": "1"
+     }
+    },
+    {
+     "step": 3,
+     "text": "The three.",
+     "mathjson": [
+      "Tuple",
+      2,
+      0,
+      4
+     ],
+     "relation": "new"
+    }
+   ],
+   "calculator_status": "no_calculator",
+   "representation": "BC-REP-06",
+   "skills": [
+    "BC-SKL-07010"
+   ]
+  },
+  {
+   "id": "LSN-CON-07004#chk-2",
+   "check_kind": "isomorph",
+   "bands": [
+    "low",
+    "mid"
+   ],
+   "format": "short_answer",
+   "archetype_id": "BC-QA-07002",
+   "parameter_draw": {
+    "locus": "line",
+    "slope": -2,
+    "intercept": 1,
+    "orientation": -1,
+    "scale": 1,
+    "letters": "ty"
+   },
+   "stem": {
+    "text": "For dy/dt = -(y + 2t - 1), give the slopes at (0, 0), (1, 0), (0, 1).",
+    "command_verb": "find"
+   },
+   "answer_key": {
+    "form": "symbolic",
+    "mathjson": [
+     "Tuple",
+     1,
+     -1,
+     0
+    ]
+   },
+   "worked_solution": [
+    {
+     "step": 1,
+     "text": "Right side.",
+     "mathjson": [
+      "Add",
+      1,
+      [
+       "Multiply",
+       -1,
+       "y"
+      ],
+      [
+       "Multiply",
+       -2,
+       "t"
+      ]
+     ],
+     "relation": "new"
+    },
+    {
+     "step": 2,
+     "text": "(0, 0).",
+     "mathjson": 1,
+     "relation": "evaluate",
+     "subs": {
+      "t": "0",
+      "y": "0"
+     }
+    },
+    {
+     "step": 3,
+     "text": "Right side.",
+     "mathjson": [
+      "Add",
+      1,
+      [
+       "Multiply",
+       -1,
+       "y"
+      ],
+      [
+       "Multiply",
+       -2,
+       "t"
+      ]
+     ],
+     "relation": "new"
+    },
+    {
+     "step": 4,
+     "text": "(1, 0).",
+     "mathjson": -1,
+     "relation": "evaluate",
+     "subs": {
+      "t": "1",
+      "y": "0"
+     }
+    },
+    {
+     "step": 5,
+     "text": "Right side.",
+     "mathjson": [
+      "Add",
+      1,
+      [
+       "Multiply",
+       -1,
+       "y"
+      ],
+      [
+       "Multiply",
+       -2,
+       "t"
+      ]
+     ],
+     "relation": "new"
+    },
+    {
+     "step": 6,
+     "text": "(0, 1).",
+     "mathjson": 0,
+     "relation": "evaluate",
+     "subs": {
+      "t": "0",
+      "y": "1"
+     }
+    },
+    {
+     "step": 7,
+     "text": "The three.",
+     "mathjson": [
+      "Tuple",
+      1,
+      -1,
+      0
+     ],
+     "relation": "new"
+    }
+   ],
+   "calculator_status": "no_calculator",
+   "representation": "BC-REP-06",
+   "skills": [
+    "BC-SKL-07010"
+   ]
+  },
+  {
+   "id": "LSN-CON-07004#chk-3",
+   "check_kind": "mcq",
+   "bands": [
+    "low"
+   ],
+   "format": "mcq",
+   "archetype_id": "BC-QA-07002",
+   "parameter_draw": {
+    "locus": "parabola",
+    "slope": 1,
+    "intercept": 2,
+    "orientation": 1,
+    "scale": 1,
+    "letters": "xy"
+   },
+   "stem": {
+    "text": "For dy/dx = y - x^2 - 2, what is the slope of the segment at (2, 3)?",
+    "command_verb": "identify"
+   },
+   "answer_key": {
+    "form": "numeric",
+    "mathjson": -3
+   },
+   "worked_solution": [
+    {
+     "step": 1,
+     "text": "Right side.",
+     "mathjson": [
+      "Add",
+      -2,
+      "y",
+      [
+       "Multiply",
+       -1,
+       [
+        "Power",
+        "x",
+        2
+       ]
+      ]
+     ],
+     "relation": "new"
+    },
+    {
+     "step": 2,
+     "text": "At (2, 3).",
+     "mathjson": -3,
+     "relation": "evaluate",
+     "subs": {
+      "x": "2",
+      "y": "3"
+     }
+    }
+   ],
+   "options": [
+    {
+     "id": "A",
+     "is_key": false,
+     "error_path": "BC-ERR-07010",
+     "value": -9,
+     "derivation": "evaluated at (3, 2)"
+    },
+    {
+     "id": "B",
+     "is_key": true,
+     "error_path": null,
+     "value": -3
+    },
+    {
+     "id": "C",
+     "is_key": false,
+     "error_path": "BC-ERR-07011",
+     "value": -2,
+     "derivation": "the tilt at (0, 0) used everywhere"
+    },
+    {
+     "id": "D",
+     "is_key": false,
+     "error_path": "BC-ERR-07013",
+     "value": 1,
+     "derivation": "x read as absent: y - 2"
+    }
+   ],
+   "calculator_status": "no_calculator",
+   "representation": "BC-REP-06",
+   "skills": [
+    "BC-SKL-07010",
+    "BC-SKL-07013"
+   ]
+  }
+ ],
+ "refresher": [
+  "LSN-CON-07004#s2",
+  "LSN-CON-07004#s3",
+  "LSN-CON-07004#err-BC-ERR-07010",
+  "LSN-CON-07004#err-BC-ERR-07011",
+  "LSN-CON-07004#err-BC-ERR-07012",
+  "LSN-CON-07004#err-BC-ERR-07013",
+  "LSN-CON-07004#s6"
+ ],
+ "provenance": {
+  "author": "tools/lesson_transcribe.py",
+  "prompt_version": "generator/lesson_v1",
+  "design_path": "docs/lessons/unit-07/LSN-CON-07004.md",
+  "signed_off_by": null,
+  "signed_off_at": null,
+  "not_human": true
+ }
+}

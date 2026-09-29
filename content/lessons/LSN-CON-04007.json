@@ -1,0 +1,1064 @@
+{
+ "id": "LSN-CON-04007",
+ "version": 1,
+ "kind": "concept",
+ "target_id": "BC-CON-04007",
+ "status": "signed_off",
+ "snapshot_digest": "a6a8ec9d3f59ab8f712e33d30cc22fc64bf2c478fbe7312e3e3118d319c6a42f",
+ "source_digest": "1d734f5e5fe639fa3145eedac4cbc5b34d90762b372ee01cef518bf0ed6a5669",
+ "read_minutes": {
+  "full": 4.4,
+  "brief": 3.0
+ },
+ "word_count": {
+  "full": 610,
+  "brief": 405
+ },
+ "sections": [
+  {
+   "id": "LSN-CON-04007#s1",
+   "type": "orientation",
+   "bands": [
+    "low",
+    "mid"
+   ],
+   "skills": [
+    "BC-SKL-04017",
+    "BC-SKL-04019",
+    "BC-SKL-04022"
+   ],
+   "sources": [
+    "BC-CON-04007",
+    "research/units/unit-04-contextual-applications-differentiation.md#4.4 Introduction to Related Rates"
+   ],
+   "evidence_tag": "inferred",
+   "text": "Every changing quantity is a function of time. A response names them, differentiates the relation in t so each brings its own rate, then substitutes the instant.",
+   "delivery": {
+    "mode": "text",
+    "reason": "rule 5 for a statement of what a response shows; the figure-bearing BC-REP-08 is served once, on ki-1",
+    "sources": [
+     "BC-SKL-04017"
+    ]
+   }
+  },
+  {
+   "id": "LSN-CON-04007#s2",
+   "type": "key_ideas",
+   "bands": [
+    "low",
+    "mid"
+   ],
+   "skills": [
+    "BC-SKL-04017",
+    "BC-SKL-04019",
+    "BC-SKL-04022"
+   ],
+   "sources": [
+    "BC-EK-CHA-3D1",
+    "ced:90",
+    "ced:86",
+    "research/units/unit-04-contextual-applications-differentiation.md#4.4 Introduction to Related Rates"
+   ],
+   "evidence_tag": "verified",
+   "ek_id": "BC-EK-CHA-3D1",
+   "depth": "core",
+   "text": "Each changing quantity is a function of time, so differentiating \\(x^2+y^2=225\\) with respect to \\(t\\) gives \\(2x\\,\\frac{dx}{dt}+2y\\,\\frac{dy}{dt}=0\\): one rate factor per varying quantity. Fixed lengths stay constants; values true only at the instant go in after differentiating.",
+   "notation": "dV/dt, dr/dt, dh/dt",
+   "quote": {
+    "text": "The chain rule is the basis for differentiating variables in a related rates problem with respect to the same independent variable.",
+    "source": "ced:90"
+   },
+   "delivery": {
+    "mode": "interactive",
+    "reason": "rule 3 promoted: BC-REP-08 in BC-SKL-04017, BC-REP-02 in BC-SKL-04022; BC-QA-04006 common_givens name the dimensions at the instant and a figure of the configuration, and the reading is which labels change as time moves",
+    "sources": [
+     "BC-SKL-04017",
+     "BC-SKL-04022",
+     "BC-QA-04006"
+    ],
+    "spec": {
+     "kind": "geometric_diagram",
+     "representations": [
+      "BC-REP-08",
+      "BC-REP-01"
+     ],
+     "controls": [
+      {
+       "type": "slider",
+       "variable": "x",
+       "range": [
+        1,
+        14
+       ],
+       "step": 0.5,
+       "start": 9
+      }
+     ],
+     "drawn": [
+      "the wall, the ground and the ladder as a segment",
+      "the foot at distance x from the wall and the top at height y"
+     ],
+     "labels": [
+      {
+       "text": "ladder 15 ft (fixed)",
+       "placement": "inside",
+       "at": [
+        5,
+        7
+       ]
+      },
+      {
+       "text": "x(t): foot to wall",
+       "placement": "inside",
+       "at": [
+        3,
+        1
+       ]
+      },
+      {
+       "text": "y(t): top height",
+       "placement": "inside",
+       "at": [
+        0.5,
+        14.5
+       ]
+      },
+      {
+       "text": "x = 9, y = 12 only at this instant",
+       "placement": "inside",
+       "at": [
+        7,
+        13
+       ]
+      }
+     ],
+     "question": "As the foot slides out, which labelled lengths change and which stay fixed?",
+     "window": {
+      "x": [
+       -1,
+       16
+      ],
+      "y": [
+       -1,
+       16
+      ]
+     },
+     "segments": [
+      {
+       "from": [
+        0,
+        0
+       ],
+       "to": [
+        0,
+        15.5
+       ]
+      },
+      {
+       "from": [
+        0,
+        0
+       ],
+       "to": [
+        15.5,
+        0
+       ]
+      },
+      {
+       "from": [
+        9,
+        0
+       ],
+       "to": [
+        0,
+        12
+       ]
+      }
+     ],
+     "points": [
+      {
+       "x": "x",
+       "y": 0
+      },
+      {
+       "x": 0,
+       "y": "sqrt(225 - x**2)"
+      }
+     ]
+    },
+    "fallback": "two static frames of the ladder at x = 9 and x = 12, with 15 fixed and x and y labelled inside each",
+    "keyboard": "Tab focuses the slider; left and right arrow keys move the foot by 0.5 feet; Enter reads out x, y and the fixed length"
+   }
+  },
+  {
+   "id": "LSN-CON-04007#s3",
+   "type": "key_ideas",
+   "bands": [
+    "low"
+   ],
+   "skills": [
+    "BC-SKL-04022"
+   ],
+   "sources": [
+    "BC-EK-CHA-3D2",
+    "ced:90",
+    "research/units/unit-04-contextual-applications-differentiation.md#4.4 Introduction to Related Rates"
+   ],
+   "evidence_tag": "verified",
+   "ek_id": "BC-EK-CHA-3D2",
+   "depth": "extended",
+   "text": "A term multiplying two changing quantities needs the product rule: \\(\\frac{d}{dt}(xy)=\\frac{dx}{dt}y+x\\frac{dy}{dt}\\), two rate factors, not one.",
+   "notation": "dx/dt, dy/dt",
+   "quote": {
+    "text": "Other differentiation rules, such as the product rule and the quotient rule, may also be necessary",
+    "source": "ced:90"
+   },
+   "delivery": {
+    "mode": "text",
+    "reason": "rule 5: CHA-3D2, the product rule, rests on BC-REP-01",
+    "sources": [
+     "BC-SKL-04022"
+    ]
+   }
+  },
+  {
+   "id": "LSN-CON-04007#s4",
+   "type": "strategy",
+   "bands": [
+    "low",
+    "mid"
+   ],
+   "skills": [
+    "BC-SKL-04017",
+    "BC-SKL-04019"
+   ],
+   "sources": [
+    "BC-QA-04006"
+   ],
+   "evidence_tag": "verified",
+   "archetype_id": "BC-QA-04006",
+   "cue": "Rates supplied, dimensions at an instant, and find the rate at which a stated quantity is changing at that instant.",
+   "method": "First line: name each varying quantity and write the given and wanted rates as derivatives in t.",
+   "rival": "Rival: differentiating in a length, stopping short of time (BC-ERR-04017).",
+   "separating_feature": "The wanted rate is per unit of time."
+  },
+  {
+   "id": "LSN-CON-04007#s5",
+   "type": "worked_example",
+   "bands": [
+    "low",
+    "mid"
+   ],
+   "skills": [
+    "BC-SKL-04017",
+    "BC-SKL-04019"
+   ],
+   "sources": [
+    "BC-QA-04006"
+   ],
+   "evidence_tag": "inferred",
+   "archetype_id": "BC-QA-04006",
+   "parameter_draw": {
+    "shape": "ladder",
+    "size": 9,
+    "rate": 2,
+    "ratio": 3,
+    "leg": "short",
+    "length_unit": "foot",
+    "time_unit": "second"
+   },
+   "problem": {
+    "text": "A 15 foot ladder leans on a wall. Its foot slides away at 2 feet per second. When the foot is 9 feet out, how fast is the top moving?",
+    "command_verb": "find"
+   },
+   "calculator_status": "no_calculator",
+   "steps": [
+    {
+     "cue": "Foot \\(x(t)\\) and top \\(y(t)\\) vary; 15 is fixed.",
+     "why": "Given \\(dx/dt=2\\), wanted \\(dy/dt\\).",
+     "expression": [
+      "Equal",
+      [
+       "Add",
+       [
+        "Power",
+        "x",
+        2
+       ],
+       [
+        "Power",
+        "y",
+        2
+       ]
+      ],
+      225
+     ],
+     "relation": "new"
+    },
+    {
+     "cue": "Rates in time wanted: differentiate in \\(t\\).",
+     "why": "Each varying quantity brings its own rate.",
+     "expression": [
+      "Equal",
+      [
+       "Add",
+       [
+        "Multiply",
+        2,
+        "dxdt",
+        "x"
+       ],
+       [
+        "Multiply",
+        2,
+        "dydt",
+        "y"
+       ]
+      ],
+      0
+     ],
+     "point_type_id": "BC-PT-99023",
+     "relation": "new"
+    },
+    {
+     "cue": "Now the instant: \\(x=9\\), \\(y=12\\), \\(dx/dt=2\\).",
+     "why": "\\(y=12\\) from \\(9^2+y^2=225\\).",
+     "expression": [
+      "Equal",
+      [
+       "Add",
+       36,
+       [
+        "Multiply",
+        24,
+        "dydt"
+       ]
+      ],
+      0
+     ],
+     "relation": "evaluate",
+     "subs": {
+      "x": "9",
+      "y": "12",
+      "dxdt": "2"
+     }
+    },
+    {
+     "cue": "Solve for the wanted rate.",
+     "why": "\\(dy/dt=-3/2\\).",
+     "expression": [
+      "Rational",
+      -3,
+      2
+     ],
+     "relation": "solve",
+     "variable": "dydt"
+    },
+    {
+     "cue": "Report with units.",
+     "why": "Negative: the top slides down at 1.5 feet per second."
+    }
+   ],
+   "answer": {
+    "form": "numeric",
+    "mathjson": [
+     "Rational",
+     -3,
+     2
+    ]
+   },
+   "delivery": {
+    "mode": "step_reveal",
+    "reason": "rule 1",
+    "sources": []
+   }
+  },
+  {
+   "id": "LSN-CON-04007#s6",
+   "type": "worked_example",
+   "bands": [
+    "low"
+   ],
+   "skills": [
+    "BC-SKL-04019",
+    "BC-SKL-04022"
+   ],
+   "sources": [
+    "BC-QA-04007"
+   ],
+   "evidence_tag": "inferred",
+   "archetype_id": "BC-QA-04007",
+   "parameter_draw": {
+    "square_x": 2,
+    "mixed": 1,
+    "square_y": 1,
+    "point_x": 1,
+    "point_y": -2,
+    "rate_x": 3
+   },
+   "problem": {
+    "text": "A particle moves on \\(2x^2+xy+y^2=4\\). At \\((1,-2)\\), \\(dx/dt=3\\). Find \\(dy/dt\\) there.",
+    "command_verb": "find"
+   },
+   "calculator_status": "no_calculator",
+   "steps": [
+    {
+     "cue": "A rate in time supplied, the other asked.",
+     "why": "Differentiate in \\(t\\), not \\(x\\).",
+     "expression": [
+      "Equal",
+      [
+       "Add",
+       [
+        "Power",
+        "y",
+        2
+       ],
+       [
+        "Multiply",
+        2,
+        [
+         "Power",
+         "x",
+         2
+        ]
+       ],
+       [
+        "Multiply",
+        "x",
+        "y"
+       ]
+      ],
+      4
+     ],
+     "relation": "new"
+    },
+    {
+     "cue": "The term \\(xy\\) multiplies two varying quantities.",
+     "why": "Product rule: two rate factors.",
+     "expression": [
+      "Equal",
+      [
+       "Add",
+       [
+        "Multiply",
+        "dxdt",
+        "y"
+       ],
+       [
+        "Multiply",
+        "dydt",
+        "x"
+       ],
+       [
+        "Multiply",
+        2,
+        "dydt",
+        "y"
+       ],
+       [
+        "Multiply",
+        4,
+        "dxdt",
+        "x"
+       ]
+      ],
+      0
+     ],
+     "relation": "new"
+    },
+    {
+     "cue": "Substitute the point and \\(dx/dt=3\\).",
+     "why": "\\(12-6+dy/dt-4\\,dy/dt\\).",
+     "expression": [
+      "Equal",
+      [
+       "Add",
+       6,
+       [
+        "Multiply",
+        -3,
+        "dydt"
+       ]
+      ],
+      0
+     ],
+     "relation": "evaluate",
+     "subs": {
+      "x": "1",
+      "y": "-2",
+      "dxdt": "3"
+     }
+    },
+    {
+     "cue": "Solve.",
+     "why": "\\(dy/dt=2\\).",
+     "expression": 2,
+     "relation": "solve",
+     "variable": "dydt"
+    }
+   ],
+   "answer": {
+    "form": "numeric",
+    "mathjson": 2
+   },
+   "delivery": {
+    "mode": "step_reveal",
+    "reason": "rule 1",
+    "sources": []
+   }
+  },
+  {
+   "id": "LSN-CON-04007#s7",
+   "type": "what_a_reader_scores",
+   "bands": [
+    "low",
+    "mid"
+   ],
+   "skills": [
+    "BC-SKL-04017",
+    "BC-SKL-04019"
+   ],
+   "sources": [
+    "BC-PT-99023"
+   ],
+   "evidence_tag": "verified",
+   "example_id": "LSN-CON-04007#s5",
+   "lines": [
+    {
+     "point_type_id": "BC-PT-99023",
+     "text": "Chain rule. Earned by: Correct differentiation of the inner function, including the required differentials (sg-22:16, sg-25:21). Not earned by: A product rule written without one or both differentials, which sg-22:16 states earns the product rule point but not this one. Notation: sg-22:16 treats a missing differential as the defining failure for this point."
+    }
+   ]
+  },
+  {
+   "id": "LSN-CON-04007#err-BC-ERR-04015",
+   "type": "common_error",
+   "bands": [
+    "low",
+    "mid"
+   ],
+   "skills": [
+    "BC-SKL-04017"
+   ],
+   "sources": [
+    "BC-ERR-04015"
+   ],
+   "evidence_tag": "inferred",
+   "error_id": "BC-ERR-04015",
+   "observed_behavior": "The rate supplied in the stem is reported as the answer, or the requested rate is treated as known.",
+   "scoring_consequence": "The answer point is lost; BC-ERR-99033 records variables introduced without being defined as a related communication failure.",
+   "wrong_step": {
+    "text": "\\(dy/dt=2\\), the given rate.",
+    "expression": 2
+   },
+   "right_step": {
+    "text": "\\(dy/dt=-3/2\\).",
+    "expression": [
+     "Rational",
+     -3,
+     2
+    ]
+   },
+   "relation": "distinct",
+   "delivery": {
+    "mode": "step_reveal",
+    "reason": "rule 1",
+    "sources": []
+   }
+  },
+  {
+   "id": "LSN-CON-04007#err-BC-ERR-04017",
+   "type": "common_error",
+   "bands": [
+    "low",
+    "mid"
+   ],
+   "skills": [
+    "BC-SKL-04019",
+    "BC-SKL-04022"
+   ],
+   "sources": [
+    "BC-ERR-04017",
+    "BC-MIS-04008"
+   ],
+   "evidence_tag": "inferred",
+   "error_id": "BC-ERR-04017",
+   "observed_behavior": "The relating equation is differentiated with respect to a length or with respect to x, and the response stops there rather than continuing through the chain rule to a rate with respect to time.",
+   "scoring_consequence": "The Chief Reader report for 2024 records that responses differentiating with respect to x needed to continue through the chain rule and that many provided no work beyond that step (cr-24:18); BC-ERR-99013 records the same family across years.",
+   "wrong_step": {
+    "text": "\\(dy/dx=-x/y=-3/4\\), stopped.",
+    "expression": [
+     "Rational",
+     -3,
+     4
+    ]
+   },
+   "right_step": {
+    "text": "\\(dy/dt=-3/2\\).",
+    "expression": [
+     "Rational",
+     -3,
+     2
+    ]
+   },
+   "relation": "distinct",
+   "possible_reason": {
+    "misconception_id": "BC-MIS-04008",
+    "text": "the rates with respect to time never appear"
+   },
+   "delivery": {
+    "mode": "step_reveal",
+    "reason": "rule 1",
+    "sources": []
+   }
+  },
+  {
+   "id": "LSN-CON-04007#err-BC-ERR-04018",
+   "type": "common_error",
+   "bands": [
+    "low",
+    "mid"
+   ],
+   "skills": [
+    "BC-SKL-04022"
+   ],
+   "sources": [
+    "BC-ERR-04018",
+    "BC-MIS-04009"
+   ],
+   "evidence_tag": "inferred",
+   "error_id": "BC-ERR-04018",
+   "observed_behavior": "A term that multiplies two varying quantities is differentiated as though one of them were constant.",
+   "scoring_consequence": "The completely correct differentiation point is lost; BC-ERR-99013 names the missing product rule explicitly.",
+   "wrong_step": {
+    "text": "\\(xy\\) differentiated with \\(x\\) held constant.",
+    "expression": [
+     "Equal",
+     [
+      "Add",
+      [
+       "Multiply",
+       "dydt",
+       "x"
+      ],
+      [
+       "Multiply",
+       2,
+       "dydt",
+       "y"
+      ],
+      [
+       "Multiply",
+       4,
+       "dxdt",
+       "x"
+      ]
+     ],
+     0
+    ]
+   },
+   "right_step": {
+    "text": "Product rule on \\(xy\\).",
+    "expression": [
+     "Equal",
+     [
+      "Add",
+      [
+       "Multiply",
+       "dxdt",
+       "y"
+      ],
+      [
+       "Multiply",
+       "dydt",
+       "x"
+      ],
+      [
+       "Multiply",
+       2,
+       "dydt",
+       "y"
+      ],
+      [
+       "Multiply",
+       4,
+       "dxdt",
+       "x"
+      ]
+     ],
+     0
+    ]
+   },
+   "relation": "distinct",
+   "possible_reason": {
+    "misconception_id": "BC-MIS-04009",
+    "text": "only one rate factor appears where two are needed"
+   },
+   "delivery": {
+    "mode": "step_reveal",
+    "reason": "rule 1",
+    "sources": []
+   }
+  },
+  {
+   "id": "LSN-CON-04007#err-BC-ERR-99013",
+   "type": "common_error",
+   "bands": [
+    "low",
+    "mid"
+   ],
+   "skills": [
+    "BC-SKL-04019",
+    "BC-SKL-04022"
+   ],
+   "sources": [
+    "BC-ERR-99013",
+    "BC-MIS-99005"
+   ],
+   "evidence_tag": "inferred",
+   "error_id": "BC-ERR-99013",
+   "observed_behavior": "Responses differentiate an implicit relation with respect to x when time is the independent variable, omit the product rule on a product of two changing quantities, or treat one quantity as constant, and confuse the notations for the several derivatives in play.",
+   "scoring_consequence": "The differentiation points in the part are not earned, and the numerical answer point depends on them.",
+   "wrong_step": {
+    "text": "\\(dy/dx\\) at \\((1,-2)\\) reported: \\(2/3\\).",
+    "expression": [
+     "Rational",
+     2,
+     3
+    ]
+   },
+   "right_step": {
+    "text": "\\(dy/dt=2\\).",
+    "expression": 2
+   },
+   "relation": "distinct",
+   "possible_reason": {
+    "misconception_id": "BC-MIS-99005",
+    "text": "implicit differentiation with respect to time is carried out with respect to x"
+   },
+   "delivery": {
+    "mode": "step_reveal",
+    "reason": "rule 1",
+    "sources": []
+   }
+  },
+  {
+   "id": "LSN-CON-04007#prq-BC-PRQ-04008",
+   "type": "prerequisite_bridge",
+   "bands": [
+    "low",
+    "mid"
+   ],
+   "skills": [
+    "BC-SKL-04017",
+    "BC-SKL-04019",
+    "BC-SKL-04022"
+   ],
+   "sources": [
+    "BC-PRQ-04008"
+   ],
+   "evidence_tag": "inferred",
+   "prerequisite_id": "BC-PRQ-04008",
+   "text": "Name each quantity, its unit, and whether it varies. Unnamed, the response cannot begin (ced:84)."
+  }
+ ],
+ "checks": [
+  {
+   "id": "LSN-CON-04007#chk-1",
+   "check_kind": "completion",
+   "bands": [
+    "low",
+    "mid"
+   ],
+   "format": "short_answer",
+   "archetype_id": "BC-QA-04006",
+   "parameter_draw": {
+    "shape": "ladder",
+    "size": 9,
+    "rate": 2,
+    "ratio": 3,
+    "leg": "short",
+    "length_unit": "foot",
+    "time_unit": "second"
+   },
+   "completes": "LSN-CON-04007#s5",
+   "stem": {
+    "text": "\\(2(9)(2)+2(12)\\,dy/dt=0\\). Find \\(dy/dt\\) with units.",
+    "command_verb": "find"
+   },
+   "answer_key": {
+    "form": "numeric",
+    "mathjson": [
+     "Rational",
+     -3,
+     2
+    ]
+   },
+   "worked_solution": [
+    {
+     "step": 1,
+     "text": "Substituted.",
+     "mathjson": [
+      "Equal",
+      [
+       "Add",
+       36,
+       [
+        "Multiply",
+        24,
+        "dydt"
+       ]
+      ],
+      0
+     ],
+     "relation": "new"
+    },
+    {
+     "step": 2,
+     "text": "-3/2 feet per second.",
+     "mathjson": [
+      "Rational",
+      -3,
+      2
+     ],
+     "relation": "solve",
+     "variable": "dydt"
+    }
+   ],
+   "calculator_status": "no_calculator",
+   "representation": "BC-REP-08",
+   "skills": [
+    "BC-SKL-04019"
+   ]
+  },
+  {
+   "id": "LSN-CON-04007#chk-2",
+   "check_kind": "isomorph",
+   "bands": [
+    "low",
+    "mid"
+   ],
+   "format": "short_answer",
+   "archetype_id": "BC-QA-04006",
+   "parameter_draw": {
+    "shape": "circle",
+    "size": 6,
+    "rate": 2,
+    "ratio": 1,
+    "leg": "short",
+    "length_unit": "centimeter",
+    "time_unit": "minute"
+   },
+   "stem": {
+    "text": "A circle's radius grows at 2 centimeters per minute. How fast is its area growing when the radius is 6 centimeters?",
+    "command_verb": "find"
+   },
+   "answer_key": {
+    "form": "symbolic",
+    "mathjson": [
+     "Multiply",
+     24,
+     "Pi"
+    ]
+   },
+   "worked_solution": [
+    {
+     "step": 1,
+     "text": "dA/dt = 2 pi r dr/dt.",
+     "mathjson": [
+      "Multiply",
+      2,
+      "Pi",
+      "drdt",
+      "r"
+     ],
+     "relation": "new"
+    },
+    {
+     "step": 2,
+     "text": "r = 6, dr/dt = 2.",
+     "mathjson": [
+      "Multiply",
+      24,
+      "Pi"
+     ],
+     "relation": "evaluate",
+     "subs": {
+      "r": "6",
+      "drdt": "2"
+     }
+    }
+   ],
+   "calculator_status": "no_calculator",
+   "representation": "BC-REP-08",
+   "skills": [
+    "BC-SKL-04017",
+    "BC-SKL-04019"
+   ]
+  },
+  {
+   "id": "LSN-CON-04007#chk-3",
+   "check_kind": "mcq",
+   "bands": [
+    "low"
+   ],
+   "format": "mcq",
+   "archetype_id": "BC-QA-04007",
+   "parameter_draw": {
+    "square_x": 1,
+    "mixed": 3,
+    "square_y": 2,
+    "point_x": 1,
+    "point_y": 1,
+    "rate_x": 2
+   },
+   "stem": {
+    "text": "On \\(x^2+3xy+2y^2=6\\), at \\((1,1)\\), \\(dx/dt=2\\). What is \\(dy/dt\\)?",
+    "command_verb": "find"
+   },
+   "answer_key": {
+    "form": "numeric",
+    "mathjson": [
+     "Rational",
+     -10,
+     7
+    ]
+   },
+   "worked_solution": [
+    {
+     "step": 1,
+     "text": "Differentiate in t.",
+     "mathjson": [
+      "Equal",
+      [
+       "Add",
+       [
+        "Multiply",
+        2,
+        "dxdt",
+        "x"
+       ],
+       [
+        "Multiply",
+        3,
+        "dxdt",
+        "y"
+       ],
+       [
+        "Multiply",
+        3,
+        "dydt",
+        "x"
+       ],
+       [
+        "Multiply",
+        4,
+        "dydt",
+        "y"
+       ]
+      ],
+      0
+     ],
+     "relation": "new"
+    },
+    {
+     "step": 2,
+     "text": "Substitute.",
+     "mathjson": [
+      "Equal",
+      [
+       "Add",
+       10,
+       [
+        "Multiply",
+        7,
+        "dydt"
+       ]
+      ],
+      0
+     ],
+     "relation": "evaluate",
+     "subs": {
+      "x": "1",
+      "y": "1",
+      "dxdt": "2"
+     }
+    },
+    {
+     "step": 3,
+     "text": "Solve.",
+     "mathjson": [
+      "Rational",
+      -10,
+      7
+     ],
+     "relation": "solve",
+     "variable": "dydt"
+    }
+   ],
+   "options": [
+    {
+     "id": "A",
+     "is_key": true,
+     "error_path": null,
+     "value": [
+      "Rational",
+      -10,
+      7
+     ]
+    },
+    {
+     "id": "B",
+     "is_key": false,
+     "error_path": "BC-ERR-04015",
+     "value": 2,
+     "derivation": "the supplied rate dx/dt reported as dy/dt"
+    },
+    {
+     "id": "C",
+     "is_key": false,
+     "error_path": "BC-ERR-04018",
+     "value": [
+      "Rational",
+      -4,
+      7
+     ],
+     "derivation": "3xy differentiated with x held constant, so the 3y dx/dt term is lost: 4 + 7 dy/dt = 0"
+    },
+    {
+     "id": "D",
+     "is_key": false,
+     "error_path": "BC-ERR-99013",
+     "value": [
+      "Rational",
+      -5,
+      7
+     ],
+     "derivation": "dy/dx = -(2x + 3y)/(3x + 4y) reported where dy/dt is needed"
+    }
+   ],
+   "calculator_status": "no_calculator",
+   "representation": "BC-REP-01",
+   "skills": [
+    "BC-SKL-04022"
+   ]
+  }
+ ],
+ "refresher": [
+  "LSN-CON-04007#s2",
+  "LSN-CON-04007#err-BC-ERR-04015",
+  "LSN-CON-04007#err-BC-ERR-04017",
+  "LSN-CON-04007#err-BC-ERR-04018",
+  "LSN-CON-04007#err-BC-ERR-99013",
+  "LSN-CON-04007#s5"
+ ],
+ "provenance": {
+  "author": "tools/lesson_transcribe.py",
+  "prompt_version": "generator/lesson_v1",
+  "design_path": "docs/lessons/unit-04/LSN-CON-04007.md",
+  "signed_off_by": "claude-opus-5-5",
+  "signed_off_at": "2026-09-29",
+  "not_human": true
+ }
+}

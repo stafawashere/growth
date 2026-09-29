@@ -1,0 +1,768 @@
+{
+ "id": "LSN-CON-01010",
+ "version": 1,
+ "kind": "concept",
+ "target_id": "BC-CON-01010",
+ "status": "draft",
+ "snapshot_digest": "a6a8ec9d3f59ab8f712e33d30cc22fc64bf2c478fbe7312e3e3118d319c6a42f",
+ "source_digest": "e7c49c719576b4701f69dc68825c8d479d13da494ba04493c0778d0abad49cc1",
+ "read_minutes": {
+  "full": 4.0,
+  "brief": 3.0
+ },
+ "word_count": {
+  "full": 494,
+  "brief": 400
+ },
+ "sections": [
+  {
+   "id": "LSN-CON-01010#s1",
+   "type": "orientation",
+   "bands": [
+    "low",
+    "mid"
+   ],
+   "skills": [
+    "BC-SKL-01032",
+    "BC-SKL-01033",
+    "BC-SKL-01034",
+    "BC-SKL-01035"
+   ],
+   "sources": [
+    "BC-CON-01010",
+    "research/units/unit-01-limits-continuity.md#1.8 Determining Limits Using the Squeeze Theorem"
+   ],
+   "evidence_tag": "inferred",
+   "text": "A response shows the trapped function between two bounds near the target, the limit of each bound, and the conclusion that the trapped function shares that limit. The inequality is either supplied or built from an oscillating factor.",
+   "delivery": {
+    "mode": "figure",
+    "reason": "rule 3: BC-REP-02 on BC-SKL-01033 and BC-SKL-01035 (unit-01 README delivery map)",
+    "sources": [
+     "BC-SKL-01033",
+     "BC-SKL-01035"
+    ],
+    "spec": {
+     "kind": "graph",
+     "window": {
+      "x": [
+       0,
+       2
+      ],
+      "y": [
+       -1,
+       5
+      ]
+     },
+     "curves": [
+      {
+       "expr": "2 - 3*Abs(x-1)",
+       "style": "dashed",
+       "label": {
+        "text": "lower bound",
+        "placement": "inside"
+       }
+      },
+      {
+       "expr": "2 + 3*Abs(x-1)",
+       "style": "dashed",
+       "label": {
+        "text": "upper bound",
+        "placement": "inside"
+       }
+      },
+      {
+       "expr": "2 + 3*(x-1)*sin(1/(x-1))",
+       "style": "solid",
+       "label": {
+        "text": "f",
+        "placement": "inside"
+       }
+      }
+     ],
+     "points": [
+      {
+       "x": 1,
+       "y": 2,
+       "style": "open",
+       "label": {
+        "text": "(1, 2)",
+        "placement": "inside"
+       }
+      }
+     ],
+     "labels": [
+      {
+       "text": "trapped between the bounds",
+       "placement": "inside"
+      }
+     ],
+     "representations": [
+      "graph"
+     ]
+    },
+    "fallback": "Alt text and the inequality \\(2-3|x-1|\\le f(x)\\le2+3|x-1|\\) in words, with the point \\((1,2)\\) named.",
+    "keyboard": "none needed: a static figure"
+   }
+  },
+  {
+   "id": "LSN-CON-01010#s2",
+   "type": "key_ideas",
+   "bands": [
+    "low",
+    "mid"
+   ],
+   "skills": [
+    "BC-SKL-01032",
+    "BC-SKL-01033",
+    "BC-SKL-01034",
+    "BC-SKL-01035"
+   ],
+   "sources": [
+    "BC-EK-LIM-1E2",
+    "ced:45",
+    "research/units/unit-01-limits-continuity.md#1.8 Determining Limits Using the Squeeze Theorem"
+   ],
+   "evidence_tag": "verified",
+   "ek_id": "BC-EK-LIM-1E2",
+   "depth": "core",
+   "text": "If \\(g(x)\\le f(x)\\le h(x)\\) for all \\(x\\) near \\(c\\), except possibly at \\(c\\), and \\(g\\) and \\(h\\) both have limit \\(L\\) at \\(c\\), then \\(\\lim_{x\\to c}f(x)=L\\). The hypotheses are their own demand: the inequality is shown to hold near \\(c\\), and each bound's limit is taken. The usual case bounds an oscillating factor between \\(-1\\) and 1, then multiplies through by the vanishing factor.",
+   "notation": "squeeze theorem; the inequality written with the trapped function in the middle",
+   "quote": {
+    "text": "The limit of a function may be found by using the squeeze theorem.",
+    "source": "ced:45"
+   },
+   "delivery": {
+    "mode": "motion",
+    "reason": "rule 2: a limit being taken, the bounds pinching toward the input; rule 3, BC-REP-02 on BC-SKL-01033 and BC-SKL-01035",
+    "sources": [
+     "BC-SKL-01033",
+     "BC-SKL-01035"
+    ],
+    "spec": {
+     "kind": "graph_sweep",
+     "parameter": "half-width of the window about x = 1",
+     "curves": [
+      {
+       "expr": "2 - 3*Abs(x-1)",
+       "label": {
+        "text": "g",
+        "placement": "inside"
+       }
+      },
+      {
+       "expr": "2 + 3*Abs(x-1)",
+       "label": {
+        "text": "h",
+        "placement": "inside"
+       }
+      },
+      {
+       "expr": "2 + 3*(x-1)*sin(1/(x-1))",
+       "label": {
+        "text": "f",
+        "placement": "inside"
+       }
+      }
+     ],
+     "frames": [
+      {
+       "window": {
+        "x": [
+         0,
+         2
+        ],
+        "y": [
+         -1,
+         5
+        ]
+       },
+       "label": {
+        "text": "half-width 1",
+        "placement": "inside"
+       }
+      },
+      {
+       "window": {
+        "x": [
+         0.9,
+         1.1
+        ],
+        "y": [
+         1.7,
+         2.3
+        ]
+       },
+       "label": {
+        "text": "half-width 0.1",
+        "placement": "inside"
+       }
+      },
+      {
+       "window": {
+        "x": [
+         0.99,
+         1.01
+        ],
+        "y": [
+         1.97,
+         2.03
+        ]
+       },
+       "label": {
+        "text": "half-width 0.01",
+        "placement": "inside"
+       }
+      }
+     ],
+     "labels": [
+      {
+       "text": "g and h meet at height 2",
+       "placement": "inside"
+      }
+     ],
+     "representations": [
+      "graph"
+     ]
+    },
+    "fallback": "The three frames as a static strip, each labelled with its half-width, the gap between g and h stated under each.",
+    "keyboard": "Left and right arrow keys step between frames; Home returns to the first frame.",
+    "reduced_motion": "No auto-advance; each key press cross-fades to the next frame."
+   }
+  },
+  {
+   "id": "LSN-CON-01010#s3",
+   "type": "strategy",
+   "bands": [
+    "low",
+    "mid"
+   ],
+   "skills": [
+    "BC-SKL-01032",
+    "BC-SKL-01033",
+    "BC-SKL-01034",
+    "BC-SKL-01035"
+   ],
+   "sources": [
+    "BC-QA-01005"
+   ],
+   "evidence_tag": "verified",
+   "archetype_id": "BC-QA-01005",
+   "cue": "A function trapped between two bounds, or an oscillating factor times a vanishing factor, with the limit asked.",
+   "method": "First line: bound the oscillating factor between fixed values.",
+   "rival": "Rival: substituting the target into the bounds instead of taking their limits (BC-ERR-01013).",
+   "separating_feature": "The oscillating factor has no limit of its own, so the product theorem has nothing to multiply."
+  },
+  {
+   "id": "LSN-CON-01010#s4",
+   "type": "worked_example",
+   "bands": [
+    "low",
+    "mid"
+   ],
+   "skills": [
+    "BC-SKL-01032",
+    "BC-SKL-01033",
+    "BC-SKL-01034",
+    "BC-SKL-01035"
+   ],
+   "sources": [
+    "BC-QA-01005"
+   ],
+   "evidence_tag": "inferred",
+   "archetype_id": "BC-QA-01005",
+   "parameter_draw": {
+    "target": 1,
+    "shift": 2,
+    "coefficient": 3,
+    "power": 1,
+    "wave": "sin",
+    "naming": "open"
+   },
+   "problem": {
+    "text": "Let \\(f(x)=2+3(x-1)\\sin\\frac{1}{x-1}\\). Find \\(\\lim_{x\\to1}f(x)\\) and justify the answer.",
+    "command_verb": "find"
+   },
+   "calculator_status": "no_calculator",
+   "steps": [
+    {
+     "cue": "\\(\\sin\\frac{1}{x-1}\\) oscillates near 1 and has no limit there.",
+     "why": "It is bounded: \\(-1\\le\\sin\\frac{1}{x-1}\\le1\\) for every \\(x\\ne1\\)."
+    },
+    {
+     "cue": "The vanishing factor \\(3(x-1)\\) is negative left of 1.",
+     "why": "Bounding by \\(3|x-1|\\) keeps one inequality valid on both sides: \\(f(x)\\ge2-3|x-1|\\).",
+     "expression": [
+      "Add",
+      2,
+      [
+       "Multiply",
+       -3,
+       [
+        "Abs",
+        [
+         "Add",
+         -1,
+         "x"
+        ]
+       ]
+      ]
+     ],
+     "relation": "new"
+    },
+    {
+     "cue": "The stem asks for a limit, so take the limit of the lower bound.",
+     "why": "\\(2-3|x-1|\\to2\\) as \\(x\\to1\\).",
+     "expression": 2,
+     "relation": "limit",
+     "variable": "x",
+     "point": "1"
+    },
+    {
+     "cue": "The same bound gives \\(f(x)\\le2+3|x-1|\\).",
+     "why": "The upper bound is needed too; one side alone traps nothing.",
+     "expression": [
+      "Add",
+      2,
+      [
+       "Multiply",
+       3,
+       [
+        "Abs",
+        [
+         "Add",
+         -1,
+         "x"
+        ]
+       ]
+      ]
+     ],
+     "relation": "new"
+    },
+    {
+     "cue": "Take the limit of the upper bound.",
+     "why": "\\(2+3|x-1|\\to2\\) as \\(x\\to1\\).",
+     "expression": 2,
+     "relation": "limit",
+     "variable": "x",
+     "point": "1"
+    },
+    {
+     "cue": "Both bounds tend to 2 and trap \\(f\\) near 1.",
+     "why": "By the squeeze theorem, \\(\\lim_{x\\to1}f(x)=2\\)."
+    }
+   ],
+   "answer": {
+    "form": "numeric",
+    "mathjson": 2
+   },
+   "delivery": {
+    "mode": "step_reveal",
+    "reason": "rule 1",
+    "sources": []
+   }
+  },
+  {
+   "id": "LSN-CON-01010#err-BC-ERR-01012",
+   "type": "common_error",
+   "bands": [
+    "low",
+    "mid"
+   ],
+   "skills": [
+    "BC-SKL-01033",
+    "BC-SKL-01035"
+   ],
+   "sources": [
+    "BC-ERR-01012",
+    "BC-MIS-01008"
+   ],
+   "evidence_tag": "inferred",
+   "error_id": "BC-ERR-01012",
+   "observed_behavior": "The response multiplies the bounding inequality by a factor that is negative on one side of the target without reversing the inequality there.",
+   "scoring_consequence": "The point for establishing the bounding inequality is lost.",
+   "wrong_step": {
+    "text": "Multiplying by \\(3(x-1)\\) without reversal: \\(2-3(x-1)\\le f(x)\\), false for \\(x<1\\).",
+    "expression": [
+     "Add",
+     5,
+     [
+      "Multiply",
+      -3,
+      "x"
+     ]
+    ]
+   },
+   "right_step": {
+    "text": "With \\(3|x-1|\\): \\(2-3|x-1|\\le f(x)\\) on both sides.",
+    "expression": [
+     "Add",
+     2,
+     [
+      "Multiply",
+      -3,
+      [
+       "Abs",
+       [
+        "Add",
+        -1,
+        "x"
+       ]
+      ]
+     ]
+    ]
+   },
+   "relation": "distinct",
+   "possible_reason": {
+    "misconception_id": "BC-MIS-01008",
+    "text": "handles the inequality as an equation"
+   },
+   "delivery": {
+    "mode": "step_reveal",
+    "reason": "rule 1",
+    "sources": []
+   }
+  },
+  {
+   "id": "LSN-CON-01010#err-BC-ERR-01013",
+   "type": "common_error",
+   "bands": [
+    "low",
+    "mid"
+   ],
+   "skills": [
+    "BC-SKL-01034"
+   ],
+   "sources": [
+    "BC-ERR-01013",
+    "BC-MIS-01008"
+   ],
+   "evidence_tag": "inferred",
+   "error_id": "BC-ERR-01013",
+   "observed_behavior": "The response substitutes the target input into the bounding functions rather than evaluating their limits.",
+   "scoring_consequence": "The conclusion point is lost because the theorem has not been applied.",
+   "wrong_step": {
+    "text": "\\(x=1\\) is put into the bound: \\(2-3|1-1|=2\\).",
+    "expression": 2
+   },
+   "right_step": {
+    "text": "The limit of the bound: \\(\\lim_{x\\to1}(2-3|x-1|)=2\\).",
+    "expression": 2
+   },
+   "relation": "equivalent",
+   "possible_reason": {
+    "misconception_id": "BC-MIS-01008",
+    "text": "treats the bounding functions as things to evaluate at the target rather than as functions whose limits must agree"
+   },
+   "delivery": {
+    "mode": "step_reveal",
+    "reason": "rule 1",
+    "sources": []
+   }
+  },
+  {
+   "id": "LSN-CON-01010#err-BC-ERR-99008",
+   "type": "common_error",
+   "bands": [
+    "low",
+    "mid"
+   ],
+   "skills": [
+    "BC-SKL-01032"
+   ],
+   "sources": [
+    "BC-ERR-99008",
+    "BC-MIS-99009",
+    "BC-SKL-01032"
+   ],
+   "evidence_tag": "inferred",
+   "error_id": "BC-ERR-99008",
+   "observed_behavior": "Responses apply the Mean Value Theorem, the Intermediate Value Theorem or L'Hospital's Rule without establishing continuity from differentiability, without bounding the target value between two function values, or without confirming the indeterminate form.",
+   "scoring_consequence": "The condition point is not earned; in several years this was the point earned by the smallest proportion of responses on the question.",
+   "wrong_step": {
+    "text": "\\(\\lim_{x\\to1}f(x)=2\\) by the squeeze theorem, with no inequality shown near 1.",
+    "expression": 2
+   },
+   "right_step": {
+    "text": "\\(2-3|x-1|\\le f(x)\\le2+3|x-1|\\) near 1, both bounds tend to 2, so the limit is 2.",
+    "expression": 2
+   },
+   "relation": "equivalent",
+   "possible_reason": {
+    "misconception_id": "BC-MIS-99009",
+    "text": "recalls a theorem by its conclusion and applies it without establishing the conditions"
+   },
+   "delivery": {
+    "mode": "step_reveal",
+    "reason": "rule 1",
+    "sources": []
+   }
+  },
+  {
+   "id": "LSN-CON-01010#prq-BC-PRQ-01005",
+   "type": "prerequisite_bridge",
+   "bands": [
+    "low",
+    "mid"
+   ],
+   "skills": [
+    "BC-SKL-01033",
+    "BC-SKL-01035"
+   ],
+   "sources": [
+    "BC-PRQ-01005"
+   ],
+   "evidence_tag": "inferred",
+   "prerequisite_id": "BC-PRQ-01005",
+   "text": "Sine and cosine stay between \\(-1\\) and 1. Treating an oscillating factor as unbounded marks this gap."
+  },
+  {
+   "id": "LSN-CON-01010#prq-BC-PRQ-01010",
+   "type": "prerequisite_bridge",
+   "bands": [
+    "low",
+    "mid"
+   ],
+   "skills": [
+    "BC-SKL-01032",
+    "BC-SKL-01034"
+   ],
+   "sources": [
+    "BC-PRQ-01010"
+   ],
+   "evidence_tag": "inferred",
+   "prerequisite_id": "BC-PRQ-01010",
+   "text": "Read open and closed intervals as inequalities. A conclusion stated on the wrong interval marks this gap."
+  }
+ ],
+ "checks": [
+  {
+   "id": "LSN-CON-01010#chk-1",
+   "check_kind": "completion",
+   "bands": [
+    "low",
+    "mid"
+   ],
+   "format": "short_answer",
+   "archetype_id": "BC-QA-01005",
+   "parameter_draw": {
+    "target": 1,
+    "shift": 2,
+    "coefficient": 3,
+    "power": 1,
+    "wave": "sin",
+    "naming": "open"
+   },
+   "completes": "LSN-CON-01010#s4",
+   "stem": {
+    "text": "For \\(x\\ne1\\), \\(2-3|x-1|\\le f(x)\\le2+3|x-1|\\). Find \\(\\lim_{x\\to1}f(x)\\).",
+    "command_verb": "find"
+   },
+   "answer_key": {
+    "form": "numeric",
+    "mathjson": 2
+   },
+   "worked_solution": [
+    {
+     "step": 1,
+     "text": "The upper bound.",
+     "mathjson": [
+      "Add",
+      2,
+      [
+       "Multiply",
+       3,
+       [
+        "Abs",
+        [
+         "Add",
+         -1,
+         "x"
+        ]
+       ]
+      ]
+     ],
+     "relation": "new"
+    },
+    {
+     "step": 2,
+     "text": "Its limit at 1 is 2, as is the lower bound's.",
+     "mathjson": 2,
+     "relation": "limit",
+     "variable": "x",
+     "point": "1"
+    }
+   ],
+   "calculator_status": "no_calculator",
+   "representation": "BC-REP-01",
+   "skills": [
+    "BC-SKL-01034"
+   ]
+  },
+  {
+   "id": "LSN-CON-01010#chk-2",
+   "check_kind": "isomorph",
+   "bands": [
+    "low",
+    "mid"
+   ],
+   "format": "short_answer",
+   "archetype_id": "BC-QA-01005",
+   "parameter_draw": {
+    "target": -2,
+    "shift": -1,
+    "coefficient": -2,
+    "power": 2,
+    "wave": "cos",
+    "naming": "named"
+   },
+   "stem": {
+    "text": "Use the squeeze theorem to find \\(\\lim_{x\\to-2}\\left(-1-2(x+2)^2\\cos\\frac{1}{x+2}\\right)\\).",
+    "command_verb": "find"
+   },
+   "answer_key": {
+    "form": "numeric",
+    "mathjson": -1
+   },
+   "worked_solution": [
+    {
+     "step": 1,
+     "text": "Upper bound \\(-1+2(x+2)^2\\).",
+     "mathjson": [
+      "Add",
+      -1,
+      [
+       "Multiply",
+       2,
+       [
+        "Power",
+        [
+         "Add",
+         2,
+         "x"
+        ],
+        2
+       ]
+      ]
+     ],
+     "relation": "new"
+    },
+    {
+     "step": 2,
+     "text": "Its limit at \\(-2\\).",
+     "mathjson": -1,
+     "relation": "limit",
+     "variable": "x",
+     "point": "-2"
+    }
+   ],
+   "calculator_status": "no_calculator",
+   "representation": "BC-REP-01",
+   "skills": [
+    "BC-SKL-01035"
+   ]
+  },
+  {
+   "id": "LSN-CON-01010#chk-3",
+   "check_kind": "mcq",
+   "bands": [
+    "low"
+   ],
+   "format": "mcq",
+   "archetype_id": "BC-QA-01005",
+   "parameter_draw": {
+    "target": 0,
+    "shift": 3,
+    "coefficient": 1,
+    "power": 3,
+    "wave": "sin",
+    "naming": "open"
+   },
+   "stem": {
+    "text": "Which line justifies \\(\\lim_{x\\to0}\\left(3+x^3\\sin\\frac{1}{x}\\right)=3\\)?",
+    "command_verb": "identify"
+   },
+   "answer_key": {
+    "form": "statement",
+    "mathjson": "abs_bounds_then_limits"
+   },
+   "worked_solution": [
+    {
+     "step": 1,
+     "text": "Upper bound \\(3+|x|^3\\).",
+     "mathjson": [
+      "Add",
+      3,
+      [
+       "Power",
+       [
+        "Abs",
+        "x"
+       ],
+       3
+      ]
+     ],
+     "relation": "new"
+    },
+    {
+     "step": 2,
+     "text": "Its limit at 0.",
+     "mathjson": 3,
+     "relation": "limit",
+     "variable": "x",
+     "point": "0"
+    }
+   ],
+   "options": [
+    {
+     "id": "A",
+     "is_key": false,
+     "error_path": "BC-ERR-01013",
+     "label": "At \\(x=0\\) the bounds \\(3-|x|^3\\) and \\(3+|x|^3\\) both equal 3.",
+     "derivation": "bounds evaluated at the target"
+    },
+    {
+     "id": "B",
+     "is_key": false,
+     "error_path": "BC-ERR-01012",
+     "label": "\\(3-x^3\\le f(x)\\le3+x^3\\) near 0, and both bounds tend to 3.",
+     "derivation": "inequality not reversed where x cubed is negative"
+    },
+    {
+     "id": "C",
+     "is_key": false,
+     "error_path": "BC-ERR-01013",
+     "label": "At \\(x=0\\) the upper bound \\(3+|x|^3\\) equals 3, so \\(f\\) tends to 3.",
+     "derivation": "upper bound evaluated at the target"
+    },
+    {
+     "id": "D",
+     "is_key": true,
+     "error_path": null,
+     "label": "\\(3-|x|^3\\le f(x)\\le3+|x|^3\\) for \\(x\\ne0\\), and both bounds tend to 3."
+    }
+   ],
+   "calculator_status": "no_calculator",
+   "representation": "BC-REP-01",
+   "skills": [
+    "BC-SKL-01032",
+    "BC-SKL-01033",
+    "BC-SKL-01034"
+   ]
+  }
+ ],
+ "refresher": [
+  "LSN-CON-01010#s2",
+  "LSN-CON-01010#err-BC-ERR-01012",
+  "LSN-CON-01010#err-BC-ERR-01013",
+  "LSN-CON-01010#err-BC-ERR-99008",
+  "LSN-CON-01010#s4"
+ ],
+ "provenance": {
+  "author": "tools/lesson_transcribe.py",
+  "prompt_version": "generator/lesson_v1",
+  "design_path": "docs/lessons/unit-01/LSN-CON-01010.md",
+  "signed_off_by": null,
+  "signed_off_at": null,
+  "not_human": true
+ }
+}

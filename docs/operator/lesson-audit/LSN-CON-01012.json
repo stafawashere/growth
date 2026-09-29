@@ -1,0 +1,172 @@
+{
+ "lesson_id": "LSN-CON-01012",
+ "version": 1,
+ "compared_on": "2026-09-29",
+ "auditor": "claude-opus-5-5",
+ "resolve": {
+  "date": "2026-09-29",
+  "problems": 5,
+  "agreed": 5,
+  "judgments_pending": 0,
+  "all_agree": true,
+  "verdicts": [
+   {
+    "id": "LSN-CON-01012#ex-1",
+    "agree": true,
+    "detail": "judged by claude-opus-5-5: removable at 1 (SymPy limit -1, f(1) undefined) and vertical asymptote at -1 (limits -oo) match the design's two classifications",
+    "method": "cancel (x-1); 2(x-3)/(x+1)^2"
+   },
+   {
+    "id": "LSN-CON-01012#ex-2",
+    "agree": true,
+    "detail": "judged by claude-opus-5-5: jump at 2, limits 3 and -1, matches the design's jump verdict",
+    "method": "one-sided limits 3 and -1"
+   },
+   {
+    "id": "LSN-CON-01012#chk-1",
+    "agree": true,
+    "detail": "judged by claude-opus-5-5: removable at 1 matches the design's final step",
+    "method": "limit exists, f undefined"
+   },
+   {
+    "id": "LSN-CON-01012#chk-2",
+    "agree": true,
+    "detail": "judged by claude-opus-5-5: removable at 2 with limit -5/4 matches the design's final step",
+    "method": "cancel (x-2), -(x+3)/x^2 at 2"
+   },
+   {
+    "id": "LSN-CON-01012#chk-3",
+    "agree": true,
+    "detail": "key option B, re-solver B",
+    "method": "cancel (x+2): limit -2/3 at -2 (removable); x=1 vertical asymptote"
+   }
+  ],
+  "answers_file": "docs/lessons/verification/answers/delta-2026-09-29-a.json"
+ },
+ "audit": {
+  "date": "2026-09-29",
+  "auditor": "claude-opus-5-5",
+  "blocks": [
+   {
+    "id": "orientation",
+    "verdict": "ok",
+    "evidence": "Paraphrase of BC-CON-01012 description_plain and the 1.10 Assessment behaviour justification variant; 25 words."
+   },
+   {
+    "id": "ki-1",
+    "verdict": "ok",
+    "evidence": "fixed 2026-09-29: record ids (BC-EK-LIM-2A1, ced:47) removed from the served text; both stay in the block sources."
+   },
+   {
+    "id": "st-1",
+    "verdict": "ok",
+    "evidence": "Method BC-QA-01007 expected_solution_path[0]; rival BC-ERR-01018 in wrong_approaches."
+   },
+   {
+    "id": "st-2",
+    "verdict": "ok",
+    "evidence": "Method BC-QA-01006 expected_solution_path[0]; rival BC-ERR-01015 in wrong_approaches; separating feature from 1.10 Deciding rule."
+   },
+   {
+    "id": "st-3",
+    "verdict": "ok",
+    "evidence": "Method BC-QA-01009 expected_solution_path[0]; rival BC-ERR-01019 in wrong_approaches."
+   },
+   {
+    "id": "ex-1",
+    "verdict": "ok",
+    "evidence": "SymPy: reduced 2(x-3)/(x+1)**2, limit at 1 is -1; at -1 numerator -8 over a positive square gives -oo on both sides."
+   },
+   {
+    "id": "ex-2",
+    "verdict": "ok",
+    "evidence": "fixed 2026-09-29: parameter_draw point_value set to 3 to match the rule (closed left side, f(2) = 2 + 1 = 3); SymPy: f(2)=3, left limit 3, right limit -1, differ so jump; err-BC-ERR-01017 wrong right limit from x+1 is 3."
+   },
+   {
+    "id": "err-BC-ERR-01003",
+    "verdict": "ok",
+    "evidence": "Record text verbatim; nan against -1; BC-MIS-01001 listed."
+   },
+   {
+    "id": "err-BC-ERR-01015",
+    "verdict": "ok",
+    "evidence": "Record text verbatim; right expr evaluates to nan (f(1) undefined); BC-MIS-01009 listed."
+   },
+   {
+    "id": "err-BC-ERR-01017",
+    "verdict": "ok",
+    "evidence": "Record text verbatim; 2+1 = 3 against 2*2-5 = -1; possible_reason null."
+   },
+   {
+    "id": "err-BC-ERR-01018",
+    "verdict": "ok",
+    "evidence": "Record text verbatim; x = 1 against x = -1; BC-MIS-01011 listed."
+   },
+   {
+    "id": "representations",
+    "verdict": "ok",
+    "evidence": "null; 1.10 graph to classification carried by the orientation figure and ki-1 panels."
+   },
+   {
+    "id": "BC-PRQ-01001",
+    "verdict": "ok",
+    "evidence": "Paraphrase of description_plain and failure_signature."
+   },
+   {
+    "id": "BC-PRQ-01003",
+    "verdict": "ok",
+    "evidence": "Paraphrase of description_plain and failure_signature."
+   },
+   {
+    "id": "BC-PRQ-01006",
+    "verdict": "ok",
+    "evidence": "Paraphrase of description_plain and failure_signature."
+   },
+   {
+    "id": "BC-PRQ-01008",
+    "verdict": "ok",
+    "evidence": "Paraphrase of description_plain and failure_signature."
+   },
+   {
+    "id": "BC-PRQ-01009",
+    "verdict": "ok",
+    "evidence": "Paraphrase of description_plain."
+   },
+   {
+    "id": "chk-1",
+    "verdict": "ok",
+    "evidence": "SymPy: limit of 2(x-3)/(x+1)**2 at 1 is -1; removable at x = 1."
+   },
+   {
+    "id": "chk-2",
+    "verdict": "ok",
+    "evidence": "SymPy: -(x+3)/x**2 at 2 is -5/4; removable at x = 2."
+   },
+   {
+    "id": "chk-3",
+    "verdict": "ok",
+    "evidence": "SymPy: 3x/(x-1)**2 at -2 is -2/3; (x-1)**2 remains, asymptote x = 1; key B; A, C, D match BC-ERR-01018, 01003, 01015."
+   }
+  ],
+  "advice": [
+   "st-2's method is to evaluate the function at the named input, but ex-2 (the BC-QA-01006 example) never evaluates f(2) and asks for a classification, not a continuity verdict; the example does not model the strategy it follows.",
+   "ex-2's parameter_draw has point_value 0 while the rule gives f(2) = 3 on the closed left side; harmless for a jump but inconsistent in the record.",
+   "Served ki-1 text carries record ids (BC-EK-LIM-2A1, ced:47) in parentheses.",
+   "Three panels side by side for ki-1 fit a comparison as contrast; the orientation graph fits the reading.",
+   "Three strategy blocks for the low band spread attention across two archetypes owned by other concepts (BC-CON-01013, BC-CON-01016); st-3 has no example or check in this lesson.",
+   "The archetype asks for a reason with each classification; checks key only the location, so the reason line (the one sided limits) is never asked of the student."
+  ],
+  "counts": {
+   "ok": 20,
+   "unsourced": 0,
+   "wrong": 0,
+   "over_cap": 0,
+   "lint": 0
+  },
+  "fix_notes": [
+   "Removed the parenthetical record ids from ki-1's served text.",
+   "Set ex-2 parameter_draw point_value from 0 to 3 so draw and rule agree; updated the inferred claim and the Solution path prose; re-verified every ex-2 step with SymPy.",
+   "Left as preferences: st-2 modelling by ex-2 (evaluate f(2)), three strategy blocks in low band, st-3 without example or check, checks keying only the location."
+  ]
+ }
+}

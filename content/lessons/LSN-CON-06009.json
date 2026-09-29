@@ -1,0 +1,800 @@
+{
+ "id": "LSN-CON-06009",
+ "version": 1,
+ "kind": "concept",
+ "target_id": "BC-CON-06009",
+ "status": "signed_off",
+ "snapshot_digest": "a6a8ec9d3f59ab8f712e33d30cc22fc64bf2c478fbe7312e3e3118d319c6a42f",
+ "source_digest": "0342684bf9ce762bbaf1e1e308be45f1c9c79afc1a3d5e6221c348a5cbc33972",
+ "read_minutes": {
+  "full": 4.2,
+  "brief": 3.0
+ },
+ "word_count": {
+  "full": 528,
+  "brief": 405
+ },
+ "sections": [
+  {
+   "id": "LSN-CON-06009#s1",
+   "type": "orientation",
+   "bands": [
+    "low",
+    "mid"
+   ],
+   "skills": [
+    "BC-SKL-06022",
+    "BC-SKL-06023",
+    "BC-SKL-06024",
+    "BC-SKL-06025",
+    "BC-SKL-06026",
+    "BC-SKL-06027"
+   ],
+   "sources": [
+    "BC-CON-06009",
+    "research/units/unit-06-integration-accumulation.md#6.5 Interpreting the Behavior of Accumulation Functions Involving Area"
+   ],
+   "evidence_tag": "inferred",
+   "text": "The drawn curve is f. g rises and turns with the sign of f, bends with the slope of f; every reason names f.",
+   "delivery": {
+    "mode": "text",
+    "reason": "rule 6: a statement of what a response shows; BC-REP-02 is served on ki-1",
+    "sources": [
+     "BC-SKL-06022"
+    ]
+   }
+  },
+  {
+   "id": "LSN-CON-06009#s2",
+   "type": "key_ideas",
+   "bands": [
+    "low",
+    "mid"
+   ],
+   "skills": [
+    "BC-SKL-06022",
+    "BC-SKL-06023",
+    "BC-SKL-06024",
+    "BC-SKL-06025",
+    "BC-SKL-06026",
+    "BC-SKL-06027"
+   ],
+   "sources": [
+    "BC-EK-FUN-5A3",
+    "ced:122",
+    "research/units/unit-06-integration-accumulation.md#6.5 Interpreting the Behavior of Accumulation Functions Involving Area"
+   ],
+   "evidence_tag": "inferred",
+   "ek_id": "BC-EK-FUN-5A3",
+   "depth": "core",
+   "text": "g' = f: f positive, g rises; f changes sign, g has an extremum. g'' = f': f rising, g concave up; f turns, g inflects. Absolute: compare every zero of f and both endpoints.",
+   "notation": "g', g'' in terms of f, f'",
+   "delivery": {
+    "mode": "interactive",
+    "reason": "rule 4 promoted: BC-REP-02 on all six skills; BC-QA-06003 difficulty_variables name g, g prime or g double prime and the stem asks for a reading of the relationship",
+    "sources": [
+     "BC-SKL-06022",
+     "BC-SKL-06024",
+     "BC-QA-06003"
+    ],
+    "spec": {
+     "kind": "graph",
+     "representations": [
+      "BC-REP-02"
+     ],
+     "window": {
+      "x": [
+       0,
+       12
+      ],
+      "y": [
+       -3,
+       3
+      ]
+     },
+     "curves": [
+      {
+       "piecewise_linear": [
+        [
+         0,
+         -2
+        ],
+        [
+         2,
+         2
+        ],
+        [
+         4,
+         -1
+        ],
+        [
+         6,
+         1
+        ],
+        [
+         8,
+         0
+        ]
+       ]
+      },
+      {
+       "semicircle": {
+        "centre": [
+         10,
+         0
+        ],
+        "radius": 2,
+        "side": "below"
+       }
+      }
+     ],
+     "controls": [
+      {
+       "type": "draggable_point",
+       "constrained_to": "curve",
+       "range": [
+        0,
+        12
+       ],
+       "start": 3,
+       "name": "input x"
+      }
+     ],
+     "drawn": [
+      "the sign of f at x",
+      "whether f is rising or falling at x"
+     ],
+     "labels": [
+      {
+       "text": "graph of f",
+       "placement": "inside"
+      },
+      {
+       "text": "f > 0: g increasing",
+       "placement": "inside"
+      },
+      {
+       "text": "f rising: g concave up",
+       "placement": "inside"
+      }
+     ],
+     "question": "Where the point crosses the axis going down, what does g do? Where the curve turns, what does g do?"
+    },
+    "fallback": "a static graph of f with the sign intervals shaded and the turning points 2, 4, 6, 10 marked, each label inside the figure",
+    "keyboard": "Tab focuses the point; left and right arrow keys move it by 1/3 along the curve; Enter reads out the sign and the slope of f"
+   }
+  },
+  {
+   "id": "LSN-CON-06009#s3",
+   "type": "strategy",
+   "bands": [
+    "low",
+    "mid"
+   ],
+   "skills": [
+    "BC-SKL-06022",
+    "BC-SKL-06023",
+    "BC-SKL-06024",
+    "BC-SKL-06025",
+    "BC-SKL-06026",
+    "BC-SKL-06027"
+   ],
+   "sources": [
+    "BC-QA-06003"
+   ],
+   "evidence_tag": "verified",
+   "archetype_id": "BC-QA-06003",
+   "cue": "Graph of f; features of g asked, with a reason.",
+   "method": "First line: g' = f. Sign changes of f give extrema; turns of f give inflection.",
+   "rival": "Rival: features read off the plotted f (BC-ERR-06008).",
+   "separating_feature": "The drawn peaks belong to f, not g."
+  },
+  {
+   "id": "LSN-CON-06009#s4",
+   "type": "worked_example",
+   "bands": [
+    "low",
+    "mid"
+   ],
+   "skills": [
+    "BC-SKL-06022",
+    "BC-SKL-06023",
+    "BC-SKL-06024",
+    "BC-SKL-06025",
+    "BC-SKL-06026",
+    "BC-SKL-06027"
+   ],
+   "sources": [
+    "BC-QA-06003"
+   ],
+   "evidence_tag": "inferred",
+   "archetype_id": "BC-QA-06003",
+   "parameter_draw": {
+    "heights": [
+     -2,
+     2,
+     -1,
+     1
+    ],
+    "lower": 0,
+    "circle": "below",
+    "half_point": "3/2",
+    "letters": "fg",
+    "ask": "value"
+   },
+   "problem": {
+    "text": "f: segments through (0, -2), (2, 2), (4, -1), (6, 1), (8, 0), then a radius 2 semicircle below. g(x) = integral of f from 0 to x. Find each relative maximum of g.",
+    "command_verb": "find"
+   },
+   "calculator_status": "no_calculator",
+   "steps": [
+    {
+     "cue": "Features of g asked.",
+     "why": "g' = f by the theorem.",
+     "point_type_id": "BC-PT-99024"
+    },
+    {
+     "cue": "g' = 0 where f crosses the axis.",
+     "why": "Read off the graph.",
+     "expression": [
+      "Set",
+      1,
+      [
+       "Rational",
+       10,
+       3
+      ],
+      5,
+      8
+     ],
+     "point_type_id": "BC-PT-99013",
+     "relation": "new"
+    },
+    {
+     "cue": "Maximum: g' from positive to negative.",
+     "why": "Reason: f changes from positive to negative.",
+     "expression": [
+      "Set",
+      [
+       "Rational",
+       10,
+       3
+      ],
+      8
+     ],
+     "relation": "new"
+    }
+   ],
+   "answer": {
+    "form": "symbolic",
+    "mathjson": [
+     "Set",
+     [
+      "Rational",
+      10,
+      3
+     ],
+     8
+    ]
+   },
+   "delivery": {
+    "mode": "step_reveal",
+    "reason": "rule 1",
+    "sources": []
+   }
+  },
+  {
+   "id": "LSN-CON-06009#s5",
+   "type": "what_a_reader_scores",
+   "bands": [
+    "low",
+    "mid"
+   ],
+   "skills": [
+    "BC-SKL-06022",
+    "BC-SKL-06023",
+    "BC-SKL-06024",
+    "BC-SKL-06025",
+    "BC-SKL-06026",
+    "BC-SKL-06027"
+   ],
+   "sources": [
+    "BC-PT-99024",
+    "BC-PT-99013"
+   ],
+   "evidence_tag": "verified",
+   "example_id": "LSN-CON-06009#s4",
+   "lines": [
+    {
+     "point_type_id": "BC-PT-99024",
+     "text": "Derivative of an accumulation function by the Fundamental Theorem. Earned by: Writing the derivative of the accumulation function as the integrand evaluated at the variable, in general or at the requested value (sg-25:16, sg-24:13). Not earned by: Differencing the integrand at the two limits, which sg-25:16 states earns the answer point but not this one."
+    },
+    {
+     "point_type_id": "BC-PT-99013",
+     "text": "Considers the derivative set equal to zero. Earned by: Presenting the equation derivative equals zero, or an equivalent equation, or discussing the sign change of the derivative, or using the phrase critical points of the function (sg-25:5, sg-26:17). Not earned by: Presenting only the solved critical value, which sg-25:5, sg-25:9, sg-26:17 and sg-25:19 all state is not sufficient."
+    }
+   ]
+  },
+  {
+   "id": "LSN-CON-06009#err-BC-ERR-06008",
+   "type": "common_error",
+   "bands": [
+    "low",
+    "mid"
+   ],
+   "skills": [
+    "BC-SKL-06022",
+    "BC-SKL-06023",
+    "BC-SKL-06024",
+    "BC-SKL-06025",
+    "BC-SKL-06027"
+   ],
+   "sources": [
+    "BC-ERR-06008",
+    "BC-MIS-05011"
+   ],
+   "evidence_tag": "inferred",
+   "error_id": "BC-ERR-06008",
+   "observed_behavior": "Extrema or inflection points of g are read directly off the visible extrema and inflection points of the plotted curve.",
+   "scoring_consequence": "Both the answer and the reason points of the part are lost, and any extra declared input costs both points (sg-25:17).",
+   "wrong_step": {
+    "text": "2 and 6.",
+    "expression": [
+     "Set",
+     2,
+     6
+    ]
+   },
+   "right_step": {
+    "text": "10/3 and 8.",
+    "expression": [
+     "Set",
+     [
+      "Rational",
+      10,
+      3
+     ],
+     8
+    ]
+   },
+   "relation": "distinct",
+   "possible_reason": {
+    "misconception_id": "BC-MIS-05011",
+    "text": "answers questions about the function by reading features of whatever curve is drawn"
+   },
+   "delivery": {
+    "mode": "step_reveal",
+    "reason": "rule 1",
+    "sources": []
+   }
+  },
+  {
+   "id": "LSN-CON-06009#err-BC-ERR-06009",
+   "type": "common_error",
+   "bands": [
+    "low",
+    "mid"
+   ],
+   "skills": [
+    "BC-SKL-06024"
+   ],
+   "sources": [
+    "BC-ERR-06009",
+    "BC-MIS-06008"
+   ],
+   "evidence_tag": "inferred",
+   "error_id": "BC-ERR-06009",
+   "observed_behavior": "The response reports inflection points of g at the zeros of f rather than at the turning points of f.",
+   "scoring_consequence": "The answer point is not earned, and an extra declared input forfeits the reason point as well (sg-25:17).",
+   "wrong_step": {
+    "text": "Zeros of f.",
+    "expression": [
+     "Set",
+     1,
+     [
+      "Rational",
+      10,
+      3
+     ],
+     5,
+     8
+    ]
+   },
+   "right_step": {
+    "text": "Turning points of f.",
+    "expression": [
+     "Set",
+     2,
+     4,
+     6,
+     10
+    ]
+   },
+   "relation": "distinct",
+   "possible_reason": {
+    "misconception_id": "BC-MIS-06008",
+    "text": "uses the zeros of f for every feature of g"
+   },
+   "delivery": {
+    "mode": "step_reveal",
+    "reason": "rule 1",
+    "sources": []
+   }
+  },
+  {
+   "id": "LSN-CON-06009#err-BC-ERR-06010",
+   "type": "common_error",
+   "bands": [
+    "low",
+    "mid"
+   ],
+   "skills": [
+    "BC-SKL-06024",
+    "BC-SKL-06025",
+    "BC-SKL-06027"
+   ],
+   "sources": [
+    "BC-ERR-06010",
+    "BC-MIS-01010"
+   ],
+   "evidence_tag": "inferred",
+   "error_id": "BC-ERR-06010",
+   "observed_behavior": "The response says that g has an inflection point because g changes concavity, without tying the claim to the given graph of f.",
+   "scoring_consequence": "The answer point is earned but the reason point is not, because the reason must be tied to the given graph of f (sg-25:17).",
+   "wrong_step": {
+    "text": "2, 4, 6, 10: g changes concavity.",
+    "expression": [
+     "Set",
+     2,
+     4,
+     6,
+     10
+    ]
+   },
+   "right_step": {
+    "text": "2, 4, 6, 10: f changes between increasing and decreasing.",
+    "expression": [
+     "Set",
+     2,
+     4,
+     6,
+     10
+    ]
+   },
+   "relation": "equivalent",
+   "possible_reason": {
+    "misconception_id": "BC-MIS-01010",
+    "text": "treats naming the definition or the theorem as the argument"
+   },
+   "delivery": {
+    "mode": "step_reveal",
+    "reason": "rule 1",
+    "sources": []
+   }
+  },
+  {
+   "id": "LSN-CON-06009#err-BC-ERR-06012",
+   "type": "common_error",
+   "bands": [
+    "low",
+    "mid"
+   ],
+   "skills": [
+    "BC-SKL-06026"
+   ],
+   "sources": [
+    "BC-ERR-06012",
+    "BC-MIS-99010"
+   ],
+   "evidence_tag": "inferred",
+   "error_id": "BC-ERR-06012",
+   "observed_behavior": "A candidates table omits an endpoint or a critical input, or includes an input that is neither.",
+   "scoring_consequence": "The justification point requires evaluations or reasoning at every critical input and both endpoints and no others (sg-25:19).",
+   "wrong_step": {
+    "text": "Endpoints dropped.",
+    "expression": [
+     "Set",
+     1,
+     [
+      "Rational",
+      10,
+      3
+     ],
+     5,
+     8
+    ]
+   },
+   "right_step": {
+    "text": "With 0 and 12.",
+    "expression": [
+     "Set",
+     0,
+     1,
+     [
+      "Rational",
+      10,
+      3
+     ],
+     5,
+     8,
+     12
+    ]
+   },
+   "relation": "distinct",
+   "possible_reason": {
+    "misconception_id": "BC-MIS-99010",
+    "text": "endpoints and other critical points are never compared"
+   },
+   "delivery": {
+    "mode": "step_reveal",
+    "reason": "rule 1",
+    "sources": []
+   }
+  },
+  {
+   "id": "LSN-CON-06009#prq-BC-PRQ-06007",
+   "type": "prerequisite_bridge",
+   "bands": [
+    "low",
+    "mid"
+   ],
+   "skills": [
+    "BC-SKL-06026"
+   ],
+   "sources": [
+    "BC-PRQ-06007"
+   ],
+   "evidence_tag": "inferred",
+   "prerequisite_id": "BC-PRQ-06007",
+   "text": "A semicircle is half a circle; a trapezoid is not a rectangle."
+  }
+ ],
+ "checks": [
+  {
+   "id": "LSN-CON-06009#chk-1",
+   "check_kind": "completion",
+   "bands": [
+    "low",
+    "mid"
+   ],
+   "format": "short_answer",
+   "archetype_id": "BC-QA-06003",
+   "parameter_draw": {
+    "heights": [
+     -2,
+     2,
+     -1,
+     1
+    ],
+    "lower": 0,
+    "circle": "below",
+    "half_point": "3/2",
+    "letters": "fg",
+    "ask": "value"
+   },
+   "completes": "LSN-CON-06009#s4",
+   "stem": {
+    "text": "f changes sign at 1, 10/3, 5, 8. g's relative maxima?",
+    "command_verb": "find"
+   },
+   "answer_key": {
+    "form": "symbolic",
+    "mathjson": [
+     "Set",
+     [
+      "Rational",
+      10,
+      3
+     ],
+     8
+    ]
+   },
+   "worked_solution": [
+    {
+     "step": 1,
+     "text": "Sign changes of f.",
+     "mathjson": [
+      "Set",
+      1,
+      [
+       "Rational",
+       10,
+       3
+      ],
+      5,
+      8
+     ],
+     "relation": "new"
+    },
+    {
+     "step": 2,
+     "text": "Positive to negative.",
+     "mathjson": [
+      "Set",
+      [
+       "Rational",
+       10,
+       3
+      ],
+      8
+     ],
+     "relation": "new"
+    }
+   ],
+   "calculator_status": "no_calculator",
+   "representation": "BC-REP-02",
+   "skills": [
+    "BC-SKL-06023"
+   ]
+  },
+  {
+   "id": "LSN-CON-06009#chk-2",
+   "check_kind": "isomorph",
+   "bands": [
+    "low",
+    "mid"
+   ],
+   "format": "short_answer",
+   "archetype_id": "BC-QA-06003",
+   "parameter_draw": {
+    "heights": [
+     1,
+     -2,
+     2,
+     -1
+    ],
+    "lower": 0,
+    "circle": "above",
+    "half_point": "3/2",
+    "letters": "fg",
+    "ask": "value"
+   },
+   "stem": {
+    "text": "As ex-1 with vertices (0, 1), (2, -2), (4, 2), (6, -1), (8, 0), semicircle above. Find each relative maximum of g.",
+    "command_verb": "find"
+   },
+   "answer_key": {
+    "form": "symbolic",
+    "mathjson": [
+     "Set",
+     [
+      "Rational",
+      2,
+      3
+     ],
+     [
+      "Rational",
+      16,
+      3
+     ]
+    ]
+   },
+   "worked_solution": [
+    {
+     "step": 1,
+     "text": "Sign changes of f.",
+     "mathjson": [
+      "Set",
+      [
+       "Rational",
+       2,
+       3
+      ],
+      3,
+      [
+       "Rational",
+       16,
+       3
+      ],
+      8
+     ],
+     "relation": "new"
+    },
+    {
+     "step": 2,
+     "text": "Positive to negative.",
+     "mathjson": [
+      "Set",
+      [
+       "Rational",
+       2,
+       3
+      ],
+      [
+       "Rational",
+       16,
+       3
+      ]
+     ],
+     "relation": "new"
+    }
+   ],
+   "calculator_status": "no_calculator",
+   "representation": "BC-REP-02",
+   "skills": [
+    "BC-SKL-06023"
+   ]
+  },
+  {
+   "id": "LSN-CON-06009#chk-3",
+   "check_kind": "mcq",
+   "bands": [
+    "low"
+   ],
+   "format": "mcq",
+   "archetype_id": "BC-QA-06003",
+   "parameter_draw": {
+    "heights": [
+     -2,
+     2,
+     -1,
+     1
+    ],
+    "lower": 0,
+    "circle": "below",
+    "half_point": "3/2",
+    "letters": "fg",
+    "ask": "value"
+   },
+   "stem": {
+    "text": "Same f as ex-1. Which gives every inflection point of g on (0, 12) with a reason a reader accepts?",
+    "command_verb": "identify"
+   },
+   "answer_key": {
+    "form": "statement",
+    "mathjson": "FiniteSet(2, 4, 6, 10)"
+   },
+   "worked_solution": [],
+   "options": [
+    {
+     "id": "A",
+     "is_key": false,
+     "error_path": "BC-ERR-06009",
+     "label": "1, 10/3, 5, 8: f changes sign there.",
+     "derivation": "inflection points placed at the zeros of f"
+    },
+    {
+     "id": "B",
+     "is_key": true,
+     "error_path": null,
+     "label": "2, 4, 6, 10: f changes between increasing and decreasing there."
+    },
+    {
+     "id": "C",
+     "is_key": false,
+     "error_path": "BC-ERR-06010",
+     "label": "2, 4, 6, 10: g changes concavity there.",
+     "derivation": "the right inputs with a reason not tied to the graph of f"
+    },
+    {
+     "id": "D",
+     "is_key": false,
+     "error_path": "BC-ERR-06008",
+     "label": "None: the drawn curve has no inflection point.",
+     "derivation": "inflection points of g read off the plotted curve"
+    }
+   ],
+   "calculator_status": "no_calculator",
+   "representation": "BC-REP-02",
+   "skills": [
+    "BC-SKL-06024"
+   ]
+  }
+ ],
+ "refresher": [
+  "LSN-CON-06009#s2",
+  "LSN-CON-06009#err-BC-ERR-06008",
+  "LSN-CON-06009#err-BC-ERR-06009",
+  "LSN-CON-06009#err-BC-ERR-06010",
+  "LSN-CON-06009#err-BC-ERR-06012",
+  "LSN-CON-06009#s4"
+ ],
+ "provenance": {
+  "author": "tools/lesson_transcribe.py",
+  "prompt_version": "generator/lesson_v1",
+  "design_path": "docs/lessons/unit-06/LSN-CON-06009.md",
+  "signed_off_by": "claude-opus-5-5",
+  "signed_off_at": "2026-09-29",
+  "not_human": true
+ }
+}

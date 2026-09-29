@@ -1,0 +1,285 @@
+{
+ "id": "LSN-CON-01003",
+ "version": 1,
+ "kind": "concept",
+ "target_id": "BC-CON-01003",
+ "status": "signed_off",
+ "snapshot_digest": "a6a8ec9d3f59ab8f712e33d30cc22fc64bf2c478fbe7312e3e3118d319c6a42f",
+ "source_digest": "c05c5cc53815ca63b9dd352c50ac71d9a9217d6b909bfce8dcfda0712bb929df",
+ "read_minutes": {
+  "full": 2.2,
+  "brief": 2.2
+ },
+ "word_count": {
+  "full": 249,
+  "brief": 249
+ },
+ "sections": [
+  {
+   "id": "LSN-CON-01003#s1",
+   "type": "orientation",
+   "bands": [
+    "low",
+    "mid"
+   ],
+   "skills": [
+    "BC-SKL-01005",
+    "BC-SKL-01007"
+   ],
+   "sources": [
+    "BC-CON-01003",
+    "research/units/unit-01-limits-continuity.md#1.2 Defining Limits and Using Limit Notation",
+    "research/units/unit-01-limits-continuity.md#1.9 Connecting Multiple Representations of Limits"
+   ],
+   "evidence_tag": "inferred",
+   "text": "A response turns a described approach into limit symbols, or a written limit into words, keeping the input, the side the arrow names and the claimed value. Infinity as the value and infinity under the arrow make different claims.",
+   "delivery": {
+    "mode": "text",
+    "reason": "rule 5: BC-SKL-01005 carries BC-REP-01 and BC-REP-04 only; unit README delivery map",
+    "sources": [
+     "BC-SKL-01005"
+    ]
+   }
+  },
+  {
+   "id": "LSN-CON-01003#s2",
+   "type": "key_ideas",
+   "bands": [
+    "low",
+    "mid"
+   ],
+   "skills": [
+    "BC-SKL-01005",
+    "BC-SKL-01007"
+   ],
+   "sources": [
+    "BC-EK-LIM-1A1",
+    "ced:39",
+    "research/units/unit-01-limits-continuity.md#1.9 Connecting Multiple Representations of Limits"
+   ],
+   "evidence_tag": "inferred",
+   "ek_id": "BC-EK-LIM-1A1",
+   "depth": "core",
+   "text": "A limit statement names three things: the input x approaches, the side (a minus superscript for the left, a plus for the right, none for both) and the claimed value (BC-EK-LIM-1A1, ced:39). Infinity as the value claims outputs unbounded near a vertical line; infinity under the arrow claims end behaviour.",
+   "notation": "lim as x approaches c from the left; lim as x approaches c from the right",
+   "delivery": {
+    "mode": "text",
+    "reason": "rule 5: notation read into words, BC-REP-01 and BC-REP-04 only",
+    "sources": [
+     "BC-SKL-01005",
+     "BC-SKL-01007"
+    ]
+   }
+  },
+  {
+   "id": "LSN-CON-01003#s3",
+   "type": "strategy",
+   "bands": [
+    "low",
+    "mid"
+   ],
+   "skills": [
+    "BC-SKL-01005",
+    "BC-SKL-01007"
+   ],
+   "sources": [
+    "BC-QA-01013"
+   ],
+   "evidence_tag": "verified",
+   "archetype_id": "BC-QA-01013",
+   "cue": "A limit fact in one form, with candidate sentences, graphs or tables to match against it.",
+   "method": "First line: read the statement as input, side and value.",
+   "rival": "Reading a vertical asymptote statement as end behaviour, or the reverse (BC-ERR-01033).",
+   "separating_feature": "Where the infinity symbol sits: in the value, or under the arrow."
+  },
+  {
+   "id": "LSN-CON-01003#s4",
+   "type": "worked_example",
+   "bands": [
+    "low",
+    "mid"
+   ],
+   "skills": [
+    "BC-SKL-01005",
+    "BC-SKL-01007"
+   ],
+   "sources": [
+    "BC-QA-01013"
+   ],
+   "evidence_tag": "inferred",
+   "archetype_id": "BC-QA-01013",
+   "parameter_draw": {
+    "number": -3,
+    "side": "right",
+    "growth": "down",
+    "direction": "negative",
+    "letter": "g",
+    "statement": "infinite_limit"
+   },
+   "problem": {
+    "text": "The limit of g(x) as x approaches -3 from the right is negative infinity. Which statement describes the graph of g?",
+    "command_verb": "identify"
+   },
+   "calculator_status": "no_calculator",
+   "steps": [
+    {
+     "cue": "The arrow carries a plus superscript.",
+     "why": "Only inputs just above -3 are claimed about."
+    },
+    {
+     "cue": "The value is negative infinity.",
+     "why": "Outputs decrease without bound; infinity in the value signals a vertical line."
+    },
+    {
+     "cue": "Test each option against input -3, right side, unbounded below.",
+     "why": "An option putting infinity under the arrow describes end behaviour and fails."
+    },
+    {
+     "cue": "One option keeps all three.",
+     "why": "The line x = -3 is a vertical asymptote, with g falling on its right.",
+     "expression": [
+      "Equal",
+      "x",
+      -3
+     ],
+     "relation": "new"
+    }
+   ],
+   "answer": {
+    "form": "statement",
+    "mathjson": "x = -3",
+    "text": "The line x = -3 is a vertical asymptote of the graph of g, which decreases without bound as x approaches -3 from the right."
+   },
+   "delivery": {
+    "mode": "step_reveal",
+    "reason": "rule 1",
+    "sources": []
+   }
+  },
+  {
+   "id": "LSN-CON-01003#prq-BC-PRQ-06005",
+   "type": "prerequisite_bridge",
+   "bands": [
+    "low",
+    "mid"
+   ],
+   "skills": [
+    "BC-SKL-01005",
+    "BC-SKL-01007"
+   ],
+   "sources": [
+    "BC-PRQ-06005"
+   ],
+   "evidence_tag": "inferred",
+   "prerequisite_id": "BC-PRQ-06005",
+   "text": "Reading a limit statement rests on reading function notation: which letter is the function and which number is the input. The failure: a value taken for the wrong input."
+  }
+ ],
+ "checks": [
+  {
+   "id": "LSN-CON-01003#chk-1",
+   "check_kind": "completion",
+   "bands": [
+    "low",
+    "mid"
+   ],
+   "format": "short_answer",
+   "archetype_id": "BC-QA-01013",
+   "parameter_draw": {
+    "number": -3,
+    "side": "right",
+    "growth": "down",
+    "direction": "negative",
+    "letter": "g",
+    "statement": "infinite_limit"
+   },
+   "completes": "LSN-CON-01003#s4",
+   "stem": {
+    "text": "The limit of g(x) as x approaches -3 from the right is negative infinity. Name the asymptote of the graph of g.",
+    "command_verb": "name"
+   },
+   "answer_key": {
+    "form": "statement",
+    "mathjson": "x = -3",
+    "text": "x = -3, a vertical asymptote"
+   },
+   "worked_solution": [
+    {
+     "step": 1,
+     "text": "Infinity is the value and -3 is the input, so the line is vertical at -3.",
+     "mathjson": [
+      "Equal",
+      "x",
+      -3
+     ],
+     "relation": "new"
+    }
+   ],
+   "calculator_status": "no_calculator",
+   "representation": "BC-REP-01",
+   "skills": [
+    "BC-SKL-01007"
+   ]
+  },
+  {
+   "id": "LSN-CON-01003#chk-2",
+   "check_kind": "isomorph",
+   "bands": [
+    "low",
+    "mid"
+   ],
+   "format": "short_answer",
+   "archetype_id": "BC-QA-01013",
+   "parameter_draw": {
+    "number": "5/2",
+    "side": "left",
+    "growth": "up",
+    "direction": "positive",
+    "letter": "h",
+    "statement": "limit_at_infinity"
+   },
+   "stem": {
+    "text": "The limit of h(x) as x decreases without bound is 5/2. Name the asymptote of the graph of h.",
+    "command_verb": "name"
+   },
+   "answer_key": {
+    "form": "statement",
+    "mathjson": "y = 5/2",
+    "text": "y = 5/2, a horizontal asymptote at the left end"
+   },
+   "worked_solution": [
+    {
+     "step": 1,
+     "text": "Infinity sits under the arrow and 5/2 is the value, so the line is horizontal at 5/2.",
+     "mathjson": [
+      "Equal",
+      "y",
+      [
+       "Rational",
+       5,
+       2
+      ]
+     ],
+     "relation": "new"
+    }
+   ],
+   "calculator_status": "no_calculator",
+   "representation": "BC-REP-01",
+   "skills": [
+    "BC-SKL-01005"
+   ]
+  }
+ ],
+ "refresher": [
+  "LSN-CON-01003#s2",
+  "LSN-CON-01003#s4"
+ ],
+ "provenance": {
+  "author": "tools/lesson_transcribe.py",
+  "prompt_version": "generator/lesson_v1",
+  "design_path": "docs/lessons/unit-01/LSN-CON-01003.md",
+  "signed_off_by": "claude-opus-5-5",
+  "signed_off_at": "2026-09-29",
+  "not_human": true
+ }
+}

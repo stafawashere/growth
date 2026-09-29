@@ -1,0 +1,547 @@
+{
+ "id": "LSN-CON-06008",
+ "version": 1,
+ "kind": "concept",
+ "target_id": "BC-CON-06008",
+ "status": "signed_off",
+ "snapshot_digest": "a6a8ec9d3f59ab8f712e33d30cc22fc64bf2c478fbe7312e3e3118d319c6a42f",
+ "source_digest": "50eccff3e1701d49c9c6b61e4fd54f18c6cfb2f00e6077fe56befc523abc317c",
+ "read_minutes": {
+  "full": 3.4,
+  "brief": 3.0
+ },
+ "word_count": {
+  "full": 460,
+  "brief": 409
+ },
+ "sections": [
+  {
+   "id": "LSN-CON-06008#s1",
+   "type": "orientation",
+   "bands": [
+    "low",
+    "mid"
+   ],
+   "skills": [
+    "BC-SKL-06018",
+    "BC-SKL-06019",
+    "BC-SKL-06021"
+   ],
+   "sources": [
+    "BC-CON-06008",
+    "research/units/unit-06-integration-accumulation.md#6.4 The Fundamental Theorem of Calculus and Accumulation Functions"
+   ],
+   "evidence_tag": "inferred",
+   "text": "A response writes the derivative as the integrand at the upper limit, times that limit's derivative when it is a function of x.",
+   "delivery": {
+    "mode": "text",
+    "reason": "rule 6: a statement of what a response writes",
+    "sources": [
+     "BC-SKL-06018"
+    ]
+   }
+  },
+  {
+   "id": "LSN-CON-06008#s2",
+   "type": "key_ideas",
+   "bands": [
+    "low",
+    "mid"
+   ],
+   "skills": [
+    "BC-SKL-06018",
+    "BC-SKL-06019",
+    "BC-SKL-06021"
+   ],
+   "sources": [
+    "BC-EK-FUN-5A2",
+    "ced:121",
+    "research/units/unit-06-integration-accumulation.md#6.4 The Fundamental Theorem of Calculus and Accumulation Functions"
+   ],
+   "evidence_tag": "inferred",
+   "ek_id": "BC-EK-FUN-5A2",
+   "depth": "core",
+   "text": "With f continuous on an interval containing a, the derivative of the integral from a to x of f(t) dt is f(x). With upper limit u(x) it is f(u(x)) times u'(x). The lower limit adds nothing.",
+   "notation": "d/dx of integral from a to x of f(t) dt = f(x)",
+   "delivery": {
+    "mode": "figure",
+    "reason": "rule 4: BC-REP-02 on BC-SKL-06018; not promoted, since BC-QA-06012 difficulty_variables vary a form, not a quantity",
+    "sources": [
+     "BC-SKL-06018",
+     "BC-QA-06012"
+    ],
+    "spec": {
+     "kind": "graph",
+     "representations": [
+      "BC-REP-02"
+     ],
+     "window": {
+      "x": [
+       0,
+       5
+      ],
+      "y": [
+       -4,
+       14
+      ]
+     },
+     "curves": [
+      {
+       "expr": "t**2 - 3",
+       "domain": [
+        0,
+        4
+       ]
+      }
+     ],
+     "drawn": [
+      "the region from t = 1 to t = 2 shaded",
+      "a vertical segment from the axis to the curve at t = 2"
+     ],
+     "labels": [
+      {
+       "text": "lower limit 1",
+       "placement": "inside"
+      },
+      {
+       "text": "upper limit 2x^2 = 2 at x = 1",
+       "placement": "inside"
+      },
+      {
+       "text": "height f(2) = 1, times u'(1) = 4",
+       "placement": "inside"
+      }
+     ]
+    },
+    "fallback": "the same figure described in text: the height of f at the upper limit, times the derivative of the limit",
+    "keyboard": "none needed; the figure has no control"
+   }
+  },
+  {
+   "id": "LSN-CON-06008#s3",
+   "type": "strategy",
+   "bands": [
+    "low",
+    "mid"
+   ],
+   "skills": [
+    "BC-SKL-06018",
+    "BC-SKL-06019",
+    "BC-SKL-06021"
+   ],
+   "sources": [
+    "BC-QA-06012"
+   ],
+   "evidence_tag": "verified",
+   "archetype_id": "BC-QA-06012",
+   "cue": "h is an integral with a variable upper limit; h prime at an input is asked.",
+   "method": "First line: h' equals the integrand at the upper limit.",
+   "rival": "Rival: no chain factor (BC-ERR-06027).",
+   "separating_feature": "An upper limit that is a function of x."
+  },
+  {
+   "id": "LSN-CON-06008#s4",
+   "type": "strategy",
+   "bands": [
+    "low",
+    "mid"
+   ],
+   "skills": [
+    "BC-SKL-06018"
+   ],
+   "sources": [
+    "BC-QA-06003"
+   ],
+   "evidence_tag": "verified",
+   "archetype_id": "BC-QA-06003",
+   "cue": "g from a graph of f; g prime at an input, with a reason.",
+   "method": "First line: g as signed areas; for g prime, g' = f read at the input.",
+   "rival": "Rival: features read off the plotted f (BC-ERR-06008).",
+   "separating_feature": "g prime is a height of f; g is an area under it."
+  },
+  {
+   "id": "LSN-CON-06008#s5",
+   "type": "worked_example",
+   "bands": [
+    "low",
+    "mid"
+   ],
+   "skills": [
+    "BC-SKL-06018",
+    "BC-SKL-06019",
+    "BC-SKL-06021"
+   ],
+   "sources": [
+    "BC-QA-06012"
+   ],
+   "evidence_tag": "inferred",
+   "archetype_id": "BC-QA-06012",
+   "parameter_draw": {
+    "power": 2,
+    "scale": 2,
+    "quadratic": 1,
+    "constant": -3,
+    "lower": 1,
+    "point": 1
+   },
+   "problem": {
+    "text": "h(x) = integral from 1 to 2x^2 of (t^2 - 3) dt. Find h'(1).",
+    "command_verb": "find"
+   },
+   "calculator_status": "no_calculator",
+   "steps": [
+    {
+     "cue": "Upper limit 2x^2, a function of x.",
+     "why": "Integrand at the limit, times 4x.",
+     "expression": [
+      "Multiply",
+      "x",
+      [
+       "Add",
+       -12,
+       [
+        "Multiply",
+        16,
+        [
+         "Power",
+         "x",
+         4
+        ]
+       ]
+      ]
+     ],
+     "point_type_id": "BC-PT-99024",
+     "relation": "new"
+    },
+    {
+     "cue": "The stem asks at x = 1.",
+     "why": "Limit 2, factor 4.",
+     "expression": 4,
+     "relation": "evaluate",
+     "subs": {
+      "x": "1"
+     }
+    },
+    {
+     "cue": "Simplify.",
+     "why": "The value is read.",
+     "expression": 4,
+     "point_type_id": "BC-PT-99004",
+     "relation": "equivalent"
+    }
+   ],
+   "answer": {
+    "form": "symbolic",
+    "mathjson": 4
+   },
+   "delivery": {
+    "mode": "step_reveal",
+    "reason": "rule 1",
+    "sources": []
+   }
+  },
+  {
+   "id": "LSN-CON-06008#s6",
+   "type": "what_a_reader_scores",
+   "bands": [
+    "low",
+    "mid"
+   ],
+   "skills": [
+    "BC-SKL-06018",
+    "BC-SKL-06019",
+    "BC-SKL-06021"
+   ],
+   "sources": [
+    "BC-PT-99024",
+    "BC-PT-99004"
+   ],
+   "evidence_tag": "verified",
+   "example_id": "LSN-CON-06008#s5",
+   "lines": [
+    {
+     "point_type_id": "BC-PT-99024",
+     "text": "Derivative of an accumulation function by the Fundamental Theorem. Earned by: Writing the derivative of the accumulation function as the integrand evaluated at the variable, in general or at the requested value (sg-25:16, sg-24:13). Not earned by: Differencing the integrand at the two limits, which sg-25:16 states earns the answer point but not this one."
+    },
+    {
+     "point_type_id": "BC-PT-99004",
+     "text": "Answer with or without supporting work. Earned by: The correct value on its own, with no supporting work required (sg-25:3, sg-26:4). Not earned by: A value outside the accepted precision, or a value inconsistent with a required earlier step where the rubric imposes one. Precision: A reported decimal answer must be accurate to three places after the decimal point, rounded or truncated; at most one point per question is lost to inappropriate rounding (sg-25:2, sg-26:2). sg-26:4 also accepts a stated rounding to the nearest integer and several truncations."
+    }
+   ]
+  },
+  {
+   "id": "LSN-CON-06008#err-BC-ERR-06027",
+   "type": "common_error",
+   "bands": [
+    "low",
+    "mid"
+   ],
+   "skills": [
+    "BC-SKL-06018",
+    "BC-SKL-06019"
+   ],
+   "sources": [
+    "BC-ERR-06027",
+    "BC-MIS-06023"
+   ],
+   "evidence_tag": "inferred",
+   "error_id": "BC-ERR-06027",
+   "observed_behavior": "The derivative of an accumulation function with a composite upper limit is reported as the integrand at that limit with no extra factor.",
+   "scoring_consequence": "The answer point is not earned even though the theorem point may be (sg-24:15).",
+   "wrong_step": {
+    "text": "f(2) = 1.",
+    "expression": 1
+   },
+   "right_step": {
+    "text": "f(2) times 4.",
+    "expression": 4
+   },
+   "relation": "distinct",
+   "possible_reason": {
+    "misconception_id": "BC-MIS-06023",
+    "text": "applies the theorem as a fixed template regardless of what the upper limit is"
+   },
+   "delivery": {
+    "mode": "step_reveal",
+    "reason": "rule 1",
+    "sources": []
+   }
+  },
+  {
+   "id": "LSN-CON-06008#err-BC-ERR-06028",
+   "type": "common_error",
+   "bands": [
+    "low",
+    "mid"
+   ],
+   "skills": [
+    "BC-SKL-06018"
+   ],
+   "sources": [
+    "BC-ERR-06028",
+    "BC-MIS-06024"
+   ],
+   "evidence_tag": "inferred",
+   "error_id": "BC-ERR-06028",
+   "observed_behavior": "The response evaluates the integrand at the dummy variable or leaves the answer in terms of t.",
+   "scoring_consequence": "The answer point is not earned because the derivative is not expressed in the independent variable.",
+   "wrong_step": {
+    "text": "t^2 - 3.",
+    "expression": [
+     "Add",
+     -3,
+     [
+      "Power",
+      "t",
+      2
+     ]
+    ]
+   },
+   "right_step": {
+    "text": "((2x^2)^2 - 3)(4x).",
+    "expression": [
+     "Multiply",
+     "x",
+     [
+      "Add",
+      -12,
+      [
+       "Multiply",
+       16,
+       [
+        "Power",
+        "x",
+        4
+       ]
+      ]
+     ]
+    ]
+   },
+   "relation": "distinct",
+   "possible_reason": {
+    "misconception_id": "BC-MIS-06024",
+    "text": "does not distinguish the bound variable inside the integral from the variable in the upper limit"
+   },
+   "delivery": {
+    "mode": "step_reveal",
+    "reason": "rule 1",
+    "sources": []
+   }
+  },
+  {
+   "id": "LSN-CON-06008#prq-BC-PRQ-06005",
+   "type": "prerequisite_bridge",
+   "bands": [
+    "low",
+    "mid"
+   ],
+   "skills": [
+    "BC-SKL-06019"
+   ],
+   "sources": [
+    "BC-PRQ-06005"
+   ],
+   "evidence_tag": "inferred",
+   "prerequisite_id": "BC-PRQ-06005",
+   "text": "f(u(x)) is f read at u(x), not at x."
+  },
+  {
+   "id": "LSN-CON-06008#prq-BC-PRQ-06013",
+   "type": "prerequisite_bridge",
+   "bands": [
+    "low",
+    "mid"
+   ],
+   "skills": [
+    "BC-SKL-06018"
+   ],
+   "sources": [
+    "BC-PRQ-06013"
+   ],
+   "evidence_tag": "inferred",
+   "prerequisite_id": "BC-PRQ-06013",
+   "text": "t stays inside; only the limits carry x."
+  }
+ ],
+ "checks": [
+  {
+   "id": "LSN-CON-06008#chk-1",
+   "check_kind": "completion",
+   "bands": [
+    "low",
+    "mid"
+   ],
+   "format": "short_answer",
+   "archetype_id": "BC-QA-06012",
+   "parameter_draw": {
+    "power": 2,
+    "scale": 2,
+    "quadratic": 1,
+    "constant": -3,
+    "lower": 1,
+    "point": 1
+   },
+   "completes": "LSN-CON-06008#s5",
+   "stem": {
+    "text": "h'(x) = ((2x^2)^2 - 3)(4x). Find h'(1).",
+    "command_verb": "find"
+   },
+   "answer_key": {
+    "form": "symbolic",
+    "mathjson": 4
+   },
+   "worked_solution": [
+    {
+     "step": 1,
+     "text": "The derivative.",
+     "mathjson": [
+      "Multiply",
+      "x",
+      [
+       "Add",
+       -12,
+       [
+        "Multiply",
+        16,
+        [
+         "Power",
+         "x",
+         4
+        ]
+       ]
+      ]
+     ],
+     "relation": "new"
+    },
+    {
+     "step": 2,
+     "text": "x = 1.",
+     "mathjson": 4,
+     "relation": "evaluate",
+     "subs": {
+      "x": "1"
+     }
+    }
+   ],
+   "calculator_status": "no_calculator",
+   "representation": "BC-REP-01",
+   "skills": [
+    "BC-SKL-06019"
+   ]
+  },
+  {
+   "id": "LSN-CON-06008#chk-2",
+   "check_kind": "isomorph",
+   "bands": [
+    "low",
+    "mid"
+   ],
+   "format": "short_answer",
+   "archetype_id": "BC-QA-06012",
+   "parameter_draw": {
+    "power": 1,
+    "scale": 3,
+    "quadratic": 1,
+    "constant": -2,
+    "lower": 0,
+    "point": 1
+   },
+   "stem": {
+    "text": "h(x) = integral from 0 to 3x of (t^2 - 2) dt. Find h'(1).",
+    "command_verb": "find"
+   },
+   "answer_key": {
+    "form": "symbolic",
+    "mathjson": 21
+   },
+   "worked_solution": [
+    {
+     "step": 1,
+     "text": "Integrand at 3x, times 3.",
+     "mathjson": [
+      "Add",
+      -6,
+      [
+       "Multiply",
+       27,
+       [
+        "Power",
+        "x",
+        2
+       ]
+      ]
+     ],
+     "relation": "new"
+    },
+    {
+     "step": 2,
+     "text": "x = 1.",
+     "mathjson": 21,
+     "relation": "evaluate",
+     "subs": {
+      "x": "1"
+     }
+    }
+   ],
+   "calculator_status": "no_calculator",
+   "representation": "BC-REP-01",
+   "skills": [
+    "BC-SKL-06019"
+   ]
+  }
+ ],
+ "refresher": [
+  "LSN-CON-06008#s2",
+  "LSN-CON-06008#err-BC-ERR-06027",
+  "LSN-CON-06008#err-BC-ERR-06028",
+  "LSN-CON-06008#s5"
+ ],
+ "provenance": {
+  "author": "tools/lesson_transcribe.py",
+  "prompt_version": "generator/lesson_v1",
+  "design_path": "docs/lessons/unit-06/LSN-CON-06008.md",
+  "signed_off_by": "claude-opus-5-5",
+  "signed_off_at": "2026-09-29",
+  "not_human": true
+ }
+}

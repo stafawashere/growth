@@ -1,0 +1,508 @@
+{
+ "id": "LSN-CON-06005",
+ "version": 1,
+ "kind": "concept",
+ "target_id": "BC-CON-06005",
+ "status": "signed_off",
+ "snapshot_digest": "a6a8ec9d3f59ab8f712e33d30cc22fc64bf2c478fbe7312e3e3118d319c6a42f",
+ "source_digest": "9e7993e124acdc04b1673568eb0cb11581484c7dede35495361b29519f5409ce",
+ "read_minutes": {
+  "full": 2.4,
+  "brief": 2.4
+ },
+ "word_count": {
+  "full": 292,
+  "brief": 292
+ },
+ "sections": [
+  {
+   "id": "LSN-CON-06005#s1",
+   "type": "orientation",
+   "bands": [
+    "low",
+    "mid"
+   ],
+   "skills": [
+    "BC-SKL-06012",
+    "BC-SKL-06013"
+   ],
+   "sources": [
+    "BC-CON-06005",
+    "research/units/unit-06-integration-accumulation.md#6.3 Riemann Sums, Summation Notation, and Definite Integral Notation"
+   ],
+   "evidence_tag": "inferred",
+   "text": "Sigma notation writes a Riemann sum as a sum of products. A response writes each term as the function at a sample point times the width, and can expand the sum term by term.",
+   "delivery": {
+    "mode": "text",
+    "reason": "rule 6: BC-REP-01 only on BC-SKL-06012 and BC-SKL-06013 (unit README delivery map)",
+    "sources": [
+     "BC-SKL-06012",
+     "BC-SKL-06013"
+    ]
+   }
+  },
+  {
+   "id": "LSN-CON-06005#s2",
+   "type": "key_ideas",
+   "bands": [
+    "low",
+    "mid"
+   ],
+   "skills": [
+    "BC-SKL-06012",
+    "BC-SKL-06013"
+   ],
+   "sources": [
+    "BC-EK-LIM-5B2",
+    "ced:120",
+    "research/units/unit-06-integration-accumulation.md#6.3 Riemann Sums, Summation Notation, and Definite Integral Notation"
+   ],
+   "evidence_tag": "verified",
+   "ek_id": "BC-EK-LIM-5B2",
+   "depth": "core",
+   "text": "A Riemann sum needs a partition. Each term is a height times a width: f at the ith sample point times the ith width. For n equal pieces of [a, b] the width is (b - a)/n and the right endpoint is a + i(b - a)/n.",
+   "notation": "sigma from i = 1 to n",
+   "quote": {
+    "text": "each of which is the value of the function at a point in a subinterval multiplied by the length of that subinterval",
+    "source": "ced:120"
+   },
+   "delivery": {
+    "mode": "text",
+    "reason": "rule 6: a symbolic rule with BC-REP-01 givens",
+    "sources": [
+     "BC-SKL-06012",
+     "BC-SKL-06013"
+    ]
+   }
+  },
+  {
+   "id": "LSN-CON-06005#s3",
+   "type": "strategy",
+   "bands": [
+    "low",
+    "mid"
+   ],
+   "skills": [
+    "BC-SKL-06012",
+    "BC-SKL-06013"
+   ],
+   "sources": [
+    "BC-QA-06014"
+   ],
+   "evidence_tag": "inferred",
+   "archetype_id": "BC-QA-06014",
+   "cue": "A definite integral with limits, or a sigma sum; the other form asked.",
+   "method": "Separate the general term into a value and a width.",
+   "rival": "Rival: the values summed with the width left out.",
+   "separating_feature": "A term with no width factor is not a product, so not a Riemann sum."
+  },
+  {
+   "id": "LSN-CON-06005#s4",
+   "type": "worked_example",
+   "bands": [
+    "low",
+    "mid"
+   ],
+   "skills": [
+    "BC-SKL-06012",
+    "BC-SKL-06013"
+   ],
+   "sources": [
+    "BC-QA-06014"
+   ],
+   "evidence_tag": "inferred",
+   "archetype_id": "BC-QA-06014",
+   "parameter_draw": {
+    "direction": "to_sum",
+    "function": "square",
+    "coefficient": 1,
+    "start": 2,
+    "width": 4,
+    "convention": "right",
+    "letter": "x"
+   },
+   "problem": {
+    "text": "Write the right Riemann sum for ∫_2^6 x^2 dx with n equal subintervals in sigma notation. Expand and evaluate it for n = 2.",
+    "command_verb": "write"
+   },
+   "calculator_status": "no_calculator",
+   "steps": [
+    {
+     "cue": "Interval length 4, n pieces.",
+     "why": "Equal widths.",
+     "expression": [
+      "Multiply",
+      4,
+      [
+       "Power",
+       "n",
+       -1
+      ]
+     ],
+     "relation": "new"
+    },
+    {
+     "cue": "Right endpoint of the ith piece.",
+     "why": "Start 2, i widths along.",
+     "expression": [
+      "Add",
+      2,
+      [
+       "Multiply",
+       4,
+       "i",
+       [
+        "Power",
+        "n",
+        -1
+       ]
+      ]
+     ],
+     "relation": "new"
+    },
+    {
+     "cue": "Term: value times width.",
+     "why": "A product, not a value alone.",
+     "expression": [
+      "Multiply",
+      4,
+      [
+       "Power",
+       "n",
+       -1
+      ],
+      [
+       "Power",
+       [
+        "Add",
+        2,
+        [
+         "Multiply",
+         4,
+         "i",
+         [
+          "Power",
+          "n",
+          -1
+         ]
+        ]
+       ],
+       2
+      ]
+     ],
+     "relation": "new"
+    },
+    {
+     "cue": "Sum i = 1 to n.",
+     "why": "One term per piece.",
+     "expression": [
+      "Sum",
+      [
+       "Multiply",
+       4,
+       [
+        "Power",
+        "n",
+        -1
+       ],
+       [
+        "Power",
+        [
+         "Add",
+         2,
+         [
+          "Multiply",
+          4,
+          "i",
+          [
+           "Power",
+           "n",
+           -1
+          ]
+         ]
+        ],
+        2
+       ]
+      ],
+      [
+       "Tuple",
+       "i",
+       1,
+       "n"
+      ]
+     ],
+     "relation": "new"
+    },
+    {
+     "cue": "n = 2: width 2, endpoints 4 and 6.",
+     "why": "Two terms.",
+     "expression": 104,
+     "relation": "evaluate",
+     "subs": {
+      "n": "2"
+     }
+    },
+    {
+     "cue": "Add.",
+     "why": "32 + 72.",
+     "expression": 104,
+     "relation": "equivalent"
+    }
+   ],
+   "answer": {
+    "form": "numeric",
+    "mathjson": 104
+   },
+   "delivery": {
+    "mode": "step_reveal",
+    "reason": "rule 1",
+    "sources": []
+   }
+  },
+  {
+   "id": "LSN-CON-06005#err-BC-ERR-06003",
+   "type": "common_error",
+   "bands": [
+    "low",
+    "mid"
+   ],
+   "skills": [
+    "BC-SKL-06012"
+   ],
+   "sources": [
+    "BC-ERR-06003",
+    "BC-MIS-06001"
+   ],
+   "evidence_tag": "inferred",
+   "error_id": "BC-ERR-06003",
+   "observed_behavior": "The response adds the tabulated rate values without multiplying each by a subinterval width.",
+   "scoring_consequence": "Neither the form point nor the answer point is earned because no products appear.",
+   "wrong_step": {
+    "text": "Values added: 4^2 + 6^2.",
+    "expression": 52
+   },
+   "right_step": {
+    "text": "Each times width 2.",
+    "expression": 104
+   },
+   "relation": "distinct",
+   "possible_reason": {
+    "misconception_id": "BC-MIS-06001",
+    "text": "treats a Riemann sum as an operation on the list of function values alone, so the partition widths play no role"
+   },
+   "delivery": {
+    "mode": "step_reveal",
+    "reason": "rule 1",
+    "sources": []
+   }
+  },
+  {
+   "id": "LSN-CON-06005#prq-BC-PRQ-06006",
+   "type": "prerequisite_bridge",
+   "bands": [
+    "low",
+    "mid"
+   ],
+   "skills": [
+    "BC-SKL-06012",
+    "BC-SKL-06013"
+   ],
+   "sources": [
+    "BC-PRQ-06006"
+   ],
+   "evidence_tag": "inferred",
+   "prerequisite_id": "BC-PRQ-06006",
+   "text": "Sigma notation: the index runs from the lower to the upper limit, one term each. Substitute the index correctly; n terms, not n + 1."
+  }
+ ],
+ "checks": [
+  {
+   "id": "LSN-CON-06005#chk-1",
+   "check_kind": "completion",
+   "bands": [
+    "low",
+    "mid"
+   ],
+   "format": "short_answer",
+   "archetype_id": "BC-QA-06014",
+   "parameter_draw": {
+    "direction": "to_sum",
+    "function": "square",
+    "coefficient": 1,
+    "start": 2,
+    "width": 4,
+    "convention": "right",
+    "letter": "x"
+   },
+   "completes": "LSN-CON-06005#s4",
+   "stem": {
+    "text": "For n = 2 the sum is Σ_(i=1)^2 (2 + 2i)^2 (2). Expand and evaluate.",
+    "command_verb": "evaluate"
+   },
+   "answer_key": {
+    "form": "numeric",
+    "mathjson": 104
+   },
+   "worked_solution": [
+    {
+     "step": 1,
+     "text": "The sum at n = 2.",
+     "mathjson": [
+      "Sum",
+      [
+       "Multiply",
+       2,
+       [
+        "Power",
+        [
+         "Add",
+         2,
+         [
+          "Multiply",
+          2,
+          "i"
+         ]
+        ],
+        2
+       ]
+      ],
+      [
+       "Tuple",
+       "i",
+       1,
+       2
+      ]
+     ],
+     "relation": "new"
+    },
+    {
+     "step": 2,
+     "text": "Expand.",
+     "mathjson": 104,
+     "relation": "equivalent"
+    },
+    {
+     "step": 3,
+     "text": "Add.",
+     "mathjson": 104,
+     "relation": "equivalent"
+    }
+   ],
+   "calculator_status": "no_calculator",
+   "representation": "BC-REP-01",
+   "skills": [
+    "BC-SKL-06012"
+   ]
+  },
+  {
+   "id": "LSN-CON-06005#chk-2",
+   "check_kind": "isomorph",
+   "bands": [
+    "low",
+    "mid"
+   ],
+   "format": "short_answer",
+   "archetype_id": "BC-QA-06014",
+   "parameter_draw": {
+    "direction": "to_sum",
+    "function": "cube",
+    "coefficient": 2,
+    "start": 1,
+    "width": 4,
+    "convention": "left",
+    "letter": "t"
+   },
+   "stem": {
+    "text": "Write the left Riemann sum for ∫_1^5 2t^3 dt with n equal pieces in sigma notation; evaluate it for n = 2.",
+    "command_verb": "write"
+   },
+   "answer_key": {
+    "form": "numeric",
+    "mathjson": 112
+   },
+   "worked_solution": [
+    {
+     "step": 1,
+     "text": "Width 4/n, left endpoint 1 + 4(i - 1)/n.",
+     "mathjson": [
+      "Sum",
+      [
+       "Multiply",
+       8,
+       [
+        "Power",
+        "n",
+        -1
+       ],
+       [
+        "Power",
+        [
+         "Add",
+         1,
+         [
+          "Multiply",
+          [
+           "Power",
+           "n",
+           -1
+          ],
+          [
+           "Add",
+           -4,
+           [
+            "Multiply",
+            4,
+            "i"
+           ]
+          ]
+         ]
+        ],
+        3
+       ]
+      ],
+      [
+       "Tuple",
+       "i",
+       1,
+       "n"
+      ]
+     ],
+     "relation": "new"
+    },
+    {
+     "step": 2,
+     "text": "n = 2: endpoints 1 and 3, width 2.",
+     "mathjson": 112,
+     "relation": "evaluate",
+     "subs": {
+      "n": "2"
+     }
+    },
+    {
+     "step": 3,
+     "text": "Add.",
+     "mathjson": 112,
+     "relation": "equivalent"
+    }
+   ],
+   "calculator_status": "no_calculator",
+   "representation": "BC-REP-01",
+   "skills": [
+    "BC-SKL-06013"
+   ]
+  }
+ ],
+ "refresher": [
+  "LSN-CON-06005#s2",
+  "LSN-CON-06005#err-BC-ERR-06003",
+  "LSN-CON-06005#s4"
+ ],
+ "provenance": {
+  "author": "tools/lesson_transcribe.py",
+  "prompt_version": "generator/lesson_v1",
+  "design_path": "docs/lessons/unit-06/LSN-CON-06005.md",
+  "signed_off_by": "claude-opus-5-5",
+  "signed_off_at": "2026-09-29",
+  "not_human": true
+ }
+}

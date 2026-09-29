@@ -1,0 +1,1503 @@
+{
+ "id": "LSN-CON-08019",
+ "version": 1,
+ "kind": "concept",
+ "target_id": "BC-CON-08019",
+ "status": "signed_off",
+ "snapshot_digest": "a6a8ec9d3f59ab8f712e33d30cc22fc64bf2c478fbe7312e3e3118d319c6a42f",
+ "source_digest": "800f08fd66d3a86aa8d6fff77ff063e64ca6fb6306eea408b05cb16aa9fa4af9",
+ "read_minutes": {
+  "full": 4.4,
+  "brief": 3.0
+ },
+ "word_count": {
+  "full": 572,
+  "brief": 380
+ },
+ "sections": [
+  {
+   "id": "LSN-CON-08019#s1",
+   "type": "orientation",
+   "bands": [
+    "low",
+    "mid"
+   ],
+   "skills": [
+    "BC-SKL-08048",
+    "BC-SKL-08049",
+    "BC-SKL-08050",
+    "BC-SKL-08051"
+   ],
+   "sources": [
+    "BC-CON-08019",
+    "research/units/unit-08-applications-integration.md#8.11 Volume with Washer Method: Revolving Around the x- or y-Axis"
+   ],
+   "evidence_tag": "inferred",
+   "text": "A region held off the axis gives ring slices. A response writes pi times the integral of outer radius squared minus inner radius squared, with limits.",
+   "delivery": {
+    "mode": "text",
+    "reason": "rule 6: a statement of what a response shows",
+    "sources": [
+     "BC-CON-08019"
+    ]
+   }
+  },
+  {
+   "id": "LSN-CON-08019#s2",
+   "type": "key_ideas",
+   "bands": [
+    "low",
+    "mid"
+   ],
+   "skills": [
+    "BC-SKL-08048",
+    "BC-SKL-08049",
+    "BC-SKL-08050",
+    "BC-SKL-08051"
+   ],
+   "sources": [
+    "BC-EK-CHA-5C3",
+    "ced:162",
+    "research/units/unit-08-applications-integration.md#8.11 Volume with Washer Method: Revolving Around the x- or y-Axis"
+   ],
+   "evidence_tag": "inferred",
+   "ek_id": "BC-EK-CHA-5C3",
+   "depth": "core",
+   "text": "Each slice is a ring. The curve farther from the axis gives R, the nearer gives r. Square each radius, then subtract: the square of a difference is not the difference of squares.",
+   "notation": "pi times the integral of outer squared minus inner squared",
+   "delivery": {
+    "mode": "figure",
+    "reason": "rule 4: BC-REP-08 and BC-REP-02 on BC-SKL-08048; the sweep itself is taught in LSN-CON-08017",
+    "sources": [
+     "BC-SKL-08048"
+    ],
+    "spec": {
+     "kind": "washer",
+     "representations": [
+      "BC-REP-02",
+      "BC-REP-08"
+     ],
+     "region": {
+      "upper": "y = 1 + 2x - x^2",
+      "lower": "y = 1",
+      "interval": [
+       0,
+       2
+      ]
+     },
+     "axis": "y = 0",
+     "slice_at_x": 1,
+     "drawn": [
+      "the region above y = 1",
+      "one ring at x = 1, outer circle through the upper curve, inner circle through y = 1"
+     ],
+     "labels": [
+      {
+       "text": "R = f(x), farther",
+       "placement": "inside"
+      },
+      {
+       "text": "r = 1, nearer",
+       "placement": "inside"
+      },
+      {
+       "text": "area pi (R^2 - r^2)",
+       "placement": "inside"
+      }
+     ]
+    },
+    "fallback": "the same figure as a static image with its three labels",
+    "keyboard": "none needed: the figure has no control"
+   }
+  },
+  {
+   "id": "LSN-CON-08019#s3",
+   "type": "strategy",
+   "bands": [
+    "low",
+    "mid"
+   ],
+   "skills": [
+    "BC-SKL-08048",
+    "BC-SKL-08049",
+    "BC-SKL-08050",
+    "BC-SKL-08051"
+   ],
+   "sources": [
+    "BC-QA-08013"
+   ],
+   "evidence_tag": "verified",
+   "archetype_id": "BC-QA-08013",
+   "cue": "Two curves, revolved about an axis the region misses.",
+   "method": "First line: which curve is farther from the axis.",
+   "rival": "Squaring the difference of the functions.",
+   "separating_feature": "Two radii, two circles, two squares."
+  },
+  {
+   "id": "LSN-CON-08019#s4",
+   "type": "worked_example",
+   "bands": [
+    "low",
+    "mid"
+   ],
+   "skills": [
+    "BC-SKL-08048",
+    "BC-SKL-08049",
+    "BC-SKL-08050",
+    "BC-SKL-08051"
+   ],
+   "sources": [
+    "BC-QA-08013"
+   ],
+   "evidence_tag": "inferred",
+   "archetype_id": "BC-QA-08013",
+   "parameter_draw": {
+    "left": 0,
+    "width": 2,
+    "bulge": 1,
+    "slope": 0,
+    "intercept": 1,
+    "depth": 1,
+    "presentation": "formula",
+    "axis": "x_axis"
+   },
+   "problem": {
+    "text": "R lies between f(x) = 1 + 2x - x^2 and g(x) = 1. Find the volume when R is revolved about the x-axis.",
+    "command_verb": "find"
+   },
+   "calculator_status": "no_calculator",
+   "steps": [
+    {
+     "cue": "R sits above y = 1, off the axis.",
+     "why": "f is farther: outer."
+    },
+    {
+     "cue": "Distances to y = 0.",
+     "why": "R = f, r = 1.",
+     "expression": [
+      "Add",
+      -1,
+      [
+       "Power",
+       [
+        "Add",
+        1,
+        [
+         "Multiply",
+         -1,
+         [
+          "Power",
+          "x",
+          2
+         ]
+        ],
+        [
+         "Multiply",
+         2,
+         "x"
+        ]
+       ],
+       2
+      ]
+     ],
+     "relation": "new"
+    },
+    {
+     "cue": "Ring area.",
+     "why": "Squares first, then subtract.",
+     "expression": [
+      "Multiply",
+      "Pi",
+      [
+       "Add",
+       -1,
+       [
+        "Power",
+        [
+         "Add",
+         1,
+         [
+          "Multiply",
+          -1,
+          [
+           "Power",
+           "x",
+           2
+          ]
+         ],
+         [
+          "Multiply",
+          2,
+          "x"
+         ]
+        ],
+        2
+       ]
+      ]
+     ],
+     "point_type_id": "BC-PT-99058",
+     "relation": "new"
+    },
+    {
+     "cue": "Curves meet at 0 and 2.",
+     "why": "Limits.",
+     "expression": [
+      "Integrate",
+      [
+       "Multiply",
+       "Pi",
+       [
+        "Add",
+        -1,
+        [
+         "Power",
+         [
+          "Add",
+          1,
+          [
+           "Multiply",
+           -1,
+           [
+            "Power",
+            "x",
+            2
+           ]
+          ],
+          [
+           "Multiply",
+           2,
+           "x"
+          ]
+         ],
+         2
+        ]
+       ]
+      ],
+      [
+       "Tuple",
+       "x",
+       0,
+       2
+      ]
+     ],
+     "point_type_id": "BC-PT-99001",
+     "relation": "new"
+    },
+    {
+     "cue": "Expand, integrate.",
+     "why": "Keep pi.",
+     "expression": [
+      "Multiply",
+      [
+       "Rational",
+       56,
+       15
+      ],
+      "Pi"
+     ],
+     "relation": "equivalent"
+    }
+   ],
+   "answer": {
+    "form": "symbolic",
+    "mathjson": [
+     "Multiply",
+     [
+      "Rational",
+      56,
+      15
+     ],
+     "Pi"
+    ]
+   },
+   "delivery": {
+    "mode": "step_reveal",
+    "reason": "rule 1",
+    "sources": []
+   }
+  },
+  {
+   "id": "LSN-CON-08019#s5",
+   "type": "worked_example",
+   "bands": [
+    "low"
+   ],
+   "skills": [
+    "BC-SKL-08048",
+    "BC-SKL-08049",
+    "BC-SKL-08050",
+    "BC-SKL-08051"
+   ],
+   "sources": [
+    "BC-QA-08013"
+   ],
+   "evidence_tag": "inferred",
+   "archetype_id": "BC-QA-08013",
+   "parameter_draw": {
+    "left": 1,
+    "width": 1,
+    "bulge": 2,
+    "slope": 1,
+    "intercept": 1,
+    "depth": 2,
+    "presentation": "formula",
+    "axis": "x_axis"
+   },
+   "problem": {
+    "text": "R lies between f(x) = -2x^2 + 7x - 3 and g(x) = x + 1. Find the volume about the x-axis.",
+    "command_verb": "find"
+   },
+   "calculator_status": "no_calculator",
+   "steps": [
+    {
+     "cue": "f is above g, both above the axis.",
+     "why": "f outer."
+    },
+    {
+     "cue": "Ring area.",
+     "why": "Squares first.",
+     "expression": [
+      "Multiply",
+      "Pi",
+      [
+       "Add",
+       [
+        "Power",
+        [
+         "Add",
+         -3,
+         [
+          "Multiply",
+          -2,
+          [
+           "Power",
+           "x",
+           2
+          ]
+         ],
+         [
+          "Multiply",
+          7,
+          "x"
+         ]
+        ],
+        2
+       ],
+       [
+        "Multiply",
+        -1,
+        [
+         "Power",
+         [
+          "Add",
+          1,
+          "x"
+         ],
+         2
+        ]
+       ]
+      ]
+     ],
+     "point_type_id": "BC-PT-99058",
+     "relation": "new"
+    },
+    {
+     "cue": "Curves meet at 1 and 2.",
+     "why": "Limits.",
+     "expression": [
+      "Integrate",
+      [
+       "Multiply",
+       "Pi",
+       [
+        "Add",
+        [
+         "Power",
+         [
+          "Add",
+          -3,
+          [
+           "Multiply",
+           -2,
+           [
+            "Power",
+            "x",
+            2
+           ]
+          ],
+          [
+           "Multiply",
+           7,
+           "x"
+          ]
+         ],
+         2
+        ],
+        [
+         "Multiply",
+         -1,
+         [
+          "Power",
+          [
+           "Add",
+           1,
+           "x"
+          ],
+          2
+         ]
+        ]
+       ]
+      ],
+      [
+       "Tuple",
+       "x",
+       1,
+       2
+      ]
+     ],
+     "relation": "new"
+    },
+    {
+     "cue": "Integrate.",
+     "why": "Keep pi.",
+     "expression": [
+      "Multiply",
+      [
+       "Rational",
+       9,
+       5
+      ],
+      "Pi"
+     ],
+     "relation": "equivalent"
+    }
+   ],
+   "answer": {
+    "form": "symbolic",
+    "mathjson": [
+     "Multiply",
+     [
+      "Rational",
+      9,
+      5
+     ],
+     "Pi"
+    ]
+   },
+   "delivery": {
+    "mode": "step_reveal",
+    "reason": "rule 1",
+    "sources": []
+   }
+  },
+  {
+   "id": "LSN-CON-08019#s6",
+   "type": "what_a_reader_scores",
+   "bands": [
+    "low",
+    "mid"
+   ],
+   "skills": [
+    "BC-SKL-08048",
+    "BC-SKL-08049",
+    "BC-SKL-08050",
+    "BC-SKL-08051"
+   ],
+   "sources": [
+    "BC-PT-99058",
+    "BC-PT-99001"
+   ],
+   "evidence_tag": "verified",
+   "example_id": "LSN-CON-08019#s4",
+   "lines": [
+    {
+     "point_type_id": "BC-PT-99058",
+     "text": "Volume integrand form. Earned by: An integrand of the correct volume form, a nonzero constant times the square of the function for a disc, or the stated cross-section area (sg-26:19, sg-22:18). Not earned by: A constant other than pi where pi is required, which sg-22:19 states blocks the answer point; a rotation about the wrong axis, which sg-26:19 lets earn the form point only."
+    },
+    {
+     "point_type_id": "BC-PT-99001",
+     "text": "Definite integral expression with correct limits. Earned by: A definite integral whose limits match the requested interval and whose integrand matches the requested quantity, with or without the differential (sg-26:4, sg-22:2). Not earned by: An unsupported numerical value, or a definite integral whose bounds are wrong (sg-22:18). Notation: Differential may be omitted; sg-22:2 accepts dx written for dt. sg-23:8 treats a missing differential as recoverable for this point but restricts later eligibility."
+    }
+   ]
+  },
+  {
+   "id": "LSN-CON-08019#s7",
+   "type": "what_a_reader_scores",
+   "bands": [
+    "low"
+   ],
+   "skills": [
+    "BC-SKL-08048",
+    "BC-SKL-08049",
+    "BC-SKL-08050",
+    "BC-SKL-08051"
+   ],
+   "sources": [
+    "BC-PT-99058"
+   ],
+   "evidence_tag": "verified",
+   "example_id": "LSN-CON-08019#s5",
+   "lines": [
+    {
+     "point_type_id": "BC-PT-99058",
+     "text": "Volume integrand form. Earned by: An integrand of the correct volume form, a nonzero constant times the square of the function for a disc, or the stated cross-section area (sg-26:19, sg-22:18). Not earned by: A constant other than pi where pi is required, which sg-22:19 states blocks the answer point; a rotation about the wrong axis, which sg-26:19 lets earn the form point only."
+    }
+   ]
+  },
+  {
+   "id": "LSN-CON-08019#err-BC-ERR-08023",
+   "type": "common_error",
+   "bands": [
+    "low",
+    "mid"
+   ],
+   "skills": [
+    "BC-SKL-08050"
+   ],
+   "sources": [
+    "BC-ERR-08023",
+    "BC-MIS-08013"
+   ],
+   "evidence_tag": "inferred",
+   "error_id": "BC-ERR-08023",
+   "observed_behavior": "A function of x is integrated with respect to y, or the reverse, without being rewritten.",
+   "scoring_consequence": "The setup point is lost because the expression does not define a number.",
+   "wrong_step": {
+    "text": "dy.",
+    "expression": [
+     "Integrate",
+     [
+      "Multiply",
+      "Pi",
+      [
+       "Add",
+       -1,
+       [
+        "Power",
+        [
+         "Add",
+         1,
+         [
+          "Multiply",
+          -1,
+          [
+           "Power",
+           "x",
+           2
+          ]
+         ],
+         [
+          "Multiply",
+          2,
+          "x"
+         ]
+        ],
+        2
+       ]
+      ]
+     ],
+     [
+      "Tuple",
+      "y",
+      0,
+      2
+     ]
+    ]
+   },
+   "right_step": {
+    "text": "dx.",
+    "expression": [
+     "Integrate",
+     [
+      "Multiply",
+      "Pi",
+      [
+       "Add",
+       -1,
+       [
+        "Power",
+        [
+         "Add",
+         1,
+         [
+          "Multiply",
+          -1,
+          [
+           "Power",
+           "x",
+           2
+          ]
+         ],
+         [
+          "Multiply",
+          2,
+          "x"
+         ]
+        ],
+        2
+       ]
+      ]
+     ],
+     [
+      "Tuple",
+      "x",
+      0,
+      2
+     ]
+    ]
+   },
+   "relation": "distinct",
+   "possible_reason": {
+    "misconception_id": "BC-MIS-08013",
+    "text": "treats dx and dy as labels for the direction of slicing"
+   },
+   "delivery": {
+    "mode": "step_reveal",
+    "reason": "rule 1",
+    "sources": []
+   }
+  },
+  {
+   "id": "LSN-CON-08019#err-BC-ERR-08024",
+   "type": "common_error",
+   "bands": [
+    "low",
+    "mid"
+   ],
+   "skills": [
+    "BC-SKL-08050"
+   ],
+   "sources": [
+    "BC-ERR-08024",
+    "BC-MIS-08012"
+   ],
+   "evidence_tag": "inferred",
+   "error_id": "BC-ERR-08024",
+   "observed_behavior": "An integral in y carries x values as its limits.",
+   "scoring_consequence": "The setup point is lost and the value is wrong.",
+   "wrong_step": {
+    "text": "y from 1 to 2.",
+    "expression": [
+     "Integrate",
+     [
+      "Multiply",
+      "Pi",
+      [
+       "Add",
+       -1,
+       [
+        "Power",
+        [
+         "Add",
+         1,
+         [
+          "Multiply",
+          -1,
+          [
+           "Power",
+           "x",
+           2
+          ]
+         ],
+         [
+          "Multiply",
+          2,
+          "x"
+         ]
+        ],
+        2
+       ]
+      ]
+     ],
+     [
+      "Tuple",
+      "x",
+      1,
+      2
+     ]
+    ]
+   },
+   "right_step": {
+    "text": "x from 0 to 2.",
+    "expression": [
+     "Integrate",
+     [
+      "Multiply",
+      "Pi",
+      [
+       "Add",
+       -1,
+       [
+        "Power",
+        [
+         "Add",
+         1,
+         [
+          "Multiply",
+          -1,
+          [
+           "Power",
+           "x",
+           2
+          ]
+         ],
+         [
+          "Multiply",
+          2,
+          "x"
+         ]
+        ],
+        2
+       ]
+      ]
+     ],
+     [
+      "Tuple",
+      "x",
+      0,
+      2
+     ]
+    ]
+   },
+   "relation": "distinct",
+   "possible_reason": {
+    "misconception_id": "BC-MIS-08012",
+    "text": "chooses limits from the axes of the picture"
+   },
+   "delivery": {
+    "mode": "step_reveal",
+    "reason": "rule 1",
+    "sources": []
+   }
+  },
+  {
+   "id": "LSN-CON-08019#err-BC-ERR-08030",
+   "type": "common_error",
+   "bands": [
+    "low",
+    "mid"
+   ],
+   "skills": [
+    "BC-SKL-08049",
+    "BC-SKL-08051"
+   ],
+   "sources": [
+    "BC-ERR-08030",
+    "BC-MIS-08017"
+   ],
+   "evidence_tag": "inferred",
+   "error_id": "BC-ERR-08030",
+   "observed_behavior": "A washer integrand is written as the square of the difference of the two radii, or a squared difference is expanded term by term.",
+   "scoring_consequence": "The setup point is lost, and the value is wrong by the cross term.",
+   "wrong_step": {
+    "text": "(R - r)^2.",
+    "expression": [
+     "Integrate",
+     [
+      "Multiply",
+      "Pi",
+      [
+       "Power",
+       [
+        "Add",
+        [
+         "Multiply",
+         -1,
+         [
+          "Power",
+          "x",
+          2
+         ]
+        ],
+        [
+         "Multiply",
+         2,
+         "x"
+        ]
+       ],
+       2
+      ]
+     ],
+     [
+      "Tuple",
+      "x",
+      0,
+      2
+     ]
+    ]
+   },
+   "right_step": {
+    "text": "R^2 - r^2.",
+    "expression": [
+     "Integrate",
+     [
+      "Multiply",
+      "Pi",
+      [
+       "Add",
+       -1,
+       [
+        "Power",
+        [
+         "Add",
+         1,
+         [
+          "Multiply",
+          -1,
+          [
+           "Power",
+           "x",
+           2
+          ]
+         ],
+         [
+          "Multiply",
+          2,
+          "x"
+         ]
+        ],
+        2
+       ]
+      ]
+     ],
+     [
+      "Tuple",
+      "x",
+      0,
+      2
+     ]
+    ]
+   },
+   "relation": "distinct",
+   "possible_reason": {
+    "misconception_id": "BC-MIS-08017",
+    "text": "treats squaring as distributing over subtraction"
+   },
+   "delivery": {
+    "mode": "step_reveal",
+    "reason": "rule 1",
+    "sources": []
+   }
+  },
+  {
+   "id": "LSN-CON-08019#err-BC-ERR-08037",
+   "type": "common_error",
+   "bands": [
+    "low",
+    "mid"
+   ],
+   "skills": [
+    "BC-SKL-08049"
+   ],
+   "sources": [
+    "BC-ERR-08037",
+    "BC-MIS-08019"
+   ],
+   "evidence_tag": "inferred",
+   "error_id": "BC-ERR-08037",
+   "observed_behavior": "A disc or washer volume is reported without the constant factor pi.",
+   "scoring_consequence": "The answer point is lost.",
+   "wrong_step": {
+    "text": "No pi.",
+    "expression": [
+     "Rational",
+     56,
+     15
+    ]
+   },
+   "right_step": {
+    "text": "pi.",
+    "expression": [
+     "Multiply",
+     [
+      "Rational",
+      56,
+      15
+     ],
+     "Pi"
+    ]
+   },
+   "relation": "distinct",
+   "possible_reason": {
+    "misconception_id": "BC-MIS-08019",
+    "text": "remembers the squared dimension but not the fraction in front of it"
+   },
+   "delivery": {
+    "mode": "step_reveal",
+    "reason": "rule 1",
+    "sources": []
+   }
+  },
+  {
+   "id": "LSN-CON-08019#prq-BC-PRQ-06002",
+   "type": "prerequisite_bridge",
+   "bands": [
+    "low",
+    "mid"
+   ],
+   "skills": [
+    "BC-SKL-08051"
+   ],
+   "sources": [
+    "BC-PRQ-06002"
+   ],
+   "evidence_tag": "inferred",
+   "prerequisite_id": "BC-PRQ-06002",
+   "text": "Rewrite radicals as powers before antidifferentiating."
+  },
+  {
+   "id": "LSN-CON-08019#prq-BC-PRQ-08002",
+   "type": "prerequisite_bridge",
+   "bands": [
+    "low",
+    "mid"
+   ],
+   "skills": [
+    "BC-SKL-08050"
+   ],
+   "sources": [
+    "BC-PRQ-08002"
+   ],
+   "evidence_tag": "inferred",
+   "prerequisite_id": "BC-PRQ-08002",
+   "text": "Integrating in y needs x as a function of y."
+  },
+  {
+   "id": "LSN-CON-08019#prq-BC-PRQ-08004",
+   "type": "prerequisite_bridge",
+   "bands": [
+    "low",
+    "mid"
+   ],
+   "skills": [
+    "BC-SKL-08048",
+    "BC-SKL-08049"
+   ],
+   "sources": [
+    "BC-PRQ-08004"
+   ],
+   "evidence_tag": "inferred",
+   "prerequisite_id": "BC-PRQ-08004",
+   "text": "A distance is larger minus smaller, not a bare function value."
+  }
+ ],
+ "checks": [
+  {
+   "id": "LSN-CON-08019#chk-1",
+   "check_kind": "completion",
+   "bands": [
+    "low",
+    "mid"
+   ],
+   "format": "short_answer",
+   "archetype_id": "BC-QA-08013",
+   "parameter_draw": {
+    "left": 0,
+    "width": 2,
+    "bulge": 1,
+    "slope": 0,
+    "intercept": 1,
+    "depth": 1,
+    "presentation": "formula",
+    "axis": "x_axis"
+   },
+   "completes": "LSN-CON-08019#s4",
+   "stem": {
+    "text": "Evaluate pi times the integral of (1 + 2x - x^2)^2 - 1 from 0 to 2.",
+    "command_verb": "evaluate"
+   },
+   "answer_key": {
+    "form": "symbolic",
+    "mathjson": [
+     "Multiply",
+     [
+      "Rational",
+      56,
+      15
+     ],
+     "Pi"
+    ]
+   },
+   "worked_solution": [
+    {
+     "step": 1,
+     "text": "The integral.",
+     "mathjson": [
+      "Integrate",
+      [
+       "Multiply",
+       "Pi",
+       [
+        "Add",
+        -1,
+        [
+         "Power",
+         [
+          "Add",
+          1,
+          [
+           "Multiply",
+           -1,
+           [
+            "Power",
+            "x",
+            2
+           ]
+          ],
+          [
+           "Multiply",
+           2,
+           "x"
+          ]
+         ],
+         2
+        ]
+       ]
+      ],
+      [
+       "Tuple",
+       "x",
+       0,
+       2
+      ]
+     ],
+     "relation": "new"
+    },
+    {
+     "step": 2,
+     "text": "Expanded.",
+     "mathjson": [
+      "Integrate",
+      [
+       "Multiply",
+       "Pi",
+       [
+        "Add",
+        [
+         "Power",
+         "x",
+         4
+        ],
+        [
+         "Multiply",
+         -4,
+         [
+          "Power",
+          "x",
+          3
+         ]
+        ],
+        [
+         "Multiply",
+         2,
+         [
+          "Power",
+          "x",
+          2
+         ]
+        ],
+        [
+         "Multiply",
+         4,
+         "x"
+        ]
+       ]
+      ],
+      [
+       "Tuple",
+       "x",
+       0,
+       2
+      ]
+     ],
+     "relation": "equivalent"
+    },
+    {
+     "step": 3,
+     "text": "Value.",
+     "mathjson": [
+      "Multiply",
+      [
+       "Rational",
+       56,
+       15
+      ],
+      "Pi"
+     ],
+     "relation": "equivalent"
+    }
+   ],
+   "calculator_status": "no_calculator",
+   "representation": "BC-REP-08",
+   "skills": [
+    "BC-SKL-08049"
+   ]
+  },
+  {
+   "id": "LSN-CON-08019#chk-2",
+   "check_kind": "isomorph",
+   "bands": [
+    "low",
+    "mid"
+   ],
+   "format": "short_answer",
+   "archetype_id": "BC-QA-08013",
+   "parameter_draw": {
+    "left": 0,
+    "width": 2,
+    "bulge": 1,
+    "slope": 1,
+    "intercept": 1,
+    "depth": 1,
+    "presentation": "formula",
+    "axis": "x_axis"
+   },
+   "stem": {
+    "text": "R lies between f(x) = 1 + 3x - x^2 and g(x) = x + 1. Find the volume about the x-axis.",
+    "command_verb": "find"
+   },
+   "answer_key": {
+    "form": "symbolic",
+    "mathjson": [
+     "Multiply",
+     [
+      "Rational",
+      32,
+      5
+     ],
+     "Pi"
+    ]
+   },
+   "worked_solution": [
+    {
+     "step": 1,
+     "text": "f outer.",
+     "mathjson": [
+      "Multiply",
+      "Pi",
+      [
+       "Add",
+       [
+        "Power",
+        [
+         "Add",
+         1,
+         [
+          "Multiply",
+          -1,
+          [
+           "Power",
+           "x",
+           2
+          ]
+         ],
+         [
+          "Multiply",
+          3,
+          "x"
+         ]
+        ],
+        2
+       ],
+       [
+        "Multiply",
+        -1,
+        [
+         "Power",
+         [
+          "Add",
+          1,
+          "x"
+         ],
+         2
+        ]
+       ]
+      ]
+     ],
+     "relation": "new"
+    },
+    {
+     "step": 2,
+     "text": "Limits 0 and 2.",
+     "mathjson": [
+      "Integrate",
+      [
+       "Multiply",
+       "Pi",
+       [
+        "Add",
+        [
+         "Power",
+         [
+          "Add",
+          1,
+          [
+           "Multiply",
+           -1,
+           [
+            "Power",
+            "x",
+            2
+           ]
+          ],
+          [
+           "Multiply",
+           3,
+           "x"
+          ]
+         ],
+         2
+        ],
+        [
+         "Multiply",
+         -1,
+         [
+          "Power",
+          [
+           "Add",
+           1,
+           "x"
+          ],
+          2
+         ]
+        ]
+       ]
+      ],
+      [
+       "Tuple",
+       "x",
+       0,
+       2
+      ]
+     ],
+     "relation": "new"
+    },
+    {
+     "step": 3,
+     "text": "Value.",
+     "mathjson": [
+      "Multiply",
+      [
+       "Rational",
+       32,
+       5
+      ],
+      "Pi"
+     ],
+     "relation": "equivalent"
+    }
+   ],
+   "calculator_status": "no_calculator",
+   "representation": "BC-REP-08",
+   "skills": [
+    "BC-SKL-08049"
+   ]
+  },
+  {
+   "id": "LSN-CON-08019#chk-3",
+   "check_kind": "mcq",
+   "bands": [
+    "low"
+   ],
+   "format": "mcq",
+   "archetype_id": "BC-QA-08013",
+   "parameter_draw": {
+    "left": 0,
+    "width": 2,
+    "bulge": 1,
+    "slope": 0,
+    "intercept": 3,
+    "depth": 1,
+    "presentation": "formula",
+    "axis": "x_axis"
+   },
+   "stem": {
+    "text": "R lies between f(x) = 3 + x(2 - x) and g(x) = 3. The volume about the x-axis is",
+    "command_verb": "identify"
+   },
+   "answer_key": {
+    "form": "symbolic",
+    "mathjson": [
+     "Multiply",
+     [
+      "Rational",
+      136,
+      15
+     ],
+     "Pi"
+    ]
+   },
+   "worked_solution": [
+    {
+     "step": 1,
+     "text": "R = f, r = 3.",
+     "mathjson": [
+      "Multiply",
+      "Pi",
+      [
+       "Add",
+       -9,
+       [
+        "Power",
+        [
+         "Add",
+         3,
+         [
+          "Multiply",
+          "x",
+          [
+           "Add",
+           2,
+           [
+            "Multiply",
+            -1,
+            "x"
+           ]
+          ]
+         ]
+        ],
+        2
+       ]
+      ]
+     ],
+     "relation": "new"
+    },
+    {
+     "step": 2,
+     "text": "Limits 0 and 2.",
+     "mathjson": [
+      "Integrate",
+      [
+       "Multiply",
+       "Pi",
+       [
+        "Add",
+        -9,
+        [
+         "Power",
+         [
+          "Add",
+          3,
+          [
+           "Multiply",
+           "x",
+           [
+            "Add",
+            2,
+            [
+             "Multiply",
+             -1,
+             "x"
+            ]
+           ]
+          ]
+         ],
+         2
+        ]
+       ]
+      ],
+      [
+       "Tuple",
+       "x",
+       0,
+       2
+      ]
+     ],
+     "relation": "new"
+    },
+    {
+     "step": 3,
+     "text": "Value.",
+     "mathjson": [
+      "Multiply",
+      [
+       "Rational",
+       136,
+       15
+      ],
+      "Pi"
+     ],
+     "relation": "equivalent"
+    }
+   ],
+   "options": [
+    {
+     "id": "A",
+     "is_key": false,
+     "error_path": "BC-ERR-08030",
+     "value": [
+      "Multiply",
+      [
+       "Rational",
+       16,
+       15
+      ],
+      "Pi"
+     ],
+     "derivation": "pi times (f - 3) squared"
+    },
+    {
+     "id": "B",
+     "is_key": true,
+     "error_path": null,
+     "value": [
+      "Multiply",
+      [
+       "Rational",
+       136,
+       15
+      ],
+      "Pi"
+     ]
+    },
+    {
+     "id": "C",
+     "is_key": false,
+     "error_path": "BC-ERR-08037",
+     "value": [
+      "Rational",
+      136,
+      15
+     ],
+     "derivation": "pi dropped"
+    },
+    {
+     "id": "D",
+     "is_key": false,
+     "error_path": "BC-ERR-08024",
+     "value": [
+      "Multiply",
+      [
+       "Rational",
+       -22,
+       15
+      ],
+      "Pi"
+     ],
+     "derivation": "the y values 3 and 4 used as limits"
+    }
+   ],
+   "calculator_status": "no_calculator",
+   "representation": "BC-REP-08",
+   "skills": [
+    "BC-SKL-08051"
+   ]
+  }
+ ],
+ "refresher": [
+  "LSN-CON-08019#s2",
+  "LSN-CON-08019#err-BC-ERR-08023",
+  "LSN-CON-08019#err-BC-ERR-08024",
+  "LSN-CON-08019#err-BC-ERR-08030",
+  "LSN-CON-08019#err-BC-ERR-08037",
+  "LSN-CON-08019#s4"
+ ],
+ "provenance": {
+  "author": "tools/lesson_transcribe.py",
+  "prompt_version": "generator/lesson_v1",
+  "design_path": "docs/lessons/unit-08/LSN-CON-08019.md",
+  "signed_off_by": "claude-opus-5-5",
+  "signed_off_at": "2026-09-29",
+  "not_human": true
+ }
+}

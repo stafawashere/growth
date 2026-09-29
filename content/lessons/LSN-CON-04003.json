@@ -1,0 +1,595 @@
+{
+ "id": "LSN-CON-04003",
+ "version": 1,
+ "kind": "concept",
+ "target_id": "BC-CON-04003",
+ "status": "signed_off",
+ "snapshot_digest": "a6a8ec9d3f59ab8f712e33d30cc22fc64bf2c478fbe7312e3e3118d319c6a42f",
+ "source_digest": "bd419bbcbc499ee5068a5dc617f9fbe969b84b25a5f21978d364eb3ec1a8bea7",
+ "read_minutes": {
+  "full": 3.1,
+  "brief": 2.8
+ },
+ "word_count": {
+  "full": 415,
+  "brief": 364
+ },
+ "sections": [
+  {
+   "id": "LSN-CON-04003#s1",
+   "type": "orientation",
+   "bands": [
+    "low",
+    "mid"
+   ],
+   "skills": [
+    "BC-SKL-04006",
+    "BC-SKL-04007"
+   ],
+   "sources": [
+    "BC-CON-04003",
+    "research/units/unit-04-contextual-applications-differentiation.md#4.2 Straight-Line Motion: Connecting Position, Velocity, and Acceleration"
+   ],
+   "evidence_tag": "inferred",
+   "text": "Velocity is the derivative of position, and acceleration the derivative of velocity. A response differentiates the given function as many times as the requested quantity needs, then evaluates at the instant.",
+   "delivery": {
+    "mode": "text",
+    "reason": "rule 5: BC-SKL-04006 and BC-SKL-04007 carry BC-REP-01 and BC-REP-05",
+    "sources": [
+     "BC-SKL-04006"
+    ]
+   }
+  },
+  {
+   "id": "LSN-CON-04003#s2",
+   "type": "key_ideas",
+   "bands": [
+    "low",
+    "mid"
+   ],
+   "skills": [
+    "BC-SKL-04006",
+    "BC-SKL-04007"
+   ],
+   "sources": [
+    "BC-EK-CHA-3B1",
+    "ced:88",
+    "research/units/unit-04-contextual-applications-differentiation.md#4.2 Straight-Line Motion: Connecting Position, Velocity, and Acceleration"
+   ],
+   "evidence_tag": "verified",
+   "ek_id": "BC-EK-CHA-3B1",
+   "depth": "core",
+   "text": "For a particle on a line, \\(v(t)=x'(t)\\) and \\(a(t)=v'(t)=x''(t)\\). Count the steps from the given function to the requested one: position to velocity is one derivative, position to acceleration two, velocity to acceleration one.",
+   "notation": "x of t, v of t, a of t",
+   "quote": {
+    "text": "The derivative can be used to solve rectilinear motion problems involving position, speed, velocity, and acceleration.",
+    "source": "ced:88"
+   },
+   "delivery": {
+    "mode": "text",
+    "reason": "rule 5: a symbolic rule, BC-REP-01 and BC-REP-05",
+    "sources": [
+     "BC-SKL-04007"
+    ]
+   }
+  },
+  {
+   "id": "LSN-CON-04003#s3",
+   "type": "strategy",
+   "bands": [
+    "low",
+    "mid"
+   ],
+   "skills": [
+    "BC-SKL-04006",
+    "BC-SKL-04007"
+   ],
+   "sources": [
+    "BC-QA-04003"
+   ],
+   "evidence_tag": "verified",
+   "archetype_id": "BC-QA-04003",
+   "cue": "A position or velocity function of time is given; the stem asks for velocity or acceleration at a stated time.",
+   "method": "First line: the derivative the request needs, written as \\(v(t)=\\) or \\(a(t)=\\).",
+   "rival": "Rival: differentiating the wrong number of times (BC-ERR-04006).",
+   "separating_feature": "The given letter against the requested one sets the count."
+  },
+  {
+   "id": "LSN-CON-04003#s4",
+   "type": "strategy",
+   "bands": [
+    "low",
+    "mid"
+   ],
+   "skills": [
+    "BC-SKL-04006"
+   ],
+   "sources": [
+    "BC-QA-04010"
+   ],
+   "evidence_tag": "verified",
+   "archetype_id": "BC-QA-04010",
+   "cue": "A velocity function and the position at one time are given; the stem asks for the position at another time.",
+   "method": "First line: position equals the known position plus the integral of velocity.",
+   "rival": "Rival: the integral reported without the known position (BC-ERR-08011).",
+   "separating_feature": "Going from velocity back to position runs the chain backward."
+  },
+  {
+   "id": "LSN-CON-04003#s5",
+   "type": "worked_example",
+   "bands": [
+    "low",
+    "mid"
+   ],
+   "skills": [
+    "BC-SKL-04006",
+    "BC-SKL-04007"
+   ],
+   "sources": [
+    "BC-QA-04003"
+   ],
+   "evidence_tag": "inferred",
+   "archetype_id": "BC-QA-04003",
+   "parameter_draw": {
+    "cubic": 1,
+    "quadratic": -3,
+    "free": 2,
+    "speed_value": 4,
+    "instant": 2,
+    "given": "position",
+    "heading": "left"
+   },
+   "problem": {
+    "text": "A particle's position is \\(x(t)=t^3-3t^2-4t+2\\). Find its velocity and its acceleration at \\(t=2\\).",
+    "command_verb": "find"
+   },
+   "calculator_status": "no_calculator",
+   "steps": [
+    {
+     "cue": "The given function is position.",
+     "why": "Velocity is one derivative away.",
+     "expression": [
+      "Add",
+      2,
+      [
+       "Power",
+       "t",
+       3
+      ],
+      [
+       "Multiply",
+       -4,
+       "t"
+      ],
+      [
+       "Multiply",
+       -3,
+       [
+        "Power",
+        "t",
+        2
+       ]
+      ]
+     ],
+     "relation": "new"
+    },
+    {
+     "cue": "Velocity requested.",
+     "why": "\\(v(t)=x'(t)\\).",
+     "expression": [
+      "Add",
+      -4,
+      [
+       "Multiply",
+       -6,
+       "t"
+      ],
+      [
+       "Multiply",
+       3,
+       [
+        "Power",
+        "t",
+        2
+       ]
+      ]
+     ],
+     "relation": "differentiate",
+     "variable": "t"
+    },
+    {
+     "cue": "At \\(t=2\\).",
+     "why": "\\(12-12-4\\).",
+     "expression": -4,
+     "point_type_id": "BC-PT-99004",
+     "relation": "evaluate",
+     "subs": {
+      "t": "2"
+     }
+    },
+    {
+     "cue": "Acceleration: differentiate velocity.",
+     "why": "\\(a(t)=v'(t)\\).",
+     "expression": [
+      "Add",
+      -6,
+      [
+       "Multiply",
+       6,
+       "t"
+      ]
+     ],
+     "relation": "new"
+    },
+    {
+     "cue": "At \\(t=2\\).",
+     "why": "\\(12-6\\).",
+     "expression": 6,
+     "point_type_id": "BC-PT-99027",
+     "relation": "evaluate",
+     "subs": {
+      "t": "2"
+     }
+    },
+    {
+     "cue": "Both values requested.",
+     "why": "Each labelled.",
+     "expression": [
+      "Set",
+      [
+       "Equal",
+       "a",
+       6
+      ],
+      [
+       "Equal",
+       "v",
+       -4
+      ]
+     ],
+     "relation": "new"
+    }
+   ],
+   "answer": {
+    "form": "symbolic",
+    "mathjson": [
+     "Set",
+     [
+      "Equal",
+      "a",
+      6
+     ],
+     [
+      "Equal",
+      "v",
+      -4
+     ]
+    ]
+   },
+   "delivery": {
+    "mode": "step_reveal",
+    "reason": "rule 1",
+    "sources": []
+   }
+  },
+  {
+   "id": "LSN-CON-04003#s6",
+   "type": "what_a_reader_scores",
+   "bands": [
+    "low",
+    "mid"
+   ],
+   "skills": [
+    "BC-SKL-04006",
+    "BC-SKL-04007"
+   ],
+   "sources": [
+    "BC-PT-99004",
+    "BC-PT-99027"
+   ],
+   "evidence_tag": "verified",
+   "example_id": "LSN-CON-04003#s5",
+   "lines": [
+    {
+     "point_type_id": "BC-PT-99004",
+     "text": "Answer with or without supporting work. Earned by: The correct value on its own, with no supporting work required (sg-25:3, sg-26:4). Not earned by: A value outside the accepted precision, or a value inconsistent with a required earlier step where the rubric imposes one. Precision: A reported decimal answer must be accurate to three places after the decimal point, rounded or truncated; at most one point per question is lost to inappropriate rounding (sg-25:2, sg-26:2). sg-26:4 also accepts a stated rounding to the nearest integer and several truncations."
+    },
+    {
+     "point_type_id": "BC-PT-99027",
+     "text": "Higher derivative expression evaluated at a point. Earned by: A correct expression for the second or higher derivative, evaluated at the requested point, consistent with the earlier derivative work (sg-25:20, sg-23:10). Not earned by: An expression left in terms of the first derivative where the prompt asked for it in terms of the dependent variable (sg-23:11)."
+    }
+   ]
+  },
+  {
+   "id": "LSN-CON-04003#err-BC-ERR-04006",
+   "type": "common_error",
+   "bands": [
+    "low",
+    "mid"
+   ],
+   "skills": [
+    "BC-SKL-04006",
+    "BC-SKL-04007"
+   ],
+   "sources": [
+    "BC-ERR-04006",
+    "BC-MIS-04004"
+   ],
+   "evidence_tag": "inferred",
+   "error_id": "BC-ERR-04006",
+   "observed_behavior": "Acceleration is reported where velocity was asked for, or position where velocity was asked for.",
+   "scoring_consequence": "The answer point is lost although each differentiation performed is correct.",
+   "wrong_step": {
+    "text": "\\(x(2)=-10\\) reported as velocity.",
+    "expression": -10
+   },
+   "right_step": {
+    "text": "\\(v(2)=x'(2)=-4\\).",
+    "expression": -4
+   },
+   "relation": "distinct",
+   "possible_reason": {
+    "misconception_id": "BC-MIS-04004",
+    "text": "which one to differentiate is decided by guesswork"
+   },
+   "delivery": {
+    "mode": "step_reveal",
+    "reason": "rule 1",
+    "sources": []
+   }
+  },
+  {
+   "id": "LSN-CON-04003#prq-BC-PRQ-04008",
+   "type": "prerequisite_bridge",
+   "bands": [
+    "low",
+    "mid"
+   ],
+   "skills": [
+    "BC-SKL-04006",
+    "BC-SKL-04007"
+   ],
+   "sources": [
+    "BC-PRQ-04008"
+   ],
+   "evidence_tag": "inferred",
+   "prerequisite_id": "BC-PRQ-04008",
+   "text": "Name each quantity, its unit, and whether it varies; here, which letter is position and which is velocity. Unnamed, the count of derivatives cannot begin."
+  }
+ ],
+ "checks": [
+  {
+   "id": "LSN-CON-04003#chk-1",
+   "check_kind": "completion",
+   "bands": [
+    "low",
+    "mid"
+   ],
+   "format": "short_answer",
+   "archetype_id": "BC-QA-04003",
+   "parameter_draw": {
+    "cubic": 1,
+    "quadratic": -3,
+    "free": 2,
+    "speed_value": 4,
+    "instant": 2,
+    "given": "position",
+    "heading": "left"
+   },
+   "completes": "LSN-CON-04003#s5",
+   "stem": {
+    "text": "\\(v(t)=3t^2-6t-4\\) and \\(a(t)=6t-6\\). Give \\(v(2)\\) and \\(a(2)\\).",
+    "command_verb": "give"
+   },
+   "answer_key": {
+    "form": "symbolic",
+    "mathjson": [
+     "Set",
+     [
+      "Equal",
+      "a",
+      6
+     ],
+     [
+      "Equal",
+      "v",
+      -4
+     ]
+    ]
+   },
+   "worked_solution": [
+    {
+     "step": 1,
+     "text": "v(t).",
+     "mathjson": [
+      "Add",
+      -4,
+      [
+       "Multiply",
+       -6,
+       "t"
+      ],
+      [
+       "Multiply",
+       3,
+       [
+        "Power",
+        "t",
+        2
+       ]
+      ]
+     ],
+     "relation": "new"
+    },
+    {
+     "step": 2,
+     "text": "v(2).",
+     "mathjson": -4,
+     "relation": "evaluate",
+     "subs": {
+      "t": "2"
+     }
+    },
+    {
+     "step": 3,
+     "text": "a(t).",
+     "mathjson": [
+      "Add",
+      -6,
+      [
+       "Multiply",
+       6,
+       "t"
+      ]
+     ],
+     "relation": "new"
+    },
+    {
+     "step": 4,
+     "text": "a(2).",
+     "mathjson": 6,
+     "relation": "evaluate",
+     "subs": {
+      "t": "2"
+     }
+    },
+    {
+     "step": 5,
+     "text": "Both.",
+     "mathjson": [
+      "Set",
+      [
+       "Equal",
+       "a",
+       6
+      ],
+      [
+       "Equal",
+       "v",
+       -4
+      ]
+     ],
+     "relation": "new"
+    }
+   ],
+   "calculator_status": "no_calculator",
+   "representation": "BC-REP-01",
+   "skills": [
+    "BC-SKL-04006",
+    "BC-SKL-04007"
+   ]
+  },
+  {
+   "id": "LSN-CON-04003#chk-2",
+   "check_kind": "isomorph",
+   "bands": [
+    "low",
+    "mid"
+   ],
+   "format": "short_answer",
+   "archetype_id": "BC-QA-04003",
+   "parameter_draw": {
+    "cubic": -1,
+    "quadratic": 2,
+    "free": 3,
+    "speed_value": 5,
+    "instant": 1,
+    "given": "velocity",
+    "heading": "left"
+   },
+   "stem": {
+    "text": "A particle's velocity is \\(v(t)=-t^3+2t^2+3t-9\\). Find its acceleration at \\(t=1\\).",
+    "command_verb": "find"
+   },
+   "answer_key": {
+    "form": "numeric",
+    "mathjson": 4
+   },
+   "worked_solution": [
+    {
+     "step": 1,
+     "text": "Velocity given.",
+     "mathjson": [
+      "Add",
+      -9,
+      [
+       "Multiply",
+       -1,
+       [
+        "Power",
+        "t",
+        3
+       ]
+      ],
+      [
+       "Multiply",
+       2,
+       [
+        "Power",
+        "t",
+        2
+       ]
+      ],
+      [
+       "Multiply",
+       3,
+       "t"
+      ]
+     ],
+     "relation": "new"
+    },
+    {
+     "step": 2,
+     "text": "One derivative.",
+     "mathjson": [
+      "Add",
+      3,
+      [
+       "Multiply",
+       -3,
+       [
+        "Power",
+        "t",
+        2
+       ]
+      ],
+      [
+       "Multiply",
+       4,
+       "t"
+      ]
+     ],
+     "relation": "differentiate",
+     "variable": "t"
+    },
+    {
+     "step": 3,
+     "text": "At t = 1.",
+     "mathjson": 4,
+     "relation": "evaluate",
+     "subs": {
+      "t": "1"
+     }
+    }
+   ],
+   "calculator_status": "no_calculator",
+   "representation": "BC-REP-01",
+   "skills": [
+    "BC-SKL-04007"
+   ]
+  }
+ ],
+ "refresher": [
+  "LSN-CON-04003#s2",
+  "LSN-CON-04003#err-BC-ERR-04006",
+  "LSN-CON-04003#s5"
+ ],
+ "provenance": {
+  "author": "tools/lesson_transcribe.py",
+  "prompt_version": "generator/lesson_v1",
+  "design_path": "docs/lessons/unit-04/LSN-CON-04003.md",
+  "signed_off_by": "claude-opus-5-5",
+  "signed_off_at": "2026-09-29",
+  "not_human": true
+ }
+}

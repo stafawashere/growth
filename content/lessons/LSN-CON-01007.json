@@ -1,0 +1,799 @@
+{
+ "id": "LSN-CON-01007",
+ "version": 1,
+ "kind": "concept",
+ "target_id": "BC-CON-01007",
+ "status": "signed_off",
+ "snapshot_digest": "a6a8ec9d3f59ab8f712e33d30cc22fc64bf2c478fbe7312e3e3118d319c6a42f",
+ "source_digest": "300448ac028142aa148a0db68a3dfae2fa834fa610aa7feef218aa50cce01af1",
+ "read_minutes": {
+  "full": 4.4,
+  "brief": 3.0
+ },
+ "word_count": {
+  "full": 549,
+  "brief": 380
+ },
+ "sections": [
+  {
+   "id": "LSN-CON-01007#s1",
+   "type": "orientation",
+   "bands": [
+    "low",
+    "mid"
+   ],
+   "skills": [
+    "BC-SKL-01018",
+    "BC-SKL-01019",
+    "BC-SKL-01020",
+    "BC-SKL-01021",
+    "BC-SKL-01022"
+   ],
+   "sources": [
+    "BC-CON-01007",
+    "research/units/unit-01-limits-continuity.md#1.5 Determining Limits Using Algebraic Properties of Limits"
+   ],
+   "evidence_tag": "inferred",
+   "text": "A response finds the limit of a sum, product, quotient or composite from the limits of its pieces and checks each theorem's condition. Stems set limits beside differing table values.",
+   "delivery": {
+    "mode": "table",
+    "reason": "rule 4: BC-REP-03 on BC-SKL-01018, 01019, 01020; unit README delivery map",
+    "sources": [
+     "BC-SKL-01018",
+     "BC-SKL-01019",
+     "BC-SKL-01020"
+    ],
+    "spec": {
+     "kind": "table",
+     "columns": [
+      "function",
+      "limit at x = 1",
+      "table value at x = 1"
+     ],
+     "rows": [
+      [
+       "f",
+       "2",
+       "4"
+      ],
+      [
+       "g",
+       "3",
+       "-1"
+      ]
+     ],
+     "labels": [
+      {
+       "text": "theorems use this column: limits",
+       "placement": "inside"
+      }
+     ]
+    },
+    "fallback": "the two rows as static text",
+    "keyboard": "no control; cells reached in reading order with Tab"
+   }
+  },
+  {
+   "id": "LSN-CON-01007#s2",
+   "type": "key_ideas",
+   "bands": [
+    "low",
+    "mid"
+   ],
+   "skills": [
+    "BC-SKL-01018",
+    "BC-SKL-01019",
+    "BC-SKL-01020",
+    "BC-SKL-01021",
+    "BC-SKL-01022"
+   ],
+   "sources": [
+    "BC-EK-LIM-1D2",
+    "ced:42",
+    "research/units/unit-01-limits-continuity.md#1.5 Determining Limits Using Algebraic Properties of Limits"
+   ],
+   "evidence_tag": "inferred",
+   "ek_id": "BC-EK-LIM-1D2",
+   "depth": "core",
+   "text": "Limits pass through sums, differences, products, quotients and composites. A quotient needs a nonzero denominator limit; a composite, an outer function continuous at the inner limit.",
+   "notation": "limit theorems",
+   "delivery": {
+    "mode": "table",
+    "reason": "rule 4: BC-REP-03 on BC-SKL-01018 to 01020, the table of supplied limits; the conditions sit as its last rows",
+    "sources": [
+     "BC-SKL-01018",
+     "BC-SKL-01020",
+     "BC-SKL-01022"
+    ],
+    "spec": {
+     "kind": "table",
+     "columns": [
+      "combination",
+      "limit",
+      "condition"
+     ],
+     "rows": [
+      [
+       "f + g",
+       "L + M",
+       "none"
+      ],
+      [
+       "f g",
+       "L M",
+       "none"
+      ],
+      [
+       "f / g",
+       "L / M",
+       "M not 0"
+      ],
+      [
+       "h(f)",
+       "h(L)",
+       "h continuous at L"
+      ]
+     ],
+     "labels": [
+      {
+       "text": "L, M: limits of f and g",
+       "placement": "inside"
+      }
+     ]
+    },
+    "fallback": "the four rows as static text",
+    "keyboard": "no control; cells reached in reading order with Tab"
+   }
+  },
+  {
+   "id": "LSN-CON-01007#s3",
+   "type": "strategy",
+   "bands": [
+    "low",
+    "mid"
+   ],
+   "skills": [
+    "BC-SKL-01018",
+    "BC-SKL-01019",
+    "BC-SKL-01020",
+    "BC-SKL-01022"
+   ],
+   "sources": [
+    "BC-QA-01003"
+   ],
+   "evidence_tag": "verified",
+   "archetype_id": "BC-QA-01003",
+   "cue": "Limits of f and g supplied at one input; the limit of a combination asked.",
+   "method": "First line: record the supplied limits.",
+   "rival": "A zero denominator limit divided by (BC-ERR-01006), or the composite reversed (BC-ERR-01007).",
+   "separating_feature": "Theorems take limits only; a quotient needs a nonzero denominator."
+  },
+  {
+   "id": "LSN-CON-01007#s4",
+   "type": "strategy",
+   "bands": [
+    "low",
+    "mid"
+   ],
+   "skills": [
+    "BC-SKL-01021"
+   ],
+   "sources": [
+    "BC-QA-01014"
+   ],
+   "evidence_tag": "inferred",
+   "archetype_id": "BC-QA-01014",
+   "cue": "Several limits, each to be matched to a method and evaluated.",
+   "method": "First line: substitute the target input into each expression.",
+   "rival": "The quotient of limits taken with a zero denominator (BC-ERR-01006).",
+   "separating_feature": "A real value settles the limit; zero over zero sends it to rewriting."
+  },
+  {
+   "id": "LSN-CON-01007#s5",
+   "type": "worked_example",
+   "bands": [
+    "low",
+    "mid"
+   ],
+   "skills": [
+    "BC-SKL-01018",
+    "BC-SKL-01019",
+    "BC-SKL-01020",
+    "BC-SKL-01022"
+   ],
+   "sources": [
+    "BC-QA-01003"
+   ],
+   "evidence_tag": "inferred",
+   "archetype_id": "BC-QA-01003",
+   "parameter_draw": {
+    "point": 1,
+    "shift": 2,
+    "limit_f": 2,
+    "limit_g": 3,
+    "table_f": [
+     0,
+     4,
+     1,
+     -2,
+     3,
+     1
+    ],
+    "table_g": [
+     1,
+     -1,
+     2,
+     3,
+     -2,
+     4
+    ],
+    "justify": "bare"
+   },
+   "problem": {
+    "text": "Limits at x = 1: f 2, g 3. Table: f(1) = 4, g(1) = -1, f(3) = -2. With h(x) = x^2 + 2, find the limit of h(f(x))/g(x) at x = 1.",
+    "command_verb": "find"
+   },
+   "calculator_status": "no_calculator",
+   "steps": [
+    {
+     "cue": "The stem supplies limits at 1: 2 for f, 3 for g.",
+     "why": "Limits, not table values, feed the theorems."
+    },
+    {
+     "cue": "A quotient: check the denominator limit.",
+     "why": "3 is not 0: the quotient theorem applies."
+    },
+    {
+     "cue": "h is continuous, so the composite gives h(2).",
+     "why": "The outer function takes the inner limit.",
+     "expression": 2,
+     "relation": "new"
+    },
+    {
+     "cue": "The stem asks for a value.",
+     "why": "6 over 3.",
+     "expression": 2,
+     "point_type_id": "BC-PT-99004",
+     "relation": "equivalent"
+    }
+   ],
+   "answer": {
+    "form": "numeric",
+    "mathjson": 2
+   },
+   "delivery": {
+    "mode": "step_reveal",
+    "reason": "rule 1; the supplied limits and table values render as a table in the problem",
+    "sources": [
+     "BC-SKL-01020"
+    ]
+   }
+  },
+  {
+   "id": "LSN-CON-01007#s6",
+   "type": "worked_example",
+   "bands": [
+    "low"
+   ],
+   "skills": [
+    "BC-SKL-01021"
+   ],
+   "sources": [
+    "BC-QA-01014"
+   ],
+   "evidence_tag": "inferred",
+   "archetype_id": "BC-QA-01014",
+   "parameter_draw": {
+    "target": 2,
+    "top_root": -1,
+    "bottom_root": 3,
+    "root_value": 1,
+    "lead_top": 1,
+    "lead_bottom": 1,
+    "form": "factor",
+    "pole_power": 1
+   },
+   "problem": {
+    "text": "Find the limit of (x^2 - x - 2)/(x^2 - 5x + 6) as x approaches 2.",
+    "command_verb": "find"
+   },
+   "calculator_status": "no_calculator",
+   "steps": [
+    {
+     "cue": "Substitute 2: numerator 0, denominator 0.",
+     "why": "The denominator limit is 0, so the quotient theorem does not apply."
+    },
+    {
+     "cue": "Zero over zero calls for rewriting.",
+     "why": "Both factor with x - 2.",
+     "expression": [
+      "Multiply",
+      [
+       "Power",
+       [
+        "Add",
+        6,
+        [
+         "Power",
+         "x",
+         2
+        ],
+        [
+         "Multiply",
+         -5,
+         "x"
+        ]
+       ],
+       -1
+      ],
+      [
+       "Add",
+       -2,
+       [
+        "Power",
+        "x",
+        2
+       ],
+       [
+        "Multiply",
+        -1,
+        "x"
+       ]
+      ]
+     ],
+     "relation": "new"
+    },
+    {
+     "cue": "Cancel x - 2, valid for x not 2.",
+     "why": "The limit ignores x = 2 itself.",
+     "expression": [
+      "Multiply",
+      [
+       "Power",
+       [
+        "Add",
+        -3,
+        "x"
+       ],
+       -1
+      ],
+      [
+       "Add",
+       1,
+       "x"
+      ]
+     ],
+     "relation": "equivalent"
+    },
+    {
+     "cue": "Now substitution gives a real value.",
+     "why": "3 over -1.",
+     "expression": -3,
+     "relation": "limit",
+     "variable": "x",
+     "point": "2"
+    }
+   ],
+   "answer": {
+    "form": "numeric",
+    "mathjson": -3
+   },
+   "delivery": {
+    "mode": "step_reveal",
+    "reason": "rule 1",
+    "sources": []
+   }
+  },
+  {
+   "id": "LSN-CON-01007#s7",
+   "type": "what_a_reader_scores",
+   "bands": [
+    "low",
+    "mid"
+   ],
+   "skills": [
+    "BC-SKL-01018",
+    "BC-SKL-01019",
+    "BC-SKL-01020",
+    "BC-SKL-01022"
+   ],
+   "sources": [
+    "BC-PT-99004"
+   ],
+   "evidence_tag": "verified",
+   "example_id": "LSN-CON-01007#s5",
+   "lines": [
+    {
+     "point_type_id": "BC-PT-99004",
+     "text": "Answer with or without supporting work. Earned by: The correct value on its own, with no supporting work required (sg-25:3, sg-26:4). Not earned by: A value outside the accepted precision, or a value inconsistent with a required earlier step where the rubric imposes one. Precision: A reported decimal answer must be accurate to three places after the decimal point, rounded or truncated; at most one point per question is lost to inappropriate rounding (sg-25:2, sg-26:2). sg-26:4 also accepts a stated rounding to the nearest integer and several truncations."
+    }
+   ]
+  },
+  {
+   "id": "LSN-CON-01007#err-BC-ERR-01001",
+   "type": "common_error",
+   "bands": [
+    "low",
+    "mid"
+   ],
+   "skills": [
+    "BC-SKL-01018",
+    "BC-SKL-01019",
+    "BC-SKL-01020"
+   ],
+   "sources": [
+    "BC-ERR-01001"
+   ],
+   "evidence_tag": "inferred",
+   "error_id": "BC-ERR-01001",
+   "observed_behavior": "The response gives the plotted or defined value of the function at the input in place of the value the function approaches there.",
+   "scoring_consequence": "The reading point is lost, and in a continuity part the comparison of limit with value collapses.",
+   "wrong_step": {
+    "text": "Table values 4, -1 used: -18.",
+    "expression": -18
+   },
+   "right_step": {
+    "text": "Limits 2 and 3: 2.",
+    "expression": 2
+   },
+   "relation": "distinct",
+   "delivery": {
+    "mode": "step_reveal",
+    "reason": "rule 1",
+    "sources": []
+   }
+  },
+  {
+   "id": "LSN-CON-01007#err-BC-ERR-01006",
+   "type": "common_error",
+   "bands": [
+    "low",
+    "mid"
+   ],
+   "skills": [
+    "BC-SKL-01020"
+   ],
+   "sources": [
+    "BC-ERR-01006",
+    "BC-MIS-01005"
+   ],
+   "evidence_tag": "inferred",
+   "error_id": "BC-ERR-01006",
+   "observed_behavior": "The response divides the limit of the numerator by the limit of the denominator although the denominator limit is zero.",
+   "scoring_consequence": "The value point is lost and any justification naming the theorem is incorrect.",
+   "wrong_step": {
+    "text": "f/(g - 3) at 1 as 2/0.",
+    "expression": "ComplexInfinity"
+   },
+   "right_step": {
+    "text": "Denominator limit 0: theorem fails.",
+    "expression": 0
+   },
+   "relation": "distinct",
+   "possible_reason": {
+    "misconception_id": "BC-MIS-01005",
+    "text": "without the denominator condition"
+   },
+   "delivery": {
+    "mode": "step_reveal",
+    "reason": "rule 1",
+    "sources": []
+   }
+  },
+  {
+   "id": "LSN-CON-01007#err-BC-ERR-01007",
+   "type": "common_error",
+   "bands": [
+    "low",
+    "mid"
+   ],
+   "skills": [
+    "BC-SKL-01022"
+   ],
+   "sources": [
+    "BC-ERR-01007",
+    "BC-MIS-01005"
+   ],
+   "evidence_tag": "inferred",
+   "error_id": "BC-ERR-01007",
+   "observed_behavior": "The response applies the inner function to the limit of the outer function rather than the outer function to the limit of the inner.",
+   "scoring_consequence": "The value point is lost.",
+   "wrong_step": {
+    "text": "f(h(1)) = f(3) = -2, over 3.",
+    "expression": [
+     "Rational",
+     -2,
+     3
+    ]
+   },
+   "right_step": {
+    "text": "h at the limit of f, over 3: 2.",
+    "expression": 2
+   },
+   "relation": "distinct",
+   "possible_reason": {
+    "misconception_id": "BC-MIS-01005",
+    "text": "applies the quotient and composite theorems as formal rules"
+   },
+   "delivery": {
+    "mode": "step_reveal",
+    "reason": "rule 1",
+    "sources": []
+   }
+  },
+  {
+   "id": "LSN-CON-01007#prq-BC-PRQ-01008",
+   "type": "prerequisite_bridge",
+   "bands": [
+    "low",
+    "mid"
+   ],
+   "skills": [
+    "BC-SKL-01021"
+   ],
+   "sources": [
+    "BC-PRQ-01008"
+   ],
+   "evidence_tag": "inferred",
+   "prerequisite_id": "BC-PRQ-01008",
+   "text": "Substitution needs the input inside the domain. The failure: continuity claimed at inputs outside it."
+  },
+  {
+   "id": "LSN-CON-01007#prq-BC-PRQ-06005",
+   "type": "prerequisite_bridge",
+   "bands": [
+    "low",
+    "mid"
+   ],
+   "skills": [
+    "BC-SKL-01018",
+    "BC-SKL-01019",
+    "BC-SKL-01020",
+    "BC-SKL-01022"
+   ],
+   "sources": [
+    "BC-PRQ-06005"
+   ],
+   "evidence_tag": "inferred",
+   "prerequisite_id": "BC-PRQ-06005",
+   "text": "Reading f(g(x)) at an input. The failure: a value read for the wrong input."
+  }
+ ],
+ "checks": [
+  {
+   "id": "LSN-CON-01007#chk-1",
+   "check_kind": "completion",
+   "bands": [
+    "low",
+    "mid"
+   ],
+   "format": "short_answer",
+   "archetype_id": "BC-QA-01003",
+   "parameter_draw": {
+    "point": 1,
+    "shift": 2,
+    "limit_f": 2,
+    "limit_g": 3,
+    "table_f": [
+     0,
+     4,
+     1,
+     -2,
+     3,
+     1
+    ],
+    "table_g": [
+     1,
+     -1,
+     2,
+     3,
+     -2,
+     4
+    ],
+    "justify": "bare"
+   },
+   "completes": "LSN-CON-01007#s5",
+   "stem": {
+    "text": "The theorems give the limit as (2^2 + 2)/3. Find its value.",
+    "command_verb": "find"
+   },
+   "answer_key": {
+    "form": "numeric",
+    "mathjson": 2
+   },
+   "worked_solution": [
+    {
+     "step": 1,
+     "text": "(2^2 + 2)/3.",
+     "mathjson": 2,
+     "relation": "new"
+    },
+    {
+     "step": 2,
+     "text": "That is 2.",
+     "mathjson": 2,
+     "relation": "equivalent"
+    }
+   ],
+   "calculator_status": "no_calculator",
+   "representation": "BC-REP-01",
+   "skills": [
+    "BC-SKL-01020",
+    "BC-SKL-01022"
+   ]
+  },
+  {
+   "id": "LSN-CON-01007#chk-2",
+   "check_kind": "isomorph",
+   "bands": [
+    "low",
+    "mid"
+   ],
+   "format": "short_answer",
+   "archetype_id": "BC-QA-01003",
+   "parameter_draw": {
+    "point": 1,
+    "shift": 1,
+    "limit_f": -2,
+    "limit_g": -1,
+    "table_f": [
+     3,
+     0,
+     1,
+     2,
+     -4,
+     4
+    ],
+    "table_g": [
+     1,
+     2,
+     -3,
+     1,
+     4,
+     -2
+    ],
+    "justify": "bare"
+   },
+   "stem": {
+    "text": "Limits at 1: f -2, g -1. Table: f(1) = 0, g(1) = 2. With h(x) = x^2 + 1, find the limit of h(f(x))/g(x) at 1.",
+    "command_verb": "find"
+   },
+   "answer_key": {
+    "form": "numeric",
+    "mathjson": -5
+   },
+   "worked_solution": [
+    {
+     "step": 1,
+     "text": "h(-2) over -1.",
+     "mathjson": -5,
+     "relation": "new"
+    },
+    {
+     "step": 2,
+     "text": "That is -5.",
+     "mathjson": -5,
+     "relation": "equivalent"
+    }
+   ],
+   "calculator_status": "no_calculator",
+   "representation": "BC-REP-01",
+   "skills": [
+    "BC-SKL-01020",
+    "BC-SKL-01022"
+   ]
+  },
+  {
+   "id": "LSN-CON-01007#chk-3",
+   "check_kind": "mcq",
+   "bands": [
+    "low"
+   ],
+   "format": "mcq",
+   "archetype_id": "BC-QA-01003",
+   "parameter_draw": {
+    "point": 2,
+    "shift": -3,
+    "limit_f": 3,
+    "limit_g": 2,
+    "table_f": [
+     1,
+     2,
+     -1,
+     4,
+     0,
+     -3
+    ],
+    "table_g": [
+     2,
+     1,
+     4,
+     -3,
+     1,
+     2
+    ],
+    "justify": "bare"
+   },
+   "stem": {
+    "text": "Limits at 2: f 3, g 2. Table: f(1) = 2, f(2) = -1, g(2) = 4. With h(x) = x^2 - 3, find the limit of h(f(x))/g(x) at x = 2.",
+    "command_verb": "find"
+   },
+   "answer_key": {
+    "form": "numeric",
+    "mathjson": 3
+   },
+   "worked_solution": [
+    {
+     "step": 1,
+     "text": "h(3) over 2.",
+     "mathjson": 3,
+     "relation": "new"
+    },
+    {
+     "step": 2,
+     "text": "That is 3.",
+     "mathjson": 3,
+     "relation": "equivalent"
+    }
+   ],
+   "options": [
+    {
+     "id": "A",
+     "is_key": false,
+     "error_path": "BC-ERR-01001",
+     "value": [
+      "Rational",
+      -1,
+      2
+     ],
+     "derivation": "table values f(2) = -1 and g(2) = 4 used: (1 - 3)/4"
+    },
+    {
+     "id": "B",
+     "is_key": false,
+     "error_path": "BC-ERR-01001",
+     "value": [
+      "Rational",
+      3,
+      2
+     ],
+     "derivation": "table value g(2) = 4 used for the denominator: 6/4"
+    },
+    {
+     "id": "C",
+     "is_key": false,
+     "error_path": "BC-ERR-01007",
+     "value": 1,
+     "derivation": "composition reversed: f(h(2)) = f(1) = 2, over 2"
+    },
+    {
+     "id": "D",
+     "is_key": true,
+     "error_path": null,
+     "value": 3
+    }
+   ],
+   "calculator_status": "no_calculator",
+   "representation": "BC-REP-01",
+   "skills": [
+    "BC-SKL-01020",
+    "BC-SKL-01022"
+   ]
+  }
+ ],
+ "refresher": [
+  "LSN-CON-01007#s2",
+  "LSN-CON-01007#err-BC-ERR-01001",
+  "LSN-CON-01007#err-BC-ERR-01006",
+  "LSN-CON-01007#err-BC-ERR-01007",
+  "LSN-CON-01007#s5"
+ ],
+ "provenance": {
+  "author": "tools/lesson_transcribe.py",
+  "prompt_version": "generator/lesson_v1",
+  "design_path": "docs/lessons/unit-01/LSN-CON-01007.md",
+  "signed_off_by": "claude-opus-5-5",
+  "signed_off_at": "2026-09-29",
+  "not_human": true
+ }
+}

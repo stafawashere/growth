@@ -1,0 +1,1295 @@
+{
+ "id": "LSN-CON-06018",
+ "version": 1,
+ "kind": "concept",
+ "target_id": "BC-CON-06018",
+ "status": "signed_off",
+ "snapshot_digest": "a6a8ec9d3f59ab8f712e33d30cc22fc64bf2c478fbe7312e3e3118d319c6a42f",
+ "source_digest": "563009d84d1a25d240d8c7b680dab17117815089e52ea79aa684049b206fb06a",
+ "read_minutes": {
+  "full": 3.7,
+  "brief": 2.9
+ },
+ "word_count": {
+  "full": 501,
+  "brief": 393
+ },
+ "sections": [
+  {
+   "id": "LSN-CON-06018#s1",
+   "type": "orientation",
+   "bands": [
+    "low",
+    "mid"
+   ],
+   "skills": [
+    "BC-SKL-06062",
+    "BC-SKL-06063",
+    "BC-SKL-06064",
+    "BC-SKL-06065"
+   ],
+   "sources": [
+    "BC-CON-06018",
+    "research/units/unit-06-integration-accumulation.md#6.12 Integrating Using Linear Partial Fractions"
+   ],
+   "evidence_tag": "inferred",
+   "text": "A proper rational integrand over distinct linear factors splits into simple fractions. A response factors, solves for the numerators, and writes each term as a constant times ln|factor|.",
+   "delivery": {
+    "mode": "text",
+    "reason": "rule 6: BC-REP-01 only on the concept's skills (unit README delivery map)",
+    "sources": [
+     "BC-SKL-06062"
+    ]
+   }
+  },
+  {
+   "id": "LSN-CON-06018#s2",
+   "type": "key_ideas",
+   "bands": [
+    "low",
+    "mid"
+   ],
+   "skills": [
+    "BC-SKL-06062",
+    "BC-SKL-06063",
+    "BC-SKL-06064",
+    "BC-SKL-06065"
+   ],
+   "sources": [
+    "BC-EK-FUN-6F1",
+    "ced:129",
+    "research/units/unit-06-integration-accumulation.md#6.12 Integrating Using Linear Partial Fractions"
+   ],
+   "evidence_tag": "inferred",
+   "ek_id": "BC-EK-FUN-6F1",
+   "depth": "core",
+   "text": "Factor the denominator into distinct linear factors, write one unknown numerator over each, clear denominators and solve. Each term integrates to a constant times ln|factor|, divided by the factor's leading coefficient.",
+   "notation": "A/(x - r) + B/(x - s)",
+   "delivery": {
+    "mode": "text",
+    "reason": "rule 6: a symbolic procedure with BC-REP-01 alone; no process, no figure-bearing representation",
+    "sources": [
+     "BC-SKL-06063",
+     "BC-SKL-06064"
+    ]
+   }
+  },
+  {
+   "id": "LSN-CON-06018#s3",
+   "type": "strategy",
+   "bands": [
+    "low",
+    "mid"
+   ],
+   "skills": [
+    "BC-SKL-06062",
+    "BC-SKL-06063",
+    "BC-SKL-06064",
+    "BC-SKL-06065"
+   ],
+   "sources": [
+    "BC-QA-06010"
+   ],
+   "evidence_tag": "verified",
+   "archetype_id": "BC-QA-06010",
+   "cue": "A rational function whose quadratic denominator factors into distinct linears; decomposition or logarithms asked.",
+   "method": "Factor the denominator.",
+   "rival": "Rival: decomposing an improper integrand without dividing (BC-ERR-06026).",
+   "separating_feature": "Compare degrees first: decompose only when the numerator's is lower."
+  },
+  {
+   "id": "LSN-CON-06018#s4",
+   "type": "worked_example",
+   "bands": [
+    "low",
+    "mid"
+   ],
+   "skills": [
+    "BC-SKL-06062",
+    "BC-SKL-06063",
+    "BC-SKL-06064",
+    "BC-SKL-06065"
+   ],
+   "sources": [
+    "BC-QA-06010"
+   ],
+   "evidence_tag": "inferred",
+   "archetype_id": "BC-QA-06010",
+   "parameter_draw": {
+    "degree": "proper",
+    "leading": 2,
+    "first_shift": 1,
+    "second_shift": -3,
+    "weight": -1
+   },
+   "problem": {
+    "text": "Find ∫ 7/(2x^2 - 5x - 3) dx.",
+    "command_verb": "find"
+   },
+   "calculator_status": "no_calculator",
+   "steps": [
+    {
+     "cue": "Degree 0 over degree 2: proper.",
+     "why": "2x^2 - 5x - 3 = (2x + 1)(x - 3), distinct factors."
+    },
+    {
+     "cue": "One numerator per factor: A/(2x + 1) + B/(x - 3).",
+     "why": "Decomposition applies.",
+     "expression": [
+      "Multiply",
+      7,
+      [
+       "Power",
+       [
+        "Add",
+        -3,
+        [
+         "Multiply",
+         -5,
+         "x"
+        ],
+        [
+         "Multiply",
+         2,
+         [
+          "Power",
+          "x",
+          2
+         ]
+        ]
+       ],
+       -1
+      ]
+     ],
+     "relation": "new"
+    },
+    {
+     "cue": "7 = A(x - 3) + B(2x + 1); x = 3 and x = -1/2.",
+     "why": "Each root clears one term: B = 1, A = -2.",
+     "expression": [
+      "Add",
+      [
+       "Power",
+       [
+        "Add",
+        -3,
+        "x"
+       ],
+       -1
+      ],
+      [
+       "Multiply",
+       -2,
+       [
+        "Power",
+        [
+         "Add",
+         1,
+         [
+          "Multiply",
+          2,
+          "x"
+         ]
+        ],
+        -1
+       ]
+      ]
+     ],
+     "relation": "equivalent"
+    },
+    {
+     "cue": "-2/(2x + 1) is derivative over function.",
+     "why": "Its 2 cancels: -ln|2x + 1|.",
+     "expression": [
+      "Add",
+      "C",
+      [
+       "Multiply",
+       -1,
+       [
+        "Ln",
+        [
+         "Add",
+         1,
+         [
+          "Multiply",
+          2,
+          "x"
+         ]
+        ]
+       ]
+      ],
+      [
+       "Ln",
+       [
+        "Add",
+        -3,
+        "x"
+       ]
+      ]
+     ],
+     "point_type_id": "BC-PT-99003",
+     "relation": "integrate",
+     "variable": "x"
+    },
+    {
+     "cue": "Report with bars.",
+     "why": "ln|x - 3| - ln|2x + 1| + C.",
+     "expression": [
+      "Add",
+      "C",
+      [
+       "Multiply",
+       -1,
+       [
+        "Ln",
+        [
+         "Add",
+         1,
+         [
+          "Multiply",
+          2,
+          "x"
+         ]
+        ]
+       ]
+      ],
+      [
+       "Ln",
+       [
+        "Add",
+        -3,
+        "x"
+       ]
+      ]
+     ],
+     "point_type_id": "BC-PT-99004",
+     "relation": "equivalent"
+    }
+   ],
+   "answer": {
+    "form": "symbolic",
+    "mathjson": [
+     "Add",
+     "C",
+     [
+      "Multiply",
+      -1,
+      [
+       "Ln",
+       [
+        "Add",
+        1,
+        [
+         "Multiply",
+         2,
+         "x"
+        ]
+       ]
+      ]
+     ],
+     [
+      "Ln",
+      [
+       "Add",
+       -3,
+       "x"
+      ]
+     ]
+    ]
+   },
+   "delivery": {
+    "mode": "step_reveal",
+    "reason": "rule 1",
+    "sources": []
+   }
+  },
+  {
+   "id": "LSN-CON-06018#s5",
+   "type": "what_a_reader_scores",
+   "bands": [
+    "low",
+    "mid"
+   ],
+   "skills": [
+    "BC-SKL-06062",
+    "BC-SKL-06063",
+    "BC-SKL-06064",
+    "BC-SKL-06065"
+   ],
+   "sources": [
+    "BC-PT-99003",
+    "BC-PT-99004"
+   ],
+   "evidence_tag": "verified",
+   "example_id": "LSN-CON-06018#s4",
+   "lines": [
+    {
+     "point_type_id": "BC-PT-99003",
+     "text": "Antiderivative. Earned by: A correct antiderivative of the presented integrand, with or without the constant of integration (sg-25:14). Not earned by: An antiderivative of the wrong form, or a jump from integral to value with no antiderivative shown (sg-26:18)."
+    },
+    {
+     "point_type_id": "BC-PT-99004",
+     "text": "Answer with or without supporting work. Earned by: The correct value on its own, with no supporting work required (sg-25:3, sg-26:4). Not earned by: A value outside the accepted precision, or a value inconsistent with a required earlier step where the rubric imposes one. Precision: A reported decimal answer must be accurate to three places after the decimal point, rounded or truncated; at most one point per question is lost to inappropriate rounding (sg-25:2, sg-26:2). sg-26:4 also accepts a stated rounding to the nearest integer and several truncations."
+    }
+   ]
+  },
+  {
+   "id": "LSN-CON-06018#err-BC-ERR-06019",
+   "type": "common_error",
+   "bands": [
+    "low",
+    "mid"
+   ],
+   "skills": [
+    "BC-SKL-06064"
+   ],
+   "sources": [
+    "BC-ERR-06019",
+    "BC-MIS-06016"
+   ],
+   "evidence_tag": "inferred",
+   "error_id": "BC-ERR-06019",
+   "observed_behavior": "The substitution is carried out without the reciprocal constant that du introduces.",
+   "scoring_consequence": "The antiderivative point is lost and the value point with it.",
+   "wrong_step": {
+    "text": "-2 ln|2x + 1|.",
+    "expression": [
+     "Add",
+     "C",
+     [
+      "Multiply",
+      -2,
+      [
+       "Ln",
+       [
+        "Add",
+        1,
+        [
+         "Multiply",
+         2,
+         "x"
+        ]
+       ]
+      ]
+     ],
+     [
+      "Ln",
+      [
+       "Add",
+       -3,
+       "x"
+      ]
+     ]
+    ]
+   },
+   "right_step": {
+    "text": "-ln|2x + 1|.",
+    "expression": [
+     "Add",
+     "C",
+     [
+      "Multiply",
+      -1,
+      [
+       "Ln",
+       [
+        "Add",
+        1,
+        [
+         "Multiply",
+         2,
+         "x"
+        ]
+       ]
+      ]
+     ],
+     [
+      "Ln",
+      [
+       "Add",
+       -3,
+       "x"
+      ]
+     ]
+    ]
+   },
+   "relation": "distinct",
+   "possible_reason": {
+    "misconception_id": "BC-MIS-06016",
+    "text": "differentials carry over unchanged"
+   },
+   "delivery": {
+    "mode": "step_reveal",
+    "reason": "rule 1",
+    "sources": []
+   }
+  },
+  {
+   "id": "LSN-CON-06018#err-BC-ERR-06022",
+   "type": "common_error",
+   "bands": [
+    "low",
+    "mid"
+   ],
+   "skills": [
+    "BC-SKL-06064"
+   ],
+   "sources": [
+    "BC-ERR-06022",
+    "BC-MIS-06019"
+   ],
+   "evidence_tag": "inferred",
+   "error_id": "BC-ERR-06022",
+   "observed_behavior": "The response antidifferentiates each factor of a product and multiplies the results.",
+   "scoring_consequence": "Neither the u and dv point nor the expression point is earned (sg-23:18, sg-24:18).",
+   "wrong_step": {
+    "text": "7 times ln-factors multiplied.",
+    "expression": [
+     "Multiply",
+     [
+      "Rational",
+      7,
+      2
+     ],
+     [
+      "Ln",
+      [
+       "Add",
+       1,
+       [
+        "Multiply",
+        2,
+        "x"
+       ]
+      ]
+     ],
+     [
+      "Ln",
+      [
+       "Add",
+       -3,
+       "x"
+      ]
+     ]
+    ]
+   },
+   "right_step": {
+    "text": "Decomposed first.",
+    "expression": [
+     "Add",
+     "C",
+     [
+      "Multiply",
+      -1,
+      [
+       "Ln",
+       [
+        "Add",
+        1,
+        [
+         "Multiply",
+         2,
+         "x"
+        ]
+       ]
+      ]
+     ],
+     [
+      "Ln",
+      [
+       "Add",
+       -3,
+       "x"
+      ]
+     ]
+    ]
+   },
+   "relation": "distinct",
+   "possible_reason": {
+    "misconception_id": "BC-MIS-06019",
+    "text": "each factor is antidifferentiated on its own"
+   },
+   "delivery": {
+    "mode": "step_reveal",
+    "reason": "rule 1",
+    "sources": []
+   }
+  },
+  {
+   "id": "LSN-CON-06018#err-BC-ERR-06026",
+   "type": "common_error",
+   "bands": [
+    "low",
+    "mid"
+   ],
+   "skills": [
+    "BC-SKL-06062"
+   ],
+   "sources": [
+    "BC-ERR-06026",
+    "BC-MIS-06022"
+   ],
+   "evidence_tag": "inferred",
+   "error_id": "BC-ERR-06026",
+   "observed_behavior": "A rational integrand whose numerator degree is at least the denominator degree is split into partial fractions directly.",
+   "scoring_consequence": "The decomposition cannot be solved consistently and the antiderivative point is not earned.",
+   "wrong_step": {
+    "text": "(2x^2 - 5x + 4)/(2x^2 - 5x - 3) split directly.",
+    "expression": [
+     "Add",
+     [
+      "Power",
+      [
+       "Add",
+       -3,
+       "x"
+      ],
+      -1
+     ],
+     [
+      "Multiply",
+      -2,
+      [
+       "Power",
+       [
+        "Add",
+        1,
+        [
+         "Multiply",
+         2,
+         "x"
+        ]
+       ],
+       -1
+      ]
+     ]
+    ]
+   },
+   "right_step": {
+    "text": "Divided first: 1 plus the fractions.",
+    "expression": [
+     "Add",
+     1,
+     [
+      "Power",
+      [
+       "Add",
+       -3,
+       "x"
+      ],
+      -1
+     ],
+     [
+      "Multiply",
+      -2,
+      [
+       "Power",
+       [
+        "Add",
+        1,
+        [
+         "Multiply",
+         2,
+         "x"
+        ]
+       ],
+       -1
+      ]
+     ]
+    ]
+   },
+   "relation": "distinct",
+   "possible_reason": {
+    "misconception_id": "BC-MIS-06022",
+    "text": "selects a technique from a visual resemblance to a worked example"
+   },
+   "delivery": {
+    "mode": "step_reveal",
+    "reason": "rule 1",
+    "sources": []
+   }
+  },
+  {
+   "id": "LSN-CON-06018#err-BC-ERR-07030",
+   "type": "common_error",
+   "bands": [
+    "low",
+    "mid"
+   ],
+   "skills": [
+    "BC-SKL-06064"
+   ],
+   "sources": [
+    "BC-ERR-07030",
+    "BC-MIS-07018"
+   ],
+   "evidence_tag": "inferred",
+   "error_id": "BC-ERR-07030",
+   "observed_behavior": "The response removes an absolute value from a logarithm without using the initial condition or a stated bound to decide the sign.",
+   "scoring_consequence": "The branch may contradict the initial condition, which costs the final solving point.",
+   "wrong_step": {
+    "text": "Bars dropped with no stated bound.",
+    "expression": [
+     "Add",
+     "C",
+     [
+      "Multiply",
+      -1,
+      [
+       "Ln",
+       [
+        "Add",
+        1,
+        [
+         "Multiply",
+         2,
+         "x"
+        ]
+       ]
+      ]
+     ],
+     [
+      "Ln",
+      [
+       "Add",
+       -3,
+       "x"
+      ]
+     ]
+    ]
+   },
+   "right_step": {
+    "text": "Bars kept.",
+    "expression": [
+     "Add",
+     "C",
+     [
+      "Multiply",
+      -1,
+      [
+       "Ln",
+       [
+        "Abs",
+        [
+         "Add",
+         1,
+         [
+          "Multiply",
+          2,
+          "x"
+         ]
+        ]
+       ]
+      ]
+     ],
+     [
+      "Ln",
+      [
+       "Abs",
+       [
+        "Add",
+        -3,
+        "x"
+       ]
+      ]
+     ]
+    ]
+   },
+   "relation": "distinct",
+   "possible_reason": {
+    "misconception_id": "BC-MIS-07018",
+    "text": "removes an absolute value by habit"
+   },
+   "delivery": {
+    "mode": "step_reveal",
+    "reason": "rule 1",
+    "sources": []
+   }
+  },
+  {
+   "id": "LSN-CON-06018#prq-BC-PRQ-06003",
+   "type": "prerequisite_bridge",
+   "bands": [
+    "low",
+    "mid"
+   ],
+   "skills": [
+    "BC-SKL-06064",
+    "BC-SKL-06065"
+   ],
+   "sources": [
+    "BC-PRQ-06003"
+   ],
+   "evidence_tag": "inferred",
+   "prerequisite_id": "BC-PRQ-06003",
+   "text": "ln of a linear factor carries absolute value bars."
+  },
+  {
+   "id": "LSN-CON-06018#prq-BC-PRQ-06011",
+   "type": "prerequisite_bridge",
+   "bands": [
+    "low",
+    "mid"
+   ],
+   "skills": [
+    "BC-SKL-06063"
+   ],
+   "sources": [
+    "BC-PRQ-06011"
+   ],
+   "evidence_tag": "inferred",
+   "prerequisite_id": "BC-PRQ-06011",
+   "text": "Clear denominators, then substitute each root to solve for the numerators."
+  }
+ ],
+ "checks": [
+  {
+   "id": "LSN-CON-06018#chk-1",
+   "check_kind": "completion",
+   "bands": [
+    "low",
+    "mid"
+   ],
+   "format": "short_answer",
+   "archetype_id": "BC-QA-06010",
+   "parameter_draw": {
+    "degree": "proper",
+    "leading": 2,
+    "first_shift": 1,
+    "second_shift": -3,
+    "weight": -1
+   },
+   "completes": "LSN-CON-06018#s4",
+   "stem": {
+    "text": "7/(2x^2 - 5x - 3) = -2/(2x + 1) + 1/(x - 3). Antidifferentiate.",
+    "command_verb": "find"
+   },
+   "answer_key": {
+    "form": "symbolic",
+    "mathjson": [
+     "Add",
+     "C",
+     [
+      "Multiply",
+      -1,
+      [
+       "Ln",
+       [
+        "Add",
+        1,
+        [
+         "Multiply",
+         2,
+         "x"
+        ]
+       ]
+      ]
+     ],
+     [
+      "Ln",
+      [
+       "Add",
+       -3,
+       "x"
+      ]
+     ]
+    ]
+   },
+   "worked_solution": [
+    {
+     "step": 1,
+     "text": "Decomposition.",
+     "mathjson": [
+      "Add",
+      [
+       "Power",
+       [
+        "Add",
+        -3,
+        "x"
+       ],
+       -1
+      ],
+      [
+       "Multiply",
+       -2,
+       [
+        "Power",
+        [
+         "Add",
+         1,
+         [
+          "Multiply",
+          2,
+          "x"
+         ]
+        ],
+        -1
+       ]
+      ]
+     ],
+     "relation": "new"
+    },
+    {
+     "step": 2,
+     "text": "Logarithms.",
+     "mathjson": [
+      "Add",
+      "C",
+      [
+       "Multiply",
+       -1,
+       [
+        "Ln",
+        [
+         "Add",
+         1,
+         [
+          "Multiply",
+          2,
+          "x"
+         ]
+        ]
+       ]
+      ],
+      [
+       "Ln",
+       [
+        "Add",
+        -3,
+        "x"
+       ]
+      ]
+     ],
+     "relation": "integrate",
+     "variable": "x"
+    }
+   ],
+   "calculator_status": "no_calculator",
+   "representation": "BC-REP-01",
+   "skills": [
+    "BC-SKL-06064"
+   ]
+  },
+  {
+   "id": "LSN-CON-06018#chk-2",
+   "check_kind": "isomorph",
+   "bands": [
+    "low",
+    "mid"
+   ],
+   "format": "short_answer",
+   "archetype_id": "BC-QA-06010",
+   "parameter_draw": {
+    "degree": "proper",
+    "leading": 3,
+    "first_shift": 2,
+    "second_shift": -2,
+    "weight": -1
+   },
+   "stem": {
+    "text": "Find ∫ 8/(3x^2 - 4x - 4) dx.",
+    "command_verb": "find"
+   },
+   "answer_key": {
+    "form": "symbolic",
+    "mathjson": [
+     "Add",
+     "C",
+     [
+      "Multiply",
+      -1,
+      [
+       "Ln",
+       [
+        "Add",
+        2,
+        [
+         "Multiply",
+         3,
+         "x"
+        ]
+       ]
+      ]
+     ],
+     [
+      "Ln",
+      [
+       "Add",
+       -2,
+       "x"
+      ]
+     ]
+    ]
+   },
+   "worked_solution": [
+    {
+     "step": 1,
+     "text": "(3x + 2)(x - 2); A = -3, B = 1.",
+     "mathjson": [
+      "Add",
+      [
+       "Power",
+       [
+        "Add",
+        -2,
+        "x"
+       ],
+       -1
+      ],
+      [
+       "Multiply",
+       -3,
+       [
+        "Power",
+        [
+         "Add",
+         2,
+         [
+          "Multiply",
+          3,
+          "x"
+         ]
+        ],
+        -1
+       ]
+      ]
+     ],
+     "relation": "new"
+    },
+    {
+     "step": 2,
+     "text": "Logarithms.",
+     "mathjson": [
+      "Add",
+      "C",
+      [
+       "Multiply",
+       -1,
+       [
+        "Ln",
+        [
+         "Add",
+         2,
+         [
+          "Multiply",
+          3,
+          "x"
+         ]
+        ]
+       ]
+      ],
+      [
+       "Ln",
+       [
+        "Add",
+        -2,
+        "x"
+       ]
+      ]
+     ],
+     "relation": "integrate",
+     "variable": "x"
+    }
+   ],
+   "calculator_status": "no_calculator",
+   "representation": "BC-REP-01",
+   "skills": [
+    "BC-SKL-06062",
+    "BC-SKL-06063",
+    "BC-SKL-06064"
+   ]
+  },
+  {
+   "id": "LSN-CON-06018#chk-3",
+   "check_kind": "mcq",
+   "bands": [
+    "low"
+   ],
+   "format": "mcq",
+   "archetype_id": "BC-QA-06010",
+   "parameter_draw": {
+    "degree": "improper",
+    "leading": 2,
+    "first_shift": 3,
+    "second_shift": -2,
+    "weight": -1
+   },
+   "stem": {
+    "text": "∫ (2x^2 - x + 1)/(2x^2 - x - 6) dx =",
+    "command_verb": "identify"
+   },
+   "answer_key": {
+    "form": "symbolic",
+    "mathjson": [
+     "Add",
+     "C",
+     "x",
+     [
+      "Multiply",
+      -1,
+      [
+       "Ln",
+       [
+        "Add",
+        3,
+        [
+         "Multiply",
+         2,
+         "x"
+        ]
+       ]
+      ]
+     ],
+     [
+      "Ln",
+      [
+       "Add",
+       -2,
+       "x"
+      ]
+     ]
+    ]
+   },
+   "worked_solution": [
+    {
+     "step": 1,
+     "text": "Divide: 1 + 7/((2x + 3)(x - 2)).",
+     "mathjson": [
+      "Add",
+      1,
+      [
+       "Power",
+       [
+        "Add",
+        -2,
+        "x"
+       ],
+       -1
+      ],
+      [
+       "Multiply",
+       -2,
+       [
+        "Power",
+        [
+         "Add",
+         3,
+         [
+          "Multiply",
+          2,
+          "x"
+         ]
+        ],
+        -1
+       ]
+      ]
+     ],
+     "relation": "new"
+    },
+    {
+     "step": 2,
+     "text": "Antidifferentiate.",
+     "mathjson": [
+      "Add",
+      "C",
+      "x",
+      [
+       "Multiply",
+       -1,
+       [
+        "Ln",
+        [
+         "Add",
+         3,
+         [
+          "Multiply",
+          2,
+          "x"
+         ]
+        ]
+       ]
+      ],
+      [
+       "Ln",
+       [
+        "Add",
+        -2,
+        "x"
+       ]
+      ]
+     ],
+     "relation": "integrate",
+     "variable": "x"
+    }
+   ],
+   "options": [
+    {
+     "id": "A",
+     "is_key": false,
+     "error_path": "BC-ERR-06026",
+     "value": [
+      "Add",
+      "C",
+      [
+       "Multiply",
+       -1,
+       [
+        "Ln",
+        [
+         "Add",
+         3,
+         [
+          "Multiply",
+          2,
+          "x"
+         ]
+        ]
+       ]
+      ],
+      [
+       "Ln",
+       [
+        "Add",
+        -2,
+        "x"
+       ]
+      ]
+     ],
+     "derivation": "decomposed without dividing, the 1 lost"
+    },
+    {
+     "id": "B",
+     "is_key": false,
+     "error_path": "BC-ERR-06019",
+     "value": [
+      "Add",
+      "C",
+      "x",
+      [
+       "Multiply",
+       -2,
+       [
+        "Ln",
+        [
+         "Add",
+         3,
+         [
+          "Multiply",
+          2,
+          "x"
+         ]
+        ]
+       ]
+      ],
+      [
+       "Ln",
+       [
+        "Add",
+        -2,
+        "x"
+       ]
+      ]
+     ],
+     "derivation": "the 1/2 from the factor 2x + 3 dropped"
+    },
+    {
+     "id": "C",
+     "is_key": false,
+     "error_path": "BC-ERR-06022",
+     "value": [
+      "Add",
+      "C",
+      "x",
+      [
+       "Multiply",
+       [
+        "Rational",
+        7,
+        2
+       ],
+       [
+        "Ln",
+        [
+         "Add",
+         -2,
+         "x"
+        ]
+       ],
+       [
+        "Ln",
+        [
+         "Add",
+         3,
+         [
+          "Multiply",
+          2,
+          "x"
+         ]
+        ]
+       ]
+      ]
+     ],
+     "derivation": "the 7 and the two factors antidifferentiated apart and multiplied"
+    },
+    {
+     "id": "D",
+     "is_key": true,
+     "error_path": null,
+     "value": [
+      "Add",
+      "C",
+      "x",
+      [
+       "Multiply",
+       -1,
+       [
+        "Ln",
+        [
+         "Add",
+         3,
+         [
+          "Multiply",
+          2,
+          "x"
+         ]
+        ]
+       ]
+      ],
+      [
+       "Ln",
+       [
+        "Add",
+        -2,
+        "x"
+       ]
+      ]
+     ]
+    }
+   ],
+   "calculator_status": "no_calculator",
+   "representation": "BC-REP-01",
+   "skills": [
+    "BC-SKL-06062",
+    "BC-SKL-06064"
+   ]
+  }
+ ],
+ "refresher": [
+  "LSN-CON-06018#s2",
+  "LSN-CON-06018#err-BC-ERR-06019",
+  "LSN-CON-06018#err-BC-ERR-06022",
+  "LSN-CON-06018#err-BC-ERR-06026",
+  "LSN-CON-06018#err-BC-ERR-07030",
+  "LSN-CON-06018#s4"
+ ],
+ "provenance": {
+  "author": "tools/lesson_transcribe.py",
+  "prompt_version": "generator/lesson_v1",
+  "design_path": "docs/lessons/unit-06/LSN-CON-06018.md",
+  "signed_off_by": "claude-opus-5-5",
+  "signed_off_at": "2026-09-29",
+  "not_human": true
+ }
+}

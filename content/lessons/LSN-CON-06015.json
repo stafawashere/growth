@@ -1,0 +1,841 @@
+{
+ "id": "LSN-CON-06015",
+ "version": 1,
+ "kind": "concept",
+ "target_id": "BC-CON-06015",
+ "status": "signed_off",
+ "snapshot_digest": "a6a8ec9d3f59ab8f712e33d30cc22fc64bf2c478fbe7312e3e3118d319c6a42f",
+ "source_digest": "a4295a1ecfc7c8d36b1f2822d771dfd90a3dd498937d5b7c99c486a541eca943",
+ "read_minutes": {
+  "full": 4.1,
+  "brief": 3.0
+ },
+ "word_count": {
+  "full": 557,
+  "brief": 399
+ },
+ "sections": [
+  {
+   "id": "LSN-CON-06015#s1",
+   "type": "orientation",
+   "bands": [
+    "low",
+    "mid"
+   ],
+   "skills": [
+    "BC-SKL-06047",
+    "BC-SKL-06048",
+    "BC-SKL-06049",
+    "BC-SKL-06050",
+    "BC-SKL-06051",
+    "BC-SKL-06052"
+   ],
+   "sources": [
+    "BC-CON-06015",
+    "research/units/unit-06-integration-accumulation.md#6.9 Integrating Using Substitution"
+   ],
+   "evidence_tag": "inferred",
+   "text": "A composite times its inner derivative calls for substitution. A response names u and du, rewrites the whole integral in u with converted limits, and reports the value.",
+   "delivery": {
+    "mode": "text",
+    "reason": "rule 6: BC-REP-01 only on the concept's skills; a statement of what a response shows (unit README delivery map)",
+    "sources": [
+     "BC-SKL-06047"
+    ]
+   }
+  },
+  {
+   "id": "LSN-CON-06015#s2",
+   "type": "key_ideas",
+   "bands": [
+    "low",
+    "mid"
+   ],
+   "skills": [
+    "BC-SKL-06047",
+    "BC-SKL-06048",
+    "BC-SKL-06049",
+    "BC-SKL-06052"
+   ],
+   "sources": [
+    "BC-EK-FUN-6D1",
+    "ced:126",
+    "research/units/unit-06-integration-accumulation.md#6.9 Integrating Using Substitution"
+   ],
+   "evidence_tag": "inferred",
+   "ek_id": "BC-EK-FUN-6D1",
+   "depth": "core",
+   "text": "Name the inner expression u = g(x). When g'(x) dx is present up to a constant, the integral of f(g(x)) g'(x) dx becomes the integral of f(u) du, a basic form.",
+   "notation": "u = g(x), du = g'(x) dx",
+   "delivery": {
+    "mode": "text",
+    "reason": "rule 6: a symbolic rule with BC-REP-01 alone; no process, no figure-bearing representation",
+    "sources": [
+     "BC-SKL-06047",
+     "BC-SKL-06048"
+    ]
+   }
+  },
+  {
+   "id": "LSN-CON-06015#s3",
+   "type": "key_ideas",
+   "bands": [
+    "low"
+   ],
+   "skills": [
+    "BC-SKL-06050",
+    "BC-SKL-06051"
+   ],
+   "sources": [
+    "BC-EK-FUN-6D2",
+    "ced:126",
+    "research/units/unit-06-integration-accumulation.md#6.9 Integrating Using Substitution"
+   ],
+   "evidence_tag": "verified",
+   "ek_id": "BC-EK-FUN-6D2",
+   "depth": "extended",
+   "text": "In a definite integral the limits change with the variable: x = a and x = b become u = g(a) and u = g(b). The alternative is to back-substitute first and then use the x limits.",
+   "notation": "converted limits g(a), g(b)",
+   "quote": {
+    "text": "For a definite integral, substitution of variables requires corresponding changes to the limits of integration.",
+    "source": "ced:126"
+   },
+   "delivery": {
+    "mode": "text",
+    "reason": "rule 6: a symbolic rule about limits with BC-REP-01 alone",
+    "sources": [
+     "BC-SKL-06050"
+    ]
+   }
+  },
+  {
+   "id": "LSN-CON-06015#s4",
+   "type": "strategy",
+   "bands": [
+    "low",
+    "mid"
+   ],
+   "skills": [
+    "BC-SKL-06047",
+    "BC-SKL-06048",
+    "BC-SKL-06049",
+    "BC-SKL-06050",
+    "BC-SKL-06051",
+    "BC-SKL-06052"
+   ],
+   "sources": [
+    "BC-QA-06008"
+   ],
+   "evidence_tag": "verified",
+   "archetype_id": "BC-QA-06008",
+   "cue": "An explicit composite integrand, its inner derivative a factor; a value or antiderivative asked.",
+   "method": "Choose u as the inner expression.",
+   "rival": "Rival: substituting where the inner derivative is absent (BC-ERR-06020).",
+   "separating_feature": "A constant multiple of g'(x) must multiply f(g(x)); without it, substitution stalls."
+  },
+  {
+   "id": "LSN-CON-06015#s5",
+   "type": "worked_example",
+   "bands": [
+    "low",
+    "mid"
+   ],
+   "skills": [
+    "BC-SKL-06047",
+    "BC-SKL-06048",
+    "BC-SKL-06049",
+    "BC-SKL-06050",
+    "BC-SKL-06051",
+    "BC-SKL-06052"
+   ],
+   "sources": [
+    "BC-QA-06008"
+   ],
+   "evidence_tag": "inferred",
+   "archetype_id": "BC-QA-06008",
+   "parameter_draw": {
+    "inner_power": 2,
+    "inner_scale": 1,
+    "inner_shift": 1,
+    "multiplier": 6,
+    "outer_power": 3,
+    "upper": 1,
+    "outer": "power",
+    "form": "definite"
+   },
+   "problem": {
+    "text": "Evaluate ∫_0^1 6x(x^2 + 1)^3 dx.",
+    "command_verb": "evaluate"
+   },
+   "calculator_status": "no_calculator",
+   "steps": [
+    {
+     "cue": "x^2 + 1 sits inside a cube; 6x is a multiple of its derivative 2x.",
+     "why": "Inner derivative present: substitution applies."
+    },
+    {
+     "cue": "u = x^2 + 1: 6x dx = 3 du; limits become u = 1, 2.",
+     "why": "Constant and limits change with the variable.",
+     "expression": [
+      "Multiply",
+      3,
+      [
+       "Power",
+       "u",
+       3
+      ]
+     ],
+     "relation": "new"
+    },
+    {
+     "cue": "3u^3 is a basic power.",
+     "why": "Power rule in u.",
+     "expression": [
+      "Multiply",
+      [
+       "Rational",
+       3,
+       4
+      ],
+      [
+       "Power",
+       "u",
+       4
+      ]
+     ],
+     "point_type_id": "BC-PT-99003",
+     "relation": "integrate",
+     "variable": "u"
+    },
+    {
+     "cue": "Use the u limits 1 and 2.",
+     "why": "A u expression takes u limits only (sg-23:17).",
+     "expression": [
+      "Rational",
+      45,
+      4
+     ],
+     "relation": "new"
+    },
+    {
+     "cue": "Simplify.",
+     "why": "The value.",
+     "expression": [
+      "Rational",
+      45,
+      4
+     ],
+     "point_type_id": "BC-PT-99004",
+     "relation": "equivalent"
+    }
+   ],
+   "answer": {
+    "form": "symbolic",
+    "mathjson": [
+     "Rational",
+     45,
+     4
+    ]
+   },
+   "delivery": {
+    "mode": "step_reveal",
+    "reason": "rule 1",
+    "sources": []
+   }
+  },
+  {
+   "id": "LSN-CON-06015#s6",
+   "type": "what_a_reader_scores",
+   "bands": [
+    "low",
+    "mid"
+   ],
+   "skills": [
+    "BC-SKL-06047",
+    "BC-SKL-06048",
+    "BC-SKL-06049",
+    "BC-SKL-06050",
+    "BC-SKL-06051",
+    "BC-SKL-06052"
+   ],
+   "sources": [
+    "BC-PT-99003",
+    "BC-PT-99004"
+   ],
+   "evidence_tag": "verified",
+   "example_id": "LSN-CON-06015#s5",
+   "lines": [
+    {
+     "point_type_id": "BC-PT-99003",
+     "text": "Antiderivative. Earned by: A correct antiderivative of the presented integrand, with or without the constant of integration (sg-25:14). Not earned by: An antiderivative of the wrong form, or a jump from integral to value with no antiderivative shown (sg-26:18)."
+    },
+    {
+     "point_type_id": "BC-PT-99004",
+     "text": "Answer with or without supporting work. Earned by: The correct value on its own, with no supporting work required (sg-25:3, sg-26:4). Not earned by: A value outside the accepted precision, or a value inconsistent with a required earlier step where the rubric imposes one. Precision: A reported decimal answer must be accurate to three places after the decimal point, rounded or truncated; at most one point per question is lost to inappropriate rounding (sg-25:2, sg-26:2). sg-26:4 also accepts a stated rounding to the nearest integer and several truncations."
+    }
+   ]
+  },
+  {
+   "id": "LSN-CON-06015#err-BC-ERR-06018",
+   "type": "common_error",
+   "bands": [
+    "low",
+    "mid"
+   ],
+   "skills": [
+    "BC-SKL-06049",
+    "BC-SKL-06050",
+    "BC-SKL-06051"
+   ],
+   "sources": [
+    "BC-ERR-06018",
+    "BC-MIS-06016"
+   ],
+   "evidence_tag": "inferred",
+   "error_id": "BC-ERR-06018",
+   "observed_behavior": "The antiderivative is written in the substituted variable and the original x limits are substituted into it.",
+   "scoring_consequence": "The response is not eligible for the answer point even when the numerical value is correct (sg-23:17, sg-23:16).",
+   "wrong_step": {
+    "text": "u antiderivative at x = 0, 1.",
+    "expression": [
+     "Rational",
+     3,
+     4
+    ]
+   },
+   "right_step": {
+    "text": "At u = 1, 2.",
+    "expression": [
+     "Rational",
+     45,
+     4
+    ]
+   },
+   "relation": "distinct",
+   "possible_reason": {
+    "misconception_id": "BC-MIS-06016",
+    "text": "limits of integration and differentials carry over unchanged"
+   },
+   "delivery": {
+    "mode": "step_reveal",
+    "reason": "rule 1",
+    "sources": []
+   }
+  },
+  {
+   "id": "LSN-CON-06015#err-BC-ERR-06019",
+   "type": "common_error",
+   "bands": [
+    "low",
+    "mid"
+   ],
+   "skills": [
+    "BC-SKL-06047",
+    "BC-SKL-06048"
+   ],
+   "sources": [
+    "BC-ERR-06019"
+   ],
+   "evidence_tag": "inferred",
+   "error_id": "BC-ERR-06019",
+   "observed_behavior": "The substitution is carried out without the reciprocal constant that du introduces.",
+   "scoring_consequence": "The antiderivative point is lost and the value point with it.",
+   "wrong_step": {
+    "text": "6x dx read as 6 du.",
+    "expression": [
+     "Multiply",
+     [
+      "Rational",
+      3,
+      2
+     ],
+     [
+      "Power",
+      "u",
+      4
+     ]
+    ]
+   },
+   "right_step": {
+    "text": "6x dx = 3 du.",
+    "expression": [
+     "Multiply",
+     [
+      "Rational",
+      3,
+      4
+     ],
+     [
+      "Power",
+      "u",
+      4
+     ]
+    ]
+   },
+   "relation": "distinct",
+   "delivery": {
+    "mode": "step_reveal",
+    "reason": "rule 1",
+    "sources": []
+   }
+  },
+  {
+   "id": "LSN-CON-06015#err-BC-ERR-06020",
+   "type": "common_error",
+   "bands": [
+    "low",
+    "mid"
+   ],
+   "skills": [
+    "BC-SKL-06047"
+   ],
+   "sources": [
+    "BC-ERR-06020",
+    "BC-MIS-06017"
+   ],
+   "evidence_tag": "inferred",
+   "error_id": "BC-ERR-06020",
+   "observed_behavior": "A composite is substituted although no constant multiple of the derivative of the inner expression appears in the integrand.",
+   "scoring_consequence": "The setup point for the technique is not earned and the work does not lead to the antiderivative.",
+   "wrong_step": {
+    "text": "dx swapped for du, 6x left behind.",
+    "expression": [
+     "Multiply",
+     6,
+     "x",
+     [
+      "Power",
+      "u",
+      3
+     ]
+    ]
+   },
+   "right_step": {
+    "text": "6x dx absorbed as 3 du.",
+    "expression": [
+     "Multiply",
+     3,
+     [
+      "Power",
+      "u",
+      3
+     ]
+    ]
+   },
+   "relation": "distinct",
+   "possible_reason": {
+    "misconception_id": "BC-MIS-06017",
+    "text": "selects substitution from the presence of an inner function alone, without checking that its derivative is present"
+   },
+   "delivery": {
+    "mode": "step_reveal",
+    "reason": "rule 1",
+    "sources": []
+   }
+  },
+  {
+   "id": "LSN-CON-06015#err-BC-ERR-07026",
+   "type": "common_error",
+   "bands": [
+    "low",
+    "mid"
+   ],
+   "skills": [
+    "BC-SKL-06049"
+   ],
+   "sources": [
+    "BC-ERR-07026",
+    "BC-MIS-06018"
+   ],
+   "evidence_tag": "inferred",
+   "error_id": "BC-ERR-07026",
+   "observed_behavior": "The antiderivative equation is written with no constant.",
+   "scoring_consequence": "At most the first two points are available; the guideline caps the response there.",
+   "wrong_step": {
+    "text": "Indefinite form with no constant.",
+    "expression": [
+     "Multiply",
+     [
+      "Rational",
+      3,
+      4
+     ],
+     [
+      "Power",
+      [
+       "Add",
+       1,
+       [
+        "Power",
+        "x",
+        2
+       ]
+      ],
+      4
+     ]
+    ]
+   },
+   "right_step": {
+    "text": "With + C.",
+    "expression": [
+     "Add",
+     "C",
+     [
+      "Multiply",
+      [
+       "Rational",
+       3,
+       4
+      ],
+      [
+       "Power",
+       [
+        "Add",
+        1,
+        [
+         "Power",
+         "x",
+         2
+        ]
+       ],
+       4
+      ]
+     ]
+    ]
+   },
+   "relation": "distinct",
+   "possible_reason": {
+    "misconception_id": "BC-MIS-06018",
+    "text": "treats the antiderivative as unique"
+   },
+   "delivery": {
+    "mode": "step_reveal",
+    "reason": "rule 1",
+    "sources": []
+   }
+  },
+  {
+   "id": "LSN-CON-06015#prq-BC-PRQ-06001",
+   "type": "prerequisite_bridge",
+   "bands": [
+    "low",
+    "mid"
+   ],
+   "skills": [
+    "BC-SKL-06047",
+    "BC-SKL-06048"
+   ],
+   "sources": [
+    "BC-PRQ-06001"
+   ],
+   "evidence_tag": "inferred",
+   "prerequisite_id": "BC-PRQ-06001",
+   "text": "Factor out constants to expose the inner derivative; otherwise a composite gets antidifferentiated term by term."
+  },
+  {
+   "id": "LSN-CON-06015#prq-BC-PRQ-06003",
+   "type": "prerequisite_bridge",
+   "bands": [
+    "low",
+    "mid"
+   ],
+   "skills": [
+    "BC-SKL-06052"
+   ],
+   "sources": [
+    "BC-PRQ-06003"
+   ],
+   "evidence_tag": "inferred",
+   "prerequisite_id": "BC-PRQ-06003",
+   "text": "A logarithmic answer keeps the bars: ln|u|."
+  }
+ ],
+ "checks": [
+  {
+   "id": "LSN-CON-06015#chk-1",
+   "check_kind": "completion",
+   "bands": [
+    "low",
+    "mid"
+   ],
+   "format": "short_answer",
+   "archetype_id": "BC-QA-06008",
+   "parameter_draw": {
+    "inner_power": 2,
+    "inner_scale": 1,
+    "inner_shift": 1,
+    "multiplier": 6,
+    "outer_power": 3,
+    "upper": 1,
+    "outer": "power",
+    "form": "definite"
+   },
+   "completes": "LSN-CON-06015#s5",
+   "stem": {
+    "text": "∫_0^1 6x(x^2 + 1)^3 dx = ∫_1^2 3u^3 du. Find the value.",
+    "command_verb": "find"
+   },
+   "answer_key": {
+    "form": "symbolic",
+    "mathjson": [
+     "Rational",
+     45,
+     4
+    ]
+   },
+   "worked_solution": [
+    {
+     "step": 1,
+     "text": "Antiderivative in u.",
+     "mathjson": [
+      "Multiply",
+      [
+       "Rational",
+       3,
+       4
+      ],
+      [
+       "Power",
+       "u",
+       4
+      ]
+     ],
+     "relation": "new"
+    },
+    {
+     "step": 2,
+     "text": "u limits.",
+     "mathjson": [
+      "Rational",
+      45,
+      4
+     ],
+     "relation": "new"
+    },
+    {
+     "step": 3,
+     "text": "Value.",
+     "mathjson": [
+      "Rational",
+      45,
+      4
+     ],
+     "relation": "equivalent"
+    }
+   ],
+   "calculator_status": "no_calculator",
+   "representation": "BC-REP-01",
+   "skills": [
+    "BC-SKL-06050",
+    "BC-SKL-06051"
+   ]
+  },
+  {
+   "id": "LSN-CON-06015#chk-2",
+   "check_kind": "isomorph",
+   "bands": [
+    "low",
+    "mid"
+   ],
+   "format": "short_answer",
+   "archetype_id": "BC-QA-06008",
+   "parameter_draw": {
+    "inner_power": 3,
+    "inner_scale": 1,
+    "inner_shift": 2,
+    "multiplier": 6,
+    "outer_power": 2,
+    "upper": 1,
+    "outer": "power",
+    "form": "definite"
+   },
+   "stem": {
+    "text": "Evaluate ∫_0^1 6x^2(x^3 + 2)^2 dx.",
+    "command_verb": "evaluate"
+   },
+   "answer_key": {
+    "form": "symbolic",
+    "mathjson": [
+     "Rational",
+     38,
+     3
+    ]
+   },
+   "worked_solution": [
+    {
+     "step": 1,
+     "text": "u = x^3 + 2, 6x^2 dx = 2 du, u from 2 to 3.",
+     "mathjson": [
+      "Integrate",
+      [
+       "Multiply",
+       2,
+       [
+        "Power",
+        "u",
+        2
+       ]
+      ],
+      [
+       "Tuple",
+       "u",
+       2,
+       3
+      ]
+     ],
+     "relation": "new"
+    },
+    {
+     "step": 2,
+     "text": "Value.",
+     "mathjson": [
+      "Rational",
+      38,
+      3
+     ],
+     "relation": "equivalent"
+    }
+   ],
+   "calculator_status": "no_calculator",
+   "representation": "BC-REP-01",
+   "skills": [
+    "BC-SKL-06047",
+    "BC-SKL-06048",
+    "BC-SKL-06050"
+   ]
+  },
+  {
+   "id": "LSN-CON-06015#chk-3",
+   "check_kind": "mcq",
+   "bands": [
+    "low"
+   ],
+   "format": "mcq",
+   "archetype_id": "BC-QA-06008",
+   "parameter_draw": {
+    "inner_power": 2,
+    "inner_scale": 1,
+    "inner_shift": 3,
+    "multiplier": 4,
+    "outer_power": 2,
+    "upper": 1,
+    "outer": "power",
+    "form": "definite"
+   },
+   "stem": {
+    "text": "∫_0^1 4x(x^2 + 3)^2 dx =",
+    "command_verb": "identify"
+   },
+   "answer_key": {
+    "form": "symbolic",
+    "mathjson": [
+     "Rational",
+     74,
+     3
+    ]
+   },
+   "worked_solution": [
+    {
+     "step": 1,
+     "text": "u = x^2 + 3, 4x dx = 2 du, u from 3 to 4.",
+     "mathjson": [
+      "Integrate",
+      [
+       "Multiply",
+       2,
+       [
+        "Power",
+        "u",
+        2
+       ]
+      ],
+      [
+       "Tuple",
+       "u",
+       3,
+       4
+      ]
+     ],
+     "relation": "new"
+    },
+    {
+     "step": 2,
+     "text": "Value.",
+     "mathjson": [
+      "Rational",
+      74,
+      3
+     ],
+     "relation": "equivalent"
+    }
+   ],
+   "options": [
+    {
+     "id": "A",
+     "is_key": false,
+     "error_path": "BC-ERR-06018",
+     "value": [
+      "Rational",
+      2,
+      3
+     ],
+     "derivation": "(2/3)u^3 evaluated at the x limits 0 and 1"
+    },
+    {
+     "id": "B",
+     "is_key": false,
+     "error_path": "BC-ERR-06019",
+     "value": [
+      "Rational",
+      148,
+      3
+     ],
+     "derivation": "4x dx read as 4 du, the 1/2 dropped"
+    },
+    {
+     "id": "C",
+     "is_key": true,
+     "error_path": null,
+     "value": [
+      "Rational",
+      74,
+      3
+     ]
+    },
+    {
+     "id": "D",
+     "is_key": false,
+     "error_path": "BC-ERR-06018",
+     "value": [
+      "Rational",
+      128,
+      3
+     ],
+     "derivation": "upper limit converted to 4, lower x limit 0 kept"
+    }
+   ],
+   "calculator_status": "no_calculator",
+   "representation": "BC-REP-01",
+   "skills": [
+    "BC-SKL-06048",
+    "BC-SKL-06050"
+   ]
+  }
+ ],
+ "refresher": [
+  "LSN-CON-06015#s2",
+  "LSN-CON-06015#err-BC-ERR-06018",
+  "LSN-CON-06015#err-BC-ERR-06019",
+  "LSN-CON-06015#err-BC-ERR-06020",
+  "LSN-CON-06015#err-BC-ERR-07026",
+  "LSN-CON-06015#s5"
+ ],
+ "provenance": {
+  "author": "tools/lesson_transcribe.py",
+  "prompt_version": "generator/lesson_v1",
+  "design_path": "docs/lessons/unit-06/LSN-CON-06015.md",
+  "signed_off_by": "claude-opus-5-5",
+  "signed_off_at": "2026-09-29",
+  "not_human": true
+ }
+}

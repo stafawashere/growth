@@ -1,0 +1,533 @@
+{
+ "id": "LSN-CON-06002",
+ "version": 1,
+ "kind": "concept",
+ "target_id": "BC-CON-06002",
+ "status": "signed_off",
+ "snapshot_digest": "a6a8ec9d3f59ab8f712e33d30cc22fc64bf2c478fbe7312e3e3118d319c6a42f",
+ "source_digest": "83ebeeecf486aaa5321c59da47bc39d23e2a103926428001b7d31e68d1cbcb87",
+ "read_minutes": {
+  "full": 3.4,
+  "brief": 3.0
+ },
+ "word_count": {
+  "full": 381,
+  "brief": 381
+ },
+ "sections": [
+  {
+   "id": "LSN-CON-06002#s1",
+   "type": "orientation",
+   "bands": [
+    "low",
+    "mid"
+   ],
+   "skills": [
+    "BC-SKL-06002",
+    "BC-SKL-06003"
+   ],
+   "sources": [
+    "BC-CON-06002",
+    "research/units/unit-06-integration-accumulation.md#6.1 Exploring Accumulations of Change"
+   ],
+   "evidence_tag": "inferred",
+   "text": "The rate's sign fixes the sign of the change, and units multiply. A response gives the amount's units and says whether the quantity rose or fell.",
+   "delivery": {
+    "mode": "text",
+    "reason": "rule 6: a statement of what a response shows (unit README delivery map)",
+    "sources": [
+     "BC-CON-06002"
+    ]
+   }
+  },
+  {
+   "id": "LSN-CON-06002#s2",
+   "type": "key_ideas",
+   "bands": [
+    "low",
+    "mid"
+   ],
+   "skills": [
+    "BC-SKL-06002"
+   ],
+   "sources": [
+    "BC-EK-CHA-4A4",
+    "ced:118",
+    "research/units/unit-06-integration-accumulation.md#6.1 Exploring Accumulations of Change"
+   ],
+   "evidence_tag": "inferred",
+   "ek_id": "BC-EK-CHA-4A4",
+   "depth": "core",
+   "text": "Units of an accumulated change: rate units times input units, so gallons per second times seconds is gallons. An amount, never a rate.",
+   "notation": "units of f times units of t",
+   "delivery": {
+    "mode": "text",
+    "reason": "rule 6: BC-SKL-06002 carries BC-REP-04 and BC-REP-05 only; a units product is a rule",
+    "sources": [
+     "BC-SKL-06002"
+    ]
+   }
+  },
+  {
+   "id": "LSN-CON-06002#s3",
+   "type": "key_ideas",
+   "bands": [
+    "low",
+    "mid"
+   ],
+   "skills": [
+    "BC-SKL-06003"
+   ],
+   "sources": [
+    "BC-EK-CHA-4A3",
+    "ced:118",
+    "research/units/unit-06-integration-accumulation.md#6.1 Exploring Accumulations of Change"
+   ],
+   "evidence_tag": "verified",
+   "ek_id": "BC-EK-CHA-4A3",
+   "depth": "core",
+   "text": "A rate positive on an interval gives a positive change there; a negative rate gives a negative change. A positive outflow rate means the quantity falls.",
+   "notation": "units of f times units of t",
+   "quote": {
+    "text": "If a rate of change is positive (negative) over an interval, then the accumulated change is positive (negative).",
+    "source": "ced:118"
+   },
+   "delivery": {
+    "mode": "figure",
+    "reason": "rule 4: BC-REP-02 on BC-SKL-06003; not promoted, since BC-QA-06015's stem asks for a sentence, not a reading of a varying quantity",
+    "sources": [
+     "BC-SKL-06003"
+    ],
+    "spec": {
+     "kind": "graph",
+     "representations": [
+      "BC-REP-02"
+     ],
+     "window": {
+      "t": [
+       0,
+       6
+      ],
+      "y": [
+       -3,
+       3
+      ]
+     },
+     "curves": [
+      {
+       "type": "polyline",
+       "points": [
+        [
+         0,
+         2
+        ],
+        [
+         3,
+         0
+        ],
+        [
+         6,
+         -2
+        ]
+       ]
+      }
+     ],
+     "shading": [
+      {
+       "interval": [
+        0,
+        3
+       ],
+       "sign": "plus"
+      },
+      {
+       "interval": [
+        3,
+        6
+       ],
+       "sign": "minus"
+      }
+     ],
+     "labels": [
+      {
+       "text": "rate > 0: change > 0",
+       "placement": "inside",
+       "at": "region on [0, 3]"
+      },
+      {
+       "text": "rate < 0: change < 0",
+       "placement": "inside",
+       "at": "region on [3, 6]"
+      }
+     ]
+    },
+    "fallback": "the same graph, static, with the two signed regions labelled",
+    "keyboard": "none needed: the figure has no control"
+   }
+  },
+  {
+   "id": "LSN-CON-06002#s4",
+   "type": "strategy",
+   "bands": [
+    "low",
+    "mid"
+   ],
+   "skills": [
+    "BC-SKL-06002",
+    "BC-SKL-06003"
+   ],
+   "sources": [
+    "BC-QA-06015"
+   ],
+   "evidence_tag": "verified",
+   "archetype_id": "BC-QA-06015",
+   "cue": "A contextual rate and a displayed integral; a sentence with quantity, interval and units asked.",
+   "method": "Identify what the integrand measures per unit input.",
+   "rival": "Rival: the quantity named without the interval, or with the rate's units.",
+   "separating_feature": "An amount over an interval: units multiply, and both limits appear."
+  },
+  {
+   "id": "LSN-CON-06002#s5",
+   "type": "worked_example",
+   "bands": [
+    "low",
+    "mid"
+   ],
+   "skills": [
+    "BC-SKL-06002",
+    "BC-SKL-06003"
+   ],
+   "sources": [
+    "BC-QA-06015"
+   ],
+   "evidence_tag": "inferred",
+   "archetype_id": "BC-QA-06015",
+   "parameter_draw": {
+    "context": "sand",
+    "start": 1,
+    "length": 5,
+    "display": "total",
+    "direction": "depletes"
+   },
+   "problem": {
+    "text": "Sand leaves a pile at R(t) tons per hour, R(t) > 0, t in hours. Interpret ∫_1^6 R(t) dt with units, and give the sign of the pile's change.",
+    "command_verb": "interpret"
+   },
+   "calculator_status": "no_calculator",
+   "steps": [
+    {
+     "cue": "The integrand R is a rate: tons per hour.",
+     "why": "The integral accumulates what R measures."
+    },
+    {
+     "cue": "Multiply the units.",
+     "why": "Rate units times input units.",
+     "expression": "tons",
+     "relation": "new"
+    },
+    {
+     "cue": "Hours cancel.",
+     "why": "An amount, not a rate.",
+     "expression": "tons",
+     "relation": "equivalent"
+    },
+    {
+     "cue": "R > 0 and R is an outflow.",
+     "why": "The integral is sand removed; the pile's change is its negative."
+    },
+    {
+     "cue": "Limits 1 and 6 name the interval.",
+     "why": "Quantity, units and interval together (sg-23:2)."
+    }
+   ],
+   "answer": {
+    "form": "statement",
+    "mathjson": "tons",
+    "text": "The tons of sand removed from the pile from t = 1 to t = 6 hours; the pile's change is negative."
+   },
+   "delivery": {
+    "mode": "step_reveal",
+    "reason": "rule 1",
+    "sources": []
+   }
+  },
+  {
+   "id": "LSN-CON-06002#err-BC-ERR-99034",
+   "type": "common_error",
+   "bands": [
+    "low",
+    "mid"
+   ],
+   "skills": [
+    "BC-SKL-06003"
+   ],
+   "sources": [
+    "BC-ERR-99034"
+   ],
+   "evidence_tag": "inferred",
+   "error_id": "BC-ERR-99034",
+   "observed_behavior": "Responses compute a correct intermediate result and then report a final value inconsistent with it, such as changing the sign of a negative sum or carrying forward an earlier incorrect value that contradicts a later correct conclusion, without noticing the conflict.",
+   "scoring_consequence": "The answer point is lost although the supporting work would have earned it, and in the extremum case the justification point is lost as well.",
+   "wrong_step": {
+    "text": "Pile grew by the integral.",
+    "expression": [
+     "Integrate",
+     [
+      "Apply",
+      "R",
+      "t"
+     ],
+     [
+      "Tuple",
+      "t",
+      1,
+      6
+     ]
+    ]
+   },
+   "right_step": {
+    "text": "Pile changed by its negative.",
+    "expression": [
+     "Multiply",
+     -1,
+     [
+      "Integrate",
+      [
+       "Apply",
+       "R",
+       "t"
+      ],
+      [
+       "Tuple",
+       "t",
+       1,
+       6
+      ]
+     ]
+    ]
+   },
+   "relation": "distinct",
+   "delivery": {
+    "mode": "step_reveal",
+    "reason": "rule 1",
+    "sources": []
+   }
+  },
+  {
+   "id": "LSN-CON-06002#err-BC-ERR-06029",
+   "type": "common_error",
+   "bands": [
+    "low",
+    "mid"
+   ],
+   "skills": [
+    "BC-SKL-06002"
+   ],
+   "sources": [
+    "BC-ERR-06029",
+    "BC-MIS-08009"
+   ],
+   "evidence_tag": "inferred",
+   "error_id": "BC-ERR-06029",
+   "observed_behavior": "The response names the accumulated quantity but not the interval over which it accumulates, or gives the units of the rate.",
+   "scoring_consequence": "The interpretation point requires both the accumulated quantity with units and the interval, so it is not earned (sg-23:2).",
+   "wrong_step": {
+    "text": "Sand removed, tons per hour.",
+    "expression": [
+     "Multiply",
+     "tons",
+     [
+      "Power",
+      "hour",
+      -1
+     ]
+    ]
+   },
+   "right_step": {
+    "text": "Tons removed, t = 1 to 6.",
+    "expression": "tons"
+   },
+   "relation": "distinct",
+   "possible_reason": {
+    "misconception_id": "BC-MIS-08009",
+    "text": "treats the sentence as a label for the integral"
+   },
+   "delivery": {
+    "mode": "step_reveal",
+    "reason": "rule 1",
+    "sources": []
+   }
+  },
+  {
+   "id": "LSN-CON-06002#prq-BC-PRQ-06005",
+   "type": "prerequisite_bridge",
+   "bands": [
+    "low",
+    "mid"
+   ],
+   "skills": [
+    "BC-SKL-06002"
+   ],
+   "sources": [
+    "BC-PRQ-06005"
+   ],
+   "evidence_tag": "inferred",
+   "prerequisite_id": "BC-PRQ-06005",
+   "text": "R(t) is a rate at input t, not an amount; swapping f and f prime changes what is measured."
+  }
+ ],
+ "checks": [
+  {
+   "id": "LSN-CON-06002#chk-1",
+   "check_kind": "completion",
+   "bands": [
+    "low",
+    "mid"
+   ],
+   "format": "short_answer",
+   "archetype_id": "BC-QA-06015",
+   "parameter_draw": {
+    "context": "sand",
+    "start": 1,
+    "length": 5,
+    "display": "total",
+    "direction": "depletes"
+   },
+   "completes": "LSN-CON-06002#s5",
+   "stem": {
+    "text": "∫_1^6 R(t) dt is in tons and R is the outflow rate. Write the interpretation with its sign.",
+    "command_verb": "interpret"
+   },
+   "answer_key": {
+    "form": "statement",
+    "mathjson": "tons",
+    "text": "The tons of sand removed from the pile from t = 1 to t = 6 hours; the pile's change is negative."
+   },
+   "worked_solution": [],
+   "calculator_status": "no_calculator",
+   "representation": "BC-REP-04",
+   "skills": [
+    "BC-SKL-06003"
+   ]
+  },
+  {
+   "id": "LSN-CON-06002#chk-2",
+   "check_kind": "isomorph",
+   "bands": [
+    "low",
+    "mid"
+   ],
+   "format": "short_answer",
+   "archetype_id": "BC-QA-06015",
+   "parameter_draw": {
+    "context": "people",
+    "start": 8,
+    "length": 4,
+    "display": "total",
+    "direction": "accumulates"
+   },
+   "stem": {
+    "text": "People enter a museum at E(t) people per hour, t in hours. Give the units of ∫_8^12 E(t) dt.",
+    "command_verb": "find"
+   },
+   "answer_key": {
+    "form": "symbolic",
+    "mathjson": "people"
+   },
+   "worked_solution": [
+    {
+     "step": 1,
+     "text": "Rate units times input units.",
+     "mathjson": "people",
+     "relation": "new"
+    },
+    {
+     "step": 2,
+     "text": "Hours cancel.",
+     "mathjson": "people",
+     "relation": "equivalent"
+    }
+   ],
+   "calculator_status": "no_calculator",
+   "representation": "BC-REP-04",
+   "skills": [
+    "BC-SKL-06002"
+   ]
+  },
+  {
+   "id": "LSN-CON-06002#chk-3",
+   "check_kind": "mcq",
+   "bands": [
+    "low"
+   ],
+   "format": "mcq",
+   "archetype_id": "BC-QA-06015",
+   "parameter_draw": {
+    "context": "oil",
+    "start": 0,
+    "length": 6,
+    "display": "total",
+    "direction": "depletes"
+   },
+   "stem": {
+    "text": "Oil drains from a tank at D(t) gallons per minute, D(t) > 0. Which describes ∫_0^6 D(t) dt?",
+    "command_verb": "interpret"
+   },
+   "answer_key": {
+    "form": "statement",
+    "mathjson": "gallons_drained_0_to_6_tank_decreased"
+   },
+   "worked_solution": [],
+   "options": [
+    {
+     "id": "A",
+     "is_key": true,
+     "error_path": null,
+     "label": "Gallons drained from t = 0 to t = 6 minutes; the tank's oil fell."
+    },
+    {
+     "id": "B",
+     "is_key": false,
+     "error_path": "BC-ERR-06029",
+     "label": "Gallons of oil drained.",
+     "derivation": "the interval omitted"
+    },
+    {
+     "id": "C",
+     "is_key": false,
+     "error_path": "BC-ERR-06029",
+     "label": "Oil drained from t = 0 to t = 6, in gallons per minute.",
+     "derivation": "the units of the rate given"
+    },
+    {
+     "id": "D",
+     "is_key": false,
+     "error_path": "BC-ERR-99034",
+     "label": "Gallons drained from t = 0 to t = 6 minutes; the tank's oil rose.",
+     "derivation": "a positive integral of an outflow reported as a gain, contradicting the work"
+    }
+   ],
+   "calculator_status": "no_calculator",
+   "representation": "BC-REP-04",
+   "skills": [
+    "BC-SKL-06002",
+    "BC-SKL-06003"
+   ]
+  }
+ ],
+ "refresher": [
+  "LSN-CON-06002#s2",
+  "LSN-CON-06002#s3",
+  "LSN-CON-06002#err-BC-ERR-99034",
+  "LSN-CON-06002#err-BC-ERR-06029",
+  "LSN-CON-06002#s5"
+ ],
+ "provenance": {
+  "author": "tools/lesson_transcribe.py",
+  "prompt_version": "generator/lesson_v1",
+  "design_path": "docs/lessons/unit-06/LSN-CON-06002.md",
+  "signed_off_by": "claude-opus-5-5",
+  "signed_off_at": "2026-09-29",
+  "not_human": true
+ }
+}

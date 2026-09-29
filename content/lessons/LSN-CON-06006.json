@@ -1,0 +1,1042 @@
+{
+ "id": "LSN-CON-06006",
+ "version": 1,
+ "kind": "concept",
+ "target_id": "BC-CON-06006",
+ "status": "signed_off",
+ "snapshot_digest": "a6a8ec9d3f59ab8f712e33d30cc22fc64bf2c478fbe7312e3e3118d319c6a42f",
+ "source_digest": "f9da730f6ff3537ae74c1752e7145d525d48a7a6fdbf2a6dec4ddd35fe78b242",
+ "read_minutes": {
+  "full": 3.4,
+  "brief": 2.9
+ },
+ "word_count": {
+  "full": 441,
+  "brief": 379
+ },
+ "sections": [
+  {
+   "id": "LSN-CON-06006#s1",
+   "type": "orientation",
+   "bands": [
+    "low",
+    "mid"
+   ],
+   "skills": [
+    "BC-SKL-06014",
+    "BC-SKL-06015",
+    "BC-SKL-06016"
+   ],
+   "sources": [
+    "BC-CON-06006",
+    "research/units/unit-06-integration-accumulation.md#6.3 Riemann Sums, Summation Notation, and Definite Integral Notation"
+   ],
+   "evidence_tag": "inferred",
+   "text": "Letting every width go to zero turns the Riemann sum into the definite integral. A response converts a limit of sums to an integral, or back, reading the width and the sample point.",
+   "delivery": {
+    "mode": "text",
+    "reason": "rule 6: BC-REP-01 on every skill (unit README delivery map)",
+    "sources": [
+     "BC-SKL-06014",
+     "BC-SKL-06015",
+     "BC-SKL-06016"
+    ]
+   }
+  },
+  {
+   "id": "LSN-CON-06006#s2",
+   "type": "key_ideas",
+   "bands": [
+    "low",
+    "mid"
+   ],
+   "skills": [
+    "BC-SKL-06016"
+   ],
+   "sources": [
+    "BC-EK-LIM-5C1",
+    "ced:120",
+    "research/units/unit-06-integration-accumulation.md#6.3 Riemann Sums, Summation Notation, and Definite Integral Notation"
+   ],
+   "evidence_tag": "verified",
+   "ek_id": "BC-EK-LIM-5C1",
+   "depth": "core",
+   "text": "For f continuous on [a, b], the integral of f from a to b is the limit of its Riemann sums as the largest width goes to 0.",
+   "notation": "integral from a to b of f(x) dx",
+   "quote": {
+    "text": "is the limit of Riemann sums as the widths of the subintervals approach 0",
+    "source": "ced:120"
+   },
+   "delivery": {
+    "mode": "motion",
+    "reason": "rule 2: the EK text 'the limit of Riemann sums as the widths of the subintervals approach 0' (ced:120) is a process, rectangles refining under a curve (unit README delivery map)",
+    "sources": [
+     "BC-EK-LIM-5C1",
+     "BC-SKL-06016"
+    ],
+    "spec": {
+     "kind": "graph_sweep",
+     "representations": [
+      "BC-REP-02"
+     ],
+     "axes": {
+      "x": [
+       0.5,
+       3.5
+      ],
+      "y": [
+       0,
+       30
+      ]
+     },
+     "curves": [
+      {
+       "expr": "3*x**2",
+       "domain": [
+        1,
+        3
+       ]
+      }
+     ],
+     "parameter": {
+      "name": "n",
+      "frames": [
+       2,
+       4,
+       8,
+       16
+      ]
+     },
+     "rectangles": {
+      "sum": "right",
+      "interval": [
+       1,
+       3
+      ]
+     },
+     "labels": [
+      {
+       "text": "n = frame value",
+       "placement": "inside",
+       "at": "top left corner"
+      },
+      {
+       "text": "right sum",
+       "placement": "inside",
+       "at": "top right corner"
+      },
+      {
+       "text": "integral 26",
+       "placement": "inside",
+       "at": "under the curve on the last frame"
+      }
+     ]
+    },
+    "fallback": "the four frames as static small panels in one row, n increasing left to right, each with its sum printed inside",
+    "keyboard": "left and right arrow keys step between frames; Home returns to n = 2; each frame announces n and the sum",
+    "reduced_motion": "no auto-advance: each arrow key press cross-fades to the next frame"
+   }
+  },
+  {
+   "id": "LSN-CON-06006#s3",
+   "type": "key_ideas",
+   "bands": [
+    "low",
+    "mid"
+   ],
+   "skills": [
+    "BC-SKL-06014",
+    "BC-SKL-06015"
+   ],
+   "sources": [
+    "BC-EK-LIM-5C2",
+    "ced:120",
+    "research/units/unit-06-integration-accumulation.md#6.3 Riemann Sums, Summation Notation, and Definite Integral Notation"
+   ],
+   "evidence_tag": "inferred",
+   "ek_id": "BC-EK-LIM-5C2",
+   "depth": "core",
+   "text": "To convert, split the term into width and height. The width fixes b - a, the sample point at i = 0 fixes a, and the height gives f.",
+   "notation": "integral from a to b of f(x) dx",
+   "delivery": {
+    "mode": "text",
+    "reason": "rule 6: a symbolic conversion, BC-REP-01 only",
+    "sources": [
+     "BC-SKL-06014",
+     "BC-SKL-06015"
+    ]
+   }
+  },
+  {
+   "id": "LSN-CON-06006#s4",
+   "type": "key_ideas",
+   "bands": [
+    "low"
+   ],
+   "skills": [
+    "BC-SKL-06014"
+   ],
+   "sources": [
+    "BC-EK-LIM-5B1",
+    "ced:120",
+    "research/units/unit-06-integration-accumulation.md#6.3 Riemann Sums, Summation Notation, and Definite Integral Notation"
+   ],
+   "evidence_tag": "verified",
+   "ek_id": "BC-EK-LIM-5B1",
+   "depth": "extended",
+   "text": "An approximating sum and its limit are different objects: the sum estimates, the limit is the integral.",
+   "notation": "integral from a to b of f(x) dx",
+   "quote": {
+    "text": "The limit of an approximating Riemann sum can be interpreted as a definite integral.",
+    "source": "ced:120"
+   },
+   "delivery": {
+    "mode": "text",
+    "reason": "rule 6: a statement about two objects, BC-REP-01 only",
+    "sources": [
+     "BC-SKL-06014"
+    ]
+   }
+  },
+  {
+   "id": "LSN-CON-06006#s5",
+   "type": "strategy",
+   "bands": [
+    "low",
+    "mid"
+   ],
+   "skills": [
+    "BC-SKL-06014",
+    "BC-SKL-06015",
+    "BC-SKL-06016"
+   ],
+   "sources": [
+    "BC-QA-06014"
+   ],
+   "evidence_tag": "inferred",
+   "archetype_id": "BC-QA-06014",
+   "cue": "A limit of a sigma sum, or an integral with limits; the other form asked.",
+   "method": "Separate the general term into a value and a width.",
+   "rival": "Rival: limits read off the width, as 0 to b - a.",
+   "separating_feature": "The sample point, not the width, gives the lower limit."
+  },
+  {
+   "id": "LSN-CON-06006#s6",
+   "type": "worked_example",
+   "bands": [
+    "low",
+    "mid"
+   ],
+   "skills": [
+    "BC-SKL-06014",
+    "BC-SKL-06015",
+    "BC-SKL-06016"
+   ],
+   "sources": [
+    "BC-QA-06014"
+   ],
+   "evidence_tag": "inferred",
+   "archetype_id": "BC-QA-06014",
+   "parameter_draw": {
+    "direction": "to_integral",
+    "function": "square",
+    "coefficient": 3,
+    "start": 1,
+    "width": 2,
+    "convention": "right",
+    "letter": "x"
+   },
+   "problem": {
+    "text": "Write lim_(n→∞) Σ_(i=1)^n 3(1 + 2i/n)^2 (2/n) as a definite integral.",
+    "command_verb": "write"
+   },
+   "calculator_status": "no_calculator",
+   "steps": [
+    {
+     "cue": "lim of Σ: a definite integral.",
+     "why": "Widths go to 0.",
+     "expression": [
+      "Limit",
+      [
+       "Sum",
+       [
+        "Multiply",
+        6,
+        [
+         "Power",
+         "n",
+         -1
+        ],
+        [
+         "Power",
+         [
+          "Add",
+          1,
+          [
+           "Multiply",
+           2,
+           "i",
+           [
+            "Power",
+            "n",
+            -1
+           ]
+          ]
+         ],
+         2
+        ]
+       ],
+       [
+        "Tuple",
+        "i",
+        1,
+        "n"
+       ]
+      ],
+      "n",
+      "PositiveInfinity",
+      "-"
+     ],
+     "relation": "new"
+    },
+    {
+     "cue": "Split the term: 2/n times 3(1 + 2i/n)^2.",
+     "why": "Width times height."
+    },
+    {
+     "cue": "Width 2/n.",
+     "why": "b - a = 2."
+    },
+    {
+     "cue": "Sample point 1 + 2i/n starts at 1.",
+     "why": "a = 1, so b = 3; height 3x^2."
+    },
+    {
+     "cue": "Write the integral.",
+     "why": "Same value as the limit.",
+     "expression": [
+      "Integrate",
+      [
+       "Multiply",
+       3,
+       [
+        "Power",
+        "x",
+        2
+       ]
+      ],
+      [
+       "Tuple",
+       "x",
+       1,
+       3
+      ]
+     ],
+     "relation": "equivalent"
+    }
+   ],
+   "answer": {
+    "form": "symbolic",
+    "mathjson": [
+     "Integrate",
+     [
+      "Multiply",
+      3,
+      [
+       "Power",
+       "x",
+       2
+      ]
+     ],
+     [
+      "Tuple",
+      "x",
+      1,
+      3
+     ]
+    ]
+   },
+   "delivery": {
+    "mode": "step_reveal",
+    "reason": "rule 1",
+    "sources": []
+   }
+  },
+  {
+   "id": "LSN-CON-06006#err-BC-ERR-99028",
+   "type": "common_error",
+   "bands": [
+    "low",
+    "mid"
+   ],
+   "skills": [
+    "BC-SKL-06014",
+    "BC-SKL-06015"
+   ],
+   "sources": [
+    "BC-ERR-99028",
+    "BC-MIS-06001"
+   ],
+   "evidence_tag": "inferred",
+   "error_id": "BC-ERR-99028",
+   "observed_behavior": "Responses assume a common subinterval width where the table gives unequal ones, present the sum of the values without the widths, use the wrong sum type, or apply an incorrect trapezoid area formula.",
+   "scoring_consequence": "The setup point requires the sum of the appropriate products to be visible; the answer point follows it.",
+   "wrong_step": {
+    "text": "Width factor lost.",
+    "expression": [
+     "Integrate",
+     [
+      "Multiply",
+      3,
+      [
+       "Power",
+       [
+        "Add",
+        1,
+        [
+         "Multiply",
+         2,
+         "x"
+        ]
+       ],
+       2
+      ]
+     ],
+     [
+      "Tuple",
+      "x",
+      0,
+      1
+     ]
+    ]
+   },
+   "right_step": {
+    "text": "Width 2/n kept.",
+    "expression": [
+     "Integrate",
+     [
+      "Multiply",
+      3,
+      [
+       "Power",
+       "x",
+       2
+      ]
+     ],
+     [
+      "Tuple",
+      "x",
+      1,
+      3
+     ]
+    ]
+   },
+   "relation": "distinct",
+   "possible_reason": {
+    "misconception_id": "BC-MIS-06001",
+    "text": "the partition widths play no role"
+   },
+   "delivery": {
+    "mode": "step_reveal",
+    "reason": "rule 1",
+    "sources": []
+   }
+  },
+  {
+   "id": "LSN-CON-06006#err-BC-ERR-99032",
+   "type": "common_error",
+   "bands": [
+    "low",
+    "mid"
+   ],
+   "skills": [
+    "BC-SKL-06014"
+   ],
+   "sources": [
+    "BC-ERR-99032"
+   ],
+   "evidence_tag": "inferred",
+   "error_id": "BC-ERR-99032",
+   "observed_behavior": "Responses asked for an integral expression write statements that are not integral expressions, such as the function set equal to its own integral, a summation sign placed in front of an integral, or a constant of integration attached to a definite integral, and some reverse the limits or use limits that were never given.",
+   "scoring_consequence": "The expression point is not earned, since the requested object is an integral expression and nothing else is being scored in that part.",
+   "wrong_step": {
+    "text": "Limits 0 to 2.",
+    "expression": [
+     "Integrate",
+     [
+      "Multiply",
+      3,
+      [
+       "Power",
+       "x",
+       2
+      ]
+     ],
+     [
+      "Tuple",
+      "x",
+      0,
+      2
+     ]
+    ]
+   },
+   "right_step": {
+    "text": "Limits 1 to 3.",
+    "expression": [
+     "Integrate",
+     [
+      "Multiply",
+      3,
+      [
+       "Power",
+       "x",
+       2
+      ]
+     ],
+     [
+      "Tuple",
+      "x",
+      1,
+      3
+     ]
+    ]
+   },
+   "relation": "distinct",
+   "delivery": {
+    "mode": "step_reveal",
+    "reason": "rule 1",
+    "sources": []
+   }
+  },
+  {
+   "id": "LSN-CON-06006#s7",
+   "type": "representations",
+   "bands": [
+    "low"
+   ],
+   "skills": [
+    "BC-SKL-06014",
+    "BC-SKL-06015",
+    "BC-SKL-06016"
+   ],
+   "sources": [
+    "research/units/unit-06-integration-accumulation.md#6.3 Riemann Sums, Summation Notation, and Definite Integral Notation",
+    "BC-QA-06014"
+   ],
+   "evidence_tag": "inferred",
+   "text": "Right sums for ex-1 at n = 2, 4, 8, 16, 100: 39, 32.25, 29.06, 27.52, 26.24. They settle on 26, the integral.",
+   "figure": {
+    "kind": "numeric_experiment",
+    "function": "3*x**2",
+    "interval": [
+     1,
+     3
+    ],
+    "sum": "right",
+    "n_values": [
+     2,
+     4,
+     8,
+     16,
+     100
+    ],
+    "columns": [
+     "n",
+     "right sum"
+    ],
+    "labels": [
+     {
+      "text": "sums approach 26",
+      "placement": "inside",
+      "at": "row below the last value"
+     }
+    ]
+   },
+   "delivery": {
+    "mode": "model",
+    "reason": "template model row and rule 2: the idea is the behaviour of a computed sequence, Riemann sums at growing n (unit README delivery map)",
+    "sources": [
+     "BC-QA-06014",
+     "BC-EK-LIM-5C1"
+    ],
+    "spec": {
+     "kind": "numeric_experiment",
+     "representations": [
+      "BC-REP-03"
+     ],
+     "function": "3*x**2",
+     "interval": [
+      1,
+      3
+     ],
+     "sum": "right",
+     "n_values": [
+      2,
+      4,
+      8,
+      16,
+      100
+     ],
+     "columns": [
+      "n",
+      "right sum"
+     ],
+     "labels": [
+      {
+       "text": "n",
+       "placement": "inside",
+       "at": "first column header"
+      },
+      {
+       "text": "sums approach 26",
+       "placement": "inside",
+       "at": "row below the last value"
+      }
+     ]
+    },
+    "fallback": "the five computed rows printed as a static table with the closing label",
+    "keyboard": "a Run control reached by Tab and pressed with Enter or Space adds one row per press; the table is read in row order"
+   }
+  },
+  {
+   "id": "LSN-CON-06006#prq-BC-PRQ-06006",
+   "type": "prerequisite_bridge",
+   "bands": [
+    "low",
+    "mid"
+   ],
+   "skills": [
+    "BC-SKL-06014",
+    "BC-SKL-06015",
+    "BC-SKL-06016"
+   ],
+   "sources": [
+    "BC-PRQ-06006"
+   ],
+   "evidence_tag": "inferred",
+   "prerequisite_id": "BC-PRQ-06006",
+   "text": "Sigma notation: one term per index value from the lower to the upper limit; a wrong substitution or an off-by-one count changes the sample point."
+  }
+ ],
+ "checks": [
+  {
+   "id": "LSN-CON-06006#chk-1",
+   "check_kind": "completion",
+   "bands": [
+    "low",
+    "mid"
+   ],
+   "format": "short_answer",
+   "archetype_id": "BC-QA-06014",
+   "parameter_draw": {
+    "direction": "to_integral",
+    "function": "square",
+    "coefficient": 3,
+    "start": 1,
+    "width": 2,
+    "convention": "right",
+    "letter": "x"
+   },
+   "completes": "LSN-CON-06006#s6",
+   "stem": {
+    "text": "Width 2/n, height 3(1 + 2i/n)^2, sample points running from 1 to 3. Write the integral.",
+    "command_verb": "write"
+   },
+   "answer_key": {
+    "form": "symbolic",
+    "mathjson": [
+     "Integrate",
+     [
+      "Multiply",
+      3,
+      [
+       "Power",
+       "x",
+       2
+      ]
+     ],
+     [
+      "Tuple",
+      "x",
+      1,
+      3
+     ]
+    ]
+   },
+   "worked_solution": [
+    {
+     "step": 1,
+     "text": "Height 3x^2 on [1, 3].",
+     "mathjson": [
+      "Integrate",
+      [
+       "Multiply",
+       3,
+       [
+        "Power",
+        "x",
+        2
+       ]
+      ],
+      [
+       "Tuple",
+       "x",
+       1,
+       3
+      ]
+     ],
+     "relation": "new"
+    }
+   ],
+   "calculator_status": "no_calculator",
+   "representation": "BC-REP-01",
+   "skills": [
+    "BC-SKL-06014"
+   ]
+  },
+  {
+   "id": "LSN-CON-06006#chk-2",
+   "check_kind": "isomorph",
+   "bands": [
+    "low",
+    "mid"
+   ],
+   "format": "short_answer",
+   "archetype_id": "BC-QA-06014",
+   "parameter_draw": {
+    "direction": "to_integral",
+    "function": "cube",
+    "coefficient": 2,
+    "start": 2,
+    "width": 2,
+    "convention": "left",
+    "letter": "t"
+   },
+   "stem": {
+    "text": "Write lim_(n→∞) Σ_(i=1)^n 2(2 + 2(i - 1)/n)^3 (2/n) as a definite integral.",
+    "command_verb": "write"
+   },
+   "answer_key": {
+    "form": "symbolic",
+    "mathjson": [
+     "Integrate",
+     [
+      "Multiply",
+      2,
+      [
+       "Power",
+       "t",
+       3
+      ]
+     ],
+     [
+      "Tuple",
+      "t",
+      2,
+      4
+     ]
+    ]
+   },
+   "worked_solution": [
+    {
+     "step": 1,
+     "text": "The limit.",
+     "mathjson": [
+      "Limit",
+      [
+       "Sum",
+       [
+        "Multiply",
+        4,
+        [
+         "Power",
+         "n",
+         -1
+        ],
+        [
+         "Power",
+         [
+          "Add",
+          2,
+          [
+           "Multiply",
+           [
+            "Power",
+            "n",
+            -1
+           ],
+           [
+            "Add",
+            -2,
+            [
+             "Multiply",
+             2,
+             "i"
+            ]
+           ]
+          ]
+         ],
+         3
+        ]
+       ],
+       [
+        "Tuple",
+        "i",
+        1,
+        "n"
+       ]
+      ],
+      "n",
+      "PositiveInfinity",
+      "-"
+     ],
+     "relation": "new"
+    },
+    {
+     "step": 2,
+     "text": "Width 2/n, start 2, height 2t^3.",
+     "mathjson": [
+      "Integrate",
+      [
+       "Multiply",
+       2,
+       [
+        "Power",
+        "t",
+        3
+       ]
+      ],
+      [
+       "Tuple",
+       "t",
+       2,
+       4
+      ]
+     ],
+     "relation": "equivalent"
+    }
+   ],
+   "calculator_status": "no_calculator",
+   "representation": "BC-REP-01",
+   "skills": [
+    "BC-SKL-06014"
+   ]
+  },
+  {
+   "id": "LSN-CON-06006#chk-3",
+   "check_kind": "mcq",
+   "bands": [
+    "low"
+   ],
+   "format": "mcq",
+   "archetype_id": "BC-QA-06014",
+   "parameter_draw": {
+    "direction": "to_integral",
+    "function": "square",
+    "coefficient": 1,
+    "start": 2,
+    "width": 3,
+    "convention": "right",
+    "letter": "x"
+   },
+   "stem": {
+    "text": "Which integral equals lim_(n→∞) Σ_(i=1)^n (2 + 3i/n)^2 (3/n)?",
+    "command_verb": "identify"
+   },
+   "answer_key": {
+    "form": "symbolic",
+    "mathjson": [
+     "Integrate",
+     [
+      "Power",
+      "x",
+      2
+     ],
+     [
+      "Tuple",
+      "x",
+      2,
+      5
+     ]
+    ]
+   },
+   "worked_solution": [
+    {
+     "step": 1,
+     "text": "The limit.",
+     "mathjson": [
+      "Limit",
+      [
+       "Sum",
+       [
+        "Multiply",
+        3,
+        [
+         "Power",
+         "n",
+         -1
+        ],
+        [
+         "Power",
+         [
+          "Add",
+          2,
+          [
+           "Multiply",
+           3,
+           "i",
+           [
+            "Power",
+            "n",
+            -1
+           ]
+          ]
+         ],
+         2
+        ]
+       ],
+       [
+        "Tuple",
+        "i",
+        1,
+        "n"
+       ]
+      ],
+      "n",
+      "PositiveInfinity",
+      "-"
+     ],
+     "relation": "new"
+    },
+    {
+     "step": 2,
+     "text": "Width 3/n, start 2, height x^2.",
+     "mathjson": [
+      "Integrate",
+      [
+       "Power",
+       "x",
+       2
+      ],
+      [
+       "Tuple",
+       "x",
+       2,
+       5
+      ]
+     ],
+     "relation": "equivalent"
+    }
+   ],
+   "options": [
+    {
+     "id": "A",
+     "is_key": false,
+     "error_path": "BC-ERR-99032",
+     "value": [
+      "Integrate",
+      [
+       "Power",
+       "x",
+       2
+      ],
+      [
+       "Tuple",
+       "x",
+       0,
+       3
+      ]
+     ],
+     "derivation": "limits never given, read off the width as 0 to 3"
+    },
+    {
+     "id": "B",
+     "is_key": true,
+     "error_path": null,
+     "value": [
+      "Integrate",
+      [
+       "Power",
+       "x",
+       2
+      ],
+      [
+       "Tuple",
+       "x",
+       2,
+       5
+      ]
+     ]
+    },
+    {
+     "id": "C",
+     "is_key": false,
+     "error_path": "BC-ERR-99028",
+     "value": [
+      "Integrate",
+      [
+       "Power",
+       [
+        "Add",
+        2,
+        [
+         "Multiply",
+         3,
+         "x"
+        ]
+       ],
+       2
+      ],
+      [
+       "Tuple",
+       "x",
+       0,
+       1
+      ]
+     ],
+     "derivation": "the width factor 3 dropped when i/n becomes x"
+    },
+    {
+     "id": "D",
+     "is_key": false,
+     "error_path": "BC-ERR-99032",
+     "value": [
+      "Integrate",
+      [
+       "Power",
+       "x",
+       2
+      ],
+      [
+       "Tuple",
+       "x",
+       5,
+       2
+      ]
+     ],
+     "derivation": "the limits reversed"
+    }
+   ],
+   "calculator_status": "no_calculator",
+   "representation": "BC-REP-01",
+   "skills": [
+    "BC-SKL-06014"
+   ]
+  }
+ ],
+ "refresher": [
+  "LSN-CON-06006#s2",
+  "LSN-CON-06006#s3",
+  "LSN-CON-06006#err-BC-ERR-99028",
+  "LSN-CON-06006#err-BC-ERR-99032",
+  "LSN-CON-06006#s6"
+ ],
+ "provenance": {
+  "author": "tools/lesson_transcribe.py",
+  "prompt_version": "generator/lesson_v1",
+  "design_path": "docs/lessons/unit-06/LSN-CON-06006.md",
+  "signed_off_by": "claude-opus-5-5",
+  "signed_off_at": "2026-09-29",
+  "not_human": true
+ }
+}

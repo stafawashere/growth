@@ -1,0 +1,762 @@
+{
+ "id": "LSN-CON-08007",
+ "version": 1,
+ "kind": "concept",
+ "target_id": "BC-CON-08007",
+ "status": "signed_off",
+ "snapshot_digest": "a6a8ec9d3f59ab8f712e33d30cc22fc64bf2c478fbe7312e3e3118d319c6a42f",
+ "source_digest": "5c9677c5264ed8fa0e883c4dec47fc00cd61eab5fa9a92c674a687e2edb5db41",
+ "read_minutes": {
+  "full": 3.1,
+  "brief": 2.9
+ },
+ "word_count": {
+  "full": 398,
+  "brief": 364
+ },
+ "sections": [
+  {
+   "id": "LSN-CON-08007#s1",
+   "type": "orientation",
+   "bands": [
+    "low",
+    "mid"
+   ],
+   "skills": [
+    "BC-SKL-08013"
+   ],
+   "sources": [
+    "BC-CON-08007",
+    "research/units/unit-08-applications-integration.md#8.3 Using Accumulation Functions and Definite Integrals in Applied Contexts"
+   ],
+   "evidence_tag": "inferred",
+   "text": "A response writes one integral of inflow minus (outflow), adds the initial amount when an amount is asked, and reports three decimals.",
+   "delivery": {
+    "mode": "text",
+    "reason": "rule 6: BC-REP-05 and 01 on BC-SKL-08013, none figure-bearing",
+    "sources": [
+     "BC-SKL-08013"
+    ]
+   }
+  },
+  {
+   "id": "LSN-CON-08007#s2",
+   "type": "key_ideas",
+   "bands": [
+    "low",
+    "mid"
+   ],
+   "skills": [
+    "BC-SKL-08013"
+   ],
+   "sources": [
+    "BC-EK-CHA-4D2",
+    "ced:154",
+    "research/units/unit-08-applications-integration.md#8.3 Using Accumulation Functions and Definite Integrals in Applied Contexts"
+   ],
+   "evidence_tag": "inferred",
+   "ek_id": "BC-EK-CHA-4D2",
+   "depth": "core",
+   "text": "The integral of a rate over an interval is the net change. With inflow E and outflow L at once, the net rate is E minus L; the amount rises where it is positive.",
+   "notation": "rate in minus rate out",
+   "delivery": {
+    "mode": "text",
+    "reason": "rule 6: a rule for combining two rates; unit README delivery map names text",
+    "sources": [
+     "BC-SKL-08013"
+    ]
+   }
+  },
+  {
+   "id": "LSN-CON-08007#s3",
+   "type": "key_ideas",
+   "bands": [
+    "low"
+   ],
+   "skills": [
+    "BC-SKL-08013"
+   ],
+   "sources": [
+    "BC-EK-CHA-4E1",
+    "ced:154",
+    "sg-24:4",
+    "research/units/unit-08-applications-integration.md#8.3 Using Accumulation Functions and Definite Integrals in Applied Contexts"
+   ],
+   "evidence_tag": "inferred",
+   "ek_id": "BC-EK-CHA-4E1",
+   "depth": "extended",
+   "text": "In context, the integral of E minus L over [a, b] is the net change in the amount, in the rate's units times the time units. The amount at b adds the initial amount.",
+   "delivery": {
+    "mode": "text",
+    "reason": "rule 6: an interpretation habit",
+    "sources": [
+     "BC-SKL-08013"
+    ]
+   }
+  },
+  {
+   "id": "LSN-CON-08007#s4",
+   "type": "strategy",
+   "bands": [
+    "low",
+    "mid"
+   ],
+   "skills": [
+    "BC-SKL-08013"
+   ],
+   "sources": [
+    "BC-QA-06006"
+   ],
+   "evidence_tag": "verified",
+   "archetype_id": "BC-QA-06006",
+   "cue": "An inflow rate, an outflow rate and an initial amount; the amount or the change is asked.",
+   "method": "First: which rate increases the quantity and which decreases it.",
+   "rival": "Rival: dropping the parentheses around the outflow rate, or subtracting the wrong way round.",
+   "separating_feature": "The verb on each rate: enters adds, leaves subtracts."
+  },
+  {
+   "id": "LSN-CON-08007#s5",
+   "type": "worked_example",
+   "bands": [
+    "low",
+    "mid"
+   ],
+   "skills": [
+    "BC-SKL-08013"
+   ],
+   "sources": [
+    "BC-QA-06006"
+   ],
+   "evidence_tag": "inferred",
+   "archetype_id": "BC-QA-06006",
+   "parameter_draw": {
+    "inflow_base": 6,
+    "inflow_swing": 2,
+    "stretch": 3,
+    "outflow_base": 3,
+    "outflow_swing": 1,
+    "horizon": 3,
+    "initial": 50,
+    "context": "tank",
+    "ask": "amount"
+   },
+   "problem": {
+    "text": "Water enters a tank at E(t) = 6 + 2sin(t^2/3) and leaves at L(t) = 3 + cos(t/2) gallons per hour. At t = 0 it holds 50 gallons. Find the amount at t = 3.",
+    "command_verb": "find"
+   },
+   "calculator_status": "calculator",
+   "steps": [
+    {
+     "cue": "Two rates: enters and leaves.",
+     "why": "E raises the amount, L lowers it: net rate E - L."
+    },
+    {
+     "cue": "Amount at t = 3, with 50 gallons at t = 0.",
+     "why": "L in parentheses, so all of it subtracts.",
+     "expression": [
+      "Add",
+      50,
+      [
+       "Integrate",
+       [
+        "Add",
+        3,
+        [
+         "Multiply",
+         -1,
+         [
+          "Cos",
+          [
+           "Multiply",
+           [
+            "Rational",
+            1,
+            2
+           ],
+           "t"
+          ]
+         ]
+        ],
+        [
+         "Multiply",
+         2,
+         [
+          "Sin",
+          [
+           "Multiply",
+           [
+            "Rational",
+            1,
+            3
+           ],
+           [
+            "Power",
+            "t",
+            2
+           ]
+          ]
+         ]
+        ]
+       ],
+       [
+        "Tuple",
+        "t",
+        0,
+        3
+       ]
+      ]
+     ],
+     "point_type_id": "BC-PT-99001",
+     "relation": "new"
+    },
+    {
+     "cue": "Setup written; calculator in radian mode.",
+     "why": "Gallons, three places.",
+     "expression": 60.095,
+     "relation": "evaluate",
+     "subs": {},
+     "approx": true
+    }
+   ],
+   "answer": {
+    "form": "numeric",
+    "mathjson": 60.095
+   },
+   "delivery": {
+    "mode": "step_reveal",
+    "reason": "rule 1",
+    "sources": []
+   }
+  },
+  {
+   "id": "LSN-CON-08007#s6",
+   "type": "what_a_reader_scores",
+   "bands": [
+    "low",
+    "mid"
+   ],
+   "skills": [
+    "BC-SKL-08013"
+   ],
+   "sources": [
+    "BC-PT-99001"
+   ],
+   "evidence_tag": "verified",
+   "example_id": "LSN-CON-08007#s5",
+   "lines": [
+    {
+     "point_type_id": "BC-PT-99001",
+     "text": "Definite integral expression with correct limits. Earned by: A definite integral whose limits match the requested interval and whose integrand matches the requested quantity, with or without the differential (sg-26:4, sg-22:2). Not earned by: An unsupported numerical value, or a definite integral whose bounds are wrong (sg-22:18). Notation: Differential may be omitted; sg-22:2 accepts dx written for dt. sg-23:8 treats a missing differential as recoverable for this point but restricts later eligibility."
+    }
+   ]
+  },
+  {
+   "id": "LSN-CON-08007#err-BC-ERR-08013",
+   "type": "common_error",
+   "bands": [
+    "low",
+    "mid"
+   ],
+   "skills": [
+    "BC-SKL-08013"
+   ],
+   "sources": [
+    "BC-ERR-08013",
+    "BC-MIS-08007"
+   ],
+   "evidence_tag": "inferred",
+   "error_id": "BC-ERR-08013",
+   "observed_behavior": "The net rate is written as the sum of the two rates, or the difference is taken in the wrong order.",
+   "scoring_consequence": "The setup point is lost.",
+   "wrong_step": {
+    "text": "E + L.",
+    "expression": [
+     "Add",
+     50,
+     [
+      "Integrate",
+      [
+       "Add",
+       9,
+       [
+        "Multiply",
+        2,
+        [
+         "Sin",
+         [
+          "Multiply",
+          [
+           "Rational",
+           1,
+           3
+          ],
+          [
+           "Power",
+           "t",
+           2
+          ]
+         ]
+        ]
+       ],
+       [
+        "Cos",
+        [
+         "Multiply",
+         [
+          "Rational",
+          1,
+          2
+         ],
+         "t"
+        ]
+       ]
+      ],
+      [
+       "Tuple",
+       "t",
+       0,
+       3
+      ]
+     ]
+    ]
+   },
+   "right_step": {
+    "text": "E - L.",
+    "expression": [
+     "Add",
+     50,
+     [
+      "Integrate",
+      [
+       "Add",
+       3,
+       [
+        "Multiply",
+        -1,
+        [
+         "Cos",
+         [
+          "Multiply",
+          [
+           "Rational",
+           1,
+           2
+          ],
+          "t"
+         ]
+        ]
+       ],
+       [
+        "Multiply",
+        2,
+        [
+         "Sin",
+         [
+          "Multiply",
+          [
+           "Rational",
+           1,
+           3
+          ],
+          [
+           "Power",
+           "t",
+           2
+          ]
+         ]
+        ]
+       ]
+      ],
+      [
+       "Tuple",
+       "t",
+       0,
+       3
+      ]
+     ]
+    ]
+   },
+   "relation": "distinct",
+   "possible_reason": {
+    "misconception_id": "BC-MIS-08007",
+    "text": "attaches accumulation to every rate in the problem"
+   },
+   "delivery": {
+    "mode": "step_reveal",
+    "reason": "rule 1",
+    "sources": []
+   }
+  },
+  {
+   "id": "LSN-CON-08007#err-BC-ERR-99009",
+   "type": "common_error",
+   "bands": [
+    "low",
+    "mid"
+   ],
+   "skills": [
+    "BC-SKL-08013"
+   ],
+   "sources": [
+    "BC-ERR-99009",
+    "BC-MIS-08007"
+   ],
+   "evidence_tag": "inferred",
+   "error_id": "BC-ERR-99009",
+   "observed_behavior": "Responses that replace named functions by their given analytic expressions fail to distribute a subtraction or omit the grouping parentheses, changing the integrand.",
+   "scoring_consequence": "The integrand point is lost; the answer point may survive if a correct calculator value is also reported.",
+   "wrong_step": {
+    "text": "No parentheses: cos(t/2) added.",
+    "expression": [
+     "Add",
+     50,
+     [
+      "Integrate",
+      [
+       "Add",
+       3,
+       [
+        "Multiply",
+        2,
+        [
+         "Sin",
+         [
+          "Multiply",
+          [
+           "Rational",
+           1,
+           3
+          ],
+          [
+           "Power",
+           "t",
+           2
+          ]
+         ]
+        ]
+       ],
+       [
+        "Cos",
+        [
+         "Multiply",
+         [
+          "Rational",
+          1,
+          2
+         ],
+         "t"
+        ]
+       ]
+      ],
+      [
+       "Tuple",
+       "t",
+       0,
+       3
+      ]
+     ]
+    ]
+   },
+   "right_step": {
+    "text": "Parentheses kept.",
+    "expression": [
+     "Add",
+     50,
+     [
+      "Integrate",
+      [
+       "Add",
+       3,
+       [
+        "Multiply",
+        -1,
+        [
+         "Cos",
+         [
+          "Multiply",
+          [
+           "Rational",
+           1,
+           2
+          ],
+          "t"
+         ]
+        ]
+       ],
+       [
+        "Multiply",
+        2,
+        [
+         "Sin",
+         [
+          "Multiply",
+          [
+           "Rational",
+           1,
+           3
+          ],
+          [
+           "Power",
+           "t",
+           2
+          ]
+         ]
+        ]
+       ]
+      ],
+      [
+       "Tuple",
+       "t",
+       0,
+       3
+      ]
+     ]
+    ]
+   },
+   "relation": "distinct",
+   "possible_reason": {
+    "misconception_id": "BC-MIS-08007",
+    "text": "without attending to the direction in which each one moves the quantity"
+   },
+   "delivery": {
+    "mode": "step_reveal",
+    "reason": "rule 1",
+    "sources": []
+   }
+  },
+  {
+   "id": "LSN-CON-08007#prq-BC-PRQ-06005",
+   "type": "prerequisite_bridge",
+   "bands": [
+    "low",
+    "mid"
+   ],
+   "skills": [
+    "BC-SKL-08013"
+   ],
+   "sources": [
+    "BC-PRQ-06005"
+   ],
+   "evidence_tag": "inferred",
+   "prerequisite_id": "BC-PRQ-06005",
+   "text": "E(t) and L(t) are rates; 50 is an amount at t = 0."
+  }
+ ],
+ "checks": [
+  {
+   "id": "LSN-CON-08007#chk-1",
+   "check_kind": "completion",
+   "bands": [
+    "low",
+    "mid"
+   ],
+   "format": "short_answer",
+   "archetype_id": "BC-QA-06006",
+   "parameter_draw": {
+    "inflow_base": 6,
+    "inflow_swing": 2,
+    "stretch": 3,
+    "outflow_base": 3,
+    "outflow_swing": 1,
+    "horizon": 3,
+    "initial": 50,
+    "context": "tank",
+    "ask": "amount"
+   },
+   "completes": "LSN-CON-08007#s5",
+   "stem": {
+    "text": "Evaluate 50 + the integral from 0 to 3 of (6 + 2sin(t^2/3) - (3 + cos(t/2))) dt, to three places.",
+    "command_verb": "evaluate"
+   },
+   "answer_key": {
+    "form": "numeric",
+    "mathjson": 60.095
+   },
+   "worked_solution": [
+    {
+     "step": 1,
+     "text": "Setup.",
+     "mathjson": [
+      "Add",
+      50,
+      [
+       "Integrate",
+       [
+        "Add",
+        3,
+        [
+         "Multiply",
+         -1,
+         [
+          "Cos",
+          [
+           "Multiply",
+           [
+            "Rational",
+            1,
+            2
+           ],
+           "t"
+          ]
+         ]
+        ],
+        [
+         "Multiply",
+         2,
+         [
+          "Sin",
+          [
+           "Multiply",
+           [
+            "Rational",
+            1,
+            3
+           ],
+           [
+            "Power",
+            "t",
+            2
+           ]
+          ]
+         ]
+        ]
+       ],
+       [
+        "Tuple",
+        "t",
+        0,
+        3
+       ]
+      ]
+     ],
+     "relation": "new"
+    },
+    {
+     "step": 2,
+     "text": "Calculator.",
+     "mathjson": 60.095,
+     "relation": "evaluate",
+     "subs": {},
+     "approx": true
+    }
+   ],
+   "calculator_status": "calculator",
+   "representation": "BC-REP-01",
+   "skills": [
+    "BC-SKL-08013"
+   ]
+  },
+  {
+   "id": "LSN-CON-08007#chk-2",
+   "check_kind": "isomorph",
+   "bands": [
+    "low",
+    "mid"
+   ],
+   "format": "short_answer",
+   "archetype_id": "BC-QA-06006",
+   "parameter_draw": {
+    "inflow_base": 8,
+    "inflow_swing": 1,
+    "stretch": 4,
+    "outflow_base": 2,
+    "outflow_swing": 2,
+    "horizon": 2,
+    "initial": 30,
+    "context": "silo",
+    "ask": "amount"
+   },
+   "stem": {
+    "text": "Grain is loaded at 8 + sin(t^2/4) and unloaded at 2 + 2cos(t/2) tons per hour. The silo holds 30 tons at t = 0. Find the amount at t = 2.",
+    "command_verb": "find"
+   },
+   "answer_key": {
+    "form": "numeric",
+    "mathjson": 39.255
+   },
+   "worked_solution": [
+    {
+     "step": 1,
+     "text": "Setup.",
+     "mathjson": [
+      "Add",
+      30,
+      [
+       "Integrate",
+       [
+        "Add",
+        6,
+        [
+         "Multiply",
+         -2,
+         [
+          "Cos",
+          [
+           "Multiply",
+           [
+            "Rational",
+            1,
+            2
+           ],
+           "t"
+          ]
+         ]
+        ],
+        [
+         "Sin",
+         [
+          "Multiply",
+          [
+           "Rational",
+           1,
+           4
+          ],
+          [
+           "Power",
+           "t",
+           2
+          ]
+         ]
+        ]
+       ],
+       [
+        "Tuple",
+        "t",
+        0,
+        2
+       ]
+      ]
+     ],
+     "relation": "new"
+    },
+    {
+     "step": 2,
+     "text": "Calculator.",
+     "mathjson": 39.255,
+     "relation": "evaluate",
+     "subs": {},
+     "approx": true
+    }
+   ],
+   "calculator_status": "calculator",
+   "representation": "BC-REP-01",
+   "skills": [
+    "BC-SKL-08013"
+   ]
+  }
+ ],
+ "refresher": [
+  "LSN-CON-08007#s2",
+  "LSN-CON-08007#err-BC-ERR-08013",
+  "LSN-CON-08007#err-BC-ERR-99009",
+  "LSN-CON-08007#s5"
+ ],
+ "provenance": {
+  "author": "tools/lesson_transcribe.py",
+  "prompt_version": "generator/lesson_v1",
+  "design_path": "docs/lessons/unit-08/LSN-CON-08007.md",
+  "signed_off_by": "claude-opus-5-5",
+  "signed_off_at": "2026-09-29",
+  "not_human": true
+ }
+}

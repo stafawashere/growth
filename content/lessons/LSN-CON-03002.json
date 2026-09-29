@@ -1,0 +1,1027 @@
+{
+ "id": "LSN-CON-03002",
+ "version": 1,
+ "kind": "concept",
+ "target_id": "BC-CON-03002",
+ "status": "signed_off",
+ "snapshot_digest": "a6a8ec9d3f59ab8f712e33d30cc22fc64bf2c478fbe7312e3e3118d319c6a42f",
+ "source_digest": "0b3e6c652ee4d156e507ce1393c3aaeb2d36d6cea04910b6defb1d5fb58a5614",
+ "read_minutes": {
+  "full": 5.1,
+  "brief": 2.8
+ },
+ "word_count": {
+  "full": 644,
+  "brief": 327
+ },
+ "sections": [
+  {
+   "id": "LSN-CON-03002#s1",
+   "type": "orientation",
+   "bands": [
+    "low",
+    "mid"
+   ],
+   "skills": [
+    "BC-SKL-03002",
+    "BC-SKL-03004",
+    "BC-SKL-03005",
+    "BC-SKL-03006"
+   ],
+   "sources": [
+    "BC-CON-03002",
+    "research/units/unit-03-differentiation-composite-implicit-inverse.md#3.1 The Chain Rule"
+   ],
+   "evidence_tag": "inferred",
+   "text": "A response multiplies two rates: the outer derivative, read at the inner output, times the inner derivative, read at the input. Stems give a formula, a table of values or two graphs.",
+   "delivery": {
+    "mode": "text",
+    "reason": "rule 5 for a statement of what a response shows; the figure-bearing BC-REP-02 on BC-SKL-03005 is served once, on ki-1",
+    "sources": [
+     "BC-SKL-03002"
+    ]
+   }
+  },
+  {
+   "id": "LSN-CON-03002#s2",
+   "type": "key_ideas",
+   "bands": [
+    "low",
+    "mid"
+   ],
+   "skills": [
+    "BC-SKL-03002",
+    "BC-SKL-03004",
+    "BC-SKL-03005",
+    "BC-SKL-03006"
+   ],
+   "sources": [
+    "BC-EK-FUN-3C1",
+    "ced:75",
+    "ced:72",
+    "research/units/unit-03-differentiation-composite-implicit-inverse.md#3.1 The Chain Rule"
+   ],
+   "evidence_tag": "inferred",
+   "ek_id": "BC-EK-FUN-3C1",
+   "depth": "core",
+   "text": "With y a function of u and u a function of x, dy/dx is dy/du times du/dx. For h = f(g(x)) at x = a, the outer rate f' is read at the inner output g(a), not at a; the inner rate g' is read at a. A table or two graphs give the same readings, taken in that order.",
+   "notation": "dy/dx equals dy/du times du/dx",
+   "delivery": {
+    "mode": "figure",
+    "reason": "rule 3: BC-REP-02 on BC-SKL-03005; not promoted, since BC-QA-03003's difficulty_variables are properties of a fixed graph",
+    "sources": [
+     "BC-SKL-03005",
+     "BC-QA-03003"
+    ],
+    "spec": {
+     "kind": "graph_pair",
+     "representations": [
+      "BC-REP-02"
+     ],
+     "panels": [
+      {
+       "name": "g",
+       "curve": "polygon through (0,1), (2,3), (4,2)",
+       "marks": [
+        {
+         "at": [
+          1,
+          2
+         ],
+         "what": "point (a, g(a))"
+        }
+       ],
+       "labels": [
+        {
+         "text": "g(a) = u",
+         "placement": "inside"
+        },
+        {
+         "text": "slope g'(a)",
+         "placement": "inside"
+        }
+       ]
+      },
+      {
+       "name": "f",
+       "curve": "polygon through (0,0), (2,2), (4,-1)",
+       "marks": [
+        {
+         "at": [
+          2,
+          2
+         ],
+         "what": "the vertical line u = g(a)"
+        }
+       ],
+       "labels": [
+        {
+         "text": "read f' here, at u = g(a)",
+         "placement": "inside"
+        },
+        {
+         "text": "not at x = a",
+         "placement": "inside"
+        }
+       ]
+      }
+     ]
+    },
+    "fallback": "the two panels as a static image with the same labels, and a text line: read g(a) first, then the slope of f at that value, then multiply by the slope of g at a",
+    "keyboard": "none needed: the figure has no control"
+   }
+  },
+  {
+   "id": "LSN-CON-03002#s3",
+   "type": "strategy",
+   "bands": [
+    "low",
+    "mid"
+   ],
+   "skills": [
+    "BC-SKL-03004",
+    "BC-SKL-03006"
+   ],
+   "sources": [
+    "BC-QA-03002"
+   ],
+   "evidence_tag": "verified",
+   "archetype_id": "BC-QA-03002",
+   "cue": "The stem asks for the composite's derivative at the stated input, from a table of f, f', g and g'.",
+   "method": "First written line: the inner function at the given input, g(a).",
+   "rival": "Rival: the outer derivative read at the stated input (BC-ERR-03003).",
+   "separating_feature": "The outer derivative's row is g(a)."
+  },
+  {
+   "id": "LSN-CON-03002#s4",
+   "type": "strategy",
+   "bands": [
+    "low",
+    "mid"
+   ],
+   "skills": [
+    "BC-SKL-03002",
+    "BC-SKL-03006"
+   ],
+   "sources": [
+    "BC-QA-03001"
+   ],
+   "evidence_tag": "verified",
+   "archetype_id": "BC-QA-03001",
+   "cue": "The stem asks for the composite's derivative, from a formula built by composition, possibly one factor of a product.",
+   "method": "First written line: identify the outer and inner functions.",
+   "rival": "Rival: the composite factor differentiated without the enclosing product or quotient rule (BC-ERR-03006).",
+   "separating_feature": "The operation applied last picks the first rule."
+  },
+  {
+   "id": "LSN-CON-03002#s5",
+   "type": "strategy",
+   "bands": [
+    "low",
+    "mid"
+   ],
+   "skills": [
+    "BC-SKL-03005"
+   ],
+   "sources": [
+    "BC-QA-03003"
+   ],
+   "evidence_tag": "verified",
+   "archetype_id": "BC-QA-03003",
+   "cue": "The stem asks for the derivative of the composite at the stated input, from graphs of the two component functions.",
+   "method": "First written line: the inner function value read at the given input.",
+   "rival": "Rival: a slope read at a corner of the graph as though the derivative existed there (BC-ERR-03005).",
+   "separating_feature": "The outer slope is read on the piece containing the inner output."
+  },
+  {
+   "id": "LSN-CON-03002#s6",
+   "type": "worked_example",
+   "bands": [
+    "low",
+    "mid"
+   ],
+   "skills": [
+    "BC-SKL-03004",
+    "BC-SKL-03006"
+   ],
+   "sources": [
+    "BC-QA-03002"
+   ],
+   "evidence_tag": "inferred",
+   "archetype_id": "BC-QA-03002",
+   "parameter_draw": {
+    "f_values": [
+     2,
+     -1,
+     5,
+     4
+    ],
+    "f_slopes": [
+     4,
+     -2,
+     -3,
+     1
+    ],
+    "g_values": [
+     3,
+     1,
+     4,
+     2
+    ],
+    "g_slopes": [
+     2,
+     -1,
+     3,
+     1
+    ],
+    "at": 1,
+    "names": "f,g",
+    "direction": "forward"
+   },
+   "problem": {
+    "text": "At x = 1, 2, 3, 4: f is 2, -1, 5, 4; f' is 4, -2, -3, 1; g is 3, 1, 4, 2; g' is 2, -1, 3, 1. h(x) = f(g(x)). Find h'(1).",
+    "command_verb": "find"
+   },
+   "calculator_status": "no_calculator",
+   "steps": [
+    {
+     "cue": "h is f of g: read the inner value first.",
+     "why": "g(1) = 3 names the row for f'."
+    },
+    {
+     "cue": "Outer rate at the inner output, row 3.",
+     "why": "f'(3) = -3."
+    },
+    {
+     "cue": "Inner rate at the input: g'(1) = 2.",
+     "why": "The two rates multiply.",
+     "expression": -6,
+     "relation": "new"
+    },
+    {
+     "cue": "The stem asks for a value.",
+     "why": "Product of the rates.",
+     "expression": -6,
+     "relation": "equivalent"
+    }
+   ],
+   "answer": {
+    "form": "numeric",
+    "mathjson": -6
+   },
+   "delivery": {
+    "mode": "step_reveal",
+    "reason": "rule 1; the tabulated values render as a table inside the problem (BC-REP-03 given)",
+    "sources": [
+     "BC-SKL-03004"
+    ]
+   }
+  },
+  {
+   "id": "LSN-CON-03002#s7",
+   "type": "worked_example",
+   "bands": [
+    "low"
+   ],
+   "skills": [
+    "BC-SKL-03002",
+    "BC-SKL-03006"
+   ],
+   "sources": [
+    "BC-QA-03001"
+   ],
+   "evidence_tag": "inferred",
+   "archetype_id": "BC-QA-03001",
+   "parameter_draw": {
+    "family": "root",
+    "exponent": 2,
+    "inner_slope": 2,
+    "at": 1,
+    "outside_power": 1,
+    "target": 3,
+    "scale": 1
+   },
+   "problem": {
+    "text": "Let h(x) = x sqrt(2x^2 + 7). Find h'(1).",
+    "command_verb": "find"
+   },
+   "calculator_status": "no_calculator",
+   "steps": [
+    {
+     "cue": "Last operation: x times a root. The root is a composite.",
+     "why": "Product rule outside; inner u = 2x^2 + 7.",
+     "expression": [
+      "Power",
+      [
+       "Add",
+       7,
+       [
+        "Multiply",
+        2,
+        [
+         "Power",
+         "x",
+         2
+        ]
+       ]
+      ],
+      [
+       "Rational",
+       1,
+       2
+      ]
+     ],
+     "relation": "new"
+    },
+    {
+     "cue": "Root derivative at the inner expression.",
+     "why": "1/(2 sqrt(u)) times the inner rate 4x.",
+     "expression": [
+      "Multiply",
+      2,
+      "x",
+      [
+       "Power",
+       [
+        "Add",
+        7,
+        [
+         "Multiply",
+         2,
+         [
+          "Power",
+          "x",
+          2
+         ]
+        ]
+       ],
+       [
+        "Rational",
+        -1,
+        2
+       ]
+      ]
+     ],
+     "point_type_id": "BC-PT-99023",
+     "relation": "differentiate",
+     "variable": "x"
+    },
+    {
+     "cue": "Assemble the product rule.",
+     "why": "Each term differentiates one factor.",
+     "expression": [
+      "Add",
+      [
+       "Power",
+       [
+        "Add",
+        7,
+        [
+         "Multiply",
+         2,
+         [
+          "Power",
+          "x",
+          2
+         ]
+        ]
+       ],
+       [
+        "Rational",
+        1,
+        2
+       ]
+      ],
+      [
+       "Multiply",
+       2,
+       [
+        "Power",
+        "x",
+        2
+       ],
+       [
+        "Power",
+        [
+         "Add",
+         7,
+         [
+          "Multiply",
+          2,
+          [
+           "Power",
+           "x",
+           2
+          ]
+         ]
+        ],
+        [
+         "Rational",
+         -1,
+         2
+        ]
+       ]
+      ]
+     ],
+     "relation": "new"
+    },
+    {
+     "cue": "The stem asks for h'(1).",
+     "why": "The root is 3 at x = 1: 3 + 4/6.",
+     "expression": [
+      "Rational",
+      11,
+      3
+     ],
+     "relation": "evaluate",
+     "subs": {
+      "x": "1"
+     }
+    }
+   ],
+   "answer": {
+    "form": "numeric",
+    "mathjson": [
+     "Rational",
+     11,
+     3
+    ]
+   },
+   "delivery": {
+    "mode": "step_reveal",
+    "reason": "rule 1",
+    "sources": []
+   }
+  },
+  {
+   "id": "LSN-CON-03002#s8",
+   "type": "what_a_reader_scores",
+   "bands": [
+    "low"
+   ],
+   "skills": [
+    "BC-SKL-03002",
+    "BC-SKL-03006"
+   ],
+   "sources": [
+    "BC-PT-99023"
+   ],
+   "evidence_tag": "verified",
+   "example_id": "LSN-CON-03002#s7",
+   "lines": [
+    {
+     "point_type_id": "BC-PT-99023",
+     "text": "Chain rule. Earned by: Correct differentiation of the inner function, including the required differentials (sg-22:16, sg-25:21). Not earned by: A product rule written without one or both differentials, which sg-22:16 states earns the product rule point but not this one. Notation: sg-22:16 treats a missing differential as the defining failure for this point."
+    }
+   ]
+  },
+  {
+   "id": "LSN-CON-03002#err-BC-ERR-03001",
+   "type": "common_error",
+   "bands": [
+    "low",
+    "mid"
+   ],
+   "skills": [
+    "BC-SKL-03002",
+    "BC-SKL-03005"
+   ],
+   "sources": [
+    "BC-ERR-03001",
+    "BC-MIS-03001"
+   ],
+   "evidence_tag": "inferred",
+   "error_id": "BC-ERR-03001",
+   "observed_behavior": "The response differentiates the outer function correctly and stops, leaving the derivative of the inner function out of the product.",
+   "scoring_consequence": "The derivative is wrong, and in a multipart question the error propagates into every later part that uses it.",
+   "wrong_step": {
+    "text": "f'(3) alone: -3.",
+    "expression": -3
+   },
+   "right_step": {
+    "text": "f'(3)g'(1): -6.",
+    "expression": -6
+   },
+   "relation": "distinct",
+   "possible_reason": {
+    "misconception_id": "BC-MIS-03001",
+    "text": "whatever sits inside is copied across unchanged"
+   },
+   "delivery": {
+    "mode": "step_reveal",
+    "reason": "rule 1",
+    "sources": []
+   }
+  },
+  {
+   "id": "LSN-CON-03002#err-BC-ERR-03002",
+   "type": "common_error",
+   "bands": [
+    "low",
+    "mid"
+   ],
+   "skills": [
+    "BC-SKL-03002",
+    "BC-SKL-03006"
+   ],
+   "sources": [
+    "BC-ERR-03002"
+   ],
+   "evidence_tag": "inferred",
+   "error_id": "BC-ERR-03002",
+   "observed_behavior": "A composition of three functions is differentiated through the first two layers and the innermost derivative is omitted.",
+   "scoring_consequence": "The derivative is wrong; no credit is available for a partially applied rule in a single answer item.",
+   "wrong_step": {
+    "text": "ex-2, inner derivative 4x omitted: value 19/6.",
+    "expression": [
+     "Add",
+     [
+      "Power",
+      [
+       "Add",
+       7,
+       [
+        "Multiply",
+        2,
+        [
+         "Power",
+         "x",
+         2
+        ]
+       ]
+      ],
+      [
+       "Rational",
+       1,
+       2
+      ]
+     ],
+     [
+      "Multiply",
+      [
+       "Rational",
+       1,
+       2
+      ],
+      "x",
+      [
+       "Power",
+       [
+        "Add",
+        7,
+        [
+         "Multiply",
+         2,
+         [
+          "Power",
+          "x",
+          2
+         ]
+        ]
+       ],
+       [
+        "Rational",
+        -1,
+        2
+       ]
+      ]
+     ]
+    ]
+   },
+   "right_step": {
+    "text": "Root differentiated.",
+    "expression": [
+     "Add",
+     [
+      "Power",
+      [
+       "Add",
+       7,
+       [
+        "Multiply",
+        2,
+        [
+         "Power",
+         "x",
+         2
+        ]
+       ]
+      ],
+      [
+       "Rational",
+       1,
+       2
+      ]
+     ],
+     [
+      "Multiply",
+      2,
+      [
+       "Power",
+       "x",
+       2
+      ],
+      [
+       "Power",
+       [
+        "Add",
+        7,
+        [
+         "Multiply",
+         2,
+         [
+          "Power",
+          "x",
+          2
+         ]
+        ]
+       ],
+       [
+        "Rational",
+        -1,
+        2
+       ]
+      ]
+     ]
+    ]
+   },
+   "relation": "distinct",
+   "delivery": {
+    "mode": "step_reveal",
+    "reason": "rule 1",
+    "sources": []
+   }
+  },
+  {
+   "id": "LSN-CON-03002#err-BC-ERR-03003",
+   "type": "common_error",
+   "bands": [
+    "low",
+    "mid"
+   ],
+   "skills": [
+    "BC-SKL-03004",
+    "BC-SKL-03005"
+   ],
+   "sources": [
+    "BC-ERR-03003",
+    "BC-MIS-03002"
+   ],
+   "evidence_tag": "inferred",
+   "error_id": "BC-ERR-03003",
+   "observed_behavior": "In a table or graph based composite, the derivative of the outer function is read at the stated input instead of at the value the inner function produces.",
+   "scoring_consequence": "The numerical answer is wrong even though the chain rule structure was written correctly.",
+   "wrong_step": {
+    "text": "f'(1)g'(1) = 4(2) = 8.",
+    "expression": 8
+   },
+   "right_step": {
+    "text": "f'(3)g'(1) = -6.",
+    "expression": -6
+   },
+   "relation": "distinct",
+   "possible_reason": {
+    "misconception_id": "BC-MIS-03002",
+    "text": "the inner output plays no part in where the outer derivative is read"
+   },
+   "delivery": {
+    "mode": "step_reveal",
+    "reason": "rule 1",
+    "sources": []
+   }
+  },
+  {
+   "id": "LSN-CON-03002#err-BC-ERR-03004",
+   "type": "common_error",
+   "bands": [
+    "low",
+    "mid"
+   ],
+   "skills": [
+    "BC-SKL-03004",
+    "BC-SKL-03005"
+   ],
+   "sources": [
+    "BC-ERR-03004"
+   ],
+   "evidence_tag": "inferred",
+   "error_id": "BC-ERR-03004",
+   "observed_behavior": "The response adds the two tabulated derivatives instead of multiplying them.",
+   "scoring_consequence": "The reported value is wrong.",
+   "wrong_step": {
+    "text": "f'(3) + g'(1) = -1.",
+    "expression": -1
+   },
+   "right_step": {
+    "text": "f'(3)g'(1) = -6.",
+    "expression": -6
+   },
+   "relation": "distinct",
+   "delivery": {
+    "mode": "step_reveal",
+    "reason": "rule 1",
+    "sources": []
+   }
+  },
+  {
+   "id": "LSN-CON-03002#prq-BC-PRQ-03001",
+   "type": "prerequisite_bridge",
+   "bands": [
+    "low",
+    "mid"
+   ],
+   "skills": [
+    "BC-SKL-03002",
+    "BC-SKL-03004",
+    "BC-SKL-03005",
+    "BC-SKL-03006"
+   ],
+   "sources": [
+    "BC-PRQ-03001"
+   ],
+   "evidence_tag": "inferred",
+   "prerequisite_id": "BC-PRQ-03001",
+   "text": "Name the operation applied last and the one applied first. Without it the outer shell is differentiated and the work stops."
+  },
+  {
+   "id": "LSN-CON-03002#prq-BC-PRQ-03005",
+   "type": "prerequisite_bridge",
+   "bands": [
+    "low",
+    "mid"
+   ],
+   "skills": [
+    "BC-SKL-03004",
+    "BC-SKL-03005"
+   ],
+   "sources": [
+    "BC-PRQ-03005"
+   ],
+   "evidence_tag": "inferred",
+   "prerequisite_id": "BC-PRQ-03005",
+   "text": "f', dy/dx and dy/du name derivatives. Writing dy for dy/dx loses the meaning of the line."
+  },
+  {
+   "id": "LSN-CON-03002#prq-BC-PRQ-03006",
+   "type": "prerequisite_bridge",
+   "bands": [
+    "low",
+    "mid"
+   ],
+   "skills": [
+    "BC-SKL-03006"
+   ],
+   "sources": [
+    "BC-PRQ-03006"
+   ],
+   "evidence_tag": "inferred",
+   "prerequisite_id": "BC-PRQ-03006",
+   "text": "Rewrite radicals as powers without changing the value. A wrong simplification after a correct derivative changes the value."
+  }
+ ],
+ "checks": [
+  {
+   "id": "LSN-CON-03002#chk-1",
+   "check_kind": "completion",
+   "bands": [
+    "low",
+    "mid"
+   ],
+   "format": "short_answer",
+   "archetype_id": "BC-QA-03002",
+   "parameter_draw": {
+    "f_values": [
+     2,
+     -1,
+     5,
+     4
+    ],
+    "f_slopes": [
+     4,
+     -2,
+     -3,
+     1
+    ],
+    "g_values": [
+     3,
+     1,
+     4,
+     2
+    ],
+    "g_slopes": [
+     2,
+     -1,
+     3,
+     1
+    ],
+    "at": 1,
+    "names": "f,g",
+    "direction": "forward"
+   },
+   "completes": "LSN-CON-03002#s6",
+   "stem": {
+    "text": "g(1) = 3, f'(3) = -3, g'(1) = 2. Find h'(1) for h(x) = f(g(x)).",
+    "command_verb": "find"
+   },
+   "answer_key": {
+    "form": "numeric",
+    "mathjson": -6
+   },
+   "worked_solution": [
+    {
+     "step": 1,
+     "text": "f'(g(1))g'(1).",
+     "mathjson": -6,
+     "relation": "new"
+    },
+    {
+     "step": 2,
+     "text": "-6.",
+     "mathjson": -6,
+     "relation": "equivalent"
+    }
+   ],
+   "calculator_status": "no_calculator",
+   "representation": "BC-REP-03",
+   "skills": [
+    "BC-SKL-03004"
+   ]
+  },
+  {
+   "id": "LSN-CON-03002#chk-2",
+   "check_kind": "isomorph",
+   "bands": [
+    "low",
+    "mid"
+   ],
+   "format": "short_answer",
+   "archetype_id": "BC-QA-03002",
+   "parameter_draw": {
+    "f_values": [
+     1,
+     3,
+     -2,
+     5
+    ],
+    "f_slopes": [
+     3,
+     2,
+     -1,
+     4
+    ],
+    "g_values": [
+     2,
+     4,
+     1,
+     3
+    ],
+    "g_slopes": [
+     1,
+     5,
+     4,
+     3
+    ],
+    "at": 3,
+    "names": "f,g",
+    "direction": "forward"
+   },
+   "stem": {
+    "text": "g(3) = 1, g'(3) = 4, f'(1) = 3, f'(3) = -1. Find h'(3) for h(x) = f(g(x)).",
+    "command_verb": "find"
+   },
+   "answer_key": {
+    "form": "numeric",
+    "mathjson": 12
+   },
+   "worked_solution": [
+    {
+     "step": 1,
+     "text": "f'(g(3))g'(3) = f'(1)g'(3).",
+     "mathjson": 12,
+     "relation": "new"
+    },
+    {
+     "step": 2,
+     "text": "12.",
+     "mathjson": 12,
+     "relation": "equivalent"
+    }
+   ],
+   "calculator_status": "no_calculator",
+   "representation": "BC-REP-03",
+   "skills": [
+    "BC-SKL-03004"
+   ]
+  },
+  {
+   "id": "LSN-CON-03002#chk-3",
+   "check_kind": "mcq",
+   "bands": [
+    "low"
+   ],
+   "format": "mcq",
+   "archetype_id": "BC-QA-03002",
+   "parameter_draw": {
+    "f_values": [
+     3,
+     -2,
+     6,
+     1
+    ],
+    "f_slopes": [
+     2,
+     5,
+     4,
+     -1
+    ],
+    "g_values": [
+     4,
+     3,
+     1,
+     2
+    ],
+    "g_slopes": [
+     1,
+     -2,
+     3,
+     2
+    ],
+    "at": 2,
+    "names": "f,g",
+    "direction": "forward"
+   },
+   "stem": {
+    "text": "g(2) = 3, g'(2) = -2, f'(2) = 5, f'(3) = 4. For h(x) = f(g(x)), what is h'(2)?",
+    "command_verb": "find"
+   },
+   "answer_key": {
+    "form": "numeric",
+    "mathjson": -8
+   },
+   "worked_solution": [
+    {
+     "step": 1,
+     "text": "f'(g(2))g'(2) = f'(3)g'(2).",
+     "mathjson": -8,
+     "relation": "new"
+    },
+    {
+     "step": 2,
+     "text": "-8.",
+     "mathjson": -8,
+     "relation": "equivalent"
+    }
+   ],
+   "options": [
+    {
+     "id": "A",
+     "is_key": false,
+     "error_path": "BC-ERR-03003",
+     "value": -10,
+     "derivation": "f'(2)g'(2): the outer derivative read at the input"
+    },
+    {
+     "id": "B",
+     "is_key": true,
+     "error_path": null,
+     "value": -8
+    },
+    {
+     "id": "C",
+     "is_key": false,
+     "error_path": "BC-ERR-03004",
+     "value": 2,
+     "derivation": "f'(3) + g'(2): the rates added"
+    },
+    {
+     "id": "D",
+     "is_key": false,
+     "error_path": "BC-ERR-03001",
+     "value": 4,
+     "derivation": "f'(3) alone: the inner derivative left out"
+    }
+   ],
+   "calculator_status": "no_calculator",
+   "representation": "BC-REP-03",
+   "skills": [
+    "BC-SKL-03004"
+   ]
+  }
+ ],
+ "refresher": [
+  "LSN-CON-03002#s2",
+  "LSN-CON-03002#err-BC-ERR-03001",
+  "LSN-CON-03002#err-BC-ERR-03002",
+  "LSN-CON-03002#err-BC-ERR-03003",
+  "LSN-CON-03002#err-BC-ERR-03004",
+  "LSN-CON-03002#s6"
+ ],
+ "provenance": {
+  "author": "tools/lesson_transcribe.py",
+  "prompt_version": "generator/lesson_v1",
+  "design_path": "docs/lessons/unit-03/LSN-CON-03002.md",
+  "signed_off_by": "claude-opus-5-5",
+  "signed_off_at": "2026-09-29",
+  "not_human": true
+ }
+}

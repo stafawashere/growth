@@ -1,0 +1,133 @@
+{
+ "lesson_id": "LSN-CON-04009",
+ "version": 1,
+ "compared_on": "2026-09-29",
+ "auditor": "claude-opus-5-5",
+ "resolve": {
+  "date": "2026-09-29",
+  "problems": 4,
+  "agreed": 4,
+  "judgments_pending": 0,
+  "all_agree": true,
+  "verdicts": [
+   {
+    "id": "LSN-CON-04009#ex-1",
+    "agree": true,
+    "detail": "agree (symbolic)",
+    "method": "x x'+y y'=0 with y=12; units m/s."
+   },
+   {
+    "id": "LSN-CON-04009#chk-1",
+    "agree": true,
+    "detail": "agree (symbolic)",
+    "method": "18*2+24y'=0; units m/s."
+   },
+   {
+    "id": "LSN-CON-04009#chk-2",
+    "agree": true,
+    "detail": "agree (symbolic)",
+    "method": "y=8, 6*5+8y'=0; units ft/min."
+   },
+   {
+    "id": "LSN-CON-04009#chk-3",
+    "agree": true,
+    "detail": "agree (symbolic)",
+    "method": "y=3, 4*6+3y'=0; units ft/s."
+   }
+  ],
+  "answers_file": "/tmp/claude-0/-home-user-growth/ac029253-8ff0-5a4b-8b5f-cdcaf5e8ff8d/scratchpad/verify/answers_06.json"
+ },
+ "audit": {
+  "date": "2026-09-29",
+  "auditor": "claude-opus-5-5",
+  "blocks": [
+   {
+    "id": "orientation",
+    "verdict": "ok",
+    "evidence": "Paraphrases the concept description and unit research section; within 60 words; no lint."
+   },
+   {
+    "id": "ki-1",
+    "verdict": "ok",
+    "evidence": "Quote found verbatim on the cited CED page; claims match the EK and research section; within 120 words."
+   },
+   {
+    "id": "st-1",
+    "verdict": "ok",
+    "evidence": "Cue, method and rival match the archetype record; within 80 words."
+   },
+   {
+    "id": "st-2",
+    "verdict": "ok",
+    "evidence": "Cue, method and rival match the archetype record; within 80 words."
+   },
+   {
+    "id": "ex-1",
+    "verdict": "ok",
+    "evidence": "Every step and the key verified by SymPy; cues within 20 and whys within 25 words."
+   },
+   {
+    "id": "scores-ex-1",
+    "verdict": "ok",
+    "evidence": "Line built from the point type record fields in the bundle (name, rubric citations, notation requirements)."
+   },
+   {
+    "id": "err-BC-ERR-04020",
+    "verdict": "ok",
+    "evidence": "observed_behavior, scoring_consequence and misconception text found verbatim in the bundle; wrong and right values verified by SymPy."
+   },
+   {
+    "id": "err-BC-ERR-04022",
+    "verdict": "ok",
+    "evidence": "observed_behavior, scoring_consequence and misconception text found verbatim in the bundle; wrong and right values verified by SymPy."
+   },
+   {
+    "id": "err-BC-ERR-99013",
+    "verdict": "ok",
+    "evidence": "observed_behavior, scoring_consequence and misconception text found verbatim in the bundle; wrong and right values verified by SymPy."
+   },
+   {
+    "id": "representations",
+    "verdict": "ok",
+    "evidence": "No representations block; null."
+   },
+   {
+    "id": "BC-PRQ-04007",
+    "verdict": "ok",
+    "evidence": "Paraphrase of the prerequisite record in the bundle; within 60 words."
+   },
+   {
+    "id": "BC-PRQ-04008",
+    "verdict": "ok",
+    "evidence": "Paraphrase of the prerequisite record in the bundle; within 60 words."
+   },
+   {
+    "id": "chk-1",
+    "verdict": "ok",
+    "evidence": "Key and every option or step value verified by SymPy."
+   },
+   {
+    "id": "chk-2",
+    "verdict": "ok",
+    "evidence": "fixed 2026-09-29: parameter_draw set to size 6, length_unit foot (was size 4, inch) so it matches the 10 foot ladder, foot 6 feet out; template build gives -15/4 feet per minute; not a published draw."
+   },
+   {
+    "id": "chk-3",
+    "verdict": "ok",
+    "evidence": "Key and every option or step value verified by SymPy."
+   }
+  ],
+  "advice": [
+   "ex-1 parameter_draw size 6 does not match the stem's foot at 9 meters; chk-3 draw (size 3, ratio 1) does not produce the 3, 4, 5 ladder cleanly. Align draws with stems.",
+   "st-2 rival names no error id; BC-ERR-04020 covers it.",
+   "ki-1 slider question (which stated numbers still hold one second later) serves the fixed against instantaneous reading well."
+  ],
+  "counts": {
+   "ok": 15,
+   "unsourced": 0,
+   "wrong": 0,
+   "over_cap": 0,
+   "lint": 0
+  }
+ }
+}

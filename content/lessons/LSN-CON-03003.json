@@ -1,0 +1,1007 @@
+{
+ "id": "LSN-CON-03003",
+ "version": 1,
+ "kind": "concept",
+ "target_id": "BC-CON-03003",
+ "status": "signed_off",
+ "snapshot_digest": "a6a8ec9d3f59ab8f712e33d30cc22fc64bf2c478fbe7312e3e3118d319c6a42f",
+ "source_digest": "3d23402abb668b17291b978fabbf84c08c48ab29276984e940f322aa5d1ed51f",
+ "read_minutes": {
+  "full": 3.6,
+  "brief": 3.0
+ },
+ "word_count": {
+  "full": 463,
+  "brief": 397
+ },
+ "sections": [
+  {
+   "id": "LSN-CON-03003#s1",
+   "type": "orientation",
+   "bands": [
+    "low",
+    "mid"
+   ],
+   "skills": [
+    "BC-SKL-03007",
+    "BC-SKL-03008",
+    "BC-SKL-03009"
+   ],
+   "sources": [
+    "BC-CON-03003",
+    "research/units/unit-03-differentiation-composite-implicit-inverse.md#3.2 Implicit Differentiation"
+   ],
+   "evidence_tag": "inferred",
+   "text": "A response differentiates both sides of an equation in x and y with respect to x: every y term carries dy/dx, every mixed term takes the product rule, and the right side is kept. It opens a multipart question.",
+   "delivery": {
+    "mode": "text",
+    "reason": "rule 5: BC-REP-01 only on the skills",
+    "sources": [
+     "BC-SKL-03007"
+    ]
+   }
+  },
+  {
+   "id": "LSN-CON-03003#s2",
+   "type": "key_ideas",
+   "bands": [
+    "low",
+    "mid"
+   ],
+   "skills": [
+    "BC-SKL-03007",
+    "BC-SKL-03008",
+    "BC-SKL-03009"
+   ],
+   "sources": [
+    "BC-EK-FUN-3D1",
+    "ced:76",
+    "research/units/unit-03-differentiation-composite-implicit-inverse.md#3.2 Implicit Differentiation"
+   ],
+   "evidence_tag": "verified",
+   "ek_id": "BC-EK-FUN-3D1",
+   "depth": "core",
+   "text": "When an equation determines y as a differentiable function of x, differentiate both sides with respect to x. A y term gives its derivative in y times dy/dx. A term holding both variables is a product, and its y factor still carries dy/dx. The result is linear in dy/dx.",
+   "notation": "d/dx of y to the n equals n times y to the n minus one times dy/dx",
+   "quote": {
+    "text": "The chain rule is the basis for implicit differentiation.",
+    "source": "ced:76"
+   },
+   "delivery": {
+    "mode": "text",
+    "reason": "rule 5: an algebraic statement about the dy/dx factor, no figure-bearing BC-REP",
+    "sources": [
+     "BC-SKL-03007",
+     "BC-SKL-03008",
+     "BC-SKL-03009"
+    ]
+   }
+  },
+  {
+   "id": "LSN-CON-03003#s3",
+   "type": "strategy",
+   "bands": [
+    "low",
+    "mid"
+   ],
+   "skills": [
+    "BC-SKL-03007",
+    "BC-SKL-03008",
+    "BC-SKL-03009"
+   ],
+   "sources": [
+    "BC-QA-03004"
+   ],
+   "evidence_tag": "verified",
+   "archetype_id": "BC-QA-03004",
+   "cue": "The stem asks for dy/dx or a slope at a point, from an equation in x and y.",
+   "method": "First written line: differentiate every term of both sides with respect to x.",
+   "rival": "Rival: differentiating y terms as though y were the independent variable (BC-ERR-03007).",
+   "separating_feature": "y depends on x, so every y term carries dy/dx."
+  },
+  {
+   "id": "LSN-CON-03003#s4",
+   "type": "worked_example",
+   "bands": [
+    "low",
+    "mid"
+   ],
+   "skills": [
+    "BC-SKL-03007",
+    "BC-SKL-03008",
+    "BC-SKL-03009"
+   ],
+   "sources": [
+    "BC-QA-03004"
+   ],
+   "evidence_tag": "inferred",
+   "archetype_id": "BC-QA-03004",
+   "parameter_draw": {
+    "mixed": 3,
+    "y_coefficient": 1,
+    "right_slope": 2,
+    "x_at": 1,
+    "y_at": 1,
+    "y_power": 2
+   },
+   "problem": {
+    "text": "The curve x^2 + 3xy + y^2 = 2x + 3 passes through (1, 1). Find dy/dx at (1, 1).",
+    "command_verb": "find"
+   },
+   "calculator_status": "no_calculator",
+   "steps": [
+    {
+     "cue": "An equation in x and y, not solved for y.",
+     "why": "y depends on x: differentiate both sides with respect to x."
+    },
+    {
+     "cue": "y^2 is a y term; 3xy holds both variables.",
+     "why": "2y dy/dx; 3y + 3x dy/dx; the right side gives 2.",
+     "expression": [
+      "Equal",
+      [
+       "Add",
+       [
+        "Multiply",
+        2,
+        "x"
+       ],
+       [
+        "Multiply",
+        3,
+        "y"
+       ],
+       [
+        "Multiply",
+        2,
+        "dydx",
+        "y"
+       ],
+       [
+        "Multiply",
+        3,
+        "dydx",
+        "x"
+       ]
+      ],
+      2
+     ],
+     "relation": "new"
+    },
+    {
+     "cue": "The line is linear in dy/dx.",
+     "why": "Collect the two dy/dx terms and factor.",
+     "expression": [
+      "Equal",
+      [
+       "Multiply",
+       "dydx",
+       [
+        "Add",
+        [
+         "Multiply",
+         2,
+         "y"
+        ],
+        [
+         "Multiply",
+         3,
+         "x"
+        ]
+       ]
+      ],
+      [
+       "Add",
+       2,
+       [
+        "Multiply",
+        -3,
+        "y"
+       ],
+       [
+        "Multiply",
+        -2,
+        "x"
+       ]
+      ]
+     ],
+     "relation": "equivalent"
+    },
+    {
+     "cue": "One bracket multiplies dy/dx.",
+     "why": "Divide by it; it is 5 at (1, 1).",
+     "expression": [
+      "Equal",
+      "dydx",
+      [
+       "Multiply",
+       [
+        "Power",
+        [
+         "Add",
+         [
+          "Multiply",
+          2,
+          "y"
+         ],
+         [
+          "Multiply",
+          3,
+          "x"
+         ]
+        ],
+        -1
+       ],
+       [
+        "Add",
+        2,
+        [
+         "Multiply",
+         -3,
+         "y"
+        ],
+        [
+         "Multiply",
+         -2,
+         "x"
+        ]
+       ]
+      ]
+     ],
+     "relation": "solve",
+     "variable": "dydx"
+    },
+    {
+     "cue": "The stem gives the point (1, 1).",
+     "why": "Both coordinates go in.",
+     "expression": [
+      "Rational",
+      -3,
+      5
+     ],
+     "relation": "evaluate",
+     "subs": {
+      "x": "1",
+      "y": "1"
+     }
+    }
+   ],
+   "answer": {
+    "form": "numeric",
+    "mathjson": [
+     "Rational",
+     -3,
+     5
+    ]
+   },
+   "delivery": {
+    "mode": "step_reveal",
+    "reason": "rule 1",
+    "sources": []
+   }
+  },
+  {
+   "id": "LSN-CON-03003#err-BC-ERR-03007",
+   "type": "common_error",
+   "bands": [
+    "low",
+    "mid"
+   ],
+   "skills": [
+    "BC-SKL-03007",
+    "BC-SKL-03009"
+   ],
+   "sources": [
+    "BC-ERR-03007",
+    "BC-MIS-03004"
+   ],
+   "evidence_tag": "inferred",
+   "error_id": "BC-ERR-03007",
+   "observed_behavior": "In an implicit differentiation the y terms are differentiated as though y were the independent variable, so no dy/dx factor appears.",
+   "scoring_consequence": "The differentiation is not eligible for the completely correct differentiation point described in the Chief Reader reports (crabbc-25:24).",
+   "wrong_step": {
+    "text": "y^2 gives 2y.",
+    "expression": [
+     "Equal",
+     [
+      "Add",
+      [
+       "Multiply",
+       2,
+       "x"
+      ],
+      [
+       "Multiply",
+       5,
+       "y"
+      ],
+      [
+       "Multiply",
+       3,
+       "dydx",
+       "x"
+      ]
+     ],
+     2
+    ]
+   },
+   "right_step": {
+    "text": "y^2 gives 2y dy/dx.",
+    "expression": [
+     "Equal",
+     [
+      "Add",
+      [
+       "Multiply",
+       2,
+       "x"
+      ],
+      [
+       "Multiply",
+       3,
+       "y"
+      ],
+      [
+       "Multiply",
+       2,
+       "dydx",
+       "y"
+      ],
+      [
+       "Multiply",
+       3,
+       "dydx",
+       "x"
+      ]
+     ],
+     2
+    ]
+   },
+   "relation": "distinct",
+   "possible_reason": {
+    "misconception_id": "BC-MIS-03004",
+    "text": "y as a second free variable rather than as a function of x"
+   },
+   "delivery": {
+    "mode": "step_reveal",
+    "reason": "rule 1",
+    "sources": []
+   }
+  },
+  {
+   "id": "LSN-CON-03003#err-BC-ERR-03008",
+   "type": "common_error",
+   "bands": [
+    "low",
+    "mid"
+   ],
+   "skills": [
+    "BC-SKL-03008"
+   ],
+   "sources": [
+    "BC-ERR-03008",
+    "BC-MIS-03005"
+   ],
+   "evidence_tag": "inferred",
+   "error_id": "BC-ERR-03008",
+   "observed_behavior": "A term that is a product of an expression in x and an expression in y is differentiated as though one of the two were constant.",
+   "scoring_consequence": "The differentiation loses the point for a completely correct implicit derivative, and the 2025 scoring guidelines award the product rule its own point (sg-25:20, crabbc-25:24).",
+   "wrong_step": {
+    "text": "3xy gives 3y.",
+    "expression": [
+     "Equal",
+     [
+      "Add",
+      [
+       "Multiply",
+       2,
+       "x"
+      ],
+      [
+       "Multiply",
+       3,
+       "y"
+      ],
+      [
+       "Multiply",
+       2,
+       "dydx",
+       "y"
+      ]
+     ],
+     2
+    ]
+   },
+   "right_step": {
+    "text": "3xy gives 3y + 3x dy/dx.",
+    "expression": [
+     "Equal",
+     [
+      "Add",
+      [
+       "Multiply",
+       2,
+       "x"
+      ],
+      [
+       "Multiply",
+       3,
+       "y"
+      ],
+      [
+       "Multiply",
+       2,
+       "dydx",
+       "y"
+      ],
+      [
+       "Multiply",
+       3,
+       "dydx",
+       "x"
+      ]
+     ],
+     2
+    ]
+   },
+   "relation": "distinct",
+   "possible_reason": {
+    "misconception_id": "BC-MIS-03005",
+    "text": "a term containing both variables as one object rather than as a product"
+   },
+   "delivery": {
+    "mode": "step_reveal",
+    "reason": "rule 1",
+    "sources": []
+   }
+  },
+  {
+   "id": "LSN-CON-03003#err-BC-ERR-03009",
+   "type": "common_error",
+   "bands": [
+    "low",
+    "mid"
+   ],
+   "skills": [
+    "BC-SKL-03009"
+   ],
+   "sources": [
+    "BC-ERR-03009"
+   ],
+   "evidence_tag": "inferred",
+   "error_id": "BC-ERR-03009",
+   "observed_behavior": "The response differentiates the left hand side and omits the equals zero or the derivative of the right hand side, leaving an expression rather than an equation.",
+   "scoring_consequence": "The Chief Reader report for 2025 records that responses dropping the equals zero were generally unable to recover and earned neither of the first two points (crabbc-25:25).",
+   "wrong_step": {
+    "text": "Right side dropped: = 0.",
+    "expression": [
+     "Equal",
+     [
+      "Add",
+      [
+       "Multiply",
+       2,
+       "x"
+      ],
+      [
+       "Multiply",
+       3,
+       "y"
+      ],
+      [
+       "Multiply",
+       2,
+       "dydx",
+       "y"
+      ],
+      [
+       "Multiply",
+       3,
+       "dydx",
+       "x"
+      ]
+     ],
+     0
+    ]
+   },
+   "right_step": {
+    "text": "Right side 2x + 3 gives 2.",
+    "expression": [
+     "Equal",
+     [
+      "Add",
+      [
+       "Multiply",
+       2,
+       "x"
+      ],
+      [
+       "Multiply",
+       3,
+       "y"
+      ],
+      [
+       "Multiply",
+       2,
+       "dydx",
+       "y"
+      ],
+      [
+       "Multiply",
+       3,
+       "dydx",
+       "x"
+      ]
+     ],
+     2
+    ]
+   },
+   "relation": "distinct",
+   "delivery": {
+    "mode": "step_reveal",
+    "reason": "rule 1",
+    "sources": []
+   }
+  },
+  {
+   "id": "LSN-CON-03003#prq-BC-PRQ-03005",
+   "type": "prerequisite_bridge",
+   "bands": [
+    "low",
+    "mid"
+   ],
+   "skills": [
+    "BC-SKL-03007",
+    "BC-SKL-03008",
+    "BC-SKL-03009"
+   ],
+   "sources": [
+    "BC-PRQ-03005"
+   ],
+   "evidence_tag": "inferred",
+   "prerequisite_id": "BC-PRQ-03005",
+   "text": "dy/dx is a derivative, d/dx the operator. Writing dy for dy/dx loses the meaning of the line."
+  }
+ ],
+ "checks": [
+  {
+   "id": "LSN-CON-03003#chk-1",
+   "check_kind": "completion",
+   "bands": [
+    "low",
+    "mid"
+   ],
+   "format": "short_answer",
+   "archetype_id": "BC-QA-03004",
+   "parameter_draw": {
+    "mixed": 3,
+    "y_coefficient": 1,
+    "right_slope": 2,
+    "x_at": 1,
+    "y_at": 1,
+    "y_power": 2
+   },
+   "completes": "LSN-CON-03003#s4",
+   "stem": {
+    "text": "Given 2x + 3y + 3x dy/dx + 2y dy/dx = 2, find dy/dx at (1, 1).",
+    "command_verb": "find"
+   },
+   "answer_key": {
+    "form": "numeric",
+    "mathjson": [
+     "Rational",
+     -3,
+     5
+    ]
+   },
+   "worked_solution": [
+    {
+     "step": 1,
+     "text": "The differentiated equation.",
+     "mathjson": [
+      "Equal",
+      [
+       "Add",
+       [
+        "Multiply",
+        2,
+        "x"
+       ],
+       [
+        "Multiply",
+        3,
+        "y"
+       ],
+       [
+        "Multiply",
+        2,
+        "dydx",
+        "y"
+       ],
+       [
+        "Multiply",
+        3,
+        "dydx",
+        "x"
+       ]
+      ],
+      2
+     ],
+     "relation": "new"
+    },
+    {
+     "step": 2,
+     "text": "Solved for dy/dx.",
+     "mathjson": [
+      "Equal",
+      "dydx",
+      [
+       "Multiply",
+       [
+        "Power",
+        [
+         "Add",
+         [
+          "Multiply",
+          2,
+          "y"
+         ],
+         [
+          "Multiply",
+          3,
+          "x"
+         ]
+        ],
+        -1
+       ],
+       [
+        "Add",
+        2,
+        [
+         "Multiply",
+         -3,
+         "y"
+        ],
+        [
+         "Multiply",
+         -2,
+         "x"
+        ]
+       ]
+      ]
+     ],
+     "relation": "solve",
+     "variable": "dydx"
+    },
+    {
+     "step": 3,
+     "text": "At (1, 1).",
+     "mathjson": [
+      "Rational",
+      -3,
+      5
+     ],
+     "relation": "evaluate",
+     "subs": {
+      "x": "1",
+      "y": "1"
+     }
+    }
+   ],
+   "calculator_status": "no_calculator",
+   "representation": "BC-REP-01",
+   "skills": [
+    "BC-SKL-03009"
+   ]
+  },
+  {
+   "id": "LSN-CON-03003#chk-2",
+   "check_kind": "isomorph",
+   "bands": [
+    "low",
+    "mid"
+   ],
+   "format": "short_answer",
+   "archetype_id": "BC-QA-03004",
+   "parameter_draw": {
+    "mixed": -2,
+    "y_coefficient": 1,
+    "right_slope": 1,
+    "x_at": 1,
+    "y_at": -1,
+    "y_power": 2
+   },
+   "stem": {
+    "text": "For x^2 - 2xy + y^2 = x + 3, find dy/dx at (1, -1).",
+    "command_verb": "find"
+   },
+   "answer_key": {
+    "form": "numeric",
+    "mathjson": [
+     "Rational",
+     3,
+     4
+    ]
+   },
+   "worked_solution": [
+    {
+     "step": 1,
+     "text": "Both sides differentiated.",
+     "mathjson": [
+      "Equal",
+      [
+       "Add",
+       [
+        "Multiply",
+        -2,
+        "y"
+       ],
+       [
+        "Multiply",
+        2,
+        "x"
+       ],
+       [
+        "Multiply",
+        -2,
+        "dydx",
+        "x"
+       ],
+       [
+        "Multiply",
+        2,
+        "dydx",
+        "y"
+       ]
+      ],
+      1
+     ],
+     "relation": "new"
+    },
+    {
+     "step": 2,
+     "text": "Solved for dy/dx.",
+     "mathjson": [
+      "Equal",
+      "dydx",
+      [
+       "Multiply",
+       [
+        "Power",
+        [
+         "Add",
+         [
+          "Multiply",
+          -2,
+          "x"
+         ],
+         [
+          "Multiply",
+          2,
+          "y"
+         ]
+        ],
+        -1
+       ],
+       [
+        "Add",
+        1,
+        [
+         "Multiply",
+         -2,
+         "x"
+        ],
+        [
+         "Multiply",
+         2,
+         "y"
+        ]
+       ]
+      ]
+     ],
+     "relation": "solve",
+     "variable": "dydx"
+    },
+    {
+     "step": 3,
+     "text": "At (1, -1).",
+     "mathjson": [
+      "Rational",
+      3,
+      4
+     ],
+     "relation": "evaluate",
+     "subs": {
+      "x": "1",
+      "y": "-1"
+     }
+    }
+   ],
+   "calculator_status": "no_calculator",
+   "representation": "BC-REP-01",
+   "skills": [
+    "BC-SKL-03009"
+   ]
+  },
+  {
+   "id": "LSN-CON-03003#chk-3",
+   "check_kind": "mcq",
+   "bands": [
+    "low"
+   ],
+   "format": "mcq",
+   "archetype_id": "BC-QA-03004",
+   "parameter_draw": {
+    "mixed": 1,
+    "y_coefficient": 2,
+    "right_slope": 4,
+    "x_at": 2,
+    "y_at": -1,
+    "y_power": 2
+   },
+   "stem": {
+    "text": "The curve x^2 + xy + 2y^2 = 4x - 4 passes through (2, -1). What is dy/dx there?",
+    "command_verb": "find"
+   },
+   "answer_key": {
+    "form": "numeric",
+    "mathjson": [
+     "Rational",
+     -1,
+     2
+    ]
+   },
+   "worked_solution": [
+    {
+     "step": 1,
+     "text": "Both sides differentiated.",
+     "mathjson": [
+      "Equal",
+      [
+       "Add",
+       "y",
+       [
+        "Multiply",
+        2,
+        "x"
+       ],
+       [
+        "Multiply",
+        "dydx",
+        "x"
+       ],
+       [
+        "Multiply",
+        4,
+        "dydx",
+        "y"
+       ]
+      ],
+      4
+     ],
+     "relation": "new"
+    },
+    {
+     "step": 2,
+     "text": "Solved for dy/dx.",
+     "mathjson": [
+      "Equal",
+      "dydx",
+      [
+       "Multiply",
+       [
+        "Power",
+        [
+         "Add",
+         "x",
+         [
+          "Multiply",
+          4,
+          "y"
+         ]
+        ],
+        -1
+       ],
+       [
+        "Add",
+        4,
+        [
+         "Multiply",
+         -1,
+         "y"
+        ],
+        [
+         "Multiply",
+         -2,
+         "x"
+        ]
+       ]
+      ]
+     ],
+     "relation": "solve",
+     "variable": "dydx"
+    },
+    {
+     "step": 3,
+     "text": "At (2, -1).",
+     "mathjson": [
+      "Rational",
+      -1,
+      2
+     ],
+     "relation": "evaluate",
+     "subs": {
+      "x": "2",
+      "y": "-1"
+     }
+    }
+   ],
+   "options": [
+    {
+     "id": "A",
+     "is_key": false,
+     "error_path": "BC-ERR-03007",
+     "value": [
+      "Rational",
+      5,
+      2
+     ],
+     "derivation": "2y^2 differentiated to 4y with no dy/dx: (4 - 4 + 1 + 4)/2"
+    },
+    {
+     "id": "B",
+     "is_key": false,
+     "error_path": "BC-ERR-03008",
+     "value": [
+      "Rational",
+      -1,
+      4
+     ],
+     "derivation": "xy differentiated to y alone: (4 - 4 + 1)/(-4)"
+    },
+    {
+     "id": "C",
+     "is_key": true,
+     "error_path": null,
+     "value": [
+      "Rational",
+      -1,
+      2
+     ]
+    },
+    {
+     "id": "D",
+     "is_key": false,
+     "error_path": "BC-ERR-03009",
+     "value": [
+      "Rational",
+      3,
+      2
+     ],
+     "derivation": "right side derivative dropped: (-4 + 1)/(-2)"
+    }
+   ],
+   "calculator_status": "no_calculator",
+   "representation": "BC-REP-01",
+   "skills": [
+    "BC-SKL-03007",
+    "BC-SKL-03008"
+   ]
+  }
+ ],
+ "refresher": [
+  "LSN-CON-03003#s2",
+  "LSN-CON-03003#err-BC-ERR-03007",
+  "LSN-CON-03003#err-BC-ERR-03008",
+  "LSN-CON-03003#err-BC-ERR-03009",
+  "LSN-CON-03003#s4"
+ ],
+ "provenance": {
+  "author": "tools/lesson_transcribe.py",
+  "prompt_version": "generator/lesson_v1",
+  "design_path": "docs/lessons/unit-03/LSN-CON-03003.md",
+  "signed_off_by": "claude-opus-5-5",
+  "signed_off_at": "2026-09-29",
+  "not_human": true
+ }
+}

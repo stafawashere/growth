@@ -724,7 +724,14 @@ def back_up_before_opening(db_path, env):
 def start_the_auto_drain(application, settings, engine, env):
    """app/feedback/autodrain.py, started with the server and stopped with it. Building the
    application starts nothing."""
-   auto_drain = AutoDrain(engine, settings.tutor_links, settings.tutor_caps, settings.provider_cooldowns)
+   auto_drain = AutoDrain(
+      engine,
+      settings.tutor_links,
+      settings.tutor_caps,
+      settings.provider_cooldowns,
+      agent_links=settings.agent_links,
+      agent_caps=settings.agent_caps,
+   )
    application.state.auto_drain = auto_drain
 
    if auto_drain_enabled(env):

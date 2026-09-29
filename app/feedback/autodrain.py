@@ -16,6 +16,11 @@ tutor's fallback chain. It is safe by construction rather than by care:
 - Never paid unless allowed. The chain holds the paid API link only when GROWTH_AI_BACKEND=api put
   it there; replay and none have no link, and the drain never starts for them.
 
+After the tutor drain the same pass runs the live tutor agent's share (app/agent/drain.py): it
+closes the conversations idle for 30 minutes, enqueues their consolidation, and runs at most two
+consolidation jobs on the memory role's chain under the memory caps, sharing the same board. The
+agent's chain is gated by the same rule as the tutor's.
+
 GROWTH_AUTO_DRAIN=off turns it off. Nothing starts until the application's startup event, so
 building an application in a test starts no thread.
 """
@@ -25,6 +30,7 @@ from datetime import timedelta
 
 from sqlalchemy.orm import Session as OrmSession
 
+from app.agent.drain import drain_agent_jobs, sweep_idle_conversations
 from app.auth.service import utc_now
 from app.feedback.drain import drain_queued_calls
 from app.providers.router import API_LINK, SUBSCRIPTION_LINK
@@ -56,12 +62,19 @@ def auto_drain_enabled(env):
    return configured == "on"
 
 
+def agent_jobs_touched(report):
+   return report.swept + report.done + report.requeued + report.failed
+
+
 class AutoDrain:
    def __init__(self, engine, links, tutor_caps, board, clock=None, interval=PASS_INTERVAL,
-                jobs_per_pass=JOBS_PER_PASS):
+                jobs_per_pass=JOBS_PER_PASS, agent_links=None, agent_caps=None):
       self._engine = engine
       self._links = tuple(links)
       self._tutor_caps = tutor_caps
+      self._agent_links = self._links if agent_links is None else tuple(agent_links)
+      self._agent_caps = agent_caps or {}
+      self.last_agent_report = None
       self._board = board
       self._clock = clock or utc_now
       self._interval = interval
@@ -70,26 +83,51 @@ class AutoDrain:
       self._thread = None
       self._pass_lock = threading.Lock()
 
+   def can_run(self):
+      return can_drain(self._links) or can_drain(self._agent_links)
+
    def run_pass(self):
-      """One pass, never two at once. Returns the DrainReport, or None when the chain cannot drain."""
-      if not can_drain(self._links):
+      """One pass, never two at once. Returns the tutor's DrainReport, or None when neither chain
+      can drain or only the agent's can; the agent's report is kept on last_agent_report."""
+      if not self.can_run():
          return None
 
       with self._pass_lock:
          with OrmSession(self._engine) as db:
-            return drain_queued_calls(
-               db,
-               None,
-               self._clock,
-               tutor_caps=self._tutor_caps,
-               limit=self._jobs_per_pass,
-               links=self._links,
-               board=self._board,
-            )
+            tutor_report = self._drain_tutor(db)
+            self.last_agent_report = self._drain_agent(db)
+
+            return tutor_report
+
+   def _drain_tutor(self, db):
+      if not can_drain(self._links):
+         return None
+
+      return drain_queued_calls(
+         db,
+         None,
+         self._clock,
+         tutor_caps=self._tutor_caps,
+         limit=self._jobs_per_pass,
+         links=self._links,
+         board=self._board,
+      )
+
+   def _drain_agent(self, db):
+      if not can_drain(self._agent_links):
+         return None
+
+      now = self._clock()
+      swept = sweep_idle_conversations(db, now)
+      db.commit()
+      report = drain_agent_jobs(db, now, self._agent_links, self._agent_caps, self._board)
+      report.swept = swept
+
+      return report
 
    def start(self):
       is_running = self._thread is not None and self._thread.is_alive()
-      should_not_start = is_running or not can_drain(self._links)
+      should_not_start = is_running or not self.can_run()
 
       if should_not_start:
          return False
@@ -124,4 +162,20 @@ class AutoDrain:
                report.requeued,
                report.failed,
                report.stopped_by,
+            )
+
+         agent_report = self.last_agent_report
+         agent_ran = agent_report is not None
+         agent_touched_a_job = agent_ran and agent_jobs_touched(agent_report) > 0
+
+         if agent_touched_a_job:
+            logger.info(
+               "automatic agent drain: swept %s, done %s, requeued %s, failed %s, applied %s, rejected %s, stopped by %s",
+               agent_report.swept,
+               agent_report.done,
+               agent_report.requeued,
+               agent_report.failed,
+               agent_report.applied,
+               agent_report.rejected,
+               agent_report.stopped_by,
             )

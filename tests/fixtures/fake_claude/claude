@@ -3,7 +3,8 @@
 
 It reads its mode from $HOME/fake_claude_mode, writes what it was given (argv, stdin, the
 environment and the working directory's contents) to $HOME/fake_claude_record.json, and prints
-a canned result for the mode.
+a canned result for the mode. The consolidate mode returns $HOME/fake_claude_structured_output.json
+as its structured_output, or an empty consolidation when the file is absent.
 """
 import json
 import os
@@ -49,6 +50,7 @@ RATE_LIMIT_INFO = {
    },
 }
 HOLD_WAIT_SECONDS = 10
+EMPTY_CONSOLIDATION = {"proposals": [], "student_terms": [], "stated_requests": []}
 
 
 def emit(event):
@@ -123,6 +125,13 @@ def main():
 
    if mode == "structured":
       print(json.dumps(result_payload(result="", structured_output={"sentence": "Rewrite first."})))
+      return 0
+
+   if mode == "consolidate":
+      chosen_output = home / "fake_claude_structured_output.json"
+      has_chosen_output = chosen_output.exists()
+      structured_output = json.loads(chosen_output.read_text()) if has_chosen_output else EMPTY_CONSOLIDATION
+      print(json.dumps(result_payload(result="", structured_output=structured_output)))
       return 0
 
    if mode == "weekly_limit":

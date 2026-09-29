@@ -5,6 +5,8 @@ unmastered skill whose blocking parents are all mastered. A skill outside Unit 1
 hard parent is open on day one to a student who knows no calculus, which is how polar dr/dtheta
 reached a new account's first set on 2026-09-28.
 """
+import random
+
 from app.engine.fringe import outer_fringe
 from app.engine.update import required_distinct_archetypes
 from app.sim import whole_graph
@@ -137,12 +139,14 @@ def test_condition_three_counts_the_archetypes_servable_today():
 def test_a_student_placed_across_the_course_keeps_the_known_boundary_open():
    """Operator ruling 2, 2026-09-29: the interior of the known state is mastered, the outermost
    known skills stay open for the student to demonstrate, and nothing unknown is mastered."""
-   import random
-
    graph = whole_graph.library().graph
    student = whole_graph.make_student("placed", random.Random(500))
    states = whole_graph.states_across_course(student)
-   known = {skill_id for skill_id in graph.skills if student.true_state.get(skill_id) and graph.has_archetype(skill_id)}
+   known = {
+      skill_id
+      for skill_id in graph.skills
+      if student.true_state.get(skill_id) and graph.has_archetype(skill_id)
+   }
    mastered = {skill_id for skill_id in graph.skills if states[skill_id].mastered}
 
    assert mastered

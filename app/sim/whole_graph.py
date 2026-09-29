@@ -350,7 +350,10 @@ def run_days(
    states = fresh_states() if states is None else states
    engine_rng = random.Random(seed)
    has_world = world_model is not None
-   world_model = world_model if has_world else World(student_trajectory(student), random.Random(seed + 104729))
+
+   if not has_world:
+      world_model = World(student_trajectory(student), random.Random(seed + 104729))
+
    attempts = []
    history = []
    served_total = 0

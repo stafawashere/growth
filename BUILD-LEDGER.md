@@ -72,7 +72,7 @@ queue to teach from now to May 2027.
 ## Desmos fluency, 2026-09-29 [verified]
 
 Built overnight by claude-fable-5-1 orchestrating claude-opus-5-5 code agents under the operator's
-brief of 2026-09-29, on branch `calculator/desmos-fluency` (21 commits from `today/redesign`, not
+brief of 2026-09-29, on branch `calculator/desmos-fluency` (13 commits from `today/redesign`, 23 ahead of `main`, not
 pushed, main untouched). The brief: research, design and build a Desmos fluency feature for the two
 calculator parts, with the exam habits carried and nothing credited. Documents: docs/calculator/
 (design.md, architecture.md, build-plan.md, HANDOFF.md, research/ with four documents and a
@@ -180,10 +180,30 @@ Checks, each run by the orchestrator in this session.
 | Web build | `npm --prefix app/web run build` | exit 0, built in 27.59 s; rebuilt after the skip-link fix, exit 0 |
 | Reduced motion gate | `npm --prefix app/web run gate:reduced-motion` | 5 passed (slice 3 agent) |
 | Calculator vitest after the CSS fix | `npx vitest run src/calculator src/styles/noLiteralValues.test.ts` | 30 passed |
-| Full pytest | `timeout 3000 .venv/bin/python -m pytest tests` | see the line appended below |
+| Web, rerun alone after the walk | `npm --prefix app/web run test` | Test Files 1 failed, 82 passed (83); Tests 1 failed, 874 passed (875); the one failure is client.test.ts GradingsPayload, pre-existing at the base branch |
+| Full pytest | `timeout 3000 .venv/bin/python -m pytest tests` | killed by its own timeout at 45 percent (load average above 40 from other sessions); rerun as four parallel groups, see the line appended below |
 
 Pre-existing failure, not touched: tests/db/test_models.py `test_models_create_all` expects a table
 set without the five lesson tables (a base-branch drift); `calculator_drills` is in its expected set.
+
+Full pytest, appended after the run. The single run was killed by its 3000 s timeout at 45 percent
+(load average above 40 from other sessions), so the suite was rerun as parallel directory groups
+with the repo's own addopts (-q), each with its own timeout: api, assessment, audit, auth,
+calculator, checkpoint, content: 768 passed, 4 failed; db, design, diagnosis, e2e, engine, eval,
+experiments, export: 192 passed, 10 failed, 15 errors; review, runtime, session, sim, tools, web:
+353 passed, 0 failed, exit 0; feedback 42 passed, generation 62 passed, grading 3 failed 89
+passed, items 8 failed 215 passed, lessons 289 passed, progress 21 passed, providers 3 failed
+264 passed. Two failures went green alone (test_capture_concurrency
+`test_no_write_lock_is_held_while_the_diagnostician_runs`, and the e2e
+`test_a_session_serves_an_agent_drafted_unit_2_item_end_to_end`, which fails alone at the merge base
+and passes alone here, so it is draw or order dependent). Every other failure and error was rerun
+at the merge base 23cb026 in a throwaway worktree and fails there the same way: the eval suite's
+cassette misses and prompt goldens, the e2e mastery simulations, the grader template field
+list, the claude-sonnet-5-5 model rename in feedback and providers, the missing lesson_v1 golden,
+the metrics view's lesson_first_contact row, the unit check with too few items, the unsettled
+comparison tests under tests/items, and test_models_create_all. Not one failing test exercises a
+file this branch changed from the merge base (the branch touches app/items/mathjson.py by two
+lines and app/db/models.py by one table, and the calculator suites above are green).
 
 The walk (Stage D), in headless Brave over CDP with var/calculator/driver.py (gitignored), against
 the API on 127.0.0.1:8007 serving the built client from a fresh database, because the dev-server

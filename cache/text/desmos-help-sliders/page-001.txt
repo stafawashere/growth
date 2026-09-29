@@ -1,0 +1,80 @@
+Source: https://help.desmos.com/hc/en-us/articles/202529069-Sliders-and-Movable-Points-in-a-Graph
+Title: Sliders and Movable Points in a Graph – Desmos Help Center
+Captured: 2026-09-29 by browser fetch of the article element
+
+Sliders and Movable Points in a Graph
+
+ Updated August 12, 2026 14:07
+
+In Desmos, adding a slider is as simple as typing a letter where you might normally see a number. Sliders enable you to add movable points and shifting lines, create dancing curves, and explore many other dynamic interactions.
+Watch the video for an introduction to sliders, and read on to learn more.
+
+Add a Slider
+
+Sliders for Free Variables
+Any time you have free variables in an expression, the calculator will prompt you to define them with sliders. For example, if you type \(y=mx+b\), you will be prompted to add sliders for \(m\), \(b\), or all variables.
+Desmos has a handful of defined constants that cannot be used as a slider: \(x\), \(y\), \(θ\), \(r\) (if \(θ\) is present), \(i\) (when complex mode is enabled), and \(e\).
+
+Shared Slider Variables
+You can also use the same variables in several expressions to plot curves that will change together. In the example, explore how you can use a single variable \(c\) can be used to make two parallel lines move up and down together.
+Then, explore another example on how two lines stay perpendicular to each other for any value of \(m\).
+
+ Animate Sliders
+
+Change the Interval and Step
+By default, sliders are typically set to an interval of \(-10\) to \(10\) in the Graphing Calculator and Geometry Tool and an interval of \(-5\) to \(-5\) in the 3D Graphing Calculator.
+To adjust the interval of your slider, click either of the values at the ends of the slider bar and input your desired upper or lower bounds. By default, a slider can take on any value between the upper and lower bound. However, by entering a numerical step, you can limit the values to fixed interval steps counting up from the lower bound.
+
+Animation Mode
+Click Play next to any slider to animate through all of its values.
+Click Animation Properties or click and hold Play to control how the slider animates. You can choose to loop forwards and backwards, repeat in one direction, play once, or play indefinitely. You can also speed up or slow down your animation.
+In Notebook, the Animation Properties button isn’t available. Press Shift or click and then hold Play instead.
+
+Dynamic Bounds
+
+If you have defined a free variable in the calculator, you can use that variable in the upper or lower bounds of a slider.
+One way to use dynamic bounds is to ensure a slider value stays between two other slider values. In the example, notice how the slider c is bounded between sliders \(a\) and \(b\).
+
+Sliders in Geometry
+
+Sliders in Transformations
+You can use sliders to animate transformations in the Geometry Tool.
+For the angle of rotation and scale factor, try entering a free variable directly as the angle or scale factor. In the example, the slider variable \(k\) can be used to determine the vector length of a translation.
+
+Move a Glider Along a line
+You can also use sliders along with the glider function. Gliders restrict a point to another object and will follow that object’s path.
+For example, adding a glider to a line will create a point restricted to that line. Adding a free variable connected to a slider as the second argument in the glider function allows you to animate a point restricted to the line.
+
+Movable Points and Surfaces
+
+Draggable Points
+You can change a static point to a movable point by clicking and holding the Color icon on to open the Options menu.
+Toggle Drag to make points movable, and choose between the different drag options.
+
+Move a Point with a Slider
+Another way to create a movable point is to enter a point with a parameter for one or both coordinates. Click and drag the point around the graph to change the value of the parameter(s).
+
+Move a Point Along a Function
+You can create a moveable point along a curve using sliders. For a function \(f(x)\), the point \((a,f(a))\) will stay along the path of your curve.
+
+Move a Point Along a Parametric
+You can also drag a movable point along a parametric path.
+
+Move a Plane
+In 3D, you can use sliders to help visualize different slices of conic sections.
+
+Learn More
+Connections Between Geometry and Algebra
+Math Art
+Inequalities and Restrictions
+Parametric Equations
+Generalizing ‘for’ List and Intervals
+Extending from 2D to 3D
+Supported Functions
+Please write in with any questions or feedback to support@desmos.com.
+
+ Move a Plane.png
+ (80 KB)
+
+ sliders_Movable_Points_Menu.png
+ (40 KB)

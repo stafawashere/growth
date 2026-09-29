@@ -1,0 +1,999 @@
+Source: https://help.desmos.com/hc/en-us/articles/212235786-Supported-Functions
+Title: Supported Functions – Desmos Help Center
+Captured: 2026-09-29 by browser fetch of the article element
+
+Supported Functions
+
+ Updated September 22, 2026 14:39
+
+Graphing Calculator Four Function and Scientific Matrix Geometry 3D
+
+Trig Functions
+
+Function
+Try typing...
+This function plots or finds the...
+
+sine
+sin\(\mathbf{(x)}\)
+sine of an angle.
+
+cosine
+cos\(\mathbf{(x)}\)
+cosine of an angle.
+
+tangent
+tan\(\mathbf{(x)}\)
+tangent of an angle.
+
+cosecant
+csc\(\mathbf{(x)}\)
+cosecant of an angle.
+
+secant
+sec\(\mathbf{(x)}\)
+secant of an angle.
+
+cotangent
+cot\(\mathbf{(x)}\)
+cotangent of an angle.
+
+Inverse Trig Functions
+
+Function
+Try typing...
+This function plots or finds the...
+
+arcsine
+sin\(\mathbf{^{-1}(x)}\)
+inverse of the sine of an angle.
+
+arccosine
+cos\(\mathbf{^{-1}(x)}\)
+inverse of the cosine of an angle.
+
+arctangent
+tan\(\mathbf{^{-1}(x)}\)
+inverse of the tangent of an angle.
+
+arccosecant
+csc\(\mathbf{^{-1}(x)}\)
+inverse of the cosecant of an angle.
+
+arcsecant
+sec\(\mathbf{^{-1}(x)}\)
+inverse of the secant of an angle.
+
+arccotangent
+cot\(\mathbf{^{-1}(x)}\)
+inverse of the cotangent of an angle.
+
+Statistics
+
+Function
+Try typing...
+This function finds the...
+
+mean
+mean\(\mathbf{([1,5,5,10])}\)
+average of a list of numbers.
+
+median
+median\(\mathbf{([1,5,5,10])}\)
+middle value of a list of numbers.
+
+minimum
+min\(\mathbf{([1,5,5,10])}\)
+minimum value of a list of numbers.
+
+maximum
+max\(\mathbf{([1,5,5,10])}\)
+maximum value of a list of numbers.
+
+quartile
+quartile\(\mathbf{([1,5,5,10],4)}\)
+
+qth quartile of a list of numbers (list,q). (q must be a number between 0 and 4 (inclusive))
+
+quantile
+quantile\(\mathbf{([1,5,5,10],1)}\)
+
+qth quantile of a list of numbers (list,q). (q must be a number between 0 and 1 (inclusive))
+
+standard deviation
+stdev\(\mathbf{([1,5,5,10])}\)
+
+sample standard deviation of a list of numbers.
+
+standard deviation population
+stdevp\(\mathbf{([1,5,5,10])}\)
+
+population standard deviation of a list of numbers.
+
+variance
+var\(\mathbf{([1,5,5,10])}\)
+
+sample variance of a list of numbers.
+
+covariance
+cov\(\mathbf{(l_{1},l_2)}\)
+
+sample covariance between two list of numbers.
+
+population covariance
+covp\(\mathbf{(l_{1},l_2)}\)
+
+population covariance between two list of numbers.
+
+mean absolute deviation
+mad\(\mathbf{([1,5,5,10])}\)
+
+mean absolute deviation of a list of numbers.
+
+Pearson correlation coefficient
+corr\(\mathbf{(l_{1},l_2)}\)
+
+Pearson correlation coefficient between two list of numbers.
+
+Spearman
+spearman\(\mathbf{(l_{1},l_2)}\)
+
+Spearman's rank correlation coefficient between two lists of numbers.
+
+stats
+stats\(\mathbf{([2,3,3,5,6,7,8])}\)
+
+five number summary - (minimum, first quartile, median, third quartile, and maximum values) of a list.
+
+count
+count\(\mathbf{([1,5,5,10])}\)
+number of elements in a list.
+
+total
+total\(\mathbf{([1,5,5,10])}\)
+sum of a list.
+
+List Operations
+
+Function
+Try typing...
+This function...
+
+repeat
+repeat\(\mathbf{([1,5],[3,2])}\)
+repeats each element of the first list as many times as the corresponding element of the second list.
+
+join
+join\(\mathbf{(l_{1},l_2)}\)
+joins multiple lists into one.
+
+sort
+sort\(\mathbf{([5,1,5,10])}\)
+sorts the elements in a list.
+
+shuffle
+shuffle\(\mathbf{([1,5,5,10])}\)
+shuffles the elements in a list.
+
+unique
+unique\(\mathbf{([1,5,5,10])}\)
+makes a list of the unique elements of an original list.
+
+for
+\(\mathbf{(a,a)}\) \(\mathbf{for 1 \lt a \lt 3}\)
+plots points or evaluates a variable for multiple values in a list or graphs a continuous curve for a finite or infinite interval.
+
+Learn more in our List Operations article.
+ 
+Visualizations
+
+Function
+Try typing...
+This function plots a...
+
+histogram
+histogram\(\mathbf{([1,5,5,10])}\)
+histogram from the data contained in list using bin width to group the data. (The bin width may be optionally passed in as a second argument. If not, it defaults to 1).
+
+dotplot
+dotplot\(\mathbf{([1,5,5,10])}\)
+dot plot from the data contained in list using bin width to group the data. (The bin width may be optionally passed in as a second argument. If not, it defaults to 1).
+
+boxplot
+boxplot\(\mathbf{([1,5,5,10])}\)
+box-and-whisker plot from the data contained in list.
+
+Learn more in our Data Visualizations article.
+ 
+Probability Distributions
+
+Function
+Try typing...
+This function...
+
+normal distribution
+normaldist\(\mathbf{(0,1)}\)
+graphs the probability density function (PDF) of a normal distribution with the given mean and standard deviation.
+
+t-distribution
+tdist\(\mathbf{(10)}\)
+graphs the PDF of a \(t\)-distribution with the given degrees of freedom.
+
+chi-square distribution
+chisqdist\(\mathbf{(10)}\)
+graphs the PDF of a \(\chi^2\)-distribution with the given degrees of freedom.
+
+uniform distribution
+uniformdist\(\mathbf{(0,1)}\)
+graphs the PDF of a uniform distribution with the given minimum and maximum.
+
+binomial distribution
+binomialdist\(\mathbf{(10,0.3)}\)
+plots the probability mass function (PMF) of a binomial distribution with the given number of independent trials and probability of success on each trial.
+
+poisson distribution
+poissondist\(\mathbf{(5)}\)
+plots the PMF of a Poisson distribution with the given mean.
+
+geometric distribution
+geodist\(\mathbf{(0.7)}\)
+plots the PMF of a geometric distribution with the given success probability.
+
+discrete distribution
+discretedist\(\mathbf{[0,1]}\)
+plots the PMF of a discrete distribution with the given values and optional weights.
+
+PDF
+\(\mathbf{D}\).pdf\(\mathbf{(1)}\)
+finds the probability density function (PDF) of a continuous distribution or the probability mass function (PMF) of a discrete distribution at a given input.
+
+CDF
+\(\mathbf{D}\).cdf\(\mathbf{(-1)}\)
+finds the cumulative distribution function (CDF) at a given input.
+
+inverse CDF
+\(\mathbf{D}\).inversecdf\(\mathbf{(0.25)}\)
+finds the inverse cumulative distribution function (inverse CDF) at a given input.
+
+random
+random\(\mathbf{( )}\)
+
+chooses a random value sampled uniformly from the interval [0,1). Apply this function to a list or distribution to select uniformly from that list or sample from that distribution.
+Add an optional seed to influence the random number generator.
+
+Learn more in our Probability Distributions article.
+ 
+Inference Tests
+
+Function
+Try typing...
+This function...
+
+z-test
+ztest\(\mathbf{([1,2,3], 0.5)}\)
+
+performs a one-sample \(z\)-test given a list of data or summary statistics (sample size and mean) and the population standard deviation.
+Add an optional second sample to run a two-sample \(z\)-test.
+
+t-test
+ttest\(\mathbf{([-1,2,3])}\)
+
+performs a one-sample \(t\)-test given a list of data or summary statistics (sample size, mean, and standard deviation).
+Add an optional second sample to run a two-sample \(t\)-test.
+
+z-test for proportions
+zproptest\(\mathbf{(45,80)}\)
+
+performs a one-sample \(z\)-test for proportions given the number of successes and sample size.
+Add an optional second sample to run a two-sample \(z\)-test for proportions.
+
+chi-square test of independence
+chisqtest\(\mathbf{([2,8],[4,6])}\)
+performs a chi-square test of independence given two equal-sized lists of categorical data.
+
+chi-square goodness of fit test
+chisqgof\(\mathbf{([30,20,25,25])}\)
+
+performs a chi-square goodness of fit test given a list of categorical data.
+Add an optional second list of expected contributions. By default, the test assumes equal contributions are expected.
+
+null
+\(\mathbf{T_1}\).null\(\mathbf{(0)}\)
+displays a significance diagram from the sampling distribution with the given null hypothesis.
+
+p-value
+\(\mathbf{T_1}\).p
+finds the \(p\)-value from a significance test.
+
+left p-value
+\(\mathbf{T_1}\).pleft
+finds the \(p\)-value from the left tail of a \(z\)-test, \(t\)-test, or \(z\)-test for proportion.
+
+right p-value
+\(\mathbf{T_1}\).pright
+finds the \(p\)-value from the right tail of a \(z\)-test, \(t\)-test, or \(z\)-test for proportion.
+
+test statistic
+\(\mathbf{T_1}\).score
+finds the test statistic from a significance test.
+
+degrees of freedom
+\(\mathbf{T_1}\).dof
+finds the degrees of freedom for a significance test.
+
+standard error
+\(\mathbf{T_1}\).stderr
+finds the standard deviation from the sampling distribution.
+
+confidence interval
+\(\mathbf{T_1}\).conf\(\mathbf{(0.95)}\)
+displays a confidence interval from the sampling distribution with the given confidence level.
+
+lower bound
+\(\mathbf{T_1}\).conf\(\mathbf{(0.95)}\).lower
+finds the lower bound of the confidence interval.
+
+upper bound
+\(\mathbf{T_1}\).conf\(\mathbf{(0.95)}\).upper
+finds the upper bound of the confidence interval.
+
+point estimate
+\(\mathbf{T_1}\).estimate
+finds the point estimate from a confidence interval.
+
+Learn more in our Inference article.
+ 
+Calculus
+
+Function
+Try typing...
+This function plots the...
+
+exponential
+exp\(\mathbf{(x)}\)
+exponential function of \(x\).
+
+natural logarithm
+ln\(\mathbf{(x)}\)
+natural log of \(x\).
+
+logarithm
+log\(\mathbf{(x)}\)
+logarithm of \(x\).
+
+logarithm with base a
+log\(\mathbf{_{a}(x)}\)
+logarithm of \(x\) given a base value.
+
+derivative as d/dx
+\(\mathbf{d/dx}\)
+derivative with respect to \(x\).
+
+derivative using prime notation
+\(\mathbf{f’(x)}\)
+derivative of the function \(f(x)\).
+
+integral
+int
+calculates the total value of a function over an interval (the upper and lower bound).
+
+summation
+sum
+calculate the sum of a sequence from the lower limit of the index to the upper limit of the index.
+
+product
+prod
+calculate the product of a sequence of factors from the lower limit of the index to the upper limit of the index.
+
+Hyperbolic Trig Functions
+
+Function
+Try typing...
+This function plots or finds the...
+
+hyperbolic sine
+sinh\(\mathbf{(x)}\)
+hyperbolic sine of an angle.
+
+hyperbolic cosine
+cosh\(\mathbf{(x)}\)
+hyperbolic cosine of an angle.
+
+hyperbolic tangent
+tanh\(\mathbf{(x)}\)
+hyperbolic tangent of an angle.
+
+hyperbolic cosecant
+csch\(\mathbf{(x)}\)
+hyperbolic cosecant of an angle.
+
+hyperbolic secant
+sech\(\mathbf{(x)}\)
+hyperbolic secant of an angle.
+
+hyperbolic cotangent
+coth\(\mathbf{(x)}\)
+hyperbolic cotangent of an angle.
+
+Custom Colors
+
+Function
+Try typing...
+This function defines a custom color using...
+
+rgb
+\(\mathbf{c=}\)rgb\(\mathbf{(255, 165, 0)}\)
+the amount of red, green, and blue as values between 0 and 255.
+
+hsv
+\(\mathbf{c=}\)hsv\(\mathbf{(25,0.8,1)}\)
+the hue (a value between 0 and 360), saturation (a value between 0 and 1), and brightness (a value between 0 and 1).
+
+okhsv
+\(\mathbf{c=}\)okhsv\(\mathbf{(160, 0.8, 0.9)}\)
+the hue (0-360), saturation (0-1), and brightness (0-1). Okhsv was designed to be more perceptually uniform than hsv.
+
+oklab
+\(\mathbf{c=}\)oklab\(\mathbf{(0.7, 0.2, -0.2)}\)
+the perceived lightness (0-1) and a/b inputs representing opponent channels of the four unique hues, green vs red and blue vs yellow, on a scale from -0.4 to 0.4.
+
+oklch
+\(\mathbf{c=}\)oklch\(\mathbf{(0.8, 0.2, 235)}\)
+the perceived lightness (0-1), chroma (0-0.4), and hue (0-360).
+
+Learn more in our Custom Colors article.
+ 
+Number Theory
+
+Function
+Try typing...
+This function finds the…
+
+least common multiple
+lcm\(\mathbf{(2,3,4)}\)
+least common multiple of two or more numbers.
+
+greatest common divisor
+gcd\(\mathbf{(6,12,18)}\)
+greatest common divisor of two or more numbers.
+
+modular
+mod\(\mathbf{(17,5)}\)
+remainder value after division by the divisor (modulus).
+
+least integer
+ceil\(\mathbf{(13.5)}\)
+least integer greater than or equal to a number.
+
+greatest integer
+floor\(\mathbf{(13.5)}\)
+greatest integer less than or equal to a number.
+
+round
+round\(\mathbf{(1.3254, 2)}\)
+value rounded to the nearest integer or given place value.
+
+sign
+sign\(\mathbf{(-20)}\)
+sign of a number as positive 1 or negative 1.
+
+nth root
+nthroot
+the nth root of a number.
+
+permutation
+nPr\(\mathbf{(6,2)}\)
+the number of ways to arrange \(r\) objects from a set of \(n\) distinct objects (the order of the objects matters).
+
+combination
+nCr\(\mathbf{(6,2)}\)
+the number of ways to choose \(r\) objects from a set of \(n\) distinct objects (the order of the objects does not matter).
+
+Advanced
+
+Function
+Try typing...
+This function...
+
+action(\(\to\))
+\(\mathbf{a \to a+1}\)
+
+updates the variable when the action runs
+Learn more in our Actions article.
+
+tone
+tone\(\mathbf{(440)}\)
+
+makes a sound based on a frequency (110 to 880) and an optional gain (0 to 1).
+Learn more in our Tone article.
+
+with
+\(\mathbf{\frac{m}{n} + m}\) with \(\mathbf{m = 10, n = 2}\)
+
+replaces a variable in an expression with a constant value, another variable expression, or a list.
+Learn more in our Substitution article.
+
+and
+\(\mathbf{x^{2}+y^{2}≤25}\)\(\mathbf{\left\{x>0 \operatorname{and}y>0 \right\}}\)
+
+will display only the portion of the equation or inequality that satisfies both of these restrictions.
+Learn more in our Inequalities and Restrictions article.
+
+or
+\(\mathbf{x^{2}+y^{2}\le25 \left\{x<0 \operatorname{or} y<0 \right\}}\)
+
+will display the portion of the equation or inequality that satisfies either of these restrictions.
+Learn more in our Inequalities and Restrictions article.
+
+Geometry
+
+Function
+Try typing...
+Arguments
+This function...
+
+midpoint
+midpoint\(\mathbf{((0,2),(4,5))}\)
+segment or two points
+finds the point equidistant between 2 points
+
+distance
+distance\(\mathbf{((0,2),(4,5))}\)
+two points
+measures the distance between two points
+
+polygon
+polygon\(\mathbf{((0,0),(3,4),(4,2),(2,-1))}\)
+
+n points
+plots a closed plane figure made of points
+
+Polar Coordinates
+
+Variable
+Try typing...
+Definition
+
+\(r\)
+\(\mathbf{r=3}\)
+the distance from the origin to the point
+
+\(\theta\)
+\(\mathbf{r=}\)sin(theta)
+the direction or the angle of rotation from the positive x-axis
+
+Learn more in our Polar Graphing article.
+ 
+Constants and Variables
+
+Constant or Variable
+Try typing...
+Definition
+
+\(\pi\)
+pi
+ratio of a circle’s circumference to its diameter
+
+\(\tau\)
+tau
+ratio of a circle’s circumference to its radius (or \(2\pi\))
+
+\(e\)
+e
+base of the natural logarithm
+
+~
+~
+indicates the regression model to be used to model the relationship between two sets of data \((x_{1},x_2)\)
+
+\(\infty\)
+infinity
+an unbounded quantity
+
+width
+width
+the width of the viewport (in pixels)
+
+height
+height
+the height of the viewport (in pixels)
+
+Four Function
+
+Function
+Try typing...
+This function...
+
+square root
+sqrt
+finds the square root of a number.
+
+answer
+ans
+uses the answer from the previous expression line.
+
+Scientific Calculator
+
+Function
+Try typing...
+Description
+
+absolute value
+\(\mathbf{|-5|}\)
+absolute value of a number (distance between that number and 0)
+
+\(\pi\)
+pi
+ratio of a circle’s circumference to its diameter
+
+nth root
+nthroot
+nth root of a number
+
+percent
+%
+percent of a number
+
+fraction
+
+/ or frac
+
+type a fraction
+
+sine
+sin(pi)
+sine of an angle
+
+cosine
+cos(pi)
+cosine of an angle
+
+tangent
+tan(pi)
+tangent of an angle
+
+arcsine
+sin\(\mathbf{^{-1}}\)(pi)
+inverse of the sine of an angle
+
+arccosine
+cos\(\mathbf{^{-1}}\)(pi)
+inverse of the cosine of an angle
+
+arctangent
+tan\(\mathbf{^{-1}}\)(pi)
+inverse of the tangent of an angle
+
+mean
+mean\(\mathbf{(1,5,5,10)}\)
+average of a list of numbers
+
+standard deviation
+stdev\(\mathbf{(1,5,5,10)}\)
+
+sample standard deviation of a list of numbers
+
+standard deviation population
+stdevp\(\mathbf{(1,5,5,10)}\)
+
+population standard deviation of a list of numbers
+
+permutation
+nPr\(\mathbf{(6,2)}\)
+the number of ways to arrange \(r\) distinct objects from a set of \(n\) distinct objects (the order of the objects matters)
+
+combination
+nCr\(\mathbf{(6,2)}\)
+the number of ways to choose \(r\) objects from a set of \(n\) distinct objects (the order of the objects does not matter)
+
+factorial
+\(\mathbf{4!}\)
+product of all positive integers less than or equal to the given number
+
+natural logarithm
+ln\(\mathbf{(e)}\)
+natural log of the given number
+
+logarithm
+log\(\mathbf{(100)}\)
+logarithm of of the given number
+
+e
+\(\mathbf{e}\)
+base of the natural logarithm
+
+round
+round\(\mathbf{(1.3254, 2)}\)
+round the given value to the nearest integer or given place value
+
+Function
+Try typing...
+This function...
+
+matrix template
+matrix
+is a shortcut to create a 2x2 matrix
+
+reduced row echelon format
+rref\(\mathbf{(A)}\)
+reduces matrix to row echelon form
+
+determinant
+det\(\mathbf{(A)}\)
+finds the determinant of a square matrix
+
+trace
+trace\(\mathbf{(A)}\)
+finds the sum of the diagonal of a matrix
+
+inverse
+\(\mathbf{A^{-1}}\)
+finds the inverse matrix
+
+square
+\(\mathbf{A^{2}}\)
+squares the matrix
+
+transpose
+\(\mathbf{A^{T}}\)
+transposes the matrix
+
+Below you will find the list of functions supported in the geometry tool. Any of the functions supported in the graphing calculator will also work in this tool.
+ 
+Geometry Tools
+
+Function
+Try typing...
+Arguments
+This function plots a...
+
+midpoint
+midpoint\(\mathbf{(}\) , \(\mathbf{)}\) 
+segment or 2 points
+point equidistant from 2 endpoints of a segment or between two points
+
+intersection
+intersection\(\mathbf{(}\) , \(\mathbf{)}\) 
+2 intersecting lines, circles, or arcs
+common point between 2 objects
+
+segment
+segment\(\mathbf{(}\) , \(\mathbf{)}\)
+2 points
+part of a line with 2 endpoints
+
+line
+line\(\mathbf{(}\) , \(\mathbf{)}\)
+2 points
+collection of points in a straight path
+
+ray
+ray\(\mathbf{(}\) , \(\mathbf{)}\)
+2 points
+part of a line with only one endpoint
+
+parallel
+parallel\(\mathbf{(}\) , \(\mathbf{)}\) 
+line object and a point
+lines that do not intersect in the same plane
+
+perpendicular
+perpendicular\(\mathbf{(}\) , \(\mathbf{)}\) 
+line object and a point
+lines that intersect in a plane at a right angle
+
+angle bisector
+anglebisector \(\mathbf{(}\) \(\mathbf{)}\) 
+angle
+creates a ray that splits an angle into two congruent angles
+
+circle
+circle\(\mathbf{(}\) , \(\mathbf{)}\) 
+center point and another point, segment, or number
+collection of points equidistant from a center
+
+arc
+arc \(\mathbf{(}\) , , \(\mathbf{)}\) 
+3 points
+curved path through 3 points on the same circle
+
+angle
+angle\(\mathbf{(}\) , , \(\mathbf{)}\) 
+3 points
+amount of rotation from one line to the other about a common vertex
+
+directed angle
+directedangle\(\mathbf{(}\) , , \(\mathbf{)}\) 
+3 points
+measured angle (positive counter-clockwise and negative clockwise)
+
+polygon
+polygon\(\mathbf{(}\) , , , \(\mathbf{)}\) 
+
+n points
+closed plane figure made of points and segments
+
+glider
+glider\(\mathbf{(}\) , \(\mathbf{ 0.7)}\)
+object then a number - usually between 0 and 1 from the start to the end
+point restricted to another object that follows that object’s path
+
+vector
+vector\(\mathbf{(}\) , \(\mathbf{)}\) 
+start point and end point
+marker that shows both a direction and a magnitude
+
+Properties & Measurements
+
+Function
+Try typing...
+Arguments
+This function finds the...
+
+length
+length\(\mathbf{(}\) \(\mathbf{)}\) 
+segment
+measure of a segment
+
+distance
+distance\(\mathbf{(}\) , \(\mathbf{)}\) 
+2 points
+measure between 2 points
+
+area
+area\(\mathbf{(}\) \(\mathbf{)}\) 
+polygon
+measure of space contained by a polygon
+
+perimeter
+perimeter\(\mathbf{(}\) \(\mathbf{)}\) 
+polygon
+total length of all segments of a polygon
+
+vertices
+vertices\(\mathbf{(}\) \(\mathbf{)}\) 
+polygon
+intersection points of the segments of a polygon
+
+angles
+angles\(\mathbf{(}\) \(\mathbf{)}\) 
+polygon
+measured rotations for each pair of adjacent segments in a polygon
+
+directed angles
+directedangles\(\mathbf{(}\) \(\mathbf{)}\) 
+polygon
+angles measured with direction in a polygon
+
+segments
+segments\(\mathbf{(}\) \(\mathbf{)}\) 
+polygon
+edges of a polygon
+
+radius
+radius\(\mathbf{(}\) \(\mathbf{)}\) 
+circle or arc
+measured distance from center to circumference of a circle
+
+center
+center\(\mathbf{(}\) \(\mathbf{)}\) 
+circle or arc
+location of the point equidistant to the edge of a circle or arc
+
+coterminal
+coterminal\(\mathbf{(}\) \(\mathbf{)}\) 
+angle or directed angle
+angles that share an initial & terminal side (ex: \(30°\) & \(-330°)\)
+
+supplement
+supplement\(\mathbf{(}\) \(\mathbf{)}\) 
+directed angle
+two adjacent angles that form a straight angle
+
+vector.start
+ .start
+vector
+initial/base point of a vector marker
+
+vector.end
+ .end
+vector
+tail point of a vector marker
+
+Transformations
+
+Function
+Try typing...
+Arguments
+This function...
+
+dilation
+dilate\(\mathbf{(}\) , , \(\mathbf{2)}\)
+object, then a point and a number
+increases or decreases the size of an object by a specific scale factor from a given point
+
+rotation
+rotate\(\mathbf{(}\) , , \(\mathbf{90)}\)
+object, then a point and a number
+turns an object about a point by a directed angle
+
+reflection
+reflect\(\mathbf{(}\) , \(\mathbf{)}\) 
+object, then a line, segment, ray, or vector
+mirrors each point in an object across a given line
+
+translation
+translate\(\mathbf{(}\) , , \(\mathbf{)}\) 
+object, then 2 points or a vector
+moves every point of an object by the same distance in a given direction
+
+Below you will find the list of functions supported in the 3D calculator. Most of the functions supported in the graphing calculator will also work in this tool.
+ 
+Polar Coordinates
+
+Variable
+Try typing...
+Definition
+
+\(\rho\)
+rho
+distance between the origin and the point in 3D spherical coordinates
+
+\(\theta\)
+theta
+direction or the angle of rotation from the positive x-axis
+
+\(\phi\)
+phi
+angle between the ray from the origin and the positive z-axis
+
+\(r\)
+r
+distance from the origin to the point
+
+Geometry
+
+Function
+Try typing...
+Arguments
+Definition
+
+segment
+segment\(\mathbf{(}\)\(\mathbf{(0,0,0),(2,2,2)}\)\(\mathbf{)}\)
+two points
+part of a line with two endpoints
+
+triangle
+triangle\(\mathbf{(}\)\(\mathbf{(0,0,0),(2,2,2),}\)\(\mathbf{(1,3,2)}\)\(\mathbf{)}\)
+three 3D points
+polygon with three sides and vertices
+
+sphere
+sphere\(\mathbf{(}\)\(\mathbf{(0,0,0),1}\)\(\mathbf{)}\)
+center point and radius value
+3D surface where every point is equidistant from a center point
+
+vector
+vector\(\mathbf{(}\)\(\mathbf{(0,0,0),(1,1,1)}\)\(\mathbf{)}\) 
+start point and end point
+marker that shows both a direction and a magnitude
+
+distance
+distance\(\mathbf{(}\)\(\mathbf{(0,0,0),(3,3,3)}\)\(\mathbf{)}\)
+two points
+measure between two points
+
+midpoint
+midpoint\(\mathbf{(}\)\(\mathbf{(0,0,0),(3,3,3)}\)\(\mathbf{)}\)
+segment or two points
+point equidistant between two points
+
+vector.start
+vector.start
+vector
+initial/base point of a vector marker
+
+vector.end
+vector.end
+vector
+tail point of a vector marker

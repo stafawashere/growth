@@ -4,21 +4,91 @@ PyMuPDF is the primary extractor. Span font-size and baseline offsets are used t
 mark superscripts with ^{...} and subscripts with _{...} so exponents, limit
 subscripts, and integral bounds survive. pdftotext -raw is run as a cross-check
 and stored beside the primary text. Pages with too little text are quarantined.
+
+Web pages (manifest kind "web") become a single page. HTML is converted to text with
+a small deterministic converter; the raw cross-check is the same HTML with every tag
+replaced by a space. Browser-saved text is copied as it is to both files.
 """
 
+import html
 import json
+import re
 import subprocess
 import sys
+from html.parser import HTMLParser
 from pathlib import Path
 
 import pymupdf
 
 ROOT = Path(__file__).resolve().parent.parent
 PDF_DIR = ROOT / "cache" / "pdf"
+WEB_DIR = ROOT / "cache" / "web"
 TEXT_DIR = ROOT / "cache" / "text"
 MANIFEST = ROOT / "cache" / "manifest.json"
 QUARANTINE = ROOT / "cache" / "quarantine.json"
 MIN_CHARS_PER_PAGE = 40
+SKIPPED_ELEMENTS = {"script", "style", "noscript", "nav", "header", "footer"}
+BLOCK_ELEMENTS = {
+   "address", "article", "aside", "blockquote", "dd", "details", "div", "dl", "dt", "figcaption", "figure",
+   "form", "h1", "h2", "h3", "h4", "h5", "h6", "li", "main", "ol", "p", "pre", "section", "summary", "table",
+   "tbody", "td", "th", "thead", "title", "tr", "ul",
+}
+
+
+class PageTextParser(HTMLParser):
+   def __init__(self):
+      super().__init__(convert_charrefs=True)
+      self.pieces = []
+      self.skip_depth = 0
+
+   def handle_starttag(self, tag, attrs):
+      is_skipped = tag in SKIPPED_ELEMENTS
+
+      if is_skipped:
+         self.skip_depth += 1
+         return
+
+      is_break = tag in ("br", "hr")
+      is_inside_skipped = self.skip_depth > 0
+
+      if is_break and not is_inside_skipped:
+         self.pieces.append("\n")
+
+   def handle_endtag(self, tag):
+      is_skipped = tag in SKIPPED_ELEMENTS
+      is_inside_skipped = self.skip_depth > 0
+
+      if is_skipped and is_inside_skipped:
+         self.skip_depth -= 1
+         return
+
+      is_block = tag in BLOCK_ELEMENTS
+
+      if is_block and not is_inside_skipped:
+         self.pieces.append("\n")
+
+   def handle_data(self, data):
+      is_inside_skipped = self.skip_depth > 0
+
+      if not is_inside_skipped:
+         self.pieces.append(data)
+
+
+def tidy(text):
+   lines = [re.sub(r"[ \t\r\f\v\u00a0]+", " ", line).strip() for line in text.split("\n")]
+   joined = "\n".join(lines)
+   return re.sub(r"\n{3,}", "\n\n", joined).strip() + "\n"
+
+
+def html_to_text(markup):
+   parser = PageTextParser()
+   parser.feed(markup)
+   parser.close()
+   return tidy("".join(parser.pieces))
+
+
+def html_to_raw_text(markup):
+   return tidy(html.unescape(re.sub(r"<[^>]*>", " ", markup)))
 
 
 def line_text(line):
@@ -95,6 +165,28 @@ def extract(doc_id, record):
    return len(document), quarantined
 
 
+def extract_web(doc_id, record):
+   is_html = record.get("format") == "html"
+   suffix = "html" if is_html else "txt"
+   body = (WEB_DIR / f"{record['sha256']}.{suffix}").read_bytes().decode("utf-8", errors="replace")
+   out_dir = TEXT_DIR / doc_id
+   out_dir.mkdir(parents=True, exist_ok=True)
+
+   if is_html:
+      primary = html_to_text(body)
+      raw = html_to_raw_text(body)
+   else:
+      primary = body
+      raw = body
+
+   (out_dir / "page-001.txt").write_text(primary)
+   (out_dir / "page-001.raw.txt").write_text(raw)
+   is_thin = len(primary.strip()) < MIN_CHARS_PER_PAGE
+   quarantined = [1] if is_thin else []
+   (out_dir / "meta.json").write_text(json.dumps({"doc_id": doc_id, "pages": 1, "sha256": record["sha256"], "quarantined_pages": quarantined, "kind": "web"}, indent=1))
+   return 1, quarantined
+
+
 def main():
    manifest = json.loads(MANIFEST.read_text())
    quarantine = json.loads(QUARANTINE.read_text()) if QUARANTINE.exists() else {}
@@ -109,7 +201,9 @@ def main():
       if not should_extract:
          continue
 
-      pages, quarantined = extract(doc_id, record)
+      is_web = record.get("kind") == "web"
+      extractor = extract_web if is_web else extract
+      pages, quarantined = extractor(doc_id, record)
       quarantine[doc_id] = quarantined
       print(doc_id, pages, "pages,", len(quarantined), "quarantined", flush=True)
 

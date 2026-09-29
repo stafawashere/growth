@@ -46,13 +46,17 @@
          "id": "B",
          "is_key": true,
          "error_path": null,
-         "value": 14.64
+         "value": {
+            "num": "14.640"
+         }
       },
       {
          "id": "C",
          "is_key": false,
          "error_path": "BC-ERR-08013",
-         "value": 36.63,
+         "value": {
+            "num": "36.630"
+         },
          "derivation": "the inflow and outflow rates added instead of subtracted",
          "mechanism": "sign_error"
       },
@@ -60,7 +64,9 @@
          "id": "D",
          "is_key": false,
          "error_path": "BC-ERR-99009",
-         "value": 18.63,
+         "value": {
+            "num": "18.630"
+         },
          "derivation": "L(t) substituted without parentheses, so only its constant term is subtracted and its cosine term is added",
          "mechanism": "algebra_slip"
       }

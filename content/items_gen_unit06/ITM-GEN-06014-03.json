@@ -33,9 +33,9 @@
          "id": "A",
          "is_key": false,
          "error_path": "BC-ERR-99032",
-         "label": "\\( \\lim_{n\\to\\infty} \\sum_{k=1}^{n} 3\\sqrt{\\frac{5k}{n}} \\cdot \\frac{5}{n} \\)",
-         "derivation": "the sample points started at 0 instead of 1, so the sum is over [0, 5], an interval the integral never gives",
-         "mechanism": "wrong_limits"
+         "label": "\\( \\lim_{n\\to\\infty} \\sum_{k=1}^{n} 3\\sqrt{x} \\cdot \\frac{5}{n} \\)",
+         "derivation": "the integrand copied into the sum with x left in place of the sample point, so the summand never depends on k and the expression is not a Riemann sum",
+         "mechanism": "conceptual_confusion"
       },
       {
          "id": "B",

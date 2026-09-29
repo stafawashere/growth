@@ -41,13 +41,17 @@
          "id": "A",
          "is_key": true,
          "error_path": null,
-         "value": 57.09
+         "value": {
+            "num": "57.090"
+         }
       },
       {
          "id": "B",
          "is_key": false,
          "error_path": "BC-ERR-06015",
-         "value": 27.09,
+         "value": {
+            "num": "27.090"
+         },
          "derivation": "the integral of the rate over [0, 3] reported as the amount, with the initial 30 liters left out",
          "mechanism": "forgot_constant"
       },
@@ -55,7 +59,9 @@
          "id": "C",
          "is_key": false,
          "error_path": "BC-ERR-99019",
-         "value": 57.1,
+         "value": {
+            "num": "57.100"
+         },
          "derivation": "the integral rounded to one decimal place before the known amount is added",
          "mechanism": "algebra_slip"
       },

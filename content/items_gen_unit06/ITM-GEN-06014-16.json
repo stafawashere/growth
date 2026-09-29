@@ -55,9 +55,9 @@
          "id": "D",
          "is_key": false,
          "error_path": "BC-ERR-99032",
-         "label": "\\( \\lim_{n\\to\\infty} \\sum_{k=1}^{n} 4e^{\\frac{2k}{n}} \\cdot \\frac{2}{n} \\)",
-         "derivation": "the sample points started at 0 instead of 6, so the sum is over [0, 2], an interval the integral never gives",
-         "mechanism": "wrong_limits"
+         "label": "\\( \\lim_{n\\to\\infty} \\sum_{k=1}^{n} 4e^{t} \\cdot \\frac{2}{n} \\)",
+         "derivation": "the integrand copied into the sum with t left in place of the sample point, so the summand never depends on k and the expression is not a Riemann sum",
+         "mechanism": "conceptual_confusion"
       }
    ],
    "calculator_status": "no_calculator",

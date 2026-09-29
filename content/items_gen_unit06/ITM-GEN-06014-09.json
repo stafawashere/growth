@@ -39,9 +39,9 @@
          "id": "B",
          "is_key": false,
          "error_path": "BC-ERR-99032",
-         "label": "\\( \\lim_{n\\to\\infty} \\sum_{k=1}^{n} 3\\left(\\frac{3k}{n}\\right)^{2} \\cdot \\frac{3}{n} \\)",
-         "derivation": "the sample points started at 0 instead of 4, so the sum is over [0, 3], an interval the integral never gives",
-         "mechanism": "wrong_limits"
+         "label": "\\( \\lim_{n\\to\\infty} \\sum_{k=1}^{n} 3x^{2} \\cdot \\frac{3}{n} \\)",
+         "derivation": "the integrand copied into the sum with x left in place of the sample point, so the summand never depends on k and the expression is not a Riemann sum",
+         "mechanism": "conceptual_confusion"
       },
       {
          "id": "C",

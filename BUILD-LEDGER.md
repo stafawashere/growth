@@ -69,6 +69,174 @@ Recommended next slice: P2 review mode and FSRS scheduling with `test_desired_re
 replay only, since the P1 gates still open are the operator's and the engine needs a finite due
 queue to teach from now to May 2027.
 
+## Desmos fluency, 2026-09-29 [verified]
+
+Built overnight by claude-fable-5-1 orchestrating claude-opus-5-5 code agents under the operator's
+brief of 2026-09-29, on branch `calculator/desmos-fluency` (21 commits from `today/redesign`, not
+pushed, main untouched). The brief: research, design and build a Desmos fluency feature for the two
+calculator parts, with the exam habits carried and nothing credited. Documents: docs/calculator/
+(design.md, architecture.md, build-plan.md, HANDOFF.md, research/ with four documents and a
+synthesis). The working tree was shared with another chat session whose uncommitted files
+(tools/check_items.py, tools/seed_history_student.py, app/items/standards.py,
+tests/tools/test_item_standards.py) were left untouched; the branch switch moved that session's
+checkout onto this branch, which the operator should know before merging.
+
+What was built.
+
+- The corpus caches web pages. tools/fetch_corpus.py gained a `web` section (curl for HTML and
+  PDFs on one list; `--saved-dir` for pages a browser had to render: help.desmos.com refuses curl
+  with 403, and desmos.com/terms, /api-terms and /testing are script-rendered), extract_text.py
+  writes one text page per web document, qa/00_manifest.py checks cache/web by hash,
+  build_sources.py emits web_page source records from the manifest and keeps every existing BC-SRC
+  id. 40 documents added (Bluebook tools page, both calculator policy pages, Desmos's College Board
+  PDF, its default testing PDF and user guide, the API docs, both terms pages, the testing page,
+  the graphing shortcuts page and 19 help articles). cache/web is ignored like cache/pdf; the text
+  is tracked. web-key-changes still returns 403 and stays hand-listed.
+- Library: research/exam/calculator-policy.md now states from cached pages that Calculus BC gets
+  the Desmos graphing calculator only, that the built-in calculator sits outside the two-handheld
+  count, and that the four CED capabilities in the Bluebook variant rest on a four-step inference
+  whose weakest link is reading Desmos's list of differences as exhaustive; the approved model list
+  is cached; unresolved-questions.md, claims-and-confidence.md and PROGRESS.md follow. qa/12_report
+  14 PASS.
+- Content: nine procedure cards under content/calculator/cards (check radians first; define f(x)
+  once and evaluate; derivative at a point; definite integral; average value; zeros and f(x)=k;
+  intersection as a bound; a window that shows the work; three places, rounded or truncated), each
+  with Desmos's own typed syntax and shortcuts, one worked demonstration, the exam habit in the
+  reader's words from the named BC-ERR records, and page citations with anchor quotes;
+  content/calculator/templates.json; schemas/calculator/card.schema.json;
+  tools/check_calculator.py (11 lints plus a 200-draw run per template through the registry).
+- Engine: app/calculator (kit, check, registry, twelve templates, two per capability: plot, zero,
+  derivative, integral, intersection, value). Keys are computed by mpmath quadrature, SymPy
+  differentiation or evaluation and never stored; a draw whose rounded and truncated three-place
+  forms coincide is nudged and, failing that, redrawn, so every drill can tell the two forms apart.
+  check_value accepts the rounded or the truncated three-place form and names why an entry failed
+  (`missing`, `not_a_number`, `not_three_places`, `outside_tolerance`); check_setup compares the
+  typed MathJSON by the item grader's equivalence engine, treats an equation up to a nonzero
+  constant, refuses a bare number as a setup, and reads prime notation and implicit application on
+  the task's named functions.
+- Storage and routes: `calculator_drills` (one table, `user_id` indexed, so export and purge reach
+  it through owner_clause with no code change), app/calculator_drills/service.py, the five routes
+  in app/api/routes/calculator.py (cards, card, serve, answer, measured),
+  app/progress/calculator_fluency.py for the measured payload (ratios through
+  learning_metrics.value with denominators, median null under three answered drills, budgets from
+  app/assessment/shape.py), `calculator_work` on the lesson payloads, two audit actions.
+- Web: a sixth top-bar destination, Calculator (Procedures, Drill, Measured); the drill opens the
+  College Board version of the Desmos graphing calculator beside the task, takes the result as
+  typed and the setup in the math field, measures elapsed time with a hideable clock, and shows the
+  three verdict lines with both accepted forms; "Calculator practice" links on calculator items, on
+  the assessment setup screen for a calculator part, and after a calculator worked example in a
+  lesson; one text link on Progress. DesmosPanel carries the College Board URL, `openByDefault`, and
+  `DESMOS_OPENS_IN` ("frame" | "window").
+
+Decisions, all reversible, taken under the brief.
+
+- The embedded Desmos API is not adopted. It needs an API key from desmos.com/my-api, an account
+  only the operator can create, and a `script-src https://www.desmos.com` amendment that plan 09
+  refuses; the API terms' free Trial Tier permits personal, non-commercial use, so the licence alone
+  would not block it (BC-SRC-desmos-api-terms p.1). Drills check outcomes: the typed value and the
+  typed setup. The CSP is unchanged.
+- The drills and the calculator items frame the College Board version of the calculator,
+  https://www.desmos.com/testing/collegeboard/graphing (same origin as the 2026-09-27 exception),
+  because Desmos says its testing page carries the exam configuration and its College Board PDF for
+  SY2026-2027 lists the Bluebook differences (images, folders and notes disabled; log mode
+  auto-checked). Verified in headless Brave: the frame loads inside the app's sandboxed iframe with
+  the green "College Board Version" header and `api/v1.12.0/calculator.js` fetched in the frame.
+  Desmos logs a console warning inside the frame that iframes are not a supported or secure way to
+  use Desmos, and its Terms of Service section 5 say the Desmos Tools may not be framed without
+  prior consent (BC-SRC-desmos-terms p.1); the frame stands on the operator's 2026-09-27
+  instruction and `DESMOS_OPENS_IN` flips it to a new-window link. Ruling for the operator.
+- Fluency is measured and never credited: invariant C0 (skills_state, attempts, sessions,
+  judgments, diagnoses, pending_probes, gradings untouched by any drill sequence) is a hypothesis
+  property in tests/calculator/test_invariants.py, and the walk below queried skills_state before
+  and after nine drills: 618 rows, identical digest.
+- The value rule as written accepts an entry with fewer than three places when it equals the
+  truncated form (15.30 against 15.3008); the walk and the tests show a two-place entry refused
+  when its third place is nonzero. Recorded, not changed.
+- "Define f(x) once" and "Evaluate at a point" are one card, so every drilled card has a template.
+- The service lives in app/calculator_drills so the engine package keeps its no-database rule,
+  which tests/calculator/test_registry.py enforces.
+- The design's `60vh` phone frame height is `calc(var(--growth-space-96) * 5)` because the
+  literal-values gate refuses viewport units; opening the frame by default is decided by
+  `innerWidth >= 1100` read once at render.
+- Two defects found in the walk and fixed with red-then-green tests: MathLive emits integral bounds
+  as `Triple` (and pairs as `Pair`), which app/items/mathjson.py refused, so every typed integral
+  setup was unreadable (47b7e37); prime notation and `f(a)` on the student's own function names
+  arrive as `Multiply(Prime(P), 4.5)` and `Multiply(f, 0.31)`, which the setup check now rewrites
+  (2b06b69). A third: the drill's skip link was visible at every width because the drill container
+  was positioned (9f7533d).
+
+Checks, each run by the orchestrator in this session.
+
+| Check | Command | Result |
+| --- | --- | --- |
+| Library | `cd qa && python3 12_report.py` | 14 PASS, 0 FAIL (twice: after the corpus, after the library edits) |
+| Corpus pipeline | `timeout 120 .venv/bin/python -m pytest tests/tools/test_corpus_web.py` | 10 passed |
+| Cards and checker | `timeout 120 .venv/bin/python -m pytest tests/tools/test_check_calculator.py` | 34 passed |
+| Content checker | `.venv/bin/python tools/check_calculator.py content/calculator` | cards read 9, clean 9, with findings 0, exit 0 (with the real registry) |
+| Engine | `tests/calculator/test_check.py`, `test_registry.py`, `test_templates.py` each in its own process | 79, 13, 98 passed |
+| MathJSON fix | `tests/items/test_mathjson.py tests/items/test_mathjson_pair_triple.py` | 61 passed |
+| Routes, invariants, export, purge, lesson flag | one process each | 12, 2, 1, 1, 1 passed |
+| Web | `npm --prefix app/web run test` | 874 tests; under load 11 failed, every one rerun alone: contrastAllScreens 6 passed, App.test 1 passed (twice), LessonReader 21 passed, renderRecord 8 passed, keyboard session 3 passed; the one lasting failure is client.test.ts GradingsPayload, which fails at HEAD of the base branch (commit 3cec2af added tutor_explanation) and is not this work's |
+| Web build | `npm --prefix app/web run build` | exit 0, built in 27.59 s; rebuilt after the skip-link fix, exit 0 |
+| Reduced motion gate | `npm --prefix app/web run gate:reduced-motion` | 5 passed (slice 3 agent) |
+| Calculator vitest after the CSS fix | `npx vitest run src/calculator src/styles/noLiteralValues.test.ts` | 30 passed |
+| Full pytest | `timeout 3000 .venv/bin/python -m pytest tests` | see the line appended below |
+
+Pre-existing failure, not touched: tests/db/test_models.py `test_models_create_all` expects a table
+set without the five lesson tables (a base-branch drift); `calculator_drills` is in its expected set.
+
+The walk (Stage D), in headless Brave over CDP with var/calculator/driver.py (gitignored), against
+the API on 127.0.0.1:8007 serving the built client from a fresh database, because the dev-server
+slot cap was held by other chats. Screenshots under var/calculator/: 01-landing, 02-after-signup,
+03-home, 04-calculator-cards, 05-card-integral, 06-drill-integral, 07-drill-integral-checked,
+08-drill-truncated-no-setup, 09-drill-wrong, 10-drill-short, 11-drill-derivative, 12-drill-value,
+13-drill-zero, 14-drill-plot, 15-measured, 16-setup-calculator-part, 17-lesson-link,
+18-phone-cards, 19-phone-drill, 20-phone-measured, 21-dark-drill, 22-dark-card,
+23-drill-integral-setup-ok, 24-drill-derivative-setup-ok, 25-drill-offline, 26-dark-measured,
+27-session-first-item, probe-frame2.
+
+- Calculator opened from the sixth tab; nine cards listed; the integral card read (steps, one
+  worked instance as a step reveal, the habit lines, Drill this).
+- Drills of all six capabilities with the real Desmos College Board frame open beside the task.
+  Rounded value accepted (25.130 for 25.12981), truncated accepted (2.141 for 2.1417), a value one
+  place short refused with "Give three decimal places" and both forms shown, a wrong value refused
+  with the reason, a missing setup reads "No setup shown". After the two fixes, typed setups judged
+  equivalent: `\int_0^3 R(t)\,dt`, `P'(23/5)`, `f(3.31)`, `5x+\cos(x)-4=0`.
+- Time recorded on every drill (elapsed_ms 4.9 s to 33 s); the measured view shows per-capability
+  counts with denominators, "not measured yet" under three, "13 seconds" median for four integral
+  drills, and the exam's own per-question figures in one sentence.
+- skills_state before and after: 618 rows, digest 725d64d81c371d35 both times; attempts 0,
+  sessions 0; audit_log holds 9 served and 9 answered rows.
+- Keyboard: Tab reaches the chooser, the clock control, the frame, then the skip link jumps to the
+  result field, then the setup field, then Check.
+- Phone (375 by 812): no horizontal overflow on cards, drill or measured; the frame opens on demand.
+- Dark mode with reduced motion: theme dark, background rgb(13, 14, 16), zero animated elements in
+  main, skip link hidden until focused.
+- Offline: with navigator.onLine false the frame is replaced by the design's sentence and the
+  drill still checks.
+- Links: "Calculator practice" appears on the assessment setup screen when Section I Part B is
+  chosen and not for Part A; on lesson LSN-CON-02007's worked example. The link on a live
+  calculator-part item was not reached in the walk (the fresh account opens on the diagnostic);
+  it is covered by app/web/src/calculator/CalculatorLink.test.tsx (present on a calculator item,
+  absent on a no-calculator item).
+- Console: only the pre-sign-in 401s and a favicon 404 in the main frame; Desmos's own bugsnag
+  beacons and its iframe warning inside the frame. Server log: 0 errors over 19 calculator route
+  hits. The built-in browser pane could not frame desmos.com from a localhost page (no request was
+  even issued), which is why the walk used Brave.
+
+Not done. Section I Part B calculator multiple-choice items are not in the corpus, so the
+catalogue of calculator work is free-response only. The lesson link is shown only when the lesson
+is opened from the library (a lesson inside a session carries no flag). No drill exists for the two
+habit cards (radians, three places), which every other drill carries as a note and a verdict.
+Whether the College Board practice page is the build Bluebook embeds, how many digits Desmos
+displays for an evaluation, and whether angle mode persists across questions remain open
+(research/exam/calculator-policy.md, Unresolved).
+
+Rulings waiting on the operator: framing Desmos against the desmos.com terms (consent, keep for
+private use, or flip `DESMOS_OPENS_IN` to "window"); the embedded API (Trial Tier key plus a
+script-src amendment) or the outcome-checking design as built; re-fetching the approved calculator
+list and the College Board Desmos PDF in spring 2027; the other session's files on this branch.
+
 ## Today redesign, 2026-09-29 [inferred]
 
 The operator's overnight brief: research how the best practice products and the literature pick the next problem, measure Growth's Today against it, redesign the algorithm, the session, the day screen and the question standards, and prove the result in the running app. In progress; this entry is the checkpoint and is rewritten as the stages close. State and resume point: `docs/pedagogy/today/HANDOFF.md`. Branch `today/redesign` from main 635c03b.

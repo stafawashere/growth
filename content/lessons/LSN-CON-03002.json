@@ -3,20 +3,68 @@
  "version": 1,
  "kind": "concept",
  "target_id": "BC-CON-03002",
- "status": "signed_off",
+ "status": "draft",
  "snapshot_digest": "a6a8ec9d3f59ab8f712e33d30cc22fc64bf2c478fbe7312e3e3118d319c6a42f",
  "source_digest": "0b3e6c652ee4d156e507ce1393c3aaeb2d36d6cea04910b6defb1d5fb58a5614",
  "read_minutes": {
-  "full": 5.1,
-  "brief": 2.8
+  "full": 5.2,
+  "brief": 3.0
  },
  "word_count": {
-  "full": 644,
-  "brief": 327
+  "full": 692,
+  "brief": 385
  },
  "sections": [
   {
    "id": "LSN-CON-03002#s1",
+   "type": "prediction",
+   "bands": [
+    "low",
+    "mid"
+   ],
+   "skills": [
+    "BC-SKL-03002",
+    "BC-SKL-03004",
+    "BC-SKL-03005",
+    "BC-SKL-03006"
+   ],
+   "sources": [
+    "BC-CON-03002",
+    "research/units/unit-03-differentiation-composite-implicit-inverse.md#3.1 The Chain Rule"
+   ],
+   "evidence_tag": "inferred",
+   "stem": {
+    "text": "Predict. \\(h(x)=f(g(x))\\), with \\(g(1)=3\\). Which two readings from the table give \\(h'(1)\\)?",
+    "command_verb": "predict"
+   },
+   "format": "mcq",
+   "options": [
+    {
+     "id": "A",
+     "label": "\\(f'(3)\\) times \\(g'(1)\\)",
+     "is_key": true
+    },
+    {
+     "id": "B",
+     "label": "\\(f'(1)\\) times \\(g'(1)\\)",
+     "is_key": false
+    },
+    {
+     "id": "C",
+     "label": "\\(f'(3)\\) plus \\(g'(1)\\)",
+     "is_key": false
+    }
+   ],
+   "resolution": {
+    "text": "The outer rate is read at the inner output \\(g(1)=3\\), and the inner rate at the input 1. Their product is \\((-3)(2)=-6\\)."
+   },
+   "delivery": {
+    "mode": "text",
+    "reason": "rule 6"
+   }
+  },
+  {
+   "id": "LSN-CON-03002#s2",
    "type": "orientation",
    "bands": [
     "low",
@@ -33,7 +81,7 @@
     "research/units/unit-03-differentiation-composite-implicit-inverse.md#3.1 The Chain Rule"
    ],
    "evidence_tag": "inferred",
-   "text": "A response multiplies two rates: the outer derivative, read at the inner output, times the inner derivative, read at the input. Stems give a formula, a table of values or two graphs.",
+   "text": "A response multiplies two rates: the outer derivative, read at the inner output, times the inner derivative, read at the input.",
    "delivery": {
     "mode": "text",
     "reason": "rule 5 for a statement of what a response shows; the figure-bearing BC-REP-02 on BC-SKL-03005 is served once, on ki-1",
@@ -43,7 +91,7 @@
    }
   },
   {
-   "id": "LSN-CON-03002#s2",
+   "id": "LSN-CON-03002#s3",
    "type": "key_ideas",
    "bands": [
     "low",
@@ -64,7 +112,7 @@
    "evidence_tag": "inferred",
    "ek_id": "BC-EK-FUN-3C1",
    "depth": "core",
-   "text": "With y a function of u and u a function of x, dy/dx is dy/du times du/dx. For h = f(g(x)) at x = a, the outer rate f' is read at the inner output g(a), not at a; the inner rate g' is read at a. A table or two graphs give the same readings, taken in that order.",
+   "text": "With y a function of u and u a function of x, dy/dx is dy/du times du/dx. For h = f(g(x)) at x = a, f' is read at the inner output g(a), not at a; g' is read at a. A table or graphs give the same readings.",
    "notation": "dy/dx equals dy/du times du/dx",
    "delivery": {
     "mode": "figure",
@@ -132,7 +180,7 @@
    }
   },
   {
-   "id": "LSN-CON-03002#s3",
+   "id": "LSN-CON-03002#s4",
    "type": "strategy",
    "bands": [
     "low",
@@ -143,17 +191,29 @@
     "BC-SKL-03006"
    ],
    "sources": [
-    "BC-QA-03002"
+    "BC-QA-03002",
+    "BC-ERR-03003"
    ],
    "evidence_tag": "verified",
    "archetype_id": "BC-QA-03002",
-   "cue": "The stem asks for the composite's derivative at the stated input, from a table of f, f', g and g'.",
-   "method": "First written line: the inner function at the given input, g(a).",
-   "rival": "Rival: the outer derivative read at the stated input (BC-ERR-03003).",
-   "separating_feature": "The outer derivative's row is g(a)."
+   "cue": "The composite's derivative at the stated input, from a table of f, f', g and g'.",
+   "method": "The inner function at the given input, g(a).",
+   "rival": "The outer derivative read at the stated input.",
+   "separating_feature": "The outer derivative's row is g(a).",
+   "contrast": {
+    "this": {
+     "text": "\\(h(x)=f(g(x))\\). Use the table of \\(f,f',g,g'\\) to find \\(h'(2)\\).",
+     "archetype_id": "BC-QA-03002"
+    },
+    "not_this": {
+     "text": "\\(k(x)=f(x)g(x)\\). Use the same table to find \\(k'(2)\\).",
+     "why_not": "A product of two functions calls for the product rule, with every reading at one input."
+    },
+    "feature": "The outer rate is read at the inner output, not at the input."
+   }
   },
   {
-   "id": "LSN-CON-03002#s4",
+   "id": "LSN-CON-03002#s5",
    "type": "strategy",
    "bands": [
     "low",
@@ -164,17 +224,18 @@
     "BC-SKL-03006"
    ],
    "sources": [
-    "BC-QA-03001"
+    "BC-QA-03001",
+    "BC-ERR-03006"
    ],
    "evidence_tag": "verified",
    "archetype_id": "BC-QA-03001",
    "cue": "The stem asks for the composite's derivative, from a formula built by composition, possibly one factor of a product.",
-   "method": "First written line: identify the outer and inner functions.",
-   "rival": "Rival: the composite factor differentiated without the enclosing product or quotient rule (BC-ERR-03006).",
+   "method": "Identify the outer and inner functions.",
+   "rival": "The composite factor differentiated without the enclosing product or quotient rule.",
    "separating_feature": "The operation applied last picks the first rule."
   },
   {
-   "id": "LSN-CON-03002#s5",
+   "id": "LSN-CON-03002#s6",
    "type": "strategy",
    "bands": [
     "low",
@@ -184,17 +245,18 @@
     "BC-SKL-03005"
    ],
    "sources": [
-    "BC-QA-03003"
+    "BC-QA-03003",
+    "BC-ERR-03005"
    ],
    "evidence_tag": "verified",
    "archetype_id": "BC-QA-03003",
    "cue": "The stem asks for the derivative of the composite at the stated input, from graphs of the two component functions.",
-   "method": "First written line: the inner function value read at the given input.",
-   "rival": "Rival: a slope read at a corner of the graph as though the derivative existed there (BC-ERR-03005).",
+   "method": "The inner function value read at the given input.",
+   "rival": "A slope read at a corner of the graph as though the derivative existed there.",
    "separating_feature": "The outer slope is read on the piece containing the inner output."
   },
   {
-   "id": "LSN-CON-03002#s6",
+   "id": "LSN-CON-03002#s7",
    "type": "worked_example",
    "bands": [
     "low",
@@ -278,7 +340,7 @@
    }
   },
   {
-   "id": "LSN-CON-03002#s7",
+   "id": "LSN-CON-03002#s8",
    "type": "worked_example",
    "bands": [
     "low"
@@ -447,6 +509,7 @@
      3
     ]
    },
+   "fade_from": 3,
    "delivery": {
     "mode": "step_reveal",
     "reason": "rule 1",
@@ -454,7 +517,7 @@
    }
   },
   {
-   "id": "LSN-CON-03002#s8",
+   "id": "LSN-CON-03002#s9",
    "type": "what_a_reader_scores",
    "bands": [
     "low"
@@ -467,7 +530,7 @@
     "BC-PT-99023"
    ],
    "evidence_tag": "verified",
-   "example_id": "LSN-CON-03002#s7",
+   "example_id": "LSN-CON-03002#s8",
    "lines": [
     {
      "point_type_id": "BC-PT-99023",
@@ -503,6 +566,7 @@
     "expression": -6
    },
    "relation": "distinct",
+   "fix_prompt": true,
    "possible_reason": {
     "misconception_id": "BC-MIS-03001",
     "text": "whatever sits inside is copied across unchanged"
@@ -646,6 +710,7 @@
     ]
    },
    "relation": "distinct",
+   "fix_prompt": true,
    "delivery": {
     "mode": "step_reveal",
     "reason": "rule 1",
@@ -680,6 +745,7 @@
     "expression": -6
    },
    "relation": "distinct",
+   "fix_prompt": true,
    "possible_reason": {
     "misconception_id": "BC-MIS-03002",
     "text": "the inner output plays no part in where the outer derivative is read"
@@ -717,6 +783,7 @@
     "expression": -6
    },
    "relation": "distinct",
+   "fix_prompt": true,
    "delivery": {
     "mode": "step_reveal",
     "reason": "rule 1",
@@ -741,7 +808,7 @@
    ],
    "evidence_tag": "inferred",
    "prerequisite_id": "BC-PRQ-03001",
-   "text": "Name the operation applied last and the one applied first. Without it the outer shell is differentiated and the work stops."
+   "text": "Name the operation applied last and the one applied first."
   },
   {
    "id": "LSN-CON-03002#prq-BC-PRQ-03005",
@@ -759,7 +826,7 @@
    ],
    "evidence_tag": "inferred",
    "prerequisite_id": "BC-PRQ-03005",
-   "text": "f', dy/dx and dy/du name derivatives. Writing dy for dy/dx loses the meaning of the line."
+   "text": "f', dy/dx and dy/du name derivatives."
   },
   {
    "id": "LSN-CON-03002#prq-BC-PRQ-03006",
@@ -776,7 +843,7 @@
    ],
    "evidence_tag": "inferred",
    "prerequisite_id": "BC-PRQ-03006",
-   "text": "Rewrite radicals as powers without changing the value. A wrong simplification after a correct derivative changes the value."
+   "text": "Rewrite radicals as powers without changing the value."
   }
  ],
  "checks": [
@@ -818,7 +885,7 @@
     "names": "f,g",
     "direction": "forward"
    },
-   "completes": "LSN-CON-03002#s6",
+   "completes": "LSN-CON-03002#s7",
    "stem": {
     "text": "g(1) = 3, f'(3) = -3, g'(1) = 2. Find h'(1) for h(x) = f(g(x)).",
     "command_verb": "find"
@@ -1009,19 +1076,19 @@
   }
  ],
  "refresher": [
-  "LSN-CON-03002#s2",
+  "LSN-CON-03002#s3",
   "LSN-CON-03002#err-BC-ERR-03001",
   "LSN-CON-03002#err-BC-ERR-03002",
   "LSN-CON-03002#err-BC-ERR-03003",
   "LSN-CON-03002#err-BC-ERR-03004",
-  "LSN-CON-03002#s6"
+  "LSN-CON-03002#s7"
  ],
  "provenance": {
   "author": "tools/lesson_transcribe.py",
-  "prompt_version": "generator/lesson_v1",
+  "prompt_version": "generator/lesson_v2",
   "design_path": "docs/lessons/unit-03/LSN-CON-03002.md",
-  "signed_off_by": "claude-opus-5-5",
-  "signed_off_at": "2026-09-29",
+  "signed_off_by": null,
+  "signed_off_at": null,
   "not_human": true
  }
 }

@@ -9,19 +9,25 @@ purpose: Authoring spec for the concept lesson on BC-CON-03001, composite functi
 
 Concept BC-CON-03001 (skills BC-SKL-03001, BC-SKL-03003), topic 3.1 of Unit 3, loaded by one archetype, BC-QA-03001 (family rule-manipulation). It is the first concept on the unit's fringe (docs/lessons/unit-03/README.md, section 1): decomposition precedes any chain rule application (BC-SKL-03001 to BC-SKL-03002, hard).
 
+## Prediction
+
+One multiple choice question on worked example 1's own factor, \((2x^2-1)^3\) in \(h(x)=x(2x^2-1)^3\), asked before the rule is shown: what its derivative is. The key is \(3(2x^2-1)^2(4x)\), ex-1's second valued step. The distractors are the outer derivative alone (the BC-ERR-03001 path) and the cube with the inner derivative multiplied in but the power left alone. The resolution, shown on the key idea screen beside the choice, states the factor per layer. No verdict word. Sources: BC-CON-03001 and the topic 3.1 section the key idea cites.
+
 ## Orientation
 
-Served text (42 words), from BC-CON-03001 `description_plain` and the topic's Assessment behaviour paragraph (research/units/unit-03-differentiation-composite-implicit-inverse.md#3.1 The Chain Rule): a response names the outer and the inner function before differentiating, and every layer then contributes one factor. Stems supply a formula, often with the composite as one factor of a product. No count, no frequency.
+Served text (25 words), from BC-CON-03001 `description_plain` and the topic's Assessment behaviour paragraph (research/units/unit-03-differentiation-composite-implicit-inverse.md#3.1 The Chain Rule): a response names the outer and the inner function, and every layer then contributes one factor. No count, no frequency.
 
 ## Key ideas
 
 Both skills map to one BC-EK, BC-EK-FUN-3C1 (ced:75), so one core block, both bands.
 
-- ki-1 (core). Paraphrase of the topic's Required mathematical knowledge paragraph (Chain rule, Decomposition): name the operation applied last (outer) and first (inner); under the hypotheses, the derivative of f(g(x)) is f'(g(x)) times g'(x); repeat inward for more layers. No anchor quote is served, to keep the brief band under its cap; the EK sentence on ced:75 is cited. Notation line from the concept record.
+- ki-1 (core). Paraphrase of the topic's Required mathematical knowledge paragraph (Chain rule, Decomposition): name the operation applied last (outer) and first (inner); under the hypotheses, the derivative of f(g(x)) is f'(g(x)) times g'(x); repeat inward for more layers. No anchor quote is served, to keep the brief band under its cap, and the orientation, key idea, bridge and cues are cut to the same end; the EK sentence on ced:75 is cited. Notation line from the concept record.
 
 ## Recognition
 
 BC-QA-03001 (research/question-analysis/question-archetypes.md#BC-QA-03001 Chain rule derivative of a composite given symbolically): `typical_wording` "find the derivative of the given function", "find dy/dx for the given expression"; `common_givens` a formula built by composition, a composite that is one factor of a product or quotient; `asked_to_produce` the derivative of the composite. The stem feature that says "this concept": an expression sits inside a power, a root, an exponential or a trigonometric function, so evaluating the formula at a number takes two operations in sequence. Shapes: one MCQ (BC-MCQ-PE2012-001) or an opening step inside a multipart FRQ (BC-FRQ-2013-Q4-D, BC-FRQ-2014-Q3-D).
+
+Contrast pair on st-1: this stem is on BC-QA-03001, a product with one factor a power of an expression; not this stem is a product of plain powers of x, the near miss from the product rule (BC-CON-02013), where no layer needs naming. The separating feature is a function applied to an expression.
 
 What says "not this concept": the inside is x alone (a basic derivative, no inner factor); two variable factors multiplied with no function applied to an expression (the product rule, BC-CON-02013). The two meet in this archetype's draws, where h(x) is x times a composite: the last operation is the product, so the product rule opens and decomposition applies to the second factor (docs/lessons/unit-03/README.md, section 3).
 
@@ -29,7 +35,7 @@ What says "not this concept": the inside is x alone (a basic derivative, no inne
 
 One strategy block, both bands (one archetype family loads the concept's skills).
 
-- st-1, BC-QA-03001. Cue from `asked_to_produce` and `common_givens`. Method, `expected_solution_path[0]`: identify the outer and inner functions. First written line: u equals the inner expression, the outer as a function of u [inferred as a layout: the record names the step, not its form]. Rival, `wrong_approaches`: differentiating the outer function and leaving out the inner derivative (BC-ERR-03001). Separating feature: each layer named in the first line owns one factor of the derivative, so a missing factor is visible by count.
+- st-1, BC-QA-03001. Cue from `asked_to_produce` and `common_givens`. Method, `expected_solution_path[0]`: identify the outer and inner functions. The first written line is u equals the inner expression, the outer as a function of u [inferred as a layout: the record names the step, not its form]. Rival, `wrong_approaches`: differentiating the outer function and leaving out the inner derivative (BC-ERR-03001), cited in the block's `sources`, not in its text. Separating feature: each layer named in the first line owns one factor of the derivative, so a missing factor is visible by count.
 
 The archetype carries `asked_to_produce` and `common_givens`, so the block is not tagged inferred.
 
@@ -81,12 +87,12 @@ BC-QA-03001 is `no_calculator` and "usually a single multiple choice item", so t
 - ex-1: step_reveal. Rule 1.
 - err-BC-ERR-03001, err-BC-ERR-03002: step_reveal, wrong beside right. Rule 1.
 
-No motion, interactive or model mode applies (docs/lessons/unit-03/README.md, section 6) [inferred; settled by the modality A/B].
+No drawn block: none of rules 2 to 5 applies. The skills carry BC-REP-01 and BC-REP-04 only, neither figure-bearing, and the key idea states an order of operations, not a process to draw. The machine record states `no_figure_reason`. The prediction is delivered as text [inferred; settled by the modality A/B].
 
 ## Band plan
 
-- Low (full): orientation, ki-1, st-1, ex-1 with its scoring line, err-BC-ERR-03001, err-BC-ERR-03002, chk-1, chk-2, the bridge. 444 words, 3.0 minutes (cap 900 and 6).
-- Mid (brief): the same blocks, since the lesson has one strategy block, one example, two errors and two checks. 444 words, 3.0 minutes (cap 450 and 3).
+- Low (full), in served order: prediction, orientation, the bridge, ki-1, st-1 with its contrast pair, ex-1 with its scoring line, chk-1, err-BC-ERR-03001, err-BC-ERR-03002, chk-2. 442 words, 3.0 minutes (cap 900 and 6). There is no example 2, so nothing is faded.
+- Mid (brief): the same blocks, since the lesson has one strategy block, one example, two errors and two checks. 442 words, 3.0 minutes (cap 450 and 3).
 - Refresher: ki-1, err-BC-ERR-03001, err-BC-ERR-03002, ex-1.
 
 ## Sources
@@ -115,8 +121,21 @@ No motion, interactive or model mode applies (docs/lessons/unit-03/README.md, se
  "target_id": "BC-CON-03001",
  "unit": "03",
  "skills": ["BC-SKL-03001", "BC-SKL-03003"],
+ "prediction": {
+  "id": "pr-1",
+  "stem": {"text": "Predict. In \\(h(x)=x(2x^2-1)^3\\), what is the derivative of the factor \\((2x^2-1)^3\\)?", "command_verb": "predict"},
+  "format": "mcq",
+  "options": [
+   {"id": "A", "label": "\\(3(2x^2-1)^2\\)", "is_key": false},
+   {"id": "B", "label": "\\(3(2x^2-1)^2(4x)\\)", "is_key": true},
+   {"id": "C", "label": "\\(3(2x^2-1)(4x)\\)", "is_key": false}
+  ],
+  "resolution": "The cube is differentiated at the inner expression and multiplied by the inner derivative \\(4x\\). Each layer gives a factor.",
+  "sources": ["BC-CON-03001", "research/units/unit-03-differentiation-composite-implicit-inverse.md#3.1 The Chain Rule"]
+ },
+ "no_figure_reason": "The concept is the order of operations in a formula. Its skills carry only symbolic and verbal representations and the key idea is a statement, not a process to draw, so no figure fits.",
  "orientation": {
-  "text": "A response names the outer and inner functions before differentiating, then gives one factor per layer: the outer derivative read at the inner expression, times the inner derivative. Stems supply a formula, often with the composite as one factor of a product.",
+  "text": "A response names the outer and inner functions, then gives one factor per layer: the outer derivative at the inner expression, times the inner derivative.",
   "sources": ["BC-CON-03001", "research/units/unit-03-differentiation-composite-implicit-inverse.md#3.1 The Chain Rule"]
  },
  "key_ideas": [
@@ -124,8 +143,8 @@ No motion, interactive or model mode applies (docs/lessons/unit-03/README.md, se
    "id": "ki-1",
    "ek_id": "BC-EK-FUN-3C1",
    "depth": "core",
-   "text": "A composite is one function evaluated at the output of another. The operation applied last is the outer function, the one applied first the inner. When g is differentiable at x and f at g(x), the derivative of f(g(x)) is f'(g(x)) times g'(x). With more layers, repeat inward.",
-   "notation": "f of g of x; y as a function of u and u as a function of x",
+   "text": "A composite is one function evaluated at the output of another: the operation applied last is the outer function, the first the inner. The derivative of f(g(x)) is f'(g(x)) times g'(x). More layers repeat inward.",
+   "notation": "f of g of x",
    "quote": null,
    "sources": ["BC-EK-FUN-3C1", "ced:75", "research/units/unit-03-differentiation-composite-implicit-inverse.md#3.1 The Chain Rule"]
   }
@@ -134,11 +153,16 @@ No motion, interactive or model mode applies (docs/lessons/unit-03/README.md, se
   {
    "id": "st-1",
    "archetype_id": "BC-QA-03001",
-   "cue": "The stem asks for a composite's derivative, from a formula built by composition, alone or as a product factor.",
-   "method": "First written line: identify the outer and inner functions, u = inner expression.",
-   "rival": "Rival: differentiating the outer function and leaving out the inner derivative (BC-ERR-03001).",
+   "cue": "A composite's derivative from a formula, alone or as a product factor.",
+   "method": "Identify the outer and inner functions, u = inner expression.",
+   "rival": "Differentiating the outer function and leaving out the inner derivative.",
    "separating_feature": "Each named layer owns one factor of the derivative.",
-   "sources": ["BC-QA-03001"],
+   "contrast": {
+    "this": {"text": "Let \\(h(x)=x(3x^2+1)^4\\). Find \\(h'(1)\\).", "archetype_id": "BC-QA-03001"},
+    "not_this": {"text": "Let \\(h(x)=x^2(3x+1)\\). Find \\(h'(1)\\).", "why_not": "No function is applied to an expression, so the product rule alone applies."},
+    "feature": "A function applied to an expression, not to \\(x\\) alone."
+   },
+   "sources": ["BC-QA-03001", "BC-ERR-03001"],
    "evidence_tag": "verified"
   }
  ],
@@ -151,8 +175,8 @@ No motion, interactive or model mode applies (docs/lessons/unit-03/README.md, se
    "problem": {"text": "Let h(x) = x(2x^2 - 1)^3. Find h'(1).", "command_verb": "find"},
    "calculator_status": "no_calculator",
    "steps": [
-    {"cue": "Last operation in h: multiplication. The factor (2x^2 - 1)^3 is a composite.", "why": "Outer u^3, inner u = 2x^2 - 1.", "expr": "(2*x**2 - 1)**3", "relation": "new"},
-    {"cue": "Composite factor: cube read at the inner expression.", "why": "Then times the inner derivative 4x.", "expr": "3*(2*x**2 - 1)**2*(4*x)", "relation": "differentiate", "variable": "x", "point_type_id": "BC-PT-99023"},
+    {"cue": "Last operation in h is multiplication; (2x^2 - 1)^3 is a composite.", "why": "Outer u^3, inner u = 2x^2 - 1.", "expr": "(2*x**2 - 1)**3", "relation": "new"},
+    {"cue": "Cube read at the inner expression.", "why": "Then times the inner derivative 4x.", "expr": "3*(2*x**2 - 1)**2*(4*x)", "relation": "differentiate", "variable": "x", "point_type_id": "BC-PT-99023"},
     {"cue": "h is x times the composite: product rule.", "why": "Each term differentiates one factor.", "expr": "(2*x**2 - 1)**3 + x*3*(2*x**2 - 1)**2*(4*x)", "relation": "new"},
     {"cue": "The stem asks for h'(1).", "why": "Inner value 1 at x = 1: 1 + 12.", "expr": "13", "relation": "evaluate", "subs": {"x": "1"}}
    ],
@@ -170,6 +194,7 @@ No motion, interactive or model mode applies (docs/lessons/unit-03/README.md, se
    "wrong_step": {"text": "Inner factor 4x dropped: value 4.", "expr": "(2*x**2 - 1)**3 + x*3*(2*x**2 - 1)**2"},
    "right_step": {"text": "With 4x: value 13.", "expr": "(2*x**2 - 1)**3 + x*3*(2*x**2 - 1)**2*(4*x)"},
    "relation": "distinct",
+   "fix_prompt": true,
    "possible_reason": {"misconception_id": "BC-MIS-03001", "text": "differentiation as an operation on the visible outer function"},
    "sources": ["BC-ERR-03001", "BC-MIS-03001"]
   },
@@ -180,13 +205,14 @@ No motion, interactive or model mode applies (docs/lessons/unit-03/README.md, se
    "wrong_step": {"text": "Inner derivative 4x omitted: value 4.", "expr": "(2*x**2 - 1)**3 + x*3*(2*x**2 - 1)**2"},
    "right_step": {"text": "Cube differentiated: value 13.", "expr": "(2*x**2 - 1)**3 + x*3*(2*x**2 - 1)**2*(4*x)"},
    "relation": "distinct",
+   "fix_prompt": true,
    "possible_reason": {"misconception_id": "BC-MIS-03012", "text": "nested structures are handled in the wrong order"},
    "sources": ["BC-ERR-03002", "BC-MIS-03012"]
   }
  ],
  "representations": null,
  "prerequisite_bridges": [
-  {"prq_id": "BC-PRQ-03001", "text": "Read a formula by naming the operation applied last and the one applied first. Without that reading, the outer shell is differentiated and the work stops."}
+  {"prq_id": "BC-PRQ-03001", "text": "Name the operation applied last and the one applied first. Without that reading, only the outer shell is differentiated."}
  ],
  "time": {"exam_part": "I-A", "budget_minutes": 2.14, "source": "research/exam/exam-structure.md#Section and part layout", "written_steps": {"ex-1": [2, 3, 4]}, "skipped_steps": {"ex-1": [1]}},
  "checks": [

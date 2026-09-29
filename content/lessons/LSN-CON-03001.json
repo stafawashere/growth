@@ -3,7 +3,7 @@
  "version": 1,
  "kind": "concept",
  "target_id": "BC-CON-03001",
- "status": "signed_off",
+ "status": "draft",
  "snapshot_digest": "a6a8ec9d3f59ab8f712e33d30cc22fc64bf2c478fbe7312e3e3118d319c6a42f",
  "source_digest": "e0c5620c90ba436d91aa72441b70231af97f441edc465f117fd4750cc19c2daa",
  "read_minutes": {
@@ -11,12 +11,58 @@
   "brief": 3.0
  },
  "word_count": {
-  "full": 397,
-  "brief": 397
+  "full": 404,
+  "brief": 404
  },
  "sections": [
   {
    "id": "LSN-CON-03001#s1",
+   "type": "prediction",
+   "bands": [
+    "low",
+    "mid"
+   ],
+   "skills": [
+    "BC-SKL-03001",
+    "BC-SKL-03003"
+   ],
+   "sources": [
+    "BC-CON-03001",
+    "research/units/unit-03-differentiation-composite-implicit-inverse.md#3.1 The Chain Rule"
+   ],
+   "evidence_tag": "inferred",
+   "stem": {
+    "text": "Predict. In \\(h(x)=x(2x^2-1)^3\\), what is the derivative of the factor \\((2x^2-1)^3\\)?",
+    "command_verb": "predict"
+   },
+   "format": "mcq",
+   "options": [
+    {
+     "id": "A",
+     "label": "\\(3(2x^2-1)^2\\)",
+     "is_key": false
+    },
+    {
+     "id": "B",
+     "label": "\\(3(2x^2-1)^2(4x)\\)",
+     "is_key": true
+    },
+    {
+     "id": "C",
+     "label": "\\(3(2x^2-1)(4x)\\)",
+     "is_key": false
+    }
+   ],
+   "resolution": {
+    "text": "The cube is differentiated at the inner expression and multiplied by the inner derivative \\(4x\\). Each layer gives a factor."
+   },
+   "delivery": {
+    "mode": "text",
+    "reason": "rule 6"
+   }
+  },
+  {
+   "id": "LSN-CON-03001#s2",
    "type": "orientation",
    "bands": [
     "low",
@@ -31,7 +77,7 @@
     "research/units/unit-03-differentiation-composite-implicit-inverse.md#3.1 The Chain Rule"
    ],
    "evidence_tag": "inferred",
-   "text": "A response names the outer and inner functions before differentiating, then gives one factor per layer: the outer derivative read at the inner expression, times the inner derivative. Stems supply a formula, often with the composite as one factor of a product.",
+   "text": "A response names the outer and inner functions, then gives one factor per layer: the outer derivative at the inner expression, times the inner derivative.",
    "delivery": {
     "mode": "text",
     "reason": "rule 5: BC-REP-01 and BC-REP-04 on the skills, no figure-bearing representation",
@@ -41,7 +87,7 @@
    }
   },
   {
-   "id": "LSN-CON-03001#s2",
+   "id": "LSN-CON-03001#s3",
    "type": "key_ideas",
    "bands": [
     "low",
@@ -59,8 +105,8 @@
    "evidence_tag": "inferred",
    "ek_id": "BC-EK-FUN-3C1",
    "depth": "core",
-   "text": "A composite is one function evaluated at the output of another. The operation applied last is the outer function, the one applied first the inner. When g is differentiable at x and f at g(x), the derivative of f(g(x)) is f'(g(x)) times g'(x). With more layers, repeat inward.",
-   "notation": "f of g of x; y as a function of u and u as a function of x",
+   "text": "A composite is one function evaluated at the output of another: the operation applied last is the outer function, the first the inner. The derivative of f(g(x)) is f'(g(x)) times g'(x). More layers repeat inward.",
+   "notation": "f of g of x",
    "delivery": {
     "mode": "text",
     "reason": "rule 5: an order-of-operations statement with no figure-bearing BC-REP",
@@ -71,7 +117,7 @@
    }
   },
   {
-   "id": "LSN-CON-03001#s3",
+   "id": "LSN-CON-03001#s4",
    "type": "strategy",
    "bands": [
     "low",
@@ -82,17 +128,29 @@
     "BC-SKL-03003"
    ],
    "sources": [
-    "BC-QA-03001"
+    "BC-QA-03001",
+    "BC-ERR-03001"
    ],
    "evidence_tag": "verified",
    "archetype_id": "BC-QA-03001",
-   "cue": "The stem asks for a composite's derivative, from a formula built by composition, alone or as a product factor.",
-   "method": "First written line: identify the outer and inner functions, u = inner expression.",
-   "rival": "Rival: differentiating the outer function and leaving out the inner derivative (BC-ERR-03001).",
-   "separating_feature": "Each named layer owns one factor of the derivative."
+   "cue": "A composite's derivative from a formula, alone or as a product factor.",
+   "method": "Identify the outer and inner functions, u = inner expression.",
+   "rival": "Differentiating the outer function and leaving out the inner derivative.",
+   "separating_feature": "Each named layer owns one factor of the derivative.",
+   "contrast": {
+    "this": {
+     "text": "Let \\(h(x)=x(3x^2+1)^4\\). Find \\(h'(1)\\).",
+     "archetype_id": "BC-QA-03001"
+    },
+    "not_this": {
+     "text": "Let \\(h(x)=x^2(3x+1)\\). Find \\(h'(1)\\).",
+     "why_not": "No function is applied to an expression, so the product rule alone applies."
+    },
+    "feature": "A function applied to an expression, not to \\(x\\) alone."
+   }
   },
   {
-   "id": "LSN-CON-03001#s4",
+   "id": "LSN-CON-03001#s5",
    "type": "worked_example",
    "bands": [
     "low",
@@ -123,7 +181,7 @@
    "calculator_status": "no_calculator",
    "steps": [
     {
-     "cue": "Last operation in h: multiplication. The factor (2x^2 - 1)^3 is a composite.",
+     "cue": "Last operation in h is multiplication; (2x^2 - 1)^3 is a composite.",
      "why": "Outer u^3, inner u = 2x^2 - 1.",
      "expression": [
       "Power",
@@ -145,7 +203,7 @@
      "relation": "new"
     },
     {
-     "cue": "Composite factor: cube read at the inner expression.",
+     "cue": "Cube read at the inner expression.",
      "why": "Then times the inner derivative 4x.",
      "expression": [
       "Multiply",
@@ -245,7 +303,7 @@
    }
   },
   {
-   "id": "LSN-CON-03001#s5",
+   "id": "LSN-CON-03001#s6",
    "type": "what_a_reader_scores",
    "bands": [
     "low",
@@ -259,7 +317,7 @@
     "BC-PT-99023"
    ],
    "evidence_tag": "verified",
-   "example_id": "LSN-CON-03001#s4",
+   "example_id": "LSN-CON-03001#s5",
    "lines": [
     {
      "point_type_id": "BC-PT-99023",
@@ -380,6 +438,7 @@
     ]
    },
    "relation": "distinct",
+   "fix_prompt": true,
    "possible_reason": {
     "misconception_id": "BC-MIS-03001",
     "text": "differentiation as an operation on the visible outer function"
@@ -503,6 +562,7 @@
     ]
    },
    "relation": "distinct",
+   "fix_prompt": true,
    "possible_reason": {
     "misconception_id": "BC-MIS-03012",
     "text": "nested structures are handled in the wrong order"
@@ -529,7 +589,7 @@
    ],
    "evidence_tag": "inferred",
    "prerequisite_id": "BC-PRQ-03001",
-   "text": "Read a formula by naming the operation applied last and the one applied first. Without that reading, the outer shell is differentiated and the work stops."
+   "text": "Name the operation applied last and the one applied first. Without that reading, only the outer shell is differentiated."
   }
  ],
  "checks": [
@@ -551,7 +611,7 @@
     "target": 1,
     "scale": 1
    },
-   "completes": "LSN-CON-03001#s4",
+   "completes": "LSN-CON-03001#s5",
    "stem": {
     "text": "h'(x) = (2x^2 - 1)^3 + 3x(2x^2 - 1)^2(4x). Find h'(1).",
     "command_verb": "find"
@@ -714,17 +774,18 @@
   }
  ],
  "refresher": [
-  "LSN-CON-03001#s2",
+  "LSN-CON-03001#s3",
   "LSN-CON-03001#err-BC-ERR-03001",
   "LSN-CON-03001#err-BC-ERR-03002",
-  "LSN-CON-03001#s4"
+  "LSN-CON-03001#s5"
  ],
+ "no_figure_reason": "The concept is the order of operations in a formula. Its skills carry only symbolic and verbal representations and the key idea is a statement, not a process to draw, so no figure fits.",
  "provenance": {
   "author": "tools/lesson_transcribe.py",
-  "prompt_version": "generator/lesson_v1",
+  "prompt_version": "generator/lesson_v2",
   "design_path": "docs/lessons/unit-03/LSN-CON-03001.md",
-  "signed_off_by": "claude-opus-5-5",
-  "signed_off_at": "2026-09-29",
+  "signed_off_by": null,
+  "signed_off_at": null,
   "not_human": true
  }
 }

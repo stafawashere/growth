@@ -9,9 +9,13 @@ purpose: Authoring spec for the concept lesson on BC-CON-03003, differentiating 
 
 Concept BC-CON-03003 (skills BC-SKL-03007, BC-SKL-03008, BC-SKL-03009), topic 3.2 of Unit 3, loaded by one archetype, BC-QA-03004 (family implicit-differentiation), which it shares with BC-CON-03004. Its hard parent concept is BC-CON-03002 (docs/lessons/unit-03/README.md, section 1).
 
+## Prediction
+
+One multiple choice question on worked example 1's own curve, \(x^2+3xy+y^2=2x+3\), asked before the rule is shown: what \(y^2\) differentiates to when \(y\) depends on \(x\). The key is \(2y\,dy/dx\), the \(y^2\) term in ex-1's second valued step. The distractors are \(2y\) alone (the BC-ERR-03007 path) and \(y^2\,dy/dx\). The resolution, shown on the key idea screen beside the choice, states that a \(y\) term carries the factor \(dy/dx\). No verdict word. Sources: BC-CON-03003 and the topic 3.2 section the key idea cites.
+
 ## Orientation
 
-Served text, from BC-CON-03003 `description_plain` and the topic's Assessment behaviour paragraph (research/units/unit-03-differentiation-composite-implicit-inverse.md#3.2 Implicit Differentiation): a response differentiates both sides of an equation in x and y, gives every y term a dy/dx factor and every mixed term the product rule, and keeps the right side. The opening part of a multipart question asks for it. No count, no frequency.
+Served text, from BC-CON-03003 `description_plain` and the topic's Assessment behaviour paragraph (research/units/unit-03-differentiation-composite-implicit-inverse.md#3.2 Implicit Differentiation): a response differentiates both sides of an equation in x and y, gives every y term a dy/dx factor and every mixed term the product rule, and keeps the right side. No count, no frequency.
 
 ## Key ideas
 
@@ -23,21 +27,23 @@ The three skills map to one BC-EK, BC-EK-FUN-3D1 (ced:76), so one core block, bo
 
 BC-QA-03004 (research/question-analysis/question-archetypes.md#BC-QA-03004 Implicit differentiation producing or verifying dy/dx): `typical_wording` "find dy/dx for the curve defined by the given equation", "show that dy/dx is equal to the stated expression for the given curve"; `common_givens` an equation in x and y defining a curve, a stated expression for dy/dx to verify, a point on the curve; `asked_to_produce` an implicit derivative dy/dx, a verification, a numerical slope at a point. The signal: the stem names a curve by an equation not solved for y, and asks for dy/dx. Shapes: an MCQ (BC-MCQ-CED-004) or the opening part of a no-calculator FRQ built on one curve (cr-23:22, cr-24:17).
 
+Contrast pair on st-1: this stem is on BC-QA-03004, a curve given by an equation in \(x\) and \(y\) not solved for \(y\), asking for \(dy/dx\) at a point; not this stem gives \(y\) as an expression in \(x\), the near miss from direct differentiation (README section 3, BC-EK-FUN-3D1), where no factor \(dy/dx\) appears. The separating feature is whether the equation is solved for \(y\).
+
 What says "not this concept": the stem gives y = an expression in x, which is differentiated directly (docs/lessons/unit-03/README.md, section 3, BC-EK-FUN-3D1). A term such as 3xy is the feature that adds the product rule; a y term inside a power adds the chain rule factor.
 
 ## Method choice
 
 One strategy block, both bands.
 
-- st-1, BC-QA-03004. Cue from `asked_to_produce` and `common_givens`. Method, `expected_solution_path[0]`: differentiate every term of both sides with respect to x. First written line: d/dx applied to both sides, the right side kept. Rival, `wrong_approaches`: differentiating y terms as though y were the independent variable (BC-ERR-03007). Separating feature: y depends on x, so every y term carries dy/dx.
+- st-1, BC-QA-03004. Cue from `asked_to_produce` and `common_givens`. Method, `expected_solution_path[0]`: differentiate every term of both sides with respect to x, the right side kept. Rival, `wrong_approaches`: differentiating y terms as though y were the independent variable (BC-ERR-03007, cited in the block's `sources`, not in its text). Separating feature: y depends on x, so every y term carries dy/dx.
 
-The archetype carries both fields in the snapshot, so the block is not tagged inferred.
+The archetype carries both fields in the snapshot, so the block is not tagged inferred. The `method` text carries no leading label.
 
 ## Solution path
 
 - ex-1, BC-QA-03004, both bands, no calculator. Draw from `parameter_spec`: mixed 3, y_coefficient 1, right_slope 2, x_at 1, y_at 1, y_power 2. The curve is x^2 + 3xy + y^2 = 2x + 3 (c = 3, nonzero). Derived: y_rate 2, denominator 5, options -3/5, -5/3, -3/2, -1, distinct and the key nonzero, so every constraint holds. No published BC-QA-03004 item carries this draw.
 - Steps follow `expected_solution_path`: differentiate both sides (no value); the differentiated equation with dy/dx on each y term and the product rule on 3xy (valued, new); collect (equivalent); divide (solve for dy/dx); substitute the point (evaluate). dy/dx is written as the symbol dydx in the SymPy strings.
-- A fluent solver writes steps 2 to 5; step 1 is the decision, held in the head. Steps 3 and 4 belong to BC-CON-03004 and are shown so the example ends where the stem ends.
+- A fluent solver writes steps 2 to 5; step 1 is the decision, held in the head. Steps 3 and 4 belong to BC-CON-03004 and are shown so the example ends where the stem ends. One example, so nothing is faded.
 
 ## Scoring
 
@@ -45,7 +51,7 @@ BC-QA-03004 lists no `point_types`, so the lesson carries no what_a_reader_score
 
 ## Traps
 
-Three active errors meet the skills, in the bundle's order (linked BC-MIS at severity high): all served in the low band, the first two in the mid band. Wrong and right steps are the differentiated equation on ex-1's draw.
+Three active errors meet the skills, in the bundle's order (linked BC-MIS at severity high): all served in the low band, the first two in the mid band. All three are `distinct`, so each carries `fix_prompt` true. Wrong and right steps are the differentiated equation on ex-1's draw.
 
 - err-BC-ERR-03007: 2y in place of 2y dy/dx. Possible reason, words from BC-MIS-03004.
 - err-BC-ERR-03008: 3xy differentiated as 3y, the x dy/dx term missing. Possible reason, words from BC-MIS-03005.
@@ -76,10 +82,12 @@ BC-QA-03004 is `no_calculator` and "ordinarily the opening part of a multipart f
 - ex-1: step_reveal. Rule 1.
 - err-BC-ERR-03007, err-BC-ERR-03008, err-BC-ERR-03009: step_reveal. Rule 1.
 
+No drawn block: none of rules 2 to 5 applies. The skills carry BC-REP-01 only, the topic's slope-field conversion belongs to Unit 7 and the tangent statement to BC-CON-03005, and the key idea is an algebraic statement, not a process. The machine record states `no_figure_reason`. The prediction is delivered as text.
+
 ## Band plan
 
-- Low (full): orientation, ki-1, st-1, ex-1, the three error blocks, chk-1 to chk-3, the bridge. 534 words, 3.6 minutes (cap 900 and 6).
-- Mid (brief): orientation, ki-1, st-1, ex-1, err-BC-ERR-03007, err-BC-ERR-03008, chk-1, chk-2, the bridge. 449 words, 3.0 minutes (cap 450 and 3).
+- Low (full), in served order: prediction, orientation, the bridge, ki-1, st-1 with its contrast pair, ex-1, chk-1, the three error blocks, chk-2, chk-3. 534 words, 3.6 minutes (cap 900 and 6). There is no example 2, so nothing is faded.
+- Mid (brief): prediction, orientation, the bridge, ki-1, st-1 with its contrast pair, ex-1, chk-1, err-BC-ERR-03007, err-BC-ERR-03008, chk-2. 449 words, 3.0 minutes (cap 450 and 3).
 - Refresher: ki-1, err-BC-ERR-03007, err-BC-ERR-03008, err-BC-ERR-03009, ex-1.
 
 ## Sources
@@ -103,8 +111,21 @@ BC-QA-03004 is `no_calculator` and "ordinarily the opening part of a multipart f
  "target_id": "BC-CON-03003",
  "unit": "03",
  "skills": ["BC-SKL-03007", "BC-SKL-03008", "BC-SKL-03009"],
+ "prediction": {
+  "id": "pr-1",
+  "stem": {"text": "Predict. In \\(x^2+3xy+y^2=2x+3\\), \\(y\\) depends on \\(x\\). What is the derivative of \\(y^2\\)?", "command_verb": "predict"},
+  "format": "mcq",
+  "options": [
+   {"id": "A", "label": "\\(2y\\)", "is_key": false},
+   {"id": "B", "label": "\\(2y\\,dy/dx\\)", "is_key": true},
+   {"id": "C", "label": "\\(y^2\\,dy/dx\\)", "is_key": false}
+  ],
+  "resolution": "By the chain rule \\(y^2\\) differentiates to \\(2y\\,dy/dx\\). Every \\(y\\) term carries the factor \\(dy/dx\\).",
+  "sources": ["BC-CON-03003", "research/units/unit-03-differentiation-composite-implicit-inverse.md#3.2 Implicit Differentiation"]
+ },
+ "no_figure_reason": "The concept is an algebraic rule for the dy/dx factor. Its skills carry only the symbolic representation and no key idea describes a process to draw, so no figure fits.",
  "orientation": {
-  "text": "A response differentiates both sides of an equation in x and y with respect to x: every y term carries dy/dx, every mixed term takes the product rule, and the right side is kept. It opens a multipart question.",
+  "text": "A response differentiates both sides of an equation in x and y with respect to x: every y term carries dy/dx, every mixed term takes the product rule, and the right side is kept.",
   "sources": ["BC-CON-03003", "research/units/unit-03-differentiation-composite-implicit-inverse.md#3.2 Implicit Differentiation"]
  },
  "key_ideas": [
@@ -112,8 +133,8 @@ BC-QA-03004 is `no_calculator` and "ordinarily the opening part of a multipart f
    "id": "ki-1",
    "ek_id": "BC-EK-FUN-3D1",
    "depth": "core",
-   "text": "When an equation determines y as a differentiable function of x, differentiate both sides with respect to x. A y term gives its derivative in y times dy/dx. A term holding both variables is a product, and its y factor still carries dy/dx. The result is linear in dy/dx.",
-   "notation": "d/dx of y to the n equals n times y to the n minus one times dy/dx",
+   "text": "When an equation determines y as a differentiable function of x, differentiate both sides with respect to x. A y term gives its derivative in y times dy/dx. A term with both variables is a product.",
+   "notation": "d/dx of y to the n, times dy/dx",
    "quote": {"text": "The chain rule is the basis for implicit differentiation.", "source": "ced:76"},
    "sources": ["BC-EK-FUN-3D1", "ced:76", "research/units/unit-03-differentiation-composite-implicit-inverse.md#3.2 Implicit Differentiation"]
   }
@@ -122,11 +143,16 @@ BC-QA-03004 is `no_calculator` and "ordinarily the opening part of a multipart f
   {
    "id": "st-1",
    "archetype_id": "BC-QA-03004",
-   "cue": "The stem asks for dy/dx or a slope at a point, from an equation in x and y.",
-   "method": "First written line: differentiate every term of both sides with respect to x.",
-   "rival": "Rival: differentiating y terms as though y were the independent variable (BC-ERR-03007).",
+   "cue": "dy/dx or a slope at a point, from an equation in x and y.",
+   "method": "Differentiate every term of both sides with respect to x.",
+   "rival": "Differentiating y terms as though y were the independent variable.",
    "separating_feature": "y depends on x, so every y term carries dy/dx.",
-   "sources": ["BC-QA-03004"],
+   "contrast": {
+    "this": {"text": "The curve \\(x^2+2xy+y^3=4\\) passes through \\((1,1)\\). Find \\(dy/dx\\) at \\((1,1)\\).", "archetype_id": "BC-QA-03004"},
+    "not_this": {"text": "Let \\(y=x^2+2x+3\\). Find \\(dy/dx\\) at \\(x=1\\).", "why_not": "y is given alone, so no dy/dx factor appears."},
+    "feature": "The equation is not solved for y."
+   },
+   "sources": ["BC-QA-03004", "BC-ERR-03007"],
    "evidence_tag": "verified"
   }
  ],
@@ -139,10 +165,10 @@ BC-QA-03004 is `no_calculator` and "ordinarily the opening part of a multipart f
    "problem": {"text": "The curve x^2 + 3xy + y^2 = 2x + 3 passes through (1, 1). Find dy/dx at (1, 1).", "command_verb": "find"},
    "calculator_status": "no_calculator",
    "steps": [
-    {"cue": "An equation in x and y, not solved for y.", "why": "y depends on x: differentiate both sides with respect to x."},
-    {"cue": "y^2 is a y term; 3xy holds both variables.", "why": "2y dy/dx; 3y + 3x dy/dx; the right side gives 2.", "expr": "2*x + 3*y + 3*x*dydx + 2*y*dydx = 2", "relation": "new"},
-    {"cue": "The line is linear in dy/dx.", "why": "Collect the two dy/dx terms and factor.", "expr": "dydx*(3*x + 2*y) = 2 - 2*x - 3*y", "relation": "equivalent"},
-    {"cue": "One bracket multiplies dy/dx.", "why": "Divide by it; it is 5 at (1, 1).", "expr": "dydx = (2 - 2*x - 3*y)/(3*x + 2*y)", "relation": "solve", "variable": "dydx"},
+    {"cue": "An equation in x and y.", "why": "y depends on x: differentiate both sides with respect to x."},
+    {"cue": "y^2 is a y term; 3xy holds both variables.", "why": "2y dy/dx; 3y + 3x dy/dx; right side 2.", "expr": "2*x + 3*y + 3*x*dydx + 2*y*dydx = 2", "relation": "new"},
+    {"cue": "Linear in dy/dx.", "why": "Collect the dy/dx terms.", "expr": "dydx*(3*x + 2*y) = 2 - 2*x - 3*y", "relation": "equivalent"},
+    {"cue": "One bracket on dy/dx.", "why": "Divide by it: 5 at (1, 1).", "expr": "dydx = (2 - 2*x - 3*y)/(3*x + 2*y)", "relation": "solve", "variable": "dydx"},
     {"cue": "The stem gives the point (1, 1).", "why": "Both coordinates go in.", "expr": "-3/5", "relation": "evaluate", "subs": {"x": "1", "y": "1"}}
    ],
    "answer": {"form": "numeric", "expr": "-3/5"}
@@ -157,6 +183,7 @@ BC-QA-03004 is `no_calculator` and "ordinarily the opening part of a multipart f
    "wrong_step": {"text": "y^2 gives 2y.", "expr": "2*x + 3*y + 3*x*dydx + 2*y = 2"},
    "right_step": {"text": "y^2 gives 2y dy/dx.", "expr": "2*x + 3*y + 3*x*dydx + 2*y*dydx = 2"},
    "relation": "distinct",
+   "fix_prompt": true,
    "possible_reason": {"misconception_id": "BC-MIS-03004", "text": "y as a second free variable rather than as a function of x"},
    "sources": ["BC-ERR-03007", "BC-MIS-03004"]
   },
@@ -167,6 +194,7 @@ BC-QA-03004 is `no_calculator` and "ordinarily the opening part of a multipart f
    "wrong_step": {"text": "3xy gives 3y.", "expr": "2*x + 3*y + 2*y*dydx = 2"},
    "right_step": {"text": "3xy gives 3y + 3x dy/dx.", "expr": "2*x + 3*y + 3*x*dydx + 2*y*dydx = 2"},
    "relation": "distinct",
+   "fix_prompt": true,
    "possible_reason": {"misconception_id": "BC-MIS-03005", "text": "a term containing both variables as one object rather than as a product"},
    "sources": ["BC-ERR-03008", "BC-MIS-03005"]
   },
@@ -177,13 +205,14 @@ BC-QA-03004 is `no_calculator` and "ordinarily the opening part of a multipart f
    "wrong_step": {"text": "Right side dropped: = 0.", "expr": "2*x + 3*y + 3*x*dydx + 2*y*dydx = 0"},
    "right_step": {"text": "Right side 2x + 3 gives 2.", "expr": "2*x + 3*y + 3*x*dydx + 2*y*dydx = 2"},
    "relation": "distinct",
+   "fix_prompt": true,
    "possible_reason": null,
    "sources": ["BC-ERR-03009"]
   }
  ],
  "representations": null,
  "prerequisite_bridges": [
-  {"prq_id": "BC-PRQ-03005", "text": "dy/dx is a derivative, d/dx the operator. Writing dy for dy/dx loses the meaning of the line."}
+  {"prq_id": "BC-PRQ-03005", "text": "dy/dx is a derivative, d/dx the operator."}
  ],
  "time": {"exam_part": "II-B", "budget_minutes": 15.0, "source": "research/exam/exam-structure.md#Section and part layout", "written_steps": {"ex-1": [2, 3, 4, 5]}, "skipped_steps": {"ex-1": [1]}},
  "checks": [
@@ -256,7 +285,7 @@ BC-QA-03004 is `no_calculator` and "ordinarily the opening part of a multipart f
  ],
  "refresher": ["ki-1", "err-BC-ERR-03007", "err-BC-ERR-03008", "err-BC-ERR-03009", "ex-1"],
  "read_minutes": {"full": 3.6, "brief": 3.0},
- "word_count": {"full": 531, "brief": 446},
+ "word_count": {"full": 534, "brief": 449},
  "research_lines": [
   {"file": "research/units/unit-03-differentiation-composite-implicit-inverse.md", "line": "A term containing both variables is a product, so the product rule applies and the factor in y still carries dy/dx"}
  ],

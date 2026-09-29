@@ -9,6 +9,10 @@ purpose: Authoring spec for the concept lesson on BC-CON-03006, the derivative o
 
 Concept BC-CON-03006 (skills BC-SKL-03015 to BC-SKL-03020), topic 3.3 of Unit 3, loaded by two archetypes of the family inverse-function-derivative: BC-QA-03006 (primary, the value at a point) and BC-QA-03010 (the derivation from f(g(x)) = x, through BC-SKL-03020). Its hard parent concept is BC-CON-03002 (docs/lessons/unit-03/README.md, section 1).
 
+## Prediction
+
+Before any rule, the student commits to g'(3) on ex-1's own numbers (f(2) = 3, f(3) = 4, f'(2) = 5, f'(3) = 6), `mcq` with three options: 1/6 (the slope read at the given value, the BC-ERR-03015 path), 1/5 (key) and 1/3 (the reciprocal of a function value, the BC-ERR-03016 path). The resolution states that f(2) = 3 gives g(3) = 2 and that g' is the reciprocal of f' at 2, and names no verdict. Sources: BC-CON-03006 and the topic 3.3 section.
+
 ## Orientation
 
 Served text, from BC-CON-03006 `description_plain` and the topic's Assessment behaviour paragraph (research/units/unit-03-differentiation-composite-implicit-inverse.md#3.3 Differentiating Inverse Functions): a response names the input of f whose output is the given value, reads f prime there, checks it is not zero and reports the reciprocal. No count, no frequency.
@@ -25,7 +29,7 @@ BC-QA-03006 (research/question-analysis/question-archetypes.md#BC-QA-03006 Deriv
 
 BC-QA-03010 (research/question-analysis/question-archetypes.md#BC-QA-03010 Inverse trigonometric derivative derived from the identity f(g(x)) = x): the stem supplies the identity and says differentiate both sides, and asks for g' as an expression in x.
 
-What says "not this concept": a stem asking for the derivative of 1/f (the reciprocal function, a quotient rule question), or an arcsin or arctan of an inner expression with no identity supplied (BC-CON-03007).
+What says "not this concept": a stem asking for the derivative of 1/f (the reciprocal function, a quotient rule question), which is the near miss the contrast pair on st-1 uses, or an arcsin or arctan of an inner expression with no identity supplied (BC-CON-03007).
 
 ## Method choice
 
@@ -80,8 +84,8 @@ BC-QA-03006 is `calculator_status` either, a single MCQ or one FRQ part. The des
 
 ## Band plan
 
-- Low (full): orientation, ki-1, st-1, st-2, ex-1, the three error blocks, chk-1 to chk-3, representations, the two bridges. 556 words, 3.8 minutes (cap 900 and 6).
-- Mid (brief): orientation, ki-1, st-1, ex-1, err-BC-ERR-03014, err-BC-ERR-03015, chk-1, chk-2, the two bridges. 427 words, 3.0 minutes (cap 450 and 3).
+- Low (full), in served order: prediction, orientation, the two bridges, ki-1, st-1 with its contrast pair, st-2, ex-1, chk-1, the three error blocks, chk-2, representations, chk-3. 574 words, 3.9 minutes (cap 900 and 6).
+- Mid (brief), in served order: prediction, orientation, the two bridges, ki-1, st-1 with its contrast pair, ex-1, chk-1, err-BC-ERR-03014, err-BC-ERR-03015, chk-2. 448 words, 3.0 minutes (cap 450 and 3).
 - Refresher: ki-1, err-BC-ERR-03014, err-BC-ERR-03015, err-BC-ERR-03016, ex-1.
 
 ## Sources
@@ -106,41 +110,101 @@ BC-QA-03006 is `calculator_status` either, a single MCQ or one FRQ part. The des
  "kind": "concept",
  "target_id": "BC-CON-03006",
  "unit": "03",
- "skills": ["BC-SKL-03015", "BC-SKL-03016", "BC-SKL-03017", "BC-SKL-03018", "BC-SKL-03019", "BC-SKL-03020"],
+ "skills": [
+  "BC-SKL-03015",
+  "BC-SKL-03016",
+  "BC-SKL-03017",
+  "BC-SKL-03018",
+  "BC-SKL-03019",
+  "BC-SKL-03020"
+ ],
+ "prediction": {
+  "id": "pr-1",
+  "stem": {
+   "text": "Before the rule: g is the inverse of f, with f(2) = 3, f(3) = 4, f'(2) = 5 and f'(3) = 6. Predict g'(3).",
+   "command_verb": "predict"
+  },
+  "format": "mcq",
+  "options": [
+   {
+    "id": "A",
+    "label": "1/6",
+    "is_key": false
+   },
+   {
+    "id": "B",
+    "label": "1/5",
+    "is_key": true
+   },
+   {
+    "id": "C",
+    "label": "1/3",
+    "is_key": false
+   }
+  ],
+  "resolution": "f(2) = 3 gives g(3) = 2. Then g'(3) = 1/f'(2) = 1/5.",
+  "sources": [
+   "BC-CON-03006",
+   "research/units/unit-03-differentiation-composite-implicit-inverse.md#3.3 Differentiating Inverse Functions"
+  ]
+ },
  "orientation": {
-  "text": "A response finds the input of f whose output is the given value, reads f' there, checks it is not zero, and reports its reciprocal.",
-  "sources": ["BC-CON-03006", "research/units/unit-03-differentiation-composite-implicit-inverse.md#3.3 Differentiating Inverse Functions"]
+  "text": "A response finds the input with the given output, checks f' is not zero there, and inverts it.",
+  "sources": [
+   "BC-CON-03006",
+   "research/units/unit-03-differentiation-composite-implicit-inverse.md#3.3 Differentiating Inverse Functions"
+  ]
  },
  "key_ideas": [
   {
    "id": "ki-1",
    "ek_id": "BC-EK-FUN-3E1",
    "depth": "core",
-   "text": "For g the inverse of f, f(c) = b says the same as g(b) = c. Reflecting in y = x inverts slopes, so g'(b) = 1/f'(c), provided f'(c) is not zero. Differentiating f(g(x)) = x by the chain rule gives it.",
+   "text": "For g the inverse of f, f(c) = b says g(b) = c. Then g'(b) = 1/f'(c) if f'(c) is not zero, by the chain rule on f(g(x)) = x.",
    "notation": "g prime of a equals one over f prime of g of a",
    "quote": null,
-   "sources": ["BC-EK-FUN-3E1", "ced:77", "research/units/unit-03-differentiation-composite-implicit-inverse.md#3.3 Differentiating Inverse Functions"]
+   "sources": [
+    "BC-EK-FUN-3E1",
+    "ced:77",
+    "research/units/unit-03-differentiation-composite-implicit-inverse.md#3.3 Differentiating Inverse Functions"
+   ]
   }
  ],
  "strategy": [
   {
    "id": "st-1",
    "archetype_id": "BC-QA-03006",
-   "cue": "g is named the inverse of f, and the given value sits among the outputs of f.",
-   "method": "First line: find c with f(c) equal to the given value, then write g' there as 1/f'(c).",
-   "rival": "Rival: 1 over f' at the given value itself (BC-ERR-03015).",
-   "separating_feature": "The given value is an output of f, so it is never where f' is read.",
-   "sources": ["BC-QA-03006"],
-   "evidence_tag": "verified"
+   "cue": "g is the inverse of f.",
+   "method": "Find c with f(c) equal to the given value, then write g' there as 1/f'(c).",
+   "rival": "1 over f' at the given value.",
+   "separating_feature": "The given value is an output of f, not where f' is read.",
+   "sources": [
+    "BC-QA-03006",
+    "BC-ERR-03015"
+   ],
+   "evidence_tag": "verified",
+   "contrast": {
+    "this": {
+     "text": "h is the inverse of f and f(4) = 9. Find h'(9) from the table.",
+     "archetype_id": "BC-QA-03006"
+    },
+    "not_this": {
+     "text": "Find the derivative of 1/f(x) at x = 4 from the table.",
+     "why_not": "It asks for the reciprocal function's derivative, a quotient rule."
+    },
+    "feature": "The word inverse and a value that is an output of f."
+   }
   },
   {
    "id": "st-2",
    "archetype_id": "BC-QA-03010",
    "cue": "An identity such as tan(g(x)) = u is supplied and g' is asked for as an expression in x.",
-   "method": "First line: differentiate both sides of the identity, chain rule on the left.",
-   "rival": "Rival: a remembered formula quoted without the inner factor.",
+   "method": "Differentiate both sides of the identity, chain rule on the left.",
+   "rival": "A remembered formula quoted without the inner factor.",
    "separating_feature": "The stem supplies the identity, so the derivation is the answer.",
-   "sources": ["BC-QA-03010"],
+   "sources": [
+    "BC-QA-03010"
+   ],
    "evidence_tag": "verified"
   }
  ],
@@ -148,17 +212,59 @@ BC-QA-03006 is `calculator_status` either, a single MCQ or one FRQ part. The des
   {
    "id": "ex-1",
    "archetype_id": "BC-QA-03006",
-   "bands": ["low", "mid"],
-   "parameter_draw": {"values": [-1, 3, 4, 8], "slopes": [2, 5, 6, 3], "at": 2, "names": "f,g"},
-   "problem": {"text": "g is the inverse of f. For x = 1, 2, 3, 4: f(x) = -1, 3, 4, 8 and f'(x) = 2, 5, 6, 3. Find g'(3).", "command_verb": "find"},
+   "bands": [
+    "low",
+    "mid"
+   ],
+   "parameter_draw": {
+    "values": [
+     -1,
+     3,
+     4,
+     8
+    ],
+    "slopes": [
+     2,
+     5,
+     6,
+     3
+    ],
+    "at": 2,
+    "names": "f,g"
+   },
+   "problem": {
+    "text": "g is the inverse of f. For x = 1, 2, 3, 4: f(x) = -1, 3, 4, 8 and f'(x) = 2, 5, 6, 3. Find g'(3).",
+    "command_verb": "find"
+   },
    "calculator_status": "no_calculator",
    "steps": [
-    {"cue": "3 is an output of f: which input gives it?", "why": "f(2) = 3, so g(3) = 2.", "expr": "g(3) = 2", "relation": "new"},
-    {"cue": "The slope of g at 3 comes from f at 2.", "why": "The f' column in the row x = 2.", "expr": "5", "relation": "new"},
-    {"cue": "The rule divides by f'(2).", "why": "5 is not zero, so the rule applies."},
-    {"cue": "Reciprocal of the matched slope.", "why": "g'(3) = 1/f'(g(3)) = 1/f'(2).", "expr": "1/5", "relation": "new"}
+    {
+     "cue": "3 is an output of f.",
+     "why": "f(2) = 3, so g(3) = 2.",
+     "expr": "g(3) = 2",
+     "relation": "new"
+    },
+    {
+     "cue": "Slope of g at 3 comes from f at 2.",
+     "why": "f' in the row x = 2.",
+     "expr": "5",
+     "relation": "new"
+    },
+    {
+     "cue": "Check before dividing.",
+     "why": "5 is not zero."
+    },
+    {
+     "cue": "Reciprocal.",
+     "why": "g'(3) = 1/f'(g(3)) = 1/f'(2).",
+     "expr": "1/5",
+     "relation": "new"
+    }
    ],
-   "answer": {"form": "numeric", "expr": "1/5"}
+   "answer": {
+    "form": "numeric",
+    "expr": "1/5"
+   }
   }
  ],
  "what_a_reader_scores": [],
@@ -167,105 +273,350 @@ BC-QA-03006 is `calculator_status` either, a single MCQ or one FRQ part. The des
    "error_id": "BC-ERR-03014",
    "observed_behavior": "The formula for the derivative of an inverse is written with no mention that the derivative of the original function at the matching input must not be zero.",
    "scoring_consequence": "A justification point that requires the hypothesis is not earned; the Chief Reader reports record unverified hypotheses as a recurring loss (BC-ERR-99008).",
-   "wrong_step": {"text": "g'(3) = 1/5, no condition.", "expr": "1/5"},
-   "right_step": {"text": "f'(2) = 5, not zero, so g'(3) = 1/5.", "expr": "1/5"},
+   "wrong_step": {
+    "text": "g'(3) = 1/5, no condition.",
+    "expr": "1/5"
+   },
+   "right_step": {
+    "text": "f'(2) = 5, not zero, so g'(3) = 1/5.",
+    "expr": "1/5"
+   },
    "relation": "equivalent",
-   "possible_reason": {"misconception_id": "BC-MIS-03009", "text": "treats the reciprocal formula as unconditional"},
-   "sources": ["BC-ERR-03014", "BC-MIS-03009"]
+   "possible_reason": {
+    "misconception_id": "BC-MIS-03009",
+    "text": "treats the reciprocal formula as unconditional"
+   },
+   "sources": [
+    "BC-ERR-03014",
+    "BC-MIS-03009"
+   ],
+   "fix_prompt": false
   },
   {
    "error_id": "BC-ERR-03015",
    "observed_behavior": "The response computes the reciprocal of the derivative of the original function at the value supplied, instead of at the input whose output is that value.",
    "scoring_consequence": "The reported value is wrong although the formula is correct.",
-   "wrong_step": {"text": "1/f'(3) = 1/6.", "expr": "1/6"},
-   "right_step": {"text": "1/f'(2) = 1/5.", "expr": "1/5"},
+   "wrong_step": {
+    "text": "1/f'(3) = 1/6.",
+    "expr": "1/6"
+   },
+   "right_step": {
+    "text": "1/f'(2) = 1/5.",
+    "expr": "1/5"
+   },
    "relation": "distinct",
-   "possible_reason": {"misconception_id": "BC-MIS-03008", "text": "treats the input of the inverse and the input of the original function as the same number"},
-   "sources": ["BC-ERR-03015", "BC-MIS-03008"]
+   "possible_reason": {
+    "misconception_id": "BC-MIS-03008",
+    "text": "treats the input of the inverse and the input of the original function as the same number"
+   },
+   "sources": [
+    "BC-ERR-03015",
+    "BC-MIS-03008"
+   ],
+   "fix_prompt": true
   },
   {
    "error_id": "BC-ERR-03016",
    "observed_behavior": "The response inverts the value of the original function rather than the value of its derivative.",
    "scoring_consequence": "The reported value is wrong.",
-   "wrong_step": {"text": "1/f(2) = 1/3.", "expr": "1/3"},
-   "right_step": {"text": "1/f'(2) = 1/5.", "expr": "1/5"},
+   "wrong_step": {
+    "text": "1/f(2) = 1/3.",
+    "expr": "1/3"
+   },
+   "right_step": {
+    "text": "1/f'(2) = 1/5.",
+    "expr": "1/5"
+   },
    "relation": "distinct",
    "possible_reason": null,
-   "sources": ["BC-ERR-03016"]
+   "sources": [
+    "BC-ERR-03016"
+   ],
+   "fix_prompt": true
   }
  ],
  "representations": {
   "text": "In a table, find the given value in the f column; the f' entry in that row, inverted, is the answer.",
-  "figure": {"kind": "table", "representations": ["BC-REP-03"], "columns": ["x", "f(x)", "f'(x)"], "rows": [[1, -1, 2], [2, 3, 5], [3, 4, 6], [4, 8, 3]],
-   "labels": [{"text": "row x = 2: f(2) = 3, the matched row", "placement": "inside"}, {"text": "row x = 3: the tempting row", "placement": "inside"}]}
+  "figure": {
+   "kind": "table",
+   "representations": [
+    "BC-REP-03"
+   ],
+   "columns": [
+    "x",
+    "f(x)",
+    "f'(x)"
+   ],
+   "rows": [
+    [
+     1,
+     -1,
+     2
+    ],
+    [
+     2,
+     3,
+     5
+    ],
+    [
+     3,
+     4,
+     6
+    ],
+    [
+     4,
+     8,
+     3
+    ]
+   ],
+   "labels": [
+    {
+     "text": "row x = 2: f(2) = 3, the matched row",
+     "placement": "inside"
+    },
+    {
+     "text": "row x = 3: the tempting row",
+     "placement": "inside"
+    }
+   ]
+  }
  },
  "prerequisite_bridges": [
-  {"prq_id": "BC-PRQ-03003", "text": "f(a) = b means g(b) = a. Without the matching input, the formula is evaluated at the given input."},
-  {"prq_id": "BC-PRQ-03006", "text": "A wrong simplification after a correct reciprocal changes the value reported."}
+  {
+   "prq_id": "BC-PRQ-03003",
+   "text": "f(a) = b means g(b) = a."
+  },
+  {
+   "prq_id": "BC-PRQ-03006",
+   "text": "A wrong simplification after the reciprocal changes the value."
+  }
  ],
- "time": {"exam_part": "I-A", "budget_minutes": 2.14, "source": "research/exam/exam-structure.md#Section and part layout", "written_steps": {"ex-1": [1, 2, 4]}, "skipped_steps": {"ex-1": [3]}},
+ "time": {
+  "exam_part": "I-A",
+  "budget_minutes": 2.14,
+  "source": "research/exam/exam-structure.md#Section and part layout",
+  "written_steps": {
+   "ex-1": [
+    1,
+    2,
+    4
+   ]
+  },
+  "skipped_steps": {
+   "ex-1": [
+    3
+   ]
+  }
+ },
  "checks": [
   {
    "id": "chk-1",
    "check_kind": "completion",
    "format": "short_answer",
-   "bands": ["low", "mid"],
+   "bands": [
+    "low",
+    "mid"
+   ],
    "archetype_id": "BC-QA-03006",
-   "parameter_draw": {"values": [-1, 3, 4, 8], "slopes": [2, 5, 6, 3], "at": 2, "names": "f,g"},
+   "parameter_draw": {
+    "values": [
+     -1,
+     3,
+     4,
+     8
+    ],
+    "slopes": [
+     2,
+     5,
+     6,
+     3
+    ],
+    "at": 2,
+    "names": "f,g"
+   },
    "completes": "ex-1",
-   "stem": {"text": "From the table, g(3) = 2 and f'(2) = 5. Find g'(3).", "command_verb": "find"},
-   "key": {"form": "numeric", "expr": "1/5"},
+   "stem": {
+    "text": "From the table, g(3) = 2 and f'(2) = 5. Find g'(3).",
+    "command_verb": "find"
+   },
+   "key": {
+    "form": "numeric",
+    "expr": "1/5"
+   },
    "steps": [
-    {"text": "f'(2) = 5, not zero.", "expr": "5", "relation": "new"},
-    {"text": "The reciprocal.", "expr": "1/5", "relation": "new"}
+    {
+     "text": "f'(2) = 5, not zero.",
+     "expr": "5",
+     "relation": "new"
+    },
+    {
+     "text": "The reciprocal.",
+     "expr": "1/5",
+     "relation": "new"
+    }
    ],
    "calculator_status": "no_calculator",
-   "skills": ["BC-SKL-03018"]
+   "skills": [
+    "BC-SKL-03018"
+   ]
   },
   {
    "id": "chk-2",
    "check_kind": "isomorph",
    "format": "short_answer",
-   "bands": ["low", "mid"],
+   "bands": [
+    "low",
+    "mid"
+   ],
    "archetype_id": "BC-QA-03006",
-   "parameter_draw": {"values": [-2, 0, 1, 4], "slopes": [3, 4, 7, 2], "at": 3, "names": "p,q"},
-   "stem": {"text": "q is the inverse of p. For x = 1, 2, 3, 4: p(x) = -2, 0, 1, 4 and p'(x) = 3, 4, 7, 2. Find q'(1).", "command_verb": "find"},
-   "key": {"form": "numeric", "expr": "1/7"},
+   "parameter_draw": {
+    "values": [
+     -2,
+     0,
+     1,
+     4
+    ],
+    "slopes": [
+     3,
+     4,
+     7,
+     2
+    ],
+    "at": 3,
+    "names": "p,q"
+   },
+   "stem": {
+    "text": "q is the inverse of p. For x = 1, 2, 3, 4: p(x) = -2, 0, 1, 4 and p'(x) = 3, 4, 7, 2. Find q'(1).",
+    "command_verb": "find"
+   },
+   "key": {
+    "form": "numeric",
+    "expr": "1/7"
+   },
    "steps": [
-    {"text": "p(3) = 1, so q(1) = 3.", "expr": "q(1) = 3", "relation": "new"},
-    {"text": "p'(3) = 7, not zero.", "expr": "7", "relation": "new"},
-    {"text": "The reciprocal.", "expr": "1/7", "relation": "new"}
+    {
+     "text": "p(3) = 1, so q(1) = 3.",
+     "expr": "q(1) = 3",
+     "relation": "new"
+    },
+    {
+     "text": "p'(3) = 7, not zero.",
+     "expr": "7",
+     "relation": "new"
+    },
+    {
+     "text": "The reciprocal.",
+     "expr": "1/7",
+     "relation": "new"
+    }
    ],
    "calculator_status": "no_calculator",
-   "skills": ["BC-SKL-03018"]
+   "skills": [
+    "BC-SKL-03018"
+   ]
   },
   {
    "id": "chk-3",
    "check_kind": "mcq",
    "format": "mcq",
-   "bands": ["low"],
+   "bands": [
+    "low"
+   ],
    "archetype_id": "BC-QA-03006",
-   "parameter_draw": {"values": [-3, -1, 2, 5], "slopes": [4, 6, 3, 1], "at": 3, "names": "h,k"},
-   "stem": {"text": "k is the inverse of h. For x = 1, 2, 3, 4: h(x) = -3, -1, 2, 5 and h'(x) = 4, 6, 3, 1. What is k'(2)?", "command_verb": "identify"},
-   "key": {"form": "numeric", "expr": "1/3"},
+   "parameter_draw": {
+    "values": [
+     -3,
+     -1,
+     2,
+     5
+    ],
+    "slopes": [
+     4,
+     6,
+     3,
+     1
+    ],
+    "at": 3,
+    "names": "h,k"
+   },
+   "stem": {
+    "text": "k is the inverse of h. For x = 1, 2, 3, 4: h(x) = -3, -1, 2, 5 and h'(x) = 4, 6, 3, 1. What is k'(2)?",
+    "command_verb": "identify"
+   },
+   "key": {
+    "form": "numeric",
+    "expr": "1/3"
+   },
    "steps": [
-    {"text": "h(3) = 2, so k(2) = 3.", "expr": "k(2) = 3", "relation": "new"},
-    {"text": "h'(3) = 3, not zero.", "expr": "3", "relation": "new"},
-    {"text": "The reciprocal.", "expr": "1/3", "relation": "new"}
+    {
+     "text": "h(3) = 2, so k(2) = 3.",
+     "expr": "k(2) = 3",
+     "relation": "new"
+    },
+    {
+     "text": "h'(3) = 3, not zero.",
+     "expr": "3",
+     "relation": "new"
+    },
+    {
+     "text": "The reciprocal.",
+     "expr": "1/3",
+     "relation": "new"
+    }
    ],
    "options": [
-    {"id": "A", "is_key": false, "expr": "1/6", "error_path": "BC-ERR-03015", "derivation": "h' read at the given value 2: 1/h'(2) = 1/6"},
-    {"id": "B", "is_key": false, "expr": "1/2", "error_path": "BC-ERR-03016", "derivation": "the function value inverted: 1/h(3) = 1/2"},
-    {"id": "C", "is_key": true, "expr": "1/3", "error_path": null},
-    {"id": "D", "is_key": false, "expr": "-1", "error_path": "BC-ERR-03016", "derivation": "the function value in the given value's row inverted: 1/h(2) = -1"}
+    {
+     "id": "A",
+     "is_key": false,
+     "expr": "1/6",
+     "error_path": "BC-ERR-03015",
+     "derivation": "h' read at the given value 2: 1/h'(2) = 1/6"
+    },
+    {
+     "id": "B",
+     "is_key": false,
+     "expr": "1/2",
+     "error_path": "BC-ERR-03016",
+     "derivation": "the function value inverted: 1/h(3) = 1/2"
+    },
+    {
+     "id": "C",
+     "is_key": true,
+     "expr": "1/3",
+     "error_path": null
+    },
+    {
+     "id": "D",
+     "is_key": false,
+     "expr": "-1",
+     "error_path": "BC-ERR-03016",
+     "derivation": "the function value in the given value's row inverted: 1/h(2) = -1"
+    }
    ],
    "calculator_status": "no_calculator",
-   "skills": ["BC-SKL-03018"]
+   "skills": [
+    "BC-SKL-03018"
+   ]
   }
  ],
  "delivery": [
-  {"block": "orientation", "mode": "text", "reason": "rule 5: a statement of what a response shows", "sources": ["BC-CON-03006"]},
-  {"block": "ki-1", "mode": "interactive", "reason": "rule 3 promoted: BC-REP-02 on BC-SKL-03016 and BC-SKL-03019; BC-QA-03006 difficulty_variables name a graphically given function and the stem asks for a reading of the slope relationship", "sources": ["BC-SKL-03016", "BC-SKL-03019", "BC-QA-03006"],
+  {
+   "block": "orientation",
+   "mode": "text",
+   "reason": "rule 5: a statement of what a response shows",
+   "sources": [
+    "BC-CON-03006"
+   ]
+  },
+  {
+   "block": "ki-1",
+   "mode": "interactive",
+   "reason": "rule 3 promoted: BC-REP-02 on BC-SKL-03016 and BC-SKL-03019; BC-QA-03006 difficulty_variables name a graphically given function and the stem asks for a reading of the slope relationship",
+   "sources": [
+    "BC-SKL-03016",
+    "BC-SKL-03019",
+    "BC-QA-03006"
+   ],
    "spec": {
     "kind": "inverse_pair",
     "representations": [
@@ -339,29 +690,151 @@ BC-QA-03006 is `calculator_status` either, a single MCQ or one FRQ part. The des
     ]
    },
    "fallback": "a static figure at c = 1: the points (1, 1.25) and (1.25, 1) marked, slopes 1.75 and 4/7 written inside the figure beside their tangent lines",
-   "keyboard": "Tab focuses the slider; left and right arrow keys move c by one step; Home and End jump to the ends of the range"},
-  {"block": "ex-1", "mode": "step_reveal", "reason": "rule 1", "sources": []},
-  {"block": "err-BC-ERR-03014", "mode": "step_reveal", "reason": "rule 1", "sources": []},
-  {"block": "err-BC-ERR-03015", "mode": "step_reveal", "reason": "rule 1", "sources": []},
-  {"block": "err-BC-ERR-03016", "mode": "step_reveal", "reason": "rule 1", "sources": []},
-  {"block": "representations", "mode": "table", "reason": "rule 4: BC-SKL-03018 rests on BC-REP-03 givens; the parameter_spec binds BC-REP-03 to a table", "sources": ["BC-SKL-03018", "BC-QA-03006"],
-   "spec": {"kind": "table", "columns": ["x", "f(x)", "f'(x)"], "rows": [[1, -1, 2], [2, 3, 5], [3, 4, 6], [4, 8, 3]], "highlight_rows": [2, 3],
-    "labels": [{"text": "matched row: f(2) = 3", "placement": "inside"}, {"text": "tempting row: x = 3", "placement": "inside"}]},
+   "keyboard": "Tab focuses the slider; left and right arrow keys move c by one step; Home and End jump to the ends of the range"
+  },
+  {
+   "block": "ex-1",
+   "mode": "step_reveal",
+   "reason": "rule 1",
+   "sources": []
+  },
+  {
+   "block": "err-BC-ERR-03014",
+   "mode": "step_reveal",
+   "reason": "rule 1",
+   "sources": []
+  },
+  {
+   "block": "err-BC-ERR-03015",
+   "mode": "step_reveal",
+   "reason": "rule 1",
+   "sources": []
+  },
+  {
+   "block": "err-BC-ERR-03016",
+   "mode": "step_reveal",
+   "reason": "rule 1",
+   "sources": []
+  },
+  {
+   "block": "representations",
+   "mode": "table",
+   "reason": "rule 4: BC-SKL-03018 rests on BC-REP-03 givens; the parameter_spec binds BC-REP-03 to a table",
+   "sources": [
+    "BC-SKL-03018",
+    "BC-QA-03006"
+   ],
+   "spec": {
+    "kind": "table",
+    "columns": [
+     "x",
+     "f(x)",
+     "f'(x)"
+    ],
+    "rows": [
+     [
+      1,
+      -1,
+      2
+     ],
+     [
+      2,
+      3,
+      5
+     ],
+     [
+      3,
+      4,
+      6
+     ],
+     [
+      4,
+      8,
+      3
+     ]
+    ],
+    "highlight_rows": [
+     2,
+     3
+    ],
+    "labels": [
+     {
+      "text": "matched row: f(2) = 3",
+      "placement": "inside"
+     },
+     {
+      "text": "tempting row: x = 3",
+      "placement": "inside"
+     }
+    ]
+   },
    "fallback": "the same table as plain text with the two rows named in a sentence below it",
-   "keyboard": "arrow keys move between cells; the screen reader reads each row's label"}
+   "keyboard": "arrow keys move between cells; the screen reader reads each row's label"
+  }
  ],
- "refresher": ["ki-1", "err-BC-ERR-03014", "err-BC-ERR-03015", "err-BC-ERR-03016", "ex-1"],
- "read_minutes": {"full": 3.8, "brief": 3.0},
- "word_count": {"full": 556, "brief": 427},
+ "refresher": [
+  "ki-1",
+  "err-BC-ERR-03014",
+  "err-BC-ERR-03015",
+  "err-BC-ERR-03016",
+  "ex-1"
+ ],
+ "read_minutes": {
+  "full": 3.9,
+  "brief": 3.0
+ },
+ "word_count": {
+  "full": 574,
+  "brief": 448
+ },
  "research_lines": [
-  {"file": "research/units/unit-03-differentiation-composite-implicit-inverse.md", "line": "so the derivative of the inverse at b is read from the behaviour of f at c, not at b"}
+  {
+   "file": "research/units/unit-03-differentiation-composite-implicit-inverse.md",
+   "line": "so the derivative of the inverse at b is read from the behaviour of f at c, not at b"
+  }
  ],
  "inferred": [
-  {"claim": "BC-QA-03006 has calculator_status either and the lesson places it in Section I Part A at 2.14 minutes.", "settles": "An official BC-QA-03006 item with its exam section recorded."},
-  {"claim": "ki-1 is served as an interactive slider and the representations block as a table rather than as static text.", "settles": "The modality A/B in the build plan: skip rate and time to first credited success by mode."},
-  {"claim": "The interactive's curve f(x) = x^3/4 + x is an illustration chosen for being increasing; no record supplies a curve.", "settles": "A graph-form BC-QA-03006 item whose curve the figure can reuse."},
-  {"claim": "chk-3 carries BC-ERR-03016 on two distractors because BC-ERR-03014 produces the key value on every draw.", "settles": "A BC-ERR record for the derivative of f reported unchanged, a common_distractor on BC-QA-03006 with no error id."}
+  {
+   "claim": "BC-QA-03006 has calculator_status either and the lesson places it in Section I Part A at 2.14 minutes.",
+   "settles": "An official BC-QA-03006 item with its exam section recorded."
+  },
+  {
+   "claim": "ki-1 is served as an interactive slider and the representations block as a table rather than as static text.",
+   "settles": "The modality A/B in the build plan: skip rate and time to first credited success by mode."
+  },
+  {
+   "claim": "The interactive's curve f(x) = x^3/4 + x is an illustration chosen for being increasing; no record supplies a curve.",
+   "settles": "A graph-form BC-QA-03006 item whose curve the figure can reuse."
+  },
+  {
+   "claim": "chk-3 carries BC-ERR-03016 on two distractors because BC-ERR-03014 produces the key value on every draw.",
+   "settles": "A BC-ERR record for the derivative of f reported unchanged, a common_distractor on BC-QA-03006 with no error id."
+  }
  ],
- "sources": ["BC-CON-03006", "BC-SKL-03015", "BC-SKL-03016", "BC-SKL-03017", "BC-SKL-03018", "BC-SKL-03019", "BC-SKL-03020", "BC-EK-FUN-3E1", "ced:77", "ced:72", "BC-QA-03006", "BC-QA-03010", "BC-ERR-03014", "BC-ERR-03015", "BC-ERR-03016", "BC-MIS-03008", "BC-MIS-03009", "BC-PRQ-03003", "BC-PRQ-03006", "research/units/unit-03-differentiation-composite-implicit-inverse.md#3.3 Differentiating Inverse Functions", "research/question-analysis/question-archetypes.md#BC-QA-03006 Derivative of an inverse function at a point", "research/question-analysis/question-archetypes.md#BC-QA-03010 Inverse trigonometric derivative derived from the identity f(g(x)) = x", "research/exam/exam-structure.md#Section and part layout"]
+ "sources": [
+  "BC-CON-03006",
+  "BC-SKL-03015",
+  "BC-SKL-03016",
+  "BC-SKL-03017",
+  "BC-SKL-03018",
+  "BC-SKL-03019",
+  "BC-SKL-03020",
+  "BC-EK-FUN-3E1",
+  "ced:77",
+  "ced:72",
+  "BC-QA-03006",
+  "BC-QA-03010",
+  "BC-ERR-03014",
+  "BC-ERR-03015",
+  "BC-ERR-03016",
+  "BC-MIS-03008",
+  "BC-MIS-03009",
+  "BC-PRQ-03003",
+  "BC-PRQ-03006",
+  "research/units/unit-03-differentiation-composite-implicit-inverse.md#3.3 Differentiating Inverse Functions",
+  "research/question-analysis/question-archetypes.md#BC-QA-03006 Derivative of an inverse function at a point",
+  "research/question-analysis/question-archetypes.md#BC-QA-03010 Inverse trigonometric derivative derived from the identity f(g(x)) = x",
+  "research/exam/exam-structure.md#Section and part layout"
+ ]
 }
 ```

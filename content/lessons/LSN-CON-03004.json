@@ -3,20 +3,67 @@
  "version": 1,
  "kind": "concept",
  "target_id": "BC-CON-03004",
- "status": "signed_off",
+ "status": "draft",
  "snapshot_digest": "a6a8ec9d3f59ab8f712e33d30cc22fc64bf2c478fbe7312e3e3118d319c6a42f",
  "source_digest": "891ab4888ff0a8c97e1d9bc8f9380c648747e16144606093f9b2d23651cfc175",
  "read_minutes": {
-  "full": 2.8,
-  "brief": 2.8
+  "full": 2.91,
+  "brief": 2.91
  },
  "word_count": {
-  "full": 335,
-  "brief": 335
+  "full": 380,
+  "brief": 380
  },
  "sections": [
   {
    "id": "LSN-CON-03004#s1",
+   "type": "prediction",
+   "bands": [
+    "low",
+    "mid"
+   ],
+   "skills": [
+    "BC-SKL-03010",
+    "BC-SKL-03011",
+    "BC-SKL-03014"
+   ],
+   "sources": [
+    "BC-CON-03004",
+    "research/units/unit-03-differentiation-composite-implicit-inverse.md#3.2 Implicit Differentiation"
+   ],
+   "evidence_tag": "inferred",
+   "stem": {
+    "text": "Predict. For \\(x^2-xy+y^3=2x-1\\), differentiating gives \\(2x-y-x\\,dy/dx+3y^2\\,dy/dx=2\\). What comes before dividing to isolate \\(dy/dx\\)?",
+    "command_verb": "predict"
+   },
+   "format": "mcq",
+   "options": [
+    {
+     "id": "A",
+     "label": "Divide the whole line by \\(3y^2\\)",
+     "is_key": false
+    },
+    {
+     "id": "B",
+     "label": "Collect the \\(dy/dx\\) terms and factor",
+     "is_key": true
+    },
+    {
+     "id": "C",
+     "label": "Divide both sides by \\(dy/dx\\)",
+     "is_key": false
+    }
+   ],
+   "resolution": {
+    "text": "The line is linear in \\(dy/dx\\): collecting gives \\(dy/dx(3y^2-x)=2-2x+y\\), and dividing by the bracket isolates \\(dy/dx\\)."
+   },
+   "delivery": {
+    "mode": "text",
+    "reason": "rule 6"
+   }
+  },
+  {
+   "id": "LSN-CON-03004#s2",
    "type": "orientation",
    "bands": [
     "low",
@@ -32,7 +79,7 @@
     "research/units/unit-03-differentiation-composite-implicit-inverse.md#3.2 Implicit Differentiation"
    ],
    "evidence_tag": "inferred",
-   "text": "After both sides are differentiated, a response collects the dy/dx terms, factors dy/dx out and divides; a slope at a point needs both coordinates. Stems ask to find dy/dx, to show that it equals a stated expression, or for a slope.",
+   "text": "After both sides are differentiated, a response collects the dy/dx terms, factors dy/dx out and divides; a slope at a point needs both coordinates.",
    "delivery": {
     "mode": "text",
     "reason": "rule 5: BC-REP-01 only on the skills",
@@ -42,7 +89,7 @@
    }
   },
   {
-   "id": "LSN-CON-03004#s2",
+   "id": "LSN-CON-03004#s3",
    "type": "key_ideas",
    "bands": [
     "low",
@@ -61,7 +108,7 @@
    "evidence_tag": "verified",
    "ek_id": "BC-EK-FUN-3D1",
    "depth": "core",
-   "text": "Implicit differentiation gives an equation linear in dy/dx. Collect every dy/dx term on one side and everything else on the other, factor dy/dx out, then divide by its bracket. The result is a quotient in x and y, so a slope at a point takes both coordinates. Verifying a stated dy/dx means deriving it.",
+   "text": "Implicit differentiation gives an equation linear in dy/dx. Collect every dy/dx term on one side, factor dy/dx out, then divide by its bracket. The result is a quotient in x and y, so a slope takes both coordinates.",
    "notation": "dy/dx expressed as a quotient in x and y",
    "quote": {
     "text": "The chain rule is the basis for implicit differentiation.",
@@ -78,7 +125,7 @@
    }
   },
   {
-   "id": "LSN-CON-03004#s3",
+   "id": "LSN-CON-03004#s4",
    "type": "strategy",
    "bands": [
     "low",
@@ -90,17 +137,29 @@
     "BC-SKL-03014"
    ],
    "sources": [
-    "BC-QA-03004"
+    "BC-QA-03004",
+    "BC-ERR-03009"
    ],
    "evidence_tag": "verified",
    "archetype_id": "BC-QA-03004",
-   "cue": "Asked for dy/dx, a verification of a stated dy/dx, or a slope, from an equation in x and y.",
-   "method": "First written line: differentiate every term of both sides with respect to x.",
-   "rival": "Rival: differentiating one side and dropping the right side (BC-ERR-03009).",
-   "separating_feature": "The line is an equation: collect the dy/dx terms, then divide."
+   "cue": "dy/dx, a verification, or a slope, from an equation in x and y.",
+   "method": "Differentiate every term of both sides with respect to x.",
+   "rival": "Differentiating one side and dropping the right side.",
+   "separating_feature": "The line is an equation: collect the dy/dx terms, then divide.",
+   "contrast": {
+    "this": {
+     "text": "For \\(x^2+xy-y^3=5\\), show that \\(dy/dx=\\frac{-2x-y}{x-3y^2}\\). Find \\(dy/dx\\) at \\((2,1)\\).",
+     "archetype_id": "BC-QA-03004"
+    },
+    "not_this": {
+     "text": "For \\(x^2+xy-y^3=5\\), find the point where the tangent line is horizontal.",
+     "why_not": "It asks where dy/dx is zero, not for dy/dx itself."
+    },
+    "feature": "The stem asks for dy/dx or its value, not where it is zero."
+   }
   },
   {
-   "id": "LSN-CON-03004#s4",
+   "id": "LSN-CON-03004#s5",
    "type": "worked_example",
    "bands": [
     "low",
@@ -359,6 +418,7 @@
     ]
    },
    "relation": "distinct",
+   "fix_prompt": true,
    "delivery": {
     "mode": "step_reveal",
     "reason": "rule 1",
@@ -415,6 +475,7 @@
     "expression": -1
    },
    "relation": "distinct",
+   "fix_prompt": true,
    "delivery": {
     "mode": "step_reveal",
     "reason": "rule 1",
@@ -437,7 +498,7 @@
    ],
    "evidence_tag": "inferred",
    "prerequisite_id": "BC-PRQ-03002",
-   "text": "Collect the terms in an unknown that appears in several places, factor it out, then divide. Otherwise dy/dx is never isolated, or is divided before collection."
+   "text": "Collect the terms in an unknown that appears in several places, factor it out, then divide."
   },
   {
    "id": "LSN-CON-03004#prq-BC-PRQ-03006",
@@ -455,7 +516,7 @@
    ],
    "evidence_tag": "inferred",
    "prerequisite_id": "BC-PRQ-03006",
-   "text": "Combine fractions and cancel factors without changing the value. A wrong simplification after a correct derivative changes the value reported."
+   "text": "Combine fractions and cancel factors without changing the value."
   }
  ],
  "checks": [
@@ -476,7 +537,7 @@
     "y_at": 1,
     "y_power": 3
    },
-   "completes": "LSN-CON-03004#s4",
+   "completes": "LSN-CON-03004#s5",
    "stem": {
     "text": "Given dy/dx (3y^2 - x) = 2 - 2x + y, find dy/dx at (2, 1).",
     "command_verb": "find"
@@ -727,17 +788,18 @@
   }
  ],
  "refresher": [
-  "LSN-CON-03004#s2",
+  "LSN-CON-03004#s3",
   "LSN-CON-03004#err-BC-ERR-03010",
   "LSN-CON-03004#err-BC-ERR-03011",
-  "LSN-CON-03004#s4"
+  "LSN-CON-03004#s5"
  ],
+ "no_figure_reason": "The concept is an algebraic procedure on a differentiated equation. Its skills carry only the symbolic representation and no key idea describes a process to draw, so no figure fits.",
  "provenance": {
   "author": "tools/lesson_transcribe.py",
-  "prompt_version": "generator/lesson_v1",
+  "prompt_version": "generator/lesson_v2",
   "design_path": "docs/lessons/unit-03/LSN-CON-03004.md",
-  "signed_off_by": "claude-opus-5-5",
-  "signed_off_at": "2026-09-29",
+  "signed_off_by": null,
+  "signed_off_at": null,
   "not_human": true
  }
 }

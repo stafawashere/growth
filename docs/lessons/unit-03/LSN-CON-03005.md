@@ -9,6 +9,10 @@ purpose: Authoring spec for the concept lesson on BC-CON-03005, horizontal and v
 
 Concept BC-CON-03005 (skills BC-SKL-03012, BC-SKL-03013), topic 3.2 of Unit 3, loaded by one archetype, BC-QA-03005 (family implicit-differentiation), which reuses the curve of the implicit differentiation question. Its hard parent concept is BC-CON-03004 (docs/lessons/unit-03/README.md, section 1).
 
+## Prediction
+
+One multiple choice question on worked example 1's own quotient, \(dy/dx=\frac{3(x-1)(x+1)}{2(y-2)}\), asked before the rule is shown: which part is zero where the tangent is horizontal. The key is the numerator, ex-1's first step. The distractors are the denominator (the BC-ERR-03012 path) and both parts at once. The resolution, shown on the key idea screen beside the choice, states that a quotient is zero where its numerator is zero and its denominator is not, and gives the candidates \(x=-1\) and \(x=1\). No verdict word. Sources: BC-CON-03005 and the topic 3.2 section the key idea cites.
+
 ## Orientation
 
 Served text, from BC-CON-03005 `description_plain` and the topic's Assessment behaviour paragraph (research/units/unit-03-differentiation-composite-implicit-inverse.md#3.2 Implicit Differentiation): a response sets the numerator of dy/dx to zero for a horizontal tangent or the denominator for a vertical one, then substitutes into the curve equation and keeps only points of the curve. No count, no frequency.
@@ -23,18 +27,20 @@ Both skills map to BC-EK-FUN-3D1 (ced:76), so one core block, both bands.
 
 BC-QA-03005 (research/question-analysis/question-archetypes.md#BC-QA-03005 Horizontal or vertical tangent on an implicitly defined curve): `typical_wording` "find the coordinates of a point on the curve at which the tangent line is vertical, or explain why no such point exists", "determine whether the stated horizontal line is tangent to the curve"; `common_givens` an equation defining the curve, an expression for dy/dx supplied or found earlier, a stated horizontal line or a point on the curve; `asked_to_produce` coordinates, an explanation why no such point exists, a decision whether a stated line is tangent. The signal: the words horizontal or vertical beside tangent, with a quotient for dy/dx already on the page. Shape: one or two parts inside the no-calculator implicit FRQ (cr-23:22, cr-24:17); no `official_examples` in the record.
 
+Contrast pair on st-1: this stem is on BC-QA-03005, a curve with its \(dy/dx\) supplied and a vertical tangent asked; not this stem is the same curve asking for the slope at a named point, the near miss from BC-CON-03004 (BC-QA-03004), which substitutes and sets nothing to zero. The separating feature is the words horizontal or vertical beside tangent.
+
 What says "not this concept": a stem asking for the slope at a named point (BC-CON-03004), or for the tangent line equation there.
 
 ## Method choice
 
 One strategy block, both bands.
 
-- st-1, BC-QA-03005. Cue from `asked_to_produce` and `common_givens`. Method, `expected_solution_path[0]`: set the numerator or the denominator of dy/dx equal to zero as the direction requires. Rival, `wrong_approaches`: the conditions exchanged (BC-ERR-03012). Separating feature: horizontal means slope zero, so the numerator; vertical means slope undefined, so the denominator. The archetype carries both fields in the snapshot, so the block is not tagged inferred.
+- st-1, BC-QA-03005. Cue from `asked_to_produce` and `common_givens`. Method, `expected_solution_path[0]`: set the numerator or the denominator of dy/dx equal to zero as the direction requires. Rival, `wrong_approaches`: the conditions exchanged (BC-ERR-03012, cited in the block's `sources`, not in its text). Separating feature: horizontal means slope zero, so the numerator; vertical means slope undefined, so the denominator. The archetype carries both fields in the snapshot, so the block is not tagged inferred. The `method` text carries no leading label.
 
 ## Solution path
 
 - ex-1, BC-QA-03005, both bands, no calculator. Draw from `parameter_spec`: stretch 1, spread 1, opening left, h 1, v 2, so shift = 3 and the curve is (y - 2)^2 = (x - 1)^2 (x + 2), with dy/dx = 3(x - 1)(x + 1)/(2(y - 2)) supplied (a `common_givens` form). The spec's notes: the singular point (h, v) = (1, 2) makes both parts vanish, and the numerator's other root gives two horizontal tangent points. No published BC-QA-03005 item carries this draw.
-- Steps follow `expected_solution_path`: numerator zero (new); solve for x (solve); the curve equation (new); x = -1 substituted (evaluate); solve for y (solve); x = 1 discarded (no value); the points (new). A fluent solver writes all of them except the discard reasoning, which is one clause beside x = 1.
+- Steps follow `expected_solution_path`: numerator zero (new); solve for x (solve); the curve equation (new); x = -1 substituted (evaluate); solve for y (solve); x = 1 discarded (no value); the points (new). A fluent solver writes all of them except the discard reasoning, which is one clause beside x = 1. One example, so nothing is faded.
 
 ## Scoring
 
@@ -42,7 +48,7 @@ BC-QA-03005 lists no `point_types`, so no what_a_reader_scores entry and no poin
 
 ## Traps
 
-Three active errors meet the skills, in the bundle's order: BC-ERR-03012, BC-ERR-03013 (both linked to BC-MIS-03007, severity high), BC-ERR-05057 (linked BC-MIS at severity medium). Low band all three; mid band the first two. All on ex-1's draw.
+Three active errors meet the skills, in the bundle's order: BC-ERR-03012, BC-ERR-03013 (both linked to BC-MIS-03007, severity high), BC-ERR-05057 (linked BC-MIS at severity medium). Low band all three; mid band the first two. All on ex-1's draw. All three are `distinct`, so each carries `fix_prompt` true.
 
 - err-BC-ERR-03012: 2(y - 2) = 0 set for a horizontal tangent, against 3(x - 1)(x + 1) = 0. No possible reason line: the linked descriptions describe the numerator only for parametric slopes (BC-MIS-09003).
 - err-BC-ERR-03013: x = -1 and x = 1 reported with no y, against the two points. Possible reason, words from BC-MIS-03007.
@@ -75,8 +81,8 @@ BC-QA-03005 is `no_calculator`, one or two parts inside the implicit FRQ, so Sec
 
 ## Band plan
 
-- Low (full): orientation, ki-1, st-1, ex-1, the three error blocks, chk-1 to chk-3, the bridge. 519 words, 3.5 minutes (cap 900 and 6).
-- Mid (brief): orientation, ki-1, st-1, ex-1, err-BC-ERR-03012, err-BC-ERR-03013, chk-1, chk-2, the bridge. 447 words, 3.0 minutes (cap 450 and 3).
+- Low (full), in served order: prediction, orientation, the bridge, ki-1, st-1 with its contrast pair, ex-1, chk-1, the three error blocks, chk-2, chk-3. 521 words, 3.5 minutes (cap 900 and 6). There is no example 2, so nothing is faded.
+- Mid (brief): prediction, orientation, the bridge, ki-1, st-1 with its contrast pair, ex-1, chk-1, err-BC-ERR-03012, err-BC-ERR-03013, chk-2. 449 words, 3.0 minutes (cap 450 and 3).
 - Refresher: ki-1, err-BC-ERR-03012, err-BC-ERR-03013, err-BC-ERR-05057, ex-1.
 
 ## Sources
@@ -100,8 +106,20 @@ BC-QA-03005 is `no_calculator`, one or two parts inside the implicit FRQ, so Sec
  "target_id": "BC-CON-03005",
  "unit": "03",
  "skills": ["BC-SKL-03012", "BC-SKL-03013"],
+ "prediction": {
+  "id": "pr-1",
+  "stem": {"text": "Predict. With \\(dy/dx=\\frac{3(x-1)(x+1)}{2(y-2)}\\), which part is zero at a horizontal tangent?", "command_verb": "predict"},
+  "format": "mcq",
+  "options": [
+   {"id": "A", "label": "The numerator, \\(3(x-1)(x+1)\\)", "is_key": true},
+   {"id": "B", "label": "The denominator, \\(2(y-2)\\)", "is_key": false},
+   {"id": "C", "label": "Both parts at once", "is_key": false}
+  ],
+  "resolution": "A horizontal tangent has slope 0, and a quotient is 0 where its numerator is 0 and its denominator is not.",
+  "sources": ["BC-CON-03005", "research/units/unit-03-differentiation-composite-implicit-inverse.md#3.2 Implicit Differentiation"]
+ },
  "orientation": {
-  "text": "A response sets the numerator of dy/dx to zero for a horizontal tangent, or the denominator for a vertical one, then puts each candidate into the curve equation and keeps only points of the curve.",
+  "text": "A response sets the numerator of dy/dx to zero for a horizontal tangent, or the denominator for a vertical one, then keeps only candidates on the curve.",
   "sources": ["BC-CON-03005", "research/units/unit-03-differentiation-composite-implicit-inverse.md#3.2 Implicit Differentiation"]
  },
  "key_ideas": [
@@ -109,8 +127,8 @@ BC-QA-03005 is `no_calculator`, one or two parts inside the implicit FRQ, so Sec
    "id": "ki-1",
    "ek_id": "BC-EK-FUN-3D1",
    "depth": "core",
-   "text": "On an implicit curve dy/dx is a quotient. The tangent is horizontal where the numerator is zero and the denominator is not, vertical where the denominator is zero and the numerator is not. A value meeting the condition is only a candidate: the curve equation gives the other coordinate, and a candidate off the curve, or with both parts zero, is discarded.",
-   "notation": "dy/dx equals zero; denominator of dy/dx equals zero",
+   "text": "On an implicit curve dy/dx is a quotient. The tangent is horizontal where the numerator is zero and the denominator is not, vertical where the reverse holds. A value is a candidate until the curve gives the other coordinate.",
+   "notation": "denominator of dy/dx equals zero",
    "quote": null,
    "sources": ["BC-EK-FUN-3D1", "ced:76", "cr-23:22", "cr-24:17", "research/units/unit-03-differentiation-composite-implicit-inverse.md#3.2 Implicit Differentiation"]
   }
@@ -119,11 +137,16 @@ BC-QA-03005 is `no_calculator`, one or two parts inside the implicit FRQ, so Sec
   {
    "id": "st-1",
    "archetype_id": "BC-QA-03005",
-   "cue": "The stem asks for a point with a horizontal or vertical tangent, from a curve equation and its dy/dx.",
-   "method": "First written line: set the numerator or the denominator of dy/dx equal to zero as the direction requires.",
-   "rival": "Rival: the denominator set to zero for a horizontal tangent (BC-ERR-03012).",
+   "cue": "A horizontal or vertical tangent point, from a curve and its dy/dx.",
+   "method": "Set the numerator or the denominator of dy/dx equal to zero as the direction requires.",
+   "rival": "The denominator set to zero for a horizontal tangent.",
    "separating_feature": "Horizontal: slope zero, numerator. Vertical: slope undefined, denominator.",
-   "sources": ["BC-QA-03005"],
+   "contrast": {
+    "this": {"text": "For \\(x^2+xy+y^2=3\\), \\(dy/dx=-\\frac{2x+y}{x+2y}\\). Find each vertical tangent point.", "archetype_id": "BC-QA-03005"},
+    "not_this": {"text": "For \\(x^2+xy+y^2=3\\), find the tangent slope at \\((1,1)\\).", "why_not": "A named point gives the slope by substitution."},
+    "feature": "The words horizontal or vertical beside tangent."
+   },
+   "sources": ["BC-QA-03005", "BC-ERR-03012"],
    "evidence_tag": "verified"
   }
  ],
@@ -136,13 +159,13 @@ BC-QA-03005 is `no_calculator`, one or two parts inside the implicit FRQ, so Sec
    "problem": {"text": "For (y - 2)^2 = (x - 1)^2 (x + 2), dy/dx = 3(x - 1)(x + 1)/(2(y - 2)). Find each point where the tangent line is horizontal.", "command_verb": "find"},
    "calculator_status": "no_calculator",
    "steps": [
-    {"cue": "Horizontal: slope zero, so the numerator.", "why": "The denominator must stay nonzero.", "expr": "3*(x - 1)*(x + 1) = 0", "relation": "new"},
+    {"cue": "Horizontal: slope zero, numerator.", "why": "The denominator stays nonzero.", "expr": "3*(x - 1)*(x + 1) = 0", "relation": "new"},
     {"cue": "The condition fixes x.", "why": "Two candidates.", "expr": "FiniteSet(-1, 1)", "relation": "solve", "variable": "x"},
-    {"cue": "A candidate is a point only on the curve.", "why": "The curve equation gives y.", "expr": "(y - 2)**2 = (x - 1)**2*(x + 2)", "relation": "new"},
+    {"cue": "A candidate must lie on the curve.", "why": "The curve gives y.", "expr": "(y - 2)**2 = (x - 1)**2*(x + 2)", "relation": "new"},
     {"cue": "Candidate x = -1.", "why": "(-2)^2 (1) = 4.", "expr": "(y - 2)**2 = 4", "relation": "evaluate", "subs": {"x": "-1"}},
-    {"cue": "Solve for y.", "why": "y - 2 is 2 or -2: denominator nonzero.", "expr": "FiniteSet(0, 4)", "relation": "solve", "variable": "y"},
-    {"cue": "Candidate x = 1 gives y = 2.", "why": "Denominator zero there too: discarded."},
-    {"cue": "The stem asks for points.", "why": "Numerator zero, denominator nonzero, on the curve.", "expr": "FiniteSet(Tuple(-1, 0), Tuple(-1, 4))", "relation": "new"}
+    {"cue": "Solve for y.", "why": "y - 2 is 2 or -2.", "expr": "FiniteSet(0, 4)", "relation": "solve", "variable": "y"},
+    {"cue": "Candidate x = 1 gives y = 2.", "why": "Denominator zero: discarded."},
+    {"cue": "Asked for points.", "why": "On the curve, denominator nonzero.", "expr": "FiniteSet(Tuple(-1, 0), Tuple(-1, 4))", "relation": "new"}
    ],
    "answer": {"form": "symbolic", "expr": "FiniteSet(Tuple(-1, 0), Tuple(-1, 4))"}
   }
@@ -156,6 +179,7 @@ BC-QA-03005 is `no_calculator`, one or two parts inside the implicit FRQ, so Sec
    "wrong_step": {"text": "Denominator set to zero.", "expr": "2*(y - 2) = 0"},
    "right_step": {"text": "Numerator set to zero.", "expr": "3*(x - 1)*(x + 1) = 0"},
    "relation": "distinct",
+   "fix_prompt": true,
    "possible_reason": null,
    "sources": ["BC-ERR-03012"]
   },
@@ -166,6 +190,7 @@ BC-QA-03005 is `no_calculator`, one or two parts inside the implicit FRQ, so Sec
    "wrong_step": {"text": "x = -1 and x = 1 reported.", "expr": "FiniteSet(-1, 1)"},
    "right_step": {"text": "(-1, 0) and (-1, 4).", "expr": "FiniteSet(Tuple(-1, 0), Tuple(-1, 4))"},
    "relation": "distinct",
+   "fix_prompt": true,
    "possible_reason": {"misconception_id": "BC-MIS-03007", "text": "a value satisfying it is reported without checking that a point with that value lies on the curve"},
    "sources": ["BC-ERR-03013", "BC-MIS-03007"]
   },
@@ -176,13 +201,14 @@ BC-QA-03005 is `no_calculator`, one or two parts inside the implicit FRQ, so Sec
    "wrong_step": {"text": "(1, 2) kept.", "expr": "FiniteSet(Tuple(1, 2), Tuple(-1, 0), Tuple(-1, 4))"},
    "right_step": {"text": "(1, 2) discarded.", "expr": "FiniteSet(Tuple(-1, 0), Tuple(-1, 4))"},
    "relation": "distinct",
+   "fix_prompt": true,
    "possible_reason": {"misconception_id": "BC-MIS-05031", "text": "looks only at the numerator of the derivative expression and never at the denominator"},
    "sources": ["BC-ERR-05057", "BC-MIS-05031"]
   }
  ],
  "representations": null,
  "prerequisite_bridges": [
-  {"prq_id": "BC-PRQ-03007", "text": "Set a numerator or denominator to zero, solve, and check which candidates are admissible; otherwise a candidate is reported unchecked."}
+  {"prq_id": "BC-PRQ-03007", "text": "Set a numerator or denominator to zero and solve."}
  ],
  "time": {"exam_part": "II-B", "budget_minutes": 15.0, "source": "research/exam/exam-structure.md#Section and part layout", "written_steps": {"ex-1": [1, 2, 3, 4, 5, 7]}, "skipped_steps": {"ex-1": [6]}},
  "checks": [
@@ -269,7 +295,7 @@ BC-QA-03005 is `no_calculator`, one or two parts inside the implicit FRQ, so Sec
  ],
  "refresher": ["ki-1", "err-BC-ERR-03012", "err-BC-ERR-03013", "err-BC-ERR-05057", "ex-1"],
  "read_minutes": {"full": 3.5, "brief": 3.0},
- "word_count": {"full": 519, "brief": 447},
+ "word_count": {"full": 521, "brief": 449},
  "research_lines": [
   {"file": "research/units/unit-03-differentiation-composite-implicit-inverse.md", "line": "a candidate satisfying only the condition on dy/dx need not correspond to a point of the curve"}
  ],

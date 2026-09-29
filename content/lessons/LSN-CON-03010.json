@@ -3,7 +3,7 @@
  "version": 1,
  "kind": "concept",
  "target_id": "BC-CON-03010",
- "status": "signed_off",
+ "status": "draft",
  "snapshot_digest": "a6a8ec9d3f59ab8f712e33d30cc22fc64bf2c478fbe7312e3e3118d319c6a42f",
  "source_digest": "6de6edbda977f6f22155cd1375c3a361aad5600f6b3440abbd5954ab061dbe5e",
  "read_minutes": {
@@ -11,12 +11,57 @@
   "brief": 3.0
  },
  "word_count": {
-  "full": 383,
-  "brief": 383
+  "full": 394,
+  "brief": 394
  },
  "sections": [
   {
    "id": "LSN-CON-03010#s1",
+   "type": "prediction",
+   "bands": [
+    "low",
+    "mid"
+   ],
+   "skills": [
+    "BC-SKL-03032"
+   ],
+   "sources": [
+    "BC-CON-03010",
+    "research/units/unit-03-differentiation-composite-implicit-inverse.md#3.6 Calculating Higher-Order Derivatives"
+   ],
+   "evidence_tag": "inferred",
+   "stem": {
+    "text": "Before the rule: y' = -2xy + 3y + x. Predict what y'' equals.",
+    "command_verb": "predict"
+   },
+   "format": "mcq",
+   "options": [
+    {
+     "id": "A",
+     "label": "dy/dx times y'",
+     "is_key": false
+    },
+    {
+     "id": "B",
+     "label": "The derivative of y'",
+     "is_key": true
+    },
+    {
+     "id": "C",
+     "label": "y' squared",
+     "is_key": false
+    }
+   ],
+   "resolution": {
+    "text": "y'' is d/dx applied to y' = -2xy + 3y + x. The operator d/dx acts on y'; dy/dx is a result, not a factor."
+   },
+   "delivery": {
+    "mode": "text",
+    "reason": "rule 6"
+   }
+  },
+  {
+   "id": "LSN-CON-03010#s2",
    "type": "orientation",
    "bands": [
     "low",
@@ -30,7 +75,7 @@
     "research/units/unit-03-differentiation-composite-implicit-inverse.md#3.6 Calculating Higher-Order Derivatives"
    ],
    "evidence_tag": "inferred",
-   "text": "A response reads y'', f''(x) and d^2y/dx^2 as one object, the derivative of the first derivative, and writes the operator d/dx apart from its result.",
+   "text": "A response reads y'', f''(x) and d^2y/dx^2 as one object, with d/dx apart from its result.",
    "delivery": {
     "mode": "text",
     "reason": "rule 5: BC-REP-01 and BC-REP-04 only",
@@ -40,7 +85,7 @@
    }
   },
   {
-   "id": "LSN-CON-03010#s2",
+   "id": "LSN-CON-03010#s3",
    "type": "key_ideas",
    "bands": [
     "low",
@@ -57,7 +102,7 @@
    "evidence_tag": "verified",
    "ek_id": "BC-EK-FUN-3F2",
    "depth": "core",
-   "text": "For y = f(x), the second derivative is written d^2y/dx^2, f''(x) or y''; the nth is d^ny/dx^n or f^(n)(x). Each names d/dx applied again to the previous derivative. d/dx is the operator; dy/dx is its result.",
+   "text": "For y = f(x), the second derivative is d^2y/dx^2, f''(x) or y''; the nth is d^ny/dx^n or f^(n)(x). Each is d/dx applied again.",
    "notation": "d squared y over d x squared; f superscript n of x",
    "quote": {
     "text": "Higher-order derivatives are represented with a variety of notations.",
@@ -72,7 +117,7 @@
    }
   },
   {
-   "id": "LSN-CON-03010#s3",
+   "id": "LSN-CON-03010#s4",
    "type": "strategy",
    "bands": [
     "low",
@@ -87,13 +132,24 @@
    ],
    "evidence_tag": "inferred",
    "archetype_id": "BC-QA-03008",
-   "cue": "Second derivative named in one notation, first derivative given in the other.",
-   "method": "Read d^2y/dx^2 and y'' as one object. First line: d^2y/dx^2 = d/dx(y').",
-   "rival": "Rival: dy/dx for d/dx, a product (BC-ERR-03022).",
-   "separating_feature": "d/dx acts on y'; dy/dx is a result, never a factor."
+   "cue": "Second derivative named in one notation, first given in the other.",
+   "method": "Read d^2y/dx^2 and y'' as one object, and write d^2y/dx^2 = d/dx(y') first.",
+   "rival": "Writing dy/dx for d/dx, which makes a product.",
+   "separating_feature": "d/dx acts on y'; dy/dx is a result.",
+   "contrast": {
+    "this": {
+     "text": "y' = 2xy - y + 3, y(1) = 2. Write y'' and find y''(1).",
+     "archetype_id": "BC-QA-03008"
+    },
+    "not_this": {
+     "text": "y' = 2xy - y + 3, y(1) = 2. Find y'(1).",
+     "why_not": "It asks for the first derivative."
+    },
+    "feature": "A second derivative is named."
+   }
   },
   {
-   "id": "LSN-CON-03010#s4",
+   "id": "LSN-CON-03010#s5",
    "type": "worked_example",
    "bands": [
     "low",
@@ -122,7 +178,7 @@
    "calculator_status": "no_calculator",
    "steps": [
     {
-     "cue": "d^2y/dx^2 and y'' name one object: d/dx applied to y'.",
+     "cue": "d^2y/dx^2 and y'' are d/dx applied to y'.",
      "why": "Write d^2y/dx^2 = d/dx(-2xy + 3y + x).",
      "expression": [
       "Add",
@@ -142,7 +198,7 @@
      "relation": "new"
     },
     {
-     "cue": "y' reappears, so find y'(2) first.",
+     "cue": "y' reappears: find y'(2) first.",
      "why": "-4 + 3 + 2.",
      "expression": 1,
      "relation": "evaluate",
@@ -152,7 +208,7 @@
      }
     },
     {
-     "cue": "d/dx of -2xy: product rule; y terms gain y'.",
+     "cue": "Product rule; y terms gain y'.",
      "why": "-2y - 2xy' + 3y' + 1.",
      "expression": [
       "Add",
@@ -174,12 +230,11 @@
        "yp"
       ]
      ],
-     "point_type_id": "BC-PT-99022",
      "relation": "new"
     },
     {
      "cue": "Point and y' known.",
-     "why": "-2 - 4 + 3 + 1, so y''(2) = -2.",
+     "why": "-2 - 4 + 3 + 1 = -2.",
      "expression": -2,
      "point_type_id": "BC-PT-99027",
      "relation": "evaluate",
@@ -201,7 +256,7 @@
    }
   },
   {
-   "id": "LSN-CON-03010#s5",
+   "id": "LSN-CON-03010#s6",
    "type": "what_a_reader_scores",
    "bands": [
     "low",
@@ -211,16 +266,11 @@
     "BC-SKL-03032"
    ],
    "sources": [
-    "BC-PT-99022",
     "BC-PT-99027"
    ],
    "evidence_tag": "verified",
-   "example_id": "LSN-CON-03010#s4",
+   "example_id": "LSN-CON-03010#s5",
    "lines": [
-    {
-     "point_type_id": "BC-PT-99022",
-     "text": "Product rule. Earned by: A differentiation that correctly applies the product rule to the given expression (sg-25:20, sg-22:16). Not earned by: A response that treats one factor as constant, which sg-22:16 states is eligible for the chain rule point but not this one."
-    },
     {
      "point_type_id": "BC-PT-99027",
      "text": "Higher derivative expression evaluated at a point. Earned by: A correct expression for the second or higher derivative, evaluated at the requested point, consistent with the earlier derivative work (sg-25:20, sg-23:10). Not earned by: An expression left in terms of the first derivative where the prompt asked for it in terms of the dependent variable (sg-23:11)."
@@ -291,6 +341,7 @@
     ]
    },
    "relation": "distinct",
+   "fix_prompt": true,
    "possible_reason": {
     "misconception_id": "BC-MIS-03014",
     "text": "treats the symbols for derivatives as labels attached to an answer rather than as operators with a meaning"
@@ -316,7 +367,7 @@
    ],
    "evidence_tag": "inferred",
    "prerequisite_id": "BC-PRQ-03005",
-   "text": "f'(x), dy/dx, d^2y/dx^2 and y'' name derivatives; d/dx is the operator. dy for dy/dx, or dy/dx for d/dx, loses the meaning."
+   "text": "dy for dy/dx, or dy/dx for d/dx, loses the meaning."
   }
  ],
  "checks": [
@@ -337,7 +388,7 @@
     "y_at": 1,
     "notation": "prime"
    },
-   "completes": "LSN-CON-03010#s4",
+   "completes": "LSN-CON-03010#s5",
    "stem": {
     "text": "d^2y/dx^2 = -2y - 2x dy/dx + 3 dy/dx + 1; at x = 2, y = 1 and dy/dx = 1. Find y''(2).",
     "command_verb": "find"
@@ -489,16 +540,17 @@
   }
  ],
  "refresher": [
-  "LSN-CON-03010#s2",
+  "LSN-CON-03010#s3",
   "LSN-CON-03010#err-BC-ERR-03022",
-  "LSN-CON-03010#s4"
+  "LSN-CON-03010#s5"
  ],
+ "no_figure_reason": "The skill carries symbolic and verbal representations only, and a notation list holds no process or figure to draw, so no drawn block fits.",
  "provenance": {
   "author": "tools/lesson_transcribe.py",
-  "prompt_version": "generator/lesson_v1",
+  "prompt_version": "generator/lesson_v2",
   "design_path": "docs/lessons/unit-03/LSN-CON-03010.md",
-  "signed_off_by": "claude-opus-5-5",
-  "signed_off_at": "2026-09-29",
+  "signed_off_by": null,
+  "signed_off_at": null,
   "not_human": true
  }
 }

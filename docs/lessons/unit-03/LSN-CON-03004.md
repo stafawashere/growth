@@ -9,9 +9,13 @@ purpose: Authoring spec for the concept lesson on BC-CON-03004, collecting, fact
 
 Concept BC-CON-03004 (skills BC-SKL-03010, BC-SKL-03011, BC-SKL-03014), topic 3.2 of Unit 3. Two archetypes load its skills, BC-QA-03004 (BC-SKL-03010, 03011, 03014) and BC-QA-03005 (BC-SKL-03011), both in the family implicit-differentiation. Its hard parent concept is BC-CON-03003 (docs/lessons/unit-03/README.md, section 1).
 
+## Prediction
+
+One multiple choice question on worked example 1's own differentiated line, \(2x-y-x\,dy/dx+3y^2\,dy/dx=2\), asked before the rule is shown: what happens before dividing to isolate \(dy/dx\). The key is collecting the \(dy/dx\) terms and factoring, the second step of ex-1. The distractors are dividing the whole line by \(3y^2\) (the BC-ERR-03010 path) and dividing both sides by \(dy/dx\). The resolution, shown on the key idea screen beside the choice, states the collected line and the division by its bracket. No verdict word. Sources: BC-CON-03004 and the topic 3.2 section the key idea cites.
+
 ## Orientation
 
-Served text, from BC-CON-03004 `description_plain` and the topic's Assessment behaviour paragraph (research/units/unit-03-differentiation-composite-implicit-inverse.md#3.2 Implicit Differentiation): after both sides are differentiated, a response collects the dy/dx terms, factors dy/dx out and divides, and substitutes both coordinates for a slope. Stems ask to find dy/dx, verify a stated one, or give a slope. No count, no frequency.
+Served text, from BC-CON-03004 `description_plain` and the topic's Assessment behaviour paragraph (research/units/unit-03-differentiation-composite-implicit-inverse.md#3.2 Implicit Differentiation): after both sides are differentiated, a response collects the dy/dx terms, factors dy/dx out and divides, and substitutes both coordinates for a slope. No count, no frequency.
 
 ## Key ideas
 
@@ -23,13 +27,15 @@ The skills map to one BC-EK, BC-EK-FUN-3D1 (ced:76), so one core block, both ban
 
 BC-QA-03004 (research/question-analysis/question-archetypes.md#BC-QA-03004 Implicit differentiation producing or verifying dy/dx): `typical_wording` "show that dy/dx is equal to the stated expression for the given curve"; `asked_to_produce` an implicit derivative, a verification, a numerical slope at a point; `common_givens` an equation in x and y, a stated expression for dy/dx, a point on the curve. The signal for this concept: the stem supplies the target expression ("show that") or a point, so the work after differentiating decides the answer. BC-QA-03005 reuses the evaluated dy/dx inside the tangent parts (research/question-analysis/question-archetypes.md#BC-QA-03005 Horizontal or vertical tangent on an implicitly defined curve).
 
+Contrast pair on st-1: this stem is on BC-QA-03004, differentiated and then solved for \(dy/dx\) with a stated expression to show and a slope to find; not this stem is the same curve asking where the tangent is horizontal, the near miss from BC-CON-03005 (BC-QA-03005), which sets \(dy/dx\) to zero instead of solving for it. The separating feature is what the stem asks of \(dy/dx\).
+
 What says "not this concept": a stem that gives dy/dx and asks where the tangent is horizontal or vertical (BC-CON-03005), or asks for the second derivative (BC-CON-03009).
 
 ## Method choice
 
 One strategy block, both bands: both archetypes are in one family, so one block, on the primary archetype BC-QA-03004.
 
-- st-1. Cue from `asked_to_produce` and `common_givens`. Method, `expected_solution_path[0]`: differentiate every term of both sides with respect to x. Rival, from `wrong_approaches`: differentiating one side and dropping the right side (BC-ERR-03009). Separating feature: the differentiated line is an equation, so dy/dx is solved for, and its terms are collected before any division (path entries 4 and 5).
+- st-1. Cue from `asked_to_produce` and `common_givens`. Method, `expected_solution_path[0]`: differentiate every term of both sides with respect to x. Rival, from `wrong_approaches`: differentiating one side and dropping the right side (BC-ERR-03009, cited in the block's `sources`, not in its text). Separating feature: the differentiated line is an equation, so dy/dx is solved for, and its terms are collected before any division (path entries 4 and 5).
 
 ## Solution path
 
@@ -42,7 +48,7 @@ Neither archetype lists `point_types`, so no what_a_reader_scores entry, no poin
 
 ## Traps
 
-Two active errors meet the skills, in the bundle's order (BC-ERR-03010 then BC-ERR-03011; linked BC-MIS-03006 at severity medium). Both bands serve both.
+Two active errors meet the skills, in the bundle's order (BC-ERR-03010 then BC-ERR-03011; linked BC-MIS-03006 at severity medium). Both bands serve both. Both are `distinct`, so each carries `fix_prompt` true.
 
 - err-BC-ERR-03010: dividing by 3y^2 while -x dy/dx is still on the other side. Wrong and right as expressions on ex-1's draw, distinct. No possible reason line: the linked descriptions do not name the order of operations.
 - err-BC-ERR-03011: only x = 2 substituted, (y - 2)/(3y^2 - 2), against -1. Distinct. No possible reason line.
@@ -72,9 +78,11 @@ BC-QA-03004 is `no_calculator`, the opening part of a multipart FRQ, so Section 
 - ex-1: step_reveal. Rule 1.
 - err-BC-ERR-03010, err-BC-ERR-03011: step_reveal. Rule 1.
 
+No drawn block: none of rules 2 to 5 applies. The skills carry BC-REP-01 only and the key idea is an algebraic procedure, not a process to draw. The machine record states `no_figure_reason`. The prediction is delivered as text.
+
 ## Band plan
 
-- Low (full) and mid (brief) serve the same blocks: orientation, ki-1, st-1, ex-1, err-BC-ERR-03010, err-BC-ERR-03011, chk-1, chk-2, the two bridges. 412 words, 2.8 minutes in each (caps 900 and 6, 450 and 3).
+- Low (full) and mid (brief) serve the same blocks, in served order: prediction, orientation, the two bridges, ki-1, st-1 with its contrast pair, ex-1, chk-1, err-BC-ERR-03010, err-BC-ERR-03011, chk-2. 436 words, 2.91 minutes in each (caps 900 and 6, 450 and 3). There is no example 2, so nothing is faded.
 - Refresher: ki-1, err-BC-ERR-03010, err-BC-ERR-03011, ex-1.
 
 ## Sources
@@ -102,8 +110,21 @@ BC-QA-03004 is `no_calculator`, the opening part of a multipart FRQ, so Section 
  "target_id": "BC-CON-03004",
  "unit": "03",
  "skills": ["BC-SKL-03010", "BC-SKL-03011", "BC-SKL-03014"],
+ "prediction": {
+  "id": "pr-1",
+  "stem": {"text": "Predict. For \\(x^2-xy+y^3=2x-1\\), differentiating gives \\(2x-y-x\\,dy/dx+3y^2\\,dy/dx=2\\). What comes before dividing to isolate \\(dy/dx\\)?", "command_verb": "predict"},
+  "format": "mcq",
+  "options": [
+   {"id": "A", "label": "Divide the whole line by \\(3y^2\\)", "is_key": false},
+   {"id": "B", "label": "Collect the \\(dy/dx\\) terms and factor", "is_key": true},
+   {"id": "C", "label": "Divide both sides by \\(dy/dx\\)", "is_key": false}
+  ],
+  "resolution": "The line is linear in \\(dy/dx\\): collecting gives \\(dy/dx(3y^2-x)=2-2x+y\\), and dividing by the bracket isolates \\(dy/dx\\).",
+  "sources": ["BC-CON-03004", "research/units/unit-03-differentiation-composite-implicit-inverse.md#3.2 Implicit Differentiation"]
+ },
+ "no_figure_reason": "The concept is an algebraic procedure on a differentiated equation. Its skills carry only the symbolic representation and no key idea describes a process to draw, so no figure fits.",
  "orientation": {
-  "text": "After both sides are differentiated, a response collects the dy/dx terms, factors dy/dx out and divides; a slope at a point needs both coordinates. Stems ask to find dy/dx, to show that it equals a stated expression, or for a slope.",
+  "text": "After both sides are differentiated, a response collects the dy/dx terms, factors dy/dx out and divides; a slope at a point needs both coordinates.",
   "sources": ["BC-CON-03004", "research/units/unit-03-differentiation-composite-implicit-inverse.md#3.2 Implicit Differentiation"]
  },
  "key_ideas": [
@@ -111,7 +132,7 @@ BC-QA-03004 is `no_calculator`, the opening part of a multipart FRQ, so Section 
    "id": "ki-1",
    "ek_id": "BC-EK-FUN-3D1",
    "depth": "core",
-   "text": "Implicit differentiation gives an equation linear in dy/dx. Collect every dy/dx term on one side and everything else on the other, factor dy/dx out, then divide by its bracket. The result is a quotient in x and y, so a slope at a point takes both coordinates. Verifying a stated dy/dx means deriving it.",
+   "text": "Implicit differentiation gives an equation linear in dy/dx. Collect every dy/dx term on one side, factor dy/dx out, then divide by its bracket. The result is a quotient in x and y, so a slope takes both coordinates.",
    "notation": "dy/dx expressed as a quotient in x and y",
    "quote": {"text": "The chain rule is the basis for implicit differentiation.", "source": "ced:76"},
    "sources": ["BC-EK-FUN-3D1", "ced:76", "research/units/unit-03-differentiation-composite-implicit-inverse.md#3.2 Implicit Differentiation"]
@@ -121,11 +142,16 @@ BC-QA-03004 is `no_calculator`, the opening part of a multipart FRQ, so Section 
   {
    "id": "st-1",
    "archetype_id": "BC-QA-03004",
-   "cue": "Asked for dy/dx, a verification of a stated dy/dx, or a slope, from an equation in x and y.",
-   "method": "First written line: differentiate every term of both sides with respect to x.",
-   "rival": "Rival: differentiating one side and dropping the right side (BC-ERR-03009).",
+   "cue": "dy/dx, a verification, or a slope, from an equation in x and y.",
+   "method": "Differentiate every term of both sides with respect to x.",
+   "rival": "Differentiating one side and dropping the right side.",
    "separating_feature": "The line is an equation: collect the dy/dx terms, then divide.",
-   "sources": ["BC-QA-03004"],
+   "contrast": {
+    "this": {"text": "For \\(x^2+xy-y^3=5\\), show that \\(dy/dx=\\frac{-2x-y}{x-3y^2}\\). Find \\(dy/dx\\) at \\((2,1)\\).", "archetype_id": "BC-QA-03004"},
+    "not_this": {"text": "For \\(x^2+xy-y^3=5\\), find the point where the tangent line is horizontal.", "why_not": "It asks where dy/dx is zero, not for dy/dx itself."},
+    "feature": "The stem asks for dy/dx or its value, not where it is zero."
+   },
+   "sources": ["BC-QA-03004", "BC-ERR-03009"],
    "evidence_tag": "verified"
   }
  ],
@@ -155,6 +181,7 @@ BC-QA-03004 is `no_calculator`, the opening part of a multipart FRQ, so Section 
    "wrong_step": {"text": "Divided by 3y^2 with x dy/dx still on the right.", "expr": "(2 - 2*x + y + x*dydx)/(3*y**2)"},
    "right_step": {"text": "Collected first.", "expr": "(2 - 2*x + y)/(3*y**2 - x)"},
    "relation": "distinct",
+   "fix_prompt": true,
    "possible_reason": null,
    "sources": ["BC-ERR-03010"]
   },
@@ -165,14 +192,15 @@ BC-QA-03004 is `no_calculator`, the opening part of a multipart FRQ, so Section 
    "wrong_step": {"text": "Only x = 2 substituted.", "expr": "(y - 2)/(3*y**2 - 2)"},
    "right_step": {"text": "x = 2 and y = 1: -1.", "expr": "-1"},
    "relation": "distinct",
+   "fix_prompt": true,
    "possible_reason": null,
    "sources": ["BC-ERR-03011"]
   }
  ],
  "representations": null,
  "prerequisite_bridges": [
-  {"prq_id": "BC-PRQ-03002", "text": "Collect the terms in an unknown that appears in several places, factor it out, then divide. Otherwise dy/dx is never isolated, or is divided before collection."},
-  {"prq_id": "BC-PRQ-03006", "text": "Combine fractions and cancel factors without changing the value. A wrong simplification after a correct derivative changes the value reported."}
+  {"prq_id": "BC-PRQ-03002", "text": "Collect the terms in an unknown that appears in several places, factor it out, then divide."},
+  {"prq_id": "BC-PRQ-03006", "text": "Combine fractions and cancel factors without changing the value."}
  ],
  "time": {"exam_part": "II-B", "budget_minutes": 15.0, "source": "research/exam/exam-structure.md#Section and part layout", "written_steps": {"ex-1": [1, 2, 3, 4]}, "skipped_steps": {"ex-1": []}},
  "checks": [
@@ -220,8 +248,8 @@ BC-QA-03004 is `no_calculator`, the opening part of a multipart FRQ, so Section 
   {"block": "err-BC-ERR-03011", "mode": "step_reveal", "reason": "rule 1", "sources": []}
  ],
  "refresher": ["ki-1", "err-BC-ERR-03010", "err-BC-ERR-03011", "ex-1"],
- "read_minutes": {"full": 2.8, "brief": 2.8},
- "word_count": {"full": 412, "brief": 412},
+ "read_minutes": {"full": 2.91, "brief": 2.91},
+ "word_count": {"full": 436, "brief": 436},
  "research_lines": [
   {"file": "research/units/unit-03-differentiation-composite-implicit-inverse.md", "line": "produces an equation that is linear in dy/dx"}
  ],

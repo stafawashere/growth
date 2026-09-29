@@ -3,7 +3,7 @@
  "version": 1,
  "kind": "concept",
  "target_id": "BC-CON-03003",
- "status": "signed_off",
+ "status": "draft",
  "snapshot_digest": "a6a8ec9d3f59ab8f712e33d30cc22fc64bf2c478fbe7312e3e3118d319c6a42f",
  "source_digest": "3d23402abb668b17291b978fabbf84c08c48ab29276984e940f322aa5d1ed51f",
  "read_minutes": {
@@ -11,12 +11,59 @@
   "brief": 3.0
  },
  "word_count": {
-  "full": 463,
-  "brief": 397
+  "full": 476,
+  "brief": 410
  },
  "sections": [
   {
    "id": "LSN-CON-03003#s1",
+   "type": "prediction",
+   "bands": [
+    "low",
+    "mid"
+   ],
+   "skills": [
+    "BC-SKL-03007",
+    "BC-SKL-03008",
+    "BC-SKL-03009"
+   ],
+   "sources": [
+    "BC-CON-03003",
+    "research/units/unit-03-differentiation-composite-implicit-inverse.md#3.2 Implicit Differentiation"
+   ],
+   "evidence_tag": "inferred",
+   "stem": {
+    "text": "Predict. In \\(x^2+3xy+y^2=2x+3\\), \\(y\\) depends on \\(x\\). What is the derivative of \\(y^2\\)?",
+    "command_verb": "predict"
+   },
+   "format": "mcq",
+   "options": [
+    {
+     "id": "A",
+     "label": "\\(2y\\)",
+     "is_key": false
+    },
+    {
+     "id": "B",
+     "label": "\\(2y\\,dy/dx\\)",
+     "is_key": true
+    },
+    {
+     "id": "C",
+     "label": "\\(y^2\\,dy/dx\\)",
+     "is_key": false
+    }
+   ],
+   "resolution": {
+    "text": "By the chain rule \\(y^2\\) differentiates to \\(2y\\,dy/dx\\). Every \\(y\\) term carries the factor \\(dy/dx\\)."
+   },
+   "delivery": {
+    "mode": "text",
+    "reason": "rule 6"
+   }
+  },
+  {
+   "id": "LSN-CON-03003#s2",
    "type": "orientation",
    "bands": [
     "low",
@@ -32,7 +79,7 @@
     "research/units/unit-03-differentiation-composite-implicit-inverse.md#3.2 Implicit Differentiation"
    ],
    "evidence_tag": "inferred",
-   "text": "A response differentiates both sides of an equation in x and y with respect to x: every y term carries dy/dx, every mixed term takes the product rule, and the right side is kept. It opens a multipart question.",
+   "text": "A response differentiates both sides of an equation in x and y with respect to x: every y term carries dy/dx, every mixed term takes the product rule, and the right side is kept.",
    "delivery": {
     "mode": "text",
     "reason": "rule 5: BC-REP-01 only on the skills",
@@ -42,7 +89,7 @@
    }
   },
   {
-   "id": "LSN-CON-03003#s2",
+   "id": "LSN-CON-03003#s3",
    "type": "key_ideas",
    "bands": [
     "low",
@@ -61,8 +108,8 @@
    "evidence_tag": "verified",
    "ek_id": "BC-EK-FUN-3D1",
    "depth": "core",
-   "text": "When an equation determines y as a differentiable function of x, differentiate both sides with respect to x. A y term gives its derivative in y times dy/dx. A term holding both variables is a product, and its y factor still carries dy/dx. The result is linear in dy/dx.",
-   "notation": "d/dx of y to the n equals n times y to the n minus one times dy/dx",
+   "text": "When an equation determines y as a differentiable function of x, differentiate both sides with respect to x. A y term gives its derivative in y times dy/dx. A term with both variables is a product.",
+   "notation": "d/dx of y to the n, times dy/dx",
    "quote": {
     "text": "The chain rule is the basis for implicit differentiation.",
     "source": "ced:76"
@@ -78,7 +125,7 @@
    }
   },
   {
-   "id": "LSN-CON-03003#s3",
+   "id": "LSN-CON-03003#s4",
    "type": "strategy",
    "bands": [
     "low",
@@ -90,17 +137,29 @@
     "BC-SKL-03009"
    ],
    "sources": [
-    "BC-QA-03004"
+    "BC-QA-03004",
+    "BC-ERR-03007"
    ],
    "evidence_tag": "verified",
    "archetype_id": "BC-QA-03004",
-   "cue": "The stem asks for dy/dx or a slope at a point, from an equation in x and y.",
-   "method": "First written line: differentiate every term of both sides with respect to x.",
-   "rival": "Rival: differentiating y terms as though y were the independent variable (BC-ERR-03007).",
-   "separating_feature": "y depends on x, so every y term carries dy/dx."
+   "cue": "dy/dx or a slope at a point, from an equation in x and y.",
+   "method": "Differentiate every term of both sides with respect to x.",
+   "rival": "Differentiating y terms as though y were the independent variable.",
+   "separating_feature": "y depends on x, so every y term carries dy/dx.",
+   "contrast": {
+    "this": {
+     "text": "The curve \\(x^2+2xy+y^3=4\\) passes through \\((1,1)\\). Find \\(dy/dx\\) at \\((1,1)\\).",
+     "archetype_id": "BC-QA-03004"
+    },
+    "not_this": {
+     "text": "Let \\(y=x^2+2x+3\\). Find \\(dy/dx\\) at \\(x=1\\).",
+     "why_not": "y is given alone, so no dy/dx factor appears."
+    },
+    "feature": "The equation is not solved for y."
+   }
   },
   {
-   "id": "LSN-CON-03003#s4",
+   "id": "LSN-CON-03003#s5",
    "type": "worked_example",
    "bands": [
     "low",
@@ -131,12 +190,12 @@
    "calculator_status": "no_calculator",
    "steps": [
     {
-     "cue": "An equation in x and y, not solved for y.",
+     "cue": "An equation in x and y.",
      "why": "y depends on x: differentiate both sides with respect to x."
     },
     {
      "cue": "y^2 is a y term; 3xy holds both variables.",
-     "why": "2y dy/dx; 3y + 3x dy/dx; the right side gives 2.",
+     "why": "2y dy/dx; 3y + 3x dy/dx; right side 2.",
      "expression": [
       "Equal",
       [
@@ -169,8 +228,8 @@
      "relation": "new"
     },
     {
-     "cue": "The line is linear in dy/dx.",
-     "why": "Collect the two dy/dx terms and factor.",
+     "cue": "Linear in dy/dx.",
+     "why": "Collect the dy/dx terms.",
      "expression": [
       "Equal",
       [
@@ -208,8 +267,8 @@
      "relation": "equivalent"
     },
     {
-     "cue": "One bracket multiplies dy/dx.",
-     "why": "Divide by it; it is 5 at (1, 1).",
+     "cue": "One bracket on dy/dx.",
+     "why": "Divide by it: 5 at (1, 1).",
      "expression": [
       "Equal",
       "dydx",
@@ -358,6 +417,7 @@
     ]
    },
    "relation": "distinct",
+   "fix_prompt": true,
    "possible_reason": {
     "misconception_id": "BC-MIS-03004",
     "text": "y as a second free variable rather than as a function of x"
@@ -445,6 +505,7 @@
     ]
    },
    "relation": "distinct",
+   "fix_prompt": true,
    "possible_reason": {
     "misconception_id": "BC-MIS-03005",
     "text": "a term containing both variables as one object rather than as a product"
@@ -537,6 +598,7 @@
     ]
    },
    "relation": "distinct",
+   "fix_prompt": true,
    "delivery": {
     "mode": "step_reveal",
     "reason": "rule 1",
@@ -560,7 +622,7 @@
    ],
    "evidence_tag": "inferred",
    "prerequisite_id": "BC-PRQ-03005",
-   "text": "dy/dx is a derivative, d/dx the operator. Writing dy for dy/dx loses the meaning of the line."
+   "text": "dy/dx is a derivative, d/dx the operator."
   }
  ],
  "checks": [
@@ -581,7 +643,7 @@
     "y_at": 1,
     "y_power": 2
    },
-   "completes": "LSN-CON-03003#s4",
+   "completes": "LSN-CON-03003#s5",
    "stem": {
     "text": "Given 2x + 3y + 3x dy/dx + 2y dy/dx = 2, find dy/dx at (1, 1).",
     "command_verb": "find"
@@ -990,18 +1052,19 @@
   }
  ],
  "refresher": [
-  "LSN-CON-03003#s2",
+  "LSN-CON-03003#s3",
   "LSN-CON-03003#err-BC-ERR-03007",
   "LSN-CON-03003#err-BC-ERR-03008",
   "LSN-CON-03003#err-BC-ERR-03009",
-  "LSN-CON-03003#s4"
+  "LSN-CON-03003#s5"
  ],
+ "no_figure_reason": "The concept is an algebraic rule for the dy/dx factor. Its skills carry only the symbolic representation and no key idea describes a process to draw, so no figure fits.",
  "provenance": {
   "author": "tools/lesson_transcribe.py",
-  "prompt_version": "generator/lesson_v1",
+  "prompt_version": "generator/lesson_v2",
   "design_path": "docs/lessons/unit-03/LSN-CON-03003.md",
-  "signed_off_by": "claude-opus-5-5",
-  "signed_off_at": "2026-09-29",
+  "signed_off_by": null,
+  "signed_off_at": null,
   "not_human": true
  }
 }

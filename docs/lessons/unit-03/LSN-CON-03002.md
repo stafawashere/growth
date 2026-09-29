@@ -9,9 +9,13 @@ purpose: Authoring spec for the concept lesson on BC-CON-03002, the chain rule a
 
 Concept BC-CON-03002 (skills BC-SKL-03002, BC-SKL-03004, BC-SKL-03005, BC-SKL-03006), topic 3.1 of Unit 3. Six archetypes load its skills: BC-QA-03001, BC-QA-03002, BC-QA-03003, BC-QA-03009, BC-QA-03010 and BC-QA-99001. The last three are primary to other concepts or units (BC-QA-03009 to BC-CON-03008, BC-QA-03010 to BC-CON-03006 and 03007, BC-QA-99001 to Unit 9; docs/lessons/unit-03/README.md, section 2), so this lesson draws from the first three, one per family.
 
+## Prediction
+
+One multiple choice question on worked example 1's own table, asked before the rule is shown: which two readings give \(h'(1)\) for \(h(x)=f(g(x))\). The key is the outer rate read at \(g(1)=3\) times the inner rate at 1, \(f'(3)g'(1)\), the product behind ex-1's first valued step. The distractors are the outer rate read at the input (the BC-ERR-03003 path) and the two rates added (BC-ERR-03004). The resolution, shown on the key idea screen beside the choice, gives the two readings and their value, \(-6\). No verdict word. Sources: BC-CON-03002 and the topic 3.1 section the key idea cites.
+
 ## Orientation
 
-Served text, from BC-CON-03002 `description_plain` and the topic's Assessment behaviour paragraph (research/units/unit-03-differentiation-composite-implicit-inverse.md#3.1 The Chain Rule): a response multiplies the outer rate, read at the inner output, by the inner rate, read at the input. Stems give a formula, a table of values or two graphs. No count, no frequency.
+Served text, from BC-CON-03002 `description_plain` and the topic's Assessment behaviour paragraph (research/units/unit-03-differentiation-composite-implicit-inverse.md#3.1 The Chain Rule): a response multiplies the outer rate, read at the inner output, by the inner rate, read at the input. No count, no frequency.
 
 ## Key ideas
 
@@ -25,20 +29,22 @@ All four skills map to one BC-EK, BC-EK-FUN-3C1 (ced:75), so one core block, bot
 - BC-QA-03001 (family rule-manipulation; research/question-analysis/question-archetypes.md#BC-QA-03001 Chain rule derivative of a composite given symbolically): a formula built by composition, possibly one factor of a product. MCQ or an opening FRQ step (BC-FRQ-2013-Q4-D, BC-FRQ-2014-Q3-D, BC-MCQ-PE2012-001).
 - BC-QA-03003 (family derivative-from-graph; research/question-analysis/question-archetypes.md#BC-QA-03003 Composite derivative read from graphs of the component functions): graphs of the two component functions and a stated input. One MCQ; no `official_examples`.
 
+Contrast pair on st-1: this stem is on BC-QA-03002, a composite \(f(g(x))\) asked from a table of values; not this stem is the same table with the product \(f(x)g(x)\), the near miss from the product rule (BC-CON-02013, BC-QA-02009), where all four readings sit at one input. The separating feature is where the outer rate is read.
+
 What says "not this one": a table stem whose named combination is a product f(x)g(x) reads all four entries at one input (BC-QA-02009, the product rule; docs/lessons/unit-03/README.md, section 3). A composite f(g(a)) reads the table twice in sequence.
 
 ## Method choice
 
 Three strategy blocks, low band; st-1 only in the mid band. Each archetype carries `asked_to_produce` and `common_givens`, so none is tagged inferred.
 
-- st-1, BC-QA-03002. Method, `expected_solution_path[0]`: evaluate the inner function at the given input. Rival, `wrong_approaches`: the outer derivative read at the stated input (BC-ERR-03003). Separating feature: the outer derivative's row is the inner output.
+- st-1, BC-QA-03002. Method, `expected_solution_path[0]`: evaluate the inner function at the given input. Rival, `wrong_approaches`: the outer derivative read at the stated input (BC-ERR-03003, cited in the block's `sources`, not in its text). Separating feature: the outer derivative's row is the inner output.
 - st-2, BC-QA-03001. Method: identify the outer and inner functions. Rival: the composite factor differentiated without the enclosing product or quotient rule (BC-ERR-03006). Separating feature: the operation applied last picks the first rule.
 - st-3, BC-QA-03003. Method: read the inner function value at the given input. Rival: a slope read at a corner of the graph (BC-ERR-03005). Separating feature: the outer slope is read on the piece that contains the inner output.
 
 ## Solution path
 
 - ex-1, BC-QA-03002, both bands, no calculator. Draw: f_values 2, -1, 5, 4; f_slopes 4, -2, -3, 1; g_values 3, 1, 4, 2; g_slopes 2, -1, 3, 1; at 1; names f,g; direction forward. Derived: inner 3, outer_slope -3, inner_slope 2, chain -6; options -6, 8, -1, 10, distinct; every constraint holds. Steps: g(1) (no value), f'(3) (no value), the product (valued, new), the value (equivalent). A fluent solver writes g(1) = 3 beside the row it names, then the product; the other readings are held in the head.
-- ex-2, BC-QA-03001, low band, no calculator. Draw: family root, exponent 2, inner_slope 2, at 1, outside_power 1, target 3, scale 1, so shift 7 and h(x) = x sqrt(2x^2 + 7). Options 11/3, 2/3, 19/6, 15, distinct. Steps: the composite factor (new), its derivative (differentiate, tagged BC-PT-99023), the product line (new), the value (evaluate). A fluent solver writes steps 2 to 4.
+- ex-2, BC-QA-03001, low band, no calculator. Draw: family root, exponent 2, inner_slope 2, at 1, outside_power 1, target 3, scale 1, so shift 7 and h(x) = x sqrt(2x^2 + 7). Options 11/3, 2/3, 19/6, 15, distinct. Steps: the composite factor (new), its derivative (differentiate, tagged BC-PT-99023), the product line (new), the value (evaluate). A fluent solver writes steps 2 to 4. Faded from step 3: the student sees the composite factor and its derivative, writes the product line and the value, and then the withheld steps 3 and 4 appear. The fade falls there because step 1 gives a valued expression to build on and the assembly is the part the concept adds to the product rule.
 
 Neither draw equals a published `parameter_draw` on its archetype (content/items_gen_unit03, content/items_p1_agent). No productive-failure target is assigned in the unit, so no comparison callout.
 
@@ -53,6 +59,8 @@ Point losses for the symbolic form: an attempted simplification must be correct 
 ## Traps
 
 Six active errors meet the skills; the first four in the bundle's order are served (cap 4): BC-ERR-03001, BC-ERR-03002, BC-ERR-03003, BC-ERR-03004. BC-ERR-03005 and BC-ERR-03006 are named in st-3 and st-2 only. Mid band shows the first two.
+
+All four blocks are `distinct`, so each carries `fix_prompt` true.
 
 - err-BC-ERR-03001, on ex-1: f'(3) alone, -3, against -6. Possible reason, words from BC-MIS-03001.
 - err-BC-ERR-03002, on ex-2: the inner derivative 4x omitted against the root differentiated. The record names the innermost layer of three; the spec draws two layers [inferred].
@@ -80,15 +88,15 @@ BC-QA-03002 is `either` on calculator status and a single MCQ; this draw is inte
 ## Delivery
 
 - orientation: text. Rule 5 for the orientation's statement; the figure-bearing representation is served once, on ki-1, to keep one new idea per screen.
-- ki-1: figure. Rule 3: BC-SKL-03005 carries BC-REP-02. Not promoted: BC-QA-03003's `difficulty_variables` (a corner, a grid position) are properties of a fixed graph, not a varying quantity (docs/lessons/unit-03/README.md, section 6) [inferred; settled by the modality A/B].
+- ki-1: figure. Rule 4: BC-SKL-03005 carries BC-REP-02. Not promoted: BC-QA-03003's `difficulty_variables` (a corner, a grid position) are properties of a fixed graph, not a varying quantity (docs/lessons/unit-03/README.md, section 6) [inferred; settled by the modality A/B].
 - ex-1: step_reveal, the table rendered inside the problem (BC-REP-03 given). Rule 1.
-- ex-2: step_reveal. Rule 1.
+- ex-2: step_reveal. Rule 1. Faded from step 3.
 - err-BC-ERR-03001, 03002, 03003, 03004: step_reveal. Rule 1.
 
 ## Band plan
 
-- Low (full): orientation, ki-1, st-1 to st-3, ex-1, the four error blocks, the three checks, ex-2 with its scoring line, the three bridges. 753 words, 5.1 minutes (cap 900 and 6).
-- Mid (brief): orientation, ki-1, st-1, ex-1, err-BC-ERR-03001, err-BC-ERR-03002, chk-1, chk-2, the bridges. 415 words, 2.8 minutes (cap 450 and 3).
+- Low (full), in served order: prediction, orientation, the three bridges, ki-1, st-1 with its contrast pair, st-2, st-3, ex-1, chk-1, the four error blocks, ex-2 faded from step 3 with its scoring line, chk-2, chk-3. 768 words, 5.2 minutes (cap 900 and 6).
+- Mid (brief): prediction, orientation, the bridges, ki-1, st-1 with its contrast pair, ex-1, chk-1, err-BC-ERR-03001, err-BC-ERR-03002, chk-2. 442 words, 3.0 minutes (cap 450 and 3).
 - Refresher: ki-1, the four error blocks, ex-1.
 
 ## Sources
@@ -117,8 +125,20 @@ BC-QA-03002 is `either` on calculator status and a single MCQ; this draw is inte
  "target_id": "BC-CON-03002",
  "unit": "03",
  "skills": ["BC-SKL-03002", "BC-SKL-03004", "BC-SKL-03005", "BC-SKL-03006"],
+ "prediction": {
+  "id": "pr-1",
+  "stem": {"text": "Predict. \\(h(x)=f(g(x))\\), with \\(g(1)=3\\). Which two readings from the table give \\(h'(1)\\)?", "command_verb": "predict"},
+  "format": "mcq",
+  "options": [
+   {"id": "A", "label": "\\(f'(3)\\) times \\(g'(1)\\)", "is_key": true},
+   {"id": "B", "label": "\\(f'(1)\\) times \\(g'(1)\\)", "is_key": false},
+   {"id": "C", "label": "\\(f'(3)\\) plus \\(g'(1)\\)", "is_key": false}
+  ],
+  "resolution": "The outer rate is read at the inner output \\(g(1)=3\\), and the inner rate at the input 1. Their product is \\((-3)(2)=-6\\).",
+  "sources": ["BC-CON-03002", "research/units/unit-03-differentiation-composite-implicit-inverse.md#3.1 The Chain Rule"]
+ },
  "orientation": {
-  "text": "A response multiplies two rates: the outer derivative, read at the inner output, times the inner derivative, read at the input. Stems give a formula, a table of values or two graphs.",
+  "text": "A response multiplies two rates: the outer derivative, read at the inner output, times the inner derivative, read at the input.",
   "sources": ["BC-CON-03002", "research/units/unit-03-differentiation-composite-implicit-inverse.md#3.1 The Chain Rule"]
  },
  "key_ideas": [
@@ -126,7 +146,7 @@ BC-QA-03002 is `either` on calculator status and a single MCQ; this draw is inte
    "id": "ki-1",
    "ek_id": "BC-EK-FUN-3C1",
    "depth": "core",
-   "text": "With y a function of u and u a function of x, dy/dx is dy/du times du/dx. For h = f(g(x)) at x = a, the outer rate f' is read at the inner output g(a), not at a; the inner rate g' is read at a. A table or two graphs give the same readings, taken in that order.",
+   "text": "With y a function of u and u a function of x, dy/dx is dy/du times du/dx. For h = f(g(x)) at x = a, f' is read at the inner output g(a), not at a; g' is read at a. A table or graphs give the same readings.",
    "notation": "dy/dx equals dy/du times du/dx",
    "quote": null,
    "sources": ["BC-EK-FUN-3C1", "ced:75", "ced:72", "research/units/unit-03-differentiation-composite-implicit-inverse.md#3.1 The Chain Rule"]
@@ -136,31 +156,36 @@ BC-QA-03002 is `either` on calculator status and a single MCQ; this draw is inte
   {
    "id": "st-1",
    "archetype_id": "BC-QA-03002",
-   "cue": "The stem asks for the composite's derivative at the stated input, from a table of f, f', g and g'.",
-   "method": "First written line: the inner function at the given input, g(a).",
-   "rival": "Rival: the outer derivative read at the stated input (BC-ERR-03003).",
+   "cue": "The composite's derivative at the stated input, from a table of f, f', g and g'.",
+   "method": "The inner function at the given input, g(a).",
+   "rival": "The outer derivative read at the stated input.",
    "separating_feature": "The outer derivative's row is g(a).",
-   "sources": ["BC-QA-03002"],
+   "contrast": {
+    "this": {"text": "\\(h(x)=f(g(x))\\). Use the table of \\(f,f',g,g'\\) to find \\(h'(2)\\).", "archetype_id": "BC-QA-03002"},
+    "not_this": {"text": "\\(k(x)=f(x)g(x)\\). Use the same table to find \\(k'(2)\\).", "why_not": "A product of two functions calls for the product rule, with every reading at one input."},
+    "feature": "The outer rate is read at the inner output, not at the input."
+   },
+   "sources": ["BC-QA-03002", "BC-ERR-03003"],
    "evidence_tag": "verified"
   },
   {
    "id": "st-2",
    "archetype_id": "BC-QA-03001",
    "cue": "The stem asks for the composite's derivative, from a formula built by composition, possibly one factor of a product.",
-   "method": "First written line: identify the outer and inner functions.",
-   "rival": "Rival: the composite factor differentiated without the enclosing product or quotient rule (BC-ERR-03006).",
+   "method": "Identify the outer and inner functions.",
+   "rival": "The composite factor differentiated without the enclosing product or quotient rule.",
    "separating_feature": "The operation applied last picks the first rule.",
-   "sources": ["BC-QA-03001"],
+   "sources": ["BC-QA-03001", "BC-ERR-03006"],
    "evidence_tag": "verified"
   },
   {
    "id": "st-3",
    "archetype_id": "BC-QA-03003",
    "cue": "The stem asks for the derivative of the composite at the stated input, from graphs of the two component functions.",
-   "method": "First written line: the inner function value read at the given input.",
-   "rival": "Rival: a slope read at a corner of the graph as though the derivative existed there (BC-ERR-03005).",
+   "method": "The inner function value read at the given input.",
+   "rival": "A slope read at a corner of the graph as though the derivative existed there.",
    "separating_feature": "The outer slope is read on the piece containing the inner output.",
-   "sources": ["BC-QA-03003"],
+   "sources": ["BC-QA-03003", "BC-ERR-03005"],
    "evidence_tag": "verified"
   }
  ],
@@ -184,6 +209,7 @@ BC-QA-03002 is `either` on calculator status and a single MCQ; this draw is inte
    "id": "ex-2",
    "archetype_id": "BC-QA-03001",
    "bands": ["low"],
+   "fade_from": 3,
    "parameter_draw": {"family": "root", "exponent": 2, "inner_slope": 2, "at": 1, "outside_power": 1, "target": 3, "scale": 1},
    "problem": {"text": "Let h(x) = x sqrt(2x^2 + 7). Find h'(1).", "command_verb": "find"},
    "calculator_status": "no_calculator",
@@ -207,6 +233,7 @@ BC-QA-03002 is `either` on calculator status and a single MCQ; this draw is inte
    "wrong_step": {"text": "f'(3) alone: -3.", "expr": "-3"},
    "right_step": {"text": "f'(3)g'(1): -6.", "expr": "(-3)*2"},
    "relation": "distinct",
+   "fix_prompt": true,
    "possible_reason": {"misconception_id": "BC-MIS-03001", "text": "whatever sits inside is copied across unchanged"},
    "sources": ["BC-ERR-03001", "BC-MIS-03001"]
   },
@@ -217,6 +244,7 @@ BC-QA-03002 is `either` on calculator status and a single MCQ; this draw is inte
    "wrong_step": {"text": "ex-2, inner derivative 4x omitted: value 19/6.", "expr": "sqrt(2*x**2 + 7) + x/(2*sqrt(2*x**2 + 7))"},
    "right_step": {"text": "Root differentiated.", "expr": "sqrt(2*x**2 + 7) + x*4*x/(2*sqrt(2*x**2 + 7))"},
    "relation": "distinct",
+   "fix_prompt": true,
    "possible_reason": null,
    "sources": ["BC-ERR-03002"]
   },
@@ -227,6 +255,7 @@ BC-QA-03002 is `either` on calculator status and a single MCQ; this draw is inte
    "wrong_step": {"text": "f'(1)g'(1) = 4(2) = 8.", "expr": "4*2"},
    "right_step": {"text": "f'(3)g'(1) = -6.", "expr": "(-3)*2"},
    "relation": "distinct",
+   "fix_prompt": true,
    "possible_reason": {"misconception_id": "BC-MIS-03002", "text": "the inner output plays no part in where the outer derivative is read"},
    "sources": ["BC-ERR-03003", "BC-MIS-03002"]
   },
@@ -237,15 +266,16 @@ BC-QA-03002 is `either` on calculator status and a single MCQ; this draw is inte
    "wrong_step": {"text": "f'(3) + g'(1) = -1.", "expr": "-3 + 2"},
    "right_step": {"text": "f'(3)g'(1) = -6.", "expr": "(-3)*2"},
    "relation": "distinct",
+   "fix_prompt": true,
    "possible_reason": null,
    "sources": ["BC-ERR-03004"]
   }
  ],
  "representations": null,
  "prerequisite_bridges": [
-  {"prq_id": "BC-PRQ-03001", "text": "Name the operation applied last and the one applied first. Without it the outer shell is differentiated and the work stops."},
-  {"prq_id": "BC-PRQ-03005", "text": "f', dy/dx and dy/du name derivatives. Writing dy for dy/dx loses the meaning of the line."},
-  {"prq_id": "BC-PRQ-03006", "text": "Rewrite radicals as powers without changing the value. A wrong simplification after a correct derivative changes the value."}
+  {"prq_id": "BC-PRQ-03001", "text": "Name the operation applied last and the one applied first."},
+  {"prq_id": "BC-PRQ-03005", "text": "f', dy/dx and dy/du name derivatives."},
+  {"prq_id": "BC-PRQ-03006", "text": "Rewrite radicals as powers without changing the value."}
  ],
  "time": {"exam_part": "I-A", "budget_minutes": 2.14, "source": "research/exam/exam-structure.md#Section and part layout", "written_steps": {"ex-1": [1, 3], "ex-2": [2, 3, 4]}, "skipped_steps": {"ex-1": [2, 4], "ex-2": [1]}},
  "checks": [
@@ -322,8 +352,8 @@ BC-QA-03002 is `either` on calculator status and a single MCQ; this draw is inte
   {"block": "err-BC-ERR-03004", "mode": "step_reveal", "reason": "rule 1", "sources": []}
  ],
  "refresher": ["ki-1", "err-BC-ERR-03001", "err-BC-ERR-03002", "err-BC-ERR-03003", "err-BC-ERR-03004", "ex-1"],
- "read_minutes": {"full": 5.1, "brief": 2.8},
- "word_count": {"full": 751, "brief": 415},
+ "read_minutes": {"full": 5.2, "brief": 3.0},
+ "word_count": {"full": 768, "brief": 442},
  "research_lines": [
   {"file": "research/units/unit-03-differentiation-composite-implicit-inverse.md", "line": "Look up the inner value first, then look up the outer derivative at that value."}
  ],

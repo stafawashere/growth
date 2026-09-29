@@ -3,20 +3,70 @@
  "version": 1,
  "kind": "concept",
  "target_id": "BC-CON-03006",
- "status": "signed_off",
+ "status": "draft",
  "snapshot_digest": "a6a8ec9d3f59ab8f712e33d30cc22fc64bf2c478fbe7312e3e3118d319c6a42f",
  "source_digest": "ac28468becff367188dd2f6a6634fdff1b07405d8bca8ca94e7bc7d2cfc91369",
  "read_minutes": {
-  "full": 3.8,
+  "full": 3.9,
   "brief": 3.0
  },
  "word_count": {
-  "full": 457,
-  "brief": 357
+  "full": 489,
+  "brief": 392
  },
  "sections": [
   {
    "id": "LSN-CON-03006#s1",
+   "type": "prediction",
+   "bands": [
+    "low",
+    "mid"
+   ],
+   "skills": [
+    "BC-SKL-03015",
+    "BC-SKL-03016",
+    "BC-SKL-03017",
+    "BC-SKL-03018",
+    "BC-SKL-03019",
+    "BC-SKL-03020"
+   ],
+   "sources": [
+    "BC-CON-03006",
+    "research/units/unit-03-differentiation-composite-implicit-inverse.md#3.3 Differentiating Inverse Functions"
+   ],
+   "evidence_tag": "inferred",
+   "stem": {
+    "text": "Before the rule: g is the inverse of f, with f(2) = 3, f(3) = 4, f'(2) = 5 and f'(3) = 6. Predict g'(3).",
+    "command_verb": "predict"
+   },
+   "format": "mcq",
+   "options": [
+    {
+     "id": "A",
+     "label": "1/6",
+     "is_key": false
+    },
+    {
+     "id": "B",
+     "label": "1/5",
+     "is_key": true
+    },
+    {
+     "id": "C",
+     "label": "1/3",
+     "is_key": false
+    }
+   ],
+   "resolution": {
+    "text": "f(2) = 3 gives g(3) = 2. Then g'(3) = 1/f'(2) = 1/5."
+   },
+   "delivery": {
+    "mode": "text",
+    "reason": "rule 6"
+   }
+  },
+  {
+   "id": "LSN-CON-03006#s2",
    "type": "orientation",
    "bands": [
     "low",
@@ -35,7 +85,7 @@
     "research/units/unit-03-differentiation-composite-implicit-inverse.md#3.3 Differentiating Inverse Functions"
    ],
    "evidence_tag": "inferred",
-   "text": "A response finds the input of f whose output is the given value, reads f' there, checks it is not zero, and reports its reciprocal.",
+   "text": "A response finds the input with the given output, checks f' is not zero there, and inverts it.",
    "delivery": {
     "mode": "text",
     "reason": "rule 5: a statement of what a response shows",
@@ -45,7 +95,7 @@
    }
   },
   {
-   "id": "LSN-CON-03006#s2",
+   "id": "LSN-CON-03006#s3",
    "type": "key_ideas",
    "bands": [
     "low",
@@ -67,7 +117,7 @@
    "evidence_tag": "inferred",
    "ek_id": "BC-EK-FUN-3E1",
    "depth": "core",
-   "text": "For g the inverse of f, f(c) = b says the same as g(b) = c. Reflecting in y = x inverts slopes, so g'(b) = 1/f'(c), provided f'(c) is not zero. Differentiating f(g(x)) = x by the chain rule gives it.",
+   "text": "For g the inverse of f, f(c) = b says g(b) = c. Then g'(b) = 1/f'(c) if f'(c) is not zero, by the chain rule on f(g(x)) = x.",
    "notation": "g prime of a equals one over f prime of g of a",
    "delivery": {
     "mode": "interactive",
@@ -154,7 +204,7 @@
    }
   },
   {
-   "id": "LSN-CON-03006#s3",
+   "id": "LSN-CON-03006#s4",
    "type": "strategy",
    "bands": [
     "low",
@@ -168,17 +218,29 @@
     "BC-SKL-03019"
    ],
    "sources": [
-    "BC-QA-03006"
+    "BC-QA-03006",
+    "BC-ERR-03015"
    ],
    "evidence_tag": "verified",
    "archetype_id": "BC-QA-03006",
-   "cue": "g is named the inverse of f, and the given value sits among the outputs of f.",
-   "method": "First line: find c with f(c) equal to the given value, then write g' there as 1/f'(c).",
-   "rival": "Rival: 1 over f' at the given value itself (BC-ERR-03015).",
-   "separating_feature": "The given value is an output of f, so it is never where f' is read."
+   "cue": "g is the inverse of f.",
+   "method": "Find c with f(c) equal to the given value, then write g' there as 1/f'(c).",
+   "rival": "1 over f' at the given value.",
+   "separating_feature": "The given value is an output of f, not where f' is read.",
+   "contrast": {
+    "this": {
+     "text": "h is the inverse of f and f(4) = 9. Find h'(9) from the table.",
+     "archetype_id": "BC-QA-03006"
+    },
+    "not_this": {
+     "text": "Find the derivative of 1/f(x) at x = 4 from the table.",
+     "why_not": "It asks for the reciprocal function's derivative, a quotient rule."
+    },
+    "feature": "The word inverse and a value that is an output of f."
+   }
   },
   {
-   "id": "LSN-CON-03006#s4",
+   "id": "LSN-CON-03006#s5",
    "type": "strategy",
    "bands": [
     "low",
@@ -193,12 +255,12 @@
    "evidence_tag": "verified",
    "archetype_id": "BC-QA-03010",
    "cue": "An identity such as tan(g(x)) = u is supplied and g' is asked for as an expression in x.",
-   "method": "First line: differentiate both sides of the identity, chain rule on the left.",
-   "rival": "Rival: a remembered formula quoted without the inner factor.",
+   "method": "Differentiate both sides of the identity, chain rule on the left.",
+   "rival": "A remembered formula quoted without the inner factor.",
    "separating_feature": "The stem supplies the identity, so the derivation is the answer."
   },
   {
-   "id": "LSN-CON-03006#s5",
+   "id": "LSN-CON-03006#s6",
    "type": "worked_example",
    "bands": [
     "low",
@@ -239,7 +301,7 @@
    "calculator_status": "no_calculator",
    "steps": [
     {
-     "cue": "3 is an output of f: which input gives it?",
+     "cue": "3 is an output of f.",
      "why": "f(2) = 3, so g(3) = 2.",
      "expression": [
       "Equal",
@@ -253,17 +315,17 @@
      "relation": "new"
     },
     {
-     "cue": "The slope of g at 3 comes from f at 2.",
-     "why": "The f' column in the row x = 2.",
+     "cue": "Slope of g at 3 comes from f at 2.",
+     "why": "f' in the row x = 2.",
      "expression": 5,
      "relation": "new"
     },
     {
-     "cue": "The rule divides by f'(2).",
-     "why": "5 is not zero, so the rule applies."
+     "cue": "Check before dividing.",
+     "why": "5 is not zero."
     },
     {
-     "cue": "Reciprocal of the matched slope.",
+     "cue": "Reciprocal.",
      "why": "g'(3) = 1/f'(g(3)) = 1/f'(2).",
      "expression": [
       "Rational",
@@ -323,6 +385,7 @@
     ]
    },
    "relation": "equivalent",
+   "fix_prompt": false,
    "possible_reason": {
     "misconception_id": "BC-MIS-03009",
     "text": "treats the reciprocal formula as unconditional"
@@ -371,6 +434,7 @@
     ]
    },
    "relation": "distinct",
+   "fix_prompt": true,
    "possible_reason": {
     "misconception_id": "BC-MIS-03008",
     "text": "treats the input of the inverse and the input of the original function as the same number"
@@ -415,6 +479,7 @@
     ]
    },
    "relation": "distinct",
+   "fix_prompt": true,
    "delivery": {
     "mode": "step_reveal",
     "reason": "rule 1",
@@ -422,7 +487,7 @@
    }
   },
   {
-   "id": "LSN-CON-03006#s6",
+   "id": "LSN-CON-03006#s7",
    "type": "representations",
    "bands": [
     "low"
@@ -558,7 +623,7 @@
    ],
    "evidence_tag": "inferred",
    "prerequisite_id": "BC-PRQ-03003",
-   "text": "f(a) = b means g(b) = a. Without the matching input, the formula is evaluated at the given input."
+   "text": "f(a) = b means g(b) = a."
   },
   {
    "id": "LSN-CON-03006#prq-BC-PRQ-03006",
@@ -575,7 +640,7 @@
    ],
    "evidence_tag": "inferred",
    "prerequisite_id": "BC-PRQ-03006",
-   "text": "A wrong simplification after a correct reciprocal changes the value reported."
+   "text": "A wrong simplification after the reciprocal changes the value."
   }
  ],
  "checks": [
@@ -604,7 +669,7 @@
     "at": 2,
     "names": "f,g"
    },
-   "completes": "LSN-CON-03006#s5",
+   "completes": "LSN-CON-03006#s6",
    "stem": {
     "text": "From the table, g(3) = 2 and f'(2) = 5. Find g'(3).",
     "command_verb": "find"
@@ -833,18 +898,18 @@
   }
  ],
  "refresher": [
-  "LSN-CON-03006#s2",
+  "LSN-CON-03006#s3",
   "LSN-CON-03006#err-BC-ERR-03014",
   "LSN-CON-03006#err-BC-ERR-03015",
   "LSN-CON-03006#err-BC-ERR-03016",
-  "LSN-CON-03006#s5"
+  "LSN-CON-03006#s6"
  ],
  "provenance": {
   "author": "tools/lesson_transcribe.py",
-  "prompt_version": "generator/lesson_v1",
+  "prompt_version": "generator/lesson_v2",
   "design_path": "docs/lessons/unit-03/LSN-CON-03006.md",
-  "signed_off_by": "claude-opus-5-5",
-  "signed_off_at": "2026-09-29",
+  "signed_off_by": null,
+  "signed_off_at": null,
   "not_human": true
  }
 }

@@ -3,7 +3,7 @@
  "version": 1,
  "kind": "concept",
  "target_id": "BC-CON-03009",
- "status": "signed_off",
+ "status": "draft",
  "snapshot_digest": "a6a8ec9d3f59ab8f712e33d30cc22fc64bf2c478fbe7312e3e3118d319c6a42f",
  "source_digest": "820d3961f4ffe23d0706b99511f082345b2803d8e37470e30a0a493086268854",
  "read_minutes": {
@@ -11,12 +11,60 @@
   "brief": 3.0
  },
  "word_count": {
-  "full": 479,
-  "brief": 377
+  "full": 503,
+  "brief": 401
  },
  "sections": [
   {
    "id": "LSN-CON-03009#s1",
+   "type": "prediction",
+   "bands": [
+    "low",
+    "mid"
+   ],
+   "skills": [
+    "BC-SKL-03030",
+    "BC-SKL-03031",
+    "BC-SKL-03033",
+    "BC-SKL-03034"
+   ],
+   "sources": [
+    "BC-CON-03009",
+    "research/units/unit-03-differentiation-composite-implicit-inverse.md#3.6 Calculating Higher-Order Derivatives"
+   ],
+   "evidence_tag": "inferred",
+   "stem": {
+    "text": "Before the rule: dy/dx = 2xy + y - 3x, and dy/dx = 3 at (1, 2). Predict what d^2y/dx^2 needs there.",
+    "command_verb": "predict"
+   },
+   "format": "mcq",
+   "options": [
+    {
+     "id": "A",
+     "label": "Only x = 1, y = 2",
+     "is_key": false
+    },
+    {
+     "id": "B",
+     "label": "x = 1, y = 2, dy/dx = 3",
+     "is_key": true
+    },
+    {
+     "id": "C",
+     "label": "Only dy/dx = 3",
+     "is_key": false
+    }
+   ],
+   "resolution": {
+    "text": "The second derivative 2y + 2x dy/dx + dy/dx - 3 contains dy/dx, so its value 3 is needed."
+   },
+   "delivery": {
+    "mode": "text",
+    "reason": "rule 6"
+   }
+  },
+  {
+   "id": "LSN-CON-03009#s2",
    "type": "orientation",
    "bands": [
     "low",
@@ -33,7 +81,7 @@
     "research/units/unit-03-differentiation-composite-implicit-inverse.md#3.6 Calculating Higher-Order Derivatives"
    ],
    "evidence_tag": "inferred",
-   "text": "A response differentiates dy/dx again, product rule on mixed terms and chain rule on y, then substitutes the point and the value of dy/dx there.",
+   "text": "A response differentiates dy/dx again, then substitutes the point and the value of dy/dx there.",
    "delivery": {
     "mode": "text",
     "reason": "rule 5: BC-REP-01 only on the skills",
@@ -43,7 +91,7 @@
    }
   },
   {
-   "id": "LSN-CON-03009#s2",
+   "id": "LSN-CON-03009#s3",
    "type": "key_ideas",
    "bands": [
     "low",
@@ -64,7 +112,7 @@
    "evidence_tag": "inferred",
    "ek_id": "BC-EK-FUN-3F1",
    "depth": "core",
-   "text": "Differentiating f' gives f''; repeating gives higher derivatives. When dy/dx contains y, the second differentiation needs the product rule on mixed terms and the chain rule on y, so dy/dx reappears and its value at the point is needed.",
+   "text": "Differentiating f' gives f''. When dy/dx contains y, the second derivative needs the product and chain rules, so dy/dx reappears and its value is needed.",
    "notation": "f double prime; f superscript n",
    "delivery": {
     "mode": "text",
@@ -76,7 +124,7 @@
    }
   },
   {
-   "id": "LSN-CON-03009#s3",
+   "id": "LSN-CON-03009#s4",
    "type": "strategy",
    "bands": [
     "low",
@@ -89,17 +137,29 @@
     "BC-SKL-03034"
    ],
    "sources": [
-    "BC-QA-03008"
+    "BC-QA-03008",
+    "BC-ERR-05060"
    ],
    "evidence_tag": "verified",
    "archetype_id": "BC-QA-03008",
    "cue": "d^2y/dx^2 asked at a point, dy/dx given in x and y.",
-   "method": "First line: d/dx of the dy/dx expression.",
-   "rival": "Rival: y held constant (BC-ERR-05060).",
-   "separating_feature": "y in dy/dx means each y term gains a dy/dx factor."
+   "method": "Differentiate the dy/dx expression with respect to x.",
+   "rival": "Y held constant.",
+   "separating_feature": "y in dy/dx means each y term gains a dy/dx factor.",
+   "contrast": {
+    "this": {
+     "text": "dy/dx = 3xy - y + 2. Find d^2y/dx^2 at (2, 1).",
+     "archetype_id": "BC-QA-03008"
+    },
+    "not_this": {
+     "text": "dy/dx = 3xy - y + 2. Find the slope at (2, 1).",
+     "why_not": "One substitution, no second differentiation."
+    },
+    "feature": "d^2y/dx^2 is asked, not the slope."
+   }
   },
   {
-   "id": "LSN-CON-03009#s4",
+   "id": "LSN-CON-03009#s5",
    "type": "worked_example",
    "bands": [
     "low",
@@ -131,7 +191,7 @@
    "calculator_status": "no_calculator",
    "steps": [
     {
-     "cue": "dy/dx will reappear: find its value first.",
+     "cue": "dy/dx reappears: its value first.",
      "why": "The given expression.",
      "expression": [
       "Add",
@@ -161,7 +221,7 @@
      }
     },
     {
-     "cue": "2xy is x times y.",
+     "cue": "2xy is a product.",
      "why": "Product rule: 2y + 2x dy/dx.",
      "expression": [
       "Add",
@@ -177,11 +237,10 @@
        "yp"
       ]
      ],
-     "point_type_id": "BC-PT-99022",
      "relation": "new"
     },
     {
-     "cue": "y is a function of x.",
+     "cue": "y depends on x.",
      "why": "Chain rule: y gives dy/dx.",
      "expression": [
       "Add",
@@ -225,7 +284,7 @@
    }
   },
   {
-   "id": "LSN-CON-03009#s5",
+   "id": "LSN-CON-03009#s6",
    "type": "what_a_reader_scores",
    "bands": [
     "low",
@@ -238,16 +297,11 @@
     "BC-SKL-03034"
    ],
    "sources": [
-    "BC-PT-99022",
     "BC-PT-99027"
    ],
    "evidence_tag": "verified",
-   "example_id": "LSN-CON-03009#s4",
+   "example_id": "LSN-CON-03009#s5",
    "lines": [
-    {
-     "point_type_id": "BC-PT-99022",
-     "text": "Product rule. Earned by: A differentiation that correctly applies the product rule to the given expression (sg-25:20, sg-22:16). Not earned by: A response that treats one factor as constant, which sg-22:16 states is eligible for the chain rule point but not this one."
-    },
     {
      "point_type_id": "BC-PT-99027",
      "text": "Higher derivative expression evaluated at a point. Earned by: A correct expression for the second or higher derivative, evaluated at the requested point, consistent with the earlier derivative work (sg-25:20, sg-23:10). Not earned by: An expression left in terms of the first derivative where the prompt asked for it in terms of the dependent variable (sg-23:11)."
@@ -306,6 +360,7 @@
     ]
    },
    "relation": "distinct",
+   "fix_prompt": true,
    "possible_reason": {
     "misconception_id": "BC-MIS-03005",
     "text": "reads a term containing both variables as one object rather than as a product"
@@ -350,6 +405,7 @@
     "expression": 3
    },
    "relation": "distinct",
+   "fix_prompt": true,
    "delivery": {
     "mode": "step_reveal",
     "reason": "rule 1",
@@ -391,6 +447,7 @@
     "expression": 10
    },
    "relation": "distinct",
+   "fix_prompt": true,
    "delivery": {
     "mode": "step_reveal",
     "reason": "rule 1",
@@ -447,6 +504,7 @@
     ]
    },
    "relation": "distinct",
+   "fix_prompt": true,
    "possible_reason": {
     "misconception_id": "BC-MIS-05033",
     "text": "differentiates expressions in the second variable without the chain rule"
@@ -472,7 +530,7 @@
    ],
    "evidence_tag": "inferred",
    "prerequisite_id": "BC-PRQ-03002",
-   "text": "Collect the dy/dx terms, then divide; otherwise dy/dx is never isolated."
+   "text": "Collect dy/dx terms, then divide."
   },
   {
    "id": "LSN-CON-03009#prq-BC-PRQ-03005",
@@ -491,7 +549,7 @@
    ],
    "evidence_tag": "inferred",
    "prerequisite_id": "BC-PRQ-03005",
-   "text": "d/dx is the operator, dy/dx the result; swapping them loses the meaning."
+   "text": "d/dx is the operator, dy/dx the result."
   },
   {
    "id": "LSN-CON-03009#prq-BC-PRQ-03006",
@@ -508,7 +566,7 @@
    ],
    "evidence_tag": "inferred",
    "prerequisite_id": "BC-PRQ-03006",
-   "text": "A wrong simplification after a correct derivative changes the value reported."
+   "text": "A wrong simplification changes the value."
   }
  ],
  "checks": [
@@ -529,7 +587,7 @@
     "y_at": 2,
     "notation": "leibniz"
    },
-   "completes": "LSN-CON-03009#s4",
+   "completes": "LSN-CON-03009#s5",
    "stem": {
     "text": "d^2y/dx^2 = 2y + 2x dy/dx + dy/dx - 3; dy/dx = 3 at (1, 2). Evaluate there.",
     "command_verb": "find"
@@ -806,19 +864,20 @@
   }
  ],
  "refresher": [
-  "LSN-CON-03009#s2",
+  "LSN-CON-03009#s3",
   "LSN-CON-03009#err-BC-ERR-03008",
   "LSN-CON-03009#err-BC-ERR-03011",
   "LSN-CON-03009#err-BC-ERR-03023",
   "LSN-CON-03009#err-BC-ERR-05060",
-  "LSN-CON-03009#s4"
+  "LSN-CON-03009#s5"
  ],
+ "no_figure_reason": "The skills carry only symbolic representations, and repeated differentiation is a rule applied twice, not a process the student watches, so no drawn block fits.",
  "provenance": {
   "author": "tools/lesson_transcribe.py",
-  "prompt_version": "generator/lesson_v1",
+  "prompt_version": "generator/lesson_v2",
   "design_path": "docs/lessons/unit-03/LSN-CON-03009.md",
-  "signed_off_by": "claude-opus-5-5",
-  "signed_off_at": "2026-09-29",
+  "signed_off_by": null,
+  "signed_off_at": null,
   "not_human": true
  }
 }

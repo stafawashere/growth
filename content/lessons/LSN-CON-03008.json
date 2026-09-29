@@ -3,20 +3,68 @@
  "version": 1,
  "kind": "concept",
  "target_id": "BC-CON-03008",
- "status": "signed_off",
+ "status": "draft",
  "snapshot_digest": "a6a8ec9d3f59ab8f712e33d30cc22fc64bf2c478fbe7312e3e3118d319c6a42f",
  "source_digest": "791f325e6cff2ae909395ef32cbfc4f09bb214ef0f6a1a28c5cf13715955f845",
  "read_minutes": {
-  "full": 3.65,
-  "brief": 2.82
+  "full": 3.9,
+  "brief": 3.0
  },
  "word_count": {
-  "full": 483,
-  "brief": 368
+  "full": 524,
+  "brief": 409
  },
  "sections": [
   {
    "id": "LSN-CON-03008#s1",
+   "type": "prediction",
+   "bands": [
+    "low",
+    "mid"
+   ],
+   "skills": [
+    "BC-SKL-03026",
+    "BC-SKL-03027",
+    "BC-SKL-03028",
+    "BC-SKL-03029"
+   ],
+   "sources": [
+    "BC-CON-03008",
+    "research/units/unit-03-differentiation-composite-implicit-inverse.md#3.5 Selecting Procedures for Calculating Derivatives"
+   ],
+   "evidence_tag": "inferred",
+   "stem": {
+    "text": "Before the rule: h(x) = 2x^2 e^(3x - 1). Predict which rule opens the derivative.",
+    "command_verb": "predict"
+   },
+   "format": "mcq",
+   "options": [
+    {
+     "id": "A",
+     "label": "The chain rule alone",
+     "is_key": false
+    },
+    {
+     "id": "B",
+     "label": "The product rule, then the chain rule inside the exponential",
+     "is_key": true
+    },
+    {
+     "id": "C",
+     "label": "The power rule on x^2 only",
+     "is_key": false
+    }
+   ],
+   "resolution": {
+    "text": "The last operation is a product, so the product rule opens. The exponential's inner 3x - 1 adds the chain rule factor 3."
+   },
+   "delivery": {
+    "mode": "text",
+    "reason": "rule 6"
+   }
+  },
+  {
+   "id": "LSN-CON-03008#s2",
    "type": "orientation",
    "bands": [
     "low",
@@ -33,7 +81,7 @@
     "research/units/unit-03-differentiation-composite-implicit-inverse.md#3.5 Selecting Procedures for Calculating Derivatives"
    ],
    "evidence_tag": "inferred",
-   "text": "A response names the operation applied last, opens with the rule for that operation, and works inward, so each rule acts on the piece it belongs to.",
+   "text": "A response names the operation applied last, opens with its rule, and works inward.",
    "delivery": {
     "mode": "text",
     "reason": "rule 5: BC-REP-01 and BC-REP-04 only",
@@ -43,7 +91,7 @@
    }
   },
   {
-   "id": "LSN-CON-03008#s2",
+   "id": "LSN-CON-03008#s3",
    "type": "key_ideas",
    "bands": [
     "low",
@@ -63,7 +111,7 @@
    "evidence_tag": "verified",
    "ek_id": null,
    "depth": "core",
-   "text": "An expression is classified by the operation applied last: a sum, a constant multiple, a product, a quotient, a composition or a basic function. That class picks the opening rule, and nested pieces are handled from the outside in. A rewrite that leaves the function unchanged may replace a harder rule, once checked [inferred: no BC-EK is mapped].",
+   "text": "An expression is classified by the operation applied last: sum, constant multiple, product, quotient, composition or basic function. That class picks the opening rule, and nested pieces follow from the outside in.",
    "notation": "outermost operation; order of rule application",
    "quote": {
     "text": "This topic is intended to focus on the skill of selecting an appropriate procedure for calculating derivatives.",
@@ -79,7 +127,7 @@
    }
   },
   {
-   "id": "LSN-CON-03008#s3",
+   "id": "LSN-CON-03008#s4",
    "type": "strategy",
    "bands": [
     "low",
@@ -92,17 +140,30 @@
     "BC-SKL-03029"
    ],
    "sources": [
-    "BC-QA-03009"
+    "BC-QA-03009",
+    "BC-ERR-99036",
+    "BC-ERR-03006"
    ],
    "evidence_tag": "verified",
    "archetype_id": "BC-QA-03009",
-   "cue": "An expression mixing products, compositions or exponentials, with its derivative or rule asked.",
-   "method": "First move: name the last operation, then apply rules from the outside in.",
-   "rival": "Rival: the power rule on an exponential (BC-ERR-99036), or the product rule dropped (BC-ERR-03006).",
-   "separating_feature": "Where x sits: in an exponent means the exponential rule; multiplied factors mean the product rule first."
+   "cue": "A product, composition or exponential expression, with its derivative asked.",
+   "method": "Name the last operation, then apply rules from the outside in.",
+   "rival": "The power rule on an exponential, or the product rule dropped.",
+   "separating_feature": "Where x sits: in an exponent, the exponential rule; multiplied factors, the product rule first.",
+   "contrast": {
+    "this": {
+     "text": "h(x) = 3x^2 e^(2x + 1). Find h'(0).",
+     "archetype_id": "BC-QA-03009"
+    },
+    "not_this": {
+     "text": "h(x) = 3x^2 + e^(2x + 1). Find h'(0).",
+     "why_not": "The last operation is a sum, so each term is differentiated on its own."
+    },
+    "feature": "The last operation applied: a product, not a sum."
+   }
   },
   {
-   "id": "LSN-CON-03008#s4",
+   "id": "LSN-CON-03008#s5",
    "type": "worked_example",
    "bands": [
     "low",
@@ -135,7 +196,7 @@
    "steps": [
     {
      "cue": "Last operation: 2x^2 times e^(3x - 1).",
-     "why": "A product; one factor is a composite with x in the exponent.",
+     "why": "A product; one factor has x in the exponent.",
      "expression": [
       "Multiply",
       2,
@@ -160,7 +221,7 @@
      "relation": "new"
     },
     {
-     "cue": "Product rule outside, chain rule on the exponential.",
+     "cue": "Product rule, chain rule on the exponential.",
      "why": "e^u has derivative e^u times u', with u' = 3.",
      "expression": [
       "Add",
@@ -208,7 +269,7 @@
     },
     {
      "cue": "Both terms share 2x e^(3x - 1).",
-     "why": "A safe rewrite; it shortens the evaluation.",
+     "why": "A safe rewrite.",
      "expression": [
       "Multiply",
       2,
@@ -352,6 +413,7 @@
     ]
    },
    "relation": "distinct",
+   "fix_prompt": true,
    "possible_reason": {
     "misconception_id": "BC-MIS-03001",
     "text": "whatever sits inside is copied across unchanged"
@@ -449,6 +511,7 @@
     ]
    },
    "relation": "distinct",
+   "fix_prompt": true,
    "possible_reason": {
     "misconception_id": "BC-MIS-03012",
     "text": "selects a rule by the visual pattern of the expression rather than by the operation applied last"
@@ -535,6 +598,7 @@
     ]
    },
    "relation": "distinct",
+   "fix_prompt": true,
    "delivery": {
     "mode": "step_reveal",
     "reason": "rule 1",
@@ -658,6 +722,7 @@
     ]
    },
    "relation": "distinct",
+   "fix_prompt": true,
    "possible_reason": {
     "misconception_id": "BC-MIS-02010",
     "text": "applies the exponent move to transcendental functions, so the natural exponential is treated as a power"
@@ -685,7 +750,7 @@
    ],
    "evidence_tag": "inferred",
    "prerequisite_id": "BC-PRQ-03001",
-   "text": "Name the operation applied last and the one applied first; otherwise the outer shell is differentiated and the work stops, or the inner piece alone is reported."
+   "text": "Name the operation applied last and the one applied first."
   },
   {
    "id": "LSN-CON-03008#prq-BC-PRQ-03006",
@@ -723,7 +788,7 @@
     "inner_degree": 1,
     "at": -1
    },
-   "completes": "LSN-CON-03008#s4",
+   "completes": "LSN-CON-03008#s5",
    "stem": {
     "text": "h'(x) = 2x(2 + 3x)e^(3x - 1). Find h'(-1).",
     "command_verb": "find"
@@ -1113,19 +1178,20 @@
   }
  ],
  "refresher": [
-  "LSN-CON-03008#s2",
+  "LSN-CON-03008#s3",
   "LSN-CON-03008#err-BC-ERR-03002",
   "LSN-CON-03008#err-BC-ERR-03006",
   "LSN-CON-03008#err-BC-ERR-03020",
   "LSN-CON-03008#err-BC-ERR-99036",
-  "LSN-CON-03008#s4"
+  "LSN-CON-03008#s5"
  ],
+ "no_figure_reason": "The skills carry only symbolic and verbal representations, and the key idea is a classification stated in words with no process to draw, so no drawn block fits.",
  "provenance": {
   "author": "tools/lesson_transcribe.py",
-  "prompt_version": "generator/lesson_v1",
+  "prompt_version": "generator/lesson_v2",
   "design_path": "docs/lessons/unit-03/LSN-CON-03008.md",
-  "signed_off_by": "claude-opus-5-5",
-  "signed_off_at": "2026-09-29",
+  "signed_off_by": null,
+  "signed_off_at": null,
   "not_human": true
  }
 }

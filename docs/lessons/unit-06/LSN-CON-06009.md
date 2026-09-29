@@ -75,8 +75,8 @@ BC-QA-06003 is `no_calculator`, one part of a multipart FRQ or a single MCQ; the
 
 ## Band plan
 
-- Low (full): orientation, ki-1, st-1, ex-1 with its scoring lines, the four error blocks, chk-1 to chk-3, the bridge. 637 words, 4.3 minutes (cap 900 and 6).
-- Mid (brief): orientation, ki-1, st-1, ex-1 with its scoring lines, err-BC-ERR-06008, err-BC-ERR-06009, chk-1, chk-2, the bridge. 441 words, 3.0 minutes (cap 450 and 3).
+- Low (full): orientation, ki-1, st-1, ex-1 with its scoring lines, the four error blocks, chk-1 to chk-3, the bridge. 628 words, 4.2 minutes (cap 900 and 6).
+- Mid (brief): orientation, ki-1, st-1, ex-1 with its scoring lines, err-BC-ERR-06008, err-BC-ERR-06009, chk-1, chk-2, the bridge. 450 words, 3.0 minutes (cap 450 and 3).
 - Refresher: ki-1, the four error blocks, ex-1.
 
 ## Sources
@@ -208,7 +208,7 @@ BC-QA-06003 is `no_calculator`, one part of a multipart FRQ or a single MCQ; the
    "archetype_id": "BC-QA-06003",
    "parameter_draw": {"heights": [-2, 2, -1, 1], "lower": 0, "circle": "below", "half_point": "3/2", "letters": "fg", "ask": "value"},
    "completes": "ex-1",
-   "stem": {"text": "f changes sign at 1, 10/3, 5, 8. Maxima of g?", "command_verb": "find"},
+   "stem": {"text": "f changes sign at 1, 10/3, 5, 8. g's relative maxima?", "command_verb": "find"},
    "key": {"form": "symbolic", "expr": "FiniteSet(10/3, 8)"},
    "steps": [
     {"text": "Sign changes of f.", "expr": "FiniteSet(1, 10/3, 5, 8)", "relation": "new"},
@@ -271,8 +271,8 @@ BC-QA-06003 is `no_calculator`, one part of a multipart FRQ or a single MCQ; the
   {"block": "err-BC-ERR-06012", "mode": "step_reveal", "reason": "rule 1", "sources": []}
  ],
  "refresher": ["ki-1", "err-BC-ERR-06008", "err-BC-ERR-06009", "err-BC-ERR-06010", "err-BC-ERR-06012", "ex-1"],
- "read_minutes": {"full": 4.3, "brief": 3.0},
- "word_count": {"full": 637, "brief": 441},
+ "read_minutes": {"full": 4.2, "brief": 3.0},
+ "word_count": {"full": 628, "brief": 450},
  "research_lines": [
   {"file": "research/scoring/justification-requirements.md", "line": "Where a question gives the graph of a derivative and asks about the original function, the reason point is earned only by reasoning about the graphed object."}
  ],

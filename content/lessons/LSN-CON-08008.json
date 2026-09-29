@@ -3,7 +3,7 @@
  "version": 1,
  "kind": "concept",
  "target_id": "BC-CON-08008",
- "status": "signed_off",
+ "status": "draft",
  "snapshot_digest": "a6a8ec9d3f59ab8f712e33d30cc22fc64bf2c478fbe7312e3e3118d319c6a42f",
  "source_digest": "662cb0154ec5670f3684d1d5eb5b9ebf385010741be53272aa3b59a997a871f6",
  "read_minutes": {
@@ -11,12 +11,57 @@
   "brief": 3.0
  },
  "word_count": {
-  "full": 400,
-  "brief": 400
+  "full": 414,
+  "brief": 414
  },
  "sections": [
   {
    "id": "LSN-CON-08008#s1",
+   "type": "prediction",
+   "bands": [
+    "low",
+    "mid"
+   ],
+   "skills": [
+    "BC-SKL-08014"
+   ],
+   "sources": [
+    "BC-CON-08008",
+    "research/units/unit-08-applications-integration.md#8.3 Using Accumulation Functions and Definite Integrals in Applied Contexts"
+   ],
+   "evidence_tag": "inferred",
+   "stem": {
+    "text": "Predict: \\(A\\) has net rate \\(3+6\\cos(\\pi t/6)\\), zero at \\(t=4\\) and \\(8\\). Which times are compared to find when \\(A\\) is greatest on \\([0,12]\\)?",
+    "command_verb": "predict"
+   },
+   "format": "mcq",
+   "options": [
+    {
+     "id": "A",
+     "label": "\\(t=4\\) only",
+     "is_key": false
+    },
+    {
+     "id": "B",
+     "label": "\\(t=4\\) and \\(t=8\\)",
+     "is_key": false
+    },
+    {
+     "id": "C",
+     "label": "\\(t=0\\), 4, 8 and 12",
+     "is_key": true
+    }
+   ],
+   "resolution": {
+    "text": "Endpoints and zeros of the net rate are candidates: the amounts at 0, 4, 8, 12 are 100, 121.924, 114.076, 136."
+   },
+   "delivery": {
+    "mode": "text",
+    "reason": "rule 6"
+   }
+  },
+  {
+   "id": "LSN-CON-08008#s2",
    "type": "orientation",
    "bands": [
     "low",
@@ -30,7 +75,7 @@
     "research/units/unit-08-applications-integration.md#8.3 Using Accumulation Functions and Definite Integrals in Applied Contexts"
    ],
    "evidence_tag": "inferred",
-   "text": "A response sets the net rate, the derivative of the amount, equal to zero, then compares the amount at every critical point and both endpoints, or argues from the sign of the net rate over the whole interval.",
+   "text": "A response sets the net rate to zero, then compares the amount at every candidate, endpoints included.",
    "delivery": {
     "mode": "text",
     "reason": "rule 6: BC-REP-05 and BC-REP-09 on BC-SKL-08014 draw nothing; unit README delivery map",
@@ -40,7 +85,7 @@
    }
   },
   {
-   "id": "LSN-CON-08008#s2",
+   "id": "LSN-CON-08008#s3",
    "type": "key_ideas",
    "bands": [
     "low",
@@ -58,8 +103,8 @@
    "evidence_tag": "inferred",
    "ek_id": "BC-EK-CHA-4D1",
    "depth": "core",
-   "text": "An amount defined by an integral accumulates the net rate, so its derivative is the net rate. On a closed interval its absolute maximum is where the net rate changes from positive to negative, or at an endpoint. A sign change at one point is local; alone it did not earn the justification (sg-25:5).",
-   "notation": "candidates test on an accumulation function",
+   "text": "The amount's derivative is the net rate. On a closed interval its maximum is at an endpoint or where the net rate changes from positive to negative; a sign change alone is local.",
+   "notation": "candidates",
    "delivery": {
     "mode": "text",
     "reason": "rule 6: the candidates argument is a sequence of written lines",
@@ -69,7 +114,7 @@
    }
   },
   {
-   "id": "LSN-CON-08008#s3",
+   "id": "LSN-CON-08008#s4",
    "type": "strategy",
    "bands": [
     "low",
@@ -83,13 +128,24 @@
    ],
    "evidence_tag": "verified",
    "archetype_id": "BC-QA-08006",
-   "cue": "The stem asks when an amount defined by an integral on a closed interval is greatest, with a justification.",
-   "method": "First written line: \\(A'(t)=\\) net rate \\(=0\\).",
-   "rival": "Rival: a local argument, or a table missing an endpoint (BC-ERR-99004).",
-   "separating_feature": "A closed interval makes both endpoints candidates."
+   "cue": "Greatest amount on a closed interval, justified.",
+   "method": "\\(A'(t)=\\) net rate \\(=0\\).",
+   "rival": "A local argument, or a table missing an endpoint.",
+   "separating_feature": "Both endpoints are candidates.",
+   "contrast": {
+    "this": {
+     "text": "A closed-interval amount is defined by an integral of its net rate. At what time is it greatest? Justify.",
+     "archetype_id": "BC-QA-08006"
+    },
+    "not_this": {
+     "text": "Is the amount of sand increasing at \\(t=5\\)? Give a reason.",
+     "why_not": "One time, one sign, no comparison."
+    },
+    "feature": "Greatest on a closed interval: a time, endpoints included."
+   }
   },
   {
-   "id": "LSN-CON-08008#s4",
+   "id": "LSN-CON-08008#s5",
    "type": "worked_example",
    "bands": [
     "low",
@@ -119,7 +175,7 @@
    "calculator_status": "calculator",
    "steps": [
     {
-     "cue": "Amount: initial value plus accumulated net rate.",
+     "cue": "Initial value plus net rate.",
      "why": "\\(A(t)\\).",
      "expression": [
       "Add",
@@ -158,8 +214,8 @@
      "relation": "new"
     },
     {
-     "cue": "A maximum is asked: differentiate.",
-     "why": "Derivative of an accumulation.",
+     "cue": "Maximum: differentiate.",
+     "why": "Net rate.",
      "expression": [
       "Add",
       3,
@@ -186,7 +242,7 @@
     },
     {
      "cue": "Critical points.",
-     "why": "The equation is written.",
+     "why": "Equation.",
      "expression": [
       "Equal",
       [
@@ -216,7 +272,7 @@
     },
     {
      "cue": "Solve on \\([0,12]\\).",
-     "why": "Calculator solve.",
+     "why": "Calculator.",
      "expression": [
       "Set",
       4,
@@ -226,8 +282,8 @@
      "variable": "t"
     },
     {
-     "cue": "Closed interval: endpoints join the candidates.",
-     "why": "\\(A(t)\\) in closed form.",
+     "cue": "Endpoints join.",
+     "why": "Closed form.",
      "expression": [
       "Add",
       100,
@@ -279,7 +335,7 @@
      "relation": "new"
     },
     {
-     "cue": "The stem asks when.",
+     "cue": "Time asked.",
      "why": "At the endpoint.",
      "expression": 12,
      "relation": "new"
@@ -296,7 +352,7 @@
    }
   },
   {
-   "id": "LSN-CON-08008#s5",
+   "id": "LSN-CON-08008#s6",
    "type": "what_a_reader_scores",
    "bands": [
     "low",
@@ -309,7 +365,7 @@
     "BC-PT-99011"
    ],
    "evidence_tag": "verified",
-   "example_id": "LSN-CON-08008#s4",
+   "example_id": "LSN-CON-08008#s5",
    "lines": [
     {
      "point_type_id": "BC-PT-99011",
@@ -344,6 +400,7 @@
     "expression": 12
    },
    "relation": "distinct",
+   "fix_prompt": true,
    "possible_reason": {
     "misconception_id": "BC-MIS-99010",
     "text": "endpoints and other critical points are never compared"
@@ -380,6 +437,7 @@
     "expression": 12
    },
    "relation": "distinct",
+   "fix_prompt": true,
    "delivery": {
     "mode": "step_reveal",
     "reason": "rule 1",
@@ -401,7 +459,7 @@
    ],
    "evidence_tag": "inferred",
    "prerequisite_id": "BC-PRQ-08001",
-   "text": "Every solution in the interval found, on the calculator solver; a missed one drops a candidate."
+   "text": "All solutions in the interval."
   }
  ],
  "checks": [
@@ -423,7 +481,7 @@
     "context": "water",
     "presentation": "net_rate"
    },
-   "completes": "LSN-CON-08008#s4",
+   "completes": "LSN-CON-08008#s5",
    "stem": {
     "text": "\\(A(0)=100\\), \\(A(4)=121.924\\), \\(A(8)=114.076\\), \\(A(12)=136\\). When is \\(A\\) greatest?",
     "command_verb": "find"
@@ -642,17 +700,18 @@
   }
  ],
  "refresher": [
-  "LSN-CON-08008#s2",
+  "LSN-CON-08008#s3",
   "LSN-CON-08008#err-BC-ERR-08016",
   "LSN-CON-08008#err-BC-ERR-99004",
-  "LSN-CON-08008#s4"
+  "LSN-CON-08008#s5"
  ],
+ "no_figure_reason": "The skill's representations are verbal and symbolic, none figure-bearing, and the key idea is a sequence of written comparisons, not a process; a candidates table is written, not drawn.",
  "provenance": {
   "author": "tools/lesson_transcribe.py",
-  "prompt_version": "generator/lesson_v1",
+  "prompt_version": "generator/lesson_v2",
   "design_path": "docs/lessons/unit-08/LSN-CON-08008.md",
-  "signed_off_by": "claude-opus-5-5",
-  "signed_off_at": "2026-09-29",
+  "signed_off_by": null,
+  "signed_off_at": null,
   "not_human": true
  }
 }

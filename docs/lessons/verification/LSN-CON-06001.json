@@ -45,106 +45,128 @@
   "auditor": "claude-opus-5-5",
   "blocks": [
    {
+    "id": "prediction",
+    "verdict": "ok",
+    "evidence": "SymPy: key B gives 3 - 2 - 2*pi = 1 - 2*pi, equal to ex-1's answer; A gives 5 + 2*pi and C gives 1 + 2*pi, neither equal to the key; resolution is CHA-4.A.3 on ced:118 and BC-CON-06001 description_formal (signed area); no verdict word, no id."
+   },
+   {
     "id": "orientation",
     "verdict": "ok",
-    "evidence": "Paraphrase of BC-CON-06001 and FUN CHA-4.A.1 on ced:118; 25 words."
+    "evidence": "Paraphrase of BC-CON-06001 description_plain and the 6.1 Assessment behaviour paragraph (interpretation with units and interval); 20 words, no id."
    },
    {
     "id": "ki-1",
     "verdict": "ok",
-    "evidence": "Paraphrase of CHA-4.A.1 and CHA-4.A.3 on ced:118; 26 words."
+    "evidence": "Paraphrase of CHA-4.A.1 and CHA-4.A.3 on ced:118 (gain above, loss below)."
    },
    {
     "id": "ki-2",
     "verdict": "ok",
-    "evidence": "Paraphrase of CHA-4.A.2 on ced:118 and BC-QA-06004 expected_solution_path; 24 words."
+    "evidence": "CHA-4.A.2 on ced:118 and BC-QA-06004 expected_solution_path[1] and [2] (area formula per piece, negative sign below the axis)."
    },
    {
     "id": "st-1",
     "verdict": "ok",
-    "evidence": "BC-QA-06004 verified; method is expected_solution_path[0]; rival from wrong_approaches (BC-ERR-06014)."
+    "evidence": "Method paraphrases BC-QA-06004 expected_solution_path[0] with no leading label; rival is wrong_approaches[0] (BC-ERR-06014); cue and separating feature from the same record."
+   },
+   {
+    "id": "st-1.contrast",
+    "verdict": "ok",
+    "evidence": "this matches BC-QA-06004 typical_wording (segments and semicircles, evaluate the integral); not_this is an average value stem, sourced to BC-ERR-06030 and CHA-4.B.1 on ced:152 in the bundle; why_not (integral divided by the length) is CHA-4.B.1."
    },
    {
     "id": "st-2",
     "verdict": "ok",
-    "evidence": "BC-QA-06015 verified; method is expected_solution_path[0]; rival combines both wrong_approaches."
+    "evidence": "Only the rival changed: the 'Rival:' label is gone; text is BC-QA-06015 wrong_approaches[0] and [1]; method is expected_solution_path[0] verbatim."
    },
    {
     "id": "ex-1",
     "verdict": "ok",
-    "evidence": "SymPy: integrate the piecewise f on [0,8] gives 3 - 2 - 2*pi = 1 - 2*pi."
+    "evidence": "Only cue and why text shortened; SymPy on the drawn f gives pieces 3, -2, -2*pi and total 1 - 2*pi, the step expressions unchanged; the (sg-) citation is gone from served text."
    },
    {
     "id": "ex-2",
-    "verdict": "ok",
-    "evidence": "Units gallons/hour times hour = gallons; interval requirement from sg-23:2 via BC-ERR-06029 scoring_consequence."
+    "verdict": "wrong",
+    "evidence": "fade_from 4 (1-based, LessonSection.tsx shows steps before fade_from) shows steps 1 to 3, which with the problem's limits suffice to write the sentence, but the withheld steps 4 and 5 carry no expression, so nothing withheld is valued; the graded answer is mathjson 'gallons', which would accept the BC-ERR-06029 answer (quantity and units without the interval) that the lesson's own error block and sg-23:2 say does not earn the point. Grader behaviour for a statement key was inferred, not traced."
    },
    {
     "id": "wars-ex-1",
     "verdict": "ok",
-    "evidence": "Line copies BC-PT-99069 name, earns and does_not_earn from the bundle."
+    "evidence": "Line copies BC-PT-99069 name, earns and does_not_earn from the bundle.",
+    "note": "unchanged since 2026-09-29 apart from the renumbered section pointer"
    },
    {
     "id": "err-BC-ERR-06014",
     "verdict": "ok",
-    "evidence": "Bundle text verbatim; 3+2+2*pi versus 3-2-2*pi; BC-MIS-08024 paraphrase."
+    "evidence": "fix_prompt true with relation distinct; SymPy 5 + 2*pi differs from 1 - 2*pi."
    },
    {
     "id": "err-BC-ERR-06030",
     "verdict": "ok",
-    "evidence": "Bundle text verbatim; average (1-2*pi)/8 from CHA-4.B.1 on ced:152."
+    "evidence": "fix_prompt true with relation distinct; SymPy (1 - 2*pi)/8 = 1/8 - pi/4, differs from 1 - 2*pi."
    },
    {
     "id": "err-BC-ERR-06013",
     "verdict": "ok",
-    "evidence": "Bundle text verbatim; full circle 4*pi versus semicircle 2*pi; BC-MIS-08019 verbatim."
+    "evidence": "fix_prompt true with relation distinct; SymPy 1 - 4*pi differs from 1 - 2*pi."
    },
    {
     "id": "err-BC-ERR-06029",
     "verdict": "ok",
-    "evidence": "Bundle text verbatim; BC-MIS-08009 verbatim."
+    "evidence": "fix_prompt true with relation distinct; SymPy gallons/hour differs from gallons."
    },
    {
     "id": "representations",
     "verdict": "ok",
-    "evidence": "SymPy on the spec expression gives F(1..8) = 2, 3, 2, 1, 1-pi, 1-2*pi, matching the listed values."
+    "evidence": "SymPy on the spec expression gives F(1..8) = 2, 3, 2, 1, 1-pi, 1-2*pi, matching the listed values.",
+    "note": "unchanged since 2026-09-29"
    },
    {
-    "id": "bridge-BC-PRQ-06005",
+    "id": "BC-PRQ-06005",
     "verdict": "ok",
-    "evidence": "Paraphrase of BC-PRQ-06005 failure_signature; 16 words."
+    "evidence": "Shortened to a paraphrase of BC-PRQ-06005 description_plain (f(t) is the value at input t); true, no id."
    },
    {
-    "id": "bridge-BC-PRQ-06007",
+    "id": "BC-PRQ-06007",
     "verdict": "ok",
-    "evidence": "Paraphrase of BC-PRQ-06007 failure_signature; 18 words."
+    "evidence": "Shortened to the semicircle half of BC-PRQ-06007 failure_signature; true, no id."
    },
    {
     "id": "chk-1",
     "verdict": "ok",
-    "evidence": "SymPy: 3 - 2 - 2*pi = 1 - 2*pi."
+    "evidence": "SymPy: 3 - 2 - 2*pi = 1 - 2*pi.",
+    "note": "unchanged since 2026-09-29 apart from the renumbered section pointer"
    },
    {
     "id": "chk-2",
     "verdict": "ok",
-    "evidence": "SymPy: 3/2 - 3 + 2*pi = 2*pi - 3/2 for the draw with lower limit 1 and the arc above."
+    "evidence": "SymPy: 3/2 - 3 + 2*pi = 2*pi - 3/2 for the draw with lower limit 1 and the arc above.",
+    "note": "unchanged since 2026-09-29"
    },
    {
     "id": "chk-3",
     "verdict": "ok",
-    "evidence": "CHA-4.B.1 on ced:152: (1/4) times the integral is the average rate on [2,6]; B and D are the total read of BC-ERR-06030, C omits the interval (BC-ERR-06029)."
+    "evidence": "CHA-4.B.1 on ced:152: (1/4) times the integral is the average rate on [2,6]; B and D are the total read of BC-ERR-06030, C omits the interval (BC-ERR-06029).",
+    "note": "unchanged since 2026-09-29"
    }
   ],
   "advice": [
-   "The representations spec field named function holds the running total F(x), not the rate f; the renderer or author could misread it as f. Rename or document the field.",
-   "Orientation, ki-1 and ki-2 all serve the same static graph; three figures of one picture add little. The shaded orientation could be text and ki-2 carry the partition.",
-   "chk-3 options B and D share one error path and read nearly alike; one could instead carry the rate units error (gallons per hour for a total).",
-   "The lesson teaches recognition for both archetypes, the first written line (partition; units of the integrand) and the rivals, and the scoring habit through the BC-PT-99069 line and sg-23:2 interpretation requirement."
+   "prediction: the stem asks for the value of the integral but the options are rules; options stating 5 + 2*pi, 1 - 2*pi and 1 + 2*pi would match the question asked.",
+   "st-1.contrast: the feature 'A leading factor 1/(b - a)' is not visible in the not_this stem, which says 'average value'; naming the words 'average value' would separate the two stems as written.",
+   "ex-2: to make the fade valued, withhold a step that carries an expression, or give the answer a key that requires the interval (the statement text), so the BC-ERR-06029 answer is not graded correct.",
+   "representations (unchanged block) serves 'the running total of ex-1's rate', a block id in served text; it would be lint if the block were in scope.",
+   "what_a_reader_scores line for BC-PT-99069 carries sg-25:18, sg-24:12 and sg-24:13 as verbatim record text.",
+   "scoring_consequence of err-BC-ERR-06030 carries the citation (sg-24:3); it is verbatim record text the reader strips, so no served citation, but the record text could drop it.",
+   "scoring_consequence of err-BC-ERR-06029 carries the citation (sg-23:2); it is verbatim record text the reader strips, so no served citation, but the record text could drop it.",
+   "Carried from the earlier audit: The representations spec field named function holds the running total F(x), not the rate f; the renderer or author could misread it as f. Rename or document the field.",
+   "Carried from the earlier audit: Orientation, ki-1 and ki-2 all serve the same static graph; three figures of one picture add little. The shaded orientation could be text and ki-2 carry the partition.",
+   "Carried from the earlier audit: chk-3 options B and D share one error path and read nearly alike; one could instead carry the rate units error (gallons per hour for a total).",
+   "Carried from the earlier audit: The lesson teaches recognition for both archetypes, the first written line (partition; units of the integrand) and the rivals, and the scoring habit through the BC-PT-99069 line and sg-23:2 interpretation requirement."
   ],
   "counts": {
-   "ok": 18,
+   "ok": 19,
    "unsourced": 0,
-   "wrong": 0,
+   "wrong": 1,
    "over_cap": 0,
    "lint": 0
   }

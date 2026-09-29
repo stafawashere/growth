@@ -9,6 +9,10 @@ purpose: Authoring spec for the concept lesson on BC-CON-08017, the disc method 
 
 Concept BC-CON-08017 (skills BC-SKL-08040, BC-SKL-08041, BC-SKL-08042, BC-SKL-08043), topic 8.9 of Unit 8, loaded by one archetype, BC-QA-08012 (family revolution-volume). Hard parents BC-CON-08012 and BC-CON-08015 (docs/lessons/unit-08/README.md, section 1). It opens the revolution chain: 08018 and 08019 build on it, then 08020.
 
+## Prediction
+
+Served first, both bands: an `mcq` on ex-1's own numbers with the core claim that a disc's area is pi times the squared radius. The question is the area of the cross section of the solid at x = 2. Key B, 2 pi. One distractor keeps the unsquared radius with pi, the other the squared radius without pi, the two slips the Traps block shows. The slice at x = 2 is a circle of radius sqrt 2 before any method is taught, so the question is answerable first. The resolution states what the disc method gives and why, and carries no verdict. Source: BC-CON-08017 and the topic section the key idea cites.
+
 ## Orientation
 
 Served text, from BC-CON-08017 `description_plain` and the topic's Assessment behaviour paragraph (research/units/unit-08-applications-integration.md#8.9 Volume with Disc Method: Revolving Around the x- or y-Axis): a response writes pi times the integral of the squared radius, with limits, and reports the volume, as a multiple of pi when no calculator is allowed. No count, no frequency.
@@ -23,25 +27,28 @@ All four skills map to BC-EK-CHA-5C1 (ced:160): one core block, both bands.
 
 BC-QA-08012 (research/question-analysis/question-archetypes.md#BC-QA-08012 Volume of a solid of revolution by the disc method): `typical_wording` "the region is revolved about the stated line; find the volume of the solid generated"; `common_givens` a region, an axis of revolution; `asked_to_produce` an integrand with a squared radius, the volume. The signal: "revolved about" with a region bounded by the curve and that axis. Shapes: an MCQ with the unsquared radius and the missing pi as distractors, or one part built on a region from an earlier area part (official examples BC-FRQ-2021-Q3-C, BC-FRQ-2022-Q5-C, BC-FRQ-2026-Q5-B).
 
+The near miss of the contrast pair comes from the sibling archetype BC-QA-08013 (washer, LSN-CON-08019): the same curve lifted one unit so a gap opens between region and axis, which calls for the ring method and two radii.
+
 What says "not this concept": a gap between the region and the axis selects a washer (BC-CON-08019); "cross sections perpendicular" with nothing revolved selects BC-CON-08014 (docs/lessons/unit-08/README.md, section 3).
 
 ## Method choice
 
-- st-1, BC-QA-08012. Cue from `asked_to_produce` and `common_givens`. Method, `expected_solution_path[0]`: write the radius as a distance to the axis. Rival, `common_distractors`: the radius left unsquared, pi omitted. The archetype's `wrong_approaches` entry (limits shifted with the axis) belongs to LSN-CON-08018. Separating feature: a disc is a circle, so its area is pi r squared. Both cue fields exist, so not inferred.
+- st-1, BC-QA-08012. Cue from `asked_to_produce` and `common_givens`. Method, `expected_solution_path[0]`: write the radius as a distance to the axis. Rival, `common_distractors`: the radius left unsquared, pi omitted. The archetype's `wrong_approaches` entry (limits shifted with the axis) belongs to LSN-CON-08018. Separating feature: a disc is a circle, so its area is pi r squared. Both cue fields exist, so not inferred. The block also carries the contrast pair, a disc stem beside a washer stem, with the feature that separates them. No served field opens with the reader's own label, so the method reads as the step itself.
 
 ## Solution path
 
 - ex-1, BC-QA-08012, both bands, no calculator. Draw: form root, scale 1, left 0, width 4, level 1, presentation formula, axis x_axis. f(x) = sqrt(x) on [0, 4], revolved about the x-axis. No published item carries it.
 - ex-2, low band: form square, scale 1, left 0, width 2, level 1, axis x_axis; f(x) = x^2 on [0, 2].
+- ex-2 is faded from step 3: steps 1 and 2 (the radius and the disc area) are shown, the student writes the answer, and steps 3 and 4 (the integral with limits and the value) then reveal. The fade falls there because the radius and the disc area repeat ex-1's pattern, and the limits and the integration are what the student must produce.
 - Steps: the radius (new), the disc area (new), the integral with limits (new), the value (equivalent). A fluent solver writes the integral and the value; the radius is held when it is the function itself.
 
 ## Scoring
 
-BC-QA-08012 lists BC-PT-99058, 99001, 99003, 99004, 99053. ex-1 tags BC-PT-99058 on the disc area and BC-PT-99001 on the integral; ex-2 tags BC-PT-99058 and BC-PT-99004 on the value. ex-1's answer point is untagged for the brief band (inferred array). BC-PT-99003 and 99053 name no step here (no antiderivative line is written; no improper integral). Point loss: a revolution with a missing constant is the wrong volume family (research/scoring/common-point-losses.md#Setup points).
+BC-QA-08012 lists BC-PT-99058, 99001, 99003, 99004, 99053. ex-1 tags BC-PT-99058 on the disc area only, and its BC-PT-99001 tag on the integral is dropped to fit the brief cap once the prediction and contrast pair are served (inferred array); ex-2 tags BC-PT-99058 and BC-PT-99004 on the value. ex-1's answer point is untagged for the brief band (inferred array). BC-PT-99003 and 99053 name no step here (no antiderivative line is written; no improper integral). Point loss: a revolution with a missing constant is the wrong volume family (research/scoring/common-point-losses.md#Setup points).
 
 ## Traps
 
-Six errors meet the skills; the first four in bundle order are served: BC-ERR-08023, BC-ERR-08024, BC-ERR-08036, BC-ERR-08037. BC-ERR-99011 and BC-ERR-99019 fall past the cap. On ex-1's draw.
+Six errors meet the skills; the first four in bundle order are served: BC-ERR-08023, BC-ERR-08024, BC-ERR-08036, BC-ERR-08037. BC-ERR-99011 and BC-ERR-99019 fall past the cap. On ex-1's draw. All four carry `fix_prompt` true, since each pair is distinct.
 
 - err-BC-ERR-08023: pi x integrated in y. Possible reason, BC-MIS-08013.
 - err-BC-ERR-08024: the y values 0 and 2 used as the x limits. Possible reason, BC-MIS-08012.
@@ -69,13 +76,13 @@ BC-QA-08012 is `either`: Section I Part A, 2.14 minutes (research/exam/exam-stru
 ## Delivery
 
 - orientation: text. Rule 6.
-- ki-1: motion. Rule 2, a region swept about the axis into a solid (docs/lessons/unit-08/README.md, section 6); BC-REP-08 on BC-SKL-08040 for the fallback [inferred; the modality A/B].
+- ki-1: motion. Rule 2, a region swept about the axis into a solid (docs/lessons/unit-08/README.md, section 6); BC-REP-08 on BC-SKL-08040 for the fallback [inferred; the modality A/B]. Figure presence: ki-1 is a drawn block, so the record carries no `no_figure_reason`.
 - ex-1, ex-2, the four error blocks: step_reveal. Rule 1.
 
 ## Band plan
 
-- Low (full): orientation, ki-1, st-1, ex-1 and its lines, the four error blocks, chk-1 to chk-3, ex-2 and its lines, the bridges. 724 words, 4.9 minutes.
-- Mid (brief): orientation, ki-1, st-1, ex-1 and its lines, err-BC-ERR-08023, err-BC-ERR-08024, chk-1, chk-2, the bridges. 439 words, 3.0 minutes.
+- Low (full): prediction, orientation, bridges, ki-1, st-1 with the contrast pair, ex-1 and its line, chk-1, the four error blocks, ex-2 (faded from step 3) and its lines, chk-2, chk-3. 734 words, 4.9 minutes.
+- Mid (brief): prediction, orientation, bridges, ki-1, st-1 with the contrast pair, ex-1 and its line, chk-1, err-BC-ERR-08023, err-BC-ERR-08024, chk-2. 449 words, 3.0 minutes.
 - Refresher: ki-1, the four error blocks, ex-1.
 
 ## Sources
@@ -88,7 +95,7 @@ BC-QA-08012 is `either`: Section I Part A, 2.14 minutes (research/exam/exam-stru
 - research/question-analysis/question-archetypes.md#BC-QA-08012 Volume of a solid of revolution by the disc method
 - research/scoring/common-point-losses.md#Setup points
 - research/exam/exam-structure.md#Section and part layout
-- [inferred] Part A for an either archetype; ex-1's answer point untagged; ki-1 as motion; two errors past the cap. Each settled as the inferred array states.
+- [inferred] Part A for an either archetype; ex-1's answer and limits points untagged; ki-1 as motion; two errors past the cap. Each settled as the inferred array states.
 
 ## Machine record
 
@@ -99,8 +106,16 @@ BC-QA-08012 is `either`: Section I Part A, 2.14 minutes (research/exam/exam-stru
  "target_id": "BC-CON-08017",
  "unit": "08",
  "skills": ["BC-SKL-08040", "BC-SKL-08041", "BC-SKL-08042", "BC-SKL-08043"],
+ "prediction": {
+  "id": "pr-1",
+  "stem": {"text": "R under \\(y=\\sqrt{x}\\) on \\([0,4]\\) is revolved about the x-axis. Predict the area of the cross section at \\(x=2\\).", "command_verb": "predict"},
+  "format": "mcq",
+  "options": [{"id": "A", "label": "\\(\\pi\\sqrt{2}\\)", "is_key": false}, {"id": "B", "label": "\\(2\\pi\\)", "is_key": true}, {"id": "C", "label": "\\(2\\)", "is_key": false}],
+  "resolution": "The slice at \\(x=2\\) is a disc of radius \\(\\sqrt{2}\\), so its area is \\(2\\pi\\), pi times the squared radius. The disc method integrates that area.",
+  "sources": ["BC-CON-08017", "research/units/unit-08-applications-integration.md#8.9 Volume with Disc Method: Revolving Around the x- or y-Axis"]
+ },
  "orientation": {
-  "text": "A region touching its axis, revolved, is a stack of discs. A response writes pi times the integral of the squared radius, with limits, and reports the volume, as a multiple of pi without a calculator.",
+  "text": "A region touching its axis, revolved, is a stack of discs. A response writes pi times the integral of the squared radius, with limits, and gives the volume as a multiple of pi.",
   "sources": ["BC-CON-08017", "research/units/unit-08-applications-integration.md#8.9 Volume with Disc Method: Revolving Around the x- or y-Axis"]
  },
  "key_ideas": [
@@ -108,7 +123,7 @@ BC-QA-08012 is `either`: Section I Part A, 2.14 minutes (research/exam/exam-stru
    "id": "ki-1",
    "ek_id": "BC-EK-CHA-5C1",
    "depth": "core",
-   "text": "The region meets the axis, so each slice is a disc; its radius is the distance from curve to axis. About the x-axis, integrate in x. Pi multiplies the integral; the radius is squared before integrating.",
+   "text": "Each slice is a disc whose radius is the distance from curve to axis. About the x-axis, integrate in x. Pi multiplies the integral; the radius is squared first.",
    "notation": "pi times the integral of the radius squared",
    "quote": null,
    "sources": ["BC-EK-CHA-5C1", "ced:160", "research/units/unit-08-applications-integration.md#8.9 Volume with Disc Method: Revolving Around the x- or y-Axis"]
@@ -118,12 +133,17 @@ BC-QA-08012 is `either`: Section I Part A, 2.14 minutes (research/exam/exam-stru
   {
    "id": "st-1",
    "archetype_id": "BC-QA-08012",
-   "cue": "A region against its axis, revolved; asked for the volume.",
-   "method": "First line: the radius as distance to the axis.",
+   "cue": "A region on its axis, revolved; asked for the volume.",
+   "method": "The radius as distance to the axis.",
    "rival": "Radius unsquared, or pi dropped.",
    "separating_feature": "A disc is a circle: pi r squared.",
    "sources": ["BC-QA-08012"],
-   "evidence_tag": "verified"
+   "evidence_tag": "verified",
+   "contrast": {
+    "this": {"text": "R, bounded by \\(y=x^{3}\\), the x-axis and \\(x=1\\), is revolved about the x-axis. Find the volume.", "archetype_id": "BC-QA-08012"},
+    "not_this": {"text": "R, bounded by \\(y=x^{3}+1\\), \\(y=1\\) and \\(x=1\\), is revolved about the x-axis. Find the volume.", "why_not": "The region is off the axis, so the slices are rings."},
+    "feature": "A gap from the axis means rings, no gap means discs."
+   }
   }
  ],
  "worked_examples": [
@@ -137,7 +157,7 @@ BC-QA-08012 is `either`: Section I Part A, 2.14 minutes (research/exam/exam-stru
    "steps": [
     {"cue": "R touches the x-axis, the axis.", "why": "Radius: curve to axis.", "expr": "sqrt(x)", "relation": "new"},
     {"cue": "Each slice is a disc.", "why": "pi r squared.", "expr": "pi*x", "relation": "new", "point_type_id": "BC-PT-99058"},
-    {"cue": "R runs from x = 0 to 4.", "why": "Slices in x.", "expr": "Integral(pi*x, (x, 0, 4))", "relation": "new", "point_type_id": "BC-PT-99001"},
+    {"cue": "R runs from x = 0 to 4.", "why": "Slices in x.", "expr": "Integral(pi*x, (x, 0, 4))", "relation": "new"},
     {"cue": "Integrate.", "why": "Keep pi.", "expr": "8*pi", "relation": "equivalent"}
    ],
    "answer": {"form": "symbolic", "expr": "8*pi"}
@@ -155,18 +175,35 @@ BC-QA-08012 is `either`: Section I Part A, 2.14 minutes (research/exam/exam-stru
     {"cue": "x from 0 to 2.", "why": "Limits.", "expr": "Integral(pi*x**4, (x, 0, 2))", "relation": "new"},
     {"cue": "Integrate.", "why": "Keep pi.", "expr": "32*pi/5", "relation": "equivalent", "point_type_id": "BC-PT-99004"}
    ],
-   "answer": {"form": "symbolic", "expr": "32*pi/5"}
+   "answer": {"form": "symbolic", "expr": "32*pi/5"},
+   "fade_from": 3
   }
  ],
  "what_a_reader_scores": [
-  {"example_id": "ex-1", "point_type_ids": ["BC-PT-99058", "BC-PT-99001"], "lines": [
-   {"point_type_id": "BC-PT-99058", "text": "Volume integrand form. Earned by: An integrand of the correct volume form, a nonzero constant times the square of the function for a disc, or the stated cross-section area (sg-26:19, sg-22:18). Not earned by: A constant other than pi where pi is required, which sg-22:19 states blocks the answer point; a rotation about the wrong axis, which sg-26:19 lets earn the form point only."},
-   {"point_type_id": "BC-PT-99001", "text": "Definite integral expression with correct limits. Earned by: A definite integral whose limits match the requested interval and whose integrand matches the requested quantity, with or without the differential (sg-26:4, sg-22:2). Not earned by: An unsupported numerical value, or a definite integral whose bounds are wrong (sg-22:18). Notation: Differential may be omitted; sg-22:2 accepts dx written for dt. sg-23:8 treats a missing differential as recoverable for this point but restricts later eligibility."}
-  ]},
-  {"example_id": "ex-2", "point_type_ids": ["BC-PT-99058", "BC-PT-99004"], "lines": [
-   {"point_type_id": "BC-PT-99058", "text": "Volume integrand form. Earned by: An integrand of the correct volume form, a nonzero constant times the square of the function for a disc, or the stated cross-section area (sg-26:19, sg-22:18). Not earned by: A constant other than pi where pi is required, which sg-22:19 states blocks the answer point; a rotation about the wrong axis, which sg-26:19 lets earn the form point only."},
-   {"point_type_id": "BC-PT-99004", "text": "Answer with or without supporting work. Earned by: The correct value on its own, with no supporting work required (sg-25:3, sg-26:4). Not earned by: A value outside the accepted precision, or a value inconsistent with a required earlier step where the rubric imposes one. Precision: A reported decimal answer must be accurate to three places after the decimal point, rounded or truncated; at most one point per question is lost to inappropriate rounding (sg-25:2, sg-26:2). sg-26:4 also accepts a stated rounding to the nearest integer and several truncations."}
-  ]}
+  {
+   "example_id": "ex-1",
+   "point_type_ids": ["BC-PT-99058"],
+   "lines": [
+    {
+     "point_type_id": "BC-PT-99058",
+     "text": "Volume integrand form. Earned by: An integrand of the correct volume form, a nonzero constant times the square of the function for a disc, or the stated cross-section area (sg-26:19, sg-22:18). Not earned by: A constant other than pi where pi is required, which sg-22:19 states blocks the answer point; a rotation about the wrong axis, which sg-26:19 lets earn the form point only."
+    }
+   ]
+  },
+  {
+   "example_id": "ex-2",
+   "point_type_ids": ["BC-PT-99058", "BC-PT-99004"],
+   "lines": [
+    {
+     "point_type_id": "BC-PT-99058",
+     "text": "Volume integrand form. Earned by: An integrand of the correct volume form, a nonzero constant times the square of the function for a disc, or the stated cross-section area (sg-26:19, sg-22:18). Not earned by: A constant other than pi where pi is required, which sg-22:19 states blocks the answer point; a rotation about the wrong axis, which sg-26:19 lets earn the form point only."
+    },
+    {
+     "point_type_id": "BC-PT-99004",
+     "text": "Answer with or without supporting work. Earned by: The correct value on its own, with no supporting work required (sg-25:3, sg-26:4). Not earned by: A value outside the accepted precision, or a value inconsistent with a required earlier step where the rubric imposes one. Precision: A reported decimal answer must be accurate to three places after the decimal point, rounded or truncated; at most one point per question is lost to inappropriate rounding (sg-25:2, sg-26:2). sg-26:4 also accepts a stated rounding to the nearest integer and several truncations."
+    }
+   ]
+  }
  ],
  "common_errors": [
   {
@@ -177,7 +214,8 @@ BC-QA-08012 is `either`: Section I Part A, 2.14 minutes (research/exam/exam-stru
    "right_step": {"text": "dx.", "expr": "Integral(pi*x, (x, 0, 4))"},
    "relation": "distinct",
    "possible_reason": {"misconception_id": "BC-MIS-08013", "text": "treats dx and dy as labels for the direction of slicing"},
-   "sources": ["BC-ERR-08023", "BC-MIS-08013"]
+   "sources": ["BC-ERR-08023", "BC-MIS-08013"],
+   "fix_prompt": true
   },
   {
    "error_id": "BC-ERR-08024",
@@ -187,7 +225,8 @@ BC-QA-08012 is `either`: Section I Part A, 2.14 minutes (research/exam/exam-stru
    "right_step": {"text": "x from 0 to 4.", "expr": "Integral(pi*x, (x, 0, 4))"},
    "relation": "distinct",
    "possible_reason": {"misconception_id": "BC-MIS-08012", "text": "chooses limits from the axes of the picture"},
-   "sources": ["BC-ERR-08024", "BC-MIS-08012"]
+   "sources": ["BC-ERR-08024", "BC-MIS-08012"],
+   "fix_prompt": true
   },
   {
    "error_id": "BC-ERR-08036",
@@ -197,7 +236,8 @@ BC-QA-08012 is `either`: Section I Part A, 2.14 minutes (research/exam/exam-stru
    "right_step": {"text": "Squared.", "expr": "Integral(pi*x, (x, 0, 4))"},
    "relation": "distinct",
    "possible_reason": {"misconception_id": "BC-MIS-08020", "text": "carries the circle formula only as far as the factor pi"},
-   "sources": ["BC-ERR-08036", "BC-MIS-08020"]
+   "sources": ["BC-ERR-08036", "BC-MIS-08020"],
+   "fix_prompt": true
   },
   {
    "error_id": "BC-ERR-08037",
@@ -207,15 +247,12 @@ BC-QA-08012 is `either`: Section I Part A, 2.14 minutes (research/exam/exam-stru
    "right_step": {"text": "pi.", "expr": "Integral(pi*x, (x, 0, 4))"},
    "relation": "distinct",
    "possible_reason": {"misconception_id": "BC-MIS-08019", "text": "remembers the squared dimension but not the fraction in front of it"},
-   "sources": ["BC-ERR-08037", "BC-MIS-08019"]
+   "sources": ["BC-ERR-08037", "BC-MIS-08019"],
+   "fix_prompt": true
   }
  ],
  "representations": null,
- "prerequisite_bridges": [
-  {"prq_id": "BC-PRQ-06002", "text": "Rewrite radicals as powers before antidifferentiating."},
-  {"prq_id": "BC-PRQ-08002", "text": "Integrating in y needs x as a function of y."},
-  {"prq_id": "BC-PRQ-08004", "text": "A distance is larger minus smaller, not a bare function value."}
- ],
+ "prerequisite_bridges": [{"prq_id": "BC-PRQ-06002", "text": "Radicals become powers before antidifferentiating."}, {"prq_id": "BC-PRQ-08002", "text": "Integrating in y needs x in terms of y."}, {"prq_id": "BC-PRQ-08004", "text": "A distance is larger minus smaller."}],
  "time": {"exam_part": "I-A", "budget_minutes": 2.14, "source": "research/exam/exam-structure.md#Section and part layout", "written_steps": {"ex-1": [3, 4]}, "skipped_steps": {"ex-1": [1, 2]}},
  "checks": [
   {
@@ -228,10 +265,7 @@ BC-QA-08012 is `either`: Section I Part A, 2.14 minutes (research/exam/exam-stru
    "completes": "ex-1",
    "stem": {"text": "Evaluate pi times the integral of x from 0 to 4.", "command_verb": "evaluate"},
    "key": {"form": "symbolic", "expr": "8*pi"},
-   "steps": [
-    {"text": "The integral.", "expr": "Integral(pi*x, (x, 0, 4))", "relation": "new"},
-    {"text": "pi x^2/2 from 0 to 4.", "expr": "8*pi", "relation": "equivalent"}
-   ],
+   "steps": [{"text": "The integral.", "expr": "Integral(pi*x, (x, 0, 4))", "relation": "new"}, {"text": "pi x^2/2 from 0 to 4.", "expr": "8*pi", "relation": "equivalent"}],
    "calculator_status": "no_calculator",
    "skills": ["BC-SKL-08043"]
   },
@@ -244,11 +278,7 @@ BC-QA-08012 is `either`: Section I Part A, 2.14 minutes (research/exam/exam-stru
    "parameter_draw": {"form": "linear", "scale": 3, "left": 0, "width": 2, "level": 1, "presentation": "formula", "axis": "x_axis"},
    "stem": {"text": "R is bounded by y = 3x, the x-axis and x = 2. Find the volume about the x-axis.", "command_verb": "find"},
    "key": {"form": "symbolic", "expr": "24*pi"},
-   "steps": [
-    {"text": "Disc area.", "expr": "pi*(3*x)**2", "relation": "new"},
-    {"text": "Limits 0 and 2.", "expr": "Integral(pi*(3*x)**2, (x, 0, 2))", "relation": "new"},
-    {"text": "Value.", "expr": "24*pi", "relation": "equivalent"}
-   ],
+   "steps": [{"text": "Disc area.", "expr": "pi*(3*x)**2", "relation": "new"}, {"text": "Limits 0 and 2.", "expr": "Integral(pi*(3*x)**2, (x, 0, 2))", "relation": "new"}, {"text": "Value.", "expr": "24*pi", "relation": "equivalent"}],
    "calculator_status": "no_calculator",
    "skills": ["BC-SKL-08041"]
   },
@@ -261,11 +291,7 @@ BC-QA-08012 is `either`: Section I Part A, 2.14 minutes (research/exam/exam-stru
    "parameter_draw": {"form": "root", "scale": 2, "left": 1, "width": 3, "level": 2, "presentation": "formula", "axis": "x_axis"},
    "stem": {"text": "R is bounded by y = 2 sqrt(x), the x-axis, x = 1 and x = 4. The volume about the x-axis is", "command_verb": "identify"},
    "key": {"form": "symbolic", "expr": "30*pi"},
-   "steps": [
-    {"text": "Disc area 4 pi x.", "expr": "4*pi*x", "relation": "new"},
-    {"text": "Limits 1 and 4.", "expr": "Integral(4*pi*x, (x, 1, 4))", "relation": "new"},
-    {"text": "Value.", "expr": "30*pi", "relation": "equivalent"}
-   ],
+   "steps": [{"text": "Disc area 4 pi x.", "expr": "4*pi*x", "relation": "new"}, {"text": "Limits 1 and 4.", "expr": "Integral(4*pi*x, (x, 1, 4))", "relation": "new"}, {"text": "Value.", "expr": "30*pi", "relation": "equivalent"}],
    "options": [
     {"id": "A", "is_key": false, "expr": "24*pi", "error_path": "BC-ERR-08024", "derivation": "the y values 2 and 4 used as the limits"},
     {"id": "B", "is_key": false, "expr": "28*pi/3", "error_path": "BC-ERR-08036", "derivation": "pi times 2 sqrt(x), unsquared"},
@@ -278,15 +304,25 @@ BC-QA-08012 is `either`: Section I Part A, 2.14 minutes (research/exam/exam-stru
  ],
  "delivery": [
   {"block": "orientation", "mode": "text", "reason": "rule 6: a statement of what a response shows", "sources": ["BC-CON-08017"]},
-  {"block": "ki-1", "mode": "motion", "reason": "rule 2: a region revolved about its axis into a solid, a process; rule 4, BC-REP-08 on BC-SKL-08040, for the static fallback", "sources": ["BC-SKL-08040", "BC-SKL-08041"],
-   "spec": {"kind": "solid_of_revolution", "representations": ["BC-REP-02", "BC-REP-08"],
-    "curve": "y = sqrt(x)", "interval": [0, 4], "axis": "y = 0",
+  {
+   "block": "ki-1",
+   "mode": "motion",
+   "reason": "rule 2: a region revolved about its axis into a solid, a process; rule 4, BC-REP-08 on BC-SKL-08040, for the static fallback",
+   "sources": ["BC-SKL-08040", "BC-SKL-08041"],
+   "spec": {
+    "kind": "solid_of_revolution",
+    "representations": ["BC-REP-02", "BC-REP-08"],
+    "curve": "y = sqrt(x)",
+    "interval": [0, 4],
+    "axis": "y = 0",
     "frames": [{"angle_degrees": 0}, {"angle_degrees": 90}, {"angle_degrees": 180}, {"angle_degrees": 270}, {"angle_degrees": 360}],
     "highlight": {"disc_at_x": 2, "radius": "sqrt(2)"},
-    "labels": [{"text": "axis of revolution", "placement": "inside"}, {"text": "r = sqrt(x)", "placement": "inside"}, {"text": "disc area pi r^2", "placement": "inside"}]},
+    "labels": [{"text": "axis of revolution", "placement": "inside"}, {"text": "r = sqrt(x)", "placement": "inside"}, {"text": "disc area pi r^2", "placement": "inside"}]
+   },
    "fallback": "three frames side by side (0, 180 and 360 degrees), static, the disc at x = 2 marked with its radius, labels inside",
    "keyboard": "Right arrow steps to the next frame, Left arrow to the previous; Space pauses auto-advance",
-   "reduced_motion": "no auto-advance; each key press cross-fades to the next frame"},
+   "reduced_motion": "no auto-advance; each key press cross-fades to the next frame"
+  },
   {"block": "ex-1", "mode": "step_reveal", "reason": "rule 1", "sources": []},
   {"block": "ex-2", "mode": "step_reveal", "reason": "rule 1", "sources": []},
   {"block": "err-BC-ERR-08023", "mode": "step_reveal", "reason": "rule 1", "sources": []},
@@ -296,17 +332,49 @@ BC-QA-08012 is `either`: Section I Part A, 2.14 minutes (research/exam/exam-stru
  ],
  "refresher": ["ki-1", "err-BC-ERR-08023", "err-BC-ERR-08024", "err-BC-ERR-08036", "err-BC-ERR-08037", "ex-1"],
  "read_minutes": {"full": 4.9, "brief": 3.0},
- "word_count": {"full": 724, "brief": 439},
- "research_lines": [
-  {"file": "research/units/unit-08-applications-integration.md", "line": "The factor pi multiplies the whole integral, and the radius is squared before integration rather than after."}
- ],
+ "word_count": {"full": 734, "brief": 449},
+ "research_lines": [{"file": "research/units/unit-08-applications-integration.md", "line": "The factor pi multiplies the whole integral, and the radius is squared before integration rather than after."}],
  "inferred": [
   {"claim": "BC-QA-08012 is calculator status either, so the lesson takes Section I Part A and its 2.14 minute budget.", "settles": "Timing data on disc items split by exam part."},
   {"claim": "ex-1's answer point (BC-PT-99004) is earned but not tagged, because its reader line would take the brief band past 450 words; ex-2 carries the tag.", "settles": "Shorter reader lines or a brief cap that admits them."},
   {"claim": "ki-1 is served as a motion of the region sweeping about the axis rather than a static figure.", "settles": "The modality A/B in the build plan: skip rate and time to first credited success by mode."},
   {"claim": "BC-ERR-99011 and BC-ERR-99019 meet the skills but fall past the cap of four error blocks.", "settles": "A cap change in plan 15 or a severity reorder in the bundle."},
-  {"claim": "BC-ERR-08024 is shown as an x integral carrying the region's y values, the mirror of the record's wording, since BC-QA-08012's parameter_spec draws only regions sliced in x.", "settles": "A parameter_spec that draws a region revolved about the y-axis."}
+  {
+   "claim": "BC-ERR-08024 is shown as an x integral carrying the region's y values, the mirror of the record's wording, since BC-QA-08012's parameter_spec draws only regions sliced in x.",
+   "settles": "A parameter_spec that draws a region revolved about the y-axis."
+  },
+  {
+   "claim": "ex-1's limits point (BC-PT-99001) is earned but not tagged, because the prediction and contrast pair take the words its reader line needs in the brief band;.",
+   "settles": "A brief cap that admits the reader line, or a shorter prediction and contrast."
+  }
  ],
- "sources": ["BC-CON-08017", "BC-SKL-08040", "BC-SKL-08041", "BC-SKL-08042", "BC-SKL-08043", "BC-EK-CHA-5C1", "ced:160", "BC-QA-08012", "BC-PT-99058", "BC-PT-99001", "BC-PT-99004", "BC-ERR-08023", "BC-ERR-08024", "BC-ERR-08036", "BC-ERR-08037", "BC-MIS-08012", "BC-MIS-08013", "BC-MIS-08019", "BC-MIS-08020", "BC-PRQ-06002", "BC-PRQ-08002", "BC-PRQ-08004", "research/units/unit-08-applications-integration.md#8.9 Volume with Disc Method: Revolving Around the x- or y-Axis", "research/question-analysis/question-archetypes.md#BC-QA-08012 Volume of a solid of revolution by the disc method", "research/scoring/common-point-losses.md#Setup points", "research/exam/exam-structure.md#Section and part layout"]
+ "sources": [
+  "BC-CON-08017",
+  "BC-SKL-08040",
+  "BC-SKL-08041",
+  "BC-SKL-08042",
+  "BC-SKL-08043",
+  "BC-EK-CHA-5C1",
+  "ced:160",
+  "BC-QA-08012",
+  "BC-PT-99058",
+  "BC-PT-99001",
+  "BC-PT-99004",
+  "BC-ERR-08023",
+  "BC-ERR-08024",
+  "BC-ERR-08036",
+  "BC-ERR-08037",
+  "BC-MIS-08012",
+  "BC-MIS-08013",
+  "BC-MIS-08019",
+  "BC-MIS-08020",
+  "BC-PRQ-06002",
+  "BC-PRQ-08002",
+  "BC-PRQ-08004",
+  "research/units/unit-08-applications-integration.md#8.9 Volume with Disc Method: Revolving Around the x- or y-Axis",
+  "research/question-analysis/question-archetypes.md#BC-QA-08012 Volume of a solid of revolution by the disc method",
+  "research/scoring/common-point-losses.md#Setup points",
+  "research/exam/exam-structure.md#Section and part layout"
+ ]
 }
 ```

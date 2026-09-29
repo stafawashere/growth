@@ -3,20 +3,67 @@
  "version": 1,
  "kind": "concept",
  "target_id": "BC-CON-08006",
- "status": "signed_off",
+ "status": "draft",
  "snapshot_digest": "a6a8ec9d3f59ab8f712e33d30cc22fc64bf2c478fbe7312e3e3118d319c6a42f",
  "source_digest": "d68c12b6b5e30c5dae4715bea38a38d84f4b8de53575a2aa99903ff5251d4c14",
  "read_minutes": {
-  "full": 5.0,
-  "brief": 2.9
+  "full": 5.1,
+  "brief": 3.0
  },
  "word_count": {
-  "full": 601,
-  "brief": 359
+  "full": 639,
+  "brief": 402
  },
  "sections": [
   {
    "id": "LSN-CON-08006#s1",
+   "type": "prediction",
+   "bands": [
+    "low",
+    "mid"
+   ],
+   "skills": [
+    "BC-SKL-08012",
+    "BC-SKL-08016",
+    "BC-SKL-08017"
+   ],
+   "sources": [
+    "BC-CON-08006",
+    "research/units/unit-08-applications-integration.md#8.3 Using Accumulation Functions and Definite Integrals in Applied Contexts"
+   ],
+   "evidence_tag": "inferred",
+   "stem": {
+    "text": "Predict: water enters a tank at \\(R(t)=4t+3\\) gallons per hour; it holds 40 gallons at \\(t=2\\). Which gives the gallons at \\(t=4\\)?",
+    "command_verb": "predict"
+   },
+   "format": "mcq",
+   "options": [
+    {
+     "id": "A",
+     "label": "The integral of \\(R\\) from 2 to 4",
+     "is_key": false
+    },
+    {
+     "id": "B",
+     "label": "40 plus the integral of \\(R\\) from 2 to 4",
+     "is_key": true
+    },
+    {
+     "id": "C",
+     "label": "40 times \\(R(4)\\)",
+     "is_key": false
+    }
+   ],
+   "resolution": {
+    "text": "The integral of \\(R\\) from 2 to 4 is 30 gallons gained; adding the 40 already there gives 70 gallons."
+   },
+   "delivery": {
+    "mode": "text",
+    "reason": "rule 6"
+   }
+  },
+  {
+   "id": "LSN-CON-08006#s2",
    "type": "orientation",
    "bands": [
     "low",
@@ -32,7 +79,7 @@
     "research/units/unit-08-applications-integration.md#8.3 Using Accumulation Functions and Definite Integrals in Applied Contexts"
    ],
    "evidence_tag": "inferred",
-   "text": "A response writes the amount at the asked time as the known amount plus the definite integral of the rate, with its differential, then reports the value with units.",
+   "text": "A response adds the known amount to the rate's integral, with units.",
    "delivery": {
     "mode": "text",
     "reason": "rule 6: a statement of what a response shows",
@@ -42,7 +89,7 @@
    }
   },
   {
-   "id": "LSN-CON-08006#s2",
+   "id": "LSN-CON-08006#s3",
    "type": "key_ideas",
    "bands": [
     "low",
@@ -60,7 +107,7 @@
    "evidence_tag": "inferred",
    "ek_id": "BC-EK-CHA-4D1",
    "depth": "core",
-   "text": "A function defined as an integral accumulates a rate. The amount at t is the amount at a plus the integral of the rate from a to t: it starts at the known amount and grows by what the rate adds.",
+   "text": "The amount at t is the amount at a plus the integral of the rate from a to t.",
    "notation": "Q(t) = Q(a) + integral of q",
    "delivery": {
     "mode": "motion",
@@ -129,7 +176,7 @@
    }
   },
   {
-   "id": "LSN-CON-08006#s3",
+   "id": "LSN-CON-08006#s4",
    "type": "key_ideas",
    "bands": [
     "low"
@@ -159,7 +206,7 @@
    }
   },
   {
-   "id": "LSN-CON-08006#s4",
+   "id": "LSN-CON-08006#s5",
    "type": "strategy",
    "bands": [
     "low",
@@ -175,13 +222,24 @@
    ],
    "evidence_tag": "verified",
    "archetype_id": "BC-QA-06005",
-   "cue": "A rate function and a known amount at one time; the amount at another time is asked.",
-   "method": "First line: the known amount plus the definite integral of the rate.",
-   "rival": "Rival: reporting the net change as the amount.",
-   "separating_feature": "A stated amount plus how much at time t."
+   "cue": "A rate and a known amount; the later amount is asked.",
+   "method": "The known amount plus the definite integral of the rate.",
+   "rival": "Reporting the net change as the amount.",
+   "separating_feature": "A stated amount plus how much at t.",
+   "contrast": {
+    "this": {
+     "text": "A quantity's rate is modelled by \\(R(t)\\), and its value is known at one time. Find its value later, showing the setup.",
+     "archetype_id": "BC-QA-06005"
+    },
+    "not_this": {
+     "text": "How many gallons flow in from \\(t=2\\) to \\(t=4\\), given \\(R(t)\\)?",
+     "why_not": "It asks for the amount entered only."
+    },
+    "feature": "A known amount, and the later amount asked."
+   }
   },
   {
-   "id": "LSN-CON-08006#s5",
+   "id": "LSN-CON-08006#s6",
    "type": "strategy",
    "bands": [
     "low",
@@ -196,12 +254,12 @@
    "evidence_tag": "verified",
    "archetype_id": "BC-QA-99008",
    "cue": "A rate function and a closed interval; the total that arrives is asked.",
-   "method": "First: read the interval out of the wording, then the integral of the rate over it.",
-   "rival": "Rival: treating the part as a net change question because the stem gives an initial condition.",
+   "method": "Read the interval out of the wording, then the integral of the rate over it.",
+   "rival": "Treating the part as a net change question because the stem gives an initial condition.",
    "separating_feature": "How much entered asks for the change, not the amount."
   },
   {
-   "id": "LSN-CON-08006#s6",
+   "id": "LSN-CON-08006#s7",
    "type": "strategy",
    "bands": [
     "low",
@@ -216,12 +274,12 @@
    "evidence_tag": "verified",
    "archetype_id": "BC-QA-08006",
    "cue": "An amount defined with a definite integral and a closed interval; the time of the maximum is asked.",
-   "method": "First line: differentiate the amount function.",
-   "rival": "Rival: presenting a local argument for a global claim.",
+   "method": "Differentiate the amount function.",
+   "rival": "Presenting a local argument for a global claim.",
    "separating_feature": "Greatest asks for a time, with both endpoints as candidates."
   },
   {
-   "id": "LSN-CON-08006#s7",
+   "id": "LSN-CON-08006#s8",
    "type": "worked_example",
    "bands": [
     "low",
@@ -259,8 +317,8 @@
    "calculator_status": "no_calculator",
    "steps": [
     {
-     "cue": "Amount at t = 4 with a known amount at t = 2.",
-     "why": "The integral of R is the change in gallons; the start is added.",
+     "cue": "Amount at t = 4, known at t = 2.",
+     "why": "The integral is gallons gained; add the start.",
      "expression": [
       "Add",
       40,
@@ -287,14 +345,14 @@
      "relation": "new"
     },
     {
-     "cue": "No calculator: 2t^2 + 3t from 2 to 4.",
-     "why": "44 - 14 = 30 gallons gained.",
+     "cue": "2t^2 + 3t from 2 to 4.",
+     "why": "44 - 14 = 30.",
      "expression": 70,
      "relation": "equivalent"
     },
     {
      "cue": "Add the known amount.",
-     "why": "Gallons in the tank at t = 4.",
+     "why": "Gallons.",
      "expression": 70,
      "relation": "equivalent"
     }
@@ -310,7 +368,7 @@
    }
   },
   {
-   "id": "LSN-CON-08006#s8",
+   "id": "LSN-CON-08006#s9",
    "type": "what_a_reader_scores",
    "bands": [
     "low",
@@ -325,7 +383,7 @@
     "BC-PT-99033"
    ],
    "evidence_tag": "verified",
-   "example_id": "LSN-CON-08006#s7",
+   "example_id": "LSN-CON-08006#s8",
    "lines": [
     {
      "point_type_id": "BC-PT-99033",
@@ -398,6 +456,7 @@
     ]
    },
    "relation": "distinct",
+   "fix_prompt": true,
    "possible_reason": {
     "misconception_id": "BC-MIS-08006",
     "text": "reads an accumulation integral as the quantity itself rather than as the change in it"
@@ -436,6 +495,7 @@
     "expression": 70
    },
    "relation": "distinct",
+   "fix_prompt": true,
    "possible_reason": {
     "misconception_id": "BC-MIS-08006",
     "text": "so the initial value has no role"
@@ -515,6 +575,7 @@
     ]
    },
    "relation": "distinct",
+   "fix_prompt": true,
    "possible_reason": {
     "misconception_id": "BC-MIS-08013",
     "text": "treats dx and dy as labels"
@@ -551,6 +612,7 @@
     "expression": 70
    },
    "relation": "equivalent",
+   "fix_prompt": false,
    "delivery": {
     "mode": "step_reveal",
     "reason": "rule 1",
@@ -573,7 +635,7 @@
    ],
    "evidence_tag": "inferred",
    "prerequisite_id": "BC-PRQ-06005",
-   "text": "A(2) = 40 is the amount at input 2; R is its rate, not the amount."
+   "text": "40 is an amount; R is a rate."
   },
   {
    "id": "LSN-CON-08006#prq-BC-PRQ-08006",
@@ -590,7 +652,7 @@
    ],
    "evidence_tag": "inferred",
    "prerequisite_id": "BC-PRQ-08006",
-   "text": "On a calculator form, full precision until the last line, then three places."
+   "text": "Full precision, then three places."
   }
  ],
  "checks": [
@@ -618,7 +680,7 @@
     "tool": "exact",
     "direction": "forward"
    },
-   "completes": "LSN-CON-08006#s7",
+   "completes": "LSN-CON-08006#s8",
    "stem": {
     "text": "A(2) = 40 gallons and the integral of R from 2 to 4 is 30. Find A(4).",
     "command_verb": "find"
@@ -800,19 +862,19 @@
   }
  ],
  "refresher": [
-  "LSN-CON-08006#s2",
+  "LSN-CON-08006#s3",
   "LSN-CON-08006#err-BC-ERR-08011",
   "LSN-CON-08006#err-BC-ERR-08012",
   "LSN-CON-08006#err-BC-ERR-99006",
   "LSN-CON-08006#err-BC-ERR-99005",
-  "LSN-CON-08006#s7"
+  "LSN-CON-08006#s8"
  ],
  "provenance": {
   "author": "tools/lesson_transcribe.py",
-  "prompt_version": "generator/lesson_v1",
+  "prompt_version": "generator/lesson_v2",
   "design_path": "docs/lessons/unit-08/LSN-CON-08006.md",
-  "signed_off_by": "claude-opus-5-5",
-  "signed_off_at": "2026-09-29",
+  "signed_off_by": null,
+  "signed_off_at": null,
   "not_human": true
  }
 }

@@ -39,69 +39,84 @@
   "auditor": "claude-opus-5-5",
   "blocks": [
    {
+    "id": "prediction",
+    "verdict": "ok",
+    "evidence": "SymPy tons/hour*hour = tons; R > 0 as an outflow lowers the pile (CHA-4.A.3 on ced:118, BC-QA-06015 notes); key A is the only true option, B has the rate's units, C the wrong sign; resolution true, no id."
+   },
+   {
     "id": "orientation",
     "verdict": "ok",
-    "evidence": "Paraphrases BC-CON-06002 description_plain and the 6.1 Assessment behaviour sentence on sign and units; 26 words."
+    "evidence": "Paraphrase of BC-CON-06002 description_plain and the 6.1 Assessment behaviour sentence on sign and units; 17 words."
    },
    {
     "id": "ki-1",
     "verdict": "ok",
-    "evidence": "Units paragraph of research 6.1 and CHA-4.A.4 on ced:118; gallons per second times seconds is the research Notation example."
+    "evidence": "CHA-4.A.4 on ced:118 and the 6.1 Units paragraph."
    },
    {
     "id": "ki-2",
     "verdict": "ok",
-    "evidence": "Quote matches CHA-4.A.3 on ced:118 verbatim; outflow case follows BC-QA-06015 difficulty_variables and parameter_spec notes (R positive)."
+    "evidence": "Quote still a verbatim substring of cache/text/ced/page-118.txt (CHA-4.A.3); outflow sentence from BC-QA-06015 notes (R positive throughout)."
    },
    {
     "id": "st-1",
     "verdict": "ok",
-    "evidence": "Cue from common_givens and asked_to_produce, method is expected_solution_path[0], rival matches common_distractors (interval omitted, rate units)."
+    "evidence": "Method is BC-QA-06015 expected_solution_path[0] verbatim, no label; rival from wrong_approaches [0] and [1] without the 'Rival:' label."
+   },
+   {
+    "id": "st-1.contrast",
+    "verdict": "ok",
+    "evidence": "this matches BC-QA-06015 typical_wording (interpret with units); not_this is the average display, sourced to BC-QA-06015 notes ('the average display carries the factor 1 over the interval length'); why_not and feature true."
    },
    {
     "id": "ex-1",
     "verdict": "ok",
-    "evidence": "SymPy tons/hour*hour simplifies to tons; draw in parameter_spec domain, finish 6; outflow sign reasoning correct; sg-23:2 is BC-ERR-06029 official evidence."
+    "evidence": "Only text shortened; SymPy tons/hour*hour = tons, step expressions unchanged; the (sg-23:2) citation is gone from served text."
    },
    {
     "id": "err-BC-ERR-99034",
     "verdict": "ok",
-    "evidence": "observed_behavior and scoring_consequence equal the bundle record; wrong step Integral(R) as gain vs right step its negative is consistent with ex-1."
+    "evidence": "fix_prompt true with relation distinct; integral of R versus its negative differ."
    },
    {
     "id": "err-BC-ERR-06029",
     "verdict": "ok",
-    "evidence": "Record text equals bundle; possible_reason is a substring of BC-MIS-08009 description; tons/hour vs tons matches the error."
+    "evidence": "fix_prompt true with relation distinct; SymPy tons/hour differs from tons."
    },
    {
-    "id": "bridge-BC-PRQ-06005",
+    "id": "BC-PRQ-06005",
     "verdict": "ok",
-    "evidence": "Paraphrase of BC-PRQ-06005 description_plain and failure_signature (f and f prime interchanged)."
+    "evidence": "Paraphrase of BC-PRQ-06005 description_plain; true, no id."
    },
    {
     "id": "chk-1",
     "verdict": "ok",
-    "evidence": "Same draw as ex-1; key sentence matches ex-1 answer."
+    "evidence": "Same draw as ex-1; key sentence matches ex-1 answer.",
+    "note": "unchanged since 2026-09-29 apart from the renumbered section pointer"
    },
    {
     "id": "chk-2",
     "verdict": "ok",
-    "evidence": "Draw people, start 8, length 4 in domain, finish 12 matches limits; SymPy people/hour*hour gives people."
+    "evidence": "Draw people, start 8, length 4 in domain, finish 12 matches limits; SymPy people/hour*hour gives people.",
+    "note": "unchanged since 2026-09-29"
    },
    {
     "id": "chk-3",
     "verdict": "ok",
-    "evidence": "Draw oil, start 0, length 6 in domain; key A correct for a positive outflow; B and C map to BC-ERR-06029, D to BC-ERR-99034 as derived."
+    "evidence": "Draw oil, start 0, length 6 in domain; key A correct for a positive outflow; B and C map to BC-ERR-06029, D to BC-ERR-99034 as derived.",
+    "note": "unchanged since 2026-09-29"
    }
   ],
   "advice": [
-   "No representations and no what_a_reader_scores entries; both are justified by the record (no point_types on BC-QA-06015), so the scoring habit is carried only by the error blocks. A one line note that the interpretation point needs quantity, units and interval together would make the scoring habit explicit.",
-   "ki-2 as a static signed area figure suits a sign comparison; ki-1 as text suits a units rule.",
-   "Recognition of the stem and the rival is taught through st-1 and chk-3; the average value rival (factor 1/(b - a)) named in the design prose is not exercised by any check.",
-   "ki-2's sources omit BC-QA-06015 although the outflow sentence comes from its difficulty_variables."
+   "ex-1 step 1 why 'It accumulates R's measure.' is shortened past clarity; 'The integral adds up tons' would read better.",
+   "scoring_consequence of err-BC-ERR-06029 carries the citation (sg-23:2); it is verbatim record text the reader strips, so no served citation, but the record text could drop it.",
+   "Carried from the earlier audit: No representations and no what_a_reader_scores entries; both are justified by the record (no point_types on BC-QA-06015), so the scoring habit is carried only by the error blocks. A one line note that the interpretation point needs quantity, units and interval together would make the scoring habit explicit.",
+   "Carried from the earlier audit: ki-2 as a static signed area figure suits a sign comparison; ki-1 as text suits a units rule.",
+   "Carried from the earlier audit: Recognition of the stem and the rival is taught through st-1 and chk-3; the average value rival (factor 1/(b - a)) named in the design prose is not exercised by any check.",
+   "Carried from the earlier audit: ki-2's sources omit BC-QA-06015 although the outflow sentence comes from its difficulty_variables."
   ],
   "counts": {
-   "ok": 11,
+   "ok": 13,
    "unsourced": 0,
    "wrong": 0,
    "over_cap": 0,

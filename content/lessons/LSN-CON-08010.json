@@ -3,7 +3,7 @@
  "version": 1,
  "kind": "concept",
  "target_id": "BC-CON-08010",
- "status": "signed_off",
+ "status": "draft",
  "snapshot_digest": "a6a8ec9d3f59ab8f712e33d30cc22fc64bf2c478fbe7312e3e3118d319c6a42f",
  "source_digest": "d792211db7fae96b21fb408eef514ae0c2f0fc0e20913cdeb5623fd761a49b26",
  "read_minutes": {
@@ -11,12 +11,59 @@
   "brief": 3.0
  },
  "word_count": {
-  "full": 509,
-  "brief": 391
+  "full": 533,
+  "brief": 415
  },
  "sections": [
   {
    "id": "LSN-CON-08010#s1",
+   "type": "prediction",
+   "bands": [
+    "low",
+    "mid"
+   ],
+   "skills": [
+    "BC-SKL-08018",
+    "BC-SKL-08019",
+    "BC-SKL-08022"
+   ],
+   "sources": [
+    "BC-CON-08010",
+    "research/units/unit-08-applications-integration.md#8.4 Finding the Area Between Curves Expressed as Functions of x"
+   ],
+   "evidence_tag": "inferred",
+   "stem": {
+    "text": "Predict: \\(f(x)=-x^2+6x-7\\) and \\(g(x)=3-x\\) meet at \\(x=2\\) and \\(x=5\\), with \\(f(3)=2\\) and \\(g(3)=0\\). Which integrand gives the area between them?",
+    "command_verb": "predict"
+   },
+   "format": "mcq",
+   "options": [
+    {
+     "id": "A",
+     "label": "\\(f\\) minus \\(g\\)",
+     "is_key": true
+    },
+    {
+     "id": "B",
+     "label": "\\(g\\) minus \\(f\\)",
+     "is_key": false
+    },
+    {
+     "id": "C",
+     "label": "\\(f\\) plus \\(g\\)",
+     "is_key": false
+    }
+   ],
+   "resolution": {
+    "text": "The height of the region is the upper curve minus the lower, \\(f(x)-g(x)\\), positive on \\([2,5]\\). The area is the integral of that height from 2 to 5, \\(9/2\\)."
+   },
+   "delivery": {
+    "mode": "text",
+    "reason": "rule 6"
+   }
+  },
+  {
+   "id": "LSN-CON-08010#s2",
    "type": "orientation",
    "bands": [
     "low",
@@ -32,7 +79,7 @@
     "research/units/unit-08-applications-integration.md#8.4 Finding the Area Between Curves Expressed as Functions of x"
    ],
    "evidence_tag": "inferred",
-   "text": "A response writes one definite integral of upper curve minus lower curve in x, with the region's limits, antidifferentiates, and reports a nonnegative area.",
+   "text": "A response writes upper minus lower in one integral and reports a nonnegative area.",
    "delivery": {
     "mode": "figure",
     "reason": "rule 4: BC-REP-02 on BC-SKL-08018 and BC-SKL-08019; unit README delivery map",
@@ -101,7 +148,7 @@
    }
   },
   {
-   "id": "LSN-CON-08010#s2",
+   "id": "LSN-CON-08010#s3",
    "type": "key_ideas",
    "bands": [
     "low",
@@ -121,7 +168,7 @@
    "evidence_tag": "verified",
    "ek_id": "BC-EK-CHA-5A1",
    "depth": "core",
-   "text": "With f at or above g on [a, b], the area between the graphs is the integral of f minus g in x. The upper curve, named from the figure or from one interior input, fixes the order of subtraction. The area is nonnegative; writing the reversed difference as equal to the positive area loses the answer point (sg-23:17).",
+   "text": "With f at or above g on [a, b], the area is the integral of f minus g. The upper curve, found from the figure or one interior input, fixes the order; the area is nonnegative.",
    "notation": "upper minus lower; dx",
    "quote": {
     "text": "Areas of regions in the plane can be calculated with definite integrals.",
@@ -195,7 +242,7 @@
    }
   },
   {
-   "id": "LSN-CON-08010#s3",
+   "id": "LSN-CON-08010#s4",
    "type": "strategy",
    "bands": [
     "low",
@@ -211,13 +258,24 @@
    ],
    "evidence_tag": "verified",
    "archetype_id": "BC-QA-08008",
-   "cue": "The stem asks for the area of a region between two graphs, from the curve equations or a shaded figure.",
-   "method": "First written line: the upper curve named, then the integral of upper minus lower with its limits.",
-   "rival": "Rival: the reversed order, reported as a negative area (BC-ERR-08020).",
-   "separating_feature": "One interior input in both functions fixes the order."
+   "cue": "Area of a region between two graphs.",
+   "method": "The upper curve named, then upper minus lower with its limits.",
+   "rival": "The reversed order, reported as a negative area.",
+   "separating_feature": "One interior input fixes the order.",
+   "contrast": {
+    "this": {
+     "text": "\\(p(x)=4-x^2\\) and \\(q(x)=x+2\\) enclose a region. Find its area.",
+     "archetype_id": "BC-QA-08008"
+    },
+    "not_this": {
+     "text": "Find the area between \\(f(x)=x^2\\) and \\(g(x)=x\\) on \\([0,2]\\), where the graphs cross at \\(x=1\\).",
+     "why_not": "The graphs cross inside the interval, so the region splits into two integrals."
+    },
+    "feature": "One curve stays on top from limit to limit."
+   }
   },
   {
-   "id": "LSN-CON-08010#s4",
+   "id": "LSN-CON-08010#s5",
    "type": "worked_example",
    "bands": [
     "low",
@@ -250,12 +308,12 @@
    "calculator_status": "no_calculator",
    "steps": [
     {
-     "cue": "Area between two graphs: which is upper?",
-     "why": "At \\(x=3\\): \\(f=2\\), \\(g=0\\), so \\(f\\) is upper."
+     "cue": "Which is upper?",
+     "why": "At \\(x=3\\): \\(f=2\\), \\(g=0\\)."
     },
     {
-     "cue": "Upper minus lower, limits at the meeting points.",
-     "why": "\\(f\\) stays upper on \\([2,5]\\), so one integral.",
+     "cue": "Upper minus lower, meeting-point limits.",
+     "why": "One integral.",
      "expression": [
       "Integrate",
       [
@@ -287,7 +345,7 @@
      "relation": "new"
     },
     {
-     "cue": "Parentheses around \\(g\\), then collect.",
+     "cue": "Parentheses around \\(g\\), collect.",
      "why": "\\(-(3-x)=x-3\\).",
      "expression": [
       "Integrate",
@@ -319,7 +377,7 @@
      "relation": "equivalent"
     },
     {
-     "cue": "Antiderivative, upper limit minus lower limit.",
+     "cue": "Antiderivative, then the limits.",
      "why": "\\(F(x)=-x^3/3+7x^2/2-10x\\).",
      "expression": [
       "Rational",
@@ -329,7 +387,7 @@
      "relation": "equivalent"
     },
     {
-     "cue": "The stem asks for an area.",
+     "cue": "Area is asked.",
      "why": "Positive, so the order was right.",
      "expression": [
       "Rational",
@@ -354,7 +412,7 @@
    }
   },
   {
-   "id": "LSN-CON-08010#s5",
+   "id": "LSN-CON-08010#s6",
    "type": "what_a_reader_scores",
    "bands": [
     "low",
@@ -369,7 +427,7 @@
     "BC-PT-99059"
    ],
    "evidence_tag": "verified",
-   "example_id": "LSN-CON-08010#s4",
+   "example_id": "LSN-CON-08010#s5",
    "lines": [
     {
      "point_type_id": "BC-PT-99059",
@@ -446,6 +504,7 @@
     ]
    },
    "relation": "distinct",
+   "fix_prompt": true,
    "possible_reason": {
     "misconception_id": "BC-MIS-06016",
     "text": "limits of integration and differentials carry over unchanged"
@@ -532,6 +591,7 @@
     ]
    },
    "relation": "distinct",
+   "fix_prompt": true,
    "possible_reason": {
     "misconception_id": "BC-MIS-08011",
     "text": "any sign problem can be repaired at the end"
@@ -620,6 +680,7 @@
     ]
    },
    "relation": "equivalent",
+   "fix_prompt": false,
    "delivery": {
     "mode": "step_reveal",
     "reason": "rule 1",
@@ -709,6 +770,7 @@
     ]
    },
    "relation": "distinct",
+   "fix_prompt": true,
    "possible_reason": {
     "misconception_id": "BC-MIS-99003",
     "text": "squaring a difference of functions for an area"
@@ -734,7 +796,7 @@
    ],
    "evidence_tag": "inferred",
    "prerequisite_id": "BC-PRQ-06002",
-   "text": "Powers rewritten as exponents before the reverse power rule; otherwise the antiderivative stalls."
+   "text": "Powers as exponents first."
   },
   {
    "id": "LSN-CON-08010#prq-BC-PRQ-06005",
@@ -752,7 +814,7 @@
    ],
    "evidence_tag": "inferred",
    "prerequisite_id": "BC-PRQ-06005",
-   "text": "\\(f(3)\\) is a value at one input; reading the wrong input, or \\(f'\\) for \\(f\\), names the wrong upper curve."
+   "text": "\\(f(3)\\) is a value at one input."
   }
  ],
  "checks": [
@@ -775,7 +837,7 @@
     "presentation": "formula",
     "limits": "intersections"
    },
-   "completes": "LSN-CON-08010#s4",
+   "completes": "LSN-CON-08010#s5",
    "stem": {
     "text": "Evaluate the area \\(\\int_2^5 (-x^2+7x-10)\\,dx\\).",
     "command_verb": "evaluate"
@@ -1127,19 +1189,19 @@
   }
  ],
  "refresher": [
-  "LSN-CON-08010#s2",
+  "LSN-CON-08010#s3",
   "LSN-CON-08010#err-BC-ERR-06018",
   "LSN-CON-08010#err-BC-ERR-08020",
   "LSN-CON-08010#err-BC-ERR-99006",
   "LSN-CON-08010#err-BC-ERR-99011",
-  "LSN-CON-08010#s4"
+  "LSN-CON-08010#s5"
  ],
  "provenance": {
   "author": "tools/lesson_transcribe.py",
-  "prompt_version": "generator/lesson_v1",
+  "prompt_version": "generator/lesson_v2",
   "design_path": "docs/lessons/unit-08/LSN-CON-08010.md",
-  "signed_off_by": "claude-opus-5-5",
-  "signed_off_at": "2026-09-29",
+  "signed_off_by": null,
+  "signed_off_at": null,
   "not_human": true
  }
 }

@@ -3,7 +3,7 @@
  "version": 1,
  "kind": "concept",
  "target_id": "BC-CON-08017",
- "status": "signed_off",
+ "status": "draft",
  "snapshot_digest": "a6a8ec9d3f59ab8f712e33d30cc22fc64bf2c478fbe7312e3e3118d319c6a42f",
  "source_digest": "0f00ba7799e03666ff68ea9f42966eb68e72a29acccbac72e50ac693d12074c1",
  "read_minutes": {
@@ -11,12 +11,60 @@
   "brief": 3.0
  },
  "word_count": {
-  "full": 644,
-  "brief": 382
+  "full": 661,
+  "brief": 399
  },
  "sections": [
   {
    "id": "LSN-CON-08017#s1",
+   "type": "prediction",
+   "bands": [
+    "low",
+    "mid"
+   ],
+   "skills": [
+    "BC-SKL-08040",
+    "BC-SKL-08041",
+    "BC-SKL-08042",
+    "BC-SKL-08043"
+   ],
+   "sources": [
+    "BC-CON-08017",
+    "research/units/unit-08-applications-integration.md#8.9 Volume with Disc Method: Revolving Around the x- or y-Axis"
+   ],
+   "evidence_tag": "inferred",
+   "stem": {
+    "text": "R under \\(y=\\sqrt{x}\\) on \\([0,4]\\) is revolved about the x-axis. Predict the area of the cross section at \\(x=2\\).",
+    "command_verb": "predict"
+   },
+   "format": "mcq",
+   "options": [
+    {
+     "id": "A",
+     "label": "\\(\\pi\\sqrt{2}\\)",
+     "is_key": false
+    },
+    {
+     "id": "B",
+     "label": "\\(2\\pi\\)",
+     "is_key": true
+    },
+    {
+     "id": "C",
+     "label": "\\(2\\)",
+     "is_key": false
+    }
+   ],
+   "resolution": {
+    "text": "The slice at \\(x=2\\) is a disc of radius \\(\\sqrt{2}\\), so its area is \\(2\\pi\\), pi times the squared radius. The disc method integrates that area."
+   },
+   "delivery": {
+    "mode": "text",
+    "reason": "rule 6"
+   }
+  },
+  {
+   "id": "LSN-CON-08017#s2",
    "type": "orientation",
    "bands": [
     "low",
@@ -33,7 +81,7 @@
     "research/units/unit-08-applications-integration.md#8.9 Volume with Disc Method: Revolving Around the x- or y-Axis"
    ],
    "evidence_tag": "inferred",
-   "text": "A region touching its axis, revolved, is a stack of discs. A response writes pi times the integral of the squared radius, with limits, and reports the volume, as a multiple of pi without a calculator.",
+   "text": "A region touching its axis, revolved, is a stack of discs. A response writes pi times the integral of the squared radius, with limits, and gives the volume as a multiple of pi.",
    "delivery": {
     "mode": "text",
     "reason": "rule 6: a statement of what a response shows",
@@ -43,7 +91,7 @@
    }
   },
   {
-   "id": "LSN-CON-08017#s2",
+   "id": "LSN-CON-08017#s3",
    "type": "key_ideas",
    "bands": [
     "low",
@@ -63,7 +111,7 @@
    "evidence_tag": "inferred",
    "ek_id": "BC-EK-CHA-5C1",
    "depth": "core",
-   "text": "The region meets the axis, so each slice is a disc; its radius is the distance from curve to axis. About the x-axis, integrate in x. Pi multiplies the integral; the radius is squared before integrating.",
+   "text": "Each slice is a disc whose radius is the distance from curve to axis. About the x-axis, integrate in x. Pi multiplies the integral; the radius is squared first.",
    "notation": "pi times the integral of the radius squared",
    "delivery": {
     "mode": "motion",
@@ -126,7 +174,7 @@
    }
   },
   {
-   "id": "LSN-CON-08017#s3",
+   "id": "LSN-CON-08017#s4",
    "type": "strategy",
    "bands": [
     "low",
@@ -143,13 +191,24 @@
    ],
    "evidence_tag": "verified",
    "archetype_id": "BC-QA-08012",
-   "cue": "A region against its axis, revolved; asked for the volume.",
-   "method": "First line: the radius as distance to the axis.",
+   "cue": "A region on its axis, revolved; asked for the volume.",
+   "method": "The radius as distance to the axis.",
    "rival": "Radius unsquared, or pi dropped.",
-   "separating_feature": "A disc is a circle: pi r squared."
+   "separating_feature": "A disc is a circle: pi r squared.",
+   "contrast": {
+    "this": {
+     "text": "R, bounded by \\(y=x^{3}\\), the x-axis and \\(x=1\\), is revolved about the x-axis. Find the volume.",
+     "archetype_id": "BC-QA-08012"
+    },
+    "not_this": {
+     "text": "R, bounded by \\(y=x^{3}+1\\), \\(y=1\\) and \\(x=1\\), is revolved about the x-axis. Find the volume.",
+     "why_not": "The region is off the axis, so the slices are rings."
+    },
+    "feature": "A gap from the axis means rings, no gap means discs."
+   }
   },
   {
-   "id": "LSN-CON-08017#s4",
+   "id": "LSN-CON-08017#s5",
    "type": "worked_example",
    "bands": [
     "low",
@@ -223,7 +282,6 @@
        4
       ]
      ],
-     "point_type_id": "BC-PT-99001",
      "relation": "new"
     },
     {
@@ -252,7 +310,7 @@
    }
   },
   {
-   "id": "LSN-CON-08017#s5",
+   "id": "LSN-CON-08017#s6",
    "type": "worked_example",
    "bands": [
     "low"
@@ -359,6 +417,7 @@
      "Pi"
     ]
    },
+   "fade_from": 3,
    "delivery": {
     "mode": "step_reveal",
     "reason": "rule 1",
@@ -366,7 +425,7 @@
    }
   },
   {
-   "id": "LSN-CON-08017#s6",
+   "id": "LSN-CON-08017#s7",
    "type": "what_a_reader_scores",
    "bands": [
     "low",
@@ -379,24 +438,19 @@
     "BC-SKL-08043"
    ],
    "sources": [
-    "BC-PT-99058",
-    "BC-PT-99001"
+    "BC-PT-99058"
    ],
    "evidence_tag": "verified",
-   "example_id": "LSN-CON-08017#s4",
+   "example_id": "LSN-CON-08017#s5",
    "lines": [
     {
      "point_type_id": "BC-PT-99058",
      "text": "Volume integrand form. Earned by: An integrand of the correct volume form, a nonzero constant times the square of the function for a disc, or the stated cross-section area (sg-26:19, sg-22:18). Not earned by: A constant other than pi where pi is required, which sg-22:19 states blocks the answer point; a rotation about the wrong axis, which sg-26:19 lets earn the form point only."
-    },
-    {
-     "point_type_id": "BC-PT-99001",
-     "text": "Definite integral expression with correct limits. Earned by: A definite integral whose limits match the requested interval and whose integrand matches the requested quantity, with or without the differential (sg-26:4, sg-22:2). Not earned by: An unsupported numerical value, or a definite integral whose bounds are wrong (sg-22:18). Notation: Differential may be omitted; sg-22:2 accepts dx written for dt. sg-23:8 treats a missing differential as recoverable for this point but restricts later eligibility."
     }
    ]
   },
   {
-   "id": "LSN-CON-08017#s7",
+   "id": "LSN-CON-08017#s8",
    "type": "what_a_reader_scores",
    "bands": [
     "low"
@@ -412,7 +466,7 @@
     "BC-PT-99004"
    ],
    "evidence_tag": "verified",
-   "example_id": "LSN-CON-08017#s5",
+   "example_id": "LSN-CON-08017#s6",
    "lines": [
     {
      "point_type_id": "BC-PT-99058",
@@ -477,6 +531,7 @@
     ]
    },
    "relation": "distinct",
+   "fix_prompt": true,
    "possible_reason": {
     "misconception_id": "BC-MIS-08013",
     "text": "treats dx and dy as labels for the direction of slicing"
@@ -540,6 +595,7 @@
     ]
    },
    "relation": "distinct",
+   "fix_prompt": true,
    "possible_reason": {
     "misconception_id": "BC-MIS-08012",
     "text": "chooses limits from the axes of the picture"
@@ -612,6 +668,7 @@
     ]
    },
    "relation": "distinct",
+   "fix_prompt": true,
    "possible_reason": {
     "misconception_id": "BC-MIS-08020",
     "text": "carries the circle formula only as far as the factor pi"
@@ -672,6 +729,7 @@
     ]
    },
    "relation": "distinct",
+   "fix_prompt": true,
    "possible_reason": {
     "misconception_id": "BC-MIS-08019",
     "text": "remembers the squared dimension but not the fraction in front of it"
@@ -697,7 +755,7 @@
    ],
    "evidence_tag": "inferred",
    "prerequisite_id": "BC-PRQ-06002",
-   "text": "Rewrite radicals as powers before antidifferentiating."
+   "text": "Radicals become powers before antidifferentiating."
   },
   {
    "id": "LSN-CON-08017#prq-BC-PRQ-08002",
@@ -714,7 +772,7 @@
    ],
    "evidence_tag": "inferred",
    "prerequisite_id": "BC-PRQ-08002",
-   "text": "Integrating in y needs x as a function of y."
+   "text": "Integrating in y needs x in terms of y."
   },
   {
    "id": "LSN-CON-08017#prq-BC-PRQ-08004",
@@ -732,7 +790,7 @@
    ],
    "evidence_tag": "inferred",
    "prerequisite_id": "BC-PRQ-08004",
-   "text": "A distance is larger minus smaller, not a bare function value."
+   "text": "A distance is larger minus smaller."
   }
  ],
  "checks": [
@@ -754,7 +812,7 @@
     "presentation": "formula",
     "axis": "x_axis"
    },
-   "completes": "LSN-CON-08017#s4",
+   "completes": "LSN-CON-08017#s5",
    "stem": {
     "text": "Evaluate pi times the integral of x from 0 to 4.",
     "command_verb": "evaluate"
@@ -1016,19 +1074,19 @@
   }
  ],
  "refresher": [
-  "LSN-CON-08017#s2",
+  "LSN-CON-08017#s3",
   "LSN-CON-08017#err-BC-ERR-08023",
   "LSN-CON-08017#err-BC-ERR-08024",
   "LSN-CON-08017#err-BC-ERR-08036",
   "LSN-CON-08017#err-BC-ERR-08037",
-  "LSN-CON-08017#s4"
+  "LSN-CON-08017#s5"
  ],
  "provenance": {
   "author": "tools/lesson_transcribe.py",
-  "prompt_version": "generator/lesson_v1",
+  "prompt_version": "generator/lesson_v2",
   "design_path": "docs/lessons/unit-08/LSN-CON-08017.md",
-  "signed_off_by": "claude-opus-5-5",
-  "signed_off_at": "2026-09-29",
+  "signed_off_by": null,
+  "signed_off_at": null,
   "not_human": true
  }
 }

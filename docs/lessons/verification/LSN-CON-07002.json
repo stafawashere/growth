@@ -45,93 +45,108 @@
   "auditor": "claude-opus-5-5",
   "blocks": [
    {
+    "id": "prediction",
+    "verdict": "ok",
+    "evidence": "SymPy: diff(3 - 2e^(2x)) - 2((3 - 2e^(2x)) - 3) = 0, y(0) = 1, both sides -4 at x = 0; only C is sufficient evidence, A and B are true facts but not a demonstration; resolution from research 7.2 Verification and the multi-concept variant."
+   },
+   {
     "id": "orientation",
     "verdict": "ok",
-    "evidence": "Paraphrases BC-CON-07002 description_plain and the 7.2 archetype path (differentiate, substitute, compare, check the point); 23 words."
+    "evidence": "Shortened; expected_solution_path of BC-QA-07007 (differentiate, substitute, compare, check the condition)."
    },
    {
     "id": "ki-1",
     "verdict": "ok",
-    "evidence": "Matches the 7.2 Verification and Refutation paragraphs; quote is FUN-7.B.1 verbatim on ced:138."
+    "evidence": "Shortened; research 7.2 Verification and Refutation paragraphs; quote verbatim on ced:138."
    },
    {
     "id": "st-1",
     "verdict": "ok",
-    "evidence": "Method is expected_solution_path[0] \"differentiate the candidate\"; rival is wrong_approaches of BC-QA-07007; cue 20 words or fewer."
+    "evidence": "Labels stripped; method expected_solution_path[0]; rival wrong_approaches."
+   },
+   {
+    "id": "st-1.contrast",
+    "verdict": "ok",
+    "evidence": "this matches BC-QA-07007 typical_wording, SymPy: diff(2 + 5e^(3x)) - 3((2 + 5e^(3x)) - 2) = 0; not_this is BC-QA-07003 typical_wording (separation), matching the wrong_approaches rival; why_not true."
    },
    {
     "id": "ex-1",
     "verdict": "ok",
-    "evidence": "SymPy: diff(3-2e^(2x)) = -4e^(2x); 2((3-2e^(2x))-3) simplifies to -4e^(2x); value at 0 is 1."
+    "evidence": "Cues and whys shortened, exprs unchanged; SymPy residual 0, value 1 at 0."
    },
    {
     "id": "ex-2",
     "verdict": "ok",
-    "evidence": "SymPy: diff(2+3e^(-x)) = -3e^(-x) = -((2+3e^(-x))-2); value at 0 is 5, not 4."
+    "evidence": "fade_from 5 (1-indexed, LessonSection.tsx shownBeforeFade = fade_from - 1): steps 1 to 4 show the equation holds, which with the stated y(0) = 4 lets a student finish; withheld step 6 carries BC-PT-99005; SymPy residual 0, value 5 at 0."
    },
    {
     "id": "what_a_reader_scores:ex-1",
     "verdict": "ok",
-    "evidence": "BC-PT-99068 line reproduces the bundle earns and does_not_earn fields."
+    "evidence": "BC-PT-99068 line reproduces the bundle earns and does_not_earn fields. unchanged since 2026-09-29."
    },
    {
     "id": "what_a_reader_scores:ex-2",
     "verdict": "ok",
-    "evidence": "BC-PT-99068 and BC-PT-99005 lines reproduce the bundle point type fields."
+    "evidence": "BC-PT-99068 and BC-PT-99005 lines reproduce the bundle point type fields. unchanged since 2026-09-29."
    },
    {
     "id": "err-BC-ERR-07006",
     "verdict": "ok",
-    "evidence": "observed_behavior and scoring_consequence verbatim from the record; candidate 3-2e^(2x) versus derivative -4e^(2x) checked."
+    "evidence": "fix_prompt true with relation distinct; 3 - 2e^(2x) against -4e^(2x) differ."
    },
    {
     "id": "err-BC-ERR-07007",
     "verdict": "ok",
-    "evidence": "Record fields verbatim; BC-MIS-07005 is a linked possible misconception; 3-2e^0 = 1."
+    "evidence": "fix_prompt true with relation distinct; step texts shortened; 3 - 2e^0 = 1."
    },
    {
     "id": "err-BC-ERR-07008",
     "verdict": "ok",
-    "evidence": "Record fields verbatim; 2+3e^0 = 5 checked."
+    "evidence": "fix_prompt true with relation distinct; SymPy at x = 0: left side 3, right side -3."
    },
    {
     "id": "representations",
     "verdict": "ok",
-    "evidence": "null; bundle names only BC-REP-01 and BC-REP-06, none figure bearing."
+    "evidence": "null; bundle names only BC-REP-01 and BC-REP-06, none figure bearing. unchanged since 2026-09-29."
    },
    {
     "id": "BC-PRQ-06005",
     "verdict": "ok",
-    "evidence": "Paraphrases description_plain and failure_signature (f and f prime interchanged)."
+    "evidence": "Shortened; evaluation at a stated input from description_plain."
    },
    {
     "id": "BC-PRQ-07002",
     "verdict": "ok",
-    "evidence": "Leibniz notation prerequisite; left side as the derivative is a fair reading."
+    "evidence": "Shortened; Leibniz reading, same as the earlier ok."
    },
    {
     "id": "chk-1",
     "verdict": "ok",
-    "evidence": "SymPy: 3-2e^(2*0) = 1, key consistent with ex-1."
+    "evidence": "SymPy: 3-2e^(2*0) = 1, key consistent with ex-1. unchanged since 2026-09-29."
    },
    {
     "id": "chk-2",
     "verdict": "ok",
-    "evidence": "SymPy: diff(-1+3e^(-3x)) = -9e^(-3x) = -3((-1+3e^(-3x))+1); value at 0 is 2."
+    "evidence": "SymPy: diff(-1+3e^(-3x)) = -9e^(-3x) = -3((-1+3e^(-3x))+1); value at 0 is 2. unchanged since 2026-09-29."
    },
    {
     "id": "chk-3",
     "verdict": "ok",
-    "evidence": "SymPy: diff(-2+4e^x) = 4e^x = y+2; y(0) = 2. Distractor A: y against y+2 gives -2+4e^x vs 4e^x, matching BC-ERR-07006."
+    "evidence": "SymPy: diff(-2+4e^x) = 4e^x = y+2; y(0) = 2. Distractor A: y against y+2 gives -2+4e^x vs 4e^x, matching BC-ERR-07006. unchanged since 2026-09-29."
+   },
+   {
+    "id": "no_figure_reason",
+    "verdict": "ok",
+    "evidence": "Bundle names BC-REP-01 and BC-REP-06 only; verification is substitution, not a process."
    }
   ],
   "advice": [
-   "err-BC-ERR-07008 is illustrated on ex-2, where the candidate does solve the equation and fails only the initial condition; the record is about a negative verdict on the equation with no disagreeing input, so a draw where the sides actually disagree at a named input would illustrate it more faithfully.",
-   "Delivery modes fit: text for the rule, step_reveal for the demonstration chain.",
-   "Recognition, first written line (the derivative) and rival (solving from scratch) are all taught; the scoring habit of closing the chain and showing the value at the stated input is explicit."
+   "Reader-score lines for ex-1 and ex-2 carry page citations (sg-25:26, sg-25:22, sg-22:21, sg-26:2, sg-25:4, sg-23:10, sg-22:9, sg-22:6, sg-25:2); they are verbatim record text the reader strips, so no change to the design.",
+   "Prediction options A and B are true facts that fail only as sufficient evidence; the word evidence in the stem carries the whole discrimination, so keep it if the stem is edited.",
+   "The BC-PT-99005 line includes a three-decimal precision rule that does not apply to this exact-value lesson; the reader shows it verbatim."
   ],
   "counts": {
-   "ok": 16,
+   "ok": 19,
    "unsourced": 0,
    "wrong": 0,
    "over_cap": 0,

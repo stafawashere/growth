@@ -3,20 +3,68 @@
  "version": 1,
  "kind": "concept",
  "target_id": "BC-CON-08020",
- "status": "signed_off",
+ "status": "draft",
  "snapshot_digest": "a6a8ec9d3f59ab8f712e33d30cc22fc64bf2c478fbe7312e3e3118d319c6a42f",
  "source_digest": "fcd8a90188b81fa7383b0bdf7274a3e1c09542de4b5d1e3a6ac62e2839da54c2",
  "read_minutes": {
-  "full": 4.6,
+  "full": 4.7,
   "brief": 3.0
  },
  "word_count": {
-  "full": 603,
-  "brief": 382
+  "full": 615,
+  "brief": 394
  },
  "sections": [
   {
    "id": "LSN-CON-08020#s1",
+   "type": "prediction",
+   "bands": [
+    "low",
+    "mid"
+   ],
+   "skills": [
+    "BC-SKL-08052",
+    "BC-SKL-08053",
+    "BC-SKL-08054",
+    "BC-SKL-08055"
+   ],
+   "sources": [
+    "BC-CON-08020",
+    "research/units/unit-08-applications-integration.md#8.12 Volume with Washer Method: Revolving Around Other Axes"
+   ],
+   "evidence_tag": "inferred",
+   "stem": {
+    "text": "R lies between \\(f(x)=1+2x-x^2\\) and \\(g(x)=1\\) and is revolved about \\(y=3\\). Predict which curve is farther from the line at \\(x=1\\).",
+    "command_verb": "predict"
+   },
+   "format": "mcq",
+   "options": [
+    {
+     "id": "A",
+     "label": "\\(f\\), the higher curve",
+     "is_key": false
+    },
+    {
+     "id": "B",
+     "label": "\\(g\\), the lower curve",
+     "is_key": true
+    },
+    {
+     "id": "C",
+     "label": "Both are equally far",
+     "is_key": false
+    }
+   ],
+   "resolution": {
+    "text": "The line lies above R, so the lower curve \\(g\\) is farther, and the farther curve gives the outer radius."
+   },
+   "delivery": {
+    "mode": "text",
+    "reason": "rule 6"
+   }
+  },
+  {
+   "id": "LSN-CON-08020#s2",
    "type": "orientation",
    "bands": [
     "low",
@@ -43,7 +91,7 @@
    }
   },
   {
-   "id": "LSN-CON-08020#s2",
+   "id": "LSN-CON-08020#s3",
    "type": "key_ideas",
    "bands": [
     "low",
@@ -123,7 +171,7 @@
    }
   },
   {
-   "id": "LSN-CON-08020#s3",
+   "id": "LSN-CON-08020#s4",
    "type": "strategy",
    "bands": [
     "low",
@@ -141,12 +189,23 @@
    "evidence_tag": "verified",
    "archetype_id": "BC-QA-08013",
    "cue": "Two curves revolved about y = k, outside the region.",
-   "method": "First line: which curve is farther from y = k.",
-   "rival": "Higher curve as outer, giving a negative volume.",
-   "separating_feature": "Whether the line sits above or below the region."
+   "method": "Which curve is farther from y = k.",
+   "rival": "Higher curve as outer.",
+   "separating_feature": "Whether the line sits above or below the region.",
+   "contrast": {
+    "this": {
+     "text": "R lies between \\(f(x)=2+x-x^2\\) and \\(g(x)=2\\) and is revolved about \\(y=4\\). Find the volume.",
+     "archetype_id": "BC-QA-08013"
+    },
+    "not_this": {
+     "text": "R lies between \\(y=2+x-x^2\\) and \\(y=2\\) and is revolved about \\(y=2\\). Find the volume.",
+     "why_not": "The line bounds the region, so the slices are discs with one shifted radius."
+    },
+    "feature": "A line clear of the region gives two radii measured from it."
+   }
   },
   {
-   "id": "LSN-CON-08020#s4",
+   "id": "LSN-CON-08020#s5",
    "type": "worked_example",
    "bands": [
     "low",
@@ -286,7 +345,6 @@
        2
       ]
      ],
-     "point_type_id": "BC-PT-99001",
      "relation": "new"
     },
     {
@@ -323,7 +381,7 @@
    }
   },
   {
-   "id": "LSN-CON-08020#s5",
+   "id": "LSN-CON-08020#s6",
    "type": "worked_example",
    "bands": [
     "low"
@@ -464,6 +522,7 @@
      "Pi"
     ]
    },
+   "fade_from": 3,
    "delivery": {
     "mode": "step_reveal",
     "reason": "rule 1",
@@ -471,7 +530,7 @@
    }
   },
   {
-   "id": "LSN-CON-08020#s6",
+   "id": "LSN-CON-08020#s7",
    "type": "what_a_reader_scores",
    "bands": [
     "low",
@@ -484,24 +543,19 @@
     "BC-SKL-08055"
    ],
    "sources": [
-    "BC-PT-99058",
-    "BC-PT-99001"
+    "BC-PT-99058"
    ],
    "evidence_tag": "verified",
-   "example_id": "LSN-CON-08020#s4",
+   "example_id": "LSN-CON-08020#s5",
    "lines": [
     {
      "point_type_id": "BC-PT-99058",
      "text": "Volume integrand form. Earned by: An integrand of the correct volume form, a nonzero constant times the square of the function for a disc, or the stated cross-section area (sg-26:19, sg-22:18). Not earned by: A constant other than pi where pi is required, which sg-22:19 states blocks the answer point; a rotation about the wrong axis, which sg-26:19 lets earn the form point only."
-    },
-    {
-     "point_type_id": "BC-PT-99001",
-     "text": "Definite integral expression with correct limits. Earned by: A definite integral whose limits match the requested interval and whose integrand matches the requested quantity, with or without the differential (sg-26:4, sg-22:2). Not earned by: An unsupported numerical value, or a definite integral whose bounds are wrong (sg-22:18). Notation: Differential may be omitted; sg-22:2 accepts dx written for dt. sg-23:8 treats a missing differential as recoverable for this point but restricts later eligibility."
     }
    ]
   },
   {
-   "id": "LSN-CON-08020#s7",
+   "id": "LSN-CON-08020#s8",
    "type": "what_a_reader_scores",
    "bands": [
     "low"
@@ -516,7 +570,7 @@
     "BC-PT-99058"
    ],
    "evidence_tag": "verified",
-   "example_id": "LSN-CON-08020#s5",
+   "example_id": "LSN-CON-08020#s6",
    "lines": [
     {
      "point_type_id": "BC-PT-99058",
@@ -627,10 +681,7 @@
     ]
    },
    "relation": "distinct",
-   "possible_reason": {
-    "misconception_id": "BC-MIS-08013",
-    "text": "treats dx and dy as labels for the direction of slicing"
-   },
+   "fix_prompt": true,
    "delivery": {
     "mode": "step_reveal",
     "reason": "rule 1",
@@ -735,10 +786,7 @@
     ]
    },
    "relation": "distinct",
-   "possible_reason": {
-    "misconception_id": "BC-MIS-08017",
-    "text": "treats squaring as distributing over subtraction"
-   },
+   "fix_prompt": true,
    "delivery": {
     "mode": "step_reveal",
     "reason": "rule 1",
@@ -850,6 +898,7 @@
     ]
    },
    "relation": "distinct",
+   "fix_prompt": true,
    "possible_reason": {
     "misconception_id": "BC-MIS-08021",
     "text": "treats the disc and washer formulas as fixed in the function rather than as built from a distance to the axis"
@@ -960,6 +1009,7 @@
     ]
    },
    "relation": "distinct",
+   "fix_prompt": true,
    "possible_reason": {
     "misconception_id": "BC-MIS-08023",
     "text": "assigns the radii by position in the plane rather than by distance from the axis"
@@ -985,7 +1035,7 @@
    ],
    "evidence_tag": "inferred",
    "prerequisite_id": "BC-PRQ-08002",
-   "text": "Integrating in y needs x as a function of y."
+   "text": "Integrating in y needs x in terms of y."
   },
   {
    "id": "LSN-CON-08020#prq-BC-PRQ-08004",
@@ -1004,7 +1054,7 @@
    ],
    "evidence_tag": "inferred",
    "prerequisite_id": "BC-PRQ-08004",
-   "text": "A distance to a line is larger minus smaller, not a bare function value."
+   "text": "A distance is larger minus smaller."
   }
  ],
  "checks": [
@@ -1027,7 +1077,7 @@
     "presentation": "formula",
     "axis": "above"
    },
-   "completes": "LSN-CON-08020#s4",
+   "completes": "LSN-CON-08020#s5",
    "stem": {
     "text": "Evaluate pi times the integral of 4 - (x^2 - 2x + 2)^2 from 0 to 2.",
     "command_verb": "evaluate"
@@ -1515,19 +1565,19 @@
   }
  ],
  "refresher": [
-  "LSN-CON-08020#s2",
+  "LSN-CON-08020#s3",
   "LSN-CON-08020#err-BC-ERR-08023",
   "LSN-CON-08020#err-BC-ERR-08030",
   "LSN-CON-08020#err-BC-ERR-08038",
   "LSN-CON-08020#err-BC-ERR-08040",
-  "LSN-CON-08020#s4"
+  "LSN-CON-08020#s5"
  ],
  "provenance": {
   "author": "tools/lesson_transcribe.py",
-  "prompt_version": "generator/lesson_v1",
+  "prompt_version": "generator/lesson_v2",
   "design_path": "docs/lessons/unit-08/LSN-CON-08020.md",
-  "signed_off_by": "claude-opus-5-5",
-  "signed_off_at": "2026-09-29",
+  "signed_off_by": null,
+  "signed_off_at": null,
   "not_human": true
  }
 }

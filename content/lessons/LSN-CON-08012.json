@@ -3,20 +3,68 @@
  "version": 1,
  "kind": "concept",
  "target_id": "BC-CON-08012",
- "status": "signed_off",
+ "status": "draft",
  "snapshot_digest": "a6a8ec9d3f59ab8f712e33d30cc22fc64bf2c478fbe7312e3e3118d319c6a42f",
  "source_digest": "5c6dce1fb3f13826fe68a9247f8f95e846f2c8b0b31b6c9c85d95ad1ce9bfc03",
  "read_minutes": {
-  "full": 3.5,
-  "brief": 2.8
+  "full": 3.7,
+  "brief": 3.0
  },
  "word_count": {
-  "full": 438,
-  "brief": 346
+  "full": 489,
+  "brief": 397
  },
  "sections": [
   {
    "id": "LSN-CON-08012#s1",
+   "type": "prediction",
+   "bands": [
+    "low",
+    "mid"
+   ],
+   "skills": [
+    "BC-SKL-08023",
+    "BC-SKL-08024",
+    "BC-SKL-08025",
+    "BC-SKL-08026"
+   ],
+   "sources": [
+    "BC-CON-08012",
+    "ced:156"
+   ],
+   "evidence_tag": "inferred",
+   "stem": {
+    "text": "Predict: R is bounded by \\(y=\\sqrt{x}\\), \\(y=x-2\\) and the x-axis. Which single integral in y gives its area?",
+    "command_verb": "predict"
+   },
+   "format": "mcq",
+   "options": [
+    {
+     "id": "A",
+     "label": "Left minus right, y from 0 to 2",
+     "is_key": false
+    },
+    {
+     "id": "B",
+     "label": "Right minus left, y from 0 to 2",
+     "is_key": true
+    },
+    {
+     "id": "C",
+     "label": "Right minus left, y from 0 to 4",
+     "is_key": false
+    }
+   ],
+   "resolution": {
+    "text": "Each horizontal slice runs from \\(x=y^2\\) on the left to \\(x=y+2\\) on the right, for y from 0 to 2: right minus left in y."
+   },
+   "delivery": {
+    "mode": "text",
+    "reason": "rule 6"
+   }
+  },
+  {
+   "id": "LSN-CON-08012#s2",
    "type": "orientation",
    "bands": [
     "low",
@@ -33,7 +81,7 @@
     "research/units/unit-08-applications-integration.md#8.5 Finding the Area Between Curves Expressed as Functions of y"
    ],
    "evidence_tag": "inferred",
-   "text": "A response rewrites both boundaries as x in terms of y, then integrates the right curve minus the left curve in dy between y limits: one integral where slicing in x would need two.",
+   "text": "A response rewrites both boundaries as x in terms of y and integrates right minus left in dy between y limits.",
    "delivery": {
     "mode": "figure",
     "reason": "rule 4: BC-REP-02 on BC-SKL-08024 and BC-SKL-08025; unit README delivery map",
@@ -91,7 +139,7 @@
    }
   },
   {
-   "id": "LSN-CON-08012#s2",
+   "id": "LSN-CON-08012#s3",
    "type": "key_ideas",
    "bands": [
     "low",
@@ -111,7 +159,7 @@
    "evidence_tag": "verified",
    "ek_id": "BC-EK-CHA-5A2",
    "depth": "core",
-   "text": "With both boundaries written as x in terms of y, the area is the integral of right minus left with respect to y. A region whose top changes curve needs two integrals in x but one in y, when each side stays one curve. With dy, the integrand holds only y and the limits are y values.",
+   "text": "With both boundaries as x in terms of y, the area is the integral of right minus left in y. With dy, the integrand holds only y and the limits are y values.",
    "notation": "right minus left; dy",
    "quote": {
     "text": "Areas of regions in the plane can be calculated using functions of either x or y.",
@@ -185,7 +233,7 @@
    }
   },
   {
-   "id": "LSN-CON-08012#s3",
+   "id": "LSN-CON-08012#s4",
    "type": "strategy",
    "bands": [
     "low",
@@ -198,17 +246,30 @@
     "BC-SKL-08026"
    ],
    "sources": [
-    "BC-QA-08009"
+    "BC-QA-08009",
+    "BC-QA-08008",
+    "BC-ERR-08023"
    ],
    "evidence_tag": "verified",
    "archetype_id": "BC-QA-08009",
-   "cue": "The stem asks for an area by integrating in y, from a figure and curve equations in x or y.",
-   "method": "First written line: both boundaries as x in terms of y.",
-   "rival": "Rival: the original functions of x integrated between y limits (BC-ERR-08023).",
-   "separating_feature": "dy demands an integrand with no x."
+   "cue": "Area by integrating in y, from a figure and curves.",
+   "method": "Both boundaries as x in terms of y.",
+   "rival": "The functions of x integrated between y limits.",
+   "separating_feature": "dy demands an integrand with no x.",
+   "contrast": {
+    "this": {
+     "text": "R is bounded by \\(x=y^2\\), \\(x=y+12\\) and the x-axis. Find its area by integrating with respect to y.",
+     "archetype_id": "BC-QA-08009"
+    },
+    "not_this": {
+     "text": "R is bounded by \\(y=x^2\\) and \\(y=x+2\\). Find its area by integrating with respect to x.",
+     "why_not": "dx is named and one curve stays on top."
+    },
+    "feature": "The variable after \"with respect to\" sets the integrand."
+   }
   },
   {
-   "id": "LSN-CON-08012#s4",
+   "id": "LSN-CON-08012#s5",
    "type": "worked_example",
    "bands": [
     "low",
@@ -240,16 +301,16 @@
    "calculator_status": "no_calculator",
    "steps": [
     {
-     "cue": "In y: each boundary as x in terms of y.",
+     "cue": "Each boundary as x in terms of y.",
      "why": "\\(x=y^2\\) and \\(x=y+2\\)."
     },
     {
      "cue": "Which is right? Test \\(y=1\\).",
-     "why": "\\(y+2=3\\) exceeds \\(y^2=1\\): the line is right."
+     "why": "\\(y+2=3\\) exceeds \\(y^2=1\\)."
     },
     {
-     "cue": "y limits: the x-axis, \\(y=0\\), and where the curves meet.",
-     "why": "Only \\(y=2\\) lies in R; \\(y=-1\\) is on the discarded branch.",
+     "cue": "y limits: \\(y=0\\) and where the curves meet.",
+     "why": "Only \\(y=2\\) lies in R.",
      "expression": [
       "Equal",
       [
@@ -276,7 +337,7 @@
      "variable": "y"
     },
     {
-     "cue": "Right minus left, dy, limits 0 and 2.",
+     "cue": "Right minus left, limits 0 and 2.",
      "why": "One integral covers R.",
      "expression": [
       "Integrate",
@@ -399,6 +460,7 @@
     ]
    },
    "relation": "distinct",
+   "fix_prompt": true,
    "possible_reason": {
     "misconception_id": "BC-MIS-08011",
     "text": "any sign problem can be repaired at the end"
@@ -485,6 +547,7 @@
     ]
    },
    "relation": "distinct",
+   "fix_prompt": true,
    "possible_reason": {
     "misconception_id": "BC-MIS-08013",
     "text": "dx and dy as labels for the direction of slicing"
@@ -566,6 +629,7 @@
     ]
    },
    "relation": "distinct",
+   "fix_prompt": true,
    "possible_reason": {
     "misconception_id": "BC-MIS-08012",
     "text": "chooses limits from the axes of the picture"
@@ -646,6 +710,7 @@
     ]
    },
    "relation": "equivalent",
+   "fix_prompt": false,
    "delivery": {
     "mode": "step_reveal",
     "reason": "rule 1",
@@ -667,7 +732,7 @@
    ],
    "evidence_tag": "inferred",
    "prerequisite_id": "BC-PRQ-06005",
-   "text": "\\(f(1)\\) is one value at one input; reading the wrong input, or \\(f'\\) for \\(f\\), names the wrong right curve."
+   "text": "\\(f(1)\\) is one value at one input; else the wrong right curve is named."
   },
   {
    "id": "LSN-CON-08012#prq-BC-PRQ-08002",
@@ -686,7 +751,7 @@
    ],
    "evidence_tag": "inferred",
    "prerequisite_id": "BC-PRQ-08002",
-   "text": "An equation solved for x in terms of y, with the branch the region needs; without it, dy gets an integrand in x."
+   "text": "An equation solved for x in terms of y, on the branch the region needs."
   }
  ],
  "checks": [
@@ -707,7 +772,7 @@
     "letters": "fg",
     "presentation": "formula"
    },
-   "completes": "LSN-CON-08012#s4",
+   "completes": "LSN-CON-08012#s5",
    "stem": {
     "text": "Evaluate \\(\\int_0^2 (y+2-y^2)\\,dy\\).",
     "command_verb": "evaluate"
@@ -1103,19 +1168,19 @@
   }
  ],
  "refresher": [
-  "LSN-CON-08012#s2",
+  "LSN-CON-08012#s3",
   "LSN-CON-08012#err-BC-ERR-08020",
   "LSN-CON-08012#err-BC-ERR-08023",
   "LSN-CON-08012#err-BC-ERR-08024",
   "LSN-CON-08012#err-BC-ERR-99006",
-  "LSN-CON-08012#s4"
+  "LSN-CON-08012#s5"
  ],
  "provenance": {
   "author": "tools/lesson_transcribe.py",
-  "prompt_version": "generator/lesson_v1",
+  "prompt_version": "generator/lesson_v2",
   "design_path": "docs/lessons/unit-08/LSN-CON-08012.md",
-  "signed_off_by": "claude-opus-5-5",
-  "signed_off_at": "2026-09-29",
+  "signed_off_by": null,
+  "signed_off_at": null,
   "not_human": true
  }
 }

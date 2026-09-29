@@ -3,20 +3,67 @@
  "version": 1,
  "kind": "concept",
  "target_id": "BC-CON-08004",
- "status": "signed_off",
+ "status": "draft",
  "snapshot_digest": "a6a8ec9d3f59ab8f712e33d30cc22fc64bf2c478fbe7312e3e3118d319c6a42f",
  "source_digest": "565cbb333aa7e0b3de16a4a574999fb5389228c9d7118a755590164a6e323f15",
  "read_minutes": {
-  "full": 3.1,
-  "brief": 2.7
+  "full": 3.3,
+  "brief": 2.8
  },
  "word_count": {
-  "full": 350,
-  "brief": 301
+  "full": 411,
+  "brief": 362
  },
  "sections": [
   {
    "id": "LSN-CON-08004#s1",
+   "type": "prediction",
+   "bands": [
+    "low",
+    "mid"
+   ],
+   "skills": [
+    "BC-SKL-08007",
+    "BC-SKL-08008",
+    "BC-SKL-08011"
+   ],
+   "sources": [
+    "BC-CON-08004",
+    "research/units/unit-08-applications-integration.md#8.2 Connecting Position, Velocity, and Acceleration of Functions Using Integrals"
+   ],
+   "evidence_tag": "inferred",
+   "stem": {
+    "text": "Predict: v(t) = 2t^2 - 10t + 8 meters per second. Which gives the total distance over [0, 5]?",
+    "command_verb": "predict"
+   },
+   "format": "mcq",
+   "options": [
+    {
+     "id": "A",
+     "label": "The integral of v over [0, 5]",
+     "is_key": false
+    },
+    {
+     "id": "B",
+     "label": "The absolute value of the integral of v",
+     "is_key": false
+    },
+    {
+     "id": "C",
+     "label": "The integral of the speed over [0, 5]",
+     "is_key": true
+    }
+   ],
+   "resolution": {
+    "text": "Total distance is the integral of speed, |v|. Here v is negative on (1, 4), so the split is at 1 and 4, giving 49/3 meters."
+   },
+   "delivery": {
+    "mode": "text",
+    "reason": "rule 6"
+   }
+  },
+  {
+   "id": "LSN-CON-08004#s2",
    "type": "orientation",
    "bands": [
     "low",
@@ -32,7 +79,7 @@
     "research/units/unit-08-applications-integration.md#8.2 Connecting Position, Velocity, and Acceleration of Functions Using Integrals"
    ],
    "evidence_tag": "inferred",
-   "text": "A response integrates speed, the absolute value of velocity. By hand it splits the interval where velocity changes sign and adds the sizes of the pieces.",
+   "text": "A response integrates speed, |v|, splitting at sign changes of v when done by hand.",
    "delivery": {
     "mode": "text",
     "reason": "rule 6: a statement of what a response shows",
@@ -42,7 +89,7 @@
    }
   },
   {
-   "id": "LSN-CON-08004#s2",
+   "id": "LSN-CON-08004#s3",
    "type": "key_ideas",
    "bands": [
     "low",
@@ -61,8 +108,8 @@
    "evidence_tag": "inferred",
    "ek_id": "BC-EK-CHA-4C1",
    "depth": "core",
-   "text": "Total distance is the integral of speed, |v|, over [a, b]. Where v keeps one sign, distance and displacement agree up to sign; where v changes sign they differ. By hand, the zeros of v cut the interval, and each piece counts as positive.",
-   "notation": "speed as the absolute value of velocity; total distance",
+   "text": "Total distance is the integral of |v| over [a, b]. By hand, the zeros of v cut the interval and each piece counts as positive.",
+   "notation": "total distance",
    "delivery": {
     "mode": "figure",
     "reason": "rule 4: BC-REP-02 on BC-SKL-08008; unit README delivery map; not promoted, BC-QA-08003 difficulty_variables are presence flags",
@@ -136,7 +183,7 @@
    }
   },
   {
-   "id": "LSN-CON-08004#s3",
+   "id": "LSN-CON-08004#s4",
    "type": "strategy",
    "bands": [
     "low",
@@ -152,13 +199,24 @@
    ],
    "evidence_tag": "verified",
    "archetype_id": "BC-QA-08003",
-   "cue": "A velocity function or graph and a time interval, with total distance traveled asked.",
-   "method": "First: classify the requested quantity. Total distance: the integral of |v| over the interval.",
-   "rival": "Rival: integrating velocity and taking the absolute value of the result.",
-   "separating_feature": "v changes sign inside the interval, so pieces cancel inside one signed integral."
+   "cue": "Total distance traveled from a velocity and an interval.",
+   "method": "Classify the quantity. Total distance: the integral of |v|.",
+   "rival": "The absolute value of the integral of v.",
+   "separating_feature": "v changes sign inside the interval.",
+   "contrast": {
+    "this": {
+     "text": "Velocity is v(t) = t^2 - 7t + 10. Find the total distance traveled over [0, 6].",
+     "archetype_id": "BC-QA-08003"
+    },
+    "not_this": {
+     "text": "Velocity is v(t) = t^2 - 7t + 10, with x(0) = 4. Find x(6).",
+     "why_not": "It asks for a position: start plus signed integral."
+    },
+    "feature": "Total distance integrates |v|; a position adds the start."
+   }
   },
   {
-   "id": "LSN-CON-08004#s4",
+   "id": "LSN-CON-08004#s5",
    "type": "worked_example",
    "bands": [
     "low",
@@ -463,6 +521,7 @@
     ]
    },
    "relation": "distinct",
+   "fix_prompt": true,
    "possible_reason": {
     "misconception_id": "BC-MIS-08005",
     "text": "does not attach the absolute value to speed"
@@ -534,6 +593,7 @@
     ]
    },
    "relation": "distinct",
+   "fix_prompt": true,
    "possible_reason": {
     "misconception_id": "BC-MIS-08004",
     "text": "treats the integral of velocity as the length of the trip"
@@ -575,6 +635,7 @@
     ]
    },
    "relation": "distinct",
+   "fix_prompt": true,
    "delivery": {
     "mode": "step_reveal",
     "reason": "rule 1",
@@ -596,7 +657,7 @@
    ],
    "evidence_tag": "inferred",
    "prerequisite_id": "BC-PRQ-06005",
-   "text": "v(t) is velocity at time t; reading position for it puts the wrong function inside."
+   "text": "v(t) is velocity at time t."
   },
   {
    "id": "LSN-CON-08004#prq-BC-PRQ-08001",
@@ -613,7 +674,7 @@
    ],
    "evidence_tag": "inferred",
    "prerequisite_id": "BC-PRQ-08001",
-   "text": "Solve v(t) = 0 for every root inside the interval; a missed root leaves a piece unsplit."
+   "text": "Solve v(t) = 0 for every root."
   },
   {
    "id": "LSN-CON-08004#prq-BC-PRQ-08003",
@@ -631,7 +692,7 @@
    ],
    "evidence_tag": "inferred",
    "prerequisite_id": "BC-PRQ-08003",
-   "text": "|v| is v where v >= 0 and -v where v < 0, split at the zeros of v; otherwise a signed total is reported."
+   "text": "|v| is v where v is at least 0, otherwise -v."
   }
  ],
  "checks": [
@@ -654,7 +715,7 @@
     "units": "meters",
     "framing": "bare"
    },
-   "completes": "LSN-CON-08004#s4",
+   "completes": "LSN-CON-08004#s5",
    "stem": {
     "text": "The pieces of v on [0, 1], [1, 4], [4, 5] are 11/3, -9, 11/3. Find the total distance.",
     "command_verb": "find"
@@ -1028,18 +1089,18 @@
   }
  ],
  "refresher": [
-  "LSN-CON-08004#s2",
+  "LSN-CON-08004#s3",
   "LSN-CON-08004#err-BC-ERR-08009",
   "LSN-CON-08004#err-BC-ERR-08010",
   "LSN-CON-08004#err-BC-ERR-99010",
-  "LSN-CON-08004#s4"
+  "LSN-CON-08004#s5"
  ],
  "provenance": {
   "author": "tools/lesson_transcribe.py",
-  "prompt_version": "generator/lesson_v1",
+  "prompt_version": "generator/lesson_v2",
   "design_path": "docs/lessons/unit-08/LSN-CON-08004.md",
-  "signed_off_by": "claude-opus-5-5",
-  "signed_off_at": "2026-09-29",
+  "signed_off_by": null,
+  "signed_off_at": null,
   "not_human": true
  }
 }

@@ -3,7 +3,7 @@
  "version": 1,
  "kind": "concept",
  "target_id": "BC-CON-08011",
- "status": "signed_off",
+ "status": "draft",
  "snapshot_digest": "a6a8ec9d3f59ab8f712e33d30cc22fc64bf2c478fbe7312e3e3118d319c6a42f",
  "source_digest": "038ae2a9177a38a3e1df4de7ec0dbed77974f990e965bc4b51e74b8c41ff8121",
  "read_minutes": {
@@ -11,12 +11,58 @@
   "brief": 3.0
  },
  "word_count": {
-  "full": 393,
-  "brief": 393
+  "full": 406,
+  "brief": 406
  },
  "sections": [
   {
    "id": "LSN-CON-08011#s1",
+   "type": "prediction",
+   "bands": [
+    "low",
+    "mid"
+   ],
+   "skills": [
+    "BC-SKL-08020",
+    "BC-SKL-08021"
+   ],
+   "sources": [
+    "BC-CON-08011",
+    "ced:155"
+   ],
+   "evidence_tag": "inferred",
+   "stem": {
+    "text": "Predict: \\(f(x)=-x^2+6x-4\\) and \\(g(x)=2x-1\\) enclose a region with no vertical lines given. What are its limits?",
+    "command_verb": "predict"
+   },
+   "format": "mcq",
+   "options": [
+    {
+     "id": "A",
+     "label": "\\(x=1\\) and \\(x=5\\)",
+     "is_key": false
+    },
+    {
+     "id": "B",
+     "label": "\\(x=1\\) and \\(x=3\\)",
+     "is_key": true
+    },
+    {
+     "id": "C",
+     "label": "\\(x=3\\) and \\(x=5\\)",
+     "is_key": false
+    }
+   ],
+   "resolution": {
+    "text": "The region begins and ends where the graphs meet. \\(f(x)=g(x)\\) gives \\(x=1\\) and \\(x=3\\), the limits; 1 and 5 are y values."
+   },
+   "delivery": {
+    "mode": "text",
+    "reason": "rule 6"
+   }
+  },
+  {
+   "id": "LSN-CON-08011#s2",
    "type": "orientation",
    "bands": [
     "low",
@@ -31,7 +77,7 @@
     "research/units/unit-08-applications-integration.md#8.4 Finding the Area Between Curves Expressed as Functions of x"
    ],
    "evidence_tag": "inferred",
-   "text": "A response takes the limits from where the curves meet, solving f(x) = g(x) by hand or on a calculator, or from the vertical lines bounding the region.",
+   "text": "A response takes the limits from where the curves meet or from the named vertical lines.",
    "delivery": {
     "mode": "figure",
     "reason": "rule 4: BC-REP-02 on BC-SKL-08021; unit README delivery map",
@@ -91,7 +137,7 @@
    }
   },
   {
-   "id": "LSN-CON-08011#s2",
+   "id": "LSN-CON-08011#s3",
    "type": "key_ideas",
    "bands": [
     "low",
@@ -111,7 +157,7 @@
    "evidence_tag": "verified",
    "ek_id": "BC-EK-CHA-5A1",
    "depth": "core",
-   "text": "The limits are the inputs where the region begins and ends: vertical lines the stem names, or the solutions of f(x) = g(x). Every solution is found; those bounding the region are kept. On a calculator the crossings are stored, not retyped, so the area stays correct to three places.",
+   "text": "The limits are the inputs where the region begins and ends: named vertical lines, or the solutions of \\(f(x)=g(x)\\) that bound it. Calculator crossings are stored.",
    "notation": "intersection points as limits",
    "quote": {
     "text": "Areas of regions in the plane can be calculated with definite integrals.",
@@ -200,7 +246,7 @@
    }
   },
   {
-   "id": "LSN-CON-08011#s3",
+   "id": "LSN-CON-08011#s4",
    "type": "strategy",
    "bands": [
     "low",
@@ -211,17 +257,30 @@
     "BC-SKL-08021"
    ],
    "sources": [
-    "BC-QA-08008"
+    "BC-QA-08008",
+    "BC-QA-08010",
+    "BC-ERR-08019"
    ],
    "evidence_tag": "verified",
    "archetype_id": "BC-QA-08008",
-   "cue": "The stem asks for the area enclosed by two graphs, from curve equations with no vertical line named.",
-   "method": "First written line: \\(f(x)=g(x)\\), solved for every input; the solutions are the limits.",
-   "rival": "Rival: limits from other inputs, such as y coordinates (BC-ERR-08019).",
-   "separating_feature": "No vertical line in the stem: the limits come from f = g."
+   "cue": "Area enclosed by graphs, no vertical line named.",
+   "method": "\\(f(x)=g(x)\\), solved for every input; the solutions are the limits.",
+   "rival": "Limits from y coordinates.",
+   "separating_feature": "No vertical line: the limits come from f = g.",
+   "contrast": {
+    "this": {
+     "text": "\\(f(x)=x^2-2x\\) and \\(g(x)=x\\) enclose a region R. Write an integral for its area.",
+     "archetype_id": "BC-QA-08008"
+    },
+    "not_this": {
+     "text": "Find the total area between \\(f(x)=x^2-2x\\) and \\(g(x)=x\\) for \\(0\\le x\\le 4\\).",
+     "why_not": "The stated interval gives the limits."
+    },
+    "feature": "The stem names no interval."
+   }
   },
   {
-   "id": "LSN-CON-08011#s4",
+   "id": "LSN-CON-08011#s5",
    "type": "worked_example",
    "bands": [
     "low",
@@ -253,8 +312,8 @@
    "calculator_status": "no_calculator",
    "steps": [
     {
-     "cue": "Enclosed, no vertical line: limits where the graphs meet.",
-     "why": "The region begins and ends at \\(f=g\\).",
+     "cue": "No line named: solve \\(f=g\\).",
+     "why": "The region starts and ends at \\(f=g\\).",
      "expression": [
       "Equal",
       [
@@ -299,8 +358,8 @@
      "variable": "x"
     },
     {
-     "cue": "Limits 1 and 3; \\(f(2)=4\\) tops \\(g(2)=3\\).",
-     "why": "Upper minus lower between the meeting points.",
+     "cue": "Limits 1 and 3.",
+     "why": "Upper minus lower.",
      "expression": [
       "Integrate",
       [
@@ -342,8 +401,8 @@
      "relation": "equivalent"
     },
     {
-     "cue": "The stem asks for an area.",
-     "why": "Exact, nonnegative.",
+     "cue": "An area is asked.",
+     "why": "Exact and nonnegative.",
      "expression": [
       "Rational",
       4,
@@ -367,7 +426,7 @@
    }
   },
   {
-   "id": "LSN-CON-08011#s5",
+   "id": "LSN-CON-08011#s6",
    "type": "what_a_reader_scores",
    "bands": [
     "low",
@@ -381,7 +440,7 @@
     "BC-PT-99001"
    ],
    "evidence_tag": "verified",
-   "example_id": "LSN-CON-08011#s4",
+   "example_id": "LSN-CON-08011#s5",
    "lines": [
     {
      "point_type_id": "BC-PT-99001",
@@ -469,6 +528,7 @@
     ]
    },
    "relation": "distinct",
+   "fix_prompt": true,
    "possible_reason": {
     "misconception_id": "BC-MIS-08012",
     "text": "chooses limits from the axes of the picture"
@@ -502,13 +562,10 @@
    },
    "right_step": {
     "text": "4/3, or 1.333",
-    "expression": [
-     "Rational",
-     4,
-     3
-    ]
+    "expression": 1.333
    },
    "relation": "distinct",
+   "fix_prompt": true,
    "delivery": {
     "mode": "step_reveal",
     "reason": "rule 1",
@@ -530,7 +587,7 @@
    ],
    "evidence_tag": "inferred",
    "prerequisite_id": "BC-PRQ-08001",
-   "text": "Two expressions set equal and every solution in the interval found, by hand or solver; else the limits are missing."
+   "text": "Two expressions set equal and every solution found; else limits are missing."
   },
   {
    "id": "LSN-CON-08011#prq-BC-PRQ-08006",
@@ -547,7 +604,7 @@
    ],
    "evidence_tag": "inferred",
    "prerequisite_id": "BC-PRQ-08006",
-   "text": "Decimals kept to three places, nothing rounded mid computation; else a right setup loses its value."
+   "text": "Decimals kept to three places; else a right setup loses its value."
   }
  ],
  "checks": [
@@ -570,7 +627,7 @@
     "presentation": "formula",
     "limits": "intersections"
    },
-   "completes": "LSN-CON-08011#s4",
+   "completes": "LSN-CON-08011#s5",
    "stem": {
     "text": "The limits are 1 and 3. Evaluate \\(\\int_1^3 (-x^2+4x-3)\\,dx\\).",
     "command_verb": "evaluate"
@@ -917,17 +974,17 @@
   }
  ],
  "refresher": [
-  "LSN-CON-08011#s2",
+  "LSN-CON-08011#s3",
   "LSN-CON-08011#err-BC-ERR-08019",
   "LSN-CON-08011#err-BC-ERR-99019",
-  "LSN-CON-08011#s4"
+  "LSN-CON-08011#s5"
  ],
  "provenance": {
   "author": "tools/lesson_transcribe.py",
-  "prompt_version": "generator/lesson_v1",
+  "prompt_version": "generator/lesson_v2",
   "design_path": "docs/lessons/unit-08/LSN-CON-08011.md",
-  "signed_off_by": "claude-opus-5-5",
-  "signed_off_at": "2026-09-29",
+  "signed_off_by": null,
+  "signed_off_at": null,
   "not_human": true
  }
 }

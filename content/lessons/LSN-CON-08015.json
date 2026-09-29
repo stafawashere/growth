@@ -3,7 +3,7 @@
  "version": 1,
  "kind": "concept",
  "target_id": "BC-CON-08015",
- "status": "signed_off",
+ "status": "draft",
  "snapshot_digest": "a6a8ec9d3f59ab8f712e33d30cc22fc64bf2c478fbe7312e3e3118d319c6a42f",
  "source_digest": "4a024aa093027039139f910dadc0cea31f8c7825cdd7474248d068c4151b65ac",
  "read_minutes": {
@@ -11,12 +11,57 @@
   "brief": 3.0
  },
  "word_count": {
-  "full": 473,
-  "brief": 402
+  "full": 492,
+  "brief": 421
  },
  "sections": [
   {
    "id": "LSN-CON-08015#s1",
+   "type": "prediction",
+   "bands": [
+    "low",
+    "mid"
+   ],
+   "skills": [
+    "BC-SKL-08031"
+   ],
+   "sources": [
+    "BC-CON-08015",
+    "ced:158"
+   ],
+   "evidence_tag": "inferred",
+   "stem": {
+    "text": "Predict: A solid's base lies between \\(f(x)=-x^2+3x+1\\) and \\(g(x)=x+1\\) for \\(0\\le x\\le 2\\), with square cross sections perpendicular to the x-axis. What is the side of the slice at x?",
+    "command_verb": "predict"
+   },
+   "format": "mcq",
+   "options": [
+    {
+     "id": "A",
+     "label": "\\(f(x)\\)",
+     "is_key": false
+    },
+    {
+     "id": "B",
+     "label": "\\(f(x)-g(x)\\)",
+     "is_key": true
+    },
+    {
+     "id": "C",
+     "label": "\\((f(x)-g(x))^2\\)",
+     "is_key": false
+    }
+   ],
+   "resolution": {
+    "text": "The slice runs from g to f, so its side is \\(f(x)-g(x)=2x-x^2\\), not f(x) alone."
+   },
+   "delivery": {
+    "mode": "text",
+    "reason": "rule 6"
+   }
+  },
+  {
+   "id": "LSN-CON-08015#s2",
    "type": "orientation",
    "bands": [
     "low",
@@ -30,7 +75,7 @@
     "research/units/unit-08-applications-integration.md#8.7 Volumes with Cross Sections: Squares and Rectangles"
    ],
    "evidence_tag": "inferred",
-   "text": "A response writes the side of each slice as the distance between the two boundary curves of the base, upper minus lower, before any area formula.",
+   "text": "A response writes each side as upper minus lower before any area formula.",
    "delivery": {
     "mode": "figure",
     "reason": "rule 4: BC-REP-08 on BC-SKL-08031; unit README delivery map",
@@ -94,7 +139,7 @@
    }
   },
   {
-   "id": "LSN-CON-08015#s2",
+   "id": "LSN-CON-08015#s3",
    "type": "key_ideas",
    "bands": [
     "low",
@@ -111,7 +156,7 @@
    "evidence_tag": "verified",
    "ek_id": "BC-EK-CHA-5B1",
    "depth": "core",
-   "text": "The volume is the integral of one slice's area over the interval the solid spans. The side of a slice is a distance in the base: the upper boundary minus the lower, or one function only when the other boundary is an axis. A square or rectangular slice carries no pi.",
+   "text": "The side of a slice is upper boundary minus lower, or one function when the other boundary is an axis. No pi for a polygonal slice.",
    "notation": "side length as a difference of functions",
    "quote": {
     "text": "Volumes of solids with square and rectangular cross sections can be found using definite integrals",
@@ -189,7 +234,7 @@
    }
   },
   {
-   "id": "LSN-CON-08015#s3",
+   "id": "LSN-CON-08015#s4",
    "type": "strategy",
    "bands": [
     "low",
@@ -199,17 +244,30 @@
     "BC-SKL-08031"
    ],
    "sources": [
-    "BC-QA-08011"
+    "BC-QA-08011",
+    "BC-QA-08013",
+    "BC-ERR-99011"
    ],
    "evidence_tag": "verified",
    "archetype_id": "BC-QA-08011",
-   "cue": "The stem asks for a volume from a base region, a cross section shape, and the perpendicular axis.",
-   "method": "First written line: the side as the distance between the boundary curves.",
-   "rival": "Rival: each boundary function squared separately (BC-ERR-99011).",
-   "separating_feature": "The slice has one end on each curve."
+   "cue": "Base region, named cross section; volume asked.",
+   "method": "The side as the distance between the curves.",
+   "rival": "Each function squared separately.",
+   "separating_feature": "The slice has one end on each curve.",
+   "contrast": {
+    "this": {
+     "text": "The base between \\(y=x^2\\) and \\(y=x+2\\) has square cross sections perpendicular to the x-axis. Find the volume.",
+     "archetype_id": "BC-QA-08011"
+    },
+    "not_this": {
+     "text": "The region between \\(y=x^2\\) and \\(y=x+2\\) is revolved about the x-axis. Find the volume.",
+     "why_not": "Revolution gives washers, with radii squared separately."
+    },
+    "feature": "Squares stand on the base."
+   }
   },
   {
-   "id": "LSN-CON-08015#s4",
+   "id": "LSN-CON-08015#s5",
    "type": "worked_example",
    "bands": [
     "low",
@@ -245,12 +303,12 @@
    "calculator_status": "no_calculator",
    "steps": [
     {
-     "cue": "Perpendicular to the x-axis: vertical slices. Which end is upper?",
+     "cue": "Which end is upper?",
      "why": "\\(f(1)=3\\), \\(g(1)=2\\)."
     },
     {
-     "cue": "Side: distance between the curves.",
-     "why": "Both ends of the slice appear.",
+     "cue": "Side: distance between curves.",
+     "why": "Both ends appear.",
      "expression": [
       "Add",
       [
@@ -272,7 +330,7 @@
     },
     {
      "cue": "Simplify.",
-     "why": "The side at \\(x\\).",
+     "why": "The side at x.",
      "expression": [
       "Add",
       [
@@ -293,7 +351,7 @@
      "relation": "equivalent"
     },
     {
-     "cue": "Square: area is side squared, integrated over \\([0,2]\\).",
+     "cue": "Area is side squared.",
      "why": "No pi for a square.",
      "expression": [
       "Integrate",
@@ -339,7 +397,7 @@
      "relation": "equivalent"
     },
     {
-     "cue": "The stem asks for the volume.",
+     "cue": "The volume is asked.",
      "why": "Exact.",
      "expression": [
       "Rational",
@@ -364,7 +422,7 @@
    }
   },
   {
-   "id": "LSN-CON-08015#s5",
+   "id": "LSN-CON-08015#s6",
    "type": "what_a_reader_scores",
    "bands": [
     "low",
@@ -377,7 +435,7 @@
     "BC-PT-99001"
    ],
    "evidence_tag": "verified",
-   "example_id": "LSN-CON-08015#s4",
+   "example_id": "LSN-CON-08015#s5",
    "lines": [
     {
      "point_type_id": "BC-PT-99001",
@@ -445,6 +503,7 @@
     ]
    },
    "relation": "distinct",
+   "fix_prompt": true,
    "possible_reason": {
     "misconception_id": "BC-MIS-08016",
     "text": "reads the slice as reaching from the axis to the curve"
@@ -544,6 +603,7 @@
     ]
    },
    "relation": "distinct",
+   "fix_prompt": true,
    "possible_reason": {
     "misconception_id": "BC-MIS-08015",
     "text": "associates pi with volume rather than with circular cross sections"
@@ -622,6 +682,7 @@
     ]
    },
    "relation": "distinct",
+   "fix_prompt": true,
    "delivery": {
     "mode": "step_reveal",
     "reason": "rule 1",
@@ -643,7 +704,7 @@
    ],
    "evidence_tag": "inferred",
    "prerequisite_id": "BC-PRQ-08004",
-   "text": "A distance along an axis is the larger value minus the smaller; a bare function value is only the distance to the axis."
+   "text": "A distance is larger minus smaller."
   }
  ],
  "checks": [
@@ -671,7 +732,7 @@
     "reach": "2",
     "presentation": "formula"
    },
-   "completes": "LSN-CON-08015#s4",
+   "completes": "LSN-CON-08015#s5",
    "stem": {
     "text": "Evaluate \\(\\int_0^2 (2x-x^2)^2\\,dx\\).",
     "command_verb": "evaluate"
@@ -1097,18 +1158,18 @@
   }
  ],
  "refresher": [
-  "LSN-CON-08015#s2",
+  "LSN-CON-08015#s3",
   "LSN-CON-08015#err-BC-ERR-08028",
   "LSN-CON-08015#err-BC-ERR-99011",
   "LSN-CON-08015#err-BC-ERR-99033",
-  "LSN-CON-08015#s4"
+  "LSN-CON-08015#s5"
  ],
  "provenance": {
   "author": "tools/lesson_transcribe.py",
-  "prompt_version": "generator/lesson_v1",
+  "prompt_version": "generator/lesson_v2",
   "design_path": "docs/lessons/unit-08/LSN-CON-08015.md",
-  "signed_off_by": "claude-opus-5-5",
-  "signed_off_at": "2026-09-29",
+  "signed_off_by": null,
+  "signed_off_at": null,
   "not_human": true
  }
 }

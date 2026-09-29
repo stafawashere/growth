@@ -3,20 +3,65 @@
  "version": 1,
  "kind": "concept",
  "target_id": "BC-CON-08003",
- "status": "signed_off",
+ "status": "draft",
  "snapshot_digest": "a6a8ec9d3f59ab8f712e33d30cc22fc64bf2c478fbe7312e3e3118d319c6a42f",
  "source_digest": "48059dbf0ff20305ce6b5831f9dec5adf60220ffb6419f4c76b4b7e0fd343a16",
  "read_minutes": {
-  "full": 2.0,
-  "brief": 2.0
+  "full": 2.9,
+  "brief": 2.9
  },
  "word_count": {
-  "full": 240,
-  "brief": 240
+  "full": 378,
+  "brief": 378
  },
  "sections": [
   {
    "id": "LSN-CON-08003#s1",
+   "type": "prediction",
+   "bands": [
+    "low",
+    "mid"
+   ],
+   "skills": [
+    "BC-SKL-08006"
+   ],
+   "sources": [
+    "BC-CON-08003",
+    "research/units/unit-08-applications-integration.md#8.2 Connecting Position, Velocity, and Acceleration of Functions Using Integrals"
+   ],
+   "evidence_tag": "inferred",
+   "stem": {
+    "text": "Predict: a particle has velocity v(t) = -t^2 + 4t - 3 meters per second. Which expression gives its displacement over [0, 7/2]?",
+    "command_verb": "predict"
+   },
+   "format": "mcq",
+   "options": [
+    {
+     "id": "A",
+     "label": "The integral of v over [0, 7/2]",
+     "is_key": true
+    },
+    {
+     "id": "B",
+     "label": "The integral of the absolute value of v over [0, 7/2]",
+     "is_key": false
+    },
+    {
+     "id": "C",
+     "label": "v(7/2) minus v(0)",
+     "is_key": false
+    }
+   ],
+   "resolution": {
+    "text": "Displacement is the integral of v itself, so stretches where v is negative subtract. Here it is -7/24 meters. The integral of |v| would be total distance instead."
+   },
+   "delivery": {
+    "mode": "text",
+    "reason": "rule 6"
+   }
+  },
+  {
+   "id": "LSN-CON-08003#s2",
    "type": "orientation",
    "bands": [
     "low",
@@ -40,7 +85,7 @@
    }
   },
   {
-   "id": "LSN-CON-08003#s2",
+   "id": "LSN-CON-08003#s3",
    "type": "key_ideas",
    "bands": [
     "low",
@@ -149,7 +194,7 @@
    }
   },
   {
-   "id": "LSN-CON-08003#s3",
+   "id": "LSN-CON-08003#s4",
    "type": "strategy",
    "bands": [
     "low",
@@ -164,12 +209,23 @@
    "evidence_tag": "verified",
    "archetype_id": "BC-QA-08003",
    "cue": "A velocity function or graph and a time interval, with displacement or change in position asked.",
-   "method": "First: classify the requested quantity. Displacement: the integral of v over the interval.",
-   "rival": "Rival: integrating velocity and taking the absolute value of the result.",
-   "separating_feature": "Displacement keeps the sign; only total distance removes it."
+   "method": "Classify the requested quantity. Displacement: the integral of v over the interval.",
+   "rival": "Integrating velocity and taking the absolute value of the result.",
+   "separating_feature": "Displacement keeps the sign; only total distance removes it.",
+   "contrast": {
+    "this": {
+     "text": "A particle moves on a line with velocity v(t) = t^2 - 5t + 4. Find its displacement over [0, 6].",
+     "archetype_id": "BC-QA-08003"
+    },
+    "not_this": {
+     "text": "A particle has velocity v(t) = t^2 - 5t + 4 and x(0) = 3. Find x(6).",
+     "why_not": "It asks for a position, so the start 3 is added to the integral."
+    },
+    "feature": "Displacement is the change in position; a stated start with a position asked adds the start."
+   }
   },
   {
-   "id": "LSN-CON-08003#s4",
+   "id": "LSN-CON-08003#s5",
    "type": "worked_example",
    "bands": [
     "low",
@@ -299,6 +355,7 @@
     ]
    },
    "relation": "distinct",
+   "fix_prompt": true,
    "possible_reason": {
     "misconception_id": "BC-MIS-08004",
     "text": "treats the integral of velocity as the length of the trip"
@@ -347,7 +404,7 @@
     "units": "meters",
     "framing": "bare"
    },
-   "completes": "LSN-CON-08003#s4",
+   "completes": "LSN-CON-08003#s5",
    "stem": {
     "text": "The displacement is the integral of -t^2 + 4t - 3 from 0 to 7/2. Evaluate it.",
     "command_verb": "evaluate"
@@ -489,16 +546,16 @@
   }
  ],
  "refresher": [
-  "LSN-CON-08003#s2",
+  "LSN-CON-08003#s3",
   "LSN-CON-08003#err-BC-ERR-99010",
-  "LSN-CON-08003#s4"
+  "LSN-CON-08003#s5"
  ],
  "provenance": {
   "author": "tools/lesson_transcribe.py",
-  "prompt_version": "generator/lesson_v1",
+  "prompt_version": "generator/lesson_v2",
   "design_path": "docs/lessons/unit-08/LSN-CON-08003.md",
-  "signed_off_by": "claude-opus-5-5",
-  "signed_off_at": "2026-09-29",
+  "signed_off_by": null,
+  "signed_off_at": null,
   "not_human": true
  }
 }

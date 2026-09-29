@@ -3,20 +3,66 @@
  "version": 1,
  "kind": "concept",
  "target_id": "BC-CON-08005",
- "status": "signed_off",
+ "status": "draft",
  "snapshot_digest": "a6a8ec9d3f59ab8f712e33d30cc22fc64bf2c478fbe7312e3e3118d319c6a42f",
  "source_digest": "20eec860f5f4fe36041089b0abedb44a1e4a4221c17d3615aff4cd975d048d3a",
  "read_minutes": {
-  "full": 3.3,
-  "brief": 3.0
+  "full": 3.1,
+  "brief": 2.8
  },
  "word_count": {
-  "full": 451,
-  "brief": 401
+  "full": 420,
+  "brief": 372
  },
  "sections": [
   {
    "id": "LSN-CON-08005#s1",
+   "type": "prediction",
+   "bands": [
+    "low",
+    "mid"
+   ],
+   "skills": [
+    "BC-SKL-08009",
+    "BC-SKL-08010"
+   ],
+   "sources": [
+    "BC-CON-08005",
+    "research/units/unit-08-applications-integration.md#8.2 Connecting Position, Velocity, and Acceleration of Functions Using Integrals"
+   ],
+   "evidence_tag": "inferred",
+   "stem": {
+    "text": "Predict: v(t) = 3t^2 - 4t + 5 and x(1) = 25. Which gives x(3)?",
+    "command_verb": "predict"
+   },
+   "format": "mcq",
+   "options": [
+    {
+     "id": "A",
+     "label": "The integral of v from 1 to 3",
+     "is_key": false
+    },
+    {
+     "id": "B",
+     "label": "25 plus the integral of v from 1 to 3",
+     "is_key": true
+    },
+    {
+     "id": "C",
+     "label": "25 times the integral of v from 1 to 3",
+     "is_key": false
+    }
+   ],
+   "resolution": {
+    "text": "The integral of v from 1 to 3 is the change in position, 20 meters. Adding the known 25 gives x(3) = 45."
+   },
+   "delivery": {
+    "mode": "text",
+    "reason": "rule 6"
+   }
+  },
+  {
+   "id": "LSN-CON-08005#s2",
    "type": "orientation",
    "bands": [
     "low",
@@ -31,7 +77,7 @@
     "research/units/unit-08-applications-integration.md#8.2 Connecting Position, Velocity, and Acceleration of Functions Using Integrals"
    ],
    "evidence_tag": "inferred",
-   "text": "A response writes the later value as the known value plus the definite integral of the rate, then adds. The integral alone is the change.",
+   "text": "A response adds the known value to the integral of the rate.",
    "delivery": {
     "mode": "text",
     "reason": "rule 6: BC-REP-01 and 05 on the skills, none figure-bearing",
@@ -41,7 +87,7 @@
    }
   },
   {
-   "id": "LSN-CON-08005#s2",
+   "id": "LSN-CON-08005#s3",
    "type": "key_ideas",
    "bands": [
     "low",
@@ -59,7 +105,7 @@
    "evidence_tag": "inferred",
    "ek_id": "BC-EK-CHA-4C1",
    "depth": "core",
-   "text": "With v continuous on [a, b] and the position known at a, the position at b is the position at a plus the integral of v over [a, b]. A velocity is recovered from an acceleration the same way.",
+   "text": "The position at b is the position at a plus the integral of v over [a, b].",
    "notation": "s(b) = s(a) + integral of v",
    "delivery": {
     "mode": "text",
@@ -71,7 +117,7 @@
    }
   },
   {
-   "id": "LSN-CON-08005#s3",
+   "id": "LSN-CON-08005#s4",
    "type": "strategy",
    "bands": [
     "low",
@@ -85,13 +131,24 @@
    ],
    "evidence_tag": "verified",
    "archetype_id": "BC-QA-06005",
-   "cue": "A rate function and a known value at one time; the value at another time is asked.",
-   "method": "First line: the later value as the known value plus the definite integral of the rate.",
-   "rival": "Rival: reporting the net change as the amount.",
-   "separating_feature": "A known value is given and a value, not a change, is asked."
+   "cue": "A rate and a known value; a later value is asked.",
+   "method": "Known value plus the definite integral of the rate.",
+   "rival": "Reporting the net change as the amount.",
+   "separating_feature": "A value, not a change, is asked.",
+   "contrast": {
+    "this": {
+     "text": "R(t) = 3t^2 + 2 is the rate of Q, with Q(0) = 10. Find Q(4).",
+     "archetype_id": "BC-QA-06005"
+    },
+    "not_this": {
+     "text": "R(t) = 3t^2 + 2 is the rate of Q. Find the net change in Q on [0, 4].",
+     "why_not": "It asks for the change alone."
+    },
+    "feature": "Start given, value asked: add the start."
+   }
   },
   {
-   "id": "LSN-CON-08005#s4",
+   "id": "LSN-CON-08005#s5",
    "type": "strategy",
    "bands": [
     "low",
@@ -107,12 +164,12 @@
    "evidence_tag": "verified",
    "archetype_id": "BC-QA-08003",
    "cue": "A velocity, an initial position and a time interval; the position at a later time is asked.",
-   "method": "First: classify the requested quantity. A position uses the initial condition.",
-   "rival": "Rival: integrating velocity and taking the absolute value of the result.",
+   "method": "Classify the requested quantity. A position uses the initial condition.",
+   "rival": "Integrating velocity and taking the absolute value of the result.",
    "separating_feature": "A position keeps the sign of v and adds the start."
   },
   {
-   "id": "LSN-CON-08005#s5",
+   "id": "LSN-CON-08005#s6",
    "type": "worked_example",
    "bands": [
     "low",
@@ -194,7 +251,6 @@
      "cue": "Add the known value.",
      "why": "Meters: the position at t = 3.",
      "expression": 45,
-     "point_type_id": "BC-PT-99004",
      "relation": "equivalent"
     }
    ],
@@ -209,7 +265,7 @@
    }
   },
   {
-   "id": "LSN-CON-08005#s6",
+   "id": "LSN-CON-08005#s7",
    "type": "what_a_reader_scores",
    "bands": [
     "low",
@@ -219,19 +275,14 @@
     "BC-SKL-08009"
    ],
    "sources": [
-    "BC-PT-99033",
-    "BC-PT-99004"
+    "BC-PT-99033"
    ],
    "evidence_tag": "verified",
-   "example_id": "LSN-CON-08005#s5",
+   "example_id": "LSN-CON-08005#s6",
    "lines": [
     {
      "point_type_id": "BC-PT-99033",
      "text": "Uses the initial condition in an accumulation expression. Earned by: Adding the known function value at one endpoint to a definite integral of the rate (sg-24:3, sg-22:8). Not earned by: A definite integral alone with the known value never added (sg-22:8). Notation: sg-22:8 lists cases where a missing differential shifts which of the three points are available."
-    },
-    {
-     "point_type_id": "BC-PT-99004",
-     "text": "Answer with or without supporting work. Earned by: The correct value on its own, with no supporting work required (sg-25:3, sg-26:4). Not earned by: A value outside the accepted precision, or a value inconsistent with a required earlier step where the rubric imposes one. Precision: A reported decimal answer must be accurate to three places after the decimal point, rounded or truncated; at most one point per question is lost to inappropriate rounding (sg-25:2, sg-26:2). sg-26:4 also accepts a stated rounding to the nearest integer and several truncations."
     }
    ]
   },
@@ -319,6 +370,7 @@
     ]
    },
    "relation": "distinct",
+   "fix_prompt": true,
    "possible_reason": {
     "misconception_id": "BC-MIS-08006",
     "text": "reads an accumulation integral as the quantity itself rather than as the change in it"
@@ -373,7 +425,7 @@
     "tool": "exact",
     "direction": "forward"
    },
-   "completes": "LSN-CON-08005#s5",
+   "completes": "LSN-CON-08005#s6",
    "stem": {
     "text": "x(1) = 25, and the integral of v from 1 to 3 is 20. Find x(3).",
     "command_verb": "find"
@@ -481,16 +533,17 @@
   }
  ],
  "refresher": [
-  "LSN-CON-08005#s2",
+  "LSN-CON-08005#s3",
   "LSN-CON-08005#err-BC-ERR-08011",
-  "LSN-CON-08005#s5"
+  "LSN-CON-08005#s6"
  ],
+ "no_figure_reason": "The topic offers no figure-shaped conversion for a value recovered from an initial condition, and no skill carries a figure-bearing representation. The key idea is one symbolic relation with no process.",
  "provenance": {
   "author": "tools/lesson_transcribe.py",
-  "prompt_version": "generator/lesson_v1",
+  "prompt_version": "generator/lesson_v2",
   "design_path": "docs/lessons/unit-08/LSN-CON-08005.md",
-  "signed_off_by": "claude-opus-5-5",
-  "signed_off_at": "2026-09-29",
+  "signed_off_by": null,
+  "signed_off_at": null,
   "not_human": true
  }
 }

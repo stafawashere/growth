@@ -3,20 +3,68 @@
  "version": 1,
  "kind": "concept",
  "target_id": "BC-CON-08018",
- "status": "signed_off",
+ "status": "draft",
  "snapshot_digest": "a6a8ec9d3f59ab8f712e33d30cc22fc64bf2c478fbe7312e3e3118d319c6a42f",
  "source_digest": "83a6546171e12028059ac9f702a82030fcf4ed8550d99ca10ac2429119ce2ebc",
  "read_minutes": {
-  "full": 4.0,
+  "full": 3.9,
   "brief": 3.0
  },
  "word_count": {
-  "full": 522,
-  "brief": 379
+  "full": 535,
+  "brief": 392
  },
  "sections": [
   {
    "id": "LSN-CON-08018#s1",
+   "type": "prediction",
+   "bands": [
+    "low",
+    "mid"
+   ],
+   "skills": [
+    "BC-SKL-08044",
+    "BC-SKL-08045",
+    "BC-SKL-08046",
+    "BC-SKL-08047"
+   ],
+   "sources": [
+    "BC-CON-08018",
+    "research/units/unit-08-applications-integration.md#8.10 Volume with Disc Method: Revolving Around Other Axes"
+   ],
+   "evidence_tag": "inferred",
+   "stem": {
+    "text": "R is bounded by \\(y=x^2+2\\), \\(y=2\\) and \\(x=2\\), and is revolved about \\(y=2\\). Predict the radius of the disc at \\(x=1\\).",
+    "command_verb": "predict"
+   },
+   "format": "mcq",
+   "options": [
+    {
+     "id": "A",
+     "label": "\\(3\\)",
+     "is_key": false
+    },
+    {
+     "id": "B",
+     "label": "\\(1\\)",
+     "is_key": true
+    },
+    {
+     "id": "C",
+     "label": "\\(2\\)",
+     "is_key": false
+    }
+   ],
+   "resolution": {
+    "text": "The radius is the distance from the curve down to the line, \\((x^2+2)-2=x^2\\), which is 1 at \\(x=1\\). It is a difference from the line, not the curve's height."
+   },
+   "delivery": {
+    "mode": "text",
+    "reason": "rule 6"
+   }
+  },
+  {
+   "id": "LSN-CON-08018#s2",
    "type": "orientation",
    "bands": [
     "low",
@@ -43,7 +91,7 @@
    }
   },
   {
-   "id": "LSN-CON-08018#s2",
+   "id": "LSN-CON-08018#s3",
    "type": "key_ideas",
    "bands": [
     "low",
@@ -124,7 +172,7 @@
    }
   },
   {
-   "id": "LSN-CON-08018#s3",
+   "id": "LSN-CON-08018#s4",
    "type": "strategy",
    "bands": [
     "low",
@@ -142,12 +190,23 @@
    "evidence_tag": "verified",
    "archetype_id": "BC-QA-08012",
    "cue": "Revolved about a line y = k that bounds the region.",
-   "method": "First line: radius = (f(x) - k).",
+   "method": "Radius = (f(x) - k).",
    "rival": "Shifting the limits with the axis, or the bare f(x).",
-   "separating_feature": "The axis moves the radius, never the interval."
+   "separating_feature": "The axis moves the radius, never the interval.",
+   "contrast": {
+    "this": {
+     "text": "R, bounded by \\(y=x^{2}+1\\), \\(y=1\\) and \\(x=3\\), is revolved about \\(y=1\\). Find the volume.",
+     "archetype_id": "BC-QA-08012"
+    },
+    "not_this": {
+     "text": "R, bounded by \\(y=x^{2}+1\\), \\(y=1\\) and \\(x=3\\), is revolved about the x-axis. Find the volume.",
+     "why_not": "The x-axis misses the region, so the slices are rings."
+    },
+    "feature": "The line that bounds the region is the axis, so one radius is measured from it."
+   }
   },
   {
-   "id": "LSN-CON-08018#s4",
+   "id": "LSN-CON-08018#s5",
    "type": "worked_example",
    "bands": [
     "low",
@@ -235,7 +294,6 @@
        2
       ]
      ],
-     "point_type_id": "BC-PT-99001",
      "relation": "new"
     },
     {
@@ -272,7 +330,7 @@
    }
   },
   {
-   "id": "LSN-CON-08018#s5",
+   "id": "LSN-CON-08018#s6",
    "type": "worked_example",
    "bands": [
     "low"
@@ -374,6 +432,7 @@
      "Pi"
     ]
    },
+   "fade_from": 3,
    "delivery": {
     "mode": "step_reveal",
     "reason": "rule 1",
@@ -381,7 +440,7 @@
    }
   },
   {
-   "id": "LSN-CON-08018#s6",
+   "id": "LSN-CON-08018#s7",
    "type": "what_a_reader_scores",
    "bands": [
     "low",
@@ -394,24 +453,19 @@
     "BC-SKL-08047"
    ],
    "sources": [
-    "BC-PT-99058",
-    "BC-PT-99001"
+    "BC-PT-99058"
    ],
    "evidence_tag": "verified",
-   "example_id": "LSN-CON-08018#s4",
+   "example_id": "LSN-CON-08018#s5",
    "lines": [
     {
      "point_type_id": "BC-PT-99058",
      "text": "Volume integrand form. Earned by: An integrand of the correct volume form, a nonzero constant times the square of the function for a disc, or the stated cross-section area (sg-26:19, sg-22:18). Not earned by: A constant other than pi where pi is required, which sg-22:19 states blocks the answer point; a rotation about the wrong axis, which sg-26:19 lets earn the form point only."
-    },
-    {
-     "point_type_id": "BC-PT-99001",
-     "text": "Definite integral expression with correct limits. Earned by: A definite integral whose limits match the requested interval and whose integrand matches the requested quantity, with or without the differential (sg-26:4, sg-22:2). Not earned by: An unsupported numerical value, or a definite integral whose bounds are wrong (sg-22:18). Notation: Differential may be omitted; sg-22:2 accepts dx written for dt. sg-23:8 treats a missing differential as recoverable for this point but restricts later eligibility."
     }
    ]
   },
   {
-   "id": "LSN-CON-08018#s7",
+   "id": "LSN-CON-08018#s8",
    "type": "what_a_reader_scores",
    "bands": [
     "low"
@@ -426,7 +480,7 @@
     "BC-PT-99004"
    ],
    "evidence_tag": "verified",
-   "example_id": "LSN-CON-08018#s5",
+   "example_id": "LSN-CON-08018#s6",
    "lines": [
     {
      "point_type_id": "BC-PT-99004",
@@ -505,10 +559,7 @@
     ]
    },
    "relation": "distinct",
-   "possible_reason": {
-    "misconception_id": "BC-MIS-08021",
-    "text": "treats the disc and washer formulas as fixed in the function rather than as built from a distance to the axis"
-   },
+   "fix_prompt": true,
    "delivery": {
     "mode": "step_reveal",
     "reason": "rule 1",
@@ -577,6 +628,7 @@
     ]
    },
    "relation": "distinct",
+   "fix_prompt": true,
    "possible_reason": {
     "misconception_id": "BC-MIS-08022",
     "text": "treats the translation as applying to the whole integral rather than to the radius alone"
@@ -602,7 +654,7 @@
    ],
    "evidence_tag": "inferred",
    "prerequisite_id": "BC-PRQ-08002",
-   "text": "Integrating in y needs x written as a function of y."
+   "text": "Integrating in y needs x in terms of y."
   },
   {
    "id": "LSN-CON-08018#prq-BC-PRQ-08004",
@@ -621,7 +673,7 @@
    ],
    "evidence_tag": "inferred",
    "prerequisite_id": "BC-PRQ-08004",
-   "text": "A distance to a line is the larger value minus the smaller, not a bare function value."
+   "text": "A distance is larger minus smaller."
   }
  ],
  "checks": [
@@ -643,7 +695,7 @@
     "presentation": "formula",
     "axis": "shifted"
    },
-   "completes": "LSN-CON-08018#s4",
+   "completes": "LSN-CON-08018#s5",
    "stem": {
     "text": "Evaluate pi times the integral of x^4 from 0 to 2.",
     "command_verb": "evaluate"
@@ -804,17 +856,17 @@
   }
  ],
  "refresher": [
-  "LSN-CON-08018#s2",
+  "LSN-CON-08018#s3",
   "LSN-CON-08018#err-BC-ERR-08038",
   "LSN-CON-08018#err-BC-ERR-08039",
-  "LSN-CON-08018#s4"
+  "LSN-CON-08018#s5"
  ],
  "provenance": {
   "author": "tools/lesson_transcribe.py",
-  "prompt_version": "generator/lesson_v1",
+  "prompt_version": "generator/lesson_v2",
   "design_path": "docs/lessons/unit-08/LSN-CON-08018.md",
-  "signed_off_by": "claude-opus-5-5",
-  "signed_off_at": "2026-09-29",
+  "signed_off_by": null,
+  "signed_off_at": null,
   "not_human": true
  }
 }

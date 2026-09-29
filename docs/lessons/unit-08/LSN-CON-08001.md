@@ -9,6 +9,10 @@ purpose: Authoring spec for the concept lesson on BC-CON-08001, the average valu
 
 Concept BC-CON-08001 (skills BC-SKL-08001, BC-SKL-08002, BC-SKL-08003), topic 8.1 of Unit 8, first in the average value strand with no Unit 8 hard parent (docs/lessons/unit-08/README.md, section 1). Loaded by BC-QA-08001; the bundle also lists BC-QA-08002 and BC-QA-99007, which load BC-SKL-08003.
 
+## Prediction
+
+Predict which expression gives the average value of W(t) = 5cos(t^2/2) + 1 on [0, 3], before any rule is stated. Form: mcq, three options, key: the integral divided by the interval length. The two rivals are the endpoint mean (BC-QA-08001 `wrong_approaches`) and the undivided integral (BC-ERR-08001). The resolution states what the rule gives and the ex-1 value 1.961, and says nothing about the reader's choice. Sources: BC-CON-08001 and the topic 8.1 section its key idea cites.
+
 ## Orientation
 
 Served text, from BC-CON-08001 `description_plain` and the topic's Assessment behaviour paragraph (research/units/unit-08-applications-integration.md#8.1 Finding the Average Value of a Function on an Interval): a response writes the definite integral of the function over the stated interval, divides by the interval length, and reports three decimal places, with the setup shown before the calculator value. No count, no frequency.
@@ -27,6 +31,8 @@ All three skills map to BC-EK-CHA-4B1 (ced:152), so one core block, both bands.
 
 What says "not this concept": the words "rate of change" after "average" (BC-CON-08002 and the two archetypes above), or "total" or "how much" with no division (topic 8.3).
 
+The near miss the contrast pair uses is the average rate of change, the wording of BC-QA-99007 (a stem from outside BC-QA-08001): it names the same interval and the same function and asks for a difference quotient of endpoint values. The pair separates on the words after "average".
+
 ## Method choice
 
 Three strategy blocks, one per family, low band; st-1 also in mid. Every archetype carries `asked_to_produce` and `common_givens`, so none is tagged inferred.
@@ -34,6 +40,8 @@ Three strategy blocks, one per family, low band; st-1 also in mid. Every archety
 - st-1, BC-QA-08001. Method, `expected_solution_path[0]`: write the definite integral of the function over the interval, then divide by its length. Rival, `wrong_approaches`: averaging the two endpoint values. Separating feature: "average value of f" asks about f across the whole interval, so an integral, not two samples.
 - st-2, BC-QA-99007. Method: evaluate the function at both endpoints. Rival: integrating the function and dividing by the interval length. Separating feature: the words "rate of change".
 - st-3, BC-QA-08002. Method: compute the average rate of change over the interval. Rival: reporting that rate itself as the time. Separating feature: the stem asks for an input value.
+
+Contrast pair on st-1. This: a BC-QA-08001 stem, the average value of a model function on a closed interval with the setup shown. Not this: the BC-QA-99007 stem, the average rate of change with units, which calls for the endpoint difference quotient. The feature is what the phrase after "average" names.
 
 ## Solution path
 
@@ -79,10 +87,14 @@ BC-QA-08001 is `calculator`, one part of the calculator active free response que
 - ki-1: figure. Rule 4: BC-REP-02 and BC-REP-08 on BC-SKL-08002; the unit README's delivery map names the average value rectangle. Not promoted to interactive: BC-QA-08001 `difficulty_variables` vary a presentation form ("formula versus graph presentation"), not a quantity the stem reads [inferred; settled by the modality A/B].
 - ex-1 and the four error blocks: step_reveal. Rule 1.
 
+Figure presence: ki-1 is already a drawn block, so no `no_figure_reason` is carried. The redesign changes no delivery entry here.
+
 ## Band plan
 
-- Low (full): orientation, ki-1, st-1 to st-3, ex-1 with its scoring line, four error blocks, chk-1 to chk-3, three bridges. 635 words, 4.3 minutes (cap 900 and 6).
-- Mid (brief): orientation, ki-1, st-1, ex-1 with its scoring line, err-BC-ERR-06014, err-BC-ERR-08001, chk-1, chk-2, three bridges. 421 words, 2.9 minutes (cap 450 and 3).
+The served order of 2026-09-29: prediction, orientation, bridges, key ideas, strategy with the contrast pair, example 1 and its scoring lines, check 1, error blocks, example 2 faded when present, check 2, representations, check 3.
+
+- Low (full): orientation, ki-1, st-1 to st-3, ex-1 with its scoring line, four error blocks, chk-1 to chk-3, three bridges, with the prediction and the st-1 contrast pair first. 651 words, 4.4 minutes (cap 900 and 6).
+- Mid (brief): orientation, ki-1, st-1 with the contrast pair, ex-1 with its scoring line, err-BC-ERR-06014, err-BC-ERR-08001, chk-1, chk-2, three bridges, with the prediction first. 450 words, 3.0 minutes (cap 450 and 3).
 - Refresher: ki-1, the four error blocks, ex-1.
 
 ## Sources
@@ -101,6 +113,7 @@ BC-QA-08001 is `calculator`, one part of the calculator active free response que
 - [inferred] The 3.33 minute share and the written and held steps. Settled by per-step timing data.
 - [inferred] ki-1 as a static figure. Settled by the modality A/B.
 - [inferred] BC-PT-99004 untagged on ex-1 step 2 to hold the brief cap. Settled by a brief band cap that admits two reader lines.
+- [inferred] pr-1 and the st-1 contrast pair are authored for the redesign. Settled by the pretest and contrast measurements in the build plan.
 
 ## Machine record
 
@@ -111,186 +124,43 @@ BC-QA-08001 is `calculator`, one part of the calculator active free response que
  "target_id": "BC-CON-08001",
  "unit": "08",
  "skills": ["BC-SKL-08001", "BC-SKL-08002", "BC-SKL-08003"],
- "orientation": {
-  "text": "A response writes the integral of the function over the stated interval, divides by the interval length, and reports three decimal places, setup before the calculator value.",
-  "sources": ["BC-CON-08001", "research/units/unit-08-applications-integration.md#8.1 Finding the Average Value of a Function on an Interval"]
- },
+ "prediction": {"id": "pr-1", "stem": {"text": "Predict: W(t) = 5cos(t^2/2) + 1 on [0, 3]. Which gives the average value of W?", "command_verb": "predict"}, "format": "mcq", "options": [{"id": "A", "label": "The mean of W(0) and W(3)", "is_key": false}, {"id": "B", "label": "The integral of W over [0, 3], divided by 3", "is_key": true}, {"id": "C", "label": "The integral of W over [0, 3]", "is_key": false}], "resolution": "The integral of W over [0, 3] divided by the length 3, about 1.961. Endpoint samples miss the middle.", "sources": ["BC-CON-08001", "research/units/unit-08-applications-integration.md#8.1 Finding the Average Value of a Function on an Interval"]},
+ "orientation": {"text": "A response writes the integral, divides by the interval length, and gives three decimals.", "sources": ["BC-CON-08001", "research/units/unit-08-applications-integration.md#8.1 Finding the Average Value of a Function on an Interval"]},
  "key_ideas": [
-  {
-   "id": "ki-1",
-   "ek_id": "BC-EK-CHA-4B1",
-   "depth": "core",
-   "text": "For f continuous on [a, b], the average value is the integral of f over [a, b] divided by b minus a, in the units of f. The integral alone is the accumulated amount, not the average.",
-   "notation": "average value of f on [a,b]",
-   "quote": null,
-   "sources": ["BC-EK-CHA-4B1", "ced:152", "sg-25:3", "research/units/unit-08-applications-integration.md#8.1 Finding the Average Value of a Function on an Interval"]
-  }
+  {"id": "ki-1", "ek_id": "BC-EK-CHA-4B1", "depth": "core", "text": "Average value of f on [a, b]: the integral of f over [a, b], divided by b minus a.", "notation": "average value", "quote": null, "sources": ["BC-EK-CHA-4B1", "ced:152", "sg-25:3", "research/units/unit-08-applications-integration.md#8.1 Finding the Average Value of a Function on an Interval"]}
  ],
  "strategy": [
-  {
-   "id": "st-1",
-   "archetype_id": "BC-QA-08001",
-   "cue": "Average value of a model function over a closed interval, setup shown.",
-   "method": "First line: the integral over the interval, divided by its length.",
-   "rival": "Rival: averaging the two endpoint values.",
-   "separating_feature": "Average value of f means f across the whole interval: an integral, not two samples.",
-   "sources": ["BC-QA-08001"],
-   "evidence_tag": "verified"
-  },
-  {
-   "id": "st-2",
-   "archetype_id": "BC-QA-99007",
-   "cue": "The stem asks for the average rate of change with units, from a modelling function and a closed interval.",
-   "method": "First line: the function at both endpoints, their difference over the interval length.",
-   "rival": "Rival: integrating the function and dividing by the interval length.",
-   "separating_feature": "The words rate of change select the difference quotient.",
-   "sources": ["BC-QA-99007"],
-   "evidence_tag": "verified"
-  },
-  {
-   "id": "st-3",
-   "archetype_id": "BC-QA-08002",
-   "cue": "The stem asks when the instantaneous rate equals the average rate of change, from a model and its derivative.",
-   "method": "First line: the average rate of change over the interval.",
-   "rival": "Rival: reporting that rate itself as the time.",
-   "separating_feature": "The answer is an input on the interval, solved from the derivative equal to that rate.",
-   "sources": ["BC-QA-08002"],
-   "evidence_tag": "verified"
-  }
+  {"id": "st-1", "archetype_id": "BC-QA-08001", "cue": "Average value of a function on an interval.", "method": "Integral over the interval, divided by its length.", "rival": "Averaging the endpoint values.", "separating_feature": "Average value spans the interval: an integral.", "sources": ["BC-QA-08001"], "evidence_tag": "verified", "contrast": {"this": {"text": "Find the average value of C(t) = 2 + sin(t^2) on [0, 3], with setup.", "archetype_id": "BC-QA-08001"}, "not_this": {"text": "Find the average rate of change of C on [0, 3], with units.", "why_not": "It asks for a quotient of endpoint values."}, "feature": "Average value integrates; average rate of change subtracts endpoint values."}},
+  {"id": "st-2", "archetype_id": "BC-QA-99007", "cue": "The average rate of change with units, from a modelling function and a closed interval.", "method": "The function at both endpoints, their difference over the interval length.", "rival": "Integrating the function and dividing by the interval length.", "separating_feature": "The words rate of change select the difference quotient.", "sources": ["BC-QA-99007"], "evidence_tag": "verified"},
+  {"id": "st-3", "archetype_id": "BC-QA-08002", "cue": "When the instantaneous rate equals the average rate of change, from a model and its derivative.", "method": "The average rate of change over the interval.", "rival": "Reporting that rate itself as the time.", "separating_feature": "The answer is an input on the interval, solved from the derivative equal to that rate.", "sources": ["BC-QA-08002"], "evidence_tag": "verified"}
  ],
  "worked_examples": [
-  {
-   "id": "ex-1",
-   "archetype_id": "BC-QA-08001",
-   "bands": ["low", "mid"],
-   "parameter_draw": {"amplitude": 5, "shift": 1, "scale": 2, "length": 3, "context": "depth", "framing": "bare"},
-   "problem": {"text": "W(t) = 5cos(t^2/2) + 1. With a calculator, find the average value of W on [0, 3], showing the setup.", "command_verb": "find"},
-   "calculator_status": "calculator",
-   "steps": [
-    {"cue": "Average value of W on [0, 3]: integral, divided by the length 3.", "why": "The formula point needs the integral and the division shown.", "expr": "Integral(5*cos(t**2/2) + 1, (t, 0, 3))/3", "relation": "new", "point_type_id": "BC-PT-99020"},
-    {"cue": "Setup written, so the calculator evaluates it.", "why": "Three places. Where W is negative, that part subtracts.", "expr": "1.961", "relation": "evaluate", "subs": {}, "approx": true}
-   ],
-   "answer": {"form": "numeric", "expr": "1.961"}
-  }
+  {"id": "ex-1", "archetype_id": "BC-QA-08001", "bands": ["low", "mid"], "parameter_draw": {"amplitude": 5, "shift": 1, "scale": 2, "length": 3, "context": "depth", "framing": "bare"}, "problem": {"text": "W(t) = 5cos(t^2/2) + 1. With a calculator, find the average value of W on [0, 3], showing the setup.", "command_verb": "find"}, "calculator_status": "calculator", "steps": [{"cue": "Average value of W on [0, 3]: integral, divided by the length 3.", "why": "The formula point needs the integral and the division shown.", "expr": "Integral(5*cos(t**2/2) + 1, (t, 0, 3))/3", "relation": "new", "point_type_id": "BC-PT-99020"}, {"cue": "Setup written, so the calculator evaluates it.", "why": "Three places. Where W is negative, that part subtracts.", "expr": "1.961", "relation": "evaluate", "subs": {}, "approx": true}], "answer": {"form": "numeric", "expr": "1.961"}}
  ],
  "what_a_reader_scores": [
   {"example_id": "ex-1", "point_type_ids": ["BC-PT-99020"], "lines": [{"point_type_id": "BC-PT-99020", "text": "Average value formula. Earned by: The definite integral over the interval together with evidence of division by the interval length; a correct answer alongside a correct integral counts as that evidence (sg-25:3, sg-26:9). Not earned by: An integral with the wrong integrand, such as the derivative in place of the function (crabbc-25:3); a formula divided by the wrong length (sg-22:3). Notation: Differential optional (sg-26:9). The formula may be presented in one step or across several (sg-25:3, sg-22:3)."}]}
  ],
  "common_errors": [
-  {
-   "error_id": "BC-ERR-06014",
-   "observed_behavior": "Every piece of the region is added with a positive sign, so a signed integral is reported as a plain area.",
-   "scoring_consequence": "The value point is lost, and any later part that imports the value inherits the error.",
-   "wrong_step": {"text": "The absolute value integrated.", "expr": "Integral(Abs(5*cos(t**2/2) + 1), (t, 0, 3))/3"},
-   "right_step": {"text": "The signed integral.", "expr": "Integral(5*cos(t**2/2) + 1, (t, 0, 3))/3"},
-   "relation": "distinct",
-   "possible_reason": {"misconception_id": "BC-MIS-08024", "text": "reads every definite integral as area under a graph"},
-   "sources": ["BC-ERR-06014", "BC-MIS-08024"]
-  },
-  {
-   "error_id": "BC-ERR-08001",
-   "observed_behavior": "The response presents the correct definite integral and reports its value as the average.",
-   "scoring_consequence": "The average value point is lost unless the correct answer appears elsewhere as evidence of the division (sg-25:3).",
-   "wrong_step": {"text": "No division.", "expr": "Integral(5*cos(t**2/2) + 1, (t, 0, 3))"},
-   "right_step": {"text": "Divided by 3.", "expr": "Integral(5*cos(t**2/2) + 1, (t, 0, 3))/3"},
-   "relation": "distinct",
-   "possible_reason": {"misconception_id": "BC-MIS-08002", "text": "sees the integral as the averaging operation itself"},
-   "sources": ["BC-ERR-08001", "BC-MIS-08002"]
-  },
-  {
-   "error_id": "BC-ERR-08002",
-   "observed_behavior": "The limits of the average value integral, or the divisor, come from an interval other than the one the prompt states.",
-   "scoring_consequence": "Both the setup point and the answer point are lost.",
-   "wrong_step": {"text": "Over [1, 3].", "expr": "Integral(5*cos(t**2/2) + 1, (t, 1, 3))/2"},
-   "right_step": {"text": "Over [0, 3].", "expr": "Integral(5*cos(t**2/2) + 1, (t, 0, 3))/3"},
-   "relation": "distinct",
-   "possible_reason": null,
-   "sources": ["BC-ERR-08002"]
-  },
-  {
-   "error_id": "BC-ERR-99019",
-   "observed_behavior": "Responses report fewer than three digits after the decimal point, round an intermediate value before it is used again, or read a value off a trace rather than solving for it.",
-   "scoring_consequence": "The answer point is not earned; the report notes this recurs across several parts of the same response.",
-   "wrong_step": {"text": "5.9 divided by 3.", "expr": "5.9/3"},
-   "right_step": {"text": "Full precision, then 1.961.", "expr": "1.961"},
-   "relation": "distinct",
-   "possible_reason": null,
-   "sources": ["BC-ERR-99019"]
-  }
+  {"error_id": "BC-ERR-06014", "observed_behavior": "Every piece of the region is added with a positive sign, so a signed integral is reported as a plain area.", "scoring_consequence": "The value point is lost, and any later part that imports the value inherits the error.", "wrong_step": {"text": "The absolute value integrated.", "expr": "Integral(Abs(5*cos(t**2/2) + 1), (t, 0, 3))/3"}, "right_step": {"text": "The signed integral.", "expr": "Integral(5*cos(t**2/2) + 1, (t, 0, 3))/3"}, "relation": "distinct", "possible_reason": {"misconception_id": "BC-MIS-08024", "text": "reads every definite integral as area under a graph"}, "sources": ["BC-ERR-06014", "BC-MIS-08024"], "fix_prompt": true},
+  {"error_id": "BC-ERR-08001", "observed_behavior": "The response presents the correct definite integral and reports its value as the average.", "scoring_consequence": "The average value point is lost unless the correct answer appears elsewhere as evidence of the division (sg-25:3).", "wrong_step": {"text": "No division.", "expr": "Integral(5*cos(t**2/2) + 1, (t, 0, 3))"}, "right_step": {"text": "Divided by 3.", "expr": "Integral(5*cos(t**2/2) + 1, (t, 0, 3))/3"}, "relation": "distinct", "possible_reason": {"misconception_id": "BC-MIS-08002", "text": "sees the integral as the averaging operation itself"}, "sources": ["BC-ERR-08001", "BC-MIS-08002"], "fix_prompt": true},
+  {"error_id": "BC-ERR-08002", "observed_behavior": "The limits of the average value integral, or the divisor, come from an interval other than the one the prompt states.", "scoring_consequence": "Both the setup point and the answer point are lost.", "wrong_step": {"text": "Over [1, 3].", "expr": "Integral(5*cos(t**2/2) + 1, (t, 1, 3))/2"}, "right_step": {"text": "Over [0, 3].", "expr": "Integral(5*cos(t**2/2) + 1, (t, 0, 3))/3"}, "relation": "distinct", "possible_reason": null, "sources": ["BC-ERR-08002"], "fix_prompt": true},
+  {"error_id": "BC-ERR-99019", "observed_behavior": "Responses report fewer than three digits after the decimal point, round an intermediate value before it is used again, or read a value off a trace rather than solving for it.", "scoring_consequence": "The answer point is not earned; the report notes this recurs across several parts of the same response.", "wrong_step": {"text": "5.9 divided by 3.", "expr": "5.9/3"}, "right_step": {"text": "Full precision, then 1.961.", "expr": "1.961"}, "relation": "distinct", "possible_reason": null, "sources": ["BC-ERR-99019"], "fix_prompt": true}
  ],
  "representations": null,
  "prerequisite_bridges": [
-  {"prq_id": "BC-PRQ-06005", "text": "W(t) is the value of W at input t; a value read at the wrong input changes the integral."},
-  {"prq_id": "BC-PRQ-06007", "text": "From a graph: signed sums of rectangle, triangle, trapezoid and semicircle areas."},
-  {"prq_id": "BC-PRQ-08006", "text": "Full precision until the last line, then three places."}
+  {"prq_id": "BC-PRQ-06005", "text": "W(t) is the value at input t."},
+  {"prq_id": "BC-PRQ-06007", "text": "Signed areas from a graph."},
+  {"prq_id": "BC-PRQ-08006", "text": "Full precision, then three places."}
  ],
  "time": {"exam_part": "II-A", "budget_minutes": 15.0, "source": "research/exam/exam-structure.md#Section and part layout", "written_steps": {"ex-1": [1, 2]}, "skipped_steps": {"ex-1": []}},
  "checks": [
-  {
-   "id": "chk-1",
-   "check_kind": "completion",
-   "format": "short_answer",
-   "bands": ["low", "mid"],
-   "archetype_id": "BC-QA-08001",
-   "parameter_draw": {"amplitude": 5, "shift": 1, "scale": 2, "length": 3, "context": "depth", "framing": "bare"},
-   "completes": "ex-1",
-   "stem": {"text": "Evaluate (1/3) times the integral of 5cos(t^2/2) + 1 from 0 to 3, to three places.", "command_verb": "evaluate"},
-   "key": {"form": "numeric", "expr": "1.961"},
-   "steps": [
-    {"text": "The setup.", "expr": "Integral(5*cos(t**2/2) + 1, (t, 0, 3))/3", "relation": "new"},
-    {"text": "Calculator.", "expr": "1.961", "relation": "evaluate", "subs": {}, "approx": true}
-   ],
-   "calculator_status": "calculator",
-   "skills": ["BC-SKL-08003"]
-  },
-  {
-   "id": "chk-2",
-   "check_kind": "isomorph",
-   "format": "short_answer",
-   "bands": ["low", "mid"],
-   "archetype_id": "BC-QA-08001",
-   "parameter_draw": {"amplitude": 4, "shift": -1, "scale": 1, "length": 2, "context": "flow", "framing": "bare"},
-   "stem": {"text": "W(t) = 4cos(t^2) - 1. Find the average value of W on [0, 2], with the setup.", "command_verb": "find"},
-   "key": {"form": "numeric", "expr": "-0.077"},
-   "steps": [
-    {"text": "The setup.", "expr": "Integral(4*cos(t**2) - 1, (t, 0, 2))/2", "relation": "new"},
-    {"text": "Calculator.", "expr": "-0.077", "relation": "evaluate", "subs": {}, "approx": true}
-   ],
-   "calculator_status": "calculator",
-   "skills": ["BC-SKL-08001", "BC-SKL-08003"]
-  },
-  {
-   "id": "chk-3",
-   "check_kind": "mcq",
-   "format": "mcq",
-   "bands": ["low"],
-   "archetype_id": "BC-QA-08001",
-   "parameter_draw": {"amplitude": 6, "shift": 1, "scale": 3, "length": 4, "context": "temperature", "framing": "bare"},
-   "stem": {"text": "Let W(t) = 6cos(t^2/3) + 1. Which is the average value of W on [0, 4]?", "command_verb": "identify"},
-   "key": {"form": "numeric", "expr": "2.153"},
-   "steps": [
-    {"text": "The setup.", "expr": "Integral(6*cos(t**2/3) + 1, (t, 0, 4))/4", "relation": "new"},
-    {"text": "Calculator.", "expr": "2.153", "relation": "evaluate", "subs": {}, "approx": true}
-   ],
-   "options": [
-    {"id": "A", "is_key": false, "expr": "4.391", "error_path": "BC-ERR-06014", "derivation": "the integral of the absolute value of W divided by 4"},
-    {"id": "B", "is_key": true, "expr": "2.153", "error_path": null},
-    {"id": "C", "is_key": false, "expr": "8.610", "error_path": "BC-ERR-08001", "derivation": "the integral reported with no division by 4"},
-    {"id": "D", "is_key": false, "expr": "2.150", "error_path": "BC-ERR-99019", "derivation": "the integral rounded to 8.6 before dividing by 4"}
-   ],
-   "calculator_status": "calculator",
-   "skills": ["BC-SKL-08001", "BC-SKL-08003"]
-  }
+  {"id": "chk-1", "check_kind": "completion", "format": "short_answer", "bands": ["low", "mid"], "archetype_id": "BC-QA-08001", "parameter_draw": {"amplitude": 5, "shift": 1, "scale": 2, "length": 3, "context": "depth", "framing": "bare"}, "completes": "ex-1", "stem": {"text": "Evaluate (1/3) times the integral of 5cos(t^2/2) + 1 from 0 to 3, to three places.", "command_verb": "evaluate"}, "key": {"form": "numeric", "expr": "1.961"}, "steps": [{"text": "The setup.", "expr": "Integral(5*cos(t**2/2) + 1, (t, 0, 3))/3", "relation": "new"}, {"text": "Calculator.", "expr": "1.961", "relation": "evaluate", "subs": {}, "approx": true}], "calculator_status": "calculator", "skills": ["BC-SKL-08003"]},
+  {"id": "chk-2", "check_kind": "isomorph", "format": "short_answer", "bands": ["low", "mid"], "archetype_id": "BC-QA-08001", "parameter_draw": {"amplitude": 4, "shift": -1, "scale": 1, "length": 2, "context": "flow", "framing": "bare"}, "stem": {"text": "W(t) = 4cos(t^2) - 1. Find the average value of W on [0, 2], with the setup.", "command_verb": "find"}, "key": {"form": "numeric", "expr": "-0.077"}, "steps": [{"text": "The setup.", "expr": "Integral(4*cos(t**2) - 1, (t, 0, 2))/2", "relation": "new"}, {"text": "Calculator.", "expr": "-0.077", "relation": "evaluate", "subs": {}, "approx": true}], "calculator_status": "calculator", "skills": ["BC-SKL-08001", "BC-SKL-08003"]},
+  {"id": "chk-3", "check_kind": "mcq", "format": "mcq", "bands": ["low"], "archetype_id": "BC-QA-08001", "parameter_draw": {"amplitude": 6, "shift": 1, "scale": 3, "length": 4, "context": "temperature", "framing": "bare"}, "stem": {"text": "Let W(t) = 6cos(t^2/3) + 1. Which is the average value of W on [0, 4]?", "command_verb": "identify"}, "key": {"form": "numeric", "expr": "2.153"}, "steps": [{"text": "The setup.", "expr": "Integral(6*cos(t**2/3) + 1, (t, 0, 4))/4", "relation": "new"}, {"text": "Calculator.", "expr": "2.153", "relation": "evaluate", "subs": {}, "approx": true}], "options": [{"id": "A", "is_key": false, "expr": "4.391", "error_path": "BC-ERR-06014", "derivation": "the integral of the absolute value of W divided by 4"}, {"id": "B", "is_key": true, "expr": "2.153", "error_path": null}, {"id": "C", "is_key": false, "expr": "8.610", "error_path": "BC-ERR-08001", "derivation": "the integral reported with no division by 4"}, {"id": "D", "is_key": false, "expr": "2.150", "error_path": "BC-ERR-99019", "derivation": "the integral rounded to 8.6 before dividing by 4"}], "calculator_status": "calculator", "skills": ["BC-SKL-08001", "BC-SKL-08003"]}
  ],
  "delivery": [
   {"block": "orientation", "mode": "text", "reason": "rule 6: a statement of what a response shows; the figure is served once, on ki-1", "sources": ["BC-SKL-08001"]},
-  {"block": "ki-1", "mode": "figure", "reason": "rule 4: BC-REP-02 and BC-REP-08 on BC-SKL-08002; the unit README delivery map names the average value rectangle; not promoted, BC-QA-08001 difficulty_variables vary a presentation form", "sources": ["BC-SKL-08002", "BC-QA-08001"],
-   "spec": {"kind": "graph", "representations": ["BC-REP-02", "BC-REP-08"], "window": {"x": [0, 3], "y": [-5, 7]},
-    "curves": [{"expr": "5*cos(t**2/2) + 1", "domain": [0, 3]}],
-    "shaded": [{"between": ["5*cos(t**2/2) + 1", "0"], "domain": [0, 3], "signed": true}],
-    "rectangles": [{"from": 0, "to": 3, "height": 1.961}],
-    "labels": [{"text": "W(t)", "placement": "inside"}, {"text": "rectangle height 1.961: the average value", "placement": "inside"}, {"text": "same signed area as the region", "placement": "inside"}]},
-   "fallback": "the same figure, static, with the three labels inside and a one line text description beneath", "keyboard": "no control; the figure description is reached with Tab"},
+  {"block": "ki-1", "mode": "figure", "reason": "rule 4: BC-REP-02 and BC-REP-08 on BC-SKL-08002; the unit README delivery map names the average value rectangle; not promoted, BC-QA-08001 difficulty_variables vary a presentation form", "sources": ["BC-SKL-08002", "BC-QA-08001"], "spec": {"kind": "graph", "representations": ["BC-REP-02", "BC-REP-08"], "window": {"x": [0, 3], "y": [-5, 7]}, "curves": [{"expr": "5*cos(t**2/2) + 1", "domain": [0, 3]}], "shaded": [{"between": ["5*cos(t**2/2) + 1", "0"], "domain": [0, 3], "signed": true}], "rectangles": [{"from": 0, "to": 3, "height": 1.961}], "labels": [{"text": "W(t)", "placement": "inside"}, {"text": "rectangle height 1.961: the average value", "placement": "inside"}, {"text": "same signed area as the region", "placement": "inside"}]}, "fallback": "the same figure, static, with the three labels inside and a one line text description beneath", "keyboard": "no control; the figure description is reached with Tab"},
   {"block": "ex-1", "mode": "step_reveal", "reason": "rule 1", "sources": []},
   {"block": "err-BC-ERR-06014", "mode": "step_reveal", "reason": "rule 1", "sources": []},
   {"block": "err-BC-ERR-08001", "mode": "step_reveal", "reason": "rule 1", "sources": []},
@@ -298,8 +168,8 @@ BC-QA-08001 is `calculator`, one part of the calculator active free response que
   {"block": "err-BC-ERR-99019", "mode": "step_reveal", "reason": "rule 1", "sources": []}
  ],
  "refresher": ["ki-1", "err-BC-ERR-06014", "err-BC-ERR-08001", "err-BC-ERR-08002", "err-BC-ERR-99019", "ex-1"],
- "read_minutes": {"full": 4.3, "brief": 2.9},
- "word_count": {"full": 635, "brief": 421},
+ "read_minutes": {"full": 4.4, "brief": 3.0},
+ "word_count": {"full": 651, "brief": 450},
  "research_lines": [
   {"file": "research/units/unit-08-applications-integration.md", "line": "the average value of f over [a,b] is the definite integral of f over [a,b] divided by b minus a"}
  ],

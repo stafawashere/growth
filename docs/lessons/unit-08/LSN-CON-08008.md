@@ -9,6 +9,10 @@ purpose: Authoring spec for the concept lesson on BC-CON-08008, the time at whic
 
 Concept BC-CON-08008 (skill BC-SKL-08014), topic 8.3 of Unit 8, loaded by one archetype, BC-QA-08006 (family accumulation-extremum), which also loads BC-SKL-08012 of BC-CON-08006. Its hard parents are BC-CON-08006 and BC-CON-08007 in Unit 8 and the Unit 5 candidates and sign arguments (docs/lessons/unit-08/README.md, section 1).
 
+## Prediction
+
+One multiple choice question on worked example 1's own net rate, asked before the rule is shown: the amount has net rate 3 + 6cos(pi t/6), zero at t = 4 and t = 8, and the student picks which times are compared to find when it is greatest on [0, 12]. The key is 0, 4, 8 and 12; the distractors are t = 4 alone and t = 4 with t = 8. The resolution, shown on the key idea screen, gives the four amounts and the time of the greatest. No verdict word. Sources: BC-CON-08008 and the topic 8.3 section the key idea cites. [inferred]
+
 ## Orientation
 
 Served text, from BC-CON-08008 `description_plain` and the topic's Assessment behaviour paragraph (research/units/unit-08-applications-integration.md#8.3 Using Accumulation Functions and Definite Integrals in Applied Contexts): a response sets the net rate, the derivative of the amount, equal to zero, then compares the amount at every critical point and at both endpoints, or argues globally from the sign of the net rate. No count, no frequency.
@@ -23,18 +27,20 @@ BC-SKL-08014 maps to BC-EK-CHA-4D1 (ced:154): one core block, both bands.
 
 BC-QA-08006 (research/question-analysis/question-archetypes.md#BC-QA-08006 Time at which an accumulated amount is maximal): `typical_wording` "at what time in the stated interval does the modelled amount attain its maximum value, and justify the answer"; `common_givens` an amount function defined with a definite integral, a closed interval; `asked_to_produce` an equation for the critical point, a global justification, the time of the maximum. The signal: "at what time" with "maximum" or "greatest", "justify", and a closed time interval. Shape: the closing part of the calculator free response question (BC-FRQ-2019-Q1-C, BC-FRQ-2013-Q1-D, BC-FRQ-2022-Q1-D, BC-FRQ-2015-Q1-C, BC-FRQ-2018-Q1-D), after the amount at a time (BC-CON-08006) and the net rate (BC-CON-08007) on the same context (research/question-analysis/frq-analysis.md#The calculator questions and the no-calculator questions).
 
+The contrast pair on st-1 sets a BC-QA-08006 stem (an integral-defined amount on a closed interval, the time of the greatest asked and justified) against a stem asking whether the amount is increasing at one time. The near miss comes from the one-line sign reading of the net rate at a single time, which the design's own not-this list names; it needs no candidates table. The feature is a time asked on a closed interval, with the endpoints as candidates.
+
 What says "not this concept": "how much at time t" (amount, BC-CON-08006); "is the amount increasing at time t" (the sign of the net rate at one time, one line).
 
 ## Method choice
 
 One strategy block, both bands.
 
-- st-1, BC-QA-08006. Cue from `asked_to_produce` and `common_givens`. Method, `expected_solution_path[0]`: differentiate the amount function, so A'(t) is the net rate, and set it to zero. Rival, `wrong_approaches`: a local argument for a global claim, or a candidates table missing an endpoint (BC-ERR-99004, BC-ERR-08016). Separating feature: a closed interval makes both endpoints candidates. Both fields are present, so the block is not tagged inferred.
+- st-1, BC-QA-08006, carrying the contrast pair. Cue from `asked_to_produce` and `common_givens`. Method, `expected_solution_path[0]`: differentiate the amount function, so A'(t) is the net rate, and set it to zero. Rival, `wrong_approaches`: a local argument for a global claim, or a candidates table missing an endpoint (BC-ERR-99004, BC-ERR-08016). Separating feature: a closed interval makes both endpoints candidates. Both fields are present, so the block is not tagged inferred. The served fields carry no leading label.
 
 ## Solution path
 
 - ex-1, BC-QA-08006, both bands, calculator. Draw from `parameter_spec`: period 12, net 3, times 2, outflow 4, initial 100, context water, presentation net_rate; so swing 6, the net rate is 3 + 6cos(pi t/6) gallons per hour on [0, 12], it is zero at t = 4 and t = 8, and with times 2 (ratio 1/2, above a quarter) the right endpoint wins, as the spec's notes state. A(0) = 100, A(4) = 121.924, A(8) = 114.076, A(12) = 136. No published BC-QA-08006 item carries this draw.
-- Steps follow `expected_solution_path`: the amount (new); its derivative (differentiate); the equation A'(t) = 0 (new); its solutions (solve, a calculator solve); the amount in closed form (new); A(4) (evaluate, approx); the largest candidate value (new, tagged BC-PT-99011); the time (new). A fluent solver writes the equation, the four labelled values and the conclusion; the closed form is typed into the calculator, not written [inferred].
+- Steps follow `expected_solution_path`: the amount (new); its derivative (differentiate); the equation A'(t) = 0 (new); its solutions (solve, a calculator solve); the amount in closed form (new); A(4) (evaluate, approx); the largest candidate value (new, tagged BC-PT-99011); the time (new). A fluent solver writes the equation, the four labelled values and the conclusion; the closed form is typed into the calculator, not written [inferred]. One example only, so no `fade_from`.
 
 ## Scoring
 
@@ -69,13 +75,14 @@ BC-QA-08006 is `calculator`, the closing part of the calculator free response qu
 
 - orientation: text. Rule 6: BC-REP-05 and BC-REP-09 on BC-SKL-08014 draw nothing; the unit README delivery map gives text.
 - ki-1: text. Rule 6, the candidates argument is a sequence of written lines (docs/lessons/unit-08/README.md, section 6).
+- Figure presence: no drawn block. No rule of 2 to 5 applies, since BC-REP-05 and 09 are not figure-bearing and the key idea describes no process, so the record carries `no_figure_reason`.
 - ex-1: step_reveal. Rule 1.
 - err-BC-ERR-08016, err-BC-ERR-99004: step_reveal. Rule 1.
 
 ## Band plan
 
-- Low (full): orientation, ki-1, st-1, ex-1 with its reader line, both error blocks, chk-1 to chk-3, the bridge. 496 words, 3.4 minutes (cap 900 and 6).
-- Mid (brief): orientation, ki-1, st-1, ex-1 with its reader line, both error blocks, chk-1, chk-2, the bridge. 446 words, 3.0 minutes (cap 450 and 3).
+- Low (full), in served order: prediction, orientation, the bridge, ki-1, st-1 with its contrast, ex-1 with its reader line, chk-1, both error blocks, chk-2, chk-3. 499 words, 3.4 minutes (cap 900 and 6).
+- Mid (brief): the same without chk-3. 449 words, 3.0 minutes (cap 450 and 3). To fit the cap the orientation, ki-1, the st-1 fields, the ex-1 cues and whys and the bridge were shortened; no anchor quote or scoring tag was dropped.
 - Refresher: ki-1, err-BC-ERR-08016, err-BC-ERR-99004, ex-1.
 
 ## Sources
@@ -91,6 +98,7 @@ BC-QA-08006 is `calculator`, the closing part of the calculator free response qu
 - research/scoring/justification-requirements.md#The candidates test
 - research/exam/exam-structure.md#Section and part layout
 - [inferred] BC-PT-99013 and BC-PT-99004 are earned on ex-1 steps 3 and 8 but not tagged: with their reader lines the brief band passes 450 words. Settled by a brief cap that exempts reader lines, or a shorter reader_checks form.
+- [inferred] The prediction and the contrast pair as teaching moves. Settled by the modality and prompt A/B in the build plan.
 - [inferred] The gallons unit for the water context. Settled by a unit field in the parameter_spec.
 - [inferred] Which lines are written and which are typed only. Settled by timing data per step from 10's fluency telemetry.
 
@@ -102,159 +110,517 @@ BC-QA-08006 is `calculator`, the closing part of the calculator free response qu
  "kind": "concept",
  "target_id": "BC-CON-08008",
  "unit": "08",
- "skills": ["BC-SKL-08014"],
+ "skills": [
+  "BC-SKL-08014"
+ ],
+ "prediction": {
+  "id": "pr-1",
+  "stem": {
+   "text": "Predict: \\(A\\) has net rate \\(3+6\\cos(\\pi t/6)\\), zero at \\(t=4\\) and \\(8\\). Which times are compared to find when \\(A\\) is greatest on \\([0,12]\\)?",
+   "command_verb": "predict"
+  },
+  "format": "mcq",
+  "options": [
+   {
+    "id": "A",
+    "label": "\\(t=4\\) only",
+    "is_key": false
+   },
+   {
+    "id": "B",
+    "label": "\\(t=4\\) and \\(t=8\\)",
+    "is_key": false
+   },
+   {
+    "id": "C",
+    "label": "\\(t=0\\), 4, 8 and 12",
+    "is_key": true
+   }
+  ],
+  "resolution": "Endpoints and zeros of the net rate are candidates: the amounts at 0, 4, 8, 12 are 100, 121.924, 114.076, 136.",
+  "sources": [
+   "BC-CON-08008",
+   "research/units/unit-08-applications-integration.md#8.3 Using Accumulation Functions and Definite Integrals in Applied Contexts"
+  ]
+ },
+ "no_figure_reason": "The skill's representations are verbal and symbolic, none figure-bearing, and the key idea is a sequence of written comparisons, not a process; a candidates table is written, not drawn.",
  "orientation": {
-  "text": "A response sets the net rate, the derivative of the amount, equal to zero, then compares the amount at every critical point and both endpoints, or argues from the sign of the net rate over the whole interval.",
-  "sources": ["BC-CON-08008", "research/units/unit-08-applications-integration.md#8.3 Using Accumulation Functions and Definite Integrals in Applied Contexts"]
+  "text": "A response sets the net rate to zero, then compares the amount at every candidate, endpoints included.",
+  "sources": [
+   "BC-CON-08008",
+   "research/units/unit-08-applications-integration.md#8.3 Using Accumulation Functions and Definite Integrals in Applied Contexts"
+  ]
  },
  "key_ideas": [
   {
    "id": "ki-1",
    "ek_id": "BC-EK-CHA-4D1",
    "depth": "core",
-   "text": "An amount defined by an integral accumulates the net rate, so its derivative is the net rate. On a closed interval its absolute maximum is where the net rate changes from positive to negative, or at an endpoint. A sign change at one point is local; alone it did not earn the justification (sg-25:5).",
-   "notation": "candidates test on an accumulation function",
+   "text": "The amount's derivative is the net rate. On a closed interval its maximum is at an endpoint or where the net rate changes from positive to negative; a sign change alone is local.",
+   "notation": "candidates",
    "quote": null,
-   "sources": ["BC-EK-CHA-4D1", "ced:154", "sg-25:5", "research/units/unit-08-applications-integration.md#8.3 Using Accumulation Functions and Definite Integrals in Applied Contexts"]
+   "sources": [
+    "BC-EK-CHA-4D1",
+    "ced:154",
+    "sg-25:5",
+    "research/units/unit-08-applications-integration.md#8.3 Using Accumulation Functions and Definite Integrals in Applied Contexts"
+   ]
   }
  ],
  "strategy": [
   {
    "id": "st-1",
    "archetype_id": "BC-QA-08006",
-   "cue": "The stem asks when an amount defined by an integral on a closed interval is greatest, with a justification.",
-   "method": "First written line: \\(A'(t)=\\) net rate \\(=0\\).",
-   "rival": "Rival: a local argument, or a table missing an endpoint (BC-ERR-99004).",
-   "separating_feature": "A closed interval makes both endpoints candidates.",
-   "sources": ["BC-QA-08006"],
-   "evidence_tag": "verified"
+   "cue": "Greatest amount on a closed interval, justified.",
+   "method": "\\(A'(t)=\\) net rate \\(=0\\).",
+   "rival": "A local argument, or a table missing an endpoint.",
+   "separating_feature": "Both endpoints are candidates.",
+   "sources": [
+    "BC-QA-08006"
+   ],
+   "evidence_tag": "verified",
+   "contrast": {
+    "this": {
+     "text": "A closed-interval amount is defined by an integral of its net rate. At what time is it greatest? Justify.",
+     "archetype_id": "BC-QA-08006"
+    },
+    "not_this": {
+     "text": "Is the amount of sand increasing at \\(t=5\\)? Give a reason.",
+     "why_not": "One time, one sign, no comparison."
+    },
+    "feature": "Greatest on a closed interval: a time, endpoints included."
+   }
   }
  ],
  "worked_examples": [
   {
    "id": "ex-1",
    "archetype_id": "BC-QA-08006",
-   "bands": ["low", "mid"],
-   "parameter_draw": {"period": 12, "net": 3, "times": "2", "outflow": 4, "initial": 100, "context": "water", "presentation": "net_rate"},
-   "problem": {"text": "A tank holds 100 gallons at \\(t=0\\); water changes at the net rate \\(3+6\\cos(\\pi t/6)\\) gallons per hour, \\(0\\le t\\le 12\\). When is the amount greatest? Justify.", "command_verb": "justify"},
+   "bands": [
+    "low",
+    "mid"
+   ],
+   "parameter_draw": {
+    "period": 12,
+    "net": 3,
+    "times": "2",
+    "outflow": 4,
+    "initial": 100,
+    "context": "water",
+    "presentation": "net_rate"
+   },
+   "problem": {
+    "text": "A tank holds 100 gallons at \\(t=0\\); water changes at the net rate \\(3+6\\cos(\\pi t/6)\\) gallons per hour, \\(0\\le t\\le 12\\). When is the amount greatest? Justify.",
+    "command_verb": "justify"
+   },
    "calculator_status": "calculator",
    "steps": [
-    {"cue": "Amount: initial value plus accumulated net rate.", "why": "\\(A(t)\\).", "expr": "100 + Integral(3 + 6*cos(pi*s/6), (s, 0, t))", "relation": "new"},
-    {"cue": "A maximum is asked: differentiate.", "why": "Derivative of an accumulation.", "expr": "3 + 6*cos(pi*t/6)", "relation": "differentiate", "variable": "t"},
-    {"cue": "Critical points.", "why": "The equation is written.", "expr": "3 + 6*cos(pi*t/6) = 0", "relation": "new"},
-    {"cue": "Solve on \\([0,12]\\).", "why": "Calculator solve.", "expr": "FiniteSet(4, 8)", "relation": "solve", "variable": "t"},
-    {"cue": "Closed interval: endpoints join the candidates.", "why": "\\(A(t)\\) in closed form.", "expr": "100 + 3*t + 36*sin(pi*t/6)/pi", "relation": "new"},
-    {"cue": "Local maximum \\(t=4\\).", "why": "\\(A(4)\\).", "expr": "121.924", "relation": "evaluate", "subs": {"t": "4"}, "approx": true},
-    {"cue": "Compare every candidate.", "why": "\\(A(0)=100\\), \\(A(8)=114.076\\), \\(A(12)=136\\): largest.", "expr": "136", "relation": "new", "point_type_id": "BC-PT-99011"},
-    {"cue": "The stem asks when.", "why": "At the endpoint.", "expr": "12", "relation": "new"}
+    {
+     "cue": "Initial value plus net rate.",
+     "why": "\\(A(t)\\).",
+     "expr": "100 + Integral(3 + 6*cos(pi*s/6), (s, 0, t))",
+     "relation": "new"
+    },
+    {
+     "cue": "Maximum: differentiate.",
+     "why": "Net rate.",
+     "expr": "3 + 6*cos(pi*t/6)",
+     "relation": "differentiate",
+     "variable": "t"
+    },
+    {
+     "cue": "Critical points.",
+     "why": "Equation.",
+     "expr": "3 + 6*cos(pi*t/6) = 0",
+     "relation": "new"
+    },
+    {
+     "cue": "Solve on \\([0,12]\\).",
+     "why": "Calculator.",
+     "expr": "FiniteSet(4, 8)",
+     "relation": "solve",
+     "variable": "t"
+    },
+    {
+     "cue": "Endpoints join.",
+     "why": "Closed form.",
+     "expr": "100 + 3*t + 36*sin(pi*t/6)/pi",
+     "relation": "new"
+    },
+    {
+     "cue": "Local maximum \\(t=4\\).",
+     "why": "\\(A(4)\\).",
+     "expr": "121.924",
+     "relation": "evaluate",
+     "subs": {
+      "t": "4"
+     },
+     "approx": true
+    },
+    {
+     "cue": "Compare every candidate.",
+     "why": "\\(A(0)=100\\), \\(A(8)=114.076\\), \\(A(12)=136\\): largest.",
+     "expr": "136",
+     "relation": "new",
+     "point_type_id": "BC-PT-99011"
+    },
+    {
+     "cue": "Time asked.",
+     "why": "At the endpoint.",
+     "expr": "12",
+     "relation": "new"
+    }
    ],
-   "answer": {"form": "numeric", "expr": "12"}
+   "answer": {
+    "form": "numeric",
+    "expr": "12"
+   }
   }
  ],
  "what_a_reader_scores": [
-  {"example_id": "ex-1", "point_type_ids": ["BC-PT-99011"], "lines": [{"point_type_id": "BC-PT-99011", "text": "Justification by candidates test. Earned by: A global argument that evaluates the function at every interior critical point and at both endpoints, with the evaluations correct to the stated precision (sg-25:5, sg-25:19). Not earned by: A candidates table missing an endpoint (sg-23:15), containing an evaluation error (sg-23:15), or listing extra x-values (sg-25:19). Precision: sg-25:5 and sg-25:9 require candidate evaluations correct to the first digit after the decimal, rounded or truncated; sg-22:5 allows up to three decimals or correctly rounded integers."}]}
+  {
+   "example_id": "ex-1",
+   "point_type_ids": [
+    "BC-PT-99011"
+   ],
+   "lines": [
+    {
+     "point_type_id": "BC-PT-99011",
+     "text": "Justification by candidates test. Earned by: A global argument that evaluates the function at every interior critical point and at both endpoints, with the evaluations correct to the stated precision (sg-25:5, sg-25:19). Not earned by: A candidates table missing an endpoint (sg-23:15), containing an evaluation error (sg-23:15), or listing extra x-values (sg-25:19). Precision: sg-25:5 and sg-25:9 require candidate evaluations correct to the first digit after the decimal, rounded or truncated; sg-22:5 allows up to three decimals or correctly rounded integers."
+    }
+   ]
+  }
  ],
  "common_errors": [
   {
    "error_id": "BC-ERR-08016",
    "observed_behavior": "The candidates test evaluates the amount only at the interior critical point.",
    "scoring_consequence": "The justification point is lost because the argument is not global (sg-25:5).",
-   "wrong_step": {"text": "Only \\(A(4)\\): \\(t=4\\).", "expr": "4"},
-   "right_step": {"text": "All four: \\(t=12\\).", "expr": "12"},
+   "wrong_step": {
+    "text": "Only \\(A(4)\\): \\(t=4\\).",
+    "expr": "4"
+   },
+   "right_step": {
+    "text": "All four: \\(t=12\\).",
+    "expr": "12"
+   },
    "relation": "distinct",
-   "possible_reason": {"misconception_id": "BC-MIS-99010", "text": "endpoints and other critical points are never compared"},
-   "sources": ["BC-ERR-08016", "BC-MIS-99010"]
+   "possible_reason": {
+    "misconception_id": "BC-MIS-99010",
+    "text": "endpoints and other critical points are never compared"
+   },
+   "sources": [
+    "BC-ERR-08016",
+    "BC-MIS-99010"
+   ],
+   "fix_prompt": true
   },
   {
    "error_id": "BC-ERR-99004",
    "observed_behavior": "Responses justify an absolute maximum or minimum on a closed interval by a sign change at one point, or run an incomplete candidates test that omits an endpoint or an interior critical point.",
    "scoring_consequence": "The justification point for the absolute extremum is not earned; the answer point may still be available.",
-   "wrong_step": {"text": "\\(A'\\) turns negative at 4.", "expr": "4"},
-   "right_step": {"text": "\\(A(12)\\) largest.", "expr": "12"},
+   "wrong_step": {
+    "text": "\\(A'\\) turns negative at 4.",
+    "expr": "4"
+   },
+   "right_step": {
+    "text": "\\(A(12)\\) largest.",
+    "expr": "12"
+   },
    "relation": "distinct",
    "possible_reason": null,
-   "sources": ["BC-ERR-99004"]
+   "sources": [
+    "BC-ERR-99004"
+   ],
+   "fix_prompt": true
   }
  ],
  "representations": null,
  "prerequisite_bridges": [
-  {"prq_id": "BC-PRQ-08001", "text": "Every solution in the interval found, on the calculator solver; a missed one drops a candidate."}
+  {
+   "prq_id": "BC-PRQ-08001",
+   "text": "All solutions in the interval."
+  }
  ],
- "time": {"exam_part": "II-A", "budget_minutes": 15.0, "source": "research/exam/exam-structure.md#Section and part layout", "written_steps": {"ex-1": [2, 3, 4, 7, 8]}, "skipped_steps": {"ex-1": [1, 5, 6]}},
+ "time": {
+  "exam_part": "II-A",
+  "budget_minutes": 15.0,
+  "source": "research/exam/exam-structure.md#Section and part layout",
+  "written_steps": {
+   "ex-1": [
+    2,
+    3,
+    4,
+    7,
+    8
+   ]
+  },
+  "skipped_steps": {
+   "ex-1": [
+    1,
+    5,
+    6
+   ]
+  }
+ },
  "checks": [
   {
    "id": "chk-1",
    "check_kind": "completion",
    "format": "short_answer",
-   "bands": ["low", "mid"],
+   "bands": [
+    "low",
+    "mid"
+   ],
    "archetype_id": "BC-QA-08006",
-   "parameter_draw": {"period": 12, "net": 3, "times": "2", "outflow": 4, "initial": 100, "context": "water", "presentation": "net_rate"},
+   "parameter_draw": {
+    "period": 12,
+    "net": 3,
+    "times": "2",
+    "outflow": 4,
+    "initial": 100,
+    "context": "water",
+    "presentation": "net_rate"
+   },
    "completes": "ex-1",
-   "stem": {"text": "\\(A(0)=100\\), \\(A(4)=121.924\\), \\(A(8)=114.076\\), \\(A(12)=136\\). When is \\(A\\) greatest?", "command_verb": "find"},
-   "key": {"form": "numeric", "expr": "12"},
+   "stem": {
+    "text": "\\(A(0)=100\\), \\(A(4)=121.924\\), \\(A(8)=114.076\\), \\(A(12)=136\\). When is \\(A\\) greatest?",
+    "command_verb": "find"
+   },
+   "key": {
+    "form": "numeric",
+    "expr": "12"
+   },
    "steps": [
-    {"text": "Largest value.", "expr": "Max(100, 121.924, 114.076, 136)", "relation": "new"},
-    {"text": "It is \\(A(12)\\).", "expr": "12", "relation": "new"}
+    {
+     "text": "Largest value.",
+     "expr": "Max(100, 121.924, 114.076, 136)",
+     "relation": "new"
+    },
+    {
+     "text": "It is \\(A(12)\\).",
+     "expr": "12",
+     "relation": "new"
+    }
    ],
    "calculator_status": "calculator",
-   "skills": ["BC-SKL-08014"]
+   "skills": [
+    "BC-SKL-08014"
+   ]
   },
   {
    "id": "chk-2",
    "check_kind": "isomorph",
    "format": "short_answer",
-   "bands": ["low", "mid"],
+   "bands": [
+    "low",
+    "mid"
+   ],
    "archetype_id": "BC-QA-08006",
-   "parameter_draw": {"period": 24, "net": 2, "times": "2", "outflow": 5, "initial": 60, "context": "sand", "presentation": "net_rate"},
-   "stem": {"text": "A pile holds 60 tons at \\(t=0\\); sand changes at \\(2+4\\cos(\\pi t/12)\\) tons per hour, \\(0\\le t\\le 24\\). When is it greatest?", "command_verb": "find"},
-   "key": {"form": "numeric", "expr": "24"},
+   "parameter_draw": {
+    "period": 24,
+    "net": 2,
+    "times": "2",
+    "outflow": 5,
+    "initial": 60,
+    "context": "sand",
+    "presentation": "net_rate"
+   },
+   "stem": {
+    "text": "A pile holds 60 tons at \\(t=0\\); sand changes at \\(2+4\\cos(\\pi t/12)\\) tons per hour, \\(0\\le t\\le 24\\). When is it greatest?",
+    "command_verb": "find"
+   },
+   "key": {
+    "form": "numeric",
+    "expr": "24"
+   },
    "steps": [
-    {"text": "\\(A'(t)=0\\).", "expr": "2 + 4*cos(pi*t/12) = 0", "relation": "new", "point_type_id": "BC-PT-99013"},
-    {"text": "\\(t=8, 16\\).", "expr": "FiniteSet(8, 16)", "relation": "solve", "variable": "t"},
-    {"text": "The amount.", "expr": "60 + 2*t + 48*sin(pi*t/12)/pi", "relation": "new"},
-    {"text": "\\(A(24)=108\\) beats \\(A(8)=89.232\\), \\(A(16)=78.768\\), \\(A(0)=60\\).", "expr": "108", "relation": "evaluate", "subs": {"t": "24"}},
-    {"text": "At \\(t=24\\).", "expr": "24", "relation": "new"}
+    {
+     "text": "\\(A'(t)=0\\).",
+     "expr": "2 + 4*cos(pi*t/12) = 0",
+     "relation": "new",
+     "point_type_id": "BC-PT-99013"
+    },
+    {
+     "text": "\\(t=8, 16\\).",
+     "expr": "FiniteSet(8, 16)",
+     "relation": "solve",
+     "variable": "t"
+    },
+    {
+     "text": "The amount.",
+     "expr": "60 + 2*t + 48*sin(pi*t/12)/pi",
+     "relation": "new"
+    },
+    {
+     "text": "\\(A(24)=108\\) beats \\(A(8)=89.232\\), \\(A(16)=78.768\\), \\(A(0)=60\\).",
+     "expr": "108",
+     "relation": "evaluate",
+     "subs": {
+      "t": "24"
+     }
+    },
+    {
+     "text": "At \\(t=24\\).",
+     "expr": "24",
+     "relation": "new"
+    }
    ],
    "calculator_status": "calculator",
-   "skills": ["BC-SKL-08014"]
+   "skills": [
+    "BC-SKL-08014"
+   ]
   },
   {
    "id": "chk-3",
    "check_kind": "mcq",
    "format": "mcq",
-   "bands": ["low"],
+   "bands": [
+    "low"
+   ],
    "archetype_id": "BC-QA-08006",
-   "parameter_draw": {"period": 8, "net": 1, "times": "2", "outflow": 3, "initial": 40, "context": "oil", "presentation": "net_rate"},
-   "stem": {"text": "A tank holds 40 gallons at \\(t=0\\); oil changes at \\(1+2\\cos(\\pi t/4)\\) gallons per hour, \\(0\\le t\\le 8\\). Which answer and reason earn full credit?", "command_verb": "justify"},
-   "key": {"form": "statement", "expr": "t_8_by_candidates_test"},
+   "parameter_draw": {
+    "period": 8,
+    "net": 1,
+    "times": "2",
+    "outflow": 3,
+    "initial": 40,
+    "context": "oil",
+    "presentation": "net_rate"
+   },
+   "stem": {
+    "text": "A tank holds 40 gallons at \\(t=0\\); oil changes at \\(1+2\\cos(\\pi t/4)\\) gallons per hour, \\(0\\le t\\le 8\\). Which answer and reason earn full credit?",
+    "command_verb": "justify"
+   },
+   "key": {
+    "form": "statement",
+    "expr": "t_8_by_candidates_test"
+   },
    "options": [
-    {"id": "A", "is_key": false, "label": "\\(t=8/3\\): \\(A(8/3)=44.872\\) exceeds \\(A(16/3)=43.128\\).", "error_path": "BC-ERR-08016", "derivation": "only the interior critical points evaluated"},
-    {"id": "B", "is_key": false, "label": "\\(t=8/3\\): \\(A'\\) changes from positive to negative there.", "error_path": "BC-ERR-99004", "derivation": "a local sign change offered for the absolute maximum"},
-    {"id": "C", "is_key": true, "label": "\\(t=8\\): \\(A(8)=48\\) exceeds \\(A(0)=40\\), \\(A(8/3)=44.872\\), \\(A(16/3)=43.128\\).", "error_path": null},
-    {"id": "D", "is_key": false, "label": "\\(t=8\\): \\(A'\\) is positive just before \\(t=8\\).", "error_path": "BC-ERR-99004", "derivation": "a local argument at the endpoint"}
+    {
+     "id": "A",
+     "is_key": false,
+     "label": "\\(t=8/3\\): \\(A(8/3)=44.872\\) exceeds \\(A(16/3)=43.128\\).",
+     "error_path": "BC-ERR-08016",
+     "derivation": "only the interior critical points evaluated"
+    },
+    {
+     "id": "B",
+     "is_key": false,
+     "label": "\\(t=8/3\\): \\(A'\\) changes from positive to negative there.",
+     "error_path": "BC-ERR-99004",
+     "derivation": "a local sign change offered for the absolute maximum"
+    },
+    {
+     "id": "C",
+     "is_key": true,
+     "label": "\\(t=8\\): \\(A(8)=48\\) exceeds \\(A(0)=40\\), \\(A(8/3)=44.872\\), \\(A(16/3)=43.128\\).",
+     "error_path": null
+    },
+    {
+     "id": "D",
+     "is_key": false,
+     "label": "\\(t=8\\): \\(A'\\) is positive just before \\(t=8\\).",
+     "error_path": "BC-ERR-99004",
+     "derivation": "a local argument at the endpoint"
+    }
    ],
    "calculator_status": "calculator",
-   "skills": ["BC-SKL-08014"]
+   "skills": [
+    "BC-SKL-08014"
+   ]
   }
  ],
  "delivery": [
-  {"block": "orientation", "mode": "text", "reason": "rule 6: BC-REP-05 and BC-REP-09 on BC-SKL-08014 draw nothing; unit README delivery map", "sources": ["BC-SKL-08014"]},
-  {"block": "ki-1", "mode": "text", "reason": "rule 6: the candidates argument is a sequence of written lines", "sources": ["BC-SKL-08014"]},
-  {"block": "ex-1", "mode": "step_reveal", "reason": "rule 1", "sources": []},
-  {"block": "err-BC-ERR-08016", "mode": "step_reveal", "reason": "rule 1", "sources": []},
-  {"block": "err-BC-ERR-99004", "mode": "step_reveal", "reason": "rule 1", "sources": []}
+  {
+   "block": "orientation",
+   "mode": "text",
+   "reason": "rule 6: BC-REP-05 and BC-REP-09 on BC-SKL-08014 draw nothing; unit README delivery map",
+   "sources": [
+    "BC-SKL-08014"
+   ]
+  },
+  {
+   "block": "ki-1",
+   "mode": "text",
+   "reason": "rule 6: the candidates argument is a sequence of written lines",
+   "sources": [
+    "BC-SKL-08014"
+   ]
+  },
+  {
+   "block": "ex-1",
+   "mode": "step_reveal",
+   "reason": "rule 1",
+   "sources": []
+  },
+  {
+   "block": "err-BC-ERR-08016",
+   "mode": "step_reveal",
+   "reason": "rule 1",
+   "sources": []
+  },
+  {
+   "block": "err-BC-ERR-99004",
+   "mode": "step_reveal",
+   "reason": "rule 1",
+   "sources": []
+  }
  ],
- "refresher": ["ki-1", "err-BC-ERR-08016", "err-BC-ERR-99004", "ex-1"],
- "read_minutes": {"full": 3.4, "brief": 3.0},
- "word_count": {"full": 496, "brief": 446},
+ "refresher": [
+  "ki-1",
+  "err-BC-ERR-08016",
+  "err-BC-ERR-99004",
+  "ex-1"
+ ],
+ "read_minutes": {
+  "full": 3.4,
+  "brief": 3.0
+ },
+ "word_count": {
+  "full": 499,
+  "brief": 449
+ },
  "research_lines": [
-  {"file": "research/scoring/justification-requirements.md", "line": "The sharpest recurring rule is that a local argument does not justify a global claim."}
+  {
+   "file": "research/scoring/justification-requirements.md",
+   "line": "The sharpest recurring rule is that a local argument does not justify a global claim."
+  }
  ],
  "inferred": [
-  {"claim": "BC-PT-99013 and BC-PT-99004 are earned on ex-1 steps 3 and 8 but not tagged, because their reader lines push the brief band past 450 words.", "settles": "A brief word cap that exempts reader lines, or a shorter reader_checks form."},
-  {"claim": "The water context is measured in gallons, the sand context in tons and the oil context in gallons.", "settles": "A unit field in BC-QA-08006's parameter_spec."},
-  {"claim": "A fluent solver writes the equation, the labelled candidate values and the conclusion, and types the closed form into the calculator only.", "settles": "Timing data per step from 10's fluency telemetry."}
+  {
+   "claim": "BC-PT-99013 and BC-PT-99004 are earned on ex-1 steps 3 and 8 but not tagged, because their reader lines push the brief band past 450 words.",
+   "settles": "A brief word cap that exempts reader lines, or a shorter reader_checks form."
+  },
+  {
+   "claim": "The water context is measured in gallons, the sand context in tons and the oil context in gallons.",
+   "settles": "A unit field in BC-QA-08006's parameter_spec."
+  },
+  {
+   "claim": "A fluent solver writes the equation, the labelled candidate values and the conclusion, and types the closed form into the calculator only.",
+   "settles": "Timing data per step from 10's fluency telemetry."
+  }
  ],
- "sources": ["BC-CON-08008", "BC-SKL-08014", "BC-EK-CHA-4D1", "ced:154", "BC-QA-08006", "BC-PT-99011", "BC-PT-99013", "sg-25:5", "BC-ERR-08016", "BC-ERR-99004", "BC-MIS-99010", "BC-MIS-06010", "BC-PRQ-08001", "research/units/unit-08-applications-integration.md#8.3 Using Accumulation Functions and Definite Integrals in Applied Contexts", "research/question-analysis/question-archetypes.md#BC-QA-08006 Time at which an accumulated amount is maximal", "research/question-analysis/frq-analysis.md#The calculator questions and the no-calculator questions", "research/scoring/justification-requirements.md#Global versus local arguments", "research/scoring/justification-requirements.md#The candidates test", "research/exam/exam-structure.md#Section and part layout"]
+ "sources": [
+  "BC-CON-08008",
+  "BC-SKL-08014",
+  "BC-EK-CHA-4D1",
+  "ced:154",
+  "BC-QA-08006",
+  "BC-PT-99011",
+  "BC-PT-99013",
+  "sg-25:5",
+  "BC-ERR-08016",
+  "BC-ERR-99004",
+  "BC-MIS-99010",
+  "BC-MIS-06010",
+  "BC-PRQ-08001",
+  "research/units/unit-08-applications-integration.md#8.3 Using Accumulation Functions and Definite Integrals in Applied Contexts",
+  "research/question-analysis/question-archetypes.md#BC-QA-08006 Time at which an accumulated amount is maximal",
+  "research/question-analysis/frq-analysis.md#The calculator questions and the no-calculator questions",
+  "research/scoring/justification-requirements.md#Global versus local arguments",
+  "research/scoring/justification-requirements.md#The candidates test",
+  "research/exam/exam-structure.md#Section and part layout"
+ ]
 }
 ```

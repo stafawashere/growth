@@ -3,20 +3,67 @@
  "version": 1,
  "kind": "concept",
  "target_id": "BC-CON-08001",
- "status": "signed_off",
+ "status": "draft",
  "snapshot_digest": "a6a8ec9d3f59ab8f712e33d30cc22fc64bf2c478fbe7312e3e3118d319c6a42f",
  "source_digest": "db87c8e97a04f6eeee22cce3c6b1116da2a38d36988b7e1844205cf295db95a7",
  "read_minutes": {
-  "full": 4.3,
-  "brief": 2.9
+  "full": 4.4,
+  "brief": 3.0
  },
  "word_count": {
-  "full": 546,
-  "brief": 348
+  "full": 585,
+  "brief": 400
  },
  "sections": [
   {
    "id": "LSN-CON-08001#s1",
+   "type": "prediction",
+   "bands": [
+    "low",
+    "mid"
+   ],
+   "skills": [
+    "BC-SKL-08001",
+    "BC-SKL-08002",
+    "BC-SKL-08003"
+   ],
+   "sources": [
+    "BC-CON-08001",
+    "research/units/unit-08-applications-integration.md#8.1 Finding the Average Value of a Function on an Interval"
+   ],
+   "evidence_tag": "inferred",
+   "stem": {
+    "text": "Predict: W(t) = 5cos(t^2/2) + 1 on [0, 3]. Which gives the average value of W?",
+    "command_verb": "predict"
+   },
+   "format": "mcq",
+   "options": [
+    {
+     "id": "A",
+     "label": "The mean of W(0) and W(3)",
+     "is_key": false
+    },
+    {
+     "id": "B",
+     "label": "The integral of W over [0, 3], divided by 3",
+     "is_key": true
+    },
+    {
+     "id": "C",
+     "label": "The integral of W over [0, 3]",
+     "is_key": false
+    }
+   ],
+   "resolution": {
+    "text": "The integral of W over [0, 3] divided by the length 3, about 1.961. Endpoint samples miss the middle."
+   },
+   "delivery": {
+    "mode": "text",
+    "reason": "rule 6"
+   }
+  },
+  {
+   "id": "LSN-CON-08001#s2",
    "type": "orientation",
    "bands": [
     "low",
@@ -32,7 +79,7 @@
     "research/units/unit-08-applications-integration.md#8.1 Finding the Average Value of a Function on an Interval"
    ],
    "evidence_tag": "inferred",
-   "text": "A response writes the integral of the function over the stated interval, divides by the interval length, and reports three decimal places, setup before the calculator value.",
+   "text": "A response writes the integral, divides by the interval length, and gives three decimals.",
    "delivery": {
     "mode": "text",
     "reason": "rule 6: a statement of what a response shows; the figure is served once, on ki-1",
@@ -42,7 +89,7 @@
    }
   },
   {
-   "id": "LSN-CON-08001#s2",
+   "id": "LSN-CON-08001#s3",
    "type": "key_ideas",
    "bands": [
     "low",
@@ -62,8 +109,8 @@
    "evidence_tag": "inferred",
    "ek_id": "BC-EK-CHA-4B1",
    "depth": "core",
-   "text": "For f continuous on [a, b], the average value is the integral of f over [a, b] divided by b minus a, in the units of f. The integral alone is the accumulated amount, not the average.",
-   "notation": "average value of f on [a,b]",
+   "text": "Average value of f on [a, b]: the integral of f over [a, b], divided by b minus a.",
+   "notation": "average value",
    "delivery": {
     "mode": "figure",
     "reason": "rule 4: BC-REP-02 and BC-REP-08 on BC-SKL-08002; the unit README delivery map names the average value rectangle; not promoted, BC-QA-08001 difficulty_variables vary a presentation form",
@@ -136,7 +183,7 @@
    }
   },
   {
-   "id": "LSN-CON-08001#s3",
+   "id": "LSN-CON-08001#s4",
    "type": "strategy",
    "bands": [
     "low",
@@ -152,13 +199,24 @@
    ],
    "evidence_tag": "verified",
    "archetype_id": "BC-QA-08001",
-   "cue": "Average value of a model function over a closed interval, setup shown.",
-   "method": "First line: the integral over the interval, divided by its length.",
-   "rival": "Rival: averaging the two endpoint values.",
-   "separating_feature": "Average value of f means f across the whole interval: an integral, not two samples."
+   "cue": "Average value of a function on an interval.",
+   "method": "Integral over the interval, divided by its length.",
+   "rival": "Averaging the endpoint values.",
+   "separating_feature": "Average value spans the interval: an integral.",
+   "contrast": {
+    "this": {
+     "text": "Find the average value of C(t) = 2 + sin(t^2) on [0, 3], with setup.",
+     "archetype_id": "BC-QA-08001"
+    },
+    "not_this": {
+     "text": "Find the average rate of change of C on [0, 3], with units.",
+     "why_not": "It asks for a quotient of endpoint values."
+    },
+    "feature": "Average value integrates; average rate of change subtracts endpoint values."
+   }
   },
   {
-   "id": "LSN-CON-08001#s4",
+   "id": "LSN-CON-08001#s5",
    "type": "strategy",
    "bands": [
     "low",
@@ -172,13 +230,13 @@
    ],
    "evidence_tag": "verified",
    "archetype_id": "BC-QA-99007",
-   "cue": "The stem asks for the average rate of change with units, from a modelling function and a closed interval.",
-   "method": "First line: the function at both endpoints, their difference over the interval length.",
-   "rival": "Rival: integrating the function and dividing by the interval length.",
+   "cue": "The average rate of change with units, from a modelling function and a closed interval.",
+   "method": "The function at both endpoints, their difference over the interval length.",
+   "rival": "Integrating the function and dividing by the interval length.",
    "separating_feature": "The words rate of change select the difference quotient."
   },
   {
-   "id": "LSN-CON-08001#s5",
+   "id": "LSN-CON-08001#s6",
    "type": "strategy",
    "bands": [
     "low",
@@ -192,13 +250,13 @@
    ],
    "evidence_tag": "verified",
    "archetype_id": "BC-QA-08002",
-   "cue": "The stem asks when the instantaneous rate equals the average rate of change, from a model and its derivative.",
-   "method": "First line: the average rate of change over the interval.",
-   "rival": "Rival: reporting that rate itself as the time.",
+   "cue": "When the instantaneous rate equals the average rate of change, from a model and its derivative.",
+   "method": "The average rate of change over the interval.",
+   "rival": "Reporting that rate itself as the time.",
    "separating_feature": "The answer is an input on the interval, solved from the derivative equal to that rate."
   },
   {
-   "id": "LSN-CON-08001#s6",
+   "id": "LSN-CON-08001#s7",
    "type": "worked_example",
    "bands": [
     "low",
@@ -295,7 +353,7 @@
    }
   },
   {
-   "id": "LSN-CON-08001#s7",
+   "id": "LSN-CON-08001#s8",
    "type": "what_a_reader_scores",
    "bands": [
     "low",
@@ -310,7 +368,7 @@
     "BC-PT-99020"
    ],
    "evidence_tag": "verified",
-   "example_id": "LSN-CON-08001#s6",
+   "example_id": "LSN-CON-08001#s7",
    "lines": [
     {
      "point_type_id": "BC-PT-99020",
@@ -428,6 +486,7 @@
     ]
    },
    "relation": "distinct",
+   "fix_prompt": true,
    "possible_reason": {
     "misconception_id": "BC-MIS-08024",
     "text": "reads every definite integral as area under a graph"
@@ -539,6 +598,7 @@
     ]
    },
    "relation": "distinct",
+   "fix_prompt": true,
    "possible_reason": {
     "misconception_id": "BC-MIS-08002",
     "text": "sees the integral as the averaging operation itself"
@@ -656,6 +716,7 @@
     ]
    },
    "relation": "distinct",
+   "fix_prompt": true,
    "delivery": {
     "mode": "step_reveal",
     "reason": "rule 1",
@@ -688,6 +749,7 @@
     "expression": 1.961
    },
    "relation": "distinct",
+   "fix_prompt": true,
    "delivery": {
     "mode": "step_reveal",
     "reason": "rule 1",
@@ -709,7 +771,7 @@
    ],
    "evidence_tag": "inferred",
    "prerequisite_id": "BC-PRQ-06005",
-   "text": "W(t) is the value of W at input t; a value read at the wrong input changes the integral."
+   "text": "W(t) is the value at input t."
   },
   {
    "id": "LSN-CON-08001#prq-BC-PRQ-06007",
@@ -726,7 +788,7 @@
    ],
    "evidence_tag": "inferred",
    "prerequisite_id": "BC-PRQ-06007",
-   "text": "From a graph: signed sums of rectangle, triangle, trapezoid and semicircle areas."
+   "text": "Signed areas from a graph."
   },
   {
    "id": "LSN-CON-08001#prq-BC-PRQ-08006",
@@ -743,7 +805,7 @@
    ],
    "evidence_tag": "inferred",
    "prerequisite_id": "BC-PRQ-08006",
-   "text": "Full precision until the last line, then three places."
+   "text": "Full precision, then three places."
   }
  ],
  "checks": [
@@ -764,7 +826,7 @@
     "context": "depth",
     "framing": "bare"
    },
-   "completes": "LSN-CON-08001#s6",
+   "completes": "LSN-CON-08001#s7",
    "stem": {
     "text": "Evaluate (1/3) times the integral of 5cos(t^2/2) + 1 from 0 to 3, to three places.",
     "command_verb": "evaluate"
@@ -1033,19 +1095,19 @@
   }
  ],
  "refresher": [
-  "LSN-CON-08001#s2",
+  "LSN-CON-08001#s3",
   "LSN-CON-08001#err-BC-ERR-06014",
   "LSN-CON-08001#err-BC-ERR-08001",
   "LSN-CON-08001#err-BC-ERR-08002",
   "LSN-CON-08001#err-BC-ERR-99019",
-  "LSN-CON-08001#s6"
+  "LSN-CON-08001#s7"
  ],
  "provenance": {
   "author": "tools/lesson_transcribe.py",
-  "prompt_version": "generator/lesson_v1",
+  "prompt_version": "generator/lesson_v2",
   "design_path": "docs/lessons/unit-08/LSN-CON-08001.md",
-  "signed_off_by": "claude-opus-5-5",
-  "signed_off_at": "2026-09-29",
+  "signed_off_by": null,
+  "signed_off_at": null,
   "not_human": true
  }
 }

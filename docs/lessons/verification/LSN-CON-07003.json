@@ -33,58 +33,74 @@
   "auditor": "claude-opus-5-5",
   "blocks": [
    {
+    "id": "prediction",
+    "verdict": "ok",
+    "evidence": "SymPy: diff(4 + Ce^x) - ((4 + Ce^x) - 4) = 0 for every C, so infinitely many (B); A and C false; resolution from BC-EK-FUN-7B2 and research 7.2 Multiplicity."
+   },
+   {
     "id": "orientation",
     "verdict": "ok",
-    "evidence": "Paraphrases BC-CON-07003 and the multi-concept variant in the 7.2 Assessment behaviour paragraph; 24 words."
+    "evidence": "Shortened; BC-CON-07003 description_plain and research 7.2 multi-concept variant."
    },
    {
     "id": "ki-1",
     "verdict": "ok",
-    "evidence": "Matches the Multiplicity paragraph and description_plain (one curve through each point); quote is FUN-7.B.2 verbatim on ced:138."
+    "evidence": "Shortened; research 7.2 Multiplicity paragraph; quote verbatim on ced:138."
    },
    {
     "id": "st-1",
     "verdict": "ok",
-    "evidence": "Method from expected_solution_path[0], rival from wrong_approaches, feature from difficulty_variables \"arbitrary constant\"."
+    "evidence": "Labels stripped; method from expected_solution_path[0] with C held constant; rival wrong_approaches."
+   },
+   {
+    "id": "st-1.contrast",
+    "verdict": "unsourced",
+    "evidence": "not_this \"Show that y = 1 + 3e^(2x) solves dy/dx = 2(y - 1)\" is BC-QA-07007 typical_wording \"show that the given function is a solution\", the block's own archetype, so the pair contrasts two stems of one archetype. SymPy: this is sound (residual 0, y(0) = 4 gives C = 3)."
    },
    {
     "id": "ex-1",
     "verdict": "ok",
-    "evidence": "SymPy: diff(4+Ce^x) = Ce^x = (4+Ce^x)-4; 4+C = 2 gives C = -2; particular solution 4-2e^x."
+    "evidence": "Cues shortened, exprs unchanged; SymPy residual 0, 4 + C = 2 gives C = -2."
    },
    {
     "id": "what_a_reader_scores:ex-1",
     "verdict": "ok",
-    "evidence": "BC-PT-99068 and BC-PT-99005 lines match the bundle point type fields."
+    "evidence": "BC-PT-99068 and BC-PT-99005 lines match the bundle point type fields. unchanged since 2026-09-29."
    },
    {
     "id": "err-BC-ERR-07009",
     "verdict": "ok",
-    "evidence": "Record fields verbatim; BC-MIS-07005 is a linked possible misconception."
+    "evidence": "fix_prompt true with relation distinct; step texts shortened; 4 + Ce^x against 4 - 2e^x differ."
    },
    {
     "id": "representations",
     "verdict": "ok",
-    "evidence": "null; BC-REP-01, 04, 06 only."
+    "evidence": "null; BC-REP-01, 04, 06 only. unchanged since 2026-09-29."
    },
    {
     "id": "chk-1",
     "verdict": "ok",
-    "evidence": "SymPy: 4+C = 2 gives C = -2, key 4-2e^x."
+    "evidence": "SymPy: 4+C = 2 gives C = -2, key 4-2e^x. unchanged since 2026-09-29."
    },
    {
     "id": "chk-2",
     "verdict": "ok",
-    "evidence": "SymPy: diff(1+Ce^(-2x)) = -2Ce^(-2x) = -2((1+Ce^(-2x))-1); 1+C = 3 gives C = 2; key 1+2e^(-2x)."
+    "evidence": "SymPy: diff(1+Ce^(-2x)) = -2Ce^(-2x) = -2((1+Ce^(-2x))-1); 1+C = 3 gives C = 2; key 1+2e^(-2x). unchanged since 2026-09-29."
+   },
+   {
+    "id": "no_figure_reason",
+    "verdict": "ok",
+    "evidence": "Bundle skill BC-SKL-07009 carries no figure-bearing representation; the lesson is symbolic."
    }
   ],
   "advice": [
-   "The error record is named \"General solution reported as the only solution\"; the block shows a particular solution called the only one. Consider a wrong step that presents the family as a single function, as observed_behavior reads.",
-   "The lesson teaches the constant held through differentiation and the point fixing it; recognition of a C in the candidate as the stem signal is clear."
+   "For st-1.contrast, a not_this from another archetype would separate on the constant, such as a BC-QA-07003 separation stem (derive the family) or a BC-QA-07011 stem, with feature a printed C against none.",
+   "Reader-score lines for ex-1 carry page citations (sg-25:26, sg-25:22, sg-22:21, sg-26:2, sg-25:4, sg-23:10, sg-22:9, sg-22:6, sg-25:2); verbatim record text the reader strips.",
+   "ki-1 notation shrank to \"constant C\"; the concept notation also names general solution and family of solutions, which the lesson no longer states anywhere a student reads."
   ],
   "counts": {
-   "ok": 9,
-   "unsourced": 0,
+   "ok": 11,
+   "unsourced": 1,
    "wrong": 0,
    "over_cap": 0,
    "lint": 0

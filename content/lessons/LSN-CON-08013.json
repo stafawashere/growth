@@ -3,20 +3,68 @@
  "version": 1,
  "kind": "concept",
  "target_id": "BC-CON-08013",
- "status": "signed_off",
+ "status": "draft",
  "snapshot_digest": "a6a8ec9d3f59ab8f712e33d30cc22fc64bf2c478fbe7312e3e3118d319c6a42f",
  "source_digest": "dd2c3c1defe93eb79b0e3bf39114b5d465145b221693e9a2ddb40158adc0505d",
  "read_minutes": {
-  "full": 3.6,
+  "full": 3.7,
   "brief": 3.0
  },
  "word_count": {
-  "full": 456,
-  "brief": 374
+  "full": 471,
+  "brief": 389
  },
  "sections": [
   {
    "id": "LSN-CON-08013#s1",
+   "type": "prediction",
+   "bands": [
+    "low",
+    "mid"
+   ],
+   "skills": [
+    "BC-SKL-08027",
+    "BC-SKL-08028",
+    "BC-SKL-08029",
+    "BC-SKL-08030"
+   ],
+   "sources": [
+    "BC-CON-08013",
+    "ced:157"
+   ],
+   "evidence_tag": "inferred",
+   "stem": {
+    "text": "Predict: \\(f-g=(x-1)(x-3)\\) for \\(f(x)=x^2-3x+4\\) and \\(g(x)=x+1\\). How is the area over \\(0\\le x\\le 7/2\\) found?",
+    "command_verb": "predict"
+   },
+   "format": "mcq",
+   "options": [
+    {
+     "id": "A",
+     "label": "One integral of f - g, whole interval",
+     "is_key": false
+    },
+    {
+     "id": "B",
+     "label": "Three integrals, cut at 1 and 3",
+     "is_key": true
+    },
+    {
+     "id": "C",
+     "label": "Two integrals, cut at 1 only",
+     "is_key": false
+    }
+   ],
+   "resolution": {
+    "text": "The curves cross at x = 1 and x = 3, so the upper curve changes. The area is the sum of three integrals of upper minus lower."
+   },
+   "delivery": {
+    "mode": "text",
+    "reason": "rule 6"
+   }
+  },
+  {
+   "id": "LSN-CON-08013#s2",
    "type": "orientation",
    "bands": [
     "low",
@@ -33,7 +81,7 @@
     "research/units/unit-08-applications-integration.md#8.6 Finding the Area Between Curves That Intersect at More Than Two Points"
    ],
    "evidence_tag": "inferred",
-   "text": "A response finds every crossing of the two curves inside the interval, integrates upper minus lower on each piece and adds the pieces, or integrates the absolute value of the difference once.",
+   "text": "A response finds every crossing inside the interval and integrates upper minus lower on each piece.",
    "delivery": {
     "mode": "figure",
     "reason": "rule 4: BC-REP-02 on BC-SKL-08027 and BC-SKL-08028; unit README delivery map",
@@ -102,7 +150,7 @@
    }
   },
   {
-   "id": "LSN-CON-08013#s2",
+   "id": "LSN-CON-08013#s3",
    "type": "key_ideas",
    "bands": [
     "low",
@@ -122,8 +170,8 @@
    "evidence_tag": "verified",
    "ek_id": "BC-EK-CHA-5A3",
    "depth": "core",
-   "text": "Where the curves cross, the upper curve changes, so the region is cut at every solution of f = g inside the interval. The area is a sum of integrals with the order fixed on each piece, or one integral of the absolute value of the difference: the same number, and the form a calculator evaluates. The bars go inside the integral.",
-   "notation": "sum of definite integrals; absolute value of a difference",
+   "text": "The region is cut at every crossing inside the interval, because the upper curve changes there. The absolute value form gives the same number, with the bars inside the integral.",
+   "notation": "sum of definite integrals; absolute value",
    "quote": {
     "text": "a sum of two or more definite integrals or by evaluating a definite integral of the absolute value of the difference of two functions",
     "source": "ced:157"
@@ -206,7 +254,7 @@
    }
   },
   {
-   "id": "LSN-CON-08013#s3",
+   "id": "LSN-CON-08013#s4",
    "type": "strategy",
    "bands": [
     "low",
@@ -219,17 +267,30 @@
     "BC-SKL-08030"
    ],
    "sources": [
-    "BC-QA-08010"
+    "BC-QA-08010",
+    "BC-QA-08008",
+    "BC-ERR-08026"
    ],
    "evidence_tag": "verified",
    "archetype_id": "BC-QA-08010",
-   "cue": "The stem asks for the total area between two graphs over a stated interval, from two curve equations.",
-   "method": "First written line: \\(f(x)=g(x)\\), solved for every input in the interval.",
-   "rival": "Rival: one fixed difference integrated across a crossing (BC-ERR-08026).",
-   "separating_feature": "A solution of f = g strictly inside the interval."
+   "cue": "Total area between two graphs over a stated interval.",
+   "method": "\\(f(x)=g(x)\\), solved for every input in the interval.",
+   "rival": "One fixed difference integrated across a crossing.",
+   "separating_feature": "A crossing strictly inside the interval.",
+   "contrast": {
+    "this": {
+     "text": "Find the total area between \\(f(x)=x^2-4x\\) and \\(g(x)=-3\\) for \\(0\\le x\\le 5\\).",
+     "archetype_id": "BC-QA-08010"
+    },
+    "not_this": {
+     "text": "Find the area enclosed by \\(f(x)=x^2-4x\\) and \\(g(x)=-3\\).",
+     "why_not": "No interval is stated; the region ends at the meeting points."
+    },
+    "feature": "A crossing inside the stated interval."
+   }
   },
   {
-   "id": "LSN-CON-08013#s4",
+   "id": "LSN-CON-08013#s5",
    "type": "worked_example",
    "bands": [
     "low",
@@ -263,7 +324,7 @@
    "calculator_status": "no_calculator",
    "steps": [
     {
-     "cue": "Total area over a stated interval: do the curves cross inside it?",
+     "cue": "Stated interval: do the curves cross inside it?",
      "why": "Every crossing is a cut.",
      "expression": [
       "Equal",
@@ -291,7 +352,7 @@
     },
     {
      "cue": "Factor.",
-     "why": "\\((x-1)(x-3)=0\\): two crossings inside, three pieces.",
+     "why": "\\((x-1)(x-3)=0\\): three pieces.",
      "expression": [
       "Set",
       1,
@@ -301,11 +362,11 @@
      "variable": "x"
     },
     {
-     "cue": "Sign of \\(f-g\\) on each piece: test 0, 2, 13/4.",
-     "why": "Positive, negative, positive: \\(f\\), then \\(g\\), then \\(f\\) on top."
+     "cue": "Sign of \\(f-g\\): test 0, 2, 13/4.",
+     "why": "\\(f\\), then \\(g\\), then \\(f\\) on top."
     },
     {
-     "cue": "One integral per piece, upper minus lower.",
+     "cue": "Upper minus lower on each piece.",
      "why": "Each piece nonnegative.",
      "expression": [
       "Add",
@@ -391,7 +452,7 @@
     },
     {
      "cue": "Evaluate each piece.",
-     "why": "\\(F(x)=x^3/3-2x^2+3x\\) on each.",
+     "why": "\\(F(x)=x^3/3-2x^2+3x\\).",
      "expression": [
       "Rational",
       71,
@@ -401,7 +462,7 @@
     },
     {
      "cue": "The stem asks for the total.",
-     "why": "The sum of the pieces.",
+     "why": "Sum of the pieces.",
      "expression": [
       "Rational",
       71,
@@ -613,6 +674,7 @@
     ]
    },
    "relation": "distinct",
+   "fix_prompt": true,
    "possible_reason": {
     "misconception_id": "BC-MIS-08011",
     "text": "any sign problem can be repaired at the end"
@@ -785,6 +847,7 @@
     ]
    },
    "relation": "distinct",
+   "fix_prompt": true,
    "possible_reason": {
     "misconception_id": "BC-MIS-08014",
     "text": "a crossing inside the interval does not signal that the region has pieces"
@@ -853,6 +916,7 @@
     ]
    },
    "relation": "distinct",
+   "fix_prompt": true,
    "possible_reason": {
     "misconception_id": "BC-MIS-08014",
     "text": "treats the area formula as a template applied once"
@@ -944,6 +1008,7 @@
     ]
    },
    "relation": "distinct",
+   "fix_prompt": true,
    "delivery": {
     "mode": "step_reveal",
     "reason": "rule 1",
@@ -966,7 +1031,7 @@
    ],
    "evidence_tag": "inferred",
    "prerequisite_id": "BC-PRQ-06005",
-   "text": "\\(f(2)\\) is one value at one input; reading another input names the wrong upper curve."
+   "text": "\\(f(2)\\) is one value at one input; else the wrong curve is on top."
   },
   {
    "id": "LSN-CON-08013#prq-BC-PRQ-08001",
@@ -983,7 +1048,7 @@
    ],
    "evidence_tag": "inferred",
    "prerequisite_id": "BC-PRQ-08001",
-   "text": "Every solution of \\(f=g\\) in the interval, not only the first; else the cuts are missing."
+   "text": "Every solution of \\(f=g\\) in the interval; else cuts are missing."
   },
   {
    "id": "LSN-CON-08013#prq-BC-PRQ-08003",
@@ -1000,7 +1065,7 @@
    ],
    "evidence_tag": "inferred",
    "prerequisite_id": "BC-PRQ-08003",
-   "text": "\\(\\lvert h\\rvert\\) is \\(h\\) where \\(h\\ge0\\) and \\(-h\\) elsewhere; else a signed total replaces the area."
+   "text": "\\(\\lvert h\\rvert\\) is \\(h\\) where \\(h\\ge0\\) and \\(-h\\) elsewhere."
   }
  ],
  "checks": [
@@ -1023,7 +1088,7 @@
     "intercept": 1,
     "presentation": "formula"
    },
-   "completes": "LSN-CON-08013#s4",
+   "completes": "LSN-CON-08013#s5",
    "stem": {
     "text": "The three pieces are \\(4/3\\), \\(4/3\\) and \\(7/24\\). Find the total area.",
     "command_verb": "find"
@@ -1459,19 +1524,19 @@
   }
  ],
  "refresher": [
-  "LSN-CON-08013#s2",
+  "LSN-CON-08013#s3",
   "LSN-CON-08013#err-BC-ERR-08020",
   "LSN-CON-08013#err-BC-ERR-08025",
   "LSN-CON-08013#err-BC-ERR-08026",
   "LSN-CON-08013#err-BC-ERR-08027",
-  "LSN-CON-08013#s4"
+  "LSN-CON-08013#s5"
  ],
  "provenance": {
   "author": "tools/lesson_transcribe.py",
-  "prompt_version": "generator/lesson_v1",
+  "prompt_version": "generator/lesson_v2",
   "design_path": "docs/lessons/unit-08/LSN-CON-08013.md",
-  "signed_off_by": "claude-opus-5-5",
-  "signed_off_at": "2026-09-29",
+  "signed_off_by": null,
+  "signed_off_at": null,
   "not_human": true
  }
 }

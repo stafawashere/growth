@@ -45,84 +45,111 @@
   "auditor": "claude-opus-5-5",
   "blocks": [
    {
+    "id": "prediction",
+    "verdict": "ok",
+    "evidence": "SymPy: diff(-3x e^(-2x)/2 - 3e^(-2x)/4) - 3x e^(-2x) = 0 by parts (B); d(-2x)/dx = -2 and 3x/(-2) is not constant, so substitution's precondition fails (A); no rational factor (C). Resolution from 6.14 Structural markers line; no ids."
+   },
+   {
     "id": "orientation",
     "verdict": "ok",
-    "evidence": "Paraphrases BC-CON-06020 and expected_solution_path; 29 words."
+    "evidence": "Paraphrases BC-CON-06020 and expected_solution_path; 29 words.",
+    "note": "unchanged since 2026-09-29"
    },
    {
     "id": "ki-1",
     "verdict": "ok",
-    "evidence": "Paraphrases research 6.14 Structural markers; quote found on ced:131."
+    "evidence": "Paraphrases research 6.14 Structural markers; quote found on ced:131.",
+    "note": "unchanged since 2026-09-29"
    },
    {
     "id": "ki-2",
     "verdict": "ok",
-    "evidence": "Paraphrases BC-EK-FUN-6D3 (long division) and expected_solution_path chaining step."
+    "evidence": "Paraphrases BC-EK-FUN-6D3 (long division) and expected_solution_path chaining step.",
+    "note": "unchanged since 2026-09-29"
    },
    {
     "id": "ki-3",
     "verdict": "ok",
-    "evidence": "Paraphrases BC-EK-FUN-6C3 and research 6.14 Structural markers last clause."
+    "evidence": "Paraphrases BC-EK-FUN-6C3 and research 6.14 Structural markers last clause.",
+    "note": "unchanged since 2026-09-29"
    },
    {
     "id": "st-1",
     "verdict": "ok",
-    "evidence": "Method expected_solution_path[0]; rival BC-ERR-06020 from wrong_approaches."
+    "evidence": "Method is expected_solution_path[0], no label; rival label and id removed, BC-ERR-06020 in sources."
+   },
+   {
+    "id": "st-1.contrast",
+    "verdict": "ok",
+    "evidence": "this 4x e^(3x) is the spec product form (multiplier 4, rate 3 in domain); not_this 4x e^(3x^2): SymPy 4x / diff(3x^2) = 2/3, a constant, so substitution applies; feature true and from 6.14 Structural markers."
    },
    {
     "id": "ex-1",
     "verdict": "ok",
-    "evidence": "SymPy: integrate(3x e^(-2x)) minus key = 0."
+    "evidence": "SymPy: integrate(3x e^(-2x)) minus key = 0.",
+    "note": "unchanged since 2026-09-29"
    },
    {
     "id": "ex-2",
     "verdict": "ok",
-    "evidence": "SymPy: apart(4(x^2+5)/(x-2)) = 4x + 8 + 36/(x-2); derivative of key minus integrand = 0."
+    "evidence": "fade_from 3 (1-based, LessonSection.tsx shows steps before it): shown steps name the marker 'long division first' and write the integrand, enough to finish; withheld steps are valued (equivalent 4x + 8 + 36/(x-2), SymPy apart match; integrate, key derivative check 0)."
    },
    {
     "id": "err-BC-ERR-06020",
     "verdict": "ok",
-    "evidence": "Record verbatim; 3x times (-1/2)e^(-2x) reproduces the wrong line."
+    "evidence": "fix_prompt true with relation distinct; exprs unchanged; SymPy: wrong minus right simplifies to nonzero."
    },
    {
     "id": "err-BC-ERR-06022",
     "verdict": "ok",
-    "evidence": "SymPy: (3x^2/2)(-(1/2)e^(-2x)) = -3x^2 e^(-2x)/4."
+    "evidence": "fix_prompt true with relation distinct; exprs unchanged; SymPy: wrong minus right simplifies to nonzero."
    },
    {
     "id": "representations",
     "verdict": "ok",
-    "evidence": "null; BC-REP-01 on the archetype, BC-REP-09 only on ki-3 which has no example."
+    "evidence": "null; BC-REP-01 on the archetype, BC-REP-09 only on ki-3 which has no example.",
+    "note": "unchanged since 2026-09-29"
    },
    {
-    "id": "bridge-BC-PRQ-06001",
+    "id": "BC-PRQ-06001",
     "verdict": "ok",
-    "evidence": "Paraphrases description_plain and failure_signature."
+    "evidence": "Paraphrases description_plain and failure_signature.",
+    "note": "unchanged since 2026-09-29"
    },
    {
     "id": "chk-1",
     "verdict": "ok",
-    "evidence": "SymPy: finish of the parts expression matches the key."
+    "evidence": "SymPy: finish of the parts expression matches the key.",
+    "note": "unchanged since 2026-09-29"
    },
    {
     "id": "chk-2",
     "verdict": "ok",
-    "evidence": "SymPy: integrate(2x e^(3x)) minus key = 0."
+    "evidence": "SymPy: integrate(2x e^(3x)) minus key = 0.",
+    "note": "unchanged since 2026-09-29"
    },
    {
     "id": "chk-3",
     "verdict": "ok",
-    "evidence": "Key C is the parts first line; B reproduces (5x^2/2)(-e^(-x)); A and D are substitutions whose precondition fails."
+    "evidence": "Key C is the parts first line; B reproduces (5x^2/2)(-e^(-x)); A and D are substitutions whose precondition fails.",
+    "note": "unchanged since 2026-09-29"
+   },
+   {
+    "id": "no_figure_reason",
+    "verdict": "ok",
+    "evidence": "Skills carry BC-REP-01 and BC-REP-09 only, neither figure-bearing; key ideas classify integrands."
    }
   ],
   "advice": [
    "No what_a_reader_scores entry: BC-QA-06016 has no point_types, so scoring habits are absent; the scoring_pattern (setup and antiderivative scored separately, sg-23:18) could be stated in a why line.",
    "ex-2 exercises chaining only through long division; no block shows a technique that leaves a second non basic integral, which ki-2 names.",
    "st-1 cue says a transcendental factor while common_givens names a cosine; acceptable as a generalisation.",
-   "A side by side contrast of the markers (substitution, parts, partial fractions, division) would serve ki-1 better than plain text."
+   "A side by side contrast of the markers (substitution, parts, partial fractions, division) would serve ki-1 better than plain text.",
+   "Scoring consequence of err-BC-ERR-06022 carries page citations (sg-23:18, sg-24:18); verbatim record text the reader strips, so not lint.",
+   "Prediction option A (u = -2x) does work as a linear change of variable, but it leaves the integral of u e^u, which still needs parts; the resolution's precondition wording is true, though a sharp student may argue A is not wrong, only insufficient."
   ],
   "counts": {
-   "ok": 14,
+   "ok": 17,
    "unsourced": 0,
    "wrong": 0,
    "over_cap": 0,

@@ -10,7 +10,7 @@ from types import SimpleNamespace
 
 import pytest
 
-from app.agent.context import compose_packet
+from app.agent.context import compose_packet, question_key_forms
 from app.agent.screen import SentenceScreen, decline_text, sentence_end
 from app.content.loader import load_snapshot
 from app.evals import agent_checks, golden
@@ -130,3 +130,44 @@ def test_the_decline_is_the_design_copy_and_passes_every_check(practice_packet, 
 
    assert decline == copy
    assert all(verdict.passed for verdict in verdicts)
+
+
+@pytest.fixture(scope="module")
+def prediction_lesson():
+   return golden.agent_lesson("LSN-CON-01006")
+
+
+@pytest.fixture(scope="module")
+def prediction_packet(prediction_lesson):
+   context = golden.agent_context(load_snapshot(DEFAULT_CONTENT_ROOT))
+   section = prediction_lesson.body["sections"][0]
+   screen = {
+      "kind": "lesson",
+      "lesson_id": prediction_lesson.id,
+      "version": prediction_lesson.version,
+      "section_id": section["id"],
+      "section_index": 0,
+      "section_count": len(prediction_lesson.body["sections"]),
+      "return_to": "/lessons",
+   }
+   packet, _move = compose_packet(context, screen, lesson=prediction_lesson)
+
+   return packet
+
+
+@pytest.mark.parametrize(
+   "sentence",
+   [
+      "The limit is that height, 2.",
+      "So the answer is B.",
+   ],
+)
+def test_a_sentence_stating_the_prediction_key_is_withheld(prediction_packet, prediction_lesson, sentence):
+   """The live walk's leak on LSN-CON-01006's prediction, whose keyed option B is labelled 2."""
+   forms = question_key_forms(prediction_lesson.body["sections"][0])
+   screen = SentenceScreen(prediction_packet, forms)
+   released = screen.feed("Which height do both sides approach? " + sentence) + screen.flush()
+
+   assert screen.withheld is not None
+   assert screen.withheld.check == "no_answer_before_submission"
+   assert released == ["Which height do both sides approach?", screen.decline]

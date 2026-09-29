@@ -269,7 +269,9 @@ export async function runAgentTurn(body: AgentTurnBody, handlers: TurnHandlers, 
 }
 
 /* The hook the panel's provider drives: one turn at a time, Stop aborts it, and a turn with no text
-   after FIRST_TEXT_TIMEOUT_MILLISECONDS is abandoned as offline. */
+   after FIRST_TEXT_TIMEOUT_MILLISECONDS is abandoned as offline. Once a turn has settled (its end
+   or error frame, a failure or a stop) it lets go of the turn's controller and its timer, so the
+   body is read on to the server's own close and nothing aborts a request that already finished. */
 export function useAgentStream(timeoutMilliseconds = FIRST_TEXT_TIMEOUT_MILLISECONDS) {
    const [isStreaming, setIsStreaming] = useState(false);
    const controller = useRef<AbortController | null>(null);
@@ -310,20 +312,42 @@ export function useAgentStream(timeoutMilliseconds = FIRST_TEXT_TIMEOUT_MILLISEC
             turnController.abort();
          }, timeoutMilliseconds);
 
+         function release() {
+            const isCurrentTurn = controller.current === turnController;
+
+            if (!isCurrentTurn) {
+               return;
+            }
+
+            clearTimer();
+            controller.current = null;
+            setIsStreaming(false);
+         }
+
          const guarded: TurnHandlers = {
-            ...handlers,
+            onStart: handlers.onStart,
             onText: (delta) => {
                clearTimer();
                handlers.onText(delta);
+            },
+            onEnd: (event) => {
+               release();
+               handlers.onEnd(event);
+            },
+            onFailure: (failure) => {
+               release();
+               handlers.onFailure(failure);
+            },
+            onStopped: () => {
+               release();
+               handlers.onStopped();
             }
          };
 
          try {
             await runAgentTurn(body, guarded, turnController.signal, () => stopRequested.current && !timedOut);
          } finally {
-            clearTimer();
-            controller.current = null;
-            setIsStreaming(false);
+            release();
          }
       },
       [clearTimer, timeoutMilliseconds]

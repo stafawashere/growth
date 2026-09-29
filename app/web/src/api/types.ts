@@ -524,6 +524,13 @@ export interface ExperimentComparison {
    interval_high: number | null;
    stated: boolean;
    minimum_outcomes_per_arm: number;
+   guards: ComparisonGuards | null;
+}
+
+/* app/experiments/analysis.py tutor_profile_comparison: the calibration guard by arm, present on
+   the tutor profile comparison and null on the others. */
+export interface ComparisonGuards {
+   calibration: Record<string, CalibrationBin[]>;
 }
 
 /* app/api/routes/evaluation.py read_metrics. */

@@ -41,26 +41,28 @@ def result_payload(**overrides):
 
 
 STREAMED_DELTAS = ("First sentence. ", "Second ", "sentence?")
-RATE_LIMIT_INFO = {
-   "status": "allowed",
-   "resetsAt": 1790000000,
-   "rateLimitType": "five_hour",
-   "overageStatus": "rejected",
-   "unifiedWindows": {
-      "five_hour": {"utilization": 0.18, "resetsAt": 1790000000},
-      "seven_day": {"utilization": 0.29, "resetsAt": 1790400000},
-   },
-}
-LIMITED_RATE_LIMIT_INFO = {
-   "status": "rejected",
-   "resetsAt": 1790000000,
-   "rateLimitType": "five_hour",
-   "overageStatus": "rejected",
-   "unifiedWindows": {
-      "five_hour": {"utilization": 1.0, "resetsAt": 1790000000},
-      "seven_day": {"utilization": 0.41, "resetsAt": 1790400000},
-   },
-}
+FIVE_HOUR_WINDOW_SECONDS = 3600
+SEVEN_DAY_WINDOW_SECONDS = 86400
+
+
+def rate_limit_info(status, five_hour_utilization, seven_day_utilization):
+   """Reset times an hour and a day past the clock, so a walk against the fake shows a reset still
+   to come."""
+   now = int(time.time())
+   five_hour_reset = now + FIVE_HOUR_WINDOW_SECONDS
+
+   return {
+      "status": status,
+      "resetsAt": five_hour_reset,
+      "rateLimitType": "five_hour",
+      "overageStatus": "rejected",
+      "unifiedWindows": {
+         "five_hour": {"utilization": five_hour_utilization, "resetsAt": five_hour_reset},
+         "seven_day": {"utilization": seven_day_utilization, "resetsAt": now + SEVEN_DAY_WINDOW_SECONDS},
+      },
+   }
+
+
 HOLD_WAIT_SECONDS = 10
 EMPTY_CONSOLIDATION = {"proposals": [], "student_terms": [], "stated_requests": []}
 
@@ -203,7 +205,7 @@ def main():
          if index == 0:
             wait_for_release(home)
 
-      emit({"type": "rate_limit_event", "rate_limit_info": RATE_LIMIT_INFO, "session_id": "fake-session-0001"})
+      emit({"type": "rate_limit_event", "rate_limit_info": rate_limit_info("allowed", 0.18, 0.29), "session_id": "fake-session-0001"})
       emit(result_payload(result="".join(deltas)))
       return 0
 
@@ -215,7 +217,7 @@ def main():
       emit(init_event())
 
       if mode == "stream_limit":
-         emit({"type": "rate_limit_event", "rate_limit_info": LIMITED_RATE_LIMIT_INFO, "session_id": "fake-session-0001"})
+         emit({"type": "rate_limit_event", "rate_limit_info": rate_limit_info("rejected", 1.0, 0.41), "session_id": "fake-session-0001"})
 
       emit(api_retry_event(error))
       time.sleep(30)

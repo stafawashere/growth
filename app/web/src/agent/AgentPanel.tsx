@@ -1,4 +1,4 @@
-import { useEffect, useState, type FormEvent, type KeyboardEvent } from "react";
+import { useEffect, useRef, useState, type FormEvent, type KeyboardEvent } from "react";
 
 import { MathText } from "../math/MathText";
 import { holdUnclosedMath } from "../math/mathjson";
@@ -30,7 +30,7 @@ import {
    closeHint,
    usageLimitUntil
 } from "./agentCopy";
-import { COMPOSER_ID, PANEL_ID, useAgent, type AgentTurn, type DegradedState } from "./AgentProvider";
+import { COMPOSER_ID, PANEL_ID, isLapsedUsageLimit, useAgent, type AgentTurn, type DegradedState } from "./AgentProvider";
 import { contextLinesFor } from "./screenLines";
 
 /* The tutor panel of docs/agent/design.md, "The panel": from 1100 px an aside beside main, from
@@ -42,7 +42,13 @@ import { contextLinesFor } from "./screenLines";
 
    The frame around the aside lays nothing out from 900 px. Under it, it is a column over the
    viewport whose spacer takes the height the sheet does not, which is how the sheet is half, full
-   or collapsed without a viewport length in the stylesheet. */
+   or collapsed without a viewport length in the stylesheet.
+
+   The conversation is the panel's one scrolling region, between the header and the composer. It
+   follows the newest turn while a reply streams, and stops following once the student scrolls up
+   to read an earlier one, until they scroll back to the end or send again. */
+
+const SCROLL_END_TOLERANCE = 1;
 
 const RESET_TIME: Intl.DateTimeFormatOptions = { hour: "numeric", minute: "2-digit" };
 
@@ -150,6 +156,23 @@ export function AgentPanel() {
    const [isEntering, setIsEntering] = useState(false);
    const isOpen = agent?.isOpen ?? false;
    const isNarrow = agent?.isNarrow ?? false;
+   const conversation = useRef<HTMLDivElement>(null);
+   const followsNewest = useRef(true);
+   const turns = agent?.turns;
+   const turnCount = turns?.length ?? 0;
+
+   useEffect(() => {
+      followsNewest.current = true;
+   }, [turnCount]);
+
+   useEffect(() => {
+      const region = conversation.current;
+      const shouldFollow = region !== null && followsNewest.current;
+
+      if (shouldFollow) {
+         region.scrollTop = region.scrollHeight;
+      }
+   }, [turns, isOpen]);
 
    useEffect(() => {
       const animatesIn = isOpen && isNarrow;
@@ -175,9 +198,22 @@ export function AgentPanel() {
    const isFull = isNarrow && agent.sheetHeight === "full";
    const reason = agent.degraded === null ? null : degradedCopy(agent.degraded);
    const hasDraft = agent.draft.trim() !== "";
-   const canSend = hasDraft && !agent.isStreaming && agent.degraded === null;
+   const isDegraded = agent.degraded !== null && !isLapsedUsageLimit(agent.degraded);
+   const canSend = hasDraft && !agent.isStreaming && !isDegraded;
    const peek = isCollapsed ? firstLineOf(agent.turns) : null;
    const sheetClass = isNarrow ? `agent-panel agent-sheet ${TUTOR_SHEET_CLASS}` : "agent-panel";
+
+   function noteScroll() {
+      const region = conversation.current;
+
+      if (region === null) {
+         return;
+      }
+
+      const distanceFromEnd = region.scrollHeight - region.scrollTop - region.clientHeight;
+
+      followsNewest.current = distanceFromEnd <= SCROLL_END_TOLERANCE;
+   }
 
    function closeOnEscape(event: KeyboardEvent<HTMLElement>) {
       if (event.key === "Escape") {
@@ -285,7 +321,7 @@ export function AgentPanel() {
                         </p>
                      ) : null}
 
-                     <div className="agent-conversation">
+                     <div ref={conversation} className="agent-conversation" data-testid="agent-conversation" onScroll={noteScroll}>
                         {agent.turns.length === 0 ? (
                            <p className="agent-empty" data-testid="agent-empty">
                               {isUncheckedItem ? EMPTY_ON_ITEM : EMPTY_ELSEWHERE}

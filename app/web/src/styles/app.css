@@ -3105,10 +3105,16 @@ h3.section-header {
    flex-direction: column;
    gap: var(--growth-space-16);
    padding: var(--growth-space-16) var(--growth-space-24);
-   overflow-y: auto;
+   overflow: hidden;
    background: var(--growth-surface-page);
    color: var(--growth-text-primary);
    box-shadow: 0 0 0 var(--growth-stroke-hairline) var(--growth-accent-tint-3);
+}
+
+.agent-header,
+.agent-guardrail,
+.agent-composer {
+   flex: none;
 }
 
 .agent-header {
@@ -3185,6 +3191,8 @@ h3.section-header {
 .agent-conversation {
    flex: auto;
    min-height: 0;
+   overflow-y: auto;
+   overscroll-behavior: contain;
 }
 
 .agent-empty {

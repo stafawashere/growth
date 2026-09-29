@@ -7,7 +7,7 @@ holds one account, so another user's rows are written straight into the database
 in student must neither see nor change them.
 """
 import json
-from datetime import datetime, timezone
+from datetime import datetime, timedelta, timezone
 
 from sqlalchemy import select
 from sqlalchemy.orm import Session as OrmSession
@@ -69,7 +69,8 @@ def add_conversation(world, user_id, turn_texts):
 
       for index, text in enumerate(turn_texts):
          role = "student" if index % 2 == 0 else "agent"
-         conversations.append_turn(db, conversation, role, text, now, screen={"kind": "session_item"})
+         turn_moment = now + timedelta(seconds=index)
+         conversations.append_turn(db, conversation, role, text, turn_moment, screen={"kind": "session_item"})
 
       db.commit()
 
@@ -259,7 +260,7 @@ def test_another_users_entries_cannot_be_edited_or_deleted(world):
    assert row.edited_by_student == 0
 
 
-def test_the_profile_is_the_highest_version_and_the_switch_is_absent(world):
+def test_the_profile_is_the_highest_version_and_the_switch_is_off(world):
    client, user_id = signed_in(world)
    empty = client.get("/agent/profile").json()
    stamp = as_iso(datetime.now(timezone.utc))
@@ -281,8 +282,8 @@ def test_the_profile_is_the_highest_version_and_the_switch_is_absent(world):
 
    current = client.get("/agent/profile").json()
 
-   assert empty == {"profile": None, "version": None, "experiment": "absent"}
-   assert current == {"profile": {"turn_length": "band_2"}, "version": 2, "experiment": "absent"}
+   assert empty == {"profile": None, "version": None, "experiment": "off"}
+   assert current == {"profile": {"turn_length": "band_2"}, "version": 2, "experiment": "off"}
 
 
 def test_no_agent_audit_row_carries_text(world):

@@ -151,6 +151,8 @@ Every state keeps whatever the student has typed in the composer. In a degraded 
 | A reply the screen withheld | That reply would have given away part of the answer, so it was not shown. Check your answer when you are ready, and we can go through it after. |
 | Third turn on one item | That is the third question on this item. Check your answer when you are ready, and we can go through it after. |
 | Timed part | Not available during a timed part. |
+| Twentieth turn in one conversation | This conversation has reached 20 questions. Close it and open a new one to keep asking. |
+| The screen sent something the server could not use | The tutor could not use what this screen sent. Reload the page and send again. |
 
 The offline and limit states do not queue the question for later. A reply written for a screen the student has left would carry stale context, and the queue would store the student's words in the jobs table.
 

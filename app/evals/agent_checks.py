@@ -254,9 +254,20 @@ def _has_distinct_latex(expression):
    return not is_plain_number
 
 
-def key_forms(item):
+def _whole_number_pattern(value):
+   is_whole = value is not None and float(value).is_integer()
+
+   if not is_whole:
+      return None
+
+   return re.compile(r"(?<![\w.\\])" + re.escape(str(int(value))) + r"(?![\w]|\.\d)")
+
+
+def key_forms(item, bare_whole_numbers=False):
    """The key forms of a bank item or an items row. The item never reaches the model; this is the
-   harness's copy, held by the screen and the eval."""
+   harness's copy, held by the screen and the eval. bare_whole_numbers adds the key as a bare
+   whole number, for a lesson question whose key is a small integer such as 2 that the decimal and
+   span forms miss; bank items keep the narrower forms the golden set was labelled against."""
    answer_key = _decoded(_field(item, "answer_key")) or {}
    options = _decoded(_field(item, "options")) or []
    key_mathjson = answer_key.get("mathjson")
@@ -279,6 +290,11 @@ def key_forms(item):
 
    if value is not None:
       text_patterns.append(_number_pattern(value))
+
+   whole_number = _whole_number_pattern(value) if bare_whole_numbers else None
+
+   if whole_number is not None:
+      text_patterns.append(whole_number)
 
    rational = _rational_pattern(expression)
 

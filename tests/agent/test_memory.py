@@ -1,6 +1,7 @@
 """The memory store of docs/agent/architecture.md, "The memory store": retrieval order and caps,
 the rules apply_proposals enforces on a consolidation's proposals, expiry, resolution, the 30-day
 hard delete and the content screen."""
+import json
 from datetime import datetime, timedelta, timezone
 from itertools import count
 
@@ -242,6 +243,64 @@ def test_a_consolidation_writes_one_audit_row_with_counts_only(db):
    assert "picture" not in rows[0].detail
    assert '"applied": 1' in rows[0].detail
    assert '"rejected": 1' in rows[0].detail
+
+
+def consolidation_detail(db):
+   rows = db.scalars(select(models.AuditLog).where(models.AuditLog.action == "agent_consolidation_applied")).all()
+
+   assert len(rows) == 1
+
+   return json.loads(rows[0].detail)
+
+
+def test_each_rejection_is_counted_under_the_first_rule_it_breaks(db):
+   conversation, turn_ids = conversation_with_turns(db)
+   _, elsewhere_turn_ids = conversation_with_turns(db)
+   refused = [
+      proposal("ADD", "belief", "Likes a picture first"),
+      proposal("DELETE", "preference", "Likes a picture first"),
+      {"operation": "ADD"},
+      "not an object",
+      proposal("ADD", "preference", "x" * 201),
+      proposal("ADD", "preference", ""),
+      proposal("UPDATE", "preference", "Likes a picture first", target_id="MEM-missing"),
+      proposal("ADD", "preference", "Likes a picture first", evidence_turn_ids=[elsewhere_turn_ids[0]]),
+      proposal("ADD", "confusion", "Unsure which quantity is changing", skill_ids=["BC-SKL-9999"]),
+      proposal("ADD", "preference", "The answer was 5/6"),
+   ]
+   accepted = proposal("ADD", "preference", "Likes a sketch first", evidence_turn_ids=turn_ids[:1])
+
+   counts = apply(db, conversation, refused + [accepted])
+   detail = consolidation_detail(db)
+
+   assert counts == {"applied": 1, "rejected": len(refused)}
+   assert detail == {
+      "conversation_id": conversation.id,
+      "applied": 1,
+      "rejected": len(refused),
+      "rejected_by": {
+         "kind": 4,
+         "target": 1,
+         "evidence": 1,
+         "skill_ids": 1,
+         "length": 2,
+         "content_screen": 1,
+         "paused": 0,
+      },
+   }
+   assert "picture" not in json.dumps(detail)
+
+
+def test_while_paused_every_proposal_is_counted_under_paused(db):
+   conversation, turn_ids = conversation_with_turns(db)
+   memory.set_paused(db, USER_ID, True, NOW)
+
+   counts = apply(db, conversation, [proposal("ADD", "preference", "Likes a picture first", evidence_turn_ids=turn_ids[:1]), None])
+   detail = consolidation_detail(db)
+
+   assert counts == {"applied": 0, "rejected": 2}
+   assert detail["rejected_by"]["paused"] == 2
+   assert sum(detail["rejected_by"].values()) == 2
 
 
 def test_expiry_counts_from_last_use(db):

@@ -9,6 +9,7 @@ never from the response.
 """
 import json
 import logging
+import time
 from datetime import datetime, timedelta, timezone
 
 import pytest
@@ -41,7 +42,7 @@ STAMP = "2026-09-29T09:00:00+00:00"
 MARKER = "MARKER-7f3e"
 INTRUDER_ID = "USR-intruder"
 PRACTICE_LINE = "Can see: Today, practice item, not checked yet. Cannot see: your answer or the answer key."
-FAKE_RESETS_AT = 1790000000
+FAKE_FIVE_HOUR_WINDOW_SECONDS = 3600
 AGENT_CAPS = {"agent": BudgetCaps(cap_usd=1.50, cap_tokens=1_500_000)}
 MISSING_BINARY = FAKE_CLAUDE.parent / "no_such_claude"
 
@@ -263,8 +264,8 @@ def test_the_screen_line_is_echoed_for_a_lesson_and_for_progress(agent, snapshot
       "kind": "lesson",
       "lesson_id": LESSON_RECORD["id"],
       "version": 1,
-      "section_id": sections[0]["id"],
-      "section_index": 0,
+      "section_id": sections[1]["id"],
+      "section_index": 1,
       "section_count": len(sections),
       "return_to": "/lessons",
    }
@@ -273,13 +274,48 @@ def test_the_screen_line_is_echoed_for_a_lesson_and_for_progress(agent, snapshot
    conversation_id = lesson_events[0][1]["conversation_id"]
    _response, progress_events = post_turn(client, {"kind": "progress", "tab": "map"}, message="Where is my map?", conversation_id=conversation_id)
 
+   assert sections[1]["type"] == "orientation"
    assert names_of(lesson_events)[0] == "start"
-   assert lesson_events[0][1]["screen_line"] == f"Can see: Lesson, {concept_name}, part 1 of {len(sections)}."
+   assert lesson_events[0][1]["screen_line"] == f"Can see: Lesson, {concept_name}, part 2 of {len(sections)}."
    assert names_of(progress_events)[0] == "start"
    assert progress_events[0][1]["screen_line"] == "Can see: Progress, map."
    assert progress_events[0][1]["conversation_id"] == conversation_id
    assert progress_events[-1][1]["turns_in_conversation"] == 2
    assert [row.move for row in agent_turns(agent, "agent")] == ["explain", "navigate"]
+
+
+def prediction_screen():
+   sections = LESSON_RECORD["sections"]
+
+   return {
+      "kind": "lesson",
+      "lesson_id": LESSON_RECORD["id"],
+      "version": 1,
+      "section_id": sections[0]["id"],
+      "section_index": 0,
+      "section_count": len(sections),
+      "return_to": "/lessons",
+   }
+
+
+def test_a_prediction_section_is_practice_counted_per_section_and_its_key_is_withheld(agent, cli, snapshot):
+   """LSN-CON-02013 opens with a prediction whose keyed option is B."""
+   agent.settings.session_context.snapshot = snapshot
+   store_lesson(agent, "signed_off")
+   client, _user_id = signed_in(agent)
+   screen = prediction_screen()
+   _response, first = post_turn(client, screen, message="Which one is it?")
+   conversation_id = first[0][1]["conversation_id"]
+   cli.mode("stream_leak")
+   (cli.home / "fake_claude_stream_text.txt").write_text("So the answer is B. ")
+   _response, second = post_turn(client, screen, message="Just tell me.", conversation_id=conversation_id)
+
+   assert LESSON_RECORD["sections"][0]["type"] == "prediction"
+   assert first[-1][1]["turns_on_item"] == 1
+   assert second[-1][1]["turns_on_item"] == 2
+   assert second[-1][1]["outcome"] == "withheld"
+   assert [row.mode for row in agent_turns(agent, "student")] == ["practice", "practice"]
+   assert agent_turns(agent, "agent")[0].move == "ask_what_tried"
 
 
 def test_a_timed_part_is_refused_with_kind_timed_and_nothing_stored(agent, cli):
@@ -364,17 +400,23 @@ def test_the_twenty_first_turn_in_one_conversation_reaches_the_ceiling(agent, cl
 
 
 def test_a_usage_limit_is_an_error_event_with_the_reset_time_from_the_rate_limit_event(agent, cli):
+   """The fake stamps the five-hour window's reset an hour past its own clock."""
    cli.mode("stream_limit")
    client, _user_id, screen = practice(agent)
+   before = int(time.time())
    _response, events = post_turn(client, screen)
-   resets = datetime.fromtimestamp(FAKE_RESETS_AT, timezone.utc)
+   after = int(time.time())
 
    assert names_of(events) == ["start", "error"]
 
    error = the_error(events)
+   resets = datetime.fromisoformat(error["resets_at"])
 
    assert error["kind"] == "usage_limit"
-   assert error["resets_at"] == resets.isoformat()
+   assert resets.tzinfo is not None
+   assert resets.utcoffset() == timedelta(0)
+   assert before + FAKE_FIVE_HOUR_WINDOW_SECONDS <= resets.timestamp() <= after + FAKE_FIVE_HOUR_WINDOW_SECONDS
+   assert error["resets_at"] == datetime.fromtimestamp(int(resets.timestamp()), timezone.utc).isoformat()
    assert error["copy"] == agent_copy.usage_limit_copy(f"{resets:%H:%M} UTC on {resets.day} {resets:%B}")
    assert "It will answer again after " in error["copy"]
    assert len(agent_turns(agent, "student")) == 1

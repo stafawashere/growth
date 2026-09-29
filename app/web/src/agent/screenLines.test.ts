@@ -2,6 +2,9 @@ import { describe, expect, it } from "vitest";
 
 import type { AgentScreen } from "../api/types";
 import { CHECKED_ITEM, UNCHECKED_ITEM } from "../testing/agent";
+import { ERROR_ID, FADED_EXAMPLE_ID, LESSON, PREDICTION_ID } from "../lessons/fixtures";
+import { sectionPosesQuestion } from "../lessons/LessonReader";
+import { GUARDRAIL_BEFORE_CHECKING } from "./agentCopy";
 import { contextLinesFor, type ScreenLabels } from "./screenLines";
 
 /* docs/agent/design.md, "The context lines": one row per screen shape, in the table's own words. */
@@ -43,5 +46,34 @@ describe("the context line", () => {
       const withCannotSee = CASES.filter((entry) => contextLinesFor(entry.screen, entry.labels).cannotSee !== null).map((entry) => entry.screen);
 
       expect(withCannotSee).toEqual([UNCHECKED_ITEM]);
+   });
+});
+
+describe("the guardrail line on a lesson", () => {
+   const predictionScreen: AgentScreen = {
+      kind: "lesson",
+      lesson_id: "LSN-CON-01006",
+      version: 1,
+      section_id: "LSN-CON-01006#s1",
+      section_index: 0,
+      section_count: 15,
+      return_to: "/lessons"
+   };
+
+   it("reads the practice line on a section that poses a question", () => {
+      expect(contextLinesFor(predictionScreen, { posesQuestion: true }).guardrail).toBe(GUARDRAIL_BEFORE_CHECKING);
+   });
+
+   it("reads none on a section that poses no question", () => {
+      expect(contextLinesFor({ ...predictionScreen, section_id: "LSN-CON-01006#s2", section_index: 1 }, { posesQuestion: false }).guardrail).toBeNull();
+   });
+});
+
+describe("which lesson parts pose a question", () => {
+   it("names the prediction, the checks, the fix prompt and the faded example, and nothing else", () => {
+      const allIds = [...LESSON.sections.map((section) => section.id), ...LESSON.checks.map((check) => check.id)];
+      const questionIds = allIds.filter((sectionId) => sectionPosesQuestion(LESSON, sectionId));
+
+      expect(questionIds).toEqual([PREDICTION_ID, ERROR_ID, FADED_EXAMPLE_ID, ...LESSON.checks.map((check) => check.id)]);
    });
 });

@@ -103,4 +103,4 @@ def test_the_metrics_view_carries_the_tutor_profile_comparison_with_its_guard(tm
    assert named[switches.TUTOR_PROFILE]["control"]["arm"] == WITHHELD
    assert named[switches.TUTOR_PROFILE]["stated"] is False
    assert set(named[switches.TUTOR_PROFILE]["guards"]["calibration"]) == {APPLIED, WITHHELD}
-   assert "guards" not in named[switches.FEEDBACK_ELABORATION]
+   assert named[switches.FEEDBACK_ELABORATION]["guards"] is None

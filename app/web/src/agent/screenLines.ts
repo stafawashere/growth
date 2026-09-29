@@ -23,6 +23,7 @@ import {
 
 export interface ScreenLabels {
    conceptName?: string | null;
+   posesQuestion?: boolean;
    skillName?: string;
    tabName?: string;
    formatName?: string;
@@ -58,7 +59,15 @@ function canSeeLine(screen: AgentScreen, labels: ScreenLabels) {
    }
 }
 
-function guardrailLine(screen: AgentScreen) {
+/* A lesson section that poses a question (the prediction, a check, a fix prompt, a faded example)
+   holds a key, and the server screens it as practice, so the panel reads the practice line there. */
+function guardrailLine(screen: AgentScreen, labels: ScreenLabels) {
+   const isLessonScreen = screen.kind === "lesson" || screen.kind === "session_lesson";
+
+   if (isLessonScreen) {
+      return labels.posesQuestion === true ? GUARDRAIL_BEFORE_CHECKING : null;
+   }
+
    if (screen.kind !== "session_item") {
       return null;
    }
@@ -72,7 +81,7 @@ export function contextLinesFor(screen: AgentScreen, labels: ScreenLabels = {}):
    return {
       canSee: canSeeLine(screen, labels),
       cannotSee: isUncheckedItem ? CANNOT_SEE_LINE : null,
-      guardrail: guardrailLine(screen),
+      guardrail: guardrailLine(screen, labels),
       fields: Object.keys(screen)
    };
 }

@@ -102,15 +102,24 @@ def test_the_first_delta_reaches_the_caller_while_the_process_still_runs(cli, le
 
 
 def test_the_rate_limit_event_keeps_both_windows_with_their_reset_times(cli, ledger):
+   """The fake stamps its reset times from the clock, an hour and a day ahead, so the windows are
+   checked against the moments around the call."""
    cli.mode("stream")
    provider = provider_for(cli, ledger)
+   before = int(time.time())
    drain(provider.stream(request_for("agent")))
+   after = int(time.time())
    windows = provider.last_rate_limit["unifiedWindows"]
+   five_hour_reset = windows["five_hour"]["resetsAt"]
+   seven_day_reset = windows["seven_day"]["resetsAt"]
 
    assert provider.last_rate_limit["status"] == "allowed"
    assert provider.last_rate_limit["rateLimitType"] == "five_hour"
-   assert windows["five_hour"] == {"utilization": 0.18, "resetsAt": 1790000000}
-   assert windows["seven_day"] == {"utilization": 0.29, "resetsAt": 1790400000}
+   assert provider.last_rate_limit["resetsAt"] == five_hour_reset
+   assert windows["five_hour"] == {"utilization": 0.18, "resetsAt": five_hour_reset}
+   assert windows["seven_day"] == {"utilization": 0.29, "resetsAt": seven_day_reset}
+   assert before + 3600 <= five_hour_reset <= after + 3600
+   assert before + 86400 <= seven_day_reset <= after + 86400
 
 
 def test_the_stream_asks_for_partial_messages_and_keeps_every_lockdown_flag(cli, ledger):

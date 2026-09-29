@@ -412,6 +412,32 @@ describe("the degraded states", () => {
       expect(sendButton().disabled).toBe(true);
    });
 
+   it("usage limit with a reset time already past keeps its copy until the student edits", async () => {
+      const resetsAt = new Date(Date.now() - 60000).toISOString();
+
+      render(<TutorHarness screen={{ kind: "today" }} />);
+
+      await openAndSend("My question");
+      await act(async () => {
+         fetchScript.turns[0].push(frame("error", { kind: "usage_limit", resets_at: resetsAt }));
+         fetchScript.turns[0].close();
+      });
+
+      const expected = `The tutor cannot answer right now because the account's Claude usage limit has been reached. It will answer again after ${resetTimeText(resetsAt)}. Practice is not affected.`;
+
+      await waitFor(() => expect(screen.getByTestId("agent-send-reason").textContent).toBe(expected));
+      await act(async () => {
+         await new Promise((resolve) => setTimeout(resolve, 20));
+      });
+
+      expect(screen.getByTestId("agent-send-reason").textContent).toBe(expected);
+
+      type("My question, again");
+
+      expect(screen.getByTestId("agent-send-reason").textContent).not.toBe(expected);
+      expect(sendButton().disabled).toBe(false);
+   });
+
    it("no connection: a refused fetch says so, disables Send and keeps what was typed", async () => {
       fetchScript.answerNextWith(() => Promise.reject(new TypeError("Failed to fetch")));
       render(<TutorHarness screen={{ kind: "today" }} />);
@@ -487,5 +513,80 @@ describe("closing the conversation", () => {
 
       expect(fetchScript.fetchStub).not.toHaveBeenCalled();
       expect(panel().hidden).toBe(true);
+   });
+});
+
+/* jsdom lays nothing out, so the conversation region is given a height and a content height, and
+   its scrollTop is recorded. */
+function laidOutConversation(clientHeight: number) {
+   const region = screen.getByTestId("agent-conversation");
+   const layout = { scrollHeight: clientHeight, scrollTop: 0 };
+   const scrollTopWrites: number[] = [];
+
+   Object.defineProperty(region, "clientHeight", { configurable: true, get: () => clientHeight });
+   Object.defineProperty(region, "scrollHeight", { configurable: true, get: () => layout.scrollHeight });
+   Object.defineProperty(region, "scrollTop", {
+      configurable: true,
+      get: () => layout.scrollTop,
+      set: (value: number) => {
+         layout.scrollTop = value;
+         scrollTopWrites.push(value);
+      }
+   });
+
+   return { region, layout, scrollTopWrites };
+}
+
+describe("the conversation region", () => {
+   it("is the panel's scrolling region and follows a streaming reply to its newest line", async () => {
+      render(<TutorHarness screen={{ kind: "today" }} />);
+
+      await openAndSend("First");
+
+      const { region, layout, scrollTopWrites } = laidOutConversation(200);
+
+      expect(region.classList.contains("agent-conversation")).toBe(true);
+      expect(within(panel()).getAllByTestId("agent-conversation")).toEqual([region]);
+
+      layout.scrollHeight = 600;
+      await act(async () => {
+         fetchScript.turns[0].push(frame("start", { conversation_id: "ACV-1", turn_id: "ATN-1", screen_line: "", can_see: [] }));
+         fetchScript.turns[0].push(frame("text", { delta: "A long first line." }));
+      });
+
+      await waitFor(() => expect(scrollTopWrites).toContain(600));
+   });
+
+   it("stops following once the student scrolls up, and follows again on the next send", async () => {
+      render(<TutorHarness screen={{ kind: "today" }} />);
+
+      await openAndSend("First");
+
+      const { region, layout, scrollTopWrites } = laidOutConversation(200);
+
+      layout.scrollHeight = 600;
+      await act(async () => {
+         fetchScript.turns[0].push(frame("start", { conversation_id: "ACV-1", turn_id: "ATN-1", screen_line: "", can_see: [] }));
+         fetchScript.turns[0].push(frame("text", { delta: "A long first line." }));
+      });
+      await waitFor(() => expect(layout.scrollTop).toBe(600));
+
+      layout.scrollTop = 100;
+      fireEvent.scroll(region);
+      scrollTopWrites.length = 0;
+      layout.scrollHeight = 900;
+      await act(async () => {
+         fetchScript.turns[0].push(frame("text", { delta: " More text arrives." }));
+         fetchScript.turns[0].push(frame("end", { turn_id: "ATN-1", outcome: "complete", turns_on_item: 0, turns_in_conversation: 1 }));
+         fetchScript.turns[0].close();
+      });
+      await waitFor(() => expect(screen.queryByRole("button", { name: "Stop" })).toBeNull());
+
+      expect(scrollTopWrites).toEqual([]);
+
+      type("Second");
+      fireEvent.keyDown(composer(), { key: "Enter" });
+
+      await waitFor(() => expect(scrollTopWrites).toContain(900));
    });
 });

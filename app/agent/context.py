@@ -14,6 +14,14 @@ which the client never sends. An MCQ's options reach the packet as their letters
 sections reach a practice packet as ids and types, without the common_error sections (their ids
 name the error record) and, at stage unsupported, without the worked_example sections.
 
+A lesson section that poses a question (the prediction, a check, an error block with a fix prompt,
+a faded example) puts its screen in practice mode too, because it holds a key the student is meant
+to find. Its packet carries the question as the item text, the option letters and the archetype's
+path when the section names one, and never the key, the resolution, the right step or the steps
+the faded example holds back. question_key_forms builds the screen's key forms from the same key
+the prompt answer route grades against (docs/agent/architecture.md, The screen context; orchestrator
+ruling, 2026-09-29, after the prediction on LSN-CON-01006 had its answer stated while browsing).
+
 After submission the packet adds the elaborated payload the feedback route already computes, the
 matched error id, one scoring point and, only when the diagnostician wrote a hypothesis, the leading
 misconception's discriminating probe as text. The worked solution rides only with the feedback kinds
@@ -35,6 +43,7 @@ from pathlib import Path
 from jsonschema import Draft202012Validator
 
 from app.agent.moves import AFTER_SUBMISSION, BROWSING, PRACTICE, choose_move
+from app.evals import agent_checks
 from app.providers.base import render_template, split_template
 
 REPOSITORY_ROOT = Path(__file__).resolve().parents[2]
@@ -49,6 +58,13 @@ SCREEN_KINDS = ("today", "session_item", "session_lesson", "lesson", "review", "
 LESSON_SCREENS = ("lesson", "session_lesson")
 UNSUPPORTED = "unsupported"
 MCQ = "mcq"
+SHORT_ANSWER = "short_answer"
+PREDICTION = "prediction"
+CHECK = "check"
+COMMON_ERROR = "common_error"
+WORKED_EXAMPLE = "worked_example"
+PLAIN_NUMBER_LABEL = re.compile(r"^-?\d+(\.\d+)?$")
+PLAIN_FRACTION_LABEL = re.compile(r"^(-?\d+)\s*/\s*(\d+)$")
 WORKED_SOLUTION_KINDS = ("elaborated", "correct", "step_verification")
 UNPOINTABLE_DURING_PRACTICE = ("common_error",)
 UNPOINTABLE_AT_UNSUPPORTED = ("worked_example",)
@@ -204,11 +220,15 @@ def _stem_text(item):
    return stem or ""
 
 
-def mode_for(screen, attempt=None):
+def mode_for(screen, attempt=None, lesson=None):
+   """Practice on an unchecked item and on a lesson section that poses a question, after
+   submission on a checked item, browsing everywhere else."""
    is_item = screen["kind"] == ITEM_SCREEN
 
    if not is_item:
-      return BROWSING
+      is_question = question_section(screen, lesson) is not None
+
+      return PRACTICE if is_question else BROWSING
 
    is_submitted = _field(attempt, "submitted_at") is not None
 
@@ -245,6 +265,134 @@ def _lesson_body(lesson):
 
 def _lesson_sections(lesson):
    return list(_lesson_body(lesson).get("sections") or [])
+
+
+def section_type(section):
+   """A check record carries no type field, so its type is check."""
+   return section.get("type", CHECK)
+
+
+def _lesson_checks(lesson):
+   return [dict(check, type=CHECK) for check in _lesson_body(lesson).get("checks") or []]
+
+
+def screen_section(screen, lesson):
+   """The section or check the lesson screen is on, or None when the lesson row is not the
+   screen's or holds no such id."""
+   has_matching_lesson = lesson is not None and _field(lesson, "id") == screen.get("lesson_id")
+
+   if not has_matching_lesson:
+      return None
+
+   records = _lesson_sections(lesson) + _lesson_checks(lesson)
+
+   return next((record for record in records if record["id"] == screen.get("section_id")), None)
+
+
+def poses_question(section):
+   """A section the student is meant to answer: the prediction, a check, an error block with a fix
+   prompt and a faded example (app/api/routes/lessons.py prompt_kind, and the checks)."""
+   kind = section_type(section)
+   is_prediction = kind == PREDICTION
+   is_check = kind == CHECK
+   is_fix_prompt = kind == COMMON_ERROR and section.get("fix_prompt") is True
+   is_faded_example = kind == WORKED_EXAMPLE and section.get("fade_from") is not None
+
+   return is_prediction or is_check or is_fix_prompt or is_faded_example
+
+
+def question_section(screen, lesson):
+   is_lesson_screen = screen.get("kind") in LESSON_SCREENS
+
+   if not is_lesson_screen:
+      return None
+
+   section = screen_section(screen, lesson)
+   is_question = section is not None and poses_question(section)
+
+   return section if is_question else None
+
+
+def _shown_steps(section):
+   """The faded example's steps before fade_from, the ones on screen while it waits for the
+   answer."""
+   steps = list(section.get("steps") or [])
+   shown_count = max(section["fade_from"] - 1, 0)
+
+   return steps[:shown_count]
+
+
+def question_text(section):
+   """The question as the student reads it, without the key, the resolution, the right step or
+   the steps the faded example holds back."""
+   kind = section_type(section)
+
+   if kind == COMMON_ERROR:
+      wrong_step = section.get("wrong_step") or {}
+
+      return " ".join(part for part in (section.get("observed_behavior"), wrong_step.get("text")) if part)
+
+   if kind == WORKED_EXAMPLE:
+      parts = [(section.get("problem") or {}).get("text")]
+
+      for step in _shown_steps(section):
+         parts.extend([step.get("cue"), step.get("why")])
+
+      return " ".join(part for part in parts if part)
+
+   return (section.get("stem") or {}).get("text", "")
+
+
+def question_format(section):
+   has_own_format = section_type(section) in (PREDICTION, CHECK)
+
+   return section.get("format", SHORT_ANSWER) if has_own_format else SHORT_ANSWER
+
+
+def _label_value(label):
+   """A keyed option's label read as a number when it is one, so a key held only as the label "2"
+   still has a numeric form to screen for."""
+   text = str(label or "").strip()
+   fraction = PLAIN_FRACTION_LABEL.match(text)
+
+   if fraction is not None:
+      return ["Rational", int(fraction.group(1)), int(fraction.group(2))]
+
+   is_number = PLAIN_NUMBER_LABEL.match(text) is not None
+
+   if not is_number:
+      return None
+
+   return float(text) if "." in text else int(text)
+
+
+def question_key(section):
+   """The section's key in the shape agent_checks.key_forms reads, the same key the prompt answer
+   route grades against (app/api/routes/lessons.py prompt_as_gradable_item)."""
+   kind = section_type(section)
+
+   if kind == COMMON_ERROR:
+      return {"answer_key": {"form": "symbolic", "mathjson": section["right_step"]["expression"]}, "options": []}
+
+   if kind == WORKED_EXAMPLE:
+      return {"answer_key": section.get("answer"), "options": []}
+
+   options = []
+
+   for option in section.get("options") or []:
+      keyed = dict(option)
+      needs_value = keyed.get("is_key") is True and keyed.get("value") is None
+
+      if needs_value:
+         keyed["value"] = _label_value(keyed.get("label"))
+
+      options.append(keyed)
+
+   return {"answer_key": section.get("answer_key"), "options": options}
+
+
+def question_key_forms(section):
+   return agent_checks.key_forms(question_key(section), bare_whole_numbers=True)
 
 
 def pointable_sections(lesson, served_stage, matched_error_id=None):
@@ -485,6 +633,41 @@ def feedback_body(context, item, attempt, archetype, lesson, feedback, diagnosis
    return body, probe is not None
 
 
+def lesson_question_body(context, screen, lesson, section):
+   """The practice packet for a lesson section that poses a question: the question text, the option
+   letters and, when the section names one, the archetype's path, built from an allow-list like
+   practice_body, so the key, the resolution, the options' labels and correctness, the right step
+   and the held-back steps are excluded by construction."""
+   item_format = question_format(section)
+   reference = _lesson_ref(context, lesson)
+   reference.update({
+      "part": screen["section_index"] + 1,
+      "of": screen["section_count"],
+      "section": {"id": section["id"], "type": section_type(section)},
+      "sections": [entry for entry in pointable_sections(lesson, UNSUPPORTED) if entry["id"] != section["id"]],
+   })
+   body = {
+      "screen": screen["kind"],
+      "item": {"id": section["id"], "format": item_format, "stem": question_text(section)},
+      "lesson": reference,
+   }
+   is_mcq = item_format == MCQ
+
+   if is_mcq:
+      body["item"]["options"] = [option["id"] for option in section.get("options") or []]
+
+   archetype = getattr(context, "archetypes", {}).get(section.get("archetype_id"))
+
+   if archetype is not None:
+      body["archetype"] = {
+         "id": archetype["id"],
+         "name": archetype["name"],
+         "expected_solution_path": list(archetype["expected_solution_path"]),
+      }
+
+   return body
+
+
 def browsing_body(context, screen, lesson):
    kind = screen["kind"]
 
@@ -494,7 +677,7 @@ def browsing_body(context, screen, lesson):
       if not has_matching_lesson:
          raise ValueError("the lesson row does not match the screen")
 
-      section = next((entry for entry in _lesson_sections(lesson) if entry["id"] == screen["section_id"]), None)
+      section = screen_section(screen, lesson)
 
       if section is None:
          raise ValueError("the section is not in this lesson")
@@ -589,12 +772,15 @@ def compose_packet(
    if check.timed:
       raise TimedPartRefused("not available during a timed part")
 
-   mode = mode_for(screen, attempt)
+   mode = mode_for(screen, attempt, lesson)
    line = screen_line(screen, screen_names(context, screen, lesson))
    has_probe = False
+   lesson_question = question_section(screen, lesson)
 
    if mode == BROWSING:
       body = browsing_body(context, screen, lesson)
+   elif lesson_question is not None:
+      body = lesson_question_body(context, screen, lesson, lesson_question)
    else:
       has_item = item is not None and _field(item, "id") == screen["item_id"]
 

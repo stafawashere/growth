@@ -187,6 +187,21 @@ const CLEARS_ON_EDIT: ReadonlyArray<DegradedKind> = ["offline", "minute_cap", "r
 
 const CLEARS_ON_SCREEN_CHANGE: ReadonlyArray<DegradedKind> = ["ceiling", "timed"];
 
+/* A usage limit whose reset time has already passed when it arrives (a clock skew, or a reset
+   stamped in the past) is not cleared by a timer, which would hide the copy at once. It stays
+   until the student edits or sends again. */
+export function isLapsedUsageLimit(state: DegradedState | null, now: number = Date.now()) {
+   const isUsageLimit = state !== null && state.kind === "usage_limit" && state.resetsAt !== null;
+
+   if (!isUsageLimit) {
+      return false;
+   }
+
+   const resetMoment = Date.parse(state.resetsAt as string);
+
+   return Number.isFinite(resetMoment) && resetMoment <= now;
+}
+
 export interface AgentProviderProps {
    enabled: boolean;
    children: ReactNode;
@@ -376,13 +391,13 @@ export function AgentProvider({ enabled, children }: AgentProviderProps) {
       }
 
       const wait = Date.parse(degraded.resetsAt as string) - Date.now();
-      const isReadable = Number.isFinite(wait);
+      const isInFuture = Number.isFinite(wait) && wait > 0;
 
-      if (!isReadable) {
+      if (!isInFuture) {
          return undefined;
       }
 
-      const timer = setTimeout(() => setDegraded(null), Math.max(0, wait));
+      const timer = setTimeout(() => setDegraded(null), wait);
 
       return () => clearTimeout(timer);
    }, [degraded]);
@@ -437,7 +452,11 @@ export function AgentProvider({ enabled, children }: AgentProviderProps) {
 
    const changeDraft = useCallback((text: string) => {
       setDraft(text);
-      setDegraded((current) => (current !== null && CLEARS_ON_EDIT.includes(current.kind) ? null : current));
+      setDegraded((current) => {
+         const clearsOnEdit = current !== null && CLEARS_ON_EDIT.includes(current.kind);
+
+         return clearsOnEdit || isLapsedUsageLimit(current) ? null : current;
+      });
    }, []);
 
    function updateTurn(id: string, change: (turn: AgentTurn) => AgentTurn) {
@@ -446,7 +465,8 @@ export function AgentProvider({ enabled, children }: AgentProviderProps) {
 
    const send = useCallback(() => {
       const message = draft.trim();
-      const isBlocked = message === "" || stream.isStreaming || degraded !== null || isTimed;
+      const isDegraded = degraded !== null && !isLapsedUsageLimit(degraded);
+      const isBlocked = message === "" || stream.isStreaming || isDegraded || isTimed;
 
       if (isBlocked) {
          return;
@@ -462,6 +482,7 @@ export function AgentProvider({ enabled, children }: AgentProviderProps) {
       setTurns((current) => [...current, studentTurn, reply]);
       setDraft("");
       setAnnouncement("");
+      setDegraded(null);
 
       function giveBackDraft() {
          setTurns((current) => current.filter((turn) => turn.id !== studentTurn.id && turn.id !== replyId));

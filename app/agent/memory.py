@@ -58,6 +58,23 @@ EPISODE_LIFETIME = timedelta(days=14)
 ENTRY_LIFETIME = timedelta(days=60)
 HARD_DELETE_AFTER = timedelta(days=30)
 
+REJECTED_KIND = "kind"
+REJECTED_LENGTH = "length"
+REJECTED_TARGET = "target"
+REJECTED_EVIDENCE = "evidence"
+REJECTED_SKILL_IDS = "skill_ids"
+REJECTED_CONTENT_SCREEN = "content_screen"
+REJECTED_PAUSED = "paused"
+REJECTION_REASONS = (
+   REJECTED_KIND,
+   REJECTED_TARGET,
+   REJECTED_EVIDENCE,
+   REJECTED_SKILL_IDS,
+   REJECTED_LENGTH,
+   REJECTED_CONTENT_SCREEN,
+   REJECTED_PAUSED,
+)
+
 DELETED_ACTION = "agent_memory_deleted"
 EDITED_ACTION = "agent_memory_edited"
 CLEARED_ACTION = "agent_memory_cleared"
@@ -307,7 +324,9 @@ def usable_target(db, user_id, fields, now):
    return target if is_usable else None
 
 
-def is_acceptable(fields, target, turn_ids, active_skill_ids):
+def rejection_reason(fields, target, turn_ids, active_skill_ids):
+   """The first rule a well-formed proposal breaks, in REJECTION_REASONS order, or None when it
+   breaks none."""
    operation = fields["operation"]
    text = fields["text"]
    carries_text = operation in TEXT_BEARING_OPERATIONS
@@ -316,15 +335,28 @@ def is_acceptable(fields, target, turn_ids, active_skill_ids):
    is_missing_target = needs_target and target is None
    has_empty_text = carries_text and text == ""
    is_too_long = carries_text and len(text) > MAX_TEXT_CHARACTERS
-   fails_screen = carries_text and screen_text(text) is not None
+   has_bad_length = has_empty_text or is_too_long
    cites_outside_turns = not set(fields["evidence_turn_ids"]) <= turn_ids
    names_inactive_skill = not set(fields["skill_ids"]) <= active_skill_ids
 
-   is_refused = (
-      is_missing_target or has_empty_text or is_too_long or fails_screen or cites_outside_turns or names_inactive_skill
-   )
+   if is_missing_target:
+      return REJECTED_TARGET
 
-   return not is_refused
+   if cites_outside_turns:
+      return REJECTED_EVIDENCE
+
+   if names_inactive_skill:
+      return REJECTED_SKILL_IDS
+
+   if has_bad_length:
+      return REJECTED_LENGTH
+
+   fails_screen = carries_text and screen_text(text) is not None
+
+   if fails_screen:
+      return REJECTED_CONTENT_SCREEN
+
+   return None
 
 
 def new_entry(user_id, conversation, fields, now):
@@ -377,33 +409,40 @@ def apply_one(db, user_id, conversation, fields, target, now):
 def apply_proposals(db, user_id, conversation, proposals, now, active_skill_ids=None):
    """Applies what passes every rule and counts the rest. active_skill_ids defaults to the
    student's skills_state ids, which the seeding took from the active library snapshot. Writes one
-   agent_consolidation_applied row with the two counts. While memory is paused nothing is applied
-   and every proposal counts as rejected."""
+   agent_consolidation_applied row with the two counts and the rejections counted by reason, each
+   rejection under the first rule it breaks, a malformed proposal or an unknown kind or operation
+   under kind. While memory is paused nothing is applied and every proposal counts as rejected
+   under paused."""
    proposals = proposals if isinstance(proposals, list) else []
    applied = 0
-   rejected = 0
+   rejected_by = dict.fromkeys(REJECTION_REASONS, 0)
 
    if is_memory_paused(db, user_id):
-      rejected = len(proposals)
+      rejected_by[REJECTED_PAUSED] = len(proposals)
    else:
       known_skill_ids = set(active_skill_ids) if active_skill_ids is not None else user_skill_ids(db, user_id)
       turn_ids = conversation_turn_ids(db, conversation)
 
       for proposal in proposals:
          fields = proposal_fields(proposal)
-         target = usable_target(db, user_id, fields, now) if fields is not None else None
-         is_applicable = fields is not None and is_acceptable(fields, target, turn_ids, known_skill_ids)
 
-         if not is_applicable:
-            rejected += 1
+         if fields is None:
+            rejected_by[REJECTED_KIND] += 1
+            continue
+
+         target = usable_target(db, user_id, fields, now)
+         reason = rejection_reason(fields, target, turn_ids, known_skill_ids)
+
+         if reason is not None:
+            rejected_by[reason] += 1
             continue
 
          apply_one(db, user_id, conversation, fields, target, now)
          db.flush()
          applied += 1
 
-   counts = {"applied": applied, "rejected": rejected}
-   detail = {"conversation_id": conversation.id, **counts}
+   counts = {"applied": applied, "rejected": sum(rejected_by.values())}
+   detail = {"conversation_id": conversation.id, **counts, "rejected_by": rejected_by}
    write_audit(db, WORKER_ACTOR, CONSOLIDATION_ACTION, f"agent_conversations:{conversation.id}", detail, now)
 
    return counts

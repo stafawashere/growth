@@ -181,7 +181,12 @@ def test_a_job_applies_what_passes_counts_the_rest_and_marks_the_conversation(db
    audit_rows = db.scalars(select(models.AuditLog).where(models.AuditLog.action == memory.CONSOLIDATION_ACTION)).all()
 
    assert len(audit_rows) == 1
-   assert json.loads(audit_rows[0].detail) == {"conversation_id": conversation.id, "applied": 1, "rejected": 4}
+   assert json.loads(audit_rows[0].detail) == {
+      "conversation_id": conversation.id,
+      "applied": 1,
+      "rejected": 4,
+      "rejected_by": {"kind": 0, "target": 2, "evidence": 1, "skill_ids": 0, "length": 0, "content_screen": 1, "paused": 0},
+   }
 
    record = cli.record()
    schema_flags = [argument for argument in record["argv"] if argument.startswith("--json-schema=")]

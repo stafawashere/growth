@@ -57,7 +57,7 @@ export function LessonRoute({ lessonId, conceptName, onLeave, backLabel, returnT
               return_to: returnPath(returnTo)
            }
          : null,
-      { conceptName }
+      { conceptName, posesQuestion: position?.posesQuestion === true }
    );
 
    const post = useCallback(

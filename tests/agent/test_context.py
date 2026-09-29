@@ -20,6 +20,7 @@ from app.agent.context import (
    TimedPartRefused,
    compose_packet,
    point_type_for_step,
+   question_key_forms,
    render_prompt,
    screen_line,
    validate_screen,
@@ -34,6 +35,7 @@ REPOSITORY_ROOT = Path(__file__).resolve().parents[2]
 DESIGN_PATH = REPOSITORY_ROOT / "docs" / "agent" / "design.md"
 ITEM_PATH = REPOSITORY_ROOT / "content" / "items_unit06_agent" / "ITM-AGT-06002-00.json"
 LESSON_ID = "LSN-CON-06003"
+PREDICTION_LESSON_ID = "LSN-CON-01006"
 SESSION_ID = "SES-" + "0a" * 16
 ATTEMPT_ID = "ATT-" + "0b" * 16
 EXCLUDED_KEYS = ("answer_key", "is_key", "worked_solution", "common_distractors", "error_path", "value")
@@ -287,3 +289,99 @@ def test_a_unique_three_word_match_is_still_named(context):
    assert point is not None
    assert point["id"] == "BC-PT-99016"
    assert point["name"] == "Intermediate Value Theorem conclusion"
+
+
+def lesson_screen_on(lesson, section_id, index):
+   return {
+      "kind": "lesson",
+      "lesson_id": lesson.id,
+      "version": lesson.version,
+      "section_id": section_id,
+      "section_index": index,
+      "section_count": len(lesson.body["sections"]),
+      "return_to": "/lessons",
+   }
+
+
+def test_a_prediction_section_is_practice_with_its_question_and_without_its_key(context):
+   """LSN-CON-01006 opens with a prediction whose keyed option is B, labelled 2, resolved in
+   words that state the limit."""
+   lesson = golden.agent_lesson(PREDICTION_LESSON_ID)
+   section = lesson.body["sections"][0]
+   screen = lesson_screen_on(lesson, section["id"], 0)
+   packet, move = compose_packet(context, screen, lesson=lesson)
+   rendered = render_prompt(packet, [], None, [], "what is the limit here")
+   prompt = rendered.system + rendered.user
+
+   assert section["type"] == "prediction"
+   assert packet.mode == "practice"
+   assert move == "ask_what_tried"
+   assert packet.body["item"]["stem"] == section["stem"]["text"]
+   assert packet.body["item"]["options"] == ["A", "B", "C"]
+   assert section["resolution"]["text"] not in prompt
+   assert "is_key" not in list(keys_anywhere(packet.body))
+   assert "It does not exist" not in prompt
+
+   forms = question_key_forms(section)
+
+   assert forms.expression == 2
+   assert any(pattern.search("the limit is that height, 2") for pattern in forms.text_patterns)
+   assert any(pattern.search("option B") for pattern in forms.letter_patterns)
+
+
+def test_a_check_section_is_practice_and_its_key_and_worked_solution_stay_out(context):
+   lesson = golden.agent_lesson(PREDICTION_LESSON_ID)
+   check = lesson.body["checks"][0]
+   screen = lesson_screen_on(lesson, check["id"], 3)
+   packet, _move = compose_packet(context, screen, lesson=lesson)
+   rendered = render_prompt(packet, [], None, [], "how do I start")
+   prompt = rendered.system + rendered.user
+
+   assert packet.mode == "practice"
+   assert packet.body["item"]["stem"] == check["stem"]["text"]
+
+   for step in check["worked_solution"]:
+      assert step["text"] not in prompt
+
+   assert question_key_forms(check).expression == check["answer_key"]["mathjson"]
+
+
+def test_a_fix_prompt_is_practice_and_its_right_step_stays_out(context):
+   lesson = golden.agent_lesson(PREDICTION_LESSON_ID)
+   index, section = next(
+      (index, entry) for index, entry in enumerate(lesson.body["sections"]) if entry.get("fix_prompt") is True
+   )
+   packet, _move = compose_packet(context, lesson_screen_on(lesson, section["id"], index), lesson=lesson)
+   rendered = render_prompt(packet, [], None, [], "what should it be")
+
+   assert packet.mode == "practice"
+   assert section["right_step"]["text"] not in rendered.user
+   assert section["wrong_step"]["text"] in packet.body["item"]["stem"]
+
+
+def test_a_faded_example_is_practice_and_holds_back_its_later_steps(context):
+   lesson = golden.agent_lesson(PREDICTION_LESSON_ID)
+   index, section = next(
+      (index, entry) for index, entry in enumerate(lesson.body["sections"]) if entry.get("fade_from") is not None
+   )
+   packet, _move = compose_packet(context, lesson_screen_on(lesson, section["id"], index), lesson=lesson)
+   rendered = render_prompt(packet, [], None, [], "what comes next")
+   held_back = section["steps"][section["fade_from"] - 1:]
+
+   assert packet.mode == "practice"
+   assert section["problem"]["text"] in packet.body["item"]["stem"]
+
+   for step in held_back:
+      assert step["cue"] not in rendered.user
+      assert step["why"] not in rendered.user
+
+
+def test_an_orientation_section_stays_browsing(context):
+   lesson = golden.agent_lesson(PREDICTION_LESSON_ID)
+   section = lesson.body["sections"][1]
+   packet, move = compose_packet(context, lesson_screen_on(lesson, section["id"], 1), lesson=lesson)
+
+   assert section["type"] == "orientation"
+   assert packet.mode == "browsing"
+   assert move == "explain"
+   assert packet.body["lesson"]["section"]["text"].startswith(section["text"])

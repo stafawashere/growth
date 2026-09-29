@@ -232,7 +232,7 @@ def comparison_view(comparison):
    def arm_view(arm):
       return {"arm": arm.arm, "outcomes": arm.outcomes, "correct": arm.correct, "accuracy": arm.accuracy}
 
-   view = {
+   return {
       "name": comparison.name,
       "control": arm_view(comparison.control),
       "treatment": arm_view(comparison.treatment),
@@ -241,10 +241,5 @@ def comparison_view(comparison):
       "interval_high": comparison.interval_high,
       "stated": comparison.stated,
       "minimum_outcomes_per_arm": MINIMUM_OUTCOMES_PER_ARM,
+      "guards": comparison.guards,
    }
-   has_guards = comparison.guards is not None
-
-   if has_guards:
-      view["guards"] = comparison.guards
-
-   return view

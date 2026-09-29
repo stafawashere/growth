@@ -631,7 +631,7 @@ export function SessionScreen({ resumeSessionId, onLeave, onOpened }: SessionScr
 
    useAgentScreen(
       showsSession ? tutorScreen(session, item, pendingAttemptId, committed, feedback, lesson, lessonPosition) : { kind: "today" },
-      { conceptName: lesson?.concept_name ?? null }
+      { conceptName: lesson?.concept_name ?? null, posesQuestion: lesson !== null && lessonPosition?.posesQuestion === true }
    );
 
    shortcut.current = () => undefined;

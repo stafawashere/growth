@@ -50,7 +50,15 @@ from sqlalchemy import select
 
 from app.agent import consolidate, conversations, memory, profile
 from app.agent import copy as agent_copy
-from app.agent.context import TimedPartRefused, compose_packet, mode_for, render_prompt, validate_screen
+from app.agent.context import (
+   TimedPartRefused,
+   compose_packet,
+   mode_for,
+   question_key_forms,
+   question_section,
+   render_prompt,
+   validate_screen,
+)
 from app.agent.moves import AFTER_SUBMISSION, PRACTICE
 from app.agent.screen import SentenceScreen
 from app.api.routes.sessions import attempt_diagnoses, chosen_option, owned_attempt, owned_session
@@ -428,10 +436,25 @@ def student_turns(db, user_id, **filters):
    return db.scalars(statement).all()
 
 
+def same_lesson_section(stored, screen):
+   is_same_section = stored.get("section_id") == screen["section_id"]
+   is_same_session = stored.get("session_id") == screen.get("session_id")
+
+   return is_same_section and is_same_session
+
+
 def turns_on_item_before(db, user_id, screen, mode, attempt):
    """Practice turns are counted per item within the screen's session, because before submission
    the attempts row does not exist yet and an item is attempted at most once in a session. Turns
-   after submission are counted per attempt."""
+   after submission are counted per attempt. On a lesson section that poses a question they are
+   counted per section, within the screen's session when it has one."""
+   is_lesson_question = mode == PRACTICE and screen["kind"] != ITEM_SCREEN
+
+   if is_lesson_question:
+      rows = student_turns(db, user_id, mode=PRACTICE, item_id=None)
+
+      return sum(1 for row in rows if same_lesson_section(row.screen or {}, screen))
+
    if mode == PRACTICE:
       rows = student_turns(db, user_id, mode=PRACTICE, item_id=screen["item_id"])
 
@@ -533,7 +556,7 @@ def prepare_turn(settings, db, user, body, now):
    check = checked_screen(screen)
    conversation = resolved_conversation(db, user.id, conversation_id, check.kind, now)
    rows = screen_rows(settings, db, user, screen)
-   mode = mode_for(screen, rows.attempt)
+   mode = mode_for(screen, rows.attempt, rows.lesson)
    prior_on_item = turns_on_item_before(db, user.id, screen, mode, rows.attempt)
    is_practice = mode == PRACTICE
    reached_item_ceiling = is_practice and prior_on_item >= PRACTICE_TURN_CEILING
@@ -603,9 +626,11 @@ def prepare_turn(settings, db, user, body, now):
    )
 
 
-def key_forms_for(rows):
+def key_forms_for(rows, screen):
    if rows.item is None:
-      return None
+      section = question_section(screen, rows.lesson)
+
+      return None if section is None else question_key_forms(section)
 
    return agent_checks.key_forms(rows.item)
 
@@ -824,7 +849,7 @@ def run_turn(settings, db, user, body, now, clock=None):
       yield error_event(agent_copy.UNAVAILABLE)
       return
 
-   sentence_screen = SentenceScreen(prepared.packet, key_forms_for(prepared.rows))
+   sentence_screen = SentenceScreen(prepared.packet, key_forms_for(prepared.rows, prepared.screen))
    state = StreamState()
 
    try:

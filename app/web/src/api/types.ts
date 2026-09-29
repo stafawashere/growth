@@ -1101,6 +1101,7 @@ export interface AiNotice {
 export interface NoticesPayload {
    notices: AiNotice[];
    latest: number;
+}
 
 /* Lessons, docs/plan/15-lessons.md and the lessons framework contract: the record the server
    stores (schemas/lessons/lesson.schema.json), the plan app/lessons/plan.py LessonPlan.as_dict

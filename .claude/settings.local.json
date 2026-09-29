@@ -1,0 +1,30 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(.venv/bin/python *)",
+      "Bash(PYTHONPATH=. .venv/bin/python *)",
+      "Bash(python3 *)",
+      "Bash(git stash *)",
+      "Bash(git add *)",
+      "Bash(git commit *)",
+      "Bash(git push origin claude/ap-calc-prerequisite-gates-yze1qr*)",
+      "Bash(git push origin HEAD:main*)",
+      "Bash(git fetch *)",
+      "Bash(ls *)",
+      "Bash(grep *)",
+      "Bash(find *)",
+      "Edit(app/engine/**)",
+      "Edit(docs/plan/**)",
+      "Edit(tests/engine/**)",
+      "Edit(BUILD-LEDGER.md)"
+    ]
+  },
+  "autoMode": {
+    "allow": [
+      "$defaults",
+      "Editing app/engine/constants.py and app/engine/update.py to apply the operator's ruling (a): FAILURE_DECAY_ON_SUCCESS = 0.7",
+      "Running tests and simulations under tests/ and app/sim with .venv/bin/python",
+      "Committing to claude/ap-calc-prerequisite-gates-yze1qr and fast-forwarding main to it"
+    ]
+  }
+}

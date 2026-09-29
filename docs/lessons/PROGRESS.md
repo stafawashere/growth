@@ -59,7 +59,7 @@ Decision ids: LSN-DEC-<unit>-<nn>, nn numbering the unit's sets in the order con
 
 | Kind | todo | designed | checked | resolved | signed_off | total |
 |---|---|---|---|---|---|---|
-| concept | 41 | 0 | 2 | 0 | 127 | 170 |
+| concept | 0 | 0 | 43 | 0 | 127 | 170 |
 | prerequisite | 77 | 0 | 0 | 0 | 0 | 77 |
 | decision | 9 | 0 | 1 | 0 | 0 | 10 |
 
@@ -192,49 +192,49 @@ Decision ids: LSN-DEC-<unit>-<nn>, nn numbering the unit's sets in the order con
 | LSN-CON-08019 | BC-CON-08019 | 08 | signed_off | record signed off 2026-09-29 |
 | LSN-CON-08020 | BC-CON-08020 | 08 | signed_off | record signed off 2026-09-29 |
 | LSN-CON-08021 | BC-CON-08021 | 08 | signed_off | record signed off 2026-09-29 |
-| LSN-CON-09001 | BC-CON-09001 | 09 | checked | checker clean 2026-09-29 |
-| LSN-CON-09002 | BC-CON-09002 | 09 | todo |  |
-| LSN-CON-09003 | BC-CON-09003 | 09 | todo |  |
-| LSN-CON-09004 | BC-CON-09004 | 09 | todo |  |
-| LSN-CON-09005 | BC-CON-09005 | 09 | todo |  |
-| LSN-CON-09006 | BC-CON-09006 | 09 | todo |  |
-| LSN-CON-09007 | BC-CON-09007 | 09 | checked | checker clean 2026-09-29 after a word count correction |
-| LSN-CON-09008 | BC-CON-09008 | 09 | todo |  |
-| LSN-CON-09009 | BC-CON-09009 | 09 | todo |  |
-| LSN-CON-09010 | BC-CON-09010 | 09 | todo |  |
-| LSN-CON-09011 | BC-CON-09011 | 09 | todo |  |
-| LSN-CON-09012 | BC-CON-09012 | 09 | todo |  |
-| LSN-CON-09013 | BC-CON-09013 | 09 | todo |  |
-| LSN-CON-09014 | BC-CON-09014 | 09 | todo |  |
-| LSN-CON-09015 | BC-CON-09015 | 09 | todo |  |
-| LSN-CON-09016 | BC-CON-09016 | 09 | todo |  |
-| LSN-CON-09017 | BC-CON-09017 | 09 | todo |  |
-| LSN-CON-10001 | BC-CON-10001 | 10 | todo |  |
-| LSN-CON-10002 | BC-CON-10002 | 10 | todo |  |
-| LSN-CON-10003 | BC-CON-10003 | 10 | todo |  |
-| LSN-CON-10004 | BC-CON-10004 | 10 | todo |  |
-| LSN-CON-10005 | BC-CON-10005 | 10 | todo |  |
-| LSN-CON-10006 | BC-CON-10006 | 10 | todo |  |
-| LSN-CON-10007 | BC-CON-10007 | 10 | todo |  |
-| LSN-CON-10008 | BC-CON-10008 | 10 | todo |  |
-| LSN-CON-10009 | BC-CON-10009 | 10 | todo |  |
-| LSN-CON-10010 | BC-CON-10010 | 10 | todo |  |
-| LSN-CON-10011 | BC-CON-10011 | 10 | todo |  |
-| LSN-CON-10012 | BC-CON-10012 | 10 | todo |  |
-| LSN-CON-10013 | BC-CON-10013 | 10 | todo |  |
-| LSN-CON-10014 | BC-CON-10014 | 10 | todo |  |
-| LSN-CON-10015 | BC-CON-10015 | 10 | todo |  |
-| LSN-CON-10016 | BC-CON-10016 | 10 | todo |  |
-| LSN-CON-10017 | BC-CON-10017 | 10 | todo |  |
-| LSN-CON-10018 | BC-CON-10018 | 10 | todo |  |
-| LSN-CON-10019 | BC-CON-10019 | 10 | todo |  |
-| LSN-CON-10020 | BC-CON-10020 | 10 | todo |  |
-| LSN-CON-10021 | BC-CON-10021 | 10 | todo |  |
-| LSN-CON-10022 | BC-CON-10022 | 10 | todo |  |
-| LSN-CON-10023 | BC-CON-10023 | 10 | todo |  |
-| LSN-CON-10024 | BC-CON-10024 | 10 | todo |  |
-| LSN-CON-10025 | BC-CON-10025 | 10 | todo |  |
-| LSN-CON-10026 | BC-CON-10026 | 10 | todo |  |
+| LSN-CON-09001 | BC-CON-09001 | 09 | checked | design brought to the 2026-09-29 template and checked; not transcribed |
+| LSN-CON-09002 | BC-CON-09002 | 09 | checked | design brought to the 2026-09-29 template and checked; not transcribed |
+| LSN-CON-09003 | BC-CON-09003 | 09 | checked | design brought to the 2026-09-29 template and checked; not transcribed |
+| LSN-CON-09004 | BC-CON-09004 | 09 | checked | design brought to the 2026-09-29 template and checked; not transcribed |
+| LSN-CON-09005 | BC-CON-09005 | 09 | checked | design brought to the 2026-09-29 template and checked; not transcribed |
+| LSN-CON-09006 | BC-CON-09006 | 09 | checked | design brought to the 2026-09-29 template and checked; not transcribed |
+| LSN-CON-09007 | BC-CON-09007 | 09 | checked | design brought to the 2026-09-29 template and checked; not transcribed |
+| LSN-CON-09008 | BC-CON-09008 | 09 | checked | design brought to the 2026-09-29 template and checked; not transcribed |
+| LSN-CON-09009 | BC-CON-09009 | 09 | checked | design brought to the 2026-09-29 template and checked; not transcribed |
+| LSN-CON-09010 | BC-CON-09010 | 09 | checked | design brought to the 2026-09-29 template and checked; not transcribed |
+| LSN-CON-09011 | BC-CON-09011 | 09 | checked | design brought to the 2026-09-29 template and checked; not transcribed |
+| LSN-CON-09012 | BC-CON-09012 | 09 | checked | design brought to the 2026-09-29 template and checked; not transcribed |
+| LSN-CON-09013 | BC-CON-09013 | 09 | checked | design brought to the 2026-09-29 template and checked; not transcribed |
+| LSN-CON-09014 | BC-CON-09014 | 09 | checked | design brought to the 2026-09-29 template and checked; not transcribed |
+| LSN-CON-09015 | BC-CON-09015 | 09 | checked | design brought to the 2026-09-29 template and checked; not transcribed |
+| LSN-CON-09016 | BC-CON-09016 | 09 | checked | design brought to the 2026-09-29 template and checked; not transcribed |
+| LSN-CON-09017 | BC-CON-09017 | 09 | checked | design brought to the 2026-09-29 template and checked; not transcribed |
+| LSN-CON-10001 | BC-CON-10001 | 10 | checked | design brought to the 2026-09-29 template and checked; not transcribed |
+| LSN-CON-10002 | BC-CON-10002 | 10 | checked | design brought to the 2026-09-29 template and checked; not transcribed |
+| LSN-CON-10003 | BC-CON-10003 | 10 | checked | design brought to the 2026-09-29 template and checked; not transcribed |
+| LSN-CON-10004 | BC-CON-10004 | 10 | checked | design brought to the 2026-09-29 template and checked; not transcribed |
+| LSN-CON-10005 | BC-CON-10005 | 10 | checked | design brought to the 2026-09-29 template and checked; not transcribed |
+| LSN-CON-10006 | BC-CON-10006 | 10 | checked | design brought to the 2026-09-29 template and checked; not transcribed |
+| LSN-CON-10007 | BC-CON-10007 | 10 | checked | design brought to the 2026-09-29 template and checked; not transcribed |
+| LSN-CON-10008 | BC-CON-10008 | 10 | checked | design brought to the 2026-09-29 template and checked; not transcribed |
+| LSN-CON-10009 | BC-CON-10009 | 10 | checked | design brought to the 2026-09-29 template and checked; not transcribed |
+| LSN-CON-10010 | BC-CON-10010 | 10 | checked | design brought to the 2026-09-29 template and checked; not transcribed |
+| LSN-CON-10011 | BC-CON-10011 | 10 | checked | design brought to the 2026-09-29 template and checked; not transcribed |
+| LSN-CON-10012 | BC-CON-10012 | 10 | checked | design brought to the 2026-09-29 template and checked; not transcribed |
+| LSN-CON-10013 | BC-CON-10013 | 10 | checked | design brought to the 2026-09-29 template and checked; not transcribed |
+| LSN-CON-10014 | BC-CON-10014 | 10 | checked | design brought to the 2026-09-29 template and checked; not transcribed |
+| LSN-CON-10015 | BC-CON-10015 | 10 | checked | design brought to the 2026-09-29 template and checked; not transcribed |
+| LSN-CON-10016 | BC-CON-10016 | 10 | checked | design brought to the 2026-09-29 template and checked; not transcribed |
+| LSN-CON-10017 | BC-CON-10017 | 10 | checked | design brought to the 2026-09-29 template and checked; not transcribed |
+| LSN-CON-10018 | BC-CON-10018 | 10 | checked | design brought to the 2026-09-29 template and checked; not transcribed |
+| LSN-CON-10019 | BC-CON-10019 | 10 | checked | design brought to the 2026-09-29 template and checked; not transcribed |
+| LSN-CON-10020 | BC-CON-10020 | 10 | checked | design brought to the 2026-09-29 template and checked; not transcribed |
+| LSN-CON-10021 | BC-CON-10021 | 10 | checked | design brought to the 2026-09-29 template and checked; not transcribed |
+| LSN-CON-10022 | BC-CON-10022 | 10 | checked | design brought to the 2026-09-29 template and checked; not transcribed |
+| LSN-CON-10023 | BC-CON-10023 | 10 | checked | design brought to the 2026-09-29 template and checked; not transcribed |
+| LSN-CON-10024 | BC-CON-10024 | 10 | checked | design brought to the 2026-09-29 template and checked; not transcribed |
+| LSN-CON-10025 | BC-CON-10025 | 10 | checked | design brought to the 2026-09-29 template and checked; not transcribed |
+| LSN-CON-10026 | BC-CON-10026 | 10 | checked | design brought to the 2026-09-29 template and checked; not transcribed |
 | LSN-DEC-02-01 | BC-UNIT-02 | 02 | todo |  |
 | LSN-DEC-02-02 | BC-UNIT-02 | 02 | todo |  |
 | LSN-DEC-02-03 | BC-UNIT-02 | 02 | todo |  |

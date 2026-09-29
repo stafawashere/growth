@@ -27,6 +27,25 @@ VERIFICATION_DIR = ROOT / "docs" / "lessons" / "verification"
 LETTER = re.compile(r"^\s*\(?([A-Ha-h])\)?\s*$")
 
 
+def example_context(record, check):
+   """The worked example problem a check's stem leans on, or None for a stem that stands alone."""
+   examples = record.get("worked_examples") or []
+
+   if not examples:
+      return None
+
+   stem = check["stem"]["text"]
+   is_completion = check.get("check_kind") == "completion"
+   cites_example = "example" in stem.lower()
+   reuses_given = stem.startswith("Same ")
+   leans_on_example = is_completion or cites_example or reuses_given
+
+   if not leans_on_example:
+      return None
+
+   return examples[0]["problem"]["text"]
+
+
 def problems_of(design):
    record = design.record
    problems = []
@@ -50,6 +69,11 @@ def problems_of(design):
          "calculator_status": check.get("calculator_status"),
          "answer_form": key.get("form"),
       }
+
+      context = example_context(record, check)
+
+      if context is not None:
+         entry["context"] = context
 
       if is_statement:
          entry["options"] = [{"id": option["id"], "label": option.get("label")} for option in check.get("options") or []]
@@ -149,6 +173,46 @@ def loosened(given, key_expression):
    return result
 
 
+def top_level_parts(text):
+   """Splits on commas outside any parentheses, so "(1, 2), 3" gives two parts."""
+   parts = []
+   depth = 0
+   current = ""
+
+   for character in text:
+      if character in "([{":
+         depth += 1
+      elif character in ")]}":
+         depth -= 1
+
+      is_separator = character == "," and depth == 0
+
+      if is_separator:
+         parts.append(current)
+         current = ""
+      else:
+         current += character
+
+   parts.append(current)
+
+   return [part.strip() for part in parts]
+
+
+def as_member_set(text):
+   """A FiniteSet for an answer written as "[a, b]", "{a, b}" or "a, b", else None."""
+   stripped = text.strip()
+   is_bracketed = stripped.startswith("[") and stripped.endswith("]")
+   is_braced = stripped.startswith("{") and stripped.endswith("}")
+   inner = stripped[1:-1] if is_bracketed or is_braced else stripped
+   members = top_level_parts(inner)
+   is_list = is_bracketed or is_braced or len(members) > 1
+
+   if not is_list:
+      return None
+
+   return sympy.FiniteSet(*[parse_expression(member) for member in members])
+
+
 def agrees(key, answer):
    """(agree, detail) for one problem."""
    is_statement = key.get("form") == "statement"
@@ -183,9 +247,19 @@ def agrees(key, answer):
 
    try:
       key_expression = parse_expression(key["expr"])
-      given = parse_expression(bare_value(str(text)).replace("Abs(", "abs("))
+      cleaned = str(text).replace("Abs(", "abs(")
+      given = as_member_set(cleaned)
+
+      if given is None:
+         given = parse_expression(bare_value(cleaned))
    except Exception as error:
       return False, f"could not parse {text!r}: {type(error).__name__}"
+
+   is_set_answer = isinstance(given, sympy.FiniteSet)
+   is_set_key = isinstance(key_expression, sympy.Set)
+
+   if is_set_answer and not is_set_key:
+      return False, f"key {key['expr']!r} is one value, re-solver gave the set {text!r}"
 
    is_decimal = key.get("calculator_status") == "calculator"
    key_expression = without_units(key_expression, given)

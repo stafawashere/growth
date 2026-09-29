@@ -211,7 +211,7 @@ Every non-text choice is [inferred]; settled by the modality A/B.
      "why": "One shape per piece."
     },
     {
-     "cue": "[0, 2]: trapezoid and triangle above.",
+     "cue": "[0, 2]: rectangle and triangle above.",
      "why": "Gain.",
      "expr": "2*1 + (1/2)*1*2",
      "relation": "new"

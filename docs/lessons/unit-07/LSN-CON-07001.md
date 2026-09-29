@@ -77,8 +77,8 @@ BC-QA-07006 is `either` and its `multipart_structure` names a single MCQ first, 
 
 ## Band plan
 
-- Low (full): orientation, ki-1, st-1, ex-1, the four error blocks, chk-1 to chk-3, the three bridges. 575 words, 4.0 minutes (cap 900 and 6).
-- Mid (brief): orientation, ki-1, st-1, ex-1, err-BC-ERR-07001, err-BC-ERR-07002, chk-1, chk-2, the bridges. 446 words, 3.0 minutes (cap 450 and 3).
+- Low (full): orientation, ki-1, st-1, ex-1, the four error blocks, chk-1 to chk-3, the three bridges. 567 words, 3.8 minutes (cap 900 and 6).
+- Mid (brief): orientation, ki-1, st-1, ex-1, err-BC-ERR-07001, err-BC-ERR-07002, chk-1, chk-2, the bridges. 445 words, 3.0 minutes (cap 450 and 3).
 - Refresher: ki-1, the four error blocks, ex-1.
 
 ## Sources
@@ -102,7 +102,7 @@ BC-QA-07006 is `either` and its `multipart_structure` names a single MCQ first, 
  "unit": "07",
  "skills": ["BC-SKL-07001", "BC-SKL-07002", "BC-SKL-07003", "BC-SKL-07004", "BC-SKL-07005"],
  "orientation": {
-  "text": "A rate sentence becomes an equation for the derivative: the derivative equals a named constant times the quantity or the stated difference. The value given at a stated time is written apart, as the initial condition.",
+  "text": "A rate sentence becomes an equation: the derivative equals a named constant times the quantity or the stated difference. The value at a stated time is written apart, as the initial condition.",
   "sources": ["BC-CON-07001", "research/units/unit-07-differential-equations.md#7.1 Modeling Situations with Differential Equations"]
  },
  "key_ideas": [
@@ -110,7 +110,7 @@ BC-QA-07006 is `either` and its `multipart_structure` names a single MCQ first, 
    "id": "ki-1",
    "ek_id": "BC-EK-FUN-7A1",
    "depth": "core",
-   "text": "The equation ties a function to its first derivative. Proportional to the quantity gives k times the quantity; proportional to the difference from a fixed level gives k times that difference, oriented so the quantity moves toward the level. The derivative carries units of the quantity per unit of time. A value at a stated time is the initial condition, kept outside the equation.",
+   "text": "Proportional to the quantity gives k times the quantity; proportional to the difference from a fixed level gives k times that difference, oriented so the quantity moves toward the level. The derivative carries quantity units per time unit. A value at a stated time is the initial condition, kept outside the equation.",
    "notation": "dy/dt; k for the constant of proportionality",
    "quote": {"text": "Differential equations relate a function of an independent variable and the function's derivatives.", "source": "ced:137"},
    "sources": ["BC-EK-FUN-7A1", "ced:137", "research/units/unit-07-differential-equations.md#7.1 Modeling Situations with Differential Equations"]
@@ -120,7 +120,7 @@ BC-QA-07006 is `either` and its `multipart_structure` names a single MCQ first, 
   {
    "id": "st-1",
    "archetype_id": "BC-QA-07006",
-   "cue": "A sentence says a rate is proportional to something and gives a value at one time; no equation is printed.",
+   "cue": "A rate is proportional to something, a value at one time is given, and no equation is printed.",
    "method": "First line: name the variables, then write the derivative equal to k times the named expression.",
    "rival": "Rival: an exponential formula for the quantity (BC-ERR-07005).",
    "separating_feature": "The stem asks for the rate, so the left side is a derivative.",
@@ -134,11 +134,11 @@ BC-QA-07006 is `either` and its `multipart_structure` names a single MCQ first, 
    "archetype_id": "BC-QA-07006",
    "bands": ["low", "mid"],
    "parameter_draw": {"context": "temperature", "level": 70, "gap": 25, "approach": "from_above", "time_unit": "minutes"},
-   "problem": {"text": "Tea is 95 degrees at time t = 0 minutes. Its temperature changes at a rate proportional to the difference between 70 degrees and its temperature, with positive constant k. Write the differential equation and the initial condition.", "command_verb": "write"},
+   "problem": {"text": "Tea is 95 degrees at t = 0 minutes. Its temperature changes at a rate proportional to the difference between 70 degrees and its temperature, constant k > 0. Write the differential equation and initial condition.", "command_verb": "write"},
    "calculator_status": "no_calculator",
    "steps": [
-    {"cue": "The stem names a temperature and a time.", "why": "H in degrees, t in minutes; dH/dt in degrees per minute."},
-    {"cue": "Proportional to the difference selects k times that difference.", "why": "70 - H is negative above 70, so H falls toward 70.", "expr": "k*(70 - H)", "relation": "new"},
+    {"cue": "The stem names a temperature and a time.", "why": "H degrees, t minutes; dH/dt degrees per minute."},
+    {"cue": "Proportional to the difference selects k times that difference.", "why": "Negative above 70, so H falls toward 70.", "expr": "k*(70 - H)", "relation": "new"},
     {"cue": "The rate is the derivative of H.", "why": "An equation about the rate, not a formula for H.", "expr": "dH/dt = k*(70 - H)", "relation": "new"},
     {"cue": "At time t = 0 marks a stated value.", "why": "It selects one solution, so it stands apart.", "expr": "H(0) = 95", "relation": "new"}
    ],
@@ -190,9 +190,9 @@ BC-QA-07006 is `either` and its `multipart_structure` names a single MCQ first, 
  ],
  "representations": null,
  "prerequisite_bridges": [
-  {"prq_id": "BC-PRQ-06005", "text": "H(0) means the value of H at input 0, not H times 0; misreading it pulls a value for the wrong input."},
-  {"prq_id": "BC-PRQ-07002", "text": "dH/dt is the derivative of H with respect to t; its letters name which quantity changes and against what."},
-  {"prq_id": "BC-PRQ-07003", "text": "Proportional to means a constant multiple; an equality in place of the multiple, or no constant, changes the model."}
+  {"prq_id": "BC-PRQ-06005", "text": "H(0) is the value of H at input 0; misread, a value for the wrong input is used."},
+  {"prq_id": "BC-PRQ-07002", "text": "dH/dt is the rate of H per unit t; its letters name what changes and against what."},
+  {"prq_id": "BC-PRQ-07003", "text": "Proportional to means a constant multiple; an equality in its place drops the constant."}
  ],
  "time": {"exam_part": "I-A", "budget_minutes": 2.14, "source": "research/exam/exam-structure.md#Section and part layout", "written_steps": {"ex-1": [3, 4]}, "skipped_steps": {"ex-1": [1, 2]}},
  "checks": [
@@ -204,7 +204,7 @@ BC-QA-07006 is `either` and its `multipart_structure` names a single MCQ first, 
    "archetype_id": "BC-QA-07006",
    "parameter_draw": {"context": "temperature", "level": 70, "gap": 25, "approach": "from_above", "time_unit": "minutes"},
    "completes": "ex-1",
-   "stem": {"text": "Tea: H degrees at t minutes, 95 at t = 0, rate proportional to 70 - H with constant k. Write the equation and the condition.", "command_verb": "write"},
+   "stem": {"text": "Tea: H degrees at t minutes, H = 95 at t = 0, rate proportional to 70 - H. Write both lines.", "command_verb": "write"},
    "key": {"form": "statement", "expr": "dH/dt = k*(70 - H) with H(0) = 95"},
    "steps": [
     {"text": "The equation.", "expr": "dH/dt = k*(70 - H)", "relation": "new"},
@@ -262,8 +262,8 @@ BC-QA-07006 is `either` and its `multipart_structure` names a single MCQ first, 
   {"block": "err-BC-ERR-07004", "mode": "step_reveal", "reason": "rule 1", "sources": []}
  ],
  "refresher": ["ki-1", "err-BC-ERR-07001", "err-BC-ERR-07002", "err-BC-ERR-07003", "err-BC-ERR-07004", "ex-1"],
- "read_minutes": {"full": 4.0, "brief": 3.0},
- "word_count": {"full": 0, "brief": 0},
+ "read_minutes": {"full": 3.8, "brief": 3.0},
+ "word_count": {"full": 567, "brief": 445},
  "research_lines": [
   {"file": "research/units/unit-07-differential-equations.md", "line": "A statement of the value of the quantity at a stated input is the initial condition and is separate from the differential equation itself."}
  ],

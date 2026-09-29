@@ -39,13 +39,17 @@
          "id": "A",
          "is_key": true,
          "error_path": null,
-         "value": 0.83
+         "value": {
+            "num": "0.830"
+         }
       },
       {
          "id": "B",
          "is_key": false,
          "error_path": "BC-ERR-09039",
-         "value": -0.83,
+         "value": {
+            "num": "-0.830"
+         },
          "derivation": "the inner curve taken as the outer one, so the gap is written inner minus outer and its derivative has the wrong sign",
          "mechanism": "sign_error"
       },
@@ -61,7 +65,9 @@
          "id": "D",
          "is_key": false,
          "error_path": "BC-ERR-99031",
-         "value": 0.0,
+         "value": {
+            "num": "0.000"
+         },
          "derivation": "the outer radius differentiated without the product rule, theta sin(theta) giving cos(theta)",
          "mechanism": "product_rule_omitted"
       }

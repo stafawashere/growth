@@ -40,7 +40,9 @@
          "id": "A",
          "is_key": false,
          "error_path": "BC-ERR-09021",
-         "value": -3.28,
+         "value": {
+            "num": "-3.280"
+         },
          "derivation": "the change subtracted from the known coordinate, accumulating in the wrong direction in time",
          "mechanism": "sign_error"
       },
@@ -48,13 +50,17 @@
          "id": "B",
          "is_key": true,
          "error_path": null,
-         "value": -4.72
+         "value": {
+            "num": "-4.720"
+         }
       },
       {
          "id": "C",
          "is_key": false,
          "error_path": "BC-ERR-09019",
-         "value": -2.72,
+         "value": {
+            "num": "-2.720"
+         },
          "derivation": "the other coordinate's known value, -2, used as the starting value",
          "mechanism": "conceptual_confusion"
       },
@@ -62,7 +68,9 @@
          "id": "D",
          "is_key": false,
          "error_path": "BC-ERR-08011",
-         "value": -0.72,
+         "value": {
+            "num": "-0.720"
+         },
          "derivation": "the integral reported alone, without the known coordinate",
          "mechanism": "forgot_constant"
       }

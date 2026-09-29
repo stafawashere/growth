@@ -1,9 +1,17 @@
-import { describe, expect, it } from "vitest";
-import { cleanup, render, screen } from "@testing-library/react";
+import { describe, expect, it, vi } from "vitest";
+import { cleanup, fireEvent, render, screen } from "@testing-library/react";
+import * as client from "../api/client";
+import { LESSON } from "../lessons/fixtures";
 import { AFFORDANCE_ATTRIBUTE, P1_FEEDBACK_AFFORDANCES } from "../affordances";
 import { motionClass } from "../styles/motion";
 import type { ElaboratedPayload } from "../api/types";
-import { ElaboratedPanel } from "./ElaboratedPanel";
+import { BACK_TO_FEEDBACK_LABEL, ElaboratedPanel, READ_THE_PART_LABEL } from "./ElaboratedPanel";
+
+vi.mock("../api/client");
+
+const mocked = vi.mocked(client);
+
+const LINK = { lesson_id: LESSON.id, version: 1, anchor: `${LESSON.id}#err-BC-ERR-02020` };
 
 const elaborated: ElaboratedPayload = {
    violated_step: "Product rule applied to both factors at once",
@@ -61,6 +69,42 @@ describe("ElaboratedPanel", () => {
       render(<ElaboratedPanel elaborated={null} sentence={null} />);
 
       expect(screen.queryByTestId("elaborated-panel")).toBeNull();
+
+      cleanup();
+   });
+
+   it("offers the part on this error after the three parts, and opens the lesson there and back", async () => {
+      mocked.readLesson.mockResolvedValue({ ...LESSON, state: null });
+      render(<ElaboratedPanel elaborated={elaborated} sentence={null} lessonLink={LINK} />);
+
+      const link = screen.getByTestId("read-error-part");
+      const panel = screen.getByTestId("elaborated-panel");
+      const order = Array.from(panel.querySelectorAll("[data-testid]")).map((element) => element.getAttribute("data-testid"));
+
+      expect(link.textContent).toBe(READ_THE_PART_LABEL);
+      expect(order.indexOf("read-error-part")).toBeGreaterThan(order.indexOf("scoring-consequence"));
+
+      fireEvent.click(link);
+
+      const reader = await screen.findByTestId("lesson-reader");
+
+      expect(mocked.readLesson).toHaveBeenCalledWith(LESSON.id, 1);
+      expect(reader.getAttribute("data-context")).toBe("library");
+      expect(screen.getByTestId("lesson-screen").getAttribute("data-section-id")).toBe(LINK.anchor);
+      expect(screen.getByText(elaborated.violated_step as string)).toBeTruthy();
+
+      fireEvent.click(screen.getByText(BACK_TO_FEEDBACK_LABEL));
+
+      expect(screen.queryByTestId("lesson-reader")).toBeNull();
+      expect(screen.getByTestId("read-error-part")).toBeTruthy();
+
+      cleanup();
+   });
+
+   it("offers no lesson part when the feedback carried no link", () => {
+      render(<ElaboratedPanel elaborated={elaborated} sentence={null} lessonLink={null} />);
+
+      expect(screen.queryByTestId("read-error-part")).toBeNull();
 
       cleanup();
    });

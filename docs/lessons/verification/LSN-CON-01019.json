@@ -33,5 +33,99 @@
    }
   ],
   "answers_file": "/tmp/claude-0/-home-user-growth/ac029253-8ff0-5a4b-8b5f-cdcaf5e8ff8d/scratchpad/verify/answers_04.json"
+ },
+ "audit": {
+  "date": "2026-09-29",
+  "auditor": "claude-opus-5-5",
+  "blocks": [
+   {
+    "id": "orientation",
+    "verdict": "ok",
+    "evidence": "Paraphrases the BC-QA-01011 scoring_pattern and the 1.16 Assessment behaviour (sg-25:12)."
+   },
+   {
+    "id": "ki-1",
+    "verdict": "ok",
+    "evidence": "Hypotheses and at least one conclusion from the 1.16 Required mathematical knowledge; quote on ced:53."
+   },
+   {
+    "id": "st-1",
+    "verdict": "ok",
+    "evidence": "Method is expected_solution_path[0] of BC-QA-01011; rival BC-ERR-01025 in wrong_approaches; common_givens has a table of a differentiable function."
+   },
+   {
+    "id": "ex-1",
+    "verdict": "ok",
+    "evidence": "f(1)=-4 < 0 < 1=f(8); (-4)(1)=-4 < 0."
+   },
+   {
+    "id": "reader-ex-1",
+    "verdict": "ok",
+    "evidence": "Lines are the bundle BC-PT-99015 and BC-PT-99016 records, both in BC-QA-01011 point_types."
+   },
+   {
+    "id": "err-BC-ERR-01016",
+    "verdict": "ok",
+    "evidence": "Verbatim from BC-ERR-01016; BC-MIS-01010 in its list."
+   },
+   {
+    "id": "err-BC-ERR-01025",
+    "verdict": "ok",
+    "evidence": "Verbatim from BC-ERR-01025; BC-MIS-01015 wording."
+   },
+   {
+    "id": "err-BC-ERR-01026",
+    "verdict": "ok",
+    "evidence": "Verbatim from BC-ERR-01026; (2)(1)=2 > 0 so the pair does not straddle 0."
+   },
+   {
+    "id": "err-BC-ERR-01027",
+    "verdict": "ok",
+    "evidence": "Verbatim from BC-ERR-01027; BC-MIS-01016 wording."
+   },
+   {
+    "id": "representations",
+    "verdict": "ok",
+    "evidence": "null."
+   },
+   {
+    "id": "bridge-BC-PRQ-01008",
+    "verdict": "ok",
+    "evidence": "Condenses BC-PRQ-01008 description_plain and failure_signature."
+   },
+   {
+    "id": "bridge-BC-PRQ-01010",
+    "verdict": "ok",
+    "evidence": "Condenses BC-PRQ-01010 failure_signature."
+   },
+   {
+    "id": "chk-1",
+    "verdict": "ok",
+    "evidence": "(-4)(1)=-4 < 0."
+   },
+   {
+    "id": "chk-2",
+    "verdict": "ok",
+    "evidence": "(3-1)(6-1)=10 > 0, (5-1)(-2-1)=-12 < 0; some c in (2,4)."
+   },
+   {
+    "id": "chk-3",
+    "verdict": "ok",
+    "evidence": "(5+1)(-6+1)=-30 < 0; key B per sg-25:12 scoring_pattern; A, C, D map to BC-ERR-01025, 01026, 01027."
+   }
+  ],
+  "advice": [
+   "Error blocks for BC-ERR-01016, 01025 and 01027 reuse the straddle product as both wrong and right expr; the difference is only in words, so step reveal shows nothing mathematical changing.",
+   "BC-ERR-01028 (wrong theorem named) is a wrong_approaches entry of BC-QA-01011 and a scoring rule in sg-25:12 but has no block or distractor.",
+   "Bridges are terse (\"Domain first.\") and read as fragments; the gate works but the text restates little of description_plain.",
+   "Table delivery for the orientation and ki-1 suits the tabulated stem; the lesson teaches the stem, first line (differentiable so continuous) and rival well."
+  ],
+  "counts": {
+   "ok": 15,
+   "unsourced": 0,
+   "wrong": 0,
+   "over_cap": 0,
+   "lint": 0
+  }
  }
 }

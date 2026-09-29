@@ -131,7 +131,7 @@ BC-QA-01007 is `no_calculator`, a single MCQ: Section I Part A, 2.14 minutes (re
    "id": "ki-1",
    "ek_id": "BC-EK-LIM-2A1",
    "depth": "core",
-   "text": "Three types (BC-EK-LIM-2A1, ced:47), settled by the one sided limits. Both exist and agree: removable. Both exist and differ: jump. At least one is infinite: vertical asymptote. The function value decides only whether a break is present.",
+   "text": "Three types, settled by the one sided limits. Both exist and agree: removable. Both exist and differ: jump. At least one is infinite: vertical asymptote. The function value decides only whether a break is present.",
    "notation": "removable discontinuity; jump discontinuity; discontinuity due to a vertical asymptote",
    "quote": {
     "text": "Types of discontinuities include removable discontinuities, jump discontinuities, and discontinuities due to vertical asymptotes.",

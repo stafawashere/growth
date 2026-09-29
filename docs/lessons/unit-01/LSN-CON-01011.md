@@ -124,7 +124,7 @@ Non-text choices are [inferred], settled by the modality A/B.
    "id": "ki-1",
    "ek_id": null,
    "depth": "core",
-   "text": "A conversion keeps three things: the input approached, the direction of approach, the claimed value. It must not lose three distinctions: the limit against the function value, one sided against two sided, and an infinite limit against a limit at infinity. Infinity in the value slot, as in \\(\\lim_{x\\to3^-}g(x)=\\infty\\), says a vertical asymptote; infinity under the arrow, as in \\(\\lim_{x\\to\\infty}k(x)=-2\\), says end behaviour [inferred: no BC-EK is mapped].",
+   "text": "A conversion keeps three things: the input approached, the direction of approach, the claimed value. It must not lose three distinctions: the limit against the function value, one sided against two sided, and an infinite limit against a limit at infinity. Infinity in the value slot, as in \\(\\lim_{x\\to3^-}g(x)=\\infty\\), says a vertical asymptote; infinity under the arrow, as in \\(\\lim_{x\\to\\infty}k(x)=-2\\), says end behaviour.",
    "notation": "the limit notation of topic 1.2 with the infinite forms of topics 1.14 and 1.15",
    "quote": {
     "text": "This topic is intended to focus on connecting representations.",

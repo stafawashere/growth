@@ -121,7 +121,7 @@ Every non-text choice is [inferred], settled by the modality A/B.
    "id": "ki-1",
    "ek_id": "BC-EK-LIM-1E2",
    "depth": "core",
-   "text": "If \\(g(x)\\le f(x)\\le h(x)\\) for all \\(x\\) near \\(c\\), except possibly at \\(c\\), and \\(g\\) and \\(h\\) both have limit \\(L\\) at \\(c\\), then \\(\\lim_{x\\to c}f(x)=L\\) (BC-EK-LIM-1E2, ced:45). The hypotheses are their own demand: the inequality is shown to hold near \\(c\\), and each bound's limit is taken. The usual case bounds an oscillating factor between \\(-1\\) and 1, then multiplies through by the vanishing factor.",
+   "text": "If \\(g(x)\\le f(x)\\le h(x)\\) for all \\(x\\) near \\(c\\), except possibly at \\(c\\), and \\(g\\) and \\(h\\) both have limit \\(L\\) at \\(c\\), then \\(\\lim_{x\\to c}f(x)=L\\). The hypotheses are their own demand: the inequality is shown to hold near \\(c\\), and each bound's limit is taken. The usual case bounds an oscillating factor between \\(-1\\) and 1, then multiplies through by the vanishing factor.",
    "notation": "squeeze theorem; the inequality written with the trapped function in the middle",
    "quote": {
     "text": "The limit of a function may be found by using the squeeze theorem.",

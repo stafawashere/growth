@@ -1,0 +1,133 @@
+{
+ "lesson_id": "LSN-CON-01015",
+ "version": 1,
+ "compared_on": "2026-09-29",
+ "auditor": "claude-opus-5-5",
+ "resolve": {
+  "date": "2026-09-29",
+  "problems": 4,
+  "agreed": 4,
+  "judgments_pending": 0,
+  "all_agree": true,
+  "verdicts": [
+   {
+    "id": "LSN-CON-01015#ex-1",
+    "agree": true,
+    "detail": "agree (symbolic)",
+    "method": "direct computation"
+   },
+   {
+    "id": "LSN-CON-01015#chk-1",
+    "agree": true,
+    "detail": "agree (symbolic)",
+    "method": "direct computation"
+   },
+   {
+    "id": "LSN-CON-01015#chk-2",
+    "agree": true,
+    "detail": "agree (symbolic)",
+    "method": "direct computation"
+   },
+   {
+    "id": "LSN-CON-01015#chk-3",
+    "agree": true,
+    "detail": "agree (symbolic)",
+    "method": "direct computation"
+   }
+  ],
+  "answers_file": "/tmp/claude-0/-home-user-growth/ac029253-8ff0-5a4b-8b5f-cdcaf5e8ff8d/scratchpad/verify/answers_01.json"
+ },
+ "audit": {
+  "date": "2026-09-29",
+  "auditor": "claude-opus-5-5",
+  "blocks": [
+   {
+    "id": "orientation",
+    "verdict": "ok",
+    "evidence": "Paraphrases BC-CON-01015 description_plain and the 1.13 Piecewise matching paragraph; 38 words."
+   },
+   {
+    "id": "ki-1",
+    "verdict": "ok",
+    "evidence": "Quote matches ced page 50 LIM-2.C.1; the jump and infinite case paraphrases the 1.13 When removal is impossible paragraph."
+   },
+   {
+    "id": "ki-2",
+    "verdict": "ok",
+    "evidence": "Quote matches ced page 50 LIM-2.C.2; one equation per boundary is BC-QA-01008 invariant_structure."
+   },
+   {
+    "id": "st-1",
+    "verdict": "ok",
+    "evidence": "Cue from common_givens and typical_wording, method from expected_solution_path[0], rival from wrong_approaches (BC-ERR-01015); 61 words, cue 14."
+   },
+   {
+    "id": "ex-1",
+    "verdict": "ok",
+    "evidence": "SymPy: left limit of (x^2-1)/(x-1) at 1 = 2; x^2+3 at 3 = 12; k+m=2 and 3k+m=12 give k=5, m=-3; all three parameter_spec constraints hold."
+   },
+   {
+    "id": "err-BC-ERR-01003",
+    "verdict": "ok",
+    "evidence": "Record text verbatim; wrong (1-1)/(1-1) is nan in SymPy, right 2; reason words from BC-MIS-01001."
+   },
+   {
+    "id": "err-BC-ERR-01015",
+    "verdict": "ok",
+    "evidence": "fixed 2026-09-29: the block sets f(1)=4 apart on ex-1's rule; wrong Eq(2, 2) (left and right limits compared only, continuity claimed), right Eq(4, 2) (value compared with the limit, not continuous); relation distinct; prose Traps line matched. Orientation and st-1 rival shortened to hold the brief cap."
+   },
+   {
+    "id": "err-BC-ERR-01017",
+    "verdict": "ok",
+    "evidence": "Record text verbatim; x^2+3 at 1 = 4 so k+m=4 differs from k+m=2; possible_reason null since neither linked misconception names branch choice."
+   },
+   {
+    "id": "representations",
+    "verdict": "ok",
+    "evidence": "Null; the design routes BC-REP-02 through the orientation and ki figures instead."
+   },
+   {
+    "id": "BC-PRQ-01001",
+    "verdict": "ok",
+    "evidence": "Restates description_plain; slip matches failure_signature (stops at zero over zero)."
+   },
+   {
+    "id": "BC-PRQ-01003",
+    "verdict": "ok",
+    "evidence": "Restates description_plain; slip matches failure_signature (wrong branch at a boundary)."
+   },
+   {
+    "id": "chk-1",
+    "verdict": "ok",
+    "evidence": "SymPy: k+m=2, 3k+m=12 give k=5, m=-3, equal to ex-1."
+   },
+   {
+    "id": "chk-2",
+    "verdict": "ok",
+    "evidence": "SymPy: (x^2-1)/(x+1) tends to -2 at -1, x^2 at 2 = 4; -k+m=-2 and 2k+m=4 give k=2, m=0; constraints hold."
+   },
+   {
+    "id": "chk-3",
+    "verdict": "ok",
+    "evidence": "SymPy: 2k+m=4, 4k+m=14 give k=5; distractors 6, 1, 2 reproduce from the stated wrong branch pairings; constraints hold."
+   }
+  ],
+  "advice": [
+   "err-BC-ERR-01015 shows the same equation on both sides, so a reader sees no error. The design admits the draw cannot separate the two; a draw or stem where the boundary value is defined by its own branch would let the block show the lost comparison.",
+   "chk-3 key is the bare 5 and chk-1, chk-2 keys are FiniteSet(Eq(k, 5), ...); the BC-QA-01008 invariant is \"'k =' in key\", which none of these key strings satisfies literally. Confirm the invariant applies to lesson checks.",
+   "Delivery fits: figures for the removable break and the joined branches, an interactive slider for the matching reading, step reveal for the solving. ki-2 as interactive serves a reading of where the segment meets the next branch.",
+   "The lesson teaches recognition (letters in branches with continuous), the first written line (the one sided limits at the first boundary) and the rival; ki-1's removability idea is never checked, since all checks solve for constants."
+  ],
+  "counts": {
+   "ok": 14,
+   "unsourced": 0,
+   "wrong": 0,
+   "over_cap": 0,
+   "lint": 0
+  },
+  "fix_notes": [
+   "Fixed err-BC-ERR-01015 (advice defect: wrong and right equal) by showing the lost value comparison on a set apart value; orientation and st-1 rival trimmed; word_count 560/450, read_minutes 3.74/3.0.",
+   "Left: chk key form vs the BC-QA-01008 invariant 'k =' in key (needs a ruling on whether archetype invariants apply to checks); ki-1 removability not checked (structural); delivery advice (preference); possible_reason 'most often' kept as record words."
+  ]
+ }
+}

@@ -131,7 +131,7 @@ Every non-text choice is [inferred], settled by the modality A/B.
    "id": "ki-1",
    "ek_id": "BC-EK-LIM-1D2",
    "depth": "core",
-   "text": "Limits pass through sums, differences, products, quotients and composites (BC-EK-LIM-1D2, ced:42). A quotient needs a nonzero denominator limit; a composite, an outer function continuous at the inner limit.",
+   "text": "Limits pass through sums, differences, products, quotients and composites. A quotient needs a nonzero denominator limit; a composite, an outer function continuous at the inner limit.",
    "notation": "limit theorems",
    "quote": null,
    "sources": [

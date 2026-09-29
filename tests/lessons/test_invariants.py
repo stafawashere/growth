@@ -13,7 +13,7 @@ switch arm and the forecast history, all from one seeded generator.
 """
 import copy
 import random
-from datetime import timedelta
+from datetime import datetime, timedelta
 
 import pytest
 from hypothesis import HealthCheck, given, settings, strategies as st
@@ -94,7 +94,7 @@ def draw_states(library, rng, parameters):
 
       if rng.random() < parameters["mastered"]:
          state.mastered = True
-         state.mastered_at = whole_graph.as_datetime(TODAY - timedelta(days=30)) if hasattr(whole_graph, "as_datetime") else None
+         state.mastered_at = datetime.combine(TODAY - timedelta(days=30), datetime.min.time())
          state.fading_stage = FadingStage.UNSUPPORTED
          state.unaided_success_count = 3
          state.credited_observation_count = max(state.credited_observation_count, 3)

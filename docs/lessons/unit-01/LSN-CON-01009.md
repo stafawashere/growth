@@ -120,7 +120,7 @@ The README notes a decision lesson (`contrast`) would carry the method choice ac
    "id": "ki-1",
    "ek_id": null,
    "depth": "core",
-   "text": "Substituting the target gives one of three forms. A determinate value is the limit; rewriting stops there. Zero over zero calls for rewriting. A nonzero number over zero calls for the sign on each side. L'Hospital's rule is not in the Unit 1 set; it enters at topic 4.7 [inferred: no BC-EK is mapped].",
+   "text": "Substituting the target gives one of three forms. A determinate value is the limit; rewriting stops there. Zero over zero calls for rewriting. A nonzero number over zero calls for the sign on each side. L'Hospital's rule is not in the Unit 1 set; it enters at topic 4.7.",
    "notation": "the classification stated in words before any computation",
    "quote": {
     "text": "This topic is intended to focus on the skill of selecting an appropriate procedure for determining limits.",

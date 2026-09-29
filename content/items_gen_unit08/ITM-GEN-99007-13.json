@@ -34,7 +34,9 @@
          "id": "A",
          "is_key": false,
          "error_path": "BC-ERR-08001",
-         "value": 15.39,
+         "value": {
+            "num": "15.390"
+         },
          "derivation": "the change A(b) - A(a) reported without dividing by the length of the interval",
          "mechanism": "forgot_constant"
       },
@@ -42,7 +44,9 @@
          "id": "B",
          "is_key": false,
          "error_path": "BC-ERR-08002",
-         "value": 3.91,
+         "value": {
+            "num": "3.910"
+         },
          "derivation": "the rate taken over 0 <= t <= 5, an interval the question did not name",
          "mechanism": "wrong_limits"
       },
@@ -56,7 +60,9 @@
          "id": "D",
          "is_key": false,
          "error_path": "BC-ERR-99015",
-         "value": 83.16,
+         "value": {
+            "num": "83.160"
+         },
          "derivation": "the average value of A over the interval, the integral divided by the length, reported as the average rate of change",
          "mechanism": "conceptual_confusion"
       }

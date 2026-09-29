@@ -4,9 +4,11 @@ docs/plan/10-quality-and-evaluation.md "The world" puts synthetic students on th
 P1 runner in app/sim/runner.py kept to the 54-skill fixture, and this module is its whole-graph
 counterpart. The library is loaded through app/content/loader.py and built into the same two
 graphs the running app uses (app/runtime/graphs.py). The bank is synthetic, a fixed number of
-verified items for every active archetype, because the published bank covers three units today
-and the P2 gates are about the engine rather than about the bank's reach; the real bank's reach
-is reported separately by the diagnostic's coverage gaps.
+verified items for every active archetype, because the P2 gates are about the engine rather than
+about the bank's reach; the real bank's reach is reported separately by the diagnostic's coverage
+gaps. The count is the published bank's floor, 20 items on every one of its 148 archetypes on
+2026-09-29. At 3, a fresh student on the Unit 1 entry fringe (6 archetypes) had every item inside
+the repeat window by day 4 and got empty sessions until day 9, which the real bank never does.
 
 A student's hidden state is a knowledge state in the sense of knowledge space theory: every unit
 gets an ability, each skill is known with a chance that rises with that ability and falls with
@@ -34,7 +36,7 @@ from app.session.seed import initial_states
 from app.sim.runner import Trajectory, World
 
 START_DAY = date(2026, 10, 1)
-ITEMS_PER_ARCHETYPE = 3
+ITEMS_PER_ARCHETYPE = 20
 ATTEMPT_MINUTES = constants.FORECAST_DEFAULT_MINUTES
 
 ABILITY_LOW = -3.0

@@ -334,3 +334,28 @@ def test_placement_closure_adds_unreached_ancestors_but_not_ones_with_evidence_a
    closed = diagnostic.closed_under_prerequisites(["LEAF"], classes, {"MISSED"}, graph)
 
    assert closed == {"LEAF", "MIDDLE", "ROOT"}
+
+
+def test_placement_support_is_what_a_correct_answer_loaded_and_what_sits_above_it():
+   skills = [{"id": skill_id} for skill_id in ("ROOT", "MIDDLE", "LEAF", "BELOW", "MISSED", "UNSEEN")]
+   edges = [
+      {"from": "ROOT", "to": "MIDDLE", "type": "hard_prerequisite"},
+      {"from": "MIDDLE", "to": "LEAF", "type": "hard_prerequisite"},
+      {"from": "LEAF", "to": "BELOW", "type": "hard_prerequisite"},
+   ]
+   archetypes = [
+      {"id": "A-LEAF", "skills": ["LEAF"], "family": "f", "primary_unit": "U1"},
+      {"id": "A-MISSED", "skills": ["MISSED"], "family": "f", "primary_unit": "U1"},
+      {"id": "A-UNSEEN", "skills": ["UNSEEN"], "family": "f", "primary_unit": "U1"},
+   ]
+   graph = Graph.from_records(archetypes=archetypes, skills=skills, edges=edges, inert_top=[])
+   run = type("Run", (), {})()
+   run.scored = [
+      {"archetype_id": "A-LEAF", "outcome": diagnostic.OUTCOME_CORRECT},
+      {"archetype_id": "A-MISSED", "outcome": diagnostic.OUTCOME_INCORRECT},
+      {"archetype_id": "A-UNSEEN", "outcome": diagnostic.OUTCOME_NOT_LEARNED},
+   ]
+
+   supported = diagnostic.supported_in_run(run, graph)
+
+   assert supported == {"LEAF", "MIDDLE", "ROOT"}

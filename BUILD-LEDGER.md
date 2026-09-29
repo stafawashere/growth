@@ -2452,6 +2452,34 @@ items) and items 3 and 6 (Slices 3 and 4). Every gate 11 names for P2 now exists
   tests/eval/test_simulation.py tests/tools/test_throughput.py tests/engine/test_update.py` 2
   failed, both red at 1f9435f before any change of this session (`test_simulation_prereq_gap_stalls_dependants`,
   `test_the_decay_arm_serves_differently_from_two_term`), everything else passed.
+  Example skip (02 R32), implemented. The rule had storage and text and no code: every skill
+  climbed from example through four supported successes before an unaided attempt counted, and a
+  skill the bands first served at unsupported dropped back to example on its stored stage. Now a
+  first credited full success not rated guess, with every blocking parent mastered, starts the
+  skill at completion (`should_skip_example`; `EngineGraph.blocking_parents` carries the fringe's
+  parents into the update). Schema row in 02 corrected from `unsupported` to `completion`, the
+  value the rule stated once gives. Seeds 1, 2, 3: 351, 337 and 337 of 539 (from 344, 325, 329);
+  P7 false mastery 0 of 331 and 0 of 412. Test:
+  `test_the_example_stage_is_skipped_when_every_gating_parent_is_mastered` (skip, guess, unmastered
+  parent, second observation).
+  Condition 3 denominator, corrected (lever (ii) of the operator's list). The blocking-weight
+  reading of the tool put BC-SKL-03004 (37 teachable skills behind it) first served on day 193,
+  because its parent BC-SKL-03002 held 33 unaided successes on BC-QA-03001 and waited for
+  BC-QA-99001, a Unit 9 synthesis archetype gated behind 02036, 09029 and 09030. Condition 3 now
+  counts the archetypes servable today, those whose primary's blocking parents are all mastered
+  (`EngineGraph.servable_archetype_count`, `archetype_primaries` built in `app/runtime/graphs.py`;
+  the P1 fixture keeps the static count). Lever (i), crediting a loaded skill from its own stage,
+  was not taken: a worked example shows the solution to every loaded skill, so a success there is
+  not unaided evidence for any of them, and the simulator cannot see the risk because its answers
+  do not depend on the stage. Seeds 1, 2, 3: 392, 394 and 374 of 539 (from 351, 337, 337), 0
+  false masteries over 219 days, P7 0 of 338 and 0 of 417; Unit 1 completes on day 155 for
+  seed 1. Test: `test_condition_three_counts_the_archetypes_servable_today`. Plans 02 and 12
+  record both.
+  Remaining at the end of the runs: 41, 44 and 59 skills fail strength alone, nearly all
+  secondaries at p 0.85 to 0.90 whose archetype's primary is mastered (block 2 candidates need
+  their primary on the fringe, so these reach the student through block 3 only); 46 to 55
+  teachable skills have no observation yet; 4, 2 and 1 meet every condition and wait for a direct
+  observation to be re-evaluated, because propagated credit does not re-evaluate mastery.
 
 ## In progress [inferred]
 

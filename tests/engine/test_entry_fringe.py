@@ -98,3 +98,37 @@ def test_every_teachable_skill_can_meet_the_distinct_archetype_condition():
 
    assert mastered, "nothing was mastered, so the walk did not run"
    assert sorted(teachable - mastered) == []
+
+
+def test_condition_three_counts_the_archetypes_servable_today():
+   """Corrected 2026-09-29, second: the denominator is the archetypes the student can be served
+   now, so a skill whose second archetype waits behind another unit's chain is not held with it.
+   BC-SKL-03002 waited 150 days for BC-QA-99001, a Unit 9 synthesis archetype, and 37 skills
+   waited behind it."""
+   world = whole_graph.library()
+   graph = world.graph
+   engine_graph = world.engine_graph
+   skill = "BC-SKL-03002"
+   states = whole_graph.fresh_states()
+   entries = engine_graph.archetype_primaries[skill]
+
+   assert len(entries) == 2
+   assert engine_graph.archetype_counts[skill] == 2
+
+   own = [primary for _, primary in entries if primary == skill]
+   other = [primary for _, primary in entries if primary != skill]
+
+   assert len(own) == 1 and len(other) == 1
+   assert engine_graph.servable_archetype_count(skill, states) == 0
+
+   for parent in graph.blocking_parents(skill):
+      states[parent].mastered = True
+
+   assert engine_graph.servable_archetype_count(skill, states) == 1
+   assert required_distinct_archetypes(engine_graph.servable_archetype_count(skill, states)) == 1
+
+   for parent in graph.blocking_parents(other[0]):
+      states[parent].mastered = True
+
+   assert engine_graph.servable_archetype_count(skill, states) == 2
+   assert required_distinct_archetypes(engine_graph.servable_archetype_count(skill, states)) == 2

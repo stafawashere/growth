@@ -1164,6 +1164,7 @@ export interface LessonDelivery {
 }
 
 export type LessonSectionType =
+   | "prediction"
    | "orientation"
    | "key_ideas"
    | "strategy"
@@ -1183,6 +1184,27 @@ export interface LessonWorkedStep {
 export interface LessonErrorStep {
    text: string;
    expression?: unknown;
+}
+
+/* A prediction option: mcq only, exactly one carries is_key. */
+export interface LessonPredictionOption {
+   id: string;
+   label: string;
+   is_key: boolean;
+   value?: unknown;
+}
+
+export interface LessonPredictionKey {
+   form: "numeric" | "symbolic" | "statement";
+   mathjson?: unknown;
+   text?: string;
+}
+
+/* The first strategy block's pair: a stem of this concept beside one it is mistaken for. */
+export interface LessonContrast {
+   this: { text: string; archetype_id?: string };
+   not_this: { text: string; why_not?: string };
+   feature: string;
 }
 
 export interface LessonSection {
@@ -1211,6 +1233,14 @@ export interface LessonSection {
    relation?: "distinct" | "equivalent";
    possible_reason?: { misconception_id?: string; text: string };
    prerequisite_id?: string;
+   stem?: { text: string; command_verb?: string };
+   format?: "mcq" | "short_answer";
+   options?: LessonPredictionOption[];
+   answer_key?: LessonPredictionKey;
+   resolution?: { text: string };
+   contrast?: LessonContrast;
+   fade_from?: number;
+   fix_prompt?: boolean;
 }
 
 export interface LessonCheckOption {
@@ -1264,6 +1294,7 @@ export interface LessonRecord {
    checks: LessonCheck[];
    refresher?: string[];
    decision?: LessonDecision;
+   no_figure_reason?: string;
 }
 
 export type LessonBand = "low" | "mid";
@@ -1307,10 +1338,14 @@ export interface LessonPlanPayload {
 
 export type LessonEventKind = "opened" | "section_viewed" | "completed" | "skipped";
 
+/* The eight delivery modes, plus the screens the reader draws itself: a check, the decision stems
+   or a strategy's contrast pair, and a prediction. */
+export type LessonEventMode = LessonDeliveryMode | "check" | "prediction";
+
 export interface LessonEventBody {
    event: LessonEventKind;
    section_id?: string;
-   mode?: string;
+   mode?: LessonEventMode;
    elapsed_ms: number;
    band?: LessonBand;
    reason?: LessonReason;
@@ -1332,6 +1367,23 @@ export interface LessonCheckVerdict {
    error_id: string | null;
    anchor: string | null;
    explanation_anchor: string | null;
+   right_step?: string | null;
+   scoring_consequence?: string | null;
+}
+
+/* POST /lessons/{id}/prompts/{section_id}/answers: a prediction, an error block's fix prompt or a
+   faded example's answer. Nothing it writes reaches the engine. */
+export interface LessonPromptAnswerBody {
+   answer: unknown;
+   option_id: string | null;
+   elapsed_ms: number;
+}
+
+export interface LessonPromptVerdict {
+   correct: boolean;
+   section_id: string;
+   kind: "prediction" | "fix" | "fade";
+   resolution: string | null;
 }
 
 export type LibraryLessonState =

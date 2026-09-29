@@ -2,7 +2,8 @@ import { act, cleanup, fireEvent, render, screen } from "@testing-library/react"
 import { afterEach, describe, expect, it, vi } from "vitest";
 
 import * as client from "../api/client";
-import { LESSON, planFor } from "./fixtures";
+import { defineKeyboardMathField } from "../testing/keyboard";
+import { ERROR_ID, LESSON, planFor } from "./fixtures";
 import { LessonRoute } from "./LessonRoute";
 
 vi.mock("../api/client");
@@ -81,5 +82,23 @@ describe("LessonRoute, the library reader", () => {
 
       expect(mocked.answerLessonCheck).toHaveBeenCalledWith("LSN-CON-02013", "LSN-CON-02013#chk-3", expect.objectContaining({ option_id: "C" }));
       expect(screen.getByTestId("lesson-check-verdict").textContent).toBe("ok Correct");
+   });
+
+   it("sends a fix prompt's answer to the prompts route", async () => {
+      mocked.readLessonPlan.mockResolvedValue({ lesson: LESSON, plan: planFor([ERROR_ID]), band: "low", state: null });
+      mocked.postLessonEvent.mockResolvedValue({ ok: true, state: null });
+      mocked.answerLessonPrompt.mockResolvedValue({ correct: true, section_id: ERROR_ID, kind: "fix", resolution: null });
+      defineKeyboardMathField();
+
+      render(<LessonRoute lessonId="LSN-CON-02013" conceptName="The product rule" onLeave={vi.fn()} />);
+
+      await screen.findByTestId("lesson-fix-prompt");
+
+      fireEvent.keyDown(document.querySelector("math-field")!, { key: "5" });
+      fireEvent.click(screen.getByTestId("lesson-fix-submit"));
+      await settle();
+
+      expect(mocked.answerLessonPrompt).toHaveBeenCalledWith("LSN-CON-02013", ERROR_ID, expect.objectContaining({ option_id: null }));
+      expect(screen.getByTestId("lesson-right-step").textContent).toContain("Correct.");
    });
 });

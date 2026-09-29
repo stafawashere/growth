@@ -98,6 +98,7 @@
    "minItems": 1,
    "items": {
     "oneOf": [
+     {"$ref": "#/$defs/prediction"},
      {"$ref": "#/$defs/orientation"},
      {"$ref": "#/$defs/key_ideas"},
      {"$ref": "#/$defs/strategy"},
@@ -118,6 +119,7 @@
    "items": {"$ref": "#/$defs/section_id"}
   },
   "decision": {"$ref": "#/$defs/decision"},
+  "no_figure_reason": {"$ref": "#/$defs/text"},
   "provenance": {
    "type": "object",
    "required": [
@@ -238,6 +240,84 @@
     }
    }
   },
+  "prediction": {
+   "allOf": [
+    {"$ref": "#/$defs/block_common"},
+    {
+     "if": {"properties": {"format": {"const": "mcq"}}},
+     "then": {"required": ["options"]}
+    },
+    {
+     "if": {"properties": {"format": {"const": "short_answer"}}},
+     "then": {"required": ["answer_key"]}
+    }
+   ],
+   "required": ["stem", "format", "resolution"],
+   "properties": {
+    "type": {"const": "prediction"},
+    "stem": {
+     "type": "object",
+     "required": ["text"],
+     "additionalProperties": false,
+     "properties": {
+      "text": {"$ref": "#/$defs/text"},
+      "command_verb": {"type": "string"}
+     }
+    },
+    "format": {"enum": ["mcq", "short_answer"]},
+    "options": {
+     "type": "array",
+     "items": {
+      "type": "object",
+      "required": ["id", "label", "is_key"],
+      "additionalProperties": false,
+      "properties": {
+       "id": {"type": "string", "minLength": 1},
+       "label": {"$ref": "#/$defs/text"},
+       "is_key": {"type": "boolean"},
+       "value": {"$ref": "#/$defs/mathjson"}
+      }
+     }
+    },
+    "answer_key": {"$ref": "#/$defs/answer"},
+    "resolution": {
+     "type": "object",
+     "required": ["text"],
+     "additionalProperties": false,
+     "properties": {
+      "text": {"$ref": "#/$defs/text"}
+     }
+    },
+    "delivery": {"$ref": "#/$defs/delivery"}
+   },
+   "unevaluatedProperties": false
+  },
+  "contrast": {
+   "type": "object",
+   "required": ["this", "not_this", "feature"],
+   "additionalProperties": false,
+   "properties": {
+    "this": {
+     "type": "object",
+     "required": ["text", "archetype_id"],
+     "additionalProperties": false,
+     "properties": {
+      "text": {"$ref": "#/$defs/text"},
+      "archetype_id": {"type": "string", "pattern": "^BC-QA-\\d{5}$"}
+     }
+    },
+    "not_this": {
+     "type": "object",
+     "required": ["text", "why_not"],
+     "additionalProperties": false,
+     "properties": {
+      "text": {"$ref": "#/$defs/text"},
+      "why_not": {"$ref": "#/$defs/text"}
+     }
+    },
+    "feature": {"$ref": "#/$defs/text"}
+   }
+  },
   "orientation": {
    "allOf": [{"$ref": "#/$defs/block_common"}],
    "required": ["delivery", "text"],
@@ -270,7 +350,8 @@
     "cue": {"$ref": "#/$defs/text"},
     "method": {"$ref": "#/$defs/text"},
     "rival": {"$ref": "#/$defs/text"},
-    "separating_feature": {"$ref": "#/$defs/text"}
+    "separating_feature": {"$ref": "#/$defs/text"},
+    "contrast": {"$ref": "#/$defs/contrast"}
    },
    "unevaluatedProperties": false
   },
@@ -313,7 +394,8 @@
      "minItems": 2,
      "items": {"$ref": "#/$defs/step"}
     },
-    "answer": {"$ref": "#/$defs/answer"}
+    "answer": {"$ref": "#/$defs/answer"},
+    "fade_from": {"type": "integer", "minimum": 2}
    },
    "unevaluatedProperties": false
   },
@@ -359,6 +441,7 @@
     "wrong_step": {"$ref": "#/$defs/error_step"},
     "right_step": {"$ref": "#/$defs/error_step"},
     "relation": {"enum": ["distinct", "equivalent"]},
+    "fix_prompt": {"type": "boolean"},
     "possible_reason": {
      "type": "object",
      "required": ["misconception_id", "text"],

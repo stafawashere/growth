@@ -1,7 +1,7 @@
 import { readdirSync, readFileSync } from "node:fs";
 import { join, resolve } from "node:path";
 
-import { act, cleanup, render, screen } from "@testing-library/react";
+import { act, cleanup, render, screen, within } from "@testing-library/react";
 import { afterEach, beforeAll, beforeEach, describe, expect, it, vi } from "vitest";
 
 import type { LessonBand, LessonCheck, LessonPlan, LessonRecord, LessonSection, LessonSectionRef } from "../api/types";
@@ -14,7 +14,7 @@ import {
    stopRecordingPointer,
    tabTo
 } from "../testing/keyboard";
-import { LESSON } from "./fixtures";
+import { ERROR_ID, FADED_EXAMPLE_ID, LESSON, PREDICTION_ID } from "./fixtures";
 import { LessonReader } from "./LessonReader";
 import { DRAWN_MODES } from "./LessonSection";
 
@@ -71,6 +71,7 @@ function firstContactPlan(lesson: LessonRecord, band: LessonBand): LessonPlan {
    const checks = lesson.checks.filter((check) => inBand(check, band)).slice(0, isLow ? LOW_CHECKS_MAX : MID_CHECKS);
    const scoresFor = (example: LessonSection) => ofType("what_a_reader_scores", false).filter((section) => section.example_id === example.id);
    const sequence: Array<LessonSection | LessonCheck> = [
+      ...ofType("prediction"),
       ...ofType("orientation"),
       ...ofType("prerequisite_bridge", false),
       ...keyIdeas,
@@ -151,10 +152,15 @@ function screenFailures(where: string): string[] {
    }
 
    const isCheck = screenElement.getAttribute("data-screen-kind") === "check";
+   const prediction = screenElement.querySelector("[data-testid='lesson-prediction']");
    const hasInput = screenElement.querySelector("math-field, input[type='radio']") !== null;
 
    if (isCheck && !hasInput) {
       failures.push(`${where}: the check has no input control`);
+   }
+
+   if (prediction !== null && prediction.querySelector("math-field, input[type='radio']") === null) {
+      failures.push(`${where}: the prediction has no input control`);
    }
 
    if (DASHES.test(document.body.textContent ?? "")) {
@@ -170,9 +176,83 @@ async function settle() {
    });
 }
 
-/* Works the current screen with the keyboard alone: every step revealed, a motion block stepped
-   to its last frame, a control moved, a model run to its last row, a check answered. */
-async function workScreen() {
+function typeKeys(text: string) {
+   for (const key of text) {
+      press(key);
+   }
+}
+
+/* The key option is chosen with the arrow keys; a short answer key is typed when it is a number,
+   and any other key stands in as 1, since the harness mocks the grading. */
+function answerPrediction(section: LessonSection) {
+   const radios = Array.from(document.querySelectorAll("[data-testid='lesson-prediction'] input[type='radio']")) as HTMLInputElement[];
+   const field = document.querySelector("[data-testid='lesson-prediction'] math-field") as HTMLElement | null;
+
+   if (radios.length > 0) {
+      const keyId = (section.options ?? []).find((option) => option.is_key)?.id ?? radios[0].value;
+
+      tabTo(radios[0]);
+      press(" ");
+
+      for (let moved = 0; moved < radios.length && (document.activeElement as HTMLInputElement).value !== keyId; moved += 1) {
+         press("ArrowDown");
+      }
+   } else if (field !== null) {
+      const key = section.answer_key?.mathjson;
+
+      tabTo(field);
+      typeKeys(typeof key === "number" ? String(key) : "1");
+   }
+}
+
+async function answerPrompt(promptTestId: string, submit: () => HTMLElement | null) {
+   const prompt = screen.queryByTestId(promptTestId);
+   const field = prompt?.querySelector("math-field") as HTMLElement | null | undefined;
+
+   if (field === null || field === undefined) {
+      return;
+   }
+
+   tabTo(field);
+   press("1");
+
+   const button = submit() as HTMLButtonElement | null;
+
+   if (button !== null && !button.disabled) {
+      activate(button);
+      await settle();
+   }
+}
+
+/* Works the current screen with the keyboard alone: the prediction committed, a fix prompt and a
+   faded example answered, every step revealed, a motion block stepped to its last frame, a
+   control moved, a model run to its last row, a check answered. */
+async function workScreen(lesson: LessonRecord) {
+   const sectionId = screen.getByTestId("lesson-screen").getAttribute("data-section-id");
+   const section = lesson.sections.find((entry) => entry.id === sectionId);
+
+   if (section?.type === "prediction" && screen.queryByTestId("lesson-prediction-commit") !== null) {
+      answerPrediction(section);
+
+      const commit = screen.getByTestId("lesson-prediction-commit") as HTMLButtonElement;
+
+      if (!commit.disabled) {
+         activate(commit);
+         await settle();
+      }
+   }
+
+   await answerPrompt("lesson-fix-prompt", () => screen.queryByTestId("lesson-fix-submit"));
+   await answerPrompt("lesson-fade-answer", () => {
+      const fade = screen.queryByTestId("lesson-fade-answer");
+
+      return fade === null ? null : within(fade).queryByRole("button", { name: "Check my answer" });
+   });
+
+   if (screen.queryByTestId("lesson-show-all-steps") !== null) {
+      activate(screen.getByTestId("lesson-show-all-steps"));
+   }
+
    while (screen.queryByTestId("lesson-next-step") !== null) {
       activate(screen.getByTestId("lesson-next-step"));
    }
@@ -228,6 +308,7 @@ async function walk(lesson: LessonRecord, band: LessonBand) {
       anchor: firstError?.id ?? null,
       explanation_anchor: null
    });
+   const onPromptAnswer = vi.fn().mockImplementation(async (sectionId: string) => ({ correct: false, section_id: sectionId, kind: "fade", resolution: null }));
    const failures: string[] = [...specFailures(lesson)];
    const seen: string[] = [];
 
@@ -243,25 +324,39 @@ async function walk(lesson: LessonRecord, band: LessonBand) {
             onSkip={vi.fn()}
             onSectionViewed={vi.fn()}
             onCheckAnswer={onCheckAnswer}
+            onPromptAnswer={onPromptAnswer}
          />
       </main>
    );
 
-   for (let guard = 0; guard < 200 && screen.queryByTestId("lesson-next") !== null; guard += 1) {
+   for (let guard = 0; guard < 200 && screen.queryByTestId("lesson-finish") === null; guard += 1) {
       const where = `${band} ${screen.getByTestId("lesson-screen").getAttribute("data-section-id")}`;
 
       seen.push(where);
       failures.push(...screenFailures(where));
-      await workScreen();
+      await workScreen(lesson);
       failures.push(...screenFailures(`${where}, worked`));
-      activate(screen.getByTestId("lesson-next"));
+
+      const next = screen.queryByTestId("lesson-next") as HTMLButtonElement | null;
+      const canLeave = next !== null && !next.disabled;
+
+      if (!canLeave) {
+         failures.push(`${where}: Next part is not available after the screen was worked`);
+         break;
+      }
+
+      activate(next);
    }
 
-   failures.push(...screenFailures(`${band} end`));
+   const reachedEnd = screen.getByTestId("lesson-screen").getAttribute("data-screen-kind") === "end";
 
-   expect(screen.getByTestId("lesson-screen").getAttribute("data-screen-kind")).toBe("end");
+   if (reachedEnd) {
+      failures.push(...screenFailures(`${band} end`));
+   } else {
+      failures.push(`${band}: the walk did not reach the end screen`);
+   }
 
-   return { failures, seen, plan };
+   return { failures, seen, plan, onPromptAnswer };
 }
 
 function recordPaths(): string[] {
@@ -305,11 +400,26 @@ describe.each(RECORD_CASES)("render harness, %s, band %s", (path, band) => {
 });
 
 describe.each(["low", "mid"] as LessonBand[])("render harness, the reader fixture with every drawn mode, band %s", (band) => {
-   it("walks every mode block with nothing blank", async () => {
-      const { failures } = await walk({ ...LESSON, sections: LESSON.sections.map((section) => ({ ...section, bands: section.bands ?? ["low", "mid"] })) }, band);
+   it("walks every mode block and every v2 prompt with nothing blank", async () => {
+      const { failures, onPromptAnswer } = await walk({ ...LESSON, sections: LESSON.sections.map((section) => ({ ...section, bands: section.bands ?? ["low", "mid"] })) }, band);
+      const answered = onPromptAnswer.mock.calls.map((call) => call[0]);
 
       expect(failures).toEqual([]);
+      expect(answered).toEqual(band === "low" ? [PREDICTION_ID, ERROR_ID, FADED_EXAMPLE_ID] : [PREDICTION_ID, ERROR_ID]);
+      expect(onPromptAnswer.mock.calls[0][1]).toMatchObject({ option_id: "B" });
       expect(pointerEvents).toEqual([]);
+   });
+
+   it("names a prediction the walk could not commit", async () => {
+      const unanswerable: LessonRecord = {
+         ...LESSON,
+         sections: LESSON.sections.map((section) => (section.id === PREDICTION_ID ? { ...section, options: [] } : section))
+      };
+      const { failures } = await walk(unanswerable, band);
+
+      expect(failures).toContain(`${band} ${PREDICTION_ID}: the prediction has no input control`);
+      expect(failures).toContain(`${band} ${PREDICTION_ID}: Next part is not available after the screen was worked`);
+      expect(failures).toContain(`${band}: the walk did not reach the end screen`);
    });
 
    it("names a drawn mode that carries no spec", async () => {

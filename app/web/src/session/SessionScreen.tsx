@@ -1,6 +1,7 @@
 import { useCallback, useEffect, useRef, useState } from "react";
 import {
    answerLessonCheck,
+   answerLessonPrompt,
    closeSession,
    openSession,
    postSessionLessonEvent,
@@ -19,6 +20,8 @@ import type {
    FeedbackPayload,
    LessonCheckAnswerBody,
    LessonEventBody,
+   LessonEventMode,
+   LessonPromptAnswerBody,
    MarkedQueueSlot,
    ServedItem,
    ServedLesson,
@@ -576,7 +579,7 @@ export function SessionScreen({ resumeSessionId, onLeave, onOpened }: SessionScr
       const shown = lesson;
       const sessionId = session.id;
 
-      function sectionViewed(sectionId: string, mode: string, elapsedMs: number) {
+      function sectionViewed(sectionId: string, mode: LessonEventMode, elapsedMs: number) {
          postSessionLessonEvent(sessionId, shown.lesson_id, lessonEventBody(shown, { event: "section_viewed", section_id: sectionId, mode, elapsed_ms: elapsedMs })).catch(
             () => undefined
          );
@@ -584,6 +587,10 @@ export function SessionScreen({ resumeSessionId, onLeave, onOpened }: SessionScr
 
       function checkAnswer(checkId: string, body: LessonCheckAnswerBody) {
          return answerLessonCheck(shown.lesson_id, checkId, body);
+      }
+
+      function promptAnswer(sectionId: string, body: LessonPromptAnswerBody) {
+         return answerLessonPrompt(shown.lesson_id, sectionId, body);
       }
 
       return (
@@ -614,6 +621,7 @@ export function SessionScreen({ resumeSessionId, onLeave, onOpened }: SessionScr
                   onSkip={(sectionIndex) => leaveLesson("skipped", sectionIndex)}
                   onSectionViewed={sectionViewed}
                   onCheckAnswer={checkAnswer}
+                  onPromptAnswer={promptAnswer}
                />
             )}
          </div>

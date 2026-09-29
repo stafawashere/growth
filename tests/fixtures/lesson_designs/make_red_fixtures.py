@@ -1,5 +1,6 @@
-"""Plant one defect per rule of tools/check_lesson_designs.py into the clean designs and write
-red_<rule>.md beside them. Run from the repository root:
+"""Plant one defect per rule of tools/check_lesson_designs.py into the clean designs under clean/
+and write red_<rule>/ beside them. The clean designs are fixtures in their own right, not copies
+refreshed from docs/lessons, so the live designs can lag a new rule. Run from the repository root:
 PYTHONPATH=. .venv/bin/python tests/fixtures/lesson_designs/make_red_fixtures.py
 """
 import json
@@ -11,8 +12,8 @@ ROOT = Path(__file__).resolve().parents[3]
 sys.path.insert(0, str(ROOT))
 
 FIXTURE_DIR = Path(__file__).resolve().parent
-CLEAN_CONCEPT = ROOT / "docs" / "lessons" / "unit-02" / "LSN-CON-02013.md"
-CLEAN_DECISION = ROOT / "docs" / "lessons" / "decisions" / "LSN-DEC-06-01.md"
+CLEAN_CONCEPT = FIXTURE_DIR / "clean" / "LSN-CON-02013.md"
+CLEAN_DECISION = FIXTURE_DIR / "clean" / "LSN-DEC-06-01.md"
 FENCE = re.compile(r"```json\n(.*?)\n```", re.S)
 
 
@@ -111,6 +112,30 @@ def missing_delivery(record):
    record["delivery"] = [entry for entry in record["delivery"] if entry["block"] != "ex-1"]
 
 
+def no_prediction(record):
+   record.pop("prediction")
+
+
+def no_contrast(record):
+   record["strategy"][0].pop("contrast")
+
+
+def unfaded_second_example(record):
+   record["worked_examples"][1].pop("fade_from")
+
+
+def fix_prompt_on_equivalent(record):
+   record["common_errors"][1]["fix_prompt"] = True
+
+
+def no_figure_reason(record):
+   record.pop("no_figure_reason")
+
+
+def id_in_rival(record):
+   record["strategy"][0]["rival"] += " (BC-ERR-02020)"
+
+
 def two_features(record):
    record["decision"]["stems"][1]["parameter_draw"]["integrand"] = "sin(t)"
 
@@ -136,6 +161,12 @@ CONCEPT_DEFECTS = {
    "draw_exclusion": lambda text: edit(text, published_draw),
    "inferred": lambda text: edit(text, untagged_inferred),
    "delivery": lambda text: edit(text, missing_delivery),
+   "prediction_section": lambda text: edit(text, no_prediction),
+   "contrast": lambda text: edit(text, no_contrast),
+   "fade": lambda text: edit(text, unfaded_second_example),
+   "fix_prompt": lambda text: edit(text, fix_prompt_on_equivalent),
+   "figure_presence": lambda text: edit(text, no_figure_reason),
+   "served_text": lambda text: edit(text, id_in_rival),
 }
 DECISION_DEFECTS = {
    "decision_stems": lambda text: edit(text, two_features),
@@ -150,8 +181,6 @@ def write(path, text):
 def main():
    concept = CLEAN_CONCEPT.read_text()
    decision = CLEAN_DECISION.read_text()
-   write(FIXTURE_DIR / "clean" / "LSN-CON-02013.md", concept)
-   write(FIXTURE_DIR / "clean" / "LSN-DEC-06-01.md", decision)
 
    for rule, defect in CONCEPT_DEFECTS.items():
       write(FIXTURE_DIR / f"red_{rule}" / "LSN-CON-02013.md", defect(concept))

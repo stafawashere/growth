@@ -9,6 +9,10 @@ purpose: Authoring spec for the concept lesson on BC-CON-02013, the product rule
 
 Concept BC-CON-02013 (skills BC-SKL-02036, BC-SKL-02037, BC-SKL-02038), topic 2.8 of Unit 2, loaded by BC-QA-02008 (primary) and BC-QA-02009. The reference lesson content/lessons/LSN-CON-02013.json is the hand-authored L0 exemplar; this design keeps its section structure and adds the recognition, time and delivery decisions.
 
+## Prediction
+
+One multiple choice question on worked example 1's own function, \(h(x)=(x^2+3)\cos x\), asked before the rule is shown: which expression is \(h'(x)\). The key is ex-1's answer; the two distractors are the product of the two derivatives (BC-ERR-02020) and the first term alone. The resolution, shown on the key idea screen beside the student's choice, names the two terms the rule keeps. No verdict word.
+
 ## Orientation
 
 Served text (50 words), from BC-CON-02013 `description_plain` and the topic's Assessment behaviour paragraph (research/units/unit-02-differentiation-definition-properties.md#2.8 The Product Rule): a response shows the derivative of a product as two terms added, the first factor times the derivative of the second plus the second factor times the derivative of the first, and questions ask for it symbolically or from values supplied at a point. No count, no frequency.
@@ -25,6 +29,8 @@ Stem features that say "this concept":
 
 - BC-QA-02008 (family rule-manipulation, MCQ shape, no calculator; research/question-analysis/question-archetypes.md#BC-QA-02008 Derivative of a product or a quotient by rule): `typical_wording` "Find the derivative of the given function"; `common_givens` a product or quotient of two differentiable expressions; `asked_to_produce` the derivative of the product or quotient. The signal is two variable factors multiplied, each differentiable on its own. FRQ appearances inside larger computations: BC-FRQ-2019-Q5-A and BC-FRQ-2014-Q3-C (`official_examples`).
 - BC-QA-02009 (family derivative-from-table, MCQ or one FRQ part; research/question-analysis/question-archetypes.md#BC-QA-02009 Derivative of a product or quotient evaluated from supplied values): `typical_wording` a table of values of \(f\), \(g\) and their derivatives at selected inputs, the derivative of the indicated product at a named input; `common_givens` a table of values of two functions and their derivatives. The signal is four numbers at one input, two of them derivative values. FRQ appearance BC-FRQ-2021-Q4-B.
+
+Contrast pair on st-1: this stem \(h(x)=x^3\sin x\), two factors multiplied; not this stem \(h(x)=\sin(x^3)\), a composite, where the chain rule applies (topic 3.1). The separating feature is two factors side by side against one function inside another.
 
 What says "not this concept": one factor is a constant (the constant multiple rule, BC-ERR-02023 names the over-application); the expression is a composite \(f(g(x))\) rather than a product (the chain rule, topic 3.1); a quotient with a variable denominator (the quotient rule, BC-CON-02014, taught beside this one).
 
@@ -92,8 +98,8 @@ No motion, interactive or model mode applies: the concept has no parameter that 
 
 ## Band plan
 
-- Low (full): orientation, ki-1, st-1, st-2, ex-1 with its scoring line, err-02020, err-02023, err-02024, chk-1, ex-2 with its scoring line, chk-2, chk-3, closing line. 626 words, 4.5 minutes (cap 900 and 6).
-- Mid (brief): orientation, ki-1, st-1, ex-1 with its scoring line, err-02020, err-02023, chk-1, chk-2, closing line. 394 words, 2.7 minutes (cap 450 and 3).
+- Low (full): pr-1, orientation, ki-1, st-1 with its contrast pair, st-2, ex-1 with its scoring line, chk-1, err-02020, err-02023, err-02024, ex-2 faded from step 3 with its scoring line, chk-2, chk-3, closing line. 676 words, 4.6 minutes (cap 900 and 6).
+- Mid (brief): pr-1, orientation, ki-1, st-1 with its contrast pair, ex-1 with its scoring line, chk-1, err-02020, err-02023, chk-2, closing line. 447 words, 3.0 minutes (cap 450 and 3).
 - Refresher: ki-1, err-BC-ERR-02020, err-BC-ERR-02023, err-BC-ERR-02024, ex-1.
 
 ## Sources
@@ -124,6 +130,36 @@ No motion, interactive or model mode applies: the concept has no parameter that 
   "BC-SKL-02037",
   "BC-SKL-02038"
  ],
+ "prediction": {
+  "id": "pr-1",
+  "stem": {
+   "text": "Let \\(h(x)=(x^2+3)\\cos x\\). Which expression is \\(h'(x)\\)?",
+   "command_verb": "predict"
+  },
+  "format": "mcq",
+  "options": [
+   {
+    "id": "A",
+    "label": "\\(2x(-\\sin x)\\)",
+    "is_key": false
+   },
+   {
+    "id": "B",
+    "label": "\\(2x\\cos x-(x^2+3)\\sin x\\)",
+    "is_key": true
+   },
+   {
+    "id": "C",
+    "label": "\\(2x\\cos x\\)",
+    "is_key": false
+   }
+  ],
+  "resolution": "The rule keeps two terms, each with one derivative: \\(2x\\cos x\\) and \\(-(x^2+3)\\sin x\\).",
+  "sources": [
+   "BC-CON-02013",
+   "BC-ERR-02020"
+  ]
+ },
  "orientation": {
   "text": "A response shows the derivative of a product as two terms added: the first factor times the derivative of the second, plus the second factor times the derivative of the first. Questions ask for it symbolically, or from values of the two functions and their derivatives supplied at one input. — with a dash",
   "sources": [
@@ -136,7 +172,7 @@ No motion, interactive or model mode applies: the concept has no parameter that 
    "id": "ki-1",
    "ek_id": "BC-EK-FUN-3B1",
    "depth": "core",
-   "text": "For a product \\(fg\\) the derivative is \\(f'g+fg'\\) (BC-EK-FUN-3B1, ced:67). It is not \\(f'g'\\), which expanding a simple product and differentiating term by term shows at once. A product of polynomials can also be expanded first and differentiated term by term, which is sometimes the shorter route.",
+   "text": "For a product \\(fg\\) the derivative is \\(f'g+fg'\\). It is not \\(f'g'\\), which expanding a simple product and differentiating term by term shows at once. A product of polynomials can also be expanded first and differentiated term by term, which is sometimes the shorter route.",
    "notation": "product rule",
    "quote": {
     "text": "Derivatives of products of differentiable functions can be found using the product rule.",
@@ -155,8 +191,19 @@ No motion, interactive or model mode applies: the concept has no parameter that 
    "archetype_id": "BC-QA-02008",
    "cue": "The stem asks for the derivative of the product or quotient, from a product or quotient of two differentiable expressions.",
    "method": "First written line: name the two factors and their derivatives, \\(f\\), \\(g\\), \\(f'\\), \\(g'\\).",
-   "rival": "The rival is multiplying the derivatives of the two factors (BC-ERR-02020).",
+   "rival": "The rival is multiplying the derivatives of the two factors.",
    "separating_feature": "A product gives two terms, each holding exactly one derivative.",
+   "contrast": {
+    "this": {
+     "text": "Let \\(h(x)=x^3\\sin x\\). Find \\(h'(x)\\).",
+     "archetype_id": "BC-QA-02008"
+    },
+    "not_this": {
+     "text": "Let \\(h(x)=\\sin(x^3)\\). Find \\(h'(x)\\).",
+     "why_not": "The cube sits inside the sine, so the chain rule applies."
+    },
+    "feature": "Two factors multiplied, not one function inside another."
+   },
    "sources": [
     "BC-QA-02008"
    ],
@@ -167,7 +214,7 @@ No motion, interactive or model mode applies: the concept has no parameter that 
    "archetype_id": "BC-QA-02009",
    "cue": "The stem asks for the derivative value at the named input, from a table of two functions and their derivatives.",
    "method": "First written line: record the four supplied values at the named input, each labelled a value or a derivative.",
-   "rival": "The rival is placing a function value where the rule calls for a derivative value (BC-ERR-02024).",
+   "rival": "The rival is placing a function value where the rule calls for a derivative value.",
    "separating_feature": "Each of the four numbers is labelled before it is used.",
    "sources": [
     "BC-QA-02009"
@@ -261,7 +308,8 @@ No motion, interactive or model mode applies: the concept has no parameter that 
    "answer": {
     "form": "numeric",
     "expr": "7"
-   }
+   },
+   "fade_from": 3
   }
  ],
  "what_a_reader_scores": [
@@ -304,6 +352,7 @@ No motion, interactive or model mode applies: the concept has no parameter that 
     "expr": "2*x*cos(x) - (x**2+3)*sin(x)"
    },
    "relation": "distinct",
+   "fix_prompt": true,
    "possible_reason": {
     "misconception_id": "BC-MIS-02011",
     "text": "the derivative of a product is taken as the product of the derivatives"
@@ -326,6 +375,7 @@ No motion, interactive or model mode applies: the concept has no parameter that 
     "expr": "x/2"
    },
    "relation": "equivalent",
+   "fix_prompt": false,
    "possible_reason": null,
    "sources": [
     "BC-ERR-02023"
@@ -344,6 +394,7 @@ No motion, interactive or model mode applies: the concept has no parameter that 
     "expr": "(-2)*4 + 3*5"
    },
    "relation": "distinct",
+   "fix_prompt": true,
    "possible_reason": {
     "misconception_id": "BC-MIS-02011",
     "text": "supplied values are placed in the wrong positions"
@@ -355,6 +406,7 @@ No motion, interactive or model mode applies: the concept has no parameter that 
   }
  ],
  "representations": null,
+ "no_figure_reason": "The concept is a symbolic rule whose givens are formulas or four supplied values, so no figure-shaped content exists for it.",
  "prerequisite_bridges": [],
  "time": {
   "exam_part": "I-A",
@@ -591,12 +643,12 @@ No motion, interactive or model mode applies: the concept has no parameter that 
   "ex-1"
  ],
  "read_minutes": {
-  "full": 4.5,
-  "brief": 2.7
+  "full": 4.6,
+  "brief": 3.0
  },
  "word_count": {
-  "full": 624,
-  "brief": 394
+  "full": 676,
+  "brief": 447
  },
  "research_lines": [
   {

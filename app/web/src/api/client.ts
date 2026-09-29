@@ -25,6 +25,8 @@ import type {
    LessonCheckVerdict,
    LessonEventBody,
    LessonPlanPayload,
+   LessonPromptAnswerBody,
+   LessonPromptVerdict,
    LessonReason,
    LessonRecordPayload,
    LessonStatePayload,
@@ -846,4 +848,10 @@ export function answerLessonCheck(lessonId: string, checkId: string, body: Lesso
    const path = `${lessonPath(lessonId)}/checks/${encodeURIComponent(checkId)}/answers`;
 
    return requestJson<LessonCheckVerdict>(path, jsonInit("POST", body));
+}
+
+export function answerLessonPrompt(lessonId: string, sectionId: string, body: LessonPromptAnswerBody) {
+   const path = `${lessonPath(lessonId)}/prompts/${encodeURIComponent(sectionId)}/answers`;
+
+   return requestJson<LessonPromptVerdict>(path, jsonInit("POST", body));
 }

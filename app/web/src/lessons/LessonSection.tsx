@@ -1,6 +1,6 @@
-import { useState } from "react";
+import { useEffect, useState, type ReactNode } from "react";
 
-import type { LessonDelivery, LessonSection as LessonSectionRecord } from "../api/types";
+import type { LessonContrast, LessonDelivery, LessonEventMode, LessonSection as LessonSectionRecord } from "../api/types";
 import { LessonText } from "./LessonText";
 import { MathValue } from "../math/MathValue";
 import { CORRECT_GLYPH, INCORRECT_GLYPH } from "../session/StepMarks";
@@ -9,15 +9,17 @@ import { FrameStepper } from "./FrameStepper";
 import { LessonFallback } from "./LessonFallback";
 import { LessonFigure } from "./LessonFigure";
 import { anchorFragment } from "./LessonLink";
+import { LessonPrediction, PromptField, PromptVerdictLine, type CommittedPrediction, type PromptAnswer } from "./LessonPrompts";
 import { LessonTable } from "./LessonTable";
 import { ModelTable } from "./ModelTable";
-import { StepReveal } from "./StepReveal";
+import { StepReveal, type RevealStep } from "./StepReveal";
 
 /* One section of a lesson, switched on its type and, for the blocks that carry one, on its
    delivery mode (CONTRACT.md Reader; TEMPLATE.md Delivery). Strategy, the scoring checklist and a
    prerequisite bridge carry no delivery: the reader fixes their form. */
 
 export const SECTION_HEADINGS: Record<LessonSectionRecord["type"], string> = {
+   prediction: "Predict",
    orientation: "What a response shows",
    key_ideas: "Key idea",
    strategy: "Recognising the question",
@@ -36,9 +38,24 @@ export const RIGHT_STEP_LABEL = "Right step";
 
 export const DRAWN_MODES = ["figure", "table", "motion", "interactive", "model"];
 
+export const CONTRAST_THIS_HEADING = "This concept";
+
+export const CONTRAST_NOT_THIS_HEADING = "Not this one";
+
 /* The mode a view of this section is logged under (amendment A-D5): its delivery mode, or text
-   for the blocks whose form the reader fixes. */
-export function sectionMode(section: LessonSectionRecord) {
+   for the blocks whose form the reader fixes. A prediction is logged as one, and a strategy block
+   carrying the contrast pair as a contrast screen. */
+export function sectionMode(section: LessonSectionRecord): LessonEventMode {
+   if (section.type === "prediction") {
+      return "prediction";
+   }
+
+   const isContrastScreen = section.type === "strategy" && section.contrast !== undefined;
+
+   if (isContrastScreen) {
+      return "contrast";
+   }
+
    return section.delivery?.mode ?? "text";
 }
 
@@ -80,8 +97,14 @@ function hasExpression(value: unknown) {
    return value !== undefined && value !== null;
 }
 
-function WorkedExample({ section, revealAll, stepsOnly }: { section: LessonSectionRecord; revealAll: boolean; stepsOnly: boolean }) {
-   const steps = (section.steps ?? []).map((step, index) => ({
+interface PromptContext {
+   onPromptAnswer?: PromptAnswer;
+   onStepsRemaining?: (hasMore: boolean) => void;
+   now?: () => number;
+}
+
+function revealSteps(section: LessonSectionRecord, stepsOnly: boolean): RevealStep[] {
+   return (section.steps ?? []).map((step, index) => ({
       key: String(index),
       main: (
          <>
@@ -95,6 +118,45 @@ function WorkedExample({ section, revealAll, stepsOnly }: { section: LessonSecti
       ),
       beside: stepsOnly ? undefined : <LessonText text={step.why} />
    }));
+}
+
+/* A faded example (fade_from): the steps before fade_from, then the student writes the answer.
+   Any verdict reveals the steps held back, and so does the reader's "Show all steps". */
+function FadedSteps({ section, steps, revealAll, context }: { section: LessonSectionRecord; steps: RevealStep[]; revealAll: boolean; context: PromptContext }) {
+   const [verdict, setVerdict] = useState<boolean | null>(null);
+   const { onPromptAnswer, onStepsRemaining, now } = context;
+   const isRevealed = revealAll || verdict !== null;
+   const shownBeforeFade = Math.min(Math.max((section.fade_from ?? 1) - 1, 0), steps.length);
+   const isUnanswered = verdict === null;
+   const asksForAnswer = isUnanswered && !revealAll;
+
+   useEffect(() => {
+      onStepsRemaining?.(!isRevealed);
+   }, [isRevealed, onStepsRemaining]);
+
+   return (
+      <>
+         <StepReveal steps={isRevealed ? steps : steps.slice(0, shownBeforeFade)} revealAll />
+
+         {asksForAnswer ? (
+            <PromptField
+               label="Write the answer"
+               testId="lesson-fade-answer"
+               sectionId={section.id}
+               onPromptAnswer={onPromptAnswer!}
+               onVerdict={setVerdict}
+               now={now}
+            />
+         ) : null}
+
+         {verdict !== null ? <PromptVerdictLine correct={verdict} /> : null}
+      </>
+   );
+}
+
+function WorkedExample({ section, revealAll, stepsOnly, context }: { section: LessonSectionRecord; revealAll: boolean; stepsOnly: boolean; context: PromptContext }) {
+   const steps = revealSteps(section, stepsOnly);
+   const isFaded = section.fade_from !== undefined && !stepsOnly && context.onPromptAnswer !== undefined;
 
    return (
       <>
@@ -104,7 +166,11 @@ function WorkedExample({ section, revealAll, stepsOnly }: { section: LessonSecti
             </p>
          ) : null}
 
-         <StepReveal steps={steps} revealAll={revealAll || stepsOnly} />
+         {isFaded ? (
+            <FadedSteps section={section} steps={steps} revealAll={revealAll} context={context} />
+         ) : (
+            <StepReveal steps={steps} revealAll={revealAll || stepsOnly} onRemainingChange={context.onStepsRemaining} />
+         )}
       </>
    );
 }
@@ -113,18 +179,36 @@ function WorkedExample({ section, revealAll, stepsOnly }: { section: LessonSecti
    greyscale; the right step is revealed on "Next step". When both steps carry the same expression
    the error is in what surrounds the value (a missing differential, an unstated form, no sentence),
    so the expression is left out and the two texts carry the difference: drawn twice, the rendered
-   value would show the very notation the wrong step's text says is missing. */
-function ErrorPair({ section, revealAll }: { section: LessonSectionRecord; revealAll: boolean }) {
+   value would show the very notation the wrong step's text says is missing. With fix_prompt the
+   student writes the right step first, or asks to see it; the consequence and the possible reason
+   wait for the right step. */
+function ErrorBlock({ section, revealAll, context }: { section: LessonSectionRecord; revealAll: boolean; context: PromptContext }) {
    const [showsRight, setShowsRight] = useState(revealAll);
+   const [fixVerdict, setFixVerdict] = useState<boolean | null>(null);
+   const offersFix = section.fix_prompt === true && !revealAll && context.onPromptAnswer !== undefined;
    const isShown = showsRight || revealAll;
+   const showsAftermath = isShown || !offersFix;
    const wrongExpression = section.wrong_step?.expression;
    const rightExpression = section.right_step?.expression;
    const isSameValue = hasExpression(wrongExpression) && JSON.stringify(wrongExpression) === JSON.stringify(rightExpression);
    const showsWrongValue = hasExpression(wrongExpression) && !isSameValue;
    const showsRightValue = hasExpression(rightExpression) && !isSameValue;
 
+   function fixAnswered(correct: boolean) {
+      setFixVerdict(correct);
+      setShowsRight(true);
+   }
+
+   const showRightButton = (
+      <button type="button" className="text-button" data-testid="lesson-fix-show" onClick={() => setShowsRight(true)}>
+         Show the right step
+      </button>
+   );
+
    return (
       <>
+         <Prose text={section.observed_behavior} />
+
          <div className="lesson-pair" data-testid="lesson-error-pair">
             <div className="lesson-pair-side" data-testid="lesson-wrong-step">
                <p className="label-heading">
@@ -136,6 +220,7 @@ function ErrorPair({ section, revealAll }: { section: LessonSectionRecord; revea
 
             {isShown ? (
                <div className="lesson-pair-side" data-testid="lesson-right-step">
+                  {fixVerdict !== null ? <PromptVerdictLine correct={fixVerdict} /> : null}
                   <p className="label-heading">
                      <span aria-hidden="true">{CORRECT_GLYPH}</span> {RIGHT_STEP_LABEL}
                   </p>
@@ -145,12 +230,71 @@ function ErrorPair({ section, revealAll }: { section: LessonSectionRecord; revea
             ) : null}
          </div>
 
-         {isShown ? null : (
+         {!isShown && offersFix ? (
+            <PromptField
+               label="What should this step be?"
+               testId="lesson-fix-prompt"
+               submitTestId="lesson-fix-submit"
+               sectionId={section.id}
+               onPromptAnswer={context.onPromptAnswer!}
+               onVerdict={fixAnswered}
+               now={context.now}
+               secondary={showRightButton}
+            />
+         ) : null}
+
+         {!isShown && !offersFix ? (
             <button type="button" className="text-button" data-testid="lesson-next-step" onClick={() => setShowsRight(true)}>
                Next step
             </button>
-         )}
+         ) : null}
+
+         {showsAftermath ? (
+            <>
+               <Prose text={section.scoring_consequence} />
+               {section.possible_reason !== undefined ? (
+                  <p className="muted">
+                     A possible reason: <LessonText text={section.possible_reason.text} />
+                  </p>
+               ) : null}
+            </>
+         ) : null}
       </>
+   );
+}
+
+/* The first strategy block's pair (the v2 Recognise screen): a stem of this concept beside a stem
+   it is mistaken for, each under a heading word so the pair reads without colour. Side by side
+   above 600 px and stacked below (app.css .lesson-contrast-pair). */
+function ContrastPair({ contrast }: { contrast: LessonContrast }) {
+   return (
+      <div className="stack stack-tight" data-testid="lesson-contrast">
+         <div className="lesson-contrast-pair">
+            <article className="lesson-pair-side" data-testid="lesson-contrast-this">
+               <p className="label-heading">{CONTRAST_THIS_HEADING}</p>
+               <p>
+                  <LessonText text={contrast.this.text} />
+               </p>
+            </article>
+
+            <article className="lesson-pair-side" data-testid="lesson-contrast-not-this">
+               <p className="label-heading">{CONTRAST_NOT_THIS_HEADING}</p>
+               <p>
+                  <LessonText text={contrast.not_this.text} />
+               </p>
+            </article>
+         </div>
+
+         <p>
+            What separates them: <LessonText text={contrast.feature} />
+         </p>
+
+         {contrast.not_this.why_not !== undefined ? (
+            <p className="muted">
+               <LessonText text={contrast.not_this.why_not} />
+            </p>
+         ) : null}
+      </div>
    );
 }
 
@@ -158,10 +302,20 @@ export interface LessonSectionProps {
    section: LessonSectionRecord;
    form?: "full" | "steps_only";
    revealAll?: boolean;
+   /* A line the reader sets above the section's text: the committed prediction on the first core
+      key idea. */
+   lead?: ReactNode;
+   prediction?: { committed: CommittedPrediction | null; onCommit: (committed: CommittedPrediction) => void };
+   onPromptAnswer?: PromptAnswer;
+   onStepsRemaining?: (hasMore: boolean) => void;
+   now?: () => number;
 }
 
-export function LessonSection({ section, form = "full", revealAll = false }: LessonSectionProps) {
+export function LessonSection(props: LessonSectionProps) {
+   const { section, form = "full", revealAll = false, lead, prediction, onPromptAnswer, onStepsRemaining, now } = props;
    const stepsOnly = form === "steps_only";
+   const context: PromptContext = { onPromptAnswer, onStepsRemaining, now };
+   const asksForPrediction = section.type === "prediction" && prediction !== undefined;
 
    return (
       <section
@@ -172,6 +326,14 @@ export function LessonSection({ section, form = "full", revealAll = false }: Les
          data-mode={sectionMode(section)}
       >
          <h2 className="section-heading">{SECTION_HEADINGS[section.type] ?? "Part"}</h2>
+
+         {lead}
+
+         {asksForPrediction ? (
+            <LessonPrediction section={section} committed={prediction.committed} onCommit={prediction.onCommit} onPromptAnswer={onPromptAnswer} now={now} />
+         ) : null}
+
+         {section.type === "prediction" && !asksForPrediction ? <Prose text={section.stem?.text} /> : null}
 
          {section.type === "strategy" ? (
             <dl className="lesson-strategy">
@@ -186,7 +348,9 @@ export function LessonSection({ section, form = "full", revealAll = false }: Les
             </dl>
          ) : null}
 
-         {section.type === "worked_example" ? <WorkedExample section={section} revealAll={revealAll} stepsOnly={stepsOnly} /> : null}
+         {section.type === "strategy" && section.contrast !== undefined ? <ContrastPair contrast={section.contrast} /> : null}
+
+         {section.type === "worked_example" ? <WorkedExample section={section} revealAll={revealAll} stepsOnly={stepsOnly} context={context} /> : null}
 
          {section.type === "what_a_reader_scores" ? (
             <ul className="lesson-checklist">
@@ -198,18 +362,7 @@ export function LessonSection({ section, form = "full", revealAll = false }: Les
             </ul>
          ) : null}
 
-         {section.type === "common_error" ? (
-            <>
-               <Prose text={section.observed_behavior} />
-               <ErrorPair section={section} revealAll={revealAll} />
-               <Prose text={section.scoring_consequence} />
-               {section.possible_reason !== undefined ? (
-                  <p className="muted">
-                     A possible reason: <LessonText text={section.possible_reason.text} />
-                  </p>
-               ) : null}
-            </>
-         ) : null}
+         {section.type === "common_error" ? <ErrorBlock section={section} revealAll={revealAll} context={context} /> : null}
 
          {["orientation", "key_ideas", "representations", "prerequisite_bridge"].includes(section.type) ? (
             <>

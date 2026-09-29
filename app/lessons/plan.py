@@ -21,6 +21,7 @@ FULL = "full"
 STEPS_ONLY = "steps_only"
 
 CHECK = "check"
+PREDICTION = "prediction"
 ORIENTATION = "orientation"
 KEY_IDEAS = "key_ideas"
 STRATEGY = "strategy"
@@ -31,9 +32,19 @@ REPRESENTATIONS = "representations"
 PREREQUISITE_BRIDGE = "prerequisite_bridge"
 
 PROSE_FIELDS = {
+   PREDICTION: ("stem.text", "options[].label", "resolution.text"),
    ORIENTATION: ("text",),
    KEY_IDEAS: ("text", "notation", "quote.text"),
-   STRATEGY: ("cue", "method", "rival", "separating_feature"),
+   STRATEGY: (
+      "cue",
+      "method",
+      "rival",
+      "separating_feature",
+      "contrast.this.text",
+      "contrast.not_this.text",
+      "contrast.not_this.why_not",
+      "contrast.feature",
+   ),
    WORKED_EXAMPLE: ("problem.text", "steps[].cue", "steps[].why"),
    READER_SCORES: ("lines[].text",),
    COMMON_ERROR: (
@@ -49,6 +60,7 @@ PROSE_FIELDS = {
 }
 
 FIRST_CONTACT_REQUIRED_TYPES = (
+   PREDICTION,
    ORIENTATION,
    PREREQUISITE_BRIDGE,
    KEY_IDEAS,
@@ -184,6 +196,10 @@ class LessonView:
 
 
 def first_contact_refs(view, band, prerequisite_ids):
+   """Plan order for both bands: the prediction, orientation, bridges, key ideas, strategy,
+   example 1 with its scoring lines, check 1, the error blocks, example 2 with its scoring lines,
+   check 2, representations, check 3."""
+   predictions = view.of_type(PREDICTION, band)
    orientation = view.of_type(ORIENTATION, band)
    wanted_bridges = set(prerequisite_ids)
    bridges = [
@@ -212,6 +228,7 @@ def first_contact_refs(view, band, prerequisite_ids):
       examples = examples[:1]
 
    sequence = []
+   sequence.extend(predictions)
    sequence.extend(orientation)
    sequence.extend(bridges)
    sequence.extend(key_ideas)
@@ -224,8 +241,8 @@ def first_contact_refs(view, band, prerequisite_ids):
       sequence.append(example)
       sequence.extend(view.scores_for(example["id"]))
 
-   sequence.extend(errors)
    sequence.extend(checks[:1])
+   sequence.extend(errors)
 
    for example in second_example:
       sequence.append(example)
@@ -335,8 +352,9 @@ def t4_refs(view, lesson_state):
       return refresher_pointer_refs(view)
 
    refs = first_contact_refs(view, "low", ())
+   first_contact_only = (CHECK, PREDICTION)
 
-   return [ref for ref in refs if ref.type != CHECK]
+   return [ref for ref in refs if ref.type not in first_contact_only]
 
 
 def read_again_refs(view):
@@ -375,6 +393,7 @@ def plan_lesson(lesson, band, reason, error_ids=(), prerequisite_ids=(), lesson_
       return first_contact_plan(view, lesson, band, prerequisite_ids)
 
    refs = refresher_refs(view, reason, error_ids, prerequisite_ids, lesson_state)
+   refs = [ref for ref in refs if ref.type != PREDICTION]
    is_t4_first = reason == "T4" and not is_repeat_t4(lesson_state)
 
    if is_t4_first:

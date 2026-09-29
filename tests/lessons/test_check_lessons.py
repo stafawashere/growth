@@ -167,7 +167,7 @@ def test_cli_takes_a_file_path(tmp_path, capsys):
 def test_three_drawn_blocks_are_not_capped_per_lesson(context, hand_authored):
    spec = {"kind": "graph", "curves": [{"expr": "x**2"}], "labels": [{"text": "y", "placement": "inside"}]}
 
-   for section in hand_authored["sections"][:2] + [hand_authored["sections"][2]]:
+   for section in hand_authored["sections"][1:4]:
       if "delivery" in section:
          section["delivery"] = {"mode": "figure", "reason": "planted", "spec": spec, "fallback": "f", "keyboard": "k"}
 
@@ -183,12 +183,12 @@ def example_with_steps(hand_authored, steps):
 
 
 def test_a_differentiate_relation_is_checked_as_a_derivative(context, hand_authored):
-   example_with_steps(hand_authored, [
+   example = example_with_steps(hand_authored, [
       {"expression": ["Power", "x", 3], "relation": "new"},
       {"expression": ["Multiply", 3, ["Power", "x", 2]], "relation": "differentiate", "variable": "x"},
    ])
    good = check_lessons.lint_step_equivalence(hand_authored, context)
-   hand_authored["sections"][4]["steps"][1]["expression"] = ["Multiply", 2, ["Power", "x", 2]]
+   example["steps"][1]["expression"] = ["Multiply", 2, ["Power", "x", 2]]
    bad = check_lessons.lint_step_equivalence(hand_authored, context)
 
    assert good == []
@@ -231,3 +231,101 @@ def test_a_numeric_key_on_a_no_calculator_check_is_allowed(context, hand_authore
    check["calculator_status"] = "no_calculator"
 
    assert check_lessons.lint_calculator_boundary(hand_authored, context) == []
+
+
+NEW_LINT_FINDINGS = {
+   "red_prediction_section.json": "0 prediction sections",
+   "red_prediction_section__key.json": "key is neither the answer",
+   "red_prediction_section__options.json": "2 key options",
+   "red_prediction_section__decision.json": "which a decision lesson does not carry",
+   "red_contrast.json": "carries no contrast",
+   "red_contrast__second.json": "which only the first strategy block holds",
+   "red_contrast__same.json": "are the same stem",
+   "red_contrast__archetype.json": "contrast this names BC-QA-02009",
+   "red_fade.json": "is worked example 2 and carries no fade_from",
+   "red_fade__range.json": "is outside 2 to 3",
+   "red_fade__bands.json": "only a low-band example fades",
+   "red_fade__value.json": "shows no valued step before fade_from",
+   "red_fix_prompt.json": "carries no fix_prompt",
+   "red_fix_prompt__relation.json": "an error marked equivalent needs false",
+   "red_figure_presence.json": "must carry no_figure_reason",
+   "red_figure_presence__drawn.json": "and carries no_figure_reason",
+   "red_served_text.json": "carries 'BC-EK-FUN-3B1'",
+   "red_served_text__label.json": "starts with the reader's label",
+   "red_served_text__tag.json": "carries '[inferred]'",
+}
+
+
+@pytest.mark.parametrize("file_name", sorted(NEW_LINT_FINDINGS))
+def test_new_lint_fixture_fails_for_its_planted_rule(file_name, context):
+   lint = lint_named_by(file_name)
+   messages = check_lessons.LINTS[lint](load_fixture(file_name), context)
+   expected = NEW_LINT_FINDINGS[file_name]
+
+   assert any(expected in message for message in messages), messages
+
+
+def prediction_of(lesson):
+   return next(section for section in lesson["sections"] if section["type"] == "prediction")
+
+
+def test_a_short_answer_prediction_keyed_on_example_one_passes(context, hand_authored):
+   prediction = prediction_of(hand_authored)
+   example = next(section for section in hand_authored["sections"] if section["type"] == "worked_example")
+   prediction["format"] = "short_answer"
+   prediction.pop("options")
+   prediction["answer_key"] = {"form": "symbolic", "mathjson": example["answer"]["mathjson"]}
+
+   assert check_lessons.lint_prediction_section(hand_authored, context) == []
+
+
+def test_a_statement_prediction_key_is_not_compared(context, hand_authored):
+   prediction = prediction_of(hand_authored)
+   prediction["format"] = "short_answer"
+   prediction.pop("options")
+   prediction["answer_key"] = {"form": "statement", "mathjson": "two terms"}
+
+   assert check_lessons.lint_prediction_section(hand_authored, context) == []
+
+
+def test_a_prediction_after_the_orientation_is_refused(context, hand_authored):
+   sections = hand_authored["sections"]
+   sections[0], sections[1] = sections[1], sections[0]
+   messages = check_lessons.lint_prediction_section(hand_authored, context)
+   order = check_lessons.lint_section_order(hand_authored, context)
+
+   assert "the prediction is not the first section" in messages
+   assert order != []
+
+
+def test_a_misspelt_new_field_fails_the_schema(context, hand_authored):
+   prediction_of(hand_authored)["resolutoin"] = {"text": "planted"}
+   strategy = next(section for section in hand_authored["sections"] if section["type"] == "strategy")
+   strategy["contrast"]["feture"] = "planted"
+   hand_authored["no_figure_reasons"] = "planted"
+   messages = check_lessons.lint_schema(hand_authored, context)
+   locations = " ".join(messages)
+
+   assert "sections/0" in locations
+   assert "sections/3" in locations
+   assert "<root>" in locations
+
+
+def test_the_new_caps_fire(context, hand_authored):
+   prediction_of(hand_authored)["stem"]["text"] = " ".join(["word"] * 41)
+   strategy = next(section for section in hand_authored["sections"] if section["type"] == "strategy")
+   strategy["contrast"]["not_this"]["why_not"] = " ".join(["word"] * 21)
+   hand_authored["no_figure_reason"] = " ".join(["word"] * 41)
+   messages = " | ".join(check_lessons.lint_caps(hand_authored, context))
+
+   assert "s1 stem is 41 words, and the cap is 40" in messages
+   assert "contrast why_not is 21 words, and the cap is 20" in messages
+   assert "no_figure_reason is 41 words, and the cap is 40" in messages
+
+
+def test_error_record_words_are_exempt_from_served_text(context, hand_authored):
+   block = next(section for section in hand_authored["sections"] if section["type"] == "common_error")
+   block["observed_behavior"] += " (BC-ERR-02020)"
+   block["scoring_consequence"] += " sg-25:20"
+
+   assert check_lessons.lint_served_text(hand_authored, context) == []

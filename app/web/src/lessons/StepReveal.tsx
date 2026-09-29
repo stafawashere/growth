@@ -1,8 +1,9 @@
-import { useState, type ReactNode } from "react";
+import { useEffect, useState, type ReactNode } from "react";
 
 /* 15 UI and TEMPLATE.md Delivery, step_reveal: one step at a time on "Next step", the earlier steps
    staying in view, each step's why line beside it rather than below the whole solution (01 split
-   attention). Shown in full when the reader asks for every step at once, as a refresher does. */
+   attention). Shown in full when the reader asks for every step at once, as a refresher does or as
+   the reader's "Show all steps" does; onRemainingChange tells the reader whether steps are left. */
 
 export interface RevealStep {
    key: string;
@@ -10,11 +11,22 @@ export interface RevealStep {
    beside?: ReactNode;
 }
 
-export function StepReveal(props: { steps: RevealStep[]; revealAll?: boolean; className?: string }) {
-   const { steps, revealAll = false } = props;
+export interface StepRevealProps {
+   steps: RevealStep[];
+   revealAll?: boolean;
+   className?: string;
+   onRemainingChange?: (hasMore: boolean) => void;
+}
+
+export function StepReveal(props: StepRevealProps) {
+   const { steps, revealAll = false, onRemainingChange } = props;
    const [shown, setShown] = useState(1);
    const visible = revealAll ? steps.length : Math.min(shown, steps.length);
    const hasMore = visible < steps.length;
+
+   useEffect(() => {
+      onRemainingChange?.(hasMore);
+   }, [hasMore, onRemainingChange]);
 
    return (
       <>

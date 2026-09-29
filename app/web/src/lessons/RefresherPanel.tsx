@@ -1,6 +1,6 @@
 import { useRef } from "react";
 
-import type { LessonPlan, LessonRecord } from "../api/types";
+import type { LessonEventMode, LessonPlan, LessonRecord } from "../api/types";
 import { LessonSection, sectionMode } from "./LessonSection";
 
 /* 15 Re-teaching and UI: a refresher is a short re-read before the next problem, so its sections
@@ -13,7 +13,7 @@ export interface RefresherPanelProps {
    plan: LessonPlan;
    topBar: string;
    onComplete: () => void;
-   onSectionViewed: (sectionId: string, mode: string, elapsedMs: number) => void;
+   onSectionViewed: (sectionId: string, mode: LessonEventMode, elapsedMs: number) => void;
    now?: () => number;
 }
 

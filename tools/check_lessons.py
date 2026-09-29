@@ -55,6 +55,7 @@ def load_common():
 COMMON = load_common()
 
 TYPE_ORDER = (
+   plan.PREDICTION,
    plan.ORIENTATION,
    plan.KEY_IDEAS,
    plan.STRATEGY,
@@ -127,8 +128,43 @@ SPEC_KINDS = (
    "region_with_axis",
    "stems",
 )
+DRAWN_MODES = ("figure", "table", "motion", "interactive", "model")
 RESEARCH_CITATION = re.compile(r"^research/[\w\-/.]+\.md(?:#.+)?$")
 PAGE_CITATION = re.compile(r"^(ced|sg-\d{2}|cr-\d{2}|crabbc-\d{2}):(\d+)$")
+
+PREDICTION_STEM_WORDS_MAX = 40
+PREDICTION_RESOLUTION_WORDS_MAX = 40
+PREDICTION_OPTION_WORDS_MAX = 12
+PREDICTION_OPTIONS_MIN = 2
+PREDICTION_OPTIONS_MAX = 4
+CONTRAST_STEM_WORDS_MAX = 30
+CONTRAST_WHY_NOT_WORDS_MAX = 20
+CONTRAST_FEATURE_WORDS_MAX = 20
+NO_FIGURE_REASON_WORDS_MAX = 40
+
+SERVED_ID = re.compile(r"\bBC-[A-Z]{2,4}-[A-Za-z0-9-]+\b")
+SERVED_PAGE = re.compile(r"\b(?:ced|sg-\d{2}|cr-\d{2}|crabbc-\d{2}):\d+\b")
+SERVED_TAG = re.compile(r"\[(?:verified|single-source|inferred|uncertain)\]")
+READER_LABEL_LEAD = re.compile(r"^\s*first line:", re.I)
+SERVED_FIELDS = {
+   plan.PREDICTION: ("stem.text", "options[].label", "resolution.text"),
+   plan.ORIENTATION: ("text",),
+   plan.KEY_IDEAS: ("text", "notation"),
+   plan.STRATEGY: (
+      "cue",
+      "method",
+      "rival",
+      "separating_feature",
+      "contrast.this.text",
+      "contrast.not_this.text",
+      "contrast.not_this.why_not",
+      "contrast.feature",
+   ),
+   plan.REPRESENTATIONS: ("text",),
+   plan.PREREQUISITE_BRIDGE: ("text",),
+   plan.WORKED_EXAMPLE: ("problem.text", "steps[].cue", "steps[].why"),
+   plan.CHECK: ("stem.text",),
+}
 
 
 def design_rules():
@@ -241,6 +277,10 @@ def prose_of(lesson):
 
    for record in list(lesson["sections"]) + list(lesson["checks"]):
       texts.extend(plan.section_texts(record))
+      labels_are_prose = record.get("type") == plan.PREDICTION
+
+      if labels_are_prose:
+         continue
 
       for option in record.get("options") or []:
          has_label = bool(option.get("label"))
@@ -581,6 +621,10 @@ def band_shape_messages(lesson):
    for example in examples[1:]:
       if example["bands"] != ["low"]:
          messages.append(f"{example['id']} is example 2 and serves the low band only")
+
+   for section in sections_of(lesson, plan.PREDICTION):
+      if sorted(section["bands"]) != ["low", "mid"]:
+         messages.append(f"{section['id']} is the prediction and serves both bands")
 
    for section in sections_of(lesson, plan.KEY_IDEAS):
       is_extended = section["depth"] == "extended"
@@ -1187,6 +1231,20 @@ def lint_caps(lesson, context):
    if len(errors) > constants.LESSON_COMMON_ERRORS_MAX:
       messages.append(f"{len(errors)} error blocks, and the cap is {constants.LESSON_COMMON_ERRORS_MAX}")
 
+   for section in sections_of(lesson, plan.PREDICTION):
+      messages.extend(prediction_cap_messages(section))
+
+   for section in sections_of(lesson, plan.STRATEGY):
+      contrast = section.get("contrast")
+
+      if contrast is not None:
+         messages.extend(contrast_cap_messages(section["id"], contrast))
+
+   no_figure_reason = lesson.get("no_figure_reason")
+
+   if no_figure_reason is not None:
+      messages.extend(over_cap("no_figure_reason", no_figure_reason, NO_FIGURE_REASON_WORDS_MAX))
+
    messages.extend(band_cap_messages(lesson))
 
    return messages
@@ -1605,7 +1663,16 @@ def labels_of(node):
 
 
 def delivered_blocks(lesson):
-   blocks = [(section["id"], section) for section in lesson["sections"] if section["type"] in DELIVERED_TYPES]
+   """Every block that must name its delivery, and a prediction that names one."""
+   blocks = []
+
+   for section in lesson["sections"]:
+      must_deliver = section["type"] in DELIVERED_TYPES
+      names_delivery = section["type"] == plan.PREDICTION and "delivery" in section
+
+      if must_deliver or names_delivery:
+         blocks.append((section["id"], section))
+
    decision = lesson.get("decision")
 
    if decision is not None:
@@ -1693,6 +1760,339 @@ def lint_delivery(lesson, context):
    return messages
 
 
+def served_problems(text):
+   """The library ids, page citations and evidence tags inside a text a student reads."""
+   found = []
+
+   for pattern in (SERVED_ID, SERVED_PAGE, SERVED_TAG):
+      found.extend(match.group(0) for match in pattern.finditer(text or ""))
+
+   return found
+
+
+def starts_with_reader_label(method):
+   return READER_LABEL_LEAD.match(method or "") is not None
+
+
+def over_cap(label, text, cap):
+   words = words_in(text)
+
+   if words > cap:
+      return [f"{label} is {words} words, and the cap is {cap}"]
+
+   return []
+
+
+def prediction_cap_messages(section):
+   label = section["id"]
+   messages = over_cap(f"{label} stem", section["stem"]["text"], PREDICTION_STEM_WORDS_MAX)
+   messages += over_cap(f"{label} resolution", section["resolution"]["text"], PREDICTION_RESOLUTION_WORDS_MAX)
+
+   for option in section.get("options") or []:
+      messages += over_cap(f"{label} option {option['id']} label", option["label"], PREDICTION_OPTION_WORDS_MAX)
+
+   return messages
+
+
+def contrast_cap_messages(block_id, contrast):
+   messages = over_cap(f"{block_id} contrast this", contrast["this"]["text"], CONTRAST_STEM_WORDS_MAX)
+   messages += over_cap(f"{block_id} contrast not_this", contrast["not_this"]["text"], CONTRAST_STEM_WORDS_MAX)
+   messages += over_cap(f"{block_id} contrast why_not", contrast["not_this"]["why_not"], CONTRAST_WHY_NOT_WORDS_MAX)
+   messages += over_cap(f"{block_id} contrast feature", contrast["feature"], CONTRAST_FEATURE_WORDS_MAX)
+
+   return messages
+
+
+def is_concept(lesson):
+   return lesson.get("kind") == "concept"
+
+
+def lint_prediction_section(lesson, context):
+   """A concept lesson opens with exactly one prediction; prerequisite and decision lessons carry
+   none. The mcq arm holds 2 to 4 distinct short options with one key; the short answer arm's key
+   is worked example 1's answer or one of its valued steps, unless it is a statement."""
+   predictions = sections_of(lesson, plan.PREDICTION)
+
+   if not is_concept(lesson):
+      return [f"{section['id']} is a prediction, which a {lesson['kind']} lesson does not carry" for section in predictions]
+
+   messages = []
+   count = len(predictions)
+
+   if count != 1:
+      messages.append(f"{count} prediction sections, and a concept lesson holds exactly 1")
+
+   first_type = lesson["sections"][0]["type"]
+   is_first = first_type == plan.PREDICTION
+
+   if count > 0 and not is_first:
+      messages.append("the prediction is not the first section")
+
+   examples = sections_of(lesson, plan.WORKED_EXAMPLE)
+   first_example = examples[0] if examples else None
+
+   for section in predictions:
+      messages.extend(prediction_cap_messages(section))
+
+      if section["format"] == "mcq":
+         messages.extend(prediction_option_messages(section))
+      else:
+         messages.extend(prediction_key_messages(section, first_example))
+
+   return messages
+
+
+def prediction_option_messages(section):
+   label = section["id"]
+   options = section.get("options") or []
+   messages = []
+   has_answer_key = "answer_key" in section
+   option_count_ok = PREDICTION_OPTIONS_MIN <= len(options) <= PREDICTION_OPTIONS_MAX
+
+   if not option_count_ok:
+      messages.append(f"{label} has {len(options)} options, and a prediction holds {PREDICTION_OPTIONS_MIN} to {PREDICTION_OPTIONS_MAX}")
+
+   keys = [option for option in options if option.get("is_key")]
+
+   if len(keys) != 1:
+      messages.append(f"{label} has {len(keys)} key options, and a prediction holds exactly 1")
+
+   labels = [normalise_text(option["label"]) for option in options]
+   repeated = [option["label"] for option, text in zip(options, labels) if labels.count(text) > 1]
+
+   if repeated:
+      messages.append(f"{label} repeats the option label {repeated[0]!r}")
+
+   if has_answer_key:
+      messages.append(f"{label} is multiple choice and carries an answer_key")
+
+   return messages
+
+
+def prediction_key_messages(section, first_example):
+   label = section["id"]
+   key = section.get("answer_key")
+   messages = []
+
+   if section.get("options"):
+      messages.append(f"{label} is short answer and carries options")
+
+   if key is None:
+      return messages + [f"{label} is short answer and carries no answer_key"]
+
+   is_statement = key["form"] == "statement"
+
+   if is_statement:
+      return messages
+
+   if first_example is None:
+      return messages + [f"{label} has no worked example 1 to take its key from"]
+
+   try:
+      key_value = to_expression(key["mathjson"])
+   except (UnsupportedMathJSON, TypeError, ValueError) as error:
+      return messages + [f"{label} key did not convert: {error}"]
+
+   candidates = [first_example["answer"]["mathjson"]] + [value for _, value in valued_steps(first_example)]
+   is_taken_from_example = any(prediction_key_equals(key_value, candidate) for candidate in candidates)
+
+   if not is_taken_from_example:
+      messages.append(f"{label} key is neither the answer of {first_example['id']} nor one of its valued steps")
+
+   return messages
+
+
+def prediction_key_equals(key_value, candidate):
+   try:
+      candidate_value = to_expression(candidate)
+   except (UnsupportedMathJSON, TypeError, ValueError):
+      return False
+
+   return design_rules().equivalent(key_value, candidate_value)
+
+
+def lint_contrast(lesson, context):
+   """The first strategy block of a concept lesson carries the contrast pair and no other block
+   does; the two stems differ, and this stem's archetype is the block's."""
+   if not is_concept(lesson):
+      return []
+
+   messages = []
+
+   for position, block in enumerate(sections_of(lesson, plan.STRATEGY)):
+      contrast = block.get("contrast")
+      is_first_block = position == 0
+
+      if is_first_block and contrast is None:
+         messages.append(f"{block['id']} is the first strategy block and carries no contrast")
+
+      if not is_first_block and contrast is not None:
+         messages.append(f"{block['id']} carries a contrast, which only the first strategy block holds")
+
+      if contrast is not None:
+         messages.extend(contrast_messages(block, contrast))
+
+   return messages
+
+
+def contrast_messages(block, contrast):
+   block_id = block["id"]
+   messages = contrast_cap_messages(block_id, contrast)
+   this_text = normalise_whitespace(contrast["this"]["text"])
+   not_this_text = normalise_whitespace(contrast["not_this"]["text"])
+
+   if this_text == not_this_text:
+      messages.append(f"{block_id} contrast this and not_this are the same stem")
+
+   if contrast["this"]["archetype_id"] != block["archetype_id"]:
+      messages.append(f"{block_id} contrast this names {contrast['this']['archetype_id']}, and the block is {block['archetype_id']}")
+
+   texts = (
+      contrast["this"]["text"],
+      contrast["not_this"]["text"],
+      contrast["not_this"]["why_not"],
+      contrast["feature"],
+   )
+
+   for text in texts:
+      for found in served_problems(text):
+         messages.append(f"{block_id} contrast carries {found!r}")
+
+   return messages
+
+
+def normalise_whitespace(text):
+   return " ".join((text or "").split())
+
+
+def lint_fade(lesson, context):
+   """fade_from sits only on a low-band worked example, inside its steps, after a valued step;
+   on a concept lesson the second worked example always carries it."""
+   messages = []
+   examples = sections_of(lesson, plan.WORKED_EXAMPLE)
+
+   for position, example in enumerate(examples):
+      fade_from = example.get("fade_from")
+      is_second = position == 1
+
+      if is_second and fade_from is None and is_concept(lesson):
+         messages.append(f"{example['id']} is worked example 2 and carries no fade_from")
+
+      if fade_from is not None:
+         messages.extend(fade_messages(example, fade_from))
+
+   return messages
+
+
+def fade_messages(example, fade_from):
+   example_id = example["id"]
+   steps = example["steps"]
+   messages = []
+   is_low_only = example["bands"] == ["low"]
+   is_inside_steps = 2 <= fade_from <= len(steps)
+
+   if not is_low_only:
+      messages.append(f"{example_id} fades from step {fade_from} but serves {example['bands']}, and only a low-band example fades")
+
+   if not is_inside_steps:
+      messages.append(f"{example_id} fade_from {fade_from} is outside 2 to {len(steps)}")
+
+   shown = steps[:fade_from - 1]
+   shows_a_value = any("expression" in step for step in shown)
+
+   if not shows_a_value:
+      messages.append(f"{example_id} shows no valued step before fade_from {fade_from}")
+
+   if example.get("answer") is None:
+      messages.append(f"{example_id} fades and has no answer to grade")
+
+   return messages
+
+
+def lint_fix_prompt(lesson, context):
+   """Every error block of a concept lesson says whether the student writes the right step:
+   true when the steps are distinct, false when they are equivalent."""
+   messages = []
+
+   for block in sections_of(lesson, plan.COMMON_ERROR):
+      fix_prompt = block.get("fix_prompt")
+      is_missing = fix_prompt is None
+
+      if is_missing and is_concept(lesson):
+         messages.append(f"{block['id']} carries no fix_prompt")
+
+      if is_missing:
+         continue
+
+      expected = block["relation"] == "distinct"
+
+      if fix_prompt != expected:
+         messages.append(f"{block['id']} fix_prompt is {str(fix_prompt).lower()}, and an error marked {block['relation']} needs {str(expected).lower()}")
+
+   return messages
+
+
+def drawn_block_ids(lesson):
+   drawn = []
+
+   for block_id, section in delivered_blocks(lesson):
+      mode = (section.get("delivery") or {}).get("mode")
+      is_drawn = mode in DRAWN_MODES
+
+      if is_drawn:
+         drawn.append(block_id)
+
+   return drawn
+
+
+def lint_figure_presence(lesson, context):
+   """A concept lesson without a drawn block says why in no_figure_reason; a lesson with one
+   does not carry the field."""
+   drawn = drawn_block_ids(lesson)
+   reason = lesson.get("no_figure_reason")
+   has_reason = reason is not None
+   messages = []
+
+   if drawn and has_reason:
+      messages.append(f"the lesson draws {drawn[0]} and carries no_figure_reason")
+
+   needs_reason = is_concept(lesson) and not drawn and not has_reason
+
+   if needs_reason:
+      messages.append("a concept lesson with no drawn block must carry no_figure_reason")
+
+   if has_reason:
+      messages.extend(over_cap("no_figure_reason", reason, NO_FIGURE_REASON_WORDS_MAX))
+
+   return messages
+
+
+def served_records(lesson):
+   return list(lesson["sections"]) + list(lesson["checks"])
+
+
+def lint_served_text(lesson, context):
+   """No library id, page citation or evidence tag in a text the student reads, and no strategy
+   method that opens with the reader's own "First line:" label. An error's observed behaviour,
+   consequence and reason and the reader-score lines are record words and are exempt."""
+   messages = []
+
+   for record in served_records(lesson):
+      record_type = record.get("type", plan.CHECK)
+
+      for path in SERVED_FIELDS.get(record_type, ()):
+         for text in plan.prose_values(record, path):
+            for found in served_problems(text):
+               messages.append(f"{record['id']} {path} carries {found!r}")
+
+      is_strategy = record_type == plan.STRATEGY
+
+      if is_strategy and starts_with_reader_label(record["method"]):
+         messages.append(f"{record['id']} method starts with the reader's label 'First line:'")
+
+   return messages
+
+
 LINTS = {
    "schema": lint_schema,
    "referential": lint_referential,
@@ -1721,6 +2121,12 @@ LINTS = {
    "decision_stems": lint_decision_stems,
    "discrimination_checks": lint_discrimination_checks,
    "delivery": lint_delivery,
+   "prediction_section": lint_prediction_section,
+   "contrast": lint_contrast,
+   "fade": lint_fade,
+   "fix_prompt": lint_fix_prompt,
+   "figure_presence": lint_figure_presence,
+   "served_text": lint_served_text,
 }
 
 

@@ -67,7 +67,26 @@ function delivery(mode: LessonDelivery["mode"], spec?: LessonSpec, extra: Partia
    return { mode, reason: "rule 1", ...drawn, ...extra };
 }
 
+export const PREDICTION_ID = "LSN-CON-02013#s0";
+
+export const FADED_EXAMPLE_ID = "LSN-CON-02013#s8";
+
+export const ERROR_ID = "LSN-CON-02013#err-BC-ERR-02020";
+
 const RECORD_SECTIONS: LessonSection[] = [
+   {
+      id: PREDICTION_ID,
+      type: "prediction",
+      bands: ["low", "mid"],
+      stem: { text: "Before the rule: what does the derivative of \\(h(x)=(x^2+1)(x^3-2x)\\) look like?", command_verb: "predict" },
+      format: "mcq",
+      options: [
+         { id: "A", label: "The product of the two derivatives", is_key: false },
+         { id: "B", label: "Two terms, each with one derivative", is_key: true },
+         { id: "C", label: "The derivative of the first factor only", is_key: false }
+      ],
+      resolution: { text: "A product gives two terms, each with one derivative." }
+   },
    {
       id: "LSN-CON-02013#s1",
       type: "orientation",
@@ -92,7 +111,12 @@ const RECORD_SECTIONS: LessonSection[] = [
       cue: "The stem asks for the derivative of the product or quotient, from a product or quotient of two differentiable expressions.",
       method: "First written step: identify the two factors and their derivatives.",
       rival: "The rival is multiplying the derivatives of the two factors.",
-      separating_feature: "A product gives two terms, each with one derivative."
+      separating_feature: "A product gives two terms, each with one derivative.",
+      contrast: {
+         this: { text: "Let \\(h(x)=x e^x\\). Find \\(h'(x)\\).", archetype_id: "BC-QA-02008" },
+         not_this: { text: "Let \\(h(x)=e^{x^2}\\). Find \\(h'(x)\\).", why_not: "One function sits inside another, so the chain rule applies." },
+         feature: "two factors multiplied, not one function inside another"
+      }
    },
    {
       id: "LSN-CON-02013#s5",
@@ -123,7 +147,7 @@ const RECORD_SECTIONS: LessonSection[] = [
       lines: [{ point_type_id: "BC-PT-99022", text: "Product rule. Earned by: a differentiation that correctly applies the product rule to the given expression." }]
    },
    {
-      id: "LSN-CON-02013#err-BC-ERR-02020",
+      id: ERROR_ID,
       type: "common_error",
       bands: ["low", "mid"],
       delivery: delivery("step_reveal"),
@@ -133,7 +157,26 @@ const RECORD_SECTIONS: LessonSection[] = [
       wrong_step: { text: "The derivatives of the two factors are multiplied: \\(f'g'\\)." },
       right_step: { text: "The rule adds two terms: \\(f'g+fg'\\)." },
       relation: "distinct",
+      fix_prompt: true,
       possible_reason: { misconception_id: "BC-MIS-02011", text: "the derivative of a product is taken as the product of the derivatives" }
+   },
+   {
+      id: FADED_EXAMPLE_ID,
+      type: "worked_example",
+      bands: ["low"],
+      delivery: delivery("step_reveal"),
+      problem: { text: "Let \\(k(x)=x^2(3x+1)\\). Find \\(k'(x)\\).", command_verb: "find" },
+      fade_from: 2,
+      steps: [
+         { cue: "The factors are \\(f=x^2\\) and \\(g=3x+1\\).", why: "Each factor needs its own derivative.", expression: ["Multiply", 2, "x"] },
+         {
+            cue: "Two factors are multiplied, so the rule is \\(f'g+fg'\\).",
+            why: "Each term keeps one factor and differentiates the other.",
+            expression: ["Add", ["Multiply", 2, "x", ["Add", ["Multiply", 3, "x"], 1]], ["Multiply", 3, ["Power", "x", 2]]]
+         },
+         { cue: "Multiply out and collect terms.", why: "Expanding first agrees.", expression: ["Add", ["Multiply", 9, ["Power", "x", 2]], ["Multiply", 2, "x"]] }
+      ],
+      answer: { form: "symbolic", mathjson: ["Add", ["Multiply", 9, ["Power", "x", 2]], ["Multiply", 2, "x"]] }
    },
    {
       id: "LSN-CON-02013#prq-BC-PRQ-00001",

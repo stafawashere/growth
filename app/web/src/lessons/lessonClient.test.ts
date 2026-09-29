@@ -2,6 +2,7 @@ import { afterEach, describe, expect, it, vi } from "vitest";
 
 import {
    answerLessonCheck,
+   answerLessonPrompt,
    postLessonEvent,
    postSessionLessonEvent,
    readLesson,
@@ -51,7 +52,7 @@ describe("the lessons client", () => {
    });
 
    it("posts library and session events and a check answer", async () => {
-      const body = { event: "section_viewed" as const, section_id: "LSN-CON-02013#s1", mode: "text", elapsed_ms: 900 };
+      const body = { event: "section_viewed" as const, section_id: "LSN-CON-02013#s1", mode: "text" as const, elapsed_ms: 900 };
 
       expect(await call(() => postLessonEvent("LSN-CON-02013", body))).toEqual({
          url: "/lessons/LSN-CON-02013/events",
@@ -69,6 +70,16 @@ describe("the lessons client", () => {
          url: "/lessons/LSN-CON-02013/checks/LSN-CON-02013%23chk-3/answers",
          method: "POST",
          body: { option_id: "C", elapsed_ms: 3000 }
+      });
+   });
+
+   it("posts a prompt answer to the prompts route, the section id encoded as a check id is", async () => {
+      const body = { answer: null, option_id: "B", elapsed_ms: 1200 };
+
+      expect(await call(() => answerLessonPrompt("LSN-CON-02013", "LSN-CON-02013#s1", body))).toEqual({
+         url: "/lessons/LSN-CON-02013/prompts/LSN-CON-02013%23s1/answers",
+         method: "POST",
+         body
       });
    });
 });

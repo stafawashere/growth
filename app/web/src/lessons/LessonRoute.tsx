@@ -1,7 +1,7 @@
 import { useCallback, useEffect, useRef } from "react";
 
-import { answerLessonCheck, postLessonEvent, readLessonPlan } from "../api/client";
-import type { LessonCheckAnswerBody, LessonEventBody, LessonPlanPayload } from "../api/types";
+import { answerLessonCheck, answerLessonPrompt, postLessonEvent, readLessonPlan } from "../api/client";
+import type { LessonCheckAnswerBody, LessonEventBody, LessonPlanPayload, LessonPromptAnswerBody } from "../api/types";
 import { LoadFailed, Loading } from "../status/LoadState";
 import { useLoad } from "../status/load";
 import { LessonReader } from "./LessonReader";
@@ -75,6 +75,7 @@ export function LessonRoute({ lessonId, conceptName, onLeave, backLabel }: Lesso
          onSkip={skip}
          onSectionViewed={(sectionId, mode, elapsedMs) => void post({ event: "section_viewed", section_id: sectionId, mode, elapsed_ms: elapsedMs })}
          onCheckAnswer={(checkId, body: LessonCheckAnswerBody) => answerLessonCheck(lessonId, checkId, body)}
+         onPromptAnswer={(sectionId, body: LessonPromptAnswerBody) => answerLessonPrompt(lessonId, sectionId, body)}
       />
    );
 }

@@ -7,16 +7,104 @@
  "snapshot_digest": "a6a8ec9d3f59ab8f712e33d30cc22fc64bf2c478fbe7312e3e3118d319c6a42f",
  "source_digest": "d2fc93d5f4f33ed594600e6c14aa78517a78973beee30b94ca625ae6a9560345",
  "read_minutes": {
-  "full": 4.5,
-  "brief": 2.7
+  "full": 4.6,
+  "brief": 3.0
  },
  "word_count": {
-  "full": 596,
-  "brief": 375
+  "full": 648,
+  "brief": 428
  },
  "sections": [
   {
    "id": "LSN-CON-02013#s1",
+   "type": "prediction",
+   "bands": [
+    "low",
+    "mid"
+   ],
+   "skills": [
+    "BC-SKL-02036"
+   ],
+   "sources": [
+    "BC-CON-02013",
+    "BC-ERR-02020"
+   ],
+   "evidence_tag": "inferred",
+   "stem": {
+    "text": "Let \\(h(x)=(x^2+3)\\cos x\\). Which expression is \\(h'(x)\\)?",
+    "command_verb": "predict"
+   },
+   "format": "mcq",
+   "options": [
+    {
+     "id": "A",
+     "label": "\\(2x(-\\sin x)\\)",
+     "is_key": false,
+     "value": [
+      "Multiply",
+      -2,
+      "x",
+      [
+       "Sin",
+       "x"
+      ]
+     ]
+    },
+    {
+     "id": "B",
+     "label": "\\(2x\\cos x-(x^2+3)\\sin x\\)",
+     "is_key": true,
+     "value": [
+      "Add",
+      [
+       "Multiply",
+       -1,
+       [
+        "Add",
+        3,
+        [
+         "Power",
+         "x",
+         2
+        ]
+       ],
+       [
+        "Sin",
+        "x"
+       ]
+      ],
+      [
+       "Multiply",
+       2,
+       "x",
+       [
+        "Cos",
+        "x"
+       ]
+      ]
+     ]
+    },
+    {
+     "id": "C",
+     "label": "\\(2x\\cos x\\)",
+     "is_key": false,
+     "value": [
+      "Multiply",
+      2,
+      "x",
+      [
+       "Cos",
+       "x"
+      ]
+     ]
+    }
+   ],
+   "resolution": {
+    "text": "The rule keeps two terms, each with one derivative: \\(2x\\cos x\\) and \\(-(x^2+3)\\sin x\\)."
+   }
+  },
+  {
+   "id": "LSN-CON-02013#s2",
    "type": "orientation",
    "bands": [
     "low",
@@ -42,7 +130,7 @@
    }
   },
   {
-   "id": "LSN-CON-02013#s2",
+   "id": "LSN-CON-02013#s3",
    "type": "key_ideas",
    "bands": [
     "low",
@@ -61,7 +149,7 @@
    "evidence_tag": "verified",
    "ek_id": "BC-EK-FUN-3B1",
    "depth": "core",
-   "text": "For a product \\(fg\\) the derivative is \\(f'g+fg'\\) (BC-EK-FUN-3B1, ced:67). It is not \\(f'g'\\), which expanding a simple product and differentiating term by term shows at once. A product of polynomials can also be expanded first and differentiated term by term, which is sometimes the shorter route.",
+   "text": "For a product \\(fg\\) the derivative is \\(f'g+fg'\\). It is not \\(f'g'\\), which expanding a simple product and differentiating term by term shows at once. A product of polynomials can also be expanded first and differentiated term by term, which is sometimes the shorter route.",
    "notation": "product rule",
    "quote": {
     "text": "Derivatives of products of differentiable functions can be found using the product rule.",
@@ -76,7 +164,7 @@
    }
   },
   {
-   "id": "LSN-CON-02013#s3",
+   "id": "LSN-CON-02013#s4",
    "type": "strategy",
    "bands": [
     "low",
@@ -93,11 +181,22 @@
    "archetype_id": "BC-QA-02008",
    "cue": "The stem asks for the derivative of the product or quotient, from a product or quotient of two differentiable expressions.",
    "method": "First written line: name the two factors and their derivatives, \\(f\\), \\(g\\), \\(f'\\), \\(g'\\).",
-   "rival": "The rival is multiplying the derivatives of the two factors (BC-ERR-02020).",
-   "separating_feature": "A product gives two terms, each holding exactly one derivative."
+   "rival": "The rival is multiplying the derivatives of the two factors.",
+   "separating_feature": "A product gives two terms, each holding exactly one derivative.",
+   "contrast": {
+    "this": {
+     "text": "Let \\(h(x)=x^3\\sin x\\). Find \\(h'(x)\\).",
+     "archetype_id": "BC-QA-02008"
+    },
+    "not_this": {
+     "text": "Let \\(h(x)=\\sin(x^3)\\). Find \\(h'(x)\\).",
+     "why_not": "The cube sits inside the sine, so the chain rule applies."
+    },
+    "feature": "Two factors multiplied, not one function inside another."
+   }
   },
   {
-   "id": "LSN-CON-02013#s4",
+   "id": "LSN-CON-02013#s5",
    "type": "strategy",
    "bands": [
     "low",
@@ -113,11 +212,11 @@
    "archetype_id": "BC-QA-02009",
    "cue": "The stem asks for the derivative value at the named input, from a table of two functions and their derivatives.",
    "method": "First written line: record the four supplied values at the named input, each labelled a value or a derivative.",
-   "rival": "The rival is placing a function value where the rule calls for a derivative value (BC-ERR-02024).",
+   "rival": "The rival is placing a function value where the rule calls for a derivative value.",
    "separating_feature": "Each of the four numbers is labelled before it is used."
   },
   {
-   "id": "LSN-CON-02013#s5",
+   "id": "LSN-CON-02013#s6",
    "type": "worked_example",
    "bands": [
     "low",
@@ -258,7 +357,7 @@
    }
   },
   {
-   "id": "LSN-CON-02013#s6",
+   "id": "LSN-CON-02013#s7",
    "type": "worked_example",
    "bands": [
     "low"
@@ -314,10 +413,11 @@
     "sources": [
      "BC-SKL-02037"
     ]
-   }
+   },
+   "fade_from": 3
   },
   {
-   "id": "LSN-CON-02013#s7",
+   "id": "LSN-CON-02013#s8",
    "type": "what_a_reader_scores",
    "bands": [
     "low",
@@ -331,7 +431,7 @@
     "BC-PT-99022"
    ],
    "evidence_tag": "verified",
-   "example_id": "LSN-CON-02013#s5",
+   "example_id": "LSN-CON-02013#s6",
    "lines": [
     {
      "point_type_id": "BC-PT-99022",
@@ -340,7 +440,7 @@
    ]
   },
   {
-   "id": "LSN-CON-02013#s8",
+   "id": "LSN-CON-02013#s9",
    "type": "what_a_reader_scores",
    "bands": [
     "low"
@@ -352,7 +452,7 @@
     "BC-PT-99022"
    ],
    "evidence_tag": "verified",
-   "example_id": "LSN-CON-02013#s6",
+   "example_id": "LSN-CON-02013#s7",
    "lines": [
     {
      "point_type_id": "BC-PT-99022",
@@ -433,7 +533,8 @@
     "mode": "step_reveal",
     "reason": "rule 1",
     "sources": []
-   }
+   },
+   "fix_prompt": true
   },
   {
    "id": "LSN-CON-02013#err-BC-ERR-02023",
@@ -481,7 +582,8 @@
     "mode": "step_reveal",
     "reason": "rule 1",
     "sources": []
-   }
+   },
+   "fix_prompt": false
   },
   {
    "id": "LSN-CON-02013#err-BC-ERR-02024",
@@ -518,7 +620,8 @@
     "mode": "step_reveal",
     "reason": "rule 1",
     "sources": []
-   }
+   },
+   "fix_prompt": true
   }
  ],
  "checks": [
@@ -538,7 +641,7 @@
     "constant": 3,
     "trig": "cos"
    },
-   "completes": "LSN-CON-02013#s5",
+   "completes": "LSN-CON-02013#s6",
    "stem": {
     "text": "The product rule gives \\(h'(x)=(2x)(\\cos x)+(x^2+3)(-\\sin x)\\). Write \\(h'(x)\\) with the double sign cleared.",
     "command_verb": "write"
@@ -822,11 +925,11 @@
   }
  ],
  "refresher": [
-  "LSN-CON-02013#s2",
+  "LSN-CON-02013#s3",
   "LSN-CON-02013#err-BC-ERR-02020",
   "LSN-CON-02013#err-BC-ERR-02023",
   "LSN-CON-02013#err-BC-ERR-02024",
-  "LSN-CON-02013#s5"
+  "LSN-CON-02013#s6"
  ],
  "provenance": {
   "author": "tools/lesson_transcribe.py",
@@ -835,5 +938,6 @@
   "signed_off_by": null,
   "signed_off_at": null,
   "not_human": true
- }
+ },
+ "no_figure_reason": "The concept is a symbolic rule whose givens are formulas or four supplied values, so no figure-shaped content exists for it."
 }

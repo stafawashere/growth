@@ -8,7 +8,8 @@ commentary an author reads; the machine record is what the checker computes over
 Rules, each named in RULES and each with a red fixture in tests/fixtures/lesson_designs/:
 front_matter, sections, machine_record, manifest_id, referential, citations, research_lines,
 caps, band_caps, style, prediction, quotes, steps, keys, errors, distractor_paths, reader_scores,
-draw_exclusion, decision_stems, inferred. Directory-level: manifest coverage.
+draw_exclusion, decision_stems, inferred, delivery, prediction_section, contrast, fade, fix_prompt,
+figure_presence, served_text. Directory-level: manifest coverage.
 
 Usage: python3 tools/check_lesson_designs.py [paths...]      default docs/lessons
        python3 tools/check_lesson_designs.py --manifest       write docs/lessons/progress.json
@@ -31,7 +32,7 @@ from sympy.parsing.sympy_parser import convert_xor, parse_expr, standard_transfo
 from app.content.loader import load_snapshot
 from app.items import verify
 from app.items.distractor_paths import error_ids_for_skills
-from app.lessons import constants
+from app.lessons import constants, plan
 from app.lessons.confusable import confusable_sets
 from app.lessons.source import CACHE_TEXT_DIR, authoring_bundle, reader_checks
 from tools import check_lessons
@@ -47,6 +48,7 @@ STATUSES = ("todo", "designed", "checked", "resolved", "signed_off")
 FRONT_MATTER_KEYS = ("title", "research_date", "status", "purpose")
 
 CONCEPT_SECTIONS = (
+   "Prediction",
    "Orientation",
    "Key ideas",
    "Recognition",
@@ -774,6 +776,22 @@ def rule_caps(design, context):
       if not 2 <= len(stems) <= 4:
          messages.append(f"{len(stems)} decision stems, allowed 2 to 4")
 
+   prediction = record.get("prediction")
+
+   if isinstance(prediction, dict):
+      messages.extend(prediction_cap_messages(prediction))
+
+   for block in strategies:
+      contrast = block.get("contrast")
+
+      if isinstance(contrast, dict):
+         messages.extend(contrast_cap_messages(block.get("id"), contrast))
+
+   no_figure_reason = record.get("no_figure_reason")
+
+   if no_figure_reason is not None:
+      messages.extend(over_cap("no_figure_reason", no_figure_reason, check_lessons.NO_FIGURE_REASON_WORDS_MAX))
+
    return messages
 
 
@@ -815,10 +833,33 @@ def reader_words(record, example_id):
    return total
 
 
+def prediction_words(prediction):
+   total = words_in((prediction.get("stem") or {}).get("text", ""))
+   total += words_in(prediction.get("resolution") or "")
+
+   for option in prediction.get("options") or []:
+      total += words_in(option.get("label", ""))
+
+   return total
+
+
+def contrast_words(contrast):
+   this = contrast.get("this") or {}
+   not_this = contrast.get("not_this") or {}
+   texts = (this.get("text", ""), not_this.get("text", ""), not_this.get("why_not", ""), contrast.get("feature", ""))
+
+   return sum(words_in(text) for text in texts)
+
+
 def band_words(record, band):
-   """The words the band's plan serves, per plan 15's band table."""
+   """The words the band's plan serves, per plan 15's band table and the prediction and contrast
+   of the redesign, both served in both bands."""
    is_low = band == "low"
    total = words_in((record.get("orientation") or {}).get("text", ""))
+   prediction = record.get("prediction")
+
+   if isinstance(prediction, dict):
+      total += prediction_words(prediction)
 
    for block in record.get("key_ideas") or []:
       is_served = is_low or block.get("depth", "core") == "core"
@@ -830,6 +871,12 @@ def band_words(record, band):
    strategies = record.get("strategy") or []
    served_strategies = strategies if is_low else strategies[:1]
    total += sum(strategy_words(block) for block in served_strategies)
+
+   for block in served_strategies:
+      contrast = block.get("contrast")
+
+      if isinstance(contrast, dict):
+         total += contrast_words(contrast)
 
    examples = record.get("worked_examples") or []
    served_examples = examples if is_low else examples[:1]
@@ -1456,6 +1503,16 @@ def served_blocks(record):
    return blocks
 
 
+def optional_served_blocks(record):
+   """Blocks that may name a delivery and need not: the prediction."""
+   prediction = record.get("prediction")
+
+   if isinstance(prediction, dict):
+      return {prediction.get("id", "prediction")}
+
+   return set()
+
+
 def labels_of(node):
    found = []
 
@@ -1483,6 +1540,7 @@ def rule_delivery(design, context):
       return ["machine record lacks delivery"]
 
    expected = served_blocks(record)
+   optional = optional_served_blocks(record)
    seen = defaultdict(int)
 
    for entry in entries:
@@ -1490,7 +1548,14 @@ def rule_delivery(design, context):
       mode = entry.get("mode")
       seen[block] += 1
 
-      if block not in expected:
+      is_optional = block in optional
+      is_repeated_optional = is_optional and seen[block] > 1
+      is_unknown = not is_optional and block not in expected
+
+      if is_repeated_optional:
+         messages.append(f"{block} has {seen[block]} delivery entries, allows at most 1")
+
+      if is_unknown:
          messages.append(f"delivery names {block!r}, which is not a served block")
          continue
 
@@ -1498,7 +1563,7 @@ def rule_delivery(design, context):
          messages.append(f"{block} mode {mode!r} is not one of {DELIVERY_MODES}")
          continue
 
-      fixed = expected[block]
+      fixed = expected.get(block)
 
       if fixed is not None and mode != fixed:
          messages.append(f"{block} must be {fixed}, not {mode}")
@@ -1541,6 +1606,327 @@ def rule_delivery(design, context):
    return messages
 
 
+def over_cap(label, text, cap):
+   return check_lessons.over_cap(label, text, cap)
+
+
+def prediction_cap_messages(prediction):
+   label = prediction.get("id", "prediction")
+   stem = (prediction.get("stem") or {}).get("text", "")
+   messages = over_cap(f"{label} stem", stem, check_lessons.PREDICTION_STEM_WORDS_MAX)
+   messages += over_cap(f"{label} resolution", prediction.get("resolution") or "", check_lessons.PREDICTION_RESOLUTION_WORDS_MAX)
+
+   for option in prediction.get("options") or []:
+      messages += over_cap(f"{label} option {option.get('id')} label", option.get("label", ""), check_lessons.PREDICTION_OPTION_WORDS_MAX)
+
+   return messages
+
+
+def contrast_cap_messages(block_id, contrast):
+   this = contrast.get("this") or {}
+   not_this = contrast.get("not_this") or {}
+   messages = over_cap(f"{block_id} contrast this", this.get("text", ""), check_lessons.CONTRAST_STEM_WORDS_MAX)
+   messages += over_cap(f"{block_id} contrast not_this", not_this.get("text", ""), check_lessons.CONTRAST_STEM_WORDS_MAX)
+   messages += over_cap(f"{block_id} contrast why_not", not_this.get("why_not", ""), check_lessons.CONTRAST_WHY_NOT_WORDS_MAX)
+   messages += over_cap(f"{block_id} contrast feature", contrast.get("feature", ""), check_lessons.CONTRAST_FEATURE_WORDS_MAX)
+
+   return messages
+
+
+def is_concept_record(record):
+   return record.get("kind") == "concept"
+
+
+def rule_prediction_section(design, context):
+   """Mirrors lint_prediction_section: one prediction on a concept lesson, none elsewhere, 2 to 4
+   distinct short options with one key, or a key taken from worked example 1."""
+   record = design.record or {}
+   prediction = record.get("prediction")
+   has_prediction = prediction is not None
+
+   if not is_concept_record(record):
+      return [f"a {record.get('kind')} lesson carries no prediction"] if has_prediction else []
+
+   if not has_prediction:
+      return ["a concept lesson carries exactly 1 prediction, and the machine record has none"]
+
+   messages = prediction_cap_messages(prediction)
+   label = prediction.get("id", "prediction")
+   is_mcq = prediction.get("format") == "mcq"
+
+   if is_mcq:
+      messages.extend(prediction_option_messages(label, prediction))
+   else:
+      examples = record.get("worked_examples") or []
+      messages.extend(prediction_key_messages(label, prediction, examples[0] if examples else None))
+
+   return messages
+
+
+def prediction_option_messages(label, prediction):
+   options = prediction.get("options") or []
+   messages = []
+   option_count_ok = check_lessons.PREDICTION_OPTIONS_MIN <= len(options) <= check_lessons.PREDICTION_OPTIONS_MAX
+
+   if not option_count_ok:
+      messages.append(f"{label} has {len(options)} options, and a prediction holds {check_lessons.PREDICTION_OPTIONS_MIN} to {check_lessons.PREDICTION_OPTIONS_MAX}")
+
+   keys = [option for option in options if option.get("is_key")]
+
+   if len(keys) != 1:
+      messages.append(f"{label} has {len(keys)} key options, and a prediction holds exactly 1")
+
+   labels = [normalise_text(option.get("label", "")) for option in options]
+   repeated = [option.get("label") for option, text in zip(options, labels) if labels.count(text) > 1]
+
+   if repeated:
+      messages.append(f"{label} repeats the option label {repeated[0]!r}")
+
+   if prediction.get("key") is not None:
+      messages.append(f"{label} is multiple choice and carries a key")
+
+   return messages
+
+
+def prediction_key_messages(label, prediction, first_example):
+   key = prediction.get("key")
+   messages = []
+
+   if prediction.get("options"):
+      messages.append(f"{label} is short answer and carries options")
+
+   if key is None:
+      return messages + [f"{label} is short answer and carries no key"]
+
+   if key.get("form") == "statement":
+      return messages
+
+   if first_example is None:
+      return messages + [f"{label} has no worked example 1 to take its key from"]
+
+   try:
+      key_value = parse_expression(key.get("expr"))
+   except Exception:
+      return messages + [f"{label} key does not parse: {key.get('expr')!r}"]
+
+   candidates = [(first_example.get("answer") or {}).get("expr")]
+   candidates += [step.get("expr") for step in first_example.get("steps") or [] if step.get("expr") is not None]
+   is_taken_from_example = any(key_equals(key_value, candidate) for candidate in candidates)
+
+   if not is_taken_from_example:
+      messages.append(f"{label} key is neither the answer of {first_example.get('id')} nor one of its valued steps")
+
+   return messages
+
+
+def key_equals(key_value, candidate):
+   if candidate is None:
+      return False
+
+   try:
+      return equivalent(key_value, parse_expression(candidate))
+   except Exception:
+      return False
+
+
+def rule_contrast(design, context):
+   """Mirrors lint_contrast over the machine record's strategy blocks."""
+   record = design.record or {}
+
+   if not is_concept_record(record):
+      return []
+
+   messages = []
+
+   for position, block in enumerate(record.get("strategy") or []):
+      block_id = block.get("id")
+      contrast = block.get("contrast")
+      is_first_block = position == 0
+
+      if is_first_block and contrast is None:
+         messages.append(f"{block_id} is the first strategy block and carries no contrast")
+
+      if not is_first_block and contrast is not None:
+         messages.append(f"{block_id} carries a contrast, which only the first strategy block holds")
+
+      if contrast is not None:
+         messages.extend(contrast_messages(block, contrast))
+
+   return messages
+
+
+def contrast_messages(block, contrast):
+   block_id = block.get("id")
+   this = contrast.get("this") or {}
+   not_this = contrast.get("not_this") or {}
+   messages = contrast_cap_messages(block_id, contrast)
+   is_same_stem = check_lessons.normalise_whitespace(this.get("text")) == check_lessons.normalise_whitespace(not_this.get("text"))
+
+   if is_same_stem:
+      messages.append(f"{block_id} contrast this and not_this are the same stem")
+
+   if this.get("archetype_id") != block.get("archetype_id"):
+      messages.append(f"{block_id} contrast this names {this.get('archetype_id')}, and the block is {block.get('archetype_id')}")
+
+   for text in (this.get("text"), not_this.get("text"), not_this.get("why_not"), contrast.get("feature")):
+      for found in check_lessons.served_problems(text):
+         messages.append(f"{block_id} contrast carries {found!r}")
+
+   return messages
+
+
+def rule_fade(design, context):
+   """Mirrors lint_fade over the machine record's worked examples."""
+   record = design.record or {}
+   messages = []
+
+   for position, example in enumerate(record.get("worked_examples") or []):
+      fade_from = example.get("fade_from")
+      is_second = position == 1
+
+      if is_second and fade_from is None and is_concept_record(record):
+         messages.append(f"{example.get('id')} is worked example 2 and carries no fade_from")
+
+      if fade_from is not None:
+         messages.extend(fade_messages(example, fade_from))
+
+   return messages
+
+
+def fade_messages(example, fade_from):
+   example_id = example.get("id")
+   steps = example.get("steps") or []
+   bands = example.get("bands") or ["low", "mid"]
+   messages = []
+   is_integer = isinstance(fade_from, int) and not isinstance(fade_from, bool)
+
+   if not is_integer:
+      return [f"{example_id} fade_from {fade_from!r} is not a step number"]
+
+   if bands != ["low"]:
+      messages.append(f"{example_id} fades from step {fade_from} but serves {bands}, and only a low-band example fades")
+
+   is_inside_steps = 2 <= fade_from <= len(steps)
+
+   if not is_inside_steps:
+      messages.append(f"{example_id} fade_from {fade_from} is outside 2 to {len(steps)}")
+
+   shows_a_value = any(step.get("expr") is not None for step in steps[:fade_from - 1])
+
+   if not shows_a_value:
+      messages.append(f"{example_id} shows no valued step before fade_from {fade_from}")
+
+   if not example.get("answer"):
+      messages.append(f"{example_id} fades and has no answer to grade")
+
+   return messages
+
+
+def rule_fix_prompt(design, context):
+   """Mirrors lint_fix_prompt over the machine record's error blocks."""
+   record = design.record or {}
+   messages = []
+
+   for block in record.get("common_errors") or []:
+      label = f"err-{block.get('error_id')}"
+      fix_prompt = block.get("fix_prompt")
+      is_missing = fix_prompt is None
+
+      if is_missing and is_concept_record(record):
+         messages.append(f"{label} carries no fix_prompt")
+
+      if is_missing:
+         continue
+
+      expected = block.get("relation") == "distinct"
+
+      if fix_prompt is not expected:
+         messages.append(f"{label} fix_prompt is {str(fix_prompt).lower()}, and an error marked {block.get('relation')} needs {str(expected).lower()}")
+
+   return messages
+
+
+def rule_figure_presence(design, context):
+   """Mirrors lint_figure_presence: a drawn delivery entry, or no_figure_reason, never both."""
+   record = design.record or {}
+   drawn = [entry.get("block") for entry in record.get("delivery") or [] if entry.get("mode") in DRAWN_MODES]
+   reason = record.get("no_figure_reason")
+   has_reason = reason is not None
+   messages = []
+
+   if drawn and has_reason:
+      messages.append(f"the lesson draws {drawn[0]} and carries no_figure_reason")
+
+   needs_reason = is_concept_record(record) and not drawn and not has_reason
+
+   if needs_reason:
+      messages.append("a concept lesson with no drawn block must carry no_figure_reason")
+
+   if has_reason:
+      messages.extend(over_cap("no_figure_reason", reason, check_lessons.NO_FIGURE_REASON_WORDS_MAX))
+
+   return messages
+
+
+SERVED_DESIGN_FIELDS = (
+   ("orientation", ("text",)),
+   ("key_ideas[]", ("text", "notation")),
+   (
+      "strategy[]",
+      (
+         "cue",
+         "method",
+         "rival",
+         "separating_feature",
+         "contrast.this.text",
+         "contrast.not_this.text",
+         "contrast.not_this.why_not",
+         "contrast.feature",
+      ),
+   ),
+   ("prediction", ("stem.text", "options[].label", "resolution")),
+   ("representations", ("text",)),
+   ("prerequisite_bridges[]", ("text",)),
+   ("worked_examples[]", ("problem.text", "steps[].cue", "steps[].why")),
+   ("checks[]", ("stem.text",)),
+)
+
+
+def served_design_blocks(record, block_path):
+   is_list = block_path.endswith("[]")
+   key = block_path[:-2] if is_list else block_path
+   value = record.get(key)
+
+   if value is None:
+      return []
+
+   return list(value) if is_list else [value]
+
+
+def rule_served_text(design, context):
+   """Mirrors lint_served_text over the machine record's served fields."""
+   record = design.record or {}
+   messages = []
+
+   for block_path, fields in SERVED_DESIGN_FIELDS:
+      for block in served_design_blocks(record, block_path):
+         if not isinstance(block, dict):
+            continue
+
+         label = block.get("id") or block_path.rstrip("[]")
+
+         for path in fields:
+            for text in plan.prose_values(block, path):
+               for found in check_lessons.served_problems(text):
+                  messages.append(f"{label} {path} carries {found!r}")
+
+   for block in record.get("strategy") or []:
+      if check_lessons.starts_with_reader_label(block.get("method")):
+         messages.append(f"{block.get('id')} method starts with the reader's label 'First line:'")
+
+   return messages
+
+
 RULES = {
    "front_matter": rule_front_matter,
    "sections": rule_sections,
@@ -1563,6 +1949,12 @@ RULES = {
    "decision_stems": rule_decision_stems,
    "inferred": rule_inferred,
    "delivery": rule_delivery,
+   "prediction_section": rule_prediction_section,
+   "contrast": rule_contrast,
+   "fade": rule_fade,
+   "fix_prompt": rule_fix_prompt,
+   "figure_presence": rule_figure_presence,
+   "served_text": rule_served_text,
 }
 STRUCTURAL = ("front_matter", "sections", "machine_record")
 

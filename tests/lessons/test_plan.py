@@ -6,7 +6,7 @@ import itertools
 import pytest
 
 from app.lessons import constants
-from app.lessons.plan import REASONS, plan_lesson
+from app.lessons.plan import REASONS, band_words, plan_lesson
 from tests.lessons.conftest import load_fixture
 
 ERROR_SETS = ((), ("BC-ERR-02020",), ("BC-ERR-02024", "BC-ERR-02020"), ("BC-ERR-99999",))
@@ -71,16 +71,17 @@ def test_no_plan_exceeds_its_band_caps(hand_authored):
 
 def test_an_over_long_lesson_is_trimmed_to_the_cap_and_keeps_its_teaching(hand_authored):
    bloated = copy.deepcopy(hand_authored)
-   second_example = next(section for section in bloated["sections"] if section["id"].endswith("#s6"))
+   second_example = next(section for section in bloated["sections"] if section["id"].endswith("#s7"))
    second_example["steps"][0]["why"] = "word " * 800
 
    served = plan_lesson(bloated, "low", "first_contact")
    kept = section_ids(served)
 
    assert served.words <= constants.LESSON_WORDS_FULL_MAX
-   assert "LSN-CON-02013#s6" not in kept
-   assert "LSN-CON-02013#s2" in kept
-   assert "LSN-CON-02013#s5" in kept
+   assert "LSN-CON-02013#s7" not in kept
+   assert "LSN-CON-02013#s1" in kept
+   assert "LSN-CON-02013#s3" in kept
+   assert "LSN-CON-02013#s6" in kept
 
 
 def test_low_band_serves_the_full_form_in_table_order(hand_authored):
@@ -88,16 +89,17 @@ def test_low_band_serves_the_full_form_in_table_order(hand_authored):
    kinds = [ref.type for ref in served.sections]
 
    assert kinds == [
+      "prediction",
       "orientation",
       "key_ideas",
       "strategy",
       "strategy",
       "worked_example",
       "what_a_reader_scores",
-      "common_error",
-      "common_error",
-      "common_error",
       "check",
+      "common_error",
+      "common_error",
+      "common_error",
       "worked_example",
       "what_a_reader_scores",
       "check",
@@ -111,8 +113,18 @@ def test_mid_band_serves_the_brief_form(hand_authored):
    served = plan_lesson(hand_authored, "mid", "first_contact")
    kinds = [ref.type for ref in served.sections]
 
-   assert kinds.count("worked_example") == 1
-   assert kinds.count("strategy") == 1
+   assert kinds == [
+      "prediction",
+      "orientation",
+      "key_ideas",
+      "strategy",
+      "worked_example",
+      "what_a_reader_scores",
+      "check",
+      "common_error",
+      "common_error",
+      "check",
+   ]
    assert kinds.count("common_error") == constants.MID_ERRORS
    assert len(served.checks) == constants.LESSON_CHECKS_MIN
    assert served.minutes == hand_authored["read_minutes"]["brief"]
@@ -142,7 +154,7 @@ def test_feedback_returns_only_the_anchor_of_the_named_error(hand_authored):
 def test_t1_serves_the_named_error_before_the_core_key_ideas(hand_authored):
    served = plan_lesson(hand_authored, "low", "T1", error_ids=("BC-ERR-02024",))
 
-   assert section_ids(served) == ["LSN-CON-02013#err-BC-ERR-02024", "LSN-CON-02013#s2"]
+   assert section_ids(served) == ["LSN-CON-02013#err-BC-ERR-02024", "LSN-CON-02013#s3"]
    assert served.anchors == ("LSN-CON-02013#err-BC-ERR-02024",)
 
 
@@ -150,7 +162,7 @@ def test_t2_ends_with_example_one_collapsed(hand_authored):
    served = plan_lesson(hand_authored, "low", "T2")
    last = served.sections[-1]
 
-   assert last.id == "LSN-CON-02013#s5"
+   assert last.id == "LSN-CON-02013#s6"
    assert last.form == "steps_only"
    assert served.sections[0].type == "key_ideas"
 
@@ -158,7 +170,7 @@ def test_t2_ends_with_example_one_collapsed(hand_authored):
 def test_t3_without_a_bridge_or_error_falls_back_to_the_core_key_ideas(hand_authored):
    served = plan_lesson(hand_authored, "low", "T3", prerequisite_ids=("BC-PRQ-06002",))
 
-   assert section_ids(served) == ["LSN-CON-02013#s2"]
+   assert section_ids(served) == ["LSN-CON-02013#s3"]
 
 
 def test_a_second_t4_inside_the_gap_serves_only_the_refresher_subset(hand_authored):
@@ -176,3 +188,79 @@ def test_a_second_t4_inside_the_gap_serves_only_the_refresher_subset(hand_author
 def test_an_unknown_reason_is_refused(hand_authored):
    with pytest.raises(ValueError):
       plan_lesson(hand_authored, "low", "T9")
+
+
+@pytest.mark.parametrize("band", ("low", "mid"))
+def test_the_prediction_opens_both_bands(hand_authored, band):
+   served = plan_lesson(hand_authored, band, "first_contact")
+
+   assert served.sections[0].id == "LSN-CON-02013#s1"
+   assert served.sections[0].type == "prediction"
+
+
+def test_check_one_follows_example_one_and_its_scoring_lines(hand_authored):
+   served = plan_lesson(hand_authored, "low", "first_contact")
+   ids = section_ids(served)
+   scores_position = ids.index("LSN-CON-02013#s8")
+
+   assert ids[scores_position - 1] == "LSN-CON-02013#s6"
+   assert ids[scores_position + 1] == "LSN-CON-02013#chk-1"
+   assert ids[scores_position + 2] == "LSN-CON-02013#err-BC-ERR-02020"
+
+
+@pytest.mark.parametrize("band", ("low", "mid"))
+def test_the_word_fit_never_drops_the_prediction(hand_authored, band):
+   bloated = copy.deepcopy(hand_authored)
+   orientation = next(section for section in bloated["sections"] if section["type"] == "orientation")
+   orientation["text"] = "word " * 1000
+
+   served = plan_lesson(bloated, band, "first_contact")
+   types = [ref.type for ref in served.sections]
+
+   assert "worked_example" in types
+   assert "strategy" in types
+   assert types[0] == "prediction"
+
+
+def test_the_prediction_words_count_in_both_bands(hand_authored):
+   without = copy.deepcopy(hand_authored)
+   without["sections"] = [section for section in without["sections"] if section["type"] != "prediction"]
+   prediction = hand_authored["sections"][0]
+   prediction_words = len(prediction["stem"]["text"].split()) + len(prediction["resolution"]["text"].split())
+   prediction_words += sum(len(option["label"].split()) for option in prediction["options"])
+
+   for band in ("low", "mid"):
+      assert band_words(hand_authored, band) - band_words(without, band) == prediction_words
+
+
+def test_the_contrast_words_count_in_both_bands(hand_authored):
+   without = copy.deepcopy(hand_authored)
+   strategy = next(section for section in without["sections"] if section["type"] == "strategy")
+   contrast = strategy.pop("contrast")
+   texts = (contrast["this"]["text"], contrast["not_this"]["text"], contrast["not_this"]["why_not"], contrast["feature"])
+   contrast_words = sum(len(text.split()) for text in texts)
+
+   for band in ("low", "mid"):
+      assert band_words(hand_authored, band) - band_words(without, band) == contrast_words
+
+
+def test_no_refresher_read_again_or_feedback_carries_the_prediction(hand_authored):
+   not_first_contact = [reason for reason in REASONS if reason != "first_contact"]
+
+   for band, reason, errors, prerequisites, state in every_plan_input():
+      if reason not in not_first_contact:
+         continue
+
+      served = plan_lesson(hand_authored, band, reason, errors, prerequisites, state)
+      types = [ref.type for ref in served.sections]
+
+      assert "prediction" not in types, (band, reason, errors, prerequisites, state)
+
+
+def test_a_refresher_pointer_to_the_prediction_is_not_served(hand_authored):
+   pointed = copy.deepcopy(hand_authored)
+   pointed["refresher"].insert(0, "LSN-CON-02013#s1")
+
+   served = plan_lesson(pointed, "low", "T5")
+
+   assert "LSN-CON-02013#s1" not in section_ids(served)

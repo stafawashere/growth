@@ -2642,6 +2642,19 @@ h3.section-header {
    box-shadow: 0 0 0 var(--growth-stroke-hairline) var(--growth-accent-tint-4);
 }
 
+/* The Recognise screen's contrast pair: side by side, stacked at 600 px and under. */
+
+.lesson-contrast-pair {
+   display: flex;
+   gap: var(--growth-space-16) var(--growth-space-24);
+}
+
+.lesson-contrast-pair > * {
+   flex: auto;
+   flex-basis: 0;
+   min-width: 0;
+}
+
 .lesson-strategy {
    display: flex;
    flex-direction: column;
@@ -2858,6 +2871,10 @@ h3.section-header {
 @media (max-width: 600px) {
    .app-bar {
       padding-inline: var(--growth-space-16);
+   }
+
+   .lesson-contrast-pair {
+      flex-direction: column;
    }
 
    .app-page {

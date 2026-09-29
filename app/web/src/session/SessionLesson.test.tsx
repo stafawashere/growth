@@ -2,7 +2,7 @@ import { afterEach, beforeEach, describe, expect, it, vi } from "vitest";
 import { cleanup, fireEvent, render, screen, waitFor } from "@testing-library/react";
 import type { LessonMarks, ServedItem, ServedLesson, SessionPayload } from "../api/types";
 import * as client from "../api/client";
-import { LESSON, planFor } from "../lessons/fixtures";
+import { FADED_EXAMPLE_ID, LESSON, PREDICTION_ID, planFor } from "../lessons/fixtures";
 import { END_OF_SESSION_LESSON } from "../lessons/LessonReader";
 import { REDUCED_MOTION_QUERY } from "../styles/motion";
 import { SessionScreen } from "./SessionScreen";
@@ -123,6 +123,10 @@ describe("SessionScreen lesson state", () => {
       expect(screen.queryByText(exampleItem.stem)).toBeNull();
 
       for (let part = 0; part < SECTIONS.length; part += 1) {
+         if (screen.queryByTestId("lesson-show-all-steps") !== null) {
+            fireEvent.click(screen.getByTestId("lesson-show-all-steps"));
+         }
+
          fireEvent.click(screen.getByTestId("lesson-next"));
       }
 
@@ -195,6 +199,10 @@ describe("SessionScreen lesson state", () => {
       }
 
       for (let part = 0; part < SECTIONS.length; part += 1) {
+         if (screen.queryByTestId("lesson-show-all-steps") !== null) {
+            pressEnterOn("lesson-show-all-steps");
+         }
+
          pressEnterOn("lesson-next");
       }
 
@@ -222,5 +230,21 @@ describe("SessionScreen lesson state", () => {
       fireEvent.click(screen.getByTestId("lesson-skip"));
 
       await waitFor(() => expect(screen.getByText(exampleItem.stem)).toBeTruthy());
+   });
+
+   it("sends the reader's prompt answers to the prompts route and posts the prediction mode", async () => {
+      serveLessonThenItem({ ...servedLesson(), plan: planFor([PREDICTION_ID, FADED_EXAMPLE_ID]) });
+      mocked.answerLessonPrompt.mockImplementation(async (_lessonId, sectionId) => ({ correct: true, section_id: sectionId, kind: "prediction", resolution: null }));
+      render(<SessionScreen resumeSessionId={null} />);
+
+      await screen.findByTestId("lesson-prediction");
+      fireEvent.click(document.querySelector("input[type='radio'][value='B']")!);
+      fireEvent.click(screen.getByTestId("lesson-prediction-commit"));
+      await screen.findByText("Committed.");
+      fireEvent.click(screen.getByTestId("lesson-next"));
+
+      expect(mocked.answerLessonPrompt).toHaveBeenCalledWith(LESSON.id, PREDICTION_ID, expect.objectContaining({ option_id: "B" }));
+      await waitFor(() => expect(lessonEvents().some((event) => event.section_id === PREDICTION_ID && event.mode === "prediction")).toBe(true));
+      expect(screen.getByTestId("lesson-fade-answer")).toBeTruthy();
    });
 });

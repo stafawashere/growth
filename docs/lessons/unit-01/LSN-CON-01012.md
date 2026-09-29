@@ -186,7 +186,7 @@ BC-QA-01007 is `no_calculator`, a single MCQ: Section I Part A, 2.14 minutes (re
    "archetype_id": "BC-QA-01007",
    "cue": "Classify each discontinuity of a rule or graph, with a reason.",
    "method": "Locate the inputs where the function is undefined.",
-   "rival": "Rival: naming an asymptote at a factor that divides out.",
+   "rival": "Naming an asymptote at a factor that divides out.",
    "separating_feature": "Whether the denominator factor cancels.",
    "sources": [
     "BC-QA-01007"
@@ -209,7 +209,7 @@ BC-QA-01007 is `no_calculator`, a single MCQ: Section I Part A, 2.14 minutes (re
    "archetype_id": "BC-QA-01006",
    "cue": "Determine whether a piecewise function is continuous at a named input, and justify.",
    "method": "Evaluate the function at the named input.",
-   "rival": "Rival: continuity from matching one sided limits alone.",
+   "rival": "Continuity from matching one sided limits alone.",
    "separating_feature": "A continuity verdict needs the value; a type needs only the one sided limits.",
    "sources": [
     "BC-QA-01006"
@@ -221,7 +221,7 @@ BC-QA-01007 is `no_calculator`, a single MCQ: Section I Part A, 2.14 minutes (re
    "archetype_id": "BC-QA-01009",
    "cue": "Find the vertical asymptotes and describe the behaviour near each.",
    "method": "Factor numerator and denominator.",
-   "rival": "Rival: one two sided infinite limit where the sides differ in sign.",
+   "rival": "One two sided infinite limit where the sides differ in sign.",
    "separating_feature": "The sign of the reduced quotient on each side of each remaining zero.",
    "sources": [
     "BC-QA-01009"
@@ -926,8 +926,8 @@ BC-QA-01007 is `no_calculator`, a single MCQ: Section I Part A, 2.14 minutes (re
   "brief": 2.97
  },
  "word_count": {
-  "full": 730,
-  "brief": 445
+  "full": 727,
+  "brief": 444
  }
 }
 ```

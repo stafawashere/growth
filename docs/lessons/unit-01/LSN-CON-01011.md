@@ -181,7 +181,7 @@ Non-text choices are [inferred], settled by the modality A/B.
    "archetype_id": "BC-QA-01013",
    "cue": "A limit fact in one form; which candidate matches?",
    "method": "Read the limit behaviour from the supplied representation.",
-   "rival": "Rival: swapping vertical asymptote and end behaviour.",
+   "rival": "Swapping vertical asymptote and end behaviour.",
    "separating_feature": "Infinity in the value, or under the arrow.",
    "sources": [
     "BC-QA-01013"
@@ -783,8 +783,8 @@ Non-text choices are [inferred], settled by the modality A/B.
   "brief": 2.99
  },
  "word_count": {
-  "full": 628,
-  "brief": 448
+  "full": 627,
+  "brief": 447
  }
 }
 ```

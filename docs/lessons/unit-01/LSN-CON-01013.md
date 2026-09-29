@@ -169,7 +169,7 @@ BC-QA-01006 is `no_calculator`, one FRQ part or a single MCQ; the MCQ shape is S
    "archetype_id": "BC-QA-01006",
    "cue": "Is the function continuous at the named input? Justify.",
    "method": "Evaluate the function at the named input.",
-   "rival": "Rival: continuity from matching one sided limits alone.",
+   "rival": "Continuity from matching one sided limits alone.",
    "separating_feature": "Agreeing limits settle condition two only.",
    "sources": [
     "BC-QA-01006"
@@ -798,8 +798,8 @@ BC-QA-01006 is `no_calculator`, one FRQ part or a single MCQ; the MCQ shape is S
   "brief": 2.99
  },
  "word_count": {
-  "full": 630,
-  "brief": 448
+  "full": 629,
+  "brief": 447
  }
 }
 ```

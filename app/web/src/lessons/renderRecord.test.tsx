@@ -1,5 +1,5 @@
-import { readFileSync } from "node:fs";
-import { resolve } from "node:path";
+import { readdirSync, readFileSync } from "node:fs";
+import { join, resolve } from "node:path";
 
 import { act, cleanup, render, screen } from "@testing-library/react";
 import { afterEach, beforeAll, beforeEach, describe, expect, it, vi } from "vitest";
@@ -33,6 +33,10 @@ import { DRAWN_MODES } from "./LessonSection";
    walk runs over the reader's own fixture, which carries one block of every drawn mode. */
 
 const RECORD_PATH = process.env.LESSON_RECORD ?? "../../content/lessons/LSN-CON-02013.json";
+
+/* LESSON_RECORD_DIR, relative to app/web like LESSON_RECORD, walks every record in a directory in
+   one run instead of one record per run. */
+const RECORD_DIR = process.env.LESSON_RECORD_DIR;
 
 const WEB_ROOT = resolve(__dirname, "..", "..");
 
@@ -260,9 +264,21 @@ async function walk(lesson: LessonRecord, band: LessonBand) {
    return { failures, seen, plan };
 }
 
-function readRecord(): LessonRecord {
-   return JSON.parse(readFileSync(resolve(WEB_ROOT, RECORD_PATH), "utf8")) as LessonRecord;
+function recordPaths(): string[] {
+   if (RECORD_DIR === undefined) {
+      return [RECORD_PATH];
+   }
+
+   const names = readdirSync(resolve(WEB_ROOT, RECORD_DIR)).filter((name) => name.endsWith(".json"));
+
+   return names.sort().map((name) => join(RECORD_DIR, name));
 }
+
+function readRecord(path: string): LessonRecord {
+   return JSON.parse(readFileSync(resolve(WEB_ROOT, path), "utf8")) as LessonRecord;
+}
+
+const RECORD_CASES = recordPaths().flatMap((path) => (["low", "mid"] as LessonBand[]).map((band) => [path, band] as const));
 
 beforeAll(() => {
    defineKeyboardMathField();
@@ -277,9 +293,9 @@ afterEach(() => {
    cleanup();
 });
 
-describe.each(["low", "mid"] as LessonBand[])(`render harness, ${RECORD_PATH}, band %s`, (band) => {
+describe.each(RECORD_CASES)("render harness, %s, band %s", (path, band) => {
    it("renders every section and check of the band keyboard only, with nothing blank, unlabelled, dashed or without its control", async () => {
-      const lesson = readRecord();
+      const lesson = readRecord(path);
       const { failures, seen, plan } = await walk(lesson, band);
 
       expect(failures).toEqual([]);

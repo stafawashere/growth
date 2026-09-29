@@ -1,0 +1,43 @@
+{
+ "id": "LSN-CON-07002",
+ "resolve": {
+  "date": "2026-09-29",
+  "problems": 5,
+  "agreed": 1,
+  "judgments_pending": 4,
+  "all_agree": false,
+  "verdicts": [
+   {
+    "id": "LSN-CON-07002#ex-1",
+    "agree": null,
+    "detail": "judgment: key says None; re-solver says 'Yes: dy/dx = -4e^(2x) equals 2(y-3) = -4e^(2x), and y(0) = 3 - 2 = 1, so it is the solution.'",
+    "method": "Substitute into the equation and check the initial value."
+   },
+   {
+    "id": "LSN-CON-07002#ex-2",
+    "agree": null,
+    "detail": "judgment: key says None; re-solver says 'No: it satisfies dy/dx = -(y-2) but y(0) = 2 + 3 = 5, not 4.'",
+    "method": "Substitute into the equation and check the initial value."
+   },
+   {
+    "id": "LSN-CON-07002#chk-1",
+    "agree": null,
+    "detail": "judgment: key says None; re-solver says 'Yes: y(0) = 3 - 2 = 1, so it is the solution with y(0) = 1.'",
+    "method": "Check the initial value."
+   },
+   {
+    "id": "LSN-CON-07002#chk-2",
+    "agree": null,
+    "detail": "judgment: key says None; re-solver says 'Yes: dy/dx = -9e^(-3x) equals -3(y+1) = -9e^(-3x), and y(0) = -1 + 3 = 2, so it is the solution.'",
+    "method": "Substitute into the equation and check the initial value."
+   },
+   {
+    "id": "LSN-CON-07002#chk-3",
+    "agree": true,
+    "detail": "key option D, re-solver D",
+    "method": "dy/dx = 4e^x = y+2 so it solves the equation, but y(0) = 2, not 0."
+   }
+  ],
+  "answers_file": "/tmp/claude-0/-home-user-growth/ac029253-8ff0-5a4b-8b5f-cdcaf5e8ff8d/scratchpad/verify/answers_10.json"
+ }
+}

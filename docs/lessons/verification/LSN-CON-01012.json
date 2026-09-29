@@ -1,0 +1,43 @@
+{
+ "id": "LSN-CON-01012",
+ "resolve": {
+  "date": "2026-09-29",
+  "problems": 5,
+  "agreed": 1,
+  "judgments_pending": 4,
+  "all_agree": false,
+  "verdicts": [
+   {
+    "id": "LSN-CON-01012#ex-1",
+    "agree": null,
+    "detail": "judgment: key says None; re-solver says 'Removable discontinuity at x = 1 (limit -1); infinite discontinuity (vertical asymptote) at x = -1.'",
+    "method": "Cancel (x-1); leftover 2(x-3)/(x+1)^2."
+   },
+   {
+    "id": "LSN-CON-01012#ex-2",
+    "agree": null,
+    "detail": "judgment: key says None; re-solver says 'Jump discontinuity: left limit 3, right limit -1.'",
+    "method": "One-sided limits differ."
+   },
+   {
+    "id": "LSN-CON-01012#chk-1",
+    "agree": null,
+    "detail": "judgment: key says None; re-solver says 'Removable discontinuity (hole) at x = 1.'",
+    "method": "Limit exists but f(1) undefined."
+   },
+   {
+    "id": "LSN-CON-01012#chk-2",
+    "agree": null,
+    "detail": "judgment: key says None; re-solver says 'Removable discontinuity at x = 2 (limit -5/4).'",
+    "method": "Cancel (x-2); limit finite."
+   },
+   {
+    "id": "LSN-CON-01012#chk-3",
+    "agree": true,
+    "detail": "key option B, re-solver B",
+    "method": "Cancel (x+2): hole at -2; 3x/(x-1)^2 blows up at 1."
+   }
+  ],
+  "answers_file": "/tmp/claude-0/-home-user-growth/ac029253-8ff0-5a4b-8b5f-cdcaf5e8ff8d/scratchpad/verify/answers_03.json"
+ }
+}

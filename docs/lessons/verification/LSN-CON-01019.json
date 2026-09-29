@@ -1,0 +1,37 @@
+{
+ "id": "LSN-CON-01019",
+ "resolve": {
+  "date": "2026-09-29",
+  "problems": 4,
+  "agreed": 1,
+  "judgments_pending": 3,
+  "all_agree": false,
+  "verdicts": [
+   {
+    "id": "LSN-CON-01019#ex-1",
+    "agree": null,
+    "detail": "judgment: key says None; re-solver says 'Yes: f continuous, f(1)=-4<0<2=f(3), IVT gives c in (1,3)'",
+    "method": "IVT"
+   },
+   {
+    "id": "LSN-CON-01019#chk-1",
+    "agree": null,
+    "detail": "judgment: key says None; re-solver says 'By the IVT there is at least one c in the interval with f(c)=0'",
+    "method": "IVT"
+   },
+   {
+    "id": "LSN-CON-01019#chk-2",
+    "agree": null,
+    "detail": "judgment: key says None; re-solver says 'Yes: f continuous on [0,4], f(4)=-2<1<3=f(0), IVT gives c in (0,4) within (0,7)'",
+    "method": "IVT"
+   },
+   {
+    "id": "LSN-CON-01019#chk-3",
+    "agree": true,
+    "detail": "key option B, re-solver B",
+    "method": "IVT with continuity justification"
+   }
+  ],
+  "answers_file": "/tmp/claude-0/-home-user-growth/ac029253-8ff0-5a4b-8b5f-cdcaf5e8ff8d/scratchpad/verify/answers_04.json"
+ }
+}

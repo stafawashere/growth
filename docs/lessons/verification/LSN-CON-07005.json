@@ -1,0 +1,43 @@
+{
+ "id": "LSN-CON-07005",
+ "resolve": {
+  "date": "2026-09-29",
+  "problems": 5,
+  "agreed": 1,
+  "judgments_pending": 4,
+  "all_agree": false,
+  "verdicts": [
+   {
+    "id": "LSN-CON-07005#ex-1",
+    "agree": null,
+    "detail": "judgment: key says None; re-solver says 'The critical point is x = 2, a relative minimum, because dy/dx changes from negative to positive there.'",
+    "method": "For y>1 and x>0 the sign of dy/dx is the sign of (x-2)."
+   },
+   {
+    "id": "LSN-CON-07005#ex-2",
+    "agree": null,
+    "detail": "judgment: key says None; re-solver says 'The solution through (0,3) is y = 2 + e^(-x/2), which decreases from 3 and levels off toward the horizontal asymptote y = 2 without crossing it.'",
+    "method": "Slope (2-y)/2 is negative for y>2; solve the linear equation."
+   },
+   {
+    "id": "LSN-CON-07005#chk-1",
+    "agree": null,
+    "detail": "judgment: key says None; re-solver says 'x = 2 is a relative minimum, because dy/dx changes from negative to positive there.'",
+    "method": "Sign of (x-2) with other factors positive."
+   },
+   {
+    "id": "LSN-CON-07005#chk-2",
+    "agree": null,
+    "detail": "judgment: key says None; re-solver says 'The critical point is t = 3, a relative minimum, because dy/dt changes from negative to positive there.'",
+    "method": "For y<0, -2y>0 and t+2>0, so the sign of dy/dt is the sign of (t-3)."
+   },
+   {
+    "id": "LSN-CON-07005#chk-3",
+    "agree": true,
+    "detail": "key option A, re-solver A",
+    "method": "For y>2, x>0 the sign is the sign of -(x-4): positive to negative, so a maximum at x=4."
+   }
+  ],
+  "answers_file": "/tmp/claude-0/-home-user-growth/ac029253-8ff0-5a4b-8b5f-cdcaf5e8ff8d/scratchpad/verify/answers_10.json"
+ }
+}

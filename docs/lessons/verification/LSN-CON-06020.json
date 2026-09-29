@@ -1,0 +1,43 @@
+{
+ "id": "LSN-CON-06020",
+ "resolve": {
+  "date": "2026-09-29",
+  "problems": 5,
+  "agreed": 5,
+  "judgments_pending": 0,
+  "all_agree": true,
+  "verdicts": [
+   {
+    "id": "LSN-CON-06020#ex-1",
+    "agree": true,
+    "detail": "agree (symbolic)",
+    "method": "Integration by parts with u=3x, dv=e^(-2x) dx."
+   },
+   {
+    "id": "LSN-CON-06020#ex-2",
+    "agree": true,
+    "detail": "agree (symbolic)",
+    "method": "Polynomial division: 4(x^2+5)/(x-2)=4(x+2)+36/(x-2)."
+   },
+   {
+    "id": "LSN-CON-06020#chk-1",
+    "agree": true,
+    "detail": "agree (symbolic)",
+    "method": "Integrate (3/2)e^(-2x) to get -(3/4)e^(-2x)."
+   },
+   {
+    "id": "LSN-CON-06020#chk-2",
+    "agree": true,
+    "detail": "agree (symbolic)",
+    "method": "Integration by parts with u=2x, dv=e^(3x) dx."
+   },
+   {
+    "id": "LSN-CON-06020#chk-3",
+    "agree": true,
+    "detail": "key option C, re-solver C",
+    "method": "Parts setup: u=5x, dv=e^(-x)dx (A and D are misapplied substitutions, B is not a first line)."
+   }
+  ],
+  "answers_file": "/tmp/claude-0/-home-user-growth/ac029253-8ff0-5a4b-8b5f-cdcaf5e8ff8d/scratchpad/verify/answers_10.json"
+ }
+}

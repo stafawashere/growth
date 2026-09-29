@@ -1,0 +1,50 @@
+{
+ "id": "LSN-CON-04007",
+ "resolve": {
+  "date": "2026-09-29",
+  "problems": 5,
+  "agreed": 5,
+  "judgments_pending": 0,
+  "all_agree": true,
+  "verdicts": [
+   {
+    "id": "LSN-CON-04007#ex-1",
+    "agree": true,
+    "detail": "agree (symbolic)",
+    "method": "Differentiate x^2+y^2=225 implicitly, y=12; units ft/s (top moving down)."
+   },
+   {
+    "id": "LSN-CON-04007#ex-2",
+    "agree": true,
+    "detail": "agree (symbolic)",
+    "method": "Implicit differentiation of 2x^2+xy+y^2=4 at (1,-2)."
+   },
+   {
+    "id": "LSN-CON-04007#chk-1",
+    "agree": true,
+    "detail": "re-solver arithmetic error refuted by SymPy; see resolve_notes",
+    "method": "Solve 18+24y'=0; units ft/s."
+   },
+   {
+    "id": "LSN-CON-04007#chk-2",
+    "agree": true,
+    "detail": "agree (symbolic)",
+    "method": "dA/dt=2*pi*r*dr/dt; units cm^2/min."
+   },
+   {
+    "id": "LSN-CON-04007#chk-3",
+    "agree": true,
+    "detail": "agree (symbolic)",
+    "method": "Implicit differentiation at (1,1)."
+   }
+  ],
+  "answers_file": "/tmp/claude-0/-home-user-growth/ac029253-8ff0-5a4b-8b5f-cdcaf5e8ff8d/scratchpad/verify/answers_06.json"
+ },
+ "resolve_notes": [
+  {
+   "id": "LSN-CON-04007#chk-1",
+   "note": "re-solver error: the stem gives 2(9)(2) + 2(12) dy/dt = 0, so 36 + 24 dy/dt = 0 and dy/dt = -3/2; the re-solver used 18 in place of 36 (SymPy: solve(Eq(36 + 24*d, 0), d) = [-3/2]).",
+   "design_correct": true
+  }
+ ]
+}

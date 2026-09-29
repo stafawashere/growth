@@ -1,0 +1,31 @@
+{
+ "id": "LSN-CON-01004",
+ "resolve": {
+  "date": "2026-09-29",
+  "problems": 3,
+  "agreed": 1,
+  "judgments_pending": 2,
+  "all_agree": false,
+  "verdicts": [
+   {
+    "id": "LSN-CON-01004#ex-1",
+    "agree": null,
+    "detail": "judgment: key says 'The left hand limit is 3, the right hand limit is 4, so the limit of f at x = 1 does not exist.'; re-solver says 'Left limit 3, right limit 4; the limit at x = 1 does not exist because the one-sided limits differ.'",
+    "method": "Substitute into each piece."
+   },
+   {
+    "id": "LSN-CON-01004#chk-1",
+    "agree": null,
+    "detail": "judgment: key says 'The limit does not exist.'; re-solver says 'The limit does not exist, since 3 is not equal to 4.'",
+    "method": "Unequal one-sided limits."
+   },
+   {
+    "id": "LSN-CON-01004#chk-2",
+    "agree": true,
+    "detail": "agree (symbolic)",
+    "method": "Right piece -2x+7 at x=2 gives 3."
+   }
+  ],
+  "answers_file": "/tmp/claude-0/-home-user-growth/ac029253-8ff0-5a4b-8b5f-cdcaf5e8ff8d/scratchpad/verify/answers_03.json"
+ }
+}

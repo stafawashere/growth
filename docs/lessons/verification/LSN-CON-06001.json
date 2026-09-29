@@ -1,0 +1,43 @@
+{
+ "id": "LSN-CON-06001",
+ "resolve": {
+  "date": "2026-09-29",
+  "problems": 5,
+  "agreed": 4,
+  "judgments_pending": 1,
+  "all_agree": false,
+  "verdicts": [
+   {
+    "id": "LSN-CON-06001#ex-1",
+    "agree": true,
+    "detail": "agree (symbolic)",
+    "method": "Signed areas 3 - 2 - 2*pi."
+   },
+   {
+    "id": "LSN-CON-06001#ex-2",
+    "agree": null,
+    "detail": "judgment: key says 'The number of gallons of water that flow into the tank from t = 2 to t = 6 hours.'; re-solver says 'The integral is the total number of gallons of water that flows into the tank from t = 2 to t = 6 hours.'",
+    "method": "Integral of a rate is accumulated amount; units gallons."
+   },
+   {
+    "id": "LSN-CON-06001#chk-1",
+    "agree": true,
+    "detail": "agree (symbolic)",
+    "method": "Sum 3-2-2*pi."
+   },
+   {
+    "id": "LSN-CON-06001#chk-2",
+    "agree": true,
+    "detail": "agree (symbolic)",
+    "method": "From 1: 1.5 - 3 + 2*pi (semicircle above)."
+   },
+   {
+    "id": "LSN-CON-06001#chk-3",
+    "agree": true,
+    "detail": "key option A, re-solver A",
+    "method": "Divides by length 4, giving average rate in gallons per hour over the interval."
+   }
+  ],
+  "answers_file": "/tmp/claude-0/-home-user-growth/ac029253-8ff0-5a4b-8b5f-cdcaf5e8ff8d/scratchpad/verify/answers_08.json"
+ }
+}

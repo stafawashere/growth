@@ -1,0 +1,31 @@
+{
+ "id": "LSN-CON-07009",
+ "resolve": {
+  "date": "2026-09-29",
+  "problems": 3,
+  "agreed": 2,
+  "judgments_pending": 0,
+  "all_agree": false,
+  "verdicts": [
+   {
+    "id": "LSN-CON-07009#ex-1",
+    "agree": false,
+    "detail": "re-solver: Asks for both the solution and the interval; solution is y = 1/(4 - 2*x), answer given is the interval.",
+    "method": "y = 1/(4-2x); valid on the interval containing x=1 where defined, x<2."
+   },
+   {
+    "id": "LSN-CON-07009#chk-1",
+    "agree": true,
+    "detail": "agree (symbolic)",
+    "method": "Denominator zero at x=2; interval contains x=1."
+   },
+   {
+    "id": "LSN-CON-07009#chk-2",
+    "agree": true,
+    "detail": "agree (symbolic)",
+    "method": "y = 2/(2x+1); interval containing x=0."
+   }
+  ],
+  "answers_file": "/tmp/claude-0/-home-user-growth/ac029253-8ff0-5a4b-8b5f-cdcaf5e8ff8d/scratchpad/verify/answers_11.json"
+ }
+}

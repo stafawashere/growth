@@ -1,0 +1,43 @@
+{
+ "id": "LSN-CON-05002",
+ "resolve": {
+  "date": "2026-09-29",
+  "problems": 5,
+  "agreed": 1,
+  "judgments_pending": 4,
+  "all_agree": false,
+  "verdicts": [
+   {
+    "id": "LSN-CON-05002#ex-1",
+    "agree": null,
+    "detail": "judgment: key says None; re-solver says 'Yes, f must attain a maximum value on [-1, 4] because f is differentiable, hence continuous, on the closed interval, so the Extreme Value Theorem applies.'",
+    "method": "EVT"
+   },
+   {
+    "id": "LSN-CON-05002#ex-2",
+    "agree": null,
+    "detail": "judgment: key says None; re-solver says 'No, g need not attain a minimum on [0, 6] because the jump at x = 2 means g is not continuous, so the Extreme Value Theorem does not apply.'",
+    "method": "EVT hypothesis fails"
+   },
+   {
+    "id": "LSN-CON-05002#chk-1",
+    "agree": null,
+    "detail": "judgment: key says 'Yes, by the Extreme Value Theorem.'; re-solver says 'Yes, f must attain a maximum value on [-1, 4] by the Extreme Value Theorem because f is continuous on the closed interval.'",
+    "method": "EVT"
+   },
+   {
+    "id": "LSN-CON-05002#chk-2",
+    "agree": null,
+    "detail": "judgment: key says 'Yes: continuous on the closed interval, Extreme Value Theorem.'; re-solver says 'Yes, h must attain a minimum value on [1, 4] by the Extreme Value Theorem because h is continuous on the closed interval [1, 4].'",
+    "method": "EVT"
+   },
+   {
+    "id": "LSN-CON-05002#chk-3",
+    "agree": true,
+    "detail": "key option C, re-solver C",
+    "method": "EVT needs a closed interval"
+   }
+  ],
+  "answers_file": "/tmp/claude-0/-home-user-growth/ac029253-8ff0-5a4b-8b5f-cdcaf5e8ff8d/scratchpad/verify/answers_07.json"
+ }
+}

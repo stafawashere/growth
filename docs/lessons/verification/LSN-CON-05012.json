@@ -1,0 +1,37 @@
+{
+ "id": "LSN-CON-05012",
+ "resolve": {
+  "date": "2026-09-29",
+  "problems": 4,
+  "agreed": 1,
+  "judgments_pending": 3,
+  "all_agree": false,
+  "verdicts": [
+   {
+    "id": "LSN-CON-05012#ex-1",
+    "agree": null,
+    "detail": "judgment: key says None; re-solver says \"B is f, C is f', and A is f''.\"",
+    "method": "Each curve's zeros match the next curve's turning points: B turns where C crosses, C turns where A crosses."
+   },
+   {
+    "id": "LSN-CON-05012#chk-1",
+    "agree": null,
+    "detail": "judgment: key says None; re-solver says \"B is f, C is f', and A is f''.\"",
+    "method": "Zeros of a curve occur where its antiderivative curve has horizontal tangents."
+   },
+   {
+    "id": "LSN-CON-05012#chk-2",
+    "agree": null,
+    "detail": "judgment: key says None; re-solver says \"C is f, A is f', and B is f''.\"",
+    "method": "A turns at -3/2 where B crosses, and C turns where A crosses."
+   },
+   {
+    "id": "LSN-CON-05012#chk-3",
+    "agree": true,
+    "detail": "key option A, re-solver A",
+    "method": "B=f, A=f', C=f''; concave up where f'' is positive."
+   }
+  ],
+  "answers_file": "/tmp/claude-0/-home-user-growth/ac029253-8ff0-5a4b-8b5f-cdcaf5e8ff8d/scratchpad/verify/answers_08.json"
+ }
+}

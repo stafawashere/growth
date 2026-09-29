@@ -1,0 +1,37 @@
+{
+ "id": "LSN-CON-04001",
+ "resolve": {
+  "date": "2026-09-29",
+  "problems": 4,
+  "agreed": 1,
+  "judgments_pending": 3,
+  "all_agree": false,
+  "verdicts": [
+   {
+    "id": "LSN-CON-04001#ex-1",
+    "agree": null,
+    "detail": "judgment: key says 'At t = 9 minutes the amount of water in the tank is decreasing at 3.5 liters per minute.'; re-solver says 'At t=9 minutes, the water in the tank is decreasing at 3.5 liters per minute'",
+    "method": "derivative interpretation"
+   },
+   {
+    "id": "LSN-CON-04001#chk-1",
+    "agree": null,
+    "detail": "judgment: key says 'decreasing at 3.5 liters per minute'; re-solver says 'decreasing at a rate of 3.5 liters per minute'",
+    "method": "derivative interpretation"
+   },
+   {
+    "id": "LSN-CON-04001#chk-2",
+    "agree": null,
+    "detail": "judgment: key says 'At t = 10 hours the snow depth is increasing at 2.5 centimeters per hour.'; re-solver says 'At t=10 hours, the snow depth is increasing at 2.5 centimeters per hour'",
+    "method": "derivative interpretation"
+   },
+   {
+    "id": "LSN-CON-04001#chk-3",
+    "agree": true,
+    "detail": "key option A, re-solver A",
+    "method": "sign and units"
+   }
+  ],
+  "answers_file": "/tmp/claude-0/-home-user-growth/ac029253-8ff0-5a4b-8b5f-cdcaf5e8ff8d/scratchpad/verify/answers_05.json"
+ }
+}

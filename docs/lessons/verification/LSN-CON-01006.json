@@ -1,0 +1,43 @@
+{
+ "id": "LSN-CON-01006",
+ "resolve": {
+  "date": "2026-09-29",
+  "problems": 5,
+  "agreed": 4,
+  "judgments_pending": 0,
+  "all_agree": false,
+  "verdicts": [
+   {
+    "id": "LSN-CON-01006#ex-1",
+    "agree": true,
+    "detail": "agree (symbolic)",
+    "method": "Both segments approach 2 at x=3; dot ignored."
+   },
+   {
+    "id": "LSN-CON-01006#ex-2",
+    "agree": false,
+    "detail": "re-solver: Table pattern is non-convergent; 'does not determine' versus 'does not exist' is a judgment.",
+    "method": "Values do not approach a single number, so a table cannot settle it."
+   },
+   {
+    "id": "LSN-CON-01006#chk-1",
+    "agree": true,
+    "detail": "agree (symbolic)",
+    "method": "Left: 3-1=2; right: 6-4=2."
+   },
+   {
+    "id": "LSN-CON-01006#chk-2",
+    "agree": true,
+    "detail": "agree (symbolic)",
+    "method": "Both segments approach 1 at x=1."
+   },
+   {
+    "id": "LSN-CON-01006#chk-3",
+    "agree": true,
+    "detail": "key option D, re-solver D",
+    "method": "One-sided limits 3 and -2 differ."
+   }
+  ],
+  "answers_file": "/tmp/claude-0/-home-user-growth/ac029253-8ff0-5a4b-8b5f-cdcaf5e8ff8d/scratchpad/verify/answers_03.json"
+ }
+}

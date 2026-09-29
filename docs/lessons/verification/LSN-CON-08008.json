@@ -1,0 +1,37 @@
+{
+ "id": "LSN-CON-08008",
+ "resolve": {
+  "date": "2026-09-29",
+  "problems": 4,
+  "agreed": 4,
+  "judgments_pending": 0,
+  "all_agree": true,
+  "verdicts": [
+   {
+    "id": "LSN-CON-08008#ex-1",
+    "agree": true,
+    "detail": "agree (symbolic)",
+    "method": "Critical points t=4 and 8 by A'=0; compare A(0)=100, A(4), A(8), A(12)=136, so the maximum is at t=12."
+   },
+   {
+    "id": "LSN-CON-08008#chk-1",
+    "agree": true,
+    "detail": "agree (symbolic)",
+    "method": "Candidates test: A(12)=136 is largest of the four values, at t=12."
+   },
+   {
+    "id": "LSN-CON-08008#chk-2",
+    "agree": true,
+    "detail": "agree (symbolic)",
+    "method": "A'=0 at t=8,16; A(24)=108 exceeds A(8)~89.2, A(0)=60, A(16); tons; max at t=24."
+   },
+   {
+    "id": "LSN-CON-08008#chk-3",
+    "agree": true,
+    "detail": "key option C, re-solver C",
+    "method": "Candidates test with endpoint t=8: A(8)=40+8=48 exceeds other candidates."
+   }
+  ],
+  "answers_file": "/tmp/claude-0/-home-user-growth/ac029253-8ff0-5a4b-8b5f-cdcaf5e8ff8d/scratchpad/verify/answers_12.json"
+ }
+}

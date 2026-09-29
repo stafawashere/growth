@@ -1,0 +1,37 @@
+{
+ "id": "LSN-CON-01016",
+ "resolve": {
+  "date": "2026-09-29",
+  "problems": 4,
+  "agreed": 1,
+  "judgments_pending": 3,
+  "all_agree": false,
+  "verdicts": [
+   {
+    "id": "LSN-CON-01016#ex-1",
+    "agree": null,
+    "detail": "judgment: key says None; re-solver says 'Vertical asymptote x=-2 only (hole at x=1); f->-infinity as x->-2+ and +infinity as x->-2-'",
+    "method": "cancel and sign analysis"
+   },
+   {
+    "id": "LSN-CON-01016#chk-1",
+    "agree": null,
+    "detail": "judgment: key says None; re-solver says '+infinity (oo)'",
+    "method": "sign analysis"
+   },
+   {
+    "id": "LSN-CON-01016#chk-2",
+    "agree": null,
+    "detail": "judgment: key says None; re-solver says 'Vertical asymptote x=2 (hole at x=-3); limit as x->2+ is -infinity'",
+    "method": "cancel and sign analysis"
+   },
+   {
+    "id": "LSN-CON-01016#chk-3",
+    "agree": true,
+    "detail": "key option C, re-solver C",
+    "method": "cancel and sign analysis"
+   }
+  ],
+  "answers_file": "/tmp/claude-0/-home-user-growth/ac029253-8ff0-5a4b-8b5f-cdcaf5e8ff8d/scratchpad/verify/answers_04.json"
+ }
+}

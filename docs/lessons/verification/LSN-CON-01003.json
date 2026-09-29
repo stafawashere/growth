@@ -1,0 +1,31 @@
+{
+ "id": "LSN-CON-01003",
+ "resolve": {
+  "date": "2026-09-29",
+  "problems": 3,
+  "agreed": 0,
+  "judgments_pending": 3,
+  "all_agree": false,
+  "verdicts": [
+   {
+    "id": "LSN-CON-01003#ex-1",
+    "agree": null,
+    "detail": "judgment: key says 'The line x = -3 is a vertical asymptote of the graph of g, which decreases without bound as x approaches -3 from the right.'; re-solver says 'The graph has a vertical asymptote at x = -3, and g decreases without bound as x approaches -3 from the right.'",
+    "method": "Infinite one-sided limit means a vertical asymptote."
+   },
+   {
+    "id": "LSN-CON-01003#chk-1",
+    "agree": null,
+    "detail": "judgment: key says 'x = -3, a vertical asymptote'; re-solver says 'Vertical asymptote x = -3'",
+    "method": "Infinite one-sided limit gives a vertical asymptote."
+   },
+   {
+    "id": "LSN-CON-01003#chk-2",
+    "agree": null,
+    "detail": "judgment: key says 'y = 5/2, a horizontal asymptote at the left end'; re-solver says 'Horizontal asymptote y = 5/2'",
+    "method": "Limit at infinity equal to a finite number gives a horizontal asymptote."
+   }
+  ],
+  "answers_file": "/tmp/claude-0/-home-user-growth/ac029253-8ff0-5a4b-8b5f-cdcaf5e8ff8d/scratchpad/verify/answers_03.json"
+ }
+}

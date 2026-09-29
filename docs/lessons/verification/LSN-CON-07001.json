@@ -1,0 +1,37 @@
+{
+ "id": "LSN-CON-07001",
+ "resolve": {
+  "date": "2026-09-29",
+  "problems": 4,
+  "agreed": 2,
+  "judgments_pending": 2,
+  "all_agree": false,
+  "verdicts": [
+   {
+    "id": "LSN-CON-07001#ex-1",
+    "agree": null,
+    "detail": "judgment: key says None; re-solver says 'The differential equation is dH/dt = k(70 - H) with initial condition H(0) = 95.'",
+    "method": "Newton cooling: rate proportional to (ambient - temperature); units are degrees per minute."
+   },
+   {
+    "id": "LSN-CON-07001#chk-1",
+    "agree": null,
+    "detail": "judgment: key says None; re-solver says 'The two lines are dH/dt = k(70 - H) and H(0) = 95.'",
+    "method": "Rate proportional to 70 - H plus initial value."
+   },
+   {
+    "id": "LSN-CON-07001#chk-2",
+    "agree": true,
+    "detail": "agree (symbolic)",
+    "method": "Rate proportional to 40 - C (with C(0)=25)."
+   },
+   {
+    "id": "LSN-CON-07001#chk-3",
+    "agree": true,
+    "detail": "agree (symbolic)",
+    "method": "Rate proportional to 50 - P with initial value 60; no options were shown."
+   }
+  ],
+  "answers_file": "/tmp/claude-0/-home-user-growth/ac029253-8ff0-5a4b-8b5f-cdcaf5e8ff8d/scratchpad/verify/answers_10.json"
+ }
+}

@@ -1,0 +1,37 @@
+{
+ "id": "LSN-CON-01013",
+ "resolve": {
+  "date": "2026-09-29",
+  "problems": 4,
+  "agreed": 1,
+  "judgments_pending": 3,
+  "all_agree": false,
+  "verdicts": [
+   {
+    "id": "LSN-CON-01013#ex-1",
+    "agree": null,
+    "detail": "judgment: key says None; re-solver says 'Not continuous: limit is 3 but f(2)=-1'",
+    "method": "factor and cancel"
+   },
+   {
+    "id": "LSN-CON-01013#chk-1",
+    "agree": null,
+    "detail": "judgment: key says None; re-solver says 'Not continuous; condition failed: limit equals f(2)'",
+    "method": "continuity definition"
+   },
+   {
+    "id": "LSN-CON-01013#chk-2",
+    "agree": null,
+    "detail": "judgment: key says None; re-solver says 'Not continuous: left limit 2, right limit -3, so limit does not exist'",
+    "method": "one-sided limits"
+   },
+   {
+    "id": "LSN-CON-01013#chk-3",
+    "agree": true,
+    "detail": "key option C, re-solver C",
+    "method": "cancel x, limit -2"
+   }
+  ],
+  "answers_file": "/tmp/claude-0/-home-user-growth/ac029253-8ff0-5a4b-8b5f-cdcaf5e8ff8d/scratchpad/verify/answers_04.json"
+ }
+}

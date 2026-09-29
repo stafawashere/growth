@@ -1,0 +1,37 @@
+{
+ "id": "LSN-CON-05005",
+ "resolve": {
+  "date": "2026-09-29",
+  "problems": 4,
+  "agreed": 1,
+  "judgments_pending": 3,
+  "all_agree": false,
+  "verdicts": [
+   {
+    "id": "LSN-CON-05005#ex-1",
+    "agree": null,
+    "detail": "judgment: key says None; re-solver says \"Neither: f'(1) = 0 but f' = 3(x-1)^2(x+2) does not change sign at x = 1 (positive on both sides near 1), so there is no relative extremum.\"",
+    "method": "first derivative test"
+   },
+   {
+    "id": "LSN-CON-05005#chk-1",
+    "agree": null,
+    "detail": "judgment: key says \"Neither: f' does not change sign at x = 1.\"; re-solver says \"Neither a relative minimum nor a relative maximum at x = 1, because f' is positive on both sides so f' does not change sign.\"",
+    "method": "first derivative test"
+   },
+   {
+    "id": "LSN-CON-05005#chk-2",
+    "agree": null,
+    "detail": "judgment: key says \"Relative maximum: f' changes from positive to negative at x = -1.\"; re-solver says \"x = -1 is a relative maximum because f' changes from positive to negative there.\"",
+    "method": "first derivative test"
+   },
+   {
+    "id": "LSN-CON-05005#chk-3",
+    "agree": true,
+    "detail": "key option C, re-solver C",
+    "method": "first derivative test: sign change only at -3"
+   }
+  ],
+  "answers_file": "/tmp/claude-0/-home-user-growth/ac029253-8ff0-5a4b-8b5f-cdcaf5e8ff8d/scratchpad/verify/answers_07.json"
+ }
+}

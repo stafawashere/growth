@@ -1,0 +1,31 @@
+{
+ "id": "LSN-CON-01002",
+ "resolve": {
+  "date": "2026-09-29",
+  "problems": 3,
+  "agreed": 2,
+  "judgments_pending": 0,
+  "all_agree": false,
+  "verdicts": [
+   {
+    "id": "LSN-CON-01002#ex-1",
+    "agree": false,
+    "detail": "re-solver: Asks for two values (limit and f(2)); numeric answer gives the limit 3 only, f(2) = -1.",
+    "method": "Both one-sided limits are 3; f(2) = -1 (dot) is a separate value, so limit 3 and f(2) = -1."
+   },
+   {
+    "id": "LSN-CON-01002#chk-1",
+    "agree": true,
+    "detail": "agree (symbolic)",
+    "method": "Limit ignores the dot; both sides approach 3."
+   },
+   {
+    "id": "LSN-CON-01002#chk-2",
+    "agree": true,
+    "detail": "agree (symbolic)",
+    "method": "Both segments approach height 2 at x=1."
+   }
+  ],
+  "answers_file": "/tmp/claude-0/-home-user-growth/ac029253-8ff0-5a4b-8b5f-cdcaf5e8ff8d/scratchpad/verify/answers_03.json"
+ }
+}

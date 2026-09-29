@@ -1,0 +1,37 @@
+{
+ "id": "LSN-CON-06002",
+ "resolve": {
+  "date": "2026-09-29",
+  "problems": 4,
+  "agreed": 2,
+  "judgments_pending": 2,
+  "all_agree": false,
+  "verdicts": [
+   {
+    "id": "LSN-CON-06002#ex-1",
+    "agree": null,
+    "detail": "judgment: key says \"The tons of sand removed from the pile from t = 1 to t = 6 hours; the pile's change is negative.\"; re-solver says \"The integral is the total tons of sand that leave the pile from t = 1 to t = 6 hours, so the pile's change is negative (the pile loses that many tons).\"",
+    "method": "Integral of an outflow rate; units tons."
+   },
+   {
+    "id": "LSN-CON-06002#chk-1",
+    "agree": null,
+    "detail": "judgment: key says \"The tons of sand removed from the pile from t = 1 to t = 6 hours; the pile's change is negative.\"; re-solver says \"The integral is the total tons of sand that leave the pile from t = 1 to t = 6, so the pile's change is negative, equal to minus that integral.\"",
+    "method": "Accumulation of outflow rate; units tons."
+   },
+   {
+    "id": "LSN-CON-06002#chk-2",
+    "agree": true,
+    "detail": "agree (symbolic)",
+    "method": "Units of rate times time: (people per hour)(hours) = people."
+   },
+   {
+    "id": "LSN-CON-06002#chk-3",
+    "agree": true,
+    "detail": "key option A, re-solver A",
+    "method": "Integral of drain rate is gallons drained over 0 to 6 minutes, so the oil level fell."
+   }
+  ],
+  "answers_file": "/tmp/claude-0/-home-user-growth/ac029253-8ff0-5a4b-8b5f-cdcaf5e8ff8d/scratchpad/verify/answers_08.json"
+ }
+}

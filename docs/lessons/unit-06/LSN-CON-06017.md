@@ -9,9 +9,13 @@ purpose: Authoring spec for the concept lesson on BC-CON-06017, antiderivatives 
 
 Concept BC-CON-06017 (skills BC-SKL-06057 to BC-SKL-06061), topic 6.11 of Unit 6, loaded by one archetype, BC-QA-06009 (family antidifferentiation-technique). Its hard parents are BC-CON-06012 and BC-CON-06014, with BC-TOP-0208 (the product rule) outside the unit (docs/lessons/unit-06/README.md, section 1).
 
+## Prediction
+
+One multiple choice question on worked example 1's own integrand, \(3x\cos 2x\), asked before the rule is shown: with \(u=3x\) and \(dv=\cos 2x\,dx\), which expression equals the integral. The key is \(uv\) minus \(\int v\,du\), the shape of ex-1's second valued step. The distractors are the two errors of the concept's traps, the antiderivatives of the factors multiplied (BC-ERR-06022) and the sign of the second integral flipped (BC-ERR-06023). The resolution, shown beside the choice on the key idea screen, states the product rule read backwards and that a product of antiderivatives is not that expression, with no verdict word. Sources: BC-CON-06017 and the topic 6.11 section the key idea cites [inferred].
+
 ## Orientation
 
-Served text, from BC-CON-06017 `description_plain` and the topic's Assessment behaviour paragraph (research/units/unit-06-integration-accumulation.md#6.11 Integrating Using Integration by Parts): a response declares u and dv, writes uv minus the integral of v du, and finishes. No count, no frequency.
+Served text (16 words), from BC-CON-06017 `description_plain` and the topic's Assessment behaviour paragraph (research/units/unit-06-integration-accumulation.md#6.11 Integrating Using Integration by Parts): a response declares u and dv, writes uv minus the integral of v du, and finishes. No count, no frequency.
 
 ## Key ideas
 
@@ -23,16 +27,19 @@ All five skills map to BC-EK-FUN-6E1, so one core block, both bands.
 
 BC-QA-06009 (research/question-analysis/question-archetypes.md#BC-QA-06009 Antiderivative by integration by parts). `typical_wording`: "find the indefinite integral of the given product, showing the work that leads to your answer"; "let h be defined as x times the derivative of an unknown function; find the value of the definite integral of h over the stated interval". `common_givens`: a product of a linear factor and a cosine, an unknown function with a stated endpoint value and a stated integral, a table of values of a function and its derivative. `asked_to_produce`: a choice of u and dv, the uv minus the integral of v du expression, an antiderivative with a constant, the value of a definite integral. Official examples: BC-FRQ-2023-Q5-C, BC-FRQ-2024-Q5-D, BC-MCQ-CED-016, BC-MCQ-PE2012-024.
 
-The signal: two unlike factors multiplied, one a polynomial that differentiation reduces, with no factor that is the derivative of an inner expression. What says "not this concept": a composite times its inner derivative (substitution, BC-CON-06015); a rational function (division or partial fractions, BC-CON-06016, BC-CON-06018).
+The signal: two unlike factors multiplied, one a polynomial that differentiation reduces, with no factor that is the derivative of an inner expression. Contrast pair on st-1: the this stem is on BC-QA-06009, a linear factor times a sine; the not this stem is a linear factor times a cosine of its square, the near miss from substitution (BC-CON-06015), where the factor is the inner derivative. The separating feature is whether an inner derivative is present.
+
+What says "not this concept": a composite times its inner derivative (substitution, BC-CON-06015); a rational function (division or partial fractions, BC-CON-06016, BC-CON-06018).
 
 ## Method choice
 
 One strategy block, both bands.
 
-- st-1, BC-QA-06009. Cue from `common_givens` and `asked_to_produce`. Method, `expected_solution_path[0]`: declare u and dv and compute du and v. Rival from `wrong_approaches`: antidifferentiating each factor and multiplying (BC-ERR-06022). Separating feature: no inner derivative pairs the factors, and a product's antiderivative is not the product of the antiderivatives. First written line: u = 3x, dv = cos 2x dx.
+- st-1, BC-QA-06009. Cue from `common_givens` and `asked_to_produce`. Method, `expected_solution_path[0]`: declare u and dv and compute du and v. Rival from `wrong_approaches`: antidifferentiating each factor and multiplying, cited in the block's `sources` (BC-ERR-06022), not in its text. Separating feature: no inner derivative pairs the factors, and a product's antiderivative is not the product of the antiderivatives. First written line: u = 3x, dv = cos 2x dx.
 
 ## Solution path
 
+- There is no example 2, so nothing is faded and there is no `fade_from`.
 - ex-1, BC-QA-06009, both bands, no calculator. Draw from `parameter_spec`: multiplier 3, rate 2, variable x, reach 1, partner cosine, form definite; the integral of 3x cos 2x from 0 to π/6, where the boundary term is not zero. No published BC-QA-06009 item carries this draw.
 - Steps follow `expected_solution_path`: u, dv, du, v (no value); uv minus the integral of v du (new, BC-PT-99057); the remaining integral finished (equivalent); limits applied (new); √3π/8 - 3/8 (equivalent, BC-PT-99004).
 
@@ -44,7 +51,7 @@ BC-QA-06009 lists BC-PT-99056, BC-PT-99057 and BC-PT-99004. ex-1 tags BC-PT-9905
 
 ## Traps
 
-All three active errors meeting the skills, in the bundle's order: BC-ERR-06022, BC-ERR-06023, BC-ERR-99025. Mid band shows the first two. On ex-1's draw:
+All three active errors meeting the skills, in the bundle's order: BC-ERR-06022, BC-ERR-06023, BC-ERR-99025. Mid band shows the first two. BC-ERR-06022 and BC-ERR-06023 differ from the right step as expressions, so they are fix prompts (`fix_prompt` true); BC-ERR-99025 is equivalent, so it keeps the reveal form (`fix_prompt` false). On ex-1's draw:
 
 - err-BC-ERR-06022: (3x^2/2)(sin 2x/2) against the parts antiderivative. Possible reason, words from BC-MIS-06019.
 - err-BC-ERR-06023: uv plus the integral of v du, giving - (3/4) cos 2x, against + (3/4) cos 2x. No possible reason line.
@@ -72,11 +79,13 @@ BC-QA-06009 is `no_calculator`, typically one part of a multipart free response 
 
 - orientation, ki-1: text. Rule 6: BC-REP-01 and BC-REP-04 only, and the unit README delivery map puts parts in text and step reveal.
 - ex-1 and the three error blocks: step_reveal. Rule 1.
+- The prediction: text, on the key idea screen's resolution.
+- No drawn block: none of rules 2 to 5 applies. The skills carry BC-REP-01 and BC-REP-04 only, neither figure-bearing, and the key idea states an identity, not a process to draw. The machine record states `no_figure_reason`.
 
 ## Band plan
 
-- Low (full): orientation, ki-1, st-1, ex-1 with its reader lines, three error blocks, chk-1 to chk-3, the bridge. 512 words, 3.5 minutes (cap 900 and 6).
-- Mid (brief): orientation, ki-1, st-1, ex-1 with its reader lines, err-BC-ERR-06022, err-BC-ERR-06023, chk-1, chk-2, the bridge. 427 words, 2.9 minutes (cap 450 and 3).
+- Low (full), in served order: prediction, orientation, the bridge, ki-1, st-1 with its contrast pair, ex-1 with its reader lines, chk-1, err-BC-ERR-06022, err-BC-ERR-06023, err-BC-ERR-99025, chk-2, chk-3. 535 words, 3.6 minutes (cap 900 and 6). There is no example 2, so nothing is faded.
+- Mid (brief): prediction, orientation, the bridge, ki-1, st-1 with its contrast pair, ex-1 with its reader lines, chk-1, err-BC-ERR-06022, err-BC-ERR-06023, chk-2. 450 words, 3.0 minutes (cap 450 and 3). The strategy cue and separating feature, the cues of ex-1 and the bridge were shortened to fit; no anchor quote (there was none) and no scoring tag (BC-PT-99056 was already untagged) was dropped.
 - Refresher: ki-1, the three error blocks, ex-1.
 
 ## Sources
@@ -108,8 +117,39 @@ BC-QA-06009 is `no_calculator`, typically one part of a multipart free response 
   "BC-SKL-06060",
   "BC-SKL-06061"
  ],
+ "prediction": {
+  "id": "pr-1",
+  "stem": {
+   "text": "Predict. With \\(u=3x\\) and \\(dv=\\cos 2x\\,dx\\), which expression equals \\(\\int 3x\\cos 2x\\,dx\\)?",
+   "command_verb": "predict"
+  },
+  "format": "mcq",
+  "options": [
+   {
+    "id": "A",
+    "label": "\\(\\frac{3x^2}{2}\\cdot\\frac{\\sin 2x}{2}\\)",
+    "is_key": false
+   },
+   {
+    "id": "B",
+    "label": "\\(uv\\) minus \\(\\int v\\,du\\)",
+    "is_key": true
+   },
+   {
+    "id": "C",
+    "label": "\\(uv\\) plus \\(\\int v\\,du\\)",
+    "is_key": false
+   }
+  ],
+  "resolution": "Integration by parts is the product rule read backwards: \\(uv-\\int v\\,du\\). A product of antiderivatives is not that expression.",
+  "sources": [
+   "BC-CON-06017",
+   "research/units/unit-06-integration-accumulation.md#6.11 Integrating Using Integration by Parts"
+  ]
+ },
+ "no_figure_reason": "The skills carry symbolic and verbal representations only, and the key idea is an identity between integrals, not a process to draw, so no figure fits.",
  "orientation": {
-  "text": "Unlike factors multiplied, one simpler once differentiated: a response declares u and dv, writes uv minus ∫v du, and finishes.",
+  "text": "A response declares u and dv, writes uv minus the integral of v du, and finishes.",
   "sources": [
    "BC-CON-06017",
    "research/units/unit-06-integration-accumulation.md#6.11 Integrating Using Integration by Parts"
@@ -134,14 +174,26 @@ BC-QA-06009 is `no_calculator`, typically one part of a multipart free response 
   {
    "id": "st-1",
    "archetype_id": "BC-QA-06009",
-   "cue": "A product of a linear factor and a cosine; u and dv, the expression, or a value asked.",
+   "cue": "A linear factor times a cosine; an antiderivative or value asked.",
    "method": "Declare u and dv and compute du and v.",
-   "rival": "Rival: antidifferentiating each factor and multiplying (BC-ERR-06022).",
-   "separating_feature": "No inner derivative pairs the factors; a product's antiderivative is not a product of antiderivatives.",
+   "rival": "Antidifferentiating each factor and multiplying.",
+   "separating_feature": "No inner derivative pairs the factors.",
    "sources": [
-    "BC-QA-06009"
+    "BC-QA-06009",
+    "BC-ERR-06022"
    ],
-   "evidence_tag": "verified"
+   "evidence_tag": "verified",
+   "contrast": {
+    "this": {
+     "text": "Find \\(\\int 2x\\sin 3x\\,dx\\).",
+     "archetype_id": "BC-QA-06009"
+    },
+    "not_this": {
+     "text": "Find \\(\\int 2x\\cos(x^2)\\,dx\\).",
+     "why_not": "\\(2x\\) is the derivative of the inner \\(x^2\\), so substitution applies."
+    },
+    "feature": "Inner derivative present: substitute. Absent: parts."
+   }
   }
  ],
  "worked_examples": [
@@ -171,20 +223,20 @@ BC-QA-06009 is `no_calculator`, typically one part of a multipart free response 
      "why": "u = 3x, dv = cos 2x dx, du = 3 dx, v = (1/2) sin 2x."
     },
     {
-     "cue": "Write uv minus the integral of v du.",
-     "why": "Readers check the subtracted integral (sg-23:18).",
+     "cue": "Write \\(uv-\\int v\\,du\\).",
+     "why": "Readers check the subtracted integral.",
      "expr": "3*x*sin(2*x)/2 - Integral(3*sin(2*x)/2, x)",
      "relation": "new",
      "point_type_id": "BC-PT-99057"
     },
     {
-     "cue": "(3/2) sin 2x integrates to -(3/4) cos 2x.",
-     "why": "The minus in front turns it to plus.",
+     "cue": "Integrate (3/2) sin 2x.",
+     "why": "The minus turns it to plus.",
      "expr": "3*x*sin(2*x)/2 + 3*cos(2*x)/4",
      "relation": "equivalent"
     },
     {
-     "cue": "Apply 0 and π/6 to both terms.",
+     "cue": "Apply both limits.",
      "why": "At 0 only the cosine term survives.",
      "expr": "(pi/4)*(sqrt(3)/2) + (3/4)*(1/2) - 3/4",
      "relation": "new"
@@ -243,7 +295,8 @@ BC-QA-06009 is `no_calculator`, typically one part of a multipart free response 
    "sources": [
     "BC-ERR-06022",
     "BC-MIS-06019"
-   ]
+   ],
+   "fix_prompt": true
   },
   {
    "error_id": "BC-ERR-06023",
@@ -261,7 +314,8 @@ BC-QA-06009 is `no_calculator`, typically one part of a multipart free response 
    "possible_reason": null,
    "sources": [
     "BC-ERR-06023"
-   ]
+   ],
+   "fix_prompt": true
   },
   {
    "error_id": "BC-ERR-99025",
@@ -279,14 +333,15 @@ BC-QA-06009 is `no_calculator`, typically one part of a multipart free response 
    "possible_reason": null,
    "sources": [
     "BC-ERR-99025"
-   ]
+   ],
+   "fix_prompt": false
   }
  ],
  "representations": null,
  "prerequisite_bridges": [
   {
    "prq_id": "BC-PRQ-06005",
-   "text": "Keep f and f' apart when importing supplied values."
+   "text": "Keep f and f' apart."
   }
  ],
  "time": {
@@ -575,12 +630,12 @@ BC-QA-06009 is `no_calculator`, typically one part of a multipart free response 
   "research/scoring/common-point-losses.md#Answer points"
  ],
  "read_minutes": {
-  "full": 3.5,
-  "brief": 2.9
+  "full": 3.6,
+  "brief": 3.0
  },
  "word_count": {
-  "full": 512,
-  "brief": 427
+  "full": 535,
+  "brief": 450
  }
 }
 ```

@@ -3,20 +3,68 @@
  "version": 1,
  "kind": "concept",
  "target_id": "BC-CON-06018",
- "status": "signed_off",
+ "status": "draft",
  "snapshot_digest": "a6a8ec9d3f59ab8f712e33d30cc22fc64bf2c478fbe7312e3e3118d319c6a42f",
  "source_digest": "563009d84d1a25d240d8c7b680dab17117815089e52ea79aa684049b206fb06a",
  "read_minutes": {
-  "full": 3.7,
-  "brief": 2.9
+  "full": 3.8,
+  "brief": 3.0
  },
  "word_count": {
-  "full": 501,
-  "brief": 393
+  "full": 521,
+  "brief": 413
  },
  "sections": [
   {
    "id": "LSN-CON-06018#s1",
+   "type": "prediction",
+   "bands": [
+    "low",
+    "mid"
+   ],
+   "skills": [
+    "BC-SKL-06062",
+    "BC-SKL-06063",
+    "BC-SKL-06064",
+    "BC-SKL-06065"
+   ],
+   "sources": [
+    "BC-CON-06018",
+    "research/units/unit-06-integration-accumulation.md#6.12 Integrating Using Linear Partial Fractions"
+   ],
+   "evidence_tag": "inferred",
+   "stem": {
+    "text": "Predict. \\(2x^2-5x-3=(2x+1)(x-3)\\). Which sum of simple fractions equals \\(\\frac{7}{2x^2-5x-3}\\)?",
+    "command_verb": "predict"
+   },
+   "format": "mcq",
+   "options": [
+    {
+     "id": "A",
+     "label": "\\(\\frac{7}{2x+1}+\\frac{7}{x-3}\\)",
+     "is_key": false
+    },
+    {
+     "id": "B",
+     "label": "\\(-\\frac{2}{2x+1}+\\frac{1}{x-3}\\)",
+     "is_key": true
+    },
+    {
+     "id": "C",
+     "label": "\\(\\frac{1}{2x+1}-\\frac{2}{x-3}\\)",
+     "is_key": false
+    }
+   ],
+   "resolution": {
+    "text": "Each factor takes one constant numerator. Clearing denominators gives \\(A=-2\\) and \\(B=1\\), and each term integrates to a constant times a logarithm."
+   },
+   "delivery": {
+    "mode": "text",
+    "reason": "rule 6"
+   }
+  },
+  {
+   "id": "LSN-CON-06018#s2",
    "type": "orientation",
    "bands": [
     "low",
@@ -33,7 +81,7 @@
     "research/units/unit-06-integration-accumulation.md#6.12 Integrating Using Linear Partial Fractions"
    ],
    "evidence_tag": "inferred",
-   "text": "A proper rational integrand over distinct linear factors splits into simple fractions. A response factors, solves for the numerators, and writes each term as a constant times ln|factor|.",
+   "text": "A response factors, solves for the numerators, and writes each term as a logarithm.",
    "delivery": {
     "mode": "text",
     "reason": "rule 6: BC-REP-01 only on the concept's skills (unit README delivery map)",
@@ -43,7 +91,7 @@
    }
   },
   {
-   "id": "LSN-CON-06018#s2",
+   "id": "LSN-CON-06018#s3",
    "type": "key_ideas",
    "bands": [
     "low",
@@ -75,7 +123,7 @@
    }
   },
   {
-   "id": "LSN-CON-06018#s3",
+   "id": "LSN-CON-06018#s4",
    "type": "strategy",
    "bands": [
     "low",
@@ -88,17 +136,29 @@
     "BC-SKL-06065"
    ],
    "sources": [
-    "BC-QA-06010"
+    "BC-QA-06010",
+    "BC-ERR-06026"
    ],
    "evidence_tag": "verified",
    "archetype_id": "BC-QA-06010",
-   "cue": "A rational function whose quadratic denominator factors into distinct linears; decomposition or logarithms asked.",
+   "cue": "A rational function over a quadratic with distinct linear factors.",
    "method": "Factor the denominator.",
-   "rival": "Rival: decomposing an improper integrand without dividing (BC-ERR-06026).",
-   "separating_feature": "Compare degrees first: decompose only when the numerator's is lower."
+   "rival": "Decomposing an improper integrand without dividing.",
+   "separating_feature": "Decompose only when the numerator's degree is lower.",
+   "contrast": {
+    "this": {
+     "text": "Find \\(\\int \\frac{9}{2x^2+7x+3}\\,dx\\).",
+     "archetype_id": "BC-QA-06010"
+    },
+    "not_this": {
+     "text": "Find \\(\\int \\frac{2x^2+7x+4}{2x^2+7x+3}\\,dx\\).",
+     "why_not": "The numerator's degree equals the denominator's, so division comes first."
+    },
+    "feature": "Numerator degree below the denominator's: decompose."
+   }
   },
   {
-   "id": "LSN-CON-06018#s4",
+   "id": "LSN-CON-06018#s5",
    "type": "worked_example",
    "bands": [
     "low",
@@ -133,7 +193,7 @@
      "why": "2x^2 - 5x - 3 = (2x + 1)(x - 3), distinct factors."
     },
     {
-     "cue": "One numerator per factor: A/(2x + 1) + B/(x - 3).",
+     "cue": "One numerator per factor.",
      "why": "Decomposition applies.",
      "expression": [
       "Multiply",
@@ -164,7 +224,7 @@
      "relation": "new"
     },
     {
-     "cue": "7 = A(x - 3) + B(2x + 1); x = 3 and x = -1/2.",
+     "cue": "7 = A(x - 3) + B(2x + 1).",
      "why": "Each root clears one term: B = 1, A = -2.",
      "expression": [
       "Add",
@@ -305,7 +365,7 @@
    }
   },
   {
-   "id": "LSN-CON-06018#s5",
+   "id": "LSN-CON-06018#s6",
    "type": "what_a_reader_scores",
    "bands": [
     "low",
@@ -322,7 +382,7 @@
     "BC-PT-99004"
    ],
    "evidence_tag": "verified",
-   "example_id": "LSN-CON-06018#s4",
+   "example_id": "LSN-CON-06018#s5",
    "lines": [
     {
      "point_type_id": "BC-PT-99003",
@@ -415,6 +475,7 @@
     ]
    },
    "relation": "distinct",
+   "fix_prompt": true,
    "possible_reason": {
     "misconception_id": "BC-MIS-06016",
     "text": "differentials carry over unchanged"
@@ -506,6 +567,7 @@
     ]
    },
    "relation": "distinct",
+   "fix_prompt": true,
    "possible_reason": {
     "misconception_id": "BC-MIS-06019",
     "text": "each factor is antidifferentiated on its own"
@@ -600,6 +662,7 @@
     ]
    },
    "relation": "distinct",
+   "fix_prompt": true,
    "possible_reason": {
     "misconception_id": "BC-MIS-06022",
     "text": "selects a technique from a visual resemblance to a worked example"
@@ -697,6 +760,7 @@
     ]
    },
    "relation": "distinct",
+   "fix_prompt": true,
    "possible_reason": {
     "misconception_id": "BC-MIS-07018",
     "text": "removes an absolute value by habit"
@@ -723,7 +787,7 @@
    ],
    "evidence_tag": "inferred",
    "prerequisite_id": "BC-PRQ-06003",
-   "text": "ln of a linear factor carries absolute value bars."
+   "text": "ln carries absolute value bars."
   },
   {
    "id": "LSN-CON-06018#prq-BC-PRQ-06011",
@@ -740,7 +804,7 @@
    ],
    "evidence_tag": "inferred",
    "prerequisite_id": "BC-PRQ-06011",
-   "text": "Clear denominators, then substitute each root to solve for the numerators."
+   "text": "Clear denominators, then substitute each root."
   }
  ],
  "checks": [
@@ -760,7 +824,7 @@
     "second_shift": -3,
     "weight": -1
    },
-   "completes": "LSN-CON-06018#s4",
+   "completes": "LSN-CON-06018#s5",
    "stem": {
     "text": "7/(2x^2 - 5x - 3) = -2/(2x + 1) + 1/(x - 3). Antidifferentiate.",
     "command_verb": "find"
@@ -1277,19 +1341,20 @@
   }
  ],
  "refresher": [
-  "LSN-CON-06018#s2",
+  "LSN-CON-06018#s3",
   "LSN-CON-06018#err-BC-ERR-06019",
   "LSN-CON-06018#err-BC-ERR-06022",
   "LSN-CON-06018#err-BC-ERR-06026",
   "LSN-CON-06018#err-BC-ERR-07030",
-  "LSN-CON-06018#s4"
+  "LSN-CON-06018#s5"
  ],
+ "no_figure_reason": "The skills carry the symbolic representation only, and the key idea is a decomposition procedure, not a process to draw, so no figure fits.",
  "provenance": {
   "author": "tools/lesson_transcribe.py",
-  "prompt_version": "generator/lesson_v1",
+  "prompt_version": "generator/lesson_v2",
   "design_path": "docs/lessons/unit-06/LSN-CON-06018.md",
-  "signed_off_by": "claude-opus-5-5",
-  "signed_off_at": "2026-09-29",
+  "signed_off_by": null,
+  "signed_off_at": null,
   "not_human": true
  }
 }

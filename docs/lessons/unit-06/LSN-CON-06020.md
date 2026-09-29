@@ -9,6 +9,10 @@ purpose: Authoring spec for the concept lesson on BC-CON-06020, choosing an anti
 
 Concept BC-CON-06020 (skills BC-SKL-06071 to BC-SKL-06074), topic 6.14 of Unit 6, loaded by one archetype, BC-QA-06016 (family procedure-selection), plan 15's technique-selection drill archetype. Its hard parents are BC-CON-06015 to BC-CON-06019, so it is last in the unit (docs/lessons/unit-06/README.md, section 1). It teaches the technique contrast that no printed confusable set holds (unit README section 3).
 
+## Prediction
+
+One multiple choice question on worked example 1's own integrand, \(3x\,e^{-2x}\), asked before the rule is shown: which technique fits. The key is integration by parts, the technique of ex-1's third step. The distractors are substitution with \(u=-2x\), the path of BC-ERR-06020, and partial fractions, a technique of the unit's other concepts. The resolution, shown beside the choice on the key idea screen, states that the linear factor is not a constant multiple of the exponent's derivative, so substitution's precondition fails, and that a product of unlike factors selects parts, with no verdict word. Sources: BC-CON-06020 and the topic 6.14 section the key ideas cite [inferred].
+
 ## Orientation
 
 Served text, from BC-CON-06020 `description_plain` and the topic's Assessment behaviour paragraph (research/units/unit-06-integration-accumulation.md#6.14 Selecting Techniques for Antidifferentiation): an unsignalled integrand, the technique named from its structure and the rival ruled out, then the setup and the antiderivative. No count, no frequency.
@@ -25,18 +29,21 @@ BC-SKL-06071 maps to BC-EK-FUN-6C2 and BC-EK-FUN-6D3, BC-SKL-06072 to FUN-6C2, B
 
 BC-QA-06016 (research/question-analysis/question-archetypes.md#BC-QA-06016 Selecting an antidifferentiation technique from the form of the integrand). `typical_wording`: "find the indefinite integral, showing the work that leads to your answer". `asked_to_produce`: an indefinite integral with supporting work, the technique the integrand's structure calls for. `common_givens`: a product of a linear factor and a cosine. No official examples are listed. The topic's Assessment behaviour: MCQ forms ask which technique applies; FRQ forms present an unsignalled integrand and score the setup and the antiderivative separately (sg-24:18).
 
+Contrast pair on st-1: the this stem is on BC-QA-06016, a linear factor times an exponential; the not this stem has the exponent \(3x^2\), whose derivative is a constant multiple of the linear factor, the near miss from substitution (BC-CON-06015) that the archetype's rival, substituting without the inner derivative (BC-ERR-06020), confuses with it. The separating feature is whether the linear factor is the derivative of the exponent.
+
 The signal is the absence of a named technique: "find the indefinite integral" with nothing else. The student reads the integrand's shape: a composite with its inner derivative (substitution), unlike factors multiplied (parts), numerator degree at least the denominator's (division), a proper fraction over distinct linears (partial fractions), an infinite limit or unbounded integrand (improper). A stem that names the technique or supplies u belongs to that technique's own lesson.
 
 ## Method choice
 
 One strategy block, both bands.
 
-- st-1, BC-QA-06016. Cue from `common_givens` and `asked_to_produce`. Method, `expected_solution_path[0]`: inspect the integrand for structural markers. Rival from `wrong_approaches`: substituting for an inner expression whose derivative is absent (BC-ERR-06020). Separating feature: the linear factor is not the derivative of the exponent, so parts, not substitution. The block teaches selection from the integrand's shape, as the unit README asks of BC-QA-06016.
+- st-1, BC-QA-06016. Cue from `common_givens` and `asked_to_produce`. Method, `expected_solution_path[0]`: inspect the integrand for structural markers. Rival from `wrong_approaches`: substituting for an inner expression whose derivative is absent, cited in the block's `sources` (BC-ERR-06020), not in its text. Separating feature: the linear factor is not the derivative of the exponent, so parts, not substitution. The block teaches selection from the integrand's shape, as the unit README asks of BC-QA-06016.
 
 ## Solution path
 
 - ex-1, BC-QA-06016, both bands, no calculator. Draw from `parameter_spec`: structure product, multiplier 3, rate 2, rate_sign -1, shift 1, constant 1; integrand 3x e^(-2x). Steps follow `expected_solution_path`: inspect (no value); rule out substitution (no value); parts expression (new); finished antiderivative (equivalent), with C named in the cue.
 - ex-2, BC-QA-06016, low band only. Draw: structure improper_rational, multiplier 4, rate 1, rate_sign 1, shift -2, constant 5; integrand 4(x^2 + 5)/(x - 2), remainder 9. Steps: inspect (no value); integrand (new); divided form (equivalent); antiderivative with C (integrate). The two examples show the same inspection selecting two different techniques.
+- ex-2 is faded (`fade_from` 3). Steps 1 and 2 are shown: the marker is named and the integrand is written, which is the valued step before the fade. The student then writes the divided form and the antiderivative, steps 3 and 4, before they are revealed. The fade falls there because the inspection is the part ex-1 has already modelled, and the division and the antiderivative are the work the student can now produce.
 
 No published BC-QA-06016 item carries either draw. A fluent solver holds the inspection in the head and writes the first line of the chosen technique (unit README section 5) [inferred].
 
@@ -46,7 +53,7 @@ None. BC-QA-06016 carries no `point_types`, so no reader checklist and no point 
 
 ## Traps
 
-Both active errors meeting the skills, in the bundle's order: BC-ERR-06020, BC-ERR-06022. Both bands show both. On ex-1's draw:
+Both active errors meeting the skills, in the bundle's order: BC-ERR-06020, BC-ERR-06022. Both bands show both. Both wrong steps differ from the right step as expressions, so each block is a fix prompt (`fix_prompt` true). On ex-1's draw:
 
 - err-BC-ERR-06020: u = -2x with 3x treated as a constant, against the parts result. Possible reason, words from BC-MIS-06017.
 - err-BC-ERR-06022: (3x^2/2)(-(1/2)e^(-2x)), against the parts result. Possible reason, words from BC-MIS-06019.
@@ -73,11 +80,13 @@ BC-QA-06016 is `no_calculator`, typically one part of a multipart free response 
 
 - orientation, ki-1, ki-2, ki-3: text. Rule 6: BC-REP-01 on BC-SKL-06071 to 06073, and BC-REP-09 on BC-SKL-06074 is not figure-bearing (unit README delivery map).
 - ex-1, ex-2 and the two error blocks: step_reveal. Rule 1.
+- The prediction: text, on the key idea screen's resolution.
+- No drawn block: none of rules 2 to 5 applies. The skills carry BC-REP-01 and BC-REP-09, neither figure-bearing, and the key ideas classify integrands by structure, not a process to draw. The machine record states `no_figure_reason`.
 
 ## Band plan
 
-- Low (full): orientation, ki-1, ki-2, ki-3, st-1, ex-1, ex-2, two error blocks, chk-1 to chk-3, the bridge. 471 words, 3.2 minutes (cap 900 and 6).
-- Mid (brief): orientation, ki-1, ki-2, st-1, ex-1, both error blocks, chk-1, chk-2, the bridge. 353 words, 2.4 minutes (cap 450 and 3).
+- Low (full), in served order: prediction, orientation, the bridge, ki-1, ki-2, ki-3, st-1 with its contrast pair, ex-1, chk-1, err-BC-ERR-06020, err-BC-ERR-06022, ex-2 faded, chk-2, chk-3. 534 words, 3.6 minutes (cap 900 and 6).
+- Mid (brief): prediction, orientation, the bridge, ki-1, ki-2, st-1 with its contrast pair, ex-1, chk-1, both error blocks, chk-2. 416 words, 2.8 minutes (cap 450 and 3). Nothing was shortened to fit and no quote or scoring tag was dropped.
 - Refresher: ki-1, ki-2, both error blocks, ex-1.
 
 ## Sources
@@ -109,6 +118,37 @@ BC-QA-06016 is `no_calculator`, typically one part of a multipart free response 
   "BC-SKL-06073",
   "BC-SKL-06074"
  ],
+ "prediction": {
+  "id": "pr-1",
+  "stem": {
+   "text": "Predict. Which technique fits \\(\\int 3x\\,e^{-2x}\\,dx\\)?",
+   "command_verb": "predict"
+  },
+  "format": "mcq",
+  "options": [
+   {
+    "id": "A",
+    "label": "Substitution with \\(u=-2x\\)",
+    "is_key": false
+   },
+   {
+    "id": "B",
+    "label": "Integration by parts",
+    "is_key": true
+   },
+   {
+    "id": "C",
+    "label": "Partial fractions",
+    "is_key": false
+   }
+  ],
+  "resolution": "\\(3x\\) is not a constant multiple of the derivative of \\(-2x\\), so substitution's precondition fails. A product of unlike factors selects parts.",
+  "sources": [
+   "BC-CON-06020",
+   "research/units/unit-06-integration-accumulation.md#6.14 Selecting Techniques for Antidifferentiation"
+  ]
+ },
+ "no_figure_reason": "The skills carry symbolic and numerical-value representations only, and the key ideas classify integrands by structure, not a process to draw, so no figure fits.",
  "orientation": {
   "text": "When no technique is named, the integrand's structure picks one. A response names the marker, rules out the techniques whose preconditions fail, then writes the chosen technique's first line.",
   "sources": [
@@ -165,12 +205,24 @@ BC-QA-06016 is `no_calculator`, typically one part of a multipart free response 
    "archetype_id": "BC-QA-06016",
    "cue": "An unsignalled integrand, a product of a linear factor and a transcendental factor; an indefinite integral asked.",
    "method": "Inspect the integrand for structural markers.",
-   "rival": "Rival: substituting for the exponent although its derivative is not the other factor (BC-ERR-06020).",
+   "rival": "Substituting for the exponent although its derivative is not the other factor.",
    "separating_feature": "The linear factor is not the inner derivative, so parts, not substitution.",
    "sources": [
-    "BC-QA-06016"
+    "BC-QA-06016",
+    "BC-ERR-06020"
    ],
-   "evidence_tag": "verified"
+   "evidence_tag": "verified",
+   "contrast": {
+    "this": {
+     "text": "Find \\(\\int 4x\\,e^{3x}\\,dx\\).",
+     "archetype_id": "BC-QA-06016"
+    },
+    "not_this": {
+     "text": "Find \\(\\int 4x\\,e^{3x^2}\\,dx\\).",
+     "why_not": "\\(4x\\) is a constant multiple of the derivative of \\(3x^2\\), so substitution applies."
+    },
+    "feature": "Whether the linear factor is the derivative of the exponent."
+   }
   }
  ],
  "worked_examples": [
@@ -227,6 +279,7 @@ BC-QA-06016 is `no_calculator`, typically one part of a multipart free response 
    "bands": [
     "low"
    ],
+   "fade_from": 3,
    "parameter_draw": {
     "structure": "improper_rational",
     "multiplier": 4,
@@ -293,7 +346,8 @@ BC-QA-06016 is `no_calculator`, typically one part of a multipart free response 
    "sources": [
     "BC-ERR-06020",
     "BC-MIS-06017"
-   ]
+   ],
+   "fix_prompt": true
   },
   {
    "error_id": "BC-ERR-06022",
@@ -315,7 +369,8 @@ BC-QA-06016 is `no_calculator`, typically one part of a multipart free response 
    "sources": [
     "BC-ERR-06022",
     "BC-MIS-06019"
-   ]
+   ],
+   "fix_prompt": true
   }
  ],
  "representations": null,
@@ -614,12 +669,12 @@ BC-QA-06016 is `no_calculator`, typically one part of a multipart free response 
   "research/exam/exam-structure.md#Section and part layout"
  ],
  "read_minutes": {
-  "full": 3.2,
-  "brief": 2.4
+  "full": 3.6,
+  "brief": 2.8
  },
  "word_count": {
-  "full": 471,
-  "brief": 353
+  "full": 534,
+  "brief": 416
  }
 }
 ```

@@ -9,9 +9,13 @@ purpose: Authoring spec for the concept lesson on BC-CON-06019, improper integra
 
 Concept BC-CON-06019 (skills BC-SKL-06066 to BC-SKL-06070), topic 6.13 of Unit 6, loaded by one archetype, BC-QA-06011 (family improper-integral). Its hard parents are BC-CON-06011 and BC-CON-06012, with BC-SKL-01054 and BC-TOP-0102 (limits at infinity) outside the unit (docs/lessons/unit-06/README.md, section 1).
 
+## Prediction
+
+One multiple choice question on worked example 1's own integrand, \(\frac{6x}{(x^2+2)^2}\) from 1, asked before the rule is shown: given that the area to \(b\) is \(1-\frac{3}{b^2+2}\), what the area out to infinity is. The key is 1, the limit of ex-1's third valued step as \(b\) grows, which is ex-1's answer. The distractors are an undefined area because the interval is infinite, and the term that leaves \(b\) out. The resolution, shown beside the choice on the key idea screen, states that an improper integral is the limit of the integrals to \(b\) and that a finite limit means convergence, with no verdict word. Sources: BC-CON-06019 and the topic 6.13 section the key idea cites [inferred].
+
 ## Orientation
 
-Served text, from BC-CON-06019 `description_plain` and the topic's Assessment behaviour paragraph (research/units/unit-06-integration-accumulation.md#6.13 Evaluating Improper Integrals): the offending limit replaced by a variable, limit notation throughout, and a conclusion stated as convergence or divergence rather than a bare number. No count, no frequency.
+Served text (16 words), from BC-CON-06019 `description_plain` and the topic's Assessment behaviour paragraph (research/units/unit-06-integration-accumulation.md#6.13 Evaluating Improper Integrals): limit notation carried throughout and a conclusion stated as convergence or divergence rather than a bare number. No count, no frequency.
 
 ## Key ideas
 
@@ -26,16 +30,19 @@ No quotes: the brief band has no room.
 
 BC-QA-06011 (research/question-analysis/question-archetypes.md#BC-QA-06011 Improper integral convergence or divergence). `typical_wording`: "evaluate the improper integral of the given expression, or show that the integral diverges". `common_givens`: an explicit integrand on an infinite interval, an integrand unbounded at a point of the interval, a family of functions with the parameter fixed at a stated value. `asked_to_produce`: the improper integral written as a limit of definite integrals, an antiderivative, a value or a statement of divergence with a reason, a parameter value that gives the integral a stated value. Official examples: BC-FRQ-2019-Q5-C, BC-FRQ-2023-Q5-B, BC-FRQ-2026-Q5-D, BC-MCQ-SAMPLE-019, BC-MCQ-PE2012-025.
 
-The signal: ∞ as a limit of integration, or a denominator vanishing at an endpoint. The words "or show that the integral diverges" confirm it. What says "not this concept": finite limits with an integrand bounded on the interval (an ordinary definite integral, BC-CON-06012).
+The signal: ∞ as a limit of integration, or a denominator vanishing at an endpoint. The words "or show that the integral diverges" confirm it. Contrast pair on st-1: the this stem is on BC-QA-06011, a rational integrand on an infinite interval; the not this stem is the same integrand on a finite interval, the ordinary definite integral (BC-CON-06012) that the near miss of computing with infinity would treat alike. The separating feature is an infinite limit or an unbounded integrand.
+
+What says "not this concept": finite limits with an integrand bounded on the interval (an ordinary definite integral, BC-CON-06012).
 
 ## Method choice
 
 One strategy block, both bands.
 
-- st-1, BC-QA-06011. Cue from `common_givens` and `asked_to_produce`. Method, `expected_solution_path[0]`: name the impropriety and replace the offending limit by a variable. Rival from `wrong_approaches`: substituting ∞ and computing with it (BC-ERR-99007). Separating feature: ∞ is not a value, so only the limit of ordinary integrals is written. First written line: lim as b → ∞ of the integral from 1 to b.
+- st-1, BC-QA-06011. Cue from `common_givens` and `asked_to_produce`. Method, `expected_solution_path[0]`: name the impropriety and replace the offending limit by a variable. Rival from `wrong_approaches`: substituting ∞ and computing with it, cited in the block's `sources` (BC-ERR-99007), not in its text. Separating feature: ∞ is not a value, so only the limit of ordinary integrals is written. First written line: lim as b → ∞ of the integral from 1 to b.
 
 ## Solution path
 
+- There is no example 2, so nothing is faded and there is no `fade_from`.
 - ex-1, BC-QA-06011, both bands, no calculator. Draw from `parameter_spec`: impropriety infinite, outcome converges, coefficient 6, degree 2, lower 1, shift 2, root 1, gap 1; integrand 6x/(x^2 + 2)^2 on [1, ∞). No published BC-QA-06011 item carries this draw.
 - Steps follow `expected_solution_path`: name the impropriety (no value); the integral to b (new); the antiderivative evaluated from 1 to b, 1 - 3/(b^2 + 2) (equivalent, BC-PT-99003); the limit, 1 (limit in b at ∞, BC-PT-99004).
 
@@ -47,7 +54,7 @@ BC-QA-06011 lists BC-PT-99053, BC-PT-99003, BC-PT-99005 and BC-PT-99004. ex-1 ta
 
 ## Traps
 
-All four active errors meeting the skills, in the bundle's order: BC-ERR-06018, BC-ERR-06019, BC-ERR-99007, BC-ERR-06025. Mid band shows the first two.
+All four active errors meeting the skills, in the bundle's order: BC-ERR-06018, BC-ERR-06019, BC-ERR-99007, BC-ERR-06025. Mid band shows the first two. BC-ERR-06018, BC-ERR-06019 and BC-ERR-06025 differ from the right step as expressions, so they are fix prompts (`fix_prompt` true); BC-ERR-99007 is equivalent, so it keeps the reveal form (`fix_prompt` false).
 
 - err-BC-ERR-06018: -3/u evaluated at x = 1 and b, giving 3 - 3/b, against the u limits. No possible reason line.
 - err-BC-ERR-06019: 6x dx read as du, 2 - 6/(b^2 + 2). No possible reason line.
@@ -78,11 +85,12 @@ BC-QA-06011 is `no_calculator`, typically one part of a multipart free response 
 - ki-1: figure. Rule 4: BC-REP-02 on BC-QA-06011 and the topic's graph-to-value conversion; two panels, an infinite interval and a vertical asymptote, labels inside [inferred].
 - ki-2: motion. Rule 2: the upper limit b moving outward with the area approaching 1; reduced motion steps by key press; the fallback is three frames side by side [inferred].
 - ex-1 and the four error blocks: step_reveal. Rule 1.
+- The prediction: text, on the key idea screen's resolution.
 
 ## Band plan
 
-- Low (full): orientation, ki-1, ki-2, st-1, ex-1 with its reader lines, four error blocks, chk-1 to chk-3. 563 words, 3.8 minutes (cap 900 and 6).
-- Mid (brief): orientation, ki-1, ki-2, st-1, ex-1 with its reader lines, err-BC-ERR-06018, err-BC-ERR-06019, chk-1, chk-2. 437 words, 3.0 minutes (cap 450 and 3).
+- Low (full), in served order: prediction, orientation, ki-1 (figure), ki-2 (motion), st-1 with its contrast pair, ex-1 with its reader lines, chk-1, four error blocks, chk-2, chk-3. 569 words, 3.8 minutes (cap 900 and 6). There is no example 2, so nothing is faded, and no bridges (no BC-PRQ parent).
+- Mid (brief): prediction, orientation, ki-1, ki-2, st-1 with its contrast pair, ex-1 with its reader lines, chk-1, err-BC-ERR-06018, err-BC-ERR-06019, chk-2. 450 words, 3.0 minutes (cap 450 and 3). The orientation, both key ideas, the strategy cue and separating feature, the prediction options and two cues of ex-1 were shortened to fit; no anchor quote (there was none) and no scoring tag was dropped (BC-PT-99053 was already untagged).
 - Refresher: ki-1, ki-2, the four error blocks, ex-1.
 
 ## Sources
@@ -115,8 +123,38 @@ BC-QA-06011 is `no_calculator`, typically one part of a multipart free response 
   "BC-SKL-06069",
   "BC-SKL-06070"
  ],
+ "prediction": {
+  "id": "pr-1",
+  "stem": {
+   "text": "Predict. The area under \\(y=\\frac{6x}{(x^2+2)^2}\\) from 1 to \\(b\\) is \\(1-\\frac{3}{b^2+2}\\). What is the area out to infinity?",
+   "command_verb": "predict"
+  },
+  "format": "mcq",
+  "options": [
+   {
+    "id": "A",
+    "label": "Undefined, the interval is infinite",
+    "is_key": false
+   },
+   {
+    "id": "B",
+    "label": "1, the limit as \\(b\\) grows",
+    "is_key": true
+   },
+   {
+    "id": "C",
+    "label": "3, the term without \\(b\\)",
+    "is_key": false
+   }
+  ],
+  "resolution": "An improper integral is the limit of the integrals to \\(b\\): \\(1-\\frac{3}{b^2+2}\\to 1\\), so it converges to 1.",
+  "sources": [
+   "BC-CON-06019",
+   "research/units/unit-06-integration-accumulation.md#6.13 Evaluating Improper Integrals"
+  ]
+ },
  "orientation": {
-  "text": "An infinite limit or an unbounded integrand makes an integral improper. A response replaces the offending limit by a variable, carries the limit on every line, and states convergence with a value or divergence.",
+  "text": "A response carries the limit on every line and concludes convergence with a value, or divergence.",
   "sources": [
    "BC-CON-06019",
    "research/units/unit-06-integration-accumulation.md#6.13 Evaluating Improper Integrals"
@@ -127,7 +165,7 @@ BC-QA-06011 is `no_calculator`, typically one part of a multipart free response 
    "id": "ki-1",
    "ek_id": "BC-EK-LIM-6A1",
    "depth": "core",
-   "text": "An integral is improper when a limit of integration is infinite or the integrand is unbounded on the interval. Name which, and where.",
+   "text": "An integral is improper when a limit is infinite or the integrand is unbounded.",
    "notation": "limit as b approaches infinity",
    "quote": null,
    "sources": [
@@ -140,7 +178,7 @@ BC-QA-06011 is `no_calculator`, typically one part of a multipart free response 
    "id": "ki-2",
    "ek_id": "BC-EK-LIM-6A2",
    "depth": "core",
-   "text": "Replace the offending limit by b and take the limit of the definite integral as b moves out. A finite limit means convergence; otherwise the integral diverges.",
+   "text": "Replace the offending limit by b; a finite limit as b moves out means convergence.",
    "notation": "lim_(b→∞) ∫_a^b f(x) dx",
    "quote": null,
    "sources": [
@@ -154,14 +192,26 @@ BC-QA-06011 is `no_calculator`, typically one part of a multipart free response 
   {
    "id": "st-1",
    "archetype_id": "BC-QA-06011",
-   "cue": "An integrand on an infinite interval, or unbounded inside it; a value or divergence asked.",
+   "cue": "An integrand on an infinite interval, or unbounded inside it.",
    "method": "Name the impropriety and replace the offending limit by a variable.",
-   "rival": "Rival: computing with ∞ as a number (BC-ERR-99007).",
-   "separating_feature": "∞ is not a value: only a limit of ordinary integrals is written.",
+   "rival": "Computing with ∞ as a number.",
+   "separating_feature": "∞ is not a value.",
    "sources": [
-    "BC-QA-06011"
+    "BC-QA-06011",
+    "BC-ERR-99007"
    ],
-   "evidence_tag": "verified"
+   "evidence_tag": "verified",
+   "contrast": {
+    "this": {
+     "text": "Evaluate \\(\\int_2^{\\infty} \\frac{4x}{(x^2+1)^2}\\,dx\\).",
+     "archetype_id": "BC-QA-06011"
+    },
+    "not_this": {
+     "text": "Evaluate \\(\\int_2^{5} \\frac{4x}{(x^2+1)^2}\\,dx\\).",
+     "why_not": "Finite limits, bounded integrand: an ordinary definite integral."
+    },
+    "feature": "An infinite limit or an unbounded integrand."
+   }
   }
  ],
  "worked_examples": [
@@ -194,12 +244,12 @@ BC-QA-06011 is `no_calculator`, typically one part of a multipart free response 
     },
     {
      "cue": "Write lim_(b→∞) of the integral to b.",
-     "why": "Limit notation on every line (sg-23:17).",
+     "why": "Limit notation on every line.",
      "expr": "Integral(6*x/(x**2 + 2)**2, (x, 1, b))",
      "relation": "new"
     },
     {
-     "cue": "u = x^2 + 2, 6x dx = 3 du: antiderivative -3/(x^2 + 2).",
+     "cue": "u = x^2 + 2: antiderivative -3/(x^2 + 2).",
      "why": "Evaluated from 1 to b.",
      "expr": "3/3 - 3/(b**2 + 2)",
      "relation": "equivalent",
@@ -257,7 +307,8 @@ BC-QA-06011 is `no_calculator`, typically one part of a multipart free response 
    "possible_reason": null,
    "sources": [
     "BC-ERR-06018"
-   ]
+   ],
+   "fix_prompt": true
   },
   {
    "error_id": "BC-ERR-06019",
@@ -275,7 +326,8 @@ BC-QA-06011 is `no_calculator`, typically one part of a multipart free response 
    "possible_reason": null,
    "sources": [
     "BC-ERR-06019"
-   ]
+   ],
+   "fix_prompt": true
   },
   {
    "error_id": "BC-ERR-99007",
@@ -297,7 +349,8 @@ BC-QA-06011 is `no_calculator`, typically one part of a multipart free response 
    "sources": [
     "BC-ERR-99007",
     "BC-MIS-99008"
-   ]
+   ],
+   "fix_prompt": false
   },
   {
    "error_id": "BC-ERR-06025",
@@ -316,7 +369,8 @@ BC-QA-06011 is `no_calculator`, typically one part of a multipart free response 
    "sources": [
     "BC-ERR-06025",
     "BC-MIS-06021"
-   ]
+   ],
+   "fix_prompt": true
   }
  ],
  "representations": null,
@@ -770,8 +824,8 @@ BC-QA-06011 is `no_calculator`, typically one part of a multipart free response 
   "brief": 3.0
  },
  "word_count": {
-  "full": 556,
-  "brief": 437
+  "full": 569,
+  "brief": 450
  }
 }
 ```

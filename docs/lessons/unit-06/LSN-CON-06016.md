@@ -9,9 +9,13 @@ purpose: Authoring spec for the concept lesson on BC-CON-06016, long division an
 
 Concept BC-CON-06016 (skills BC-SKL-06053 to BC-SKL-06056), topic 6.10 of Unit 6, loaded by BC-QA-06016 (family procedure-selection), BC-QA-06018 and BC-QA-06019 (family antidifferentiation-technique). Its hard parents are BC-CON-06014 and BC-CON-06015 (docs/lessons/unit-06/README.md, section 1).
 
+## Prediction
+
+One multiple choice question on worked example 1's own integrand, \(\frac{2(x^2+3)}{x+2}\), asked before the rule is shown: which first step makes it antidifferentiable term by term. The key is division, whose result is ex-1's second valued step, \(2x-4+\frac{14}{x+2}\). The distractors are the two errors of the concept's traps, splitting into \(\frac{A}{x+2}\) without dividing (BC-ERR-06026) and antidifferentiating top and bottom apart (BC-ERR-06022). The resolution, shown beside the choice on the key idea screen, states what the degrees give and that decomposition needs a proper fraction, with no verdict word. Sources: BC-CON-06016 and the topic 6.10 section the key idea cites [inferred].
+
 ## Orientation
 
-Served text, from BC-CON-06016 `description_plain` and the topic's Assessment behaviour paragraph (research/units/unit-06-integration-accumulation.md#6.10 Integrating Functions Using Long Division and Completing the Square): an improper rational integrand or a quadratic denominator is rewritten before any antiderivative is written. No count, no frequency.
+Served text (16 words), from BC-CON-06016 `description_plain` and the topic's Assessment behaviour paragraph (research/units/unit-06-integration-accumulation.md#6.10 Integrating Functions Using Long Division and Completing the Square): the integrand is rewritten, by division or completing the square, before any antiderivative is written. No count, no frequency.
 
 ## Key ideas
 
@@ -25,18 +29,21 @@ BC-QA-06016 (research/question-analysis/question-archetypes.md#BC-QA-06016 Selec
 
 BC-QA-06018 (research/question-analysis/question-archetypes.md#BC-QA-06018 Antiderivative matched to an inverse trigonometric form, directly or after completing the square): a constant over a quadratic or its square root, completed to a square for arctan or arcsin. BC-QA-06019 (research/question-analysis/question-archetypes.md#BC-QA-06019 Antiderivative found after splitting a fraction or expanding a product, and confirmed by differentiating): a product of two binomials or a fraction whose numerator is a sum, expanded or split into powers.
 
-The signal is the shape of the integrand, read before any technique: compare the degrees of numerator and denominator; look for an expanded quadratic under a constant. What says "not this concept": a constant multiple of an inner derivative multiplying a composite (substitution, BC-CON-06015), a proper fraction over distinct linear factors (partial fractions, BC-CON-06018), a product of unlike factors (parts, BC-CON-06017).
+The signal is the shape of the integrand, read before any technique: compare the degrees of numerator and denominator; look for an expanded quadratic under a constant. Contrast pair on st-1: the this stem is on BC-QA-06016, an improper rational integrand; the not this stem is a proper fraction over distinct linear factors, the near miss from partial fractions (BC-CON-06018) that the rival method of the archetype, decomposing without dividing (BC-ERR-06026), invites. The separating feature is the degree comparison.
+
+What says "not this concept": a constant multiple of an inner derivative multiplying a composite (substitution, BC-CON-06015), a proper fraction over distinct linear factors (partial fractions, BC-CON-06018), a product of unlike factors (parts, BC-CON-06017).
 
 ## Method choice
 
 Two families load the skills, so two strategy blocks; st-1 both bands, st-2 low band.
 
-- st-1, BC-QA-06016. Method, `expected_solution_path[0]`: inspect the integrand for structural markers, here the two degrees. Rival from `wrong_approaches`: decomposing an improper rational integrand without dividing first (BC-ERR-06026). Separating feature: numerator degree at least the denominator's. `evidence_tag` inferred: the cue comes from `asked_to_produce` and the spec notes, since `common_givens` names only the product form [inferred].
+- st-1, BC-QA-06016. Method, `expected_solution_path[0]`: inspect the integrand for structural markers, here the two degrees. Rival from `wrong_approaches`: decomposing an improper rational integrand without dividing first, cited in the block's `sources` (BC-ERR-06026), not in its text. Separating feature: numerator degree at least the denominator's. `evidence_tag` inferred: the cue comes from `asked_to_produce` and the spec notes, since `common_givens` names only the product form [inferred].
 - st-2, BC-QA-06018. Method, `expected_solution_path[0]`: complete the square in the quadratic when it is expanded. Rival from `wrong_approaches`: forcing a logarithm by treating the quadratic as u without its derivative present. Separating feature: the numerator is a constant, not the quadratic's derivative.
 
 ## Solution path
 
 - ex-1, BC-QA-06016, both bands, no calculator. Draw from `parameter_spec`: structure improper_rational, multiplier 2, rate 2, rate_sign 1, shift 2, constant 3; integrand 2(x^2 + 3)/(x + 2), derived remainder 7. No published BC-QA-06016 item carries this draw.
+- There is no example 2, so nothing is faded and there is no `fade_from`.
 - Steps follow `expected_solution_path`: inspect the degrees (no value); the integrand (new); the divided form 2x - 4 + 14/(x + 2) (equivalent); the antiderivative with C (integrate). The domain x > -2 lets ln(x + 2) stand for ln|x + 2| in the SymPy strings [inferred].
 
 A fluent solver writes the divided form and the antiderivative; the degree comparison is held in the head [inferred].
@@ -47,7 +54,7 @@ None. BC-QA-06016, BC-QA-06018 and BC-QA-06019 carry no `point_types`, so no rea
 
 ## Traps
 
-All three active errors meeting the skills, in the bundle's order: BC-ERR-06022, BC-ERR-06026, BC-ERR-06033. Mid band shows the first two. On ex-1's draw:
+All three active errors meeting the skills, in the bundle's order: BC-ERR-06022, BC-ERR-06026, BC-ERR-06033. Mid band shows the first two. All three wrong steps differ from the right step as expressions, so each block is a fix prompt (`fix_prompt` true). On ex-1's draw:
 
 - err-BC-ERR-06022: numerator and 2/(x + 2) antidifferentiated apart and multiplied, against the divided form's antiderivative. Possible reason, words from BC-MIS-06019.
 - err-BC-ERR-06026: the fraction split as A/(x + 2) with A = 14, losing the quotient 2x - 4. Possible reason, words from BC-MIS-06022.
@@ -75,11 +82,13 @@ BC-QA-06016 is `no_calculator`, typically one part of a multipart free response 
 
 - orientation, ki-1: text. Rule 6: the skills carry BC-REP-01 alone, and the unit README delivery map puts the rearrangements in text and step reveal.
 - ex-1 and the three error blocks: step_reveal. Rule 1.
+- The prediction: text, on the key idea screen's resolution.
+- No drawn block: none of rules 2 to 5 applies. The skills carry BC-REP-01 alone, which is not figure-bearing, and the key idea states a rewriting rule, not a process to draw. The machine record states `no_figure_reason`.
 
 ## Band plan
 
-- Low (full): orientation, ki-1, st-1, st-2, ex-1, three error blocks, chk-1 to chk-3, four bridges. 510 words, 3.4 minutes (cap 900 and 6).
-- Mid (brief): orientation, ki-1, st-1, ex-1, err-BC-ERR-06022, err-BC-ERR-06026, chk-1, chk-2, four bridges. 395 words, 2.7 minutes (cap 450 and 3).
+- Low (full), in served order: prediction, orientation, the four bridges, ki-1, st-1 with its contrast pair, st-2, ex-1, chk-1, err-BC-ERR-06022, err-BC-ERR-06026, err-BC-ERR-06033, chk-2, chk-3. 555 words, 3.7 minutes (cap 900 and 6). There is no example 2, so nothing is faded, and no scoring lines (no `point_types`).
+- Mid (brief): prediction, orientation, the four bridges, ki-1, st-1 with its contrast pair, ex-1, chk-1, err-BC-ERR-06022, err-BC-ERR-06026, chk-2. 441 words, 3.0 minutes (cap 450 and 3). The orientation, cue, bridges and separating feature were shortened to fit; no quote or scoring tag was dropped (there was none).
 - Refresher: ki-1, the three error blocks, ex-1.
 
 ## Sources
@@ -112,8 +121,39 @@ BC-QA-06016 is `no_calculator`, typically one part of a multipart free response 
   "BC-SKL-06055",
   "BC-SKL-06056"
  ],
+ "prediction": {
+  "id": "pr-1",
+  "stem": {
+   "text": "Predict. \\(\\frac{2(x^2+3)}{x+2}\\) has numerator degree 2 over denominator degree 1. Which first step turns it into terms that can be antidifferentiated one at a time?",
+   "command_verb": "predict"
+  },
+  "format": "mcq",
+  "options": [
+   {
+    "id": "A",
+    "label": "Split it as \\(\\frac{A}{x+2}\\) and solve for \\(A\\)",
+    "is_key": false
+   },
+   {
+    "id": "B",
+    "label": "Divide, giving a polynomial plus a remainder over \\(x+2\\)",
+    "is_key": true
+   },
+   {
+    "id": "C",
+    "label": "Antidifferentiate the numerator and denominator separately",
+    "is_key": false
+   }
+  ],
+  "resolution": "Degree 2 is at least degree 1, so division gives \\(2x-4+\\frac{14}{x+2}\\), and each term is basic. Decomposition needs a proper fraction.",
+  "sources": [
+   "BC-CON-06016",
+   "research/units/unit-06-integration-accumulation.md#6.10 Integrating Functions Using Long Division and Completing the Square"
+  ]
+ },
+ "no_figure_reason": "The skills carry only symbolic expressions and the key idea is a rewriting rule, not a process to draw, so no figure fits.",
  "orientation": {
-  "text": "When the numerator's degree is at least the denominator's, or a quadratic hides a square, the integrand is rewritten first. A response shows the divided or completed-square form, then antidifferentiates each piece.",
+  "text": "A response rewrites the integrand first, by division or completing the square, then antidifferentiates each piece.",
   "sources": [
    "BC-CON-06016",
    "research/units/unit-06-integration-accumulation.md#6.10 Integrating Functions Using Long Division and Completing the Square"
@@ -141,21 +181,33 @@ BC-QA-06016 is `no_calculator`, typically one part of a multipart free response 
   {
    "id": "st-1",
    "archetype_id": "BC-QA-06016",
-   "cue": "A rational integrand whose numerator degree is at least the denominator's; an indefinite integral asked.",
+   "cue": "A rational integrand with numerator degree at least the denominator's.",
    "method": "Inspect the integrand for structural markers: compare the degrees.",
-   "rival": "Rival: partial fractions straight away (BC-ERR-06026).",
-   "separating_feature": "A degree at least the denominator's means divide first; decomposition fits only a proper fraction.",
+   "rival": "Partial fractions straight away.",
+   "separating_feature": "A degree at least the denominator's means divide first.",
    "sources": [
-    "BC-QA-06016"
+    "BC-QA-06016",
+    "BC-ERR-06026"
    ],
-   "evidence_tag": "inferred"
+   "evidence_tag": "inferred",
+   "contrast": {
+    "this": {
+     "text": "Find \\(\\int \\frac{3(x^2+1)}{x+4}\\,dx\\) for \\(x>-4\\).",
+     "archetype_id": "BC-QA-06016"
+    },
+    "not_this": {
+     "text": "Find \\(\\int \\frac{5}{(x+1)(x+3)}\\,dx\\) for \\(x>-1\\).",
+     "why_not": "A proper fraction over distinct linear factors calls for partial fractions, with no division."
+    },
+    "feature": "Numerator degree at least the denominator's: divide first."
+   }
   },
   {
    "id": "st-2",
    "archetype_id": "BC-QA-06018",
    "cue": "A constant over an expanded quadratic or its square root; an antiderivative with C asked.",
    "method": "Complete the square in the quadratic when it is expanded.",
-   "rival": "Rival: a logarithm with the quadratic as u.",
+   "rival": "A logarithm with the quadratic as u.",
    "separating_feature": "The numerator is a constant, not the quadratic's derivative, so the square gives arctan or arcsin.",
    "sources": [
     "BC-QA-06018"
@@ -237,7 +289,8 @@ BC-QA-06016 is `no_calculator`, typically one part of a multipart free response 
    "sources": [
     "BC-ERR-06022",
     "BC-MIS-06019"
-   ]
+   ],
+   "fix_prompt": true
   },
   {
    "error_id": "BC-ERR-06026",
@@ -259,7 +312,8 @@ BC-QA-06016 is `no_calculator`, typically one part of a multipart free response 
    "sources": [
     "BC-ERR-06026",
     "BC-MIS-06022"
-   ]
+   ],
+   "fix_prompt": true
   },
   {
    "error_id": "BC-ERR-06033",
@@ -277,26 +331,27 @@ BC-QA-06016 is `no_calculator`, typically one part of a multipart free response 
    "possible_reason": null,
    "sources": [
     "BC-ERR-06033"
-   ]
+   ],
+   "fix_prompt": true
   }
  ],
  "representations": null,
  "prerequisite_bridges": [
   {
    "prq_id": "BC-PRQ-06001",
-   "text": "Split a fraction into terms and factor out constants before choosing a technique."
+   "text": "Split fractions and factor out constants first."
   },
   {
    "prq_id": "BC-PRQ-06002",
-   "text": "Radicals and reciprocals become powers; the power rule never takes an exponent of -1."
+   "text": "Rewrite radicals and reciprocals as powers."
   },
   {
    "prq_id": "BC-PRQ-06009",
-   "text": "Long division writes an improper rational expression as a polynomial plus a proper remainder."
+   "text": "Long division gives a polynomial plus a proper remainder."
   },
   {
    "prq_id": "BC-PRQ-06010",
-   "text": "Completing the square writes a quadratic as a square plus a constant, exposing a standard form."
+   "text": "Completing the square gives a square plus a constant."
   }
  ],
  "time": {
@@ -579,12 +634,12 @@ BC-QA-06016 is `no_calculator`, typically one part of a multipart free response 
   "research/exam/exam-structure.md#Section and part layout"
  ],
  "read_minutes": {
-  "full": 3.4,
-  "brief": 2.7
+  "full": 3.7,
+  "brief": 3.0
  },
  "word_count": {
-  "full": 510,
-  "brief": 395
+  "full": 555,
+  "brief": 441
  }
 }
 ```

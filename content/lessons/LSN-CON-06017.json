@@ -3,20 +3,69 @@
  "version": 1,
  "kind": "concept",
  "target_id": "BC-CON-06017",
- "status": "signed_off",
+ "status": "draft",
  "snapshot_digest": "a6a8ec9d3f59ab8f712e33d30cc22fc64bf2c478fbe7312e3e3118d319c6a42f",
  "source_digest": "7f35317389239a15ae6004eced41ceb67380cba7b23b1c2b35e962a597033a4e",
  "read_minutes": {
-  "full": 3.5,
-  "brief": 2.9
+  "full": 3.6,
+  "brief": 3.0
  },
  "word_count": {
-  "full": 481,
-  "brief": 401
+  "full": 508,
+  "brief": 428
  },
  "sections": [
   {
    "id": "LSN-CON-06017#s1",
+   "type": "prediction",
+   "bands": [
+    "low",
+    "mid"
+   ],
+   "skills": [
+    "BC-SKL-06057",
+    "BC-SKL-06058",
+    "BC-SKL-06059",
+    "BC-SKL-06060",
+    "BC-SKL-06061"
+   ],
+   "sources": [
+    "BC-CON-06017",
+    "research/units/unit-06-integration-accumulation.md#6.11 Integrating Using Integration by Parts"
+   ],
+   "evidence_tag": "inferred",
+   "stem": {
+    "text": "Predict. With \\(u=3x\\) and \\(dv=\\cos 2x\\,dx\\), which expression equals \\(\\int 3x\\cos 2x\\,dx\\)?",
+    "command_verb": "predict"
+   },
+   "format": "mcq",
+   "options": [
+    {
+     "id": "A",
+     "label": "\\(\\frac{3x^2}{2}\\cdot\\frac{\\sin 2x}{2}\\)",
+     "is_key": false
+    },
+    {
+     "id": "B",
+     "label": "\\(uv\\) minus \\(\\int v\\,du\\)",
+     "is_key": true
+    },
+    {
+     "id": "C",
+     "label": "\\(uv\\) plus \\(\\int v\\,du\\)",
+     "is_key": false
+    }
+   ],
+   "resolution": {
+    "text": "Integration by parts is the product rule read backwards: \\(uv-\\int v\\,du\\). A product of antiderivatives is not that expression."
+   },
+   "delivery": {
+    "mode": "text",
+    "reason": "rule 6"
+   }
+  },
+  {
+   "id": "LSN-CON-06017#s2",
    "type": "orientation",
    "bands": [
     "low",
@@ -34,7 +83,7 @@
     "research/units/unit-06-integration-accumulation.md#6.11 Integrating Using Integration by Parts"
    ],
    "evidence_tag": "inferred",
-   "text": "Unlike factors multiplied, one simpler once differentiated: a response declares u and dv, writes uv minus ∫v du, and finishes.",
+   "text": "A response declares u and dv, writes uv minus the integral of v du, and finishes.",
    "delivery": {
     "mode": "text",
     "reason": "rule 6: BC-REP-01 only on the archetype; a statement of what a response shows (unit README delivery map)",
@@ -44,7 +93,7 @@
    }
   },
   {
-   "id": "LSN-CON-06017#s2",
+   "id": "LSN-CON-06017#s3",
    "type": "key_ideas",
    "bands": [
     "low",
@@ -77,7 +126,7 @@
    }
   },
   {
-   "id": "LSN-CON-06017#s3",
+   "id": "LSN-CON-06017#s4",
    "type": "strategy",
    "bands": [
     "low",
@@ -91,17 +140,29 @@
     "BC-SKL-06061"
    ],
    "sources": [
-    "BC-QA-06009"
+    "BC-QA-06009",
+    "BC-ERR-06022"
    ],
    "evidence_tag": "verified",
    "archetype_id": "BC-QA-06009",
-   "cue": "A product of a linear factor and a cosine; u and dv, the expression, or a value asked.",
+   "cue": "A linear factor times a cosine; an antiderivative or value asked.",
    "method": "Declare u and dv and compute du and v.",
-   "rival": "Rival: antidifferentiating each factor and multiplying (BC-ERR-06022).",
-   "separating_feature": "No inner derivative pairs the factors; a product's antiderivative is not a product of antiderivatives."
+   "rival": "Antidifferentiating each factor and multiplying.",
+   "separating_feature": "No inner derivative pairs the factors.",
+   "contrast": {
+    "this": {
+     "text": "Find \\(\\int 2x\\sin 3x\\,dx\\).",
+     "archetype_id": "BC-QA-06009"
+    },
+    "not_this": {
+     "text": "Find \\(\\int 2x\\cos(x^2)\\,dx\\).",
+     "why_not": "\\(2x\\) is the derivative of the inner \\(x^2\\), so substitution applies."
+    },
+    "feature": "Inner derivative present: substitute. Absent: parts."
+   }
   },
   {
-   "id": "LSN-CON-06017#s4",
+   "id": "LSN-CON-06017#s5",
    "type": "worked_example",
    "bands": [
     "low",
@@ -138,8 +199,8 @@
      "why": "u = 3x, dv = cos 2x dx, du = 3 dx, v = (1/2) sin 2x."
     },
     {
-     "cue": "Write uv minus the integral of v du.",
-     "why": "Readers check the subtracted integral (sg-23:18).",
+     "cue": "Write \\(uv-\\int v\\,du\\).",
+     "why": "Readers check the subtracted integral.",
      "expression": [
       "Add",
       [
@@ -191,8 +252,8 @@
      "relation": "new"
     },
     {
-     "cue": "(3/2) sin 2x integrates to -(3/4) cos 2x.",
-     "why": "The minus in front turns it to plus.",
+     "cue": "Integrate (3/2) sin 2x.",
+     "why": "The minus turns it to plus.",
      "expression": [
       "Add",
       [
@@ -232,7 +293,7 @@
      "relation": "equivalent"
     },
     {
-     "cue": "Apply 0 and π/6 to both terms.",
+     "cue": "Apply both limits.",
      "why": "At 0 only the cosine term survives.",
      "expression": [
       "Add",
@@ -331,7 +392,7 @@
    }
   },
   {
-   "id": "LSN-CON-06017#s5",
+   "id": "LSN-CON-06017#s6",
    "type": "what_a_reader_scores",
    "bands": [
     "low",
@@ -349,7 +410,7 @@
     "BC-PT-99004"
    ],
    "evidence_tag": "verified",
-   "example_id": "LSN-CON-06017#s4",
+   "example_id": "LSN-CON-06017#s5",
    "lines": [
     {
      "point_type_id": "BC-PT-99057",
@@ -444,6 +505,7 @@
     ]
    },
    "relation": "distinct",
+   "fix_prompt": true,
    "possible_reason": {
     "misconception_id": "BC-MIS-06019",
     "text": "extends the sum rule to products"
@@ -551,6 +613,7 @@
     ]
    },
    "relation": "distinct",
+   "fix_prompt": true,
    "delivery": {
     "mode": "step_reveal",
     "reason": "rule 1",
@@ -667,6 +730,7 @@
     ]
    },
    "relation": "equivalent",
+   "fix_prompt": false,
    "delivery": {
     "mode": "step_reveal",
     "reason": "rule 1",
@@ -688,7 +752,7 @@
    ],
    "evidence_tag": "inferred",
    "prerequisite_id": "BC-PRQ-06005",
-   "text": "Keep f and f' apart when importing supplied values."
+   "text": "Keep f and f' apart."
   }
  ],
  "checks": [
@@ -709,7 +773,7 @@
     "partner": "cosine",
     "form": "definite"
    },
-   "completes": "LSN-CON-06017#s4",
+   "completes": "LSN-CON-06017#s5",
    "stem": {
     "text": "Evaluate [(3x/2) sin 2x + (3/4) cos 2x] from 0 to π/6.",
     "command_verb": "find"
@@ -1116,18 +1180,19 @@
   }
  ],
  "refresher": [
-  "LSN-CON-06017#s2",
+  "LSN-CON-06017#s3",
   "LSN-CON-06017#err-BC-ERR-06022",
   "LSN-CON-06017#err-BC-ERR-06023",
   "LSN-CON-06017#err-BC-ERR-99025",
-  "LSN-CON-06017#s4"
+  "LSN-CON-06017#s5"
  ],
+ "no_figure_reason": "The skills carry symbolic and verbal representations only, and the key idea is an identity between integrals, not a process to draw, so no figure fits.",
  "provenance": {
   "author": "tools/lesson_transcribe.py",
-  "prompt_version": "generator/lesson_v1",
+  "prompt_version": "generator/lesson_v2",
   "design_path": "docs/lessons/unit-06/LSN-CON-06017.md",
-  "signed_off_by": "claude-opus-5-5",
-  "signed_off_at": "2026-09-29",
+  "signed_off_by": null,
+  "signed_off_at": null,
   "not_human": true
  }
 }

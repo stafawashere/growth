@@ -9,6 +9,10 @@ purpose: Authoring spec for the concept lesson on BC-CON-06006, the definite int
 
 Concept BC-CON-06006 (skills BC-SKL-06014, BC-SKL-06015, BC-SKL-06016), topic 6.3 of Unit 6, loaded by one archetype, BC-QA-06014 (family riemann-limit-to-integral). Its hard parents are BC-CON-06003 and BC-CON-06005 (docs/lessons/unit-06/README.md, section 1).
 
+## Prediction
+
+One multiple choice question on worked example 1's own term, \(3(1+2i/n)^2(2/n)\), asked before the rule is shown: over what interval the sample points run. The key is "From 1 to 3", the interval ex-1's integral is taken over. The distractors are the interval read off the width alone (the BC-ERR-99032 path) and an interval with the right start and a wrong length. The resolution, shown on the key idea screen beside the choice, states that the width gives the length and the first sample point gives the start. No verdict word. Sources: BC-CON-06006 and the topic 6.3 section the key ideas cite.
+
 ## Orientation
 
 Served text, from BC-CON-06006 `description_plain` and the topic's Assessment behaviour paragraph (research/units/unit-06-integration-accumulation.md#6.3 Riemann Sums, Summation Notation, and Definite Integral Notation): MCQ forms give a limit of a sum in sigma notation and ask for the matching integral, or the reverse. No count, no frequency.
@@ -29,16 +33,18 @@ BC-QA-06014 (research/question-analysis/question-archetypes.md#BC-QA-06014 Conve
 
 The signal: "lim as n approaches infinity" in front of Σ, or "as the limit of a Riemann sum". Not this concept: Σ with no limit and a stated n (BC-CON-06005), or a request to approximate (BC-CON-06003).
 
+Contrast pair on st-1: this stem is on BC-QA-06014, a limit of a sum written as an integral; not this stem is a right sum with n = 4 for an integral already given, the near miss from BC-CON-06003, which calls for a finite sum and no limit. The separating feature is the limit in front of the sum.
+
 ## Method choice
 
-- st-1, BC-QA-06014, both bands. Cue from `asked_to_produce` and `common_givens`. Method, `expected_solution_path[0]`: separate the general term into a value and a width. Rival: BC-QA-06014 records no `wrong_approaches` or `prohibited_shortcuts`, so the rival is taken from BC-ERR-99032 (limits that were never given); the block carries `evidence_tag: inferred`. Separating feature: the sample point fixes the lower limit, the width fixes the length.
+- st-1, BC-QA-06014, both bands. Cue from `asked_to_produce` and `common_givens`. Method, `expected_solution_path[0]`: separate the general term into a value and a width. Rival: BC-QA-06014 records no `wrong_approaches` or `prohibited_shortcuts`, so the rival is taken from BC-ERR-99032 (limits that were never given); the block carries `evidence_tag: inferred`. Separating feature: the sample point fixes the lower limit, the width fixes the length. The reader prints its own labels, so no field of the block begins with one.
 
 ## Solution path
 
 - ex-1, BC-QA-06014, both bands, no calculator. Draw from `parameter_spec`: direction to_integral, function square, coefficient 3, start 1, width 2, convention right, letter x (derived finish 3). No published BC-QA-06014 item carries this draw.
 - Steps follow `expected_solution_path`: the given limit (new); split into value and width (no value); width, so length (no value); sample point, so lower limit (no value); the integral (equivalent; the CAS confirms both equal 26).
 
-A fluent solver writes the integral only and holds the split, the width and the start [inferred].
+A fluent solver writes the integral only and holds the split, the width and the start [inferred]. There is no example 2, so nothing is faded.
 
 ## Scoring
 
@@ -46,7 +52,7 @@ BC-QA-06014 lists no `point_types`, so no what_a_reader_scores entry and no poin
 
 ## Traps
 
-Two active errors meet the skills, in the bundle's order: BC-ERR-99028 (linked BC-MIS-06001, severity high), BC-ERR-99032 (BC-MIS-99011 and BC-MIS-08012, medium). Both bands. On ex-1's draw:
+Two active errors meet the skills, in the bundle's order: BC-ERR-99028 (linked BC-MIS-06001, severity high), BC-ERR-99032 (BC-MIS-99011 and BC-MIS-08012, medium). Both bands. Both relations are distinct, so both are fix prompts (`fix_prompt` true). On ex-1's draw:
 
 - err-BC-ERR-99028: the width factor lost, ∫_0^1 3(1 + 2x)^2 dx, against ∫_1^3 3x^2 dx. Possible reason, words from BC-MIS-06001.
 - err-BC-ERR-99032: limits never given, 0 to 2, against 1 to 3. No possible reason line: neither linked description names limits read from a width.
@@ -71,17 +77,18 @@ BC-QA-06014 is `no_calculator`, MCQ only in the record, so Section I Part A, 2.1
 
 ## Delivery
 
+- prediction: text [inferred; settled by the modality A/B].
 - orientation, ki-2, ki-3: text. Rule 6, BC-REP-01.
 - ki-1: motion, rectangles refining under 3x^2 as n grows. Rule 2 (unit README section 6). Rule 3 would allow one stepper on n instead; motion is kept to match the unit map [inferred].
 - ex-1 and both error blocks: step_reveal. Rule 1.
 - representations: model, right sums at growing n.
 
-Every non-text choice is [inferred]; settled by the modality A/B.
+Drawn blocks already present (ki-1 motion, the representations model), so no figure is added and no `no_figure_reason` is stated. Every non-text choice is [inferred]; settled by the modality A/B.
 
 ## Band plan
 
-- Low (full): orientation, ki-1 to ki-3, st-1, ex-1, both error blocks, chk-1 to chk-3, the model, the bridge. 504 words, 3.4 minutes (cap 900 and 6).
-- Mid (brief): orientation, ki-1, ki-2, st-1, ex-1, both error blocks, chk-1, chk-2, the bridge. 433 words, 2.9 minutes (cap 450 and 3).
+- Low (full), in served order: prediction, orientation, the bridge, ki-1 to ki-3, st-1 with its contrast pair, ex-1, chk-1, both error blocks, chk-2, the model, chk-3. 515 words, 3.5 minutes (cap 900 and 6). There is no example 2, so nothing is faded, and BC-QA-06014 lists no `point_types`, so no scoring lines.
+- Mid (brief): prediction, orientation, the bridge, ki-1, ki-2, st-1 with its contrast pair, ex-1, chk-1, both error blocks, chk-2. 450 words, 3.0 minutes (cap 450 and 3). The orientation, both core key ideas, the strategy fields, the contrast and the bridge were shortened to fit; the ki-1 anchor quote and every check stem stay.
 - Refresher: ki-1, ki-2, both error blocks, ex-1.
 
 ## Sources
@@ -90,13 +97,14 @@ Every non-text choice is [inferred]; settled by the modality A/B.
 - BC-QA-06014
 - BC-ERR-99028, BC-ERR-99032; BC-MIS-06001
 - BC-PRQ-06006
-- research/units/unit-06-integration-accumulation.md#6.3 Riemann Sums, Summation Notation, and Definite Integral Notation
+- research/units/unit-06-integration-accumulation.md#6.3 Riemann Sums, Summation Notation, and Definite Integral Notation (the prediction and the contrast pair)
 - research/question-analysis/question-archetypes.md#BC-QA-06014 Converting between a limit of Riemann sums and a definite integral
 - research/exam/exam-structure.md#Section and part layout
 - [inferred] The rival from BC-ERR-99032. Settled by wrong_approaches on BC-QA-06014.
 - [inferred] I-A for an archetype with no FRQ part. Settled by a conversion rubric.
 - [inferred] The function label read as a formula. Settled by a formula template.
 - [inferred] Motion and model rather than a stepper. Settled by the modality A/B.
+- [inferred] The contrast near miss, a right sum with n = 4, is a sibling-concept stem written for this pair. Settled by a published near-miss item.
 - [inferred] Which steps a fluent solver holds. Settled by timing data per step.
 
 ## Machine record
@@ -112,8 +120,38 @@ Every non-text choice is [inferred]; settled by the modality A/B.
   "BC-SKL-06015",
   "BC-SKL-06016"
  ],
+ "prediction": {
+  "id": "pr-1",
+  "stem": {
+   "text": "Predict. In \\(\\lim_{n\\to\\infty}\\sum_{i=1}^n 3(1+2i/n)^2(2/n)\\), the sample points run over what interval?",
+   "command_verb": "predict"
+  },
+  "format": "mcq",
+  "options": [
+   {
+    "id": "A",
+    "label": "From 0 to 2",
+    "is_key": false
+   },
+   {
+    "id": "B",
+    "label": "From 1 to 3",
+    "is_key": true
+   },
+   {
+    "id": "C",
+    "label": "From 1 to 2",
+    "is_key": false
+   }
+  ],
+  "resolution": "The width \\(2/n\\) gives length 2, and the first sample point is 1. The interval is \\([1,3]\\), so the limit is \\(\\int_1^3 3x^2\\,dx\\).",
+  "sources": [
+   "BC-CON-06006",
+   "research/units/unit-06-integration-accumulation.md#6.3 Riemann Sums, Summation Notation, and Definite Integral Notation"
+  ]
+ },
  "orientation": {
-  "text": "Letting every width go to zero turns the Riemann sum into the definite integral. A response converts a limit of sums to an integral, or back, reading the width and the sample point.",
+  "text": "Letting widths go to zero turns a Riemann sum into an integral. A response converts between them.",
   "sources": [
    "BC-CON-06006",
    "research/units/unit-06-integration-accumulation.md#6.3 Riemann Sums, Summation Notation, and Definite Integral Notation"
@@ -124,8 +162,8 @@ Every non-text choice is [inferred]; settled by the modality A/B.
    "id": "ki-1",
    "ek_id": "BC-EK-LIM-5C1",
    "depth": "core",
-   "text": "For f continuous on [a, b], the integral of f from a to b is the limit of its Riemann sums as the largest width goes to 0.",
-   "notation": "integral from a to b of f(x) dx",
+   "text": "For continuous f, the integral is the limit of Riemann sums as widths go to 0.",
+   "notation": "\\(\\int_a^b f(x)\\,dx\\)",
    "quote": {
     "text": "is the limit of Riemann sums as the widths of the subintervals approach 0",
     "source": "ced:120"
@@ -140,8 +178,8 @@ Every non-text choice is [inferred]; settled by the modality A/B.
    "id": "ki-2",
    "ek_id": "BC-EK-LIM-5C2",
    "depth": "core",
-   "text": "To convert, split the term into width and height. The width fixes b - a, the sample point at i = 0 fixes a, and the height gives f.",
-   "notation": "integral from a to b of f(x) dx",
+   "text": "Split the term. The width fixes b - a, the first sample point fixes a, the height gives f.",
+   "notation": "\\(\\int_a^b f(x)\\,dx\\)",
    "quote": null,
    "sources": [
     "BC-EK-LIM-5C2",
@@ -154,7 +192,7 @@ Every non-text choice is [inferred]; settled by the modality A/B.
    "ek_id": "BC-EK-LIM-5B1",
    "depth": "extended",
    "text": "An approximating sum and its limit are different objects: the sum estimates, the limit is the integral.",
-   "notation": "integral from a to b of f(x) dx",
+   "notation": "\\(\\int_a^b f(x)\\,dx\\)",
    "quote": {
     "text": "The limit of an approximating Riemann sum can be interpreted as a definite integral.",
     "source": "ced:120"
@@ -170,14 +208,25 @@ Every non-text choice is [inferred]; settled by the modality A/B.
   {
    "id": "st-1",
    "archetype_id": "BC-QA-06014",
-   "cue": "A limit of a sigma sum, or an integral with limits; the other form asked.",
-   "method": "Separate the general term into a value and a width.",
-   "rival": "Rival: limits read off the width, as 0 to b - a.",
+   "cue": "A limit of a sum, or an integral; the other form asked.",
+   "method": "Split the term into value and width.",
+   "rival": "Limits read off the width alone.",
    "separating_feature": "The sample point, not the width, gives the lower limit.",
    "sources": [
     "BC-QA-06014"
    ],
-   "evidence_tag": "inferred"
+   "evidence_tag": "inferred",
+   "contrast": {
+    "this": {
+     "text": "Write lim_(n→∞) Σ_(i=1)^n (1 + 4i/n)^3 (4/n) as an integral.",
+     "archetype_id": "BC-QA-06014"
+    },
+    "not_this": {
+     "text": "Approximate the integral of x^2 from 1 to 5 with a right sum, n = 4.",
+     "why_not": "It asks for a finite sum, not a limit."
+    },
+    "feature": "The limit as n approaches infinity precedes the sum."
+   }
   }
  ],
  "worked_examples": [
@@ -256,7 +305,8 @@ Every non-text choice is [inferred]; settled by the modality A/B.
    "sources": [
     "BC-ERR-99028",
     "BC-MIS-06001"
-   ]
+   ],
+   "fix_prompt": true
   },
   {
    "error_id": "BC-ERR-99032",
@@ -274,7 +324,8 @@ Every non-text choice is [inferred]; settled by the modality A/B.
    "possible_reason": null,
    "sources": [
     "BC-ERR-99032"
-   ]
+   ],
+   "fix_prompt": true
   }
  ],
  "representations": {
@@ -314,7 +365,7 @@ Every non-text choice is [inferred]; settled by the modality A/B.
  "prerequisite_bridges": [
   {
    "prq_id": "BC-PRQ-06006",
-   "text": "Sigma notation: one term per index value from the lower to the upper limit; a wrong substitution or an off-by-one count changes the sample point."
+   "text": "Sigma notation: one term per index value. A wrong substitution moves the sample point."
   }
  ],
  "time": {
@@ -707,12 +758,12 @@ Every non-text choice is [inferred]; settled by the modality A/B.
   "research/exam/exam-structure.md#Section and part layout"
  ],
  "read_minutes": {
-  "full": 3.4,
-  "brief": 2.9
+  "full": 3.5,
+  "brief": 3.0
  },
  "word_count": {
-  "full": 504,
-  "brief": 433
+  "full": 515,
+  "brief": 450
  }
 }
 ```

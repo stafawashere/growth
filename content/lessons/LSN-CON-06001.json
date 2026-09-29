@@ -3,7 +3,7 @@
  "version": 1,
  "kind": "concept",
  "target_id": "BC-CON-06001",
- "status": "signed_off",
+ "status": "draft",
  "snapshot_digest": "a6a8ec9d3f59ab8f712e33d30cc22fc64bf2c478fbe7312e3e3118d319c6a42f",
  "source_digest": "9a04ede404b3fc44d02f178574738d8adaf6ed009a4eb9545ee4f387fb34c8da",
  "read_minutes": {
@@ -11,12 +11,58 @@
   "brief": 3.0
  },
  "word_count": {
-  "full": 648,
-  "brief": 365
+  "full": 676,
+  "brief": 395
  },
  "sections": [
   {
    "id": "LSN-CON-06001#s1",
+   "type": "prediction",
+   "bands": [
+    "low",
+    "mid"
+   ],
+   "skills": [
+    "BC-SKL-06001",
+    "BC-SKL-06004"
+   ],
+   "sources": [
+    "BC-CON-06001",
+    "research/units/unit-06-integration-accumulation.md#6.1 Exploring Accumulations of Change"
+   ],
+   "evidence_tag": "inferred",
+   "stem": {
+    "text": "Before the rule: f has regions of area 3 above the axis, and 2 and 2π below it. What is ∫_0^8 f(x) dx?",
+    "command_verb": "predict"
+   },
+   "format": "mcq",
+   "options": [
+    {
+     "id": "A",
+     "label": "All three regions add",
+     "is_key": false
+    },
+    {
+     "id": "B",
+     "label": "Regions below the axis subtract",
+     "is_key": true
+    },
+    {
+     "id": "C",
+     "label": "Only the 2 subtracts",
+     "is_key": false
+    }
+   ],
+   "resolution": {
+    "text": "Regions below subtract: 3 - 2 - 2π = 1 - 2π, the net change."
+   },
+   "delivery": {
+    "mode": "text",
+    "reason": "rule 6"
+   }
+  },
+  {
+   "id": "LSN-CON-06001#s2",
    "type": "orientation",
    "bands": [
     "low",
@@ -31,7 +77,7 @@
     "research/units/unit-06-integration-accumulation.md#6.1 Exploring Accumulations of Change"
    ],
    "evidence_tag": "inferred",
-   "text": "Area between a rate graph and the axis is the change in the quantity. A response computes it as signed area, or names quantity, units and interval.",
+   "text": "Area between a rate graph and the axis is the quantity's change: signed area, or a sentence with units and interval.",
    "delivery": {
     "mode": "figure",
     "reason": "rule 4: BC-REP-02 on BC-SKL-06001 and BC-SKL-06004 (unit README delivery map)",
@@ -117,7 +163,7 @@
    }
   },
   {
-   "id": "LSN-CON-06001#s2",
+   "id": "LSN-CON-06001#s3",
    "type": "key_ideas",
    "bands": [
     "low",
@@ -134,7 +180,7 @@
    "evidence_tag": "inferred",
    "ek_id": "BC-EK-CHA-4A1",
    "depth": "core",
-   "text": "Over [a, b], the region between a rate graph f and the axis measures the change in the quantity whose rate is f: gain above, loss below.",
+   "text": "The region between a rate graph and the axis is the quantity's change: gain above, loss below.",
    "notation": "signed area; accumulated change",
    "delivery": {
     "mode": "figure",
@@ -227,7 +273,7 @@
    }
   },
   {
-   "id": "LSN-CON-06001#s3",
+   "id": "LSN-CON-06001#s4",
    "type": "key_ideas",
    "bands": [
     "low",
@@ -244,7 +290,7 @@
    "evidence_tag": "inferred",
    "ek_id": "BC-EK-CHA-4A2",
    "depth": "core",
-   "text": "When the rate graph is segments and arcs, the change is found by geometry: one area formula per piece, pieces below the axis negative.",
+   "text": "One area formula per piece; pieces below the axis are negative.",
    "notation": "signed area",
    "delivery": {
     "mode": "figure",
@@ -332,7 +378,7 @@
    }
   },
   {
-   "id": "LSN-CON-06001#s4",
+   "id": "LSN-CON-06001#s5",
    "type": "strategy",
    "bands": [
     "low",
@@ -346,13 +392,24 @@
    ],
    "evidence_tag": "verified",
    "archetype_id": "BC-QA-06004",
-   "cue": "A graph of f in segments and semicircles; an integral's value asked.",
+   "cue": "Segments and semicircles; a value asked.",
    "method": "Partition where the graph changes character.",
-   "rival": "Rival: every piece added as positive area.",
-   "separating_feature": "The change is signed: the side of the axis fixes each sign."
+   "rival": "Every piece added as area.",
+   "separating_feature": "Pieces below the axis are negative.",
+   "contrast": {
+    "this": {
+     "text": "f is segments and a semicircle. Find ∫_0^8 f(x) dx.",
+     "archetype_id": "BC-QA-06004"
+    },
+    "not_this": {
+     "text": "f is segments and a semicircle. Find the average value of f on [0, 8].",
+     "why_not": "It asks for the integral divided by the length."
+    },
+    "feature": "A leading factor 1/(b - a)."
+   }
   },
   {
-   "id": "LSN-CON-06001#s5",
+   "id": "LSN-CON-06001#s6",
    "type": "strategy",
    "bands": [
     "low",
@@ -368,11 +425,11 @@
    "archetype_id": "BC-QA-06015",
    "cue": "A contextual rate and a displayed integral; a sentence with quantity, interval and units asked.",
    "method": "Identify what the integrand measures per unit input.",
-   "rival": "Rival: naming the quantity without the interval, or with the rate's units.",
+   "rival": "Naming the quantity without the interval, or with the rate's units.",
    "separating_feature": "The integral is an amount over an interval, so it carries the product of the units and both limits."
   },
   {
-   "id": "LSN-CON-06001#s6",
+   "id": "LSN-CON-06001#s7",
    "type": "worked_example",
    "bands": [
     "low",
@@ -404,24 +461,24 @@
    "calculator_status": "no_calculator",
    "steps": [
     {
-     "cue": "Segments and an arc: split at x = 2 and 4.",
-     "why": "One shape per piece."
+     "cue": "Split at x = 2 and 4.",
+     "why": "One shape each."
     },
     {
-     "cue": "[0, 2]: rectangle and triangle above.",
+     "cue": "[0, 2]: above.",
      "why": "Gain.",
      "expression": 3,
      "relation": "new"
     },
     {
-     "cue": "[2, 4]: triangle below.",
-     "why": "Loss enters negatively.",
+     "cue": "[2, 4]: below.",
+     "why": "Loss is negative.",
      "expression": -2,
      "relation": "new"
     },
     {
      "cue": "[4, 8]: semicircle below.",
-     "why": "Half of pi r squared.",
+     "why": "Half of πr².",
      "expression": [
       "Multiply",
       -2,
@@ -430,8 +487,8 @@
      "relation": "new"
     },
     {
-     "cue": "The change is the signed total.",
-     "why": "Adjacent intervals add.",
+     "cue": "The signed total.",
+     "why": "Intervals add.",
      "expression": [
       "Add",
       1,
@@ -445,8 +502,8 @@
      "relation": "new"
     },
     {
-     "cue": "Label the value.",
-     "why": "Negative: a net loss.",
+     "cue": "Label it.",
+     "why": "Net loss.",
      "expression": [
       "Add",
       1,
@@ -478,7 +535,7 @@
    }
   },
   {
-   "id": "LSN-CON-06001#s7",
+   "id": "LSN-CON-06001#s8",
    "type": "worked_example",
    "bands": [
     "low"
@@ -522,7 +579,7 @@
     },
     {
      "cue": "The limits name the interval.",
-     "why": "The interval is required (sg-23:2)."
+     "why": "The interval is required."
     },
     {
      "cue": "Write the sentence.",
@@ -534,6 +591,7 @@
     "mathjson": "gallons",
     "text": "The number of gallons of water that flow into the tank from t = 2 to t = 6 hours."
    },
+   "fade_from": 4,
    "delivery": {
     "mode": "step_reveal",
     "reason": "rule 1",
@@ -541,7 +599,7 @@
    }
   },
   {
-   "id": "LSN-CON-06001#s8",
+   "id": "LSN-CON-06001#s9",
    "type": "what_a_reader_scores",
    "bands": [
     "low",
@@ -554,7 +612,7 @@
     "BC-PT-99069"
    ],
    "evidence_tag": "verified",
-   "example_id": "LSN-CON-06001#s6",
+   "example_id": "LSN-CON-06001#s7",
    "lines": [
     {
      "point_type_id": "BC-PT-99069",
@@ -605,6 +663,7 @@
     ]
    },
    "relation": "distinct",
+   "fix_prompt": true,
    "possible_reason": {
     "misconception_id": "BC-MIS-08024",
     "text": "reads every definite integral as area"
@@ -665,6 +724,7 @@
     ]
    },
    "relation": "distinct",
+   "fix_prompt": true,
    "delivery": {
     "mode": "step_reveal",
     "reason": "rule 1",
@@ -714,6 +774,7 @@
     ]
    },
    "relation": "distinct",
+   "fix_prompt": true,
    "possible_reason": {
     "misconception_id": "BC-MIS-08019",
     "text": "remembers the squared dimension but not the fraction in front of it"
@@ -759,6 +820,7 @@
     "expression": "gallons"
    },
    "relation": "distinct",
+   "fix_prompt": true,
    "possible_reason": {
     "misconception_id": "BC-MIS-08009",
     "text": "treats the sentence as a label for the integral rather than as a statement that must fix the quantity, the interval, and the units"
@@ -770,7 +832,7 @@
    }
   },
   {
-   "id": "LSN-CON-06001#s9",
+   "id": "LSN-CON-06001#s10",
    "type": "representations",
    "bands": [
     "low"
@@ -877,7 +939,7 @@
    ],
    "evidence_tag": "inferred",
    "prerequisite_id": "BC-PRQ-06005",
-   "text": "f(t) is the rate at input t; reading the wrong input, or swapping f and f prime, breaks the value."
+   "text": "f(t) is the rate at input t."
   },
   {
    "id": "LSN-CON-06001#prq-BC-PRQ-06007",
@@ -894,7 +956,7 @@
    ],
    "evidence_tag": "inferred",
    "prerequisite_id": "BC-PRQ-06007",
-   "text": "Area formulas read off a figure: a trapezoid is not a rectangle, and a semicircle is half a circle."
+   "text": "A semicircle is half a circle."
   }
  ],
  "checks": [
@@ -918,7 +980,7 @@
     "circle": "below",
     "direction": "forward"
    },
-   "completes": "LSN-CON-06001#s6",
+   "completes": "LSN-CON-06001#s7",
    "stem": {
     "text": "The signed pieces of ∫_0^8 f(x) dx are 3, -2 and -2π. Find the integral.",
     "command_verb": "find"
@@ -1142,20 +1204,20 @@
   }
  ],
  "refresher": [
-  "LSN-CON-06001#s2",
   "LSN-CON-06001#s3",
+  "LSN-CON-06001#s4",
   "LSN-CON-06001#err-BC-ERR-06014",
   "LSN-CON-06001#err-BC-ERR-06030",
   "LSN-CON-06001#err-BC-ERR-06013",
   "LSN-CON-06001#err-BC-ERR-06029",
-  "LSN-CON-06001#s6"
+  "LSN-CON-06001#s7"
  ],
  "provenance": {
   "author": "tools/lesson_transcribe.py",
-  "prompt_version": "generator/lesson_v1",
+  "prompt_version": "generator/lesson_v2",
   "design_path": "docs/lessons/unit-06/LSN-CON-06001.md",
-  "signed_off_by": "claude-opus-5-5",
-  "signed_off_at": "2026-09-29",
+  "signed_off_by": null,
+  "signed_off_at": null,
   "not_human": true
  }
 }

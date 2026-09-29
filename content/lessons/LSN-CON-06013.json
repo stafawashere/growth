@@ -3,20 +3,52 @@
  "version": 1,
  "kind": "concept",
  "target_id": "BC-CON-06013",
- "status": "signed_off",
+ "status": "draft",
  "snapshot_digest": "a6a8ec9d3f59ab8f712e33d30cc22fc64bf2c478fbe7312e3e3118d319c6a42f",
  "source_digest": "6b68b47c2c5f9bda7cff9993bffe25baa814a1bff366b647ca1241d9bb9c3005",
  "read_minutes": {
-  "full": 4.0,
+  "full": 4.1,
   "brief": 3.0
  },
  "word_count": {
-  "full": 561,
-  "brief": 420
+  "full": 560,
+  "brief": 422
  },
  "sections": [
   {
    "id": "LSN-CON-06013#s1",
+   "type": "prediction",
+   "bands": [
+    "low",
+    "mid"
+   ],
+   "skills": [
+    "BC-SKL-06038"
+   ],
+   "sources": [
+    "BC-CON-06013",
+    "research/units/unit-06-integration-accumulation.md#6.7 The Fundamental Theorem of Calculus and Definite Integrals"
+   ],
+   "evidence_tag": "inferred",
+   "stem": {
+    "text": "Predict the average value of W(t) = 4 cos(t^2/2) + 1 on [0, 3], where the integral is 5.306.",
+    "command_verb": "predict"
+   },
+   "format": "short_answer",
+   "answer_key": {
+    "form": "numeric",
+    "mathjson": 1.769
+   },
+   "resolution": {
+    "text": "5.306 divided by the length 3 is about 1.769."
+   },
+   "delivery": {
+    "mode": "text",
+    "reason": "rule 6"
+   }
+  },
+  {
+   "id": "LSN-CON-06013#s2",
    "type": "orientation",
    "bands": [
     "low",
@@ -30,7 +62,7 @@
     "research/units/unit-06-integration-accumulation.md#6.7 The Fundamental Theorem of Calculus and Definite Integrals"
    ],
    "evidence_tag": "inferred",
-   "text": "A response writes the integral over the interval divided by the interval's length, evaluates it, and calls the result an average over that interval.",
+   "text": "A response divides the integral by the length and says average.",
    "delivery": {
     "mode": "text",
     "reason": "rule 6: BC-REP-01, 05 and 09 on BC-SKL-06038, none figure-bearing",
@@ -40,7 +72,7 @@
    }
   },
   {
-   "id": "LSN-CON-06013#s2",
+   "id": "LSN-CON-06013#s3",
    "type": "key_ideas",
    "bands": [
     "low",
@@ -57,7 +89,7 @@
    "evidence_tag": "inferred",
    "ek_id": "BC-EK-FUN-6B3",
    "depth": "core",
-   "text": "The average value of f on [a, b] is 1/(b - a) times the integral of f from a to b: the accumulated amount spread evenly over the interval's length.",
+   "text": "Average value is the integral spread over the length.",
    "notation": "1/(b-a) times integral from a to b",
    "delivery": {
     "mode": "text",
@@ -68,7 +100,7 @@
    }
   },
   {
-   "id": "LSN-CON-06013#s3",
+   "id": "LSN-CON-06013#s4",
    "type": "strategy",
    "bands": [
     "low",
@@ -82,13 +114,24 @@
    ],
    "evidence_tag": "verified",
    "archetype_id": "BC-QA-08001",
-   "cue": "Average value of a model over a stated interval, setup shown.",
-   "method": "First line: the integral over the interval, divided by its length.",
-   "rival": "Rival: the two endpoint values averaged.",
-   "separating_feature": "Every value on the interval counts, so an integral."
+   "cue": "Average value, interval stated.",
+   "method": "Integral divided by the length.",
+   "rival": "Endpoint values averaged.",
+   "separating_feature": "An integral, not endpoints.",
+   "contrast": {
+    "this": {
+     "text": "Find the average value of 2t + 1 on [0, 4].",
+     "archetype_id": "BC-QA-08001"
+    },
+    "not_this": {
+     "text": "Find the average rate of change of 2t + 1 on [0, 4].",
+     "why_not": "A difference quotient."
+    },
+    "feature": "Value, not rate of change."
+   }
   },
   {
-   "id": "LSN-CON-06013#s4",
+   "id": "LSN-CON-06013#s5",
    "type": "strategy",
    "bands": [
     "low",
@@ -103,12 +146,12 @@
    "evidence_tag": "verified",
    "archetype_id": "BC-QA-06015",
    "cue": "A displayed integral of a contextual rate; its meaning with units asked.",
-   "method": "First line: what the integrand measures per unit input.",
-   "rival": "Rival: the quantity named without the interval.",
+   "method": "What the integrand measures per unit input.",
+   "rival": "The quantity named without the interval.",
    "separating_feature": "The limits name the interval; a factor 1/(b - a) makes it an average."
   },
   {
-   "id": "LSN-CON-06013#s5",
+   "id": "LSN-CON-06013#s6",
    "type": "worked_example",
    "bands": [
     "low",
@@ -137,7 +180,7 @@
    "calculator_status": "calculator",
    "steps": [
     {
-     "cue": "Average value over [0, 3].",
+     "cue": "Over [0, 3].",
      "why": "Integral over the interval, divided by length 3.",
      "expression": [
       "Multiply",
@@ -184,7 +227,7 @@
      "relation": "new"
     },
     {
-     "cue": "Calculator allowed.",
+     "cue": "Calculator.",
      "why": "Radian mode, three places.",
      "expression": 1.769,
      "point_type_id": "BC-PT-99004",
@@ -204,7 +247,7 @@
    }
   },
   {
-   "id": "LSN-CON-06013#s6",
+   "id": "LSN-CON-06013#s7",
    "type": "what_a_reader_scores",
    "bands": [
     "low",
@@ -218,7 +261,7 @@
     "BC-PT-99004"
    ],
    "evidence_tag": "verified",
-   "example_id": "LSN-CON-06013#s5",
+   "example_id": "LSN-CON-06013#s6",
    "lines": [
     {
      "point_type_id": "BC-PT-99020",
@@ -329,6 +372,7 @@
     ]
    },
    "relation": "distinct",
+   "fix_prompt": true,
    "possible_reason": {
     "misconception_id": "BC-MIS-06014",
     "text": "does not separate the integral from the integral divided by the interval length"
@@ -438,6 +482,7 @@
     ]
    },
    "relation": "distinct",
+   "fix_prompt": true,
    "possible_reason": {
     "misconception_id": "BC-MIS-06014",
     "text": "the two expressions are described and computed interchangeably"
@@ -538,6 +583,7 @@
     ]
    },
    "relation": "distinct",
+   "fix_prompt": true,
    "possible_reason": {
     "misconception_id": "BC-MIS-99006",
     "text": "a difference quotient is offered for an average value"
@@ -655,6 +701,7 @@
     ]
    },
    "relation": "distinct",
+   "fix_prompt": true,
    "delivery": {
     "mode": "step_reveal",
     "reason": "rule 1",
@@ -680,7 +727,7 @@
     "context": "temperature",
     "framing": "context"
    },
-   "completes": "LSN-CON-06013#s5",
+   "completes": "LSN-CON-06013#s6",
    "stem": {
     "text": "Evaluate (1/3) times the integral from 0 to 3 of W(t) dt.",
     "command_verb": "evaluate"
@@ -959,19 +1006,20 @@
   }
  ],
  "refresher": [
-  "LSN-CON-06013#s2",
+  "LSN-CON-06013#s3",
   "LSN-CON-06013#err-BC-ERR-06016",
   "LSN-CON-06013#err-BC-ERR-06030",
   "LSN-CON-06013#err-BC-ERR-99015",
   "LSN-CON-06013#err-BC-ERR-06032",
-  "LSN-CON-06013#s5"
+  "LSN-CON-06013#s6"
  ],
+ "no_figure_reason": "The one skill carries symbolic, verbal and numerical representations only, and no key idea describes a process. The lesson is a written quotient and its value.",
  "provenance": {
   "author": "tools/lesson_transcribe.py",
-  "prompt_version": "generator/lesson_v1",
+  "prompt_version": "generator/lesson_v2",
   "design_path": "docs/lessons/unit-06/LSN-CON-06013.md",
-  "signed_off_by": "claude-opus-5-5",
-  "signed_off_at": "2026-09-29",
+  "signed_off_by": null,
+  "signed_off_at": null,
   "not_human": true
  }
 }

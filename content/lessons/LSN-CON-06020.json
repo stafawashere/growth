@@ -3,20 +3,68 @@
  "version": 1,
  "kind": "concept",
  "target_id": "BC-CON-06020",
- "status": "signed_off",
+ "status": "draft",
  "snapshot_digest": "a6a8ec9d3f59ab8f712e33d30cc22fc64bf2c478fbe7312e3e3118d319c6a42f",
  "source_digest": "61409705637f74d884bf1ef1459b150c9852c455b3f2fdc5e1eb1c4f05e9c974",
  "read_minutes": {
-  "full": 3.2,
-  "brief": 2.4
+  "full": 3.6,
+  "brief": 2.8
  },
  "word_count": {
-  "full": 396,
-  "brief": 315
+  "full": 459,
+  "brief": 378
  },
  "sections": [
   {
    "id": "LSN-CON-06020#s1",
+   "type": "prediction",
+   "bands": [
+    "low",
+    "mid"
+   ],
+   "skills": [
+    "BC-SKL-06071",
+    "BC-SKL-06072",
+    "BC-SKL-06073",
+    "BC-SKL-06074"
+   ],
+   "sources": [
+    "BC-CON-06020",
+    "research/units/unit-06-integration-accumulation.md#6.14 Selecting Techniques for Antidifferentiation"
+   ],
+   "evidence_tag": "inferred",
+   "stem": {
+    "text": "Predict. Which technique fits \\(\\int 3x\\,e^{-2x}\\,dx\\)?",
+    "command_verb": "predict"
+   },
+   "format": "mcq",
+   "options": [
+    {
+     "id": "A",
+     "label": "Substitution with \\(u=-2x\\)",
+     "is_key": false
+    },
+    {
+     "id": "B",
+     "label": "Integration by parts",
+     "is_key": true
+    },
+    {
+     "id": "C",
+     "label": "Partial fractions",
+     "is_key": false
+    }
+   ],
+   "resolution": {
+    "text": "\\(3x\\) is not a constant multiple of the derivative of \\(-2x\\), so substitution's precondition fails. A product of unlike factors selects parts."
+   },
+   "delivery": {
+    "mode": "text",
+    "reason": "rule 6"
+   }
+  },
+  {
+   "id": "LSN-CON-06020#s2",
    "type": "orientation",
    "bands": [
     "low",
@@ -43,7 +91,7 @@
    }
   },
   {
-   "id": "LSN-CON-06020#s2",
+   "id": "LSN-CON-06020#s3",
    "type": "key_ideas",
    "bands": [
     "low",
@@ -77,7 +125,7 @@
    }
   },
   {
-   "id": "LSN-CON-06020#s3",
+   "id": "LSN-CON-06020#s4",
    "type": "key_ideas",
    "bands": [
     "low",
@@ -106,7 +154,7 @@
    }
   },
   {
-   "id": "LSN-CON-06020#s4",
+   "id": "LSN-CON-06020#s5",
    "type": "key_ideas",
    "bands": [
     "low"
@@ -132,7 +180,7 @@
    }
   },
   {
-   "id": "LSN-CON-06020#s5",
+   "id": "LSN-CON-06020#s6",
    "type": "strategy",
    "bands": [
     "low",
@@ -145,17 +193,29 @@
     "BC-SKL-06074"
    ],
    "sources": [
-    "BC-QA-06016"
+    "BC-QA-06016",
+    "BC-ERR-06020"
    ],
    "evidence_tag": "verified",
    "archetype_id": "BC-QA-06016",
    "cue": "An unsignalled integrand, a product of a linear factor and a transcendental factor; an indefinite integral asked.",
    "method": "Inspect the integrand for structural markers.",
-   "rival": "Rival: substituting for the exponent although its derivative is not the other factor (BC-ERR-06020).",
-   "separating_feature": "The linear factor is not the inner derivative, so parts, not substitution."
+   "rival": "Substituting for the exponent although its derivative is not the other factor.",
+   "separating_feature": "The linear factor is not the inner derivative, so parts, not substitution.",
+   "contrast": {
+    "this": {
+     "text": "Find \\(\\int 4x\\,e^{3x}\\,dx\\).",
+     "archetype_id": "BC-QA-06016"
+    },
+    "not_this": {
+     "text": "Find \\(\\int 4x\\,e^{3x^2}\\,dx\\).",
+     "why_not": "\\(4x\\) is a constant multiple of the derivative of \\(3x^2\\), so substitution applies."
+    },
+    "feature": "Whether the linear factor is the derivative of the exponent."
+   }
   },
   {
-   "id": "LSN-CON-06020#s6",
+   "id": "LSN-CON-06020#s7",
    "type": "worked_example",
    "bands": [
     "low",
@@ -330,7 +390,7 @@
    }
   },
   {
-   "id": "LSN-CON-06020#s7",
+   "id": "LSN-CON-06020#s8",
    "type": "worked_example",
    "bands": [
     "low"
@@ -491,6 +551,7 @@
      ]
     ]
    },
+   "fade_from": 3,
    "delivery": {
     "mode": "step_reveal",
     "reason": "rule 1",
@@ -576,6 +637,7 @@
     ]
    },
    "relation": "distinct",
+   "fix_prompt": true,
    "possible_reason": {
     "misconception_id": "BC-MIS-06017",
     "text": "selects substitution from the presence of an inner function alone"
@@ -668,6 +730,7 @@
     ]
    },
    "relation": "distinct",
+   "fix_prompt": true,
    "possible_reason": {
     "misconception_id": "BC-MIS-06019",
     "text": "each factor is antidifferentiated on its own"
@@ -714,7 +777,7 @@
     "shift": 1,
     "constant": 1
    },
-   "completes": "LSN-CON-06020#s6",
+   "completes": "LSN-CON-06020#s7",
    "stem": {
     "text": "∫ 3x e^(-2x) dx = -(3x/2) e^(-2x) + ∫ (3/2) e^(-2x) dx. Finish.",
     "command_verb": "find"
@@ -1081,18 +1144,19 @@
   }
  ],
  "refresher": [
-  "LSN-CON-06020#s2",
   "LSN-CON-06020#s3",
+  "LSN-CON-06020#s4",
   "LSN-CON-06020#err-BC-ERR-06020",
   "LSN-CON-06020#err-BC-ERR-06022",
-  "LSN-CON-06020#s6"
+  "LSN-CON-06020#s7"
  ],
+ "no_figure_reason": "The skills carry symbolic and numerical-value representations only, and the key ideas classify integrands by structure, not a process to draw, so no figure fits.",
  "provenance": {
   "author": "tools/lesson_transcribe.py",
-  "prompt_version": "generator/lesson_v1",
+  "prompt_version": "generator/lesson_v2",
   "design_path": "docs/lessons/unit-06/LSN-CON-06020.md",
-  "signed_off_by": "claude-opus-5-5",
-  "signed_off_at": "2026-09-29",
+  "signed_off_by": null,
+  "signed_off_at": null,
   "not_human": true
  }
 }

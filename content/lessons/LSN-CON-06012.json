@@ -3,20 +3,56 @@
  "version": 1,
  "kind": "concept",
  "target_id": "BC-CON-06012",
- "status": "signed_off",
+ "status": "draft",
  "snapshot_digest": "a6a8ec9d3f59ab8f712e33d30cc22fc64bf2c478fbe7312e3e3118d319c6a42f",
  "source_digest": "b56bf2c1d6bc3d5e7f3db5aa000b0f256996797251800bb24a7df04b4355501b",
  "read_minutes": {
-  "full": 4.8,
+  "full": 4.9,
   "brief": 3.0
  },
  "word_count": {
-  "full": 636,
-  "brief": 395
+  "full": 646,
+  "brief": 411
  },
  "sections": [
   {
    "id": "LSN-CON-06012#s1",
+   "type": "prediction",
+   "bands": [
+    "low",
+    "mid"
+   ],
+   "skills": [
+    "BC-SKL-06034",
+    "BC-SKL-06035",
+    "BC-SKL-06036",
+    "BC-SKL-06037",
+    "BC-SKL-06039"
+   ],
+   "sources": [
+    "BC-CON-06012",
+    "research/units/unit-06-integration-accumulation.md#6.7 The Fundamental Theorem of Calculus and Definite Integrals"
+   ],
+   "evidence_tag": "inferred",
+   "stem": {
+    "text": "Predict the amount at t = 3: 40 liters at t = 1, inflow 3t^2 + 2t + 2 per hour.",
+    "command_verb": "predict"
+   },
+   "format": "short_answer",
+   "answer_key": {
+    "form": "numeric",
+    "mathjson": 78
+   },
+   "resolution": {
+    "text": "The change is the integral, 38; the amount is 40 plus 38."
+   },
+   "delivery": {
+    "mode": "text",
+    "reason": "rule 6"
+   }
+  },
+  {
+   "id": "LSN-CON-06012#s2",
    "type": "orientation",
    "bands": [
     "low",
@@ -34,7 +70,7 @@
     "research/units/unit-06-integration-accumulation.md#6.7 The Fundamental Theorem of Calculus and Definite Integrals"
    ],
    "evidence_tag": "inferred",
-   "text": "The integral of a rate is the change in the quantity. A later value is the known value plus that integral.",
+   "text": "A later value is the known value plus the integral.",
    "delivery": {
     "mode": "text",
     "reason": "rule 6: a statement of what a response writes",
@@ -44,7 +80,7 @@
    }
   },
   {
-   "id": "LSN-CON-06012#s2",
+   "id": "LSN-CON-06012#s3",
    "type": "key_ideas",
    "bands": [
     "low",
@@ -65,7 +101,7 @@
    "evidence_tag": "inferred",
    "ek_id": "BC-EK-FUN-6B3",
    "depth": "core",
-   "text": "With f continuous on [a, b] and F an antiderivative, the integral of f from a to b is F(b) - F(a). So A(b) = A(a) + the integral of the rate.",
+   "text": "The integral from a to b is F(b) - F(a). So A(b) = A(a) + the integral of the rate.",
    "notation": "F(b) - F(a)",
    "delivery": {
     "mode": "table",
@@ -107,7 +143,7 @@
    }
   },
   {
-   "id": "LSN-CON-06012#s3",
+   "id": "LSN-CON-06012#s4",
    "type": "key_ideas",
    "bands": [
     "low"
@@ -137,7 +173,7 @@
    }
   },
   {
-   "id": "LSN-CON-06012#s4",
+   "id": "LSN-CON-06012#s5",
    "type": "key_ideas",
    "bands": [
     "low"
@@ -163,7 +199,7 @@
    }
   },
   {
-   "id": "LSN-CON-06012#s5",
+   "id": "LSN-CON-06012#s6",
    "type": "strategy",
    "bands": [
     "low",
@@ -175,17 +211,29 @@
     "BC-SKL-06037"
    ],
    "sources": [
-    "BC-QA-06005"
+    "BC-QA-06005",
+    "BC-ERR-06015"
    ],
    "evidence_tag": "verified",
    "archetype_id": "BC-QA-06005",
-   "cue": "A rate, a known value at one time, a later value asked.",
-   "method": "First line: A(b) = A(a) + integral of the rate.",
-   "rival": "Rival: net change reported as the amount (BC-ERR-06015).",
-   "separating_feature": "The known value."
+   "cue": "Rate and known value.",
+   "method": "Known value plus the integral.",
+   "rival": "Net change alone.",
+   "separating_feature": "A known value.",
+   "contrast": {
+    "this": {
+     "text": "Rate 4t + 1; 10 liters at t = 2. Find the amount at t = 5.",
+     "archetype_id": "BC-QA-06005"
+    },
+    "not_this": {
+     "text": "Find the total liters entering from t = 2 to t = 5.",
+     "why_not": "Only the integral."
+    },
+    "feature": "A known value."
+   }
   },
   {
-   "id": "LSN-CON-06012#s6",
+   "id": "LSN-CON-06012#s7",
    "type": "strategy",
    "bands": [
     "low",
@@ -202,12 +250,12 @@
    "evidence_tag": "verified",
    "archetype_id": "BC-QA-06006",
    "cue": "An inflow rate, an outflow rate and an initial amount.",
-   "method": "First line: which rate increases the quantity and which decreases it, then one integral of inflow minus outflow.",
-   "rival": "Rival: the parentheses around the outflow dropped.",
+   "method": "Which rate increases the quantity and which decreases it, then one integral of inflow minus outflow.",
+   "rival": "The parentheses around the outflow dropped.",
    "separating_feature": "Two rates acting in opposite directions."
   },
   {
-   "id": "LSN-CON-06012#s7",
+   "id": "LSN-CON-06012#s8",
    "type": "strategy",
    "bands": [
     "low",
@@ -223,12 +271,12 @@
    "evidence_tag": "verified",
    "archetype_id": "BC-QA-99008",
    "cue": "A rate over a closed interval; the total that arrives asked.",
-   "method": "First line: the interval read from the wording, then the integral of the rate.",
-   "rival": "Rival: the stem's initial amount added, as for net change.",
+   "method": "The interval read from the wording, then the integral of the rate.",
+   "rival": "The stem's initial amount added, as for net change.",
    "separating_feature": "Arrives or total, with no amount present asked."
   },
   {
-   "id": "LSN-CON-06012#s8",
+   "id": "LSN-CON-06012#s9",
    "type": "worked_example",
    "bands": [
     "low",
@@ -266,7 +314,7 @@
    "calculator_status": "no_calculator",
    "steps": [
     {
-     "cue": "A later amount, with a known amount at t = 1.",
+     "cue": "Known amount at t = 1.",
      "why": "Known value plus the change.",
      "expression": [
       "Add",
@@ -303,7 +351,7 @@
      "relation": "new"
     },
     {
-     "cue": "No calculator: an antiderivative first.",
+     "cue": "Antiderivative first.",
      "why": "Power rule, term by term.",
      "expression": [
       "Add",
@@ -333,7 +381,7 @@
      "relation": "new"
     },
     {
-     "cue": "The stem asks for an amount.",
+     "cue": "An amount.",
      "why": "78 liters.",
      "expression": 78,
      "relation": "equivalent"
@@ -350,7 +398,7 @@
    }
   },
   {
-   "id": "LSN-CON-06012#s9",
+   "id": "LSN-CON-06012#s10",
    "type": "what_a_reader_scores",
    "bands": [
     "low",
@@ -366,7 +414,7 @@
     "BC-PT-99003"
    ],
    "evidence_tag": "verified",
-   "example_id": "LSN-CON-06012#s8",
+   "example_id": "LSN-CON-06012#s9",
    "lines": [
     {
      "point_type_id": "BC-PT-99033",
@@ -406,6 +454,7 @@
     "expression": 78
    },
    "relation": "distinct",
+   "fix_prompt": true,
    "possible_reason": {
     "misconception_id": "BC-MIS-08006",
     "text": "reads an accumulation integral as the quantity itself rather than as the change in it"
@@ -443,6 +492,7 @@
     "expression": 78
    },
    "relation": "distinct",
+   "fix_prompt": true,
    "possible_reason": {
     "misconception_id": "BC-MIS-99004",
     "text": "the value at the lower limit and the direction of the limits play no role"
@@ -553,6 +603,7 @@
     ]
    },
    "relation": "distinct",
+   "fix_prompt": true,
    "delivery": {
     "mode": "step_reveal",
     "reason": "rule 1",
@@ -585,6 +636,7 @@
     "expression": 78
    },
    "relation": "distinct",
+   "fix_prompt": true,
    "delivery": {
     "mode": "step_reveal",
     "reason": "rule 1",
@@ -606,7 +658,7 @@
    ],
    "evidence_tag": "inferred",
    "prerequisite_id": "BC-PRQ-06002",
-   "text": "Radicals and reciprocals become powers; exponent -1 is excluded."
+   "text": "Radicals are powers."
   },
   {
    "id": "LSN-CON-06012#prq-BC-PRQ-06005",
@@ -624,7 +676,7 @@
    ],
    "evidence_tag": "inferred",
    "prerequisite_id": "BC-PRQ-06005",
-   "text": "A(3) is an amount; the rate is not."
+   "text": "An amount is not a rate."
   }
  ],
  "checks": [
@@ -652,7 +704,7 @@
     "tool": "exact",
     "direction": "forward"
    },
-   "completes": "LSN-CON-06012#s8",
+   "completes": "LSN-CON-06012#s9",
    "stem": {
     "text": "Given F(t) = t^3 + t^2 + 2t, find A(3).",
     "command_verb": "find"
@@ -882,19 +934,19 @@
   }
  ],
  "refresher": [
-  "LSN-CON-06012#s2",
+  "LSN-CON-06012#s3",
   "LSN-CON-06012#err-BC-ERR-06015",
   "LSN-CON-06012#err-BC-ERR-99012",
   "LSN-CON-06012#err-BC-ERR-06032",
   "LSN-CON-06012#err-BC-ERR-99022",
-  "LSN-CON-06012#s8"
+  "LSN-CON-06012#s9"
  ],
  "provenance": {
   "author": "tools/lesson_transcribe.py",
-  "prompt_version": "generator/lesson_v1",
+  "prompt_version": "generator/lesson_v2",
   "design_path": "docs/lessons/unit-06/LSN-CON-06012.md",
-  "signed_off_by": "claude-opus-5-5",
-  "signed_off_at": "2026-09-29",
+  "signed_off_by": null,
+  "signed_off_at": null,
   "not_human": true
  }
 }

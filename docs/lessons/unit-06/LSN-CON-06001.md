@@ -9,9 +9,13 @@ purpose: Authoring spec for the concept lesson on BC-CON-06001, the signed area 
 
 Concept BC-CON-06001 (skills BC-SKL-06001, BC-SKL-06004), topic 6.1 of Unit 6, loaded by BC-QA-06015 (family accumulation-interpretation) and BC-QA-06004 (family definite-integral-from-graph). It is Unit 6's productive-failure target (app/engine/constants.py PRODUCTIVE_FAILURE_TARGETS) and has no Unit 6 hard parent (docs/lessons/unit-06/README.md, section 1).
 
+## Prediction
+
+One multiple choice question on worked example 1's own regions, asked before the rule is shown: the areas 3 above the axis and 2 and 2π below it, and what the integral over [0, 8] is. The key option is that regions below the axis subtract, which gives 3 - 2 - 2π, ex-1's fourth valued step. The distractors add every region (the BC-ERR-06014 path) and subtract only the 2, adding the semicircle's region. The resolution, shown on the key idea screen beside the choice, states that regions below subtract and gives the net change. No verdict word. Sources: BC-CON-06001 and the topic 6.1 section the key ideas cite.
+
 ## Orientation
 
-Served text, from BC-CON-06001 `description_plain` and the topic's Assessment behaviour paragraph (research/units/unit-06-integration-accumulation.md#6.1 Exploring Accumulations of Change): computational variants ask for the accumulated amount from geometry, interpretation variants for a sentence with quantity, units and interval. No count, no frequency.
+Served text (21 words), from BC-CON-06001 `description_plain` and the topic's Assessment behaviour paragraph (research/units/unit-06-integration-accumulation.md#6.1 Exploring Accumulations of Change): the area between a rate graph and the axis is the change in the quantity, given as signed area or as a sentence with units and interval. No count, no frequency. The served text carries no record id.
 
 ## Key ideas
 
@@ -27,11 +31,13 @@ The Units and Sign paragraphs map to BC-EK-CHA-4A4 and 4A3, which belong to BC-C
 - BC-QA-06004 (research/question-analysis/question-archetypes.md#BC-QA-06004 Definite integral evaluated from a graph by geometry). `typical_wording`: "the graph of f consists of line segments and semicircles; evaluate the definite integral of f over the stated interval". `common_givens`: a graph of f made of line segments and semicircles, an accumulation function with a fixed lower limit. `asked_to_produce`: the value of a definite integral, labelled values of an accumulation function. Official examples BC-FRQ-2024-Q4-A, BC-FRQ-2025-Q4-C, BC-FRQ-2018-Q3-B.
 - BC-QA-06015 (research/question-analysis/question-archetypes.md#BC-QA-06015 Interpreting a definite integral in context with units). `typical_wording`: "using correct units, interpret the meaning of the displayed definite integral in the context of the problem". `common_givens`: a contextual rate function, a definite integral expression. `asked_to_produce`: a sentence with quantity, interval, and units. No `official_examples`; the notes name 2023 Q1(a) and 2024 Q1(b).
 
+Contrast pair on st-1: this stem is on BC-QA-06004, a graph of segments and a semicircle with a definite integral asked; not this stem is the same graph with the average value of f asked, the near miss from the sibling concept BC-CON-06013 (a leading factor 1/(b - a)). The separating feature is that leading factor.
+
 The signal: a rate (a graph with a named rate, or units "per" something) and a request for a change or its meaning. Not this concept: a leading factor 1/(b - a) (average value, BC-CON-06013), or an initial amount with "how much is present" (BC-CON-06012).
 
 ## Method choice
 
-- st-1, BC-QA-06004 (both bands). Method, `expected_solution_path[0]`: partition the region at the points where the graph changes character. Rival from `wrong_approaches`: regions below the axis added as positive area (BC-ERR-06014). Separating feature: the change is signed.
+- st-1, BC-QA-06004 (both bands). Method, `expected_solution_path[0]`: partition the region at the points where the graph changes character. Rival from `wrong_approaches`: regions below the axis added as positive area (BC-ERR-06014). Separating feature: pieces below the axis are negative. The first block also carries the contrast pair above. Every field is served without the reader's own label, and record ids sit in `sources`.
 - st-2, BC-QA-06015 (low band). Method, `expected_solution_path[0]`: identify what the integrand measures per unit input. Rival from `wrong_approaches`: naming the quantity without the interval; giving the units of the rate. Separating feature: an amount over an interval carries the product of units and both limits.
 
 Both archetypes carry `asked_to_produce` and `common_givens`, so neither block is tagged inferred.
@@ -39,7 +45,7 @@ Both archetypes carry `asked_to_produce` and `common_givens`, so neither block i
 ## Solution path
 
 - ex-1, BC-QA-06004, both bands, no calculator. Draw: heights 2, 2, 0, -2, lower 0, circle below, forward; derived `linear_area` = 1. Steps follow `expected_solution_path`: partition (no value); gain on [0, 2], 3 (new); loss on [2, 4], -2 (new); semicircle, -2π (new); signed total (new, BC-PT-99069); 1 - 2π (equivalent). No published BC-QA-06004 item carries this draw.
-- ex-2, BC-QA-06015, low band, statement answer. Draw: context water, start 2, length 4, display total, direction accumulates. Units chain gallons/hour times hour to gallons (new, equivalent); the sentence names quantity, units, interval. No point tag: BC-QA-06015 lists no `point_types`.
+- ex-2, BC-QA-06015, low band, statement answer, faded (`fade_from` 4): steps 1 to 3 are shown (the rate, the units product, the cancelled hours), and the student writes the sentence from them before steps 4 and 5 (the limits name the interval, the sentence itself) reveal. The fade falls there because the units chain is the valued part and the sentence is the scored part. Draw: context water, start 2, length 4, display total, direction accumulates. Units chain gallons/hour times hour to gallons (new, equivalent); the sentence names quantity, units, interval. No point tag: BC-QA-06015 lists no `point_types`.
 
 A fluent solver writes the signed total and the labelled value of ex-1 and the one sentence of ex-2; the partition, formulas and units product are held (unit README section 5) [inferred].
 
@@ -80,15 +86,16 @@ ex-1's archetype BC-QA-06004 is `no_calculator`, one part of a free response que
 ## Delivery
 
 - orientation, ki-1, ki-2: figure. Rule 4: BC-REP-02 on BC-SKL-06001 and 06004 (unit README section 6).
-- ex-1, ex-2 and the four error blocks: step_reveal. Rule 1.
+- ex-1, ex-2 and the four error blocks: step_reveal. Rule 1. The four error blocks are fix prompts (all `distinct`).
+- prediction: text, no delivery entry.
 - representations: model. The template's model row puts every productive-failure target on a model; the running total is a computed sequence.
 
 Every non-text choice is [inferred]; settled by the modality A/B.
 
 ## Band plan
 
-- Low (full): orientation, ki-1, ki-2, st-1, st-2, ex-1 with its reader line, ex-2, four error blocks, chk-1 to chk-3, the model, both bridges. 793 words, 5.3 minutes (cap 900 and 6).
-- Mid (brief): orientation, ki-1, ki-2, st-1, ex-1 with its reader line, err-BC-ERR-06014, err-BC-ERR-06030, chk-1, chk-2, both bridges. 444 words, 3.0 minutes (cap 450 and 3).
+- Low (full), in served order: prediction, orientation, both bridges, ki-1, ki-2, st-1 with its contrast pair, st-2, ex-1 with its reader line, chk-1, the four error blocks, ex-2 faded, chk-2, the model, chk-3. 795 words, 5.3 minutes (cap 900 and 6).
+- Mid (brief), in served order: prediction, orientation, both bridges, ki-1, ki-2, st-1 with its contrast pair, ex-1 with its reader line, chk-1, err-BC-ERR-06014, err-BC-ERR-06030, chk-2. 448 words, 3.0 minutes (cap 450 and 3). The orientation, key ideas, strategy, cues and bridges were shortened to hold this; no anchor quote or scoring tag was dropped.
 - Refresher: ki-1, ki-2, the four error blocks, ex-1.
 
 ## Sources
@@ -120,8 +127,38 @@ Every non-text choice is [inferred]; settled by the modality A/B.
   "BC-SKL-06001",
   "BC-SKL-06004"
  ],
+ "prediction": {
+  "id": "pr-1",
+  "stem": {
+   "text": "Before the rule: f has regions of area 3 above the axis, and 2 and 2π below it. What is ∫_0^8 f(x) dx?",
+   "command_verb": "predict"
+  },
+  "format": "mcq",
+  "options": [
+   {
+    "id": "A",
+    "label": "All three regions add",
+    "is_key": false
+   },
+   {
+    "id": "B",
+    "label": "Regions below the axis subtract",
+    "is_key": true
+   },
+   {
+    "id": "C",
+    "label": "Only the 2 subtracts",
+    "is_key": false
+   }
+  ],
+  "resolution": "Regions below subtract: 3 - 2 - 2π = 1 - 2π, the net change.",
+  "sources": [
+   "BC-CON-06001",
+   "research/units/unit-06-integration-accumulation.md#6.1 Exploring Accumulations of Change"
+  ]
+ },
  "orientation": {
-  "text": "Area between a rate graph and the axis is the change in the quantity. A response computes it as signed area, or names quantity, units and interval.",
+  "text": "Area between a rate graph and the axis is the quantity's change: signed area, or a sentence with units and interval.",
   "sources": [
    "BC-CON-06001",
    "research/units/unit-06-integration-accumulation.md#6.1 Exploring Accumulations of Change"
@@ -132,7 +169,7 @@ Every non-text choice is [inferred]; settled by the modality A/B.
    "id": "ki-1",
    "ek_id": "BC-EK-CHA-4A1",
    "depth": "core",
-   "text": "Over [a, b], the region between a rate graph f and the axis measures the change in the quantity whose rate is f: gain above, loss below.",
+   "text": "The region between a rate graph and the axis is the quantity's change: gain above, loss below.",
    "notation": "signed area; accumulated change",
    "quote": null,
    "sources": [
@@ -145,7 +182,7 @@ Every non-text choice is [inferred]; settled by the modality A/B.
    "id": "ki-2",
    "ek_id": "BC-EK-CHA-4A2",
    "depth": "core",
-   "text": "When the rate graph is segments and arcs, the change is found by geometry: one area formula per piece, pieces below the axis negative.",
+   "text": "One area formula per piece; pieces below the axis are negative.",
    "notation": "signed area",
    "quote": null,
    "sources": [
@@ -159,21 +196,32 @@ Every non-text choice is [inferred]; settled by the modality A/B.
   {
    "id": "st-1",
    "archetype_id": "BC-QA-06004",
-   "cue": "A graph of f in segments and semicircles; an integral's value asked.",
+   "cue": "Segments and semicircles; a value asked.",
    "method": "Partition where the graph changes character.",
-   "rival": "Rival: every piece added as positive area.",
-   "separating_feature": "The change is signed: the side of the axis fixes each sign.",
+   "rival": "Every piece added as area.",
+   "separating_feature": "Pieces below the axis are negative.",
    "sources": [
     "BC-QA-06004"
    ],
-   "evidence_tag": "verified"
+   "evidence_tag": "verified",
+   "contrast": {
+    "this": {
+     "text": "f is segments and a semicircle. Find ∫_0^8 f(x) dx.",
+     "archetype_id": "BC-QA-06004"
+    },
+    "not_this": {
+     "text": "f is segments and a semicircle. Find the average value of f on [0, 8].",
+     "why_not": "It asks for the integral divided by the length."
+    },
+    "feature": "A leading factor 1/(b - a)."
+   }
   },
   {
    "id": "st-2",
    "archetype_id": "BC-QA-06015",
    "cue": "A contextual rate and a displayed integral; a sentence with quantity, interval and units asked.",
    "method": "Identify what the integrand measures per unit input.",
-   "rival": "Rival: naming the quantity without the interval, or with the rate's units.",
+   "rival": "Naming the quantity without the interval, or with the rate's units.",
    "separating_feature": "The integral is an amount over an interval, so it carries the product of the units and both limits.",
    "sources": [
     "BC-QA-06015"
@@ -207,37 +255,37 @@ Every non-text choice is [inferred]; settled by the modality A/B.
    "calculator_status": "no_calculator",
    "steps": [
     {
-     "cue": "Segments and an arc: split at x = 2 and 4.",
-     "why": "One shape per piece."
+     "cue": "Split at x = 2 and 4.",
+     "why": "One shape each."
     },
     {
-     "cue": "[0, 2]: rectangle and triangle above.",
+     "cue": "[0, 2]: above.",
      "why": "Gain.",
      "expr": "2*1 + (1/2)*1*2",
      "relation": "new"
     },
     {
-     "cue": "[2, 4]: triangle below.",
-     "why": "Loss enters negatively.",
+     "cue": "[2, 4]: below.",
+     "why": "Loss is negative.",
      "expr": "-(1/2)*2*2",
      "relation": "new"
     },
     {
      "cue": "[4, 8]: semicircle below.",
-     "why": "Half of pi r squared.",
+     "why": "Half of πr².",
      "expr": "-(1/2)*pi*2**2",
      "relation": "new"
     },
     {
-     "cue": "The change is the signed total.",
-     "why": "Adjacent intervals add.",
+     "cue": "The signed total.",
+     "why": "Intervals add.",
      "expr": "3 - 2 - 2*pi",
      "relation": "new",
      "point_type_id": "BC-PT-99069"
     },
     {
-     "cue": "Label the value.",
-     "why": "Negative: a net loss.",
+     "cue": "Label it.",
+     "why": "Net loss.",
      "expr": "1 - 2*pi",
      "relation": "equivalent"
     }
@@ -284,7 +332,7 @@ Every non-text choice is [inferred]; settled by the modality A/B.
     },
     {
      "cue": "The limits name the interval.",
-     "why": "The interval is required (sg-23:2)."
+     "why": "The interval is required."
     },
     {
      "cue": "Write the sentence.",
@@ -295,7 +343,8 @@ Every non-text choice is [inferred]; settled by the modality A/B.
     "form": "statement",
     "expr": "gallons",
     "text": "The number of gallons of water that flow into the tank from t = 2 to t = 6 hours."
-   }
+   },
+   "fade_from": 4
   }
  ],
  "what_a_reader_scores": [
@@ -326,6 +375,7 @@ Every non-text choice is [inferred]; settled by the modality A/B.
     "expr": "3 - 2 - 2*pi"
    },
    "relation": "distinct",
+   "fix_prompt": true,
    "possible_reason": {
     "misconception_id": "BC-MIS-08024",
     "text": "reads every definite integral as area"
@@ -348,6 +398,7 @@ Every non-text choice is [inferred]; settled by the modality A/B.
     "expr": "(1 - 2*pi)/8"
    },
    "relation": "distinct",
+   "fix_prompt": true,
    "possible_reason": null,
    "sources": [
     "BC-ERR-06030"
@@ -366,6 +417,7 @@ Every non-text choice is [inferred]; settled by the modality A/B.
     "expr": "3 - 2 - 2*pi"
    },
    "relation": "distinct",
+   "fix_prompt": true,
    "possible_reason": {
     "misconception_id": "BC-MIS-08019",
     "text": "remembers the squared dimension but not the fraction in front of it"
@@ -388,6 +440,7 @@ Every non-text choice is [inferred]; settled by the modality A/B.
     "expr": "gallons"
    },
    "relation": "distinct",
+   "fix_prompt": true,
    "possible_reason": {
     "misconception_id": "BC-MIS-08009",
     "text": "treats the sentence as a label for the integral rather than as a statement that must fix the quantity, the interval, and the units"
@@ -441,11 +494,11 @@ Every non-text choice is [inferred]; settled by the modality A/B.
  "prerequisite_bridges": [
   {
    "prq_id": "BC-PRQ-06005",
-   "text": "f(t) is the rate at input t; reading the wrong input, or swapping f and f prime, breaks the value."
+   "text": "f(t) is the rate at input t."
   },
   {
    "prq_id": "BC-PRQ-06007",
-   "text": "Area formulas read off a figure: a trapezoid is not a rectangle, and a semicircle is half a circle."
+   "text": "A semicircle is half a circle."
   }
  ],
  "time": {
@@ -1057,8 +1110,8 @@ Every non-text choice is [inferred]; settled by the modality A/B.
   "brief": 3.0
  },
  "word_count": {
-  "full": 793,
-  "brief": 444
+  "full": 795,
+  "brief": 448
  }
 }
 ```

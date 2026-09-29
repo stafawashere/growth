@@ -9,6 +9,10 @@ purpose: Authoring spec for the concept lesson on BC-CON-06009, where g(x) = the
 
 Concept BC-CON-06009 (skills BC-SKL-06022 to BC-SKL-06027), topic 6.5 of Unit 6, loaded by one archetype, BC-QA-06003 (family accumulation-function-analysis), which FRQ writers give a whole multipart question. Hard parents: BC-CON-06007 and BC-CON-06008 (docs/lessons/unit-06/README.md, section 1).
 
+## Prediction
+
+One multiple choice question on worked example 1's own graph, asked before the rule is shown: g is the integral of f from 0, f is positive on (1, 10/3) and negative on (10/3, 5), and the question is what g has at x = 10/3. The key is "A relative maximum", the point ex-1's answer set contains. The distractors are a relative minimum and an inflection point (the zero of f read as an inflection, the BC-ERR-06009 path). The resolution, shown on the key idea screen beside the choice, states that g' = f, so g rises then falls at a positive to negative sign change of f. No verdict word. Sources: BC-CON-06009 and the topic 6.5 section the key idea cites.
+
 ## Orientation
 
 Served text, from BC-CON-06009 `description_plain` and the topic's Assessment behaviour paragraph (research/units/unit-06-integration-accumulation.md#6.5 Interpreting the Behavior of Accumulation Functions Involving Area): the drawn curve is f, not g; a response reads g's rises and turns from the sign of f and g's bends from the slope of f, and every reason names f. No count, no frequency.
@@ -23,26 +27,28 @@ All six skills map to BC-EK-FUN-5A3 (ced:122): one core block, both bands.
 
 BC-QA-06003 (research/question-analysis/question-archetypes.md#BC-QA-06003 Accumulation function analysed from the graph of the integrand): `typical_wording` "find all values of x at which the graph of g has a point of inflection and give a reason", "find the value of x at which g attains an absolute minimum on the closed interval and justify your answer"; `common_givens` a graph of f of segments and semicircles, an accumulation function g with a fixed lower limit, a closed interval; `asked_to_produce` the critical points, the inflection points with a reason tied to the graph of f, the absolute extremum with a justification. The signal: a picture labelled "graph of f" and questions about g. Shapes: MCQ (BC-MCQ-CED-007, BC-MCQ-PE2012-015) and the no-calculator FRQ (BC-FRQ-2024-Q4-B, BC-FRQ-2021-Q4-A, BC-FRQ-2019-Q3-C).
 
+Contrast pair on st-1: this stem is on BC-QA-06003, where g has a relative maximum is asked; not this stem is the same definition and graph with the value g(8) asked, the near miss from BC-CON-06007, where a signed area is summed and no feature is read. The separating feature is a feature word asked of g, not a value.
+
 What says "not this concept": a request for a value of g (BC-CON-06007) or for g prime at a point (BC-CON-06008). What says "this one": increasing, relative maximum, concave, point of inflection, absolute minimum, each asked of g.
 
 ## Method choice
 
 One strategy block, both bands.
 
-- st-1, BC-QA-06003. Method: the archetype's `expected_solution_path[0]` is the value step taught in LSN-CON-06007, so the block names the path's next two entries, g' = f by the theorem, then sign changes of f for extrema and turning points of f for inflection points (library gap: the path puts the value step first for every ask). Rival from `wrong_approaches`: features read off the plotted f (BC-ERR-06008). Separating feature: the curve drawn is f, so its peaks are not g's peaks.
+- st-1, BC-QA-06003. Method: the archetype's `expected_solution_path[0]` is the value step taught in LSN-CON-06007, so the block names the path's next two entries, g' = f by the theorem, then sign changes of f for extrema and turning points of f for inflection points (library gap: the path puts the value step first for every ask). Rival from `wrong_approaches`: features read off the plotted f (BC-ERR-06008). Separating feature: the curve drawn is f, so its peaks are not g's peaks. The reader prints its own labels, so no strategy field begins with one, and the rival's record id sits in the block's `sources`, not in its text.
 
 ## Solution path
 
 - ex-1, BC-QA-06003, both bands, no calculator. Draw from `parameter_spec`: heights [-2, 2, -1, 1], lower 0, circle below, half_point 3/2, letters fg, ask value. The constraints hold (heights[3] is 1, linear_total is 2). The spec's `ask` parameter offers only value and chain, so the draw fixes the graph and the problem asks a feature question on it [inferred; library gap, `parameter_spec.parameters.ask` has no feature value]. f is negative on (0, 1), positive on (1, 10/3), negative on (10/3, 5), positive on (5, 8), negative on (8, 12). No published BC-QA-06003 item carries this draw.
-- Steps: g' = f named (no value, tagged BC-PT-99024); the zeros of f where it changes sign (new, tagged BC-PT-99013); the ones where f goes from positive to negative (new). A fluent solver writes g' = f, the sign change and the answer; the zero locations are read off the figure.
+- Steps: g' = f named (no value); the zeros of f where it changes sign (new, tagged BC-PT-99013); the ones where f goes from positive to negative (new). A fluent solver writes g' = f, the sign change and the answer; the zero locations are read off the figure. There is no example 2, so nothing is faded.
 
 ## Scoring
 
-BC-QA-06003 lists BC-PT-99024 and BC-PT-99013 among its point types; ex-1's steps tag both, and their reader_checks lines are in the machine record. Answer and reason earn separate points; the reason must be tied to the graph of f, and a reason in terms of g alone earns the answer point only (BC-QA-06003 `scoring_pattern`, sg-25:17; research/scoring/justification-requirements.md#Reasons tied to the object the prompt names). A vague subject such as "the function" does not carry the reason point (same heading). An absolute extremum needs every critical input and both endpoints (research/scoring/justification-requirements.md#The candidates test, sg-25:19).
+BC-QA-06003 lists BC-PT-99024 and BC-PT-99013 among its point types; ex-1 tags BC-PT-99013 on the zeros step, and its reader_checks line is in the machine record. The BC-PT-99024 tag on step 1 is dropped, and its line with it, because the brief form otherwise exceeds 450 words; this is the last resort the rewrite allows, taken after the orientation, the key idea, the strategy fields, the contrast, the prediction and the bridge were shortened. Answer and reason earn separate points; the reason must be tied to the graph of f, and a reason in terms of g alone earns the answer point only (BC-QA-06003 `scoring_pattern`, sg-25:17; research/scoring/justification-requirements.md#Reasons tied to the object the prompt names). A vague subject such as "the function" does not carry the reason point (same heading). An absolute extremum needs every critical input and both endpoints (research/scoring/justification-requirements.md#The candidates test, sg-25:19).
 
 ## Traps
 
-Six active errors meet the skills; the first four in the bundle's order are served (all with linked BC-MIS at severity high): BC-ERR-06008, BC-ERR-06009, BC-ERR-06010, BC-ERR-06012. BC-ERR-99004 and BC-ERR-99030 are not served (cap 4). Mid band: the first two. All on ex-1's draw.
+Six active errors meet the skills; the first four in the bundle's order are served (all with linked BC-MIS at severity high): BC-ERR-06008, BC-ERR-06009, BC-ERR-06010, BC-ERR-06012. Three relations are distinct and BC-ERR-06010 is equivalent, so three are fix prompts (`fix_prompt` true) and err-BC-ERR-06010 keeps the reveal form (false). BC-ERR-99004 and BC-ERR-99030 are not served (cap 4). Mid band: the first two. All on ex-1's draw.
 
 - err-BC-ERR-06008: g's maxima put at the peaks of the drawn f, {2, 6}, against {10/3, 8}. Possible reason, words from BC-MIS-05011.
 - err-BC-ERR-06009: inflection points at the zeros of f, {1, 10/3, 5, 8}, against the turning points {2, 4, 6, 10}. Possible reason, words from BC-MIS-06008.
@@ -69,14 +75,17 @@ BC-QA-06003 is `no_calculator`, one part of a multipart FRQ or a single MCQ; the
 
 ## Delivery
 
+- prediction: text [inferred; settled by the modality A/B].
 - orientation: text. Rule 6; BC-REP-02 is served once, on ki-1.
 - ki-1: interactive. Rule 4 promoted: BC-REP-02 on all six skills; BC-QA-06003 `difficulty_variables` "whether the question asks about g, g prime, or g double prime" and the stem asks for a reading of the relationship (docs/lessons/unit-06/README.md, section 6) [inferred; settled by the modality A/B].
 - ex-1 and the four error blocks: step_reveal. Rule 1.
 
+The drawn block ki-1 (interactive) is already present, so no figure is added and no `no_figure_reason` is stated.
+
 ## Band plan
 
-- Low (full): orientation, ki-1, st-1, ex-1 with its scoring lines, the four error blocks, chk-1 to chk-3, the bridge. 628 words, 4.2 minutes (cap 900 and 6).
-- Mid (brief): orientation, ki-1, st-1, ex-1 with its scoring lines, err-BC-ERR-06008, err-BC-ERR-06009, chk-1, chk-2, the bridge. 450 words, 3.0 minutes (cap 450 and 3).
+- Low (full), in served order: prediction, orientation, ki-1, st-1 with its contrast pair, ex-1 with its scoring line, chk-1, the four error blocks, chk-2, chk-3, the bridge. 628 words, 4.2 minutes (cap 900 and 6). There is no example 2, so nothing is faded, and no representations block.
+- Mid (brief): prediction, orientation, ki-1, st-1 with its contrast pair, ex-1 with its scoring line, chk-1, err-BC-ERR-06008, err-BC-ERR-06009, chk-2, the bridge. 450 words, 3.0 minutes (cap 450 and 3). The orientation, ki-1, st-1, the contrast, the prediction and the bridge were shortened, and the BC-PT-99024 tag on ex-1 step 1 was dropped, to fit.
 - Refresher: ki-1, the four error blocks, ex-1.
 
 ## Sources
@@ -87,11 +96,13 @@ BC-QA-06003 is `no_calculator`, one part of a multipart FRQ or a single MCQ; the
 - BC-PRQ-06007
 - research/units/unit-06-integration-accumulation.md#6.5 Interpreting the Behavior of Accumulation Functions Involving Area
 - research/question-analysis/question-archetypes.md#BC-QA-06003 Accumulation function analysed from the graph of the integrand
+- BC-ERR-06008, cited in st-1's `sources`
 - research/scoring/justification-requirements.md#Reasons tied to the object the prompt names
 - research/scoring/justification-requirements.md#The candidates test
 - research/exam/exam-structure.md#Section and part layout
 - [inferred] A feature question posed on a value-ask draw. Settled by a feature value for `ask` in BC-QA-06003's parameter_spec.
 - [inferred] The 3.33 minute share per part. Settled by timing data per part.
+- [inferred] The contrast near miss, the value g(8) asked on the same graph, is a stem written for this pair. Settled by a published near-miss item.
 - [inferred] ki-1 as an interactive. Settled by the modality A/B.
 
 ## Machine record
@@ -102,20 +113,64 @@ BC-QA-06003 is `no_calculator`, one part of a multipart FRQ or a single MCQ; the
  "kind": "concept",
  "target_id": "BC-CON-06009",
  "unit": "06",
- "skills": ["BC-SKL-06022", "BC-SKL-06023", "BC-SKL-06024", "BC-SKL-06025", "BC-SKL-06026", "BC-SKL-06027"],
+ "skills": [
+  "BC-SKL-06022",
+  "BC-SKL-06023",
+  "BC-SKL-06024",
+  "BC-SKL-06025",
+  "BC-SKL-06026",
+  "BC-SKL-06027"
+ ],
+ "prediction": {
+  "id": "pr-1",
+  "stem": {
+   "text": "Predict. \\(g(x)=\\int_0^x f(t)\\,dt\\); f is positive on (1, 10/3), negative on (10/3, 5). What does g have at \\(10/3\\)?",
+   "command_verb": "predict"
+  },
+  "format": "mcq",
+  "options": [
+   {
+    "id": "A",
+    "label": "A relative maximum",
+    "is_key": true
+   },
+   {
+    "id": "B",
+    "label": "A relative minimum",
+    "is_key": false
+   },
+   {
+    "id": "C",
+    "label": "An inflection point",
+    "is_key": false
+   }
+  ],
+  "resolution": "\\(g'=f\\), so g rises, then falls: a relative maximum where f changes from positive to negative.",
+  "sources": [
+   "BC-CON-06009",
+   "research/units/unit-06-integration-accumulation.md#6.5 Interpreting the Behavior of Accumulation Functions Involving Area"
+  ]
+ },
  "orientation": {
-  "text": "The drawn curve is f. g rises and turns with the sign of f, bends with the slope of f; every reason names f.",
-  "sources": ["BC-CON-06009", "research/units/unit-06-integration-accumulation.md#6.5 Interpreting the Behavior of Accumulation Functions Involving Area"]
+  "text": "The drawn curve is f. g turns with the sign of f and bends with its slope; every reason names f.",
+  "sources": [
+   "BC-CON-06009",
+   "research/units/unit-06-integration-accumulation.md#6.5 Interpreting the Behavior of Accumulation Functions Involving Area"
+  ]
  },
  "key_ideas": [
   {
    "id": "ki-1",
    "ek_id": "BC-EK-FUN-5A3",
    "depth": "core",
-   "text": "g' = f: f positive, g rises; f changes sign, g has an extremum. g'' = f': f rising, g concave up; f turns, g inflects. Absolute: compare every zero of f and both endpoints.",
-   "notation": "g', g'' in terms of f, f'",
+   "text": "g' = f, so sign changes of f give extrema of g. g'' = f', so turns of f give inflections. Absolute extrema compare every zero and both endpoints.",
+   "notation": "\\(g'=f\\)",
    "quote": null,
-   "sources": ["BC-EK-FUN-5A3", "ced:122", "research/units/unit-06-integration-accumulation.md#6.5 Interpreting the Behavior of Accumulation Functions Involving Area"]
+   "sources": [
+    "BC-EK-FUN-5A3",
+    "ced:122",
+    "research/units/unit-06-integration-accumulation.md#6.5 Interpreting the Behavior of Accumulation Functions Involving Area"
+   ]
   }
  ],
  "strategy": [
@@ -123,165 +178,573 @@ BC-QA-06003 is `no_calculator`, one part of a multipart FRQ or a single MCQ; the
    "id": "st-1",
    "archetype_id": "BC-QA-06003",
    "cue": "Graph of f; features of g asked, with a reason.",
-   "method": "First line: g' = f. Sign changes of f give extrema; turns of f give inflection.",
-   "rival": "Rival: features read off the plotted f (BC-ERR-06008).",
+   "method": "g' = f. Sign changes of f give extrema; turns give inflection.",
+   "rival": "Features read off the plotted f.",
    "separating_feature": "The drawn peaks belong to f, not g.",
-   "sources": ["BC-QA-06003"],
-   "evidence_tag": "verified"
+   "sources": [
+    "BC-QA-06003",
+    "BC-ERR-06008"
+   ],
+   "evidence_tag": "verified",
+   "contrast": {
+    "this": {
+     "text": "For graphed f, \\(g(x)=\\int_0^x f(t)\\,dt\\). Where does g have a relative maximum?",
+     "archetype_id": "BC-QA-06003"
+    },
+    "not_this": {
+     "text": "For graphed f, \\(g(x)=\\int_0^x f(t)\\,dt\\). Find \\(g(8)\\).",
+     "why_not": "It asks for a value of g, a signed area."
+    },
+    "feature": "A feature of g, not a value, is asked."
+   }
   }
  ],
  "worked_examples": [
   {
    "id": "ex-1",
    "archetype_id": "BC-QA-06003",
-   "bands": ["low", "mid"],
-   "parameter_draw": {"heights": [-2, 2, -1, 1], "lower": 0, "circle": "below", "half_point": "3/2", "letters": "fg", "ask": "value"},
-   "problem": {"text": "f: segments through (0, -2), (2, 2), (4, -1), (6, 1), (8, 0), then a radius 2 semicircle below. g(x) = integral of f from 0 to x. Find each relative maximum of g.", "command_verb": "find"},
+   "bands": [
+    "low",
+    "mid"
+   ],
+   "parameter_draw": {
+    "heights": [
+     -2,
+     2,
+     -1,
+     1
+    ],
+    "lower": 0,
+    "circle": "below",
+    "half_point": "3/2",
+    "letters": "fg",
+    "ask": "value"
+   },
+   "problem": {
+    "text": "f: segments through (0, -2), (2, 2), (4, -1), (6, 1), (8, 0), then a radius 2 semicircle below. g(x) = integral of f from 0 to x. Find each relative maximum of g.",
+    "command_verb": "find"
+   },
    "calculator_status": "no_calculator",
    "steps": [
-    {"cue": "Features of g asked.", "why": "g' = f by the theorem.", "point_type_id": "BC-PT-99024"},
-    {"cue": "g' = 0 where f crosses the axis.", "why": "Read off the graph.", "expr": "FiniteSet(1, 10/3, 5, 8)", "relation": "new", "point_type_id": "BC-PT-99013"},
-    {"cue": "Maximum: g' from positive to negative.", "why": "Reason: f changes from positive to negative.", "expr": "FiniteSet(10/3, 8)", "relation": "new"}
+    {
+     "cue": "Features of g asked.",
+     "why": "g' = f by the theorem."
+    },
+    {
+     "cue": "g' = 0 where f crosses the axis.",
+     "why": "Read off the graph.",
+     "expr": "FiniteSet(1, 10/3, 5, 8)",
+     "relation": "new",
+     "point_type_id": "BC-PT-99013"
+    },
+    {
+     "cue": "Maximum: g' from positive to negative.",
+     "why": "Reason: f changes from positive to negative.",
+     "expr": "FiniteSet(10/3, 8)",
+     "relation": "new"
+    }
    ],
-   "answer": {"form": "symbolic", "expr": "FiniteSet(10/3, 8)"}
+   "answer": {
+    "form": "symbolic",
+    "expr": "FiniteSet(10/3, 8)"
+   }
   }
  ],
  "what_a_reader_scores": [
-  {"example_id": "ex-1", "point_type_ids": ["BC-PT-99024", "BC-PT-99013"], "lines": [
-   {"point_type_id": "BC-PT-99024", "text": "Derivative of an accumulation function by the Fundamental Theorem. Earned by: Writing the derivative of the accumulation function as the integrand evaluated at the variable, in general or at the requested value (sg-25:16, sg-24:13). Not earned by: Differencing the integrand at the two limits, which sg-25:16 states earns the answer point but not this one."},
-   {"point_type_id": "BC-PT-99013", "text": "Considers the derivative set equal to zero. Earned by: Presenting the equation derivative equals zero, or an equivalent equation, or discussing the sign change of the derivative, or using the phrase critical points of the function (sg-25:5, sg-26:17). Not earned by: Presenting only the solved critical value, which sg-25:5, sg-25:9, sg-26:17 and sg-25:19 all state is not sufficient."}
-  ]}
+  {
+   "example_id": "ex-1",
+   "point_type_ids": [
+    "BC-PT-99013"
+   ],
+   "lines": [
+    {
+     "point_type_id": "BC-PT-99013",
+     "text": "Considers the derivative set equal to zero. Earned by: Presenting the equation derivative equals zero, or an equivalent equation, or discussing the sign change of the derivative, or using the phrase critical points of the function (sg-25:5, sg-26:17). Not earned by: Presenting only the solved critical value, which sg-25:5, sg-25:9, sg-26:17 and sg-25:19 all state is not sufficient."
+    }
+   ]
+  }
  ],
  "common_errors": [
   {
    "error_id": "BC-ERR-06008",
    "observed_behavior": "Extrema or inflection points of g are read directly off the visible extrema and inflection points of the plotted curve.",
    "scoring_consequence": "Both the answer and the reason points of the part are lost, and any extra declared input costs both points (sg-25:17).",
-   "wrong_step": {"text": "2 and 6.", "expr": "FiniteSet(2, 6)"},
-   "right_step": {"text": "10/3 and 8.", "expr": "FiniteSet(10/3, 8)"},
+   "wrong_step": {
+    "text": "2 and 6.",
+    "expr": "FiniteSet(2, 6)"
+   },
+   "right_step": {
+    "text": "10/3 and 8.",
+    "expr": "FiniteSet(10/3, 8)"
+   },
    "relation": "distinct",
-   "possible_reason": {"misconception_id": "BC-MIS-05011", "text": "answers questions about the function by reading features of whatever curve is drawn"},
-   "sources": ["BC-ERR-06008", "BC-MIS-05011"]
+   "possible_reason": {
+    "misconception_id": "BC-MIS-05011",
+    "text": "answers questions about the function by reading features of whatever curve is drawn"
+   },
+   "sources": [
+    "BC-ERR-06008",
+    "BC-MIS-05011"
+   ],
+   "fix_prompt": true
   },
   {
    "error_id": "BC-ERR-06009",
    "observed_behavior": "The response reports inflection points of g at the zeros of f rather than at the turning points of f.",
    "scoring_consequence": "The answer point is not earned, and an extra declared input forfeits the reason point as well (sg-25:17).",
-   "wrong_step": {"text": "Zeros of f.", "expr": "FiniteSet(1, 10/3, 5, 8)"},
-   "right_step": {"text": "Turning points of f.", "expr": "FiniteSet(2, 4, 6, 10)"},
+   "wrong_step": {
+    "text": "Zeros of f.",
+    "expr": "FiniteSet(1, 10/3, 5, 8)"
+   },
+   "right_step": {
+    "text": "Turning points of f.",
+    "expr": "FiniteSet(2, 4, 6, 10)"
+   },
    "relation": "distinct",
-   "possible_reason": {"misconception_id": "BC-MIS-06008", "text": "uses the zeros of f for every feature of g"},
-   "sources": ["BC-ERR-06009", "BC-MIS-06008"]
+   "possible_reason": {
+    "misconception_id": "BC-MIS-06008",
+    "text": "uses the zeros of f for every feature of g"
+   },
+   "sources": [
+    "BC-ERR-06009",
+    "BC-MIS-06008"
+   ],
+   "fix_prompt": true
   },
   {
    "error_id": "BC-ERR-06010",
    "observed_behavior": "The response says that g has an inflection point because g changes concavity, without tying the claim to the given graph of f.",
    "scoring_consequence": "The answer point is earned but the reason point is not, because the reason must be tied to the given graph of f (sg-25:17).",
-   "wrong_step": {"text": "2, 4, 6, 10: g changes concavity.", "expr": "FiniteSet(2, 4, 6, 10)"},
-   "right_step": {"text": "2, 4, 6, 10: f changes between increasing and decreasing.", "expr": "FiniteSet(10, 6, 4, 2)"},
+   "wrong_step": {
+    "text": "2, 4, 6, 10: g changes concavity.",
+    "expr": "FiniteSet(2, 4, 6, 10)"
+   },
+   "right_step": {
+    "text": "2, 4, 6, 10: f changes between increasing and decreasing.",
+    "expr": "FiniteSet(10, 6, 4, 2)"
+   },
    "relation": "equivalent",
-   "possible_reason": {"misconception_id": "BC-MIS-01010", "text": "treats naming the definition or the theorem as the argument"},
-   "sources": ["BC-ERR-06010", "BC-MIS-01010"]
+   "possible_reason": {
+    "misconception_id": "BC-MIS-01010",
+    "text": "treats naming the definition or the theorem as the argument"
+   },
+   "sources": [
+    "BC-ERR-06010",
+    "BC-MIS-01010"
+   ],
+   "fix_prompt": false
   },
   {
    "error_id": "BC-ERR-06012",
    "observed_behavior": "A candidates table omits an endpoint or a critical input, or includes an input that is neither.",
    "scoring_consequence": "The justification point requires evaluations or reasoning at every critical input and both endpoints and no others (sg-25:19).",
-   "wrong_step": {"text": "Endpoints dropped.", "expr": "FiniteSet(1, 10/3, 5, 8)"},
-   "right_step": {"text": "With 0 and 12.", "expr": "FiniteSet(0, 1, 10/3, 5, 8, 12)"},
+   "wrong_step": {
+    "text": "Endpoints dropped.",
+    "expr": "FiniteSet(1, 10/3, 5, 8)"
+   },
+   "right_step": {
+    "text": "With 0 and 12.",
+    "expr": "FiniteSet(0, 1, 10/3, 5, 8, 12)"
+   },
    "relation": "distinct",
-   "possible_reason": {"misconception_id": "BC-MIS-99010", "text": "endpoints and other critical points are never compared"},
-   "sources": ["BC-ERR-06012", "BC-MIS-99010"]
+   "possible_reason": {
+    "misconception_id": "BC-MIS-99010",
+    "text": "endpoints and other critical points are never compared"
+   },
+   "sources": [
+    "BC-ERR-06012",
+    "BC-MIS-99010"
+   ],
+   "fix_prompt": true
   }
  ],
  "representations": null,
  "prerequisite_bridges": [
-  {"prq_id": "BC-PRQ-06007", "text": "A semicircle is half a circle; a trapezoid is not a rectangle."}
+  {
+   "prq_id": "BC-PRQ-06007",
+   "text": "A semicircle is half a circle."
+  }
  ],
- "time": {"exam_part": "II-B", "budget_minutes": 15.0, "source": "research/exam/exam-structure.md#Section and part layout", "written_steps": {"ex-1": [1, 3]}, "skipped_steps": {"ex-1": [2]}},
+ "time": {
+  "exam_part": "II-B",
+  "budget_minutes": 15.0,
+  "source": "research/exam/exam-structure.md#Section and part layout",
+  "written_steps": {
+   "ex-1": [
+    1,
+    3
+   ]
+  },
+  "skipped_steps": {
+   "ex-1": [
+    2
+   ]
+  }
+ },
  "checks": [
   {
    "id": "chk-1",
    "check_kind": "completion",
    "format": "short_answer",
-   "bands": ["low", "mid"],
+   "bands": [
+    "low",
+    "mid"
+   ],
    "archetype_id": "BC-QA-06003",
-   "parameter_draw": {"heights": [-2, 2, -1, 1], "lower": 0, "circle": "below", "half_point": "3/2", "letters": "fg", "ask": "value"},
+   "parameter_draw": {
+    "heights": [
+     -2,
+     2,
+     -1,
+     1
+    ],
+    "lower": 0,
+    "circle": "below",
+    "half_point": "3/2",
+    "letters": "fg",
+    "ask": "value"
+   },
    "completes": "ex-1",
-   "stem": {"text": "f changes sign at 1, 10/3, 5, 8. g's relative maxima?", "command_verb": "find"},
-   "key": {"form": "symbolic", "expr": "FiniteSet(10/3, 8)"},
+   "stem": {
+    "text": "f changes sign at 1, 10/3, 5, 8. g's relative maxima?",
+    "command_verb": "find"
+   },
+   "key": {
+    "form": "symbolic",
+    "expr": "FiniteSet(10/3, 8)"
+   },
    "steps": [
-    {"text": "Sign changes of f.", "expr": "FiniteSet(1, 10/3, 5, 8)", "relation": "new"},
-    {"text": "Positive to negative.", "expr": "FiniteSet(10/3, 8)", "relation": "new"}
+    {
+     "text": "Sign changes of f.",
+     "expr": "FiniteSet(1, 10/3, 5, 8)",
+     "relation": "new"
+    },
+    {
+     "text": "Positive to negative.",
+     "expr": "FiniteSet(10/3, 8)",
+     "relation": "new"
+    }
    ],
    "calculator_status": "no_calculator",
-   "skills": ["BC-SKL-06023"]
+   "skills": [
+    "BC-SKL-06023"
+   ]
   },
   {
    "id": "chk-2",
    "check_kind": "isomorph",
    "format": "short_answer",
-   "bands": ["low", "mid"],
+   "bands": [
+    "low",
+    "mid"
+   ],
    "archetype_id": "BC-QA-06003",
-   "parameter_draw": {"heights": [1, -2, 2, -1], "lower": 0, "circle": "above", "half_point": "3/2", "letters": "fg", "ask": "value"},
-   "stem": {"text": "As ex-1 with vertices (0, 1), (2, -2), (4, 2), (6, -1), (8, 0), semicircle above. Find each relative maximum of g.", "command_verb": "find"},
-   "key": {"form": "symbolic", "expr": "FiniteSet(2/3, 16/3)"},
+   "parameter_draw": {
+    "heights": [
+     1,
+     -2,
+     2,
+     -1
+    ],
+    "lower": 0,
+    "circle": "above",
+    "half_point": "3/2",
+    "letters": "fg",
+    "ask": "value"
+   },
+   "stem": {
+    "text": "As ex-1 with vertices (0, 1), (2, -2), (4, 2), (6, -1), (8, 0), semicircle above. Find each relative maximum of g.",
+    "command_verb": "find"
+   },
+   "key": {
+    "form": "symbolic",
+    "expr": "FiniteSet(2/3, 16/3)"
+   },
    "steps": [
-    {"text": "Sign changes of f.", "expr": "FiniteSet(2/3, 3, 16/3, 8)", "relation": "new"},
-    {"text": "Positive to negative.", "expr": "FiniteSet(2/3, 16/3)", "relation": "new"}
+    {
+     "text": "Sign changes of f.",
+     "expr": "FiniteSet(2/3, 3, 16/3, 8)",
+     "relation": "new"
+    },
+    {
+     "text": "Positive to negative.",
+     "expr": "FiniteSet(2/3, 16/3)",
+     "relation": "new"
+    }
    ],
    "calculator_status": "no_calculator",
-   "skills": ["BC-SKL-06023"]
+   "skills": [
+    "BC-SKL-06023"
+   ]
   },
   {
    "id": "chk-3",
    "check_kind": "mcq",
    "format": "mcq",
-   "bands": ["low"],
+   "bands": [
+    "low"
+   ],
    "archetype_id": "BC-QA-06003",
-   "parameter_draw": {"heights": [-2, 2, -1, 1], "lower": 0, "circle": "below", "half_point": "3/2", "letters": "fg", "ask": "value"},
-   "stem": {"text": "Same f as ex-1. Which gives every inflection point of g on (0, 12) with a reason a reader accepts?", "command_verb": "identify"},
-   "key": {"form": "statement", "expr": "FiniteSet(2, 4, 6, 10)"},
+   "parameter_draw": {
+    "heights": [
+     -2,
+     2,
+     -1,
+     1
+    ],
+    "lower": 0,
+    "circle": "below",
+    "half_point": "3/2",
+    "letters": "fg",
+    "ask": "value"
+   },
+   "stem": {
+    "text": "Same f as ex-1. Which gives every inflection point of g on (0, 12) with a reason a reader accepts?",
+    "command_verb": "identify"
+   },
+   "key": {
+    "form": "statement",
+    "expr": "FiniteSet(2, 4, 6, 10)"
+   },
    "steps": [],
    "options": [
-    {"id": "A", "is_key": false, "label": "1, 10/3, 5, 8: f changes sign there.", "error_path": "BC-ERR-06009", "derivation": "inflection points placed at the zeros of f"},
-    {"id": "B", "is_key": true, "label": "2, 4, 6, 10: f changes between increasing and decreasing there.", "error_path": null},
-    {"id": "C", "is_key": false, "label": "2, 4, 6, 10: g changes concavity there.", "error_path": "BC-ERR-06010", "derivation": "the right inputs with a reason not tied to the graph of f"},
-    {"id": "D", "is_key": false, "label": "None: the drawn curve has no inflection point.", "error_path": "BC-ERR-06008", "derivation": "inflection points of g read off the plotted curve"}
+    {
+     "id": "A",
+     "is_key": false,
+     "label": "1, 10/3, 5, 8: f changes sign there.",
+     "error_path": "BC-ERR-06009",
+     "derivation": "inflection points placed at the zeros of f"
+    },
+    {
+     "id": "B",
+     "is_key": true,
+     "label": "2, 4, 6, 10: f changes between increasing and decreasing there.",
+     "error_path": null
+    },
+    {
+     "id": "C",
+     "is_key": false,
+     "label": "2, 4, 6, 10: g changes concavity there.",
+     "error_path": "BC-ERR-06010",
+     "derivation": "the right inputs with a reason not tied to the graph of f"
+    },
+    {
+     "id": "D",
+     "is_key": false,
+     "label": "None: the drawn curve has no inflection point.",
+     "error_path": "BC-ERR-06008",
+     "derivation": "inflection points of g read off the plotted curve"
+    }
    ],
    "calculator_status": "no_calculator",
-   "skills": ["BC-SKL-06024"]
+   "skills": [
+    "BC-SKL-06024"
+   ]
   }
  ],
  "delivery": [
-  {"block": "orientation", "mode": "text", "reason": "rule 6: a statement of what a response shows; BC-REP-02 is served on ki-1", "sources": ["BC-SKL-06022"]},
-  {"block": "ki-1", "mode": "interactive", "reason": "rule 4 promoted: BC-REP-02 on all six skills; BC-QA-06003 difficulty_variables name g, g prime or g double prime and the stem asks for a reading of the relationship", "sources": ["BC-SKL-06022", "BC-SKL-06024", "BC-QA-06003"],
-   "spec": {"kind": "graph", "representations": ["BC-REP-02"], "window": {"x": [0, 12], "y": [-3, 3]},
-    "curves": [{"piecewise_linear": [[0, -2], [2, 2], [4, -1], [6, 1], [8, 0]]}, {"semicircle": {"centre": [10, 0], "radius": 2, "side": "below"}}],
-    "controls": [{"type": "draggable_point", "constrained_to": "curve", "range": [0, 12], "start": 3, "name": "input x"}],
-    "drawn": ["the sign of f at x", "whether f is rising or falling at x"],
-    "labels": [{"text": "graph of f", "placement": "inside"}, {"text": "f > 0: g increasing", "placement": "inside"}, {"text": "f rising: g concave up", "placement": "inside"}],
-    "question": "Where the point crosses the axis going down, what does g do? Where the curve turns, what does g do?"},
+  {
+   "block": "orientation",
+   "mode": "text",
+   "reason": "rule 6: a statement of what a response shows; BC-REP-02 is served on ki-1",
+   "sources": [
+    "BC-SKL-06022"
+   ]
+  },
+  {
+   "block": "ki-1",
+   "mode": "interactive",
+   "reason": "rule 4 promoted: BC-REP-02 on all six skills; BC-QA-06003 difficulty_variables name g, g prime or g double prime and the stem asks for a reading of the relationship",
+   "sources": [
+    "BC-SKL-06022",
+    "BC-SKL-06024",
+    "BC-QA-06003"
+   ],
+   "spec": {
+    "kind": "graph",
+    "representations": [
+     "BC-REP-02"
+    ],
+    "window": {
+     "x": [
+      0,
+      12
+     ],
+     "y": [
+      -3,
+      3
+     ]
+    },
+    "curves": [
+     {
+      "piecewise_linear": [
+       [
+        0,
+        -2
+       ],
+       [
+        2,
+        2
+       ],
+       [
+        4,
+        -1
+       ],
+       [
+        6,
+        1
+       ],
+       [
+        8,
+        0
+       ]
+      ]
+     },
+     {
+      "semicircle": {
+       "centre": [
+        10,
+        0
+       ],
+       "radius": 2,
+       "side": "below"
+      }
+     }
+    ],
+    "controls": [
+     {
+      "type": "draggable_point",
+      "constrained_to": "curve",
+      "range": [
+       0,
+       12
+      ],
+      "start": 3,
+      "name": "input x"
+     }
+    ],
+    "drawn": [
+     "the sign of f at x",
+     "whether f is rising or falling at x"
+    ],
+    "labels": [
+     {
+      "text": "graph of f",
+      "placement": "inside"
+     },
+     {
+      "text": "f > 0: g increasing",
+      "placement": "inside"
+     },
+     {
+      "text": "f rising: g concave up",
+      "placement": "inside"
+     }
+    ],
+    "question": "Where the point crosses the axis going down, what does g do? Where the curve turns, what does g do?"
+   },
    "fallback": "a static graph of f with the sign intervals shaded and the turning points 2, 4, 6, 10 marked, each label inside the figure",
-   "keyboard": "Tab focuses the point; left and right arrow keys move it by 1/3 along the curve; Enter reads out the sign and the slope of f"},
-  {"block": "ex-1", "mode": "step_reveal", "reason": "rule 1", "sources": []},
-  {"block": "err-BC-ERR-06008", "mode": "step_reveal", "reason": "rule 1", "sources": []},
-  {"block": "err-BC-ERR-06009", "mode": "step_reveal", "reason": "rule 1", "sources": []},
-  {"block": "err-BC-ERR-06010", "mode": "step_reveal", "reason": "rule 1", "sources": []},
-  {"block": "err-BC-ERR-06012", "mode": "step_reveal", "reason": "rule 1", "sources": []}
+   "keyboard": "Tab focuses the point; left and right arrow keys move it by 1/3 along the curve; Enter reads out the sign and the slope of f"
+  },
+  {
+   "block": "ex-1",
+   "mode": "step_reveal",
+   "reason": "rule 1",
+   "sources": []
+  },
+  {
+   "block": "err-BC-ERR-06008",
+   "mode": "step_reveal",
+   "reason": "rule 1",
+   "sources": []
+  },
+  {
+   "block": "err-BC-ERR-06009",
+   "mode": "step_reveal",
+   "reason": "rule 1",
+   "sources": []
+  },
+  {
+   "block": "err-BC-ERR-06010",
+   "mode": "step_reveal",
+   "reason": "rule 1",
+   "sources": []
+  },
+  {
+   "block": "err-BC-ERR-06012",
+   "mode": "step_reveal",
+   "reason": "rule 1",
+   "sources": []
+  }
  ],
- "refresher": ["ki-1", "err-BC-ERR-06008", "err-BC-ERR-06009", "err-BC-ERR-06010", "err-BC-ERR-06012", "ex-1"],
- "read_minutes": {"full": 4.2, "brief": 3.0},
- "word_count": {"full": 628, "brief": 450},
+ "refresher": [
+  "ki-1",
+  "err-BC-ERR-06008",
+  "err-BC-ERR-06009",
+  "err-BC-ERR-06010",
+  "err-BC-ERR-06012",
+  "ex-1"
+ ],
+ "read_minutes": {
+  "full": 4.2,
+  "brief": 3.0
+ },
+ "word_count": {
+  "full": 628,
+  "brief": 450
+ },
  "research_lines": [
-  {"file": "research/scoring/justification-requirements.md", "line": "Where a question gives the graph of a derivative and asks about the original function, the reason point is earned only by reasoning about the graphed object."}
+  {
+   "file": "research/scoring/justification-requirements.md",
+   "line": "Where a question gives the graph of a derivative and asks about the original function, the reason point is earned only by reasoning about the graphed object."
+  }
  ],
  "inferred": [
-  {"claim": "ex-1 and the checks pose feature questions (extrema, inflection) on draws whose ask parameter reads value, because BC-QA-06003 parameter_spec offers only value and chain asks.", "settles": "A feature value for the ask parameter in BC-QA-06003's parameter_spec."},
-  {"claim": "The method line names expected_solution_path entries two and three, since entry one is the value step.", "settles": "An expected_solution_path per ask on BC-QA-06003."},
-  {"claim": "A two-point feature part takes about 3.33 of the 15.0 Section II minutes.", "settles": "Timing data per part once the fluency telemetry exists."},
-  {"claim": "ki-1 is served as an interactive draggable input rather than a static figure.", "settles": "The modality A/B in the build plan: skip rate and time to first credited success by mode."}
+  {
+   "claim": "ex-1 and the checks pose feature questions (extrema, inflection) on draws whose ask parameter reads value, because BC-QA-06003 parameter_spec offers only value and chain asks.",
+   "settles": "A feature value for the ask parameter in BC-QA-06003's parameter_spec."
+  },
+  {
+   "claim": "The method line names expected_solution_path entries two and three, since entry one is the value step.",
+   "settles": "An expected_solution_path per ask on BC-QA-06003."
+  },
+  {
+   "claim": "A two-point feature part takes about 3.33 of the 15.0 Section II minutes.",
+   "settles": "Timing data per part once the fluency telemetry exists."
+  },
+  {
+   "claim": "ki-1 is served as an interactive draggable input rather than a static figure.",
+   "settles": "The modality A/B in the build plan: skip rate and time to first credited success by mode."
+  }
  ],
- "sources": ["BC-CON-06009", "BC-SKL-06022", "BC-SKL-06023", "BC-SKL-06024", "BC-SKL-06025", "BC-SKL-06026", "BC-SKL-06027", "BC-EK-FUN-5A3", "ced:122", "BC-QA-06003", "BC-PT-99024", "BC-PT-99013", "sg-25:17", "sg-25:19", "BC-ERR-06008", "BC-ERR-06009", "BC-ERR-06010", "BC-ERR-06012", "BC-MIS-05011", "BC-MIS-06008", "BC-MIS-01010", "BC-MIS-99010", "BC-PRQ-06007", "research/units/unit-06-integration-accumulation.md#6.5 Interpreting the Behavior of Accumulation Functions Involving Area", "research/question-analysis/question-archetypes.md#BC-QA-06003 Accumulation function analysed from the graph of the integrand", "research/scoring/justification-requirements.md#Reasons tied to the object the prompt names", "research/exam/exam-structure.md#Section and part layout"]
+ "sources": [
+  "BC-CON-06009",
+  "BC-SKL-06022",
+  "BC-SKL-06023",
+  "BC-SKL-06024",
+  "BC-SKL-06025",
+  "BC-SKL-06026",
+  "BC-SKL-06027",
+  "BC-EK-FUN-5A3",
+  "ced:122",
+  "BC-QA-06003",
+  "BC-PT-99024",
+  "BC-PT-99013",
+  "sg-25:17",
+  "sg-25:19",
+  "BC-ERR-06008",
+  "BC-ERR-06009",
+  "BC-ERR-06010",
+  "BC-ERR-06012",
+  "BC-MIS-05011",
+  "BC-MIS-06008",
+  "BC-MIS-01010",
+  "BC-MIS-99010",
+  "BC-PRQ-06007",
+  "research/units/unit-06-integration-accumulation.md#6.5 Interpreting the Behavior of Accumulation Functions Involving Area",
+  "research/question-analysis/question-archetypes.md#BC-QA-06003 Accumulation function analysed from the graph of the integrand",
+  "research/scoring/justification-requirements.md#Reasons tied to the object the prompt names",
+  "research/exam/exam-structure.md#Section and part layout"
+ ]
 }
 ```

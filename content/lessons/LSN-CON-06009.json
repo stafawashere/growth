@@ -3,7 +3,7 @@
  "version": 1,
  "kind": "concept",
  "target_id": "BC-CON-06009",
- "status": "signed_off",
+ "status": "draft",
  "snapshot_digest": "a6a8ec9d3f59ab8f712e33d30cc22fc64bf2c478fbe7312e3e3118d319c6a42f",
  "source_digest": "0342684bf9ce762bbaf1e1e308be45f1c9c79afc1a3d5e6221c348a5cbc33972",
  "read_minutes": {
@@ -11,12 +11,62 @@
   "brief": 3.0
  },
  "word_count": {
-  "full": 528,
-  "brief": 405
+  "full": 534,
+  "brief": 411
  },
  "sections": [
   {
    "id": "LSN-CON-06009#s1",
+   "type": "prediction",
+   "bands": [
+    "low",
+    "mid"
+   ],
+   "skills": [
+    "BC-SKL-06022",
+    "BC-SKL-06023",
+    "BC-SKL-06024",
+    "BC-SKL-06025",
+    "BC-SKL-06026",
+    "BC-SKL-06027"
+   ],
+   "sources": [
+    "BC-CON-06009",
+    "research/units/unit-06-integration-accumulation.md#6.5 Interpreting the Behavior of Accumulation Functions Involving Area"
+   ],
+   "evidence_tag": "inferred",
+   "stem": {
+    "text": "Predict. \\(g(x)=\\int_0^x f(t)\\,dt\\); f is positive on (1, 10/3), negative on (10/3, 5). What does g have at \\(10/3\\)?",
+    "command_verb": "predict"
+   },
+   "format": "mcq",
+   "options": [
+    {
+     "id": "A",
+     "label": "A relative maximum",
+     "is_key": true
+    },
+    {
+     "id": "B",
+     "label": "A relative minimum",
+     "is_key": false
+    },
+    {
+     "id": "C",
+     "label": "An inflection point",
+     "is_key": false
+    }
+   ],
+   "resolution": {
+    "text": "\\(g'=f\\), so g rises, then falls: a relative maximum where f changes from positive to negative."
+   },
+   "delivery": {
+    "mode": "text",
+    "reason": "rule 6"
+   }
+  },
+  {
+   "id": "LSN-CON-06009#s2",
    "type": "orientation",
    "bands": [
     "low",
@@ -35,7 +85,7 @@
     "research/units/unit-06-integration-accumulation.md#6.5 Interpreting the Behavior of Accumulation Functions Involving Area"
    ],
    "evidence_tag": "inferred",
-   "text": "The drawn curve is f. g rises and turns with the sign of f, bends with the slope of f; every reason names f.",
+   "text": "The drawn curve is f. g turns with the sign of f and bends with its slope; every reason names f.",
    "delivery": {
     "mode": "text",
     "reason": "rule 6: a statement of what a response shows; BC-REP-02 is served on ki-1",
@@ -45,7 +95,7 @@
    }
   },
   {
-   "id": "LSN-CON-06009#s2",
+   "id": "LSN-CON-06009#s3",
    "type": "key_ideas",
    "bands": [
     "low",
@@ -67,8 +117,8 @@
    "evidence_tag": "inferred",
    "ek_id": "BC-EK-FUN-5A3",
    "depth": "core",
-   "text": "g' = f: f positive, g rises; f changes sign, g has an extremum. g'' = f': f rising, g concave up; f turns, g inflects. Absolute: compare every zero of f and both endpoints.",
-   "notation": "g', g'' in terms of f, f'",
+   "text": "g' = f, so sign changes of f give extrema of g. g'' = f', so turns of f give inflections. Absolute extrema compare every zero and both endpoints.",
+   "notation": "\\(g'=f\\)",
    "delivery": {
     "mode": "interactive",
     "reason": "rule 4 promoted: BC-REP-02 on all six skills; BC-QA-06003 difficulty_variables name g, g prime or g double prime and the stem asks for a reading of the relationship",
@@ -165,7 +215,7 @@
    }
   },
   {
-   "id": "LSN-CON-06009#s3",
+   "id": "LSN-CON-06009#s4",
    "type": "strategy",
    "bands": [
     "low",
@@ -180,17 +230,29 @@
     "BC-SKL-06027"
    ],
    "sources": [
-    "BC-QA-06003"
+    "BC-QA-06003",
+    "BC-ERR-06008"
    ],
    "evidence_tag": "verified",
    "archetype_id": "BC-QA-06003",
    "cue": "Graph of f; features of g asked, with a reason.",
-   "method": "First line: g' = f. Sign changes of f give extrema; turns of f give inflection.",
-   "rival": "Rival: features read off the plotted f (BC-ERR-06008).",
-   "separating_feature": "The drawn peaks belong to f, not g."
+   "method": "g' = f. Sign changes of f give extrema; turns give inflection.",
+   "rival": "Features read off the plotted f.",
+   "separating_feature": "The drawn peaks belong to f, not g.",
+   "contrast": {
+    "this": {
+     "text": "For graphed f, \\(g(x)=\\int_0^x f(t)\\,dt\\). Where does g have a relative maximum?",
+     "archetype_id": "BC-QA-06003"
+    },
+    "not_this": {
+     "text": "For graphed f, \\(g(x)=\\int_0^x f(t)\\,dt\\). Find \\(g(8)\\).",
+     "why_not": "It asks for a value of g, a signed area."
+    },
+    "feature": "A feature of g, not a value, is asked."
+   }
   },
   {
-   "id": "LSN-CON-06009#s4",
+   "id": "LSN-CON-06009#s5",
    "type": "worked_example",
    "bands": [
     "low",
@@ -230,8 +292,7 @@
    "steps": [
     {
      "cue": "Features of g asked.",
-     "why": "g' = f by the theorem.",
-     "point_type_id": "BC-PT-99024"
+     "why": "g' = f by the theorem."
     },
     {
      "cue": "g' = 0 where f crosses the axis.",
@@ -284,7 +345,7 @@
    }
   },
   {
-   "id": "LSN-CON-06009#s5",
+   "id": "LSN-CON-06009#s6",
    "type": "what_a_reader_scores",
    "bands": [
     "low",
@@ -299,16 +360,11 @@
     "BC-SKL-06027"
    ],
    "sources": [
-    "BC-PT-99024",
     "BC-PT-99013"
    ],
    "evidence_tag": "verified",
-   "example_id": "LSN-CON-06009#s4",
+   "example_id": "LSN-CON-06009#s5",
    "lines": [
-    {
-     "point_type_id": "BC-PT-99024",
-     "text": "Derivative of an accumulation function by the Fundamental Theorem. Earned by: Writing the derivative of the accumulation function as the integrand evaluated at the variable, in general or at the requested value (sg-25:16, sg-24:13). Not earned by: Differencing the integrand at the two limits, which sg-25:16 states earns the answer point but not this one."
-    },
     {
      "point_type_id": "BC-PT-99013",
      "text": "Considers the derivative set equal to zero. Earned by: Presenting the equation derivative equals zero, or an equivalent equation, or discussing the sign change of the derivative, or using the phrase critical points of the function (sg-25:5, sg-26:17). Not earned by: Presenting only the solved critical value, which sg-25:5, sg-25:9, sg-26:17 and sg-25:19 all state is not sufficient."
@@ -358,6 +414,7 @@
     ]
    },
    "relation": "distinct",
+   "fix_prompt": true,
    "possible_reason": {
     "misconception_id": "BC-MIS-05011",
     "text": "answers questions about the function by reading features of whatever curve is drawn"
@@ -411,6 +468,7 @@
     ]
    },
    "relation": "distinct",
+   "fix_prompt": true,
    "possible_reason": {
     "misconception_id": "BC-MIS-06008",
     "text": "uses the zeros of f for every feature of g"
@@ -462,6 +520,7 @@
     ]
    },
    "relation": "equivalent",
+   "fix_prompt": false,
    "possible_reason": {
     "misconception_id": "BC-MIS-01010",
     "text": "treats naming the definition or the theorem as the argument"
@@ -521,6 +580,7 @@
     ]
    },
    "relation": "distinct",
+   "fix_prompt": true,
    "possible_reason": {
     "misconception_id": "BC-MIS-99010",
     "text": "endpoints and other critical points are never compared"
@@ -546,7 +606,7 @@
    ],
    "evidence_tag": "inferred",
    "prerequisite_id": "BC-PRQ-06007",
-   "text": "A semicircle is half a circle; a trapezoid is not a rectangle."
+   "text": "A semicircle is half a circle."
   }
  ],
  "checks": [
@@ -572,7 +632,7 @@
     "letters": "fg",
     "ask": "value"
    },
-   "completes": "LSN-CON-06009#s4",
+   "completes": "LSN-CON-06009#s5",
    "stem": {
     "text": "f changes sign at 1, 10/3, 5, 8. g's relative maxima?",
     "command_verb": "find"
@@ -782,19 +842,19 @@
   }
  ],
  "refresher": [
-  "LSN-CON-06009#s2",
+  "LSN-CON-06009#s3",
   "LSN-CON-06009#err-BC-ERR-06008",
   "LSN-CON-06009#err-BC-ERR-06009",
   "LSN-CON-06009#err-BC-ERR-06010",
   "LSN-CON-06009#err-BC-ERR-06012",
-  "LSN-CON-06009#s4"
+  "LSN-CON-06009#s5"
  ],
  "provenance": {
   "author": "tools/lesson_transcribe.py",
-  "prompt_version": "generator/lesson_v1",
+  "prompt_version": "generator/lesson_v2",
   "design_path": "docs/lessons/unit-06/LSN-CON-06009.md",
-  "signed_off_by": "claude-opus-5-5",
-  "signed_off_at": "2026-09-29",
+  "signed_off_by": null,
+  "signed_off_at": null,
   "not_human": true
  }
 }

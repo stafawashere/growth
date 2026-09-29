@@ -9,9 +9,13 @@ purpose: Authoring spec for the concept lesson on BC-CON-06004, deciding whether
 
 Concept BC-CON-06004 (skills BC-SKL-06010, BC-SKL-06011), topic 6.2 of Unit 6, loaded by BC-QA-06001 and BC-QA-06002 (family integral-approximation). Its hard parent is BC-CON-06003 (docs/lessons/unit-06/README.md, section 1).
 
+## Prediction
+
+One multiple choice question on worked example 1's own numbers, asked before the rule is shown: r increasing on [0, 8], the left sum 60, and how the integral compares with 60. The key option is more than 60, the underestimate of ex-1's answer. The distractors are less than 60 (the BC-ERR-06006 path) and exactly 60. The resolution, shown on the key idea screen beside the choice, states that each left height is the least on its subinterval, so the integral exceeds 60. No verdict word. Sources: BC-CON-06004 and the topic 6.2 section the key idea cites.
+
 ## Orientation
 
-Served text, from BC-CON-06004 `description_plain` and the topic's Assessment behaviour paragraph (research/units/unit-06-integration-accumulation.md#6.2 Approximating Areas with Riemann Sums): conceptual variants ask only whether the estimate is high or low; justification variants require monotonicity or concavity to be named. No count, no frequency.
+Served text, from BC-CON-06004 `description_plain` and the topic's Assessment behaviour paragraph (research/units/unit-06-integration-accumulation.md#6.2 Approximating Areas with Riemann Sums): conceptual variants ask only whether the estimate is high or low; justification variants require monotonicity or concavity to be named. No count, no frequency. The served text carries no record id.
 
 ## Key ideas
 
@@ -24,13 +28,15 @@ Both skills map to BC-EK-LIM-5A4, so one core block, both bands.
 - BC-QA-06001 (research/question-analysis/question-archetypes.md#BC-QA-06001 Riemann sum from a table with over or under estimate reasoning): `common_givens` include a statement that the rate is differentiable, increasing, or decreasing; `asked_to_produce` includes an over or under estimate decision with a reason. Official examples include BC-FRQ-2021-Q1-C and BC-FRQ-2022-Q4-C.
 - BC-QA-06002 (research/question-analysis/question-archetypes.md#BC-QA-06002 Trapezoidal approximation of an accumulated amount from a table): `difficulty_variables` include whether a concavity based over or under estimate justification is required.
 
-The signal: "overestimate or underestimate" with "explain" or "give a reason", and a property of f stated in the stem or readable from f prime. Not this concept: a request for the sum's value alone (BC-CON-06003), or a tangent line estimate, where the same concavity reason applies to a different approximation (Unit 4).
+The signal: "overestimate or underestimate" with "explain" or "give a reason", and a property of f stated in the stem or readable from f prime. Contrast pair on st-1: this stem is on BC-QA-06001, a decreasing function with the direction of a left sum asked; not this stem asks for the left sum's value on the same function, the near miss from the sibling concept BC-CON-06003. The separating feature is that a direction is asked, not a value.
+
+Not this concept: a request for the sum's value alone (BC-CON-06003), or a tangent line estimate, where the same concavity reason applies to a different approximation (Unit 4).
 
 ## Method choice
 
 One strategy block: both archetypes share the family integral-approximation.
 
-- st-1, BC-QA-06001, both bands. Method, the last entry of `expected_solution_path` ("compare with the exact integral using monotonicity"), with BC-QA-06002's concavity case beside it; the first entry, the subintervals, belongs to BC-CON-06003. Rival: a trapezoidal direction decided from monotonicity (BC-ERR-06007, in BC-QA-06002's lineage; `wrong_approaches` on both archetypes name only sum-building errors) [inferred]. Separating feature: the named sum type.
+- st-1, BC-QA-06001, both bands. Method, the last entry of `expected_solution_path` ("compare with the exact integral using monotonicity"), with BC-QA-06002's concavity case beside it; the first entry, the subintervals, belongs to BC-CON-06003. Rival: a trapezoidal direction decided from monotonicity (BC-ERR-06007, in BC-QA-06002's lineage; `wrong_approaches` on both archetypes name only sum-building errors) [inferred]. Separating feature: the named sum type. The block also carries the contrast pair above. Every field is served without the reader's own label, and record ids sit in `sources`.
 
 ## Solution path
 
@@ -47,9 +53,9 @@ BC-QA-06001 lists BC-PT-99018, 99019, 99022, 99026, 99007. ex-1 tags 99018 and 9
 
 Three active errors meet the skills, in the bundle's order: BC-ERR-06005, BC-ERR-06006, BC-ERR-06007 (each linked to BC-MIS-07010, severity high). Low band all three, mid band the first two. On ex-1's draw:
 
-- err-BC-ERR-06005: "Underestimate." against the same direction with its reason; the CAS finds the two inequalities equivalent, so the loss is the reason alone.
+- err-BC-ERR-06005 (equivalent, `fix_prompt` false, reveal form): "Underestimate." against the same direction with its reason; the CAS finds the two inequalities equivalent, so the loss is the reason alone.
 - err-BC-ERR-06006: 60 > the integral against 60 < the integral.
-- err-BC-ERR-06007: the same table as a trapezoidal sum, 74.5, called an overestimate because r increases, against no direction without concavity. Possible reason, words from BC-MIS-05020.
+- err-BC-ERR-06007: the same table as a trapezoidal sum, 74.5 (written as the decimal 74.5 in both expressions, so the rendered value matches the sentence), called an overestimate because r increases, against no direction without concavity. Possible reason, words from BC-MIS-05020.
 
 No possible-reason line on the first two, to hold the brief band.
 
@@ -75,14 +81,17 @@ BC-QA-06001 is `calculator` and scored as a free response part: Section II Part 
 
 - orientation: figure. Rule 4, BC-REP-02 on BC-SKL-06010 and 06011 (unit README section 6).
 - ki-1: figure, two panels. Rule 4; not promoted, since BC-QA-06001's `difficulty_variables` name a property, not a varying quantity.
-- ex-1 and the three error blocks: step_reveal. Rule 1.
+- ex-1 and the three error blocks: step_reveal. Rule 1. Two error blocks are fix prompts (06006 and 06007, `distinct`); err-BC-ERR-06005 is not.
+- prediction: text, no delivery entry.
+
+Drawn blocks: the orientation and ki-1 figures satisfy figure presence, so no `no_figure_reason`. There is one worked example, so nothing is faded.
 
 Every non-text choice is [inferred]; settled by the modality A/B.
 
 ## Band plan
 
-- Low (full): orientation, ki-1, st-1, ex-1 with its reader lines, three error blocks, chk-1 to chk-3, the bridge. 527 words, 3.6 minutes (cap 900 and 6).
-- Mid (brief): orientation, ki-1, st-1, ex-1 with its reader lines, err-BC-ERR-06005, err-BC-ERR-06006, chk-1, chk-2, the bridge. 426 words, 2.9 minutes (cap 450 and 3).
+- Low (full), in served order: prediction, orientation, the bridge, ki-1, st-1 with its contrast pair, ex-1 with its reader lines, chk-1, three error blocks, chk-2, chk-3. 548 words, 3.7 minutes (cap 900 and 6).
+- Mid (brief), in served order: prediction, orientation, the bridge, ki-1, st-1 with its contrast pair, ex-1 with its reader lines, chk-1, err-BC-ERR-06005, err-BC-ERR-06006, chk-2. 447 words, 3.0 minutes (cap 450 and 3). The orientation, key idea, strategy fields, cues and bridge were shortened to hold this; no scoring line was dropped.
 - Refresher: ki-1, the three error blocks, ex-1.
 
 ## Sources
@@ -116,8 +125,38 @@ Every non-text choice is [inferred]; settled by the modality A/B.
   "BC-SKL-06010",
   "BC-SKL-06011"
  ],
+ "prediction": {
+  "id": "pr-1",
+  "stem": {
+   "text": "Before the rule: r increases on [0, 8] and the left sum is 60. How does ∫_0^8 r(t) dt compare with 60?",
+   "command_verb": "predict"
+  },
+  "format": "mcq",
+  "options": [
+   {
+    "id": "A",
+    "label": "More than 60",
+    "is_key": true
+   },
+   {
+    "id": "B",
+    "label": "Less than 60",
+    "is_key": false
+   },
+   {
+    "id": "C",
+    "label": "Exactly 60",
+    "is_key": false
+   }
+  ],
+  "resolution": "Each left height is the least on its subinterval, so the left sum falls short: the integral exceeds 60.",
+  "sources": [
+   "BC-CON-06004",
+   "research/units/unit-06-integration-accumulation.md#6.2 Approximating Areas with Riemann Sums"
+  ]
+ },
  "orientation": {
-  "text": "Whether a sum is too big or too small follows from how the function rises, falls or bends. A response names that property of the given function, then the direction.",
+  "text": "A response names how f rises, falls or bends, then the direction.",
   "sources": [
    "BC-CON-06004",
    "research/units/unit-06-integration-accumulation.md#6.2 Approximating Areas with Riemann Sums"
@@ -128,7 +167,7 @@ Every non-text choice is [inferred]; settled by the modality A/B.
    "id": "ki-1",
    "ek_id": "BC-EK-LIM-5A4",
    "depth": "core",
-   "text": "Left and right sums: monotonicity decides. Increasing f: left under, right over; decreasing reverses. Trapezoid and midpoint: concavity decides. Concave up: trapezoid over, midpoint under; concave down reverses.",
+   "text": "Left and right sums: monotonicity decides; increasing f gives left under, right over. Trapezoid and midpoint: concavity decides; concave up gives trapezoid over, midpoint under.",
    "notation": "underestimate, overestimate",
    "quote": null,
    "sources": [
@@ -142,15 +181,26 @@ Every non-text choice is [inferred]; settled by the modality A/B.
   {
    "id": "st-1",
    "archetype_id": "BC-QA-06001",
-   "cue": "A sum from a table, a stated increasing, decreasing or concavity property, and over or under asked.",
-   "method": "Name the sum type: left or right uses monotonicity, trapezoid or midpoint uses concavity.",
-   "rival": "Rival: a trapezoid judged by increasing.",
+   "cue": "A sum, a property of f, over or under asked.",
+   "method": "Name the sum type: left or right uses monotonicity, trapezoid concavity.",
+   "rival": "A trapezoid judged by increasing.",
    "separating_feature": "The named sum type.",
    "sources": [
     "BC-QA-06001",
     "BC-QA-06002"
    ],
-   "evidence_tag": "verified"
+   "evidence_tag": "verified",
+   "contrast": {
+    "this": {
+     "text": "g is decreasing. Is a left sum for ∫_0^6 g(t) dt over or under?",
+     "archetype_id": "BC-QA-06001"
+    },
+    "not_this": {
+     "text": "g is decreasing. Find a left sum for ∫_0^6 g(t) dt.",
+     "why_not": "It asks for the sum's value."
+    },
+    "feature": "A direction asked, not a value."
+   }
   }
  ],
  "worked_examples": [
@@ -188,26 +238,26 @@ Every non-text choice is [inferred]; settled by the modality A/B.
    "calculator_status": "calculator",
    "steps": [
     {
-     "cue": "Left ends times widths 2, 2, 1, 3.",
-     "why": "Products shown.",
+     "cue": "Left times widths.",
+     "why": "Products.",
      "expr": "2*3 + 2*5 + 1*8 + 3*12",
      "relation": "new",
      "point_type_id": "BC-PT-99018"
     },
     {
      "cue": "Add.",
-     "why": "The value with its products.",
+     "why": "Value.",
      "expr": "60",
      "relation": "equivalent",
      "point_type_id": "BC-PT-99019"
     },
     {
-     "cue": "Left sum and r increasing: monotonicity decides.",
-     "why": "Each left height is the least on its subinterval."
+     "cue": "r increasing.",
+     "why": "Left heights are least."
     },
     {
-     "cue": "Write direction and reason.",
-     "why": "A bare direction earns nothing."
+     "cue": "Direction, reason.",
+     "why": "Bare direction: no credit."
     }
    ],
    "answer": {
@@ -250,6 +300,7 @@ Every non-text choice is [inferred]; settled by the modality A/B.
     "expr": "60 < Integral(r(t), (t, 0, 8))"
    },
    "relation": "equivalent",
+   "fix_prompt": false,
    "possible_reason": null,
    "sources": [
     "BC-ERR-06005"
@@ -268,6 +319,7 @@ Every non-text choice is [inferred]; settled by the modality A/B.
     "expr": "60 < Integral(r(t), (t, 0, 8))"
    },
    "relation": "distinct",
+   "fix_prompt": true,
    "possible_reason": null,
    "sources": [
     "BC-ERR-06006"
@@ -279,13 +331,14 @@ Every non-text choice is [inferred]; settled by the modality A/B.
    "scoring_consequence": "The justification point is not earned because the stated reason does not support the conclusion.",
    "wrong_step": {
     "text": "Same table, trapezoidal sum 74.5, called an overestimate because r increases.",
-    "expr": "149/2 > Integral(r(t), (t, 0, 8))"
+    "expr": "74.5 > Integral(r(t), (t, 0, 8))"
    },
    "right_step": {
     "text": "74.5, with no concavity given, so no direction follows.",
-    "expr": "149/2"
+    "expr": "74.5"
    },
    "relation": "distinct",
+   "fix_prompt": true,
    "possible_reason": {
     "misconception_id": "BC-MIS-05020",
     "text": "does not distinguish rising from bending upward"
@@ -300,7 +353,7 @@ Every non-text choice is [inferred]; settled by the modality A/B.
  "prerequisite_bridges": [
   {
    "prq_id": "BC-PRQ-06008",
-   "text": "Say which is larger, estimate or exact, from how f rises, falls or bends; a claim with no such reason fails."
+   "text": "Say which is larger, estimate or exact, from how f behaves."
   }
  ],
  "time": {
@@ -898,12 +951,12 @@ Every non-text choice is [inferred]; settled by the modality A/B.
   "research/scoring/justification-requirements.md#Reasons about slope fields and concavity"
  ],
  "read_minutes": {
-  "full": 3.6,
-  "brief": 2.9
+  "full": 3.7,
+  "brief": 3.0
  },
  "word_count": {
-  "full": 527,
-  "brief": 426
+  "full": 548,
+  "brief": 447
  }
 }
 ```

@@ -3,20 +3,66 @@
  "version": 1,
  "kind": "concept",
  "target_id": "BC-CON-06007",
- "status": "signed_off",
+ "status": "draft",
  "snapshot_digest": "a6a8ec9d3f59ab8f712e33d30cc22fc64bf2c478fbe7312e3e3118d319c6a42f",
  "source_digest": "b25fd188cb611a75c164c417dfbe1380d8ad4a8f826582fadf5de0df0ce7555f",
  "read_minutes": {
-  "full": 4.7,
+  "full": 4.6,
   "brief": 3.0
  },
  "word_count": {
-  "full": 599,
-  "brief": 387
+  "full": 602,
+  "brief": 400
  },
  "sections": [
   {
    "id": "LSN-CON-06007#s1",
+   "type": "prediction",
+   "bands": [
+    "low",
+    "mid"
+   ],
+   "skills": [
+    "BC-SKL-06017",
+    "BC-SKL-06020"
+   ],
+   "sources": [
+    "BC-CON-06007",
+    "research/units/unit-06-integration-accumulation.md#6.4 The Fundamental Theorem of Calculus and Accumulation Functions"
+   ],
+   "evidence_tag": "inferred",
+   "stem": {
+    "text": "Predict. \\(g(x)=\\int_2^x f(t)\\,dt\\), with f below the axis on [2, 8] with areas 2, 4 and 2. Find \\(g(8)\\).",
+    "command_verb": "predict"
+   },
+   "format": "mcq",
+   "options": [
+    {
+     "id": "A",
+     "label": "Positive 8",
+     "is_key": false
+    },
+    {
+     "id": "B",
+     "label": "Negative 8",
+     "is_key": true
+    },
+    {
+     "id": "C",
+     "label": "Zero",
+     "is_key": false
+    }
+   ],
+   "resolution": {
+    "text": "\\(g(8)\\) is signed area, and pieces below the axis count negative: \\(-2-4-2=-8\\)."
+   },
+   "delivery": {
+    "mode": "text",
+    "reason": "rule 6"
+   }
+  },
+  {
+   "id": "LSN-CON-06007#s2",
    "type": "orientation",
    "bands": [
     "low",
@@ -31,7 +77,7 @@
     "research/units/unit-06-integration-accumulation.md#6.4 The Fundamental Theorem of Calculus and Accumulation Functions"
    ],
    "evidence_tag": "inferred",
-   "text": "A response finds g at an input as signed area from the fixed lower limit, with t kept inside the integral.",
+   "text": "A response finds g(x) as signed area from the lower limit.",
    "delivery": {
     "mode": "text",
     "reason": "rule 6: a statement of what a response shows; BC-REP-02 is served on ki-1 and ki-2",
@@ -41,7 +87,7 @@
    }
   },
   {
-   "id": "LSN-CON-06007#s2",
+   "id": "LSN-CON-06007#s3",
    "type": "key_ideas",
    "bands": [
     "low",
@@ -59,8 +105,8 @@
    "evidence_tag": "verified",
    "ek_id": "BC-EK-FUN-5A1",
    "depth": "core",
-   "text": "For each x, the integral of f from a fixed a to x is one number, so it defines a function of x. t is bound; x sits only in the limit.",
-   "notation": "g(x) = integral from a to x of f(t) dt",
+   "text": "Each x gives one number, so g is a function of x.",
+   "notation": "\\(g(x)=\\int_a^x f(t)\\,dt\\)",
    "quote": {
     "text": "The definite integral can be used to define new functions.",
     "source": "ced:121"
@@ -173,7 +219,7 @@
    }
   },
   {
-   "id": "LSN-CON-06007#s3",
+   "id": "LSN-CON-06007#s4",
    "type": "key_ideas",
    "bands": [
     "low"
@@ -190,7 +236,7 @@
    "ek_id": "BC-EK-FUN-5A3",
    "depth": "extended",
    "text": "From a graph of f, g(b) is the signed area from a to b: pieces above the axis add, pieces below subtract, and b left of a flips the sign.",
-   "notation": "g(a) = 0",
+   "notation": "\\(g(a)=0\\)",
    "delivery": {
     "mode": "interactive",
     "reason": "rule 4 promoted: BC-REP-02 on BC-SKL-06020; BC-QA-06003 common_givens and difficulty_variables name a varying upper limit and regions below the axis, and the stem asks for values of g",
@@ -286,26 +332,6 @@
    }
   },
   {
-   "id": "LSN-CON-06007#s4",
-   "type": "strategy",
-   "bands": [
-    "low",
-    "mid"
-   ],
-   "skills": [
-    "BC-SKL-06020"
-   ],
-   "sources": [
-    "BC-QA-06003"
-   ],
-   "evidence_tag": "verified",
-   "archetype_id": "BC-QA-06003",
-   "cue": "g is an integral of a graphed f from a fixed input; values of g asked.",
-   "method": "First line: g(b) as signed areas from the lower limit to b.",
-   "rival": "Rival: features read off the plotted f (BC-ERR-06008).",
-   "separating_feature": "The curve drawn is f, not g."
-  },
-  {
    "id": "LSN-CON-06007#s5",
    "type": "strategy",
    "bands": [
@@ -316,14 +342,26 @@
     "BC-SKL-06020"
    ],
    "sources": [
-    "BC-QA-06004"
+    "BC-QA-06003",
+    "BC-ERR-06008"
    ],
    "evidence_tag": "verified",
-   "archetype_id": "BC-QA-06004",
-   "cue": "Segments and semicircles, with numerical limits.",
-   "method": "First line: the region split where the graph changes character, each piece with its sign.",
-   "rival": "Rival: regions below the axis added as positive area (BC-ERR-06014).",
-   "separating_feature": "A piece below the axis enters with a minus sign."
+   "archetype_id": "BC-QA-06003",
+   "cue": "g integrates a graphed f; values of g asked.",
+   "method": "g(b) as signed areas from the lower limit.",
+   "rival": "Features read off the plotted f.",
+   "separating_feature": "The curve drawn is f, not g.",
+   "contrast": {
+    "this": {
+     "text": "For the graphed f, \\(g(x)=\\int_2^x f(t)\\,dt\\). Find \\(g(6)\\).",
+     "archetype_id": "BC-QA-06003"
+    },
+    "not_this": {
+     "text": "For the graphed f, \\(g(x)=\\int_2^x f(t)\\,dt\\). Find \\(g'(6)\\).",
+     "why_not": "It asks for g prime, which is f(6)."
+    },
+    "feature": "g itself is asked."
+   }
   },
   {
    "id": "LSN-CON-06007#s6",
@@ -333,20 +371,42 @@
     "mid"
    ],
    "skills": [
+    "BC-SKL-06020"
+   ],
+   "sources": [
+    "BC-QA-06004",
+    "BC-ERR-06014"
+   ],
+   "evidence_tag": "verified",
+   "archetype_id": "BC-QA-06004",
+   "cue": "Segments and semicircles, with numerical limits.",
+   "method": "The region split where the graph changes character, each piece with its sign.",
+   "rival": "Regions below the axis added as positive area.",
+   "separating_feature": "A piece below the axis enters with a minus sign."
+  },
+  {
+   "id": "LSN-CON-06007#s7",
+   "type": "strategy",
+   "bands": [
+    "low",
+    "mid"
+   ],
+   "skills": [
     "BC-SKL-06017"
    ],
    "sources": [
-    "BC-QA-06012"
+    "BC-QA-06012",
+    "BC-ERR-06027"
    ],
    "evidence_tag": "verified",
    "archetype_id": "BC-QA-06012",
    "cue": "The same definition, but h prime is asked.",
-   "method": "First line: h'(x) equals the integrand at the upper limit.",
-   "rival": "Rival: the chain factor dropped (BC-ERR-06027).",
+   "method": "H'(x) equals the integrand at the upper limit.",
+   "rival": "The chain factor dropped.",
    "separating_feature": "An upper limit that is a function of x, not x itself."
   },
   {
-   "id": "LSN-CON-06007#s7",
+   "id": "LSN-CON-06007#s8",
    "type": "worked_example",
    "bands": [
     "low",
@@ -440,7 +500,7 @@
    }
   },
   {
-   "id": "LSN-CON-06007#s8",
+   "id": "LSN-CON-06007#s9",
    "type": "what_a_reader_scores",
    "bands": [
     "low",
@@ -453,7 +513,7 @@
     "BC-PT-99069"
    ],
    "evidence_tag": "verified",
-   "example_id": "LSN-CON-06007#s7",
+   "example_id": "LSN-CON-06007#s8",
    "lines": [
     {
      "point_type_id": "BC-PT-99069",
@@ -504,6 +564,7 @@
     ]
    },
    "relation": "distinct",
+   "fix_prompt": true,
    "possible_reason": {
     "misconception_id": "BC-MIS-08024",
     "text": "reads every definite integral as area under a graph"
@@ -558,6 +619,7 @@
     ]
    },
    "relation": "distinct",
+   "fix_prompt": true,
    "possible_reason": {
     "misconception_id": "BC-MIS-08012",
     "text": "chooses limits from the axes of the picture"
@@ -611,6 +673,7 @@
     ]
    },
    "relation": "distinct",
+   "fix_prompt": true,
    "possible_reason": {
     "misconception_id": "BC-MIS-08019",
     "text": "remembers the squared dimension but not the fraction in front of it"
@@ -652,6 +715,7 @@
     "expression": -2
    },
    "relation": "distinct",
+   "fix_prompt": true,
    "possible_reason": {
     "misconception_id": "BC-MIS-06024",
     "text": "does not distinguish the bound variable inside the integral from the variable in the upper limit"
@@ -677,7 +741,7 @@
    ],
    "evidence_tag": "inferred",
    "prerequisite_id": "BC-PRQ-06005",
-   "text": "Read f at the stated input; keep f and f prime apart."
+   "text": "Read f at the input."
   },
   {
    "id": "LSN-CON-06007#prq-BC-PRQ-06007",
@@ -694,7 +758,7 @@
    ],
    "evidence_tag": "inferred",
    "prerequisite_id": "BC-PRQ-06007",
-   "text": "A trapezoid is not a rectangle; a semicircle is half a circle."
+   "text": "A semicircle is half a circle."
   },
   {
    "id": "LSN-CON-06007#prq-BC-PRQ-06013",
@@ -711,7 +775,7 @@
    ],
    "evidence_tag": "inferred",
    "prerequisite_id": "BC-PRQ-06013",
-   "text": "t stays inside; only the limits carry x."
+   "text": "t stays inside; limits carry x."
   }
  ],
  "checks": [
@@ -737,7 +801,7 @@
     "letters": "fg",
     "ask": "value"
    },
-   "completes": "LSN-CON-06007#s7",
+   "completes": "LSN-CON-06007#s8",
    "stem": {
     "text": "Same f. Pieces from 2 to 8 total -8. Find g(12).",
     "command_verb": "find"
@@ -1012,19 +1076,19 @@
   }
  ],
  "refresher": [
-  "LSN-CON-06007#s2",
+  "LSN-CON-06007#s3",
   "LSN-CON-06007#err-BC-ERR-06014",
   "LSN-CON-06007#err-BC-ERR-99012",
   "LSN-CON-06007#err-BC-ERR-06013",
   "LSN-CON-06007#err-BC-ERR-06028",
-  "LSN-CON-06007#s7"
+  "LSN-CON-06007#s8"
  ],
  "provenance": {
   "author": "tools/lesson_transcribe.py",
-  "prompt_version": "generator/lesson_v1",
+  "prompt_version": "generator/lesson_v2",
   "design_path": "docs/lessons/unit-06/LSN-CON-06007.md",
-  "signed_off_by": "claude-opus-5-5",
-  "signed_off_at": "2026-09-29",
+  "signed_off_by": null,
+  "signed_off_at": null,
   "not_human": true
  }
 }

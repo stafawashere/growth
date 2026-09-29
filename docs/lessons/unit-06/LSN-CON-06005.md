@@ -9,9 +9,13 @@ purpose: Authoring spec for the concept lesson on BC-CON-06005, writing and expa
 
 Concept BC-CON-06005 (skills BC-SKL-06012, BC-SKL-06013), topic 6.3 of Unit 6, loaded by one archetype, BC-QA-06014 (family riemann-limit-to-integral). Its hard parent is BC-CON-06003 (docs/lessons/unit-06/README.md, section 1).
 
+## Prediction
+
+One short answer question on worked example 1's own case, asked before the rule is shown: the right Riemann sum for the integral of x^2 over [2, 6] with n = 2, given the right endpoints 4 and 6, and its value. The key is 104, worked example 1's answer, which the checker verifies with SymPy. The typical wrong value adds the two values without the width (BC-ERR-06003, 52), which the error block below works. The resolution, shown on the key idea screen beside the entry, states each term as a value times the width. No verdict word. Sources: BC-CON-06005 and the topic 6.3 section the key idea cites.
+
 ## Orientation
 
-Served text, from BC-CON-06005 `description_plain` and the topic's Assessment behaviour paragraph (research/units/unit-06-integration-accumulation.md#6.3 Riemann Sums, Summation Notation, and Definite Integral Notation): computational variants ask for an expanded sum, conceptual variants for what each factor of a term represents. No count, no frequency.
+Served text, from BC-CON-06005 `description_plain` and the topic's Assessment behaviour paragraph (research/units/unit-06-integration-accumulation.md#6.3 Riemann Sums, Summation Notation, and Definite Integral Notation): computational variants ask for an expanded sum, conceptual variants for what each factor of a term represents. No count, no frequency. The served text carries no record id.
 
 ## Key ideas
 
@@ -23,11 +27,13 @@ Both skills map to BC-EK-LIM-5B2, so one core block, both bands.
 
 BC-QA-06014 (research/question-analysis/question-archetypes.md#BC-QA-06014 Converting between a limit of Riemann sums and a definite integral). `typical_wording`: "express the given limit of a Riemann sum as a definite integral", "write the given definite integral as the limit of a Riemann sum". `common_givens`: a definite integral with stated limits, a limit of a Riemann sum in sigma notation. `asked_to_produce`: an equivalent definite integral, an equivalent limit of Riemann sums. Official examples are MCQ only: BC-MCQ-CED-006, BC-MCQ-SAMPLE-008.
 
-This concept is the sum without the limit: the stem shows Σ, or asks to write or expand one for a stated n. Not this concept: "lim as n approaches infinity" in front (BC-CON-06006), or a table with a named sum (BC-CON-06003).
+This concept is the sum without the limit: the stem shows Σ, or asks to write or expand one for a stated n. Contrast pair on st-1: this stem is on BC-QA-06014, a definite integral to write as a finite sigma sum with n pieces; not this stem is a limit of a sigma sum to write as a definite integral, the near miss from the sibling concept BC-CON-06006. The separating feature is the limit in front.
+
+Not this concept: "lim as n approaches infinity" in front (BC-CON-06006), or a table with a named sum (BC-CON-06003).
 
 ## Method choice
 
-- st-1, BC-QA-06014, both bands. Cue from `asked_to_produce` and `common_givens`. Method, `expected_solution_path[0]`: separate the general term into a value and a width. Rival: BC-QA-06014 records no `wrong_approaches` or `prohibited_shortcuts`, so the rival is taken from the one error the bundle holds, values summed without the width (BC-ERR-06003), and the block carries `evidence_tag: inferred`. Separating feature: a term with no width factor is not a product.
+- st-1, BC-QA-06014, both bands. Cue from `asked_to_produce` and `common_givens`. Method, `expected_solution_path[0]`: separate the general term into a value and a width. Rival: BC-QA-06014 records no `wrong_approaches` or `prohibited_shortcuts`, so the rival is taken from the one error the bundle holds, values summed without the width (BC-ERR-06003), and the block carries `evidence_tag: inferred`. Separating feature: a term with no width factor is not a product. The block also carries the contrast pair above. Every field is served without the reader's own label, and record ids sit in `sources`.
 
 ## Solution path
 
@@ -68,12 +74,15 @@ Two checks only: the bundle holds one error, so an MCQ with three error-path dis
 ## Delivery
 
 - orientation, ki-1: text. Rule 6, BC-REP-01 only (unit README section 6).
-- ex-1, err-BC-ERR-06003: step_reveal. Rule 1.
+- ex-1, err-BC-ERR-06003: step_reveal. Rule 1. The error block is a fix prompt (`distinct`).
+- prediction: text, no delivery entry.
+
+No drawn block. The skills carry BC-REP-01 only (topic 6.3 Representations paragraph: symbolic to symbolic) and the key idea states a rule about terms, so none of rules 2 to 5 applies. The machine record states `no_figure_reason`.
 
 ## Band plan
 
-- Low (full): orientation, ki-1, st-1, ex-1, the error block, chk-1, chk-2, the bridge. 354 words, 2.4 minutes (cap 900 and 6).
-- Mid (brief): the same blocks. 354 words, 2.4 minutes (cap 450 and 3).
+- Low (full), in served order: prediction, orientation, the bridge, ki-1, st-1 with its contrast pair, ex-1, chk-1, the error block, chk-2. 438 words, 3.0 minutes (cap 900 and 6). There is one example, so nothing is faded.
+- Mid (brief): the same blocks. 438 words, 3.0 minutes (cap 450 and 3).
 - Refresher: ki-1, err-BC-ERR-06003, ex-1.
 
 ## Sources
@@ -103,6 +112,24 @@ Two checks only: the bundle holds one error, so an MCQ with three error-path dis
   "BC-SKL-06012",
   "BC-SKL-06013"
  ],
+ "prediction": {
+  "id": "pr-1",
+  "stem": {
+   "text": "Predict. The right Riemann sum for ∫_2^6 x^2 dx with n = 2 equal pieces has right endpoints 4 and 6. What is its value?",
+   "command_verb": "predict"
+  },
+  "format": "short_answer",
+  "key": {
+   "form": "numeric",
+   "expr": "104"
+  },
+  "resolution": "Each term is a value times the width 2: 2(4^2) + 2(6^2) = 104.",
+  "sources": [
+   "BC-CON-06005",
+   "research/units/unit-06-integration-accumulation.md#6.3 Riemann Sums, Summation Notation, and Definite Integral Notation"
+  ]
+ },
+ "no_figure_reason": "The skills carry only symbolic representations and the key idea states a rule about terms, each a value times a width. No figure-bearing representation is in play and no process is described.",
  "orientation": {
   "text": "Sigma notation writes a Riemann sum as a sum of products. A response writes each term as the function at a sample point times the width, and can expand the sum term by term.",
   "sources": [
@@ -134,12 +161,23 @@ Two checks only: the bundle holds one error, so an MCQ with three error-path dis
    "archetype_id": "BC-QA-06014",
    "cue": "A definite integral with limits, or a sigma sum; the other form asked.",
    "method": "Separate the general term into a value and a width.",
-   "rival": "Rival: the values summed with the width left out.",
+   "rival": "The values summed with the width left out.",
    "separating_feature": "A term with no width factor is not a product, so not a Riemann sum.",
    "sources": [
     "BC-QA-06014"
    ],
-   "evidence_tag": "inferred"
+   "evidence_tag": "inferred",
+   "contrast": {
+    "this": {
+     "text": "Write the right Riemann sum for ∫_1^5 2t^3 dt in sigma notation with n pieces.",
+     "archetype_id": "BC-QA-06014"
+    },
+    "not_this": {
+     "text": "Write lim as n → ∞ of Σ (1 + 4i/n)^2 (4/n) as a definite integral.",
+     "why_not": "The limit turns the sum into an integral."
+    },
+    "feature": "lim as n → ∞ in front."
+   }
   }
  ],
  "worked_examples": [
@@ -226,6 +264,7 @@ Two checks only: the bundle holds one error, so an MCQ with three error-path dis
     "expr": "2*4**2 + 2*6**2"
    },
    "relation": "distinct",
+   "fix_prompt": true,
    "possible_reason": {
     "misconception_id": "BC-MIS-06001",
     "text": "treats a Riemann sum as an operation on the list of function values alone, so the partition widths play no role"
@@ -445,12 +484,12 @@ Two checks only: the bundle holds one error, so an MCQ with three error-path dis
   "research/scoring/common-point-losses.md#Setup points"
  ],
  "read_minutes": {
-  "full": 2.4,
-  "brief": 2.4
+  "full": 3.0,
+  "brief": 3.0
  },
  "word_count": {
-  "full": 354,
-  "brief": 354
+  "full": 438,
+  "brief": 438
  }
 }
 ```

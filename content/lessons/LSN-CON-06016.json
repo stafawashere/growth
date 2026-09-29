@@ -3,20 +3,68 @@
  "version": 1,
  "kind": "concept",
  "target_id": "BC-CON-06016",
- "status": "signed_off",
+ "status": "draft",
  "snapshot_digest": "a6a8ec9d3f59ab8f712e33d30cc22fc64bf2c478fbe7312e3e3118d319c6a42f",
  "source_digest": "d0ee868aec76a27ff0fed2b437186ec502786cc71b0a641c30d88fd1582af385",
  "read_minutes": {
-  "full": 3.4,
-  "brief": 2.7
+  "full": 3.7,
+  "brief": 3.0
  },
  "word_count": {
-  "full": 409,
-  "brief": 306
+  "full": 480,
+  "brief": 378
  },
  "sections": [
   {
    "id": "LSN-CON-06016#s1",
+   "type": "prediction",
+   "bands": [
+    "low",
+    "mid"
+   ],
+   "skills": [
+    "BC-SKL-06053",
+    "BC-SKL-06054",
+    "BC-SKL-06055",
+    "BC-SKL-06056"
+   ],
+   "sources": [
+    "BC-CON-06016",
+    "research/units/unit-06-integration-accumulation.md#6.10 Integrating Functions Using Long Division and Completing the Square"
+   ],
+   "evidence_tag": "inferred",
+   "stem": {
+    "text": "Predict. \\(\\frac{2(x^2+3)}{x+2}\\) has numerator degree 2 over denominator degree 1. Which first step turns it into terms that can be antidifferentiated one at a time?",
+    "command_verb": "predict"
+   },
+   "format": "mcq",
+   "options": [
+    {
+     "id": "A",
+     "label": "Split it as \\(\\frac{A}{x+2}\\) and solve for \\(A\\)",
+     "is_key": false
+    },
+    {
+     "id": "B",
+     "label": "Divide, giving a polynomial plus a remainder over \\(x+2\\)",
+     "is_key": true
+    },
+    {
+     "id": "C",
+     "label": "Antidifferentiate the numerator and denominator separately",
+     "is_key": false
+    }
+   ],
+   "resolution": {
+    "text": "Degree 2 is at least degree 1, so division gives \\(2x-4+\\frac{14}{x+2}\\), and each term is basic. Decomposition needs a proper fraction."
+   },
+   "delivery": {
+    "mode": "text",
+    "reason": "rule 6"
+   }
+  },
+  {
+   "id": "LSN-CON-06016#s2",
    "type": "orientation",
    "bands": [
     "low",
@@ -33,7 +81,7 @@
     "research/units/unit-06-integration-accumulation.md#6.10 Integrating Functions Using Long Division and Completing the Square"
    ],
    "evidence_tag": "inferred",
-   "text": "When the numerator's degree is at least the denominator's, or a quadratic hides a square, the integrand is rewritten first. A response shows the divided or completed-square form, then antidifferentiates each piece.",
+   "text": "A response rewrites the integrand first, by division or completing the square, then antidifferentiates each piece.",
    "delivery": {
     "mode": "text",
     "reason": "rule 6: BC-REP-01 only on the concept's skills (unit README delivery map)",
@@ -43,7 +91,7 @@
    }
   },
   {
-   "id": "LSN-CON-06016#s2",
+   "id": "LSN-CON-06016#s3",
    "type": "key_ideas",
    "bands": [
     "low",
@@ -79,7 +127,7 @@
    }
   },
   {
-   "id": "LSN-CON-06016#s3",
+   "id": "LSN-CON-06016#s4",
    "type": "strategy",
    "bands": [
     "low",
@@ -90,17 +138,29 @@
     "BC-SKL-06056"
    ],
    "sources": [
-    "BC-QA-06016"
+    "BC-QA-06016",
+    "BC-ERR-06026"
    ],
    "evidence_tag": "inferred",
    "archetype_id": "BC-QA-06016",
-   "cue": "A rational integrand whose numerator degree is at least the denominator's; an indefinite integral asked.",
+   "cue": "A rational integrand with numerator degree at least the denominator's.",
    "method": "Inspect the integrand for structural markers: compare the degrees.",
-   "rival": "Rival: partial fractions straight away (BC-ERR-06026).",
-   "separating_feature": "A degree at least the denominator's means divide first; decomposition fits only a proper fraction."
+   "rival": "Partial fractions straight away.",
+   "separating_feature": "A degree at least the denominator's means divide first.",
+   "contrast": {
+    "this": {
+     "text": "Find \\(\\int \\frac{3(x^2+1)}{x+4}\\,dx\\) for \\(x>-4\\).",
+     "archetype_id": "BC-QA-06016"
+    },
+    "not_this": {
+     "text": "Find \\(\\int \\frac{5}{(x+1)(x+3)}\\,dx\\) for \\(x>-1\\).",
+     "why_not": "A proper fraction over distinct linear factors calls for partial fractions, with no division."
+    },
+    "feature": "Numerator degree at least the denominator's: divide first."
+   }
   },
   {
-   "id": "LSN-CON-06016#s4",
+   "id": "LSN-CON-06016#s5",
    "type": "strategy",
    "bands": [
     "low",
@@ -116,11 +176,11 @@
    "archetype_id": "BC-QA-06018",
    "cue": "A constant over an expanded quadratic or its square root; an antiderivative with C asked.",
    "method": "Complete the square in the quadratic when it is expanded.",
-   "rival": "Rival: a logarithm with the quadratic as u.",
+   "rival": "A logarithm with the quadratic as u.",
    "separating_feature": "The numerator is a constant, not the quadratic's derivative, so the square gives arctan or arcsin."
   },
   {
-   "id": "LSN-CON-06016#s5",
+   "id": "LSN-CON-06016#s6",
    "type": "worked_example",
    "bands": [
     "low",
@@ -361,6 +421,7 @@
     ]
    },
    "relation": "distinct",
+   "fix_prompt": true,
    "possible_reason": {
     "misconception_id": "BC-MIS-06019",
     "text": "each factor is antidifferentiated on its own"
@@ -432,6 +493,7 @@
     ]
    },
    "relation": "distinct",
+   "fix_prompt": true,
    "possible_reason": {
     "misconception_id": "BC-MIS-06022",
     "text": "selects a technique from a visual resemblance to a worked example"
@@ -522,6 +584,7 @@
     ]
    },
    "relation": "distinct",
+   "fix_prompt": true,
    "delivery": {
     "mode": "step_reveal",
     "reason": "rule 1",
@@ -543,7 +606,7 @@
    ],
    "evidence_tag": "inferred",
    "prerequisite_id": "BC-PRQ-06001",
-   "text": "Split a fraction into terms and factor out constants before choosing a technique."
+   "text": "Split fractions and factor out constants first."
   },
   {
    "id": "LSN-CON-06016#prq-BC-PRQ-06002",
@@ -560,7 +623,7 @@
    ],
    "evidence_tag": "inferred",
    "prerequisite_id": "BC-PRQ-06002",
-   "text": "Radicals and reciprocals become powers; the power rule never takes an exponent of -1."
+   "text": "Rewrite radicals and reciprocals as powers."
   },
   {
    "id": "LSN-CON-06016#prq-BC-PRQ-06009",
@@ -578,7 +641,7 @@
    ],
    "evidence_tag": "inferred",
    "prerequisite_id": "BC-PRQ-06009",
-   "text": "Long division writes an improper rational expression as a polynomial plus a proper remainder."
+   "text": "Long division gives a polynomial plus a proper remainder."
   },
   {
    "id": "LSN-CON-06016#prq-BC-PRQ-06010",
@@ -596,7 +659,7 @@
    ],
    "evidence_tag": "inferred",
    "prerequisite_id": "BC-PRQ-06010",
-   "text": "Completing the square writes a quadratic as a square plus a constant, exposing a standard form."
+   "text": "Completing the square gives a square plus a constant."
   }
  ],
  "checks": [
@@ -617,7 +680,7 @@
     "shift": 2,
     "constant": 3
    },
-   "completes": "LSN-CON-06016#s5",
+   "completes": "LSN-CON-06016#s6",
    "stem": {
     "text": "2(x^2 + 3)/(x + 2) = 2x - 4 + 14/(x + 2) for x > -2. Find the antiderivative.",
     "command_verb": "find"
@@ -1116,18 +1179,19 @@
   }
  ],
  "refresher": [
-  "LSN-CON-06016#s2",
+  "LSN-CON-06016#s3",
   "LSN-CON-06016#err-BC-ERR-06022",
   "LSN-CON-06016#err-BC-ERR-06026",
   "LSN-CON-06016#err-BC-ERR-06033",
-  "LSN-CON-06016#s5"
+  "LSN-CON-06016#s6"
  ],
+ "no_figure_reason": "The skills carry only symbolic expressions and the key idea is a rewriting rule, not a process to draw, so no figure fits.",
  "provenance": {
   "author": "tools/lesson_transcribe.py",
-  "prompt_version": "generator/lesson_v1",
+  "prompt_version": "generator/lesson_v2",
   "design_path": "docs/lessons/unit-06/LSN-CON-06016.md",
-  "signed_off_by": "claude-opus-5-5",
-  "signed_off_at": "2026-09-29",
+  "signed_off_by": null,
+  "signed_off_at": null,
   "not_human": true
  }
 }

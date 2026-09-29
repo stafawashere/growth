@@ -9,9 +9,13 @@ purpose: Authoring spec for the concept lesson on BC-CON-06003, left, right, mid
 
 Concept BC-CON-06003 (skills BC-SKL-06005 to BC-SKL-06009), topic 6.2 of Unit 6, loaded by BC-QA-06001, BC-QA-06002 and BC-QA-06017 (family integral-approximation). Its hard parent is BC-CON-06001 (docs/lessons/unit-06/README.md, section 1).
 
+## Prediction
+
+One multiple choice question on worked example 1's own table, asked before the rule is shown: with R(t) tabulated at t = 0, 2, 3, 6, 8, what each left value in the left sum is multiplied by. The key option is its own subinterval's width, which is ex-1's product line 2(6) + 1(10) + 3(13) + 2(9). The distractors are one common width (the BC-ERR-06001 path) and the whole interval's length. The resolution, shown on the key idea screen beside the choice, states the products with each value beside its own width. No verdict word. Sources: BC-CON-06003 and the topic 6.2 section the key ideas cite.
+
 ## Orientation
 
-Served text, from BC-CON-06003 `description_plain` and the topic's Assessment behaviour paragraph (research/units/unit-06-integration-accumulation.md#6.2 Approximating Areas with Riemann Sums): FRQ forms ask for a left, right or trapezoidal sum over the subintervals the data indicate. No count, no frequency.
+Served text, from BC-CON-06003 `description_plain` and the topic's Assessment behaviour paragraph (research/units/unit-06-integration-accumulation.md#6.2 Approximating Areas with Riemann Sums): FRQ forms ask for a left, right or trapezoidal sum over the subintervals the data indicate. No count, no frequency. The served text carries no record id.
 
 ## Key ideas
 
@@ -21,7 +25,7 @@ Three BC-EK across five skills; at most two may be core. ki-1 and ki-2 are core:
 - ki-2 (core), BC-EK-LIM-5A1 (BC-SKL-06005, 06006, 06009), ced:119. The LIM-5.A.1 representations (graphical, numerical, analytical, verbal) restated as where each height comes from: read from a table or graph, or evaluated from a formula. No anchor quote and no notation line, to hold the brief band under its cap.
 - ki-3 (extended), BC-EK-LIM-5A3 (BC-SKL-06009), ced:119, with the LIM-5.A.3 sentence as anchor quote.
 
-ki-1 and ki-3 carry the concept notation line. The Error direction paragraph belongs to BC-CON-06004.
+Only ki-3 carries the concept notation line, so the brief band holds its cap. The Error direction paragraph belongs to BC-CON-06004.
 
 ## Recognition
 
@@ -31,18 +35,20 @@ Three archetypes in one family, integral-approximation.
 - BC-QA-06002 (research/question-analysis/question-archetypes.md#BC-QA-06002 Trapezoidal approximation of an accumulated amount from a table): `common_givens` a table at unevenly spaced inputs; `asked_to_produce` a trapezoidal sum with each term shown. Official examples BC-FRQ-2014-Q4-C, BC-FRQ-2025-Q3-C, BC-FRQ-2018-Q4-C.
 - BC-QA-06017 (research/question-analysis/question-archetypes.md#BC-QA-06017 Riemann or trapezoidal sum with equal subintervals for a function given by a formula or a graph): `common_givens` a formula or a graph of segments, the interval, the number of subintervals; `typical_wording` "use a midpoint Riemann sum with four subintervals of equal width".
 
-The signal: "approximate" beside a named sum and a table or a stated n. Not this concept: "is it an over or under estimate" (BC-CON-06004), a sigma expression (BC-CON-06005), "lim" in front of the sum (BC-CON-06006).
+The signal: "approximate" beside a named sum and a table or a stated n. Contrast pair on st-1: this stem is on BC-QA-06001, a right sum asked as a value on a table with unequal gaps; not this stem asks whether the same right sum is an over or under estimate, the near miss from the sibling concept BC-CON-06004. The separating feature is that a value is asked.
+
+Not this concept: "is it an over or under estimate" (BC-CON-06004), a sigma expression (BC-CON-06005), "lim" in front of the sum (BC-CON-06006).
 
 ## Method choice
 
 One strategy block, since all three archetypes share the family integral-approximation [inferred].
 
-- st-1. Method, BC-QA-06001 `expected_solution_path[0]`: identify the subintervals indicated by the table. Rival from `wrong_approaches`: one common width on unevenly spaced data (BC-ERR-06001). Separating feature: unequal gaps between inputs. For BC-QA-06002 the first line is each trapezoid as the average of two end values times the width; for BC-QA-06017 the common width first. The cue rests on `common_givens` and `asked_to_produce`, so the block is not tagged inferred.
+- st-1. Method, BC-QA-06001 `expected_solution_path[0]`: identify the subintervals indicated by the table. Rival from `wrong_approaches`: one common width on unevenly spaced data (BC-ERR-06001). Separating feature: unequal gaps between inputs. The block also carries the contrast pair above. Every field is served without the reader's own label, and record ids sit in `sources`. For BC-QA-06002 the first line is each trapezoid as the average of two end values times the width; for BC-QA-06017 the common width first. The cue rests on `common_givens` and `asked_to_produce`, so the block is not tagged inferred.
 
 ## Solution path
 
 - ex-1, BC-QA-06001, both bands, calculator. Draw: gaps 2, 1, 3, 2, even_gap 2, rates 6, 10, 13, 9, 4, endpoint left, context tank, spacing nonuniform, framing context; derived left_sum 79, right_sum 68, left_values 38, third_option 76, all distinct. Steps: subintervals (no value); the products (new, BC-PT-99018); 79 (equivalent, BC-PT-99019).
-- ex-2, BC-QA-06002, low band, no calculator. Draw: gaps 4, 2, 6, rates 5, 9, 11, 7, initial 40, context rain, ask integral; derived trapezoid 102. Steps: the three halved terms (new, BC-PT-99018); 102 (equivalent, BC-PT-99019).
+- ex-2, BC-QA-06002, low band, no calculator, faded (`fade_from` 2): the trapezoid products line (step 1) is shown with the widths and the halves, and the student adds to the value before step 2 reveals. The fade falls at the addition because the products line is the scored setup and the sum is the step a student can produce from it. Draw: gaps 4, 2, 6, rates 5, 9, 11, 7, initial 40, context rain, ask integral; derived trapezoid 102. Steps: the three halved terms (new, BC-PT-99018); 102 (equivalent, BC-PT-99019).
 
 No published item carries either draw. A fluent solver writes every product and the value; reading the widths off the table is held in the head (unit README section 5) [inferred].
 
@@ -83,14 +89,17 @@ BC-QA-06001 is `calculator` and its scored form is a free response part, so Sect
 - ki-1: figure, four panels at one n. Rule 4, BC-REP-02 on BC-SKL-06007 and 06009.
 - ki-2: table. Rule 5.
 - ki-3: text. Rule 6.
-- ex-1, ex-2 and the four error blocks: step_reveal. Rule 1.
+- ex-1, ex-2 and the four error blocks: step_reveal. Rule 1. All four error blocks are fix prompts (all `distinct`).
+- prediction: text, no delivery entry.
+
+Drawn blocks: the orientation table, ki-1 figure and ki-2 table already satisfy figure presence, so no `no_figure_reason`.
 
 Every non-text choice is [inferred]; settled by the modality A/B.
 
 ## Band plan
 
-- Low (full): orientation, ki-1 to ki-3, st-1, ex-1 and ex-2 with their reader lines, four error blocks, chk-1 to chk-3, three bridges. 807 words, 5.7 minutes (cap 900 and 6).
-- Mid (brief): orientation, ki-1, ki-2, st-1, ex-1 with its reader lines, err-BC-ERR-06001, err-BC-ERR-06002, chk-1, chk-2, three bridges. 449 words, 3.0 minutes (cap 450 and 3).
+- Low (full), in served order: prediction, orientation, the three bridges, ki-1, ki-2, ki-3, st-1 with its contrast pair, ex-1 with its reader lines, chk-1, four error blocks, ex-2 faded with its reader lines, chk-2, chk-3. 803 words, 5.4 minutes (cap 900 and 6).
+- Mid (brief), in served order: prediction, orientation, the three bridges, ki-1, ki-2, st-1 with its contrast pair, ex-1 with its reader lines, chk-1, err-BC-ERR-06001, err-BC-ERR-06002, chk-2. 446 words, 3.0 minutes (cap 450 and 3). The orientation, key ideas, strategy fields, cues and bridges were shortened to hold this; no scoring line was dropped.
 - Refresher: ki-1, ki-2, the four error blocks, ex-1.
 
 ## Sources
@@ -126,8 +135,38 @@ Every non-text choice is [inferred]; settled by the modality A/B.
   "BC-SKL-06008",
   "BC-SKL-06009"
  ],
+ "prediction": {
+  "id": "pr-1",
+  "stem": {
+   "text": "Before the rule: R(t) is tabulated at t = 0, 2, 3, 6, 8. In the left sum, each left value is multiplied by what?",
+   "command_verb": "predict"
+  },
+  "format": "mcq",
+  "options": [
+   {
+    "id": "A",
+    "label": "One common width",
+    "is_key": false
+   },
+   {
+    "id": "B",
+    "label": "Its own width",
+    "is_key": true
+   },
+   {
+    "id": "C",
+    "label": "The whole length",
+    "is_key": false
+   }
+  ],
+  "resolution": "Each left value times its own width: 2(6) + 1(10) + 3(13) + 2(9).",
+  "sources": [
+   "BC-CON-06003",
+   "research/units/unit-06-integration-accumulation.md#6.2 Approximating Areas with Riemann Sums"
+  ]
+ },
  "orientation": {
-  "text": "A response estimates the integral by writing each subinterval's value times width, then their sum.",
+  "text": "A response writes each subinterval's value times its width, then adds.",
   "sources": [
    "BC-CON-06003",
    "research/units/unit-06-integration-accumulation.md#6.2 Approximating Areas with Riemann Sums"
@@ -138,8 +177,8 @@ Every non-text choice is [inferred]; settled by the modality A/B.
    "id": "ki-1",
    "ek_id": "BC-EK-LIM-5A2",
    "depth": "core",
-   "text": "Each subinterval gives width times one height. Left, right and midpoint differ only in the sample point; a trapezoid averages the end values. Widths may be unequal.",
-   "notation": "L sub n, R sub n, M sub n, T sub n",
+   "text": "Each subinterval gives width times one height; a trapezoid averages end values.",
+   "notation": "",
    "quote": null,
    "sources": [
     "BC-EK-LIM-5A2",
@@ -151,7 +190,7 @@ Every non-text choice is [inferred]; settled by the modality A/B.
    "id": "ki-2",
    "ek_id": "BC-EK-LIM-5A1",
    "depth": "core",
-   "text": "Each height is read from a table or graph, or evaluated from a formula.",
+   "text": "Heights come from a table, a graph or a formula.",
    "notation": "",
    "quote": null,
    "sources": [
@@ -164,7 +203,7 @@ Every non-text choice is [inferred]; settled by the modality A/B.
    "id": "ki-3",
    "ek_id": "BC-EK-LIM-5A3",
    "depth": "extended",
-   "text": "The sum is computed by hand or on a calculator; either way the products are written before the value (sg-23:3).",
+   "text": "The sum is computed by hand or on a calculator; either way the products are written before the value.",
    "notation": "L sub n, R sub n, M sub n, T sub n",
    "quote": {
     "text": "Definite integrals can be approximated using numerical methods, with or without technology.",
@@ -182,16 +221,27 @@ Every non-text choice is [inferred]; settled by the modality A/B.
   {
    "id": "st-1",
    "archetype_id": "BC-QA-06001",
-   "cue": "A table of rates and a named sum on the table's subintervals.",
-   "method": "Identify the subintervals and their widths from the table.",
-   "rival": "One common width on unevenly spaced data.",
-   "separating_feature": "Unequal gaps between inputs mean unequal widths.",
+   "cue": "A named sum on a table.",
+   "method": "Widths from the table's inputs.",
+   "rival": "One common width on uneven data.",
+   "separating_feature": "Unequal gaps between inputs.",
    "sources": [
     "BC-QA-06001",
     "BC-QA-06002",
     "BC-QA-06017"
    ],
-   "evidence_tag": "verified"
+   "evidence_tag": "verified",
+   "contrast": {
+    "this": {
+     "text": "Find a right sum for ∫_0^6 g(t) dt on t: 0, 1, 4, 6.",
+     "archetype_id": "BC-QA-06001"
+    },
+    "not_this": {
+     "text": "Is a right sum for ∫_0^6 g(t) dt over or under?",
+     "why_not": "It asks error direction, not a value."
+    },
+    "feature": "A value asked."
+   }
   }
  ],
  "worked_examples": [
@@ -229,19 +279,19 @@ Every non-text choice is [inferred]; settled by the modality A/B.
    "calculator_status": "calculator",
    "steps": [
     {
-     "cue": "Table inputs fix the subintervals.",
+     "cue": "Table inputs.",
      "why": "Widths 2, 1, 3, 2."
     },
     {
-     "cue": "Left sum: left-end values 6, 10, 13, 9.",
-     "why": "Each times its own width.",
+     "cue": "Left values.",
+     "why": "Times widths.",
      "expr": "2*6 + 1*10 + 3*13 + 2*9",
      "relation": "new",
      "point_type_id": "BC-PT-99018"
     },
     {
      "cue": "Add.",
-     "why": "The value with products shown.",
+     "why": "Value, products shown.",
      "expr": "79",
      "relation": "equivalent",
      "point_type_id": "BC-PT-99019"
@@ -298,7 +348,8 @@ Every non-text choice is [inferred]; settled by the modality A/B.
    "answer": {
     "form": "numeric",
     "expr": "102"
-   }
+   },
+   "fade_from": 2
   }
  ],
  "what_a_reader_scores": [
@@ -351,6 +402,7 @@ Every non-text choice is [inferred]; settled by the modality A/B.
     "expr": "2*6 + 1*10 + 3*13 + 2*9"
    },
    "relation": "distinct",
+   "fix_prompt": true,
    "possible_reason": null,
    "sources": [
     "BC-ERR-06001"
@@ -369,6 +421,7 @@ Every non-text choice is [inferred]; settled by the modality A/B.
     "expr": "2*6 + 1*10 + 3*13 + 2*9"
    },
    "relation": "distinct",
+   "fix_prompt": true,
    "possible_reason": null,
    "sources": [
     "BC-ERR-06002"
@@ -387,6 +440,7 @@ Every non-text choice is [inferred]; settled by the modality A/B.
     "expr": "2*6 + 1*10 + 3*13 + 2*9"
    },
    "relation": "distinct",
+   "fix_prompt": true,
    "possible_reason": {
     "misconception_id": "BC-MIS-06001",
     "text": "treats a Riemann sum as an operation on the list of function values alone, so the partition widths play no role"
@@ -409,6 +463,7 @@ Every non-text choice is [inferred]; settled by the modality A/B.
     "expr": "2*(6 + 10)/2 + 1*(10 + 13)/2 + 3*(13 + 9)/2 + 2*(9 + 4)/2"
    },
    "relation": "distinct",
+   "fix_prompt": true,
    "possible_reason": {
     "misconception_id": "BC-MIS-06004",
     "text": "averages across the entire interval rather than forming a separate trapezoid on each subinterval"
@@ -423,15 +478,15 @@ Every non-text choice is [inferred]; settled by the modality A/B.
  "prerequisite_bridges": [
   {
    "prq_id": "BC-PRQ-06005",
-   "text": "A value read from the wrong row changes a factor."
+   "text": "Right row."
   },
   {
    "prq_id": "BC-PRQ-06007",
-   "text": "A trapezoid's area averages its parallel sides; it is not a rectangle."
+   "text": "A trapezoid averages parallel sides."
   },
   {
    "prq_id": "BC-PRQ-06012",
-   "text": "Each width is a difference of consecutive inputs, not one common width."
+   "text": "Widths are input differences."
   }
  ],
  "time": {
@@ -1043,12 +1098,12 @@ Every non-text choice is [inferred]; settled by the modality A/B.
   "research/scoring/notation-requirements.md#The equal sign"
  ],
  "read_minutes": {
-  "full": 5.7,
+  "full": 5.4,
   "brief": 3.0
  },
  "word_count": {
-  "full": 807,
-  "brief": 449
+  "full": 803,
+  "brief": 446
  }
 }
 ```

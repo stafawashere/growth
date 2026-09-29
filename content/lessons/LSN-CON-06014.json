@@ -3,20 +3,70 @@
  "version": 1,
  "kind": "concept",
  "target_id": "BC-CON-06014",
- "status": "signed_off",
+ "status": "draft",
  "snapshot_digest": "a6a8ec9d3f59ab8f712e33d30cc22fc64bf2c478fbe7312e3e3118d319c6a42f",
  "source_digest": "c8f64227c9c46f91d46869b6617086550213633ac09ea913a3a1ad71a7122bdc",
  "read_minutes": {
-  "full": 3.0,
-  "brief": 2.5
+  "full": 3.5,
+  "brief": 3.0
  },
  "word_count": {
-  "full": 384,
-  "brief": 311
+  "full": 448,
+  "brief": 383
  },
  "sections": [
   {
    "id": "LSN-CON-06014#s1",
+   "type": "prediction",
+   "bands": [
+    "low",
+    "mid"
+   ],
+   "skills": [
+    "BC-SKL-06040",
+    "BC-SKL-06041",
+    "BC-SKL-06042",
+    "BC-SKL-06043",
+    "BC-SKL-06044",
+    "BC-SKL-06045"
+   ],
+   "sources": [
+    "BC-CON-06014",
+    "research/units/unit-06-integration-accumulation.md#6.8 Finding Antiderivatives and Indefinite Integrals: Basic Rules and Notation"
+   ],
+   "evidence_tag": "inferred",
+   "stem": {
+    "text": "Predict: which describes all functions whose derivative is 3x^(1/2) - 2x^(-1/2)?",
+    "command_verb": "predict"
+   },
+   "format": "mcq",
+   "options": [
+    {
+     "id": "A",
+     "label": "Only 2x^(3/2) - 4x^(1/2).",
+     "is_key": false
+    },
+    {
+     "id": "B",
+     "label": "2x^(3/2) - 4x^(1/2) + C, for any constant C.",
+     "is_key": true
+    },
+    {
+     "id": "C",
+     "label": "3x^(3/2) - 2x^(1/2) + C, for any constant C.",
+     "is_key": false
+    }
+   ],
+   "resolution": {
+    "text": "Differentiating 2x^(3/2) - 4x^(1/2) gives the integrand, and so does adding any constant. The antiderivatives form the family F(x) + C."
+   },
+   "delivery": {
+    "mode": "text",
+    "reason": "rule 6"
+   }
+  },
+  {
+   "id": "LSN-CON-06014#s2",
    "type": "orientation",
    "bands": [
     "low",
@@ -35,7 +85,7 @@
     "research/units/unit-06-integration-accumulation.md#6.8 Finding Antiderivatives and Indefinite Integrals: Basic Rules and Notation"
    ],
    "evidence_tag": "inferred",
-   "text": "A response rewrites the integrand as a sum of basic forms, reverses a derivative rule on each, writes + C, and can confirm the result by differentiating it.",
+   "text": "A response rewrites the integrand as powers, reverses the power rule, writes + C, and confirms by differentiating.",
    "delivery": {
     "mode": "text",
     "reason": "rule 6: BC-REP-01 only",
@@ -45,7 +95,7 @@
    }
   },
   {
-   "id": "LSN-CON-06014#s2",
+   "id": "LSN-CON-06014#s3",
    "type": "key_ideas",
    "bands": [
     "low",
@@ -76,7 +126,7 @@
    }
   },
   {
-   "id": "LSN-CON-06014#s3",
+   "id": "LSN-CON-06014#s4",
    "type": "key_ideas",
    "bands": [
     "low",
@@ -115,7 +165,7 @@
    }
   },
   {
-   "id": "LSN-CON-06014#s4",
+   "id": "LSN-CON-06014#s5",
    "type": "strategy",
    "bands": [
     "low",
@@ -130,30 +180,21 @@
    ],
    "evidence_tag": "verified",
    "archetype_id": "BC-QA-06019",
-   "cue": "An indefinite integral of a product of binomials, or a fraction whose numerator is a sum.",
-   "method": "First line: the product expanded or the fraction split into a sum of powers.",
-   "rival": "Rival: each factor antidifferentiated separately.",
-   "separating_feature": "A product or quotient has no rule of its own."
-  },
-  {
-   "id": "LSN-CON-06014#s5",
-   "type": "strategy",
-   "bands": [
-    "low",
-    "mid"
-   ],
-   "skills": [
-    "BC-SKL-06041"
-   ],
-   "sources": [
-    "BC-QA-06016"
-   ],
-   "evidence_tag": "verified",
-   "archetype_id": "BC-QA-06016",
-   "cue": "An indefinite integral with supporting work, the technique left to the reader.",
-   "method": "First line: the structural markers of the integrand named.",
-   "rival": "Rival: substitution with the inner derivative absent (BC-ERR-06020).",
-   "separating_feature": "Whether the inner derivative is present."
+   "cue": "A product of binomials, or a fraction with a sum on top.",
+   "method": "Expand the product or split the fraction into powers.",
+   "rival": "Each factor antidifferentiated separately.",
+   "separating_feature": "A product or quotient has no rule of its own.",
+   "contrast": {
+    "this": {
+     "text": "Find the indefinite integral of (x + 2)(3x - 1) dx.",
+     "archetype_id": "BC-QA-06019"
+    },
+    "not_this": {
+     "text": "Find the indefinite integral of x cos x dx.",
+     "why_not": "A product of unlike factors calls for integration by parts."
+    },
+    "feature": "Binomials expand into powers; unlike factors do not."
+   }
   },
   {
    "id": "LSN-CON-06014#s6",
@@ -163,20 +204,42 @@
     "mid"
    ],
    "skills": [
+    "BC-SKL-06041"
+   ],
+   "sources": [
+    "BC-QA-06016",
+    "BC-ERR-06020"
+   ],
+   "evidence_tag": "verified",
+   "archetype_id": "BC-QA-06016",
+   "cue": "An indefinite integral with supporting work, the technique left to the reader.",
+   "method": "The structural markers of the integrand named.",
+   "rival": "Substitution with the inner derivative absent.",
+   "separating_feature": "Whether the inner derivative is present."
+  },
+  {
+   "id": "LSN-CON-06014#s7",
+   "type": "strategy",
+   "bands": [
+    "low",
+    "mid"
+   ],
+   "skills": [
     "BC-SKL-06040"
    ],
    "sources": [
-    "BC-QA-06011"
+    "BC-QA-06011",
+    "BC-ERR-99007"
    ],
    "evidence_tag": "verified",
    "archetype_id": "BC-QA-06011",
    "cue": "An integral on an infinite interval, or unbounded at a point; value or divergence asked.",
-   "method": "First line: the offending limit replaced by a variable.",
-   "rival": "Rival: infinity substituted and computed with (BC-ERR-99007).",
+   "method": "The offending limit replaced by a variable.",
+   "rival": "Infinity substituted and computed with.",
    "separating_feature": "An infinite limit or an unbounded integrand."
   },
   {
-   "id": "LSN-CON-06014#s7",
+   "id": "LSN-CON-06014#s8",
    "type": "worked_example",
    "bands": [
     "low",
@@ -429,6 +492,7 @@
     ]
    },
    "relation": "distinct",
+   "fix_prompt": true,
    "possible_reason": {
     "misconception_id": "BC-MIS-02009",
     "text": "does not see constants and radicals as powers"
@@ -523,6 +587,7 @@
     ]
    },
    "relation": "distinct",
+   "fix_prompt": true,
    "possible_reason": {
     "misconception_id": "BC-MIS-06018",
     "text": "treats the antiderivative as unique, so the arbitrary constant is decoration rather than part of the answer"
@@ -548,7 +613,7 @@
    ],
    "evidence_tag": "inferred",
    "prerequisite_id": "BC-PRQ-06002",
-   "text": "Radicals and reciprocals become powers before the power rule; exponent -1 is excluded."
+   "text": "Radicals and reciprocals become powers first; exponent -1 is excluded."
   },
   {
    "id": "LSN-CON-06014#prq-BC-PRQ-06003",
@@ -565,7 +630,7 @@
    ],
    "evidence_tag": "inferred",
    "prerequisite_id": "BC-PRQ-06003",
-   "text": "ln needs an absolute value around a linear expression that can be negative."
+   "text": "ln takes an absolute value around a linear expression."
   },
   {
    "id": "LSN-CON-06014#prq-BC-PRQ-06004",
@@ -583,7 +648,7 @@
    ],
    "evidence_tag": "inferred",
    "prerequisite_id": "BC-PRQ-06004",
-   "text": "A squared trigonometric integrand is rewritten by an identity first."
+   "text": "A squared trigonometric integrand is rewritten by an identity."
   }
  ],
  "checks": [
@@ -603,7 +668,7 @@
     "second": 1,
     "power": 2
    },
-   "completes": "LSN-CON-06014#s7",
+   "completes": "LSN-CON-06014#s8",
    "stem": {
     "text": "(3x - 2)/sqrt(x) = 3x^(1/2) - 2x^(-1/2). Find its indefinite integral.",
     "command_verb": "find"
@@ -873,18 +938,19 @@
   }
  ],
  "refresher": [
-  "LSN-CON-06014#s2",
   "LSN-CON-06014#s3",
+  "LSN-CON-06014#s4",
   "LSN-CON-06014#err-BC-ERR-06033",
   "LSN-CON-06014#err-BC-ERR-07026",
-  "LSN-CON-06014#s7"
+  "LSN-CON-06014#s8"
  ],
+ "no_figure_reason": "Every skill carries symbolic representations only, and no key idea describes a process. The lesson is a chain of written lines.",
  "provenance": {
   "author": "tools/lesson_transcribe.py",
-  "prompt_version": "generator/lesson_v1",
+  "prompt_version": "generator/lesson_v2",
   "design_path": "docs/lessons/unit-06/LSN-CON-06014.md",
-  "signed_off_by": "claude-opus-5-5",
-  "signed_off_at": "2026-09-29",
+  "signed_off_by": null,
+  "signed_off_at": null,
   "not_human": true
  }
 }

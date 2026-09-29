@@ -9,9 +9,13 @@ purpose: Authoring spec for the concept lesson on BC-CON-06002, the sign and the
 
 Concept BC-CON-06002 (skills BC-SKL-06002, BC-SKL-06003), topic 6.1 of Unit 6, loaded by one archetype, BC-QA-06015 (family accumulation-interpretation). It has no Unit 6 hard parent (docs/lessons/unit-06/README.md, section 1).
 
+## Prediction
+
+One multiple choice question on worked example 1's own case, asked before the rule is shown: sand leaving a pile at R(t) tons per hour with R positive, and what the units of the integral over [1, 6] are and whether the pile rises or falls. The key option is tons with the pile falling, the answer of ex-1 in its two parts. The distractors give the rate's units (the BC-ERR-06029 path) and reverse the sign (the BC-ERR-99034 path). The resolution, shown on the key idea screen beside the choice, states the units product and the sign of an outflow. No verdict word. Sources: BC-CON-06002 and the topic 6.1 section the key ideas cite.
+
 ## Orientation
 
-Served text, from BC-CON-06002 `description_plain` and the topic's Assessment behaviour paragraph (research/units/unit-06-integration-accumulation.md#6.1 Exploring Accumulations of Change): conceptual variants ask only for the sign or the units, justification variants ask why the accumulation is positive or negative. No count, no frequency.
+Served text, from BC-CON-06002 `description_plain` and the topic's Assessment behaviour paragraph (research/units/unit-06-integration-accumulation.md#6.1 Exploring Accumulations of Change): conceptual variants ask only for the sign or the units, justification variants ask why the accumulation is positive or negative. No count, no frequency. The served text carries no record id.
 
 ## Key ideas
 
@@ -26,11 +30,13 @@ Both carry the concept's notation line.
 
 BC-QA-06015 (research/question-analysis/question-archetypes.md#BC-QA-06015 Interpreting a definite integral in context with units). `typical_wording`: "using correct units, interpret the meaning of the displayed definite integral in the context of the problem". `common_givens`: a contextual rate function, a definite integral expression. `asked_to_produce`: a sentence with quantity, interval, and units. No `official_examples`; the notes name 2023 Q1(a) and 2024 Q1(b). MCQ forms ask for the units of an accumulation or the meaning of an area (topic Assessment behaviour).
 
-The signal: "using correct units" or "per" in the rate's description, and a request to interpret or to say whether the quantity rose or fell. Not this concept: a request for the value of the change (BC-CON-06001 or BC-CON-06012), or a factor 1/(b - a) in front (average value, BC-CON-06013).
+The signal: "using correct units" or "per" in the rate's description, and a request to interpret or to say whether the quantity rose or fell. Contrast pair on st-1: this stem is on BC-QA-06015, a contextual rate with the integral to interpret with units; not this stem is the same context with a leading factor of one over the interval length, the near miss from the sibling concept BC-CON-06013, which asks for an average rate. The separating feature is that factor.
+
+Not this concept: a request for the value of the change (BC-CON-06001 or BC-CON-06012), or a factor 1/(b - a) in front (average value, BC-CON-06013).
 
 ## Method choice
 
-- st-1, BC-QA-06015, both bands. Cue from `asked_to_produce` and `common_givens`. Method, `expected_solution_path[0]`: identify what the integrand measures per unit input. Rival from `wrong_approaches`: naming the quantity without the interval; giving the units of the rate rather than of the accumulation. Separating feature: the integral is an amount over an interval. The archetype carries both fields, so the block is not tagged inferred.
+- st-1, BC-QA-06015, both bands. Cue from `asked_to_produce` and `common_givens`. Method, `expected_solution_path[0]`: identify what the integrand measures per unit input. Rival from `wrong_approaches`: naming the quantity without the interval; giving the units of the rate rather than of the accumulation. Separating feature: the integral is an amount over an interval. The first block also carries the contrast pair above. Every field is served without the reader's own label, and record ids sit in `sources`. The archetype carries both fields, so the block is not tagged inferred.
 
 ## Solution path
 
@@ -73,12 +79,15 @@ BC-QA-06015 is `either`; the design takes Section I Part A, 2.14 minutes per que
 - orientation: text. Rule 6 (unit README section 6).
 - ki-1: text. Rule 6: BC-SKL-06002 carries BC-REP-04 and BC-REP-05 only.
 - ki-2: figure. Rule 4: BC-REP-02 on BC-SKL-06003 [inferred; settled by the modality A/B].
-- ex-1, err-BC-ERR-99034, err-BC-ERR-06029: step_reveal. Rule 1.
+- ex-1, err-BC-ERR-99034, err-BC-ERR-06029: step_reveal. Rule 1. Both error blocks are fix prompts (both `distinct`).
+- prediction: text, no delivery entry.
+
+Drawn block: ki-2 is a figure (rule 4), so no `no_figure_reason`.
 
 ## Band plan
 
-- Low (full): orientation, ki-1, ki-2, st-1, ex-1, both error blocks, chk-1 to chk-3, the bridge. 503 words, 3.4 minutes (cap 900 and 6).
-- Mid (brief): orientation, ki-1, ki-2, st-1, ex-1, both error blocks, chk-1, chk-2, the bridge. 437 words, 3.0 minutes (cap 450 and 3).
+- Low (full), in served order: prediction, orientation, the bridge, ki-1, ki-2, st-1 with its contrast pair, ex-1, chk-1, both error blocks, chk-2, chk-3. 511 words, 3.5 minutes (cap 900 and 6). There is one example, so nothing is faded.
+- Mid (brief), in served order: prediction, orientation, the bridge, ki-1, ki-2, st-1 with its contrast pair, ex-1, chk-1, both error blocks, chk-2. 445 words, 3.0 minutes (cap 450 and 3). The orientation, key ideas, strategy fields, cues and bridge were shortened to hold this; the anchor quote stays.
 - Refresher: ki-1, ki-2, err-BC-ERR-99034, err-BC-ERR-06029, ex-1.
 
 ## Sources
@@ -109,8 +118,38 @@ BC-QA-06015 is `either`; the design takes Section I Part A, 2.14 minutes per que
   "BC-SKL-06002",
   "BC-SKL-06003"
  ],
+ "prediction": {
+  "id": "pr-1",
+  "stem": {
+   "text": "Before the rule: sand leaves at R(t) tons per hour, R(t) > 0. Units of ∫_1^6 R(t) dt, and does the pile rise or fall?",
+   "command_verb": "predict"
+  },
+  "format": "mcq",
+  "options": [
+   {
+    "id": "A",
+    "label": "Tons; the pile falls",
+    "is_key": true
+   },
+   {
+    "id": "B",
+    "label": "Tons per hour; the pile falls",
+    "is_key": false
+   },
+   {
+    "id": "C",
+    "label": "Tons; the pile rises",
+    "is_key": false
+   }
+  ],
+  "resolution": "Units multiply: tons per hour times hours is tons. A positive outflow removes sand, so the change is negative.",
+  "sources": [
+   "BC-CON-06002",
+   "research/units/unit-06-integration-accumulation.md#6.1 Exploring Accumulations of Change"
+  ]
+ },
  "orientation": {
-  "text": "The rate's sign fixes the sign of the change, and units multiply. A response gives the amount's units and says whether the quantity rose or fell.",
+  "text": "Units multiply and the rate's sign fixes the change's sign: state the units and rose or fell.",
   "sources": [
    "BC-CON-06002",
    "research/units/unit-06-integration-accumulation.md#6.1 Exploring Accumulations of Change"
@@ -121,7 +160,7 @@ BC-QA-06015 is `either`; the design takes Section I Part A, 2.14 minutes per que
    "id": "ki-1",
    "ek_id": "BC-EK-CHA-4A4",
    "depth": "core",
-   "text": "Units of an accumulated change: rate units times input units, so gallons per second times seconds is gallons. An amount, never a rate.",
+   "text": "Rate units times input units: an amount, never a rate.",
    "notation": "units of f times units of t",
    "quote": null,
    "sources": [
@@ -134,7 +173,7 @@ BC-QA-06015 is `either`; the design takes Section I Part A, 2.14 minutes per que
    "id": "ki-2",
    "ek_id": "BC-EK-CHA-4A3",
    "depth": "core",
-   "text": "A rate positive on an interval gives a positive change there; a negative rate gives a negative change. A positive outflow rate means the quantity falls.",
+   "text": "A positive outflow rate means the quantity falls.",
    "notation": "units of f times units of t",
    "quote": {
     "text": "If a rate of change is positive (negative) over an interval, then the accumulated change is positive (negative).",
@@ -151,14 +190,25 @@ BC-QA-06015 is `either`; the design takes Section I Part A, 2.14 minutes per que
   {
    "id": "st-1",
    "archetype_id": "BC-QA-06015",
-   "cue": "A contextual rate and a displayed integral; a sentence with quantity, interval and units asked.",
+   "cue": "A contextual rate, a displayed integral; a sentence asked.",
    "method": "Identify what the integrand measures per unit input.",
-   "rival": "Rival: the quantity named without the interval, or with the rate's units.",
-   "separating_feature": "An amount over an interval: units multiply, and both limits appear.",
+   "rival": "The quantity without the interval, or with the rate's units.",
+   "separating_feature": "An amount over an interval.",
    "sources": [
     "BC-QA-06015"
    ],
-   "evidence_tag": "verified"
+   "evidence_tag": "verified",
+   "contrast": {
+    "this": {
+     "text": "Cars enter at C(t) cars per hour. Interpret ∫_0^5 C(t) dt with units.",
+     "archetype_id": "BC-QA-06015"
+    },
+    "not_this": {
+     "text": "Cars enter at C(t) cars per hour. Interpret (1/5)∫_0^5 C(t) dt.",
+     "why_not": "The leading 1/5 makes it an average rate."
+    },
+    "feature": "A leading factor of one over the length."
+   }
   }
  ],
  "worked_examples": [
@@ -183,28 +233,28 @@ BC-QA-06015 is `either`; the design takes Section I Part A, 2.14 minutes per que
    "calculator_status": "no_calculator",
    "steps": [
     {
-     "cue": "The integrand R is a rate: tons per hour.",
-     "why": "The integral accumulates what R measures."
+     "cue": "R: tons per hour.",
+     "why": "It accumulates R's measure."
     },
     {
      "cue": "Multiply the units.",
-     "why": "Rate units times input units.",
+     "why": "Rate times input units.",
      "expr": "tons/hour*hour",
      "relation": "new"
     },
     {
      "cue": "Hours cancel.",
-     "why": "An amount, not a rate.",
+     "why": "An amount.",
      "expr": "tons",
      "relation": "equivalent"
     },
     {
-     "cue": "R > 0 and R is an outflow.",
-     "why": "The integral is sand removed; the pile's change is its negative."
+     "cue": "R > 0, an outflow.",
+     "why": "The change is negative."
     },
     {
-     "cue": "Limits 1 and 6 name the interval.",
-     "why": "Quantity, units and interval together (sg-23:2)."
+     "cue": "Limits 1 and 6.",
+     "why": "Quantity, units, interval."
     }
    ],
    "answer": {
@@ -229,6 +279,7 @@ BC-QA-06015 is `either`; the design takes Section I Part A, 2.14 minutes per que
     "expr": "-Integral(R(t), (t, 1, 6))"
    },
    "relation": "distinct",
+   "fix_prompt": true,
    "possible_reason": null,
    "sources": [
     "BC-ERR-99034"
@@ -247,6 +298,7 @@ BC-QA-06015 is `either`; the design takes Section I Part A, 2.14 minutes per que
     "expr": "tons"
    },
    "relation": "distinct",
+   "fix_prompt": true,
    "possible_reason": {
     "misconception_id": "BC-MIS-08009",
     "text": "treats the sentence as a label for the integral"
@@ -261,7 +313,7 @@ BC-QA-06015 is `either`; the design takes Section I Part A, 2.14 minutes per que
  "prerequisite_bridges": [
   {
    "prq_id": "BC-PRQ-06005",
-   "text": "R(t) is a rate at input t, not an amount; swapping f and f prime changes what is measured."
+   "text": "R(t) is a rate at input t, not an amount."
   }
  ],
  "time": {
@@ -579,12 +631,12 @@ BC-QA-06015 is `either`; the design takes Section I Part A, 2.14 minutes per que
   "research/scoring/common-point-losses.md#Units points"
  ],
  "read_minutes": {
-  "full": 3.4,
+  "full": 3.5,
   "brief": 3.0
  },
  "word_count": {
-  "full": 503,
-  "brief": 437
+  "full": 511,
+  "brief": 445
  }
 }
 ```

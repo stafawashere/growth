@@ -3,20 +3,67 @@
  "version": 1,
  "kind": "concept",
  "target_id": "BC-CON-06006",
- "status": "signed_off",
+ "status": "draft",
  "snapshot_digest": "a6a8ec9d3f59ab8f712e33d30cc22fc64bf2c478fbe7312e3e3118d319c6a42f",
  "source_digest": "f9da730f6ff3537ae74c1752e7145d525d48a7a6fdbf2a6dec4ddd35fe78b242",
  "read_minutes": {
-  "full": 3.4,
-  "brief": 2.9
+  "full": 3.5,
+  "brief": 3.0
  },
  "word_count": {
-  "full": 441,
-  "brief": 379
+  "full": 463,
+  "brief": 407
  },
  "sections": [
   {
    "id": "LSN-CON-06006#s1",
+   "type": "prediction",
+   "bands": [
+    "low",
+    "mid"
+   ],
+   "skills": [
+    "BC-SKL-06014",
+    "BC-SKL-06015",
+    "BC-SKL-06016"
+   ],
+   "sources": [
+    "BC-CON-06006",
+    "research/units/unit-06-integration-accumulation.md#6.3 Riemann Sums, Summation Notation, and Definite Integral Notation"
+   ],
+   "evidence_tag": "inferred",
+   "stem": {
+    "text": "Predict. In \\(\\lim_{n\\to\\infty}\\sum_{i=1}^n 3(1+2i/n)^2(2/n)\\), the sample points run over what interval?",
+    "command_verb": "predict"
+   },
+   "format": "mcq",
+   "options": [
+    {
+     "id": "A",
+     "label": "From 0 to 2",
+     "is_key": false
+    },
+    {
+     "id": "B",
+     "label": "From 1 to 3",
+     "is_key": true
+    },
+    {
+     "id": "C",
+     "label": "From 1 to 2",
+     "is_key": false
+    }
+   ],
+   "resolution": {
+    "text": "The width \\(2/n\\) gives length 2, and the first sample point is 1. The interval is \\([1,3]\\), so the limit is \\(\\int_1^3 3x^2\\,dx\\)."
+   },
+   "delivery": {
+    "mode": "text",
+    "reason": "rule 6"
+   }
+  },
+  {
+   "id": "LSN-CON-06006#s2",
    "type": "orientation",
    "bands": [
     "low",
@@ -32,7 +79,7 @@
     "research/units/unit-06-integration-accumulation.md#6.3 Riemann Sums, Summation Notation, and Definite Integral Notation"
    ],
    "evidence_tag": "inferred",
-   "text": "Letting every width go to zero turns the Riemann sum into the definite integral. A response converts a limit of sums to an integral, or back, reading the width and the sample point.",
+   "text": "Letting widths go to zero turns a Riemann sum into an integral. A response converts between them.",
    "delivery": {
     "mode": "text",
     "reason": "rule 6: BC-REP-01 on every skill (unit README delivery map)",
@@ -44,7 +91,7 @@
    }
   },
   {
-   "id": "LSN-CON-06006#s2",
+   "id": "LSN-CON-06006#s3",
    "type": "key_ideas",
    "bands": [
     "low",
@@ -61,8 +108,8 @@
    "evidence_tag": "verified",
    "ek_id": "BC-EK-LIM-5C1",
    "depth": "core",
-   "text": "For f continuous on [a, b], the integral of f from a to b is the limit of its Riemann sums as the largest width goes to 0.",
-   "notation": "integral from a to b of f(x) dx",
+   "text": "For continuous f, the integral is the limit of Riemann sums as widths go to 0.",
+   "notation": "\\(\\int_a^b f(x)\\,dx\\)",
    "quote": {
     "text": "is the limit of Riemann sums as the widths of the subintervals approach 0",
     "source": "ced:120"
@@ -138,7 +185,7 @@
    }
   },
   {
-   "id": "LSN-CON-06006#s3",
+   "id": "LSN-CON-06006#s4",
    "type": "key_ideas",
    "bands": [
     "low",
@@ -156,8 +203,8 @@
    "evidence_tag": "inferred",
    "ek_id": "BC-EK-LIM-5C2",
    "depth": "core",
-   "text": "To convert, split the term into width and height. The width fixes b - a, the sample point at i = 0 fixes a, and the height gives f.",
-   "notation": "integral from a to b of f(x) dx",
+   "text": "Split the term. The width fixes b - a, the first sample point fixes a, the height gives f.",
+   "notation": "\\(\\int_a^b f(x)\\,dx\\)",
    "delivery": {
     "mode": "text",
     "reason": "rule 6: a symbolic conversion, BC-REP-01 only",
@@ -168,7 +215,7 @@
    }
   },
   {
-   "id": "LSN-CON-06006#s4",
+   "id": "LSN-CON-06006#s5",
    "type": "key_ideas",
    "bands": [
     "low"
@@ -185,7 +232,7 @@
    "ek_id": "BC-EK-LIM-5B1",
    "depth": "extended",
    "text": "An approximating sum and its limit are different objects: the sum estimates, the limit is the integral.",
-   "notation": "integral from a to b of f(x) dx",
+   "notation": "\\(\\int_a^b f(x)\\,dx\\)",
    "quote": {
     "text": "The limit of an approximating Riemann sum can be interpreted as a definite integral.",
     "source": "ced:120"
@@ -199,7 +246,7 @@
    }
   },
   {
-   "id": "LSN-CON-06006#s5",
+   "id": "LSN-CON-06006#s6",
    "type": "strategy",
    "bands": [
     "low",
@@ -215,13 +262,24 @@
    ],
    "evidence_tag": "inferred",
    "archetype_id": "BC-QA-06014",
-   "cue": "A limit of a sigma sum, or an integral with limits; the other form asked.",
-   "method": "Separate the general term into a value and a width.",
-   "rival": "Rival: limits read off the width, as 0 to b - a.",
-   "separating_feature": "The sample point, not the width, gives the lower limit."
+   "cue": "A limit of a sum, or an integral; the other form asked.",
+   "method": "Split the term into value and width.",
+   "rival": "Limits read off the width alone.",
+   "separating_feature": "The sample point, not the width, gives the lower limit.",
+   "contrast": {
+    "this": {
+     "text": "Write lim_(n→∞) Σ_(i=1)^n (1 + 4i/n)^3 (4/n) as an integral.",
+     "archetype_id": "BC-QA-06014"
+    },
+    "not_this": {
+     "text": "Approximate the integral of x^2 from 1 to 5 with a right sum, n = 4.",
+     "why_not": "It asks for a finite sum, not a limit."
+    },
+    "feature": "The limit as n approaches infinity precedes the sum."
+   }
   },
   {
-   "id": "LSN-CON-06006#s6",
+   "id": "LSN-CON-06006#s7",
    "type": "worked_example",
    "bands": [
     "low",
@@ -432,6 +490,7 @@
     ]
    },
    "relation": "distinct",
+   "fix_prompt": true,
    "possible_reason": {
     "misconception_id": "BC-MIS-06001",
     "text": "the partition widths play no role"
@@ -502,6 +561,7 @@
     ]
    },
    "relation": "distinct",
+   "fix_prompt": true,
    "delivery": {
     "mode": "step_reveal",
     "reason": "rule 1",
@@ -509,7 +569,7 @@
    }
   },
   {
-   "id": "LSN-CON-06006#s7",
+   "id": "LSN-CON-06006#s8",
    "type": "representations",
    "bands": [
     "low"
@@ -615,7 +675,7 @@
    ],
    "evidence_tag": "inferred",
    "prerequisite_id": "BC-PRQ-06006",
-   "text": "Sigma notation: one term per index value from the lower to the upper limit; a wrong substitution or an off-by-one count changes the sample point."
+   "text": "Sigma notation: one term per index value. A wrong substitution moves the sample point."
   }
  ],
  "checks": [
@@ -637,7 +697,7 @@
     "convention": "right",
     "letter": "x"
    },
-   "completes": "LSN-CON-06006#s6",
+   "completes": "LSN-CON-06006#s7",
    "stem": {
     "text": "Width 2/n, height 3(1 + 2i/n)^2, sample points running from 1 to 3. Write the integral.",
     "command_verb": "write"
@@ -1025,18 +1085,18 @@
   }
  ],
  "refresher": [
-  "LSN-CON-06006#s2",
   "LSN-CON-06006#s3",
+  "LSN-CON-06006#s4",
   "LSN-CON-06006#err-BC-ERR-99028",
   "LSN-CON-06006#err-BC-ERR-99032",
-  "LSN-CON-06006#s6"
+  "LSN-CON-06006#s7"
  ],
  "provenance": {
   "author": "tools/lesson_transcribe.py",
-  "prompt_version": "generator/lesson_v1",
+  "prompt_version": "generator/lesson_v2",
   "design_path": "docs/lessons/unit-06/LSN-CON-06006.md",
-  "signed_off_by": "claude-opus-5-5",
-  "signed_off_at": "2026-09-29",
+  "signed_off_by": null,
+  "signed_off_at": null,
   "not_human": true
  }
 }

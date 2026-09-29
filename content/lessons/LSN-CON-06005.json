@@ -3,20 +3,53 @@
  "version": 1,
  "kind": "concept",
  "target_id": "BC-CON-06005",
- "status": "signed_off",
+ "status": "draft",
  "snapshot_digest": "a6a8ec9d3f59ab8f712e33d30cc22fc64bf2c478fbe7312e3e3118d319c6a42f",
  "source_digest": "9e7993e124acdc04b1673568eb0cb11581484c7dede35495361b29519f5409ce",
  "read_minutes": {
-  "full": 2.4,
-  "brief": 2.4
+  "full": 3.0,
+  "brief": 3.0
  },
  "word_count": {
-  "full": 292,
-  "brief": 292
+  "full": 376,
+  "brief": 376
  },
  "sections": [
   {
    "id": "LSN-CON-06005#s1",
+   "type": "prediction",
+   "bands": [
+    "low",
+    "mid"
+   ],
+   "skills": [
+    "BC-SKL-06012",
+    "BC-SKL-06013"
+   ],
+   "sources": [
+    "BC-CON-06005",
+    "research/units/unit-06-integration-accumulation.md#6.3 Riemann Sums, Summation Notation, and Definite Integral Notation"
+   ],
+   "evidence_tag": "inferred",
+   "stem": {
+    "text": "Predict. The right Riemann sum for ∫_2^6 x^2 dx with n = 2 equal pieces has right endpoints 4 and 6. What is its value?",
+    "command_verb": "predict"
+   },
+   "format": "short_answer",
+   "answer_key": {
+    "form": "numeric",
+    "mathjson": 104
+   },
+   "resolution": {
+    "text": "Each term is a value times the width 2: 2(4^2) + 2(6^2) = 104."
+   },
+   "delivery": {
+    "mode": "text",
+    "reason": "rule 6"
+   }
+  },
+  {
+   "id": "LSN-CON-06005#s2",
    "type": "orientation",
    "bands": [
     "low",
@@ -42,7 +75,7 @@
    }
   },
   {
-   "id": "LSN-CON-06005#s2",
+   "id": "LSN-CON-06005#s3",
    "type": "key_ideas",
    "bands": [
     "low",
@@ -76,7 +109,7 @@
    }
   },
   {
-   "id": "LSN-CON-06005#s3",
+   "id": "LSN-CON-06005#s4",
    "type": "strategy",
    "bands": [
     "low",
@@ -93,11 +126,22 @@
    "archetype_id": "BC-QA-06014",
    "cue": "A definite integral with limits, or a sigma sum; the other form asked.",
    "method": "Separate the general term into a value and a width.",
-   "rival": "Rival: the values summed with the width left out.",
-   "separating_feature": "A term with no width factor is not a product, so not a Riemann sum."
+   "rival": "The values summed with the width left out.",
+   "separating_feature": "A term with no width factor is not a product, so not a Riemann sum.",
+   "contrast": {
+    "this": {
+     "text": "Write the right Riemann sum for ∫_1^5 2t^3 dt in sigma notation with n pieces.",
+     "archetype_id": "BC-QA-06014"
+    },
+    "not_this": {
+     "text": "Write lim as n → ∞ of Σ (1 + 4i/n)^2 (4/n) as a definite integral.",
+     "why_not": "The limit turns the sum into an integral."
+    },
+    "feature": "lim as n → ∞ in front."
+   }
   },
   {
-   "id": "LSN-CON-06005#s4",
+   "id": "LSN-CON-06005#s5",
    "type": "worked_example",
    "bands": [
     "low",
@@ -286,6 +330,7 @@
     "expression": 104
    },
    "relation": "distinct",
+   "fix_prompt": true,
    "possible_reason": {
     "misconception_id": "BC-MIS-06001",
     "text": "treats a Riemann sum as an operation on the list of function values alone, so the partition widths play no role"
@@ -334,7 +379,7 @@
     "convention": "right",
     "letter": "x"
    },
-   "completes": "LSN-CON-06005#s4",
+   "completes": "LSN-CON-06005#s5",
    "stem": {
     "text": "For n = 2 the sum is Σ_(i=1)^2 (2 + 2i)^2 (2). Expand and evaluate.",
     "command_verb": "evaluate"
@@ -493,16 +538,17 @@
   }
  ],
  "refresher": [
-  "LSN-CON-06005#s2",
+  "LSN-CON-06005#s3",
   "LSN-CON-06005#err-BC-ERR-06003",
-  "LSN-CON-06005#s4"
+  "LSN-CON-06005#s5"
  ],
+ "no_figure_reason": "The skills carry only symbolic representations and the key idea states a rule about terms, each a value times a width. No figure-bearing representation is in play and no process is described.",
  "provenance": {
   "author": "tools/lesson_transcribe.py",
-  "prompt_version": "generator/lesson_v1",
+  "prompt_version": "generator/lesson_v2",
   "design_path": "docs/lessons/unit-06/LSN-CON-06005.md",
-  "signed_off_by": "claude-opus-5-5",
-  "signed_off_at": "2026-09-29",
+  "signed_off_by": null,
+  "signed_off_at": null,
   "not_human": true
  }
 }

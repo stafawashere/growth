@@ -3,20 +3,69 @@
  "version": 1,
  "kind": "concept",
  "target_id": "BC-CON-06003",
- "status": "signed_off",
+ "status": "draft",
  "snapshot_digest": "a6a8ec9d3f59ab8f712e33d30cc22fc64bf2c478fbe7312e3e3118d319c6a42f",
  "source_digest": "930768ed5d63c7716553ac9fc25c38fef16302342c75a7a22ba1ea4a70aab9a8",
  "read_minutes": {
-  "full": 5.7,
+  "full": 5.4,
   "brief": 3.0
  },
  "word_count": {
-  "full": 715,
-  "brief": 382
+  "full": 734,
+  "brief": 402
  },
  "sections": [
   {
    "id": "LSN-CON-06003#s1",
+   "type": "prediction",
+   "bands": [
+    "low",
+    "mid"
+   ],
+   "skills": [
+    "BC-SKL-06005",
+    "BC-SKL-06006",
+    "BC-SKL-06007",
+    "BC-SKL-06008",
+    "BC-SKL-06009"
+   ],
+   "sources": [
+    "BC-CON-06003",
+    "research/units/unit-06-integration-accumulation.md#6.2 Approximating Areas with Riemann Sums"
+   ],
+   "evidence_tag": "inferred",
+   "stem": {
+    "text": "Before the rule: R(t) is tabulated at t = 0, 2, 3, 6, 8. In the left sum, each left value is multiplied by what?",
+    "command_verb": "predict"
+   },
+   "format": "mcq",
+   "options": [
+    {
+     "id": "A",
+     "label": "One common width",
+     "is_key": false
+    },
+    {
+     "id": "B",
+     "label": "Its own width",
+     "is_key": true
+    },
+    {
+     "id": "C",
+     "label": "The whole length",
+     "is_key": false
+    }
+   ],
+   "resolution": {
+    "text": "Each left value times its own width: 2(6) + 1(10) + 3(13) + 2(9)."
+   },
+   "delivery": {
+    "mode": "text",
+    "reason": "rule 6"
+   }
+  },
+  {
+   "id": "LSN-CON-06003#s2",
    "type": "orientation",
    "bands": [
     "low",
@@ -34,7 +83,7 @@
     "research/units/unit-06-integration-accumulation.md#6.2 Approximating Areas with Riemann Sums"
    ],
    "evidence_tag": "inferred",
-   "text": "A response estimates the integral by writing each subinterval's value times width, then their sum.",
+   "text": "A response writes each subinterval's value times its width, then adds.",
    "delivery": {
     "mode": "table",
     "reason": "rule 5: BC-REP-03 on BC-SKL-06005, 06006, 06008 (unit README delivery map)",
@@ -87,7 +136,7 @@
    }
   },
   {
-   "id": "LSN-CON-06003#s2",
+   "id": "LSN-CON-06003#s3",
    "type": "key_ideas",
    "bands": [
     "low",
@@ -107,8 +156,7 @@
    "evidence_tag": "inferred",
    "ek_id": "BC-EK-LIM-5A2",
    "depth": "core",
-   "text": "Each subinterval gives width times one height. Left, right and midpoint differ only in the sample point; a trapezoid averages the end values. Widths may be unequal.",
-   "notation": "L sub n, R sub n, M sub n, T sub n",
+   "text": "Each subinterval gives width times one height; a trapezoid averages end values.",
    "delivery": {
     "mode": "figure",
     "reason": "rule 4: BC-REP-02 on BC-SKL-06007 and BC-SKL-06009; one static figure of the four sample-point choices at a fixed n (unit README delivery map)",
@@ -277,7 +325,7 @@
    }
   },
   {
-   "id": "LSN-CON-06003#s3",
+   "id": "LSN-CON-06003#s4",
    "type": "key_ideas",
    "bands": [
     "low",
@@ -296,7 +344,7 @@
    "evidence_tag": "inferred",
    "ek_id": "BC-EK-LIM-5A1",
    "depth": "core",
-   "text": "Each height is read from a table or graph, or evaluated from a formula.",
+   "text": "Heights come from a table, a graph or a formula.",
    "delivery": {
     "mode": "table",
     "reason": "rule 5: BC-REP-03 on BC-SKL-06005 and BC-SKL-06006; the tabulated case of the heights",
@@ -352,7 +400,7 @@
    }
   },
   {
-   "id": "LSN-CON-06003#s4",
+   "id": "LSN-CON-06003#s5",
    "type": "key_ideas",
    "bands": [
     "low"
@@ -369,7 +417,7 @@
    "evidence_tag": "verified",
    "ek_id": "BC-EK-LIM-5A3",
    "depth": "extended",
-   "text": "The sum is computed by hand or on a calculator; either way the products are written before the value (sg-23:3).",
+   "text": "The sum is computed by hand or on a calculator; either way the products are written before the value.",
    "notation": "L sub n, R sub n, M sub n, T sub n",
    "quote": {
     "text": "Definite integrals can be approximated using numerical methods, with or without technology.",
@@ -384,7 +432,7 @@
    }
   },
   {
-   "id": "LSN-CON-06003#s5",
+   "id": "LSN-CON-06003#s6",
    "type": "strategy",
    "bands": [
     "low",
@@ -401,13 +449,24 @@
    ],
    "evidence_tag": "verified",
    "archetype_id": "BC-QA-06001",
-   "cue": "A table of rates and a named sum on the table's subintervals.",
-   "method": "Identify the subintervals and their widths from the table.",
-   "rival": "One common width on unevenly spaced data.",
-   "separating_feature": "Unequal gaps between inputs mean unequal widths."
+   "cue": "A named sum on a table.",
+   "method": "Widths from the table's inputs.",
+   "rival": "One common width on uneven data.",
+   "separating_feature": "Unequal gaps between inputs.",
+   "contrast": {
+    "this": {
+     "text": "Find a right sum for ∫_0^6 g(t) dt on t: 0, 1, 4, 6.",
+     "archetype_id": "BC-QA-06001"
+    },
+    "not_this": {
+     "text": "Is a right sum for ∫_0^6 g(t) dt over or under?",
+     "why_not": "It asks error direction, not a value."
+    },
+    "feature": "A value asked."
+   }
   },
   {
-   "id": "LSN-CON-06003#s6",
+   "id": "LSN-CON-06003#s7",
    "type": "worked_example",
    "bands": [
     "low",
@@ -449,19 +508,19 @@
    "calculator_status": "calculator",
    "steps": [
     {
-     "cue": "Table inputs fix the subintervals.",
+     "cue": "Table inputs.",
      "why": "Widths 2, 1, 3, 2."
     },
     {
-     "cue": "Left sum: left-end values 6, 10, 13, 9.",
-     "why": "Each times its own width.",
+     "cue": "Left values.",
+     "why": "Times widths.",
      "expression": 79,
      "point_type_id": "BC-PT-99018",
      "relation": "new"
     },
     {
      "cue": "Add.",
-     "why": "The value with products shown.",
+     "why": "Value, products shown.",
      "expression": 79,
      "point_type_id": "BC-PT-99019",
      "relation": "equivalent"
@@ -478,7 +537,7 @@
    }
   },
   {
-   "id": "LSN-CON-06003#s7",
+   "id": "LSN-CON-06003#s8",
    "type": "worked_example",
    "bands": [
     "low"
@@ -532,6 +591,7 @@
     "form": "numeric",
     "mathjson": 102
    },
+   "fade_from": 2,
    "delivery": {
     "mode": "step_reveal",
     "reason": "rule 1",
@@ -539,7 +599,7 @@
    }
   },
   {
-   "id": "LSN-CON-06003#s8",
+   "id": "LSN-CON-06003#s9",
    "type": "what_a_reader_scores",
    "bands": [
     "low",
@@ -554,7 +614,7 @@
     "BC-PT-99019"
    ],
    "evidence_tag": "verified",
-   "example_id": "LSN-CON-06003#s6",
+   "example_id": "LSN-CON-06003#s7",
    "lines": [
     {
      "point_type_id": "BC-PT-99018",
@@ -567,7 +627,7 @@
    ]
   },
   {
-   "id": "LSN-CON-06003#s9",
+   "id": "LSN-CON-06003#s10",
    "type": "what_a_reader_scores",
    "bands": [
     "low"
@@ -580,7 +640,7 @@
     "BC-PT-99019"
    ],
    "evidence_tag": "verified",
-   "example_id": "LSN-CON-06003#s7",
+   "example_id": "LSN-CON-06003#s8",
    "lines": [
     {
      "point_type_id": "BC-PT-99018",
@@ -620,6 +680,7 @@
     "expression": 79
    },
    "relation": "distinct",
+   "fix_prompt": true,
    "delivery": {
     "mode": "step_reveal",
     "reason": "rule 1",
@@ -653,6 +714,7 @@
     "expression": 79
    },
    "relation": "distinct",
+   "fix_prompt": true,
    "delivery": {
     "mode": "step_reveal",
     "reason": "rule 1",
@@ -687,6 +749,7 @@
     "expression": 79
    },
    "relation": "distinct",
+   "fix_prompt": true,
    "possible_reason": {
     "misconception_id": "BC-MIS-06001",
     "text": "treats a Riemann sum as an operation on the list of function values alone, so the partition widths play no role"
@@ -728,6 +791,7 @@
     ]
    },
    "relation": "distinct",
+   "fix_prompt": true,
    "possible_reason": {
     "misconception_id": "BC-MIS-06004",
     "text": "averages across the entire interval rather than forming a separate trapezoid on each subinterval"
@@ -755,7 +819,7 @@
    ],
    "evidence_tag": "inferred",
    "prerequisite_id": "BC-PRQ-06005",
-   "text": "A value read from the wrong row changes a factor."
+   "text": "Right row."
   },
   {
    "id": "LSN-CON-06003#prq-BC-PRQ-06007",
@@ -772,7 +836,7 @@
    ],
    "evidence_tag": "inferred",
    "prerequisite_id": "BC-PRQ-06007",
-   "text": "A trapezoid's area averages its parallel sides; it is not a rectangle."
+   "text": "A trapezoid averages parallel sides."
   },
   {
    "id": "LSN-CON-06003#prq-BC-PRQ-06012",
@@ -792,7 +856,7 @@
    ],
    "evidence_tag": "inferred",
    "prerequisite_id": "BC-PRQ-06012",
-   "text": "Each width is a difference of consecutive inputs, not one common width."
+   "text": "Widths are input differences."
   }
  ],
  "checks": [
@@ -825,7 +889,7 @@
     "spacing": "nonuniform",
     "framing": "context"
    },
-   "completes": "LSN-CON-06003#s6",
+   "completes": "LSN-CON-06003#s7",
    "stem": {
     "text": "The left sum is 2(6) + 1(10) + 3(13) + 2(9). Give its value.",
     "command_verb": "find"
@@ -998,20 +1062,20 @@
   }
  ],
  "refresher": [
-  "LSN-CON-06003#s2",
   "LSN-CON-06003#s3",
+  "LSN-CON-06003#s4",
   "LSN-CON-06003#err-BC-ERR-06001",
   "LSN-CON-06003#err-BC-ERR-06002",
   "LSN-CON-06003#err-BC-ERR-06003",
   "LSN-CON-06003#err-BC-ERR-06004",
-  "LSN-CON-06003#s6"
+  "LSN-CON-06003#s7"
  ],
  "provenance": {
   "author": "tools/lesson_transcribe.py",
-  "prompt_version": "generator/lesson_v1",
+  "prompt_version": "generator/lesson_v2",
   "design_path": "docs/lessons/unit-06/LSN-CON-06003.md",
-  "signed_off_by": "claude-opus-5-5",
-  "signed_off_at": "2026-09-29",
+  "signed_off_by": null,
+  "signed_off_at": null,
   "not_human": true
  }
 }

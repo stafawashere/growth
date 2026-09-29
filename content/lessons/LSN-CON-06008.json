@@ -3,20 +3,67 @@
  "version": 1,
  "kind": "concept",
  "target_id": "BC-CON-06008",
- "status": "signed_off",
+ "status": "draft",
  "snapshot_digest": "a6a8ec9d3f59ab8f712e33d30cc22fc64bf2c478fbe7312e3e3118d319c6a42f",
  "source_digest": "50eccff3e1701d49c9c6b61e4fd54f18c6cfb2f00e6077fe56befc523abc317c",
  "read_minutes": {
-  "full": 3.4,
+  "full": 3.3,
   "brief": 3.0
  },
  "word_count": {
-  "full": 460,
+  "full": 456,
   "brief": 409
  },
  "sections": [
   {
    "id": "LSN-CON-06008#s1",
+   "type": "prediction",
+   "bands": [
+    "low",
+    "mid"
+   ],
+   "skills": [
+    "BC-SKL-06018",
+    "BC-SKL-06019",
+    "BC-SKL-06021"
+   ],
+   "sources": [
+    "BC-CON-06008",
+    "research/units/unit-06-integration-accumulation.md#6.4 The Fundamental Theorem of Calculus and Accumulation Functions"
+   ],
+   "evidence_tag": "inferred",
+   "stem": {
+    "text": "Predict. \\(h(x)=\\int_1^{2x^2}(t^2-3)\\,dt\\). Find \\(h'(1)\\).",
+    "command_verb": "predict"
+   },
+   "format": "mcq",
+   "options": [
+    {
+     "id": "A",
+     "label": "1",
+     "is_key": false
+    },
+    {
+     "id": "B",
+     "label": "4",
+     "is_key": true
+    },
+    {
+     "id": "C",
+     "label": "Negative 2",
+     "is_key": false
+    }
+   ],
+   "resolution": {
+    "text": "The derivative is the integrand at the upper limit times the limit's derivative: \\(1\\cdot 4=4\\)."
+   },
+   "delivery": {
+    "mode": "text",
+    "reason": "rule 6"
+   }
+  },
+  {
+   "id": "LSN-CON-06008#s2",
    "type": "orientation",
    "bands": [
     "low",
@@ -32,7 +79,7 @@
     "research/units/unit-06-integration-accumulation.md#6.4 The Fundamental Theorem of Calculus and Accumulation Functions"
    ],
    "evidence_tag": "inferred",
-   "text": "A response writes the derivative as the integrand at the upper limit, times that limit's derivative when it is a function of x.",
+   "text": "A response writes h' as the integrand at the upper limit, times the limit's derivative.",
    "delivery": {
     "mode": "text",
     "reason": "rule 6: a statement of what a response writes",
@@ -42,7 +89,7 @@
    }
   },
   {
-   "id": "LSN-CON-06008#s2",
+   "id": "LSN-CON-06008#s3",
    "type": "key_ideas",
    "bands": [
     "low",
@@ -61,8 +108,8 @@
    "evidence_tag": "inferred",
    "ek_id": "BC-EK-FUN-5A2",
    "depth": "core",
-   "text": "With f continuous on an interval containing a, the derivative of the integral from a to x of f(t) dt is f(x). With upper limit u(x) it is f(u(x)) times u'(x). The lower limit adds nothing.",
-   "notation": "d/dx of integral from a to x of f(t) dt = f(x)",
+   "text": "For continuous f, the derivative with upper limit u(x) is f(u(x)) times u'(x); u(x) = x gives f(x). The lower limit adds nothing.",
+   "notation": "\\(\\frac{d}{dx}\\int_a^x f(t)\\,dt=f(x)\\)",
    "delivery": {
     "mode": "figure",
     "reason": "rule 4: BC-REP-02 on BC-SKL-06018; not promoted, since BC-QA-06012 difficulty_variables vary a form, not a quantity",
@@ -118,7 +165,7 @@
    }
   },
   {
-   "id": "LSN-CON-06008#s3",
+   "id": "LSN-CON-06008#s4",
    "type": "strategy",
    "bands": [
     "low",
@@ -130,17 +177,29 @@
     "BC-SKL-06021"
    ],
    "sources": [
-    "BC-QA-06012"
+    "BC-QA-06012",
+    "BC-ERR-06027"
    ],
    "evidence_tag": "verified",
    "archetype_id": "BC-QA-06012",
-   "cue": "h is an integral with a variable upper limit; h prime at an input is asked.",
-   "method": "First line: h' equals the integrand at the upper limit.",
-   "rival": "Rival: no chain factor (BC-ERR-06027).",
-   "separating_feature": "An upper limit that is a function of x."
+   "cue": "Variable upper limit; h prime asked.",
+   "method": "H' equals the integrand at the upper limit.",
+   "rival": "No chain factor.",
+   "separating_feature": "An upper limit that is a function of x.",
+   "contrast": {
+    "this": {
+     "text": "\\(h(x)=\\int_2^{x^3}(t+1)\\,dt\\). Find \\(h'(1)\\).",
+     "archetype_id": "BC-QA-06012"
+    },
+    "not_this": {
+     "text": "Find \\(\\int_1^2 (t^2-3)\\,dt\\).",
+     "why_not": "Its limits are numbers, so an antiderivative applies."
+    },
+    "feature": "A variable upper limit, with the derivative asked."
+   }
   },
   {
-   "id": "LSN-CON-06008#s4",
+   "id": "LSN-CON-06008#s5",
    "type": "strategy",
    "bands": [
     "low",
@@ -150,17 +209,18 @@
     "BC-SKL-06018"
    ],
    "sources": [
-    "BC-QA-06003"
+    "BC-QA-06003",
+    "BC-ERR-06008"
    ],
    "evidence_tag": "verified",
    "archetype_id": "BC-QA-06003",
    "cue": "g from a graph of f; g prime at an input, with a reason.",
-   "method": "First line: g as signed areas; for g prime, g' = f read at the input.",
-   "rival": "Rival: features read off the plotted f (BC-ERR-06008).",
+   "method": "G as signed areas; for g prime, g' = f read at the input.",
+   "rival": "Features read off the plotted f.",
    "separating_feature": "g prime is a height of f; g is an area under it."
   },
   {
-   "id": "LSN-CON-06008#s5",
+   "id": "LSN-CON-06008#s6",
    "type": "worked_example",
    "bands": [
     "low",
@@ -241,7 +301,7 @@
    }
   },
   {
-   "id": "LSN-CON-06008#s6",
+   "id": "LSN-CON-06008#s7",
    "type": "what_a_reader_scores",
    "bands": [
     "low",
@@ -257,7 +317,7 @@
     "BC-PT-99004"
    ],
    "evidence_tag": "verified",
-   "example_id": "LSN-CON-06008#s5",
+   "example_id": "LSN-CON-06008#s6",
    "lines": [
     {
      "point_type_id": "BC-PT-99024",
@@ -297,6 +357,7 @@
     "expression": 4
    },
    "relation": "distinct",
+   "fix_prompt": true,
    "possible_reason": {
     "misconception_id": "BC-MIS-06023",
     "text": "applies the theorem as a fixed template regardless of what the upper limit is"
@@ -358,6 +419,7 @@
     ]
    },
    "relation": "distinct",
+   "fix_prompt": true,
    "possible_reason": {
     "misconception_id": "BC-MIS-06024",
     "text": "does not distinguish the bound variable inside the integral from the variable in the upper limit"
@@ -383,7 +445,7 @@
    ],
    "evidence_tag": "inferred",
    "prerequisite_id": "BC-PRQ-06005",
-   "text": "f(u(x)) is f read at u(x), not at x."
+   "text": "f(u(x)) is f read at u(x)."
   },
   {
    "id": "LSN-CON-06008#prq-BC-PRQ-06013",
@@ -400,7 +462,7 @@
    ],
    "evidence_tag": "inferred",
    "prerequisite_id": "BC-PRQ-06013",
-   "text": "t stays inside; only the limits carry x."
+   "text": "t stays inside; limits carry x."
   }
  ],
  "checks": [
@@ -421,7 +483,7 @@
     "lower": 1,
     "point": 1
    },
-   "completes": "LSN-CON-06008#s5",
+   "completes": "LSN-CON-06008#s6",
    "stem": {
     "text": "h'(x) = ((2x^2)^2 - 3)(4x). Find h'(1).",
     "command_verb": "find"
@@ -531,17 +593,17 @@
   }
  ],
  "refresher": [
-  "LSN-CON-06008#s2",
+  "LSN-CON-06008#s3",
   "LSN-CON-06008#err-BC-ERR-06027",
   "LSN-CON-06008#err-BC-ERR-06028",
-  "LSN-CON-06008#s5"
+  "LSN-CON-06008#s6"
  ],
  "provenance": {
   "author": "tools/lesson_transcribe.py",
-  "prompt_version": "generator/lesson_v1",
+  "prompt_version": "generator/lesson_v2",
   "design_path": "docs/lessons/unit-06/LSN-CON-06008.md",
-  "signed_off_by": "claude-opus-5-5",
-  "signed_off_at": "2026-09-29",
+  "signed_off_by": null,
+  "signed_off_at": null,
   "not_human": true
  }
 }

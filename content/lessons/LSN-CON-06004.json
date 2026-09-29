@@ -3,20 +3,66 @@
  "version": 1,
  "kind": "concept",
  "target_id": "BC-CON-06004",
- "status": "signed_off",
+ "status": "draft",
  "snapshot_digest": "a6a8ec9d3f59ab8f712e33d30cc22fc64bf2c478fbe7312e3e3118d319c6a42f",
  "source_digest": "b2e728863fdf7f7b42b208b7e2898e35c400d9e1ee94ac6c4699cafc837455ca",
  "read_minutes": {
-  "full": 3.6,
-  "brief": 2.9
+  "full": 3.7,
+  "brief": 3.0
  },
  "word_count": {
-  "full": 422,
-  "brief": 367
+  "full": 453,
+  "brief": 398
  },
  "sections": [
   {
    "id": "LSN-CON-06004#s1",
+   "type": "prediction",
+   "bands": [
+    "low",
+    "mid"
+   ],
+   "skills": [
+    "BC-SKL-06010",
+    "BC-SKL-06011"
+   ],
+   "sources": [
+    "BC-CON-06004",
+    "research/units/unit-06-integration-accumulation.md#6.2 Approximating Areas with Riemann Sums"
+   ],
+   "evidence_tag": "inferred",
+   "stem": {
+    "text": "Before the rule: r increases on [0, 8] and the left sum is 60. How does ∫_0^8 r(t) dt compare with 60?",
+    "command_verb": "predict"
+   },
+   "format": "mcq",
+   "options": [
+    {
+     "id": "A",
+     "label": "More than 60",
+     "is_key": true
+    },
+    {
+     "id": "B",
+     "label": "Less than 60",
+     "is_key": false
+    },
+    {
+     "id": "C",
+     "label": "Exactly 60",
+     "is_key": false
+    }
+   ],
+   "resolution": {
+    "text": "Each left height is the least on its subinterval, so the left sum falls short: the integral exceeds 60."
+   },
+   "delivery": {
+    "mode": "text",
+    "reason": "rule 6"
+   }
+  },
+  {
+   "id": "LSN-CON-06004#s2",
    "type": "orientation",
    "bands": [
     "low",
@@ -31,7 +77,7 @@
     "research/units/unit-06-integration-accumulation.md#6.2 Approximating Areas with Riemann Sums"
    ],
    "evidence_tag": "inferred",
-   "text": "Whether a sum is too big or too small follows from how the function rises, falls or bends. A response names that property of the given function, then the direction.",
+   "text": "A response names how f rises, falls or bends, then the direction.",
    "delivery": {
     "mode": "figure",
     "reason": "rule 4: BC-REP-02 on BC-SKL-06010 and BC-SKL-06011 (unit README delivery map)",
@@ -68,7 +114,7 @@
    }
   },
   {
-   "id": "LSN-CON-06004#s2",
+   "id": "LSN-CON-06004#s3",
    "type": "key_ideas",
    "bands": [
     "low",
@@ -86,7 +132,7 @@
    "evidence_tag": "inferred",
    "ek_id": "BC-EK-LIM-5A4",
    "depth": "core",
-   "text": "Left and right sums: monotonicity decides. Increasing f: left under, right over; decreasing reverses. Trapezoid and midpoint: concavity decides. Concave up: trapezoid over, midpoint under; concave down reverses.",
+   "text": "Left and right sums: monotonicity decides; increasing f gives left under, right over. Trapezoid and midpoint: concavity decides; concave up gives trapezoid over, midpoint under.",
    "notation": "underestimate, overestimate",
    "delivery": {
     "mode": "figure",
@@ -372,7 +418,7 @@
    }
   },
   {
-   "id": "LSN-CON-06004#s3",
+   "id": "LSN-CON-06004#s4",
    "type": "strategy",
    "bands": [
     "low",
@@ -387,13 +433,24 @@
    ],
    "evidence_tag": "verified",
    "archetype_id": "BC-QA-06001",
-   "cue": "A sum from a table, a stated increasing, decreasing or concavity property, and over or under asked.",
-   "method": "Name the sum type: left or right uses monotonicity, trapezoid or midpoint uses concavity.",
-   "rival": "Rival: a trapezoid judged by increasing.",
-   "separating_feature": "The named sum type."
+   "cue": "A sum, a property of f, over or under asked.",
+   "method": "Name the sum type: left or right uses monotonicity, trapezoid concavity.",
+   "rival": "A trapezoid judged by increasing.",
+   "separating_feature": "The named sum type.",
+   "contrast": {
+    "this": {
+     "text": "g is decreasing. Is a left sum for ∫_0^6 g(t) dt over or under?",
+     "archetype_id": "BC-QA-06001"
+    },
+    "not_this": {
+     "text": "g is decreasing. Find a left sum for ∫_0^6 g(t) dt.",
+     "why_not": "It asks for the sum's value."
+    },
+    "feature": "A direction asked, not a value."
+   }
   },
   {
-   "id": "LSN-CON-06004#s4",
+   "id": "LSN-CON-06004#s5",
    "type": "worked_example",
    "bands": [
     "low",
@@ -434,26 +491,26 @@
    "calculator_status": "calculator",
    "steps": [
     {
-     "cue": "Left ends times widths 2, 2, 1, 3.",
-     "why": "Products shown.",
+     "cue": "Left times widths.",
+     "why": "Products.",
      "expression": 60,
      "point_type_id": "BC-PT-99018",
      "relation": "new"
     },
     {
      "cue": "Add.",
-     "why": "The value with its products.",
+     "why": "Value.",
      "expression": 60,
      "point_type_id": "BC-PT-99019",
      "relation": "equivalent"
     },
     {
-     "cue": "Left sum and r increasing: monotonicity decides.",
-     "why": "Each left height is the least on its subinterval."
+     "cue": "r increasing.",
+     "why": "Left heights are least."
     },
     {
-     "cue": "Write direction and reason.",
-     "why": "A bare direction earns nothing."
+     "cue": "Direction, reason.",
+     "why": "Bare direction: no credit."
     }
    ],
    "answer": {
@@ -468,7 +525,7 @@
    }
   },
   {
-   "id": "LSN-CON-06004#s5",
+   "id": "LSN-CON-06004#s6",
    "type": "what_a_reader_scores",
    "bands": [
     "low",
@@ -482,7 +539,7 @@
     "BC-PT-99019"
    ],
    "evidence_tag": "verified",
-   "example_id": "LSN-CON-06004#s4",
+   "example_id": "LSN-CON-06004#s5",
    "lines": [
     {
      "point_type_id": "BC-PT-99018",
@@ -555,6 +612,7 @@
     ]
    },
    "relation": "equivalent",
+   "fix_prompt": false,
    "delivery": {
     "mode": "step_reveal",
     "reason": "rule 1",
@@ -621,6 +679,7 @@
     ]
    },
    "relation": "distinct",
+   "fix_prompt": true,
    "delivery": {
     "mode": "step_reveal",
     "reason": "rule 1",
@@ -649,11 +708,7 @@
     "text": "Same table, trapezoidal sum 74.5, called an overestimate because r increases.",
     "expression": [
      "Greater",
-     [
-      "Rational",
-      149,
-      2
-     ],
+     74.5,
      [
       "Integrate",
       [
@@ -672,13 +727,10 @@
    },
    "right_step": {
     "text": "74.5, with no concavity given, so no direction follows.",
-    "expression": [
-     "Rational",
-     149,
-     2
-    ]
+    "expression": 74.5
    },
    "relation": "distinct",
+   "fix_prompt": true,
    "possible_reason": {
     "misconception_id": "BC-MIS-05020",
     "text": "does not distinguish rising from bending upward"
@@ -705,7 +757,7 @@
    ],
    "evidence_tag": "inferred",
    "prerequisite_id": "BC-PRQ-06008",
-   "text": "Say which is larger, estimate or exact, from how f rises, falls or bends; a claim with no such reason fails."
+   "text": "Say which is larger, estimate or exact, from how f behaves."
   }
  ],
  "checks": [
@@ -738,7 +790,7 @@
     "spacing": "nonuniform",
     "framing": "context"
    },
-   "completes": "LSN-CON-06004#s4",
+   "completes": "LSN-CON-06004#s5",
    "stem": {
     "text": "The left sum is 60 and r is increasing. Under or over, with the reason?",
     "command_verb": "determine"
@@ -883,18 +935,18 @@
   }
  ],
  "refresher": [
-  "LSN-CON-06004#s2",
+  "LSN-CON-06004#s3",
   "LSN-CON-06004#err-BC-ERR-06005",
   "LSN-CON-06004#err-BC-ERR-06006",
   "LSN-CON-06004#err-BC-ERR-06007",
-  "LSN-CON-06004#s4"
+  "LSN-CON-06004#s5"
  ],
  "provenance": {
   "author": "tools/lesson_transcribe.py",
-  "prompt_version": "generator/lesson_v1",
+  "prompt_version": "generator/lesson_v2",
   "design_path": "docs/lessons/unit-06/LSN-CON-06004.md",
-  "signed_off_by": "claude-opus-5-5",
-  "signed_off_at": "2026-09-29",
+  "signed_off_by": null,
+  "signed_off_at": null,
   "not_human": true
  }
 }

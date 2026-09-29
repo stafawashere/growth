@@ -9,9 +9,13 @@ purpose: Authoring spec for the concept lesson on BC-CON-06018, antiderivatives 
 
 Concept BC-CON-06018 (skills BC-SKL-06062 to BC-SKL-06065), topic 6.12 of Unit 6, loaded by one archetype, BC-QA-06010 (family antidifferentiation-technique). Its hard parents are BC-CON-06012 and BC-CON-06015 (docs/lessons/unit-06/README.md, section 1).
 
+## Prediction
+
+One multiple choice question on worked example 1's own integrand, \(\frac{7}{2x^2-5x-3}\) with the factored denominator given, asked before the rule is shown: which sum of simple fractions equals it. The key is \(-\frac{2}{2x+1}+\frac{1}{x-3}\), ex-1's third valued step. The distractors keep the numerator 7 over each factor, and swap the two constants. The resolution, shown beside the choice on the key idea screen, states that each factor takes one constant numerator, what clearing denominators gives and that each term integrates to a logarithm, with no verdict word. Sources: BC-CON-06018 and the topic 6.12 section the key idea cites [inferred].
+
 ## Orientation
 
-Served text, from BC-CON-06018 `description_plain` and the topic's Assessment behaviour paragraph (research/units/unit-06-integration-accumulation.md#6.12 Integrating Using Linear Partial Fractions): a response factors, finds the numerators and writes logarithms. No count, no frequency.
+Served text (14 words), from BC-CON-06018 `description_plain` and the topic's Assessment behaviour paragraph (research/units/unit-06-integration-accumulation.md#6.12 Integrating Using Linear Partial Fractions): a response factors, finds the numerators and writes logarithms. No count, no frequency.
 
 ## Key ideas
 
@@ -23,16 +27,19 @@ All four skills map to BC-EK-FUN-6F1, so one core block, both bands.
 
 BC-QA-06010 (research/question-analysis/question-archetypes.md#BC-QA-06010 Antiderivative by linear partial fractions). `typical_wording`: "find the indefinite integral of the given rational expression by decomposing it into partial fractions". `common_givens`: a rational function whose quadratic denominator factors into distinct linear factors, a family of functions with the parameter fixed at a stated value, the limits of integration. `asked_to_produce`: a partial fraction decomposition, logarithmic antiderivatives, the value of a definite integral. Official examples: BC-FRQ-2019-Q5-B, BC-FRQ-2015-Q5-D, BC-MCQ-PE2012-020.
 
-The signal: a constant or linear numerator over a quadratic that factors into two distinct linears. What says "not this concept": the numerator is a multiple of the denominator's derivative (substitution to one logarithm, BC-CON-06015); numerator degree at least the denominator's (divide first, BC-CON-06016); a quadratic that does not factor (complete the square, BC-CON-06016).
+The signal: a constant or linear numerator over a quadratic that factors into two distinct linears. Contrast pair on st-1: the this stem is on BC-QA-06010, a constant over a quadratic that factors into distinct linears; the not this stem has the same denominator with numerator degree equal to the denominator's, the improper form the archetype's rival, decomposing without dividing (BC-ERR-06026), invites. The separating feature is the degree comparison.
+
+What says "not this concept": the numerator is a multiple of the denominator's derivative (substitution to one logarithm, BC-CON-06015); numerator degree at least the denominator's (divide first, BC-CON-06016); a quadratic that does not factor (complete the square, BC-CON-06016).
 
 ## Method choice
 
 One strategy block, both bands.
 
-- st-1, BC-QA-06010. Cue from `common_givens` and `asked_to_produce`. Method, `expected_solution_path[0]`: factor the denominator. Rival from `wrong_approaches`: decomposing an improper rational integrand without dividing first (BC-ERR-06026). Separating feature: the degree comparison. First written line: the factored denominator.
+- st-1, BC-QA-06010. Cue from `common_givens` and `asked_to_produce`. Method, `expected_solution_path[0]`: factor the denominator. Rival from `wrong_approaches`: decomposing an improper rational integrand without dividing first, cited in the block's `sources` (BC-ERR-06026), not in its text. Separating feature: the degree comparison. First written line: the factored denominator.
 
 ## Solution path
 
+- There is no example 2, so nothing is faded and there is no `fade_from`.
 - ex-1, BC-QA-06010, both bands, no calculator. Draw from `parameter_spec`: degree proper, leading 2, first_shift 1, second_shift -3, weight -1; derived numerator_constant 7, integrand 7/((2x + 1)(x - 3)), decomposition -2/(2x + 1) + 1/(x - 3). No published BC-QA-06010 item carries this draw.
 - Steps follow `expected_solution_path`: factor (no value); the integrand (new); the decomposition (equivalent); the logarithms (integrate, BC-PT-99003); the reported form (equivalent, BC-PT-99004). SymPy strings drop the absolute value bars that the served text keeps [inferred].
 
@@ -44,7 +51,7 @@ BC-QA-06010 lists BC-PT-99005, BC-PT-99003, BC-PT-99004 and BC-PT-99081. ex-1 ta
 
 ## Traps
 
-All four active errors meeting the skills, in the bundle's order: BC-ERR-06019, BC-ERR-06022, BC-ERR-06026, BC-ERR-07030. Mid band shows the first two.
+All four active errors meeting the skills, in the bundle's order: BC-ERR-06019, BC-ERR-06022, BC-ERR-06026, BC-ERR-07030. Mid band shows the first two. All four wrong steps differ from the right step as expressions, so each block is a fix prompt (`fix_prompt` true).
 
 - err-BC-ERR-06019: -2 ln|2x + 1|, the 1/2 from the factor's leading coefficient dropped. Possible reason, words from BC-MIS-06016.
 - err-BC-ERR-06022: 7 times the logarithms of the two factors multiplied. Possible reason, words from BC-MIS-06019.
@@ -73,11 +80,13 @@ BC-QA-06010 is `no_calculator`, typically one part of a multipart free response 
 
 - orientation, ki-1: text. Rule 6: BC-REP-01 alone, and the unit README delivery map puts partial fractions in text and step reveal.
 - ex-1 and the four error blocks: step_reveal. Rule 1.
+- The prediction: text, on the key idea screen's resolution.
+- No drawn block: none of rules 2 to 5 applies. The skills carry BC-REP-01 alone, which is not figure-bearing, and the key idea states a procedure, not a process to draw. The machine record states `no_figure_reason`.
 
 ## Band plan
 
-- Low (full): orientation, ki-1, st-1, ex-1 with its reader lines, four error blocks, chk-1 to chk-3, two bridges. 555 words, 3.7 minutes (cap 900 and 6).
-- Mid (brief): orientation, ki-1, st-1, ex-1 with its reader lines, err-BC-ERR-06019, err-BC-ERR-06022, chk-1, chk-2, two bridges. 435 words, 2.9 minutes (cap 450 and 3).
+- Low (full), in served order: prediction, orientation, the two bridges, ki-1, st-1 with its contrast pair, ex-1 with its reader lines, chk-1, four error blocks, chk-2, chk-3. 566 words, 3.8 minutes (cap 900 and 6). There is no example 2, so nothing is faded.
+- Mid (brief): prediction, orientation, the two bridges, ki-1, st-1 with its contrast pair, ex-1 with its reader lines, chk-1, err-BC-ERR-06019, err-BC-ERR-06022, chk-2. 446 words, 3.0 minutes (cap 450 and 3). The orientation, the strategy cue and separating feature, three cues of ex-1 and both bridges were shortened to fit; no anchor quote (there was none) and no scoring tag (BC-PT-99081 was already untagged) was dropped.
 - Refresher: ki-1, the four error blocks, ex-1.
 
 ## Sources
@@ -110,8 +119,39 @@ BC-QA-06010 is `no_calculator`, typically one part of a multipart free response 
   "BC-SKL-06064",
   "BC-SKL-06065"
  ],
+ "prediction": {
+  "id": "pr-1",
+  "stem": {
+   "text": "Predict. \\(2x^2-5x-3=(2x+1)(x-3)\\). Which sum of simple fractions equals \\(\\frac{7}{2x^2-5x-3}\\)?",
+   "command_verb": "predict"
+  },
+  "format": "mcq",
+  "options": [
+   {
+    "id": "A",
+    "label": "\\(\\frac{7}{2x+1}+\\frac{7}{x-3}\\)",
+    "is_key": false
+   },
+   {
+    "id": "B",
+    "label": "\\(-\\frac{2}{2x+1}+\\frac{1}{x-3}\\)",
+    "is_key": true
+   },
+   {
+    "id": "C",
+    "label": "\\(\\frac{1}{2x+1}-\\frac{2}{x-3}\\)",
+    "is_key": false
+   }
+  ],
+  "resolution": "Each factor takes one constant numerator. Clearing denominators gives \\(A=-2\\) and \\(B=1\\), and each term integrates to a constant times a logarithm.",
+  "sources": [
+   "BC-CON-06018",
+   "research/units/unit-06-integration-accumulation.md#6.12 Integrating Using Linear Partial Fractions"
+  ]
+ },
+ "no_figure_reason": "The skills carry the symbolic representation only, and the key idea is a decomposition procedure, not a process to draw, so no figure fits.",
  "orientation": {
-  "text": "A proper rational integrand over distinct linear factors splits into simple fractions. A response factors, solves for the numerators, and writes each term as a constant times ln|factor|.",
+  "text": "A response factors, solves for the numerators, and writes each term as a logarithm.",
   "sources": [
    "BC-CON-06018",
    "research/units/unit-06-integration-accumulation.md#6.12 Integrating Using Linear Partial Fractions"
@@ -136,14 +176,26 @@ BC-QA-06010 is `no_calculator`, typically one part of a multipart free response 
   {
    "id": "st-1",
    "archetype_id": "BC-QA-06010",
-   "cue": "A rational function whose quadratic denominator factors into distinct linears; decomposition or logarithms asked.",
+   "cue": "A rational function over a quadratic with distinct linear factors.",
    "method": "Factor the denominator.",
-   "rival": "Rival: decomposing an improper integrand without dividing (BC-ERR-06026).",
-   "separating_feature": "Compare degrees first: decompose only when the numerator's is lower.",
+   "rival": "Decomposing an improper integrand without dividing.",
+   "separating_feature": "Decompose only when the numerator's degree is lower.",
    "sources": [
-    "BC-QA-06010"
+    "BC-QA-06010",
+    "BC-ERR-06026"
    ],
-   "evidence_tag": "verified"
+   "evidence_tag": "verified",
+   "contrast": {
+    "this": {
+     "text": "Find \\(\\int \\frac{9}{2x^2+7x+3}\\,dx\\).",
+     "archetype_id": "BC-QA-06010"
+    },
+    "not_this": {
+     "text": "Find \\(\\int \\frac{2x^2+7x+4}{2x^2+7x+3}\\,dx\\).",
+     "why_not": "The numerator's degree equals the denominator's, so division comes first."
+    },
+    "feature": "Numerator degree below the denominator's: decompose."
+   }
   }
  ],
  "worked_examples": [
@@ -172,13 +224,13 @@ BC-QA-06010 is `no_calculator`, typically one part of a multipart free response 
      "why": "2x^2 - 5x - 3 = (2x + 1)(x - 3), distinct factors."
     },
     {
-     "cue": "One numerator per factor: A/(2x + 1) + B/(x - 3).",
+     "cue": "One numerator per factor.",
      "why": "Decomposition applies.",
      "expr": "7/(2*x**2 - 5*x - 3)",
      "relation": "new"
     },
     {
-     "cue": "7 = A(x - 3) + B(2x + 1); x = 3 and x = -1/2.",
+     "cue": "7 = A(x - 3) + B(2x + 1).",
      "why": "Each root clears one term: B = 1, A = -2.",
      "expr": "-2/(2*x + 1) + 1/(x - 3)",
      "relation": "equivalent"
@@ -245,7 +297,8 @@ BC-QA-06010 is `no_calculator`, typically one part of a multipart free response 
    "sources": [
     "BC-ERR-06019",
     "BC-MIS-06016"
-   ]
+   ],
+   "fix_prompt": true
   },
   {
    "error_id": "BC-ERR-06022",
@@ -267,7 +320,8 @@ BC-QA-06010 is `no_calculator`, typically one part of a multipart free response 
    "sources": [
     "BC-ERR-06022",
     "BC-MIS-06019"
-   ]
+   ],
+   "fix_prompt": true
   },
   {
    "error_id": "BC-ERR-06026",
@@ -289,7 +343,8 @@ BC-QA-06010 is `no_calculator`, typically one part of a multipart free response 
    "sources": [
     "BC-ERR-06026",
     "BC-MIS-06022"
-   ]
+   ],
+   "fix_prompt": true
   },
   {
    "error_id": "BC-ERR-07030",
@@ -311,18 +366,19 @@ BC-QA-06010 is `no_calculator`, typically one part of a multipart free response 
    "sources": [
     "BC-ERR-07030",
     "BC-MIS-07018"
-   ]
+   ],
+   "fix_prompt": true
   }
  ],
  "representations": null,
  "prerequisite_bridges": [
   {
    "prq_id": "BC-PRQ-06003",
-   "text": "ln of a linear factor carries absolute value bars."
+   "text": "ln carries absolute value bars."
   },
   {
    "prq_id": "BC-PRQ-06011",
-   "text": "Clear denominators, then substitute each root to solve for the numerators."
+   "text": "Clear denominators, then substitute each root."
   }
  ],
  "time": {
@@ -617,12 +673,12 @@ BC-QA-06010 is `no_calculator`, typically one part of a multipart free response 
   "research/scoring/common-point-losses.md#Answer points"
  ],
  "read_minutes": {
-  "full": 3.7,
-  "brief": 2.9
+  "full": 3.8,
+  "brief": 3.0
  },
  "word_count": {
-  "full": 555,
-  "brief": 435
+  "full": 566,
+  "brief": 446
  }
 }
 ```

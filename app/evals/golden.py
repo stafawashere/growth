@@ -20,6 +20,16 @@ The agent set is multi-turn (docs/agent/architecture.md, Evals). Each turn's can
 scored by the deterministic checks of app/evals/agent_checks.py against the packet
 app/agent/context.py composes for that turn from the case's bank item, lesson and chosen option, so
 the replay measures the same checks, on the same packet, that the live output screen runs.
+
+A case may carry a profile, which reaches the packet the way the route renders it
+(app/agent/profile.py profile_for_prompt): validated, stated_requests and provenance removed, the
+per-kind fields given for the item's skill kind, and the first rung clipped to the item's
+guardrail level. Cases with a profile_pair come in pairs under one pair id (docs/agent/research/
+self-tuning.md, "The eval that guards it"): the same item, stage, screen and student turns under two
+profiles that differ in the one field the pair names, with identical labels, so every deterministic
+verdict must match across the pair. The applied case of a pair labels each turn profile_applied,
+which agent_checks.profile_applied scores where code can; an adversarial pair carries a profile the
+validator or the renderer must neutralise.
 """
 import json
 import math
@@ -57,6 +67,9 @@ AGENT_MODES = ("practice", "after_submission", "browsing")
 AGENT_ITEM_MODES = ("practice", "after_submission")
 AGENT_ATTEMPT_STAMP = "2026-09-29T00:00:00+00:00"
 AGENT_CONFIDENCE = "confident"
+PAIR_ROLE_SETS = ({"applied", "baseline"}, {"adversarial", "baseline"})
+PAIR_SHARED_KEYS = ("item_id", "served_stage", "format", "mode", "screen", "lesson_id", "chosen_option_id", "correct")
+PAIR_SHARED_TURN_KEYS = ("student", "answered_previous", "labels", "acceptable")
 FORBIDDEN_DASHES = (chr(0x2013), chr(0x2014))
 Z_95 = 1.959963984540054
 
@@ -393,13 +406,91 @@ def agent_case_problems(case, items):
    return problems
 
 
+def profile_field_names():
+   from app.agent import profile
+
+   return profile.FIELDS
+
+
+def differing_profile_fields(first, second):
+   first = first or {}
+   second = second or {}
+
+   return {name for name in set(first) | set(second) if first.get(name) != second.get(name)}
+
+
+def agent_pair_problems(cases):
+   problems = []
+   pairs = {}
+   known_fields = set(profile_field_names())
+
+   for case in cases:
+      unknown_fields = set(case.get("profile") or {}) - known_fields
+
+      if unknown_fields:
+         problems.append(f"{case['id']}: unknown profile fields {sorted(unknown_fields)}")
+
+      marker = case.get("profile_pair")
+
+      if marker is not None:
+         pairs.setdefault(marker.get("id"), []).append(case)
+
+   for pair_id, members in sorted(pairs.items()):
+      if len(members) != 2:
+         problems.append(f"{pair_id}: a pair needs two cases, found {len(members)}")
+         continue
+
+      first, second = members
+      roles = {first["profile_pair"].get("role"), second["profile_pair"].get("role")}
+      field_name = first["profile_pair"].get("field")
+      is_one_field = second["profile_pair"].get("field") == field_name and field_name in known_fields
+
+      if roles not in PAIR_ROLE_SETS:
+         problems.append(f"{pair_id}: roles {sorted(roles, key=str)} are not a pair")
+
+      if not is_one_field:
+         problems.append(f"{pair_id}: the two cases do not name one known field")
+
+      if differing_profile_fields(first.get("profile"), second.get("profile")) != {field_name}:
+         problems.append(f"{pair_id}: the profiles do not differ in exactly {field_name}")
+
+      for key in PAIR_SHARED_KEYS:
+         if first.get(key) != second.get(key):
+            problems.append(f"{pair_id}: the cases differ in {key}")
+
+      first_turns = first.get("turns") or []
+      second_turns = second.get("turns") or []
+
+      if len(first_turns) != len(second_turns):
+         problems.append(f"{pair_id}: the cases have different turn counts")
+         continue
+
+      for index, (left, right) in enumerate(zip(first_turns, second_turns)):
+         for key in PAIR_SHARED_TURN_KEYS:
+            if left.get(key) != right.get(key):
+               problems.append(f"{pair_id} turn {index}: the cases differ in {key}")
+
+      for member in members:
+         is_applied = member["profile_pair"].get("role") == "applied"
+         unlabelled = [
+            index
+            for index, entry in enumerate(member.get("turns") or [])
+            if not isinstance(entry.get("profile_applied"), bool)
+         ]
+
+         if is_applied and unlabelled:
+            problems.append(f"{member['id']}: turns {unlabelled} carry no profile_applied label")
+
+   return problems
+
+
 def agent_problems(golden, library):
    problems = []
 
    for case in golden["cases"]:
       problems.extend(agent_case_problems(case, library["items"]))
 
-   return problems
+   return problems + agent_pair_problems(golden["cases"])
 
 
 def agent_context(snapshot):
@@ -428,6 +519,35 @@ def agent_feedback(case, item, archetype, errors):
       error_record=errors.get(error_path) if error_path else None,
       confidence=AGENT_CONFIDENCE,
    )
+
+
+def agent_profile(case, context, item):
+   """The case's profile as the route would render it into this case's packet, or None."""
+   from app.agent import profile
+
+   stored = case.get("profile")
+
+   if stored is None:
+      return None
+
+   snapshot = getattr(context, "snapshot", None)
+   body, _clips = profile.normalised(stored, profile.active_concept_ids(snapshot))
+   names = profile.concept_names(snapshot)
+   skill_ids = list((item or {}).get("skills") or [])
+
+   if not skill_ids:
+      return profile.rendered_profile(body, names=names)
+
+   rendered, _clipped = profile.profile_for_prompt(
+      body,
+      profile.skill_kind(skill_ids[0]),
+      case["mode"],
+      case["served_stage"],
+      case["format"],
+      names=names,
+   )
+
+   return rendered
 
 
 def agent_turn_packet(case, turn_index, context, items):
@@ -462,7 +582,7 @@ def agent_turn_packet(case, turn_index, context, items):
       attempt=attempt,
       lesson=lesson,
       feedback=feedback,
-      profile=case.get("profile"),
+      profile=agent_profile(case, context, item),
       turn_index_on_item=turn_index,
       student_answered_question=answered,
    )
@@ -493,7 +613,36 @@ def agent_verdicts(golden, snapshot, items):
                "label": label,
                "passed": verdict.passed,
                "acceptable": entry["acceptable"],
+               "pair_id": (case.get("profile_pair") or {}).get("id"),
+               "pair_role": (case.get("profile_pair") or {}).get("role"),
             })
+
+   return rows
+
+
+def agent_profile_verdicts(golden, snapshot, items):
+   """One row per turn of every applied pair case: the profile_applied label and the deterministic
+   verdict, None where no code reads the field off a reply."""
+   context = agent_context(snapshot)
+   rows = []
+
+   for case in golden["cases"]:
+      marker = case.get("profile_pair") or {}
+      is_applied = marker.get("role") == "applied"
+
+      if not is_applied:
+         continue
+
+      for index, entry in enumerate(case["turns"]):
+         packet = agent_turn_packet(case, index, context, items)
+         verdict = agent_checks.profile_applied(entry["candidate_reply"], packet.profile, marker["field"])
+         rows.append({
+            "case_id": case["id"],
+            "turn": index,
+            "field": marker["field"],
+            "label": entry["profile_applied"],
+            "passed": None if verdict is None else verdict.passed,
+         })
 
    return rows
 

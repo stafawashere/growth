@@ -24,6 +24,18 @@ charges it, and the turn ends unavailable. Until a delta arrives the bound is th
 the CLI's fixed API_TIMEOUT_MS and single retry and the provider's process timeout, because a
 second thread watching a generator the response is iterating is not a clean way to interrupt it.
 
+The tutoring profile reaches the prompt only in the profile_applied arm of the tutor_profile switch
+(docs/agent/architecture.md, The self-tuning loop). On an item the arm is looked up with
+switches.arm_for for the archetype's primary skill, the unit the switch assigns, and the profile is
+rendered by app/agent/profile.py profile_for_prompt, which drops stated_requests and the
+provenance and clips the first rung to the item's guardrail level; in the profile_withheld arm, off
+an item, and while the switch is off, the prompt's profile is null. No attempts row exists before
+submission, so record_arm has nothing to write on during practice; while the switch is on or
+randomised the arm is kept instead on the stored student turn, as tutor_profile_arm inside its
+screen JSON, with tutor_profile_clipped when the guardrail level clipped a value. Those keys live
+only in the stored row: the screen the composer validates and the prompt carries are the ones the
+panel sent, and the history sent to the model holds roles and text only.
+
 Only the turn id, the outcome, the link and the elapsed milliseconds are logged, never a delta, a
 prompt, a memory entry or the student's message.
 """
@@ -36,7 +48,7 @@ from time import monotonic
 from fastapi import HTTPException
 from sqlalchemy import select
 
-from app.agent import consolidate, conversations, memory
+from app.agent import consolidate, conversations, memory, profile
 from app.agent import copy as agent_copy
 from app.agent.context import TimedPartRefused, compose_packet, mode_for, render_prompt, validate_screen
 from app.agent.moves import AFTER_SUBMISSION, PRACTICE
@@ -136,6 +148,17 @@ class PreparedTurn:
    student_turn: object
    turns_on_item: int
    turns_in_conversation: int
+
+
+@dataclass
+class TurnProfile:
+   """The turn's tutor_profile arm, whether it is kept on the stored turn, the profile the prompt
+   carries (None outside the profile_applied arm) and how many values the guardrail level clipped."""
+
+   arm: str | None = None
+   recorded: bool = False
+   rendered: dict | None = None
+   clipped: int = 0
 
 
 @dataclass
@@ -445,6 +468,53 @@ def answered_previous_question(history, message):
    return tutor_asked and not student_asked_back
 
 
+def profile_for_turn(settings, db, user_id, screen, rows, mode, conversation, now):
+   is_on_an_item = mode in (PRACTICE, AFTER_SUBMISSION) and rows.archetype is not None
+   skill_ids = list((rows.archetype or {}).get("skills") or [])
+   has_primary_skill = is_on_an_item and len(skill_ids) > 0
+
+   if not has_primary_skill:
+      return TurnProfile()
+
+   primary_skill = skill_ids[0]
+   default_state = settings.experiment_default_state or switches.OFF
+   state = switches.experiment_row(db, user_id, switches.TUTOR_PROFILE, default_state, now).state
+   arm = switches.arm_for(db, user_id, switches.TUTOR_PROFILE, primary_skill, primary_skill, None, default_state, now)
+   is_running = state != switches.OFF
+   is_applied = arm == switches.DEFINITIONS[switches.TUTOR_PROFILE].treatment_arm
+
+   if not is_applied:
+      return TurnProfile(arm=arm, recorded=is_running)
+
+   served_stage = getattr(rows.attempt, "served_stage", None) or screen["served_stage"]
+   item_format = getattr(rows.attempt, "format", None) or screen["format"]
+   rendered, clipped = profile.profile_for_prompt(
+      profile.current_profile(db, user_id),
+      profile.skill_kind(primary_skill),
+      mode,
+      served_stage,
+      item_format,
+      exploratory=profile.is_exploratory(conversation.id, user_id),
+      names=profile.concept_names(settings.session_context),
+   )
+
+   return TurnProfile(arm=arm, recorded=is_running, rendered=rendered, clipped=clipped)
+
+
+def stored_screen(screen, turn_profile):
+   if not turn_profile.recorded:
+      return screen
+
+   stored = dict(screen)
+   stored[profile.TUTOR_PROFILE_ARM_KEY] = turn_profile.arm
+   has_clipped = turn_profile.clipped > 0
+
+   if has_clipped:
+      stored[profile.TUTOR_PROFILE_CLIPPED_KEY] = turn_profile.clipped
+
+   return stored
+
+
 def agent_request(rendered):
    return ProviderRequest(
       role=ROLE,
@@ -479,6 +549,7 @@ def prepare_turn(settings, db, user, body, now):
 
    history = conversation_history(db, conversation)
    entries = memory.retrieve(db, user.id, list(rows.skill_ids), now)
+   turn_profile = profile_for_turn(settings, db, user.id, screen, rows, mode, conversation, now)
 
    try:
       packet, _move = compose_packet(
@@ -490,7 +561,7 @@ def prepare_turn(settings, db, user, body, now):
          lesson=rows.lesson,
          feedback=rows.feedback,
          memory_entries=entries,
-         profile=None,
+         profile=turn_profile.rendered,
          turn_index_on_item=prior_on_item,
          student_answered_question=answered_previous_question(history, message),
          diagnosis=rows.diagnosis,
@@ -500,14 +571,14 @@ def prepare_turn(settings, db, user, body, now):
    except (KeyError, ValueError):
       raise TurnRefused(agent_copy.REFUSED, BAD_REQUEST) from None
 
-   rendered = render_prompt(packet, entries, None, history, message)
+   rendered = render_prompt(packet, entries, turn_profile.rendered, history, message)
    student_turn = conversations.append_turn(
       db,
       conversation,
       conversations.STUDENT,
       message,
       now,
-      screen=screen,
+      screen=stored_screen(screen, turn_profile),
       mode=packet.mode,
       item_id=screen.get("item_id"),
       attempt_id=screen.get("attempt_id"),

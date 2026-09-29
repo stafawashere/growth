@@ -105,3 +105,45 @@ def test_the_running_app_randomises_retrieval_entry_and_keeps_elaborated_feedbac
    assert (feedback.state, retrieval.state) == (switches.OFF, switches.RANDOMISED)
    assert retrieval.randomised_from == NOW.isoformat()
    assert experiment_default_state({"GROWTH_EXPERIMENTS_DEFAULT": "on"}) == switches.ON
+
+
+def test_tutor_profile_is_a_skill_switch_that_starts_off():
+   definition = switches.DEFINITIONS[switches.TUTOR_PROFILE]
+
+   assert definition.unit == "skill"
+   assert definition.arms == ("profile_withheld", "profile_applied")
+   assert definition.description.strip() != ""
+   assert switches.resolve_default({switches.RETRIEVAL_ENTRY: switches.RANDOMISED}, switches.TUTOR_PROFILE) == switches.OFF
+
+
+def test_two_skills_of_one_unit_share_a_stratum_and_are_balanced_into_different_arms(tmp_path):
+   engine = models.make_engine(tmp_path / "ab.db")
+   first_skill = "BC-SKL-02005"
+   second_skill = "BC-SKL-02017"
+   other_unit_skill = "BC-SKL-06010"
+
+   with OrmSession(engine) as db:
+      arms = {
+         skill: switches.arm_for(db, USER, switches.TUTOR_PROFILE, skill, skill, None, switches.RANDOMISED, NOW)
+         for skill in (first_skill, second_skill, other_unit_skill)
+      }
+      strata = {
+         row.unit_id: row.stratum
+         for row in db.query(models.ExperimentAssignment).filter_by(experiment=switches.TUTOR_PROFILE)
+      }
+
+   assert strata == {first_skill: "02", second_skill: "02", other_unit_skill: "06"}
+   assert arms[first_skill] != arms[second_skill]
+
+
+def test_the_three_earlier_definitions_keep_their_strata():
+   feedback = switches.DEFINITIONS[switches.FEEDBACK_ELABORATION]
+   retrieval = switches.DEFINITIONS[switches.RETRIEVAL_ENTRY]
+   lesson = switches.DEFINITIONS[switches.LESSON_FIRST_CONTACT]
+
+   assert (feedback.stratum, retrieval.stratum, lesson.stratum) == (None, None, None)
+   assert switches.stratum_for(feedback, "BC-SKL-01001", 0.8) == "BC-SKL-01001|high"
+   assert switches.stratum_for(feedback, "BC-SKL-01001", 0.2) == "BC-SKL-01001|low"
+   assert switches.stratum_for(feedback, "BC-SKL-01001", None) == "BC-SKL-01001|unknown"
+   assert switches.stratum_for(retrieval, "BC-SKL-02005", None) == "BC-SKL-02005"
+   assert switches.stratum_for(lesson, "BC-UNIT-02", None) == "BC-UNIT-02"

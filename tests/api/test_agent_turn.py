@@ -561,3 +561,99 @@ def test_the_turn_route_needs_a_session(agent):
    response = client.post("/agent/turns", json={"conversation_id": None, "screen": {"kind": "review"}, "message": "hello"})
 
    assert response.status_code == 401
+
+
+PROFILE_TERM = "the undo the zero thing"
+PROFILE_CONCEPT = "BC-CON-01008"
+
+
+def store_profile(world, user_id):
+   stamp = STAMP
+   body = {
+      "opening_move": {},
+      "nudge_depth_start": "rule_named",
+      "representation_lead": {},
+      "student_terms": [{"term": PROFILE_TERM, "concept_id": PROFILE_CONCEPT}],
+      "turn_length": "short",
+      "help_pattern": {"click_throughs": 0, "requests_before_work": 2, "errors_without_request": 0},
+      "stated_requests": ["wants_answer"],
+      "provenance": {"turn_length": {"source": "code", "evidence_n": 24, "updated_at": stamp}},
+      "profile_version": 1,
+   }
+
+   with OrmSession(world.engine) as db:
+      db.add(models.TutorProfile(user_id=user_id, version=1, body=body, evidence={}, created_at=stamp, updated_at=stamp))
+      db.commit()
+
+
+def primary_skill_of(world):
+   return world.settings.session_context.archetypes[ARCHETYPE_ID]["skills"][0]
+
+
+def assign_tutor_profile_arm(world, user_id, arm):
+   skill_id = primary_skill_of(world)
+
+   with OrmSession(world.engine) as db:
+      db.add(
+         models.ExperimentAssignment(
+            user_id=user_id,
+            experiment="tutor_profile",
+            unit_id=skill_id,
+            arm=arm,
+            stratum=skill_id[len("BC-SKL-"):][:2],
+            assigned_at=STAMP,
+            created_at=STAMP,
+            updated_at=STAMP,
+         )
+      )
+      db.commit()
+
+
+def profile_line(stdin):
+   return next(line for line in stdin.splitlines() if line.startswith("Profile: "))
+
+
+def test_the_profile_is_rendered_into_the_prompt_only_in_the_profile_applied_arm(agent, cli):
+   agent.settings.experiment_default_state = {"tutor_profile": "on"}
+   client, user_id, screen = practice(agent)
+   store_profile(agent, user_id)
+   post_turn(client, screen)
+   stdin = cli.record()["stdin"]
+   rendered = json.loads(profile_line(stdin)[len("Profile: "):])
+   student = agent_turns(agent, "student")
+
+   assert rendered["student_terms"] == [{"term": PROFILE_TERM, "concept_id": PROFILE_CONCEPT}]
+   assert rendered["turn_length"] == "short"
+   assert rendered["nudge_depth_start"] == "concept_only"
+   assert "stated_requests" not in stdin
+   assert "wants_answer" not in stdin
+   assert "provenance" not in stdin
+   assert student[0].screen == dict(screen, tutor_profile_arm="profile_applied", tutor_profile_clipped=1)
+
+
+def test_the_withheld_arm_sends_a_null_profile_and_records_its_arm(agent, cli):
+   agent.settings.experiment_default_state = {"tutor_profile": "randomised"}
+   client, user_id, screen = practice(agent)
+   store_profile(agent, user_id)
+   assign_tutor_profile_arm(agent, user_id, "profile_withheld")
+   post_turn(client, screen)
+   stdin = cli.record()["stdin"]
+   student = agent_turns(agent, "student")
+
+   assert profile_line(stdin) == "Profile: null"
+   assert PROFILE_TERM not in stdin
+   assert "wants_answer" not in stdin
+   assert student[0].screen == dict(screen, tutor_profile_arm="profile_withheld")
+
+
+def test_with_the_switch_off_the_profile_is_null_and_the_screen_is_stored_as_sent(agent, cli):
+   client, user_id, screen = practice(agent)
+   store_profile(agent, user_id)
+   post_turn(client, screen)
+   stdin = cli.record()["stdin"]
+   student = agent_turns(agent, "student")
+
+   assert profile_line(stdin) == "Profile: null"
+   assert PROFILE_TERM not in stdin
+   assert "wants_answer" not in stdin
+   assert student[0].screen == screen

@@ -2,8 +2,9 @@
 the one student.
 
 The two experiments 10 marks powered for a single student are defined, lesson_first_contact from
-docs/plan/15-lessons.md, Within-student A/B, whose power 15 calls marginal, and selection_priority
-from docs/pedagogy/today/design.md D2, whose unit is the session. Each has a state: off serves the
+docs/plan/15-lessons.md, Within-student A/B, whose power 15 calls marginal, selection_priority
+from docs/pedagogy/today/design.md D2, whose unit is the session, and tutor_profile from
+docs/agent/architecture.md, The self-tuning loop, which starts off. Each has a state: off serves the
 shipped arm to every unit, on serves the treatment arm to every unit, randomised assigns each new
 unit an arm and serves it. Turning a switch to randomised assigns only units first seen after that
 instant, and a unit's arm is written once and never changed, so a skill put in the 3-success arm
@@ -11,9 +12,12 @@ stays there for the life of the experiment.
 
 Assignment is stratified, as 10 asks, so chance imbalance cannot dominate a small sample. A unit's
 stratum is its primary skill plus, for item units, a band of the engine's predicted success
-probability. The unit goes to whichever arm has fewer units in its stratum so far, and a tie is
-broken by a draw seeded from the experiment's seed and the unit id, so the same history always
-gives the same assignment.
+probability, unless its definition names a stratum function of its own. tutor_profile does
+(docs/agent/architecture.md, The self-tuning loop): its unit is a skill, and a stratum of one skill
+would hold one unit, so its stratum is the skill's two-digit unit block and two skills of one unit
+are balanced against each other. The unit goes to whichever arm has fewer units in its stratum so
+far, and a tie is broken by a draw seeded from the experiment's seed and the unit id, so the same
+history always gives the same assignment.
 
 No experiment changes the mastery rule, a gate, a threshold or a tolerance. RETRIEVAL_ENTRY moves
 only a skill's entry to the block 3 mixed-review pool; the six-condition mastery rule keeps its 3
@@ -22,6 +26,8 @@ credited unaided successes in both arms (R8, fix 12).
 import hashlib
 import json
 import random
+import re
+from collections.abc import Callable
 from dataclasses import dataclass
 
 from sqlalchemy import select
@@ -38,10 +44,20 @@ FEEDBACK_ELABORATION = "feedback_elaboration"
 RETRIEVAL_ENTRY = "retrieval_entry"
 LESSON_FIRST_CONTACT = "lesson_first_contact"
 SELECTION_PRIORITY = "selection_priority"
+TUTOR_PROFILE = "tutor_profile"
 
 SESSION_STRATUM = "session"
 
 PROBABILITY_BAND_EDGE = 0.5
+SKILL_UNIT_BLOCK = re.compile(r"^BC-SKL-(\d{2})\d+$")
+UNKNOWN_BLOCK = "unknown"
+
+
+def skill_unit_block(primary_skill, _p_predicted=None):
+   """The two-digit unit block of a skill id, "02" from BC-SKL-02005."""
+   matched = SKILL_UNIT_BLOCK.match(primary_skill or "")
+
+   return matched.group(1) if matched else UNKNOWN_BLOCK
 
 
 @dataclass(frozen=True)
@@ -51,6 +67,7 @@ class Definition:
    control_arm: str
    treatment_arm: str
    description: str
+   stratum: Callable | None = None
 
    @property
    def arms(self):
@@ -85,6 +102,14 @@ DEFINITIONS = {
       control_arm="two_term",
       treatment_arm="retrievability_priority",
       description="Blocks 2 and 3 ordered by due coverage against ordered by the most forgotten reach first.",
+   ),
+   TUTOR_PROFILE: Definition(
+      name=TUTOR_PROFILE,
+      unit="skill",
+      control_arm="profile_withheld",
+      treatment_arm="profile_applied",
+      description="The live tutor with the student's tutoring profile against the tutor with every profile field at its default, per skill.",
+      stratum=skill_unit_block,
    ),
 }
 
@@ -164,6 +189,11 @@ def probability_band(p_predicted):
 
 
 def stratum_for(definition, primary_skill, p_predicted):
+   has_own_stratum = definition.stratum is not None
+
+   if has_own_stratum:
+      return definition.stratum(primary_skill, p_predicted)
+
    is_item_unit = definition.unit == "item"
 
    if is_item_unit:

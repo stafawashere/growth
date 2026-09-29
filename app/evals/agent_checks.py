@@ -19,6 +19,13 @@ restated stem is full of them; inside a math span they are.
 
 Two phrasings are carved out of the praise list because they are mathematics, not praise:
 "perfect square" and the factorial sign inside a math span.
+
+profile_applied is the paired-profile check of docs/agent/research/self-tuning.md, "The eval that
+guards it", for the three fields code can read off a reply: a student term appears together with
+its AP term, the named representation is the first one the reply mentions, and a short turn_length
+keeps the reply within SHORT_REPLY_WORDS words. It sits outside CHECKS because it scores the
+profile, not the guardrail, and the output screen never runs it. Every other field returns None,
+and the golden set carries a label for it only.
 """
 import json
 import math
@@ -48,6 +55,7 @@ NO_PRAISE = "no_praise"
 NO_DASH = "no_dash"
 CITES_REAL_ID = "cites_real_id"
 TURNS_WITHIN_CEILING = "turns_within_ceiling"
+PROFILE_APPLIED = "profile_applied"
 
 CHECKS = (
    NO_ANSWER_BEFORE_SUBMISSION,
@@ -102,6 +110,14 @@ MATH_SPAN = re.compile(r"\\\((.*?)\\\)|\\\[(.*?)\\\]", re.DOTALL)
 PLAIN_DECIMAL = re.compile(r"(?<![\w.])-?\d+\.\d+(?!\d|\.\d)")
 PLAIN_FRACTION = re.compile(r"(?<![\w./])(-?\d+)\s*/\s*(\d+)(?![\w/]|\.\d)")
 NUMERIC_TOLERANCE = 0.0005
+
+SHORT_REPLY_WORDS = 30
+REPRESENTATION_WORDS = {
+   "graphical": ("graph", "graphs", "sketch", "curve", "plot"),
+   "numerical": ("table", "tabulated", "data"),
+   "analytical": ("formula", "expression", "equation", "algebra", "algebraic", "symbolic"),
+   "verbal": ("in words", "sentence", "describe"),
+}
 
 
 @dataclass(frozen=True)
@@ -496,6 +512,66 @@ def turns_within_ceiling(_text, facts, _forms=None):
       return _failed(TURNS_WITHIN_CEILING, "past the per-item ceiling of 3 turns")
 
    return _passed(TURNS_WITHIN_CEILING)
+
+
+def _first_representation(text):
+   prose = outside_math(text)
+   first_family = None
+   first_position = None
+
+   for family, words in REPRESENTATION_WORDS.items():
+      for word in words:
+         found = _phrase_pattern(word).search(prose)
+         is_earlier = found is not None and (first_position is None or found.start() < first_position)
+
+         if is_earlier:
+            first_family = family
+            first_position = found.start()
+
+   return first_family
+
+
+def _contains_phrase(text, phrase):
+   return bool(phrase) and _phrase_pattern(phrase).search(text) is not None
+
+
+def profile_applied(text, profile, field_name):
+   """Whether the reply visibly applies one field of the rendered profile, or None for a field no
+   code can read off a reply."""
+   check = PROFILE_APPLIED
+   rendered = profile or {}
+
+   if field_name == "student_terms":
+      for entry in rendered.get("student_terms") or []:
+         has_student_term = _contains_phrase(text, entry.get("term"))
+         has_ap_term = _contains_phrase(text, entry.get("ap_term"))
+
+         if has_student_term and has_ap_term:
+            return _passed(check)
+
+      return _failed(check, "no student term appears together with its AP term")
+
+   if field_name == "representation_lead":
+      lead = rendered.get("representation_lead")
+      first = _first_representation(text)
+      leads_with_it = lead is not None and first == lead
+
+      if leads_with_it:
+         return _passed(check)
+
+      return _failed(check, f"the reply leads with {first}, not {lead}")
+
+   if field_name == "turn_length":
+      is_short = rendered.get("turn_length") == "short"
+      word_count = len(outside_math(text).split())
+      is_too_long = is_short and word_count > SHORT_REPLY_WORDS
+
+      if is_too_long:
+         return _failed(check, f"{word_count} words against a short turn_length")
+
+      return _passed(check)
+
+   return None
 
 
 CHECK_FUNCTIONS = {

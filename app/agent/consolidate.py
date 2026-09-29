@@ -27,8 +27,9 @@ While the student has paused memory no call is made: the job applies no proposal
 writes the audit row with zero counts, and finishes, so pausing never spends a subscription call.
 
 The two profile extraction fields, student_terms and stated_requests, are returned on the
-ConsolidationOutcome and written nowhere. No column holds them yet; the profile of the self-tuning
-section will consume them.
+ConsolidationOutcome, and finish hands the outcome to app/agent/profile.py compute_profile, which
+validates them, recomputes the code fields and writes a new tutor_profiles version only when a value
+changed (docs/agent/architecture.md, The self-tuning loop).
 """
 import json
 from dataclasses import dataclass, field
@@ -38,7 +39,7 @@ from pathlib import Path
 import jsonschema
 from sqlalchemy import delete, select
 
-from app.agent import conversations, memory
+from app.agent import conversations, memory, profile
 from app.auth.service import as_iso, new_id, utc_now
 from app.db import models
 from app.feedback.drain import (
@@ -275,7 +276,7 @@ def finish(db, job, conversation, proposals, extraction, now):
    turns_deleted, conversations_deleted = delete_old_turns(db, user_id, now)
    settle_job(job, DONE_STATE, now)
 
-   return ConsolidationOutcome(
+   outcome = ConsolidationOutcome(
       DONE_STATE,
       applied=counts["applied"],
       rejected=counts["rejected"],
@@ -286,6 +287,9 @@ def finish(db, job, conversation, proposals, extraction, now):
       turns_deleted=turns_deleted,
       conversations_deleted=conversations_deleted,
    )
+   profile.compute_profile(db, user_id, now, None, outcome)
+
+   return outcome
 
 
 def job_conversation(db, job):

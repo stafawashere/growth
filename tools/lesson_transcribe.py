@@ -265,7 +265,9 @@ class Transcriber:
       for example, section in examples:
          entry = listed.get(example["id"])
 
-         if entry is None:
+         # An entry with no lines states that nothing on the example is scored; the record's
+         # schema holds a scoring section only when it has a line, so none is written.
+         if entry is None or not entry.get("lines"):
             continue
 
          lines = []
@@ -603,8 +605,12 @@ def main(argv):
 
    try:
       lesson = transcribe(arguments[0])
-   except (TranscriptionError, KeyError) as error:
+   except TranscriptionError as error:
       print(f"refusing: {error}", file=sys.stderr)
+
+      return 1
+   except KeyError as error:
+      print(f"refusing: the design lacks the field {error}", file=sys.stderr)
 
       return 1
 

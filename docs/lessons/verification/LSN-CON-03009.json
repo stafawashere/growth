@@ -33,5 +33,103 @@
    }
   ],
   "answers_file": "/tmp/claude-0/-home-user-growth/ac029253-8ff0-5a4b-8b5f-cdcaf5e8ff8d/scratchpad/verify/answers_02.json"
+ },
+ "audit": {
+  "date": "2026-09-29",
+  "auditor": "claude-opus-5-5",
+  "blocks": [
+   {
+    "id": "orientation",
+    "verdict": "ok",
+    "evidence": "Paraphrase of 3.6 Second derivatives of implicit relations paragraph; 25 words."
+   },
+   {
+    "id": "ki-1",
+    "verdict": "ok",
+    "evidence": "Paraphrase of BC-EK-FUN-3F1 (ced:80) and the 3.6 research line on dy/dx reappearing; 39 words."
+   },
+   {
+    "id": "st-1",
+    "verdict": "ok",
+    "evidence": "Method is BC-QA-03008 path[0]; rival is wrong_approaches BC-ERR-05060."
+   },
+   {
+    "id": "ex-1",
+    "verdict": "ok",
+    "evidence": "SymPy: d/dx(2xy + y - 3x) = 2y + 2x yp + yp - 3; yp(1,2) = 3; value 10."
+   },
+   {
+    "id": "what_a_reader_scores:ex-1",
+    "verdict": "ok",
+    "evidence": "BC-PT-99022 and BC-PT-99027 earns and does_not_earn verbatim from the bundle point_types."
+   },
+   {
+    "id": "representations",
+    "verdict": "ok",
+    "evidence": "null; skills carry BC-REP-01 only."
+   },
+   {
+    "id": "err-BC-ERR-03008",
+    "verdict": "ok",
+    "evidence": "Record text verbatim; wrong 2x yp + yp - 3 (x factor only differentiated through y) against right; possible_reason from BC-MIS-03005, listed on the error."
+   },
+   {
+    "id": "err-BC-ERR-03011",
+    "verdict": "ok",
+    "evidence": "Record text verbatim; SymPy subs x=1 into dy/dx gives 3y - 3."
+   },
+   {
+    "id": "err-BC-ERR-03023",
+    "verdict": "ok",
+    "evidence": "Record text verbatim; SymPy subs x=1, y=2 into second derivative leaves 3 yp + 1; right 10."
+   },
+   {
+    "id": "err-BC-ERR-05060",
+    "verdict": "ok",
+    "evidence": "Record text verbatim; y constant gives 2y - 3; possible_reason from BC-MIS-05033, listed on the error."
+   },
+   {
+    "id": "BC-PRQ-03002",
+    "verdict": "ok",
+    "evidence": "Paraphrase of failure_signature."
+   },
+   {
+    "id": "BC-PRQ-03005",
+    "verdict": "ok",
+    "evidence": "Paraphrase of description_plain and failure_signature."
+   },
+   {
+    "id": "BC-PRQ-03006",
+    "verdict": "ok",
+    "evidence": "Paraphrase of failure_signature."
+   },
+   {
+    "id": "chk-1",
+    "verdict": "ok",
+    "evidence": "SymPy: 2y + 2x yp + yp - 3 at (1, 2, 3) = 10."
+   },
+   {
+    "id": "chk-2",
+    "verdict": "ok",
+    "evidence": "SymPy: y'(1) = 4; y'' = -y - x yp + 2 yp + 3; value 6."
+   },
+   {
+    "id": "chk-3",
+    "verdict": "ok",
+    "evidence": "SymPy: yp(2,-1) = -2; y'' = y + x yp + 2 yp + 1 = -8; A -7 (x yp + 2 yp + 1), C 0 (y + 1), D y + 4 yp + 1; distinct."
+   }
+  ],
+  "advice": [
+   "Chain rule point BC-PT-99023 is untagged although ex-1 step 4 is the chain rule step and the BC-PT-99022 dependency says the answer point requires both; the reader scores block therefore under-teaches the scoring split the 3.6 Assessment paragraph names.",
+   "chk-3 option D is an expression among numeric options, which a reader spots as a non-number; it tests BC-ERR-03011 weakly.",
+   "The three bridges are 11 to 12 words and do not connect to second derivatives; BC-PRQ-03002 (isolating dy/dx) is barely used in this lesson since dy/dx is given."
+  ],
+  "counts": {
+   "ok": 16,
+   "unsourced": 0,
+   "wrong": 0,
+   "over_cap": 0,
+   "lint": 0
+  }
  }
 }

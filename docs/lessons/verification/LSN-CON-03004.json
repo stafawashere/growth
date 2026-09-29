@@ -27,5 +27,80 @@
    }
   ],
   "answers_file": "/tmp/claude-0/-home-user-growth/ac029253-8ff0-5a4b-8b5f-cdcaf5e8ff8d/scratchpad/verify/answers_02.json"
+ },
+ "audit": {
+  "date": "2026-09-29",
+  "auditor": "claude-opus-5-5",
+  "blocks": [
+   {
+    "id": "orientation",
+    "verdict": "ok",
+    "evidence": "Paraphrase of BC-CON-03004 description_plain and the 3.2 Assessment behaviour paragraph; 41 words."
+   },
+   {
+    "id": "ki-1",
+    "verdict": "ok",
+    "evidence": "Paraphrase of 3.2 Required mathematical knowledge (linear in dy/dx) and BC-SKL-03014; quote found verbatim on ced:76; 54 words."
+   },
+   {
+    "id": "st-1",
+    "verdict": "over_cap",
+    "evidence": "cue is 21 words, cap 20; method is expected_solution_path[0], rival is BC-QA-03004 wrong_approaches BC-ERR-03009."
+   },
+   {
+    "id": "ex-1",
+    "verdict": "ok",
+    "evidence": "SymPy: d/dx gives 2x - y - x dydx + 3y^2 dydx - 2 = 0, solve gives (2 - 2x + y)/(3y^2 - x), value at (2, 1) is -1; curve holds at (2, 1)."
+   },
+   {
+    "id": "representations",
+    "verdict": "ok",
+    "evidence": "null; skills carry BC-REP-01 only."
+   },
+   {
+    "id": "err-BC-ERR-03010",
+    "verdict": "ok",
+    "evidence": "observed_behavior and scoring_consequence verbatim from BC-ERR-03010; wrong (2 - 2x + y + x dydx)/(3y^2) differs from right, both checked."
+   },
+   {
+    "id": "err-BC-ERR-03011",
+    "verdict": "ok",
+    "evidence": "Verbatim record text; SymPy subs x=2 gives (y - 2)/(3y^2 - 2), right value -1."
+   },
+   {
+    "id": "BC-PRQ-03002",
+    "verdict": "ok",
+    "evidence": "Paraphrase of description_plain and failure_signature."
+   },
+   {
+    "id": "BC-PRQ-03006",
+    "verdict": "ok",
+    "evidence": "Paraphrase of description_plain and failure_signature."
+   },
+   {
+    "id": "chk-1",
+    "verdict": "ok",
+    "evidence": "SymPy: collected line divided and evaluated at (2, 1) gives -1."
+   },
+   {
+    "id": "chk-2",
+    "verdict": "ok",
+    "evidence": "SymPy: curve holds at (1, 2); dydx = (1 - 2x - 2y)/(2x - 3y^2) matches implicit derivative; value 1/2."
+   }
+  ],
+  "advice": [
+   "st-1 cue: trim one word (for example drop 'The stem asks for' to 'Asked: dy/dx, ...') to meet the 20 word cap.",
+   "ki-1 describes a process (collect, factor, divide) served as text; a short motion or step reveal of the terms moving across the equals sign would fit the idea better.",
+   "Delivery list has no entry for st-1; add one so its mode is explicit.",
+   "Recognition of the rival is weak: st-1 names BC-ERR-03009 (dropping the right side), but no error block or check exercises it; the two error blocks cover premature division and one coordinate substitution only.",
+   "No scoring habit is taught in served text (what_a_reader_scores is empty); the verification point and the notation habit of writing dy/dx at (2, 1) appear only in the authoring prose."
+  ],
+  "counts": {
+   "ok": 10,
+   "unsourced": 0,
+   "wrong": 0,
+   "over_cap": 1,
+   "lint": 0
+  }
  }
 }

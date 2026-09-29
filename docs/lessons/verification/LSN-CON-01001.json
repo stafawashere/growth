@@ -33,5 +33,89 @@
    }
   ],
   "answers_file": "/tmp/claude-0/-home-user-growth/ac029253-8ff0-5a4b-8b5f-cdcaf5e8ff8d/scratchpad/verify/answers_02.json"
+ },
+ "audit": {
+  "date": "2026-09-29",
+  "auditor": "claude-opus-5-5",
+  "blocks": [
+   {
+    "id": "orientation",
+    "verdict": "ok",
+    "evidence": "Paraphrase of BC-CON-01001 description_formal and 1.1 Assessment behaviour (formula or table); table values 0.52, 0.0502, 0.005002 and 5.2, 5.02, 5.002 checked in SymPy."
+   },
+   {
+    "id": "ki-1",
+    "verdict": "ok",
+    "evidence": "Paraphrase of BC-EK-CHA-1A3 (ced:38) and the 1.1 research line 'not computed by evaluating the quotient at a single point'."
+   },
+   {
+    "id": "ki-2",
+    "verdict": "ok",
+    "evidence": "Paraphrase of BC-EK-CHA-1A2; quote verbatim on ced:38."
+   },
+   {
+    "id": "ki-3",
+    "verdict": "ok",
+    "evidence": "Quote verbatim BC-EK-CHA-1A1 on ced:38; Unit 2 claim sourced by 1.1 prerequisite line 'the Unit 2 definition of the derivative'."
+   },
+   {
+    "id": "st-1",
+    "verdict": "ok",
+    "evidence": "Method from BC-QA-01012 path[0]; both rivals from wrong_approaches (BC-ERR-01029, BC-ERR-01030)."
+   },
+   {
+    "id": "ex-1",
+    "verdict": "ok",
+    "evidence": "SymPy: ((2(1+h)^2 + (1+h) + 3) - 6)/h simplifies to 5 + 2h; limit h to 0 is 5; s(1) = 6."
+   },
+   {
+    "id": "representations",
+    "verdict": "ok",
+    "evidence": "null; the BC-REP-03 table is carried in the orientation delivery spec."
+   },
+   {
+    "id": "err-BC-ERR-01029",
+    "verdict": "ok",
+    "evidence": "Record text verbatim; wrong 0.52 against right 5.2 in SymPy; possible_reason from BC-MIS-02001, listed on the error."
+   },
+   {
+    "id": "err-BC-ERR-01030",
+    "verdict": "ok",
+    "evidence": "Record text verbatim; 26/5 against 5; possible_reason from BC-MIS-01017, listed on the error."
+   },
+   {
+    "id": "BC-PRQ-06005",
+    "verdict": "ok",
+    "evidence": "Paraphrase of failure_signature."
+   },
+   {
+    "id": "chk-1",
+    "verdict": "ok",
+    "evidence": "SymPy: limit of 5 + 2h is 5."
+   },
+   {
+    "id": "chk-2",
+    "verdict": "ok",
+    "evidence": "SymPy: s(1) = 2; quotient simplifies to 4 + 3h; limit 4."
+   },
+   {
+    "id": "chk-3",
+    "verdict": "ok",
+    "evidence": "SymPy: V(2) = 12; quotient 6 + h, limit 6; A 61/100 = V(2.1) - V(2); B 61/10; D 601/10000 = V(2.01) - V(2); distinct."
+   }
+  ],
+  "advice": [
+   "chk-3 anchors two distractors (A and D) to the same error block BC-ERR-01029; a reader sees two undivided changes, so D adds little discrimination.",
+   "Served ki text carries record ids in parentheses (BC-EK-CHA-1A3, ced:38); these read as citation noise to a student.",
+   "Delivery modes fit: shrinking intervals as motion (ki-1) and the averages as a table (orientation). ex-1 step 4 has no expression; the final named sentence 'the rate at t = 1 is 5' is the line the archetype asks for and could be written out.",
+   "No scoring habit is taught in served text (what_a_reader_scores empty), although BC-ERR-01030's consequence (an estimate phrased as an estimate can earn credit) is a habit worth a line."
+  ],
+  "counts": {
+   "ok": 13,
+   "unsourced": 0,
+   "wrong": 0,
+   "over_cap": 0,
+   "lint": 0
+  }
  }
 }

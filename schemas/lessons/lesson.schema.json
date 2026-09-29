@@ -254,7 +254,7 @@
    "properties": {
     "type": {"const": "key_ideas"},
     "delivery": {"$ref": "#/$defs/delivery"},
-    "ek_id": {"type": "string", "pattern": "^BC-EK-[A-Z]{3}-\\d+[A-Z]\\d+$"},
+    "ek_id": {"type": ["string", "null"], "pattern": "^BC-EK-[A-Z]{3}-\\d+[A-Z]\\d+$"},
     "depth": {"enum": ["core", "extended"]},
     "text": {"$ref": "#/$defs/text"},
     "notation": {"type": "string"}

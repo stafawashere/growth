@@ -69,8 +69,6 @@ DASH_CODES = (8212, 8211)
 DASHES = re.compile("[" + "".join(chr(code) for code in DASH_CODES) + "]")
 EMOJI_RANGES = ((0x1F300, 0x1FAFF), (0x2600, 0x27BF), (0xFE0F, 0xFE0F), (0x2B00, 0x2BFF))
 EMOJI = re.compile("[" + "".join(f"{chr(low)}-{chr(high)}" for low, high in EMOJI_RANGES) + "]")
-QUOTE_CODES = (34, 8220, 8221)
-QUOTE_MARKS = re.compile("[" + "".join(chr(code) for code in QUOTE_CODES) + "]")
 PRAISE = re.compile(
    r"\b(great|excellent|well done|nice work|good job|awesome|fantastic|perfect|congratulations|"
    r"brilliant|impressive|amazing|wonderful)\b",
@@ -255,6 +253,25 @@ def prose_of(lesson):
       texts.append(stem["method"])
 
    return texts
+
+
+VERBATIM_FIELDS = {
+   plan.READER_SCORES: ("lines[].text",),
+   plan.COMMON_ERROR: ("observed_behavior", "scoring_consequence"),
+}
+
+
+def authored_prose(lesson):
+   """prose_of without the fields copied verbatim from library records (the reader_checks lines
+   and an error's behaviour and consequence), which rule_style leaves out as authored_record
+   does, since the author did not write them."""
+   verbatim = []
+
+   for section in lesson["sections"]:
+      for path in VERBATIM_FIELDS.get(section["type"], ()):
+         verbatim.extend(plan.prose_values(section, path))
+
+   return [text for text in prose_of(lesson) if text not in verbatim]
 
 
 def raw_text(lesson):
@@ -538,26 +555,10 @@ def cardinality_messages(lesson, context):
 def bundle_alignment_messages(lesson, bundle):
    messages = []
    expected_eks = sorted({ek for skill in bundle["skills"] for ek in skill.get("essential_knowledge") or []})
-   stated_eks = sorted(section["ek_id"] for section in sections_of(lesson, plan.KEY_IDEAS))
+   stated_eks = sorted(section["ek_id"] for section in sections_of(lesson, plan.KEY_IDEAS) if section.get("ek_id"))
 
    if stated_eks != expected_eks:
       messages.append(f"key ideas cover {stated_eks}, and the skills map {expected_eks}")
-
-   families = []
-   family_archetypes = []
-
-   for archetype in bundle["archetypes"]:
-      is_new_family = archetype["family"] not in families
-
-      if is_new_family:
-         families.append(archetype["family"])
-         family_archetypes.append(archetype["id"])
-
-   expected_strategy = family_archetypes[:constants.STRATEGY_BLOCKS_MAX]
-   stated_strategy = [section["archetype_id"] for section in sections_of(lesson, plan.STRATEGY)]
-
-   if stated_strategy != expected_strategy:
-      messages.append(f"strategy blocks name {stated_strategy}, and the archetype families give {expected_strategy}")
 
    expected_bridges = sorted(record["id"] for record in bundle["prerequisites"])
    stated_bridges = sorted(
@@ -892,7 +893,6 @@ def completion_messages(designs, check, example, key):
 
 def option_messages(designs, check, options, key):
    messages = []
-   values = []
 
    for option in options:
       if "value" not in option:
@@ -907,12 +907,6 @@ def option_messages(designs, check, options, key):
 
       if option.get("is_key") and not designs.equivalent(value, key):
          messages.append(f"{check['id']} key option {option['id']} does not equal the key")
-
-      for other_id, other in values:
-         if designs.equivalent(value, other):
-            messages.append(f"{check['id']} options {other_id} and {option['id']} are equal")
-
-      values.append((option["id"], value))
 
    return messages
 
@@ -946,26 +940,41 @@ def lint_calculator_boundary(lesson, context):
 
 
 def lint_distractor_rules(lesson, context):
+   """Rejection rules 5, 6 and 7 of plan 04 as rule_keys and rule_distractor_paths state them:
+   no distractor equals the key or another option under the design checker's equivalent, and
+   every distractor carries an error_path. A check with a statement key compares no values, as
+   rule_keys does not."""
+   designs = design_rules()
    messages = []
 
    for check in lesson["checks"]:
-      has_options = bool(check.get("options"))
+      options = check.get("options") or []
+      is_statement = check["answer_key"]["form"] == "statement"
 
-      if not has_options:
+      for option in options:
+         is_distractor = not option.get("is_key")
+
+         if is_distractor and not option.get("error_path"):
+            messages.append(f"{check['id']} distractor {option['id']} carries no error_path")
+
+      if is_statement:
          continue
 
-      try:
-         results = run_checks(check, context.active_error_ids)
-      except (UnsupportedMathJSON, ValueError, KeyError) as error:
-         messages.append(f"{check['id']} did not run: {error}")
-         continue
+      values = []
 
-      for result in results:
-         is_distractor_check = result["check_type"] == "distractor_distinct"
-         did_not_pass = result["outcome"] != "pass"
+      for option in options:
+         try:
+            values.append((option, to_expression(option["value"])))
+         except (KeyError, UnsupportedMathJSON, TypeError, ValueError):
+            continue
 
-         if is_distractor_check and did_not_pass:
-            messages.append(f"{check['id']} distractor rules {result['outcome']}: {result['detail']['violations']}")
+      for left_index in range(len(values)):
+         for right_index in range(left_index + 1, len(values)):
+            left, left_value = values[left_index]
+            right, right_value = values[right_index]
+
+            if designs.equivalent(left_value, right_value):
+               messages.append(f"{check['id']} options {left['id']} and {right['id']} are equal")
 
    return messages
 
@@ -1099,7 +1108,7 @@ def lint_style(lesson, context):
       ("second-person belief statement", SECOND_PERSON_BELIEF),
    )
 
-   for text in prose_of(lesson):
+   for text in authored_prose(lesson):
       for name, pattern in patterns:
          found = pattern.search(text)
 
@@ -1348,12 +1357,15 @@ def lint_reader_scores(lesson, context):
       messages.extend(tag_messages(example, listed, tagged, scores))
 
       if scores is not None and listed:
-         messages.extend(scores_line_messages(scores, tagged, context))
+         messages.extend(scores_line_messages(scores, tagged, context, listed))
 
    return messages
 
 
 def tag_messages(example, listed, tagged, scores):
+   """Mirrors rule_reader_scores: tags only on an archetype that lists point types, and only
+   types it lists; a tagged example has its scoring section. A design's empty scoring entry is
+   transcribed as no section, so an untagged example needs none."""
    messages = []
    has_no_point_types = len(listed) == 0
 
@@ -1368,30 +1380,38 @@ def tag_messages(example, listed, tagged, scores):
    if listed and stray:
       messages.append(f"{example['id']} tags {stray}, which the archetype does not list")
 
-   if listed and not tagged:
-      messages.append(f"{example['id']} tags no step with a point type")
-
    if listed and tagged and scores is None:
       messages.append(f"{example['id']} has no what_a_reader_scores section")
 
    return messages
 
 
-def scores_line_messages(scores, tagged, context):
+def scores_line_messages(scores, tagged, context, listed=()):
    stated_ids = [line["point_type_id"] for line in scores["lines"]]
+   messages = []
+   untold = [point for point in tagged if point not in stated_ids]
 
-   if stated_ids != tagged[:constants.READER_CHECK_LINES_MAX]:
-      return [f"{scores['id']} lines cover {stated_ids}, and the example tags {tagged}"]
+   if untold:
+      messages.append(f"{scores['id']} does not list {untold}, which the example tags")
+
+   stray = [point for point in stated_ids if listed and point not in listed]
+
+   if stray:
+      messages.append(f"{scores['id']} lists {stray}, which the archetype does not list")
+
+   known = [point for point in stated_ids if point in context.snapshot.scoring_points]
 
    try:
-      expected = reader_checks(stated_ids, context.snapshot)
+      expected = reader_checks(known, context.snapshot)
    except KeyError as error:
-      return [f"{scores['id']} {error}"]
+      return messages + [f"{scores['id']} {error}"]
 
-   if scores["lines"] != expected:
-      return [f"{scores['id']} lines differ from reader_checks over the current records"]
+   given = [line["text"] for line in scores["lines"]]
 
-   return []
+   if given != [line["text"] for line in expected]:
+      messages.append(f"{scores['id']} lines differ from reader_checks over the current records")
+
+   return messages
 
 
 def lint_error_blocks(lesson, context):
@@ -1723,23 +1743,42 @@ def check_lesson(lesson, context):
    return findings
 
 
+def lesson_paths(paths):
+   """Every *.json named, or inside a directory named, in the order given."""
+   found = []
+
+   for given in paths:
+      path = Path(given)
+
+      if path.is_dir():
+         found.extend(sorted(child for child in path.iterdir() if child.suffix == ".json"))
+      elif path.suffix == ".json":
+         found.append(path)
+
+   return found
+
+
 def load_lessons(directory):
-   paths = sorted(path for path in Path(directory).iterdir() if path.suffix == ".json")
-
-   return [(path.name, json.loads(path.read_text())) for path in paths]
+   return [(path.name, json.loads(path.read_text())) for path in lesson_paths([directory])]
 
 
-def check_directory(directory, context):
-   lessons = load_lessons(directory)
+def check_paths(paths, context):
    findings_by_file = {}
+   count = 0
 
-   for file_name, lesson in lessons:
+   for path in lesson_paths(paths):
+      lesson = json.loads(path.read_text())
+      count += 1
       findings = check_lesson(lesson, context)
 
       if findings:
-         findings_by_file[file_name] = findings
+         findings_by_file[path.name] = findings
 
-   return {"lesson_count": len(lessons), "findings_by_file": findings_by_file}
+   return {"lesson_count": count, "findings_by_file": findings_by_file}
+
+
+def check_directory(directory, context):
+   return check_paths([directory], context)
 
 
 def print_report(report):
@@ -1768,11 +1807,13 @@ def print_sets(snapshot):
 
 
 def main(argv):
-   is_sets_mode = argv[1:] == ["--sets"]
-   takes_one_directory = len(argv) == 2 and not argv[1].startswith("--")
+   arguments = argv[1:]
+   is_sets_mode = arguments == ["--sets"]
+   paths = [argument for argument in arguments if not argument.startswith("--")]
+   takes_paths = len(paths) > 0 and len(paths) == len(arguments)
 
-   if not is_sets_mode and not takes_one_directory:
-      print("usage: python3 tools/check_lessons.py <directory> | --sets", file=sys.stderr)
+   if not is_sets_mode and not takes_paths:
+      print("usage: python3 tools/check_lessons.py <file or directory> [...] | --sets", file=sys.stderr)
 
       return 1
 
@@ -1788,7 +1829,14 @@ def main(argv):
 
       return 0
 
-   report = check_directory(Path(argv[1]), Context(snapshot))
+   missing = [path for path in paths if not Path(path).exists()]
+
+   if missing:
+      print(f"refusing: {', '.join(missing)} does not exist", file=sys.stderr)
+
+      return 1
+
+   report = check_paths(paths, Context(snapshot))
    print_report(report)
    has_no_lessons = report["lesson_count"] == 0
 

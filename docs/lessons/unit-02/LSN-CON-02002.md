@@ -72,7 +72,7 @@ Every archetype here is `no_calculator` and MCQ shaped, so the part is Section I
 
 - chk-1, completion of ex-1, both bands: \(\lim_{h\to0}(2h+5)\) is given. Key 5, equal to ex-1's answer.
 - chk-2, isomorph on BC-QA-02002, both bands: leading \(-1\), linear 4, constant \(-2\), point \(-1\), degree 2. Key 6.
-- chk-3, MCQ on BC-QA-02014, low band: degree 2, leading 2, linear 1, constant 3, instant 3, context height. Key 13. Distractors: 7 (BC-ERR-02033, the average over \([0,3]\)), \(4t+1\) (BC-ERR-02030, a function where a number is asked), \(13+2h\) (BC-ERR-02006, the quotient reported with the limit dropped).
+- chk-3, MCQ on BC-QA-02014, low band: degree 2, leading 2, linear 1, constant 3, instant 3, context height. Key 13. Distractors: 7, 9 and 11 (BC-ERR-02033, the average over the whole interval \([0,3]\), \([1,3]\) and \([2,3]\)). The spec's other distractors, the value 24 (BC-ERR-02027) and the change 21 (BC-ERR-02001), are errors the lesson's skills do not hold.
 
 No draw equals a published BC-QA-02002 or BC-QA-02014 `parameter_draw` (content/items_gen_unit02, content/items_unit02_agent).
 
@@ -278,9 +278,9 @@ Every non-text choice is [inferred], settled by the modality A/B in the build pl
    ],
    "options": [
     {"id": "A", "is_key": false, "expr": "7", "error_path": "BC-ERR-02033", "derivation": "the average over [0, 3]: (24 - 3)/3"},
-    {"id": "B", "is_key": false, "expr": "4*t + 1", "error_path": "BC-ERR-02030", "derivation": "the rate as a function of t reported where a number is asked"},
+    {"id": "B", "is_key": false, "expr": "9", "error_path": "BC-ERR-02033", "derivation": "the average over the whole interval [1, 3]: (24 - 6)/2"},
     {"id": "C", "is_key": true, "expr": "13", "error_path": null},
-    {"id": "D", "is_key": false, "expr": "13 + 2*h", "error_path": "BC-ERR-02006", "derivation": "the simplified quotient reported with the limit dropped"}
+    {"id": "D", "is_key": false, "expr": "11", "error_path": "BC-ERR-02033", "derivation": "the average over the whole interval [2, 3]: (24 - 13)/1"}
    ],
    "calculator_status": "no_calculator",
    "skills": ["BC-SKL-02005", "BC-SKL-02004"]
@@ -289,7 +289,7 @@ Every non-text choice is [inferred], settled by the modality A/B in the build pl
  "delivery": [
   {"block": "orientation", "mode": "text", "reason": "rule 5: a statement of what a response shows", "sources": ["BC-CON-02002"]},
   {"block": "ki-1", "mode": "motion", "reason": "rule 2: the key idea describes a limit being taken, a secant closing to a tangent (unit README delivery map)", "sources": ["BC-EK-CHA-2B1", "BC-SKL-02005"],
-   "spec": {"kind": "graph_sweep", "representations": ["BC-REP-02"], "axes": {"x": [0, 3.5], "y": [-1, 12]},
+   "spec": {"kind": "graph_sweep", "representations": ["BC-REP-02"], "axes": {"x": [0, 3.5], "y": [-1, 16]},
     "curves": [{"expr": "2*x**2 - 3*x + 1", "domain": [0, 3.5]}],
     "points": [{"at": [2, 3], "label": {"text": "(2, 3)", "placement": "inside", "at": "just above the point"}}],
     "parameter": {"name": "h", "frames": [1, 0.5, 0.25, 0.1, 0.01]},

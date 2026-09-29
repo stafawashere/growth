@@ -18,7 +18,7 @@ Served text (32 words), from BC-CON-01014 `description_plain` and the topic's As
 Two BC-EK map to the four skills, BC-EK-LIM-2B1 (BC-SKL-01046, 01048, 01049) and BC-EK-LIM-2B2 (BC-SKL-01046, 01047), both on ced:49, so two blocks: ki-2 core (both bands), ki-1 extended (low band), which keeps the brief form under its 450-word cap.
 
 - ki-1 (extended), BC-EK-LIM-2B1. Paraphrase of the topic's Interval continuity paragraph: continuity on an interval is continuity at every point of it, and at the endpoint of a closed interval the condition is one sided. Anchor quote (18 words) from ced:49. Notation line: continuous on an interval.
-- ki-2 (core), BC-EK-LIM-2B2. Paraphrase of the Families paragraph: the six named families are continuous at every point of their domains, and the domain restriction is the working part of the statement, so the excluded inputs split the answer into intervals. Anchor quote (16 words) from ced:49.
+- ki-2 (core), BC-EK-LIM-2B2. Paraphrase of the Families paragraph: the six named families are continuous at every point of their domains, and the domain restriction is the working part of the statement, so the answer is the domain cut at the excluded inputs, open there and closed at an included endpoint such as a radicand's zero. Anchor quote (16 words) from ced:49.
 
 ## Recognition
 
@@ -30,7 +30,7 @@ What says "not this concept": a single named input with "is f continuous at" (BC
 
 One strategy block, both bands.
 
-- st-1, BC-QA-01015. Cue, from `asked_to_produce` and `common_givens`: a rule is given and the stem asks for the intervals of continuity with a reason. Method, `expected_solution_path[0]`: identify every input at which the expression is undefined. First written line: the denominator set to zero (or the radicand set nonnegative) and solved. Rival: the domain written as one interval, from `common_distractors` ("writing the domain as a single interval when it has several pieces"), because the record carries no `wrong_approaches`. Separating feature: each excluded input splits the real line, so the answer has one more piece than there are excluded inputs. Evidence tag inferred, because the rival is not from `wrong_approaches` [inferred].
+- st-1, BC-QA-01015. Cue, from `asked_to_produce` and `common_givens`: a rule is given and the stem asks for the intervals of continuity with a reason. Method, `expected_solution_path[0]`: identify every input at which the expression is undefined. First written line: the denominator set to zero (or the radicand set nonnegative) and solved. Rival: the domain written as one interval, from `common_distractors` ("writing the domain as a single interval when it has several pieces"), because the record carries no `wrong_approaches`. Separating feature: the answer is the whole domain cut at each undefined input, so a rational rule with two excluded inputs has three pieces. Evidence tag inferred, because the rival is not from `wrong_approaches` [inferred].
 
 ## Solution path
 
@@ -47,7 +47,7 @@ None. BC-QA-01015 lists no `point_types` (the record's `scoring_pattern` names a
 Two active errors meet the concept's skills, in the bundle's order (BC-MIS-01019 medium on both, then id). Low band both, mid band both.
 
 - err-BC-ERR-01031 (BC-MIS-01019, BC-MIS-01011). Wrong step on ex-1's draw: \((-\infty,-2)\cup(-2,\infty)\), with 1 left inside. Right step: \((-\infty,-2)\cup(-2,1)\cup(1,\infty)\). Distinct. Possible reason, words from BC-MIS-01019: without excluding the inputs outside that domain.
-- err-BC-ERR-01032 (BC-MIS-01019, BC-MIS-01009). Wrong step: \((-2,1]\) written as the middle piece. Right step: \((-2,1)\). Distinct as sets. Possible reason null: neither linked description names a bracket.
+- err-BC-ERR-01032 (BC-MIS-01019, BC-MIS-01009). Wrong step: \((-2,1]\) written as the middle piece. Right step: \((-2,1)\). Distinct as sets, and the wrong piece contains 1, unlike err-BC-ERR-01031's wrong set. Possible reason null: neither linked description names a bracket.
 
 ## Representations
 
@@ -124,7 +124,7 @@ No figure, motion, interactive or model mode applies: the skills carry no figure
    "id": "ki-2",
    "ek_id": "BC-EK-LIM-2B2",
    "depth": "core",
-   "text": "The six standard families are continuous at every point of their domains (BC-EK-LIM-2B2, ced:49). The domain restriction does the work: the undefined inputs are excluded, and what remains, as open intervals between them, is the answer.",
+   "text": "The six standard families are continuous at every point of their domains (BC-EK-LIM-2B2, ced:49). The domain restriction does the work: the domain, cut at every undefined input, is the answer, open at each excluded input and closed at an endpoint the rule includes, such as a radicand's zero.",
    "notation": "open, closed and half open interval notation",
    "quote": {"text": "Polynomial, rational, power, exponential, logarithmic, and trigonometric functions are continuous on all points in their domains.", "source": "ced:49"},
    "sources": ["BC-EK-LIM-2B2", "ced:49", "research/units/unit-01-limits-continuity.md#1.12 Confirming Continuity over an Interval"]
@@ -134,10 +134,10 @@ No figure, motion, interactive or model mode applies: the skills carry no figure
   {
    "id": "st-1",
    "archetype_id": "BC-QA-01015",
-   "cue": "A rule is given and the stem asks for the intervals on which it is continuous, with a reason naming its family.",
+   "cue": "A rule is given and the stem asks for its intervals of continuity, with a reason naming its family.",
    "method": "First written line: identify every input at which the expression is undefined, by setting the denominator to zero or the radicand below zero.",
    "rival": "The rival writes the domain as a single interval when it has several pieces.",
-   "separating_feature": "Each excluded input splits the line, so the answer has one more piece than there are excluded inputs.",
+   "separating_feature": "The answer is the whole domain cut at each undefined input, so a rational rule with two excluded inputs has three pieces.",
    "sources": ["BC-QA-01015"],
    "evidence_tag": "inferred"
   }
@@ -176,8 +176,8 @@ No figure, motion, interactive or model mode applies: the skills carry no figure
    "error_id": "BC-ERR-01032",
    "observed_behavior": "The response writes a closed interval endpoint at an input that is not in the domain of the function.",
    "scoring_consequence": "The interval point is lost on notation.",
-   "wrong_step": {"text": "\\((-2,1]\\) is closed where \\(f\\) has no value.", "expr": "Union(Interval.open(-oo, -2), Interval.Lopen(-2, 1), Interval.open(1, oo))"},
-   "right_step": {"text": "\\((-2,1)\\) is open at both ends.", "expr": "Union(Interval.open(-oo, -2), Interval.open(-2, 1), Interval.open(1, oo))"},
+   "wrong_step": {"text": "\\((-2,1]\\) is closed where \\(f\\) has no value.", "expr": "Interval.Lopen(-2, 1)"},
+   "right_step": {"text": "\\((-2,1)\\) is open at both ends.", "expr": "Interval.open(-2, 1)"},
    "relation": "distinct",
    "possible_reason": null,
    "sources": ["BC-ERR-01032"]
@@ -187,7 +187,7 @@ No figure, motion, interactive or model mode applies: the skills carry no figure
  "prerequisite_bridges": [
   {"prq_id": "BC-PRQ-01003", "text": "A piecewise rule is read by choosing the branch whose condition holds for the input. The slip: the wrong branch evaluated at a boundary input."},
   {"prq_id": "BC-PRQ-01008", "text": "An expression is undefined where a denominator is zero or a logarithm has a nonpositive argument. The slip: intervals of continuity that include points outside the domain."},
-  {"prq_id": "BC-PRQ-01010", "text": "A bracket is an inequality: \\((a,b]\\) means \\(a<x\\le b\\). The slip: a closed end written where the input is excluded."}
+  {"prq_id": "BC-PRQ-01010", "text": "A bracket is an inequality: \\((a,b]\\) means \\(a<x\\le b\\). The slip: a conclusion stated on a closed interval when the theorem gives an interior point."}
  ],
  "time": {"exam_part": "I-A", "budget_minutes": 2.14, "source": "research/exam/exam-structure.md#Section and part layout", "written_steps": {"ex-1": [2, 4]}, "skipped_steps": {"ex-1": [1, 3, 5]}},
  "checks": [

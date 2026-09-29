@@ -497,8 +497,8 @@ BC-QA-05003 has `calculator_status` either, so the lesson takes Section I Part A
       2
      ],
      "y": [
-      -10,
-      12
+      -50,
+      15
      ]
     },
     "controls": [

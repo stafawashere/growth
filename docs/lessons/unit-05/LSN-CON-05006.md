@@ -29,7 +29,7 @@ What says "not this concept": "relative" at a named input is a first derivative 
 
 One strategy block, both bands.
 
-- st-1, BC-QA-05006. Method, `expected_solution_path[0]`: consider the derivative equal to zero and solve. Rival, `wrong_approaches`: appealing to the Extreme Value Theorem as though it located the extremum; the local-test rival is the one scored against (sg-25:5, research/scoring/justification-requirements.md#Global versus local arguments). Separating feature: "absolute" on a closed interval makes every candidate a competitor. The archetype carries `asked_to_produce` and `common_givens`, so the block is not tagged inferred.
+- st-1, BC-QA-05006. Method, `expected_solution_path[0]`: consider the derivative equal to zero and solve. Rival, `wrong_approaches`: appealing to the Extreme Value Theorem as though it located the extremum; the local-test rival is the one scored against (sg-25:5, research/scoring/justification-requirements.md#Global versus local arguments). Separating feature: "absolute" on a closed interval makes every candidate a competitor. The archetype carries `asked_to_produce` and `common_givens`, so the block is not tagged inferred. The local-test rival is sourced by BC-ERR-99004, which the block cites.
 
 ## Solution path
 
@@ -151,7 +151,8 @@ BC-QA-05006 has `calculator_status` either, so the lesson takes Section I Part A
    "rival": "Rival: a sign change at one point, a local test.",
    "separating_feature": "Absolute makes every candidate, endpoints included, a competitor.",
    "sources": [
-    "BC-QA-05006"
+    "BC-QA-05006",
+    "BC-ERR-99004"
    ],
    "evidence_tag": "verified"
   }

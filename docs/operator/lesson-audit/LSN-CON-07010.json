@@ -42,99 +42,116 @@
   "auditor": "claude-opus-5-5",
   "blocks": [
    {
+    "id": "prediction",
+    "verdict": "ok",
+    "evidence": "SymPy: 600 = 200*exp(2k) gives real k = log(3)/2 and P(4) = 1800; distractor A 1000 is the line 200 + 200t at t = 4, C 1200 is 600*2, both false, so B is the only true option. Resolution (one factor per equal time) follows from y = y0 e^(kt) in BC-EK-FUN-7G1 and the 7.8 Model and solution paragraph. No id or verdict word."
+   },
+   {
     "id": "orientation",
     "verdict": "ok",
-    "evidence": "Paraphrases BC-CON-07010 and BC-QA-07008 expected_solution_path."
+    "evidence": "Shortened paraphrase of BC-CON-07010 and the 7.8 Assessment behaviour paragraph; no id or tag."
    },
    {
     "id": "ki-1",
     "verdict": "ok",
-    "evidence": "FUN-7.F.2 on ced:144 and the research Sign of the constant paragraph."
+    "evidence": "FUN-7.F.2 on ced:144 and the 7.8 Sign of the constant paragraph; only the 'size of k sets how fast' clause was cut."
    },
    {
     "id": "ki-2",
     "verdict": "ok",
-    "evidence": "FUN-7.G.1 on ced:144 and expected_solution_path steps 3 and 4."
+    "evidence": "FUN-7.G.1 on ced:144 and the 7.8 Determining the constant paragraph; delivery table spec unchanged and still matches (rows (0, 200) and (2, 600))."
    },
    {
     "id": "ki-3",
     "verdict": "ok",
-    "evidence": "FUN-7.F.1 on ced:144; the one derivative away rider is BC-ERR-07038 and BC-SIG-07037 in the research 7.8 section."
+    "evidence": "FUN-7.F.1 on ced:144; the one derivative away rider is BC-ERR-07038 and BC-SIG-07037 in the research 7.8 section.",
+    "note": "unchanged since 2026-09-29"
    },
    {
     "id": "st-1",
     "verdict": "ok",
-    "evidence": "Method from expected_solution_path[0]; rival is BC-QA-07008 wrong_approaches[0]."
+    "evidence": "Method 'dy/dt = ky, then y = y0 e^(kt).' no longer opens with a label; rival is wrong_approaches[0] without the prefix; cue matches common_givens."
+   },
+   {
+    "id": "st-1.contrast",
+    "verdict": "ok",
+    "evidence": "this matches BC-QA-07008 typical_wording (rate proportional to the quantity; find an expression); SymPy k = log(4)/3 real, stem well posed. not_this is a logistic stem (joint proportionality, BC-EK-FUN-7H1 wording), not the archetype's own stem; why_not and feature are true."
    },
    {
     "id": "ex-1",
     "verdict": "ok",
-    "evidence": "SymPy: 600 = 200*exp(2k) gives k = log(3)/2; 200*exp(log(3)*2/2) = 600; triples every 2 hours."
+    "evidence": "Only cues and one why changed. SymPy: k = log(3)/2, P(2) = 600, P(4) = 1800; triples every 2 hours holds."
    },
    {
     "id": "err-BC-ERR-07001",
     "verdict": "ok",
-    "evidence": "BC-MIS-07001 text matches."
+    "evidence": "relation distinct, fix_prompt true; dP/dt = P differs from kP; BC-MIS-07001 text unchanged."
    },
    {
     "id": "err-BC-ERR-07034",
     "verdict": "ok",
-    "evidence": "Line through (0, 200) and (2, 600) is 200 + 200t; BC-MIS-07021 text matches."
+    "evidence": "relation distinct, fix_prompt true; SymPy 200 + 200t and 200*exp(log(3)t/2) agree at t = 0 and 2 and differ at t = 4 (1000 against 1800)."
    },
    {
     "id": "err-BC-ERR-07035",
     "verdict": "ok",
-    "evidence": "BC-MIS-07022 text matches; exp(200kt) fails P(0) = 200."
+    "evidence": "relation distinct, fix_prompt true; exp(200kt) is 1 at t = 0, not 200."
    },
    {
     "id": "err-BC-ERR-07036",
     "verdict": "ok",
-    "evidence": "Consequence quoted; BC-MIS-07022 names the second pair."
+    "evidence": "relation distinct, fix_prompt true; log(200) differs from log(3)/2."
    },
    {
     "id": "representations",
     "verdict": "ok",
-    "evidence": "null."
+    "evidence": "null.",
+    "note": "unchanged since 2026-09-29"
    },
    {
-    "id": "bridge-BC-PRQ-06003",
+    "id": "BC-PRQ-06003",
     "verdict": "ok",
-    "evidence": "Logarithm rules per description_plain."
+    "evidence": "ln(e^(2k)) = 2k is a logarithm rule in BC-PRQ-06003 description_plain."
    },
    {
-    "id": "bridge-BC-PRQ-07001",
+    "id": "BC-PRQ-07001",
     "verdict": "ok",
-    "evidence": "Taking a logarithm of both sides per description_plain."
+    "evidence": "Taking a logarithm of both sides per BC-PRQ-07001 description_plain."
    },
    {
-    "id": "bridge-BC-PRQ-07003",
+    "id": "BC-PRQ-07003",
     "verdict": "ok",
-    "evidence": "Matches failure_signature on the omitted constant."
+    "evidence": "Proportional to as a constant multiple per BC-PRQ-07003 description_plain."
    },
    {
     "id": "chk-1",
     "verdict": "ok",
-    "evidence": "Substitution of k = log(3)/2 gives the ex-1 answer."
+    "evidence": "Substitution of k = log(3)/2 gives the ex-1 answer.",
+    "note": "unchanged since 2026-09-29"
    },
    {
     "id": "chk-2",
     "verdict": "ok",
-    "evidence": "SymPy: 200 = 500*exp(2k) gives k = log(10)/2 - log(5) = log(2/5)/2."
+    "evidence": "SymPy: 200 = 500*exp(2k) gives k = log(10)/2 - log(5) = log(2/5)/2.",
+    "note": "unchanged since 2026-09-29"
    },
    {
     "id": "chk-3",
     "verdict": "ok",
-    "evidence": "SymPy: k = log(2**(2/3)/2) = -log(2)/3; C: line slope -200/3; D: 400 in exponent with k = -log(2)/3; A: dM/dt = M."
+    "evidence": "SymPy: k = log(2**(2/3)/2) = -log(2)/3; C: line slope -200/3; D: 400 in exponent with k = -log(2)/3; A: dM/dt = M.",
+    "note": "unchanged since 2026-09-29"
    }
   ],
   "advice": [
-   "ki-2 is delivered as a table though it is one formula and one sentence; text would serve it, a table suits tabular data only.",
-   "ki-3 (motion along a line) has no example, check or error block, so it is served as an unsupported aside.",
-   "The interpretation of k (units and direction) is taught only in ex-1 step 6; no check asks for it, and BC-ERR-07037 is not served.",
-   "err-BC-ERR-07036 wrong step k = ln 200 is an invented value; a derivation line would make the error path readable."
+   "ki-2 now reads 'k the exponent'; k is the rate constant inside the exponent kt, so 'k in the exponent' (the earlier wording) is more exact.",
+   "The BC-PRQ-06003 and BC-PRQ-07001 bridges now say nearly the same thing (take ln of e^(2k) = 3); the 06003 bridge could name the combining rule its description_plain is about.",
+   "All three bridges dropped the failure_signature clause while the design's Prerequisite bridge section still says each is built from description_plain and failure_signature.",
+   "ki-2 is delivered as a table though it is one formula and one sentence (carried from the earlier audit).",
+   "ki-3 (motion along a line) has no example, check or error block (carried).",
+   "The interpretation of k with units and direction is taught only in ex-1 step 6 and BC-ERR-07037 is not served (carried)."
   ],
   "counts": {
-   "ok": 17,
+   "ok": 19,
    "unsourced": 0,
    "wrong": 0,
    "over_cap": 0,

@@ -42,78 +42,100 @@
   "auditor": "claude-opus-5-5",
   "blocks": [
    {
+    "id": "prediction",
+    "verdict": "ok",
+    "evidence": "SymPy: limit of k*P*(600 - P) as P -> 600 is 0, so B (nears zero) is true; A (grows larger) and C (stays constant) are false for k nonzero. The factor 600 - P is in the stem, answerable before the rule. Resolution from BC-EK-FUN-7H1 and the 7.9 Carrying capacity paragraph. No id or verdict word."
+   },
+   {
     "id": "orientation",
     "verdict": "ok",
-    "evidence": "Paraphrases BC-CON-07011 and FUN-7.H.1, FUN-7.H.2."
+    "evidence": "Shortened paraphrase of BC-CON-07011 and FUN-7.H.1, FUN-7.H.2; the units clause moved to ki-2."
    },
    {
     "id": "ki-1",
     "verdict": "ok",
-    "evidence": "FUN-7.H.1 on ced:145 and BC-MIS-07024."
+    "evidence": "FUN-7.H.1 on ced:145 and BC-MIS-07024; only the 'without it there is no ceiling' clause was cut."
    },
    {
     "id": "ki-2",
     "verdict": "ok",
-    "evidence": "FUN-7.H.2 and FUN-7.H.3 on ced:145; BC-MIS-07026 on the sign of the rate."
+    "evidence": "7.9 Carrying capacity paragraph (zero at 0 and a, rises toward a); the 'read without solving' lead-in was cut."
    },
    {
     "id": "st-1",
     "verdict": "ok",
-    "evidence": "fixed 2026-09-29: cue cut to 19 words; Cue has 21 words, cap 20: \"A logistic equation and an initial value between 0 and the capacity; the stem asks for a limit or a meaning.\""
+    "evidence": "Method 'The right side set equal to zero.' no longer opens with a label; expected_solution_path[0]; rival is wrong_approaches[0] shortened."
+   },
+   {
+    "id": "st-1.contrast",
+    "verdict": "ok",
+    "evidence": "this matches BC-QA-07009 typical_wording (limit of the quantity); SymPy zeros {0, 500}, rate 9/2 > 0 at P = 50. not_this: SymPy y = 50*exp(t/10), limit oo, so why_not (no ceiling) is true and it is not the archetype's stem; feature true since P(1 - P/500) - P(500 - P)/5000 simplifies to 0."
    },
    {
     "id": "ex-1",
     "verdict": "ok",
-    "evidence": "SymPy: zeros of P(600 - P)/2400 are 0 and 600; value 24 at P = 120; solution 600/(1 + 4e^(-t/4)) has limit 600."
+    "evidence": "Only cues and one why changed. SymPy: zeros {0, 600}, value 24 at P = 120, k*600 = 1/4."
    },
    {
     "id": "err-BC-ERR-07039",
     "verdict": "ok",
-    "evidence": "BC-MIS-07024 text matches; consequence quoted."
+    "evidence": "relation distinct, fix_prompt true; kP differs from kP(600 - P)."
    },
    {
     "id": "err-BC-ERR-07043",
     "verdict": "ok",
-    "evidence": "BC-MIS-07023 text matches; consequence quoted."
+    "evidence": "relation equivalent, fix_prompt false; both values 600, the sentence is what is missing."
    },
    {
     "id": "err-BC-ERR-07044",
     "verdict": "ok",
-    "evidence": "SymPy: 600/(1 + 4*exp(-t/4)) satisfies the ODE with P(0) = 120 (residual 0); BC-MIS-07025 text matches."
+    "evidence": "relation distinct, fix_prompt true; SymPy 600/(1 + 4*exp(-t/4)) residual 0 against the ODE, value 120 at t = 0, limit 600."
    },
    {
     "id": "representations",
     "verdict": "ok",
-    "evidence": "null."
+    "evidence": "null.",
+    "note": "unchanged since 2026-09-29"
    },
    {
-    "id": "bridge-BC-PRQ-07003",
+    "id": "BC-PRQ-07003",
     "verdict": "ok",
-    "evidence": "Matches description_plain on jointly proportional."
+    "evidence": "Matches description_plain on jointly proportional.",
+    "note": "unchanged since 2026-09-29"
    },
    {
     "id": "chk-1",
     "verdict": "ok",
-    "evidence": "Value 24 at P = 120, positive, limit 600."
+    "evidence": "Value 24 at P = 120, positive, limit 600.",
+    "note": "unchanged since 2026-09-29"
    },
    {
     "id": "chk-2",
     "verdict": "ok",
-    "evidence": "SymPy: zeros of F/3 - F**2/2700 are 0 and 900; value 27 at F = 90."
+    "evidence": "SymPy: zeros of F/3 - F**2/2700 are 0 and 900; value 27 at F = 90.",
+    "note": "unchanged since 2026-09-29"
    },
    {
     "id": "chk-3",
     "verdict": "ok",
-    "evidence": "Key is the complete sentence; A, C, D follow BC-ERR-07039, 07043, 07044."
+    "evidence": "Key is the complete sentence; A, C, D follow BC-ERR-07039, 07043, 07044.",
+    "note": "unchanged since 2026-09-29"
+   },
+   {
+    "id": "no_figure_reason",
+    "verdict": "ok",
+    "evidence": "fixed 2026-09-29: reason reworded to name the deferral: no skill carries a figure-bearing representation; ki-2 describes a process, a solution rising toward a, which LSN-CON-07012 draws once as its ki-1 interactive under rule 3, and this lesson defers to it instead of drawing it twice (37 words). A drawn ki-2 would duplicate 07012's stepped logistic curve. Delivery prose, the ki-2 delivery reason and the inferred claim now cite rule 2 for the process and rule 3 for the stepper, in the current numbering."
    }
   ],
   "advice": [
-   "The problem statement gives the constant 1/2400 while chk-3 uses the (1/2)R(1 - R/400) form; ki-1 shows only ky(a - y), so the equivalence of the two forms is never taught.",
-   "BC-QA-07009 expected_solution_path includes half the capacity at fastest change; the lesson defers it to LSN-CON-07012, which is fine but st-1 cue mentions only limit or meaning.",
-   "chk-3 option D (\"Nothing, until solved\") reflects BC-MIS-07026 better than BC-ERR-07044."
+   "ki-2 is tagged BC-EK-FUN-7H2 (interpreted without solving) but its text no longer says the equation is read without solving; the cut lead-in carried the EK's own claim.",
+   "The contrast feature names 'a factor 500 - P' while the this stem writes P(1 - P/500); the factor is there up to the constant 1/500, but a reader matching text sees 1 - P/500.",
+   "The design's Delivery section says 'Rule 3 would allow a logistic curve with a stepped initial value'; under the 2026-09-29 numbering rule 3 is the discrete stepper and rule 2 the process rule, so the citation reads oddly.",
+   "The problem gives the constant 1/2400 while chk-3 uses the (1/2)R(1 - R/400) form; the equivalence of the two forms is never taught (carried).",
+   "chk-3 option D ('Nothing, until solved') reflects BC-MIS-07026 better than BC-ERR-07044 (carried)."
   ],
   "counts": {
-   "ok": 13,
+   "ok": 16,
    "unsourced": 0,
    "wrong": 0,
    "over_cap": 0,

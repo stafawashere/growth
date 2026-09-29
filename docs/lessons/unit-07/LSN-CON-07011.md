@@ -78,10 +78,10 @@ BC-QA-07009 is `either`, one or two FRQ parts or one MCQ; the MCQ shape is taken
 
 ## Delivery
 
-- orientation, ki-1, ki-2: text, rule 6. The representations are BC-REP-04, 05, 06. Rule 3 would allow a logistic curve with a stepped initial value; it is served once, on LSN-CON-07012's ki-1, where the limit is the idea being taught [inferred].
+- orientation, ki-1, ki-2: text, rule 6. The representations are BC-REP-04, 05, 06. ki-2's rise toward a is a process, which rule 2 would draw and rule 3 would serve as a logistic curve with a stepped initial value; that curve is served once, on LSN-CON-07012's ki-1, where the limit is the idea being taught, and this lesson defers to it [inferred].
 - ex-1 and the three error blocks: step_reveal, rule 1.
 
-- No drawn block: the machine record carries `no_figure_reason`. The representations are BC-REP-04, 05 and 06, none figure-bearing, and the solution curve is drawn once, on LSN-CON-07012.
+- No drawn block: the machine record carries `no_figure_reason`. The representations are BC-REP-04, 05 and 06, none figure-bearing. ki-2 describes a process, and its curve is drawn once, on LSN-CON-07012's ki-1 interactive (rule 3); this lesson defers to it.
 - pr-1: text, rule 6.
 
 ## Band plan
@@ -149,7 +149,7 @@ BC-QA-07009 is `either`, one or two FRQ parts or one MCQ; the MCQ shape is taken
    "research/units/unit-07-differential-equations.md#7.9 Logistic Models with Differential Equations"
   ]
  },
- "no_figure_reason": "Both key ideas are symbolic: an equation from a proportionality statement, and a sign read from its right side. No skill carries a figure-bearing representation, and the solution curve is drawn once, in the next lesson.",
+ "no_figure_reason": "No skill carries a figure-bearing representation. ki-2 describes a process, a solution rising toward a, which LSN-CON-07012 draws once as its ki-1 interactive under rule 3; this lesson defers to that curve instead of drawing it twice.",
  "orientation": {
   "text": "A response writes dy/dt = ky(a - y) from a joint proportionality statement and reads it without solving.",
   "sources": [
@@ -570,7 +570,7 @@ BC-QA-07009 is `either`, one or two FRQ parts or one MCQ; the MCQ shape is taken
   {
    "block": "ki-2",
    "mode": "text",
-   "reason": "rule 6: a reading of the equation; BC-REP-04, BC-REP-05 on BC-SKL-07043. The stepped logistic curve that rule 3 allows is served once, in LSN-CON-07012, where the limit and the fastest change are the idea",
+   "reason": "rule 6: a reading of the equation; BC-REP-04, BC-REP-05 on BC-SKL-07043. Its process, a solution rising toward a, falls under rule 2, and the stepped logistic curve that rule 3 allows is served once, in LSN-CON-07012, where the limit and the fastest change are the idea; this lesson defers to it",
    "sources": [
     "BC-SKL-07043"
    ]
@@ -628,7 +628,7 @@ BC-QA-07009 is `either`, one or two FRQ parts or one MCQ; the MCQ shape is taken
    "settles": "A CAS check in the build pipeline."
   },
   {
-   "claim": "ki-2 stays text here although rule 3 would allow a stepped logistic curve; the curve is served once, in LSN-CON-07012.",
+   "claim": "ki-2 describes a process and stays text here, deferring to LSN-CON-07012, whose ki-1 serves the stepped logistic curve under rule 3 once.",
    "settles": "The modality A/B in the build plan."
   },
   {

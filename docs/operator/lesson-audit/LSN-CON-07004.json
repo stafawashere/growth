@@ -42,98 +42,107 @@
   "auditor": "claude-opus-5-5",
   "blocks": [
    {
+    "id": "prediction",
+    "verdict": "ok",
+    "evidence": "SymPy: 2(y - x + 1) at (2, 0) is -2, so A (falls, slope -2); B and C false; resolution from research 7.3 Construction."
+   },
+   {
     "id": "orientation",
     "verdict": "ok",
-    "evidence": "Paraphrases BC-CON-07004 description_plain and the Zero slope locus paragraph; 21 words."
+    "evidence": "Shortened; BC-CON-07004 description_plain; figure delivery unchanged."
    },
    {
     "id": "ki-1",
     "verdict": "ok",
-    "evidence": "Paraphrases the 7.3 Construction paragraph (BC-EK-FUN-7C1); figure slopes 2 at (0,0) and 4 at (0,1) checked by SymPy."
+    "evidence": "Shortened; research 7.3 Construction (BC-EK-FUN-7C1); figure spec unchanged."
    },
    {
     "id": "ki-2",
     "verdict": "ok",
-    "evidence": "Direction checked in SymPy: y**2 - 1 is 0 at (-2,1), (0,1), (2,1) (same along a horizontal line), x**2 - 4 is -3 at (1,-2), (1,0), (1,2) (same along a vertical line); matches BC-SKL-07013 rows or columns; the reversed research 7.3 Independence line is listed as inferred; ced:139 quote verbatim; zero-slope sentence from the 7.3 Zero slope locus paragraph.",
-    "reaudited": "2026-09-29"
+    "evidence": "Shortened; direction correct: no x gives y only, constant along horizontal lines; quote verbatim on ced:139."
    },
    {
     "id": "st-1",
     "verdict": "ok",
-    "evidence": "Method from BC-QA-07002 expected_solution_path[0] and [1]; rival from wrong_approaches."
+    "evidence": "Labels stripped; method expected_solution_path[0] and [1]; rival wrong_approaches."
+   },
+   {
+    "id": "st-1.contrast",
+    "verdict": "ok",
+    "evidence": "this matches BC-QA-07002 typical_wording (sketch the slope field at the indicated points), slope 0 at (0, 0); not_this is BC-QA-07001 typical_wording (solution curve through a point); why_not true."
    },
    {
     "id": "st-2",
     "verdict": "ok",
-    "evidence": "Method from BC-QA-07010 expected_solution_path[0]; rival from wrong_approaches; cue from typical_wording and common_givens."
+    "evidence": "Labels stripped only; fields otherwise unchanged."
    },
    {
     "id": "ex-1",
     "verdict": "ok",
-    "evidence": "SymPy: 2(y-x+1) = 0 gives y = x-1; slopes 2, 0, 4 at (0,0), (1,0), (0,1)."
+    "evidence": "Cues shortened, exprs unchanged; SymPy slopes 2, 0, 4 and locus y = x - 1."
    },
    {
     "id": "what_a_reader_scores:ex-1",
     "verdict": "ok",
-    "evidence": "BC-PT-99083 line matches the bundle fields."
+    "evidence": "BC-PT-99083 line matches the bundle fields. unchanged since 2026-09-29."
    },
    {
     "id": "err-BC-ERR-07010",
     "verdict": "ok",
-    "evidence": "Record fields verbatim; swapped coordinates give (0,1), slope 4, against 0 at (1,0)."
+    "evidence": "fix_prompt true with relation distinct; swapped point (0, 1) gives 4 against 0."
    },
    {
     "id": "err-BC-ERR-07011",
     "verdict": "ok",
-    "evidence": "Record fields verbatim; BC-MIS-99015 is linked; tilt 2 of (0,0) against computed 0."
+    "evidence": "fix_prompt true with relation distinct; 2 against 0."
    },
    {
     "id": "err-BC-ERR-07012",
     "verdict": "ok",
-    "evidence": "Record fields verbatim; locus y = x-1 checked."
+    "evidence": "fix_prompt true with relation distinct; fields unchanged."
    },
    {
     "id": "err-BC-ERR-07013",
     "verdict": "ok",
-    "evidence": "Record fields verbatim; 2(y+1) versus 2(y-x+1) differ at x = 1."
+    "evidence": "fix_prompt true with relation distinct; 2(y + 1) at (1, 0) is 2 against 0."
    },
    {
     "id": "representations",
     "verdict": "ok",
-    "evidence": "null; the key idea figures carry BC-REP-07."
+    "evidence": "null; the key idea figures carry BC-REP-07. unchanged since 2026-09-29."
    },
    {
     "id": "BC-PRQ-06005",
     "verdict": "ok",
-    "evidence": "Evaluation at a stated input, from description_plain."
+    "evidence": "Reworded only; evaluation at a stated input."
    },
    {
     "id": "BC-PRQ-07006",
     "verdict": "ok",
-    "evidence": "Paraphrases failure_signature (wrong lattice point)."
+    "evidence": "Reworded; failure_signature: slope evaluated at the wrong lattice point."
    },
    {
     "id": "chk-1",
     "verdict": "ok",
-    "evidence": "SymPy: 2(1-0+1) = 4 at (0,1); key (2,0,4)."
+    "evidence": "SymPy: 2(1-0+1) = 4 at (0,1); key (2,0,4). unchanged since 2026-09-29."
    },
    {
     "id": "chk-2",
     "verdict": "ok",
-    "evidence": "SymPy: -(y+2t-1) gives 1, -1, 0 at (0,0), (1,0), (0,1)."
+    "evidence": "SymPy: -(y+2t-1) gives 1, -1, 0 at (0,0), (1,0), (0,1). unchanged since 2026-09-29."
    },
    {
     "id": "chk-3",
     "verdict": "ok",
-    "evidence": "SymPy: 3-4-2 = -3; distractors -9 at (3,2), -2 at (0,0), 1 from y-2 all reproduce."
+    "evidence": "SymPy: 3-4-2 = -3; distractors -9 at (3,2), -2 at (0,0), 1 from y-2 all reproduce. unchanged since 2026-09-29."
    }
   ],
   "advice": [
-   "Rewrite ki-2 as \"with no x, every row of segments is identical along the row; with no y, every column is identical\", matching the skill text \"repeats along rows or along columns\"; the research Independence paragraph should be corrected at the same time.",
-   "Figures suit the slope field reading; ex-1 teaches the zero locus as first line and substitution as the rival to solving."
+   "research/units/unit-07-differential-equations.md line 205 (Independence) still has the directions reversed: a right side without x is the same along every horizontal line, not vertical. The lesson ki-2 is right; the research line should be corrected.",
+   "No no_figure_reason and no new drawn block: the existing figure blocks on orientation, ki-1 and ki-2 are unchanged, and the prediction stays text by rule 6."
   ],
   "counts": {
-   "ok": 17,
+   "ok": 19,
    "unsourced": 0,
    "wrong": 0,
    "over_cap": 0,

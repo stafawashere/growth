@@ -54,8 +54,8 @@
    },
    {
     "id": "st-1.contrast",
-    "verdict": "unsourced",
-    "evidence": "not_this \"Show that y = 1 + 3e^(2x) solves dy/dx = 2(y - 1)\" is BC-QA-07007 typical_wording \"show that the given function is a solution\", the block's own archetype, so the pair contrasts two stems of one archetype. SymPy: this is sound (residual 0, y(0) = 4 gives C = 3)."
+    "verdict": "ok",
+    "evidence": "fixed 2026-09-29: not_this is now a BC-QA-07003 separation stem, after its typical_wording ('Use separation of variables to solve dy/dx = 2(y - 1), y(0) = 4.'), why_not 'No candidate to verify.', feature 'A printed C.'; this unchanged. SymPy dsolve on the not_this gives y = 1 + 3e^(2x), the member the this stem selects, so the pair shares one equation and point and differs only in whether the family is printed. Recognition prose, st-1 sources and the Sources list now cite BC-QA-07003."
    },
    {
     "id": "ex-1",
@@ -99,11 +99,16 @@
    "ki-1 notation shrank to \"constant C\"; the concept notation also names general solution and family of solutions, which the lesson no longer states anywhere a student reads."
   ],
   "counts": {
-   "ok": 11,
-   "unsourced": 1,
+   "ok": 12,
+   "unsourced": 0,
    "wrong": 0,
    "over_cap": 0,
    "lint": 0
   }
- }
+ },
+ "fix_notes": [
+  "st-1.contrast: not_this moved from a BC-QA-07007 single-function verification to a BC-QA-07003 separation stem; feature 'A printed C.'. Word counts 448 full, 448 brief from the checker (read minutes 2.99).",
+  "No worked example problem, check stem or key changed.",
+  "Left as advice: ki-1 notation still names only constant C."
+ ]
 }

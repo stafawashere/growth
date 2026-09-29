@@ -27,7 +27,7 @@ BC-SKL-07009 maps to BC-EK-FUN-7B2 (ced:138), one core block, both bands.
 
 BC-QA-07007 (research/question-analysis/question-archetypes.md#BC-QA-07007 Verification that a function solves a differential equation), through its `difficulty_variables` "whether the candidate carries an arbitrary constant": a candidate with C beside the equation, and often a stated point. The topic names the conceptual variant "how many solutions an equation has" and the multi-concept variant where "only one member of the family survives" (research/units/unit-07-differential-equations.md#7.2 Verifying Solutions for Differential Equations).
 
-The contrast pair sits on st-1. Its near miss is the sibling BC-CON-07002 (docs/lessons/unit-07/README.md, section 3): a candidate with a fixed coefficient and no constant, which is tested once and has no family to fix. What says "not this concept": a candidate with no constant (BC-CON-07002), or "use separation of variables" (BC-CON-07007).
+The contrast pair sits on st-1. Its near miss is a BC-QA-07003 stem, whose `typical_wording` is "use separation of variables to find an expression for the particular solution to the differential equation with the given initial condition" (research/question-analysis/question-archetypes.md#BC-QA-07003 Particular solution by separation of variables): the same equation and point with no candidate printed, so the family is derived, not verified. The feature that separates them is a printed constant C. What says "not this concept": a candidate with no constant (BC-CON-07002), or "use separation of variables" (BC-CON-07007).
 
 ## Method choice
 
@@ -72,17 +72,18 @@ BC-QA-07007 is `no_calculator` and its `multipart_structure` names a single MCQ 
 
 ## Band plan
 
-- Low (full), in served order: prediction, orientation, ki-1, st-1 with its contrast pair, ex-1 and its lines, chk-1, err-BC-ERR-07009, chk-2. 449 words, 3.0 minutes (cap 900 and 6). The lesson has one worked example, so nothing is faded.
-- Mid (brief): the same blocks, in the same order. 449 words, 3.0 minutes (cap 450 and 3). Orientation, the key idea text, strategy fields, contrast texts, the prediction and step cues were shortened to fit; no anchor quote or scoring tag was dropped.
+- Low (full), in served order: prediction, orientation, ki-1, st-1 with its contrast pair, ex-1 and its lines, chk-1, err-BC-ERR-07009, chk-2. 448 words, 2.99 minutes (cap 900 and 6). The lesson has one worked example, so nothing is faded.
+- Mid (brief): the same blocks, in the same order. 448 words, 2.99 minutes (cap 450 and 3). Orientation, the key idea text, strategy fields, contrast texts, the prediction and step cues were shortened to fit; no anchor quote or scoring tag was dropped.
 - Refresher: ki-1, err-BC-ERR-07009, ex-1.
 
 ## Sources
 
 - BC-CON-07003; BC-SKL-07009; BC-EK-FUN-7B2; ced:138
-- BC-QA-07007; BC-PT-99005, BC-PT-99068; sg-23:12
+- BC-QA-07007, BC-QA-07003; BC-PT-99005, BC-PT-99068; sg-23:12
 - BC-ERR-07009; BC-MIS-07005
 - research/units/unit-07-differential-equations.md#7.2 Verifying Solutions for Differential Equations
 - research/question-analysis/question-archetypes.md#BC-QA-07007 Verification that a function solves a differential equation
+- research/question-analysis/question-archetypes.md#BC-QA-07003 Particular solution by separation of variables
 - research/exam/exam-structure.md#Section and part layout
 - [inferred] Two checks, not three. Settled by a second and third error record on BC-SKL-07009.
 
@@ -131,12 +132,12 @@ BC-QA-07007 is `no_calculator` and its `multipart_structure` names a single MCQ 
    "method": "Its derivative, C held constant.",
    "rival": "Solving the equation from scratch.",
    "separating_feature": "The family is supplied.",
-   "sources": ["BC-QA-07007"],
+   "sources": ["BC-QA-07007", "BC-QA-07003"],
    "evidence_tag": "verified",
    "contrast": {
     "this": {"text": "Show y = 1 + Ce^(2x) solves dy/dx = 2(y - 1); find the member with y(0) = 4.", "archetype_id": "BC-QA-07007"},
-    "not_this": {"text": "Show that y = 1 + 3e^(2x) solves dy/dx = 2(y - 1).", "why_not": "One function, no constant to fix."},
-    "feature": "A constant C."
+    "not_this": {"text": "Use separation of variables to solve dy/dx = 2(y - 1), y(0) = 4.", "why_not": "No candidate to verify."},
+    "feature": "A printed C."
    }
   }
  ],
@@ -247,12 +248,12 @@ BC-QA-07007 is `no_calculator` and its `multipart_structure` names a single MCQ 
  ],
  "refresher": ["ki-1", "err-BC-ERR-07009", "ex-1"],
  "read_minutes": {
-  "full": 3.0,
-  "brief": 3.0
+  "full": 2.99,
+  "brief": 2.99
  },
  "word_count": {
-  "full": 449,
-  "brief": 449
+  "full": 448,
+  "brief": 448
  },
  "research_lines": [
   {
@@ -270,6 +271,6 @@ BC-QA-07007 is `no_calculator` and its `multipart_structure` names a single MCQ 
    "settles": "A scoring guideline for a family verification part."
   }
  ],
- "sources": ["BC-CON-07003", "BC-SKL-07009", "BC-EK-FUN-7B2", "ced:138", "BC-QA-07007", "BC-PT-99005", "BC-PT-99068", "sg-23:12", "BC-ERR-07009", "BC-MIS-07005", "research/units/unit-07-differential-equations.md#7.2 Verifying Solutions for Differential Equations", "research/question-analysis/question-archetypes.md#BC-QA-07007 Verification that a function solves a differential equation", "research/exam/exam-structure.md#Section and part layout"]
+ "sources": ["BC-CON-07003", "BC-SKL-07009", "BC-EK-FUN-7B2", "ced:138", "BC-QA-07007", "BC-QA-07003", "BC-PT-99005", "BC-PT-99068", "sg-23:12", "BC-ERR-07009", "BC-MIS-07005", "research/units/unit-07-differential-equations.md#7.2 Verifying Solutions for Differential Equations", "research/question-analysis/question-archetypes.md#BC-QA-07007 Verification that a function solves a differential equation", "research/question-analysis/question-archetypes.md#BC-QA-07003 Particular solution by separation of variables", "research/exam/exam-structure.md#Section and part layout"]
 }
 ```

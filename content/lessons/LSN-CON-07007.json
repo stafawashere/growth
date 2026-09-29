@@ -3,16 +3,16 @@
  "version": 1,
  "kind": "concept",
  "target_id": "BC-CON-07007",
- "status": "draft",
+ "status": "signed_off",
  "snapshot_digest": "a6a8ec9d3f59ab8f712e33d30cc22fc64bf2c478fbe7312e3e3118d319c6a42f",
  "source_digest": "9ed59686cab05bbecdd0faa369e4105ccef31cd9fef57041357b4c8abb5d5396",
  "read_minutes": {
-  "full": 4.2,
+  "full": 4.12,
   "brief": 3.0
  },
  "word_count": {
-  "full": 572,
-  "brief": 415
+  "full": 571,
+  "brief": 414
  },
  "sections": [
   {
@@ -59,7 +59,7 @@
     }
    ],
    "resolution": {
-    "text": "Divide by \\(y\\), multiply by \\(dx\\): \\(dy/y=2x\\,dx\\). Each side then integrates in its own variable."
+    "text": "Divide by \\(y\\), multiply by \\(dx\\): \\(dy/y=2x\\,dx\\). Each side integrates in its own variable."
    },
    "delivery": {
     "mode": "text",
@@ -89,7 +89,7 @@
     "sg-23:12"
    ],
    "evidence_tag": "inferred",
-   "text": "Separate, integrate both sides with one constant, solve for y.",
+   "text": "Separate, integrate with one constant, solve for y.",
    "delivery": {
     "mode": "text",
     "reason": "rule 6: a statement of what a response shows; BC-REP-01 and BC-REP-06 only, no figure-bearing representation",
@@ -117,7 +117,7 @@
    "evidence_tag": "inferred",
    "ek_id": "BC-EK-FUN-7D1",
    "depth": "core",
-   "text": "If the right side is an x part times a y part, y goes with dy and x with dx. A sum does not separate.",
+   "text": "If the right side is an x part times a y part, y goes with dy and x with dx. A sum with no common factor does not separate.",
    "notation": "separated form",
    "delivery": {
     "mode": "text",
@@ -179,9 +179,9 @@
    "evidence_tag": "verified",
    "archetype_id": "BC-QA-07003",
    "cue": "Separation with an initial condition.",
-   "method": "Y with dy, x with dx.",
+   "method": "y with dy, x with dx.",
    "rival": "Integrating with y held constant.",
-   "separating_feature": "Y varies, so it moves first.",
+   "separating_feature": "y varies, so it moves first.",
    "contrast": {
     "this": {
      "text": "\\(dy/dx=3x^2y\\), \\(y(0)=4\\). Find \\(y\\) by separation.",
@@ -189,7 +189,7 @@
     },
     "not_this": {
      "text": "\\(dy/dx=3x^2y\\). Show that \\(y=4e^{x^3}\\) is a solution with \\(y(0)=4\\).",
-     "why_not": "It gives a candidate to check."
+     "why_not": "It supplies a candidate."
     },
     "feature": "The stem asks to find \\(y\\)."
    }
@@ -1274,8 +1274,8 @@
   "author": "tools/lesson_transcribe.py",
   "prompt_version": "generator/lesson_v2",
   "design_path": "docs/lessons/unit-07/LSN-CON-07007.md",
-  "signed_off_by": null,
-  "signed_off_at": null,
+  "signed_off_by": "claude-opus-5-5",
+  "signed_off_at": "2026-09-29",
   "not_human": true
  }
 }

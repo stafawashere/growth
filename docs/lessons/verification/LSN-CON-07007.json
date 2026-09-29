@@ -50,8 +50,8 @@
    },
    {
     "id": "ki-1",
-    "verdict": "wrong",
-    "evidence": "\"A sum does not separate.\" is false: SymPy factor(x*y + x) = x*(y + 1), a sum that separates. The earlier \"a sum with no common factor\" was the true form; BC-SKL-07028 says not separable when the right side will not factor, and st-2's separating_feature says a common factor exists."
+    "verdict": "ok",
+    "evidence": "fixed 2026-09-29: second sentence restored to 'A sum with no common factor does not separate.' SymPy: factor(x*y + x) = x*(y + 1), a sum with a common factor that separates; factor(2*x*y + 3) = 2*x*y + 3 and separatevars returns None, the err-BC-ERR-07028 shape that does not."
    },
    {
     "id": "ki-2",
@@ -60,8 +60,8 @@
    },
    {
     "id": "st-1",
-    "verdict": "lint",
-    "evidence": "Stripping the label capitalised the variable: method \"Y with dy, x with dx.\" and separating_feature \"Y varies, so it moves first.\" now name Y, not y."
+    "verdict": "ok",
+    "evidence": "fixed 2026-09-29: method restored to 'y with dy, x with dx.' and separating_feature to 'y varies, so it moves first.', lower-case y."
    },
    {
     "id": "st-1.contrast",
@@ -161,11 +161,16 @@
    "Earlier advice on st-2 and err-BC-ERR-07028 being low band only, and on log(y) against log(Abs(y)), still stands."
   ],
   "counts": {
-   "ok": 20,
+   "ok": 22,
    "unsourced": 0,
-   "wrong": 1,
+   "wrong": 0,
    "over_cap": 0,
-   "lint": 1
+   "lint": 0
   }
- }
+ },
+ "fix_notes": [
+  "ki-1 restored to the common-factor wording; st-1 method and separating_feature start with lower-case y.",
+  "Brief band trimmed back under 450 after the 4 restored words: orientation drops 'both sides', the prediction resolution drops 'then', st-1 contrast why_not is 'It supplies a candidate.'. Word counts 618 full, 449 brief from the checker (read minutes 4.12, 3.0).",
+  "No worked example problem, check stem or key changed."
+ ]
 }

@@ -48,105 +48,124 @@
   "auditor": "claude-opus-5-5",
   "blocks": [
    {
+    "id": "prediction",
+    "verdict": "ok",
+    "evidence": "SymPy: (y-1)(x+1)(x-2) at (1,2) is -2, so falling is the only true option; B (rising) and C (not determined) are false; resolution matches the 7.4 Reading behaviour paragraph (where solutions rise and fall, without solving). Point (1,2) is not the critical point; no id or verdict word in served text."
+   },
+   {
     "id": "orientation",
     "verdict": "ok",
-    "evidence": "Paraphrases BC-CON-07005 description_plain and the Sketching standard (never crossing the equilibrium segments, sg-23:9); a horizontal row of zero slope is a constant solution."
+    "evidence": "Shortened; still paraphrases BC-CON-07005 description_plain and the 7.4 Reading behaviour paragraph."
    },
    {
     "id": "ki-1",
     "verdict": "ok",
-    "evidence": "Never crossing from sg-23:9 (curve must lie entirely below the horizontal segments), need-not-approach from the 7.4 Reading behaviour paragraph ('whether they approach'); SymPy: (2 - y)/2, y(0) = 3 gives 2 + exp(-x/2), limit 2 at +oo, unbounded at -oo; ced:140 quote verbatim. Motion frames x = -2 and -3 leave the y window [0, 4] (curve exits at x = -2 ln 2 = -1.386), so the last two frames repeat the clipped trace; a preference, not a false claim.",
-    "reaudited": "2026-09-29"
+    "evidence": "Shortened; tangent line from the 7.4 Solution curve paragraph, never crossing from sg-23:9 via the Sketching standard; the dropped need-not-approach clause removes no true claim it now contradicts. ced:140 anchor quote still a verbatim substring of the cached page."
    },
    {
     "id": "st-1",
     "verdict": "ok",
-    "evidence": "BC-QA-07010 expected_solution_path[0] and wrong_approaches."
+    "evidence": "Label strip only; method no longer starts with a label; fields from BC-QA-07010 expected_solution_path[0] and wrong_approaches."
+   },
+   {
+    "id": "st-1.contrast",
+    "verdict": "ok",
+    "evidence": "this matches BC-QA-07010 typical_wording (find the critical input and classify); SymPy: with y > 3 only x - 4 vanishes on x > 0, sign -1 at 3 and +1 at 5, so the stem is well posed. not_this is BC-QA-07002 typical_wording (sketch the slope field at the indicated points), not BC-QA-07010's own stem; why_not and feature true."
    },
    {
     "id": "st-2",
     "verdict": "ok",
-    "evidence": "BC-QA-07001 expected_solution_path[0] and [1], wrong_approaches, common_givens."
+    "evidence": "Label strip only; BC-QA-07001 expected_solution_path and wrong_approaches."
    },
    {
     "id": "st-3",
     "verdict": "ok",
-    "evidence": "BC-QA-07005 expected_solution_path[0] and [1], wrong_approaches."
+    "evidence": "Label strip only; BC-QA-07005 expected_solution_path and wrong_approaches."
    },
    {
     "id": "ex-1",
     "verdict": "ok",
-    "evidence": "SymPy: with y > 1 and x > 0 only x-2 vanishes; sign of (y-1)(x+1)(x-2) is negative at x = 1, positive for x > 2; relative minimum at x = 2."
+    "evidence": "Cues and whys shortened; SymPy: only x - 2 vanishes for x > 0, y > 1; sign -1 at x = 1; relative minimum at 2. Values unchanged."
    },
    {
     "id": "ex-2",
     "verdict": "ok",
-    "evidence": "SymPy: (2-3)/2 = -1/2 at (0,3); zero at y = 2; solution 2+e^(-x/2) stays above and flattens toward 2."
+    "evidence": "fade_from 4: shown steps give (2-y)/2, -1/2 at (0,3) and (2-y)/2 = 0; SymPy solve gives y = 2 and dsolve gives 2 + exp(-x/2), so a student with the method can finish; the withheld solve and sketch carry BC-PT-99065."
    },
    {
     "id": "what_a_reader_scores:ex-1",
     "verdict": "ok",
-    "evidence": "BC-PT-99010 line matches the bundle fields."
+    "evidence": "BC-PT-99010 line matches the bundle fields.",
+    "note": "unchanged since 2026-09-29"
    },
    {
     "id": "what_a_reader_scores:ex-2",
     "verdict": "ok",
-    "evidence": "BC-PT-99065 line matches the bundle fields."
+    "evidence": "BC-PT-99065 line matches the bundle fields.",
+    "note": "unchanged since 2026-09-29"
    },
    {
     "id": "err-BC-ERR-05013",
     "verdict": "ok",
-    "evidence": "Record observed_behavior (zero derivative that keeps its sign) matches; squared factor follows the record's even-multiplicity cause; SymPy: zero set in x {2}, value 1/2 at x = 1 and x = 3 with y = 3/2; FiniteSet(2) against EmptySet distinct; off-spec draw listed as inferred.",
-    "reaudited": "2026-09-29"
+    "evidence": "Only change fix_prompt true; relation distinct; FiniteSet(2) against EmptySet differ."
    },
    {
     "id": "err-BC-ERR-05021",
     "verdict": "ok",
-    "evidence": "Record fields verbatim; sign left of 2 is -1, so reading +1 gives a false maximum."
+    "evidence": "Only change fix_prompt true; relation distinct; 1 against -1 differ."
    },
    {
     "id": "err-BC-ERR-05025",
     "verdict": "ok",
-    "evidence": "Record fields verbatim; x = -1 lies outside x > 0; BC-MIS-05028 is linked."
+    "evidence": "Only change fix_prompt true; relation distinct; FiniteSet(-1, 2) against FiniteSet(2) differ."
    },
    {
     "id": "err-BC-ERR-07013",
     "verdict": "ok",
-    "evidence": "Record fields verbatim; x(2-y)/2 versus (2-y)/2."
+    "evidence": "Only change fix_prompt true; relation distinct; x(2-y)/2 against (2-y)/2 differ."
    },
    {
     "id": "representations",
     "verdict": "ok",
-    "evidence": "null; the interactive orientation and ki-1 motion carry BC-REP-07."
+    "evidence": "null; the interactive orientation and ki-1 motion carry BC-REP-07.",
+    "note": "unchanged since 2026-09-29"
    },
    {
     "id": "BC-PRQ-07006",
     "verdict": "ok",
-    "evidence": "Paraphrases description_plain (locating a point from its coordinates)."
+    "evidence": "Shortened; matches description_plain (locating a point from its coordinates) and failure_signature (wrong lattice point)."
    },
    {
     "id": "chk-1",
     "verdict": "ok",
-    "evidence": "SymPy: x-2 = -1 at x = 1; key relative minimum at x = 2."
+    "evidence": "SymPy: x-2 = -1 at x = 1; key relative minimum at x = 2.",
+    "note": "unchanged since 2026-09-29"
    },
    {
     "id": "chk-2",
     "verdict": "ok",
-    "evidence": "SymPy: -2y > 0 for y < 0; sign of (t+2)(t-3) negative then positive; relative minimum at t = 3."
+    "evidence": "SymPy: -2y > 0 for y < 0; sign of (t+2)(t-3) negative then positive; relative minimum at t = 3.",
+    "note": "unchanged since 2026-09-29"
    },
    {
     "id": "chk-3",
     "verdict": "ok",
-    "evidence": "SymPy: -(y-2) < 0 for y > 2; product positive for 0 < x < 4 and negative after; relative maximum at 4. Option D: sign changes negative to positive at -3, so \"minimum at -3\" is consistent."
+    "evidence": "SymPy: -(y-2) < 0 for y > 2; product positive for 0 < x < 4 and negative after; relative maximum at 4. Option D: sign changes negative to positive at -3, so \"minimum at -3\" is consistent.",
+    "note": "unchanged since 2026-09-29"
+   },
+   {
+    "id": "delivery.pr-1",
+    "verdict": "ok",
+    "evidence": "text by TEMPLATE Delivery rule 6; not a drawn block, so no spec to compute."
    }
   ],
   "advice": [
-   "Replace ki-1 \"approach but never cross\" with \"never cross; whether a solution approaches the level depends on the sign of the right side on each side of it\".",
-   "err-BC-ERR-05013 needs a draw where the right side vanishes without a sign change (a squared factor), or the block should be reassigned; chk-3 option C uses the same error path for a missing reason rather than a missing sign change.",
-   "Interactive for the orientation reading and motion for tracing the curve suit their ideas; the lesson teaches the first line (right side zero) and the rival (solving first) well."
+   "ex-1 step 5 cue shrank from \"Negative then positive.\" to \"Sign change.\"; the served steps now show only the left sign (-1 at x = 1), while the BC-PT-99010 line it tags asks for both signs. Restoring the right-side sign (+ at x = 3) would show the whole reason.",
+   "The reader-score lines on ex-1 and ex-2 carry page citations (sg-25:5, sg-25:9, sg-22:12, sg-23:9); they are verbatim record text that the reader strips, not lint.",
+   "Earlier advice on err-BC-ERR-05013 and chk-3 option C still stands; the interactive and motion blocks suit their ideas."
   ],
   "counts": {
-   "ok": 18,
+   "ok": 21,
    "unsourced": 0,
    "wrong": 0,
    "over_cap": 0,

@@ -91,8 +91,8 @@ Figure presence: no drawn block. No rule of 2 to 5 applies, because the topic's 
 
 ## Band plan
 
-- Low (full): prediction, orientation, bridges, ki-1, ki-2, st-1 with its contrast, st-2, ex-1 with its three reader lines, chk-1, the four error blocks, chk-2, chk-3. 619 words, 4.2 minutes (cap 900 and 6).
-- Mid (brief): prediction, orientation, bridges, ki-1, ki-2, st-1 with its contrast, ex-1 with its reader lines, chk-1, err-BC-ERR-07024, err-BC-ERR-07025, chk-2. 450 words, 3.0 minutes (cap 450 and 3). The orientation, both key ideas, the bridges, the st-1 fields, the prediction and ex-1's cues and whys were shortened to fit; no scoring tag was dropped.
+- Low (full): prediction, orientation, bridges, ki-1, ki-2, st-1 with its contrast, st-2, ex-1 with its three reader lines, chk-1, the four error blocks, chk-2, chk-3. 618 words, 4.12 minutes (cap 900 and 6).
+- Mid (brief): prediction, orientation, bridges, ki-1, ki-2, st-1 with its contrast, ex-1 with its reader lines, chk-1, err-BC-ERR-07024, err-BC-ERR-07025, chk-2. 449 words, 3.0 minutes (cap 450 and 3). The orientation, both key ideas, the bridges, the st-1 fields and contrast, the prediction and ex-1's cues and whys were shortened to fit; no scoring tag was dropped.
 - Refresher: ki-1, ki-2, the four error blocks, ex-1.
 
 ## Sources
@@ -152,7 +152,7 @@ Figure presence: no drawn block. No rule of 2 to 5 applies, because the topic's 
     "is_key": false
    }
   ],
-  "resolution": "Divide by \\(y\\), multiply by \\(dx\\): \\(dy/y=2x\\,dx\\). Each side then integrates in its own variable.",
+  "resolution": "Divide by \\(y\\), multiply by \\(dx\\): \\(dy/y=2x\\,dx\\). Each side integrates in its own variable.",
   "sources": [
    "BC-CON-07007",
    "BC-EK-FUN-7D1",
@@ -162,7 +162,7 @@ Figure presence: no drawn block. No rule of 2 to 5 applies, because the topic's 
  },
  "no_figure_reason": "The topic's representations are a differential equation and symbolic forms, converted by rewriting. No key idea describes a process and no representation is figure-bearing.",
  "orientation": {
-  "text": "Separate, integrate both sides with one constant, solve for y.",
+  "text": "Separate, integrate with one constant, solve for y.",
   "sources": [
    "BC-CON-07007",
    "research/units/unit-07-differential-equations.md#7.6 Finding General Solutions Using Separation of Variables",
@@ -174,7 +174,7 @@ Figure presence: no drawn block. No rule of 2 to 5 applies, because the topic's 
    "id": "ki-1",
    "ek_id": "BC-EK-FUN-7D1",
    "depth": "core",
-   "text": "If the right side is an x part times a y part, y goes with dy and x with dx. A sum does not separate.",
+   "text": "If the right side is an x part times a y part, y goes with dy and x with dx. A sum with no common factor does not separate.",
    "notation": "separated form",
    "quote": null,
    "sources": [
@@ -202,9 +202,9 @@ Figure presence: no drawn block. No rule of 2 to 5 applies, because the topic's 
    "id": "st-1",
    "archetype_id": "BC-QA-07003",
    "cue": "Separation with an initial condition.",
-   "method": "Y with dy, x with dx.",
+   "method": "y with dy, x with dx.",
    "rival": "Integrating with y held constant.",
-   "separating_feature": "Y varies, so it moves first.",
+   "separating_feature": "y varies, so it moves first.",
    "sources": [
     "BC-QA-07003"
    ],
@@ -216,7 +216,7 @@ Figure presence: no drawn block. No rule of 2 to 5 applies, because the topic's 
     },
     "not_this": {
      "text": "\\(dy/dx=3x^2y\\). Show that \\(y=4e^{x^3}\\) is a solution with \\(y(0)=4\\).",
-     "why_not": "It gives a candidate to check."
+     "why_not": "It supplies a candidate."
     },
     "feature": "The stem asks to find \\(y\\)."
    }
@@ -776,11 +776,11 @@ Figure presence: no drawn block. No rule of 2 to 5 applies, because the topic's 
   "research/exam/exam-structure.md#Section and part layout"
  ],
  "word_count": {
-  "full": 619,
-  "brief": 450
+  "full": 618,
+  "brief": 449
  },
  "read_minutes": {
-  "full": 4.2,
+  "full": 4.12,
   "brief": 3.0
  }
 }

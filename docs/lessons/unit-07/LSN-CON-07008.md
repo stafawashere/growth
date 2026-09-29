@@ -86,7 +86,7 @@ BC-QA-07011 is `no_calculator`, one FRQ part or one MCQ; the FRQ form is taken, 
 - orientation, ki-1, ki-2: text, rule 6. BC-REP-01, 04, 06 only (docs/lessons/unit-07/README.md, section 6).
 - ex-1, ex-2 and the four error blocks: step_reveal, rule 1.
 
-Figure presence: no drawn block. No rule of 2 to 5 applies, because the skills carry only symbolic, contextual and differential-equation representations and no key idea describes a process, so the record carries `no_figure_reason`.
+Figure presence: no drawn block. No rule of 2 to 5 applies, because the skills carry only symbolic, verbal and differential-equation representations (BC-REP-01, 04, 06) and no key idea describes a process, so the record carries `no_figure_reason`.
 
 ## Band plan
 
@@ -159,7 +159,7 @@ Figure presence: no drawn block. No rule of 2 to 5 applies, because the skills c
    "research/units/unit-07-differential-equations.md#7.7 Finding Particular Solutions Using Initial Conditions and Separation of Variables"
   ]
  },
- "no_figure_reason": "The skills carry symbolic, contextual and differential-equation representations, none figure-bearing, and no key idea describes a process. The content is written lines that fix a constant and a sign.",
+ "no_figure_reason": "The skills carry symbolic, verbal and differential-equation representations, none figure-bearing, and no key idea describes a process. The content is written lines that fix a constant and a sign.",
  "orientation": {
   "text": "A response substitutes the initial values into the equation that holds the constant, before its form changes, and uses them to choose the sign. The answer is one function.",
   "sources": [

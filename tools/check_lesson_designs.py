@@ -1315,6 +1315,11 @@ def rule_reader_scores(design, context):
    return messages
 
 
+def stringified(draw):
+   """Published items store draw values as strings; a design may type them, so compare as text."""
+   return {str(key): json.dumps(value, sort_keys=True) if isinstance(value, (dict, list)) else str(value) for key, value in draw.items()}
+
+
 def rule_draw_exclusion(design, context):
    record = design.record or {}
    messages = []
@@ -1328,7 +1333,7 @@ def rule_draw_exclusion(design, context):
          continue
 
       for item_id, published in context.published_draws(archetype_id):
-         if published == draw:
+         if stringified(published) == stringified(draw):
             messages.append(f"{entry.get('id')} draw equals the parameter_draw of {item_id}")
 
    return messages

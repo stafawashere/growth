@@ -79,6 +79,7 @@ class Settings:
    key_audit_sample_ids: Any = None
    key_audit_sample_path: Any = None
    items_directories: tuple = ()
+   lessons_directory: Any = None
    experiment_default_state: str | dict | None = None
    ai_provider: Any = None
    tutor_links: tuple = ()
@@ -212,7 +213,7 @@ def without_input(errors):
 
 
 def create_app(settings):
-   from app.api.routes import assessment, auth, content, evaluation, export, frq, health, me, progress, purge, review, review_screen, sessions
+   from app.api.routes import assessment, auth, content, evaluation, export, frq, health, lessons, me, progress, purge, review, review_screen, sessions
    from app.api.routes import settings as settings_routes
    from app.api.security_headers import SecurityHeadersMiddleware
    from starlette.middleware.gzip import GZipMiddleware
@@ -236,7 +237,7 @@ def create_app(settings):
 
       return JSONResponse(status_code=422, content={"detail": jsonable_encoder(without_input(exception.errors()))})
 
-   for module in (auth, me, sessions, frq, assessment, purge, content, review, review_screen, progress, evaluation, settings_routes, export, health):
+   for module in (auth, me, sessions, lessons, frq, assessment, purge, content, review, review_screen, progress, evaluation, settings_routes, export, health):
       application.include_router(module.router)
 
    return application

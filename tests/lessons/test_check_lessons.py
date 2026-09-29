@@ -130,10 +130,14 @@ def test_delivery_fixture_fails_for_its_planted_rule(file_name, context):
 
 
 def test_a_missing_delivery_fails_the_schema(context):
-   findings = check_lesson(load_fixture("red_schema__delivery.json"), context)
+   lesson = load_fixture("red_schema__delivery.json")
+   findings = check_lesson(lesson, context)
+   lesson["sections"][0]["delivery"] = {"mode": "text", "reason": "restored"}
+   restored = check_lessons.lint_schema(lesson, context)
 
    assert "schema" in findings
-   assert any("delivery" in message for message in findings["schema"])
+   assert any(message.startswith("sections/0") for message in findings["schema"])
+   assert restored == []
 
 
 def test_a_strategy_block_carrying_delivery_fails_the_schema(context, hand_authored):

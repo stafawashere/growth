@@ -53,7 +53,9 @@ INVENTORY_TABLES = {
    "audit_log",
 }
 NOT_PERSONAL_TABLES = {"items"}
-SHARED_TABLES_OUTSIDE_THE_INVENTORY = {"content_snapshots", "item_verifications", "review_queue", "jobs"}
+SHARED_TABLES_OUTSIDE_THE_INVENTORY = {"content_snapshots", "item_verifications", "review_queue", "jobs", "lessons", "lesson_verifications"}
+LESSON_STUDENT_TABLES = ("lesson_state", "lesson_events", "lesson_check_responses")
+LESSON_CONTENT_TABLES = ("lessons", "lesson_verifications")
 STUDENT_LINK_COLUMNS = ("user_id", "session_id", "attempt_id")
 SECRETS_NAMED_BY_09_AND_THE_AUTH_LAYER = {
    ("provider_configs", "key_ciphertext"),
@@ -543,3 +545,20 @@ def test_get_export_is_scoped_to_its_owner(world):
    assert client.get("/export/JOB-unknown").status_code == 404
    assert client.get(f"/export/{OTHER_TAG}-jobs").status_code == 404
    assert world.client().get(f"/export/{other_id}").status_code == 401
+
+
+def test_export_carries_the_students_lesson_rows_and_not_the_lesson_content(world):
+   """docs/lessons/BUILD-PLAN.md Slice L1: the three per-user lesson tables are the student's, the
+   lesson records and their verifications are shared content like items."""
+   client, user_id = registered_student(world)
+   seed_every_table(world.engine, STUDENT_TAG, user_id, skip_users=True)
+   seed_every_table(world.engine, OTHER_TAG, OTHER_USER_ID)
+   produced = produce(world, client)
+   exported_tables = fetch_archive(client, produced["id"]).json()["tables"]
+
+   for table_name in LESSON_STUDENT_TABLES:
+      assert [row["user_id"] for row in exported_tables[table_name]] == [user_id], table_name
+
+   for table_name in LESSON_CONTENT_TABLES:
+      assert table_name not in exported_tables
+

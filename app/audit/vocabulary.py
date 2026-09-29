@@ -41,6 +41,11 @@ Added 2026-09-28 with the productive-failure opener: opener_gap_fail_open, becau
 for a concept with no published generation item is skipped rather than refused, the fail-open
 twin of coverage_gap_fail_closed, and an operator needs the same queryable record of which concept
 had nothing to open with. It is bounded the same way, one row per user, concept and day.
+
+Added 2026-09-29 with the lessons layer (docs/plan/15-lessons.md, API, migrations, telemetry):
+lesson_gap_fail_open, the lessons twin of opener_gap_fail_open, bounded one row per user, concept
+and day; lesson_stale, written when ingest finds a record whose sources moved or whose ids went
+inactive; lesson_signed_off, written when ingest first stores a signed_off version.
 """
 AUDIT_ACTIONS = (
    "account_created",
@@ -56,6 +61,9 @@ AUDIT_ACTIONS = (
    "export_produced",
    "frq_image_deleted",
    "grading_rerun",
+   "lesson_gap_fail_open",
+   "lesson_signed_off",
+   "lesson_stale",
    "login_failed_lockout",
    "opener_gap_fail_open",
    "password_changed",

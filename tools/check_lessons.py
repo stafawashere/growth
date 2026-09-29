@@ -86,6 +86,42 @@ SECOND_PERSON_BELIEF = re.compile(
 )
 SCORING_CITATION = re.compile(r"\b(?:sg|cr)-\d{2}:\d+\b")
 
+DELIVERED_TYPES = (plan.ORIENTATION, plan.KEY_IDEAS, plan.WORKED_EXAMPLE, plan.COMMON_ERROR, plan.REPRESENTATIONS)
+STEP_REVEAL_TYPES = (plan.WORKED_EXAMPLE, plan.COMMON_ERROR)
+UNDRAWN_MODES = ("text", "step_reveal")
+DRAWN_BLOCKS_MAX = 2  # lessons framework contract, Record shape: at most two drawn blocks per lesson
+SPEC_KINDS = (
+   "graph",
+   "table",
+   "graph_panels",
+   "stacked_graphs",
+   "graph_pair",
+   "graph_with_table",
+   "slope_field",
+   "implicit_curve",
+   "region",
+   "diagram",
+   "geometric_diagram",
+   "parametric_path",
+   "vector_diagram",
+   "washer",
+   "slice_shapes",
+   "graph_sweep",
+   "graph_zoom",
+   "numeric_experiment",
+   "particle_on_line",
+   "number_line_pair",
+   "parametric_trace",
+   "solid_from_slices",
+   "solid_of_revolution",
+   "euler_steps",
+   "solution_curves",
+   "field_trace",
+   "inverse_pair",
+   "table_sweep",
+   "panels",
+)
+
 
 def normalise_text(text):
    return re.sub(r"[^a-z0-9]+", " ", (text or "").lower()).strip()
@@ -1312,6 +1348,117 @@ def lint_discrimination_checks(lesson, context):
    return messages
 
 
+def labels_of(node):
+   """A label is any object in a `labels` list or any object naming a placement, at any depth,
+   because panels and sweeps nest whole specs."""
+   found = []
+
+   if isinstance(node, dict):
+      if "placement" in node:
+         found.append(node)
+
+      for key, value in node.items():
+         is_label_list = key == "labels" and isinstance(value, list)
+
+         if is_label_list:
+            found.extend(label for label in value if isinstance(label, dict) and "placement" not in label)
+
+         found.extend(labels_of(value))
+   elif isinstance(node, list):
+      for value in node:
+         found.extend(labels_of(value))
+
+   return found
+
+
+def delivered_blocks(lesson):
+   blocks = [(section["id"], section) for section in lesson["sections"] if section["type"] in DELIVERED_TYPES]
+   decision = lesson.get("decision")
+
+   if decision is not None:
+      blocks.append(("decision stems", decision))
+
+   return blocks
+
+
+def spec_messages(block_id, mode, delivery):
+   spec = delivery.get("spec")
+   messages = []
+
+   if not isinstance(spec, dict):
+      return [f"{block_id} {mode} needs a spec"]
+
+   kind = spec.get("kind")
+
+   if kind not in SPEC_KINDS:
+      messages.append(f"{block_id} spec kind {kind!r} is not a known spec kind")
+
+   for label in labels_of(spec):
+      is_inside = label.get("placement") == "inside"
+
+      if not is_inside:
+         messages.append(f"{block_id} spec places a label {label.get('text')!r} without placement inside")
+
+   return messages
+
+
+def delivery_messages(block_id, section, delivery):
+   mode = delivery["mode"]
+   is_drawn = mode not in UNDRAWN_MODES
+   is_decision = section.get("type") is None
+   messages = []
+
+   if section.get("type") in STEP_REVEAL_TYPES and mode != "step_reveal":
+      messages.append(f"{block_id} is a {section['type']} and must be step_reveal, not {mode}")
+
+   if is_decision and mode != "contrast":
+      messages.append(f"{block_id} of a decision lesson must be contrast, not {mode}")
+
+   if mode == "contrast" and not is_decision:
+      messages.append(f"{block_id} is contrast, which only a decision lesson's stems carry")
+
+   if is_drawn:
+      messages.extend(spec_messages(block_id, mode, delivery))
+
+      if not delivery.get("fallback"):
+         messages.append(f"{block_id} {mode} needs a fallback")
+
+      if not delivery.get("keyboard"):
+         messages.append(f"{block_id} {mode} needs a keyboard line")
+
+   if mode == "motion" and not delivery.get("reduced_motion"):
+      messages.append(f"{block_id} motion needs a reduced_motion line")
+
+   return messages
+
+
+def lint_delivery(lesson, context):
+   """Lessons framework contract, Record shape (amendment A-D1): every served block names its
+   delivery, and the drawn ones carry what the reader needs to draw or fall back."""
+   messages = []
+   drawn = 0
+
+   for block_id, section in delivered_blocks(lesson):
+      delivery = section.get("delivery")
+
+      if delivery is None:
+         messages.append(f"{block_id} carries no delivery")
+         continue
+
+      messages.extend(delivery_messages(block_id, section, delivery))
+      is_drawn = delivery["mode"] not in UNDRAWN_MODES
+
+      if is_drawn:
+         drawn += 1
+
+   too_many_drawn = drawn > DRAWN_BLOCKS_MAX
+
+   if too_many_drawn:
+      messages.append(f"{drawn} drawn blocks, at most {DRAWN_BLOCKS_MAX} per lesson")
+
+   return messages
+
+
 LINTS = {
    "schema": lint_schema,
    "referential": lint_referential,
@@ -1339,6 +1486,7 @@ LINTS = {
    "provenance": lint_provenance,
    "decision_stems": lint_decision_stems,
    "discrimination_checks": lint_discrimination_checks,
+   "delivery": lint_delivery,
 }
 
 

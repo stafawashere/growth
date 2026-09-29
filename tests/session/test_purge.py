@@ -304,3 +304,33 @@ def test_purge_reaches_user_tables_added_to_the_schema_later(tmp_path):
 
    assert remaining_notes == ["NOTE-theirs"]
    assert remaining_gradings == ["GRD-theirs"]
+
+LESSON_STUDENT_TABLES = ("lesson_state", "lesson_events", "lesson_check_responses")
+LESSON_CONTENT_TABLES = ("lessons", "lesson_verifications")
+
+
+def test_purge_empties_the_students_lesson_rows_and_keeps_the_lesson_content(tmp_path):
+   """docs/lessons/BUILD-PLAN.md Slice L1: the per-user lesson tables go with the student, the
+   lesson records and their verifications are shared content and stay."""
+   engine = models.make_engine(tmp_path / "growth.db")
+   seed_every_table(engine, "mine", USER_ID)
+   seed_every_table(engine, "theirs", OTHER_USER_ID)
+   tables = models.Base.metadata.tables
+
+   with OrmSession(engine) as db:
+      counts = purge.purge_user(db, USER_ID, NOW)
+      db.commit()
+
+   with engine.connect() as connection:
+      remaining_owners = {
+         name: connection.execute(select(tables[name].c.user_id)).scalars().all()
+         for name in LESSON_STUDENT_TABLES
+      }
+      content_counts = {
+         name: len(connection.execute(select(tables[name])).all())
+         for name in LESSON_CONTENT_TABLES
+      }
+
+   assert all(counts[name] == 1 for name in LESSON_STUDENT_TABLES)
+   assert remaining_owners == {name: [OTHER_USER_ID] for name in LESSON_STUDENT_TABLES}
+   assert content_counts == {name: 2 for name in LESSON_CONTENT_TABLES}

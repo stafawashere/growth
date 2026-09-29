@@ -5,7 +5,7 @@
    "target_id": "BC-CON-02013",
    "status": "draft",
    "snapshot_digest": "00839b8c36a7c5d46e3c3d2386e9f5665283703b31c30eedff1ab54062911e92",
-   "source_digest": "5431c32220908b2b08e57ab2ebdd4923947d38dd728737710ccadfd637f5d5ab",
+   "source_digest": "d2fc93d5f4f33ed594600e6c14aa78517a78973beee30b94ca625ae6a9560345",
    "read_minutes": {
       "full": 4.0,
       "brief": 2.5
@@ -31,7 +31,7 @@
             "ced:67"
          ],
          "evidence_tag": "inferred",
-         "text": "A response shows the derivative of a product as two terms added: the first factor times the derivative of the second, and the second factor times the derivative of the first. Questions ask for it symbolically or from values at a point.",
+         "text": "A response shows the derivative of a product as two terms added: the first factor times the derivative of the second, plus the second factor times the derivative of the first. Questions ask for it symbolically, or from values of the two functions and their derivatives supplied at one input.",
          "delivery": {
             "mode": "text",
             "reason": "rule 5: a symbolic rule, BC-REP-01 givens on BC-SKL-02036"
@@ -55,7 +55,7 @@
          "evidence_tag": "verified",
          "ek_id": "BC-EK-FUN-3B1",
          "depth": "core",
-         "text": "For a product \\(fg\\) the derivative is \\(f'g+fg'\\) (BC-EK-FUN-3B1, ced:67). It is not \\(f'g'\\), which expanding a simple product and differentiating term by term shows at once. A product of polynomials can also be expanded first, which is sometimes shorter.",
+         "text": "For a product \\(fg\\) the derivative is \\(f'g+fg'\\) (BC-EK-FUN-3B1, ced:67). It is not \\(f'g'\\), which expanding a simple product and differentiating term by term shows at once. A product of polynomials can also be expanded first and differentiated term by term, which is sometimes the shorter route.",
          "notation": "product rule",
          "quote": {
             "text": "Derivatives of products of differentiable functions can be found using the product rule.",
@@ -83,9 +83,9 @@
          "evidence_tag": "inferred",
          "archetype_id": "BC-QA-02008",
          "cue": "The stem asks for the derivative of the product or quotient, from a product or quotient of two differentiable expressions.",
-         "method": "First written step: identify the two factors and their derivatives.",
-         "rival": "The rival is multiplying the derivatives of the two factors.",
-         "separating_feature": "A product gives two terms, each with one derivative."
+         "method": "First written line: name the two factors and their derivatives, \\(f\\), \\(g\\), \\(f'\\), \\(g'\\).",
+         "rival": "The rival is multiplying the derivatives of the two factors (BC-ERR-02020).",
+         "separating_feature": "A product gives two terms, each holding exactly one derivative."
       },
       {
          "id": "LSN-CON-02013#s4",
@@ -103,9 +103,9 @@
          "evidence_tag": "inferred",
          "archetype_id": "BC-QA-02009",
          "cue": "The stem asks for the derivative value at the named input, from a table of values of two functions and their derivatives.",
-         "method": "First written step: record the four supplied values at the named input.",
-         "rival": "The rival is placing a function value where the rule calls for a derivative value.",
-         "separating_feature": "Each of the four numbers is labelled a value or a derivative before it is used."
+         "method": "First written line: record the four supplied values at the named input, each labelled a value or a derivative.",
+         "rival": "The rival is placing a function value where the rule calls for a derivative value (BC-ERR-02024).",
+         "separating_feature": "Each of the four numbers is labelled before it is used."
       },
       {
          "id": "LSN-CON-02013#s5",
@@ -128,14 +128,14 @@
             "second_factor": "x^3 - 2x"
          },
          "problem": {
-            "text": "Let \\(h(x)=(x^2+1)(x^3-2x)\\). Find \\(h'(x)\\).",
+            "text": "Let \\(h(x)=(x^2+3)\\cos x\\). Find \\(h'(x)\\).",
             "command_verb": "find"
          },
          "calculator_status": "no_calculator",
          "steps": [
             {
-               "cue": "The stem is a product of \\(f=x^2+1\\) and \\(g=x^3-2x\\).",
-               "why": "Each factor needs its own derivative: \\(f'=2x\\) and \\(g'=3x^2-2\\)."
+               "cue": "The stem is a product of \\(f=x^2+3\\) and \\(g=\\cos x\\).",
+               "why": "Each factor needs its own derivative: \\(f'=2x\\) and \\(g'=-\\sin x\\)."
             },
             {
                "cue": "Two factors are multiplied, so the rule is \\(f'g+fg'\\).",
@@ -144,77 +144,67 @@
                   "Add",
                   [
                      "Multiply",
+                     2,
+                     "x",
                      [
-                        "Multiply",
-                        2,
+                        "Cos",
                         "x"
-                     ],
-                     [
-                        "Add",
-                        [
-                           "Power",
-                           "x",
-                           3
-                        ],
-                        [
-                           "Multiply",
-                           -2,
-                           "x"
-                        ]
                      ]
                   ],
                   [
-                     "Multiply",
+                     "Negate",
                      [
-                        "Add",
+                        "Multiply",
                         [
-                           "Power",
-                           "x",
-                           2
-                        ],
-                        1
-                     ],
-                     [
-                        "Add",
-                        [
-                           "Multiply",
-                           3,
+                           "Add",
                            [
                               "Power",
                               "x",
                               2
-                           ]
+                           ],
+                           3
                         ],
-                        -2
+                        [
+                           "Sin",
+                           "x"
+                        ]
                      ]
                   ]
-               ],
-               "point_type_id": "BC-PT-99022"
+               ]
             },
             {
-               "cue": "The stem asks for \\(h'(x)\\), so multiply out and collect terms.",
-               "why": "Expanding first agrees: \\(x^5-x^3-2x\\) differentiates to \\(5x^4-3x^2-2\\).",
+               "cue": "The stem asks for \\(h'(x)\\), so clear the double sign.",
+               "why": "The answer is the rule line tidied; no further simplification is required.",
                "expression": [
                   "Add",
                   [
                      "Multiply",
-                     5,
+                     2,
+                     "x",
                      [
-                        "Power",
-                        "x",
-                        4
+                        "Cos",
+                        "x"
                      ]
                   ],
                   [
-                     "Multiply",
-                     -3,
+                     "Negate",
                      [
-                        "Power",
-                        "x",
-                        2
+                        "Multiply",
+                        [
+                           "Add",
+                           [
+                              "Power",
+                              "x",
+                              2
+                           ],
+                           3
+                        ],
+                        [
+                           "Sin",
+                           "x"
+                        ]
                      ]
-                  ],
-                  -2
+                  ]
                ]
             }
          ],
@@ -224,23 +214,32 @@
                "Add",
                [
                   "Multiply",
-                  5,
+                  2,
+                  "x",
                   [
-                     "Power",
-                     "x",
-                     4
+                     "Cos",
+                     "x"
                   ]
                ],
                [
-                  "Multiply",
-                  -3,
+                  "Negate",
                   [
-                     "Power",
-                     "x",
-                     2
+                     "Multiply",
+                     [
+                        "Add",
+                        [
+                           "Power",
+                           "x",
+                           2
+                        ],
+                        3
+                     ],
+                     [
+                        "Sin",
+                        "x"
+                     ]
                   ]
-               ],
-               -2
+               ]
             ]
          },
          "delivery": {
@@ -268,70 +267,29 @@
             "second_factor": "e^x"
          },
          "problem": {
-            "text": "Let \\(h(x)=xe^x\\). Find \\(h'(x)\\).",
+            "text": "The table gives \\(f(1)=3\\), \\(f'(1)=-2\\), \\(g(1)=4\\), \\(g'(1)=5\\). Let \\(h(x)=f(x)g(x)\\). Find \\(h'(1)\\).",
             "command_verb": "find"
          },
          "calculator_status": "no_calculator",
          "steps": [
             {
-               "cue": "The stem is a product of \\(f=x\\) and \\(g=e^x\\).",
-               "why": "Each factor needs its own derivative: \\(f'=1\\) and \\(g'=e^x\\)."
+               "cue": "Four values at the input 1, two of them derivative values.",
+               "why": "Label each before use: \\(f(1)=3\\), \\(f'(1)=-2\\), \\(g(1)=4\\), \\(g'(1)=5\\)."
             },
             {
-               "cue": "Two factors are multiplied, so the rule is \\(f'g+fg'\\).",
-               "why": "The first term differentiates \\(f\\) and the second differentiates \\(g\\).",
-               "expression": [
-                  "Add",
-                  [
-                     "Multiply",
-                     1,
-                     [
-                        "Exp",
-                        "x"
-                     ]
-                  ],
-                  [
-                     "Multiply",
-                     "x",
-                     [
-                        "Exp",
-                        "x"
-                     ]
-                  ]
-               ],
-               "point_type_id": "BC-PT-99022"
+               "cue": "\\(h\\) is a product, so \\(h'(1)=f'(1)g(1)+f(1)g'(1)\\).",
+               "why": "Each term holds one derivative value and one function value.",
+               "expression": 7
             },
             {
-               "cue": "Both terms contain \\(e^x\\).",
-               "why": "Factoring out \\(e^x\\) gives a shorter form of the same derivative.",
-               "expression": [
-                  "Multiply",
-                  [
-                     "Add",
-                     "x",
-                     1
-                  ],
-                  [
-                     "Exp",
-                     "x"
-                  ]
-               ]
+               "cue": "The stem asks for a value.",
+               "why": "Arithmetic on the substituted line.",
+               "expression": 7
             }
          ],
          "answer": {
-            "form": "symbolic",
-            "mathjson": [
-               "Multiply",
-               [
-                  "Add",
-                  "x",
-                  1
-               ],
-               [
-                  "Exp",
-                  "x"
-               ]
-            ]
+            "form": "numeric",
+            "mathjson": 7
          },
          "delivery": {
             "mode": "step_reveal",
@@ -407,52 +365,50 @@
          "observed_behavior": "The response multiplies the derivatives of the two factors together.",
          "scoring_consequence": "The rule point and the result point are both lost.",
          "wrong_step": {
-            "text": "The derivatives of the two factors are multiplied: \\(f'g'\\).",
+            "text": "The derivatives of the two factors are multiplied: \\(f'g'=2x(-\\sin x)\\).",
             "expression": [
                "Multiply",
+               -1,
+               2,
+               "x",
                [
-                  "Multiply",
-                  2,
+                  "Sin",
                   "x"
-               ],
-               [
-                  "Add",
-                  [
-                     "Multiply",
-                     3,
-                     [
-                        "Power",
-                        "x",
-                        2
-                     ]
-                  ],
-                  -2
                ]
             ]
          },
          "right_step": {
-            "text": "The rule adds two terms: \\(f'g+fg'\\).",
+            "text": "The rule adds two terms: \\(f'g+fg'=2x\\cos x-(x^2+3)\\sin x\\).",
             "expression": [
                "Add",
                [
                   "Multiply",
-                  5,
+                  2,
+                  "x",
                   [
-                     "Power",
-                     "x",
-                     4
+                     "Cos",
+                     "x"
                   ]
                ],
                [
-                  "Multiply",
-                  -3,
+                  "Negate",
                   [
-                     "Power",
-                     "x",
-                     2
+                     "Multiply",
+                     [
+                        "Add",
+                        [
+                           "Power",
+                           "x",
+                           2
+                        ],
+                        3
+                     ],
+                     [
+                        "Sin",
+                        "x"
+                     ]
                   ]
-               ],
-               -2
+               ]
             ]
          },
          "relation": "distinct",
@@ -485,45 +441,25 @@
          "wrong_step": {
             "text": "The full quotient rule is applied to \\(\\frac{x^2+3}{4}\\).",
             "expression": [
-               "Divide",
+               "Multiply",
                [
-                  "Subtract",
-                  [
-                     "Multiply",
-                     [
-                        "Multiply",
-                        2,
-                        "x"
-                     ],
-                     4
-                  ],
-                  [
-                     "Multiply",
-                     [
-                        "Add",
-                        [
-                           "Power",
-                           "x",
-                           2
-                        ],
-                        3
-                     ],
-                     0
-                  ]
-               ],
-               [
-                  "Power",
-                  4,
+                  "Rational",
+                  1,
                   2
-               ]
+               ],
+               "x"
             ]
          },
          "right_step": {
             "text": "The denominator is constant, so differentiate term by term: \\(\\frac{x}{2}\\).",
             "expression": [
-               "Divide",
-               "x",
-               2
+               "Multiply",
+               [
+                  "Rational",
+                  1,
+                  2
+               ],
+               "x"
             ]
          },
          "relation": "equivalent",
@@ -551,12 +487,12 @@
          "observed_behavior": "The response substitutes the value of a function into a position in the product or quotient rule that calls for the value of its derivative.",
          "scoring_consequence": "The value point is lost.",
          "wrong_step": {
-            "text": "With \\(f(1)=2\\), \\(f'(1)=3\\), \\(g(1)=-1\\), \\(g'(1)=4\\), using \\(f(1)\\) in place of \\(f'(1)\\) gives 6.",
-            "expression": 6
+            "text": "With \\(f(1)=3\\), \\(f'(1)=-2\\), \\(g(1)=4\\), \\(g'(1)=5\\), using \\(f(1)\\) in place of \\(f'(1)\\) gives \\(3\\cdot4+3\\cdot5=27\\).",
+            "expression": 27
          },
          "right_step": {
-            "text": "The rule gives \\(f'(1)g(1)+f(1)g'(1)=5\\).",
-            "expression": 5
+            "text": "The rule gives \\(f'(1)g(1)+f(1)g'(1)=-8+15=7\\).",
+            "expression": 7
          },
          "relation": "distinct",
          "possible_reason": {
@@ -586,7 +522,7 @@
          },
          "completes": "LSN-CON-02013#s5",
          "stem": {
-            "text": "The product rule gives \\(h'(x)=(2x)(x^3-2x)+(x^2+1)(3x^2-2)\\). Multiply out and collect terms to write \\(h'(x)\\).",
+            "text": "The product rule gives \\(h'(x)=(2x)(\\cos x)+(x^2+3)(-\\sin x)\\). Write \\(h'(x)\\) with the double sign cleared.",
             "command_verb": "write"
          },
          "answer_key": {
@@ -595,23 +531,32 @@
                "Add",
                [
                   "Multiply",
-                  5,
+                  2,
+                  "x",
                   [
-                     "Power",
-                     "x",
-                     4
+                     "Cos",
+                     "x"
                   ]
                ],
                [
-                  "Multiply",
-                  -3,
+                  "Negate",
                   [
-                     "Power",
-                     "x",
-                     2
+                     "Multiply",
+                     [
+                        "Add",
+                        [
+                           "Power",
+                           "x",
+                           2
+                        ],
+                        3
+                     ],
+                     [
+                        "Sin",
+                        "x"
+                     ]
                   ]
-               ],
-               -2
+               ]
             ]
          },
          "worked_solution": [
@@ -717,7 +662,7 @@
             "second_factor": "x^3 + x"
          },
          "stem": {
-            "text": "Let \\(h(x)=(x^2-3)(x^3+x)\\). Find \\(h'(x)\\).",
+            "text": "Let \\(h(x)=(x^2-2)\\sin x\\). Find \\(h'(x)\\).",
             "command_verb": "find"
          },
          "answer_key": {
@@ -726,23 +671,29 @@
                "Add",
                [
                   "Multiply",
-                  5,
+                  2,
+                  "x",
                   [
-                     "Power",
-                     "x",
-                     4
+                     "Sin",
+                     "x"
                   ]
                ],
                [
                   "Multiply",
-                  -6,
                   [
-                     "Power",
-                     "x",
-                     2
+                     "Add",
+                     [
+                        "Power",
+                        "x",
+                        2
+                     ],
+                     -2
+                  ],
+                  [
+                     "Cos",
+                     "x"
                   ]
-               ],
-               -3
+               ]
             ]
          },
          "worked_solution": [
@@ -852,12 +803,12 @@
             ]
          },
          "stem": {
-            "text": "Suppose \\(f(2)=3\\), \\(f'(2)=5\\), \\(g(2)=4\\), \\(g'(2)=-1\\) and \\(h(x)=f(x)g(x)\\). Find \\(h'(2)\\).",
+            "text": "Suppose \\(f(2)=-1\\), \\(f'(2)=4\\), \\(g(2)=2\\), \\(g'(2)=-3\\) and \\(h(x)=f(x)g(x)\\). Find \\(h'(2)\\).",
             "command_verb": "find"
          },
          "answer_key": {
-            "form": "symbolic",
-            "mathjson": 17
+            "form": "numeric",
+            "mathjson": 11
          },
          "worked_solution": [
             {
@@ -915,8 +866,7 @@
       "LSN-CON-02013#err-BC-ERR-02020",
       "LSN-CON-02013#err-BC-ERR-02023",
       "LSN-CON-02013#err-BC-ERR-02024",
-      "LSN-CON-02013#s5",
-      "LSN-CON-02013#s99"
+      "LSN-CON-02013#s5"
    ],
    "provenance": {
       "author": "claude-sonnet-5-5",

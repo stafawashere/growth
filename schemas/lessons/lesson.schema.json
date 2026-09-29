@@ -146,6 +146,25 @@
   "required": ["decision"]
  },
  "$defs": {
+  "delivery": {
+   "type": "object",
+   "required": ["mode", "reason"],
+   "additionalProperties": false,
+   "properties": {
+    "mode": {"enum": ["text", "step_reveal", "figure", "table", "motion", "interactive", "model", "contrast"]},
+    "reason": {"$ref": "#/$defs/text"},
+    "spec": {
+     "type": "object",
+     "required": ["kind"],
+     "properties": {
+      "kind": {"type": "string", "minLength": 1}
+     }
+    },
+    "fallback": {"type": "string"},
+    "keyboard": {"type": "string"},
+    "reduced_motion": {"type": "string"}
+   }
+  },
   "section_id": {
    "type": "string",
    "pattern": "^LSN-(CON|PRQ)-\\d{5}#[A-Za-z0-9-]+$|^LSN-DEC-\\d{2}-\\d{2}#[A-Za-z0-9-]+$"
@@ -212,18 +231,20 @@
   },
   "orientation": {
    "allOf": [{"$ref": "#/$defs/block_common"}],
-   "required": ["text"],
+   "required": ["delivery", "text"],
    "properties": {
     "type": {"const": "orientation"},
+    "delivery": {"$ref": "#/$defs/delivery"},
     "text": {"$ref": "#/$defs/text"}
    },
    "unevaluatedProperties": false
   },
   "key_ideas": {
    "allOf": [{"$ref": "#/$defs/block_common"}],
-   "required": ["ek_id", "depth", "text"],
+   "required": ["delivery", "ek_id", "depth", "text"],
    "properties": {
     "type": {"const": "key_ideas"},
+    "delivery": {"$ref": "#/$defs/delivery"},
     "ek_id": {"type": "string", "pattern": "^BC-EK-[A-Z]{3}-\\d+[A-Z]\\d+$"},
     "depth": {"enum": ["core", "extended"]},
     "text": {"$ref": "#/$defs/text"},
@@ -257,9 +278,10 @@
   },
   "worked_example": {
    "allOf": [{"$ref": "#/$defs/block_common"}],
-   "required": ["archetype_id", "parameter_draw", "problem", "calculator_status", "steps", "answer"],
+   "required": ["delivery", "archetype_id", "parameter_draw", "problem", "calculator_status", "steps", "answer"],
    "properties": {
     "type": {"const": "worked_example"},
+    "delivery": {"$ref": "#/$defs/delivery"},
     "archetype_id": {"type": "string", "pattern": "^BC-QA-\\d{5}$"},
     "parameter_draw": {"type": "object"},
     "problem": {
@@ -305,7 +327,7 @@
   },
   "common_error": {
    "allOf": [{"$ref": "#/$defs/block_common"}],
-   "required": [
+   "required": ["delivery", 
     "error_id",
     "observed_behavior",
     "scoring_consequence",
@@ -315,6 +337,7 @@
    ],
    "properties": {
     "type": {"const": "common_error"},
+    "delivery": {"$ref": "#/$defs/delivery"},
     "error_id": {"type": "string", "pattern": "^BC-ERR-\\d{5}$"},
     "observed_behavior": {"$ref": "#/$defs/text"},
     "scoring_consequence": {"$ref": "#/$defs/text"},
@@ -344,9 +367,10 @@
   },
   "representations": {
    "allOf": [{"$ref": "#/$defs/block_common"}],
-   "required": ["text"],
+   "required": ["delivery", "text"],
    "properties": {
     "type": {"const": "representations"},
+    "delivery": {"$ref": "#/$defs/delivery"},
     "text": {"$ref": "#/$defs/text"},
     "figure": {"type": "object"}
    },
@@ -442,12 +466,13 @@
   },
   "decision": {
    "type": "object",
-   "required": ["unit", "skills", "selecting_feature", "stems"],
+   "required": ["unit", "skills", "selecting_feature", "stems", "delivery"],
    "additionalProperties": false,
    "properties": {
     "unit": {"type": "string", "pattern": "^BC-UNIT-\\d{2}$"},
     "skills": {"$ref": "#/$defs/id_list"},
     "selecting_feature": {"type": "string", "minLength": 1},
+    "delivery": {"$ref": "#/$defs/delivery"},
     "stems": {
      "type": "array",
      "minItems": 2,

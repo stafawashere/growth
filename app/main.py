@@ -85,6 +85,10 @@ GROWTH_ITEMS_DIR      the directories of item records the bank ingests through a
                       authored_by before). none disables it. A set path that is not a directory
                       stops the process at startup, and an item id found in two directories stops
                       the first ingestion rather than serving whichever came first.
+GROWTH_LESSONS_DIR    the directory of lesson records app/lessons/ingest.py ingests when the server
+                      starts, before it accepts a connection (docs/operator/lessons.md). Unset, it
+                      is content/lessons under the repo root; none disables it. A set path that is
+                      not a directory stops the process at startup.
 GROWTH_EXPERIMENTS_DEFAULT the state both A/B switches of app/experiments/switches.py start in
                       for a student: off, on or randomised. Unset, retrieval_entry starts
                       randomised and feedback_elaboration starts off (RUNNING_EXPERIMENT_DEFAULTS).
@@ -175,6 +179,8 @@ DEFAULT_ITEMS_DIR = DEFAULT_CONTENT_DIR / "items_p1_agent"
 ITEM_BANK_PATTERN = "items_*"
 NO_BACKUP_DIR = "none"
 NO_ITEMS_DIR = "none"
+NO_LESSONS_DIR = "none"
+DEFAULT_LESSONS_DIR = DEFAULT_CONTENT_DIR / "lessons"
 WEB_BUILD_COMMAND = "npm run build --prefix app/web"
 
 
@@ -436,6 +442,24 @@ def items_directories(env):
    return configured_paths
 
 
+def lessons_directory(env):
+   configured = env.get("GROWTH_LESSONS_DIR")
+   is_unset = configured is None or configured == ""
+
+   if is_unset:
+      return DEFAULT_LESSONS_DIR if DEFAULT_LESSONS_DIR.is_dir() else None
+
+   if configured == NO_LESSONS_DIR:
+      return None
+
+   configured_path = Path(configured)
+
+   if not configured_path.is_dir():
+      raise ValueError(f"GROWTH_LESSONS_DIR must name a directory of lesson records, got {configured!r}")
+
+   return configured_path
+
+
 RUNNING_EXPERIMENT_DEFAULTS = {
    switches.FEEDBACK_ELABORATION: switches.OFF,
    switches.RETRIEVAL_ENTRY: switches.RANDOMISED,
@@ -536,6 +560,7 @@ def settings_from_environment(env=None):
       subscription_pacing=build_subscription_pacing(env),
       key_audit_sample_path=env.get("GROWTH_KEY_AUDIT_SAMPLE_PATH"),
       items_directories=items_directories(env),
+      lessons_directory=lessons_directory(env),
       experiment_default_state=experiment_default_state(env),
       ai_provider=ai_provider,
       ai_links=provider_links(env, ai_provider),
@@ -699,6 +724,7 @@ def __getattr__(name):
    if _application is None:
       _application = build_application()
       _application.router.add_event_handler("startup", ingest_the_bank_before_serving(_application))
+      _application.router.add_event_handler("startup", ingest_the_lessons_before_serving(_application))
 
    return _application
 
@@ -715,5 +741,29 @@ def ingest_the_bank_before_serving(application):
 
       if ensures is not None:
          ensures()
+
+   return ingest
+
+
+def ingest_the_lessons_before_serving(application):
+   """app/lessons/ingest.py over settings.lessons_directory, at the server's start like the bank,
+   so a record's servable status is settled before any reader asks for it."""
+   settings = application.state.settings
+
+   def ingest():
+      from sqlalchemy.orm import Session as OrmSession
+
+      from app.lessons.ingest import ingest_lessons
+
+      has_directory = settings.lessons_directory is not None
+
+      if not has_directory:
+         return
+
+      context = settings.session_context
+
+      with OrmSession(application.state.engine) as db:
+         ingest_lessons(db, settings.lessons_directory, context.snapshot, context.snapshot_id)
+         db.commit()
 
    return ingest

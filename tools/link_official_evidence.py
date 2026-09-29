@@ -3,7 +3,9 @@
 For every FRQ record: its id is added to archetype.official_examples, variant.official_examples,
 skill.official_evidence, error.official_evidence (via commentary_errors), point_type usage, and
 difficulty_factor.official_examples. Archetype.point_types becomes the union of point types seen
-on records tagged with that archetype. Changes are staged and merged so the registries stay canonical.
+on records tagged with that archetype. Only the touched fields are staged, as an append merge that
+tools/merge_staging.py replays last, so the registries stay canonical and no earlier whole-record
+snapshot can remove a link.
 """
 import json
 from collections import defaultdict
@@ -43,7 +45,7 @@ def main():
       for record in collection:
          by_id[record["id"]] = record
 
-   touched = defaultdict(dict)
+   touched = defaultdict(set)
    archetype_points = defaultdict(list)
 
    def touch(identifier, field, values):
@@ -54,7 +56,7 @@ def main():
          return
 
       add_unique(record, field, values)
-      touched[identifier] = record
+      touched[identifier].add(field)
 
    for record in frq + mcq:
       rid = record["id"]
@@ -86,13 +88,14 @@ def main():
    grouped = defaultdict(lambda: defaultdict(list))
    registry_of = {"BC-SKL": ("skills", "skills"), "BC-QA": ("archetypes", "archetypes"), "BC-QV": ("archetypes", "variants"), "BC-ERR": ("errors", "errors"), "BC-DF": ("taxonomies", "difficulty_factors"), "BC-PT": ("scoring_points", "point_types")}
 
-   for identifier, record in touched.items():
+   for identifier, fields in touched.items():
       prefix = "-".join(identifier.split("-")[:2])
       registry, collection = registry_of[prefix]
-      grouped[registry][collection].append(record)
+      record = by_id[identifier]
+      grouped[registry][collection].append({"id": identifier, **{field: record[field] for field in sorted(fields)}})
 
    for registry, collections in grouped.items():
-      payload = {"registry": registry, **collections}
+      payload = {"registry": registry, "merge": "append", **collections}
       (STAGING / f"link-evidence-{registry}.json").write_text(json.dumps(payload, indent=1))
       print(registry, {key: len(value) for key, value in collections.items()})
 

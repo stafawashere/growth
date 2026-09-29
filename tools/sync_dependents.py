@@ -4,7 +4,9 @@ For every hard_prerequisite edge between two atomic skills, the downstream skill
 upstream one under "prerequisites" and the upstream one must list the downstream under
 "dependents". Every skill that is an endpoint of such an edge is written whole to
 data/staging/sync-dependents.json so that tools/merge_staging.py remains the only writer of the
-registry and the staging file states the full set of links rather than only the last delta.
+registry and the staging file states the full set of links rather than only the last delta. Only
+those two fields are staged, merged as fields and replayed last, so a whole-record snapshot from an
+earlier phase cannot drop a link.
 """
 import csv
 import json
@@ -53,8 +55,16 @@ def main():
          upstream["dependents"].sort()
          changed.add(source)
 
-   records = [by_id[identifier] for identifier in sorted(touched)]
-   OUT.write_text(json.dumps({"registry": "skills", "skills": records}, indent=1, sort_keys=True))
+   records = [
+      {
+         "id": identifier,
+         "prerequisites": by_id[identifier].get("prerequisites", []),
+         "dependents": by_id[identifier].get("dependents", []),
+      }
+      for identifier in sorted(touched)
+   ]
+   payload = {"registry": "skills", "merge": "fields", "skills": records}
+   OUT.write_text(json.dumps(payload, indent=1, sort_keys=True))
    print(len(records), "skill records staged;", len(changed), "of them needed a new link")
 
 

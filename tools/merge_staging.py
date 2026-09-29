@@ -45,9 +45,11 @@ def merge_file(path, registry_ids):
             merged += 1
             continue
 
-         record.setdefault("created", str(date.today()))
-         record["updated"] = str(date.today())
          exists = record["id"] in by_id
+         previous = current[collection][by_id[record["id"]]] if exists else {}
+         record.setdefault("created", previous.get("created", str(date.today())))
+         is_unchanged = without_dates(record) == without_dates(previous)
+         record["updated"] = previous.get("updated") if is_unchanged else str(date.today())
 
          if exists:
             current[collection][by_id[record["id"]]] = record
@@ -60,6 +62,10 @@ def merge_file(path, registry_ids):
 
    target.write_text(json.dumps(current, indent=1, sort_keys=True))
    return registry_name, merged
+
+
+def without_dates(record):
+   return {name: value for name, value in record.items() if name not in ("created", "updated")}
 
 
 def merge_fields(records, by_id, fields, path, appends=False):
@@ -93,11 +99,13 @@ def appended(current, additions):
    return merged
 
 
-PHASE_ORDER = ["unit-", "taxonomy-", "scoring-points", "command-verbs", "chief-reader-", "mcq-", "frq-", "difficulty-factors", "representation-map", "archetype-consolidation", "misconception-consolidation", "error-consolidation", "signal-reference-remap", "sync-dependents", "link-evidence-", "cite-sync-", "tag-policy-", "adaptive-", "post-sync-", "assessability-", "errors-enrich-", "signals-", "gap-", "error-links-", "parameter-spec-", "corrections-"]
+PHASE_ORDER = ["unit-", "taxonomy-", "scoring-points", "command-verbs", "chief-reader-", "mcq-", "frq-", "difficulty-factors", "representation-map", "archetype-consolidation", "misconception-consolidation", "error-consolidation", "signal-reference-remap", "cite-sync-", "tag-policy-", "adaptive-", "post-sync-", "assessability-", "errors-enrich-", "signals-", "gap-", "error-links-", "parameter-spec-", "corrections-", "direct-edits-", "sync-dependents", "link-evidence-"]
 
 
 def phase_rank(path):
-   """Later phases must replay after earlier ones so consolidation and linking edits win."""
+   """Later phases must replay after earlier ones so consolidation and linking edits win. The two
+   derived-link files go last and carry only the fields their tools own, so no whole-record
+   snapshot written earlier can take a link back out."""
    for index, prefix in enumerate(PHASE_ORDER):
       if path.name.startswith(prefix):
          return index

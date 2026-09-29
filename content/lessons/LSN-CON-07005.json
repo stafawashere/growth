@@ -3,7 +3,7 @@
  "version": 1,
  "kind": "concept",
  "target_id": "BC-CON-07005",
- "status": "signed_off",
+ "status": "draft",
  "snapshot_digest": "a6a8ec9d3f59ab8f712e33d30cc22fc64bf2c478fbe7312e3e3118d319c6a42f",
  "source_digest": "e9f4e428713abd1b93c518aecd767c8c1f4323496088a71f5682e5dd7f10c6ae",
  "read_minutes": {
@@ -11,12 +11,66 @@
   "brief": 3.0
  },
  "word_count": {
-  "full": 674,
-  "brief": 390
+  "full": 676,
+  "brief": 398
  },
  "sections": [
   {
    "id": "LSN-CON-07005#s1",
+   "type": "prediction",
+   "bands": [
+    "low",
+    "mid"
+   ],
+   "skills": [
+    "BC-SKL-07014",
+    "BC-SKL-07015",
+    "BC-SKL-07016",
+    "BC-SKL-07017",
+    "BC-SKL-07018"
+   ],
+   "sources": [
+    "BC-CON-07005",
+    "BC-EK-FUN-7C3",
+    "ced:140",
+    "research/units/unit-07-differential-equations.md#7.4 Reasoning Using Slope Fields"
+   ],
+   "evidence_tag": "inferred",
+   "stem": {
+    "text": "Predict. A solution of \\(dy/dx=(y-1)(x+1)(x-2)\\) passes through \\((1,2)\\). Rising or falling there, without solving?",
+    "command_verb": "predict"
+   },
+   "format": "mcq",
+   "options": [
+    {
+     "id": "A",
+     "label": "Falling: the slope there is negative.",
+     "is_key": true
+    },
+    {
+     "id": "B",
+     "label": "Rising: \\(y\\) is above 1.",
+     "is_key": false
+    },
+    {
+     "id": "C",
+     "label": "Not determined without solving.",
+     "is_key": false
+    }
+   ],
+   "resolution": {
+    "text": "The slope there is \\((2-1)(1+1)(1-2)=-2\\), so it falls. The right side's sign gives the direction."
+   },
+   "delivery": {
+    "mode": "text",
+    "reason": "rule 6: a prediction on ex-1's equation with nothing to draw",
+    "sources": [
+     "BC-SKL-07018"
+    ]
+   }
+  },
+  {
+   "id": "LSN-CON-07005#s2",
    "type": "orientation",
    "bands": [
     "low",
@@ -34,7 +88,7 @@
     "research/units/unit-07-differential-equations.md#7.4 Reasoning Using Slope Fields"
    ],
    "evidence_tag": "inferred",
-   "text": "A solution follows the segments and never crosses the row of flat segments. Where it rises, falls or turns comes from the sign of the right side, without solving.",
+   "text": "A solution follows the segments. The right side's sign gives its rises, falls and turns, without solving.",
    "delivery": {
     "mode": "interactive",
     "reason": "rule 4 promoted: BC-REP-07, 02 on BC-SKL-07014; BC-QA-07001 common_givens an initial condition and difficulty_variables where the initial point sits, with a reading asked",
@@ -91,7 +145,7 @@
    }
   },
   {
-   "id": "LSN-CON-07005#s2",
+   "id": "LSN-CON-07005#s3",
    "type": "key_ideas",
    "bands": [
     "low",
@@ -114,7 +168,7 @@
    "evidence_tag": "verified",
    "ek_id": "BC-EK-FUN-7C3",
    "depth": "core",
-   "text": "A solution curve through a point is tangent to the segment at every point it passes. The sign of the right side says where solutions rise or fall, and a sign change marks a turning point. A solution never crosses the flat row, an equilibrium, but need not approach it; the sign of the right side on each side decides.",
+   "text": "A solution curve is tangent to the segment at every point it passes. The sign of the right side says where it rises or falls, and a sign change marks a turn. It never crosses the flat row.",
    "notation": "solution curve; horizontal asymptote",
    "quote": {
     "text": "Solutions to differential equations are functions or families of functions.",
@@ -190,7 +244,7 @@
    }
   },
   {
-   "id": "LSN-CON-07005#s3",
+   "id": "LSN-CON-07005#s4",
    "type": "strategy",
    "bands": [
     "low",
@@ -204,13 +258,24 @@
    ],
    "evidence_tag": "verified",
    "archetype_id": "BC-QA-07010",
-   "cue": "An equation, a bound on the quantity, a range: find and classify a critical point.",
-   "method": "First line: the right side set equal to zero.",
-   "rival": "Rival: solving the equation first.",
-   "separating_feature": "The equation is dy/dx, so its sign is read directly."
+   "cue": "A critical point to classify from the equation.",
+   "method": "The right side set equal to zero.",
+   "rival": "Solving the equation first.",
+   "separating_feature": "The equation is dy/dx, so its sign is read directly.",
+   "contrast": {
+    "this": {
+     "text": "\\(dy/dx=(y-3)(x+2)(x-4)\\), \\(y>3\\), \\(x>0\\). Find the critical point and classify it.",
+     "archetype_id": "BC-QA-07010"
+    },
+    "not_this": {
+     "text": "Sketch the slope field of \\(dy/dx=(y-3)(x+2)\\) at the indicated points.",
+     "why_not": "It asks for segments at points."
+    },
+    "feature": "The stem asks for a critical point's type."
+   }
   },
   {
-   "id": "LSN-CON-07005#s4",
+   "id": "LSN-CON-07005#s5",
    "type": "strategy",
    "bands": [
     "low",
@@ -227,12 +292,12 @@
    "evidence_tag": "verified",
    "archetype_id": "BC-QA-07001",
    "cue": "A printed field, an equation and an initial condition: sketch the curve through the point.",
-   "method": "First move: locate the initial point, then follow the segments right and left to the edges.",
-   "rival": "Rival: solving the equation and plotting the formula.",
+   "method": "Locate the initial point, then follow the segments right and left to the edges.",
+   "rival": "Solving the equation and plotting the formula.",
    "separating_feature": "The field is printed, so the curve is read from it."
   },
   {
-   "id": "LSN-CON-07005#s5",
+   "id": "LSN-CON-07005#s6",
    "type": "strategy",
    "bands": [
     "low",
@@ -247,12 +312,12 @@
    "evidence_tag": "verified",
    "archetype_id": "BC-QA-07005",
    "cue": "An approximation is computed; the stem asks over or under, with a reason.",
-   "method": "First line: differentiate the right side, then substitute the equation for dy/dx.",
-   "rival": "Rival: solving the equation and comparing numerically.",
+   "method": "Differentiate the right side, then substitute the equation for dy/dx.",
+   "rival": "Solving the equation and comparing numerically.",
    "separating_feature": "Direction is concavity, so the second derivative's sign decides."
   },
   {
-   "id": "LSN-CON-07005#s6",
+   "id": "LSN-CON-07005#s7",
    "type": "worked_example",
    "bands": [
     "low",
@@ -282,8 +347,8 @@
    "calculator_status": "no_calculator",
    "steps": [
     {
-     "cue": "Critical point with dy/dx given: right side zero.",
-     "why": "No solving needed.",
+     "cue": "Critical point: right side zero.",
+     "why": "No solving.",
      "expression": [
       "Equal",
       [
@@ -309,15 +374,15 @@
      "relation": "new"
     },
     {
-     "cue": "y > 1 and x > 0 remove two factors.",
-     "why": "Only x - 2 can vanish.",
+     "cue": "y > 1, x > 0.",
+     "why": "Only x - 2 vanishes.",
      "expression": 2,
      "relation": "solve",
      "variable": "x"
     },
     {
-     "cue": "Classify by the sign on each side.",
-     "why": "(y - 1) and (x + 1) are positive; the sign is that of x - 2.",
+     "cue": "Sign on each side.",
+     "why": "Other factors are positive.",
      "expression": [
       "Add",
       -2,
@@ -335,7 +400,7 @@
      }
     },
     {
-     "cue": "Negative then positive.",
+     "cue": "Sign change.",
      "why": "Relative minimum at x = 2.",
      "point_type_id": "BC-PT-99010"
     }
@@ -351,7 +416,7 @@
    }
   },
   {
-   "id": "LSN-CON-07005#s7",
+   "id": "LSN-CON-07005#s8",
    "type": "worked_example",
    "bands": [
     "low"
@@ -450,6 +515,7 @@
     "form": "statement",
     "mathjson": "decreasing curve through (0, 3), above y = 2, edge to edge"
    },
+   "fade_from": 4,
    "delivery": {
     "mode": "step_reveal",
     "reason": "rule 1",
@@ -457,7 +523,7 @@
    }
   },
   {
-   "id": "LSN-CON-07005#s8",
+   "id": "LSN-CON-07005#s9",
    "type": "what_a_reader_scores",
    "bands": [
     "low",
@@ -470,7 +536,7 @@
     "BC-PT-99010"
    ],
    "evidence_tag": "verified",
-   "example_id": "LSN-CON-07005#s6",
+   "example_id": "LSN-CON-07005#s7",
    "lines": [
     {
      "point_type_id": "BC-PT-99010",
@@ -479,7 +545,7 @@
    ]
   },
   {
-   "id": "LSN-CON-07005#s9",
+   "id": "LSN-CON-07005#s10",
    "type": "what_a_reader_scores",
    "bands": [
     "low"
@@ -493,7 +559,7 @@
     "BC-PT-99065"
    ],
    "evidence_tag": "verified",
-   "example_id": "LSN-CON-07005#s7",
+   "example_id": "LSN-CON-07005#s8",
    "lines": [
     {
      "point_type_id": "BC-PT-99065",
@@ -532,6 +598,7 @@
     ]
    },
    "relation": "distinct",
+   "fix_prompt": true,
    "delivery": {
     "mode": "step_reveal",
     "reason": "rule 1",
@@ -564,6 +631,7 @@
     "expression": -1
    },
    "relation": "distinct",
+   "fix_prompt": true,
    "delivery": {
     "mode": "step_reveal",
     "reason": "rule 1",
@@ -604,6 +672,7 @@
     ]
    },
    "relation": "distinct",
+   "fix_prompt": true,
    "possible_reason": {
     "misconception_id": "BC-MIS-05028",
     "text": "ignores what the situation permits"
@@ -669,6 +738,7 @@
     ]
    },
    "relation": "distinct",
+   "fix_prompt": true,
    "delivery": {
     "mode": "step_reveal",
     "reason": "rule 1",
@@ -690,7 +760,7 @@
    ],
    "evidence_tag": "inferred",
    "prerequisite_id": "BC-PRQ-07006",
-   "text": "Locate the initial point by its coordinates before following segments."
+   "text": "Locate the initial point by its coordinates first."
   }
  ],
  "checks": [
@@ -712,7 +782,7 @@
     "scale": 1,
     "letters": "xy"
    },
-   "completes": "LSN-CON-07005#s6",
+   "completes": "LSN-CON-07005#s7",
    "stem": {
     "text": "dy/dx = (y - 1)(x + 1)(x - 2), y > 1: the critical input for x > 0 is 2. Classify it.",
     "command_verb": "determine"
@@ -915,19 +985,19 @@
   }
  ],
  "refresher": [
-  "LSN-CON-07005#s2",
+  "LSN-CON-07005#s3",
   "LSN-CON-07005#err-BC-ERR-05013",
   "LSN-CON-07005#err-BC-ERR-05021",
   "LSN-CON-07005#err-BC-ERR-05025",
   "LSN-CON-07005#err-BC-ERR-07013",
-  "LSN-CON-07005#s6"
+  "LSN-CON-07005#s7"
  ],
  "provenance": {
   "author": "tools/lesson_transcribe.py",
-  "prompt_version": "generator/lesson_v1",
+  "prompt_version": "generator/lesson_v2",
   "design_path": "docs/lessons/unit-07/LSN-CON-07005.md",
-  "signed_off_by": "claude-opus-5-5",
-  "signed_off_at": "2026-09-29",
+  "signed_off_by": null,
+  "signed_off_at": null,
   "not_human": true
  }
 }

@@ -3,20 +3,68 @@
  "version": 1,
  "kind": "concept",
  "target_id": "BC-CON-07012",
- "status": "signed_off",
+ "status": "draft",
  "snapshot_digest": "a6a8ec9d3f59ab8f712e33d30cc22fc64bf2c478fbe7312e3e3118d319c6a42f",
  "source_digest": "9536893f286eacf23790c841b0d92e8bd069d7822b6b3353968fa9e2786719d5",
  "read_minutes": {
-  "full": 3.8,
-  "brief": 2.8
+  "full": 3.99,
+  "brief": 2.99
  },
  "word_count": {
-  "full": 502,
-  "brief": 369
+  "full": 537,
+  "brief": 404
  },
  "sections": [
   {
    "id": "LSN-CON-07012#s1",
+   "type": "prediction",
+   "bands": [
+    "low",
+    "mid"
+   ],
+   "skills": [
+    "BC-SKL-07040",
+    "BC-SKL-07041",
+    "BC-SKL-07042"
+   ],
+   "sources": [
+    "BC-CON-07012",
+    "BC-EK-FUN-7H4",
+    "research/units/unit-07-differential-equations.md#7.9 Logistic Models with Differential Equations"
+   ],
+   "evidence_tag": "inferred",
+   "stem": {
+    "text": "Before the rule: dP/dt = 2P/5 - P^2/2000 is zero at P = 0 and 800. As P rises from 160 to 800, how does dP/dt change?",
+    "command_verb": "predict"
+   },
+   "format": "mcq",
+   "options": [
+    {
+     "id": "A",
+     "label": "It rises throughout, largest at 800.",
+     "is_key": false
+    },
+    {
+     "id": "B",
+     "label": "It rises, then falls, largest between 160 and 800.",
+     "is_key": true
+    },
+    {
+     "id": "C",
+     "label": "It falls throughout, largest at 160.",
+     "is_key": false
+    }
+   ],
+   "resolution": {
+    "text": "It is a quadratic in P with zeros 0 and 800, so it peaks midway, at P = 400."
+   },
+   "delivery": {
+    "mode": "text",
+    "reason": "rule 6"
+   }
+  },
+  {
+   "id": "LSN-CON-07012#s2",
    "type": "orientation",
    "bands": [
     "low",
@@ -32,7 +80,7 @@
     "research/units/unit-07-differential-equations.md#7.9 Logistic Models with Differential Equations"
    ],
    "evidence_tag": "inferred",
-   "text": "A response reads the carrying capacity from the zeros of the right side, gives the limit with the sign of the rate at the initial value as its reason, and places the fastest change at half the carrying capacity. Nothing is solved.",
+   "text": "A response gives the limit from the zeros and the sign, and the fastest change at half the capacity.",
    "delivery": {
     "mode": "text",
     "reason": "rule 6: a statement of what a response shows; BC-REP-06, BC-REP-04, BC-REP-01",
@@ -42,7 +90,7 @@
    }
   },
   {
-   "id": "LSN-CON-07012#s2",
+   "id": "LSN-CON-07012#s3",
    "type": "key_ideas",
    "bands": [
     "low",
@@ -60,7 +108,7 @@
    "evidence_tag": "inferred",
    "ek_id": "BC-EK-FUN-7H3",
    "depth": "core",
-   "text": "The right side ky(a - y) is zero at y = 0 and y = a. A solution starting strictly between them has a positive rate and rises toward a, so a is the limit as t grows without bound. The reason is the sign of the rate, not a solved formula.",
+   "text": "The right side ky(a - y) is zero at 0 and a. A solution starting between them has a positive rate and rises toward a, the limit.",
    "notation": "carrying capacity",
    "delivery": {
     "mode": "interactive",
@@ -124,7 +172,7 @@
    }
   },
   {
-   "id": "LSN-CON-07012#s3",
+   "id": "LSN-CON-07012#s4",
    "type": "key_ideas",
    "bands": [
     "low",
@@ -141,7 +189,7 @@
    "evidence_tag": "inferred",
    "ek_id": "BC-EK-FUN-7H4",
    "depth": "core",
-   "text": "As a function of y the right side is a quadratic with zeros 0 and a, so it is largest at y = a/2. The quantity changes fastest at half the carrying capacity; at a the rate is zero.",
+   "text": "As a function of y the right side is a quadratic with zeros 0 and a, so it peaks at a/2: the quantity changes fastest at half the carrying capacity.",
    "notation": "half of the carrying capacity",
    "delivery": {
     "mode": "text",
@@ -152,7 +200,7 @@
    }
   },
   {
-   "id": "LSN-CON-07012#s4",
+   "id": "LSN-CON-07012#s5",
    "type": "key_ideas",
    "bands": [
     "low"
@@ -179,7 +227,7 @@
    }
   },
   {
-   "id": "LSN-CON-07012#s5",
+   "id": "LSN-CON-07012#s6",
    "type": "strategy",
    "bands": [
     "low",
@@ -195,13 +243,24 @@
    ],
    "evidence_tag": "verified",
    "archetype_id": "BC-QA-07009",
-   "cue": "A logistic equation and an initial value; the stem asks for the limit, or the value when changing fastest.",
-   "method": "First written line: the zeros of the right side; then the sign, or the vertex.",
-   "rival": "Rival: separating the logistic equation with partial fractions when only the limit was asked for.",
-   "separating_feature": "Limit: zeros and sign. Fastest: vertex of the right side."
+   "cue": "A logistic equation; the stem asks for the limit or the value when changing fastest.",
+   "method": "The zeros of the right side, then the sign or the vertex.",
+   "rival": "Separating with partial fractions when only the limit was asked.",
+   "separating_feature": "Limit: zeros and sign. Fastest: vertex.",
+   "contrast": {
+    "this": {
+     "text": "dP/dt = (1/5)P(1 - P/1000), P(0) = 100. Find P when the population is growing fastest.",
+     "archetype_id": "BC-QA-07009"
+    },
+    "not_this": {
+     "text": "dP/dt = (1/5)P(1 - P/1000), P(0) = 100. Solve for P(t).",
+     "why_not": "A formula for P needs separation with partial fractions."
+    },
+    "feature": "A value asked, against a formula for P."
+   }
   },
   {
-   "id": "LSN-CON-07012#s6",
+   "id": "LSN-CON-07012#s7",
    "type": "worked_example",
    "bands": [
     "low",
@@ -231,7 +290,7 @@
    "calculator_status": "no_calculator",
    "steps": [
     {
-     "cue": "A limit: the equilibria.",
+     "cue": "A limit is asked.",
      "why": "Zeros of the right side.",
      "expression": [
       "Equal",
@@ -319,7 +378,7 @@
      }
     },
     {
-     "cue": "Fastest: the largest rate.",
+     "cue": "Fastest.",
      "why": "Maximise the quadratic right side.",
      "expression": [
       "Add",
@@ -434,6 +493,7 @@
     "expression": 800
    },
    "relation": "distinct",
+   "fix_prompt": true,
    "possible_reason": {
     "misconception_id": "BC-MIS-07025",
     "text": "does not read the capacity off the zeros of the right side"
@@ -470,6 +530,7 @@
     "expression": 800
    },
    "relation": "equivalent",
+   "fix_prompt": false,
    "delivery": {
     "mode": "step_reveal",
     "reason": "rule 1: a worked example or an error block",
@@ -503,6 +564,7 @@
     "expression": 400
    },
    "relation": "distinct",
+   "fix_prompt": true,
    "possible_reason": {
     "misconception_id": "BC-MIS-07027",
     "text": "equates the largest value of the quantity with the largest value of its rate"
@@ -567,6 +629,7 @@
     "expression": 800
    },
    "relation": "distinct",
+   "fix_prompt": true,
    "possible_reason": {
     "misconception_id": "BC-MIS-07025",
     "text": "reaches for partial fractions instead"
@@ -592,7 +655,7 @@
    ],
    "evidence_tag": "inferred",
    "prerequisite_id": "BC-PRQ-05001",
-   "text": "Setting a factored expression equal to zero lists its zeros; without it, no equilibrium appears."
+   "text": "Setting a factored expression equal to zero lists its zeros."
   }
  ],
  "checks": [
@@ -612,7 +675,7 @@
     "start_share": "1/5",
     "context": "fish"
    },
-   "completes": "LSN-CON-07012#s6",
+   "completes": "LSN-CON-07012#s7",
    "stem": {
     "text": "dP/dt = 2P/5 - P^2/2000, P(0) = 160; the limit is 800. Find P when fastest; give (limit, fastest).",
     "command_verb": "find"
@@ -972,20 +1035,20 @@
   }
  ],
  "refresher": [
-  "LSN-CON-07012#s2",
   "LSN-CON-07012#s3",
+  "LSN-CON-07012#s4",
   "LSN-CON-07012#err-BC-ERR-07040",
   "LSN-CON-07012#err-BC-ERR-07041",
   "LSN-CON-07012#err-BC-ERR-07042",
   "LSN-CON-07012#err-BC-ERR-07044",
-  "LSN-CON-07012#s6"
+  "LSN-CON-07012#s7"
  ],
  "provenance": {
   "author": "tools/lesson_transcribe.py",
-  "prompt_version": "generator/lesson_v1",
+  "prompt_version": "generator/lesson_v2",
   "design_path": "docs/lessons/unit-07/LSN-CON-07012.md",
-  "signed_off_by": "claude-opus-5-5",
-  "signed_off_at": "2026-09-29",
+  "signed_off_by": null,
+  "signed_off_at": null,
   "not_human": true
  }
 }

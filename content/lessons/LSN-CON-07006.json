@@ -3,20 +3,74 @@
  "version": 1,
  "kind": "concept",
  "target_id": "BC-CON-07006",
- "status": "signed_off",
+ "status": "draft",
  "snapshot_digest": "a6a8ec9d3f59ab8f712e33d30cc22fc64bf2c478fbe7312e3e3118d319c6a42f",
  "source_digest": "00ae4148dfa851404fcab43d626b904a721057f48f2a5162259cb2f0db9f8d20",
  "read_minutes": {
-  "full": 4.0,
-  "brief": 2.9
+  "full": 4.1,
+  "brief": 3.0
  },
  "word_count": {
-  "full": 528,
-  "brief": 388
+  "full": 550,
+  "brief": 410
  },
  "sections": [
   {
    "id": "LSN-CON-07006#s1",
+   "type": "prediction",
+   "bands": [
+    "low",
+    "mid"
+   ],
+   "skills": [
+    "BC-SKL-07019",
+    "BC-SKL-07020",
+    "BC-SKL-07021",
+    "BC-SKL-07022",
+    "BC-SKL-07023"
+   ],
+   "sources": [
+    "BC-CON-07006",
+    "BC-EK-FUN-7C4",
+    "ced:141",
+    "research/units/unit-07-differential-equations.md#7.5 Approximating Solutions Using Euler's Method"
+   ],
+   "evidence_tag": "inferred",
+   "stem": {
+    "text": "Predict. \\(dy/dx=2x+y+1\\) and \\(y(0)=1\\). Using the slope at the start, estimate \\(y(1/2)\\).",
+    "command_verb": "predict"
+   },
+   "format": "mcq",
+   "options": [
+    {
+     "id": "A",
+     "label": "2: 1 plus slope times \\(1/2\\).",
+     "is_key": true
+    },
+    {
+     "id": "B",
+     "label": "1: \\(y\\) stays put.",
+     "is_key": false
+    },
+    {
+     "id": "C",
+     "label": "3: 1 plus the slope.",
+     "is_key": false
+    }
+   ],
+   "resolution": {
+    "text": "The slope at \\((0,1)\\) is 2, so \\(1+\\tfrac12(2)=2\\). Euler's method repeats this at each new point."
+   },
+   "delivery": {
+    "mode": "text",
+    "reason": "rule 6: a prediction on ex-1's numbers with nothing to draw",
+    "sources": [
+     "BC-SKL-07021"
+    ]
+   }
+  },
+  {
+   "id": "LSN-CON-07006#s2",
    "type": "orientation",
    "bands": [
     "low",
@@ -34,7 +88,7 @@
     "research/units/unit-07-differential-equations.md#7.5 Approximating Solutions Using Euler's Method"
    ],
    "evidence_tag": "inferred",
-   "text": "Compute the step size, then each new value as the old one plus the step times the slope at the current point. Show every step, or a labelled table.",
+   "text": "Step size, then step times slope at each point. Show every step or a labelled table.",
    "delivery": {
     "mode": "table",
     "reason": "rule 5: BC-REP-03 on BC-SKL-07019 to 07022 and BC-QA-07004 representations",
@@ -86,7 +140,7 @@
    }
   },
   {
-   "id": "LSN-CON-07006#s2",
+   "id": "LSN-CON-07006#s3",
    "type": "key_ideas",
    "bands": [
     "low",
@@ -107,8 +161,8 @@
    "evidence_tag": "verified",
    "ek_id": "BC-EK-FUN-7C4",
    "depth": "core",
-   "text": "Step size is the interval length over the number of steps. From the current point, follow the tangent: new y equals old y plus step times the right side there. The new point then replaces the old one.",
-   "notation": "step size; y sub n plus one",
+   "text": "Step size is interval length over steps. New y is old y plus step times the slope there; the new point replaces the old.",
+   "notation": "step size",
    "quote": {
     "text": "Euler's method provides a procedure for approximating a solution to a differential equation or a point on a solution curve.",
     "source": "ced:141"
@@ -182,7 +236,7 @@
    }
   },
   {
-   "id": "LSN-CON-07006#s3",
+   "id": "LSN-CON-07006#s4",
    "type": "strategy",
    "bands": [
     "low",
@@ -200,13 +254,24 @@
    ],
    "evidence_tag": "verified",
    "archetype_id": "BC-QA-07004",
-   "cue": "Euler's method, a number of equal steps and a target input.",
-   "method": "First line: the step size, then y1 = y0 + step times f(x0, y0).",
-   "rival": "Rival: solving the equation and evaluating.",
-   "separating_feature": "The stem names Euler and steps."
+   "cue": "Euler, equal steps, a target input.",
+   "method": "The step size, then y1 = y0 + step times f(x0, y0).",
+   "rival": "Solving the equation and evaluating.",
+   "separating_feature": "The stem names Euler.",
+   "contrast": {
+    "this": {
+     "text": "\\(dy/dx=x+3y\\), \\(y(0)=2\\). Euler's method, two equal steps: approximate \\(y(1)\\).",
+     "archetype_id": "BC-QA-07004"
+    },
+    "not_this": {
+     "text": "\\(dy/dx=2xy\\), \\(y(0)=2\\). Find \\(y(1)\\).",
+     "why_not": "Exact solution, by separation."
+    },
+    "feature": "Euler and equal steps are named."
+   }
   },
   {
-   "id": "LSN-CON-07006#s4",
+   "id": "LSN-CON-07006#s5",
    "type": "worked_example",
    "bands": [
     "low",
@@ -240,7 +305,7 @@
    "calculator_status": "no_calculator",
    "steps": [
     {
-     "cue": "Two equal steps from 0 to 1.",
+     "cue": "Two equal steps, 0 to 1.",
      "why": "1/2.",
      "expression": [
       "Rational",
@@ -282,8 +347,8 @@
      "relation": "new"
     },
     {
-     "cue": "New point (1/2, 2) replaces the old.",
-     "why": "Slope there.",
+     "cue": "Slope at the new point.",
+     "why": "It replaces the old.",
      "expression": [
       "Add",
       1,
@@ -307,7 +372,7 @@
      }
     },
     {
-     "cue": "Advance again.",
+     "cue": "Advance.",
      "why": "2 + (1/2)(4).",
      "expression": 4,
      "relation": "new"
@@ -324,7 +389,7 @@
    }
   },
   {
-   "id": "LSN-CON-07006#s5",
+   "id": "LSN-CON-07006#s6",
    "type": "what_a_reader_scores",
    "bands": [
     "low",
@@ -341,7 +406,7 @@
     "BC-PT-99034"
    ],
    "evidence_tag": "verified",
-   "example_id": "LSN-CON-07006#s4",
+   "example_id": "LSN-CON-07006#s5",
    "lines": [
     {
      "point_type_id": "BC-PT-99034",
@@ -394,6 +459,7 @@
     ]
    },
    "relation": "distinct",
+   "fix_prompt": true,
    "possible_reason": {
     "misconception_id": "BC-MIS-07010",
     "text": "decides whether an estimate is high or low from the monotonicity of the solution rather than from its concavity"
@@ -431,6 +497,7 @@
     "expression": 4
    },
    "relation": "distinct",
+   "fix_prompt": true,
    "possible_reason": {
     "misconception_id": "BC-MIS-07011",
     "text": "treats the procedure as a single tangent line extended over the whole interval"
@@ -471,6 +538,7 @@
     "expression": 4
    },
    "relation": "distinct",
+   "fix_prompt": true,
    "delivery": {
     "mode": "step_reveal",
     "reason": "rule 1",
@@ -508,6 +576,7 @@
     "expression": 4
    },
    "relation": "distinct",
+   "fix_prompt": true,
    "possible_reason": {
     "misconception_id": "BC-MIS-07012",
     "text": "advances the input but not the output"
@@ -519,7 +588,7 @@
    }
   },
   {
-   "id": "LSN-CON-07006#s6",
+   "id": "LSN-CON-07006#s7",
    "type": "representations",
    "bands": [
     "low"
@@ -588,7 +657,7 @@
    ],
    "evidence_tag": "inferred",
    "prerequisite_id": "BC-PRQ-07005",
-   "text": "Each row starts from the previous row's output, not the initial value."
+   "text": "Each row starts from the row above."
   }
  ],
  "checks": [
@@ -610,7 +679,7 @@
     "start_y": 1,
     "span": 1
    },
-   "completes": "LSN-CON-07006#s4",
+   "completes": "LSN-CON-07006#s5",
    "stem": {
     "text": "dy/dx = 2x + y + 1, step 1/2, first step gives y(1/2) = 2. Finish to approximate y(1).",
     "command_verb": "approximate"
@@ -916,19 +985,19 @@
   }
  ],
  "refresher": [
-  "LSN-CON-07006#s2",
+  "LSN-CON-07006#s3",
   "LSN-CON-07006#err-BC-ERR-07018",
   "LSN-CON-07006#err-BC-ERR-07019",
   "LSN-CON-07006#err-BC-ERR-07020",
   "LSN-CON-07006#err-BC-ERR-07021",
-  "LSN-CON-07006#s4"
+  "LSN-CON-07006#s5"
  ],
  "provenance": {
   "author": "tools/lesson_transcribe.py",
-  "prompt_version": "generator/lesson_v1",
+  "prompt_version": "generator/lesson_v2",
   "design_path": "docs/lessons/unit-07/LSN-CON-07006.md",
-  "signed_off_by": "claude-opus-5-5",
-  "signed_off_at": "2026-09-29",
+  "signed_off_by": null,
+  "signed_off_at": null,
   "not_human": true
  }
 }

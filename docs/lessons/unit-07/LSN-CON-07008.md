@@ -9,6 +9,10 @@ purpose: Authoring spec for the concept lesson on BC-CON-07008, the particular s
 
 Concept BC-CON-07008 (skills BC-SKL-07029, BC-SKL-07030, BC-SKL-07032, BC-SKL-07033), topic 7.7 of Unit 7, loaded by BC-QA-07011, BC-QA-07003 and BC-QA-07007. Its hard parents in Unit 7 are BC-CON-07001, BC-CON-07003 and BC-CON-07007 (docs/lessons/unit-07/README.md, section 1).
 
+## Prediction
+
+Both bands, served first, before any rule. Form `mcq`, three options, on ex-1's equation \(dy/dx=2e^{-x^2}\) and the point \((1,3)\): the student is told that its solutions differ by a constant and says how many pass through the point. Key: exactly one. The distractors are infinitely many and none because no formula for \(y\) exists. The resolution states that the solutions differ by a constant, so one passes through the point and the initial condition picks it, and never grades the choice. Sources: BC-CON-07008 and the 7.7 topic section that ki-1 cites (BC-EK-FUN-7E1, ced:143). Delivery: text. [inferred] Settled by the prediction's first-try rate in the build plan.
+
 ## Orientation
 
 Served text, from BC-CON-07008 `description_plain` and the topic's Assessment behaviour paragraph (research/units/unit-07-differential-equations.md#7.7 Finding Particular Solutions Using Initial Conditions and Separation of Variables): the constant is fixed by substituting into the equation that holds it, the same values choose the sign, and the answer is one function.
@@ -28,18 +32,21 @@ BC-QA-07007: "show that the given function is a solution" with an initial condit
 
 Not this concept: "general solution" with no stated value asks for the family (BC-CON-07003).
 
+The contrast pair on st-1 sets a particular-solution stem beside its near miss. Where the near miss comes from: the sibling concept BC-CON-07003, so the near-miss stem gives the same equation with no initial condition and asks for the general solution, the family. The separating feature is the initial condition.
+
 ## Method choice
 
 - st-1, BC-QA-07011, both bands. Method, `expected_solution_path[0]`: produce the general solution; for a right side in x alone that is the initial value plus an integral. Rival, `wrong_approaches`: choosing the branch by the sign of the constant. Separating feature: the initial condition fixes value and branch.
 - st-2, BC-QA-07003, low band. Method: substitute the initial condition into the equation holding C (`expected_solution_path` step 4). Rival, `wrong_approaches`: treating the dependent variable as a constant.
 - BC-QA-07007 gets no block: the full band reaches its 900-word cap, and verification is LSN-CON-07002's method [inferred].
 
-Both archetypes carry `asked_to_produce` and `common_givens`.
+Both archetypes carry `asked_to_produce` and `common_givens`. The reader prints its own labels, so no field starts with one, and no method begins with a label such as "First written line". st-1 carries the contrast pair: a particular-solution stem beside a general-solution stem.
 
 ## Solution path
 
 - ex-1, BC-QA-07011, both bands, no calculator. Draw: form accumulation, rate 2, initial 3, start 1, integrand gauss, read as dy/dx = 2e^(-x^2) with y(1) = 3 [inferred reading of the labels]. No published BC-QA-07011 draw matches. Steps: the right side (new); the choice of the lower limit (no value); the accumulation function (integrate in x).
 - ex-2, BC-QA-07003, low band, no calculator. Draw: square_root, rate 2, power 1, start 1, initial 3 (9 is not 2 * 1^2), so dy/dx = 2x/y with y(1) = 3. No published draw matches. Steps: separated (new); antiderivatives with C (new); initial values into the equation holding C (evaluate); C (solve); the positive root (new).
+- ex-2 is faded, `fade_from` 4: steps 1 to 3 (the separated equation, the antiderivatives with C and the initial values substituted into the equation holding C) are shown, and the student solves for C and writes the positive root before steps 4 and 5 reveal. The fade falls there because the last two steps are the constant and the branch, the two things the concept fixes (sg-23:12).
 - A fluent solver writes ex-1's lines 1 and 3 and every line of ex-2; the choice of limit is held [inferred].
 
 ## Scoring
@@ -48,7 +55,7 @@ ex-1's archetype BC-QA-07011 lists no `point_types`, so ex-1 carries no reader l
 
 ## Traps
 
-Six errors meet the skills; the first four in the bundle's order are served: BC-ERR-07009, BC-ERR-07029, BC-ERR-07033, BC-ERR-99014. Mid band the first two. All on ex-2's draw, where the constant and the branch live.
+Six errors meet the skills; all four served are distinct, so each carries `fix_prompt` true; the first four in the bundle's order are served: BC-ERR-07009, BC-ERR-07029, BC-ERR-07033, BC-ERR-99014. Mid band the first two. All on ex-2's draw, where the constant and the branch live.
 
 - err-BC-ERR-07009: the family given as the answer. Possible reason from BC-MIS-07005.
 - err-BC-ERR-07029: C = 7/2 carried into the rooted form. No possible reason line: the linked descriptions do not name the change of form.
@@ -75,13 +82,16 @@ BC-QA-07011 is `no_calculator`, one FRQ part or one MCQ; the FRQ form is taken, 
 
 ## Delivery
 
+- pr-1: text. Rule 6, a prediction on ex-1's equation with nothing to draw.
 - orientation, ki-1, ki-2: text, rule 6. BC-REP-01, 04, 06 only (docs/lessons/unit-07/README.md, section 6).
 - ex-1, ex-2 and the four error blocks: step_reveal, rule 1.
 
+Figure presence: no drawn block. No rule of 2 to 5 applies, because the skills carry only symbolic, contextual and differential-equation representations and no key idea describes a process, so the record carries `no_figure_reason`.
+
 ## Band plan
 
-- Low (full): orientation, ki-1, ki-2, st-1, st-2, ex-1, ex-2 with its four reader lines, the four error blocks, chk-1 to chk-3, the bridge. 897 words, 6.0 minutes (cap 900 and 6).
-- Mid (brief): orientation, ki-1, st-1, ex-1, err-BC-ERR-07009, err-BC-ERR-07029, chk-1, chk-2, the bridge. 378 words, 2.6 minutes (cap 450 and 3).
+- Low (full): prediction, orientation, bridge, ki-1, ki-2, st-1 with its contrast, st-2, ex-1, chk-1, the four error blocks, ex-2 faded with its four reader lines, chk-2, chk-3. 894 words, 6.0 minutes (cap 900 and 6). To fit under 900 the extended ki-2, ex-2's cues and whys, st-2, the bridge and the orientation were shortened.
+- Mid (brief): prediction, orientation, bridge, ki-1, st-1 with its contrast, ex-1, chk-1, err-BC-ERR-07009, err-BC-ERR-07029, chk-2. 411 words, 2.8 minutes (cap 450 and 3).
 - Refresher: ki-1, the four error blocks, ex-1.
 
 ## Sources
@@ -117,8 +127,41 @@ BC-QA-07011 is `no_calculator`, one FRQ part or one MCQ; the FRQ form is taken, 
   "BC-SKL-07032",
   "BC-SKL-07033"
  ],
+ "prediction": {
+  "id": "pr-1",
+  "stem": {
+   "text": "Predict. Every solution of \\(dy/dx=2e^{-x^2}\\) differs from another by a constant. How many pass through \\((1,3)\\)?",
+   "command_verb": "predict"
+  },
+  "format": "mcq",
+  "options": [
+   {
+    "id": "A",
+    "label": "Exactly one.",
+    "is_key": true
+   },
+   {
+    "id": "B",
+    "label": "Infinitely many.",
+    "is_key": false
+   },
+   {
+    "id": "C",
+    "label": "None, because no formula for \\(y\\) exists.",
+    "is_key": false
+   }
+  ],
+  "resolution": "The solutions differ by a constant, so exactly one passes through \\((1,3)\\). The initial condition picks that one.",
+  "sources": [
+   "BC-CON-07008",
+   "BC-EK-FUN-7E1",
+   "ced:143",
+   "research/units/unit-07-differential-equations.md#7.7 Finding Particular Solutions Using Initial Conditions and Separation of Variables"
+  ]
+ },
+ "no_figure_reason": "The skills carry symbolic, contextual and differential-equation representations, none figure-bearing, and no key idea describes a process. The content is written lines that fix a constant and a sign.",
  "orientation": {
-  "text": "A response substitutes the initial values into the equation that holds the constant, before the form of the constant changes, and uses the same values to choose the sign. The answer is one function, not a family.",
+  "text": "A response substitutes the initial values into the equation that holds the constant, before its form changes, and uses them to choose the sign. The answer is one function.",
   "sources": [
    "BC-CON-07008",
    "research/units/unit-07-differential-equations.md#7.7 Finding Particular Solutions Using Initial Conditions and Separation of Variables"
@@ -143,7 +186,7 @@ BC-QA-07011 is `no_calculator`, one FRQ part or one MCQ; the FRQ form is taken, 
    "id": "ki-2",
    "ek_id": "BC-EK-FUN-7E2",
    "depth": "extended",
-   "text": "When dy/dx depends on x alone, the solution through (a, y0) is y0 plus the integral of the right side from a to x. At x = a the integral is zero, so the condition holds.",
+   "text": "When dy/dx depends on x alone, the solution through (a, y0) is y0 plus the integral of the right side from a to x.",
    "notation": "F(a) equal to the initial value",
    "quote": null,
    "sources": [
@@ -157,21 +200,32 @@ BC-QA-07011 is `no_calculator`, one FRQ part or one MCQ; the FRQ form is taken, 
   {
    "id": "st-1",
    "archetype_id": "BC-QA-07011",
-   "cue": "A differential equation in x alone and an initial condition; the stem asks for the particular solution.",
-   "method": "First written line: the initial value plus an integral from the initial input to x.",
-   "rival": "Rival: choosing the branch by the sign of the constant rather than by the initial condition.",
+   "cue": "An x-only equation and an initial condition: the particular solution.",
+   "method": "The initial value plus an integral from the initial input to x.",
+   "rival": "Choosing the branch by the constant's sign.",
    "separating_feature": "The initial condition, not C, fixes the value and the branch.",
    "sources": [
     "BC-QA-07011"
    ],
-   "evidence_tag": "verified"
+   "evidence_tag": "verified",
+   "contrast": {
+    "this": {
+     "text": "\\(dy/dx=5e^{-x^2}\\) with \\(y(2)=1\\). Write the particular solution.",
+     "archetype_id": "BC-QA-07011"
+    },
+    "not_this": {
+     "text": "\\(dy/dx=5e^{-x^2}\\). Write the general solution.",
+     "why_not": "No initial condition, so it asks for the family."
+    },
+    "feature": "An initial condition asks for one function."
+   }
   },
   {
    "id": "st-2",
    "archetype_id": "BC-QA-07003",
-   "cue": "Separation with an initial condition; the stem asks for the evaluated constant and the explicit solution.",
-   "method": "First written line after the antiderivatives: the initial values substituted into the equation holding C.",
-   "rival": "Rival: treating the equation as though the dependent variable were a constant.",
+   "cue": "Separation with an initial condition.",
+   "method": "After the antiderivatives, the initial values go into the equation holding C.",
+   "rival": "Treating the equation as though the dependent variable were a constant.",
    "separating_feature": "C is fixed while it still stands alone.",
    "sources": [
     "BC-QA-07003"
@@ -244,7 +298,7 @@ BC-QA-07011 is `no_calculator`, one FRQ part or one MCQ; the FRQ form is taken, 
    "steps": [
     {
      "cue": "2x/y is 2x times 1/y.",
-     "why": "Multiply by y and by dx.",
+     "why": "Multiply by y and dx.",
      "expr": "y*dy = 2*x*dx",
      "relation": "new",
      "point_type_id": "BC-PT-99028"
@@ -258,7 +312,7 @@ BC-QA-07011 is `no_calculator`, one FRQ part or one MCQ; the FRQ form is taken, 
     },
     {
      "cue": "y(1) = 3, and C still stands alone.",
-     "why": "Substitute now, before squaring or rooting.",
+     "why": "Substitute before squaring or rooting.",
      "expr": "9/2 = 1 + C",
      "relation": "evaluate",
      "subs": {
@@ -275,8 +329,8 @@ BC-QA-07011 is `no_calculator`, one FRQ part or one MCQ; the FRQ form is taken, 
      "variable": "C"
     },
     {
-     "cue": "The stem asks for y; y(1) = 3 > 0.",
-     "why": "The positive root is the branch through (1, 3).",
+     "cue": "The stem asks for y.",
+     "why": "Positive root: y(1) = 3 > 0.",
      "expr": "y = sqrt(2*x**2 + 7)",
      "relation": "new",
      "point_type_id": "BC-PT-99032"
@@ -285,7 +339,8 @@ BC-QA-07011 is `no_calculator`, one FRQ part or one MCQ; the FRQ form is taken, 
    "answer": {
     "form": "symbolic",
     "expr": "sqrt(2*x**2 + 7)"
-   }
+   },
+   "fade_from": 4
   }
  ],
  "what_a_reader_scores": [
@@ -338,7 +393,8 @@ BC-QA-07011 is `no_calculator`, one FRQ part or one MCQ; the FRQ form is taken, 
    "sources": [
     "BC-ERR-07009",
     "BC-MIS-07005"
-   ]
+   ],
+   "fix_prompt": true
   },
   {
    "error_id": "BC-ERR-07029",
@@ -356,7 +412,8 @@ BC-QA-07011 is `no_calculator`, one FRQ part or one MCQ; the FRQ form is taken, 
    "possible_reason": null,
    "sources": [
     "BC-ERR-07029"
-   ]
+   ],
+   "fix_prompt": true
   },
   {
    "error_id": "BC-ERR-07033",
@@ -374,7 +431,8 @@ BC-QA-07011 is `no_calculator`, one FRQ part or one MCQ; the FRQ form is taken, 
    "possible_reason": null,
    "sources": [
     "BC-ERR-07033"
-   ]
+   ],
+   "fix_prompt": true
   },
   {
    "error_id": "BC-ERR-99014",
@@ -392,14 +450,15 @@ BC-QA-07011 is `no_calculator`, one FRQ part or one MCQ; the FRQ form is taken, 
    "possible_reason": null,
    "sources": [
     "BC-ERR-99014"
-   ]
+   ],
+   "fix_prompt": true
   }
  ],
  "representations": null,
  "prerequisite_bridges": [
   {
    "prq_id": "BC-PRQ-07004",
-   "text": "The given point decides the sign inside an absolute value or a root. Without it, both signs are kept or the branch contradicts the initial condition."
+   "text": "The given point decides the sign inside an absolute value or a root."
   }
  ],
  "time": {
@@ -605,6 +664,14 @@ BC-QA-07011 is `no_calculator`, one FRQ part or one MCQ; the FRQ form is taken, 
  ],
  "delivery": [
   {
+   "block": "pr-1",
+   "mode": "text",
+   "reason": "rule 6: a prediction on ex-1's equation with nothing to draw",
+   "sources": [
+    "BC-SKL-07033"
+   ]
+  },
+  {
    "block": "orientation",
    "mode": "text",
    "reason": "rule 6: a statement of what a response shows; BC-REP-01, BC-REP-04, BC-REP-06 only",
@@ -740,12 +807,12 @@ BC-QA-07011 is `no_calculator`, one FRQ part or one MCQ; the FRQ form is taken, 
   "research/exam/exam-structure.md#Section and part layout"
  ],
  "word_count": {
-  "full": 897,
-  "brief": 378
+  "full": 894,
+  "brief": 411
  },
  "read_minutes": {
   "full": 6.0,
-  "brief": 2.6
+  "brief": 2.8
  }
 }
 ```

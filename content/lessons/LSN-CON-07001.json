@@ -3,20 +3,69 @@
  "version": 1,
  "kind": "concept",
  "target_id": "BC-CON-07001",
- "status": "signed_off",
+ "status": "draft",
  "snapshot_digest": "a6a8ec9d3f59ab8f712e33d30cc22fc64bf2c478fbe7312e3e3118d319c6a42f",
  "source_digest": "900f60f3b45473d77d14324b57cee7ab8181d91571caec8416dff7ca905ab186",
  "read_minutes": {
-  "full": 3.8,
+  "full": 3.9,
   "brief": 3.0
  },
  "word_count": {
-  "full": 446,
-  "brief": 350
+  "full": 473,
+  "brief": 377
  },
  "sections": [
   {
    "id": "LSN-CON-07001#s1",
+   "type": "prediction",
+   "bands": [
+    "low",
+    "mid"
+   ],
+   "skills": [
+    "BC-SKL-07001",
+    "BC-SKL-07002",
+    "BC-SKL-07003",
+    "BC-SKL-07004",
+    "BC-SKL-07005"
+   ],
+   "sources": [
+    "BC-CON-07001",
+    "research/units/unit-07-differential-equations.md#7.1 Modeling Situations with Differential Equations"
+   ],
+   "evidence_tag": "inferred",
+   "stem": {
+    "text": "Predict. Tea at 95 degrees in a 70 degree room has dH/dt proportional to 70 - H, k > 0. What is dH/dt at t = 0?",
+    "command_verb": "predict"
+   },
+   "format": "mcq",
+   "options": [
+    {
+     "id": "A",
+     "label": "-25k, the tea cools",
+     "is_key": true
+    },
+    {
+     "id": "B",
+     "label": "25k, the tea warms",
+     "is_key": false
+    },
+    {
+     "id": "C",
+     "label": "95k, the tea warms",
+     "is_key": false
+    }
+   ],
+   "resolution": {
+    "text": "The rate is k(70 - H), which at H = 95 is -25k, so the tea cools toward 70."
+   },
+   "delivery": {
+    "mode": "text",
+    "reason": "rule 6"
+   }
+  },
+  {
+   "id": "LSN-CON-07001#s2",
    "type": "orientation",
    "bands": [
     "low",
@@ -34,7 +83,7 @@
     "research/units/unit-07-differential-equations.md#7.1 Modeling Situations with Differential Equations"
    ],
    "evidence_tag": "inferred",
-   "text": "A rate sentence becomes an equation: the derivative equals a named constant times the quantity or the stated difference. The value at a stated time is written apart, as the initial condition.",
+   "text": "A rate sentence becomes an equation for the derivative. The starting value is written apart.",
    "delivery": {
     "mode": "text",
     "reason": "rule 6: BC-REP-04, 05, 06 on BC-SKL-07001 to 07005, none figure-bearing",
@@ -44,7 +93,7 @@
    }
   },
   {
-   "id": "LSN-CON-07001#s2",
+   "id": "LSN-CON-07001#s3",
    "type": "key_ideas",
    "bands": [
     "low",
@@ -65,8 +114,8 @@
    "evidence_tag": "verified",
    "ek_id": "BC-EK-FUN-7A1",
    "depth": "core",
-   "text": "Proportional to the quantity gives k times the quantity; proportional to the difference from a fixed level gives k times that difference, oriented so the quantity moves toward the level. The derivative carries quantity units per time unit. A value at a stated time is the initial condition, kept outside the equation.",
-   "notation": "dy/dt; k for the constant of proportionality",
+   "text": "Proportional to a quantity gives k times it; to a difference from a fixed level, k times that difference, oriented toward the level. A stated value is the initial condition, kept outside the equation.",
+   "notation": "dy/dt; constant k",
    "quote": {
     "text": "Differential equations relate a function of an independent variable and the function's derivatives.",
     "source": "ced:137"
@@ -81,7 +130,7 @@
    }
   },
   {
-   "id": "LSN-CON-07001#s3",
+   "id": "LSN-CON-07001#s4",
    "type": "strategy",
    "bands": [
     "low",
@@ -95,17 +144,29 @@
     "BC-SKL-07005"
    ],
    "sources": [
-    "BC-QA-07006"
+    "BC-QA-07006",
+    "BC-ERR-07005"
    ],
    "evidence_tag": "verified",
    "archetype_id": "BC-QA-07006",
-   "cue": "A rate is proportional to something, a value at one time is given, and no equation is printed.",
-   "method": "First line: name the variables, then write the derivative equal to k times the named expression.",
-   "rival": "Rival: an exponential formula for the quantity (BC-ERR-07005).",
-   "separating_feature": "The stem asks for the rate, so the left side is a derivative."
+   "cue": "A rate, a starting value, no printed equation.",
+   "method": "Name the variables, write the derivative equal to k times the expression.",
+   "rival": "An exponential formula for the quantity.",
+   "separating_feature": "A rate is asked, so the left side is a derivative.",
+   "contrast": {
+    "this": {
+     "text": "Water at 10 degrees warms at a rate proportional to 40 minus its temperature. Write the equation and initial condition.",
+     "archetype_id": "BC-QA-07006"
+    },
+    "not_this": {
+     "text": "Given dP/dt = 0.2P and P(0) = 50, find P(t).",
+     "why_not": "The equation is printed, so it is solved, not written."
+    },
+    "feature": "An equation printed, or to be written from a rate sentence."
+   }
   },
   {
-   "id": "LSN-CON-07001#s4",
+   "id": "LSN-CON-07001#s5",
    "type": "worked_example",
    "bands": [
     "low",
@@ -137,12 +198,12 @@
    "calculator_status": "no_calculator",
    "steps": [
     {
-     "cue": "The stem names a temperature and a time.",
-     "why": "H degrees, t minutes; dH/dt degrees per minute."
+     "cue": "Name the quantity.",
+     "why": "H degrees, t minutes."
     },
     {
-     "cue": "Proportional to the difference selects k times that difference.",
-     "why": "Negative above 70, so H falls toward 70.",
+     "cue": "Proportional to a difference.",
+     "why": "k times it; negative above 70.",
      "expression": [
       "Multiply",
       "k",
@@ -159,8 +220,8 @@
      "relation": "new"
     },
     {
-     "cue": "The rate is the derivative of H.",
-     "why": "An equation about the rate, not a formula for H.",
+     "cue": "A rate is asked.",
+     "why": "The derivative, not a formula for H.",
      "expression": [
       "Equal",
       [
@@ -189,8 +250,8 @@
      "relation": "new"
     },
     {
-     "cue": "At time t = 0 marks a stated value.",
-     "why": "It selects one solution, so it stands apart.",
+     "cue": "A value at t = 0.",
+     "why": "It selects a solution, so it stands apart.",
      "expression": [
       "Equal",
       [
@@ -284,6 +345,7 @@
     ]
    },
    "relation": "distinct",
+   "fix_prompt": true,
    "possible_reason": {
     "misconception_id": "BC-MIS-07001",
     "text": "drops the constant of proportionality"
@@ -364,6 +426,7 @@
     ]
    },
    "relation": "distinct",
+   "fix_prompt": true,
    "delivery": {
     "mode": "step_reveal",
     "reason": "rule 1",
@@ -444,6 +507,7 @@
     ]
    },
    "relation": "distinct",
+   "fix_prompt": true,
    "delivery": {
     "mode": "step_reveal",
     "reason": "rule 1",
@@ -501,6 +565,7 @@
     ]
    },
    "relation": "distinct",
+   "fix_prompt": true,
    "possible_reason": {
     "misconception_id": "BC-MIS-07003",
     "text": "treats the stated value as a term of the equation rather than as the condition that selects one solution"
@@ -527,7 +592,7 @@
    ],
    "evidence_tag": "inferred",
    "prerequisite_id": "BC-PRQ-06005",
-   "text": "H(0) is the value of H at input 0; misread, a value for the wrong input is used."
+   "text": "H(0) is H at input 0, not another input."
   },
   {
    "id": "LSN-CON-07001#prq-BC-PRQ-07002",
@@ -544,7 +609,7 @@
    ],
    "evidence_tag": "inferred",
    "prerequisite_id": "BC-PRQ-07002",
-   "text": "dH/dt is the rate of H per unit t; its letters name what changes and against what."
+   "text": "dH/dt is the rate of H per unit t."
   },
   {
    "id": "LSN-CON-07001#prq-BC-PRQ-07003",
@@ -562,7 +627,7 @@
    ],
    "evidence_tag": "inferred",
    "prerequisite_id": "BC-PRQ-07003",
-   "text": "Proportional to means a constant multiple; an equality in its place drops the constant."
+   "text": "Proportional to means a constant multiple."
   }
  ],
  "checks": [
@@ -582,7 +647,7 @@
     "approach": "from_above",
     "time_unit": "minutes"
    },
-   "completes": "LSN-CON-07001#s4",
+   "completes": "LSN-CON-07001#s5",
    "stem": {
     "text": "Tea: H degrees at t minutes, H = 95 at t = 0, rate proportional to 70 - H. Write both lines.",
     "command_verb": "write"
@@ -962,19 +1027,20 @@
   }
  ],
  "refresher": [
-  "LSN-CON-07001#s2",
+  "LSN-CON-07001#s3",
   "LSN-CON-07001#err-BC-ERR-07001",
   "LSN-CON-07001#err-BC-ERR-07002",
   "LSN-CON-07001#err-BC-ERR-07003",
   "LSN-CON-07001#err-BC-ERR-07004",
-  "LSN-CON-07001#s4"
+  "LSN-CON-07001#s5"
  ],
+ "no_figure_reason": "No skill carries a figure-bearing representation and no key idea describes a process. The lesson turns a rate sentence into an equation and a condition, which is a symbolic translation.",
  "provenance": {
   "author": "tools/lesson_transcribe.py",
-  "prompt_version": "generator/lesson_v1",
+  "prompt_version": "generator/lesson_v2",
   "design_path": "docs/lessons/unit-07/LSN-CON-07001.md",
-  "signed_off_by": "claude-opus-5-5",
-  "signed_off_at": "2026-09-29",
+  "signed_off_by": null,
+  "signed_off_at": null,
   "not_human": true
  }
 }

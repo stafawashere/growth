@@ -3,20 +3,67 @@
  "version": 1,
  "kind": "concept",
  "target_id": "BC-CON-07011",
- "status": "signed_off",
+ "status": "draft",
  "snapshot_digest": "a6a8ec9d3f59ab8f712e33d30cc22fc64bf2c478fbe7312e3e3118d319c6a42f",
  "source_digest": "629627c543a81fd3eb47a62b0ea37d70499cbaf1a31c128f4f19da114f2741ca",
  "read_minutes": {
-  "full": 3.5,
-  "brief": 2.7
+  "full": 3.83,
+  "brief": 3.0
  },
  "word_count": {
-  "full": 431,
-  "brief": 349
+  "full": 487,
+  "brief": 405
  },
  "sections": [
   {
    "id": "LSN-CON-07011#s1",
+   "type": "prediction",
+   "bands": [
+    "low",
+    "mid"
+   ],
+   "skills": [
+    "BC-SKL-07039",
+    "BC-SKL-07043"
+   ],
+   "sources": [
+    "BC-CON-07011",
+    "BC-EK-FUN-7H1",
+    "research/units/unit-07-differential-equations.md#7.9 Logistic Models with Differential Equations"
+   ],
+   "evidence_tag": "inferred",
+   "stem": {
+    "text": "Before the rule: deer P grow at a rate jointly proportional to P and 600 - P. What does dP/dt do as P nears 600?",
+    "command_verb": "predict"
+   },
+   "format": "mcq",
+   "options": [
+    {
+     "id": "A",
+     "label": "It grows larger.",
+     "is_key": false
+    },
+    {
+     "id": "B",
+     "label": "It nears zero.",
+     "is_key": true
+    },
+    {
+     "id": "C",
+     "label": "It stays constant.",
+     "is_key": false
+    }
+   ],
+   "resolution": {
+    "text": "The rate is a constant times P(600 - P), zero at P = 600, so P levels off there: the carrying capacity."
+   },
+   "delivery": {
+    "mode": "text",
+    "reason": "rule 6"
+   }
+  },
+  {
+   "id": "LSN-CON-07011#s2",
    "type": "orientation",
    "bands": [
     "low",
@@ -31,7 +78,7 @@
     "research/units/unit-07-differential-equations.md#7.9 Logistic Models with Differential Equations"
    ],
    "evidence_tag": "inferred",
-   "text": "A response writes dy/dt = ky(a - y) from the joint proportionality statement, reads the model without solving it, and says what the numbers mean, with units.",
+   "text": "A response writes dy/dt = ky(a - y) from a joint proportionality statement and reads it without solving.",
    "delivery": {
     "mode": "text",
     "reason": "rule 6: a statement of what a response shows; BC-REP-04, BC-REP-05, BC-REP-06",
@@ -41,7 +88,7 @@
    }
   },
   {
-   "id": "LSN-CON-07011#s2",
+   "id": "LSN-CON-07011#s3",
    "type": "key_ideas",
    "bands": [
     "low",
@@ -58,7 +105,7 @@
    "evidence_tag": "inferred",
    "ek_id": "BC-EK-FUN-7H1",
    "depth": "core",
-   "text": "A rate jointly proportional to y and to a - y gives dy/dt = ky(a - y). The factor a - y makes the rate vanish at a; without it there is no ceiling.",
+   "text": "A rate jointly proportional to y and a - y gives dy/dt = ky(a - y); the factor a - y makes the rate vanish at a.",
    "notation": "dy/dt = ky(a - y)",
    "delivery": {
     "mode": "text",
@@ -69,7 +116,7 @@
    }
   },
   {
-   "id": "LSN-CON-07011#s3",
+   "id": "LSN-CON-07011#s4",
    "type": "key_ideas",
    "bands": [
     "low",
@@ -86,7 +133,7 @@
    "evidence_tag": "inferred",
    "ek_id": "BC-EK-FUN-7H2",
    "depth": "core",
-   "text": "The equation is read without solving: the right side is zero at 0 and a, positive between, so a solution starting between rises toward a. The sentence names quantity, units and direction.",
+   "text": "The right side is zero at 0 and a and positive between, so a solution starting between rises toward a. The sentence names quantity, units and direction.",
    "notation": "the limit as t grows without bound",
    "delivery": {
     "mode": "text",
@@ -97,7 +144,7 @@
    }
   },
   {
-   "id": "LSN-CON-07011#s4",
+   "id": "LSN-CON-07011#s5",
    "type": "strategy",
    "bands": [
     "low",
@@ -112,13 +159,24 @@
    ],
    "evidence_tag": "verified",
    "archetype_id": "BC-QA-07009",
-   "cue": "A logistic equation and an initial value between 0 and the capacity; the stem asks a limit or meaning.",
-   "method": "First written line: the right side set equal to zero.",
-   "rival": "Rival: separating the logistic equation with partial fractions when only the limit was asked for.",
-   "separating_feature": "The stem asks for a value or a meaning, not a formula for y."
+   "cue": "A logistic equation; a limit or meaning is asked.",
+   "method": "The right side set equal to zero.",
+   "rival": "Partial fractions when only the limit was asked.",
+   "separating_feature": "A value is asked, not a formula for y.",
+   "contrast": {
+    "this": {
+     "text": "dP/dt = (1/10)P(1 - P/500), P(0) = 50. Find the limit of P(t) as t grows.",
+     "archetype_id": "BC-QA-07009"
+    },
+    "not_this": {
+     "text": "dP/dt = P/10, P(0) = 50. Find the limit of P(t) as t grows.",
+     "why_not": "The right side is proportional to P alone: exponential, no ceiling."
+    },
+    "feature": "A factor 500 - P beside P, against P alone."
+   }
   },
   {
-   "id": "LSN-CON-07011#s5",
+   "id": "LSN-CON-07011#s6",
    "type": "worked_example",
    "bands": [
     "low",
@@ -174,7 +232,7 @@
      "relation": "new"
     },
     {
-     "cue": "A limit, not a formula.",
+     "cue": "A limit is asked.",
      "why": "Equilibria: zeros of the right side.",
      "expression": [
       "Equal",
@@ -212,7 +270,7 @@
      "variable": "P"
     },
     {
-     "cue": "P(0) = 120 is between.",
+     "cue": "120 lies between.",
      "why": "The sign there gives the direction.",
      "expression": [
       "Multiply",
@@ -245,7 +303,7 @@
     },
     {
      "cue": "The limit.",
-     "why": "P cannot cross the equilibrium 600.",
+     "why": "P cannot cross 600.",
      "expression": 600,
      "relation": "new"
     },
@@ -316,6 +374,7 @@
     ]
    },
    "relation": "distinct",
+   "fix_prompt": true,
    "possible_reason": {
     "misconception_id": "BC-MIS-07024",
     "text": "without the factor that makes the rate vanish at the carrying capacity"
@@ -353,6 +412,7 @@
     "expression": 600
    },
    "relation": "equivalent",
+   "fix_prompt": false,
    "possible_reason": {
     "misconception_id": "BC-MIS-07023",
     "text": "reports the number and leaves the quantity, the units, and the direction implicit"
@@ -417,6 +477,7 @@
     "expression": 600
    },
    "relation": "distinct",
+   "fix_prompt": true,
    "possible_reason": {
     "misconception_id": "BC-MIS-07025",
     "text": "does not read the capacity off the zeros of the right side and reaches for partial fractions instead"
@@ -462,7 +523,7 @@
     "start_share": "1/5",
     "context": "deer"
    },
-   "completes": "LSN-CON-07011#s5",
+   "completes": "LSN-CON-07011#s6",
    "stem": {
     "text": "dP/dt = P(600 - P)/2400, P(0) = 120, zeros 0 and 600. Find the limit of P(t).",
     "command_verb": "find"
@@ -700,19 +761,20 @@
   }
  ],
  "refresher": [
-  "LSN-CON-07011#s2",
   "LSN-CON-07011#s3",
+  "LSN-CON-07011#s4",
   "LSN-CON-07011#err-BC-ERR-07039",
   "LSN-CON-07011#err-BC-ERR-07043",
   "LSN-CON-07011#err-BC-ERR-07044",
-  "LSN-CON-07011#s5"
+  "LSN-CON-07011#s6"
  ],
+ "no_figure_reason": "Both key ideas are symbolic: an equation from a proportionality statement, and a sign read from its right side. No skill carries a figure-bearing representation, and the solution curve is drawn once, in the next lesson.",
  "provenance": {
   "author": "tools/lesson_transcribe.py",
-  "prompt_version": "generator/lesson_v1",
+  "prompt_version": "generator/lesson_v2",
   "design_path": "docs/lessons/unit-07/LSN-CON-07011.md",
-  "signed_off_by": "claude-opus-5-5",
-  "signed_off_at": "2026-09-29",
+  "signed_off_by": null,
+  "signed_off_at": null,
   "not_human": true
  }
 }

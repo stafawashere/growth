@@ -9,6 +9,10 @@ purpose: Authoring spec for the concept lesson on BC-CON-07009, the interval on 
 
 Concept BC-CON-07009 (skill BC-SKL-07031), topic 7.7 of Unit 7, loaded by BC-QA-07011. Its hard parent in Unit 7 is BC-CON-07007 (docs/lessons/unit-07/README.md, section 1).
 
+## Prediction
+
+Form mcq, both bands, on ex-1's own numbers. The stem gives the formula y = 1/(4 - 2x), which solves the equation and is undefined at x = 2, and asks where the solution through (1, 1/2) exists. Key B: only on the side of x = 2 holding x = 1. The distractors are every x and only x = 1. The stem needs no rule to read and asks for the domain claim, not ex-1's interval. The resolution restates the interval rule of BC-EK-FUN-7E3 (ced:143). Delivery: text.
+
 ## Orientation
 
 Served text, from BC-CON-07009 `description_plain` and the topic's Domain restriction and Assessment behaviour paragraphs (research/units/unit-07-differential-equations.md#7.7 Finding Particular Solutions Using Initial Conditions and Separation of Variables): the particular solution comes with the interval containing the initial input on which the formula is defined.
@@ -23,15 +27,21 @@ BC-QA-07011 (research/question-analysis/question-archetypes.md#BC-QA-07011 Parti
 
 Not this concept: a particular solution with no interval asked (BC-CON-07008), or a right side in x alone (the accumulation form, no break).
 
+The near miss on the contrast pair is the same equation and initial condition with no interval asked: a particular solution alone (BC-CON-07008), where no domain statement is demanded. The feature is the words "the interval on which it is valid".
+
 ## Method choice
 
 - st-1, BC-QA-07011, both bands. Method, `expected_solution_path`: produce the general solution, fix the constant and branch, then identify where the expression fails to be defined (step 3) and report the interval containing the initial input. Rival, `wrong_approaches`: choosing the branch by the sign of the constant rather than by the initial condition. Separating feature: the interval must contain x0. The archetype carries `asked_to_produce` and `common_givens`.
+
+The strategy fields carry no leading label, since the reader prints Cue, First line, Rival and Separating feature. st-1 carries the contrast pair, served in both bands.
 
 ## Solution path
 
 - ex-1, BC-QA-07011, both bands, no calculator. Draw: form restricted, rate 2, initial 1/2, start 1, so dy/dx = 2y^2 with y(1) = 1/2; blowup 1 + 1/(2 * 1/2) = 2, k y0 > 0, so the interval is left of 2. No published BC-QA-07011 draw matches.
 - Steps: separated (new); antiderivatives with C (new); initial values (evaluate); C (solve); y (new); denominator zero (new); the break (solve); the interval (new).
 - A fluent solver writes every line; the side choice is one clause beside the interval [inferred].
+
+One worked example only, so there is no fade.
 
 ## Scoring
 
@@ -64,11 +74,14 @@ BC-QA-07011 is `no_calculator`, one FRQ part or one MCQ; the FRQ form is taken, 
 - orientation, ki-1: text, rule 6: BC-REP-01 and BC-REP-04 only (docs/lessons/unit-07/README.md, section 6).
 - ex-1 and err-BC-ERR-07031: step_reveal, rule 1.
 
+- No drawn block: the machine record carries `no_figure_reason`. No skill lists a figure-bearing BC-REP and no key idea describes a process.
+- pr-1: text, rule 6.
+
 ## Band plan
 
-- Low (full): orientation, ki-1, st-1, ex-1, err-BC-ERR-07031, chk-1, chk-2, the bridge. 419 words, 2.8 minutes (cap 900 and 6).
-- Mid (brief): the same blocks. 419 words, 2.8 minutes (cap 450 and 3).
-- Refresher: ki-1, err-BC-ERR-07031, ex-1.
+- Low (full), in served order: prediction, orientation, the bridge, ki-1, st-1 with the contrast pair, ex-1, chk-1, err-BC-ERR-07031, chk-2. 436 words, 2.91 minutes (cap 900 and 6).
+- Mid (brief), in served order: the same blocks. 436 words, 2.91 minutes (cap 450 and 3). The orientation, the bridge, the strategy fields, the ki-1 text and the ex-1 cues were shortened to fit 450.
+- Refresher: the core key ideas, the error blocks, ex-1.
 
 ## Sources
 
@@ -79,6 +92,7 @@ BC-QA-07011 is `no_calculator`, one FRQ part or one MCQ; the FRQ form is taken, 
 - research/units/unit-07-differential-equations.md#7.7 Finding Particular Solutions Using Initial Conditions and Separation of Variables
 - research/question-analysis/question-archetypes.md#BC-QA-07011 Particular solution with a domain restriction or an accumulation form
 - research/exam/exam-structure.md#Section and part layout
+- pr-1 and the contrast pair draw on the concept record, the key idea's BC-EK and the cited topic section.
 - [inferred] Two checks, one error record. Settled by more BC-ERR records on BC-SKL-07031.
 - [inferred] Part II-B. Settled by a BC-PT mapping for BC-QA-07011.
 - [inferred] Why the other piece is excluded. Settled by a cached source sentence.
@@ -95,8 +109,40 @@ BC-QA-07011 is `no_calculator`, one FRQ part or one MCQ; the FRQ form is taken, 
  "skills": [
   "BC-SKL-07031"
  ],
+ "prediction": {
+  "id": "pr-1",
+  "stem": {
+   "text": "Before the rule: y = 1/(4 - 2x) solves dy/dx = 2y^2, y(1) = 1/2, and is undefined at x = 2. Where does the solution exist?",
+   "command_verb": "predict"
+  },
+  "format": "mcq",
+  "options": [
+   {
+    "id": "A",
+    "label": "For every x.",
+    "is_key": false
+   },
+   {
+    "id": "B",
+    "label": "Only on the side of x = 2 holding x = 1.",
+    "is_key": true
+   },
+   {
+    "id": "C",
+    "label": "Only at x = 1.",
+    "is_key": false
+   }
+  ],
+  "resolution": "The solution lives on the largest interval containing x = 1 where the formula is defined: x < 2.",
+  "sources": [
+   "BC-CON-07009",
+   "BC-EK-FUN-7E3",
+   "research/units/unit-07-differential-equations.md#7.7 Finding Particular Solutions Using Initial Conditions and Separation of Variables"
+  ]
+ },
+ "no_figure_reason": "The rule is a domain statement read from a formula's denominator. No skill carries a figure-bearing representation and no key idea describes a process, so nothing here is drawn.",
  "orientation": {
-  "text": "A response gives the particular solution and the interval on which it holds: the largest open interval containing the initial input on which the formula is defined. A formula claimed for every input, or an interval missing the initial input, loses the domain statement.",
+  "text": "A response gives the particular solution and the interval containing the initial input on which its formula is defined.",
   "sources": [
    "BC-CON-07009",
    "research/units/unit-07-differential-equations.md#7.7 Finding Particular Solutions Using Initial Conditions and Separation of Variables"
@@ -107,7 +153,7 @@ BC-QA-07011 is `no_calculator`, one FRQ part or one MCQ; the FRQ form is taken, 
    "id": "ki-1",
    "ek_id": "BC-EK-FUN-7E3",
    "depth": "core",
-   "text": "A solution formula can fail to be defined at some input, where a denominator vanishes or a logarithm or root loses its domain. The particular solution is taken on the largest interval containing the initial input on which the formula is defined and continuous. The piece on the other side of the break belongs to a different solution, since the curve through the initial point cannot cross it.",
+   "text": "A solution formula can fail to be defined where a denominator vanishes or a logarithm or root loses its domain. The particular solution is taken on the largest interval containing the initial input on which the formula is defined. The curve through the initial point cannot cross the break.",
    "notation": "domain restriction; interval containing the initial input",
    "quote": null,
    "sources": [
@@ -121,14 +167,25 @@ BC-QA-07011 is `no_calculator`, one FRQ part or one MCQ; the FRQ form is taken, 
   {
    "id": "st-1",
    "archetype_id": "BC-QA-07011",
-   "cue": "The stem asks for the particular solution and the interval on which it is valid.",
-   "method": "First written line after the solution: its denominator set equal to zero.",
-   "rival": "Rival: choosing the branch by the sign of the constant rather than by the initial condition.",
+   "cue": "The stem asks for the interval of validity.",
+   "method": "The solution's denominator set equal to zero, then the side holding the initial input.",
+   "rival": "Choosing the branch by the constant's sign, not the initial condition.",
    "separating_feature": "The interval must contain the initial input.",
    "sources": [
     "BC-QA-07011"
    ],
-   "evidence_tag": "verified"
+   "evidence_tag": "verified",
+   "contrast": {
+    "this": {
+     "text": "dy/dx = y^2/2, y(0) = 1. Find the particular solution and state the interval on which it is valid.",
+     "archetype_id": "BC-QA-07011"
+    },
+    "not_this": {
+     "text": "dy/dx = y^2/2, y(0) = 1. Find the particular solution.",
+     "why_not": "No interval is asked."
+    },
+    "feature": "The words \"the interval on which it is valid\"."
+   }
   }
  ],
  "worked_examples": [
@@ -153,7 +210,7 @@ BC-QA-07011 is `no_calculator`, one FRQ part or one MCQ; the FRQ form is taken, 
    "calculator_status": "no_calculator",
    "steps": [
     {
-     "cue": "2y^2 is 2 times a y part.",
+     "cue": "The right side is in y only.",
      "why": "Separate: y with dy.",
      "expr": "dy/y**2 = 2*dx",
      "relation": "new"
@@ -166,7 +223,7 @@ BC-QA-07011 is `no_calculator`, one FRQ part or one MCQ; the FRQ form is taken, 
     },
     {
      "cue": "y(1) = 1/2.",
-     "why": "Fix C before solving for y.",
+     "why": "Fix C first.",
      "expr": "-2 = 2 + C",
      "relation": "evaluate",
      "subs": {
@@ -182,8 +239,8 @@ BC-QA-07011 is `no_calculator`, one FRQ part or one MCQ; the FRQ form is taken, 
      "variable": "C"
     },
     {
-     "cue": "The stem asks for y.",
-     "why": "-1/y = 2x - 4, so y = 1/(4 - 2x).",
+     "cue": "Solve for y.",
+     "why": "So y = 1/(4 - 2x).",
      "expr": "y = 1/(4 - 2*x)",
      "relation": "new"
     },
@@ -194,7 +251,7 @@ BC-QA-07011 is `no_calculator`, one FRQ part or one MCQ; the FRQ form is taken, 
      "relation": "new"
     },
     {
-     "cue": "Solve for the break.",
+     "cue": "The break.",
      "why": "x = 2 splits the line.",
      "expr": "2",
      "relation": "solve",
@@ -202,7 +259,7 @@ BC-QA-07011 is `no_calculator`, one FRQ part or one MCQ; the FRQ form is taken, 
     },
     {
      "cue": "The initial input 1 lies left of 2.",
-     "why": "Largest interval containing 1 with the formula defined.",
+     "why": "The largest interval holding 1 where it is defined.",
      "expr": "Interval(-oo, 2, True, True)",
      "relation": "new"
     }
@@ -235,14 +292,15 @@ BC-QA-07011 is `no_calculator`, one FRQ part or one MCQ; the FRQ form is taken, 
    "sources": [
     "BC-ERR-07031",
     "BC-MIS-07019"
-   ]
+   ],
+   "fix_prompt": true
   }
  ],
  "representations": null,
  "prerequisite_bridges": [
   {
    "prq_id": "BC-PRQ-05003",
-   "text": "The domain of a function is the set of inputs where it is defined, and every conclusion is restricted to it. Without this, a result is reported at an input where the function is not defined."
+   "text": "The domain is the set of inputs where the function is defined."
   }
  ],
  "time": {
@@ -465,12 +523,12 @@ BC-QA-07011 is `no_calculator`, one FRQ part or one MCQ; the FRQ form is taken, 
   "research/exam/exam-structure.md#Section and part layout"
  ],
  "word_count": {
-  "full": 417,
-  "brief": 417
+  "full": 436,
+  "brief": 436
  },
  "read_minutes": {
-  "full": 2.8,
-  "brief": 2.8
+  "full": 2.91,
+  "brief": 2.91
  }
 }
 ```

@@ -3,20 +3,66 @@
  "version": 1,
  "kind": "concept",
  "target_id": "BC-CON-07009",
- "status": "signed_off",
+ "status": "draft",
  "snapshot_digest": "a6a8ec9d3f59ab8f712e33d30cc22fc64bf2c478fbe7312e3e3118d319c6a42f",
  "source_digest": "43ec227e700f5426d269ff4346c50b4e666dafc664ef6d6e70e78e3e952abbbd",
  "read_minutes": {
-  "full": 2.8,
-  "brief": 2.8
+  "full": 2.91,
+  "brief": 2.91
  },
  "word_count": {
-  "full": 341,
-  "brief": 341
+  "full": 384,
+  "brief": 384
  },
  "sections": [
   {
    "id": "LSN-CON-07009#s1",
+   "type": "prediction",
+   "bands": [
+    "low",
+    "mid"
+   ],
+   "skills": [
+    "BC-SKL-07031"
+   ],
+   "sources": [
+    "BC-CON-07009",
+    "BC-EK-FUN-7E3",
+    "research/units/unit-07-differential-equations.md#7.7 Finding Particular Solutions Using Initial Conditions and Separation of Variables"
+   ],
+   "evidence_tag": "inferred",
+   "stem": {
+    "text": "Before the rule: y = 1/(4 - 2x) solves dy/dx = 2y^2, y(1) = 1/2, and is undefined at x = 2. Where does the solution exist?",
+    "command_verb": "predict"
+   },
+   "format": "mcq",
+   "options": [
+    {
+     "id": "A",
+     "label": "For every x.",
+     "is_key": false
+    },
+    {
+     "id": "B",
+     "label": "Only on the side of x = 2 holding x = 1.",
+     "is_key": true
+    },
+    {
+     "id": "C",
+     "label": "Only at x = 1.",
+     "is_key": false
+    }
+   ],
+   "resolution": {
+    "text": "The solution lives on the largest interval containing x = 1 where the formula is defined: x < 2."
+   },
+   "delivery": {
+    "mode": "text",
+    "reason": "rule 6"
+   }
+  },
+  {
+   "id": "LSN-CON-07009#s2",
    "type": "orientation",
    "bands": [
     "low",
@@ -30,7 +76,7 @@
     "research/units/unit-07-differential-equations.md#7.7 Finding Particular Solutions Using Initial Conditions and Separation of Variables"
    ],
    "evidence_tag": "inferred",
-   "text": "A response gives the particular solution and the interval on which it holds: the largest open interval containing the initial input on which the formula is defined. A formula claimed for every input, or an interval missing the initial input, loses the domain statement.",
+   "text": "A response gives the particular solution and the interval containing the initial input on which its formula is defined.",
    "delivery": {
     "mode": "text",
     "reason": "rule 6: a statement of what a response shows; BC-REP-01 and BC-REP-04 only on BC-SKL-07031",
@@ -40,7 +86,7 @@
    }
   },
   {
-   "id": "LSN-CON-07009#s2",
+   "id": "LSN-CON-07009#s3",
    "type": "key_ideas",
    "bands": [
     "low",
@@ -57,7 +103,7 @@
    "evidence_tag": "inferred",
    "ek_id": "BC-EK-FUN-7E3",
    "depth": "core",
-   "text": "A solution formula can fail to be defined at some input, where a denominator vanishes or a logarithm or root loses its domain. The particular solution is taken on the largest interval containing the initial input on which the formula is defined and continuous. The piece on the other side of the break belongs to a different solution, since the curve through the initial point cannot cross it.",
+   "text": "A solution formula can fail to be defined where a denominator vanishes or a logarithm or root loses its domain. The particular solution is taken on the largest interval containing the initial input on which the formula is defined. The curve through the initial point cannot cross the break.",
    "notation": "domain restriction; interval containing the initial input",
    "delivery": {
     "mode": "text",
@@ -68,7 +114,7 @@
    }
   },
   {
-   "id": "LSN-CON-07009#s3",
+   "id": "LSN-CON-07009#s4",
    "type": "strategy",
    "bands": [
     "low",
@@ -82,13 +128,24 @@
    ],
    "evidence_tag": "verified",
    "archetype_id": "BC-QA-07011",
-   "cue": "The stem asks for the particular solution and the interval on which it is valid.",
-   "method": "First written line after the solution: its denominator set equal to zero.",
-   "rival": "Rival: choosing the branch by the sign of the constant rather than by the initial condition.",
-   "separating_feature": "The interval must contain the initial input."
+   "cue": "The stem asks for the interval of validity.",
+   "method": "The solution's denominator set equal to zero, then the side holding the initial input.",
+   "rival": "Choosing the branch by the constant's sign, not the initial condition.",
+   "separating_feature": "The interval must contain the initial input.",
+   "contrast": {
+    "this": {
+     "text": "dy/dx = y^2/2, y(0) = 1. Find the particular solution and state the interval on which it is valid.",
+     "archetype_id": "BC-QA-07011"
+    },
+    "not_this": {
+     "text": "dy/dx = y^2/2, y(0) = 1. Find the particular solution.",
+     "why_not": "No interval is asked."
+    },
+    "feature": "The words \"the interval on which it is valid\"."
+   }
   },
   {
-   "id": "LSN-CON-07009#s4",
+   "id": "LSN-CON-07009#s5",
    "type": "worked_example",
    "bands": [
     "low",
@@ -116,7 +173,7 @@
    "calculator_status": "no_calculator",
    "steps": [
     {
-     "cue": "2y^2 is 2 times a y part.",
+     "cue": "The right side is in y only.",
      "why": "Separate: y with dy.",
      "expression": [
       "Equal",
@@ -165,7 +222,7 @@
     },
     {
      "cue": "y(1) = 1/2.",
-     "why": "Fix C before solving for y.",
+     "why": "Fix C first.",
      "expression": [
       "Equal",
       -2,
@@ -189,8 +246,8 @@
      "variable": "C"
     },
     {
-     "cue": "The stem asks for y.",
-     "why": "-1/y = 2x - 4, so y = 1/(4 - 2x).",
+     "cue": "Solve for y.",
+     "why": "So y = 1/(4 - 2x).",
      "expression": [
       "Equal",
       "y",
@@ -229,7 +286,7 @@
      "relation": "new"
     },
     {
-     "cue": "Solve for the break.",
+     "cue": "The break.",
      "why": "x = 2 splits the line.",
      "expression": 2,
      "relation": "solve",
@@ -237,7 +294,7 @@
     },
     {
      "cue": "The initial input 1 lies left of 2.",
-     "why": "Largest interval containing 1 with the formula defined.",
+     "why": "The largest interval holding 1 where it is defined.",
      "expression": [
       "Interval",
       [
@@ -319,6 +376,7 @@
     ]
    },
    "relation": "distinct",
+   "fix_prompt": true,
    "possible_reason": {
     "misconception_id": "BC-MIS-07019",
     "text": "reports the algebraic expression with no regard for where it is defined or which branch contains the initial point"
@@ -344,7 +402,7 @@
    ],
    "evidence_tag": "inferred",
    "prerequisite_id": "BC-PRQ-05003",
-   "text": "The domain of a function is the set of inputs where it is defined, and every conclusion is restricted to it. Without this, a result is reported at an input where the function is not defined."
+   "text": "The domain is the set of inputs where the function is defined."
   }
  ],
  "checks": [
@@ -364,7 +422,7 @@
     "start": 1,
     "integrand": "gauss"
    },
-   "completes": "LSN-CON-07009#s4",
+   "completes": "LSN-CON-07009#s5",
    "stem": {
     "text": "y = 1/(4 - 2x) solves dy/dx = 2y^2 with y(1) = 1/2. State the interval on which it is the particular solution.",
     "command_verb": "state"
@@ -632,16 +690,17 @@
   }
  ],
  "refresher": [
-  "LSN-CON-07009#s2",
+  "LSN-CON-07009#s3",
   "LSN-CON-07009#err-BC-ERR-07031",
-  "LSN-CON-07009#s4"
+  "LSN-CON-07009#s5"
  ],
+ "no_figure_reason": "The rule is a domain statement read from a formula's denominator. No skill carries a figure-bearing representation and no key idea describes a process, so nothing here is drawn.",
  "provenance": {
   "author": "tools/lesson_transcribe.py",
-  "prompt_version": "generator/lesson_v1",
+  "prompt_version": "generator/lesson_v2",
   "design_path": "docs/lessons/unit-07/LSN-CON-07009.md",
-  "signed_off_by": "claude-opus-5-5",
-  "signed_off_at": "2026-09-29",
+  "signed_off_by": null,
+  "signed_off_at": null,
   "not_human": true
  }
 }

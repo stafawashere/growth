@@ -9,6 +9,10 @@ purpose: Authoring spec for the concept lesson on BC-CON-07010, the exponential 
 
 Concept BC-CON-07010 (skills BC-SKL-07034 to BC-SKL-07038), topic 7.8 of Unit 7, loaded by BC-QA-07008 (family exponential-model) and BC-QA-07011. Its hard parents in Unit 7 are BC-CON-07001, BC-CON-07007 and BC-CON-07008 (docs/lessons/unit-07/README.md, section 1).
 
+## Prediction
+
+Form mcq, both bands, on ex-1's own numbers. The stem gives P(0) = 200 and P(2) = 600 for a rate proportional to P and asks for P(4). Key B, 1800. Distractors 1000 (equal steps, the linear path of BC-ERR-07034) and 1200. The value follows from a constant growth factor per equal time, so it needs no formula. The resolution states that the model multiplies by one factor per equal time (BC-EK-FUN-7G1, ced:144). Delivery: text.
+
 ## Orientation
 
 Served text, from BC-CON-07010 `description_plain` and the topic's Assessment behaviour paragraph (research/units/unit-07-differential-equations.md#7.8 Exponential Models with Differential Equations): the model from the proportionality statement, the solution with the initial value as coefficient, k from a second pair, and k interpreted.
@@ -29,15 +33,21 @@ BC-QA-07008 (research/question-analysis/question-archetypes.md#BC-QA-07008 Expon
 
 Not this concept: "jointly proportional to the quantity and the difference between the quantity and" a level is logistic (BC-CON-07011); a rate in t alone is an accumulation (BC-CON-07008).
 
+The near miss on the contrast pair is a stem with a rate jointly proportional to the quantity and to the distance from a level: the logistic model of BC-CON-07011, read from the zeros of the right side. The feature is proportional to the quantity alone against jointly proportional.
+
 ## Method choice
 
 - st-1, BC-QA-07008, both bands. Method, `expected_solution_path[0]`: write the proportional model. Rival, `wrong_approaches`: treating the constant of proportionality and the constant of integration as the same object. Separating feature: y0 is the coefficient, fixed by the initial value; k needs a second pair. The separation is held in the head once the form is known (BC-EK-FUN-7G1).
+
+The strategy fields carry no leading label, since the reader prints Cue, First line, Rival and Separating feature. st-1 carries the contrast pair, served in both bands.
 
 ## Solution path
 
 - ex-1, BC-QA-07008, both bands, no calculator. Draw: growth, factor 3, initial 200, elapsed 2, context bacteria, so later = 600 and k = (ln 3)/2, exact. No published BC-QA-07008 draw matches.
 - Steps: model (new); solution with the coefficient (new); second pair (evaluate at t = 2); k (solve); P(t) (new); interpretation (no value).
 - A fluent solver writes lines 2 to 5; the model and the interpretation are held when not asked [inferred].
+
+One worked example only, so there is no fade.
 
 ## Scoring
 
@@ -78,9 +88,9 @@ BC-QA-07008 is `either`, a multipart FRQ or one MCQ; the MCQ shape is taken, Sec
 
 ## Band plan
 
-- Low (full): orientation, ki-1 to ki-3, st-1, ex-1, the four error blocks, chk-1 to chk-3, the three bridges. 555 words, 3.7 minutes (cap 900 and 6).
-- Mid (brief): orientation, ki-1, ki-2, st-1, ex-1, err-BC-ERR-07001, err-BC-ERR-07034, chk-1, chk-2, the three bridges. 407 words, 2.8 minutes (cap 450 and 3).
-- Refresher: ki-1, ki-2, the four error blocks, ex-1.
+- Low (full), in served order: prediction, orientation, the three bridges, ki-1 to ki-3, st-1 with the contrast pair, ex-1, chk-1, the four error blocks, chk-2, chk-3. 596 words, 3.98 minutes (cap 900 and 6).
+- Mid (brief), in served order: prediction, orientation, the bridges, the core key ideas, st-1 with the contrast pair, ex-1, chk-1, the first two error blocks, chk-2. 448 words, 2.99 minutes (cap 450 and 3). The orientation, the bridges, the strategy fields, the ki-2 text and the ex-1 cues were shortened to fit 450.
+- Refresher: the core key ideas, the error blocks, ex-1.
 
 ## Sources
 
@@ -91,6 +101,7 @@ BC-QA-07008 is `either`, a multipart FRQ or one MCQ; the MCQ shape is taken, Sec
 - research/units/unit-07-differential-equations.md#7.8 Exponential Models with Differential Equations
 - research/question-analysis/question-archetypes.md#BC-QA-07008 Exponential growth or decay model solved and interpreted
 - research/exam/exam-structure.md#Section and part layout
+- pr-1 and the contrast pair draw on the concept record, the key idea's BC-EK and the cited topic section.
 - [inferred] Part I-A for an either archetype. Settled by an official calculator status.
 - [inferred] The interpretation line. Settled by a rubric for BC-QA-07008.
 - [inferred] ki-2 as a table. Settled by the modality A/B.
@@ -112,8 +123,39 @@ BC-QA-07008 is `either`, a multipart FRQ or one MCQ; the MCQ shape is taken, Sec
   "BC-SKL-07037",
   "BC-SKL-07038"
  ],
+ "prediction": {
+  "id": "pr-1",
+  "stem": {
+   "text": "Before the rule: bacteria P grow at a rate proportional to P, with P(0) = 200 and P(2) = 600. What is P(4)?",
+   "command_verb": "predict"
+  },
+  "format": "mcq",
+  "options": [
+   {
+    "id": "A",
+    "label": "1000",
+    "is_key": false
+   },
+   {
+    "id": "B",
+    "label": "1800",
+    "is_key": true
+   },
+   {
+    "id": "C",
+    "label": "1200",
+    "is_key": false
+   }
+  ],
+  "resolution": "A rate proportional to size means P multiplies by one factor per equal time. P(2) is 3 times P(0), so P(4) = 1800.",
+  "sources": [
+   "BC-CON-07010",
+   "BC-EK-FUN-7G1",
+   "research/units/unit-07-differential-equations.md#7.8 Exponential Models with Differential Equations"
+  ]
+ },
  "orientation": {
-  "text": "A response writes dy/dt = ky, then y = y0 e^(kt) with the initial value as coefficient, finds k from a second data pair, and says what k means, with direction and units.",
+  "text": "A response writes dy/dt = ky and y = y0 e^(kt), finds k from a second pair, and says what k means.",
   "sources": [
    "BC-CON-07010",
    "research/units/unit-07-differential-equations.md#7.8 Exponential Models with Differential Equations"
@@ -124,7 +166,7 @@ BC-QA-07008 is `either`, a multipart FRQ or one MCQ; the MCQ shape is taken, Sec
    "id": "ki-1",
    "ek_id": "BC-EK-FUN-7F2",
    "depth": "core",
-   "text": "A rate proportional to the size of the quantity gives dy/dt = ky. Positive k is growth, negative k decay; the size of k sets how fast.",
+   "text": "A rate proportional to the size of the quantity gives dy/dt = ky. Positive k is growth, negative k decay.",
    "notation": "dy/dt = ky",
    "quote": null,
    "sources": [
@@ -137,7 +179,7 @@ BC-QA-07008 is `either`, a multipart FRQ or one MCQ; the MCQ shape is taken, Sec
    "id": "ki-2",
    "ek_id": "BC-EK-FUN-7G1",
    "depth": "core",
-   "text": "With y = y0 at t = 0, y = y0 e^(kt): the initial value is the coefficient, k is in the exponent. A second data pair fixes k through a logarithm.",
+   "text": "With y = y0 at t = 0, y = y0 e^(kt): y0 is the coefficient, k the exponent. A second pair fixes k through a logarithm.",
    "notation": "y = y sub 0 e^(kt)",
    "quote": null,
    "sources": [
@@ -164,14 +206,25 @@ BC-QA-07008 is `either`, a multipart FRQ or one MCQ; the MCQ shape is taken, Sec
   {
    "id": "st-1",
    "archetype_id": "BC-QA-07008",
-   "cue": "The rate of change is proportional to the quantity, with an initial value and a second data pair.",
-   "method": "First written line: dy/dt = ky, then y = y0 e^(kt).",
-   "rival": "Rival: treating the constant of proportionality and the constant of integration as the same object.",
+   "cue": "Rate proportional to the quantity; two data pairs.",
+   "method": "dy/dt = ky, then y = y0 e^(kt).",
+   "rival": "Treating the constant of proportionality and of integration as one object.",
    "separating_feature": "y0 is the coefficient; k needs the second pair.",
    "sources": [
     "BC-QA-07008"
    ],
-   "evidence_tag": "verified"
+   "evidence_tag": "verified",
+   "contrast": {
+    "this": {
+     "text": "A colony's rate is proportional to its size C; C(0) = 50, C(3) = 200. Find C(t).",
+     "archetype_id": "BC-QA-07008"
+    },
+    "not_this": {
+     "text": "A colony's rate is jointly proportional to C and 500 - C; C(0) = 50. Find the limit of C(t).",
+     "why_not": "Logistic: joint proportionality to C and 500 - C."
+    },
+    "feature": "Proportional to C alone, or jointly to C and 500 - C."
+   }
   }
  ],
  "worked_examples": [
@@ -209,7 +262,7 @@ BC-QA-07008 is `either`, a multipart FRQ or one MCQ; the MCQ shape is taken, Sec
     },
     {
      "cue": "P(2) = 600.",
-     "why": "Only a second pair reaches k.",
+     "why": "A second pair fixes k.",
      "expr": "600 = 200*exp(2*k)",
      "relation": "evaluate",
      "subs": {
@@ -217,21 +270,21 @@ BC-QA-07008 is `either`, a multipart FRQ or one MCQ; the MCQ shape is taken, Sec
      }
     },
     {
-     "cue": "k is in the exponent.",
+     "cue": "Solve for k.",
      "why": "e^(2k) = 3, take ln.",
      "expr": "log(3)/2",
      "relation": "solve",
      "variable": "k"
     },
     {
-     "cue": "The stem asks for P(t).",
+     "cue": "Asked for P(t).",
      "why": "Put k back.",
      "expr": "P = 200*exp(log(3)*t/2)",
      "relation": "new"
     },
     {
-     "cue": "The stem asks what k means.",
-     "why": "k = (ln 3)/2 > 0: growth, per hour; the count triples every 2 hours."
+     "cue": "Asked what k means.",
+     "why": "k = (ln 3)/2 > 0: growth per hour; the count triples every 2 hours."
     }
    ],
    "answer": {
@@ -262,7 +315,8 @@ BC-QA-07008 is `either`, a multipart FRQ or one MCQ; the MCQ shape is taken, Sec
    "sources": [
     "BC-ERR-07001",
     "BC-MIS-07001"
-   ]
+   ],
+   "fix_prompt": true
   },
   {
    "error_id": "BC-ERR-07034",
@@ -284,7 +338,8 @@ BC-QA-07008 is `either`, a multipart FRQ or one MCQ; the MCQ shape is taken, Sec
    "sources": [
     "BC-ERR-07034",
     "BC-MIS-07021"
-   ]
+   ],
+   "fix_prompt": true
   },
   {
    "error_id": "BC-ERR-07035",
@@ -306,7 +361,8 @@ BC-QA-07008 is `either`, a multipart FRQ or one MCQ; the MCQ shape is taken, Sec
    "sources": [
     "BC-ERR-07035",
     "BC-MIS-07022"
-   ]
+   ],
+   "fix_prompt": true
   },
   {
    "error_id": "BC-ERR-07036",
@@ -328,22 +384,23 @@ BC-QA-07008 is `either`, a multipart FRQ or one MCQ; the MCQ shape is taken, Sec
    "sources": [
     "BC-ERR-07036",
     "BC-MIS-07022"
-   ]
+   ],
+   "fix_prompt": true
   }
  ],
  "representations": null,
  "prerequisite_bridges": [
   {
    "prq_id": "BC-PRQ-06003",
-   "text": "ln turns e^(2k) = 3 into 2k = ln 3; without it, logarithms stay uncombined."
+   "text": "ln turns e^(2k) = 3 into 2k = ln 3."
   },
   {
    "prq_id": "BC-PRQ-07001",
-   "text": "A logarithm of both sides isolates k; without it, the second pair gives no k."
+   "text": "A logarithm of both sides isolates k."
   },
   {
    "prq_id": "BC-PRQ-07003",
-   "text": "Proportional to means a constant multiple; without it, the constant is lost."
+   "text": "Proportional to means a constant multiple."
   }
  ],
  "time": {
@@ -716,12 +773,12 @@ BC-QA-07008 is `either`, a multipart FRQ or one MCQ; the MCQ shape is taken, Sec
   "research/exam/exam-structure.md#Section and part layout"
  ],
  "word_count": {
-  "full": 555,
-  "brief": 407
+  "full": 596,
+  "brief": 448
  },
  "read_minutes": {
-  "full": 3.7,
-  "brief": 2.8
+  "full": 3.98,
+  "brief": 2.99
  }
 }
 ```

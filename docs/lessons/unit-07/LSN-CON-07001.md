@@ -9,6 +9,10 @@ purpose: Authoring spec for the concept lesson on BC-CON-07001, writing a differ
 
 Concept BC-CON-07001 (skills BC-SKL-07001 to BC-SKL-07005), topic 7.1 of Unit 7, loaded by one archetype, BC-QA-07006 (family de-modelling). It is first in the unit order and has no hard parent inside Unit 7 (docs/lessons/unit-07/README.md, section 1).
 
+## Prediction
+
+One `mcq`, both bands, on ex-1's numbers: tea at 95 degrees in a 70 degree room, the rate proportional to 70 - H, k > 0, and the question is dH/dt at t = 0. Key A, negative 25k, the tea falls toward 70. The distractors are 25k (the difference read as H - 70) and 95k (the starting value used as the rate). The student can settle it from the sign of the difference before any rule is taught. The resolution gives k times (70 - H), its value -25k at H = 95, and the fall toward 70. Sources: BC-CON-07001 and the topic 7.1 section the key idea cites.
+
 ## Orientation
 
 Served text, from BC-CON-07001 `description_plain` and the topic's Assessment behaviour paragraph (research/units/unit-07-differential-equations.md#7.1 Modeling Situations with Differential Equations): a response turns the rate sentence into an equation for the derivative with a named constant, and writes the stated starting value as a separate initial condition. No count, no frequency.
@@ -23,13 +27,13 @@ All five skills map to BC-EK-FUN-7A1 (ced:137), so one core block, both bands.
 
 BC-QA-07006 (research/question-analysis/question-archetypes.md#BC-QA-07006 Differential equation written from a verbal rate statement): `typical_wording` "write a differential equation that models the described rate of change, and state the initial condition"; `common_givens` a verbal description of a rate and a value of the quantity at a stated input; `asked_to_produce` the differential equation, the initial condition, the meaning of each variable. The signal: the words "rate" and "proportional to" in a sentence, with no equation printed. Shapes: an MCQ that offers four equations for one sentence (BC-MCQ-PE2012-023), or the unscored opening of a free-response question, where the equation is usually supplied and the scored work starts at the field or the separation (research/units/unit-07-differential-equations.md#7.1 Modeling Situations with Differential Equations).
 
-What says "not this concept": an equation already printed with a request to solve it (BC-CON-07007), or "jointly proportional to the quantity and the difference", which is the logistic form (BC-CON-07011; docs/lessons/unit-07/README.md, section 3).
+The contrast pair sits on st-1. Its near miss is the `wrong_approaches` entry (an exponential formula for the quantity, BC-ERR-07005) put as a stem where the equation is printed and a formula is asked, which is the sibling BC-CON-07007. What says "not this concept": an equation already printed with a request to solve it (BC-CON-07007), or "jointly proportional to the quantity and the difference", which is the logistic form (BC-CON-07011; docs/lessons/unit-07/README.md, section 3).
 
 ## Method choice
 
 One strategy block, both bands.
 
-- st-1, BC-QA-07006. Cue from `asked_to_produce` and `common_givens`. Method, `expected_solution_path[0]`: name the dependent and independent variables, then write the derivative equal to a constant times the named expression. Rival, `wrong_approaches`: writing an exponential formula instead of the equation (BC-ERR-07005). Separating feature: the stem asks for the rate, so the left side is the derivative. The archetype carries both fields, so the block is not tagged inferred.
+- st-1, BC-QA-07006. Cue from `asked_to_produce` and `common_givens`. Method, `expected_solution_path[0]`: name the dependent and independent variables, then write the derivative equal to a constant times the named expression. Rival, `wrong_approaches`: writing an exponential formula instead of the equation (BC-ERR-07005, cited in the block's sources and never in its served text). Separating feature: the stem asks for the rate, so the left side is the derivative. The archetype carries both fields, so the block is not tagged inferred. The block carries the contrast pair, and no strategy field opens with its own label, because the reader prints Cue, First line, Rival and Separating feature.
 
 ## Solution path
 
@@ -50,7 +54,7 @@ Six active errors meet the skills; the first four in the bundle's order are serv
 - err-BC-ERR-07003: letters y and x never given meanings. No possible reason: the linked descriptions describe other slips.
 - err-BC-ERR-07004: 95 put inside the equation. Possible reason, words from BC-MIS-07003.
 
-BC-ERR-07005 and BC-ERR-99035 exceed the cap of four.
+All four relations are `distinct`, so all four blocks carry `fix_prompt: true`. No wrong or right text writes a decimal. BC-ERR-07005 and BC-ERR-99035 exceed the cap of four.
 
 ## Representations
 
@@ -72,20 +76,21 @@ BC-QA-07006 is `either` and its `multipart_structure` names a single MCQ first, 
 
 ## Delivery
 
-- orientation, ki-1: text. Rule 6: BC-REP-04, 05, 06 on BC-SKL-07001 to 07005, none figure-bearing (docs/lessons/unit-07/README.md, section 6).
+- prediction, orientation, ki-1: text. Rule 6: BC-REP-04, 05, 06 on BC-SKL-07001 to 07005, none figure-bearing (docs/lessons/unit-07/README.md, section 6).
 - ex-1 and the four error blocks: step_reveal. Rule 1.
+- No drawn block: `no_figure_reason` states that no skill carries a figure-bearing representation and no key idea describes a process, so none of rules 2 to 5 applies.
 
 ## Band plan
 
-- Low (full): orientation, ki-1, st-1, ex-1, the four error blocks, chk-1 to chk-3, the three bridges. 567 words, 3.8 minutes (cap 900 and 6).
-- Mid (brief): orientation, ki-1, st-1, ex-1, err-BC-ERR-07001, err-BC-ERR-07002, chk-1, chk-2, the bridges. 445 words, 3.0 minutes (cap 450 and 3).
+- Low (full), in served order: prediction, orientation, the three bridges when gated, ki-1, st-1 with its contrast pair, ex-1, chk-1, the four error blocks, chk-2, chk-3. 572 words, 3.9 minutes (cap 900 and 6).
+- Mid (brief), in served order: prediction, orientation, the bridges, ki-1, st-1 with its contrast pair, ex-1, chk-1, err-BC-ERR-07001, err-BC-ERR-07002, chk-2. 450 words, 3.0 minutes (cap 450 and 3). Prediction, contrast, orientation, bridges, strategy fields and step cues were shortened to fit; no anchor quote or scoring tag was dropped. The lesson has one worked example, so nothing is faded.
 - Refresher: ki-1, the four error blocks, ex-1.
 
 ## Sources
 
 - BC-CON-07001; BC-SKL-07001 to BC-SKL-07005; BC-EK-FUN-7A1; ced:137
 - BC-QA-07006; BC-MCQ-PE2012-023; sg-23:12
-- BC-ERR-07001, BC-ERR-07002, BC-ERR-07003, BC-ERR-07004; BC-MIS-07001, BC-MIS-07003
+- BC-ERR-07001, BC-ERR-07002, BC-ERR-07003, BC-ERR-07004; BC-ERR-07005 (the rival, in st-1's sources); BC-MIS-07001, BC-MIS-07003
 - BC-PRQ-06005, BC-PRQ-07002, BC-PRQ-07003
 - research/units/unit-07-differential-equations.md#7.1 Modeling Situations with Differential Equations
 - research/question-analysis/question-archetypes.md#BC-QA-07006 Differential equation written from a verbal rate statement
@@ -101,8 +106,21 @@ BC-QA-07006 is `either` and its `multipart_structure` names a single MCQ first, 
  "target_id": "BC-CON-07001",
  "unit": "07",
  "skills": ["BC-SKL-07001", "BC-SKL-07002", "BC-SKL-07003", "BC-SKL-07004", "BC-SKL-07005"],
+ "prediction": {
+  "id": "pr-1",
+  "stem": {"text": "Predict. Tea at 95 degrees in a 70 degree room has dH/dt proportional to 70 - H, k > 0. What is dH/dt at t = 0?", "command_verb": "predict"},
+  "format": "mcq",
+  "options": [
+   {"id": "A", "label": "-25k, the tea cools", "is_key": true},
+   {"id": "B", "label": "25k, the tea warms", "is_key": false},
+   {"id": "C", "label": "95k, the tea warms", "is_key": false}
+  ],
+  "resolution": "The rate is k(70 - H), which at H = 95 is -25k, so the tea cools toward 70.",
+  "sources": ["BC-CON-07001", "research/units/unit-07-differential-equations.md#7.1 Modeling Situations with Differential Equations"]
+ },
+ "no_figure_reason": "No skill carries a figure-bearing representation and no key idea describes a process. The lesson turns a rate sentence into an equation and a condition, which is a symbolic translation.",
  "orientation": {
-  "text": "A rate sentence becomes an equation: the derivative equals a named constant times the quantity or the stated difference. The value at a stated time is written apart, as the initial condition.",
+  "text": "A rate sentence becomes an equation for the derivative. The starting value is written apart.",
   "sources": ["BC-CON-07001", "research/units/unit-07-differential-equations.md#7.1 Modeling Situations with Differential Equations"]
  },
  "key_ideas": [
@@ -110,8 +128,8 @@ BC-QA-07006 is `either` and its `multipart_structure` names a single MCQ first, 
    "id": "ki-1",
    "ek_id": "BC-EK-FUN-7A1",
    "depth": "core",
-   "text": "Proportional to the quantity gives k times the quantity; proportional to the difference from a fixed level gives k times that difference, oriented so the quantity moves toward the level. The derivative carries quantity units per time unit. A value at a stated time is the initial condition, kept outside the equation.",
-   "notation": "dy/dt; k for the constant of proportionality",
+   "text": "Proportional to a quantity gives k times it; to a difference from a fixed level, k times that difference, oriented toward the level. A stated value is the initial condition, kept outside the equation.",
+   "notation": "dy/dt; constant k",
    "quote": {"text": "Differential equations relate a function of an independent variable and the function's derivatives.", "source": "ced:137"},
    "sources": ["BC-EK-FUN-7A1", "ced:137", "research/units/unit-07-differential-equations.md#7.1 Modeling Situations with Differential Equations"]
   }
@@ -120,12 +138,17 @@ BC-QA-07006 is `either` and its `multipart_structure` names a single MCQ first, 
   {
    "id": "st-1",
    "archetype_id": "BC-QA-07006",
-   "cue": "A rate is proportional to something, a value at one time is given, and no equation is printed.",
-   "method": "First line: name the variables, then write the derivative equal to k times the named expression.",
-   "rival": "Rival: an exponential formula for the quantity (BC-ERR-07005).",
-   "separating_feature": "The stem asks for the rate, so the left side is a derivative.",
-   "sources": ["BC-QA-07006"],
-   "evidence_tag": "verified"
+   "cue": "A rate, a starting value, no printed equation.",
+   "method": "Name the variables, write the derivative equal to k times the expression.",
+   "rival": "An exponential formula for the quantity.",
+   "separating_feature": "A rate is asked, so the left side is a derivative.",
+   "sources": ["BC-QA-07006", "BC-ERR-07005"],
+   "evidence_tag": "verified",
+   "contrast": {
+    "this": {"text": "Water at 10 degrees warms at a rate proportional to 40 minus its temperature. Write the equation and initial condition.", "archetype_id": "BC-QA-07006"},
+    "not_this": {"text": "Given dP/dt = 0.2P and P(0) = 50, find P(t).", "why_not": "The equation is printed, so it is solved, not written."},
+    "feature": "An equation printed, or to be written from a rate sentence."
+   }
   }
  ],
  "worked_examples": [
@@ -134,13 +157,16 @@ BC-QA-07006 is `either` and its `multipart_structure` names a single MCQ first, 
    "archetype_id": "BC-QA-07006",
    "bands": ["low", "mid"],
    "parameter_draw": {"context": "temperature", "level": 70, "gap": 25, "approach": "from_above", "time_unit": "minutes"},
-   "problem": {"text": "Tea is 95 degrees at t = 0 minutes. Its temperature changes at a rate proportional to the difference between 70 degrees and its temperature, constant k > 0. Write the differential equation and initial condition.", "command_verb": "write"},
+   "problem": {
+    "text": "Tea is 95 degrees at t = 0 minutes. Its temperature changes at a rate proportional to the difference between 70 degrees and its temperature, constant k > 0. Write the differential equation and initial condition.",
+    "command_verb": "write"
+   },
    "calculator_status": "no_calculator",
    "steps": [
-    {"cue": "The stem names a temperature and a time.", "why": "H degrees, t minutes; dH/dt degrees per minute."},
-    {"cue": "Proportional to the difference selects k times that difference.", "why": "Negative above 70, so H falls toward 70.", "expr": "k*(70 - H)", "relation": "new"},
-    {"cue": "The rate is the derivative of H.", "why": "An equation about the rate, not a formula for H.", "expr": "dH/dt = k*(70 - H)", "relation": "new"},
-    {"cue": "At time t = 0 marks a stated value.", "why": "It selects one solution, so it stands apart.", "expr": "H(0) = 95", "relation": "new"}
+    {"cue": "Name the quantity.", "why": "H degrees, t minutes."},
+    {"cue": "Proportional to a difference.", "why": "k times it; negative above 70.", "expr": "k*(70 - H)", "relation": "new"},
+    {"cue": "A rate is asked.", "why": "The derivative, not a formula for H.", "expr": "dH/dt = k*(70 - H)", "relation": "new"},
+    {"cue": "A value at t = 0.", "why": "It selects a solution, so it stands apart.", "expr": "H(0) = 95", "relation": "new"}
    ],
    "answer": {"form": "statement", "expr": "dH/dt = k*(70 - H) with H(0) = 95"}
   }
@@ -155,7 +181,8 @@ BC-QA-07006 is `either` and its `multipart_structure` names a single MCQ first, 
    "right_step": {"text": "k written.", "expr": "dH/dt = k*(70 - H)"},
    "relation": "distinct",
    "possible_reason": {"misconception_id": "BC-MIS-07001", "text": "drops the constant of proportionality"},
-   "sources": ["BC-ERR-07001", "BC-MIS-07001"]
+   "sources": ["BC-ERR-07001", "BC-MIS-07001"],
+   "fix_prompt": true
   },
   {
    "error_id": "BC-ERR-07002",
@@ -165,7 +192,8 @@ BC-QA-07006 is `either` and its `multipart_structure` names a single MCQ first, 
    "right_step": {"text": "70 - H.", "expr": "dH/dt = k*(70 - H)"},
    "relation": "distinct",
    "possible_reason": null,
-   "sources": ["BC-ERR-07002"]
+   "sources": ["BC-ERR-07002"],
+   "fix_prompt": true
   },
   {
    "error_id": "BC-ERR-07003",
@@ -175,7 +203,8 @@ BC-QA-07006 is `either` and its `multipart_structure` names a single MCQ first, 
    "right_step": {"text": "H degrees, t minutes.", "expr": "dH/dt = k*(70 - H)"},
    "relation": "distinct",
    "possible_reason": null,
-   "sources": ["BC-ERR-07003"]
+   "sources": ["BC-ERR-07003"],
+   "fix_prompt": true
   },
   {
    "error_id": "BC-ERR-07004",
@@ -185,16 +214,23 @@ BC-QA-07006 is `either` and its `multipart_structure` names a single MCQ first, 
    "right_step": {"text": "95 as the condition.", "expr": "H(0) = 95"},
    "relation": "distinct",
    "possible_reason": {"misconception_id": "BC-MIS-07003", "text": "treats the stated value as a term of the equation rather than as the condition that selects one solution"},
-   "sources": ["BC-ERR-07004", "BC-MIS-07003"]
+   "sources": ["BC-ERR-07004", "BC-MIS-07003"],
+   "fix_prompt": true
   }
  ],
  "representations": null,
  "prerequisite_bridges": [
-  {"prq_id": "BC-PRQ-06005", "text": "H(0) is the value of H at input 0; misread, a value for the wrong input is used."},
-  {"prq_id": "BC-PRQ-07002", "text": "dH/dt is the rate of H per unit t; its letters name what changes and against what."},
-  {"prq_id": "BC-PRQ-07003", "text": "Proportional to means a constant multiple; an equality in its place drops the constant."}
+  {"prq_id": "BC-PRQ-06005", "text": "H(0) is H at input 0, not another input."},
+  {"prq_id": "BC-PRQ-07002", "text": "dH/dt is the rate of H per unit t."},
+  {"prq_id": "BC-PRQ-07003", "text": "Proportional to means a constant multiple."}
  ],
- "time": {"exam_part": "I-A", "budget_minutes": 2.14, "source": "research/exam/exam-structure.md#Section and part layout", "written_steps": {"ex-1": [3, 4]}, "skipped_steps": {"ex-1": [1, 2]}},
+ "time": {
+  "exam_part": "I-A",
+  "budget_minutes": 2.14,
+  "source": "research/exam/exam-structure.md#Section and part layout",
+  "written_steps": {"ex-1": [3, 4]},
+  "skipped_steps": {"ex-1": [1, 2]}
+ },
  "checks": [
   {
    "id": "chk-1",
@@ -206,10 +242,7 @@ BC-QA-07006 is `either` and its `multipart_structure` names a single MCQ first, 
    "completes": "ex-1",
    "stem": {"text": "Tea: H degrees at t minutes, H = 95 at t = 0, rate proportional to 70 - H. Write both lines.", "command_verb": "write"},
    "key": {"form": "statement", "expr": "dH/dt = k*(70 - H) with H(0) = 95"},
-   "steps": [
-    {"text": "The equation.", "expr": "dH/dt = k*(70 - H)", "relation": "new"},
-    {"text": "The condition.", "expr": "H(0) = 95", "relation": "new"}
-   ],
+   "steps": [{"text": "The equation.", "expr": "dH/dt = k*(70 - H)", "relation": "new"}, {"text": "The condition.", "expr": "H(0) = 95", "relation": "new"}],
    "calculator_status": "no_calculator",
    "skills": ["BC-SKL-07002", "BC-SKL-07004"]
   },
@@ -220,12 +253,12 @@ BC-QA-07006 is `either` and its `multipart_structure` names a single MCQ first, 
    "bands": ["low", "mid"],
    "archetype_id": "BC-QA-07006",
    "parameter_draw": {"context": "concentration", "level": 40, "gap": 15, "approach": "from_below", "time_unit": "minutes"},
-   "stem": {"text": "A concentration C, 25 at t = 0 minutes, changes at a rate proportional to 40 minus C, with constant k > 0. Write the differential equation.", "command_verb": "write"},
+   "stem": {
+    "text": "A concentration C, 25 at t = 0 minutes, changes at a rate proportional to 40 minus C, with constant k > 0. Write the differential equation.",
+    "command_verb": "write"
+   },
    "key": {"form": "symbolic", "expr": "dC/dt = k*(40 - C)"},
-   "steps": [
-    {"text": "k times the difference.", "expr": "k*(40 - C)", "relation": "new"},
-    {"text": "The derivative equals it.", "expr": "dC/dt = k*(40 - C)", "relation": "new"}
-   ],
+   "steps": [{"text": "k times the difference.", "expr": "k*(40 - C)", "relation": "new"}, {"text": "The derivative equals it.", "expr": "dC/dt = k*(40 - C)", "relation": "new"}],
    "calculator_status": "no_calculator",
    "skills": ["BC-SKL-07002"]
   },
@@ -238,10 +271,7 @@ BC-QA-07006 is `either` and its `multipart_structure` names a single MCQ first, 
    "parameter_draw": {"context": "price", "level": 50, "gap": 10, "approach": "from_above", "time_unit": "hours"},
    "stem": {"text": "A price P is 60 at t = 0 hours and changes at a rate proportional to 50 minus P. Which models it, k > 0?", "command_verb": "identify"},
    "key": {"form": "symbolic", "expr": "dP/dt = k*(50 - P)"},
-   "steps": [
-    {"text": "k times the difference.", "expr": "k*(50 - P)", "relation": "new"},
-    {"text": "The derivative equals it.", "expr": "dP/dt = k*(50 - P)", "relation": "new"}
-   ],
+   "steps": [{"text": "k times the difference.", "expr": "k*(50 - P)", "relation": "new"}, {"text": "The derivative equals it.", "expr": "dP/dt = k*(50 - P)", "relation": "new"}],
    "options": [
     {"id": "A", "is_key": false, "expr": "dP/dt = 50 - P", "error_path": "BC-ERR-07001", "derivation": "the constant of proportionality dropped"},
     {"id": "B", "is_key": false, "expr": "dP/dt = k*(P - 50)", "error_path": "BC-ERR-07002", "derivation": "the difference reversed"},
@@ -262,14 +292,26 @@ BC-QA-07006 is `either` and its `multipart_structure` names a single MCQ first, 
   {"block": "err-BC-ERR-07004", "mode": "step_reveal", "reason": "rule 1", "sources": []}
  ],
  "refresher": ["ki-1", "err-BC-ERR-07001", "err-BC-ERR-07002", "err-BC-ERR-07003", "err-BC-ERR-07004", "ex-1"],
- "read_minutes": {"full": 3.8, "brief": 3.0},
- "word_count": {"full": 570, "brief": 448},
+ "read_minutes": {
+  "full": 3.9,
+  "brief": 3.0
+ },
+ "word_count": {
+  "full": 572,
+  "brief": 450
+ },
  "research_lines": [
-  {"file": "research/units/unit-07-differential-equations.md", "line": "A statement of the value of the quantity at a stated input is the initial condition and is separate from the differential equation itself."}
+  {
+   "file": "research/units/unit-07-differential-equations.md",
+   "line": "A statement of the value of the quantity at a stated input is the initial condition and is separate from the differential equation itself."
+  }
  ],
  "inferred": [
-  {"claim": "BC-QA-07006 is either calculator status; the lesson places it in Section I Part A.", "settles": "A calculator_status fixed on BC-QA-07006, or an official item of this shape in a calculator part."}
+  {
+   "claim": "BC-QA-07006 is either calculator status; the lesson places it in Section I Part A.",
+   "settles": "A calculator_status fixed on BC-QA-07006, or an official item of this shape in a calculator part."
+  }
  ],
- "sources": ["BC-CON-07001", "BC-SKL-07001", "BC-SKL-07002", "BC-SKL-07003", "BC-SKL-07004", "BC-SKL-07005", "BC-EK-FUN-7A1", "ced:137", "BC-QA-07006", "BC-MCQ-PE2012-023", "sg-23:12", "BC-ERR-07001", "BC-ERR-07002", "BC-ERR-07003", "BC-ERR-07004", "BC-MIS-07001", "BC-MIS-07003", "BC-PRQ-06005", "BC-PRQ-07002", "BC-PRQ-07003", "research/units/unit-07-differential-equations.md#7.1 Modeling Situations with Differential Equations", "research/question-analysis/question-archetypes.md#BC-QA-07006 Differential equation written from a verbal rate statement", "research/exam/exam-structure.md#Section and part layout"]
+ "sources": ["BC-CON-07001", "BC-SKL-07001", "BC-SKL-07002", "BC-SKL-07003", "BC-SKL-07004", "BC-SKL-07005", "BC-EK-FUN-7A1", "ced:137", "BC-QA-07006", "BC-MCQ-PE2012-023", "sg-23:12", "BC-ERR-07001", "BC-ERR-07002", "BC-ERR-07003", "BC-ERR-07004", "BC-ERR-07005", "BC-MIS-07001", "BC-MIS-07003", "BC-PRQ-06005", "BC-PRQ-07002", "BC-PRQ-07003", "research/units/unit-07-differential-equations.md#7.1 Modeling Situations with Differential Equations", "research/question-analysis/question-archetypes.md#BC-QA-07006 Differential equation written from a verbal rate statement", "research/exam/exam-structure.md#Section and part layout"]
 }
 ```

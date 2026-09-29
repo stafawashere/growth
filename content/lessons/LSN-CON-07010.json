@@ -3,20 +3,70 @@
  "version": 1,
  "kind": "concept",
  "target_id": "BC-CON-07010",
- "status": "signed_off",
+ "status": "draft",
  "snapshot_digest": "a6a8ec9d3f59ab8f712e33d30cc22fc64bf2c478fbe7312e3e3118d319c6a42f",
  "source_digest": "ed64a75abb68a27e475487f46bd7a4b15a16270937865da7bac0886fe1d9d050",
  "read_minutes": {
-  "full": 3.7,
-  "brief": 2.8
+  "full": 3.98,
+  "brief": 2.99
  },
  "word_count": {
-  "full": 463,
-  "brief": 334
+  "full": 523,
+  "brief": 394
  },
  "sections": [
   {
    "id": "LSN-CON-07010#s1",
+   "type": "prediction",
+   "bands": [
+    "low",
+    "mid"
+   ],
+   "skills": [
+    "BC-SKL-07034",
+    "BC-SKL-07035",
+    "BC-SKL-07036",
+    "BC-SKL-07037",
+    "BC-SKL-07038"
+   ],
+   "sources": [
+    "BC-CON-07010",
+    "BC-EK-FUN-7G1",
+    "research/units/unit-07-differential-equations.md#7.8 Exponential Models with Differential Equations"
+   ],
+   "evidence_tag": "inferred",
+   "stem": {
+    "text": "Before the rule: bacteria P grow at a rate proportional to P, with P(0) = 200 and P(2) = 600. What is P(4)?",
+    "command_verb": "predict"
+   },
+   "format": "mcq",
+   "options": [
+    {
+     "id": "A",
+     "label": "1000",
+     "is_key": false
+    },
+    {
+     "id": "B",
+     "label": "1800",
+     "is_key": true
+    },
+    {
+     "id": "C",
+     "label": "1200",
+     "is_key": false
+    }
+   ],
+   "resolution": {
+    "text": "A rate proportional to size means P multiplies by one factor per equal time. P(2) is 3 times P(0), so P(4) = 1800."
+   },
+   "delivery": {
+    "mode": "text",
+    "reason": "rule 6"
+   }
+  },
+  {
+   "id": "LSN-CON-07010#s2",
    "type": "orientation",
    "bands": [
     "low",
@@ -34,7 +84,7 @@
     "research/units/unit-07-differential-equations.md#7.8 Exponential Models with Differential Equations"
    ],
    "evidence_tag": "inferred",
-   "text": "A response writes dy/dt = ky, then y = y0 e^(kt) with the initial value as coefficient, finds k from a second data pair, and says what k means, with direction and units.",
+   "text": "A response writes dy/dt = ky and y = y0 e^(kt), finds k from a second pair, and says what k means.",
    "delivery": {
     "mode": "text",
     "reason": "rule 6: a statement of what a response shows; BC-REP-04, BC-REP-05, BC-REP-06",
@@ -44,7 +94,7 @@
    }
   },
   {
-   "id": "LSN-CON-07010#s2",
+   "id": "LSN-CON-07010#s3",
    "type": "key_ideas",
    "bands": [
     "low",
@@ -62,7 +112,7 @@
    "evidence_tag": "inferred",
    "ek_id": "BC-EK-FUN-7F2",
    "depth": "core",
-   "text": "A rate proportional to the size of the quantity gives dy/dt = ky. Positive k is growth, negative k decay; the size of k sets how fast.",
+   "text": "A rate proportional to the size of the quantity gives dy/dt = ky. Positive k is growth, negative k decay.",
    "notation": "dy/dt = ky",
    "delivery": {
     "mode": "text",
@@ -74,7 +124,7 @@
    }
   },
   {
-   "id": "LSN-CON-07010#s3",
+   "id": "LSN-CON-07010#s4",
    "type": "key_ideas",
    "bands": [
     "low",
@@ -92,7 +142,7 @@
    "evidence_tag": "inferred",
    "ek_id": "BC-EK-FUN-7G1",
    "depth": "core",
-   "text": "With y = y0 at t = 0, y = y0 e^(kt): the initial value is the coefficient, k is in the exponent. A second data pair fixes k through a logarithm.",
+   "text": "With y = y0 at t = 0, y = y0 e^(kt): y0 is the coefficient, k the exponent. A second pair fixes k through a logarithm.",
    "notation": "y = y sub 0 e^(kt)",
    "delivery": {
     "mode": "table",
@@ -138,7 +188,7 @@
    }
   },
   {
-   "id": "LSN-CON-07010#s4",
+   "id": "LSN-CON-07010#s5",
    "type": "key_ideas",
    "bands": [
     "low"
@@ -165,7 +215,7 @@
    }
   },
   {
-   "id": "LSN-CON-07010#s5",
+   "id": "LSN-CON-07010#s6",
    "type": "strategy",
    "bands": [
     "low",
@@ -183,13 +233,24 @@
    ],
    "evidence_tag": "verified",
    "archetype_id": "BC-QA-07008",
-   "cue": "The rate of change is proportional to the quantity, with an initial value and a second data pair.",
-   "method": "First written line: dy/dt = ky, then y = y0 e^(kt).",
-   "rival": "Rival: treating the constant of proportionality and the constant of integration as the same object.",
-   "separating_feature": "y0 is the coefficient; k needs the second pair."
+   "cue": "Rate proportional to the quantity; two data pairs.",
+   "method": "dy/dt = ky, then y = y0 e^(kt).",
+   "rival": "Treating the constant of proportionality and of integration as one object.",
+   "separating_feature": "y0 is the coefficient; k needs the second pair.",
+   "contrast": {
+    "this": {
+     "text": "A colony's rate is proportional to its size C; C(0) = 50, C(3) = 200. Find C(t).",
+     "archetype_id": "BC-QA-07008"
+    },
+    "not_this": {
+     "text": "A colony's rate is jointly proportional to C and 500 - C; C(0) = 50. Find the limit of C(t).",
+     "why_not": "Logistic: joint proportionality to C and 500 - C."
+    },
+    "feature": "Proportional to C alone, or jointly to C and 500 - C."
+   }
   },
   {
-   "id": "LSN-CON-07010#s6",
+   "id": "LSN-CON-07010#s7",
    "type": "worked_example",
    "bands": [
     "low",
@@ -257,7 +318,7 @@
     },
     {
      "cue": "P(2) = 600.",
-     "why": "Only a second pair reaches k.",
+     "why": "A second pair fixes k.",
      "expression": [
       "Equal",
       600,
@@ -280,7 +341,7 @@
      }
     },
     {
-     "cue": "k is in the exponent.",
+     "cue": "Solve for k.",
      "why": "e^(2k) = 3, take ln.",
      "expression": [
       "Multiply",
@@ -298,7 +359,7 @@
      "variable": "k"
     },
     {
-     "cue": "The stem asks for P(t).",
+     "cue": "Asked for P(t).",
      "why": "Put k back.",
      "expression": [
       "Equal",
@@ -327,8 +388,8 @@
      "relation": "new"
     },
     {
-     "cue": "The stem asks what k means.",
-     "why": "k = (ln 3)/2 > 0: growth, per hour; the count triples every 2 hours."
+     "cue": "Asked what k means.",
+     "why": "k = (ln 3)/2 > 0: growth per hour; the count triples every 2 hours."
     }
    ],
    "answer": {
@@ -399,6 +460,7 @@
     ]
    },
    "relation": "distinct",
+   "fix_prompt": true,
    "possible_reason": {
     "misconception_id": "BC-MIS-07001",
     "text": "drops the constant of proportionality"
@@ -471,6 +533,7 @@
     ]
    },
    "relation": "distinct",
+   "fix_prompt": true,
    "possible_reason": {
     "misconception_id": "BC-MIS-07021",
     "text": "treats a constant rate constant as a constant rate, so the model comes out linear"
@@ -535,6 +598,7 @@
     ]
    },
    "relation": "distinct",
+   "fix_prompt": true,
    "possible_reason": {
     "misconception_id": "BC-MIS-07022",
     "text": "does not see that the initial value fixes the leading coefficient"
@@ -594,6 +658,7 @@
     ]
    },
    "relation": "distinct",
+   "fix_prompt": true,
    "possible_reason": {
     "misconception_id": "BC-MIS-07022",
     "text": "a second pair is needed for the exponent"
@@ -619,7 +684,7 @@
    ],
    "evidence_tag": "inferred",
    "prerequisite_id": "BC-PRQ-06003",
-   "text": "ln turns e^(2k) = 3 into 2k = ln 3; without it, logarithms stay uncombined."
+   "text": "ln turns e^(2k) = 3 into 2k = ln 3."
   },
   {
    "id": "LSN-CON-07010#prq-BC-PRQ-07001",
@@ -636,7 +701,7 @@
    ],
    "evidence_tag": "inferred",
    "prerequisite_id": "BC-PRQ-07001",
-   "text": "A logarithm of both sides isolates k; without it, the second pair gives no k."
+   "text": "A logarithm of both sides isolates k."
   },
   {
    "id": "LSN-CON-07010#prq-BC-PRQ-07003",
@@ -653,7 +718,7 @@
    ],
    "evidence_tag": "inferred",
    "prerequisite_id": "BC-PRQ-07003",
-   "text": "Proportional to means a constant multiple; without it, the constant is lost."
+   "text": "Proportional to means a constant multiple."
   }
  ],
  "checks": [
@@ -673,7 +738,7 @@
     "elapsed": 2,
     "context": "bacteria"
    },
-   "completes": "LSN-CON-07010#s6",
+   "completes": "LSN-CON-07010#s7",
    "stem": {
     "text": "P = 200e^(kt), and P(2) = 600 gives k = (ln 3)/2. Write P(t).",
     "command_verb": "write"
@@ -1145,20 +1210,20 @@
   }
  ],
  "refresher": [
-  "LSN-CON-07010#s2",
   "LSN-CON-07010#s3",
+  "LSN-CON-07010#s4",
   "LSN-CON-07010#err-BC-ERR-07001",
   "LSN-CON-07010#err-BC-ERR-07034",
   "LSN-CON-07010#err-BC-ERR-07035",
   "LSN-CON-07010#err-BC-ERR-07036",
-  "LSN-CON-07010#s6"
+  "LSN-CON-07010#s7"
  ],
  "provenance": {
   "author": "tools/lesson_transcribe.py",
-  "prompt_version": "generator/lesson_v1",
+  "prompt_version": "generator/lesson_v2",
   "design_path": "docs/lessons/unit-07/LSN-CON-07010.md",
-  "signed_off_by": "claude-opus-5-5",
-  "signed_off_at": "2026-09-29",
+  "signed_off_by": null,
+  "signed_off_at": null,
   "not_human": true
  }
 }

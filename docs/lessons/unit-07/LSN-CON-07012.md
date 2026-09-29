@@ -9,6 +9,10 @@ purpose: Authoring spec for the concept lesson on BC-CON-07012, the carrying cap
 
 Concept BC-CON-07012 (skills BC-SKL-07040, BC-SKL-07041, BC-SKL-07042), topic 7.9 of Unit 7 (BC only), loaded by BC-QA-07009. Its hard parents are BC-CON-07005 and BC-CON-07011 through BC-SKL-07039 (docs/lessons/unit-07/README.md, section 1).
 
+## Prediction
+
+Form mcq, both bands, on ex-1's own numbers. The stem gives dP/dt = 2P/5 - P^2/2000, zero at P = 0 and 800, and asks how dP/dt changes as P rises from 160 to 800. Key B: it rises, then falls, largest between 160 and 800. Distractors: it rises throughout, and it falls throughout. The shape of a quadratic between its zeros answers it before the rule. The resolution places the peak at 400 (BC-EK-FUN-7H4, ced:145). Delivery: text.
+
 ## Orientation
 
 Served text, from BC-CON-07012 `description_plain` and the topic's Assessment behaviour paragraph (research/units/unit-07-differential-equations.md#7.9 Logistic Models with Differential Equations): the capacity from the zeros, the limit with the sign as reason, and the fastest change at half the capacity, with nothing solved.
@@ -29,15 +33,21 @@ BC-QA-07009 (research/question-analysis/question-archetypes.md#BC-QA-07009 Logis
 
 The confusable set LSN-DEC-07-01 (BC-SKL-07041 against BC-SKL-07042, docs/lessons/unit-07/README.md, section 3) is decided by the words of the stem: "limit ... grows without bound" selects the zeros and the sign; "when it is changing fastest" selects the vertex of the right side. Not this concept: an exponential model, whose right side has one zero.
 
+The near miss on the contrast pair is the same equation asked for a formula for P(t), which calls for separation with partial fractions (the `wrong_approaches` entry of BC-QA-07009). The feature is a value asked, against a formula.
+
 ## Method choice
 
 - st-1, BC-QA-07009, both bands. Method, `expected_solution_path[0]`: read the zeros of the right side; then the sign at the initial value (step 3) or the maximum of the quadratic (step 4). Rival, `wrong_approaches`: partial fractions when only the limit was asked for. Separating feature: the asked quantity, limit or fastest change. The archetype carries `asked_to_produce` and `common_givens`.
+
+The strategy fields carry no leading label, since the reader prints Cue, First line, Rival and Separating feature. st-1 carries the contrast pair, served in both bands.
 
 ## Solution path
 
 - ex-1, BC-QA-07009, both bands, no calculator. Draw: expanded, capacity 800, rate 2/5, start share 1/5, fish, so P(0) = 160 and half = 400. No published BC-QA-07009 draw matches.
 - Steps: right side zero (new); zeros (solve); right side (new); its value at 160 (evaluate); right side (new); its derivative in P (differentiate); the vertex (solve); both values (new).
 - A fluent solver writes the zeros, the sign value, the derivative, the vertex and the pair [inferred].
+
+One worked example only, so there is no fade.
 
 ## Scoring
 
@@ -76,11 +86,13 @@ BC-QA-07009 is `either`, one or two FRQ parts or one MCQ; the MCQ shape is taken
 - ki-1: interactive, rule 3. The limit is a process idea; the student steps P(0) through 160, 400, 640 and 960 and reads the level approached and the sign at the start. BC-QA-07009 `difficulty_variables` names the initial value above or below the capacity. This departs from the unit README's text choice, which predates the rule 3 clause [inferred; settled by the modality A/B].
 - ex-1 and the four error blocks: step_reveal, rule 1.
 
+- pr-1: text, rule 6.
+
 ## Band plan
 
-- Low (full): orientation, ki-1 to ki-3, st-1, ex-1, the four error blocks, chk-1 to chk-3, the bridge. 568 words, 3.8 minutes (cap 900 and 6).
-- Mid (brief): orientation, ki-1, ki-2, st-1, ex-1, err-BC-ERR-07040, err-BC-ERR-07041, chk-1, chk-2, the bridge. 418 words, 2.8 minutes (cap 450 and 3).
-- Refresher: ki-1, ki-2, the four error blocks, ex-1.
+- Low (full), in served order: prediction, orientation, the bridge, ki-1 to ki-3, st-1 with the contrast pair, ex-1, chk-1, the four error blocks, chk-2, chk-3. 598 words, 3.99 minutes (cap 900 and 6).
+- Mid (brief), in served order: prediction, orientation, the bridges, the core key ideas, st-1 with the contrast pair, ex-1, chk-1, the first two error blocks, chk-2. 448 words, 2.99 minutes (cap 450 and 3). The orientation, the bridge, the strategy fields, the ki-1 and ki-2 texts, the prediction resolution and the ex-1 cues were shortened to fit 450.
+- Refresher: the core key ideas, the error blocks, ex-1.
 
 ## Sources
 
@@ -91,6 +103,7 @@ BC-QA-07009 is `either`, one or two FRQ parts or one MCQ; the MCQ shape is taken
 - research/units/unit-07-differential-equations.md#7.9 Logistic Models with Differential Equations
 - research/question-analysis/question-archetypes.md#BC-QA-07009 Logistic model interpreted without solving
 - research/exam/exam-structure.md#Section and part layout
+- pr-1 and the contrast pair draw on the concept record, the key idea's BC-EK and the cited topic section.
 - [inferred] Part I-A for an either archetype. Settled by an official calculator status.
 - [inferred] ki-1 as an interactive. Settled by the modality A/B.
 - [inferred] Stepper values beyond the spec. Settled by an interactive parameter_spec.
@@ -111,8 +124,39 @@ BC-QA-07009 is `either`, one or two FRQ parts or one MCQ; the MCQ shape is taken
   "BC-SKL-07041",
   "BC-SKL-07042"
  ],
+ "prediction": {
+  "id": "pr-1",
+  "stem": {
+   "text": "Before the rule: dP/dt = 2P/5 - P^2/2000 is zero at P = 0 and 800. As P rises from 160 to 800, how does dP/dt change?",
+   "command_verb": "predict"
+  },
+  "format": "mcq",
+  "options": [
+   {
+    "id": "A",
+    "label": "It rises throughout, largest at 800.",
+    "is_key": false
+   },
+   {
+    "id": "B",
+    "label": "It rises, then falls, largest between 160 and 800.",
+    "is_key": true
+   },
+   {
+    "id": "C",
+    "label": "It falls throughout, largest at 160.",
+    "is_key": false
+   }
+  ],
+  "resolution": "It is a quadratic in P with zeros 0 and 800, so it peaks midway, at P = 400.",
+  "sources": [
+   "BC-CON-07012",
+   "BC-EK-FUN-7H4",
+   "research/units/unit-07-differential-equations.md#7.9 Logistic Models with Differential Equations"
+  ]
+ },
  "orientation": {
-  "text": "A response reads the carrying capacity from the zeros of the right side, gives the limit with the sign of the rate at the initial value as its reason, and places the fastest change at half the carrying capacity. Nothing is solved.",
+  "text": "A response gives the limit from the zeros and the sign, and the fastest change at half the capacity.",
   "sources": [
    "BC-CON-07012",
    "research/units/unit-07-differential-equations.md#7.9 Logistic Models with Differential Equations"
@@ -123,7 +167,7 @@ BC-QA-07009 is `either`, one or two FRQ parts or one MCQ; the MCQ shape is taken
    "id": "ki-1",
    "ek_id": "BC-EK-FUN-7H3",
    "depth": "core",
-   "text": "The right side ky(a - y) is zero at y = 0 and y = a. A solution starting strictly between them has a positive rate and rises toward a, so a is the limit as t grows without bound. The reason is the sign of the rate, not a solved formula.",
+   "text": "The right side ky(a - y) is zero at 0 and a. A solution starting between them has a positive rate and rises toward a, the limit.",
    "notation": "carrying capacity",
    "quote": null,
    "sources": [
@@ -136,7 +180,7 @@ BC-QA-07009 is `either`, one or two FRQ parts or one MCQ; the MCQ shape is taken
    "id": "ki-2",
    "ek_id": "BC-EK-FUN-7H4",
    "depth": "core",
-   "text": "As a function of y the right side is a quadratic with zeros 0 and a, so it is largest at y = a/2. The quantity changes fastest at half the carrying capacity; at a the rate is zero.",
+   "text": "As a function of y the right side is a quadratic with zeros 0 and a, so it peaks at a/2: the quantity changes fastest at half the carrying capacity.",
    "notation": "half of the carrying capacity",
    "quote": null,
    "sources": [
@@ -163,14 +207,25 @@ BC-QA-07009 is `either`, one or two FRQ parts or one MCQ; the MCQ shape is taken
   {
    "id": "st-1",
    "archetype_id": "BC-QA-07009",
-   "cue": "A logistic equation and an initial value; the stem asks for the limit, or the value when changing fastest.",
-   "method": "First written line: the zeros of the right side; then the sign, or the vertex.",
-   "rival": "Rival: separating the logistic equation with partial fractions when only the limit was asked for.",
-   "separating_feature": "Limit: zeros and sign. Fastest: vertex of the right side.",
+   "cue": "A logistic equation; the stem asks for the limit or the value when changing fastest.",
+   "method": "The zeros of the right side, then the sign or the vertex.",
+   "rival": "Separating with partial fractions when only the limit was asked.",
+   "separating_feature": "Limit: zeros and sign. Fastest: vertex.",
    "sources": [
     "BC-QA-07009"
    ],
-   "evidence_tag": "verified"
+   "evidence_tag": "verified",
+   "contrast": {
+    "this": {
+     "text": "dP/dt = (1/5)P(1 - P/1000), P(0) = 100. Find P when the population is growing fastest.",
+     "archetype_id": "BC-QA-07009"
+    },
+    "not_this": {
+     "text": "dP/dt = (1/5)P(1 - P/1000), P(0) = 100. Solve for P(t).",
+     "why_not": "A formula for P needs separation with partial fractions."
+    },
+    "feature": "A value asked, against a formula for P."
+   }
   }
  ],
  "worked_examples": [
@@ -195,7 +250,7 @@ BC-QA-07009 is `either`, one or two FRQ parts or one MCQ; the MCQ shape is taken
    "calculator_status": "no_calculator",
    "steps": [
     {
-     "cue": "A limit: the equilibria.",
+     "cue": "A limit is asked.",
      "why": "Zeros of the right side.",
      "expr": "2*P/5 - P**2/2000 = 0",
      "relation": "new"
@@ -223,7 +278,7 @@ BC-QA-07009 is `either`, one or two FRQ parts or one MCQ; the MCQ shape is taken
      }
     },
     {
-     "cue": "Fastest: the largest rate.",
+     "cue": "Fastest.",
      "why": "Maximise the quadratic right side.",
      "expr": "2*P/5 - P**2/2000",
      "relation": "new"
@@ -277,7 +332,8 @@ BC-QA-07009 is `either`, one or two FRQ parts or one MCQ; the MCQ shape is taken
    "sources": [
     "BC-ERR-07040",
     "BC-MIS-07025"
-   ]
+   ],
+   "fix_prompt": true
   },
   {
    "error_id": "BC-ERR-07041",
@@ -295,7 +351,8 @@ BC-QA-07009 is `either`, one or two FRQ parts or one MCQ; the MCQ shape is taken
    "possible_reason": null,
    "sources": [
     "BC-ERR-07041"
-   ]
+   ],
+   "fix_prompt": false
   },
   {
    "error_id": "BC-ERR-07042",
@@ -317,7 +374,8 @@ BC-QA-07009 is `either`, one or two FRQ parts or one MCQ; the MCQ shape is taken
    "sources": [
     "BC-ERR-07042",
     "BC-MIS-07027"
-   ]
+   ],
+   "fix_prompt": true
   },
   {
    "error_id": "BC-ERR-07044",
@@ -339,14 +397,15 @@ BC-QA-07009 is `either`, one or two FRQ parts or one MCQ; the MCQ shape is taken
    "sources": [
     "BC-ERR-07044",
     "BC-MIS-07025"
-   ]
+   ],
+   "fix_prompt": true
   }
  ],
  "representations": null,
  "prerequisite_bridges": [
   {
    "prq_id": "BC-PRQ-05001",
-   "text": "Setting a factored expression equal to zero lists its zeros; without it, no equilibrium appears."
+   "text": "Setting a factored expression equal to zero lists its zeros."
   }
  ],
  "time": {
@@ -747,12 +806,12 @@ BC-QA-07009 is `either`, one or two FRQ parts or one MCQ; the MCQ shape is taken
   "research/exam/exam-structure.md#Section and part layout"
  ],
  "word_count": {
-  "full": 568,
-  "brief": 418
+  "full": 598,
+  "brief": 448
  },
  "read_minutes": {
-  "full": 3.8,
-  "brief": 2.8
+  "full": 3.99,
+  "brief": 2.99
  }
 }
 ```

@@ -9,6 +9,10 @@ purpose: Authoring spec for the concept lesson on BC-CON-07011, the logistic dif
 
 Concept BC-CON-07011 (skills BC-SKL-07039, BC-SKL-07043), topic 7.9 of Unit 7 (BC only), loaded by BC-QA-07009 (family logistic-model). BC-SKL-07043 has hard parents BC-SKL-07041 and BC-SKL-07042 in BC-CON-07012, so its interpretation skill is credited after LSN-CON-07012's (docs/lessons/unit-07/README.md, section 1).
 
+## Prediction
+
+Form mcq, both bands, on ex-1's own numbers. The stem gives a rate jointly proportional to P and 600 - P and asks what dP/dt does as P nears 600. Key B: it nears zero. Distractors: it grows larger, and it stays constant. The factor 600 - P is in the stem, so the answer follows before any rule. The resolution names 600 as the carrying capacity (BC-EK-FUN-7H1, ced:145). Delivery: text.
+
 ## Orientation
 
 Served text, from BC-CON-07011 `description_plain` and the topic's Assessment behaviour paragraph (research/units/unit-07-differential-equations.md#7.9 Logistic Models with Differential Equations): the model from the joint proportionality statement, a reading without solving, and a sentence with the quantity and units.
@@ -26,15 +30,21 @@ BC-QA-07009 (research/question-analysis/question-archetypes.md#BC-QA-07009 Logis
 
 The signal: "jointly proportional to the quantity and the difference between the quantity and" a level, or a right side quadratic in y with a zero at a positive level. Not this concept: "proportional to the quantity" alone is exponential (BC-CON-07010). The fastest change value is LSN-CON-07012.
 
+The near miss on the contrast pair is the exponential model of BC-CON-07010: a rate proportional to P alone, with no factor that vanishes at a level. The feature is a factor a - P, or a P^2 term, beside P.
+
 ## Method choice
 
 - st-1, BC-QA-07009, both bands. Method, `expected_solution_path[0]`: read the zeros of the right side. Rival, `wrong_approaches`: separating with partial fractions when only the limit was asked for. Separating feature: a value or meaning is asked, not a formula. The archetype carries `asked_to_produce` and `common_givens`.
+
+The strategy fields carry no leading label, since the reader prints Cue, First line, Rival and Separating feature. st-1 carries the contrast pair, served in both bands.
 
 ## Solution path
 
 - ex-1, BC-QA-07009, both bands, no calculator. Draw: factored, capacity 600, rate 1/4, start share 1/5, deer, so P(0) = 120 and k = 1/2400 [inferred rendering]. No published BC-QA-07009 draw matches.
 - Steps: the equation (new); right side zero (new); zeros (solve); right side (new); its value at 120 (evaluate); the limit (new); the sentence (no value).
 - A fluent solver writes the equation, the zeros, the sign and the sentence [inferred].
+
+One worked example only, so there is no fade.
 
 ## Scoring
 
@@ -71,11 +81,14 @@ BC-QA-07009 is `either`, one or two FRQ parts or one MCQ; the MCQ shape is taken
 - orientation, ki-1, ki-2: text, rule 6. The representations are BC-REP-04, 05, 06. Rule 3 would allow a logistic curve with a stepped initial value; it is served once, on LSN-CON-07012's ki-1, where the limit is the idea being taught [inferred].
 - ex-1 and the three error blocks: step_reveal, rule 1.
 
+- No drawn block: the machine record carries `no_figure_reason`. The representations are BC-REP-04, 05 and 06, none figure-bearing, and the solution curve is drawn once, on LSN-CON-07012.
+- pr-1: text, rule 6.
+
 ## Band plan
 
-- Low (full): orientation, ki-1, ki-2, st-1, ex-1, the three error blocks, chk-1 to chk-3, the bridge. 520 words, 3.5 minutes (cap 900 and 6).
-- Mid (brief): orientation, ki-1, ki-2, st-1, ex-1, err-BC-ERR-07039, err-BC-ERR-07043, chk-1, chk-2, the bridge. 396 words, 2.7 minutes (cap 450 and 3).
-- Refresher: ki-1, ki-2, the three error blocks, ex-1.
+- Low (full), in served order: prediction, orientation, the bridge, ki-1, ki-2, st-1 with the contrast pair, ex-1, chk-1, the three error blocks, chk-2, chk-3. 574 words, 3.83 minutes (cap 900 and 6).
+- Mid (brief), in served order: prediction, orientation, the bridges, the core key ideas, st-1 with the contrast pair, ex-1, chk-1, the first two error blocks, chk-2. 450 words, 3.0 minutes (cap 450 and 3). The orientation, the strategy fields, the ki-1 text and the ex-1 cues were shortened to fit 450.
+- Refresher: the core key ideas, the error blocks, ex-1.
 
 ## Sources
 
@@ -86,6 +99,7 @@ BC-QA-07009 is `either`, one or two FRQ parts or one MCQ; the MCQ shape is taken
 - research/units/unit-07-differential-equations.md#7.9 Logistic Models with Differential Equations
 - research/question-analysis/question-archetypes.md#BC-QA-07009 Logistic model interpreted without solving
 - research/exam/exam-structure.md#Section and part layout
+- pr-1 and the contrast pair draw on the concept record, the key idea's BC-EK and the cited topic section.
 - [inferred] Part I-A for an either archetype. Settled by an official calculator status.
 - [inferred] k = 1/2400 from the draw. Settled by a spec naming the joint constant.
 - [inferred] The solved formula in the BC-ERR-07044 step. Settled by a CAS check.
@@ -104,8 +118,40 @@ BC-QA-07009 is `either`, one or two FRQ parts or one MCQ; the MCQ shape is taken
   "BC-SKL-07039",
   "BC-SKL-07043"
  ],
+ "prediction": {
+  "id": "pr-1",
+  "stem": {
+   "text": "Before the rule: deer P grow at a rate jointly proportional to P and 600 - P. What does dP/dt do as P nears 600?",
+   "command_verb": "predict"
+  },
+  "format": "mcq",
+  "options": [
+   {
+    "id": "A",
+    "label": "It grows larger.",
+    "is_key": false
+   },
+   {
+    "id": "B",
+    "label": "It nears zero.",
+    "is_key": true
+   },
+   {
+    "id": "C",
+    "label": "It stays constant.",
+    "is_key": false
+   }
+  ],
+  "resolution": "The rate is a constant times P(600 - P), zero at P = 600, so P levels off there: the carrying capacity.",
+  "sources": [
+   "BC-CON-07011",
+   "BC-EK-FUN-7H1",
+   "research/units/unit-07-differential-equations.md#7.9 Logistic Models with Differential Equations"
+  ]
+ },
+ "no_figure_reason": "Both key ideas are symbolic: an equation from a proportionality statement, and a sign read from its right side. No skill carries a figure-bearing representation, and the solution curve is drawn once, in the next lesson.",
  "orientation": {
-  "text": "A response writes dy/dt = ky(a - y) from the joint proportionality statement, reads the model without solving it, and says what the numbers mean, with units.",
+  "text": "A response writes dy/dt = ky(a - y) from a joint proportionality statement and reads it without solving.",
   "sources": [
    "BC-CON-07011",
    "research/units/unit-07-differential-equations.md#7.9 Logistic Models with Differential Equations"
@@ -116,7 +162,7 @@ BC-QA-07009 is `either`, one or two FRQ parts or one MCQ; the MCQ shape is taken
    "id": "ki-1",
    "ek_id": "BC-EK-FUN-7H1",
    "depth": "core",
-   "text": "A rate jointly proportional to y and to a - y gives dy/dt = ky(a - y). The factor a - y makes the rate vanish at a; without it there is no ceiling.",
+   "text": "A rate jointly proportional to y and a - y gives dy/dt = ky(a - y); the factor a - y makes the rate vanish at a.",
    "notation": "dy/dt = ky(a - y)",
    "quote": null,
    "sources": [
@@ -129,7 +175,7 @@ BC-QA-07009 is `either`, one or two FRQ parts or one MCQ; the MCQ shape is taken
    "id": "ki-2",
    "ek_id": "BC-EK-FUN-7H2",
    "depth": "core",
-   "text": "The equation is read without solving: the right side is zero at 0 and a, positive between, so a solution starting between rises toward a. The sentence names quantity, units and direction.",
+   "text": "The right side is zero at 0 and a and positive between, so a solution starting between rises toward a. The sentence names quantity, units and direction.",
    "notation": "the limit as t grows without bound",
    "quote": null,
    "sources": [
@@ -143,14 +189,25 @@ BC-QA-07009 is `either`, one or two FRQ parts or one MCQ; the MCQ shape is taken
   {
    "id": "st-1",
    "archetype_id": "BC-QA-07009",
-   "cue": "A logistic equation and an initial value between 0 and the capacity; the stem asks a limit or meaning.",
-   "method": "First written line: the right side set equal to zero.",
-   "rival": "Rival: separating the logistic equation with partial fractions when only the limit was asked for.",
-   "separating_feature": "The stem asks for a value or a meaning, not a formula for y.",
+   "cue": "A logistic equation; a limit or meaning is asked.",
+   "method": "The right side set equal to zero.",
+   "rival": "Partial fractions when only the limit was asked.",
+   "separating_feature": "A value is asked, not a formula for y.",
    "sources": [
     "BC-QA-07009"
    ],
-   "evidence_tag": "verified"
+   "evidence_tag": "verified",
+   "contrast": {
+    "this": {
+     "text": "dP/dt = (1/10)P(1 - P/500), P(0) = 50. Find the limit of P(t) as t grows.",
+     "archetype_id": "BC-QA-07009"
+    },
+    "not_this": {
+     "text": "dP/dt = P/10, P(0) = 50. Find the limit of P(t) as t grows.",
+     "why_not": "The right side is proportional to P alone: exponential, no ceiling."
+    },
+    "feature": "A factor 500 - P beside P, against P alone."
+   }
   }
  ],
  "worked_examples": [
@@ -181,7 +238,7 @@ BC-QA-07009 is `either`, one or two FRQ parts or one MCQ; the MCQ shape is taken
      "relation": "new"
     },
     {
-     "cue": "A limit, not a formula.",
+     "cue": "A limit is asked.",
      "why": "Equilibria: zeros of the right side.",
      "expr": "P*(600 - P)/2400 = 0",
      "relation": "new"
@@ -194,7 +251,7 @@ BC-QA-07009 is `either`, one or two FRQ parts or one MCQ; the MCQ shape is taken
      "variable": "P"
     },
     {
-     "cue": "P(0) = 120 is between.",
+     "cue": "120 lies between.",
      "why": "The sign there gives the direction.",
      "expr": "P*(600 - P)/2400",
      "relation": "new"
@@ -210,7 +267,7 @@ BC-QA-07009 is `either`, one or two FRQ parts or one MCQ; the MCQ shape is taken
     },
     {
      "cue": "The limit.",
-     "why": "P cannot cross the equilibrium 600.",
+     "why": "P cannot cross 600.",
      "expr": "600",
      "relation": "new"
     },
@@ -247,7 +304,8 @@ BC-QA-07009 is `either`, one or two FRQ parts or one MCQ; the MCQ shape is taken
    "sources": [
     "BC-ERR-07039",
     "BC-MIS-07024"
-   ]
+   ],
+   "fix_prompt": true
   },
   {
    "error_id": "BC-ERR-07043",
@@ -269,7 +327,8 @@ BC-QA-07009 is `either`, one or two FRQ parts or one MCQ; the MCQ shape is taken
    "sources": [
     "BC-ERR-07043",
     "BC-MIS-07023"
-   ]
+   ],
+   "fix_prompt": false
   },
   {
    "error_id": "BC-ERR-07044",
@@ -291,7 +350,8 @@ BC-QA-07009 is `either`, one or two FRQ parts or one MCQ; the MCQ shape is taken
    "sources": [
     "BC-ERR-07044",
     "BC-MIS-07025"
-   ]
+   ],
+   "fix_prompt": true
   }
  ],
  "representations": null,
@@ -596,12 +656,12 @@ BC-QA-07009 is `either`, one or two FRQ parts or one MCQ; the MCQ shape is taken
   "research/exam/exam-structure.md#Section and part layout"
  ],
  "word_count": {
-  "full": 518,
-  "brief": 394
+  "full": 574,
+  "brief": 450
  },
  "read_minutes": {
-  "full": 3.5,
-  "brief": 2.7
+  "full": 3.83,
+  "brief": 3.0
  }
 }
 ```

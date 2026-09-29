@@ -9,9 +9,13 @@ purpose: Authoring spec for the concept lesson on BC-CON-07007, separation of va
 
 Concept BC-CON-07007 (skills BC-SKL-07024 to BC-SKL-07028), topic 7.6 of Unit 7, loaded by BC-QA-07003 and BC-QA-07012, both in family separation-of-variables. Its hard parent in Unit 7 is BC-CON-07004 (docs/lessons/unit-07/README.md, section 1).
 
+## Prediction
+
+Both bands, served first, before any rule. Form `mcq`, three options, on ex-1's equation \(dy/dx=2xy\) with \(y(1)=3\): which rewriting lets each side be integrated in its own variable. Key: \(dy/y=2x\,dx\). One distractor keeps \(y\) on the \(dx\) side (\(dy=2xy\,dx\)) and the other is not equivalent to the equation (\(y\,dy=2x\,dx\)). The question is ex-1's first step, not its answer. The resolution states the divide and multiply that gives one variable per side, and never grades the choice. Sources: BC-CON-07007 and the 7.6 topic section that ki-1 cites (BC-EK-FUN-7D1, ced:142). Delivery: text. [inferred] Settled by the prediction's first-try rate in the build plan.
+
 ## Orientation
 
-Served text, from BC-CON-07007 `description_plain` and the topic's Assessment behaviour paragraph (research/units/unit-07-differential-equations.md#7.6 Finding General Solutions Using Separation of Variables): a response separates with a differential on each side, antidifferentiates both sides, carries one constant and solves for y. The gate on the whole part is cited to sg-23:12.
+Served text, from BC-CON-07007 `description_plain` and the topic's Assessment behaviour paragraph (research/units/unit-07-differential-equations.md#7.6 Finding General Solutions Using Separation of Variables): a response separates with a differential on each side, antidifferentiates both sides, carries one constant and solves for y. The scoring gate on the whole part is sg-23:12; it stays in `sources` and out of the served text.
 
 ## Key ideas
 
@@ -28,18 +32,21 @@ BC-QA-07012 (research/question-analysis/question-archetypes.md#BC-QA-07012 Diffe
 
 Not this concept: "show that the given function is a solution" supplies a candidate (verification, BC-CON-07002); "use Euler's method" asks for an approximation (BC-CON-07006); a right side in x alone is an accumulation (BC-CON-07008).
 
+The contrast pair on st-1 sets a separation stem beside its near miss. Where the near miss comes from: the sibling concept BC-CON-07002, verification, so the near-miss stem gives the same equation and a candidate function to show is a solution, which supplies the answer instead of asking for it. The separating feature is that the stem asks to find \(y\).
+
 ## Method choice
 
 - st-1, BC-QA-07003, both bands. Method, `expected_solution_path[0]`: separate the variables with a differential on each side. Rival, `wrong_approaches`: treating the equation as though the dependent variable were a constant. Separating feature: y varies, so it must move to the dy side first.
 - st-2, BC-QA-07012, low band. Method, `expected_solution_path[0]`: look for a common factor that makes the right side a function of x times a function of y. Rival, `wrong_approaches`: dividing each term by y separately. Separating feature: a common factor, or a leftover term that blocks one.
 
-Both archetypes carry `asked_to_produce` and `common_givens`, so neither block is tagged inferred.
+Both archetypes carry `asked_to_produce` and `common_givens`, so neither block is tagged inferred. The reader prints its own labels, so no field starts with one, and no method begins with a label. st-1 carries the contrast pair: a separation stem beside a verification stem.
 
 ## Solution path
 
 - ex-1, BC-QA-07003, both bands, no calculator. Draw from `parameter_spec`: form exponential, rate 2, power 1, start 1, initial 3, so dy/dx = 2xy with y(1) = 3. It meets every constraint (|2 * 1^2| <= 12) and matches no published BC-QA-07003 draw (content/items_gen_unit07, items_unit07_agent).
 - Steps follow `expected_solution_path`: separated equation (new, BC-PT-99028); integrated equation with one C (new, the antiderivative points untagged); initial values substituted (evaluate, BC-PT-99031); C solved (solve); explicit y (new, BC-PT-99032). The sign of y is settled in the last line from y(1) = 3.
 - A fluent solver writes all five lines; the choice of branch is held in the head [inferred].
+- One example, so it is not faded and carries no `fade_from`.
 
 ## Scoring
 
@@ -49,7 +56,7 @@ Point losses: a separable equation separated with a constant on the wrong side, 
 
 ## Traps
 
-Six errors meet the skills; the first four in the bundle's order are served, low band all four, mid band the first two. All on ex-1's draw except BC-ERR-07028, which needs a non-separable equation (dy/dx = 2xy + 3, the BC-QA-07012 not-separable shape).
+Six errors meet the skills; every served block is distinct, so each carries `fix_prompt` true; the first four in the bundle's order are served, low band all four, mid band the first two. All on ex-1's draw except BC-ERR-07028, which needs a non-separable equation (dy/dx = 2xy + 3, the BC-QA-07012 not-separable shape).
 
 - err-BC-ERR-07024: y held fixed and 2xy integrated in x. No possible reason line: neither linked description names this move.
 - err-BC-ERR-07025: ln y beside an untouched 2x. No possible reason line, cut for the brief-band cap.
@@ -76,13 +83,16 @@ BC-QA-07003 is `no_calculator` and the closing part of a multipart FRQ, so Secti
 
 ## Delivery
 
+- pr-1: text. Rule 6, a prediction on ex-1's equation with nothing to draw.
 - orientation, ki-1, ki-2: text. Rule 6: the representations are BC-REP-01 and BC-REP-06, none figure-bearing, and the content is a sequence of written lines (docs/lessons/unit-07/README.md, section 6).
 - ex-1 and the four error blocks: step_reveal, rule 1.
 
+Figure presence: no drawn block. No rule of 2 to 5 applies, because the topic's representations are a differential equation and symbolic forms converted by rewriting, and no key idea describes a process, so the record carries `no_figure_reason`.
+
 ## Band plan
 
-- Low (full): orientation, ki-1, ki-2, st-1, st-2, ex-1 with its three reader lines, the four error blocks, chk-1 to chk-3, the three bridges. 614 words, 4.1 minutes (cap 900 and 6).
-- Mid (brief): orientation, ki-1, ki-2, st-1, ex-1 with its reader lines, err-BC-ERR-07024, err-BC-ERR-07025, chk-1, chk-2, the three bridges. 441 words, 3.0 minutes (cap 450 and 3).
+- Low (full): prediction, orientation, bridges, ki-1, ki-2, st-1 with its contrast, st-2, ex-1 with its three reader lines, chk-1, the four error blocks, chk-2, chk-3. 619 words, 4.2 minutes (cap 900 and 6).
+- Mid (brief): prediction, orientation, bridges, ki-1, ki-2, st-1 with its contrast, ex-1 with its reader lines, chk-1, err-BC-ERR-07024, err-BC-ERR-07025, chk-2. 450 words, 3.0 minutes (cap 450 and 3). The orientation, both key ideas, the bridges, the st-1 fields, the prediction and ex-1's cues and whys were shortened to fit; no scoring tag was dropped.
 - Refresher: ki-1, ki-2, the four error blocks, ex-1.
 
 ## Sources
@@ -118,8 +128,41 @@ BC-QA-07003 is `no_calculator` and the closing part of a multipart FRQ, so Secti
   "BC-SKL-07027",
   "BC-SKL-07028"
  ],
+ "prediction": {
+  "id": "pr-1",
+  "stem": {
+   "text": "Predict. \\(dy/dx=2xy\\) with \\(y(1)=3\\). Which rewriting lets each side integrate in its own variable?",
+   "command_verb": "predict"
+  },
+  "format": "mcq",
+  "options": [
+   {
+    "id": "A",
+    "label": "\\(dy/y=2x\\,dx\\)",
+    "is_key": true
+   },
+   {
+    "id": "B",
+    "label": "\\(dy=2xy\\,dx\\)",
+    "is_key": false
+   },
+   {
+    "id": "C",
+    "label": "\\(y\\,dy=2x\\,dx\\)",
+    "is_key": false
+   }
+  ],
+  "resolution": "Divide by \\(y\\), multiply by \\(dx\\): \\(dy/y=2x\\,dx\\). Each side then integrates in its own variable.",
+  "sources": [
+   "BC-CON-07007",
+   "BC-EK-FUN-7D1",
+   "ced:142",
+   "research/units/unit-07-differential-equations.md#7.6 Finding General Solutions Using Separation of Variables"
+  ]
+ },
+ "no_figure_reason": "The topic's representations are a differential equation and symbolic forms, converted by rewriting. No key idea describes a process and no representation is figure-bearing.",
  "orientation": {
-  "text": "Separate with a differential on each side, antidifferentiate both sides with one constant, solve for y. No separation, no points (sg-23:12).",
+  "text": "Separate, integrate both sides with one constant, solve for y.",
   "sources": [
    "BC-CON-07007",
    "research/units/unit-07-differential-equations.md#7.6 Finding General Solutions Using Separation of Variables",
@@ -131,7 +174,7 @@ BC-QA-07003 is `no_calculator` and the closing part of a multipart FRQ, so Secti
    "id": "ki-1",
    "ek_id": "BC-EK-FUN-7D1",
    "depth": "core",
-   "text": "If the right side is an x part times a y part, y goes with dy and x with dx. A sum with no common factor does not separate.",
+   "text": "If the right side is an x part times a y part, y goes with dy and x with dx. A sum does not separate.",
    "notation": "separated form",
    "quote": null,
    "sources": [
@@ -144,7 +187,7 @@ BC-QA-07003 is `no_calculator` and the closing part of a multipart FRQ, so Secti
    "id": "ki-2",
    "ek_id": "BC-EK-FUN-7D2",
    "depth": "core",
-   "text": "Integrate each side in its own variable, one constant on one side. The initial condition fixes it; then solve for y.",
+   "text": "Integrate each side in its own variable with one constant. The initial condition fixes it.",
    "notation": "one constant of integration",
    "quote": null,
    "sources": [
@@ -158,21 +201,32 @@ BC-QA-07003 is `no_calculator` and the closing part of a multipart FRQ, so Secti
   {
    "id": "st-1",
    "archetype_id": "BC-QA-07003",
-   "cue": "Use separation of variables, with an initial condition.",
-   "method": "First line: y with dy, x with dx.",
-   "rival": "Rival: integrating with y held constant.",
-   "separating_feature": "y varies, so it moves first.",
+   "cue": "Separation with an initial condition.",
+   "method": "Y with dy, x with dx.",
+   "rival": "Integrating with y held constant.",
+   "separating_feature": "Y varies, so it moves first.",
    "sources": [
     "BC-QA-07003"
    ],
-   "evidence_tag": "verified"
+   "evidence_tag": "verified",
+   "contrast": {
+    "this": {
+     "text": "\\(dy/dx=3x^2y\\), \\(y(0)=4\\). Find \\(y\\) by separation.",
+     "archetype_id": "BC-QA-07003"
+    },
+    "not_this": {
+     "text": "\\(dy/dx=3x^2y\\). Show that \\(y=4e^{x^3}\\) is a solution with \\(y(0)=4\\).",
+     "why_not": "It gives a candidate to check."
+    },
+    "feature": "The stem asks to find \\(y\\)."
+   }
   },
   {
    "id": "st-2",
    "archetype_id": "BC-QA-07012",
    "cue": "The stem asks whether the equation separates, with the right side printed expanded.",
-   "method": "First written line: the right side factored as an x part times a y part.",
-   "rival": "Rival: dividing each term by y separately.",
+   "method": "The right side factored as an x part times a y part.",
+   "rival": "Dividing each term by y separately.",
    "separating_feature": "A common factor exists, or a leftover constant term blocks it.",
    "sources": [
     "BC-QA-07012"
@@ -210,7 +264,7 @@ BC-QA-07003 is `no_calculator` and the closing part of a multipart FRQ, so Secti
     },
     {
      "cue": "One variable per side.",
-     "why": "Integrate each; one C.",
+     "why": "One C.",
      "expr": "log(Abs(y)) = x**2 + C",
      "relation": "new"
     },
@@ -226,8 +280,8 @@ BC-QA-07003 is `no_calculator` and the closing part of a multipart FRQ, so Secti
      "point_type_id": "BC-PT-99031"
     },
     {
-     "cue": "One unknown.",
-     "why": "Solve for C.",
+     "cue": "C alone.",
+     "why": "Solve.",
      "expr": "log(3) - 1",
      "relation": "solve",
      "variable": "C"
@@ -287,7 +341,8 @@ BC-QA-07003 is `no_calculator` and the closing part of a multipart FRQ, so Secti
    "possible_reason": null,
    "sources": [
     "BC-ERR-07024"
-   ]
+   ],
+   "fix_prompt": true
   },
   {
    "error_id": "BC-ERR-07025",
@@ -305,7 +360,8 @@ BC-QA-07003 is `no_calculator` and the closing part of a multipart FRQ, so Secti
    "possible_reason": null,
    "sources": [
     "BC-ERR-07025"
-   ]
+   ],
+   "fix_prompt": true
   },
   {
    "error_id": "BC-ERR-07026",
@@ -327,7 +383,8 @@ BC-QA-07003 is `no_calculator` and the closing part of a multipart FRQ, so Secti
    "sources": [
     "BC-ERR-07026",
     "BC-MIS-07016"
-   ]
+   ],
+   "fix_prompt": true
   },
   {
    "error_id": "BC-ERR-07028",
@@ -349,22 +406,23 @@ BC-QA-07003 is `no_calculator` and the closing part of a multipart FRQ, so Secti
    "sources": [
     "BC-ERR-07028",
     "BC-MIS-07014"
-   ]
+   ],
+   "fix_prompt": true
   }
  ],
  "representations": null,
  "prerequisite_bridges": [
   {
    "prq_id": "BC-PRQ-06003",
-   "text": "1/y integrates to ln|y|; without it ln of a negative quantity appears."
+   "text": "1/y integrates to ln|y|."
   },
   {
    "prq_id": "BC-PRQ-07001",
-   "text": "Exponentiating isolates y; without it y stays implicit."
+   "text": "Exponentiating isolates y."
   },
   {
    "prq_id": "BC-PRQ-07002",
-   "text": "dy/dx splits into dy and dx; without it dx never moves across."
+   "text": "dy/dx splits into dy and dx."
   }
  ],
  "time": {
@@ -584,6 +642,14 @@ BC-QA-07003 is `no_calculator` and the closing part of a multipart FRQ, so Secti
  ],
  "delivery": [
   {
+   "block": "pr-1",
+   "mode": "text",
+   "reason": "rule 6: a prediction on ex-1's equation with nothing to draw",
+   "sources": [
+    "BC-SKL-07024"
+   ]
+  },
+  {
    "block": "orientation",
    "mode": "text",
    "reason": "rule 6: a statement of what a response shows; BC-REP-01 and BC-REP-06 only, no figure-bearing representation",
@@ -710,11 +776,11 @@ BC-QA-07003 is `no_calculator` and the closing part of a multipart FRQ, so Secti
   "research/exam/exam-structure.md#Section and part layout"
  ],
  "word_count": {
-  "full": 614,
-  "brief": 441
+  "full": 619,
+  "brief": 450
  },
  "read_minutes": {
-  "full": 4.1,
+  "full": 4.2,
   "brief": 3.0
  }
 }

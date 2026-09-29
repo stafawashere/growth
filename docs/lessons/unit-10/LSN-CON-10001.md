@@ -109,7 +109,7 @@ Every Unit 10 archetype is `no_calculator`; its MCQ shape is Section I Part A, 2
  "prediction": {
   "id": "pr-1",
   "stem": {
-   "text": "Predict. The series \\(\\sum_{n=1}^{\\infty}\\frac{2}{(n+1)(n+2)}\\) has terms \\(\\frac13,\\frac16,\\frac1{10},\\frac1{15}\\). Adding the first 1, 2, 3, 4 terms gives \\(\\frac13,\\frac12,\\frac35,\\frac23\\). What do the first 10 terms add to?",
+   "text": "The series \\(\\sum_{n=1}^{\\infty}\\frac{2}{(n+1)(n+2)}\\) has terms \\(\\frac13,\\frac16,\\frac1{10},\\frac1{15}\\). Adding the first 1, 2, 3, 4 terms gives \\(\\frac13,\\frac12,\\frac35,\\frac23\\). What do the first 10 terms add to?",
    "command_verb": "predict"
   },
   "format": "mcq",
@@ -645,8 +645,8 @@ Every Unit 10 archetype is `no_calculator`; its MCQ shape is Section I Part A, 2
   "brief": 3.0
  },
  "word_count": {
-  "full": 597,
-  "brief": 449
+  "full": 596,
+  "brief": 448
  },
  "research_lines": [
   {

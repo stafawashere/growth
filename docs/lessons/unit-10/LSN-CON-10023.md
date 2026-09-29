@@ -109,7 +109,7 @@ ex-1 is the MCQ shape "the general term of the series": Section I Part A, 2.14 m
  "prediction": {
   "id": "pr-1",
   "stem": {
-   "text": "Predict. The first three nonzero terms of the Maclaurin series of \\(f(x)=2xe^{3x}\\) are \\(2x,\\ 6x^2,\\ 9x^3\\). Which formula gives the term of index \\(n\\) and continues without stopping?",
+   "text": "The first three nonzero terms of the Maclaurin series of \\(f(x)=2xe^{3x}\\) are \\(2x,\\ 6x^2,\\ 9x^3\\). Which formula gives the term of index \\(n\\) and continues without stopping?",
    "command_verb": "predict"
   },
   "format": "mcq",
@@ -763,8 +763,8 @@ ex-1 is the MCQ shape "the general term of the series": Section I Part A, 2.14 m
   "research/exam/exam-structure.md#Section and part layout"
  ],
  "word_count": {
-  "full": 777,
-  "brief": 449
+  "full": 776,
+  "brief": 448
  },
  "read_minutes": {
   "full": 5.2,

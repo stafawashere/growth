@@ -121,7 +121,7 @@ BC-QA-08008 is `either`; the design takes Section I Part A, 2.14 minutes per que
  "prediction": {
   "id": "pr-1",
   "stem": {
-   "text": "Predict: \\(f(x)=-x^2+6x-7\\) and \\(g(x)=3-x\\) meet at \\(x=2\\) and \\(x=5\\), with \\(f(3)=2\\) and \\(g(3)=0\\). Which integrand gives the area between them?",
+   "text": "\\(f(x)=-x^2+6x-7\\) and \\(g(x)=3-x\\) meet at \\(x=2\\) and \\(x=5\\), with \\(f(3)=2\\) and \\(g(3)=0\\). Which integrand gives the area between them?",
    "command_verb": "predict"
   },
   "format": "mcq",
@@ -735,8 +735,8 @@ BC-QA-08008 is `either`; the design takes Section I Part A, 2.14 minutes per que
   "brief": 3.0
  },
  "word_count": {
-  "full": 574,
-  "brief": 443
+  "full": 573,
+  "brief": 442
  },
  "research_lines": [
   {

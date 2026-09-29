@@ -111,7 +111,7 @@ ex-1 is the MCQ shape "the interval of convergence": Section I Part A, 2.14 minu
  "prediction": {
   "id": "pr-1",
   "stem": {
-   "text": "Predict. The ratio test shows \\(\\sum_{n=1}^{\\infty}\\frac{5(x+2)^n}{4^n\\,n}\\) converges for \\(-6<x<2\\) and is silent at the ends. What happens at \\(x=-6\\) and \\(x=2\\)?",
+   "text": "The ratio test shows \\(\\sum_{n=1}^{\\infty}\\frac{5(x+2)^n}{4^n\\,n}\\) converges for \\(-6<x<2\\) and is silent at the ends. What happens at \\(x=-6\\) and \\(x=2\\)?",
    "command_verb": "predict"
   },
   "format": "mcq",
@@ -755,8 +755,8 @@ ex-1 is the MCQ shape "the interval of convergence": Section I Part A, 2.14 minu
   "research/exam/exam-structure.md#Section and part layout"
  ],
  "word_count": {
-  "full": 716,
-  "brief": 447
+  "full": 715,
+  "brief": 446
  },
  "read_minutes": {
   "full": 4.8,

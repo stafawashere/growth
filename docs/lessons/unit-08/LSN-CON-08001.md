@@ -124,7 +124,7 @@ The served order of 2026-09-29: prediction, orientation, bridges, key ideas, str
  "target_id": "BC-CON-08001",
  "unit": "08",
  "skills": ["BC-SKL-08001", "BC-SKL-08002", "BC-SKL-08003"],
- "prediction": {"id": "pr-1", "stem": {"text": "Predict: W(t) = 5cos(t^2/2) + 1 on [0, 3]. Which gives the average value of W?", "command_verb": "predict"}, "format": "mcq", "options": [{"id": "A", "label": "The mean of W(0) and W(3)", "is_key": false}, {"id": "B", "label": "The integral of W over [0, 3], divided by 3", "is_key": true}, {"id": "C", "label": "The integral of W over [0, 3]", "is_key": false}], "resolution": "The integral of W over [0, 3] divided by the length 3, about 1.961. Endpoint samples miss the middle.", "sources": ["BC-CON-08001", "research/units/unit-08-applications-integration.md#8.1 Finding the Average Value of a Function on an Interval"]},
+ "prediction": {"id": "pr-1", "stem": {"text": "W(t) = 5cos(t^2/2) + 1 on [0, 3]. Which gives the average value of W?", "command_verb": "predict"}, "format": "mcq", "options": [{"id": "A", "label": "The mean of W(0) and W(3)", "is_key": false}, {"id": "B", "label": "The integral of W over [0, 3], divided by 3", "is_key": true}, {"id": "C", "label": "The integral of W over [0, 3]", "is_key": false}], "resolution": "The integral of W over [0, 3] divided by the length 3, about 1.961. Endpoint samples miss the middle.", "sources": ["BC-CON-08001", "research/units/unit-08-applications-integration.md#8.1 Finding the Average Value of a Function on an Interval"]},
  "orientation": {"text": "A response writes the integral, divides by the interval length, and gives three decimals.", "sources": ["BC-CON-08001", "research/units/unit-08-applications-integration.md#8.1 Finding the Average Value of a Function on an Interval"]},
  "key_ideas": [
   {"id": "ki-1", "ek_id": "BC-EK-CHA-4B1", "depth": "core", "text": "Average value of f on [a, b]: the integral of f over [a, b], divided by b minus a.", "notation": "average value", "quote": null, "sources": ["BC-EK-CHA-4B1", "ced:152", "sg-25:3", "research/units/unit-08-applications-integration.md#8.1 Finding the Average Value of a Function on an Interval"]}
@@ -169,7 +169,7 @@ The served order of 2026-09-29: prediction, orientation, bridges, key ideas, str
  ],
  "refresher": ["ki-1", "err-BC-ERR-06014", "err-BC-ERR-08001", "err-BC-ERR-08002", "err-BC-ERR-99019", "ex-1"],
  "read_minutes": {"full": 4.4, "brief": 3.0},
- "word_count": {"full": 651, "brief": 450},
+ "word_count": {"full": 650, "brief": 449},
  "research_lines": [
   {"file": "research/units/unit-08-applications-integration.md", "line": "the average value of f over [a,b] is the definite integral of f over [a,b] divided by b minus a"}
  ],

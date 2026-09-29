@@ -114,7 +114,7 @@ BC-QA-05012 is `no_calculator` and one FRQ part worth two or three points, so Se
  "target_id": "BC-CON-05015",
  "unit": "05",
  "skills": ["BC-SKL-05058", "BC-SKL-05059", "BC-SKL-05060", "BC-SKL-05061", "BC-SKL-05062", "BC-SKL-05063"],
- "prediction": {"id": "pr-1", "stem": {"text": "Predict: on \\((y-1)^2=x^2(x+3)\\), \\(\\frac{dy}{dx}=\\frac{3x(x+2)}{2(y-1)}\\). At which \\(x\\) is the tangent line horizontal?", "command_verb": "predict"}, "format": "mcq", "options": [{"id": "A", "label": "\\(x=-2\\) only", "is_key": true}, {"id": "B", "label": "\\(x=-2\\) and \\(x=0\\)", "is_key": false}, {"id": "C", "label": "\\(x=-3\\)", "is_key": false}], "resolution": "A horizontal tangent needs the numerator zero, the denominator nonzero, and a point on the curve. At \\(x=0\\), \\(y=1\\) also makes the denominator zero.", "sources": ["BC-CON-05015", "research/units/unit-05-analytical-applications-differentiation.md#5.12 Exploring Behaviors of Implicit Relations"]},
+ "prediction": {"id": "pr-1", "stem": {"text": "On \\((y-1)^2=x^2(x+3)\\), \\(\\frac{dy}{dx}=\\frac{3x(x+2)}{2(y-1)}\\). At which \\(x\\) is the tangent line horizontal?", "command_verb": "predict"}, "format": "mcq", "options": [{"id": "A", "label": "\\(x=-2\\) only", "is_key": true}, {"id": "B", "label": "\\(x=-2\\) and \\(x=0\\)", "is_key": false}, {"id": "C", "label": "\\(x=-3\\)", "is_key": false}], "resolution": "A horizontal tangent needs the numerator zero, the denominator nonzero, and a point on the curve. At \\(x=0\\), \\(y=1\\) also makes the denominator zero.", "sources": ["BC-CON-05015", "research/units/unit-05-analytical-applications-differentiation.md#5.12 Exploring Behaviors of Implicit Relations"]},
  "orientation": {"text": "A response finds \\(\\frac{dy}{dx}\\) implicitly, keeps points that satisfy both the relation and the condition on \\(\\frac{dy}{dx}\\), and classifies from the sign of the second derivative after substituting.", "sources": ["BC-CON-05015", "research/units/unit-05-analytical-applications-differentiation.md#5.12 Exploring Behaviors of Implicit Relations"]},
  "key_ideas": [
   {"id": "ki-1", "ek_id": "BC-EK-FUN-4D1", "depth": "core", "text": "On a relation, \\(\\frac{dy}{dx}\\) is a quotient. It is zero where the numerator is zero and the denominator is not; it fails to exist where the denominator is zero. A critical point is a point of the curve, so its coordinates satisfy both the relation and that condition.", "notation": "dy/dx", "quote": {"text": "A point on an implicit relation where the first derivative equals zero or does not exist is a critical point of the function.", "source": "ced:110"}, "sources": ["BC-EK-FUN-4D1", "ced:110", "research/units/unit-05-analytical-applications-differentiation.md#5.12 Exploring Behaviors of Implicit Relations"]},
@@ -161,7 +161,7 @@ BC-QA-05012 is `no_calculator` and one FRQ part worth two or three points, so Se
  ],
  "refresher": ["ki-1", "ki-2", "err-BC-ERR-03012", "err-BC-ERR-03023", "err-BC-ERR-05060", "err-BC-ERR-05062", "ex-1"],
  "read_minutes": {"full": 4.5, "brief": 3.0},
- "word_count": {"full": 673, "brief": 448},
+ "word_count": {"full": 672, "brief": 447},
  "research_lines": [
   {"file": "research/units/unit-05-analytical-applications-differentiation.md", "line": "so the coordinates must satisfy both the defining equation and the derived condition"}
  ],

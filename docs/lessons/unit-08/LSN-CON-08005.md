@@ -115,7 +115,7 @@ The served order of 2026-09-29: prediction, orientation, bridges, key ideas, str
  "target_id": "BC-CON-08005",
  "unit": "08",
  "skills": ["BC-SKL-08009", "BC-SKL-08010"],
- "prediction": {"id": "pr-1", "stem": {"text": "Predict: v(t) = 3t^2 - 4t + 5 and x(1) = 25. Which gives x(3)?", "command_verb": "predict"}, "format": "mcq", "options": [{"id": "A", "label": "The integral of v from 1 to 3", "is_key": false}, {"id": "B", "label": "25 plus the integral of v from 1 to 3", "is_key": true}, {"id": "C", "label": "25 times the integral of v from 1 to 3", "is_key": false}], "resolution": "The integral of v from 1 to 3 is the change in position, 20 meters. Adding the known 25 gives x(3) = 45.", "sources": ["BC-CON-08005", "research/units/unit-08-applications-integration.md#8.2 Connecting Position, Velocity, and Acceleration of Functions Using Integrals"]},
+ "prediction": {"id": "pr-1", "stem": {"text": "v(t) = 3t^2 - 4t + 5 and x(1) = 25. Which gives x(3)?", "command_verb": "predict"}, "format": "mcq", "options": [{"id": "A", "label": "The integral of v from 1 to 3", "is_key": false}, {"id": "B", "label": "25 plus the integral of v from 1 to 3", "is_key": true}, {"id": "C", "label": "25 times the integral of v from 1 to 3", "is_key": false}], "resolution": "The integral of v from 1 to 3 is the change in position, 20 meters. Adding the known 25 gives x(3) = 45.", "sources": ["BC-CON-08005", "research/units/unit-08-applications-integration.md#8.2 Connecting Position, Velocity, and Acceleration of Functions Using Integrals"]},
  "no_figure_reason": "The topic offers no figure-shaped conversion for a value recovered from an initial condition, and no skill carries a figure-bearing representation. The key idea is one symbolic relation with no process.",
  "orientation": {"text": "A response adds the known value to the integral of the rate.", "sources": ["BC-CON-08005", "research/units/unit-08-applications-integration.md#8.2 Connecting Position, Velocity, and Acceleration of Functions Using Integrals"]},
  "key_ideas": [
@@ -151,7 +151,7 @@ The served order of 2026-09-29: prediction, orientation, bridges, key ideas, str
  ],
  "refresher": ["ki-1", "err-BC-ERR-08011", "ex-1"],
  "read_minutes": {"full": 3.1, "brief": 2.8},
- "word_count": {"full": 459, "brief": 411},
+ "word_count": {"full": 458, "brief": 410},
  "research_lines": [
   {"file": "research/units/unit-08-applications-integration.md", "line": "the position at b is the position at a plus the definite integral of v over [a,b]"}
  ],

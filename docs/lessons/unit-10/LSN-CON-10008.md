@@ -115,7 +115,7 @@ Section I Part A, 2.14 minutes (research/exam/exam-structure.md#Section and part
  "prediction": {
   "id": "pr-1",
   "stem": {
-   "text": "Predict. In \\(\\sum_{n=1}^{\\infty}\\frac{3\\cdot2^n}{5^n}\\) each term is \\(\\frac25\\) of the one before. Does the series converge?",
+   "text": "In \\(\\sum_{n=1}^{\\infty}\\frac{3\\cdot2^n}{5^n}\\) each term is \\(\\frac25\\) of the one before. Does the series converge?",
    "command_verb": "predict"
   },
   "format": "mcq",
@@ -618,8 +618,8 @@ Section I Part A, 2.14 minutes (research/exam/exam-structure.md#Section and part
   "brief": 2.7
  },
  "word_count": {
-  "full": 555,
-  "brief": 394
+  "full": 554,
+  "brief": 393
  },
  "research_lines": [
   {

@@ -112,7 +112,7 @@ BC-QA-05009 is `either`, so Section I Part A, 2.14 minutes per question (researc
  "target_id": "BC-CON-05012",
  "unit": "05",
  "skills": ["BC-SKL-05045", "BC-SKL-05046", "BC-SKL-05047", "BC-SKL-05048"],
- "prediction": {"id": "pr-1", "stem": {"text": "Predict: curve B has horizontal tangents at \\(x=-1\\) and \\(x=2\\), and curve C crosses the axis there. How are B and C related?", "command_verb": "predict"}, "format": "mcq", "options": [{"id": "A", "label": "C is the derivative of B", "is_key": true}, {"id": "B", "label": "B is the derivative of C", "is_key": false}, {"id": "C", "label": "C is the second derivative of B", "is_key": false}], "resolution": "A curve crossing where B has horizontal tangents is its derivative. Here C is \\(f'\\) and B is \\(f\\).", "sources": ["BC-CON-05012", "research/units/unit-05-analytical-applications-differentiation.md#5.9 Connecting a Function, Its First Derivative, and Its Second Derivative"]},
+ "prediction": {"id": "pr-1", "stem": {"text": "Curve B has horizontal tangents at \\(x=-1\\) and \\(x=2\\), and curve C crosses the axis there. How are B and C related?", "command_verb": "predict"}, "format": "mcq", "options": [{"id": "A", "label": "C is the derivative of B", "is_key": true}, {"id": "B", "label": "B is the derivative of C", "is_key": false}, {"id": "C", "label": "C is the second derivative of B", "is_key": false}], "resolution": "A curve crossing where B has horizontal tangents is its derivative. Here C is \\(f'\\) and B is \\(f\\).", "sources": ["BC-CON-05012", "research/units/unit-05-analytical-applications-differentiation.md#5.9 Connecting a Function, Its First Derivative, and Its Second Derivative"]},
  "orientation": {"text": "A response matches turning points with zeros, twice, and names the object each reason is about.", "sources": ["BC-CON-05012", "research/units/unit-05-analytical-applications-differentiation.md#5.9 Connecting a Function, Its First Derivative, and Its Second Derivative"]},
  "key_ideas": [
   {"id": "ki-1", "ek_id": "BC-EK-FUN-4A11", "depth": "core", "text": "Extrema of \\(f\\) sit where \\(f'\\) changes sign; inflection points where \\(f''\\) does, at the turning points of \\(f'\\). A curve whose zeros sit under another's turning points is its derivative.", "notation": "f, f', f''", "quote": {"text": "Key features of the graphs of f, f', and f\" are related to one another.", "source": "ced:107"}, "sources": ["BC-EK-FUN-4A11", "ced:107", "research/units/unit-05-analytical-applications-differentiation.md#5.9 Connecting a Function, Its First Derivative, and Its Second Derivative"]}
@@ -153,7 +153,7 @@ BC-QA-05009 is `either`, so Section I Part A, 2.14 minutes per question (researc
  ],
  "refresher": ["ki-1", "err-BC-ERR-05046", "err-BC-ERR-05047", "err-BC-ERR-05048", "err-BC-ERR-05049", "ex-1"],
  "read_minutes": {"full": 5.0, "brief": 3.0},
- "word_count": {"full": 700, "brief": 448},
+ "word_count": {"full": 699, "brief": 447},
  "research_lines": [
   {"file": "research/scoring/justification-requirements.md", "line": "the reason point is earned only by reasoning about the graphed object"}
  ],

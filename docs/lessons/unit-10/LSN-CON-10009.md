@@ -124,7 +124,7 @@ The exam part the archetype's shape lives in: Section I Part A, 2.14 minutes (re
  "prediction": {
   "id": "pr-1",
   "stem": {
-   "text": "Predict. \\(\\sum_{n=1}^{\\infty}\\frac{3}{n^3}\\) has a finite total \\(T\\). What do the partial sums of \\(\\sum_{n=1}^{\\infty}\\frac{3}{n^3+7}\\) do?",
+   "text": "\\(\\sum_{n=1}^{\\infty}\\frac{3}{n^3}\\) has a finite total \\(T\\). What do the partial sums of \\(\\sum_{n=1}^{\\infty}\\frac{3}{n^3+7}\\) do?",
    "command_verb": "predict"
   },
   "format": "mcq",
@@ -760,8 +760,8 @@ The exam part the archetype's shape lives in: Section I Part A, 2.14 minutes (re
   "research/exam/exam-structure.md#Section and part layout"
  ],
  "word_count": {
-  "full": 840,
-  "brief": 449
+  "full": 839,
+  "brief": 448
  },
  "read_minutes": {
   "full": 5.6,

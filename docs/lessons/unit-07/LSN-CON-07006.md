@@ -112,7 +112,7 @@ Figure presence: the orientation table, the ki-1 motion and the representations 
  "prediction": {
   "id": "pr-1",
   "stem": {
-   "text": "Predict. \\(dy/dx=2x+y+1\\) and \\(y(0)=1\\). Using the slope at the start, estimate \\(y(1/2)\\).",
+   "text": "\\(dy/dx=2x+y+1\\) and \\(y(0)=1\\). Using the slope at the start, estimate \\(y(1/2)\\).",
    "command_verb": "predict"
   },
   "format": "mcq",
@@ -837,8 +837,8 @@ Figure presence: the orientation table, the ki-1 motion and the representations 
   "brief": 3.0
  },
  "word_count": {
-  "full": 605,
-  "brief": 450
+  "full": 604,
+  "brief": 449
  },
  "research_lines": [
   {

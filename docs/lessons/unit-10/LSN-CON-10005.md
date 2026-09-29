@@ -116,7 +116,7 @@ Section I Part A, 2.14 minutes (research/exam/exam-structure.md#Section and part
  "prediction": {
   "id": "pr-1",
   "stem": {
-   "text": "Predict. A series has terms \\(a_n=\\frac{3n+1}{2n+5}\\), each close to 1.5 once n is large. As more terms are added, what do the partial sums do?",
+   "text": "A series has terms \\(a_n=\\frac{3n+1}{2n+5}\\), each close to 1.5 once n is large. As more terms are added, what do the partial sums do?",
    "command_verb": "predict"
   },
   "format": "mcq",
@@ -628,8 +628,8 @@ Section I Part A, 2.14 minutes (research/exam/exam-structure.md#Section and part
   "brief": 3.0
  },
  "word_count": {
-  "full": 611,
-  "brief": 447
+  "full": 610,
+  "brief": 446
  },
  "research_lines": [
   {

@@ -115,7 +115,7 @@ Figure presence: the orientation interactive and the ki-1 motion are drawn block
  "prediction": {
   "id": "pr-1",
   "stem": {
-   "text": "Predict. A solution of \\(dy/dx=(y-1)(x+1)(x-2)\\) passes through \\((1,2)\\). Rising or falling there, without solving?",
+   "text": "A solution of \\(dy/dx=(y-1)(x+1)(x-2)\\) passes through \\((1,2)\\). Rising or falling there, without solving?",
    "command_verb": "predict"
   },
   "format": "mcq",
@@ -833,8 +833,8 @@ Figure presence: the orientation interactive and the ki-1 motion are drawn block
   "brief": 3.0
  },
  "word_count": {
-  "full": 789,
-  "brief": 449
+  "full": 788,
+  "brief": 448
  },
  "research_lines": [
   {

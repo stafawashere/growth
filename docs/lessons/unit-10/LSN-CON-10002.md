@@ -113,7 +113,7 @@ Every Unit 10 archetype is `no_calculator`; its MCQ shape is Section I Part A, 2
  "prediction": {
   "id": "pr-1",
   "stem": {
-   "text": "Predict. A series has partial sums \\(S_1=2,\\ S_2=2.5,\\ S_3=2.75,\\ S_4=2.875\\), and so on, given by \\(S_n=3-2\\left(\\frac12\\right)^n\\). What number do the partial sums settle on as \\(n\\) grows?",
+   "text": "A series has partial sums \\(S_1=2,\\ S_2=2.5,\\ S_3=2.75,\\ S_4=2.875\\), and so on, given by \\(S_n=3-2\\left(\\frac12\\right)^n\\). What number do the partial sums settle on as \\(n\\) grows?",
    "command_verb": "predict"
   },
   "format": "short_answer",
@@ -778,8 +778,8 @@ Every Unit 10 archetype is `no_calculator`; its MCQ shape is Section I Part A, 2
   "brief": 2.8
  },
  "word_count": {
-  "full": 642,
-  "brief": 411
+  "full": 641,
+  "brief": 410
  },
  "research_lines": [
   {

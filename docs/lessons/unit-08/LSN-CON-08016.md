@@ -116,7 +116,7 @@ BC-QA-08011 is `either`, so Section I Part A, 2.14 minutes (research/exam/exam-s
  "prediction": {
   "id": "pr-1",
   "stem": {
-   "text": "Predict: R lies between \\(f(x)=1+(x-1)(3-x)\\) and \\(g(x)=1\\). Cross sections are semicircles with diameters in R. With \\(s=f(x)-g(x)\\), what is the slice area?",
+   "text": "R lies between \\(f(x)=1+(x-1)(3-x)\\) and \\(g(x)=1\\). Cross sections are semicircles with diameters in R. With \\(s=f(x)-g(x)\\), what is the slice area?",
    "command_verb": "predict"
   },
   "format": "mcq",
@@ -1033,8 +1033,8 @@ BC-QA-08011 is `either`, so Section I Part A, 2.14 minutes (research/exam/exam-s
   "brief": 3.0
  },
  "word_count": {
-  "full": 787,
-  "brief": 450
+  "full": 786,
+  "brief": 449
  },
  "research_lines": [
   {

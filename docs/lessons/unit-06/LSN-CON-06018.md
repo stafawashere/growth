@@ -123,7 +123,7 @@ BC-QA-06010 is `no_calculator`, typically one part of a multipart free response 
  "prediction": {
   "id": "pr-1",
   "stem": {
-   "text": "Predict. \\(2x^2-5x-3=(2x+1)(x-3)\\). Which sum of simple fractions equals \\(\\frac{7}{2x^2-5x-3}\\)?",
+   "text": "\\(2x^2-5x-3=(2x+1)(x-3)\\). Which sum of simple fractions equals \\(\\frac{7}{2x^2-5x-3}\\)?",
    "command_verb": "predict"
   },
   "format": "mcq",
@@ -679,8 +679,8 @@ BC-QA-06010 is `no_calculator`, typically one part of a multipart free response 
   "brief": 3.0
  },
  "word_count": {
-  "full": 566,
-  "brief": 446
+  "full": 565,
+  "brief": 445
  }
 }
 ```

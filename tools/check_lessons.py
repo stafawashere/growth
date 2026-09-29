@@ -153,6 +153,11 @@ READER_LABELS = (
    ("contrast.feature", ("Feature:",)),
    ("contrast.not_this.why_not", ("Why not:",)),
 )
+# A label ending in a letter only counts when a new sentence follows it, so "Predict For ..." is
+# refused and "Predict the sign of ..." is not.
+PREDICTION_READER_LABELS = (
+   ("stem.text", ("Predict.", "Predict:", "Prediction.", "Prediction:", "Predict")),
+)
 SERVED_FIELDS = {
    plan.PREDICTION: ("stem.text", "options[].label", "resolution.text"),
    plan.ORIENTATION: ("text",),
@@ -1778,21 +1783,29 @@ def served_problems(text):
 
 
 def reader_label_lead(text, labels):
-   lead = (text or "").lstrip().casefold()
+   lead = (text or "").lstrip()
 
    for label in labels:
-      if lead.startswith(label.casefold()):
+      opens_with_label = lead.casefold().startswith(label.casefold())
+
+      if not opens_with_label:
+         continue
+
+      ends_in_punctuation = not label[-1].isalpha()
+      starts_a_sentence = re.match(r" [A-Z]", lead[len(label):]) is not None
+
+      if ends_in_punctuation or starts_a_sentence:
          return label
 
    return None
 
 
-def reader_label_problems(strategy, record_id):
-   """A strategy text that opens with a label the reader already prints beside it."""
+def reader_label_problems(block, record_id, labels_by_path=READER_LABELS):
+   """A served text that opens with a label the reader already prints beside it."""
    messages = []
 
-   for path, labels in READER_LABELS:
-      for text in plan.prose_values(strategy, path):
+   for path, labels in labels_by_path:
+      for text in plan.prose_values(block, path):
          label = reader_label_lead(text, labels)
 
          if label is not None:
@@ -2100,8 +2113,9 @@ def served_records(lesson):
 
 def lint_served_text(lesson, context):
    """No library id, page citation or evidence tag in a text the student reads, and no strategy
-   text that opens with the label the reader prints beside it. An error's observed behaviour,
-   consequence and reason and the reader-score lines are record words and are exempt."""
+   text or prediction stem that opens with the label the reader prints beside it. An error's
+   observed behaviour, consequence and reason and the reader-score lines are record words and
+   are exempt."""
    messages = []
 
    for record in served_records(lesson):
@@ -2113,9 +2127,13 @@ def lint_served_text(lesson, context):
                messages.append(f"{record['id']} {path} carries {found!r}")
 
       is_strategy = record_type == plan.STRATEGY
+      is_prediction = record_type == plan.PREDICTION
 
       if is_strategy:
          messages.extend(reader_label_problems(record, record["id"]))
+
+      if is_prediction:
+         messages.extend(reader_label_problems(record, record["id"], PREDICTION_READER_LABELS))
 
    return messages
 

@@ -120,7 +120,7 @@ BC-QA-06009 is `no_calculator`, typically one part of a multipart free response 
  "prediction": {
   "id": "pr-1",
   "stem": {
-   "text": "Predict. With \\(u=3x\\) and \\(dv=\\cos 2x\\,dx\\), which expression equals \\(\\int 3x\\cos 2x\\,dx\\)?",
+   "text": "With \\(u=3x\\) and \\(dv=\\cos 2x\\,dx\\), which expression equals \\(\\int 3x\\cos 2x\\,dx\\)?",
    "command_verb": "predict"
   },
   "format": "mcq",
@@ -634,8 +634,8 @@ BC-QA-06009 is `no_calculator`, typically one part of a multipart free response 
   "brief": 3.0
  },
  "word_count": {
-  "full": 535,
-  "brief": 450
+  "full": 534,
+  "brief": 449
  }
 }
 ```

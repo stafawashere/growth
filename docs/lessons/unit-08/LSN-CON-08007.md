@@ -112,7 +112,7 @@ BC-QA-06006 is `calculator`, one part of a free response question: Section II Pa
  "prediction": {
   "id": "pr-1",
   "stem": {
-   "text": "Predict: water enters a tank at \\(E(t)=6+2\\sin(t^2/3)\\) and leaves at \\(L(t)=3+\\cos(t/2)\\) gallons per hour. Which gives the tank's net rate of change?",
+   "text": "Water enters a tank at \\(E(t)=6+2\\sin(t^2/3)\\) and leaves at \\(L(t)=3+\\cos(t/2)\\) gallons per hour. Which gives the tank's net rate of change?",
    "command_verb": "predict"
   },
   "format": "mcq",
@@ -490,8 +490,8 @@ BC-QA-06006 is `calculator`, one part of a free response question: Section II Pa
   "brief": 3.0
  },
  "word_count": {
-  "full": 482,
-  "brief": 448
+  "full": 481,
+  "brief": 447
  },
  "research_lines": [
   {

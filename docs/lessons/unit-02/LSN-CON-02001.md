@@ -127,7 +127,7 @@ The table choice is [inferred], settled by the modality A/B in the build plan. T
  "skills": ["BC-SKL-02001", "BC-SKL-02002", "BC-SKL-02003"],
  "prediction": {
   "id": "pr-1",
-  "stem": {"text": "Predict. \\(D(3)=31\\) and \\(D(8)=52\\) meters. Which gives the average rate over \\(3\\le t\\le 8\\)?", "command_verb": "predict"},
+  "stem": {"text": "\\(D(3)=31\\) and \\(D(8)=52\\) meters. Which gives the average rate over \\(3\\le t\\le 8\\)?", "command_verb": "predict"},
   "format": "mcq",
   "options": [
    {"id": "A", "label": "\\(52-31\\)", "is_key": false},
@@ -298,7 +298,7 @@ The table choice is [inferred], settled by the modality A/B in the build plan. T
  ],
  "refresher": ["ki-1", "err-BC-ERR-02001", "err-BC-ERR-02003", "ex-1"],
  "read_minutes": {"full": 3.6, "brief": 3.0},
- "word_count": {"full": 535, "brief": 448},
+ "word_count": {"full": 534, "brief": 447},
  "research_lines": [
   {"file": "research/units/unit-02-differentiation-definition-properties.md", "line": "FRQ forms compute an average rate with supporting work and units"},
   {"file": "research/scoring/common-point-losses.md", "line": "Units are scored separately from the value"}

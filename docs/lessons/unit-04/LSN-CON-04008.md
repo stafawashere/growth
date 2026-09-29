@@ -119,7 +119,7 @@ BC-QA-04006 has `calculator_status` either, so Section I Part A, 2.14 minutes (r
  "prediction": {
   "id": "pr-1",
   "stem": {
-   "text": "Predict. A cone's height is 2 times its top radius and only dV/dt is given. What comes before differentiating V = pi r^2 h/3?",
+   "text": "A cone's height is 2 times its top radius and only dV/dt is given. What comes before differentiating V = pi r^2 h/3?",
    "command_verb": "predict"
   },
   "format": "mcq",
@@ -1015,8 +1015,8 @@ BC-QA-04006 has `calculator_status` either, so Section I Part A, 2.14 minutes (r
   "research/exam/exam-structure.md#Section and part layout"
  ],
  "word_count": {
-  "full": 632,
-  "brief": 449
+  "full": 631,
+  "brief": 448
  },
  "read_minutes": {
   "full": 4.3,

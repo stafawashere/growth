@@ -119,7 +119,7 @@ BC-QA-08010 is `either`; the design takes Section I Part A, 2.14 minutes per que
  "prediction": {
   "id": "pr-1",
   "stem": {
-   "text": "Predict: \\(f-g=(x-1)(x-3)\\) for \\(f(x)=x^2-3x+4\\) and \\(g(x)=x+1\\). How is the area over \\(0\\le x\\le 7/2\\) found?",
+   "text": "\\(f-g=(x-1)(x-3)\\) for \\(f(x)=x^2-3x+4\\) and \\(g(x)=x+1\\). How is the area over \\(0\\le x\\le 7/2\\) found?",
    "command_verb": "predict"
   },
   "format": "mcq",
@@ -763,8 +763,8 @@ BC-QA-08010 is `either`; the design takes Section I Part A, 2.14 minutes per que
   "brief": 3.0
  },
  "word_count": {
-  "full": 542,
-  "brief": 447
+  "full": 541,
+  "brief": 446
  },
  "research_lines": [
   {

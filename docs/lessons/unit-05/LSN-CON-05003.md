@@ -128,7 +128,7 @@ BC-QA-05014 is `no_calculator` and a single multiple choice or short answer ques
  "prediction": {
   "id": "pr-1",
   "stem": {
-   "text": "Predict: f(x) = 3(x - 1)^(2/3)/(x + 2) and f'(x) = (7 - x)/((x - 1)^(1/3)(x + 2)^2). Which inputs are critical points?",
+   "text": "f(x) = 3(x - 1)^(2/3)/(x + 2) and f'(x) = (7 - x)/((x - 1)^(1/3)(x + 2)^2). Which inputs are critical points?",
    "command_verb": "predict"
   },
   "format": "mcq",
@@ -947,8 +947,8 @@ BC-QA-05014 is `no_calculator` and a single multiple choice or short answer ques
   "research/exam/exam-structure.md#Section and part layout"
  ],
  "word_count": {
-  "full": 697,
-  "brief": 449
+  "full": 696,
+  "brief": 448
  },
  "read_minutes": {
   "full": 4.7,

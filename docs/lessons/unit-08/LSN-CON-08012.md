@@ -118,7 +118,7 @@ BC-QA-08009 is `either`; the design takes Section I Part A, 2.14 minutes per que
  "prediction": {
   "id": "pr-1",
   "stem": {
-   "text": "Predict: R is bounded by \\(y=\\sqrt{x}\\), \\(y=x-2\\) and the x-axis. Which single integral in y gives its area?",
+   "text": "R is bounded by \\(y=\\sqrt{x}\\), \\(y=x-2\\) and the x-axis. Which single integral in y gives its area?",
    "command_verb": "predict"
   },
   "format": "mcq",
@@ -716,8 +716,8 @@ BC-QA-08009 is `either`; the design takes Section I Part A, 2.14 minutes per que
   "brief": 3.0
  },
  "word_count": {
-  "full": 548,
-  "brief": 443
+  "full": 547,
+  "brief": 442
  },
  "research_lines": [
   {

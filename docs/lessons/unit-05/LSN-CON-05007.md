@@ -118,7 +118,7 @@ BC-QA-05004 has `calculator_status` either, so the lesson takes Section I Part A
  "prediction": {
   "id": "pr-1",
   "stem": {
-   "text": "Predict. f' falls from 3 to 1 on (2, 3). Is f concave up or concave down there?",
+   "text": "f' falls from 3 to 1 on (2, 3). Is f concave up or concave down there?",
    "command_verb": "predict"
   },
   "format": "mcq",
@@ -725,8 +725,8 @@ BC-QA-05004 has `calculator_status` either, so the lesson takes Section I Part A
   "research/exam/exam-structure.md#Section and part layout"
  ],
  "word_count": {
-  "full": 560,
-  "brief": 447
+  "full": 559,
+  "brief": 446
  },
  "read_minutes": {
   "full": 3.8,

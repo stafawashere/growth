@@ -111,7 +111,7 @@ BC-QA-04009 is `no_calculator`, one part of a graphical analysis FRQ: Section II
  "prediction": {
   "id": "pr-1",
   "stem": {
-   "text": "Predict: the form is 0/0, f(2) = 3, f'(2) = 5. What is the limit of (f(2x) - 3)/sin(x - 1) as x tends to 1?",
+   "text": "The form is 0/0, f(2) = 3, f'(2) = 5. What is the limit of (f(2x) - 3)/sin(x - 1) as x tends to 1?",
    "command_verb": "predict"
   },
   "format": "mcq",
@@ -649,8 +649,8 @@ BC-QA-04009 is `no_calculator`, one part of a graphical analysis FRQ: Section II
   "research/exam/exam-structure.md#Section and part layout"
  ],
  "word_count": {
-  "full": 590,
-  "brief": 448
+  "full": 589,
+  "brief": 447
  },
  "read_minutes": {
   "full": 3.94,

@@ -123,7 +123,7 @@ The lesson already carries a drawn block (the figure on ki-2), so it states no `
  "skills": ["BC-SKL-02010", "BC-SKL-02011"],
  "prediction": {
   "id": "pr-1",
-  "stem": {"text": "Predict. \\(V(t)\\) liters at \\(t\\) minutes, and \\(V'(4)=-6\\). Which is the same in Leibniz notation?", "command_verb": "predict"},
+  "stem": {"text": "\\(V(t)\\) liters at \\(t\\) minutes, and \\(V'(4)=-6\\). Which is the same in Leibniz notation?", "command_verb": "predict"},
   "format": "mcq",
   "options": [
    {"id": "A", "label": "\\(\\frac{V(4)}{4}=-6\\)", "is_key": false},
@@ -316,7 +316,7 @@ The lesson already carries a drawn block (the figure on ki-2), so it states no `
  ],
  "refresher": ["ki-1", "err-BC-ERR-02030", "err-BC-ERR-04017", "err-BC-ERR-02029", "err-BC-ERR-03022", "ex-1"],
  "read_minutes": {"full": 4.4, "brief": 3.0},
- "word_count": {"full": 659, "brief": 443},
+ "word_count": {"full": 658, "brief": 442},
  "research_lines": [
   {"file": "research/scoring/notation-requirements.md", "line": "Loose derivative notation is generally accepted when the intent is clear."},
   {"file": "research/units/unit-02-differentiation-definition-properties.md", "line": "Conceptual variants ask what the notation denotes"}

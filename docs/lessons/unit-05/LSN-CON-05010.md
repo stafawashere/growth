@@ -110,7 +110,7 @@ Two checks: the bundle holds one error, so no three-distractor MCQ can be built 
  "prediction": {
   "id": "pr-1",
   "stem": {
-   "text": "Predict. \\(g(x)=2x^3-9x^2+1\\) has one critical point on \\(x>0\\), at \\(x=3\\), where \\(g''(3)=18\\). What does \\(g\\) have on \\(x>0\\)?",
+   "text": "\\(g(x)=2x^3-9x^2+1\\) has one critical point on \\(x>0\\), at \\(x=3\\), where \\(g''(3)=18\\). What does \\(g\\) have on \\(x>0\\)?",
    "command_verb": "predict"
   },
   "format": "mcq",
@@ -452,8 +452,8 @@ Two checks: the bundle holds one error, so no three-distractor MCQ can be built 
   "brief": 3.0
  },
  "word_count": {
-  "full": 443,
-  "brief": 443
+  "full": 442,
+  "brief": 442
  },
  "research_lines": [
   {

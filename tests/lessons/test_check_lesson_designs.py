@@ -254,6 +254,13 @@ def test_a_rival_opening_with_the_reader_label_fails_served_text(context):
    assert messages == ["st-1 rival starts with the reader's label 'Rival:'"]
 
 
+def test_a_prediction_stem_opening_with_the_reader_label_fails_served_text(context):
+   design = design_of(FIXTURE_DIR / "red_served_text__prediction" / "LSN-CON-02013.md")
+   messages = check_lesson_designs.rule_served_text(design, context)
+
+   assert messages == ["pr-1 stem.text starts with the reader's label 'Predict.'"]
+
+
 def test_the_prediction_and_contrast_count_in_both_bands(context):
    record = design_of(CLEAN_CONCEPT).record
    without = dict(record)

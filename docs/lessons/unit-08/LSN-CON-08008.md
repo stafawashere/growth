@@ -116,7 +116,7 @@ BC-QA-08006 is `calculator`, the closing part of the calculator free response qu
  "prediction": {
   "id": "pr-1",
   "stem": {
-   "text": "Predict: \\(A\\) has net rate \\(3+6\\cos(\\pi t/6)\\), zero at \\(t=4\\) and \\(8\\). Which times are compared to find when \\(A\\) is greatest on \\([0,12]\\)?",
+   "text": "\\(A\\) has net rate \\(3+6\\cos(\\pi t/6)\\), zero at \\(t=4\\) and \\(8\\). Which times are compared to find when \\(A\\) is greatest on \\([0,12]\\)?",
    "command_verb": "predict"
   },
   "format": "mcq",
@@ -578,8 +578,8 @@ BC-QA-08006 is `calculator`, the closing part of the calculator free response qu
   "brief": 3.0
  },
  "word_count": {
-  "full": 499,
-  "brief": 449
+  "full": 498,
+  "brief": 448
  },
  "research_lines": [
   {

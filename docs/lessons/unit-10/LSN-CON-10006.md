@@ -121,7 +121,7 @@ Section II Part B, 15.0 minutes per question (research/exam/exam-structure.md#Se
  "prediction": {
   "id": "pr-1",
   "stem": {
-   "text": "Predict. \\(f(x)=\\frac{6x}{(x^2+2)^2}\\) is positive and decreasing for \\(x\\ge1\\), and its area from \\(x=1\\) onward is 1. What can be said about \\(f(1)+f(2)+f(3)+\\cdots\\)?",
+   "text": "\\(f(x)=\\frac{6x}{(x^2+2)^2}\\) is positive and decreasing for \\(x\\ge1\\), and its area from \\(x=1\\) onward is 1. What can be said about \\(f(1)+f(2)+f(3)+\\cdots\\)?",
    "command_verb": "predict"
   },
   "format": "mcq",
@@ -709,8 +709,8 @@ Section II Part B, 15.0 minutes per question (research/exam/exam-structure.md#Se
   "brief": 3.0
  },
  "word_count": {
-  "full": 807,
-  "brief": 450
+  "full": 806,
+  "brief": 449
  },
  "research_lines": [
   {

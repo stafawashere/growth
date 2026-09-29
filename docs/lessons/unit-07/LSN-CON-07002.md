@@ -107,7 +107,7 @@ BC-QA-07007 is `no_calculator` and its `multipart_structure` names a single MCQ 
  "skills": ["BC-SKL-07006", "BC-SKL-07007", "BC-SKL-07008"],
  "prediction": {
   "id": "pr-1",
-  "stem": {"text": "Predict. For dy/dx = 2(y - 3) with y(0) = 1, which evidence shows that y = 3 - 2e^(2x) is the solution?", "command_verb": "predict"},
+  "stem": {"text": "For dy/dx = 2(y - 3) with y(0) = 1, which evidence shows that y = 3 - 2e^(2x) is the solution?", "command_verb": "predict"},
   "format": "mcq",
   "options": [
    {"id": "A", "label": "Its value at x = 0 is 1.", "is_key": false},
@@ -348,8 +348,8 @@ BC-QA-07007 is `no_calculator` and its `multipart_structure` names a single MCQ 
   "brief": 3.0
  },
  "word_count": {
-  "full": 793,
-  "brief": 449
+  "full": 792,
+  "brief": 448
  },
  "research_lines": [
   {"file": "research/units/unit-07-differential-equations.md", "line": "One input at which the two sides disagree is enough to show that a candidate is not a solution."}

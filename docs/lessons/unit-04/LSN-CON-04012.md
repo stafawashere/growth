@@ -111,7 +111,7 @@ BC-QA-04008 has `calculator_status` either, so Section I Part A, 2.14 minutes (r
  "prediction": {
   "id": "pr-1",
   "stem": {
-   "text": "Predict: f'(x) = -2x^2 + 3; the tangent line gives f(1.2) about 2.2. Is f(1.2) more or less?",
+   "text": "f'(x) = -2x^2 + 3; the tangent line gives f(1.2) about 2.2. Is f(1.2) more or less?",
    "command_verb": "predict"
   },
   "format": "mcq",
@@ -677,8 +677,8 @@ BC-QA-04008 has `calculator_status` either, so Section I Part A, 2.14 minutes (r
   "research/exam/exam-structure.md#Section and part layout"
  ],
  "word_count": {
-  "full": 560,
-  "brief": 449
+  "full": 559,
+  "brief": 448
  },
  "read_minutes": {
   "full": 3.74,

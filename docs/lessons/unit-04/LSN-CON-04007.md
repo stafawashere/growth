@@ -125,7 +125,7 @@ BC-QA-04006 has calculator status either, so the lesson takes Section I Part A, 
  "prediction": {
   "id": "pr-1",
   "stem": {
-   "text": "Predict. If x^2 + y^2 = 225 and x, y change in time, what is the t-derivative of the left side?",
+   "text": "If x^2 + y^2 = 225 and x, y change in time, what is the t-derivative of the left side?",
    "command_verb": "predict"
   },
   "format": "mcq",
@@ -890,8 +890,8 @@ BC-QA-04006 has calculator status either, so the lesson takes Section I Part A, 
   "research/exam/exam-structure.md#Section and part layout"
  ],
  "word_count": {
-  "full": 661,
-  "brief": 448
+  "full": 660,
+  "brief": 447
  },
  "read_minutes": {
   "full": 4.5,

@@ -130,7 +130,7 @@ Every non-text choice is [inferred], settled by the modality A/B.
  "target_id": "BC-CON-01006",
  "unit": "01",
  "skills": ["BC-SKL-01009", "BC-SKL-01014", "BC-SKL-01015", "BC-SKL-01017"],
- "prediction": {"id": "pr-1", "stem": {"text": "Predict. Both sides of f's graph approach an open circle at (3, 2). A dot sits at (3, 0). What is the limit at x = 3?", "command_verb": "predict"}, "format": "mcq",
+ "prediction": {"id": "pr-1", "stem": {"text": "Both sides of f's graph approach an open circle at (3, 2). A dot sits at (3, 0). What is the limit at x = 3?", "command_verb": "predict"}, "format": "mcq",
   "options": [{"id": "A", "label": "0", "is_key": false}, {"id": "B", "label": "2", "is_key": true}, {"id": "C", "label": "It does not exist", "is_key": false}],
   "resolution": "The limit is the height both sides approach, 2; the dot gives f(3), not the limit.", "sources": ["BC-CON-01006", "research/units/unit-01-limits-continuity.md#1.3 Estimating Limit Values from Graphs"]},
  "orientation": {
@@ -243,7 +243,7 @@ Every non-text choice is [inferred], settled by the modality A/B.
  ],
  "refresher": ["ki-1", "ki-3", "err-BC-ERR-01001", "err-BC-ERR-01002", "err-BC-ERR-01003", "err-BC-ERR-01004", "ex-1"],
  "read_minutes": {"full": 5.44, "brief": 2.98},
- "word_count": {"full": 816, "brief": 447},
+ "word_count": {"full": 815, "brief": 446},
  "research_lines": [
   {"file": "research/units/unit-01-limits-continuity.md", "line": "A finite table does not determine the behaviour between its rows, so an estimate remains an estimate."}
  ],

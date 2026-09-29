@@ -117,7 +117,7 @@ No drawn block: none of rules 2 to 5 applies. The skills carry BC-REP-01 only, s
  "skills": ["BC-SKL-02008", "BC-SKL-02009"],
  "prediction": {
   "id": "pr-1",
-  "stem": {"text": "Predict. Let \\(f(x)=-x^2+5x+4\\) and let \\(h\\to0\\) in \\(\\frac{f(x+h)-f(x)}{h}\\), keeping \\(x\\) a letter. What is the limit?", "command_verb": "predict"},
+  "stem": {"text": "Let \\(f(x)=-x^2+5x+4\\) and let \\(h\\to0\\) in \\(\\frac{f(x+h)-f(x)}{h}\\), keeping \\(x\\) a letter. What is the limit?", "command_verb": "predict"},
   "format": "mcq",
   "options": [
    {"id": "A", "label": "\\(-2x+5\\), a function of \\(x\\)", "is_key": true},
@@ -311,7 +311,7 @@ No drawn block: none of rules 2 to 5 applies. The skills carry BC-REP-01 only, s
  ],
  "refresher": ["ki-1", "err-BC-ERR-02005", "err-BC-ERR-02006", "err-BC-ERR-02007", "err-BC-ERR-02008", "ex-1"],
  "read_minutes": {"full": 4.0, "brief": 2.9},
- "word_count": {"full": 589, "brief": 431},
+ "word_count": {"full": 588, "brief": 430},
  "research_lines": [
   {"file": "research/units/unit-02-differentiation-definition-properties.md", "line": "The derivative of f is the function whose value at x is the limit as h tends to zero of the quotient of f(x plus h) minus f(x) by h, provided this limit exists"}
  ],

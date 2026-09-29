@@ -130,7 +130,7 @@ Figure presence: no drawn block. No rule of 2 to 5 applies, because the skills c
  "prediction": {
   "id": "pr-1",
   "stem": {
-   "text": "Predict. Every solution of \\(dy/dx=2e^{-x^2}\\) differs from another by a constant. How many pass through \\((1,3)\\)?",
+   "text": "Every solution of \\(dy/dx=2e^{-x^2}\\) differs from another by a constant. How many pass through \\((1,3)\\)?",
    "command_verb": "predict"
   },
   "format": "mcq",
@@ -807,8 +807,8 @@ Figure presence: no drawn block. No rule of 2 to 5 applies, because the skills c
   "research/exam/exam-structure.md#Section and part layout"
  ],
  "word_count": {
-  "full": 894,
-  "brief": 411
+  "full": 893,
+  "brief": 410
  },
  "read_minutes": {
   "full": 6.0,

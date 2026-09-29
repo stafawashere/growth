@@ -124,7 +124,7 @@ The drawn block ki-1 (interactive) is already present, so no figure is added and
  "prediction": {
   "id": "pr-1",
   "stem": {
-   "text": "Predict. \\(g(x)=\\int_0^x f(t)\\,dt\\); f is positive on (1, 10/3), negative on (10/3, 5). What does g have at \\(10/3\\)?",
+   "text": "\\(g(x)=\\int_0^x f(t)\\,dt\\); f is positive on (1, 10/3), negative on (10/3, 5). What does g have at \\(10/3\\)?",
    "command_verb": "predict"
   },
   "format": "mcq",
@@ -690,8 +690,8 @@ The drawn block ki-1 (interactive) is already present, so no figure is added and
   "brief": 3.0
  },
  "word_count": {
-  "full": 627,
-  "brief": 447
+  "full": 626,
+  "brief": 446
  },
  "research_lines": [
   {

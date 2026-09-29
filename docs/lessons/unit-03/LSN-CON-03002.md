@@ -127,7 +127,7 @@ BC-QA-03002 is `either` on calculator status and a single MCQ; this draw is inte
  "skills": ["BC-SKL-03002", "BC-SKL-03004", "BC-SKL-03005", "BC-SKL-03006"],
  "prediction": {
   "id": "pr-1",
-  "stem": {"text": "Predict. \\(h(x)=f(g(x))\\), \\(g(1)=3\\), \\(g'(1)=2\\), \\(f'(1)=4\\), \\(f'(3)=-3\\). Which gives \\(h'(1)\\)?", "command_verb": "predict"},
+  "stem": {"text": "\\(h(x)=f(g(x))\\), \\(g(1)=3\\), \\(g'(1)=2\\), \\(f'(1)=4\\), \\(f'(3)=-3\\). Which gives \\(h'(1)\\)?", "command_verb": "predict"},
   "format": "mcq",
   "options": [
    {"id": "A", "label": "\\(f'(3)\\) times \\(g'(1)\\)", "is_key": true},
@@ -353,7 +353,7 @@ BC-QA-03002 is `either` on calculator status and a single MCQ; this draw is inte
  ],
  "refresher": ["ki-1", "err-BC-ERR-03001", "err-BC-ERR-03002", "err-BC-ERR-03003", "err-BC-ERR-03004", "ex-1"],
  "read_minutes": {"full": 5.2, "brief": 3.0},
- "word_count": {"full": 766, "brief": 440},
+ "word_count": {"full": 765, "brief": 439},
  "research_lines": [
   {"file": "research/units/unit-03-differentiation-composite-implicit-inverse.md", "line": "Look up the inner value first, then look up the outer derivative at that value."}
  ],

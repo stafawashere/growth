@@ -127,7 +127,7 @@ Every non-text choice is [inferred], settled by the modality A/B.
  "prediction": {
   "id": "pr-1",
   "stem": {
-   "text": "Predict. Both segments of f head to height 3 at x = 2; a dot sits at (2, -1). What is the limit?",
+   "text": "Both segments of f head to height 3 at x = 2; a dot sits at (2, -1). What is the limit?",
    "command_verb": "predict"
   },
   "format": "mcq",
@@ -667,8 +667,8 @@ Every non-text choice is [inferred], settled by the modality A/B.
   "brief": 3.0
  },
  "word_count": {
-  "full": 534,
-  "brief": 448
+  "full": 533,
+  "brief": 447
  },
  "research_lines": [
   {

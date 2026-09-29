@@ -115,7 +115,7 @@ No drawn block. The skills carry BC-REP-01 only (topic 6.3 Representations parag
  "prediction": {
   "id": "pr-1",
   "stem": {
-   "text": "Predict. The right Riemann sum for ∫_2^6 x^2 dx with n = 2 equal pieces has right endpoints 4 and 6. What is its value?",
+   "text": "The right Riemann sum for ∫_2^6 x^2 dx with n = 2 equal pieces has right endpoints 4 and 6. What is its value?",
    "command_verb": "predict"
   },
   "format": "short_answer",
@@ -488,8 +488,8 @@ No drawn block. The skills carry BC-REP-01 only (topic 6.3 Representations parag
   "brief": 3.0
  },
  "word_count": {
-  "full": 440,
-  "brief": 440
+  "full": 439,
+  "brief": 439
  }
 }
 ```

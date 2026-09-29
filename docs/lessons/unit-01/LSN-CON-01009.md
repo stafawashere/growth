@@ -117,7 +117,7 @@ The README notes a decision lesson (`contrast`) would carry the method choice ac
  "prediction": {
   "id": "pr-1",
   "stem": {
-   "text": "Predict. Substituting x = -2 into \\(\\frac{x^2+x-2}{x^2-x-6}\\) gives 0 over 0. What is the limit as x approaches -2?",
+   "text": "Substituting x = -2 into \\(\\frac{x^2+x-2}{x^2-x-6}\\) gives 0 over 0. What is the limit as x approaches -2?",
    "command_verb": "predict"
   },
   "format": "short_answer",
@@ -644,8 +644,8 @@ The README notes a decision lesson (`contrast`) would carry the method choice ac
   "brief": 3.0
  },
  "word_count": {
-  "full": 576,
-  "brief": 433
+  "full": 575,
+  "brief": 432
  }
 }
 ```

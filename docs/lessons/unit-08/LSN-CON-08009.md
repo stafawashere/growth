@@ -116,7 +116,7 @@ BC-QA-06015 is `either`; the design takes Section I Part A, 2.14 minutes per que
  "prediction": {
   "id": "pr-1",
   "stem": {
-   "text": "Predict: snow piles onto a driveway at \\(S(t)\\) cubic feet per hour, with \\(t\\) in hours. What are the units of the integral of \\(S\\) from \\(t=4\\) to \\(t=10\\)?",
+   "text": "Snow piles onto a driveway at \\(S(t)\\) cubic feet per hour, with \\(t\\) in hours. What are the units of the integral of \\(S\\) from \\(t=4\\) to \\(t=10\\)?",
    "command_verb": "predict"
   },
   "format": "mcq",
@@ -538,8 +538,8 @@ BC-QA-06015 is `either`; the design takes Section I Part A, 2.14 minutes per que
   "brief": 3.0
  },
  "word_count": {
-  "full": 518,
-  "brief": 442
+  "full": 517,
+  "brief": 441
  },
  "research_lines": [
   {

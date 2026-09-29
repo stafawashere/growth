@@ -111,7 +111,7 @@ Section I Part A, 2.14 minutes (research/exam/exam-structure.md#Section and part
  "prediction": {
   "id": "pr-1",
   "stem": {
-   "text": "Predict. Each of the first N terms of \\(\\sum_{n=1}^{\\infty}\\frac{4}{\\sqrt n}\\) is at least \\(\\frac{4}{\\sqrt N}\\). What do the partial sums \\(S_N\\) do as N grows?",
+   "text": "Each of the first N terms of \\(\\sum_{n=1}^{\\infty}\\frac{4}{\\sqrt n}\\) is at least \\(\\frac{4}{\\sqrt N}\\). What do the partial sums \\(S_N\\) do as N grows?",
    "command_verb": "predict"
   },
   "format": "mcq",
@@ -586,8 +586,8 @@ Section I Part A, 2.14 minutes (research/exam/exam-structure.md#Section and part
   "brief": 2.3
  },
  "word_count": {
-  "full": 427,
-  "brief": 339
+  "full": 426,
+  "brief": 338
  },
  "research_lines": [
   {

@@ -126,7 +126,7 @@ Section I Part A, 2.14 minutes for the MCQ shape (research/exam/exam-structure.m
  "prediction": {
   "id": "pr-1",
   "stem": {
-   "text": "Predict. Which change to \\(\\sum_{n=1}^{\\infty}(-1)^{n+1}\\frac{4}{n+3}\\) would stop its partial sums settling?",
+   "text": "Which change to \\(\\sum_{n=1}^{\\infty}(-1)^{n+1}\\frac{4}{n+3}\\) would stop its partial sums settling?",
    "command_verb": "predict"
   },
   "format": "mcq",
@@ -784,8 +784,8 @@ Section I Part A, 2.14 minutes for the MCQ shape (research/exam/exam-structure.m
   "research/exam/exam-structure.md#Section and part layout"
  ],
  "word_count": {
-  "full": 838,
-  "brief": 438
+  "full": 837,
+  "brief": 437
  },
  "read_minutes": {
   "full": 5.6,

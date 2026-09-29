@@ -133,7 +133,7 @@ Every non-text choice is [inferred], settled by the modality A/B.
  "prediction": {
   "id": "pr-1",
   "stem": {
-   "text": "Predict. f(x) = 2x + 1 for x < 1, 5 - x for x ≥ 1. The left side heads to 3, the right to 4. Does the limit at x = 1 exist?",
+   "text": "f(x) = 2x + 1 for x < 1, 5 - x for x ≥ 1. The left side heads to 3, the right to 4. Does the limit at x = 1 exist?",
    "command_verb": "predict"
   },
   "format": "mcq",
@@ -817,8 +817,8 @@ Every non-text choice is [inferred], settled by the modality A/B.
   "brief": 3.0
  },
  "word_count": {
-  "full": 608,
-  "brief": 450
+  "full": 607,
+  "brief": 449
  },
  "research_lines": [
   {

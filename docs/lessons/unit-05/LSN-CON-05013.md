@@ -110,7 +110,7 @@ BC-QA-05011 is `either`, so Section I Part A, 2.14 minutes per question, in the 
  "target_id": "BC-CON-05013",
  "unit": "05",
  "skills": ["BC-SKL-05049", "BC-SKL-05050", "BC-SKL-05051", "BC-SKL-05052", "BC-SKL-05053"],
- "prediction": {"id": "pr-1", "stem": {"text": "Predict: squares of side \\(x\\) inches are cut from the corners of a 24 by 24 inch sheet and the sides folded up. Which formula gives the tray's volume?", "command_verb": "predict"}, "format": "mcq", "options": [{"id": "A", "label": "\\(V=x(24-2x)^2\\)", "is_key": true}, {"id": "B", "label": "\\(V=x(24-x)^2\\)", "is_key": false}, {"id": "C", "label": "\\(V=x^2(24-2x)\\)", "is_key": false}], "resolution": "The base side is \\(24-2x\\), so \\(V(x)=x(24-2x)^2\\). The cut cannot exceed 12, so \\(0\\le x\\le 12\\) and the endpoints are candidates.", "sources": ["BC-CON-05013", "research/units/unit-05-analytical-applications-differentiation.md#5.10 Introduction to Optimization Problems"]},
+ "prediction": {"id": "pr-1", "stem": {"text": "Squares of side \\(x\\) inches are cut from the corners of a 24 by 24 inch sheet and the sides folded up. Which formula gives the tray's volume?", "command_verb": "predict"}, "format": "mcq", "options": [{"id": "A", "label": "\\(V=x(24-2x)^2\\)", "is_key": true}, {"id": "B", "label": "\\(V=x(24-x)^2\\)", "is_key": false}, {"id": "C", "label": "\\(V=x^2(24-2x)\\)", "is_key": false}], "resolution": "The base side is \\(24-2x\\), so \\(V(x)=x(24-2x)^2\\). The cut cannot exceed 12, so \\(0\\le x\\le 12\\) and the endpoints are candidates.", "sources": ["BC-CON-05013", "research/units/unit-05-analytical-applications-differentiation.md#5.10 Introduction to Optimization Problems"]},
  "orientation": {"text": "A response defines the variables, reduces the objective to one variable, states the domain, then verifies the extremum.", "sources": ["BC-CON-05013", "research/units/unit-05-analytical-applications-differentiation.md#5.10 Introduction to Optimization Problems"]},
  "key_ideas": [
   {"id": "ki-1", "ek_id": "BC-EK-FUN-4B1", "depth": "core", "text": "The constraint reduces the objective to one variable. The context sets the domain, so a closed domain makes the endpoints candidates.", "notation": "objective function; constraint; domain", "quote": null, "sources": ["BC-EK-FUN-4B1", "ced:108", "research/units/unit-05-analytical-applications-differentiation.md#5.10 Introduction to Optimization Problems"]}
@@ -151,7 +151,7 @@ BC-QA-05011 is `either`, so Section I Part A, 2.14 minutes per question, in the 
  ],
  "refresher": ["ki-1", "err-BC-ERR-05050", "err-BC-ERR-05051", "err-BC-ERR-05052", "err-BC-ERR-05053", "ex-1"],
  "read_minutes": {"full": 4.5, "brief": 3.0},
- "word_count": {"full": 605, "brief": 448},
+ "word_count": {"full": 604, "brief": 447},
  "research_lines": [
   {"file": "research/scoring/justification-requirements.md", "line": "sg-25:5 requires a global argument that correctly evaluates the function at the interior critical point and at both endpoints."}
  ],

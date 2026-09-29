@@ -131,7 +131,7 @@ Figure presence: no drawn block. No rule of 2 to 5 applies, because the topic's 
  "prediction": {
   "id": "pr-1",
   "stem": {
-   "text": "Predict. \\(dy/dx=2xy\\) with \\(y(1)=3\\). Which rewriting lets each side integrate in its own variable?",
+   "text": "\\(dy/dx=2xy\\) with \\(y(1)=3\\). Which rewriting lets each side integrate in its own variable?",
    "command_verb": "predict"
   },
   "format": "mcq",
@@ -776,8 +776,8 @@ Figure presence: no drawn block. No rule of 2 to 5 applies, because the topic's 
   "research/exam/exam-structure.md#Section and part layout"
  ],
  "word_count": {
-  "full": 618,
-  "brief": 449
+  "full": 617,
+  "brief": 448
  },
  "read_minutes": {
   "full": 4.12,

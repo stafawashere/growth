@@ -112,7 +112,7 @@ No drawn block: none of rules 2 to 5 applies. The skills carry BC-REP-01 only an
  "skills": ["BC-SKL-03010", "BC-SKL-03011", "BC-SKL-03014"],
  "prediction": {
   "id": "pr-1",
-  "stem": {"text": "Predict. For \\(x^2-xy+y^3=2x-1\\), differentiating gives \\(2x-y-x\\,dy/dx+3y^2\\,dy/dx=2\\). What comes before dividing to isolate \\(dy/dx\\)?", "command_verb": "predict"},
+  "stem": {"text": "For \\(x^2-xy+y^3=2x-1\\), differentiating gives \\(2x-y-x\\,dy/dx+3y^2\\,dy/dx=2\\). What comes before dividing to isolate \\(dy/dx\\)?", "command_verb": "predict"},
   "format": "mcq",
   "options": [
    {"id": "A", "label": "Divide the whole line by \\(3y^2\\)", "is_key": false},
@@ -249,7 +249,7 @@ No drawn block: none of rules 2 to 5 applies. The skills carry BC-REP-01 only an
  ],
  "refresher": ["ki-1", "err-BC-ERR-03010", "err-BC-ERR-03011", "ex-1"],
  "read_minutes": {"full": 2.91, "brief": 2.91},
- "word_count": {"full": 436, "brief": 436},
+ "word_count": {"full": 435, "brief": 435},
  "research_lines": [
   {"file": "research/units/unit-03-differentiation-composite-implicit-inverse.md", "line": "produces an equation that is linear in dy/dx"}
  ],

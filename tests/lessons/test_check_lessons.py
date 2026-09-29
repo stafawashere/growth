@@ -325,38 +325,45 @@ def test_the_new_caps_fire(context, hand_authored):
 
 
 READER_LABEL_PLANTS = [
-   ("cue", "Cue:"),
-   ("method", "First line:"),
-   ("method", "First written line:"),
-   ("method", "Method:"),
-   ("method", "First step:"),
-   ("rival", "Rival:"),
-   ("rival", "Rivals:"),
-   ("separating_feature", "Separating feature:"),
-   ("separating_feature", "Feature:"),
-   ("contrast.feature", "Feature:"),
-   ("contrast.not_this.why_not", "Why not:"),
+   ("strategy", "cue", "Cue:"),
+   ("strategy", "method", "First line:"),
+   ("strategy", "method", "First written line:"),
+   ("strategy", "method", "Method:"),
+   ("strategy", "method", "First step:"),
+   ("strategy", "rival", "Rival:"),
+   ("strategy", "rival", "Rivals:"),
+   ("strategy", "separating_feature", "Separating feature:"),
+   ("strategy", "separating_feature", "Feature:"),
+   ("strategy", "contrast.feature", "Feature:"),
+   ("strategy", "contrast.not_this.why_not", "Why not:"),
+   ("prediction", "stem.text", "Predict."),
+   ("prediction", "stem.text", "Predict:"),
+   ("prediction", "stem.text", "Prediction."),
+   ("prediction", "stem.text", "Prediction:"),
+   ("prediction", "stem.text", "Predict"),
 ]
 
 
-def first_strategy(lesson):
-   return next(section for section in lesson["sections"] if section["type"] == "strategy")
-
-
-@pytest.mark.parametrize("field, label", READER_LABEL_PLANTS)
-def test_a_served_field_opening_with_the_reader_label_is_refused(field, label, context, hand_authored):
-   strategy = first_strategy(hand_authored)
+@pytest.mark.parametrize("section_type, field, label", READER_LABEL_PLANTS)
+def test_a_served_field_opening_with_the_reader_label_is_refused(section_type, field, label, context, hand_authored):
+   section = next(section for section in hand_authored["sections"] if section["type"] == section_type)
    *parents, leaf = field.split(".")
-   holder = strategy
+   holder = section
 
    for key in parents:
       holder = holder[key]
 
    holder[leaf] = "  " + label.upper() + " " + holder[leaf]
    messages = check_lessons.lint_served_text(hand_authored, context)
-   expected = f"{strategy['id']} {field} starts with the reader's label {label!r}"
+   expected = f"{section['id']} {field} starts with the reader's label {label!r}"
 
    assert expected in messages, messages
+
+
+def test_a_prediction_stem_that_uses_predict_as_its_verb_is_served(context, hand_authored):
+   prediction_of(hand_authored)["stem"]["text"] = "Predict the sign of \\(h'(1)\\) before differentiating."
+
+   assert check_lessons.lint_served_text(hand_authored, context) == []
 
 
 def test_error_record_words_are_exempt_from_served_text(context, hand_authored):

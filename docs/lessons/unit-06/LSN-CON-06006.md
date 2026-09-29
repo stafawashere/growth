@@ -123,7 +123,7 @@ Drawn blocks already present (ki-1 motion, the representations model), so no fig
  "prediction": {
   "id": "pr-1",
   "stem": {
-   "text": "Predict. In \\(\\lim_{n\\to\\infty}\\sum_{i=1}^n 3(1+2i/n)^2(2/n)\\), the sample points run over what interval?",
+   "text": "In \\(\\lim_{n\\to\\infty}\\sum_{i=1}^n 3(1+2i/n)^2(2/n)\\), the sample points run over what interval?",
    "command_verb": "predict"
   },
   "format": "mcq",
@@ -763,8 +763,8 @@ Drawn blocks already present (ki-1 motion, the representations model), so no fig
   "brief": 3.0
  },
  "word_count": {
-  "full": 517,
-  "brief": 450
+  "full": 516,
+  "brief": 449
  }
 }
 ```

@@ -123,7 +123,7 @@ Section I Part A, 2.14 minutes for the MCQ shape (research/exam/exam-structure.m
  "prediction": {
   "id": "pr-1",
   "stem": {
-   "text": "Predict. At \\(x=5\\), the terms of \\(\\sum_{n=1}^{\\infty}\\frac{2n(x-3)^n}{5^n}\\) are \\(2n(0.4)^n\\). What do the partial sums do?",
+   "text": "At \\(x=5\\), the terms of \\(\\sum_{n=1}^{\\infty}\\frac{2n(x-3)^n}{5^n}\\) are \\(2n(0.4)^n\\). What do the partial sums do?",
    "command_verb": "predict"
   },
   "format": "mcq",
@@ -773,8 +773,8 @@ Section I Part A, 2.14 minutes for the MCQ shape (research/exam/exam-structure.m
   "research/exam/exam-structure.md#Section and part layout"
  ],
  "word_count": {
-  "full": 698,
-  "brief": 436
+  "full": 697,
+  "brief": 435
  },
  "read_minutes": {
   "full": 4.7,

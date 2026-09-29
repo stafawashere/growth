@@ -113,7 +113,7 @@ Two checks: the bundle holds two errors, fewer than chk-3's three distractors ne
  "prediction": {
   "id": "pr-1",
   "stem": {
-   "text": "Predict: f is differentiable and f(4) = 4. What is the limit of f(2x) - 4 as x tends to 2?",
+   "text": "F is differentiable and f(4) = 4. What is the limit of f(2x) - 4 as x tends to 2?",
    "command_verb": "predict"
   },
   "format": "short_answer",
@@ -585,8 +585,8 @@ Two checks: the bundle holds two errors, fewer than chk-3's three distractors ne
   "research/exam/exam-structure.md#Section and part layout"
  ],
  "word_count": {
-  "full": 449,
-  "brief": 449
+  "full": 448,
+  "brief": 448
  },
  "read_minutes": {
   "full": 3.0,

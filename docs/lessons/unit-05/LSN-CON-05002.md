@@ -121,7 +121,7 @@ Every key is a verdict, so each is a statement key with option labels.
  "prediction": {
   "id": "pr-1",
   "stem": {
-   "text": "Predict: f is differentiable on [-1, 4] with a relative maximum at x = 1. What follows about a maximum value on [-1, 4]?",
+   "text": "F is differentiable on [-1, 4] with a relative maximum at x = 1. What follows about a maximum value on [-1, 4]?",
    "command_verb": "predict"
   },
   "format": "mcq",
@@ -700,8 +700,8 @@ Every key is a verdict, so each is a statement key with option labels.
   "research/exam/exam-structure.md#Section and part layout"
  ],
  "word_count": {
-  "full": 620,
-  "brief": 448
+  "full": 619,
+  "brief": 447
  },
  "read_minutes": {
   "full": 4.2,

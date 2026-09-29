@@ -113,7 +113,7 @@ BC-QA-05009 is `either`, an MCQ or one FRQ feature question, so Section I Part A
  "target_id": "BC-CON-05011",
  "unit": "05",
  "skills": ["BC-SKL-05040", "BC-SKL-05041", "BC-SKL-05042", "BC-SKL-05043", "BC-SKL-05044"],
- "prediction": {"id": "pr-1", "stem": {"text": "Predict: the graph of \\(f'\\) is \\(y=\\frac{x^2}{2}-2\\). Where does \\(f\\) have an inflection point?", "command_verb": "predict"}, "format": "mcq", "options": [{"id": "A", "label": "At \\(x=-2\\) and \\(x=2\\)", "is_key": false}, {"id": "B", "label": "At \\(x=0\\)", "is_key": true}, {"id": "C", "label": "Cannot be found from \\(f'\\)", "is_key": false}], "resolution": "An inflection point of \\(f\\) sits where the graph of \\(f'\\) turns, at \\(x=0\\). The crossings mark extrema of \\(f\\).", "sources": ["BC-CON-05011", "research/units/unit-05-analytical-applications-differentiation.md#5.8 Sketching Graphs of Functions and Their Derivatives"]},
+ "prediction": {"id": "pr-1", "stem": {"text": "The graph of \\(f'\\) is \\(y=\\frac{x^2}{2}-2\\). Where does \\(f\\) have an inflection point?", "command_verb": "predict"}, "format": "mcq", "options": [{"id": "A", "label": "At \\(x=-2\\) and \\(x=2\\)", "is_key": false}, {"id": "B", "label": "At \\(x=0\\)", "is_key": true}, {"id": "C", "label": "Cannot be found from \\(f'\\)", "is_key": false}], "resolution": "An inflection point of \\(f\\) sits where the graph of \\(f'\\) turns, at \\(x=0\\). The crossings mark extrema of \\(f\\).", "sources": ["BC-CON-05011", "research/units/unit-05-analytical-applications-differentiation.md#5.8 Sketching Graphs of Functions and Their Derivatives"]},
  "orientation": {"text": "A response reads \\(f\\) from the graph of \\(f'\\): extrema at crossings, inflection where it turns, reasons about \\(f'\\).", "sources": ["BC-CON-05011", "research/units/unit-05-analytical-applications-differentiation.md#5.8 Sketching Graphs of Functions and Their Derivatives"]},
  "key_ideas": [
   {"id": "ki-1", "ek_id": "BC-EK-FUN-4A9", "depth": "core", "text": "A sign-changing zero of \\(f'\\) is an extremum of \\(f\\). A turning point of the graph of \\(f'\\) is an inflection point of \\(f\\).", "notation": "graph of f; graph of f'", "quote": null, "sources": ["BC-EK-FUN-4A9", "ced:106", "research/units/unit-05-analytical-applications-differentiation.md#5.8 Sketching Graphs of Functions and Their Derivatives"]},
@@ -155,7 +155,7 @@ BC-QA-05009 is `either`, an MCQ or one FRQ feature question, so Section I Part A
  ],
  "refresher": ["ki-1", "err-BC-ERR-05016", "err-BC-ERR-05041", "err-BC-ERR-05042", "err-BC-ERR-05043", "ex-1"],
  "read_minutes": {"full": 5.0, "brief": 3.0},
- "word_count": {"full": 690, "brief": 447},
+ "word_count": {"full": 689, "brief": 446},
  "research_lines": [
   {"file": "research/scoring/justification-requirements.md", "line": "the reason point is earned only by reasoning about the graphed object"}
  ],

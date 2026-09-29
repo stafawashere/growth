@@ -98,7 +98,7 @@ BC-QA-07007 is `no_calculator` and its `multipart_structure` names a single MCQ 
  "skills": ["BC-SKL-07009"],
  "prediction": {
   "id": "pr-1",
-  "stem": {"text": "Predict. y = 4 + e^x satisfies dy/dx = y - 4. How many functions satisfy this equation?", "command_verb": "predict"},
+  "stem": {"text": "Y = 4 + e^x satisfies dy/dx = y - 4. How many functions satisfy this equation?", "command_verb": "predict"},
   "format": "mcq",
   "options": [
    {"id": "A", "label": "Only y = 4 + e^x.", "is_key": false},
@@ -252,8 +252,8 @@ BC-QA-07007 is `no_calculator` and its `multipart_structure` names a single MCQ 
   "brief": 2.99
  },
  "word_count": {
-  "full": 448,
-  "brief": 448
+  "full": 447,
+  "brief": 447
  },
  "research_lines": [
   {

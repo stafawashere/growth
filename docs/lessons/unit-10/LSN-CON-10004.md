@@ -117,7 +117,7 @@ Every Unit 10 archetype is `no_calculator`; its MCQ shape is Section I Part A, 2
  "prediction": {
   "id": "pr-1",
   "stem": {
-   "text": "Predict. The first terms of \\(\\sum_{n=2}^{\\infty}3\\left(\\frac25\\right)^n\\) are \\(\\frac{12}{25},\\frac{24}{125},\\frac{48}{625}\\), each \\(\\frac25\\) of the one before. About what total do all the terms add to?",
+   "text": "The first terms of \\(\\sum_{n=2}^{\\infty}3\\left(\\frac25\\right)^n\\) are \\(\\frac{12}{25},\\frac{24}{125},\\frac{48}{625}\\), each \\(\\frac25\\) of the one before. About what total do all the terms add to?",
    "command_verb": "predict"
   },
   "format": "mcq",
@@ -723,8 +723,8 @@ Every Unit 10 archetype is `no_calculator`; its MCQ shape is Section I Part A, 2
   "brief": 3.0
  },
  "word_count": {
-  "full": 754,
-  "brief": 450
+  "full": 753,
+  "brief": 449
  },
  "no_figure_reason": "No skill carries a figure-bearing representation (series, symbolic and verbal only) and the key ideas state a condition and a formula, not a process.",
  "research_lines": [

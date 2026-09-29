@@ -113,7 +113,7 @@ No drawn block: none of rules 2 to 5 applies. The skills carry BC-REP-01 only, t
  "skills": ["BC-SKL-03007", "BC-SKL-03008", "BC-SKL-03009"],
  "prediction": {
   "id": "pr-1",
-  "stem": {"text": "Predict. In \\(x^2+3xy+y^2=2x+3\\), \\(y\\) depends on \\(x\\). What is the derivative of \\(y^2\\)?", "command_verb": "predict"},
+  "stem": {"text": "In \\(x^2+3xy+y^2=2x+3\\), \\(y\\) depends on \\(x\\). What is the derivative of \\(y^2\\)?", "command_verb": "predict"},
   "format": "mcq",
   "options": [
    {"id": "A", "label": "\\(2y\\)", "is_key": false},
@@ -285,7 +285,7 @@ No drawn block: none of rules 2 to 5 applies. The skills carry BC-REP-01 only, t
  ],
  "refresher": ["ki-1", "err-BC-ERR-03007", "err-BC-ERR-03008", "err-BC-ERR-03009", "ex-1"],
  "read_minutes": {"full": 3.6, "brief": 3.0},
- "word_count": {"full": 534, "brief": 449},
+ "word_count": {"full": 533, "brief": 448},
  "research_lines": [
   {"file": "research/units/unit-03-differentiation-composite-implicit-inverse.md", "line": "A term containing both variables is a product, so the product rule applies and the factor in y still carries dy/dx"}
  ],

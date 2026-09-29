@@ -113,7 +113,7 @@ BC-QA-04008 has `calculator_status` either, so Section I Part A, 2.14 minutes (r
  "prediction": {
   "id": "pr-1",
   "stem": {
-   "text": "Predict: f(1) = 4, f'(x) = 2x^2 - 3. Which value best approximates f(1.1)?",
+   "text": "f(1) = 4, f'(x) = 2x^2 - 3. Which value best approximates f(1.1)?",
    "command_verb": "predict"
   },
   "format": "mcq",
@@ -786,8 +786,8 @@ BC-QA-04008 has `calculator_status` either, so Section I Part A, 2.14 minutes (r
   "research/exam/exam-structure.md#Section and part layout"
  ],
  "word_count": {
-  "full": 591,
-  "brief": 450
+  "full": 590,
+  "brief": 449
  },
  "read_minutes": {
   "full": 3.94,

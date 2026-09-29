@@ -127,7 +127,7 @@ Every non-text choice is [inferred], settled by the modality A/B in the build pl
  "prediction": {
   "id": "pr-1",
   "stem": {
-   "text": "Predict. For s(t) = 2t^2 + t + 3, average rates over [1, 1 + h] are 5.2, 5.02, 5.002 as h shrinks. What is the rate at t = 1?",
+   "text": "For s(t) = 2t^2 + t + 3, average rates over [1, 1 + h] are 5.2, 5.02, 5.002 as h shrinks. What is the rate at t = 1?",
    "command_verb": "predict"
   },
   "format": "short_answer",
@@ -685,8 +685,8 @@ Every non-text choice is [inferred], settled by the modality A/B in the build pl
   "brief": 3.0
  },
  "word_count": {
-  "full": 580,
-  "brief": 449
+  "full": 579,
+  "brief": 448
  },
  "research_lines": [
   {

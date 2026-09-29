@@ -114,7 +114,7 @@ BC-QA-04006 has `calculator_status` either, so Section I Part A, 2.14 minutes (r
  "prediction": {
   "id": "pr-1",
   "stem": {
-   "text": "Predict. On x^2 + y^2 = 225 the foot is at x = 9. Does 9 go in before or after differentiating in t?",
+   "text": "On x^2 + y^2 = 225 the foot is at x = 9. Does 9 go in before or after differentiating in t?",
    "command_verb": "predict"
   },
   "format": "mcq",
@@ -911,8 +911,8 @@ BC-QA-04006 has `calculator_status` either, so Section I Part A, 2.14 minutes (r
   "research/exam/exam-structure.md#Section and part layout"
  ],
  "word_count": {
-  "full": 578,
-  "brief": 450
+  "full": 577,
+  "brief": 449
  },
  "read_minutes": {
   "full": 3.9,

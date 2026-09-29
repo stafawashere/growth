@@ -124,7 +124,7 @@ The drawn block ki-1 (figure) is already present, so no figure is added and no `
  "prediction": {
   "id": "pr-1",
   "stem": {
-   "text": "Predict. \\(h(x)=\\int_1^{2x^2}(t^2-3)\\,dt\\). Find \\(h'(1)\\).",
+   "text": "\\(h(x)=\\int_1^{2x^2}(t^2-3)\\,dt\\). Find \\(h'(1)\\).",
    "command_verb": "predict"
   },
   "format": "mcq",
@@ -543,8 +543,8 @@ The drawn block ki-1 (figure) is already present, so no figure is added and no `
   "brief": 3.0
  },
  "word_count": {
-  "full": 489,
-  "brief": 442
+  "full": 488,
+  "brief": 441
  },
  "research_lines": [
   {

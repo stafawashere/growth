@@ -109,7 +109,7 @@ BC-QA-05011 is `either`, so Section I Part A, 2.14 minutes per question (researc
  "target_id": "BC-CON-05014",
  "unit": "05",
  "skills": ["BC-SKL-05054", "BC-SKL-05055", "BC-SKL-05056", "BC-SKL-05057"],
- "prediction": {"id": "pr-1", "stem": {"text": "Predict: a planter's volume is largest, 1600, at \\(x=4\\) on \\(0\\le x\\le 9\\). Which sentence states the largest volume with correct units?", "command_verb": "predict"}, "format": "mcq", "options": [{"id": "A", "label": "The largest volume occurs at a cut of 4 cm.", "is_key": false}, {"id": "B", "label": "The maximum is 1600.", "is_key": false}, {"id": "C", "label": "The volume is largest, 1600 cubic centimeters, at a 4 cm cut.", "is_key": true}], "resolution": "An interpretation names the quantity asked for, its units and where it occurs: the volume is 1600 cubic centimeters when the cut is 4 cm. A bare number, or the input alone, leaves part unstated.", "sources": ["BC-CON-05014", "research/units/unit-05-analytical-applications-differentiation.md#5.11 Solving Optimization Problems"]},
+ "prediction": {"id": "pr-1", "stem": {"text": "A planter's volume is largest, 1600, at \\(x=4\\) on \\(0\\le x\\le 9\\). Which sentence states the largest volume with correct units?", "command_verb": "predict"}, "format": "mcq", "options": [{"id": "A", "label": "The largest volume occurs at a cut of 4 cm.", "is_key": false}, {"id": "B", "label": "The maximum is 1600.", "is_key": false}, {"id": "C", "label": "The volume is largest, 1600 cubic centimeters, at a 4 cm cut.", "is_key": true}], "resolution": "An interpretation names the quantity asked for, its units and where it occurs: the volume is 1600 cubic centimeters when the cut is 4 cm. A bare number, or the input alone, leaves part unstated.", "sources": ["BC-CON-05014", "research/units/unit-05-analytical-applications-differentiation.md#5.11 Solving Optimization Problems"]},
  "orientation": {"text": "A response compares the candidate with the ends and states the asked quantity with its units and input.", "sources": ["BC-CON-05014", "research/units/unit-05-analytical-applications-differentiation.md#5.11 Solving Optimization Problems"]},
  "key_ideas": [
   {"id": "ki-1", "ek_id": "BC-EK-FUN-4C1", "depth": "core", "text": "The optimal value and its input both carry units. An interpretation names the quantity, units and input together. Largest volume asks for the volume; dimensions ask for the input.", "notation": "units; optimal value", "quote": {"text": "Minimum and maximum values of a function take on specific meanings in applied contexts.", "source": "ced:109"}, "sources": ["BC-EK-FUN-4C1", "ced:109", "sg-23:2", "research/units/unit-05-analytical-applications-differentiation.md#5.11 Solving Optimization Problems"]}
@@ -147,7 +147,7 @@ BC-QA-05011 is `either`, so Section I Part A, 2.14 minutes per question (researc
  ],
  "refresher": ["ki-1", "err-BC-ERR-05026", "err-BC-ERR-05055", "err-BC-ERR-05024", "err-BC-ERR-05056", "ex-1"],
  "read_minutes": {"full": 4.0, "brief": 3.0},
- "word_count": {"full": 571, "brief": 430},
+ "word_count": {"full": 570, "brief": 429},
  "research_lines": [
   {"file": "research/scoring/common-point-losses.md", "line": "An interpretation point asks what a computed value means in the setting of the problem, in words, with the quantity and the interval named."}
  ],

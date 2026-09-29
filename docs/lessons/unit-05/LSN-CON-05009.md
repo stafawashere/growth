@@ -117,7 +117,7 @@ BC-QA-05013 is `either` and an MCQ or one FRQ part, so Section I Part A, 2.14 mi
  "prediction": {
   "id": "pr-1",
   "stem": {
-   "text": "Predict. For \\(f(x)=2x^3-3x^2-12x+2\\), \\(f'(2)=0\\) and \\(f''(2)=18\\). What does \\(f\\) have at \\(x=2\\)?",
+   "text": "For \\(f(x)=2x^3-3x^2-12x+2\\), \\(f'(2)=0\\) and \\(f''(2)=18\\). What does \\(f\\) have at \\(x=2\\)?",
    "command_verb": "predict"
   },
   "format": "mcq",
@@ -658,8 +658,8 @@ BC-QA-05013 is `either` and an MCQ or one FRQ part, so Section I Part A, 2.14 mi
   "brief": 2.8
  },
  "word_count": {
-  "full": 556,
-  "brief": 419
+  "full": 555,
+  "brief": 418
  },
  "research_lines": [
   {

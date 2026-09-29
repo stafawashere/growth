@@ -127,7 +127,7 @@ BC-QA-06005 is `either`: Section I Part A, 2.14 minutes per question (research/e
  "prediction": {
   "id": "pr-1",
   "stem": {
-   "text": "Predict: water enters a tank at \\(R(t)=4t+3\\) gallons per hour; it holds 40 gallons at \\(t=2\\). Which gives the gallons at \\(t=4\\)?",
+   "text": "Water enters a tank at \\(R(t)=4t+3\\) gallons per hour; it holds 40 gallons at \\(t=2\\). Which gives the gallons at \\(t=4\\)?",
    "command_verb": "predict"
   },
   "format": "mcq",
@@ -721,8 +721,8 @@ BC-QA-06005 is `either`: Section I Part A, 2.14 minutes per question (research/e
   "brief": 3.0
  },
  "word_count": {
-  "full": 758,
-  "brief": 449
+  "full": 757,
+  "brief": 448
  },
  "research_lines": [
   {

@@ -119,7 +119,7 @@ BC-QA-08011 is `either` on calculator status, so the lesson takes Section I Part
  "prediction": {
   "id": "pr-1",
   "stem": {
-   "text": "Predict: R lies between \\(f(x)=-x^2+3x+1\\) and \\(g(x)=x+1\\); cross sections perpendicular to the x-axis are rectangles of height twice the base. What is the slice area?",
+   "text": "R lies between \\(f(x)=-x^2+3x+1\\) and \\(g(x)=x+1\\); cross sections perpendicular to the x-axis are rectangles of height twice the base. What is the slice area?",
    "command_verb": "predict"
   },
   "format": "mcq",
@@ -798,8 +798,8 @@ BC-QA-08011 is `either` on calculator status, so the lesson takes Section I Part
   "brief": 3.0
  },
  "word_count": {
-  "full": 783,
-  "brief": 448
+  "full": 782,
+  "brief": 447
  },
  "research_lines": [
   {

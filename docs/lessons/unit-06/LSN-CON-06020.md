@@ -121,7 +121,7 @@ BC-QA-06016 is `no_calculator`, typically one part of a multipart free response 
  "prediction": {
   "id": "pr-1",
   "stem": {
-   "text": "Predict. Which technique fits \\(\\int 3x\\,e^{-2x}\\,dx\\)?",
+   "text": "Which technique fits \\(\\int 3x\\,e^{-2x}\\,dx\\)?",
    "command_verb": "predict"
   },
   "format": "mcq",
@@ -673,8 +673,8 @@ BC-QA-06016 is `no_calculator`, typically one part of a multipart free response 
   "brief": 2.8
  },
  "word_count": {
-  "full": 534,
-  "brief": 416
+  "full": 533,
+  "brief": 415
  }
 }
 ```

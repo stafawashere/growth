@@ -111,7 +111,7 @@ ex-1 is the MCQ shape "the radius of the series": Section I Part A, 2.14 minutes
  "prediction": {
   "id": "pr-1",
   "stem": {
-   "text": "Predict. For \\(\\sum_{n=1}^{\\infty}\\frac{2n(x-3)^n}{4^n}\\) the ratio of consecutive terms tends to \\(\\frac{|x-3|}{4}\\). For which \\(x\\) does the ratio test show convergence?",
+   "text": "For \\(\\sum_{n=1}^{\\infty}\\frac{2n(x-3)^n}{4^n}\\) the ratio of consecutive terms tends to \\(\\frac{|x-3|}{4}\\). For which \\(x\\) does the ratio test show convergence?",
    "command_verb": "predict"
   },
   "format": "mcq",
@@ -799,8 +799,8 @@ ex-1 is the MCQ shape "the radius of the series": Section I Part A, 2.14 minutes
   "research/exam/exam-structure.md#Section and part layout"
  ],
  "word_count": {
-  "full": 876,
-  "brief": 425
+  "full": 875,
+  "brief": 424
  },
  "read_minutes": {
   "full": 5.9,

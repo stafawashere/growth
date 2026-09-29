@@ -122,7 +122,7 @@ BC-QA-06008 is `no_calculator`, typically one part of a multipart free response 
  "prediction": {
   "id": "pr-1",
   "stem": {
-   "text": "Predict: with u = x^2 + 1, 6x dx equals which multiple of du?",
+   "text": "With u = x^2 + 1, 6x dx equals which multiple of du?",
    "command_verb": "predict"
   },
   "format": "mcq",
@@ -611,8 +611,8 @@ BC-QA-06008 is `no_calculator`, typically one part of a multipart free response 
   "brief": 3.0
  },
  "word_count": {
-  "full": 611,
-  "brief": 447
+  "full": 610,
+  "brief": 446
  },
  "no_figure_reason": "The skills carry symbolic representations only, and no key idea describes a process. The lesson is a chain of written substitutions."
 }

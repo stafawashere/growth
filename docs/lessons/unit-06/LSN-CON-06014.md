@@ -113,7 +113,7 @@ BC-QA-06019 is `no_calculator`, a single MCQ or short answer, so Section I Part 
  "prediction": {
   "id": "pr-1",
   "stem": {
-   "text": "Predict: which describes all functions whose derivative is 3x^(1/2) - 2x^(-1/2)?",
+   "text": "Which describes all functions whose derivative is 3x^(1/2) - 2x^(-1/2)?",
    "command_verb": "predict"
   },
   "format": "mcq",
@@ -450,8 +450,8 @@ BC-QA-06019 is `no_calculator`, a single MCQ or short answer, so Section I Part 
   "brief": 3.0
  },
  "word_count": {
-  "full": 498,
-  "brief": 433
+  "full": 497,
+  "brief": 432
  },
  "research_lines": [
   {

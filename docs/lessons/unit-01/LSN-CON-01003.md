@@ -116,7 +116,7 @@ No non-text mode applies: notation read into words has no process to watch and n
  "prediction": {
   "id": "pr-1",
   "stem": {
-   "text": "Predict. The limit of g(x) as x approaches -3 from the right is negative infinity. What does the graph of g do near x = -3?",
+   "text": "The limit of g(x) as x approaches -3 from the right is negative infinity. What does the graph of g do near x = -3?",
    "command_verb": "predict"
   },
   "format": "mcq",
@@ -379,8 +379,8 @@ No non-text mode applies: notation read into words has no process to watch and n
   "brief": 2.95
  },
  "word_count": {
-  "full": 436,
-  "brief": 436
+  "full": 435,
+  "brief": 435
  },
  "research_lines": [
   {

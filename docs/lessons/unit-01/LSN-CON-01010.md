@@ -119,7 +119,7 @@ The lesson already carries drawn blocks (orientation figure, ki-1 motion), so no
  "prediction": {
   "id": "pr-1",
   "stem": {
-   "text": "Predict. \\(f(x)=2+3(x-1)\\sin\\frac{1}{x-1}\\), and \\(\\sin\\frac{1}{x-1}\\) oscillates without a limit at 1. What is \\(\\lim_{x\\to1}f(x)\\)?",
+   "text": "\\(f(x)=2+3(x-1)\\sin\\frac{1}{x-1}\\), and \\(\\sin\\frac{1}{x-1}\\) oscillates without a limit at 1. What is \\(\\lim_{x\\to1}f(x)\\)?",
    "command_verb": "predict"
   },
   "format": "short_answer",
@@ -769,8 +769,8 @@ The lesson already carries drawn blocks (orientation figure, ki-1 motion), so no
   "brief": 3.0
  },
  "word_count": {
-  "full": 577,
-  "brief": 434
+  "full": 576,
+  "brief": 433
  }
 }
 ```

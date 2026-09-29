@@ -92,7 +92,7 @@ Low (full): prediction, orientation, bridges, ki-1 to ki-3, st-1 with the contra
  "prediction": {
   "id": "pr-1",
   "stem": {
-   "text": "Predict. \\(\\sum_{n=1}^{\\infty}\\frac{5}{(n+2)^{3/2}}\\) converges. What follows for \\(\\sum_{n=1}^{\\infty}\\frac{5(-1)^{n}}{(n+2)^{3/2}}\\)?",
+   "text": "\\(\\sum_{n=1}^{\\infty}\\frac{5}{(n+2)^{3/2}}\\) converges. What follows for \\(\\sum_{n=1}^{\\infty}\\frac{5(-1)^{n}}{(n+2)^{3/2}}\\)?",
    "command_verb": "predict"
   },
   "format": "mcq",
@@ -727,8 +727,8 @@ Low (full): prediction, orientation, bridges, ki-1 to ki-3, st-1 with the contra
   "research/exam/exam-structure.md#Section and part layout"
  ],
  "word_count": {
-  "full": 729,
-  "brief": 429
+  "full": 728,
+  "brief": 428
  },
  "read_minutes": {
   "full": 4.9,

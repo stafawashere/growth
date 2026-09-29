@@ -116,7 +116,7 @@ The drawn blocks (orientation and ki-1 figures) are already present, so no figur
  "prediction": {
   "id": "pr-1",
   "stem": {
-   "text": "Predict. On [2, 4], f is below the axis, area 2. How does it enter \\(\\int_1^8 f(x)\\,dx\\)?",
+   "text": "On [2, 4], f is below the axis, area 2. How does it enter \\(\\int_1^8 f(x)\\,dx\\)?",
    "command_verb": "predict"
   },
   "format": "mcq",
@@ -789,8 +789,8 @@ The drawn blocks (orientation and ki-1 figures) are already present, so no figur
   "brief": 3.0
  },
  "word_count": {
-  "full": 474,
-  "brief": 449
+  "full": 473,
+  "brief": 448
  }
 }
 ```

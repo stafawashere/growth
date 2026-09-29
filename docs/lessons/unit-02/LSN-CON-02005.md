@@ -119,7 +119,7 @@ Both figure choices are [inferred], settled by the modality A/B. The lesson alre
  "skills": ["BC-SKL-02012", "BC-SKL-02013"],
  "prediction": {
   "id": "pr-1",
-  "stem": {"text": "Predict. The point \\((3,5)\\) lies on the graph of \\(f(x)=-x^2+4x+2\\). What is the slope of the tangent there?", "command_verb": "predict"},
+  "stem": {"text": "The point \\((3,5)\\) lies on the graph of \\(f(x)=-x^2+4x+2\\). What is the slope of the tangent there?", "command_verb": "predict"},
   "format": "mcq",
   "options": [
    {"id": "A", "label": "\\(5\\)", "is_key": false},
@@ -313,7 +313,7 @@ Both figure choices are [inferred], settled by the modality A/B. The lesson alre
  ],
  "refresher": ["ki-1", "err-BC-ERR-02027", "err-BC-ERR-02028", "err-BC-ERR-04023", "ex-1"],
  "read_minutes": {"full": 3.8, "brief": 3.0},
- "word_count": {"full": 555, "brief": 448},
+ "word_count": {"full": 554, "brief": 447},
  "research_lines": [
   {"file": "research/units/unit-02-differentiation-definition-properties.md", "line": "The derivative of a function at a point is the slope of the line tangent to the graph at that point"},
   {"file": "research/scoring/notation-requirements.md", "line": "a response with an incorrect equation of the form \"function equals constant\" will not earn the point"}

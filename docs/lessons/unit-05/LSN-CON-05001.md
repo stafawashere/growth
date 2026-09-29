@@ -135,7 +135,7 @@ No draw equals a published `parameter_draw` on BC-QA-05001 or BC-QA-05002 (conte
  "prediction": {
   "id": "pr-1",
   "stem": {
-   "text": "Predict: f is differentiable, f(1) = 2, f(6) = 17. What must f' equal in (1, 6)?",
+   "text": "F is differentiable, f(1) = 2, f(6) = 17. What must f' equal in (1, 6)?",
    "command_verb": "predict"
   },
   "format": "mcq",
@@ -867,8 +867,8 @@ No draw equals a published `parameter_draw` on BC-QA-05001 or BC-QA-05002 (conte
   "research/exam/exam-structure.md#Section and part layout"
  ],
  "word_count": {
-  "full": 711,
-  "brief": 450
+  "full": 710,
+  "brief": 449
  },
  "read_minutes": {
   "full": 4.8,

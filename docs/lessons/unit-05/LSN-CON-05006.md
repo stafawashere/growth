@@ -125,7 +125,7 @@ BC-QA-05006 has `calculator_status` either, so the lesson takes Section I Part A
  "prediction": {
   "id": "pr-1",
   "stem": {
-   "text": "Predict. f(x) = x^3 - 3x has a relative maximum at x = -1. Where is its absolute maximum on [-2, 3]?",
+   "text": "f(x) = x^3 - 3x has a relative maximum at x = -1. Where is its absolute maximum on [-2, 3]?",
    "command_verb": "predict"
   },
   "format": "mcq",
@@ -863,8 +863,8 @@ BC-QA-05006 has `calculator_status` either, so the lesson takes Section I Part A
   "research/exam/exam-structure.md#Section and part layout"
  ],
  "word_count": {
-  "full": 687,
-  "brief": 448
+  "full": 686,
+  "brief": 447
  },
  "read_minutes": {
   "full": 4.6,

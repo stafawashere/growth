@@ -121,7 +121,7 @@ BC-QA-05008 has `calculator_status` either, so the lesson takes Section I Part A
  "prediction": {
   "id": "pr-1",
   "stem": {
-   "text": "Predict: f'(x) = 2(x + 1)(x - 3)/(x - 1). Where is f increasing?",
+   "text": "f'(x) = 2(x + 1)(x - 3)/(x - 1). Where is f increasing?",
    "command_verb": "predict"
   },
   "format": "mcq",
@@ -753,8 +753,8 @@ BC-QA-05008 has `calculator_status` either, so the lesson takes Section I Part A
   "research/exam/exam-structure.md#Section and part layout"
  ],
  "word_count": {
-  "full": 584,
-  "brief": 449
+  "full": 583,
+  "brief": 448
  },
  "read_minutes": {
   "full": 3.9,

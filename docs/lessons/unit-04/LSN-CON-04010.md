@@ -113,7 +113,7 @@ BC-QA-04006 has `calculator_status` either, so Section I Part A, 2.14 minutes (r
  "prediction": {
   "id": "pr-1",
   "stem": {
-   "text": "Predict. A ladder's top height y in meters satisfies 24 + 8 dy/dt = 0, with t in minutes. How is y changing?",
+   "text": "A ladder's top height y in meters satisfies 24 + 8 dy/dt = 0, with t in minutes. How is y changing?",
    "command_verb": "predict"
   },
   "format": "mcq",
@@ -632,8 +632,8 @@ BC-QA-04006 has `calculator_status` either, so Section I Part A, 2.14 minutes (r
   "research/exam/exam-structure.md#Section and part layout"
  ],
  "word_count": {
-  "full": 560,
-  "brief": 447
+  "full": 559,
+  "brief": 446
  },
  "read_minutes": {
   "full": 3.8,

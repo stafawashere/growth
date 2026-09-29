@@ -126,7 +126,7 @@ Every non-text choice is [inferred], settled by the modality A/B in the build pl
  "skills": ["BC-SKL-02004", "BC-SKL-02005", "BC-SKL-02006", "BC-SKL-02007"],
  "prediction": {
   "id": "pr-1",
-  "stem": {"text": "Predict. The average rates of \\(f(x)=2x^2-3x+1\\) over \\([2,3]\\), \\([2,2.1]\\) and \\([2,2.01]\\) are 7, 5.2 and 5.02. What is the rate at the instant \\(x=2\\)?", "command_verb": "predict"},
+  "stem": {"text": "The average rates of \\(f(x)=2x^2-3x+1\\) over \\([2,3]\\), \\([2,2.1]\\) and \\([2,2.01]\\) are 7, 5.2 and 5.02. What is the rate at the instant \\(x=2\\)?", "command_verb": "predict"},
   "format": "mcq",
   "options": [
    {"id": "A", "label": "\\(7\\)", "is_key": false},
@@ -339,7 +339,7 @@ Every non-text choice is [inferred], settled by the modality A/B in the build pl
  ],
  "refresher": ["ki-1", "err-BC-ERR-02006", "err-BC-ERR-02030", "err-BC-ERR-02033", "ex-1"],
  "read_minutes": {"full": 4.4, "brief": 3.0},
- "word_count": {"full": 648, "brief": 442},
+ "word_count": {"full": 647, "brief": 441},
  "research_lines": [
   {"file": "research/units/unit-02-differentiation-definition-properties.md", "line": "justification variants ask why a limit is needed for the rate at an instant"},
   {"file": "research/units/unit-02-differentiation-definition-properties.md", "line": "The difference quotient is indeterminate at zero increment, so the increment is divided out of the numerator before the limit is taken."}

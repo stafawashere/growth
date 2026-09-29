@@ -1924,6 +1924,13 @@ def rule_served_text(design, context):
       if isinstance(block, dict):
          messages.extend(check_lessons.reader_label_problems(block, block.get("id")))
 
+   prediction = record.get("prediction")
+
+   if isinstance(prediction, dict):
+      messages.extend(
+         check_lessons.reader_label_problems(prediction, prediction.get("id"), check_lessons.PREDICTION_READER_LABELS)
+      )
+
    return messages
 
 

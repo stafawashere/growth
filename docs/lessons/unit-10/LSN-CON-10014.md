@@ -88,7 +88,7 @@ Low (full): prediction, orientation, bridge, ki-1, st-1 with the contrast pair, 
  "prediction": {
   "id": "pr-1",
   "stem": {
-   "text": "Predict. The terms of \\(\\sum_{n=1}^{\\infty}\\frac{3(-1)^{n}}{(n+5)^{2/3}}\\) alternate and their sizes decrease to 0, while \\(\\sum_{n=1}^{\\infty}\\frac{3}{(n+5)^{2/3}}\\) diverges. What is true of the signed series?",
+   "text": "The terms of \\(\\sum_{n=1}^{\\infty}\\frac{3(-1)^{n}}{(n+5)^{2/3}}\\) alternate and their sizes decrease to 0, while \\(\\sum_{n=1}^{\\infty}\\frac{3}{(n+5)^{2/3}}\\) diverges. What is true of the signed series?",
    "command_verb": "predict"
   },
   "format": "mcq",
@@ -627,8 +627,8 @@ Low (full): prediction, orientation, bridge, ki-1, st-1 with the contrast pair, 
   "research/exam/exam-structure.md#Section and part layout"
  ],
  "word_count": {
-  "full": 600,
-  "brief": 399
+  "full": 599,
+  "brief": 398
  },
  "read_minutes": {
   "full": 4.0,

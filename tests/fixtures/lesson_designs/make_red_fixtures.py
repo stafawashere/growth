@@ -140,6 +140,10 @@ def labelled_rival(record):
    record["strategy"][0]["rival"] = "Rival: " + record["strategy"][0]["rival"]
 
 
+def labelled_prediction_stem(record):
+   record["prediction"]["stem"]["text"] = "Predict. " + record["prediction"]["stem"]["text"]
+
+
 def two_features(record):
    record["decision"]["stems"][1]["parameter_draw"]["integrand"] = "sin(t)"
 
@@ -172,6 +176,7 @@ CONCEPT_DEFECTS = {
    "figure_presence": lambda text: edit(text, no_figure_reason),
    "served_text": lambda text: edit(text, id_in_rival),
    "served_text__rival": lambda text: edit(text, labelled_rival),
+   "served_text__prediction": lambda text: edit(text, labelled_prediction_stem),
 }
 DECISION_DEFECTS = {
    "decision_stems": lambda text: edit(text, two_features),

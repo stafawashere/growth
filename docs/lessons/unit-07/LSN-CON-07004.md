@@ -105,7 +105,7 @@ BC-QA-07002 is `no_calculator` and its `multipart_structure` names a single MCQ 
  "skills": ["BC-SKL-07010", "BC-SKL-07011", "BC-SKL-07012", "BC-SKL-07013"],
  "prediction": {
   "id": "pr-1",
-  "stem": {"text": "Predict. For dy/dx = 2(y - x + 1), what does the segment at (2, 0) do?", "command_verb": "predict"},
+  "stem": {"text": "For dy/dx = 2(y - x + 1), what does the segment at (2, 0) do?", "command_verb": "predict"},
   "format": "mcq",
   "options": [{"id": "A", "label": "Falls, slope -2", "is_key": true}, {"id": "B", "label": "Rises, slope 2", "is_key": false}, {"id": "C", "label": "Lies flat", "is_key": false}],
   "resolution": "The slope there is 2(0 - 2 + 1) = -2.",
@@ -377,8 +377,8 @@ BC-QA-07002 is `no_calculator` and its `multipart_structure` names a single MCQ 
   "brief": 3.0
  },
  "word_count": {
-  "full": 587,
-  "brief": 449
+  "full": 586,
+  "brief": 448
  },
  "research_lines": [
   {"file": "research/units/unit-07-differential-equations.md", "line": "Segments are horizontal exactly where the right side vanishes"}

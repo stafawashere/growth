@@ -108,7 +108,7 @@ BC-QA-07006 is `either` and its `multipart_structure` names a single MCQ first, 
  "skills": ["BC-SKL-07001", "BC-SKL-07002", "BC-SKL-07003", "BC-SKL-07004", "BC-SKL-07005"],
  "prediction": {
   "id": "pr-1",
-  "stem": {"text": "Predict. Tea at 95 degrees in a 70 degree room has dH/dt proportional to 70 - H, k > 0. What is dH/dt at t = 0?", "command_verb": "predict"},
+  "stem": {"text": "Tea at 95 degrees in a 70 degree room has dH/dt proportional to 70 - H, k > 0. What is dH/dt at t = 0?", "command_verb": "predict"},
   "format": "mcq",
   "options": [
    {"id": "A", "label": "-25k, the tea cools", "is_key": true},
@@ -297,8 +297,8 @@ BC-QA-07006 is `either` and its `multipart_structure` names a single MCQ first, 
   "brief": 3.0
  },
  "word_count": {
-  "full": 572,
-  "brief": 450
+  "full": 571,
+  "brief": 449
  },
  "research_lines": [
   {

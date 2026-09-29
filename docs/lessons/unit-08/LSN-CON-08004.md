@@ -111,7 +111,7 @@ The served order of 2026-09-29: prediction, orientation, bridges, key ideas, str
  "target_id": "BC-CON-08004",
  "unit": "08",
  "skills": ["BC-SKL-08007", "BC-SKL-08008", "BC-SKL-08011"],
- "prediction": {"id": "pr-1", "stem": {"text": "Predict: v(t) = 2t^2 - 10t + 8 meters per second. Which gives the total distance over [0, 5]?", "command_verb": "predict"}, "format": "mcq", "options": [{"id": "A", "label": "The integral of v over [0, 5]", "is_key": false}, {"id": "B", "label": "The absolute value of the integral of v", "is_key": false}, {"id": "C", "label": "The integral of the speed over [0, 5]", "is_key": true}], "resolution": "Total distance is the integral of speed, |v|. Here v is negative on (1, 4), so the split is at 1 and 4, giving 49/3 meters.", "sources": ["BC-CON-08004", "research/units/unit-08-applications-integration.md#8.2 Connecting Position, Velocity, and Acceleration of Functions Using Integrals"]},
+ "prediction": {"id": "pr-1", "stem": {"text": "v(t) = 2t^2 - 10t + 8 meters per second. Which gives the total distance over [0, 5]?", "command_verb": "predict"}, "format": "mcq", "options": [{"id": "A", "label": "The integral of v over [0, 5]", "is_key": false}, {"id": "B", "label": "The absolute value of the integral of v", "is_key": false}, {"id": "C", "label": "The integral of the speed over [0, 5]", "is_key": true}], "resolution": "Total distance is the integral of speed, |v|. Here v is negative on (1, 4), so the split is at 1 and 4, giving 49/3 meters.", "sources": ["BC-CON-08004", "research/units/unit-08-applications-integration.md#8.2 Connecting Position, Velocity, and Acceleration of Functions Using Integrals"]},
  "orientation": {"text": "A response integrates speed, |v|, splitting at sign changes of v when done by hand.", "sources": ["BC-CON-08004", "research/units/unit-08-applications-integration.md#8.2 Connecting Position, Velocity, and Acceleration of Functions Using Integrals"]},
  "key_ideas": [
   {"id": "ki-1", "ek_id": "BC-EK-CHA-4C1", "depth": "core", "text": "Total distance is the integral of |v| over [a, b]. By hand, the zeros of v cut the interval and each piece counts as positive.", "notation": "total distance", "quote": null, "sources": ["BC-EK-CHA-4C1", "ced:153", "research/units/unit-08-applications-integration.md#8.2 Connecting Position, Velocity, and Acceleration of Functions Using Integrals"]}
@@ -150,7 +150,7 @@ The served order of 2026-09-29: prediction, orientation, bridges, key ideas, str
  ],
  "refresher": ["ki-1", "err-BC-ERR-08009", "err-BC-ERR-08010", "err-BC-ERR-99010", "ex-1"],
  "read_minutes": {"full": 3.3, "brief": 2.83},
- "word_count": {"full": 489, "brief": 424},
+ "word_count": {"full": 488, "brief": 423},
  "research_lines": [
   {"file": "research/units/unit-08-applications-integration.md", "line": "Where velocity keeps one sign the two quantities agree up to sign, and where velocity changes sign they differ"}
  ],

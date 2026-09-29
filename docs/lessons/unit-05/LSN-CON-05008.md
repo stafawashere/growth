@@ -121,7 +121,7 @@ BC-QA-05005 is `no_calculator` and one 2-point part of a free-response question,
  "prediction": {
   "id": "pr-1",
   "stem": {
-   "text": "Predict. f' peaks at x = 3 and crosses zero at 4/3 and 5. Where is f's inflection point?",
+   "text": "f' peaks at x = 3 and crosses zero at 4/3 and 5. Where is f's inflection point?",
    "command_verb": "predict"
   },
   "format": "mcq",
@@ -721,8 +721,8 @@ BC-QA-05005 is `no_calculator` and one 2-point part of a free-response question,
   "research/exam/exam-structure.md#Section and part layout"
  ],
  "word_count": {
-  "full": 580,
-  "brief": 443
+  "full": 579,
+  "brief": 442
  },
  "read_minutes": {
   "full": 3.9,

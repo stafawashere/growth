@@ -124,7 +124,7 @@ BC-QA-06016 is `no_calculator`, typically one part of a multipart free response 
  "prediction": {
   "id": "pr-1",
   "stem": {
-   "text": "Predict. \\(\\frac{2(x^2+3)}{x+2}\\) has numerator degree 2 over denominator degree 1. Which first step turns it into terms that can be antidifferentiated one at a time?",
+   "text": "\\(\\frac{2(x^2+3)}{x+2}\\) has numerator degree 2 over denominator degree 1. Which first step turns it into terms that can be antidifferentiated one at a time?",
    "command_verb": "predict"
   },
   "format": "mcq",
@@ -638,8 +638,8 @@ BC-QA-06016 is `no_calculator`, typically one part of a multipart free response 
   "brief": 3.0
  },
  "word_count": {
-  "full": 555,
-  "brief": 441
+  "full": 554,
+  "brief": 440
  }
 }
 ```

@@ -123,7 +123,7 @@ Section I Part A, 2.14 minutes for the MCQ shape (research/exam/exam-structure.m
  "prediction": {
   "id": "pr-1",
   "stem": {
-   "text": "Predict. For large \\(n\\), \\(\\frac{3n+4}{2n^3+5}\\) is close to a constant multiple of \\(\\frac{1}{n^2}\\). What is the multiple?",
+   "text": "For large \\(n\\), \\(\\frac{3n+4}{2n^3+5}\\) is close to a constant multiple of \\(\\frac{1}{n^2}\\). What is the multiple?",
    "command_verb": "predict"
   },
   "format": "short_answer",
@@ -759,8 +759,8 @@ Section I Part A, 2.14 minutes for the MCQ shape (research/exam/exam-structure.m
   "research/exam/exam-structure.md#Section and part layout"
  ],
  "word_count": {
-  "full": 868,
-  "brief": 449
+  "full": 867,
+  "brief": 448
  },
  "read_minutes": {
   "full": 5.8,

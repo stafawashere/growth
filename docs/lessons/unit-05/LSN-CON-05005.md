@@ -125,7 +125,7 @@ BC-QA-05003 has `calculator_status` either, so the lesson takes Section I Part A
  "prediction": {
   "id": "pr-1",
   "stem": {
-   "text": "Predict: f'(x) = 3(x - 1)^2(x + 2) and f'(1) = 0. What does f have at x = 1?",
+   "text": "f'(x) = 3(x - 1)^2(x + 2) and f'(1) = 0. What does f have at x = 1?",
    "command_verb": "predict"
   },
   "format": "mcq",
@@ -663,8 +663,8 @@ BC-QA-05003 has `calculator_status` either, so the lesson takes Section I Part A
   "research/exam/exam-structure.md#Section and part layout"
  ],
  "word_count": {
-  "full": 625,
-  "brief": 446
+  "full": 624,
+  "brief": 445
  },
  "read_minutes": {
   "full": 4.2,

@@ -108,7 +108,7 @@ BC-QA-03005 is `no_calculator`, one or two parts inside the implicit FRQ, so Sec
  "skills": ["BC-SKL-03012", "BC-SKL-03013"],
  "prediction": {
   "id": "pr-1",
-  "stem": {"text": "Predict. With \\(dy/dx=\\frac{3(x-1)(x+1)}{2(y-2)}\\), which part is zero at a horizontal tangent?", "command_verb": "predict"},
+  "stem": {"text": "With \\(dy/dx=\\frac{3(x-1)(x+1)}{2(y-2)}\\), which part is zero at a horizontal tangent?", "command_verb": "predict"},
   "format": "mcq",
   "options": [
    {"id": "A", "label": "The numerator, \\(3(x-1)(x+1)\\)", "is_key": true},
@@ -295,7 +295,7 @@ BC-QA-03005 is `no_calculator`, one or two parts inside the implicit FRQ, so Sec
  ],
  "refresher": ["ki-1", "err-BC-ERR-03012", "err-BC-ERR-03013", "err-BC-ERR-05057", "ex-1"],
  "read_minutes": {"full": 3.5, "brief": 3.0},
- "word_count": {"full": 521, "brief": 449},
+ "word_count": {"full": 520, "brief": 448},
  "research_lines": [
   {"file": "research/units/unit-03-differentiation-composite-implicit-inverse.md", "line": "a candidate satisfying only the condition on dy/dx need not correspond to a point of the curve"}
  ],

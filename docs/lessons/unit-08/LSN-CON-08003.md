@@ -108,7 +108,7 @@ The served order of 2026-09-29: prediction, orientation, bridges, key ideas, str
  "target_id": "BC-CON-08003",
  "unit": "08",
  "skills": ["BC-SKL-08006"],
- "prediction": {"id": "pr-1", "stem": {"text": "Predict: a particle has velocity v(t) = -t^2 + 4t - 3 meters per second. Which expression gives its displacement over [0, 7/2]?", "command_verb": "predict"}, "format": "mcq", "options": [{"id": "A", "label": "The integral of v over [0, 7/2]", "is_key": true}, {"id": "B", "label": "The integral of the absolute value of v over [0, 7/2]", "is_key": false}, {"id": "C", "label": "v(7/2) minus v(0)", "is_key": false}], "resolution": "Displacement is the integral of v itself, so stretches where v is negative subtract. Here it is -7/24 meters. The integral of |v| would be total distance instead.", "sources": ["BC-CON-08003", "research/units/unit-08-applications-integration.md#8.2 Connecting Position, Velocity, and Acceleration of Functions Using Integrals"]},
+ "prediction": {"id": "pr-1", "stem": {"text": "A particle has velocity v(t) = -t^2 + 4t - 3 meters per second. Which expression gives its displacement over [0, 7/2]?", "command_verb": "predict"}, "format": "mcq", "options": [{"id": "A", "label": "The integral of v over [0, 7/2]", "is_key": true}, {"id": "B", "label": "The integral of the absolute value of v over [0, 7/2]", "is_key": false}, {"id": "C", "label": "v(7/2) minus v(0)", "is_key": false}], "resolution": "Displacement is the integral of v itself, so stretches where v is negative subtract. Here it is -7/24 meters. The integral of |v| would be total distance instead.", "sources": ["BC-CON-08003", "research/units/unit-08-applications-integration.md#8.2 Connecting Position, Velocity, and Acceleration of Functions Using Integrals"]},
  "orientation": {"text": "A response integrates velocity itself over the stated interval, keeps the sign, and names the result displacement, the net change in position, not distance.", "sources": ["BC-CON-08003", "research/units/unit-08-applications-integration.md#8.2 Connecting Position, Velocity, and Acceleration of Functions Using Integrals"]},
  "key_ideas": [
   {"id": "ki-1", "ek_id": "BC-EK-CHA-4C1", "depth": "core", "text": "For a particle moving on a line, the integral of velocity over [a, b] is the displacement. Where v is negative the particle moves in the negative direction and that stretch subtracts. A negative displacement is net movement in the negative direction.", "notation": "displacement; net change in position", "quote": null, "sources": ["BC-EK-CHA-4C1", "ced:153", "research/units/unit-08-applications-integration.md#8.2 Connecting Position, Velocity, and Acceleration of Functions Using Integrals"]}
@@ -140,7 +140,7 @@ The served order of 2026-09-29: prediction, orientation, bridges, key ideas, str
  ],
  "refresher": ["ki-1", "err-BC-ERR-99010", "ex-1"],
  "read_minutes": {"full": 2.9, "brief": 2.9},
- "word_count": {"full": 429, "brief": 429},
+ "word_count": {"full": 428, "brief": 428},
  "research_lines": [
   {"file": "research/units/unit-08-applications-integration.md", "line": "the definite integral of velocity over [a,b] is the displacement"}
  ],

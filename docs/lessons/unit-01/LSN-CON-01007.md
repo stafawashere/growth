@@ -128,7 +128,7 @@ Every non-text choice is [inferred], settled by the modality A/B.
  "prediction": {
   "id": "pr-1",
   "stem": {
-   "text": "Predict. At x = 1, f tends to 2 and g to 3, though f(1) = 4, g(1) = -1. With h(x) = x^2 + 2, what does h(f(x))/g(x) approach?",
+   "text": "At x = 1, f tends to 2 and g to 3, though f(1) = 4, g(1) = -1. With h(x) = x^2 + 2, what does h(f(x))/g(x) approach?",
    "command_verb": "predict"
   },
   "format": "short_answer",
@@ -776,8 +776,8 @@ Every non-text choice is [inferred], settled by the modality A/B.
   "brief": 3.0
  },
  "word_count": {
-  "full": 647,
-  "brief": 449
+  "full": 646,
+  "brief": 448
  },
  "research_lines": [
   {

@@ -118,7 +118,7 @@ No figure, motion, interactive or model entry, and the machine record states `no
  "prediction": {
   "id": "pr-1",
   "stem": {
-   "text": "Predict. Substituting x = 2 into \\(\\frac{x^2+x-6}{x^2-6x+8}\\) gives zero over zero. What is \\(\\lim_{x\\to2}\\frac{x^2+x-6}{x^2-6x+8}\\)?",
+   "text": "Substituting x = 2 into \\(\\frac{x^2+x-6}{x^2-6x+8}\\) gives zero over zero. What is \\(\\lim_{x\\to2}\\frac{x^2+x-6}{x^2-6x+8}\\)?",
    "command_verb": "predict"
   },
   "format": "short_answer",
@@ -652,8 +652,8 @@ No figure, motion, interactive or model entry, and the machine record states `no
   "brief": 2.9
  },
  "word_count": {
-  "full": 569,
-  "brief": 435
+  "full": 568,
+  "brief": 434
  }
 }
 ```

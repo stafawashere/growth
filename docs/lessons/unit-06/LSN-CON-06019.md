@@ -126,7 +126,7 @@ BC-QA-06011 is `no_calculator`, typically one part of a multipart free response 
  "prediction": {
   "id": "pr-1",
   "stem": {
-   "text": "Predict. The area under \\(y=\\frac{6x}{(x^2+2)^2}\\) from 1 to \\(b\\) is \\(1-\\frac{3}{b^2+2}\\). What is the area out to infinity?",
+   "text": "The area under \\(y=\\frac{6x}{(x^2+2)^2}\\) from 1 to \\(b\\) is \\(1-\\frac{3}{b^2+2}\\). What is the area out to infinity?",
    "command_verb": "predict"
   },
   "format": "mcq",
@@ -824,8 +824,8 @@ BC-QA-06011 is `no_calculator`, typically one part of a multipart free response 
   "brief": 3.0
  },
  "word_count": {
-  "full": 569,
-  "brief": 450
+  "full": 568,
+  "brief": 449
  }
 }
 ```

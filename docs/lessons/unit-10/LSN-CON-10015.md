@@ -92,7 +92,7 @@ Low (full): prediction, orientation, bridges, ki-1, st-1 with the contrast pair,
  "prediction": {
   "id": "pr-1",
   "stem": {
-   "text": "Predict. \\(S_2\\) is a partial sum of the alternating series for \\(4e^{-x}\\), and at \\(x=\\frac12\\) its first omitted term has size \\(\\frac1{12}\\). The error \\(|4e^{-1/2}-S_2|\\) is",
+   "text": "\\(S_2\\) is a partial sum of the alternating series for \\(4e^{-x}\\), and at \\(x=\\frac12\\) its first omitted term has size \\(\\frac1{12}\\). The error \\(|4e^{-1/2}-S_2|\\) is",
    "command_verb": "predict"
   },
   "format": "mcq",
@@ -789,8 +789,8 @@ Low (full): prediction, orientation, bridges, ki-1, st-1 with the contrast pair,
   "research/exam/exam-structure.md#Section and part layout"
  ],
  "word_count": {
-  "full": 782,
-  "brief": 448
+  "full": 781,
+  "brief": 447
  },
  "read_minutes": {
   "full": 5.3,

@@ -129,7 +129,7 @@ Drawn blocks already present (ki-1 motion, ki-2 interactive), so no figure is ad
  "prediction": {
   "id": "pr-1",
   "stem": {
-   "text": "Predict. \\(g(x)=\\int_2^x f(t)\\,dt\\), with f below the axis on [2, 8] with areas 2, 4 and 2. Find \\(g(8)\\).",
+   "text": "\\(g(x)=\\int_2^x f(t)\\,dt\\), with f below the axis on [2, 8] with areas 2, 4 and 2. Find \\(g(8)\\).",
    "command_verb": "predict"
   },
   "format": "mcq",
@@ -882,8 +882,8 @@ Drawn blocks already present (ki-1 motion, ki-2 interactive), so no figure is ad
   "brief": 3.0
  },
  "word_count": {
-  "full": 683,
-  "brief": 449
+  "full": 682,
+  "brief": 448
  },
  "research_lines": [
   {

@@ -115,7 +115,7 @@ BC-QA-08008 is `either`; the design takes Section I Part A, 2.14 minutes per que
  "prediction": {
   "id": "pr-1",
   "stem": {
-   "text": "Predict: \\(f(x)=-x^2+6x-4\\) and \\(g(x)=2x-1\\) enclose a region with no vertical lines given. What are its limits?",
+   "text": "\\(f(x)=-x^2+6x-4\\) and \\(g(x)=2x-1\\) enclose a region with no vertical lines given. What are its limits?",
    "command_verb": "predict"
   },
   "format": "mcq",
@@ -702,8 +702,8 @@ BC-QA-08008 is `either`; the design takes Section I Part A, 2.14 minutes per que
   "brief": 3.0
  },
  "word_count": {
-  "full": 456,
-  "brief": 447
+  "full": 455,
+  "brief": 446
  },
  "research_lines": [
   {

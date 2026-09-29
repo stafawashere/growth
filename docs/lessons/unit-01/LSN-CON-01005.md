@@ -120,7 +120,7 @@ Every non-text choice is [inferred], settled by the modality A/B.
  "prediction": {
   "id": "pr-1",
   "stem": {
-   "text": "Predict. At x = 5, f heads to 4 from the left, 0 from the right; a dot sits at (5, 2). What is the limit?",
+   "text": "At x = 5, f heads to 4 from the left, 0 from the right; a dot sits at (5, 2). What is the limit?",
    "command_verb": "predict"
   },
   "format": "mcq",
@@ -728,8 +728,8 @@ Every non-text choice is [inferred], settled by the modality A/B.
   "brief": 3.0
  },
  "word_count": {
-  "full": 528,
-  "brief": 449
+  "full": 527,
+  "brief": 448
  },
  "research_lines": [
   {

@@ -93,7 +93,7 @@ Low (full): prediction, orientation, bridges, ki-1, ki-2, st-1 with the contrast
  "prediction": {
   "id": "pr-1",
   "stem": {
-   "text": "Predict. A function has \\(f(1)=3\\), \\(f'(1)=7\\), \\(f''(1)=20\\). In its degree 2 Taylor polynomial about \\(x=1\\), the coefficient of \\((x-1)^2\\) is",
+   "text": "A function has \\(f(1)=3\\), \\(f'(1)=7\\), \\(f''(1)=20\\). In its degree 2 Taylor polynomial about \\(x=1\\), the coefficient of \\((x-1)^2\\) is",
    "command_verb": "predict"
   },
   "format": "mcq",
@@ -878,8 +878,8 @@ Low (full): prediction, orientation, bridges, ki-1, ki-2, st-1 with the contrast
   "research/exam/exam-structure.md#Section and part layout"
  ],
  "word_count": {
-  "full": 800,
-  "brief": 428
+  "full": 799,
+  "brief": 427
  },
  "read_minutes": {
   "full": 5.4,

@@ -108,7 +108,7 @@ Every Unit 10 archetype is `no_calculator`; its MCQ shape is Section I Part A, 2
  "prediction": {
   "id": "pr-1",
   "stem": {
-   "text": "Predict. The terms of \\(\\sum_{n=1}^{\\infty}\\frac{3\\cdot2^n}{5^n}\\) are \\(\\frac65,\\frac{12}{25},\\frac{24}{125}\\). Each is the same multiple of the term before it. What is the multiple?",
+   "text": "The terms of \\(\\sum_{n=1}^{\\infty}\\frac{3\\cdot2^n}{5^n}\\) are \\(\\frac65,\\frac{12}{25},\\frac{24}{125}\\). Each is the same multiple of the term before it. What is the multiple?",
    "command_verb": "predict"
   },
   "format": "mcq",
@@ -595,8 +595,8 @@ Every Unit 10 archetype is `no_calculator`; its MCQ shape is Section I Part A, 2
   "brief": 2.3
  },
  "word_count": {
-  "full": 437,
-  "brief": 336
+  "full": 436,
+  "brief": 335
  },
  "research_lines": [
   {

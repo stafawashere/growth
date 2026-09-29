@@ -121,7 +121,7 @@ The served order of 2026-09-29: prediction, orientation, bridges, key ideas, str
  "target_id": "BC-CON-08002",
  "unit": "08",
  "skills": ["BC-SKL-08004", "BC-SKL-08005"],
- "prediction": {"id": "pr-1", "stem": {"text": "Predict: W(t) = 3e^(t/2) + t on [1, 3]. Which is the average rate of change of W?", "command_verb": "predict"}, "format": "mcq", "options": [{"id": "A", "label": "Integral of W over [1, 3], divided by 2", "is_key": false}, {"id": "B", "label": "W(3) minus W(1), divided by 2", "is_key": true}, {"id": "C", "label": "W'(1) plus W'(3), halved", "is_key": false}], "resolution": "The change in W over the change in t, in gallons per hour.", "sources": ["BC-CON-08002", "research/units/unit-08-applications-integration.md#8.1 Finding the Average Value of a Function on an Interval"]},
+ "prediction": {"id": "pr-1", "stem": {"text": "W(t) = 3e^(t/2) + t on [1, 3]. Which is the average rate of change of W?", "command_verb": "predict"}, "format": "mcq", "options": [{"id": "A", "label": "Integral of W over [1, 3], divided by 2", "is_key": false}, {"id": "B", "label": "W(3) minus W(1), divided by 2", "is_key": true}, {"id": "C", "label": "W'(1) plus W'(3), halved", "is_key": false}], "resolution": "The change in W over the change in t, in gallons per hour.", "sources": ["BC-CON-08002", "research/units/unit-08-applications-integration.md#8.1 Finding the Average Value of a Function on an Interval"]},
  "no_figure_reason": "The topic gives contextual, symbolic and calculator conversions, and no skill carries a figure-bearing representation. The key idea is a pair of formulas with units, with no process to draw.",
  "orientation": {"text": "The wording picks the formula: integral quotient or difference quotient.", "sources": ["BC-CON-08002", "research/units/unit-08-applications-integration.md#8.1 Finding the Average Value of a Function on an Interval"]},
  "key_ideas": [
@@ -160,7 +160,7 @@ The served order of 2026-09-29: prediction, orientation, bridges, key ideas, str
  ],
  "refresher": ["ki-1", "err-BC-ERR-99015", "err-BC-ERR-99005", "ex-1"],
  "read_minutes": {"full": 3.5, "brief": 3.0},
- "word_count": {"full": 512, "brief": 450},
+ "word_count": {"full": 511, "brief": 449},
  "research_lines": [
   {"file": "research/units/unit-08-applications-integration.md", "line": "An average rate of change carries the units of the function divided by the units of the input"}
  ],

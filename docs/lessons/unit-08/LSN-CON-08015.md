@@ -113,7 +113,7 @@ BC-QA-08011 is `either`; the design takes Section I Part A, 2.14 minutes per que
  "prediction": {
   "id": "pr-1",
   "stem": {
-   "text": "Predict: A solid's base lies between \\(f(x)=-x^2+3x+1\\) and \\(g(x)=x+1\\) for \\(0\\le x\\le 2\\), with square cross sections perpendicular to the x-axis. What is the side of the slice at x?",
+   "text": "A solid's base lies between \\(f(x)=-x^2+3x+1\\) and \\(g(x)=x+1\\) for \\(0\\le x\\le 2\\), with square cross sections perpendicular to the x-axis. What is the side of the slice at x?",
    "command_verb": "predict"
   },
   "format": "mcq",
@@ -730,8 +730,8 @@ BC-QA-08011 is `either`; the design takes Section I Part A, 2.14 minutes per que
   "brief": 3.0
  },
  "word_count": {
-  "full": 532,
-  "brief": 446
+  "full": 531,
+  "brief": 445
  },
  "research_lines": [
   {

@@ -112,7 +112,7 @@ BC-QA-04009 is `no_calculator` and one part of a graphical analysis FRQ, so Sect
  "prediction": {
   "id": "pr-1",
   "stem": {
-   "text": "Predict: as x tends to 1, f(3x) - 2 and x - 1 both tend to 0. What follows for their ratio's limit?",
+   "text": "As x tends to 1, f(3x) - 2 and x - 1 both tend to 0. What follows for their ratio's limit?",
    "command_verb": "predict"
   },
   "format": "mcq",
@@ -717,8 +717,8 @@ BC-QA-04009 is `no_calculator` and one part of a graphical analysis FRQ, so Sect
   "research/exam/exam-structure.md#Section and part layout"
  ],
  "word_count": {
-  "full": 567,
-  "brief": 448
+  "full": 566,
+  "brief": 447
  },
  "read_minutes": {
   "full": 3.78,

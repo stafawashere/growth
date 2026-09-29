@@ -116,7 +116,7 @@ BC-QA-04005 is `calculator` with a multipart free response structure, so Section
  "prediction": {
   "id": "pr-1",
   "stem": {
-   "text": "Predict. M(t) = 20 + 60(1 - e^(-t/8)) milligrams at t hours. What does M'(4) measure?",
+   "text": "M(t) = 20 + 60(1 - e^(-t/8)) milligrams at t hours. What does M'(4) measure?",
    "command_verb": "predict"
   },
   "format": "mcq",
@@ -642,8 +642,8 @@ BC-QA-04005 is `calculator` with a multipart free response structure, so Section
   "research/exam/exam-structure.md#Section and part layout"
  ],
  "word_count": {
-  "full": 565,
-  "brief": 445
+  "full": 564,
+  "brief": 444
  },
  "read_minutes": {
   "full": 3.8,

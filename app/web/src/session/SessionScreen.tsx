@@ -1,7 +1,9 @@
 import { useCallback, useEffect, useRef, useState } from "react";
 import {
+   answerLessonCheck,
    closeSession,
    openSession,
+   postSessionLessonEvent,
    readFeedback,
    readNextItem,
    readSession,
@@ -15,9 +17,16 @@ import type {
    AttemptResult,
    Confidence,
    FeedbackPayload,
+   LessonCheckAnswerBody,
+   LessonEventBody,
+   QueueSlot,
    ServedItem,
+   ServedLesson,
+   SessionLessonSlot,
    SessionPayload
 } from "../api/types";
+import { isServedLesson } from "../api/types";
+import { LessonReader } from "../lessons/LessonReader";
 import { FigureView } from "../figures/FigureView";
 import { MathText } from "../math/MathText";
 import { MathValue } from "../math/MathValue";
@@ -50,12 +59,27 @@ interface Remaining {
    minutes: number;
 }
 
-/* GET /sessions/{id} lists the queue slots not yet answered, the current one included, and
-   queue.forecasts holds the minute forecast per archetype, so the two give what is left. */
-export function remainingFrom(payload: SessionPayload): Remaining {
-   const minutes = payload.remaining.reduce((total, slot) => total + (payload.queue.forecasts[slot.archetype_id] ?? 0), 0);
+function isLessonSlot(slot: QueueSlot | SessionLessonSlot): slot is SessionLessonSlot {
+   return slot.kind === "lesson" || slot.kind === "refresher";
+}
 
-   return { items: payload.remaining.length, minutes: Math.ceil(minutes) };
+/* GET /sessions/{id} lists the queue slots not yet answered, the current one included, and
+   queue.forecasts holds the minute forecast per archetype, so the two give what is left. A lesson
+   slot is not an item: its minutes count and it does not (15, Session assembly forecast). */
+export function remainingFrom(payload: SessionPayload): Remaining {
+   let minutes = 0;
+   let items = 0;
+
+   for (const slot of payload.remaining) {
+      if (isLessonSlot(slot)) {
+         minutes += slot.minutes;
+      } else {
+         minutes += payload.queue.forecasts[slot.archetype_id] ?? 0;
+         items += 1;
+      }
+   }
+
+   return { items, minutes: Math.ceil(minutes) };
 }
 
 export function remainingSentence(remaining: Remaining) {
@@ -98,6 +122,12 @@ function isActivatingTarget(target: HTMLElement) {
 
 export const NEXT_LABEL = "Next item";
 
+/* Every session lesson event carries the slot's band and reason: the route tells a refresher
+   (T1 to T5) from a first-contact lesson by the reason, and the forecast reads the band. */
+function lessonEventBody(lesson: ServedLesson, fields: Omit<LessonEventBody, "band" | "reason">): LessonEventBody {
+   return { ...fields, band: lesson.band, reason: lesson.reason };
+}
+
 /* resumeSessionId names the open session GET /progress reported, and null opens a new one. It
    has no default, because opening a session writes a row and resuming one must not. */
 
@@ -108,6 +138,8 @@ export interface SessionScreenProps {
 export function SessionScreen({ resumeSessionId }: SessionScreenProps) {
    const [session, setSession] = useState<SessionPayload | null>(null);
    const [item, setItem] = useState<ServedItem | null>(null);
+   const [lesson, setLesson] = useState<ServedLesson | null>(null);
+   const lessonOpenedAt = useRef(0);
    const [committed, setCommitted] = useState<AttemptResult | null>(null);
    const [feedback, setFeedback] = useState<FeedbackPayload | null>(null);
    const [feedbackUnreadable, setFeedbackUnreadable] = useState(false);
@@ -148,11 +180,28 @@ export function SessionScreen({ resumeSessionId }: SessionScreenProps) {
          await closeSession(sessionId);
 
          setItem(null);
+         setLesson(null);
          setFinished(true);
 
          return;
       }
 
+      /* 15 UI: a lesson or refresher slot is the session's lesson state, switched on entry.kind;
+         it is opened here so the server records served with its band. */
+      if (isServedLesson(next.item)) {
+         const served = next.item;
+
+         setItem(null);
+         setLesson(served);
+         lessonOpenedAt.current = Date.now();
+         postSessionLessonEvent(sessionId, served.lesson_id, lessonEventBody(served, { event: "opened", elapsed_ms: 0 })).catch(
+            () => undefined
+         );
+
+         return;
+      }
+
+      setLesson(null);
       setItem(next.item);
 
       Promise.resolve()
@@ -382,6 +431,37 @@ export function SessionScreen({ resumeSessionId }: SessionScreenProps) {
       }
    }, [session]);
 
+   const leaveLesson = useCallback(
+      async (event: "completed" | "skipped", sectionIndex?: number) => {
+         const isIdle = !inFlight.current;
+         const canLeave = session !== null && lesson !== null && isIdle;
+
+         if (!canLeave) {
+            return;
+         }
+
+         inFlight.current = true;
+         setActionFailed(false);
+
+         const skippedAt = sectionIndex === undefined ? undefined : lesson.plan.sections[sectionIndex]?.id;
+         const elapsed = Math.max(0, Date.now() - lessonOpenedAt.current);
+
+         try {
+            await postSessionLessonEvent(
+               session.id,
+               lesson.lesson_id,
+               lessonEventBody(lesson, skippedAt === undefined ? { event, elapsed_ms: elapsed } : { event, elapsed_ms: elapsed, section_id: skippedAt })
+            );
+            await advance(session.id);
+         } catch {
+            setActionFailed(true);
+         } finally {
+            inFlight.current = false;
+         }
+      },
+      [session, lesson, advance]
+   );
+
    shortcut.current = () => undefined;
 
    if (finished) {
@@ -400,6 +480,52 @@ export function SessionScreen({ resumeSessionId }: SessionScreenProps) {
 
    if (loadFailed) {
       return <LoadFailed testId="session-failed" onRetry={retryLoading} />;
+   }
+
+   if (lesson !== null && session !== null) {
+      const shown = lesson;
+      const sessionId = session.id;
+
+      function sectionViewed(sectionId: string, mode: string, elapsedMs: number) {
+         postSessionLessonEvent(sessionId, shown.lesson_id, lessonEventBody(shown, { event: "section_viewed", section_id: sectionId, mode, elapsed_ms: elapsedMs })).catch(
+            () => undefined
+         );
+      }
+
+      function checkAnswer(checkId: string, body: LessonCheckAnswerBody) {
+         return answerLessonCheck(shown.lesson_id, checkId, body);
+      }
+
+      return (
+         <div data-testid="session-lesson" data-lesson-kind={shown.kind}>
+            <div className="session-meta">
+               {remaining !== null ? (
+                  <span className="muted" data-testid="session-remaining">
+                     {remainingSentence(remaining)}
+                  </span>
+               ) : null}
+            </div>
+
+            {actionFailed ? <ActionFailed /> : null}
+
+            {shown.lesson === null ? (
+               <LoadFailed testId="session-lesson-failed" onRetry={() => leaveLesson("skipped", 0)} />
+            ) : (
+               <LessonReader
+                  key={`${shown.lesson_id}-${shown.before_item_id}`}
+                  lesson={shown.lesson}
+                  plan={shown.plan}
+                  band={shown.band}
+                  context="session"
+                  conceptName={shown.concept_name ?? undefined}
+                  onComplete={() => leaveLesson("completed")}
+                  onSkip={(sectionIndex) => leaveLesson("skipped", sectionIndex)}
+                  onSectionViewed={sectionViewed}
+                  onCheckAnswer={checkAnswer}
+               />
+            )}
+         </div>
+      );
    }
 
    if (item === null) {
@@ -556,7 +682,7 @@ export function SessionScreen({ resumeSessionId }: SessionScreenProps) {
                {marksSteps ? <StepMarks marks={feedback.step_marks} /> : null}
 
                {showsElaborated ? (
-                  <ElaboratedPanel elaborated={feedback.elaborated} sentence={feedback.sentence} />
+                  <ElaboratedPanel elaborated={feedback.elaborated} sentence={feedback.sentence} lessonLink={feedback.lesson_link ?? null} />
                ) : null}
 
                <SelfExplanationPrompt

@@ -129,7 +129,7 @@ For BC-QA-05006 and 05007 the first line is itself a point (BC-PT-99013), so wri
 - BC-SKL-05059 is selected when the stem asks for a vertical tangent (dy/dx fails to exist): the denominator is zero and the numerator is not. Error: BC-ERR-05058, vertical tangent points reported without a matching point on the relation (ced:110).
 - Both finish at BC-SKL-05060, solving the defining relation and the derived condition together; BC-ERR-05059 (one coordinate reported where a point was asked for, ced:110) is shared.
 
-The derived sets hold no set for the first derivative test against the second derivative test against the candidates test, although BC-SKL-05039 is a choice between tests and sg-26:8 and sg-25:19 score the choice. Every skill's `confusable_with` is empty (docs/plan/15-lessons.md#Methods, thought process and scoring habits). Whether a second decision lesson for that trio is warranted is [inferred]; settled by adding `adaptive.common_confusions` links among BC-SKL-05020, 05036, 05026 and rerunning `--sets`.
+The derived sets hold no set for the first derivative test against the second derivative test against the candidates test, although BC-SKL-05039 is a choice between tests and sg-26:8 and sg-25:19 score the choice. The `confusable_with` links tools/derive_confusable.py filled do not join those three skills. Whether a second decision lesson for that trio is warranted is [inferred]; settled by adding `adaptive.common_confusions` links among BC-SKL-05020, 05036, 05026 and rerunning `--sets`.
 
 ## 4. Recurring traps
 

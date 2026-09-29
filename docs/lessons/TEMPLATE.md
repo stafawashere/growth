@@ -36,7 +36,7 @@ would settle it.
 | machine_record | the JSON block parses and carries the keys for its kind; `time.exam_part` is one of I-A, I-B, II-A, II-B with the matching `budget_minutes` |
 | manifest_id | file name, `id`, `kind`, `target_id` and location agree with the manifest computed from the snapshot; a decision lesson's skills are a confusable set |
 | referential | every `BC-*` id anywhere in the document is active in the snapshot or in data/ids.json |
-| citations | every `ced:`, `sg-YY:` and `cr-YY:` page cited has a cached page under cache/text/ |
+| citations | every `ced:`, `sg-YY:`, `cr-YY:` and `crabbc-YY:` page cited has a cached page under cache/text/ |
 | research_lines | every `research/...md#heading` exists, and every `research_lines` entry's `line` is a substring of its file |
 | caps | orientation 60 words; key idea 120 words each, at most 2 core; strategy 80 words each, at most 3; cue 20 words; why 25 words; bridge 60 words; at most 4 error blocks; 2 or 3 checks; 2 to 4 decision stems |
 | band_caps | `word_count.full` and `.brief` equal the words the low and mid plans serve; full at most 900 words and 6 minutes, brief at most 450 and 3; minutes never below words at 150 per minute |

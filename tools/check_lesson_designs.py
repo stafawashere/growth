@@ -99,7 +99,7 @@ KIND_BY_PREFIX = {"LSN-CON": "concept", "LSN-PRQ": "prerequisite", "LSN-DEC": "d
 
 EXAM_PARTS = {"I-A": 2.14, "I-B": 2.92, "II-A": 15.0, "II-B": 15.0}
 BC_ID = re.compile(r"\bBC-[A-Z]{2,4}-[A-Z0-9]{2,}(?:-[A-Z0-9]+)*\b")
-PAGE_CITATION = re.compile(r"\b(ced|sg-\d{2}|cr-\d{2}):(\d+)\b")
+PAGE_CITATION = re.compile(r"\b(ced|sg-\d{2}|cr-\d{2}|crabbc-\d{2}):(\d+)\b")
 RESEARCH_CITATION = re.compile(r"research/[\w\-/.]+\.md(?:#[^\n\]\)|,;`]+)?")
 LOOSE_TAIL = re.compile(r"[.,;:]+$")
 HEADING = re.compile(r"^## (.+?)\s*$")

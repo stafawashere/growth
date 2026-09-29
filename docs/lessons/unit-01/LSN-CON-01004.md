@@ -32,7 +32,7 @@ The three skills map four BC-EK: BC-EK-LIM-1C1 (BC-SKL-01010, 01016; ced:40), BC
 - BC-QA-01001 (research/question-analysis/question-archetypes.md#BC-QA-01001 Limit estimated from a graph including one sided values): a graph with breaks, one sided and two sided limits at named inputs. The signal is a superscript sign on the arrow, or two different heights at one input.
 - BC-QA-01002 (research/question-analysis/question-archetypes.md#BC-QA-01002 Limit estimated from a table of values): rows approaching the target from both sides, sometimes one side only.
 
-The contrast pair on st-1 takes its near miss from the unit README's neighbour table: one piecewise rule asked once for the existence of the limit at a boundary and once for continuity there, which also needs the value and a comparison (BC-CON-01013). The separating feature is whether a limit or continuity is asked.
+The contrast pair on st-1 sets BC-QA-01006's own stem, continuity at a piecewise boundary with a justification, against a near miss from BC-QA-01001: a graph with an open circle where only the limit is asked. The separating feature is whether the function value at the input is asked, the first line of BC-QA-01006's `expected_solution_path`.
 
 What says "not this concept": a stem asking whether f is continuous also needs the function value and its comparison with the limit (BC-CON-01013); a stem with outputs growing without bound or oscillating asks which failure mode applies (BC-CON-01005). Both from the unit README's neighbour table.
 
@@ -95,14 +95,14 @@ Every non-text choice is [inferred], settled by the modality A/B.
 
 - Low (full), served order: prediction, orientation, bridges when gated, ki-1 to ki-4, st-1 with its contrast pair, st-2, st-3, ex-1, chk-1, both error blocks, chk-2.
 - Mid (brief): prediction, orientation, bridges when gated, ki-1, st-1 with its contrast pair, ex-1, chk-1, both error blocks, chk-2.
-- Totals: full 606 words, 4.05 minutes (cap 900 and 6); brief 448 words, 3.0 minutes (cap 450 and 3).
+- Totals: full 607 words, 4.05 minutes (cap 900 and 6); brief 449 words, 3.0 minutes (cap 450 and 3).
 - Refresher: ki-1, err-BC-ERR-01002, err-BC-ERR-01017, ex-1.
 
 ## Sources
 
 - BC-CON-01004; BC-SKL-01010, BC-SKL-01016, BC-SKL-01023; BC-EK-LIM-1C1, BC-EK-LIM-1C2, BC-EK-LIM-1C5, BC-EK-LIM-1D1; ced:40, ced:41, ced:42
 - BC-QA-01006, BC-QA-01001, BC-QA-01002
-- Prediction pr-1 and the contrast pair: BC-CON-01004, BC-CON-01013
+- Prediction pr-1: BC-CON-01004; contrast pair: BC-QA-01006, BC-QA-01001
 - BC-ERR-01002, BC-ERR-01017; BC-MIS-01001, BC-MIS-01002, BC-MIS-01009, BC-MIS-01019
 - BC-PRQ-01003, BC-PRQ-06005
 - research/units/unit-01-limits-continuity.md#1.3 Estimating Limit Values from Graphs
@@ -244,14 +244,14 @@ Every non-text choice is [inferred], settled by the modality A/B.
    "evidence_tag": "inferred",
    "contrast": {
     "this": {
-     "text": "f(x) = x + 2 for x < 3, 8 - x for x ≥ 3. Does the limit at x = 3 exist?",
+     "text": "f(x) = x + 2 for x < 3, 8 - x for x ≥ 3. Is f continuous at x = 3? Justify.",
      "archetype_id": "BC-QA-01006"
     },
     "not_this": {
-     "text": "f(x) = x + 2 for x < 3, 8 - x for x ≥ 3. Is f continuous at x = 3?",
-     "why_not": "Continuity also needs f(3) and a comparison."
+     "text": "From a graph of g with an open circle at (3, 5), find the limit at x = 3.",
+     "why_not": "Only the limit is asked, not g(3)."
     },
-    "feature": "Limit or continuity."
+    "feature": "Whether the value at the input is asked."
    }
   },
   {
@@ -817,8 +817,8 @@ Every non-text choice is [inferred], settled by the modality A/B.
   "brief": 3.0
  },
  "word_count": {
-  "full": 606,
-  "brief": 448
+  "full": 607,
+  "brief": 449
  },
  "research_lines": [
   {

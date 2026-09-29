@@ -39,84 +39,104 @@
   "auditor": "claude-opus-5-5",
   "blocks": [
    {
+    "id": "prediction",
+    "verdict": "ok",
+    "evidence": "SymPy limit (4 sqrt(9+h) - 12)/h at 0 = 2/3, a slope of 4 sqrt x at 9, so B is the only true option; A false (the limit exists), C false (4 sqrt 9 = 12 is the height, not 2/3); resolution 22 words, from BC-CON-02006 description_plain; no verdict word or id."
+   },
+   {
     "id": "orientation",
     "verdict": "ok",
-    "evidence": "Paraphrase of BC-CON-02006, BC-QA-02003 expected_solution_path and BC-ERR-02009; 48 words."
+    "evidence": "Paraphrase of BC-CON-02006, BC-QA-02003 expected_solution_path and BC-ERR-02009; 48 words.",
+    "note": "unchanged since 2026-09-29"
    },
    {
     "id": "ki-1",
     "verdict": "ok",
-    "evidence": "LIM-3.A.1 quote verbatim on ced:66; rule list is the FUN-3.A.4 set (sin, cos, e^x, ln) on ced:66; parenthetical citations drop at render.",
-    "reaudited": "2026-09-29"
+    "evidence": "fixed 2026-09-29: the missing full stop restored, 'derivative at the base. Match'."
    },
    {
     "id": "st-1",
     "verdict": "ok",
-    "evidence": "Cue, first line and rival (BC-ERR-02009) from BC-QA-02003 common_givens, expected_solution_path[0] and wrong_approaches."
+    "evidence": "fixed 2026-09-29: rival now opens '\\(\\frac{0}{0}\\) read as unresolvable', the 'Rival:' label removed."
+   },
+   {
+    "id": "st-1.contrast",
+    "verdict": "ok",
+    "evidence": "fixed 2026-09-29: not_this is now lim x to 2 of (x^2-4)/(x^2-x-2), whose denominator is not the input change x-2, so no derivative is matched; SymPy factor gives (x-2)(x+2)/((x-2)(x+1)), limit 4/3, both parts 0 at 2 (BC-SKL-01024 factoring, research/units/unit-01 line 413). why_not: 'The denominator is not the input change \\(x-2\\), so no derivative matches, and factoring out \\(x-2\\) gives \\(\\frac{4}{3}\\).' feature: 'A denominator that is exactly the change in input, under a difference of one function's values.', which the this stem has (h, with 5e^(2+h)-5e^2; SymPy limit 5e^2) and the near miss lacks."
    },
    {
     "id": "ex-1",
     "verdict": "ok",
-    "evidence": "SymPy: limit h to 0 of (4 sqrt(9+h) - 12)/h = 2/3; d/dx 4 sqrt x = 2/sqrt x."
+    "evidence": "SymPy: limit h to 0 of (4 sqrt(9+h) - 12)/h = 2/3; d/dx 4 sqrt x = 2/sqrt x.",
+    "note": "unchanged since 2026-09-29"
    },
    {
     "id": "err-BC-ERR-02009",
     "verdict": "ok",
-    "evidence": "Verbatim from BC-ERR-02009; possible reason quotes BC-MIS-02004."
+    "evidence": "fix_prompt true with relation distinct; text and expr unchanged; wrong DNE against right 2/3."
    },
    {
     "id": "err-BC-ERR-02010",
     "verdict": "ok",
-    "evidence": "Verbatim observed behaviour; wrong base 12 gives 2/sqrt 12, distinct from 2/3."
+    "evidence": "fix_prompt true with relation distinct; SymPy 2/sqrt 12 = sqrt(3)/3 = 0.5774 differs from 2/3."
    },
    {
     "id": "err-BC-ERR-02024",
     "verdict": "ok",
-    "evidence": "Wrong step reports the function value where the derivative value is called for, the record's move, outside the product or quotient rule setting (carry-over listed as inferred); possible_reason substring of BC-MIS-02014; SymPy 4*sqrt(9) = 12, limit (4 sqrt(9+h) - 12)/h at 0 = 2/3; distinct.",
-    "reaudited": "2026-09-29"
+    "evidence": "fix_prompt true with relation distinct; SymPy 4 sqrt 9 = 12 differs from 2/3."
    },
    {
     "id": "representations",
     "verdict": "ok",
-    "evidence": "Null; BC-SKL-02035 carries BC-REP-01 only."
+    "evidence": "Null; BC-SKL-02035 carries BC-REP-01 only.",
+    "note": "unchanged since 2026-09-29"
    },
    {
     "id": "BC-PRQ-02005",
     "verdict": "ok",
-    "evidence": "Paraphrase of BC-PRQ-02005 description_plain and failure_signature."
+    "evidence": "Paraphrase of BC-PRQ-02005 description_plain and failure_signature.",
+    "note": "unchanged since 2026-09-29"
    },
    {
     "id": "chk-1",
     "verdict": "ok",
-    "evidence": "SymPy: 2/sqrt(9) = 2/3."
+    "evidence": "SymPy: 2/sqrt(9) = 2/3.",
+    "note": "unchanged since 2026-09-29"
    },
    {
     "id": "chk-2",
     "verdict": "ok",
-    "evidence": "SymPy: limit of (3 ln(1/2+t) - 3 ln(1/2))/t = 6."
+    "evidence": "SymPy: limit of (3 ln(1/2+t) - 3 ln(1/2))/t = 6.",
+    "note": "unchanged since 2026-09-29"
    },
    {
     "id": "chk-3",
     "verdict": "ok",
     "evidence": "SymPy limit (2 sin(pi/3 + h) - sqrt 3)/h = 1 = key; A 2 = 2cos 0 and B 2cos(sqrt 3) are wrong inputs (BC-ERR-02010 'evaluates its derivative at the wrong input'); D DNE is BC-ERR-02009 (difference quotient treated as unresolvable).",
-    "reaudited": "2026-09-29"
+    "note": "unchanged since 2026-09-29"
+   },
+   {
+    "id": "no_figure_reason",
+    "verdict": "ok",
+    "evidence": "Bundle: BC-SKL-02035 representations ['BC-REP-01'] only; ki-1 describes a symbolic match, not a process; topic 2.7 Representations names BC-REP-01 only."
    }
   ],
   "advice": [
-   "A second example from a sin, cos, exp or ln family would align ex-1 with the rules FUN-3A4 names; ex-1 uses sqrt x, whose rule belongs to topic 2.5.",
-   "Text delivery suits a symbolic recognition; the lesson teaches the stem (0/0 difference quotient shape), the first line (match f and a) and the rival (does not exist) well."
+   "st-1.contrast: pick a near miss that is not a difference quotient, e.g. a 0/0 limit whose denominator is not the shift, such as \\(\\lim_{x\\to3}\\frac{x^2-9}{x^2-x-6}\\), or keep \\(\\frac{h^2+5h}{h}\\) and say it is also a difference quotient (of \\(x^2+5x\\) at 0) that algebra resolves faster, with the feature naming a known transcendental or root function.",
+   "ki-1: restore the full stop before 'Match'.",
+   "st-1 rival: drop the leading 'Rival:' to match the other v2 designs."
   ],
   "counts": {
-   "ok": 12,
+   "ok": 15,
    "unsourced": 0,
    "wrong": 0,
    "over_cap": 0,
    "lint": 0
-  },
-  "fix_notes": [
-   "ki-1 rules now sin, cos, e^x, ln (FUN-3A4 scope); err-BC-ERR-02024 dropped with BC-MIS-02011, BC-MIS-02014 sources; chk-3 option A now 'The limit is 2.' via BC-ERR-02010; word_count 361/342.",
-   "Left: ex-1 still uses the sqrt family (the archetype template draw; its rule is not sourced to an EK in this bundle, not flagged); preference for a second example from a FUN-3A4 family.",
-   "2026-09-29: error_blocks fix. err-BC-ERR-02024 restored as the third block (low band only). Wrong f(9) = 4*sqrt(9) = 12 reported as the limit, right f'(9) = 2/3, distinct; possible_reason 'the height is used as a slope' from BC-MIS-02014. The record's product or quotient rule setting carried to this draw is listed as inferred. word_count.full 411. No check changed."
-  ]
- }
+  }
+ },
+ "fix_notes": [
+  "st-1.contrast not_this redrawn from (h^2+5h)/h, itself a difference quotient of x^2+5x at 0, to (x^2-4)/(x^2-x-2) at 2 (SymPy limit 4/3); feature and why_not rewritten; Recognition prose updated.",
+  "st-1 rival label 'Rival:' removed; ki-1 full stop restored.",
+  "word_count 492/423 to 496/427, read_minutes 3.3/2.9 to 3.4/2.9. No example, check stem, key or option changed."
+ ]
 }

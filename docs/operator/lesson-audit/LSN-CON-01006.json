@@ -48,121 +48,131 @@
   "auditor": "claude-opus-5-5",
   "blocks": [
    {
+    "id": "prediction",
+    "verdict": "ok",
+    "evidence": "fixed 2026-09-29: stem now 'Predict. Both sides of f's graph approach an open circle at (3, 2). A dot sits at (3, 0). What is the limit at x = 3?', so the jump reading is excluded and only B (2) is true; SymPy one sided limits of x - 1 and 6 - 4x/3 at 3 are both 2, f(3) = 0 makes A false, C false. Prediction prose names both sides."
+   },
+   {
     "id": "orientation",
     "verdict": "ok",
-    "evidence": "28 words; paraphrases BC-CON-01006 description_plain (suggests but cannot prove) and the 1.3 and 1.4 estimate lines; figure unchanged, SymPy x-1 and 6-4x/3 both tend to 2 at 3.",
-    "reaudited": "2026-09-29"
+    "evidence": "Shortened to 'reads the height each side approaches'; SKL-01009 description_plain and the 1.3 heading; figure unchanged."
    },
    {
     "id": "ki-1",
     "verdict": "ok",
-    "evidence": "LIM-1.C.5 on ced:41 (numerical information estimates limits) and the 1.4 table line; ids dropped from served text only; table_sweep frames approach 3 from both sides.",
-    "reaudited": "2026-09-29"
+    "evidence": "Shortened paraphrase of LIM-1.C.5 (ced:41) and BC-CON-01006 description_formal (table spacing can conceal behaviour); motion unchanged."
    },
    {
     "id": "ki-2",
     "verdict": "ok",
     "evidence": "Paraphrase of LIM-1.C.2; quote verbatim on ced:40.",
-    "reaudited": "2026-09-29"
+    "note": "unchanged since 2026-09-29"
    },
    {
     "id": "ki-3",
     "verdict": "ok",
-    "evidence": "Now core; LIM-1.C.3 quote verbatim on ced:40 and the 1.3 Scale paragraph (estimate rather than proof); SymPy limit((x**2-4)/(x-2), x, 2) = 4, the narrow window [1.9, 2.1] x [3.9, 4.1] holds the hole at (2, 4).",
-    "reaudited": "2026-09-29"
+    "evidence": "Quote dropped, tag now inferred; 'a window can hide a hole' paraphrases LIM-1.C.3 and the 1.3 Scale paragraph; figure unchanged."
    },
    {
     "id": "st-1",
     "verdict": "ok",
-    "evidence": "BC-QA-01001 givens, path[0], rival BC-ERR-01001."
+    "evidence": "Method 'Read each side's height.' has no label and is BC-QA-01001 path[1..2]; rival BC-ERR-01001 now in sources only."
+   },
+   {
+    "id": "st-1.contrast",
+    "verdict": "ok",
+    "evidence": "fixed 2026-09-29: not_this now 'Evaluate the limit of \\((x^2 - 4)/(x - 2)\\) at x = 2.' in LaTeX; SymPy limit is 4, content unchanged."
    },
    {
     "id": "st-2",
     "verdict": "ok",
-    "evidence": "BC-QA-01002 givens, path[0..1], rival BC-ERR-01005."
+    "evidence": "Label 'First line:' removed; method is BC-QA-01002 path[0..1]; id moved to sources."
    },
    {
     "id": "st-3",
     "verdict": "ok",
-    "evidence": "BC-QA-01013 givens, path[0], rival BC-ERR-01002."
+    "evidence": "Label removed; method is BC-QA-01013 path[0..1]; id moved to sources."
    },
    {
     "id": "ex-1",
     "verdict": "ok",
-    "evidence": "SymPy: x-1 at 0 = -1, limit at 3 from left = 2; 6-4x/3 at 6 = -2, limit at 3 from right = 2; key 2, dot at 0 separate."
+    "evidence": "SymPy: x-1 at 0 = -1, limit at 3 from left = 2; 6-4x/3 at 6 = -2, limit at 3 from right = 2; key 2, dot at 0 separate.",
+    "note": "unchanged since 2026-09-29"
    },
    {
     "id": "ex-2",
     "verdict": "ok",
-    "evidence": "Oscillate rule from BC-QA-01002 notes: 2+3(0.1) = 2.3, -1-2(0.01) = -1.02, 2+3(0.001) = 2.003, -1-2(0.0001) = -1.0002; key 'suggests that the limit does not exist' meets the spec invariant."
+    "evidence": "fixed 2026-09-29: shown steps 1 and 2 now carry the two values the outputs alternate between, expr 2 and expr -1 (relation new), and the withheld step 3 carries the conclusion with expr DNE; fade_from 3 kept. SymPy on the spec's row model: rows 2.3, -1.02, 2.003, -1.0002, odd rows tend to 2, even rows to -1. Solution path prose updated."
    },
    {
     "id": "what_a_reader_scores",
     "verdict": "ok",
-    "evidence": "Empty; no point_types on the three archetypes."
+    "evidence": "Empty; no point_types on the three archetypes.",
+    "note": "unchanged since 2026-09-29"
    },
    {
     "id": "err-BC-ERR-01001",
     "verdict": "ok",
-    "evidence": "Verbatim record text; wrong 0 against 2."
+    "evidence": "fix_prompt true with relation distinct; wrong 0 against right 2, no expr rewritten."
    },
    {
     "id": "err-BC-ERR-01002",
     "verdict": "ok",
-    "evidence": "Record fields verbatim; possible_reason 'a single one sided approach as sufficient' is a substring of BC-MIS-01002; -2 against DNE distinct.",
-    "reaudited": "2026-09-29"
+    "evidence": "fix_prompt true with relation distinct; wrong -2 against right DNE, no expr rewritten."
    },
    {
     "id": "err-BC-ERR-01003",
     "verdict": "ok",
-    "evidence": "Verbatim record text; DNE against 2 with the dot removed."
+    "evidence": "fix_prompt true with relation distinct; wrong DNE against right 2, no expr rewritten."
    },
    {
     "id": "err-BC-ERR-01004",
     "verdict": "ok",
-    "evidence": "Verbatim record text; ex-2 alternates near 2 and -1, so 2 against DNE; reason quotes BC-MIS-01004."
+    "evidence": "fix_prompt true with relation distinct; wrong 2 against right DNE, no expr rewritten."
    },
    {
     "id": "representations",
     "verdict": "ok",
-    "evidence": "null; no claim served."
+    "evidence": "null; no claim served.",
+    "note": "unchanged since 2026-09-29"
    },
    {
-    "id": "bridge-BC-PRQ-06005",
+    "id": "BC-PRQ-06005",
     "verdict": "ok",
-    "evidence": "Paraphrases BC-PRQ-06005; 28 words."
+    "evidence": "Shortened to the BC-PRQ-06005 description_plain paraphrase; failure line dropped, nothing false."
    },
    {
     "id": "chk-1",
     "verdict": "ok",
-    "evidence": "SymPy: limit(6-4x/3, x, 3, +) = 2; key 2 matches ex-1."
+    "evidence": "SymPy: limit(6-4x/3, x, 3, +) = 2; key 2 matches ex-1.",
+    "note": "unchanged since 2026-09-29"
    },
    {
     "id": "chk-2",
     "verdict": "ok",
-    "evidence": "SymPy: 4-3x at 0 = 4, limit at 1 from left = 1; 2-x at 5 = -3, limit at 1 from right = 1; key 1."
+    "evidence": "SymPy: 4-3x at 0 = 4, limit at 1 from left = 1; 2-x at 5 = -3, limit at 1 from right = 1; key 1.",
+    "note": "unchanged since 2026-09-29"
    },
    {
     "id": "chk-3",
     "verdict": "ok",
-    "evidence": "Sides 3 and -2 differ, key DNE; distractors 3, -2 (BC-ERR-01002) and 0 (BC-ERR-01001) are distinct."
+    "evidence": "Sides 3 and -2 differ, key DNE; distractors 3, -2 (BC-ERR-01002) and 0 (BC-ERR-01001) are distinct.",
+    "note": "unchanged since 2026-09-29"
    }
   ],
   "advice": [
-   "ki-1's table_sweep values check: left 3.21, 3.0201, 3.0020, 3.0002 and right 2.51, 2.9501, 2.9950, 2.9995 from value 3, slopes 2 and -5, curvature 1.",
-   "err-BC-ERR-01002 uses the jump at x = 6, which ex-1's problem text never shows (it stops at (6, -2)); the learner meets the right side value 1 only in the error block.",
-   "No error block or check exercises BC-ERR-01005 (table agreement taken as proof), the rival st-2 names and the concept's central claim; an agree-behaviour table check asking what the table establishes would close that gap.",
-   "Full band reads 858 words, near the 900 cap, with four error blocks; the refresher lists all four, which is heavy for a refresher."
+   "prediction: give the stem both sides, for example 'the graph approaches an open circle at (3, 2) from both sides, and a dot sits at (3, 0)', or serve ex-1's figure with it; the design's own wording ('a dot below it') is also missing from the record.",
+   "ex-2: move the DNE value to the withheld step (or fade from 2) so the student produces the suggestion and the shown steps stop at the alternating rows.",
+   "ki-1 'a finite table leaves the rows between open' reads oddly; 'leaves the behaviour between rows open' says what is meant.",
+   "err-BC-ERR-01004 wrong_step text says 'In ex-2's table', an internal block label a student sees.",
+   "No error block or check exercises BC-ERR-01005 (table agreement taken as proof), the rival st-2 names (carried from the earlier audit)."
   ],
   "counts": {
-   "ok": 19,
+   "ok": 21,
    "unsourced": 0,
    "wrong": 0,
    "over_cap": 0,
    "lint": 0
-  },
-  "fix_notes": [
-   "2026-09-29: band_coverage fix. ki-3 (BC-EK-LIM-1C3, the window that hides a hole) is now core, so the mid band teaches BC-SKL-01014, which check_lessons.py reported missing. To hold the brief cap: orientation shortened to 28 words; record ids removed from the served text of ki-1, ki-2 and ki-3 (kept in sources); err-BC-ERR-01002 possible_reason now 'a single one sided approach as sufficient' (substring of BC-MIS-01002). Refresher adds ki-3. word_count 825/447. No example, check stem or key changed."
-  ]
+  }
  }
 }

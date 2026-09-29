@@ -146,7 +146,7 @@ The table choice is [inferred], settled by the modality A/B in the build plan. T
    "id": "ki-1",
    "ek_id": "BC-EK-CHA-2A1",
    "depth": "core",
-   "text": "The average rate of \\(f\\) over an interval is \\(\\frac{f(a+h)-f(a)}{h}\\) or \\(\\frac{f(x)-f(a)}{x-a}\\) : a change in output over the matching change in input. From a table, the interval names two rows. Units: output per input.",
+   "text": "The average rate of \\(f\\) over an interval is \\(\\frac{f(a+h)-f(a)}{h}\\) or \\(\\frac{f(x)-f(a)}{x-a}\\), each a change in output over the matching change in input. From a table, the interval names two rows. Units: output per input.",
    "notation": "difference quotient",
    "quote": null,
    "sources": ["BC-EK-CHA-2A1", "ced:60", "research/units/unit-02-differentiation-definition-properties.md#2.1 Defining Average and Instantaneous Rates of Change at a Point", "research/units/unit-02-differentiation-definition-properties.md#2.3 Estimating Derivatives of a Function at a Point"]

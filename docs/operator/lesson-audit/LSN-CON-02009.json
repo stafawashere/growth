@@ -42,80 +42,93 @@
   "auditor": "claude-opus-5-5",
   "blocks": [
    {
+    "id": "prediction",
+    "verdict": "ok",
+    "evidence": "SymPy: right quotient 2h^(2/3)/h tends to oo, left tends to -oo, so f'(1) does not exist although f is continuous at 1: B ('not necessarily') is true; A false; C false as stated (continuous functions can have derivatives); resolution 23 words from 2.4 Converse fails; no verdict word or id."
+   },
+   {
     "id": "orientation",
     "verdict": "ok",
-    "evidence": "Paraphrases BC-CON-02009 description_plain (corner, cusp, vertical tangent) and the 2.4 Assessment behaviour paragraph; 38 words."
+    "evidence": "20 words; paraphrase of BC-CON-02009 description_plain."
    },
    {
     "id": "ki-1",
     "verdict": "ok",
-    "evidence": "Paraphrases ced:63 FUN-2.A.2 and its illustrative examples (|x| at 0, cube root at 0); quote matches ced:63 verbatim; 63 words."
+    "evidence": "Quote and citation removed; corner of |x| and vertical tangent of the cube root as in ced:63 FUN-2.A.2 and 2.4 Converse fails."
    },
    {
     "id": "st-1",
     "verdict": "ok",
-    "evidence": "Method is BC-QA-02005 expected_solution_path[0..1]; rivals are wrong_approaches[0..1] with their error ids; cue 18 words."
+    "evidence": "method 'Continuity at the input, then the two one sided quotients.' has no label, BC-QA-02005 expected_solution_path; rival without label or ids."
+   },
+   {
+    "id": "st-1.contrast",
+    "verdict": "ok",
+    "evidence": "fixed 2026-09-29: feature is now 'The stem asks whether the derivative exists and gives no differentiability.', which holds for the this stem (formula only; SymPy one sided quotients of 4(x+3)^(2/3) at -3 are oo and -oo, continuous there with value 0) and fails for not_this, where differentiability is given. Recognition prose says continuity is checked inside st-1's method."
    },
    {
     "id": "st-2",
     "verdict": "ok",
-    "evidence": "Cue from BC-QA-05014 common_givens[0]; rival is wrong_approaches[0]; method paraphrases expected_solution_path[0..2]."
+    "evidence": "fixed 2026-09-29: rival now 'Setting only the derivative equal to zero.', the 'The rival is' lead-in removed."
    },
    {
     "id": "ex-1",
     "verdict": "ok",
-    "evidence": "SymPy: right quotient of 2(x-1)^(2/3)+3 at 1 tends to oo, left to -oo; draw within parameter_spec (exponent 2/3, even numerator gives cusp per spec notes)."
+    "evidence": "SymPy: right quotient of 2(x-1)^(2/3)+3 at 1 tends to oo, left to -oo; draw within parameter_spec (exponent 2/3, even numerator gives cusp per spec notes).",
+    "note": "unchanged since 2026-09-29"
    },
    {
     "id": "err-BC-ERR-02012",
     "verdict": "ok",
-    "evidence": "fixed 2026-09-29: wrong step now shows the record's behaviour, f(1+h)-f(1) tends to 0 so continuous and so differentiable at 1 (SymPy limit 0), in place of the invented f'(1)=0."
+    "evidence": "fix_prompt true with relation distinct; wrong expr 0 against right oo."
    },
    {
     "id": "err-BC-ERR-02013",
     "verdict": "ok",
-    "evidence": "observed_behavior and scoring_consequence verbatim from BC-ERR-02013; one sided limits oo and -oo confirmed by SymPy."
+    "evidence": "fix_prompt true with relation distinct; wrong expr f against right quotient 2h^(2/3)/h."
    },
    {
     "id": "err-BC-ERR-03012",
     "verdict": "ok",
-    "evidence": "fixed 2026-09-29: redrawn on g(x)=6(x-1)^(1/3)+3, an odd numerator and so a vertical tangent at 1; SymPy g'(x)=2/(x-1)^(2/3), one sided quotients both oo; wrong numerator 2 against right x=1."
+    "evidence": "fix_prompt true with relation distinct; wrong 2 against right 1."
    },
    {
     "id": "representations",
     "verdict": "ok",
-    "evidence": "null; the 2.4 Representations paragraph conversion (graph to verdict) is carried by the orientation figure and ki-1 motion."
+    "evidence": "null; the 2.4 Representations paragraph conversion (graph to verdict) is carried by the orientation figure and ki-1 motion.",
+    "note": "unchanged since 2026-09-29"
    },
    {
-    "id": "bridge-BC-PRQ-02001",
+    "id": "BC-PRQ-02001",
     "verdict": "ok",
-    "evidence": "Paraphrases BC-PRQ-02001 description_plain and failure_signature; 42 words."
+    "evidence": "Trimmed to the process sentence; still a paraphrase of BC-PRQ-02001 description_plain."
    },
    {
     "id": "chk-1",
     "verdict": "ok",
-    "evidence": "Same draw as ex-1; key statement matches SymPy limits oo and -oo."
+    "evidence": "Same draw as ex-1; key statement matches SymPy limits oo and -oo.",
+    "note": "unchanged since 2026-09-29"
    },
    {
     "id": "chk-2",
     "verdict": "ok",
-    "evidence": "SymPy: 3(x+2)^(1/5)+1 at -2 gives right and left quotients both oo, a vertical tangent; draw within parameter_spec (exponent 1/5)."
+    "evidence": "SymPy: 3(x+2)^(1/5)+1 at -2 gives right and left quotients both oo, a vertical tangent; draw within parameter_spec (exponent 1/5).",
+    "note": "unchanged since 2026-09-29"
    },
    {
     "id": "chk-3",
     "verdict": "ok",
-    "evidence": "fixed 2026-09-29: redrawn on -(x-2)^(1/3) (exponent 1/3, in parameter_spec); SymPy one sided quotients both -oo, a vertical tangent; key D restated; option C on f'(x)=-1/(3(x-2)^(2/3)) now frames a real vertical tangent; skill BC-SKL-02023."
+    "evidence": "fixed 2026-09-29: redrawn on -(x-2)^(1/3) (exponent 1/3, in parameter_spec); SymPy one sided quotients both -oo, a vertical tangent; key D restated; option C on f'(x)=-1/(3(x-2)^(2/3)) now frames a real vertical tangent; skill BC-SKL-02023.",
+    "note": "unchanged since 2026-09-29"
    }
   ],
   "advice": [
-   "err-BC-ERR-03012 and chk-3 option C both frame x=1 (or 2) of an even numerator power as a vertical tangent while ex-1 and the orientation call it a cusp. Either redraw the error on an odd numerator draw such as exponent 1/3, where the point is a vertical tangent, or drop BC-ERR-03012 from this lesson; the inferred note already flags that its scope is parametric slopes.",
-   "chk-3 option B (not differentiable because the graph has a sharp point) states a true verdict with a visual reason; as an MCQ distractor it is defensible only because the reason is scored, which a reader may find ambiguous. Consider wording it so the verdict and reason are visibly separate.",
-   "err-BC-ERR-02012 wrong step invents f'(1)=0, which is closer to BC-ERR-02014 (vertical tangent read as horizontal) than to the continuity to differentiability error; a wrong step reading 'continuous at 1, so differentiable at 1' would match the record more closely.",
-   "Delivery fits: the one sided secant limit is a process and is served as motion; the three shapes are a comparison and are served as a static contrast figure.",
-   "No example shows a corner with finite unequal slopes (BC-SKL-02022 mastered_if asks for two numbers that exist and differ); only the ki-1 motion on |x| carries it. Recognition of the stem, the first written line and the rival is taught; scoring habits are carried only by error consequence text since no point types apply."
+   "st-1.contrast: reword the feature to 'The stem asks whether the derivative exists; continuity is checked, then the one sided quotients decide', against not_this where differentiability is given and continuity follows.",
+   "Prediction option C opens 'No:', which is the right answer to 'Must f'(1) exist?' for this f, followed by a false reason; a reader who reads only the verdict word may pick it. Consider 'No derivative can exist where a function is continuous.'",
+   "st-2 rival: drop 'The rival is'."
   ],
   "counts": {
-   "ok": 13,
+   "ok": 15,
    "unsourced": 0,
    "wrong": 0,
    "over_cap": 0,

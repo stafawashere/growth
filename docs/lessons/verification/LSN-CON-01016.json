@@ -39,88 +39,99 @@
   "auditor": "claude-opus-5-5",
   "blocks": [
    {
+    "id": "prediction",
+    "verdict": "ok",
+    "evidence": "SymPy: cancel(f) = (2x-6)/(x+2), zeros of the simplified denominator [-2], limit at 1 is -4/3 (finite), so only B (x=-2 only) is true and A, C are false; resolution matches the 1.14 Locating asymptotes paragraph; no id or verdict word in served text."
+   },
+   {
     "id": "orientation",
     "verdict": "ok",
-    "evidence": "Paraphrases the 1.14 Locating asymptotes paragraph and BC-QA-01009 asked_to_produce."
+    "evidence": "Reworded only; still the 1.14 Locating asymptotes and What the notation claims paragraphs and BC-QA-01009 asked_to_produce."
    },
    {
     "id": "ki-1",
     "verdict": "ok",
-    "evidence": "Quote found verbatim on ced:51 (LIM-2.D.1); the not a real limit and each side separately sentences are in the 1.14 What the notation claims paragraph."
+    "evidence": "Ids removed from text; content is the 1.14 What the notation claims paragraph; quote unchanged on ced:51."
    },
    {
     "id": "ki-2",
     "verdict": "ok",
-    "evidence": "fixed 2026-09-29: inline citation for simplify first now points to research/units/unit-01-limits-continuity.md#1.14 Connecting Infinite Limits and Vertical Asymptotes instead of ced:51; quote stays on ced:51."
+    "evidence": "Inline citation removed from served text; content is the 1.14 Locating asymptotes paragraph, research line recorded in research_lines."
    },
    {
     "id": "st-1",
     "verdict": "ok",
-    "evidence": "Method is BC-QA-01009 expected_solution_path[0]; rival is wrong_approaches BC-ERR-01019."
+    "evidence": "method 'Factor numerator and denominator.' is BC-QA-01009 expected_solution_path[0] with no leading label; rival is wrong_approaches BC-ERR-01019 with the id moved to sources."
+   },
+   {
+    "id": "st-1.contrast",
+    "verdict": "ok",
+    "evidence": "this matches BC-QA-01009 typical_wording (SymPy: p simplifies to (x-4)/(x-3), asymptote x=3 only); not_this is the same rule with x->oo (SymPy limit 1, a horizontal asymptote y=1, the BC-QA-01010 sibling), so why_not and feature are true."
    },
    {
     "id": "st-2",
     "verdict": "ok",
-    "evidence": "Method is BC-QA-01007 expected_solution_path[0]; rival is wrong_approaches BC-ERR-01018."
+    "evidence": "method is BC-QA-01007 expected_solution_path[0] without the label; rival is wrong_approaches BC-ERR-01018."
    },
    {
     "id": "ex-1",
     "verdict": "ok",
-    "evidence": "SymPy: simplified 2(x-3)/(x+2); limit -oo from the right, oo from the left at -2; numerator -10 at -2."
+    "evidence": "Only the why text of steps 1 and 7 was shortened; SymPy unchanged: limit -oo from the right, oo from the left at -2."
    },
    {
     "id": "err-BC-ERR-01018",
     "verdict": "ok",
-    "evidence": "Verbatim from BC-ERR-01018; BC-MIS-01011 wording; {-2,1} against {-2} correct."
+    "evidence": "relation distinct and fix_prompt true; FiniteSet(-2,1) differs from FiniteSet(-2)."
    },
    {
     "id": "err-BC-ERR-01019",
     "verdict": "ok",
-    "evidence": "Verbatim from BC-ERR-01019; right side -oo written for both sides, left is oo (SymPy)."
+    "evidence": "relation distinct and fix_prompt true; -oo against oo (SymPy left limit oo)."
    },
    {
     "id": "err-BC-ERR-01020",
     "verdict": "ok",
-    "evidence": "fixed 2026-09-29: wrong step now oo read as a real value, right step 1/f = (x+2)/(2(x-3)) tending to 0 (SymPy), relation distinct; prose Traps line updated."
+    "evidence": "relation distinct and fix_prompt true; SymPy 1/f = (x+2)/(2(x-3)) tends to 0 at -2."
    },
    {
     "id": "representations",
     "verdict": "ok",
-    "evidence": "null; no separate conversion block required."
+    "evidence": "unchanged since 2026-09-29. null; no separate conversion block required."
    },
    {
-    "id": "bridge-BC-PRQ-01001",
+    "id": "BC-PRQ-01001",
     "verdict": "ok",
-    "evidence": "Paraphrases BC-PRQ-01001 description_plain and failure_signature."
+    "evidence": "Shortened text still paraphrases BC-PRQ-01001 description_plain and failure_signature."
    },
    {
-    "id": "bridge-BC-PRQ-01009",
+    "id": "BC-PRQ-01009",
     "verdict": "ok",
-    "evidence": "Paraphrases BC-PRQ-01009 description_plain and failure_signature."
+    "evidence": "Shortened text still paraphrases BC-PRQ-01009 description_plain and failure_signature."
    },
    {
     "id": "chk-1",
     "verdict": "ok",
-    "evidence": "SymPy: limit of 2(x-3)/(x+2) as x->-2 from the left is oo."
+    "evidence": "unchanged since 2026-09-29. SymPy: limit of 2(x-3)/(x+2) as x->-2 from the left is oo."
    },
    {
     "id": "chk-2",
     "verdict": "ok",
-    "evidence": "SymPy: -x/(x-2) at 2 from the right is -oo; x+3 divides out."
+    "evidence": "unchanged since 2026-09-29. SymPy: -x/(x-2) at 2 from the right is -oo; x+3 divides out."
    },
    {
     "id": "chk-3",
     "verdict": "ok",
-    "evidence": "SymPy: 3(x-4)/(x+1) gives oo from the left and -oo from the right at -1; distractors map to BC-ERR-01018, 01019, 01020."
+    "evidence": "unchanged since 2026-09-29. SymPy: 3(x-4)/(x+1) gives oo from the left and -oo from the right at -1; distractors map to BC-ERR-01018, 01019, 01020."
    }
   ],
   "advice": [
-   "ki-2 cites BC-EK-LIM-2D2 and ced:51 for simplify first, but that page only says asymptotic behaviour is described using limits; the rule comes from the research topic paragraph, so the inline citation should point there.",
-   "err-BC-ERR-01020 has identical wrong_step and right_step expressions with relation equivalent; the contrast lives only in the text, so a step reveal shows no mathematical difference.",
-   "ki-1 as motion (approaching -2 from each side) fits a process; the lesson teaches the stem, the first written line (factor) and the rival (one two sided limit) well."
+   "The three drawn delivery entries cite 'rule 3' for BC-REP-02, but TEMPLATE.md now numbers the figure rule 4 (rule 3 is the interactive stepper); the reasons and docs/lessons/unit-01/README.md section 6 ('rules 1 to 5') predate the renumbering.",
+   "The ki-1 motion frames are right (SymPy: 22, 102, 1002 from the left and -18, -98, -998 from the right of -2), but the window y range [-1000, 1000] clips the -2.01 frame at 1002 and the -1.99 frame sits at the edge; [-1100, 1100] would keep all six points inside.",
+   "The prediction uses ex-1's own function, so the student who answers it has already seen the answer when ex-1 opens; that is the design intent, but chk-2 and chk-3 are the only unseen draws.",
+   "err-BC-ERR-01020 right_step expr is 1/f rather than a value, so the step reveal shows an expression beside oo; the contrast is carried by the text."
   ],
   "counts": {
-   "ok": 15,
+   "ok": 17,
    "unsourced": 0,
    "wrong": 0,
    "over_cap": 0,

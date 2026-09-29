@@ -623,6 +623,6 @@ No figure, motion, interactive or model mode applies: the skills carry no figure
   "research/question-analysis/question-archetypes.md#BC-QA-01015 Intervals of continuity determined from the domain of an expression",
   "research/exam/exam-structure.md#Section and part layout"
  ],
- "no_figure_reason": "The skills carry only symbolic and interval notation representations, none figure bearing, and the key ideas describe no process, so the rule and its interval list carry the lesson."
+ "no_figure_reason": "The skills carry only symbolic expressions and verbal descriptions, none figure bearing, and the key ideas describe no process, so the rule and its interval list carry the lesson."
 }
 ```

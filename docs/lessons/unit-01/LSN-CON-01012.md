@@ -91,8 +91,8 @@ BC-QA-01007 is `no_calculator`, a single MCQ: Section I Part A, 2.14 minutes (re
 
 ## Band plan
 
-- Low (full), in the served order of 2026-09-29: prediction, orientation, bridges when gated in, ki-1, st-1, st-2, st-3 (contrast pair on st-1), ex-1 and its scoring lines (none), chk-1, err-BC-ERR-01003, err-BC-ERR-01015, err-BC-ERR-01017, err-BC-ERR-01018 (each a fix prompt), ex-2 faded from step 4, chk-2, representations (none), chk-3. 730 words, 4.87 minutes (cap 900 and 6).
-- Mid (brief): prediction, orientation, bridges when gated in, ki-1, st-1 with its contrast pair, ex-1, chk-1, err-BC-ERR-01003, err-BC-ERR-01015, chk-2. 445 words, 2.97 minutes (cap 450 and 3).
+- Low (full), in the served order of 2026-09-29: prediction, orientation, bridges when gated in, ki-1, st-1, st-2, st-3 (contrast pair on st-1), ex-1 and its scoring lines (none), chk-1, err-BC-ERR-01003, err-BC-ERR-01015, err-BC-ERR-01017, err-BC-ERR-01018 (each a fix prompt), ex-2 faded from step 4, chk-2, representations (none), chk-3. 731 words, 4.88 minutes (cap 900 and 6).
+- Mid (brief): prediction, orientation, bridges when gated in, ki-1, st-1 with its contrast pair, ex-1, chk-1, err-BC-ERR-01003, err-BC-ERR-01015, chk-2. 448 words, 2.99 minutes (cap 450 and 3).
 - Refresher: ki-1, the four error blocks, ex-1.
 
 ## Sources
@@ -185,7 +185,7 @@ BC-QA-01007 is `no_calculator`, a single MCQ: Section I Part A, 2.14 minutes (re
    "id": "st-1",
    "archetype_id": "BC-QA-01007",
    "cue": "Classify each discontinuity of a rule or graph, with a reason.",
-   "method": "Locate the inputs where the function is undefined.",
+   "method": "Locate the inputs where the function is undefined or the rule changes.",
    "rival": "Naming an asymptote at a factor that divides out.",
    "separating_feature": "Whether the denominator factor cancels.",
    "sources": [
@@ -922,12 +922,12 @@ BC-QA-01007 is `no_calculator`, a single MCQ: Section I Part A, 2.14 minutes (re
   "research/exam/exam-structure.md#Section and part layout"
  ],
  "read_minutes": {
-  "full": 4.87,
-  "brief": 2.97
+  "full": 4.88,
+  "brief": 2.99
  },
  "word_count": {
-  "full": 727,
-  "brief": 444
+  "full": 731,
+  "brief": 448
  }
 }
 ```

@@ -3,16 +3,16 @@
  "version": 1,
  "kind": "concept",
  "target_id": "BC-CON-01006",
- "status": "draft",
+ "status": "signed_off",
  "snapshot_digest": "a6a8ec9d3f59ab8f712e33d30cc22fc64bf2c478fbe7312e3e3118d319c6a42f",
  "source_digest": "946184128e8c683d5aac0322afe25799679e0ddf5d95d4b5b728776a18273014",
  "read_minutes": {
-  "full": 5.5,
-  "brief": 3.0
+  "full": 5.43,
+  "brief": 2.98
  },
  "word_count": {
-  "full": 702,
-  "brief": 372
+  "full": 698,
+  "brief": 373
  },
  "sections": [
   {
@@ -34,7 +34,7 @@
    ],
    "evidence_tag": "inferred",
    "stem": {
-    "text": "Predict. A graph has an open circle at (3, 2) and a dot at (3, 0). What is the limit of f at x = 3?",
+    "text": "Predict. Both sides of f's graph approach an open circle at (3, 2). A dot sits at (3, 0). What is the limit at x = 3?",
     "command_verb": "predict"
    },
    "format": "mcq",
@@ -427,7 +427,7 @@
      "archetype_id": "BC-QA-01001"
     },
     "not_this": {
-     "text": "Evaluate the limit of (x**2 - 4)/(x - 2) at x = 2.",
+     "text": "Evaluate the limit of \\((x^2 - 4)/(x - 2)\\) at x = 2.",
      "why_not": "Only a formula is given."
     },
     "feature": "A graph, not a formula."
@@ -599,18 +599,22 @@
    "calculator_status": "no_calculator",
    "steps": [
     {
-     "cue": "Group the rows: four from the left, four from the right.",
-     "why": "Each side is read on its own before any comparison."
+     "cue": "Group the rows by side. On each side every other output closes in on 2.",
+     "why": "2.3000, then 2.0030.",
+     "expression": 2,
+     "relation": "new"
     },
     {
-     "cue": "On each side the outputs alternate near 2 and near -1.",
-     "why": "No single value is approached as the rows close in.",
-     "expression": "DNE",
+     "cue": "The rows between them close in on -1.",
+     "why": "-1.0200, then -1.0002.",
+     "expression": -1,
      "relation": "new"
     },
     {
      "cue": "The stem allows an explanation instead of an estimate.",
-     "why": "The table suggests the limit does not exist; it proves nothing between rows."
+     "why": "The outputs alternate between 2 and -1, so the table suggests the limit does not exist. It proves nothing between rows.",
+     "expression": "DNE",
+     "relation": "new"
     }
    ],
    "answer": {
@@ -1048,8 +1052,8 @@
   "author": "tools/lesson_transcribe.py",
   "prompt_version": "generator/lesson_v2",
   "design_path": "docs/lessons/unit-01/LSN-CON-01006.md",
-  "signed_off_by": null,
-  "signed_off_at": null,
+  "signed_off_by": "claude-opus-5-5",
+  "signed_off_at": "2026-09-29",
   "not_human": true
  }
 }

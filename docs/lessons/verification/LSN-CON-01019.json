@@ -39,89 +39,99 @@
   "auditor": "claude-opus-5-5",
   "blocks": [
    {
+    "id": "prediction",
+    "verdict": "ok",
+    "evidence": "f(1)f(8) = -4 < 0 so at least one zero is guaranteed (B true, C false); SymPy interpolant through the table plus (2,1), (2.5,-1) has 5 real zeros in (1,8), so exactly one is not forced (A false); resolution is the 1.16 Intermediate Value Theorem and Conclusion paragraphs."
+   },
+   {
     "id": "orientation",
     "verdict": "ok",
-    "evidence": "Paraphrases the BC-QA-01011 scoring_pattern and the 1.16 Assessment behaviour (sg-25:12)."
+    "evidence": "Shortened; still BC-QA-01011 asked_to_produce and the 1.16 Assessment behaviour paragraph."
    },
    {
     "id": "ki-1",
     "verdict": "ok",
-    "evidence": "Hypotheses and at least one conclusion from the 1.16 Required mathematical knowledge; quote on ced:53."
+    "evidence": "Ids removed, quote set to null; hypotheses and at least one conclusion are the 1.16 Hypotheses stated separately and Conclusion paragraphs."
    },
    {
     "id": "st-1",
     "verdict": "ok",
-    "evidence": "Method is expected_solution_path[0] of BC-QA-01011; rival BC-ERR-01025 in wrong_approaches; common_givens has a table of a differentiable function."
+    "evidence": "method 'f is differentiable, so continuous.' has no leading label and is BC-QA-01011 expected_solution_path[0]; rival is wrong_approaches BC-ERR-01025, id moved to sources."
+   },
+   {
+    "id": "st-1.contrast",
+    "verdict": "ok",
+    "evidence": "this matches BC-QA-01011 typical_wording (f(2)=-3 < 1 < 5=f(6)); not_this asks for f'(c)=2 with the same values, and the average rate (5-(-3))/(6-2) = 2, a Mean Value Theorem target, the BC-ERR-01028 wrong_approaches entry; why_not and feature are true."
    },
    {
     "id": "ex-1",
     "verdict": "ok",
-    "evidence": "f(1)=-4 < 0 < 1=f(8); (-4)(1)=-4 < 0."
+    "evidence": "Cues and whys shortened only; (-4)(1) = -4 < 0 unchanged."
    },
    {
     "id": "reader-ex-1",
     "verdict": "ok",
-    "evidence": "Lines are the bundle BC-PT-99015 and BC-PT-99016 records, both in BC-QA-01011 point_types."
+    "evidence": "unchanged since 2026-09-29. Lines are the bundle BC-PT-99015 and BC-PT-99016 records, both in BC-QA-01011 point_types."
    },
    {
     "id": "err-BC-ERR-01016",
     "verdict": "ok",
-    "evidence": "fixed 2026-09-29: wrong step now the definition with no values, Limit(f(x), x, c) - f(c), right step Interval(1, 8); relation distinct."
+    "evidence": "relation distinct and fix_prompt true; possible_reason null for the word cap; the limit expression differs from Interval(1, 8)."
    },
    {
     "id": "err-BC-ERR-01025",
     "verdict": "ok",
-    "evidence": "fixed 2026-09-29: wrong FiniteSet(continuous) against right FiniteSet(differentiable, continuous); relation distinct."
+    "evidence": "relation distinct and fix_prompt true; possible_reason null for the word cap; FiniteSet(continuous) differs from FiniteSet(differentiable, continuous)."
    },
    {
     "id": "err-BC-ERR-01026",
     "verdict": "ok",
-    "evidence": "Verbatim from BC-ERR-01026; (2)(1)=2 > 0 so the pair does not straddle 0."
+    "evidence": "relation distinct and fix_prompt true; (2)(1) = 2 > 0 against (-4)(1) = -4 < 0."
    },
    {
     "id": "err-BC-ERR-01027",
     "verdict": "ok",
-    "evidence": "fixed 2026-09-29: wrong FiniteSet(c), a single point, against right Interval.open(1, 8); relation distinct."
+    "evidence": "relation distinct and fix_prompt true; FiniteSet(c) against Interval.open(1, 8)."
    },
    {
     "id": "representations",
     "verdict": "ok",
-    "evidence": "null."
+    "evidence": "unchanged since 2026-09-29. null."
    },
    {
-    "id": "bridge-BC-PRQ-01008",
+    "id": "BC-PRQ-01008",
     "verdict": "ok",
-    "evidence": "Condenses BC-PRQ-01008 description_plain and failure_signature."
+    "evidence": "Shortened; still BC-PRQ-01008 failure_signature (continuity claimed outside the domain)."
    },
    {
-    "id": "bridge-BC-PRQ-01010",
+    "id": "BC-PRQ-01010",
     "verdict": "ok",
-    "evidence": "Condenses BC-PRQ-01010 failure_signature."
+    "evidence": "Shortened; still BC-PRQ-01010 failure_signature, though terse."
    },
    {
     "id": "chk-1",
     "verdict": "ok",
-    "evidence": "(-4)(1)=-4 < 0."
+    "evidence": "unchanged since 2026-09-29. (-4)(1)=-4 < 0."
    },
    {
     "id": "chk-2",
     "verdict": "ok",
-    "evidence": "(3-1)(6-1)=10 > 0, (5-1)(-2-1)=-12 < 0; some c in (2,4)."
+    "evidence": "unchanged since 2026-09-29. (3-1)(6-1)=10 > 0, (5-1)(-2-1)=-12 < 0; some c in (2,4)."
    },
    {
     "id": "chk-3",
     "verdict": "ok",
-    "evidence": "(5+1)(-6+1)=-30 < 0; key B per sg-25:12 scoring_pattern; A, C, D map to BC-ERR-01025, 01026, 01027."
+    "evidence": "unchanged since 2026-09-29. (5+1)(-6+1)=-30 < 0; key B per sg-25:12 scoring_pattern; A, C, D map to BC-ERR-01025, 01026, 01027."
    }
   ],
   "advice": [
-   "Error blocks for BC-ERR-01016, 01025 and 01027 reuse the straddle product as both wrong and right expr; the difference is only in words, so step reveal shows nothing mathematical changing.",
-   "BC-ERR-01028 (wrong theorem named) is a wrong_approaches entry of BC-QA-01011 and a scoring rule in sg-25:12 but has no block or distractor.",
-   "Bridges are terse (\"Domain first.\") and read as fragments; the gate works but the text restates little of description_plain.",
-   "Table delivery for the orientation and ki-1 suits the tabulated stem; the lesson teaches the stem, first line (differentiable so continuous) and rival well."
+   "The orientation dropped 'strictly' and 'from differentiability'; the served line now reads 'derives continuity, shows the target between two values', which no longer says what continuity is derived from, the point sg-25:12 scores.",
+   "The BC-PRQ-01010 bridge 'Open against closed. Slip: closed for the point.' is hard to parse without the record; one more clause would name the open interval as where c lies.",
+   "The two table delivery entries cite 'rule 4' for BC-REP-03; TEMPLATE.md now numbers the table rule 5.",
+   "BC-ERR-01028 (wrong theorem) now appears only as the contrast pair's near miss; it still has no error block or distractor."
   ],
   "counts": {
-   "ok": 15,
+   "ok": 17,
    "unsourced": 0,
    "wrong": 0,
    "over_cap": 0,

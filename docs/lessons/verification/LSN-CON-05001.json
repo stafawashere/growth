@@ -45,109 +45,118 @@
   "auditor": "claude-opus-5-5",
   "blocks": [
    {
+    "id": "prediction",
+    "verdict": "ok",
+    "evidence": "SymPy: (17 - 2)/(6 - 1) = 3, equal to ex-1 step 3; options 15 and 9.5 are false (f' must equal 3, not the difference or the mean output); resolution states ced:99 FUN-1.B.1 conclusion; no verdict word, no id."
+   },
+   {
     "id": "orientation",
     "verdict": "ok",
-    "evidence": "Paraphrases unit 5.1 Assessment behaviour and BC-QA-05001 expected_solution_path; 30 words."
+    "evidence": "Shortened paraphrase of BC-CON-05001 and the 5.1 Assessment behaviour paragraph (continuity derived, average rate, theorem); no id."
    },
    {
     "id": "ki-1",
     "verdict": "ok",
-    "evidence": "ced:99 FUN-1.B.1 quote verbatim; Rolle case from research unit 5.1 (sg-23:3); 38 words."
+    "evidence": "Hypotheses and conclusion as in ced:99 FUN-1.B.1; differentiable gives continuity from sg-23:3 via the 5.1 section; quote dropped (null), so no verbatim check applies."
    },
    {
     "id": "st-1",
     "verdict": "ok",
-    "evidence": "BC-QA-05001 expected_solution_path[0] and wrong_approaches 'solving for c when only existence was asked'; 24 words."
+    "evidence": "method has no label; expected_solution_path[0] of BC-QA-05001; rival is wrong_approaches 'solving for c when only existence was asked'."
+   },
+   {
+    "id": "st-1.contrast",
+    "verdict": "ok",
+    "evidence": "this matches BC-QA-05001 typical_wording 'must there be a value of c ... derivative takes a stated value'; SymPy (11 - 5)/(4 - 1) = 2 so the key is yes; not_this asks for f(c) = 8 with 5 < 8 < 11, an IVT stem (BC-ERR-05006, BC-MIS-05005 in bundle); why_not and feature true."
    },
    {
     "id": "st-2",
     "verdict": "ok",
-    "evidence": "BC-QA-05002 expected_solution_path[0] and wrong_approaches 'differentiating the average rate of change expression'; 25 words."
+    "evidence": "Label 'First line:' and 'Rival:' removed; method is BC-QA-05002 expected_solution_path[0]; rival wrong_approaches."
    },
    {
     "id": "ex-1",
     "verdict": "ok",
-    "evidence": "SymPy: (17 - 2)/(6 - 1) = 3, matching the named value."
+    "evidence": "SymPy: (17 - 2)/(6 - 1) = 3, matching the named value. (unchanged since 2026-09-29)"
    },
    {
     "id": "ex-2",
     "verdict": "ok",
-    "evidence": "SymPy: f(3) = 38, f(0) = 5, rate 11; 3c^2 + 2 = 11 gives c = -sqrt(3), sqrt(3); only sqrt(3) (about 1.73) lies in (0, 3)."
+    "evidence": "fade_from 4: shown steps give rate 11 and 3c^2 + 2 = 11; SymPy solve gives -sqrt(3), sqrt(3), only sqrt(3) in (0, 3), so a student with the method can finish; withheld steps 4 and 5 carry expr."
    },
    {
     "id": "reader-ex-1",
     "verdict": "ok",
-    "evidence": "BC-PT-99017 in BC-QA-05001 point_types; earns and does_not_earn verbatim."
+    "evidence": "BC-PT-99017 in BC-QA-05001 point_types; earns and does_not_earn verbatim. (unchanged since 2026-09-29)"
    },
    {
     "id": "err-BC-ERR-05002",
     "verdict": "ok",
-    "evidence": "Bundle text matches; BC-MIS-99009 listed."
+    "evidence": "fix_prompt true equals relation distinct; wrong and right expr differ (continuous_asserted against continuous_because_differentiable); record text unchanged otherwise. Earlier: Bundle text matches; BC-MIS-99009 listed."
    },
    {
     "id": "err-BC-ERR-05004",
     "verdict": "ok",
-    "evidence": "Bundle text matches; BC-MIS-05002 listed."
+    "evidence": "fix_prompt true equals relation distinct; wrong and right expr differ (rate_only against yes_by_mean_value_theorem); record text unchanged otherwise. Earlier: Bundle text matches; BC-MIS-05002 listed."
    },
    {
     "id": "err-BC-ERR-05005",
     "verdict": "ok",
-    "evidence": "SymPy: roots -sqrt(3), sqrt(3); -sqrt(3) outside (0, 3); bundle text matches."
+    "evidence": "fix_prompt true equals relation distinct; wrong and right expr differ (FiniteSet(-sqrt(3), sqrt(3)) against sqrt(3)); record text unchanged otherwise. Earlier: SymPy: roots -sqrt(3), sqrt(3); -sqrt(3) outside (0, 3); bundle text matches."
    },
    {
     "id": "err-BC-ERR-05006",
     "verdict": "ok",
-    "evidence": "Bundle text matches (sg-23:3); BC-MIS-05005 listed."
+    "evidence": "fix_prompt true equals relation distinct; wrong and right expr differ (by_intermediate_value_theorem against by_mean_value_theorem); record text unchanged otherwise. Earlier: Bundle text matches (sg-23:3); BC-MIS-05005 listed."
    },
    {
     "id": "representations",
     "verdict": "ok",
-    "evidence": "Table values equal ex-1's; BC-REP-03 on the skills and BC-QA-05001 common_givens."
+    "evidence": "Table values equal ex-1's; BC-REP-03 on the skills and BC-QA-05001 common_givens. (unchanged since 2026-09-29)"
    },
    {
     "id": "BC-PRQ-05001",
     "verdict": "ok",
-    "evidence": "Paraphrases description_plain (setting an expression to zero)."
+    "evidence": "Text 'Solve an expression set to zero.' shortened; still a paraphrase of the BC-PRQ-05001 description_plain; no id in served text."
    },
    {
     "id": "BC-PRQ-05004",
     "verdict": "ok",
-    "evidence": "Paraphrases description_plain (open and closed endpoints)."
+    "evidence": "Text 'Open excludes the ends.' shortened; still a paraphrase of the BC-PRQ-05004 description_plain; no id in served text."
    },
    {
     "id": "BC-PRQ-05008",
     "verdict": "ok",
-    "evidence": "Paraphrases description_plain (change in output over change in input)."
+    "evidence": "Text 'Output over input change.' shortened; still a paraphrase of the BC-PRQ-05008 description_plain; no id in served text."
    },
    {
     "id": "BC-PRQ-06005",
     "verdict": "ok",
-    "evidence": "Paraphrases description_plain (a function against its value at a point)."
+    "evidence": "Text 'f(6) is a value of f.' shortened; still a paraphrase of the BC-PRQ-06005 description_plain; no id in served text."
    },
    {
     "id": "chk-1",
     "verdict": "ok",
-    "evidence": "SymPy: (17 - 2)/(6 - 1) = 3; key yes by the Mean Value Theorem with continuity from differentiability."
+    "evidence": "SymPy: (17 - 2)/(6 - 1) = 3; key yes by the Mean Value Theorem with continuity from differentiability. (unchanged since 2026-09-29)"
    },
    {
     "id": "chk-2",
     "verdict": "ok",
-    "evidence": "SymPy: (18 - (-2))/(7 - 2) = 4."
+    "evidence": "SymPy: (18 - (-2))/(7 - 2) = 4. (unchanged since 2026-09-29)"
    },
    {
     "id": "chk-3",
     "verdict": "ok",
-    "evidence": "SymPy: (19 - 7)/(8 - 2) = 2; key B; A, C, D map to BC-ERR-05002, 05004, 05006 as stated."
+    "evidence": "SymPy: (19 - 7)/(8 - 2) = 2; key B; A, C, D map to BC-ERR-05002, 05004, 05006 as stated. (unchanged since 2026-09-29)"
    }
   ],
   "advice": [
-   "The time budget takes Section I Part A (2.14 minutes) while ex-1 is written as an FRQ justification; the design flags this as inferred, but the served pacing may not match the shape practised.",
-   "chk-3 option C ('Rate 2, so the average rate is 2') reads as a tautology; a distractor that says 'The average rate is 2' alone would read more naturally.",
-   "Modes fit: the table serves tabular data, step_reveal the processes. Recognition (must there be against find the value), the first line and the rival, and the three scoring components are all taught; the IVT contrast is covered.",
-   "ex-2 has no scoring line because BC-QA-05002 lists no point_types; the reader sees no scoring habit for the find c shape."
+   "The prediction's key 3 equals the value the ex-1 stem names, so a student who reads the ex-1 stem later sees the prediction answered twice; fine for activation, but the distractor 9.5 (mean of outputs) is weak since no bundle error names it.",
+   "ki-1 lost the Rolle case (f(a) = f(b) gives rate 0); ced:99 names it and chk items do not need it, so this is a trim, not a gap.",
+   "BC-PRQ-05008 bridge 'Output over input change.' is terse to the point of ambiguity; 'Change in output over change in input.' costs two words."
   ],
   "counts": {
-   "ok": 19,
+   "ok": 21,
    "unsourced": 0,
    "wrong": 0,
    "over_cap": 0,

@@ -60,7 +60,7 @@ Point losses research/scoring names for this shape: simplification is optional b
 Two active errors meet the concept's skills, in the bundle's order (both link BC-MIS-03001, severity high). Both bands serve both.
 
 - err-BC-ERR-03001. Wrong step on ex-1's draw: the inner factor 4x dropped, (2x^2 - 1)^3 + 3x(2x^2 - 1)^2, value 4 at x = 1. Right step: with 4x, value 13. Distinct. Possible reason, words from BC-MIS-03001.
-- err-BC-ERR-03002. Wrong step: the cube layer copied unchanged, (2x^2 - 1)^3 + x(2x^2 - 1)^3(4x), value 5. Right step as above. Distinct. The record describes the innermost layer of a three-layer composite; the spec draws two layers, so the block shows a layer left undifferentiated on this draw [inferred]. Possible reason, words from BC-MIS-03012.
+- err-BC-ERR-03002. The record describes a three-layer composite differentiated through two layers with the innermost derivative omitted. On ex-1's draw the factor reads as three layers, x to x^2 to 2x^2 - 1 to the cube [inferred]. Wrong step: the cube and the 2 from 2u - 1 kept, the 2x from x^2 omitted, (2x^2 - 1)^3 + 3x(2x^2 - 1)^2(2), value 7. Right step: 3(2x^2 - 1)^2(2)(2x) = 3(2x^2 - 1)^2(4x), value 13. Distinct from each other and from BC-ERR-03001's value 4. Possible reason, words from BC-MIS-03012.
 
 ## Representations
 
@@ -82,8 +82,8 @@ BC-QA-03001 is `no_calculator` and "usually a single multiple choice item", so t
 
 ## Delivery
 
-- orientation: text. Rule 5; the skills carry BC-REP-01 and BC-REP-04, neither figure-bearing.
-- ki-1: text. Rule 5; decomposition is a statement about the order of operations in a formula.
+- orientation: text. Rule 6; the skills carry BC-REP-01 and BC-REP-04, neither figure-bearing.
+- ki-1: text. Rule 6; decomposition is a statement about the order of operations in a formula.
 - ex-1: step_reveal. Rule 1.
 - err-BC-ERR-03001, err-BC-ERR-03002: step_reveal, wrong beside right. Rule 1.
 
@@ -91,8 +91,8 @@ No drawn block: none of rules 2 to 5 applies. The skills carry BC-REP-01 and BC-
 
 ## Band plan
 
-- Low (full), in served order: prediction, orientation, the bridge, ki-1, st-1 with its contrast pair, ex-1 with its scoring line, chk-1, err-BC-ERR-03001, err-BC-ERR-03002, chk-2. 442 words, 3.0 minutes (cap 900 and 6). There is no example 2, so nothing is faded.
-- Mid (brief): the same blocks, since the lesson has one strategy block, one example, two errors and two checks. 442 words, 3.0 minutes (cap 450 and 3).
+- Low (full), in served order: prediction, orientation, the bridge, ki-1, st-1 with its contrast pair, ex-1 with its scoring line, chk-1, err-BC-ERR-03001, err-BC-ERR-03002, chk-2. 449 words, 3.0 minutes (cap 900 and 6). There is no example 2, so nothing is faded.
+- Mid (brief): the same blocks, since the lesson has one strategy block, one example, two errors and two checks. 449 words, 3.0 minutes (cap 450 and 3).
 - Refresher: ki-1, err-BC-ERR-03001, err-BC-ERR-03002, ex-1.
 
 ## Sources
@@ -108,7 +108,7 @@ No drawn block: none of rules 2 to 5 applies. The skills carry BC-REP-01 and BC-
 - research/scoring/common-point-losses.md#Answer points
 - research/exam/exam-structure.md#Section and part layout
 - [inferred] The first written line's layout (u equals the inner expression). Settled by a scoring guideline sample showing the decomposition written.
-- [inferred] BC-ERR-03002 shown on a two-layer draw. Settled by a three-layer parameter in the BC-QA-03001 spec.
+- [inferred] BC-ERR-03002 shown by reading 2x^2 - 1 as two layers of ex-1's draw. Settled by a three-layer parameter in the BC-QA-03001 spec.
 - [inferred] Two checks only. Settled by a third error record held by BC-SKL-03001 or BC-SKL-03003.
 - [inferred] Text and step reveal only. Settled by the modality A/B.
 
@@ -202,8 +202,8 @@ No drawn block: none of rules 2 to 5 applies. The skills carry BC-REP-01 and BC-
    "error_id": "BC-ERR-03002",
    "observed_behavior": "A composition of three functions is differentiated through the first two layers and the innermost derivative is omitted.",
    "scoring_consequence": "The derivative is wrong; no credit is available for a partially applied rule in a single answer item.",
-   "wrong_step": {"text": "Inner derivative 4x omitted: value 4.", "expr": "(2*x**2 - 1)**3 + x*3*(2*x**2 - 1)**2"},
-   "right_step": {"text": "Cube differentiated: value 13.", "expr": "(2*x**2 - 1)**3 + x*3*(2*x**2 - 1)**2*(4*x)"},
+   "wrong_step": {"text": "Innermost 2x, from x^2, omitted: value 7.", "expr": "(2*x**2 - 1)**3 + x*3*(2*x**2 - 1)**2*2"},
+   "right_step": {"text": "All three layers: 2 times 2x is 4x, value 13.", "expr": "(2*x**2 - 1)**3 + x*3*(2*x**2 - 1)**2*(4*x)"},
    "relation": "distinct",
    "fix_prompt": true,
    "possible_reason": {"misconception_id": "BC-MIS-03012", "text": "nested structures are handled in the wrong order"},
@@ -251,21 +251,21 @@ No drawn block: none of rules 2 to 5 applies. The skills carry BC-REP-01 and BC-
   }
  ],
  "delivery": [
-  {"block": "orientation", "mode": "text", "reason": "rule 5: BC-REP-01 and BC-REP-04 on the skills, no figure-bearing representation", "sources": ["BC-SKL-03001"]},
-  {"block": "ki-1", "mode": "text", "reason": "rule 5: an order-of-operations statement with no figure-bearing BC-REP", "sources": ["BC-SKL-03001", "BC-SKL-03003"]},
+  {"block": "orientation", "mode": "text", "reason": "rule 6: BC-REP-01 and BC-REP-04 on the skills, no figure-bearing representation", "sources": ["BC-SKL-03001"]},
+  {"block": "ki-1", "mode": "text", "reason": "rule 6: an order-of-operations statement with no figure-bearing BC-REP", "sources": ["BC-SKL-03001", "BC-SKL-03003"]},
   {"block": "ex-1", "mode": "step_reveal", "reason": "rule 1", "sources": []},
   {"block": "err-BC-ERR-03001", "mode": "step_reveal", "reason": "rule 1", "sources": []},
   {"block": "err-BC-ERR-03002", "mode": "step_reveal", "reason": "rule 1", "sources": []}
  ],
  "refresher": ["ki-1", "err-BC-ERR-03001", "err-BC-ERR-03002", "ex-1"],
  "read_minutes": {"full": 3.0, "brief": 3.0},
- "word_count": {"full": 442, "brief": 442},
+ "word_count": {"full": 449, "brief": 449},
  "research_lines": [
   {"file": "research/units/unit-03-differentiation-composite-implicit-inverse.md", "line": "Applying the rule requires naming the outer and the inner function first"}
  ],
  "inferred": [
   {"claim": "The first written line takes the form u = inner expression; the record names the step, not its layout.", "settles": "A scoring guideline sample response showing the decomposition written."},
-  {"claim": "BC-ERR-03002 describes the innermost layer of a three-layer composite, and the block shows a layer left undifferentiated on a two-layer draw.", "settles": "A layers parameter in the BC-QA-03001 parameter_spec, giving a three-layer draw."},
+  {"claim": "BC-ERR-03002 describes the innermost layer of a three-layer composite; the block reads 2x^2 - 1 in ex-1's draw as 2u - 1 applied to u = x^2 and omits the 2x.", "settles": "A layers parameter in the BC-QA-03001 parameter_spec, giving a three-layer draw."},
   {"claim": "The lesson carries two checks because two error records cannot anchor three distinct distractors.", "settles": "A third active error record held by BC-SKL-03001 or BC-SKL-03003."},
   {"claim": "No non-text delivery mode serves this concept better than text and step reveal.", "settles": "The modality A/B in the build plan: skip rate and time to first credited success by mode."}
  ],

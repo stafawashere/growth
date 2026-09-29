@@ -30,7 +30,7 @@ BC-SKL-02014 to BC-SKL-02017 map BC-EK-CHA-2D1; BC-SKL-02018 maps BC-EK-CHA-2D2.
 - BC-QA-02013 (family technology-numerical-result, one calculator FRQ part; research/question-analysis/question-archetypes.md#BC-QA-02013 Derivative at a point produced with technology): `typical_wording` "Find the value of the derivative at the named input. Show the setup for your calculations"; `common_givens` a function model in a calculator active part. The signal is a formula model and a calculator part.
 - BC-QA-02009 (family derivative-from-table): loads BC-SKL-02017 where one supplied value must be read as a slope from a graph (`difficulty_variables`); its rule half belongs to BC-CON-02013 and BC-CON-02014.
 
-The contrast pair on st-1 takes its near miss from BC-CON-02001 through the LSN-DEC-02-01 selector: a stem that names the interval and asks for an average rate, where BC-QA-04002 asks for a derivative symbol at a tabulated input. The `this` stem is a fresh draw on BC-QA-04002.
+The contrast pair on st-1 takes its near miss from BC-CON-02001 through the LSN-DEC-02-01 selector: a stem that names the interval and asks for an average rate, where BC-QA-04002 asks for an estimate of the derivative at a tabulated input. Both can name an interval (BC-QA-04002 `typical_wording` and `common_givens`), so the separating feature is what is asked for, and both give \((20-8)/(5-1)=3\) liters per hour. The `this` stem states the units of \(P\) and \(t\) because it asks for units. The `this` stem is a fresh draw on BC-QA-04002.
 
 What says "not this concept": the interval is named and no point is estimated, which is an average rate (BC-CON-02001, the LSN-DEC-02-01 selector); a function rule with no data and no calculator (the rules). No archetype isolates BC-SKL-02017 (unit README section 3).
 
@@ -100,7 +100,7 @@ Every non-text choice is [inferred], settled by the modality A/B.
 
 ## Band plan
 
-- Low (full): prediction, orientation, the bridge, ki-1, ki-2, st-1 with the contrast pair, st-2, ex-1, chk-1, the four error blocks, ex-2 faded from step 2, chk-2, representations, chk-3. 728 words, 4.9 minutes (cap 900 and 6).
+- Low (full): prediction, orientation, the bridge, ki-1, ki-2, st-1 with the contrast pair, st-2, ex-1, chk-1, the four error blocks, ex-2 faded from step 2, chk-2, representations, chk-3. 727 words, 4.9 minutes (cap 900 and 6).
 - Mid (brief): prediction, orientation, the bridge, ki-1, ki-2, st-1 with the contrast pair, ex-1, chk-1, err-02001, err-02002, chk-2. 449 words, 3.0 minutes (cap 450 and 3).
 - Refresher: ki-1, ki-2, err-BC-ERR-02001, err-BC-ERR-02002, err-BC-ERR-02003, err-BC-ERR-02004, ex-1.
 
@@ -167,14 +167,14 @@ Every non-text choice is [inferred], settled by the modality A/B.
    "archetype_id": "BC-QA-04002",
    "cue": "A table; the stem asks to approximate a derivative at a tabulated input, with units.",
    "method": "The two rows that bracket the point, differenced, over their inputs' difference.",
-   "rival": "Rival: a pair of rows other than the bracketing pair.",
+   "rival": "A pair of rows other than the bracketing pair.",
    "separating_feature": "The two rows sit on either side of the point.",
    "sources": ["BC-QA-04002"],
    "evidence_tag": "verified",
    "contrast": {
-    "this": {"text": "A table gives \\(P(1)=8\\), \\(P(3)=14\\), \\(P(5)=20\\). Approximate \\(P'(3)\\), with units.", "archetype_id": "BC-QA-04002"},
-    "not_this": {"text": "Find the average rate of change of \\(P\\) over \\(1\\le t\\le5\\), with units.", "why_not": "It asks for an average rate over a named interval."},
-    "feature": "A derivative symbol at a tabulated input, no named interval."
+    "this": {"text": "A table gives \\(P(t)\\) liters at \\(t\\) hours: \\(P(1)=8\\), \\(P(3)=14\\), \\(P(5)=20\\). Approximate \\(P'(3)\\), with units.", "archetype_id": "BC-QA-04002"},
+    "not_this": {"text": "Find the average rate of change of \\(P\\) over \\(1\\le t\\le5\\), with units.", "why_not": "It asks for the average rate itself."},
+    "feature": "The stem asks for a derivative at a point."
    }
   },
   {
@@ -182,7 +182,7 @@ Every non-text choice is [inferred], settled by the modality A/B.
    "archetype_id": "BC-QA-02013",
    "cue": "A function model in a calculator part; the stem asks for the derivative at an input, with setup.",
    "method": "The setup naming the quantity, such as \\(W'(2)\\), then the calculator value.",
-   "rival": "Rival: a bare calculator number with no setup.",
+   "rival": "A bare calculator number with no setup.",
    "separating_feature": "A formula and a calculator part, not a table.",
    "sources": ["BC-QA-02013", "BC-ERR-02031"],
    "evidence_tag": "verified"
@@ -359,7 +359,7 @@ Every non-text choice is [inferred], settled by the modality A/B.
  ],
  "refresher": ["ki-1", "ki-2", "err-BC-ERR-02001", "err-BC-ERR-02002", "err-BC-ERR-02003", "err-BC-ERR-02004", "ex-1"],
  "read_minutes": {"full": 4.9, "brief": 3.0},
- "word_count": {"full": 728, "brief": 449},
+ "word_count": {"full": 727, "brief": 449},
  "research_lines": [
   {"file": "research/units/unit-02-differentiation-definition-properties.md", "line": "Use the average rate of change over an interval from the table that contains or abuts the point, and present both the difference and the quotient."},
   {"file": "research/scoring/common-point-losses.md", "line": "Units are scored separately from the value"}

@@ -42,92 +42,103 @@
   "auditor": "claude-opus-5-5",
   "blocks": [
    {
+    "id": "prediction",
+    "verdict": "ok",
+    "evidence": "SymPy (52-31)/(8-3) = 21/5, so B is the only average rate; A = 21 (bare difference, BC-ERR-02001) and C = 83/2 (mean of readings) are not; resolution paraphrases BC-CON-02001 description_plain; no verdict word, praise or id."
+   },
+   {
     "id": "orientation",
     "verdict": "ok",
-    "evidence": "Paraphrase of BC-CON-02001 description_plain and the 2.1 Assessment behaviour paragraph (difference and quotient, separate units point, table or formula by calculator variant); 44 words."
+    "evidence": "Rewritten to 26 words; paraphrase of BC-CON-02001 description_plain and the 2.1 Assessment behaviour paragraph; no id or citation."
    },
    {
     "id": "ki-1",
     "verdict": "ok",
-    "evidence": "Both quotients paraphrase BC-EK-CHA-2A1; quote 'express the average rate of change of a function over an interval' is on ced:60; units rule from 2.3 Units paragraph; 43 words."
+    "evidence": "fixed 2026-09-29: the stray ' : ' after the second quotient is now ', each a change in output over the matching change in input.'; mathematics unchanged."
    },
    {
     "id": "st-1",
     "verdict": "ok",
-    "evidence": "Cue, first line and rival (BC-ERR-02001) from BC-QA-04002 common_givens, asked_to_produce, expected_solution_path and wrong_approaches."
+    "evidence": "method and rival no longer carry a label or id; method from BC-QA-04002 expected_solution_path, rival from wrong_approaches (BC-ERR-02001)."
+   },
+   {
+    "id": "st-1.contrast",
+    "verdict": "ok",
+    "evidence": "this matches BC-QA-04002 typical_wording (named interval, approximate the derivative, units); not_this matches BC-QA-02014 typical_wording (rate at a named instant from a polynomial model); why_not follows BC-QA-02014 expected_solution_path (limit of average rates); feature true."
    },
    {
     "id": "st-2",
     "verdict": "ok",
-    "evidence": "Cue, method and rival from BC-QA-02014 common_givens, expected_solution_path[0] and wrong_approaches."
+    "evidence": "Leading label removed; method is BC-QA-02014 expected_solution_path[0]."
    },
    {
     "id": "ex-1",
     "verdict": "ok",
-    "evidence": "SymPy: (52-31)/(8-3) = 21/5; steps follow BC-QA-04002 expected_solution_path."
+    "evidence": "Only cue wording changed; SymPy (52-31)/(8-3) = 21/5 unchanged."
    },
    {
     "id": "reader-scores:ex-1",
     "verdict": "ok",
-    "evidence": "Empty entry; the omission is recorded as inferred with the library gap it depends on."
+    "evidence": "Empty entry; the omission is recorded as inferred with the library gap it depends on.",
+    "note": "unchanged since 2026-09-29"
    },
    {
     "id": "err-BC-ERR-02001",
     "verdict": "ok",
-    "evidence": "Observed behaviour and scoring consequence verbatim from BC-ERR-02001; SymPy 52-31 = 21 versus 21/5."
+    "evidence": "relation distinct, fix_prompt true; SymPy 21 != 21/5."
    },
    {
     "id": "err-BC-ERR-02003",
     "verdict": "ok",
-    "evidence": "Verbatim from BC-ERR-02003; possible reason quotes BC-MIS-02008 'copies them from the table header'."
+    "evidence": "relation equivalent, fix_prompt false; SymPy 21/5 - (52-31)/(8-3) = 0; the units point is the difference, per the record's consequence."
    },
    {
     "id": "representations",
     "verdict": "ok",
-    "evidence": "Null; the 2.1 conversion table to average rate is carried by ki-1's table."
+    "evidence": "Null; the 2.1 conversion table to average rate is carried by ki-1's table.",
+    "note": "unchanged since 2026-09-29"
    },
    {
     "id": "BC-PRQ-02005",
     "verdict": "ok",
-    "evidence": "Paraphrase of BC-PRQ-02005 description_plain (base point and increment)."
+    "evidence": "Shortened; paraphrase of BC-PRQ-02005 description_plain (value at the shifted input)."
    },
    {
     "id": "BC-PRQ-02001",
     "verdict": "ok",
-    "evidence": "Paraphrase of BC-PRQ-02001 description_plain and failure_signature."
+    "evidence": "Shortened; paraphrase of BC-PRQ-02001 description_plain (expand, divide out the common factor) and failure_signature (increment set to zero)."
    },
    {
     "id": "chk-1",
     "verdict": "ok",
-    "evidence": "SymPy: key 21/5 equals ex-1's answer."
+    "evidence": "SymPy: key 21/5 equals ex-1's answer.",
+    "note": "unchanged since 2026-09-29"
    },
    {
     "id": "chk-2",
     "verdict": "ok",
-    "evidence": "SymPy: (41-18)/(7-2) = 23/5."
+    "evidence": "SymPy: (41-18)/(7-2) = 23/5.",
+    "note": "unchanged since 2026-09-29"
    },
    {
     "id": "chk-3",
     "verdict": "ok",
-    "evidence": "fixed 2026-09-29: parameter_draw readings reordered to [75,58,40,22,15] so H(4)=58, H(9)=22 as served; SymPy (22-58)/(9-4) = -36/5 unchanged key B."
+    "evidence": "fixed 2026-09-29: parameter_draw readings reordered to [75,58,40,22,15] so H(4)=58, H(9)=22 as served; SymPy (22-58)/(9-4) = -36/5 unchanged key B.",
+    "note": "unchanged since 2026-09-29"
    }
   ],
   "advice": [
-   "chk-3 parameter_draw pairs readings [15,22,40,58,75] with times [2,4,5,9,12] in ascending order, which would give H(4)=22, H(9)=58 and a key of +36/5; the served stem reverses the pairing to match trend decreasing. The draw record should list the readings in the served order.",
-   "st-2 teaches BC-QA-02014 but the lesson has no example or check for it; recognition of that stem rests on one strategy block.",
-   "ki-1 as a table serves the tabulated reading well; the increment form in ki-1 is not exercised by any example or check although BC-SKL-02001 is a listed skill.",
-   "The lesson teaches the stem, the first written line (quotient) and the rival (difference alone) clearly, and the units habit through two error blocks."
+   "The prediction stem gives D in meters but never says t is in minutes, while the resolution states meters per minute; adding 'at t minutes' to the stem would make the units in the resolution follow from the stem.",
+   "The contrast pair's this stem says 'A table gives' but shows two values inline and gives no time unit for t; the pair works for recognition but 'with units' has no unit of t to use.",
+   "The two error blocks' scoring_consequence texts carry '(sg-25:11)' in served text. The served-text lint exempts record words, so this is not a defect, but the student reads the citation.",
+   "st-2 teaches BC-QA-02014 but the lesson has no example or check for it; recognition of that stem rests on one strategy block and the contrast pair."
   ],
   "counts": {
-   "ok": 14,
+   "ok": 16,
    "unsourced": 0,
    "wrong": 0,
    "over_cap": 0,
    "lint": 0
-  },
-  "fix_notes": [
-   "Fixed advice defect: chk-3 parameter_draw readings now list the served pairing [75,58,40,22,15] (machine record and Checks prose).",
-   "Left as preferences: st-2 has no example or check; ki-1 increment form not exercised."
-  ]
+  }
  }
 }

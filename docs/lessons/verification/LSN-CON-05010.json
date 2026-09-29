@@ -33,54 +33,69 @@
   "auditor": "claude-opus-5-5",
   "blocks": [
    {
+    "id": "prediction",
+    "verdict": "ok",
+    "evidence": "SymPy: g = 2x^3 - 9x^2 + 1, g' zeros 0 and 3, only 3 in x > 0, g''(3) = 18, minimum of g on (0, oo) is g(3) = -26 (g -> 1 as x -> 0+); key A only true option; resolution matches FUN-4.A.8 via BC-CON-05010."
+   },
+   {
     "id": "orientation",
     "verdict": "ok",
-    "evidence": "Paraphrases BC-CON-05010 and FUN-4.A.8 on ced:105."
+    "evidence": "Shortened paraphrase of BC-CON-05010 and FUN-4.A.8."
    },
    {
     "id": "ki-1",
     "verdict": "ok",
-    "evidence": "Quote is a verbatim prefix of ced:105 FUN-4.A.8; the written uniqueness clause is sourced to sg-22:12 and sg-25:5 in research justification-requirements."
+    "evidence": "Shortened text true to FUN-4.A.8; quote unchanged, verbatim on cache/text/ced/page-105.txt."
    },
    {
     "id": "st-1",
     "verdict": "ok",
-    "evidence": "Rival matches BC-QA-05013 wrong_approaches; separating feature matches sg-22:12."
+    "evidence": "method 'Confirm f'(c)=0, then list every zero of f' in the interval.' has no label and follows expected_solution_path[0]; separating_feature sourced to sg-22:12."
+   },
+   {
+    "id": "st-1.contrast",
+    "verdict": "unsourced",
+    "evidence": "this ('Justify that f has an absolute minimum' on x > 0) matches neither BC-QA-05013 typical_wording (classify the critical point as relative minimum, maximum or neither) nor its asked_to_produce (the second derivative, the classification), and not_this ('Justify that f has a relative minimum at x = 2') is that archetype's own stem. The math holds (SymPy: x^3 - 12x on x > 0, only critical point 2, minimum -16), and the difficulty variable 'whether the question demands a global claim' is the nearest support, but it is not a stem."
    },
    {
     "id": "ex-1",
     "verdict": "ok",
-    "evidence": "SymPy: g'=6x^2-18x zeros {0, 3}, only 3 in x>0, g''=12x-18, g''(3)=18."
+    "evidence": "SymPy: g'=6x^2-18x zeros {0, 3}, only 3 in x>0, g''=12x-18, g''(3)=18. (unchanged since 2026-09-29)"
    },
    {
     "id": "err-BC-ERR-05039",
     "verdict": "ok",
-    "evidence": "Record text copied; right step adds the uniqueness clause per sg-22:12."
+    "evidence": "relation distinct, fix_prompt true; only fix_prompt added, no expr rewritten, other fields as audited"
    },
    {
     "id": "representations",
     "verdict": "ok",
-    "evidence": "null."
+    "evidence": "null. (unchanged since 2026-09-29)"
    },
    {
     "id": "chk-1",
     "verdict": "ok",
-    "evidence": "SymPy: g''(3)=18 > 0 with the only critical point on x>0."
+    "evidence": "SymPy: g''(3)=18 > 0 with the only critical point on x>0. (unchanged since 2026-09-29)"
    },
    {
     "id": "chk-2",
     "verdict": "ok",
-    "evidence": "SymPy: f' zeros -3 and 2, f''=-12x-6, f''(-3)=30 > 0; only critical point on x<0 so absolute minimum."
+    "evidence": "SymPy: f' zeros -3 and 2, f''=-12x-6, f''(-3)=30 > 0; only critical point on x<0 so absolute minimum. (unchanged since 2026-09-29)"
+   },
+   {
+    "id": "no_figure_reason",
+    "verdict": "ok",
+    "evidence": "BC-SKL-05038, the only skill, carries BC-REP-01, 04, 05, none in the figure-bearing set 02, 07, 08, 12, 13, 14 (unit README); ki-1 states a condition, not a process; 28 words, under 40."
    }
   ],
   "advice": [
-   "The st-1 rival (sign of the function value) is sourced but is not the rival this lesson is about; the real rival here is the local verdict written without 'the only critical point on the interval' (BC-ERR-05039). Consider naming that as the rival.",
-   "The lesson would benefit from a check where two critical points lie in the interval, so the reader sees when the uniqueness clause cannot be written.",
-   "Text delivery for orientation and ki-1 fits a stated condition; ex-1 step reveal fits the process."
+   "To source the contrast pair, either cite an archetype whose stem asks for an absolute extremum from a sole critical point (the bundle's signal BC-SIG-05030 points at BC-QA-05011) or rewrite this as a BC-QA-05013 stem with the global demand added and not_this as a candidates-test stem on a closed interval (BC-CON-05006).",
+   "Delivery reasons cite rule 5 for text; under the current TEMPLATE.md numbering text is rule 6.",
+   "Earlier advice stands: the st-1 rival (sign of the function value) is not the rival this lesson is about; the local verdict without the uniqueness clause (BC-ERR-05039) is."
   ],
   "counts": {
-   "ok": 8,
-   "unsourced": 0,
+   "ok": 10,
+   "unsourced": 1,
    "wrong": 0,
    "over_cap": 0,
    "lint": 0

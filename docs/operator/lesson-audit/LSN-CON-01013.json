@@ -42,84 +42,95 @@
   "auditor": "claude-opus-5-5",
   "blocks": [
    {
+    "id": "prediction",
+    "verdict": "ok",
+    "evidence": "short_answer, key 3; SymPy factor(2x^2 - 5x + 2) = (x - 2)(2x - 1), limit at 2 = 3; resolution true and matches the 1.11 three conditions; answerable as filling the hole."
+   },
+   {
     "id": "orientation",
     "verdict": "ok",
-    "evidence": "Paraphrases BC-CON-01013 description_plain and the 1.11 Assessment behaviour sentence on piecewise boundaries."
+    "evidence": "Shortened paraphrase of BC-CON-01013 description_plain and the 1.11 reason requirement; no id."
    },
    {
     "id": "ki-1",
     "verdict": "ok",
-    "evidence": "Definition and the presupposition sentence match the 1.11 Required mathematical knowledge paragraph; quote found on ced:48; sg-25:12 rule from the topic Justification standard."
+    "evidence": "Ids and page citations removed from served text; the no-credit claim is sourced to sg-25:12 in the block's sources."
    },
    {
     "id": "st-1",
     "verdict": "ok",
-    "evidence": "Method is expected_solution_path[0]; rival is wrong_approaches BC-ERR-01015 on BC-QA-01006; tag inferred since common_givens is empty."
+    "evidence": "resolved 2026-09-29: rival no longer opens with 'Rival:' (record rival now 'Continuity from matching one sided limits alone.'); tools/check_lesson_designs.py reports 0 findings"
+   },
+   {
+    "id": "st-1.contrast",
+    "verdict": "ok",
+    "evidence": "this follows BC-QA-01006 typical_wording; SymPy limit at 3 = 6 against f(3) = 5; not_this asks only the limit; why_not and feature true."
    },
    {
     "id": "ex-1",
     "verdict": "ok",
-    "evidence": "SymPy: factor(2x^2-5x+2)=(x-2)(2x-1); limit at 2 is 3; 3 != -1 so condition three fails."
+    "evidence": "SymPy: factor(2x^2-5x+2)=(x-2)(2x-1); limit at 2 is 3; 3 != -1 so condition three fails. (unchanged since 2026-09-29)"
    },
    {
     "id": "err-BC-ERR-01001",
     "verdict": "ok",
-    "evidence": "Behaviour and consequence verbatim from BC-ERR-01001; reason words from BC-MIS-01001; wrong -1, right 3 match ex-1."
+    "evidence": "fix_prompt true equals relation distinct; wrong and right exprs unchanged and distinct."
    },
    {
     "id": "err-BC-ERR-01014",
     "verdict": "ok",
-    "evidence": "Verbatim from BC-ERR-01014; BC-MIS-01009 is in its possible_misconceptions."
+    "evidence": "fix_prompt true equals relation distinct; wrong and right exprs unchanged and distinct."
    },
    {
     "id": "err-BC-ERR-01015",
     "verdict": "ok",
-    "evidence": "Verbatim from BC-ERR-01015; 3-(-1)=4 checked."
+    "evidence": "fix_prompt true equals relation distinct; wrong and right exprs unchanged and distinct."
    },
    {
     "id": "err-BC-ERR-01016",
     "verdict": "ok",
-    "evidence": "Verbatim from BC-ERR-01016 including sg-25:12; right step 3-(-1) matches ex-1."
+    "evidence": "verbatim record text; the reader strips the citation (data/errors.json BC-ERR-01016 scoring_consequence matches word for word; the CITATION_GROUP pattern in app/web/src/lessons/LessonText.tsx removes the parenthetical, leaving 'The justification point is lost; a scoring guideline requires the reason rather than the assertion.')"
    },
    {
     "id": "representations",
     "verdict": "ok",
-    "evidence": "null; the 1.11 Representations paragraph conversions are carried by the orientation figure and ki-1 interactive."
+    "evidence": "null; the 1.11 Representations paragraph conversions are carried by the orientation figure and ki-1 interactive. (unchanged since 2026-09-29)"
    },
    {
-    "id": "bridge-BC-PRQ-01003",
+    "id": "BC-PRQ-01003",
     "verdict": "ok",
-    "evidence": "Paraphrases BC-PRQ-01003 description_plain and failure_signature."
+    "evidence": "Shortened paraphrase of description_plain; failure signature kept."
    },
    {
-    "id": "bridge-BC-PRQ-06005",
+    "id": "BC-PRQ-06005",
     "verdict": "ok",
-    "evidence": "Paraphrases BC-PRQ-06005 description_plain and failure_signature."
+    "evidence": "Shortened paraphrase of description_plain; failure signature kept."
    },
    {
     "id": "chk-1",
     "verdict": "ok",
-    "evidence": "Limit 3 minus value -1 is 4, not 0; condition three fails."
+    "evidence": "Limit 3 minus value -1 is 4, not 0; condition three fails. (unchanged since 2026-09-29)"
    },
    {
     "id": "chk-2",
     "verdict": "ok",
-    "evidence": "SymPy: left limit of x+3 at -1 is 2, right limit of -2x-5 is -3; no limit, condition two fails."
+    "evidence": "SymPy: left limit of x+3 at -1 is 2, right limit of -2x-5 is -3; no limit, condition two fails. (unchanged since 2026-09-29)"
    },
    {
     "id": "chk-3",
     "verdict": "ok",
-    "evidence": "fixed 2026-09-29: parameter_draw right_slope set to 3 to match the served rule 3x-2 on both sides (SymPy: diff(3x-2)=3; one sided limits at 0 both -2)."
+    "evidence": "fixed 2026-09-29: parameter_draw right_slope set to 3 to match the served rule 3x-2 on both sides (SymPy: diff(3x-2)=3; one sided limits at 0 both -2). (unchanged since 2026-09-29)"
    }
   ],
   "advice": [
+   "The served_text rule (SERVED_DESIGN_FIELDS in tools/check_lesson_designs.py and SERVED_FIELDS in tools/check_lessons.py) does not scan common_errors, although the reader serves scoring_consequence, wrong_step, right_step and possible_reason text.",
    "ki-1 as a slider on f(2) fits a reading; the question asks which condition fails, which also teaches naming the failed condition. The fallback table has only two settings (c=-1 and c=3); a setting that shows condition one failing is impossible in this design, so the interactive never shows condition one failing.",
    "Answer and key expr \"x = 2\" in ex-1, chk-1, chk-2 and chk-3 do not encode the verdict; a statement key carrying \"not continuous, condition three fails\" would let a grader check the conclusion.",
    "No what_a_reader_scores entry because BC-QA-01006 lists no point_types; the scoring habit (reason names the failed condition with values) is carried only by ki-1 and err-BC-ERR-01016, which is adequate but thin.",
    "BC-ERR-01017 (wrong branch at the boundary) is dropped by the cap though it is a wrong_approaches entry of BC-QA-01006; chk-2 is the only place a jump boundary appears."
   ],
   "counts": {
-   "ok": 14,
+   "ok": 16,
    "unsourced": 0,
    "wrong": 0,
    "over_cap": 0,

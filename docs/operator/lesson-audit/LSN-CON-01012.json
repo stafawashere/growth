@@ -48,125 +48,130 @@
   "auditor": "claude-opus-5-5",
   "blocks": [
    {
+    "id": "prediction",
+    "verdict": "ok",
+    "evidence": "SymPy one sided limits at 1 are -1 and -1; B is the only true option (A: finite, not unbounded; C: sides agree); resolution matches the cancelled form 2(x-3)/(x+1)^2."
+   },
+   {
     "id": "orientation",
     "verdict": "ok",
-    "evidence": "Paraphrase of BC-CON-01012 description_plain and the 1.10 Assessment behaviour justification variant; 25 words."
+    "evidence": "Shortened paraphrase of BC-CON-01012 description_plain; no id."
    },
    {
     "id": "ki-1",
     "verdict": "ok",
-    "evidence": "fixed 2026-09-29: record ids (BC-EK-LIM-2A1, ced:47) removed from the served text; both stay in the block sources."
+    "evidence": "Text unchanged; notation shortened; quote removed (optional field)."
    },
    {
     "id": "st-1",
     "verdict": "ok",
-    "evidence": "Method BC-QA-01007 expected_solution_path[0]; rival BC-ERR-01018 in wrong_approaches."
+    "evidence": "fixed 2026-09-29: method now 'Locate the inputs where the function is undefined or the rule changes.', BC-QA-01007 expected_solution_path[0] verbatim, so ex-2's boundary at 2 (f(2) = 3, one sided limits 3 and -1) is located; rival no longer opens with 'Rival:' (now 'Naming an asymptote at a factor that divides out.')."
    },
    {
     "id": "st-2",
     "verdict": "ok",
-    "evidence": "Method BC-QA-01006 expected_solution_path[0]; rival BC-ERR-01015 in wrong_approaches; separating feature from 1.10 Deciding rule."
+    "evidence": "resolved 2026-09-29: rival no longer opens with 'Rival:' (record rival now 'Continuity from matching one sided limits alone.'); tools/check_lesson_designs.py reports 0 findings"
    },
    {
     "id": "st-3",
     "verdict": "ok",
-    "evidence": "Method BC-QA-01009 expected_solution_path[0]; rival BC-ERR-01019 in wrong_approaches."
+    "evidence": "resolved 2026-09-29: rival no longer opens with 'Rival:' (record rival now 'One two sided infinite limit where the sides differ in sign.'); tools/check_lesson_designs.py reports 0 findings"
+   },
+   {
+    "id": "st-1.contrast",
+    "verdict": "ok",
+    "evidence": "this is BC-QA-01007 typical_wording; SymPy g: limit -2 at 2 (removable), -oo and oo at 5 (asymptote); not_this is a BC-QA-01008 repair stem, SymPy a = 4; why_not and feature true."
    },
    {
     "id": "ex-1",
     "verdict": "ok",
-    "evidence": "SymPy: reduced 2(x-3)/(x+1)**2, limit at 1 is -1; at -1 numerator -8 over a positive square gives -oo on both sides."
+    "evidence": "SymPy: reduced 2(x-3)/(x+1)**2, limit at 1 is -1; at -1 numerator -8 over a positive square gives -oo on both sides. (unchanged since 2026-09-29)"
    },
    {
     "id": "ex-2",
     "verdict": "ok",
-    "evidence": "fixed 2026-09-29: parameter_draw point_value set to 3 to match the rule (closed left side, f(2) = 2 + 1 = 3); SymPy: f(2)=3, left limit 3, right limit -1, differ so jump; err-BC-ERR-01017 wrong right limit from x+1 is 3."
+    "evidence": "fade_from 4: shown steps give the left limit 3 and the right rule 2x - 5, enough to finish; withheld step 4 valued (-1, limit dir +), SymPy 2*2 - 5 = -1, and 3 != -1 gives the jump."
    },
    {
     "id": "err-BC-ERR-01003",
     "verdict": "ok",
-    "evidence": "Record text verbatim; nan against -1; BC-MIS-01001 listed."
+    "evidence": "fix_prompt true equals relation distinct; wrong and right exprs unchanged and distinct."
    },
    {
     "id": "err-BC-ERR-01015",
     "verdict": "ok",
-    "evidence": "Record text verbatim; right expr evaluates to nan (f(1) undefined); BC-MIS-01009 listed."
+    "evidence": "fix_prompt true equals relation distinct; wrong and right exprs unchanged and distinct."
    },
    {
     "id": "err-BC-ERR-01017",
     "verdict": "ok",
-    "evidence": "Record text verbatim; 2+1 = 3 against 2*2-5 = -1; possible_reason null."
+    "evidence": "fix_prompt true equals relation distinct; wrong and right exprs unchanged and distinct."
    },
    {
     "id": "err-BC-ERR-01018",
     "verdict": "ok",
-    "evidence": "Record text verbatim; x = 1 against x = -1; BC-MIS-01011 listed."
+    "evidence": "fix_prompt true equals relation distinct; wrong and right exprs unchanged and distinct."
    },
    {
     "id": "representations",
     "verdict": "ok",
-    "evidence": "null; 1.10 graph to classification carried by the orientation figure and ki-1 panels."
+    "evidence": "null; 1.10 graph to classification carried by the orientation figure and ki-1 panels. (unchanged since 2026-09-29)"
    },
    {
     "id": "BC-PRQ-01001",
     "verdict": "ok",
-    "evidence": "Paraphrase of description_plain and failure_signature."
+    "evidence": "Shortened paraphrase of description_plain; failure signature dropped."
    },
    {
     "id": "BC-PRQ-01003",
     "verdict": "ok",
-    "evidence": "Paraphrase of description_plain and failure_signature."
+    "evidence": "Shortened paraphrase of description_plain; failure signature dropped."
    },
    {
     "id": "BC-PRQ-01006",
     "verdict": "ok",
-    "evidence": "Paraphrase of description_plain and failure_signature."
+    "evidence": "Shortened paraphrase of description_plain; failure signature dropped."
    },
    {
     "id": "BC-PRQ-01008",
     "verdict": "ok",
-    "evidence": "Paraphrase of description_plain and failure_signature."
+    "evidence": "Shortened paraphrase of description_plain; failure signature dropped."
    },
    {
     "id": "BC-PRQ-01009",
     "verdict": "ok",
-    "evidence": "Paraphrase of description_plain."
+    "evidence": "Shortened paraphrase of description_plain."
    },
    {
     "id": "chk-1",
     "verdict": "ok",
-    "evidence": "SymPy: limit of 2(x-3)/(x+1)**2 at 1 is -1; removable at x = 1."
+    "evidence": "SymPy: limit of 2(x-3)/(x+1)**2 at 1 is -1; removable at x = 1. (unchanged since 2026-09-29)"
    },
    {
     "id": "chk-2",
     "verdict": "ok",
-    "evidence": "SymPy: -(x+3)/x**2 at 2 is -5/4; removable at x = 2."
+    "evidence": "SymPy: -(x+3)/x**2 at 2 is -5/4; removable at x = 2. (unchanged since 2026-09-29)"
    },
    {
     "id": "chk-3",
     "verdict": "ok",
-    "evidence": "SymPy: 3x/(x-1)**2 at -2 is -2/3; (x-1)**2 remains, asymptote x = 1; key B; A, C, D match BC-ERR-01018, 01003, 01015."
+    "evidence": "SymPy: 3x/(x-1)**2 at -2 is -2/3; (x-1)**2 remains, asymptote x = 1; key B; A, C, D match BC-ERR-01018, 01003, 01015. (unchanged since 2026-09-29)"
    }
   ],
   "advice": [
+   "All five bridges lost their failure signatures; the gate still reads the signature from the record, but the student no longer sees what marks the gap.",
+   "The served_text rule (SERVED_DESIGN_FIELDS in tools/check_lesson_designs.py and SERVED_FIELDS in tools/check_lessons.py) does not scan common_errors, although the reader serves scoring_consequence, wrong_step, right_step and possible_reason text.",
    "st-2's method is to evaluate the function at the named input, but ex-2 (the BC-QA-01006 example) never evaluates f(2) and asks for a classification, not a continuity verdict; the example does not model the strategy it follows.",
-   "ex-2's parameter_draw has point_value 0 while the rule gives f(2) = 3 on the closed left side; harmless for a jump but inconsistent in the record.",
-   "Served ki-1 text carries record ids (BC-EK-LIM-2A1, ced:47) in parentheses.",
    "Three panels side by side for ki-1 fit a comparison as contrast; the orientation graph fits the reading.",
    "Three strategy blocks for the low band spread attention across two archetypes owned by other concepts (BC-CON-01013, BC-CON-01016); st-3 has no example or check in this lesson.",
    "The archetype asks for a reason with each classification; checks key only the location, so the reason line (the one sided limits) is never asked of the student."
   ],
   "counts": {
-   "ok": 20,
+   "ok": 22,
    "unsourced": 0,
    "wrong": 0,
    "over_cap": 0,
    "lint": 0
-  },
-  "fix_notes": [
-   "Removed the parenthetical record ids from ki-1's served text.",
-   "Set ex-2 parameter_draw point_value from 0 to 3 so draw and rule agree; updated the inferred claim and the Solution path prose; re-verified every ex-2 step with SymPy.",
-   "Left as preferences: st-2 modelling by ex-2 (evaluate f(2)), three strategy blocks in low band, st-3 without example or check, checks keying only the location."
-  ]
+  }
  }
 }

@@ -39,88 +39,101 @@
   "auditor": "claude-opus-5-5",
   "blocks": [
    {
+    "id": "prediction",
+    "verdict": "ok",
+    "evidence": "SymPy: d/dx arctan(2x-3) at 2 is 1 (key); 1/2 is the inner factor dropped, 2 is u' alone, both false; resolution u'/(1+u^2) from 3.4 Composite form; no verdict, no id."
+   },
+   {
     "id": "orientation",
     "verdict": "ok",
-    "evidence": "Paraphrases BC-CON-03007 description_plain and BC-QA-03007 expected_solution_path; 28 words."
+    "evidence": "Compressed paraphrase of BC-QA-03007 expected_solution_path[0,1] and BC-SKL-03025."
    },
    {
     "id": "ki-1",
     "verdict": "ok",
-    "evidence": "Paraphrases 3.4 Required mathematical knowledge (Standard derivatives, Composite form, Derivation); formulas standard; ced:78 FUN-3.E.2."
+    "evidence": "fixed 2026-09-29: last sentence now 'Differentiating tan y = x implicitly gives the arctan one.' SymPy: d/dx (tan y - x) = 0 gives dy/dx = cos^2 y = 1/(1 + x^2), the arctan formula only."
    },
    {
     "id": "st-1",
     "verdict": "ok",
-    "evidence": "Method from BC-QA-03007 expected_solution_path[0..1]; rival wrong_approaches[0] (BC-ERR-03017); product framing follows parameter_spec notes h(x)=coefficient x^power F(u)."
+    "evidence": "Method has no label; rival id moved to sources; content from BC-QA-03007 expected_solution_path and wrong_approaches[0]."
+   },
+   {
+    "id": "st-1.contrast",
+    "verdict": "ok",
+    "evidence": "this matches BC-QA-03007 typical_wording[0] (SymPy f'(0)=pi/4); not_this is the common_distractor 'the derivative of the ordinary trigonometric function'; SymPy f'(0)=tan(1) differs; feature true."
    },
    {
     "id": "st-2",
     "verdict": "ok",
-    "evidence": "From BC-QA-03010 expected_solution_path[0] and wrong_approaches[0]."
+    "evidence": "Method and rival no longer begin with labels; content unchanged."
    },
    {
     "id": "st-3",
     "verdict": "ok",
-    "evidence": "From BC-QA-06018 common_givens[0], expected_solution_path[0] and wrong_approaches[0]."
-   },
-   {
-    "id": "ex-1",
-    "verdict": "ok",
-    "evidence": "SymPy: d/dx 3x atan(2x-3) matches step 3; value at 2 is 3pi/4 + 6; draw satisfies constraints (arctan, |at|=2, u=1)."
+    "evidence": "Method and rival no longer begin with labels; content unchanged."
    },
    {
     "id": "err-BC-ERR-03006",
     "verdict": "ok",
-    "evidence": "Record text verbatim; wrong step is the second product rule term alone, distinct from the full derivative."
+    "evidence": "fix_prompt true matches relation distinct; expr values unchanged by the redesign (only fix_prompt added); SymPy: wrong and right differ. At 2: 6 vs 3pi/4+6."
    },
    {
     "id": "err-BC-ERR-03018",
     "verdict": "ok",
-    "evidence": "Record text verbatim; factor 2 dropped gives 3atan(2x-3)+3x/(1+(2x-3)^2), distinct."
+    "evidence": "fix_prompt true matches relation distinct; expr values unchanged by the redesign (only fix_prompt added); SymPy: wrong and right differ. At 2: 3pi/4+3 vs 3pi/4+6."
    },
    {
     "id": "err-BC-ERR-03017",
     "verdict": "ok",
-    "evidence": "fixed 2026-09-29: wrong step is now the radical misplaced branch of the record, 3atan(2x-3)+6x/sqrt(1+(2x-3)^2), defined at 2 (SymPy 3pi/4+6sqrt(2) against right 3pi/4+6)."
+    "evidence": "fix_prompt true matches relation distinct; expr values unchanged by the redesign (only fix_prompt added); SymPy: wrong and right differ. At 2: 3pi/4+6sqrt(2) vs 3pi/4+6."
+   },
+   {
+    "id": "BC-PRQ-03004",
+    "verdict": "ok",
+    "evidence": "Paraphrase of description_plain; arctan(1)=pi/4 true."
+   },
+   {
+    "id": "no_figure_reason",
+    "verdict": "ok",
+    "evidence": "Skills carry BC-REP-01 and BC-REP-09 only (bundle skills); 3.4 Representations adds BC-REP-05, none figure-bearing; key idea is formulas with no drawable process."
+   },
+   {
+    "id": "ex-1",
+    "verdict": "ok",
+    "evidence": "unchanged since 2026-09-29: SymPy: d/dx 3x atan(2x-3) matches step 3; value at 2 is 3pi/4 + 6; draw satisfies constraints (arctan, |at|=2, u=1)."
    },
    {
     "id": "representations",
     "verdict": "ok",
-    "evidence": "null; 3.4 Representations names BC-REP-01, BC-REP-05, BC-REP-09, none figure shaped."
+    "evidence": "unchanged since 2026-09-29: null; 3.4 Representations names BC-REP-01, BC-REP-05, BC-REP-09, none figure shaped."
    },
    {
-    "id": "bridge-BC-PRQ-03004",
+    "id": "BC-PRQ-03006",
     "verdict": "ok",
-    "evidence": "Paraphrases BC-PRQ-03004 description_plain and failure_signature; arctan(1)=pi/4 correct."
-   },
-   {
-    "id": "bridge-BC-PRQ-03006",
-    "verdict": "ok",
-    "evidence": "Paraphrases BC-PRQ-03006 failure_signature."
+    "evidence": "unchanged since 2026-09-29: Paraphrases BC-PRQ-03006 failure_signature."
    },
    {
     "id": "chk-1",
     "verdict": "ok",
-    "evidence": "SymPy: 3pi/4 + 6 at x=2."
+    "evidence": "unchanged since 2026-09-29: SymPy: 3pi/4 + 6 at x=2."
    },
    {
     "id": "chk-2",
     "verdict": "ok",
-    "evidence": "SymPy: d/dx 2x asin(3x-5/2) at 1 is pi/3 + 4sqrt(3); inner value 1/2 matches spec derived inner_value sign/2."
+    "evidence": "unchanged since 2026-09-29: SymPy: d/dx 2x asin(3x-5/2) at 1 is pi/3 + 4sqrt(3); inner value 1/2 matches spec derived inner_value sign/2."
    },
    {
     "id": "chk-3",
     "verdict": "ok",
-    "evidence": "SymPy: h'(-2)=pi+6; B 6, C pi+2, D pi-6 each reproduce the stated error; inner value -1 matches sign -1."
+    "evidence": "unchanged since 2026-09-29: SymPy: h'(-2)=pi+6; B 6, C pi+2, D pi-6 each reproduce the stated error; inner value -1 matches sign -1."
    }
   ],
   "advice": [
-   "err-BC-ERR-03017 wrong expression has sqrt(1 - (2x-3)^2), which is zero at x=2, so the wrong line cannot be evaluated at the example's input; that is instructive but unremarked. A note in the right step or a draw where the wrong line gives a finite value would make the contrast concrete.",
-   "st-2 and st-3 appear only in the low band with no example or check; recognition of the identity derivation and the integral form is served as text only.",
-   "Delivery fits: formulas and a chain factor are symbolic, served as text and step reveal. The lesson teaches the stem signal, the first written line and the rival; scoring habits appear only through error consequences, which is consistent with no point types."
+   "st-1.contrast why_not calls tan(4x + 1) 'a Unit 2 derivative', but it needs the Unit 3 chain rule; 'tan has its own derivative, sec^2, and no inverse formula' is exact."
   ],
   "counts": {
-   "ok": 15,
+   "ok": 18,
    "unsourced": 0,
    "wrong": 0,
    "over_cap": 0,
@@ -130,6 +143,7 @@
  "fix_notes": [
   "err-BC-ERR-03017 wrong expression changed to a misplaced radical, finite at x=2; prose trap line updated.",
   "word_count full 586, read_minutes full 3.91.",
-  "Left as preferences: st-2 and st-3 without example or check."
+  "Left as preferences: st-2 and st-3 without example or check.",
+  "ki-1 derivation sentence narrowed to the arctan formula; delivery reasons rule 5 to rule 6; word counts 617/444 to 619/446 from the checker; no key changed."
  ]
 }

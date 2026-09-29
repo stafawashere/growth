@@ -3,7 +3,7 @@
  "version": 1,
  "kind": "concept",
  "target_id": "BC-CON-03002",
- "status": "draft",
+ "status": "signed_off",
  "snapshot_digest": "a6a8ec9d3f59ab8f712e33d30cc22fc64bf2c478fbe7312e3e3118d319c6a42f",
  "source_digest": "0b3e6c652ee4d156e507ce1393c3aaeb2d36d6cea04910b6defb1d5fb58a5614",
  "read_minutes": {
@@ -11,8 +11,8 @@
   "brief": 3.0
  },
  "word_count": {
-  "full": 692,
-  "brief": 385
+  "full": 689,
+  "brief": 382
  },
  "sections": [
   {
@@ -34,7 +34,7 @@
    ],
    "evidence_tag": "inferred",
    "stem": {
-    "text": "Predict. \\(h(x)=f(g(x))\\), with \\(g(1)=3\\). Which two readings from the table give \\(h'(1)\\)?",
+    "text": "Predict. \\(h(x)=f(g(x))\\), \\(g(1)=3\\), \\(g'(1)=2\\), \\(f'(1)=4\\), \\(f'(3)=-3\\). Which gives \\(h'(1)\\)?",
     "command_verb": "predict"
    },
    "format": "mcq",
@@ -84,7 +84,7 @@
    "text": "A response multiplies two rates: the outer derivative, read at the inner output, times the inner derivative, read at the input.",
    "delivery": {
     "mode": "text",
-    "reason": "rule 5 for a statement of what a response shows; the figure-bearing BC-REP-02 on BC-SKL-03005 is served once, on ki-1",
+    "reason": "rule 6 for a statement of what a response shows; the figure-bearing BC-REP-02 on BC-SKL-03005 is served once, on ki-1",
     "sources": [
      "BC-SKL-03002"
     ]
@@ -116,7 +116,7 @@
    "notation": "dy/dx equals dy/du times du/dx",
    "delivery": {
     "mode": "figure",
-    "reason": "rule 3: BC-REP-02 on BC-SKL-03005; not promoted, since BC-QA-03003's difficulty_variables are properties of a fixed graph",
+    "reason": "rule 4: BC-REP-02 on BC-SKL-03005; not promoted, since BC-QA-03003's difficulty_variables are properties of a fixed graph",
     "sources": [
      "BC-SKL-03005",
      "BC-QA-03003"
@@ -152,7 +152,7 @@
       },
       {
        "name": "f",
-       "curve": "polygon through (0,0), (2,2), (4,-1)",
+       "curve": "polygon through (0,0), (1.5,3), (4,-2)",
        "marks": [
         {
          "at": [
@@ -1087,8 +1087,8 @@
   "author": "tools/lesson_transcribe.py",
   "prompt_version": "generator/lesson_v2",
   "design_path": "docs/lessons/unit-03/LSN-CON-03002.md",
-  "signed_off_by": null,
-  "signed_off_at": null,
+  "signed_off_by": "claude-opus-5-5",
+  "signed_off_at": "2026-09-29",
   "not_human": true
  }
 }

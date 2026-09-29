@@ -39,73 +39,89 @@
   "auditor": "claude-opus-5-5",
   "blocks": [
    {
+    "id": "prediction",
+    "verdict": "ok",
+    "evidence": "SymPy: implicit slope of (y-2)^2=(x-1)^2(x+2) equals the stated quotient; key A numerator; B and C false. Resolution matches 3.2 Tangent conditions paragraph. No verdict word, no id."
+   },
+   {
     "id": "orientation",
     "verdict": "ok",
-    "evidence": "Paraphrase of BC-CON-03005 description_plain; 35 words."
+    "evidence": "Trimmed; still BC-CON-03005 description_plain."
    },
    {
     "id": "ki-1",
     "verdict": "ok",
-    "evidence": "Paraphrase of 3.2 Tangent conditions paragraph (numerator zero, denominator not; candidate need not lie on the curve); 62 words."
+    "evidence": "Trimmed; horizontal and vertical conditions match 3.2 Tangent conditions; candidate sentence shortened."
    },
    {
     "id": "st-1",
     "verdict": "ok",
-    "evidence": "Method is BC-QA-03005 expected_solution_path[0]; rival is wrong_approaches BC-ERR-03012; cue 19 words."
+    "evidence": "Method no label; rival id moved to sources."
+   },
+   {
+    "id": "st-1.contrast",
+    "verdict": "ok",
+    "evidence": "this matches BC-QA-03005 typical_wording (vertical tangent); SymPy: stated dy/dx correct, vertical points (-2,1), (2,-1). not_this: slope at (1,1), on the curve, value -1, BC-QA-03004; why_not and feature true."
    },
    {
     "id": "ex-1",
     "verdict": "ok",
-    "evidence": "SymPy: implicit derivative of (y-2)^2 - (x-1)^2(x+2) gives 3(x-1)(x+1)/(2(y-2)); x=-1 gives y in {0, 4}; x=1 gives y=2 with denominator 0; answer {(-1,0),(-1,4)}."
-   },
-   {
-    "id": "representations",
-    "verdict": "ok",
-    "evidence": "null at block level; the BC-REP-02 figure is carried in the ki-1 delivery spec."
+    "evidence": "Cue and why lines trimmed, expressions unchanged; SymPy horizontal candidates (-1,0), (-1,4), (1,2), the last with denominator 0."
    },
    {
     "id": "err-BC-ERR-03012",
     "verdict": "ok",
-    "evidence": "Record text verbatim; wrong 2(y-2)=0 against right 3(x-1)(x+1)=0."
+    "evidence": "fix_prompt true with relation distinct. Different equations."
    },
    {
     "id": "err-BC-ERR-03013",
     "verdict": "ok",
-    "evidence": "Record text verbatim incl. cr-23:23, cr-24:18; possible_reason paraphrases BC-MIS-03007, which the error lists."
+    "evidence": "verbatim record text; the reader strips the citation (app/web/src/lessons/LessonText.tsx CITATION_GROUP covers the cr, sg and crabbc page forms); scoring_consequence checked equal to data/errors.json by script, no design change"
    },
    {
     "id": "err-BC-ERR-05057",
     "verdict": "ok",
-    "evidence": "Record text verbatim; (1, 2) has numerator and denominator both 0; possible_reason from BC-MIS-05031, listed on the error."
+    "evidence": "fix_prompt true with relation distinct. Three points vs two."
+   },
+   {
+    "id": "representations",
+    "verdict": "ok",
+    "evidence": "unchanged since 2026-09-29. null at block level; the BC-REP-02 figure is carried in the ki-1 delivery spec."
    },
    {
     "id": "BC-PRQ-03007",
     "verdict": "ok",
-    "evidence": "Paraphrase of description_plain and failure_signature."
+    "evidence": "Admissibility clause cut; first clause unchanged."
    },
    {
     "id": "chk-1",
     "verdict": "ok",
-    "evidence": "SymPy: x=-1 gives (y-2)^2=4, y in {0,4}; key {(-1,0),(-1,4)}."
+    "evidence": "unchanged since 2026-09-29. SymPy: x=-1 gives (y-2)^2=4, y in {0,4}; key {(-1,0),(-1,4)}."
    },
    {
     "id": "chk-2",
     "verdict": "ok",
-    "evidence": "SymPy: 2(y-1)^2 = x^2(x+6) gives dydx = 3x(x+4)/(4(y-1)); y=1 gives x in {-6, 0}; numerator 0 at (0,1); key {(-6,1)}; draw matches shift = 3*2*1."
+    "evidence": "unchanged since 2026-09-29. SymPy: 2(y-1)^2 = x^2(x+6) gives dydx = 3x(x+4)/(4(y-1)); y=1 gives x in {-6, 0}; numerator 0 at (0,1); key {(-6,1)}; draw matches shift = 3*2*1."
    },
    {
     "id": "chk-3",
     "verdict": "ok",
-    "evidence": "SymPy: dydx = 3x(x+2)/(2y); key {(-2,-2),(-2,2)}; A from 2y=0 gives {(0,0),(-3,0)}; C {-2,0}; D adds (0,0); four options distinct."
+    "evidence": "unchanged since 2026-09-29. SymPy: dydx = 3x(x+2)/(2y); key {(-2,-2),(-2,2)}; A from 2y=0 gives {(0,0),(-3,0)}; C {-2,0}; D adds (0,0); four options distinct."
+   },
+   {
+    "id": "delivery.ki-1",
+    "verdict": "ok",
+    "evidence": "Not new, audited because it is drawn. SymPy: start (-2,2) on the curve; horizontal (-1,0), (-1,4); vertical (-2,2) only; (1,2) both zero; all inside the window x [-3,3], y [-2,6]. Fallback matches. Mode follows rule 4 promotion (BC-REP-02 on both skills, varying point in common_givens)."
    }
   ],
   "advice": [
-   "The ki-1 interactive (dragging a point along the curve and reading numerator and denominator) matches a reading idea well; ensure the fallback's (-2, 2) vertical tangent label is also mentioned in text, since no served block states it.",
-   "ex-1 step 6 has no expression and is skipped in time; a reader would still want the discard of (1, 2) written, since BC-ERR-05057 targets exactly that line.",
-   "No scoring habit is taught in served text (what_a_reader_scores empty); the explanation-in-words step of the archetype path ('state the conclusion in words') is not modelled in ex-1."
+   "Strip '(cr-23:23, cr-24:18)' from err-BC-ERR-03013's served scoring_consequence and keep it in sources.",
+   "Delivery reasons cite the old rule numbers (ki-1 record reason says 'rule 3 promoted' for the interactive; orientation says rule 5 for text); the TEMPLATE selection list now has figure and interactive under rule 4 and text under rule 6. The TEMPLATE's own example entries still use the old numbers, so fix both together.",
+   "The Prediction prose says the resolution gives the candidates x = -1 and x = 1, but the record's resolution does not; align the prose.",
+   "The interactive's Enter read-out at (1, 2) must say dy/dx is undefined there (0/0), not print a number."
   ],
   "counts": {
-   "ok": 12,
+   "ok": 15,
    "unsourced": 0,
    "wrong": 0,
    "over_cap": 0,
@@ -114,6 +130,7 @@
  },
  "fix_notes": [
   "No non-ok verdicts and no defect advice; nothing changed.",
-  "Left as preferences: mention the (-2, 2) vertical tangent in text; write the discard of (1, 2) in ex-1 step 6; model the conclusion in words and a scoring habit."
+  "Left as preferences: mention the (-2, 2) vertical tangent in text; write the discard of (1, 2) in ex-1 step 6; model the conclusion in words and a scoring habit.",
+  "err-BC-ERR-03013 scoring_consequence lint closed as verbatim record text whose citations the reader strips; no design change."
  ]
 }

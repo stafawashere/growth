@@ -39,113 +39,121 @@
   "auditor": "claude-opus-5-5",
   "blocks": [
    {
+    "id": "prediction",
+    "verdict": "ok",
+    "evidence": "SymPy: diff(3(x - 1)^(2/3)/(x + 2)) minus the stated f' simplifies to 0; f(1) = 0 defined, f(-2) = zoo; key {1, 7} (B) only true option; A misses the cusp (BC-ERR-05011), C keeps -2 (BC-ERR-05010); no verdict word, no id."
+   },
+   {
     "id": "orientation",
     "verdict": "ok",
-    "evidence": "Paraphrase of BC-CON-05003 and the 5.2 topic; 36 words."
+    "evidence": "Shortened paraphrase of BC-CON-05003 description_plain and BC-QA-05014/05006 path (f' = 0 as an equation, plus inputs where f' fails to exist)."
    },
    {
     "id": "ki-1",
     "verdict": "ok",
-    "evidence": "Quote matches ced:100 FUN-1.C.2 verbatim; cusp, corner, vertical tangent from BC-MIS-05009."
+    "evidence": "Paraphrase of ced:100 FUN-1.C.2 with the domain condition (BC-PRQ-05003); quote dropped (null)."
    },
    {
     "id": "ki-2",
     "verdict": "ok",
-    "evidence": "Paraphrase of ced:100 FUN-1.C.3; relative versus absolute from BC-SKL-05012."
+    "evidence": "Shortened paraphrase of ced:100 FUN-1.C.3 and BC-SKL-05012 relative against absolute."
    },
    {
     "id": "st-1",
+    "verdict": "lint",
+    "evidence": "method served as \"F'(x).\": the label strip capitalised f, and F' reads as the derivative of an antiderivative F, a different function; should be \"f'(x).\" The contrast and rival fields are sourced (BC-QA-05014)."
+   },
+   {
+    "id": "st-1.contrast",
     "verdict": "ok",
-    "evidence": "BC-QA-05014 expected_solution_path[0] differentiate; rival verbatim from wrong_approaches."
+    "evidence": "this matches BC-QA-05014 TW 'find all critical points of f'; draw (cusp, root -2, pole 4, multiplier 5) equals no published BC-QA-05014 parameter_draw; SymPy f' = -5(x + 14)/(3(x - 4)^2 (x + 2)^(1/3)), so the full answer is {-14, -2} while not_this (solve f'(x) = 0) gives only -14, matching wrong_approaches 'setting only the derivative equal to zero'; why_not and feature true."
    },
    {
     "id": "st-2",
-    "verdict": "ok",
-    "evidence": "BC-QA-05006 path[0] consider f' = 0; rival from wrong_approaches (EVT as locating)."
+    "verdict": "lint",
+    "evidence": "method served as \"F'(x) = 0, as an equation.\": same capitalisation artefact; F'(x) = 0 would mean f(x) = 0. Should be \"f'(x) = 0, as an equation.\" Rival and feature unchanged from BC-QA-05006."
    },
    {
     "id": "st-3",
     "verdict": "ok",
-    "evidence": "BC-QA-05003 path[0] and wrong_approaches (second derivative test with slope of f' undiscussed)."
+    "evidence": "method 'Locate the input on f'.' has no label; BC-QA-05003 path[0] and wrong_approaches with the slope qualifier kept."
    },
    {
     "id": "ex-1",
     "verdict": "ok",
-    "evidence": "SymPy: diff(3(x-1)^(2/3)/(x+2)) minus (7-x)/((x-1)^(1/3)(x+2)^2) simplifies to 0; f(-2) undefined, f(1) = 0; critical points {1, 7}."
+    "evidence": "SymPy: diff(3(x-1)^(2/3)/(x+2)) minus (7-x)/((x-1)^(1/3)(x+2)^2) simplifies to 0; f(-2) undefined, f(1) = 0; critical points {1, 7}. (unchanged since 2026-09-29)"
    },
    {
     "id": "reader-ex-1",
     "verdict": "ok",
-    "evidence": "BC-PT-99013 earns and does_not_earn quoted verbatim; PT is in BC-QA-05014 point_types."
+    "evidence": "BC-PT-99013 earns and does_not_earn quoted verbatim; PT is in BC-QA-05014 point_types. (unchanged since 2026-09-29)"
    },
    {
     "id": "err-BC-ERR-05009",
     "verdict": "ok",
-    "evidence": "observed_behavior and scoring_consequence verbatim."
+    "evidence": "fix_prompt true equals relation distinct; wrong and right expr differ (zeros_listed_only against derivative_set_equal_to_zero); record text unchanged otherwise. Earlier: observed_behavior and scoring_consequence verbatim."
    },
    {
     "id": "err-BC-ERR-05010",
     "verdict": "ok",
-    "evidence": "fixed 2026-09-29: wrong step now reads the unreduced f' = (7 - x)(x + 2)/((x - 1)^(1/3)(x + 2)^3), whose numerator vanishes at -2 where f is undefined, so -2 kept; right step 'f(-2) undefined: dropped.' SymPy: diff(f) minus that form simplifies to 0; solve((7 - x)(x + 2)) = [-2, 7]; f(-2) = zoo. Word counts 701 and 447, minutes 4.7 and 3.0."
+    "evidence": "fix_prompt true equals relation distinct; wrong and right expr differ (FiniteSet(-2, 1, 7) against FiniteSet(1, 7)); record text unchanged otherwise. Earlier: fixed 2026-09-29: wrong step now reads the unreduced f' = (7 - x)(x + 2)/((x - 1)^(1/3)(x + 2)^3), whose numerator vanishes at -2 where f is undefined, so -2 kept; right step 'f(-2) undefined: dropped.' SymPy: diff(f) minus that form simplifies to 0; solve((7 - x)(x + 2)) = [-2, 7]; f(-2) = zoo. Word counts 701 and 447, minutes 4.7 and 3.0."
    },
    {
     "id": "err-BC-ERR-05011",
     "verdict": "ok",
-    "evidence": "Record text verbatim; missing cusp x = 1 gives {7}."
+    "evidence": "fix_prompt true equals relation distinct; wrong and right expr differ (FiniteSet(7) against FiniteSet(1, 7)); record text unchanged otherwise. Earlier: Record text verbatim; missing cusp x = 1 gives {7}."
    },
    {
     "id": "err-BC-ERR-05012",
     "verdict": "ok",
-    "evidence": "SymPy: f(7) = 6^(2/3)/3 about 1.101, f(0) = 3/2, f(10) about 1.082, so f(0) is the maximum on [0, 10]."
+    "evidence": "fix_prompt true equals relation distinct; wrong and right expr differ (6**(2/3)/3 against 3/2); record text unchanged otherwise. Earlier: SymPy: f(7) = 6^(2/3)/3 about 1.101, f(0) = 3/2, f(10) about 1.082, so f(0) is the maximum on [0, 10]."
    },
    {
     "id": "representations",
     "verdict": "ok",
-    "evidence": "null."
+    "evidence": "null. (unchanged since 2026-09-29)"
    },
    {
-    "id": "bridge-BC-PRQ-05001",
+    "id": "BC-PRQ-05001",
     "verdict": "ok",
-    "evidence": "Paraphrase of description_plain."
+    "evidence": "Text 'Zero a factor.' shortened; still a paraphrase of the BC-PRQ-05001 description_plain; no id in served text."
    },
    {
-    "id": "bridge-BC-PRQ-05003",
+    "id": "BC-PRQ-05003",
     "verdict": "ok",
-    "evidence": "Paraphrase of description_plain."
+    "evidence": "Text 'Keep inputs where f exists.' shortened; still a paraphrase of the BC-PRQ-05003 description_plain; no id in served text."
    },
    {
-    "id": "bridge-BC-PRQ-05006",
+    "id": "BC-PRQ-05006",
     "verdict": "ok",
-    "evidence": "Paraphrase of failure_signature."
+    "evidence": "Text 'Check whether the curve is f or f'.' shortened; still a paraphrase of the BC-PRQ-05006 description_plain; no id in served text."
    },
    {
     "id": "chk-1",
     "verdict": "ok",
-    "evidence": "Denominator zeros -2, 1; -2 outside domain; key {1, 7}."
+    "evidence": "Denominator zeros -2, 1; -2 outside domain; key {1, 7}. (unchanged since 2026-09-29)"
    },
    {
     "id": "chk-2",
     "verdict": "ok",
-    "evidence": "SymPy: derivative of 2(x-3)^(1/3)/(x-1) equals 2(8-2x)/(3(x-3)^(2/3)(x-1)^2); zero at 4, fails at 3 (f(3) = 0) and 1 (undefined); key {3, 4}."
+    "evidence": "SymPy: derivative of 2(x-3)^(1/3)/(x-1) equals 2(8-2x)/(3(x-3)^(2/3)(x-1)^2); zero at 4, fails at 3 (f(3) = 0) and 1 (undefined); key {3, 4}. (unchanged since 2026-09-29)"
    },
    {
     "id": "chk-3",
     "verdict": "ok",
-    "evidence": "SymPy: derivative of -2(x+1)^(2/3)/(x-2) equals 2(x+7)/(3(x+1)^(1/3)(x-2)^2); key {-7, -1}; distractors map to 05009, 05010, 05011."
+    "evidence": "SymPy: derivative of -2(x+1)^(2/3)/(x-2) equals 2(x+7)/(3(x+1)^(1/3)(x-2)^2); key {-7, -1}; distractors map to 05009, 05010, 05011. (unchanged since 2026-09-29)"
    }
   ],
   "advice": [
-   "err-BC-ERR-05010 record describes an input where the derivative expression vanishes but f is undefined; the example keeps x = -2, where the denominator of f' vanishes. The mismatch is small but the block should say the kept input is where f' fails to exist.",
-   "BC-PT-99013 eligibility: sg-22:12 gave the point to a response isolating the critical number without writing the equation. err-BC-ERR-05009 presents x = 7 alone as a loss without that caveat.",
-   "st-3 (classification, BC-QA-05003) has no worked example, check or error block here (BC-ERR-05013 is in the bundle); either drop st-3 or leave it to LSN-CON-05005 with a pointer.",
-   "ex-1 step_reveal suits the process; the lesson teaches the first written line (f'(x)) and the rival (only f' = 0) well."
+   "Orientation lost 'never calls a critical point an extremum without an argument'; ki-2 still carries it, so no content gap.",
+   "The contrast not_this 'Solve f'(x) = 0' is built from wrong_approaches rather than from another archetype's typical_wording; the template allows a rival-method stem."
   ],
   "counts": {
    "ok": 19,
    "unsourced": 0,
    "wrong": 0,
    "over_cap": 0,
-   "lint": 0
+   "lint": 2
   }
  },
  "fix_notes": [

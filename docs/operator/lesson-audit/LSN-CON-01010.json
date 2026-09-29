@@ -42,92 +42,99 @@
   "auditor": "claude-opus-5-5",
   "blocks": [
    {
+    "id": "prediction",
+    "verdict": "ok",
+    "evidence": "ex-1's function; SymPy limit(2+3(x-1)sin(1/(x-1)), x, 1) = 2 = key; bounds 2 -/+ 3|x-1| both tend to 2; resolution is BC-CON-01010 and the 1.8 Squeeze theorem paragraph."
+   },
+   {
     "id": "orientation",
     "verdict": "ok",
-    "evidence": "Paraphrase of BC-CON-01010 description_plain and the 1.8 Assessment behaviour paragraph; 38 words."
+    "evidence": "Trailing sentence dropped; remainder is the 1.8 Assessment behaviour paragraph; figure unchanged."
    },
    {
     "id": "ki-1",
     "verdict": "ok",
-    "evidence": "Squeeze statement matches BC-EK-LIM-1E2 and the 1.8 paragraph; ced:45 quote verbatim; SymPy bounds 2 -/+ 3|x-1| tend to 2; motion windows 2 -/+ 3, 0.3, 0.03 match the bounds at half-widths 1, 0.1, 0.01.",
-    "reaudited": "2026-09-29"
+    "evidence": "Quote dropped, tag inferred; statement is the 1.8 Squeeze theorem paragraph with 'near c' for 'near c except possibly at c', which the next sentence's 'inequality is shown' does not contradict; motion unchanged."
    },
    {
     "id": "st-1",
     "verdict": "ok",
-    "evidence": "Method BC-QA-01005 expected_solution_path[0]; rival BC-ERR-01013 in wrong_approaches; cue from common_givens."
+    "evidence": "Label removed; method is BC-QA-01005 path; rival BC-ERR-01013 moved to sources."
+   },
+   {
+    "id": "st-1.contrast",
+    "verdict": "ok",
+    "evidence": "this asks for the limit with justification (BC-QA-01005 asked_to_produce), SymPy limit 0, cos(1/x) has no limit (AccumBounds(-1, 1)); not_this factors both have limits, product 0, so why_not is true; feature true."
    },
    {
     "id": "ex-1",
     "verdict": "ok",
-    "evidence": "SymPy: |3(x-1)sin(1/(x-1))| <= 3|x-1|; limits of 2 -/+ 3|x-1| at 1 are both 2; draw meets the constraint (power 1 odd)."
+    "evidence": "SymPy: |3(x-1)sin(1/(x-1))| <= 3|x-1|; limits of 2 -/+ 3|x-1| at 1 are both 2; draw meets the constraint (power 1 odd).",
+    "note": "unchanged since 2026-09-29"
    },
    {
     "id": "err-BC-ERR-01012",
     "verdict": "ok",
-    "evidence": "Record text verbatim; 2-3(x-1) exceeds f for x<1 (it equals the upper bound 2+3|x-1| there); distinct from 2-3|x-1|."
+    "evidence": "fix_prompt true with relation distinct; wrong 5-3x against right 2-3|x-1|, differing at x = 0.5 (3.5 against 0.5), no expr rewritten."
    },
    {
     "id": "err-BC-ERR-01013",
     "verdict": "ok",
-    "evidence": "Record text verbatim; SymPy 2-3*Abs(1-1) = 2 equals the limit 2, so relation equivalent is correct and the loss is the theorem, as the consequence states."
+    "evidence": "fix_prompt false with relation equivalent; SymPy 2-3|1-1| = 2 and limit 2, so no fix prompt is right."
    },
    {
     "id": "err-BC-ERR-99008",
     "verdict": "ok",
-    "evidence": "Wrong step is the record's L'Hospital move 'without confirming the indeterminate form' (cr-23:16 instance, cached page reads the rule used without first checking both limits were 0); SymPy: 3(x-1)/(x+1) has limits 0 and 2 at 1, quotient limit 0, derivative quotient 3, distinct; observed_behavior and consequence verbatim; BC-MIS-99009 lists BC-ERR-99008; Unit 4 staging listed as inferred.",
-    "reaudited": "2026-09-29"
+    "evidence": "fix_prompt true with relation distinct; wrong 3 against right 0 (SymPy limit 3(x-1)/(x+1) at 1 = 0), no expr rewritten."
    },
    {
     "id": "representations",
     "verdict": "ok",
-    "evidence": "null; the 1.8 graph to inequality conversion is carried by the orientation figure and the ki-1 motion."
+    "evidence": "null; the 1.8 graph to inequality conversion is carried by the orientation figure and the ki-1 motion.",
+    "note": "unchanged since 2026-09-29"
    },
    {
     "id": "BC-PRQ-01005",
     "verdict": "ok",
-    "evidence": "Paraphrase of description_plain and failure_signature."
+    "evidence": "Paraphrase of description_plain and failure_signature.",
+    "note": "unchanged since 2026-09-29"
    },
    {
     "id": "BC-PRQ-01010",
     "verdict": "ok",
-    "evidence": "Paraphrase of description_plain; failure_signature (closed interval where the theorem gives an interior point) loosely paraphrased as the wrong interval."
+    "evidence": "Paraphrase of description_plain; failure_signature (closed interval where the theorem gives an interior point) loosely paraphrased as the wrong interval.",
+    "note": "unchanged since 2026-09-29"
    },
    {
     "id": "chk-1",
     "verdict": "ok",
-    "evidence": "SymPy: limit of 2+3|x-1| at 1 is 2."
+    "evidence": "SymPy: limit of 2+3|x-1| at 1 is 2.",
+    "note": "unchanged since 2026-09-29"
    },
    {
     "id": "chk-2",
     "verdict": "ok",
-    "evidence": "SymPy: |2(x+2)**2 cos(1/(x+2))| <= 2(x+2)**2; bounds -1 -/+ 2(x+2)**2 tend to -1; coefficient -2 < 0 meets the constraint."
+    "evidence": "SymPy: |2(x+2)**2 cos(1/(x+2))| <= 2(x+2)**2; bounds -1 -/+ 2(x+2)**2 tend to -1; coefficient -2 < 0 meets the constraint.",
+    "note": "unchanged since 2026-09-29"
    },
    {
     "id": "chk-3",
     "verdict": "ok",
-    "evidence": "SymPy: bounds 3 -/+ |x|**3 tend to 3; option B 3-x**3 > 3+x**3 for x<0, so the stated inequality fails there (BC-ERR-01012); A and C match BC-ERR-01013 and BC-ERR-99008."
+    "evidence": "SymPy: bounds 3 -/+ |x|**3 tend to 3; option B 3-x**3 > 3+x**3 for x<0, so the stated inequality fails there (BC-ERR-01012); A and C match BC-ERR-01013 and BC-ERR-99008.",
+    "note": "unchanged since 2026-09-29"
    }
   ],
   "advice": [
-   "err-BC-ERR-99008's served observed_behavior names MVT, IVT and L'Hospital's Rule, which a squeeze lesson reader will find off topic; a squeeze scoped error record or a paraphrase limited to the squeeze hypotheses is needed.",
-   "Motion for ki-1 (bounds pinching toward the target) fits a limit being taken; the orientation figure fits the trapped curve.",
-   "ex-1 and every check use 3|x-1| bounds, so the student never sees the reversal case built without absolute value; that is fine as a method but err-BC-ERR-01012 then shows the error only against a form the student was never asked to derive.",
-   "The lesson teaches the three lines scoring_pattern names (inequality, bound limits, conclusion) through ex-1, but no check asks the student to write the inequality line themselves; chk-3 recognises it only."
+   "ki-1 dropped 'except possibly at c'; the 1.8 paragraph carries it and it matters for ex-1, where f is undefined at 1.",
+   "The prediction poses ex-1's function and its resolution states the bounds and the limit, so ex-1 repeats a solved problem.",
+   "err-BC-ERR-99008 is still an L'Hospital error in a squeeze lesson (carried from the earlier audit)."
   ],
   "counts": {
-   "ok": 13,
+   "ok": 15,
    "unsourced": 0,
    "wrong": 0,
    "over_cap": 0,
    "lint": 0
-  },
-  "fix_notes": [
-   "Removed err-BC-ERR-99008 (unsourced for the squeeze theorem) and its delivery, refresher, source and inferred entries; no replacement error fits among the errors the skills hold.",
-   "chk-3 option C now carries BC-ERR-01013: the upper bound alone evaluated at 0.",
-   "Removed record ids from ki-1's served text (same defect class as 01007 and 01012).",
-   "Left as preferences: ki-1 motion and orientation figure, the reversal case never derived by the student, no check asking the student to write the inequality.",
-   "2026-09-29: error_blocks fix. err-BC-ERR-99008 restored as the third block (low band only): check_lessons.py computes BC-ERR-01012, 01013, 99008 from the records, all three linked to a high severity misconception, so ordered by id. observed_behavior and scoring_consequence are the record's text; wrong and right steps both 2 (equivalent, the loss is the unshown inequality); possible_reason from BC-MIS-99009. The squeeze reading of a record that names MVT, IVT and L'Hospital's Rule is listed as inferred. Delivery, refresher, sources updated; word_count.full 588, read_minutes.full 4.0. No check changed."
-  ]
+  }
  }
 }

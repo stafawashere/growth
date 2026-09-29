@@ -3,7 +3,7 @@
  "version": 1,
  "kind": "concept",
  "target_id": "BC-CON-02011",
- "status": "draft",
+ "status": "signed_off",
  "snapshot_digest": "a6a8ec9d3f59ab8f712e33d30cc22fc64bf2c478fbe7312e3e3118d319c6a42f",
  "source_digest": "8534c2c1780b394e1fcfa1561944acc638f560f865f5c7b3d1b2ed5860e5a378",
  "read_minutes": {
@@ -11,8 +11,8 @@
   "brief": 3.0
  },
  "word_count": {
-  "full": 415,
-  "brief": 393
+  "full": 414,
+  "brief": 392
  },
  "sections": [
   {
@@ -182,8 +182,8 @@
      "archetype_id": "BC-QA-02006"
     },
     "not_this": {
-     "text": "Let \\(h(x)=(4x^3-6)(x^2+5)\\). Find \\(h'(x)\\).",
-     "why_not": "Two variable factors are multiplied, so the product rule applies, not term by term differentiation."
+     "text": "Let \\(h(x)=(4x^3-6)\\sin x\\). Find \\(h'(x)\\).",
+     "why_not": "The factor \\(\\sin x\\) is not a power, so the product rule applies."
     },
     "feature": "Terms joined by plus or minus, each a number times a power, against factors multiplied."
    }
@@ -1049,8 +1049,8 @@
   "author": "tools/lesson_transcribe.py",
   "prompt_version": "generator/lesson_v2",
   "design_path": "docs/lessons/unit-02/LSN-CON-02011.md",
-  "signed_off_by": null,
-  "signed_off_at": null,
+  "signed_off_by": "claude-opus-5-5",
+  "signed_off_at": "2026-09-29",
   "not_human": true
  }
 }

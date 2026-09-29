@@ -11,7 +11,7 @@ Concept BC-CON-03002 (skills BC-SKL-03002, BC-SKL-03004, BC-SKL-03005, BC-SKL-03
 
 ## Prediction
 
-One multiple choice question on worked example 1's own table, asked before the rule is shown: which two readings give \(h'(1)\) for \(h(x)=f(g(x))\). The key is the outer rate read at \(g(1)=3\) times the inner rate at 1, \(f'(3)g'(1)\), the product behind ex-1's first valued step. The distractors are the outer rate read at the input (the BC-ERR-03003 path) and the two rates added (BC-ERR-03004). The resolution, shown on the key idea screen beside the choice, gives the two readings and their value, \(-6\). No verdict word. Sources: BC-CON-03002 and the topic 3.1 section the key idea cites.
+One multiple choice question on worked example 1's own values, asked before the rule and before the table is on screen, so the stem states the four values it uses: which combination gives \(h'(1)\) for \(h(x)=f(g(x))\). The key is the outer rate read at \(g(1)=3\) times the inner rate at 1, \(f'(3)g'(1)\), the product behind ex-1's first valued step. The distractors are the outer rate read at the input (the BC-ERR-03003 path) and the two rates added (BC-ERR-03004). The resolution, shown on the key idea screen beside the choice, gives the two readings and their value, \(-6\). No verdict word. Sources: BC-CON-03002 and the topic 3.1 section the key idea cites.
 
 ## Orientation
 
@@ -87,16 +87,16 @@ BC-QA-03002 is `either` on calculator status and a single MCQ; this draw is inte
 
 ## Delivery
 
-- orientation: text. Rule 5 for the orientation's statement; the figure-bearing representation is served once, on ki-1, to keep one new idea per screen.
-- ki-1: figure. Rule 4: BC-SKL-03005 carries BC-REP-02. Not promoted: BC-QA-03003's `difficulty_variables` (a corner, a grid position) are properties of a fixed graph, not a varying quantity (docs/lessons/unit-03/README.md, section 6) [inferred; settled by the modality A/B].
+- orientation: text. Rule 6 for the orientation's statement; the figure-bearing representation is served once, on ki-1, to keep one new idea per screen.
+- ki-1: figure. Rule 4: BC-SKL-03005 carries BC-REP-02. The g panel runs through (0,1), (2,3), (4,2), so g(1) = 2 with slope 1; the f panel runs through (0,0), (1.5,3), (4,-2), so its vertex sits between x = a and u = g(a): f'(2) = -2 exists at the reading line, and the slope at 1, which is 2, differs from it. Not promoted: BC-QA-03003's `difficulty_variables` (a corner, a grid position) are properties of a fixed graph, not a varying quantity (docs/lessons/unit-03/README.md, section 6) [inferred; settled by the modality A/B].
 - ex-1: step_reveal, the table rendered inside the problem (BC-REP-03 given). Rule 1.
 - ex-2: step_reveal. Rule 1. Faded from step 3.
 - err-BC-ERR-03001, 03002, 03003, 03004: step_reveal. Rule 1.
 
 ## Band plan
 
-- Low (full), in served order: prediction, orientation, the three bridges, ki-1, st-1 with its contrast pair, st-2, st-3, ex-1, chk-1, the four error blocks, ex-2 faded from step 3 with its scoring line, chk-2, chk-3. 768 words, 5.2 minutes (cap 900 and 6).
-- Mid (brief): prediction, orientation, the bridges, ki-1, st-1 with its contrast pair, ex-1, chk-1, err-BC-ERR-03001, err-BC-ERR-03002, chk-2. 442 words, 3.0 minutes (cap 450 and 3).
+- Low (full), in served order: prediction, orientation, the three bridges, ki-1, st-1 with its contrast pair, st-2, st-3, ex-1, chk-1, the four error blocks, ex-2 faded from step 3 with its scoring line, chk-2, chk-3. 765 words, 5.2 minutes (cap 900 and 6).
+- Mid (brief): prediction, orientation, the bridges, ki-1, st-1 with its contrast pair, ex-1, chk-1, err-BC-ERR-03001, err-BC-ERR-03002, chk-2. 439 words, 3.0 minutes (cap 450 and 3).
 - Refresher: ki-1, the four error blocks, ex-1.
 
 ## Sources
@@ -127,7 +127,7 @@ BC-QA-03002 is `either` on calculator status and a single MCQ; this draw is inte
  "skills": ["BC-SKL-03002", "BC-SKL-03004", "BC-SKL-03005", "BC-SKL-03006"],
  "prediction": {
   "id": "pr-1",
-  "stem": {"text": "Predict. \\(h(x)=f(g(x))\\), with \\(g(1)=3\\). Which two readings from the table give \\(h'(1)\\)?", "command_verb": "predict"},
+  "stem": {"text": "Predict. \\(h(x)=f(g(x))\\), \\(g(1)=3\\), \\(g'(1)=2\\), \\(f'(1)=4\\), \\(f'(3)=-3\\). Which gives \\(h'(1)\\)?", "command_verb": "predict"},
   "format": "mcq",
   "options": [
    {"id": "A", "label": "\\(f'(3)\\) times \\(g'(1)\\)", "is_key": true},
@@ -336,11 +336,11 @@ BC-QA-03002 is `either` on calculator status and a single MCQ; this draw is inte
   }
  ],
  "delivery": [
-  {"block": "orientation", "mode": "text", "reason": "rule 5 for a statement of what a response shows; the figure-bearing BC-REP-02 on BC-SKL-03005 is served once, on ki-1", "sources": ["BC-SKL-03002"]},
-  {"block": "ki-1", "mode": "figure", "reason": "rule 3: BC-REP-02 on BC-SKL-03005; not promoted, since BC-QA-03003's difficulty_variables are properties of a fixed graph", "sources": ["BC-SKL-03005", "BC-QA-03003"],
+  {"block": "orientation", "mode": "text", "reason": "rule 6 for a statement of what a response shows; the figure-bearing BC-REP-02 on BC-SKL-03005 is served once, on ki-1", "sources": ["BC-SKL-03002"]},
+  {"block": "ki-1", "mode": "figure", "reason": "rule 4: BC-REP-02 on BC-SKL-03005; not promoted, since BC-QA-03003's difficulty_variables are properties of a fixed graph", "sources": ["BC-SKL-03005", "BC-QA-03003"],
    "spec": {"kind": "graph_pair", "representations": ["BC-REP-02"], "panels": [
      {"name": "g", "curve": "polygon through (0,1), (2,3), (4,2)", "marks": [{"at": [1, 2], "what": "point (a, g(a))"}], "labels": [{"text": "g(a) = u", "placement": "inside"}, {"text": "slope g'(a)", "placement": "inside"}]},
-     {"name": "f", "curve": "polygon through (0,0), (2,2), (4,-1)", "marks": [{"at": [2, 2], "what": "the vertical line u = g(a)"}], "labels": [{"text": "read f' here, at u = g(a)", "placement": "inside"}, {"text": "not at x = a", "placement": "inside"}]}
+     {"name": "f", "curve": "polygon through (0,0), (1.5,3), (4,-2)", "marks": [{"at": [2, 2], "what": "the vertical line u = g(a)"}], "labels": [{"text": "read f' here, at u = g(a)", "placement": "inside"}, {"text": "not at x = a", "placement": "inside"}]}
     ]},
    "fallback": "the two panels as a static image with the same labels, and a text line: read g(a) first, then the slope of f at that value, then multiply by the slope of g at a",
    "keyboard": "none needed: the figure has no control"},
@@ -353,7 +353,7 @@ BC-QA-03002 is `either` on calculator status and a single MCQ; this draw is inte
  ],
  "refresher": ["ki-1", "err-BC-ERR-03001", "err-BC-ERR-03002", "err-BC-ERR-03003", "err-BC-ERR-03004", "ex-1"],
  "read_minutes": {"full": 5.2, "brief": 3.0},
- "word_count": {"full": 768, "brief": 442},
+ "word_count": {"full": 765, "brief": 439},
  "research_lines": [
   {"file": "research/units/unit-03-differentiation-composite-implicit-inverse.md", "line": "Look up the inner value first, then look up the outer derivative at that value."}
  ],

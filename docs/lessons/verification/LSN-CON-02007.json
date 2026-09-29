@@ -45,112 +45,125 @@
   "auditor": "claude-opus-5-5",
   "blocks": [
    {
+    "id": "prediction",
+    "verdict": "ok",
+    "evidence": "SymPy (38-71)/(10-4) = -11/2; B (average rate over [4,10], the bracketing rows) is the only rate among the options; A is the value 50, C is -33 with no division (BC-ERR-02001); resolution 26 words from 2.3 Method; no verdict word or id."
+   },
+   {
     "id": "orientation",
     "verdict": "ok",
-    "evidence": "Paraphrase of BC-CON-02007 and 2.3 Method and Assessment behaviour; 46 words."
+    "evidence": "34 words; shortened paraphrase of BC-CON-02007 and 2.3 Method (difference and quotient over bracketing rows, compound units, tangent slope, named setup from BC-QA-02013 asked_to_produce)."
    },
    {
     "id": "ki-1",
     "verdict": "ok",
-    "evidence": "BC-EK-CHA-2D1 quote verbatim on ced:62; 'contains or abuts', difference and quotient, and units from 2.3 Method and Units paragraphs."
+    "evidence": "Quote dropped, citation removed; table rule, graph rule and units rule as in 2.3 Method and Units ('contains or abuts', difference and quotient both shown)."
    },
    {
     "id": "ki-2",
     "verdict": "ok",
-    "evidence": "Depth now core, text unchanged; CHA-2.D.2 quote verbatim on ced:62; naming the computed quantity and three decimals from BC-QA-02013 asked_to_produce.",
-    "reaudited": "2026-09-29"
+    "evidence": "Quote dropped, citation removed; setup naming W'(2) and three decimals from BC-QA-02013 asked_to_produce."
    },
    {
     "id": "st-1",
     "verdict": "ok",
-    "evidence": "Cue 19 words from BC-QA-04002 typical_wording and common_givens; method from expected_solution_path; rival BC-ERR-02004 from wrong_approaches.",
-    "reaudited": "2026-09-29"
+    "evidence": "fixed 2026-09-29: rival now opens 'A pair of rows', the 'Rival:' label removed."
+   },
+   {
+    "id": "st-1.contrast",
+    "verdict": "ok",
+    "evidence": "fixed 2026-09-29: feature is now 'The stem asks for a derivative at a point.', the separator the audit names (an estimate of P'(3) against an average rate), since BC-QA-04002 stems also name an interval (typical_wording, common_givens). The this stem now gives units, 'P(t) liters at t hours', values unchanged. why_not shortened to 'It asks for the average rate itself.' SymPy: both give (20-8)/(5-1) = 3 liters per hour."
    },
    {
     "id": "st-2",
     "verdict": "ok",
-    "evidence": "From BC-QA-02013 common_givens and asked_to_produce; rival BC-ERR-02031 recorded as inferred."
+    "evidence": "fixed 2026-09-29: rival now opens 'A bare calculator number', the 'Rival:' label removed."
    },
    {
     "id": "ex-1",
     "verdict": "ok",
     "evidence": "Draw pairs times [0,4,6,10,12] with readings [86,71,50,38,25] as the stem states; SymPy (38-71)/(10-4) = -11/2; units degrees Fahrenheit per minute.",
-    "reaudited": "2026-09-29"
+    "note": "unchanged since 2026-09-29"
    },
    {
     "id": "ex-2",
     "verdict": "ok",
-    "evidence": "SymPy: W'(t) = (3t/2)cos(t^2/4) + 1/(1+t) exactly; W'(2) = 1.9542403, reported 1.954."
+    "evidence": "fade_from 2: shown step 1 is the setup with W(t); a student with a calculator produces W'(2) from it; withheld steps 2 (differentiate, expr) and 3 (evaluate, expr 1.954) are valued. SymPy W'(t) = (3t/2)cos(t^2/4) + 1/(1+t) exactly, W'(2) = 1.9542403."
    },
    {
     "id": "reader-scores:ex-1",
     "verdict": "ok",
-    "evidence": "Empty entry, recorded as inferred with its library gap."
+    "evidence": "Empty entry, recorded as inferred with its library gap.",
+    "note": "unchanged since 2026-09-29"
    },
    {
     "id": "err-BC-ERR-02001",
     "verdict": "ok",
-    "evidence": "Verbatim record; SymPy 38-71 = -33."
+    "evidence": "fix_prompt true with relation distinct; SymPy -33 differs from -11/2."
    },
    {
     "id": "err-BC-ERR-02002",
     "verdict": "ok",
-    "evidence": "Verbatim record; quotient with no value."
+    "evidence": "fix_prompt false with relation equivalent; both expr (38-71)/(10-4) and -11/2 equal -11/2."
    },
    {
     "id": "err-BC-ERR-02003",
     "verdict": "ok",
-    "evidence": "Verbatim record; possible reason from BC-MIS-02008."
+    "evidence": "fix_prompt false with relation equivalent; -11/2 equals (38-71)/(10-4) (the error is the units)."
    },
    {
     "id": "err-BC-ERR-02004",
     "verdict": "ok",
-    "evidence": "Verbatim record; SymPy (50-71)/(6-4) = -21/2, distinct from -11/2."
+    "evidence": "fix_prompt true with relation distinct; SymPy (50-71)/(6-4) = -21/2 differs from -11/2."
    },
    {
     "id": "representations",
     "verdict": "ok",
-    "evidence": "SymPy: y = x^2/4 + 1 at x = 2 is 2 with slope 1; tangent y = x passes (0,0) and (4,4). Tangent reading from 2.3 Representations (graph to estimated slope)."
+    "evidence": "SymPy: y = x^2/4 + 1 at x = 2 is 2 with slope 1; tangent y = x passes (0,0) and (4,4). Tangent reading from 2.3 Representations (graph to estimated slope).",
+    "note": "unchanged since 2026-09-29"
    },
    {
     "id": "BC-PRQ-02004",
     "verdict": "ok",
-    "evidence": "Paraphrase of BC-PRQ-02004 (the form names the variable)."
+    "evidence": "Paraphrase of BC-PRQ-02004 (the form names the variable).",
+    "note": "unchanged since 2026-09-29"
    },
    {
     "id": "chk-1",
     "verdict": "ok",
     "evidence": "Same draw as ex-1; SymPy (38-71)/(10-4) = -11/2 = key.",
-    "reaudited": "2026-09-29"
+    "note": "unchanged since 2026-09-29"
    },
    {
     "id": "chk-2",
     "verdict": "ok",
-    "evidence": "SymPy: (44-20)/(8-3) = 24/5."
+    "evidence": "SymPy: (44-20)/(8-3) = 24/5.",
+    "note": "unchanged since 2026-09-29"
    },
    {
     "id": "chk-3",
     "verdict": "ok",
-    "evidence": "SymPy: key 21/4; A 21 (BC-ERR-02001), B (23-14)/3 = 3 and D (35-23)/1 = 12 (BC-ERR-02004)."
+    "evidence": "SymPy: key 21/4; A 21 (BC-ERR-02001), B (23-14)/3 = 3 and D (35-23)/1 = 12 (BC-ERR-02004).",
+    "note": "unchanged since 2026-09-29"
    }
   ],
   "advice": [
-   "ex-1 and chk-1 parameter_draw list readings [25,38,50,71,86] ascending against times [0,4,6,10,12] with trend decreasing; the served stem pairs them in reverse. The draw should record the served pairing.",
-   "ki-1 says the interval 'contains or abuts' the point, while every example and check uses a bracketing pair; the named interval form of BC-QA-04002 is not practised here (it is in LSN-CON-02001).",
-   "The calculator strand (ki-2, st-2, ex-2) has no check, and BC-ERR-02031 and BC-ERR-02032 have no error blocks although st-2 names BC-ERR-02031 as the rival.",
-   "Table delivery for ki-1 and a static figure for the tangent reading suit their ideas."
+   "st-1.contrast: reword the feature to what is asked for (an approximation of a derivative at a point against an average rate over an interval), and either give units in the this stem (for example P in liters, t in hours) or drop 'with units'.",
+   "The prediction resolution states 'degrees per minute' although its stem names no units or time scale; add 'minutes' and 'degrees Fahrenheit' to the stem or drop the units from the resolution.",
+   "st-1 and st-2 rival: drop the leading 'Rival:'.",
+   "ki-1 still says the interval may 'contain or abut' the point while err-BC-ERR-02004 shows rows 4 and 6, which abut t = 6, as the wrong pair; the ex-1 stem names the bracketing rows, which resolves it for this draw, but a reader can see a conflict."
   ],
   "counts": {
-   "ok": 17,
+   "ok": 19,
    "unsourced": 0,
    "wrong": 0,
    "over_cap": 0,
    "lint": 0
-  },
-  "fix_notes": [
-   "st-1 cue cut to 19 words; ex-1 and chk-1 parameter_draw readings now the served pairing [86,71,50,38,25] (record and Solution path prose); word_count 699/363.",
-   "Left as preferences: named interval form not practised; calculator strand has no check and no BC-ERR-02031/02032 blocks.",
-   "2026-09-29: band_coverage fix. ki-2 (BC-EK-CHA-2D2, the calculator derivative at a point) is now core, so the mid band teaches BC-SKL-02018, which check_lessons.py reported missing. Text unchanged. Refresher adds ki-2. word_count.brief 417, read_minutes.brief 2.8. No example, check stem or key changed."
-  ]
- }
+  }
+ },
+ "fix_notes": [
+  "st-1.contrast feature rewritten to what is asked for; this stem gains units for P and t (liters, hours, a choice of this design [inferred], values unchanged); why_not shortened to hold the brief cap; Recognition prose states both stems can name an interval.",
+  "st-1 and st-2 rival labels 'Rival:' removed.",
+  "word_count 728/449 to 727/449, read_minutes 4.9/3.0 unchanged. No example, check stem, key or option changed."
+ ]
 }

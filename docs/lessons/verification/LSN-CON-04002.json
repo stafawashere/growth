@@ -33,95 +33,103 @@
   "auditor": "claude-opus-5-5",
   "blocks": [
    {
+    "id": "prediction",
+    "verdict": "ok",
+    "evidence": "Stem on ex-1's quotient; SymPy (55-31)/(6-2) = 6; only B (degrees Celsius per minute) is true, A is the quantity's unit alone and C the exchanged ratio (both BC-ERR-04001 observed_behavior); resolution is BC-CON-04002 description_plain; no verdict word or id."
+   },
+   {
     "id": "orientation",
     "verdict": "ok",
-    "evidence": "Paraphrases BC-CON-04002 (units of f over units of x) and the 4.1 Approximation paragraph.",
-    "reaudited": "2026-09-29"
+    "evidence": "Shortened to 10 words; paraphrases BC-CON-04002 and the 4.1 Approximation paragraph; no id."
    },
    {
     "id": "ki-1",
     "verdict": "ok",
-    "evidence": "4.1 Units paragraph; second derivative over the input unit squared and a separate units point on sg-25:11 (words per minute per minute, P2 for units).",
-    "reaudited": "2026-09-29"
+    "evidence": "Cut to the CHA-3.A.3 units rule (research 4.3 Units: 'units of the quantity divided by the units of the independent variable'); notation now empty; no citation in text."
    },
    {
     "id": "ki-2",
     "verdict": "ok",
-    "evidence": "Approximation paragraph of 4.1 research (sg-25:11); anchor quote matches CHA-3.A.1 on ced:87 verbatim."
+    "evidence": "Only the inline '(sg-25:11)' removed; quote still a verbatim substring of cached ced:87."
    },
    {
     "id": "ki-3",
-    "verdict": "ok",
-    "evidence": "Now core and rewritten: rate as the model's derivative at the instant, in quantity unit over input unit, from the 4.3 Units paragraph and the BC-REP-05 to BC-REP-01 conversion; teaches BC-SKL-04014; V'(2) in liters per hour is consistent. The fix note says ki-3 is inferred in the record, but no inferred entry names it; not needed, since the research line sources it.",
-    "reaudited": "2026-09-29"
+    "verdict": "lint",
+    "evidence": "The rewrite dropped the definition 'For V(t) liters at t hours', so the served 'V'(2) is in liters per hour' names a V the lesson has not introduced (ki-3 is core and served before st-1.contrast, the first place V is defined)."
    },
    {
     "id": "st-1",
     "verdict": "ok",
-    "evidence": "Cue from BC-QA-04002 typical_wording; method from expected_solution_path; rivals BC-ERR-02001 and BC-ERR-02004 from wrong_approaches.",
-    "reaudited": "2026-09-29"
+    "evidence": "Labels and ids removed; method from BC-QA-04002 expected_solution_path, rival BC-ERR-02001 from wrong_approaches, ids moved to sources."
+   },
+   {
+    "id": "st-1.contrast",
+    "verdict": "ok",
+    "evidence": "this matches BC-QA-04002 typical_wording (named interval, approximate, units); not_this is the undivided change of BC-ERR-02001 (wrong_approaches[0]); why_not true (change in liters, no division); feature true."
    },
    {
     "id": "st-2",
     "verdict": "ok",
-    "evidence": "Cue from BC-QA-04001 typical_wording; method is expected_solution_path; rival BC-ERR-04003 from wrong_approaches."
+    "evidence": "Leading 'First line:' and 'Rival:' removed; BC-ERR-04003 moved to sources; method is BC-QA-04001 expected_solution_path."
    },
    {
     "id": "ex-1",
     "verdict": "ok",
-    "evidence": "SymPy: Rational(55-31,4)=6; one sided 9/2, 15/2 and change 24 distinct as the spec constraint requires; draw within BC-QA-04002 parameter domains."
+    "evidence": "SymPy: Rational(55-31,4)=6; one sided 9/2, 15/2 and change 24 distinct as the spec constraint requires; draw within BC-QA-04002 parameter domains.",
+    "note": "unchanged since 2026-09-29"
    },
    {
     "id": "what_a_reader_scores:ex-1",
     "verdict": "ok",
-    "evidence": "Line matches BC-PT-99006 name, earns and does_not_earn fields verbatim; BC-PT-99006 is in BC-QA-04002 point_types."
+    "evidence": "Line matches BC-PT-99006 name, earns and does_not_earn fields verbatim; BC-PT-99006 is in BC-QA-04002 point_types.",
+    "note": "unchanged since 2026-09-29"
    },
    {
     "id": "err-BC-ERR-04001",
     "verdict": "ok",
-    "evidence": "observed_behavior and scoring_consequence copied from the bundle; 6 per minute against 6 minutes per degree is the exchanged ratio the record names."
+    "evidence": "relation distinct, fix_prompt true; SymPy 6 minute/celsius - 6 celsius/minute != 0."
    },
    {
     "id": "err-BC-ERR-04004",
     "verdict": "ok",
-    "evidence": "SymPy: (55-31)/(6-2)=6, relation equivalent correct; scoring_consequence copied from the bundle (sg-25:11)."
+    "evidence": "relation equivalent, fix_prompt false; SymPy (55-31)/(6-2) == 6."
    },
    {
     "id": "representations",
     "verdict": "ok",
-    "evidence": "null; 4.1 Representations names BC-REP-03 to BC-REP-04, carried by the ki-2 table."
+    "evidence": "null; 4.1 Representations names BC-REP-03 to BC-REP-04, carried by the ki-2 table.",
+    "note": "unchanged since 2026-09-29"
    },
    {
-    "id": "bridge-BC-PRQ-04004",
+    "id": "BC-PRQ-04004",
     "verdict": "ok",
-    "evidence": "Paraphrases BC-PRQ-04004 description_plain and failure_signature."
+    "evidence": "Failure clause dropped; remaining sentence paraphrases BC-PRQ-04004 description_plain."
    },
    {
     "id": "chk-1",
     "verdict": "ok",
-    "evidence": "SymPy: (55-31)/(6-2)=6 degrees Celsius per minute."
+    "evidence": "SymPy: (55-31)/(6-2)=6 degrees Celsius per minute.",
+    "note": "unchanged since 2026-09-29"
    },
    {
     "id": "chk-2",
     "verdict": "ok",
-    "evidence": "SymPy: (50-20)/(7-3)=15/2; one sided 13/2, 17/2 and change 30 distinct; units megabytes per second."
+    "evidence": "SymPy: (50-20)/(7-3)=15/2; one sided 13/2, 17/2 and change 30 distinct; units megabytes per second.",
+    "note": "unchanged since 2026-09-29"
    }
   ],
   "advice": [
-   "Delivery fits: ki-2 as a table matches the tabular givens; the error blocks as step_reveal show the wrong line against the right one, though a side by side contrast would serve BC-ERR-04001 better than a reveal sequence.",
-   "Recognition of the stem, the first written line and the rival are taught for BC-QA-04002; BC-QA-04001 (interpretation) has a strategy block but no worked example or check, so the interpretation sentence is never practiced.",
-   "The scoring habit for the estimate (BC-PT-99005, difference and quotient shown) appears only through err-BC-ERR-04004; a reader scores line for it on ex-1 would make the two point structure explicit."
+   "st-1 rival now names only the undivided difference (BC-ERR-02001), but separating_feature 'The named interval fixes both rows' answers the dropped one sided rival (BC-ERR-02004); the feature for the kept rival is the division.",
+   "ki-1 sources still list sg-25:11 though the text no longer carries the second derivative or separate units point sentence it supported.",
+   "Delivery reasons on the text blocks (orientation, ki-1, ki-3) still cite rule 5, which the current TEMPLATE.md selection rules make the table rule; text is rule 6. The redesign renumbered ki-2/ki-1 promotions but left these; the served mode is right, the reason is stale.",
+   "Error scoring_consequence and reader score lines still serve record text with page citations or ids; the served-text lint exempts record words, so this is not a defect, but the student reads them."
   ],
   "counts": {
-   "ok": 14,
+   "ok": 15,
    "unsourced": 0,
    "wrong": 0,
    "over_cap": 0,
-   "lint": 0
-  },
-  "fix_notes": [
-   "No block needed fixing. Left as preferences: side by side contrast for BC-ERR-04001; no example or check for BC-QA-04001; a reader scores line for BC-PT-99005.",
-   "2026-09-29: band_coverage fix. ki-3 (BC-EK-CHA-3C1) is now core and rewritten to teach BC-SKL-04014: a model's rate is its derivative at the named instant, V(t) liters at t hours gives V'(2) in liters per hour, in the context's words (4.3 Units paragraph and model to rate conversion). Its ced:89 quote and notation line were dropped to hold the brief cap, so ki-3 is now inferred in the record, as ki-1 already was. Orientation, ki-1 and st-1 (cue, rival, separating feature) shortened. Refresher adds ki-3. word_count 569/449. No example, check stem or key changed."
-  ]
+   "lint": 1
+  }
  }
 }

@@ -3,7 +3,7 @@
  "version": 1,
  "kind": "concept",
  "target_id": "BC-CON-03009",
- "status": "draft",
+ "status": "signed_off",
  "snapshot_digest": "a6a8ec9d3f59ab8f712e33d30cc22fc64bf2c478fbe7312e3e3118d319c6a42f",
  "source_digest": "820d3961f4ffe23d0706b99511f082345b2803d8e37470e30a0a493086268854",
  "read_minutes": {
@@ -81,10 +81,10 @@
     "research/units/unit-03-differentiation-composite-implicit-inverse.md#3.6 Calculating Higher-Order Derivatives"
    ],
    "evidence_tag": "inferred",
-   "text": "A response differentiates dy/dx again, then substitutes the point and the value of dy/dx there.",
+   "text": "A response differentiates dy/dx, then substitutes the point and the value of dy/dx there.",
    "delivery": {
     "mode": "text",
-    "reason": "rule 5: BC-REP-01 only on the skills",
+    "reason": "rule 6: BC-REP-01 only on the skills",
     "sources": [
      "BC-SKL-03030"
     ]
@@ -112,11 +112,11 @@
    "evidence_tag": "inferred",
    "ek_id": "BC-EK-FUN-3F1",
    "depth": "core",
-   "text": "Differentiating f' gives f''. When dy/dx contains y, the second derivative needs the product and chain rules, so dy/dx reappears and its value is needed.",
+   "text": "Differentiating f' gives f''. When dy/dx contains y, y'' needs the product rule on mixed terms and the chain rule on y terms, so dy/dx reappears.",
    "notation": "f double prime; f superscript n",
    "delivery": {
     "mode": "text",
-    "reason": "rule 5: repeated differentiation is not a rule 2 process",
+    "reason": "rule 6: repeated differentiation is not a rule 2 process",
     "sources": [
      "BC-SKL-03030",
      "BC-SKL-03033"
@@ -144,7 +144,7 @@
    "archetype_id": "BC-QA-03008",
    "cue": "d^2y/dx^2 asked at a point, dy/dx given in x and y.",
    "method": "Differentiate the dy/dx expression with respect to x.",
-   "rival": "Y held constant.",
+   "rival": "y held constant.",
    "separating_feature": "y in dy/dx means each y term gains a dy/dx factor.",
    "contrast": {
     "this": {
@@ -876,8 +876,8 @@
   "author": "tools/lesson_transcribe.py",
   "prompt_version": "generator/lesson_v2",
   "design_path": "docs/lessons/unit-03/LSN-CON-03009.md",
-  "signed_off_by": null,
-  "signed_off_at": null,
+  "signed_off_by": "claude-opus-5-5",
+  "signed_off_at": "2026-09-29",
   "not_human": true
  }
 }

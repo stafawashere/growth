@@ -48,103 +48,114 @@
   "auditor": "claude-opus-5-5",
   "blocks": [
    {
+    "id": "prediction",
+    "verdict": "ok",
+    "evidence": "ex-1's numbers; SymPy h(2)/3 = 2 against the table route h(4)/(-1) = -18; resolution 'the limits combine, not the table values' is BC-CON-01007 and the 1.5 Limit theorems paragraph; no verdict word or id."
+   },
+   {
     "id": "orientation",
     "verdict": "ok",
-    "evidence": "Paraphrase of BC-CON-01007 description_plain and the BC-QA-01003 parameter_spec notes (limits in the stem differ from tabulated values); 31 words."
+    "evidence": "Shortened to 'combines the pieces' limits and checks conditions'; 1.5 Assessment behaviour (denominator condition); table figure unchanged."
    },
    {
     "id": "ki-1",
     "verdict": "ok",
-    "evidence": "fixed 2026-09-29: record ids (BC-EK-LIM-1D2, ced:42) removed from the served text; both stay in the block sources."
+    "evidence": "'Limits pass through combinations; a quotient needs a nonzero denominator limit' matches BC-CON-01007 description_plain and the 1.5 quotient condition; notation dropped."
    },
    {
     "id": "st-1",
     "verdict": "ok",
-    "evidence": "Method is BC-QA-01003 expected_solution_path[0]; both rivals are its wrong_approaches (BC-ERR-01006, BC-ERR-01007)."
+    "evidence": "Method 'Record the supplied limits.' has no label (BC-QA-01003 path); rival BC-ERR-01006 in wrong_approaches; ids moved to sources."
+   },
+   {
+    "id": "st-1.contrast",
+    "verdict": "ok",
+    "evidence": "this matches BC-QA-01003 typical_wording (stated limits, a combination; 5 times 4 = 20); not_this top and bottom both 0 at 2 (SymPy), so 'zero over zero calls for rewriting' is true; feature true."
    },
    {
     "id": "st-2",
     "verdict": "ok",
-    "evidence": "Method is BC-QA-01014 expected_solution_path[0]; rival BC-ERR-01006 is in its wrong_approaches; tagged inferred for empty common_givens."
+    "evidence": "Label removed; method is BC-QA-01014 path; id moved to sources."
    },
    {
     "id": "ex-1",
     "verdict": "ok",
-    "evidence": "SymPy: (2**2+2)/3 = 2; draw meets every constraint: h(1)=3, table_f[1]=4, table_g[1]=-1, derived 2, -18, -6, -2/3 distinct."
+    "evidence": "fixed 2026-09-29: step 3 expr '(2**2 + 2)/3' parsed (tools/check_lesson_designs.parse_expression, as the transcriber does) to 2 beside the cue 'the composite gives h(2)' while SymPy h(2) = 6; step 3 expr is now '2**2 + 2' (served 6) and step 4 keeps expr 2 with relation new, why '6 over 3.'. Answer 2 unchanged (SymPy h(2)/3 = 2), no key change. Draw constraints as before: h(1)=3, table_f[1]=4, table_g[1]=-1, derived 2, -18, -6, -2/3 distinct.",
+    "note": "unchanged since 2026-09-29"
    },
    {
     "id": "ex-2",
     "verdict": "ok",
-    "evidence": "SymPy: (x**2-x-2)/(x**2-5x+6) factors as (x-2)(x+1)/((x-2)(x-3)); limit at 2 of (x+1)/(x-3) is -3."
+    "evidence": "fade_from 3: shown steps give 0 over 0 and the unfactored quotient with 'both factor with x - 2', enough to finish; withheld steps valued (SymPy factor gives (x+1)/(x-3), limit -3)."
    },
    {
     "id": "what_a_reader_scores:ex-1",
     "verdict": "ok",
-    "evidence": "BC-PT-99004 earns, does_not_earn and precision_rules copied verbatim from the snapshot point type record."
+    "evidence": "BC-PT-99004 earns, does_not_earn and precision_rules copied verbatim from the snapshot point type record.",
+    "note": "unchanged since 2026-09-29"
    },
    {
     "id": "err-BC-ERR-01001",
     "verdict": "ok",
-    "evidence": "Record text verbatim; SymPy (4**2+2)/(-1) = -18 against 2; relation distinct holds."
+    "evidence": "fix_prompt true with relation distinct; wrong -18 against right 2, no expr rewritten."
    },
    {
     "id": "err-BC-ERR-01006",
     "verdict": "ok",
-    "evidence": "fixed 2026-09-29: rebuilt on ex-1's draw so the mid band shows it beside ex-1: wrong f/(g - 3) at 1 as 2/0 (SymPy zoo), right denominator limit 3 - 3 = 0 so the quotient theorem fails; distinct."
+    "evidence": "fix_prompt true with relation distinct; wrong ComplexInfinity against right 0, no expr rewritten."
    },
    {
     "id": "err-BC-ERR-01007",
     "verdict": "ok",
-    "evidence": "Record text verbatim; f(h(1)) = table_f[3] = -2, SymPy -2/3 against 2; BC-MIS-01005 listed on the error."
+    "evidence": "fix_prompt true with relation distinct; wrong -2/3 against right 2, no expr rewritten."
    },
    {
     "id": "representations",
     "verdict": "ok",
-    "evidence": "null; the 1.5 Representations paragraph conversion is carried by the ki-1 and orientation tables."
+    "evidence": "null; the 1.5 Representations paragraph conversion is carried by the ki-1 and orientation tables.",
+    "note": "unchanged since 2026-09-29"
    },
    {
     "id": "BC-PRQ-01008",
     "verdict": "ok",
-    "evidence": "Paraphrase of description_plain and failure_signature (intervals of continuity outside the domain)."
+    "evidence": "Shortened to the description_plain paraphrase; nothing false."
    },
    {
     "id": "BC-PRQ-06005",
     "verdict": "ok",
-    "evidence": "Paraphrase of description_plain and failure_signature (values pulled for the wrong input)."
+    "evidence": "Shortened to the description_plain paraphrase; nothing false."
    },
    {
     "id": "chk-1",
     "verdict": "ok",
-    "evidence": "SymPy: (2**2+2)/3 = 2, key 2."
+    "evidence": "SymPy: (2**2+2)/3 = 2, key 2.",
+    "note": "unchanged since 2026-09-29"
    },
    {
     "id": "chk-2",
     "verdict": "ok",
-    "evidence": "SymPy: ((-2)**2+1)/(-1) = -5; constraints hold (h(1)=2, table values 0 and 2 differ from limits; derived -5, 1/2, -5/2, -1 distinct)."
+    "evidence": "SymPy: ((-2)**2+1)/(-1) = -5; constraints hold (h(1)=2, table values 0 and 2 differ from limits; derived -5, 1/2, -5/2, -1 distinct).",
+    "note": "unchanged since 2026-09-29"
    },
    {
     "id": "chk-3",
     "verdict": "ok",
-    "evidence": "SymPy: (3**2-3)/2 = 3; A (1-3)/4 = -1/2, B 6/4 = 3/2, C f(h(2)) = f(1) = 2 over 2 = 1; all distinct from the key and from each other."
+    "evidence": "SymPy: (3**2-3)/2 = 3; A (1-3)/4 = -1/2, B 6/4 = 3/2, C f(h(2)) = f(1) = 2 over 2 = 1; all distinct from the key and from each other.",
+    "note": "unchanged since 2026-09-29"
    }
   ],
   "advice": [
-   "Served ki-1 text carries record ids in parentheses (BC-EK-LIM-1D2, ced:42); a student reads these as citation noise.",
-   "Delivery fits: the orientation table sets limits against table values, which is exactly the recognition cue, and ki-1 as a table of combination against condition suits tabular content.",
-   "The mid band drops st-2 and ex-2, so a mid reader never sees the zero over zero exit that separates this concept from BC-CON-01008; err-BC-ERR-01006 in the mid band then points at ex-2, which that band does not show.",
-   "No scoring habit beyond the bare answer is taught; the archetype's scoring_pattern expects the denominator condition in a justified response, which st-1 names but no check asks the student to write."
+   "ki-1 and st-1 no longer state the composite condition (outer function continuous at the inner limit, 1.5 paragraph); only ex-1 step 3 and err-BC-ERR-01007 carry it now.",
+   "ex-1 step 3 (unchanged) shows expression 2 beside 'the composite gives h(2)', while h(2) = 6; a reader may take 2 as h(2). Worth a look at the next ex-1 edit.",
+   "The what_a_reader_scores line carries sg-25:3, sg-26:4 and sg-26:2 citations; the served_text lint exempts reader-score lines, but a student reads them.",
+   "st-1 rival 'A zero denominator limit divided by.' is hard to parse; 'Dividing by a zero denominator limit.' reads better."
   ],
   "counts": {
-   "ok": 16,
+   "ok": 18,
    "unsourced": 0,
    "wrong": 0,
    "over_cap": 0,
    "lint": 0
-  },
-  "fix_notes": [
-   "Removed the parenthetical record ids from ki-1's served text (ids remain in sources).",
-   "Rebuilt err-BC-ERR-01006 on ex-1's draw (f/(g - 3) at 1) instead of ex-2, which the mid band does not serve; trimmed the orientation and st-1 separating feature by a word each to keep brief at 448 words (cap 450).",
-   "Left as preferences: no check asks for the denominator condition line; mid band still omits st-2 and ex-2 (template puts ex-2 in low only); delivery modes."
-  ]
+  }
  }
 }

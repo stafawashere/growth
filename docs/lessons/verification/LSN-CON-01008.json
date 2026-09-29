@@ -39,102 +39,121 @@
   "auditor": "claude-opus-5-5",
   "blocks": [
    {
+    "id": "prediction",
+    "verdict": "ok",
+    "evidence": "ex-1's quotient; SymPy top and bottom 0 at 2, factor (x+3)/(x-4), limit -5/2 = key; resolution is the 1.6 Rewriting paragraph and BC-CON-01008."
+   },
+   {
     "id": "orientation",
     "verdict": "ok",
-    "evidence": "Paraphrases the 1.6 Assessment behaviour paragraph and sg-23:14 as carried in BC-QA-01004 scoring_pattern; 44 words."
+    "evidence": "sg-23:14 citation moved from text to sources; claim is the 1.6 Assessment behaviour line (limits of numerator and denominator presented separately)."
    },
    {
     "id": "ki-1",
     "verdict": "ok",
-    "evidence": "Quote matches ced page 43 LIM-1.E.1 verbatim; routes and equivalence paraphrase the 1.6 Rewriting and Equivalence paragraphs; 46 words."
+    "evidence": "Quote and ids dropped, tag inferred; routes are the 1.6 Rewriting paragraph (factoring, conjugate, trigonometric forms) and the Equivalence paragraph."
    },
    {
     "id": "st-1",
     "verdict": "ok",
-    "evidence": "Cue from common_givens, method from expected_solution_path[0] and asked_to_produce, rival from wrong_approaches (BC-ERR-01009); 44 words, cue 14."
+    "evidence": "Method 'Substitute, writing both limits separately.' has no label and is BC-QA-01004 asked_to_produce[0]; rival BC-ERR-01009 moved to sources."
+   },
+   {
+    "id": "st-1.contrast",
+    "verdict": "ok",
+    "evidence": "this is a BC-QA-01004 stem, SymPy 0 and 0 at 3, limit 6; not_this gives 10 and 0 at 3, so why_not is true; feature true."
    },
    {
     "id": "ex-1",
     "verdict": "ok",
-    "evidence": "SymPy: both polynomials vanish at 2, factored and cancelled forms simplify equal to the quotient, limit(x->2) = -5/2; draw meets top_root, bottom_root != target and invariants != 0, 1."
+    "evidence": "SymPy: both polynomials vanish at 2, factored and cancelled forms simplify equal to the quotient, limit(x->2) = -5/2; draw meets top_root, bottom_root != target and invariants != 0, 1.",
+    "note": "unchanged since 2026-09-29"
    },
    {
     "id": "err-BC-ERR-01008",
     "verdict": "ok",
-    "evidence": "Observed behaviour and scoring text are the record's; wrong 0 differs from -5/2; reason words from BC-MIS-01006 description."
+    "evidence": "fix_prompt true with relation distinct; wrong 0 against right -5/2, no expr rewritten."
    },
    {
     "id": "err-BC-ERR-01009",
     "verdict": "ok",
-    "evidence": "Record text verbatim; wrong nan differs from -5/2; reason words from BC-MIS-01006 description."
+    "evidence": "fix_prompt true with relation distinct; wrong NaN against right -5/2, no expr rewritten."
    },
    {
     "id": "err-BC-ERR-01010",
     "verdict": "ok",
-    "evidence": "SymPy: (x-6)/(8-6x) at 2 = 1 as the parameter_spec notes say; not equivalent to (x+3)/(x-4); reason words from BC-MIS-01007."
+    "evidence": "fix_prompt true with relation distinct; wrong (x-6)/(8-6x) against right (x+3)/(x-4), no expr rewritten."
    },
    {
     "id": "err-BC-ERR-01011",
     "verdict": "ok",
-    "evidence": "Record text verbatim; BC-MIS-99011 is a listed possible misconception of BC-ERR-01011 and the reason words are from its description."
+    "evidence": "fix_prompt true with relation distinct; wrong NaN against right 0, no expr rewritten."
    },
    {
     "id": "representations",
     "verdict": "ok",
-    "evidence": "Null; 1.6 Representations paragraph names BC-REP-01 to BC-REP-01 only."
+    "evidence": "Null; 1.6 Representations paragraph names BC-REP-01 to BC-REP-01 only.",
+    "note": "unchanged since 2026-09-29"
    },
    {
     "id": "BC-PRQ-01001",
     "verdict": "ok",
-    "evidence": "Restates description_plain; slip matches failure_signature (stops at zero over zero unfactored)."
+    "evidence": "Restates description_plain; slip matches failure_signature (stops at zero over zero unfactored).",
+    "note": "unchanged since 2026-09-29"
    },
    {
     "id": "BC-PRQ-01002",
     "verdict": "ok",
-    "evidence": "Restates description_plain; slip matches failure_signature (radical left, no limit reported)."
+    "evidence": "Restates description_plain; slip matches failure_signature (radical left, no limit reported).",
+    "note": "unchanged since 2026-09-29"
    },
    {
     "id": "BC-PRQ-01005",
     "verdict": "ok",
-    "evidence": "Restates description_plain; slip matches failure_signature (oscillation treated as unbounded)."
+    "evidence": "Restates description_plain; slip matches failure_signature (oscillation treated as unbounded).",
+    "note": "unchanged since 2026-09-29"
    },
    {
     "id": "BC-PRQ-01007",
     "verdict": "ok",
-    "evidence": "Restates description_plain and failure_signature on nested fractions."
+    "evidence": "Restates description_plain and failure_signature on nested fractions.",
+    "note": "unchanged since 2026-09-29"
    },
    {
     "id": "chk-1",
     "verdict": "ok",
-    "evidence": "SymPy: limit of (x+3)/(x-4) at 2 = -5/2, equal to ex-1 answer."
+    "evidence": "SymPy: limit of (x+3)/(x-4) at 2 = -5/2, equal to ex-1 answer.",
+    "note": "unchanged since 2026-09-29"
    },
    {
     "id": "chk-2",
     "verdict": "ok",
-    "evidence": "SymPy: x^2-2x-3 and x^2-x-2 vanish at -1; factored steps equivalent; limit = 4/3; constraints hold."
+    "evidence": "SymPy: x^2-2x-3 and x^2-x-2 vanish at -1; factored steps equivalent; limit = 4/3; constraints hold.",
+    "note": "unchanged since 2026-09-29"
    },
    {
     "id": "chk-3",
     "verdict": "ok",
-    "evidence": "SymPy: key 2/5; distractor C (-4x+3)/(-x-6) at 3 = 1 matches the spec notes; A and D follow BC-ERR-01008 and BC-ERR-01009."
+    "evidence": "SymPy: key 2/5; distractor C (-4x+3)/(-x-6) at 3 = 1 matches the spec notes; A and D follow BC-ERR-01008 and BC-ERR-01009.",
+    "note": "unchanged since 2026-09-29"
+   },
+   {
+    "id": "no_figure_reason",
+    "verdict": "ok",
+    "evidence": "Skills BC-SKL-01024 to 01028 carry BC-REP-01 and 04 only; 1.6 Representations names BC-REP-01 only; ki-1 is a rewriting rule, no process; 26 words."
    }
   ],
   "advice": [
-   "Delivery fits: an algebraic rewrite served as step reveal, text for the key idea. No figure or motion is called for.",
-   "ki-1 names three CED routes (factoring, conjugate, trigonometric forms) but ex-1 and all checks use factoring only; bridges BC-PRQ-01002 and BC-PRQ-01005 gate in on routes the lesson never shows. A conjugate isomorph would make the other routes visible.",
-   "Recognition of the stem, the first written line (two separate limits) and the rival (nonexistence on zero over zero) are all taught; the scoring habit from sg-23:14 is carried by the orientation and err-BC-ERR-01011.",
-   "err-BC-ERR-01011 right_step expr is the bare 0, which a renderer comparing wrong and right exprs cannot distinguish from the value 0 in err-BC-ERR-01008; consider an expr that encodes the pair of limits."
+   "The prediction poses ex-1's exact quotient, so ex-1 then re-derives the answer the resolution already gave (-5/2 and the rewritten form); a different quotient or a resolution without the value would keep ex-1 fresh.",
+   "err-BC-ERR-01011 scoring_consequence ends with '(sg-23:14)'; the served_text lint exempts error record words, but a student reads it.",
+   "ki-1 still names three routes while ex-1 and all checks use factoring only (carried from the earlier audit)."
   ],
   "counts": {
-   "ok": 16,
+   "ok": 19,
    "unsourced": 0,
    "wrong": 0,
    "over_cap": 0,
    "lint": 0
-  },
-  "fix_notes": [
-   "No block verdict other than ok; no design edit made.",
-   "Left: advice on showing the conjugate and trigonometric routes (structural suggestion) and on err-BC-ERR-01011's bare 0 right_step expr (renderer preference; wrong and right differ, 0 vs a pair written as 0, not a defect in the listed classes)."
-  ]
+  }
  }
 }

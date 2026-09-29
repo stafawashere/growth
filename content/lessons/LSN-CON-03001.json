@@ -3,7 +3,7 @@
  "version": 1,
  "kind": "concept",
  "target_id": "BC-CON-03001",
- "status": "draft",
+ "status": "signed_off",
  "snapshot_digest": "a6a8ec9d3f59ab8f712e33d30cc22fc64bf2c478fbe7312e3e3118d319c6a42f",
  "source_digest": "e0c5620c90ba436d91aa72441b70231af97f441edc465f117fd4750cc19c2daa",
  "read_minutes": {
@@ -11,8 +11,8 @@
   "brief": 3.0
  },
  "word_count": {
-  "full": 404,
-  "brief": 404
+  "full": 411,
+  "brief": 411
  },
  "sections": [
   {
@@ -80,7 +80,7 @@
    "text": "A response names the outer and inner functions, then gives one factor per layer: the outer derivative at the inner expression, times the inner derivative.",
    "delivery": {
     "mode": "text",
-    "reason": "rule 5: BC-REP-01 and BC-REP-04 on the skills, no figure-bearing representation",
+    "reason": "rule 6: BC-REP-01 and BC-REP-04 on the skills, no figure-bearing representation",
     "sources": [
      "BC-SKL-03001"
     ]
@@ -109,7 +109,7 @@
    "notation": "f of g of x",
    "delivery": {
     "mode": "text",
-    "reason": "rule 5: an order-of-operations statement with no figure-bearing BC-REP",
+    "reason": "rule 6: an order-of-operations statement with no figure-bearing BC-REP",
     "sources": [
      "BC-SKL-03001",
      "BC-SKL-03003"
@@ -468,7 +468,7 @@
    "observed_behavior": "A composition of three functions is differentiated through the first two layers and the innermost derivative is omitted.",
    "scoring_consequence": "The derivative is wrong; no credit is available for a partially applied rule in a single answer item.",
    "wrong_step": {
-    "text": "Inner derivative 4x omitted: value 4.",
+    "text": "Innermost 2x, from x^2, omitted: value 7.",
     "expression": [
      "Add",
      [
@@ -490,7 +490,7 @@
      ],
      [
       "Multiply",
-      3,
+      6,
       "x",
       [
        "Power",
@@ -513,7 +513,7 @@
     ]
    },
    "right_step": {
-    "text": "Cube differentiated: value 13.",
+    "text": "All three layers: 2 times 2x is 4x, value 13.",
     "expression": [
      "Add",
      [
@@ -784,8 +784,8 @@
   "author": "tools/lesson_transcribe.py",
   "prompt_version": "generator/lesson_v2",
   "design_path": "docs/lessons/unit-03/LSN-CON-03001.md",
-  "signed_off_by": null,
-  "signed_off_at": null,
+  "signed_off_by": "claude-opus-5-5",
+  "signed_off_at": "2026-09-29",
   "not_human": true
  }
 }

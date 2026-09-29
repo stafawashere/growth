@@ -33,75 +33,92 @@
   "auditor": "claude-opus-5-5",
   "blocks": [
    {
+    "id": "prediction",
+    "verdict": "ok",
+    "evidence": "Stem on ex-1's x(t)=t^3-3t^2-4t+2; SymPy x''(t) = 6(t-1) = 6t-6 as the resolution says; only C is true; resolution is research 4.2 'acceleration is the second derivative of position' (BC-EK-CHA-3B1); no verdict word or id."
+   },
+   {
     "id": "orientation",
     "verdict": "ok",
-    "evidence": "Paraphrases BC-CON-04003 description_plain and formal: velocity is x prime, acceleration v prime."
+    "evidence": "Shortened; still paraphrases BC-CON-04003 description_plain; no id."
+   },
+   {
+    "id": "no_figure_reason",
+    "verdict": "ok",
+    "evidence": "Bundle: BC-SKL-04006 and BC-SKL-04007 list only BC-REP-01 and BC-REP-05; ki-1 states a derivative chain, no process; BC-REP-02 sits on BC-SKL-04009 (BC-CON-04004)."
    },
    {
     "id": "ki-1",
     "verdict": "ok",
-    "evidence": "4.2 Required knowledge paragraph; anchor quote matches CHA-3.B.1 on ced:88 verbatim."
+    "evidence": "4.2 Required knowledge paragraph; anchor quote matches CHA-3.B.1 on ced:88 verbatim.",
+    "note": "unchanged since 2026-09-29"
    },
    {
     "id": "st-1",
     "verdict": "ok",
-    "evidence": "Cue from BC-QA-04003 common_givens and asked_to_produce; rival BC-ERR-04006 from wrong_approaches."
+    "evidence": "Labels removed; method from BC-QA-04003 expected_solution_path[0]; BC-ERR-04006 moved to sources."
+   },
+   {
+    "id": "st-1.contrast",
+    "verdict": "unsourced",
+    "evidence": "this (v given, a(4) asked; SymPy a(4) = 3) is a BC-QA-04003 stem and not_this (v and x(0)=3, position at t=4; SymPy 3 + integral = -47/3) a BC-QA-04010 stem, both fine; but feature 'A given position means accumulate' is contradicted by BC-QA-04003 common_givens 'a position function of time', which is differentiated, and by the lesson's own pr-1 and ex-1. The separating feature is a known position at one time given beside a velocity (BC-QA-04010 common_givens)."
    },
    {
     "id": "st-2",
     "verdict": "ok",
-    "evidence": "fixed 2026-09-29: rival cut to the sourced half: 'the integral reported without the known position (BC-ERR-08011)'; 'differentiating' removed; word_count.full 457."
+    "evidence": "Labels removed; BC-ERR-08011 moved to sources; method is BC-QA-04010 expected_solution_path[0]."
    },
    {
     "id": "ex-1",
     "verdict": "ok",
-    "evidence": "SymPy: x'(t)=3t^2-6t-4, x'(2)=-4, x''(2)=6; draw reproduces BC-QA-04003 derived linear=-4 and velocity_at=-4 for heading left."
+    "evidence": "SymPy: x'(t)=3t^2-6t-4, x'(2)=-4, x''(2)=6; draw reproduces BC-QA-04003 derived linear=-4 and velocity_at=-4 for heading left.",
+    "note": "unchanged since 2026-09-29"
    },
    {
     "id": "what_a_reader_scores:ex-1",
     "verdict": "ok",
-    "evidence": "Lines match BC-PT-99004 and BC-PT-99027 records verbatim; both in BC-QA-04003 point_types."
+    "evidence": "Lines match BC-PT-99004 and BC-PT-99027 records verbatim; both in BC-QA-04003 point_types.",
+    "note": "unchanged since 2026-09-29"
    },
    {
     "id": "err-BC-ERR-04006",
     "verdict": "ok",
-    "evidence": "SymPy: x(2)=-10 against v(2)=-4, distinct; observed_behavior and scoring_consequence copied from the bundle."
+    "evidence": "relation distinct, fix_prompt true; SymPy x(2) = -10, v(2) = -4."
    },
    {
     "id": "representations",
     "verdict": "ok",
-    "evidence": "null; no separate representation block claimed."
+    "evidence": "null; no separate representation block claimed.",
+    "note": "unchanged since 2026-09-29"
    },
    {
-    "id": "bridge-BC-PRQ-04008",
+    "id": "BC-PRQ-04008",
     "verdict": "ok",
-    "evidence": "Paraphrases BC-PRQ-04008 description_plain and failure_signature."
+    "evidence": "Shortened; 'whether it varies' dropped; still paraphrases BC-PRQ-04008 description_plain."
    },
    {
     "id": "chk-1",
     "verdict": "ok",
-    "evidence": "SymPy: v(2)=-4, a(2)=6."
+    "evidence": "SymPy: v(2)=-4, a(2)=6.",
+    "note": "unchanged since 2026-09-29"
    },
    {
     "id": "chk-2",
     "verdict": "ok",
-    "evidence": "SymPy: v'(t)=-3t^2+4t+3, v'(1)=4; draw reproduces constant=-9 and velocity_at=-5."
+    "evidence": "SymPy: v'(t)=-3t^2+4t+3, v'(1)=4; draw reproduces constant=-9 and velocity_at=-5.",
+    "note": "unchanged since 2026-09-29"
    }
   ],
   "advice": [
-   "Speed and the speeding up decision are in BC-QA-04003 asked_to_produce but belong to BC-CON-04005; fine to omit here, but st-2 (BC-QA-04010, accumulation) has no example or check and reads as a distraction in a differentiation lesson.",
-   "Only one error block; the lesson teaches the first line and the rival well but no scoring contrast beyond the answer points. Step_reveal suits the derivative chain as a process."
+   "Delivery reasons on the text blocks (orientation, ki-1) still cite rule 5, which the current TEMPLATE.md selection rules make the table rule; text is rule 6. The redesign renumbered ki-2/ki-1 promotions but left these; the served mode is right, the reason is stale.",
+   "Error scoring_consequence and reader score lines still serve record text with page citations or ids; the served-text lint exempts record words, so this is not a defect, but the student reads them."
   ],
   "counts": {
-   "ok": 11,
-   "unsourced": 0,
+   "ok": 13,
+   "unsourced": 1,
    "wrong": 0,
    "over_cap": 0,
    "lint": 0
-  },
-  "fix_notes": [
-   "st-2 rival reduced to BC-ERR-08011, the BC-QA-04010 wrong_approaches entry; word_count.full 459 to 457, read_minutes unchanged at 3.1.",
-   "Left as preferences: st-2 has no example or check; one error block only."
-  ]
+  }
  }
 }

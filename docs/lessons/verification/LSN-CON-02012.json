@@ -39,88 +39,103 @@
   "auditor": "claude-opus-5-5",
   "blocks": [
    {
+    "id": "prediction",
+    "verdict": "ok",
+    "evidence": "SymPy: diff(-exp(x),x) = -exp(x), key A the only true option; B -x*e^(x-1) and C -e^(x+1)/(x+1) differ from it. Resolution from research 2.7 Specific rules and BC-EK-FUN-3A4 (ced:66); 'not a power of x' from BC-ERR-02019 and BC-MIS-02010."
+   },
+   {
     "id": "orientation",
     "verdict": "ok",
-    "evidence": "32 words; paraphrases BC-CON-02012 and BC-QA-02007 asked_to_produce (derivative or its value at a stated input)."
+    "evidence": "Earlier audited text with the sentence on the value at a stated input cut; kept sentence paraphrases BC-CON-02012."
    },
    {
     "id": "ki-1",
     "verdict": "ok",
-    "evidence": "34 words; four rules from research 2.7 Specific rules, domain note from its Notation line, power remark paraphrases BC-MIS-02010; quote matches ced:66 verbatim."
+    "evidence": "Rules unchanged and sourced to research 2.7 Specific rules; inline citation, quote and the power remark removed; notation 'rules for sine, cosine, exponential, logarithm' is a naming line, tagged inferred source choice in the prose."
    },
    {
     "id": "st-1",
     "verdict": "ok",
-    "evidence": "Method paraphrases BC-QA-02007 expected_solution_path; rival is its wrong_approaches entry (BC-ERR-02019)."
+    "evidence": "Cue and separating feature shortened, meaning kept and true for sin, cos, e^x and ln x; method no longer starts with 'First written line:'; rival no longer carries BC-ERR-02019; method and rival carry no leading label and no id (served_text rule clean)."
+   },
+   {
+    "id": "st-1.contrast",
+    "verdict": "ok",
+    "evidence": "`this` g(x)=5 sin x-3e^x+2 ln x matches BC-QA-02007 typical_wording; not_this e^x sin x is a product (SymPy h' = e^x sin x + e^x cos x by the product rule); why_not and feature true."
    },
    {
     "id": "ex-1",
     "verdict": "ok",
-    "evidence": "SymPy: diff of 3*sin(x)+2*cos(x)-exp(x)+4*log(x)+5 is 3*cos(x)-2*sin(x)-exp(x)+4/x; at x=pi/2 it equals -2-exp(pi/2)+8/pi."
+    "evidence": "SymPy: diff of 3*sin(x)+2*cos(x)-exp(x)+4*log(x)+5 is 3*cos(x)-2*sin(x)-exp(x)+4/x; at x=pi/2 it equals -2-exp(pi/2)+8/pi. (unchanged since 2026-09-29)"
    },
    {
     "id": "scores-ex-1",
     "verdict": "ok",
-    "evidence": "BC-PT-99004 is on BC-QA-02007 point_types; every sentence of the line is found in the point type record's earns, does_not_earn and precision fields."
+    "evidence": "BC-PT-99004 is on BC-QA-02007 point_types; every sentence of the line is found in the point type record's earns, does_not_earn and precision fields. (unchanged since 2026-09-29)"
    },
    {
     "id": "err-BC-ERR-02016",
     "verdict": "ok",
-    "evidence": "Record text verbatim; wrong minus right equals 5, distinct holds."
+    "evidence": "Only fix_prompt added: true with relation distinct; exprs unchanged."
    },
    {
     "id": "err-BC-ERR-02018",
     "verdict": "ok",
-    "evidence": "Record text verbatim; wrong minus right equals 4*sin(x), distinct holds."
+    "evidence": "Only fix_prompt added: true with relation distinct; exprs unchanged."
    },
    {
     "id": "err-BC-ERR-02019",
     "verdict": "ok",
-    "evidence": "Record text verbatim; x*exp(x-1) differs from exp(x), distinct holds."
+    "evidence": "Only fix_prompt added: true with relation distinct; exprs unchanged."
    },
    {
     "id": "representations",
     "verdict": "ok",
-    "evidence": "null; research 2.7 Representations names BC-REP-01 only."
+    "evidence": "null; research 2.7 Representations names BC-REP-01 only. (unchanged since 2026-09-29)"
    },
    {
-    "id": "bridge-BC-PRQ-01005",
+    "id": "BC-PRQ-01005",
     "verdict": "ok",
-    "evidence": "26 words; paraphrases description_plain (exact values, bounds) and failure_signature (oscillation treated as unbounded)."
+    "evidence": "26 words; paraphrases description_plain (exact values, bounds) and failure_signature (oscillation treated as unbounded). (unchanged since 2026-09-29)"
    },
    {
-    "id": "bridge-BC-PRQ-06002",
+    "id": "BC-PRQ-06002",
     "verdict": "ok",
-    "evidence": "17 words; paraphrases description_plain and failure_signature."
+    "evidence": "17 words; paraphrases description_plain and failure_signature. (unchanged since 2026-09-29)"
    },
    {
-    "id": "bridge-BC-PRQ-06003",
+    "id": "BC-PRQ-06003",
     "verdict": "ok",
-    "evidence": "24 words; paraphrases description_plain (domain of ln, log rules) and failure_signature (answers not combined)."
+    "evidence": "24 words; paraphrases description_plain (domain of ln, log rules) and failure_signature (answers not combined). (unchanged since 2026-09-29)"
    },
    {
     "id": "chk-1",
     "verdict": "ok",
-    "evidence": "SymPy: 3*cos(x)-2*sin(x)-exp(x)+4/x at pi/2 equals -2-exp(pi/2)+8/pi."
+    "evidence": "SymPy: 3*cos(x)-2*sin(x)-exp(x)+4/x at pi/2 equals -2-exp(pi/2)+8/pi. (unchanged since 2026-09-29)"
    },
    {
     "id": "chk-2",
     "verdict": "ok",
-    "evidence": "SymPy: diff(-2*sin(x)+4*cos(x)+3*exp(x)-log(x)-7,x) equals -2*cos(x)-4*sin(x)+3*exp(x)-1/x."
+    "evidence": "SymPy: diff(-2*sin(x)+4*cos(x)+3*exp(x)-log(x)-7,x) equals -2*cos(x)-4*sin(x)+3*exp(x)-1/x. (unchanged since 2026-09-29)"
    },
    {
     "id": "chk-3",
     "verdict": "ok",
-    "evidence": "SymPy: f'(pi/2)=-3+2*exp(pi/2)+4/pi; A (sign dropped) 3+..., B (-4 carried) -7+..., D 2*x*exp(x-1) at pi/2 gives pi*exp(pi/2-1); all match derivations and differ from the key."
+    "evidence": "SymPy: f'(pi/2)=-3+2*exp(pi/2)+4/pi; A (sign dropped) 3+..., B (-4 carried) -7+..., D 2*x*exp(x-1) at pi/2 gives pi*exp(pi/2-1); all match derivations and differ from the key. (unchanged since 2026-09-29)"
+   },
+   {
+    "id": "no_figure_reason",
+    "verdict": "ok",
+    "evidence": "True: skills BC-SKL-02032 to 02034 and BC-QA-02007 carry BC-REP-01 only, research 2.7 Representations names BC-REP-01 only, ki-1 describes no process; 24 words."
    }
   ],
   "advice": [
-   "The ex-1 answer is an exact expression, yet scores-ex-1 serves the three decimal precision rule of BC-PT-99004, which does not bear on an exact no calculator answer and may distract; consider serving only the earns line.",
-   "Of three bridges, BC-PRQ-06002 and BC-PRQ-06003 bear on only one term each; BC-PRQ-01005 is the one ex-1 actually needs (sin and cos at pi/2).",
-   "The rival (e^x treated as a power) versus the right move is a comparison and suits a contrast mode; the lesson otherwise teaches recognition, first line and rival clearly."
+   "Design prose under Key ideas still says 'Anchor quote (16 words) from ced:66' and then that the quote was dropped; delete the first clause.",
+   "BC-QA-02007 common_givens names 'a graph of the derivative of a function combined with a logarithm', but its representations field lists BC-REP-01 only, so no_figure_reason holds on the records as they stand; if the archetype gains BC-REP-02 the lesson owes a figure.",
+   "scores-ex-1 serves '(sg-25:3, sg-26:4)' page citations inside the verbatim point type line; the served_text rule does not scan what_a_reader_scores, so the checker cannot catch it."
   ],
   "counts": {
-   "ok": 15,
+   "ok": 18,
    "unsourced": 0,
    "wrong": 0,
    "over_cap": 0,

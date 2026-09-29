@@ -45,84 +45,94 @@
   "auditor": "claude-opus-5-5",
   "blocks": [
    {
+    "id": "prediction",
+    "verdict": "ok",
+    "evidence": "SymPy: idiff gives 3x(x+2)/(2(y-1)); x=-2 gives y in {-1, 3}, denominators -4, 4, so horizontal; x=0 gives y=1, denominator 0; x=-3 gives y=1, numerator 9, denominator 0 (vertical). A is the only true option. Resolution from 5.12 Two conditions at once."
+   },
+   {
     "id": "orientation",
     "verdict": "ok",
-    "evidence": "Paraphrase of BC-CON-05015 and 5.12 Two conditions at once and Second derivative form; 36 words."
+    "evidence": "Shortened paraphrase of BC-CON-05015 description_plain and 5.12 Assessment behaviour."
    },
    {
     "id": "ki-1",
     "verdict": "ok",
-    "evidence": "Quote verbatim from ced:110 FUN-4.D.1; SymPy: dy/dx = (3x^2+6x)/(2(y-1)) is a quotient; 5.12 Two conditions at once."
+    "evidence": "Quote verbatim from ced:110 FUN-4.D.1; SymPy: dy/dx = (3x^2+6x)/(2(y-1)) is a quotient; 5.12 Two conditions at once. (unchanged since 2026-09-29)"
    },
    {
     "id": "ki-2",
     "verdict": "ok",
-    "evidence": "Paraphrase of FUN-4.E.2 on ced:110 and the 5.12 Second derivative form paragraph; 32 words."
+    "evidence": "Paraphrase of FUN-4.E.2 on ced:110 and the 5.12 Second derivative form paragraph; 32 words. (unchanged since 2026-09-29)"
    },
    {
     "id": "ki-3",
     "verdict": "ok",
-    "evidence": "Quote verbatim from ced:110 FUN-4.E.1; classification by sign from BC-SKL-05063."
+    "evidence": "Quote verbatim from ced:110 FUN-4.E.1; classification by sign from BC-SKL-05063. (unchanged since 2026-09-29)"
    },
    {
     "id": "st-1",
     "verdict": "ok",
-    "evidence": "BC-QA-05012 evidence_tag verified; method is expected_solution_path[0]; rival is wrong_approaches[0]."
+    "evidence": "Cue from BC-QA-05012 common_givens, method expected_solution_path[0], rival wrong_approaches; no leading label."
+   },
+   {
+    "id": "st-1.contrast",
+    "verdict": "ok",
+    "evidence": "this is BC-QA-05012 typical_wording[1]; not_this y=x^3+5x^2 is the 5.12 not-this-concept line (y explicit). SymPy: implicit slope x(3x+10)/(2y), x=0 forces y=0 (excluded); explicit version gives {-10/3, 0}; why_not and feature true."
    },
    {
     "id": "ex-1",
     "verdict": "ok",
-    "evidence": "SymPy: implicit derivative (3x^2+6x)/(2(y-1)); numerator zeros {-2,0}; at x=-2, (y-1)^2=4 gives y in {-1,3}; x=0 gives y=1 with zero denominator; answer {(-2,-1),(-2,3)}."
+    "evidence": "SymPy: implicit derivative (3x^2+6x)/(2(y-1)); numerator zeros {-2,0}; at x=-2, (y-1)^2=4 gives y in {-1,3}; x=0 gives y=1 with zero denominator; answer {(-2,-1),(-2,3)}. (unchanged since 2026-09-29)"
    },
    {
     "id": "ex-2",
     "verdict": "ok",
-    "evidence": "SymPy: second implicit derivative 2p^2+2(y-1)q=6x+6; at (-2,3), p=0: 4q=-6, q=-3/2, relative maximum."
+    "evidence": "fade_from 4 shows steps 1 to 3 ending at 4q=-6 (SymPy: second implicit derivative equals 2p^2+2(y-1)q=6x+6; at (-2,3), p=0 gives 4q+6=0); the withheld steps give q=-3/2, matching idiff d2y/dx2 at (-2,3) = -3/2, and the relative maximum classification."
    },
    {
     "id": "err-BC-ERR-03012",
     "verdict": "ok",
-    "evidence": "Bundle text verbatim; denominator 2(y-1) versus numerator 3x(x+2)."
+    "evidence": "fix_prompt true with relation distinct; step values untouched by the redesign (no decimal rewrite). Earlier: Bundle text verbatim; denominator 2(y-1) versus numerator 3x(x+2)."
    },
    {
     "id": "err-BC-ERR-03023",
     "verdict": "ok",
-    "evidence": "Bundle text verbatim; SymPy solve(2p^2+4q+6, q) = (-6-2p^2)/4; BC-MIS-05033 paraphrase."
+    "evidence": "fix_prompt true with relation distinct; step values untouched by the redesign (no decimal rewrite). Earlier: Bundle text verbatim; SymPy solve(2p^2+4q+6, q) = (-6-2p^2)/4; BC-MIS-05033 paraphrase."
    },
    {
     "id": "err-BC-ERR-05060",
     "verdict": "ok",
-    "evidence": "Bundle text verbatim; the dropped term is 2p^2 from the product rule (SymPy)."
+    "evidence": "fix_prompt true with relation distinct; step values untouched by the redesign (no decimal rewrite). Earlier: Bundle text verbatim; the dropped term is 2p^2 from the product rule (SymPy)."
    },
    {
     "id": "err-BC-ERR-05062",
     "verdict": "ok",
-    "evidence": "Bundle text verbatim; q=-3/2<0 is a maximum."
+    "evidence": "fix_prompt true with relation distinct; step values untouched by the redesign (no decimal rewrite). Earlier: Bundle text verbatim; q=-3/2<0 is a maximum."
    },
    {
-    "id": "bridge-BC-PRQ-05001",
+    "id": "BC-PRQ-05001",
     "verdict": "ok",
-    "evidence": "Paraphrase of BC-PRQ-05001 description_plain and failure_signature; 18 words."
+    "evidence": "Paraphrase of BC-PRQ-05001 description_plain and failure_signature; 18 words. (unchanged since 2026-09-29)"
    },
    {
-    "id": "bridge-BC-PRQ-05007",
+    "id": "BC-PRQ-05007",
     "verdict": "ok",
-    "evidence": "Paraphrase of BC-PRQ-05007 failure_signature; 22 words."
+    "evidence": "Paraphrase of BC-PRQ-05007 failure_signature; 22 words. (unchanged since 2026-09-29)"
    },
    {
     "id": "chk-1",
     "verdict": "ok",
-    "evidence": "Same curve as ex-1; key {(-2,-1),(-2,3)} as computed."
+    "evidence": "Same curve as ex-1; key {(-2,-1),(-2,3)} as computed. (unchanged since 2026-09-29)"
    },
    {
     "id": "chk-2",
     "verdict": "ok",
-    "evidence": "SymPy: implicit derivative of y^2=2x^2(6-x) is 3x(4-x)/y; x=4 gives y^2=64, y=8 or -8; x=0 gives y=0, excluded."
+    "evidence": "SymPy: implicit derivative of y^2=2x^2(6-x) is 3x(4-x)/y; x=4 gives y^2=64, y=8 or -8; x=0 gives y=0, excluded. (unchanged since 2026-09-29)"
    },
    {
     "id": "chk-3",
     "verdict": "ok",
-    "evidence": "SymPy: (-2,4) on y^2=4x^2(x+3); numerator 12x^2+24x zero at x=-2; 8q=-24, q=-3; option C equals (-24-2p^2)/8; option D zeros of y at x=0 and -3."
+    "evidence": "SymPy: (-2,4) on y^2=4x^2(x+3); numerator 12x^2+24x zero at x=-2; 8q=-24, q=-3; option C equals (-24-2p^2)/8; option D zeros of y at x=0 and -3. (unchanged since 2026-09-29)"
    }
   ],
   "advice": [
@@ -132,7 +142,7 @@
    "Recognition, first written line and rival are clear; the scoring habit of separate differentiation and substitution points is mentioned only indirectly because BC-QA-05012 has no point_types."
   ],
   "counts": {
-   "ok": 16,
+   "ok": 18,
    "unsourced": 0,
    "wrong": 0,
    "over_cap": 0,

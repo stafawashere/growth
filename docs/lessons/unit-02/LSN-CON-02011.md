@@ -30,7 +30,7 @@ Two BC-EK map to the skills: BC-EK-FUN-3A2 (BC-SKL-02028 to 02030) and BC-EK-FUN
 
 What says "not this concept": two variable factors multiplied or divided (BC-CON-02013, 02014); a constant denominator, which this concept's constant multiple rule handles instead of the quotient rule (BC-ERR-02023, taught in BC-CON-02014).
 
-The contrast pair on st-1 takes its near miss from the sibling concept BC-CON-02013. `this` is a sum of constant multiples of powers with a lone constant (BC-QA-02006 wording, a different draw from every published item). `not_this` multiplies two binomials, which reads as a polynomial but calls for the product rule; the feature is terms joined by plus or minus against factors multiplied.
+The contrast pair on st-1 takes its near miss from the sibling concept BC-CON-02013. `this` is a sum of constant multiples of powers with a lone constant (BC-QA-02006 wording, a different draw from every published item). `not_this` multiplies a binomial by \(\sin x\), which cannot be expanded into powers, so it calls for the product rule (a product of two polynomials was not used, since it expands and differentiates term by term, BC-SKL-02038); the feature is terms joined by plus or minus against factors multiplied.
 
 ## Method choice
 
@@ -85,8 +85,8 @@ No drawn block applies: no skill carries a figure-bearing BC-REP (rules 2 to 5 d
 
 ## Band plan
 
-- Low (full): prediction, orientation, ki-1, ki-2, st-1 with its contrast pair, ex-1, chk-1, err-BC-ERR-02015, err-BC-ERR-02016, chk-2, chk-3, the bridge. 472 words, 3.2 minutes (cap 900 and 6). No second example, so no fade.
-- Mid (brief): prediction, orientation, bridge, ki-1, st-1 with its contrast pair, ex-1, chk-1, err-BC-ERR-02015, err-BC-ERR-02016, chk-2. 446 words, 3.0 minutes (cap 450 and 3).
+- Low (full): prediction, orientation, ki-1, ki-2, st-1 with its contrast pair, ex-1, chk-1, err-BC-ERR-02015, err-BC-ERR-02016, chk-2, chk-3, the bridge. 471 words, 3.2 minutes (cap 900 and 6). No second example, so no fade.
+- Mid (brief): prediction, orientation, bridge, ki-1, st-1 with its contrast pair, ex-1, chk-1, err-BC-ERR-02015, err-BC-ERR-02016, chk-2. 445 words, 3.0 minutes (cap 450 and 3).
 - Refresher: ki-1, err-BC-ERR-02015, err-BC-ERR-02016, ex-1.
 
 ## Sources
@@ -205,8 +205,8 @@ No drawn block applies: no skill carries a figure-bearing BC-REP (rules 2 to 5 d
      "archetype_id": "BC-QA-02006"
     },
     "not_this": {
-     "text": "Let \\(h(x)=(4x^3-6)(x^2+5)\\). Find \\(h'(x)\\).",
-     "why_not": "Two variable factors are multiplied, so the product rule applies, not term by term differentiation."
+     "text": "Let \\(h(x)=(4x^3-6)\\sin x\\). Find \\(h'(x)\\).",
+     "why_not": "The factor \\(\\sin x\\) is not a power, so the product rule applies."
     },
     "feature": "Terms joined by plus or minus, each a number times a power, against factors multiplied."
    }
@@ -568,8 +568,8 @@ No drawn block applies: no skill carries a figure-bearing BC-REP (rules 2 to 5 d
   "brief": 3.0
  },
  "word_count": {
-  "full": 472,
-  "brief": 446
+  "full": 471,
+  "brief": 445
  },
  "research_lines": [
   {

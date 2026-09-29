@@ -33,64 +33,76 @@
   "auditor": "claude-opus-5-5",
   "blocks": [
    {
+    "id": "prediction",
+    "verdict": "ok",
+    "evidence": "Key 'the derivative of y'' is the only true option (SymPy y'' = -2y - 2x yp + 3yp + 1, value -2 at (2,1)); A and C are (y')^2 = 1 at (2,1), false; resolution from BC-CON-03010 and BC-PRQ-03005; no verdict, no id."
+   },
+   {
     "id": "orientation",
     "verdict": "ok",
-    "evidence": "Paraphrase of BC-CON-03010 description_formal and BC-PRQ-03005 (operator apart from result); 25 words."
+    "evidence": "Compressed paraphrase of description_formal and BC-PRQ-03005 description_plain."
    },
    {
     "id": "ki-1",
     "verdict": "ok",
-    "evidence": "Paraphrase of BC-EK-FUN-3F2 and concept description_formal; quote verbatim on ced:80."
+    "evidence": "Notation list from description_formal; quote verbatim on ced:80 (page-080.raw.txt lines 19 to 20)."
    },
    {
     "id": "st-1",
     "verdict": "ok",
-    "evidence": "fixed 2026-09-29: rebuilt for this concept: cue names the second derivative in one notation and the first in the other; method d^2y/dx^2 = d/dx(y') (expected_solution_path[0]); rival BC-ERR-03022 from the archetype common_distractors 'the second derivative reported in the wrong notation', evidence_tag inferred since wrong_approaches holds no notation entry."
+    "evidence": "Method no longer begins with a label; rival id moved to sources; rival matches BC-ERR-03022."
+   },
+   {
+    "id": "st-1.contrast",
+    "verdict": "ok",
+    "evidence": "this matches BC-QA-03008 asked_to_produce (SymPy y'(1)=5, y''(1)=9); not_this asks the first derivative, why_not true; feature true."
    },
    {
     "id": "ex-1",
     "verdict": "ok",
-    "evidence": "fixed 2026-09-29: problem now gives y' in prime form and asks d^2y/dx^2, answer written as y''(2); step 1 writes the Leibniz naming line d^2y/dx^2 = d/dx(-2xy + 3y + x) and is written, not skipped; SymPy yp(2)=1, y''=-2y-2x yp+3yp+1, value -2."
+    "evidence": "Cues shortened; BC-PT-99022 tag dropped from step 3; SymPy y'(2)=1, y''(2)=-2 unchanged."
    },
    {
     "id": "what_a_reader_scores:ex-1",
     "verdict": "ok",
-    "evidence": "BC-PT-99022 and BC-PT-99027 text verbatim from bundle point_types."
-   },
-   {
-    "id": "representations",
-    "verdict": "ok",
-    "evidence": "null; BC-REP-04 is verbal only."
+    "evidence": "BC-PT-99027 line verbatim from bundle point_types; BC-PT-99022 dropped for the brief cap, recorded [inferred] in Scoring."
    },
    {
     "id": "err-BC-ERR-03022",
     "verdict": "ok",
-    "evidence": "Record text verbatim; wrong yp*(-2xy + 3y + x) is a product, SymPy differs from right -2y - 2x yp + 3 yp + 1; possible_reason from BC-MIS-03014, listed on the error."
+    "evidence": "fix_prompt true matches relation distinct; expr values unchanged by the redesign (only fix_prompt added); SymPy: wrong and right differ. At (2,1): 1 vs -2."
    },
    {
     "id": "BC-PRQ-03005",
     "verdict": "ok",
-    "evidence": "Paraphrase of description_plain and failure_signature; 21 words."
+    "evidence": "Paraphrase of failure_signature."
+   },
+   {
+    "id": "no_figure_reason",
+    "verdict": "ok",
+    "evidence": "BC-SKL-03032 carries BC-REP-01 and BC-REP-04 only (bundle skills); a notation list holds no process."
+   },
+   {
+    "id": "representations",
+    "verdict": "ok",
+    "evidence": "unchanged since 2026-09-29: null; BC-REP-04 is verbal only."
    },
    {
     "id": "chk-1",
     "verdict": "ok",
-    "evidence": "fixed 2026-09-29: stem gives d^2y/dx^2 in Leibniz form with dy/dx = 1 at x = 2 and asks y''(2), so reading the notation is tested; SymPy value -2."
+    "evidence": "unchanged since 2026-09-29: fixed 2026-09-29: stem gives d^2y/dx^2 in Leibniz form with dy/dx = 1 at x = 2 and asks y''(2), so reading the notation is tested; SymPy value -2."
    },
    {
     "id": "chk-2",
     "verdict": "ok",
-    "evidence": "fixed 2026-09-29: stem gives dy/dx in Leibniz form and asks y'' in x, y and y' then y''(1); SymPy y''=y+x yp+2yp-1, yp(1)=2, value 6."
+    "evidence": "unchanged since 2026-09-29: fixed 2026-09-29: stem gives dy/dx in Leibniz form and asks y'' in x, y and y' then y''(1); SymPy y''=y+x yp+2yp-1, yp(1)=2, value 6."
    }
   ],
   "advice": [
-   "The concept is reading prime and Leibniz notation interchangeably, yet st-1, ex-1 and both checks teach computing a second derivative (the BC-CON-03009 procedure) with a rival (BC-ERR-05060) that is not a notation error; recognition of the notation stem is weak.",
-   "ex-1 asks to name y''(2) in Leibniz notation, but step 1 carrying that naming is skipped from written steps and the answer records only -2; the notation answer is never written.",
-   "ki-1 lists equivalent notations; a small table (prime form, Leibniz form, meaning) would suit tabular content better than text.",
-   "No check tests notation reading (for example, which expression names the second derivative); both checks are numeric computations."
+   "Prediction options A (dy/dx times y') and C (y' squared) are the same quantity since dy/dx = y', so the mcq has two options pointing to one wrong idea; a distinct third option, such as the first derivative evaluated at the point, would add a path."
   ],
   "counts": {
-   "ok": 10,
+   "ok": 13,
    "unsourced": 0,
    "wrong": 0,
    "over_cap": 0,

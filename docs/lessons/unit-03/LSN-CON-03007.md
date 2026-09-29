@@ -79,14 +79,14 @@ BC-QA-03007 is `calculator_status` either, a single MCQ or a step inside a conte
 
 ## Delivery
 
-- orientation, ki-1: text. Rule 5: the skills carry BC-REP-01 and BC-REP-09, neither figure-bearing (docs/lessons/unit-03/README.md, section 6). No drawn block fits, so the record carries `no_figure_reason`: the skills hold no figure-bearing representation and the key idea holds no process.
+- orientation, ki-1: text. Rule 6: the skills carry BC-REP-01 and BC-REP-09, neither figure-bearing (docs/lessons/unit-03/README.md, section 6). No drawn block fits, so the record carries `no_figure_reason`: the skills hold no figure-bearing representation and the key idea holds no process.
 - ex-1: step_reveal. Rule 1.
 - err-BC-ERR-03006, err-BC-ERR-03018, err-BC-ERR-03017: step_reveal. Rule 1.
 
 ## Band plan
 
-- Low (full), in served order: prediction, orientation, the two bridges, ki-1, st-1 with its contrast pair, st-2, st-3, ex-1, chk-1, the three error blocks, chk-2, chk-3. 617 words, 4.2 minutes (cap 900 and 6).
-- Mid (brief), in served order: prediction, orientation, the two bridges, ki-1, st-1 with its contrast pair, ex-1, chk-1, err-BC-ERR-03006, err-BC-ERR-03018, chk-2. 444 words, 3.0 minutes (cap 450 and 3).
+- Low (full), in served order: prediction, orientation, the two bridges, ki-1, st-1 with its contrast pair, st-2, st-3, ex-1, chk-1, the three error blocks, chk-2, chk-3. 619 words, 4.2 minutes (cap 900 and 6).
+- Mid (brief), in served order: prediction, orientation, the two bridges, ki-1, st-1 with its contrast pair, ex-1, chk-1, err-BC-ERR-03006, err-BC-ERR-03018, chk-2. 446 words, 3.0 minutes (cap 450 and 3).
 - Refresher: ki-1, err-BC-ERR-03006, err-BC-ERR-03018, err-BC-ERR-03017, ex-1.
 
 ## Sources
@@ -158,7 +158,7 @@ BC-QA-03007 is `calculator_status` either, a single MCQ or a step inside a conte
    "id": "ki-1",
    "ek_id": "BC-EK-FUN-3E2",
    "depth": "core",
-   "text": "arcsin x has derivative 1/sqrt(1 - x^2), arccos x its negative, arctan x has 1/(1 + x^2). An inner function u replaces x and adds the factor u'. Differentiating tan y = x implicitly gives them.",
+   "text": "arcsin x has derivative 1/sqrt(1 - x^2), arccos x its negative, arctan x has 1/(1 + x^2). An inner function u replaces x and adds the factor u'. Differentiating tan y = x implicitly gives the arctan one.",
    "notation": "derivative of arctan u equals u prime over one plus u squared",
    "quote": null,
    "sources": [
@@ -562,7 +562,7 @@ BC-QA-03007 is `calculator_status` either, a single MCQ or a step inside a conte
   {
    "block": "orientation",
    "mode": "text",
-   "reason": "rule 5: the skills carry BC-REP-01 and BC-REP-09, neither figure-bearing",
+   "reason": "rule 6: the skills carry BC-REP-01 and BC-REP-09, neither figure-bearing",
    "sources": [
     "BC-SKL-03021"
    ]
@@ -570,7 +570,7 @@ BC-QA-03007 is `calculator_status` either, a single MCQ or a step inside a conte
   {
    "block": "ki-1",
    "mode": "text",
-   "reason": "rule 5: three formulas and a chain rule factor, symbolic only",
+   "reason": "rule 6: three formulas and a chain rule factor, symbolic only",
    "sources": [
     "BC-SKL-03021",
     "BC-SKL-03022"
@@ -613,8 +613,8 @@ BC-QA-03007 is `calculator_status` either, a single MCQ or a step inside a conte
   "brief": 3.0
  },
  "word_count": {
-  "full": 617,
-  "brief": 444
+  "full": 619,
+  "brief": 446
  },
  "research_lines": [
   {

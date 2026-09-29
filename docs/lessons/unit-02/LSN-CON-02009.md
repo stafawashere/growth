@@ -28,7 +28,7 @@ One BC-EK maps to the three skills, BC-EK-FUN-2A2 (ced:63), so one core block, b
 - BC-QA-02005 (family differentiability-and-continuity, single MCQ or one part, no calculator; research/question-analysis/question-archetypes.md#BC-QA-02005 Point of non-differentiability identified on a continuous function): `typical_wording` "Is the given function differentiable at the named input? Give a reason for your answer."; `common_givens` a piecewise rule, a graph with its tangent lines described, an absolute value function; `asked_to_produce` a verdict, a reason from one sided slopes or the tangent line, the inputs where the function is continuous but not differentiable. The signal is the word differentiable asked about a named input, with a fractional power, an absolute value or a piecewise boundary there. `official_examples`: BC-MCQ-CED-002, BC-MCQ-SAMPLE-003, BC-MCQ-PE2012-011.
 - BC-QA-05014 (family critical-points; research/question-analysis/question-archetypes.md#BC-QA-05014 Every critical point found, including inputs where the derivative fails to exist): `typical_wording` "find all critical points of f"; `common_givens` a quotient with a fractional power or absolute value in the numerator. The signal is a critical point question on such a rule, where the inputs with no derivative join the list.
 
-The contrast pair on st-1 takes its near miss from the sibling concept BC-CON-02008 (BC-QA-02004): a stem that gives differentiability and asks about continuity, the reverse of BC-QA-02005's direction. The `this` stem is a fresh draw on BC-QA-02005.
+The contrast pair on st-1 takes its near miss from the sibling concept BC-CON-02008 (BC-QA-02004): a stem that gives differentiability and asks about continuity, the reverse of BC-QA-02005's direction. The `this` stem is a fresh draw on BC-QA-02005; it gives only the formula, so the separating feature is that differentiability is asked for, not given (continuity is checked inside st-1's method).
 
 What says "not this concept": the stem states differentiability and asks for continuity (BC-CON-02008); the function is discontinuous at the input, so the contrapositive settles it (BC-SKL-02024).
 
@@ -86,8 +86,8 @@ No draw equals a published BC-QA-02005 `parameter_draw`.
 
 ## Band plan
 
-- Low (full): prediction, orientation, the bridge, ki-1, st-1 with the contrast pair, st-2, ex-1, chk-1, err-BC-ERR-02012, err-BC-ERR-02013, err-BC-ERR-03012, chk-2, chk-3. 634 words, 4.3 minutes (cap 900 and 6).
-- Mid (brief): prediction, orientation, the bridge, ki-1, st-1 with the contrast pair, ex-1, chk-1, err-BC-ERR-02012, err-BC-ERR-02013, chk-2. 448 words, 3.0 minutes (cap 450 and 3).
+- Low (full): prediction, orientation, the bridge, ki-1, st-1 with the contrast pair, st-2, ex-1, chk-1, err-BC-ERR-02012, err-BC-ERR-02013, err-BC-ERR-03012, chk-2, chk-3. 630 words, 4.2 minutes (cap 900 and 6).
+- Mid (brief): prediction, orientation, the bridge, ki-1, st-1 with the contrast pair, ex-1, chk-1, err-BC-ERR-02012, err-BC-ERR-02013, chk-2. 447 words, 3.0 minutes (cap 450 and 3).
 - Refresher: ki-1, err-BC-ERR-02012, err-BC-ERR-02013, err-BC-ERR-03012, ex-1.
 
 ## Sources
@@ -190,7 +190,7 @@ No draw equals a published BC-QA-02005 `parameter_draw`.
      "text": "\\(g\\) is differentiable at \\(x=3\\). Must \\(g\\) be continuous at \\(x=3\\)?",
      "why_not": "Differentiability is given and continuity is the conclusion."
     },
-    "feature": "The stem gives continuity and asks about the derivative, not the reverse."
+    "feature": "The stem asks whether the derivative exists and gives no differentiability."
    }
   },
   {
@@ -198,7 +198,7 @@ No draw equals a published BC-QA-02005 `parameter_draw`.
    "archetype_id": "BC-QA-05014",
    "cue": "The stem asks for all critical points of a quotient with a fractional power or an absolute value.",
    "method": "The derivative, then its zeros and the inputs where it fails to exist.",
-   "rival": "The rival is setting only the derivative equal to zero.",
+   "rival": "Setting only the derivative equal to zero.",
    "separating_feature": "A fractional power or absolute value marks an input where the function is defined but has no derivative.",
    "sources": [
     "BC-QA-05014"
@@ -728,8 +728,8 @@ No draw equals a published BC-QA-02005 `parameter_draw`.
   "err-BC-ERR-03012",
   "ex-1"
  ],
- "read_minutes": {"full": 4.3, "brief": 3.0},
- "word_count": {"full": 634, "brief": 448},
+ "read_minutes": {"full": 4.2, "brief": 3.0},
+ "word_count": {"full": 630, "brief": 447},
  "research_lines": [
   {
    "file": "research/question-analysis/question-archetypes.md",

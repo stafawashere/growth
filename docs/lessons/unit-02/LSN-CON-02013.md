@@ -68,7 +68,7 @@ Three active errors meet the concept's skills, in the bundle's order (all linked
 
 ## Representations
 
-None. The topic's Representations paragraph names BC-REP-01, BC-REP-03 and BC-REP-02 and one conversion (supplied values to a derivative of their product), which ex-2 carries as a table; no figure-shaped content exists for a symbolic rule.
+None. The topic's Representations paragraph names BC-REP-01, BC-REP-03 and BC-REP-02 and one conversion (supplied values to a derivative of their product), which ex-2 carries as values written in its problem. BC-REP-02 is carried by the ki-1 graph (Delivery).
 
 ## Prerequisite bridge
 
@@ -89,7 +89,7 @@ No check draw equals a published BC-QA-02008 or BC-QA-02009 `parameter_draw` (co
 ## Delivery
 
 - orientation: text. Rule 5, a symbolic rule whose skills' representations are BC-REP-01 (with BC-REP-03 on BC-SKL-02037 carried by ex-2, not here).
-- ki-1: table. Rule 5, BC-REP-03 supplied values on BC-SKL-02037: four values at one input (f(3)=2, f'(3)=5, g(3)=-1, g'(3)=4, a draw used by no example or check) with the rule's sum, 3, beside the product of the derivatives, 20. The table puts the prediction's claim in numbers; its label sits inside the table frame. Fallback a text list, keyboard none needed [inferred; settled by the modality A/B].
+- ki-1: figure. Rule 4, BC-REP-02 on BC-SKL-02037, which the selection order puts ahead of rule 5: the graph of \(h(x)=x^3\), the product of \(f(x)=x^2\) and \(g(x)=x\), with its tangent at \(x=1\), slope \(f'g+fg'=2+1=3\), beside the dashed line of slope \(f'g'=2\) through \((1,1)\), which is not tangent (SymPy: \(h'(1)=3\), tangent \(y=3x-2\), dashed line \(y=2x-1\)). The figure puts the prediction's claim on a graph; every label sits inside it. Fallback alt text naming both slopes, keyboard none needed [inferred; settled by the modality A/B].
 - ex-1: step_reveal. Rule 1.
 - ex-2: step_reveal with the four supplied values written in the problem text. Rule 1.
 - err-BC-ERR-02020, err-BC-ERR-02023, err-BC-ERR-02024: step_reveal, the wrong step beside the right step. Rule 1.
@@ -98,7 +98,7 @@ No motion, interactive or model mode applies: the concept has no parameter that 
 
 ## Band plan
 
-- Low (full): prediction, orientation, ki-1, st-1 with its contrast pair, st-2, ex-1 with its scoring line, chk-1, err-BC-ERR-02020, err-BC-ERR-02023, err-BC-ERR-02024, ex-2 faded from step 3 with its scoring line, chk-2, chk-3. 668 words, 4.5 minutes (cap 900 and 6).
+- Low (full): prediction, orientation, ki-1, st-1 with its contrast pair, st-2, ex-1 with its scoring line, chk-1, err-BC-ERR-02020, err-BC-ERR-02023, err-BC-ERR-02024, ex-2 faded from step 3 with its scoring line, chk-2, chk-3. 666 words, 4.5 minutes (cap 900 and 6).
 - Mid (brief): prediction, orientation, ki-1, st-1 with its contrast pair, ex-1 with its scoring line, chk-1, err-BC-ERR-02020, err-BC-ERR-02023, chk-2. 442 words, 3.0 minutes (cap 450 and 3).
 - Refresher: ki-1, err-BC-ERR-02020, err-BC-ERR-02023, err-BC-ERR-02024, ex-1.
 
@@ -115,7 +115,7 @@ No motion, interactive or model mode applies: the concept has no parameter that 
 - research/scoring/common-point-losses.md#Answer points
 - research/exam/exam-structure.md#Section and part layout
 - [inferred] The `parameter_spec` of BC-QA-02008 carries no product-versus-quotient parameter, so a product draw adds a `structure` key. Settled by a library staging pass adding the parameter, or by the template under app/generation/templates confirming that it only produces quotients.
-- [inferred] The ki-1 table as the drawn block, and no motion, interactive or model mode. Settled by the modality A/B.
+- [inferred] The ki-1 graph as the drawn block, and no motion, interactive or model mode. Settled by the modality A/B.
 
 ## Machine record
 
@@ -280,7 +280,7 @@ No motion, interactive or model mode applies: the concept has no parameter that 
     "form": "product"
    },
    "problem": {
-    "text": "The table gives \\(f(1)=3\\), \\(f'(1)=-2\\), \\(g(1)=4\\), \\(g'(1)=5\\). Let \\(h(x)=f(x)g(x)\\). Find \\(h'(1)\\).",
+    "text": "Suppose \\(f(1)=3\\), \\(f'(1)=-2\\), \\(g(1)=4\\), \\(g'(1)=5\\). Let \\(h(x)=f(x)g(x)\\). Find \\(h'(1)\\).",
     "command_verb": "find"
    },
    "calculator_status": "no_calculator",
@@ -593,48 +593,67 @@ No motion, interactive or model mode applies: the concept has no parameter that 
   },
   {
    "block": "ki-1",
-   "mode": "table",
-   "reason": "rule 5: BC-REP-03 supplied values on BC-SKL-02037, laid beside the rule as numbers",
+   "mode": "figure",
+   "reason": "rule 4: BC-REP-02 on BC-SKL-02037, ahead of rule 5; the product of x^2 and x graphed with its tangent at x = 1 beside the line whose slope is the product of the derivatives",
    "sources": [
     "BC-SKL-02037"
    ],
    "spec": {
-    "kind": "table",
-    "representations": [
-     "BC-REP-03"
-    ],
-    "columns": [
-     "quantity at x = 3",
-     "value"
-    ],
-    "rows": [
-     [
-      "f(3)",
+    "kind": "graph",
+    "window": {
+     "x": [
+      0,
       2
      ],
-     [
-      "f'(3)",
-      5
-     ],
-     [
-      "g(3)",
-      -1
-     ],
-     [
-      "g'(3)",
-      4
+     "y": [
+      -2,
+      8
      ]
-    ],
-    "labels": [
+    },
+    "curves": [
      {
-      "text": "f'(3)g(3) + f(3)g'(3) = 3, while f'(3)g'(3) = 20",
-      "placement": "inside",
-      "at": "last line of the table frame"
+      "expr": "x**3",
+      "style": "solid",
+      "label": {
+       "text": "h(x) = x^2 times x",
+       "placement": "inside"
+      }
+     },
+     {
+      "expr": "3*x - 2",
+      "style": "solid",
+      "label": {
+       "text": "tangent, slope f'g + fg' = 2 + 1 = 3",
+       "placement": "inside"
+      }
+     },
+     {
+      "expr": "2*x - 1",
+      "style": "dashed",
+      "label": {
+       "text": "slope f'g' = 2, not the tangent",
+       "placement": "inside"
+      }
      }
+    ],
+    "points": [
+     {
+      "x": 1,
+      "y": 1,
+      "style": "closed",
+      "label": {
+       "text": "(1, 1)",
+       "placement": "inside"
+      }
+     }
+    ],
+    "labels": [],
+    "representations": [
+     "BC-REP-02"
     ]
    },
-   "fallback": "the same four rows as a text list, with the two products written after them",
-   "keyboard": "none needed; the table is read row by row in order by a screen reader"
+   "fallback": "Alt text: the graph of \\(h(x)=x^3\\), the product of \\(f(x)=x^2\\) and \\(g(x)=x\\), through \\((1,1)\\). The tangent there has slope \\(f'(1)g(1)+f(1)g'(1)=3\\); the dashed line of slope \\(f'(1)g'(1)=2\\) through the same point is not tangent.",
+   "keyboard": "none needed: a static figure"
   },
   {
    "block": "ex-1",
@@ -681,7 +700,7 @@ No motion, interactive or model mode applies: the concept has no parameter that 
   "brief": 3.0
  },
  "word_count": {
-  "full": 668,
+  "full": 666,
   "brief": 442
  },
  "research_lines": [
@@ -700,7 +719,7 @@ No motion, interactive or model mode applies: the concept has no parameter that 
    "settles": "A library staging pass adding the parameter, or the template confirming it only produces quotients."
   },
   {
-   "claim": "The table on ki-1 serves the concept better than text alone, and no motion, interactive or model mode serves it better than that.",
+   "claim": "The graph on ki-1 serves the concept better than text alone, and no motion, interactive or model mode serves it better than that.",
    "settles": "The modality A/B in the build plan: skip rate and time to first credited success by mode."
   }
  ],

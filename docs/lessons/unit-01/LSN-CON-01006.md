@@ -11,7 +11,7 @@ Concept BC-CON-01006 (skills BC-SKL-01009, BC-SKL-01014, BC-SKL-01015, BC-SKL-01
 
 ## Prediction
 
-Served first, both bands. Pose on ex-1's own numbers: the graph with an open circle at \(x=3\) and a dot below it, and ask which statement holds for the limit. Form `mcq`, three short options, key: the limit is 2. The resolution states that the limit is the height both sides approach and that the dot is the value of \(f\) at 3, from BC-CON-01006 and the topic 1.3 paragraph. Nothing is graded and the resolution carries no verdict word.
+Served first, both bands. Pose on ex-1's own numbers: both sides of the graph approach an open circle at \((3,2)\) and a dot sits below it at \((3,0)\), and ask which statement holds for the limit. The stem names both sides so that only the key is true; with the circle and dot alone a jump reading makes "It does not exist" true as well. Form `mcq`, three short options, key: the limit is 2. The resolution states that the limit is the height both sides approach and that the dot is the value of \(f\) at 3, from BC-CON-01006 and the topic 1.3 paragraph. Nothing is graded and the resolution carries no verdict word.
 
 ## Orientation
 
@@ -48,9 +48,9 @@ All three archetypes carry `asked_to_produce` and `common_givens` in the snapsho
 ## Solution path
 
 - ex-1, BC-QA-01001, both bands, no calculator. Draw: hole_x 3, jump_x 6, start_y -1, hole_y 2, hole_value 0, left_limit -2, right_limit 1, end_y 3, jump_value 4, value_mark marked, justify bare, request hole. Near \(x=3\) the left segment is \(x-1\) and the right segment \(6-4x/3\), both heading to 2, with a dot at \((3,0)\). Steps: each branch (valued, new) and its one sided limit (valued, limit from each side). Answer 2.
-- ex-2, BC-QA-01002, low band only. Draw: target 1, left_value 2, right_value -1, left_slope 3, right_slope -2, curvature 0, behaviour oscillate. The rows at distances 0.1, 0.01, 0.001, 0.0001 on each side read 2.3000, -1.0200, 2.0030, -1.0002 (the spec's notes: outputs alternate between the two approached values, plus slope times distance). Steps: group the rows by side, read each side, conclude. Answer: a statement, the table suggests that the limit does not exist.
+- ex-2, BC-QA-01002, low band only. Draw: target 1, left_value 2, right_value -1, left_slope 3, right_slope -2, curvature 0, behaviour oscillate. The rows at distances 0.1, 0.01, 0.001, 0.0001 on each side read 2.3000, -1.0200, 2.0030, -1.0002 (the spec's notes: outputs alternate between the two approached values, plus slope times distance). Steps: group the rows by side and read the value every other output closes in on (2, valued), read the value the rows between close in on (\(-1\), valued), conclude (DNE). Answer: a statement, the table suggests that the limit does not exist.
 
-ex-2 is faded from step 3: the student reads the grouped rows and the alternation of the outputs (step 2 carries the value DNE), writes the explanation, and then step 3 appears. The fade falls there because the first two steps only read the table and the last is the sentence a written response must supply.
+ex-2 is faded from step 3: the shown steps read the two values the outputs alternate between, 2 and \(-1\), and the student writes the suggestion before step 3, which carries DNE, appears. The fade falls there because the first two steps only read the table and the last is the sentence a written response must supply.
 
 A fluent solver writes nothing on the MCQ shape and holds the row grouping in the head (docs/lessons/unit-01/README.md, section 5) [inferred].
 
@@ -101,7 +101,7 @@ Every non-text choice is [inferred], settled by the modality A/B.
 
 - Low (full): pr-1, orientation, bridge when gated, ki-1, ki-2, ki-3, st-1 with its contrast, st-2, st-3, ex-1, chk-1, four error blocks, ex-2 faded from step 3, chk-2, chk-3.
 - Mid (brief): pr-1, orientation, bridge when gated, ki-1, ki-3, st-1 with its contrast, ex-1, chk-1, err-BC-ERR-01001, err-BC-ERR-01002, chk-2.
-- Totals: full 818 words, 5.5 minutes (cap 900 and 6); brief 446 words, 3.0 minutes (cap 450 and 3).
+- Totals: full 814 words, 5.43 minutes (cap 900 and 6); brief 447 words, 2.98 minutes (cap 450 and 3).
 - Refresher: ki-1, ki-3, the four error blocks, ex-1.
 
 ## Sources
@@ -130,7 +130,7 @@ Every non-text choice is [inferred], settled by the modality A/B.
  "target_id": "BC-CON-01006",
  "unit": "01",
  "skills": ["BC-SKL-01009", "BC-SKL-01014", "BC-SKL-01015", "BC-SKL-01017"],
- "prediction": {"id": "pr-1", "stem": {"text": "Predict. A graph has an open circle at (3, 2) and a dot at (3, 0). What is the limit of f at x = 3?", "command_verb": "predict"}, "format": "mcq",
+ "prediction": {"id": "pr-1", "stem": {"text": "Predict. Both sides of f's graph approach an open circle at (3, 2). A dot sits at (3, 0). What is the limit at x = 3?", "command_verb": "predict"}, "format": "mcq",
   "options": [{"id": "A", "label": "0", "is_key": false}, {"id": "B", "label": "2", "is_key": true}, {"id": "C", "label": "It does not exist", "is_key": false}],
   "resolution": "The limit is the height both sides approach, 2; the dot gives f(3), not the limit.", "sources": ["BC-CON-01006", "research/units/unit-01-limits-continuity.md#1.3 Estimating Limit Values from Graphs"]},
  "orientation": {
@@ -144,7 +144,7 @@ Every non-text choice is [inferred], settled by the modality A/B.
  ],
  "strategy": [
   {"id": "st-1", "archetype_id": "BC-QA-01001", "cue": "A graph with named inputs.", "method": "Read each side's height.", "rival": "The dot read as the limit.", "separating_feature": "Read beside the input.", "sources": ["BC-QA-01001", "BC-ERR-01001"], "evidence_tag": "verified",
-   "contrast": {"this": {"text": "A graph has a hole at x = 2 and a dot at (2, 5). Estimate the limit at x = 2.", "archetype_id": "BC-QA-01001"}, "not_this": {"text": "Evaluate the limit of (x**2 - 4)/(x - 2) at x = 2.", "why_not": "Only a formula is given."}, "feature": "A graph, not a formula."}},
+   "contrast": {"this": {"text": "A graph has a hole at x = 2 and a dot at (2, 5). Estimate the limit at x = 2.", "archetype_id": "BC-QA-01001"}, "not_this": {"text": "Evaluate the limit of \\((x^2 - 4)/(x - 2)\\) at x = 2.", "why_not": "Only a formula is given."}, "feature": "A graph, not a formula."}},
   {"id": "st-2", "archetype_id": "BC-QA-01002", "cue": "A table at inputs approaching the target from both sides, and a request for an estimate.", "method": "Group the rows approaching from the left, then from the right.", "rival": "Agreement to several places taken as proof.", "separating_feature": "The answer says what the table suggests.", "sources": ["BC-QA-01002", "BC-ERR-01005"], "evidence_tag": "verified"},
   {"id": "st-3", "archetype_id": "BC-QA-01013", "cue": "A limit fact in one form, and candidate graphs or tables to match.", "method": "Read the behaviour as input, side and value.", "rival": "A one sided value matched to a two sided statement.", "separating_feature": "A match keeps input, side and value.", "sources": ["BC-QA-01013", "BC-ERR-01002"], "evidence_tag": "verified"}
  ],
@@ -173,9 +173,9 @@ Every non-text choice is [inferred], settled by the modality A/B.
    "problem": {"text": "The table gives f at x = 0.9, 0.99, 0.999, 0.9999 as 2.3000, -1.0200, 2.0030, -1.0002, and at x = 1.1, 1.01, 1.001, 1.0001 with the same values. State what the table suggests about the limit of f at x = 1, and why.", "command_verb": "estimate"},
    "calculator_status": "no_calculator",
    "steps": [
-    {"cue": "Group the rows: four from the left, four from the right.", "why": "Each side is read on its own before any comparison."},
-    {"cue": "On each side the outputs alternate near 2 and near -1.", "why": "No single value is approached as the rows close in.", "expr": "DNE", "relation": "new"},
-    {"cue": "The stem allows an explanation instead of an estimate.", "why": "The table suggests the limit does not exist; it proves nothing between rows."}
+    {"cue": "Group the rows by side. On each side every other output closes in on 2.", "why": "2.3000, then 2.0030.", "expr": "2", "relation": "new"},
+    {"cue": "The rows between them close in on -1.", "why": "-1.0200, then -1.0002.", "expr": "-1", "relation": "new"},
+    {"cue": "The stem allows an explanation instead of an estimate.", "why": "The outputs alternate between 2 and -1, so the table suggests the limit does not exist. It proves nothing between rows.", "expr": "DNE", "relation": "new"}
    ],
    "answer": {"form": "statement", "expr": "DNE", "text": "The table suggests that the limit does not exist, since the outputs alternate near 2 and near -1 on both sides."}
   }
@@ -242,8 +242,8 @@ Every non-text choice is [inferred], settled by the modality A/B.
   {"block": "err-BC-ERR-01004", "mode": "step_reveal", "reason": "rule 1", "sources": []}
  ],
  "refresher": ["ki-1", "ki-3", "err-BC-ERR-01001", "err-BC-ERR-01002", "err-BC-ERR-01003", "err-BC-ERR-01004", "ex-1"],
- "read_minutes": {"full": 5.5, "brief": 3.0},
- "word_count": {"full": 818, "brief": 446},
+ "read_minutes": {"full": 5.43, "brief": 2.98},
+ "word_count": {"full": 814, "brief": 447},
  "research_lines": [
   {"file": "research/units/unit-01-limits-continuity.md", "line": "A finite table does not determine the behaviour between its rows, so an estimate remains an estimate."}
  ],

@@ -39,77 +39,95 @@
   "auditor": "claude-opus-5-5",
   "blocks": [
    {
+    "id": "prediction",
+    "verdict": "ok",
+    "evidence": "SymPy: diff(8,x)=0, so key B is the only true option; A (8 kept) and C (8 times 4 = 32) are false. Answerable from ex-1's numbers before the rule. Resolution paraphrases research 2.6 Constants and BC-EK-FUN-3A2 (ced:65); no id, praise or verdict word."
+   },
+   {
     "id": "orientation",
     "verdict": "ok",
-    "evidence": "46 words; paraphrases BC-CON-02011 description_plain and research 2.6 Assessment behaviour (MCQ linear combinations, FRQ supplied models)."
+    "evidence": "Earlier audited text with the second sentence cut; the kept sentence paraphrases BC-CON-02011 description_plain."
    },
    {
     "id": "ki-1",
     "verdict": "ok",
-    "evidence": "40 words; rules and the zeroth power remark paraphrase research 2.6 Linearity and Constants; quote matches ced:65 verbatim."
+    "evidence": "Earlier audited text with the inline '(BC-EK-FUN-3A2, ced:65)' removed; quote unchanged and verbatim ced:65."
    },
    {
     "id": "ki-2",
     "verdict": "ok",
-    "evidence": "19 words; paraphrases BC-EK-FUN-3A3 as quoted in research 2.6."
+    "evidence": "Earlier audited text with the inline '(BC-EK-FUN-3A3, ced:65)' removed."
    },
    {
     "id": "st-1",
     "verdict": "ok",
-    "evidence": "fixed 2026-09-29 by the orchestrator at the design (lint): Cue says 'often with a constant term', a frequency statement in served text; no source gives a frequency."
+    "evidence": "Method 'Every term written as a constant times a power of x' no longer starts with 'First written line:'; rival no longer carries BC-ERR-02016; method and rival carry no leading label and no id (served_text rule clean)."
+   },
+   {
+    "id": "st-1.contrast",
+    "verdict": "ok",
+    "evidence": "fixed 2026-09-29: not_this is now h(x)=(4x^3-6) sin x, which cannot be expanded into powers (SymPy expand gives 4x^3 sin x - 6 sin x, not a polynomial) and needs the product rule (SymPy product rule minus diff = 0); why_not 'The factor \\(\\sin x\\) is not a power, so the product rule applies.' The feature (terms each a number times a power, against factors multiplied) separates it; this g' = 12x^2+12/x^3 unchanged."
    },
    {
     "id": "ex-1",
     "verdict": "ok",
-    "evidence": "SymPy: diff(5*x**4-3*x**(-1)+8,x) equals 20*x**3+3*x**(-2) equals 20*x**3+3/x**2; rewrite step equivalent."
+    "evidence": "SymPy: diff(5*x**4-3*x**(-1)+8,x) equals 20*x**3+3*x**(-2) equals 20*x**3+3/x**2; rewrite step equivalent. (unchanged since 2026-09-29)"
    },
    {
     "id": "err-BC-ERR-02015",
     "verdict": "ok",
-    "evidence": "Record text verbatim; 5*x**3-3*x**(-2) differs from 20*x**3+3*x**(-2), distinct holds."
+    "evidence": "Only fix_prompt added: true with relation distinct; exprs unchanged (5*x**3-3*x**(-2) vs 20*x**3+3*x**(-2) differ)."
    },
    {
     "id": "err-BC-ERR-02016",
     "verdict": "ok",
-    "evidence": "Record text verbatim; wrong minus right equals 8, distinct holds."
+    "evidence": "Only fix_prompt added: true with relation distinct; exprs unchanged (difference 8)."
    },
    {
     "id": "representations",
     "verdict": "ok",
-    "evidence": "null; research 2.6 Representations names BC-REP-01 only."
+    "evidence": "null; research 2.6 Representations names BC-REP-01 only. (unchanged since 2026-09-29)"
    },
    {
-    "id": "bridge-BC-PRQ-02004",
+    "id": "BC-PRQ-02004",
     "verdict": "ok",
-    "evidence": "38 words; paraphrases the prerequisite description_plain and failure_signature on naming the variable and mixing notations."
+    "evidence": "38 words; paraphrases the prerequisite description_plain and failure_signature on naming the variable and mixing notations. (unchanged since 2026-09-29)"
    },
    {
     "id": "chk-1",
     "verdict": "ok",
-    "evidence": "SymPy: 20*x**3+3*x**(-2) minus 20*x**3+3/x**2 is 0."
+    "evidence": "SymPy: 20*x**3+3*x**(-2) minus 20*x**3+3/x**2 is 0. (unchanged since 2026-09-29)"
    },
    {
     "id": "chk-2",
     "verdict": "ok",
-    "evidence": "SymPy: diff(-3*x**2+8*x**(1/3)-4,x) equals -6*x+8/(3*x**(2/3))."
+    "evidence": "SymPy: diff(-3*x**2+8*x**(1/3)-4,x) equals -6*x+8/(3*x**(2/3)). (unchanged since 2026-09-29)"
    },
    {
     "id": "chk-3",
     "verdict": "ok",
-    "evidence": "SymPy: diff(2*x**6+7*x**(-3)+9,x) equals 12*x**5-21/x**4; B adds 9, C 2*x**5+7/x**4, D 12*x**5+7/x**4 match their derivations and differ from the key."
+    "evidence": "SymPy: diff(2*x**6+7*x**(-3)+9,x) equals 12*x**5-21/x**4; B adds 9, C 2*x**5+7/x**4, D 12*x**5+7/x**4 match their derivations and differ from the key. (unchanged since 2026-09-29)"
+   },
+   {
+    "id": "no_figure_reason",
+    "verdict": "ok",
+    "evidence": "True: all four skills and BC-QA-02006 carry BC-REP-01 only, research 2.6 Representations names BC-REP-01 only, and ki-1, ki-2 state rules with no process; 24 words."
    }
   ],
   "advice": [
-   "Only one worked example and one strategy block; ki-2 (polynomials term by term) has no example of its own, and the FRQ use named in the orientation (differentiating a supplied model in an application part) is never shown.",
-   "The bridge BC-PRQ-02004 (notation) is sourced but weakly tied to the lesson's errors, which are about constants and exponent factors; BC-PRQ-06002 would bridge ex-1's reciprocal rewrite more directly if the bundle allowed it.",
-   "The separating feature (a multiplier touches a power and stays; a lone constant goes to zero) is a comparison and would read better as a side by side contrast than as text."
+   "st-1.contrast: pick a near miss whose product cannot be multiplied out (for example x^3 sin x), or reword why_not to 'the factors are multiplied, so the product rule applies, or the product is expanded first'.",
+   "The prediction asks for the rule the lesson is about to teach (a constant's derivative); it works as a guess, but a stem the student can test on the example's numbers (for example the slope of y=8 read from its graph) would make the prediction answerable without the rule.",
+   "Brief band sits at 446 of 450 words; any further served addition needs a cut elsewhere."
   ],
   "counts": {
-   "ok": 12,
+   "ok": 15,
    "unsourced": 0,
    "wrong": 0,
    "over_cap": 0,
    "lint": 0
   }
- }
+ },
+ "fix_notes": [
+  "st-1.contrast not_this redrawn from (4x^3-6)(x^2+5), which expands term by term (BC-SKL-02038), to (4x^3-6) sin x; why_not rewritten; Recognition prose updated. word_count 472/446 to 471/445, read_minutes 3.2/3.0 unchanged. No example, check stem, key or option changed."
+ ]
 }

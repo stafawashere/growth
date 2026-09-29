@@ -90,8 +90,8 @@ No figure, motion, interactive or model mode applies [inferred; settled by the m
 
 ## Band plan
 
-- Low (full): prediction, orientation, the bridge, ki-1, st-1 with the contrast pair, st-2, ex-1, chk-1, err-BC-ERR-02005, err-BC-ERR-02008, err-BC-ERR-02015, err-BC-ERR-02017, ex-2 faded from step 3, chk-2, chk-3. 621 words, 4.2 minutes (cap 900 and 6).
-- Mid (brief): prediction, orientation, the bridge, ki-1, st-1 with the contrast pair, ex-1, chk-1, err-BC-ERR-02005, err-BC-ERR-02008, chk-2. 427 words, 2.9 minutes (cap 450 and 3).
+- Low (full): prediction, orientation, the bridge, ki-1, st-1 with the contrast pair, st-2, ex-1, chk-1, err-BC-ERR-02005, err-BC-ERR-02008, err-BC-ERR-02015, err-BC-ERR-02017, ex-2 faded from step 3, chk-2, chk-3. 623 words, 4.2 minutes (cap 900 and 6).
+- Mid (brief): prediction, orientation, the bridge, ki-1, st-1 with the contrast pair, ex-1, chk-1, err-BC-ERR-02005, err-BC-ERR-02008, chk-2. 429 words, 2.9 minutes (cap 450 and 3).
 - Refresher: ki-1, err-BC-ERR-02005, err-BC-ERR-02008, err-BC-ERR-02015, err-BC-ERR-02017, ex-1.
 
 ## Sources
@@ -325,7 +325,7 @@ No figure, motion, interactive or model mode applies [inferred; settled by the m
    "observed_behavior": "The response substitutes zero for the increment while it is still in the denominator.",
    "scoring_consequence": "The simplification point and the value point are both lost.",
    "wrong_step": {
-    "text": "On ex-2: \\(h=0\\) put into \\(\\frac{2h^2+h}{h}\\) at once; the numerator is read as 0.",
+    "text": "For \\(f(x)=2x^2-3x+1\\) at 1, \\(h=0\\) put into \\(\\frac{2h^2+h}{h}\\) at once; the numerator is read as 0.",
     "expr": "0"
    },
    "right_step": {
@@ -348,7 +348,7 @@ No figure, motion, interactive or model mode applies [inferred; settled by the m
    "observed_behavior": "The response differentiates with the power rule and presents the result as an application of the definition.",
    "scoring_consequence": "The points attached to the difference quotient and its simplification are lost although the final value may be right.",
    "wrong_step": {
-    "text": "On ex-2: \\(f'(x)=4x-3\\) by rule, so \\(f'(1)=1\\), labelled the definition.",
+    "text": "For \\(f(x)=2x^2-3x+1\\), \\(f'(x)=4x-3\\) by rule, so \\(f'(1)=1\\), labelled the definition.",
     "expr": "4*1-3"
    },
    "right_step": {
@@ -680,7 +680,7 @@ No figure, motion, interactive or model mode applies [inferred; settled by the m
   "ex-1"
  ],
  "read_minutes": {"full": 4.2, "brief": 2.9},
- "word_count": {"full": 621, "brief": 427},
+ "word_count": {"full": 623, "brief": 429},
  "research_lines": [
   {
    "file": "research/units/unit-02-differentiation-definition-properties.md",

@@ -41,7 +41,7 @@ Two strategy blocks, low band both, mid band st-1.
 
 ## Solution path
 
-- ex-1, BC-QA-01003, both bands, no calculator. Draw: point 1, shift 2, limit_f 2, limit_g 3, table_f [0, 4, 1, -2, 3, 1], table_g [1, -1, 2, 3, -2, 4], justify bare. Every constraint holds: \(h(1)=3\) lies in 0 to 5 and differs from 1; the tabulated \(f(1)=4\) and \(g(1)=-1\) differ from the limits; the four derived values key 2, both_values \(-18\), denominator_value \(-6\), wrong_order \(-2/3\) are distinct. Steps: record the limits (no value), check the denominator (no value), apply the composite and quotient theorems (valued, new), report (valued, equivalent, tagged BC-PT-99004).
+- ex-1, BC-QA-01003, both bands, no calculator. Draw: point 1, shift 2, limit_f 2, limit_g 3, table_f [0, 4, 1, -2, 3, 1], table_g [1, -1, 2, 3, -2, 4], justify bare. Every constraint holds: \(h(1)=3\) lies in 0 to 5 and differs from 1; the tabulated \(f(1)=4\) and \(g(1)=-1\) differ from the limits; the four derived values key 2, both_values \(-18\), denominator_value \(-6\), wrong_order \(-2/3\) are distinct. Steps: record the limits (no value), check the denominator (no value), apply the composite theorem, \(h(2)=6\) (valued, new), divide by the limit of g and report (valued, new, tagged BC-PT-99004).
 - ex-2, BC-QA-01014, low band only, no calculator. Draw: target 2, top_root -1, bottom_root 3, root_value 1, lead_top 1, lead_bottom 1, form factor, pole_power 1, giving \((x^2-x-2)/(x^2-5x+6)\); the construction of the factor form from these parameters is [inferred]. Steps: substitute and see zero over zero (no value), the expression (valued, new), the cancelled form (valued, equivalent), the limit (valued, limit at 2). Answer \(-3\). Faded from step 3: steps 1 and 2 are shown (the zero over zero reading and the expression), the student writes the cancelled form and the limit, and then steps 3 and 4 appear. The fade falls there because the substitution and the choice to rewrite are the method decision, and the last two steps are the algebra the student can produce from it.
 
 A fluent solver on ex-1 writes the substituted combination and the value, holding the record of supplied limits in the head (docs/lessons/unit-01/README.md, section 5).
@@ -252,14 +252,14 @@ Every non-text choice is [inferred], settled by the modality A/B.
     {
      "cue": "h is continuous, so the composite gives h(2).",
      "why": "The outer function takes the inner limit.",
-     "expr": "(2**2 + 2)/3",
+     "expr": "2**2 + 2",
      "relation": "new"
     },
     {
      "cue": "The stem asks for a value.",
      "why": "6 over 3.",
      "expr": "2",
-     "relation": "equivalent",
+     "relation": "new",
      "point_type_id": "BC-PT-99004"
     }
    ],

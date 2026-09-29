@@ -39,96 +39,105 @@
   "auditor": "claude-opus-5-5",
   "blocks": [
    {
+    "id": "prediction",
+    "verdict": "ok",
+    "evidence": "Key B restates V'(4) = -6 in Leibniz form with the input, per BC-EK-CHA-2B3 (ced:61) and ki-1; A (V(4)/4) is the fraction reading of BC-ERR-02029 and C (dV) is BC-ERR-03022, neither the same quantity; resolution sourced to ki-1; no verdict word."
+   },
+   {
     "id": "orientation",
     "verdict": "ok",
-    "evidence": "Paraphrase of BC-CON-02004 and 2.2 Assessment behaviour ('what the notation denotes'); 43 words."
+    "evidence": "Stem sentence dropped; the rest is the audited paraphrase of BC-CON-02004 description_plain."
    },
    {
     "id": "ki-1",
     "verdict": "ok",
-    "evidence": "BC-EK-CHA-2B3 notations on ced:61; 'one symbol, not a quotient' paraphrases BC-MIS-02015; 39 words."
+    "evidence": "Inline citation and the 4-word quote removed; text otherwise identical; no id in served text."
    },
    {
     "id": "ki-2",
     "verdict": "ok",
-    "evidence": "Quote of BC-EK-CHA-2B4 verbatim on ced:61; reading of V'(4)=-6 matches ex-1."
+    "evidence": "Inline citation removed; text otherwise identical."
    },
    {
     "id": "st-1",
     "verdict": "ok",
-    "evidence": "Cue, first line and rival (BC-ERR-02029) from BC-QA-02012 typical_wording, expected_solution_path[0] and wrong_approaches."
+    "evidence": "cue shortened; method and rival carry no label or id; from BC-QA-02012 expected_solution_path[0] and wrong_approaches (BC-ERR-02029)."
+   },
+   {
+    "id": "st-1.contrast",
+    "verdict": "ok",
+    "evidence": "this matches BC-QA-02012 typical_wording; not_this matches BC-QA-02011 typical_wording (tangent line at a named point); why_not and feature true."
    },
    {
     "id": "ex-1",
     "verdict": "ok",
-    "evidence": "Conversion V'(4)=-6 to dV/dt at t=4 equal to -6 is exact; meaning with liters per minute consistent."
+    "evidence": "Conversion V'(4)=-6 to dV/dt at t=4 equal to -6 is exact; meaning with liters per minute consistent.",
+    "note": "unchanged since 2026-09-29"
    },
    {
     "id": "err-BC-ERR-02030",
     "verdict": "ok",
-    "evidence": "Verbatim from BC-ERR-02030; dropping the evaluation bar gives a function where a number is meant."
+    "evidence": "relation distinct, fix_prompt true; Eq(dV/dt, -6) without the input differs from the evaluated form."
    },
    {
     "id": "err-BC-ERR-04017",
     "verdict": "ok",
-    "evidence": "Wrong step differentiates the relating equation V = 3h^2 with respect to the length h and stops at dV/dh = 6h, the record's move (cr-24:18 page: responses differentiating with respect to x did not continue through the chain rule); SymPy: d/dh 3h^2 = 6h, d/dt 3h(t)^2 = 6h(t)h'(t) = -6 at h = 1, h' = -1, distinct; text verbatim, BC-MIS-99005 in the record's possible_misconceptions; drawn relation listed as inferred.",
-    "reaudited": "2026-09-29"
+    "evidence": "Rewritten on a drawn relation (tagged inferred). SymPy d/dh 3h^2 = 6h; d/dt 3h(t)^2 = 6h h'(t) = -6 at h = 1, h' = -1, matching ex-1; wrong and right differ; relation distinct, fix_prompt true; observed behaviour and consequence verbatim from BC-ERR-04017; reason words from BC-MIS-99005 description."
    },
    {
     "id": "err-BC-ERR-02029",
     "verdict": "ok",
-    "evidence": "Verbatim observed behaviour; V(4)/4 reads the Leibniz symbol as a quotient of the two quantities, a paraphrase of 'fraction whose parts can be separated'."
+    "evidence": "relation distinct, fix_prompt true; Eq(V/t, -6) != Eq(dV/dt, -6)."
    },
    {
     "id": "err-BC-ERR-03022",
     "verdict": "ok",
-    "evidence": "Observed behaviour 'writes dy in place of dy/dx' matches the wrong step dV = -6; consequence verbatim."
+    "evidence": "relation distinct, fix_prompt true; Eq(dV, -6) != Eq(dV/dt, -6)."
    },
    {
     "id": "representations",
     "verdict": "ok",
-    "evidence": "Null; the four representations are carried by ki-2's figure. SymPy on the figure: V=100+2t-t^2, V(4)=92, V'(4)=-6, V(3.9)=92.59, V(4.1)=91.39, quotient -6."
+    "evidence": "Null; the four representations are carried by ki-2's figure. SymPy on the figure: V=100+2t-t^2, V(4)=92, V'(4)=-6, V(3.9)=92.59, V(4.1)=91.39, quotient -6.",
+    "note": "unchanged since 2026-09-29"
    },
    {
     "id": "BC-PRQ-02004",
     "verdict": "ok",
-    "evidence": "Paraphrase of BC-PRQ-02004 description_plain and failure_signature."
+    "evidence": "Shortened; paraphrase of BC-PRQ-02004 description_plain (which variable each form differentiates with respect to)."
    },
    {
     "id": "chk-1",
     "verdict": "ok",
-    "evidence": "Key matches ex-1's conversion."
+    "evidence": "Key matches ex-1's conversion.",
+    "note": "unchanged since 2026-09-29"
    },
    {
     "id": "chk-2",
     "verdict": "ok",
-    "evidence": "dw/dt at t=7 equal to 3 with w=g(t) is g'(7)=3."
+    "evidence": "dw/dt at t=7 equal to 3 with w=g(t) is g'(7)=3.",
+    "note": "unchanged since 2026-09-29"
    },
    {
     "id": "chk-3",
     "verdict": "ok",
     "evidence": "Key B: T'(3) = -4 as dT/dx at x = 3, decreasing 4 degrees Celsius per meter; A quotient reading (BC-ERR-02029), C dT in place of dT/dx (BC-ERR-03022 'writes dy in place of dy/dx'), D evaluation bar dropped (BC-ERR-02030); all distinct.",
-    "reaudited": "2026-09-29"
+    "note": "unchanged since 2026-09-29"
    }
   ],
   "advice": [
-   "research/scoring/notation-requirements.md#Derivative notation records that sg-25:7 accepts a derivative written without an evaluation bar and a general derivative equated to a value; err-BC-ERR-02030's wrong step (dV/dt = -6 with the input dropped) and chk-3 option D may therefore not lose a point on an FRQ. Consider framing the error as a meaning error rather than a point loss, or cite the record's MCQ context.",
-   "BC-ERR-04017 fits poorly in a notation lesson; an exchange of variables error is not in the bundle. Consider dropping the block or requesting a record for inverted Leibniz forms.",
-   "ki-2 as a figure with an inset table suits the four representations; ki-1 as text suits a reading of symbols. Four error blocks make the mid band heavy relative to one strategy block.",
+   "The contrast pair uses h in both stems with values that disagree: this gives h'(5) = 9, not_this gives h(x) = x^2, so h'(5) = 10 (SymPy). A different letter in not_this would avoid a student reading them as the same function.",
+   "err-BC-ERR-04017 now rests on a relation drawn for the block (V = 3h^2) and uses h as a depth, the same letter the contrast pair uses as a function; the block still fits poorly in a notation lesson.",
+   "err-BC-ERR-04017 and err-BC-ERR-03022 serve '(cr-24:18)', 'BC-ERR-99013' and '(crabbc-25:25)' in their scoring consequences. The lint exempts record words, but the student reads them.",
+   "research/scoring/notation-requirements.md#Derivative notation records that sg-25:7 accepts a derivative written without an evaluation bar; err-BC-ERR-02030's wrong step may not lose a point on an FRQ, so it reads better as a meaning error.",
    "The sources list names sg-25:7 and sg-24:8 though no block cites them."
   ],
   "counts": {
-   "ok": 14,
+   "ok": 16,
    "unsourced": 0,
    "wrong": 0,
    "over_cap": 0,
    "lint": 0
-  },
-  "fix_notes": [
-   "Dropped err-BC-ERR-04017 and its sources (BC-MIS-04008, BC-MIS-99005, cr-24:18); chk-3 option C now BC-ERR-03022; mid band now carries err-BC-ERR-02029 in place of err-04017; word_count 527/356.",
-   "Left: advice on sg-25:7 notation leniency for err-BC-ERR-02030 and option D framing; sg-25:7 and sg-24:8 remain in sources though uncited; mid band weight of error blocks.",
-   "2026-09-29: error_blocks fix. err-BC-ERR-04017 restored in second place (check_lessons.py expects 02030, 04017, 02029, 03022), so the mid band now shows err-02030 and err-04017 and err-02029 moves to low only. Wrong dV/dh = -6 (a rate per unit of depth), right dV/dt = -6 at t = 4, distinct; possible_reason from BC-MIS-99005. Carry-over from a related rates record to a notation conversion listed as inferred. cr-24:18, BC-MIS-04008, BC-MIS-99005 back in sources. word_count 624/406, read_minutes 4.2/2.8. chk-3 unchanged."
-  ]
+  }
  },
  "fix_notes": [
   "2026-09-29: err-BC-ERR-04017 re-staged (audit: dV/dh = -6 had no relating equation and was not the record's move). The block now draws its own relation: V = 3h^2 with dh/dt = -1 at h = 1. Wrong step: dV/dh = 6h and the work stops, expr Eq(Derivative(V(h), h), 6*h). Right step: dV/dt = 6h dh/dt = 6(1)(-1) = -6, expr Eq(Derivative(V(t), t), 6*h(t)*Derivative(h(t), t)); relation distinct. SymPy: d/dh 3h^2 = 6h; d/dt 3h(t)^2 = 6h(t)h'(t), which is -6 at h = 1, h' = -1, matching ex-1's rate. observed_behavior, scoring_consequence and possible_reason (BC-MIS-99005) unchanged. Inferred entry now names the drawn relation. word_count 624/406 to 622/404. No example, check stem, key or option changed."

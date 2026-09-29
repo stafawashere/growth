@@ -39,87 +39,102 @@
   "auditor": "claude-opus-5-5",
   "blocks": [
    {
+    "id": "prediction",
+    "verdict": "ok",
+    "evidence": "SymPy: 24+8 dy/dt=0 gives dy/dt=-3; key B (decreasing at 3 m/min) the only true option; A has the sign wrong (BC-ERR-04005), C drops the time unit (BC-ERR-04001). Resolution matches 4.5 Interpretation (units quantity over time, sign as increase or decrease)."
+   },
+   {
     "id": "orientation",
     "verdict": "ok",
-    "evidence": "Paraphrases the concept description and unit research section; within 60 words; no lint."
+    "evidence": "Shortened paraphrase of BC-CON-04010 and 4.5 Interpretation; no id."
    },
    {
     "id": "ki-1",
     "verdict": "ok",
-    "evidence": "Quote found verbatim on the cited CED page; claims match the EK and research section; within 120 words."
+    "evidence": "Shortened; claims match 4.5 Interpretation; quote unchanged, verbatim on ced:91."
    },
    {
     "id": "st-1",
     "verdict": "ok",
-    "evidence": "Cue, method and rival match the archetype record; within 80 words."
+    "evidence": "method starts with no label; rival loses its label and id; cue and separating feature still match BC-QA-04006 typical_wording; sources add the rival's error id."
+   },
+   {
+    "id": "st-1.contrast",
+    "verdict": "ok",
+    "evidence": "this: 13 ft ladder, foot 2 ft/s, foot 5, SymPy dy/dt=-5/6, matches BC-QA-04006 typical_wording and asked_to_produce 'units of the rate'. not_this: y(t) given, meaning of y'(2) asked, which is an interpretation stem with the derivative given; why_not and feature true."
    },
    {
     "id": "st-2",
     "verdict": "ok",
-    "evidence": "Cue, method and rival match the archetype record; within 80 words."
+    "evidence": "method starts with no label; rival loses its label and id; cue and separating feature still match BC-QA-04007 typical_wording; sources add the rival's error id."
    },
    {
     "id": "ex-1",
     "verdict": "ok",
-    "evidence": "fixed 2026-09-29: parameter_draw set to size 3, length_unit meter (was size 7, centimeter) to match the 5 meter ladder, foot 3 meters out; template build gives -3 meters per minute; not a published draw; prose Solution path line updated."
+    "evidence": "unchanged since 2026-09-29: fixed 2026-09-29: parameter_draw set to size 3, length_unit meter (was size 7, centimeter) to match the 5 meter ladder, foot 3 meters out; template build gives -3 meters per minute; not a published draw; prose Solution path line updated."
    },
    {
     "id": "scores-ex-1",
     "verdict": "ok",
-    "evidence": "Line built from the point type record fields in the bundle (name, rubric citations, notation requirements)."
+    "evidence": "unchanged since 2026-09-29: Line built from the point type record fields in the bundle (name, rubric citations, notation requirements)."
    },
    {
     "id": "err-BC-ERR-04001",
     "verdict": "ok",
-    "evidence": "observed_behavior, scoring_consequence and misconception text found verbatim in the bundle; wrong and right values verified by SymPy."
+    "evidence": "fix_prompt false equals (relation == distinct) with relation equivalent; SymPy: wrong -3 and right -3 agree; wrong_step, right_step and bundle text unchanged since 2026-09-29."
    },
    {
     "id": "err-BC-ERR-04005",
     "verdict": "ok",
-    "evidence": "observed_behavior, scoring_consequence and misconception text found verbatim in the bundle; wrong and right values verified by SymPy."
+    "evidence": "fix_prompt true equals (relation == distinct) with relation distinct; SymPy: wrong 3 and right -3 differ; wrong_step, right_step and bundle text unchanged since 2026-09-29."
    },
    {
     "id": "err-BC-ERR-04021",
     "verdict": "ok",
-    "evidence": "observed_behavior, scoring_consequence and misconception text found verbatim in the bundle; wrong and right values verified by SymPy."
+    "evidence": "fix_prompt true equals (relation == distinct) with relation distinct; SymPy: wrong 24+8y'=0 and right -3 differ; wrong_step, right_step and bundle text unchanged since 2026-09-29."
    },
    {
     "id": "representations",
     "verdict": "ok",
-    "evidence": "No representations block; null."
+    "evidence": "unchanged since 2026-09-29: No representations block; null."
    },
    {
     "id": "BC-PRQ-04004",
     "verdict": "ok",
-    "evidence": "Paraphrase of the prerequisite record in the bundle; within 60 words."
+    "evidence": "Shortened paraphrase of the prerequisite record in the bundle; no id or citation left in served text."
    },
    {
     "id": "BC-PRQ-04007",
     "verdict": "ok",
-    "evidence": "Paraphrase of the prerequisite record in the bundle; within 60 words."
+    "evidence": "Shortened paraphrase of the prerequisite record in the bundle; no id or citation left in served text."
    },
    {
     "id": "chk-1",
     "verdict": "ok",
-    "evidence": "fixed 2026-09-29: parameter_draw set to size 3, length_unit meter to match ex-1 and the meters per minute answer."
+    "evidence": "unchanged since 2026-09-29: fixed 2026-09-29: parameter_draw set to size 3, length_unit meter to match ex-1 and the meters per minute answer."
    },
    {
     "id": "chk-2",
     "verdict": "ok",
-    "evidence": "Key and every option or step value verified by SymPy."
+    "evidence": "unchanged since 2026-09-29: Key and every option or step value verified by SymPy."
    },
    {
     "id": "chk-3",
     "verdict": "ok",
-    "evidence": "Key and every option or step value verified by SymPy."
+    "evidence": "unchanged since 2026-09-29: Key and every option or step value verified by SymPy."
+   },
+   {
+    "id": "no_figure_reason",
+    "verdict": "ok",
+    "evidence": "Bundle: BC-SKL-04024 [01, 09], BC-SKL-04025 [04, 05]; none of the figure-bearing 02, 03, 07, 08; ki-1 is algebra and units with no process."
    }
   ],
   "advice": [
-   "ki-1 is text for a rule on units and sign; a short contrast of -3 meters against -3 meters per minute would serve the comparison better.",
-   "chk-3 stem asks direction and units together, a good scoring habit check."
+   "Bridges shortened to 'Compound units.' and 'Solve a linear equation.'; they no longer name the failure they bridge.",
+   "The prediction's option C (-3 meters without per minute) previews err-BC-ERR-04001 well; ki-1 could reuse that contrast."
   ],
   "counts": {
-   "ok": 15,
+   "ok": 18,
    "unsourced": 0,
    "wrong": 0,
    "over_cap": 0,

@@ -39,93 +39,107 @@
   "auditor": "claude-opus-5-5",
   "blocks": [
    {
+    "id": "prediction",
+    "verdict": "ok",
+    "evidence": "SymPy: d2y/dx2 = 2y + 2x yp + yp - 3, free symbols x, y, yp, so x=1, y=2, dy/dx=3 are all needed (key B); A and C false; resolution expression matches; no verdict, no id."
+   },
+   {
     "id": "orientation",
     "verdict": "ok",
-    "evidence": "Paraphrase of 3.6 Second derivatives of implicit relations paragraph; 25 words."
+    "evidence": "Compressed paraphrase of BC-QA-03008 expected_solution_path[0,2,3]."
    },
    {
     "id": "ki-1",
     "verdict": "ok",
-    "evidence": "Paraphrase of BC-EK-FUN-3F1 (ced:80) and the 3.6 research line on dy/dx reappearing; 39 words."
+    "evidence": "fixed 2026-09-29: text now 'y'' needs the product rule on mixed terms and the chain rule on y terms, so dy/dx reappears', per research 3.6 and BC-QA-03008 path[1]. SymPy: dy/dx = x + y gives 1 + dy/dx, a chain-only case the qualifier admits. 'and its value is needed' dropped (the orientation and prediction resolution carry it) and 'again' dropped from the orientation to hold the brief band at 450."
    },
    {
     "id": "st-1",
     "verdict": "ok",
-    "evidence": "Method is BC-QA-03008 path[0]; rival is wrong_approaches BC-ERR-05060."
+    "evidence": "fixed 2026-09-29: rival now 'y held constant.' with the variable lower case."
+   },
+   {
+    "id": "st-1.contrast",
+    "verdict": "ok",
+    "evidence": "this matches BC-QA-03008 typical_wording (SymPy slope 7, value 38 at (2,1)); not_this asks the slope, one substitution, why_not true; feature true."
    },
    {
     "id": "ex-1",
     "verdict": "ok",
-    "evidence": "SymPy: d/dx(2xy + y - 3x) = 2y + 2x yp + yp - 3; yp(1,2) = 3; value 10."
+    "evidence": "Cues shortened; BC-PT-99022 tag dropped from step 3; SymPy values unchanged (slope 3, value 10)."
    },
    {
     "id": "what_a_reader_scores:ex-1",
     "verdict": "ok",
-    "evidence": "BC-PT-99022 and BC-PT-99027 earns and does_not_earn verbatim from the bundle point_types."
-   },
-   {
-    "id": "representations",
-    "verdict": "ok",
-    "evidence": "null; skills carry BC-REP-01 only."
+    "evidence": "BC-PT-99027 line verbatim from bundle point_types earns and does_not_earn; the BC-PT-99022 line was dropped for the brief cap, recorded [inferred] in Scoring."
    },
    {
     "id": "err-BC-ERR-03008",
     "verdict": "ok",
-    "evidence": "Record text verbatim; wrong 2x yp + yp - 3 (x factor only differentiated through y) against right; possible_reason from BC-MIS-03005, listed on the error."
+    "evidence": "fix_prompt true matches relation distinct; expr values unchanged by the redesign (only fix_prompt added); SymPy: wrong and right differ."
    },
    {
     "id": "err-BC-ERR-03011",
     "verdict": "ok",
-    "evidence": "Record text verbatim; SymPy subs x=1 into dy/dx gives 3y - 3."
+    "evidence": "fix_prompt true matches relation distinct; expr values unchanged by the redesign (only fix_prompt added); SymPy: wrong and right differ. 3y - 3 vs 3."
    },
    {
     "id": "err-BC-ERR-03023",
     "verdict": "ok",
-    "evidence": "Record text verbatim; SymPy subs x=1, y=2 into second derivative leaves 3 yp + 1; right 10."
+    "evidence": "fix_prompt true matches relation distinct; expr values unchanged by the redesign (only fix_prompt added); SymPy: wrong and right differ. 3yp + 1 vs 10."
    },
    {
     "id": "err-BC-ERR-05060",
     "verdict": "ok",
-    "evidence": "Record text verbatim; y constant gives 2y - 3; possible_reason from BC-MIS-05033, listed on the error."
+    "evidence": "fix_prompt true matches relation distinct; expr values unchanged by the redesign (only fix_prompt added); SymPy: wrong and right differ. 2y - 3."
    },
    {
     "id": "BC-PRQ-03002",
     "verdict": "ok",
-    "evidence": "Paraphrase of failure_signature."
+    "evidence": "Shortened paraphrase of description_plain."
    },
    {
     "id": "BC-PRQ-03005",
     "verdict": "ok",
-    "evidence": "Paraphrase of description_plain and failure_signature."
+    "evidence": "Shortened paraphrase of description_plain."
    },
    {
     "id": "BC-PRQ-03006",
     "verdict": "ok",
-    "evidence": "Paraphrase of failure_signature."
+    "evidence": "Shortened paraphrase of failure_signature."
+   },
+   {
+    "id": "no_figure_reason",
+    "verdict": "ok",
+    "evidence": "All four skills carry BC-REP-01 only (bundle skills); repeated differentiation is not a drawable process."
+   },
+   {
+    "id": "representations",
+    "verdict": "ok",
+    "evidence": "unchanged since 2026-09-29: null; skills carry BC-REP-01 only."
    },
    {
     "id": "chk-1",
     "verdict": "ok",
-    "evidence": "SymPy: 2y + 2x yp + yp - 3 at (1, 2, 3) = 10."
+    "evidence": "unchanged since 2026-09-29: SymPy: 2y + 2x yp + yp - 3 at (1, 2, 3) = 10."
    },
    {
     "id": "chk-2",
     "verdict": "ok",
-    "evidence": "SymPy: y'(1) = 4; y'' = -y - x yp + 2 yp + 3; value 6."
+    "evidence": "unchanged since 2026-09-29: SymPy: y'(1) = 4; y'' = -y - x yp + 2 yp + 3; value 6."
    },
    {
     "id": "chk-3",
     "verdict": "ok",
-    "evidence": "fixed 2026-09-29: option D was the expression y + 4 yp + 1 (BC-ERR-03011) among numeric options; now -4 on BC-ERR-03023 (dy/dx at the point never computed, y = -1 used in its place): SymPy (y + x yp + 2 yp + 1) at x=2, y=-1, yp=-1 is -4; options -7, -8, 0, -4 distinct."
+    "evidence": "unchanged since 2026-09-29: fixed 2026-09-29: option D was the expression y + 4 yp + 1 (BC-ERR-03011) among numeric options; now -4 on BC-ERR-03023 (dy/dx at the point never computed, y = -1 used in its place): SymPy (y + x yp + 2 yp + 1) at x=2, y=-1, yp=-1 is -4; options -7, -8, 0, -4 distinct."
    }
   ],
   "advice": [
-   "Chain rule point BC-PT-99023 is untagged although ex-1 step 4 is the chain rule step and the BC-PT-99022 dependency says the answer point requires both; the reader scores block therefore under-teaches the scoring split the 3.6 Assessment paragraph names.",
-   "chk-3 option D is an expression among numeric options, which a reader spots as a non-number; it tests BC-ERR-03011 weakly.",
-   "The three bridges are 11 to 12 words and do not connect to second derivatives; BC-PRQ-03002 (isolating dy/dx) is barely used in this lesson since dy/dx is given."
+   "With the BC-PT-99022 tag gone, no served line says the product rule earns its own point, although BC-ERR-03008's scoring_consequence and sg-25:20 say so; the earlier advice on the untagged chain rule point now covers both rule points.",
+   "The brief band sits at 450 words, the cap exactly; the ki-1 fix adds about four words, so something else has to give."
   ],
   "counts": {
-   "ok": 16,
+   "ok": 19,
    "unsourced": 0,
    "wrong": 0,
    "over_cap": 0,
@@ -134,6 +148,7 @@
  },
  "fix_notes": [
   "Fixed chk-3 option D: numeric -4 on BC-ERR-03023, which has an error block and is held by BC-SKL-03033 and BC-SKL-03034. BC-ERR-03011 has no numeric value on this draw (it leaves y in the answer) and BC-ERR-03021 has no error block (cap of four), so neither could carry D.",
-  "Left as preferences: tag BC-PT-99023 on the chain rule step; connect the bridges to second derivatives."
+  "Left as preferences: tag BC-PT-99023 on the chain rule step; connect the bridges to second derivatives.",
+  "ki-1 qualifier restored, st-1 rival lower-cased, orientation trimmed by one word to keep brief at 450; delivery reasons rule 5 to rule 6; word counts unchanged at 568/450; no key changed."
  ]
 }

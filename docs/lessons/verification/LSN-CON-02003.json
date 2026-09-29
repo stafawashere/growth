@@ -39,97 +39,115 @@
   "auditor": "claude-opus-5-5",
   "blocks": [
    {
+    "id": "prediction",
+    "verdict": "ok",
+    "evidence": "SymPy: (f(x+h)-f(x))/h for -x^2+5x+4 is -2x-h+5, limit -2x+5, value at 3 is -1; A is the only true option; B is false (the limit is not 0) and C still holds h so is not the limit; resolution from BC-CON-02003 description_plain."
+   },
+   {
     "id": "orientation",
     "verdict": "ok",
-    "evidence": "Paraphrases BC-CON-02003 description_formal and the BC-ERR-02008 scoring consequence; 43 words."
+    "evidence": "Paraphrases BC-CON-02003 description_formal and the BC-ERR-02008 scoring consequence; 43 words.",
+    "note": "unchanged since 2026-09-29"
    },
    {
     "id": "ki-1",
     "verdict": "ok",
-    "evidence": "Quote matches ced page 61 CHA-2.B.2; the division step paraphrases the 2.2 Method paragraph; 46 words."
+    "evidence": "Inline citation removed; text otherwise identical; no id in served text."
    },
    {
     "id": "ki-2",
     "verdict": "ok",
-    "evidence": "Paraphrases ced page 60 CHA-2.B.1 (both forms at a point); 21 words."
+    "evidence": "Inline citation removed; text otherwise identical; no id in served text."
    },
    {
     "id": "st-1",
     "verdict": "ok",
-    "evidence": "Cue from common_givens and typical_wording, method from expected_solution_path[0], rival from wrong_approaches (BC-ERR-02008)."
+    "evidence": "method and rival no longer carry a label or id; from BC-QA-02002 expected_solution_path[0] and wrong_approaches (BC-ERR-02008)."
+   },
+   {
+    "id": "st-1.contrast",
+    "verdict": "ok",
+    "evidence": "this matches BC-QA-02002 typical_wording (definition, derivative function); not_this matches BC-QA-02006 typical_wording 'Find the derivative of the given function.'; why_not true (no definition demanded, a rule is allowed); feature (the word definition) separates them."
    },
    {
     "id": "ex-1",
     "verdict": "ok",
-    "evidence": "SymPy: quotient simplifies to -2x-h+5; limit h->0 = 5-2x; value at 3 = -1; constraint value -1 != 0."
+    "evidence": "SymPy: quotient simplifies to -2x-h+5; limit h->0 = 5-2x; value at 3 = -1; constraint value -1 != 0.",
+    "note": "unchanged since 2026-09-29"
    },
    {
     "id": "err-BC-ERR-02005",
     "verdict": "ok",
-    "evidence": "Record text verbatim; wrong is 0/0 (nan) with h still in the denominator; reason words from BC-MIS-02002."
+    "evidence": "relation distinct, fix_prompt true; SymPy wrong expr (0)/0 is nan, right -2x+5."
    },
    {
     "id": "err-BC-ERR-02006",
     "verdict": "ok",
-    "evidence": "Record text verbatim; wrong -2x-h+5 differs from 5-2x; reason words from BC-MIS-02003."
+    "evidence": "relation distinct, fix_prompt true; SymPy -2x-h+5 != -2x+5."
    },
    {
     "id": "err-BC-ERR-02007",
     "verdict": "ok",
-    "evidence": "SymPy: with -(x+h)^2 taken as -x^2-h^2 the quotient is 5-h, distinct from -2x-h+5; possible_reason null."
+    "evidence": "relation distinct, fix_prompt true; SymPy 5-h != -2x-h+5."
    },
    {
     "id": "err-BC-ERR-02008",
     "verdict": "ok",
-    "evidence": "fixed 2026-09-29: wrong -2x+5 (power rule, no quotient line) against right -2x-h+5 (the simplified quotient inside the limit the lost points attach to); relation distinct; prose Traps line matched."
+    "evidence": "relation distinct, fix_prompt true; SymPy -2x+5 != -2x-h+5."
    },
    {
     "id": "representations",
     "verdict": "ok",
-    "evidence": "Null; 2.2 Representations conversion here is BC-REP-01 to BC-REP-01."
+    "evidence": "Null; 2.2 Representations conversion here is BC-REP-01 to BC-REP-01.",
+    "note": "unchanged since 2026-09-29"
    },
    {
     "id": "BC-PRQ-02005",
     "verdict": "ok",
-    "evidence": "Restates description_plain (shifted input, base point)."
+    "evidence": "Restates description_plain (shifted input, base point).",
+    "note": "unchanged since 2026-09-29"
    },
    {
     "id": "BC-PRQ-02001",
     "verdict": "ok",
-    "evidence": "Restates description_plain and failure_signature (quotient not reduced)."
+    "evidence": "Restates description_plain and failure_signature (quotient not reduced).",
+    "note": "unchanged since 2026-09-29"
    },
    {
     "id": "chk-1",
     "verdict": "ok",
-    "evidence": "SymPy: 5-2x at 3 = -1, equal to ex-1."
+    "evidence": "SymPy: 5-2x at 3 = -1, equal to ex-1.",
+    "note": "unchanged since 2026-09-29"
    },
    {
     "id": "chk-2",
     "verdict": "ok",
-    "evidence": "SymPy: quotient simplifies to 2x+h-2; limit 2x-2; at -2 gives -6; constraint value -6 != 0."
+    "evidence": "SymPy: quotient simplifies to 2x+h-2; limit 2x-2; at -2 gives -6; constraint value -6 != 0.",
+    "note": "unchanged since 2026-09-29"
    },
    {
     "id": "chk-3",
     "verdict": "ok",
-    "evidence": "fixed 2026-09-29: options C and D replaced: C oo (BC-ERR-02007, f(1+h) taken as f(1)+f(h), quotient 3h - 1 + 2/h unbounded), D nan (BC-ERR-02005, h set to 0 while in the denominator, 0/0 reported as undefined); A -1 kept; prose Checks and inferred lines matched."
+    "evidence": "fixed 2026-09-29: options C and D replaced: C oo (BC-ERR-02007, f(1+h) taken as f(1)+f(h), quotient 3h - 1 + 2/h unbounded), D nan (BC-ERR-02005, h set to 0 while in the denominator, 0/0 reported as undefined); A -1 kept; prose Checks and inferred lines matched.",
+    "note": "unchanged since 2026-09-29"
+   },
+   {
+    "id": "no_figure_reason",
+    "verdict": "ok",
+    "evidence": "True: the bundle lists BC-REP-01 only for BC-SKL-02008 and BC-SKL-02009, and ki-1 and ki-2 describe algebra on a quotient, not a process."
    }
   ],
   "advice": [
-   "Delivery fits: an algebraic chain served as step reveal and text key ideas; nothing is figure shaped.",
-   "err-BC-ERR-02008 shows the same expression on both sides, so the block depends entirely on its text; a line showing the missing quotient work would make the lost points visible.",
-   "Recognition, first line (quotient at a general x inside the limit) and rival are taught; the stem signal given in the prose (definition with no input named) is not stated in served text.",
-   "chk-3 distractors other than option A lack a sourced value; consider distractors from the spec (for example the characteristic slip at a second draw) or error behaviours that yield a number directly."
+   "The prediction asks the student to take the limit of a general quotient before the rule is shown, which needs the expansion; it is answerable but heavier than the other predictions in the batch.",
+   "The contrast pair now carries the stem signal (the word definition) in served text, which closes the earlier advice that the signal lived only in the prose.",
+   "err-BC-ERR-02008 now shows the missing quotient line as its right step; the block reads as intended."
   ],
   "counts": {
-   "ok": 15,
+   "ok": 18,
    "unsourced": 0,
    "wrong": 0,
    "over_cap": 0,
    "lint": 0
-  },
-  "fix_notes": [
-   "Fixed chk-3 options C and D (unsourced values) and err-BC-ERR-02008 (advice defect: same expression both sides). word_count full 517, read_minutes full 3.45.",
-   "Left: the stem signal not in served text (structural); D's reported form remains tagged inferred since BC-ERR-02005 states 0/0 but not what is reported."
-  ]
+  }
  }
 }

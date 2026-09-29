@@ -42,74 +42,88 @@
   "auditor": "claude-opus-5-5",
   "blocks": [
    {
+    "id": "prediction",
+    "verdict": "ok",
+    "evidence": "SymPy: d/dx Y(x)^2 = 2Y Y'; key B 2y dy/dx; A 2y and C y^2 dy/dx false. Resolution matches 3.2 'The dy/dx factor' paragraph. No verdict word, no id."
+   },
+   {
     "id": "orientation",
     "verdict": "ok",
-    "evidence": "Paraphrases BC-CON-03003 description_plain and BC-QA-03004 multipart_structure; 39 words."
+    "evidence": "Multipart sentence removed; rest unchanged."
    },
    {
     "id": "ki-1",
     "verdict": "ok",
-    "evidence": "Paraphrase of 3.2 Implicit differentiation, dy/dx factor and Mixed terms paragraphs; quote matches ced:76 FUN-3.D.1; 49 words."
+    "evidence": "Trimmed; statements match 3.2 Implicit differentiation and dy/dx factor paragraphs. Notation shortened from the concept notation."
    },
    {
     "id": "st-1",
     "verdict": "ok",
-    "evidence": "From BC-QA-03004 asked_to_produce, common_givens, expected_solution_path[0], wrong_approaches[0]."
+    "evidence": "Method 'Differentiate every term of both sides with respect to x.' no label; rival id moved to sources."
+   },
+   {
+    "id": "st-1.contrast",
+    "verdict": "ok",
+    "evidence": "this matches BC-QA-03004 typical_wording and givens; SymPy: curve holds at (1,1), slope -4/5. not_this y = x^2+2x+3 explicit, no dy/dx factor, true. feature true."
    },
    {
     "id": "ex-1",
     "verdict": "ok",
-    "evidence": "SymPy implicit: curve through (1,1) (5=5), dy/dx=(2-2x-3y)/(3x+2y), -3/5 at (1,1); spec options -3/5, -5/3, -3/2, -1."
+    "evidence": "Cue and why lines trimmed, expressions unchanged; SymPy -3/5."
    },
    {
     "id": "err-BC-ERR-03007",
     "verdict": "ok",
-    "evidence": "Record text verbatim; missing 2y dy/dx gives -5/3 (spec options[1]); reason from BC-MIS-03004."
+    "evidence": "verbatim record text; the reader strips the citation (app/web/src/lessons/LessonText.tsx CITATION_GROUP covers the cr, sg and crabbc page forms); scoring_consequence checked equal to data/errors.json by script, no design change"
    },
    {
     "id": "err-BC-ERR-03008",
     "verdict": "ok",
-    "evidence": "Record text verbatim; x dy/dx term missing gives -3/2 (spec options[2]); reason from BC-MIS-03005."
+    "evidence": "verbatim record text; the reader strips the citation (app/web/src/lessons/LessonText.tsx CITATION_GROUP covers the cr, sg and crabbc page forms); scoring_consequence checked equal to data/errors.json by script, no design change"
    },
    {
     "id": "err-BC-ERR-03009",
     "verdict": "ok",
-    "evidence": "Record text verbatim; right side dropped gives -1 (spec options[3])."
+    "evidence": "verbatim record text; the reader strips the citation (app/web/src/lessons/LessonText.tsx CITATION_GROUP covers the cr, sg and crabbc page forms); scoring_consequence checked equal to data/errors.json by script, no design change"
    },
    {
     "id": "representations",
     "verdict": "ok",
-    "evidence": "null; topic conversions belong to Unit 7 and BC-CON-03005."
+    "evidence": "unchanged since 2026-09-29. null; topic conversions belong to Unit 7 and BC-CON-03005."
    },
    {
     "id": "BC-PRQ-03005",
     "verdict": "ok",
-    "evidence": "Paraphrase of description_plain and failure_signature."
+    "evidence": "Failure clause cut; first sentence unchanged."
    },
    {
     "id": "chk-1",
     "verdict": "ok",
-    "evidence": "SymPy: solves to -3/5 at (1,1)."
+    "evidence": "unchanged since 2026-09-29. SymPy: solves to -3/5 at (1,1)."
    },
    {
     "id": "chk-2",
     "verdict": "ok",
-    "evidence": "SymPy: curve through (1,-1) (4=4), dy/dx=(1-2x+2y)/(2y-2x)=3/4."
+    "evidence": "unchanged since 2026-09-29. SymPy: curve through (1,-1) (4=4), dy/dx=(1-2x+2y)/(2y-2x)=3/4."
    },
    {
     "id": "chk-3",
     "verdict": "ok",
-    "evidence": "SymPy: curve through (2,-1) (4=4), key -1/2; A 5/2, B -1/4, D 3/2 equal spec options[1] to [3]."
+    "evidence": "unchanged since 2026-09-29. SymPy: curve through (2,-1) (4=4), key -1/2; A 5/2, B -1/4, D 3/2 equal spec options[1] to [3]."
+   },
+   {
+    "id": "no_figure_reason",
+    "verdict": "ok",
+    "evidence": "True: all three skills carry BC-REP-01 only (bundle); key idea is an algebraic statement, not a process. 32 words."
    }
   ],
   "advice": [
-   "Orientation \"It opens a multipart question\" states as always what BC-QA-03004 says is ordinary; the MCQ form (BC-MCQ-CED-004) exists. Consider \"It can open a multipart question\" (avoiding \"often\", a frequency).",
-   "No what_a_reader_scores entry, correctly, but the scoring habit (every dy/dx visible, keep the right side) is carried only by error consequence text; a check that asks for the differentiated line alone would test the habit.",
-   "The error blocks compare one line each and suit a contrast layout (wrong line under right line) better than step reveal.",
-   "Steps 3 and 4 of ex-1 belong to BC-CON-03004; flagged in the design and acceptable."
+   "Strip the parenthetical citations from the three scoring_consequence texts (keep them in sources), and extend the served_text check to error block fields so this is caught mechanically.",
+   "Delivery reasons cite the old rule numbers (orientation and ki-1 say rule 5 for text); the TEMPLATE selection list now has figure and interactive under rule 4 and text under rule 6. The TEMPLATE's own example entries still use the old numbers, so fix both together.",
+   "The error blocks compare one line each and suit wrong-under-right layout better than step reveal (carried from the earlier audit)."
   ],
   "counts": {
-   "ok": 12,
+   "ok": 15,
    "unsourced": 0,
    "wrong": 0,
    "over_cap": 0,

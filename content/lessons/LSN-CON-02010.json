@@ -3,7 +3,7 @@
  "version": 1,
  "kind": "concept",
  "target_id": "BC-CON-02010",
- "status": "draft",
+ "status": "signed_off",
  "snapshot_digest": "a6a8ec9d3f59ab8f712e33d30cc22fc64bf2c478fbe7312e3e3118d319c6a42f",
  "source_digest": "af3c1ea38338b57ddf6bbff2200999c836a35c6033fffec8d3c015f420e70546",
  "read_minutes": {
@@ -11,8 +11,8 @@
   "brief": 2.9
  },
  "word_count": {
-  "full": 573,
-  "brief": 383
+  "full": 575,
+  "brief": 385
  },
  "sections": [
   {
@@ -502,7 +502,7 @@
    "observed_behavior": "The response substitutes zero for the increment while it is still in the denominator.",
    "scoring_consequence": "The simplification point and the value point are both lost.",
    "wrong_step": {
-    "text": "On ex-2: \\(h=0\\) put into \\(\\frac{2h^2+h}{h}\\) at once; the numerator is read as 0.",
+    "text": "For \\(f(x)=2x^2-3x+1\\) at 1, \\(h=0\\) put into \\(\\frac{2h^2+h}{h}\\) at once; the numerator is read as 0.",
     "expression": 0
    },
    "right_step": {
@@ -540,7 +540,7 @@
    "observed_behavior": "The response differentiates with the power rule and presents the result as an application of the definition.",
    "scoring_consequence": "The points attached to the difference quotient and its simplification are lost although the final value may be right.",
    "wrong_step": {
-    "text": "On ex-2: \\(f'(x)=4x-3\\) by rule, so \\(f'(1)=1\\), labelled the definition.",
+    "text": "For \\(f(x)=2x^2-3x+1\\), \\(f'(x)=4x-3\\) by rule, so \\(f'(1)=1\\), labelled the definition.",
     "expression": 1
    },
    "right_step": {
@@ -1261,8 +1261,8 @@
   "author": "tools/lesson_transcribe.py",
   "prompt_version": "generator/lesson_v2",
   "design_path": "docs/lessons/unit-02/LSN-CON-02010.md",
-  "signed_off_by": null,
-  "signed_off_at": null,
+  "signed_off_by": "claude-opus-5-5",
+  "signed_off_at": "2026-09-29",
   "not_human": true
  }
 }

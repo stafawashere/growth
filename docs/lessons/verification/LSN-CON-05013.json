@@ -39,72 +39,83 @@
   "auditor": "claude-opus-5-5",
   "blocks": [
    {
+    "id": "prediction",
+    "verdict": "ok",
+    "evidence": "SymPy: key x(24-2x)^2 has V'=12(x-4)(x-12), V(4)=1024; x(24-x)^2 and x^2(24-2x) differ from the key (1600 and 256 at x=4). Resolution: base 24-2x, domain 0<=x<=12, endpoints candidates, from 5.10 Model and Domain; matches ex-1 steps 1 and 2."
+   },
+   {
     "id": "orientation",
     "verdict": "ok",
-    "evidence": "Paraphrase of BC-CON-05013 and the 5.10 Domain and Closing the argument paragraphs; 39 words."
+    "evidence": "Shortened paraphrase of BC-CON-05013 description_plain and 5.10 Assessment behaviour."
    },
    {
     "id": "ki-1",
     "verdict": "ok",
-    "evidence": "Paraphrase of 5.10 Domain and Closing the argument paragraphs and FUN-4.B.1 on ced:108; 48 words."
+    "evidence": "5.10 Model and Domain: 'Substituting the constraint reduces the objective to one variable'; 'The domain decides whether the endpoints are candidates'."
    },
    {
     "id": "st-1",
     "verdict": "ok",
-    "evidence": "fixed 2026-09-29: evidence_tag set to inferred"
+    "evidence": "Cue from BC-QA-05011 common_givens, method expected_solution_path[0], rival wrong_approaches; no leading label."
+   },
+   {
+    "id": "st-1.contrast",
+    "verdict": "unsourced",
+    "evidence": "not_this 'V(x)=x(20-2x)^2 on 0<=x<=10. Find its largest value.' is a form of BC-QA-05011 itself: multipart_structure 'or a multiple choice item that supplies the reduced objective' and 5.10 Assessment behaviour 'MCQ forms supply the reduced objective already and ask for the extremum'. this (typical_wording[0]) and why_not are true; SymPy crit 10/3."
    },
    {
     "id": "ex-1",
     "verdict": "ok",
-    "evidence": "SymPy: factor(diff(x*(24-2*x)**2)) = 12(x-4)(x-12), i.e. (24-2x)(24-6x); V(4)=1024, V(0)=V(12)=0; key 4."
+    "evidence": "SymPy: factor(diff(x*(24-2*x)**2)) = 12(x-4)(x-12), i.e. (24-2x)(24-6x); V(4)=1024, V(0)=V(12)=0; key 4. (unchanged since 2026-09-29)"
    },
    {
     "id": "err-BC-ERR-05050",
     "verdict": "ok",
-    "evidence": "Bundle text verbatim; no misconception attached, reason null."
+    "evidence": "fix_prompt true with relation distinct; step values untouched by the redesign (no decimal rewrite). Earlier: Bundle text verbatim; no misconception attached, reason null."
    },
    {
     "id": "err-BC-ERR-05051",
     "verdict": "ok",
-    "evidence": "Bundle text verbatim; d/dx of x*w**2 with w fixed is w**2 (SymPy); reason paraphrases BC-MIS-05027."
+    "evidence": "fix_prompt true with relation distinct; step values untouched by the redesign (no decimal rewrite). Earlier: Bundle text verbatim; d/dx of x*w**2 with w fixed is w**2 (SymPy); reason paraphrases BC-MIS-05027."
    },
    {
     "id": "err-BC-ERR-05052",
     "verdict": "ok",
-    "evidence": "Bundle text verbatim; domain [0,12] from 24-2x>=0 and x>=0; BC-MIS-05028 paraphrase."
+    "evidence": "fix_prompt true with relation distinct; step values untouched by the redesign (no decimal rewrite). Earlier: Bundle text verbatim; domain [0,12] from 24-2x>=0 and x>=0; BC-MIS-05028 paraphrase."
    },
    {
     "id": "err-BC-ERR-05053",
     "verdict": "ok",
-    "evidence": "Bundle text verbatim; SymPy diff(x*w**2, w) = 2xw; BC-MIS-05033 paraphrase."
+    "evidence": "fix_prompt true with relation distinct; step values untouched by the redesign (no decimal rewrite). Earlier: Bundle text verbatim; SymPy diff(x*w**2, w) = 2xw; BC-MIS-05033 paraphrase."
    },
    {
-    "id": "bridge-BC-PRQ-05003",
+    "id": "BC-PRQ-05003",
     "verdict": "ok",
-    "evidence": "Paraphrase of BC-PRQ-05003 description_plain; 14 words."
+    "evidence": "'State the allowed inputs.' follows BC-PRQ-05003 description_plain."
    },
    {
-    "id": "bridge-BC-PRQ-05005",
+    "id": "BC-PRQ-05005",
     "verdict": "ok",
-    "evidence": "Paraphrase of BC-PRQ-05005 description_plain and failure_signature; 18 words."
+    "evidence": "'Write the volume in the named dimensions.' follows BC-PRQ-05005 description_plain and failure_signature."
    },
    {
     "id": "chk-1",
     "verdict": "ok",
-    "evidence": "SymPy: V(4)=1024 greater than V(0)=V(12)=0; key 4."
+    "evidence": "SymPy: V(4)=1024 greater than V(0)=V(12)=0; key 4. (unchanged since 2026-09-29)"
    },
    {
     "id": "chk-2",
     "verdict": "ok",
-    "evidence": "SymPy: diff(x*(15-2*x)*(24-2*x)) = 12(x-3)(x-10); 10 outside [0,7.5]; V(3)=486; key 3."
+    "evidence": "SymPy: diff(x*(15-2*x)*(24-2*x)) = 12(x-3)(x-10); 10 outside [0,7.5]; V(3)=486; key 3. (unchanged since 2026-09-29)"
    },
    {
     "id": "chk-3",
     "verdict": "ok",
-    "evidence": "SymPy: diff(x*(12-2*x)**2) = (12-2x)(12-6x), zeros 2 and 6; V(2)=128; distractors B (unbounded as x grows, true off domain), C (w=0 at x=6), D (dV/dw=0 once w eliminated) match their error paths."
+    "evidence": "SymPy: diff(x*(12-2*x)**2) = (12-2x)(12-6x), zeros 2 and 6; V(2)=128; distractors B (unbounded as x grows, true off domain), C (w=0 at x=6), D (dV/dw=0 once w eliminated) match their error paths. (unchanged since 2026-09-29)"
    }
   ],
   "advice": [
+   "A not_this drawn from BC-CON-05006 with no context at all (a bare function on an interval with no situation) would keep the contrast outside BC-QA-05011.",
    "The design sources list sg-25:19 while the research line quotes sg-25:5; both appear under The candidates test, but the sources array could name sg-25:5 as well.",
    "ki-1 as a static diagram of the cut sheet and folded box fits; the orientation as text fits.",
    "err-BC-ERR-05053 wrong step writes dV/dw = 2xw while chk-3 option D says dV/dw = 0 for the same error; the two readings of the error differ and could confuse a reader.",
@@ -112,8 +123,8 @@
    "Recognition, first line and rival are taught; the scoring habit (candidates test with both endpoints) is shown in ex-1 but not named as a scored point, since BC-QA-05011 has no point_types."
   ],
   "counts": {
-   "ok": 13,
-   "unsourced": 0,
+   "ok": 14,
+   "unsourced": 1,
    "wrong": 0,
    "over_cap": 0,
    "lint": 0

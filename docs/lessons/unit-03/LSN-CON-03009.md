@@ -21,7 +21,7 @@ Served text, from BC-CON-03009 `description_plain` and the topic's Assessment be
 
 All four skills map to BC-EK-FUN-3F1 (ced:80), so one core block, both bands.
 
-- ki-1 (core). Paraphrase of the Required mathematical knowledge paragraphs (Repeated differentiation, Second derivatives of implicit relations, Evaluation order): f'' is the derivative of f', and when dy/dx contains y the second differentiation brings dy/dx back, so its value at the point is found first. No anchor quote, to keep the brief band under 450 words. Notation line from the concept record.
+- ki-1 (core). Paraphrase of the Required mathematical knowledge paragraphs (Repeated differentiation, Second derivatives of implicit relations, Evaluation order): f'' is the derivative of f', and when dy/dx contains y the second differentiation takes the product rule on mixed terms and the chain rule on y terms and brings dy/dx back; its value at the point is served in the orientation and the prediction. No anchor quote, and the orientation drops "again", to keep the brief band at 450 words. Notation line from the concept record.
 
 ## Recognition
 
@@ -75,7 +75,7 @@ BC-QA-03008 is `no_calculator`, the opening part of an FRQ: Section II Part B, 1
 
 ## Delivery
 
-- orientation, ki-1: text. No drawn block fits, so the record carries `no_figure_reason`. Rule 5: the skills carry BC-REP-01 only, and repeated differentiation is not one of rule 2's processes (docs/lessons/unit-03/README.md, section 6).
+- orientation, ki-1: text. No drawn block fits, so the record carries `no_figure_reason`. Rule 6: the skills carry BC-REP-01 only, and repeated differentiation is not one of rule 2's processes (docs/lessons/unit-03/README.md, section 6).
 - ex-1: step_reveal. Rule 1.
 - err-BC-ERR-03008, err-BC-ERR-03011, err-BC-ERR-03023, err-BC-ERR-05060: step_reveal. Rule 1.
 
@@ -143,7 +143,7 @@ BC-QA-03008 is `no_calculator`, the opening part of an FRQ: Section II Part B, 1
   ]
  },
  "orientation": {
-  "text": "A response differentiates dy/dx again, then substitutes the point and the value of dy/dx there.",
+  "text": "A response differentiates dy/dx, then substitutes the point and the value of dy/dx there.",
   "sources": [
    "BC-CON-03009",
    "research/units/unit-03-differentiation-composite-implicit-inverse.md#3.6 Calculating Higher-Order Derivatives"
@@ -154,7 +154,7 @@ BC-QA-03008 is `no_calculator`, the opening part of an FRQ: Section II Part B, 1
    "id": "ki-1",
    "ek_id": "BC-EK-FUN-3F1",
    "depth": "core",
-   "text": "Differentiating f' gives f''. When dy/dx contains y, the second derivative needs the product and chain rules, so dy/dx reappears and its value is needed.",
+   "text": "Differentiating f' gives f''. When dy/dx contains y, y'' needs the product rule on mixed terms and the chain rule on y terms, so dy/dx reappears.",
    "notation": "f double prime; f superscript n",
    "quote": null,
    "sources": [
@@ -171,7 +171,7 @@ BC-QA-03008 is `no_calculator`, the opening part of an FRQ: Section II Part B, 1
    "archetype_id": "BC-QA-03008",
    "cue": "d^2y/dx^2 asked at a point, dy/dx given in x and y.",
    "method": "Differentiate the dy/dx expression with respect to x.",
-   "rival": "Y held constant.",
+   "rival": "y held constant.",
    "separating_feature": "y in dy/dx means each y term gains a dy/dx factor.",
    "sources": [
     "BC-QA-03008",
@@ -598,7 +598,7 @@ BC-QA-03008 is `no_calculator`, the opening part of an FRQ: Section II Part B, 1
   {
    "block": "orientation",
    "mode": "text",
-   "reason": "rule 5: BC-REP-01 only on the skills",
+   "reason": "rule 6: BC-REP-01 only on the skills",
    "sources": [
     "BC-SKL-03030"
    ]
@@ -606,7 +606,7 @@ BC-QA-03008 is `no_calculator`, the opening part of an FRQ: Section II Part B, 1
   {
    "block": "ki-1",
    "mode": "text",
-   "reason": "rule 5: repeated differentiation is not a rule 2 process",
+   "reason": "rule 6: repeated differentiation is not a rule 2 process",
    "sources": [
     "BC-SKL-03030",
     "BC-SKL-03033"

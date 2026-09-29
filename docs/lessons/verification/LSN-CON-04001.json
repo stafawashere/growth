@@ -39,93 +39,116 @@
   "auditor": "claude-opus-5-5",
   "blocks": [
    {
+    "id": "prediction",
+    "verdict": "ok",
+    "evidence": "Stem on ex-1's own W'(9)=-3.5, answerable before the rule; SymPy -3.5 == -7/2 (ex-1 draw); only B (decreasing, liters per minute) is true, A reads the rate as an amount (BC-ERR-04003), C flips the sign (BC-ERR-04005); resolution paraphrases BC-CON-04001 description_plain and research 4.1; no verdict word, praise or id."
+   },
+   {
     "id": "orientation",
     "verdict": "ok",
-    "evidence": "Paraphrases BC-CON-04001 description_plain and the 4.1 Interpretation paragraph; 32 words."
+    "evidence": "Shortened to 18 words; still paraphrases BC-CON-04001 description_plain and the 4.1 Assessment behaviour paragraph; no id or citation."
+   },
+   {
+    "id": "no_figure_reason",
+    "verdict": "ok",
+    "evidence": "Bundle: BC-SKL-04002, 04003, 04005 all list only BC-REP-04 and BC-REP-05; neither key idea describes a process."
    },
    {
     "id": "ki-1",
     "verdict": "ok",
-    "evidence": "Paraphrases ced:87 CHA-3.A.1 and the 4.1 Derivative as an instantaneous rate paragraph; rate against amount contrast from BC-SKL-04003."
+    "evidence": "Shortened; still the CHA-3.A.1 rate against amount statement from ced:87 and research 4.1; quote null."
    },
    {
     "id": "ki-2",
     "verdict": "ok",
-    "evidence": "Paraphrases the 4.1 Interpretation paragraph; quote verbatim from ced:87 CHA-3.A.2."
+    "evidence": "Paraphrases the 4.1 Interpretation paragraph; quote verbatim from ced:87 CHA-3.A.2.",
+    "note": "unchanged since 2026-09-29"
    },
    {
     "id": "st-1",
     "verdict": "ok",
-    "evidence": "Method is BC-QA-04001 expected_solution_path[0]; rival is wrong_approaches[0] (BC-ERR-04003); cue from typical_wording."
+    "evidence": "method 'Name the quantity and the instant.' is BC-QA-04001 expected_solution_path[0] with no label; rival no longer carries BC-ERR-04003 in text, the id moved to sources."
+   },
+   {
+    "id": "st-1.contrast",
+    "verdict": "ok",
+    "evidence": "this is a BC-QA-04001 interpretation stem (typical_wording 'interpret the meaning of the stated value'); not_this, a function value to interpret, is the 'or the reverse' case of BC-ERR-04003 observed_behavior; why_not and feature (prime marks a rate) true per ced:87 CHA-3.A.1."
    },
    {
     "id": "ex-1",
     "verdict": "ok",
-    "evidence": "Draw tank, instant 9, magnitude 7/2, negative gives stated_value -7/2 per the derived expression; sentence names quantity, instant, direction, size and liters per minute."
+    "evidence": "Draw tank, instant 9, magnitude 7/2, negative gives stated_value -7/2 per the derived expression; sentence names quantity, instant, direction, size and liters per minute.",
+    "note": "unchanged since 2026-09-29"
    },
    {
     "id": "reader-ex-1-BC-PT-99008",
     "verdict": "ok",
-    "evidence": "Earned and not earned text verbatim from BC-PT-99008; units_required yes stated."
+    "evidence": "Earned and not earned text verbatim from BC-PT-99008; units_required yes stated.",
+    "note": "unchanged since 2026-09-29"
    },
    {
     "id": "err-BC-ERR-04001",
     "verdict": "ok",
-    "evidence": "Record text verbatim; minutes per liter is the exchanged units case in observed_behavior."
+    "evidence": "relation distinct, fix_prompt true; SymPy 3.5 - 7/2 = 0 so the decimal rewrite keeps the value; 3.5 minute/liter and 3.5 liter/minute differ."
    },
    {
     "id": "err-BC-ERR-04003",
     "verdict": "ok",
-    "evidence": "Record text verbatim; 3.5 liters is a function value where a derivative value is asked."
+    "evidence": "relation distinct, fix_prompt true; SymPy 3.5 == 7/2 and -3.5 == -7/2; 3.5 liter against -3.5 liter/minute differ."
    },
    {
     "id": "err-BC-ERR-04005",
     "verdict": "ok",
-    "evidence": "Record text verbatim; negative rate described as an increase."
+    "evidence": "relation distinct, fix_prompt true; SymPy 3.5 - 7/2 = 0, -3.5 + 7/2 = 0; 3.5 != -3.5."
    },
    {
     "id": "err-BC-ERR-99027",
     "verdict": "ok",
-    "evidence": "Record text verbatim; the wrong sentence omits the instant, relation equivalent correct since values agree."
+    "evidence": "relation equivalent, fix_prompt false; SymPy -3.5 == -7/2 on both sides; the loss is the missing instant and direction, per the record's consequence."
    },
    {
     "id": "representations",
     "verdict": "ok",
-    "evidence": "null; 4.1 Representations conversion BC-REP-05 to BC-REP-04 is a sentence, not a figure."
+    "evidence": "null; 4.1 Representations conversion BC-REP-05 to BC-REP-04 is a sentence, not a figure.",
+    "note": "unchanged since 2026-09-29"
    },
    {
-    "id": "bridge-BC-PRQ-04004",
+    "id": "BC-PRQ-04004",
     "verdict": "ok",
-    "evidence": "Paraphrases BC-PRQ-04004 description_plain and failure_signature."
+    "evidence": "Failure clause dropped; remaining sentence paraphrases BC-PRQ-04004 description_plain."
    },
    {
-    "id": "bridge-BC-PRQ-04008",
+    "id": "BC-PRQ-04008",
     "verdict": "ok",
-    "evidence": "Paraphrases BC-PRQ-04008 description_plain and failure_signature."
+    "evidence": "Failure clause dropped; remaining sentence paraphrases BC-PRQ-04008 description_plain."
    },
    {
     "id": "chk-1",
     "verdict": "ok",
-    "evidence": "Same draw; key decreasing at 3.5 liters per minute."
+    "evidence": "Same draw; key decreasing at 3.5 liters per minute.",
+    "note": "unchanged since 2026-09-29"
    },
    {
     "id": "chk-2",
     "verdict": "ok",
-    "evidence": "Draw snow, 10, 5/2, positive gives stated_value 5/2; key names instant, direction, size, centimeters per hour."
+    "evidence": "Draw snow, 10, 5/2, positive gives stated_value 5/2; key names instant, direction, size, centimeters per hour.",
+    "note": "unchanged since 2026-09-29"
    },
    {
     "id": "chk-3",
     "verdict": "ok",
-    "evidence": "Draw balloon, 3, 4, negative gives -4; A correct; B, C, D each garble one element per parameter_spec notes and match the stated error ids."
+    "evidence": "Draw balloon, 3, 4, negative gives -4; A correct; B, C, D each garble one element per parameter_spec notes and match the stated error ids.",
+    "note": "unchanged since 2026-09-29"
    }
   ],
   "advice": [
-   "ki-2 notation 'units of f per unit of t' is the CHA-3.A.3 statement, which is not mapped to these skills; it is true, but it belongs to BC-CON-04002.",
-   "No check asks for the sign language trap that BC-PT-99008 names as not earned (decreasing at a rate of -3.5); a distractor with that wording would exercise the scoring habit the reader line states.",
-   "Delivery fits: definitions and sentence rules are text; the interpretation procedure is step reveal. Recognition, first line, rival and the reader's checklist are all taught."
+   "pr-1 key B ('The water decreases 3.5 liters per minute.') omits the instant, the phrase err-BC-ERR-99027 says loses the point; adding 'at t = 9' keeps the prediction's model answer inside the reader's rule.",
+   "st-1.contrast this stem gives no unit for t ('C'(5)=-2 for a coffee's temperature in degrees Celsius'), so 'using correct units' cannot be met; BC-QA-04001 common_givens list the units of the independent variable too.",
+   "Delivery reasons on the text blocks (orientation, ki-1, ki-2) still cite rule 5, which the current TEMPLATE.md selection rules make the table rule; text is rule 6. The redesign renumbered ki-2/ki-1 promotions but left these; the served mode is right, the reason is stale.",
+   "Error scoring_consequence and reader score lines still serve record text with page citations or ids; the served-text lint exempts record words, so this is not a defect, but the student reads them."
   ],
   "counts": {
-   "ok": 16,
+   "ok": 19,
    "unsourced": 0,
    "wrong": 0,
    "over_cap": 0,

@@ -39,70 +39,87 @@
   "auditor": "claude-opus-5-5",
   "blocks": [
    {
+    "id": "prediction",
+    "verdict": "ok",
+    "evidence": "SymPy on ex-1 draw: V=x(18-2x)(48-2x), crit {4, 18}, V(4)=1600, V(0)=V(9)=0, max on [0,9] 1600. C is the only option naming quantity, units and input; A gives the input only (BC-ERR-05024), B the bare number (BC-ERR-05055). Resolution from 5.11 Completeness of an interpretation."
+   },
+   {
     "id": "orientation",
     "verdict": "ok",
-    "evidence": "Paraphrase of BC-CON-05014, BC-SKL-05054 and 05056 and the 5.11 Interpretation paragraph; 41 words."
+    "evidence": "Shortened paraphrase of BC-CON-05014 description_plain and 5.11 Assessment behaviour."
    },
    {
     "id": "ki-1",
     "verdict": "ok",
-    "evidence": "Paraphrase of FUN-4.C.1 and 5.11 Completeness of an interpretation (sg-23:2); quote verbatim from ced:109; wording contrast from BC-QA-05011 typical_wording."
+    "evidence": "5.11 Interpretation, Completeness and Value against location; anchor quote 14 words, verbatim substring of ced:109."
    },
    {
     "id": "st-1",
     "verdict": "ok",
-    "evidence": "fixed 2026-09-29: evidence_tag set to inferred"
+    "evidence": "Cue from typical_wording[1] and common_givens, method expected_solution_path[0], rival wrong_approaches; no leading label; separating feature matches expected_solution_path[-1] 'report the value with units'."
+   },
+   {
+    "id": "st-1.contrast",
+    "verdict": "unsourced",
+    "evidence": "not_this 'Find the dimensions for the largest volume.' is BC-QA-05011's own typical_wording[0] 'find the dimensions that make the described quantity as large as possible', so the pair contrasts two stems of one archetype; this (typical_wording[1]), why_not and feature are true."
    },
    {
     "id": "ex-1",
     "verdict": "ok",
-    "evidence": "SymPy: factor(diff(x*(18-2*x)*(48-2*x))) = 12(x-4)(x-18), sole interior critical point 4; V(4)=1600; V(0)=V(9)=0."
+    "evidence": "SymPy: factor(diff(x*(18-2*x)*(48-2*x))) = 12(x-4)(x-18), sole interior critical point 4; V(4)=1600; V(0)=V(9)=0. (unchanged since 2026-09-29)"
    },
    {
     "id": "err-BC-ERR-05026",
     "verdict": "ok",
-    "evidence": "Bundle text verbatim; right step values V(0)=0, V(4)=1600, V(9)=0 by SymPy; BC-MIS-05016 paraphrase."
+    "evidence": "fix_prompt true with relation distinct; step values untouched by the redesign (no decimal rewrite). Earlier: Bundle text verbatim; right step values V(0)=0, V(4)=1600, V(9)=0 by SymPy; BC-MIS-05016 paraphrase."
    },
    {
     "id": "err-BC-ERR-05055",
     "verdict": "ok",
-    "evidence": "Bundle text verbatim; BC-MIS-07023 paraphrase."
+    "evidence": "fix_prompt true with relation distinct; step values untouched by the redesign (no decimal rewrite). Earlier: Bundle text verbatim; BC-MIS-07023 paraphrase."
    },
    {
     "id": "err-BC-ERR-05024",
     "verdict": "ok",
-    "evidence": "Bundle text verbatim; BC-MIS-05015 verbatim."
+    "evidence": "fix_prompt true with relation distinct; step values untouched by the redesign (no decimal rewrite). Earlier: Bundle text verbatim; BC-MIS-05015 verbatim."
    },
    {
     "id": "err-BC-ERR-05056",
     "verdict": "ok",
-    "evidence": "Bundle text verbatim; BC-MIS-07023 verbatim."
+    "evidence": "fix_prompt true with relation distinct; step values untouched by the redesign (no decimal rewrite). Earlier: Bundle text verbatim; BC-MIS-07023 verbatim."
    },
    {
     "id": "chk-1",
     "verdict": "ok",
-    "evidence": "Same draw as ex-1; V(4)=1600."
+    "evidence": "Same draw as ex-1; V(4)=1600. (unchanged since 2026-09-29)"
    },
    {
     "id": "chk-2",
     "verdict": "ok",
-    "evidence": "SymPy: diff(x*(30-2*x)**2) = (30-2x)(30-6x), interior critical point 5; V(5)=2000; V(0)=V(15)=0."
+    "evidence": "SymPy: diff(x*(30-2*x)**2) = (30-2x)(30-6x), interior critical point 5; V(5)=2000; V(0)=V(15)=0. (unchanged since 2026-09-29)"
    },
    {
     "id": "chk-3",
     "verdict": "ok",
-    "evidence": "SymPy: V prime = 12(x-3)(x-10) > 0 on [0,2]; V(2)=440; distractor A V(3)=486; B bare 440; D input 2 cm."
+    "evidence": "SymPy: V prime = 12(x-3)(x-10) > 0 on [0,2]; V(2)=440; distractor A V(3)=486; B bare 440; D input 2 cm. (unchanged since 2026-09-29)"
+   },
+   {
+    "id": "no_figure_reason",
+    "verdict": "ok",
+    "evidence": "33 words. BC-SKL-05054 to 05057 carry BC-REP-01, 04, 05 only (none figure-bearing), and ki-1 describes no process. BC-QA-05011 itself carries BC-REP-08 (see advice)."
    }
   ],
   "advice": [
+   "pr-1's stem gives no length unit (1600 at x=4); cm appears only in the options, so a student picks by completeness, not by deriving the units.",
+   "BC-QA-05011 lists BC-REP-08 and common_givens 'a verbal situation or a diagram'; the template's figure row counts archetype representations, so a diagram of ex-1's 18 by 48 cm strip could be selected under rule 4 instead of no_figure_reason.",
    "All text delivery for orientation and ki-1 fits; no figure needed for a statement about units.",
    "st-1 rival (substituting a number before differentiating) is the archetype's only wrong_approach but it belongs to setup, not to interpretation; the lesson's own errors (units, value versus input) carry the real contrast here.",
    "ex-1 gives the critical point in the stem, so the first written line practised is the objective, not the interpretation sentence; the recognition and scoring habit (quantity, units, input) is well taught through the four error blocks.",
    "No prerequisite bridge; the bundle offers none for this concept, which is consistent."
   ],
   "counts": {
-   "ok": 11,
-   "unsourced": 0,
+   "ok": 13,
+   "unsourced": 1,
    "wrong": 0,
    "over_cap": 0,
    "lint": 0

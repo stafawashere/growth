@@ -42,94 +42,105 @@
   "auditor": "claude-opus-5-5",
   "blocks": [
    {
+    "id": "prediction",
+    "verdict": "ok",
+    "evidence": "SymPy factor(x^2 + x - 2) = (x - 1)(x + 2), continuous_domain = (-oo,-2) U (-2,1) U (1,oo): three pieces, key C only true option (x = 3 is a zero of the numerator)."
+   },
+   {
     "id": "orientation",
     "verdict": "ok",
-    "evidence": "Paraphrases BC-CON-01014 and the BC-QA-01015 asked_to_produce (intervals plus a reason naming the family); 31 words."
+    "evidence": "Shortened paraphrase of BC-CON-01014 and BC-QA-01015 asked_to_produce; no id."
    },
    {
     "id": "ki-1",
     "verdict": "ok",
-    "evidence": "Quote matches ced page 49 LIM-2.B.1; the one sided endpoint condition paraphrases the 1.12 Interval continuity paragraph."
+    "evidence": "Citation removed; text is BC-EK-LIM-2B1 plus the endpoint condition, unchanged in substance."
    },
    {
     "id": "ki-2",
     "verdict": "ok",
-    "evidence": "fixed 2026-09-29: answer restated as the domain cut at each undefined input, open there and closed at an included endpoint such as a radicand's zero, matching chk-2's key [-3,2) U (2,oo); prose Key ideas line matched."
+    "evidence": "'six' dropped; claim is BC-EK-LIM-2B2; no id."
    },
    {
     "id": "st-1",
     "verdict": "ok",
-    "evidence": "fixed 2026-09-29: cue cut to 17 words; separating feature restated as the domain cut at each undefined input, with the piece count limited to a rational rule, so the radical family in chk-2 no longer contradicts it; prose Method choice line matched."
+    "evidence": "Method 'Find every input where the expression is undefined.' has no label and is expected_solution_path[0]; separating feature now holds for every family (the earlier piece-count defect is gone)."
+   },
+   {
+    "id": "st-1.contrast",
+    "verdict": "ok",
+    "evidence": "this is BC-QA-01015 typical_wording; SymPy continuous_domain of (x - 1)/(x^2 - 9) = (-oo,-3) U (-3,3) U (3,oo); not_this is the BC-QA-01006 one-input verdict; why_not and feature true."
    },
    {
     "id": "ex-1",
     "verdict": "ok",
-    "evidence": "SymPy: solve(x^2+x-2) = {-2, 1}; answer three open intervals; zero 3 differs from both roots per the constraint."
+    "evidence": "SymPy: solve(x^2+x-2) = {-2, 1}; answer three open intervals; zero 3 differs from both roots per the constraint. (unchanged since 2026-09-29)"
    },
    {
     "id": "err-BC-ERR-01031",
     "verdict": "ok",
-    "evidence": "Record text verbatim; SymPy sets differ (1 left inside); reason words from BC-MIS-01019."
+    "evidence": "fix_prompt true equals relation distinct; wrong and right exprs unchanged and distinct. SymPy: the two unions differ."
    },
    {
     "id": "err-BC-ERR-01032",
     "verdict": "ok",
-    "evidence": "fixed 2026-09-29: wrong step is now the piece Interval.Lopen(-2, 1) against Interval.open(-2, 1); SymPy: 1 lies in the wrong set only, and it differs from err-BC-ERR-01031's wrong set. Earlier: Record text verbatim; SymPy wrong set contains 1 and differs from the right set; possible_reason null."
+    "evidence": "fix_prompt true equals relation distinct; wrong and right exprs unchanged and distinct. SymPy: Interval.Lopen(-2, 1) != Interval.open(-2, 1)."
    },
    {
     "id": "representations",
     "verdict": "ok",
-    "evidence": "Null; 1.12 Representations names BC-REP-01 and BC-REP-04 conversions only."
+    "evidence": "Null; 1.12 Representations names BC-REP-01 and BC-REP-04 conversions only. (unchanged since 2026-09-29)"
    },
    {
     "id": "BC-PRQ-01003",
     "verdict": "ok",
-    "evidence": "Restates description_plain; slip matches failure_signature (wrong branch at a boundary)."
+    "evidence": "Shortened paraphrase of description_plain; failure signature kept."
    },
    {
     "id": "BC-PRQ-01008",
     "verdict": "ok",
-    "evidence": "Restates description_plain; slip matches failure_signature (intervals including points outside the domain)."
+    "evidence": "Shortened; the logarithm case dropped, denominator case kept; true."
    },
    {
     "id": "BC-PRQ-01010",
     "verdict": "ok",
-    "evidence": "fixed 2026-09-29: slip now states the record's failure_signature: a conclusion stated on a closed interval when the theorem gives an interior point."
+    "evidence": "Definition kept; failure signature dropped."
    },
    {
     "id": "chk-1",
     "verdict": "ok",
-    "evidence": "SymPy: excluded {-2, 1}, three open pieces, equal to ex-1."
+    "evidence": "SymPy: excluded {-2, 1}, three open pieces, equal to ex-1. (unchanged since 2026-09-29)"
    },
    {
     "id": "chk-2",
     "verdict": "ok",
-    "evidence": "SymPy: Interval(-3, oo) minus {2} equals Union(Interval.Ropen(-3, 2), Interval.open(2, oo)); matches the radical family notes."
+    "evidence": "SymPy: Interval(-3, oo) minus {2} equals Union(Interval.Ropen(-3, 2), Interval.open(2, oo)); matches the radical family notes. (unchanged since 2026-09-29)"
    },
    {
     "id": "chk-3",
     "verdict": "ok",
-    "evidence": "SymPy: solve(x^2-x-12) = {-3, 4}; key three open pieces; option C label and expr are the same set (-oo, 4) U (4, oo); A and B are distinct wrong sets."
+    "evidence": "SymPy: solve(x^2-x-12) = {-3, 4}; key three open pieces; option C label and expr are the same set (-oo, 4) U (4, oo); A and B are distinct wrong sets. (unchanged since 2026-09-29)"
+   },
+   {
+    "id": "no_figure_reason",
+    "verdict": "ok",
+    "evidence": "fixed 2026-09-29: now 'The skills carry only symbolic expressions and verbal descriptions, none figure bearing, and the key ideas describe no process, so the rule and its interval list carry the lesson.', naming BC-REP-01 (Symbolic (analytical) expression) and BC-REP-04 (Verbal description) as data/taxonomies.json does; 29 words, within the cap (checker clean)."
    }
   ],
   "advice": [
-   "st-1's separating feature (\"one more piece than there are excluded inputs\") only holds for isolated excluded inputs; in the radical family (chk-2) a whole ray is excluded and the count fails. Restrict the feature to rational rules or restate it.",
+   "no_figure_reason says the key ideas describe no process; ki-2's second sentence is a short procedure (cut the domain at each undefined input), which step reveal in ex-1 already carries, so the conclusion stands.",
+   "The served_text rule (SERVED_DESIGN_FIELDS in tools/check_lesson_designs.py and SERVED_FIELDS in tools/check_lessons.py) does not scan common_errors, although the reader serves scoring_consequence, wrong_step, right_step and possible_reason text.",
    "BC-PRQ-01003 (piecewise rules) is bridged but the lesson has no piecewise example or check; BC-SKL-01048 is otherwise untaught.",
-   "err-BC-ERR-01032 wrong expr, as a SymPy set, loses the bracket: Union with Interval.Lopen(-2, 1) evaluates to (-oo, -2) U (-2, oo), the same set as err-BC-ERR-01031's wrong step, so the two error blocks are indistinguishable to a set comparison.",
    "The BC-QA-01015 invariant \"'continuous on' in key\" is not met by any check key string; confirm it applies to lesson checks.",
    "Delivery: text is adequate, but an answer that is a union of intervals is a reading on a number line; a small number line figure with open and closed endpoints would serve err-BC-ERR-01032 better than text.",
    "Recognition, first written line (denominator set to zero) and rival are taught; the scoring habit of naming the family is taught in ex-1 step 3 but no check asks for the reason."
   ],
   "counts": {
-   "ok": 14,
+   "ok": 17,
    "unsourced": 0,
    "wrong": 0,
    "over_cap": 0,
    "lint": 0
-  },
-  "fix_notes": [
-   "Fixed ki-2 (wrong), st-1 (over_cap and separating feature contradicted by chk-2), BC-PRQ-01010 (unsourced), and err-BC-ERR-01032 whose wrong set equalled err-BC-ERR-01031's: wrong is now Interval.Lopen(-2, 1), right Interval.open(-2, 1), the piece itself, so 1 is in the wrong set and the two error blocks differ. word_count 531/448, read_minutes 3.54/2.99.",
-   "Left: BC-PRQ-01003 bridged without a piecewise example (structural); 'continuous on' key invariant (needs a ruling); number line figure (delivery preference); no check asking for the reason (structural)."
-  ]
+  }
  }
 }

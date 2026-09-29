@@ -48,109 +48,124 @@
   "auditor": "claude-opus-5-5",
   "blocks": [
    {
+    "id": "prediction",
+    "verdict": "ok",
+    "evidence": "Table: f'(g(1))g'(1) = f'(3)g'(1) = (-3)(2) = -6 keyed A; B f'(1)g'(1)=8 and C f'(3)+g'(1)=-1 false. Resolution matches the 3.1 Leibniz form and BC-ERR-03003 line. No verdict word, no id."
+   },
+   {
     "id": "orientation",
     "verdict": "ok",
-    "evidence": "Paraphrases BC-CON-03002 description_plain and the three archetypes' givens; 32 words."
+    "evidence": "Stems sentence removed; rest unchanged."
    },
    {
     "id": "ki-1",
     "verdict": "ok",
-    "evidence": "Leibniz form from the concept notation and ced:72 via the 3.1 Leibniz form paragraph; reading order from BC-MIS-03002; 60 words."
+    "evidence": "Trimmed; reading order f' at g(a), g' at a matches 3.1 Leibniz form paragraph and BC-MIS-03002."
    },
    {
     "id": "st-1",
     "verdict": "ok",
-    "evidence": "From BC-QA-03002 common_givens, expected_solution_path[0], wrong_approaches[0]."
+    "evidence": "Method 'The inner function at the given input, g(a).' no label; rival id moved to sources."
+   },
+   {
+    "id": "st-1.contrast",
+    "verdict": "ok",
+    "evidence": "this matches BC-QA-03002 typical_wording (table, composite, stated input). not_this k=fg from the same table: product rule, all readings at 2, true (k'(2) = f'(2)g(2)+f(2)g'(2) = -1). feature true."
    },
    {
     "id": "st-2",
     "verdict": "ok",
-    "evidence": "From BC-QA-03001 expected_solution_path[0] and wrong_approaches[2] (BC-ERR-03006)."
+    "evidence": "Method label removed; rival id moved to sources (BC-ERR-03006)."
    },
    {
     "id": "st-3",
     "verdict": "ok",
-    "evidence": "From BC-QA-03003 common_givens, expected_solution_path[0], wrong_approaches[1] (BC-ERR-03005)."
+    "evidence": "Method label removed; rival id moved to sources (BC-ERR-03005)."
    },
    {
     "id": "ex-1",
     "verdict": "ok",
-    "evidence": "Table at x=1: g(1)=3, f'(3)=-3, g'(1)=2, product -6; spec options -6, 8, -1, 10."
+    "evidence": "unchanged since 2026-09-29. Table at x=1: g(1)=3, f'(3)=-3, g'(1)=2, product -6; spec options -6, 8, -1, 10."
    },
    {
     "id": "ex-2",
     "verdict": "ok",
-    "evidence": "SymPy: diff(x*sqrt(2x^2+7)) at 1 = 11/3; shift 9-2=7 matches spec."
+    "evidence": "fade_from 3: shown steps are sqrt(2x^2+7) and its derivative 4x/(2 sqrt(2x^2+7)) (SymPy equal to diff); product rule on them at x=1 gives 11/3 (SymPy), so the shown steps suffice; withheld steps 3 and 4 are valued (new, evaluate)."
    },
    {
     "id": "what_a_reader_scores:ex-2",
     "verdict": "ok",
-    "evidence": "Text is BC-PT-99023 verbatim; BC-QA-03001 lists it."
+    "evidence": "unchanged since 2026-09-29. Text is BC-PT-99023 verbatim; BC-QA-03001 lists it."
    },
    {
     "id": "err-BC-ERR-03001",
     "verdict": "ok",
-    "evidence": "f'(3) alone = -3; record text verbatim; reason from BC-MIS-03001."
+    "evidence": "fix_prompt true with relation distinct. -3 vs -6."
    },
    {
     "id": "err-BC-ERR-03002",
     "verdict": "ok",
-    "evidence": "fixed 2026-09-29 by the orchestrator at the design (unsourced): Block shows the outer root layer copied unchanged on a two layer draw (value 3+12=15, SymPy); BC-ERR-03002 records the innermost derivative omitted in a three layer composite. No source ties the shown move to this id; the design marks it [inferred]."
+    "evidence": "fix_prompt true with relation distinct. SymPy: wrong 19/6, right 11/3. On a two-layer draw the omitted factor is BC-ERR-03001's behaviour; the design tags this [inferred]."
    },
    {
     "id": "err-BC-ERR-03003",
     "verdict": "ok",
-    "evidence": "f'(1)g'(1)=4*2=8 equals spec options[1]; reason from BC-MIS-03002."
+    "evidence": "fix_prompt true with relation distinct. 8 vs -6."
    },
    {
     "id": "err-BC-ERR-03004",
     "verdict": "ok",
-    "evidence": "f'(3)+g'(1)=-1 equals spec options[2]; record text verbatim."
+    "evidence": "fix_prompt true with relation distinct. -1 vs -6."
    },
    {
     "id": "representations",
     "verdict": "ok",
-    "evidence": "null; table and graph conversions carried by ex-1 and the ki-1 figure."
+    "evidence": "unchanged since 2026-09-29. null; table and graph conversions carried by ex-1 and the ki-1 figure."
    },
    {
     "id": "BC-PRQ-03001",
     "verdict": "ok",
-    "evidence": "Paraphrase of description_plain and failure_signature."
+    "evidence": "Failure clause cut; first sentence unchanged."
    },
    {
     "id": "BC-PRQ-03005",
     "verdict": "ok",
-    "evidence": "Paraphrase of description_plain and failure_signature."
+    "evidence": "Failure clause cut; first sentence unchanged."
    },
    {
     "id": "BC-PRQ-03006",
     "verdict": "ok",
-    "evidence": "Paraphrase of description_plain and failure_signature."
+    "evidence": "Failure clause cut; first sentence unchanged."
    },
    {
     "id": "chk-1",
     "verdict": "ok",
-    "evidence": "-3*2=-6, equals ex-1 key."
+    "evidence": "unchanged since 2026-09-29. -3*2=-6, equals ex-1 key."
    },
    {
     "id": "chk-2",
     "verdict": "ok",
-    "evidence": "At 3: g(3)=1, f'(1)=3, g'(3)=4, key 12; distractor row f'(3)=-1 is in the table."
+    "evidence": "unchanged since 2026-09-29. At 3: g(3)=1, f'(1)=3, g'(3)=4, key 12; distractor row f'(3)=-1 is in the table."
    },
    {
     "id": "chk-3",
     "verdict": "ok",
-    "evidence": "At 2: g(2)=3, f'(3)=4, g'(2)=-2, key -8; A f'(2)g'(2)=-10, C 4+(-2)=2, D 4; all distinct."
+    "evidence": "unchanged since 2026-09-29. At 2: g(2)=3, f'(3)=4, g'(2)=-2, key -8; A f'(2)g'(2)=-10, C 4+(-2)=2, D 4; all distinct."
+   },
+   {
+    "id": "delivery.ki-1",
+    "verdict": "ok",
+    "evidence": "fixed 2026-09-29: f panel polygon moved to (0,0), (1.5,3), (4,-2), so the vertex sits between x = a = 1 and u = g(a) = 2. SymPy: f(2) = 2 (the mark at [2,2] stands), f'(2) = -2 exists at the reading line, f'(1) = 2 differs from it, h'(1) = f'(2)g'(1) = -2; g panel unchanged (g(1) = 2, slope 1). Labels and fallback carry no numbers and still hold. Delivery reason rule 3 corrected to rule 4, orientation rule 5 to rule 6."
    }
   ],
   "advice": [
-   "err-BC-ERR-03002: the two layer draw cannot show the recorded error; use a three layer composite or drop the block (four other errors are available, BC-ERR-03005 and BC-ERR-03006 are named only in strategy).",
-   "chk-3 option D (4, BC-ERR-03001) differs from the spec options[3] (outer_value times inner_slope = -12); the design does not claim a spec match, so it is not a verdict, but the spec value would keep draws reproducible.",
-   "Three strategy blocks for three archetypes teach recognition well; st-3 (graphs) has no example or check behind it in either band.",
-   "Table reading suits an interactive table (tap g(a), then the f' row) rather than step_reveal text."
+   "delivery.ki-1: move the f polygon's vertex off u = 2 (for example through (0,0), (3,3), (4,-1), giving slope 1 at u = 2) and keep the fallback text as is.",
+   "The prediction stem says 'readings from the table' but is served before ex-1, so no table is on screen; the options are symbolic so it is answerable, but the resolution's -3 and 2 come from an unseen table. Either show ex-1's table with the prediction or drop 'from the table' and the numbers.",
+   "Delivery reasons cite the old rule numbers (ki-1 record reason says rule 3 for a figure while the prose says rule 4; orientation says rule 5 for text); the TEMPLATE selection list now has figure and interactive under rule 4 and text under rule 6. The TEMPLATE's own example entries still use the old numbers, so fix both together.",
+   "err-BC-ERR-03002 on ex-2 shows the same move as BC-ERR-03001 (inner factor omitted); a three-layer draw would show the recorded behaviour."
   ],
   "counts": {
-   "ok": 19,
+   "ok": 22,
    "unsourced": 0,
    "wrong": 0,
    "over_cap": 0,

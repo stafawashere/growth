@@ -33,77 +33,90 @@
   "auditor": "claude-opus-5-5",
   "blocks": [
    {
+    "id": "prediction",
+    "verdict": "ok",
+    "evidence": "Short answer key 0: differentiable gives continuous, so f(2x) - 4 tends to f(4) - 4 = 0 (SymPy 4 - 4 = 0); answerable before the rule; resolution is research/units/unit-04-contextual-applications-differentiation.md line 577 'Continuity from differentiability'; no verdict word or id."
+   },
+   {
     "id": "orientation",
     "verdict": "ok",
-    "evidence": "Paraphrases BC-CON-04014 and unit 4.7 The hypothesis (ced:84); 17 words."
+    "evidence": "Trimmed paraphrase of the 4.7 hypothesis paragraph; two separate limits with reasons."
    },
    {
     "id": "ki-1",
     "verdict": "ok",
-    "evidence": "Research unit 4.7 The hypothesis (ced:84, sg-23:14); quote 'Limits of the indeterminate forms 0 over 0' on ced:93; 25 words."
+    "evidence": "Hypothesis stated as both 0 or both infinity, checked first; quote verbatim on cache/text/ced/page-093.txt."
    },
    {
     "id": "ki-2",
-    "verdict": "ok",
-    "evidence": "Research unit 4.7 Continuity from differentiability (sg-23:14); quote 'such forms are said to be indeterminate' is on ced:93; 28 words."
+    "verdict": "wrong",
+    "evidence": "Served text 'A function known only through values is differentiable, so continuous.' asserts differentiability as a consequence of being known through values, which is false in general; the research line (unit-04 file line 577) and the earlier text make it conditional: where the stem states f is differentiable, differentiability gives continuity."
    },
    {
     "id": "st-1",
     "verdict": "ok",
-    "evidence": "expected_solution_path[0] and wrong_approaches (BC-ERR-04029) of BC-QA-04009; 23 words."
+    "evidence": "Labels 'First line:' and 'Rival:' removed; method is the numerator limit by differentiability (sg-23:14 via the 4.7 heading); rival is BC-ERR-04029."
+   },
+   {
+    "id": "st-1.contrast",
+    "verdict": "ok",
+    "evidence": "this matches BC-QA-04009 typical_wording; SymPy g(3) - 2 = 0 and x - 1 = 0 at 1; not_this sin(x)/(e^x - 1) at 0 has both limits read directly (sin 0 = 0, e^0 - 1 = 0, limit 1), why_not true; feature (unknown f) separates them."
    },
    {
     "id": "ex-1",
     "verdict": "ok",
-    "evidence": "SymPy: numerator 4 - 4 = 0, e^(x - 2) - 1 at 2 is 0, 2*(-3)/e^0 = -6."
+    "evidence": "Whys trimmed; every expr unchanged; SymPy 2(-3)/e^0 = -6; no fade_from."
    },
    {
     "id": "reader-ex-1",
     "verdict": "ok",
-    "evidence": "BC-PT-99055 line verbatim from the bundle."
+    "evidence": "BC-PT-99055 line verbatim from the bundle.",
+    "note": "unchanged since 2026-09-29"
    },
    {
     "id": "err-BC-ERR-04028",
     "verdict": "ok",
-    "evidence": "Bundle text matches; BC-MIS-04014 listed."
+    "evidence": "fix_prompt true with relation distinct; SymPy 0/0 is nan vs 0, distinct; no expr rewritten."
    },
    {
     "id": "err-BC-ERR-04029",
     "verdict": "ok",
-    "evidence": "Bundle text matches; value -6 unchanged, equivalent is right; BC-MIS-04015 listed."
+    "evidence": "fix_prompt false with relation equivalent; -6 vs -6 equal; no expr rewritten."
    },
    {
     "id": "representations",
     "verdict": "ok",
-    "evidence": "null; ki-2 figure carries BC-REP-02 as the skill lists."
+    "evidence": "null; ki-2 figure carries BC-REP-02 as the skill lists.",
+    "note": "unchanged since 2026-09-29"
    },
    {
     "id": "BC-PRQ-04008",
     "verdict": "ok",
-    "evidence": "BC-PRQ-04008 description_plain names each quantity and whether it varies; the text paraphrases it."
+    "evidence": "Shortened paraphrase of BC-PRQ-04008 description_plain in the bundle (name each quantity and whether it varies); no id or label."
    },
    {
     "id": "chk-1",
-    "verdict": "ok",
-    "evidence": "SymPy: 2*(-3)/exp(0) = -6."
+    "verdict": "lint",
+    "evidence": "Served stem opens 'For ex-1 the form is 0/0', a block id the renderer does not strip; the stem predates the redesign but fails the served-id rule."
    },
    {
     "id": "chk-2",
     "verdict": "ok",
-    "evidence": "SymPy: f(3x) + 1 at 1 is 0, sin(0) = 0, 3*2/cos(0) = 6."
+    "evidence": "SymPy: f(3x) + 1 at 1 is 0, sin(0) = 0, 3*2/cos(0) = 6.",
+    "note": "unchanged since 2026-09-29"
    }
   ],
   "advice": [
-   "ki-2 anchors its continuity idea with the LIM-4.A.1 indeterminacy quote, which does not support it; the idea is sourced from the research line, but the quote should be dropped or the EK mapping noted.",
-   "The ki-2 figure (a smooth curve through (4, 4)) conveys 'no hole, no jump' well; a curve known only through values is shown as if known, which may mislead slightly.",
-   "The bridge BC-PRQ-04008 is weakly related. Only two checks, as the design notes; no MCQ exercises recognition of the rival."
+   "ex-1 step 1 why was trimmed from 'Differentiable, so continuous' to 'Continuous'; the differentiability reason is the lesson's scored habit (sg-23:14) and fits within the cap.",
+   "err-BC-ERR-04029 scoring_consequence serves 'BC-ERR-99008' mid-sentence; record-verbatim, kept by the renderer, but a student sees an id.",
+   "ki-1 and ki-2 share ced:93 quotes that are short fragments ('Limits of the indeterminate forms 0 over 0'); both are verbatim but ki-2's quote does not speak to continuity."
   ],
   "counts": {
    "ok": 12,
    "unsourced": 0,
-   "wrong": 0,
+   "wrong": 1,
    "over_cap": 0,
-   "lint": 0
+   "lint": 1
   }
  }
 }

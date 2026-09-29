@@ -36,59 +36,78 @@
   "auditor": "claude-opus-5-5",
   "blocks": [
    {
+    "id": "prediction",
+    "verdict": "ok",
+    "evidence": "A is the only true option: a right side limit of -oo at -3 makes x = -3 a vertical asymptote with g falling on its right (SymPy example -1/(x+3): limit at -3 from the right is -oo); B asserts end behaviour the statement does not carry; C is false because g is unbounded below near -3. Resolution matches ki-1 and the 1.9 line distinguishing an infinite limit from a limit at infinity, with BC-QA-01013 wrong_approaches naming the vertical asymptote reading."
+   },
+   {
     "id": "orientation",
     "verdict": "ok",
-    "evidence": "Paraphrases BC-CON-01003 and the 1.9 line 'the distinction between an infinite limit and a limit at infinity'; 39 words."
+    "evidence": "Infinity sentence dropped; the rest paraphrases BC-CON-01003 description_formal; no id."
    },
    {
     "id": "ki-1",
     "verdict": "ok",
-    "evidence": "Side notation from BC-CON-01003 notation, definition from ced:39, infinity distinction from research 1.9 'What conversion must not lose'; 50 words."
+    "evidence": "Parenthetical ids removed; text otherwise unchanged."
    },
    {
     "id": "st-1",
     "verdict": "ok",
-    "evidence": "Matches BC-QA-01013 common_givens, path[0] and wrong_approaches (BC-ERR-01033); cue 16 words."
+    "evidence": "Label removed; rival from BC-QA-01013 wrong_approaches (BC-ERR-01033), now in sources."
+   },
+   {
+    "id": "st-1.contrast",
+    "verdict": "ok",
+    "evidence": "this matches BC-QA-01013 typical_wording (which statement is consistent with a stated limit); not_this moves infinity under the arrow; why_not true (a limit at infinity of 4 is end behaviour, horizontal asymptote y = 4, not a vertical line); feature equals st-1's separating_feature."
+   },
+   {
+    "id": "no_figure_reason",
+    "verdict": "ok",
+    "evidence": "BC-SKL-01005 carries BC-REP-01 and BC-REP-04, BC-SKL-01007 carries BC-REP-01 only, so no figure-bearing representation; ki-1 is a notation reading rule with no process."
    },
    {
     "id": "ex-1",
     "verdict": "ok",
-    "evidence": "Right side limit of -oo at -3 makes x = -3 a vertical asymptote with g falling on the right; key contains 'asymptote' per the spec invariant."
+    "evidence": "Right side limit of -oo at -3 makes x = -3 a vertical asymptote with g falling on the right; key contains 'asymptote' per the spec invariant.",
+    "note": "unchanged since 2026-09-29"
    },
    {
     "id": "what_a_reader_scores",
     "verdict": "ok",
-    "evidence": "Empty; BC-QA-01013 carries no point_types."
+    "evidence": "Empty; BC-QA-01013 carries no point_types.",
+    "note": "unchanged since 2026-09-29"
    },
    {
     "id": "representations",
     "verdict": "ok",
-    "evidence": "null; no claim served."
+    "evidence": "null; no claim served.",
+    "note": "unchanged since 2026-09-29"
    },
    {
-    "id": "bridge-BC-PRQ-06005",
+    "id": "BC-PRQ-06005",
     "verdict": "ok",
-    "evidence": "Paraphrases BC-PRQ-06005 and its failure_signature; 29 words."
+    "evidence": "Paraphrases BC-PRQ-06005 and its failure_signature; 29 words.",
+    "note": "unchanged since 2026-09-29"
    },
    {
     "id": "chk-1",
     "verdict": "ok",
-    "evidence": "Infinite value at input -3 gives vertical asymptote x = -3; matches ex-1."
+    "evidence": "Infinite value at input -3 gives vertical asymptote x = -3; matches ex-1.",
+    "note": "unchanged since 2026-09-29"
    },
    {
     "id": "chk-2",
     "verdict": "ok",
-    "evidence": "limit of h as x decreases without bound equal to 5/2 gives horizontal asymptote y = 5/2 at the left end."
+    "evidence": "limit of h as x decreases without bound equal to 5/2 gives horizontal asymptote y = 5/2 at the left end.",
+    "note": "unchanged since 2026-09-29"
    }
   ],
   "advice": [
-   "The concept holds no active error, so the lesson carries no error block; the rival BC-ERR-01033 appears only in st-1 and in an ex-1 step, which is thin for the lesson's central trap.",
-   "Both checks are short_answer asking to name an asymptote while BC-QA-01013 is a matching MCQ; an MCQ check with options differing only in where infinity sits would rehearse the stem as it appears.",
-   "ki-1 packs notation and the infinity distinction into one text block; a contrast pair (value infinity against infinity under the arrow) would suit the comparison better than plain text.",
-   "ki-1 cites ced:39 for the one sided superscripts, which ced:39 does not print; the notation is sourced by the BC-CON-01003 record and could cite it directly."
+   "The contrast pair stays inside BC-QA-01013 (both stems are matching questions); it separates two readings the archetype tests, which is the lesson's trap BC-ERR-01033, rather than two archetypes.",
+   "The earlier advice to add a contrast for infinity in the value against infinity under the arrow is met by the new pair; the advice that both checks are short_answer against an MCQ archetype still stands."
   ],
   "counts": {
-   "ok": 9,
+   "ok": 12,
    "unsourced": 0,
    "wrong": 0,
    "over_cap": 0,

@@ -3,15 +3,15 @@
  "version": 1,
  "kind": "concept",
  "target_id": "BC-CON-02014",
- "status": "draft",
+ "status": "signed_off",
  "snapshot_digest": "a6a8ec9d3f59ab8f712e33d30cc22fc64bf2c478fbe7312e3e3118d319c6a42f",
  "source_digest": "1c3a73d24d3490a95718e0ac794420b45f6ec119f7c1247b53cc265a5cc3590a",
  "read_minutes": {
-  "full": 4.9,
+  "full": 4.8,
   "brief": 3.0
  },
  "word_count": {
-  "full": 703,
+  "full": 701,
   "brief": 432
  },
  "sections": [
@@ -115,48 +115,67 @@
    "text": "For \\(\\frac{u}{v}\\) the derivative is \\(\\frac{vu'-uv'}{v^2}\\). Order matters: reversing the numerator terms flips the sign of the whole derivative. The denominator is squared. When the denominator carries no variable, the constant multiple rule is shorter.",
    "notation": "quotient rule",
    "delivery": {
-    "mode": "table",
-    "reason": "rule 5: BC-REP-03 supplied values on BC-SKL-02041, laid beside the rule as numbers",
+    "mode": "figure",
+    "reason": "rule 4: BC-REP-02 on BC-SKL-02041, ahead of rule 5; the quotient of x^2 by x + 1 graphed with its tangent at x = 1 beside the line whose slope is the quotient of the derivatives",
     "sources": [
      "BC-SKL-02041"
     ],
     "spec": {
-     "kind": "table",
-     "representations": [
-      "BC-REP-03"
-     ],
-     "columns": [
-      "quantity at x = 2",
-      "value"
-     ],
-     "rows": [
-      [
-       "f(2)",
-       6
-      ],
-      [
-       "f'(2)",
-       1
-      ],
-      [
-       "g(2)",
+     "kind": "graph",
+     "window": {
+      "x": [
+       0,
        2
       ],
-      [
-       "g'(2)",
-       3
+      "y": [
+       -1.5,
+       2.5
       ]
-     ],
-     "labels": [
+     },
+     "curves": [
       {
-       "text": "(g(2)f'(2) - f(2)g'(2)) / g(2)^2 = -4, while f'(2)/g'(2) = 1/3",
-       "placement": "inside",
-       "at": "last line of the table frame"
+       "expr": "x**2/(x + 1)",
+       "style": "solid",
+       "label": {
+        "text": "h(x) = x^2 over (x + 1)",
+        "placement": "inside"
+       }
+      },
+      {
+       "expr": "3*x/4 - 1/4",
+       "style": "solid",
+       "label": {
+        "text": "tangent, slope (f'g - fg')/g^2 = 3/4",
+        "placement": "inside"
+       }
+      },
+      {
+       "expr": "2*x - 3/2",
+       "style": "dashed",
+       "label": {
+        "text": "slope f'/g' = 2, not the tangent",
+        "placement": "inside"
+       }
       }
+     ],
+     "points": [
+      {
+       "x": 1,
+       "y": 0.5,
+       "style": "closed",
+       "label": {
+        "text": "(1, 1/2)",
+        "placement": "inside"
+       }
+      }
+     ],
+     "labels": [],
+     "representations": [
+      "BC-REP-02"
      ]
     },
-    "fallback": "the same four rows as a text list, with the two quotients written after them",
-    "keyboard": "none needed; the table is read row by row in order by a screen reader"
+    "fallback": "Alt text: the graph of \\(h(x)=\\frac{x^2}{x+1}\\), with \\(f(x)=x^2\\) and \\(g(x)=x+1\\), through \\((1,\\frac12)\\). The tangent there has slope \\(\\frac{f'(1)g(1)-f(1)g'(1)}{g(1)^2}=\\frac34\\); the dashed line of slope \\(\\frac{f'(1)}{g'(1)}=2\\) through the same point is not tangent.",
+    "keyboard": "none needed: a static figure"
    }
   },
   {
@@ -186,8 +205,8 @@
      "archetype_id": "BC-QA-02008"
     },
     "not_this": {
-     "text": "Let \\(m(x)=\\frac{x^3+4}{5}\\). Find \\(m'(x)\\).",
-     "why_not": "The denominator is a constant, so the constant multiple rule applies, not the quotient rule."
+     "text": "Let \\(m(x)=(x^3+4)\\cos x\\). Find \\(m'(x)\\).",
+     "why_not": "The cosine multiplies the polynomial, so the product rule applies, not the quotient rule."
     },
     "feature": "A variable in the denominator."
    }
@@ -430,7 +449,7 @@
     "form": "quotient"
    },
    "problem": {
-    "text": "The table gives \\(f(1)=-3\\), \\(f'(1)=5\\), \\(g(1)=2\\), \\(g'(1)=-2\\). Let \\(h(x)=\\frac{f(x)}{g(x)}\\). Find \\(h'(1)\\).",
+    "text": "Suppose \\(f(1)=-3\\), \\(f'(1)=5\\), \\(g(1)=2\\), \\(g'(1)=-2\\). Let \\(h(x)=\\frac{f(x)}{g(x)}\\). Find \\(h'(1)\\).",
     "command_verb": "find"
    },
    "calculator_status": "no_calculator",
@@ -1290,8 +1309,8 @@
   "author": "tools/lesson_transcribe.py",
   "prompt_version": "generator/lesson_v2",
   "design_path": "docs/lessons/unit-02/LSN-CON-02014.md",
-  "signed_off_by": null,
-  "signed_off_at": null,
+  "signed_off_by": "claude-opus-5-5",
+  "signed_off_at": "2026-09-29",
   "not_human": true
  }
 }

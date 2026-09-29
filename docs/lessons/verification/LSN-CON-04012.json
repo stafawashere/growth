@@ -39,83 +39,97 @@
   "auditor": "claude-opus-5-5",
   "blocks": [
    {
+    "id": "prediction",
+    "verdict": "ok",
+    "evidence": "SymPy: tangent 2 + (x - 1) gives 11/5 at 1.2; true f = -2x^3/3 + 3x - 1/3 gives f(1.2) = 793/375 = 2.1147 < 2.2, so B Less is the only true option; f'' = -4x <= -4 on [1, 1.2]; resolution is CHA-3.F.2 on ced:92; no verdict word or id."
+   },
+   {
     "id": "orientation",
     "verdict": "ok",
-    "evidence": "Paraphrases BC-CON-04012 description_plain and the unit 4.6 Direction of the error paragraph; 24 words."
+    "evidence": "Trimmed paraphrase of BC-CON-04012 and the 4.6 paragraph; sign of f'', concavity, direction."
    },
    {
     "id": "ki-1",
     "verdict": "ok",
-    "evidence": "Matches research unit 4.6 Direction of the error and BC-QA-04008 invariant_structure; quote found verbatim on ced:92; 33 words."
+    "evidence": "Concave up gives an underestimate and concave down an overestimate, CHA-3.F.2; quote verbatim on cache/text/ced/page-092.txt."
    },
    {
     "id": "st-1",
     "verdict": "ok",
-    "evidence": "Method from expected_solution_path[3] and [4], rival BC-ERR-99020 from wrong_approaches; parameter_spec notes make f' and f'' disagree; 27 words."
+    "evidence": "Labels removed; method is expected_solution_path step 4 of BC-QA-04008; rival is BC-ERR-99020 (sign of f' in place of concavity)."
+   },
+   {
+    "id": "st-1.contrast",
+    "verdict": "ok",
+    "evidence": "this matches BC-QA-04008 asked_to_produce 'an overestimate or underestimate judgement with a reason'; SymPy h'(1) = 3, tangent at 1.1 = 33/10, h''(1) = -2; not_this asks the approximation value only, a stem a student could mistake for it, why_not true; feature true."
    },
    {
     "id": "ex-1",
     "verdict": "ok",
-    "evidence": "SymPy: f'(1) = 1, estimate 2 + 1/5 = 11/5 = 2.2, f'' = -4x, values -4 and -24/5 on [1, 1.2], so overestimate."
+    "evidence": "Cues and whys trimmed; expr unchanged; SymPy f'' = -4x < 0 on [1, 1.2], overestimate; no fade_from."
    },
    {
     "id": "reader-ex-1",
     "verdict": "ok",
-    "evidence": "BC-PT-99005 is in BC-QA-04008 point_types; line carries its earns and does_not_earn text verbatim."
+    "evidence": "BC-PT-99005 is in BC-QA-04008 point_types; line carries its earns and does_not_earn text verbatim.",
+    "note": "unchanged since 2026-09-29"
    },
    {
     "id": "err-BC-ERR-04026",
     "verdict": "ok",
-    "evidence": "observed_behavior and scoring_consequence match the bundle; BC-MIS-05022 is a listed possible misconception; f'' = -4x confirmed."
+    "evidence": "fix_prompt true with relation distinct; symbol fpp vs -4x distinct; no expr rewritten."
    },
    {
     "id": "err-BC-ERR-99020",
     "verdict": "ok",
-    "evidence": "Bundle text matches; SymPy: f'(1) = 1 against f'' = -4x; BC-MIS-07010 listed."
+    "evidence": "fix_prompt true with relation distinct; 1 vs -4x distinct; no expr rewritten."
    },
    {
     "id": "err-BC-ERR-99022",
     "verdict": "ok",
-    "evidence": "SymPy: 2 + 1/5 = 11/5, not 9/5; bundle text matches."
+    "evidence": "fix_prompt true with relation distinct; SymPy 9/5 vs 11/5 distinct; no expr rewritten."
    },
    {
     "id": "representations",
     "verdict": "ok",
-    "evidence": "null; ki-1 interactive carries BC-REP-02 and BC-REP-04, which the skills list."
+    "evidence": "null; ki-1 interactive carries BC-REP-02 and BC-REP-04, which the skills list.",
+    "note": "unchanged since 2026-09-29"
    },
    {
     "id": "BC-PRQ-04008",
     "verdict": "ok",
-    "evidence": "BC-PRQ-04008 description_plain names each quantity and whether it varies; the text paraphrases it."
+    "evidence": "Shortened paraphrase of BC-PRQ-04008 description_plain in the bundle (name each quantity and whether it varies); no id or label."
    },
    {
     "id": "chk-1",
-    "verdict": "ok",
-    "evidence": "SymPy: f'' = -4x < 0 on [1, 1.2]; key overestimate."
+    "verdict": "lint",
+    "evidence": "Served stem opens 'For ex-1,', a block id the renderer does not strip; the stem predates the redesign but fails the served-id rule."
    },
    {
     "id": "chk-2",
     "verdict": "ok",
-    "evidence": "SymPy: f'(1) = -3, estimate 27/10 = 2.7, f'' = 2x with values 2 and 11/5, key underestimate; draw satisfies curvature*slope < 0."
+    "evidence": "SymPy: f'(1) = -3, estimate 27/10 = 2.7, f'' = 2x with values 2 and 11/5, key underestimate; draw satisfies curvature*slope < 0.",
+    "note": "unchanged since 2026-09-29"
    },
    {
     "id": "chk-3",
     "verdict": "ok",
-    "evidence": "SymPy: f'(1) = 4, estimate 7/5 = 1.4, f'' = -6x < 0, key B; A uses f'(1) = 4, D uses 1 - 4/10 = 3/5; draw meets the constraints."
+    "evidence": "SymPy: f'(1) = 4, estimate 7/5 = 1.4, f'' = -6x < 0, key B; A uses f'(1) = 4, D uses 1 - 4/10 = 3/5; draw meets the constraints.",
+    "note": "unchanged since 2026-09-29"
    }
   ],
   "advice": [
-   "BC-PT-99005 is a value with setup point; tagging it on a verbal verdict fits the rubric loosely. The research names a reasoning point, so the scoring line reads oddly for a statement answer.",
-   "The bridge BC-PRQ-04008 (naming quantities in a verbal scenario) has little to do with a concavity verdict; it is the only prerequisite the bundle offers, but the bridge adds little.",
-   "Modes fit: the orientation figure contrasts line and curve, the interactive ki-1 lets the reader find the over and under regions, and step_reveal suits the process blocks.",
-   "Recognition of the stem, the first written line (f'') and the rival (sign of f') are all taught; the scoring habit of tying the reason to the given f' is shown by err-BC-ERR-04026 and chk-3 C."
+   "The prediction stem omits the point of tangency x = 1 and f(1) = 2, which the resolution's interval [1, 1.2] relies on; adding 'at x = 1' makes the stem self-contained.",
+   "ki-1's trim dropped 'on an interval holding both inputs' and 'whether f increases decides nothing'; the interval condition is what makes the rule true and could return in a few words.",
+   "err-BC-ERR-04026 scoring_consequence serves 'BC-ERR-99001' mid-sentence; it is record-verbatim, which the renderer keeps by design, but a student sees an id.",
+   "Kept from the earlier audit: the bridge BC-PRQ-04008 is weakly related to concavity."
   ],
   "counts": {
-   "ok": 13,
+   "ok": 14,
    "unsourced": 0,
    "wrong": 0,
    "over_cap": 0,
-   "lint": 0
+   "lint": 1
   }
  }
 }

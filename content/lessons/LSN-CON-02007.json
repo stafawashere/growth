@@ -3,7 +3,7 @@
  "version": 1,
  "kind": "concept",
  "target_id": "BC-CON-02007",
- "status": "draft",
+ "status": "signed_off",
  "snapshot_digest": "a6a8ec9d3f59ab8f712e33d30cc22fc64bf2c478fbe7312e3e3118d319c6a42f",
  "source_digest": "86e5d3a91322d732683ab04f013f3a28e91f63b1d87dadec4f74af41bafa22ee",
  "read_minutes": {
@@ -11,7 +11,7 @@
   "brief": 3.0
  },
  "word_count": {
-  "full": 668,
+  "full": 667,
   "brief": 412
  },
  "sections": [
@@ -227,18 +227,18 @@
    "archetype_id": "BC-QA-04002",
    "cue": "A table; the stem asks to approximate a derivative at a tabulated input, with units.",
    "method": "The two rows that bracket the point, differenced, over their inputs' difference.",
-   "rival": "Rival: a pair of rows other than the bracketing pair.",
+   "rival": "A pair of rows other than the bracketing pair.",
    "separating_feature": "The two rows sit on either side of the point.",
    "contrast": {
     "this": {
-     "text": "A table gives \\(P(1)=8\\), \\(P(3)=14\\), \\(P(5)=20\\). Approximate \\(P'(3)\\), with units.",
+     "text": "A table gives \\(P(t)\\) liters at \\(t\\) hours: \\(P(1)=8\\), \\(P(3)=14\\), \\(P(5)=20\\). Approximate \\(P'(3)\\), with units.",
      "archetype_id": "BC-QA-04002"
     },
     "not_this": {
      "text": "Find the average rate of change of \\(P\\) over \\(1\\le t\\le5\\), with units.",
-     "why_not": "It asks for an average rate over a named interval."
+     "why_not": "It asks for the average rate itself."
     },
-    "feature": "A derivative symbol at a tabulated input, no named interval."
+    "feature": "The stem asks for a derivative at a point."
    }
   },
   {
@@ -259,7 +259,7 @@
    "archetype_id": "BC-QA-02013",
    "cue": "A function model in a calculator part; the stem asks for the derivative at an input, with setup.",
    "method": "The setup naming the quantity, such as \\(W'(2)\\), then the calculator value.",
-   "rival": "Rival: a bare calculator number with no setup.",
+   "rival": "A bare calculator number with no setup.",
    "separating_feature": "A formula and a calculator part, not a table."
   },
   {
@@ -1049,8 +1049,8 @@
   "author": "tools/lesson_transcribe.py",
   "prompt_version": "generator/lesson_v2",
   "design_path": "docs/lessons/unit-02/LSN-CON-02007.md",
-  "signed_off_by": null,
-  "signed_off_at": null,
+  "signed_off_by": "claude-opus-5-5",
+  "signed_off_at": "2026-09-29",
   "not_human": true
  }
 }

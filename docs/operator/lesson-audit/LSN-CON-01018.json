@@ -36,58 +36,74 @@
   "auditor": "claude-opus-5-5",
   "blocks": [
    {
+    "id": "prediction",
+    "verdict": "ok",
+    "evidence": "SymPy: limit (5x+2)/sqrt(16x^2+3) as x->-oo is -5/4 and |f|/g tends to 5/4, so neither outgrows the other and C is the only true option; the resolution states this computed limit; the finite nonzero reading is tagged [inferred] in the design."
+   },
+   {
     "id": "orientation",
     "verdict": "ok",
-    "evidence": "Paraphrases BC-CON-01018 and the 1.15 Relative magnitudes paragraph."
+    "evidence": "unchanged since 2026-09-29. Paraphrases BC-CON-01018 and the 1.15 Relative magnitudes paragraph."
    },
    {
     "id": "ki-1",
     "verdict": "ok",
-    "evidence": "fixed 2026-09-29: three readings of the quotient limit removed; ki-1 now states only the LIM-2.D.5 comparison (ced:52) and that the limit's value tells which quantity grows faster (BC-CON-01018 description_plain, 1.15 topic text); inferred entry narrowed to the ex-1 finite nonzero reading."
+    "evidence": "Ids removed from text; content is the 1.15 Relative magnitudes paragraph and BC-CON-01018 description_plain."
    },
    {
     "id": "st-1",
     "verdict": "ok",
-    "evidence": "Rival BC-ERR-01021 is a BC-QA-01010 wrong_approaches entry; method paraphrases BC-SKL-01062."
+    "evidence": "method has no leading label; rival is wrong_approaches BC-ERR-01021 with the id moved to sources."
+   },
+   {
+    "id": "st-1.contrast",
+    "verdict": "ok",
+    "evidence": "this asks for the quotient limit of two quantities (SymPy lim (7x-3)/sqrt(9x^2+1) at -oo is -7/3), the multi-concept variant of BC-QA-01010 named in the 1.15 Assessment behaviour paragraph; not_this is one quantity's end value (SymPy HA y=7), BC-CON-01017, so why_not and feature are true."
    },
    {
     "id": "ex-1",
     "verdict": "ok",
-    "evidence": "SymPy: limit (5x+2)/sqrt(16x^2+3) as x->-oo is -5/4."
+    "evidence": "unchanged since 2026-09-29. SymPy: limit (5x+2)/sqrt(16x^2+3) as x->-oo is -5/4."
    },
    {
     "id": "reader-ex-1",
     "verdict": "ok",
-    "evidence": "Lines are the bundle BC-PT-99054 and BC-PT-99004 records."
+    "evidence": "unchanged since 2026-09-29. Lines are the bundle BC-PT-99054 and BC-PT-99004 records."
    },
    {
     "id": "representations",
     "verdict": "ok",
-    "evidence": "null."
+    "evidence": "unchanged since 2026-09-29. null."
    },
    {
-    "id": "bridge-BC-PRQ-01004",
+    "id": "BC-PRQ-01004",
     "verdict": "ok",
-    "evidence": "Paraphrases BC-PRQ-01004 description_plain and failure_signature."
+    "evidence": "unchanged since 2026-09-29. Paraphrases BC-PRQ-01004 description_plain and failure_signature."
    },
    {
     "id": "chk-1",
     "verdict": "ok",
-    "evidence": "SymPy: -5/4."
+    "evidence": "unchanged since 2026-09-29. SymPy: -5/4."
    },
    {
     "id": "chk-2",
     "verdict": "ok",
-    "evidence": "SymPy: limit sqrt(4x^2+3)/(5x-1) as x->-oo is -2/5."
+    "evidence": "unchanged since 2026-09-29. SymPy: limit sqrt(4x^2+3)/(5x-1) as x->-oo is -2/5."
+   },
+   {
+    "id": "delivery.ki-1",
+    "verdict": "ok",
+    "evidence": "SymPy quotient at -10, -100, -1000: -1.1988766, -1.2449883, -1.2494999, matching the rows to four places; limit -5/4 matches the label; label placed inside; fallback carries the same rows; this is the lesson's only drawn block."
    }
   ],
   "advice": [
-   "ki-1 is a comparison of three outcomes (0, unbounded, finite nonzero) delivered as text; a contrast or a small table of the three cases would serve it better. The inferred list mentions a model table inside ex-1 that the delivery record does not contain.",
-   "ex-1 and both checks use a finite nonzero case with a sign flip at negative infinity, so the lesson never shows a 0 or unbounded quotient, which are the readings that decide which quantity grows faster.",
-   "No error blocks and no rival worked out; the rival (substituting infinity) is named in st-1 only."
+   "delivery.ki-1 puts `model` on a key idea, but TEMPLATE.md rule 2 places a model on the concept's example and makes a process key idea `motion`; rule 1 forces ex-1 to step_reveal and figure presence needs a drawn entry, so the rules conflict for a BC-REP-01-only concept. The mode table's model row supports the choice; the rule text should say which wins.",
+   "The contrast pair's not_this matches BC-QA-01010's own typical_wording, while this is the multi-concept variant; the pair separates two concepts within one archetype, which the Recognition prose says, but a student may read this as the less typical stem.",
+   "The lesson still shows only a finite nonzero quotient; a 0 or unbounded case, the readings that decide which quantity grows faster, is never shown.",
+   "The ki-1 fallback omits the label 'quotient settles at -5/4'."
   ],
   "counts": {
-   "ok": 9,
+   "ok": 12,
    "unsourced": 0,
    "wrong": 0,
    "over_cap": 0,

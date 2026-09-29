@@ -48,98 +48,105 @@
   "auditor": "claude-opus-5-5",
   "blocks": [
    {
+    "id": "prediction",
+    "verdict": "ok",
+    "evidence": "SymPy limit(1/(3-x), x, 3, '-') = oo; B is the only true option (A claims a finite value, C describes end behaviour); resolution carried by BC-SKL-01036 and BC-MIS-01018 in the bundle."
+   },
+   {
     "id": "orientation",
     "verdict": "ok",
-    "evidence": "Paraphrase of BC-CON-01011 description_plain and the 1.9 Equivalence across representations paragraph; 35 words."
+    "evidence": "Shortened paraphrase of BC-CON-01011 description_plain; no id or tag."
    },
    {
     "id": "ki-1",
     "verdict": "ok",
-    "evidence": "fixed 2026-09-29: the [inferred: no BC-EK is mapped] tag removed from served text; the claim already sits in the inferred array."
+    "evidence": "Shortened; the three distinctions are the 1.9 'What conversion must not lose' paragraph; no id in text or notation."
    },
    {
     "id": "st-1",
     "verdict": "ok",
-    "evidence": "Method BC-QA-01013 expected_solution_path[0]; rival BC-ERR-01033 in wrong_approaches; cue from common_givens and typical_wording."
+    "evidence": "resolved 2026-09-29: rival no longer opens with 'Rival:' (record rival now 'Swapping vertical asymptote and end behaviour.'); tools/check_lesson_designs.py reports 0 findings"
+   },
+   {
+    "id": "st-1.contrast",
+    "verdict": "ok",
+    "evidence": "this is the 1.9 FRQ form (description in words of behaviour presented analytically) on BC-QA-01013; not_this SymPy limit = 10, a computed value (BC-CON-01007/01008 stem); feature true."
    },
    {
     "id": "ex-1",
     "verdict": "ok",
-    "evidence": "Left sided infinite limit at 3 read as vertical asymptote x = 3 with g increasing without bound from the left; matches parameter_spec notes for infinite_limit."
+    "evidence": "Left sided infinite limit at 3 read as vertical asymptote x = 3 with g increasing without bound from the left; matches parameter_spec notes for infinite_limit. (unchanged since 2026-09-29)"
    },
    {
     "id": "ex-2",
     "verdict": "ok",
-    "evidence": "Limit at infinity equal to -2 read as horizontal asymptote y = -2 on the right; matches parameter_spec notes for limit_at_infinity."
+    "evidence": "fade_from 2: step 1 (infinity under the arrow, end behaviour) suffices to write the asymptote; withheld step 2 valued (y = -2); SymPy limit(-2 + 1/x, x, oo) = -2."
    },
    {
     "id": "err-BC-ERR-01002",
     "verdict": "ok",
-    "evidence": "Record text verbatim; SymPy Limit(g(x),x,3,'+-') and Limit(g(x),x,3,'-') are distinct objects; BC-MIS-01002 listed."
+    "evidence": "fix_prompt true equals relation distinct; wrong and right exprs unchanged and distinct."
    },
    {
     "id": "err-BC-ERR-01020",
     "verdict": "ok",
-    "evidence": "Record text verbatim; BC-MIS-01012 listed, reason quoted from its description."
+    "evidence": "fix_prompt true equals relation distinct; wrong and right exprs unchanged and distinct."
    },
    {
     "id": "err-BC-ERR-01033",
     "verdict": "ok",
-    "evidence": "Record text verbatim; x = -2 against y = -2 distinct; BC-MIS-01018 listed."
+    "evidence": "fix_prompt true equals relation distinct; wrong and right exprs unchanged and distinct."
    },
    {
     "id": "err-BC-ERR-01021",
     "verdict": "ok",
-    "evidence": "Record text verbatim including sg-25:4; BC-MIS-99008 listed."
+    "evidence": "verbatim record text; the reader strips the citation (data/errors.json BC-ERR-01021 scoring_consequence matches word for word; the CITATION_GROUP pattern in app/web/src/lessons/LessonText.tsx removes the parenthetical, leaving 'Arithmetic performed with the infinity symbol is treated as scratch work and does not earn the value point.')"
    },
    {
     "id": "representations",
     "verdict": "ok",
-    "evidence": "null; 1.9 conversions carried by the orientation figure and the ki-1 figure with table."
+    "evidence": "null; 1.9 conversions carried by the orientation figure and the ki-1 figure with table. (unchanged since 2026-09-29)"
    },
    {
     "id": "BC-PRQ-01003",
     "verdict": "ok",
-    "evidence": "Paraphrase of description_plain and failure_signature."
+    "evidence": "Shortened paraphrase of description_plain; failure signature kept."
    },
    {
     "id": "BC-PRQ-06005",
     "verdict": "ok",
-    "evidence": "Paraphrase of description_plain and failure_signature."
+    "evidence": "Shortened paraphrase of description_plain; failure signature kept."
    },
    {
     "id": "chk-1",
     "verdict": "ok",
-    "evidence": "Key x = 3 matches ex-1."
+    "evidence": "Key x = 3 matches ex-1. (unchanged since 2026-09-29)"
    },
    {
     "id": "chk-2",
     "verdict": "ok",
-    "evidence": "Right sided limit to negative infinity at -1: vertical asymptote x = -1, decreasing from the right; correct."
+    "evidence": "Right sided limit to negative infinity at -1: vertical asymptote x = -1, decreasing from the right; correct. (unchanged since 2026-09-29)"
    },
    {
     "id": "chk-3",
     "verdict": "ok",
-    "evidence": "Key A correct; B, C, D match BC-ERR-01033, 01002, 01020 observed behaviours and are all false for the stated limit."
+    "evidence": "Key A correct; B, C, D match BC-ERR-01033, 01002, 01020 observed behaviours and are all false for the stated limit. (unchanged since 2026-09-29)"
    }
   ],
   "advice": [
+   "ki-1's served text dropped the worked instance of each infinity position; the ki-1 figure now carries them alone.",
+   "The served_text rule (SERVED_DESIGN_FIELDS in tools/check_lesson_designs.py and SERVED_FIELDS in tools/check_lessons.py) does not scan common_errors, although the reader serves scoring_consequence, wrong_step, right_step and possible_reason text.",
    "err-BC-ERR-01002's record says the two sides differ, but the stem supplies only the left side; the wrong step is an overclaim rather than a report of differing sides, so the served observed_behavior sits loosely on this draw.",
-   "ki-1 served text ends with [inferred: no BC-EK is mapped]; authoring metadata should not reach the student.",
    "chk-3 option D says the limit of h at 2 exists, while the stem is one sided at 2 from the right; wording it as the right hand limit would keep the distractor on BC-ERR-01020 alone.",
    "The archetype is matching among candidate graphs, tables and sentences, but every example and check is notation to words; no item shows a graph or table candidate, so the graph and table conversions named in 1.9 rest on the ki-1 figure only. An interactive figure where the reader picks the matching graph would serve the reading better than a static figure.",
    "No scoring habit is taught; the sg-25:4 point for presenting a limit expression is mentioned in the design and could be a one line habit in err-BC-ERR-01021."
   ],
   "counts": {
-   "ok": 15,
+   "ok": 17,
    "unsourced": 0,
    "wrong": 0,
    "over_cap": 0,
    "lint": 0
-  },
-  "fix_notes": [
-   "Removed the [inferred] tag from ki-1's served text.",
-   "Left as preferences: err-BC-ERR-01002 draw fit, chk-3 option D wording as a right hand limit, graph or table candidates and an interactive picking figure, a scoring habit line from sg-25:4."
-  ]
+  }
  }
 }

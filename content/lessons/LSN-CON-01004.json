@@ -3,7 +3,7 @@
  "version": 1,
  "kind": "concept",
  "target_id": "BC-CON-01004",
- "status": "draft",
+ "status": "signed_off",
  "snapshot_digest": "a6a8ec9d3f59ab8f712e33d30cc22fc64bf2c478fbe7312e3e3118d319c6a42f",
  "source_digest": "cc4a6b059eedb7ee673e158b9e6955b84c99858c2c04dce8a23d9b38f3495b40",
  "read_minutes": {
@@ -11,8 +11,8 @@
   "brief": 3.0
  },
  "word_count": {
-  "full": 527,
-  "brief": 369
+  "full": 528,
+  "brief": 370
  },
  "sections": [
   {
@@ -458,14 +458,14 @@
    "separating_feature": "Each side takes the branch whose condition holds.",
    "contrast": {
     "this": {
-     "text": "f(x) = x + 2 for x < 3, 8 - x for x ≥ 3. Does the limit at x = 3 exist?",
+     "text": "f(x) = x + 2 for x < 3, 8 - x for x ≥ 3. Is f continuous at x = 3? Justify.",
      "archetype_id": "BC-QA-01006"
     },
     "not_this": {
-     "text": "f(x) = x + 2 for x < 3, 8 - x for x ≥ 3. Is f continuous at x = 3?",
-     "why_not": "Continuity also needs f(3) and a comparison."
+     "text": "From a graph of g with an open circle at (3, 5), find the limit at x = 3.",
+     "why_not": "Only the limit is asked, not g(3)."
     },
-    "feature": "Limit or continuity."
+    "feature": "Whether the value at the input is asked."
    }
   },
   {
@@ -830,8 +830,8 @@
   "author": "tools/lesson_transcribe.py",
   "prompt_version": "generator/lesson_v2",
   "design_path": "docs/lessons/unit-01/LSN-CON-01004.md",
-  "signed_off_by": null,
-  "signed_off_at": null,
+  "signed_off_by": "claude-opus-5-5",
+  "signed_off_at": "2026-09-29",
   "not_human": true
  }
 }

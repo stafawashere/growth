@@ -45,88 +45,97 @@
   "auditor": "claude-opus-5-5",
   "blocks": [
    {
+    "id": "prediction",
+    "verdict": "ok",
+    "evidence": "Posed on ex-1 ([-1, 4], relative maximum at 1); key B is the ced:100 FUN-1.C.1 conclusion (existence, not location); A is BC-ERR-05008 (not implied), C false since differentiable on [-1, 4] gives continuity; no verdict word, no id."
+   },
+   {
     "id": "orientation",
     "verdict": "ok",
-    "evidence": "Paraphrases BC-CON-05002 description_plain and BC-QA-05010 expected_solution_path; 31 words."
+    "evidence": "Paraphrase of BC-CON-05002 and BC-QA-05010 asked_to_produce (continuity statement, theorem); minor rewording only."
    },
    {
     "id": "ki-1",
     "verdict": "ok",
-    "evidence": "Quote matches ced:100 FUN-1.C.1 verbatim; existence not location from FUN-1 enduring understanding; 42 words."
+    "evidence": "Shortened; hypothesis and existence conclusion from ced:100 FUN-1.C.1; quote unchanged and verbatim in the bundle's ced:100 page up to line breaks."
    },
    {
     "id": "st-1",
     "verdict": "ok",
-    "evidence": "Method is expected_solution_path[0], rival is wrong_approaches[0] of BC-QA-05010."
+    "evidence": "method 'The interval is closed.' has no label; BC-QA-05010 path[0] and wrong_approaches unchanged."
+   },
+   {
+    "id": "st-1.contrast",
+    "verdict": "lint",
+    "evidence": "this is a BC-QA-05010 stem (TW 'must the function attain a maximum value on the closed interval'), but 'Must h attain a maximum value there?' can read as 'at x = 5', the relative minimum just named, which flips the answer to no; 'on [2, 7]' fixes it. not_this (find the input where h attains its maximum) is the BC-QA-05006 location stem and why_not, feature are true."
    },
    {
     "id": "ex-1",
     "verdict": "ok",
-    "evidence": "Differentiable implies continuous on closed [-1, 4], so EVT gives a maximum value; location step matches BC-ERR-05008."
+    "evidence": "Differentiable implies continuous on closed [-1, 4], so EVT gives a maximum value; location step matches BC-ERR-05008. (unchanged since 2026-09-29)"
    },
    {
     "id": "ex-2",
     "verdict": "ok",
-    "evidence": "Jump at x = 2 inside [0, 6] breaks continuity, so EVT does not apply; matches BC-ERR-05007."
+    "evidence": "fade_from 3: shown steps (closed [0, 6]; jump at 2 inside, so g not continuous) suffice to conclude the theorem does not apply (BC-ERR-05007); step 1 now carries expr Interval(0, 6) as the valued step before the fade."
    },
    {
     "id": "what_a_reader_scores",
     "verdict": "ok",
-    "evidence": "Empty; BC-QA-05010 point_types is [] in the bundle."
+    "evidence": "Empty; BC-QA-05010 point_types is [] in the bundle. (unchanged since 2026-09-29)"
    },
    {
     "id": "err-BC-ERR-05007",
     "verdict": "ok",
-    "evidence": "observed_behavior and scoring_consequence verbatim; BC-MIS-05006 paraphrased."
+    "evidence": "fix_prompt true equals relation distinct; wrong and right expr differ (yes_by_extreme_value_theorem against theorem_does_not_apply); record text unchanged otherwise. Earlier: observed_behavior and scoring_consequence verbatim; BC-MIS-05006 paraphrased."
    },
    {
     "id": "err-BC-ERR-05008",
     "verdict": "ok",
-    "evidence": "observed_behavior and scoring_consequence verbatim; possible_reason null."
+    "evidence": "fix_prompt true equals relation distinct; wrong and right expr differ (Eq(x, 1) against maximum_value_attained_on_closed_interval); record text unchanged otherwise. Earlier: observed_behavior and scoring_consequence verbatim; possible_reason null."
    },
    {
     "id": "err-BC-ERR-99008",
     "verdict": "ok",
-    "evidence": "observed_behavior and scoring_consequence verbatim; BC-MIS-99009 paraphrased."
+    "evidence": "fix_prompt true equals relation distinct; wrong and right expr differ (continuous_asserted against continuous_because_differentiable); record text unchanged otherwise. Earlier: observed_behavior and scoring_consequence verbatim; BC-MIS-99009 paraphrased."
    },
    {
     "id": "representations",
     "verdict": "ok",
-    "evidence": "null; figure served on ki-1. Figure values 3 + 2 sin 2 = 4.819 and 1.5 + 2 sin 2 = 3.319 check."
+    "evidence": "null; figure served on ki-1. Figure values 3 + 2 sin 2 = 4.819 and 1.5 + 2 sin 2 = 3.319 check. (unchanged since 2026-09-29)"
    },
    {
-    "id": "bridge-BC-PRQ-05004",
+    "id": "BC-PRQ-05004",
     "verdict": "ok",
-    "evidence": "Paraphrase of BC-PRQ-05004 open versus closed notation; 13 words."
+    "evidence": "Paraphrase of BC-PRQ-05004 open versus closed notation; 13 words. (unchanged since 2026-09-29)"
    },
    {
     "id": "chk-1",
     "verdict": "ok",
-    "evidence": "Key yes by EVT follows from the given closed interval and continuity."
+    "evidence": "Key yes by EVT follows from the given closed interval and continuity. (unchanged since 2026-09-29)"
    },
    {
     "id": "chk-2",
     "verdict": "ok",
-    "evidence": "h continuous on closed [1, 4]: minimum value attained."
+    "evidence": "h continuous on closed [1, 4]: minimum value attained. (unchanged since 2026-09-29)"
    },
    {
     "id": "chk-3",
     "verdict": "ok",
-    "evidence": "fixed 2026-09-29: option D relabelled 'Yes, the minimum value is g(0).' with error_path BC-ERR-05008 (the theorem read as naming the minimum value at the relative minimum), replacing BC-ERR-99008 whose continuity label read as the same open interval error as option A; key C unchanged; word_count.full 524."
+    "evidence": "fixed 2026-09-29: option D relabelled 'Yes, the minimum value is g(0).' with error_path BC-ERR-05008 (the theorem read as naming the minimum value at the relative minimum), replacing BC-ERR-99008 whose continuity label read as the same open interval error as option A; key C unchanged; word_count.full 524. (unchanged since 2026-09-29)"
    }
   ],
   "advice": [
-   "chk-3 option D (yes because g is continuous) is tagged BC-ERR-99008, but on an open interval the failure is the closed interval check, which is BC-ERR-05007; a reader would see D as the same error as A.",
-   "The rival (differentiating to locate) appears in st-1 and ex-1 step 4 but no check asks the student to reject it on a stem that tempts differentiation.",
-   "No official item exists for BC-QA-05010, so recognition rests on the archetype wording alone; the lesson is honest about this.",
-   "Figure on ki-1 suits a comparison (continuous versus jump) and is the right mode."
+   "ex-2's only valued step before the fade is Interval(0, 6), a restatement of the given interval, and the withheld step 3 carries no expr; the answer is a statement, so the fade grades a statement key.",
+   "Prediction option B 'A maximum value exists; its input is unnamed' is odd wording; 'A maximum value exists somewhere on [-1, 4]' says the same.",
+   "The contrast pair's not_this points to BC-QA-05006 (the candidates test), which is not in this lesson's bundle; it is a real archetype, so this is recorded as sourced through the Recognition prose (BC-CON-05006)."
   ],
   "counts": {
-   "ok": 14,
+   "ok": 15,
    "unsourced": 0,
    "wrong": 0,
    "over_cap": 0,
-   "lint": 0
+   "lint": 1
   }
  },
  "fix_notes": [

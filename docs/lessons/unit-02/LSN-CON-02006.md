@@ -27,7 +27,7 @@ BC-SKL-02035 maps BC-EK-LIM-3A1 (ced:66), so one core block, both bands.
 
 - BC-QA-02003 (family derivative-definition-limit, MCQ, no calculator; research/question-analysis/question-archetypes.md#BC-QA-02003 Limit recognised as a derivative of a known function): `typical_wording` "Evaluate the given limit"; `common_givens` a limit in difference quotient form; `asked_to_produce` the value of the limit. The signal is the shape: substitution gives \(\frac{0}{0}\), and the numerator is a known function at a shifted input minus the same function at a base input, over the shift. The archetype has no `official_examples` (none in 2023 to 2025).
 
-The contrast pair on st-1 takes its near miss from Unit 1: a limit that also gives \(\frac{0}{0}\) but whose numerator is not a difference of one function's values, so algebra resolves it (BC-SKL-01024 is `confusable_with` on BC-SKL-02035). The `this` stem is a fresh draw on BC-QA-02003, an exponential at base 2.
+The contrast pair on st-1 takes its near miss from Unit 1: a limit that also gives \(\frac{0}{0}\) but whose denominator, \(x^2-x-2\), is not the change in input, so no derivative is matched and factoring resolves it to \(\frac{4}{3}\), the BC-SKL-01024 technique (BC-SKL-01024 is `confusable_with` on BC-SKL-02035). The `this` stem is a fresh draw on BC-QA-02003, an exponential at base 2.
 
 What says "not this concept": the numerator is not a difference of one function's values (a Unit 1 limit, rewritten by algebra); the stem says use the definition on a rule (BC-CON-02003); a rate at an instant in context (BC-CON-02002).
 
@@ -82,8 +82,8 @@ No draw equals a published BC-QA-02003 `parameter_draw` (content/items_gen_unit0
 
 ## Band plan
 
-- Low (full): prediction, orientation, the bridge, ki-1, st-1 with the contrast pair, ex-1, chk-1, the three error blocks, chk-2, chk-3. 492 words, 3.3 minutes (cap 900 and 6).
-- Mid (brief): prediction, orientation, the bridge, ki-1, st-1 with the contrast pair, ex-1, chk-1, err-02009, err-02010, chk-2. 423 words, 2.9 minutes (cap 450 and 3).
+- Low (full): prediction, orientation, the bridge, ki-1, st-1 with the contrast pair, ex-1, chk-1, the three error blocks, chk-2, chk-3. 496 words, 3.4 minutes (cap 900 and 6).
+- Mid (brief): prediction, orientation, the bridge, ki-1, st-1 with the contrast pair, ex-1, chk-1, err-02009, err-02010, chk-2. 427 words, 2.9 minutes (cap 450 and 3).
 - Refresher: ki-1, err-BC-ERR-02009, err-BC-ERR-02010, err-BC-ERR-02024, ex-1.
 
 ## Sources
@@ -129,7 +129,7 @@ No draw equals a published BC-QA-02003 `parameter_draw` (content/items_gen_unit0
    "id": "ki-1",
    "ek_id": "BC-EK-LIM-3A1",
    "depth": "core",
-   "text": "If the numerator is a known function at a shifted input minus the same function at the base, over the shift, the limit is that function's derivative at the base Match \\(\\frac{f(a+h)-f(a)}{h}\\) or \\(\\frac{f(x)-f(a)}{x-a}\\), name \\(f\\) and \\(a\\), then use the rule: \\((\\sin x)'=\\cos x\\), \\((\\cos x)'=-\\sin x\\), \\((e^x)'=e^x\\), \\((\\ln x)'=\\frac{1}{x}\\).",
+   "text": "If the numerator is a known function at a shifted input minus the same function at the base, over the shift, the limit is that function's derivative at the base. Match \\(\\frac{f(a+h)-f(a)}{h}\\) or \\(\\frac{f(x)-f(a)}{x-a}\\), name \\(f\\) and \\(a\\), then use the rule: \\((\\sin x)'=\\cos x\\), \\((\\cos x)'=-\\sin x\\), \\((e^x)'=e^x\\), \\((\\ln x)'=\\frac{1}{x}\\).",
    "notation": "",
    "quote": {"text": "recognizing an expression for the definition of the derivative of a function whose derivative is known offers a strategy for determining a limit", "source": "ced:66"},
    "sources": ["BC-EK-LIM-3A1", "BC-EK-FUN-3A4", "ced:66", "research/units/unit-02-differentiation-definition-properties.md#2.7 Derivatives of cos x, sin x, e^x, and ln x"]
@@ -141,14 +141,14 @@ No draw equals a published BC-QA-02003 `parameter_draw` (content/items_gen_unit0
    "archetype_id": "BC-QA-02003",
    "cue": "A limit in difference quotient form; the stem asks for its value.",
    "method": "Compare the numerator with a difference of values of a known function.",
-   "rival": "Rival: \\(\\frac{0}{0}\\) read as unresolvable, the limit reported as nonexistent.",
+   "rival": "\\(\\frac{0}{0}\\) read as unresolvable, the limit reported as nonexistent.",
    "separating_feature": "The constant in the numerator is the same function's value at the base.",
    "sources": ["BC-QA-02003"],
    "evidence_tag": "verified",
    "contrast": {
     "this": {"text": "Find \\(\\lim_{h\\to0}\\frac{5e^{2+h}-5e^{2}}{h}\\).", "archetype_id": "BC-QA-02003"},
-    "not_this": {"text": "Find \\(\\lim_{h\\to0}\\frac{h^2+5h}{h}\\).", "why_not": "The numerator is not a difference of one function's values, so factoring and cancelling \\(h\\) resolves it."},
-    "feature": "A numerator that subtracts the same function's value at the base point."
+    "not_this": {"text": "Find \\(\\lim_{x\\to2}\\frac{x^2-4}{x^2-x-2}\\).", "why_not": "The denominator is not the input change \\(x-2\\), so no derivative matches, and factoring out \\(x-2\\) gives \\(\\frac{4}{3}\\)."},
+    "feature": "A denominator that is exactly the change in input, under a difference of one function's values."
    }
   }
  ],
@@ -277,8 +277,8 @@ No draw equals a published BC-QA-02003 `parameter_draw` (content/items_gen_unit0
   {"block": "err-BC-ERR-02024", "mode": "step_reveal", "reason": "rule 1", "sources": []}
  ],
  "refresher": ["ki-1", "err-BC-ERR-02009", "err-BC-ERR-02010", "err-BC-ERR-02024", "ex-1"],
- "read_minutes": {"full": 3.3, "brief": 2.9},
- "word_count": {"full": 492, "brief": 423},
+ "read_minutes": {"full": 3.4, "brief": 2.9},
+ "word_count": {"full": 496, "brief": 427},
  "research_lines": [
   {"file": "research/units/unit-02-differentiation-definition-properties.md", "line": "justification variants identify the underlying function and base point of a recognised limit"}
  ],

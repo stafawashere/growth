@@ -87,7 +87,7 @@ No draw equals a published BC-QA-02004 `parameter_draw` (content/items_gen_unit0
 
 ## Band plan
 
-- Low (full): prediction, orientation, ki-1, st-1 with the contrast pair, ex-1, chk-1, err-BC-ERR-02011, err-BC-ERR-02012, err-BC-ERR-99008, ex-2 faded from step 3, chk-2, representations, chk-3. 694 words, 4.7 minutes (cap 900 and 6).
+- Low (full): prediction, orientation, ki-1, st-1 with the contrast pair, ex-1, chk-1, err-BC-ERR-02011, err-BC-ERR-02012, err-BC-ERR-99008, ex-2 faded from step 3, chk-2, representations, chk-3. 697 words, 4.7 minutes (cap 900 and 6).
 - Mid (brief): prediction, orientation, ki-1, st-1 with the contrast pair, ex-1, chk-1, err-BC-ERR-02011, err-BC-ERR-02012, chk-2. 449 words, 3.0 minutes (cap 450 and 3).
 - Refresher: ki-1, err-BC-ERR-02011, err-BC-ERR-02012, err-BC-ERR-99008, ex-1.
 
@@ -371,7 +371,7 @@ No draw equals a published BC-QA-02004 `parameter_draw` (content/items_gen_unit0
    "observed_behavior": "Responses apply the Mean Value Theorem, the Intermediate Value Theorem or L'Hospital's Rule without establishing continuity from differentiability, without bounding the target value between two function values, or without confirming the indeterminate form.",
    "scoring_consequence": "The condition point is not earned; in several years this was the point earned by the smallest proportion of responses on the question.",
    "wrong_step": {
-    "text": "On ex-2: yes, by the Intermediate Value Theorem, since \\(g(0)<1<g(8)\\).",
+    "text": "Some \\(c\\) in \\((0,8)\\) has \\(g(c)=1\\) by the Intermediate Value Theorem, since \\(g(0)<1<g(8)\\).",
     "expr": "(-3-1)*(7-1)"
    },
    "right_step": {
@@ -792,7 +792,7 @@ No draw equals a published BC-QA-02004 `parameter_draw` (content/items_gen_unit0
   "ex-1"
  ],
  "read_minutes": {"full": 4.7, "brief": 3.0},
- "word_count": {"full": 694, "brief": 449},
+ "word_count": {"full": 697, "brief": 449},
  "research_lines": [
   {
    "file": "research/units/unit-02-differentiation-definition-properties.md",

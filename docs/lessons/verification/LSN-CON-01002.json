@@ -40,79 +40,93 @@
   "auditor": "claude-opus-5-5",
   "blocks": [
    {
+    "id": "prediction",
+    "verdict": "ok",
+    "evidence": "SymPy: limit(3x/2, x, 2, -) = 3 and limit((x + 7)/3, x, 2, +) = 3, so key A (3) is the only true option; -1 is f(2) and a limit exists; resolution from the 1.2 definition; no verdict word or id."
+   },
+   {
     "id": "orientation",
     "verdict": "ok",
-    "evidence": "Paraphrases BC-CON-01002 description_plain and the 1.2 and 1.3 Assessment behaviour paragraphs; 33 words."
+    "evidence": "Shortened paraphrase of BC-CON-01002 description_plain; no id."
    },
    {
     "id": "ki-1",
     "verdict": "ok",
-    "evidence": "Paraphrase of the ced:39 definition (arbitrarily close, x not equal to c); 35 words."
+    "evidence": "Parenthetical ids removed; paraphrase of the ced:39 definition with x not equal to c and f(c) excluded."
    },
    {
     "id": "ki-2",
     "verdict": "ok",
-    "evidence": "Quote matches LIM-1.B.1 on ced:39 verbatim; 28 words."
+    "evidence": "Parenthetical ids removed; quote verbatim LIM-1.B.1 on ced:39."
    },
    {
     "id": "st-1",
     "verdict": "ok",
-    "evidence": "Cue, method and rivals match BC-QA-01001 common_givens, expected_solution_path[0] and wrong_approaches (BC-ERR-01001, BC-ERR-01003); cue 12 words."
+    "evidence": "Method has no label and follows BC-QA-01001 expected_solution_path[0..2]; rivals from wrong_approaches (BC-ERR-01001, BC-ERR-01003), now in sources."
+   },
+   {
+    "id": "st-1.contrast",
+    "verdict": "ok",
+    "evidence": "this matches BC-QA-01001 typical_wording (find the stated limit from a graph); not_this asks a function value, which a student can mistake for the limit; why_not true (g(4) = 7 is the dot, the height approached is 2); feature true."
    },
    {
     "id": "st-2",
     "verdict": "ok",
-    "evidence": "Matches BC-QA-01013 common_givens, path[0..1] and wrong_approaches (BC-ERR-01002); cue 16 words."
+    "evidence": "Label removed; path[0], common_givens and wrong_approaches (BC-ERR-01002) of BC-QA-01013 unchanged."
    },
    {
     "id": "ex-1",
     "verdict": "ok",
-    "evidence": "SymPy: limit(3x/2, x, 2, -) = 3, limit((x+7)/3, x, 2, +) = 3, (x+7)/3 at 5 = 4, matching the draw's segment notes; steps follow expected_solution_path."
-   },
-   {
-    "id": "what_a_reader_scores",
-    "verdict": "ok",
-    "evidence": "Empty; BC-QA-01001 and BC-QA-01013 carry no point_types."
+    "evidence": "Cues and whys shortened, expressions unchanged; SymPy left and right limits at 2 both 3, f(2) = -1 separate."
    },
    {
     "id": "err-BC-ERR-01001",
     "verdict": "ok",
-    "evidence": "observed_behavior and scoring_consequence verbatim from BC-ERR-01001; wrong -1 differs from right 3; reason paraphrases BC-MIS-01001."
+    "evidence": "Only fix_prompt added; true with relation distinct; -1 against 3."
    },
    {
     "id": "err-BC-ERR-01003",
     "verdict": "ok",
-    "evidence": "Verbatim from BC-ERR-01003; DNE against 3 on the draw with the dot removed; reason quotes BC-MIS-01001."
+    "evidence": "Only fix_prompt added; true with relation distinct; DNE against 3."
+   },
+   {
+    "id": "BC-PRQ-06005",
+    "verdict": "ok",
+    "evidence": "Shortened paraphrase of failure_signature ('for the wrong input')."
+   },
+   {
+    "id": "what_a_reader_scores",
+    "verdict": "ok",
+    "evidence": "Empty; BC-QA-01001 and BC-QA-01013 carry no point_types.",
+    "note": "unchanged since 2026-09-29"
    },
    {
     "id": "representations",
     "verdict": "ok",
-    "evidence": "null; no claim served."
-   },
-   {
-    "id": "bridge-BC-PRQ-06005",
-    "verdict": "ok",
-    "evidence": "Paraphrases BC-PRQ-06005 description_plain and failure_signature; 28 words."
+    "evidence": "null; no claim served.",
+    "note": "unchanged since 2026-09-29"
    },
    {
     "id": "chk-1",
     "verdict": "ok",
-    "evidence": "SymPy: limit(3x/2, x, 2, -) = 3; key 3 equals ex-1 answer."
+    "evidence": "SymPy: limit(3x/2, x, 2, -) = 3; key 3 equals ex-1 answer.",
+    "note": "unchanged since 2026-09-29"
    },
    {
     "id": "chk-2",
     "verdict": "ok",
-    "evidence": "SymPy: 4x-2 at 0 = -2, limit at 1 from left = 2; (12-2x)/5 at 6 = 0, limit at 1 from right = 2; key 2."
+    "evidence": "SymPy: 4x-2 at 0 = -2, limit at 1 from left = 2; (12-2x)/5 at 6 = 0, limit at 1 from right = 2; key 2.",
+    "note": "unchanged since 2026-09-29"
    }
   ],
   "advice": [
-   "Delivery modes fit: figure for the graph reading, motion for the limit being taken, step_reveal for the worked process.",
-   "err-BC-ERR-01003 serves the scoring_consequence 'Both the value point and any justification point are lost' while the design states the lesson says nothing about points (R14); consider dropping or neutralising scoring_consequence text in served error blocks.",
-   "The lesson teaches the stem and first line well for BC-QA-01001, but BC-QA-01013 has a strategy block and no worked example or check, so the matching rival (BC-ERR-01002) is never practised.",
-   "chk-2's parameter_draw has value_mark 'unmarked', which in the spec governs the jump point only; harmless, but the stem's dot at (1, 4) is the hole_value point, which reviewers may misread."
+   "ki-1 now says f(x) 'nears' R where it said 'gets arbitrarily close to'; the plain word loses the arbitrarily-close condition that ced:39 states, and a student could read 'nears' as any value f(x) moves toward.",
+   "The contrast pair stays inside BC-QA-01001, whose asked_to_produce includes function values at named inputs, so it separates the request (limit or value) rather than the archetype; that fits the concept but is not a recognition contrast.",
+   "The contrast's this stem names no function and does not say the curve approaches (4, 2) from both sides, while not_this names g; naming g in both and saying both sides approach the open circle would make the pair read as one graph.",
+   "The earlier advice on err-BC-ERR-01003's scoring_consequence and on BC-QA-01013 having no example or check still stands."
   ],
   "counts": {
-   "ok": 13,
+   "ok": 15,
    "unsourced": 0,
    "wrong": 0,
    "over_cap": 0,

@@ -3,16 +3,16 @@
  "version": 1,
  "kind": "concept",
  "target_id": "BC-CON-02006",
- "status": "draft",
+ "status": "signed_off",
  "snapshot_digest": "a6a8ec9d3f59ab8f712e33d30cc22fc64bf2c478fbe7312e3e3118d319c6a42f",
  "source_digest": "e1b13ac542c788275bf7b12814c2fa147a2615c50b451a731f6656f018619c03",
  "read_minutes": {
-  "full": 3.3,
+  "full": 3.4,
   "brief": 2.9
  },
  "word_count": {
-  "full": 435,
-  "brief": 385
+  "full": 439,
+  "brief": 389
  },
  "sections": [
   {
@@ -103,7 +103,7 @@
    "evidence_tag": "verified",
    "ek_id": "BC-EK-LIM-3A1",
    "depth": "core",
-   "text": "If the numerator is a known function at a shifted input minus the same function at the base, over the shift, the limit is that function's derivative at the base Match \\(\\frac{f(a+h)-f(a)}{h}\\) or \\(\\frac{f(x)-f(a)}{x-a}\\), name \\(f\\) and \\(a\\), then use the rule: \\((\\sin x)'=\\cos x\\), \\((\\cos x)'=-\\sin x\\), \\((e^x)'=e^x\\), \\((\\ln x)'=\\frac{1}{x}\\).",
+   "text": "If the numerator is a known function at a shifted input minus the same function at the base, over the shift, the limit is that function's derivative at the base. Match \\(\\frac{f(a+h)-f(a)}{h}\\) or \\(\\frac{f(x)-f(a)}{x-a}\\), name \\(f\\) and \\(a\\), then use the rule: \\((\\sin x)'=\\cos x\\), \\((\\cos x)'=-\\sin x\\), \\((e^x)'=e^x\\), \\((\\ln x)'=\\frac{1}{x}\\).",
    "quote": {
     "text": "recognizing an expression for the definition of the derivative of a function whose derivative is known offers a strategy for determining a limit",
     "source": "ced:66"
@@ -133,7 +133,7 @@
    "archetype_id": "BC-QA-02003",
    "cue": "A limit in difference quotient form; the stem asks for its value.",
    "method": "Compare the numerator with a difference of values of a known function.",
-   "rival": "Rival: \\(\\frac{0}{0}\\) read as unresolvable, the limit reported as nonexistent.",
+   "rival": "\\(\\frac{0}{0}\\) read as unresolvable, the limit reported as nonexistent.",
    "separating_feature": "The constant in the numerator is the same function's value at the base.",
    "contrast": {
     "this": {
@@ -141,10 +141,10 @@
      "archetype_id": "BC-QA-02003"
     },
     "not_this": {
-     "text": "Find \\(\\lim_{h\\to0}\\frac{h^2+5h}{h}\\).",
-     "why_not": "The numerator is not a difference of one function's values, so factoring and cancelling \\(h\\) resolves it."
+     "text": "Find \\(\\lim_{x\\to2}\\frac{x^2-4}{x^2-x-2}\\).",
+     "why_not": "The denominator is not the input change \\(x-2\\), so no derivative matches, and factoring out \\(x-2\\) gives \\(\\frac{4}{3}\\)."
     },
-    "feature": "A numerator that subtracts the same function's value at the base point."
+    "feature": "A denominator that is exactly the change in input, under a difference of one function's values."
    }
   },
   {
@@ -643,8 +643,8 @@
   "author": "tools/lesson_transcribe.py",
   "prompt_version": "generator/lesson_v2",
   "design_path": "docs/lessons/unit-02/LSN-CON-02006.md",
-  "signed_off_by": null,
-  "signed_off_at": null,
+  "signed_off_by": "claude-opus-5-5",
+  "signed_off_at": "2026-09-29",
   "not_human": true
  }
 }

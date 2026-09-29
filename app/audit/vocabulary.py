@@ -46,12 +46,18 @@ Added 2026-09-29 with the lessons layer (docs/plan/15-lessons.md, API, migration
 lesson_gap_fail_open, the lessons twin of opener_gap_fail_open, bounded one row per user, concept
 and day; lesson_stale, written when ingest finds a record whose sources moved or whose ids went
 inactive; lesson_signed_off, written when ingest first stores a signed_off version.
+
+Added 2026-09-29 with the Desmos fluency drills (docs/calculator/architecture.md, Routes):
+calculator_drill_served and calculator_drill_answered, one row each per drill, so a drill's record
+in calculator_drills has its matching entries in the log.
 """
 AUDIT_ACTIONS = (
    "account_created",
    "budget_call_refused",
    "budget_cap_changed",
    "budget_hard_stop",
+   "calculator_drill_answered",
+   "calculator_drill_served",
    "claudebox_disabled",
    "claudebox_enabled",
    "content_snapshot_reloaded",

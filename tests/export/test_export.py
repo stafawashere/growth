@@ -51,6 +51,7 @@ INVENTORY_TABLES = {
    "sessions",
    "budgets",
    "audit_log",
+   "calculator_drills",
 }
 NOT_PERSONAL_TABLES = {"items"}
 SHARED_TABLES_OUTSIDE_THE_INVENTORY = {"content_snapshots", "item_verifications", "review_queue", "jobs", "lessons", "lesson_verifications"}

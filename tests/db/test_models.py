@@ -40,13 +40,15 @@ P3_TABLE_NAMES = {"gradings", "frq_images"}
 
 P5_TABLE_NAMES = {"assessment_parts", "assessment_responses", "mock_results"}
 
+CALCULATOR_TABLE_NAMES = {"calculator_drills"}
+
 
 def test_models_create_all(tmp_path):
    engine = make_engine(tmp_path / "p1.sqlite")
    inspector = inspect(engine)
    table_names = set(inspector.get_table_names())
 
-   assert table_names == P7_TABLE_NAMES | P3_TABLE_NAMES | P5_TABLE_NAMES
+   assert table_names == P7_TABLE_NAMES | P3_TABLE_NAMES | P5_TABLE_NAMES | CALCULATOR_TABLE_NAMES
 
    gradings_columns = {column["name"] for column in inspector.get_columns("gradings")}
    assert gradings_columns == {

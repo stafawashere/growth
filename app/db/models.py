@@ -30,6 +30,9 @@ Migrations). lessons and lesson_verifications are shared content like items and
 item_verifications, with no user_id, so export and purge leave them alone; lesson_state,
 lesson_events and lesson_check_responses carry user_id and are the student's. attempts gains the
 two nullable preceded_by_lesson columns, added to an existing file by app/db/migrate.py.
+
+The Desmos fluency layer adds calculator_drills (docs/calculator/architecture.md), which carries
+user_id and so is exported and purged with the student's other rows.
 """
 from sqlalchemy import JSON, Integer, LargeBinary, Text, event, text
 from sqlalchemy.orm import DeclarativeBase, Mapped, mapped_column
@@ -646,6 +649,33 @@ class LessonCheckResponse(Base):
    correct: Mapped[int | None] = mapped_column(Integer, nullable=True)
    error_id: Mapped[str | None] = mapped_column(Text, nullable=True)
    elapsed_ms: Mapped[int | None] = mapped_column(Integer, nullable=True)
+   created_at: Mapped[str] = mapped_column(Text, nullable=False)
+   updated_at: Mapped[str] = mapped_column(Text, nullable=False)
+
+
+class CalculatorDrill(Base):
+   """One Desmos fluency drill, served and then answered once (docs/calculator/architecture.md,
+   Tables and migration). The keys are never stored: the answer rebuilds the task from draw. No
+   selection, update or credit rule reads this table (invariant C0)."""
+
+   __tablename__ = "calculator_drills"
+
+   id: Mapped[str] = mapped_column(Text, primary_key=True)
+   user_id: Mapped[str] = mapped_column(Text, nullable=False, index=True)
+   template_id: Mapped[str] = mapped_column(Text, nullable=False)
+   capability: Mapped[str] = mapped_column(Text, nullable=False)
+   draw: Mapped[str] = mapped_column(Text, nullable=False)
+   desmos_url: Mapped[str] = mapped_column(Text, nullable=False)
+   served_at: Mapped[str] = mapped_column(Text, nullable=False)
+   submitted_at: Mapped[str | None] = mapped_column(Text, nullable=True)
+   elapsed_ms: Mapped[int | None] = mapped_column(Integer, nullable=True)
+   value_entered: Mapped[str | None] = mapped_column(Text, nullable=True)
+   value_correct: Mapped[int | None] = mapped_column(Integer, nullable=True)
+   value_reason: Mapped[str | None] = mapped_column(Text, nullable=True)
+   setup_entered: Mapped[str | None] = mapped_column(Text, nullable=True)
+   setup_shown: Mapped[int] = mapped_column(Integer, nullable=False, default=0, server_default=text("0"))
+   setup_correct: Mapped[int | None] = mapped_column(Integer, nullable=True)
+   setup_reason: Mapped[str | None] = mapped_column(Text, nullable=True)
    created_at: Mapped[str] = mapped_column(Text, nullable=False)
    updated_at: Mapped[str] = mapped_column(Text, nullable=False)
 

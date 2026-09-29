@@ -69,6 +69,10 @@ Recommended next slice: P2 review mode and FSRS scheduling with `test_desired_re
 replay only, since the P1 gates still open are the operator's and the engine needs a finite due
 queue to teach from now to May 2027.
 
+## Today redesign, 2026-09-29 [inferred]
+
+The operator's overnight brief: research how the best practice products and the literature pick the next problem, measure Growth's Today against it, redesign the algorithm, the session, the day screen and the question standards, and prove the result in the running app. In progress; this entry is the checkpoint and is rewritten as the stages close. State and resume point: `docs/pedagogy/today/HANDOFF.md`. Branch `today/redesign` from main 635c03b.
+
 ## Lesson framework redesign, 2026-09-29 [verified]
 
 The operator's overnight brief: study how the strong mathematics products teach, design the lesson from a clean slate, measure the 127 served lessons against it, amend the framework, redesign every Unit 1 to 8 lesson, bring Units 9 and 10 to the new template, and prove the result in the running app. Every decision was delegated; the ones taken are listed below. Branch `lessons/redesign` from `main`, 31 commits (82927a2 to the entry commit), nothing pushed, main untouched. Research and design documents were written by the orchestrator (Fable 5.1) and Sonnet agents; every line of application and tool code was written by Opus 5.5 agents and checked by the orchestrator running the named command.

@@ -39,91 +39,108 @@
   "auditor": "claude-opus-5-5",
   "blocks": [
    {
+    "id": "prediction",
+    "verdict": "ok",
+    "evidence": "SymPy factor 2x^2-5x-3 = (x-3)(2x+1); apart gives -2/(2x+1) + 1/(x-3); option A and C simplify unequal to the integrand, B equal. Resolution from 6.12 Procedure line; no ids."
+   },
+   {
     "id": "orientation",
     "verdict": "ok",
-    "evidence": "Paraphrases BC-CON-06018 description_plain and research 6.12 Procedure; 28 words."
+    "evidence": "Shortened paraphrase of the 6.12 Procedure paragraph; no id."
    },
    {
     "id": "ki-1",
     "verdict": "ok",
-    "evidence": "Paraphrases research 6.12 Procedure paragraph; 31 words."
+    "evidence": "Paraphrases research 6.12 Procedure paragraph; 31 words.",
+    "note": "unchanged since 2026-09-29"
    },
    {
     "id": "st-1",
     "verdict": "ok",
-    "evidence": "Cue from common_givens, method expected_solution_path[0], rival wrong_approaches BC-ERR-06026."
+    "evidence": "Method 'Factor the denominator.' is expected_solution_path[0], no label; rival label and id removed, BC-ERR-06026 in sources."
+   },
+   {
+    "id": "st-1.contrast",
+    "verdict": "unsourced",
+    "evidence": "not_this (2x^2+7x+4)/(2x^2+7x+3) is numerator = denominator + 1, exactly BC-QA-06010's own improper form (parameter_spec degree 'improper'; notes: 'The improper form adds the denominator to the numerator, so division leaves 1 plus the same proper fraction'); SymPy apart = 1 + 2/(5(2x+1)) - 1/(5(x+3)). The archetype's own stem cannot be the near miss; a not_this from another archetype (for example an integrand with its inner derivative present) is needed."
    },
    {
     "id": "ex-1",
     "verdict": "ok",
-    "evidence": "SymPy: apart(7/(2x^2 - 5x - 3)) = -2/(2x+1) + 1/(x-3); derivative of ln(x-3) - ln(2x+1) minus integrand = 0; draw gives N = 7 by parameter_spec."
-   },
-   {
-    "id": "what_a_reader_scores:ex-1",
-    "verdict": "ok",
-    "evidence": "BC-PT-99003 and BC-PT-99004 texts copied from the bundle point_types."
+    "evidence": "Only cue text shortened; exprs, relations and point tags unchanged."
    },
    {
     "id": "err-BC-ERR-06019",
     "verdict": "ok",
-    "evidence": "Record verbatim; -2 ln|2x+1| drops the 1/2, distinct from the key."
+    "evidence": "fix_prompt true with relation distinct; exprs unchanged; SymPy: wrong minus right simplifies to nonzero."
    },
    {
     "id": "err-BC-ERR-06022",
     "verdict": "ok",
-    "evidence": "SymPy: 7 * ln(2x+1)/2 * ln(x-3) matches the wrong step; record verbatim."
+    "evidence": "fix_prompt true with relation distinct; exprs unchanged; SymPy: wrong minus right simplifies to nonzero."
    },
    {
     "id": "err-BC-ERR-06026",
     "verdict": "ok",
-    "evidence": "SymPy: apart((2x^2 - 5x + 4)/(2x^2 - 5x - 3)) = 1 - 2/(2x+1) + 1/(x-3)."
+    "evidence": "fix_prompt true with relation distinct; exprs unchanged; SymPy: wrong minus right simplifies to nonzero."
    },
    {
     "id": "err-BC-ERR-07030",
     "verdict": "ok",
-    "evidence": "Record verbatim; bars kept versus dropped."
+    "evidence": "fix_prompt true with relation distinct; exprs unchanged; SymPy: wrong minus right simplifies to nonzero. (Abs versus no bars differ on (-1/2, 3))."
    },
    {
     "id": "representations",
     "verdict": "ok",
-    "evidence": "null; research 6.12 lists only BC-REP-01."
+    "evidence": "null; research 6.12 lists only BC-REP-01.",
+    "note": "unchanged since 2026-09-29"
    },
    {
-    "id": "bridge-BC-PRQ-06003",
-    "verdict": "ok",
-    "evidence": "Paraphrases description_plain on absolute value inside ln of a linear expression."
+    "id": "BC-PRQ-06003",
+    "verdict": "wrong",
+    "evidence": "Shortened to 'ln carries absolute value bars.', a general claim that is false (ln(x^2 + 1), or ln(x - 3) on x > 3 as in the lesson's own keys, needs no bars). description_plain restricts it to 'the logarithm of a linear expression'; restoring 'of a linear factor' fixes it."
    },
    {
-    "id": "bridge-BC-PRQ-06011",
+    "id": "BC-PRQ-06011",
     "verdict": "ok",
-    "evidence": "Paraphrases description_plain on clearing denominators and substituting values."
+    "evidence": "Shortened paraphrase of description_plain (clear denominators, substitute values)."
    },
    {
     "id": "chk-1",
     "verdict": "ok",
-    "evidence": "SymPy: decomposition and antiderivative match ex-1."
+    "evidence": "SymPy: decomposition and antiderivative match ex-1.",
+    "note": "unchanged since 2026-09-29"
    },
    {
     "id": "chk-2",
     "verdict": "ok",
-    "evidence": "SymPy: apart(8/(3x^2 - 4x - 4)) = -3/(3x+2) + 1/(x-2); derivative check 0; N = 8 by parameter_spec."
+    "evidence": "SymPy: apart(8/(3x^2 - 4x - 4)) = -3/(3x+2) + 1/(x-2); derivative check 0; N = 8 by parameter_spec.",
+    "note": "unchanged since 2026-09-29"
    },
    {
     "id": "chk-3",
     "verdict": "ok",
-    "evidence": "SymPy: apart gives 1 - 2/(2x+3) + 1/(x-2); key derivative check 0; A omits x, B doubles the ln coefficient, C product of logs."
+    "evidence": "SymPy: apart gives 1 - 2/(2x+3) + 1/(x-2); key derivative check 0; A omits x, B doubles the ln coefficient, C product of logs.",
+    "note": "unchanged since 2026-09-29"
+   },
+   {
+    "id": "no_figure_reason",
+    "verdict": "ok",
+    "evidence": "All four skills carry BC-REP-01 only; ki-1 is a decomposition procedure."
    }
   ],
   "advice": [
    "err-BC-ERR-06022 and err-BC-ERR-07030 carry scoring consequences written for other archetypes (the u and dv point; an initial condition). Served in a partial fraction lesson these read oddly; consider dropping them from the mid band or noting the context.",
    "err-BC-ERR-07030 wrong step uses the same SymPy string as ex-1 (no bars), so the checker sees the served key and the error alike; the served text must carry the bars.",
    "BC-PT-99081 (decomposition point) is untagged, so the decomposition has no reader line although it is the step most specific to the concept.",
-   "Delivery modes fit; a two column contrast would serve err-BC-ERR-06026 (proper versus improper) better than step_reveal."
+   "Delivery modes fit; a two column contrast would serve err-BC-ERR-06026 (proper versus improper) better than step_reveal.",
+   "st-1.contrast this stem 9/((2x+1)(x+3)) matches typical_wording but not parameter_spec: second_shift 3 fails '(first_shift >= 0 and second_shift <= -1) or ...', and 9 is not weight * (2*3 - 1), so SymPy gives non integer constants 18/5 and -9/5. A draw inside the spec would keep integer constants.",
+   "Scoring consequence of err-BC-ERR-06022 carries page citations (sg-23:18, sg-24:18); verbatim record text the reader strips, so not lint."
   ],
   "counts": {
    "ok": 15,
-   "unsourced": 0,
-   "wrong": 0,
+   "unsourced": 1,
+   "wrong": 1,
    "over_cap": 0,
    "lint": 0
   }

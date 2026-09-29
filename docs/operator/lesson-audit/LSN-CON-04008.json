@@ -42,111 +42,118 @@
   "auditor": "claude-opus-5-5",
   "blocks": [
    {
+    "id": "prediction",
+    "verdict": "ok",
+    "evidence": "SymPy: r=h/2 gives V=pi h^3/12, dV/dt=pi h^2 h'/4; key B is the only true option among three; A (hold r constant) is BC-ERR-04018, C (put in h=4 first) is BC-ERR-04020. Resolution matches BC-CON-04008 and 4.4 The relating equation (eliminate before differentiating)."
+   },
+   {
     "id": "orientation",
     "verdict": "ok",
-    "evidence": "Paraphrases the concept description and unit research section; within 60 words; no lint."
+    "evidence": "Shortened paraphrase of BC-CON-04008 and 4.4 The relating equation; no id."
    },
    {
     "id": "ki-1",
     "verdict": "ok",
-    "evidence": "'A dimension with no given or asked rate is eliminated' keeps h in ex-1 (asked) and y in chk-2 (asked, key -4) and removes only r in ex-1; matches the 4.4 relating equation paragraph and BC-QA-04006 'eliminate any variable the supplied rates cannot support'; ced:90 quote verbatim.",
-    "reaudited": "2026-09-29"
+    "evidence": "Shortened quote 'The chain rule is the basis for differentiating variables' is a verbatim substring of cache/text/ced/page-090.txt; claims match 4.4."
    },
    {
     "id": "ki-2",
     "verdict": "ok",
-    "evidence": "Now core; CHA-3.D.2 quote verbatim on ced:90; one rate factor per varying factor is the product rule on r^2 h.",
-    "reaudited": "2026-09-29"
+    "evidence": "Shortened quote 'the product rule and the quotient rule' is a verbatim substring of cache/text/ced/page-090.txt (CHA-3.D.2); claim is the product rule on r^2 h, true."
    },
    {
     "id": "st-1",
     "verdict": "ok",
-    "evidence": "Method keeps any dimension with a given or asked rate, so ex-1 eliminates only r (V given, h asked, key 3/(2 pi)) and chk-2 eliminates none (x given, y asked, key -4); feature now counts given and asked rates, matching the design prose, the 4.4 relating equation paragraph and BC-QA-04006 path steps 2 and 3; rival is BC-QA-04006 wrong_approaches[2] and BC-ERR-99013 'treat one quantity as constant'; cue 10 words; design checker clean.",
-    "reaudited": "2026-09-29"
+    "evidence": "method starts with no label; rival loses its label and id; cue and separating feature still match BC-QA-04006 typical_wording; sources add the rival's error id."
+   },
+   {
+    "id": "st-1.contrast",
+    "verdict": "ok",
+    "evidence": "this: cone h=4r, dV/dt=5, depth 2; SymPy V=pi h^3/48, dV/dh at 2 = pi/4, dh/dt=20/pi; a BC-QA-04006 stem. not_this: V(t) given explicitly in t needs no relating equation, why_not 'V is given in t' true; feature true."
    },
    {
     "id": "st-2",
     "verdict": "ok",
-    "evidence": "Cue, method and rival match the archetype record; within 80 words."
+    "evidence": "method starts with no label; rival loses its label and id; cue and separating feature still match BC-QA-04007 typical_wording; sources add the rival's error id."
    },
    {
     "id": "ex-1",
     "verdict": "ok",
-    "evidence": "Every step and the key verified by SymPy; cues within 20 and whys within 25 words."
+    "evidence": "Step exprs, relations and answer 3/(2*pi) identical to the audited version (SymPy-checked 2026-09-29); only cue and why text shortened, still true."
    },
    {
     "id": "scores-ex-1",
     "verdict": "ok",
-    "evidence": "Line built from the point type record fields in the bundle (name, rubric citations, notation requirements)."
+    "evidence": "unchanged since 2026-09-29: Line built from the point type record fields in the bundle (name, rubric citations, notation requirements)."
    },
    {
     "id": "err-BC-ERR-04016",
     "verdict": "ok",
-    "evidence": "observed_behavior, scoring_consequence and misconception text found verbatim in the bundle; wrong and right values verified by SymPy."
+    "evidence": "fix_prompt true equals (relation == distinct) with relation distinct; SymPy: wrong pi r^2 h and right pi r^2 h/3 differ; wrong_step, right_step and bundle text unchanged since 2026-09-29."
    },
    {
     "id": "err-BC-ERR-04018",
     "verdict": "ok",
-    "evidence": "observed_behavior, scoring_consequence and misconception text found verbatim in the bundle; wrong and right values verified by SymPy."
+    "evidence": "fix_prompt true equals (relation == distinct) with relation distinct; SymPy: wrong pi r^2 h'/3 and right pi(2rh r'+r^2 h')/3 differ; wrong_step, right_step and bundle text unchanged since 2026-09-29."
    },
    {
     "id": "err-BC-ERR-04019",
     "verdict": "ok",
-    "evidence": "observed_behavior, scoring_consequence and misconception text found verbatim in the bundle; wrong and right values verified by SymPy."
+    "evidence": "fix_prompt true equals (relation == distinct) with relation distinct; SymPy: wrong 6=pi(16r'+4h')/3 and right 6=4pi h' differ; wrong_step, right_step and bundle text unchanged since 2026-09-29."
    },
    {
     "id": "err-BC-ERR-99013",
     "verdict": "ok",
-    "evidence": "observed_behavior, scoring_consequence and misconception text found verbatim in the bundle; wrong and right values verified by SymPy."
+    "evidence": "fix_prompt true equals (relation == distinct) with relation distinct; SymPy: wrong dV/dh=pi h^2/4 and right dV/dt=pi h^2 h'/4 differ; wrong_step, right_step and bundle text unchanged since 2026-09-29."
    },
    {
     "id": "representations",
     "verdict": "ok",
-    "evidence": "No representations block; null."
+    "evidence": "unchanged since 2026-09-29: No representations block; null."
    },
    {
     "id": "BC-PRQ-04001",
     "verdict": "ok",
-    "evidence": "Paraphrase of the prerequisite record in the bundle; within 60 words."
+    "evidence": "Shortened paraphrase of the prerequisite record in the bundle; no id or citation left in served text."
    },
    {
     "id": "BC-PRQ-04002",
     "verdict": "ok",
-    "evidence": "Paraphrase of the prerequisite record in the bundle; within 60 words."
+    "evidence": "Shortened paraphrase of the prerequisite record in the bundle; no id or citation left in served text."
    },
    {
     "id": "BC-PRQ-04003",
     "verdict": "ok",
-    "evidence": "Paraphrase of the prerequisite record in the bundle; within 60 words."
+    "evidence": "Shortened paraphrase of the prerequisite record in the bundle; no id or citation left in served text."
    },
    {
     "id": "BC-PRQ-04008",
     "verdict": "ok",
-    "evidence": "Paraphrase of the prerequisite record in the bundle; within 60 words."
+    "evidence": "Shortened paraphrase of the prerequisite record in the bundle; no id or citation left in served text."
    },
    {
     "id": "chk-1",
     "verdict": "ok",
-    "evidence": "Key and every option or step value verified by SymPy."
+    "evidence": "unchanged since 2026-09-29: Key and every option or step value verified by SymPy."
    },
    {
     "id": "chk-2",
     "verdict": "ok",
-    "evidence": "Key and every option or step value verified by SymPy."
+    "evidence": "unchanged since 2026-09-29: Key and every option or step value verified by SymPy."
    },
    {
     "id": "chk-3",
     "verdict": "ok",
-    "evidence": "Key and every option or step value verified by SymPy."
+    "evidence": "unchanged since 2026-09-29: Key and every option or step value verified by SymPy."
    }
   ],
   "advice": [
-   "chk-2 parameter_draw (size 5, ratio 2, leg long) does not generate the 6, 8, 10 triangle in the stem; chk-3 draw ratio 2 against the stem's height 3 times radius. Align draws with stems.",
-   "Orientation as a static figure and ki-1 as a slider both show the cone; one of them is redundant.",
-   "st-1 and st-2 teach recognition and first line well; the elimination step (similar triangles) is the lesson's core and is carried by ex-1 step 2, which has no expr."
+   "Prediction stem does not say which rate is wanted; writing V in r alone would also leave one variable. Adding 'dh/dt is wanted' removes the ambiguity. Option C names h = 4, a value the stem does not give.",
+   "Bridges are now bare topic names ('Volume formulas.', 'Pythagorean theorem.', 'Similar triangles.', 'Naming quantities.'); they no longer say what failure the bridge addresses, and 'Volume formulas' drops the area formulas 4.4 Geometric formulas required lists.",
+   "Carried from the earlier audit: chk-2 and chk-3 parameter_draw values do not match their stems; orientation figure and ki-1 slider both show the cone."
   ],
   "counts": {
-   "ok": 19,
+   "ok": 21,
    "unsourced": 0,
    "wrong": 0,
    "over_cap": 0,

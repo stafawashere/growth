@@ -72,14 +72,14 @@ BC-QA-04008 has `calculator_status` either, so Section I Part A, 2.14 minutes (r
 
 ## Delivery
 
-- orientation: figure. Rule 3: BC-REP-02 on BC-SKL-04030 [inferred].
-- ki-1: interactive. Rule 3 promoted: BC-QA-04008 `common_givens` "the point of tangency and a nearby input"; one draggable point of tangency, the reading "line above curve" or "line below curve" (docs/lessons/unit-04/README.md, section 6) [inferred].
+- orientation: figure. Rule 4: BC-REP-02 on BC-SKL-04030 [inferred].
+- ki-1: interactive. Rule 4 promoted: BC-QA-04008 `common_givens` "the point of tangency and a nearby input"; one draggable point of tangency, the reading "line above curve" or "line below curve" (docs/lessons/unit-04/README.md, section 6) [inferred].
 - ex-1 and the three error blocks: step_reveal. Rule 1.
 
 ## Band plan
 
-- Low (full): prediction, orientation, the bridge, key ideas, st-1 with the contrast pair, ex-1 with its scoring line, chk-1, err-BC-ERR-04026, err-BC-ERR-99020, err-BC-ERR-99022, chk-2, chk-3. 561 words, 3.74 minutes (cap 900 and 6).
-- Mid (brief): prediction, orientation, the bridge, core key ideas, st-1 with the contrast pair, ex-1 with its scoring line, chk-1, err-BC-ERR-04026, err-BC-ERR-99020, chk-2. 450 words, 3.0 minutes (cap 450 and 3).
+- Low (full): prediction, orientation, the bridge, key ideas, st-1 with the contrast pair, ex-1 with its scoring line, chk-1, err-BC-ERR-04026, err-BC-ERR-99020, err-BC-ERR-99022, chk-2, chk-3. 560 words, 3.74 minutes (cap 900 and 6).
+- Mid (brief): prediction, orientation, the bridge, core key ideas, st-1 with the contrast pair, ex-1 with its scoring line, chk-1, err-BC-ERR-04026, err-BC-ERR-99020, chk-2. 449 words, 3.0 minutes (cap 450 and 3).
 - Refresher: ki-1, err-BC-ERR-04026, err-BC-ERR-99020, err-BC-ERR-99022, ex-1.
 
 ## Sources
@@ -361,7 +361,7 @@ BC-QA-04008 has `calculator_status` either, so Section I Part A, 2.14 minutes (r
    },
    "completes": "ex-1",
    "stem": {
-    "text": "For ex-1, f''(x) = -4x. Is 2.2 an over or underestimate of f(1.2)?",
+    "text": "Above, f''(x) = -4x. Is 2.2 an over or underestimate of f(1.2)?",
     "command_verb": "justify"
    },
    "key": {
@@ -500,7 +500,7 @@ BC-QA-04008 has `calculator_status` either, so Section I Part A, 2.14 minutes (r
   {
    "block": "orientation",
    "mode": "figure",
-   "reason": "rule 3: BC-REP-02 on BC-SKL-04030",
+   "reason": "rule 4: BC-REP-02 on BC-SKL-04030",
    "sources": [
     "BC-SKL-04030"
    ],
@@ -544,7 +544,7 @@ BC-QA-04008 has `calculator_status` either, so Section I Part A, 2.14 minutes (r
   {
    "block": "ki-1",
    "mode": "interactive",
-   "reason": "rule 3 promoted: BC-REP-02 on BC-SKL-04030; BC-QA-04008 common_givens name the point of tangency and a nearby input, and the stem asks over or under",
+   "reason": "rule 4 promoted: BC-REP-02 on BC-SKL-04030; BC-QA-04008 common_givens name the point of tangency and a nearby input, and the stem asks over or under",
    "sources": [
     "BC-SKL-04030",
     "BC-QA-04008"
@@ -677,8 +677,8 @@ BC-QA-04008 has `calculator_status` either, so Section I Part A, 2.14 minutes (r
   "research/exam/exam-structure.md#Section and part layout"
  ],
  "word_count": {
-  "full": 561,
-  "brief": 450
+  "full": 560,
+  "brief": 449
  },
  "read_minutes": {
   "full": 3.74,

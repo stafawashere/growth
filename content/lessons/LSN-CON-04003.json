@@ -3,7 +3,7 @@
  "version": 1,
  "kind": "concept",
  "target_id": "BC-CON-04003",
- "status": "draft",
+ "status": "signed_off",
  "snapshot_digest": "a6a8ec9d3f59ab8f712e33d30cc22fc64bf2c478fbe7312e3e3118d319c6a42f",
  "source_digest": "bd419bbcbc499ee5068a5dc617f9fbe969b84b25a5f21978d364eb3ec1a8bea7",
  "read_minutes": {
@@ -11,8 +11,8 @@
   "brief": 2.9
  },
  "word_count": {
-  "full": 439,
-  "brief": 392
+  "full": 444,
+  "brief": 397
  },
  "sections": [
   {
@@ -85,7 +85,7 @@
    "text": "Velocity is the derivative of position, acceleration the derivative of velocity. A response differentiates as often as the request needs.",
    "delivery": {
     "mode": "text",
-    "reason": "rule 5: BC-SKL-04006 and BC-SKL-04007 carry BC-REP-01 and BC-REP-05",
+    "reason": "rule 6: BC-SKL-04006 and BC-SKL-04007 carry BC-REP-01 and BC-REP-05",
     "sources": [
      "BC-SKL-04006"
     ]
@@ -118,7 +118,7 @@
    },
    "delivery": {
     "mode": "text",
-    "reason": "rule 5: a symbolic rule, BC-REP-01 and BC-REP-05",
+    "reason": "rule 6: a symbolic rule, BC-REP-01 and BC-REP-05",
     "sources": [
      "BC-SKL-04007"
     ]
@@ -154,7 +154,7 @@
      "text": "\\(v(t)=t^2-5t\\) and \\(x(0)=3\\). Find the position at \\(t=4\\).",
      "why_not": "Position from velocity is an integral."
     },
-    "feature": "A given position means accumulate."
+    "feature": "A velocity plus the position at one time means accumulate."
    }
   },
   {
@@ -654,8 +654,8 @@
   "author": "tools/lesson_transcribe.py",
   "prompt_version": "generator/lesson_v2",
   "design_path": "docs/lessons/unit-04/LSN-CON-04003.md",
-  "signed_off_by": null,
-  "signed_off_at": null,
+  "signed_off_by": "claude-opus-5-5",
+  "signed_off_at": "2026-09-29",
   "not_human": true
  }
 }

@@ -42,85 +42,102 @@
   "auditor": "claude-opus-5-5",
   "blocks": [
    {
+    "id": "prediction",
+    "verdict": "ok",
+    "evidence": "Conceptual mcq on ex-1's model; key B (rate of change in mg per hour) is the only true option: M'(4)=15/2 e^(-1/2)=4.549 is a rate of the amount, not a velocity (A, BC-ERR-04013) nor the amount (C, M(4)=43.61 mg). Resolution matches BC-CON-04006 description_plain and the 4.3 Units paragraph."
+   },
+   {
     "id": "orientation",
     "verdict": "ok",
-    "evidence": "Paraphrases BC-CON-04006 description_plain and the 4.3 End behaviour paragraph."
+    "evidence": "Shortened; still paraphrases BC-CON-04006 description_plain and the 4.3 Common structure and Units paragraphs; no id."
    },
    {
     "id": "ki-1",
     "verdict": "ok",
-    "evidence": "4.3 Common structure (ced:84), Units, and End behaviour (sg-25:4) paragraphs; quote matches CHA-3.C.1 on ced:89 verbatim."
+    "evidence": "Citations removed from served text; claims match 4.3 (ced:84 vocabulary, units, sg-25:4 limit); quote verbatim on ced:89."
    },
    {
     "id": "st-1",
     "verdict": "ok",
-    "evidence": "Cue from BC-QA-04005 common_givens and typical_wording; rival BC-ERR-99007 from wrong_approaches."
+    "evidence": "method starts with no label; rival loses its label and id; cue and separating feature still match BC-QA-04005 typical_wording; sources add the rival's error id."
+   },
+   {
+    "id": "st-1.contrast",
+    "verdict": "ok",
+    "evidence": "this: V(t)=50+30(1-e^(-t/5)), SymPy V'=6e^(-t/5), limit 0, matches BC-QA-04005 typical_wording 'write a limit expression that describes the end behaviour of the rate of change and evaluate it'; not_this is a BC-CON-04003 motion stem, why_not 'Motion vocabulary' true; feature true."
    },
    {
     "id": "ex-1",
     "verdict": "ok",
-    "evidence": "SymPy: diff(20+60(1-exp(-t/8)))=15/2 exp(-t/8), limit 0, value at 4 is 4.54898; rate 4.549 in (0.5,20) as spec invariant requires."
+    "evidence": "Step exprs, relations and answer 4.549 identical to the audited version (SymPy-checked 2026-09-29); only cue and why text shortened, still true."
    },
    {
     "id": "what_a_reader_scores:ex-1",
     "verdict": "ok",
-    "evidence": "Line matches BC-PT-99014 record verbatim; in BC-QA-04005 point_types; placement tagged inferred."
+    "evidence": "unchanged since 2026-09-29: Line matches BC-PT-99014 record verbatim; in BC-QA-04005 point_types; placement tagged inferred."
    },
    {
     "id": "err-BC-ERR-04012",
     "verdict": "ok",
-    "evidence": "observed_behavior and scoring_consequence copied from the bundle."
+    "evidence": "fix_prompt true equals (relation == distinct) with relation distinct; SymPy: wrong 4.549 and right 4.549*milligram/hour differ (by the unit factor only); wrong_step, right_step and bundle text unchanged since 2026-09-29."
    },
    {
     "id": "err-BC-ERR-04013",
     "verdict": "ok",
-    "evidence": "Bundle text copied; possible reason paraphrases BC-MIS-04007."
+    "evidence": "fix_prompt false equals (relation == distinct) with relation equivalent; SymPy: wrong 4.549 and right 4.549 agree; wrong_step, right_step and bundle text unchanged since 2026-09-29."
    },
    {
     "id": "err-BC-ERR-99007",
     "verdict": "ok",
-    "evidence": "SymPy: 15/2*exp(-oo)=0 equals the limit, relation equivalent correct; bundle text copied."
+    "evidence": "fix_prompt false equals (relation == distinct) with relation equivalent; SymPy: wrong 15/2*exp(-oo)=0 and right 0 agree; wrong_step, right_step and bundle text unchanged since 2026-09-29."
    },
    {
     "id": "representations",
     "verdict": "ok",
-    "evidence": "null."
+    "evidence": "unchanged since 2026-09-29: null."
    },
    {
-    "id": "bridge-BC-PRQ-04008",
+    "id": "BC-PRQ-04008",
     "verdict": "ok",
-    "evidence": "Paraphrases BC-PRQ-04008 description_plain and failure_signature (ced:84)."
+    "evidence": "Shortened paraphrase of the prerequisite record in the bundle; no id or citation left in served text."
    },
    {
     "id": "chk-1",
     "verdict": "ok",
-    "evidence": "SymPy: 7.5 exp(-1/2)=4.54898, key 4.549."
+    "evidence": "unchanged since 2026-09-29: SymPy: 7.5 exp(-1/2)=4.54898, key 4.549."
    },
    {
     "id": "chk-2",
     "verdict": "ok",
-    "evidence": "SymPy: 10 exp(-3/5)=5.48812, key 5.488; 50/5=10 matches draw."
+    "evidence": "unchanged since 2026-09-29: SymPy: 10 exp(-3/5)=5.48812, key 5.488; 50/5=10 matches draw."
    },
    {
     "id": "chk-3",
     "verdict": "ok",
-    "evidence": "SymPy: -4 exp(-1/2)=-2.42612, key -2.426; 40/10=4 matches draw; distractors trace BC-ERR-04012, 04013, 99007."
+    "evidence": "unchanged since 2026-09-29: SymPy: -4 exp(-1/2)=-2.42612, key -2.426; 40/10=4 matches draw; distractors trace BC-ERR-04012, 04013, 99007."
+   },
+   {
+    "id": "no_figure_reason",
+    "verdict": "ok",
+    "evidence": "fixed 2026-09-29: now says the skills carry BC-REP-01, 04 and 05 and the topic adds BC-REP-09, a three decimal value; data/skills.json gives BC-SKL-04013 [04, 05], BC-SKL-04015 [04, 05], BC-SKL-04016 [01, 05]. Conclusion unchanged."
    }
   ],
   "advice": [
-   "BC-QA-04005's first typical wording (time where instantaneous rate equals average rate) is not taught; the lesson covers rate value and end behaviour only.",
-   "ex-1 asks for the limit and M'(4) but step order puts the sign statement between them without the stem asking for it; the BC-PT-99014 step reads as unmotivated to a student. Time budget II-A 15.0 minutes is a whole FRQ, not this part.",
-   "Delivery fits: contrast of named against bare values in the error blocks is well chosen."
+   "err-BC-ERR-04012 is a fix prompt whose wrong and right numbers are both 4.549; the distinct relation rests on the unit factor in the right expr, so the fix the student makes is naming and units, not a new value. That fits the error but the fix prompt UI should not ask for a corrected number.",
+   "Carried from the earlier audit: BC-QA-04005's first typical wording (time where the instantaneous rate equals the average rate) is not taught; the ex-1 sign step (BC-PT-99014) is not asked by the stem; II-A 15.0 minutes is a whole FRQ, not this part.",
+   "The prediction is served as mcq text; a fine fit, and it reuses ex-1's model so the resolution lands on the example the student reads next."
   ],
   "counts": {
-   "ok": 13,
+   "ok": 16,
    "unsourced": 0,
    "wrong": 0,
    "over_cap": 0,
    "lint": 0
   },
   "fix_notes": [
-   "No block needed fixing. Left as preferences: BC-QA-04005's average equals instantaneous wording not taught; ex-1 step order and whole FRQ time budget; delivery fits."
+   "Delivery reasons for orientation and ki-1 changed from rule 5 to rule 6 (text), and the Delivery prose likewise. Stale delivery rule numbers in the reasons corrected to the current template (text rule 6, table rule 5, figure rule 4).",
+   "Word counts unchanged: full 565, brief 445 (no_figure_reason is not served band text).",
+   "Advice left as is: the BC-ERR-04012 scoring_consequence carries 'BC-ERR-99033' mid-sentence; it is verbatim record text."
   ]
  }
 }

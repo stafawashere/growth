@@ -73,14 +73,14 @@ BC-QA-04008 has `calculator_status` either, so Section I Part A, 2.14 minutes (r
 
 ## Delivery
 
-- orientation: figure. Rule 3: BC-REP-02 in BC-SKL-04028 and BC-SKL-04029 [inferred].
+- orientation: figure. Rule 4: BC-REP-02 in BC-SKL-04028 and BC-SKL-04029 [inferred].
 - ki-1: motion. Rule 2: BC-EK-CHA-3F1 describes closeness near the point of tangency, a process of approach (docs/lessons/unit-04/README.md, section 6) [inferred].
 - ex-1 and the four error blocks: step_reveal. Rule 1.
 
 ## Band plan
 
-- Low (full): prediction, orientation, the bridge, key ideas, st-1 with the contrast pair, ex-1 with its scoring line, chk-1, err-BC-ERR-04024, err-BC-ERR-99035, err-BC-ERR-04023, err-BC-ERR-04027, chk-2, chk-3. 589 words, 3.93 minutes (cap 900 and 6).
-- Mid (brief): prediction, orientation, the bridge, core key ideas, st-1 with the contrast pair, ex-1 with its scoring line, chk-1, err-BC-ERR-04024, err-BC-ERR-99035, chk-2. 448 words, 2.99 minutes (cap 450 and 3).
+- Low (full): prediction, orientation, the bridge, key ideas, st-1 with the contrast pair, ex-1 with its scoring line, chk-1, err-BC-ERR-04024, err-BC-ERR-99035, err-BC-ERR-04023, err-BC-ERR-04027, chk-2, chk-3. 591 words, 3.94 minutes (cap 900 and 6).
+- Mid (brief): prediction, orientation, the bridge, core key ideas, st-1 with the contrast pair, ex-1 with its scoring line, chk-1, err-BC-ERR-04024, err-BC-ERR-99035, chk-2. 450 words, 3.0 minutes (cap 450 and 3).
 - Refresher: ki-1, err-BC-ERR-04024, err-BC-ERR-99035, err-BC-ERR-04023, err-BC-ERR-04027, ex-1.
 
 ## Sources
@@ -403,7 +403,7 @@ BC-QA-04008 has `calculator_status` either, so Section I Part A, 2.14 minutes (r
    },
    "completes": "ex-1",
    "stem": {
-    "text": "For ex-1 the tangent line is y = 4 - (x - 1). Approximate f(1.1).",
+    "text": "In the example above, the tangent line is y = 4 - (x - 1). Approximate f(1.1).",
     "command_verb": "approximate"
    },
    "key": {
@@ -579,7 +579,7 @@ BC-QA-04008 has `calculator_status` either, so Section I Part A, 2.14 minutes (r
   {
    "block": "orientation",
    "mode": "figure",
-   "reason": "rule 3: BC-REP-02 on BC-SKL-04028 and BC-SKL-04029",
+   "reason": "rule 4: BC-REP-02 on BC-SKL-04028 and BC-SKL-04029",
    "sources": [
     "BC-SKL-04028",
     "BC-SKL-04029"
@@ -786,12 +786,12 @@ BC-QA-04008 has `calculator_status` either, so Section I Part A, 2.14 minutes (r
   "research/exam/exam-structure.md#Section and part layout"
  ],
  "word_count": {
-  "full": 589,
-  "brief": 448
+  "full": 591,
+  "brief": 450
  },
  "read_minutes": {
-  "full": 3.93,
-  "brief": 2.99
+  "full": 3.94,
+  "brief": 3.0
  }
 }
 ```

@@ -3,7 +3,7 @@
  "version": 1,
  "kind": "concept",
  "target_id": "BC-CON-04009",
- "status": "draft",
+ "status": "signed_off",
  "snapshot_digest": "a6a8ec9d3f59ab8f712e33d30cc22fc64bf2c478fbe7312e3e3118d319c6a42f",
  "source_digest": "b1f1c307b2de031a2bcd42283d5a7658900d97b0a3a318d15409b2150b403727",
  "read_minutes": {
@@ -11,8 +11,8 @@
   "brief": 3.0
  },
  "word_count": {
-  "full": 504,
-  "brief": 400
+  "full": 503,
+  "brief": 399
  },
  "sections": [
   {
@@ -40,7 +40,7 @@
    "options": [
     {
      "id": "A",
-     "label": "Before: 81 + y^2 = 225.",
+     "label": "Before: 2y dy/dt = 0.",
      "is_key": false
     },
     {
@@ -82,7 +82,7 @@
    "text": "Keep varying quantities as variables through differentiation; substitute the instant afterwards.",
    "delivery": {
     "mode": "figure",
-    "reason": "rule 3: BC-REP-08 on BC-SKL-04026 and BC-SKL-04027",
+    "reason": "rule 4: BC-REP-08 on BC-SKL-04026 and BC-SKL-04027",
     "sources": [
      "BC-SKL-04026",
      "BC-SKL-04027"
@@ -204,7 +204,7 @@
    },
    "delivery": {
     "mode": "interactive",
-    "reason": "rule 3 promoted: BC-REP-08 on BC-SKL-04026 and BC-SKL-04027; BC-QA-04006 common_givens name the dimensions at the instant, and the reading is which labels change as time moves",
+    "reason": "rule 4 promoted: BC-REP-08 on BC-SKL-04026 and BC-SKL-04027; BC-QA-04006 common_givens name the dimensions at the instant, and the reading is which labels change as time moves",
     "sources": [
      "BC-SKL-04026",
      "BC-SKL-04027",
@@ -764,7 +764,7 @@
    },
    "completes": "LSN-CON-04009#s6",
    "stem": {
-    "text": "For ex-1, 2x dx/dt + 2y dy/dt = 0 and y = 12 when x = 9. Find dy/dt.",
+    "text": "In the example above, 2x dx/dt + 2y dy/dt = 0 and y = 12 when x = 9. Find dy/dt.",
     "command_verb": "find"
    },
    "answer_key": {
@@ -1173,8 +1173,8 @@
   "author": "tools/lesson_transcribe.py",
   "prompt_version": "generator/lesson_v2",
   "design_path": "docs/lessons/unit-04/LSN-CON-04009.md",
-  "signed_off_by": null,
-  "signed_off_at": null,
+  "signed_off_by": "claude-opus-5-5",
+  "signed_off_at": "2026-09-29",
   "not_human": true
  }
 }

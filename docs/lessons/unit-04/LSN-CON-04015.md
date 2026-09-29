@@ -73,14 +73,14 @@ BC-QA-04009 is `no_calculator`, one part of a graphical analysis FRQ: Section II
 
 ## Delivery
 
-- orientation and ki-1: text. Rule 5: BC-SKL-04035, 04036 and 04037 carry BC-REP-01 only (docs/lessons/unit-04/README.md, section 6).
+- orientation and ki-1: text. Rule 6: BC-SKL-04035, 04036 and 04037 carry BC-REP-01 only (docs/lessons/unit-04/README.md, section 6).
 - ex-1 and the four error blocks: step_reveal. Rule 1.
 - No drawn block: none of rules 2 to 5 applies (no figure-bearing representation on the three skills, no process in ki-1), so the record carries `no_figure_reason`.
 
 ## Band plan
 
-- Low (full): prediction, orientation, the bridge, key ideas, st-1 with the contrast pair, ex-1 with its scoring line, chk-1, err-BC-ERR-03003, err-BC-ERR-04029, err-BC-ERR-04030, err-BC-ERR-04031, chk-2, chk-3. 591 words, 3.94 minutes (cap 900 and 6).
-- Mid (brief): prediction, orientation, the bridge, core key ideas, st-1 with the contrast pair, ex-1 with its scoring line, chk-1, err-BC-ERR-03003, err-BC-ERR-04029, chk-2. 449 words, 3.0 minutes (cap 450 and 3).
+- Low (full): prediction, orientation, the bridge, key ideas, st-1 with the contrast pair, ex-1 with its scoring line, chk-1, err-BC-ERR-03003, err-BC-ERR-04029, err-BC-ERR-04030, err-BC-ERR-04031, chk-2, chk-3. 590 words, 3.94 minutes (cap 900 and 6).
+- Mid (brief): prediction, orientation, the bridge, core key ideas, st-1 with the contrast pair, ex-1 with its scoring line, chk-1, err-BC-ERR-03003, err-BC-ERR-04029, chk-2. 448 words, 2.99 minutes (cap 450 and 3).
 - Refresher: ki-1, err-BC-ERR-03003, err-BC-ERR-04029, err-BC-ERR-04030, err-BC-ERR-04031, ex-1.
 
 ## Sources
@@ -404,7 +404,7 @@ BC-QA-04009 is `no_calculator`, one part of a graphical analysis FRQ: Section II
    },
    "completes": "ex-1",
    "stem": {
-    "text": "For ex-1 the derivatives are 2f'(2x) and cos(x - 1). Evaluate the limit.",
+    "text": "Above, the derivatives are 2f'(2x) and cos(x - 1). Evaluate the limit.",
     "command_verb": "find"
    },
    "key": {
@@ -555,7 +555,7 @@ BC-QA-04009 is `no_calculator`, one part of a graphical analysis FRQ: Section II
   {
    "block": "orientation",
    "mode": "text",
-   "reason": "rule 5: BC-SKL-04035, BC-SKL-04036 and BC-SKL-04037 carry BC-REP-01 only",
+   "reason": "rule 6: BC-SKL-04035, BC-SKL-04036 and BC-SKL-04037 carry BC-REP-01 only",
    "sources": [
     "BC-SKL-04035"
    ]
@@ -563,7 +563,7 @@ BC-QA-04009 is `no_calculator`, one part of a graphical analysis FRQ: Section II
   {
    "block": "ki-1",
    "mode": "text",
-   "reason": "rule 5: a symbolic rule",
+   "reason": "rule 6: a symbolic rule",
    "sources": [
     "BC-SKL-04035"
    ]
@@ -649,12 +649,12 @@ BC-QA-04009 is `no_calculator`, one part of a graphical analysis FRQ: Section II
   "research/exam/exam-structure.md#Section and part layout"
  ],
  "word_count": {
-  "full": 591,
-  "brief": 449
+  "full": 590,
+  "brief": 448
  },
  "read_minutes": {
   "full": 3.94,
-  "brief": 3.0
+  "brief": 2.99
  }
 }
 ```

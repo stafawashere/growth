@@ -39,111 +39,128 @@
   "auditor": "claude-opus-5-5",
   "blocks": [
    {
+    "id": "prediction",
+    "verdict": "wrong",
+    "evidence": "Key is right (SymPy integral of 3t^2 + 2t + 2 on [1, 3] = 38, 40 + 38 = 78) but the stem is not answerable before the rule: 38 needs F(3) - F(1), which is the theorem ki-1 teaches, and the stem does not supply it (06013's prediction supplies its integral 5.306)."
+   },
+   {
     "id": "orientation",
     "verdict": "ok",
-    "evidence": "Paraphrases BC-CON-06012 description_formal: net change is the integral of its rate; 21 words."
+    "evidence": "'A later value is the known value plus the integral.' is BC-QA-06005 asked_to_produce 'an integral expression with the initial value'."
    },
    {
     "id": "ki-1",
-    "verdict": "ok",
-    "evidence": "Matches ced:124 FUN-6.B.3 and the topic's Net change paragraph; 32 words."
+    "verdict": "wrong",
+    "evidence": "Cut dropped the hypothesis and the meaning of F: 'The integral from a to b is F(b) - F(a)' is false without f continuous and F an antiderivative (ced:124 line 43 'If f is continuous on the interval [a, b] and F is an'); SymPy counterexample 1/x^2 on [-1, 1] with F = -1/x gives F(1) - F(-1) = -2 while the integral is oo."
    },
    {
     "id": "ki-2",
     "verdict": "ok",
-    "evidence": "Quote matches ced:124 FUN-6.B.1 verbatim."
+    "evidence": "Quote matches ced:124 FUN-6.B.1 verbatim.",
+    "note": "unchanged since 2026-09-29"
    },
    {
     "id": "ki-3",
     "verdict": "ok",
-    "evidence": "Paraphrase of ced:124 FUN-6.B.2."
+    "evidence": "Paraphrase of ced:124 FUN-6.B.2.",
+    "note": "unchanged since 2026-09-29"
    },
    {
     "id": "st-1",
     "verdict": "ok",
-    "evidence": "Method is expected_solution_path[0] and rival is wrong_approaches[0] of BC-QA-06005; cue 12 words."
+    "evidence": "Method 'Known value plus the integral.' has no label; rival 'Net change alone.' is BC-QA-06005 wrong_approaches (BC-ERR-06015); no id served."
+   },
+   {
+    "id": "st-1.contrast",
+    "verdict": "ok",
+    "evidence": "this matches BC-QA-06005 typical_wording (rate modelled, value at later time), SymPy 10 + 30 = 55; not_this is BC-QA-99008 typical_wording (total that arrives), a sibling archetype in the bundle, not 06005's own stem; why_not 'Only the integral.' is 99008 asked_to_produce; feature true."
    },
    {
     "id": "st-2",
     "verdict": "ok",
-    "evidence": "Method and rival from BC-QA-06006 expected_solution_path and wrong_approaches."
+    "evidence": "Labels removed; text matches BC-QA-06006 wrong_approaches and path."
    },
    {
     "id": "st-3",
     "verdict": "ok",
-    "evidence": "Method and rival from BC-QA-99008 expected_solution_path[0] and wrong_approaches."
+    "evidence": "Labels removed; text matches BC-QA-99008 wrong_approaches."
    },
    {
     "id": "ex-1",
     "verdict": "ok",
-    "evidence": "SymPy: 40 + integrate(3t^2+2t+2,(t,1,3)) = 78; F(3)=42, F(1)=4; draw satisfies parameter_spec constraints."
+    "evidence": "Cues shortened ('Known amount at t = 1.', 'Antiderivative first.', 'An amount.'); true of the draw; values 78 unchanged."
    },
    {
     "id": "what_a_reader_scores:ex-1",
     "verdict": "ok",
-    "evidence": "Lines reproduce BC-PT-99033 and BC-PT-99003 earns, does_not_earn and notation fields."
+    "evidence": "Lines reproduce BC-PT-99033 and BC-PT-99003 earns, does_not_earn and notation fields.",
+    "note": "unchanged since 2026-09-29"
    },
    {
     "id": "err-BC-ERR-06015",
     "verdict": "ok",
-    "evidence": "Record text matches; 38 = integral alone, 78 correct; BC-MIS-08006 is a linked misconception."
+    "evidence": "fix_prompt true and relation distinct; expression unchanged since the earlier audit, values 38 against 78."
    },
    {
     "id": "err-BC-ERR-99012",
     "verdict": "ok",
-    "evidence": "40 + 42 = 82 versus 40 + 42 - 4 = 78; BC-MIS-99004 linked and paraphrased."
+    "evidence": "fix_prompt true and relation distinct; expression unchanged since the earlier audit, values 82 against 78."
    },
    {
     "id": "err-BC-ERR-06032",
     "verdict": "ok",
-    "evidence": "sin(t^2/3) read in degrees is sin(pi t^2/540); SymPy 55.105 versus 58.090, distinct; calculator form per parameter_spec notes."
+    "evidence": "fix_prompt true and relation distinct; expression unchanged since the earlier audit, values degree-mode against radian-mode integral, distinct per the earlier audit."
    },
    {
     "id": "err-BC-ERR-99022",
     "verdict": "ok",
-    "evidence": "SymPy 40 + 42 - 1 + 1 + 2 = 84 versus 78; record text matches."
+    "evidence": "fix_prompt true and relation distinct; expression unchanged since the earlier audit, values 84 against 78."
    },
    {
     "id": "representations",
     "verdict": "ok",
-    "evidence": "null; the ki-1 table carries BC-REP-03 per BC-SKL-06037."
+    "evidence": "null; the ki-1 table carries BC-REP-03 per BC-SKL-06037.",
+    "note": "unchanged since 2026-09-29"
    },
    {
     "id": "BC-PRQ-06002",
     "verdict": "ok",
-    "evidence": "Paraphrase of description_plain: power rule for any exponent other than negative one."
+    "evidence": "'Radicals are powers.' true; the dropped clause on exponent -1 is not needed for ex-1's polynomial."
    },
    {
     "id": "BC-PRQ-06005",
     "verdict": "ok",
-    "evidence": "Paraphrase of distinguishing a function from its value at a point."
+    "evidence": "'An amount is not a rate.' true and matches the prerequisite's intent."
    },
    {
     "id": "chk-1",
     "verdict": "ok",
-    "evidence": "SymPy 40 + 42 - 4 = 78."
+    "evidence": "SymPy 40 + 42 - 4 = 78.",
+    "note": "unchanged since 2026-09-29"
    },
    {
     "id": "chk-2",
     "verdict": "ok",
-    "evidence": "SymPy 30 + integrate(-3t^2+6t+4,(t,1,3)) = 36; F(3)=12, F(1)=6."
+    "evidence": "SymPy 30 + integrate(-3t^2+6t+4,(t,1,3)) = 36; F(3)=12, F(1)=6.",
+    "note": "unchanged since 2026-09-29"
    },
    {
     "id": "chk-3",
     "verdict": "ok",
-    "evidence": "SymPy key 89; A 39, C 50+57-16+2 = 93, D 107 all verified and distinct."
+    "evidence": "SymPy key 89; A 39, C 50+57-16+2 = 93, D 107 all verified and distinct.",
+    "note": "unchanged since 2026-09-29"
    }
   ],
   "advice": [
-   "err-BC-ERR-06032 mixes the exact draw's known value 40 with the calculator form on [0, 3]; the calculator form has no known value at t = 0 in the draw, so the block reads as a different problem from ex-1.",
-   "Delivery fits: ki-1 as a table shows known value plus accumulated change; ex-1 and errors as step_reveal suit processes.",
-   "Recognition, first line and rival are taught through st-1 to st-3; the answer point BC-PT-99004 is untagged, so the scoring habit for the final value is only implicit.",
-   "chk-3 has no distractor for the rate evaluated at an endpoint, a common_distractor of BC-QA-06005."
+   "Fix for the prediction: supply the change (38) in the stem, or ask for the amount as an expression (40 plus the integral) rather than a number.",
+   "Fix for ki-1: restore 'With f continuous and F an antiderivative' or an equivalent 8-word clause; ki-2 defines antiderivative only after ki-1 uses F.",
+   "Reader lines and scoring_consequence fields carry page citations (sg-..:..) as verbatim record text; the reader strips them, so they are not lint.",
+   "Carried from the earlier audit: err-BC-ERR-06032 mixes the exact draw's known value 40 with the calculator form on [0, 3]; chk-3 has no endpoint-rate distractor."
   ],
   "counts": {
    "ok": 19,
    "unsourced": 0,
-   "wrong": 0,
+   "wrong": 2,
    "over_cap": 0,
    "lint": 0
   }

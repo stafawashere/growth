@@ -33,89 +33,104 @@
   "auditor": "claude-opus-5-5",
   "blocks": [
    {
+    "id": "prediction",
+    "verdict": "ok",
+    "evidence": "SymPy: d/dx(2x^(3/2) - 4x^(1/2)) and d/dx of the same + 5 both equal 3x^(1/2) - 2x^(-1/2), so A ('only') is false and B is true; C's derivative differs by (3x + 2)/(2 sqrt x), false; answerable by differentiating before the rule; resolution matches ki-1 and BC-CON-06014; no verdict word."
+   },
+   {
     "id": "orientation",
     "verdict": "ok",
-    "evidence": "Paraphrases BC-CON-06014 and skills 06040, 06044, 06045; 28 words."
+    "evidence": "True of ex-1's path (powers, power rule, + C, differentiate back); BC-QA-06019 asked_to_produce."
    },
    {
     "id": "ki-1",
     "verdict": "ok",
-    "evidence": "Matches ced:125 FUN-6.C.1 and BC-SKL-06045."
+    "evidence": "Matches ced:125 FUN-6.C.1 and BC-SKL-06045.",
+    "note": "unchanged since 2026-09-29"
    },
    {
     "id": "ki-2",
     "verdict": "ok",
-    "evidence": "Quote matches ced:125 FUN-6.C.2 verbatim; power rule exception from BC-PRQ-06002."
+    "evidence": "Quote matches ced:125 FUN-6.C.2 verbatim; power rule exception from BC-PRQ-06002.",
+    "note": "unchanged since 2026-09-29"
    },
    {
     "id": "st-1",
     "verdict": "ok",
-    "evidence": "Method and rival from BC-QA-06019 expected_solution_path[0] and wrong_approaches."
+    "evidence": "Method 'Expand the product or split the fraction into powers.' has no label; rival is BC-QA-06019 wrong_approaches."
+   },
+   {
+    "id": "st-1.contrast",
+    "verdict": "ok",
+    "evidence": "this matches BC-QA-06019 typical_wording 'find the indefinite integral' on a product of binomials, SymPy expands to 3x^2 + 5x - 2; not_this x cos x is BC-QA-06009 typical_wording (indefinite integral of a product, parts) in the bundle, SymPy x sin x + cos x; why_not and feature true."
    },
    {
     "id": "st-2",
     "verdict": "ok",
-    "evidence": "Method is BC-QA-06016 expected_solution_path[0]; rival wrong_approaches[0] (BC-ERR-06020)."
+    "evidence": "Labels and the id removed from the rival; BC-ERR-06020 moved to sources."
    },
    {
     "id": "st-3",
     "verdict": "ok",
-    "evidence": "Method and rival from BC-QA-06011 expected_solution_path[0] and wrong_approaches[0]."
+    "evidence": "Labels and the id removed from the rival; BC-ERR-99007 moved to sources."
    },
    {
     "id": "ex-1",
     "verdict": "ok",
-    "evidence": "SymPy: diff(2x^(3/2) - 4x^(1/2)) - (3x - 2)/sqrt(x) = 0; draw is the root structure of BC-QA-06019."
+    "evidence": "SymPy: diff(2x^(3/2) - 4x^(1/2)) - (3x - 2)/sqrt(x) = 0; draw is the root structure of BC-QA-06019.",
+    "note": "unchanged since 2026-09-29"
    },
    {
     "id": "err-BC-ERR-06033",
     "verdict": "ok",
-    "evidence": "3x^(3/2) - 2x^(1/2) raises exponents with no division; SymPy derivative (3x+2)/(2sqrt(x)), not the integrand."
+    "evidence": "fix_prompt true and relation distinct; expression unchanged since the earlier audit, values 3x^(3/2) - 2x^(1/2) + C against 2x^(3/2) - 4x^(1/2) + C."
    },
    {
     "id": "err-BC-ERR-07026",
     "verdict": "ok",
-    "evidence": "Record text matches; BC-MIS-06018 linked and quoted."
+    "evidence": "fix_prompt true and relation distinct; expression unchanged since the earlier audit, values without C against with C."
    },
    {
     "id": "representations",
     "verdict": "ok",
-    "evidence": "null; BC-REP-01 only."
+    "evidence": "null; BC-REP-01 only.",
+    "note": "unchanged since 2026-09-29"
    },
    {
     "id": "BC-PRQ-06002",
     "verdict": "ok",
-    "evidence": "Paraphrase of description_plain and failure_signature."
+    "evidence": "Shortened; still true."
    },
    {
     "id": "BC-PRQ-06003",
     "verdict": "ok",
-    "evidence": "Paraphrase of absolute value inside ln of a linear expression."
+    "evidence": "Shortened to 'ln takes an absolute value around a linear expression.'; true for ln|ax + b|."
    },
    {
     "id": "BC-PRQ-06004",
     "verdict": "ok",
-    "evidence": "Paraphrase of failure_signature."
+    "evidence": "Dropped 'first'; still true."
    },
    {
     "id": "chk-1",
     "verdict": "ok",
-    "evidence": "Same antiderivative as ex-1, verified by SymPy differentiation."
+    "evidence": "Same antiderivative as ex-1, verified by SymPy differentiation.",
+    "note": "unchanged since 2026-09-29"
    },
    {
     "id": "chk-2",
     "verdict": "ok",
-    "evidence": "SymPy expand((x+3)(2x-1)) = 2x^2 + 5x - 3; integrate gives 2x^3/3 + 5x^2/2 - 3x."
+    "evidence": "SymPy expand((x+3)(2x-1)) = 2x^2 + 5x - 3; integrate gives 2x^3/3 + 5x^2/2 - 3x.",
+    "note": "unchanged since 2026-09-29"
    }
   ],
   "advice": [
-   "err-BC-ERR-06033 possible_reason uses the radicals clause of BC-MIS-02009, while the shown error is the missing division by the new exponent; the misconception's first clause fits the step better.",
-   "err-BC-ERR-07026's scoring consequence (at most the first two points) comes from a differential equation rubric (sg-23:12) and reads oddly under a lone indefinite integral.",
-   "st-3 on improper integrals is far from the lesson's worked content; a reader meets its cue with no example or check.",
-   "No check is an MCQ; the product rival BC-ERR-06022 named in st-1 and in BC-QA-06019 common_distractors has no error block."
+   "The orientation now names only powers and the power rule, while ki-2 covers exponential, logarithm and trigonometric forms; 'basic forms' would keep the scope.",
+   "The prediction's resolution names 2x^(3/2) - 4x^(1/2) as F before ex-1 derives it; a student who picked C sees the answer without the division step.",
+   "Carried from the earlier audit: err-BC-ERR-07026's scoring consequence comes from a differential equation rubric; no MCQ check and no block for BC-ERR-06022."
   ],
   "counts": {
-   "ok": 15,
+   "ok": 17,
    "unsourced": 0,
    "wrong": 0,
    "over_cap": 0,

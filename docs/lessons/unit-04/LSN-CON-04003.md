@@ -29,7 +29,7 @@ Both skills map BC-EK-CHA-3B1 (ced:88): one core block, both bands.
 - BC-QA-04010 (research/question-analysis/question-archetypes.md#BC-QA-04010 Position recovered from velocity with an initial condition), the other family: velocity and a known position given, position asked. The signal is a position at one time supplied beside the velocity.
 
 Not this concept: speed or direction (BC-CON-04004), whether the speed is increasing (BC-CON-04005).
-The contrast pair on st-1 sets a velocity given and an acceleration asked beside a velocity given with a known position and a position asked. Where the near miss comes from: the sibling family BC-QA-04010, whose position-from-velocity stem shares the function of time and the instant but runs the chain backward. The separating feature is the known position.
+The contrast pair on st-1 sets a velocity given and an acceleration asked beside a velocity given with a known position and a position asked. Where the near miss comes from: the sibling family BC-QA-04010, whose position-from-velocity stem shares the function of time and the instant but runs the chain backward. The separating feature is the position at one time given beside a velocity (BC-QA-04010 `common_givens`); a position function alone, as in BC-QA-04003 `common_givens`, is differentiated.
 
 ## Method choice
 
@@ -86,8 +86,8 @@ Figure presence: no drawn block. No rule of 2 to 5 applies, because both skills 
 
 ## Band plan
 
-- Low (full): prediction, orientation, bridge, ki-1, st-1 with its contrast, st-2, ex-1 with its scoring lines, chk-1, the error block, chk-2. 470 words, 3.2 minutes (cap 900 and 6).
-- Mid (brief): prediction, orientation, bridge, ki-1, st-1 with its contrast, ex-1 with its scoring lines, chk-1, the error block, chk-2. 423 words, 2.9 minutes (cap 450 and 3). The orientation, the st-1 fields and the bridge were shortened to fit.
+- Low (full): prediction, orientation, bridge, ki-1, st-1 with its contrast, st-2, ex-1 with its scoring lines, chk-1, the error block, chk-2. 475 words, 3.2 minutes (cap 900 and 6).
+- Mid (brief): prediction, orientation, bridge, ki-1, st-1 with its contrast, ex-1 with its scoring lines, chk-1, the error block, chk-2. 428 words, 2.9 minutes (cap 450 and 3). The orientation, the st-1 fields and the bridge were shortened to fit.
 - Refresher: ki-1, err-BC-ERR-04006, ex-1.
 
 ## Sources
@@ -195,7 +195,7 @@ Figure presence: no drawn block. No rule of 2 to 5 applies, because both skills 
      "text": "\\(v(t)=t^2-5t\\) and \\(x(0)=3\\). Find the position at \\(t=4\\).",
      "why_not": "Position from velocity is an integral."
     },
-    "feature": "A given position means accumulate."
+    "feature": "A velocity plus the position at one time means accumulate."
    }
   },
   {
@@ -489,7 +489,7 @@ Figure presence: no drawn block. No rule of 2 to 5 applies, because both skills 
   {
    "block": "orientation",
    "mode": "text",
-   "reason": "rule 5: BC-SKL-04006 and BC-SKL-04007 carry BC-REP-01 and BC-REP-05",
+   "reason": "rule 6: BC-SKL-04006 and BC-SKL-04007 carry BC-REP-01 and BC-REP-05",
    "sources": [
     "BC-SKL-04006"
    ]
@@ -497,7 +497,7 @@ Figure presence: no drawn block. No rule of 2 to 5 applies, because both skills 
   {
    "block": "ki-1",
    "mode": "text",
-   "reason": "rule 5: a symbolic rule, BC-REP-01 and BC-REP-05",
+   "reason": "rule 6: a symbolic rule, BC-REP-01 and BC-REP-05",
    "sources": [
     "BC-SKL-04007"
    ]
@@ -558,8 +558,8 @@ Figure presence: no drawn block. No rule of 2 to 5 applies, because both skills 
   "research/exam/exam-structure.md#Section and part layout"
  ],
  "word_count": {
-  "full": 470,
-  "brief": 423
+  "full": 475,
+  "brief": 428
  },
  "read_minutes": {
   "full": 3.2,

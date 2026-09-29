@@ -23,7 +23,7 @@ The three skills map three BC-EK: BC-SKL-04001 to BC-EK-CHA-3A3, BC-SKL-04004 to
 
 - ki-1 (core, BC-EK-CHA-3A3, ced:87). Paraphrase of the Units paragraph of Required mathematical knowledge: function unit over input unit. No anchor quote and no notation line, to hold the brief band under its cap.
 - ki-2 (extended, BC-EK-CHA-3A1, ced:87). The Approximation paragraph: the average rate over an interval containing the input approximates the derivative, written as a difference over a difference (sg-25:11). Anchor quote from ced:87.
-- ki-3 (core, BC-EK-CHA-3C1, ced:89). Core so that the mid band teaches BC-SKL-04014 (differentiate the model, evaluate it, and attach the right units), which no other mid block holds (plan 15, Sourcing, Pipeline step 2). From the 4.3 Units paragraph (research/units/unit-04-contextual-applications-differentiation.md#4.3 Rates of Change in Applied Contexts Other Than Motion): the rate is the model's derivative at the named instant, in the context's words. No anchor quote and no notation line.
+- ki-3 (core, BC-EK-CHA-3C1, ced:89). Core so that the mid band teaches BC-SKL-04014 (differentiate the model, evaluate it, and attach the right units), which no other mid block holds (plan 15, Sourcing, Pipeline step 2). From the 4.3 Units paragraph (research/units/unit-04-contextual-applications-differentiation.md#4.3 Rates of Change in Applied Contexts Other Than Motion): the rate is the model's derivative at the named instant, with \(V\) defined before it is used (for \(V(t)\) liters at \(t\) hours). No anchor quote and no notation line.
 
 ## Recognition
 
@@ -85,16 +85,16 @@ BC-QA-04002 has calculator status either, so the lesson takes Section I Part A, 
 ## Delivery
 
 - pr-1: text. Rule 6, a prediction on ex-1's numbers asking for units.
-- orientation: text. Rule 5.
-- ki-1: text. Rule 5, the units rule (docs/lessons/unit-04/README.md, section 6).
+- orientation: text. Rule 6.
+- ki-1: text. Rule 6, the units rule (docs/lessons/unit-04/README.md, section 6).
 - ki-2: table. Rule 5: BC-REP-03 in BC-SKL-04004 and in BC-QA-04002 `common_givens` [inferred; settled by the modality A/B]. Fallback: the table as text rows. Keyboard: Tab between cells. This is the lesson's drawn block, so no `no_figure_reason` is carried.
 - ki-3: text. Rule 6.
 - ex-1, err-BC-ERR-04001, err-BC-ERR-04004: step_reveal. Rule 1.
 
 ## Band plan
 
-- Low (full): prediction, orientation, bridge, ki-1, ki-2, ki-3, st-1 with its contrast, st-2, ex-1 with its scoring line, chk-1, both error blocks, chk-2. 562 words, 4.2 minutes (cap 900 and 6).
-- Mid (brief): prediction, orientation, bridge, ki-1, ki-3, st-1 with its contrast, ex-1 with its scoring line, chk-1, both error blocks, chk-2. 447 words, 3.0 minutes (cap 450 and 3). The orientation, ki-1, ki-3, the st-1 fields and the bridge were shortened to fit.
+- Low (full): prediction, orientation, bridge, ki-1, ki-2, ki-3, st-1 with its contrast, st-2, ex-1 with its scoring line, chk-1, both error blocks, chk-2. 564 words, 4.2 minutes (cap 900 and 6).
+- Mid (brief): prediction, orientation, bridge, ki-1, ki-3, st-1 with its contrast, ex-1 with its scoring line, chk-1, both error blocks, chk-2. 449 words, 3.0 minutes (cap 450 and 3). The orientation, ki-1, ki-3, the st-1 fields and the bridge were shortened to fit.
 - Refresher: ki-1, ki-3, err-BC-ERR-04001, err-BC-ERR-04004, ex-1.
 
 ## Sources
@@ -201,7 +201,7 @@ BC-QA-04002 has calculator status either, so the lesson takes Section I Part A, 
    "id": "ki-3",
    "ek_id": "BC-EK-CHA-3C1",
    "depth": "core",
-   "text": "A model's rate is its derivative at the named instant, in the context's words: \\(V'(2)\\) is in liters per hour.",
+   "text": "A model's rate is its derivative at the named instant: for \\(V(t)\\) liters at \\(t\\) hours, \\(V'(2)\\) is in liters per hour.",
    "notation": "",
    "quote": null,
    "sources": [
@@ -514,7 +514,7 @@ BC-QA-04002 has calculator status either, so the lesson takes Section I Part A, 
   {
    "block": "orientation",
    "mode": "text",
-   "reason": "rule 5: a statement of what a response shows, BC-REP-04 and BC-REP-05 on BC-SKL-04001",
+   "reason": "rule 6: a statement of what a response shows, BC-REP-04 and BC-REP-05 on BC-SKL-04001",
    "sources": [
     "BC-SKL-04001"
    ]
@@ -522,7 +522,7 @@ BC-QA-04002 has calculator status either, so the lesson takes Section I Part A, 
   {
    "block": "ki-1",
    "mode": "text",
-   "reason": "rule 5: CHA-3A3 is a rule about units with BC-REP-04 and BC-REP-05 givens",
+   "reason": "rule 6: CHA-3A3 is a rule about units with BC-REP-04 and BC-REP-05 givens",
    "sources": [
     "BC-SKL-04001"
    ]
@@ -575,7 +575,7 @@ BC-QA-04002 has calculator status either, so the lesson takes Section I Part A, 
   {
    "block": "ki-3",
    "mode": "text",
-   "reason": "rule 5: CHA-3C1 on BC-SKL-04014 carries BC-REP-01, BC-REP-05 and BC-REP-09, none figure-bearing",
+   "reason": "rule 6: CHA-3C1 on BC-SKL-04014 carries BC-REP-01, BC-REP-05 and BC-REP-09, none figure-bearing",
    "sources": [
     "BC-SKL-04014"
    ]
@@ -654,8 +654,8 @@ BC-QA-04002 has calculator status either, so the lesson takes Section I Part A, 
   "research/exam/exam-structure.md#Section and part layout"
  ],
  "word_count": {
-  "full": 562,
-  "brief": 447
+  "full": 564,
+  "brief": 449
  },
  "read_minutes": {
   "full": 4.2,

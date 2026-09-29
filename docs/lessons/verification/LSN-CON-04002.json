@@ -54,8 +54,8 @@
    },
    {
     "id": "ki-3",
-    "verdict": "lint",
-    "evidence": "The rewrite dropped the definition 'For V(t) liters at t hours', so the served 'V'(2) is in liters per hour' names a V the lesson has not introduced (ki-3 is core and served before st-1.contrast, the first place V is defined)."
+    "verdict": "ok",
+    "evidence": "fixed 2026-09-29: text now 'A model's rate is its derivative at the named instant: for V(t) liters at t hours, V'(2) is in liters per hour.', so V is defined where it is first used; 'in the context's words' cut to hold the brief cap (449 of 450)."
    },
    {
     "id": "st-1",
@@ -125,11 +125,17 @@
    "Error scoring_consequence and reader score lines still serve record text with page citations or ids; the served-text lint exempts record words, so this is not a defect, but the student reads them."
   ],
   "counts": {
-   "ok": 15,
+   "ok": 16,
    "unsourced": 0,
    "wrong": 0,
    "over_cap": 0,
-   "lint": 1
-  }
+   "lint": 0
+  },
+  "fix_notes": [
+   "ki-3 restores the definition of V before V'(2); Key ideas prose updated to match.",
+   "Delivery reasons for orientation, ki-1 and ki-3 changed from rule 5 to rule 6 (text). Stale delivery rule numbers in the reasons corrected to the current template (text rule 6, table rule 5, figure rule 4).",
+   "Word counts from the checker: full 564, brief 449.",
+   "Advice left as is: the BC-ERR-04001 scoring_consequence carries 'BC-ERR-99005' mid-sentence; it is verbatim record text."
+  ]
  }
 }

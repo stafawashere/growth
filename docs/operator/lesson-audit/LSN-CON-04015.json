@@ -42,87 +42,112 @@
   "auditor": "claude-opus-5-5",
   "blocks": [
    {
+    "id": "prediction",
+    "verdict": "ok",
+    "evidence": "SymPy: a concrete f with f(2) = 3, f'(2) = 5 gives limit 10 = 2f'(2)/cos 0, so only C (10) is true, A (0) and B (5, chain factor dropped) false; answerable from local linearity before the rule; resolution is BC-CON-04015 description_formal and the chain factor of BC-ERR-04031; no verdict word or id."
+   },
+   {
     "id": "orientation",
     "verdict": "ok",
-    "evidence": "Paraphrases unit 4.7 The conclusion and BC-SKL-04037 (repeat when still indeterminate); 27 words."
+    "evidence": "Trimmed paraphrase of BC-CON-04015 and the 4.7 paragraph; the dropped repeat-application sentence leaves nothing false."
    },
    {
     "id": "ki-1",
     "verdict": "ok",
-    "evidence": "Research unit 4.7 The conclusion (ced:84); quote on ced:93; chain factor from BC-ERR-04031; 38 words."
+    "evidence": "Matches BC-CON-04015 description_formal (ratio of derivatives, not derivative of the ratio); quote verbatim on cache/text/ced/page-093.txt."
    },
    {
     "id": "st-1",
     "verdict": "ok",
-    "evidence": "wrong_approaches of BC-QA-04009 names BC-ERR-04030; 26 words."
+    "evidence": "Labels 'Next line:' and 'Rival:' removed; method matches BC-QA-04009 asked_to_produce 'a limit of the ratio of derivatives'; rival is BC-ERR-04030."
+   },
+   {
+    "id": "st-1.contrast",
+    "verdict": "ok",
+    "evidence": "this matches BC-QA-04009 typical_wording; SymPy concrete g with g(6) = 1, g'(6) = 4 gives numerator 0, sin 0 = 0, limit 12; not_this asks a derivative of the same expression, answered by the quotient rule, why_not true; feature true."
    },
    {
     "id": "ex-1",
     "verdict": "ok",
-    "evidence": "SymPy: 2f'(2)/cos(0) = 10; cos(x - 1) at 1 is 1, nonzero."
+    "evidence": "Cues and whys trimmed; every expr unchanged; SymPy 2(5)/cos 0 = 10; no fade_from."
    },
    {
     "id": "reader-ex-1",
     "verdict": "ok",
-    "evidence": "BC-PT-99055 line verbatim."
+    "evidence": "BC-PT-99055 line verbatim.",
+    "note": "unchanged since 2026-09-29"
    },
    {
     "id": "err-BC-ERR-03003",
     "verdict": "ok",
-    "evidence": "Bundle text matches; 2f'(1) = -2 against 2f'(2) = 10; BC-MIS-03002 listed."
+    "evidence": "fix_prompt true with relation distinct; SymPy -2 vs 10 distinct; no expr rewritten."
    },
    {
     "id": "err-BC-ERR-04029",
     "verdict": "ok",
-    "evidence": "Bundle text matches; value 10 unchanged, equivalent."
+    "evidence": "fix_prompt false with relation equivalent; 10 vs 10 equal; no expr rewritten."
    },
    {
     "id": "err-BC-ERR-04030",
     "verdict": "ok",
-    "evidence": "Bundle text matches; SymPy: the quotient rule expression differs from 2f'(2x)/cos(x - 1)."
+    "evidence": "fix_prompt true with relation distinct; SymPy quotient-rule expression minus 2fp/cos(x - 1) does not simplify to 0; no expr rewritten."
    },
    {
     "id": "err-BC-ERR-04031",
     "verdict": "ok",
-    "evidence": "SymPy: f'(2) = 5 against 2f'(2) = 10; bundle text matches (cr-23:15)."
+    "evidence": "fix_prompt true with relation distinct; 5 vs 10 distinct; no expr rewritten."
    },
    {
     "id": "representations",
     "verdict": "ok",
-    "evidence": "null; skills carry BC-REP-01 only."
+    "evidence": "null; skills carry BC-REP-01 only.",
+    "note": "unchanged since 2026-09-29"
    },
    {
     "id": "BC-PRQ-04008",
     "verdict": "ok",
-    "evidence": "BC-PRQ-04008 description_plain names each quantity and whether it varies; the text paraphrases it."
+    "evidence": "Shortened paraphrase of BC-PRQ-04008 description_plain in the bundle (name each quantity and whether it varies); no id or label."
    },
    {
     "id": "chk-1",
     "verdict": "ok",
-    "evidence": "SymPy: 2*5/cos(0) = 10."
+    "evidence": "fixed 2026-09-29: stem now opens 'Above, the derivatives are ...' ('In the example above' put the brief form at 451, over the 450 cap). Served stem no longer opens with the block id ex-1; no value, key or option changed. Delta blind re-solve needed on this check."
    },
    {
     "id": "chk-2",
     "verdict": "ok",
-    "evidence": "SymPy: f(3) = 0 so 0/0; 3*(-2)/(3*1^2) = -2."
+    "evidence": "SymPy: f(3) = 0 so 0/0; 3*(-2)/(3*1^2) = -2.",
+    "note": "unchanged since 2026-09-29"
    },
    {
     "id": "chk-3",
     "verdict": "ok",
-    "evidence": "SymPy: 3f'(6)/1 = 6; A 3f'(2) = -9; B N'D - ND' at 2 is 0 since N(2) = D(2) = 0; C f'(6) = 2."
+    "evidence": "SymPy: 3f'(6)/1 = 6; A 3f'(2) = -9; B N'D - ND' at 2 is 0 since N(2) = D(2) = 0; C f'(6) = 2.",
+    "note": "unchanged since 2026-09-29"
+   },
+   {
+    "id": "no_figure_reason",
+    "verdict": "ok",
+    "evidence": "Skills BC-SKL-04035, 04036, 04037 carry only BC-REP-01, outside the figure set {BC-REP-02, 03, 07, 08} (docs/plan/01-learning-model.md, app/generation/spec.py FIGURE_REPRESENTATIONS); ki-1 states a replacement of one limit by another, delivered as text."
    }
   ],
   "advice": [
-   "BC-SKL-04037 (apply the rule again) appears only in the orientation; no example or check needs a second application, so that skill is not practised.",
-   "ex-1's first step asserts both limits are 0 without their reasons; a reader coming here first sees the form point modelled only by carry over from BC-CON-04014.",
-   "Text and step_reveal fit a symbolic rule. The bridge BC-PRQ-04008 is weakly related."
+   "The prediction asks for the rule's output before the rule; it is answerable from local linearity (f(2x) - 3 near 10(x - 1), sin(x - 1) near x - 1), which the resolution could say.",
+   "err-BC-ERR-04029 scoring_consequence serves 'BC-ERR-99008' mid-sentence; record-verbatim, kept by the renderer, but a student sees an id.",
+   "The trimmed orientation dropped the repeat-application sentence; no draw here needs it."
   ],
   "counts": {
-   "ok": 14,
+   "ok": 17,
    "unsourced": 0,
    "wrong": 0,
    "over_cap": 0,
    "lint": 0
-  }
+  },
+  "fix_notes": [
+   "Reworded check ids: chk-1.",
+   "Delivery reasons for orientation and ki-1 changed from rule 5 to rule 6 (text). Stale delivery rule numbers in the reasons corrected to the current template (text rule 6, table rule 5, figure rule 4).",
+   "Word counts from the checker: full 590, brief 448; read_minutes 3.94 and 2.99.",
+   "Advice left as is: a scoring_consequence carries 'BC-ERR-99008' mid-sentence; it is verbatim record text."
+  ]
  }
 }

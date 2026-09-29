@@ -115,8 +115,8 @@
    },
    {
     "id": "no_figure_reason",
-    "verdict": "unsourced",
-    "evidence": "Says the skills carry BC-REP-01, 04, 05 and 09; the bundle gives BC-SKL-04013 [04, 05], BC-SKL-04015 [04, 05], BC-SKL-04016 [01, 05], so no skill carries BC-REP-09 (it comes from the topic Representations paragraph). The conclusion holds: none of 02, 03, 07, 08 is present and ki-1 is a notation habit."
+    "verdict": "ok",
+    "evidence": "fixed 2026-09-29: now says the skills carry BC-REP-01, 04 and 05 and the topic adds BC-REP-09, a three decimal value; data/skills.json gives BC-SKL-04013 [04, 05], BC-SKL-04015 [04, 05], BC-SKL-04016 [01, 05]. Conclusion unchanged."
    }
   ],
   "advice": [
@@ -125,11 +125,16 @@
    "The prediction is served as mcq text; a fine fit, and it reuses ex-1's model so the resolution lands on the example the student reads next."
   ],
   "counts": {
-   "ok": 15,
-   "unsourced": 1,
+   "ok": 16,
+   "unsourced": 0,
    "wrong": 0,
    "over_cap": 0,
    "lint": 0
-  }
+  },
+  "fix_notes": [
+   "Delivery reasons for orientation and ki-1 changed from rule 5 to rule 6 (text), and the Delivery prose likewise. Stale delivery rule numbers in the reasons corrected to the current template (text rule 6, table rule 5, figure rule 4).",
+   "Word counts unchanged: full 565, brief 445 (no_figure_reason is not served band text).",
+   "Advice left as is: the BC-ERR-04012 scoring_consequence carries 'BC-ERR-99033' mid-sentence; it is verbatim record text."
+  ]
  }
 }

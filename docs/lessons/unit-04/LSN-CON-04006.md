@@ -76,7 +76,7 @@ BC-QA-04005 is `calculator` with a multipart free response structure, so Section
 
 ## Delivery
 
-- orientation, ki-1: text. Rule 5: BC-REP-01, 04, 05 only; the limit is scored as notation retained (sg-25:4), not a process to watch (docs/lessons/unit-04/README.md, section 6).
+- orientation, ki-1: text. Rule 6: BC-REP-01, 04, 05 only; the limit is scored as notation retained (sg-25:4), not a process to watch (docs/lessons/unit-04/README.md, section 6).
 - ex-1 and the three error blocks: step_reveal. Rule 1.
 - No drawn block. No skill carries a figure-bearing BC-REP and the key idea states a notation habit, so the record carries `no_figure_reason`.
 
@@ -143,7 +143,7 @@ BC-QA-04005 is `calculator` with a multipart free response structure, so Section
    "research/units/unit-04-contextual-applications-differentiation.md#4.3 Rates of Change in Applied Contexts Other Than Motion"
   ]
  },
- "no_figure_reason": "No skill carries a figure-bearing representation (only BC-REP-01, 04, 05 and 09), and the key idea states a notation habit for a limit, not a process the student watches.",
+ "no_figure_reason": "No skill carries a figure-bearing representation (the skills carry BC-REP-01, 04 and 05, and the topic adds BC-REP-09, a three decimal value), and the key idea states a notation habit for a limit, not a process the student watches.",
  "orientation": {
   "text": "A contextual rate names its quantity and input, and words its derivative in context units.",
   "sources": [
@@ -556,7 +556,7 @@ BC-QA-04005 is `calculator` with a multipart free response structure, so Section
   {
    "block": "orientation",
    "mode": "text",
-   "reason": "rule 5: BC-SKL-04013 and BC-SKL-04015 carry BC-REP-04 and BC-REP-05",
+   "reason": "rule 6: BC-SKL-04013 and BC-SKL-04015 carry BC-REP-04 and BC-REP-05",
    "sources": [
     "BC-SKL-04013"
    ]
@@ -564,7 +564,7 @@ BC-QA-04005 is `calculator` with a multipart free response structure, so Section
   {
    "block": "ki-1",
    "mode": "text",
-   "reason": "rule 5: BC-REP-01, 04, 05; the end behaviour limit is scored as notation retained (sg-25:4), not as a process to watch",
+   "reason": "rule 6: BC-REP-01, 04, 05; the end behaviour limit is scored as notation retained (sg-25:4), not as a process to watch",
    "sources": [
     "BC-SKL-04016"
    ]

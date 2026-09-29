@@ -22,7 +22,7 @@ Served text, from BC-CON-04014 `description_plain` and the topic's Assessment be
 BC-SKL-04034 maps to BC-EK-LIM-4A2 and BC-SKL-04038 to BC-EK-LIM-4A1 (ced:93): two core blocks.
 
 - ki-1 (core), BC-EK-LIM-4A2. Paraphrase of "The hypothesis": both limits zero, or both infinite, is the necessary first step, checked before the rule (ced:84, sg-23:14). Anchor quote from ced:93.
-- ki-2 (core), BC-EK-LIM-4A1. Paraphrase of "Continuity from differentiability": a function known only through values is differentiable, hence continuous, so its limit is its value (sg-23:14). Anchor quote from ced:93.
+- ki-2 (core), BC-EK-LIM-4A1. Paraphrase of "Continuity from differentiability": where the stem states that a function known only through its properties is differentiable, it is continuous there, so its limit is its value (sg-23:14). Anchor quote from ced:93.
 
 ## Recognition
 
@@ -73,15 +73,15 @@ Two checks: the bundle holds two errors, fewer than chk-3's three distractors ne
 
 ## Delivery
 
-- orientation: text. Rule 5 for a statement of what a response shows.
-- ki-1: text. Rule 5: BC-SKL-04034 carries BC-REP-01 and BC-REP-04.
-- ki-2: figure. Rule 3: BC-REP-02 in BC-SKL-04038; no varying quantity is read, so no promotion (docs/lessons/unit-04/README.md, section 6) [inferred].
+- orientation: text. Rule 6 for a statement of what a response shows.
+- ki-1: text. Rule 6: BC-SKL-04034 carries BC-REP-01 and BC-REP-04.
+- ki-2: figure. Rule 4: BC-REP-02 in BC-SKL-04038; no varying quantity is read, so no promotion (docs/lessons/unit-04/README.md, section 6) [inferred].
 - ex-1 and the two error blocks: step_reveal. Rule 1.
 
 ## Band plan
 
-- Low (full): prediction, orientation, the bridge, key ideas, st-1 with the contrast pair, ex-1 with its scoring line, chk-1, err-BC-ERR-04028, err-BC-ERR-04029, chk-2. 450 words, 3.0 minutes (cap 900 and 6).
-- Mid (brief): prediction, orientation, the bridge, core key ideas, st-1 with the contrast pair, ex-1 with its scoring line, chk-1, err-BC-ERR-04028, err-BC-ERR-04029, chk-2. 450 words, 3.0 minutes (cap 450 and 3).
+- Low (full): prediction, orientation, the bridge, key ideas, st-1 with the contrast pair, ex-1 with its scoring line, chk-1, err-BC-ERR-04028, err-BC-ERR-04029, chk-2. 449 words, 3.0 minutes (cap 900 and 6).
+- Mid (brief): prediction, orientation, the bridge, core key ideas, st-1 with the contrast pair, ex-1 with its scoring line, chk-1, err-BC-ERR-04028, err-BC-ERR-04029, chk-2. 449 words, 3.0 minutes (cap 450 and 3).
 - Refresher: ki-1, ki-2, err-BC-ERR-04028, err-BC-ERR-04029, ex-1.
 
 ## Sources
@@ -158,7 +158,7 @@ Two checks: the bundle holds two errors, fewer than chk-3's three distractors ne
    "id": "ki-2",
    "ek_id": "BC-EK-LIM-4A1",
    "depth": "core",
-   "text": "A function known only through values is differentiable, so continuous.",
+   "text": "Where a stem states f differentiable, f is continuous there.",
    "notation": "differentiable implies continuous",
    "quote": {
     "text": "such forms are said to be indeterminate",
@@ -373,7 +373,7 @@ Two checks: the bundle holds two errors, fewer than chk-3's three distractors ne
    },
    "completes": "ex-1",
    "stem": {
-    "text": "For ex-1 the form is 0/0. Finish with the ratio of derivatives.",
+    "text": "Above, the form is 0/0. Finish with the ratio of derivatives.",
     "command_verb": "find"
    },
    "key": {
@@ -457,7 +457,7 @@ Two checks: the bundle holds two errors, fewer than chk-3's three distractors ne
   {
    "block": "orientation",
    "mode": "text",
-   "reason": "rule 5: a statement of what a response shows",
+   "reason": "rule 6: a statement of what a response shows",
    "sources": [
     "BC-SKL-04034"
    ]
@@ -465,7 +465,7 @@ Two checks: the bundle holds two errors, fewer than chk-3's three distractors ne
   {
    "block": "ki-1",
    "mode": "text",
-   "reason": "rule 5: BC-SKL-04034 carries BC-REP-01 and BC-REP-04",
+   "reason": "rule 6: BC-SKL-04034 carries BC-REP-01 and BC-REP-04",
    "sources": [
     "BC-SKL-04034"
    ]
@@ -473,7 +473,7 @@ Two checks: the bundle holds two errors, fewer than chk-3's three distractors ne
   {
    "block": "ki-2",
    "mode": "figure",
-   "reason": "rule 3: BC-REP-02 in BC-SKL-04038 and BC-QA-04009 common_givens; no varying quantity is read, so no promotion",
+   "reason": "rule 4: BC-REP-02 in BC-SKL-04038 and BC-QA-04009 common_givens; no varying quantity is read, so no promotion",
    "sources": [
     "BC-SKL-04038",
     "BC-QA-04009"
@@ -585,8 +585,8 @@ Two checks: the bundle holds two errors, fewer than chk-3's three distractors ne
   "research/exam/exam-structure.md#Section and part layout"
  ],
  "word_count": {
-  "full": 450,
-  "brief": 450
+  "full": 449,
+  "brief": 449
  },
  "read_minutes": {
   "full": 3.0,

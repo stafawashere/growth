@@ -40,8 +40,8 @@
   "blocks": [
    {
     "id": "prediction",
-    "verdict": "wrong",
-    "evidence": "Option A 'Before: 81 + y^2 = 225.' is not false: ex-1 step 2 of this design substitutes x=9 into the relating equation before differentiating to recover y=12 (SymPy: 81+y^2=225 gives y=12), and 4.5 says multi-concept variants 'recover a missing dimension from the relating equation first'. The key B is right for the differentiation, but A shows legitimate work, so the keyed option is not the only true one. A distractor that is only false: 'Before: 2y dy/dt = 0' (SymPy: d/dt(81+y^2)=2y y', the BC-ERR-04020 wrong step)."
+    "verdict": "ok",
+    "evidence": "fixed 2026-09-29: option A now 'Before: 2y dy/dt = 0.', the BC-ERR-04020 wrong step, which is only false. SymPy: d/dt(81 + y^2 - 225) = 2 y y', while d/dt(x^2 + y^2 - 225) at x = 9 is 18 x' + 2 y y', so substituting first loses 18 dx/dt. Key B and option C unchanged; resolution unchanged."
    },
    {
     "id": "orientation",
@@ -130,12 +130,18 @@
    "Carried from the earlier audit: ex-1 and chk-3 parameter_draw values do not match their stems."
   ],
   "counts": {
-   "ok": 16,
+   "ok": 17,
    "unsourced": 0,
-   "wrong": 1,
+   "wrong": 0,
    "over_cap": 0,
    "lint": 0
-  }
+  },
+  "fix_notes": [
+   "Prediction prose updated to describe option A as the BC-ERR-04020 result and to say recovering y = 12 from the relation is legitimate work.",
+   "chk-1 stem reworded from 'For ex-1, ...' to 'In the example above, ...' (served-id rule, same lint as 04011 to 04015 though the audit marked it ok). No value, key or option changed. Delta blind re-solve needed on chk-1.",
+   "Delivery reasons: orientation figure rule 3 to rule 4, ki-1 interactive 'rule 3 promoted' to 'rule 4 promoted'. Stale delivery rule numbers in the reasons corrected to the current template (text rule 6, table rule 5, figure rule 4).",
+   "Word counts from the checker: full 578, brief 450."
+  ]
  },
  "fix_notes": [
   "ex-1 and chk-1 draw size 6 set to 9 (foot 9 meters); chk-3 size 3 set to 4 (foot 4 feet); ratio 1 leg long already gives the 3, 4, 5 ladder with key -8. Template build confirms every key and unit; checker draw_exclusion clean.",

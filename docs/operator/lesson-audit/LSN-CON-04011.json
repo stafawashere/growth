@@ -42,91 +42,107 @@
   "auditor": "claude-opus-5-5",
   "blocks": [
    {
+    "id": "prediction",
+    "verdict": "ok",
+    "evidence": "SymPy: tangent 4 + f'(1)(x - 1) with f'(1) = -1 gives 39/10 at 1.1; true f = 2x^3/3 - 3x + 19/3 gives f(1.1) = 5881/1500 = 3.9207, distances A 0.079, B 0.021, C 0.179, so only B is the best approximation and the tangent-line value; resolution restates BC-EK-CHA-3F1 (ced:92) and the 4.6 heading; no verdict word or id."
+   },
+   {
     "id": "orientation",
     "verdict": "ok",
-    "evidence": "Paraphrases BC-CON-04011 and the 4.6 paragraph; SymPy f = 2x^3/3 - 3x + 19/3 has f(1) = 4, f' = 2x^2 - 3; window [0.5, 1.5] x [3, 5] holds the curve (4.917, 4.083, min 3.884) and (1.1, 3.9) lies on the tangent.",
-    "reaudited": "2026-09-29"
+    "evidence": "Trimmed paraphrase of BC-CON-04011 and the 4.6 Assessment behaviour paragraph; dropping the unsimplified-arithmetic sentence leaves nothing false."
    },
    {
     "id": "ki-1",
     "verdict": "ok",
-    "evidence": "CHA-3.F.1 quote verbatim on ced:92; both-coordinates sentence from crabbc-25:25; SymPy f(1 + s/2) = 4 - s/2 + s^2/2 + s^3/12, matching the curve point expression.",
-    "reaudited": "2026-09-29"
+    "evidence": "Trimmed text still carries CHA-3.F.1; quote verbatim on cache/text/ced/page-092.txt; notation f(a) + f'(a)(x - a) matches."
    },
    {
     "id": "st-1",
     "verdict": "ok",
-    "evidence": "Cue, method and rival match the archetype record; within 80 words."
+    "evidence": "Labels 'First line:' and 'Rival:' removed; method matches expected_solution_path[0] of BC-QA-04008; rival is its BC-ERR-04024 wrong_approach."
+   },
+   {
+    "id": "st-1.contrast",
+    "verdict": "ok",
+    "evidence": "this matches BC-QA-04008 typical_wording (tangent line at the stated point, value at a nearby input), SymPy slope g'(2) = 3, value 53/10; not_this is a BC-QA-02011 stem (research/question-analysis/question-archetypes.md#BC-QA-02011 Tangent line written at a point on a curve), why_not true; feature (a second input) separates them."
    },
    {
     "id": "ex-1",
     "verdict": "ok",
-    "evidence": "Every step and the key verified by SymPy; cues within 20 and whys within 25 words."
+    "evidence": "Only the first why was trimmed; every expr unchanged, SymPy slope -1 and 39/10; no fade_from."
    },
    {
     "id": "scores-ex-1",
     "verdict": "ok",
-    "evidence": "Line built from the point type record fields in the bundle (name, rubric citations, notation requirements)."
+    "evidence": "Line built from the point type record fields in the bundle (name, rubric citations, notation requirements).",
+    "note": "unchanged since 2026-09-29"
    },
    {
     "id": "err-BC-ERR-04024",
     "verdict": "ok",
-    "evidence": "observed_behavior, scoring_consequence and misconception text found verbatim in the bundle; wrong and right values verified by SymPy."
+    "evidence": "fix_prompt true with relation distinct; SymPy 4 vs 39/10 distinct; no expr rewritten."
    },
    {
     "id": "err-BC-ERR-99035",
     "verdict": "ok",
-    "evidence": "observed_behavior, scoring_consequence and misconception text found verbatim in the bundle; wrong and right values verified by SymPy."
+    "evidence": "fix_prompt true with relation distinct; SymPy f''(1) = 4 vs f'(1) = -1 distinct; no expr rewritten."
    },
    {
     "id": "err-BC-ERR-04023",
     "verdict": "ok",
-    "evidence": "observed_behavior, scoring_consequence and misconception text found verbatim in the bundle; wrong and right values verified by SymPy."
+    "evidence": "fix_prompt true with relation distinct; SymPy 4x - 5 vs 5 - x distinct; no expr rewritten."
+   },
+   {
+    "id": "err-BC-ERR-04027",
+    "verdict": "ok",
+    "evidence": "fix_prompt true with relation distinct; SymPy -29/50 vs -1 distinct; no expr rewritten."
    },
    {
     "id": "representations",
     "verdict": "ok",
-    "evidence": "No representations block; null."
+    "evidence": "No representations block; null.",
+    "note": "unchanged since 2026-09-29"
    },
    {
     "id": "BC-PRQ-04006",
     "verdict": "ok",
-    "evidence": "Paraphrase of the prerequisite record in the bundle; within 60 words."
+    "evidence": "Shortened paraphrase of BC-PRQ-04006 in the bundle; the dropped clause was not a claim the bridge needs."
    },
    {
     "id": "chk-1",
     "verdict": "ok",
-    "evidence": "Key and every option or step value verified by SymPy."
+    "evidence": "fixed 2026-09-29: stem now opens 'In the example above, the tangent line is ...'. Served stem no longer opens with the block id ex-1; no value, key or option changed. Delta blind re-solve needed on this check."
    },
    {
     "id": "chk-2",
     "verdict": "ok",
-    "evidence": "Key and every option or step value verified by SymPy."
+    "evidence": "Key and every option or step value verified by SymPy.",
+    "note": "unchanged since 2026-09-29"
    },
    {
     "id": "chk-3",
     "verdict": "ok",
     "evidence": "SymPy key 3 + (9/5 - 2) = 14/5; A 3 (point of tangency, BC-ERR-04024), C 1 + 3(x - 2) = 2/5 (BC-ERR-04023), D f'(9/5) = 44/25, 3 + (44/25)(-1/5) = 331/125 (BC-ERR-04027); all distinct.",
-    "reaudited": "2026-09-29"
-   },
-   {
-    "id": "err-BC-ERR-04027",
-    "verdict": "ok",
-    "evidence": "Wrong step evaluates the derivative off the point of tangency, the record's move, with f' in x alone (listed as inferred); fields verbatim; possible_reason substring of BC-MIS-04012; SymPy f'(11/10) = -29/50 against -1, distinct.",
-    "reaudited": "2026-09-29"
+    "note": "unchanged since 2026-09-29"
    }
   ],
   "advice": [
-   "err-BC-ERR-04027 and chk-3 option D apply an error defined for implicit derivatives (both coordinates) to an explicit f'(x); an implicit dy/dx draw would fit the record.",
-   "Orientation and ki-1 figures draw 4 - (x - 1) + (x - 1)^2 as the curve, which is not an antiderivative of 2x^2 - 3 (its second derivative is 2, not f''(1) = 4); label it as illustrative or use the true f.",
-   "ki-1 motion for closeness near the point of tangency suits a process; the lesson omits the over or under estimate judgement its archetype BC-QA-04008 names (draw judgement off throughout)."
+   "Kept from the earlier audit: err-BC-ERR-04027 and chk-3 option D apply an error defined for derivatives in both coordinates to an explicit f'(x); an implicit dy/dx draw would fit the record.",
+   "ki-1 still lists crabbc-25:25 as a source though the trimmed text dropped the both-coordinates sentence it supported.",
+   "The prediction's C (about 4.1) is described in the prose as adding the step to f(1); it is a plausible sign slip and reads well as a distractor.",
+   "Kept from the earlier audit: the lesson omits the over or under estimate judgement BC-QA-04008 names (judgement off throughout); LSN-CON-04012 carries it."
   ],
   "counts": {
-   "ok": 14,
+   "ok": 16,
    "unsourced": 0,
    "wrong": 0,
    "over_cap": 0,
    "lint": 0
-  }
+  },
+  "fix_notes": [
+   "Reworded check ids: chk-1.",
+   "Delivery reason for orientation (figure) changed from rule 3 to rule 4. Stale delivery rule numbers in the reasons corrected to the current template (text rule 6, table rule 5, figure rule 4).",
+   "Word counts from the checker: full 591, brief 450; read_minutes 3.94 and 3.0."
+  ]
  }
 }

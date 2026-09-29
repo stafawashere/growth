@@ -33,83 +33,99 @@
   "auditor": "claude-opus-5-5",
   "blocks": [
    {
+    "id": "prediction",
+    "verdict": "ok",
+    "evidence": "SymPy: d/dx Integral(t^2 - 3, (t, 1, 2x^2)) at x = 1 is 4; no chain factor gives 1 (BC-ERR-06027 path), integrand at t = 1 gives -2; resolution is FUN-5.A.2 with the chain factor from the 6.4 heading."
+   },
+   {
     "id": "orientation",
     "verdict": "ok",
-    "evidence": "23 words; paraphrase of BC-CON-06008 and the 6.4 Composite upper limit paragraph."
+    "evidence": "Shortened paraphrase of BC-CON-06008; true, no id."
    },
    {
     "id": "ki-1",
     "verdict": "ok",
-    "evidence": "36 words; FUN-5.A.2 on ced:121 and the 6.4 composite upper limit line."
+    "evidence": "FUN-5.A.2 on ced:121 with chain rule; the u(x) = x special case is true; LaTeX notation true."
    },
    {
     "id": "st-1",
+    "verdict": "lint",
+    "evidence": "Label strip capitalized the function name: method reads \"H' equals the integrand at the upper limit\" while the problems name h."
+   },
+   {
+    "id": "st-1.contrast",
     "verdict": "ok",
-    "evidence": "Matches BC-QA-06012 path and BC-ERR-06027 wrong approach; 24 words."
+    "evidence": "this matches BC-QA-06012 typical_wording (h defined by an integral to a function of x, h prime at a stated input); SymPy h'(1) = 6. not_this Integral(t^2 - 3, 1, 2) = -2/3 by antiderivative (BC-CON-06012 near miss); why_not and feature true."
    },
    {
     "id": "st-2",
-    "verdict": "ok",
-    "evidence": "Matches BC-QA-06003 path entries and BC-ERR-06008; 37 words, cue 14."
+    "verdict": "lint",
+    "evidence": "Label strip capitalized the function name: method reads 'G as signed areas' while the function is g."
    },
    {
     "id": "ex-1",
     "verdict": "ok",
-    "evidence": "SymPy: d/dx of integral 1 to 2x^2 of (t^2-3) at x=1 is 4."
+    "evidence": "SymPy: d/dx of integral 1 to 2x^2 of (t^2-3) at x=1 is 4.",
+    "note": "unchanged since 2026-09-29"
    },
    {
     "id": "reader-scores:ex-1",
     "verdict": "ok",
-    "evidence": "BC-PT-99024 and BC-PT-99004 lines verbatim from the bundle; BC-QA-06012 lists both."
+    "evidence": "BC-PT-99024 and BC-PT-99004 lines verbatim from the bundle; BC-QA-06012 lists both.",
+    "note": "unchanged since 2026-09-29"
    },
    {
     "id": "err-BC-ERR-06027",
     "verdict": "ok",
-    "evidence": "Bundle text verbatim; f(2)=1 without factor 4."
+    "evidence": "relation distinct, fix_prompt true; exprs unchanged (1 vs 4)."
    },
    {
     "id": "err-BC-ERR-06028",
     "verdict": "ok",
-    "evidence": "Bundle text verbatim; t^2-3 left in t."
+    "evidence": "relation distinct, fix_prompt true; exprs unchanged."
    },
    {
     "id": "representations",
     "verdict": "ok",
-    "evidence": "null."
+    "evidence": "null.",
+    "note": "unchanged since 2026-09-29"
    },
    {
-    "id": "bridge:BC-PRQ-06005",
+    "id": "BC-PRQ-06005",
     "verdict": "ok",
-    "evidence": "9 words; paraphrase of description_plain."
+    "evidence": "Shortened paraphrase of BC-PRQ-06005 description_plain."
    },
    {
-    "id": "bridge:BC-PRQ-06013",
+    "id": "BC-PRQ-06013",
     "verdict": "ok",
-    "evidence": "8 words; paraphrase of description_plain."
+    "evidence": "Wording trim only; paraphrase of BC-PRQ-06013."
    },
    {
     "id": "chk-1",
     "verdict": "ok",
-    "evidence": "SymPy: ((2x^2)^2-3)(4x) at 1 is 4."
+    "evidence": "SymPy: ((2x^2)^2-3)(4x) at 1 is 4.",
+    "note": "unchanged since 2026-09-29"
    },
    {
     "id": "chk-2",
     "verdict": "ok",
-    "evidence": "SymPy: d/dx of integral 0 to 3x of (t^2-2) at 1 is 21."
+    "evidence": "SymPy: d/dx of integral 0 to 3x of (t^2-2) at 1 is 21.",
+    "note": "unchanged since 2026-09-29"
    }
   ],
   "advice": [
    "st-1 method omits the chain factor that its own separating feature points to.",
    "Every example and check uses a composite limit; no item has upper limit x alone or a graph-supplied integrand, so st-2 and BC-SKL-06018 by graph are unpractised.",
    "BC-SKL-06021 (stating the continuity hypothesis) appears only inside ki-1; no check asks for it.",
-   "ki-1 as a static figure of the height at the upper limit fits."
+   "ki-1 as a static figure of the height at the upper limit fits.",
+   "err-BC-ERR-06027 scoring_consequence carries (sg-24:15); verbatim record text the reader strips."
   ],
   "counts": {
    "ok": 13,
    "unsourced": 0,
    "wrong": 0,
    "over_cap": 0,
-   "lint": 0
+   "lint": 2
   }
  }
 }

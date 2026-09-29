@@ -39,83 +39,97 @@
   "auditor": "claude-opus-5-5",
   "blocks": [
    {
+    "id": "prediction",
+    "verdict": "ok",
+    "evidence": "Stem supplies the integral 5.306, so answerable before the rule; SymPy integral 5.305957, divided by 3 is 1.768652, and 5.306/3 = 1.768667, both 1.769 at three places; resolution is the BC-CON-06013 quotient; no verdict word."
+   },
+   {
     "id": "orientation",
     "verdict": "ok",
-    "evidence": "Paraphrases BC-CON-06013 description_formal; 24 words."
+    "evidence": "Cut to 11 words; still the BC-QA-08001 asked_to_produce 'an integral quotient'."
    },
    {
     "id": "ki-1",
     "verdict": "ok",
-    "evidence": "Matches the topic's Net change and average value paragraph; 30 words."
+    "evidence": "'Average value is the integral spread over the length.' is a true compression of BC-CON-06013; the formula remains in ex-1 step 1."
    },
    {
     "id": "st-1",
     "verdict": "ok",
-    "evidence": "Method from BC-QA-08001 expected_solution_path; rival is wrong_approaches[0], averaging endpoint values."
+    "evidence": "Method 'Integral divided by the length.' has no label; rival is BC-QA-08001 wrong_approaches 'averaging the two endpoint values'."
+   },
+   {
+    "id": "st-1.contrast",
+    "verdict": "ok",
+    "evidence": "this matches BC-QA-08001 typical_wording (find the average value over the stated interval); not_this is average rate of change, BC-ERR-99015 observed_behavior 'compute a difference quotient'; SymPy average value 5 against average rate of change 2 for 2t + 1 on [0, 4]; feature true."
    },
    {
     "id": "st-2",
     "verdict": "ok",
-    "evidence": "Method is BC-QA-06015 expected_solution_path[0]; rival wrong_approaches[0]; 1/(b - a) marker from parameter_spec notes."
+    "evidence": "Labels removed; matches BC-QA-06015 wrong_approaches."
    },
    {
     "id": "ex-1",
     "verdict": "ok",
-    "evidence": "SymPy N((1/3)Integral(4cos(t^2/2)+1,(t,0,3))) = 1.76865, reported 1.769; draw meets amplitude > abs(shift) and length^2 >= 4 scale."
+    "evidence": "Cues shortened to 'Over [0, 3].' and 'Calculator.'; values unchanged (1.769)."
    },
    {
     "id": "what_a_reader_scores:ex-1",
     "verdict": "ok",
-    "evidence": "Lines reproduce BC-PT-99020 and BC-PT-99004 record fields including the precision rule."
+    "evidence": "Lines reproduce BC-PT-99020 and BC-PT-99004 record fields including the precision rule.",
+    "note": "unchanged since 2026-09-29"
    },
    {
     "id": "err-BC-ERR-06016",
     "verdict": "ok",
-    "evidence": "Record text matches; BC-MIS-06014 linked and quoted."
+    "evidence": "fix_prompt true and relation distinct; expression unchanged since the earlier audit, values 5.306 against 1.769."
    },
    {
     "id": "err-BC-ERR-06030",
     "verdict": "ok",
-    "evidence": "Record text matches; BC-MIS-06014 linked."
+    "evidence": "fix_prompt true and relation distinct; expression unchanged since the earlier audit, values integral against integral over 3."
    },
    {
     "id": "err-BC-ERR-99015",
     "verdict": "ok",
-    "evidence": "W(0) = 5 so (W(3) - W(0))/3 = (4cos(9/2) + 1 - 5)/3; BC-MIS-99006 linked."
+    "evidence": "fix_prompt true and relation distinct; expression unchanged since the earlier audit, values -4/3 + (4/3)cos(9/2) against the integral quotient."
    },
    {
     "id": "err-BC-ERR-06032",
     "verdict": "ok",
-    "evidence": "t^2/2 read in degrees is pi t^2/360; SymPy 4.998 versus 1.769, distinct."
+    "evidence": "fix_prompt true and relation distinct; expression unchanged since the earlier audit, values degree-mode against radian-mode quotient."
    },
    {
     "id": "representations",
     "verdict": "ok",
-    "evidence": "null; BC-REP-01, 05, 09 are not figure bearing."
+    "evidence": "null; BC-REP-01, 05, 09 are not figure bearing.",
+    "note": "unchanged since 2026-09-29"
    },
    {
     "id": "chk-1",
     "verdict": "ok",
-    "evidence": "SymPy 1.76865, key 1.769."
+    "evidence": "SymPy 1.76865, key 1.769.",
+    "note": "unchanged since 2026-09-29"
    },
    {
     "id": "chk-2",
     "verdict": "ok",
-    "evidence": "SymPy (2/7)Integral(3cos(t^2/2)-1,(t,0,7/2)) = -0.29655, key -0.297."
+    "evidence": "SymPy (2/7)Integral(3cos(t^2/2)-1,(t,0,7/2)) = -0.29655, key -0.297.",
+    "note": "unchanged since 2026-09-29"
    },
    {
     "id": "chk-3",
     "verdict": "ok",
-    "evidence": "SymPy key 3.15259 to 3.153; A (W(4)-W(0))/4 = -0.627; C degree mode 7.995; D undivided 12.610; all verified."
+    "evidence": "SymPy key 3.15259 to 3.153; A (W(4)-W(0))/4 = -0.627; C degree mode 7.995; D undivided 12.610; all verified.",
+    "note": "unchanged since 2026-09-29"
    }
   ],
   "advice": [
-   "err-BC-ERR-06030 is an interpretation error, but its wrong_step shows the undivided integral expression, which is the BC-ERR-06016 picture; the wrong step should keep the average expression and change only the sentence.",
-   "The lesson has no bridge; BC-SKL-06038 has a hard prerequisite BC-SKL-06034 that a bridge could name.",
-   "Recognition of the average value stem and its rival are taught; the interpretation habit (units, interval) from BC-QA-06015 has no worked example or check."
+   "Reader lines and scoring_consequence fields carry page citations (sg-..:..) as verbatim record text; the reader strips them, so they are not lint.",
+   "Carried from the earlier audit: err-BC-ERR-06030's wrong_step shows the undivided integral, the BC-ERR-06016 picture; no bridge names BC-SKL-06034."
   ],
   "counts": {
-   "ok": 14,
+   "ok": 16,
    "unsourced": 0,
    "wrong": 0,
    "over_cap": 0,

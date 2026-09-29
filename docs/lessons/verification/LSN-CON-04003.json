@@ -60,8 +60,8 @@
    },
    {
     "id": "st-1.contrast",
-    "verdict": "unsourced",
-    "evidence": "this (v given, a(4) asked; SymPy a(4) = 3) is a BC-QA-04003 stem and not_this (v and x(0)=3, position at t=4; SymPy 3 + integral = -47/3) a BC-QA-04010 stem, both fine; but feature 'A given position means accumulate' is contradicted by BC-QA-04003 common_givens 'a position function of time', which is differentiated, and by the lesson's own pr-1 and ex-1. The separating feature is a known position at one time given beside a velocity (BC-QA-04010 common_givens)."
+    "verdict": "ok",
+    "evidence": "fixed 2026-09-29: feature now 'A velocity plus the position at one time means accumulate.', the BC-QA-04010 common_givens pair ('a velocity function of time', 'the position at one time' in data/archetypes.json); BC-QA-04003 common_givens list 'a position function of time', which is differentiated, so the old feature is gone. this and not_this unchanged."
    },
    {
     "id": "st-2",
@@ -114,11 +114,16 @@
    "Error scoring_consequence and reader score lines still serve record text with page citations or ids; the served-text lint exempts record words, so this is not a defect, but the student reads them."
   ],
   "counts": {
-   "ok": 13,
-   "unsourced": 1,
+   "ok": 14,
+   "unsourced": 0,
    "wrong": 0,
    "over_cap": 0,
    "lint": 0
-  }
+  },
+  "fix_notes": [
+   "Recognition prose now names the position at one time beside a velocity as the separating feature.",
+   "Delivery reasons for orientation and ki-1 changed from rule 5 to rule 6 (text). Stale delivery rule numbers in the reasons corrected to the current template (text rule 6, table rule 5, figure rule 4).",
+   "Word counts from the checker: full 475, brief 428."
+  ]
  }
 }

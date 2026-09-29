@@ -39,81 +39,98 @@
   "auditor": "claude-opus-5-5",
   "blocks": [
    {
+    "id": "prediction",
+    "verdict": "wrong",
+    "evidence": "Key From 1 to 3 is right (SymPy limit 26 equals Integral(3x^2, 1, 3); 0 to 2 gives 8, 1 to 2 gives 7), but the resolution says the first sample point is 1: at i = 1 the term gives 1 + 2/n (SymPy), which is 1 only at i = 0 or in the limit. BC-QA-06014 expected_solution_path says the sample point expression gives the lower limit, not the first sample point."
+   },
+   {
     "id": "orientation",
     "verdict": "ok",
-    "evidence": "Paraphrase of BC-CON-06006 and LIM-5.C.2; 33 words."
+    "evidence": "Shortened paraphrase of BC-CON-06006 description_plain and LIM-5.C.2; true, no id."
    },
    {
     "id": "ki-1",
     "verdict": "ok",
-    "evidence": "Quote is a substring of LIM-5.C.1 on ced:120; continuity hypothesis and maximum width match the research Definition paragraph."
+    "evidence": "Shortened paraphrase of LIM-5.C.1 on ced:120; quote still a verbatim substring of cache/text/ced/page-120.txt and .raw.txt (script check)."
    },
    {
     "id": "ki-2",
-    "verdict": "ok",
-    "evidence": "LIM-5.C.2 plus BC-QA-06014 expected_solution_path steps 1 to 4 (width gives interval length, sample point gives lower limit)."
+    "verdict": "wrong",
+    "evidence": "Now says the first sample point fixes a; for the right-endpoint forms this lesson uses (ex-1, chk-3) the first sample point is a + width/n (SymPy: 1 + 2/n at i = 1). The earlier text (sample point at i = 0) was true; BC-QA-06014 expected_solution_path[2] reads the lower limit from the sample point expression."
    },
    {
     "id": "ki-3",
     "verdict": "ok",
-    "evidence": "Quote matches LIM-5.B.1 on ced:120 verbatim."
+    "evidence": "Only the notation changed to LaTeX; quote verbatim on ced:120 (script check)."
    },
    {
     "id": "st-1",
     "verdict": "ok",
-    "evidence": "Cue from BC-QA-06014 common_givens; method is expected_solution_path[0]; rival paraphrases common_distractors (interval read as zero to one from the width)."
+    "evidence": "Method equals BC-QA-06014 expected_solution_path[0] reworded, no leading label; rival matches common_distractors[0] and BC-ERR-99032, tagged inferred."
+   },
+   {
+    "id": "st-1.contrast",
+    "verdict": "ok",
+    "evidence": "this matches typical_wording 'express the given limit of a Riemann sum as a definite integral' (SymPy limit 156 = Integral(x^3, 1, 5)); not_this is a finite right sum (BC-CON-06003 near miss), why_not and feature true."
    },
    {
     "id": "ex-1",
     "verdict": "ok",
-    "evidence": "SymPy limit of Sum(3*(1 + 2*i/n)**2*(2/n)) is 26 and Integral(3*x**2, (x, 1, 3)) is 26; draw in domain."
+    "evidence": "SymPy limit of Sum(3*(1 + 2*i/n)**2*(2/n)) is 26 and Integral(3*x**2, (x, 1, 3)) is 26; draw in domain.",
+    "note": "unchanged since 2026-09-29"
    },
    {
     "id": "err-BC-ERR-99028",
     "verdict": "ok",
-    "evidence": "Record text equals bundle; SymPy wrong Integral(3*(1+2x)^2, 0, 1) = 13 vs 26, the width factor 2 lost."
+    "evidence": "relation distinct, fix_prompt true; exprs unchanged (13 vs 26)."
    },
    {
     "id": "err-BC-ERR-99032",
     "verdict": "ok",
-    "evidence": "Record text equals bundle; SymPy wrong limits 0 to 2 give 8 vs 26, limits never given."
+    "evidence": "relation distinct, fix_prompt true; exprs unchanged (8 vs 26)."
    },
    {
     "id": "representations",
     "verdict": "ok",
-    "evidence": "SymPy right sums at n = 2, 4, 8, 16, 100: 39, 32.25, 29.0625, 27.5156, 26.2404; rounded values and limit 26 correct."
+    "evidence": "SymPy right sums at n = 2, 4, 8, 16, 100: 39, 32.25, 29.0625, 27.5156, 26.2404; rounded values and limit 26 correct.",
+    "note": "unchanged since 2026-09-29"
    },
    {
-    "id": "bridge-BC-PRQ-06006",
+    "id": "BC-PRQ-06006",
     "verdict": "ok",
-    "evidence": "Paraphrase of BC-PRQ-06006 description_plain and failure_signature."
+    "evidence": "Shortened paraphrase of BC-PRQ-06006 description_plain and failure_signature."
    },
    {
     "id": "chk-1",
     "verdict": "ok",
-    "evidence": "Key Integral(3*x**2, (x, 1, 3)) equals ex-1 answer."
+    "evidence": "Key Integral(3*x**2, (x, 1, 3)) equals ex-1 answer.",
+    "note": "unchanged since 2026-09-29"
    },
    {
     "id": "chk-2",
     "verdict": "ok",
-    "evidence": "SymPy limit of Sum(2*(2 + 2*(i - 1)/n)**3*(2/n)) is 120 equal to Integral(2*t**3, (t, 2, 4))."
+    "evidence": "SymPy limit of Sum(2*(2 + 2*(i - 1)/n)**3*(2/n)) is 120 equal to Integral(2*t**3, (t, 2, 4)).",
+    "note": "unchanged since 2026-09-29"
    },
    {
     "id": "chk-3",
     "verdict": "ok",
-    "evidence": "SymPy limit 39 equals Integral(x**2, (x, 2, 5)); A = 9, C = 13, D = -39 all differ; derivations match BC-ERR-99032 and BC-ERR-99028."
+    "evidence": "SymPy limit 39 equals Integral(x**2, (x, 2, 5)); A = 9, C = 13, D = -39 all differ; derivations match BC-ERR-99032 and BC-ERR-99028.",
+    "note": "unchanged since 2026-09-29"
    }
   ],
   "advice": [
    "ki-1 as motion suits the limiting process, and the numeric experiment in representations reinforces it well; the two overlap, so one could be cut in the brief band.",
    "ki-2's sources omit BC-QA-06014 although its procedure comes from that archetype's expected_solution_path.",
    "The 'sample point at i = 0 fixes a' rule holds for right endpoint forms only; chk-2 uses a left form (i - 1), where i = 1 gives a. A note on the left form would close the gap.",
-   "Only the to_integral direction is taught; the to_sum direction of BC-QA-06014 is covered in LSN-CON-06005 only as a sigma sum, not as a limit."
+   "Only the to_integral direction is taught; the to_sum direction of BC-QA-06014 is covered in LSN-CON-06005 only as a sigma sum, not as a limit.",
+   "representations text (unchanged, earlier ok) opens 'Right sums for ex-1', a block id in served text; 'Right sums for the example' would avoid it.",
+   "Fix for prediction and ki-2: say the sample point expression 1 + 2i/n gives 1 at i = 0 (or in the limit), so a = 1, which also covers the left form in chk-2."
   ],
   "counts": {
    "ok": 13,
    "unsourced": 0,
-   "wrong": 0,
+   "wrong": 2,
    "over_cap": 0,
    "lint": 0
   }

@@ -42,92 +42,108 @@
   "auditor": "claude-opus-5-5",
   "blocks": [
    {
+    "id": "prediction",
+    "verdict": "ok",
+    "evidence": "fixed 2026-09-29: option A now 'Before: 2y dy/dt = 0.', the BC-ERR-04020 wrong step, which is only false. SymPy: d/dt(81 + y^2 - 225) = 2 y y', while d/dt(x^2 + y^2 - 225) at x = 9 is 18 x' + 2 y y', so substituting first loses 18 dx/dt. Key B and option C unchanged; resolution unchanged."
+   },
+   {
     "id": "orientation",
     "verdict": "ok",
-    "evidence": "Paraphrases the concept description and unit research section; within 60 words; no lint."
+    "evidence": "Shortened paraphrase of BC-CON-04009 and 4.5 Order of operations; no id."
    },
    {
     "id": "ki-1",
     "verdict": "ok",
-    "evidence": "Quote found verbatim on the cited CED page; claims match the EK and research section; within 120 words."
+    "evidence": "Shortened; claims match 4.5 Order of operations (instant values after, constants any stage, missing value from the relating equation); quote unchanged, verbatim on ced:91."
    },
    {
     "id": "st-1",
     "verdict": "ok",
-    "evidence": "Cue, method and rival match the archetype record; within 80 words."
+    "evidence": "method starts with no label; rival loses its label and id; cue and separating feature still match BC-QA-04006 typical_wording; sources add the rival's error id."
+   },
+   {
+    "id": "st-1.contrast",
+    "verdict": "ok",
+    "evidence": "this: 13 ft ladder, foot 5, dx/dt=3, a BC-QA-04006 stem (SymPy dy/dt=-5/4). not_this: fixed L=13 may go in first; why_not 'L is fixed' true per 4.5 'quantities constant in time may be substituted at any stage'; feature true."
    },
    {
     "id": "st-2",
     "verdict": "ok",
-    "evidence": "Cue, method and rival match the archetype record; within 80 words."
+    "evidence": "Rival loses its label; cue and method unchanged and match BC-QA-04007 typical_wording; method starts with no label."
    },
    {
     "id": "ex-1",
     "verdict": "ok",
-    "evidence": "Every step and the key verified by SymPy; cues within 20 and whys within 25 words."
+    "evidence": "Step exprs, relations and answer -3/2 identical to the audited version (SymPy-checked 2026-09-29); only cue and why text shortened, still true."
    },
    {
     "id": "scores-ex-1",
     "verdict": "ok",
-    "evidence": "Line built from the point type record fields in the bundle (name, rubric citations, notation requirements)."
+    "evidence": "unchanged since 2026-09-29: Line built from the point type record fields in the bundle (name, rubric citations, notation requirements)."
    },
    {
     "id": "err-BC-ERR-04020",
     "verdict": "ok",
-    "evidence": "observed_behavior, scoring_consequence and misconception text found verbatim in the bundle; wrong and right values verified by SymPy."
+    "evidence": "fix_prompt true equals (relation == distinct) with relation distinct; SymPy: wrong 2y y'=0 and right 2x x'+2y y'=0 differ; wrong_step, right_step and bundle text unchanged since 2026-09-29."
    },
    {
     "id": "err-BC-ERR-04022",
     "verdict": "ok",
-    "evidence": "observed_behavior, scoring_consequence and misconception text found verbatim in the bundle; wrong and right values verified by SymPy."
+    "evidence": "fix_prompt true equals (relation == distinct) with relation distinct; SymPy: wrong -18/y and right -3/2 differ; wrong_step, right_step and bundle text unchanged since 2026-09-29."
    },
    {
     "id": "err-BC-ERR-99013",
     "verdict": "ok",
-    "evidence": "observed_behavior, scoring_consequence and misconception text found verbatim in the bundle; wrong and right values verified by SymPy."
+    "evidence": "fix_prompt true equals (relation == distinct) with relation distinct; SymPy: wrong -3/4 and right -3/2 differ; wrong_step, right_step and bundle text unchanged since 2026-09-29."
    },
    {
     "id": "representations",
     "verdict": "ok",
-    "evidence": "No representations block; null."
+    "evidence": "unchanged since 2026-09-29: No representations block; null."
    },
    {
     "id": "BC-PRQ-04007",
     "verdict": "ok",
-    "evidence": "Paraphrase of the prerequisite record in the bundle; within 60 words."
+    "evidence": "Shortened paraphrase of the prerequisite record in the bundle; no id or citation left in served text."
    },
    {
     "id": "BC-PRQ-04008",
     "verdict": "ok",
-    "evidence": "Paraphrase of the prerequisite record in the bundle; within 60 words."
+    "evidence": "Shortened paraphrase of the prerequisite record in the bundle; no id or citation left in served text."
    },
    {
     "id": "chk-1",
     "verdict": "ok",
-    "evidence": "Key and every option or step value verified by SymPy."
+    "evidence": "unchanged since 2026-09-29: Key and every option or step value verified by SymPy."
    },
    {
     "id": "chk-2",
     "verdict": "ok",
-    "evidence": "fixed 2026-09-29: parameter_draw set to size 6, length_unit foot (was size 4, inch) so it matches the 10 foot ladder, foot 6 feet out; template build gives -15/4 feet per minute; not a published draw."
+    "evidence": "unchanged since 2026-09-29: fixed 2026-09-29: parameter_draw set to size 6, length_unit foot (was size 4, inch) so it matches the 10 foot ladder, foot 6 feet out; template build gives -15/4 feet per minute; not a published draw."
    },
    {
     "id": "chk-3",
     "verdict": "ok",
-    "evidence": "Key and every option or step value verified by SymPy."
+    "evidence": "unchanged since 2026-09-29: Key and every option or step value verified by SymPy."
    }
   ],
   "advice": [
-   "ex-1 parameter_draw size 6 does not match the stem's foot at 9 meters; chk-3 draw (size 3, ratio 1) does not produce the 3, 4, 5 ladder cleanly. Align draws with stems.",
-   "st-2 rival names no error id; BC-ERR-04020 covers it.",
-   "ki-1 slider question (which stated numbers still hold one second later) serves the fixed against instantaneous reading well."
+   "Bridges shortened to 'Solve a linear equation.' and 'Naming quantities.'; they no longer name the failure they bridge.",
+   "st-1.contrast not_this is a teaching question rather than a stem a student could meet; it serves the fixed against instantaneous distinction but reads as a quiz item.",
+   "Carried from the earlier audit: ex-1 and chk-3 parameter_draw values do not match their stems."
   ],
   "counts": {
-   "ok": 15,
+   "ok": 17,
    "unsourced": 0,
    "wrong": 0,
    "over_cap": 0,
    "lint": 0
-  }
+  },
+  "fix_notes": [
+   "Prediction prose updated to describe option A as the BC-ERR-04020 result and to say recovering y = 12 from the relation is legitimate work.",
+   "chk-1 stem reworded from 'For ex-1, ...' to 'In the example above, ...' (served-id rule, same lint as 04011 to 04015 though the audit marked it ok). No value, key or option changed. Delta blind re-solve needed on chk-1.",
+   "Delivery reasons: orientation figure rule 3 to rule 4, ki-1 interactive 'rule 3 promoted' to 'rule 4 promoted'. Stale delivery rule numbers in the reasons corrected to the current template (text rule 6, table rule 5, figure rule 4).",
+   "Word counts from the checker: full 578, brief 450."
+  ]
  }
 }

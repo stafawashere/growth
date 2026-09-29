@@ -42,83 +42,102 @@
   "auditor": "claude-opus-5-5",
   "blocks": [
    {
+    "id": "prediction",
+    "verdict": "ok",
+    "evidence": "Stem gives both parts tending to 0; only B (not settled) follows, A (0) and C (does not exist) do not, and SymPy with ex-1's f'(3) = -4 gives 3f'(3)/1 = -12, so the limit exists and is not 0; resolution is LIM-4.A.1 'indeterminate' (ced:93); no verdict word or id."
+   },
+   {
     "id": "orientation",
     "verdict": "ok",
-    "evidence": "Paraphrases BC-CON-04013 and the unit 4.7 hypothesis paragraph (ced:84): separate limits, form not the answer; 30 words."
+    "evidence": "Trimmed paraphrase of the 4.7 hypothesis paragraph (ced:84)."
    },
    {
     "id": "ki-1",
     "verdict": "ok",
-    "evidence": "Research unit 4.7 Indeterminate form and The hypothesis; quote 'such forms are said to be indeterminate' on ced:93; 40 words."
+    "evidence": "Trimmed text keeps both forms and the two separate limits; quote verbatim on cache/text/ced/page-093.txt."
    },
    {
     "id": "st-1",
     "verdict": "ok",
-    "evidence": "expected_solution_path and wrong_approaches of BC-QA-04009 name BC-ERR-01008; 21 words."
+    "evidence": "Labels 'First lines:' and 'Rival:' removed; method matches BC-QA-04009 asked_to_produce 'separate limits of the numerator and denominator'; rival is BC-ERR-01008."
+   },
+   {
+    "id": "st-1.contrast",
+    "verdict": "ok",
+    "evidence": "this matches BC-QA-04009 typical_wording 'find the value of the stated limit'; SymPy g(4) - 1 = 0 and x - 2 = 0 at 2; not_this (x^2 + 1)/(x + 3) at 2 has denominator 5 and limit 1 by substitution, why_not true; feature true."
    },
    {
     "id": "ex-1",
     "verdict": "ok",
-    "evidence": "SymPy: with f tangent at 3, limit (f(3x) - 2)/(x - 1) at 1 is -12 = 3f'(3)/1; both parts tend to 0."
+    "evidence": "Whys trimmed; every expr unchanged; SymPy 3(-4)/1 = -12; no fade_from."
    },
    {
     "id": "reader-ex-1",
     "verdict": "ok",
-    "evidence": "BC-PT-99055 in BC-QA-04009 point_types; earns and does_not_earn text verbatim."
+    "evidence": "BC-PT-99055 in BC-QA-04009 point_types; earns and does_not_earn text verbatim.",
+    "note": "unchanged since 2026-09-29"
    },
    {
     "id": "err-BC-ERR-01008",
     "verdict": "ok",
-    "evidence": "Bundle text matches; BC-MIS-01006 listed; 0 against -12 confirmed."
+    "evidence": "fix_prompt true with relation distinct; 0 vs -12 distinct; no expr rewritten."
    },
    {
     "id": "err-BC-ERR-04028",
     "verdict": "ok",
-    "evidence": "Bundle text matches (sg-23:14); BC-MIS-04014 listed."
+    "evidence": "fix_prompt true with relation distinct; SymPy 0/0 is nan vs 0, distinct; no expr rewritten."
    },
    {
     "id": "err-BC-ERR-04029",
     "verdict": "ok",
-    "evidence": "Bundle text matches; value -12 unchanged, relation equivalent is right."
+    "evidence": "fix_prompt false with relation equivalent; -12 vs -12 equal; no expr rewritten."
    },
    {
     "id": "representations",
     "verdict": "ok",
-    "evidence": "null; ki-1 motion carries the limit, BC-REP-01 is the skill's only representation."
+    "evidence": "null; ki-1 motion carries the limit, BC-REP-01 is the skill's only representation.",
+    "note": "unchanged since 2026-09-29"
    },
    {
     "id": "BC-PRQ-04008",
     "verdict": "ok",
-    "evidence": "BC-PRQ-04008 description_plain names each quantity and whether it varies; the text paraphrases it."
+    "evidence": "Shortened paraphrase of BC-PRQ-04008 description_plain in the bundle (name each quantity and whether it varies); no id or label."
    },
    {
     "id": "chk-1",
     "verdict": "ok",
-    "evidence": "SymPy: 3*(-4)/1 = -12."
+    "evidence": "fixed 2026-09-29: stem now opens 'In the example above, both limits are 0.'. Served stem no longer opens with the block id ex-1; no value, key or option changed. Delta blind re-solve needed on this check."
    },
    {
     "id": "chk-2",
     "verdict": "ok",
-    "evidence": "SymPy: limit (f(2x) + 3)/(x^2 - 4) at 2 is 2*5/(2*2) = 5/2."
+    "evidence": "SymPy: limit (f(2x) + 3)/(x^2 - 4) at 2 is 2*5/(2*2) = 5/2.",
+    "note": "unchanged since 2026-09-29"
    },
    {
     "id": "chk-3",
     "verdict": "ok",
-    "evidence": "Key C states two separate limits (sg-23:14 form point); SymPy: numerator f(4) - 1 = 0, x^3 - 8 at 2 is 0; D value 2*3/12 = 1/2 is right but skips the form."
+    "evidence": "Key C states two separate limits (sg-23:14 form point); SymPy: numerator f(4) - 1 = 0, x^3 - 8 at 2 is 0; D value 2*3/12 = 1/2 is right but skips the form.",
+    "note": "unchanged since 2026-09-29"
    }
   ],
   "advice": [
-   "The motion frames and the model table use f's tangent line at 3 as if it were f; the values are exact only for that model. The design flags this as inferred, but the served label 'ratio stays near -12' should say the values are modelled.",
-   "The bridge BC-PRQ-04008 is weakly related to limits of quotients.",
-   "Motion for a limit being taken and step_reveal for the process fit the ideas. Recognition, first line and rival are clear; the form point habit is the lesson's centre.",
-   "BC-MIS-01006 ('treats the symbol zero over zero as an answer') is an odd reason for reporting 0 from the numerator alone; it is a listed link, but the reason line may confuse."
+   "The prediction resolution says 'Here the limit is -12' but the stem gives no f'(3); the value only makes sense once ex-1 is shown.",
+   "err-BC-ERR-04029 scoring_consequence serves 'BC-ERR-99008' mid-sentence; record-verbatim, kept by the renderer, but a student sees an id.",
+   "Kept from the earlier audit: motion frames model f by its tangent line at 3, and the bridge BC-PRQ-04008 is weakly related to limits of quotients."
   ],
   "counts": {
-   "ok": 13,
+   "ok": 15,
    "unsourced": 0,
    "wrong": 0,
    "over_cap": 0,
    "lint": 0
-  }
+  },
+  "fix_notes": [
+   "Reworded check ids: chk-1.",
+   "Delivery reason for orientation changed from rule 5 to rule 6 (text). Stale delivery rule numbers in the reasons corrected to the current template (text rule 6, table rule 5, figure rule 4).",
+   "Word counts from the checker: full 567, brief 448; read_minutes 3.78 and 2.99.",
+   "Advice left as is: a scoring_consequence carries 'BC-ERR-99008' mid-sentence; it is verbatim record text."
+  ]
  }
 }

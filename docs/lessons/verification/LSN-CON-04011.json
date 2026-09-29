@@ -107,8 +107,8 @@
    },
    {
     "id": "chk-1",
-    "verdict": "lint",
-    "evidence": "Served stem opens 'For ex-1', a block id the renderer does not strip (LessonText CITATION covers BC-, ced:, sg-, cr-, crabbc- only); the stem predates the redesign but fails the served-id rule."
+    "verdict": "ok",
+    "evidence": "fixed 2026-09-29: stem now opens 'In the example above, the tangent line is ...'. Served stem no longer opens with the block id ex-1; no value, key or option changed. Delta blind re-solve needed on this check."
    },
    {
     "id": "chk-2",
@@ -130,12 +130,17 @@
    "Kept from the earlier audit: the lesson omits the over or under estimate judgement BC-QA-04008 names (judgement off throughout); LSN-CON-04012 carries it."
   ],
   "counts": {
-   "ok": 15,
+   "ok": 16,
    "unsourced": 0,
    "wrong": 0,
    "over_cap": 0,
-   "lint": 1
-  }
+   "lint": 0
+  },
+  "fix_notes": [
+   "Reworded check ids: chk-1.",
+   "Delivery reason for orientation (figure) changed from rule 3 to rule 4. Stale delivery rule numbers in the reasons corrected to the current template (text rule 6, table rule 5, figure rule 4).",
+   "Word counts from the checker: full 591, brief 450; read_minutes 3.94 and 3.0."
+  ]
  },
  "fix_notes": [
   "Orientation and ki-1 figures now draw the true f(x) = 2x^3/3 - 3x + 19/3 (SymPy: f(1) = 4, f' = 2x^2 - 3, f''(1) = 4); ki-1 curve point y updated to 4 - h/2 + h^2/2 + h^3/12; orientation window [0.5, 1.5] x [3, 5] holds the curve (values 4.917, 4.083, min 3.884).",

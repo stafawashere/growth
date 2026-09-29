@@ -11,7 +11,7 @@ Concept BC-CON-04009 (skills BC-SKL-04023, BC-SKL-04026, BC-SKL-04027), topic 4.
 
 ## Prediction
 
-Served first in both bands. Multiple choice on ex-1's relation \(x^2+y^2=225\) with the foot at \(x=9\): whether 9 goes in before or after differentiating in \(t\). Three options, key after, the others before or either order. The resolution says \(x\) changes with time, so its rate term must stay, the concept's core claim in the record's words. Sources: BC-CON-04009 and the topic 4.5 section that ki-1 cites. Delivery: text.
+Served first in both bands. Multiple choice on ex-1's relation \(x^2+y^2=225\) with the foot at \(x=9\): whether 9 goes in before or after differentiating in \(t\). Three options, key after; option A is before, shown as the BC-ERR-04020 result 2y dy/dt = 0 with the 18 dx/dt term lost (SymPy), and option C is either order. Substituting x = 9 into the relation to recover y = 12 is legitimate work (ex-1), so no option shows it. The resolution says \(x\) changes with time, so its rate term must stay, the concept's core claim in the record's words. Sources: BC-CON-04009 and the topic 4.5 section that ki-1 cites. Delivery: text.
 
 ## Orientation
 
@@ -73,14 +73,14 @@ BC-QA-04006 has `calculator_status` either, so Section I Part A, 2.14 minutes (r
 
 ## Delivery
 
-- orientation: figure. Rule 3: BC-REP-08 on BC-SKL-04026 and BC-SKL-04027 [inferred].
-- ki-1: interactive. Rule 3 promoted: BC-QA-04006 `common_givens` "the dimensions at the instant"; one slider on x, the reading is which labels change as time moves (docs/lessons/unit-04/README.md, section 6) [inferred].
+- orientation: figure. Rule 4: BC-REP-08 on BC-SKL-04026 and BC-SKL-04027 [inferred].
+- ki-1: interactive. Rule 4 promoted: BC-QA-04006 `common_givens` "the dimensions at the instant"; one slider on x, the reading is which labels change as time moves (docs/lessons/unit-04/README.md, section 6) [inferred].
 - ex-1 and the three error blocks: step_reveal. Rule 1.
 
 ## Band plan
 
-- Low (full), served order: prediction, orientation, bridges BC-PRQ-04007 and 04008 when gated, ki-1, st-1 with its contrast pair, st-2, ex-1 with its scoring line, chk-1, the three error blocks, chk-2, chk-3. 577 words, 3.9 minutes (cap 900 and 6). This design has one worked example, so nothing is faded.
-- Mid (brief): prediction, orientation, bridges when gated, ki-1, st-1 with its contrast pair, ex-1 with its scoring line, chk-1, err-BC-ERR-04020, err-BC-ERR-04022, chk-2. 449 words, 3.0 minutes (cap 450 and 3). The two bridges are one short phrase each to hold the cap; the ki-1 quote stays.
+- Low (full), served order: prediction, orientation, bridges BC-PRQ-04007 and 04008 when gated, ki-1, st-1 with its contrast pair, st-2, ex-1 with its scoring line, chk-1, the three error blocks, chk-2, chk-3. 578 words, 3.9 minutes (cap 900 and 6). This design has one worked example, so nothing is faded.
+- Mid (brief): prediction, orientation, bridges when gated, ki-1, st-1 with its contrast pair, ex-1 with its scoring line, chk-1, err-BC-ERR-04020, err-BC-ERR-04022, chk-2. 450 words, 3.0 minutes (cap 450 and 3). The two bridges are one short phrase each to hold the cap; the ki-1 quote stays.
 - Refresher: ki-1, the three error blocks, ex-1.
 
 ## Sources
@@ -121,7 +121,7 @@ BC-QA-04006 has `calculator_status` either, so Section I Part A, 2.14 minutes (r
   "options": [
    {
     "id": "A",
-    "label": "Before: 81 + y^2 = 225.",
+    "label": "Before: 2y dy/dt = 0.",
     "is_key": false
    },
    {
@@ -413,7 +413,7 @@ BC-QA-04006 has `calculator_status` either, so Section I Part A, 2.14 minutes (r
    },
    "completes": "ex-1",
    "stem": {
-    "text": "For ex-1, 2x dx/dt + 2y dy/dt = 0 and y = 12 when x = 9. Find dy/dt.",
+    "text": "In the example above, 2x dx/dt + 2y dy/dt = 0 and y = 12 when x = 9. Find dy/dt.",
     "command_verb": "find"
    },
    "key": {
@@ -627,7 +627,7 @@ BC-QA-04006 has `calculator_status` either, so Section I Part A, 2.14 minutes (r
   {
    "block": "orientation",
    "mode": "figure",
-   "reason": "rule 3: BC-REP-08 on BC-SKL-04026 and BC-SKL-04027",
+   "reason": "rule 4: BC-REP-08 on BC-SKL-04026 and BC-SKL-04027",
    "sources": [
     "BC-SKL-04026",
     "BC-SKL-04027"
@@ -722,7 +722,7 @@ BC-QA-04006 has `calculator_status` either, so Section I Part A, 2.14 minutes (r
   {
    "block": "ki-1",
    "mode": "interactive",
-   "reason": "rule 3 promoted: BC-REP-08 on BC-SKL-04026 and BC-SKL-04027; BC-QA-04006 common_givens name the dimensions at the instant, and the reading is which labels change as time moves",
+   "reason": "rule 4 promoted: BC-REP-08 on BC-SKL-04026 and BC-SKL-04027; BC-QA-04006 common_givens name the dimensions at the instant, and the reading is which labels change as time moves",
    "sources": [
     "BC-SKL-04026",
     "BC-SKL-04027",
@@ -911,8 +911,8 @@ BC-QA-04006 has `calculator_status` either, so Section I Part A, 2.14 minutes (r
   "research/exam/exam-structure.md#Section and part layout"
  ],
  "word_count": {
-  "full": 577,
-  "brief": 449
+  "full": 578,
+  "brief": 450
  },
  "read_minutes": {
   "full": 3.9,

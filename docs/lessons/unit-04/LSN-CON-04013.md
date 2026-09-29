@@ -73,15 +73,15 @@ BC-QA-04009 is `no_calculator` and one part of a graphical analysis FRQ, so Sect
 
 ## Delivery
 
-- orientation: text. Rule 5: BC-SKL-04033 carries BC-REP-01 only.
+- orientation: text. Rule 6: BC-SKL-04033 carries BC-REP-01 only.
 - ki-1: motion. Rule 2: BC-EK-LIM-4A1 describes a ratio that tends to 0/0 in the limit, a limit being taken (docs/lessons/unit-04/README.md, section 6) [inferred].
 - ex-1: step_reveal, rule 1, with a model table (rule 2: the ratio's behaviour is a computed sequence) [inferred].
 - the three error blocks: step_reveal. Rule 1.
 
 ## Band plan
 
-- Low (full): prediction, orientation, the bridge, key ideas, st-1 with the contrast pair, ex-1 with its scoring line, chk-1, err-BC-ERR-01008, err-BC-ERR-04028, err-BC-ERR-04029, chk-2, chk-3. 565 words, 3.77 minutes (cap 900 and 6).
-- Mid (brief): prediction, orientation, the bridge, core key ideas, st-1 with the contrast pair, ex-1 with its scoring line, chk-1, err-BC-ERR-01008, err-BC-ERR-04028, chk-2. 446 words, 2.98 minutes (cap 450 and 3).
+- Low (full): prediction, orientation, the bridge, key ideas, st-1 with the contrast pair, ex-1 with its scoring line, chk-1, err-BC-ERR-01008, err-BC-ERR-04028, err-BC-ERR-04029, chk-2, chk-3. 567 words, 3.78 minutes (cap 900 and 6).
+- Mid (brief): prediction, orientation, the bridge, core key ideas, st-1 with the contrast pair, ex-1 with its scoring line, chk-1, err-BC-ERR-01008, err-BC-ERR-04028, chk-2. 448 words, 2.99 minutes (cap 450 and 3).
 - Refresher: ki-1, err-BC-ERR-01008, err-BC-ERR-04028, err-BC-ERR-04029, ex-1.
 
 ## Sources
@@ -391,7 +391,7 @@ BC-QA-04009 is `no_calculator` and one part of a graphical analysis FRQ, so Sect
    },
    "completes": "ex-1",
    "stem": {
-    "text": "For ex-1 both limits are 0. Finish with the ratio of derivatives.",
+    "text": "In the example above, both limits are 0. Finish with the ratio of derivatives.",
     "command_verb": "find"
    },
    "key": {
@@ -554,7 +554,7 @@ BC-QA-04009 is `no_calculator` and one part of a graphical analysis FRQ, so Sect
   {
    "block": "orientation",
    "mode": "text",
-   "reason": "rule 5: BC-SKL-04033 carries BC-REP-01 only",
+   "reason": "rule 6: BC-SKL-04033 carries BC-REP-01 only",
    "sources": [
     "BC-SKL-04033"
    ]
@@ -717,12 +717,12 @@ BC-QA-04009 is `no_calculator` and one part of a graphical analysis FRQ, so Sect
   "research/exam/exam-structure.md#Section and part layout"
  ],
  "word_count": {
-  "full": 565,
-  "brief": 446
+  "full": 567,
+  "brief": 448
  },
  "read_minutes": {
-  "full": 3.77,
-  "brief": 2.98
+  "full": 3.78,
+  "brief": 2.99
  }
 }
 ```

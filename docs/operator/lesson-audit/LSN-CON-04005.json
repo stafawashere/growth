@@ -36,81 +36,97 @@
   "auditor": "claude-opus-5-5",
   "blocks": [
    {
+    "id": "prediction",
+    "verdict": "ok",
+    "evidence": "Stem on ex-1's v(2)=-3, a(2)=8; SymPy product -24 < 0, so only B (decreasing) is true; A is BC-ERR-99003, C has no basis; resolution is research 4.2 Speeding up paragraph; no verdict word or id."
+   },
+   {
     "id": "orientation",
     "verdict": "ok",
-    "evidence": "Paraphrases BC-CON-04005 description_formal and the 4.2 Speeding up paragraph."
+    "evidence": "Shortened; paraphrases BC-CON-04005 and the 4.2 justification variants line ('both signs named and applied to the particle')."
+   },
+   {
+    "id": "no_figure_reason",
+    "verdict": "ok",
+    "evidence": "Bundle: BC-SKL-04010 lists BC-REP-01, BC-REP-05 and BC-SKL-04012 BC-REP-01, BC-REP-04; ki-1 is a sign comparison at one instant, no process."
    },
    {
     "id": "ki-1",
     "verdict": "ok",
-    "evidence": "4.2 Speeding up paragraph (cr-22:21) and Sign analysis paragraph (crabbc-25:22); no quote."
+    "evidence": "Shortened; rule is research 4.2 Speeding up paragraph (cr-22:21); citation removed from text."
    },
    {
     "id": "st-1",
     "verdict": "ok",
-    "evidence": "Cue is BC-QA-04003 typical_wording; rival BC-ERR-99003 from wrong_approaches."
+    "evidence": "Labels removed; method from BC-QA-04003 expected_solution_path; BC-ERR-99003 moved to sources."
+   },
+   {
+    "id": "st-1.contrast",
+    "verdict": "ok",
+    "evidence": "this is BC-QA-04003 typical_wording (speed increasing or decreasing, reason); SymPy v(2) = -3, a(2) = -2; not_this asks the acceleration alone (asked_to_produce 'the acceleration'); why_not true; feature true."
    },
    {
     "id": "ex-1",
     "verdict": "ok",
-    "evidence": "SymPy: v(2)=-3, a(t)=3t^2-4t+4, a(2)=8, opposite signs so decreasing; draw reproduces constant=-11."
+    "evidence": "SymPy: v(2)=-3, a(t)=3t^2-4t+4, a(2)=8, opposite signs so decreasing; draw reproduces constant=-11.",
+    "note": "unchanged since 2026-09-29"
    },
    {
     "id": "what_a_reader_scores:ex-1",
     "verdict": "ok",
-    "evidence": "Line matches BC-PT-99027 record verbatim; in BC-QA-04003 point_types."
+    "evidence": "Line matches BC-PT-99027 record verbatim; in BC-QA-04003 point_types.",
+    "note": "unchanged since 2026-09-29"
    },
    {
     "id": "err-BC-ERR-04011",
     "verdict": "ok",
-    "evidence": "fixed 2026-09-29: restaged on a BC-QA-04004 interval draw, v(t)=(t-2)(3t-10) on 0<t<8: wrong the chart with no sentence (zeros FiniteSet(2,10/3)), right the reading 'left on (2,10/3)' (Interval.open(2,10/3)), relation distinct; SymPy: solve gives [2,10/3], v<0 on Interval.open(2,10/3); inferred claim added; word_count 447/447."
+    "evidence": "relation distinct, fix_prompt true; SymPy FiniteSet(2,10/3) != Interval.open(2,10/3)."
    },
    {
     "id": "err-BC-ERR-99003",
     "verdict": "ok",
-    "evidence": "SymPy: -3*8=-24<0 so slowing down; a(2)=8>0 alone gives the wrong conclusion; bundle text copied."
+    "evidence": "relation distinct, fix_prompt true; SymPy 8 != -24."
    },
    {
     "id": "representations",
     "verdict": "ok",
-    "evidence": "null."
+    "evidence": "null.",
+    "note": "unchanged since 2026-09-29"
    },
    {
-    "id": "bridge-BC-PRQ-04005",
+    "id": "BC-PRQ-04005",
     "verdict": "ok",
-    "evidence": "Paraphrases BC-PRQ-04005."
+    "evidence": "Failure clause dropped; paraphrases BC-PRQ-04005 description_plain."
    },
    {
-    "id": "bridge-BC-PRQ-04009",
+    "id": "BC-PRQ-04009",
     "verdict": "ok",
-    "evidence": "Paraphrases BC-PRQ-04009."
+    "evidence": "Shortened; paraphrases BC-PRQ-04009 description_plain."
    },
    {
     "id": "chk-1",
     "verdict": "ok",
-    "evidence": "SymPy: -3*8=-24, opposite signs, decreasing."
+    "evidence": "SymPy: -3*8=-24, opposite signs, decreasing.",
+    "note": "unchanged since 2026-09-29"
    },
    {
     "id": "chk-2",
     "verdict": "ok",
-    "evidence": "SymPy: v(1)=-2, a(1)=-1, same sign, increasing; draw reproduces constant=2."
+    "evidence": "SymPy: v(1)=-2, a(1)=-1, same sign, increasing; draw reproduces constant=2.",
+    "note": "unchanged since 2026-09-29"
    }
   ],
   "advice": [
-   "err-BC-ERR-04011 is about an interval sign chart with no sentence, but it is staged on ex-1's single instant, where no interval exists; the contrast does not match its idea. An interval example for BC-SKL-04012 would carry it.",
-   "A comparison of two signs is a contrast; a two column sign table for v and a would serve ki-1 better than plain text.",
-   "The reason sentence that earns the speed point carries no point tag (flagged inferred); the scoring habit of naming both signs is taught through the rival only."
+   "ki-1 'Over an interval, read the signs in words.' lost the sense of the earlier text (a sign analysis is concluded in a sentence for the whole interval, crabbc-25:22); 'state the conclusion in words for the whole interval' says it.",
+   "Delivery reasons on the text blocks (orientation, ki-1) still cite rule 5, which the current TEMPLATE.md selection rules make the table rule; text is rule 6. The redesign renumbered ki-2/ki-1 promotions but left these; the served mode is right, the reason is stale.",
+   "Error scoring_consequence and reader score lines still serve record text with page citations or ids; the served-text lint exempts record words, so this is not a defect, but the student reads them."
   ],
   "counts": {
-   "ok": 12,
+   "ok": 15,
    "unsourced": 0,
    "wrong": 0,
    "over_cap": 0,
    "lint": 0
-  },
-  "fix_notes": [
-   "err-BC-ERR-04011 moved off ex-1's single instant onto a BC-QA-04004 interval draw; wrong and right expressions no longer equal; texts trimmed to keep the brief form under the 450 cap (447).",
-   "Left as preferences: no BC-QA-04004 worked example; two column sign table for ki-1; no point tag on the speed reason."
-  ]
+  }
  }
 }

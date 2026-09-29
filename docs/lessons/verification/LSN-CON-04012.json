@@ -102,8 +102,8 @@
    },
    {
     "id": "chk-1",
-    "verdict": "lint",
-    "evidence": "Served stem opens 'For ex-1,', a block id the renderer does not strip; the stem predates the redesign but fails the served-id rule."
+    "verdict": "ok",
+    "evidence": "fixed 2026-09-29: stem now opens 'Above, f''(x) = -4x.' ('In the example above' put the brief form at 452, over the 450 cap). Served stem no longer opens with the block id ex-1; no value, key or option changed. Delta blind re-solve needed on this check."
    },
    {
     "id": "chk-2",
@@ -125,11 +125,17 @@
    "Kept from the earlier audit: the bridge BC-PRQ-04008 is weakly related to concavity."
   ],
   "counts": {
-   "ok": 14,
+   "ok": 15,
    "unsourced": 0,
    "wrong": 0,
    "over_cap": 0,
-   "lint": 1
-  }
+   "lint": 0
+  },
+  "fix_notes": [
+   "Reworded check ids: chk-1.",
+   "Delivery reasons: orientation figure rule 3 to rule 4, ki-1 interactive 'rule 3 promoted' to 'rule 4 promoted'. Stale delivery rule numbers in the reasons corrected to the current template (text rule 6, table rule 5, figure rule 4).",
+   "Word counts from the checker: full 560, brief 449.",
+   "Advice left as is: the BC-ERR-04026 scoring_consequence carries 'BC-ERR-99001' mid-sentence; it is verbatim record text."
+  ]
  }
 }

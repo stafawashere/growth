@@ -1,7 +1,7 @@
 import { useState, type KeyboardEvent } from "react";
 
 import type { LessonSpec } from "../api/types";
-import { MathText } from "../math/MathText";
+import { LessonText } from "./LessonText";
 import { LessonFigure } from "./LessonFigure";
 import { buildGraph, formatNumber, isPanelKind, isRecord, panelsOf, type SpecRecord, type Substitution } from "./specGraph";
 
@@ -159,7 +159,7 @@ export function FigureControl({ spec, fallback }: FigureControlProps) {
          <div className="figure-control">
             {question !== null ? (
                <p className="lesson-question" data-testid="control-question">
-                  <MathText text={question} />
+                  <LessonText text={question} />
                </p>
             ) : null}
             <LessonFigure spec={undefined} fallback={fallback} />
@@ -209,7 +209,7 @@ export function FigureControl({ spec, fallback }: FigureControlProps) {
       <div className="figure-control">
          {question !== null ? (
             <p className="lesson-question" data-testid="control-question">
-               <MathText text={question} />
+               <LessonText text={question} />
             </p>
          ) : null}
 

@@ -9,7 +9,7 @@ import type {
 } from "../api/types";
 import { MathAnswerField } from "../input/MathAnswerField";
 import { McqControl } from "../input/McqControl";
-import { MathText } from "../math/MathText";
+import { LessonText } from "./LessonText";
 import { CORRECT_GLYPH, CORRECT_WORD, INCORRECT_GLYPH } from "../session/StepMarks";
 import { ActionFailed } from "../status/LoadState";
 import { LessonLink, sectionIdMatches } from "./LessonLink";
@@ -81,7 +81,7 @@ export function LessonCheck({ check, sections, onCheckAnswer, onOpenAnchor, now 
    return (
       <div className="lesson-check" data-testid="lesson-check">
          <p className="item-stem">
-            <MathText text={check.stem.text} />
+            <LessonText text={check.stem.text} />
          </p>
 
          {isMcq ? (
@@ -128,7 +128,7 @@ export function LessonCheck({ check, sections, onCheckAnswer, onOpenAnchor, now 
                         <span className="verdict" style={{ color: "var(--growth-state-incorrect)" }}>
                            <span aria-hidden="true">{INCORRECT_GLYPH}</span> <span>{NOT_YET}</span>
                         </span>{" "}
-                        <MathText text={errorSection.observed_behavior ?? ""} /> {ERROR_LINK_SENTENCE}
+                        <LessonText text={errorSection.observed_behavior ?? ""} /> {ERROR_LINK_SENTENCE}
                      </p>
                      <LessonLink anchor={anchor} onOpen={onOpenAnchor}>
                         Go to the part on that error
@@ -142,7 +142,7 @@ export function LessonCheck({ check, sections, onCheckAnswer, onOpenAnchor, now 
                      <ol className="worked-steps" data-testid="lesson-check-solution">
                      {(check.worked_solution ?? []).map((step) => (
                         <li key={step.step}>
-                           <MathText text={step.text} />
+                           <LessonText text={step.text} />
                         </li>
                      ))}
                      </ol>

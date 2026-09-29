@@ -1,4 +1,4 @@
-import { MathText } from "../math/MathText";
+import { LessonText } from "./LessonText";
 
 /* TEMPLATE.md Delivery: every drawn mode carries the static form served when the mode cannot
    render, so a block that cannot be drawn shows that text in the figure's own frame and is never
@@ -11,7 +11,7 @@ export function LessonFallback(props: { text?: string }) {
    return (
       <figure className="lesson-figure lesson-fallback" data-testid="lesson-figure-fallback">
          <p>
-            <MathText text={text} />
+            <LessonText text={text} />
          </p>
       </figure>
    );

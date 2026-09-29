@@ -1,7 +1,7 @@
 import { useState } from "react";
 
 import type { LessonDelivery, LessonSection as LessonSectionRecord } from "../api/types";
-import { MathText } from "../math/MathText";
+import { LessonText } from "./LessonText";
 import { MathValue } from "../math/MathValue";
 import { CORRECT_GLYPH, INCORRECT_GLYPH } from "../session/StepMarks";
 import { FigureControl } from "./FigureControl";
@@ -71,7 +71,7 @@ export function DeliveryBlock({ delivery }: { delivery: LessonDelivery | undefin
 function Prose({ text }: { text: string | undefined }) {
    return text === undefined ? null : (
       <p>
-         <MathText text={text} />
+         <LessonText text={text} />
       </p>
    );
 }
@@ -85,7 +85,7 @@ function WorkedExample({ section, revealAll, stepsOnly }: { section: LessonSecti
       key: String(index),
       main: (
          <>
-            <MathText text={step.cue} />
+            <LessonText text={step.cue} />
             {hasExpression(step.expression) ? (
                <p className="lesson-step-math">
                   <MathValue value={step.expression} />
@@ -93,14 +93,14 @@ function WorkedExample({ section, revealAll, stepsOnly }: { section: LessonSecti
             ) : null}
          </>
       ),
-      beside: stepsOnly ? undefined : <MathText text={step.why} />
+      beside: stepsOnly ? undefined : <LessonText text={step.why} />
    }));
 
    return (
       <>
          {section.problem !== undefined ? (
             <p className="item-stem">
-               <MathText text={section.problem.text} />
+               <LessonText text={section.problem.text} />
             </p>
          ) : null}
 
@@ -171,7 +171,7 @@ export function LessonSection({ section, form = "full", revealAll = false }: Les
                   <div key={STRATEGY_LABELS[index]}>
                      <dt className="label-heading">{STRATEGY_LABELS[index]}</dt>
                      <dd>
-                        <MathText text={line ?? ""} />
+                        <LessonText text={line ?? ""} />
                      </dd>
                   </div>
                ))}
@@ -184,7 +184,7 @@ export function LessonSection({ section, form = "full", revealAll = false }: Les
             <ul className="lesson-checklist">
                {(section.lines ?? []).map((line, index) => (
                   <li key={index}>
-                     <MathText text={line.text} />
+                     <LessonText text={line.text} />
                   </li>
                ))}
             </ul>
@@ -197,7 +197,7 @@ export function LessonSection({ section, form = "full", revealAll = false }: Les
                <Prose text={section.scoring_consequence} />
                {section.possible_reason !== undefined ? (
                   <p className="muted">
-                     A possible reason: <MathText text={section.possible_reason.text} />
+                     A possible reason: <LessonText text={section.possible_reason.text} />
                   </p>
                ) : null}
             </>
@@ -208,12 +208,12 @@ export function LessonSection({ section, form = "full", revealAll = false }: Les
                <Prose text={section.text} />
                {section.notation !== undefined ? (
                   <p className="caption">
-                     Notation: <MathText text={section.notation} />
+                     Notation: <LessonText text={section.notation} />
                   </p>
                ) : null}
                {section.quote !== undefined ? (
                   <blockquote className="lesson-quote">
-                     <MathText text={section.quote.text} />
+                     <LessonText text={section.quote.text} />
                   </blockquote>
                ) : null}
             </>

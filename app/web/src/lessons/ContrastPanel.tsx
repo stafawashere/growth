@@ -1,5 +1,5 @@
 import type { LessonDecision, LessonDelivery } from "../api/types";
-import { MathText } from "../math/MathText";
+import { LessonText } from "./LessonText";
 import { isRecord } from "./specGraph";
 
 /* Mode contrast (TEMPLATE.md Delivery; plan 15 Decision lessons): two to four stems side by side
@@ -45,15 +45,15 @@ export function ContrastPanel({ decision, delivery }: ContrastPanelProps) {
             {stems.map((stem, index) => (
                <article key={stem.id} className="contrast-stem" data-testid="contrast-stem">
                   <p>
-                     <MathText text={stem.text} />
+                     <LessonText text={stem.text} />
                   </p>
 
                   <p className="contrast-feature" data-testid="contrast-feature">
-                     <span aria-hidden="true">{FEATURE_GLYPH}</span> {FEATURE_WORD} <MathText text={featureFor(delivery, stem.id, index) ?? stem.method} />
+                     <span aria-hidden="true">{FEATURE_GLYPH}</span> {FEATURE_WORD} <LessonText text={featureFor(delivery, stem.id, index) ?? stem.method} />
                   </p>
 
                   <p className="muted">
-                     <MathText text={stem.method} />
+                     <LessonText text={stem.method} />
                   </p>
                </article>
             ))}

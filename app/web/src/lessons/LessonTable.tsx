@@ -1,5 +1,5 @@
 import type { LessonSpec } from "../api/types";
-import { MathText } from "../math/MathText";
+import { LessonText } from "./LessonText";
 import { LessonFallback } from "./LessonFallback";
 import { isRecord } from "./specGraph";
 
@@ -68,7 +68,7 @@ export function LessonTable({ spec, fallback, currentRow = null }: LessonTablePr
                ) : null}
                {columns.map((column, index) => (
                   <th key={index} scope="col">
-                     <MathText text={column} />
+                     <LessonText text={column} />
                   </th>
                ))}
             </tr>
@@ -95,7 +95,7 @@ export function LessonTable({ spec, fallback, currentRow = null }: LessonTablePr
                      ) : null}
                      {(row as unknown[]).map((cell, cellIndex) => (
                         <td key={cellIndex}>
-                           <MathText text={cellText(cell)} />
+                           <LessonText text={cellText(cell)} />
                         </td>
                      ))}
                   </tr>
@@ -107,7 +107,7 @@ export function LessonTable({ spec, fallback, currentRow = null }: LessonTablePr
                {labels.map((label, index) => (
                   <tr key={index}>
                      <td colSpan={columns.length + (hasMarks ? 1 : 0)}>
-                        <MathText text={label} />
+                        <LessonText text={label} />
                      </td>
                   </tr>
                ))}

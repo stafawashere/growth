@@ -17,8 +17,8 @@ Served text, from BC-CON-08016 `description_plain` and the topic's Assessment be
 
 BC-SKL-08036 and BC-SKL-08037 map to BC-EK-CHA-5B2, BC-SKL-08038 to BC-EK-CHA-5B3, and BC-SKL-08039 to both (ced:159). Two core blocks, both bands.
 
-- ki-1 (core, BC-EK-CHA-5B2). Paraphrase of the Triangular sections paragraph: equilateral area s^2 sqrt(3)/4; right isosceles half the square of a leg, or a quarter of the square of the hypotenuse. No anchor quote (brief band, Band plan).
-- ki-2 (core, BC-EK-CHA-5B3). Paraphrase of the Semicircular sections paragraph: the distance is the diameter, the radius half of it, the area pi s^2/8. No anchor quote.
+- ki-1 (core, BC-EK-CHA-5B2). Paraphrase of the Triangular sections paragraph: equilateral area s^2 sqrt(3)/4; right isosceles half the square of a leg, or a quarter of the square of the hypotenuse. Anchor quote, the CHA-5.B.2 sentence on ced:159 (20 words).
+- ki-2 (core, BC-EK-CHA-5B3). Paraphrase of the Semicircular sections paragraph: the distance is the diameter, the radius half of it, the area pi s^2/8. No anchor quote: the brief band holds one (Band plan).
 
 ## Recognition
 
@@ -77,8 +77,8 @@ BC-QA-08011 is `either`, so Section I Part A, 2.14 minutes (research/exam/exam-s
 
 ## Band plan
 
-- Low (full): orientation, ki-1, ki-2, st-1, ex-1 and its line, the four error blocks, chk-1 to chk-3, ex-2 and its lines, the bridges. 764 words, 5.1 minutes.
-- Mid (brief): orientation, ki-1, ki-2, st-1, ex-1 and its line, err-BC-ERR-08030, err-BC-ERR-08033, chk-1, chk-2, the bridges. 446 words, 3.0 minutes.
+- Low (full): orientation, ki-1, ki-2, st-1, ex-1 and its line, the four error blocks, chk-1 to chk-3, ex-2 and its lines, the bridges. 762 words, 5.1 minutes.
+- Mid (brief): orientation, ki-1, ki-2, st-1, ex-1 and its line, err-BC-ERR-08030, err-BC-ERR-08033, chk-1, chk-2, the bridges. 425 words, 2.9 minutes.
 - Refresher: ki-1, ki-2, the four error blocks, ex-1.
 
 ## Sources
@@ -113,7 +113,7 @@ BC-QA-08011 is `either`, so Section I Part A, 2.14 minutes (research/exam/exam-s
    "depth": "core",
    "text": "Triangles, distance s: equilateral area s^2 sqrt(3)/4; right isosceles s^2/2 when s is a leg, s^2/4 when s is the hypotenuse.",
    "notation": "area formulas for triangles and semicircles",
-   "quote": null,
+   "quote": {"text": "Volumes of solids with triangular cross sections can be found using definite integrals and the area formulas for these shapes.", "source": "ced:159"},
    "sources": ["BC-EK-CHA-5B2", "ced:159", "research/units/unit-08-applications-integration.md#8.8 Volumes with Cross Sections: Triangles and Semicircles"]
   },
   {
@@ -310,8 +310,8 @@ BC-QA-08011 is `either`, so Section I Part A, 2.14 minutes (research/exam/exam-s
   {"block": "err-BC-ERR-06013", "mode": "step_reveal", "reason": "rule 1", "sources": []}
  ],
  "refresher": ["ki-1", "ki-2", "err-BC-ERR-08030", "err-BC-ERR-08033", "err-BC-ERR-08034", "err-BC-ERR-06013", "ex-1"],
- "read_minutes": {"full": 5.1, "brief": 3.0},
- "word_count": {"full": 764, "brief": 446},
+ "read_minutes": {"full": 5.1, "brief": 2.9},
+ "word_count": {"full": 762, "brief": 425},
  "research_lines": [
   {"file": "research/units/unit-08-applications-integration.md", "line": "the radius is half that distance and the area is pi over eight times the square of the distance"}
  ],

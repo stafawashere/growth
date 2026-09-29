@@ -492,7 +492,7 @@ def apply_observation(states, graph, observation, today):
             failed.update(charged)
             touched.update(charged)
 
-   for skill_id in touched:
+   for skill_id in sorted(touched):
       state = states[skill_id]
       is_failure = skill_id in failed
       failed_unaided = (

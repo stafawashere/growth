@@ -1,7 +1,11 @@
 """The pure parts of tools/throughput.py, the instrument behind the mastery pace goal: the day
 count of the continuous run, the per-condition failure reading, the unit completion reading
 and the failure grouping. The simulation itself is exercised by one short run."""
+import os
+import subprocess
+import sys
 from datetime import date, datetime
+from pathlib import Path
 
 import pytest
 
@@ -127,3 +131,23 @@ def test_the_mastery_threshold_is_the_one_the_plan_states():
    assert constants.MASTERY_THRESHOLD == 0.9
    assert constants.MASTERY_MIN_UNAIDED_SUCCESSES == 3
    assert constants.MASTERY_MIN_DAY_SPAN == 7
+
+
+def test_a_run_does_not_depend_on_the_hash_seed():
+   """apply_observation once evaluated the touched skills in set order, and one declaration can
+   change another skill's servable archetype count in the same pass, so the same seed gave two
+   different runs under two hash seeds."""
+   repository = Path(__file__).resolve().parents[2]
+   outputs = []
+
+   for hash_seed in ("0", "1"):
+      environment = dict(os.environ, PYTHONHASHSEED=hash_seed, PYTHONPATH=str(repository))
+      completed = subprocess.run(
+         [sys.executable, "tools/throughput.py", "--seeds", "1", "--days", "25", "--world", "learning",
+          "--checkpoints", "25", "--min-observations", "1"],
+         cwd=repository, env=environment, capture_output=True, text=True, check=True,
+      )
+      outputs.append(completed.stdout)
+
+   assert "mastered" in outputs[0]
+   assert outputs[0] == outputs[1]

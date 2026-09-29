@@ -11,7 +11,7 @@ Concept BC-CON-04002 (skills BC-SKL-04001, BC-SKL-04004, BC-SKL-04014), topics 4
 
 ## Orientation
 
-Served text, from BC-CON-04002 `description_plain` and the Assessment behaviour paragraph of research/units/unit-04-contextual-applications-differentiation.md#4.1 Interpreting the Meaning of the Derivative in Context: the units rule stated as what a response writes, and the table form of the approximation, whose estimate and units are scored as two points (sg-24:2, sg-25:11). No count, no frequency.
+Served text, from BC-CON-04002 `description_plain` and the Assessment behaviour paragraph (research/units/unit-04-contextual-applications-differentiation.md#4.1 Interpreting the Meaning of the Derivative in Context). It states the units rule as what a response writes, and the table form of the approximation, whose estimate and units are scored as two points (sg-24:2, sg-25:11). No count, no frequency.
 
 ## Key ideas
 
@@ -84,8 +84,8 @@ BC-QA-04002 has calculator status either, so the lesson takes Section I Part A, 
 
 ## Band plan
 
-- Low (full): orientation, ki-1, ki-2, ki-3, st-1, st-2, ex-1 with its scoring line, both error blocks, chk-1, chk-2, the bridge. 639 words, 4.3 minutes (cap 900 and 6).
-- Mid (brief): orientation, ki-1, st-1, ex-1 with its scoring line, both error blocks, chk-1, chk-2, the bridge. 465 words, 3.1 minutes (cap 450 and 3).
+- Low (full): orientation, ki-1, ki-2, ki-3, st-1, st-2, ex-1 with its scoring line, both error blocks, chk-1, chk-2, the bridge. 621 words, 4.2 minutes (cap 900 and 6).
+- Mid (brief): orientation, ki-1, st-1, ex-1 with its scoring line, both error blocks, chk-1, chk-2, the bridge. 447 words, 3.0 minutes (cap 450 and 3).
 - Refresher: ki-1, err-BC-ERR-04001, err-BC-ERR-04004, ex-1.
 
 ## Sources
@@ -129,7 +129,7 @@ BC-QA-04002 has calculator status either, so the lesson takes Section I Part A, 
    "id": "ki-1",
    "ek_id": "BC-EK-CHA-3A3",
    "depth": "core",
-   "text": "A derivative carries the function's unit divided by the input's unit: a temperature in degrees Celsius against time in minutes changes in degrees Celsius per minute. A second derivative divides by the input's unit twice, as in words per minute per minute (sg-25:11). The units are part of the rate and carry their own point.",
+   "text": "A derivative carries the function's unit over the input's unit: degrees Celsius against minutes gives degrees Celsius per minute. A second derivative divides by the input's unit twice, as in words per minute per minute (sg-25:11). Units carry their own point.",
    "notation": "units of f per unit of x",
    "quote": null,
    "sources": [
@@ -278,11 +278,11 @@ BC-QA-04002 has calculator status either, so the lesson takes Section I Part A, 
    "error_id": "BC-ERR-04001",
    "wrong_step": {
     "text": "6 minutes per degree Celsius.",
-    "expr": "6*minute/degree"
+    "expr": "6*minute/celsius"
    },
    "right_step": {
     "text": "6 degrees Celsius per minute.",
-    "expr": "6*degree/minute"
+    "expr": "6*celsius/minute"
    },
    "relation": "distinct",
    "possible_reason": {
@@ -319,7 +319,7 @@ BC-QA-04002 has calculator status either, so the lesson takes Section I Part A, 
  "prerequisite_bridges": [
   {
    "prq_id": "BC-PRQ-04004",
-   "text": "A compound unit is built as a quotient, such as degrees Celsius per minute, and stays attached to the value. The failure: a correct number with the unit missing or upside down."
+   "text": "A compound unit is a quotient, such as degrees Celsius per minute, attached to the value. The failure: a correct number with the unit missing or upside down."
   }
  ],
  "time": {
@@ -591,12 +591,12 @@ BC-QA-04002 has calculator status either, so the lesson takes Section I Part A, 
   "research/exam/exam-structure.md#Section and part layout"
  ],
  "word_count": {
-  "full": 639,
-  "brief": 465
+  "full": 621,
+  "brief": 447
  },
  "read_minutes": {
-  "full": 4.3,
-  "brief": 3.1
+  "full": 4.2,
+  "brief": 3.0
  }
 }
 ```

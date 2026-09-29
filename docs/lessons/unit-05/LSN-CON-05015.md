@@ -49,7 +49,7 @@ Seven active errors meet the skills; the first four in the bundle's order are se
 
 - err-BC-ERR-03012 (ex-1): the denominator set to zero for a horizontal tangent. No possible reason line.
 - err-BC-ERR-03023 (ex-2): the second derivative left with dy/dx in it. Possible reason, words from BC-MIS-05033.
-- err-BC-ERR-05060 (ex-2): the term 2(dy/dx)^2 lost by differentiating y - 1 as a constant. Possible reason, words from BC-MIS-05033.
+- err-BC-ERR-05060 (ex-2's relation at (1, 3), where dy/dx = 9/4): the term 2(dy/dx)^2 lost by differentiating y - 1 as a constant, giving 3 in place of 15/32. Possible reason, words from BC-MIS-05033.
 - err-BC-ERR-05062 (ex-2): relative minimum reported where the second derivative is -3/2. Statement-shaped. No possible reason line.
 
 ## Representations
@@ -213,8 +213,8 @@ BC-QA-05012 is `no_calculator` and one FRQ part worth two or three points, so Se
    "error_id": "BC-ERR-05060",
    "observed_behavior": "The response differentiates the derivative expression without applying the chain rule to the dependent variable.",
    "scoring_consequence": "The differentiation point is lost, and the value point remains available only through a correct substitution.",
-   "wrong_step": {"text": "\\(y-1\\) treated as constant: \\(2(y-1)q=6x+6\\).", "expr": "2*(y - 1)*q = 6*x + 6"},
-   "right_step": {"text": "\\(2p^2+2(y-1)q=6x+6\\).", "expr": "2*p**2 + 2*(y - 1)*q = 6*x + 6"},
+   "wrong_step": {"text": "At \\((1,3)\\), \\(y-1\\) treated as constant: \\(2(y-1)q=6x+6\\) gives \\(4q=12\\), \\(q=3\\).", "expr": "3"},
+   "right_step": {"text": "\\(2p^2+2(y-1)q=6x+6\\) with \\(p=\\frac{9}{4}\\) gives \\(q=\\frac{15}{32}\\).", "expr": "15/32"},
    "relation": "distinct",
    "possible_reason": {"misconception_id": "BC-MIS-05033", "text": "differentiates expressions in the second variable without the chain rule"},
    "sources": ["BC-ERR-05060", "BC-MIS-05033"]

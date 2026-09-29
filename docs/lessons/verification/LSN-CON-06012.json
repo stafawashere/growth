@@ -33,5 +33,119 @@
    }
   ],
   "answers_file": "/tmp/claude-0/-home-user-growth/ac029253-8ff0-5a4b-8b5f-cdcaf5e8ff8d/scratchpad/verify/answers_09.json"
+ },
+ "audit": {
+  "date": "2026-09-29",
+  "auditor": "claude-opus-5-5",
+  "blocks": [
+   {
+    "id": "orientation",
+    "verdict": "ok",
+    "evidence": "Paraphrases BC-CON-06012 description_formal: net change is the integral of its rate; 21 words."
+   },
+   {
+    "id": "ki-1",
+    "verdict": "ok",
+    "evidence": "Matches ced:124 FUN-6.B.3 and the topic's Net change paragraph; 32 words."
+   },
+   {
+    "id": "ki-2",
+    "verdict": "ok",
+    "evidence": "Quote matches ced:124 FUN-6.B.1 verbatim."
+   },
+   {
+    "id": "ki-3",
+    "verdict": "ok",
+    "evidence": "Paraphrase of ced:124 FUN-6.B.2."
+   },
+   {
+    "id": "st-1",
+    "verdict": "ok",
+    "evidence": "Method is expected_solution_path[0] and rival is wrong_approaches[0] of BC-QA-06005; cue 12 words."
+   },
+   {
+    "id": "st-2",
+    "verdict": "ok",
+    "evidence": "Method and rival from BC-QA-06006 expected_solution_path and wrong_approaches."
+   },
+   {
+    "id": "st-3",
+    "verdict": "ok",
+    "evidence": "Method and rival from BC-QA-99008 expected_solution_path[0] and wrong_approaches."
+   },
+   {
+    "id": "ex-1",
+    "verdict": "ok",
+    "evidence": "SymPy: 40 + integrate(3t^2+2t+2,(t,1,3)) = 78; F(3)=42, F(1)=4; draw satisfies parameter_spec constraints."
+   },
+   {
+    "id": "what_a_reader_scores:ex-1",
+    "verdict": "ok",
+    "evidence": "Lines reproduce BC-PT-99033 and BC-PT-99003 earns, does_not_earn and notation fields."
+   },
+   {
+    "id": "err-BC-ERR-06015",
+    "verdict": "ok",
+    "evidence": "Record text matches; 38 = integral alone, 78 correct; BC-MIS-08006 is a linked misconception."
+   },
+   {
+    "id": "err-BC-ERR-99012",
+    "verdict": "ok",
+    "evidence": "40 + 42 = 82 versus 40 + 42 - 4 = 78; BC-MIS-99004 linked and paraphrased."
+   },
+   {
+    "id": "err-BC-ERR-06032",
+    "verdict": "ok",
+    "evidence": "sin(t^2/3) read in degrees is sin(pi t^2/540); SymPy 55.105 versus 58.090, distinct; calculator form per parameter_spec notes."
+   },
+   {
+    "id": "err-BC-ERR-99022",
+    "verdict": "ok",
+    "evidence": "SymPy 40 + 42 - 1 + 1 + 2 = 84 versus 78; record text matches."
+   },
+   {
+    "id": "representations",
+    "verdict": "ok",
+    "evidence": "null; the ki-1 table carries BC-REP-03 per BC-SKL-06037."
+   },
+   {
+    "id": "BC-PRQ-06002",
+    "verdict": "ok",
+    "evidence": "Paraphrase of description_plain: power rule for any exponent other than negative one."
+   },
+   {
+    "id": "BC-PRQ-06005",
+    "verdict": "ok",
+    "evidence": "Paraphrase of distinguishing a function from its value at a point."
+   },
+   {
+    "id": "chk-1",
+    "verdict": "ok",
+    "evidence": "SymPy 40 + 42 - 4 = 78."
+   },
+   {
+    "id": "chk-2",
+    "verdict": "ok",
+    "evidence": "SymPy 30 + integrate(-3t^2+6t+4,(t,1,3)) = 36; F(3)=12, F(1)=6."
+   },
+   {
+    "id": "chk-3",
+    "verdict": "ok",
+    "evidence": "SymPy key 89; A 39, C 50+57-16+2 = 93, D 107 all verified and distinct."
+   }
+  ],
+  "advice": [
+   "err-BC-ERR-06032 mixes the exact draw's known value 40 with the calculator form on [0, 3]; the calculator form has no known value at t = 0 in the draw, so the block reads as a different problem from ex-1.",
+   "Delivery fits: ki-1 as a table shows known value plus accumulated change; ex-1 and errors as step_reveal suit processes.",
+   "Recognition, first line and rival are taught through st-1 to st-3; the answer point BC-PT-99004 is untagged, so the scoring habit for the final value is only implicit.",
+   "chk-3 has no distractor for the rate evaluated at an endpoint, a common_distractor of BC-QA-06005."
+  ],
+  "counts": {
+   "ok": 19,
+   "unsourced": 0,
+   "wrong": 0,
+   "over_cap": 0,
+   "lint": 0
+  }
  }
 }

@@ -33,5 +33,103 @@
    }
   ],
   "answers_file": "/tmp/claude-0/-home-user-growth/ac029253-8ff0-5a4b-8b5f-cdcaf5e8ff8d/scratchpad/verify/answers_09.json"
+ },
+ "audit": {
+  "date": "2026-09-29",
+  "auditor": "claude-opus-5-5",
+  "blocks": [
+   {
+    "id": "orientation",
+    "verdict": "ok",
+    "evidence": "Paraphrases BC-CON-06015 description_formal; 28 words."
+   },
+   {
+    "id": "ki-1",
+    "verdict": "ok",
+    "evidence": "Matches BC-CON-06015 formal and ced:126 FUN-6.D.1."
+   },
+   {
+    "id": "ki-2",
+    "verdict": "ok",
+    "evidence": "Quote matches ced:126 FUN-6.D.2 verbatim; back substitution alternative from BC-SKL-06051."
+   },
+   {
+    "id": "st-1",
+    "verdict": "ok",
+    "evidence": "Method is BC-QA-06008 expected_solution_path[0]; rival wrong_approaches[0] (BC-ERR-06020)."
+   },
+   {
+    "id": "ex-1",
+    "verdict": "ok",
+    "evidence": "SymPy integrate(6x(x^2+1)^3,(x,0,1)) = 45/4; 3(16 - 1)/4 = 45/4; draw meets multiplier != inner_scale inner_power."
+   },
+   {
+    "id": "what_a_reader_scores:ex-1",
+    "verdict": "ok",
+    "evidence": "Lines reproduce BC-PT-99003 and BC-PT-99004 record fields."
+   },
+   {
+    "id": "err-BC-ERR-06018",
+    "verdict": "ok",
+    "evidence": "3/4 at x limits versus 45/4 at u limits; record text and BC-MIS-06016 match."
+   },
+   {
+    "id": "err-BC-ERR-06019",
+    "verdict": "ok",
+    "evidence": "6u^4/4 versus 3u^4/4; record text matches."
+   },
+   {
+    "id": "err-BC-ERR-06020",
+    "verdict": "ok",
+    "evidence": "Record text matches; BC-MIS-06017 linked and quoted; shown on present derivative draw as flagged inferred."
+   },
+   {
+    "id": "err-BC-ERR-07026",
+    "verdict": "ok",
+    "evidence": "Record text matches; BC-MIS-06018 linked."
+   },
+   {
+    "id": "representations",
+    "verdict": "ok",
+    "evidence": "null; BC-REP-01 only."
+   },
+   {
+    "id": "BC-PRQ-06001",
+    "verdict": "ok",
+    "evidence": "Paraphrase of description_plain and failure_signature."
+   },
+   {
+    "id": "BC-PRQ-06003",
+    "verdict": "ok",
+    "evidence": "Paraphrase of absolute value inside ln."
+   },
+   {
+    "id": "chk-1",
+    "verdict": "ok",
+    "evidence": "SymPy 45/4."
+   },
+   {
+    "id": "chk-2",
+    "verdict": "ok",
+    "evidence": "SymPy integrate(6x^2(x^3+2)^2,(x,0,1)) = 38/3 = 2(27 - 8)/3."
+   },
+   {
+    "id": "chk-3",
+    "verdict": "ok",
+    "evidence": "SymPy key 74/3; A 2/3, B 148/3, D 128/3 all verified and distinct."
+   }
+  ],
+  "advice": [
+   "err-BC-ERR-06020 is shown on an integrand where the inner derivative is present, so it depicts a mechanical slip rather than the observed behavior; a draw lacking the derivative would show the real error.",
+   "chk-3 options A and D share BC-ERR-06018; D (upper limit converted, lower x limit kept) is a partial variant the record does not describe.",
+   "err-BC-ERR-07026 on a definite integral lesson sits apart from ex-1; ki-2 is absent from the mid band, leaving limit conversion carried by ex-1 alone."
+  ],
+  "counts": {
+   "ok": 16,
+   "unsourced": 0,
+   "wrong": 0,
+   "over_cap": 0,
+   "lint": 0
+  }
  }
 }

@@ -46,7 +46,7 @@
    {
     "id": "ki-1",
     "verdict": "ok",
-    "evidence": "Quote matches ced:102 FUN-4.A.2 verbatim; 'does not change sign' accepted and 'f' > 0 before and after' rejected on cache/text/sg-23/page-013.txt."
+    "evidence": "fixed 2026-09-29: ki-1 interactive window y widened to [-50, 15] so f' (minimum -48 at x = -3, maximum 12 at x = 2 on [-3, 2]) is not cut off."
    },
    {
     "id": "st-1",
@@ -122,5 +122,9 @@
    "over_cap": 0,
    "lint": 0
   }
- }
+ },
+ "fix_notes": [
+  "ki-1 interactive window y widened from [-10, 12] to [-50, 15]; SymPy: on [-3, 2] f'(x) = 3(x - 1)^2(x + 2) has minimum -48 and maximum 12, f'(-2.5) = -18.375; Delivery prose states the window.",
+  "Left as preferences: st-2 with no example or check; BC-ERR-05023 not served as an error block or distractor."
+ ]
 }

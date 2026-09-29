@@ -75,7 +75,7 @@ BC-QA-05003 has `calculator_status` either, so the lesson takes Section I Part A
 ## Delivery
 
 - orientation: text. Rule 5, per the unit delivery map.
-- ki-1: interactive, a point sliding through the named input on a graph of f', reading the sign each side. Rule 3 promoted: BC-REP-02 on BC-SKL-05019 to 05021, with BC-QA-05003 `common_givens` "a named input" and `difficulty_variables` "whether the answer is neither" (docs/lessons/unit-05/README.md, section 6) [inferred; settled by the modality A/B].
+- ki-1: interactive, a point sliding through the named input on a graph of f', reading the sign each side; window x [-3, 2] and y [-50, 15], which holds f' from -48 at x = -3 to 12 at x = 2. Rule 3 promoted: BC-REP-02 on BC-SKL-05019 to 05021, with BC-QA-05003 `common_givens` "a named input" and `difficulty_variables` "whether the answer is neither" (docs/lessons/unit-05/README.md, section 6) [inferred; settled by the modality A/B].
 - ex-1 and the four error blocks: step_reveal. Rule 1.
 
 ## Band plan

@@ -60,8 +60,8 @@
    },
    {
     "id": "reader-ex-1",
-    "verdict": "unsourced",
-    "evidence": "BC-PT-99063 earns a reason citing the sign AND the increasing or decreasing behaviour of the derivative, matched to a compound condition (sg-26:16); ex-1 asks a single condition and its reason gives only f'(x) > 0, so the record does not support scoring that line under BC-PT-99063."
+    "verdict": "ok",
+    "evidence": "fixed 2026-09-29: ex-1 reason step and scoring line retagged BC-PT-99005 (answer with supporting work), listed by BC-QA-05008, since ex-1 asks a single condition and BC-PT-99063 earns only a compound condition reason (sg-26:16); line is reader_checks(['BC-PT-99005']). Brief text trimmed to the cap (orientation, ki-1, st-1, ex-1 wording, chk-2 stem, bridges) with the teaching kept; word counts 585 and 450."
    },
    {
     "id": "err-BC-ERR-05014",
@@ -131,11 +131,16 @@
    "BC-ERR-05019 (two intervals merged across a gap) and BC-ERR-99001 (unnamed referent) are in the bundle and relevant; 05017 covers most of 05019."
   ],
   "counts": {
-   "ok": 16,
-   "unsourced": 1,
+   "ok": 17,
+   "unsourced": 0,
    "wrong": 0,
    "over_cap": 0,
    "lint": 0
   }
- }
+ },
+ "fix_notes": [
+  "reader-ex-1 and the ex-1 reason step retagged from BC-PT-99063 to BC-PT-99005 with its reader_checks line; Solution path and Scoring prose updated.",
+  "Brief form trimmed from 492 to 450 words to absorb the longer scoring line: orientation, ki-1 text and notation, st-1 cue, method and rival, ex-1 problem, cues and reason wording, chk-2 stem, three bridge wordings.",
+  "Left as preferences: orientation figure duplicating the ki-1 interactive; BC-ERR-05019 and BC-ERR-99001 not served."
+ ]
 }

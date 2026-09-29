@@ -11,6 +11,7 @@ from sqlalchemy import select
 
 from app.auth.service import as_iso, new_id
 from app.db import models
+from app.providers import notices
 
 QUEUED_CALL_JOB_TYPE = "provider_call_queued"
 QUEUED_CALL_STATE = "queued"
@@ -49,5 +50,6 @@ def queue_call(db, user_id, attempt_id, request, reason, now):
    )
    db.add(job)
    db.flush()
+   notices.record_queued(user_id, request, reason, clock=lambda: now)
 
    return job

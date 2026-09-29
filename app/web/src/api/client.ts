@@ -24,6 +24,7 @@ import type {
    MasteryMapPayload,
    MetricsPayload,
    MockHistoryPayload,
+   NoticesPayload,
    PartKey,
    PhotoVerdict,
    ProbeAdministration,
@@ -349,6 +350,11 @@ export function updateSettings(fields: UpdateSettingsFields) {
 
 export function readProviders() {
    return requestJson<ProvidersPayload>("/settings/providers");
+}
+
+/* app/api/routes/notices.py: the signed-in student's AI call notices newer than the given id. */
+export function readNotices(after: number) {
+   return requestJson<NoticesPayload>(`/notices?after=${encodeURIComponent(String(after))}`);
 }
 
 export function readBudgets() {

@@ -1036,3 +1036,23 @@ export interface UnfinishedAssessment {
 export interface UnfinishedPayload {
    unfinished: UnfinishedAssessment[];
 }
+
+/* app/providers/notices.py: one call to an AI model, as told to the student who made it. */
+export type AiNoticeOutcome = "answered" | "failed" | "refused" | "stopped" | "interrupted" | "queued";
+
+export interface AiNotice {
+   id: number;
+   role: string;
+   provider: string;
+   model: string;
+   outcome: AiNoticeOutcome;
+   replayed: boolean;
+   asked: string;
+   answered: string;
+   created_at: string;
+}
+
+export interface NoticesPayload {
+   notices: AiNotice[];
+   latest: number;
+}

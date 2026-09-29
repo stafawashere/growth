@@ -4,6 +4,7 @@ import { AccountScreen } from "./account/AccountScreen";
 import { ChangePasswordControl } from "./account/ChangePasswordControl";
 import { ApiError, readAuthStatus, readMe, signOut } from "./api/client";
 import { HomeRoute } from "./home/HomeRoute";
+import { AiNotices, AiNoticesSetting, readAiNoticesEnabled } from "./notices/AiNotices";
 import type { OnboardingReason } from "./onboarding/OnboardingScreen";
 import { OperatorSettings } from "./settings/ExperimentsSection";
 import type { SettingsScreenProps } from "./settings/SettingsScreen";
@@ -156,6 +157,7 @@ export function App() {
    const [access, setAccess] = useState<Access>("unknown");
    const [settingsPage, setSettingsPage] = useState<SettingsPage>("settings");
    const [signOutState, setSignOutState] = useState<SignOutState>("idle");
+   const [aiNoticesOn, setAiNoticesOn] = useState<boolean>(readAiNoticesEnabled);
 
    const tokensAreLoaded = tokenStylesheetIsLoaded();
 
@@ -274,6 +276,7 @@ export function App() {
    }
 
    const isSigningOut = signOutState === "working";
+   const showsAiNotices = access === "signedIn" && aiNoticesOn;
 
    return (
       <>
@@ -344,6 +347,7 @@ export function App() {
                   <>
                      <SettingsRoute purgeConfirmationPhrase={PURGE_CONFIRMATION_PHRASE} saveFile={saveFile} />
                      <AccessibilitySection />
+                     <AiNoticesSetting enabled={aiNoticesOn} onChange={setAiNoticesOn} />
                      <ChangePasswordControl />
                      <details className="operator-details" data-testid="operator-experiments-evidence">
                         <summary>{OPERATOR_EXPERIMENTS_SUMMARY}</summary>
@@ -363,6 +367,8 @@ export function App() {
          </main>
 
          <AppFooter />
+
+         <AiNotices active={showsAiNotices} />
       </>
    );
 }

@@ -111,6 +111,7 @@ from sqlalchemy import select
 
 from app.auth.service import as_iso, new_id, utc_now, write_audit
 from app.db import models
+from app.providers import notices
 from app.providers.base import Provider, RefusedBeforeWire
 from tools import cost_model
 
@@ -910,6 +911,39 @@ class GuardedProvider(Provider):
       self._pacing_request = None
 
    def generate(self, request):
+      """The guarded call with its notice recorded after the outcome is known. The notice is
+      written outside the call's own handling and swallows its own failures, so the result, the
+      exception, the accounting and the audit are what they would be without it."""
+      try:
+         result = self._generate(request)
+      except Exception as raised:
+         self._notice(request, raised=raised)
+         raise
+
+      self._notice(request, result=result)
+
+      return result
+
+   def stream(self, request):
+      """The guarded stream with its notice recorded once it ends, is abandoned or raises. yield
+      from hands every send, throw and close to the guarded stream unchanged."""
+      try:
+         result = yield from self._stream(request)
+      except BaseException as raised:
+         self._notice(request, raised=raised)
+         raise
+
+      self._notice(request, result=result)
+
+      return result
+
+   def _notice(self, request, result=None, raised=None):
+      try:
+         notices.record_call(self._user_id, self._provider_name, request, result=result, raised=raised, clock=self._clock)
+      except Exception:
+         pass
+
+   def _generate(self, request):
       self.last_accounting = None
       budget, estimate = self._reserve(request)
       failure = None
@@ -935,7 +969,7 @@ class GuardedProvider(Provider):
 
       return result
 
-   def stream(self, request):
+   def _stream(self, request):
       """A consumer that stops iterating raises GeneratorExit here, which is not an Exception, so
       the worst-case charge is taken in a finally rather than in an except clause."""
       self.last_accounting = None

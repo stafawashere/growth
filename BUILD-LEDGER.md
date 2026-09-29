@@ -4314,6 +4314,52 @@ Session 2026-09-20 (seventh).
   the two-term floor fails only with it wholly below 0. Ruled by the model on the operator's
   explicit delegation of that ruling ("decide for me"), and written into 10.
 
+## Decisions taken on the operator's instruction, 2026-09-29 [inferred]
+
+AI call notices: each time the app talks to a model, the signed-in student sees a short notice of
+what was asked and what came back. Decided by claude-opus-5-5 under the operator's brief, which
+asks for the reversible option at each decision. CLAUDE.md is gitignored and was absent from the
+checkout this was built in, so the style came from the brief and the surrounding code.
+
+- Notices are kept in memory only (`app/providers/notices.py` `NoticeBoard`): per user, the newest
+  50, for the life of the process, lost on restart. Nothing is written to the database and no
+  audit table is touched. Persisting them would need a table and a migration and would put the
+  briefs under export and purge; that is the operator's call and this can be reversed by deleting
+  one module. Purge (`app/api/routes/purge.py`) also drops the purged user's notices.
+- The notice is recorded in `GuardedProvider.generate` and `GuardedProvider.stream`
+  (`app/providers/guard.py`). The old bodies moved unchanged to `_generate` and `_stream`, and the
+  public methods wrap them: the notice is written after the outcome is known, outside the call's
+  own handling, and every failure inside it is swallowed twice (in `record_call` and in the
+  guard's `_notice`). The stream wrapper is a `yield from`, so send, throw and close reach the
+  guarded stream as before, and an abandoned stream is noticed as "interrupted".
+- Because `FallbackChain` wraps each link in its own guard, a call that falls from one link to the
+  next records one notice per link that ran (for example "stopped" by pacing, then "answered" on
+  the API link). A link skipped while cooling makes no call and records nothing.
+- Outcomes: answered, failed (`ProviderCallFailed`, or any other exception the guard raised),
+  refused (`RefusedBeforeWire`), stopped (`BudgetStopped`, which `SubscriptionPaceExceeded` is,
+  and `DevSpendCapExceeded`), interrupted (an abandoned stream) and queued. A queued notice is
+  recorded by `app/providers/call_queue.py` `queue_call` when it creates a job, not when it finds
+  an existing one, since queueing is not a model call and so never reaches the guard.
+- The asked brief is built per role from the fields the caller filled in. The guard only sees the
+  rendered message, so the fields are recovered by walking the literal text of the role's template
+  variable section left to right (linear, no regular expression over student text); the template
+  paths are read from the callers' own constants. A message that does not match gives a fixed
+  sentence for the role, never prompt text. The student's work, the question stem and image bytes
+  are never put in a brief. A JSON answer is summarised from its fields (decision and rule for the
+  grader, counts for the transcriber and the diagnostician). Each brief is cut to 160 characters.
+- A notice says "replayed" when the guard's provider name contains "replay" or "cassette"
+  (ReplayProvider, CassetteBookProvider). The prompt cache is not reported as a replay.
+- The client polls GET /notices every 5 s while signed in and shows at most 3 notices, each for 8 s
+  unless dismissed. The first read after signing in only sets the cursor, so a reload does not
+  replay earlier calls. The notices do not animate, which satisfies reduced motion without a new
+  motion class, and the stack adds no colour rule: it reuses the framed notice.
+- The off switch is kept in this browser (`growth-ai-notices` in localStorage), default on, as the
+  theme is, because the settings route stores only dates and a server preference needs a column.
+  It sits in its own "AI activity" card on the settings page, outside `SettingsScreen` for the same
+  scope-test reason the Accessibility card does. The server records notices either way.
+- An installation takes one account, so the test that one student never sees another's notices
+  records the other student's call through a guard built for a second user id.
+
 ## Decisions taken on the operator's instruction, 2026-09-27 [inferred]
 
 Stage 11, the seven UI items stage 10 left unbuilt, decided on the operator's delegation (the stage

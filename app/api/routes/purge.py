@@ -15,6 +15,7 @@ from fastapi.responses import JSONResponse
 
 from app.api.deps import current_session, current_user, get_db, get_settings
 from app.auth import service as auth_service
+from app.providers import notices
 
 router = APIRouter(tags=["purge"])
 
@@ -48,5 +49,6 @@ def purge(
       )
 
    deleted = settings.resolve_purge_hook()(db, user.id, now)
+   notices.BOARD.forget(user.id)
 
    return {"purged": True, "deleted": deleted}

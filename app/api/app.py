@@ -212,7 +212,7 @@ def without_input(errors):
 
 
 def create_app(settings):
-   from app.api.routes import assessment, auth, content, evaluation, export, frq, health, me, progress, purge, review, review_screen, sessions
+   from app.api.routes import assessment, auth, content, evaluation, export, frq, health, me, notices, progress, purge, review, review_screen, sessions
    from app.api.routes import settings as settings_routes
    from app.api.security_headers import SecurityHeadersMiddleware
    from starlette.middleware.gzip import GZipMiddleware
@@ -236,7 +236,7 @@ def create_app(settings):
 
       return JSONResponse(status_code=422, content={"detail": jsonable_encoder(without_input(exception.errors()))})
 
-   for module in (auth, me, sessions, frq, assessment, purge, content, review, review_screen, progress, evaluation, settings_routes, export, health):
+   for module in (auth, me, notices, sessions, frq, assessment, purge, content, review, review_screen, progress, evaluation, settings_routes, export, health):
       application.include_router(module.router)
 
    return application

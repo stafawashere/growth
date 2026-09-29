@@ -237,6 +237,35 @@ th {
    border-inline-start: calc(var(--growth-space-12) / 4) solid var(--growth-text-muted);
 }
 
+/* Notices of AI calls: a stack pinned to the end corner of the viewport, drawn with the framed
+   notice above, so it adds no colour of its own. */
+
+.ai-notices {
+   position: fixed;
+   inset-block-end: var(--growth-space-16);
+   inset-inline: var(--growth-space-16);
+   display: grid;
+   justify-items: end;
+   gap: var(--growth-space-8);
+   pointer-events: none;
+}
+
+.ai-notice {
+   display: grid;
+   gap: var(--growth-space-4);
+   margin-block: 0;
+   max-width: calc(var(--growth-space-96) * 4);
+   pointer-events: auto;
+}
+
+.ai-notice > p {
+   margin: 0;
+}
+
+.ai-notice > .text-button {
+   justify-self: start;
+}
+
 /* Actions. One primary per screen; everything else is a text button. */
 
 .button-primary {
@@ -878,6 +907,14 @@ th {
    gap: var(--growth-space-8);
    font-size: var(--growth-type-label);
    line-height: var(--growth-leading-label);
+}
+
+/* A checkbox beside its sentence, where the settings labels above stack a field under its name. */
+
+.settings .check-row {
+   flex-direction: row;
+   align-items: center;
+   gap: var(--growth-space-12);
 }
 
 .settings input:not([type="radio"]):not([type="checkbox"]) {

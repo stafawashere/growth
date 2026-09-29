@@ -106,7 +106,7 @@
    {
     "id": "chk-3",
     "verdict": "ok",
-    "evidence": "SymPy: (22-58)/(9-4) = -36/5; A and D value -36 (difference only, BC-ERR-02001), C value -36/5 with quantity units (BC-ERR-02003)."
+    "evidence": "fixed 2026-09-29: parameter_draw readings reordered to [75,58,40,22,15] so H(4)=58, H(9)=22 as served; SymPy (22-58)/(9-4) = -36/5 unchanged key B."
    }
   ],
   "advice": [
@@ -121,6 +121,10 @@
    "wrong": 0,
    "over_cap": 0,
    "lint": 0
-  }
+  },
+  "fix_notes": [
+   "Fixed advice defect: chk-3 parameter_draw readings now list the served pairing [75,58,40,22,15] (machine record and Checks prose).",
+   "Left as preferences: st-2 has no example or check; ki-1 increment form not exercised."
+  ]
  }
 }

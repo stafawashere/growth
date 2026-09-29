@@ -70,8 +70,8 @@
    },
    {
     "id": "err-BC-ERR-04017",
-    "verdict": "unsourced",
-    "evidence": "BC-ERR-04017 records differentiating a related rates relation with respect to x or a length and stopping before the chain rule (cr-24:18); the block's wrong step dt/dV = -6 (variables exchanged) is not that behaviour, and the copied cr-24:18 consequence does not apply to a notation conversion."
+    "verdict": "ok",
+    "evidence": "fixed 2026-09-29: block dropped; BC-ERR-04017 (related rates, chain rule) is not a notation conversion behaviour. Removed from delivery, refresher, sources, Traps and Band plan prose."
    },
    {
     "id": "err-BC-ERR-02029",
@@ -105,8 +105,8 @@
    },
    {
     "id": "chk-3",
-    "verdict": "unsourced",
-    "evidence": "Option C is tagged BC-ERR-04017 with derivation 'roles of the two variables exchanged'; that error record describes differentiating a related rates relation with respect to the wrong variable, not inverting dT/dx. Key B and options A and D are correct and sourced."
+    "verdict": "ok",
+    "evidence": "fixed 2026-09-29: option C re-derived from BC-ERR-03022, which has a block: label dT=-4 at x=3 (dT written in place of dT/dx). Key B unchanged."
    }
   ],
   "advice": [
@@ -116,11 +116,15 @@
    "The sources list names sg-25:7 and sg-24:8 though no block cites them."
   ],
   "counts": {
-   "ok": 12,
-   "unsourced": 2,
+   "ok": 14,
+   "unsourced": 0,
    "wrong": 0,
    "over_cap": 0,
    "lint": 0
-  }
+  },
+  "fix_notes": [
+   "Dropped err-BC-ERR-04017 and its sources (BC-MIS-04008, BC-MIS-99005, cr-24:18); chk-3 option C now BC-ERR-03022; mid band now carries err-BC-ERR-02029 in place of err-04017; word_count 527/356.",
+   "Left: advice on sg-25:7 notation leniency for err-BC-ERR-02030 and option D framing; sg-25:7 and sg-24:8 remain in sources though uncited; mid band weight of error blocks."
+  ]
  }
 }

@@ -77,7 +77,7 @@ BC-QA-04003 has calculator status either, so the lesson takes Section I Part A, 
 
 ## Band plan
 
-- Low (full): orientation, ki-1, st-1, st-2, ex-1 with its scoring lines, the error block, chk-1, chk-2, the bridge. 459 words, 3.1 minutes (cap 900 and 6).
+- Low (full): orientation, ki-1, st-1, st-2, ex-1 with its scoring lines, the error block, chk-1, chk-2, the bridge. 457 words, 3.1 minutes (cap 900 and 6).
 - Mid (brief): orientation, ki-1, st-1, ex-1 with its scoring lines, the error block, chk-1, chk-2, the bridge. 406 words, 2.8 minutes (cap 450 and 3).
 - Refresher: ki-1, err-BC-ERR-04006, ex-1.
 
@@ -149,7 +149,7 @@ BC-QA-04003 has calculator status either, so the lesson takes Section I Part A, 
    "archetype_id": "BC-QA-04010",
    "cue": "A velocity function and the position at one time are given; the stem asks for the position at another time.",
    "method": "First line: position equals the known position plus the integral of velocity.",
-   "rival": "Rival: differentiating, or the integral reported without the known position (BC-ERR-08011).",
+   "rival": "Rival: the integral reported without the known position (BC-ERR-08011).",
    "separating_feature": "Going from velocity back to position runs the chain backward.",
    "sources": [
     "BC-QA-04010"
@@ -494,7 +494,7 @@ BC-QA-04003 has calculator status either, so the lesson takes Section I Part A, 
   "research/exam/exam-structure.md#Section and part layout"
  ],
  "word_count": {
-  "full": 459,
+  "full": 457,
   "brief": 406
  },
  "read_minutes": {

@@ -81,8 +81,8 @@ No draw equals a published BC-QA-02004 `parameter_draw` (content/items_gen_unit0
 
 ## Band plan
 
-- Low (full): orientation, ki-1, st-1, ex-1, err-BC-ERR-02011, err-BC-ERR-02012, err-BC-ERR-99008, representations, chk-1, chk-2, chk-3, ex-2. 689 words, 4.6 minutes (cap 900 and 6).
-- Mid (brief): orientation, ki-1, st-1, ex-1, err-BC-ERR-02011, err-BC-ERR-02012, chk-1, chk-2. 445 words, 3.0 minutes (cap 450 and 3).
+- Low (full): orientation, ki-1, st-1, ex-1, err-BC-ERR-02011, err-BC-ERR-02012, err-BC-ERR-99008, representations, chk-1, chk-2, chk-3, ex-2. 691 words, 4.7 minutes (cap 900 and 6).
+- Mid (brief): orientation, ki-1, st-1, ex-1, err-BC-ERR-02011, err-BC-ERR-02012, chk-1, chk-2. 446 words, 3.0 minutes (cap 450 and 3).
 - Refresher: ki-1, err-BC-ERR-02011, err-BC-ERR-02012, err-BC-ERR-99008, ex-1.
 
 ## Sources
@@ -122,7 +122,7 @@ No draw equals a published BC-QA-02004 `parameter_draw` (content/items_gen_unit0
    "id": "ki-1",
    "ek_id": "BC-EK-FUN-2A1",
    "depth": "core",
-   "text": "If a function is differentiable at a point, it is continuous there, and an input outside the domain of \\(f\\) is outside the domain of \\(f'\\) (BC-EK-FUN-2A1, ced:63). The implication runs one way. Read backwards as its contrapositive, a function discontinuous at a point has no derivative there. Continuity alone supplies nothing about the derivative. In an argument the step carries its reason: \\(g\\) is continuous because it is differentiable.",
+   "text": "If a function is differentiable at a point, it is continuous there, and an input outside the domain of \\(f\\) is outside the domain of \\(f'\\) (BC-EK-FUN-2A1, ced:63). The implication runs one way. Its contrapositive: if a function is not continuous at a point, it is not differentiable there. Continuity alone supplies nothing about the derivative. In an argument the step carries its reason: \\(g\\) is continuous because it is differentiable.",
    "notation": "differentiable implies continuous",
    "quote": {
     "text": "If a function is differentiable at a point, then it is continuous at that point.",
@@ -343,7 +343,7 @@ No draw equals a published BC-QA-02004 `parameter_draw` (content/items_gen_unit0
   }
  ],
  "representations": {
-  "text": "Read backwards: where the graph breaks, the function is not continuous, so it has no derivative there.",
+  "text": "By the contrapositive: where the graph breaks, the function is not continuous, so it has no derivative there.",
   "figure": {
    "kind": "graph",
    "curves": [
@@ -744,12 +744,12 @@ No draw equals a published BC-QA-02004 `parameter_draw` (content/items_gen_unit0
   "ex-1"
  ],
  "read_minutes": {
-  "full": 4.6,
+  "full": 4.7,
   "brief": 3.0
  },
  "word_count": {
-  "full": 689,
-  "brief": 445
+  "full": 691,
+  "brief": 446
  },
  "research_lines": [
   {

@@ -86,7 +86,7 @@
    {
     "id": "err-BC-ERR-07026",
     "verdict": "ok",
-    "evidence": "SymPy: integrate(3t^2-16t+20)=t^3-8t^2+20t, x(0)=-16; BC-ERR-07026 lists BC-SKL-04011; use on this draw is tagged inferred."
+    "evidence": "fixed 2026-09-29: restaged on st-2's BC-QA-04010 question built on ex-1's velocity with x(0)=-16 given; right step now t^3-8t^2+20t-16 (SymPy: expand((t-2)**2*(t-4)) equals it, integrate((t-2)*(3t-10)) = t^3-8t^2+20t); Traps prose, sources and inferred claim updated."
    },
    {
     "id": "representations",
@@ -129,6 +129,10 @@
    "wrong": 0,
    "over_cap": 0,
    "lint": 0
-  }
+  },
+  "fix_notes": [
+   "err-BC-ERR-07026 now stated on a BC-QA-04010 question (v and x(0)=-16 given, x(t) asked) rather than on ex-1, which asks for direction; word_count.full 531.",
+   "Left as preferences: no BC-QA-04010 worked example; no scoring point named since BC-QA-04004 has none; ki-1 interactive mode."
+  ]
  }
 }

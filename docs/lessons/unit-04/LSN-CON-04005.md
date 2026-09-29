@@ -45,9 +45,9 @@ Point losses for the author: speed from the sign of acceleration alone (BC-ERR-9
 
 ## Traps
 
-Two active errors meet the skills, in the bundle's order: BC-ERR-04011, BC-ERR-99003. Both bands show both, on ex-1's draw.
+Two active errors meet the skills, in the bundle's order: BC-ERR-04011, BC-ERR-99003. Both bands show both. BC-ERR-04011 needs an interval, so it sits on a BC-QA-04004 draw (double_root 2, single_root 4, size 1, leading positive, horizon 8, direction left); BC-ERR-99003 sits on ex-1's draw.
 
-- err-BC-ERR-04011: the two signs listed with no sentence, against the same signs with the reading in words; the values agree, so the relation is equivalent and the loss is the missing reading. Possible reason from BC-MIS-04017.
+- err-BC-ERR-04011: for v(t) = (t - 2)(3t - 10) on 0 < t < 8, a sign chart with zeros 2 and 10/3 and no sentence, against the same chart read in words: left on (2, 10/3) [inferred: a BC-QA-04004 draw with no worked example in this lesson]. Possible reason from BC-MIS-04017.
 - err-BC-ERR-99003: a(2) > 0 read as speeding up, against the product v(2)a(2) < 0. Possible reason from BC-MIS-99001.
 
 ## Representations
@@ -75,8 +75,8 @@ BC-QA-04003 has calculator status either, so the lesson takes Section I Part A, 
 
 ## Band plan
 
-- Low (full): orientation, ki-1, st-1, ex-1 with its scoring line, both error blocks, chk-1, chk-2, both bridges. 446 words, 3.0 minutes (cap 900 and 6).
-- Mid (brief): the same blocks, since the lesson has one core key idea, one strategy block, two error blocks and two checks. 446 words, 3.0 minutes (cap 450 and 3).
+- Low (full): orientation, ki-1, st-1, ex-1 with its scoring line, both error blocks, chk-1, chk-2, both bridges. 447 words, 3.0 minutes (cap 900 and 6).
+- Mid (brief): the same blocks, since the lesson has one core key idea, one strategy block, two error blocks and two checks. 447 words, 3.0 minutes (cap 450 and 3).
 - Refresher: ki-1, err-BC-ERR-04011, err-BC-ERR-99003, ex-1.
 
 ## Sources
@@ -93,6 +93,7 @@ BC-QA-04003 has calculator status either, so the lesson takes Section I Part A, 
 - [inferred] The exam part for an either archetype. Settled by a calculator status on BC-QA-04003.
 - [inferred] Two checks only. Settled by a third error linked to the concept's skills.
 - [inferred] No anchor quote. Settled by a ced source on the concept.
+- [inferred] BC-ERR-04011 on a BC-QA-04004 interval draw. Settled by a BC-QA-04004 example in this lesson.
 - [inferred] No point tag on the speed reason. Settled by a justification point type on BC-QA-04003.
 
 ## Machine record
@@ -227,14 +228,14 @@ BC-QA-04003 has calculator status either, so the lesson takes Section I Part A, 
   {
    "error_id": "BC-ERR-04011",
    "wrong_step": {
-    "text": "Signs listed, no sentence.",
-    "expr": "FiniteSet(-3, 8)"
+    "text": "Chart for \\(v=(t-2)(3t-10)\\): signs \\(+,-,+\\), no sentence.",
+    "expr": "FiniteSet(2, 10/3)"
    },
    "right_step": {
-    "text": "Signs listed, then the reading in words.",
-    "expr": "FiniteSet(-3, 8)"
+    "text": "Chart, then: left on \\((2,10/3)\\).",
+    "expr": "Interval.open(2, 10/3)"
    },
-   "relation": "equivalent",
+   "relation": "distinct",
    "possible_reason": {
     "misconception_id": "BC-MIS-04017",
     "text": "the communicated conclusion does not cover the interval"
@@ -468,6 +469,10 @@ BC-QA-04003 has calculator status either, so the lesson takes Section I Part A, 
    "settles": "A ced source on BC-CON-04005 or its skills, such as ced:88 for BC-EK-CHA-3B1."
   },
   {
+   "claim": "BC-ERR-04011 is shown on a BC-QA-04004 interval draw, v(t) = (t - 2)(3t - 10) on 0 < t < 8, since ex-1 asks about a single instant; the lesson works no BC-QA-04004 example.",
+   "settles": "A BC-QA-04004 worked example in this lesson, or an error list for BC-SKL-04012 staged on an instant."
+  },
+  {
    "claim": "The speed conclusion step carries no point tag: BC-QA-04003 point_types hold no reason or justification type for it.",
    "settles": "A justification point type on BC-QA-04003 for the speed reason scored in crabbc-25:22."
   }
@@ -500,8 +505,8 @@ BC-QA-04003 has calculator status either, so the lesson takes Section I Part A, 
   "research/exam/exam-structure.md#Section and part layout"
  ],
  "word_count": {
-  "full": 446,
-  "brief": 446
+  "full": 447,
+  "brief": 447
  },
  "read_minutes": {
   "full": 3.0,

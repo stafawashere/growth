@@ -60,7 +60,7 @@
    {
     "id": "err-BC-ERR-04011",
     "verdict": "ok",
-    "evidence": "observed_behavior and scoring_consequence copied from the bundle; possible reason paraphrases BC-MIS-04017."
+    "evidence": "fixed 2026-09-29: restaged on a BC-QA-04004 interval draw, v(t)=(t-2)(3t-10) on 0<t<8: wrong the chart with no sentence (zeros FiniteSet(2,10/3)), right the reading 'left on (2,10/3)' (Interval.open(2,10/3)), relation distinct; SymPy: solve gives [2,10/3], v<0 on Interval.open(2,10/3); inferred claim added; word_count 447/447."
    },
    {
     "id": "err-BC-ERR-99003",
@@ -104,6 +104,10 @@
    "wrong": 0,
    "over_cap": 0,
    "lint": 0
-  }
+  },
+  "fix_notes": [
+   "err-BC-ERR-04011 moved off ex-1's single instant onto a BC-QA-04004 interval draw; wrong and right expressions no longer equal; texts trimmed to keep the brief form under the 450 cap (447).",
+   "Left as preferences: no BC-QA-04004 worked example; two column sign table for ki-1; no point tag on the speed reason."
+  ]
  }
 }

@@ -61,8 +61,8 @@
    },
    {
     "id": "st-1",
-    "verdict": "over_cap",
-    "evidence": "Cue is 21 words, over the 20 word cue cap."
+    "verdict": "ok",
+    "evidence": "fixed 2026-09-29: cue cut to 19 words by dropping \"work and\"."
    },
    {
     "id": "st-2",
@@ -72,7 +72,7 @@
    {
     "id": "ex-1",
     "verdict": "ok",
-    "evidence": "SymPy: (38-71)/(10-4) = -11/2."
+    "evidence": "fixed 2026-09-29: parameter_draw readings reordered to the served pairing; previously: SymPy: (38-71)/(10-4) = -11/2."
    },
    {
     "id": "ex-2",
@@ -117,7 +117,7 @@
    {
     "id": "chk-1",
     "verdict": "ok",
-    "evidence": "Key -11/2 equals ex-1."
+    "evidence": "fixed 2026-09-29: parameter_draw readings reordered to the served pairing; previously: Key -11/2 equals ex-1."
    },
    {
     "id": "chk-2",
@@ -137,11 +137,15 @@
    "Table delivery for ki-1 and a static figure for the tangent reading suit their ideas."
   ],
   "counts": {
-   "ok": 16,
+   "ok": 17,
    "unsourced": 0,
    "wrong": 0,
-   "over_cap": 1,
+   "over_cap": 0,
    "lint": 0
-  }
+  },
+  "fix_notes": [
+   "st-1 cue cut to 19 words; ex-1 and chk-1 parameter_draw readings now the served pairing [86,71,50,38,25] (record and Solution path prose); word_count 699/363.",
+   "Left as preferences: named interval form not practised; calculator strand has no check and no BC-ERR-02031/02032 blocks."
+  ]
  }
 }

@@ -82,8 +82,8 @@ No draw equals a published BC-QA-02012 `parameter_draw` (content/items_gen_unit0
 
 ## Band plan
 
-- Low (full): orientation, ki-1, ki-2, st-1, ex-1, the three error blocks, chk-1, chk-2, chk-3, the bridge. 614 words, 4.1 minutes (cap 900 and 6).
-- Mid (brief): orientation, ki-1, st-1, ex-1, err-02030, err-02029, chk-1, chk-2, the bridge. 398 words, 2.7 minutes (cap 450 and 3).
+- Low (full): orientation, ki-1, ki-2, st-1, ex-1, the three error blocks, chk-1, chk-2, chk-3, the bridge. 527 words, 4.1 minutes (cap 900 and 6).
+- Mid (brief): orientation, ki-1, st-1, ex-1, err-02030, err-02029, chk-1, chk-2, the bridge. 356 words, 2.7 minutes (cap 450 and 3).
 - Refresher: ki-1, err-BC-ERR-02030, err-BC-ERR-02029, err-BC-ERR-03022, ex-1.
 
 ## Sources
@@ -272,7 +272,7 @@ No draw equals a published BC-QA-02012 `parameter_draw` (content/items_gen_unit0
  ],
  "refresher": ["ki-1", "err-BC-ERR-02030", "err-BC-ERR-02029", "err-BC-ERR-03022", "ex-1"],
  "read_minutes": {"full": 4.1, "brief": 2.7},
- "word_count": {"full": 614, "brief": 398},
+ "word_count": {"full": 527, "brief": 356},
  "research_lines": [
   {"file": "research/scoring/notation-requirements.md", "line": "Loose derivative notation is generally accepted when the intent is clear."},
   {"file": "research/units/unit-02-differentiation-definition-properties.md", "line": "Conceptual variants ask what the notation denotes"}

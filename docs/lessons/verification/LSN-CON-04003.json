@@ -49,8 +49,8 @@
    },
    {
     "id": "st-2",
-    "verdict": "unsourced",
-    "evidence": "Rival 'differentiating' is not in BC-QA-04010 wrong_approaches, which list only BC-ERR-08011 and BC-ERR-09021; the BC-ERR-08011 half is sourced."
+    "verdict": "ok",
+    "evidence": "fixed 2026-09-29: rival cut to the sourced half: 'the integral reported without the known position (BC-ERR-08011)'; 'differentiating' removed; word_count.full 457."
    },
    {
     "id": "ex-1",
@@ -93,11 +93,15 @@
    "Only one error block; the lesson teaches the first line and the rival well but no scoring contrast beyond the answer points. Step_reveal suits the derivative chain as a process."
   ],
   "counts": {
-   "ok": 10,
-   "unsourced": 1,
+   "ok": 11,
+   "unsourced": 0,
    "wrong": 0,
    "over_cap": 0,
    "lint": 0
-  }
+  },
+  "fix_notes": [
+   "st-2 rival reduced to BC-ERR-08011, the BC-QA-04010 wrong_approaches entry; word_count.full 459 to 457, read_minutes unchanged at 3.1.",
+   "Left as preferences: st-2 has no example or check; one error block only."
+  ]
  }
 }

@@ -47,12 +47,12 @@ BC-QA-04004 lists no `point_types`, so no what_a_reader_scores entry and no poin
 
 ## Traps
 
-Seven active errors meet the skills; the first four in the bundle's order are served: BC-ERR-04007, BC-ERR-04008, BC-ERR-04010, BC-ERR-07026. Low band all four; mid band the first two. All on ex-1's draw.
+Seven active errors meet the skills; the first four in the bundle's order are served: BC-ERR-04007, BC-ERR-04008, BC-ERR-04010, BC-ERR-07026. Low band all four; mid band the first two. The first three on ex-1's draw; BC-ERR-07026 on st-2's BC-QA-04010 question built on ex-1's velocity with x(0) = -16 given.
 
 - err-BC-ERR-04007: speed -1 at t = 3 against |v(3)| = 1. Possible reason from BC-MIS-04005.
 - err-BC-ERR-04008: the intervals where x < 0 against where v < 0. No possible reason: neither linked description names the position.
 - err-BC-ERR-04010: sampling gives (2, 3) against the solved (2, 10/3). Possible reason from BC-MIS-04017.
-- err-BC-ERR-07026: position rebuilt from v without the constant -16 [inferred: the draw does not ask for this]. Possible reason from BC-MIS-07016.
+- err-BC-ERR-07026: asked for x(t) from v(t) = (t - 2)(3t - 10) and x(0) = -16, the antiderivative t^3 - 8t^2 + 20t with no constant, against t^3 - 8t^2 + 20t - 16 [inferred: a BC-QA-04010 question on ex-1's velocity, no worked example of its own]. Possible reason from BC-MIS-07016.
 
 Not served, past the cap of four: BC-ERR-08011, BC-ERR-09021, BC-ERR-99030.
 
@@ -82,7 +82,7 @@ BC-QA-04004 has calculator status either, so the lesson takes Section I Part A, 
 
 ## Band plan
 
-- Low (full): orientation, ki-1, st-1, st-2, ex-1, four error blocks, chk-1 to chk-3, both bridges. 530 words, 3.6 minutes (cap 900 and 6).
+- Low (full): orientation, ki-1, st-1, st-2, ex-1, four error blocks, chk-1 to chk-3, both bridges. 531 words, 3.6 minutes (cap 900 and 6).
 - Mid (brief): orientation, ki-1, st-1, ex-1, err-BC-ERR-04007, err-BC-ERR-04008, chk-1, chk-2, both bridges. 340 words, 2.3 minutes (cap 450 and 3).
 - Refresher: ki-1, the four error blocks, ex-1.
 
@@ -100,7 +100,7 @@ BC-QA-04004 has calculator status either, so the lesson takes Section I Part A, 
 - research/exam/exam-structure.md#Section and part layout
 - [inferred] The exam part for an either archetype. Settled by a calculator status on BC-QA-04004.
 - [inferred] ki-1 as an interactive. Settled by the modality A/B.
-- [inferred] BC-ERR-07026 on the direction draw. Settled by a BC-QA-04010 example or a narrower error list.
+- [inferred] BC-ERR-07026 on a BC-QA-04010 question built on ex-1's velocity. Settled by a BC-QA-04010 example or a narrower error list.
 
 ## Machine record
 
@@ -291,12 +291,12 @@ BC-QA-04004 has calculator status either, so the lesson takes Section I Part A, 
   {
    "error_id": "BC-ERR-07026",
    "wrong_step": {
-    "text": "Position rebuilt from \\(v\\) with no constant.",
+    "text": "Given \\(v(t)=(t-2)(3t-10)\\) and \\(x(0)=-16\\), find \\(x(t)\\): \\(x=t^3-8t^2+20t\\), no constant.",
     "expr": "t**3 - 8*t**2 + 20*t"
    },
    "right_step": {
-    "text": "With \\(x(0)=-16\\) as the constant.",
-    "expr": "(t - 2)**2*(t - 4)"
+    "text": "Constant from \\(x(0)=-16\\): \\(x=t^3-8t^2+20t-16\\).",
+    "expr": "t**3 - 8*t**2 + 20*t - 16"
    },
    "relation": "distinct",
    "possible_reason": {
@@ -655,7 +655,7 @@ BC-QA-04004 has calculator status either, so the lesson takes Section I Part A, 
    "settles": "The modality A/B in the build plan: skip rate and time to first credited success by mode."
   },
   {
-   "claim": "BC-ERR-07026 is shown on ex-1's draw as position rebuilt from its velocity, a use the draw does not ask for.",
+   "claim": "BC-ERR-07026 is shown on a BC-QA-04010 question (st-2) that gives ex-1's velocity and x(0) = -16 and asks for x(t); the lesson works no BC-QA-04010 example.",
    "settles": "An error list for BC-SKL-04011 limited to direction and rest, or a BC-QA-04010 worked example in this lesson."
   }
  ],
@@ -689,7 +689,7 @@ BC-QA-04004 has calculator status either, so the lesson takes Section I Part A, 
   "research/exam/exam-structure.md#Section and part layout"
  ],
  "word_count": {
-  "full": 530,
+  "full": 531,
   "brief": 340
  },
  "read_minutes": {

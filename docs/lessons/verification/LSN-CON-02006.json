@@ -45,8 +45,8 @@
    },
    {
     "id": "ki-1",
-    "verdict": "unsourced",
-    "evidence": "The rule (sqrt x)' = 1/(2 sqrt x) is attributed to BC-EK-FUN-3A4, which (ced:66 and 2.7 Required knowledge) covers sine, cosine, exponential and logarithmic functions only; the power rule is not in this bundle. The quote is verbatim on ced:66 and the math is correct."
+    "verdict": "ok",
+    "evidence": "fixed 2026-09-29: rule list restated within BC-EK-FUN-3A4 scope: sin, cos, e^x, ln; the sqrt rule removed (no power rule EK in the bundle)."
    },
    {
     "id": "st-1",
@@ -70,8 +70,8 @@
    },
    {
     "id": "err-BC-ERR-02024",
-    "verdict": "unsourced",
-    "evidence": "BC-ERR-02024 records a function value placed where the product or quotient rule calls for a derivative value; the block's wrong step reports f(9)=12 as the limit, which is not that behaviour (closer to BC-MIS-02014, which has no matching error record here)."
+    "verdict": "ok",
+    "evidence": "fixed 2026-09-29: block dropped; BC-ERR-02024 concerns product or quotient rule positions. Removed from delivery, refresher, sources and prose."
    },
    {
     "id": "representations",
@@ -95,8 +95,8 @@
    },
    {
     "id": "chk-3",
-    "verdict": "unsourced",
-    "evidence": "SymPy: key 1 correct (2 cos(pi/3)); option B 2 cos(sqrt 3) matches BC-ERR-02010. Option A is tagged BC-ERR-02024, whose record concerns product and quotient rule positions, not reporting f at the base point."
+    "verdict": "ok",
+    "evidence": "fixed 2026-09-29: option A re-derived from BC-ERR-02010 (derivative evaluated at the wrong input): 2cos x at 0 gives 2. SymPy: key limit = 1, A = 2, B = 2cos(sqrt 3). Key C unchanged."
    }
   ],
   "advice": [
@@ -104,11 +104,15 @@
    "Text delivery suits a symbolic recognition; the lesson teaches the stem (0/0 difference quotient shape), the first line (match f and a) and the rival (does not exist) well."
   ],
   "counts": {
-   "ok": 9,
-   "unsourced": 3,
+   "ok": 12,
+   "unsourced": 0,
    "wrong": 0,
    "over_cap": 0,
    "lint": 0
-  }
+  },
+  "fix_notes": [
+   "ki-1 rules now sin, cos, e^x, ln (FUN-3A4 scope); err-BC-ERR-02024 dropped with BC-MIS-02011, BC-MIS-02014 sources; chk-3 option A now 'The limit is 2.' via BC-ERR-02010; word_count 361/342.",
+   "Left: ex-1 still uses the sqrt family (the archetype template draw; its rule is not sourced to an EK in this bundle, not flagged); preference for a second example from a FUN-3A4 family."
+  ]
  }
 }

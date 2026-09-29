@@ -39,7 +39,7 @@ Both archetypes carry `asked_to_produce` and `common_givens`, so neither block i
 
 ## Solution path
 
-- ex-1, BC-QA-04002, both bands, no calculator. Draw: times 0, 4, 6, 10, 12; readings 25, 38, 50, 71, 86; context oven; trend decreasing, so \(H(0)=86\), \(H(4)=71\), \(H(6)=50\), \(H(10)=38\), \(H(12)=25\), point \(t=6\), bracketing rows \(t=4\) and \(t=10\). Steps follow `expected_solution_path`: choose the rows (no value), difference over difference (valued), divide (valued), units (no value). A fluent solver writes the quotient, the value and the units; the row choice is read.
+- ex-1, BC-QA-04002, both bands, no calculator. Draw: times 0, 4, 6, 10, 12; readings 86, 71, 50, 38, 25 (served pairing); context oven; trend decreasing, so \(H(0)=86\), \(H(4)=71\), \(H(6)=50\), \(H(10)=38\), \(H(12)=25\), point \(t=6\), bracketing rows \(t=4\) and \(t=10\). Steps follow `expected_solution_path`: choose the rows (no value), difference over difference (valued), divide (valued), units (no value). A fluent solver writes the quotient, the value and the units; the row choice is read.
 - ex-2, BC-QA-02013, low band, calculator. Draw: level 24, swing 3, scale 4, at 2, context traffic, framing context, so \(W(t)=24+3\sin(\frac{t^2}{4})+\ln(1+t)\) hundred cars. Valued chain: \(W\) (new), \(W'\) (differentiate, what the calculator computes), \(W'(2)\approx1.954\) (evaluate, approx). Written: the setup naming \(W'(2)\) and the value; the keystrokes are not written.
 
 The bundle lists BC-QA-02013 first; ex-1 is BC-QA-04002 because the first four error blocks in the bundle's order are table errors and fall on its draw [inferred].
@@ -94,8 +94,8 @@ Every non-text choice is [inferred], settled by the modality A/B.
 
 ## Band plan
 
-- Low (full): orientation, ki-1, ki-2, st-1, st-2, ex-1, the four error blocks, chk-1, ex-2, chk-2, representations, chk-3, the bridge. 701 words, 4.7 minutes (cap 900 and 6).
-- Mid (brief): orientation, ki-1, st-1, ex-1, err-02001, err-02002, chk-1, chk-2, the bridge. 365 words, 2.5 minutes (cap 450 and 3).
+- Low (full): orientation, ki-1, ki-2, st-1, st-2, ex-1, the four error blocks, chk-1, ex-2, chk-2, representations, chk-3, the bridge. 699 words, 4.7 minutes (cap 900 and 6).
+- Mid (brief): orientation, ki-1, st-1, ex-1, err-02001, err-02002, chk-1, chk-2, the bridge. 363 words, 2.5 minutes (cap 450 and 3).
 - Refresher: ki-1, err-BC-ERR-02001, err-BC-ERR-02002, err-BC-ERR-02003, err-BC-ERR-02004, ex-1.
 
 ## Sources
@@ -155,7 +155,7 @@ Every non-text choice is [inferred], settled by the modality A/B.
   {
    "id": "st-1",
    "archetype_id": "BC-QA-04002",
-   "cue": "A table of a contextual quantity; the stem asks to approximate a derivative at a tabulated input, with work and units.",
+   "cue": "A table of a contextual quantity; the stem asks to approximate a derivative at a tabulated input, with units.",
    "method": "First line: the two rows that bracket the point, differenced, over their inputs' difference.",
    "rival": "Rival: a pair of rows other than the bracketing pair (BC-ERR-02004).",
    "separating_feature": "The two rows sit on either side of the point.",
@@ -178,7 +178,7 @@ Every non-text choice is [inferred], settled by the modality A/B.
    "id": "ex-1",
    "archetype_id": "BC-QA-04002",
    "bands": ["low", "mid"],
-   "parameter_draw": {"times": [0, 4, 6, 10, 12], "readings": [25, 38, 50, 71, 86], "context": "oven", "trend": "decreasing"},
+   "parameter_draw": {"times": [0, 4, 6, 10, 12], "readings": [86, 71, 50, 38, 25], "context": "oven", "trend": "decreasing"},
    "problem": {"text": "An oven is at \\(H(t)\\) degrees Fahrenheit at \\(t\\) minutes: \\(H(0)=86\\), \\(H(4)=71\\), \\(H(6)=50\\), \\(H(10)=38\\), \\(H(12)=25\\). Approximate \\(H'(6)\\) from the rows that bracket \\(t=6\\), with units.", "command_verb": "approximate"},
    "calculator_status": "no_calculator",
    "steps": [
@@ -265,7 +265,7 @@ Every non-text choice is [inferred], settled by the modality A/B.
    "format": "short_answer",
    "bands": ["low", "mid"],
    "archetype_id": "BC-QA-04002",
-   "parameter_draw": {"times": [0, 4, 6, 10, 12], "readings": [25, 38, 50, 71, 86], "context": "oven", "trend": "decreasing"},
+   "parameter_draw": {"times": [0, 4, 6, 10, 12], "readings": [86, 71, 50, 38, 25], "context": "oven", "trend": "decreasing"},
    "completes": "ex-1",
    "stem": {"text": "The work reads \\(H'(6)\\approx\\frac{38-71}{10-4}\\). Give the value.", "command_verb": "give"},
    "key": {"form": "numeric", "expr": "-11/2"},
@@ -339,7 +339,7 @@ Every non-text choice is [inferred], settled by the modality A/B.
  ],
  "refresher": ["ki-1", "err-BC-ERR-02001", "err-BC-ERR-02002", "err-BC-ERR-02003", "err-BC-ERR-02004", "ex-1"],
  "read_minutes": {"full": 4.7, "brief": 2.5},
- "word_count": {"full": 701, "brief": 365},
+ "word_count": {"full": 699, "brief": 363},
  "research_lines": [
   {"file": "research/units/unit-02-differentiation-definition-properties.md", "line": "Use the average rate of change over an interval from the table that contains or abuts the point, and present both the difference and the quotient."},
   {"file": "research/scoring/common-point-losses.md", "line": "Units are scored separately from the value"}

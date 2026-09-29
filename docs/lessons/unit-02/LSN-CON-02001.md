@@ -71,7 +71,7 @@ BC-QA-04002 has `calculator_status` either and is the opening part of a table ba
 
 - chk-1, completion of ex-1, both bands, short answer: the quotient line is given, the student evaluates it. Key \(\frac{21}{5}\), equal to ex-1's answer.
 - chk-2, isomorph on BC-QA-04002, both bands: context crowd, times 0, 2, 5, 7, 10, readings 12, 18, 30, 41, 47, interval \(2\le t\le 7\). Key \(\frac{23}{5}\).
-- chk-3, MCQ on BC-QA-04002, low band: context oven, trend decreasing, times 2, 4, 5, 9, 12, readings 15, 22, 40, 58, 75, interval \(4\le t\le 9\). Key \(-\frac{36}{5}\) degrees Fahrenheit per minute. The two error blocks differ in value (BC-ERR-02001) and in units (BC-ERR-02003), so the options are statements of value with units: \(-36\) degrees Fahrenheit (BC-ERR-02001), \(-\frac{36}{5}\) degrees Fahrenheit (BC-ERR-02003), \(-36\) degrees Fahrenheit per minute (BC-ERR-02001).
+- chk-3, MCQ on BC-QA-04002, low band: context oven, trend decreasing, times 2, 4, 5, 9, 12, readings 75, 58, 40, 22, 15 (served pairing), interval \(4\le t\le 9\). Key \(-\frac{36}{5}\) degrees Fahrenheit per minute. The two error blocks differ in value (BC-ERR-02001) and in units (BC-ERR-02003), so the options are statements of value with units: \(-36\) degrees Fahrenheit (BC-ERR-02001), \(-\frac{36}{5}\) degrees Fahrenheit (BC-ERR-02003), \(-36\) degrees Fahrenheit per minute (BC-ERR-02001).
 
 No example or check draw equals a published BC-QA-04002 `parameter_draw` (content/items_gen_unit04).
 
@@ -244,7 +244,7 @@ The table choice is [inferred], settled by the modality A/B in the build plan.
    "format": "mcq",
    "bands": ["low"],
    "archetype_id": "BC-QA-04002",
-   "parameter_draw": {"times": [2, 4, 5, 9, 12], "readings": [15, 22, 40, 58, 75], "context": "oven", "trend": "decreasing"},
+   "parameter_draw": {"times": [2, 4, 5, 9, 12], "readings": [75, 58, 40, 22, 15], "context": "oven", "trend": "decreasing"},
    "stem": {"text": "\\(H(t)\\) degrees Fahrenheit is an oven's temperature at \\(t\\) minutes: \\(H(2)=75\\), \\(H(4)=58\\), \\(H(5)=40\\), \\(H(9)=22\\), \\(H(12)=15\\). Using the average rate over \\(4\\le t\\le 9\\), which approximates \\(H'(5)\\)?", "command_verb": "approximate"},
    "key": {"form": "statement", "expr": "-36/5", "label": "\\(-\\frac{36}{5}\\) degrees Fahrenheit per minute"},
    "steps": [

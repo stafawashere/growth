@@ -72,7 +72,7 @@ BC-QA-04006 has calculator status either, so the lesson takes Section I Part A, 
 
 - chk-1, completion of ex-1, both bands: the substituted equation given, the student solves. Key -3/2.
 - chk-2, isomorph, both bands. Draw: circle, size 6, rate 2, ratio 1, short, centimeter, minute. Key 24 pi square centimeters per minute.
-- chk-3, MCQ, low band, on BC-QA-04007. Draw: square_x 1, mixed 3, square_y 2, point (1, 1), rate_x 2. Key -10/7; B 2 (BC-ERR-04015), C -5/2 (BC-ERR-04018, the spec's frozen_rate), D -5/7 (BC-ERR-99013, the spec's slope_only).
+- chk-3, MCQ, low band, on BC-QA-04007. Draw: square_x 1, mixed 3, square_y 2, point (1, 1), rate_x 2. Key -10/7; B 2 (BC-ERR-04015), C -4/7 (BC-ERR-04018, x held constant in 3xy), D -5/7 (BC-ERR-99013, the spec's slope_only).
 
 ## Delivery
 
@@ -582,9 +582,9 @@ BC-QA-04006 has calculator status either, so the lesson takes Section I Part A, 
     {
      "id": "C",
      "is_key": false,
-     "expr": "-5/2",
+     "expr": "-4/7",
      "error_path": "BC-ERR-04018",
-     "derivation": "3xy differentiated with x held constant, so the 3x dy/dt term is lost: 10 + 4 dy/dt = 0"
+     "derivation": "3xy differentiated with x held constant, so the 3y dx/dt term is lost: 4 + 7 dy/dt = 0"
     },
     {
      "id": "D",

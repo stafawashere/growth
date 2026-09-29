@@ -47,9 +47,9 @@ None. Neither BC-QA-02005 nor the example's steps carry point types; BC-QA-05014
 
 Three active errors meet the concept's skills, in the bundle's order. Low band all three, mid band the first two.
 
-- err-BC-ERR-02012 (BC-MIS-02006). Wrong: continuity at 1 taken to give \(f'(1)=0\). Right: the right quotient tends to \(\infty\). Distinct.
+- err-BC-ERR-02012 (BC-MIS-02006). Wrong: \(f(1+h)-f(1)\to0\), so continuous at 1, so differentiable at 1. Right: the right quotient tends to \(\infty\). Distinct.
 - err-BC-ERR-02013 (BC-MIS-02007). Wrong: the graph read as sharp. Right: the quotient and its one sided limits. Distinct.
-- err-BC-ERR-03012 (BC-MIS-02007). Wrong: the numerator of \(f'(x)=\frac{4}{3(x-1)^{1/3}}\) set to zero for the vertical tangent. Right: the denominator set to zero, \(x=1\). Distinct. The record is scoped to parametric slopes; its skills include BC-SKL-02023 [inferred applicability, listed under Sources].
+- err-BC-ERR-03012 (BC-MIS-02007), on \(g(x)=6(x-1)^{1/3}+3\), an odd numerator and so a vertical tangent at 1. Wrong: the numerator of \(g'(x)=\frac{2}{(x-1)^{2/3}}\) set to zero for the vertical tangent. Right: the denominator set to zero, \(x=1\). Distinct. The record is scoped to parametric slopes; its skills include BC-SKL-02023 [inferred applicability, listed under Sources].
 
 ## Representations
 
@@ -67,7 +67,7 @@ BC-QA-02005 is `no_calculator` and a single MCQ or one part, so the part is Sect
 
 - chk-1, completion of ex-1, both bands: the two limits given, the student states the verdict and reason. Statement key.
 - chk-2, isomorph on BC-QA-02005, both bands: \(f(x)=3(x+2)^{1/5}+1\) at \(x=-2\), a vertical tangent. Statement key.
-- chk-3, MCQ on BC-QA-02005, low band: \(f(x)=-(x-2)^{2/3}\) at 2. Key D. Distractors: A (BC-ERR-02012), B (BC-ERR-02013), C (BC-ERR-03012).
+- chk-3, MCQ on BC-QA-02005, low band: \(f(x)=-(x-2)^{1/3}\) at 2, a vertical tangent. Key D. Distractors: A (BC-ERR-02012), B (BC-ERR-02013), C (BC-ERR-03012).
 
 No draw equals a published BC-QA-02005 `parameter_draw`.
 
@@ -80,8 +80,8 @@ No draw equals a published BC-QA-02005 `parameter_draw`.
 
 ## Band plan
 
-- Low (full): orientation, ki-1, st-1, st-2, ex-1, err-BC-ERR-02012, err-BC-ERR-02013, err-BC-ERR-03012, chk-1, chk-2, chk-3, the bridge. 623 words, 4.2 minutes (cap 900 and 6).
-- Mid (brief): orientation, ki-1, st-1, ex-1, err-BC-ERR-02012, err-BC-ERR-02013, chk-1, chk-2, the bridge. 434 words, 2.9 minutes (cap 450 and 3).
+- Low (full): orientation, ki-1, st-1, st-2, ex-1, err-BC-ERR-02012, err-BC-ERR-02013, err-BC-ERR-03012, chk-1, chk-2, chk-3, the bridge. 630 words, 4.2 minutes (cap 900 and 6).
+- Mid (brief): orientation, ki-1, st-1, ex-1, err-BC-ERR-02012, err-BC-ERR-02013, chk-1, chk-2, the bridge. 441 words, 2.94 minutes (cap 450 and 3).
 - Refresher: ki-1, err-BC-ERR-02012, err-BC-ERR-02013, err-BC-ERR-03012, ex-1.
 
 ## Sources
@@ -235,7 +235,7 @@ No draw equals a published BC-QA-02005 `parameter_draw`.
    "observed_behavior": "The response concludes that a function is differentiable at a point because it is continuous there.",
    "scoring_consequence": "A justification point is lost because the claim is not supported by the theorem.",
    "wrong_step": {
-    "text": "Continuous at 1, so \\(f'(1)=0\\).",
+    "text": "\\(f(1+h)-f(1)\\to0\\), so \\(f\\) is continuous at 1 and so differentiable at 1.",
     "expr": "0"
    },
    "right_step": {
@@ -279,11 +279,11 @@ No draw equals a published BC-QA-02005 `parameter_draw`.
    "observed_behavior": "The denominator of dy/dx is set to zero when a horizontal tangent is requested, or the numerator when a vertical tangent is requested.",
    "scoring_consequence": "The reported point is wrong and the reasoning point is not available.",
    "wrong_step": {
-    "text": "For a vertical tangent, the numerator 4 of \\(f'(x)=\\frac{4}{3(x-1)^{1/3}}\\) is set to zero: no solution.",
-    "expr": "4"
+    "text": "For the vertical tangent of \\(g(x)=6(x-1)^{1/3}+3\\), the numerator 2 of \\(g'(x)=\\frac{2}{(x-1)^{2/3}}\\) is set to zero: no solution.",
+    "expr": "2"
    },
    "right_step": {
-    "text": "The denominator \\(3(x-1)^{1/3}\\) is set to zero: \\(x=1\\).",
+    "text": "The denominator \\((x-1)^{2/3}\\) is set to zero: \\(x=1\\).",
     "expr": "1"
    },
    "relation": "distinct",
@@ -436,23 +436,23 @@ No draw equals a published BC-QA-02005 `parameter_draw`.
    "archetype_id": "BC-QA-02005",
    "parameter_draw": {
     "coefficient": "-1",
-    "exponent": "2/3",
+    "exponent": "1/3",
     "point": "2",
     "shift": "0"
    },
    "stem": {
-    "text": "Let \\(f(x)=-(x-2)^{2/3}\\), the power read as a real cube root. Which statement about \\(f\\) at \\(x=2\\) is correct?",
+    "text": "Let \\(f(x)=-(x-2)^{1/3}\\), the power read as a real cube root. Which statement about \\(f\\) at \\(x=2\\) is correct?",
     "command_verb": "choose"
    },
    "key": {
     "form": "statement",
     "expr": "D",
-    "text": "Not differentiable: the one sided quotients tend to negative infinity and infinity."
+    "text": "Not differentiable: both one sided quotients tend to negative infinity, a vertical tangent."
    },
    "steps": [
     {
-     "text": "Right quotient \\(-h^{2/3}/h\\).",
-     "expr": "-h**(2/3)/h",
+     "text": "Right quotient \\(-h^{1/3}/h\\).",
+     "expr": "-h**(1/3)/h",
      "relation": "new"
     },
     {
@@ -482,20 +482,20 @@ No draw equals a published BC-QA-02005 `parameter_draw`.
     {
      "id": "C",
      "is_key": false,
-     "label": "Differentiable: the numerator of \\(f'(x)\\) is never zero, so there is no vertical tangent.",
+     "label": "Differentiable: the numerator of \\(f'(x)=\\frac{-1}{3(x-2)^{2/3}}\\) is never zero, so there is no vertical tangent.",
      "error_path": "BC-ERR-03012",
      "derivation": "numerator set to zero for a vertical tangent"
     },
     {
      "id": "D",
      "is_key": true,
-     "label": "Not differentiable: the one sided quotients tend to \\(-\\infty\\) and \\(\\infty\\).",
+     "label": "Not differentiable: both one sided quotients tend to \\(-\\infty\\).",
      "error_path": null
     }
    ],
    "calculator_status": "no_calculator",
    "skills": [
-    "BC-SKL-02022"
+    "BC-SKL-02023"
    ]
   }
  ],
@@ -683,11 +683,11 @@ No draw equals a published BC-QA-02005 `parameter_draw`.
  ],
  "read_minutes": {
   "full": 4.2,
-  "brief": 2.9
+  "brief": 2.94
  },
  "word_count": {
-  "full": 623,
-  "brief": 434
+  "full": 630,
+  "brief": 441
  },
  "research_lines": [
   {

@@ -18,7 +18,7 @@ Served text, from BC-CON-04008 `description_plain` and the topic's Assessment be
 BC-SKL-04018 and BC-SKL-04021 map to BC-EK-CHA-3D1; BC-SKL-04020 maps to BC-EK-CHA-3D2 (ced:90).
 
 - ki-1 (core), BC-EK-CHA-3D1. Paraphrase of "The relating equation" and "Variables as functions of time": a formula, the Pythagorean theorem or a similar triangles proportion ties the quantities together, and an extra varying dimension is eliminated first. Anchor quote from ced:90 (14 words).
-- ki-2 (extended, low band), BC-EK-CHA-3D2. Paraphrase of "Other rules": a term multiplying two varying quantities needs the product rule. Anchor quote from ced:90.
+- ki-2 (core), BC-EK-CHA-3D2. Core so that the mid band teaches BC-SKL-04020, which no other mid block holds (plan 15, Sourcing, Pipeline step 2). Paraphrase of "Other rules": a term multiplying two varying quantities needs the product rule. Anchor quote from ced:90.
 
 ## Recognition
 
@@ -78,9 +78,9 @@ BC-QA-04006 has `calculator_status` either, so Section I Part A, 2.14 minutes (r
 
 ## Band plan
 
-- Low (full): orientation, ki-1, ki-2, st-1, st-2, ex-1 with its scoring line, four error blocks, chk-1 to chk-3, four bridges. 656 words, 4.4 minutes (cap 900 and 6).
-- Mid (brief): orientation, ki-1, st-1, ex-1 with its scoring line, err-BC-ERR-04016, err-BC-ERR-04018, chk-1, chk-2, four bridges. 428 words, 2.9 minutes (cap 450 and 3).
-- Refresher: ki-1, err-BC-ERR-04016, err-BC-ERR-04018, err-BC-ERR-04019, err-BC-ERR-99013, ex-1.
+- Low (full): orientation, ki-1, ki-2, st-1, st-2, ex-1 with its scoring line, four error blocks, chk-1 to chk-3, four bridges. 640 words, 4.4 minutes (cap 900 and 6).
+- Mid (brief): orientation, ki-1, ki-2, st-1, ex-1 with its scoring line, err-BC-ERR-04016, err-BC-ERR-04018, chk-1, chk-2, four bridges. 450 words, 3.0 minutes (cap 450 and 3).
+- Refresher: ki-1, ki-2, err-BC-ERR-04016, err-BC-ERR-04018, err-BC-ERR-04019, err-BC-ERR-99013, ex-1.
 
 ## Sources
 
@@ -121,7 +121,7 @@ BC-QA-04006 has `calculator_status` either, so Section I Part A, 2.14 minutes (r
    "id": "ki-1",
    "ek_id": "BC-EK-CHA-3D1",
    "depth": "core",
-   "text": "Each changing quantity is a function of time, tied to the others by one equation. When only one dimension has a given rate, a second varying dimension is written in terms of it before differentiating.",
+   "text": "Each quantity is a function of time, and one equation ties them. A varying dimension with no given rate is eliminated before differentiating.",
    "notation": "dV/dt, dr/dt, dh/dt",
    "quote": {
     "text": "The chain rule is the basis for differentiating variables in a related rates problem",
@@ -136,8 +136,8 @@ BC-QA-04006 has `calculator_status` either, so Section I Part A, 2.14 minutes (r
   {
    "id": "ki-2",
    "ek_id": "BC-EK-CHA-3D2",
-   "depth": "extended",
-   "text": "A term multiplying two varying quantities, such as r squared times h, differentiates by the product rule, giving one rate factor for each.",
+   "depth": "core",
+   "text": "A term multiplying two varying quantities, such as r squared times h, takes the product rule, giving one rate factor for each.",
    "notation": "product rule",
    "quote": {
     "text": "such as the product rule and the quotient rule, may also be necessary",
@@ -155,8 +155,8 @@ BC-QA-04006 has `calculator_status` either, so Section I Part A, 2.14 minutes (r
    "id": "st-1",
    "archetype_id": "BC-QA-04006",
    "cue": "A figure, one supplied rate, another rate asked at an instant.",
-   "method": "First line: the formula for the figure, then eliminate every dimension with no supplied rate.",
-   "rival": "Rival: a varying dimension held constant (BC-ERR-99013).",
+   "method": "First line: the figure's formula, then eliminate each dimension with no supplied rate.",
+   "rival": "A varying dimension held constant (BC-ERR-99013).",
    "separating_feature": "Count the varying dimensions against the supplied rates.",
    "sources": [
     "BC-QA-04006"
@@ -904,6 +904,7 @@ BC-QA-04006 has `calculator_status` either, so Section I Part A, 2.14 minutes (r
  ],
  "refresher": [
   "ki-1",
+  "ki-2",
   "err-BC-ERR-04016",
   "err-BC-ERR-04018",
   "err-BC-ERR-04019",
@@ -960,12 +961,12 @@ BC-QA-04006 has `calculator_status` either, so Section I Part A, 2.14 minutes (r
   "research/exam/exam-structure.md#Section and part layout"
  ],
  "word_count": {
-  "full": 656,
-  "brief": 428
+  "full": 640,
+  "brief": 450
  },
  "read_minutes": {
   "full": 4.4,
-  "brief": 2.9
+  "brief": 3.0
  }
 }
 ```

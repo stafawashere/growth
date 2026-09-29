@@ -32,7 +32,7 @@
     "method": "f 3 to 5 =8, h 3 to 5 =1; -16+1=-15, reversed"
    }
   ],
-  "answers_file": "docs/lessons/verification/answers/delta-2026-09-30-a.json"
+  "answers_file": "docs/lessons/verification/answers/delta-2026-09-29-a.json"
  },
  "audit": {
   "date": "2026-09-29",
@@ -86,7 +86,7 @@
    {
     "id": "err-BC-ERR-99032",
     "verdict": "ok",
-    "evidence": "fixed 2026-09-30: re-staged on a move BC-ERR-99032's observed_behavior names, a constant of integration attached to a definite integral (cr-22:3): wrong -18 + C against right -18, possible reason removed since neither linked BC-MIS (99011, 08012) describes it; SymPy: (-18 + C) - (-18) = C, not zero, so distinct."
+    "evidence": "fixed 2026-09-29: re-staged on a move BC-ERR-99032's observed_behavior names, a constant of integration attached to a definite integral (cr-22:3): wrong -18 + C against right -18, possible reason removed since neither linked BC-MIS (99011, 08012) describes it; SymPy: (-18 + C) - (-18) = C, not zero, so distinct."
    },
    {
     "id": "representations",
@@ -106,7 +106,7 @@
    {
     "id": "chk-3",
     "verdict": "ok",
-    "evidence": "fixed 2026-09-30: option D is now 15 + C with error_path BC-ERR-99032, the constant attached to the definite integral's value; key 15 and stem unchanged; SymPy: key -(-2*8 + 3*1 - 2*1) = 15, options 20, -15, 15, 15 + C pairwise distinct."
+    "evidence": "fixed 2026-09-29: option D is now 15 + C with error_path BC-ERR-99032, the constant attached to the definite integral's value; key 15 and stem unchanged; SymPy: key -(-2*8 + 3*1 - 2*1) = 15, options 20, -15, 15, 15 + C pairwise distinct."
    }
   ],
   "advice": [

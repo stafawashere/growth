@@ -18,7 +18,7 @@ Served text (46 words), from BC-CON-02007 `description_plain` and the topic's As
 BC-SKL-02014 to BC-SKL-02017 map BC-EK-CHA-2D1; BC-SKL-02018 maps BC-EK-CHA-2D2. Two blocks, both on ced:62.
 
 - ki-1 (core, BC-EK-CHA-2D1). The table method and the graph method, and the units rule, paraphrased from the topic's Estimation, Method from a table and Units paragraphs. Anchor quote (15 words) from ced:62. Notation line: approximately equal to.
-- ki-2 (extended, BC-EK-CHA-2D2). Technology gives the value; the written work names what was computed and reports three decimals (BC-QA-02013 `asked_to_produce`). Anchor quote (19 words) from ced:62.
+- ki-2 (core, BC-EK-CHA-2D2). Core so that the mid band teaches BC-SKL-02018, which no other mid block holds (plan 15, Sourcing, Pipeline step 2). Technology gives the value; the written work names what was computed and reports three decimals (BC-QA-02013 `asked_to_produce`). Anchor quote (19 words) from ced:62.
 
 ## Recognition
 
@@ -95,8 +95,8 @@ Every non-text choice is [inferred], settled by the modality A/B.
 ## Band plan
 
 - Low (full): orientation, ki-1, ki-2, st-1, st-2, ex-1, the four error blocks, chk-1, ex-2, chk-2, representations, chk-3, the bridge. 699 words, 4.7 minutes (cap 900 and 6).
-- Mid (brief): orientation, ki-1, st-1, ex-1, err-02001, err-02002, chk-1, chk-2, the bridge. 363 words, 2.5 minutes (cap 450 and 3).
-- Refresher: ki-1, err-BC-ERR-02001, err-BC-ERR-02002, err-BC-ERR-02003, err-BC-ERR-02004, ex-1.
+- Mid (brief): orientation, ki-1, ki-2, st-1, ex-1, err-02001, err-02002, chk-1, chk-2, the bridge. 417 words, 2.8 minutes (cap 450 and 3).
+- Refresher: ki-1, ki-2, err-BC-ERR-02001, err-BC-ERR-02002, err-BC-ERR-02003, err-BC-ERR-02004, ex-1.
 
 ## Sources
 
@@ -144,7 +144,7 @@ Every non-text choice is [inferred], settled by the modality A/B.
   {
    "id": "ki-2",
    "ek_id": "BC-EK-CHA-2D2",
-   "depth": "extended",
+   "depth": "core",
    "text": "Technology gives the derivative of a supplied model at a point (BC-EK-CHA-2D2, ced:62). The written line names what was computed, such as \\(W'(2)\\), and the value is reported to three decimal places.",
    "notation": "approximately equal to",
    "quote": {"text": "Technology can be used to calculate or estimate the value of a derivative of a function at a point.", "source": "ced:62"},
@@ -337,9 +337,9 @@ Every non-text choice is [inferred], settled by the modality A/B.
    "fallback": "the text: the tangent at (2, 2) passes through (0, 0) and (4, 4), so the estimated derivative is 1",
    "keyboard": "none needed; the figure is static and its text alternative reads the two points and the slope"}
  ],
- "refresher": ["ki-1", "err-BC-ERR-02001", "err-BC-ERR-02002", "err-BC-ERR-02003", "err-BC-ERR-02004", "ex-1"],
- "read_minutes": {"full": 4.7, "brief": 2.5},
- "word_count": {"full": 699, "brief": 363},
+ "refresher": ["ki-1", "ki-2", "err-BC-ERR-02001", "err-BC-ERR-02002", "err-BC-ERR-02003", "err-BC-ERR-02004", "ex-1"],
+ "read_minutes": {"full": 4.7, "brief": 2.8},
+ "word_count": {"full": 699, "brief": 417},
  "research_lines": [
   {"file": "research/units/unit-02-differentiation-definition-properties.md", "line": "Use the average rate of change over an interval from the table that contains or abuts the point, and present both the difference and the quotient."},
   {"file": "research/scoring/common-point-losses.md", "line": "Units are scored separately from the value"}

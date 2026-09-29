@@ -41,10 +41,11 @@ None. BC-QA-02003 lists no `point_types`, so no step carries a point tag and the
 
 ## Traps
 
-Two active errors meet the concept's skill and are shown, in the bundle's order, both bands. BC-ERR-02024 was dropped: its record concerns a function value placed in a product or quotient rule position, not a function value reported as the limit.
+Three active errors meet the concept's skill and are shown, in the bundle's order: the first two in both bands, BC-ERR-02024 in the low band only. BC-ERR-02024 is held by BC-SKL-02035; its record places a function value in a product or quotient rule position that calls for a derivative value. On this draw the same swap shows as \(f(9)\) reported where \(f'(9)\) is the limit; that carry-over is [inferred].
 
 - err-BC-ERR-02009 (BC-MIS-02004, BC-MIS-02002). Wrong step on ex-1's draw: \(\frac{0}{0}\) reported as a limit that does not exist. Right: \(f'(9)=\frac{2}{3}\). Distinct. Possible reason from BC-MIS-02004.
 - err-BC-ERR-02010 (BC-MIS-02004, BC-MIS-02014). Wrong: the constant 12 taken as the base point, \(f'(12)=\frac{2}{\sqrt{12}}\). Right: \(\frac{2}{3}\). Distinct. Possible reason null: neither linked description names the misread base.
+- err-BC-ERR-02024 (BC-MIS-02011, BC-MIS-02014). Wrong: \(f(9)=4\sqrt{9}=12\) reported as the limit. Right: \(f'(9)=\frac{2}{3}\). Distinct. Possible reason from BC-MIS-02014.
 
 ## Representations
 
@@ -74,20 +75,21 @@ No draw equals a published BC-QA-02003 `parameter_draw` (content/items_gen_unit0
 
 ## Band plan
 
-- Low (full): orientation, ki-1, st-1, ex-1, the two error blocks, chk-1, chk-2, chk-3, the bridge. 361 words, 2.8 minutes (cap 900 and 6).
+- Low (full): orientation, ki-1, st-1, ex-1, the three error blocks, chk-1, chk-2, chk-3, the bridge. 411 words, 2.8 minutes (cap 900 and 6).
 - Mid (brief): orientation, ki-1, st-1, ex-1, err-02009, err-02010, chk-1, chk-2, the bridge. 342 words, 2.3 minutes (cap 450 and 3).
-- Refresher: ki-1, err-BC-ERR-02009, err-BC-ERR-02010, ex-1.
+- Refresher: ki-1, err-BC-ERR-02009, err-BC-ERR-02010, err-BC-ERR-02024, ex-1.
 
 ## Sources
 
 - BC-CON-02006; BC-SKL-02035; BC-EK-LIM-3A1, BC-EK-FUN-3A4; ced:66
 - BC-QA-02003
-- BC-ERR-02009, BC-ERR-02010; BC-MIS-02002, BC-MIS-02004
+- BC-ERR-02009, BC-ERR-02010, BC-ERR-02024; BC-MIS-02002, BC-MIS-02004, BC-MIS-02014
 - BC-PRQ-02005
 - research/units/unit-02-differentiation-definition-properties.md#2.7 Derivatives of cos x, sin x, e^x, and ln x
 - research/question-analysis/question-archetypes.md#BC-QA-02003 Limit recognised as a derivative of a known function
 - research/exam/exam-structure.md#Section and part layout
 - [inferred] The base points behind base_index come from the generation template for BC-QA-02003, not from the parameter_spec. Settled by the base list in the spec.
+- [inferred] BC-ERR-02024's function value in a derivative position shown as \(f(9)\) reported for the limit, outside a product or quotient rule. Settled by an error record scoped to difference quotient limits.
 
 ## Machine record
 
@@ -162,6 +164,16 @@ No draw equals a published BC-QA-02003 `parameter_draw` (content/items_gen_unit0
    "relation": "distinct",
    "possible_reason": null,
    "sources": ["BC-ERR-02010"]
+  },
+  {
+   "error_id": "BC-ERR-02024",
+   "observed_behavior": "The response substitutes the value of a function into a position in the product or quotient rule that calls for the value of its derivative.",
+   "scoring_consequence": "The value point is lost.",
+   "wrong_step": {"text": "The height \\(f(9)=4\\sqrt{9}=12\\) reported as the limit.", "expr": "4*sqrt(9)"},
+   "right_step": {"text": "The slope \\(f'(9)=\\frac{2}{3}\\) is the limit.", "expr": "2/3"},
+   "relation": "distinct",
+   "possible_reason": {"misconception_id": "BC-MIS-02014", "text": "the height is used as a slope"},
+   "sources": ["BC-ERR-02024", "BC-MIS-02014"]
   }
  ],
  "representations": null,
@@ -233,17 +245,19 @@ No draw equals a published BC-QA-02003 `parameter_draw` (content/items_gen_unit0
   {"block": "ki-1", "mode": "text", "reason": "rule 5: BC-REP-01 only (unit README delivery map)", "sources": ["BC-SKL-02035"]},
   {"block": "ex-1", "mode": "step_reveal", "reason": "rule 1", "sources": []},
   {"block": "err-BC-ERR-02009", "mode": "step_reveal", "reason": "rule 1", "sources": []},
-  {"block": "err-BC-ERR-02010", "mode": "step_reveal", "reason": "rule 1", "sources": []}
+  {"block": "err-BC-ERR-02010", "mode": "step_reveal", "reason": "rule 1", "sources": []},
+  {"block": "err-BC-ERR-02024", "mode": "step_reveal", "reason": "rule 1", "sources": []}
  ],
- "refresher": ["ki-1", "err-BC-ERR-02009", "err-BC-ERR-02010", "ex-1"],
+ "refresher": ["ki-1", "err-BC-ERR-02009", "err-BC-ERR-02010", "err-BC-ERR-02024", "ex-1"],
  "read_minutes": {"full": 2.8, "brief": 2.3},
- "word_count": {"full": 361, "brief": 342},
+ "word_count": {"full": 411, "brief": 342},
  "research_lines": [
   {"file": "research/units/unit-02-differentiation-definition-properties.md", "line": "justification variants identify the underlying function and base point of a recognised limit"}
  ],
  "inferred": [
-  {"claim": "The base points behind base_index (9, 1/2, pi/3 here) come from the generation template for BC-QA-02003, not from the parameter_spec.", "settles": "The base list written into the BC-QA-02003 parameter_spec."}
+  {"claim": "The base points behind base_index (9, 1/2, pi/3 here) come from the generation template for BC-QA-02003, not from the parameter_spec.", "settles": "The base list written into the BC-QA-02003 parameter_spec."},
+  {"claim": "BC-ERR-02024 records a function value in a product or quotient rule position; on this draw the same swap is shown as f(9) reported for the limit.", "settles": "An error record scoped to limits recognised as difference quotients."}
  ],
- "sources": ["BC-CON-02006", "BC-SKL-02035", "BC-EK-LIM-3A1", "BC-EK-FUN-3A4", "ced:66", "BC-QA-02003", "BC-ERR-02009", "BC-ERR-02010", "BC-MIS-02002", "BC-MIS-02004", "BC-PRQ-02005", "research/units/unit-02-differentiation-definition-properties.md#2.7 Derivatives of cos x, sin x, e^x, and ln x", "research/exam/exam-structure.md#Section and part layout"]
+ "sources": ["BC-CON-02006", "BC-SKL-02035", "BC-EK-LIM-3A1", "BC-EK-FUN-3A4", "ced:66", "BC-QA-02003", "BC-ERR-02009", "BC-ERR-02010", "BC-ERR-02024", "BC-MIS-02002", "BC-MIS-02004", "BC-MIS-02014", "BC-PRQ-02005", "research/units/unit-02-differentiation-definition-properties.md#2.7 Derivatives of cos x, sin x, e^x, and ln x", "research/exam/exam-structure.md#Section and part layout"]
 }
 ```

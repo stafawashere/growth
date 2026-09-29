@@ -71,7 +71,7 @@
    {
     "id": "err-BC-ERR-04017",
     "verdict": "ok",
-    "evidence": "fixed 2026-09-29: block dropped; BC-ERR-04017 (related rates, chain rule) is not a notation conversion behaviour. Removed from delivery, refresher, sources, Traps and Band plan prose."
+    "evidence": "re-added 2026-09-29: observed_behavior and scoring_consequence equal the BC-ERR-04017 record exactly; possible_reason is a substring of BC-MIS-99005, which the record links; SymPy: Eq(dV/dh, -6) and Eq(dV/dt, -6) differ (dV/dh - dV/dt is not 0), so distinct holds."
    },
    {
     "id": "err-BC-ERR-02029",
@@ -124,7 +124,8 @@
   },
   "fix_notes": [
    "Dropped err-BC-ERR-04017 and its sources (BC-MIS-04008, BC-MIS-99005, cr-24:18); chk-3 option C now BC-ERR-03022; mid band now carries err-BC-ERR-02029 in place of err-04017; word_count 527/356.",
-   "Left: advice on sg-25:7 notation leniency for err-BC-ERR-02030 and option D framing; sg-25:7 and sg-24:8 remain in sources though uncited; mid band weight of error blocks."
+   "Left: advice on sg-25:7 notation leniency for err-BC-ERR-02030 and option D framing; sg-25:7 and sg-24:8 remain in sources though uncited; mid band weight of error blocks.",
+   "2026-09-29: error_blocks fix. err-BC-ERR-04017 restored in second place (check_lessons.py expects 02030, 04017, 02029, 03022), so the mid band now shows err-02030 and err-04017 and err-02029 moves to low only. Wrong dV/dh = -6 (a rate per unit of depth), right dV/dt = -6 at t = 4, distinct; possible_reason from BC-MIS-99005. Carry-over from a related rates record to a notation conversion listed as inferred. cr-24:18, BC-MIS-04008, BC-MIS-99005 back in sources. word_count 624/406, read_minutes 4.2/2.8. chk-3 unchanged."
   ]
  }
 }

@@ -71,7 +71,7 @@
    {
     "id": "err-BC-ERR-99008",
     "verdict": "ok",
-    "evidence": "fixed 2026-09-29: block removed: no error the lesson's skills hold (bundle errors are BC-ERR-01012, 01013, 99008 only) describes an unverified squeeze inequality; delivery, refresher, sources, inferred entry and prose updated; chk-3 option C re-pointed to BC-ERR-01013 (upper bound evaluated at 0, SymPy 3+|0|^3 = 3)."
+    "evidence": "re-added 2026-09-29: observed_behavior and scoring_consequence equal the BC-ERR-99008 record exactly; possible_reason is a substring of BC-MIS-99009, which the record links; SymPy: limits of 2 -/+ 3|x-1| at 1 are both 2, so wrong 2 and right 2 are equivalent. The served observed_behavior still names MVT, IVT and L'Hospital's Rule (see advice)."
    },
    {
     "id": "representations",
@@ -121,7 +121,8 @@
    "Removed err-BC-ERR-99008 (unsourced for the squeeze theorem) and its delivery, refresher, source and inferred entries; no replacement error fits among the errors the skills hold.",
    "chk-3 option C now carries BC-ERR-01013: the upper bound alone evaluated at 0.",
    "Removed record ids from ki-1's served text (same defect class as 01007 and 01012).",
-   "Left as preferences: ki-1 motion and orientation figure, the reversal case never derived by the student, no check asking the student to write the inequality."
+   "Left as preferences: ki-1 motion and orientation figure, the reversal case never derived by the student, no check asking the student to write the inequality.",
+   "2026-09-29: error_blocks fix. err-BC-ERR-99008 restored as the third block (low band only): check_lessons.py computes BC-ERR-01012, 01013, 99008 from the records, all three linked to a high severity misconception, so ordered by id. observed_behavior and scoring_consequence are the record's text; wrong and right steps both 2 (equivalent, the loss is the unshown inequality); possible_reason from BC-MIS-99009. The squeeze reading of a record that names MVT, IVT and L'Hospital's Rule is listed as inferred. Delivery, refresher, sources updated; word_count.full 588, read_minutes.full 4.0. No check changed."
   ]
  }
 }

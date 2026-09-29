@@ -52,7 +52,7 @@
    {
     "id": "ki-1",
     "verdict": "ok",
-    "evidence": "fixed 2026-09-30: text now says a solution never crosses the flat row but need not approach it, the sign of the right side on each side deciding; never crossing sourced to sg-23:9 and BC-PT-99065 with the uniqueness condition listed as inferred; SymPy dsolve: x(y - 2), y(0) = 3 gives exp(x**2/2) + 2, limit oo both ways; (2 - y)/2, y(0) = 3 gives 2 + exp(-x/2), limit 2 as x to oo."
+    "evidence": "fixed 2026-09-29: text now says a solution never crosses the flat row but need not approach it, the sign of the right side on each side deciding; never crossing sourced to sg-23:9 and BC-PT-99065 with the uniqueness condition listed as inferred; SymPy dsolve: x(y - 2), y(0) = 3 gives exp(x**2/2) + 2, limit oo both ways; (2 - y)/2, y(0) = 3 gives 2 + exp(-x/2), limit 2 as x to oo."
    },
    {
     "id": "st-1",
@@ -92,7 +92,7 @@
    {
     "id": "err-BC-ERR-05013",
     "verdict": "ok",
-    "evidence": "fixed 2026-09-30: re-staged on dy/dx = (y - 1)(x - 2)**2, y > 1, where the right side is zero at 2 and keeps its sign: wrong FiniteSet(2) against right EmptySet; SymPy: zero set in x {2}, value 1 at x = 1 and at x = 3 with y = 2; the off-spec draw is listed as inferred."
+    "evidence": "fixed 2026-09-29: re-staged on dy/dx = (y - 1)(x - 2)**2, y > 1, where the right side is zero at 2 and keeps its sign: wrong FiniteSet(2) against right EmptySet; SymPy: zero set in x {2}, value 1 at x = 1 and at x = 3 with y = 2; the off-spec draw is listed as inferred."
    },
    {
     "id": "err-BC-ERR-05021",

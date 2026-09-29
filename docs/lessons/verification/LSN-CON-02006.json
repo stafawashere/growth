@@ -71,7 +71,7 @@
    {
     "id": "err-BC-ERR-02024",
     "verdict": "ok",
-    "evidence": "fixed 2026-09-29: block dropped; BC-ERR-02024 concerns product or quotient rule positions. Removed from delivery, refresher, sources and prose."
+    "evidence": "re-added 2026-09-29: observed_behavior and scoring_consequence equal the BC-ERR-02024 record exactly; possible_reason is a substring of BC-MIS-02014, which the record links; SymPy: 4*sqrt(9) = 12, d/dx 4*sqrt(x) at 9 = 2/3, limit of (4*sqrt(9+h) - 12)/h at 0 = 2/3; 12 and 2/3 distinct."
    },
    {
     "id": "representations",
@@ -112,7 +112,8 @@
   },
   "fix_notes": [
    "ki-1 rules now sin, cos, e^x, ln (FUN-3A4 scope); err-BC-ERR-02024 dropped with BC-MIS-02011, BC-MIS-02014 sources; chk-3 option A now 'The limit is 2.' via BC-ERR-02010; word_count 361/342.",
-   "Left: ex-1 still uses the sqrt family (the archetype template draw; its rule is not sourced to an EK in this bundle, not flagged); preference for a second example from a FUN-3A4 family."
+   "Left: ex-1 still uses the sqrt family (the archetype template draw; its rule is not sourced to an EK in this bundle, not flagged); preference for a second example from a FUN-3A4 family.",
+   "2026-09-29: error_blocks fix. err-BC-ERR-02024 restored as the third block (low band only). Wrong f(9) = 4*sqrt(9) = 12 reported as the limit, right f'(9) = 2/3, distinct; possible_reason 'the height is used as a slope' from BC-MIS-02014. The record's product or quotient rule setting carried to this draw is listed as inferred. word_count.full 411. No check changed."
   ]
  }
 }

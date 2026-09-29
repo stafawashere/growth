@@ -15,11 +15,11 @@ Served text, from BC-CON-04002 `description_plain` and the Assessment behaviour 
 
 ## Key ideas
 
-The three skills map three BC-EK: BC-SKL-04001 to BC-EK-CHA-3A3, BC-SKL-04004 to BC-EK-CHA-3A1, BC-SKL-04014 to BC-EK-CHA-3C1. One core block, two extended.
+The three skills map three BC-EK: BC-SKL-04001 to BC-EK-CHA-3A3, BC-SKL-04004 to BC-EK-CHA-3A1, BC-SKL-04014 to BC-EK-CHA-3C1. Two core blocks (ki-1, ki-3), one extended.
 
 - ki-1 (core, BC-EK-CHA-3A3, ced:87). Paraphrase of the Units paragraph of Required mathematical knowledge: function unit over input unit, the second derivative over the input unit squared (sg-25:11). No anchor quote, to hold the brief band under its cap.
 - ki-2 (extended, BC-EK-CHA-3A1, ced:87). The Approximation paragraph: the average rate over an interval containing the input approximates the derivative, written as a difference over a difference (sg-25:11). Anchor quote from ced:87.
-- ki-3 (extended, BC-EK-CHA-3C1, ced:89). The same division in any applied context, from the 4.3 Units paragraph. Anchor quote from ced:89.
+- ki-3 (core, BC-EK-CHA-3C1, ced:89). Core so that the mid band teaches BC-SKL-04014 (differentiate the model, evaluate it, and attach the right units), which no other mid block holds (plan 15, Sourcing, Pipeline step 2). From the 4.3 Units paragraph and its model to rate expression conversion (research/units/unit-04-contextual-applications-differentiation.md#4.3 Rates of Change in Applied Contexts Other Than Motion): the rate is the model's derivative at the named instant, in the quantity's unit over the input's unit, in the context's words. No anchor quote and no notation line, to hold the brief band under its cap.
 
 ## Recognition
 
@@ -84,9 +84,9 @@ BC-QA-04002 has calculator status either, so the lesson takes Section I Part A, 
 
 ## Band plan
 
-- Low (full): orientation, ki-1, ki-2, ki-3, st-1, st-2, ex-1 with its scoring line, both error blocks, chk-1, chk-2, the bridge. 621 words, 4.2 minutes (cap 900 and 6).
-- Mid (brief): orientation, ki-1, st-1, ex-1 with its scoring line, both error blocks, chk-1, chk-2, the bridge. 447 words, 3.0 minutes (cap 450 and 3).
-- Refresher: ki-1, err-BC-ERR-04001, err-BC-ERR-04004, ex-1.
+- Low (full): orientation, ki-1, ki-2, ki-3, st-1, st-2, ex-1 with its scoring line, both error blocks, chk-1, chk-2, the bridge. 569 words, 4.2 minutes (cap 900 and 6).
+- Mid (brief): orientation, ki-1, ki-3, st-1, ex-1 with its scoring line, both error blocks, chk-1, chk-2, the bridge. 449 words, 3.0 minutes (cap 450 and 3).
+- Refresher: ki-1, ki-3, err-BC-ERR-04001, err-BC-ERR-04004, ex-1.
 
 ## Sources
 
@@ -118,7 +118,7 @@ BC-QA-04002 has calculator status either, so the lesson takes Section I Part A, 
   "BC-SKL-04014"
  ],
  "orientation": {
-  "text": "A rate's units are the function's units divided by the input's units. From a table, a response shows a difference of values over a difference of inputs, the value, then those units.",
+  "text": "A response shows a difference of values over a difference of inputs, the value, then its units, the function's unit over the input's unit.",
   "sources": [
    "BC-CON-04002",
    "research/units/unit-04-contextual-applications-differentiation.md#4.1 Interpreting the Meaning of the Derivative in Context"
@@ -129,7 +129,7 @@ BC-QA-04002 has calculator status either, so the lesson takes Section I Part A, 
    "id": "ki-1",
    "ek_id": "BC-EK-CHA-3A3",
    "depth": "core",
-   "text": "A derivative carries the function's unit over the input's unit: degrees Celsius against minutes gives degrees Celsius per minute. A second derivative divides by the input's unit twice, as in words per minute per minute (sg-25:11). Units carry their own point.",
+   "text": "A derivative's unit is the function's unit over the input's unit, as in degrees Celsius per minute. A second derivative divides by the input's unit twice (sg-25:11). Units carry their own point.",
    "notation": "units of f per unit of x",
    "quote": null,
    "sources": [
@@ -159,13 +159,10 @@ BC-QA-04002 has calculator status either, so the lesson takes Section I Part A, 
   {
    "id": "ki-3",
    "ek_id": "BC-EK-CHA-3C1",
-   "depth": "extended",
-   "text": "The same division sets the units of any applied rate: a volume in liters against time in hours changes in liters per hour, and the rate is reported in the context's words.",
-   "notation": "units of f per unit of x",
-   "quote": {
-    "text": "The derivative can be used to solve problems involving rates of change in applied contexts.",
-    "source": "ced:89"
-   },
+   "depth": "core",
+   "text": "A model's rate is its derivative at the named instant. For \\(V(t)\\) liters at \\(t\\) hours, \\(V'(2)\\) is in liters per hour, in the context's words.",
+   "notation": "",
+   "quote": null,
    "sources": [
     "BC-EK-CHA-3C1",
     "ced:89",
@@ -177,10 +174,10 @@ BC-QA-04002 has calculator status either, so the lesson takes Section I Part A, 
   {
    "id": "st-1",
    "archetype_id": "BC-QA-04002",
-   "cue": "A table of a quantity, an interval named, and the words approximate the derivative, show the work, indicate units.",
+   "cue": "A table, a named interval, and the words approximate the derivative, show the work, indicate units.",
    "method": "First line: the difference of the two named rows over the difference of their inputs.",
-   "rival": "Rival: the difference of values never divided (BC-ERR-02001), or a one-sided pair of rows (BC-ERR-02004).",
-   "separating_feature": "The named interval fixes both rows; its endpoints bracket the input.",
+   "rival": "The difference never divided (BC-ERR-02001), or a one-sided pair of rows (BC-ERR-02004).",
+   "separating_feature": "The named interval fixes both rows, which bracket the input.",
    "sources": [
     "BC-QA-04002"
    ],
@@ -539,6 +536,7 @@ BC-QA-04002 has calculator status either, so the lesson takes Section I Part A, 
  ],
  "refresher": [
   "ki-1",
+  "ki-3",
   "err-BC-ERR-04001",
   "err-BC-ERR-04004",
   "ex-1"
@@ -591,8 +589,8 @@ BC-QA-04002 has calculator status either, so the lesson takes Section I Part A, 
   "research/exam/exam-structure.md#Section and part layout"
  ],
  "word_count": {
-  "full": 621,
-  "brief": 447
+  "full": 569,
+  "brief": 449
  },
  "read_minutes": {
   "full": 4.2,

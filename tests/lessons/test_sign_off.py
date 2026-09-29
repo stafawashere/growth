@@ -11,7 +11,7 @@ from tools import lesson_sign_off
 
 TRANSCRIBED = FIXTURE_DIR / "resolve" / "LSN-CON-02013.json"
 VERIFICATION = REPO_ROOT / "docs" / "lessons" / "verification" / "LSN-CON-02013.json"
-SIGNED_ON = date(2026, 9, 30)
+SIGNED_ON = date(2026, 9, 29)
 
 
 def evidence():
@@ -20,7 +20,7 @@ def evidence():
    return {
       "lesson_id": "LSN-CON-02013",
       "version": 1,
-      "compared_on": "2026-09-30",
+      "compared_on": "2026-09-29",
       "auditor": "claude-opus-5-5",
       "resolve": verification["resolve"],
       "audit": verification["audit"],
@@ -47,7 +47,7 @@ def test_full_evidence_signs_the_record_off(tmp_path, context):
    assert problems == []
    assert record["status"] == "signed_off"
    assert record["provenance"]["signed_off_by"] == "claude-opus-5-5"
-   assert record["provenance"]["signed_off_at"] == "2026-09-30"
+   assert record["provenance"]["signed_off_at"] == "2026-09-29"
 
 
 def test_a_wrong_audit_block_refuses(tmp_path, context):

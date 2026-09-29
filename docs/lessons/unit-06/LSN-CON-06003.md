@@ -15,13 +15,13 @@ Served text, from BC-CON-06003 `description_plain` and the topic's Assessment be
 
 ## Key ideas
 
-Three BC-EK across five skills; at most two may be core, and one is chosen to hold the brief band.
+Three BC-EK across five skills; at most two may be core. ki-1 and ki-2 are core: the mid band must teach every skill (plan 15, Sourcing, Pipeline step 2), BC-SKL-06007 and 06008 are held only by ki-1 there, and BC-SKL-06009 (read or evaluate the needed function values, then build the sum) only by ki-2.
 
 - ki-1 (core), BC-EK-LIM-5A2 (every skill), ced:119. Paraphrase of the Riemann sum and Trapezoidal sum paragraphs of Required mathematical knowledge. No quote: the LIM-5.A.2 sentence runs past 25 words.
-- ki-2 (extended), BC-EK-LIM-5A1 (BC-SKL-06005, 06006, 06009), ced:119, with the LIM-5.A.1 sentence as anchor quote.
+- ki-2 (core), BC-EK-LIM-5A1 (BC-SKL-06005, 06006, 06009), ced:119. The LIM-5.A.1 representations (graphical, numerical, analytical, verbal) restated as where each height comes from: read from a table or graph, or evaluated from a formula. No anchor quote and no notation line, to hold the brief band under its cap.
 - ki-3 (extended), BC-EK-LIM-5A3 (BC-SKL-06009), ced:119, with the LIM-5.A.3 sentence as anchor quote.
 
-Each carries the concept notation line. The Error direction paragraph belongs to BC-CON-06004.
+ki-1 and ki-3 carry the concept notation line. The Error direction paragraph belongs to BC-CON-06004.
 
 ## Recognition
 
@@ -89,9 +89,9 @@ Every non-text choice is [inferred]; settled by the modality A/B.
 
 ## Band plan
 
-- Low (full): orientation, ki-1 to ki-3, st-1, ex-1 and ex-2 with their reader lines, four error blocks, chk-1 to chk-3, three bridges. 851 words, 5.7 minutes (cap 900 and 6).
-- Mid (brief): orientation, ki-1, st-1, ex-1 with its reader lines, err-BC-ERR-06001, err-BC-ERR-06002, chk-1, chk-2, three bridges. 447 words, 3.0 minutes (cap 450 and 3).
-- Refresher: ki-1, the four error blocks, ex-1.
+- Low (full): orientation, ki-1 to ki-3, st-1, ex-1 and ex-2 with their reader lines, four error blocks, chk-1 to chk-3, three bridges. 807 words, 5.7 minutes (cap 900 and 6).
+- Mid (brief): orientation, ki-1, ki-2, st-1, ex-1 with its reader lines, err-BC-ERR-06001, err-BC-ERR-06002, chk-1, chk-2, three bridges. 449 words, 3.0 minutes (cap 450 and 3).
+- Refresher: ki-1, ki-2, the four error blocks, ex-1.
 
 ## Sources
 
@@ -127,7 +127,7 @@ Every non-text choice is [inferred]; settled by the modality A/B.
   "BC-SKL-06009"
  ],
  "orientation": {
-  "text": "A response estimates the integral as a sum of value times width over the given subintervals, writes every product, then the value.",
+  "text": "A response estimates the integral by writing each subinterval's value times width, then their sum.",
   "sources": [
    "BC-CON-06003",
    "research/units/unit-06-integration-accumulation.md#6.2 Approximating Areas with Riemann Sums"
@@ -138,7 +138,7 @@ Every non-text choice is [inferred]; settled by the modality A/B.
    "id": "ki-1",
    "ek_id": "BC-EK-LIM-5A2",
    "depth": "core",
-   "text": "Each subinterval gives width times one height. Left, right and midpoint differ only in the sample point; a trapezoid averages the two end values. Widths may be unequal.",
+   "text": "Each subinterval gives width times one height. Left, right and midpoint differ only in the sample point; a trapezoid averages the end values. Widths may be unequal.",
    "notation": "L sub n, R sub n, M sub n, T sub n",
    "quote": null,
    "sources": [
@@ -150,13 +150,10 @@ Every non-text choice is [inferred]; settled by the modality A/B.
   {
    "id": "ki-2",
    "ek_id": "BC-EK-LIM-5A1",
-   "depth": "extended",
-   "text": "A table, a graph, a formula or a description can each supply the heights; the partition supplies the widths.",
-   "notation": "L sub n, R sub n, M sub n, T sub n",
-   "quote": {
-    "text": "Definite integrals can be approximated for functions that are represented graphically, numerically, analytically, and verbally.",
-    "source": "ced:119"
-   },
+   "depth": "core",
+   "text": "Each height is read from a table or graph, or evaluated from a formula.",
+   "notation": "",
+   "quote": null,
    "sources": [
     "BC-EK-LIM-5A1",
     "ced:119",
@@ -185,9 +182,9 @@ Every non-text choice is [inferred]; settled by the modality A/B.
   {
    "id": "st-1",
    "archetype_id": "BC-QA-06001",
-   "cue": "A table of rate values and a named sum over the subintervals the table indicates.",
+   "cue": "A table of rates and a named sum on the table's subintervals.",
    "method": "Identify the subintervals and their widths from the table.",
-   "rival": "Rival: one common width on unevenly spaced data.",
+   "rival": "One common width on unevenly spaced data.",
    "separating_feature": "Unequal gaps between inputs mean unequal widths.",
    "sources": [
     "BC-QA-06001",
@@ -970,6 +967,7 @@ Every non-text choice is [inferred]; settled by the modality A/B.
  ],
  "refresher": [
   "ki-1",
+  "ki-2",
   "err-BC-ERR-06001",
   "err-BC-ERR-06002",
   "err-BC-ERR-06003",
@@ -1049,8 +1047,8 @@ Every non-text choice is [inferred]; settled by the modality A/B.
   "brief": 3.0
  },
  "word_count": {
-  "full": 851,
-  "brief": 447
+  "full": 807,
+  "brief": 449
  }
 }
 ```

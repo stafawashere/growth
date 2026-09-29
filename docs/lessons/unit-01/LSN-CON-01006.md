@@ -19,7 +19,7 @@ The four skills map three BC-EK: BC-EK-LIM-1C2 (BC-SKL-01009, ced:40), BC-EK-LIM
 
 - ki-1 (core, BC-EK-LIM-1C5). Values at inputs approaching the target from both sides support an estimate of the two sided limit; one side supports a one sided estimate; a finite table leaves the behaviour between its rows open. Paraphrased from the topic 1.4 paragraphs. No quote. Notation: estimate.
 - ki-2 (extended, BC-EK-LIM-1C2). A graph supports an estimate read from the heights approached on each side. Anchor quote from ced:40 (11 words).
-- ki-3 (extended, BC-EK-LIM-1C3). A window at one scale can hide behaviour, so a graphical reading supports an estimate, not a proof. Anchor quote from ced:40 (12 words).
+- ki-3 (core, BC-EK-LIM-1C3). Core so that the mid band teaches BC-SKL-01014 (say why a graph on one window can mislead about a limit), which no other mid block holds (plan 15, Sourcing, Pipeline step 2); the two core blocks are ki-1 and ki-3. A window at one scale can hide behaviour, so a graphical reading supports an estimate, not a proof. Anchor quote from ced:40 (12 words).
 
 ## Recognition
 
@@ -92,9 +92,9 @@ Every non-text choice is [inferred], settled by the modality A/B.
 ## Band plan
 
 - Low (full): orientation, ki-1, ki-2, ki-3, st-1, st-2, st-3, ex-1, four error blocks, chk-1, chk-2, chk-3, ex-2, bridge when gated.
-- Mid (brief): orientation, ki-1, st-1, ex-1, err-BC-ERR-01001, err-BC-ERR-01002, chk-1, chk-2, bridge when gated.
-- Totals: full 860 words, 5.8 minutes (cap 900 and 6); brief 445 words, 3.0 minutes (cap 450 and 3).
-- Refresher: ki-1, the four error blocks, ex-1.
+- Mid (brief): orientation, ki-1, ki-3, st-1, ex-1, err-BC-ERR-01001, err-BC-ERR-01002, chk-1, chk-2, bridge when gated.
+- Totals: full 825 words, 5.8 minutes (cap 900 and 6); brief 447 words, 3.0 minutes (cap 450 and 3).
+- Refresher: ki-1, ki-3, the four error blocks, ex-1.
 
 ## Sources
 
@@ -123,13 +123,13 @@ Every non-text choice is [inferred], settled by the modality A/B.
  "unit": "01",
  "skills": ["BC-SKL-01009", "BC-SKL-01014", "BC-SKL-01015", "BC-SKL-01017"],
  "orientation": {
-  "text": "A response estimates a limit by reading the heights a graph approaches, or the values a table approaches, from both sides of the input, and states the result as an estimate: a graph or a short table suggests a limit but does not prove one.",
+  "text": "A response reads the heights a graph approaches, or the values a table approaches, from both sides of the input, and states an estimate, not a proof.",
   "sources": ["BC-CON-01006", "research/units/unit-01-limits-continuity.md#1.3 Estimating Limit Values from Graphs", "research/units/unit-01-limits-continuity.md#1.4 Estimating Limit Values from Tables"]
  },
  "key_ideas": [
-  {"id": "ki-1", "ek_id": "BC-EK-LIM-1C5", "depth": "core", "text": "Values at inputs approaching the target from both sides support an estimate of the two sided limit; one side supports only a one sided estimate (BC-EK-LIM-1C5, ced:41). A finite table leaves the behaviour between its rows open.", "notation": "estimate", "quote": null, "sources": ["BC-EK-LIM-1C5", "ced:41", "research/units/unit-01-limits-continuity.md#1.4 Estimating Limit Values from Tables"]},
-  {"id": "ki-2", "ek_id": "BC-EK-LIM-1C2", "depth": "extended", "text": "On a graph, the estimate is the height the curve approaches from each side of the input (BC-EK-LIM-1C2, ced:40).", "notation": "", "quote": {"text": "Graphical information about a function can be used to estimate limits.", "source": "ced:40"}, "sources": ["BC-EK-LIM-1C2", "ced:40"]},
-  {"id": "ki-3", "ek_id": "BC-EK-LIM-1C3", "depth": "extended", "text": "A window at one scale can hide a hole or an oscillation, so a graphical reading supports an estimate, not a proof (BC-EK-LIM-1C3, ced:40).", "notation": "", "quote": {"text": "graphical representations of functions may miss important function behavior.", "source": "ced:40"}, "sources": ["BC-EK-LIM-1C3", "ced:40"]}
+  {"id": "ki-1", "ek_id": "BC-EK-LIM-1C5", "depth": "core", "text": "Values at inputs approaching the target from both sides support an estimate of the two sided limit; one side supports only a one sided estimate. A finite table leaves the behaviour between its rows open.", "notation": "estimate", "quote": null, "sources": ["BC-EK-LIM-1C5", "ced:41", "research/units/unit-01-limits-continuity.md#1.4 Estimating Limit Values from Tables"]},
+  {"id": "ki-2", "ek_id": "BC-EK-LIM-1C2", "depth": "extended", "text": "On a graph, the estimate is the height the curve approaches from each side of the input.", "notation": "", "quote": {"text": "Graphical information about a function can be used to estimate limits.", "source": "ced:40"}, "sources": ["BC-EK-LIM-1C2", "ced:40"]},
+  {"id": "ki-3", "ek_id": "BC-EK-LIM-1C3", "depth": "core", "text": "A window at one scale can hide a hole or an oscillation, so a graphical reading supports an estimate, not a proof.", "notation": "", "quote": {"text": "graphical representations of functions may miss important function behavior.", "source": "ced:40"}, "sources": ["BC-EK-LIM-1C3", "ced:40"]}
  ],
  "strategy": [
   {"id": "st-1", "archetype_id": "BC-QA-01001", "cue": "A graph with breaks; limits or values asked at named inputs.", "method": "First line: locate the input, then read each side's height.", "rival": "The dot's height read as the limit (BC-ERR-01001).", "separating_feature": "The limit is read beside the input, the value at it.", "sources": ["BC-QA-01001"], "evidence_tag": "verified"},
@@ -170,7 +170,7 @@ Every non-text choice is [inferred], settled by the modality A/B.
  "what_a_reader_scores": [],
  "common_errors": [
   {"error_id": "BC-ERR-01001", "observed_behavior": "The response gives the plotted or defined value of the function at the input in place of the value the function approaches there.", "scoring_consequence": "The reading point is lost, and in a continuity part the comparison of limit with value collapses.", "wrong_step": {"text": "The dot's height 0 reported as the limit.", "expr": "0"}, "right_step": {"text": "Both sides head to 2.", "expr": "2"}, "relation": "distinct", "possible_reason": {"misconception_id": "BC-MIS-01001", "text": "the limit as another name for evaluation"}, "sources": ["BC-ERR-01001", "BC-MIS-01001"]},
-  {"error_id": "BC-ERR-01002", "observed_behavior": "The response reports the value approached from one side as the limit although the two sides differ.", "scoring_consequence": "The value point is lost because the correct response is that the limit does not exist.", "wrong_step": {"text": "At x = 6, the left height -2 reported as the limit.", "expr": "-2"}, "right_step": {"text": "The sides give -2 and 1: no limit.", "expr": "DNE"}, "relation": "distinct", "possible_reason": {"misconception_id": "BC-MIS-01002", "text": "a jump is read as a limit equal to the value on whichever side was examined"}, "sources": ["BC-ERR-01002", "BC-MIS-01002"]},
+  {"error_id": "BC-ERR-01002", "observed_behavior": "The response reports the value approached from one side as the limit although the two sides differ.", "scoring_consequence": "The value point is lost because the correct response is that the limit does not exist.", "wrong_step": {"text": "At x = 6, the left height -2 reported as the limit.", "expr": "-2"}, "right_step": {"text": "The sides give -2 and 1: no limit.", "expr": "DNE"}, "relation": "distinct", "possible_reason": {"misconception_id": "BC-MIS-01002", "text": "a single one sided approach as sufficient"}, "sources": ["BC-ERR-01002", "BC-MIS-01002"]},
   {"error_id": "BC-ERR-01003", "observed_behavior": "The response states that the limit does not exist on the grounds that the function has no value at the input.", "scoring_consequence": "Both the value point and any justification point are lost.", "wrong_step": {"text": "With the dot at (3, 0) removed, the limit is called nonexistent.", "expr": "DNE"}, "right_step": {"text": "Both sides still head to 2.", "expr": "2"}, "relation": "distinct", "possible_reason": {"misconception_id": "BC-MIS-01001", "text": "a missing or displaced function value is read as a missing or displaced limit"}, "sources": ["BC-ERR-01003", "BC-MIS-01001"]},
   {"error_id": "BC-ERR-01004", "observed_behavior": "The response reports one of the values the function oscillates between as the limit near the input.", "scoring_consequence": "The value point is lost because no limit exists.", "wrong_step": {"text": "In ex-2's table, 2 reported as the limit.", "expr": "2"}, "right_step": {"text": "The outputs keep alternating: no limit is suggested.", "expr": "DNE"}, "relation": "distinct", "possible_reason": {"misconception_id": "BC-MIS-01004", "text": "oscillation or behaviour between the tabulated inputs is not considered"}, "sources": ["BC-ERR-01004", "BC-MIS-01004"]}
  ],
@@ -228,9 +228,9 @@ Every non-text choice is [inferred], settled by the modality A/B.
   {"block": "err-BC-ERR-01003", "mode": "step_reveal", "reason": "rule 1", "sources": []},
   {"block": "err-BC-ERR-01004", "mode": "step_reveal", "reason": "rule 1", "sources": []}
  ],
- "refresher": ["ki-1", "err-BC-ERR-01001", "err-BC-ERR-01002", "err-BC-ERR-01003", "err-BC-ERR-01004", "ex-1"],
+ "refresher": ["ki-1", "ki-3", "err-BC-ERR-01001", "err-BC-ERR-01002", "err-BC-ERR-01003", "err-BC-ERR-01004", "ex-1"],
  "read_minutes": {"full": 5.8, "brief": 3.0},
- "word_count": {"full": 858, "brief": 445},
+ "word_count": {"full": 825, "brief": 447},
  "research_lines": [
   {"file": "research/units/unit-01-limits-continuity.md", "line": "A finite table does not determine the behaviour between its rows, so an estimate remains an estimate."}
  ],

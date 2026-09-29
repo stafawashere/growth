@@ -40,5 +40,93 @@
    "note": "stem clarified after the judge found it ambiguous: f' is now stated negative on (-2, 2); key (2, 0) unchanged",
    "date": "2026-09-29"
   }
- ]
+ ],
+ "audit": {
+  "date": "2026-09-29",
+  "auditor": "claude-opus-5-5",
+  "blocks": [
+   {
+    "id": "orientation",
+    "verdict": "ok",
+    "evidence": "Paraphrases BC-CON-05011 description_formal and the research reason rule 'reasoning about the graphed object'."
+   },
+   {
+    "id": "ki-1",
+    "verdict": "ok",
+    "evidence": "Matches BC-CON-05011 description_formal: sign changes of f' locate extrema, extrema of f' locate inflection points."
+   },
+   {
+    "id": "ki-2",
+    "verdict": "ok",
+    "evidence": "Quote matches ced:106 FUN-4.A.10; vertical shift claim matches BC-ERR-05045 record."
+   },
+   {
+    "id": "st-1",
+    "verdict": "ok",
+    "evidence": "Rival matches BC-QA-05009 wrong_approaches 'deciding the order from the vertical scale of the plots'."
+   },
+   {
+    "id": "ex-1",
+    "verdict": "ok",
+    "evidence": "SymPy: x^2/2-2 zeros {-2, 2}, negative to positive at 2, derivative x zero at 0."
+   },
+   {
+    "id": "err-BC-ERR-05016",
+    "verdict": "ok",
+    "evidence": "SymPy: f'>0 on (-oo, -2) U (2, oo); f' rises on (0, oo)."
+   },
+   {
+    "id": "err-BC-ERR-05041",
+    "verdict": "ok",
+    "evidence": "Record text copied; extremum of f' at x = 0 is the inflection of f."
+   },
+   {
+    "id": "err-BC-ERR-05042",
+    "verdict": "ok",
+    "evidence": "SymPy: vertex at 0, crossings at -2 and 2."
+   },
+   {
+    "id": "err-BC-ERR-05043",
+    "verdict": "ok",
+    "evidence": "Record text copied; inflection at 0, not at zeros of f'."
+   },
+   {
+    "id": "representations",
+    "verdict": "ok",
+    "evidence": "null."
+   },
+   {
+    "id": "BC-PRQ-05006",
+    "verdict": "ok",
+    "evidence": "Matches BC-PRQ-05006 description and BC-ERR-05015 discriminating probe."
+   },
+   {
+    "id": "chk-1",
+    "verdict": "ok",
+    "evidence": "SymPy: same function as ex-1, key (2, 0)."
+   },
+   {
+    "id": "chk-2",
+    "verdict": "ok",
+    "evidence": "SymPy: -(x+3)(x+1) zeros -3, -1, negative to positive at -3, derivative -2x-4 zero at -2."
+   },
+   {
+    "id": "chk-3",
+    "verdict": "ok",
+    "evidence": "SymPy: x^2-2x zeros 0, 2, min at 2, vertex 1; f'<0 on (1, 2) so B false; A and D false."
+   }
+  ],
+  "advice": [
+   "st-1 cues the three curve matching stem, while ex-1 and all checks ask for features of f from one graph of f'; no check exercises the matching stem or the vertical scale rival.",
+   "BC-ERR-05041 concerns sketching f' from f, which no example or check in the lesson does; the block may read as off topic.",
+   "what_a_reader_scores is empty although the BC-QA-05009 scoring_pattern describes separate points for the list of inputs and the reason (sg-23:13, sg-25:17); a line on the reason naming the graph of f' would teach the scoring habit."
+  ],
+  "counts": {
+   "ok": 14,
+   "unsourced": 0,
+   "wrong": 0,
+   "over_cap": 0,
+   "lint": 0
+  }
+ }
 }

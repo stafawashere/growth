@@ -33,5 +33,94 @@
    }
   ],
   "answers_file": "/tmp/claude-0/-home-user-growth/ac029253-8ff0-5a4b-8b5f-cdcaf5e8ff8d/scratchpad/verify/answers_07.json"
+ },
+ "audit": {
+  "date": "2026-09-29",
+  "auditor": "claude-opus-5-5",
+  "blocks": [
+   {
+    "id": "orientation",
+    "verdict": "ok",
+    "evidence": "Paraphrase of BC-CON-05005, the 5.4 topic and sg-23:13 (one point for answer with reason); 31 words."
+   },
+   {
+    "id": "ki-1",
+    "verdict": "ok",
+    "evidence": "Quote matches ced:102 FUN-4.A.2 verbatim; 'does not change sign' accepted and 'f' > 0 before and after' rejected on cache/text/sg-23/page-013.txt."
+   },
+   {
+    "id": "st-1",
+    "verdict": "ok",
+    "evidence": "BC-QA-05003 path[0] and wrong_approaches."
+   },
+   {
+    "id": "st-2",
+    "verdict": "ok",
+    "evidence": "BC-QA-05007 path[0] and wrong_approaches (solving the differential equation first)."
+   },
+   {
+    "id": "ex-1",
+    "verdict": "ok",
+    "evidence": "SymPy: f'(1) = 0; 3(x-1)^2(x+2) > 0 on both sides of 1 near 1; neither."
+   },
+   {
+    "id": "reader-ex-1",
+    "verdict": "ok",
+    "evidence": "BC-PT-99012 text verbatim; in BC-QA-05003 point_types."
+   },
+   {
+    "id": "err-BC-ERR-05013",
+    "verdict": "ok",
+    "evidence": "Record text verbatim; BC-MIS-05008 paraphrased."
+   },
+   {
+    "id": "err-BC-ERR-05018",
+    "verdict": "ok",
+    "evidence": "Record text verbatim."
+   },
+   {
+    "id": "err-BC-ERR-05020",
+    "verdict": "ok",
+    "evidence": "Record text verbatim; critical points of ex-1 are -2 and 1."
+   },
+   {
+    "id": "err-BC-ERR-05021",
+    "verdict": "ok",
+    "evidence": "Record text verbatim; f' negative to positive at -2 is a minimum."
+   },
+   {
+    "id": "representations",
+    "verdict": "ok",
+    "evidence": "null."
+   },
+   {
+    "id": "chk-1",
+    "verdict": "ok",
+    "evidence": "f' > 0 both sides: neither."
+   },
+   {
+    "id": "chk-2",
+    "verdict": "ok",
+    "evidence": "2(x+1)(x-3) positive left of -1, negative right: relative maximum."
+   },
+   {
+    "id": "chk-3",
+    "verdict": "ok",
+    "evidence": "x^2(x+3): negative to positive at -3, no change at 0; key C; distractors map to 05013, 05021, 05018."
+   }
+  ],
+  "advice": [
+   "st-2 (BC-QA-05007) has no worked example or check; a reader meets the cue once and never practises it.",
+   "BC-ERR-05023 (positive before and after) is taught only inside ki-1; it is a sourced scoring trap (sg-23:13) and would suit an error block or a distractor.",
+   "ki-1 interactive window y [-10, 12] clips f' below x about -2.3 (f'(-2.5) is about -18.4); widen the window or start x at -2.4.",
+   "The lesson teaches recognition, the first line and the rival clearly; the reason sentence naming f' is well drilled by chk-3 option D."
+  ],
+  "counts": {
+   "ok": 14,
+   "unsourced": 0,
+   "wrong": 0,
+   "over_cap": 0,
+   "lint": 0
+  }
  }
 }

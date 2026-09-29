@@ -52,7 +52,7 @@ Three active errors meet the skills, in the bundle's order: BC-ERR-03006, BC-ERR
 
 - err-BC-ERR-03006: the product rule dropped, only 3x times the arctan derivative. Possible reason, words from BC-MIS-03012.
 - err-BC-ERR-03018: the inner factor 2 dropped. Possible reason, words from BC-MIS-03001.
-- err-BC-ERR-03017: the inverse sine form used for arctan. Possible reason, words from BC-MIS-03010.
+- err-BC-ERR-03017: the radical of the inverse sine form carried into the arctan formula, which still gives a value at x = 2 (3π/4 + 6√2 against 3π/4 + 6). Possible reason, words from BC-MIS-03010.
 
 ## Representations
 
@@ -81,7 +81,7 @@ BC-QA-03007 is `calculator_status` either, a single MCQ or a step inside a conte
 
 ## Band plan
 
-- Low (full): orientation, ki-1, st-1 to st-3, ex-1, the three error blocks, chk-1 to chk-3, the two bridges. 551 words, 3.7 minutes (cap 900 and 6).
+- Low (full): orientation, ki-1, st-1 to st-3, ex-1, the three error blocks, chk-1 to chk-3, the two bridges. 586 words, 3.91 minutes (cap 900 and 6).
 - Mid (brief): orientation, ki-1, st-1, ex-1, err-BC-ERR-03006, err-BC-ERR-03018, chk-1, chk-2, the two bridges. 407 words, 2.8 minutes (cap 450 and 3).
 - Refresher: ki-1, err-BC-ERR-03006, err-BC-ERR-03018, err-BC-ERR-03017, ex-1.
 
@@ -196,8 +196,8 @@ BC-QA-03007 is `calculator_status` either, a single MCQ or a step inside a conte
    "error_id": "BC-ERR-03017",
    "observed_behavior": "The derivative of the inverse sine is used for the inverse tangent, or a sign or a radical is misplaced in the recalled formula.",
    "scoring_consequence": "The derivative is wrong from the first line.",
-   "wrong_step": {"text": "The arcsin form for arctan.", "expr": "3*atan(2*x - 3) + 6*x/sqrt(1 - (2*x - 3)**2)"},
-   "right_step": {"text": "The arctan form.", "expr": "3*atan(2*x - 3) + 6*x/(1 + (2*x - 3)**2)"},
+   "wrong_step": {"text": "A radical misplaced: the arctan form written with a root, 6x over the root of 1 + (2x - 3)^2; at x = 2 it gives 3π/4 + 6√2.", "expr": "3*atan(2*x - 3) + 6*x/sqrt(1 + (2*x - 3)**2)"},
+   "right_step": {"text": "The arctan form, no radical; at x = 2 it gives 3π/4 + 6.", "expr": "3*atan(2*x - 3) + 6*x/(1 + (2*x - 3)**2)"},
    "relation": "distinct",
    "possible_reason": {"misconception_id": "BC-MIS-03010", "text": "selects among them by resemblance"},
    "sources": ["BC-ERR-03017", "BC-MIS-03010"]
@@ -277,8 +277,8 @@ BC-QA-03007 is `calculator_status` either, a single MCQ or a step inside a conte
   {"block": "err-BC-ERR-03017", "mode": "step_reveal", "reason": "rule 1", "sources": []}
  ],
  "refresher": ["ki-1", "err-BC-ERR-03006", "err-BC-ERR-03018", "err-BC-ERR-03017", "ex-1"],
- "read_minutes": {"full": 3.7, "brief": 2.8},
- "word_count": {"full": 551, "brief": 407},
+ "read_minutes": {"full": 3.91, "brief": 2.8},
+ "word_count": {"full": 586, "brief": 407},
  "research_lines": [
   {"file": "research/units/unit-03-differentiation-composite-implicit-inverse.md", "line": "the derivative of the inverse tangent of u is u prime divided by one plus u squared"}
  ],

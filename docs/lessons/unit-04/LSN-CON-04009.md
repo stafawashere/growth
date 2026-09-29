@@ -62,8 +62,8 @@ BC-QA-04006 has `calculator_status` either, so Section I Part A, 2.14 minutes (r
 ## Checks
 
 - chk-1, completion of ex-1, both bands: the differentiated equation and y = 12 are given. Key -3/2.
-- chk-2, isomorph, both bands: ladder, size 4, rate 5, ratio 2, leg short, inch, minute; a 10 foot ladder, foot 6 feet out at 5 feet per minute. Key -15/4.
-- chk-3, MCQ, low band: ladder, size 3, rate 6, ratio 1, leg long, foot, second; a 5 foot ladder, foot 4 feet out at 6 feet per second. Key -8. Distractors: 0 (BC-ERR-04020), -24/5 (BC-ERR-04022, y replaced by the ladder length), -4/3 (BC-ERR-99013).
+- chk-2, isomorph, both bands: ladder, size 6, rate 5, ratio 2, leg short, foot, minute; a 10 foot ladder, foot 6 feet out at 5 feet per minute. Key -15/4.
+- chk-3, MCQ, low band: ladder, size 4, rate 6, ratio 1, leg long, foot, second; a 5 foot ladder, foot 4 feet out at 6 feet per second. Key -8. Distractors: 0 (BC-ERR-04020), -24/5 (BC-ERR-04022, y replaced by the ladder length), -4/3 (BC-ERR-99013).
 
 ## Delivery
 

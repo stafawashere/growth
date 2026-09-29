@@ -66,8 +66,8 @@ BC-QA-04006 has `calculator_status` either, so Section I Part A, 2.14 minutes (r
 ## Checks
 
 - chk-1, completion of ex-1, both bands: the differentiated equation is given; key 3/(2 pi).
-- chk-2, isomorph, both bands: ladder, size 5, rate 3, ratio 2, leg long, foot, second; ladder 10 feet, foot 8 feet from the wall. Key -4.
-- chk-3, MCQ, low band: cone, size 3, rate 9, ratio 2, leg long, centimeter, second. Key 9/pi. Distractors: 3/pi (BC-ERR-04016, cylinder), 27/pi (BC-ERR-04018, radius frozen at 1), pi (BC-ERR-99013, dV/dh).
+- chk-2, isomorph, both bands: ladder, size 8, rate 3, ratio 2, leg long, foot, second; ladder 10 feet, foot 8 feet from the wall. Key -4.
+- chk-3, MCQ, low band: cone, size 3, rate 9, ratio 2, leg long, centimeter, second; height ratio + 1 = 3 times the top radius, depth 3 centimeters. Key 9/pi. Distractors: 3/pi (BC-ERR-04016, cylinder), 27/pi (BC-ERR-04018, radius frozen at 1), pi (BC-ERR-99013, dV/dh).
 
 ## Delivery
 

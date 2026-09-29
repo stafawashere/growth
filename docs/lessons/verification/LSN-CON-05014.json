@@ -33,5 +33,79 @@
    }
   ],
   "answers_file": "/tmp/claude-0/-home-user-growth/ac029253-8ff0-5a4b-8b5f-cdcaf5e8ff8d/scratchpad/verify/answers_08.json"
+ },
+ "audit": {
+  "date": "2026-09-29",
+  "auditor": "claude-opus-5-5",
+  "blocks": [
+   {
+    "id": "orientation",
+    "verdict": "ok",
+    "evidence": "Paraphrase of BC-CON-05014, BC-SKL-05054 and 05056 and the 5.11 Interpretation paragraph; 41 words."
+   },
+   {
+    "id": "ki-1",
+    "verdict": "ok",
+    "evidence": "Paraphrase of FUN-4.C.1 and 5.11 Completeness of an interpretation (sg-23:2); quote verbatim from ced:109; wording contrast from BC-QA-05011 typical_wording."
+   },
+   {
+    "id": "st-1",
+    "verdict": "wrong",
+    "evidence": "evidence_tag 'verified' but the bundle's BC-QA-05011 record has evidence_tag 'inferred'; the design also says 'Not tagged inferred'."
+   },
+   {
+    "id": "ex-1",
+    "verdict": "ok",
+    "evidence": "SymPy: factor(diff(x*(18-2*x)*(48-2*x))) = 12(x-4)(x-18), sole interior critical point 4; V(4)=1600; V(0)=V(9)=0."
+   },
+   {
+    "id": "err-BC-ERR-05026",
+    "verdict": "ok",
+    "evidence": "Bundle text verbatim; right step values V(0)=0, V(4)=1600, V(9)=0 by SymPy; BC-MIS-05016 paraphrase."
+   },
+   {
+    "id": "err-BC-ERR-05055",
+    "verdict": "ok",
+    "evidence": "Bundle text verbatim; BC-MIS-07023 paraphrase."
+   },
+   {
+    "id": "err-BC-ERR-05024",
+    "verdict": "ok",
+    "evidence": "Bundle text verbatim; BC-MIS-05015 verbatim."
+   },
+   {
+    "id": "err-BC-ERR-05056",
+    "verdict": "ok",
+    "evidence": "Bundle text verbatim; BC-MIS-07023 verbatim."
+   },
+   {
+    "id": "chk-1",
+    "verdict": "ok",
+    "evidence": "Same draw as ex-1; V(4)=1600."
+   },
+   {
+    "id": "chk-2",
+    "verdict": "ok",
+    "evidence": "SymPy: diff(x*(30-2*x)**2) = (30-2x)(30-6x), interior critical point 5; V(5)=2000; V(0)=V(15)=0."
+   },
+   {
+    "id": "chk-3",
+    "verdict": "ok",
+    "evidence": "SymPy: V prime = 12(x-3)(x-10) > 0 on [0,2]; V(2)=440; distractor A V(3)=486; B bare 440; D input 2 cm."
+   }
+  ],
+  "advice": [
+   "All text delivery for orientation and ki-1 fits; no figure needed for a statement about units.",
+   "st-1 rival (substituting a number before differentiating) is the archetype's only wrong_approach but it belongs to setup, not to interpretation; the lesson's own errors (units, value versus input) carry the real contrast here.",
+   "ex-1 gives the critical point in the stem, so the first written line practised is the objective, not the interpretation sentence; the recognition and scoring habit (quantity, units, input) is well taught through the four error blocks.",
+   "No prerequisite bridge; the bundle offers none for this concept, which is consistent."
+  ],
+  "counts": {
+   "ok": 10,
+   "unsourced": 0,
+   "wrong": 1,
+   "over_cap": 0,
+   "lint": 0
+  }
  }
 }

@@ -63,7 +63,7 @@ BC-QA-04006 has `calculator_status` either, so Section I Part A, 2.14 minutes (r
 
 - chk-1, completion of ex-1, both bands. Key -3.
 - chk-2, isomorph, both bands: sphere, size 5, rate 3, ratio 1, leg short, meter, second; radius 5 meters growing at 3 meters per second. Key 300 pi (cubic meters per second).
-- chk-3, MCQ, low band, statement key: ladder, size 9, rate 3, ratio 2, leg long, foot, minute; a 10 foot ladder, foot 8 feet out at 3 feet per minute; dy/dt = -4. Distractors: "increases at 4 feet per minute" (BC-ERR-04005), "-4 feet" (BC-ERR-04001), the unsolved equation (BC-ERR-04021).
+- chk-3, MCQ, low band, statement key: ladder, size 8, rate 3, ratio 2, leg long, foot, minute; a 10 foot ladder, foot 8 feet out at 3 feet per minute; dy/dt = -4. Distractors: "increases at 4 feet per minute" (BC-ERR-04005), "-4 feet" (BC-ERR-04001), the unsolved equation (BC-ERR-04021).
 
 ## Delivery
 

@@ -11,7 +11,7 @@ Concept BC-CON-06012 (skills BC-SKL-06034, 06035, 06036, 06037, 06039), topic 6.
 
 ## Prediction
 
-Short answer on ex-1's numbers, tagged [inferred] (the record carries no pretest). Stem: predict the amount at t = 3 from 40 liters at t = 1 and the inflow rate 3t^2 + 2t + 2. Key 78, ex-1's answer. The resolution says the change is the integral, 38, and the amount is 40 plus 38, with no verdict word. Source: BC-CON-06012 and the topic section 6.7 the key idea cites.
+Short answer on ex-1's numbers, tagged [inferred] (the record carries no pretest). Stem: predict the amount at t = 3 from 40 liters at t = 1 and 38 liters flowing in by t = 3, the change ex-1 computes, given so the prediction is answerable before the theorem. Key 78, ex-1's answer. The resolution says the amount is the known value plus the change, 40 + 38, with no verdict word. Source: BC-CON-06012 and the topic section 6.7 the key idea cites.
 
 ## Orientation
 
@@ -90,8 +90,8 @@ BC-QA-06005 is `either`; the lesson takes Section I Part A, 2.14 minutes (resear
 
 ## Band plan
 
-- Low (full): prediction, orientation, both bridges, ki-1 to ki-3, st-1 with its contrast, st-2, st-3, ex-1 with its scoring lines, chk-1, the four error blocks, chk-2, chk-3. 709 words, 4.9 minutes (cap 900 and 6).
-- Mid (brief): prediction, orientation, both bridges, ki-1, st-1 with its contrast, ex-1 with its scoring lines, chk-1, err-BC-ERR-06015, err-BC-ERR-99012, chk-2. 450 words, 3.0 minutes (cap 450 and 3).
+- Low (full): prediction, orientation, both bridges, ki-1 to ki-3, st-1 with its contrast, st-2, st-3, ex-1 with its scoring lines, chk-1, the four error blocks, chk-2, chk-3. 708 words, 4.9 minutes (cap 900 and 6).
+- Mid (brief): prediction, orientation, both bridges, ki-1, st-1 with its contrast, ex-1 with its scoring lines, chk-1, err-BC-ERR-06015, err-BC-ERR-99012, chk-2. 449 words, 3.0 minutes (cap 450 and 3).
 - Refresher: ki-1, the four error blocks, ex-1.
 
 ## Sources
@@ -122,7 +122,7 @@ BC-QA-06005 is `either`; the lesson takes Section I Part A, 2.14 minutes (resear
  "prediction": {
   "id": "pr-1",
   "stem": {
-   "text": "Predict the amount at t = 3: 40 liters at t = 1, inflow 3t^2 + 2t + 2 per hour.",
+   "text": "40 liters at t = 1; 38 liters flow in by t = 3. Amount at t = 3?",
    "command_verb": "predict"
   },
   "format": "short_answer",
@@ -130,7 +130,7 @@ BC-QA-06005 is `either`; the lesson takes Section I Part A, 2.14 minutes (resear
    "form": "numeric",
    "expr": "78"
   },
-  "resolution": "The change is the integral, 38; the amount is 40 plus 38.",
+  "resolution": "Known value plus change: 40 + 38.",
   "sources": ["BC-CON-06012", "research/units/unit-06-integration-accumulation.md#6.7 The Fundamental Theorem of Calculus and Definite Integrals"]
  },
  "orientation": {
@@ -142,7 +142,7 @@ BC-QA-06005 is `either`; the lesson takes Section I Part A, 2.14 minutes (resear
    "id": "ki-1",
    "ek_id": "BC-EK-FUN-6B3",
    "depth": "core",
-   "text": "The integral from a to b is F(b) - F(a). So A(b) = A(a) + the integral of the rate.",
+   "text": "If f is continuous and F is an antiderivative, the integral from a to b is F(b) - F(a), so A(b) = A(a) + the integral.",
    "notation": "F(b) - F(a)",
    "quote": null,
    "sources": ["BC-EK-FUN-6B3", "ced:124", "research/units/unit-06-integration-accumulation.md#6.7 The Fundamental Theorem of Calculus and Definite Integrals"]
@@ -638,8 +638,8 @@ BC-QA-06005 is `either`; the lesson takes Section I Part A, 2.14 minutes (resear
   "brief": 3.0
  },
  "word_count": {
-  "full": 709,
-  "brief": 450
+  "full": 708,
+  "brief": 449
  },
  "research_lines": [
   {

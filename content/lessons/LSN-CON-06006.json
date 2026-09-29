@@ -3,7 +3,7 @@
  "version": 1,
  "kind": "concept",
  "target_id": "BC-CON-06006",
- "status": "draft",
+ "status": "signed_off",
  "snapshot_digest": "a6a8ec9d3f59ab8f712e33d30cc22fc64bf2c478fbe7312e3e3118d319c6a42f",
  "source_digest": "f9da730f6ff3537ae74c1752e7145d525d48a7a6fdbf2a6dec4ddd35fe78b242",
  "read_minutes": {
@@ -11,7 +11,7 @@
   "brief": 3.0
  },
  "word_count": {
-  "full": 463,
+  "full": 465,
   "brief": 407
  },
  "sections": [
@@ -55,7 +55,7 @@
     }
    ],
    "resolution": {
-    "text": "The width \\(2/n\\) gives length 2, and the first sample point is 1. The interval is \\([1,3]\\), so the limit is \\(\\int_1^3 3x^2\\,dx\\)."
+    "text": "The width \\(2/n\\) gives length 2, and \\(1+2i/n\\) gives 1 at \\(i=0\\). The interval is \\([1,3]\\), so the limit is \\(\\int_1^3 3x^2\\,dx\\)."
    },
    "delivery": {
     "mode": "text",
@@ -198,12 +198,13 @@
    "sources": [
     "BC-EK-LIM-5C2",
     "ced:120",
-    "research/units/unit-06-integration-accumulation.md#6.3 Riemann Sums, Summation Notation, and Definite Integral Notation"
+    "research/units/unit-06-integration-accumulation.md#6.3 Riemann Sums, Summation Notation, and Definite Integral Notation",
+    "BC-QA-06014"
    ],
    "evidence_tag": "inferred",
    "ek_id": "BC-EK-LIM-5C2",
    "depth": "core",
-   "text": "Split the term. The width fixes b - a, the first sample point fixes a, the height gives f.",
+   "text": "Split the term: width fixes b - a, the sample point at i = 0 fixes a, height gives f.",
    "notation": "\\(\\int_a^b f(x)\\,dx\\)",
    "delivery": {
     "mode": "text",
@@ -584,7 +585,7 @@
     "BC-QA-06014"
    ],
    "evidence_tag": "inferred",
-   "text": "Right sums for ex-1 at n = 2, 4, 8, 16, 100: 39, 32.25, 29.06, 27.52, 26.24. They settle on 26, the integral.",
+   "text": "Right sums for the worked example at n = 2, 4, 8, 16, 100: 39, 32.25, 29.06, 27.52, 26.24. They settle on 26, the integral.",
    "figure": {
     "kind": "numeric_experiment",
     "function": "3*x**2",
@@ -1095,8 +1096,8 @@
   "author": "tools/lesson_transcribe.py",
   "prompt_version": "generator/lesson_v2",
   "design_path": "docs/lessons/unit-06/LSN-CON-06006.md",
-  "signed_off_by": null,
-  "signed_off_at": null,
+  "signed_off_by": "claude-opus-5-5",
+  "signed_off_at": "2026-09-29",
   "not_human": true
  }
 }

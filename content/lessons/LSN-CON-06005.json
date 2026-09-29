@@ -3,7 +3,7 @@
  "version": 1,
  "kind": "concept",
  "target_id": "BC-CON-06005",
- "status": "draft",
+ "status": "signed_off",
  "snapshot_digest": "a6a8ec9d3f59ab8f712e33d30cc22fc64bf2c478fbe7312e3e3118d319c6a42f",
  "source_digest": "9e7993e124acdc04b1673568eb0cb11581484c7dede35495361b29519f5409ce",
  "read_minutes": {
@@ -11,8 +11,8 @@
   "brief": 3.0
  },
  "word_count": {
-  "full": 376,
-  "brief": 376
+  "full": 378,
+  "brief": 378
  },
  "sections": [
   {
@@ -130,12 +130,12 @@
    "separating_feature": "A term with no width factor is not a product, so not a Riemann sum.",
    "contrast": {
     "this": {
-     "text": "Write the right Riemann sum for ∫_1^5 2t^3 dt in sigma notation with n pieces.",
+     "text": "Write lim as n → ∞ of Σ (1 + 4i/n)^2 (4/n) as a definite integral.",
      "archetype_id": "BC-QA-06014"
     },
     "not_this": {
-     "text": "Write lim as n → ∞ of Σ (1 + 4i/n)^2 (4/n) as a definite integral.",
-     "why_not": "The limit turns the sum into an integral."
+     "text": "Evaluate Σ_{i=1}^{4} (1 + i)^2, the right sum for ∫_1^5 x^2 dx with n = 4.",
+     "why_not": "No limit: add four terms to get a number."
     },
     "feature": "lim as n → ∞ in front."
    }
@@ -547,8 +547,8 @@
   "author": "tools/lesson_transcribe.py",
   "prompt_version": "generator/lesson_v2",
   "design_path": "docs/lessons/unit-06/LSN-CON-06005.md",
-  "signed_off_by": null,
-  "signed_off_at": null,
+  "signed_off_by": "claude-opus-5-5",
+  "signed_off_at": "2026-09-29",
   "not_human": true
  }
 }

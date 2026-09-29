@@ -178,7 +178,7 @@ The drawn block ki-1 (figure) is already present, so no figure is added and no `
    "id": "st-1",
    "archetype_id": "BC-QA-06012",
    "cue": "Variable upper limit; h prime asked.",
-   "method": "H' equals the integrand at the upper limit.",
+   "method": "h' equals the integrand at the upper limit.",
    "rival": "No chain factor.",
    "separating_feature": "An upper limit that is a function of x.",
    "sources": [
@@ -202,7 +202,7 @@ The drawn block ki-1 (figure) is already present, so no figure is added and no `
    "id": "st-2",
    "archetype_id": "BC-QA-06003",
    "cue": "g from a graph of f; g prime at an input, with a reason.",
-   "method": "G as signed areas; for g prime, g' = f read at the input.",
+   "method": "g as signed areas; for g prime, g' = f read at the input.",
    "rival": "Features read off the plotted f.",
    "separating_feature": "g prime is a height of f; g is an area under it.",
    "sources": [

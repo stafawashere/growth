@@ -42,74 +42,92 @@
   "auditor": "claude-opus-5-5",
   "blocks": [
    {
+    "id": "prediction",
+    "verdict": "ok",
+    "evidence": "SymPy left sum 2*3 + 2*5 + 1*8 + 3*12 = 60 on ex-1's increasing data; the piecewise linear interpolant integrates to 149/2 > 60; for increasing r the left sum underestimates (research 6.2 Error direction, LIM-5.A.4 on ced:119), so A is the only true option; resolution true, no id."
+   },
+   {
     "id": "orientation",
     "verdict": "ok",
-    "evidence": "Paraphrase of BC-CON-06004 description_plain plus justification variants in research 6.2 Assessment behaviour; 30 words."
+    "evidence": "Paraphrase of BC-CON-06004 description_plain; 12 words."
    },
    {
     "id": "ki-1",
     "verdict": "ok",
-    "evidence": "Matches research 6.2 Error direction paragraph (left, right by monotonicity; trapezoid over, midpoint under when concave up) and LIM-5.A.4 on ced:119."
+    "evidence": "Research 6.2 Error direction paragraph and LIM-5.A.4 on ced:119; the dropped reverse cases leave every remaining statement true."
    },
    {
     "id": "st-1",
     "verdict": "ok",
-    "evidence": "Cue from BC-QA-06001 givens and asked_to_produce; rival is BC-ERR-06007 in the bundle; method from BC-SKL-06010 and BC-SKL-06011."
+    "evidence": "Method from BC-SKL-06010 and BC-SKL-06011 with the 'Name the sum type' imperative, not a label; rival without 'Rival:' is BC-ERR-06007."
+   },
+   {
+    "id": "st-1.contrast",
+    "verdict": "ok",
+    "evidence": "fixed 2026-09-29: not_this is now a BC-QA-06002 near miss ('g is concave up. Is a trapezoidal sum for \u222b_0^6 g(t) dt over or under?'), why_not 'Concavity decides a trapezoid.' (BC-CON-06004 description_formal: for a concave up integrand a trapezoidal sum overestimates), feature 'A left sum: monotonicity decides.'; BC-QA-06002 is in st-1's sources and st-1's rival (a trapezoid judged by increasing) is the mistake it invites. SymPy on g = (t - 7)^2, decreasing and concave up on [0, 6]: trapezoid 118 over the integral 114."
    },
    {
     "id": "ex-1",
     "verdict": "ok",
-    "evidence": "SymPy 2*3 + 2*5 + 1*8 + 3*12 = 60; r increasing so left sum under is correct; draw constraints hold (60, 89, 28, 56 distinct)."
+    "evidence": "Only cue and why text shortened; SymPy 60 unchanged; underestimate for increasing r correct."
    },
    {
     "id": "what_a_reader_scores:ex-1",
     "verdict": "ok",
-    "evidence": "Lines for BC-PT-99018 and BC-PT-99019 equal the bundle earns, does_not_earn and notation fields verbatim."
+    "evidence": "Lines for BC-PT-99018 and BC-PT-99019 equal the bundle earns, does_not_earn and notation fields verbatim.",
+    "note": "unchanged since 2026-09-29 apart from the renumbered section pointer"
    },
    {
     "id": "err-BC-ERR-06005",
     "verdict": "ok",
-    "evidence": "Record text equals bundle; wrong and right step differ only in the cited reason, as the error describes."
+    "evidence": "fix_prompt false with relation equivalent (wrong and right step both Less(60, integral), differing only in the reason)."
    },
    {
     "id": "err-BC-ERR-06006",
     "verdict": "ok",
-    "evidence": "Record text equals bundle; overestimate for a left sum of an increasing r is the interchanged direction."
+    "evidence": "fix_prompt true with relation distinct; Greater versus Less."
    },
    {
     "id": "err-BC-ERR-06007",
     "verdict": "ok",
-    "evidence": "Record text equals bundle; SymPy trapezoid (2*8 + 2*13 + 1*20 + 3*29)/2 = 149/2; no concavity given so no direction follows is correct."
+    "evidence": "Rational 149/2 rewritten as 74.5: SymPy nsimplify(74.5) == 149/2, value unchanged; wrong (a Greater claim) and right (74.5) still differ; fix_prompt true with relation distinct."
    },
    {
-    "id": "bridge-BC-PRQ-06008",
+    "id": "BC-PRQ-06008",
     "verdict": "ok",
-    "evidence": "Paraphrase of BC-PRQ-06008 description_plain and failure_signature."
+    "evidence": "Paraphrase of BC-PRQ-06008 description_plain; true."
    },
    {
     "id": "chk-1",
     "verdict": "ok",
-    "evidence": "Same draw as ex-1; key underestimate with monotonicity reason correct."
+    "evidence": "Same draw as ex-1; key underestimate with monotonicity reason correct.",
+    "note": "unchanged since 2026-09-29 apart from the renumbered section pointer"
    },
    {
     "id": "chk-2",
     "verdict": "ok",
-    "evidence": "SymPy 1*14 + 3*9 + 2*6 + 2*2 = 57; right sum of a decreasing R underestimates; data decreasing; constraints hold."
+    "evidence": "SymPy 1*14 + 3*9 + 2*6 + 2*2 = 57; right sum of a decreasing R underestimates; data decreasing; constraints hold.",
+    "note": "unchanged since 2026-09-29"
    },
    {
     "id": "chk-3",
     "verdict": "ok",
-    "evidence": "SymPy (2*5 + 4*9 + 6*21)/2 = 86; data slopes 0.5, 0.75, 1.5 consistent with increasing concave up; key A correct; B maps to BC-ERR-06007, C and D to BC-ERR-06005."
+    "evidence": "SymPy (2*5 + 4*9 + 6*21)/2 = 86; data slopes 0.5, 0.75, 1.5 consistent with increasing concave up; key A correct; B maps to BC-ERR-06007, C and D to BC-ERR-06005.",
+    "note": "unchanged since 2026-09-29"
    }
   ],
   "advice": [
-   "Orientation is delivered as a figure; the text is a statement of what a response does, so text would serve it as well.",
-   "No worked example or check uses a midpoint sum or a concave down case, although ki-1 states both; the lesson teaches the trapezoid case only through chk-3.",
-   "what_a_reader_scores lists only the sum and value points; the justification point that carries the lesson's habit is taught only through error scoring_consequence text.",
-   "Option D in chk-3 ('since a sum only approximates') is labelled BC-ERR-06005 but gives a wrong direction; its derivation reads closer to BC-MIS-06003."
+   "orientation: after shortening, 'then the direction' has no referent; 'then whether the sum is over or under' restores it.",
+   "err-BC-ERR-06007: the fix prompt grades 74.5, which the wrong step already states, so it does not test the correction (no direction without concavity).",
+   "st-1.contrast: a sourced near miss would use BC-QA-06002 (trapezoid, concavity decides) against the left sum's monotonicity case.",
+   "what_a_reader_scores lines carry sg-25:13 and sg-23:2 as verbatim record text.",
+   "Carried from the earlier audit: Orientation is delivered as a figure; the text is a statement of what a response does, so text would serve it as well.",
+   "Carried from the earlier audit: No worked example or check uses a midpoint sum or a concave down case, although ki-1 states both; the lesson teaches the trapezoid case only through chk-3.",
+   "Carried from the earlier audit: what_a_reader_scores lists only the sum and value points; the justification point that carries the lesson's habit is taught only through error scoring_consequence text.",
+   "Carried from the earlier audit: Option D in chk-3 ('since a sum only approximates') is labelled BC-ERR-06005 but gives a wrong direction; its derivation reads closer to BC-MIS-06003."
   ],
   "counts": {
-   "ok": 12,
+   "ok": 14,
    "unsourced": 0,
    "wrong": 0,
    "over_cap": 0,

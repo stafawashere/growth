@@ -3,7 +3,7 @@
  "version": 1,
  "kind": "concept",
  "target_id": "BC-CON-06015",
- "status": "draft",
+ "status": "signed_off",
  "snapshot_digest": "a6a8ec9d3f59ab8f712e33d30cc22fc64bf2c478fbe7312e3e3118d319c6a42f",
  "source_digest": "a4295a1ecfc7c8d36b1f2822d771dfd90a3dd498937d5b7c99c486a541eca943",
  "read_minutes": {
@@ -11,8 +11,8 @@
   "brief": 3.0
  },
  "word_count": {
-  "full": 571,
-  "brief": 413
+  "full": 574,
+  "brief": 416
  },
  "sections": [
   {
@@ -175,7 +175,8 @@
    ],
    "sources": [
     "BC-QA-06008",
-    "BC-ERR-06020"
+    "BC-ERR-06020",
+    "research/units/unit-06-integration-accumulation.md#6.11 Integrating Using Integration by Parts"
    ],
    "evidence_tag": "verified",
    "archetype_id": "BC-QA-06008",
@@ -190,7 +191,7 @@
     },
     "not_this": {
      "text": "Find the integral of x cos x dx.",
-     "why_not": "No inner derivative; it calls for integration by parts."
+     "why_not": "No composite with its inner derivative; it calls for integration by parts."
     },
     "feature": "A multiple of the inner derivative."
    }
@@ -901,8 +902,8 @@
   "author": "tools/lesson_transcribe.py",
   "prompt_version": "generator/lesson_v2",
   "design_path": "docs/lessons/unit-06/LSN-CON-06015.md",
-  "signed_off_by": null,
-  "signed_off_at": null,
+  "signed_off_by": "claude-opus-5-5",
+  "signed_off_at": "2026-09-29",
   "not_human": true
  }
 }

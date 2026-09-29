@@ -48,120 +48,133 @@
   "auditor": "claude-opus-5-5",
   "blocks": [
    {
+    "id": "prediction",
+    "verdict": "ok",
+    "evidence": "SymPy left sum 2*6 + 1*10 + 3*13 + 2*9 = 79, ex-1's answer; option A (one common width) gives 2*38 = 76 (BC-ERR-06001), C is false for any partition of four pieces; resolution is LIM-5.A.2 on ced:119 and BC-QA-06001 expected_solution_path[2]."
+   },
+   {
     "id": "orientation",
     "verdict": "ok",
-    "evidence": "Paraphrases BC-CON-06003 description_plain; products before the sum matches the BC-QA-06001 scoring_pattern (sg-23:3).",
-    "reaudited": "2026-09-29"
+    "evidence": "Paraphrase of BC-CON-06003 description_plain; 12 words."
    },
    {
     "id": "ki-1",
     "verdict": "ok",
-    "evidence": "LIM-5.A.2 on ced:119 (four methods, nonuniform partitions); SymPy 2x - x^2/4 gives 1.75, 3, 3.75, 4 at 1 to 4 as the trapezoid panel draws.",
-    "reaudited": "2026-09-29"
+    "evidence": "LIM-5.A.2 on ced:119 (sample height times width, trapezoid averages end values); notation dropped, text true."
    },
    {
     "id": "ki-2",
     "verdict": "ok",
-    "evidence": "Now core and rewritten; LIM-5.A.1 on ced:119 (graphical, numerical, analytical representations); table products 12, 10, 39, 18 sum to 79 (SymPy).",
-    "reaudited": "2026-09-29"
+    "evidence": "LIM-5.A.1 on ced:119 (graphical, numerical, analytical representations)."
    },
    {
     "id": "ki-3",
     "verdict": "ok",
-    "evidence": "Quote matches LIM-5.A.3 on ced:119; products before value backed by scoring_pattern 'A bare numerical answer with no supporting products earns neither point (sg-23:3)'."
+    "evidence": "The (sg-23:3) citation left the served text and stays in sources; quote still a verbatim substring of cache/text/ced/page-119.txt."
    },
    {
     "id": "st-1",
     "verdict": "ok",
-    "evidence": "Cue from BC-QA-06001 typical_wording and common_givens; method is expected_solution_path[0]; rival is wrong_approaches[0] (BC-ERR-06001).",
-    "reaudited": "2026-09-29"
+    "evidence": "Method paraphrases BC-QA-06001 expected_solution_path[0], no label; rival is wrong_approaches[0] (BC-ERR-06001)."
+   },
+   {
+    "id": "st-1.contrast",
+    "verdict": "ok",
+    "evidence": "fixed 2026-09-29: not_this is now a BC-QA-06017 near miss ('Right sum, three equal widths, for \u222b_0^6 t^2 dt.'), whose common width is correct and whose wrong_approaches entry is the table-reading habit of unequal widths; why_not 'One common width fits a formula.', feature 'Unequal table gaps.'; BC-QA-06017 is in st-1's sources. SymPy: right sum 2(4 + 16 + 36) = 112, integral 72. Recognition prose updated."
    },
    {
     "id": "ex-1",
     "verdict": "ok",
-    "evidence": "SymPy 2*6 + 1*10 + 3*13 + 2*9 = 79; draw satisfies constraints (total_time 8, chosen 79, other 68, values 38, third 76 distinct)."
+    "evidence": "Only cue and why text shortened; SymPy value 79 unchanged."
    },
    {
     "id": "ex-2",
     "verdict": "ok",
-    "evidence": "SymPy (4*14 + 2*20 + 6*18)/2 = 102; gaps [4,2,6] in domain, total 12 divisible by 6; options 102, 176, 104, 204 distinct."
+    "evidence": "fixed 2026-09-29: step 1 split into three valued steps 4*(5 + 9)/2, 2*(9 + 11)/2, 6*(11 + 7)/2 (SymPy 28, 20, 54), then 28 + 20 + 54 (new, BC-PT-99018) and 102 (equivalent, BC-PT-99019); fade_from 2 to 4, so the shown steps are the three products and the withheld steps hold the sum and the value, neither on screen. Problem text and answer 102 unchanged."
    },
    {
     "id": "what_a_reader_scores:ex-1",
     "verdict": "ok",
-    "evidence": "Lines for BC-PT-99018 and BC-PT-99019 equal the bundle earns, does_not_earn and notation fields verbatim."
+    "evidence": "Lines for BC-PT-99018 and BC-PT-99019 equal the bundle earns, does_not_earn and notation fields verbatim.",
+    "note": "unchanged since 2026-09-29 apart from the renumbered section pointer"
    },
    {
     "id": "what_a_reader_scores:ex-2",
     "verdict": "ok",
-    "evidence": "Lines for BC-PT-99018 and BC-PT-99019 equal the bundle earns, does_not_earn and notation fields verbatim."
+    "evidence": "Lines for BC-PT-99018 and BC-PT-99019 equal the bundle earns, does_not_earn and notation fields verbatim.",
+    "note": "unchanged since 2026-09-29 apart from the renumbered section pointer"
    },
    {
     "id": "err-BC-ERR-06001",
     "verdict": "ok",
-    "evidence": "Record text equals bundle; SymPy 2*(6+10+13+9) = 76 vs 79."
+    "evidence": "fix_prompt true with relation distinct; 76 versus 79."
    },
    {
     "id": "err-BC-ERR-06002",
     "verdict": "ok",
-    "evidence": "Record text equals bundle; SymPy right sum 2*10 + 1*13 + 3*9 + 2*4 = 68."
+    "evidence": "fix_prompt true with relation distinct; 68 versus 79."
    },
    {
     "id": "err-BC-ERR-06003",
     "verdict": "ok",
-    "evidence": "Record text equals bundle; reason is a substring of BC-MIS-06001; 6+10+13+9 = 38."
+    "evidence": "fix_prompt true with relation distinct; 38 versus 79."
    },
    {
     "id": "err-BC-ERR-06004",
     "verdict": "ok",
-    "evidence": "Record text equals bundle; reason from BC-MIS-06004; SymPy wrong 131 vs right 73.5."
+    "evidence": "fix_prompt true with relation distinct; 131 versus 147/2."
    },
    {
-    "id": "bridge-BC-PRQ-06005",
+    "id": "BC-PRQ-06005",
     "verdict": "ok",
-    "evidence": "Paraphrase of failure_signature (values pulled from the wrong input)."
+    "evidence": "fixed 2026-09-29: bridge text 'Right row.' replaced by 'Value at the stated input.', a paraphrase of BC-PRQ-06005 description_plain (evaluation at a stated input) that cannot be read as the right-endpoint row."
    },
    {
-    "id": "bridge-BC-PRQ-06007",
+    "id": "BC-PRQ-06007",
     "verdict": "ok",
-    "evidence": "Paraphrase of BC-PRQ-06007 description and failure_signature (trapezoid treated as rectangle)."
+    "evidence": "Paraphrase of BC-PRQ-06007 description_plain (trapezoid averages parallel sides); true."
    },
    {
-    "id": "bridge-BC-PRQ-06012",
+    "id": "BC-PRQ-06012",
     "verdict": "ok",
-    "evidence": "Paraphrase of BC-PRQ-06012 description_plain and failure_signature."
+    "evidence": "Paraphrase of BC-PRQ-06012 description_plain; true."
    },
    {
     "id": "chk-1",
     "verdict": "ok",
-    "evidence": "Same draw as ex-1; SymPy value 79."
+    "evidence": "Same draw as ex-1; SymPy value 79.",
+    "note": "unchanged since 2026-09-29 apart from the renumbered section pointer"
    },
    {
     "id": "chk-2",
     "verdict": "ok",
-    "evidence": "SymPy 1*7 + 3*5 + 2*11 + 2*8 = 60; constraints hold (left 55, values 31, third 62 distinct)."
+    "evidence": "SymPy 1*7 + 3*5 + 2*11 + 2*8 = 60; constraints hold (left 55, values 31, third 62 distinct).",
+    "note": "unchanged since 2026-09-29"
    },
    {
     "id": "chk-3",
     "verdict": "ok",
-    "evidence": "SymPy key 69; A 36 (values only), B 62 (right sum), D 72 (8*36/4, the third_option) all match derivations."
+    "evidence": "SymPy key 69; A 36 (values only), B 62 (right sum), D 72 (8*36/4, the third_option) all match derivations.",
+    "note": "unchanged since 2026-09-29"
    }
   ],
   "advice": [
-   "BC-ERR-99028 and BC-ERR-99034 are in the bundle but get no error block; 99028 (wrong sum type) overlaps BC-ERR-06002, so the omission is defensible but unstated in the record.",
-   "st-1 covers only BC-QA-06001; BC-QA-06017 (formula or graph, uniform width) has no cue, example or check although its wrong_approaches (unequal widths on a uniform partition) is the mirror rival of st-1.",
-   "ex-2 is no_calculator (BC-QA-06002) while the time block budgets only II-A for the lesson.",
-   "step_reveal for the sums and table data inline suit the process; a small table for the t and R(t) values would read better than inline lists."
+   "ex-2: split step 1 into the three trapezoid products 28, 20 and 54, fade after them, and let the student add; the checker's rule (a valued step before fade_from) is then met without showing the answer.",
+   "st-1.contrast: a sourced near miss is BC-QA-06017 (formula, equal widths), whose wrong_approaches is the mirror of st-1's rival.",
+   "what_a_reader_scores lines for BC-PT-99018 and BC-PT-99019 carry sg-25:13 and sg-23:2 as verbatim record text.",
+   "scoring_consequence of err-BC-ERR-06002 carries the citation (sg-23:3, sg-25:13); it is verbatim record text the reader strips, so no served citation, but the record text could drop it.",
+   "scoring_consequence of err-BC-ERR-06004 carries the citation (sg-25:13); it is verbatim record text the reader strips, so no served citation, but the record text could drop it.",
+   "Carried from the earlier audit: BC-ERR-99028 and BC-ERR-99034 are in the bundle but get no error block; 99028 (wrong sum type) overlaps BC-ERR-06002, so the omission is defensible but unstated in the record.",
+   "Carried from the earlier audit: st-1 covers only BC-QA-06001; BC-QA-06017 (formula or graph, uniform width) has no cue, example or check although its wrong_approaches (unequal widths on a uniform partition) is the mirror rival of st-1.",
+   "Carried from the earlier audit: ex-2 is no_calculator (BC-QA-06002) while the time block budgets only II-A for the lesson.",
+   "Carried from the earlier audit: step_reveal for the sums and table data inline suit the process; a small table for the t and R(t) values would read better than inline lists."
   ],
   "counts": {
-   "ok": 19,
+   "ok": 21,
    "unsourced": 0,
    "wrong": 0,
    "over_cap": 0,
    "lint": 0
-  },
-  "fix_notes": [
-   "2026-09-29: band_coverage fix. ki-2 (BC-EK-LIM-5A1) is now core and rewritten to teach BC-SKL-06009: 'Each height is read from a table or graph, or evaluated from a formula.' Its ced:119 quote and notation line were dropped to hold the brief cap, so ki-2 is now inferred in the record. Orientation, ki-1 ('the two end values' to 'the end values') and st-1 cue and rival shortened. Refresher adds ki-2. word_count 807/449. No example, check stem or key changed."
-  ]
+  }
  }
 }

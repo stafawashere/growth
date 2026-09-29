@@ -577,7 +577,7 @@ BC-QA-06011 is `no_calculator`, typically one part of a multipart free response 
   {
    "block": "orientation",
    "mode": "text",
-   "reason": "rule 6: a statement of what a response shows; the figure-bearing representation is served once, on ki-1",
+   "reason": "rule 6: a statement of what a response shows; the figure-bearing representation is served once, on the first key idea",
    "sources": [
     "BC-SKL-06066"
    ]

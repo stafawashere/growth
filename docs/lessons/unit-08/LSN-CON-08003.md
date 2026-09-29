@@ -29,13 +29,13 @@ BC-QA-08003 (research/question-analysis/question-archetypes.md#BC-QA-08003 Recti
 
 What says "not this concept": "total distance traveled" (BC-CON-08004, the absolute value of v); "the position at time b" with a stated position (BC-CON-08005, the initial value added).
 
-The near miss for the contrast pair is a position at a later time with a stated start, the BC-QA-06005 wording of BC-CON-08005 (a stem from outside BC-QA-08003): it gives the same velocity and interval and asks for x at the end, so the initial value is added. The pair separates on whether a starting position is stated and a position is asked.
+The near miss for the contrast pair is a BC-QA-04003 stem, whose `typical_wording` is "is the speed of the particle increasing, decreasing, or neither at the stated time, and give a reason" (research/question-analysis/question-archetypes.md#BC-QA-04003 Straight-line motion with velocity, acceleration, and speed): the same velocity, asked about one instant, so v and its derivative are read there and nothing is integrated. The pair separates on an interval against a single time.
 
 ## Method choice
 
 One strategy block, both bands. st-1, BC-QA-08003. Method, `expected_solution_path[0]`: classify the requested quantity. Rival, `wrong_approaches`: integrating velocity and taking the absolute value of the result. Separating feature: displacement keeps the sign; only total distance removes it. The archetype carries `asked_to_produce` and `common_givens`, so the block is not tagged inferred.
 
-Contrast pair on st-1. This: a BC-QA-08003 stem asking for displacement over an interval. Not this: a BC-QA-06005 stem with a stated x(0) asking for x at the later time. The feature is the stated start and the request for a position.
+Contrast pair on st-1. This: a BC-QA-08003 stem asking for displacement over an interval. Not this: a BC-QA-04003 stem asking whether the speed is increasing at one time. The feature is an interval against a single instant.
 
 ## Solution path
 
@@ -80,8 +80,8 @@ Figure presence: ki-1 is already a drawn block, so no `no_figure_reason` is carr
 
 The served order of 2026-09-29: prediction, orientation, bridges, key ideas, strategy with the contrast pair, example 1 and its scoring lines, check 1, error blocks, example 2 faded when present, check 2, representations, check 3.
 
-- Low (full): orientation, ki-1, st-1 with the contrast pair, ex-1, err-BC-ERR-99010, chk-1, chk-2, the bridge, with the prediction first. 431 words, 2.9 minutes (cap 900 and 6).
-- Mid (brief): the same blocks as the low band. 431 words, 2.9 minutes (cap 450 and 3).
+- Low (full): orientation, ki-1, st-1 with the contrast pair, ex-1, err-BC-ERR-99010, chk-1, chk-2, the bridge, with the prediction first. 429 words, 2.9 minutes (cap 900 and 6).
+- Mid (brief): the same blocks as the low band. 429 words, 2.9 minutes (cap 450 and 3).
 - Refresher: ki-1, err-BC-ERR-99010, ex-1.
 
 ## Sources
@@ -97,7 +97,7 @@ The served order of 2026-09-29: prediction, orientation, bridges, key ideas, str
 - [inferred] ki-1 as a static figure. Settled by the modality A/B.
 - [inferred] Two checks only. Settled by a second and third active error on BC-SKL-08006.
 - [inferred] pr-1 and the st-1 contrast pair are authored for the redesign. Settled by the pretest and contrast measurements in the build plan.
-- research/question-analysis/question-archetypes.md#BC-QA-06005 Net change from a rate with an initial condition
+- research/question-analysis/question-archetypes.md#BC-QA-04003 Straight-line motion with velocity, acceleration, and speed
 
 ## Machine record
 
@@ -114,7 +114,7 @@ The served order of 2026-09-29: prediction, orientation, bridges, key ideas, str
   {"id": "ki-1", "ek_id": "BC-EK-CHA-4C1", "depth": "core", "text": "For a particle moving on a line, the integral of velocity over [a, b] is the displacement. Where v is negative the particle moves in the negative direction and that stretch subtracts. A negative displacement is net movement in the negative direction.", "notation": "displacement; net change in position", "quote": null, "sources": ["BC-EK-CHA-4C1", "ced:153", "research/units/unit-08-applications-integration.md#8.2 Connecting Position, Velocity, and Acceleration of Functions Using Integrals"]}
  ],
  "strategy": [
-  {"id": "st-1", "archetype_id": "BC-QA-08003", "cue": "A velocity function or graph and a time interval, with displacement or change in position asked.", "method": "Classify the requested quantity. Displacement: the integral of v over the interval.", "rival": "Integrating velocity and taking the absolute value of the result.", "separating_feature": "Displacement keeps the sign; only total distance removes it.", "sources": ["BC-QA-08003"], "evidence_tag": "verified", "contrast": {"this": {"text": "A particle moves on a line with velocity v(t) = t^2 - 5t + 4. Find its displacement over [0, 6].", "archetype_id": "BC-QA-08003"}, "not_this": {"text": "A particle has velocity v(t) = t^2 - 5t + 4 and x(0) = 3. Find x(6).", "why_not": "It asks for a position, so the start 3 is added to the integral."}, "feature": "Displacement is the change in position; a stated start with a position asked adds the start."}}
+  {"id": "st-1", "archetype_id": "BC-QA-08003", "cue": "A velocity function or graph and a time interval, with displacement or change in position asked.", "method": "Classify the requested quantity. Displacement: the integral of v over the interval.", "rival": "Integrating velocity and taking the absolute value of the result.", "separating_feature": "Displacement keeps the sign; only total distance removes it.", "sources": ["BC-QA-08003", "BC-QA-04003"], "evidence_tag": "verified", "contrast": {"this": {"text": "A particle moves on a line with velocity v(t) = t^2 - 5t + 4. Find its displacement over [0, 6].", "archetype_id": "BC-QA-08003"}, "not_this": {"text": "A particle has velocity v(t) = t^2 - 5t + 4. Is its speed increasing at t = 6?", "why_not": "One instant: compare the signs of v(6) and a(6); nothing is integrated."}, "feature": "An interval with displacement asked integrates v; one instant reads v and a there."}}
  ],
  "worked_examples": [
   {"id": "ex-1", "archetype_id": "BC-QA-08003", "bands": ["low", "mid"], "parameter_draw": {"size": 1, "direction": "left_first", "first_zero": 1, "gap": 2, "overrun": "1/2", "context": "particle", "units": "meters", "framing": "bare"}, "problem": {"text": "A particle moves on the x-axis with velocity v(t) = -t^2 + 4t - 3 meters per second. Find its displacement over [0, 7/2].", "command_verb": "find"}, "calculator_status": "no_calculator", "steps": [{"cue": "The stem says displacement.", "why": "Net change in position: velocity itself, sign kept."}, {"cue": "Displacement over [0, 7/2] names the integral of v.", "why": "One integral; the left stretches subtract.", "expr": "Integral(-t**2 + 4*t - 3, (t, 0, 7/2))", "relation": "new"}, {"cue": "No calculator: antiderivative at 7/2 minus at 0.", "why": "Meters; negative means net movement left.", "expr": "-7/24", "relation": "equivalent"}], "answer": {"form": "symbolic", "expr": "-7/24"}}
@@ -140,7 +140,7 @@ The served order of 2026-09-29: prediction, orientation, bridges, key ideas, str
  ],
  "refresher": ["ki-1", "err-BC-ERR-99010", "ex-1"],
  "read_minutes": {"full": 2.9, "brief": 2.9},
- "word_count": {"full": 431, "brief": 431},
+ "word_count": {"full": 429, "brief": 429},
  "research_lines": [
   {"file": "research/units/unit-08-applications-integration.md", "line": "the definite integral of velocity over [a,b] is the displacement"}
  ],
@@ -149,6 +149,6 @@ The served order of 2026-09-29: prediction, orientation, bridges, key ideas, str
   {"claim": "ki-1 is served as a static figure of the signed velocity areas.", "settles": "The modality A/B in the build plan: skip rate and time to first credited success by mode."},
   {"claim": "The lesson carries two checks: the bundle holds one error, fewer than the three distractors a 4-option MCQ needs.", "settles": "Further active BC-ERR records on BC-SKL-08006."}
  ],
- "sources": ["BC-CON-08003", "BC-SKL-08006", "BC-EK-CHA-4C1", "ced:153", "BC-QA-08003", "BC-ERR-99010", "BC-MIS-08004", "BC-PRQ-06005", "research/units/unit-08-applications-integration.md#8.2 Connecting Position, Velocity, and Acceleration of Functions Using Integrals", "research/question-analysis/question-archetypes.md#BC-QA-08003 Rectilinear motion analysed with definite integrals", "research/exam/exam-structure.md#Section and part layout"]
+ "sources": ["BC-CON-08003", "BC-SKL-08006", "BC-EK-CHA-4C1", "ced:153", "BC-QA-08003", "BC-QA-04003", "BC-ERR-99010", "BC-MIS-08004", "BC-PRQ-06005", "research/units/unit-08-applications-integration.md#8.2 Connecting Position, Velocity, and Acceleration of Functions Using Integrals", "research/question-analysis/question-archetypes.md#BC-QA-08003 Rectilinear motion analysed with definite integrals", "research/question-analysis/question-archetypes.md#BC-QA-04003 Straight-line motion with velocity, acceleration, and speed", "research/exam/exam-structure.md#Section and part layout"]
 }
 ```

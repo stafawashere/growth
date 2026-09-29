@@ -36,78 +36,100 @@
   "auditor": "claude-opus-5-5",
   "blocks": [
    {
+    "id": "prediction",
+    "verdict": "ok",
+    "evidence": "SymPy: B, (W(3) - W(1))/2, is 5.24945, the only true option; A (integral over [1, 3] over 2) is 10.49890 and C (mean of W'(1) and W'(3)) is 5.59781, both false. Resolution matches the 8.1 Average rate of change and Units paragraphs. No id, no verdict word."
+   },
+   {
     "id": "orientation",
     "verdict": "ok",
-    "evidence": "Paraphrases BC-CON-08002 description_formal (units of f versus units per unit input); 27 words."
+    "evidence": "Shortened; still the BC-CON-08002 wording-picks-the-formula idea from the 8.1 Assessment behaviour paragraph (which of two averages a sentence describes)."
    },
    {
     "id": "ki-1",
     "verdict": "ok",
-    "evidence": "CHA-4.B.1 on ced:152; antiderivative agreement stated in research 8.1 Average rate of change paragraph (sg-25:4)."
+    "evidence": "Shortened; both formulas are the 8.1 Average value and Average rate of change paragraphs verbatim in substance; the dropped antiderivative sentence leaves no false claim."
    },
    {
     "id": "st-1",
     "verdict": "ok",
-    "evidence": "BC-QA-08002 expected path and wrong_approach 'reporting the average rate of change itself as the time'."
+    "evidence": "Label strip and shortening; method is BC-QA-08002 expected_solution_path[0], rival is its wrong_approaches[0] with it = the average rate; separating feature is asked_to_produce (a solved input value)."
+   },
+   {
+    "id": "st-1.contrast",
+    "verdict": "ok",
+    "evidence": "this matches BC-QA-08002 typical_wording (the time at which the instantaneous rate equals its average rate of change); not_this is BC-QA-08001 typical_wording, not BC-QA-08002's own stem; why_not and feature true (8.1 Average value and Average rate of change paragraphs)."
    },
    {
     "id": "st-2",
     "verdict": "ok",
-    "evidence": "BC-QA-99007 expected path and wrong_approach 'integrating the function and dividing by the interval length'."
+    "evidence": "Label strip only; BC-QA-99007 expected_solution_path[0] and wrong_approaches[0]; cue drops modelling."
    },
    {
     "id": "st-3",
     "verdict": "ok",
-    "evidence": "BC-QA-08001 path and wrong_approach 'averaging the two endpoint values'."
+    "evidence": "Label strip only; BC-QA-08001 expected_solution_path[0] and wrong_approaches[0]."
    },
    {
     "id": "ex-1",
     "verdict": "ok",
-    "evidence": "SymPy: average rate 5.24945; W'(t) = (3/2)e^(t/2) + 1; solve gives 1 + 2log(e - 1) = 2log(e^(3/2) - e^(1/2)) = 2.08265, in (1, 3); reported 2.083."
+    "evidence": "SymPy: average rate 5.24945; W'(t) = (3/2)e^(t/2) + 1; solve gives 1 + 2log(e - 1) = 2log(e^(3/2) - e^(1/2)) = 2.08265, in (1, 3); reported 2.083.",
+    "note": "unchanged since 2026-09-29"
    },
    {
-    "id": "rs-0",
+    "id": "what_a_reader_scores:ex-1",
     "verdict": "ok",
-    "evidence": "Line reproduces BC-PT-99021 earns, does_not_earn and precision_rules from the bundle."
+    "evidence": "Line reproduces BC-PT-99021 earns, does_not_earn and precision_rules from the bundle.",
+    "note": "unchanged since 2026-09-29"
    },
    {
     "id": "err-BC-ERR-99015",
     "verdict": "ok",
-    "evidence": "Record text matches; SymPy: average value of W on [1, 3] is 10.499, distinct from the rate 5.249."
+    "evidence": "Only change fix_prompt true; relation distinct; SymPy: average value 10.49890 against average rate 5.24945."
    },
    {
     "id": "err-BC-ERR-99005",
     "verdict": "ok",
-    "evidence": "Record text matches; same value 5.249, units differ, relation equivalent is right."
+    "evidence": "fix_prompt false and relation equivalent, so the rule holds; both steps 5.249, the difference is the units line only."
    },
    {
     "id": "representations",
     "verdict": "ok",
-    "evidence": "null; nothing to audit."
+    "evidence": "null; nothing to audit.",
+    "note": "unchanged since 2026-09-29"
    },
    {
     "id": "BC-PRQ-06005",
     "verdict": "ok",
-    "evidence": "In bundle prerequisites; paraphrases its failure_signature (f and f' interchanged)."
+    "evidence": "Shortened; paraphrases failure_signature (f and f' interchanged)."
    },
    {
     "id": "chk-1",
     "verdict": "ok",
-    "evidence": "SymPy: solution 2log(e^(3/2) - e^(1/2)) = 2.08265, key 2.083."
+    "evidence": "SymPy: solution 2log(e^(3/2) - e^(1/2)) = 2.08265, key 2.083.",
+    "note": "unchanged since 2026-09-29"
    },
    {
     "id": "chk-2",
     "verdict": "ok",
-    "evidence": "SymPy: average rate 11.3415; W'(t) = 2e^(t/2) + 2; solve gives 2 + 2log(e - 1) = 2log(e^2 - e) = 3.08265, key 3.083."
+    "evidence": "SymPy: average rate 11.3415; W'(t) = 2e^(t/2) + 2; solve gives 2 + 2log(e - 1) = 2log(e^2 - e) = 3.08265, key 3.083.",
+    "note": "unchanged since 2026-09-29"
+   },
+   {
+    "id": "no_figure_reason",
+    "verdict": "ok",
+    "evidence": "True on the brief's test: bundle skills carry BC-REP-04 and 01 (BC-SKL-08004) and BC-REP-04 and 05 (BC-SKL-08005), none figure-bearing; ki-1 is two formulas, no process."
    }
   ],
   "advice": [
-   "The lesson's own idea is a comparison of two averages, which suits a contrast block; ki-1 is served as text, so the contrast rests on the orientation and st-2 versus st-3 alone.",
-   "No check asks the learner to choose between the two formulas from the wording; both checks are the BC-QA-08002 equation, so recognition of the stem is taught but not checked.",
-   "Units (gallons per hour) appear only in a why line and the BC-ERR-99005 block; no check asks for units."
+   "The prediction stem gives no units, but the resolution says gallons per hour; either put gallons and hours in the stem or drop the units from the resolution.",
+   "ki-1 names F without saying F is the function whose rate is averaged, beside an f for the average value; the sentence linking them (F an antiderivative of f, sg-25:4) was cut, so the key idea's sg-25:4 source no longer backs any served claim.",
+   "no_figure_reason says the topic gives contextual, symbolic and calculator conversions; topic 8.1 also names graph to signed area to average (BC-REP-02 to BC-REP-08), which belongs to BC-SKL-08002 and not this concept. Saying for this concept would make the sentence exact.",
+   "The BC-PT-99021 reader line carries page citations (sg-26:2, sg-25:11, sg-25:4, sg-22:13, sg-21:17); verbatim record text the reader strips, not lint.",
+   "Earlier advice still stands: no check asks the learner to pick the formula from the wording, and no check asks for units; the new prediction and contrast pair now teach the wording choice once."
   ],
   "counts": {
-   "ok": 13,
+   "ok": 16,
    "unsourced": 0,
    "wrong": 0,
    "over_cap": 0,

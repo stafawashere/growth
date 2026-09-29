@@ -143,7 +143,7 @@ BC-QA-08006 is `calculator`, the closing part of the calculator free response qu
    "research/units/unit-08-applications-integration.md#8.3 Using Accumulation Functions and Definite Integrals in Applied Contexts"
   ]
  },
- "no_figure_reason": "The skill's representations are verbal and symbolic, none figure-bearing, and the key idea is a sequence of written comparisons, not a process; a candidates table is written, not drawn.",
+ "no_figure_reason": "The skill carries BC-REP-05 (contextual model) and BC-REP-09 (calculator result), neither figure-bearing, and the key idea is a sequence of written comparisons, not a process; a candidates table is written, not drawn.",
  "orientation": {
   "text": "A response sets the net rate to zero, then compares the amount at every candidate, endpoints included.",
   "sources": [

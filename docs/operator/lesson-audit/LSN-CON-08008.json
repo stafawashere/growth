@@ -42,79 +42,103 @@
   "auditor": "claude-opus-5-5",
   "blocks": [
    {
+    "id": "prediction",
+    "verdict": "ok",
+    "evidence": "SymPy: zeros of 3+6cos(pi t/6) on [0,12] = {4, 8}; A(0)=100, A(4)=121.924, A(8)=114.076, A(12)=136; key C (endpoints and zeros) is the only complete candidate set, A and B omit endpoints; resolution values match; no verdict word or id."
+   },
+   {
     "id": "orientation",
     "verdict": "ok",
-    "evidence": "Paraphrases BC-QA-08006 expected_solution_path and the 8.3 Maximum paragraph; 39 words."
+    "evidence": "Shortened paraphrase of BC-QA-08006 expected_solution_path[1] and [2] (zero, then candidates with both endpoints)."
    },
    {
     "id": "ki-1",
     "verdict": "ok",
-    "evidence": "ced:154 CHA-4.D.1 and the 8.3 Maximum of an accumulated amount paragraph including sg-25:5; 57 words."
+    "evidence": "Shortened, sg-25:5 cite removed from served text; derivative of the amount is the net rate and the endpoint or plus-to-minus location is CHA-4.D.1 and the 8.3 Maximum paragraph; SymPy sign of net rate + to - at 4, - to + at 8."
    },
    {
     "id": "st-1",
     "verdict": "ok",
-    "evidence": "Cue 19 words from BC-QA-08006 typical_wording and common_givens; method is expected_solution_path[0] and [1]; rival from wrong_approaches (local argument, missing endpoint).",
-    "reaudited": "2026-09-29"
+    "evidence": "Labels and the BC-ERR-99004 id removed; method expected_solution_path[0] and [1], rival wrong_approaches; A is ex-1's own amount letter."
+   },
+   {
+    "id": "st-1.contrast",
+    "verdict": "ok",
+    "evidence": "this paraphrases BC-QA-08006 typical_wording[0] (time of the maximum, justify); not_this is the one-time sign question that BC-FRQ-2013-Q1-C and BC-FRQ-2015-Q1-B carry ('Is the amount ... increasing or decreasing at time'), not the archetype's own stem; why_not and feature true."
    },
    {
     "id": "ex-1",
     "verdict": "ok",
-    "evidence": "SymPy: A(t) = 100 + 3t + 36 sin(pi t/6)/pi, A' equals the rate, zeros {4, 8}; A(0)=100, A(4)=121.924, A(8)=114.076, A(12)=136; draw net 3, times 2, period 12 gives 3+6cos(pi t/6)."
+    "evidence": "Only cue and why text shortened; SymPy closed form 100 + 3t + 36 sin(pi t/6)/pi matches, max 136 at t = 12; expr unchanged."
    },
    {
     "id": "reader-ex-1",
     "verdict": "ok",
-    "evidence": "BC-PT-99011 line verbatim from the bundle record."
+    "evidence": "BC-PT-99011 line verbatim from the bundle record.",
+    "note": "unchanged since 2026-09-29"
    },
    {
     "id": "err-BC-ERR-08016",
     "verdict": "ok",
-    "evidence": "Verbatim BC-ERR-08016; reason fragment from BC-MIS-99010; SymPy A(4) < A(12)."
+    "evidence": "relation distinct, fix_prompt true; 4 against 12, SymPy A(4) = 121.924 < A(12) = 136."
    },
    {
     "id": "err-BC-ERR-99004",
     "verdict": "ok",
-    "evidence": "Verbatim BC-ERR-99004; justification-requirements.md Global versus local arguments."
+    "evidence": "relation distinct, fix_prompt true; 4 against 12."
    },
    {
     "id": "representations",
     "verdict": "ok",
-    "evidence": "null; BC-REP-05 and 09 only."
+    "evidence": "null; BC-REP-05 and 09 only.",
+    "note": "unchanged since 2026-09-29"
    },
    {
-    "id": "bridge-BC-PRQ-08001",
+    "id": "BC-PRQ-08001",
     "verdict": "ok",
-    "evidence": "Paraphrases BC-PRQ-08001 description_plain on finding every solution with a solver."
+    "evidence": "Shortened; still BC-PRQ-08001 every solution found."
    },
    {
     "id": "time",
     "verdict": "ok",
-    "evidence": "exam-structure.md: Section II Part A 30 minutes for 2 questions."
+    "evidence": "exam-structure.md: Section II Part A 30 minutes for 2 questions.",
+    "note": "unchanged since 2026-09-29"
    },
    {
     "id": "chk-1",
     "verdict": "ok",
-    "evidence": "Max(100, 121.924, 114.076, 136) = 136 at t = 12."
+    "evidence": "Max(100, 121.924, 114.076, 136) = 136 at t = 12.",
+    "note": "unchanged since 2026-09-29"
    },
    {
     "id": "chk-2",
     "verdict": "ok",
-    "evidence": "SymPy: zeros {8, 16}; A(0)=60, A(8)=89.232, A(16)=78.768, A(24)=108; key 24."
+    "evidence": "SymPy: zeros {8, 16}; A(0)=60, A(8)=89.232, A(16)=78.768, A(24)=108; key 24.",
+    "note": "unchanged since 2026-09-29"
    },
    {
     "id": "chk-3",
     "verdict": "ok",
-    "evidence": "SymPy: zeros {8/3, 16/3}; A(8/3)=44.872, A(16/3)=43.128, A(8)=48; A' at t near 8 is 3 > 0 so D is a true but local statement; key C."
+    "evidence": "SymPy: zeros {8/3, 16/3}; A(8/3)=44.872, A(16/3)=43.128, A(8)=48; A' at t near 8 is 3 > 0 so D is a true but local statement; key C.",
+    "note": "unchanged since 2026-09-29"
+   },
+   {
+    "id": "no_figure_reason",
+    "verdict": "ok",
+    "evidence": "fixed 2026-09-29: now reads 'The skill carries BC-REP-05 (contextual model) and BC-REP-09 (calculator result), neither figure-bearing, and the key idea is a sequence of written comparisons, not a process; a candidates table is written, not drawn.' (33 words, cap 40); data/skills.json gives BC-SKL-08014 representations ['BC-REP-05', 'BC-REP-09']."
    }
   ],
   "advice": [
    "ki-1 describes the maximum as where the net rate changes from positive to negative or an endpoint, yet the example's answer is the endpoint; a line saying the right endpoint wins when the net rate is positive at the end would sharpen recognition.",
    "The candidates comparison is tabular data (four times, four amounts); a small table would serve it better than the step why text.",
-   "BC-PT-99013 (derivative set to zero) is tagged on chk-2 but not in ex-1's reader lines; the first written line the orientation names is not shown as a scored line."
+   "BC-PT-99013 (derivative set to zero) is tagged on chk-2 but not in ex-1's reader lines; the first written line the orientation names is not shown as a scored line.",
+   "st-1.contrast not_this is sourced in the design only to its own not-this list; BC-FRQ-2013-Q1-C and BC-FRQ-2015-Q1-B in data/frq_records.json carry the stem and could be cited.",
+   "st-1.contrast this reads 'A closed-interval amount is defined by an integral'; 'An amount on a closed interval' is plainer.",
+   "err-BC-ERR-08016 scoring_consequence carries (sg-25:5), verbatim record text the reader strips; no served-text defect.",
+   "reader-ex-1 line carries sg-25:5, sg-25:19, sg-23:15, sg-25:9 and sg-22:5, verbatim record text the reader strips; no served-text defect."
   ],
   "counts": {
-   "ok": 13,
+   "ok": 16,
    "unsourced": 0,
    "wrong": 0,
    "over_cap": 0,

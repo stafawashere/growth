@@ -3,7 +3,7 @@
  "version": 1,
  "kind": "concept",
  "target_id": "BC-CON-06012",
- "status": "draft",
+ "status": "signed_off",
  "snapshot_digest": "a6a8ec9d3f59ab8f712e33d30cc22fc64bf2c478fbe7312e3e3118d319c6a42f",
  "source_digest": "b56bf2c1d6bc3d5e7f3db5aa000b0f256996797251800bb24a7df04b4355501b",
  "read_minutes": {
@@ -11,8 +11,8 @@
   "brief": 3.0
  },
  "word_count": {
-  "full": 646,
-  "brief": 411
+  "full": 645,
+  "brief": 410
  },
  "sections": [
   {
@@ -35,7 +35,7 @@
    ],
    "evidence_tag": "inferred",
    "stem": {
-    "text": "Predict the amount at t = 3: 40 liters at t = 1, inflow 3t^2 + 2t + 2 per hour.",
+    "text": "40 liters at t = 1; 38 liters flow in by t = 3. Amount at t = 3?",
     "command_verb": "predict"
    },
    "format": "short_answer",
@@ -44,7 +44,7 @@
     "mathjson": 78
    },
    "resolution": {
-    "text": "The change is the integral, 38; the amount is 40 plus 38."
+    "text": "Known value plus change: 40 + 38."
    },
    "delivery": {
     "mode": "text",
@@ -101,7 +101,7 @@
    "evidence_tag": "inferred",
    "ek_id": "BC-EK-FUN-6B3",
    "depth": "core",
-   "text": "The integral from a to b is F(b) - F(a). So A(b) = A(a) + the integral of the rate.",
+   "text": "If f is continuous and F is an antiderivative, the integral from a to b is F(b) - F(a), so A(b) = A(a) + the integral.",
    "notation": "F(b) - F(a)",
    "delivery": {
     "mode": "table",
@@ -945,8 +945,8 @@
   "author": "tools/lesson_transcribe.py",
   "prompt_version": "generator/lesson_v2",
   "design_path": "docs/lessons/unit-06/LSN-CON-06012.md",
-  "signed_off_by": null,
-  "signed_off_at": null,
+  "signed_off_by": "claude-opus-5-5",
+  "signed_off_at": "2026-09-29",
   "not_human": true
  }
 }

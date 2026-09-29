@@ -48,104 +48,128 @@
   "auditor": "claude-opus-5-5",
   "blocks": [
    {
+    "id": "prediction",
+    "verdict": "ok",
+    "evidence": "Stem on ex-1's own f = 1 + 2x - x^2, g = 1 at x = 1; SymPy pi*(2^2 - 1^2) = 3*pi, squared difference pi, outer disc 4*pi; only B true; resolution paraphrases BC-CON-08019 and the 8.11 Order of operations paragraph (research line 'The two radii are squared before they are subtracted.'); no verdict word, praise or id."
+   },
+   {
     "id": "orientation",
     "verdict": "ok",
-    "evidence": "Paraphrases BC-CON-08019 and 8.11 Washer method paragraph; 26 words."
+    "evidence": "Paraphrases BC-CON-08019 and 8.11 Washer method paragraph; 26 words.",
+    "note": "unchanged since 2026-09-29"
    },
    {
     "id": "ki-1",
     "verdict": "ok",
-    "evidence": "8.11 Washer method and Order of operations paragraphs; 33 words."
+    "evidence": "8.11 Washer method and Order of operations paragraphs; 33 words.",
+    "note": "unchanged since 2026-09-29"
    },
    {
     "id": "st-1",
     "verdict": "ok",
-    "evidence": "From BC-QA-08013 and 8.11 MCQ distractor (squared difference); within caps."
+    "evidence": "method 'Which curve is farther from the axis.' is BC-QA-08013 expected_solution_path[0] with the label removed; rival is wrong_approaches[0]."
+   },
+   {
+    "id": "st-1.contrast",
+    "verdict": "ok",
+    "evidence": "this (between f = 2 + x - x^2 and g = 2, about the x-axis) matches BC-QA-08013 typical_wording; SymPy f >= 2 exactly on [0,1], so the region misses the axis; not_this (2 + x - x^2 and the x-axis) is a disc stem (roots -1 and 2), not 08013's own; why_not and feature true."
    },
    {
     "id": "ex-1",
     "verdict": "ok",
-    "evidence": "SymPy: f >= 1 on [0,2]; Integral(pi*((1+2x-x^2)^2-1),(x,0,2)) = 56*pi/15."
+    "evidence": "Step 1 cue shortened to 'R sits above y = 1.'; BC-PT-99001 tag dropped from step 4, disclosed in the inferred array; SymPy 56*pi/15 unchanged."
    },
    {
     "id": "ex-2",
     "verdict": "ok",
-    "evidence": "SymPy: f-g = -2(x-1)(x-2) >= 0 on [1,2], both positive; integral = 9*pi/5."
+    "evidence": "fade_from 3: shown steps give f outer and the ring area pi*(F^2 - G^2); SymPy F = G at x = 1, 2, so a student can finish; withheld steps 3 (integral on [1,2]) and 4 (9*pi/5, SymPy) valued."
    },
    {
     "id": "reader-ex-1",
     "verdict": "ok",
-    "evidence": "BC-PT-99058 line matches bundle fields."
+    "evidence": "BC-PT-99001 line removed with the step tag; the BC-PT-99058 line is unchanged record text."
    },
    {
     "id": "reader-ex-2",
     "verdict": "ok",
-    "evidence": "BC-PT-99001 and 99058 lines match bundle fields."
+    "evidence": "BC-PT-99001 and 99058 lines match bundle fields.",
+    "note": "unchanged since 2026-09-29"
    },
    {
     "id": "err-BC-ERR-08023",
     "verdict": "ok",
-    "evidence": "Verbatim; SymPy dy integral leaves x free, not a number."
+    "evidence": "relation distinct, fix_prompt true; SymPy dy integral leaves x free vs 56*pi/15; possible_reason dropped for the brief cap, disclosed."
    },
    {
     "id": "err-BC-ERR-08024",
     "verdict": "ok",
-    "evidence": "Verbatim record text, shown mirrored and disclosed; region y spans 1 to 2; SymPy 28*pi/15 vs 56*pi/15."
+    "evidence": "relation distinct, fix_prompt true; SymPy 28*pi/15 vs 56*pi/15; possible_reason dropped for the brief cap, disclosed."
    },
    {
     "id": "err-BC-ERR-08030",
     "verdict": "ok",
-    "evidence": "Verbatim; SymPy pi(2x-x^2)^2 gives 16*pi/15 vs 56*pi/15."
+    "evidence": "relation distinct, fix_prompt true; SymPy 16*pi/15 vs 56*pi/15; exprs unchanged."
    },
    {
     "id": "err-BC-ERR-08037",
     "verdict": "ok",
-    "evidence": "Verbatim; 56/15 vs 56*pi/15."
+    "evidence": "relation distinct, fix_prompt true; 56/15 vs 56*pi/15; exprs unchanged."
    },
    {
     "id": "representations",
     "verdict": "ok",
-    "evidence": "null; 8.11 ring diagram carried by ki-1 figure."
+    "evidence": "null; 8.11 ring diagram carried by ki-1 figure.",
+    "note": "unchanged since 2026-09-29"
    },
    {
-    "id": "bridge-BC-PRQ-06002",
+    "id": "BC-PRQ-06002",
     "verdict": "ok",
-    "evidence": "Paraphrase of BC-PRQ-06002."
+    "evidence": "Shortened; still paraphrases BC-PRQ-06002 description_plain."
    },
    {
-    "id": "bridge-BC-PRQ-08002",
+    "id": "BC-PRQ-08002",
     "verdict": "ok",
-    "evidence": "Paraphrase of BC-PRQ-08002."
+    "evidence": "Shortened; still paraphrases BC-PRQ-08002 description_plain."
    },
    {
-    "id": "bridge-BC-PRQ-08004",
+    "id": "BC-PRQ-08004",
     "verdict": "ok",
-    "evidence": "Paraphrase of BC-PRQ-08004."
+    "evidence": "Shortened; still BC-PRQ-08004 description_plain."
+   },
+   {
+    "id": "time",
+    "verdict": "ok",
+    "evidence": "I-A, 2.14 minutes: 62 minutes over 29 questions in exam-structure.md#Section and part layout; unchanged."
    },
    {
     "id": "chk-1",
     "verdict": "ok",
-    "evidence": "SymPy: 56*pi/15, expanded form x^4-4x^3+2x^2+4x equal."
+    "evidence": "SymPy: 56*pi/15, expanded form x^4-4x^3+2x^2+4x equal.",
+    "note": "unchanged since 2026-09-29"
    },
    {
     "id": "chk-2",
     "verdict": "ok",
-    "evidence": "SymPy: f-g = 2x-x^2 >= 0 on [0,2]; value 32*pi/5."
+    "evidence": "SymPy: f-g = 2x-x^2 >= 0 on [0,2]; value 32*pi/5.",
+    "note": "unchanged since 2026-09-29"
    },
    {
     "id": "chk-3",
     "verdict": "ok",
-    "evidence": "SymPy: key 136*pi/15; A (f-3)^2 gives 16*pi/15; C 136/15; D limits 3 to 4 give -22*pi/15; distinct."
+    "evidence": "SymPy: key 136*pi/15; A (f-3)^2 gives 16*pi/15; C 136/15; D limits 3 to 4 give -22*pi/15; distinct.",
+    "note": "unchanged since 2026-09-29"
    }
   ],
   "advice": [
    "chk-3 option D is negative (-22*pi/15), implausible as a volume distractor.",
    "err-BC-ERR-08024 served observed_behavior does not match the mirrored step shown.",
    "Bridge BC-PRQ-06002 is not exercised by the polynomial draws.",
-   "No answer point tagged since BC-QA-08013 lists none; disclosed. Stem, first line (which curve is outer) and rival (squared difference) are taught clearly."
+   "No answer point tagged since BC-QA-08013 lists none; disclosed. Stem, first line (which curve is outer) and rival (squared difference) are taught clearly.",
+   "Reader lines for BC-PT-99058 reader lines carry page citations (sg-...) inside verbatim BC-PT record text, which the reader strips at serve time; not lint.",
+   "err-BC-ERR-08023 and 08024 keep their BC-MIS ids in sources while possible_reason is null."
   ],
   "counts": {
-   "ok": 18,
+   "ok": 21,
    "unsourced": 0,
    "wrong": 0,
    "over_cap": 0,

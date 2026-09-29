@@ -28,7 +28,7 @@ Both skills map to BC-EK-LIM-5A4, so one core block, both bands.
 - BC-QA-06001 (research/question-analysis/question-archetypes.md#BC-QA-06001 Riemann sum from a table with over or under estimate reasoning): `common_givens` include a statement that the rate is differentiable, increasing, or decreasing; `asked_to_produce` includes an over or under estimate decision with a reason. Official examples include BC-FRQ-2021-Q1-C and BC-FRQ-2022-Q4-C.
 - BC-QA-06002 (research/question-analysis/question-archetypes.md#BC-QA-06002 Trapezoidal approximation of an accumulated amount from a table): `difficulty_variables` include whether a concavity based over or under estimate justification is required.
 
-The signal: "overestimate or underestimate" with "explain" or "give a reason", and a property of f stated in the stem or readable from f prime. Contrast pair on st-1: this stem is on BC-QA-06001, a decreasing function with the direction of a left sum asked; not this stem asks for the left sum's value on the same function, the near miss from the sibling concept BC-CON-06003. The separating feature is that a direction is asked, not a value.
+The signal: "overestimate or underestimate" with "explain" or "give a reason", and a property of f stated in the stem or readable from f prime. Contrast pair on st-1: this stem is on BC-QA-06001, a decreasing function with the direction of a left sum asked; not this stem asks the direction of a trapezoidal sum on a concave up function, the near miss from BC-QA-06002, where concavity decides (BC-CON-06004 `description_formal`) and st-1's rival, judging a trapezoid by increasing, is the mistake. The separating feature is the named sum: a left sum, so monotonicity decides.
 
 Not this concept: a request for the sum's value alone (BC-CON-06003), or a tangent line estimate, where the same concavity reason applies to a different approximation (Unit 4).
 
@@ -90,8 +90,8 @@ Every non-text choice is [inferred]; settled by the modality A/B.
 
 ## Band plan
 
-- Low (full), in served order: prediction, orientation, the bridge, ki-1, st-1 with its contrast pair, ex-1 with its reader lines, chk-1, three error blocks, chk-2, chk-3. 548 words, 3.7 minutes (cap 900 and 6).
-- Mid (brief), in served order: prediction, orientation, the bridge, ki-1, st-1 with its contrast pair, ex-1 with its reader lines, chk-1, err-BC-ERR-06005, err-BC-ERR-06006, chk-2. 447 words, 3.0 minutes (cap 450 and 3). The orientation, key idea, strategy fields, cues and bridge were shortened to hold this; no scoring line was dropped.
+- Low (full), in served order: prediction, orientation, the bridge, ki-1, st-1 with its contrast pair, ex-1 with its reader lines, chk-1, three error blocks, chk-2, chk-3. 549 words, 3.7 minutes (cap 900 and 6).
+- Mid (brief), in served order: prediction, orientation, the bridge, ki-1, st-1 with its contrast pair, ex-1 with its reader lines, chk-1, err-BC-ERR-06005, err-BC-ERR-06006, chk-2. 448 words, 3.0 minutes (cap 450 and 3). The orientation, key idea, strategy fields, cues and bridge were shortened to hold this; no scoring line was dropped.
 - Refresher: ki-1, the three error blocks, ex-1.
 
 ## Sources
@@ -196,10 +196,10 @@ Every non-text choice is [inferred]; settled by the modality A/B.
      "archetype_id": "BC-QA-06001"
     },
     "not_this": {
-     "text": "g is decreasing. Find a left sum for ∫_0^6 g(t) dt.",
-     "why_not": "It asks for the sum's value."
+     "text": "g is concave up. Is a trapezoidal sum for ∫_0^6 g(t) dt over or under?",
+     "why_not": "Concavity decides a trapezoid."
     },
-    "feature": "A direction asked, not a value."
+    "feature": "A left sum: monotonicity decides."
    }
   }
  ],
@@ -955,8 +955,8 @@ Every non-text choice is [inferred]; settled by the modality A/B.
   "brief": 3.0
  },
  "word_count": {
-  "full": 548,
-  "brief": 447
+  "full": 549,
+  "brief": 448
  }
 }
 ```

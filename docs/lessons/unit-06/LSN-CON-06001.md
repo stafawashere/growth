@@ -45,7 +45,7 @@ Both archetypes carry `asked_to_produce` and `common_givens`, so neither block i
 ## Solution path
 
 - ex-1, BC-QA-06004, both bands, no calculator. Draw: heights 2, 2, 0, -2, lower 0, circle below, forward; derived `linear_area` = 1. Steps follow `expected_solution_path`: partition (no value); gain on [0, 2], 3 (new); loss on [2, 4], -2 (new); semicircle, -2π (new); signed total (new, BC-PT-99069); 1 - 2π (equivalent). No published BC-QA-06004 item carries this draw.
-- ex-2, BC-QA-06015, low band, statement answer, faded (`fade_from` 4): steps 1 to 3 are shown (the rate, the units product, the cancelled hours), and the student writes the sentence from them before steps 4 and 5 (the limits name the interval, the sentence itself) reveal. The fade falls there because the units chain is the valued part and the sentence is the scored part. Draw: context water, start 2, length 4, display total, direction accumulates. Units chain gallons/hour times hour to gallons (new, equivalent); the sentence names quantity, units, interval. No point tag: BC-QA-06015 lists no `point_types`.
+- ex-2, BC-QA-06015, low band, statement answer, faded (`fade_from` 3): steps 1 and 2 are shown (the rate, the units product gallons/hour times hour), and the student cancels the hours to gallons and writes the sentence before steps 3 to 5 (the cancelled hours, the limits naming the interval, the sentence itself) reveal. The fade falls there so the withheld part holds a valued step, the units result, as well as the scored sentence. Draw: context water, start 2, length 4, display total, direction accumulates. Units chain gallons/hour times hour to gallons (new, equivalent); the sentence names quantity, units, interval. No point tag: BC-QA-06015 lists no `point_types`.
 
 A fluent solver writes the signed total and the labelled value of ex-1 and the one sentence of ex-2; the partition, formulas and units product are held (unit README section 5) [inferred].
 
@@ -94,7 +94,7 @@ Every non-text choice is [inferred]; settled by the modality A/B.
 
 ## Band plan
 
-- Low (full), in served order: prediction, orientation, both bridges, ki-1, ki-2, st-1 with its contrast pair, st-2, ex-1 with its reader line, chk-1, the four error blocks, ex-2 faded, chk-2, the model, chk-3. 795 words, 5.3 minutes (cap 900 and 6).
+- Low (full), in served order: prediction, orientation, both bridges, ki-1, ki-2, st-1 with its contrast pair, st-2, ex-1 with its reader line, chk-1, the four error blocks, ex-2 faded, chk-2, the model, chk-3. 797 words, 5.4 minutes (cap 900 and 6).
 - Mid (brief), in served order: prediction, orientation, both bridges, ki-1, ki-2, st-1 with its contrast pair, ex-1 with its reader line, chk-1, err-BC-ERR-06014, err-BC-ERR-06030, chk-2. 448 words, 3.0 minutes (cap 450 and 3). The orientation, key ideas, strategy, cues and bridges were shortened to hold this; no anchor quote or scoring tag was dropped.
 - Refresher: ki-1, ki-2, the four error blocks, ex-1.
 
@@ -344,7 +344,7 @@ Every non-text choice is [inferred]; settled by the modality A/B.
     "expr": "gallons",
     "text": "The number of gallons of water that flow into the tank from t = 2 to t = 6 hours."
    },
-   "fade_from": 4
+   "fade_from": 3
   }
  ],
  "what_a_reader_scores": [
@@ -452,10 +452,10 @@ Every non-text choice is [inferred]; settled by the modality A/B.
   }
  ],
  "representations": {
-  "text": "Run the running total of ex-1's rate from x = 0: 2, 3, 2, 1, then 1 - π at 6 and 1 - 2π at 8. It rises while f is positive and falls while f is negative.",
+  "text": "Run the running total of the first example's rate from x = 0: 2, 3, 2, 1, then 1 - π at 6 and 1 - 2π at 8. It rises while f is positive and falls while f is negative.",
   "figure": {
    "kind": "numeric_experiment",
-   "function": "F(x) = ∫_0^x f(t) dt, the running total of ex-1's rate f",
+   "function": "F(x) = ∫_0^x f(t) dt, the running total of the first example's rate f",
    "computed": "F(x), evaluated at each x",
    "x_values": [
     1,
@@ -1106,11 +1106,11 @@ Every non-text choice is [inferred]; settled by the modality A/B.
   "research/scoring/common-point-losses.md#Interpretation points"
  ],
  "read_minutes": {
-  "full": 5.3,
+  "full": 5.4,
   "brief": 3.0
  },
  "word_count": {
-  "full": 795,
+  "full": 797,
   "brief": 448
  }
 }

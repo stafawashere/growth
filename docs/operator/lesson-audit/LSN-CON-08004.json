@@ -42,83 +42,97 @@
   "auditor": "claude-opus-5-5",
   "blocks": [
    {
+    "id": "prediction",
+    "verdict": "ok",
+    "evidence": "SymPy: C, the integral of speed over [0, 5], is 49/3, the key; A (signed integral) is -5/3 and B (absolute value at the end) is 5/3, both false. Resolution: zeros of v at 1 and 4, v(2) = -4 so v < 0 on (1, 4), total 49/3. No id, no verdict word."
+   },
+   {
     "id": "orientation",
     "verdict": "ok",
-    "evidence": "Paraphrases BC-CON-08004 and research 8.2 Total distance paragraph; 27 words."
+    "evidence": "Shortened; still BC-CON-08004 and the 8.2 Total distance paragraph (integrate |v|, split at sign changes by hand)."
    },
    {
     "id": "ki-1",
     "verdict": "ok",
-    "evidence": "Research 8.2 Total distance paragraph states the agree up to sign claim; CHA-4.C.1 on ced:153."
+    "evidence": "Shortened; the 8.2 Total distance paragraph (BC-EK-CHA-4C1, ced:153); dropped agree-up-to-sign clause leaves no false claim; quote null."
    },
    {
     "id": "st-1",
     "verdict": "ok",
-    "evidence": "BC-QA-08003 path and wrong_approach 'integrating velocity and taking the absolute value of the result'."
+    "evidence": "Label strip and shortening; method is BC-QA-08003 expected_solution_path[0] then |v|, rival paraphrases wrong_approaches[0], separating feature is the difficulty_variable (v changes sign inside the interval)."
+   },
+   {
+    "id": "st-1.contrast",
+    "verdict": "ok",
+    "evidence": "fixed 2026-09-29: not_this moved from a BC-QA-08003 position stem to a BC-QA-04003 speed stem, after its typical_wording ('Velocity is v(t) = t^2 - 7t + 10. Is the speed increasing at t = 3?'), why_not 'One instant: compare the signs of v(3) and a(3).', feature 'Total distance integrates |v| over an interval; one instant compares signs.'; this unchanged. SymPy: v(3) = -2 and a(3) = -1, same sign, so speed is increasing (d|v|/dt at 3 is 1) and no integral enters, while this is the integral of |v| over [0, 6], 15. Recognition prose, method choice prose, st-1 sources, the Sources list and the machine sources now cite BC-QA-04003 and its heading in place of BC-QA-06005."
    },
    {
     "id": "ex-1",
     "verdict": "ok",
-    "evidence": "SymPy: v = 2(t - 1)(t - 4); pieces 11/3, -9, 11/3; integral of |v| on [0, 5] is 49/3."
+    "evidence": "SymPy: v = 2(t - 1)(t - 4); pieces 11/3, -9, 11/3; integral of |v| on [0, 5] is 49/3.",
+    "note": "unchanged since 2026-09-29"
    },
    {
     "id": "err-BC-ERR-08009",
     "verdict": "ok",
-    "evidence": "Record text matches; SymPy: integral of v on [0, 5] is -5/3, distinct from 49/3."
+    "evidence": "Only change fix_prompt true; relation distinct; SymPy: -5/3 against 49/3."
    },
    {
     "id": "err-BC-ERR-08010",
     "verdict": "ok",
-    "evidence": "Record text matches; |-5/3| = 5/3, distinct from 49/3."
+    "evidence": "Only change fix_prompt true; relation distinct; SymPy: 5/3 against 49/3."
    },
    {
     "id": "err-BC-ERR-99010",
     "verdict": "ok",
-    "evidence": "Record text matches; 11/3 + |-9 + 11/3| = 9, distinct from 49/3."
+    "evidence": "Only change fix_prompt true; relation distinct; SymPy: 11/3 + |-9 + 11/3| = 9 against 49/3."
    },
    {
     "id": "representations",
     "verdict": "ok",
-    "evidence": "null; nothing to audit."
+    "evidence": "null; nothing to audit.",
+    "note": "unchanged since 2026-09-29"
    },
    {
     "id": "BC-PRQ-06005",
     "verdict": "ok",
-    "evidence": "In bundle prerequisites."
+    "evidence": "Shortened; paraphrases description_plain (evaluation at a stated input)."
    },
    {
     "id": "BC-PRQ-08001",
     "verdict": "ok",
-    "evidence": "In bundle prerequisites."
+    "evidence": "Shortened; matches description_plain (every solution in the interval of interest)."
    },
    {
     "id": "BC-PRQ-08003",
     "verdict": "ok",
-    "evidence": "In bundle prerequisites."
+    "evidence": "Shortened; matches description_plain (absolute value as a piecewise expression)."
    },
    {
     "id": "chk-1",
     "verdict": "ok",
-    "evidence": "SymPy: 11/3 + 9 + 11/3 = 49/3."
+    "evidence": "SymPy: 11/3 + 9 + 11/3 = 49/3.",
+    "note": "unchanged since 2026-09-29"
    },
    {
     "id": "chk-2",
     "verdict": "ok",
-    "evidence": "SymPy: pieces -20/3, 4/3, -7/24; total 199/24."
+    "evidence": "SymPy: pieces -20/3, 4/3, -7/24; total 199/24.",
+    "note": "unchanged since 2026-09-29"
    },
    {
     "id": "chk-3",
     "verdict": "ok",
-    "evidence": "SymPy: pieces 7/3, -32/3, 45/8, total 149/8; A -65/24 signed integral; B 65/24 one absolute value; D 7/3 + |integral on [1, 13/2]| = 59/8; all match derivations."
+    "evidence": "SymPy: pieces 7/3, -32/3, 45/8, total 149/8; A -65/24 signed integral; B 65/24 one absolute value; D 7/3 + |integral on [1, 13/2]| = 59/8; all match derivations.",
+    "note": "unchanged since 2026-09-29"
    }
   ],
   "advice": [
-   "ki-1 as a static figure with the negative piece reflected suits a comparison of signed and unsigned area.",
-   "No reader-scores entry although BC-ERR-08009 and BC-ERR-99010 cite a setup point; the scoring habit (write the integral of |v| as the setup line) is not shown as a scored line.",
-   "The strategy block names only one archetype; displacement (BC-CON-08003) as the rival stem is carried by the rival sentence only."
+   "For st-1.contrast, a near miss from outside BC-QA-08003 is needed; BC-QA-04003 (motion by differentiating a position) is the catalogue's neighbouring motion archetype.",
+   "Earlier advice still stands: no reader-scores entry shows the setup point BC-ERR-08009 and BC-ERR-99010 cite."
   ],
   "counts": {
-   "ok": 14,
+   "ok": 16,
    "unsourced": 0,
    "wrong": 0,
    "over_cap": 0,

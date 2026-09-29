@@ -3,7 +3,7 @@
  "version": 1,
  "kind": "concept",
  "target_id": "BC-CON-06018",
- "status": "draft",
+ "status": "signed_off",
  "snapshot_digest": "a6a8ec9d3f59ab8f712e33d30cc22fc64bf2c478fbe7312e3e3118d319c6a42f",
  "source_digest": "563009d84d1a25d240d8c7b680dab17117815089e52ea79aa684049b206fb06a",
  "read_minutes": {
@@ -11,8 +11,8 @@
   "brief": 3.0
  },
  "word_count": {
-  "full": 521,
-  "brief": 413
+  "full": 517,
+  "brief": 409
  },
  "sections": [
   {
@@ -137,7 +137,8 @@
    ],
    "sources": [
     "BC-QA-06010",
-    "BC-ERR-06026"
+    "BC-ERR-06026",
+    "research/question-analysis/question-archetypes.md#BC-QA-06008 Antiderivative or definite integral by substitution"
    ],
    "evidence_tag": "verified",
    "archetype_id": "BC-QA-06010",
@@ -151,10 +152,10 @@
      "archetype_id": "BC-QA-06010"
     },
     "not_this": {
-     "text": "Find \\(\\int \\frac{2x^2+7x+4}{2x^2+7x+3}\\,dx\\).",
-     "why_not": "The numerator's degree equals the denominator's, so division comes first."
+     "text": "Find \\(\\int \\frac{4x+7}{2x^2+7x+3}\\,dx\\).",
+     "why_not": "The numerator is the denominator's derivative: substitute."
     },
-    "feature": "Numerator degree below the denominator's: decompose."
+    "feature": "Numerator not the denominator's derivative."
    }
   },
   {
@@ -787,7 +788,7 @@
    ],
    "evidence_tag": "inferred",
    "prerequisite_id": "BC-PRQ-06003",
-   "text": "ln carries absolute value bars."
+   "text": "ln of a linear factor carries absolute value bars."
   },
   {
    "id": "LSN-CON-06018#prq-BC-PRQ-06011",
@@ -1353,8 +1354,8 @@
   "author": "tools/lesson_transcribe.py",
   "prompt_version": "generator/lesson_v2",
   "design_path": "docs/lessons/unit-06/LSN-CON-06018.md",
-  "signed_off_by": null,
-  "signed_off_at": null,
+  "signed_off_by": "claude-opus-5-5",
+  "signed_off_at": "2026-09-29",
   "not_human": true
  }
 }

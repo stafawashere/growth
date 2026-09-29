@@ -40,7 +40,7 @@ One strategy block, both bands, since both archetypes share the family antidiffe
 
 - st-1, BC-QA-06008. Cue from `common_givens` and `asked_to_produce`. Method, `expected_solution_path[0]`: choose u as the inner expression. Rival from `wrong_approaches`: substituting for an inner expression whose derivative does not appear (BC-ERR-06020). Separating feature: a constant multiple of g'(x) multiplies f(g(x)). The first written line is u = g(x), du = g'(x) dx.
 
-Contrast pair on st-1 (new on 2026-09-29): this is a composite with its inner derivative present on BC-QA-06008; not this is a product of unlike factors, integration by parts; the feature is a multiple of the inner derivative as a factor. Strategy fields, ki-1, the orientation and the bridges are shortened to hold the brief cap. No scoring tag or anchor quote was dropped.
+Contrast pair on st-1 (new on 2026-09-29): this is a composite with its inner derivative present on BC-QA-06008; not this is a product of unlike factors, integration by parts (topic 6.11 section, cited in st-1's sources); the feature is a multiple of the inner derivative as a factor. Strategy fields, ki-1, the orientation and the bridges are shortened to hold the brief cap. No scoring tag or anchor quote was dropped.
 
 ## Solution path
 
@@ -89,8 +89,8 @@ BC-QA-06008 is `no_calculator`, typically one part of a multipart free response 
 
 ## Band plan
 
-- Low (full): prediction, orientation, both bridges, ki-1, ki-2, st-1 with its contrast, ex-1 with its reader lines, chk-1, four error blocks, chk-2, chk-3. 608 words, 4.2 minutes (cap 900 and 6).
-- Mid (brief): prediction, orientation, both bridges, ki-1, st-1 with its contrast, ex-1 with its reader lines, chk-1, err-BC-ERR-06018, err-BC-ERR-06019, chk-2. 444 words, 3.0 minutes (cap 450 and 3).
+- Low (full): prediction, orientation, both bridges, ki-1, ki-2, st-1 with its contrast, ex-1 with its reader lines, chk-1, four error blocks, chk-2, chk-3. 611 words, 4.2 minutes (cap 900 and 6).
+- Mid (brief): prediction, orientation, both bridges, ki-1, st-1 with its contrast, ex-1 with its reader lines, chk-1, err-BC-ERR-06018, err-BC-ERR-06019, chk-2. 447 words, 3.0 minutes (cap 450 and 3).
 - Refresher: ki-1, the four error blocks, ex-1.
 
 ## Sources
@@ -100,6 +100,7 @@ BC-QA-06008 is `no_calculator`, typically one part of a multipart free response 
 - BC-ERR-06018, BC-ERR-06019, BC-ERR-06020, BC-ERR-07026; BC-MIS-06016, BC-MIS-06017, BC-MIS-06018
 - BC-PRQ-06001, BC-PRQ-06003
 - research/units/unit-06-integration-accumulation.md#6.9 Integrating Using Substitution
+- research/units/unit-06-integration-accumulation.md#6.11 Integrating Using Integration by Parts
 - research/question-analysis/question-archetypes.md#BC-QA-06008 Antiderivative or definite integral by substitution
 - research/question-analysis/question-archetypes.md#BC-QA-06018 Antiderivative matched to an inverse trigonometric form
 - research/exam/exam-structure.md#Section and part layout
@@ -180,7 +181,7 @@ BC-QA-06008 is `no_calculator`, typically one part of a multipart free response 
    "method": "Choose u as the inner expression.",
    "rival": "Substituting where the inner derivative is absent.",
    "separating_feature": "A constant multiple of g'(x) as a factor.",
-   "sources": ["BC-QA-06008", "BC-ERR-06020"],
+   "sources": ["BC-QA-06008", "BC-ERR-06020", "research/units/unit-06-integration-accumulation.md#6.11 Integrating Using Integration by Parts"],
    "evidence_tag": "verified",
    "contrast": {
     "this": {
@@ -189,7 +190,7 @@ BC-QA-06008 is `no_calculator`, typically one part of a multipart free response 
     },
     "not_this": {
      "text": "Find the integral of x cos x dx.",
-     "why_not": "No inner derivative; it calls for integration by parts."
+     "why_not": "No composite with its inner derivative; it calls for integration by parts."
     },
     "feature": "A multiple of the inner derivative."
    }
@@ -610,8 +611,8 @@ BC-QA-06008 is `no_calculator`, typically one part of a multipart free response 
   "brief": 3.0
  },
  "word_count": {
-  "full": 608,
-  "brief": 444
+  "full": 611,
+  "brief": 447
  },
  "no_figure_reason": "The skills carry symbolic representations only, and no key idea describes a process. The lesson is a chain of written substitutions."
 }

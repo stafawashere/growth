@@ -27,7 +27,7 @@ All six skills map to BC-EK-FUN-5A3 (ced:122): one core block, both bands.
 
 BC-QA-06003 (research/question-analysis/question-archetypes.md#BC-QA-06003 Accumulation function analysed from the graph of the integrand): `typical_wording` "find all values of x at which the graph of g has a point of inflection and give a reason", "find the value of x at which g attains an absolute minimum on the closed interval and justify your answer"; `common_givens` a graph of f of segments and semicircles, an accumulation function g with a fixed lower limit, a closed interval; `asked_to_produce` the critical points, the inflection points with a reason tied to the graph of f, the absolute extremum with a justification. The signal: a picture labelled "graph of f" and questions about g. Shapes: MCQ (BC-MCQ-CED-007, BC-MCQ-PE2012-015) and the no-calculator FRQ (BC-FRQ-2024-Q4-B, BC-FRQ-2021-Q4-A, BC-FRQ-2019-Q3-C).
 
-Contrast pair on st-1: this stem is on BC-QA-06003, where g has a relative maximum is asked; not this stem is the same definition and graph with the value g(8) asked, the near miss from BC-CON-06007, where a signed area is summed and no feature is read. The separating feature is a feature word asked of g, not a value.
+Contrast pair on st-1: this stem is on BC-QA-06003, where g has a relative maximum is asked; not this stem asks where f itself has a relative maximum, the earlier part that BC-ERR-06008 `non_conceptual_causes` names (a previous part that did ask about features of f), where the peak is read off the drawn curve; answering g's question that way is st-1's rival. The separating feature is that the feature is asked of g.
 
 What says "not this concept": a request for a value of g (BC-CON-06007) or for g prime at a point (BC-CON-06008). What says "this one": increasing, relative maximum, concave, point of inflection, absolute minimum, each asked of g.
 
@@ -84,8 +84,8 @@ The drawn block ki-1 (interactive) is already present, so no figure is added and
 
 ## Band plan
 
-- Low (full), in served order: prediction, orientation, ki-1, st-1 with its contrast pair, ex-1 with its scoring line, chk-1, the four error blocks, chk-2, chk-3, the bridge. 628 words, 4.2 minutes (cap 900 and 6). There is no example 2, so nothing is faded, and no representations block.
-- Mid (brief): prediction, orientation, ki-1, st-1 with its contrast pair, ex-1 with its scoring line, chk-1, err-BC-ERR-06008, err-BC-ERR-06009, chk-2, the bridge. 450 words, 3.0 minutes (cap 450 and 3). The orientation, ki-1, st-1, the contrast, the prediction and the bridge were shortened, and the BC-PT-99024 tag on ex-1 step 1 was dropped, to fit.
+- Low (full), in served order: prediction, orientation, ki-1, st-1 with its contrast pair, ex-1 with its scoring line, chk-1, the four error blocks, chk-2, chk-3, the bridge. 627 words, 4.2 minutes (cap 900 and 6). There is no example 2, so nothing is faded, and no representations block.
+- Mid (brief): prediction, orientation, ki-1, st-1 with its contrast pair, ex-1 with its scoring line, chk-1, err-BC-ERR-06008, err-BC-ERR-06009, chk-2, the bridge. 447 words, 3.0 minutes (cap 450 and 3). The orientation, ki-1, st-1, the contrast, the prediction and the bridge were shortened, and the BC-PT-99024 tag on ex-1 step 1 was dropped, to fit.
 - Refresher: ki-1, the four error blocks, ex-1.
 
 ## Sources
@@ -192,10 +192,10 @@ The drawn block ki-1 (interactive) is already present, so no figure is added and
      "archetype_id": "BC-QA-06003"
     },
     "not_this": {
-     "text": "For graphed f, \\(g(x)=\\int_0^x f(t)\\,dt\\). Find \\(g(8)\\).",
-     "why_not": "It asks for a value of g, a signed area."
+     "text": "From the graph, where does f have a relative maximum?",
+     "why_not": "It asks about f itself."
     },
-    "feature": "A feature of g, not a value, is asked."
+    "feature": "A feature of g is asked."
    }
   }
  ],
@@ -453,7 +453,7 @@ The drawn block ki-1 (interactive) is already present, so no figure is added and
     "ask": "value"
    },
    "stem": {
-    "text": "As ex-1 with vertices (0, 1), (2, -2), (4, 2), (6, -1), (8, 0), semicircle above. Find each relative maximum of g.",
+    "text": "As in the example, with vertices (0, 1), (2, -2), (4, 2), (6, -1), (8, 0), semicircle above. Find each relative maximum of g.",
     "command_verb": "find"
    },
    "key": {
@@ -499,7 +499,7 @@ The drawn block ki-1 (interactive) is already present, so no figure is added and
     "ask": "value"
    },
    "stem": {
-    "text": "Same f as ex-1. Which gives every inflection point of g on (0, 12) with a reason a reader accepts?",
+    "text": "Same f as the worked example. Which gives every inflection point of g on (0, 12) with a reason a reader accepts?",
     "command_verb": "identify"
    },
    "key": {
@@ -546,7 +546,7 @@ The drawn block ki-1 (interactive) is already present, so no figure is added and
   {
    "block": "orientation",
    "mode": "text",
-   "reason": "rule 6: a statement of what a response shows; BC-REP-02 is served on ki-1",
+   "reason": "rule 6: a statement of what a response shows; BC-REP-02 is served on the key idea",
    "sources": [
     "BC-SKL-06022"
    ]
@@ -690,8 +690,8 @@ The drawn block ki-1 (interactive) is already present, so no figure is added and
   "brief": 3.0
  },
  "word_count": {
-  "full": 628,
-  "brief": 450
+  "full": 627,
+  "brief": 447
  },
  "research_lines": [
   {

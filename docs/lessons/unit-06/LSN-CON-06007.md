@@ -32,7 +32,7 @@ BC-QA-06004 (research/question-analysis/question-archetypes.md#BC-QA-06004 Defin
 
 BC-QA-06012 (research/question-analysis/question-archetypes.md#BC-QA-06012 Differentiating an accumulation function with a variable upper limit): the same definition with a request for h prime. That request says "not this concept": it belongs to BC-CON-06008.
 
-Contrast pair on st-1: this stem asks for g(6) from the graph of f, on BC-QA-06003; not this stem is the same definition and graph with g prime at 6 asked, the near miss from BC-QA-06012 and BC-CON-06008, where the answer is the height f(6) and no area is summed. The separating feature is whether g itself or its derivative is asked.
+Contrast pair on st-1: this stem asks for g(6) from the graph of f, on BC-QA-06003; not this stem is BC-QA-06012's own shape (`typical_wording`: the value of h prime at a stated input), h defined with the upper limit x^2 and h'(2) asked, the near miss from the sibling concept BC-CON-06008, where the answer is f(4) times the chain factor 4 and no area is summed. The separating feature is that g itself is asked.
 
 ## Method choice
 
@@ -92,8 +92,8 @@ Drawn blocks already present (ki-1 motion, ki-2 interactive), so no figure is ad
 
 ## Band plan
 
-- Low (full), in served order: prediction, orientation, ki-1, ki-2, st-1 with its contrast pair, st-2, st-3, ex-1 with its scoring line, chk-1, the four error blocks, chk-2, chk-3, the three bridges. 682 words, 4.6 minutes (cap 900 and 6). There is no example 2, so nothing is faded, and no representations block.
-- Mid (brief): prediction, orientation, ki-1, st-1 with its contrast pair, ex-1 with its scoring line, chk-1, err-BC-ERR-06014, err-BC-ERR-99012, chk-2, the three bridges. 448 words, 3.0 minutes (cap 450 and 3). The orientation, ki-1, the st-1 fields, the contrast, the prediction and the bridges were shortened to fit; the ki-1 anchor quote and the scoring tag stay.
+- Low (full), in served order: prediction, orientation, ki-1, ki-2, st-1 with its contrast pair, st-2, st-3, ex-1 with its scoring line, chk-1, the four error blocks, chk-2, chk-3, the three bridges. 683 words, 4.6 minutes (cap 900 and 6). There is no example 2, so nothing is faded, and no representations block.
+- Mid (brief): prediction, orientation, ki-1, st-1 with its contrast pair, ex-1 with its scoring line, chk-1, err-BC-ERR-06014, err-BC-ERR-99012, chk-2, the three bridges. 449 words, 3.0 minutes (cap 450 and 3). The orientation, ki-1, the st-1 fields, the contrast, the prediction and the bridges were shortened to fit; the ki-1 anchor quote and the scoring tag stay.
 - Refresher: ki-1, the four error blocks, ex-1.
 
 ## Sources
@@ -204,7 +204,8 @@ Drawn blocks already present (ki-1 motion, ki-2 interactive), so no figure is ad
    "separating_feature": "The curve drawn is f, not g.",
    "sources": [
     "BC-QA-06003",
-    "BC-ERR-06008"
+    "BC-ERR-06008",
+    "BC-QA-06012"
    ],
    "evidence_tag": "verified",
    "contrast": {
@@ -213,8 +214,8 @@ Drawn blocks already present (ki-1 motion, ki-2 interactive), so no figure is ad
      "archetype_id": "BC-QA-06003"
     },
     "not_this": {
-     "text": "For the graphed f, \\(g(x)=\\int_2^x f(t)\\,dt\\). Find \\(g'(6)\\).",
-     "why_not": "It asks for g prime, which is f(6)."
+     "text": "For the graphed f, \\(h(x)=\\int_2^{x^2} f(t)\\,dt\\). Find \\(h'(2)\\).",
+     "why_not": "A derivative: f(4) times the chain factor."
     },
     "feature": "g itself is asked."
    }
@@ -236,7 +237,7 @@ Drawn blocks already present (ki-1 motion, ki-2 interactive), so no figure is ad
    "id": "st-3",
    "archetype_id": "BC-QA-06012",
    "cue": "The same definition, but h prime is asked.",
-   "method": "H'(x) equals the integrand at the upper limit.",
+   "method": "h'(x) equals the integrand at the upper limit.",
    "rival": "The chain factor dropped.",
    "separating_feature": "An upper limit that is a function of x, not x itself.",
    "sources": [
@@ -517,7 +518,7 @@ Drawn blocks already present (ki-1 motion, ki-2 interactive), so no figure is ad
     "ask": "value"
    },
    "stem": {
-    "text": "As ex-1, with vertices (0, 1), (2, 0), (4, -1), (6, -1), (8, 0) and the semicircle below. Find g(12).",
+    "text": "As in the example, with vertices (0, 1), (2, 0), (4, -1), (6, -1), (8, 0) and the semicircle below. Find g(12).",
     "command_verb": "find"
    },
    "key": {
@@ -631,7 +632,7 @@ Drawn blocks already present (ki-1 motion, ki-2 interactive), so no figure is ad
   {
    "block": "orientation",
    "mode": "text",
-   "reason": "rule 6: a statement of what a response shows; BC-REP-02 is served on ki-1 and ki-2",
+   "reason": "rule 6: a statement of what a response shows; BC-REP-02 is served on the two key ideas",
    "sources": [
     "BC-SKL-06017"
    ]
@@ -881,8 +882,8 @@ Drawn blocks already present (ki-1 motion, ki-2 interactive), so no figure is ad
   "brief": 3.0
  },
  "word_count": {
-  "full": 682,
-  "brief": 448
+  "full": 683,
+  "brief": 449
  },
  "research_lines": [
   {

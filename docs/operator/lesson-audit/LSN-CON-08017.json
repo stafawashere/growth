@@ -48,103 +48,125 @@
   "auditor": "claude-opus-5-5",
   "blocks": [
    {
+    "id": "prediction",
+    "verdict": "ok",
+    "evidence": "Stem on ex-1's own sqrt(x) at x = 2, answerable from the circle area before the rule; SymPy pi*sqrt(2)**2 = 2*pi, only B true, A pi*sqrt(2) (unsquared, BC-ERR-08036) and C 2 (no pi, BC-ERR-08037) both differ; resolution paraphrases BC-CON-08017 and the 8.9 Disc method paragraph; no verdict word, praise or id."
+   },
+   {
     "id": "orientation",
     "verdict": "ok",
-    "evidence": "Paraphrases BC-CON-08017 and 8.9 Assessment behaviour (multiple of pi without calculator); 36 words."
+    "evidence": "Shortened (dropped 'without a calculator'); still paraphrases BC-CON-08017 and the 8.9 Assessment behaviour paragraph; no id or citation."
    },
    {
     "id": "ki-1",
     "verdict": "ok",
-    "evidence": "8.9 Disc method, Variable of integration and Notation paragraphs; 36 words."
+    "evidence": "Shortened; still the 8.9 Disc method, Variable of integration and Notation paragraphs and research line 'The factor pi multiplies the whole integral...'; quote null."
    },
    {
     "id": "st-1",
     "verdict": "ok",
-    "evidence": "From BC-QA-08012 and 8.9 MCQ distractors (unsquared radius, missing pi); within caps."
+    "evidence": "method 'The radius as distance to the axis.' is BC-QA-08012 expected_solution_path[0] with the 'First line:' label removed; cue from common_givens; rival from common_distractors[0..1]; no capitalised function letter."
+   },
+   {
+    "id": "st-1.contrast",
+    "verdict": "ok",
+    "evidence": "this (y = x^3, x-axis, x = 1, about the x-axis, find the volume) matches BC-QA-08012 typical_wording; not_this (y = x^3 + 1, y = 1, x = 1) is a BC-QA-08013 washer stem, not 08012's own; SymPy min of x^3+1 on [0,1] is 1, so a gap from the axis, rings, why_not and feature true."
    },
    {
     "id": "ex-1",
     "verdict": "ok",
-    "evidence": "SymPy: radius sqrt(x), Integral(pi*x,(x,0,4)) = 8*pi."
+    "evidence": "Only change: BC-PT-99001 tag dropped from step 3, disclosed in the inferred array; SymPy Integral(pi*x,(x,0,4)) = 8*pi unchanged."
    },
    {
     "id": "ex-2",
     "verdict": "ok",
-    "evidence": "SymPy: Integral(pi*x^4,(x,0,2)) = 32*pi/5."
+    "evidence": "fade_from 3: shown steps give radius x^2 and disc area pi*x^4, the stem gives limits 0 and 2, enough to finish; withheld steps 3 (the integral) and 4 (32*pi/5, BC-PT-99004) valued; SymPy integrate(pi*x**4,(x,0,2)) = 32*pi/5."
    },
    {
     "id": "reader-ex-1",
     "verdict": "ok",
-    "evidence": "BC-PT-99058 line matches bundle fields."
+    "evidence": "BC-PT-99001 line removed with the step tag; the remaining BC-PT-99058 line is unchanged record text."
    },
    {
     "id": "reader-ex-2",
     "verdict": "ok",
-    "evidence": "BC-PT-99001, 99058, 99004 lines match bundle fields."
+    "evidence": "BC-PT-99001, 99058, 99004 lines match bundle fields.",
+    "note": "unchanged since 2026-09-29"
    },
    {
     "id": "err-BC-ERR-08023",
     "verdict": "ok",
-    "evidence": "Verbatim; SymPy Integral(pi*x,(y,0,4)) = 4*pi*x, not a number, as the consequence states."
+    "evidence": "relation distinct, fix_prompt true; SymPy wrong 4*pi*x (not a number) vs 8*pi; exprs unchanged."
    },
    {
     "id": "err-BC-ERR-08024",
     "verdict": "ok",
-    "evidence": "Verbatim record text; shown mirrored (x integral on y values 0 to 2), disclosed inferred; SymPy 2*pi vs 8*pi."
+    "evidence": "relation distinct, fix_prompt true; SymPy 2*pi vs 8*pi; exprs unchanged."
    },
    {
     "id": "err-BC-ERR-08036",
     "verdict": "ok",
-    "evidence": "Verbatim; SymPy unsquared 16*pi/3 vs 8*pi."
+    "evidence": "relation distinct, fix_prompt true; SymPy 16*pi/3 vs 8*pi; exprs unchanged."
    },
    {
     "id": "err-BC-ERR-08037",
     "verdict": "ok",
-    "evidence": "Verbatim; SymPy 8 vs 8*pi."
+    "evidence": "relation distinct, fix_prompt true; SymPy 8 vs 8*pi; exprs unchanged."
    },
    {
     "id": "representations",
     "verdict": "ok",
-    "evidence": "null; 8.9 conversions carried by ki-1 motion."
+    "evidence": "null; 8.9 conversions carried by ki-1 motion.",
+    "note": "unchanged since 2026-09-29"
    },
    {
-    "id": "bridge-BC-PRQ-06002",
+    "id": "BC-PRQ-06002",
     "verdict": "ok",
-    "evidence": "Paraphrase of BC-PRQ-06002."
+    "evidence": "Shortened; still paraphrases BC-PRQ-06002 description_plain (radicals to powers before the reverse power rule)."
    },
    {
-    "id": "bridge-BC-PRQ-08002",
+    "id": "BC-PRQ-08002",
     "verdict": "ok",
-    "evidence": "Paraphrase of BC-PRQ-08002."
+    "evidence": "Shortened; still paraphrases BC-PRQ-08002 description_plain and failure_signature."
    },
    {
-    "id": "bridge-BC-PRQ-08004",
+    "id": "BC-PRQ-08004",
     "verdict": "ok",
-    "evidence": "Paraphrase of BC-PRQ-08004."
+    "evidence": "Shortened to 'A distance is larger minus smaller.'; still BC-PRQ-08004 description_plain."
+   },
+   {
+    "id": "time",
+    "verdict": "ok",
+    "evidence": "I-A, 2.14 minutes: exam-structure.md#Section and part layout, 62 minutes over 29 questions = 2.138; unchanged."
    },
    {
     "id": "chk-1",
     "verdict": "ok",
-    "evidence": "SymPy: 8*pi."
+    "evidence": "SymPy: 8*pi.",
+    "note": "unchanged since 2026-09-29"
    },
    {
     "id": "chk-2",
     "verdict": "ok",
-    "evidence": "SymPy: Integral(pi*9x^2,(x,0,2)) = 24*pi."
+    "evidence": "SymPy: Integral(pi*9x^2,(x,0,2)) = 24*pi.",
+    "note": "unchanged since 2026-09-29"
    },
    {
     "id": "chk-3",
     "verdict": "ok",
-    "evidence": "SymPy: key 30*pi; A limits 2 to 4 gives 24*pi; B pi*2sqrt(x) gives 28*pi/3; D 30; distinct."
+    "evidence": "SymPy: key 30*pi; A limits 2 to 4 gives 24*pi; B pi*2sqrt(x) gives 28*pi/3; D 30; distinct.",
+    "note": "unchanged since 2026-09-29"
    }
   ],
   "advice": [
    "err-BC-ERR-08037 possible reason cites BC-MIS-08019 (a fraction in front of the area) for a dropped pi; BC-MIS-08020 or 08015 may read closer.",
    "err-BC-ERR-08024 is shown mirrored from its record wording; the served observed_behavior (an integral in y with x limits) does not match the displayed step.",
-   "ki-1 as motion suits the sweep of a region about an axis. Lesson teaches stem, first line and rival well."
+   "ki-1 as motion suits the sweep of a region about an axis. Lesson teaches stem, first line and rival well.",
+   "Reader lines for BC-PT-99058 and BC-PT-99004 reader lines carry page citations (sg-...) inside verbatim BC-PT record text, which the reader strips at serve time; not lint.",
+   "The last inferred claim ends 'in the brief band;.' with a stray semicolon; record text only, not served."
   ],
   "counts": {
-   "ok": 18,
+   "ok": 21,
    "unsourced": 0,
    "wrong": 0,
    "over_cap": 0,

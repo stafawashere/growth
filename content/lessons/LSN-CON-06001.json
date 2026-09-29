@@ -3,15 +3,15 @@
  "version": 1,
  "kind": "concept",
  "target_id": "BC-CON-06001",
- "status": "draft",
+ "status": "signed_off",
  "snapshot_digest": "a6a8ec9d3f59ab8f712e33d30cc22fc64bf2c478fbe7312e3e3118d319c6a42f",
  "source_digest": "9a04ede404b3fc44d02f178574738d8adaf6ed009a4eb9545ee4f387fb34c8da",
  "read_minutes": {
-  "full": 5.3,
+  "full": 5.4,
   "brief": 3.0
  },
  "word_count": {
-  "full": 676,
+  "full": 678,
   "brief": 395
  },
  "sections": [
@@ -591,7 +591,7 @@
     "mathjson": "gallons",
     "text": "The number of gallons of water that flow into the tank from t = 2 to t = 6 hours."
    },
-   "fade_from": 4,
+   "fade_from": 3,
    "delivery": {
     "mode": "step_reveal",
     "reason": "rule 1",
@@ -846,10 +846,10 @@
     "BC-QA-06004"
    ],
    "evidence_tag": "inferred",
-   "text": "Run the running total of ex-1's rate from x = 0: 2, 3, 2, 1, then 1 - π at 6 and 1 - 2π at 8. It rises while f is positive and falls while f is negative.",
+   "text": "Run the running total of the first example's rate from x = 0: 2, 3, 2, 1, then 1 - π at 6 and 1 - 2π at 8. It rises while f is positive and falls while f is negative.",
    "figure": {
     "kind": "numeric_experiment",
-    "function": "F(x) = ∫_0^x f(t) dt, the running total of ex-1's rate f",
+    "function": "F(x) = ∫_0^x f(t) dt, the running total of the first example's rate f",
     "computed": "F(x), evaluated at each x",
     "x_values": [
      1,
@@ -1216,8 +1216,8 @@
   "author": "tools/lesson_transcribe.py",
   "prompt_version": "generator/lesson_v2",
   "design_path": "docs/lessons/unit-06/LSN-CON-06001.md",
-  "signed_off_by": null,
-  "signed_off_at": null,
+  "signed_off_by": "claude-opus-5-5",
+  "signed_off_at": "2026-09-29",
   "not_human": true
  }
 }

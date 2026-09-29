@@ -3,7 +3,7 @@
  "version": 1,
  "kind": "concept",
  "target_id": "BC-CON-06004",
- "status": "draft",
+ "status": "signed_off",
  "snapshot_digest": "a6a8ec9d3f59ab8f712e33d30cc22fc64bf2c478fbe7312e3e3118d319c6a42f",
  "source_digest": "b2e728863fdf7f7b42b208b7e2898e35c400d9e1ee94ac6c4699cafc837455ca",
  "read_minutes": {
@@ -11,8 +11,8 @@
   "brief": 3.0
  },
  "word_count": {
-  "full": 453,
-  "brief": 398
+  "full": 454,
+  "brief": 399
  },
  "sections": [
   {
@@ -443,10 +443,10 @@
      "archetype_id": "BC-QA-06001"
     },
     "not_this": {
-     "text": "g is decreasing. Find a left sum for ∫_0^6 g(t) dt.",
-     "why_not": "It asks for the sum's value."
+     "text": "g is concave up. Is a trapezoidal sum for ∫_0^6 g(t) dt over or under?",
+     "why_not": "Concavity decides a trapezoid."
     },
-    "feature": "A direction asked, not a value."
+    "feature": "A left sum: monotonicity decides."
    }
   },
   {
@@ -945,8 +945,8 @@
   "author": "tools/lesson_transcribe.py",
   "prompt_version": "generator/lesson_v2",
   "design_path": "docs/lessons/unit-06/LSN-CON-06004.md",
-  "signed_off_by": null,
-  "signed_off_at": null,
+  "signed_off_by": "claude-opus-5-5",
+  "signed_off_at": "2026-09-29",
   "not_human": true
  }
 }

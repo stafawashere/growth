@@ -3,7 +3,7 @@
  "version": 1,
  "kind": "concept",
  "target_id": "BC-CON-06007",
- "status": "draft",
+ "status": "signed_off",
  "snapshot_digest": "a6a8ec9d3f59ab8f712e33d30cc22fc64bf2c478fbe7312e3e3118d319c6a42f",
  "source_digest": "b25fd188cb611a75c164c417dfbe1380d8ad4a8f826582fadf5de0df0ce7555f",
  "read_minutes": {
@@ -11,8 +11,8 @@
   "brief": 3.0
  },
  "word_count": {
-  "full": 602,
-  "brief": 400
+  "full": 601,
+  "brief": 399
  },
  "sections": [
   {
@@ -80,7 +80,7 @@
    "text": "A response finds g(x) as signed area from the lower limit.",
    "delivery": {
     "mode": "text",
-    "reason": "rule 6: a statement of what a response shows; BC-REP-02 is served on ki-1 and ki-2",
+    "reason": "rule 6: a statement of what a response shows; BC-REP-02 is served on the two key ideas",
     "sources": [
      "BC-SKL-06017"
     ]
@@ -343,7 +343,8 @@
    ],
    "sources": [
     "BC-QA-06003",
-    "BC-ERR-06008"
+    "BC-ERR-06008",
+    "BC-QA-06012"
    ],
    "evidence_tag": "verified",
    "archetype_id": "BC-QA-06003",
@@ -357,8 +358,8 @@
      "archetype_id": "BC-QA-06003"
     },
     "not_this": {
-     "text": "For the graphed f, \\(g(x)=\\int_2^x f(t)\\,dt\\). Find \\(g'(6)\\).",
-     "why_not": "It asks for g prime, which is f(6)."
+     "text": "For the graphed f, \\(h(x)=\\int_2^{x^2} f(t)\\,dt\\). Find \\(h'(2)\\).",
+     "why_not": "A derivative: f(4) times the chain factor."
     },
     "feature": "g itself is asked."
    }
@@ -401,7 +402,7 @@
    "evidence_tag": "verified",
    "archetype_id": "BC-QA-06012",
    "cue": "The same definition, but h prime is asked.",
-   "method": "H'(x) equals the integrand at the upper limit.",
+   "method": "h'(x) equals the integrand at the upper limit.",
    "rival": "The chain factor dropped.",
    "separating_feature": "An upper limit that is a function of x, not x itself."
   },
@@ -877,7 +878,7 @@
     "ask": "value"
    },
    "stem": {
-    "text": "As ex-1, with vertices (0, 1), (2, 0), (4, -1), (6, -1), (8, 0) and the semicircle below. Find g(12).",
+    "text": "As in the example, with vertices (0, 1), (2, 0), (4, -1), (6, -1), (8, 0) and the semicircle below. Find g(12).",
     "command_verb": "find"
    },
    "answer_key": {
@@ -1087,8 +1088,8 @@
   "author": "tools/lesson_transcribe.py",
   "prompt_version": "generator/lesson_v2",
   "design_path": "docs/lessons/unit-06/LSN-CON-06007.md",
-  "signed_off_by": null,
-  "signed_off_at": null,
+  "signed_off_by": "claude-opus-5-5",
+  "signed_off_at": "2026-09-29",
   "not_human": true
  }
 }

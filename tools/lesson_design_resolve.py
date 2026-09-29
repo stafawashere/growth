@@ -155,6 +155,18 @@ def agrees(key, answer):
 
    has_options = key.get("key_option") is not None
 
+   has_option_field = answer.get("option") not in (None, "")
+   judges_by_option_field = is_statement and has_options and has_option_field
+
+   if judges_by_option_field:
+      chosen = re.sub(r"[()\s]", "", str(answer["option"])).upper()
+      key_option = str(key["key_option"]).upper()
+
+      if chosen == key_option:
+         return True, f"agree (option {chosen})"
+
+      return False, f"disagree (key option {key_option}, re-solver option {chosen})"
+
    if is_statement and has_options:
       given = LETTER.match(str(answer.get("answer", "")))
       letter = given.group(1).upper() if given else str(answer.get("answer", "")).strip().upper()

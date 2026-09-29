@@ -89,8 +89,8 @@ ex-1 is the setup draw, `no_calculator` in the generator, the MCQ form "which in
 
 ## Band plan
 
-- Low (full): prediction, orientation, bridges, ki-1, st-1 with the contrast pair, ex-1 and its line, chk-1, the four error blocks, ex-2 (faded from step 3) and its lines, chk-2, chk-3. 848 words, 5.7 minutes.
-- Mid (brief): prediction, orientation, bridges, ki-1, st-1 with the contrast pair, ex-1 and its line, chk-1, err-BC-ERR-08019, err-BC-ERR-08041, chk-2. 450 words, 3.0 minutes.
+- Low (full): prediction, orientation, bridges, ki-1, st-1 with the contrast pair, ex-1 and its line, chk-1, the four error blocks, ex-2 (faded from step 3) and its lines, chk-2, chk-3. 847 words, 5.7 minutes.
+- Mid (brief): prediction, orientation, bridges, ki-1, st-1 with the contrast pair, ex-1 and its line, chk-1, err-BC-ERR-08019, err-BC-ERR-08041, chk-2. 449 words, 3.0 minutes.
 - Refresher: ki-1, the four error blocks, ex-1.
 
 ## Sources
@@ -267,7 +267,7 @@ ex-1 is the setup draw, `no_calculator` in the generator, the MCQ form "which in
   }
  ],
  "representations": null,
- "prerequisite_bridges": [{"prq_id": "BC-PRQ-06005", "text": "The radical needs \\(f'(x)\\), not f."}, {"prq_id": "BC-PRQ-08006", "text": "Three places after the decimal point."}, {"prq_id": "BC-PRQ-08007", "text": "Components combine as a root of squares."}],
+ "prerequisite_bridges": [{"prq_id": "BC-PRQ-06005", "text": "The radical needs \\(f'(x)\\), not f."}, {"prq_id": "BC-PRQ-08006", "text": "Round last, to three places."}, {"prq_id": "BC-PRQ-08007", "text": "Components combine as a root of squares."}],
  "time": {"exam_part": "I-A", "budget_minutes": 2.14, "source": "research/exam/exam-structure.md#Section and part layout", "written_steps": {"ex-1": [2, 4]}, "skipped_steps": {"ex-1": [1, 3]}},
  "checks": [
   {
@@ -343,7 +343,7 @@ ex-1 is the setup draw, `no_calculator` in the generator, the MCQ form "which in
  ],
  "refresher": ["ki-1", "err-BC-ERR-08019", "err-BC-ERR-08041", "err-BC-ERR-08042", "err-BC-ERR-08043", "ex-1"],
  "read_minutes": {"full": 5.7, "brief": 3.0},
- "word_count": {"full": 848, "brief": 450},
+ "word_count": {"full": 847, "brief": 449},
  "research_lines": [{"file": "research/units/unit-08-applications-integration.md", "line": "The derivative is squared inside the radical; the radical covers the whole sum."}],
  "inferred": [
   {"claim": "BC-QA-08014 is calculator status either; the setup draw, which the generator marks no_calculator, is timed against Section I Part A at 2.14 minutes.", "settles": "Timing data on arc length items split by exam part."},

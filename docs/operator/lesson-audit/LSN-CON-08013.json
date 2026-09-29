@@ -42,99 +42,109 @@
   "auditor": "claude-opus-5-5",
   "blocks": [
    {
+    "id": "prediction",
+    "verdict": "ok",
+    "evidence": "SymPy: f - g = (x - 1)(x - 3); on [0, 7/2] pieces 4/3, 4/3, 7/24; key B the only true option; A one integral = 7/24, C cut at 1 only = 19/8, both false; resolution matches BC-CON-08013."
+   },
+   {
     "id": "orientation",
     "verdict": "ok",
-    "evidence": "Paraphrases BC-CON-08013 description_plain and the 8.6 Assessment behaviour paragraph (setup needs every piece); 32 words."
+    "evidence": "Shortened paraphrase of BC-CON-08013 description_plain and 8.6 Assessment behaviour."
    },
    {
     "id": "ki-1",
     "verdict": "ok",
-    "evidence": "8.6 Split regions, Where to split, Equivalence and Notation paragraphs; quote verbatim ced:157 CHA-5.A.3, 24 words; text 62 words."
+    "evidence": "Shortened 8.6 Split regions and Equivalence paraphrase; SymPy integral of |f - g| = 71/24 = sum of pieces; quote unchanged, verbatim ced:157."
    },
    {
     "id": "st-1",
     "verdict": "ok",
-    "evidence": "Method is expected_solution_path[0]; rival is the wrong_approaches entry; cue 18 words, total 48."
+    "evidence": "Method is expected_solution_path[0] with no label; rival matches wrong_approaches, no id."
+   },
+   {
+    "id": "st-1.contrast",
+    "verdict": "ok",
+    "evidence": "this fits BC-QA-08010 typical_wording (total area over the stated interval), SymPy crossings 1, 3 inside [0, 5]; not_this is BC-QA-08008's enclosed stem; why_not and feature true."
    },
    {
     "id": "ex-1",
     "verdict": "ok",
-    "evidence": "SymPy: f - g = (x-1)(x-3); signs +, -, + at 0, 2, 13/4; pieces 4/3, 4/3, 7/24; total 71/24 = integral of |f - g|; F' matches; constraint 4/3 > 7/24 holds."
+    "evidence": "Only cue and why text changed; F = x**3/3 - 2x**2 + 3x (SymPy); signs f, g, f on top true."
    },
    {
     "id": "reader",
     "verdict": "ok",
-    "evidence": "Empty; BC-QA-08010 point_types is empty."
+    "evidence": "Empty; BC-QA-08010 point_types is empty. (unchanged since 2026-09-29)"
    },
    {
     "id": "err-BC-ERR-08020",
     "verdict": "ok",
-    "evidence": "Verbatim record; lower minus upper on each piece SymPy -71/24; reason fragment from BC-MIS-08011."
+    "evidence": "fix_prompt true with relation distinct; math unchanged from the earlier audit."
    },
    {
     "id": "err-BC-ERR-08025",
     "verdict": "ok",
-    "evidence": "Verbatim record; crossing 3 missed integrates across it, SymPy 4/3 + 25/24 = 19/8; reason fragment from BC-MIS-08014."
+    "evidence": "fix_prompt true with relation distinct; math unchanged from the earlier audit."
    },
    {
     "id": "err-BC-ERR-08026",
     "verdict": "ok",
-    "evidence": "Verbatim record; one integral of f - g on [0, 7/2] = 7/24 (SymPy), smaller than 71/24 as the consequence says; reason fragment from BC-MIS-08014."
+    "evidence": "fix_prompt true with relation distinct; math unchanged from the earlier audit."
    },
    {
     "id": "err-BC-ERR-08027",
     "verdict": "ok",
-    "evidence": "Verbatim record; integral without bars 7/24 against Abs form 71/24 (SymPy); null reason."
+    "evidence": "fix_prompt true with relation distinct; math unchanged from the earlier audit."
    },
    {
     "id": "representations",
     "verdict": "ok",
-    "evidence": "null; the several-crossings figure to sum-of-integrals conversion is carried by ki-1's interactive."
+    "evidence": "null; the several-crossings figure to sum-of-integrals conversion is carried by ki-1's interactive. (unchanged since 2026-09-29)"
    },
    {
-    "id": "bridge-BC-PRQ-06005",
+    "id": "BC-PRQ-06005",
     "verdict": "ok",
-    "evidence": "Paraphrases BC-PRQ-06005 (value at one input); 15 words."
+    "evidence": "Shortened paraphrase of BC-PRQ-06005."
    },
    {
-    "id": "bridge-BC-PRQ-08001",
+    "id": "BC-PRQ-08001",
     "verdict": "ok",
-    "evidence": "Paraphrases BC-PRQ-08001 (every solution in the interval); 16 words."
+    "evidence": "Shortened paraphrase of BC-PRQ-08001."
    },
    {
-    "id": "bridge-BC-PRQ-08003",
+    "id": "BC-PRQ-08003",
     "verdict": "ok",
-    "evidence": "Paraphrases BC-PRQ-08003 (absolute value piecewise; signed total failure); 16 words."
+    "evidence": "Shortened paraphrase of BC-PRQ-08003 description_plain."
    },
    {
     "id": "time",
     "verdict": "ok",
-    "evidence": "I-A 2.14 from exam-structure.md#Section and part layout; either status listed as inferred."
+    "evidence": "I-A 2.14 from exam-structure.md#Section and part layout; either status listed as inferred. (unchanged since 2026-09-29)"
    },
    {
     "id": "chk-1",
     "verdict": "ok",
-    "evidence": "Sum of the given pieces 4/3 + 4/3 + 7/24 = 71/24."
+    "evidence": "Sum of the given pieces 4/3 + 4/3 + 7/24 = 71/24. (unchanged since 2026-09-29)"
    },
    {
     "id": "chk-2",
     "verdict": "ok",
-    "evidence": "Draw gives f = x**2 - 3x + 2, g = 2; crossings 0, 3; pieces 11/6, 9/2, 11/6 = 49/6 = integral of |f - g| (SymPy); constraint holds."
+    "evidence": "Draw gives f = x**2 - 3x + 2, g = 2; crossings 0, 3; pieces 11/6, 9/2, 11/6 = 49/6 = integral of |f - g| (SymPy); constraint holds. (unchanged since 2026-09-29)"
    },
    {
     "id": "chk-3",
     "verdict": "ok",
-    "evidence": "f - g = (2x-3)(2x-7)/4; key D 5 (SymPy); A -5 (ERR-08020), B 7/2 missed = 27/8 + 25/24 = 53/12 (ERR-08025), C one integral on [0, 4] = 7/3 (ERR-08026); distinct."
+    "evidence": "f - g = (2x-3)(2x-7)/4; key D 5 (SymPy); A -5 (ERR-08020), B 7/2 missed = 27/8 + 25/24 = 53/12 (ERR-08025), C one integral on [0, 4] = 7/3 (ERR-08026); distinct. (unchanged since 2026-09-29)"
    }
   ],
   "advice": [
-   "err-BC-ERR-08026 and err-BC-ERR-08027 show the same wrong expression, Integral(x**2 - 4*x + 3, (x, 0, 7/2)) = 7/24, so the low band sees one move twice; 08026's right step is the bare number 71/24 rather than the three integrals, which hides the fix.",
-   "The absolute value form (BC-SKL-08030) is taught but no check asks for it; a calculator variant with decimal crossings, where the Abs integral is the practical route, is absent.",
-   "ki-1 interactive reason says the stem asks which curve is greater on each piece; BC-QA-08010's typical_wording asks only for the total area, so the promotion rests on the design's reading.",
-   "Served text carries the id '(BC-ERR-08026)' in the st-1 rival (recurring served-text class)."
+   "The prediction stem supplies f - g already factored, so the crossings are given and only the three-piece structure is predicted.",
+   "ki-1 now names 'the absolute value form' without stating it; only the notation line carries it.",
+   "err-BC-ERR-08026 and err-BC-ERR-08027 show the same wrong expression (7/24), so the low band sees one move twice.",
+   "The absolute value form (BC-SKL-08030) is taught but no check asks for it."
   ],
   "counts": {
-   "ok": 17,
+   "ok": 19,
    "unsourced": 0,
    "wrong": 0,
    "over_cap": 0,

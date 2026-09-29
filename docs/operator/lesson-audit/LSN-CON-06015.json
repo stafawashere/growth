@@ -42,93 +42,109 @@
   "auditor": "claude-opus-5-5",
   "blocks": [
    {
+    "id": "prediction",
+    "verdict": "ok",
+    "evidence": "SymPy du/dx = 2x and 6x/(2x) = 3, so B (3 du) is the only true option and 2 du, 6 du are false; answerable from the chain rule before the substitution rule; resolution matches ex-1 step 2; no verdict word."
+   },
+   {
     "id": "orientation",
     "verdict": "ok",
-    "evidence": "Paraphrases BC-CON-06015 description_formal; 28 words."
+    "evidence": "Shortened; matches BC-QA-06008 asked_to_produce 'a definite integral rewritten in the substituted variable'."
    },
    {
     "id": "ki-1",
     "verdict": "ok",
-    "evidence": "Matches BC-CON-06015 formal and ced:126 FUN-6.D.1."
+    "evidence": "Shortened form of BC-EK-FUN-6D1 and BC-CON-06015; claim unchanged."
    },
    {
     "id": "ki-2",
     "verdict": "ok",
-    "evidence": "Quote matches ced:126 FUN-6.D.2 verbatim; back substitution alternative from BC-SKL-06051."
+    "evidence": "Quote matches ced:126 FUN-6.D.2 verbatim; back substitution alternative from BC-SKL-06051.",
+    "note": "unchanged since 2026-09-29"
    },
    {
     "id": "st-1",
     "verdict": "ok",
-    "evidence": "Method is BC-QA-06008 expected_solution_path[0]; rival wrong_approaches[0] (BC-ERR-06020)."
+    "evidence": "Method unchanged and unlabelled; rival id removed and BC-ERR-06020 moved to sources."
+   },
+   {
+    "id": "st-1.contrast",
+    "verdict": "ok",
+    "evidence": "fixed 2026-09-29: research/units/unit-06-integration-accumulation.md#6.11 Integrating Using Integration by Parts added to st-1's sources and the Sources list (BC-CON-06017, the product rule in reverse), and why_not reworded to 'No composite with its inner derivative; it calls for integration by parts.', which drops the loose 'no inner derivative'."
    },
    {
     "id": "ex-1",
     "verdict": "ok",
-    "evidence": "SymPy integrate(6x(x^2+1)^3,(x,0,1)) = 45/4; 3(16 - 1)/4 = 45/4; draw meets multiplier != inner_scale inner_power."
+    "evidence": "Cue shortened and the citation (sg-23:17) removed from a why; values 45/4 unchanged."
    },
    {
     "id": "what_a_reader_scores:ex-1",
     "verdict": "ok",
-    "evidence": "Lines reproduce BC-PT-99003 and BC-PT-99004 record fields."
+    "evidence": "Lines reproduce BC-PT-99003 and BC-PT-99004 record fields.",
+    "note": "unchanged since 2026-09-29"
    },
    {
     "id": "err-BC-ERR-06018",
     "verdict": "ok",
-    "evidence": "3/4 at x limits versus 45/4 at u limits; record text and BC-MIS-06016 match."
+    "evidence": "fix_prompt true and relation distinct; expression unchanged since the earlier audit, values 3/4 against 45/4."
    },
    {
     "id": "err-BC-ERR-06019",
     "verdict": "ok",
-    "evidence": "6u^4/4 versus 3u^4/4; record text matches."
+    "evidence": "fix_prompt true and relation distinct; expression unchanged since the earlier audit, values (3/2)u^4 against (3/4)u^4."
    },
    {
     "id": "err-BC-ERR-06020",
     "verdict": "ok",
-    "evidence": "Record text matches; BC-MIS-06017 linked and quoted; shown on present derivative draw as flagged inferred."
+    "evidence": "fix_prompt true and relation distinct; expression unchanged since the earlier audit, values 6x u^3 against 3u^3."
    },
    {
     "id": "err-BC-ERR-07026",
     "verdict": "ok",
-    "evidence": "Record text matches; BC-MIS-06018 linked."
+    "evidence": "fix_prompt true and relation distinct; expression unchanged since the earlier audit, values without C against with C."
    },
    {
     "id": "representations",
     "verdict": "ok",
-    "evidence": "null; BC-REP-01 only."
+    "evidence": "null; BC-REP-01 only.",
+    "note": "unchanged since 2026-09-29"
    },
    {
     "id": "BC-PRQ-06001",
     "verdict": "ok",
-    "evidence": "Paraphrase of description_plain and failure_signature."
+    "evidence": "Shortened; true."
    },
    {
     "id": "BC-PRQ-06003",
     "verdict": "ok",
-    "evidence": "Paraphrase of absolute value inside ln."
+    "evidence": "Shortened; true."
    },
    {
     "id": "chk-1",
     "verdict": "ok",
-    "evidence": "SymPy 45/4."
+    "evidence": "SymPy 45/4.",
+    "note": "unchanged since 2026-09-29"
    },
    {
     "id": "chk-2",
     "verdict": "ok",
-    "evidence": "SymPy integrate(6x^2(x^3+2)^2,(x,0,1)) = 38/3 = 2(27 - 8)/3."
+    "evidence": "SymPy integrate(6x^2(x^3+2)^2,(x,0,1)) = 38/3 = 2(27 - 8)/3.",
+    "note": "unchanged since 2026-09-29"
    },
    {
     "id": "chk-3",
     "verdict": "ok",
-    "evidence": "SymPy key 74/3; A 2/3, B 148/3, D 128/3 all verified and distinct."
+    "evidence": "SymPy key 74/3; A 2/3, B 148/3, D 128/3 all verified and distinct.",
+    "note": "unchanged since 2026-09-29"
    }
   ],
   "advice": [
-   "err-BC-ERR-06020 is shown on an integrand where the inner derivative is present, so it depicts a mechanical slip rather than the observed behavior; a draw lacking the derivative would show the real error.",
-   "chk-3 options A and D share BC-ERR-06018; D (upper limit converted, lower x limit kept) is a partial variant the record does not describe.",
-   "err-BC-ERR-07026 on a definite integral lesson sits apart from ex-1; ki-2 is absent from the mid band, leaving limit conversion carried by ex-1 alone."
+   "Fix for st-1.contrast: cite research/units/unit-06-integration-accumulation.md#6.11 Integrating Using Integration by Parts in the block sources, or reword why_not to 'No composite whose inner derivative is a factor.' which BC-QA-06008 wrong_approaches carries. 'No inner derivative' is loose, since x is an inner expression with derivative 1.",
+   "Reader lines and scoring_consequence fields carry page citations (sg-..:..) as verbatim record text; the reader strips them, so they are not lint.",
+   "Carried from the earlier audit: err-BC-ERR-06020 is shown where the inner derivative is present; chk-3 options A and D share BC-ERR-06018."
   ],
   "counts": {
-   "ok": 16,
+   "ok": 18,
    "unsourced": 0,
    "wrong": 0,
    "over_cap": 0,

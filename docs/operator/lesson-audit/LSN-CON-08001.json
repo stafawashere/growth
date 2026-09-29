@@ -42,103 +42,119 @@
   "auditor": "claude-opus-5-5",
   "blocks": [
    {
+    "id": "prediction",
+    "verdict": "ok",
+    "evidence": "SymPy: B, the integral over [0, 3] divided by 3, is 1.96082, the only true option; A (mean of W(0) and W(3)) is 2.97301 and C (undivided integral) is 5.88245, both false. Resolution value 1.961 matches ex-1; endpoint mean is a BC-QA-08001 wrong_approach, undivided integral is BC-ERR-08001. No id, no verdict word."
+   },
+   {
     "id": "orientation",
     "verdict": "ok",
-    "evidence": "Paraphrases BC-QA-08001 expected_solution_path (integral, divide by length, three places); 28 words."
+    "evidence": "Shortened; still paraphrases BC-CON-08001 and the 8.1 Assessment behaviour paragraph (setup before the decimal); three decimals from BC-PRQ-08006 description_plain."
    },
    {
     "id": "ki-1",
     "verdict": "ok",
-    "evidence": "CHA-4.B.1 on ced:152; units of the integrand from research 8.1 Units paragraph."
+    "evidence": "Shortened to the 8.1 Average value conclusion (BC-EK-CHA-4B1, ced:152); the dropped units and accumulated amount clauses leave no false claim; quote null, so no anchor to recheck."
    },
    {
     "id": "st-1",
     "verdict": "ok",
-    "evidence": "Rival 'averaging the two endpoint values' is a BC-QA-08001 wrong_approach."
+    "evidence": "Label strip and shortening; method is BC-QA-08001 expected_solution_path[0] plus the division, rival is wrong_approaches[0]; method no longer starts with a label."
+   },
+   {
+    "id": "st-1.contrast",
+    "verdict": "ok",
+    "evidence": "this matches BC-QA-08001 typical_wording (find the average value of the function over the stated interval, showing the setup); SymPy: average value of 2 + sin(t^2) on [0, 3] is 2.25785, well posed. not_this is BC-QA-99007 typical_wording, not BC-QA-08001's own stem; why_not true ((C(3) - C(0))/3 = 0.13737 uses endpoint values only); feature true."
    },
    {
     "id": "st-2",
     "verdict": "ok",
-    "evidence": "BC-QA-99007 expected path and wrong_approach 'integrating the function and dividing by the interval length'."
+    "evidence": "Label strip only; BC-QA-99007 expected_solution_path[0] and wrong_approaches[0]."
    },
    {
     "id": "st-3",
     "verdict": "ok",
-    "evidence": "BC-QA-08002 expected path and wrong_approach 'reporting the average rate of change itself as the time'."
+    "evidence": "Label strip only; BC-QA-08002 expected_solution_path[0] and wrong_approaches[0]."
    },
    {
     "id": "ex-1",
     "verdict": "ok",
-    "evidence": "SymPy: integral of 5cos(t^2/2) + 1 on [0, 3] is 5.88245, divided by 3 is 1.96082, reported 1.961."
+    "evidence": "SymPy: integral of 5cos(t^2/2) + 1 on [0, 3] is 5.88245, divided by 3 is 1.96082, reported 1.961.",
+    "note": "unchanged since 2026-09-29"
    },
    {
-    "id": "rs-0",
+    "id": "what_a_reader_scores:ex-1",
     "verdict": "ok",
-    "evidence": "Line reproduces BC-PT-99020 earns, does_not_earn and notation_requirements from the bundle."
+    "evidence": "Line reproduces BC-PT-99020 earns, does_not_earn and notation_requirements from the bundle.",
+    "note": "unchanged since 2026-09-29"
    },
    {
     "id": "err-BC-ERR-06014",
     "verdict": "ok",
-    "evidence": "Record text matches; SymPy: absolute value version gives 3.866, distinct from 1.961."
+    "evidence": "Only change fix_prompt true; relation distinct; SymPy: absolute value version 3.866 against 1.961."
    },
    {
     "id": "err-BC-ERR-08001",
     "verdict": "ok",
-    "evidence": "Record text matches; SymPy: undivided integral 5.882, distinct."
+    "evidence": "Only change fix_prompt true; relation distinct; SymPy: undivided integral 5.88245 against 1.961."
    },
    {
     "id": "err-BC-ERR-08002",
     "verdict": "ok",
-    "evidence": "Record text matches; SymPy: integral over [1, 3] divided by 2 is 0.003, distinct."
+    "evidence": "Only change fix_prompt true; relation distinct; SymPy: integral over [1, 3] over 2 is 0.00300 against 1.961."
    },
    {
     "id": "err-BC-ERR-99019",
     "verdict": "ok",
-    "evidence": "Record text matches; 5.9/3 = 1.9667, distinct from 1.961."
+    "evidence": "Only change fix_prompt true; relation distinct; SymPy: 5.9/3 = 1.96667 against 1.961."
    },
    {
     "id": "representations",
     "verdict": "ok",
-    "evidence": "null; nothing to audit."
+    "evidence": "null; nothing to audit.",
+    "note": "unchanged since 2026-09-29"
    },
    {
     "id": "BC-PRQ-06005",
     "verdict": "ok",
-    "evidence": "In bundle prerequisites; paraphrases its failure_signature."
+    "evidence": "Shortened; paraphrases description_plain (evaluation at a stated input)."
    },
    {
     "id": "BC-PRQ-06007",
     "verdict": "ok",
-    "evidence": "In bundle prerequisites; paraphrases its description_plain."
+    "evidence": "Shortened; paraphrases description_plain (areas read off a figure); the word signed was already in the earlier accepted text."
    },
    {
     "id": "BC-PRQ-08006",
     "verdict": "ok",
-    "evidence": "In bundle prerequisites; paraphrases its description (no premature rounding, three places)."
+    "evidence": "Shortened; matches description_plain (no premature rounding, three places)."
    },
    {
     "id": "chk-1",
     "verdict": "ok",
-    "evidence": "SymPy: 1.96082, key 1.961."
+    "evidence": "SymPy: 1.96082, key 1.961.",
+    "note": "unchanged since 2026-09-29"
    },
    {
     "id": "chk-2",
     "verdict": "ok",
-    "evidence": "SymPy: integral of 4cos(t^2) - 1 on [0, 2] over 2 is -0.07708, key -0.077."
+    "evidence": "SymPy: integral of 4cos(t^2) - 1 on [0, 2] over 2 is -0.07708, key -0.077.",
+    "note": "unchanged since 2026-09-29"
    },
    {
     "id": "chk-3",
     "verdict": "ok",
-    "evidence": "SymPy: integral 8.61035, average 2.15259 (key 2.153); A 4.391 is the absolute value version over 4; C 8.610 undivided; D 8.6/4 = 2.150; all match derivations."
+    "evidence": "SymPy: integral 8.61035, average 2.15259 (key 2.153); A 4.391 is the absolute value version over 4; C 8.610 undivided; D 8.6/4 = 2.150; all match derivations.",
+    "note": "unchanged since 2026-09-29"
    }
   ],
   "advice": [
-   "ki-1 as a static figure of the average value rectangle suits the idea.",
-   "st-2 and st-3 are rival archetypes with no worked example or check in this lesson; they teach recognition of the rival only in words, which is fine, but a contrast block with 08002 would carry it better.",
-   "ex-1 has only two steps; the units of the answer are not stated although the research names units of f as part of the idea."
+   "BC-ERR-08001 scoring_consequence and the BC-PT-99020 reader line carry page citations (sg-25:3, sg-26:9, crabbc-25:3, sg-22:3); they are verbatim record text the reader strips, not lint.",
+   "ki-1 no longer states that the average carries the units of f, and no served line now names units at all; the earlier advice on ex-1's missing units now applies to the whole lesson.",
+   "st-2 and st-3 remain rival archetypes with no example or check here; the new st-1 contrast pair now carries the BC-QA-99007 recognition that the earlier advice asked for."
   ],
   "counts": {
-   "ok": 18,
+   "ok": 20,
    "unsourced": 0,
    "wrong": 0,
    "over_cap": 0,

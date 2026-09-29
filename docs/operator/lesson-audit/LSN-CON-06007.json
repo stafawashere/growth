@@ -42,109 +42,127 @@
   "auditor": "claude-opus-5-5",
   "blocks": [
    {
+    "id": "prediction",
+    "verdict": "ok",
+    "evidence": "SymPy: -(1/2)(2)(2) - 2(2) - (1/2)(2)(2) = -8, matching ex-1 pieces on [2, 8]; positive 8 is the BC-ERR-06014 path, zero false; resolution is ki-2 signed area from the 6.4 heading."
+   },
+   {
     "id": "orientation",
     "verdict": "ok",
-    "evidence": "21 words; paraphrases BC-CON-06007 description_plain and the 6.4 Notation line; no lint."
+    "evidence": "Shortened paraphrase of BC-CON-06007 description_plain; true, no id."
    },
    {
     "id": "ki-1",
     "verdict": "ok",
-    "evidence": "32 words; quote matches ced:121 FUN-5.A.1 verbatim; bound t from the 6.4 Notation paragraph."
+    "evidence": "Shortened text true (g(x) is one number per x); quote verbatim on cache/text/ced/page-121.txt (script check)."
    },
    {
     "id": "ki-2",
     "verdict": "ok",
-    "evidence": "30 words; signed area and reversed-limit sign match BC-PT-99069 earns and ced:122 FUN-5.A.3."
+    "evidence": "Only the notation changed to LaTeX \\(g(a)=0\\)."
    },
    {
     "id": "st-1",
     "verdict": "ok",
-    "evidence": "Method is BC-QA-06003 expected_solution_path[0]; rival BC-ERR-06008 is in its wrong_approaches; 27 words, cue 16."
+    "evidence": "Method is BC-QA-06003 expected_solution_path entry without the label; rival BC-ERR-06008 now in sources."
+   },
+   {
+    "id": "st-1.contrast",
+    "verdict": "ok",
+    "evidence": "fixed 2026-09-29: not_this is now a BC-QA-06012 stem (typical_wording: the value of h prime at a stated input), 'For the graphed f, h(x)=\u222b_2^{x^2} f(t) dt. Find h'(2).', why_not 'A derivative: f(4) times the chain factor.', feature 'g itself is asked.'; BC-QA-06012 added to st-1's sources. SymPy: h'(x) = 2x f(x^2), h'(2) = 4 f(4)."
    },
    {
     "id": "st-2",
     "verdict": "ok",
-    "evidence": "Method and rival BC-ERR-06014 match BC-QA-06004 expected_solution_path and wrong_approaches; 35 words."
+    "evidence": "Leading label removed; method and rival BC-ERR-06014 match BC-QA-06004."
    },
    {
     "id": "st-3",
     "verdict": "ok",
-    "evidence": "Method and rival BC-ERR-06027 match BC-QA-06012; 28 words, cue 8."
+    "evidence": "fixed 2026-09-29: method restored to \"h'(x) equals the integrand at the upper limit.\", matching the function h every problem names."
    },
    {
     "id": "ex-1",
     "verdict": "ok",
-    "evidence": "SymPy: -2-4-2+pi*2**2/2 equals -8+2*pi; pieces on [2,8] are triangle -2, rectangle -4, triangle -2."
+    "evidence": "SymPy: -2-4-2+pi*2**2/2 equals -8+2*pi; pieces on [2,8] are triangle -2, rectangle -4, triangle -2.",
+    "note": "unchanged since 2026-09-29"
    },
    {
     "id": "reader-scores:ex-1",
     "verdict": "ok",
-    "evidence": "Line is BC-PT-99069 name, earns and does_not_earn verbatim from the bundle."
+    "evidence": "Line is BC-PT-99069 name, earns and does_not_earn verbatim from the bundle.",
+    "note": "unchanged since 2026-09-29"
    },
    {
     "id": "err-BC-ERR-06014",
     "verdict": "ok",
-    "evidence": "Behavior, consequence, BC-MIS-08024 text in bundle; wrong 8+2*pi is all pieces positive."
+    "evidence": "relation distinct, fix_prompt true; exprs unchanged (8 + 2pi vs -8 + 2pi)."
    },
    {
     "id": "err-BC-ERR-99012",
     "verdict": "ok",
-    "evidence": "Bundle text verbatim; from x=0 adds triangle +2 so 2-8+2*pi = -6+2*pi (SymPy)."
+    "evidence": "relation distinct, fix_prompt true; exprs unchanged (-6 + 2pi vs -8 + 2pi)."
    },
    {
     "id": "err-BC-ERR-06013",
     "verdict": "ok",
-    "evidence": "Bundle text verbatim; full circle 4*pi gives -8+4*pi."
+    "evidence": "relation distinct, fix_prompt true; exprs unchanged (-8 + 4pi vs -8 + 2pi)."
    },
    {
     "id": "err-BC-ERR-06028",
     "verdict": "ok",
-    "evidence": "Bundle text verbatim; f(5) on segment (4,-2) to (6,-2) is -2."
+    "evidence": "relation distinct, fix_prompt true; exprs unchanged (f(t) vs -2)."
    },
    {
     "id": "representations",
     "verdict": "ok",
-    "evidence": "null; the 6.4 conversion is carried by ki-1 and ki-2."
+    "evidence": "null; the 6.4 conversion is carried by ki-1 and ki-2.",
+    "note": "unchanged since 2026-09-29"
    },
    {
-    "id": "bridge:BC-PRQ-06005",
+    "id": "BC-PRQ-06005",
     "verdict": "ok",
-    "evidence": "12 words; paraphrase of failure_signature."
+    "evidence": "Shortened to 'Read f at the input.'; paraphrase of BC-PRQ-06005."
    },
    {
-    "id": "bridge:BC-PRQ-06007",
+    "id": "BC-PRQ-06007",
     "verdict": "ok",
-    "evidence": "12 words; paraphrase of failure_signature."
+    "evidence": "Shortened to the semicircle clause of BC-PRQ-06007 failure_signature."
    },
    {
-    "id": "bridge:BC-PRQ-06013",
+    "id": "BC-PRQ-06013",
     "verdict": "ok",
-    "evidence": "8 words; paraphrase of description_plain."
+    "evidence": "Wording trim only; paraphrase of BC-PRQ-06013 description_plain."
    },
    {
     "id": "chk-1",
     "verdict": "ok",
-    "evidence": "SymPy: -8+pi*2**2/2 equals -8+2*pi."
+    "evidence": "SymPy: -8+pi*2**2/2 equals -8+2*pi.",
+    "note": "unchanged since 2026-09-29"
    },
    {
     "id": "chk-2",
     "verdict": "ok",
-    "evidence": "SymPy: -1-2-1-2*pi equals -4-2*pi."
+    "evidence": "SymPy: -1-2-1-2*pi equals -4-2*pi.",
+    "note": "unchanged since 2026-09-29"
    },
    {
     "id": "chk-3",
     "verdict": "ok",
-    "evidence": "SymPy: 2+3+1-2*pi = 6-2*pi; distractors 6+2*pi, 4-2*pi (triangle -2 on [0,2]), 6-4*pi each match their error path."
+    "evidence": "SymPy: 2+3+1-2*pi = 6-2*pi; distractors 6+2*pi, 4-2*pi (triangle -2 on [0,2]), 6-4*pi each match their error path.",
+    "note": "unchanged since 2026-09-29"
    }
   ],
   "advice": [
    "st-3 method names only the integrand at the upper limit while its rival is the dropped chain factor; the method line should carry the factor so the first written line beats the rival.",
    "No block practises the reversed-limit case that ki-2 and the BC-PT-99069 line both stress (b left of a); a check with an input left of the lower limit would exercise it.",
    "err-BC-ERR-06028 is a derivative error inside a value lesson with no derivative example; it depends on LSN-CON-06008 for context.",
-   "Delivery fits: accumulation as motion and a draggable upper limit as interactive serve the ideas well."
+   "Delivery fits: accumulation as motion and a draggable upper limit as interactive serve the ideas well.",
+   "chk-2 stem (unchanged, earlier ok) opens 'As ex-1, with vertices', a block id in served text.",
+   "Contrast not_this could come from a sibling archetype the bundle carries rather than BC-QA-06003's own g prime stem, for example a formula integral with numeric limits."
   ],
   "counts": {
-   "ok": 19,
+   "ok": 21,
    "unsourced": 0,
    "wrong": 0,
    "over_cap": 0,

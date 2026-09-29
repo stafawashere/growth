@@ -27,7 +27,7 @@ Both skills map to BC-EK-LIM-5B2, so one core block, both bands.
 
 BC-QA-06014 (research/question-analysis/question-archetypes.md#BC-QA-06014 Converting between a limit of Riemann sums and a definite integral). `typical_wording`: "express the given limit of a Riemann sum as a definite integral", "write the given definite integral as the limit of a Riemann sum". `common_givens`: a definite integral with stated limits, a limit of a Riemann sum in sigma notation. `asked_to_produce`: an equivalent definite integral, an equivalent limit of Riemann sums. Official examples are MCQ only: BC-MCQ-CED-006, BC-MCQ-SAMPLE-008.
 
-This concept is the sum without the limit: the stem shows Σ, or asks to write or expand one for a stated n. Contrast pair on st-1: this stem is on BC-QA-06014, a definite integral to write as a finite sigma sum with n pieces; not this stem is a limit of a sigma sum to write as a definite integral, the near miss from the sibling concept BC-CON-06006. The separating feature is the limit in front.
+This concept is the sum without the limit: the stem shows Σ, or asks to write or expand one for a stated n. Contrast pair on st-1: this stem is on BC-QA-06014, a limit of a sigma sum to write as a definite integral (`typical_wording[0]`); not this stem is a plain sigma sum with n = 4 and no limit, which asks for a number, the finite sum this lesson writes and expands. The separating feature is the limit in front.
 
 Not this concept: "lim as n approaches infinity" in front (BC-CON-06006), or a table with a named sum (BC-CON-06003).
 
@@ -81,8 +81,8 @@ No drawn block. The skills carry BC-REP-01 only (topic 6.3 Representations parag
 
 ## Band plan
 
-- Low (full), in served order: prediction, orientation, the bridge, ki-1, st-1 with its contrast pair, ex-1, chk-1, the error block, chk-2. 438 words, 3.0 minutes (cap 900 and 6). There is one example, so nothing is faded.
-- Mid (brief): the same blocks. 438 words, 3.0 minutes (cap 450 and 3).
+- Low (full), in served order: prediction, orientation, the bridge, ki-1, st-1 with its contrast pair, ex-1, chk-1, the error block, chk-2. 440 words, 3.0 minutes (cap 900 and 6). There is one example, so nothing is faded.
+- Mid (brief): the same blocks. 440 words, 3.0 minutes (cap 450 and 3).
 - Refresher: ki-1, err-BC-ERR-06003, ex-1.
 
 ## Sources
@@ -169,12 +169,12 @@ No drawn block. The skills carry BC-REP-01 only (topic 6.3 Representations parag
    "evidence_tag": "inferred",
    "contrast": {
     "this": {
-     "text": "Write the right Riemann sum for ∫_1^5 2t^3 dt in sigma notation with n pieces.",
+     "text": "Write lim as n → ∞ of Σ (1 + 4i/n)^2 (4/n) as a definite integral.",
      "archetype_id": "BC-QA-06014"
     },
     "not_this": {
-     "text": "Write lim as n → ∞ of Σ (1 + 4i/n)^2 (4/n) as a definite integral.",
-     "why_not": "The limit turns the sum into an integral."
+     "text": "Evaluate Σ_{i=1}^{4} (1 + i)^2, the right sum for ∫_1^5 x^2 dx with n = 4.",
+     "why_not": "No limit: add four terms to get a number."
     },
     "feature": "lim as n → ∞ in front."
    }
@@ -488,8 +488,8 @@ No drawn block. The skills carry BC-REP-01 only (topic 6.3 Representations parag
   "brief": 3.0
  },
  "word_count": {
-  "full": 438,
-  "brief": 438
+  "full": 440,
+  "brief": 440
  }
 }
 ```

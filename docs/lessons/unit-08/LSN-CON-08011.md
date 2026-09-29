@@ -51,7 +51,7 @@ BC-QA-08008 lists BC-PT-99059, 99003, 99004 and 99001. ex-1 tags BC-PT-99001, th
 Both blocks are fix prompts (`fix_prompt` true, relation distinct). Two active errors meet the skills, in the bundle's order: BC-ERR-08019, BC-ERR-99019. Both bands serve both. On ex-1's draw.
 
 - err-BC-ERR-08019: the meeting points are (1, 1) and (3, 5); their y coordinates 1 and 5 used as limits give -16/3 against 4/3. Possible reason, words from BC-MIS-08012.
-- err-BC-ERR-99019: the area reported as 1.3 against 1.333 (the right step is written as a decimal, so the rendered value matches its sentence). No possible reason line: the linked descriptions (BC-MIS-09008, BC-MIS-07023) describe the written expression and the missing context, not the rounding.
+- err-BC-ERR-99019: the area reported as 1.3 against 4/3 (the right step's expression keeps the exact 4/3, and its sentence also gives the three-place 1.333). No possible reason line: the linked descriptions (BC-MIS-09008, BC-MIS-07023) describe the written expression and the missing context, not the rounding.
 
 ## Representations
 
@@ -307,7 +307,7 @@ BC-QA-08008 is `either`; the design takes Section I Part A, 2.14 minutes per que
    },
    "right_step": {
     "text": "4/3, or 1.333",
-    "expr": "1.333"
+    "expr": "4/3"
    },
    "relation": "distinct",
    "possible_reason": null,

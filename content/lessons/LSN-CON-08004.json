@@ -3,16 +3,16 @@
  "version": 1,
  "kind": "concept",
  "target_id": "BC-CON-08004",
- "status": "draft",
+ "status": "signed_off",
  "snapshot_digest": "a6a8ec9d3f59ab8f712e33d30cc22fc64bf2c478fbe7312e3e3118d319c6a42f",
  "source_digest": "565cbb333aa7e0b3de16a4a574999fb5389228c9d7118a755590164a6e323f15",
  "read_minutes": {
   "full": 3.3,
-  "brief": 2.8
+  "brief": 2.83
  },
  "word_count": {
-  "full": 411,
-  "brief": 362
+  "full": 415,
+  "brief": 366
  },
  "sections": [
   {
@@ -195,7 +195,8 @@
     "BC-SKL-08011"
    ],
    "sources": [
-    "BC-QA-08003"
+    "BC-QA-08003",
+    "BC-QA-04003"
    ],
    "evidence_tag": "verified",
    "archetype_id": "BC-QA-08003",
@@ -209,10 +210,10 @@
      "archetype_id": "BC-QA-08003"
     },
     "not_this": {
-     "text": "Velocity is v(t) = t^2 - 7t + 10, with x(0) = 4. Find x(6).",
-     "why_not": "It asks for a position: start plus signed integral."
+     "text": "Velocity is v(t) = t^2 - 7t + 10. Is the speed increasing at t = 3?",
+     "why_not": "One instant: compare the signs of v(3) and a(3)."
     },
-    "feature": "Total distance integrates |v|; a position adds the start."
+    "feature": "Total distance integrates |v| over an interval; one instant compares signs."
    }
   },
   {
@@ -1099,8 +1100,8 @@
   "author": "tools/lesson_transcribe.py",
   "prompt_version": "generator/lesson_v2",
   "design_path": "docs/lessons/unit-08/LSN-CON-08004.md",
-  "signed_off_by": null,
-  "signed_off_at": null,
+  "signed_off_by": "claude-opus-5-5",
+  "signed_off_at": "2026-09-29",
   "not_human": true
  }
 }

@@ -42,64 +42,79 @@
   "auditor": "claude-opus-5-5",
   "blocks": [
    {
+    "id": "prediction",
+    "verdict": "ok",
+    "evidence": "SymPy: -(1/2)(2)(2) = -2, ex-1 step 3; adds 2 is the BC-ERR-06014 path, adds nothing false; resolution is ki-1 from the 6.6 heading."
+   },
+   {
     "id": "orientation",
     "verdict": "ok",
-    "evidence": "27 words; paraphrase of BC-CON-06010 and BC-QA-06004 scoring_pattern on labels."
+    "evidence": "Shortened paraphrase of BC-CON-06010; true, no id."
    },
    {
     "id": "ki-1",
     "verdict": "ok",
-    "evidence": "29 words; quote matches ced:123 FUN-6.A.1 verbatim."
+    "evidence": "Shortened quote 'a definite integral can be evaluated by using geometry' is still a verbatim substring of cache/text/ced/page-123.txt and .raw.txt (script check); text true."
    },
    {
     "id": "st-1",
     "verdict": "ok",
-    "evidence": "Matches BC-QA-06004 path and BC-ERR-06014 wrong approach; 25 words."
+    "evidence": "Leading label removed from the rival; separating feature shortened and true."
+   },
+   {
+    "id": "st-1.contrast",
+    "verdict": "ok",
+    "evidence": "this matches BC-QA-06004 typical_wording (segments and semicircles, evaluate the integral); not_this Integral(x^2 + 1, 0, 6) = 78 by antiderivative (BC-CON-06012 near miss); why_not and feature true."
    },
    {
     "id": "ex-1",
     "verdict": "ok",
-    "evidence": "SymPy: 3/2-2+2*pi equals 2*pi-1/2; triangle 3/2 on [1,2], triangle -2 on [2,4], semicircle 2*pi."
+    "evidence": "Only the (sg-25:18) citation removed from step 6 why; exprs unchanged, 3/2 - 2 + 2pi = 2pi - 1/2."
    },
    {
     "id": "reader-scores:ex-1",
     "verdict": "ok",
-    "evidence": "BC-PT-99069 line verbatim; BC-QA-06004 lists BC-PT-99069."
+    "evidence": "BC-PT-99069 line verbatim; BC-QA-06004 lists BC-PT-99069.",
+    "note": "unchanged since 2026-09-29"
    },
    {
     "id": "err-BC-ERR-06014",
     "verdict": "ok",
-    "evidence": "Bundle text verbatim; 3/2+2+2*pi."
+    "evidence": "relation distinct, fix_prompt true; exprs unchanged."
    },
    {
     "id": "err-BC-ERR-06013",
     "verdict": "ok",
-    "evidence": "Bundle text verbatim; 4*pi for the semicircle."
+    "evidence": "relation distinct, fix_prompt true; exprs unchanged."
    },
    {
     "id": "representations",
     "verdict": "ok",
-    "evidence": "null."
+    "evidence": "null.",
+    "note": "unchanged since 2026-09-29"
    },
    {
-    "id": "bridge:BC-PRQ-06007",
+    "id": "BC-PRQ-06007",
     "verdict": "ok",
-    "evidence": "19 words; paraphrase of failure_signature."
+    "evidence": "Shortened to the semicircle clause of BC-PRQ-06007 failure_signature."
    },
    {
     "id": "chk-1",
     "verdict": "ok",
-    "evidence": "SymPy: 3/2-2+2*pi = 2*pi-1/2."
+    "evidence": "SymPy: 3/2-2+2*pi = 2*pi-1/2.",
+    "note": "unchanged since 2026-09-29"
    },
    {
     "id": "chk-2",
     "verdict": "ok",
-    "evidence": "SymPy: -1+4-2*pi = 3-2*pi; trapezoid bases 3 and 1, height 2."
+    "evidence": "SymPy: -1+4-2*pi = 3-2*pi; trapezoid bases 3 and 1, height 2.",
+    "note": "unchanged since 2026-09-29"
    },
    {
     "id": "chk-3",
     "verdict": "ok",
-    "evidence": "SymPy: 2+1/2-1-2*pi = 3/2-2*pi; distractors 7/2+2*pi, 3/2+2*pi, 3/2-4*pi match their paths."
+    "evidence": "SymPy: 2+1/2-1-2*pi = 3/2-2*pi; distractors 7/2+2*pi, 3/2+2*pi, 3/2-4*pi match their paths.",
+    "note": "unchanged since 2026-09-29"
    }
   ],
   "advice": [
@@ -109,7 +124,7 @@
    "Static figures fit a geometry reading."
   ],
   "counts": {
-   "ok": 12,
+   "ok": 14,
    "unsourced": 0,
    "wrong": 0,
    "over_cap": 0,

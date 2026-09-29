@@ -11,7 +11,7 @@ Concept BC-CON-06006 (skills BC-SKL-06014, BC-SKL-06015, BC-SKL-06016), topic 6.
 
 ## Prediction
 
-One multiple choice question on worked example 1's own term, \(3(1+2i/n)^2(2/n)\), asked before the rule is shown: over what interval the sample points run. The key is "From 1 to 3", the interval ex-1's integral is taken over. The distractors are the interval read off the width alone (the BC-ERR-99032 path) and an interval with the right start and a wrong length. The resolution, shown on the key idea screen beside the choice, states that the width gives the length and the first sample point gives the start. No verdict word. Sources: BC-CON-06006 and the topic 6.3 section the key ideas cite.
+One multiple choice question on worked example 1's own term, \(3(1+2i/n)^2(2/n)\), asked before the rule is shown: over what interval the sample points run. The key is "From 1 to 3", the interval ex-1's integral is taken over. The distractors are the interval read off the width alone (the BC-ERR-99032 path) and an interval with the right start and a wrong length. The resolution, shown on the key idea screen beside the choice, states that the width gives the length and the sample point expression 1 + 2i/n, which is 1 at i = 0, gives the start (BC-QA-06014 `expected_solution_path[2]`). No verdict word. Sources: BC-CON-06006 and the topic 6.3 section the key ideas cite.
 
 ## Orientation
 
@@ -22,7 +22,7 @@ Served text, from BC-CON-06006 `description_plain` and the topic's Assessment be
 Three BC-EK across three skills; two core, one extended.
 
 - ki-1 (core), BC-EK-LIM-5C1 (BC-SKL-06016), ced:120. Paraphrase of the Definition of the definite integral paragraph of Required mathematical knowledge, hypothesis (f continuous) and conclusion. Anchor quote, 14 words, found on ced:120.
-- ki-2 (core), BC-EK-LIM-5C2 (BC-SKL-06014, 06015), ced:120. The conversion read from the term, from the topic's Representations paragraph (limit of a sum to integral and back). No quote: the LIM-5.C.2 sentence is 27 words.
+- ki-2 (core), BC-EK-LIM-5C2 (BC-SKL-06014, 06015), ced:120. The conversion read from the term, from the topic's Representations paragraph (limit of a sum to integral and back). The sample point expression at i = 0 fixes a, from BC-QA-06014 `expected_solution_path[2]`; for a right endpoint form the first sample point, at i = 1, is a + (b - a)/n, so the text names i = 0. No quote: the LIM-5.C.2 sentence is 27 words.
 - ki-3 (extended), BC-EK-LIM-5B1 (BC-SKL-06014), ced:120. Anchor quote, 14 words.
 
 Each carries the concept notation line.
@@ -87,7 +87,7 @@ Drawn blocks already present (ki-1 motion, the representations model), so no fig
 
 ## Band plan
 
-- Low (full), in served order: prediction, orientation, the bridge, ki-1 to ki-3, st-1 with its contrast pair, ex-1, chk-1, both error blocks, chk-2, the model, chk-3. 515 words, 3.5 minutes (cap 900 and 6). There is no example 2, so nothing is faded, and BC-QA-06014 lists no `point_types`, so no scoring lines.
+- Low (full), in served order: prediction, orientation, the bridge, ki-1 to ki-3, st-1 with its contrast pair, ex-1, chk-1, both error blocks, chk-2, the model, chk-3. 517 words, 3.5 minutes (cap 900 and 6). There is no example 2, so nothing is faded, and BC-QA-06014 lists no `point_types`, so no scoring lines.
 - Mid (brief): prediction, orientation, the bridge, ki-1, ki-2, st-1 with its contrast pair, ex-1, chk-1, both error blocks, chk-2. 450 words, 3.0 minutes (cap 450 and 3). The orientation, both core key ideas, the strategy fields, the contrast and the bridge were shortened to fit; the ki-1 anchor quote and every check stem stay.
 - Refresher: ki-1, ki-2, both error blocks, ex-1.
 
@@ -144,7 +144,7 @@ Drawn blocks already present (ki-1 motion, the representations model), so no fig
     "is_key": false
    }
   ],
-  "resolution": "The width \\(2/n\\) gives length 2, and the first sample point is 1. The interval is \\([1,3]\\), so the limit is \\(\\int_1^3 3x^2\\,dx\\).",
+  "resolution": "The width \\(2/n\\) gives length 2, and \\(1+2i/n\\) gives 1 at \\(i=0\\). The interval is \\([1,3]\\), so the limit is \\(\\int_1^3 3x^2\\,dx\\).",
   "sources": [
    "BC-CON-06006",
    "research/units/unit-06-integration-accumulation.md#6.3 Riemann Sums, Summation Notation, and Definite Integral Notation"
@@ -178,13 +178,14 @@ Drawn blocks already present (ki-1 motion, the representations model), so no fig
    "id": "ki-2",
    "ek_id": "BC-EK-LIM-5C2",
    "depth": "core",
-   "text": "Split the term. The width fixes b - a, the first sample point fixes a, the height gives f.",
+   "text": "Split the term: width fixes b - a, the sample point at i = 0 fixes a, height gives f.",
    "notation": "\\(\\int_a^b f(x)\\,dx\\)",
    "quote": null,
    "sources": [
     "BC-EK-LIM-5C2",
     "ced:120",
-    "research/units/unit-06-integration-accumulation.md#6.3 Riemann Sums, Summation Notation, and Definite Integral Notation"
+    "research/units/unit-06-integration-accumulation.md#6.3 Riemann Sums, Summation Notation, and Definite Integral Notation",
+    "BC-QA-06014"
    ]
   },
   {
@@ -329,7 +330,7 @@ Drawn blocks already present (ki-1 motion, the representations model), so no fig
   }
  ],
  "representations": {
-  "text": "Right sums for ex-1 at n = 2, 4, 8, 16, 100: 39, 32.25, 29.06, 27.52, 26.24. They settle on 26, the integral.",
+  "text": "Right sums for the worked example at n = 2, 4, 8, 16, 100: 39, 32.25, 29.06, 27.52, 26.24. They settle on 26, the integral.",
   "figure": {
    "kind": "numeric_experiment",
    "function": "3*x**2",
@@ -762,7 +763,7 @@ Drawn blocks already present (ki-1 motion, the representations model), so no fig
   "brief": 3.0
  },
  "word_count": {
-  "full": 515,
+  "full": 517,
   "brief": 450
  }
 }

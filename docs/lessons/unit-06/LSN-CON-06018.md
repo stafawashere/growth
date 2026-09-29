@@ -27,7 +27,7 @@ All four skills map to BC-EK-FUN-6F1, so one core block, both bands.
 
 BC-QA-06010 (research/question-analysis/question-archetypes.md#BC-QA-06010 Antiderivative by linear partial fractions). `typical_wording`: "find the indefinite integral of the given rational expression by decomposing it into partial fractions". `common_givens`: a rational function whose quadratic denominator factors into distinct linear factors, a family of functions with the parameter fixed at a stated value, the limits of integration. `asked_to_produce`: a partial fraction decomposition, logarithmic antiderivatives, the value of a definite integral. Official examples: BC-FRQ-2019-Q5-B, BC-FRQ-2015-Q5-D, BC-MCQ-PE2012-020.
 
-The signal: a constant or linear numerator over a quadratic that factors into two distinct linears. Contrast pair on st-1: the this stem is on BC-QA-06010, a constant over a quadratic that factors into distinct linears; the not this stem has the same denominator with numerator degree equal to the denominator's, the improper form the archetype's rival, decomposing without dividing (BC-ERR-06026), invites. The separating feature is the degree comparison.
+The signal: a constant or linear numerator over a quadratic that factors into two distinct linears. Contrast pair on st-1: the this stem is on BC-QA-06010, a constant over a quadratic that factors into distinct linears; the not this stem has the same denominator with the numerator 4x + 7, its derivative, the near miss from BC-QA-06008 (substitution, the archetype BC-ERR-06019 in the bundle carries), where u is the denominator and the antiderivative is ln|2x^2 + 7x + 3| + C. The separating feature is a numerator that is not the denominator's derivative. The rival, decomposing without dividing (BC-ERR-06026), stays on st-1 and on its error block.
 
 What says "not this concept": the numerator is a multiple of the denominator's derivative (substitution to one logarithm, BC-CON-06015); numerator degree at least the denominator's (divide first, BC-CON-06016); a quadratic that does not factor (complete the square, BC-CON-06016).
 
@@ -64,7 +64,7 @@ None. The topic's conversions are symbolic to symbolic.
 
 ## Prerequisite bridge
 
-- BC-PRQ-06003 (absolute value inside ln) and BC-PRQ-06011 (clearing denominators and solving for the numerators), each from its `description_plain` and `failure_signature`.
+- BC-PRQ-06003 (absolute value inside the ln of a linear factor, as `description_plain` restricts it) and BC-PRQ-06011 (clearing denominators and solving for the numerators), each from its `description_plain` and `failure_signature`.
 
 ## Time
 
@@ -97,6 +97,7 @@ BC-QA-06010 is `no_calculator`, typically one part of a multipart free response 
 - BC-PRQ-06003, BC-PRQ-06011
 - research/units/unit-06-integration-accumulation.md#6.12 Integrating Using Linear Partial Fractions
 - research/question-analysis/question-archetypes.md#BC-QA-06010 Antiderivative by linear partial fractions
+- research/question-analysis/question-archetypes.md#BC-QA-06008 Antiderivative or definite integral by substitution
 - research/exam/exam-structure.md#Section and part layout
 - research/scoring/common-point-losses.md#Answer points
 - [inferred] BC-PT-99081 untagged for the brief cap. Settled by a cap or a shorter reader text.
@@ -182,7 +183,8 @@ BC-QA-06010 is `no_calculator`, typically one part of a multipart free response 
    "separating_feature": "Decompose only when the numerator's degree is lower.",
    "sources": [
     "BC-QA-06010",
-    "BC-ERR-06026"
+    "BC-ERR-06026",
+    "research/question-analysis/question-archetypes.md#BC-QA-06008 Antiderivative or definite integral by substitution"
    ],
    "evidence_tag": "verified",
    "contrast": {
@@ -191,10 +193,10 @@ BC-QA-06010 is `no_calculator`, typically one part of a multipart free response 
      "archetype_id": "BC-QA-06010"
     },
     "not_this": {
-     "text": "Find \\(\\int \\frac{2x^2+7x+4}{2x^2+7x+3}\\,dx\\).",
-     "why_not": "The numerator's degree equals the denominator's, so division comes first."
+     "text": "Find \\(\\int \\frac{4x+7}{2x^2+7x+3}\\,dx\\).",
+     "why_not": "The numerator is the denominator's derivative: substitute."
     },
-    "feature": "Numerator degree below the denominator's: decompose."
+    "feature": "Numerator not the denominator's derivative."
    }
   }
  ],
@@ -374,7 +376,7 @@ BC-QA-06010 is `no_calculator`, typically one part of a multipart free response 
  "prerequisite_bridges": [
   {
    "prq_id": "BC-PRQ-06003",
-   "text": "ln carries absolute value bars."
+   "text": "ln of a linear factor carries absolute value bars."
   },
   {
    "prq_id": "BC-PRQ-06011",

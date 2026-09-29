@@ -42,79 +42,97 @@
   "auditor": "claude-opus-5-5",
   "blocks": [
    {
+    "id": "prediction",
+    "verdict": "ok",
+    "evidence": "SymPy: 3x sin2x/2 - integral(3 sin2x/2) minus integral(3x cos2x) = 0 (B true); d/dx of A differs from 3x cos 2x; d/dx of C leaves 3 sin 2x extra. Resolution is 6.11 line 'product rule for derivatives read as an antidifferentiation technique'."
+   },
+   {
     "id": "orientation",
     "verdict": "ok",
-    "evidence": "Paraphrases BC-CON-06017 description_plain and research 6.11 Assessment behaviour; 20 words."
+    "evidence": "Shortened paraphrase of BC-CON-06017 and BC-SKL-06057/06058; no id."
    },
    {
     "id": "ki-1",
     "verdict": "ok",
-    "evidence": "Paraphrases research 6.11 Required mathematical knowledge (Integration by parts, Definite form); 32 words."
+    "evidence": "Paraphrases research 6.11 Required mathematical knowledge (Integration by parts, Definite form); 32 words.",
+    "note": "unchanged since 2026-09-29"
    },
    {
     "id": "st-1",
     "verdict": "ok",
-    "evidence": "Cue from common_givens, method expected_solution_path[0], rival wrong_approaches BC-ERR-06022."
+    "evidence": "Method is expected_solution_path[0] with no label; rival label and id removed, BC-ERR-06022 in sources; cue shortened from common_givens."
+   },
+   {
+    "id": "st-1.contrast",
+    "verdict": "ok",
+    "evidence": "this 2x sin 3x matches parameter_spec notes (multiplier x times sin(rate x), rate 3) and typical_wording 'indefinite integral of the given product'; not_this 2x cos(x^2): SymPy diff(x^2) = 2x, so substitution applies; feature true."
    },
    {
     "id": "ex-1",
     "verdict": "ok",
-    "evidence": "SymPy: integrate(3x cos 2x,(x,0,pi/6)) = sqrt(3)*pi/8 - 3/8; diff of step 3 antiderivative minus integrand = 0; step 4 difference 0."
-   },
-   {
-    "id": "what_a_reader_scores:ex-1",
-    "verdict": "ok",
-    "evidence": "BC-PT-99057 and BC-PT-99004 earns, does_not_earn, notation and precision fields copied from the bundle."
+    "evidence": "Only cue and why text changed: citations (sg-23:18) removed and cues shortened; exprs and relations unchanged."
    },
    {
     "id": "err-BC-ERR-06022",
     "verdict": "ok",
-    "evidence": "Observed behaviour and consequence verbatim; (3x^2/2)(sin 2x/2) is the product of the factor antiderivatives; BC-MIS-06019 listed."
+    "evidence": "fix_prompt true with relation distinct; exprs unchanged; SymPy: wrong minus right simplifies to nonzero."
    },
    {
     "id": "err-BC-ERR-06023",
     "verdict": "ok",
-    "evidence": "Verbatim record; uv + integral of v du gives 3x sin2x/2 - 3cos2x/4, distinct from the key."
+    "evidence": "fix_prompt true with relation distinct; exprs unchanged; SymPy: wrong minus right simplifies to nonzero."
    },
    {
     "id": "err-BC-ERR-99025",
     "verdict": "ok",
-    "evidence": "SymPy: derivative of 3x^2 cos2x/2 + Integral(3x^2 sin2x) minus 3x cos2x = 0, so relation equivalent holds; record verbatim."
+    "evidence": "fix_prompt false with relation equivalent; exprs unchanged; SymPy: wrong minus right simplifies to 0 up to the constant."
    },
    {
     "id": "representations",
     "verdict": "ok",
-    "evidence": "null; research 6.11 lists only symbolic and verbal conversions."
+    "evidence": "null; research 6.11 lists only symbolic and verbal conversions.",
+    "note": "unchanged since 2026-09-29"
    },
    {
-    "id": "bridge-BC-PRQ-06005",
+    "id": "BC-PRQ-06005",
     "verdict": "ok",
-    "evidence": "Paraphrases failure_signature \"f' and f are interchanged\"."
+    "evidence": "Shortened paraphrase of failure_signature (f' and f interchanged)."
    },
    {
     "id": "chk-1",
     "verdict": "ok",
-    "evidence": "SymPy: (pi/4)(sqrt3/2) + 3/8 - 3/4 minus key = 0."
+    "evidence": "SymPy: (pi/4)(sqrt3/2) + 3/8 - 3/4 minus key = 0.",
+    "note": "unchanged since 2026-09-29"
    },
    {
     "id": "chk-2",
     "verdict": "ok",
-    "evidence": "SymPy: integrate(2t sin3t,(t,0,pi/9)) - (sqrt3/9 - pi/27) = 0; draw matches parameter_spec pi/(3 rate)."
+    "evidence": "SymPy: integrate(2t sin3t,(t,0,pi/9)) - (sqrt3/9 - pi/27) = 0; draw matches parameter_spec pi/(3 rate).",
+    "note": "unchanged since 2026-09-29"
    },
    {
     "id": "chk-3",
     "verdict": "ok",
-    "evidence": "SymPy: integral = 1 + e^2; A 3e^2 - 1 (plus sign), B e^2 (x^2 e^(2x) at 1), D 1 - e^2 (boundary term dropped)."
+    "evidence": "SymPy: integral = 1 + e^2; A 3e^2 - 1 (plus sign), B e^2 (x^2 e^(2x) at 1), D 1 - e^2 (boundary term dropped).",
+    "note": "unchanged since 2026-09-29"
+   },
+   {
+    "id": "no_figure_reason",
+    "verdict": "ok",
+    "evidence": "Skills carry BC-REP-01 and BC-REP-04 only, neither figure-bearing; ki-1 is an identity between integrals."
    }
   ],
   "advice": [
    "Option D in chk-3 is tagged BC-ERR-99025 for a dropped boundary term; the record instance speaks of limits misplaced between the uv term and the remaining integral, which fits, but the tag could be named in the derivation text.",
    "err-BC-ERR-99025 shows an equivalent but harder line; as step_reveal it should say plainly that the identity is right and the choice is what fails, or a reader may take it as a sign error.",
    "BC-PT-99056 (u and dv point) is untagged; the scoring habit that u and dv may be implied is in the design prose but not in any served block.",
-   "Delivery modes fit: text for the rule, step_reveal for the process and each error. The lesson teaches stem recognition, the first written line and the rival."
+   "Delivery modes fit: text for the rule, step_reveal for the process and each error. The lesson teaches stem recognition, the first written line and the rival.",
+   "Prediction key B is the parts formula itself ('uv minus the integral of v du'), so a student who has not met the rule answers from recall of the name rather than from the example's numbers; an option stated as a computed expression on 3x cos 2x would test prediction better.",
+   "Scoring consequences of err-BC-ERR-06022 and err-BC-ERR-06023 carry page citations (sg-23:18, sg-24:18); verbatim record text the reader strips, so not lint.",
+   "BC-QA-06009 common_givens include a table of values of a function and its derivative (BC-REP-03), but the lesson's skills carry BC-REP-01 and BC-REP-04, so no_figure_reason holds on the brief's rule."
   ],
   "counts": {
-   "ok": 13,
+   "ok": 15,
    "unsourced": 0,
    "wrong": 0,
    "over_cap": 0,

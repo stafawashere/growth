@@ -42,94 +42,116 @@
   "auditor": "claude-opus-5-5",
   "blocks": [
    {
+    "id": "prediction",
+    "verdict": "ok",
+    "evidence": "SymPy apart(2(x^2+3)/(x+2)) = 2x - 4 + 14/(x+2); A leaves the quotient 2x - 4, C is not an antiderivative method; only B true. Resolution from 6.10 Long division line and BC-ERR-06026; no ids or verdict words."
+   },
+   {
     "id": "orientation",
     "verdict": "ok",
-    "evidence": "Paraphrases BC-CON-06016 formal; 32 words."
+    "evidence": "Shortened paraphrase of BC-CON-06016 description_plain; 16 words, no id."
    },
    {
     "id": "ki-1",
     "verdict": "ok",
-    "evidence": "Quote matches ced:127 FUN-6.D.3 verbatim; completing the square to log or inverse tangent from BC-CON-06016 formal."
+    "evidence": "Quote matches ced:127 FUN-6.D.3 verbatim; completing the square to log or inverse tangent from BC-CON-06016 formal.",
+    "note": "unchanged since 2026-09-29"
    },
    {
     "id": "st-1",
     "verdict": "ok",
-    "evidence": "Method from BC-QA-06016 expected_solution_path; rival wrong_approaches[2] (BC-ERR-06026); improper form from parameter_spec notes."
+    "evidence": "Method is expected_solution_path[0] with no label; rival 'Rival:' prefix and id removed, BC-ERR-06026 moved to sources."
+   },
+   {
+    "id": "st-1.contrast",
+    "verdict": "ok",
+    "evidence": "this 3(x^2+1)/(x+4) is the parameter_spec improper_rational form (multiplier 3, shift 4, constant 1 in domain), SymPy apart 3x - 12 + 51/(x+4); not_this 5/((x+1)(x+3)) apart 5/(2(x+1)) - 5/(2(x+3)), proper, no division; feature is the degree comparison from the spec notes."
    },
    {
     "id": "st-2",
     "verdict": "ok",
-    "evidence": "Method and rival from BC-QA-06018 expected_solution_path[0] and wrong_approaches."
+    "evidence": "Only the 'Rival:' label removed from the rival; method unchanged."
    },
    {
     "id": "ex-1",
     "verdict": "ok",
-    "evidence": "SymPy apart(2(x^2+3)/(x+2)) = 2x - 4 + 14/(x+2); diff(x^2 - 4x + 14 log(x+2)) equals the integrand; remainder 7 > 0."
+    "evidence": "SymPy apart(2(x^2+3)/(x+2)) = 2x - 4 + 14/(x+2); diff(x^2 - 4x + 14 log(x+2)) equals the integrand; remainder 7 > 0.",
+    "note": "unchanged since 2026-09-29"
    },
    {
     "id": "err-BC-ERR-06022",
     "verdict": "ok",
-    "evidence": "Wrong step (x^3/3 + 3x) 2 log(x+2) is the numerator's and 2/(x+2)'s antiderivatives multiplied; BC-MIS-06019 linked."
+    "evidence": "fix_prompt true with relation distinct; exprs unchanged; SymPy: wrong minus right simplifies to nonzero."
    },
    {
     "id": "err-BC-ERR-06026",
     "verdict": "ok",
-    "evidence": "Cover up at x = -2 gives A = 2(4 + 3) = 14; record text and BC-MIS-06022 match."
+    "evidence": "fix_prompt true with relation distinct; exprs unchanged; SymPy: wrong minus right simplifies to nonzero."
    },
    {
     "id": "err-BC-ERR-06033",
     "verdict": "ok",
-    "evidence": "2x^2 - 4x has derivative 4x - 4, not 2x - 4; record text matches."
+    "evidence": "fix_prompt true with relation distinct; exprs unchanged; SymPy: wrong minus right simplifies to nonzero."
    },
    {
     "id": "representations",
     "verdict": "ok",
-    "evidence": "null; BC-REP-01 only."
+    "evidence": "null; BC-REP-01 only.",
+    "note": "unchanged since 2026-09-29"
    },
    {
     "id": "BC-PRQ-06001",
     "verdict": "ok",
-    "evidence": "Paraphrase of description_plain."
+    "evidence": "Shortened paraphrase of description_plain (splitting a fraction, factoring out constants)."
    },
    {
     "id": "BC-PRQ-06002",
     "verdict": "ok",
-    "evidence": "Paraphrase of description_plain."
+    "evidence": "Shortened paraphrase of description_plain (radicals and reciprocals to powers)."
    },
    {
     "id": "BC-PRQ-06009",
     "verdict": "ok",
-    "evidence": "Paraphrase of description_plain."
+    "evidence": "Shortened paraphrase of description_plain (polynomial plus proper remainder)."
    },
    {
     "id": "BC-PRQ-06010",
     "verdict": "ok",
-    "evidence": "Paraphrase of description_plain."
+    "evidence": "Shortened paraphrase of description_plain (square plus a constant)."
    },
    {
     "id": "chk-1",
     "verdict": "ok",
-    "evidence": "Same as ex-1, verified by SymPy."
+    "evidence": "Same as ex-1, verified by SymPy.",
+    "note": "unchanged since 2026-09-29"
    },
    {
     "id": "chk-2",
     "verdict": "ok",
-    "evidence": "SymPy apart gives 3x + 3 + 9/(x-1); derivative of key minus integrand = 0."
+    "evidence": "SymPy apart gives 3x + 3 + 9/(x-1); derivative of key minus integrand = 0.",
+    "note": "unchanged since 2026-09-29"
    },
    {
     "id": "chk-3",
     "verdict": "ok",
-    "evidence": "SymPy apart gives x - 3 + 10/(x+3); key verified; A, C, D derivations reproduce the stated expressions and are distinct."
+    "evidence": "SymPy apart gives x - 3 + 10/(x+3); key verified; A, C, D derivations reproduce the stated expressions and are distinct.",
+    "note": "unchanged since 2026-09-29"
+   },
+   {
+    "id": "no_figure_reason",
+    "verdict": "ok",
+    "evidence": "All four skills carry BC-REP-01 only (figure-bearing set is BC-REP-02, 03, 07, 08 per docs/plan/01); ki-1 states a rewriting rule, no process."
    }
   ],
   "advice": [
    "err-BC-ERR-06022's scoring consequence names the u and dv points of integration by parts, which do not apply to a division problem.",
    "err-BC-ERR-06033 has possible_reason null though the record links BC-MIS-02009.",
    "Completing the square (st-2, BC-SKL-06054) has no worked example or check, so half the concept is recognition only.",
-   "Keys write log(x + a) without absolute value, safe under the stated domain; a reader may still expect ln|x + a| per BC-PRQ-06003."
+   "Keys write log(x + a) without absolute value, safe under the stated domain; a reader may still expect ln|x + a| per BC-PRQ-06003.",
+   "Scoring consequence of err-BC-ERR-06022 carries the page citations (sg-23:18, sg-24:18); verbatim record text the reader strips, so not lint."
   ],
   "counts": {
-   "ok": 16,
+   "ok": 19,
    "unsourced": 0,
    "wrong": 0,
    "over_cap": 0,

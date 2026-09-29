@@ -36,59 +36,74 @@
   "auditor": "claude-opus-5-5",
   "blocks": [
    {
+    "id": "prediction",
+    "verdict": "ok",
+    "evidence": "SymPy: A, the integral of v over [0, 7/2], is -7/24, the key; B (integral of |v|) is 71/24 and C (v(7/2) - v(0)) is 7/4, both false as displacement. Resolution matches the 8.2 Displacement and Total distance paragraphs. No id, no verdict word."
+   },
+   {
     "id": "orientation",
     "verdict": "ok",
-    "evidence": "Paraphrases BC-CON-08003 description_formal and CHA-4.C.1; 25 words."
+    "evidence": "Paraphrases BC-CON-08003 description_formal and CHA-4.C.1; 25 words.",
+    "note": "unchanged since 2026-09-29"
    },
    {
     "id": "ki-1",
     "verdict": "ok",
-    "evidence": "CHA-4.C.1 on ced:153 and research 8.2 Displacement paragraph; the sign reading is standard."
+    "evidence": "CHA-4.C.1 on ced:153 and research 8.2 Displacement paragraph; the sign reading is standard.",
+    "note": "unchanged since 2026-09-29"
    },
    {
     "id": "st-1",
     "verdict": "ok",
-    "evidence": "BC-QA-08003 path starts 'classify the requested quantity'; rival is its wrong_approach."
+    "evidence": "Label strip only; method is BC-QA-08003 expected_solution_path[0] (classify the requested quantity), rival is wrong_approaches[0]."
+   },
+   {
+    "id": "st-1.contrast",
+    "verdict": "ok",
+    "evidence": "fixed 2026-09-29: not_this moved from a BC-QA-08003 position stem to a BC-QA-04003 speed stem, after its typical_wording ('A particle has velocity v(t) = t^2 - 5t + 4. Is its speed increasing at t = 6?'), why_not 'One instant: compare the signs of v(6) and a(6); nothing is integrated.', feature 'An interval with displacement asked integrates v; one instant reads v and a there.'; this unchanged. SymPy: v(6) = 10 and a(6) = 7, same sign, so the not_this is answerable at one instant with no integral, while this is the integral of v over [0, 6], 6. Recognition prose, method choice prose, st-1 sources, the Sources list and the machine sources now cite BC-QA-04003 and its heading in place of BC-QA-06005."
    },
    {
     "id": "ex-1",
     "verdict": "ok",
-    "evidence": "SymPy: integral of -t^2 + 4t - 3 on [0, 7/2] is -7/24."
+    "evidence": "SymPy: integral of -t^2 + 4t - 3 on [0, 7/2] is -7/24.",
+    "note": "unchanged since 2026-09-29"
    },
    {
     "id": "err-BC-ERR-99010",
     "verdict": "ok",
-    "evidence": "Record text matches; SymPy: integral of |v| on [0, 7/2] is 71/24, signed value -7/24."
+    "evidence": "Only change fix_prompt true; relation distinct; SymPy: -7/24 against 71/24."
    },
    {
     "id": "representations",
     "verdict": "ok",
-    "evidence": "null; nothing to audit."
+    "evidence": "null; nothing to audit.",
+    "note": "unchanged since 2026-09-29"
    },
    {
     "id": "BC-PRQ-06005",
     "verdict": "ok",
-    "evidence": "In bundle prerequisites; paraphrases its failure_signature."
+    "evidence": "In bundle prerequisites; paraphrases its failure_signature.",
+    "note": "unchanged since 2026-09-29"
    },
    {
     "id": "chk-1",
     "verdict": "ok",
-    "evidence": "SymPy: -7/24."
+    "evidence": "SymPy: -7/24.",
+    "note": "unchanged since 2026-09-29"
    },
    {
     "id": "chk-2",
     "verdict": "ok",
-    "evidence": "SymPy: integral of 2t^2 - 12t + 10 on [0, 6] is -12."
+    "evidence": "SymPy: integral of 2t^2 - 12t + 10 on [0, 6] is -12.",
+    "note": "unchanged since 2026-09-29"
    }
   ],
   "advice": [
-   "The only error block is for a distance stem, the rival quantity, not an error in computing displacement; it teaches the rival but leaves displacement itself without an error block.",
-   "No reader-scores entry: the lesson does not show what a reader credits for displacement (setup, value, units).",
-   "ex-1 step 1 has no expression; it is a classification step, which suits the archetype but should render as text rather than step_reveal math.",
-   "Two short answer checks both only evaluate an integral; neither asks the learner to classify displacement versus distance from wording."
+   "For st-1.contrast, a near miss from outside BC-QA-08003 is needed; the catalogue names BC-QA-04003 (rectilinear motion by differentiating a position) as the neighbouring motion archetype, or the pair can move to a BC-QA-06005 stem that is not motion-worded.",
+   "Earlier advice still stands: the only error block is for a distance stem, and neither check asks the learner to classify displacement against distance from the wording; the new prediction now does that once."
   ],
   "counts": {
-   "ok": 9,
+   "ok": 11,
    "unsourced": 0,
    "wrong": 0,
    "over_cap": 0,

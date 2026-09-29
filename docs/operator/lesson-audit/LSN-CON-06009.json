@@ -42,83 +42,102 @@
   "auditor": "claude-opus-5-5",
   "blocks": [
    {
+    "id": "prediction",
+    "verdict": "ok",
+    "evidence": "ex-1 f zeros by SymPy solve: 1, 10/3, 5; f(10/3 - 0.01) = 3/200 > 0, f(10/3 + 0.01) = -3/200 < 0, so g' = f changes + to - and g has a relative maximum; f' is -3/2 on (2, 4), so no inflection at 10/3; resolution is ki-1 from the 6.5 heading."
+   },
+   {
     "id": "orientation",
     "verdict": "ok",
-    "evidence": "24 words; paraphrase of BC-CON-06009 and the justification-requirements heading."
+    "evidence": "Wording trim; true, no id."
    },
    {
     "id": "ki-1",
     "verdict": "ok",
-    "evidence": "35 words; g'=f, g''=f', candidates test all sourced in 6.5 and BC-PT-99011."
+    "evidence": "g' = f, g'' = f' and the candidates test as before; LaTeX notation true."
    },
    {
     "id": "st-1",
     "verdict": "ok",
-    "evidence": "Matches BC-QA-06003 path entries two and three and BC-ERR-06008; 32 words."
+    "evidence": "Leading label removed; method matches BC-QA-06003 path; rival BC-ERR-06008 now in sources."
+   },
+   {
+    "id": "st-1.contrast",
+    "verdict": "ok",
+    "evidence": "fixed 2026-09-29: not_this is now 'From the graph, where does f have a relative maximum?', the earlier part about features of f that BC-ERR-06008 non_conceptual_causes names ('answered from the previous part, which did ask about features of f'), read directly off the drawn curve, which is st-1's rival; why_not 'It asks about f itself.', feature 'A feature of g is asked.'. BC-ERR-06008 is in st-1's sources and in the bundle."
    },
    {
     "id": "ex-1",
     "verdict": "ok",
-    "evidence": "Zeros of f: 1, 10/3, 5, 8; f changes + to - at 10/3 and 8 (hand sign chart on linear pieces, SymPy solve)."
+    "evidence": "Only the BC-PT-99024 tag on step 1 removed; exprs and answer FiniteSet(10/3, 8) unchanged."
    },
    {
     "id": "reader-scores:ex-1",
     "verdict": "ok",
-    "evidence": "BC-PT-99024 and BC-PT-99013 lines verbatim from the bundle."
+    "evidence": "BC-PT-99024 line removed with its tag; remaining BC-PT-99013 line verbatim from the bundle."
    },
    {
     "id": "err-BC-ERR-06008",
     "verdict": "ok",
-    "evidence": "Bundle text verbatim; drawn peaks of f at x=2 and 6."
+    "evidence": "relation distinct, fix_prompt true; exprs unchanged."
    },
    {
     "id": "err-BC-ERR-06009",
     "verdict": "ok",
-    "evidence": "Bundle text verbatim; turning points of f at 2, 4, 6, 10 (8 is not: f decreasing both sides)."
+    "evidence": "relation distinct, fix_prompt true; exprs unchanged."
    },
    {
     "id": "err-BC-ERR-06010",
     "verdict": "ok",
-    "evidence": "Bundle text verbatim; reason tied to g not f, per sg-25:17 in justification-requirements."
+    "evidence": "relation equivalent, fix_prompt false; exprs unchanged (same set, reason differs)."
    },
    {
     "id": "err-BC-ERR-06012",
     "verdict": "ok",
-    "evidence": "Bundle text verbatim; candidates add endpoints 0 and 12."
+    "evidence": "relation distinct, fix_prompt true; exprs unchanged."
    },
    {
     "id": "representations",
     "verdict": "ok",
-    "evidence": "null."
+    "evidence": "null.",
+    "note": "unchanged since 2026-09-29"
    },
    {
-    "id": "bridge:BC-PRQ-06007",
+    "id": "BC-PRQ-06007",
     "verdict": "ok",
-    "evidence": "12 words; paraphrase of failure_signature."
+    "evidence": "Shortened to the semicircle clause of BC-PRQ-06007 failure_signature."
    },
    {
     "id": "chk-1",
     "verdict": "ok",
-    "evidence": "Same f; maxima 10/3 and 8."
+    "evidence": "Same f; maxima 10/3 and 8.",
+    "note": "unchanged since 2026-09-29"
    },
    {
     "id": "chk-2",
     "verdict": "ok",
-    "evidence": "Zeros 2/3, 3, 16/3, 8; + to - at 2/3 and 16/3; 8 is a minimum with the semicircle above."
+    "evidence": "Zeros 2/3, 3, 16/3, 8; + to - at 2/3 and 16/3; 8 is a minimum with the semicircle above.",
+    "note": "unchanged since 2026-09-29"
    },
    {
     "id": "chk-3",
     "verdict": "ok",
-    "evidence": "Key 2, 4, 6, 10 with an f-based reason; distractors match BC-ERR-06009, 06010, 06008."
+    "evidence": "Key 2, 4, 6, 10 with an f-based reason; distractors match BC-ERR-06009, 06010, 06008.",
+    "note": "unchanged since 2026-09-29"
    }
   ],
   "advice": [
    "The single bridge (area formulas) does not serve a feature lesson; nothing on reading sign and slope of f.",
    "ki-1 and err-BC-ERR-06012 name the absolute extremum candidates test but no example or check asks for an absolute extremum.",
-   "Interactive reading of f's sign and slope at a dragged input suits a reading idea."
+   "Interactive reading of f's sign and slope at a dragged input suits a reading idea.",
+   "err-BC-ERR-06008, 06009, 06010 and 06012 scoring_consequence carry (sg-25:17) or (sg-25:19); verbatim record text the reader strips.",
+   "chk-2 and chk-3 stems (unchanged, earlier ok) open 'As ex-1' and 'Same f as ex-1', a block id in served text.",
+   "Dropping the BC-PT-99024 line removes the theorem point that ex-1 step 1 (g' = f by the theorem) still demonstrates; the step now teaches a scored line without naming it.",
+   "The prediction stem gives only signs of f, so the inflection distractor is not ruled out from the stem alone; it is false only from ex-1's graph (f' constant on (2, 4)).",
+   "Contrast not_this could come from a sibling archetype rather than BC-QA-06003's own value-of-g stem."
   ],
   "counts": {
-   "ok": 14,
+   "ok": 16,
    "unsourced": 0,
    "wrong": 0,
    "over_cap": 0,

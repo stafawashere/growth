@@ -35,7 +35,7 @@ Three archetypes in one family, integral-approximation.
 - BC-QA-06002 (research/question-analysis/question-archetypes.md#BC-QA-06002 Trapezoidal approximation of an accumulated amount from a table): `common_givens` a table at unevenly spaced inputs; `asked_to_produce` a trapezoidal sum with each term shown. Official examples BC-FRQ-2014-Q4-C, BC-FRQ-2025-Q3-C, BC-FRQ-2018-Q4-C.
 - BC-QA-06017 (research/question-analysis/question-archetypes.md#BC-QA-06017 Riemann or trapezoidal sum with equal subintervals for a function given by a formula or a graph): `common_givens` a formula or a graph of segments, the interval, the number of subintervals; `typical_wording` "use a midpoint Riemann sum with four subintervals of equal width".
 
-The signal: "approximate" beside a named sum and a table or a stated n. Contrast pair on st-1: this stem is on BC-QA-06001, a right sum asked as a value on a table with unequal gaps; not this stem asks whether the same right sum is an over or under estimate, the near miss from the sibling concept BC-CON-06004. The separating feature is that a value is asked.
+The signal: "approximate" beside a named sum and a table or a stated n. Contrast pair on st-1: this stem is on BC-QA-06001, a right sum asked as a value on a table with unequal gaps; not this stem is a right sum with three equal widths on a formula, the near miss from BC-QA-06017, where one common width is correct and the table-reading habit of unequal widths is that archetype's `wrong_approaches` entry. The separating feature is unequal gaps read from a table.
 
 Not this concept: "is it an over or under estimate" (BC-CON-06004), a sigma expression (BC-CON-06005), "lim" in front of the sum (BC-CON-06006).
 
@@ -48,7 +48,7 @@ One strategy block, since all three archetypes share the family integral-approxi
 ## Solution path
 
 - ex-1, BC-QA-06001, both bands, calculator. Draw: gaps 2, 1, 3, 2, even_gap 2, rates 6, 10, 13, 9, 4, endpoint left, context tank, spacing nonuniform, framing context; derived left_sum 79, right_sum 68, left_values 38, third_option 76, all distinct. Steps: subintervals (no value); the products (new, BC-PT-99018); 79 (equivalent, BC-PT-99019).
-- ex-2, BC-QA-06002, low band, no calculator, faded (`fade_from` 2): the trapezoid products line (step 1) is shown with the widths and the halves, and the student adds to the value before step 2 reveals. The fade falls at the addition because the products line is the scored setup and the sum is the step a student can produce from it. Draw: gaps 4, 2, 6, rates 5, 9, 11, 7, initial 40, context rain, ask integral; derived trapezoid 102. Steps: the three halved terms (new, BC-PT-99018); 102 (equivalent, BC-PT-99019).
+- ex-2, BC-QA-06002, low band, no calculator, faded (`fade_from` 4): the three trapezoid products (steps 1 to 3, values 28, 20 and 54) are shown with the widths and the halves, and the student writes the sum and adds before steps 4 and 5 reveal. The fade falls after the products so the withheld part holds the scored setup and the value, neither of which is on screen. Draw: gaps 4, 2, 6, rates 5, 9, 11, 7, initial 40, context rain, ask integral; derived trapezoid 102. Steps: the three halved terms 4(5 + 9)/2, 2(9 + 11)/2, 6(11 + 7)/2 (new each); 28 + 20 + 54 (new, BC-PT-99018); 102 (equivalent, BC-PT-99019).
 
 No published item carries either draw. A fluent solver writes every product and the value; reading the widths off the table is held in the head (unit README section 5) [inferred].
 
@@ -98,7 +98,7 @@ Every non-text choice is [inferred]; settled by the modality A/B.
 
 ## Band plan
 
-- Low (full), in served order: prediction, orientation, the three bridges, ki-1, ki-2, ki-3, st-1 with its contrast pair, ex-1 with its reader lines, chk-1, four error blocks, ex-2 faded with its reader lines, chk-2, chk-3. 803 words, 5.4 minutes (cap 900 and 6).
+- Low (full), in served order: prediction, orientation, the three bridges, ki-1, ki-2, ki-3, st-1 with its contrast pair, ex-1 with its reader lines, chk-1, four error blocks, ex-2 faded with its reader lines, chk-2, chk-3. 829 words, 5.6 minutes (cap 900 and 6).
 - Mid (brief), in served order: prediction, orientation, the three bridges, ki-1, ki-2, st-1 with its contrast pair, ex-1 with its reader lines, chk-1, err-BC-ERR-06001, err-BC-ERR-06002, chk-2. 446 words, 3.0 minutes (cap 450 and 3). The orientation, key ideas, strategy fields, cues and bridges were shortened to hold this; no scoring line was dropped.
 - Refresher: ki-1, ki-2, the four error blocks, ex-1.
 
@@ -237,10 +237,10 @@ Every non-text choice is [inferred]; settled by the modality A/B.
      "archetype_id": "BC-QA-06001"
     },
     "not_this": {
-     "text": "Is a right sum for ∫_0^6 g(t) dt over or under?",
-     "why_not": "It asks error direction, not a value."
+     "text": "Right sum, three equal widths, for ∫_0^6 t^2 dt.",
+     "why_not": "One common width fits a formula."
     },
-    "feature": "A value asked."
+    "feature": "Unequal table gaps."
    }
   }
  ],
@@ -331,15 +331,33 @@ Every non-text choice is [inferred]; settled by the modality A/B.
    "calculator_status": "no_calculator",
    "steps": [
     {
-     "cue": "Trapezoidal: average of the two end values times the width.",
-     "why": "Widths 4, 2, 6, the half in every term.",
-     "expr": "4*(5 + 9)/2 + 2*(9 + 11)/2 + 6*(11 + 7)/2",
+     "cue": "First trapezoid: width 4, ends 5 and 9.",
+     "why": "Average of the two end values times the width.",
+     "expr": "4*(5 + 9)/2",
+     "relation": "new"
+    },
+    {
+     "cue": "Second: width 2, ends 9 and 11.",
+     "why": "Same rule.",
+     "expr": "2*(9 + 11)/2",
+     "relation": "new"
+    },
+    {
+     "cue": "Third: width 6, ends 11 and 7.",
+     "why": "Same rule.",
+     "expr": "6*(11 + 7)/2",
+     "relation": "new"
+    },
+    {
+     "cue": "Write the sum of the three products.",
+     "why": "The sum is the scored setup.",
+     "expr": "28 + 20 + 54",
      "relation": "new",
      "point_type_id": "BC-PT-99018"
     },
     {
      "cue": "Add.",
-     "why": "28 + 20 + 54.",
+     "why": "The approximation.",
      "expr": "102",
      "relation": "equivalent",
      "point_type_id": "BC-PT-99019"
@@ -349,7 +367,7 @@ Every non-text choice is [inferred]; settled by the modality A/B.
     "form": "numeric",
     "expr": "102"
    },
-   "fade_from": 2
+   "fade_from": 4
   }
  ],
  "what_a_reader_scores": [
@@ -478,7 +496,7 @@ Every non-text choice is [inferred]; settled by the modality A/B.
  "prerequisite_bridges": [
   {
    "prq_id": "BC-PRQ-06005",
-   "text": "Right row."
+   "text": "Value at the stated input."
   },
   {
    "prq_id": "BC-PRQ-06007",
@@ -1098,11 +1116,11 @@ Every non-text choice is [inferred]; settled by the modality A/B.
   "research/scoring/notation-requirements.md#The equal sign"
  ],
  "read_minutes": {
-  "full": 5.4,
+  "full": 5.6,
   "brief": 3.0
  },
  "word_count": {
-  "full": 803,
+  "full": 829,
   "brief": 446
  }
 }

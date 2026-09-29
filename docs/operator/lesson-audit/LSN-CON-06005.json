@@ -36,54 +36,72 @@
   "auditor": "claude-opus-5-5",
   "blocks": [
    {
+    "id": "prediction",
+    "verdict": "ok",
+    "evidence": "SymPy 2*4**2 + 2*6**2 = 104, ex-1's n = 2 value; short_answer key 104; resolution is LIM-5.B.2 on ced:120 (value times width); no id."
+   },
+   {
     "id": "orientation",
     "verdict": "ok",
-    "evidence": "Paraphrase of BC-CON-06005 description_plain and LIM-5.B.2; 34 words."
+    "evidence": "Paraphrase of BC-CON-06005 description_plain and LIM-5.B.2; 34 words.",
+    "note": "unchanged since 2026-09-29"
    },
    {
     "id": "ki-1",
     "verdict": "ok",
-    "evidence": "Quote is a substring of LIM-5.B.2 on ced:120; width (b minus a) over n and right endpoint a plus i delta x come from BC-SKL-06013 records in the bundle."
+    "evidence": "Quote is a substring of LIM-5.B.2 on ced:120; width (b minus a) over n and right endpoint a plus i delta x come from BC-SKL-06013 records in the bundle.",
+    "note": "unchanged since 2026-09-29"
    },
    {
     "id": "st-1",
     "verdict": "ok",
-    "evidence": "Cue from BC-QA-06014 common_givens, method is expected_solution_path[0], rival from common_distractors (width factor omitted); tagged inferred since no wrong_approaches."
+    "evidence": "Only the rival changed: the 'Rival:' label is gone; text from BC-QA-06014 common_distractors (width factor omitted)."
+   },
+   {
+    "id": "st-1.contrast",
+    "verdict": "ok",
+    "evidence": "fixed 2026-09-29: this is now the limit-of-a-sum stem of BC-QA-06014 typical_wording[0] ('Write lim as n \u2192 \u221e of \u03a3 (1 + 4i/n)^2 (4/n) as a definite integral.'); not_this is a plain sigma sum with no limit ('Evaluate \u03a3_{i=1}^{4} (1 + i)^2, the right sum for \u222b_1^5 x^2 dx with n = 4.'), why_not 'No limit: add four terms to get a number.', feature 'lim as n \u2192 \u221e in front.'. SymPy: the limit is 124/3 = \u222b_1^5 x^2 dx; the finite sum is 4 + 9 + 16 + 25 = 54."
    },
    {
     "id": "ex-1",
     "verdict": "ok",
-    "evidence": "SymPy Sum((2 + 4*i/n)**2*(4/n)) at n = 2 is 104, limit 208/3 equals integral of x^2 on [2, 6]; draw in domain, finish 6."
+    "evidence": "SymPy Sum((2 + 4*i/n)**2*(4/n)) at n = 2 is 104, limit 208/3 equals integral of x^2 on [2, 6]; draw in domain, finish 6.",
+    "note": "unchanged since 2026-09-29"
    },
    {
     "id": "err-BC-ERR-06003",
     "verdict": "ok",
-    "evidence": "Record text equals bundle; reason substring of BC-MIS-06001; 4^2 + 6^2 = 52 vs 104."
+    "evidence": "fix_prompt true with relation distinct; 52 versus 104."
    },
    {
-    "id": "bridge-BC-PRQ-06006",
+    "id": "BC-PRQ-06006",
     "verdict": "ok",
-    "evidence": "Paraphrase of BC-PRQ-06006 description_plain and failure_signature (off by one)."
+    "evidence": "Paraphrase of BC-PRQ-06006 description_plain and failure_signature (off by one).",
+    "note": "unchanged since 2026-09-29"
    },
    {
     "id": "chk-1",
     "verdict": "ok",
-    "evidence": "SymPy Sum((2 + 2*i)**2*2, (i, 1, 2)) = 104, matches ex-1."
+    "evidence": "SymPy Sum((2 + 2*i)**2*2, (i, 1, 2)) = 104, matches ex-1.",
+    "note": "unchanged since 2026-09-29 apart from the renumbered section pointer"
    },
    {
     "id": "chk-2",
     "verdict": "ok",
-    "evidence": "SymPy left sum of 2t^3 on [1, 5] at n = 2 is 2*1*2 + 2*27*2 = 112; draw in domain."
+    "evidence": "SymPy left sum of 2t^3 on [1, 5] at n = 2 is 2*1*2 + 2*27*2 = 112; draw in domain.",
+    "note": "unchanged since 2026-09-29"
    }
   ],
   "advice": [
-   "BC-QA-06014 asks to convert between a limit of sums and an integral; ex-1 and the checks ask to write a sigma sum and evaluate it at n = 2, which the archetype does not ask. The conversion stem is left to LSN-CON-06006.",
-   "BC-ERR-06003's observed_behavior speaks of tabulated rate values, applied here to a formula; the mapping is reasonable but the served text reads oddly next to x^2.",
-   "No MCQ check; the low band ends with two short answers, so the rival is never shown as a choice.",
-   "ex-1 step_reveal suits the build of the general term."
+   "prediction stem opens 'Predict.', which repeats the command_verb.",
+   "st-1.contrast: with BC-QA-06014 as the only archetype, a sourced pair would put its stem (limit to integral) against a plain sigma sum with no limit as the not_this.",
+   "Carried from the earlier audit: BC-QA-06014 asks to convert between a limit of sums and an integral; ex-1 and the checks ask to write a sigma sum and evaluate it at n = 2, which the archetype does not ask. The conversion stem is left to LSN-CON-06006.",
+   "Carried from the earlier audit: BC-ERR-06003's observed_behavior speaks of tabulated rate values, applied here to a formula; the mapping is reasonable but the served text reads oddly next to x^2.",
+   "Carried from the earlier audit: No MCQ check; the low band ends with two short answers, so the rival is never shown as a choice.",
+   "Carried from the earlier audit: ex-1 step_reveal suits the build of the general term."
   ],
   "counts": {
-   "ok": 8,
+   "ok": 10,
    "unsourced": 0,
    "wrong": 0,
    "over_cap": 0,

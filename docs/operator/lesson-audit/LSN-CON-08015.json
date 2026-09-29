@@ -42,78 +42,92 @@
   "auditor": "claude-opus-5-5",
   "blocks": [
    {
+    "id": "prediction",
+    "verdict": "ok",
+    "evidence": "SymPy: f - g = 2x - x**2; key B the only true option; A f(x) alone and C (f - g)**2 (the area) false; resolution matches BC-CON-08015; no verdict word."
+   },
+   {
     "id": "orientation",
     "verdict": "ok",
-    "evidence": "Paraphrases BC-CON-08015 description_plain and 8.7 Assessment behaviour; 26 words."
+    "evidence": "Shortened paraphrase of BC-CON-08015 description_plain."
    },
    {
     "id": "ki-1",
     "verdict": "ok",
-    "evidence": "Matches 8.7 Required mathematical knowledge (side as difference, no pi); quote found verbatim on ced:158; 51 words."
+    "evidence": "Shortened 8.7 paraphrase (side as difference, no pi); quote unchanged, verbatim on ced:158."
    },
    {
     "id": "st-1",
     "verdict": "ok",
-    "evidence": "Cue, method and rival from BC-QA-08011 asked_to_produce, expected_solution_path, wrong_approaches; parts within caps."
+    "evidence": "Method is expected_solution_path[0] with no label; rival wrong_approaches[1]; no id."
+   },
+   {
+    "id": "st-1.contrast",
+    "verdict": "ok",
+    "evidence": "this fits BC-QA-08011 typical_wording; not_this is a BC-QA-08013 washer stem (SymPy meet -1, 2, x + 2 on top, both nonnegative); why_not and feature true."
    },
    {
     "id": "ex-1",
     "verdict": "ok",
-    "evidence": "SymPy: f minus g = 2x - x^2; Integral((2x-x^2)^2,(x,0,2)) = 16/15; 32/3 - 16 + 32/5 = 16/15; f(1)=3, g(1)=2."
+    "evidence": "Only cue and why text changed; (2x - x**2)**2 = 4x**2 - 4x**3 + x**4 and 32/3 - 16 + 32/5 = 16/15 (SymPy)."
    },
    {
     "id": "reader-ex-1",
     "verdict": "ok",
-    "evidence": "BC-PT-99001 line equals name, earns, does_not_earn and notation fields of the bundle record."
+    "evidence": "BC-PT-99001 line equals name, earns, does_not_earn and notation fields of the bundle record. (unchanged since 2026-09-29)"
    },
    {
     "id": "err-BC-ERR-08028",
     "verdict": "ok",
-    "evidence": "Observed and consequence verbatim from bundle; wrong side -x^2+3x+1 vs right 2x-x^2; reason is a slice of BC-MIS-08016."
+    "evidence": "fix_prompt true with relation distinct; math unchanged from the earlier audit."
    },
    {
     "id": "err-BC-ERR-99011",
     "verdict": "ok",
-    "evidence": "Verbatim from bundle; SymPy wrong 16*pi/15 vs right 16/15; reason is a slice of BC-MIS-08015."
+    "evidence": "fix_prompt true with relation distinct; math unchanged from the earlier audit."
    },
    {
     "id": "err-BC-ERR-99033",
     "verdict": "ok",
-    "evidence": "Verbatim from bundle; wrong Integral(s^2) evaluates to 2*s**2, not a number; right 16/15; null reason disclosed."
+    "evidence": "fix_prompt true with relation distinct; math unchanged from the earlier audit."
    },
    {
     "id": "representations",
     "verdict": "ok",
-    "evidence": "null, disclosed in prose; Representations paragraph carried by figures."
+    "evidence": "null, disclosed in prose; Representations paragraph carried by figures. (unchanged since 2026-09-29)"
    },
    {
-    "id": "bridge-BC-PRQ-08004",
+    "id": "BC-PRQ-08004",
     "verdict": "ok",
-    "evidence": "Paraphrase of BC-PRQ-08004 description_plain and failure_signature; 23 words."
+    "evidence": "Shortened paraphrase of BC-PRQ-08004."
    },
    {
     "id": "chk-1",
     "verdict": "ok",
-    "evidence": "SymPy: Integral((2x-x^2)^2,(x,0,2)) = 16/15, key matches."
+    "evidence": "SymPy: Integral((2x-x^2)^2,(x,0,2)) = 16/15, key matches. (unchanged since 2026-09-29)"
    },
    {
     "id": "chk-2",
     "verdict": "ok",
-    "evidence": "SymPy: side -x^2+5x-4, Integral over [1,4] of its square = 81/10, key matches."
+    "evidence": "SymPy: side -x^2+5x-4, Integral over [1,4] of its square = 81/10, key matches. (unchanged since 2026-09-29)"
    },
    {
     "id": "chk-3",
     "verdict": "ok",
-    "evidence": "SymPy: key 64/15; A (3-2x^2)^2 gives 58/5 (f alone); C 64*pi/15; D (3-2x^2)^2 - 1 gives 48/5 (separate squares); all distinct."
+    "evidence": "SymPy: key 64/15; A (3-2x^2)^2 gives 58/5 (f alone); C 64*pi/15; D (3-2x^2)^2 - 1 gives 48/5 (separate squares); all distinct. (unchanged since 2026-09-29)"
+   },
+   {
+    "id": "time",
+    "verdict": "ok",
+    "evidence": "I-A 2.14 minutes = 62/29 from exam-structure.md#Section and part layout; the either placement is listed in the inferred array; block not in the earlier audit and not changed by the redesign."
    }
   ],
   "advice": [
-   "err-BC-ERR-99033 serves the bundle text about differentiating and a chain rule step, which does not fit a volume setup; a reader will find the consequence line off topic.",
-   "chk-3 is served as an identify MCQ but the key is recorded as the number 64/15 while options are integrals; align key form with options.",
-   "Recognition of stem, first line (the side as f minus g) and rival (separate squares) is taught through st-1, ex-1 and chk-3; delivery modes fit (figures for a reading of the slice, step_reveal for processes)."
+   "err-BC-ERR-99033 serves the bundle text about differentiating and a chain rule step, which does not fit a volume setup.",
+   "chk-3 key is recorded as the number 64/15 while its options are integrals; align key form with options."
   ],
   "counts": {
-   "ok": 13,
+   "ok": 16,
    "unsourced": 0,
    "wrong": 0,
    "over_cap": 0,

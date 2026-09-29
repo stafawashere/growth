@@ -29,13 +29,13 @@ BC-QA-08003 (research/question-analysis/question-archetypes.md#BC-QA-08003 Recti
 
 What says "not this concept": "displacement" or "change in position" (BC-CON-08003); a position at a later time (BC-CON-08005).
 
-The near miss for the contrast pair is a position at a later time with a stated start (BC-QA-06005, the wording of BC-CON-08005, a stem from outside BC-QA-08003): it gives the same velocity and interval and asks for x at the end, which keeps the sign of v and adds the start.
+The near miss for the contrast pair is a BC-QA-04003 stem, whose `typical_wording` is "is the speed of the particle increasing, decreasing, or neither at the stated time, and give a reason" (research/question-analysis/question-archetypes.md#BC-QA-04003 Straight-line motion with velocity, acceleration, and speed): the same velocity, asked about one instant, so the signs of v and its derivative there decide it and nothing is integrated.
 
 ## Method choice
 
 One strategy block, both bands. st-1, BC-QA-08003. Method, `expected_solution_path[0]`: classify the requested quantity, then the integral of |v|. Rival, `wrong_approaches`: integrating velocity and taking the absolute value of the result. Separating feature: v changes sign inside the interval, so pieces cancel inside one signed integral. Not tagged inferred.
 
-Contrast pair on st-1. This: a BC-QA-08003 stem asking for total distance traveled. Not this: a BC-QA-06005 stem with a stated x(0) asking for x at the later time. The feature is whether the absolute value of v or the start value enters.
+Contrast pair on st-1. This: a BC-QA-08003 stem asking for total distance traveled. Not this: a BC-QA-04003 stem asking whether the speed is increasing at one time. The feature is an interval against a single instant.
 
 ## Solution path
 
@@ -84,8 +84,8 @@ Figure presence: ki-1 is already a drawn block, so no `no_figure_reason` is carr
 
 The served order of 2026-09-29: prediction, orientation, bridges, key ideas, strategy with the contrast pair, example 1 and its scoring lines, check 1, error blocks, example 2 faded when present, check 2, representations, check 3.
 
-- Low (full): orientation, ki-1, st-1 with the contrast pair, ex-1, three error blocks, chk-1 to chk-3, three bridges, with the prediction first. 485 words, 3.3 minutes (cap 900 and 6).
-- Mid (brief): orientation, ki-1, st-1 with the contrast pair, ex-1, err-BC-ERR-08009, err-BC-ERR-08010, chk-1, chk-2, three bridges, with the prediction first. 420 words, 2.8 minutes (cap 450 and 3).
+- Low (full): orientation, ki-1, st-1 with the contrast pair, ex-1, three error blocks, chk-1 to chk-3, three bridges, with the prediction first. 489 words, 3.3 minutes (cap 900 and 6).
+- Mid (brief): orientation, ki-1, st-1 with the contrast pair, ex-1, err-BC-ERR-08009, err-BC-ERR-08010, chk-1, chk-2, three bridges, with the prediction first. 424 words, 2.83 minutes (cap 450 and 3).
 - Refresher: ki-1, the three error blocks, ex-1.
 
 ## Sources
@@ -100,7 +100,7 @@ The served order of 2026-09-29: prediction, orientation, bridges, key ideas, str
 - [inferred] Exam part I-A for an "either" archetype. Settled by the item mix.
 - [inferred] ki-1 as a static figure. Settled by the modality A/B.
 - [inferred] pr-1 and the st-1 contrast pair are authored for the redesign. Settled by the pretest and contrast measurements in the build plan.
-- research/question-analysis/question-archetypes.md#BC-QA-06005 Net change from a rate with an initial condition
+- research/question-analysis/question-archetypes.md#BC-QA-04003 Straight-line motion with velocity, acceleration, and speed
 
 ## Machine record
 
@@ -117,7 +117,7 @@ The served order of 2026-09-29: prediction, orientation, bridges, key ideas, str
   {"id": "ki-1", "ek_id": "BC-EK-CHA-4C1", "depth": "core", "text": "Total distance is the integral of |v| over [a, b]. By hand, the zeros of v cut the interval and each piece counts as positive.", "notation": "total distance", "quote": null, "sources": ["BC-EK-CHA-4C1", "ced:153", "research/units/unit-08-applications-integration.md#8.2 Connecting Position, Velocity, and Acceleration of Functions Using Integrals"]}
  ],
  "strategy": [
-  {"id": "st-1", "archetype_id": "BC-QA-08003", "cue": "Total distance traveled from a velocity and an interval.", "method": "Classify the quantity. Total distance: the integral of |v|.", "rival": "The absolute value of the integral of v.", "separating_feature": "v changes sign inside the interval.", "sources": ["BC-QA-08003"], "evidence_tag": "verified", "contrast": {"this": {"text": "Velocity is v(t) = t^2 - 7t + 10. Find the total distance traveled over [0, 6].", "archetype_id": "BC-QA-08003"}, "not_this": {"text": "Velocity is v(t) = t^2 - 7t + 10, with x(0) = 4. Find x(6).", "why_not": "It asks for a position: start plus signed integral."}, "feature": "Total distance integrates |v|; a position adds the start."}}
+  {"id": "st-1", "archetype_id": "BC-QA-08003", "cue": "Total distance traveled from a velocity and an interval.", "method": "Classify the quantity. Total distance: the integral of |v|.", "rival": "The absolute value of the integral of v.", "separating_feature": "v changes sign inside the interval.", "sources": ["BC-QA-08003", "BC-QA-04003"], "evidence_tag": "verified", "contrast": {"this": {"text": "Velocity is v(t) = t^2 - 7t + 10. Find the total distance traveled over [0, 6].", "archetype_id": "BC-QA-08003"}, "not_this": {"text": "Velocity is v(t) = t^2 - 7t + 10. Is the speed increasing at t = 3?", "why_not": "One instant: compare the signs of v(3) and a(3)."}, "feature": "Total distance integrates |v| over an interval; one instant compares signs."}}
  ],
  "worked_examples": [
   {"id": "ex-1", "archetype_id": "BC-QA-08003", "bands": ["low", "mid"], "parameter_draw": {"size": 2, "direction": "right_first", "first_zero": 1, "gap": 3, "overrun": "1", "context": "particle", "units": "meters", "framing": "bare"}, "problem": {"text": "A particle moves on the x-axis with v(t) = 2t^2 - 10t + 8 meters per second. Find the total distance it travels over [0, 5].", "command_verb": "find"}, "calculator_status": "no_calculator", "steps": [{"cue": "Total distance traveled: the integral of speed.", "why": "Every stretch counts as positive.", "expr": "Integral(Abs(2*t**2 - 10*t + 8), (t, 0, 5))", "relation": "new"}, {"cue": "No calculator, so |v| is split where v changes sign.", "why": "v = 2(t - 1)(t - 4).", "expr": "2*t**2 - 10*t + 8 = 0", "relation": "new"}, {"cue": "Zeros inside [0, 5].", "why": "Sign changes at 1 and 4: three pieces.", "expr": "FiniteSet(1, 4)", "relation": "solve", "variable": "t"}, {"cue": "v is negative on [1, 4], so that piece is reversed.", "why": "Pieces 11/3, 9, 11/3.", "expr": "Integral(2*t**2 - 10*t + 8, (t, 0, 1)) - Integral(2*t**2 - 10*t + 8, (t, 1, 4)) + Integral(2*t**2 - 10*t + 8, (t, 4, 5))", "relation": "new"}, {"cue": "Add the sizes.", "why": "Meters.", "expr": "49/3", "relation": "equivalent"}], "answer": {"form": "symbolic", "expr": "49/3"}}
@@ -149,8 +149,8 @@ The served order of 2026-09-29: prediction, orientation, bridges, key ideas, str
   {"block": "err-BC-ERR-99010", "mode": "step_reveal", "reason": "rule 1", "sources": []}
  ],
  "refresher": ["ki-1", "err-BC-ERR-08009", "err-BC-ERR-08010", "err-BC-ERR-99010", "ex-1"],
- "read_minutes": {"full": 3.3, "brief": 2.8},
- "word_count": {"full": 485, "brief": 420},
+ "read_minutes": {"full": 3.3, "brief": 2.83},
+ "word_count": {"full": 489, "brief": 424},
  "research_lines": [
   {"file": "research/units/unit-08-applications-integration.md", "line": "Where velocity keeps one sign the two quantities agree up to sign, and where velocity changes sign they differ"}
  ],
@@ -158,6 +158,6 @@ The served order of 2026-09-29: prediction, orientation, bridges, key ideas, str
   {"claim": "BC-QA-08003 is an either archetype, so the lesson takes Section I Part A and a no calculator example.", "settles": "The exam part mix the archetype is served in."},
   {"claim": "ki-1 is served as a static figure with the negative piece reflected.", "settles": "The modality A/B in the build plan: skip rate and time to first credited success by mode."}
  ],
- "sources": ["BC-CON-08004", "BC-SKL-08007", "BC-SKL-08008", "BC-SKL-08011", "BC-EK-CHA-4C1", "ced:153", "BC-QA-08003", "BC-ERR-08009", "BC-ERR-08010", "BC-ERR-99010", "BC-MIS-08005", "BC-MIS-08004", "BC-PRQ-06005", "BC-PRQ-08001", "BC-PRQ-08003", "research/units/unit-08-applications-integration.md#8.2 Connecting Position, Velocity, and Acceleration of Functions Using Integrals", "research/question-analysis/question-archetypes.md#BC-QA-08003 Rectilinear motion analysed with definite integrals", "research/exam/exam-structure.md#Section and part layout"]
+ "sources": ["BC-CON-08004", "BC-SKL-08007", "BC-SKL-08008", "BC-SKL-08011", "BC-EK-CHA-4C1", "ced:153", "BC-QA-08003", "BC-QA-04003", "BC-ERR-08009", "BC-ERR-08010", "BC-ERR-99010", "BC-MIS-08005", "BC-MIS-08004", "BC-PRQ-06005", "BC-PRQ-08001", "BC-PRQ-08003", "research/units/unit-08-applications-integration.md#8.2 Connecting Position, Velocity, and Acceleration of Functions Using Integrals", "research/question-analysis/question-archetypes.md#BC-QA-08003 Rectilinear motion analysed with definite integrals", "research/question-analysis/question-archetypes.md#BC-QA-04003 Straight-line motion with velocity, acceleration, and speed", "research/exam/exam-structure.md#Section and part layout"]
 }
 ```

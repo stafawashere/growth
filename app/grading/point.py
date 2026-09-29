@@ -12,6 +12,10 @@ confirmed read-back. For each point, in order:
    sample, or an evidence quote that is not in the student's work escalates the point: earned is
    null, the point is provisional, and it is never averaged (test_disagreement_escalates).
 
+The model is asked once per sample per part, not once per point: every point of a part that step 1
+left undecided goes into the same call, which returns a verdict for each. A judge that exposes
+judge_points answers a whole part at once; a plain callable is asked about one point at a time.
+
 Then three passes over the whole point vector, in the backend:
 
 - Follow-through: a point whose follows_from names a lost point, and whose fixed-key check failed,
@@ -258,48 +262,129 @@ def model_decision(part, point, samples, failures, confirmed_text, check_record)
    )
 
 
-def sample_point(judge, record, part, point, work):
-   samples = []
-   failures = []
+def answers_for(judge, record, part, points, work, strictness, label):
+   """Point id to that point's sample, or to the SampleFailed that stands in for it."""
+   judge_points = getattr(judge, "judge_points", None)
+
+   if judge_points is not None:
+      return judge_points(record, part, points, work, strictness, label)
+
+   answers = {}
+
+   for point in points:
+      try:
+         answers[point["point_id"]] = judge(record, part, point, work, strictness, label)
+      except SampleFailed as failed:
+         answers[point["point_id"]] = failed
+
+   return answers
+
+
+def sample_points(judge, record, part, points, work):
+   samples = {point["point_id"]: [] for point in points}
+   failures = {point["point_id"]: [] for point in points}
 
    for label, strictness in SAMPLE_PLAN:
       try:
-         sample = judge(record, part, point, work, strictness, label)
+         answers = answers_for(judge, record, part, points, work, strictness, label)
+         call_failure = "the grading named no verdict for this point"
       except SampleFailed as failed:
-         failures.append(str(failed))
-         continue
+         answers = {}
+         call_failure = str(failed)
 
-      samples.append(dict(sample, sample=label, strictness=strictness))
+      for point in points:
+         point_id = point["point_id"]
+         answer = answers.get(point_id)
+         is_missing = answer is None
+         is_failed = isinstance(answer, SampleFailed)
+
+         if is_missing:
+            failures[point_id].append(call_failure)
+         elif is_failed:
+            failures[point_id].append(str(answer))
+         else:
+            samples[point_id].append(dict(answer, sample=label, strictness=strictness))
 
    return samples, failures
 
 
-def decide_point(record, part, point, work, labels, judge, judge_available):
-   part_work = work_for_part(work, part["id"])
+def settled_by_check(record, part, point, work, labels):
+   """The deterministic decision when the check settles the point, else None with the check's
+   record, which is None too when no check applies."""
    has_check = point.get("check") is not None
    check_decides = has_check and is_deterministic_type(point["point_type_id"], labels)
-   check_record = None
 
-   if check_decides:
-      result = checks.run_check(point["check"], part_work, checks.question_context(record, work))
-      is_settled = result.outcome in SETTLED_OUTCOMES
+   if not check_decides:
+      return None, None
 
-      if is_settled:
-         return deterministic_decision(part, point, result), judge_available
+   part_work = work_for_part(work, part["id"])
+   result = checks.run_check(point["check"], part_work, checks.question_context(record, work))
+   is_settled = result.outcome in SETTLED_OUTCOMES
 
-      check_record = result.as_record()
+   if is_settled:
+      return deterministic_decision(part, point, result), None
 
-   if not judge_available:
-      return pending_decision(part, point, check_record, "waiting for the grader"), False
+   return None, result.as_record()
 
-   try:
-      samples, failures = sample_point(judge, record, part, point, work)
-   except JudgeUnavailable as unavailable:
-      return pending_decision(part, point, check_record, f"waiting for the grader: {unavailable}"), False
 
-   decision = model_decision(part, point, samples, failures, work_text(work), check_record)
+def decide_part_points(record, part, points, work, labels, judge, judge_available):
+   """Decides the given points of one part, in their order, asking the model once per sample for
+   every point the checks left open."""
+   decisions = {}
+   check_records = {}
+   open_points = []
 
-   return decision, True
+   for point in points:
+      decision, check_record = settled_by_check(record, part, point, work, labels)
+
+      if decision is not None:
+         decisions[point["point_id"]] = decision
+         continue
+
+      check_records[point["point_id"]] = check_record
+      open_points.append(point)
+
+   has_open_points = len(open_points) > 0
+   must_wait = has_open_points and not judge_available
+
+   if must_wait:
+      for point in open_points:
+         decisions[point["point_id"]] = pending_decision(
+            part, point, check_records[point["point_id"]], "waiting for the grader"
+         )
+
+   should_ask = has_open_points and judge_available
+
+   if should_ask:
+      try:
+         samples, failures = sample_points(judge, record, part, open_points, work)
+      except JudgeUnavailable as unavailable:
+         judge_available = False
+         samples = None
+         reason = f"waiting for the grader: {unavailable}"
+
+      confirmed_text = work_text(work)
+
+      for point in open_points:
+         point_id = point["point_id"]
+
+         if samples is None:
+            decisions[point_id] = pending_decision(part, point, check_records[point_id], reason)
+            continue
+
+         decisions[point_id] = model_decision(
+            part, point, samples[point_id], failures[point_id], confirmed_text, check_records[point_id]
+         )
+
+   ordered = [decisions[point["point_id"]] for point in points]
+
+   return ordered, judge_available
+
+
+def decide_point(record, part, point, work, labels, judge, judge_available):
+   decisions, judge_available = decide_part_points(record, part, [point], work, labels, judge, judge_available)
+
+   return decisions[0], judge_available
 
 
 def apply_rounding_cap(decisions):
@@ -373,11 +458,15 @@ def apply_follow_through(record, decisions, work, labels, judge, judge_available
    """A fixed-key check cannot see AP follow-through: an answer that is wrong only because it
    carries an earlier lost result forward can still earn. A point whose follows_from names a point
    that was lost, and whose own check failed, is judged again by the model on the student's own
-   earlier result. With no judge it stays failed, the conservative reading."""
+   earlier result, together with the other such points of its part. With no judge it stays failed,
+   the conservative reading."""
    by_point = {decision.point_id: decision for decision in decisions}
    revised = []
 
    for part in record["parts"]:
+      rejudged_points = []
+      lost_by_point = {}
+
       for point in part["points"]:
          decision = by_point[point["point_id"]]
          lost_ids = [point_id for point_id in point.get("follows_from") or [] if by_point[point_id].earned == 0]
@@ -385,12 +474,22 @@ def apply_follow_through(record, decisions, work, labels, judge, judge_available
          is_follow_through = failed_its_check and len(lost_ids) > 0 and judge_available
 
          if is_follow_through:
-            decision, judge_available = decide_point(
-               record, part, follow_through_point(point, lost_ids), work, labels, judge, judge_available
-            )
-            decision = replace(decision, eligibility_note=f"judged as follow-through from {', '.join(lost_ids)}")
+            rejudged_points.append(follow_through_point(point, lost_ids))
+            lost_by_point[point["point_id"]] = lost_ids
 
-         revised.append(decision)
+      rejudged = {}
+
+      if rejudged_points:
+         part_decisions, judge_available = decide_part_points(
+            record, part, rejudged_points, work, labels, judge, judge_available
+         )
+
+         for decision in part_decisions:
+            note = f"judged as follow-through from {', '.join(lost_by_point[decision.point_id])}"
+            rejudged[decision.point_id] = replace(decision, eligibility_note=note)
+
+      for point in part["points"]:
+         revised.append(rejudged.get(point["point_id"], by_point[point["point_id"]]))
 
    return revised, judge_available
 
@@ -400,11 +499,10 @@ def grade_question(record, work, labels, judge):
    judge_available = judge is not None
 
    for part in record["parts"]:
-      for point in part["points"]:
-         decision, judge_available = decide_point(
-            record, part, point, work, labels, judge, judge_available
-         )
-         decisions.append(decision)
+      part_decisions, judge_available = decide_part_points(
+         record, part, part["points"], work, labels, judge, judge_available
+      )
+      decisions.extend(part_decisions)
 
    decisions, judge_available = apply_follow_through(record, decisions, work, labels, judge, judge_available)
    capped, penalty_applied = apply_rounding_cap(decisions)
@@ -413,24 +511,51 @@ def grade_question(record, work, labels, judge):
    return QuestionGrading(decisions=settled, rounding_penalty_applied=penalty_applied)
 
 
-def remembering_judge(judge, stored_samples, fresh_point_id):
+class RememberingJudge:
    """A judge that answers every point but fresh_point_id from the samples already stored for it,
-   so a re-read asks the model about one point and the two passes still see raw decisions."""
+   so a re-read asks the model about one point and the two passes still see raw decisions. The
+   points it cannot answer from memory go to the model together, in one call per sample."""
 
-   def answer(record, part, point, work, strictness, label):
-      is_fresh = point["point_id"] == fresh_point_id
-      remembered = {sample.get("sample"): sample for sample in stored_samples.get(point["point_id"], [])}
-      has_memory = label in remembered and "decision" in remembered[label]
+   def __init__(self, judge, stored_samples, fresh_point_id):
+      self._judge = judge
+      self._stored_samples = stored_samples
+      self._fresh_point_id = fresh_point_id
 
-      if has_memory and not is_fresh:
-         return {key: value for key, value in remembered[label].items() if key not in ("sample", "strictness")}
+   def remembered(self, point, label):
+      is_fresh = point["point_id"] == self._fresh_point_id
+      stored = {sample.get("sample"): sample for sample in self._stored_samples.get(point["point_id"], [])}
+      has_memory = label in stored and "decision" in stored[label]
 
-      if judge is None:
+      if is_fresh or not has_memory:
+         return None
+
+      return {key: value for key, value in stored[label].items() if key not in ("sample", "strictness")}
+
+   def judge_points(self, record, part, points, work, strictness, label):
+      answers = {}
+      unanswered = []
+
+      for point in points:
+         memory = self.remembered(point, label)
+
+         if memory is None:
+            unanswered.append(point)
+         else:
+            answers[point["point_id"]] = memory
+
+      if not unanswered:
+         return answers
+
+      if self._judge is None:
          raise JudgeUnavailable("no grader is configured")
 
-      return judge(record, part, point, work, strictness, label)
+      answers.update(answers_for(self._judge, record, part, unanswered, work, strictness, label))
 
-   return answer
+      return answers
+
+
+def remembering_judge(judge, stored_samples, fresh_point_id):
+   return RememberingJudge(judge, stored_samples, fresh_point_id)
 
 
 def regrade_point(record, work, labels, judge, stored_samples, point_id):

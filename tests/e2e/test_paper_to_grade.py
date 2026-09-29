@@ -63,4 +63,4 @@ def test_paper_to_grade(tmp_path, forbid_network):
       assert db.scalars(select(models.Diagnosis).where(models.Diagnosis.attempt_id == attempt.id)).first() is not None
 
    assert book.calls[0][0] == "transcriber"
-   assert len(grader_prompts) == 9
+   assert len(grader_prompts) == 6

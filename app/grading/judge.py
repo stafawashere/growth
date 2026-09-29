@@ -1,7 +1,11 @@
-"""The grader role's model call: one structured judgement of one scoring point.
+"""The grader role's model call: one structured judgement of every open scoring point of a part.
 
-The prompt is prompts/grader/point_liberal_v1.md for the two standard samples and
-prompts/grader/point_strict_v1.md for the strictness-varied one. The standard reading is the
+One call carries the question, the part, the solution skeleton and the student's work once, and
+every point the checks left open with its own record and criterion; the answer is one verdict per
+point id. A 9 point question judged by the model is 3 calls per part it spans rather than 27.
+
+The prompt is prompts/grader/point_liberal_v2.md for the two standard samples and
+prompts/grader/point_strict_v2.md for the strictness-varied one. The standard reading is the
 liberal one because the one study that isolates the dial found a liberal policy lowered mean
 absolute error for every model it tested (https://arxiv.org/html/2607.01247, [single-source]);
 eval_leniency_calibration measures the difference on the golden set.
@@ -24,9 +28,9 @@ from app.providers.model_routing import model_for
 from app.providers.subscription import SubscriptionAuthFailed, SubscriptionLimitReached
 
 PROMPTS_DIR = Path(__file__).resolve().parents[2] / "prompts" / "grader"
-STANDARD_TEMPLATE = PROMPTS_DIR / "point_liberal_v1.md"
-STRICT_TEMPLATE = PROMPTS_DIR / "point_strict_v1.md"
-MAX_OUTPUT_TOKENS = 700
+STANDARD_TEMPLATE = PROMPTS_DIR / "point_liberal_v2.md"
+STRICT_TEMPLATE = PROMPTS_DIR / "point_strict_v2.md"
+MAX_OUTPUT_TOKENS_PER_POINT = 700
 PROVIDER_OPTIONS = {"thinking": {"type": "disabled"}}
 PACING_WAIT_SECONDS = 5
 PACING_WAIT_LIMIT_SECONDS = 150
@@ -40,18 +44,30 @@ RULE_FIELDS = (
    "dependency_on_other_points",
 )
 
-GRADER_SCHEMA = {
-   "type": "object",
-   "properties": {
-      "decision": {"type": "string", "enum": ["earned", "not_earned"]},
-      "evidence_quote": {"type": "string"},
-      "rule_field": {"type": "string", "enum": list(RULE_FIELDS)},
-      "rule_cited": {"type": "string"},
-      "eligibility_note": {"type": "string"},
-   },
-   "required": ["decision", "evidence_quote", "rule_field", "rule_cited", "eligibility_note"],
-   "additionalProperties": False,
-}
+VERDICT_FIELDS = ("decision", "evidence_quote", "rule_field", "rule_cited", "eligibility_note")
+
+
+def grader_schema(point_ids):
+   verdict = {
+      "type": "object",
+      "properties": {
+         "point_id": {"type": "string", "enum": list(point_ids)},
+         "decision": {"type": "string", "enum": ["earned", "not_earned"]},
+         "evidence_quote": {"type": "string"},
+         "rule_field": {"type": "string", "enum": list(RULE_FIELDS)},
+         "rule_cited": {"type": "string"},
+         "eligibility_note": {"type": "string"},
+      },
+      "required": ["point_id", *VERDICT_FIELDS],
+      "additionalProperties": False,
+   }
+
+   return {
+      "type": "object",
+      "properties": {"verdicts": {"type": "array", "items": verdict}},
+      "required": ["verdicts"],
+      "additionalProperties": False,
+   }
 
 
 def dependency_text(point_type):
@@ -96,59 +112,66 @@ def solution_skeleton(part):
    return "\n".join(f"  {index}. {step}" for index, step in enumerate(steps, start=1))
 
 
-def parts_in_view(record, part, point_type):
-   """A point whose record says it needs previous work is judged with the earlier parts in view."""
-   needs_previous = str(point_type.get("requires_previous_work", "no")).lower().startswith("yes")
+def needs_previous_work(point_type):
+   return str(point_type.get("requires_previous_work", "no")).lower().startswith("yes")
+
+
+def parts_in_view(record, part, point_types):
+   """The part's own work, and the earlier parts too when any point asked about needs previous work."""
+   needs_previous = any(needs_previous_work(point_type) for point_type in point_types)
    ids = [candidate["id"] for candidate in record["parts"]]
    position = ids.index(part["id"])
 
    return ids[: position + 1] if needs_previous else [part["id"]]
 
 
-def prompt_fields(record, part, point, work, point_type):
+def point_block(point, point_type):
+   return "\n".join([
+      f"Point {point['point_id']}: point type {point_type['id']}, {point_type['name']}.",
+      f"What earns it: {point_type['earns']}",
+      f"What does not earn it: {point_type['does_not_earn']}",
+      f"Notation requirements: {point_type['notation_requirements']}",
+      f"Precision rules: {point_type['precision_rules']}",
+      f"Eligibility after an error: {point_type['eligibility_after_error']}",
+      f"Dependence on other points: {dependency_text(point_type)}",
+      f"This question's criterion for the point: {point['criterion']}",
+   ])
+
+
+def prompt_fields(record, part, points, work, point_types):
+   blocks = [point_block(point, point_type) for point, point_type in zip(points, point_types)]
+
    return {
-      "point_type_id": point_type["id"],
-      "point_type_name": point_type["name"],
-      "earns": point_type["earns"],
-      "does_not_earn": point_type["does_not_earn"],
-      "notation_requirements": point_type["notation_requirements"],
-      "precision_rules": point_type["precision_rules"],
-      "eligibility_after_error": point_type["eligibility_after_error"],
-      "dependency": dependency_text(point_type),
       "question_stem": record["stem"]["text"],
       "part_id": part["id"],
       "part_prompt": part["prompt"],
-      "criterion": point["criterion"],
       "solution_skeleton": solution_skeleton(part),
-      "student_work": rendered_work(work, parts_in_view(record, part, point_type)),
+      "points": "\n\n".join(blocks),
+      "student_work": rendered_work(work, parts_in_view(record, part, point_types)),
    }
 
 
-def request_for(record, part, point, work, point_type, strictness, sample_label):
+def request_for(record, part, points, work, point_types, strictness, sample_label):
    template_path = STRICT_TEMPLATE if strictness == STRICT else STANDARD_TEMPLATE
    text = template_path.read_text()
    system, _variables = split_template(text)
-   rendered = render_template(text, prompt_fields(record, part, point, work, point_type))
+   rendered = render_template(text, prompt_fields(record, part, points, work, point_types))
+   point_ids = [point["point_id"] for point in points]
 
    return ProviderRequest(
       role="grader",
       model=model_for("grader"),
       system=system,
       messages=(Message(role="user", content=rendered),),
-      max_output_tokens=MAX_OUTPUT_TOKENS,
-      output_schema=GRADER_SCHEMA,
+      max_output_tokens=MAX_OUTPUT_TOKENS_PER_POINT * len(points),
+      output_schema=grader_schema(point_ids),
       cache=CacheSettings(prefix_breakpoints=1, ttl="5m"),
       provider_options={key: dict(value) for key, value in PROVIDER_OPTIONS.items()},
       sample_label=sample_label,
    )
 
 
-def parsed_sample(text):
-   try:
-      payload = json.loads(text or "")
-   except ValueError:
-      raise SampleFailed("the grading was not JSON") from None
-
+def parsed_verdict(payload):
    is_object = isinstance(payload, dict)
 
    if not is_object:
@@ -170,6 +193,48 @@ def parsed_sample(text):
       "rule_cited": str(payload.get("rule_cited") or ""),
       "eligibility_note": str(payload.get("eligibility_note") or ""),
    }
+
+
+def parsed_verdicts(text, point_ids):
+   """Point id to its parsed verdict, or to the SampleFailed that explains why it has none. A
+   verdict for a point that was not asked about is ignored, and a point with two verdicts has
+   none, because the call did not say which one it meant."""
+   try:
+      payload = json.loads(text or "")
+   except ValueError:
+      raise SampleFailed("the grading was not JSON") from None
+
+   verdicts = payload.get("verdicts") if isinstance(payload, dict) else None
+   is_list = isinstance(verdicts, list)
+
+   if not is_list:
+      raise SampleFailed("the grading carried no list of verdicts")
+
+   found = {point_id: [] for point_id in point_ids}
+
+   for verdict in verdicts:
+      point_id = verdict.get("point_id") if isinstance(verdict, dict) else None
+
+      if point_id in found:
+         found[point_id].append(verdict)
+
+   answers = {}
+
+   for point_id, candidates in found.items():
+      if not candidates:
+         answers[point_id] = SampleFailed("the grading named no verdict for this point")
+         continue
+
+      if len(candidates) > 1:
+         answers[point_id] = SampleFailed("the grading named two verdicts for this point")
+         continue
+
+      try:
+         answers[point_id] = parsed_verdict(candidates[0])
+      except SampleFailed as failed:
+         answers[point_id] = failed
+
+   return answers
 
 
 def is_minute_pacing(stopped):
@@ -198,13 +263,13 @@ class ModelJudge:
       self._wait_limit_seconds = wait_limit_seconds
       self.requests = []
 
-   def __call__(self, record, part, point, work, strictness, sample_label):
-      point_type = self._point_types[point["point_type_id"]]
-      request = request_for(record, part, point, work, point_type, strictness, sample_label)
+   def judge_points(self, record, part, points, work, strictness, sample_label):
+      point_types = [self._point_types[point["point_type_id"]] for point in points]
+      request = request_for(record, part, points, work, point_types, strictness, sample_label)
       self.requests.append(request)
       result = self._generate(request)
 
-      return parsed_sample(result.text)
+      return parsed_verdicts(result.text, [point["point_id"] for point in points])
 
    def _generate(self, request):
       waited = 0

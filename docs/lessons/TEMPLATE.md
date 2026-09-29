@@ -186,9 +186,10 @@ Selection rules, applied in order and cited in each entry's `reason`:
 
 1. A worked example and an error block are always `step_reveal`.
 2. A key idea whose text describes a process (a limit being taken, a partition refining, terms accumulating, a curve being traced) is `motion`, with a `model` on the same concept's example only where a computed sequence of values is the idea.
-3. A key idea or orientation whose skill representations include a figure-bearing BC-REP is `figure`, promoted to `interactive` when the archetype's `common_givens` or `difficulty_variables` name a quantity that varies and the stem asks for a reading of the relationship.
-4. A block resting on BC-REP-03 givens is `table`.
-5. Everything else is `text`.
+3. A process idea whose parameter is discrete and chosen by the student (the degree of a Taylor polynomial, the number of terms of a partial sum, the number of subintervals, the centre of a series) may be `interactive` with one stepper control in place of `motion`, so the student picks the value and reads the result; the graph the control drives is the process's own picture, not a representation the stem carries, and the entry says so in its reason.
+4. A key idea or orientation whose skill representations include a figure-bearing BC-REP is `figure`, promoted to `interactive` when the archetype's `common_givens` or `difficulty_variables` name a quantity that varies and the stem asks for a reading of the relationship.
+5. A block resting on BC-REP-03 givens is `table`.
+6. Everything else is `text`.
 
 Every entry beyond `text` and `step_reveal` carries a `spec` (declarative, every label placed inside), a `fallback` (the static form served when the mode cannot render, and under reduced motion for `motion`), and `keyboard` (how the control is operated without a pointer). No block carries more than 2 representations. No evidence in the ledgers separates these modes by effect, so every non-text choice is tagged [inferred] and the settling measurement is the modality A/B in the build plan (skip rate and time to first credited success by mode).
 

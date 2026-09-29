@@ -37,7 +37,7 @@ What says "not this concept": a gap between the region and the axis selects a wa
 
 ## Scoring
 
-BC-QA-08012 lists BC-PT-99058, 99001, 99003, 99004, 99053. ex-1 tags BC-PT-99001 on the integral; ex-2 tags BC-PT-99058 on the disc area and BC-PT-99004 on the value. ex-1's form and answer points are untagged for the brief band (inferred array). BC-PT-99003 and 99053 name no step here (no antiderivative line is written; no improper integral). Point loss: a revolution with a missing constant is the wrong volume family (research/scoring/common-point-losses.md#Setup points).
+BC-QA-08012 lists BC-PT-99058, 99001, 99003, 99004, 99053. ex-1 tags BC-PT-99058 on the disc area and BC-PT-99001 on the integral; ex-2 tags BC-PT-99058 and BC-PT-99004 on the value. ex-1's answer point is untagged for the brief band (inferred array). BC-PT-99003 and 99053 name no step here (no antiderivative line is written; no improper integral). Point loss: a revolution with a missing constant is the wrong volume family (research/scoring/common-point-losses.md#Setup points).
 
 ## Traps
 
@@ -74,8 +74,8 @@ BC-QA-08012 is `either`: Section I Part A, 2.14 minutes (research/exam/exam-stru
 
 ## Band plan
 
-- Low (full): orientation, ki-1, st-1, ex-1 and its line, the four error blocks, chk-1 to chk-3, ex-2 and its lines, the bridges. 764 words, 5.1 minutes.
-- Mid (brief): orientation, ki-1, st-1, ex-1 and its line, err-BC-ERR-08023, err-BC-ERR-08024, chk-1, chk-2, the bridges. 446 words, 3.0 minutes.
+- Low (full): orientation, ki-1, st-1, ex-1 and its lines, the four error blocks, chk-1 to chk-3, ex-2 and its lines, the bridges. 724 words, 4.9 minutes.
+- Mid (brief): orientation, ki-1, st-1, ex-1 and its lines, err-BC-ERR-08023, err-BC-ERR-08024, chk-1, chk-2, the bridges. 439 words, 3.0 minutes.
 - Refresher: ki-1, the four error blocks, ex-1.
 
 ## Sources
@@ -88,7 +88,7 @@ BC-QA-08012 is `either`: Section I Part A, 2.14 minutes (research/exam/exam-stru
 - research/question-analysis/question-archetypes.md#BC-QA-08012 Volume of a solid of revolution by the disc method
 - research/scoring/common-point-losses.md#Setup points
 - research/exam/exam-structure.md#Section and part layout
-- [inferred] Part A for an either archetype; ex-1's form and answer points untagged; ki-1 as motion; two errors past the cap. Each settled as the inferred array states.
+- [inferred] Part A for an either archetype; ex-1's answer point untagged; ki-1 as motion; two errors past the cap. Each settled as the inferred array states.
 
 ## Machine record
 
@@ -136,7 +136,7 @@ BC-QA-08012 is `either`: Section I Part A, 2.14 minutes (research/exam/exam-stru
    "calculator_status": "no_calculator",
    "steps": [
     {"cue": "R touches the x-axis, the axis.", "why": "Radius: curve to axis.", "expr": "sqrt(x)", "relation": "new"},
-    {"cue": "Each slice is a disc.", "why": "pi r squared.", "expr": "pi*x", "relation": "new"},
+    {"cue": "Each slice is a disc.", "why": "pi r squared.", "expr": "pi*x", "relation": "new", "point_type_id": "BC-PT-99058"},
     {"cue": "R runs from x = 0 to 4.", "why": "Slices in x.", "expr": "Integral(pi*x, (x, 0, 4))", "relation": "new", "point_type_id": "BC-PT-99001"},
     {"cue": "Integrate.", "why": "Keep pi.", "expr": "8*pi", "relation": "equivalent"}
    ],
@@ -159,7 +159,8 @@ BC-QA-08012 is `either`: Section I Part A, 2.14 minutes (research/exam/exam-stru
   }
  ],
  "what_a_reader_scores": [
-  {"example_id": "ex-1", "point_type_ids": ["BC-PT-99001"], "lines": [
+  {"example_id": "ex-1", "point_type_ids": ["BC-PT-99058", "BC-PT-99001"], "lines": [
+   {"point_type_id": "BC-PT-99058", "text": "Volume integrand form. Earned by: An integrand of the correct volume form, a nonzero constant times the square of the function for a disc, or the stated cross-section area (sg-26:19, sg-22:18). Not earned by: A constant other than pi where pi is required, which sg-22:19 states blocks the answer point; a rotation about the wrong axis, which sg-26:19 lets earn the form point only."},
    {"point_type_id": "BC-PT-99001", "text": "Definite integral expression with correct limits. Earned by: A definite integral whose limits match the requested interval and whose integrand matches the requested quantity, with or without the differential (sg-26:4, sg-22:2). Not earned by: An unsupported numerical value, or a definite integral whose bounds are wrong (sg-22:18). Notation: Differential may be omitted; sg-22:2 accepts dx written for dt. sg-23:8 treats a missing differential as recoverable for this point but restricts later eligibility."}
   ]},
   {"example_id": "ex-2", "point_type_ids": ["BC-PT-99058", "BC-PT-99004"], "lines": [
@@ -294,14 +295,14 @@ BC-QA-08012 is `either`: Section I Part A, 2.14 minutes (research/exam/exam-stru
   {"block": "err-BC-ERR-08037", "mode": "step_reveal", "reason": "rule 1", "sources": []}
  ],
  "refresher": ["ki-1", "err-BC-ERR-08023", "err-BC-ERR-08024", "err-BC-ERR-08036", "err-BC-ERR-08037", "ex-1"],
- "read_minutes": {"full": 5.1, "brief": 3.0},
- "word_count": {"full": 764, "brief": 446},
+ "read_minutes": {"full": 4.9, "brief": 3.0},
+ "word_count": {"full": 724, "brief": 439},
  "research_lines": [
   {"file": "research/units/unit-08-applications-integration.md", "line": "The factor pi multiplies the whole integral, and the radius is squared before integration rather than after."}
  ],
  "inferred": [
   {"claim": "BC-QA-08012 is calculator status either, so the lesson takes Section I Part A and its 2.14 minute budget.", "settles": "Timing data on disc items split by exam part."},
-  {"claim": "ex-1's form point (BC-PT-99058) and answer point (BC-PT-99004) are earned but not tagged, because their reader lines would take the brief band past 450 words; ex-2 carries both tags.", "settles": "Shorter reader lines or a brief cap that admits them."},
+  {"claim": "ex-1's answer point (BC-PT-99004) is earned but not tagged, because its reader line would take the brief band past 450 words; ex-2 carries the tag.", "settles": "Shorter reader lines or a brief cap that admits them."},
   {"claim": "ki-1 is served as a motion of the region sweeping about the axis rather than a static figure.", "settles": "The modality A/B in the build plan: skip rate and time to first credited success by mode."},
   {"claim": "BC-ERR-99011 and BC-ERR-99019 meet the skills but fall past the cap of four error blocks.", "settles": "A cap change in plan 15 or a severity reorder in the bundle."},
   {"claim": "BC-ERR-08024 is shown as an x integral carrying the region's y values, the mirror of the record's wording, since BC-QA-08012's parameter_spec draws only regions sliced in x.", "settles": "A parameter_spec that draws a region revolved about the y-axis."}

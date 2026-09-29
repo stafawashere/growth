@@ -60,7 +60,7 @@ Decision ids: LSN-DEC-<unit>-<nn>, nn numbering the unit's sets in the order con
 
 | Kind | todo | designed | checked | resolved | signed_off | total |
 |---|---|---|---|---|---|---|
-| concept | 64 | 0 | 106 | 0 | 0 | 170 |
+| concept | 43 | 0 | 127 | 0 | 0 | 170 |
 | prerequisite | 77 | 0 | 0 | 0 | 0 | 77 |
 | decision | 9 | 0 | 1 | 0 | 0 | 10 |
 
@@ -172,34 +172,34 @@ Decision ids: LSN-DEC-<unit>-<nn>, nn numbering the unit's sets in the order con
 | LSN-CON-07010 | BC-CON-07010 | 07 | checked | checker clean 2026-09-29 |
 | LSN-CON-07011 | BC-CON-07011 | 07 | checked | checker clean 2026-09-29 |
 | LSN-CON-07012 | BC-CON-07012 | 07 | checked | checker clean 2026-09-29 |
-| LSN-CON-08001 | BC-CON-08001 | 08 | todo |  |
-| LSN-CON-08002 | BC-CON-08002 | 08 | todo |  |
-| LSN-CON-08003 | BC-CON-08003 | 08 | todo |  |
-| LSN-CON-08004 | BC-CON-08004 | 08 | todo |  |
-| LSN-CON-08005 | BC-CON-08005 | 08 | todo |  |
-| LSN-CON-08006 | BC-CON-08006 | 08 | todo |  |
-| LSN-CON-08007 | BC-CON-08007 | 08 | todo |  |
-| LSN-CON-08008 | BC-CON-08008 | 08 | todo |  |
-| LSN-CON-08009 | BC-CON-08009 | 08 | todo |  |
-| LSN-CON-08010 | BC-CON-08010 | 08 | todo |  |
-| LSN-CON-08011 | BC-CON-08011 | 08 | todo |  |
-| LSN-CON-08012 | BC-CON-08012 | 08 | todo |  |
-| LSN-CON-08013 | BC-CON-08013 | 08 | todo |  |
-| LSN-CON-08014 | BC-CON-08014 | 08 | todo |  |
-| LSN-CON-08015 | BC-CON-08015 | 08 | todo |  |
-| LSN-CON-08016 | BC-CON-08016 | 08 | todo |  |
-| LSN-CON-08017 | BC-CON-08017 | 08 | todo |  |
-| LSN-CON-08018 | BC-CON-08018 | 08 | todo |  |
-| LSN-CON-08019 | BC-CON-08019 | 08 | todo |  |
-| LSN-CON-08020 | BC-CON-08020 | 08 | todo |  |
+| LSN-CON-08001 | BC-CON-08001 | 08 | checked | checker clean 2026-09-29 |
+| LSN-CON-08002 | BC-CON-08002 | 08 | checked | checker clean 2026-09-29 |
+| LSN-CON-08003 | BC-CON-08003 | 08 | checked | checker clean 2026-09-29 |
+| LSN-CON-08004 | BC-CON-08004 | 08 | checked | checker clean 2026-09-29 |
+| LSN-CON-08005 | BC-CON-08005 | 08 | checked | checker clean 2026-09-29 |
+| LSN-CON-08006 | BC-CON-08006 | 08 | checked | checker clean 2026-09-29 |
+| LSN-CON-08007 | BC-CON-08007 | 08 | checked | checker clean 2026-09-29 |
+| LSN-CON-08008 | BC-CON-08008 | 08 | checked | checker clean 2026-09-29 |
+| LSN-CON-08009 | BC-CON-08009 | 08 | checked | checker clean 2026-09-29 |
+| LSN-CON-08010 | BC-CON-08010 | 08 | checked | checker clean 2026-09-29 |
+| LSN-CON-08011 | BC-CON-08011 | 08 | checked | checker clean 2026-09-29 |
+| LSN-CON-08012 | BC-CON-08012 | 08 | checked | checker clean 2026-09-29 |
+| LSN-CON-08013 | BC-CON-08013 | 08 | checked | checker clean 2026-09-29 |
+| LSN-CON-08014 | BC-CON-08014 | 08 | checked | checker clean 2026-09-29 |
+| LSN-CON-08015 | BC-CON-08015 | 08 | checked | checker clean 2026-09-29 |
+| LSN-CON-08016 | BC-CON-08016 | 08 | checked | checker clean 2026-09-29 |
+| LSN-CON-08017 | BC-CON-08017 | 08 | checked | checker clean 2026-09-29 |
+| LSN-CON-08018 | BC-CON-08018 | 08 | checked | checker clean 2026-09-29 |
+| LSN-CON-08019 | BC-CON-08019 | 08 | checked | checker clean 2026-09-29 |
+| LSN-CON-08020 | BC-CON-08020 | 08 | checked | checker clean 2026-09-29 |
 | LSN-CON-08021 | BC-CON-08021 | 08 | todo |  |
-| LSN-CON-09001 | BC-CON-09001 | 09 | todo |  |
+| LSN-CON-09001 | BC-CON-09001 | 09 | checked | checker clean 2026-09-29 |
 | LSN-CON-09002 | BC-CON-09002 | 09 | todo |  |
 | LSN-CON-09003 | BC-CON-09003 | 09 | todo |  |
 | LSN-CON-09004 | BC-CON-09004 | 09 | todo |  |
 | LSN-CON-09005 | BC-CON-09005 | 09 | todo |  |
 | LSN-CON-09006 | BC-CON-09006 | 09 | todo |  |
-| LSN-CON-09007 | BC-CON-09007 | 09 | todo |  |
+| LSN-CON-09007 | BC-CON-09007 | 09 | todo | partial draft on disk from a stopped designer; one checker finding; halted 2026-09-29 |
 | LSN-CON-09008 | BC-CON-09008 | 09 | todo |  |
 | LSN-CON-09009 | BC-CON-09009 | 09 | todo |  |
 | LSN-CON-09010 | BC-CON-09010 | 09 | todo |  |

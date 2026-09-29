@@ -1,6 +1,6 @@
 import { afterEach, beforeEach, describe, expect, it, vi } from "vitest";
 import { cleanup, fireEvent, render, screen, waitFor } from "@testing-library/react";
-import type { ServedItem, ServedLesson, SessionPayload } from "../api/types";
+import type { LessonMarks, ServedItem, ServedLesson, SessionPayload } from "../api/types";
 import * as client from "../api/client";
 import { LESSON, planFor } from "../lessons/fixtures";
 import { END_OF_SESSION_LESSON } from "../lessons/LessonReader";
@@ -56,7 +56,7 @@ function servedLesson(kind: "lesson" | "refresher" = "lesson"): ServedLesson {
    };
 }
 
-const exampleItem: ServedItem = {
+const exampleItem: ServedItem & LessonMarks = {
    id: "item-example",
    archetype_id: "BC-QA-02008",
    variant_id: null,

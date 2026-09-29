@@ -19,7 +19,7 @@ import type {
    FeedbackPayload,
    LessonCheckAnswerBody,
    LessonEventBody,
-   QueueSlot,
+   MarkedQueueSlot,
    ServedItem,
    ServedLesson,
    SessionLessonSlot,
@@ -59,7 +59,7 @@ interface Remaining {
    minutes: number;
 }
 
-function isLessonSlot(slot: QueueSlot | SessionLessonSlot): slot is SessionLessonSlot {
+function isLessonSlot(slot: MarkedQueueSlot | SessionLessonSlot): slot is SessionLessonSlot {
    return slot.kind === "lesson" || slot.kind === "refresher";
 }
 

@@ -384,7 +384,7 @@ def read_feedback(
    is_comparison = feedback.kind == render.FeedbackKind.COMPARISON
 
    if is_comparison:
-      return dict(render.as_dict(feedback), sentence=None, tutor_unavailable=False)
+      return dict(render.as_dict(feedback), sentence=None, tutor_unavailable=False, lesson_link=None)
 
    feedback_arm = switches.recorded_arms(attempt).get(switches.FEEDBACK_ELABORATION)
    is_verification_only = feedback_arm == switches.DEFINITIONS[switches.FEEDBACK_ELABORATION].treatment_arm

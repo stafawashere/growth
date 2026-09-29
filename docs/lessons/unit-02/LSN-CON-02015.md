@@ -65,7 +65,7 @@ BC-QA-02010 is `no_calculator` and a single MCQ, so the part is Section I Part A
 
 - chk-1, completion of ex-1, both bands: the simplified quotient given, the requested form written. Key equals ex-1's answer.
 - chk-2, isomorph on BC-QA-02010, both bands: \(4\tan x+\cot x\). Key \(4\sec^2x-\csc^2x\).
-- chk-3, MCQ on BC-QA-02010, low band: \(2\tan x+3\csc x\) at \(\frac{\pi}{4}\). Key \(4-3\sqrt2\). Distractors \(-4-3\sqrt2\) (BC-ERR-02021), \(4+3\sqrt2\) (BC-ERR-02025), \(-2\) (BC-ERR-02026), matching the spec's `options`.
+- chk-3, MCQ on BC-QA-02010, low band: \(2\tan x+3\csc x\) at \(\frac{\pi}{4}\). Key \(4-3\sqrt2\). Distractors \(-4-3\sqrt2\) (BC-ERR-02021), \(4+3\sqrt2\) (BC-ERR-02025), \(-2\) (BC-ERR-02026), each the value its error path produces on this draw.
 
 No draw equals a published BC-QA-02010 `parameter_draw`.
 

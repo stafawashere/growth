@@ -33,5 +33,94 @@
    }
   ],
   "answers_file": "/tmp/claude-0/-home-user-growth/ac029253-8ff0-5a4b-8b5f-cdcaf5e8ff8d/scratchpad/verify/answers_02.json"
+ },
+ "audit": {
+  "date": "2026-09-29",
+  "auditor": "claude-opus-5-5",
+  "blocks": [
+   {
+    "id": "orientation",
+    "verdict": "ok",
+    "evidence": "Paraphrases BC-CON-02005 description_plain and BC-MIS-02014 roles; 42 words."
+   },
+   {
+    "id": "ki-1",
+    "verdict": "ok",
+    "evidence": "Quote matches ced:61 CHA-2.C.1 verbatim; point slope line and height/slope roles from BC-MIS-02014; 34 words."
+   },
+   {
+    "id": "st-1",
+    "verdict": "ok",
+    "evidence": "Cue from BC-QA-02011 common_givens and asked_to_produce; method expected_solution_path[0]; rival wrong_approaches[0] (BC-ERR-02027)."
+   },
+   {
+    "id": "st-2",
+    "verdict": "ok",
+    "evidence": "Cue, method and rival from BC-QA-02014 common_givens, expected_solution_path[0] and wrong_approaches; 31 body words."
+   },
+   {
+    "id": "ex-1",
+    "verdict": "ok",
+    "evidence": "SymPy: f=-x^2+4x+2, f'=-2x+4, f'(3)=-2, f(3)=5; line y=5-2(x-3); matches spec slope and height."
+   },
+   {
+    "id": "what_a_reader_scores:ex-1",
+    "verdict": "ok",
+    "evidence": "Text is BC-PT-99082 earns and does_not_earn verbatim."
+   },
+   {
+    "id": "err-BC-ERR-02027",
+    "verdict": "ok",
+    "evidence": "Record text verbatim; slope f(3)=5 gives y=5+5(x-3); reason from BC-MIS-02014."
+   },
+   {
+    "id": "err-BC-ERR-02028",
+    "verdict": "ok",
+    "evidence": "Record text verbatim; f'(5)=-6 equals spec wrong_slope 2*square*height+linear; reason from BC-MIS-02014."
+   },
+   {
+    "id": "err-BC-ERR-04023",
+    "verdict": "ok",
+    "evidence": "Record text verbatim; exchanged form y=-2+5(x-3) matches the observed behavior and BC-QA-02011 wrong_approaches[1]."
+   },
+   {
+    "id": "representations",
+    "verdict": "ok",
+    "evidence": "null; the design routes BC-REP-01 to BC-REP-02 into the orientation and ki-1 figures."
+   },
+   {
+    "id": "BC-PRQ-02003",
+    "verdict": "ok",
+    "evidence": "Paraphrase of BC-PRQ-02003 description_plain and failure_signature; 15 words."
+   },
+   {
+    "id": "chk-1",
+    "verdict": "ok",
+    "evidence": "Key y=5-2(x-3) equals ex-1 answer."
+   },
+   {
+    "id": "chk-2",
+    "verdict": "ok",
+    "evidence": "SymPy: f=x^2-2x+4, f(-1)=7, f'(-1)=-4; key y=7-4(x+1)."
+   },
+   {
+    "id": "chk-3",
+    "verdict": "ok",
+    "evidence": "SymPy: y(1)=2, y'(1)=-3; A slope 2 (height), C f'(2)=-7 (spec wrong_slope), D height and slope exchanged; all distinct."
+   }
+  ],
+  "advice": [
+   "err-BC-ERR-04023 serves the record's consequence \"The approximation point is lost\", which names an approximation this lesson never asks for; consider trimming to the crabbc-25:25 clause on isolating y.",
+   "st-2 (BC-QA-02014, a limit opener) teaches a method the lesson never exercises in an example or check; it reads as off topic for a tangent line lesson and could be dropped from the low band.",
+   "Figure delivery for orientation and ki-1 suits the reading of height and slope on a graph; the error blocks would work well as contrast against the same figure.",
+   "The lesson teaches the stem signal, first line and rival, and carries the BC-PT-99082 scoring habit (slope and line as separate points)."
+  ],
+  "counts": {
+   "ok": 14,
+   "unsourced": 0,
+   "wrong": 0,
+   "over_cap": 0,
+   "lint": 0
+  }
  }
 }

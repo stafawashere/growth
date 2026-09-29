@@ -134,7 +134,7 @@ No motion, interactive or model mode applies (docs/lessons/unit-03/README.md, se
   {
    "id": "st-1",
    "archetype_id": "BC-QA-03001",
-   "cue": "The stem asks for the derivative of the composite, from a formula built by composition, often one factor of a product.",
+   "cue": "The stem asks for the derivative of the composite, from a formula built by composition, alone or as one factor of a product.",
    "method": "First written line: identify the outer and inner functions, u = inner expression.",
    "rival": "Rival: differentiating the outer function and leaving out the inner derivative (BC-ERR-03001).",
    "separating_feature": "Each named layer owns one factor of the derivative.",
@@ -177,7 +177,7 @@ No motion, interactive or model mode applies (docs/lessons/unit-03/README.md, se
    "error_id": "BC-ERR-03002",
    "observed_behavior": "A composition of three functions is differentiated through the first two layers and the innermost derivative is omitted.",
    "scoring_consequence": "The derivative is wrong; no credit is available for a partially applied rule in a single answer item.",
-   "wrong_step": {"text": "Cube layer copied unchanged: value 5.", "expr": "(2*x**2 - 1)**3 + x*(2*x**2 - 1)**3*(4*x)"},
+   "wrong_step": {"text": "Inner derivative 4x omitted: value 4.", "expr": "(2*x**2 - 1)**3 + x*3*(2*x**2 - 1)**2"},
    "right_step": {"text": "Cube differentiated: value 13.", "expr": "(2*x**2 - 1)**3 + x*3*(2*x**2 - 1)**2*(4*x)"},
    "relation": "distinct",
    "possible_reason": {"misconception_id": "BC-MIS-03012", "text": "nested structures are handled in the wrong order"},
@@ -233,7 +233,7 @@ No motion, interactive or model mode applies (docs/lessons/unit-03/README.md, se
  ],
  "refresher": ["ki-1", "err-BC-ERR-03001", "err-BC-ERR-03002", "ex-1"],
  "read_minutes": {"full": 3.0, "brief": 3.0},
- "word_count": {"full": 444, "brief": 444},
+ "word_count": {"full": 446, "brief": 446},
  "research_lines": [
   {"file": "research/units/unit-03-differentiation-composite-implicit-inverse.md", "line": "Applying the rule requires naming the outer and the inner function first"}
  ],

@@ -55,7 +55,7 @@ Point losses for the symbolic form: an attempted simplification must be correct 
 Six active errors meet the skills; the first four in the bundle's order are served (cap 4): BC-ERR-03001, BC-ERR-03002, BC-ERR-03003, BC-ERR-03004. BC-ERR-03005 and BC-ERR-03006 are named in st-3 and st-2 only. Mid band shows the first two.
 
 - err-BC-ERR-03001, on ex-1: f'(3) alone, -3, against -6. Possible reason, words from BC-MIS-03001.
-- err-BC-ERR-03002, on ex-2: the root layer copied unchanged against the root differentiated. The record names the innermost layer of three; the spec draws two layers [inferred].
+- err-BC-ERR-03002, on ex-2: the inner derivative 4x omitted against the root differentiated. The record names the innermost layer of three; the spec draws two layers [inferred].
 - err-BC-ERR-03003, on ex-1: f'(1)g'(1) = 8 against f'(3)g'(1) = -6. Possible reason, words from BC-MIS-03002.
 - err-BC-ERR-03004, on ex-1: -3 + 2 = -1 against -6. No possible reason line: the linked descriptions do not name addition.
 
@@ -214,7 +214,7 @@ BC-QA-03002 is `either` on calculator status and a single MCQ; this draw is inte
    "error_id": "BC-ERR-03002",
    "observed_behavior": "A composition of three functions is differentiated through the first two layers and the innermost derivative is omitted.",
    "scoring_consequence": "The derivative is wrong; no credit is available for a partially applied rule in a single answer item.",
-   "wrong_step": {"text": "ex-2, root layer copied unchanged.", "expr": "sqrt(2*x**2 + 7) + x*sqrt(2*x**2 + 7)*(4*x)"},
+   "wrong_step": {"text": "ex-2, inner derivative 4x omitted: value 19/6.", "expr": "sqrt(2*x**2 + 7) + x/(2*sqrt(2*x**2 + 7))"},
    "right_step": {"text": "Root differentiated.", "expr": "sqrt(2*x**2 + 7) + x*4*x/(2*sqrt(2*x**2 + 7))"},
    "relation": "distinct",
    "possible_reason": null,
@@ -323,7 +323,7 @@ BC-QA-03002 is `either` on calculator status and a single MCQ; this draw is inte
  ],
  "refresher": ["ki-1", "err-BC-ERR-03001", "err-BC-ERR-03002", "err-BC-ERR-03003", "err-BC-ERR-03004", "ex-1"],
  "read_minutes": {"full": 5.1, "brief": 2.8},
- "word_count": {"full": 753, "brief": 415},
+ "word_count": {"full": 755, "brief": 417},
  "research_lines": [
   {"file": "research/units/unit-03-differentiation-composite-implicit-inverse.md", "line": "Look up the inner value first, then look up the outer derivative at that value."}
  ],

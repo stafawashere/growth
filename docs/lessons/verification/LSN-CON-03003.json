@@ -33,5 +33,84 @@
    }
   ],
   "answers_file": "/tmp/claude-0/-home-user-growth/ac029253-8ff0-5a4b-8b5f-cdcaf5e8ff8d/scratchpad/verify/answers_02.json"
+ },
+ "audit": {
+  "date": "2026-09-29",
+  "auditor": "claude-opus-5-5",
+  "blocks": [
+   {
+    "id": "orientation",
+    "verdict": "ok",
+    "evidence": "Paraphrases BC-CON-03003 description_plain and BC-QA-03004 multipart_structure; 39 words."
+   },
+   {
+    "id": "ki-1",
+    "verdict": "ok",
+    "evidence": "Paraphrase of 3.2 Implicit differentiation, dy/dx factor and Mixed terms paragraphs; quote matches ced:76 FUN-3.D.1; 49 words."
+   },
+   {
+    "id": "st-1",
+    "verdict": "ok",
+    "evidence": "From BC-QA-03004 asked_to_produce, common_givens, expected_solution_path[0], wrong_approaches[0]."
+   },
+   {
+    "id": "ex-1",
+    "verdict": "ok",
+    "evidence": "SymPy implicit: curve through (1,1) (5=5), dy/dx=(2-2x-3y)/(3x+2y), -3/5 at (1,1); spec options -3/5, -5/3, -3/2, -1."
+   },
+   {
+    "id": "err-BC-ERR-03007",
+    "verdict": "ok",
+    "evidence": "Record text verbatim; missing 2y dy/dx gives -5/3 (spec options[1]); reason from BC-MIS-03004."
+   },
+   {
+    "id": "err-BC-ERR-03008",
+    "verdict": "ok",
+    "evidence": "Record text verbatim; x dy/dx term missing gives -3/2 (spec options[2]); reason from BC-MIS-03005."
+   },
+   {
+    "id": "err-BC-ERR-03009",
+    "verdict": "ok",
+    "evidence": "Record text verbatim; right side dropped gives -1 (spec options[3])."
+   },
+   {
+    "id": "representations",
+    "verdict": "ok",
+    "evidence": "null; topic conversions belong to Unit 7 and BC-CON-03005."
+   },
+   {
+    "id": "BC-PRQ-03005",
+    "verdict": "ok",
+    "evidence": "Paraphrase of description_plain and failure_signature."
+   },
+   {
+    "id": "chk-1",
+    "verdict": "ok",
+    "evidence": "SymPy: solves to -3/5 at (1,1)."
+   },
+   {
+    "id": "chk-2",
+    "verdict": "ok",
+    "evidence": "SymPy: curve through (1,-1) (4=4), dy/dx=(1-2x+2y)/(2y-2x)=3/4."
+   },
+   {
+    "id": "chk-3",
+    "verdict": "ok",
+    "evidence": "SymPy: curve through (2,-1) (4=4), key -1/2; A 5/2, B -1/4, D 3/2 equal spec options[1] to [3]."
+   }
+  ],
+  "advice": [
+   "Orientation \"It opens a multipart question\" states as always what BC-QA-03004 says is ordinary; the MCQ form (BC-MCQ-CED-004) exists. Consider \"It can open a multipart question\" (avoiding \"often\", a frequency).",
+   "No what_a_reader_scores entry, correctly, but the scoring habit (every dy/dx visible, keep the right side) is carried only by error consequence text; a check that asks for the differentiated line alone would test the habit.",
+   "The error blocks compare one line each and suit a contrast layout (wrong line under right line) better than step reveal.",
+   "Steps 3 and 4 of ex-1 belong to BC-CON-03004; flagged in the design and acceptable."
+  ],
+  "counts": {
+   "ok": 12,
+   "unsourced": 0,
+   "wrong": 0,
+   "over_cap": 0,
+   "lint": 0
+  }
  }
 }

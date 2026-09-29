@@ -39,5 +39,94 @@
    }
   ],
   "answers_file": "/tmp/claude-0/-home-user-growth/ac029253-8ff0-5a4b-8b5f-cdcaf5e8ff8d/scratchpad/verify/answers_01.json"
+ },
+ "audit": {
+  "date": "2026-09-29",
+  "auditor": "claude-opus-5-5",
+  "blocks": [
+   {
+    "id": "orientation",
+    "verdict": "ok",
+    "evidence": "Paraphrases BC-CON-02002 description_plain and the 2.2 Method paragraph; 50 words."
+   },
+   {
+    "id": "ki-1",
+    "verdict": "ok",
+    "evidence": "Both forms and the proviso paraphrase ced page 60 CHA-2.B.1 and the quote matches it; the secant to tangent link rests on CHA-2.C.1 in the 2.2 Tangent line paragraph; 54 words."
+   },
+   {
+    "id": "st-1",
+    "verdict": "ok",
+    "evidence": "Cue from common_givens and typical_wording of BC-QA-02002, method from expected_solution_path[0], rival from wrong_approaches (BC-ERR-02008)."
+   },
+   {
+    "id": "st-2",
+    "verdict": "ok",
+    "evidence": "Cue from common_givens of BC-QA-02012, method from expected_solution_path[0], rival from wrong_approaches (BC-ERR-02029)."
+   },
+   {
+    "id": "ex-1",
+    "verdict": "ok",
+    "evidence": "SymPy: f(2) = 3; quotient simplifies to 2h+5; limit h->0 = 5 = 4*2-3; constraint degree*leading*point + linear = 5 != 0."
+   },
+   {
+    "id": "ex-2",
+    "verdict": "ok",
+    "evidence": "SymPy: s(2) = 10; quotient simplifies to 3h+8; limit = 8 equal to the derived rate; rate, average 2, value 10, change 4 are distinct."
+   },
+   {
+    "id": "err-BC-ERR-02006",
+    "verdict": "ok",
+    "evidence": "Record text verbatim; wrong 2h+5 differs from 5; reason words from BC-MIS-02003."
+   },
+   {
+    "id": "err-BC-ERR-02030",
+    "verdict": "ok",
+    "evidence": "Record text verbatim; 4x-3 is f'(x), a function where the number 5 is asked; reason words from BC-MIS-02015."
+   },
+   {
+    "id": "err-BC-ERR-02033",
+    "verdict": "ok",
+    "evidence": "Record text verbatim; (10-6)/2 = 2 equals the spec's derived average; possible_reason null since no BC-MIS is linked."
+   },
+   {
+    "id": "representations",
+    "verdict": "ok",
+    "evidence": "SymPy: (s(2+h)-s(2))/h = 8+3h gives 11, 8.3, 8.03, 8.003 at the four h values; BC-REP-05 to BC-REP-01 conversion is in the 2.1 Representations paragraph."
+   },
+   {
+    "id": "BC-PRQ-02005",
+    "verdict": "ok",
+    "evidence": "Restates description_plain (base point and increment)."
+   },
+   {
+    "id": "chk-1",
+    "verdict": "ok",
+    "evidence": "SymPy: limit of 2h+5 at 0 = 5, equal to ex-1."
+   },
+   {
+    "id": "chk-2",
+    "verdict": "ok",
+    "evidence": "SymPy: f(-1) = -7; quotient simplifies to 6-h; limit 6; constraint value 6 != 0."
+   },
+   {
+    "id": "chk-3",
+    "verdict": "unsourced",
+    "evidence": "Option D (13+2h) is tied to BC-ERR-02006, whose observed behaviour is carrying no limit symbol until the final line, not reporting the unreduced quotient; the BC-QA-02014 spec names its distractors as the average 7, the value 24 (BC-ERR-02027) and the change 21 (BC-ERR-02001). Key 13 and option A 7 check in SymPy."
+   }
+  ],
+  "advice": [
+   "Delivery fits: the secant closing on the tangent is a process and is served as motion; the shrinking h table is served as a model. The motion spec y axis [-1, 12] clips the curve, since f(3.5) = 15.",
+   "st-2 (BC-QA-02012, notation translation) has no worked example and no check, so its first line and rival are stated but never practised.",
+   "Recognition of definition stems, the first line (quotient inside the limit) and the rival (power rule) are taught; the scoring habit of carrying the limit on every line is taught through err-BC-ERR-02006.",
+   "chk-3 could use the spec's own distractors (24 and 21) in place of 4t+1 and 13+2h, which keeps every option a number and every error path sourced."
+  ],
+  "counts": {
+   "ok": 13,
+   "unsourced": 1,
+   "wrong": 0,
+   "over_cap": 0,
+   "lint": 0
+  }
  }
 }

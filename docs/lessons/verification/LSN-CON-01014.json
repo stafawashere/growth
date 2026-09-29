@@ -33,5 +33,96 @@
    }
   ],
   "answers_file": "/tmp/claude-0/-home-user-growth/ac029253-8ff0-5a4b-8b5f-cdcaf5e8ff8d/scratchpad/verify/answers_01.json"
+ },
+ "audit": {
+  "date": "2026-09-29",
+  "auditor": "claude-opus-5-5",
+  "blocks": [
+   {
+    "id": "orientation",
+    "verdict": "ok",
+    "evidence": "Paraphrases BC-CON-01014 and the BC-QA-01015 asked_to_produce (intervals plus a reason naming the family); 31 words."
+   },
+   {
+    "id": "ki-1",
+    "verdict": "ok",
+    "evidence": "Quote matches ced page 49 LIM-2.B.1; the one sided endpoint condition paraphrases the 1.12 Interval continuity paragraph."
+   },
+   {
+    "id": "ki-2",
+    "verdict": "wrong",
+    "evidence": "Says what remains is the answer as open intervals between excluded inputs; for the radical family the parameter_spec notes and chk-2's own key give [roots[0], roots[1]), SymPy Union(Interval.Ropen(-3, 2), Interval.open(2, oo)), closed at -3."
+   },
+   {
+    "id": "st-1",
+    "verdict": "over_cap",
+    "evidence": "Cue is 22 words against the cap of 20: \"A rule is given and the stem asks for the intervals on which it is continuous, with a reason naming its family.\""
+   },
+   {
+    "id": "ex-1",
+    "verdict": "ok",
+    "evidence": "SymPy: solve(x^2+x-2) = {-2, 1}; answer three open intervals; zero 3 differs from both roots per the constraint."
+   },
+   {
+    "id": "err-BC-ERR-01031",
+    "verdict": "ok",
+    "evidence": "Record text verbatim; SymPy sets differ (1 left inside); reason words from BC-MIS-01019."
+   },
+   {
+    "id": "err-BC-ERR-01032",
+    "verdict": "ok",
+    "evidence": "Record text verbatim; SymPy wrong set contains 1 and differs from the right set; possible_reason null."
+   },
+   {
+    "id": "representations",
+    "verdict": "ok",
+    "evidence": "Null; 1.12 Representations names BC-REP-01 and BC-REP-04 conversions only."
+   },
+   {
+    "id": "BC-PRQ-01003",
+    "verdict": "ok",
+    "evidence": "Restates description_plain; slip matches failure_signature (wrong branch at a boundary)."
+   },
+   {
+    "id": "BC-PRQ-01008",
+    "verdict": "ok",
+    "evidence": "Restates description_plain; slip matches failure_signature (intervals including points outside the domain)."
+   },
+   {
+    "id": "BC-PRQ-01010",
+    "verdict": "unsourced",
+    "evidence": "Slip \"a closed end written where the input is excluded\" is not the record's failure_signature, which reads \"states a conclusion on a closed interval when the theorem gives an interior point\"; the slip is BC-ERR-01032's behaviour, not this prerequisite's."
+   },
+   {
+    "id": "chk-1",
+    "verdict": "ok",
+    "evidence": "SymPy: excluded {-2, 1}, three open pieces, equal to ex-1."
+   },
+   {
+    "id": "chk-2",
+    "verdict": "ok",
+    "evidence": "SymPy: Interval(-3, oo) minus {2} equals Union(Interval.Ropen(-3, 2), Interval.open(2, oo)); matches the radical family notes."
+   },
+   {
+    "id": "chk-3",
+    "verdict": "ok",
+    "evidence": "SymPy: solve(x^2-x-12) = {-3, 4}; key three open pieces; option C label and expr are the same set (-oo, 4) U (4, oo); A and B are distinct wrong sets."
+   }
+  ],
+  "advice": [
+   "st-1's separating feature (\"one more piece than there are excluded inputs\") only holds for isolated excluded inputs; in the radical family (chk-2) a whole ray is excluded and the count fails. Restrict the feature to rational rules or restate it.",
+   "BC-PRQ-01003 (piecewise rules) is bridged but the lesson has no piecewise example or check; BC-SKL-01048 is otherwise untaught.",
+   "err-BC-ERR-01032 wrong expr, as a SymPy set, loses the bracket: Union with Interval.Lopen(-2, 1) evaluates to (-oo, -2) U (-2, oo), the same set as err-BC-ERR-01031's wrong step, so the two error blocks are indistinguishable to a set comparison.",
+   "The BC-QA-01015 invariant \"'continuous on' in key\" is not met by any check key string; confirm it applies to lesson checks.",
+   "Delivery: text is adequate, but an answer that is a union of intervals is a reading on a number line; a small number line figure with open and closed endpoints would serve err-BC-ERR-01032 better than text.",
+   "Recognition, first written line (denominator set to zero) and rival are taught; the scoring habit of naming the family is taught in ex-1 step 3 but no check asks for the reason."
+  ],
+  "counts": {
+   "ok": 11,
+   "unsourced": 1,
+   "wrong": 1,
+   "over_cap": 1,
+   "lint": 0
+  }
  }
 }

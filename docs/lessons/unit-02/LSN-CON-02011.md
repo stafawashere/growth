@@ -152,7 +152,7 @@ No non-text mode applies [inferred; settled by the modality A/B].
   {
    "id": "st-1",
    "archetype_id": "BC-QA-02006",
-   "cue": "The stem asks for the derivative of a sum of constant multiples of powers, often with a constant term.",
+   "cue": "The stem asks for the derivative of a sum of constant multiples of powers, with or without a constant term.",
    "method": "First written line: every term as a constant times a power of \\(x\\).",
    "rival": "The rival is carrying the constant term into the derivative (BC-ERR-02016) [inferred: the archetype records no wrong approach].",
    "separating_feature": "A multiplier touches a power and stays; a constant stands alone and goes to zero.",
@@ -513,12 +513,12 @@ No non-text mode applies [inferred; settled by the modality A/B].
   "ex-1"
  ],
  "read_minutes": {
-  "full": 2.6,
+  "full": 2.7,
   "brief": 2.5
  },
  "word_count": {
-  "full": 390,
-  "brief": 362
+  "full": 391,
+  "brief": 363
  },
  "research_lines": [
   {

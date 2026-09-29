@@ -33,5 +33,99 @@
    }
   ],
   "answers_file": "/tmp/claude-0/-home-user-growth/ac029253-8ff0-5a4b-8b5f-cdcaf5e8ff8d/scratchpad/verify/answers_01.json"
+ },
+ "audit": {
+  "date": "2026-09-29",
+  "auditor": "claude-opus-5-5",
+  "blocks": [
+   {
+    "id": "orientation",
+    "verdict": "ok",
+    "evidence": "Paraphrases BC-CON-02003 description_formal and the BC-ERR-02008 scoring consequence; 43 words."
+   },
+   {
+    "id": "ki-1",
+    "verdict": "ok",
+    "evidence": "Quote matches ced page 61 CHA-2.B.2; the division step paraphrases the 2.2 Method paragraph; 46 words."
+   },
+   {
+    "id": "ki-2",
+    "verdict": "ok",
+    "evidence": "Paraphrases ced page 60 CHA-2.B.1 (both forms at a point); 21 words."
+   },
+   {
+    "id": "st-1",
+    "verdict": "ok",
+    "evidence": "Cue from common_givens and typical_wording, method from expected_solution_path[0], rival from wrong_approaches (BC-ERR-02008)."
+   },
+   {
+    "id": "ex-1",
+    "verdict": "ok",
+    "evidence": "SymPy: quotient simplifies to -2x-h+5; limit h->0 = 5-2x; value at 3 = -1; constraint value -1 != 0."
+   },
+   {
+    "id": "err-BC-ERR-02005",
+    "verdict": "ok",
+    "evidence": "Record text verbatim; wrong is 0/0 (nan) with h still in the denominator; reason words from BC-MIS-02002."
+   },
+   {
+    "id": "err-BC-ERR-02006",
+    "verdict": "ok",
+    "evidence": "Record text verbatim; wrong -2x-h+5 differs from 5-2x; reason words from BC-MIS-02003."
+   },
+   {
+    "id": "err-BC-ERR-02007",
+    "verdict": "ok",
+    "evidence": "SymPy: with -(x+h)^2 taken as -x^2-h^2 the quotient is 5-h, distinct from -2x-h+5; possible_reason null."
+   },
+   {
+    "id": "err-BC-ERR-02008",
+    "verdict": "ok",
+    "evidence": "Record says the final value may be right; SymPy wrong and right both 5-2x, declared equivalent; reason words from BC-MIS-02002."
+   },
+   {
+    "id": "representations",
+    "verdict": "ok",
+    "evidence": "Null; 2.2 Representations conversion here is BC-REP-01 to BC-REP-01."
+   },
+   {
+    "id": "BC-PRQ-02005",
+    "verdict": "ok",
+    "evidence": "Restates description_plain (shifted input, base point)."
+   },
+   {
+    "id": "BC-PRQ-02001",
+    "verdict": "ok",
+    "evidence": "Restates description_plain and failure_signature (quotient not reduced)."
+   },
+   {
+    "id": "chk-1",
+    "verdict": "ok",
+    "evidence": "SymPy: 5-2x at 3 = -1, equal to ex-1."
+   },
+   {
+    "id": "chk-2",
+    "verdict": "ok",
+    "evidence": "SymPy: quotient simplifies to 2x+h-2; limit 2x-2; at -2 gives -6; constraint value -6 != 0."
+   },
+   {
+    "id": "chk-3",
+    "verdict": "unsourced",
+    "evidence": "Option D (0) is tied to BC-ERR-02005, whose observed behaviour substitutes zero while h is still in the denominator (giving 0/0, not 0); the design itself tags this value [inferred]. Option C (3h+5) is likewise not BC-ERR-02006's observed behaviour. Key 5 and option A (-1, the spec's characteristic slip) check in SymPy."
+   }
+  ],
+  "advice": [
+   "Delivery fits: an algebraic chain served as step reveal and text key ideas; nothing is figure shaped.",
+   "err-BC-ERR-02008 shows the same expression on both sides, so the block depends entirely on its text; a line showing the missing quotient work would make the lost points visible.",
+   "Recognition, first line (quotient at a general x inside the limit) and rival are taught; the stem signal given in the prose (definition with no input named) is not stated in served text.",
+   "chk-3 distractors other than option A lack a sourced value; consider distractors from the spec (for example the characteristic slip at a second draw) or error behaviours that yield a number directly."
+  ],
+  "counts": {
+   "ok": 14,
+   "unsourced": 1,
+   "wrong": 0,
+   "over_cap": 0,
+   "lint": 0
+  }
  }
 }

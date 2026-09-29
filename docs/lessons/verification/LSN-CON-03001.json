@@ -27,5 +27,79 @@
    }
   ],
   "answers_file": "/tmp/claude-0/-home-user-growth/ac029253-8ff0-5a4b-8b5f-cdcaf5e8ff8d/scratchpad/verify/answers_02.json"
+ },
+ "audit": {
+  "date": "2026-09-29",
+  "auditor": "claude-opus-5-5",
+  "blocks": [
+   {
+    "id": "orientation",
+    "verdict": "ok",
+    "evidence": "fixed 2026-09-29 by the orchestrator at the design (lint): \"Stems supply a formula, often with the composite as one factor of a product\": \"often\" is a frequency statement in served text; otherwise sourced from BC-QA-03001 common_givens."
+   },
+   {
+    "id": "ki-1",
+    "verdict": "ok",
+    "evidence": "Paraphrase of BC-CON-03001 description_plain and the 3.1 Chain rule hypotheses paragraph; 48 words."
+   },
+   {
+    "id": "st-1",
+    "verdict": "ok",
+    "evidence": "fixed 2026-09-29 by the orchestrator at the design (lint): Cue \"often one factor of a product\" is a frequency statement; method and rival from BC-QA-03001 expected_solution_path[0] and wrong_approaches[0]."
+   },
+   {
+    "id": "ex-1",
+    "verdict": "ok",
+    "evidence": "SymPy: diff((2x^2-1)^3)=3(2x^2-1)^2(4x); h'(1)=13; draw matches spec (shift -1, options 13, 12, 4, 5)."
+   },
+   {
+    "id": "what_a_reader_scores:ex-1",
+    "verdict": "ok",
+    "evidence": "Text is BC-PT-99023 earns and does_not_earn verbatim."
+   },
+   {
+    "id": "err-BC-ERR-03001",
+    "verdict": "ok",
+    "evidence": "Record text verbatim; inner factor dropped gives 1+3=4 (spec options[2]); reason from BC-MIS-03001."
+   },
+   {
+    "id": "err-BC-ERR-03002",
+    "verdict": "ok",
+    "evidence": "fixed 2026-09-29 by the orchestrator at the design (unsourced): BC-ERR-03002 records omitting the innermost derivative of a three layer composite; the block shows the outer cube copied unchanged with 4x kept (value 5, spec options[3], whose spec note calls it the undifferentiated outer layer). No source ties that move to BC-ERR-03002; the design itself marks it [inferred]."
+   },
+   {
+    "id": "representations",
+    "verdict": "ok",
+    "evidence": "null; skills carry BC-REP-01 and BC-REP-04 only."
+   },
+   {
+    "id": "BC-PRQ-03001",
+    "verdict": "ok",
+    "evidence": "Paraphrase of BC-PRQ-03001 description_plain and failure_signature."
+   },
+   {
+    "id": "chk-1",
+    "verdict": "ok",
+    "evidence": "SymPy: given product line at x=1 is 13."
+   },
+   {
+    "id": "chk-2",
+    "verdict": "ok",
+    "evidence": "SymPy: diff(x(x^2+2)^2) at 1 = 21; shift 3-1=2 matches spec."
+   }
+  ],
+  "advice": [
+   "err-BC-ERR-03002: either draw a three layer composite where the innermost factor can be omitted, or relabel the value 5 block as BC-MIS-03001 behavior (outer layer copied) without the BC-ERR-03002 id.",
+   "Replace \"often\" in the orientation and st-1 cue with a non frequency phrasing such as \"sometimes as one factor of a product\" removed or \"possibly one factor of a product\" (as LSN-CON-03002 st-2 does).",
+   "The lesson has no MCQ check, so recognition of the rival as a distractor is never tested; the spec options already give three distinct error values (12, 4, 5).",
+   "Step reveal suits ex-1; the product rule wrapper is a strong recognition point and is taught."
+  ],
+  "counts": {
+   "ok": 11,
+   "unsourced": 0,
+   "wrong": 0,
+   "over_cap": 0,
+   "lint": 0
+  }
  }
 }

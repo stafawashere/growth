@@ -39,5 +39,104 @@
    }
   ],
   "answers_file": "/tmp/claude-0/-home-user-growth/ac029253-8ff0-5a4b-8b5f-cdcaf5e8ff8d/scratchpad/verify/answers_01.json"
+ },
+ "audit": {
+  "date": "2026-09-29",
+  "auditor": "claude-opus-5-5",
+  "blocks": [
+   {
+    "id": "orientation",
+    "verdict": "ok",
+    "evidence": "32 words; paraphrases BC-CON-02014 description_formal and research 2.9 Assessment behaviour."
+   },
+   {
+    "id": "ki-1",
+    "verdict": "ok",
+    "evidence": "37 words; paraphrases research 2.9 Quotient rule, Order matters and Constant denominator; quote matches ced:68 verbatim."
+   },
+   {
+    "id": "st-1",
+    "verdict": "ok",
+    "evidence": "Method from BC-QA-02008 expected_solution_path; rival BC-ERR-02026 is listed in BC-QA-02008 wrong_approaches."
+   },
+   {
+    "id": "st-2",
+    "verdict": "ok",
+    "evidence": "Cue 20 words; method is BC-QA-02009 expected_solution_path[0]; rival is its wrong_approaches entry BC-ERR-02024."
+   },
+   {
+    "id": "ex-1",
+    "verdict": "ok",
+    "evidence": "SymPy: diff((3*x**2-2)/sin(x),x) equals the rule line; at pi/4 it equals sqrt(2)*(3*pi/2-3*pi**2/16+2)."
+   },
+   {
+    "id": "ex-2",
+    "verdict": "ok",
+    "evidence": "SymPy: (2*5-(-3)*(-2))/4 equals 1."
+   },
+   {
+    "id": "scores-ex-1",
+    "verdict": "ok",
+    "evidence": "BC-PT-99080 is on BC-QA-02008 point_types; line text found in the point type record."
+   },
+   {
+    "id": "scores-ex-2",
+    "verdict": "ok",
+    "evidence": "BC-PT-99004 is on BC-QA-02009 point_types; line text found in the point type record."
+   },
+   {
+    "id": "err-BC-ERR-02021",
+    "verdict": "ok",
+    "evidence": "Record text verbatim; wrong equals minus right (SymPy sum is 0), distinct holds and the consequence names the sign."
+   },
+   {
+    "id": "err-BC-ERR-02022",
+    "verdict": "ok",
+    "evidence": "Record text verbatim; unsquared denominator differs, distinct holds."
+   },
+   {
+    "id": "err-BC-ERR-02023",
+    "verdict": "ok",
+    "evidence": "Record text verbatim; SymPy (6*x*5-(3*x**2-2)*0)/25 minus 6*x/5 is 0, equivalent holds."
+   },
+   {
+    "id": "err-BC-ERR-02024",
+    "verdict": "ok",
+    "evidence": "Record text verbatim; (2*(-3)-(-3)*(-2))/4 = -3 versus 1, distinct holds."
+   },
+   {
+    "id": "representations",
+    "verdict": "ok",
+    "evidence": "null; the table conversion of research 2.9 is carried by ex-2 per the design."
+   },
+   {
+    "id": "chk-1",
+    "verdict": "ok",
+    "evidence": "SymPy: rule line at pi/4 equals the key."
+   },
+   {
+    "id": "chk-2",
+    "verdict": "ok",
+    "evidence": "SymPy: diff((2*x+5)/cos(x),x) equals (2*cos(x)+(2*x+5)*sin(x))/cos(x)**2; at pi/3 equals 4+2*sqrt(3)*(2*pi/3+5)."
+   },
+   {
+    "id": "chk-3",
+    "verdict": "ok",
+    "evidence": "SymPy: (15-8)/9=7/9; A -7/9 (reversed), C 7/3 (unsquared), D (3(-2)-(-2)(-4))/9=-14/9 match derivations and differ from the key."
+   }
+  ],
+  "advice": [
+   "st-1's rival BC-ERR-02026 is sourced from BC-QA-02008 wrong_approaches, but the error record itself is scoped to BC-QA-02010 (a rewritten trigonometric quotient) and has no error block in this lesson; BC-ERR-02021 (numerator reversed) is the rival the lesson actually drills and would align st-1 with ex-1 and chk-3.",
+   "ki-1's 'order matters' and the constant denominator shortcut are comparisons; a contrast of vu'-uv' against uv'-vu' (sign flip) would serve better than text.",
+   "ex-2 and chk-3 give the table as inline equalities; a table layout would serve the reading task.",
+   "BC-SKL-02042 (constant denominator) appears only in ki-1 and err-BC-ERR-02023; no check exercises it."
+  ],
+  "counts": {
+   "ok": 16,
+   "unsourced": 0,
+   "wrong": 0,
+   "over_cap": 0,
+   "lint": 0
+  }
  }
 }

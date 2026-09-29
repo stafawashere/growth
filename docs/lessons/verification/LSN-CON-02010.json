@@ -39,5 +39,98 @@
    }
   ],
   "answers_file": "/tmp/claude-0/-home-user-growth/ac029253-8ff0-5a4b-8b5f-cdcaf5e8ff8d/scratchpad/verify/answers_01.json"
+ },
+ "audit": {
+  "date": "2026-09-29",
+  "auditor": "claude-opus-5-5",
+  "blocks": [
+   {
+    "id": "orientation",
+    "verdict": "ok",
+    "evidence": "52 words; paraphrases BC-CON-02010 description_plain and research 2.5 Assessment behaviour (MCQ derivative of a power or an expression that becomes one after rewriting; justification derives a case)."
+   },
+   {
+    "id": "ki-1",
+    "verdict": "ok",
+    "evidence": "64 words; rule, scope of exponent and relation to definition paraphrase research 2.5 Required mathematical knowledge; quote matches ced:64 text verbatim."
+   },
+   {
+    "id": "st-1",
+    "verdict": "ok",
+    "evidence": "Method is BC-QA-02006 expected_solution_path[0]; rival BC-ERR-02015 correctly tagged inferred since the archetype has no wrong_approaches."
+   },
+   {
+    "id": "st-2",
+    "verdict": "ok",
+    "evidence": "Method is BC-QA-02002 expected_solution_path[0]; rival is its wrong_approaches entry citing BC-ERR-02008."
+   },
+   {
+    "id": "ex-1",
+    "verdict": "ok",
+    "evidence": "SymPy: diff(4*x**3+6*x**(1/2)-5,x) equals 12*x**2+3*x**(-1/2) equals 12*x**2+3/sqrt(x); every equivalent step simplifies to zero difference."
+   },
+   {
+    "id": "ex-2",
+    "verdict": "ok",
+    "evidence": "SymPy: (2*(1+h)**2-3*(1+h)+1)/h simplifies to 2*h+1, limit at h=0 is 1; f(1)=0 holds."
+   },
+   {
+    "id": "err-BC-ERR-02005",
+    "verdict": "ok",
+    "evidence": "Observed behavior and consequence verbatim from the record; wrong 0 differs from right 1, relation distinct holds."
+   },
+   {
+    "id": "err-BC-ERR-02008",
+    "verdict": "ok",
+    "evidence": "Record text verbatim; 4*1-3 equals 1, so relation equivalent holds and the consequence (quotient points lost although value right) is the record's."
+   },
+   {
+    "id": "err-BC-ERR-02015",
+    "verdict": "ok",
+    "evidence": "Record text verbatim; 4*x**2+6*x**(-1/2) minus 12*x**2+3*x**(-1/2) is nonzero, distinct holds."
+   },
+   {
+    "id": "err-BC-ERR-02017",
+    "verdict": "ok",
+    "evidence": "Record text verbatim; 12*x**2+6*sqrt(x) differs from 12*x**2+3/sqrt(x), distinct holds."
+   },
+   {
+    "id": "representations",
+    "verdict": "ok",
+    "evidence": "null; research 2.5 Representations names BC-REP-01 only with a symbolic to symbolic conversion."
+   },
+   {
+    "id": "bridge-BC-PRQ-06002",
+    "verdict": "ok",
+    "evidence": "28 words; paraphrases the prerequisite description_plain and failure_signature (radical or reciprocal left unrewritten)."
+   },
+   {
+    "id": "chk-1",
+    "verdict": "ok",
+    "evidence": "SymPy: 12*x**2+3*x**(-1/2) minus 12*x**2+3/sqrt(x) simplifies to 0; key matches ex-1."
+   },
+   {
+    "id": "chk-2",
+    "verdict": "ok",
+    "evidence": "SymPy: diff(-2*x**4+5*x**(-2)+7,x) equals -8*x**3-10/x**3."
+   },
+   {
+    "id": "chk-3",
+    "verdict": "ok",
+    "evidence": "SymPy: diff(3*x**5+4/x-6,x) equals 15*x**4-4/x**2; A 3*x**4+4/x**2, C 15*x**4+4/x, D 15*x**4+4/x**2 each match their stated derivation and differ from the key."
+   }
+  ],
+  "advice": [
+   "ex-2 is served only in the low band, so mid band readers meet st-2 nowhere and the definition archetype BC-QA-02002 has no mid band example; the mid band plan already omits st-2, which is consistent, but the mid band then carries err-BC-ERR-02005 and err-BC-ERR-02008, both built on ex-2, without ex-2 itself.",
+   "The lesson teaches the first written line (rewrite as powers) and the rival clearly; with no point_types on either archetype, scoring habits are limited to the error consequences, which is appropriate.",
+   "Text and step_reveal modes fit; a two column contrast of ex-1 wrong and right lines for BC-ERR-02015 would show the separating feature (coefficient and exponent change together) more directly than sequential reveal."
+  ],
+  "counts": {
+   "ok": 15,
+   "unsourced": 0,
+   "wrong": 0,
+   "over_cap": 0,
+   "lint": 0
+  }
  }
 }

@@ -101,7 +101,7 @@
    {
     "id": "chk-3",
     "verdict": "ok",
-    "evidence": "SymPy: V(2) = 12; quotient 6 + h, limit 6; A 61/100 = V(2.1) - V(2); B 61/10; D 601/10000 = V(2.01) - V(2); distinct."
+    "evidence": "fixed 2026-09-29: option D was a second BC-ERR-01029 distractor (0.0601); now 601/100 on BC-ERR-01030, the average over [2, 2.01] taken as the exact rate: SymPy (V(201/100) - V(2))/(1/100) = 601/100; options 61/100, 61/10, 6, 601/100 distinct."
    }
   ],
   "advice": [
@@ -117,5 +117,9 @@
    "over_cap": 0,
    "lint": 0
   }
- }
+ },
+ "fix_notes": [
+  "Fixed chk-3: distractor D now carries BC-ERR-01030 (the only other held error) at value 6.01, so A and D no longer share BC-ERR-01029.",
+  "Left as preferences: record ids in served ki text; write the named sentence in ex-1 step 4; a scoring habit line."
+ ]
 }

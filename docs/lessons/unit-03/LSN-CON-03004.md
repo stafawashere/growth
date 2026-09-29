@@ -74,7 +74,7 @@ BC-QA-03004 is `no_calculator`, the opening part of a multipart FRQ, so Section 
 
 ## Band plan
 
-- Low (full) and mid (brief) serve the same blocks: orientation, ki-1, st-1, ex-1, err-BC-ERR-03010, err-BC-ERR-03011, chk-1, chk-2, the two bridges. 414 words, 2.8 minutes in each (caps 900 and 6, 450 and 3).
+- Low (full) and mid (brief) serve the same blocks: orientation, ki-1, st-1, ex-1, err-BC-ERR-03010, err-BC-ERR-03011, chk-1, chk-2, the two bridges. 412 words, 2.8 minutes in each (caps 900 and 6, 450 and 3).
 - Refresher: ki-1, err-BC-ERR-03010, err-BC-ERR-03011, ex-1.
 
 ## Sources
@@ -221,7 +221,7 @@ BC-QA-03004 is `no_calculator`, the opening part of a multipart FRQ, so Section 
  ],
  "refresher": ["ki-1", "err-BC-ERR-03010", "err-BC-ERR-03011", "ex-1"],
  "read_minutes": {"full": 2.8, "brief": 2.8},
- "word_count": {"full": 414, "brief": 414},
+ "word_count": {"full": 412, "brief": 412},
  "research_lines": [
   {"file": "research/units/unit-03-differentiation-composite-implicit-inverse.md", "line": "produces an equation that is linear in dy/dx"}
  ],

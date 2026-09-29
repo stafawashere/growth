@@ -80,8 +80,8 @@ No figure, motion, interactive or model mode applies: the skills carry no figure
 
 ## Band plan
 
-- Low (full): orientation, ki-1, ki-2, st-1, ex-1, err-01031, err-01032, chk-1, chk-2, chk-3, the three bridges. 528 words, 3.6 minutes (cap 900 and 6).
-- Mid (brief): orientation, ki-2, st-1, ex-1, err-01031, err-01032, chk-1, chk-2, the three bridges. 445 words, 3.0 minutes (cap 450 and 3).
+- Low (full): orientation, ki-1, ki-2, st-1, ex-1, err-01031, err-01032, chk-1, chk-2, chk-3, the three bridges. 531 words, 3.54 minutes (cap 900 and 6).
+- Mid (brief): orientation, ki-2, st-1, ex-1, err-01031, err-01032, chk-1, chk-2, the three bridges. 448 words, 2.99 minutes (cap 450 and 3).
 - Refresher: ki-2, err-BC-ERR-01031, err-BC-ERR-01032, ex-1.
 
 ## Sources

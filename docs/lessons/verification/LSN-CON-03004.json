@@ -44,8 +44,8 @@
    },
    {
     "id": "st-1",
-    "verdict": "over_cap",
-    "evidence": "cue is 21 words, cap 20; method is expected_solution_path[0], rival is BC-QA-03004 wrong_approaches BC-ERR-03009."
+    "verdict": "ok",
+    "evidence": "fixed 2026-09-29: cue cut from 21 to 19 words ('The stem asks for' became 'Asked for'); method and rival unchanged; word_count 412 both forms."
    },
    {
     "id": "ex-1",
@@ -96,11 +96,15 @@
    "No scoring habit is taught in served text (what_a_reader_scores is empty); the verification point and the notation habit of writing dy/dx at (2, 1) appear only in the authoring prose."
   ],
   "counts": {
-   "ok": 10,
+   "ok": 11,
    "unsourced": 0,
    "wrong": 0,
-   "over_cap": 1,
+   "over_cap": 0,
    "lint": 0
   }
- }
+ },
+ "fix_notes": [
+  "Fixed st-1 over_cap: cue now 19 words; word_count set to 412 and band plan prose updated.",
+  "Left as preferences: motion or step reveal for ki-1; a delivery entry for st-1 (the checker rejects st-1 as a served block); no error block or check on the rival BC-ERR-03009; no scoring habit in served text."
+ ]
 }

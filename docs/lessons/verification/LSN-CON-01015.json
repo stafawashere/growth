@@ -71,7 +71,7 @@
    {
     "id": "err-BC-ERR-01015",
     "verdict": "ok",
-    "evidence": "Record text verbatim; SymPy shows wrong and right equations identical, which the block declares as equivalent; reason words from BC-MIS-01009."
+    "evidence": "fixed 2026-09-29: the block sets f(1)=4 apart on ex-1's rule; wrong Eq(2, 2) (left and right limits compared only, continuity claimed), right Eq(4, 2) (value compared with the limit, not continuous); relation distinct; prose Traps line matched. Orientation and st-1 rival shortened to hold the brief cap."
    },
    {
     "id": "err-BC-ERR-01017",
@@ -121,6 +121,10 @@
    "wrong": 0,
    "over_cap": 0,
    "lint": 0
-  }
+  },
+  "fix_notes": [
+   "Fixed err-BC-ERR-01015 (advice defect: wrong and right equal) by showing the lost value comparison on a set apart value; orientation and st-1 rival trimmed; word_count 560/450, read_minutes 3.74/3.0.",
+   "Left: chk key form vs the BC-QA-01008 invariant 'k =' in key (needs a ruling on whether archetype invariants apply to checks); ki-1 removability not checked (structural); delivery advice (preference); possible_reason 'most often' kept as record words."
+  ]
  }
 }

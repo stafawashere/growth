@@ -81,8 +81,8 @@ Every non-text choice is [inferred], settled by the modality A/B in the build pl
 
 ## Band plan
 
-- Low (full): orientation, ki-1, ki-2, st-1, ex-1, the three error blocks, chk-1, chk-2, chk-3, the two bridges. 551 words, 3.7 minutes (cap 900 and 6).
-- Mid (brief): orientation, ki-2, st-1, ex-1, err-01003, err-01015, chk-1, chk-2, the two bridges. 441 words, 3.0 minutes (cap 450 and 3).
+- Low (full): orientation, ki-1, ki-2, st-1, ex-1, the three error blocks, chk-1, chk-2, chk-3, the two bridges. 560 words, 3.74 minutes (cap 900 and 6).
+- Mid (brief): orientation, ki-2, st-1, ex-1, err-01003, err-01015, chk-1, chk-2, the two bridges. 450 words, 3.0 minutes (cap 450 and 3).
 - Refresher: ki-2, err-BC-ERR-01003, err-BC-ERR-01015, err-BC-ERR-01017, ex-1.
 
 ## Sources
@@ -293,7 +293,7 @@ Every non-text choice is [inferred], settled by the modality A/B in the build pl
   {"block": "err-BC-ERR-01017", "mode": "step_reveal", "reason": "rule 1", "sources": []}
  ],
  "refresher": ["ki-2", "err-BC-ERR-01003", "err-BC-ERR-01015", "err-BC-ERR-01017", "ex-1"],
- "read_minutes": {"full": 3.73, "brief": 3.0},
+ "read_minutes": {"full": 3.74, "brief": 3.0},
  "word_count": {"full": 560, "brief": 450},
  "research_lines": [
   {"file": "research/units/unit-01-limits-continuity.md", "line": "All three quantities enter the condition, not only the two one sided limits."}

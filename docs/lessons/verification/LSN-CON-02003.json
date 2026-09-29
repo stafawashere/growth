@@ -81,7 +81,7 @@
    {
     "id": "err-BC-ERR-02008",
     "verdict": "ok",
-    "evidence": "Record says the final value may be right; SymPy wrong and right both 5-2x, declared equivalent; reason words from BC-MIS-02002."
+    "evidence": "fixed 2026-09-29: wrong -2x+5 (power rule, no quotient line) against right -2x-h+5 (the simplified quotient inside the limit the lost points attach to); relation distinct; prose Traps line matched."
    },
    {
     "id": "representations",
@@ -110,8 +110,8 @@
    },
    {
     "id": "chk-3",
-    "verdict": "unsourced",
-    "evidence": "Option D (0) is tied to BC-ERR-02005, whose observed behaviour substitutes zero while h is still in the denominator (giving 0/0, not 0); the design itself tags this value [inferred]. Option C (3h+5) is likewise not BC-ERR-02006's observed behaviour. Key 5 and option A (-1, the spec's characteristic slip) check in SymPy."
+    "verdict": "ok",
+    "evidence": "fixed 2026-09-29: options C and D replaced: C oo (BC-ERR-02007, f(1+h) taken as f(1)+f(h), quotient 3h - 1 + 2/h unbounded), D nan (BC-ERR-02005, h set to 0 while in the denominator, 0/0 reported as undefined); A -1 kept; prose Checks and inferred lines matched."
    }
   ],
   "advice": [
@@ -121,11 +121,15 @@
    "chk-3 distractors other than option A lack a sourced value; consider distractors from the spec (for example the characteristic slip at a second draw) or error behaviours that yield a number directly."
   ],
   "counts": {
-   "ok": 14,
-   "unsourced": 1,
+   "ok": 15,
+   "unsourced": 0,
    "wrong": 0,
    "over_cap": 0,
    "lint": 0
-  }
+  },
+  "fix_notes": [
+   "Fixed chk-3 options C and D (unsourced values) and err-BC-ERR-02008 (advice defect: same expression both sides). word_count full 517, read_minutes full 3.45.",
+   "Left: the stem signal not in served text (structural); D's reported form remains tagged inferred since BC-ERR-02005 states 0/0 but not what is reported."
+  ]
  }
 }

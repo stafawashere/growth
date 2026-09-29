@@ -50,13 +50,13 @@
    },
    {
     "id": "ki-2",
-    "verdict": "wrong",
-    "evidence": "Says what remains is the answer as open intervals between excluded inputs; for the radical family the parameter_spec notes and chk-2's own key give [roots[0], roots[1]), SymPy Union(Interval.Ropen(-3, 2), Interval.open(2, oo)), closed at -3."
+    "verdict": "ok",
+    "evidence": "fixed 2026-09-29: answer restated as the domain cut at each undefined input, open there and closed at an included endpoint such as a radicand's zero, matching chk-2's key [-3,2) U (2,oo); prose Key ideas line matched."
    },
    {
     "id": "st-1",
-    "verdict": "over_cap",
-    "evidence": "Cue is 22 words against the cap of 20: \"A rule is given and the stem asks for the intervals on which it is continuous, with a reason naming its family.\""
+    "verdict": "ok",
+    "evidence": "fixed 2026-09-29: cue cut to 17 words; separating feature restated as the domain cut at each undefined input, with the piece count limited to a rational rule, so the radical family in chk-2 no longer contradicts it; prose Method choice line matched."
    },
    {
     "id": "ex-1",
@@ -71,7 +71,7 @@
    {
     "id": "err-BC-ERR-01032",
     "verdict": "ok",
-    "evidence": "Record text verbatim; SymPy wrong set contains 1 and differs from the right set; possible_reason null."
+    "evidence": "fixed 2026-09-29: wrong step is now the piece Interval.Lopen(-2, 1) against Interval.open(-2, 1); SymPy: 1 lies in the wrong set only, and it differs from err-BC-ERR-01031's wrong set. Earlier: Record text verbatim; SymPy wrong set contains 1 and differs from the right set; possible_reason null."
    },
    {
     "id": "representations",
@@ -90,8 +90,8 @@
    },
    {
     "id": "BC-PRQ-01010",
-    "verdict": "unsourced",
-    "evidence": "Slip \"a closed end written where the input is excluded\" is not the record's failure_signature, which reads \"states a conclusion on a closed interval when the theorem gives an interior point\"; the slip is BC-ERR-01032's behaviour, not this prerequisite's."
+    "verdict": "ok",
+    "evidence": "fixed 2026-09-29: slip now states the record's failure_signature: a conclusion stated on a closed interval when the theorem gives an interior point."
    },
    {
     "id": "chk-1",
@@ -118,11 +118,15 @@
    "Recognition, first written line (denominator set to zero) and rival are taught; the scoring habit of naming the family is taught in ex-1 step 3 but no check asks for the reason."
   ],
   "counts": {
-   "ok": 11,
-   "unsourced": 1,
-   "wrong": 1,
-   "over_cap": 1,
+   "ok": 14,
+   "unsourced": 0,
+   "wrong": 0,
+   "over_cap": 0,
    "lint": 0
-  }
+  },
+  "fix_notes": [
+   "Fixed ki-2 (wrong), st-1 (over_cap and separating feature contradicted by chk-2), BC-PRQ-01010 (unsourced), and err-BC-ERR-01032 whose wrong set equalled err-BC-ERR-01031's: wrong is now Interval.Lopen(-2, 1), right Interval.open(-2, 1), the piece itself, so 1 is in the wrong set and the two error blocks differ. word_count 531/448, read_minutes 3.54/2.99.",
+   "Left: BC-PRQ-01003 bridged without a piecewise example (structural); 'continuous on' key invariant (needs a ruling); number line figure (delivery preference); no check asking for the reason (structural)."
+  ]
  }
 }

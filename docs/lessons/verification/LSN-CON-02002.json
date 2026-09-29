@@ -111,8 +111,8 @@
    },
    {
     "id": "chk-3",
-    "verdict": "unsourced",
-    "evidence": "Option D (13+2h) is tied to BC-ERR-02006, whose observed behaviour is carrying no limit symbol until the final line, not reporting the unreduced quotient; the BC-QA-02014 spec names its distractors as the average 7, the value 24 (BC-ERR-02027) and the change 21 (BC-ERR-02001). Key 13 and option A 7 check in SymPy."
+    "verdict": "ok",
+    "evidence": "fixed 2026-09-29: options B and D replaced by 9 and 11, the averages over the whole intervals [1,3] and [2,3] (BC-ERR-02033, anchored to its error block); the spec's 24 and 21 belong to BC-ERR-02027 and BC-ERR-02001, which the lesson's skills do not hold; prose Checks line matched."
    }
   ],
   "advice": [
@@ -122,11 +122,16 @@
    "chk-3 could use the spec's own distractors (24 and 21) in place of 4t+1 and 13+2h, which keeps every option a number and every error path sourced."
   ],
   "counts": {
-   "ok": 13,
-   "unsourced": 1,
+   "ok": 14,
+   "unsourced": 0,
    "wrong": 0,
    "over_cap": 0,
    "lint": 0
-  }
+  },
+  "fix_notes": [
+   "Fixed chk-3 distractors (D had been tied to BC-ERR-02006, B was a function not a held error's number) and the ki-1 motion spec y axis, raised from [-1, 12] to [-1, 16] since f(3.5) = 15 and the minimum on [0, 3.5] is -1/8.",
+   "The batch named an err-BC-ERR-02008 block with equal sides for this lesson; LSN-CON-02002 has no such block (it is in LSN-CON-02003, fixed there).",
+   "Left: st-2 without example or check (structural)."
+  ]
  }
 }

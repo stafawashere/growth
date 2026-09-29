@@ -45,12 +45,12 @@
    {
     "id": "st-1",
     "verdict": "ok",
-    "evidence": "Method from BC-QA-03008 path[0]; rival from wrong_approaches BC-ERR-05060."
+    "evidence": "fixed 2026-09-29: rebuilt for this concept: cue names the second derivative in one notation and the first in the other; method d^2y/dx^2 = d/dx(y') (expected_solution_path[0]); rival BC-ERR-03022 from the archetype common_distractors 'the second derivative reported in the wrong notation', evidence_tag inferred since wrong_approaches holds no notation entry."
    },
    {
     "id": "ex-1",
     "verdict": "ok",
-    "evidence": "SymPy: y'(2) = -4 + 3 + 2 = 1; y'' = -2y - 2x yp + 3 yp + 1; value -2."
+    "evidence": "fixed 2026-09-29: problem now gives y' in prime form and asks d^2y/dx^2, answer written as y''(2); step 1 writes the Leibniz naming line d^2y/dx^2 = d/dx(-2xy + 3y + x) and is written, not skipped; SymPy yp(2)=1, y''=-2y-2x yp+3yp+1, value -2."
    },
    {
     "id": "what_a_reader_scores:ex-1",
@@ -75,12 +75,12 @@
    {
     "id": "chk-1",
     "verdict": "ok",
-    "evidence": "SymPy: value at (2, 1, yp=1) is -2."
+    "evidence": "fixed 2026-09-29: stem gives d^2y/dx^2 in Leibniz form with dy/dx = 1 at x = 2 and asks y''(2), so reading the notation is tested; SymPy value -2."
    },
    {
     "id": "chk-2",
     "verdict": "ok",
-    "evidence": "SymPy: dy/dx(1,1) = 2; y'' = y + x yp + 2 yp - 1 = 6."
+    "evidence": "fixed 2026-09-29: stem gives dy/dx in Leibniz form and asks y'' in x, y and y' then y''(1); SymPy y''=y+x yp+2yp-1, yp(1)=2, value 6."
    }
   ],
   "advice": [
@@ -96,5 +96,9 @@
    "over_cap": 0,
    "lint": 0
   }
- }
+ },
+ "fix_notes": [
+  "Fixed the concept mismatch named in advice: st-1, ex-1, chk-1 and chk-2 rebuilt around reading prime and Leibniz notation interchangeably on the BC-QA-03008 draws; the Leibniz naming is now a written step; both checks switch notation between given and asked. Word count 448 both forms, 3.0 minutes, checker clean.",
+  "Left: no MCQ notation check (only one held error, BC-ERR-03022, so a 4 option MCQ with error blocks is not possible); a notation table for ki-1 (preference)."
+ ]
 }

@@ -116,7 +116,7 @@
    {
     "id": "chk-3",
     "verdict": "ok",
-    "evidence": "SymPy: yp(2,-1) = -2; y'' = y + x yp + 2 yp + 1 = -8; A -7 (x yp + 2 yp + 1), C 0 (y + 1), D y + 4 yp + 1; distinct."
+    "evidence": "fixed 2026-09-29: option D was the expression y + 4 yp + 1 (BC-ERR-03011) among numeric options; now -4 on BC-ERR-03023 (dy/dx at the point never computed, y = -1 used in its place): SymPy (y + x yp + 2 yp + 1) at x=2, y=-1, yp=-1 is -4; options -7, -8, 0, -4 distinct."
    }
   ],
   "advice": [
@@ -131,5 +131,9 @@
    "over_cap": 0,
    "lint": 0
   }
- }
+ },
+ "fix_notes": [
+  "Fixed chk-3 option D: numeric -4 on BC-ERR-03023, which has an error block and is held by BC-SKL-03033 and BC-SKL-03034. BC-ERR-03011 has no numeric value on this draw (it leaves y in the answer) and BC-ERR-03021 has no error block (cap of four), so neither could carry D.",
+  "Left as preferences: tag BC-PT-99023 on the chain rule step; connect the bridges to second derivatives."
+ ]
 }

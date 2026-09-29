@@ -33,5 +33,89 @@
    }
   ],
   "answers_file": "/tmp/claude-0/-home-user-growth/ac029253-8ff0-5a4b-8b5f-cdcaf5e8ff8d/scratchpad/verify/answers_03.json"
+ },
+ "audit": {
+  "date": "2026-09-29",
+  "auditor": "claude-opus-5-5",
+  "blocks": [
+   {
+    "id": "orientation",
+    "verdict": "ok",
+    "evidence": "Paraphrase of BC-CON-01010 description_plain and the 1.8 Assessment behaviour paragraph; 38 words."
+   },
+   {
+    "id": "ki-1",
+    "verdict": "ok",
+    "evidence": "Theorem statement matches BC-CON-01010 description_formal and 1.8 Squeeze theorem paragraph; hypotheses sentence from Hypotheses as a separate demand; quote verbatim LIM-1.E.2 on ced:45."
+   },
+   {
+    "id": "st-1",
+    "verdict": "ok",
+    "evidence": "Method BC-QA-01005 expected_solution_path[0]; rival BC-ERR-01013 in wrong_approaches; cue from common_givens."
+   },
+   {
+    "id": "ex-1",
+    "verdict": "ok",
+    "evidence": "SymPy: |3(x-1)sin(1/(x-1))| <= 3|x-1|; limits of 2 -/+ 3|x-1| at 1 are both 2; draw meets the constraint (power 1 odd)."
+   },
+   {
+    "id": "err-BC-ERR-01012",
+    "verdict": "ok",
+    "evidence": "Record text verbatim; 2-3(x-1) exceeds f for x<1 (it equals the upper bound 2+3|x-1| there); distinct from 2-3|x-1|."
+   },
+   {
+    "id": "err-BC-ERR-01013",
+    "verdict": "ok",
+    "evidence": "Record text verbatim; SymPy 2-3*Abs(1-1) = 2 equals the limit 2, so relation equivalent is correct and the loss is the theorem, as the consequence states."
+   },
+   {
+    "id": "err-BC-ERR-99008",
+    "verdict": "unsourced",
+    "evidence": "The record's observed_behavior and scoring_consequence concern the Mean Value Theorem, the Intermediate Value Theorem and L'Hospital's Rule; the block serves them for the squeeze theorem, and no bundle record, ced:45 or the 1.8 section says a squeeze condition point exists or is lost this way (BC-QA-01005 has no official FRQ part)."
+   },
+   {
+    "id": "representations",
+    "verdict": "ok",
+    "evidence": "null; the 1.8 graph to inequality conversion is carried by the orientation figure and the ki-1 motion."
+   },
+   {
+    "id": "BC-PRQ-01005",
+    "verdict": "ok",
+    "evidence": "Paraphrase of description_plain and failure_signature."
+   },
+   {
+    "id": "BC-PRQ-01010",
+    "verdict": "ok",
+    "evidence": "Paraphrase of description_plain; failure_signature (closed interval where the theorem gives an interior point) loosely paraphrased as the wrong interval."
+   },
+   {
+    "id": "chk-1",
+    "verdict": "ok",
+    "evidence": "SymPy: limit of 2+3|x-1| at 1 is 2."
+   },
+   {
+    "id": "chk-2",
+    "verdict": "ok",
+    "evidence": "SymPy: |2(x+2)**2 cos(1/(x+2))| <= 2(x+2)**2; bounds -1 -/+ 2(x+2)**2 tend to -1; coefficient -2 < 0 meets the constraint."
+   },
+   {
+    "id": "chk-3",
+    "verdict": "ok",
+    "evidence": "SymPy: bounds 3 -/+ |x|**3 tend to 3; option B 3-x**3 > 3+x**3 for x<0, so the stated inequality fails there (BC-ERR-01012); A and C match BC-ERR-01013 and BC-ERR-99008."
+   }
+  ],
+  "advice": [
+   "err-BC-ERR-99008's served observed_behavior names MVT, IVT and L'Hospital's Rule, which a squeeze lesson reader will find off topic; a squeeze scoped error record or a paraphrase limited to the squeeze hypotheses is needed.",
+   "Motion for ki-1 (bounds pinching toward the target) fits a limit being taken; the orientation figure fits the trapped curve.",
+   "ex-1 and every check use 3|x-1| bounds, so the student never sees the reversal case built without absolute value; that is fine as a method but err-BC-ERR-01012 then shows the error only against a form the student was never asked to derive.",
+   "The lesson teaches the three lines scoring_pattern names (inequality, bound limits, conclusion) through ex-1, but no check asks the student to write the inequality line themselves; chk-3 recognises it only."
+  ],
+  "counts": {
+   "ok": 12,
+   "unsourced": 1,
+   "wrong": 0,
+   "over_cap": 0,
+   "lint": 0
+  }
  }
 }

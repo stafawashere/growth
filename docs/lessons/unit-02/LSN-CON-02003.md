@@ -82,7 +82,7 @@ No draw equals a published BC-QA-02002 `parameter_draw` (content/items_gen_unit0
 
 ## Band plan
 
-- Low (full): orientation, ki-1, ki-2, st-1, ex-1, the four error blocks, chk-1, chk-2, chk-3, the two bridges. 504 words, 3.4 minutes (cap 900 and 6).
+- Low (full): orientation, ki-1, ki-2, st-1, ex-1, the four error blocks, chk-1, chk-2, chk-3, the two bridges. 517 words, 3.45 minutes (cap 900 and 6).
 - Mid (brief): orientation, ki-1, st-1, ex-1, err-02005, err-02006, chk-1, chk-2, the bridges. 358 words, 2.4 minutes (cap 450 and 3).
 - Refresher: ki-1, err-BC-ERR-02005, err-BC-ERR-02006, err-BC-ERR-02007, err-BC-ERR-02008, ex-1.
 

@@ -29,12 +29,13 @@ What says "not this concept": dy/dx alone, with no second order named.
 
 One strategy block, both bands.
 
-- st-1, BC-QA-03008. Method, `expected_solution_path[0]`: differentiate the supplied expression with respect to the independent variable, written as d/dx applied to it. Rival, `wrong_approaches`: y held constant (BC-ERR-05060). Separating feature: y inside the first derivative. The archetype carries both fields, so verified.
+- st-1, BC-QA-03008. Cue: the stem names the second derivative in one notation and gives the first in the other (`difficulty_variables`, "whether the answer must be expressed in the notation of the prompt"). Method, `expected_solution_path[0]`: differentiate the supplied expression with respect to the independent variable, read as d^2y/dx^2 = y'' = d/dx(y') and written as that first line. Rival: the archetype's `common_distractors` entry "the second derivative reported in the wrong notation", which is BC-ERR-03022 (the error record lists BC-QA-03008); `wrong_approaches` holds no notation entry, so the block carries `evidence_tag: inferred`. Separating feature: d/dx is an operator that acts on y', while dy/dx is a result.
 
 ## Solution path
 
 - ex-1, BC-QA-03008, both bands, no calculator. Draw from `parameter_spec`: mixed -2, y_part 3, x_part 1, x_at 2, y_at 1, notation prime; y' = -2xy + 3y + x; derived slope 1; options [-2, 0, -1, 1], distinct, first nonzero. No published BC-QA-03008 item carries this draw.
-- Steps: the notation read (no value); y' (new); y'(2) (evaluate); y'' by the product and chain rules (new, BC-PT-99022); the value, written in the prompt's notation (evaluate, BC-PT-99027). A fluent solver writes steps 2 to 5; step 1 is read, not written.
+- Problem in mixed notation: y' is given in prime form and d^2y/dx^2 is asked, with the answer written again as y''(2).
+- Steps: the naming line d^2y/dx^2 = d/dx(y'), carrying y' (new); y'(2) (evaluate); y'' by the product and chain rules (new, BC-PT-99022); the value, named in both notations (evaluate, BC-PT-99027). A fluent solver writes all four; the Leibniz naming is the first written line.
 
 ## Scoring
 
@@ -54,14 +55,14 @@ None. The topic's Representations paragraph names BC-REP-01, BC-REP-04 and BC-RE
 
 ## Time
 
-BC-QA-03008 is `no_calculator`, the opening part of an FRQ: Section II Part B, 15.0 minutes per question (research/exam/exam-structure.md#Section and part layout), this part about 5.0 of them (docs/lessons/unit-03/README.md, section 5) [inferred]. Reading the notation costs no written line.
+BC-QA-03008 is `no_calculator`, the opening part of an FRQ: Section II Part B, 15.0 minutes per question (research/exam/exam-structure.md#Section and part layout), this part about 5.0 of them (docs/lessons/unit-03/README.md, section 5) [inferred]. Reading the notation is the first written line, d^2y/dx^2 = d/dx(y').
 
 ## Checks
 
 Two checks: the bundle holds one error, and check 3 needs three error blocks for its distractors.
 
-- chk-1, completion of ex-1, both bands: y'' and y'(2) = 1 are given. Key -2.
-- chk-2, isomorph, both bands, in Leibniz notation. Draw: mixed 1, y_part 2, x_part -1, x_at 1, y_at 1, notation leibniz; dy/dx = xy + 2y - x, slope 2. Key 6.
+- chk-1, completion of ex-1, both bands, notation reading: the second derivative is given in Leibniz form (d^2y/dx^2 in x, y and dy/dx) with dy/dx = 1 at x = 2, and y''(2) is asked in prime form. Key -2.
+- chk-2, isomorph, both bands, notation reading: dy/dx = xy + 2y - x is given in Leibniz form and y'' is asked in prime form, first as an expression in x, y and y', then at x = 1. Draw: mixed 1, y_part 2, x_part -1, x_at 1, y_at 1, notation leibniz; slope 2. Key 6.
 
 ## Delivery
 
@@ -71,8 +72,8 @@ Two checks: the bundle holds one error, and check 3 needs three error blocks for
 
 ## Band plan
 
-- Low (full): orientation, ki-1, st-1, ex-1 with its scoring lines, err-BC-ERR-03022, chk-1, chk-2, the bridge. 447 words, 3.0 minutes (cap 900 and 6).
-- Mid (brief): the same blocks, since the lesson has one strategy block, one example, one error block and two checks. 447 words, 3.0 minutes (cap 450 and 3).
+- Low (full): orientation, ki-1, st-1, ex-1 with its scoring lines, err-BC-ERR-03022, chk-1, chk-2, the bridge. 448 words, 3.0 minutes (cap 900 and 6).
+- Mid (brief): the same blocks, since the lesson has one strategy block, one example, one error block and two checks. 448 words, 3.0 minutes (cap 450 and 3).
 - Refresher: ki-1, err-BC-ERR-03022, ex-1.
 
 ## Sources
@@ -119,12 +120,12 @@ Two checks: the bundle holds one error, and check 3 needs three error blocks for
   {
    "id": "st-1",
    "archetype_id": "BC-QA-03008",
-   "cue": "y'' or d^2y/dx^2 asked at a point, the first derivative given in x and y.",
-   "method": "First line: d/dx applied to the y' expression.",
-   "rival": "Rival: y held constant (BC-ERR-05060).",
-   "separating_feature": "y inside y' means each y term gains a y' factor.",
-   "sources": ["BC-QA-03008"],
-   "evidence_tag": "verified"
+   "cue": "Second derivative named in one notation, first derivative given in the other.",
+   "method": "Read d^2y/dx^2 and y'' as one object. First line: d^2y/dx^2 = d/dx(y').",
+   "rival": "Rival: dy/dx for d/dx, a product (BC-ERR-03022).",
+   "separating_feature": "d/dx acts on y'; dy/dx is a result, never a factor.",
+   "sources": ["BC-QA-03008", "BC-ERR-03022"],
+   "evidence_tag": "inferred"
   }
  ],
  "worked_examples": [
@@ -133,14 +134,13 @@ Two checks: the bundle holds one error, and check 3 needs three error blocks for
    "archetype_id": "BC-QA-03008",
    "bands": ["low", "mid"],
    "parameter_draw": {"mixed": -2, "y_part": 3, "x_part": 1, "x_at": 2, "y_at": 1, "notation": "prime"},
-   "problem": {"text": "y' = -2xy + 3y + x and y(2) = 1. Find y''(2), and name it in Leibniz notation.", "command_verb": "find"},
+   "problem": {"text": "y' = -2xy + 3y + x and y(2) = 1. Find d^2y/dx^2 at x = 2, written as y''(2).", "command_verb": "find"},
    "calculator_status": "no_calculator",
    "steps": [
-    {"cue": "y'' is d/dx of y'.", "why": "In Leibniz notation, d^2y/dx^2 at x = 2."},
-    {"cue": "y' contains y, so y' will reappear.", "why": "Its value at the point comes first.", "expr": "-2*x*y + 3*y + x", "relation": "new"},
-    {"cue": "Substitute x = 2, y = 1.", "why": "-4 + 3 + 2.", "expr": "1", "relation": "evaluate", "subs": {"x": "2", "y": "1"}},
+    {"cue": "d^2y/dx^2 and y'' name one object: d/dx applied to y'.", "why": "Write d^2y/dx^2 = d/dx(-2xy + 3y + x).", "expr": "-2*x*y + 3*y + x", "relation": "new"},
+    {"cue": "y' reappears, so find y'(2) first.", "why": "-4 + 3 + 2.", "expr": "1", "relation": "evaluate", "subs": {"x": "2", "y": "1"}},
     {"cue": "d/dx of -2xy: product rule; y terms gain y'.", "why": "-2y - 2xy' + 3y' + 1.", "expr": "-2*y - 2*x*yp + 3*yp + 1", "relation": "new", "point_type_id": "BC-PT-99022"},
-    {"cue": "Point and y' known.", "why": "-2 - 4 + 3 + 1, so d^2y/dx^2 = -2 at x = 2.", "expr": "-2", "relation": "evaluate", "subs": {"x": "2", "y": "1", "yp": "1"}, "point_type_id": "BC-PT-99027"}
+    {"cue": "Point and y' known.", "why": "-2 - 4 + 3 + 1, so y''(2) = -2.", "expr": "-2", "relation": "evaluate", "subs": {"x": "2", "y": "1", "yp": "1"}, "point_type_id": "BC-PT-99027"}
    ],
    "answer": {"form": "numeric", "expr": "-2"}
   }
@@ -167,7 +167,7 @@ Two checks: the bundle holds one error, and check 3 needs three error blocks for
  "prerequisite_bridges": [
   {"prq_id": "BC-PRQ-03005", "text": "f'(x), dy/dx, d^2y/dx^2 and y'' name derivatives; d/dx is the operator. dy for dy/dx, or dy/dx for d/dx, loses the meaning."}
  ],
- "time": {"exam_part": "II-B", "budget_minutes": 15.0, "source": "research/exam/exam-structure.md#Section and part layout", "written_steps": {"ex-1": [2, 3, 4, 5]}, "skipped_steps": {"ex-1": [1]}},
+ "time": {"exam_part": "II-B", "budget_minutes": 15.0, "source": "research/exam/exam-structure.md#Section and part layout", "written_steps": {"ex-1": [1, 2, 3, 4]}, "skipped_steps": {"ex-1": []}},
  "checks": [
   {
    "id": "chk-1",
@@ -177,10 +177,10 @@ Two checks: the bundle holds one error, and check 3 needs three error blocks for
    "archetype_id": "BC-QA-03008",
    "parameter_draw": {"mixed": -2, "y_part": 3, "x_part": 1, "x_at": 2, "y_at": 1, "notation": "prime"},
    "completes": "ex-1",
-   "stem": {"text": "y'' = -2y - 2xy' + 3y' + 1, y(2) = 1 and y'(2) = 1. Find y''(2).", "command_verb": "find"},
+   "stem": {"text": "d^2y/dx^2 = -2y - 2x dy/dx + 3 dy/dx + 1; at x = 2, y = 1 and dy/dx = 1. Find y''(2).", "command_verb": "find"},
    "key": {"form": "numeric", "expr": "-2"},
    "steps": [
-    {"text": "y''.", "expr": "-2*y - 2*x*yp + 3*yp + 1", "relation": "new"},
+    {"text": "y'' is d^2y/dx^2.", "expr": "-2*y - 2*x*yp + 3*yp + 1", "relation": "new"},
     {"text": "x = 2, y = 1, y' = 1.", "expr": "-2", "relation": "evaluate", "subs": {"x": "2", "y": "1", "yp": "1"}}
    ],
    "calculator_status": "no_calculator",
@@ -193,12 +193,12 @@ Two checks: the bundle holds one error, and check 3 needs three error blocks for
    "bands": ["low", "mid"],
    "archetype_id": "BC-QA-03008",
    "parameter_draw": {"mixed": 1, "y_part": 2, "x_part": -1, "x_at": 1, "y_at": 1, "notation": "leibniz"},
-   "stem": {"text": "dy/dx = xy + 2y - x through (1, 1). Find d^2y/dx^2 at (1, 1).", "command_verb": "find"},
+   "stem": {"text": "dy/dx = xy + 2y - x, y(1) = 1. Write y'' in x, y and y', then find y''(1).", "command_verb": "find"},
    "key": {"form": "numeric", "expr": "6"},
    "steps": [
-    {"text": "dy/dx.", "expr": "x*y + 2*y - x", "relation": "new"},
-    {"text": "dy/dx = 2 at the point.", "expr": "2", "relation": "evaluate", "subs": {"x": "1", "y": "1"}},
-    {"text": "d/dx of dy/dx.", "expr": "y + x*yp + 2*yp - 1", "relation": "new"},
+    {"text": "y' is the given dy/dx.", "expr": "x*y + 2*y - x", "relation": "new"},
+    {"text": "y'(1) = 2.", "expr": "2", "relation": "evaluate", "subs": {"x": "1", "y": "1"}},
+    {"text": "y'' = d/dx(y').", "expr": "y + x*yp + 2*yp - 1", "relation": "new"},
     {"text": "Point and slope.", "expr": "6", "relation": "evaluate", "subs": {"x": "1", "y": "1", "yp": "2"}}
    ],
    "calculator_status": "no_calculator",
@@ -213,7 +213,7 @@ Two checks: the bundle holds one error, and check 3 needs three error blocks for
  ],
  "refresher": ["ki-1", "err-BC-ERR-03022", "ex-1"],
  "read_minutes": {"full": 3.0, "brief": 3.0},
- "word_count": {"full": 447, "brief": 447},
+ "word_count": {"full": 448, "brief": 448},
  "research_lines": [
   {"file": "research/scoring/notation-requirements.md", "line": "sg-24:8 accepts a derivative written in Leibniz form in place of prime notation."}
  ],

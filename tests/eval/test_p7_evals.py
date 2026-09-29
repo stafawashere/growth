@@ -3,6 +3,7 @@ and writes docs/operator/p7-evals.md, whose decisions the live policy must match
 import ast
 import math
 import random
+from datetime import timedelta
 from pathlib import Path
 
 import pytest
@@ -49,6 +50,55 @@ def test_the_world_stays_closed_under_hard_prerequisites_while_it_learns():
 
       parents = library.engine_graph.hard_parents.get(skill_id, ())
       assert all(world.knows(parent) for parent in parents), skill_id
+
+
+def lapsed_world(rules):
+   library = whole_graph.library()
+   student = learning.make_learning_student("lapsed", 78)
+   record = next(iter(library.graph.archetypes.values()))
+   world = learning.LearningWorld(
+      student,
+      library.engine_graph.hard_parents,
+      random.Random(9),
+      rules=rules,
+      seed=9,
+      start_day=whole_graph.START_DAY,
+   )
+   long_ago = whole_graph.START_DAY - timedelta(days=4000)
+
+   for skill_id in record["skills"]:
+      student.known[skill_id] = True
+      world.half_life[skill_id] = 17.0
+      world.last_success[skill_id] = long_ago
+
+   return world, record, long_ago
+
+
+def test_feedback_relearns_a_lapsed_skill_one_growth_step_down():
+   """A known skill the student could not retrieve is re-anchored today with one growth step of
+   its half-life undone, never below the initial half-life; the legacy world leaves it decaying."""
+   today = whole_graph.START_DAY
+   world, record, long_ago = lapsed_world(learning.WORLD)
+   is_correct = world.answer(record, "short_answer", learning.FadingStage.UNSUPPORTED, today)
+
+   assert is_correct is False
+
+   for skill_id in record["skills"]:
+      assert world.last_success[skill_id] == today
+      assert world.half_life[skill_id] == pytest.approx(10.0)
+
+   world.half_life[record["skills"][0]] = 6.0
+   world.last_success[record["skills"][0]] = long_ago
+   world.answer(record, "short_answer", learning.FadingStage.UNSUPPORTED, today + timedelta(days=1))
+
+   assert world.half_life[record["skills"][0]] == learning.INITIAL_HALF_LIFE_DAYS
+
+   legacy, record, long_ago = lapsed_world(learning.LEGACY_WORLD)
+   legacy.answer(record, "short_answer", learning.FadingStage.UNSUPPORTED, today)
+
+   for skill_id in record["skills"]:
+      assert legacy.last_success[skill_id] == long_ago
+      assert legacy.half_life[skill_id] == 17.0
 
 
 def test_an_arm_restores_the_engine_it_patched():

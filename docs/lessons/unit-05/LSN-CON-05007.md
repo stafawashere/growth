@@ -47,7 +47,7 @@ BC-QA-05004 lists BC-PT-99062 and BC-PT-99063. ex-1 tags BC-PT-99063 on the reas
 Four active errors meet the skills, all served in the bundle's order (low band all four, mid band the first two).
 
 - err-BC-ERR-05015: a feature of the drawn curve read as a feature of f. Statement-shaped. Possible reason, words from BC-MIS-05011.
-- err-BC-ERR-05016: f decreasing reported where concavity was asked. Statement-shaped. Possible reason, words from BC-MIS-05020.
+- err-BC-ERR-05016: f increasing reported where f' rises and concavity was asked, on (4, 6). Statement-shaped. Possible reason, words from BC-MIS-05020.
 - err-BC-ERR-05030: the slope of f' on (4, 5) read as negative, giving (2, 5). No possible reason line.
 - err-BC-ERR-05031: concave down where f' < 0, giving (0, 2/3) and (7/2, 5). Possible reason, words from BC-MIS-05020.
 
@@ -250,12 +250,12 @@ BC-QA-05004 has `calculator_status` either, so the lesson takes Section I Part A
   {
    "error_id": "BC-ERR-05016",
    "wrong_step": {
-    "text": "f decreases on (2, 4).",
-    "expr": "f_decreasing_on_2_4"
+    "text": "f' rises on (4, 6), so f increases on (4, 6).",
+    "expr": "f_increasing_on_4_6"
    },
    "right_step": {
-    "text": "f is concave down on (2, 4).",
-    "expr": "f_concave_down_on_2_4"
+    "text": "f' rises on (4, 6), so f is concave up on (4, 6).",
+    "expr": "f_concave_up_on_4_6"
    },
    "relation": "distinct",
    "possible_reason": {

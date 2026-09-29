@@ -50,9 +50,26 @@ inactive; lesson_signed_off, written when ingest first stores a signed_off versi
 Added 2026-09-29 with the Today redesign (docs/pedagogy/today/design.md D4): due_skill_unserved,
 a due skill block 1 leaves unserved with its reason, so the rulings on the block 1 cap and the
 retrieval floor rest on counts. It is bounded one row per user, skill and day.
+
+Added 2026-09-29 with the live tutor agent (docs/agent/architecture.md, "Guard, pacing, audit,
+purge and export"): agent_reply_withheld, written when the output screen withholds a reply, bounded
+one row per user and day, with the check that fired and the turn id; agent_memory_deleted,
+agent_memory_edited, agent_memory_cleared and agent_conversation_deleted, written when the student
+forgets, rewrites or clears what the tutor remembers or deletes a conversation; agent_memory_paused
+and agent_memory_resumed for the student's pause switch; agent_consolidation_applied, one row per
+consolidation job with the counts of applied and rejected proposals. None of them carries the text
+of an entry, a turn or a proposal, only ids and counts.
 """
 AUDIT_ACTIONS = (
    "account_created",
+   "agent_consolidation_applied",
+   "agent_conversation_deleted",
+   "agent_memory_cleared",
+   "agent_memory_deleted",
+   "agent_memory_edited",
+   "agent_memory_paused",
+   "agent_memory_resumed",
+   "agent_reply_withheld",
    "budget_call_refused",
    "budget_cap_changed",
    "budget_hard_stop",

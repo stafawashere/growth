@@ -1,0 +1,51 @@
+{
+   "title": "Memory consolidation output",
+   "description": "The memory role's output for one closed conversation (docs/agent/architecture.md, The memory store). Proposals are applied by app/agent/memory.py apply_proposals, which enforces every length, id and content rule; the schema carries no minimum, maximum or length keywords because structured outputs reject them.",
+   "type": "object",
+   "properties": {
+      "proposals": {
+         "type": "array",
+         "items": {
+            "type": "object",
+            "properties": {
+               "operation": {"type": "string", "enum": ["ADD", "UPDATE", "SUPERSEDE", "NOOP"]},
+               "target_id": {"type": ["string", "null"]},
+               "kind": {"type": "string", "enum": ["preference", "confusion", "stated_difficulty", "episode"]},
+               "text": {"type": "string"},
+               "skill_ids": {"type": "array", "items": {"type": "string"}},
+               "evidence_turn_ids": {"type": "array", "items": {"type": "string"}}
+            },
+            "required": ["operation", "target_id", "kind", "text", "skill_ids", "evidence_turn_ids"],
+            "additionalProperties": false
+         }
+      },
+      "student_terms": {
+         "type": "array",
+         "items": {
+            "type": "object",
+            "properties": {
+               "term": {"type": "string"},
+               "concept_id": {"type": "string"}
+            },
+            "required": ["term", "concept_id"],
+            "additionalProperties": false
+         }
+      },
+      "stated_requests": {
+         "type": "array",
+         "items": {
+            "type": "string",
+            "enum": [
+               "wants_answer",
+               "wants_check_of_work",
+               "wants_shorter",
+               "wants_longer",
+               "wants_graph_first",
+               "wants_algebra_first"
+            ]
+         }
+      }
+   },
+   "required": ["proposals", "student_terms", "stated_requests"],
+   "additionalProperties": false
+}

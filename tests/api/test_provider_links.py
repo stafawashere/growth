@@ -88,7 +88,11 @@ def test_settings_shows_each_chain_and_what_is_cooling(tmp_path):
    settings.provider_cooldowns.failed("tutor", SUBSCRIPTION_LINK, SubscriptionLimitReached.__name__, now)
    view = providers_view(settings, now=now + timedelta(minutes=1))
 
-   assert view["chains"] == {"tutor": [SUBSCRIPTION_LINK, API_LINK], "grading": [SUBSCRIPTION_LINK, API_LINK]}
+   assert view["chains"] == {
+      "tutor": [SUBSCRIPTION_LINK, API_LINK],
+      "grading": [SUBSCRIPTION_LINK, API_LINK],
+      "agent": [SUBSCRIPTION_LINK, API_LINK],
+   }
    assert [(entry["role"], entry["link"], entry["because"]) for entry in view["cooling"]] == [
       ("tutor", SUBSCRIPTION_LINK, SubscriptionLimitReached.__name__)
    ]

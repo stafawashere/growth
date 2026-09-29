@@ -130,7 +130,7 @@ def test_put_settings_refuses_what_it_cannot_store(world):
    assert (after.exam_date, after.purge_after) == (before.exam_date, before.purge_after)
 
 
-def test_providers_lists_the_six_roles_and_only_the_wired_tutor(world):
+def test_providers_lists_the_eight_roles_and_only_the_wired_tutor(world):
    world.settings.tutor = CountingProvider()
    client = world.client()
    world.register(client)
@@ -141,7 +141,12 @@ def test_providers_lists_the_six_roles_and_only_the_wired_tutor(world):
    assert all(set(entry) == PROVIDER_FIELDS for entry in roles)
    assert by_role["tutor"] == {"role": "tutor", "provider": "replay", "model": TUTOR_MODEL, "wired": True}
 
+   rides_the_tutors_chain = ("agent", "memory")
+
    for role in ROLES[1:]:
+      if role in rides_the_tutors_chain:
+         continue
+
       assert by_role[role] == {"role": role, "provider": None, "model": None, "wired": False}
 
 

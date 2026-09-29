@@ -1429,3 +1429,97 @@ export interface LibraryUnit {
 export interface LibraryPayload {
    units: LibraryUnit[];
 }
+
+/* The live tutor's Tutor tab in Settings, app/api/routes/agent.py (docs/agent/architecture.md,
+   "The panel and the settings views"). Each group carries the kind's plain label from
+   docs/agent/design.md; only preferences and confusions are editable. */
+export type AgentMemoryKind = "preference" | "confusion" | "stated_difficulty" | "episode";
+
+export interface AgentMemoryEntry {
+   id: string;
+   kind: AgentMemoryKind;
+   text: string;
+   skill_ids: string[];
+   created_at: string;
+   source_conversation_id: string | null;
+   editable: boolean;
+}
+
+export interface AgentMemoryGroup {
+   kind: AgentMemoryKind;
+   label: string;
+   entries: AgentMemoryEntry[];
+}
+
+export interface AgentMemoriesPayload {
+   memory_paused: boolean;
+   groups: AgentMemoryGroup[];
+}
+
+export interface AgentMemoryDeleted {
+   deleted: string;
+}
+
+/* DELETE /agent/memories: the counts of rows removed per table, never their text. */
+export interface AgentMemoryCleared {
+   cleared: {
+      tutor_memories: number;
+      agent_turns: number;
+      agent_conversations: number;
+      tutor_profiles: number;
+   };
+}
+
+export type AgentScreenKind =
+   | "today"
+   | "session_item"
+   | "session_lesson"
+   | "lesson"
+   | "review"
+   | "progress"
+   | "assessments"
+   | "settings"
+   | "other";
+
+export interface AgentConversationSummary {
+   id: string;
+   opened_at: string;
+   last_turn_at: string;
+   closed_at: string | null;
+   opened_on_screen: AgentScreenKind;
+   turn_count: number;
+}
+
+export type AgentTurnOutcome = "complete" | "stopped" | "incomplete" | "withheld" | "declined";
+
+export interface AgentConversationTurn {
+   id: string;
+   role: "student" | "agent";
+   text: string;
+   created_at: string;
+   outcome: AgentTurnOutcome | null;
+}
+
+export interface AgentConversationsPayload {
+   conversations: AgentConversationSummary[];
+}
+
+export interface AgentConversationPayload extends AgentConversationSummary {
+   turns: AgentConversationTurn[];
+}
+
+export interface AgentConversationDeleted {
+   deleted: string;
+}
+
+export interface AgentSettingsPayload {
+   memory_paused: boolean;
+}
+
+/* GET /agent/profile: the highest tutor_profiles version, and the tutor_profile switch's state, or
+   "absent" while the switch has no definition. */
+export interface AgentProfilePayload {
+   profile: Record<string, unknown> | null;
+   version: number | null;
+   experiment: ExperimentState | "absent";
+}

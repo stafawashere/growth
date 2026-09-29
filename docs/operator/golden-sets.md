@@ -7,7 +7,7 @@ purpose: The golden set for every model role, who wrote and labelled each, what 
 
 # Golden sets
 
-Written by `tools/golden_sets.py`. Every set in `content/golden/` was authored and labelled by claude-opus-5-5 on the operator's delegation of 2026-09-24. None is a human's work and none has been reviewed by a human. Where 10 and 11 say the operator authors or verifies a set, a model did it and each file says so in its `authored_by` and `labelled_by` lines. `app/evals/golden.py` validates each set before any number is read off it, and every set passed on this run.
+Written by `tools/golden_sets.py`. Every set in `content/golden/` was authored and labelled by claude-opus-5-5 on the operator's delegation of 2026-09-24, except the agent set, written on the operator's delegation of 2026-09-29. None is a human's work and none has been reviewed by a human. Where 10 and 11 say the operator authors or verifies a set, a model did it and each file says so in its `authored_by` and `labelled_by` lines. `app/evals/golden.py` validates each set before any number is read off it, and every set passed on this run.
 
 | Role | Set | Cases | Breakdown | Measured |
 |---|---|---|---|---|
@@ -17,6 +17,7 @@ Written by `tools/golden_sets.py`. Every set in `content/golden/` was authored a
 | diagnostician | diagnostician_goldens | 46 | 40 distinct archetype_id values | when P3 wires the diagnostician; observed-error exact match and top-hypothesis agreement |
 | generator | golden_set_1 | 28 | no_calculator 28 | now as a regression guard on the bank's frozen keys; as a generator eval when P4 wires the generator |
 | verifier | verifier_goldens | 42 | calculator_boundary 6, distractor_equals_key 6, duplicate_distractors 6, none 6, unresolvable_error_path 6, wrong_key 6, wrong_worked_step 6 | now, for the deterministic checks; for the model verifier when P4 wires it |
+| agent | agent_multi_turn_goldens | 28 | after_submission 8, browsing 6, practice 14 | now, replayed through the deterministic checks by tools/agent_eval.py; live when the turn route wires the agent chain |
 
 The grader set labels 63 of 85 responses earned. It covers the 17 BC-PT records that reach a model, five responses each, one per adversarial category of 10. 10 asks for 30 point types drawn from those that reach a model, and only 17 exist, so 17 by 5 is the whole population rather than a sample of it.
 

@@ -244,7 +244,51 @@ def check_verifier_monte_carlo(_replayed_calls):
       assert report.passed, archetype_id
 
 
+def check_agent_live(_replayed_calls):
+   """No live agent call is recorded yet, so the output checked is the golden set's acceptable
+   candidate replies, each streamed through the output screen on the packet its turn composes."""
+   from app.agent.screen import SentenceScreen
+   from app.content.loader import load_snapshot
+   from app.evals import agent_checks, golden
+   from app.runtime.context import DEFAULT_CONTENT_ROOT
+
+   document = golden.load_set("agent")
+   items = golden.bank_items()
+   context = golden.agent_context(load_snapshot(DEFAULT_CONTENT_ROOT))
+   screened = 0
+
+   for case in document["cases"]:
+      item = items.get(case.get("item_id"))
+      forms = agent_checks.key_forms(item) if item is not None else None
+
+      for index, entry in enumerate(case["turns"]):
+         if not entry["acceptable"]:
+            continue
+
+         screen = SentenceScreen(golden.agent_turn_packet(case, index, context, items), forms)
+         released = screen.feed(entry["candidate_reply"]) + screen.flush()
+
+         assert screen.withheld is None, (case["id"], index)
+         assert "".join(released) == entry["candidate_reply"]
+         screened += 1
+
+   assert screened > 0
+
+
+def check_agent_decline(_replayed_calls):
+   from app.agent.screen import decline_text
+   from app.evals import agent_checks
+
+   decline = decline_text()
+   facts = {"mode": "browsing", "turn_index": 0, "rules": (), "ids": ()}
+
+   assert decline.startswith("That reply would have given away part of the answer")
+   assert all(verdict.passed for verdict in agent_checks.run_checks(decline, facts, None, agent_checks.SENTENCE_CHECKS))
+
+
 OUTPUT_GOLDENS = {
+   "agent/decline_v1.md": check_agent_decline,
+   "agent/live_v1.md": check_agent_live,
    "diagnostician/error_hypotheses_v1.md": check_diagnostician,
    "feedback/elaborated_v1.md": check_elaborated_v1,
    "feedback/elaborated_v2.md": check_elaborated_v2,

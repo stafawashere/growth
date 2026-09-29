@@ -26,6 +26,7 @@ MEASURED_WHEN = {
    "diagnostician": "when P3 wires the diagnostician; observed-error exact match and top-hypothesis agreement",
    "generator": "now as a regression guard on the bank's frozen keys; as a generator eval when P4 wires the generator",
    "verifier": "now, for the deterministic checks; for the model verifier when P4 wires it",
+   "agent": "now, replayed through the deterministic checks by tools/agent_eval.py; live when the turn route wires the agent chain",
 }
 
 BREAKDOWN_FIELD = {
@@ -35,6 +36,7 @@ BREAKDOWN_FIELD = {
    "diagnostician": "archetype_id",
    "generator": "calculator",
    "verifier": "defect",
+   "agent": "mode",
 }
 
 
@@ -78,7 +80,7 @@ def main():
       "",
       "# Golden sets",
       "",
-      "Written by `tools/golden_sets.py`. Every set in `content/golden/` was authored and labelled by claude-opus-5-5 on the operator's delegation of 2026-09-24. None is a human's work and none has been reviewed by a human. Where 10 and 11 say the operator authors or verifies a set, a model did it and each file says so in its `authored_by` and `labelled_by` lines. `app/evals/golden.py` validates each set before any number is read off it, and every set passed on this run.",
+      "Written by `tools/golden_sets.py`. Every set in `content/golden/` was authored and labelled by claude-opus-5-5 on the operator's delegation of 2026-09-24, except the agent set, written on the operator's delegation of 2026-09-29. None is a human's work and none has been reviewed by a human. Where 10 and 11 say the operator authors or verifies a set, a model did it and each file says so in its `authored_by` and `labelled_by` lines. `app/evals/golden.py` validates each set before any number is read off it, and every set passed on this run.",
       "",
       "| Role | Set | Cases | Breakdown | Measured |",
       "|---|---|---|---|---|",

@@ -13,7 +13,7 @@ from pathlib import Path
 import pytest
 
 from app.feedback import tutor
-from app.providers.base import render_template, split_template
+from app.providers.base import render_template, split_template, template_placeholders
 
 REPO_ROOT = Path(__file__).resolve().parent.parent.parent
 TUTOR_TEMPLATE = REPO_ROOT / "prompts" / "tutor" / "guardrailed_practice_v1.md"
@@ -133,3 +133,46 @@ def test_prompt_templates_are_versioned_and_golden():
       with pytest.raises(ValueError):
          incomplete = {k: v for k, v in FEEDBACK_PAYLOAD.items() if k != "worked_solution"}
          render_template(feedback_text, incomplete)
+
+
+AGENT_TEMPLATE_FIELDS = {
+   PROMPTS_DIR / "agent" / "live_v1.md": {
+      "mode",
+      "move",
+      "screen_line",
+      "packet",
+      "memory",
+      "profile",
+      "history",
+      "student_message",
+   },
+   PROMPTS_DIR / "memory" / "consolidate_v1.md": {"turns", "active_entries", "own_notes", "active_skill_ids"},
+}
+DECLINE_TEMPLATE = PROMPTS_DIR / "agent" / "decline_v1.md"
+
+
+def test_agent_and_memory_templates_split_at_the_marker_and_declare_exactly_their_fields():
+   """docs/agent/architecture.md, Templates and the cached prefix: every field sits below the marker,
+   the prefix holds none, and neither template nor the decline copy carries a dash."""
+   forbidden_dashes = (chr(0x2014), chr(0x2013))
+
+   for template_path, fields in AGENT_TEMPLATE_FIELDS.items():
+      text = template_path.read_text()
+      prefix, variable_section = split_template(text)
+
+      assert template_placeholders(variable_section) == fields, template_path.name
+      assert template_placeholders(prefix) == set(), template_path.name
+      assert render_template(text, {name: "value" for name in fields}).count("value") == len(fields)
+
+      with pytest.raises(ValueError):
+         render_template(text, dict({name: "value" for name in fields}, answer_key="seven halves"))
+
+   decline_text = DECLINE_TEMPLATE.read_text()
+
+   for template_path in (*AGENT_TEMPLATE_FIELDS, DECLINE_TEMPLATE):
+      text = template_path.read_text()
+
+      assert not any(dash in text for dash in forbidden_dashes), template_path.name
+
+   assert "prompt-variables" not in decline_text
+   assert "{{" not in decline_text

@@ -110,10 +110,18 @@ function WorkedExample({ section, revealAll, stepsOnly }: { section: LessonSecti
 }
 
 /* The wrong step beside the right step, each under its label with a glyph, so the pair reads in
-   greyscale; the right step is revealed on "Next step". */
+   greyscale; the right step is revealed on "Next step". When both steps carry the same expression
+   the error is in what surrounds the value (a missing differential, an unstated form, no sentence),
+   so the expression is left out and the two texts carry the difference: drawn twice, the rendered
+   value would show the very notation the wrong step's text says is missing. */
 function ErrorPair({ section, revealAll }: { section: LessonSectionRecord; revealAll: boolean }) {
    const [showsRight, setShowsRight] = useState(revealAll);
    const isShown = showsRight || revealAll;
+   const wrongExpression = section.wrong_step?.expression;
+   const rightExpression = section.right_step?.expression;
+   const isSameValue = hasExpression(wrongExpression) && JSON.stringify(wrongExpression) === JSON.stringify(rightExpression);
+   const showsWrongValue = hasExpression(wrongExpression) && !isSameValue;
+   const showsRightValue = hasExpression(rightExpression) && !isSameValue;
 
    return (
       <>
@@ -123,7 +131,7 @@ function ErrorPair({ section, revealAll }: { section: LessonSectionRecord; revea
                   <span aria-hidden="true">{INCORRECT_GLYPH}</span> {WRONG_STEP_LABEL}
                </p>
                <Prose text={section.wrong_step?.text} />
-               {hasExpression(section.wrong_step?.expression) ? <MathValue value={section.wrong_step?.expression} /> : null}
+               {showsWrongValue ? <MathValue value={wrongExpression} /> : null}
             </div>
 
             {isShown ? (
@@ -132,7 +140,7 @@ function ErrorPair({ section, revealAll }: { section: LessonSectionRecord; revea
                      <span aria-hidden="true">{CORRECT_GLYPH}</span> {RIGHT_STEP_LABEL}
                   </p>
                   <Prose text={section.right_step?.text} />
-                  {hasExpression(section.right_step?.expression) ? <MathValue value={section.right_step?.expression} /> : null}
+                  {showsRightValue ? <MathValue value={rightExpression} /> : null}
                </div>
             ) : null}
          </div>

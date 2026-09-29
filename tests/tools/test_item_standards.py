@@ -55,7 +55,12 @@ def put_a_free_variable_in_a_value_option(record):
 
 
 def mark_calculator(record):
+   """Stricter than the first version, which only marked the item calculator: the stem now asks for three decimals."""
    record["calculator_status"] = "calculator"
+   record["stem"]["text"] = record["stem"]["text"].replace(
+      "Find the exact value of g'(pi).",
+      "Find the value of g'(pi) to three decimal places.",
+   )
 
 
 def word_the_stem_as_a_choice(record):
@@ -189,3 +194,49 @@ def test_the_bank_statistics_flag_a_lopsided_bank():
 
    assert key_letter_distribution(records)["flagged"] is True
    assert statement_longest_key_share(statement_records)["flagged"] is True
+
+
+def calculator_value_record(stem_text, key_value):
+   record = clean_base_record()
+   record["calculator_status"] = "calculator"
+   record["stem"]["text"] = stem_text
+   record["answer_key"] = {"form": "symbolic", "mathjson": key_value}
+
+   for option in record["options"]:
+      is_key_option = option["is_key"] is True
+
+      if is_key_option:
+         option["value"] = key_value
+
+   return record
+
+
+def test_a_calculator_item_asking_for_an_exact_value_with_an_exact_key_passes():
+   record = calculator_value_record(
+      "Let g(x) = (x^2 cos(x))/(x + 1) for x > -1. Find the exact value of g'(pi).",
+      ["Rational", -12, 7],
+   )
+
+   assert LINTS["calculator_decimals"](record) == []
+
+
+def test_a_calculator_item_asking_for_three_decimals_with_a_short_decimal_key_fails():
+   record = calculator_value_record(
+      "Let g(x) = (x^2 cos(x))/(x + 1) for x > -1. Find g'(pi) to three decimal places.",
+      5.7,
+   )
+
+   violations = LINTS["calculator_decimals"](record)
+
+   assert any(violation.startswith("stem asks for three decimal places:") for violation in violations), violations
+
+
+def test_a_calculator_item_with_a_two_place_decimal_key_and_no_precision_in_the_stem_fails():
+   record = calculator_value_record(
+      "Let g(x) = (x^2 cos(x))/(x + 1) for x > -1. Find g'(pi).",
+      -1.25,
+   )
+
+   violations = LINTS["calculator_decimals"](record)
+
+   assert any(violation.startswith("key is stored as a decimal:") for violation in violations), violations

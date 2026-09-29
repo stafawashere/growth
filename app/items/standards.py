@@ -252,26 +252,14 @@ def decimal_places(value):
    return max(0, -exponent)
 
 
-def is_non_integer_number(expression):
-   is_expression = isinstance(expression, sympy.Expr)
-
-   if not is_expression:
-      return False
-
-   is_constant = len(expression.free_symbols) == 0 and expression.is_real is True
-
-   if not is_constant:
-      return False
-
-   return expression.is_integer is not True
-
-
 def calculator_decimals(record):
-   """A calculator item whose key is a real number that is not an integer. The stem must match
-   THREE_DECIMALS_PATTERN, which is "three decimal places", "3 decimal places", "three decimals",
-   "third decimal place" or "nearest thousandth", case-insensitive. The key must be stored as a
-   decimal with at least three places, both as answer_key.mathjson and as the key option's value.
-   An exact form such as a Rational counts as not stored to three decimals.
+   """A calculator item is in scope when its stem asks for a decimal answer, meaning it matches
+   THREE_DECIMALS_PATTERN ("three decimal places", "3 decimal places", "three decimals", "third
+   decimal place" or "nearest thousandth", case-insensitive), or when answer_key.mathjson is stored
+   as a decimal. An item that asks for an exact value and keeps an exact key (an integer, a
+   Rational, a symbolic expression) is out of scope. In scope, the stem must ask for three decimal
+   places and the key must be stored as a decimal with at least three places, both as
+   answer_key.mathjson and as the key option's value. Every violation names which case fired.
    """
    is_calculator_item = record.get("calculator_status") == "calculator"
    is_value_item = not is_statement_record(record)
@@ -282,18 +270,25 @@ def calculator_decimals(record):
       return []
 
    stored_key = (record.get("answer_key") or {}).get("mathjson")
-   key = convert_option_value(stored_key)
-   key_is_fractional = key is not None and is_non_integer_number(key)
+   stem_text = (record.get("stem") or {}).get("text") or ""
 
-   if not key_is_fractional:
+   stem_asks_for_decimals = THREE_DECIMALS_PATTERN.search(stem_text) is not None
+   key_is_stored_decimal = decimal_places(stored_key) is not None
+
+   is_in_scope = stem_asks_for_decimals or key_is_stored_decimal
+
+   if not is_in_scope:
       return []
 
-   violations = []
-   stem_text = (record.get("stem") or {}).get("text") or ""
-   stem_states_precision = THREE_DECIMALS_PATTERN.search(stem_text) is not None
+   if stem_asks_for_decimals:
+      reason = "stem asks for three decimal places"
+   else:
+      reason = "key is stored as a decimal"
 
-   if not stem_states_precision:
-      violations.append("calculator stem does not ask for three decimal places or the nearest thousandth")
+   violations = []
+
+   if not stem_asks_for_decimals:
+      violations.append(f"{reason}: calculator stem does not ask for three decimal places or the nearest thousandth")
 
    stored_values = [("answer_key.mathjson", stored_key)]
    keys = key_options(record)
@@ -312,9 +307,11 @@ def calculator_decimals(record):
          continue
 
       if is_stored_as_decimal:
-         violations.append(f"{place} stores {value!r}, {places} decimal places where {CALCULATOR_KEY_DECIMALS} are needed")
+         violations.append(
+            f"{reason}: {place} stores {value!r}, {places} decimal places where {CALCULATOR_KEY_DECIMALS} are needed"
+         )
       else:
-         violations.append(f"{place} stores {value!r}, which is not a decimal to {CALCULATOR_KEY_DECIMALS} places")
+         violations.append(f"{reason}: {place} stores {value!r}, which is not a decimal to {CALCULATOR_KEY_DECIMALS} places")
 
    return violations
 

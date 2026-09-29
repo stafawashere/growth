@@ -4,7 +4,7 @@ import time
 import pytest
 import sympy
 
-from app.calculator import check
+from app.calculator import check, registry
 from app.calculator.check import check_setup, check_value
 from app.calculator.kit import EQUATION, EXPRESSION, DrillTask, function_entry
 from app.items import verify
@@ -255,3 +255,97 @@ def test_the_solution_typed_as_x_equals_a_number_is_not_the_equation():
    verdict = check_setup(["Equal", "x", root], EQUATION_TASK)
 
    assert (verdict.shown, verdict.correct, verdict.reason) == (True, False, "not_equivalent")
+
+
+DRAWN_DERIVATIVE_TASK = registry.draw_task("CDT-derivative-01", "CDT-derivative-01:v1:test:10")
+DRAWN_PLOT_TASK = registry.draw_task("CDT-plot-01", "CDT-plot-01:v1:test:0")
+DRAWN_VALUE_TASK = registry.draw_task("CDT-value-01", "CDT-value-01:v1:test:0")
+SECOND_DERIVATIVE_TASK = task_for(
+   sympy.Subs(sympy.Derivative(f_expression, (x, 2)), x, sympy.Rational(13, 10)), EXPRESSION
+)
+NOT_PURE = "'expected-pure-expression'"
+
+
+def test_the_drawn_tasks_sit_at_the_points_the_prime_entries_use():
+   assert DRAWN_DERIVATIVE_TASK.draw["used_moment"] == "9/2"
+   assert DRAWN_VALUE_TASK.draw["used_point"] == "23/5"
+
+
+@pytest.mark.parametrize(
+   "entered",
+   [
+      ["Multiply", ["Prime", "P"], 4.5],
+      ["Apply", ["Prime", "P"], 4.5],
+      ["Multiply", ["Prime", "P", 1], 4.5],
+   ],
+)
+def test_a_typed_prime_at_the_point_is_the_derivative_setup(entered):
+   verdict = check_setup(entered, DRAWN_DERIVATIVE_TASK)
+
+   assert (verdict.shown, verdict.correct, verdict.reason) == (True, True, None)
+
+
+@pytest.mark.parametrize(
+   "entered",
+   [
+      ["Multiply", ["Prime", "P"], 4.6],
+      ["Multiply", "P", 4.5],
+      ["Multiply", ["Prime", "P", 2], 4.5],
+   ],
+)
+def test_a_prime_at_another_point_the_function_itself_or_a_second_derivative_is_not_equivalent(entered):
+   verdict = check_setup(entered, DRAWN_DERIVATIVE_TASK)
+
+   assert (verdict.shown, verdict.correct, verdict.reason) == (True, False, "not_equivalent")
+
+
+@pytest.mark.parametrize(
+   "entered",
+   [
+      ["Equal", ["Error", NOT_PURE, ["Multiply", ["Prime", "f"], "x"]], 0],
+      ["Equal", 0, ["Error", NOT_PURE, ["Multiply", ["Prime", "f"], "x"]]],
+      ["Equal", ["Error", NOT_PURE, ["Multiply", 3, ["Prime", "f"], "x"]], 0],
+      ["Equal", ["Multiply", ["Prime", "f"], "x"], 0],
+      ["Equal", ["Apply", ["Prime", "f"], "x"], 0],
+      ["Equal", ["Prime", "f"], 0],
+   ],
+)
+def test_a_typed_prime_of_x_equal_to_zero_is_the_critical_point_equation(entered):
+   verdict = check_setup(entered, DRAWN_PLOT_TASK)
+
+   assert (verdict.shown, verdict.correct, verdict.reason) == (True, True, None)
+
+
+@pytest.mark.parametrize(
+   "entered",
+   [
+      ["Equal", ["Error", NOT_PURE, ["Multiply", ["Prime", "f", 2], "x"]], 0],
+      ["Equal", ["Error", NOT_PURE, ["Multiply", ["Prime", "f"], "x"]], 1],
+      ["Equal", ["Multiply", "f", "x"], 0],
+   ],
+)
+def test_a_second_derivative_a_nonzero_side_or_the_function_itself_is_not_the_critical_point_equation(entered):
+   verdict = check_setup(entered, DRAWN_PLOT_TASK)
+
+   assert (verdict.shown, verdict.correct, verdict.reason) == (True, False, "not_equivalent")
+
+
+@pytest.mark.parametrize(
+   "entered",
+   [
+      ["Multiply", ["Prime", "f", 2], 1.3],
+      ["Multiply", ["Prime", ["Prime", "f"]], 1.3],
+   ],
+)
+def test_a_double_prime_at_the_point_is_the_second_derivative_setup(entered):
+   verdict = check_setup(entered, SECOND_DERIVATIVE_TASK)
+
+   assert (verdict.shown, verdict.correct, verdict.reason) == (True, True, None)
+
+
+def test_a_function_name_times_the_point_is_the_value_setup():
+   typed = ["Multiply", "f", 4.6]
+   elsewhere = ["Multiply", "f", 4.7]
+
+   assert check_setup(typed, DRAWN_VALUE_TASK).correct is True
+   assert check_setup(elsewhere, DRAWN_VALUE_TASK).reason == "not_equivalent"

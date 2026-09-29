@@ -162,18 +162,136 @@ def _is_copied_answer(node):
 
 def _applied(node, functions):
    """MathJSON with every function the task names written as Apply, since the math field writes
-   f(x) as ["f", "x"], a head to_sympy does not know."""
+   f(x) as ["f", "x"], a head to_sympy does not know. Compute Engine does not know the task's
+   names as functions either, so it reads f(0.31) as ["Multiply", "f", 0.31] and P'(4.5) as
+   ["Multiply", ["Prime", "P"], 4.5], and wraps f'(x) = 0 as an Error for being no pure
+   expression; each of those is read back as the call it was typed as."""
    if not isinstance(node, list) or len(node) == 0:
       return node
 
    head = node[0]
+   prime = _prime_of_task_function(node, functions)
+
+   if prime is not None:
+      return _derivative_function(*prime, functions)
+
+   if _is_impure_task_call(node, functions):
+      return _applied(node[2], functions)
+
    arguments = [_applied(argument, functions) for argument in node[1:]]
    names_task_function = isinstance(head, str) and head in functions
 
    if names_task_function:
       return ["Apply", head, *arguments]
 
+   applies_prime = head == "Apply" and len(node) == 3 and _prime_of_task_function(node[1], functions) is not None
+
+   if applies_prime:
+      return _derivative_at(*_prime_of_task_function(node[1], functions), arguments[1], functions)
+
+   if head == "Multiply":
+      return ["Multiply", *_calls_in_product(node[1:], arguments, functions)]
+
    return [head, *arguments]
+
+
+def _prime_of_task_function(node, functions):
+   """(name, order) for ["Prime", F], ["Prime", F, n] or ["Prime", ["Prime", F]] with F a
+   function the task names, else None."""
+   is_prime = isinstance(node, list) and len(node) in (2, 3) and node[0] == "Prime"
+
+   if not is_prime:
+      return None
+
+   inner = node[1]
+   has_order = len(node) == 3
+   order = node[2] if has_order else 1
+   is_whole_order = isinstance(order, int) and not isinstance(order, bool) and order >= 1
+
+   if not is_whole_order:
+      return None
+
+   names_task_function = isinstance(inner, str) and inner in functions
+
+   if names_task_function:
+      return inner, order
+
+   inner_prime = _prime_of_task_function(inner, functions)
+
+   if inner_prime is None:
+      return None
+
+   name, inner_order = inner_prime
+
+   return name, inner_order + order
+
+
+def _derivative_function(name, order, functions):
+   entry = functions[name]
+
+   return ["D", entry["expression"], ["Tuple", entry["variable"], order]]
+
+
+def _derivative_at(name, order, point, functions):
+   """f'(x) is the derivative function itself, and not a Subs at x, because sympy leaves
+   Subs(Derivative(g, x), x, x) as an unevaluated Derivative after doit."""
+   variable = functions[name]["variable"]
+   derivative = _derivative_function(name, order, functions)
+
+   if point == variable:
+      return derivative
+
+   return ["Subs", derivative, ["Tuple", variable], ["Tuple", point]]
+
+
+def _is_callable_factor(node, functions):
+   names_task_function = isinstance(node, str) and node in functions
+
+   return names_task_function or _prime_of_task_function(node, functions) is not None
+
+
+def _calls_in_product(factors, rewritten, functions):
+   """A product with each task function, or a prime of one, applied to the factor after it."""
+   calls = []
+   index = 0
+
+   while index < len(factors):
+      factor = factors[index]
+      has_argument = index + 1 < len(factors)
+      is_call = has_argument and _is_callable_factor(factor, functions)
+
+      if not is_call:
+         calls.append(rewritten[index])
+         index += 1
+         continue
+
+      argument = rewritten[index + 1]
+      prime = _prime_of_task_function(factor, functions)
+
+      if prime is None:
+         calls.append(["Apply", factor, argument])
+      else:
+         calls.append(_derivative_at(*prime, argument, functions))
+
+      index += 2
+
+   return calls
+
+
+def _mentions_task_function(node, functions):
+   if isinstance(node, str):
+      return node in functions
+
+   if not isinstance(node, list):
+      return False
+
+   return any(_mentions_task_function(part, functions) for part in node)
+
+
+def _is_impure_task_call(node, functions):
+   is_impure_error = len(node) == 3 and node[0] == "Error" and node[1] == "'expected-pure-expression'"
+
+   return is_impure_error and _mentions_task_function(node[2], functions)
 
 
 def _with_functions(expression, functions):

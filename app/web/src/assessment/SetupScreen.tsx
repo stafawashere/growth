@@ -11,6 +11,7 @@ import type {
    UnfinishedAssessment,
    UnfinishedPayload
 } from "../api/types";
+import { CalculatorLink } from "../calculator/CalculatorLink";
 import { formatPlanDate } from "../home/dates";
 import type { AssessmentFormat } from "../routing";
 import { useLoad } from "../status/load";
@@ -316,6 +317,8 @@ function DrillSetup(props: { shape: AssessmentShape; onStart: SetupScreenProps["
    const [chosen, setChosen] = useState<string>(parts[0]?.key ?? "");
    const [captureMode, setCaptureMode] = useState<CaptureMode>("photo");
    const partName = useId();
+   const chosenPart = parts.find((part) => part.key === chosen);
+   const chosenAllowsCalculator = chosenPart?.calculator === true;
 
    return (
       <SetupPanel
@@ -358,12 +361,25 @@ function DrillSetup(props: { shape: AssessmentShape; onStart: SetupScreenProps["
          <SetupStep index={2} title="How you answer free response">
             <CaptureChoice value={captureMode} onChange={setCaptureMode} />
          </SetupStep>
+
+         {chosenAllowsCalculator ? <CalculatorPracticeNote /> : null}
       </SetupPanel>
+   );
+}
+
+/* docs/calculator/design.md, Where it lives: a calculator part offers the link here, on its setup
+   screen, and never inside the running part, which reproduces Bluebook. */
+function CalculatorPracticeNote() {
+   return (
+      <div className="setup-step" data-testid="setup-calculator-link">
+         <CalculatorLink />
+      </div>
    );
 }
 
 function MockSetup(props: { shape: AssessmentShape; onStart: SetupScreenProps["onStartMock"] }) {
    const [captureMode, setCaptureMode] = useState<CaptureMode>("photo");
+   const hasCalculatorPart = props.shape.parts.some((part) => part.calculator);
 
    return (
       <SetupPanel
@@ -385,6 +401,8 @@ function MockSetup(props: { shape: AssessmentShape; onStart: SetupScreenProps["o
          <SetupStep index={2} title="How you answer free response">
             <CaptureChoice value={captureMode} onChange={setCaptureMode} />
          </SetupStep>
+
+         {hasCalculatorPart ? <CalculatorPracticeNote /> : null}
       </SetupPanel>
    );
 }

@@ -13,6 +13,8 @@ export type SettingsTab = "study" | "providers" | "budgets" | "accessibility" | 
 
 export type LessonReturn = "lessons" | "progress";
 
+export type CalculatorSection = "cards" | "drill" | "measured";
+
 export type Place =
    | { view: "home" }
    | { view: "session"; resumeSessionId: string | null }
@@ -24,6 +26,7 @@ export type Place =
    | { view: "checkpoint"; openCheckpointId: string | null }
    | { view: "probe"; openAdministrationId: string | null }
    | { view: "assessments"; format: AssessmentFormat }
+   | { view: "calculator"; section: CalculatorSection; cardId?: string; capability?: string }
    | { view: "settings"; tab: SettingsTab }
    | { view: "evidence" }
    | { view: "account" };
@@ -33,6 +36,8 @@ export type View = Place["view"];
 export const PROGRESS_TABS: ReadonlyArray<ProgressTab> = ["mastery", "calibration", "representations", "checkpoints", "probes", "lessons"];
 
 export const ASSESSMENT_FORMATS: ReadonlyArray<AssessmentFormat> = ["unit", "frq", "drill", "mock", "checkpoint"];
+
+export const CALCULATOR_SECTIONS: ReadonlyArray<CalculatorSection> = ["cards", "drill", "measured"];
 
 export const SETTINGS_TABS: ReadonlyArray<SettingsTab> = ["study", "providers", "budgets", "accessibility", "operator", "data"];
 
@@ -58,6 +63,32 @@ function decoded(value: string | undefined) {
    } catch {
       return null;
    }
+}
+
+/* docs/calculator/design.md, Where it lives: #/calculator/<section>, where the cards section may
+   name a card, or ask for the card of a capability, and the drill section names a capability to
+   preselect. */
+function calculatorPlace(first: string | undefined, second: string | undefined, search: URLSearchParams): Place {
+   const section = oneOf(first, CALCULATOR_SECTIONS, "cards");
+   const detail = decoded(second);
+   const askedCapability = search.get("capability");
+   const namesCard = section === "cards" && detail !== null;
+   const asksForCapabilityCard = section === "cards" && askedCapability !== null && askedCapability !== "";
+   const namesCapability = section === "drill" && detail !== null;
+
+   if (namesCard) {
+      return { view: "calculator", section, cardId: detail };
+   }
+
+   if (asksForCapabilityCard) {
+      return { view: "calculator", section, capability: askedCapability };
+   }
+
+   if (namesCapability) {
+      return { view: "calculator", section, capability: detail };
+   }
+
+   return { view: "calculator", section };
 }
 
 export function placeFromHash(hash: string): Place {
@@ -100,6 +131,8 @@ export function placeFromHash(hash: string): Place {
          return { view: "probe", openAdministrationId: decoded(first) };
       case "assessments":
          return { view: "assessments", format: oneOf(first, ASSESSMENT_FORMATS, "unit") };
+      case "calculator":
+         return calculatorPlace(first, second, search);
       case "settings":
          return first === "evidence" ? { view: "evidence" } : { view: "settings", tab: oneOf(first, SETTINGS_TABS, "study") };
       case "account":
@@ -107,6 +140,27 @@ export function placeFromHash(hash: string): Place {
       default:
          return HOME;
    }
+}
+
+function calculatorHash(place: Extract<Place, { view: "calculator" }>) {
+   const base = `#/calculator/${place.section}`;
+   const hasCard = place.section === "cards" && place.cardId !== undefined;
+   const hasCardCapability = place.section === "cards" && place.capability !== undefined;
+   const hasDrillCapability = place.section === "drill" && place.capability !== undefined;
+
+   if (hasCard) {
+      return `${base}/${encodeURIComponent(place.cardId as string)}`;
+   }
+
+   if (hasCardCapability) {
+      return `${base}?capability=${encodeURIComponent(place.capability as string)}`;
+   }
+
+   if (hasDrillCapability) {
+      return `${base}/${encodeURIComponent(place.capability as string)}`;
+   }
+
+   return base;
 }
 
 export function hashFor(place: Place): string {
@@ -137,6 +191,8 @@ export function hashFor(place: Place): string {
          return place.openAdministrationId === null ? "#/probe" : `#/probe/${encodeURIComponent(place.openAdministrationId)}`;
       case "assessments":
          return `#/assessments/${place.format}`;
+      case "calculator":
+         return calculatorHash(place);
       case "settings":
          return `#/settings/${place.tab}`;
       case "evidence":

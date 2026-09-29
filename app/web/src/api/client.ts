@@ -7,6 +7,13 @@ import type {
    AttemptResult,
    BudgetsPayload,
    CalibrationPayload,
+   CalculatorAnswerFields,
+   CalculatorAnswerPayload,
+   CalculatorCard,
+   CalculatorCardsPayload,
+   CalculatorDrill,
+   CalculatorDrillFields,
+   CalculatorMeasuredPayload,
    CheckResult,
    CheckUnitsPayload,
    CheckpointsPayload,
@@ -854,4 +861,26 @@ export function answerLessonPrompt(lessonId: string, sectionId: string, body: Le
    const path = `${lessonPath(lessonId)}/prompts/${encodeURIComponent(sectionId)}/answers`;
 
    return requestJson<LessonPromptVerdict>(path, jsonInit("POST", body));
+}
+
+/* app/api/routes/calculator.py, the Desmos fluency routes (docs/calculator/build-plan.md,
+   Contracts). */
+export function readCalculatorCards() {
+   return requestJson<CalculatorCardsPayload>("/calculator/cards");
+}
+
+export function readCalculatorCard(cardId: string) {
+   return requestJson<CalculatorCard>(`/calculator/cards/${encodeURIComponent(cardId)}`);
+}
+
+export function startCalculatorDrill(fields: CalculatorDrillFields) {
+   return requestJson<CalculatorDrill>("/calculator/drills", jsonInit("POST", fields));
+}
+
+export function answerCalculatorDrill(drillId: string, fields: CalculatorAnswerFields) {
+   return requestJson<CalculatorAnswerPayload>(`/calculator/drills/${encodeURIComponent(drillId)}/answer`, jsonInit("POST", fields));
+}
+
+export function readCalculatorMeasured() {
+   return requestJson<CalculatorMeasuredPayload>("/calculator/measured");
 }

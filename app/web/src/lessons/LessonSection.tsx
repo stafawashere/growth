@@ -1,6 +1,7 @@
 import { useEffect, useState, type ReactNode } from "react";
 
 import type { LessonContrast, LessonDelivery, LessonEventMode, LessonSection as LessonSectionRecord } from "../api/types";
+import { CalculatorLink } from "../calculator/CalculatorLink";
 import { LessonText } from "./LessonText";
 import { MathValue } from "../math/MathValue";
 import { CORRECT_GLYPH, INCORRECT_GLYPH } from "../session/StepMarks";
@@ -309,10 +310,15 @@ export interface LessonSectionProps {
    onPromptAnswer?: PromptAnswer;
    onStepsRemaining?: (hasMore: boolean) => void;
    now?: () => number;
+   /* The lesson's calculator_work: its worked example belongs to a calculator archetype, so the
+      example ends with the link to calculator practice (docs/calculator/design.md, Where it
+      lives). */
+   calculatorWork?: boolean;
 }
 
 export function LessonSection(props: LessonSectionProps) {
    const { section, form = "full", revealAll = false, lead, prediction, onPromptAnswer, onStepsRemaining, now } = props;
+   const endsWithCalculatorLink = section.type === "worked_example" && props.calculatorWork === true;
    const stepsOnly = form === "steps_only";
    const context: PromptContext = { onPromptAnswer, onStepsRemaining, now };
    const asksForPrediction = section.type === "prediction" && prediction !== undefined;
@@ -351,6 +357,12 @@ export function LessonSection(props: LessonSectionProps) {
          {section.type === "strategy" && section.contrast !== undefined ? <ContrastPair contrast={section.contrast} /> : null}
 
          {section.type === "worked_example" ? <WorkedExample section={section} revealAll={revealAll} stepsOnly={stepsOnly} context={context} /> : null}
+
+         {endsWithCalculatorLink ? (
+            <p>
+               <CalculatorLink />
+            </p>
+         ) : null}
 
          {section.type === "what_a_reader_scores" ? (
             <ul className="lesson-checklist">

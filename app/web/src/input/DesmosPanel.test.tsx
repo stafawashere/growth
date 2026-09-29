@@ -5,7 +5,7 @@ import type { ServedItem } from "../api/types";
 import { noCalculatorPart, calculatorPart } from "../assessment/fixtures";
 import { PartRunner } from "../assessment/PartRunner";
 import { Item } from "../session/Item";
-import { CLOSE_DESMOS_LABEL, DESMOS_TITLE, DESMOS_URL, OPEN_DESMOS_LABEL } from "./DesmosPanel";
+import { CLOSE_DESMOS_LABEL, DESMOS_OPENS_IN, DESMOS_TITLE, DESMOS_URL, DesmosPanel, OPEN_DESMOS_LABEL } from "./DesmosPanel";
 
 function item(calculatorStatus: string): ServedItem {
    return {
@@ -87,5 +87,39 @@ describe("Desmos on calculator questions", () => {
       renderPart(noCalculatorPart());
 
       expect(screen.queryByRole("button", { name: OPEN_DESMOS_LABEL })).toBeNull();
+   });
+});
+
+describe("which Desmos opens, and how", () => {
+   afterEach(() => {
+      vi.restoreAllMocks();
+   });
+
+   it("frames the College Board version Bluebook carries, not the public calculator", () => {
+      render(<DesmosPanel />);
+      fireEvent.click(screen.getByRole("button", { name: OPEN_DESMOS_LABEL }));
+
+      expect(DESMOS_OPENS_IN).toBe("frame");
+      expect(screen.getByTitle(DESMOS_TITLE).getAttribute("src")).toBe("https://www.desmos.com/testing/collegeboard/graphing");
+   });
+
+   it("opens already when asked to open by default", () => {
+      render(<DesmosPanel openByDefault />);
+
+      expect(screen.getByTitle(DESMOS_TITLE)).toBeTruthy();
+      expect(screen.getByRole("button", { name: CLOSE_DESMOS_LABEL }).getAttribute("aria-expanded")).toBe("true");
+   });
+
+   it("opens the same address in its own window, with no opener, when set to window", () => {
+      const open = vi.spyOn(window, "open").mockReturnValue(null);
+
+      render(<DesmosPanel opensIn="window" openByDefault />);
+
+      expect(screen.queryByTitle(DESMOS_TITLE)).toBeNull();
+
+      fireEvent.click(screen.getByRole("button", { name: OPEN_DESMOS_LABEL }));
+
+      expect(open).toHaveBeenCalledWith(DESMOS_URL, "_blank", "noopener,noreferrer");
+      expect(screen.queryByTitle(DESMOS_TITLE)).toBeNull();
    });
 });

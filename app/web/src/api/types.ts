@@ -1298,6 +1298,9 @@ export interface LessonRecord {
    refresher?: string[];
    decision?: LessonDecision;
    no_figure_reason?: string;
+   /* True when the worked example belongs to a calculator archetype (docs/calculator/design.md,
+      Where it lives); the server adds it, and a payload without it is read as false. */
+   calculator_work?: boolean;
 }
 
 export type LessonBand = "low" | "mid";
@@ -1337,6 +1340,7 @@ export interface LessonPlanPayload {
    plan: LessonPlan;
    band: LessonBand;
    state: LessonStateRow | null;
+   calculator_work?: boolean;
 }
 
 export type LessonEventKind = "opened" | "section_viewed" | "completed" | "skipped";
@@ -1418,4 +1422,146 @@ export interface LibraryUnit {
 
 export interface LibraryPayload {
    units: LibraryUnit[];
+}
+
+/* app/api/routes/calculator.py, the Desmos fluency routes, transcribed from the contract in
+   docs/calculator/build-plan.md ("Contracts fixed for the parallel slices"). mixed is a request
+   only: the server resolves it to one of the six before the drill is served. */
+export type CalculatorCapability = "plot" | "zero" | "derivative" | "integral" | "intersection" | "value";
+
+export type CalculatorDrillRequestCapability = CalculatorCapability | "mixed";
+
+export interface CalculatorCardSummary {
+   id: string;
+   capability: CalculatorCapability;
+   title: string;
+   task: string;
+   drills: string[];
+}
+
+export interface CalculatorCardsPayload {
+   cards: CalculatorCardSummary[];
+}
+
+export interface CalculatorCardStep {
+   text: string;
+   keys: string;
+}
+
+export interface CalculatorDemonstrationLine {
+   typed: string;
+   shows: string;
+}
+
+export interface CalculatorDemonstration {
+   function_tex: string;
+   lines: CalculatorDemonstrationLine[];
+   setup_latex: string;
+   answer: string;
+}
+
+export interface CalculatorExamHabit {
+   text: string;
+}
+
+export interface CalculatorCard {
+   id: string;
+   version: number;
+   capability: CalculatorCapability;
+   title: string;
+   task: string;
+   steps: CalculatorCardStep[];
+   demonstration: CalculatorDemonstration;
+   exam_habit: CalculatorExamHabit[];
+   bluebook_note: string | null;
+   drills: string[];
+}
+
+export interface CalculatorDrillFields {
+   capability: CalculatorDrillRequestCapability;
+   template_id?: string;
+}
+
+export interface CalculatorDrill {
+   drill_id: string;
+   template_id: string;
+   capability: CalculatorCapability;
+   card_id: string;
+   prompt: string;
+   function_tex: string;
+   unit: string | null;
+   radian_sensitive: boolean;
+   desmos_url: string;
+   served_at: string;
+}
+
+export interface CalculatorAnswerFields {
+   value: string;
+   setup_mathjson: unknown;
+   elapsed_ms: number;
+   desmos_open: boolean;
+}
+
+export type CalculatorValueReason = "missing" | "not_a_number" | "not_three_places" | "outside_tolerance";
+
+export type CalculatorSetupReason = "missing" | "not_equivalent" | "unsettled" | "unsupported";
+
+export interface CalculatorValueVerdict {
+   correct: boolean;
+   reason: CalculatorValueReason | null;
+   rounded: string;
+   truncated: string;
+}
+
+export interface CalculatorSetupVerdict {
+   shown: boolean;
+   correct: boolean | null;
+   reason: CalculatorSetupReason | null;
+   key_latex: string;
+}
+
+export interface CalculatorBudgetSeconds {
+   "I-B": number;
+   "II-A": number;
+}
+
+export interface CalculatorAnswerPayload {
+   drill_id: string;
+   value: CalculatorValueVerdict;
+   setup: CalculatorSetupVerdict;
+   elapsed_ms: number;
+   budget_seconds: CalculatorBudgetSeconds;
+}
+
+export interface CalculatorRatio {
+   numerator: number;
+   denominator: number;
+   value: number | null;
+}
+
+export interface CalculatorCapabilityMeasure {
+   capability: CalculatorCapability;
+   served: number;
+   answered: number;
+   value_correct: CalculatorRatio;
+   setup_shown: CalculatorRatio;
+   setup_correct: CalculatorRatio;
+   median_ms: number | null;
+}
+
+export interface CalculatorRecentDrill {
+   drill_id: string;
+   capability: CalculatorCapability;
+   function_tex: string;
+   value_correct: boolean;
+   setup_correct: boolean | null;
+   setup_shown: boolean;
+   elapsed_ms: number;
+   submitted_at: string;
+}
+
+export interface CalculatorMeasuredPayload {
+   capabilities: CalculatorCapabilityMeasure[];
+   budget_seconds: CalculatorBudgetSeconds;
+   recent: CalculatorRecentDrill[];
 }

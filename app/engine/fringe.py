@@ -50,6 +50,7 @@ class Graph:
    co_requisite_parents: dict
    inert_top: frozenset
    _skills_with_archetype: frozenset = field(default=frozenset())
+   _practised_with: dict = field(default_factory=dict)
    conversion_pairs: frozenset = field(default=frozenset())
    concept_skills: dict = field(default_factory=dict)
 
@@ -78,6 +79,12 @@ class Graph:
          if is_co_requisite:
             co_requisite_parents.setdefault(edge["to"], set()).add(edge["from"])
 
+      practised_with = {}
+
+      for record in archetype_map.values():
+         primary = primary_skill(record)
+         practised_with.setdefault(primary, set()).update(record["skills"][1:])
+
       loaded = {
          skill
          for record in archetype_map.values()
@@ -96,6 +103,7 @@ class Graph:
          co_requisite_parents=co_requisite_parents,
          inert_top=inert,
          _skills_with_archetype=frozenset(loaded),
+         _practised_with={skill: frozenset(parents) for skill, parents in practised_with.items()},
          conversion_pairs=frozenset(conversion_pairs),
          concept_skills=concept_skills,
       )
@@ -118,12 +126,21 @@ class Graph:
       """The gating parents that keep a skill off the fringe until mastered. A BC-SKL parent with
       no archetype is left out: nothing can serve it, so it could only ever be opened by the
       diagnostic's placement, and every skill under it would stay shut for any student the
-      placement did not reach."""
-      return [
-         parent
-         for parent in self.gating_parents(skill_id)
-         if parent not in self.skills or self.has_archetype(parent)
-      ]
+      placement did not reach. A parent loaded by an archetype whose primary skill is this one is
+      left out too: that archetype is where the parent gets practised, so gating on it would shut
+      both skills for good."""
+      practised_alongside = self._practised_with.get(skill_id, frozenset())
+      blocking = []
+
+      for parent in self.gating_parents(skill_id):
+         is_servable = parent not in self.skills or self.has_archetype(parent)
+         is_practised_alongside = parent in practised_alongside
+         should_block = is_servable and not is_practised_alongside
+
+         if should_block:
+            blocking.append(parent)
+
+      return blocking
 
    def primary_unit(self, archetype_id):
       return self.archetypes[archetype_id]["primary_unit"]

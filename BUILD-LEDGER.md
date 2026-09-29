@@ -2228,6 +2228,86 @@ items) and items 3 and 6 (Slices 3 and 4). Every gate 11 names for P2 now exists
   stand as stage 14 left them. An opener short answer carries no error path from the grader, so
   the comparison line names the first step alone until a short-answer error match exists.
 
+- 2026-09-28, stage 15 (library gaps), on the operator's delegation. Nothing was committed.
+  Archetypes. Nine minted through `data/staging/gap-archetypes-stage15.json` (full records with
+  `parameter_spec`, anchor quotes checked by qa/07 against the cached page, evidence tag inferred),
+  primary skill first: BC-QA-03010 (inverse trigonometric derivative derived from f(g(x)) = x,
+  03020 first, ced:77 and 78), BC-QA-05014 (every critical point, including a cusp, vertical
+  tangent or corner, with an excluded input kept out, 05011, ced:100, BC-PT-99013 from sg-23:15),
+  BC-QA-06017 (left, right, midpoint or trapezoidal sum with equal subintervals from a formula or a
+  graph, 06009 first then 06007, ced:119, BC-PT-99018 and 99019 from sg-23:2 and sg-25:13),
+  BC-QA-06018 (inverse tangent or inverse sine antiderivative, directly or after completing the
+  square, 06043, ced:125 and 127), BC-QA-06019 (antiderivative after splitting a fraction or
+  expanding a product, checked by differentiating, 06045, ced:125 and 127), BC-QA-07012 (separable
+  or not, and separated, 07028, ced:142, BC-PT-99028 from sg-23:12), and the opener generation
+  archetypes BC-QA-02014 (BC-CON-02002, 02005), BC-QA-09014 (BC-CON-09015, 09035, BC-PT-99048
+  from sg-25:8) and BC-QA-10021 (BC-CON-10002, 10003), each carrying BC-DF-15 and a stem that names
+  no method. 06017 is listed with 06009 first because every draw exercises it and only midpoint
+  draws exercise 06007 [inferred]. Active BC-QA 139 to 148 of 153 records; families 77 to 78
+  (critical-points is new). BC-QA-10021 went to spec version 2 the same day: the first version was
+  statement-keyed, and `app/session/build.py` `opener_options` keeps statement-keyed items out of
+  openers, so its 22 items were withdrawn to `content/generation_review/rejected/` and replaced by
+  value-keyed ones.
+  Errors. BC-ERR-02033 (average rate over an interval reported as the rate at an instant) and
+  BC-ERR-06033 (power rule for antiderivatives applied with the wrong divisor) minted in
+  `gap-errors-stage15.json`, because no held error described two distractors; BC-ERR-06022 gained
+  BC-SKL-06055 and the used errors gained the new archetype ids through
+  `error-links-stage15.json`; BC-MIS-02009 gained BC-ERR-06033
+  (`corrections-misconceptions-stage15.json`). Active BC-ERR 391 to 393 of 427.
+  Retirement. BC-SKL-06046 retired with superseded_by BC-SKL-06074 through
+  `corrections-skills-retire-06046.json` (status, successor, 06074's prerequisites, signals and
+  FRQ evidence, BC-CON-06014's skill list, 07028 and 07024 marked independently assessable by
+  BC-QA-07012), `corrections-signals-retire-06046.json` (BC-SIG-06267 and 06268 to 06074),
+  `corrections-frq-retire-06046.json` (three FRQ parts) and
+  `corrections-taxonomies-retire-06046.json` (BC-REP-01), then `tools/retire_ids.py` wrote the
+  tombstone. The record stays, so the loader's BC-SKL count stays 541 (540 active). The edge
+  BC-SKL-06046 to BC-SKL-06074 stays in `data/prereq_edges.csv`: `tools/merge_edges.py` only adds
+  edges, and that file is being edited by another session, so it was not touched.
+  Templates. Nine in `app/generation/templates/` (qa_03010, 05014, 06017, 06018, 06019, 07012,
+  02014, 09014, 10021), each 300 draws through `tools/template_gate.py`, failures 0, draw spaces
+  3,132 to 6.1e12. The gate is `app/generation/template.py` `run_family` (FAMILY_FAILURE_BAR 0),
+  not `tools/template_trial.py`, which gates the older `var/` JSON templates.
+  Items. 22 candidates per new archetype and a regeneration of the six archetypes whose skills
+  lists changed today, the old 88 generated items withdrawn to
+  `content/generation_review/rejected/` with reject decisions and replaced under new ids (the bank
+  never re-reads a stored id, so rewriting in place would leave old skills in any database).
+  Blind re-solve by six separate subagents from the stems alone (`formulations_s15*.py`), compared
+  by `tools/key_recheck.py --template-answers` in publish: 308 of 308 candidates matched (286 in
+  the first batch, 22 for 10021 version 2). Published: 22 each for 02014, 03010, 05014, 06017,
+  06018, 06019, 07012, 09014 and 10021; regenerated 03001 12, 05003 20 (2 of 22 rejected as
+  duplicates by `tools/item_review.py duplicates`), 06008 3, 06009 3, 06011 22, 06016 22. Four
+  candidates (06008-06, 06008-08, 06009-05, 06009-09) matched but are held in
+  `content/generation_review/needs_review/`: their keys carry C, and the recheck control's
+  sqrt(2)/7 perturbation cannot be told from a constant of integration, so the control failed when
+  one was sampled; 06008 and 06009 still serve 20 agent items each. `tools/check_items.py` clean on
+  every touched bank: unit02 191 of 191, unit03 163, unit05 272, unit06 330, unit07 190, unit09
+  416, unit10 237.
+  Pins. `tests/content/test_loader.py`: BC-QA_active 148, BC-QA_families 78, BC-ERR_active 393,
+  empty_point_types 61, empty_official_examples 45; `tests/engine/test_cold_start.py` 148
+  (`1 passed`). BC-SKL stays 541. The edge pins read 1375 and 751 in the working tree, changed by
+  the other session, not here.
+  Library. `tools/derive_confusable.py` rerun and merged: 505 of 541 skills, 1178 pairs, the same
+  as before; it derives pairs from adaptive confusions, misconceptions and its method map, not from
+  archetype membership, so 06009, 06043, 06054 and 06055 still carry no confusable_with.
+  Post-change sequence run; `qa/12_report.py` exit 0, all 14 checks PASS; research/PROGRESS.md
+  archetypes 153, errors 427. `research/question-analysis/question-archetypes.md` gained a section
+  for the nine.
+  Tools. `tools/duplicate_sample.py` `served_and_candidate_records` also reads
+  `content/generation_review/rejected/`, because the labelled duplicate sample names items this
+  stage withdrew (KeyError ITM-GEN-06016-02, 2 errors in test_duplicate_gate_labelled); the pairs
+  and thresholds are unchanged, and the file went from 2 errors to `3 passed`.
+  Checks. `.venv/bin/python -m pytest tests/content tests/generation tests/items`: `229 passed, 1
+  warning in 554.27s (0:09:14)`. An earlier run gave `18 failed, 211 passed` while another
+  session's loader edit required `data/lesson.json`; the same tests passed once that edit settled.
+  `qa/12_report.py` exit 0; `tools/check_items.py` clean on all seven touched banks.
+  Open. The four C-keyed 06008 and 06009 items wait for the operator's ruling on the recheck
+  control (the frq recheck already drops the sqrt(2)/7 perturbation for checks that accept a
+  constant; `tools/key_recheck.py` does not). The 06046 to 06074 edge in `prereq_edges.csv`. The
+  agent-bank items of BC-QA-03001 (10 in items_p1_agent), 06008 and 06009 (20 each in
+  items_unit06_agent) still copy the old skills lists. BC-QA-05014 and BC-QA-07012 are
+  statement-keyed, so they serve only as choices. The opener mapping in
+  `PRODUCTIVE_FAILURE_TARGETS` was not rechecked against a live session.
+
 ## In progress [inferred]
 
 Stage 1, items for Units 4 to 10, is complete in the worktree `../growth-content` on branch

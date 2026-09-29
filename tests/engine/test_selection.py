@@ -37,14 +37,33 @@ TODAY = date(2026, 3, 1)
 NOW = datetime(2026, 3, 1, 9, 0, 0)
 
 
+def practised_alongside(fixture, skill_id):
+   """Parents an archetype loads beside this skill as its primary, which 02 (corrected 2026-09-28)
+   exempts from gating because that archetype is where they are practised."""
+   alongside = set()
+
+   for record in fixture["archetypes"]:
+      is_primary_here = record["skills"][0] == skill_id
+
+      if is_primary_here:
+         alongside.update(record["skills"][1:])
+
+   return alongside
+
+
 def fixture_gating_parents(fixture, skill_id):
    inert = set(fixture["inert_top"])
+   alongside = practised_alongside(fixture, skill_id)
+   parents = []
 
-   return [
-      edge["from"]
-      for edge in fixture["edges"]
-      if edge["to"] == skill_id and edge["type"] == "hard_prerequisite" and edge["from"] not in inert
-   ]
+   for edge in fixture["edges"]:
+      is_hard_into_skill = edge["to"] == skill_id and edge["type"] == "hard_prerequisite"
+      is_exempt = edge["from"] in inert or edge["from"] in alongside
+
+      if is_hard_into_skill and not is_exempt:
+         parents.append(edge["from"])
+
+   return parents
 
 
 def expected_fringe(fixture, states, graph):
@@ -53,11 +72,7 @@ def expected_fringe(fixture, states, graph):
    for record in fixture["skills"]:
       skill_id = record["id"]
       is_unmastered = not states[skill_id].mastered
-      gating = [
-         edge["from"]
-         for edge in fixture["edges"]
-         if edge["to"] == skill_id and edge["type"] == "hard_prerequisite"
-      ]
+      gating = fixture_gating_parents(fixture, skill_id)
       parents_ok = all(
          parent in graph.inert_top or states[parent].mastered
          for parent in gating

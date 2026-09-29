@@ -119,26 +119,57 @@ def topological_skills(graph, engine_graph):
    return order
 
 
+def closed_downward(drawn, ordered_skills, hard_parents):
+   """Knowing a skill means knowing its hard prerequisites. Requiring every ancestor's own draw to
+   succeed instead multiplies chances down each chain, and once the units are chained end to end
+   almost no synthetic student knows anything past Unit 1."""
+   known = dict(drawn)
+
+   for skill_id in reversed(ordered_skills):
+      if not known.get(skill_id):
+         continue
+
+      for parent in hard_parents.get(skill_id, ()):
+         is_drawn_skill = parent in known
+
+         if is_drawn_skill:
+            known[parent] = True
+
+   return known
+
+
+def course_ordered_ability(units, rng):
+   """One uniform draw per unit, capped by the unit before it in course order, because a student
+   who is fluent in Unit 9 and has not started Unit 2 does not exist. Unit 1 keeps the plain
+   uniform draw, so novices stay in the population."""
+   ability = {}
+   ceiling = ABILITY_HIGH
+
+   for unit in sorted(units):
+      drawn = rng.uniform(ABILITY_LOW, ABILITY_HIGH)
+      ability[unit] = min(drawn, ceiling)
+      ceiling = ability[unit]
+
+   return ability
+
+
 def make_student(name, rng, unit_ability=None):
    """A knowledge state closed under hard prerequisites, from one ability per unit."""
    world = library()
    graph = world.graph
    states = fresh_states()
    units = diagnostic.graph_units(graph)
-   ability = dict(unit_ability) if unit_ability else {
-      unit: rng.uniform(ABILITY_LOW, ABILITY_HIGH) for unit in units
-   }
-   known = {}
+   ability = dict(unit_ability) if unit_ability else course_ordered_ability(units, rng)
+   ordered_skills = topological_skills(graph, world.engine_graph)
+   drawn = {}
 
-   for skill_id in topological_skills(graph, world.engine_graph):
+   for skill_id in ordered_skills:
       record = graph.skills[skill_id]
       unit_level = ability.get(record.get("unit"), 0.0)
       chance = sigmoid(unit_level + states[skill_id].beta)
-      parents_known = all(
-         known.get(parent, True)
-         for parent in world.engine_graph.hard_parents.get(skill_id, ())
-      )
-      known[skill_id] = parents_known and rng.random() < chance
+      drawn[skill_id] = rng.random() < chance
+
+   known = closed_downward(drawn, ordered_skills, world.engine_graph.hard_parents)
 
    return Student(
       name=name,
@@ -345,4 +376,3 @@ def true_known_mastered(states, world_model, graph):
    truly = [skill_id for skill_id in declared if world_model.knows(skill_id)]
 
    return declared, truly
-

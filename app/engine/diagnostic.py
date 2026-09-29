@@ -509,16 +509,75 @@ def unit_summary(run):
    return summary
 
 
+def closed_under_prerequisites(candidates, classes, failed, graph):
+   """Add every blocking ancestor of a candidate that the run gave no evidence against. A known
+   skill implies its hard prerequisites are known, so a student placed into Unit 5 is not held
+   back by a Unit 2 parent the 30 items never reached."""
+   closed = set(candidates)
+   frontier = list(candidates)
+
+   while frontier:
+      skill_id = frontier.pop()
+
+      for parent in graph.gating_parents(skill_id):
+         is_new = parent not in closed
+         has_evidence_against = parent in failed or classes.get(parent) == PLACED_OUT
+         is_skill = parent in graph.skills
+         should_add = is_new and is_skill and not has_evidence_against
+
+         if should_add:
+            closed.add(parent)
+            frontier.append(parent)
+
+   return closed
+
+
+def supported_in_run(run, graph):
+   """Skills an answered-correctly item loaded, and every hard prerequisite above them. A unit
+   posterior alone places skills no item came near, and on the P7 world those were the whole of
+   its false mastery."""
+   answered = set()
+
+   for entry in run.scored:
+      is_correct = entry["outcome"] == OUTCOME_CORRECT
+
+      if is_correct:
+         answered.update(graph.archetypes[entry["archetype_id"]]["skills"])
+
+   supported = set(answered)
+   frontier = list(answered)
+
+   while frontier:
+      skill_id = frontier.pop()
+
+      for parent in graph.gating_parents(skill_id):
+         is_new = parent not in supported
+
+         if is_new:
+            supported.add(parent)
+            frontier.append(parent)
+
+   return supported
+
+
 def place(run, states, graph, today):
    """Apply the placement to the stored state, adding mastery only, and record it on the run."""
    classes = classify_skills(run, states, graph)
    failed = failed_in_run(run, graph)
-   candidates = [
-      skill_id
-      for skill_id, placed in classes.items()
-      if placed == PLACED_IN and skill_id not in failed
-   ]
-   kept = gating_closed(candidates, states, graph)
+   supported = supported_in_run(run, graph)
+   candidates = []
+
+   for skill_id, placed in classes.items():
+      is_placed_in = placed == PLACED_IN
+      is_unfailed = skill_id not in failed
+      is_supported = skill_id in supported
+      should_place = is_placed_in and is_unfailed and is_supported
+
+      if should_place:
+         candidates.append(skill_id)
+
+   implied = closed_under_prerequisites(candidates, classes, failed, graph)
+   kept = gating_closed(implied, states, graph)
    newly_mastered = []
 
    for skill_id in sorted(kept):
@@ -549,4 +608,3 @@ def place(run, states, graph, today):
    }
 
    return run.placement
-

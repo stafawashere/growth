@@ -5,6 +5,7 @@ import random
 import pytest
 
 from app.engine import constants, diagnostic
+from app.engine.fringe import Graph
 from app.engine.retention import current_retrievability
 from app.sim import whole_graph
 
@@ -309,3 +310,27 @@ def test_no_unit_takes_a_fifth_item_while_a_servable_unit_is_unprobed(library, f
 
    assert "BC-UNIT-01" not in pool_units
    assert len(pool_units) == 9
+
+
+def closure_graph():
+   skills = [{"id": skill_id} for skill_id in ("ROOT", "MIDDLE", "LEAF", "MISSED")]
+   edges = [
+      {"from": "ROOT", "to": "MIDDLE", "type": "hard_prerequisite"},
+      {"from": "MIDDLE", "to": "LEAF", "type": "hard_prerequisite"},
+      {"from": "MISSED", "to": "LEAF", "type": "hard_prerequisite"},
+   ]
+   archetypes = [
+      {"id": f"A-{record['id']}", "skills": [record["id"]], "family": "f", "primary_unit": "U1"}
+      for record in skills
+   ]
+
+   return Graph.from_records(archetypes=archetypes, skills=skills, edges=edges, inert_top=[])
+
+
+def test_placement_closure_adds_unreached_ancestors_but_not_ones_with_evidence_against():
+   graph = closure_graph()
+   classes = {"LEAF": diagnostic.PLACED_IN, "MISSED": diagnostic.UNRESOLVED}
+
+   closed = diagnostic.closed_under_prerequisites(["LEAF"], classes, {"MISSED"}, graph)
+
+   assert closed == {"LEAF", "MIDDLE", "ROOT"}

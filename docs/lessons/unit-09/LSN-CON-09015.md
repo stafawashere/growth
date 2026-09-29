@@ -86,8 +86,8 @@ ex-1 is the opener shape, Section I Part A, 2.14 minutes (research/exam/exam-str
 
 ## Band plan
 
-- Low (full): prediction, orientation, bridges, ki-1, st-1 with the contrast pair, ex-1, chk-1, the four error blocks, ex-2 (faded from step 3) and its lines, chk-2, representations, chk-3. 798 words, 5.4 minutes.
-- Mid (brief): prediction, orientation, bridges, ki-1, st-1 with the contrast pair, ex-1, chk-1, err-BC-ERR-09016, err-BC-ERR-09035, chk-2. 456 words, 3.1 minutes.
+- Low (full): prediction, orientation, bridges, ki-1, st-1 with the contrast pair, ex-1, chk-1, the four error blocks, ex-2 (faded from step 3) and its lines, chk-2, representations, chk-3. 789 words, 5.3 minutes.
+- Mid (brief): prediction, orientation, bridges, ki-1, st-1 with the contrast pair, ex-1, chk-1, err-BC-ERR-09016, err-BC-ERR-09035, chk-2. 447 words, 3.0 minutes.
 - Refresher: ki-1, the four error blocks, ex-1.
 
 ## Sources
@@ -198,7 +198,7 @@ ex-1 is the opener shape, Section I Part A, 2.14 minutes (research/exam/exam-str
      "text": "Find the area of the region between \\(y=3+\\cos x\\), the x-axis, \\(x=0\\) and \\(x=2\\pi\\).",
      "why_not": "It is a region under a graph in x, so the integrand is y."
     },
-    "feature": "Rays from the pole sweep the region, so the integrand is one half r squared."
+    "feature": "Rays sweep the region, so the integrand is one half r squared."
    }
   }
  ],
@@ -423,19 +423,19 @@ ex-1 is the opener shape, Section I Part A, 2.14 minutes (research/exam/exam-str
  "prerequisite_bridges": [
   {
    "prq_id": "BC-PRQ-06005",
-   "text": "The integrand is a function of \\(\\theta\\)."
+   "text": "Integrands are functions of \\(\\theta\\)."
   },
   {
    "prq_id": "BC-PRQ-08006",
-   "text": "Three places after the decimal point."
+   "text": "Three decimal places."
   },
   {
    "prq_id": "BC-PRQ-09002",
-   "text": "Cosine and sine at the bounding angles."
+   "text": "Sine and cosine at bounding angles."
   },
   {
    "prq_id": "BC-PRQ-09004",
-   "text": "The angles trace the region once."
+   "text": "Angles that trace the region once."
   }
  ],
  "time": {
@@ -899,12 +899,12 @@ ex-1 is the opener shape, Section I Part A, 2.14 minutes (research/exam/exam-str
   "research/exam/exam-structure.md#Section and part layout"
  ],
  "word_count": {
-  "full": 798,
-  "brief": 456
+  "full": 789,
+  "brief": 447
  },
  "read_minutes": {
-  "full": 5.4,
-  "brief": 3.1
+  "full": 5.3,
+  "brief": 3.0
  }
 }
 ```

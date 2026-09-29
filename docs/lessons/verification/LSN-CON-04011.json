@@ -33,5 +33,93 @@
    }
   ],
   "answers_file": "/tmp/claude-0/-home-user-growth/ac029253-8ff0-5a4b-8b5f-cdcaf5e8ff8d/scratchpad/verify/answers_06.json"
+ },
+ "audit": {
+  "date": "2026-09-29",
+  "auditor": "claude-opus-5-5",
+  "blocks": [
+   {
+    "id": "orientation",
+    "verdict": "ok",
+    "evidence": "Paraphrases the concept description and unit research section; within 60 words; no lint."
+   },
+   {
+    "id": "ki-1",
+    "verdict": "ok",
+    "evidence": "Quote found verbatim on the cited CED page; claims match the EK and research section; within 120 words."
+   },
+   {
+    "id": "st-1",
+    "verdict": "ok",
+    "evidence": "Cue, method and rival match the archetype record; within 80 words."
+   },
+   {
+    "id": "ex-1",
+    "verdict": "ok",
+    "evidence": "Every step and the key verified by SymPy; cues within 20 and whys within 25 words."
+   },
+   {
+    "id": "scores-ex-1",
+    "verdict": "ok",
+    "evidence": "Line built from the point type record fields in the bundle (name, rubric citations, notation requirements)."
+   },
+   {
+    "id": "err-BC-ERR-04024",
+    "verdict": "ok",
+    "evidence": "observed_behavior, scoring_consequence and misconception text found verbatim in the bundle; wrong and right values verified by SymPy."
+   },
+   {
+    "id": "err-BC-ERR-99035",
+    "verdict": "ok",
+    "evidence": "observed_behavior, scoring_consequence and misconception text found verbatim in the bundle; wrong and right values verified by SymPy."
+   },
+   {
+    "id": "err-BC-ERR-04023",
+    "verdict": "ok",
+    "evidence": "observed_behavior, scoring_consequence and misconception text found verbatim in the bundle; wrong and right values verified by SymPy."
+   },
+   {
+    "id": "err-BC-ERR-04027",
+    "verdict": "unsourced",
+    "evidence": "BC-ERR-04027 describes a derivative involving both coordinates evaluated off the point; here f'(x) is explicit, so f'(1.1) = -29/50 (SymPy) is not the recorded behaviour."
+   },
+   {
+    "id": "representations",
+    "verdict": "ok",
+    "evidence": "No representations block; null."
+   },
+   {
+    "id": "BC-PRQ-04006",
+    "verdict": "ok",
+    "evidence": "Paraphrase of the prerequisite record in the bundle; within 60 words."
+   },
+   {
+    "id": "chk-1",
+    "verdict": "ok",
+    "evidence": "Key and every option or step value verified by SymPy."
+   },
+   {
+    "id": "chk-2",
+    "verdict": "ok",
+    "evidence": "Key and every option or step value verified by SymPy."
+   },
+   {
+    "id": "chk-3",
+    "verdict": "unsourced",
+    "evidence": "Option D tags BC-ERR-04027 on an explicit f'(x) evaluated at 1.8; the record describes an implicit derivative. Values verified: key 14/5, A 3, C 2/5, D 331/125."
+   }
+  ],
+  "advice": [
+   "err-BC-ERR-04027 and chk-3 option D apply an error defined for implicit derivatives (both coordinates) to an explicit f'(x); an implicit dy/dx draw would fit the record.",
+   "Orientation and ki-1 figures draw 4 - (x - 1) + (x - 1)^2 as the curve, which is not an antiderivative of 2x^2 - 3 (its second derivative is 2, not f''(1) = 4); label it as illustrative or use the true f.",
+   "ki-1 motion for closeness near the point of tangency suits a process; the lesson omits the over or under estimate judgement its archetype BC-QA-04008 names (draw judgement off throughout)."
+  ],
+  "counts": {
+   "ok": 12,
+   "unsourced": 2,
+   "wrong": 0,
+   "over_cap": 0,
+   "lint": 0
+  }
  }
 }

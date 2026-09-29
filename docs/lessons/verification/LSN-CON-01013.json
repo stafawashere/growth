@@ -105,8 +105,8 @@
    },
    {
     "id": "chk-3",
-    "verdict": "wrong",
-    "evidence": "Stem, key C and distractors are right (SymPy: (3x^2-2x)/x -> -2 at 0, f(0)=1), but parameter_draw sets right_slope 1 while the served rule 3x-2 has slope 3 on both sides, contradicting the design's own inferred note that the right values equal the left for a value break."
+    "verdict": "ok",
+    "evidence": "fixed 2026-09-29: parameter_draw right_slope set to 3 to match the served rule 3x-2 on both sides (SymPy: diff(3x-2)=3; one sided limits at 0 both -2)."
    }
   ],
   "advice": [
@@ -116,11 +116,15 @@
    "BC-ERR-01017 (wrong branch at the boundary) is dropped by the cap though it is a wrong_approaches entry of BC-QA-01006; chk-2 is the only place a jump boundary appears."
   ],
   "counts": {
-   "ok": 13,
+   "ok": 14,
    "unsourced": 0,
-   "wrong": 1,
+   "wrong": 0,
    "over_cap": 0,
    "lint": 0
   }
- }
+ },
+ "fix_notes": [
+  "chk-3 parameter_draw right_slope 1 changed to 3 to match the served rule 3x-2.",
+  "Left as preferences: ki-1 slider cannot show condition one failing; statement keys 'x = 2' do not encode the verdict; thin scoring habit coverage; BC-ERR-01017 dropped by the error cap."
+ ]
 }

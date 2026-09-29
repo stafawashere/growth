@@ -78,6 +78,8 @@ L8 to L10 green; audit of all 19 at 0 errors with its denominator (docs/lessons/
 
 ## Slice L2. Engine insertion
 
+Landed 2026-09-29: app/lessons/gate.py, the block 2 insertion and deferral in app/session/build.py, the lesson slots in app/session/service.py, `lesson_first_contact` in switches.DEFINITIONS, the lesson forecast, tests/session/test_lesson_gate.py, tests/lessons/test_invariants.py, tests/api/test_lessons_session.py, the SessionScreen lesson state. Not landed: home's forecast (app/session/preview.py assembles without lesson inputs), `lesson_gap_fail_open`.
+
 Entry: L1. Scope per 15, Engine and session integration.
 
 ### Files
@@ -107,6 +109,8 @@ Standing gate plus L0 to L14 at 1,000 cases; the no-units session test; deferral
 - Block 2's 25 minutes (`BLOCK2_MAX_MINUTES`) now hold lesson minutes; the pacing section shows two full lessons take 12 minutes of it, leaving 13 for items, which at the 3-minute default is 4 items rather than 8. The deferral rule (Q3, ruled defer) bounds it, and deferrals per session are the telemetry that says whether `LESSONS_PER_SESSION_MAX` should be 1 for a student who is opening many concepts a day.
 
 ## Slice L3. Re-teaching and diagnosis links
+
+Landed 2026-09-29: app/lessons/refresh.py (T1 to T4, T5 a named hook), refreshers in blocks 1 and 2 and `read_again` in block 4, the LSN-PRQ ordering, `lesson_link` on feedback, "Read the part on this error" in app/web/src/session/ElaboratedPanel.tsx, tests/session/test_lesson_refresh.py. No LSN-PRQ records were authored.
 
 Entry: L2.
 

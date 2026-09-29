@@ -66,12 +66,12 @@
    {
     "id": "err-BC-ERR-01016",
     "verdict": "ok",
-    "evidence": "Verbatim from BC-ERR-01016; BC-MIS-01010 in its list."
+    "evidence": "fixed 2026-09-29: wrong step now the definition with no values, Limit(f(x), x, c) - f(c), right step Interval(1, 8); relation distinct."
    },
    {
     "id": "err-BC-ERR-01025",
     "verdict": "ok",
-    "evidence": "Verbatim from BC-ERR-01025; BC-MIS-01015 wording."
+    "evidence": "fixed 2026-09-29: wrong FiniteSet(continuous) against right FiniteSet(differentiable, continuous); relation distinct."
    },
    {
     "id": "err-BC-ERR-01026",
@@ -81,7 +81,7 @@
    {
     "id": "err-BC-ERR-01027",
     "verdict": "ok",
-    "evidence": "Verbatim from BC-ERR-01027; BC-MIS-01016 wording."
+    "evidence": "fixed 2026-09-29: wrong FiniteSet(c), a single point, against right Interval.open(1, 8); relation distinct."
    },
    {
     "id": "representations",
@@ -127,5 +127,10 @@
    "over_cap": 0,
    "lint": 0
   }
- }
+ },
+ "fix_notes": [
+  "Three error blocks (01016, 01025, 01027) given distinct wrong and right forms; prose Traps lines updated; texts trimmed to keep brief at 450.",
+  "word_count 606/450, read_minutes 4.1/3.0.",
+  "Left as preferences: BC-ERR-01028 has no block (cap 4); terse bridges; table delivery."
+ ]
 }

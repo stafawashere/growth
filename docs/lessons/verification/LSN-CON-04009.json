@@ -33,5 +33,98 @@
    }
   ],
   "answers_file": "/tmp/claude-0/-home-user-growth/ac029253-8ff0-5a4b-8b5f-cdcaf5e8ff8d/scratchpad/verify/answers_06.json"
+ },
+ "audit": {
+  "date": "2026-09-29",
+  "auditor": "claude-opus-5-5",
+  "blocks": [
+   {
+    "id": "orientation",
+    "verdict": "ok",
+    "evidence": "Paraphrases the concept description and unit research section; within 60 words; no lint."
+   },
+   {
+    "id": "ki-1",
+    "verdict": "ok",
+    "evidence": "Quote found verbatim on the cited CED page; claims match the EK and research section; within 120 words."
+   },
+   {
+    "id": "st-1",
+    "verdict": "ok",
+    "evidence": "Cue, method and rival match the archetype record; within 80 words."
+   },
+   {
+    "id": "st-2",
+    "verdict": "ok",
+    "evidence": "Cue, method and rival match the archetype record; within 80 words."
+   },
+   {
+    "id": "ex-1",
+    "verdict": "ok",
+    "evidence": "Every step and the key verified by SymPy; cues within 20 and whys within 25 words."
+   },
+   {
+    "id": "scores-ex-1",
+    "verdict": "ok",
+    "evidence": "Line built from the point type record fields in the bundle (name, rubric citations, notation requirements)."
+   },
+   {
+    "id": "err-BC-ERR-04020",
+    "verdict": "ok",
+    "evidence": "observed_behavior, scoring_consequence and misconception text found verbatim in the bundle; wrong and right values verified by SymPy."
+   },
+   {
+    "id": "err-BC-ERR-04022",
+    "verdict": "ok",
+    "evidence": "observed_behavior, scoring_consequence and misconception text found verbatim in the bundle; wrong and right values verified by SymPy."
+   },
+   {
+    "id": "err-BC-ERR-99013",
+    "verdict": "ok",
+    "evidence": "observed_behavior, scoring_consequence and misconception text found verbatim in the bundle; wrong and right values verified by SymPy."
+   },
+   {
+    "id": "representations",
+    "verdict": "ok",
+    "evidence": "No representations block; null."
+   },
+   {
+    "id": "BC-PRQ-04007",
+    "verdict": "ok",
+    "evidence": "Paraphrase of the prerequisite record in the bundle; within 60 words."
+   },
+   {
+    "id": "BC-PRQ-04008",
+    "verdict": "ok",
+    "evidence": "Paraphrase of the prerequisite record in the bundle; within 60 words."
+   },
+   {
+    "id": "chk-1",
+    "verdict": "ok",
+    "evidence": "Key and every option or step value verified by SymPy."
+   },
+   {
+    "id": "chk-2",
+    "verdict": "wrong",
+    "evidence": "parameter_draw length_unit inch and size 4 against a stem in feet with a 10 foot ladder and foot at 6; key -15/4 itself verified by SymPy."
+   },
+   {
+    "id": "chk-3",
+    "verdict": "ok",
+    "evidence": "Key and every option or step value verified by SymPy."
+   }
+  ],
+  "advice": [
+   "ex-1 parameter_draw size 6 does not match the stem's foot at 9 meters; chk-3 draw (size 3, ratio 1) does not produce the 3, 4, 5 ladder cleanly. Align draws with stems.",
+   "st-2 rival names no error id; BC-ERR-04020 covers it.",
+   "ki-1 slider question (which stated numbers still hold one second later) serves the fixed against instantaneous reading well."
+  ],
+  "counts": {
+   "ok": 14,
+   "unsourced": 0,
+   "wrong": 1,
+   "over_cap": 0,
+   "lint": 0
+  }
  }
 }

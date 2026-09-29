@@ -33,5 +33,97 @@
    }
   ],
   "answers_file": "/tmp/claude-0/-home-user-growth/ac029253-8ff0-5a4b-8b5f-cdcaf5e8ff8d/scratchpad/verify/answers_06.json"
+ },
+ "audit": {
+  "date": "2026-09-29",
+  "auditor": "claude-opus-5-5",
+  "blocks": [
+   {
+    "id": "orientation",
+    "verdict": "ok",
+    "evidence": "Paraphrases the concept description and unit research section; within 60 words; no lint."
+   },
+   {
+    "id": "ki-1",
+    "verdict": "ok",
+    "evidence": "Quote found verbatim on the cited CED page; claims match the EK and research section; within 120 words."
+   },
+   {
+    "id": "st-1",
+    "verdict": "ok",
+    "evidence": "Cue, method and rival match the archetype record; within 80 words."
+   },
+   {
+    "id": "st-2",
+    "verdict": "ok",
+    "evidence": "Cue, method and rival match the archetype record; within 80 words."
+   },
+   {
+    "id": "ex-1",
+    "verdict": "wrong",
+    "evidence": "parameter_draw length_unit centimeter and size 7 against problem text in meters with a 5 meter ladder; SymPy key -3 verified."
+   },
+   {
+    "id": "scores-ex-1",
+    "verdict": "ok",
+    "evidence": "Line built from the point type record fields in the bundle (name, rubric citations, notation requirements)."
+   },
+   {
+    "id": "err-BC-ERR-04001",
+    "verdict": "ok",
+    "evidence": "observed_behavior, scoring_consequence and misconception text found verbatim in the bundle; wrong and right values verified by SymPy."
+   },
+   {
+    "id": "err-BC-ERR-04005",
+    "verdict": "ok",
+    "evidence": "observed_behavior, scoring_consequence and misconception text found verbatim in the bundle; wrong and right values verified by SymPy."
+   },
+   {
+    "id": "err-BC-ERR-04021",
+    "verdict": "ok",
+    "evidence": "observed_behavior, scoring_consequence and misconception text found verbatim in the bundle; wrong and right values verified by SymPy."
+   },
+   {
+    "id": "representations",
+    "verdict": "ok",
+    "evidence": "No representations block; null."
+   },
+   {
+    "id": "BC-PRQ-04004",
+    "verdict": "ok",
+    "evidence": "Paraphrase of the prerequisite record in the bundle; within 60 words."
+   },
+   {
+    "id": "BC-PRQ-04007",
+    "verdict": "ok",
+    "evidence": "Paraphrase of the prerequisite record in the bundle; within 60 words."
+   },
+   {
+    "id": "chk-1",
+    "verdict": "wrong",
+    "evidence": "parameter_draw length_unit centimeter while the step reports meters per minute; key -3 verified."
+   },
+   {
+    "id": "chk-2",
+    "verdict": "ok",
+    "evidence": "Key and every option or step value verified by SymPy."
+   },
+   {
+    "id": "chk-3",
+    "verdict": "ok",
+    "evidence": "Key and every option or step value verified by SymPy."
+   }
+  ],
+  "advice": [
+   "ki-1 is text for a rule on units and sign; a short contrast of -3 meters against -3 meters per minute would serve the comparison better.",
+   "chk-3 stem asks direction and units together, a good scoring habit check."
+  ],
+  "counts": {
+   "ok": 13,
+   "unsourced": 0,
+   "wrong": 2,
+   "over_cap": 0,
+   "lint": 0
+  }
  }
 }

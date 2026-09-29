@@ -51,7 +51,7 @@
    {
     "id": "ki-2",
     "verdict": "ok",
-    "evidence": "Quote found on ced:51 (LIM-2.D.2); simplify first and removable break sentence are in the cited 1.14 Locating asymptotes paragraph."
+    "evidence": "fixed 2026-09-29: inline citation for simplify first now points to research/units/unit-01-limits-continuity.md#1.14 Connecting Infinite Limits and Vertical Asymptotes instead of ced:51; quote stays on ced:51."
    },
    {
     "id": "st-1",
@@ -81,7 +81,7 @@
    {
     "id": "err-BC-ERR-01020",
     "verdict": "ok",
-    "evidence": "Verbatim from BC-ERR-01020; BC-MIS-01012 includes reading infinity as a real value."
+    "evidence": "fixed 2026-09-29: wrong step now oo read as a real value, right step 1/f = (x+2)/(2(x-3)) tending to 0 (SymPy), relation distinct; prose Traps line updated."
    },
    {
     "id": "representations",
@@ -126,5 +126,11 @@
    "over_cap": 0,
    "lint": 0
   }
- }
+ },
+ "fix_notes": [
+  "ki-2 inline citation moved from ced:51 to the 1.14 research heading.",
+  "err-BC-ERR-01020 wrong and right expressions made distinct (oo against (x+2)/(2*(x-3))).",
+  "word_count 553/422, read_minutes 3.7/2.9.",
+  "Left as preference: ki-1 motion delivery."
+ ]
 }

@@ -166,7 +166,7 @@ BC-QA-04006 has `calculator_status` either, so Section I Part A, 2.14 minutes (r
    ],
    "parameter_draw": {
     "shape": "ladder",
-    "size": 6,
+    "size": 9,
     "rate": 2,
     "ratio": 3,
     "leg": "short",
@@ -352,7 +352,7 @@ BC-QA-04006 has `calculator_status` either, so Section I Part A, 2.14 minutes (r
    "archetype_id": "BC-QA-04006",
    "parameter_draw": {
     "shape": "ladder",
-    "size": 6,
+    "size": 9,
     "rate": 2,
     "ratio": 3,
     "leg": "short",
@@ -407,11 +407,11 @@ BC-QA-04006 has `calculator_status` either, so Section I Part A, 2.14 minutes (r
    "archetype_id": "BC-QA-04006",
    "parameter_draw": {
     "shape": "ladder",
-    "size": 4,
+    "size": 6,
     "rate": 5,
     "ratio": 2,
     "leg": "short",
-    "length_unit": "inch",
+    "length_unit": "foot",
     "time_unit": "minute"
    },
    "stem": {
@@ -479,7 +479,7 @@ BC-QA-04006 has `calculator_status` either, so Section I Part A, 2.14 minutes (r
    "archetype_id": "BC-QA-04006",
    "parameter_draw": {
     "shape": "ladder",
-    "size": 3,
+    "size": 4,
     "rate": 6,
     "ratio": 1,
     "leg": "long",

@@ -457,7 +457,7 @@ BC-QA-04006 has `calculator_status` either, so Section I Part A, 2.14 minutes (r
    "archetype_id": "BC-QA-04006",
    "parameter_draw": {
     "shape": "ladder",
-    "size": 5,
+    "size": 8,
     "rate": 3,
     "ratio": 2,
     "leg": "long",

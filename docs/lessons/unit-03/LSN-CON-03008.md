@@ -42,9 +42,9 @@ BC-QA-03009 lists no `point_types`, so no what_a_reader_scores entry and no poin
 
 ## Traps
 
-Four active errors meet the skills, in the bundle's order: BC-ERR-03002, BC-ERR-03006, BC-ERR-03020, BC-ERR-99036. Low band all four; mid band the first two. All on ex-1's draw.
+Four active errors meet the skills, in the bundle's order: BC-ERR-03002, BC-ERR-03006, BC-ERR-03020, BC-ERR-99036. Low band all four; mid band the first two. All on ex-1's draw except the first, which needs three layers.
 
-- err-BC-ERR-03002: the inner derivative 3 of the exponent omitted. Possible reason, words from BC-MIS-03001.
+- err-BC-ERR-03002: on e^((3x - 1)^2), three layers, the innermost derivative 3 omitted. Possible reason, words from BC-MIS-03001.
 - err-BC-ERR-03006: the composite factor alone differentiated. Possible reason, words from BC-MIS-03012.
 - err-BC-ERR-03020: a factoring slip changes the value. No possible reason line: neither linked description names simplification.
 - err-BC-ERR-99036: the power rule applied to e^(3x - 1). Possible reason, words from BC-MIS-02010.
@@ -66,7 +66,7 @@ BC-QA-03009 is `no_calculator`, a single MCQ: Section I Part A, 2.14 minutes per
 
 - chk-1, completion of ex-1, both bands: h'(x) = 2x(2 + 3x)e^(3x - 1) is given, the student evaluates at x = -1. Key 2e^(-4).
 - chk-2, isomorph, both bands. Draw: scale 3, power 1, rate -2, offset 2, inner_degree 1, at 2; h(x) = 3x e^(-2x + 2). Key h'(2) = -9e^(-2).
-- chk-3, MCQ, low band. Draw: scale 1, power 1, rate 2, offset 1, inner_degree 2, at 1; h(x) = x e^(2x^2 + 1). Key 5e^3. Distractors: 4e^3 (BC-ERR-03006), 2e^3 (BC-ERR-03002), e^3 + 3e^2 (BC-ERR-99036).
+- chk-3, MCQ, low band. Draw: scale 1, power 1, rate 2, offset 1, inner_degree 2, at 1; h(x) = x e^(2x^2 + 1). Key 5e^3. Distractors: 4e^3 (BC-ERR-03006), 3e^3 (BC-ERR-03020), e^3 + 3e^2 (BC-ERR-99036).
 
 ## Delivery
 
@@ -152,8 +152,8 @@ BC-QA-03009 is `no_calculator`, a single MCQ: Section I Part A, 2.14 minutes per
    "error_id": "BC-ERR-03002",
    "observed_behavior": "A composition of three functions is differentiated through the first two layers and the innermost derivative is omitted.",
    "scoring_consequence": "The derivative is wrong; no credit is available for a partially applied rule in a single answer item.",
-   "wrong_step": {"text": "The factor 3 from 3x - 1 omitted.", "expr": "4*x*exp(3*x - 1) + 2*x**2*exp(3*x - 1)"},
-   "right_step": {"text": "Times u' = 3.", "expr": "4*x*exp(3*x - 1) + 6*x**2*exp(3*x - 1)"},
+   "wrong_step": {"text": "e^((3x - 1)^2) has three layers; the outer two give 2(3x - 1)e^((3x - 1)^2) and the innermost factor 3 is omitted.", "expr": "2*(3*x - 1)*exp((3*x - 1)**2)"},
+   "right_step": {"text": "Times the innermost derivative 3.", "expr": "6*(3*x - 1)*exp((3*x - 1)**2)"},
    "relation": "distinct",
    "possible_reason": {"misconception_id": "BC-MIS-03001", "text": "whatever sits inside is copied across unchanged"},
    "sources": ["BC-ERR-03002", "BC-MIS-03001"]
@@ -246,12 +246,12 @@ BC-QA-03009 is `no_calculator`, a single MCQ: Section I Part A, 2.14 minutes per
    ],
    "options": [
     {"id": "A", "is_key": false, "expr": "4*exp(3)", "error_path": "BC-ERR-03006", "derivation": "x times the exponential's derivative only"},
-    {"id": "B", "is_key": false, "expr": "2*exp(3)", "error_path": "BC-ERR-03002", "derivation": "inner derivative 4x omitted"},
+    {"id": "B", "is_key": false, "expr": "3*exp(3)", "error_path": "BC-ERR-03020", "derivation": "e^u + 4x^2 e^u factored with a sign slip as (4x^2 - 1)e^u"},
     {"id": "C", "is_key": true, "expr": "5*exp(3)", "error_path": null},
     {"id": "D", "is_key": false, "expr": "exp(3) + 3*exp(2)", "error_path": "BC-ERR-99036", "derivation": "power rule on the exponential: (2x^2 + 1)e^(2x^2)"}
    ],
    "calculator_status": "no_calculator",
-   "skills": ["BC-SKL-03026", "BC-SKL-03027"]
+   "skills": ["BC-SKL-03026", "BC-SKL-03027", "BC-SKL-03029"]
   }
  ],
  "delivery": [

@@ -1,4 +1,28 @@
 {
+ "09c811777349b281780625b7514bed24e1b87d9c225b5d024a55d0a9bd57ae94": {
+  "finish_reason": "success",
+  "model": "claude-sonnet-5-5",
+  "provider": "subscription",
+  "text": "{\"verdicts\": [{\"point_id\": \"a1\", \"decision\": \"earned\", \"evidence_quote\": \"set \\\\( g'(x) = 0 \\\\)\", \"rule_field\": \"earns\", \"rule_cited\": \"Presenting the equation derivative equals zero, or an equivalent equation, or discussing the sign change of the derivative\", \"eligibility_note\": \"No earlier error considered; the derivative g'(x) = (x - 3)e^{x} is correct and the student explicitly sets it equal to zero.\"}]}",
+  "usage": {
+   "cached_read_tokens": 1437,
+   "cached_write_tokens": 1115,
+   "input_tokens": 2,
+   "output_tokens": 208
+  }
+ },
+ "0b91d14361f5b5deef4b5d0932d608d1a5fd2cc9c9da79d124792a6215426bde": {
+  "finish_reason": "success",
+  "model": "claude-sonnet-5-5",
+  "provider": "subscription",
+  "text": "{\"verdicts\": [{\"point_id\": \"b1\", \"decision\": \"not_earned\", \"evidence_quote\": \"for \\\\(x < 3\\\\), \\\\(x - 3 < 0\\\\); for \\\\(x > 3\\\\), \\\\(x - 3 > 0\\\\)\", \"rule_field\": \"does_not_earn\", \"rule_cited\": \"A statement about the sign of the function rather than the derivative\", \"eligibility_note\": \"The student gives the sign of the factor x - 3, never g'(x) or g''. The work does not name the derivative or say that e^x is positive, so the sign of g' is not stated explicitly. I considered no earlier error.\"}, {\"point_id\": \"b2\", \"decision\": \"not_earned\", \"evidence_quote\": \"so \\\\(g\\\\) has a relative minimum at \\\\(x = 3\\\\)\", \"rule_field\": \"does_not_earn\", \"rule_cited\": \"an assertion with no supporting sign or second-derivative analysis\", \"eligibility_note\": \"The classification is correct, but it is not tied to g' changing from negative to positive. The only sign analysis is of x - 3, which is not stated to be g'. I considered no earlier error.\"}]}",
+  "usage": {
+   "cached_read_tokens": 3569,
+   "cached_write_tokens": 2998,
+   "input_tokens": 4,
+   "output_tokens": 968
+  }
+ },
  "15186737b0a27cba6c391dc5d7b71d47c5e5d67efc088708cd6269d1dec2ce9c": {
   "finish_reason": "success",
   "model": "claude-sonnet-5",
@@ -23,6 +47,18 @@
    "output_tokens": 628
   }
  },
+ "25e2404ff30616ccf97ae15b961874a5884e4c58c815e7207e595f1ec2f75fa7": {
+  "finish_reason": "success",
+  "model": "claude-sonnet-5-5",
+  "provider": "subscription",
+  "text": "{\"verdicts\": [{\"point_id\": \"a1\", \"decision\": \"earned\", \"evidence_quote\": \"set \\\\( g'(x) = 0 \\\\)\", \"rule_field\": \"earns\", \"rule_cited\": \"Presenting the equation derivative equals zero, or an equivalent equation\", \"eligibility_note\": \"No earlier error considered; the student states g'(x) = 0 explicitly in this part, which meets the criterion.\"}]}",
+  "usage": {
+   "cached_read_tokens": 614,
+   "cached_write_tokens": 1955,
+   "input_tokens": 2,
+   "output_tokens": 183
+  }
+ },
  "348e3e82904ce49714825b42206a577f5bda38d827cf3a70a916e8545cafaa44": {
   "finish_reason": "success",
   "model": "claude-sonnet-5",
@@ -35,6 +71,18 @@
    "output_tokens": 239
   }
  },
+ "4952f13d51663a9be067f885ab9e1c5bd5f3ef2f9be0bf74190f5a854efd55de": {
+  "finish_reason": "success",
+  "model": "claude-sonnet-5-5",
+  "provider": "subscription",
+  "text": "{\"verdicts\": [{\"point_id\": \"b1\", \"decision\": \"not_earned\", \"evidence_quote\": \"for \\\\(x < 3\\\\), \\\\(x - 3 < 0\\\\); for \\\\(x > 3\\\\), \\\\(x - 3 > 0\\\\)\", \"rule_field\": \"does_not_earn\", \"rule_cited\": \"A statement about the sign of the function rather than the derivative\", \"eligibility_note\": \"No earlier error considered. The student gives the sign of the factor x - 3 but never says it is the sign of g' (or of g'' at 3), so no explicit derivative sign statement is made.\"}, {\"point_id\": \"b2\", \"decision\": \"not_earned\", \"evidence_quote\": \"so \\\\(g\\\\) has a relative minimum at \\\\(x = 3\\\\)\", \"rule_field\": \"does_not_earn\", \"rule_cited\": \"an assertion with no supporting sign or second-derivative analysis\", \"eligibility_note\": \"No earlier error considered. The classification is correct, but it is not tied to g' changing from negative to positive, since g' is never mentioned. Only the sign of x - 3 is given.\"}]}",
+  "usage": {
+   "cached_read_tokens": 2932,
+   "cached_write_tokens": 3871,
+   "input_tokens": 4,
+   "output_tokens": 1236
+  }
+ },
  "4dcb1f560c5aa0c7019d91c24b1c23ff7686a0370aa1d923724c784bb5ae319e": {
   "finish_reason": "success",
   "model": "claude-sonnet-5",
@@ -45,6 +93,18 @@
    "cached_write_tokens": 1194,
    "input_tokens": 2,
    "output_tokens": 327
+  }
+ },
+ "6e188cf3f3363f98095dc453addf192aabd86c35fbcae0a0c5930be2ed8addba": {
+  "finish_reason": "success",
+  "model": "claude-sonnet-5-5",
+  "provider": "subscription",
+  "text": "{\"verdicts\": [{\"point_id\": \"a1\", \"decision\": \"earned\", \"evidence_quote\": \"set \\\\( g'(x) = 0 \\\\)\", \"rule_field\": \"earns\", \"rule_cited\": \"Presenting the equation derivative equals zero, or an equivalent equation\", \"eligibility_note\": \"No earlier error considered; the derivative g'(x) = (x - 3)e^{x} is correct and the student explicitly sets it equal to zero.\"}]}",
+  "usage": {
+   "cached_read_tokens": 0,
+   "cached_write_tokens": 2551,
+   "input_tokens": 2,
+   "output_tokens": 194
   }
  },
  "729acce1419f733a6b20f5bc9b2f9dbd9fbf1a4978da2602b27d7095f87dc19d": {
@@ -83,6 +143,30 @@
    "output_tokens": 404
   }
  },
+ "a1a28e5f511d4f5ae1622ebc49ef0bf352d1f51d59a2fa6ed26eb35820911977": {
+  "finish_reason": "success",
+  "model": "claude-sonnet-5-5",
+  "provider": "subscription",
+  "text": "{\"observed_errors\": [{\"error_id\": \"\", \"new_behavior\": \"The response gives the sign of the factor (x - 3) on each side of x = 3 and states a relative minimum, without naming the sign of g' or tying the conclusion to g' changing from negative to positive.\", \"evidence\": \"for \\\\(x < 3\\\\), \\\\(x - 3 < 0\\\\); for \\\\(x > 3\\\\), \\\\(x - 3 > 0\\\\)\", \"points_lost\": [\"b1\", \"b2\"]}], \"matched_signals\": [], \"skill_readings\": [{\"skill_id\": \"BC-SKL-05020\", \"reading\": \"procedural\"}], \"gap_descriptions_matched\": []}",
+  "usage": {
+   "cached_read_tokens": 0,
+   "cached_write_tokens": 2753,
+   "input_tokens": 2,
+   "output_tokens": 897
+  }
+ },
+ "a43d6d52d6ecf8d8445b0e79f6f87987587484507f06326ad7e77bd87b34e9c3": {
+  "finish_reason": "success",
+  "model": "claude-sonnet-5-5",
+  "provider": "subscription",
+  "text": "{\"parts\": [{\"part_id\": \"a\", \"lines\": [{\"kind\": \"math\", \"content\": \"g'(x) = (x - 3)e^{x}\", \"crossed_out\": false, \"outside_box\": false}, {\"kind\": \"text\", \"content\": \"set \\\\( g'(x) = 0 \\\\)\", \"crossed_out\": false, \"outside_box\": false}, {\"kind\": \"math\", \"content\": \"x = 3\", \"crossed_out\": false, \"outside_box\": false}], \"answer\": \"\"}, {\"part_id\": \"b\", \"lines\": [{\"kind\": \"text\", \"content\": \"for \\\\( x < 3, x - 3 < 0 \\\\); for \\\\( x > 3, x - 3 > 0 \\\\)\", \"crossed_out\": false, \"outside_box\": false}, {\"kind\": \"text\", \"content\": \"so g has a relative minimum at \\\\( x = 3 \\\\)\", \"crossed_out\": false, \"outside_box\": false}], \"answer\": \"\"}], \"unreadable\": []}",
+  "usage": {
+   "cached_read_tokens": 0,
+   "cached_write_tokens": 6353,
+   "input_tokens": 2,
+   "output_tokens": 358
+  }
+ },
  "a5e77a5c4e7c9073989fbe751b8f62645227c9e2ecb9722ac97690725f7f0310": {
   "finish_reason": "success",
   "model": "claude-sonnet-5",
@@ -117,6 +201,18 @@
    "cached_write_tokens": 1195,
    "input_tokens": 2,
    "output_tokens": 880
+  }
+ },
+ "e5e1ebc1fd10352dad29d2a4dfc51ea5ad914e9af8804f8975a97a13fe88a181": {
+  "finish_reason": "success",
+  "model": "claude-sonnet-5-5",
+  "provider": "subscription",
+  "text": "{\"verdicts\": [{\"point_id\": \"b1\", \"decision\": \"not_earned\", \"evidence_quote\": \"for \\\\(x < 3\\\\), \\\\(x - 3 < 0\\\\); for \\\\(x > 3\\\\), \\\\(x - 3 > 0\\\\)\", \"rule_field\": \"earns\", \"rule_cited\": \"An explicit statement about whether a first or second derivative is positive, negative, or zero on the relevant interval\", \"eligibility_note\": \"No earlier error considered. The student gives the sign of the factor x - 3 but never says it is the sign of g' or connects it to g'(x) = (x-3)e^x, so no explicit derivative sign statement is made.\"}, {\"point_id\": \"b2\", \"decision\": \"not_earned\", \"evidence_quote\": \"so \\\\(g\\\\) has a relative minimum at \\\\(x = 3\\\\)\", \"rule_field\": \"does_not_earn\", \"rule_cited\": \"an assertion with no supporting sign or second-derivative analysis\", \"eligibility_note\": \"No earlier error considered. The conclusion is correct, but it is not tied to g' changing from negative to positive, since only the sign of x - 3 is given and g' is never mentioned.\"}]}",
+  "usage": {
+   "cached_read_tokens": 1441,
+   "cached_write_tokens": 1491,
+   "input_tokens": 2,
+   "output_tokens": 826
   }
  },
  "feb95101db3dc17b6137231ae5a828dfff293c7879322d4651dbb8e4d5c02d51": {

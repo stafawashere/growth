@@ -142,9 +142,9 @@ replay.
 never will (ruling of 2026-09-24): every response and every hand grade here is a model's, so every
 agreement figure is one model grading against another model's reading of the BC-PT definitions,
 not against an AP Reader or the operator. No official response, stem or rubric text is used.
-The grader is `claude-sonnet-5` on the operator's Claude subscription, prompts
-`prompts/grader/point_liberal_v1.md` (two samples) and `point_strict_v1.md` (one), recorded on
-2026-09-24.
+The grader is `claude-sonnet-5-5` on the operator's Claude subscription, prompts
+`prompts/grader/point_liberal_v2.md` (two samples) and `point_strict_v2.md` (one), recorded on
+2026-09-29.
 
 ## Grader against the golden set [verified]
 

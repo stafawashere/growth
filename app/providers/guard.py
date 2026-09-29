@@ -88,6 +88,7 @@ original, whose message may hold a response body or a key (13 item 7).
 
 The price table holds every model 13's routing names, at the interactive rates in 13's cost model
 table, which cites Anthropic's and Google's pricing pages: claude-opus-5, claude-sonnet-5,
+claude-sonnet-5-5 (the claude-api skill's model table, $2 input and $10 output),
 claude-haiku-4-5, gemini-3.5-flash-lite and gemini-3.8-flash. Gemini 3.8 Flash is promotional
 through 2026-12-31 and doubles from 2027-01-01, so its entry carries that end date as data and
 price_for takes the day of the call; the guard passes its own clock's day. A dated price asked for
@@ -188,6 +189,7 @@ class DatedModelPrice:
 MODEL_PRICES = {
    "claude-opus-5": ModelPrice(input_usd_per_mtok=5.0, output_usd_per_mtok=25.0),
    "claude-sonnet-5": ModelPrice(input_usd_per_mtok=2.0, output_usd_per_mtok=10.0),
+   "claude-sonnet-5-5": ModelPrice(input_usd_per_mtok=2.0, output_usd_per_mtok=10.0),
    "claude-haiku-4-5": ModelPrice(input_usd_per_mtok=1.0, output_usd_per_mtok=5.0),
    "gemini-3.5-flash-lite": ModelPrice(input_usd_per_mtok=0.30, output_usd_per_mtok=2.50),
    "gemini-3.8-flash": DatedModelPrice(

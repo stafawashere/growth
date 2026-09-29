@@ -6,10 +6,13 @@ deterministic check can decide it.
 test_disagreement_escalates (unit half): a split is escalated and provisional, never averaged.
 The question records here are written for the tests, in the shape content/frq_items uses.
 """
+import json
+
 import pytest
 
 from app.grading import judge as model_judge
 from app.grading import point as grader
+from app.providers.base import ProviderResult, Usage
 from app.providers.guard import ProviderCallFailed
 from app.providers.subscription import SubscriptionAuthFailed
 
@@ -405,3 +408,92 @@ def test_an_expired_sign_in_makes_the_grader_unavailable_rather_than_an_unread_g
 
    assert "sign-in expired" in str(unavailable.value)
 
+
+MODEL_POINT_TYPE = {
+   "id": "BC-PT-99010",
+   "name": "a judged point",
+   "earns": "the reason",
+   "does_not_earn": "no reason",
+   "notation_requirements": "none",
+   "precision_rules": "none",
+   "eligibility_after_error": "none",
+   "requires_previous_work": "no",
+   "setup_alone_earns": "no",
+   "simplification_required": "no",
+   "dependency_on_other_points": "none",
+}
+
+
+def judged_point(point_id, criterion):
+   return {
+      "point_id": point_id,
+      "point_type_id": "BC-PT-99010",
+      "skills": ["BC-SKL-TEST"],
+      "criterion": criterion,
+      "eligible_only_if": [],
+   }
+
+
+class VerdictProvider:
+   """Answers each grader call with a verdict per point id the request's schema lists, leaving
+   out the ids in silent."""
+
+   def __init__(self, silent=()):
+      self.silent = set(silent)
+      self.requests = []
+
+   def generate(self, request):
+      self.requests.append(request)
+      point_ids = request.output_schema["properties"]["verdicts"]["items"]["properties"]["point_id"]["enum"]
+      verdicts = [
+         {"point_id": point_id, "decision": "earned", "evidence_quote": "", "rule_field": "earns", "rule_cited": "x", "eligibility_note": ""}
+         for point_id in point_ids
+         if point_id not in self.silent
+      ]
+
+      return ProviderResult(
+         text=json.dumps({"verdicts": verdicts}),
+         finish_reason="end_turn",
+         usage=Usage(100, 20, None, None),
+         provider="scripted",
+         model=request.model,
+      )
+
+
+def nine_point_question():
+   parts = [
+      part(part_id, [judged_point(f"{part_id}{number}", f"criterion {part_id}{number}") for number in (1, 2, 3)])
+      for part_id in ("a", "b", "c")
+   ]
+
+   return question(parts)
+
+
+def test_a_part_is_judged_in_one_call_per_sample_carrying_every_open_point():
+   provider = VerdictProvider()
+   judge = model_judge.ModelJudge(provider, {"BC-PT-99010": MODEL_POINT_TYPE})
+   work = answered({"a": "1", "b": "2", "c": "3"})
+
+   grading = grader.grade_question(nine_point_question(), work, LABELS, judge)
+
+   assert len(provider.requests) == 9
+   assert all(decision.earned == 1 and decision.decided_by == grader.MODEL for decision in grading.decisions)
+
+   first_request = provider.requests[0].messages[0].content
+
+   assert first_request.count("A test question.") == 1
+   assert all(f"criterion a{number}" in first_request for number in (1, 2, 3))
+   assert "criterion b1" not in first_request
+
+
+def test_a_point_the_batched_answer_leaves_out_escalates_alone():
+   provider = VerdictProvider(silent={"b2"})
+   judge = model_judge.ModelJudge(provider, {"BC-PT-99010": MODEL_POINT_TYPE})
+   work = answered({"a": "1", "b": "2", "c": "3"})
+
+   decisions = grader.grade_question(nine_point_question(), work, LABELS, judge).by_point()
+
+   assert decisions["b2"].decided_by == grader.ESCALATED
+   assert decisions["b2"].provisional is True
+   assert decisions["b1"].decided_by == grader.MODEL
+   assert decisions["b3"].earned == 1

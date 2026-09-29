@@ -85,6 +85,7 @@ Prices, fetched 2026-09-20, USD per 1M tokens. The batch column is not a separat
 | claude-opus-5, batch | 2.50 | 3.125 | 5.00 | 0.25 | 12.50 | same page, multipliers stacked [verified] |
 | claude-sonnet-5 | 2.00 | 2.50 | 4.00 | 0.20 | 10.00 | same [verified] |
 | claude-sonnet-5, batch | 1.00 | 1.25 | 2.00 | 0.10 | 5.00 | same, stacked [verified] |
+| claude-sonnet-5-5 | 2.00 | 2.50 | 4.00 | 0.20 | 10.00 | the claude-api skill's model table, cached 2026-09-25, input, output and cache read as printed, writes from the standard 1.25x and 2x multipliers [inferred] |
 | claude-haiku-4-5 | 1.00 | 1.25 | 2.00 | 0.10 | 5.00 | same [verified] |
 | gemini-3.8-flash, to 2026-12-31 | 0.75 | n/a | n/a | 0.075 | 3.75 | https://ai.google.dev/gemini-api/docs/pricing [verified] |
 | gemini-3.8-flash, batch, to 2026-12-31 | 0.375 | n/a | n/a | n/a | 1.875 | same [verified] |

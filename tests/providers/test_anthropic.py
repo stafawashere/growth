@@ -307,6 +307,29 @@ def test_thinking_form_selection_is_by_model_family():
    assert transport.calls == []
 
 
+def test_sonnet_5_5_turns_thinking_off_with_between_tools():
+   """Sonnet 5.5 returns 400 on thinking: disabled and takes between_tools instead, which it
+   accepts only at effort high or below (the claude-api skill, Migrating to Claude Sonnet 5.5)."""
+   response = {"content": [{"type": "text", "text": "ok"}], "stop_reason": "end_turn", "usage": {}}
+
+   provider, transport = _provider(response)
+   provider.generate(_request(
+      model="claude-sonnet-5-5",
+      provider_options={"thinking": {"type": "disabled"}, "output_config": {"effort": "low"}},
+   ))
+   assert transport.calls[0]["body"]["thinking"] == {"type": "between_tools"}
+
+   provider, transport = _provider(response)
+
+   with pytest.raises(anthropic.RefusedOption):
+      provider.generate(_request(
+         model="claude-sonnet-5-5",
+         provider_options={"thinking": {"type": "disabled"}, "output_config": {"effort": "xhigh"}},
+      ))
+
+   assert transport.calls == []
+
+
 def test_opus_5_accepts_disabled_thinking_at_the_default_effort():
    """13: output_config.effort defaults to high, and Opus 5 accepts disabled thinking at
    high or below, so leaving effort unset must not be refused."""

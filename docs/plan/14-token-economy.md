@@ -225,7 +225,7 @@ subscription's own limits, argued below.
 
 **Evals do not split.** Golden set 1 already costs $0.00, moved onto the deterministic template
 gate above, so there is nothing paid left on it to move. Golden set 2 grades the same production
-grader prompt on the same production model, `claude-sonnet-5`, that scores a real student's work,
+grader prompt on the same production model, `claude-sonnet-5-5`, that scores a real student's work,
 and golden set 3 reads the same production transcriber prompt on the same model against fixed
 operator transcripts; both are content checks in the sense that no student sees the call, but they
 are checks of the production prompt on the production model, and a Claude Code agent is a

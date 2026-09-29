@@ -253,11 +253,12 @@ def consume_lesson_slot(db, session_row, lesson_id, event):
    that row took: the last consumed slot of the lesson, or None when the session queue holds no
    slot of that lesson (a read the student opened some other way)."""
    is_slot_event = event in SLOT_EVENTS
+   has_session = session_row is not None
 
-   if not is_slot_event:
+   if not is_slot_event or not has_session:
       return None
 
-   queue = json.loads(session_row.queue)
+   queue =json.loads(session_row.queue)
    consumed = consumed_reading_slots(db, session_row)
    of_lesson = [
       (block, position)

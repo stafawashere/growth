@@ -21,8 +21,8 @@ SESSION_ID = "SES-lesson-route"
 STAMP = "2026-09-29T12:00:00+00:00"
 KEY_CHECK = "chk-2"
 MCQ_CHECK = "chk-3"
-KEY_MATHJSON = ["Add", ["Multiply", 5, ["Power", "x", 4]], ["Multiply", -6, ["Power", "x", 2]], -3]
-WRONG_MATHJSON = ["Add", ["Multiply", 5, ["Power", "x", 4]], -3]
+KEY_MATHJSON = ["Add", ["Multiply", 2, "x", ["Sin", "x"]], ["Multiply", ["Add", ["Power", "x", 2], -2], ["Cos", "x"]]]
+WRONG_MATHJSON = ["Multiply", 2, "x", ["Cos", "x"]]
 
 
 @pytest.fixture(scope="module")

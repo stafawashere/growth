@@ -133,6 +133,35 @@ def all_lesson_ids(world):
       return set(db.scalars(select(models.Lesson.id)).all())
 
 
+LATER_DAYS = ("2026-03-02", "2026-03-03", "2026-03-04", "2026-03-05", "2026-03-06", "2026-03-07")
+
+
+def loads_concept(world, entry, concept_id):
+   skills = world.settings.session_context.archetypes[entry["archetype_id"]]["skills"]
+   concepts = {skill["concept"] for skill in build_graph(load_fixture()).skills.values() if skill["id"] in skills}
+
+   return concept_id in concepts
+
+
+def deferred_session_block2(world, client, deferred_id):
+   """Block 2 of the first later session that serves the deferred lesson. A session that does not
+   serve it must hold no item on its concept, since that item would have needed the lesson first."""
+   for day in LATER_DAYS:
+      block2 = client.post("/sessions", json={"today": day}).json()["queue"]["block2"]
+      lesson_ids = [lesson["lesson_id"] for lesson in entries_of(block2, "lesson")]
+      has_deferred = deferred_id in lesson_ids
+
+      if has_deferred:
+         return block2
+
+      concept_id = deferred_id.replace("LSN-CON-", "BC-CON-")
+      unlessoned = [entry for entry in entries_of(block2, "item") if loads_concept(world, entry, concept_id)]
+
+      assert unlessoned == []
+
+   raise AssertionError(f"no session from {LATER_DAYS[0]} to {LATER_DAYS[-1]} served {deferred_id}")
+
+
 def post_event(client, session_id, entry, event, section_id=None, mode=None):
    body = {"event": event, "elapsed_ms": 60000, "band": entry["band"], "reason": entry["reason"]}
 
@@ -209,17 +238,12 @@ def test_a_no_units_student_reads_two_lessons_defers_the_third_and_meets_it_next
       if is_other:
          assert client.post(f"/lessons/{concept_lesson}/events", json={"event": "completed", "elapsed_ms": 1000}).status_code == 200
 
-   later = client.post("/sessions", json={"today": "2026-03-02"}).json()
-   later_block2 = later["queue"]["block2"]
+   # Selection keeps its random ties (R4), so the deferred concept's next item may land in any later
+   # session; the lesson must precede it in whichever session it lands.
+   later_block2 = deferred_session_block2(world, client, deferred_id)
    later_lessons = entries_of(later_block2, "lesson")
    deferred_lesson = next(lesson for lesson in later_lessons if lesson["lesson_id"] == deferred_id)
-   concept_items = [
-      entry
-      for entry in entries_of(later_block2, "item")
-      if deferred_lesson["concept_id"] in {
-         skill["concept"] for skill in build_graph(load_fixture()).skills.values() if skill["id"] in world.settings.session_context.archetypes[entry["archetype_id"]]["skills"]
-      }
-   ]
+   concept_items = [entry for entry in entries_of(later_block2, "item") if loads_concept(world, entry, deferred_lesson["concept_id"])]
 
    assert later_lessons[0]["lesson_id"] == deferred_id
    assert all(lesson["lesson_id"] not in served_ids for lesson in later_lessons)

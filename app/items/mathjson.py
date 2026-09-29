@@ -445,7 +445,9 @@ def _from_structured(expression):
    if isinstance(expression, sympy.Tuple):
       return ["Tuple", *[from_sympy(part) for part in expression.args]]
 
-   if isinstance(expression, sympy.FiniteSet):
+   is_empty_set = expression is sympy.S.EmptySet
+
+   if is_empty_set or isinstance(expression, sympy.FiniteSet):
       return ["Set", *[from_sympy(part) for part in expression.args]]
 
    if isinstance(expression, sympy.Interval):

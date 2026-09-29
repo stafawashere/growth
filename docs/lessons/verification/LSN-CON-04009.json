@@ -105,8 +105,8 @@
    },
    {
     "id": "chk-2",
-    "verdict": "wrong",
-    "evidence": "parameter_draw length_unit inch and size 4 against a stem in feet with a 10 foot ladder and foot at 6; key -15/4 itself verified by SymPy."
+    "verdict": "ok",
+    "evidence": "fixed 2026-09-29: parameter_draw set to size 6, length_unit foot (was size 4, inch) so it matches the 10 foot ladder, foot 6 feet out; template build gives -15/4 feet per minute; not a published draw."
    },
    {
     "id": "chk-3",
@@ -120,11 +120,15 @@
    "ki-1 slider question (which stated numbers still hold one second later) serves the fixed against instantaneous reading well."
   ],
   "counts": {
-   "ok": 14,
+   "ok": 15,
    "unsourced": 0,
-   "wrong": 1,
+   "wrong": 0,
    "over_cap": 0,
    "lint": 0
   }
- }
+ },
+ "fix_notes": [
+  "ex-1 and chk-1 draw size 6 set to 9 (foot 9 meters); chk-3 size 3 set to 4 (foot 4 feet); ratio 1 leg long already gives the 3, 4, 5 ladder with key -8. Template build confirms every key and unit; checker draw_exclusion clean.",
+  "Left as preferences: st-2 rival naming BC-ERR-04020; ki-1 slider comment."
+ ]
 }

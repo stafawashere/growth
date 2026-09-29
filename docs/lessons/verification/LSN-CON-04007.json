@@ -128,8 +128,8 @@
    },
    {
     "id": "chk-3",
-    "verdict": "wrong",
-    "evidence": "Option C derivation says 3xy with x held constant loses the 3x dy/dt term; holding x constant loses 3y dx/dt instead: solve(4+7*d) = -4/7, not -5/2 (-5/2 is the y held constant path)."
+    "verdict": "ok",
+    "evidence": "fixed 2026-09-29: option C recomputed on its BC-ERR-04018 path (3xy with x held constant loses 3y dx/dt): 4 + 7 dy/dt = 0 gives -4/7 (SymPy solve), replacing -5/2; options -10/7, 2, -4/7, -5/7 distinct; prose Checks line updated."
    }
   ],
   "advice": [
@@ -138,11 +138,15 @@
    "The lesson teaches the stem signal, the first written line (named quantities and rates in t) and the rival dy/dx; BC-PT-99023 scoring line is attached. Units habit appears only in ex-1 step 5 and chk-1."
   ],
   "counts": {
-   "ok": 15,
+   "ok": 16,
    "unsourced": 0,
-   "wrong": 1,
+   "wrong": 0,
    "over_cap": 0,
    "lint": 0
   }
- }
+ },
+ "fix_notes": [
+  "chk-3 option C now -4/7 with derivation x held constant (SymPy: solve(4 + 3*d + 4*d) = [-4/7]); the y held constant value -5/2 is no longer served, so C no longer equals the spec's derived frozen_rate.",
+  "Left as preferences: units habit coverage beyond ex-1 step 5 and chk-1; ki-1 slider comment was praise, no change."
+ ]
 }

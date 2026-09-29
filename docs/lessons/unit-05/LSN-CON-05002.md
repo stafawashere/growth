@@ -66,7 +66,7 @@ BC-QA-05010 is `no_calculator` and a single MCQ or short FRQ part, so Section I 
 
 - chk-1, completion of ex-1, both bands: the interval and continuity lines are given, the student writes the conclusion. Key: the ex-1 statement.
 - chk-2, isomorph, both bands. Draw: left_end 1, length 3, jump_offset 2, critical_offset 1, letter h, extreme minimum, situation continuous. Key: yes, a minimum value on [1, 4].
-- chk-3, MCQ, low band. Draw: left_end -2, length 5, jump_offset 4, critical_offset 2, letter g, extreme minimum, situation open. Key: no conclusion, the interval is open. Distractors: yes by the theorem (BC-ERR-05007), yes at x = 0 (BC-ERR-05008), yes because g is continuous (BC-ERR-99008).
+- chk-3, MCQ, low band. Draw: left_end -2, length 5, jump_offset 4, critical_offset 2, letter g, extreme minimum, situation open. Key: no conclusion, the interval is open. Distractors: yes by the theorem (BC-ERR-05007), yes at x = 0 (BC-ERR-05008), yes with minimum value g(0) (BC-ERR-05008, the value form of the same locating error).
 
 Every key is a verdict, so each is a statement key with option labels.
 
@@ -450,9 +450,9 @@ Every key is a verdict, so each is a statement key with option labels.
     {
      "id": "D",
      "is_key": false,
-     "label": "Yes, because g is continuous.",
-     "error_path": "BC-ERR-99008",
-     "derivation": "continuity asserted and the closed interval never checked"
+     "label": "Yes, the minimum value is g(0).",
+     "error_path": "BC-ERR-05008",
+     "derivation": "the theorem read as naming the minimum value at the relative minimum x = 0"
     }
    ],
    "calculator_status": "no_calculator",

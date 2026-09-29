@@ -185,7 +185,7 @@ BC-QA-05011 is `either`, so Section I Part A, 2.14 minutes per question, in the 
    "error_id": "BC-ERR-05053",
    "observed_behavior": "The response differentiates with respect to a variable that the constraint has already eliminated.",
    "scoring_consequence": "The derivative is meaningless for the reduced objective and the critical point is wrong.",
-   "wrong_step": {"text": "\\(\\frac{dV}{dw}=2xw\\), after \\(w\\) was replaced by \\(24-2x\\).", "expr": "2*x*w"},
+   "wrong_step": {"text": "\\(\\frac{dV}{dw}=0\\) once \\(w\\) is replaced by \\(24-2x\\), so every \\(x\\) is critical.", "expr": "0"},
    "right_step": {"text": "\\(\\frac{dV}{dx}=(24-2x)(24-6x)\\).", "expr": "(24 - 2*x)*(24 - 6*x)"},
    "relation": "distinct",
    "possible_reason": {"misconception_id": "BC-MIS-05033", "text": "differentiates expressions in the second variable without the chain rule"},

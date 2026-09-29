@@ -79,9 +79,9 @@
     "evidence": "observed_behavior, scoring_consequence and misconception text found verbatim in the bundle; wrong and right values verified by SymPy."
    },
    {
-    "id": "err-BC-ERR-04027",
-    "verdict": "unsourced",
-    "evidence": "BC-ERR-04027 describes a derivative involving both coordinates evaluated off the point; here f'(x) is explicit, so f'(1.1) = -29/50 (SymPy) is not the recorded behaviour."
+    "id": "err-BC-ERR-99022",
+    "verdict": "ok",
+    "evidence": "fixed 2026-09-29: block replaced by err-BC-ERR-99022 (held via BC-SKL-04028): on ex-1's draw 4 - (x - 1) simplified to 3 - x gives 19/10 against 39/10 (SymPy); record text copied; BC-ERR-04027 left out because its record needs a derivative in both coordinates and BC-QA-04008 supplies explicit f'(x). Delivery, refresher, sources, inferred and prose updated."
    },
    {
     "id": "representations",
@@ -105,8 +105,8 @@
    },
    {
     "id": "chk-3",
-    "verdict": "unsourced",
-    "evidence": "Option D tags BC-ERR-04027 on an explicit f'(x) evaluated at 1.8; the record describes an implicit derivative. Values verified: key 14/5, A 3, C 2/5, D 331/125."
+    "verdict": "ok",
+    "evidence": "fixed 2026-09-29: option D now -4/5 on BC-ERR-99022: 3 + (x - 2) simplified as (3 + 1)(x - 2) at x = 1.8 (SymPy); options 14/5, 3, 2/5, -4/5 distinct."
    }
   ],
   "advice": [
@@ -115,11 +115,16 @@
    "ki-1 motion for closeness near the point of tangency suits a process; the lesson omits the over or under estimate judgement its archetype BC-QA-04008 names (draw judgement off throughout)."
   ],
   "counts": {
-   "ok": 12,
-   "unsourced": 2,
+   "ok": 14,
+   "unsourced": 0,
    "wrong": 0,
    "over_cap": 0,
    "lint": 0
   }
- }
+ },
+ "fix_notes": [
+  "Orientation and ki-1 figures now draw the true f(x) = 2x^3/3 - 3x + 19/3 (SymPy: f(1) = 4, f' = 2x^2 - 3, f''(1) = 4); ki-1 curve point y updated to 4 - h/2 + h^2/2 + h^3/12; orientation window [0.5, 1.5] x [3, 5] holds the curve (values 4.917, 4.083, min 3.884).",
+  "word_count.full 519 to 556, read_minutes.full 3.5 to 3.71 per checker.",
+  "Left as preferences: the over or under estimate judgement of BC-QA-04008 is not taught (judgement off throughout)."
+ ]
 }

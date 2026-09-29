@@ -33,5 +33,94 @@
    }
   ],
   "answers_file": "/tmp/claude-0/-home-user-growth/ac029253-8ff0-5a4b-8b5f-cdcaf5e8ff8d/scratchpad/verify/answers_09.json"
+ },
+ "audit": {
+  "date": "2026-09-29",
+  "auditor": "claude-opus-5-5",
+  "blocks": [
+   {
+    "id": "orientation",
+    "verdict": "ok",
+    "evidence": "26 words; paraphrase of BC-CON-06011 and BC-QA-06013 path."
+   },
+   {
+    "id": "ki-1",
+    "verdict": "ok",
+    "evidence": "30 words; FUN-6.A.2 on ced:123 and the 6.6 Properties paragraph."
+   },
+   {
+    "id": "ki-2",
+    "verdict": "ok",
+    "evidence": "19 words; FUN-6.A.3 and BC-SKL-06033 description_plain ignore the value at a single point."
+   },
+   {
+    "id": "st-1",
+    "verdict": "ok",
+    "evidence": "Matches BC-QA-06013 path and BC-ERR-99012; 25 words."
+   },
+   {
+    "id": "st-2",
+    "verdict": "ok",
+    "evidence": "Matches BC-QA-99010 path and wrong approach; 29 words, cue 17."
+   },
+   {
+    "id": "ex-1",
+    "verdict": "ok",
+    "evidence": "SymPy: 3*(9-4)+2*2-1 = 18, reversed -18."
+   },
+   {
+    "id": "reader-scores:ex-1",
+    "verdict": "ok",
+    "evidence": "BC-PT-99004 line verbatim."
+   },
+   {
+    "id": "err-BC-ERR-06031",
+    "verdict": "ok",
+    "evidence": "Bundle text verbatim; h as -1 on [1,4] gives -12."
+   },
+   {
+    "id": "err-BC-ERR-99012",
+    "verdict": "ok",
+    "evidence": "Bundle text verbatim; sign kept gives 18."
+   },
+   {
+    "id": "err-BC-ERR-99032",
+    "verdict": "wrong",
+    "evidence": "Bundle BC-ERR-99032 describes non-integral statements (function equal to its own integral, summation sign, constant on a definite integral, limits never given) and an expression point; the served wrong step uses the supplied [0,4] value in place of [1,4] in a value question, which that record does not describe."
+   },
+   {
+    "id": "representations",
+    "verdict": "ok",
+    "evidence": "null."
+   },
+   {
+    "id": "chk-1",
+    "verdict": "ok",
+    "evidence": "Reversal: 18 to -18."
+   },
+   {
+    "id": "chk-2",
+    "verdict": "ok",
+    "evidence": "SymPy: 2*8+1+6 = 23."
+   },
+   {
+    "id": "chk-3",
+    "verdict": "wrong",
+    "evidence": "Key 15 and values of A (20), B (-15), D (11) verified by SymPy, but distractor D carries error_path BC-ERR-99032: Bundle BC-ERR-99032 describes non-integral statements (function equal to its own integral, summation sign, constant on a definite integral, limits never given) and an expression point; the served wrong step uses the supplied [0,4] value in place of [1,4] in a value question, which that record does not describe."
+   }
+  ],
+  "advice": [
+   "Replace BC-ERR-99032 with an error whose record describes a wrong interval choice, or drop the block and re-anchor chk-3 D.",
+   "prerequisite_bridges is empty; BC-SKL-06031 is a hard parent of BC-SKL-06033 and could carry a bridge.",
+   "st-2 (BC-QA-99010, calculator improper bound) has no example or check; BC-SKL-06032 (degenerate interval) is stated but not checked.",
+   "The table for ki-1 fits tabulated integral values; the split figure for ki-2 fits the jump."
+  ],
+  "counts": {
+   "ok": 12,
+   "unsourced": 0,
+   "wrong": 2,
+   "over_cap": 0,
+   "lint": 0
+  }
  }
 }

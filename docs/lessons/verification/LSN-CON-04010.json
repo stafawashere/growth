@@ -60,8 +60,8 @@
    },
    {
     "id": "ex-1",
-    "verdict": "wrong",
-    "evidence": "parameter_draw length_unit centimeter and size 7 against problem text in meters with a 5 meter ladder; SymPy key -3 verified."
+    "verdict": "ok",
+    "evidence": "fixed 2026-09-29: parameter_draw set to size 3, length_unit meter (was size 7, centimeter) to match the 5 meter ladder, foot 3 meters out; template build gives -3 meters per minute; not a published draw; prose Solution path line updated."
    },
    {
     "id": "scores-ex-1",
@@ -100,8 +100,8 @@
    },
    {
     "id": "chk-1",
-    "verdict": "wrong",
-    "evidence": "parameter_draw length_unit centimeter while the step reports meters per minute; key -3 verified."
+    "verdict": "ok",
+    "evidence": "fixed 2026-09-29: parameter_draw set to size 3, length_unit meter to match ex-1 and the meters per minute answer."
    },
    {
     "id": "chk-2",
@@ -119,11 +119,15 @@
    "chk-3 stem asks direction and units together, a good scoring habit check."
   ],
   "counts": {
-   "ok": 13,
+   "ok": 15,
    "unsourced": 0,
-   "wrong": 2,
+   "wrong": 0,
    "over_cap": 0,
    "lint": 0
   }
- }
+ },
+ "fix_notes": [
+  "chk-3 draw size 9 set to 8 (foot 8 feet) for the same reading; key dydt = -4 unchanged.",
+  "Left as preferences: ki-1 as text rather than a contrast of -3 meters against -3 meters per minute; chk-3 comment."
+ ]
 }

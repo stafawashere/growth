@@ -73,7 +73,7 @@ BC-QA-04008 has `calculator_status` either, so Section I Part A, 2.14 minutes (r
 
 ## Band plan
 
-- Low (full): orientation, ki-1, st-1, ex-1 with its scoring line, four error blocks, chk-1 to chk-3, the bridge. 519 words, 3.5 minutes (cap 900 and 6).
+- Low (full): orientation, ki-1, st-1, ex-1 with its scoring line, four error blocks, chk-1 to chk-3, the bridge. 556 words, 3.71 minutes (cap 900 and 6).
 - Mid (brief): orientation, ki-1, st-1, ex-1 with its scoring line, err-BC-ERR-04024, err-BC-ERR-99035, chk-1, chk-2, the bridge. 410 words, 2.8 minutes (cap 450 and 3).
 - Refresher: ki-1, err-BC-ERR-04024, err-BC-ERR-99035, err-BC-ERR-04023, err-BC-ERR-99022, ex-1.
 
@@ -727,11 +727,11 @@ BC-QA-04008 has `calculator_status` either, so Section I Part A, 2.14 minutes (r
   "research/exam/exam-structure.md#Section and part layout"
  ],
  "word_count": {
-  "full": 519,
+  "full": 556,
   "brief": 410
  },
  "read_minutes": {
-  "full": 3.5,
+  "full": 3.71,
   "brief": 2.8
  }
 }

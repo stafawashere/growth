@@ -240,10 +240,10 @@ BC-QA-05013 is `either` and an MCQ or one FRQ part, so Section I Part A, 2.14 mi
    "stem": {"text": "\\(g'(x)=-6(x+3)(x-1)\\), so \\(g''(x)=-12x-12\\). Which statement about \\(g\\) is justified?", "command_verb": "identify"},
    "key": {"form": "statement", "expr": "relative_minimum_at_minus_3"},
    "steps": [
-    {"text": "\\(g'(-3)=0\\).", "expr": "-6*(x + 3)*(x - 1)", "relation": "new"},
-    {"text": "Zero at the critical point.", "expr": "0", "relation": "evaluate", "subs": {"x": "-3"}},
-    {"text": "\\(g''(-3)=24>0\\).", "expr": "-12*x - 12", "relation": "new"},
-    {"text": "Positive: relative minimum.", "expr": "24", "relation": "evaluate", "subs": {"x": "-3"}}
+    {"text": "\\(g'(x)=-6(x+3)(x-1)\\).", "expr": "-6*(x + 3)*(x - 1)", "relation": "new"},
+    {"text": "\\(g'(-3)=0\\): a critical point.", "expr": "0", "relation": "evaluate", "subs": {"x": "-3"}},
+    {"text": "\\(g''(x)=-12x-12\\).", "expr": "-12*x - 12", "relation": "new"},
+    {"text": "\\(g''(-3)=24>0\\): relative minimum.", "expr": "24", "relation": "evaluate", "subs": {"x": "-3"}}
    ],
    "options": [
     {"id": "A", "is_key": true, "label": "Relative minimum at \\(x=-3\\), since \\(g'(-3)=0\\) and \\(g''(-3)=24>0\\).", "error_path": null},

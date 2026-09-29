@@ -47,7 +47,7 @@ Four active errors, in the bundle's order: BC-ERR-05046, BC-ERR-05047, BC-ERR-05
 - err-BC-ERR-05046: B and A exchanged. Statement-shaped. Possible reason, words from BC-MIS-05011.
 - err-BC-ERR-05047: concave up where f double prime decreases (everywhere) against where it is positive (x < 1/2). Possible reason, words from BC-MIS-05020.
 - err-BC-ERR-05048: the sign table cut at zeros of f. Statement-shaped. Possible reason, words from BC-MIS-05010.
-- err-BC-ERR-05049: increase claimed on a whole interval from three tabulated values of f prime. Statement-shaped. Possible reason, words from BC-MIS-05026.
+- err-BC-ERR-05049: decrease claimed on a whole interval from three tabulated values of f prime, false between the entries. Statement-shaped. Possible reason, words from BC-MIS-05026.
 
 ## Representations
 
@@ -185,8 +185,8 @@ BC-QA-05009 is `either`, so Section I Part A, 2.14 minutes per question (researc
    "error_id": "BC-ERR-05049",
    "observed_behavior": "The response claims monotonicity or concavity across a whole interval from three tabulated derivative values.",
    "scoring_consequence": "The claim exceeds what the data support and cannot earn a justification point.",
-   "wrong_step": {"text": "\\(f'(0)=2\\), \\(f'(1)=2\\), \\(f'(1.5)=1.25\\), so \\(f\\) increases on \\([0,1.5]\\).", "expr": "increasing_on_whole_interval"},
-   "right_step": {"text": "The table gives \\(f'>0\\) at three inputs only; between them it says nothing.", "expr": "positive_at_listed_inputs_only"},
+   "wrong_step": {"text": "\\(f'(-2)=-4\\), \\(f'(2.5)=-1.75\\), \\(f'(3)=-4\\), so \\(f\\) decreases on \\([-2,3]\\).", "expr": "decreasing_on_whole_interval"},
+   "right_step": {"text": "The table gives \\(f'<0\\) at three inputs only; between them \\(f'>0\\) on \\((-1,2)\\), so \\(f\\) rises there.", "expr": "negative_at_listed_inputs_only"},
    "relation": "distinct",
    "possible_reason": {"misconception_id": "BC-MIS-05026", "text": "treats a finite table of derivative values as a full description of the function"},
    "sources": ["BC-ERR-05049", "BC-MIS-05026"]

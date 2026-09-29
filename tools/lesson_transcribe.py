@@ -8,6 +8,11 @@ delivery entries become each block's delivery object; word_count is app.lessons.
 which is what the app serves (worker D decision 10), and read_minutes is the design's value or the
 words at constants.WORDS_PER_MINUTE, whichever is larger.
 
+The framework fields of 2026-09-29 are carried as well: the prediction becomes the first section,
+the first strategy block keeps its contrast pair, the second worked example its fade_from, every
+error block its fix_prompt (a concept lesson's error block without one is refused), and a lesson
+with no drawn block its no_figure_reason.
+
 A design field the record cannot express stops the transcription with the field named.
 
 Usage: python3 tools/lesson_transcribe.py <design.md> [<out.json>]
@@ -30,12 +35,19 @@ from tools.check_lesson_designs import Design, parse_expression
 DATA_ROOT = ROOT / "data"
 CONTENT_LESSONS = ROOT / "content" / "lessons"
 AUTHOR = "tools/lesson_transcribe.py"
-PROMPT_VERSION = "generator/lesson_v1"
+PROMPT_VERSION = "generator/lesson_v2"
 BOTH_BANDS = ["low", "mid"]
 RELATION_FIELDS = ("relation", "subs", "approx", "variable", "point", "dir")
 STEMS_FALLBACK = "the stems listed one under the other, the selecting feature named under each"
 STEMS_KEYBOARD = "Tab moves between the stems"
 DEFAULT_REPRESENTATION = "BC-REP-01"
+PREDICTION_FIELDS = {"id", "stem", "format", "options", "key", "resolution", "sources"}
+PREDICTION_STEM_FIELDS = {"text", "command_verb"}
+PREDICTION_OPTION_FIELDS = {"id", "label", "is_key", "expr"}
+CONTRAST_FIELDS = {"this", "not_this", "feature"}
+CONTRAST_THIS_FIELDS = {"text", "archetype_id"}
+CONTRAST_NOT_THIS_FIELDS = {"text", "why_not"}
+DEFAULT_PREDICTION_DELIVERY = {"mode": "text", "reason": "rule 6"}
 
 
 class TranscriptionError(Exception):
@@ -79,13 +91,24 @@ def answer_of(answer, field):
    return record
 
 
+def refuse_unknown_fields(node, allowed, field):
+   if not isinstance(node, dict):
+      raise TranscriptionError(f"{field} is not an object")
+
+   unknown = sorted(set(node) - allowed)
+
+   if unknown:
+      raise TranscriptionError(f"{field}.{unknown[0]} is a field the record cannot express")
+
+
 def relation_fields(step):
    return {key: step[key] for key in RELATION_FIELDS if key in step}
 
 
 class Transcriber:
-   def __init__(self, design, snapshot):
+   def __init__(self, design, snapshot, recorded_as=None):
       self.design = design
+      self.recorded_as = recorded_as
       self.record = design.record
       self.snapshot = snapshot
       self.lesson_id = self.record["id"]
@@ -145,6 +168,80 @@ class Transcriber:
       record = self.snapshot.ids.get(identifier) or {}
 
       return record.get("evidence_tag") or default
+
+   def prediction_delivery(self, label):
+      entry = self.delivery.get(label) or self.delivery.get("prediction")
+
+      if entry is None:
+         return dict(DEFAULT_PREDICTION_DELIVERY)
+
+      return {key: value for key, value in entry.items() if key != "block"}
+
+   def prediction_option(self, option, label):
+      refuse_unknown_fields(option, PREDICTION_OPTION_FIELDS, label)
+      record = {"id": option["id"], "label": option["label"], "is_key": option["is_key"]}
+      expression = option.get("expr")
+
+      if expression is not None:
+         record["value"] = mathjson_of(expression, f"{label}.expr")
+
+      return record
+
+   def prediction(self):
+      block = self.record.get("prediction")
+
+      if block is None:
+         return []
+
+      refuse_unknown_fields(block, PREDICTION_FIELDS, "prediction")
+      label = block.get("id") or "prediction"
+      refuse_unknown_fields(block["stem"], PREDICTION_STEM_FIELDS, f"{label}.stem")
+      is_short_answer = block["format"] == "short_answer"
+      has_key = "key" in block
+      has_options = "options" in block
+
+      if has_key and not is_short_answer:
+         raise TranscriptionError(f"{label}.key belongs to a short_answer prediction, and this one is {block['format']}")
+
+      if has_options and is_short_answer:
+         raise TranscriptionError(f"{label}.options belong to an mcq prediction, and this one is short_answer")
+
+      section = {
+         "id": self.next_id(),
+         "type": plan.PREDICTION,
+         "bands": list(BOTH_BANDS),
+         "skills": list(self.skills),
+         "sources": list(block.get("sources") or [self.record["target_id"]]),
+         "evidence_tag": "inferred",
+         "stem": dict(block["stem"]),
+         "format": block["format"],
+      }
+
+      if has_options:
+         section["options"] = [
+            self.prediction_option(option, f"{label}.options[{index}]")
+            for index, option in enumerate(block["options"])
+         ]
+
+      if is_short_answer:
+         section["answer_key"] = answer_of(block["key"], f"{label}.key")
+
+      section["resolution"] = {"text": block["resolution"]}
+      section["delivery"] = self.prediction_delivery(label)
+      self.ids[label] = section["id"]
+
+      return [section]
+
+   def contrast_of(self, contrast, label):
+      refuse_unknown_fields(contrast, CONTRAST_FIELDS, label)
+      refuse_unknown_fields(contrast["this"], CONTRAST_THIS_FIELDS, f"{label}.this")
+      refuse_unknown_fields(contrast["not_this"], CONTRAST_NOT_THIS_FIELDS, f"{label}.not_this")
+
+      return {
+         "this": {"text": contrast["this"]["text"], "archetype_id": contrast["this"]["archetype_id"]},
+         "not_this": {"text": contrast["not_this"]["text"], "why_not": contrast["not_this"]["why_not"]},
+         "feature": contrast["feature"],
+      }
 
    def orientation(self):
       block = self.record.get("orientation")
@@ -212,6 +309,9 @@ class Transcriber:
          for key in ("cue", "method", "rival", "separating_feature"):
             section[key] = block[key]
 
+         if "contrast" in block:
+            section["contrast"] = self.contrast_of(block["contrast"], f"{block['id']}.contrast")
+
          self.ids[block["id"]] = section["id"]
          sections.append(section)
 
@@ -251,12 +351,41 @@ class Transcriber:
             "calculator_status": example["calculator_status"],
             "steps": steps,
             "answer": answer_of(example["answer"], f"{label}.answer"),
-            "delivery": self.delivery_of(label),
          }
+
+         if "fade_from" in example:
+            section["fade_from"] = self.fade_from_of(example["fade_from"], label)
+
+         section["delivery"] = self.delivery_of(label)
          self.ids[label] = section["id"]
          sections.append((example, section))
 
       return sections
+
+   def fade_from_of(self, value, label):
+      is_step_index = isinstance(value, int) and not isinstance(value, bool)
+
+      if not is_step_index:
+         raise TranscriptionError(f"{label}.fade_from: {value!r} is not a step number")
+
+      return value
+
+   def fix_prompt_of(self, block, label):
+      has_fix_prompt = "fix_prompt" in block
+      is_concept = self.kind == "concept"
+
+      if not has_fix_prompt and is_concept:
+         raise TranscriptionError(f"{label}.fix_prompt is missing, and every error block of a concept lesson carries one")
+
+      if not has_fix_prompt:
+         return None
+
+      value = block["fix_prompt"]
+
+      if not isinstance(value, bool):
+         raise TranscriptionError(f"{label}.fix_prompt: {value!r} is not true or false")
+
+      return value
 
    def reader_scores(self, examples):
       listed = {entry.get("example_id"): entry for entry in self.record.get("what_a_reader_scores") or []}
@@ -317,6 +446,11 @@ class Transcriber:
             },
             "relation": block["relation"],
          }
+         fix_prompt = self.fix_prompt_of(block, label)
+
+         if fix_prompt is not None:
+            section["fix_prompt"] = fix_prompt
+
          reason = block.get("possible_reason")
 
          if reason:
@@ -517,6 +651,9 @@ class Transcriber:
       return hashlib.sha256(json.dumps(digests).encode()).hexdigest()
 
    def design_path(self):
+      if self.recorded_as is not None:
+         return self.recorded_as
+
       path = self.design.path.resolve()
 
       try:
@@ -525,7 +662,7 @@ class Transcriber:
          return str(self.design.path)
 
    def transcribe(self):
-      sections = self.orientation() + self.key_ideas() + self.strategies()
+      sections = self.prediction() + self.orientation() + self.key_ideas() + self.strategies()
       examples = self.worked_examples()
       sections += [section for _, section in examples]
       sections += self.reader_scores(examples)
@@ -548,6 +685,9 @@ class Transcriber:
          "checks": checks,
          "refresher": self.refresher(),
       }
+
+      if "no_figure_reason" in self.record:
+         lesson["no_figure_reason"] = self.record["no_figure_reason"]
 
       if decision is not None:
          lesson["decision"] = decision
@@ -577,7 +717,9 @@ class Transcriber:
          lesson["read_minutes"][form] = authored if has_authored else floor
 
 
-def transcribe(design_path, snapshot=None):
+def transcribe(design_path, snapshot=None, recorded_as=None):
+   """recorded_as is the docs/lessons path the provenance names when the design read is a copy
+   kept elsewhere, such as a test fixture standing in for a library design."""
    path = Path(design_path)
    design = Design(path, path.read_text())
 
@@ -587,7 +729,7 @@ def transcribe(design_path, snapshot=None):
    if snapshot is None:
       snapshot = load_snapshot(DATA_ROOT)
 
-   return Transcriber(design, snapshot).transcribe()
+   return Transcriber(design, snapshot, recorded_as).transcribe()
 
 
 def render(lesson):

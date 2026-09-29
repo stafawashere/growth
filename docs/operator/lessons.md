@@ -2,7 +2,7 @@
 title: Lesson records, ingest and sign-off
 research_date: 2026-09-29
 status: in_progress
-purpose: How a lesson record under content/lessons/ reaches the lessons table, what stale means, the sign-off evidence file, and the six lesson endpoints.
+purpose: How a lesson record under content/lessons/ reaches the lessons table, what stale means, the sign-off evidence file, and the seven lesson endpoints.
 ---
 
 # Lesson records, ingest and sign-off
@@ -31,6 +31,33 @@ named, and the record is not written. Then run the checker on the file or the di
 ```
 PYTHONPATH=. .venv/bin/python tools/check_lessons.py content/lessons/<id>.json
 ```
+
+### The v2 fields and the pooled driver
+
+Since 2026-09-29 the provenance names `generator/lesson_v2`, and the transcriber also carries:
+
+- the design's `prediction` as the first section (`#s1`, both bands, the lesson's skills, tag
+  `inferred`), with its stem, format, options (an option's `expr` becomes its MathJSON `value`), a
+  short answer's `key` as `answer_key`, the resolution as `{"text": ...}`, and the delivery entry
+  named by the prediction's id, else `text` with reason `rule 6`;
+- `contrast` on the strategy block that has it, texts verbatim;
+- `fade_from` on the worked example that has it;
+- `fix_prompt` on every error block, refusing a concept design whose error block lacks it;
+- `no_figure_reason` at the top level when the design states it.
+
+A prediction or contrast field outside that shape is refused with the field named.
+`tools/lesson_resolve_compare.py` compares all of these as well.
+
+To transcribe many designs, the pooled driver loads the snapshot once per worker:
+
+```
+PYTHONPATH=. .venv/bin/python tools/lesson_transcribe_all.py [--workers 8] [--out-dir DIR] docs/lessons/unit-02 docs/lessons/decisions/LSN-DEC-06-01.md
+```
+
+A directory stands for every `LSN-*.md` directly inside it. It prints `wrote <path>` or
+`refused <design>: <reason>` per design, then `designs: N, wrote: W, refused: R`, and exits 1 when
+any design was refused. It must be run as a script file, since a pool started from a script read
+on standard input cannot spawn its workers on macOS.
 
 ## How a record is ingested
 
@@ -97,9 +124,9 @@ the next ingest stores it and writes `lesson_signed_off` once.
 A changed stem or key makes the comparison fail, which means the blind session runs again on the
 design before the record can be signed off.
 
-## The six endpoints
+## The seven endpoints
 
-All six sit behind the signed-in session, like every other route, and answer 404 for a lesson that
+All seven sit behind the signed-in session, like every other route, and answer 404 for a lesson that
 is unknown or has no `signed_off` version.
 
 | Endpoint | What it does |
@@ -110,6 +137,7 @@ is unknown or has no `signed_off` version.
 | `POST /lessons/{lesson_id}/events` | a library read; `completed` marks the lesson read from the library |
 | `POST /sessions/{session_id}/lessons/{lesson_id}/events` | a lesson or refresher inside a session; `opened` marks it served, `completed` read and `skipped` skipped; a refresher reason `T1` to `T5` counts a refresher instead |
 | `POST /lessons/{lesson_id}/checks/{check_id}/answers` | grades a check answer through `app/items/grade.py`, names the error block a wrong option came from, and writes `lesson_check_responses` only |
+| `POST /lessons/{lesson_id}/prompts/{section_id}/answers` | body `{"answer", "option_id", "elapsed_ms"}`; `section_id` is the full section id or its `#` suffix. Grades a prediction (an mcq by `option_id` against `is_key`, a short answer against `answer_key`), an error block's fix (`fix_prompt` true, against `right_step.expression` as a symbolic key) or a faded example's answer (against its `answer`); any other section answers 404. Writes `lesson_check_responses` only and returns `{"correct", "section_id", "kind"}` with `kind` `prediction`, `fix` or `fade`, and `resolution` for a prediction (else null) |
 
 A check answer never reaches `attempts`, the engine or the diagnostician, and no lesson event
 changes any `skills_state` field.

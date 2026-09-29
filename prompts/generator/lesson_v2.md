@@ -1,10 +1,9 @@
 ---
 title: Author one lesson for one concept
-version: v1
+version: v2
 role: generator
 model: offline Claude Code session, claude-opus-5-5
-status: superseded by v2 on 2026-09-29
-purpose: The instruction an offline Claude Code session follows to author one concept lesson from the authoring bundle, which tools/check_lessons.py then verifies and a blind re-solve and a blind sign-off review then confirm.
+purpose: The v1 instruction for authoring one concept lesson, extended with the 2026-09-29 framework additions (prediction, contrast pair, faded second example, fix prompts, figure presence) and the decimal and served-text rules, which tools/check_lessons.py then verifies.
 ---
 
 # Author one lesson for one concept
@@ -36,9 +35,12 @@ memory. A mathematical claim in a worked example is computed with SymPy before y
 - `id`, `version` 1, `kind` `concept`, `target_id`, `status` `draft`, `snapshot_digest` from the
   snapshot you loaded, `source_digest` from the bundle, `refresher` (the ids of the core key ideas,
   every error block and worked example 1), and `provenance` with `author` set to your model id,
-  `prompt_version` `generator/lesson_v1`, `signed_off_by` and `signed_off_at` null and `not_human`
+  `prompt_version` `generator/lesson_v2`, `signed_off_by` and `signed_off_at` null and `not_human`
   true.
-- `sections`, in this fixed order: one `orientation` (at most 60 words, what a response must
+- `no_figure_reason`, at most 40 words, only when no block is delivered in a drawn mode (figure,
+  table, motion, interactive, model); it says why no figure fits. A lesson with a drawn block
+  carries none.
+- `sections`, in this fixed order: one `prediction` (below); one `orientation` (at most 60 words, what a response must
   show, built from `description_plain` and the topic's Assessment behaviour paragraph); one
   `key_ideas` block per BC-EK the concept's skills map (at most 120 words, `depth` `core` or
   `extended`, at most 2 core, paraphrasing the topic's Required mathematical knowledge paragraph
@@ -56,6 +58,23 @@ memory. A mathematical claim in a worked example is computed with SymPy before y
   figure is never below the words at 150 per minute and never above 6 and 3.
 
 ## Section rules
+
+- The `prediction` comes first and serves both bands. It is posed on worked example 1's own
+  numbers and asks for the concept's core claim before any rule is stated. Its stem is at most 40
+  words with `command_verb` `predict`; its format is `mcq` with 2 to 4 options of at most 12 words,
+  distinct labels and exactly one `is_key`, or `short_answer` with an `answer_key` whose numeric
+  or symbolic value equals worked example 1's answer or one of its valued steps (a statement key
+  is text only). Its `resolution` is at most 40 words and carries no verdict word: it says what
+  the rule gives, never that the student was right or wrong. Tag it `inferred`.
+- The first `strategy` block carries a `contrast`: `this`, a stem of at most 30 words that is this
+  concept, with the block's own `archetype_id`; `not_this`, a near miss of at most 30 words that is
+  not, with a `why_not` of at most 20 words; and a `feature` of at most 20 words naming what
+  separates them. The two stems differ. No other strategy block carries one.
+- The second worked example serves the low band only and is faded: its `fade_from` is the 1-based
+  step the student produces first, at least 2 and at most the step count, with at least one valued
+  step before it. A lesson with one example has no `fade_from`.
+- Every `common_error` block carries `fix_prompt`: `true` when its `relation` is `distinct`, so the
+  student writes the right step before it is shown, and `false` when `equivalent`.
 
 - Every section names its `skills`, `sources` (each one present in the bundle) and an
   `evidence_tag`. Use `inferred` where you built the sentence from records tagged inferred.
@@ -78,10 +97,27 @@ memory. A mathematical claim in a worked example is computed with SymPy before y
   `description`. The error is never said to be what the student believes.
 - One `quote` at most per section, at most 25 words, found on the cited CED page. Quotation
   marks never appear inside prose.
+- Decimals: a value the text writes as a decimal is written as a decimal expression (`0.25`,
+  never `1/4`), and a fraction the text writes as a fraction stays a fraction.
+- Served text: nothing a student reads carries a library id (`BC-...`), a page citation (`ced:`,
+  `sg-YY:`, `cr-YY:`, `crabbc-YY:`) or an evidence tag. That covers the orientation, key idea text
+  and notation, every strategy field and contrast text, the prediction stem, option labels and
+  resolution, the representations and bridge text, problem texts, step cues and whys and check
+  stems. Ids and pages belong in `sources` and in a quote's `source`. A strategy `method` never
+  begins with a label such as `First line:`, because the reader supplies its own.
 - Calculator boundary: a `no_calculator` example or check has an exact answer and no decimal
   anywhere on its path. A `calculator` one states its answer to three decimals.
 - Draws: no example or check draw equals the `parameter_draw` of a published item on the same
   archetype. Inline mathematics sits between `\(` and `\)`.
+
+## Served order
+
+Low band: prediction, orientation, bridges (by state), key ideas (core then extended), strategy
+blocks with the contrast on the first, example 1 and its scoring lines, check 1, error blocks (at
+most 4), example 2 (faded) and its scoring lines, check 2, representations, check 3. Mid band:
+prediction, orientation, bridges, core key ideas, the first strategy block, example 1 and its
+scoring lines, check 1, the first 2 error blocks, check 2. The word fit keeps the prediction,
+example 1, its scoring lines and check 1. Refreshers carry no prediction and no check.
 
 ## Rules the checker cannot enforce
 

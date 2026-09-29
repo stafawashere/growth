@@ -2,10 +2,12 @@
 audit carry over to the record (docs/lessons/BUILD-PLAN.md, The design to record path, steps 3
 and 4).
 
-Compared, in order: the orientation text; every key idea's text; every strategy block's cue,
-method, rival and separating feature; every worked example's problem text, each step's cue and
-why, and its answer key; every error block's observed behaviour, scoring consequence, wrong and
-right step text and possible reason, matched by error id; every prerequisite bridge's text,
+Compared, in order: the prediction's stem, each option's id, label and key flag, its key and its
+resolution; the orientation text; every key idea's text; every strategy block's cue, method, rival
+and separating feature and its contrast texts (this, not this, why not, feature); every worked
+example's problem text, each step's cue and why, its answer key and its fade_from; every error
+block's observed behaviour, scoring consequence, wrong and right step text, possible reason and
+fix_prompt, matched by error id; every prerequisite bridge's text,
 matched by prerequisite id; the representations text; every check's stem and key; a decision
 lesson's stems. Text is equal after whitespace normalisation. A key is equal when
 app.items.verify.equivalence finds the record's MathJSON (app/items/mathjson.to_sympy) equivalent
@@ -41,6 +43,7 @@ EQUAL = "equal"
 DIFFERS = "DIFFERS"
 STRATEGY_FIELDS = ("cue", "method", "rival", "separating_feature")
 ERROR_FIELDS = ("observed_behavior", "scoring_consequence")
+CONTRAST_TEXTS = (("this", ("this", "text")), ("not_this", ("not_this", "text")), ("why_not", ("not_this", "why_not")), ("feature", ("feature",)))
 
 
 def normalised(text):
@@ -99,6 +102,22 @@ def key_row(field, record_key, design_key):
    return (field, is_equal, "" if is_equal else f"record {record_expression} against design {design_expression} ({outcome})")
 
 
+def value_row(field, record_value, design_value):
+   is_equal = record_value == design_value
+
+   return (field, is_equal, "" if is_equal else f"record {record_value!r} against design {design_value!r}")
+
+
+def text_at(node, path):
+   for key in path:
+      if not isinstance(node, dict):
+         return None
+
+      node = node.get(key)
+
+   return node
+
+
 def pairs(record_list, design_list):
    longest = max(len(record_list), len(design_list))
 
@@ -107,6 +126,34 @@ def pairs(record_list, design_list):
       design_entry = design_list[index] if index < len(design_list) else None
 
       yield index + 1, record_entry or {}, design_entry or {}
+
+
+def prediction_rows(record, design):
+   predictions = sections_of(record, "prediction")
+   record_prediction = predictions[0] if predictions else None
+   design_prediction = design.get("prediction")
+   has_either = record_prediction is not None or design_prediction is not None
+
+   if not has_either:
+      return []
+
+   record_prediction = record_prediction or {}
+   design_prediction = design_prediction or {}
+   rows = [text_row("prediction stem", text_at(record_prediction, ("stem", "text")), text_at(design_prediction, ("stem", "text")))]
+
+   for index, record_option, design_option in pairs(record_prediction.get("options") or [], design_prediction.get("options") or []):
+      record_marks = (record_option.get("id"), normalised(record_option.get("label")), bool(record_option.get("is_key")))
+      design_marks = (design_option.get("id"), normalised(design_option.get("label")), bool(design_option.get("is_key")))
+      rows.append(value_row(f"prediction option {index}", record_marks, design_marks))
+
+   has_key = "answer_key" in record_prediction or "key" in design_prediction
+
+   if has_key:
+      rows.append(key_row("prediction key", record_prediction.get("answer_key"), design_prediction.get("key")))
+
+   rows.append(text_row("prediction resolution", text_of(record_prediction.get("resolution")), text_of(design_prediction.get("resolution"))))
+
+   return rows
 
 
 def orientation_rows(record, design):
@@ -134,6 +181,16 @@ def strategy_rows(record, design):
       for name in STRATEGY_FIELDS:
          rows.append(text_row(f"strategy {index} {name}", record_entry.get(name), design_entry.get(name)))
 
+      has_contrast = "contrast" in record_entry or "contrast" in design_entry
+
+      if not has_contrast:
+         continue
+
+      for name, path in CONTRAST_TEXTS:
+         record_text = text_at(record_entry.get("contrast"), path)
+         design_text = text_at(design_entry.get("contrast"), path)
+         rows.append(text_row(f"strategy {index} contrast {name}", record_text, design_text))
+
    return rows
 
 
@@ -149,6 +206,10 @@ def example_rows(record, design):
          rows.append(text_row(f"{label} step {step_index} why", record_step.get("why"), design_step.get("why")))
 
       rows.append(key_row(f"{label} key", record_entry.get("answer"), design_entry.get("answer")))
+      has_fade = "fade_from" in record_entry or "fade_from" in design_entry
+
+      if has_fade:
+         rows.append(value_row(f"{label} fade_from", record_entry.get("fade_from"), design_entry.get("fade_from")))
 
    return rows
 
@@ -173,6 +234,11 @@ def error_rows(record, design):
 
       if has_reason:
          rows.append(text_row(f"{label} possible_reason", text_of(record_block.get("possible_reason")), text_of(design_block.get("possible_reason"))))
+
+      has_fix_prompt = "fix_prompt" in record_block or "fix_prompt" in design_block
+
+      if has_fix_prompt:
+         rows.append(value_row(f"{label} fix_prompt", record_block.get("fix_prompt"), design_block.get("fix_prompt")))
 
    return rows
 
@@ -278,7 +344,7 @@ def compare(record, design_record):
    """(field, equal, detail) rows for every compared field, in the order the module names."""
    rows = []
 
-   for builder in (orientation_rows, key_idea_rows, strategy_rows, example_rows, error_rows, bridge_rows, representation_rows, check_rows, decision_rows):
+   for builder in (prediction_rows, orientation_rows, key_idea_rows, strategy_rows, example_rows, error_rows, bridge_rows, representation_rows, check_rows, decision_rows):
       rows.extend(builder(record, design_record))
 
    return rows

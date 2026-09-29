@@ -94,11 +94,16 @@ def load_keys(content_root):
    return records
 
 
-def unit_of(archetype_id):
-   """Minted archetype ids open their number with the two-digit unit block, BC-QA-03005 in unit 3."""
-   number = archetype_id.rsplit("-", 1)[-1]
+def waiting_unit_number(api, session_id):
+   """The unit the diagnostic run filed the waiting item under, which is the unit the skip route
+   records, read from the run in the session queue: BC-UNIT-03 is unit 3."""
+   run = api.get(f"/sessions/{session_id}")["queue"]["diagnostic"]
+   waiting = [entry for entry in run["asked"] if entry.get("outcome") is None]
 
-   return int(number[:2])
+   if not waiting:
+      raise SeedFailure(f"diagnostic {session_id} serves an item but has no asked entry waiting")
+
+   return int(waiting[0]["unit"].rsplit("-", 1)[-1])
 
 
 def key_option_id(record):
@@ -168,7 +173,7 @@ def run_diagnostic(api, keys, day, rng, accuracy, skipped_units):
 
    while served["item"] is not None:
       item = served["item"]
-      is_in_skipped_unit = unit_of(item["archetype_id"]) in skipped_units
+      is_in_skipped_unit = waiting_unit_number(api, session_id) in skipped_units
 
       if is_in_skipped_unit:
          skipped += 1

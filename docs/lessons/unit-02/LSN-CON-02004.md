@@ -11,7 +11,7 @@ Concept BC-CON-02004 (skills BC-SKL-02010, BC-SKL-02011), topic 2.2 of Unit 2, l
 
 ## Orientation
 
-Served text (48 words), from BC-CON-02004 `description_plain` and the topic's Assessment behaviour paragraph (research/units/unit-02-differentiation-definition-properties.md#2.2 Defining the Derivative of a Function and Using Derivative Notation): conceptual variants ask what the notation denotes, so a response reads each form as naming a function, the variable of differentiation and, where shown, the input. No count, no frequency.
+Served text (43 words), from BC-CON-02004 `description_plain` and the topic's Assessment behaviour paragraph (research/units/unit-02-differentiation-definition-properties.md#2.2 Defining the Derivative of a Function and Using Derivative Notation): conceptual variants ask what the notation denotes, so a response reads each form as naming a function, the variable of differentiation and, where shown, the input. No count, no frequency.
 
 ## Key ideas
 
@@ -83,8 +83,8 @@ No draw equals a published BC-QA-02012 `parameter_draw` (content/items_gen_unit0
 
 ## Band plan
 
-- Low (full): orientation, ki-1, ki-2, st-1, ex-1, the four error blocks, chk-1, chk-2, chk-3, the bridge. 663 words, 4.5 minutes (cap 900 and 6).
-- Mid (brief): orientation, ki-1, st-1, ex-1, err-02030, err-04017, chk-1, chk-2, the bridge. 410 words, 2.8 minutes (cap 450 and 3).
+- Low (full): orientation, ki-1, ki-2, st-1, ex-1, the four error blocks, chk-1, chk-2, chk-3, the bridge. 614 words, 4.1 minutes (cap 900 and 6).
+- Mid (brief): orientation, ki-1, st-1, ex-1, err-02030, err-04017, chk-1, chk-2, the bridge. 398 words, 2.7 minutes (cap 450 and 3).
 - Refresher: ki-1, err-BC-ERR-02030, err-BC-ERR-04017, err-BC-ERR-02029, err-BC-ERR-03022, ex-1.
 
 ## Sources
@@ -283,8 +283,8 @@ No draw equals a published BC-QA-02012 `parameter_draw` (content/items_gen_unit0
   {"block": "err-BC-ERR-03022", "mode": "step_reveal", "reason": "rule 1", "sources": []}
  ],
  "refresher": ["ki-1", "err-BC-ERR-02030", "err-BC-ERR-04017", "err-BC-ERR-02029", "err-BC-ERR-03022", "ex-1"],
- "read_minutes": {"full": 4.5, "brief": 2.8},
- "word_count": {"full": 663, "brief": 410},
+ "read_minutes": {"full": 4.1, "brief": 2.7},
+ "word_count": {"full": 614, "brief": 398},
  "research_lines": [
   {"file": "research/scoring/notation-requirements.md", "line": "Loose derivative notation is generally accepted when the intent is clear."},
   {"file": "research/units/unit-02-differentiation-definition-properties.md", "line": "Conceptual variants ask what the notation denotes"}

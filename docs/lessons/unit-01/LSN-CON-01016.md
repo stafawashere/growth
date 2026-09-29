@@ -36,9 +36,9 @@ Two strategy blocks, low band both, mid band the first. Both archetypes have emp
 
 ## Solution path
 
-- ex-1, BC-QA-01009, both bands, no calculator. Draw: coefficient 2, cancelled_root 1, pole \(-2\), zero 3, form factored, giving \(f(x)=\frac{2(x-1)(x-3)}{(x-1)(x+2)}\). Constraints hold (\(1\ne-2\), \(3\ne-2\), \(3\ne1\)). Steps follow `expected_solution_path`: factored form read (no value), the expression (valued, new), the simplified form (valued, equivalent), the surviving zero (valued, new then solve), the right-hand behaviour (valued), the left-hand behaviour (valued). A fluent solver writes the simplified form, the location and the two one sided statements, and holds the sign arithmetic in the head.
+- ex-1, BC-QA-01009, both bands, no calculator. Draw: coefficient 2, cancelled_root 1, pole \(-2\), zero 3, form factored, giving \(f(x)=\frac{2(x-1)(x-3)}{(x-1)(x+2)}\). Constraints hold (\(1\ne-2\), \(3\ne-2\), \(3\ne1\)). Steps follow `expected_solution_path`: factored form read (no value), the expression (valued, new), the simplified form (valued, equivalent), the surviving zero (no value), the right-hand limit (valued, limit from the right), the left-hand limit (valued, new then limit from the left). A fluent solver writes the simplified form, the location and the two one sided statements, and holds the sign arithmetic in the head.
 
-The two infinite values are recorded with relation `new`, not `limit`, because the checker's `equivalent` returns false for \(\infty\) against \(\infty\) (a checker gap listed under Sources); the answer is a statement for the same reason.
+Each infinite value carries relation `limit` with its side (`dir`), so the checker recomputes it. The answer and the check keys are statements, because the response is a location with two one sided limits, not one value.
 
 ## Scoring
 
@@ -66,7 +66,7 @@ Both archetypes are `no_calculator` and "Typically a single multiple choice item
 
 ## Checks
 
-- chk-1, completion of ex-1, both bands: the right-hand limit \(-\infty\) is given, the student states the left-hand limit. Key: \(\lim_{x\to-2^-}f(x)=\infty\). Statement key, for the checker gap above.
+- chk-1, completion of ex-1, both bands: the right-hand limit \(-\infty\) is given, the student states the left-hand limit. Key: \(\lim_{x\to-2^-}f(x)=\infty\), as a statement.
 - chk-2, isomorph on BC-QA-01009, both bands: coefficient \(-1\), cancelled_root \(-3\), pole 2, zero 0, \(g(x)=\frac{-x(x+3)}{(x+3)(x-2)}\). Key: asymptote \(x=2\) only, \(\lim_{x\to2^+}g(x)=-\infty\).
 - chk-3, MCQ on BC-QA-01009, low band: coefficient 3, cancelled_root 2, pole \(-1\), zero 4, \(h(x)=\frac{3(x-2)(x-4)}{(x-2)(x+1)}\). Statement key: asymptote at \(x=-1\) only, \(+\infty\) from the left and \(-\infty\) from the right. Distractors: asymptotes at \(-1\) and 2 (BC-ERR-01018); \(\lim_{x\to-1}h(x)=-\infty\) (BC-ERR-01019); "the limit at \(-1\) exists and equals \(\infty\)" (BC-ERR-01020).
 
@@ -83,8 +83,8 @@ Every non-text choice is [inferred], settled by the modality A/B in the build pl
 
 ## Band plan
 
-- Low (full): orientation, ki-1, ki-2, st-1, st-2, ex-1, the three error blocks, chk-1, chk-2, chk-3, the two bridges. 534 words, 3.6 minutes (cap 900 and 6).
-- Mid (brief): orientation, ki-1, ki-2, st-1, ex-1, err-01018, err-01019, chk-1, chk-2, the two bridges. 409 words, 2.8 minutes (cap 450 and 3).
+- Low (full): orientation, ki-1, ki-2, st-1, st-2, ex-1, the three error blocks, chk-1, chk-2, chk-3, the two bridges. 542 words, 3.7 minutes (cap 900 and 6).
+- Mid (brief): orientation, ki-1, ki-2, st-1, ex-1, err-01018, err-01019, chk-1, chk-2, the two bridges. 417 words, 2.8 minutes (cap 450 and 3).
 - Refresher: ki-1, ki-2, err-BC-ERR-01018, err-BC-ERR-01019, err-BC-ERR-01020, ex-1.
 
 ## Sources
@@ -98,7 +98,6 @@ Every non-text choice is [inferred], settled by the modality A/B in the build pl
 - research/question-analysis/question-archetypes.md#BC-QA-01007 Discontinuity classified from a rule or a graph
 - research/exam/exam-structure.md#Section and part layout
 - [inferred] Strategy cues rest on `typical_wording` and `asked_to_produce`, because `common_givens` is empty on BC-QA-01009 and BC-QA-01007. Settled by a library pass filling `common_givens`.
-- [inferred] Infinite values carry relation `new` and statement keys. Settled by the checker's `equivalent` accepting equal infinities.
 - [inferred] Non-text delivery modes. Settled by the modality A/B.
 
 ## Machine record
@@ -168,10 +167,10 @@ Every non-text choice is [inferred], settled by the modality A/B in the build pl
     {"cue": "Both parts arrive factored.", "why": "Factors are what cancel, so the factored form is read first."},
     {"cue": "\\(x-1\\) sits in both parts.", "why": "A shared factor divides out.", "expr": "2*(x-1)*(x-3)/((x-1)*(x+2))", "relation": "new"},
     {"cue": "Divide out \\(x-1\\), recording \\(x\\ne1\\).", "why": "At 1 the break is removable.", "expr": "2*(x-3)/(x+2)", "relation": "equivalent"},
-    {"cue": "The simplified denominator is \\(x+2\\).", "why": "Only a surviving zero gives an asymptote.", "expr": "x + 2 = 0", "relation": "new"},
-    {"cue": "One surviving zero.", "why": "The asymptote is \\(x=-2\\).", "expr": "FiniteSet(-2)", "relation": "solve", "variable": "x"},
-    {"cue": "Just right of \\(-2\\): numerator near \\(-10\\), denominator small positive.", "why": "Negative over small positive.", "expr": "-oo", "relation": "new"},
-    {"cue": "Just left of \\(-2\\): the denominator is small negative.", "why": "Opposite sign, so each side gets its own statement.", "expr": "oo", "relation": "new"}
+    {"cue": "The simplified denominator is \\(x+2\\).", "why": "Only a surviving zero gives an asymptote: \\(x=-2\\)."},
+    {"cue": "Just right of \\(-2\\): numerator near \\(-10\\), denominator small positive.", "why": "Negative over small positive.", "expr": "-oo", "relation": "limit", "variable": "x", "point": "-2", "dir": "+"},
+    {"cue": "Left of \\(-2\\), the same simplified form.", "why": "Each side is taken on its own.", "expr": "2*(x-3)/(x+2)", "relation": "new"},
+    {"cue": "Just left of \\(-2\\): the denominator is small negative.", "why": "Opposite sign, so each side gets its own statement.", "expr": "oo", "relation": "limit", "variable": "x", "point": "-2", "dir": "-"}
    ],
    "answer": {"form": "statement", "expr": "x = -2 only; left limit oo, right limit -oo"}
   }
@@ -214,7 +213,7 @@ Every non-text choice is [inferred], settled by the modality A/B in the build pl
   {"prq_id": "BC-PRQ-01001", "text": "Factor and cancel a common factor. The slip: stopping at zero over zero with no factoring tried."},
   {"prq_id": "BC-PRQ-01009", "text": "Find the sign of a quotient on each side of a zero of its denominator. The slip: one two sided infinite limit where the signs differ."}
  ],
- "time": {"exam_part": "I-A", "budget_minutes": 2.14, "source": "research/exam/exam-structure.md#Section and part layout", "written_steps": {"ex-1": [3, 5, 6, 7]}, "skipped_steps": {"ex-1": [1, 2, 4]}},
+ "time": {"exam_part": "I-A", "budget_minutes": 2.14, "source": "research/exam/exam-structure.md#Section and part layout", "written_steps": {"ex-1": [3, 4, 5, 7]}, "skipped_steps": {"ex-1": [1, 2, 6]}},
  "checks": [
   {
    "id": "chk-1",
@@ -228,7 +227,7 @@ Every non-text choice is [inferred], settled by the modality A/B in the build pl
    "key": {"form": "statement", "expr": "lim from the left at -2 is oo"},
    "steps": [
     {"text": "Left of \\(-2\\): negative over small negative.", "expr": "2*(x-3)/(x+2)", "relation": "new"},
-    {"text": "Positive and unbounded.", "expr": "oo", "relation": "new"}
+    {"text": "Positive and unbounded.", "expr": "oo", "relation": "limit", "variable": "x", "point": "-2", "dir": "-"}
    ],
    "calculator_status": "no_calculator",
    "skills": ["BC-SKL-01055"]
@@ -245,7 +244,7 @@ Every non-text choice is [inferred], settled by the modality A/B in the build pl
    "steps": [
     {"text": "Divide out \\(x+3\\).", "expr": "-x*(x+3)/((x+3)*(x-2))", "relation": "new"},
     {"text": "\\(g(x)=\\frac{-x}{x-2}\\), \\(x\\ne-3\\).", "expr": "-x/(x-2)", "relation": "equivalent"},
-    {"text": "Right of 2: negative over small positive.", "expr": "-oo", "relation": "new"}
+    {"text": "Right of 2: negative over small positive.", "expr": "-oo", "relation": "limit", "variable": "x", "point": "2", "dir": "+"}
    ],
    "calculator_status": "no_calculator",
    "skills": ["BC-SKL-01055", "BC-SKL-01056"]
@@ -306,14 +305,13 @@ Every non-text choice is [inferred], settled by the modality A/B in the build pl
   {"block": "err-BC-ERR-01020", "mode": "step_reveal", "reason": "rule 1", "sources": []}
  ],
  "refresher": ["ki-1", "ki-2", "err-BC-ERR-01018", "err-BC-ERR-01019", "err-BC-ERR-01020", "ex-1"],
- "read_minutes": {"full": 3.6, "brief": 2.8},
- "word_count": {"full": 534, "brief": 409},
+ "read_minutes": {"full": 3.7, "brief": 2.8},
+ "word_count": {"full": 542, "brief": 417},
  "research_lines": [
   {"file": "research/units/unit-01-limits-continuity.md", "line": "A factor that divides out produces a removable discontinuity rather than a vertical asymptote."}
  ],
  "inferred": [
   {"claim": "Both strategy cues rest on typical_wording and asked_to_produce, because common_givens is empty on BC-QA-01009 and BC-QA-01007.", "settles": "A library pass filling common_givens on both archetypes."},
-  {"claim": "Infinite values are recorded with relation new and the keys as statements, because the checker's equivalent returns false for an infinity compared with itself.", "settles": "A checker change accepting equal infinities in equivalent."},
   {"claim": "The figure and motion modes serve the orientation and key ideas better than text.", "settles": "The modality A/B in the build plan: skip rate and time to first credited success by mode."}
  ],
  "sources": ["BC-CON-01016", "BC-SKL-01054", "BC-SKL-01055", "BC-SKL-01056", "BC-SKL-01057", "BC-EK-LIM-2D1", "BC-EK-LIM-2D2", "ced:51", "BC-QA-01009", "BC-QA-01007", "BC-ERR-01018", "BC-ERR-01019", "BC-ERR-01020", "BC-MIS-01011", "BC-MIS-01012", "BC-MIS-99008", "BC-PRQ-01001", "BC-PRQ-01009", "research/units/unit-01-limits-continuity.md#1.14 Connecting Infinite Limits and Vertical Asymptotes", "research/question-analysis/question-archetypes.md#BC-QA-01009 Vertical asymptote located and the one sided infinite limits stated", "research/question-analysis/question-archetypes.md#BC-QA-01007 Discontinuity classified from a rule or a graph", "research/exam/exam-structure.md#Section and part layout"]

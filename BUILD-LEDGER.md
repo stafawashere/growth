@@ -2356,6 +2356,14 @@ items) and items 3 and 6 (Slices 3 and 4). Every gate 11 names for P2 now exists
   skills (01001 to 10073), at least 8 days each. Changing GAMMA, RHO, the 0.90 threshold or
   failure propagation loosens mastery, so it waits for the operator.
 
+- 2026-09-29, lessons L0, on the operator's delegation. Plan 15's Q1 to Q4 ruled at their working
+  values (no example skip on a passed check; brief form for the mid band; defer past the budget;
+  full band-planned lessons for one-skill concepts) and recorded in 15's register. L0's exit read
+  in this session: `tests/lessons` 71 passed, `tools/check_lessons.py content/lessons` 1 clean,
+  `tools/cost_model.py --check docs/plan/15-lessons.md` 0 unknown dollar figures. L1 (tables,
+  ingest, routes, reader, 19 lessons) is next, behind the throughput ruling above, since lessons
+  add minutes to block 2 without adding mastery evidence.
+
 ## In progress [inferred]
 
 Stage 1, items for Units 4 to 10, is complete in the worktree `../growth-content` on branch

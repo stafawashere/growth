@@ -556,6 +556,8 @@ Departures from the 2026-09-28 draft of this file, for the record: the first-con
 
 Every parameter without a source, and every decision the operator or a measurement must make. Values are working values, not findings.
 
+Ruled 2026-09-29 on the operator's delegation: Q1 to Q4 take the Current column (no skip; brief form; defer; full, band-planned), each still settled by the measurement named, and this document is accepted as L0's entry. With L0's exit read the same day (checker tests green, L13 in `tests/lessons/test_plan.py` green, `tools/cost_model.py --check` on this file 0 unknown dollar figures), L1 may start.
+
 | Id | Question or parameter | Current | Tag | What would settle it |
 |---|---|---|---|---|
 | Q1 | May a passed lesson check let stage `example` be skipped? | no; L0 holds | [uncertain] | an A/B whose arm writes the skip only through a credited attempt, on delayed accuracy |

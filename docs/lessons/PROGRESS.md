@@ -51,9 +51,8 @@ Decision ids: LSN-DEC-<unit>-<nn>, nn numbering the unit's sets in the order con
 
 ## Next action
 
-- Stage 2: unit READMEs and concept designs, Unit 1 first (fringe order), batches of at most 8 per designer, up to 6 designers at once.
-
-## Manifest
+- Stage 2 halted by Mahfuj Mustafa on 2026-09-29 after Units 1 to 7 (106 concepts checked): the Unit 8 and Unit 9 batches already in flight are checked in as they return; Unit 10 (26 concepts) and any batch not yet started stay todo for a later run. No new concept batches start.
+- Then Stage 3 (LSN-PRQ, LSN-DEC), Stage 4 and Stage 5 on the lessons designed so far, with the todo concepts listed as an exact blocker in the final report.
 
 ## Manifest
 

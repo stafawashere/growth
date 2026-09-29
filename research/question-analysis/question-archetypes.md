@@ -45,7 +45,7 @@ Evidence tag: verified. Scope: shared. Primary unit: BC-UNIT-05. Units: BC-UNIT-
 
 **Scoring pattern.** One point for considering the derivative equal to zero, which listing the zeros alone does not earn; one point for the justification, which in 2023 required every candidate and both endpoints to be handled and no evaluation error at any candidate, and in 2025 required evaluations or reasoning for each candidate and for no other inputs; one point for the answer, which in 2023 was given only for the extreme value and not for its location. A local first or second derivative argument does not earn the justification point but leaves the answer point available (sg-23:15, sg-25:19).
 
-**Scoring point types.** none recorded. Point type definitions are in [../scoring/point-taxonomy.md](../scoring/point-taxonomy.md).
+**Scoring point types.** BC-PT-99013, BC-PT-99004, BC-PT-99011, BC-PT-99005. Point type definitions are in [../scoring/point-taxonomy.md](../scoring/point-taxonomy.md).
 
 **Common distractors.**
 - omitting one or both endpoints from the comparison
@@ -123,7 +123,7 @@ Evidence tag: verified. Scope: shared. Primary unit: BC-UNIT-08. Units: BC-UNIT-
 
 **Scoring pattern.** Three points: considering the derivative equal to zero, a global justification, and the answer; a first or second derivative test presented alone does not earn the justification point but leaves the answer point available (sg-25:5).
 
-**Scoring point types.** none recorded. Point type definitions are in [../scoring/point-taxonomy.md](../scoring/point-taxonomy.md).
+**Scoring point types.** BC-PT-99013, BC-PT-99004, BC-PT-99010, BC-PT-99011, BC-PT-99064. Point type definitions are in [../scoring/point-taxonomy.md](../scoring/point-taxonomy.md).
 
 **Common distractors.**
 - a first derivative test offered alone
@@ -199,7 +199,7 @@ Evidence tag: verified. Scope: shared. Primary unit: BC-UNIT-06. Units: BC-UNIT-
 
 **Scoring pattern.** Separate points for the answer and for the reason, with the reason point requiring the argument to be tied to the given graph of f; a reason phrased only in terms of g double prime or of g changing concavity earns the answer point but not the reason point, and a global candidates argument must evaluate g at every critical input and at both endpoints (sg-25:17, sg-25:19). Any extra declared inflection input costs both points of that part (sg-25:17).
 
-**Scoring point types.** none recorded. Point type definitions are in [../scoring/point-taxonomy.md](../scoring/point-taxonomy.md).
+**Scoring point types.** BC-PT-99024, BC-PT-99013, BC-PT-99011, BC-PT-99062, BC-PT-99069. Point type definitions are in [../scoring/point-taxonomy.md](../scoring/point-taxonomy.md).
 
 **Common distractors.**
 - treating the graph shown as the graph of g rather than of f
@@ -369,7 +369,7 @@ Evidence tag: verified. Scope: shared. Primary unit: BC-UNIT-06. Units: BC-UNIT-
 
 **Scoring pattern.** Separate points for the integral, for the use of the initial condition, and for the answer; a response that presents only the integral value without adding the initial condition does not earn the initial condition point (sg-24:3, sg-24:4). Where no initial condition is present the points fall to the integrand, the antiderivative, and the value, and eligibility for the answer point requires the antiderivative point (sg-25:14).
 
-**Scoring point types.** none recorded. Point type definitions are in [../scoring/point-taxonomy.md](../scoring/point-taxonomy.md).
+**Scoring point types.** BC-PT-99001, BC-PT-99004, BC-PT-99069, BC-PT-99002, BC-PT-99033, BC-PT-99003. Point type definitions are in [../scoring/point-taxonomy.md](../scoring/point-taxonomy.md).
 
 **Common distractors.**
 - reporting the integral alone as the final value
@@ -459,7 +459,7 @@ Evidence tag: verified. Scope: shared. Primary unit: BC-UNIT-06. Units: BC-UNIT-
 
 **Scoring pattern.** A response that applies the original limits to an expression still written in u is not eligible for the answer point even when the numerical value is correct (sg-23:17, sg-23:16).
 
-**Scoring point types.** none recorded. Point type definitions are in [../scoring/point-taxonomy.md](../scoring/point-taxonomy.md).
+**Scoring point types.** BC-PT-99002, BC-PT-99003, BC-PT-99004. Point type definitions are in [../scoring/point-taxonomy.md](../scoring/point-taxonomy.md).
 
 **Common distractors.**
 - forgetting the constant factor introduced by du
@@ -533,7 +533,7 @@ Evidence tag: verified. Scope: BC_only. Primary unit: BC-UNIT-06. Units: BC-UNIT
 
 **Scoring pattern.** One point for the choice of u and dv, one for the u times v minus the integral of v du expression, and one for the answer; u and dv may be implied by the presence of the correct expression, the tabular arrangement is accepted, and the answer point is available only if the first two points were earned (sg-23:18, sg-24:18).
 
-**Scoring point types.** none recorded. Point type definitions are in [../scoring/point-taxonomy.md](../scoring/point-taxonomy.md).
+**Scoring point types.** BC-PT-99056, BC-PT-99057, BC-PT-99004. Point type definitions are in [../scoring/point-taxonomy.md](../scoring/point-taxonomy.md).
 
 **Common distractors.**
 - swapping the roles of u and dv so the remaining integral is harder
@@ -605,7 +605,7 @@ Evidence tag: inferred. Scope: BC_only. Primary unit: BC-UNIT-06. Units: BC-UNIT
 
 **Scoring pattern.** No Unit 6 partial fraction part appears in the 2023 to 2025 scoring guidelines read for this unit, so the point structure is inferred from the technique parts of those years, where the technique setup and the antiderivative carry separate points and the value point depends on the antiderivative point.
 
-**Scoring point types.** none recorded. Point type definitions are in [../scoring/point-taxonomy.md](../scoring/point-taxonomy.md).
+**Scoring point types.** BC-PT-99005, BC-PT-99003, BC-PT-99004, BC-PT-99081. Point type definitions are in [../scoring/point-taxonomy.md](../scoring/point-taxonomy.md).
 
 **Common distractors.**
 - sign errors when solving for the constants
@@ -684,7 +684,7 @@ Evidence tag: verified. Scope: BC_only. Primary unit: BC-UNIT-08. Units: BC-UNIT
 
 **Scoring pattern.** In 2024 the identification was worth two points, one for naming the arc length of the function and one for naming the interval (sg-24:16); a numerical arc length part is scored as a setup point and an answer point.
 
-**Scoring point types.** none recorded. Point type definitions are in [../scoring/point-taxonomy.md](../scoring/point-taxonomy.md).
+**Scoring point types.** BC-PT-99022, BC-PT-99051, BC-PT-99004, BC-PT-99009, BC-PT-99001. Point type definitions are in [../scoring/point-taxonomy.md](../scoring/point-taxonomy.md).
 
 **Common distractors.**
 - the area under the curve
@@ -834,7 +834,7 @@ Evidence tag: verified. Scope: shared. Primary unit: BC-UNIT-08. Units: BC-UNIT-
 
 **Scoring pattern.** Three points in 2023: the integrand, an antiderivative of the explicitly given function, and the answer; a response writing the reversed difference and asserting it equals the positive area did not earn the answer point, while the same work stated correctly earned all three (sg-23:16, sg-23:17).
 
-**Scoring point types.** none recorded. Point type definitions are in [../scoring/point-taxonomy.md](../scoring/point-taxonomy.md).
+**Scoring point types.** BC-PT-99059, BC-PT-99003, BC-PT-99004, BC-PT-99001. Point type definitions are in [../scoring/point-taxonomy.md](../scoring/point-taxonomy.md).
 
 **Common distractors.**
 - the reversed difference
@@ -1057,7 +1057,7 @@ Evidence tag: verified. Scope: shared. Primary unit: BC-UNIT-08. Units: BC-UNIT-
 
 **Scoring pattern.** Two points: one for the correct integral together with evidence of division by the length of the interval, and one for the correct value reported to three decimal places; in 2025 unclear communication between the integral and the answer was treated as scratch work and both points were awarded (sg-25:3), while a 2023 response presenting the same kind of unlinked chain earned one of two points (sg-23:4).
 
-**Scoring point types.** none recorded. Point type definitions are in [../scoring/point-taxonomy.md](../scoring/point-taxonomy.md).
+**Scoring point types.** BC-PT-99001, BC-PT-99004, BC-PT-99020, BC-PT-99003. Point type definitions are in [../scoring/point-taxonomy.md](../scoring/point-taxonomy.md).
 
 **Common distractors.**
 - the difference quotient of the function at the endpoints
@@ -1151,7 +1151,7 @@ Evidence tag: verified. Scope: shared. Primary unit: BC-UNIT-05. Units: BC-UNIT-
 
 **Scoring pattern.** One point for the intervals and one for the reason, with the reason point available only when the intervals are correct. Endpoints may be included or excluded. A reason must discuss the behaviour of the derivative or the slopes of the derivative. A response giving exactly one of two correct intervals with a correct reason earns one of the two points (sg-23:14).
 
-**Scoring point types.** none recorded. Point type definitions are in [../scoring/point-taxonomy.md](../scoring/point-taxonomy.md).
+**Scoring point types.** BC-PT-99062, BC-PT-99063. Point type definitions are in [../scoring/point-taxonomy.md](../scoring/point-taxonomy.md).
 
 **Common distractors.**
 - reporting where the derivative is positive instead of where it is increasing
@@ -1222,7 +1222,7 @@ Evidence tag: verified. Scope: shared. Primary unit: BC-UNIT-05. Units: BC-UNIT-
 
 **Scoring pattern.** One point for the answer and one for the reason. The answer point is lost if any extra input inside the interval is declared; consideration of the interval endpoints does not affect scoring. The reason point requires the reason to be tied to the given graph, so a reason phrased as the given function changing from increasing to decreasing earns it while a reason phrased as the second derivative changing sign does not; an ambiguous referent such as the function or the graph forfeits it. Two of three correct values with a correct reason earn the reason point but not the answer point (sg-25:17).
 
-**Scoring point types.** none recorded. Point type definitions are in [../scoring/point-taxonomy.md](../scoring/point-taxonomy.md).
+**Scoring point types.** BC-PT-99060, BC-PT-99061. Point type definitions are in [../scoring/point-taxonomy.md](../scoring/point-taxonomy.md).
 
 **Common distractors.**
 - listing every zero of the given plotted function
@@ -1446,7 +1446,7 @@ Evidence tag: verified. Scope: BC_only. Primary unit: BC-UNIT-10. Units: BC-UNIT
 
 **Scoring pattern.** Two points are typical, one for considering the right object and one for the answer with a reason (sg-24:19). A conclusion with no supporting condition earns the first point only.
 
-**Scoring point types.** none recorded. Point type definitions are in [../scoring/point-taxonomy.md](../scoring/point-taxonomy.md).
+**Scoring point types.** BC-PT-99005. Point type definitions are in [../scoring/point-taxonomy.md](../scoring/point-taxonomy.md).
 
 **Common distractors.**
 - stating the conclusion with no conditions
@@ -1515,7 +1515,7 @@ Evidence tag: verified. Scope: BC_only. Primary unit: BC-UNIT-10. Units: BC-UNIT
 
 **Scoring pattern.** Three points are typical, for the conditions, the improper integral, and the evaluation; all three conditions are required for the first, an incorrect lower limit costs the second while leaving the third reachable, and an evaluation written with the infinity symbol does not earn the third (sg-21:21, sg-21:22).
 
-**Scoring point types.** none recorded. Point type definitions are in [../scoring/point-taxonomy.md](../scoring/point-taxonomy.md).
+**Scoring point types.** BC-PT-99005, BC-PT-99053, BC-PT-99003. Point type definitions are in [../scoring/point-taxonomy.md](../scoring/point-taxonomy.md).
 
 **Common distractors.**
 - listing fewer than three conditions
@@ -1585,7 +1585,7 @@ Evidence tag: verified. Scope: BC_only. Primary unit: BC-UNIT-10. Units: BC-UNIT
 
 **Scoring pattern.** Two points are typical, one for the setup with limit notation and one for the explanation; the reciprocal quotient is accepted, the explanation requires the limit to be positive, and the conclusion must name the series in question (sg-21:23).
 
-**Scoring point types.** none recorded. Point type definitions are in [../scoring/point-taxonomy.md](../scoring/point-taxonomy.md).
+**Scoring point types.** BC-PT-99042, BC-PT-99005. Point type definitions are in [../scoring/point-taxonomy.md](../scoring/point-taxonomy.md).
 
 **Common distractors.**
 - comparing the limit with one
@@ -1730,7 +1730,7 @@ Evidence tag: inferred. Scope: shared. Primary unit: BC-UNIT-08. Units: BC-UNIT-
 
 **Scoring pattern.** A setup point for the integrand together with the limits and an answer point for the value; the Chief Reader records integrands taken from the wrong area or volume family as BC-ERR-99011.
 
-**Scoring point types.** none recorded. Point type definitions are in [../scoring/point-taxonomy.md](../scoring/point-taxonomy.md).
+**Scoring point types.** BC-PT-99001, BC-PT-99056, BC-PT-99057, BC-PT-99004. Point type definitions are in [../scoring/point-taxonomy.md](../scoring/point-taxonomy.md).
 
 **Common distractors.**
 - an integrand carrying a factor of pi
@@ -1886,7 +1886,7 @@ Evidence tag: verified. Scope: shared. Primary unit: BC-UNIT-07. Units: BC-UNIT-
 
 **Scoring pattern.** Three points: considering the sign of the derivative, identifying the input, and the answer with justification. A second derivative evaluation at the input is accepted as an alternate justification (sg-24:10).
 
-**Scoring point types.** none recorded. Point type definitions are in [../scoring/point-taxonomy.md](../scoring/point-taxonomy.md).
+**Scoring point types.** BC-PT-99027, BC-PT-99023, BC-PT-99010, BC-PT-99063, BC-PT-99005. Point type definitions are in [../scoring/point-taxonomy.md](../scoring/point-taxonomy.md).
 
 **Common distractors.**
 - setting the quantity rather than its derivative equal to zero
@@ -1964,7 +1964,7 @@ Evidence tag: inferred. Scope: shared. Primary unit: BC-UNIT-07. Units: BC-UNIT-
 
 **Scoring pattern.** Scored as a demonstration: the derivative and the substitution must both be visible, and the conclusion must be stated. Scored here by analogy with the justification standards of the separable family (sg-23:12).
 
-**Scoring point types.** none recorded. Point type definitions are in [../scoring/point-taxonomy.md](../scoring/point-taxonomy.md).
+**Scoring point types.** BC-PT-99005, BC-PT-99068, BC-PT-99004. Point type definitions are in [../scoring/point-taxonomy.md](../scoring/point-taxonomy.md).
 
 **Common distractors.**
 - checking only the initial condition
@@ -2037,7 +2037,7 @@ Evidence tag: verified. Scope: shared. Primary unit: BC-UNIT-06. Units: BC-UNIT-
 
 **Scoring pattern.** The value alone earns the point, with or without supporting work, but the value must be attached to the correct label when two integrals are requested in one part; incorrect linkage between the label and the value is treated as scratch work (sg-25:18).
 
-**Scoring point types.** none recorded. Point type definitions are in [../scoring/point-taxonomy.md](../scoring/point-taxonomy.md).
+**Scoring point types.** BC-PT-99069. Point type definitions are in [../scoring/point-taxonomy.md](../scoring/point-taxonomy.md).
 
 **Common distractors.**
 - adding the areas of regions below the axis as positive
@@ -2404,7 +2404,7 @@ Evidence tag: inferred. Scope: shared. Primary unit: BC-UNIT-02. Units: BC-UNIT-
 
 **Scoring pattern.** One point for the rule with the supplied values correctly placed and one for the value.
 
-**Scoring point types.** none recorded. Point type definitions are in [../scoring/point-taxonomy.md](../scoring/point-taxonomy.md).
+**Scoring point types.** BC-PT-99022, BC-PT-99069, BC-PT-99004. Point type definitions are in [../scoring/point-taxonomy.md](../scoring/point-taxonomy.md).
 
 **Common distractors.**
 - reading a value of the function where a value of the derivative is needed
@@ -2549,7 +2549,7 @@ Evidence tag: verified. Scope: shared. Primary unit: BC-UNIT-04. Units: BC-UNIT-
 
 **Scoring pattern.** Scored as one point for the answer with supporting work of a difference and a quotient using values from the table, and a separate point for the units; the setup expression alone without a value does not earn the first point, and the units point is earned whether or not the units are attached to a number (sg-25:11, sg-24:2).
 
-**Scoring point types.** none recorded. Point type definitions are in [../scoring/point-taxonomy.md](../scoring/point-taxonomy.md).
+**Scoring point types.** BC-PT-99005, BC-PT-99008, BC-PT-99006. Point type definitions are in [../scoring/point-taxonomy.md](../scoring/point-taxonomy.md).
 
 **Common distractors.**
 - the quotient written without the difference
@@ -2642,7 +2642,7 @@ Evidence tag: verified. Scope: shared. Primary unit: BC-UNIT-04. Units: BC-UNIT-
 
 **Scoring pattern.** The units carry their own scoring point in the 2024 and 2025 table based questions, awarded whether or not they are attached to a numerical value (sg-24:2, sg-25:11); the Chief Reader reports record incomplete interpretations and missing or malformed units as recurring losses (BC-ERR-99005, BC-ERR-99027).
 
-**Scoring point types.** none recorded. Point type definitions are in [../scoring/point-taxonomy.md](../scoring/point-taxonomy.md).
+**Scoring point types.** BC-PT-99004, BC-PT-99008. Point type definitions are in [../scoring/point-taxonomy.md](../scoring/point-taxonomy.md).
 
 **Common distractors.**
 - an interpretation of the amount rather than of the rate
@@ -2715,7 +2715,7 @@ Evidence tag: verified. Scope: shared. Primary unit: BC-UNIT-04. Units: BC-UNIT-
 
 **Scoring pattern.** The 2025 rubric awards a point for using the average rate of change and a point for the answer supported by the appropriate equation, and separately a point for the limit expression and a point for its value, with arithmetic involving infinity treated as scratch work that cannot earn the value point (sg-25:4).
 
-**Scoring point types.** none recorded. Point type definitions are in [../scoring/point-taxonomy.md](../scoring/point-taxonomy.md).
+**Scoring point types.** BC-PT-99027, BC-PT-99010, BC-PT-99014. Point type definitions are in [../scoring/point-taxonomy.md](../scoring/point-taxonomy.md).
 
 **Common distractors.**
 - a value of the model reported where a rate was requested
@@ -3012,7 +3012,7 @@ Evidence tag: verified. Scope: shared. Primary unit: BC-UNIT-01. Units: BC-UNIT-
 
 **Scoring pattern.** A separate point is awarded for the limit expression and another for its value; the expression point may be earned by the limit of either the amount or its rate, while a response presenting the limit of the amount is not eligible for the value point, and arithmetic performed with the infinity symbol is treated as scratch work (sg-25:4).
 
-**Scoring point types.** none recorded. Point type definitions are in [../scoring/point-taxonomy.md](../scoring/point-taxonomy.md).
+**Scoring point types.** BC-PT-99054, BC-PT-99004. Point type definitions are in [../scoring/point-taxonomy.md](../scoring/point-taxonomy.md).
 
 **Common distractors.**
 - writing the limit of the amount when the rate was requested
@@ -3093,7 +3093,7 @@ Evidence tag: verified. Scope: BC_only. Primary unit: BC-UNIT-07. Units: BC-UNIT
 
 **Scoring pattern.** Two points: one for the demonstration and one for the answer with supporting work. The 2024 guideline required two demonstrated steps with the correct derivative expression and at most one error, and withheld the answer point when there was an error, while requiring an incorrect first approximation to be imported into the second step. The 2025 guideline required only the first step, with the correct initial condition, step size, and derivative expression, and discounted later simplification or rounding errors for that point. Both accept a labelled table, and both allow an incorrect value imported from an earlier part to earn the answer point with a consistent result (sg-24:17, sg-25:23).
 
-**Scoring point types.** none recorded. Point type definitions are in [../scoring/point-taxonomy.md](../scoring/point-taxonomy.md).
+**Scoring point types.** BC-PT-99034, BC-PT-99004, BC-PT-99005. Point type definitions are in [../scoring/point-taxonomy.md](../scoring/point-taxonomy.md).
 
 **Common distractors.**
 - restarting the second step from the initial point
@@ -3168,7 +3168,7 @@ Evidence tag: verified. Scope: shared. Primary unit: BC-UNIT-07. Units: BC-UNIT-
 
 **Scoring pattern.** One point for the second derivative expressed in terms of the dependent variable, one for the direction with the reason. An expression left in terms of the first derivative does not earn the first point but stays eligible for the second. The reason must state that the second derivative is negative, or that the first derivative is decreasing, or that the graph is concave down, and must reach the conclusion; an argument resting on the second derivative at a single point does not earn the point (sg-23:11).
 
-**Scoring point types.** none recorded. Point type definitions are in [../scoring/point-taxonomy.md](../scoring/point-taxonomy.md).
+**Scoring point types.** BC-PT-99027, BC-PT-99026. Point type definitions are in [../scoring/point-taxonomy.md](../scoring/point-taxonomy.md).
 
 **Common distractors.**
 - arguing from whether the solution is increasing or decreasing
@@ -3402,7 +3402,7 @@ Evidence tag: verified. Scope: shared. Primary unit: BC-UNIT-05. Units: BC-UNIT-
 
 **Scoring pattern.** A single point for the answer together with its reason. A declaration that the derivative does not change sign at the input, so neither, is enough; intervals need not be presented, but any presented interval must be correct; a response stating only that the derivative is positive before and after the input does not earn the point (sg-23:13).
 
-**Scoring point types.** none recorded. Point type definitions are in [../scoring/point-taxonomy.md](../scoring/point-taxonomy.md).
+**Scoring point types.** BC-PT-99012, BC-PT-99013. Point type definitions are in [../scoring/point-taxonomy.md](../scoring/point-taxonomy.md).
 
 **Common distractors.**
 - reading the plotted derivative as the function and reporting its own turning behaviour
@@ -3476,7 +3476,7 @@ Evidence tag: verified. Scope: shared. Primary unit: BC-UNIT-05. Units: BC-UNIT-
 
 **Scoring pattern.** In 2024 three points were split as considering the sign of the derivative, identifying the input, and the answer with justification, with a second derivative evaluation accepted as an alternate justification (sg-24:10). In the accumulation form two points were split as the Fundamental Theorem of Calculus step and the answer with reason, and explicitly presenting the accumulation function with the wrong lower limit cost the first point (sg-24:13).
 
-**Scoring point types.** none recorded. Point type definitions are in [../scoring/point-taxonomy.md](../scoring/point-taxonomy.md).
+**Scoring point types.** BC-PT-99013, BC-PT-99005, BC-PT-99004, BC-PT-99014, BC-PT-99012. Point type definitions are in [../scoring/point-taxonomy.md](../scoring/point-taxonomy.md).
 
 **Common distractors.**
 - setting the given function rather than its derivative equal to zero
@@ -3620,7 +3620,7 @@ Evidence tag: verified. Scope: shared. Primary unit: BC-UNIT-06. Units: BC-UNIT-
 
 **Scoring pattern.** One point for using the Fundamental Theorem of Calculus and one for the value; the theorem point may be earned by presenting the derivative in terms of the integrand, while a response that reaches the correct value without exhibiting the theorem can still earn the answer point through an implied application (sg-24:15, sg-25:16).
 
-**Scoring point types.** none recorded. Point type definitions are in [../scoring/point-taxonomy.md](../scoring/point-taxonomy.md).
+**Scoring point types.** BC-PT-99024, BC-PT-99004. Point type definitions are in [../scoring/point-taxonomy.md](../scoring/point-taxonomy.md).
 
 **Common distractors.**
 - substituting the variable of integration instead of the upper limit
@@ -3772,7 +3772,7 @@ Evidence tag: verified. Scope: shared. Primary unit: BC-UNIT-03. Units: BC-UNIT-
 
 **Scoring pattern.** The 2025 BC scoring guidelines award one point for the product rule, one point for the chain rule, and one point for the value of the second derivative at the point, so a response can earn the two rule points with an arithmetic slip in the final value (sg-25:20).
 
-**Scoring point types.** none recorded. Point type definitions are in [../scoring/point-taxonomy.md](../scoring/point-taxonomy.md).
+**Scoring point types.** BC-PT-99022, BC-PT-99023, BC-PT-99027. Point type definitions are in [../scoring/point-taxonomy.md](../scoring/point-taxonomy.md).
 
 **Common distractors.**
 - the dependent variable treated as a constant when differentiating
@@ -4074,7 +4074,7 @@ Evidence tag: verified. Scope: BC_only. Primary unit: BC-UNIT-06. Units: BC-UNIT
 
 **Scoring pattern.** One point for correct limit notation carried throughout with no arithmetic involving infinity, one for the antiderivative of the required form, and one for the value; substituting into the antiderivative while the expression is still in the substituted variable forfeits eligibility for the value point (sg-23:17).
 
-**Scoring point types.** none recorded. Point type definitions are in [../scoring/point-taxonomy.md](../scoring/point-taxonomy.md).
+**Scoring point types.** BC-PT-99053, BC-PT-99003, BC-PT-99005, BC-PT-99004. Point type definitions are in [../scoring/point-taxonomy.md](../scoring/point-taxonomy.md).
 
 **Common distractors.**
 - writing arithmetic with infinity in place of a limit
@@ -4226,7 +4226,7 @@ Evidence tag: verified. Scope: shared. Primary unit: BC-UNIT-06. Units: BC-UNIT-
 
 **Scoring pattern.** One point for the form of the Riemann sum and one point for the value, with the form point requiring at least five of the six factors correct, and any error in the sum costing the answer point; a fully correct sum using the wrong endpoint earns one of the two points (sg-23:2, sg-23:3). A bare numerical answer with no supporting products earns neither point (sg-23:3).
 
-**Scoring point types.** none recorded. Point type definitions are in [../scoring/point-taxonomy.md](../scoring/point-taxonomy.md).
+**Scoring point types.** BC-PT-99018, BC-PT-99019, BC-PT-99022, BC-PT-99026, BC-PT-99007. Point type definitions are in [../scoring/point-taxonomy.md](../scoring/point-taxonomy.md).
 
 **Common distractors.**
 - using a single uniform width for unevenly spaced data
@@ -4300,7 +4300,7 @@ Evidence tag: verified. Scope: shared. Primary unit: BC-UNIT-06. Units: BC-UNIT-
 
 **Scoring pattern.** One point for the form of the trapezoidal sum, defined as three terms each a product of two factors with the one half incorporated, requiring at least five of six factors correct, and one point for the value; a completely correct left or right Riemann sum earns the form point but not the answer point, and the average of a correct left and right sum earns both (sg-25:13).
 
-**Scoring point types.** none recorded. Point type definitions are in [../scoring/point-taxonomy.md](../scoring/point-taxonomy.md).
+**Scoring point types.** BC-PT-99033, BC-PT-99018, BC-PT-99019. Point type definitions are in [../scoring/point-taxonomy.md](../scoring/point-taxonomy.md).
 
 **Common distractors.**
 - halving only one of the terms
@@ -4374,7 +4374,7 @@ Evidence tag: inferred. Scope: shared. Primary unit: BC-UNIT-06. Units: BC-UNIT-
 
 **Scoring pattern.** No dedicated properties part appears in the 2023 to 2025 free response questions read for this unit; the scoring behaviour is inferred from parts where a correct value alone earns the point and an incorrect interval forfeits it (sg-25:18).
 
-**Scoring point types.** none recorded. Point type definitions are in [../scoring/point-taxonomy.md](../scoring/point-taxonomy.md).
+**Scoring point types.** BC-PT-99005, BC-PT-99069, BC-PT-99004. Point type definitions are in [../scoring/point-taxonomy.md](../scoring/point-taxonomy.md).
 
 **Common distractors.**
 - adding integrals over overlapping rather than adjacent intervals
@@ -4524,7 +4524,7 @@ Evidence tag: verified. Scope: shared. Primary unit: BC-UNIT-01. Units: BC-UNIT-
 
 **Scoring pattern.** One point is earned for stating that the function is continuous because it is differentiable or equivalent, and a bare statement that the function is continuous without that justification does not earn it; a second point requires the straddling inequality, a statement of continuity, and an affirmative answer, and the theorem need not be named although a named theorem must be the correct one (sg-25:12). The second point is available whether or not the first was earned.
 
-**Scoring point types.** none recorded. Point type definitions are in [../scoring/point-taxonomy.md](../scoring/point-taxonomy.md).
+**Scoring point types.** BC-PT-99015, BC-PT-99016. Point type definitions are in [../scoring/point-taxonomy.md](../scoring/point-taxonomy.md).
 
 **Common distractors.**
 - asserting continuity without a reason
@@ -4601,7 +4601,7 @@ Evidence tag: verified. Scope: shared. Primary unit: BC-UNIT-04. Units: BC-UNIT-
 
 **Scoring pattern.** The 2023 rubric awards one point for presenting two separate limits for the numerator and the denominator, one for applying the rule by presenting at least one correct derivative in the limit of a ratio of derivatives, and one for the correct answer with supporting work; a response that presents a limit explicitly equal to zero over zero does not earn the first point (sg-23:14).
 
-**Scoring point types.** none recorded. Point type definitions are in [../scoring/point-taxonomy.md](../scoring/point-taxonomy.md).
+**Scoring point types.** BC-PT-99055, BC-PT-99004, BC-PT-99005, BC-PT-99054. Point type definitions are in [../scoring/point-taxonomy.md](../scoring/point-taxonomy.md).
 
 **Common distractors.**
 - the quotient written explicitly equal to zero over zero
@@ -4753,7 +4753,7 @@ Evidence tag: inferred. Scope: shared. Primary unit: BC-UNIT-01. Units: BC-UNIT-
 
 **Scoring pattern.** One point for the value, with the denominator condition expected in a justified response. No official free response part in 2023 to 2025 assesses this task in isolation.
 
-**Scoring point types.** none recorded. Point type definitions are in [../scoring/point-taxonomy.md](../scoring/point-taxonomy.md).
+**Scoring point types.** BC-PT-99004. Point type definitions are in [../scoring/point-taxonomy.md](../scoring/point-taxonomy.md).
 
 **Common distractors.**
 - applying the quotient theorem when the denominator limit is zero
@@ -5066,7 +5066,7 @@ Evidence tag: verified. Scope: shared. Primary unit: BC-UNIT-05. Units: BC-UNIT-
 
 **Scoring pattern.** One point for the arithmetic fact that fixes the average rate of change, and one point for the answer with justification. The justification point requires the first point, a statement that the function is continuous because it is differentiable, and an affirmative answer; a reference to the Intermediate Value Theorem forfeits it (sg-23:3). In the 2025 instance the first point was earned by any correct presentation of the average rate of change and the second by the correct solved value with the supporting equation (sg-25:4).
 
-**Scoring point types.** none recorded. Point type definitions are in [../scoring/point-taxonomy.md](../scoring/point-taxonomy.md).
+**Scoring point types.** BC-PT-99021, BC-PT-99017. Point type definitions are in [../scoring/point-taxonomy.md](../scoring/point-taxonomy.md).
 
 **Common distractors.**
 - citing the Intermediate Value Theorem for a claim about the derivative
@@ -5213,7 +5213,7 @@ Evidence tag: verified. Scope: shared. Primary unit: BC-UNIT-08. Units: BC-UNIT-
 
 **Scoring pattern.** Two points: one for using the average rate of change, which several equivalent expressions earn, and one for the answer with the supporting equation; presenting the value of the average rate of change alone as the answer earns neither (sg-25:4).
 
-**Scoring point types.** none recorded. Point type definitions are in [../scoring/point-taxonomy.md](../scoring/point-taxonomy.md).
+**Scoring point types.** BC-PT-99021, BC-PT-99020, BC-PT-99004, BC-PT-99005. Point type definitions are in [../scoring/point-taxonomy.md](../scoring/point-taxonomy.md).
 
 **Common distractors.**
 - the value of the average rate of change reported as the answer
@@ -5286,7 +5286,7 @@ Evidence tag: inferred. Scope: shared. Primary unit: BC-UNIT-05. Units: BC-UNIT-
 
 **Scoring pattern.** Intervals and reason score separately, with the reason requiring the sign of the named derivative on the stated interval rather than a restatement of the conclusion; an unnamed referent forfeits the reason (sg-25:17). Scored here by analogy with the concavity part of the same family (sg-23:14).
 
-**Scoring point types.** none recorded. Point type definitions are in [../scoring/point-taxonomy.md](../scoring/point-taxonomy.md).
+**Scoring point types.** BC-PT-99005, BC-PT-99063, BC-PT-99010. Point type definitions are in [../scoring/point-taxonomy.md](../scoring/point-taxonomy.md).
 
 **Common distractors.**
 - reporting closed intervals
@@ -5510,7 +5510,7 @@ Evidence tag: verified. Scope: shared. Primary unit: BC-UNIT-04. Units: BC-UNIT-
 
 **Scoring pattern.** The 2025 rubric awards the speed point only when the response states the sign of the velocity and draws the conclusion, and the Chief Reader report records that quoting the rule without applying it to the particular problem does not suffice (crabbc-25:20, crabbc-25:22, crabbc-25:23); the 2022 report records deciding speed from the acceleration alone as the most common misconception on that question (cr-22:21).
 
-**Scoring point types.** none recorded. Point type definitions are in [../scoring/point-taxonomy.md](../scoring/point-taxonomy.md).
+**Scoring point types.** BC-PT-99021, BC-PT-99027, BC-PT-99004. Point type definitions are in [../scoring/point-taxonomy.md](../scoring/point-taxonomy.md).
 
 **Common distractors.**
 - the speed decided from the sign of the acceleration alone
@@ -5894,7 +5894,7 @@ Evidence tag: verified. Scope: BC_only. Primary unit: BC-UNIT-09. Units: BC-UNIT
 
 **Scoring pattern.** One point, earned only when the response communicates that dy/dx is dy/dt divided by dx/dt; several presentations earn it, including labelled values of the two derivatives followed by the slope, and an incorrect component imported from an earlier part is accepted when it was declared there (sg-23:7).
 
-**Scoring point types.** none recorded. Point type definitions are in [../scoring/point-taxonomy.md](../scoring/point-taxonomy.md).
+**Scoring point types.** BC-PT-99005, BC-PT-99049, BC-PT-99004, BC-PT-99001. Point type definitions are in [../scoring/point-taxonomy.md](../scoring/point-taxonomy.md).
 
 **Common distractors.**
 - dy/dt alone
@@ -6041,7 +6041,7 @@ Evidence tag: verified. Scope: BC_only. Primary unit: BC-UNIT-09. Units: BC-UNIT
 
 **Scoring pattern.** One point for each component with its setup; an unsupported correct acceleration vector earns one of the two points, a response that equates a variable expression to a numerical value earns one of the two, and degree mode work does not earn the first point it would otherwise have earned (sg-23:5, sg-23:6).
 
-**Scoring point types.** none recorded. Point type definitions are in [../scoring/point-taxonomy.md](../scoring/point-taxonomy.md).
+**Scoring point types.** BC-PT-99064, BC-PT-99052, BC-PT-99050, BC-PT-99005. Point type definitions are in [../scoring/point-taxonomy.md](../scoring/point-taxonomy.md).
 
 **Common distractors.**
 - the velocity vector
@@ -6113,7 +6113,7 @@ Evidence tag: verified. Scope: BC_only. Primary unit: BC-UNIT-09. Units: BC-UNIT
 
 **Scoring pattern.** Three points: the definite integral, the use of the initial condition, and the answer; several equivalent arrangements of the subtraction and of the limits earn the first two points (sg-24:7). A missing differential can keep the integral point while blocking the answer point when the expression is also equated to a value (sg-23:8).
 
-**Scoring point types.** none recorded. Point type definitions are in [../scoring/point-taxonomy.md](../scoring/point-taxonomy.md).
+**Scoring point types.** BC-PT-99013, BC-PT-99010, BC-PT-99033, BC-PT-99004, BC-PT-99005, BC-PT-99002, BC-PT-99001. Point type definitions are in [../scoring/point-taxonomy.md](../scoring/point-taxonomy.md).
 
 **Common distractors.**
 - the value of the integral alone
@@ -6186,7 +6186,7 @@ Evidence tag: verified. Scope: BC_only. Primary unit: BC-UNIT-09. Units: BC-UNIT
 
 **Scoring pattern.** Two points: the setup for the speed and the answer. An equation with an implied speed earns both, the words speed equals the value alone do not earn the setup point, a bare time value earns neither, and a parenthesis error in a squared component costs the setup point but not the answer point (sg-23:6, sg-24:5).
 
-**Scoring point types.** none recorded. Point type definitions are in [../scoring/point-taxonomy.md](../scoring/point-taxonomy.md).
+**Scoring point types.** BC-PT-99050, BC-PT-99052, BC-PT-99004. Point type definitions are in [../scoring/point-taxonomy.md](../scoring/point-taxonomy.md).
 
 **Common distractors.**
 - the sum of the two components
@@ -6258,7 +6258,7 @@ Evidence tag: verified. Scope: BC_only. Primary unit: BC-UNIT-09. Units: BC-UNIT
 
 **Scoring pattern.** Two points: the correct integrand inside a definite integral and the value; an incorrect speed imported from an earlier part earns the integral point and loses the answer point, and an unsupported correct value earns neither (sg-23:8, sg-24:6).
 
-**Scoring point types.** none recorded. Point type definitions are in [../scoring/point-taxonomy.md](../scoring/point-taxonomy.md).
+**Scoring point types.** BC-PT-99051, BC-PT-99004. Point type definitions are in [../scoring/point-taxonomy.md](../scoring/point-taxonomy.md).
 
 **Common distractors.**
 - the magnitude of the displacement
@@ -6330,7 +6330,7 @@ Evidence tag: verified. Scope: BC_only. Primary unit: BC-UNIT-09. Units: BC-UNIT
 
 **Scoring pattern.** Two points: one for considering the sign of the relevant velocity component and one for the answer with the reason; the reported interval may be open, closed, or half open (sg-24:8).
 
-**Scoring point types.** none recorded. Point type definitions are in [../scoring/point-taxonomy.md](../scoring/point-taxonomy.md).
+**Scoring point types.** BC-PT-99014, BC-PT-99010. Point type definitions are in [../scoring/point-taxonomy.md](../scoring/point-taxonomy.md).
 
 **Common distractors.**
 - the times at which the coordinate itself is negative
@@ -6405,7 +6405,7 @@ Evidence tag: verified. Scope: BC_only. Primary unit: BC-UNIT-09. Units: BC-UNIT
 
 **Scoring pattern.** The first point is earned by a definite integral containing the square of r, the second by the full correct integrand, and the limits together with the factor of one half are assessed in the answer point (sg-25:7).
 
-**Scoring point types.** none recorded. Point type definitions are in [../scoring/point-taxonomy.md](../scoring/point-taxonomy.md).
+**Scoring point types.** BC-PT-99048, BC-PT-99004, BC-PT-99001, BC-PT-99005. Point type definitions are in [../scoring/point-taxonomy.md](../scoring/point-taxonomy.md).
 
 **Common distractors.**
 - the integral of r without the square
@@ -6477,7 +6477,7 @@ Evidence tag: verified. Scope: BC_only. Primary unit: BC-UNIT-09. Units: BC-UNIT
 
 **Scoring pattern.** Three points: a definite integral containing the square of the outer radius, the full correct integrand, and the answer, which carries the limits and the factor of one half; unclear communication between the correct integral and the correct value was treated as scratch work, and a symmetry presentation earned all three points (sg-25:7, sg-25:8).
 
-**Scoring point types.** none recorded. Point type definitions are in [../scoring/point-taxonomy.md](../scoring/point-taxonomy.md).
+**Scoring point types.** BC-PT-99048, BC-PT-99001, BC-PT-99004, BC-PT-99002. Point type definitions are in [../scoring/point-taxonomy.md](../scoring/point-taxonomy.md).
 
 **Common distractors.**
 - the square of the difference of the radii
@@ -6553,7 +6553,7 @@ Evidence tag: verified. Scope: BC_only. Primary unit: BC-UNIT-09. Units: BC-UNIT
 
 **Scoring pattern.** One point, earned when the response indicates differentiation of r and gives the correct value; exact and decimal forms both earn it, and several loose notations were accepted in 2025 provided the derivative was identifiable (sg-25:6, sg-25:7).
 
-**Scoring point types.** none recorded. Point type definitions are in [../scoring/point-taxonomy.md](../scoring/point-taxonomy.md).
+**Scoring point types.** BC-PT-99049, BC-PT-99004, BC-PT-99005. Point type definitions are in [../scoring/point-taxonomy.md](../scoring/point-taxonomy.md).
 
 **Common distractors.**
 - the value of r itself
@@ -6624,7 +6624,7 @@ Evidence tag: verified. Scope: BC_only. Primary unit: BC-UNIT-09. Units: BC-UNIT
 
 **Scoring pattern.** Two points: one for the chain rule product, presented symbolically or numerically and possibly in several steps, and one for the value; the answer from the earlier derivative part multiplied by the given rate earns both (sg-25:10).
 
-**Scoring point types.** none recorded. Point type definitions are in [../scoring/point-taxonomy.md](../scoring/point-taxonomy.md).
+**Scoring point types.** BC-PT-99005, BC-PT-99068, BC-PT-99004, BC-PT-99049. Point type definitions are in [../scoring/point-taxonomy.md](../scoring/point-taxonomy.md).
 
 **Common distractors.**
 - dr/dtheta alone
@@ -6695,7 +6695,7 @@ Evidence tag: verified. Scope: BC_only. Primary unit: BC-UNIT-09. Units: BC-UNIT
 
 **Scoring pattern.** Three points: considering the derivative of the coordinate equal to zero, a global justification, and the answer with supporting work; a local argument does not earn the justification point but leaves the answer point available, and presenting the solution angle alone earns neither of the first two (sg-25:8, sg-25:9).
 
-**Scoring point types.** none recorded. Point type definitions are in [../scoring/point-taxonomy.md](../scoring/point-taxonomy.md).
+**Scoring point types.** BC-PT-99013, BC-PT-99011, BC-PT-99005. Point type definitions are in [../scoring/point-taxonomy.md](../scoring/point-taxonomy.md).
 
 **Common distractors.**
 - the angle at which r is largest
@@ -7056,7 +7056,7 @@ Evidence tag: verified. Scope: BC_only. Primary unit: BC-UNIT-10. Units: BC-UNIT
 
 **Scoring pattern.** Five points are typical, for the ratio, the limit, the interior, considering both endpoints, and the analysis with the final interval; the ratio point is banked once earned, a reciprocal ratio blocks only the final point, an incorrect interior that earned its point still supports the endpoint point, and naming an appropriate test at each endpoint suffices for the analysis (sg-25:24, sg-25:25). A four point form appears where both endpoints take the same test (sg-22:20).
 
-**Scoring point types.** none recorded. Point type definitions are in [../scoring/point-taxonomy.md](../scoring/point-taxonomy.md).
+**Scoring point types.** BC-PT-99042, BC-PT-99043, BC-PT-99044, BC-PT-99045, BC-PT-99046. Point type definitions are in [../scoring/point-taxonomy.md](../scoring/point-taxonomy.md).
 
 **Common distractors.**
 - stopping at the open interval
@@ -7129,7 +7129,7 @@ Evidence tag: verified. Scope: BC_only. Primary unit: BC-UNIT-10. Units: BC-UNIT
 
 **Scoring pattern.** Three points are typical, for the ratio, for the limit, and for the explicit radius; the limit point requires the ratio point first, and an interval presented without naming the radius does not earn the third point (sg-21:24).
 
-**Scoring point types.** none recorded. Point type definitions are in [../scoring/point-taxonomy.md](../scoring/point-taxonomy.md).
+**Scoring point types.** BC-PT-99042, BC-PT-99043, BC-PT-99047. Point type definitions are in [../scoring/point-taxonomy.md](../scoring/point-taxonomy.md).
 
 **Common distractors.**
 - presenting an interval instead of a radius
@@ -7277,7 +7277,7 @@ Evidence tag: verified. Scope: shared. Primary unit: BC-UNIT-06. Units: BC-UNIT-
 
 **Scoring pattern.** Points attach to the integral of the difference and to the use of the initial amount, in the same pattern as the single rate net change question, where presenting the integral without the initial value forfeits the initial condition point (sg-24:4).
 
-**Scoring point types.** none recorded. Point type definitions are in [../scoring/point-taxonomy.md](../scoring/point-taxonomy.md).
+**Scoring point types.** BC-PT-99001, BC-PT-99068. Point type definitions are in [../scoring/point-taxonomy.md](../scoring/point-taxonomy.md).
 
 **Common distractors.**
 - integrating each rate over a different interval
@@ -7365,7 +7365,7 @@ Evidence tag: verified. Scope: shared. Primary unit: BC-UNIT-04. Units: BC-UNIT-
 
 **Scoring pattern.** The 2022 Chief Reader report records that few responses expressed the changing quantity as a correct function of the varying dimension or recognised that the chain rule was needed to reach the rate with respect to time (cr-22:7); the Chief Reader entry BC-ERR-99013 records differentiating with respect to the wrong variable and omitting the product rule as a standing error family.
 
-**Scoring point types.** none recorded. Point type definitions are in [../scoring/point-taxonomy.md](../scoring/point-taxonomy.md).
+**Scoring point types.** BC-PT-99023, BC-PT-99006, BC-PT-99004, BC-PT-99022. Point type definitions are in [../scoring/point-taxonomy.md](../scoring/point-taxonomy.md).
 
 **Common distractors.**
 - values substituted before the differentiation
@@ -7593,7 +7593,7 @@ Evidence tag: inferred. Scope: shared. Primary unit: BC-UNIT-08. Units: BC-UNIT-
 
 **Scoring pattern.** A setup point for pi with the squared radius and the limits, and an answer point for the value; the Chief Reader records the wrong volume family as BC-ERR-99011.
 
-**Scoring point types.** none recorded. Point type definitions are in [../scoring/point-taxonomy.md](../scoring/point-taxonomy.md).
+**Scoring point types.** BC-PT-99058, BC-PT-99001, BC-PT-99003, BC-PT-99004, BC-PT-99053. Point type definitions are in [../scoring/point-taxonomy.md](../scoring/point-taxonomy.md).
 
 **Common distractors.**
 - the radius left unsquared
@@ -7664,7 +7664,7 @@ Evidence tag: inferred. Scope: shared. Primary unit: BC-UNIT-08. Units: BC-UNIT-
 
 **Scoring pattern.** A setup point for the two squared radii with pi and the limits, and an answer point for the value; a swapped pair of radii produces a negative value and loses the answer point.
 
-**Scoring point types.** none recorded. Point type definitions are in [../scoring/point-taxonomy.md](../scoring/point-taxonomy.md).
+**Scoring point types.** BC-PT-99058, BC-PT-99001. Point type definitions are in [../scoring/point-taxonomy.md](../scoring/point-taxonomy.md).
 
 **Common distractors.**
 - the square of the difference of the radii
@@ -7887,7 +7887,7 @@ Evidence tag: inferred. Scope: shared. Primary unit: BC-UNIT-02. Units: BC-UNIT-
 
 **Scoring pattern.** One point for the derivative.
 
-**Scoring point types.** none recorded. Point type definitions are in [../scoring/point-taxonomy.md](../scoring/point-taxonomy.md).
+**Scoring point types.** BC-PT-99023, BC-PT-99004, BC-PT-99005. Point type definitions are in [../scoring/point-taxonomy.md](../scoring/point-taxonomy.md).
 
 **Common distractors.**
 - giving sine as the derivative of cosine without the negative sign
@@ -7958,7 +7958,7 @@ Evidence tag: inferred. Scope: shared. Primary unit: BC-UNIT-02. Units: BC-UNIT-
 
 **Scoring pattern.** One point for the correct rule applied with both derivatives present and one for the simplified result.
 
-**Scoring point types.** none recorded. Point type definitions are in [../scoring/point-taxonomy.md](../scoring/point-taxonomy.md).
+**Scoring point types.** BC-PT-99005, BC-PT-99004, BC-PT-99022, BC-PT-99080. Point type definitions are in [../scoring/point-taxonomy.md](../scoring/point-taxonomy.md).
 
 **Common distractors.**
 - multiplying the two derivatives together
@@ -8101,7 +8101,7 @@ Evidence tag: verified. Scope: shared. Primary unit: BC-UNIT-03. Units: BC-UNIT-
 
 **Scoring pattern.** Derivative questions of this form are scored as a single answer point in multiple choice, and inside a free response part the chain rule factor is the discriminating element; the 2025 BC scoring guidelines award a separate chain rule point where a composite is differentiated inside a larger task (sg-25:20).
 
-**Scoring point types.** none recorded. Point type definitions are in [../scoring/point-taxonomy.md](../scoring/point-taxonomy.md).
+**Scoring point types.** BC-PT-99023, BC-PT-99004. Point type definitions are in [../scoring/point-taxonomy.md](../scoring/point-taxonomy.md).
 
 **Common distractors.**
 - the derivative of the outer function with the inner derivative omitted
@@ -8256,7 +8256,7 @@ Evidence tag: verified. Scope: shared. Primary unit: BC-UNIT-07. Units: BC-UNIT-
 
 **Scoring pattern.** Four points in 2023: separating the variables, finding the antiderivatives, including the constant of integration and using the initial condition, and solving for the dependent variable. A response with no separation earns none of the four; a response with no constant earns at most the first two; the third point requires the first two and the fourth requires the first three; an antiderivative written without absolute value symbols stays eligible for all four (sg-23:12). Five points in 2024, with the two antiderivatives scored separately (sg-24:11).
 
-**Scoring point types.** none recorded. Point type definitions are in [../scoring/point-taxonomy.md](../scoring/point-taxonomy.md).
+**Scoring point types.** BC-PT-99028, BC-PT-99029, BC-PT-99031, BC-PT-99032, BC-PT-99033, BC-PT-99030. Point type definitions are in [../scoring/point-taxonomy.md](../scoring/point-taxonomy.md).
 
 **Common distractors.**
 - antidifferentiating only one side
@@ -8473,7 +8473,7 @@ Evidence tag: verified. Scope: BC_only. Primary unit: BC-UNIT-10. Units: BC-UNIT
 
 **Scoring pattern.** A single verification point is available where the closed form is supplied by the prompt, and presenting the unsimplified quotient of first term by one minus ratio is sufficient (sg-25:26).
 
-**Scoring point types.** none recorded. Point type definitions are in [../scoring/point-taxonomy.md](../scoring/point-taxonomy.md).
+**Scoring point types.** BC-PT-99067, BC-PT-99068, BC-PT-99004. Point type definitions are in [../scoring/point-taxonomy.md](../scoring/point-taxonomy.md).
 
 **Common distractors.**
 - taking the coefficient as the ratio
@@ -8548,7 +8548,7 @@ Evidence tag: verified. Scope: shared. Primary unit: BC-UNIT-07. Units: BC-UNIT-
 
 **Scoring pattern.** One point, awarded only when the curve passes through the stated point, extends reasonably close to the left and right edges of the given rectangle, has no obvious conflict with the drawn segments, and lies entirely on the correct side of the horizontal segments marking the equilibrium level. Only the portion inside the printed field is considered (sg-23:9, sg-24:9).
 
-**Scoring point types.** none recorded. Point type definitions are in [../scoring/point-taxonomy.md](../scoring/point-taxonomy.md).
+**Scoring point types.** BC-PT-99065. Point type definitions are in [../scoring/point-taxonomy.md](../scoring/point-taxonomy.md).
 
 **Common distractors.**
 - a curve that crosses the equilibrium level
@@ -8621,7 +8621,7 @@ Evidence tag: inferred. Scope: shared. Primary unit: BC-UNIT-07. Units: BC-UNIT-
 
 **Scoring pattern.** Scored in the same shape as the printed field part: the drawing is accepted when the segments agree with the computed slopes, including the horizontal ones (sg-23:9).
 
-**Scoring point types.** none recorded. Point type definitions are in [../scoring/point-taxonomy.md](../scoring/point-taxonomy.md).
+**Scoring point types.** BC-PT-99065, BC-PT-99066, BC-PT-99083. Point type definitions are in [../scoring/point-taxonomy.md](../scoring/point-taxonomy.md).
 
 **Common distractors.**
 - evaluating the right side at the wrong lattice point
@@ -8768,7 +8768,7 @@ Evidence tag: inferred. Scope: shared. Primary unit: BC-UNIT-02. Units: BC-UNIT-
 
 **Scoring pattern.** One point for the slope from the derivative, one for the point of tangency, and one for the equation.
 
-**Scoring point types.** none recorded. Point type definitions are in [../scoring/point-taxonomy.md](../scoring/point-taxonomy.md).
+**Scoring point types.** BC-PT-99005, BC-PT-99004, BC-PT-99082. Point type definitions are in [../scoring/point-taxonomy.md](../scoring/point-taxonomy.md).
 
 **Common distractors.**
 - using the function value as the slope
@@ -8839,7 +8839,7 @@ Evidence tag: verified. Scope: shared. Primary unit: BC-UNIT-04. Units: BC-UNIT-
 
 **Scoring pattern.** The Chief Reader reports record that most responses that found the slope also wrote the tangent line and produced an approximation, with arithmetic errors arising from unnecessary simplification, and that a response could earn the approximation point on an incorrect slope (cr-24:17, crabbc-25:25); a claim about the direction of the error that does not appeal to concavity is recorded as a standing error (BC-ERR-99020).
 
-**Scoring point types.** none recorded. Point type definitions are in [../scoring/point-taxonomy.md](../scoring/point-taxonomy.md).
+**Scoring point types.** BC-PT-99025, BC-PT-99068, BC-PT-99004, BC-PT-99005. Point type definitions are in [../scoring/point-taxonomy.md](../scoring/point-taxonomy.md).
 
 **Common distractors.**
 - the point and the slope exchanged in the point-slope form
@@ -8916,7 +8916,7 @@ Evidence tag: verified. Scope: BC_only. Primary unit: BC-UNIT-10. Units: BC-UNIT
 
 **Scoring pattern.** Four points are typical, for the form of the product rule, the derivative itself, two terms of the polynomial, and the remaining terms; a response that earns the form point but not the derivative point may still use its own value consistently, and a polynomial with a nonzero term of the wrong degree or a trailing ellipsis loses the final point (sg-23:19).
 
-**Scoring point types.** none recorded. Point type definitions are in [../scoring/point-taxonomy.md](../scoring/point-taxonomy.md).
+**Scoring point types.** BC-PT-99035, BC-PT-99068, BC-PT-99036, BC-PT-99004, BC-PT-99022, BC-PT-99027. Point type definitions are in [../scoring/point-taxonomy.md](../scoring/point-taxonomy.md).
 
 **Common distractors.**
 - omitting a product rule factor
@@ -8985,7 +8985,7 @@ Evidence tag: inferred. Scope: BC_only. Primary unit: BC-UNIT-10. Units: BC-UNIT
 
 **Scoring pattern.** Scored as a polynomial construction, with the coefficients carrying the credit; no rubric for this exact task appears in the 2021 to 2025 free response material read for this unit, so the pattern is inferred from the closely related construction parts (sg-23:19).
 
-**Scoring point types.** none recorded. Point type definitions are in [../scoring/point-taxonomy.md](../scoring/point-taxonomy.md).
+**Scoring point types.** BC-PT-99035, BC-PT-99036. Point type definitions are in [../scoring/point-taxonomy.md](../scoring/point-taxonomy.md).
 
 **Common distractors.**
 - omitting the factorials
@@ -9054,7 +9054,7 @@ Evidence tag: verified. Scope: BC_only. Primary unit: BC-UNIT-10. Units: BC-UNIT
 
 **Scoring pattern.** Three points are typical, for the derivative relation, for the first two terms, and for the complete polynomial; a polynomial of the right shape earns the terms point without supporting work, while a coefficient with no support does not earn the final point, and an alternate solution through known Maclaurin series earns the same three points (sg-23:20, sg-23:21).
 
-**Scoring point types.** none recorded. Point type definitions are in [../scoring/point-taxonomy.md](../scoring/point-taxonomy.md).
+**Scoring point types.** BC-PT-99037, BC-PT-99035, BC-PT-99036, BC-PT-99027. Point type definitions are in [../scoring/point-taxonomy.md](../scoring/point-taxonomy.md).
 
 **Common distractors.**
 - misremembering a standard series
@@ -9192,7 +9192,7 @@ Evidence tag: verified. Scope: BC_only. Primary unit: BC-UNIT-10. Units: BC-UNIT
 
 **Scoring pattern.** Scored through the terms produced, as in the 2023 alternate solution where the series identifications carry the points for a related polynomial (sg-23:21).
 
-**Scoring point types.** none recorded. Point type definitions are in [../scoring/point-taxonomy.md](../scoring/point-taxonomy.md).
+**Scoring point types.** BC-PT-99037, BC-PT-99035, BC-PT-99036. Point type definitions are in [../scoring/point-taxonomy.md](../scoring/point-taxonomy.md).
 
 **Common distractors.**
 - substituting without raising the whole expression to the power
@@ -9261,7 +9261,7 @@ Evidence tag: verified. Scope: BC_only. Primary unit: BC-UNIT-10. Units: BC-UNIT
 
 **Scoring pattern.** Two points are typical, one for the general term and one for the radius, with the radius point resting on the statement that term-by-term differentiation preserves it (sg-24:22). The 2025 form scores the first terms and the general term separately (sg-25:26).
 
-**Scoring point types.** none recorded. Point type definitions are in [../scoring/point-taxonomy.md](../scoring/point-taxonomy.md).
+**Scoring point types.** BC-PT-99037, BC-PT-99038, BC-PT-99067, BC-PT-99047, BC-PT-99035, BC-PT-99036. Point type definitions are in [../scoring/point-taxonomy.md](../scoring/point-taxonomy.md).
 
 **Common distractors.**
 - differentiating with respect to the index
@@ -9330,7 +9330,7 @@ Evidence tag: verified. Scope: BC_only. Primary unit: BC-UNIT-10. Units: BC-UNIT
 
 **Scoring pattern.** Scored through the terms and the constant; the 2023 alternate solution treats the antidifferentiated series and the constant determined from the initial value as the supporting work for the requested polynomial (sg-23:21).
 
-**Scoring point types.** none recorded. Point type definitions are in [../scoring/point-taxonomy.md](../scoring/point-taxonomy.md).
+**Scoring point types.** BC-PT-99003, BC-PT-99004, BC-PT-99067. Point type definitions are in [../scoring/point-taxonomy.md](../scoring/point-taxonomy.md).
 
 **Common distractors.**
 - omitting the constant of integration
@@ -9403,7 +9403,7 @@ Evidence tag: verified. Scope: BC_only. Primary unit: BC-UNIT-10. Units: BC-UNIT
 
 **Scoring pattern.** Two points are typical, one for using the correct omitted term and one for the justification; the justification requires the conditions and the inequality, and an equality statement does not earn it (sg-22:21, sg-24:21). A single point form asks only for an upper bound on the error (sg-21:25).
 
-**Scoring point types.** none recorded. Point type definitions are in [../scoring/point-taxonomy.md](../scoring/point-taxonomy.md).
+**Scoring point types.** BC-PT-99040, BC-PT-99041, BC-PT-99036. Point type definitions are in [../scoring/point-taxonomy.md](../scoring/point-taxonomy.md).
 
 **Common distractors.**
 - using a term already inside the partial sum
@@ -9473,7 +9473,7 @@ Evidence tag: verified. Scope: BC_only. Primary unit: BC-UNIT-10. Units: BC-UNIT
 
 **Scoring pattern.** Two points are typical, one for the form of the bound and one for showing the error is at most the tolerance; subsequent simplification errors cost the second point only, and an equality statement earns neither the second point (sg-23:20).
 
-**Scoring point types.** none recorded. Point type definitions are in [../scoring/point-taxonomy.md](../scoring/point-taxonomy.md).
+**Scoring point types.** BC-PT-99039, BC-PT-99041. Point type definitions are in [../scoring/point-taxonomy.md](../scoring/point-taxonomy.md).
 
 **Common distractors.**
 - using the derivative of the same order as the polynomial
@@ -9544,7 +9544,7 @@ Evidence tag: verified. Scope: BC_only. Primary unit: BC-UNIT-10. Units: BC-UNIT
 
 **Scoring pattern.** One point for the answer with a reason; a short response naming the input as outside the interval suffices, the point is available with an interval imported from an earlier part even when that interval is wrong, and a geometric ratio argument is an accepted alternative (sg-25:27).
 
-**Scoring point types.** none recorded. Point type definitions are in [../scoring/point-taxonomy.md](../scoring/point-taxonomy.md).
+**Scoring point types.** BC-PT-99005. Point type definitions are in [../scoring/point-taxonomy.md](../scoring/point-taxonomy.md).
 
 **Common distractors.**
 - answering with no reason
@@ -9948,7 +9948,7 @@ Evidence tag: verified. Scope: BC_only. Primary unit: BC-UNIT-09. Units: BC-UNIT
 
 **Scoring pattern.** Three points. One for the coordinate written in terms of the angle or of time, one for the equation set equal to the stated value in either variable, and one for the time; the expression and equation points are awarded separately, so an unsupported numerical time earns only the answer point (samples-13-q2:1).
 
-**Scoring point types.** BC-PT-99005, BC-PT-99004. Point type definitions are in [../scoring/point-taxonomy.md](../scoring/point-taxonomy.md).
+**Scoring point types.** BC-PT-99005, BC-PT-99004, BC-PT-99068. Point type definitions are in [../scoring/point-taxonomy.md](../scoring/point-taxonomy.md).
 
 **Common distractors.**
 - the angle at which the coordinate reaches the value
@@ -10025,7 +10025,7 @@ Evidence tag: verified. Scope: BC_only. Primary unit: BC-UNIT-09. Units: BC-UNIT
 
 **Scoring pattern.** Three points, two for the position vector and one for the velocity vector, so the two components of the position carry the weight and the velocity is a single point at the stated time (samples-13-q2:1).
 
-**Scoring point types.** BC-PT-99064, BC-PT-99005, BC-PT-99004. Point type definitions are in [../scoring/point-taxonomy.md](../scoring/point-taxonomy.md).
+**Scoring point types.** BC-PT-99064, BC-PT-99005, BC-PT-99004, BC-PT-99052. Point type definitions are in [../scoring/point-taxonomy.md](../scoring/point-taxonomy.md).
 
 **Common distractors.**
 - the polar pair given as the position vector

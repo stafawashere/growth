@@ -1,7 +1,7 @@
 ---
 title: Growth's Today, measured against the research base
 research_date: 2026-09-29
-status: in_progress
+status: draft
 purpose: Measure the algorithm, the session shape and the question bank behind Today before judging them, and name each flaw against the Stage A and Stage B evidence.
 ---
 
@@ -50,7 +50,41 @@ Flaws measured here:
 
 Measured on the scratch servers (API 127.0.0.1:8005 and 8006, web 5175 and 5176, `GROWTH_AI_BACKEND=none`), a fresh student and a student with 28 seeded days, on 2026-09-29. Filled in from the walk below.
 
-WALK_PLACEHOLDER
+The seeded student (28 closed sessions from 2026-09-01 to 2026-09-28, 595 items at 0.70 accuracy, placed fluent in Units 1 to 3 by `tools/seed_history_student.py`) and a fresh student created at the sign-in form.
+
+Screen by screen, the seeded student:
+
+1. Sign in, then Today shows "Loading" for 20 seconds: `GET /progress` answered in 20.6 s and 18.2 s on two reads (the machine was under the simulation load; the ledger's Known defects already record over 45 s on an idle server). The read assembles the whole session to preview it.
+2. Today: the exam countdown with the verdict "Behind pace"; 38 minutes estimated; two count lines, 11 skills at the frontier and 5 corrected items coming back; the third line, skills due for review, is hidden because it reads 0; three focus cards naming block, intent, units, item count and the first four skill names, including the mixed block's. The payload behind it says 39 skills are due today, 48 forecast minutes of them, and 0 of those reach block 1: the review block's 5 items are all corrected-item requeues.
+3. Start today's set: 38 items, about 39 minutes, a progress bar of dots, "I want to stop here". Item 1 at stage unsupported, short answer with the math field and the raw LaTeX inspector, the confidence prompt before checking.
+4. An answer typed and checked within the same second was stored as `{"mathjson": null}`: the attempt was written ungraded (correct null, every skill `not_attempted`), the feedback screen showed only "You wrote 5" and "Next item", no verdict, no elaboration, no error note, and the item was consumed. With a two-second pause before checking, the same field graded normally on items 4 and 5. The field commits its value on MathLive's change event, so a fast student can lose an item.
+5. Item 2 at stage completion, a statement choice with two worked steps shown and the last step to choose: a wrong answer rated confident gave the verdict head "Not yet. Here is where it turned.", the step marks (given, given, "Not yet" with the right step's text), the self-explanation prompt and the required one-line error note. The correct option itself is not named apart from the right step's sentence.
+6. Item 3 at stage example, a choice with all steps shown: a correct answer gave "That holds.", the step marks with "Correct" on the last step, and no reinforcement sentence (the tutor is off with `GROWTH_AI_BACKEND=none`).
+7. Item 4 at stage unsupported, a table item, a wrong short answer: the elaborated panel showed the violated step name only ("report the numerical value"), no observed behaviour and no scoring consequence, because a short answer carries no error path and no diagnostician runs without a model. The correct value was not shown anywhere.
+8. A refresher slot ("A short refresher, about a minute", two key ideas, "Back to the problem") before item 5.
+9. Item 5 at stage unsupported, a four-option integral: a wrong option rated confident gave the full elaborated panel (violated step, the BC-ERR observed behaviour, the scoring consequence) and "Read the part on this error". The correct option was not shown.
+10. "I want to stop here" asks for confirmation; the end screen says 5 items worked, "The 3 you corrected come back in Review, with your notes.", and "Today shows what is due next, in minutes, whenever you open it." The ungraded item counted as worked and not as corrected.
+11. Back on Today the set was rebuilt for the same day (39 minutes, 2 corrected items, 11 frontier skills, 8 mixed), the stopped set was not resumable, and the payload still carried 37 due skills and 40 due minutes with 0 of them in block 1. The Review tab listed 19 corrected items "coming back", 16 of them due today, so the requeue lane alone exceeds block 1's cap of 5.
+
+The fresh student:
+
+1. Create account, the recovery code, then the placement: "Question 1 of at most 30", every question a short answer with "I have not learned this yet" and "Skip this unit" (confirmed by "Skip the rest of this unit"); the first four questions came from Units 9, 6, 8 and 8 before any Unit 1 or 2 question; four questions answered correctly (Units 2, 1, 1, 2) and the rest skipped or not learned; done at question 27 of 30. The result screen: Unit 1 "Not placed yet" after two correct Unit 1 answers, Unit 2 "Fluent", the rest "Not started yet". Two P1 stems rendered as plain text with carets.
+2. Today: "Too early to call" on the countdown, 36 minutes, 6 frontier skills, no review line, a New ground card of 8 items across Units 1, 2, 3, 4 and 5 (critical points from Unit 5 among them for a student placed only in Unit 2) and a Mixed practice card of 4 Unit 2 items, with skill names.
+3. Start today's set: 10 items, about 37 minutes. Item 1 is the productive-failure opener ("Before the method", "Try this before the method is shown"): a correct answer rated confident gave "Feedback", "You wrote", "Next item" and no comparison with the canonical method (the comparison needs the tutor, which is off).
+4. Item 2 was preceded by "A lesson first" (3 minutes, 11 parts, the prediction screen with Commit, "Skip to the problem"), then a stage-example concept check with three steps shown and the last step to choose, the self-explanation prompt, and the confidence prompt.
+
+Flaws measured on the walk:
+
+- T16. The wrong-answer feedback never shows the correct answer: a short-answer miss shows the violated step's name alone, a choice miss shows the step, the observed behaviour and the scoring consequence, and neither shows what the correct response would have been (plan 03, Content, part 3; synthesis rank 5).
+- T17. The due queue is starved twice over on a real student: 37 to 39 due skills and 40 to 48 forecast minutes of them, 0 served, while 16 corrected items due today fill block 1's 5-item cap and 11 more wait behind them (T3 confirmed; synthesis rank 6; rulings C1 and C2).
+- T18. A fast submission on the math field records an ungraded attempt and consumes the item with no feedback and no requeue (a client defect, not a design flaw; it is listed for the build stage).
+- T19. Today shows "Loading" for about 20 seconds on a student with history because the preview assembles the whole session (Known defects, 2026-09-23); the fresh student waited 6 seconds.
+- T20. The mixed block's focus card names its skills before the set, which is the announced-review pattern Matuschak names (synthesis warnings; rulings R10).
+- T21. The pace verdict ("Behind pace", "Too early to call") is the one element of Today that reads as a target or a forecast about the student (rulings C5).
+- T22. A stopped set is discarded and rebuilt rather than resumed, so the stop confirmation's promise "Today builds the next set from it" holds but the ordering the student had seen is lost; the ungraded item of T18 is counted as worked.
+- T23. Without the tutor the opener shows no comparison and a correct answer shows no reinforcement, so the plan 02 productive-failure opener degrades to a plain item when `GROWTH_AI_BACKEND=none` (plan 01, Productive-failure openers).
+- T24. A fresh student placed only in Unit 2 is served Unit 5 skills in block 2, because a parent no archetype loads does not gate (`blocking_parents`), so the fringe on a new student spans five units on day one (plan 02, Prerequisite gating; the 2026-09-26 and 2026-09-28 corrections).
+- T25. The placement result says "Not placed yet" for a unit whose two questions were answered correctly, and the first four questions came from Units 6, 8 and 9 (plan 02, Cold-start diagnostic, the unit pool cap).
 
 ## The question bank [verified]
 

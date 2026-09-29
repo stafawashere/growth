@@ -33,5 +33,84 @@
    }
   ],
   "answers_file": "/tmp/claude-0/-home-user-growth/ac029253-8ff0-5a4b-8b5f-cdcaf5e8ff8d/scratchpad/verify/answers_08.json"
+ },
+ "audit": {
+  "date": "2026-09-29",
+  "auditor": "claude-opus-5-5",
+  "blocks": [
+   {
+    "id": "orientation",
+    "verdict": "ok",
+    "evidence": "Paraphrase of BC-CON-06004 description_plain plus justification variants in research 6.2 Assessment behaviour; 30 words."
+   },
+   {
+    "id": "ki-1",
+    "verdict": "ok",
+    "evidence": "Matches research 6.2 Error direction paragraph (left, right by monotonicity; trapezoid over, midpoint under when concave up) and LIM-5.A.4 on ced:119."
+   },
+   {
+    "id": "st-1",
+    "verdict": "ok",
+    "evidence": "Cue from BC-QA-06001 givens and asked_to_produce; rival is BC-ERR-06007 in the bundle; method from BC-SKL-06010 and BC-SKL-06011."
+   },
+   {
+    "id": "ex-1",
+    "verdict": "ok",
+    "evidence": "SymPy 2*3 + 2*5 + 1*8 + 3*12 = 60; r increasing so left sum under is correct; draw constraints hold (60, 89, 28, 56 distinct)."
+   },
+   {
+    "id": "what_a_reader_scores:ex-1",
+    "verdict": "ok",
+    "evidence": "Lines for BC-PT-99018 and BC-PT-99019 equal the bundle earns, does_not_earn and notation fields verbatim."
+   },
+   {
+    "id": "err-BC-ERR-06005",
+    "verdict": "ok",
+    "evidence": "Record text equals bundle; wrong and right step differ only in the cited reason, as the error describes."
+   },
+   {
+    "id": "err-BC-ERR-06006",
+    "verdict": "ok",
+    "evidence": "Record text equals bundle; overestimate for a left sum of an increasing r is the interchanged direction."
+   },
+   {
+    "id": "err-BC-ERR-06007",
+    "verdict": "ok",
+    "evidence": "Record text equals bundle; SymPy trapezoid (2*8 + 2*13 + 1*20 + 3*29)/2 = 149/2; no concavity given so no direction follows is correct."
+   },
+   {
+    "id": "bridge-BC-PRQ-06008",
+    "verdict": "ok",
+    "evidence": "Paraphrase of BC-PRQ-06008 description_plain and failure_signature."
+   },
+   {
+    "id": "chk-1",
+    "verdict": "ok",
+    "evidence": "Same draw as ex-1; key underestimate with monotonicity reason correct."
+   },
+   {
+    "id": "chk-2",
+    "verdict": "ok",
+    "evidence": "SymPy 1*14 + 3*9 + 2*6 + 2*2 = 57; right sum of a decreasing R underestimates; data decreasing; constraints hold."
+   },
+   {
+    "id": "chk-3",
+    "verdict": "ok",
+    "evidence": "SymPy (2*5 + 4*9 + 6*21)/2 = 86; data slopes 0.5, 0.75, 1.5 consistent with increasing concave up; key A correct; B maps to BC-ERR-06007, C and D to BC-ERR-06005."
+   }
+  ],
+  "advice": [
+   "Orientation is delivered as a figure; the text is a statement of what a response does, so text would serve it as well.",
+   "No worked example or check uses a midpoint sum or a concave down case, although ki-1 states both; the lesson teaches the trapezoid case only through chk-3.",
+   "what_a_reader_scores lists only the sum and value points; the justification point that carries the lesson's habit is taught only through error scoring_consequence text.",
+   "Option D in chk-3 ('since a sum only approximates') is labelled BC-ERR-06005 but gives a wrong direction; its derivation reads closer to BC-MIS-06003."
+  ],
+  "counts": {
+   "ok": 12,
+   "unsourced": 0,
+   "wrong": 0,
+   "over_cap": 0,
+   "lint": 0
+  }
  }
 }

@@ -46,7 +46,7 @@
    {
     "id": "ki-1",
     "verdict": "ok",
-    "evidence": "Paraphrases 3.3 Required mathematical knowledge (Derivative of an inverse, Derivation, Matched pairs) and ced:77 FUN-3.E.1; SymPy on the illustration: f'(1)=7/4, inverse slope 4/7."
+    "evidence": "fixed 2026-09-29: inverse curve rewritten with real cube roots sign(u)*Abs(u)**(1/3); SymPy check g(v)^3/4+g(v)=v at v=-5,-1,0,1/2,2,7."
    },
    {
     "id": "st-1",
@@ -122,5 +122,9 @@
    "over_cap": 0,
    "lint": 0
   }
- }
+ },
+ "fix_notes": [
+  "ki-1 inverse curve expression uses sign(u)*Abs(u)**(1/3) for both cube roots.",
+  "Left as preferences: st-2 without a check, no statement check for the nonzero clause."
+ ]
 }

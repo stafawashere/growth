@@ -29,7 +29,7 @@ What says "not this concept": only f prime plotted and a sketch of f asked (BC-C
 
 One strategy block, both bands.
 
-- st-1, BC-QA-05009. Method, `expected_solution_path[0]`: find the turning points of each curve. Rival, `wrong_approaches`: deciding the order from the vertical scale of the plots. Separating feature: the curve whose sign-changing zeros sit under another's turning points is that curve's derivative; scale plays no part. Not tagged inferred.
+- st-1, BC-QA-05009. Method, `expected_solution_path[0]`: find the turning points of each curve. Rival, `wrong_approaches`: deciding the order from the vertical scale of the plots. Separating feature: the curve whose sign-changing zeros sit under another's turning points is that curve's derivative; scale plays no part. Tagged inferred (the archetype record is inferred).
 
 ## Solution path
 
@@ -127,7 +127,7 @@ BC-QA-05009 is `either`, so Section I Part A, 2.14 minutes per question (researc
    "rival": "Rival: deciding the order from the vertical scale of the plots.",
    "separating_feature": "Zeros under another curve's turning points mark its derivative; scale plays no part.",
    "sources": ["BC-QA-05009"],
-   "evidence_tag": "verified"
+   "evidence_tag": "inferred"
   }
  ],
  "worked_examples": [

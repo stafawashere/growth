@@ -33,5 +33,89 @@
    }
   ],
   "answers_file": "/tmp/claude-0/-home-user-growth/ac029253-8ff0-5a4b-8b5f-cdcaf5e8ff8d/scratchpad/verify/answers_08.json"
+ },
+ "audit": {
+  "date": "2026-09-29",
+  "auditor": "claude-opus-5-5",
+  "blocks": [
+   {
+    "id": "orientation",
+    "verdict": "ok",
+    "evidence": "Paraphrase of BC-CON-06006 and LIM-5.C.2; 33 words."
+   },
+   {
+    "id": "ki-1",
+    "verdict": "ok",
+    "evidence": "Quote is a substring of LIM-5.C.1 on ced:120; continuity hypothesis and maximum width match the research Definition paragraph."
+   },
+   {
+    "id": "ki-2",
+    "verdict": "ok",
+    "evidence": "LIM-5.C.2 plus BC-QA-06014 expected_solution_path steps 1 to 4 (width gives interval length, sample point gives lower limit)."
+   },
+   {
+    "id": "ki-3",
+    "verdict": "ok",
+    "evidence": "Quote matches LIM-5.B.1 on ced:120 verbatim."
+   },
+   {
+    "id": "st-1",
+    "verdict": "ok",
+    "evidence": "Cue from BC-QA-06014 common_givens; method is expected_solution_path[0]; rival paraphrases common_distractors (interval read as zero to one from the width)."
+   },
+   {
+    "id": "ex-1",
+    "verdict": "ok",
+    "evidence": "SymPy limit of Sum(3*(1 + 2*i/n)**2*(2/n)) is 26 and Integral(3*x**2, (x, 1, 3)) is 26; draw in domain."
+   },
+   {
+    "id": "err-BC-ERR-99028",
+    "verdict": "ok",
+    "evidence": "Record text equals bundle; SymPy wrong Integral(3*(1+2x)^2, 0, 1) = 13 vs 26, the width factor 2 lost."
+   },
+   {
+    "id": "err-BC-ERR-99032",
+    "verdict": "ok",
+    "evidence": "Record text equals bundle; SymPy wrong limits 0 to 2 give 8 vs 26, limits never given."
+   },
+   {
+    "id": "representations",
+    "verdict": "ok",
+    "evidence": "SymPy right sums at n = 2, 4, 8, 16, 100: 39, 32.25, 29.0625, 27.5156, 26.2404; rounded values and limit 26 correct."
+   },
+   {
+    "id": "bridge-BC-PRQ-06006",
+    "verdict": "ok",
+    "evidence": "Paraphrase of BC-PRQ-06006 description_plain and failure_signature."
+   },
+   {
+    "id": "chk-1",
+    "verdict": "ok",
+    "evidence": "Key Integral(3*x**2, (x, 1, 3)) equals ex-1 answer."
+   },
+   {
+    "id": "chk-2",
+    "verdict": "ok",
+    "evidence": "SymPy limit of Sum(2*(2 + 2*(i - 1)/n)**3*(2/n)) is 120 equal to Integral(2*t**3, (t, 2, 4))."
+   },
+   {
+    "id": "chk-3",
+    "verdict": "ok",
+    "evidence": "SymPy limit 39 equals Integral(x**2, (x, 2, 5)); A = 9, C = 13, D = -39 all differ; derivations match BC-ERR-99032 and BC-ERR-99028."
+   }
+  ],
+  "advice": [
+   "ki-1 as motion suits the limiting process, and the numeric experiment in representations reinforces it well; the two overlap, so one could be cut in the brief band.",
+   "ki-2's sources omit BC-QA-06014 although its procedure comes from that archetype's expected_solution_path.",
+   "The 'sample point at i = 0 fixes a' rule holds for right endpoint forms only; chk-2 uses a left form (i - 1), where i = 1 gives a. A note on the left form would close the gap.",
+   "Only the to_integral direction is taught; the to_sum direction of BC-QA-06014 is covered in LSN-CON-06005 only as a sigma sum, not as a limit."
+  ],
+  "counts": {
+   "ok": 13,
+   "unsourced": 0,
+   "wrong": 0,
+   "over_cap": 0,
+   "lint": 0
+  }
  }
 }

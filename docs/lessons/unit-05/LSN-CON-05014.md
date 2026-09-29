@@ -29,7 +29,7 @@ What says "not this concept": "find the dimensions" (the input, BC-CON-05013), o
 
 One strategy block, both bands.
 
-- st-1, BC-QA-05011. Method, `expected_solution_path[0]`: define the variables and write the objective, so every letter carries its units into the last line. Rival, `wrong_approaches`: substituting a numerical value before differentiating. Separating feature: the last line answers the asked quantity, value or input, with units. Not tagged inferred.
+- st-1, BC-QA-05011. Method, `expected_solution_path[0]`: define the variables and write the objective, so every letter carries its units into the last line. Rival, `wrong_approaches`: substituting a numerical value before differentiating. Separating feature: the last line answers the asked quantity, value or input, with units. Tagged inferred (the archetype record is inferred).
 
 ## Solution path
 
@@ -124,7 +124,7 @@ BC-QA-05011 is `either`, so Section I Part A, 2.14 minutes per question (researc
    "rival": "Rival: substituting a numerical value before differentiating.",
    "separating_feature": "The last line answers the asked quantity, value or input, with units.",
    "sources": ["BC-QA-05011"],
-   "evidence_tag": "verified"
+   "evidence_tag": "inferred"
   }
  ],
  "worked_examples": [

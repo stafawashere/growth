@@ -66,7 +66,7 @@
    {
     "id": "err-BC-ERR-02012",
     "verdict": "ok",
-    "evidence": "observed_behavior and scoring_consequence verbatim from BC-ERR-02012; right step limit oo confirmed by SymPy."
+    "evidence": "fixed 2026-09-29: wrong step now shows the record's behaviour, f(1+h)-f(1) tends to 0 so continuous and so differentiable at 1 (SymPy limit 0), in place of the invented f'(1)=0."
    },
    {
     "id": "err-BC-ERR-02013",
@@ -75,8 +75,8 @@
    },
    {
     "id": "err-BC-ERR-03012",
-    "verdict": "wrong",
-    "evidence": "SymPy gives f'(x)=4/(3(x-1)^(1/3)) and one sided quotients oo and -oo at x=1, a cusp, which the lesson itself labels a cusp (ex-1 verdict, orientation panel); the block calls the same point a vertical tangent, and BC-ERR-03012 observed_behavior concerns dy/dx for horizontal and vertical tangents, so the served wrong/right pair misclassifies the point."
+    "verdict": "ok",
+    "evidence": "fixed 2026-09-29: redrawn on g(x)=6(x-1)^(1/3)+3, an odd numerator and so a vertical tangent at 1; SymPy g'(x)=2/(x-1)^(2/3), one sided quotients both oo; wrong numerator 2 against right x=1."
    },
    {
     "id": "representations",
@@ -101,7 +101,7 @@
    {
     "id": "chk-3",
     "verdict": "ok",
-    "evidence": "SymPy: -(x-2)^(2/3) gives right -oo, left oo, key D correct; A, B, C each follow a named error path; f'(x)=-2/(3(x-2)^(1/3)) has constant numerator as option C says."
+    "evidence": "fixed 2026-09-29: redrawn on -(x-2)^(1/3) (exponent 1/3, in parameter_spec); SymPy one sided quotients both -oo, a vertical tangent; key D restated; option C on f'(x)=-1/(3(x-2)^(2/3)) now frames a real vertical tangent; skill BC-SKL-02023."
    }
   ],
   "advice": [
@@ -112,11 +112,18 @@
    "No example shows a corner with finite unequal slopes (BC-SKL-02022 mastered_if asks for two numbers that exist and differ); only the ki-1 motion on |x| carries it. Recognition of the stem, the first written line and the rival is taught; scoring habits are carried only by error consequence text since no point types apply."
   ],
   "counts": {
-   "ok": 12,
+   "ok": 13,
    "unsourced": 0,
-   "wrong": 1,
+   "wrong": 0,
    "over_cap": 0,
    "lint": 0
   }
- }
+ },
+ "fix_notes": [
+  "err-BC-ERR-03012 redrawn on 6(x-1)^(1/3)+3 (vertical tangent).",
+  "chk-3 redrawn on -(x-2)^(1/3); key D and option C restated; skill BC-SKL-02023.",
+  "err-BC-ERR-02012 wrong step rewritten to continuity taken as differentiability.",
+  "word_count 630/441, read_minutes 4.2/2.94.",
+  "Left as preferences: chk-3 option B wording, missing finite corner example."
+ ]
 }

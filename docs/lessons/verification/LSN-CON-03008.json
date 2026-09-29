@@ -60,8 +60,8 @@
    },
    {
     "id": "err-BC-ERR-03002",
-    "verdict": "unsourced",
-    "evidence": "BC-ERR-03002 observed_behavior is 'a composition of three functions ... the innermost derivative is omitted'; e^(3x - 1) is a two layer composition, so the record does not support attributing this dropped factor 3 to BC-ERR-03002 (the math of the wrong line is right: 4x e + 2x^2 e differs from the derivative)."
+    "verdict": "ok",
+    "evidence": "fixed 2026-09-29: block redrawn on the three layer composite e^((3x-1)^2); SymPy derivative (18x-6)e^((3x-1)^2); wrong 2(3x-1)e^((3x-1)^2) omits the innermost 3."
    },
    {
     "id": "err-BC-ERR-03006",
@@ -106,7 +106,7 @@
    {
     "id": "chk-3",
     "verdict": "ok",
-    "evidence": "SymPy: 5e^3 key; A 4e^3, B 2e^3, D e^3 + 3e^2 reproduce the stated derivations."
+    "evidence": "fixed 2026-09-29: option B re-derived from BC-ERR-03020 (held via BC-SKL-03029): e^u+4x^2e^u factored with a sign slip as (4x^2-1)e^u, SymPy 3e^3 at x=1; key 5e^3 unchanged; BC-SKL-03029 added to skills."
    }
   ],
   "advice": [
@@ -115,11 +115,17 @@
    "Delivery fits: a classification rule is text, the procedure is step reveal. Recognition, first line and rival are taught; scoring habits are carried by error consequences only."
   ],
   "counts": {
-   "ok": 13,
-   "unsourced": 1,
+   "ok": 14,
+   "unsourced": 0,
    "wrong": 0,
    "over_cap": 0,
    "lint": 0
   }
- }
+ },
+ "fix_notes": [
+  "err-BC-ERR-03002 on e^((3x-1)^2).",
+  "chk-3 option B now 3e^3 via BC-ERR-03020.",
+  "word_count 547/423, read_minutes 3.65/2.82.",
+  "Left as preferences: when a rewrite is worth writing on an MCQ."
+ ]
 }

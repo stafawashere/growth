@@ -81,7 +81,7 @@
    {
     "id": "err-BC-ERR-03017",
     "verdict": "ok",
-    "evidence": "Record text verbatim; arcsin form substituted for arctan, distinct."
+    "evidence": "fixed 2026-09-29: wrong step is now the radical misplaced branch of the record, 3atan(2x-3)+6x/sqrt(1+(2x-3)^2), defined at 2 (SymPy 3pi/4+6sqrt(2) against right 3pi/4+6)."
    },
    {
     "id": "representations",
@@ -126,5 +126,10 @@
    "over_cap": 0,
    "lint": 0
   }
- }
+ },
+ "fix_notes": [
+  "err-BC-ERR-03017 wrong expression changed to a misplaced radical, finite at x=2; prose trap line updated.",
+  "word_count full 586, read_minutes full 3.91.",
+  "Left as preferences: st-2 and st-3 without example or check."
+ ]
 }

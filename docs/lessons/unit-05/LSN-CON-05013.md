@@ -29,7 +29,7 @@ What says "not this concept": the objective already reduced and only the value's
 
 One strategy block, both bands.
 
-- st-1, BC-QA-05011. Method, `expected_solution_path[0]`: define the variables and write the objective. Rival, `wrong_approaches`: substituting a numerical value before differentiating. Separating feature: the objective is reduced by the constraint to one variable with a stated domain, and numbers enter only after the derivative. Not tagged inferred: both fields are present.
+- st-1, BC-QA-05011. Method, `expected_solution_path[0]`: define the variables and write the objective. Rival, `wrong_approaches`: substituting a numerical value before differentiating. Separating feature: the objective is reduced by the constraint to one variable with a stated domain, and numbers enter only after the derivative. Tagged inferred (the archetype record is inferred): both fields are present.
 
 ## Solution path
 
@@ -125,7 +125,7 @@ BC-QA-05011 is `either`, so Section I Part A, 2.14 minutes per question, in the 
    "rival": "Rival: substituting a numerical value before differentiating.",
    "separating_feature": "The constraint reduces the objective to one variable on a stated domain; numbers enter after the derivative.",
    "sources": ["BC-QA-05011"],
-   "evidence_tag": "verified"
+   "evidence_tag": "inferred"
   }
  ],
  "worked_examples": [

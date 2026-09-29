@@ -47,7 +47,7 @@ None. BC-QA-01008 lists no `point_types`; its `scoring_pattern` names a point pe
 Three active errors meet the concept's skills, in the bundle's order (all linked BC-MIS at severity high, so by id). Low band all three, mid band the first two.
 
 - err-BC-ERR-01003 (BC-MIS-01001, BC-MIS-01009). Wrong step on ex-1's draw: the left branch is undefined at 1, so the left limit is declared nonexistent (\(\frac{0}{0}\) taken as the answer). Right step: the factor divides out and the left limit is 2. Distinct. Possible reason, words from BC-MIS-01001: a missing or displaced function value is read as a missing or displaced limit.
-- err-BC-ERR-01015 (BC-MIS-01009, BC-MIS-01001). Wrong step: only the one sided limits matched at 1, \(k+m=2\), with \(f(1)\) never compared. Right step: \(f(1)=k+m\) compared as well. Equivalent on this draw, because the middle branch owns \(x=1\); the missing comparison is what the reason needs, which is the record's own scoring consequence. Possible reason, words from BC-MIS-01009: most often that the function is defined there or that the one sided limits agree.
+- err-BC-ERR-01015 (BC-MIS-01009, BC-MIS-01001). Wrong step, on ex-1's rule with the value at 1 set on its own line as \(f(1)=4\): the left and right limits both equal 2, so continuity at 1 is claimed. Right step: the value 4 is compared with the limit 2, and they differ, so \(f\) is not continuous at 1. Distinct: on ex-1's own draw the middle branch owns \(x=1\) and the two lines coincide, so the block sets the value apart to show the lost comparison. Possible reason, words from BC-MIS-01009: most often that the function is defined there or that the one sided limits agree.
 - err-BC-ERR-01017 (BC-MIS-01009, BC-MIS-01019). Wrong step: the right branch \(x^2+3\) evaluated at 1, giving \(k+m=4\). Right step: \(k+m=2\). Distinct. Possible reason null: neither linked description names branch selection.
 
 ## Representations
@@ -107,7 +107,7 @@ Every non-text choice is [inferred], settled by the modality A/B in the build pl
  "unit": "01",
  "skills": ["BC-SKL-01050", "BC-SKL-01051", "BC-SKL-01052", "BC-SKL-01053"],
  "orientation": {
-  "text": "A response writes one matching equation per boundary, using the branch on each side and the value at the boundary, then solves for the constants. A removable break is repaired by setting the value equal to the limit.",
+  "text": "A response writes one matching equation per boundary, from both branches and the boundary value, then solves for the constants. A removable break is repaired by setting the value equal to the limit.",
   "sources": ["BC-CON-01015", "research/units/unit-01-limits-continuity.md#1.13 Removing Discontinuities"]
  },
  "key_ideas": [
@@ -136,7 +136,7 @@ Every non-text choice is [inferred], settled by the modality A/B in the build pl
    "archetype_id": "BC-QA-01008",
    "cue": "A piecewise rule with one or two unknown constants, and the stem asks for their values.",
    "method": "First written line: the one sided limit from each branch at the first boundary.",
-   "rival": "The rival matches the two one sided limits and ignores the defined value (BC-ERR-01015).",
+   "rival": "The rival matches the one sided limits and ignores the value (BC-ERR-01015).",
    "separating_feature": "The branch whose condition holds the equals sign supplies the value, and the value enters the equation.",
    "sources": ["BC-QA-01008"],
    "evidence_tag": "verified"
@@ -178,9 +178,9 @@ Every non-text choice is [inferred], settled by the modality A/B in the build pl
    "error_id": "BC-ERR-01015",
    "observed_behavior": "The response concludes continuity because the two one sided limits agree, without comparing them with the function value.",
    "scoring_consequence": "The justification point is lost, and a parameter solved this way can be wrong when the defined value differs.",
-   "wrong_step": {"text": "Limits matched only: \\(k+m=2\\).", "expr": "k*1 + m = 2"},
-   "right_step": {"text": "\\(f(1)=k+m\\) compared too: \\(k+m=2\\).", "expr": "k + m = 2"},
-   "relation": "equivalent",
+   "wrong_step": {"text": "With \\(f(1)=4\\) set apart, both one sided limits are 2, so continuity is claimed.", "expr": "Eq(2, 2)"},
+   "right_step": {"text": "\\(f(1)=4\\) differs from the limit 2: not continuous at 1.", "expr": "Eq(4, 2)"},
+   "relation": "distinct",
    "possible_reason": {"misconception_id": "BC-MIS-01009", "text": "most often that the function is defined there or that the one sided limits agree"},
    "sources": ["BC-ERR-01015", "BC-MIS-01009"]
   },
@@ -293,8 +293,8 @@ Every non-text choice is [inferred], settled by the modality A/B in the build pl
   {"block": "err-BC-ERR-01017", "mode": "step_reveal", "reason": "rule 1", "sources": []}
  ],
  "refresher": ["ki-2", "err-BC-ERR-01003", "err-BC-ERR-01015", "err-BC-ERR-01017", "ex-1"],
- "read_minutes": {"full": 3.7, "brief": 3.0},
- "word_count": {"full": 551, "brief": 441},
+ "read_minutes": {"full": 3.73, "brief": 3.0},
+ "word_count": {"full": 560, "brief": 450},
  "research_lines": [
   {"file": "research/units/unit-01-limits-continuity.md", "line": "All three quantities enter the condition, not only the two one sided limits."}
  ],

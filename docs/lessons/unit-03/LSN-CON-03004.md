@@ -121,7 +121,7 @@ BC-QA-03004 is `no_calculator`, the opening part of a multipart FRQ, so Section 
   {
    "id": "st-1",
    "archetype_id": "BC-QA-03004",
-   "cue": "The stem asks for dy/dx, a verification of a stated dy/dx, or a slope, from an equation in x and y.",
+   "cue": "Asked for dy/dx, a verification of a stated dy/dx, or a slope, from an equation in x and y.",
    "method": "First written line: differentiate every term of both sides with respect to x.",
    "rival": "Rival: differentiating one side and dropping the right side (BC-ERR-03009).",
    "separating_feature": "The line is an equation: collect the dy/dx terms, then divide.",

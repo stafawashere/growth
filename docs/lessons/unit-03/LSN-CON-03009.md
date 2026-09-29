@@ -65,7 +65,7 @@ BC-QA-03008 is `no_calculator`, the opening part of an FRQ: Section II Part B, 1
 
 - chk-1, completion of ex-1, both bands: the second derivative and dy/dx = 3 at (1, 2) are given. Key 10.
 - chk-2, isomorph, both bands. Draw: mixed -1, y_part 2, x_part 3, x_at 1, y_at 1, notation prime; y' = -xy + 2y + 3x, slope 4. Key y''(1) = 6.
-- chk-3, MCQ, low band. Draw: mixed 1, y_part 2, x_part 1, x_at 2, y_at -1, notation leibniz; dy/dx = xy + 2y + x, slope -2. Key -8. Distractors: -7 (BC-ERR-03008), 0 (BC-ERR-05060), y + 4 dy/dx + 1 (BC-ERR-03011, only x = 2 substituted).
+- chk-3, MCQ, low band. Draw: mixed 1, y_part 2, x_part 1, x_at 2, y_at -1, notation leibniz; dy/dx = xy + 2y + x, slope -2. Key -8. Distractors: -7 (BC-ERR-03008), 0 (BC-ERR-05060), -4 (BC-ERR-03023, dy/dx at the point never computed, y = -1 used in its place).
 
 ## Delivery
 
@@ -256,7 +256,7 @@ BC-QA-03008 is `no_calculator`, the opening part of an FRQ: Section II Part B, 1
     {"id": "A", "is_key": false, "expr": "-7", "error_path": "BC-ERR-03008", "derivation": "product rule omitted on xy: x dy/dx + 2 dy/dx + 1"},
     {"id": "B", "is_key": true, "expr": "-8", "error_path": null},
     {"id": "C", "is_key": false, "expr": "0", "error_path": "BC-ERR-05060", "derivation": "y held constant: y + 1"},
-    {"id": "D", "is_key": false, "expr": "y + 4*yp + 1", "error_path": "BC-ERR-03011", "derivation": "only x = 2 substituted"}
+    {"id": "D", "is_key": false, "expr": "-4", "error_path": "BC-ERR-03023", "derivation": "dy/dx at the point never computed; y = -1 put in its place: -1 - 2 - 2 + 1"}
    ],
    "calculator_status": "no_calculator",
    "skills": ["BC-SKL-03033", "BC-SKL-03034"]

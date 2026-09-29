@@ -124,7 +124,7 @@ No figure, motion, interactive or model mode applies: the skills carry no figure
    "id": "ki-2",
    "ek_id": "BC-EK-LIM-2B2",
    "depth": "core",
-   "text": "The six standard families are continuous at every point of their domains (BC-EK-LIM-2B2, ced:49). The domain restriction does the work: the domain, cut at every undefined input, is the answer, open at each excluded input and closed at an endpoint the rule includes, such as a radicand's zero.",
+   "text": "The six standard families are continuous at every point of their domains (BC-EK-LIM-2B2, ced:49). So the answer is the domain cut at each undefined input: open there, closed at an included endpoint such as a radicand's zero.",
    "notation": "open, closed and half open interval notation",
    "quote": {"text": "Polynomial, rational, power, exponential, logarithmic, and trigonometric functions are continuous on all points in their domains.", "source": "ced:49"},
    "sources": ["BC-EK-LIM-2B2", "ced:49", "research/units/unit-01-limits-continuity.md#1.12 Confirming Continuity over an Interval"]
@@ -134,10 +134,10 @@ No figure, motion, interactive or model mode applies: the skills carry no figure
   {
    "id": "st-1",
    "archetype_id": "BC-QA-01015",
-   "cue": "A rule is given and the stem asks for its intervals of continuity, with a reason naming its family.",
+   "cue": "A rule, and the stem asks for its intervals of continuity with a reason naming its family.",
    "method": "First written line: identify every input at which the expression is undefined, by setting the denominator to zero or the radicand below zero.",
    "rival": "The rival writes the domain as a single interval when it has several pieces.",
-   "separating_feature": "The answer is the whole domain cut at each undefined input, so a rational rule with two excluded inputs has three pieces.",
+   "separating_feature": "The answer is the domain cut at each undefined input; a rational rule with two excluded inputs has three pieces.",
    "sources": ["BC-QA-01015"],
    "evidence_tag": "inferred"
   }
@@ -257,8 +257,8 @@ No figure, motion, interactive or model mode applies: the skills carry no figure
   {"block": "err-BC-ERR-01032", "mode": "step_reveal", "reason": "rule 1", "sources": []}
  ],
  "refresher": ["ki-2", "err-BC-ERR-01031", "err-BC-ERR-01032", "ex-1"],
- "read_minutes": {"full": 3.6, "brief": 3.0},
- "word_count": {"full": 528, "brief": 445},
+ "read_minutes": {"full": 3.54, "brief": 2.99},
+ "word_count": {"full": 531, "brief": 448},
  "research_lines": [
   {"file": "research/units/unit-01-limits-continuity.md", "line": "The restriction to the domain is the working part of the statement."}
  ],

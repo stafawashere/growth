@@ -46,5 +46,119 @@
    "note": "stem clarified after the judge found it ambiguous: it now asks what the table suggests and why; key unchanged",
    "date": "2026-09-29"
   }
- ]
+ ],
+ "audit": {
+  "date": "2026-09-29",
+  "auditor": "claude-opus-5-5",
+  "blocks": [
+   {
+    "id": "orientation",
+    "verdict": "ok",
+    "evidence": "Paraphrases BC-CON-01006 'can suggest a limit value but cannot prove one' and the 1.3 and 1.4 paragraphs; 45 words."
+   },
+   {
+    "id": "ki-1",
+    "verdict": "ok",
+    "evidence": "LIM-1.C.5 on ced:41 and research 1.4 line 'A finite table does not determine the behaviour between its rows'; 37 words; sweep values checked below."
+   },
+   {
+    "id": "ki-2",
+    "verdict": "ok",
+    "evidence": "Quote matches LIM-1.C.2 on ced:40."
+   },
+   {
+    "id": "ki-3",
+    "verdict": "ok",
+    "evidence": "Quote matches LIM-1.C.3 on ced:40; SymPy: limit((x**2-4)/(x-2), x, 2) = 4, hole at (2, 4) as the figure states."
+   },
+   {
+    "id": "st-1",
+    "verdict": "ok",
+    "evidence": "BC-QA-01001 givens, path[0], rival BC-ERR-01001."
+   },
+   {
+    "id": "st-2",
+    "verdict": "ok",
+    "evidence": "BC-QA-01002 givens, path[0..1], rival BC-ERR-01005."
+   },
+   {
+    "id": "st-3",
+    "verdict": "ok",
+    "evidence": "BC-QA-01013 givens, path[0], rival BC-ERR-01002."
+   },
+   {
+    "id": "ex-1",
+    "verdict": "ok",
+    "evidence": "SymPy: x-1 at 0 = -1, limit at 3 from left = 2; 6-4x/3 at 6 = -2, limit at 3 from right = 2; key 2, dot at 0 separate."
+   },
+   {
+    "id": "ex-2",
+    "verdict": "ok",
+    "evidence": "Oscillate rule from BC-QA-01002 notes: 2+3(0.1) = 2.3, -1-2(0.01) = -1.02, 2+3(0.001) = 2.003, -1-2(0.0001) = -1.0002; key 'suggests that the limit does not exist' meets the spec invariant."
+   },
+   {
+    "id": "what_a_reader_scores",
+    "verdict": "ok",
+    "evidence": "Empty; no point_types on the three archetypes."
+   },
+   {
+    "id": "err-BC-ERR-01001",
+    "verdict": "ok",
+    "evidence": "Verbatim record text; wrong 0 against 2."
+   },
+   {
+    "id": "err-BC-ERR-01002",
+    "verdict": "ok",
+    "evidence": "Verbatim record text; at x = 6 the draw's sides are -2 and 1, so -2 against DNE."
+   },
+   {
+    "id": "err-BC-ERR-01003",
+    "verdict": "ok",
+    "evidence": "Verbatim record text; DNE against 2 with the dot removed."
+   },
+   {
+    "id": "err-BC-ERR-01004",
+    "verdict": "ok",
+    "evidence": "Verbatim record text; ex-2 alternates near 2 and -1, so 2 against DNE; reason quotes BC-MIS-01004."
+   },
+   {
+    "id": "representations",
+    "verdict": "ok",
+    "evidence": "null; no claim served."
+   },
+   {
+    "id": "bridge-BC-PRQ-06005",
+    "verdict": "ok",
+    "evidence": "Paraphrases BC-PRQ-06005; 28 words."
+   },
+   {
+    "id": "chk-1",
+    "verdict": "ok",
+    "evidence": "SymPy: limit(6-4x/3, x, 3, +) = 2; key 2 matches ex-1."
+   },
+   {
+    "id": "chk-2",
+    "verdict": "ok",
+    "evidence": "SymPy: 4-3x at 0 = 4, limit at 1 from left = 1; 2-x at 5 = -3, limit at 1 from right = 1; key 1."
+   },
+   {
+    "id": "chk-3",
+    "verdict": "ok",
+    "evidence": "Sides 3 and -2 differ, key DNE; distractors 3, -2 (BC-ERR-01002) and 0 (BC-ERR-01001) are distinct."
+   }
+  ],
+  "advice": [
+   "ki-1's table_sweep values check: left 3.21, 3.0201, 3.0020, 3.0002 and right 2.51, 2.9501, 2.9950, 2.9995 from value 3, slopes 2 and -5, curvature 1.",
+   "err-BC-ERR-01002 uses the jump at x = 6, which ex-1's problem text never shows (it stops at (6, -2)); the learner meets the right side value 1 only in the error block.",
+   "No error block or check exercises BC-ERR-01005 (table agreement taken as proof), the rival st-2 names and the concept's central claim; an agree-behaviour table check asking what the table establishes would close that gap.",
+   "Full band reads 858 words, near the 900 cap, with four error blocks; the refresher lists all four, which is heavy for a refresher."
+  ],
+  "counts": {
+   "ok": 19,
+   "unsourced": 0,
+   "wrong": 0,
+   "over_cap": 0,
+   "lint": 0
+  }
+ }
 }

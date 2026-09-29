@@ -49,7 +49,7 @@ Five active errors meet the concept's skills; the cap is 4, so the first four in
 - err-BC-ERR-02005 (BC-MIS-02002, BC-MIS-02003). Wrong step on ex-1's draw: \(h=0\) in the unsimplified quotient, \(\frac{0}{0}\). Right step: \(-2x-h+5\), then the limit \(-2x+5\). Distinct. Possible reason from BC-MIS-02002.
 - err-BC-ERR-02006 (BC-MIS-02003, BC-MIS-02002). Wrong: \(f'(x)=-2x-h+5\) with no limit. Right: \(\lim_{h\to0}(-2x-h+5)=-2x+5\). Distinct. Possible reason from BC-MIS-02003.
 - err-BC-ERR-02007 (BC-MIS-02003, BC-MIS-02011). Wrong: \(-(x+h)^2\) taken as \(-x^2-h^2\), quotient \(5-h\). Right: \(-2x-h+5\). Distinct. Possible reason null: neither linked description names the shifted term.
-- err-BC-ERR-02008 (BC-MIS-02002, BC-MIS-02004). Wrong: \(-2x+5\) by the power rule, the definition copied around it. Right: \(5-2x\) from the simplified quotient. Equivalent, which is the record's point: the value may be right. Possible reason from BC-MIS-02002.
+- err-BC-ERR-02008 (BC-MIS-02002, BC-MIS-02004). Wrong: the limit written, then \(-2x+5\) at once by the power rule, with no quotient line. Right: the simplified quotient \(-2x-h+5\) inside the limit, the line the lost points attach to. Distinct: the right step shows the missing work, while the final value may be right, which is the record's point. Possible reason from BC-MIS-02002.
 
 BC-ERR-02030 is the fifth and is taught in LSN-CON-02002 and LSN-CON-02004.
 
@@ -70,7 +70,7 @@ BC-QA-02002 is `no_calculator` and MCQ shaped: Section I Part A, 2.14 minutes (r
 
 - chk-1, completion of ex-1, both bands: \(f'(x)=-2x+5\) is given, the value at 3 is asked. Key \(-1\), equal to ex-1's answer.
 - chk-2, isomorph on BC-QA-02002, both bands: leading 1, linear \(-2\), constant 3, point \(-2\), degree 2. Key \(-6\).
-- chk-3, MCQ on BC-QA-02002, low band: leading 3, linear \(-1\), constant 2, point 1, degree 2. Key 5. Distractors: \(-1\) (BC-ERR-02007, \((1+h)^2\) taken as \(1+h^2\), the slip the spec's notes name), \(5+3h\) (BC-ERR-02006, the limit dropped), 0 (BC-ERR-02005, \(h\) set to 0 in the numerator before it is divided out) [inferred: the record does not state the value reported].
+- chk-3, MCQ on BC-QA-02002, low band: leading 3, linear \(-1\), constant 2, point 1, degree 2. Key 5. Distractors: \(-1\) (BC-ERR-02007, \((1+h)^2\) taken as \(1+h^2\), the slip the spec's notes name), \(\infty\) (BC-ERR-02007, \(f(1+h)\) taken as \(f(1)+f(h)\), so the quotient \(3h-1+\frac{2}{h}\) grows without bound), undefined (BC-ERR-02005, \(h\) set to 0 while still in the denominator, giving \(\frac00\)) [inferred: the record does not state the value reported].
 
 No draw equals a published BC-QA-02002 `parameter_draw` (content/items_gen_unit02, content/items_unit02_agent).
 
@@ -96,7 +96,7 @@ No draw equals a published BC-QA-02002 `parameter_draw` (content/items_gen_unit0
 - research/units/unit-02-differentiation-definition-properties.md#Unresolved
 - research/question-analysis/question-archetypes.md#BC-QA-02002 Derivative computed from the limit definition
 - research/exam/exam-structure.md#Section and part layout
-- [inferred] chk-3's distractor 0 for BC-ERR-02005: the record says the increment is set to zero while in the denominator, not which number is reported. Settled by a `common_distractors` value on BC-QA-02002 for that error.
+- [inferred] chk-3's distractor undefined for BC-ERR-02005: the record says the increment is set to zero while in the denominator, giving 0/0, not what is then reported. Settled by a `common_distractors` value on BC-QA-02002 for that error.
 
 ## Machine record
 
@@ -196,9 +196,9 @@ No draw equals a published BC-QA-02002 `parameter_draw` (content/items_gen_unit0
    "error_id": "BC-ERR-02008",
    "observed_behavior": "The response differentiates with the power rule and presents the result as an application of the definition.",
    "scoring_consequence": "The points attached to the difference quotient and its simplification are lost although the final value may be right.",
-   "wrong_step": {"text": "\\(-2x+5\\) by the power rule, the limit written around it.", "expr": "-2*x + 5"},
-   "right_step": {"text": "\\(5-2x\\) as the limit of the simplified quotient.", "expr": "5 - 2*x"},
-   "relation": "equivalent",
+   "wrong_step": {"text": "The limit is written, then \\(-2x+5\\) at once by the power rule, with no quotient line.", "expr": "-2*x + 5"},
+   "right_step": {"text": "The quotient simplified to \\(-2x-h+5\\) inside the limit: the line the lost points attach to.", "expr": "-2*x - h + 5"},
+   "relation": "distinct",
    "possible_reason": {"misconception_id": "BC-MIS-02002", "text": "the answer is produced by a rule and the definition is copied around it"},
    "sources": ["BC-ERR-02008", "BC-MIS-02002"]
   }
@@ -262,8 +262,8 @@ No draw equals a published BC-QA-02002 `parameter_draw` (content/items_gen_unit0
    "options": [
     {"id": "A", "is_key": false, "expr": "-1", "error_path": "BC-ERR-02007", "derivation": "(1 + h)^2 taken as 1 + h^2: the quotient is 3h - 1, limit -1"},
     {"id": "B", "is_key": true, "expr": "5", "error_path": null},
-    {"id": "C", "is_key": false, "expr": "3*h + 5", "error_path": "BC-ERR-02006", "derivation": "the simplified quotient reported with the limit dropped"},
-    {"id": "D", "is_key": false, "expr": "0", "error_path": "BC-ERR-02005", "derivation": "h set to 0 in the numerator before it is divided out, and the numerator's value reported"}
+    {"id": "C", "is_key": false, "expr": "oo", "error_path": "BC-ERR-02007", "derivation": "f(1 + h) taken as f(1) + f(h): the quotient is 3h - 1 + 2/h, which grows without bound as h shrinks to 0 from the right"},
+    {"id": "D", "is_key": false, "expr": "nan", "error_path": "BC-ERR-02005", "derivation": "h set to 0 while still in the denominator: the quotient is 0/0, reported as undefined"}
    ],
    "calculator_status": "no_calculator",
    "skills": ["BC-SKL-02009"]
@@ -286,7 +286,7 @@ No draw equals a published BC-QA-02002 `parameter_draw` (content/items_gen_unit0
   {"file": "research/units/unit-02-differentiation-definition-properties.md", "line": "The derivative of f is the function whose value at x is the limit as h tends to zero of the quotient of f(x plus h) minus f(x) by h, provided this limit exists"}
  ],
  "inferred": [
-  {"claim": "chk-3's distractor 0 for BC-ERR-02005: the record says the increment is set to zero while in the denominator, not which number is then reported.", "settles": "A common_distractors value on BC-QA-02002 tied to BC-ERR-02005."}
+  {"claim": "chk-3's distractor undefined for BC-ERR-02005: the record says the increment is set to zero while in the denominator, giving 0/0, not what is then reported.", "settles": "A common_distractors value on BC-QA-02002 tied to BC-ERR-02005."}
  ],
  "sources": ["BC-CON-02003", "BC-SKL-02008", "BC-SKL-02009", "BC-EK-CHA-2B2", "BC-EK-CHA-2B1", "ced:61", "ced:60", "BC-QA-02002", "BC-MCQ-SAMPLE-006", "BC-ERR-02005", "BC-ERR-02006", "BC-ERR-02007", "BC-ERR-02008", "BC-ERR-02030", "BC-MIS-02002", "BC-MIS-02003", "BC-MIS-02004", "BC-MIS-02011", "BC-PRQ-02001", "BC-PRQ-02005", "research/units/unit-02-differentiation-definition-properties.md#2.2 Defining the Derivative of a Function and Using Derivative Notation", "research/units/unit-02-differentiation-definition-properties.md#Unresolved", "research/exam/exam-structure.md#Section and part layout"]
 }

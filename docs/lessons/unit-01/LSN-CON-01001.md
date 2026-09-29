@@ -68,7 +68,7 @@ BC-QA-01012 has `calculator_status` either and is one part of a multipart free r
 
 - chk-1, completion of ex-1, both bands: the averages \(5+2h\) are given, the student states the value approached. Key 5, equal to ex-1's answer.
 - chk-2, isomorph on BC-QA-01012, both bands: \(s(t)=3t^2-2t+1\), rate at \(t=1\). Key 4.
-- chk-3, MCQ on BC-QA-01012, low band: \(V(t)=t^2+2t+4\), rate at \(t=2\). Key 6. Distractors: 0.61 (BC-ERR-01029, the change over \([2,2.1]\)), 6.1 (BC-ERR-01030, the average over \([2,2.1]\) as the exact rate), 0.0601 (BC-ERR-01029, the change over \([2,2.01]\)).
+- chk-3, MCQ on BC-QA-01012, low band: \(V(t)=t^2+2t+4\), rate at \(t=2\). Key 6. Distractors: 0.61 (BC-ERR-01029, the change over \([2,2.1]\)), 6.1 (BC-ERR-01030, the average over \([2,2.1]\) as the exact rate), 6.01 (BC-ERR-01030, the average over \([2,2.01]\) as the exact rate).
 
 No example or check draw equals a published BC-QA-01012 `parameter_draw` (content/items_*), which the checker confirms.
 
@@ -473,9 +473,9 @@ Every non-text choice is [inferred], settled by the modality A/B in the build pl
     {
      "id": "D",
      "is_key": false,
-     "expr": "601/10000",
-     "error_path": "BC-ERR-01029",
-     "derivation": "V(2.01) - V(2) = 0.0601, the change with no division"
+     "expr": "601/100",
+     "error_path": "BC-ERR-01030",
+     "derivation": "the average over [2, 2.01], 6.01, taken as the exact rate"
     }
    ],
    "calculator_status": "no_calculator",

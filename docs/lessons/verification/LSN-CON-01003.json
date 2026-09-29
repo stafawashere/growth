@@ -27,5 +27,69 @@
    }
   ],
   "answers_file": "/tmp/claude-0/-home-user-growth/ac029253-8ff0-5a4b-8b5f-cdcaf5e8ff8d/scratchpad/verify/answers_03.json"
+ },
+ "audit": {
+  "date": "2026-09-29",
+  "auditor": "claude-opus-5-5",
+  "blocks": [
+   {
+    "id": "orientation",
+    "verdict": "ok",
+    "evidence": "Paraphrases BC-CON-01003 and the 1.9 line 'the distinction between an infinite limit and a limit at infinity'; 39 words."
+   },
+   {
+    "id": "ki-1",
+    "verdict": "ok",
+    "evidence": "Side notation from BC-CON-01003 notation, definition from ced:39, infinity distinction from research 1.9 'What conversion must not lose'; 50 words."
+   },
+   {
+    "id": "st-1",
+    "verdict": "ok",
+    "evidence": "Matches BC-QA-01013 common_givens, path[0] and wrong_approaches (BC-ERR-01033); cue 16 words."
+   },
+   {
+    "id": "ex-1",
+    "verdict": "ok",
+    "evidence": "Right side limit of -oo at -3 makes x = -3 a vertical asymptote with g falling on the right; key contains 'asymptote' per the spec invariant."
+   },
+   {
+    "id": "what_a_reader_scores",
+    "verdict": "ok",
+    "evidence": "Empty; BC-QA-01013 carries no point_types."
+   },
+   {
+    "id": "representations",
+    "verdict": "ok",
+    "evidence": "null; no claim served."
+   },
+   {
+    "id": "bridge-BC-PRQ-06005",
+    "verdict": "ok",
+    "evidence": "Paraphrases BC-PRQ-06005 and its failure_signature; 29 words."
+   },
+   {
+    "id": "chk-1",
+    "verdict": "ok",
+    "evidence": "Infinite value at input -3 gives vertical asymptote x = -3; matches ex-1."
+   },
+   {
+    "id": "chk-2",
+    "verdict": "ok",
+    "evidence": "limit of h as x decreases without bound equal to 5/2 gives horizontal asymptote y = 5/2 at the left end."
+   }
+  ],
+  "advice": [
+   "The concept holds no active error, so the lesson carries no error block; the rival BC-ERR-01033 appears only in st-1 and in an ex-1 step, which is thin for the lesson's central trap.",
+   "Both checks are short_answer asking to name an asymptote while BC-QA-01013 is a matching MCQ; an MCQ check with options differing only in where infinity sits would rehearse the stem as it appears.",
+   "ki-1 packs notation and the infinity distinction into one text block; a contrast pair (value infinity against infinity under the arrow) would suit the comparison better than plain text.",
+   "ki-1 cites ced:39 for the one sided superscripts, which ced:39 does not print; the notation is sourced by the BC-CON-01003 record and could cite it directly."
+  ],
+  "counts": {
+   "ok": 9,
+   "unsourced": 0,
+   "wrong": 0,
+   "over_cap": 0,
+   "lint": 0
+  }
  }
 }

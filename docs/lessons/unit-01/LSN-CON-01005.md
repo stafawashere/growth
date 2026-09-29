@@ -122,7 +122,7 @@ Every non-text choice is [inferred], settled by the modality A/B.
    "id": "ki-1",
    "ek_id": "BC-EK-LIM-1C4",
    "depth": "core",
-   "text": "Three failure modes (BC-EK-LIM-1C4, ced:40): sides that differ, as 1/x at 0 from each side; values unbounded, as 1/x^2 at 0; values oscillating, as sin(1/x) at 0. Each needs its mode named.",
+   "text": "Three failure modes (BC-EK-LIM-1C4, ced:40): sides that differ, as |x|/x at 0 from each side; values unbounded, as 1/x^2 at 0; values oscillating, as sin(1/x) at 0. Each needs its mode named.",
    "notation": "does not exist",
    "quote": null,
    "sources": [

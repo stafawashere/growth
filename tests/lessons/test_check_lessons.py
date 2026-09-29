@@ -109,3 +109,42 @@ def test_sets_mode_prints_the_count(snapshot, capsys):
    assert exit_code == 0
    assert f"confusable sets: {expected}" in output
    assert expected > 0
+
+
+DELIVERY_FINDINGS = {
+   "red_delivery.json": "must be step_reveal",
+   "red_delivery__fallback.json": "needs a fallback",
+   "red_delivery__reduced_motion.json": "needs a reduced_motion line",
+   "red_delivery__placement.json": "places a label",
+   "red_delivery__count.json": "at most 2",
+   "red_delivery__kind.json": "is not a known spec kind",
+}
+
+
+@pytest.mark.parametrize("file_name", sorted(DELIVERY_FINDINGS))
+def test_delivery_fixture_fails_for_its_planted_rule(file_name, context):
+   messages = check_lessons.lint_delivery(load_fixture(file_name), context)
+   expected = DELIVERY_FINDINGS[file_name]
+
+   assert any(expected in message for message in messages), messages
+
+
+def test_a_missing_delivery_fails_the_schema(context):
+   findings = check_lesson(load_fixture("red_schema__delivery.json"), context)
+
+   assert "schema" in findings
+   assert any("delivery" in message for message in findings["schema"])
+
+
+def test_a_strategy_block_carrying_delivery_fails_the_schema(context, hand_authored):
+   strategy = next(section for section in hand_authored["sections"] if section["type"] == "strategy")
+   strategy["delivery"] = {"mode": "text", "reason": "planted"}
+   findings = check_lesson(hand_authored, context)
+
+   assert "schema" in findings
+
+
+def test_hand_authored_delivery_matches_its_design(hand_authored):
+   modes = [section["delivery"]["mode"] for section in hand_authored["sections"] if "delivery" in section]
+
+   assert modes == ["text", "text", "step_reveal", "step_reveal", "step_reveal", "step_reveal", "step_reveal"]

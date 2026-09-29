@@ -42,10 +42,10 @@
       {
          "id": "B",
          "is_key": false,
-         "error_path": "BC-ERR-05004",
-         "label": "Yes. Since \\( \\frac{f(9) - f(0)}{9 - 0} = - \\frac{2}{9} \\), there is a c with \\( 0 < c < 9 \\) and \\( f'(c) = - \\frac{2}{9} \\), because an average rate of change is always reached by the derivative.",
-         "derivation": "existence asserted from the arithmetic alone, with no theorem named and no check that one applies",
-         "mechanism": "theorem_condition_ignored"
+         "error_path": "BC-ERR-05003",
+         "label": "No. The average rate of change of f over \\( \\left[0, 9\\right] \\) is \\( \\frac{f(0) - f(9)}{9 - 0} = \\frac{2}{9} \\), which is not \\( - \\frac{2}{9} \\), so the Mean Value Theorem does not give such a c.",
+         "derivation": "the average rate formed with the subtraction in the wrong order, which gives the opposite of the named value",
+         "mechanism": "sign_error"
       },
       {
          "id": "C",

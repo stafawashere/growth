@@ -34,10 +34,10 @@
       {
          "id": "A",
          "is_key": false,
-         "error_path": "BC-ERR-05004",
-         "label": "Yes. Since \\( \\frac{f(5) - f(3)}{5 - 3} = \\frac{15}{2} \\), there is a c with \\( 3 < c < 5 \\) and \\( f'(c) = \\frac{15}{2} \\), because an average rate of change is always reached by the derivative.",
-         "derivation": "existence asserted from the arithmetic alone, with no theorem named and no check that one applies",
-         "mechanism": "theorem_condition_ignored"
+         "error_path": "BC-ERR-05003",
+         "label": "No. The average rate of change of f over \\( \\left[3, 5\\right] \\) is \\( \\frac{f(3) - f(5)}{5 - 3} = - \\frac{15}{2} \\), which is not \\( \\frac{15}{2} \\), so the Mean Value Theorem does not give such a c.",
+         "derivation": "the average rate formed with the subtraction in the wrong order, which gives the opposite of the named value",
+         "mechanism": "sign_error"
       },
       {
          "id": "B",

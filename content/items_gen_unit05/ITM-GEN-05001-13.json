@@ -56,10 +56,10 @@
       {
          "id": "D",
          "is_key": false,
-         "error_path": "BC-ERR-05004",
-         "label": "Yes. Since \\( \\frac{f(12) - f(3)}{12 - 3} = - \\frac{1}{9} \\), there is a c with \\( 3 < c < 12 \\) and \\( f'(c) = - \\frac{1}{9} \\), because an average rate of change is always reached by the derivative.",
-         "derivation": "existence asserted from the arithmetic alone, with no theorem named and no check that one applies",
-         "mechanism": "theorem_condition_ignored"
+         "error_path": "BC-ERR-05003",
+         "label": "No. The average rate of change of f over \\( \\left[3, 12\\right] \\) is \\( \\frac{f(3) - f(12)}{12 - 3} = \\frac{1}{9} \\), which is not \\( - \\frac{1}{9} \\), so the Mean Value Theorem does not give such a c.",
+         "derivation": "the average rate formed with the subtraction in the wrong order, which gives the opposite of the named value",
+         "mechanism": "sign_error"
       }
    ],
    "calculator_status": "no_calculator",

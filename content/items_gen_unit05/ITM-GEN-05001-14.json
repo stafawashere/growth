@@ -38,10 +38,10 @@
       {
          "id": "B",
          "is_key": false,
-         "error_path": "BC-ERR-05004",
-         "label": "Yes. Since \\( \\frac{f(8) - f(2)}{8 - 2} = 1 \\), there is a c with \\( 2 < c < 8 \\) and \\( f'(c) = 1 \\), because an average rate of change is always reached by the derivative.",
-         "derivation": "existence asserted from the arithmetic alone, with no theorem named and no check that one applies",
-         "mechanism": "theorem_condition_ignored"
+         "error_path": "BC-ERR-05003",
+         "label": "No. The average rate of change of f over \\( \\left[2, 8\\right] \\) is \\( \\frac{f(2) - f(8)}{8 - 2} = -1 \\), which is not \\( 1 \\), so the Mean Value Theorem does not give such a c.",
+         "derivation": "the average rate formed with the subtraction in the wrong order, which gives the opposite of the named value",
+         "mechanism": "sign_error"
       },
       {
          "id": "C",

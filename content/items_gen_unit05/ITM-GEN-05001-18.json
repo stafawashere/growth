@@ -34,10 +34,10 @@
       {
          "id": "A",
          "is_key": false,
-         "error_path": "BC-ERR-05004",
-         "label": "Yes. Since \\( \\frac{f(11) - f(8)}{11 - 8} = - \\frac{8}{3} \\), there is a c with \\( 8 < c < 11 \\) and \\( f'(c) = - \\frac{8}{3} \\), because an average rate of change is always reached by the derivative.",
-         "derivation": "existence asserted from the arithmetic alone, with no theorem named and no check that one applies",
-         "mechanism": "theorem_condition_ignored"
+         "error_path": "BC-ERR-05003",
+         "label": "No. The average rate of change of f over \\( \\left[8, 11\\right] \\) is \\( \\frac{f(8) - f(11)}{11 - 8} = \\frac{8}{3} \\), which is not \\( - \\frac{8}{3} \\), so the Mean Value Theorem does not give such a c.",
+         "derivation": "the average rate formed with the subtraction in the wrong order, which gives the opposite of the named value",
+         "mechanism": "sign_error"
       },
       {
          "id": "B",

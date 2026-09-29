@@ -34,10 +34,10 @@
       {
          "id": "A",
          "is_key": false,
-         "error_path": "BC-ERR-05004",
-         "label": "Yes. Since \\( \\frac{f(12) - f(1)}{12 - 1} = \\frac{24}{11} \\), there is a c with \\( 1 < c < 12 \\) and \\( f'(c) = \\frac{24}{11} \\), because an average rate of change is always reached by the derivative.",
-         "derivation": "existence asserted from the arithmetic alone, with no theorem named and no check that one applies",
-         "mechanism": "theorem_condition_ignored"
+         "error_path": "BC-ERR-05003",
+         "label": "No. The average rate of change of f over \\( \\left[1, 12\\right] \\) is \\( \\frac{f(1) - f(12)}{12 - 1} = - \\frac{24}{11} \\), which is not \\( \\frac{24}{11} \\), so the Mean Value Theorem does not give such a c.",
+         "derivation": "the average rate formed with the subtraction in the wrong order, which gives the opposite of the named value",
+         "mechanism": "sign_error"
       },
       {
          "id": "B",

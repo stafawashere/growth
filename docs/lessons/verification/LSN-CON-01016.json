@@ -10,29 +10,29 @@
    {
     "id": "LSN-CON-01016#ex-1",
     "agree": true,
-    "detail": "judged: Same conclusion and numbers as the key; checked values (limits, signs, sums, derivatives) are consistent.",
-    "method": "cancel and sign analysis"
+    "detail": "judged by claude-opus-5-5: only asymptote x = -2, left +oo and right -oo (SymPy): matches",
+    "method": "cancel (x-1); 2(x-3)/(x+2) sign analysis"
    },
    {
     "id": "LSN-CON-01016#chk-1",
     "agree": true,
-    "detail": "judged: Same conclusion and numbers as the key; checked values (limits, signs, sums, derivatives) are consistent.",
-    "method": "sign analysis"
+    "detail": "judged by claude-opus-5-5: left limit +oo (SymPy): matches",
+    "method": "numerator -10 negative, x+2 negative on the left"
    },
    {
     "id": "LSN-CON-01016#chk-2",
     "agree": true,
-    "detail": "judged: Same conclusion and numbers as the key; checked values (limits, signs, sums, derivatives) are consistent.",
-    "method": "cancel and sign analysis"
+    "detail": "judged by claude-opus-5-5: asymptote x = 2, right limit -oo (SymPy): matches",
+    "method": "g=-x/(x-2), numerator -2 over 0+"
    },
    {
     "id": "LSN-CON-01016#chk-3",
     "agree": true,
     "detail": "key option C, re-solver C",
-    "method": "cancel and sign analysis"
+    "method": "h=3(x-4)/(x+1); numerator -15 at -1; +oo left, -oo right"
    }
   ],
-  "answers_file": "/tmp/claude-0/-home-user-growth/ac029253-8ff0-5a4b-8b5f-cdcaf5e8ff8d/scratchpad/verify/answers_04.json"
+  "answers_file": "docs/lessons/verification/answers/delta-2026-09-30-a.json"
  },
  "audit": {
   "date": "2026-09-29",

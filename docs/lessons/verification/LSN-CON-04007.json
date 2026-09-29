@@ -11,34 +11,34 @@
     "id": "LSN-CON-04007#ex-1",
     "agree": true,
     "detail": "agree (symbolic)",
-    "method": "Differentiate x^2+y^2=225 implicitly, y=12; units ft/s (top moving down)."
+    "method": "y=12, x x'+y y'=0, so 18+12y'=0 (ft/s, top moving down)"
    },
    {
     "id": "LSN-CON-04007#ex-2",
     "agree": true,
     "detail": "agree (symbolic)",
-    "method": "Implicit differentiation of 2x^2+xy+y^2=4 at (1,-2)."
+    "method": "differentiate 4xx'+x'y+xy'+2yy'=0 at (1,-2)"
    },
    {
     "id": "LSN-CON-04007#chk-1",
     "agree": true,
-    "detail": "re-solver arithmetic error refuted by SymPy; see resolve_notes",
-    "method": "Solve 18+24y'=0; units ft/s."
+    "detail": "judged by claude-opus-5-5: re-solver slip: 2(9)(2) is 36, not 18; SymPy solve(36 + 24*y) gives -3/2, the key",
+    "method": "18+24 y'=0 (ft/s)"
    },
    {
     "id": "LSN-CON-04007#chk-2",
     "agree": true,
     "detail": "agree (symbolic)",
-    "method": "dA/dt=2*pi*r*dr/dt; units cm^2/min."
+    "method": "dA/dt=2*pi*r*dr/dt (cm^2/min)"
    },
    {
     "id": "LSN-CON-04007#chk-3",
     "agree": true,
     "detail": "agree (symbolic)",
-    "method": "Implicit differentiation at (1,1)."
+    "method": "2xx'+3yx'+3xy'+4yy'=0 at (1,1), x'=2"
    }
   ],
-  "answers_file": "/tmp/claude-0/-home-user-growth/ac029253-8ff0-5a4b-8b5f-cdcaf5e8ff8d/scratchpad/verify/answers_06.json"
+  "answers_file": "docs/lessons/verification/answers/delta-2026-09-30-a.json"
  },
  "resolve_notes": [
   {

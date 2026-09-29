@@ -10,29 +10,29 @@
    {
     "id": "LSN-CON-05009#ex-1",
     "agree": true,
-    "detail": "judged: Same conclusion and numbers as the key; checked values (limits, signs, sums, derivatives) are consistent.",
+    "detail": "judged by claude-opus-5-5: f'(2) = 0 and f''(2) = 18 > 0 (SymPy), relative minimum: matches",
     "method": "second derivative test"
    },
    {
     "id": "LSN-CON-05009#chk-1",
     "agree": true,
-    "detail": "judged: Same conclusion and numbers as the key; checked values (limits, signs, sums, derivatives) are consistent.",
+    "detail": "judged by claude-opus-5-5: relative minimum at 2: matches",
     "method": "second derivative test"
    },
    {
     "id": "LSN-CON-05009#chk-2",
     "agree": true,
-    "detail": "judged: Same conclusion and numbers as the key; checked values (limits, signs, sums, derivatives) are consistent.",
+    "detail": "judged by claude-opus-5-5: h''(4) = -18 < 0 (SymPy), relative maximum at 4: matches",
     "method": "h''=-12x+30"
    },
    {
     "id": "LSN-CON-05009#chk-3",
     "agree": true,
     "detail": "key option A, re-solver A",
-    "method": "g''(-3)=24>0"
+    "method": "g''(-3)=24>0; g'(2)=-30 not zero so C invalid"
    }
   ],
-  "answers_file": "/tmp/claude-0/-home-user-growth/ac029253-8ff0-5a4b-8b5f-cdcaf5e8ff8d/scratchpad/verify/answers_07.json"
+  "answers_file": "docs/lessons/verification/answers/delta-2026-09-30-a.json"
  },
  "audit": {
   "date": "2026-09-29",

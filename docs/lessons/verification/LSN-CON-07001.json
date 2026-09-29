@@ -10,29 +10,29 @@
    {
     "id": "LSN-CON-07001#ex-1",
     "agree": true,
-    "detail": "judged: Same conclusion and numbers as the key; checked values (limits, signs, sums, derivatives) are consistent.",
-    "method": "Newton cooling: rate proportional to (ambient - temperature); units are degrees per minute."
+    "detail": "judged by claude-opus-5-5: dT/dt = k(70 - T), T(0) = 95 is the key with the variable renamed",
+    "method": "Newton cooling model"
    },
    {
     "id": "LSN-CON-07001#chk-1",
     "agree": true,
-    "detail": "judged: Same conclusion and numbers as the key; checked values (limits, signs, sums, derivatives) are consistent.",
-    "method": "Rate proportional to 70 - H plus initial value."
+    "detail": "judged by claude-opus-5-5: dH/dt = k(70 - H), H(0) = 95 equals the key",
+    "method": "proportional to 70-H"
    },
    {
     "id": "LSN-CON-07001#chk-2",
     "agree": true,
     "detail": "agree (symbolic)",
-    "method": "Rate proportional to 40 - C (with C(0)=25)."
+    "method": "proportional to 40-C"
    },
    {
     "id": "LSN-CON-07001#chk-3",
     "agree": true,
     "detail": "agree (symbolic)",
-    "method": "Rate proportional to 50 - P with initial value 60; no options were shown."
+    "method": "proportional to 50-P (no options were supplied)"
    }
   ],
-  "answers_file": "/tmp/claude-0/-home-user-growth/ac029253-8ff0-5a4b-8b5f-cdcaf5e8ff8d/scratchpad/verify/answers_10.json"
+  "answers_file": "docs/lessons/verification/answers/delta-2026-09-30-a.json"
  },
  "audit": {
   "date": "2026-09-29",

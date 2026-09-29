@@ -10,29 +10,29 @@
    {
     "id": "LSN-CON-01019#ex-1",
     "agree": true,
-    "detail": "judged: Same conclusion and numbers as the key; checked values (limits, signs, sums, derivatives) are consistent.",
-    "method": "IVT"
+    "detail": "judged by claude-opus-5-5: yes by the IVT; the re-solver's interval (1, 3) lies inside the design's (1, 8)",
+    "method": "IVT on [1,3]"
    },
    {
     "id": "LSN-CON-01019#chk-1",
     "agree": true,
-    "detail": "judged: Same conclusion and numbers as the key; checked values (limits, signs, sums, derivatives) are consistent.",
+    "detail": "judged by claude-opus-5-5: IVT conclusion, some c with f(c) = 0: matches",
     "method": "IVT"
    },
    {
     "id": "LSN-CON-01019#chk-2",
     "agree": true,
-    "detail": "judged: Same conclusion and numbers as the key; checked values (limits, signs, sums, derivatives) are consistent.",
-    "method": "IVT"
+    "detail": "judged by claude-opus-5-5: yes, c in (2, 4) from f(4) < 1 < f(2): matches",
+    "method": "IVT on [2,4]"
    },
    {
     "id": "LSN-CON-01019#chk-3",
     "agree": true,
     "detail": "key option B, re-solver B",
-    "method": "IVT with continuity justification"
+    "method": "needs continuity justified and at-least-one conclusion"
    }
   ],
-  "answers_file": "/tmp/claude-0/-home-user-growth/ac029253-8ff0-5a4b-8b5f-cdcaf5e8ff8d/scratchpad/verify/answers_04.json"
+  "answers_file": "docs/lessons/verification/answers/delta-2026-09-30-a.json"
  },
  "audit": {
   "date": "2026-09-29",

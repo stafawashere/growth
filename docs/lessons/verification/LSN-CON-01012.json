@@ -10,35 +10,35 @@
    {
     "id": "LSN-CON-01012#ex-1",
     "agree": true,
-    "detail": "judged: Same conclusion and numbers as the key; checked values (limits, signs, sums, derivatives) are consistent.",
-    "method": "Cancel (x-1); leftover 2(x-3)/(x+1)^2."
+    "detail": "judged by claude-opus-5-5: removable at 1 (SymPy limit -1, f(1) undefined) and vertical asymptote at -1 (limits -oo) match the design's two classifications",
+    "method": "cancel (x-1); 2(x-3)/(x+1)^2"
    },
    {
     "id": "LSN-CON-01012#ex-2",
     "agree": true,
-    "detail": "judged: Same conclusion and numbers as the key; checked values (limits, signs, sums, derivatives) are consistent.",
-    "method": "One-sided limits differ."
+    "detail": "judged by claude-opus-5-5: jump at 2, limits 3 and -1, matches the design's jump verdict",
+    "method": "one-sided limits 3 and -1"
    },
    {
     "id": "LSN-CON-01012#chk-1",
     "agree": true,
-    "detail": "judged: Same conclusion and numbers as the key; checked values (limits, signs, sums, derivatives) are consistent.",
-    "method": "Limit exists but f(1) undefined."
+    "detail": "judged by claude-opus-5-5: removable at 1 matches the design's final step",
+    "method": "limit exists, f undefined"
    },
    {
     "id": "LSN-CON-01012#chk-2",
     "agree": true,
-    "detail": "judged: Same conclusion and numbers as the key; checked values (limits, signs, sums, derivatives) are consistent.",
-    "method": "Cancel (x-2); limit finite."
+    "detail": "judged by claude-opus-5-5: removable at 2 with limit -5/4 matches the design's final step",
+    "method": "cancel (x-2), -(x+3)/x^2 at 2"
    },
    {
     "id": "LSN-CON-01012#chk-3",
     "agree": true,
     "detail": "key option B, re-solver B",
-    "method": "Cancel (x+2): hole at -2; 3x/(x-1)^2 blows up at 1."
+    "method": "cancel (x+2): limit -2/3 at -2 (removable); x=1 vertical asymptote"
    }
   ],
-  "answers_file": "/tmp/claude-0/-home-user-growth/ac029253-8ff0-5a4b-8b5f-cdcaf5e8ff8d/scratchpad/verify/answers_03.json"
+  "answers_file": "docs/lessons/verification/answers/delta-2026-09-30-a.json"
  },
  "audit": {
   "date": "2026-09-29",

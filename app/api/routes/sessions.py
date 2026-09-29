@@ -90,6 +90,13 @@ def chosen_option(item, answer):
    return None
 
 
+def stored_answer_key(item):
+   try:
+      return json.loads(item.answer_key)
+   except (TypeError, ValueError):
+      return None
+
+
 def session_payload(db, row):
    remaining = [
       item
@@ -365,11 +372,17 @@ def read_feedback(
    error_record = context.errors.get(error_path) if error_path else None
    is_opener = service.served_as_opener(row, attempt)
 
+   graded_item = {
+      "worked_solution": item.worked_solution,
+      "answer_key": stored_answer_key(item),
+      "options": item.options or [],
+   }
+
    try:
       feedback = render.render_feedback(
          attempt.served_stage,
          archetype,
-         {"worked_solution": item.worked_solution},
+         graded_item,
          submitted=attempt.submitted_at is not None,
          correct=None if attempt.correct is None else bool(attempt.correct),
          chosen_option=chosen,

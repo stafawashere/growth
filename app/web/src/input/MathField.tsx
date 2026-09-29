@@ -1,4 +1,4 @@
-import type { DetailedHTMLProps, HTMLAttributes } from "react";
+import type { DetailedHTMLProps, HTMLAttributes, MutableRefObject } from "react";
 import { useEffect, useId, useRef, useState } from "react";
 
 declare global {
@@ -34,16 +34,50 @@ export function readMathJsonValue(field: MathFieldElementLike): unknown {
    return JSON.parse(raw);
 }
 
+/* MathLive writes an empty field as the symbol Nothing, and a stand-in may write nothing at all. */
+export function isEmptyMathJson(value: unknown) {
+   const isAbsent = value === null || value === undefined || value === "";
+   const isNothingSymbol = value === "Nothing";
+   const isEmptyList = Array.isArray(value) && value.length === 0;
+   const isNothingList = Array.isArray(value) && value.length === 1 && value[0] === "Nothing";
+
+   return isAbsent || isNothingSymbol || isEmptyList || isNothingList;
+}
+
+export const UNREAD_FIELD = Symbol("unread field");
+
+/* The field's value as it stands now, read from the element rather than from the last input event,
+   so a check pressed straight after typing sends what is in the field. An element MathLive has not
+   upgraded has nothing to read. */
+export function readFieldNow(node: HTMLElement): unknown {
+   const field = node as unknown as Partial<MathFieldElementLike>;
+   const isUpgraded = typeof field.getValue === "function";
+
+   if (!isUpgraded) {
+      return UNREAD_FIELD;
+   }
+
+   try {
+      return readMathJsonValue(field as MathFieldElementLike);
+   } catch {
+      return null;
+   }
+}
+
+export type MathFieldReader = () => unknown;
+
 export interface MathFieldProps {
    label: string;
    initialLatex?: string;
    onChange: (mathjson: unknown) => void;
    onLoadFailure: (reason: unknown) => void;
    onLatexChange?: (latex: string) => void;
+   readerRef?: MutableRefObject<MathFieldReader | null>;
+   onReady?: () => void;
 }
 
 export function MathField(props: MathFieldProps) {
-   const { label, initialLatex, onChange, onLoadFailure, onLatexChange } = props;
+   const { label, initialLatex, onChange, onLoadFailure, onLatexChange, readerRef, onReady } = props;
    const handlesLoadFailure = typeof onLoadFailure === "function";
 
    if (!handlesLoadFailure) {
@@ -57,23 +91,32 @@ export function MathField(props: MathFieldProps) {
    const [spoken, setSpoken] = useState("");
    const elementRef = useRef<HTMLElement | null>(null);
    const failureHandler = useRef(onLoadFailure);
+   const readyHandler = useRef(onReady);
    const [loadFailed, setLoadFailed] = useState(false);
 
    useEffect(() => {
       failureHandler.current = onLoadFailure;
-   }, [onLoadFailure]);
+      readyHandler.current = onReady;
+   }, [onLoadFailure, onReady]);
 
    useEffect(() => {
       let isMounted = true;
 
-      import("mathlive").catch((reason) => {
-         if (!isMounted) {
-            return;
-         }
+      import("mathlive")
+         .then(() => customElements.whenDefined("math-field"))
+         .then(() => {
+            if (isMounted) {
+               readyHandler.current?.();
+            }
+         })
+         .catch((reason) => {
+            if (!isMounted) {
+               return;
+            }
 
-         setLoadFailed(true);
-         failureHandler.current(reason);
-      });
+            setLoadFailed(true);
+            failureHandler.current(reason);
+         });
 
       return () => {
          isMounted = false;
@@ -101,10 +144,18 @@ export function MathField(props: MathFieldProps) {
 
       node.addEventListener("input", handleInput);
 
+      if (readerRef !== undefined) {
+         readerRef.current = () => readFieldNow(node);
+      }
+
       return () => {
          node.removeEventListener("input", handleInput);
+
+         if (readerRef !== undefined) {
+            readerRef.current = null;
+         }
       };
-   }, [onChange, onLatexChange, loadFailed]);
+   }, [onChange, onLatexChange, loadFailed, readerRef]);
 
    if (loadFailed) {
       return (

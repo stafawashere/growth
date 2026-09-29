@@ -19,6 +19,9 @@ export interface HomeScreenProps {
    queueLines: ReadonlyArray<QueueLine>;
    focus?: ReadonlyArray<BlockFocus>;
    pace?: CountdownPace | null;
+   skillsDueForReview?: number;
+   dueTodaySkills?: number;
+   dueTodayMinutes?: number;
    onStartSession: () => void;
    onAddPracticeSet: () => void;
    onResumeSession: () => void;
@@ -55,6 +58,25 @@ function unitList(units: ReadonlyArray<number>) {
    return `${label} ${units.join(", ")}`;
 }
 
+/* The whole of today's due queue against what block 1 serves of it (app/session/preview.py
+   due_today_skills). It is a count, not a target, so it is left out when nothing waits beyond
+   the set. */
+export function dueBeyondSetSentence(dueTodaySkills: number, skillsDueForReview: number, dueTodayMinutes: number) {
+   const waiting = dueTodaySkills - skillsDueForReview;
+   const hasWaiting = dueTodaySkills > 0 && waiting > 0;
+
+   if (!hasWaiting) {
+      return null;
+   }
+
+   const minutes = Math.ceil(dueTodayMinutes);
+   const isOneSkill = waiting === 1;
+   const skillPhrase = isOneSkill ? "1 more skill is" : `${waiting} more skills are`;
+   const minuteWord = minutes === 1 ? "minute" : "minutes";
+
+   return `${skillPhrase} due today, about ${minutes} ${minuteWord}, beyond this set.`;
+}
+
 function ExamCountdown(props: { examDate: string; daysToExam: number; pace?: CountdownPace | null }) {
    const unit = props.daysToExam === 1 ? "day" : "days";
 
@@ -75,7 +97,10 @@ function FocusCard(props: { focus: BlockFocus }) {
    const copy = FOCUS_COPY[block];
    const itemWord = items === 1 ? "item" : "items";
    const hasUnits = units.length > 0;
-   const hasMore = moreSkills > 0;
+   const namesSkills = block !== "mixed";
+   const hasMore = namesSkills && moreSkills > 0;
+   const shownSkills = namesSkills ? skills : [];
+   const hasList = shownSkills.length > 0 || hasMore;
 
    return (
       <li className="card card-flush queue-card" data-testid="focus-block">
@@ -93,27 +118,31 @@ function FocusCard(props: { focus: BlockFocus }) {
             </span>
          </div>
 
-         <ul className="queue-list">
-            {skills.map((skill) => (
-               <li key={skill} className="queue-item">
-                  {skill}
-               </li>
-            ))}
+         {hasList ? (
+            <ul className="queue-list">
+               {shownSkills.map((skill) => (
+                  <li key={skill} className="queue-item">
+                     {skill}
+                  </li>
+               ))}
 
-            {hasMore ? (
-               <li className="queue-item queue-item-more">
-                  <span className="helper">and {moreSkills} more</span>
-               </li>
-            ) : null}
-         </ul>
+               {hasMore ? (
+                  <li className="queue-item queue-item-more">
+                     <span className="helper">and {moreSkills} more</span>
+                  </li>
+               ) : null}
+            </ul>
+         ) : null}
       </li>
    );
 }
 
 function ReadyQueue(props: HomeScreenProps) {
    const { queueMinutes, queueLines, focus = [], onStartSession } = props;
+   const { skillsDueForReview = 0, dueTodaySkills = 0, dueTodayMinutes = 0 } = props;
    const hasFocus = focus.length > 0;
    const shownLines = queueLines.filter((line) => line.count > 0);
+   const beyondSet = dueBeyondSetSentence(dueTodaySkills, skillsDueForReview, dueTodayMinutes);
 
    return (
       <>
@@ -138,6 +167,12 @@ function ReadyQueue(props: HomeScreenProps) {
                      </div>
                   </div>
                ))}
+
+               {beyondSet !== null ? (
+                  <p className="helper today-beyond" data-testid="due-beyond-set">
+                     {beyondSet}
+                  </p>
+               ) : null}
             </div>
 
             <button type="button" className="button-primary button-large" onClick={onStartSession}>

@@ -1,6 +1,8 @@
+import type { MutableRefObject } from "react";
 import type { Confidence, ServedItem, ServedStep } from "../api/types";
 import { DesmosPanel } from "../input/DesmosPanel";
 import { MathAnswerField } from "../input/MathAnswerField";
+import type { MathFieldReader } from "../input/MathField";
 import { FigureView } from "../figures/FigureView";
 import { McqControl } from "../input/McqControl";
 import { MathText } from "../math/MathText";
@@ -73,6 +75,9 @@ export interface ItemProps {
    onSelfExplanationChange: (text: string) => void;
    onCommit: () => void;
    awaitingConfidence: boolean;
+   mathReaderRef?: MutableRefObject<MathFieldReader | null>;
+   onMathFieldReady?: () => void;
+   commitDisabled?: boolean;
 }
 
 function requiredServedStepCount(stage: ServedItem["stage"]) {
@@ -102,7 +107,10 @@ export function Item(props: ItemProps) {
       selfExplanation,
       onSelfExplanationChange,
       onCommit,
-      awaitingConfidence
+      awaitingConfidence,
+      mathReaderRef,
+      onMathFieldReady,
+      commitDisabled = false
    } = props;
 
    const handlesAnswerUnavailable = typeof onAnswerUnavailable === "function";
@@ -204,6 +212,8 @@ export function Item(props: ItemProps) {
                         label="My answer"
                         onChange={onAnswerChange}
                         onLoadFailure={onAnswerUnavailable}
+                        readerRef={mathReaderRef}
+                        onReady={onMathFieldReady}
                      />
 
                      {takesNoAnswer ? (
@@ -232,7 +242,12 @@ export function Item(props: ItemProps) {
                   {keyHint(servesMcq)}
                </p>
 
-               <button type="button" className="motion-instant-submit-answer button-primary" onClick={onCommit}>
+               <button
+                  type="button"
+                  className="motion-instant-submit-answer button-primary"
+                  disabled={commitDisabled}
+                  onClick={onCommit}
+               >
                   {commitLabel}
                </button>
             </div>

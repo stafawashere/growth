@@ -113,6 +113,8 @@ class Feedback:
    self_explanation_prompt: str | None = None
    confidence: Confidence | None = None
    comparison: ComparisonPayload | None = None
+   correct_answer: dict | None = None
+   first_worked_step: dict | None = None
 
 
 def self_explanation_prompt(step_number):
@@ -212,6 +214,84 @@ def elaborated_payload(archetype, item, chosen_option, error_record):
    )
 
 
+def keyed_option(options):
+   keys = [option for option in options or [] if option.get("is_key") is True]
+   has_one_key = len(keys) == 1
+
+   return keys[0] if has_one_key else None
+
+
+def option_answer(option):
+   label = option.get("label")
+   has_label = isinstance(label, str) and label.strip() != ""
+
+   if has_label:
+      return {"label": label, "mathjson": None}
+
+   value = option.get("mathjson")
+
+   if value is None:
+      value = option.get("value")
+
+   if value is None:
+      return None
+
+   return {"label": None, "mathjson": value}
+
+
+def key_answer(answer_key):
+   """The key's MathJSON for a value key, or its label for a statement key."""
+   is_record = isinstance(answer_key, dict)
+
+   if not is_record:
+      return None
+
+   label = answer_key.get("label")
+   is_statement = answer_key.get("form") == "statement" and isinstance(label, str)
+
+   if is_statement:
+      return {"label": label, "mathjson": None}
+
+   value = answer_key.get("mathjson")
+
+   if value is None:
+      value = answer_key.get("numeric")
+
+   if value is None:
+      return None
+
+   return {"label": None, "mathjson": value}
+
+
+def correct_answer(item, answer):
+   """What the correct response would have shown (03, Content, part 3). A choice answer is met
+   with the keyed option as it was offered; a typed answer with the key itself, falling back to
+   the keyed option when the key carries nothing to show."""
+   option = keyed_option(item.get("options"))
+   from_option = option_answer(option) if option is not None else None
+   from_key = key_answer(item.get("answer_key"))
+   was_a_choice = (answer or {}).get("option_id") is not None
+
+   if was_a_choice and from_option is not None:
+      return from_option
+
+   if from_key is not None:
+      return from_key
+
+   return from_option
+
+
+def first_worked_step(item):
+   """A correct opener shown without the tutor gets the method's first step; a worked solution
+   that is not a step list has none to give, and the feedback goes out without it."""
+   try:
+      steps = worked_steps(item["worked_solution"])
+   except ValueError:
+      return None
+
+   return {"index": 1, "text": steps[0]["text"]}
+
+
 def comparison_label(first_step, observed_behavior):
    """One line, in the library's own words: the method's first step, then what the matched error
    record says responses did, when there is one."""
@@ -276,7 +356,7 @@ def render_feedback(
    shows_steps = served_stage in STEP_VERIFICATION_STAGES
 
    if shows_steps:
-      return _supported_feedback(served_stage, item, submitted, correct, rating)
+      return _supported_feedback(served_stage, item, submitted, correct, rating, answer)
 
    if not submitted:
       return Feedback(kind=FeedbackKind.WITHHELD, stage=served_stage, confidence=rating)
@@ -287,7 +367,14 @@ def render_feedback(
       return Feedback(kind=FeedbackKind.UNGRADED, stage=served_stage, confidence=rating)
 
    if correct:
-      return Feedback(kind=FeedbackKind.CORRECT, stage=served_stage, confidence=rating)
+      opener_step = first_worked_step(item) if is_opener else None
+
+      return Feedback(
+         kind=FeedbackKind.CORRECT,
+         stage=served_stage,
+         confidence=rating,
+         first_worked_step=opener_step,
+      )
 
    payload = elaborated_payload(archetype, item, chosen_option, error_record)
 
@@ -297,6 +384,7 @@ def render_feedback(
       elaborated=payload,
       self_explanation_prompt=self_explanation_prompt(payload.violated_step_index + 1),
       confidence=rating,
+      correct_answer=correct_answer(item, answer),
    )
 
 
@@ -329,6 +417,8 @@ def as_dict(feedback):
       "self_explanation_prompt": feedback.self_explanation_prompt,
       "confidence": feedback.confidence.value if feedback.confidence is not None else None,
       "comparison": comparison_as_dict(comparison) if has_comparison else None,
+      "correct_answer": feedback.correct_answer,
+      "first_worked_step": feedback.first_worked_step,
    }
 
 
@@ -343,7 +433,7 @@ def comparison_as_dict(comparison):
    }
 
 
-def _supported_feedback(served_stage, item, submitted, correct, rating):
+def _supported_feedback(served_stage, item, submitted, correct, rating, answer=None):
    worked_solution = item["worked_solution"]
    verdict = correct if submitted else None
    marks = step_verification(served_stage, worked_solution, verdict)
@@ -363,6 +453,7 @@ def _supported_feedback(served_stage, item, submitted, correct, rating):
       step_marks=marks,
       self_explanation_prompt=prompt,
       confidence=rating,
+      correct_answer=correct_answer(item, answer) if was_marked_wrong else None,
    )
 
 

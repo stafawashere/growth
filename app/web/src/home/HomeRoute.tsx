@@ -142,6 +142,9 @@ export function HomeRoute({ today, onStartSession, onResumeSession, onStartOnboa
          queueMinutes={Math.ceil(progress.forecast_minutes)}
          queueLines={queueLinesFrom(progress)}
          focus={progress.focus ?? []}
+         skillsDueForReview={progress.skills_due_for_review}
+         dueTodaySkills={progress.due_today_skills}
+         dueTodayMinutes={progress.due_today_minutes}
          pace={pace === null ? null : { verdict: pace.verdict, statement: pace.statement }}
          onStartSession={onStartSession}
          onAddPracticeSet={onStartSession}

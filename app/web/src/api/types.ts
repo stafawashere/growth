@@ -205,6 +205,13 @@ export interface ComparisonPayload {
    error_id: string | null;
 }
 
+/* app/feedback/render.py correct_answer: the key's MathJSON, or the label of a statement key or
+   keyed option. It is sent only once a wrong answer is graded, and never for an opener. */
+export interface CorrectAnswer {
+   label: string | null;
+   mathjson: unknown;
+}
+
 /* app/api/routes/sessions.py read_feedback: render.as_dict plus the two tutor fields. */
 export interface FeedbackPayload {
    kind: string;
@@ -214,6 +221,9 @@ export interface FeedbackPayload {
    self_explanation_prompt: string | null;
    confidence: Confidence | null;
    comparison?: ComparisonPayload | null;
+   correct_answer?: CorrectAnswer | null;
+   /* A correct opener's first worked step, for the comparison the tutor would have drawn. */
+   first_worked_step?: { index: number; text: string } | null;
    sentence: string | null;
    tutor_unavailable: boolean;
    /* 15 Diagnosis links: the concept lesson's block on the error the answer showed. */

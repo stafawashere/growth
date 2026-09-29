@@ -34,9 +34,11 @@ import { FigureView } from "../figures/FigureView";
 import { MathText } from "../math/MathText";
 import { MathValue } from "../math/MathValue";
 import { ActionFailed, LoadFailed, Loading } from "../status/LoadState";
-import { ComparisonPanel } from "./ComparisonPanel";
+import { isEmptyMathJson, UNREAD_FIELD } from "../input/MathField";
+import type { MathFieldReader } from "../input/MathField";
+import { COMPARISON_LABEL, ComparisonPanel, METHOD_LABEL } from "./ComparisonPanel";
 import { CONFIDENCE_CHOICES } from "./ConfidencePrompt";
-import { ElaboratedPanel } from "./ElaboratedPanel";
+import { CorrectResult, ElaboratedPanel } from "./ElaboratedPanel";
 import { ErrorNoteField } from "./ErrorNoteField";
 import { collectsConfidence, Item, servesChoice } from "./Item";
 import { SelfExplanationPrompt } from "./SelfExplanationPrompt";
@@ -55,6 +57,9 @@ export const STOP_CONFIRM_LABEL = "Stop and close this set";
 export const KEEP_GOING_LABEL = "Keep going";
 
 export const YOU_WROTE_LABEL = "You wrote";
+
+export const OPENER_WITHOUT_TUTOR =
+   "Setting your attempt beside the method needs the tutor, which is not available, so the comparison is not shown here.";
 
 const OPTION_KEYS = ["a", "b", "c", "d", "e"];
 
@@ -223,6 +228,8 @@ export function SessionScreen({ resumeSessionId, onLeave, onOpened }: SessionScr
    const [feedbackUnreadable, setFeedbackUnreadable] = useState(false);
    const [confidence, setConfidence] = useState<Confidence | null>(null);
    const [answerMathJson, setAnswerMathJson] = useState<unknown>(null);
+   const [mathFieldReady, setMathFieldReady] = useState(false);
+   const mathReader = useRef<MathFieldReader | null>(null);
    const [selectedOptionId, setSelectedOptionId] = useState<string | null>(null);
    const [selfExplanation, setSelfExplanation] = useState("");
    const [answerUnavailable, setAnswerUnavailable] = useState(false);
@@ -344,6 +351,10 @@ export function SessionScreen({ resumeSessionId, onLeave, onOpened }: SessionScr
       setAnswerUnavailable(true);
    }, []);
 
+   const noteMathFieldReady = useCallback(() => {
+      setMathFieldReady(true);
+   }, []);
+
    /* The attempt is already written when feedback is read, so a refused read must not hold the
       student on an item they cannot commit again. No plan copy exists for a feedback screen that
       failed to load, so it shows no sentence and only the way on. */
@@ -365,12 +376,23 @@ export function SessionScreen({ resumeSessionId, onLeave, onOpened }: SessionScr
          return;
       }
 
+      const isMcq = servesChoice(item);
+      const readNow = mathReader.current === null ? UNREAD_FIELD : mathReader.current();
+      const wasRead = readNow !== UNREAD_FIELD;
+      const typed = wasRead ? readNow : answerMathJson;
+      const fieldIsEmpty = isEmptyMathJson(typed);
+      const knowsTheFieldIsEmpty = fieldIsEmpty && (wasRead || mathFieldReady);
+      const refusesEmptyAnswer = !isMcq && knowsTheFieldIsEmpty;
+
+      if (refusesEmptyAnswer) {
+         return;
+      }
+
       inFlight.current = true;
       setActionFailed(false);
 
       try {
-         const isMcq = servesChoice(item);
-         const answer: AttemptAnswer = isMcq ? { option_id: selectedOptionId ?? "" } : { mathjson: answerMathJson };
+         const answer: AttemptAnswer = isMcq ? { option_id: selectedOptionId ?? "" } : { mathjson: typed };
          const ratesConfidence = collectsConfidence(item.stage) && confidence !== null;
 
          const result = await submitAttempt(session.id, {
@@ -382,6 +404,10 @@ export function SessionScreen({ resumeSessionId, onLeave, onOpened }: SessionScr
          /* An opener miss is not corrected: it is neither requeued nor noted (02, Session
             assembly), so it does not come back in Review. */
          const isCorrection = result.correct === false && item.is_opener !== true;
+
+         if (!isMcq) {
+            setAnswerMathJson(typed);
+         }
 
          setCommitted(result);
          setWorked((sofar) => ({
@@ -403,7 +429,7 @@ export function SessionScreen({ resumeSessionId, onLeave, onOpened }: SessionScr
       } finally {
          inFlight.current = false;
       }
-   }, [session, item, selectedOptionId, answerMathJson, confidence, showFeedback]);
+   }, [session, item, selectedOptionId, answerMathJson, mathFieldReady, confidence, showFeedback]);
 
    const rateConfidence = useCallback(
       async (value: Confidence) => {
@@ -640,17 +666,22 @@ export function SessionScreen({ resumeSessionId, onLeave, onOpened }: SessionScr
    const showsElaborated = feedback !== null && feedback.stage === "unsupported" && !showsComparison;
    const reinforcement = feedback !== null && feedback.kind === "correct" ? feedback.sentence : null;
    const showsReinforcement = reinforcement !== null && reinforcement.trim().length > 0;
+   const correctAnswer = feedback?.correct_answer ?? null;
 
    /* 11 P1 scope item 10: one note per corrected item, written before the retry is scheduled. An
       item the student got right is requeued by nothing and asks for nothing, and neither is an
       opener, whose feedback is the comparison alone. */
    const isOpener = item.is_opener === true;
    const wasCorrected = committed !== null && committed.correct === false && !isOpener;
+   const showsStepResult = marksSteps && wasCorrected;
+   const openerWithoutComparison = isOpener && feedback !== null && !showsComparison && !showsReinforcement;
+   const openerFirstStep = feedback?.first_worked_step ?? null;
    const owesNote = wasCorrected && errorNote.trim().length === 0;
    const awaitsRating =
       committed !== null && collectsConfidence(committed.served_stage) && committed.confidence === null;
 
    const choiceServed = servesChoice(item);
+   const awaitsMathValue = !choiceServed && mathFieldReady && !answerUnavailable && isEmptyMathJson(answerMathJson);
    const chosenOption = choiceServed ? (item.options ?? []).find((option) => option.id === selectedOptionId) ?? null : null;
    const wroteMath = !choiceServed && answerMathJson !== null;
    const showsWhatWasWritten = chosenOption !== null || wroteMath;
@@ -785,6 +816,28 @@ export function SessionScreen({ resumeSessionId, onLeave, onOpened }: SessionScr
 
                {marksSteps ? <StepMarks marks={feedback.step_marks} /> : null}
 
+               {showsStepResult ? <CorrectResult answer={correctAnswer} /> : null}
+
+               {openerWithoutComparison ? (
+                  <section className="comparison" data-testid="opener-without-tutor">
+                     <p className="eyebrow">{COMPARISON_LABEL}</p>
+
+                     <p>{OPENER_WITHOUT_TUTOR}</p>
+
+                     {openerFirstStep !== null ? (
+                        <div data-testid="opener-first-step">
+                           <p className="eyebrow">{METHOD_LABEL}</p>
+
+                           <ol className="worked-steps">
+                              <li data-step-index={openerFirstStep.index}>
+                                 <MathText text={openerFirstStep.text} />
+                              </li>
+                           </ol>
+                        </div>
+                     ) : null}
+                  </section>
+               ) : null}
+
                {showsReinforcement ? (
                   <p className="tutor-note" data-testid="tutor-sentence">
                      {reinforcement}
@@ -792,7 +845,12 @@ export function SessionScreen({ resumeSessionId, onLeave, onOpened }: SessionScr
                ) : null}
 
                {showsElaborated ? (
-                  <ElaboratedPanel elaborated={feedback.elaborated} sentence={feedback.sentence} lessonLink={feedback.lesson_link ?? null} />
+                  <ElaboratedPanel
+                     elaborated={feedback.elaborated}
+                     sentence={feedback.sentence}
+                     lessonLink={feedback.lesson_link ?? null}
+                     correctAnswer={isOpener ? null : correctAnswer}
+                  />
                ) : null}
 
                <SelfExplanationPrompt
@@ -831,6 +889,9 @@ export function SessionScreen({ resumeSessionId, onLeave, onOpened }: SessionScr
                onSelfExplanationChange={setSelfExplanation}
                onCommit={commit}
                awaitingConfidence={awaitsRating}
+               mathReaderRef={mathReader}
+               onMathFieldReady={noteMathFieldReady}
+               commitDisabled={awaitsMathValue}
             />
          )}
       </Page>

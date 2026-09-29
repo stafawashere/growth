@@ -391,6 +391,11 @@ def apply_observation(states, graph, observation, today):
       is_credited_success = c_credit > 0.0
       is_credited_failure = f_credit > 0.0 or is_gap
 
+      is_full_success = mastery_state == MasteryState.MASTERED
+
+      if is_full_success:
+         state.f *= constants.FAILURE_DECAY_ON_SUCCESS
+
       state.c += c_credit
       state.f += f_credit
       update_memory(state, grade, today)
@@ -403,7 +408,6 @@ def apply_observation(states, graph, observation, today):
          state.credited_observation_count += 1
 
       is_unaided = FadingStage(observation.served_stage) == FadingStage.UNSUPPORTED
-      is_full_success = mastery_state == MasteryState.MASTERED
       records_corroboration = is_full_success and is_unaided
 
       if records_corroboration:

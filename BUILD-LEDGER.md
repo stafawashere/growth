@@ -2364,6 +2364,30 @@ items) and items 3 and 6 (Slices 3 and 4). Every gate 11 names for P2 now exists
   ingest, routes, reader, 19 lessons) is next, behind the throughput ruling above, since lessons
   add minutes to block 2 without adding mastery evidence.
 
+- 2026-09-29, ruling (a) on the mastery throughput, by the operator. `FAILURE_DECAY_ON_SUCCESS`
+  0.7 in `app/engine/constants.py`; `app/engine/update.py` multiplies `f_k` by it on a direct full
+  success before that success's credit, never on a partial, notation-only answer, failure or
+  propagated credit. Source for the direction: R-PFA, Galyardt and Goldin 2015, JEDM 7(2)
+  (https://zenodo.org/records/3554672), where 0.7 is the best success bandwidth and the narrowest
+  tried is best for failures. Plans 02 (strength section and both tunables tables) and 12 record it.
+  Tests: `test_only_a_full_success_decays_the_failure_count` new, red without the change (2.0
+  against 1.4). Two assertions encoded lifetime failure counts and follow the ruling exactly:
+  `test_correct_never_lowers_m` expects f times 0.7 (red without the change); and
+  `test_a_re_diagnostic_updates_and_never_resets` now bounds f below by 0.7 to the power of that
+  skill's applied correct answers in the second run. That one still fails on a real reset:
+  red when the re-diagnostic was made to start from fresh states.
+  Checks: `tests/engine tests/progress tests/session` 159 passed, 3 failed
+  (`test_interleave_full_constraints`, `test_two_term_selection_whole_graph`, and
+  `test_a_re_diagnostic_updates_and_never_resets` before its bound was corrected; it passes after);
+  the exam-weight quota test now passes. P7 false mastery 0 of 320 (two_term) and 0 of 390
+  (random_control), ceiling 0.05.
+  Finding: the ruling does not lift the throughput ceiling. The ability-3.0 synthetic student
+  masters 110 of 539 teachable skills in 220 days against 120 before, within run-to-run noise. At
+  day 120 the 45 skills with at least 10 observations and no mastery fail on: no unaided success at
+  all (27, mostly skills loaded beside another primary, whose item is served at the primary's
+  fading stage), condition 3's second archetype still gated behind other unmastered skills (13),
+  and strength alone (3). Those two are the levers for the next ruling.
+
 ## In progress [inferred]
 
 Stage 1, items for Units 4 to 10, is complete in the worktree `../growth-content` on branch

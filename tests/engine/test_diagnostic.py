@@ -264,11 +264,22 @@ def test_a_re_diagnostic_updates_and_never_resets(library, full_bank):
       for skill_id in library.graph.archetypes[entry["archetype_id"]]["skills"]
    }
 
+   decays = {}
+
+   for entry in second.run.scored:
+      is_applied_success = entry["outcome"] == diagnostic.OUTCOME_CORRECT and not entry["held_out"]
+
+      if is_applied_success:
+         for skill_id in library.graph.archetypes[entry["archetype_id"]]["skills"]:
+            decays[skill_id] = decays.get(skill_id, 0) + 1
+
    for skill_id, (was_mastered, c, f, observations) in before.items():
       state = second.states[skill_id]
+      decayed_floor = f * constants.FAILURE_DECAY_ON_SUCCESS ** decays.get(skill_id, 0)
 
       assert state.observation_count >= observations
-      assert state.c >= c and state.f >= f
+      assert state.c >= c
+      assert state.f >= decayed_floor - 1e-12
 
       kept_mastery = state.mastered or not was_mastered
       was_seen_again = skill_id in asked_again

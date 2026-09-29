@@ -8,6 +8,7 @@ from datetime import date, datetime
 GAMMA = 1.0
 RHO = -0.5
 LAMBDA = 0.0
+FAILURE_DECAY_ON_SUCCESS = 0.7
 
 BETA_PER_FACTOR = -0.35
 BETA_CENTRE_FACTOR_COUNT = 2

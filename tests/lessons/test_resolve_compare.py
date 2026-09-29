@@ -98,3 +98,13 @@ def test_an_equal_record_copies_its_design_evidence(tmp_path):
 @pytest.mark.parametrize("argv", [["tool"], ["tool", "a.json"]])
 def test_usage_is_refused(argv, capsys):
    assert lesson_resolve_compare.main(argv) == 2
+
+
+def test_a_changed_distractor_differs(tmp_path, capsys):
+   record = transcribed()
+   record["checks"][2]["options"][0]["value"] = 9
+   exit_code, _ = run(tmp_path, record)
+   output = capsys.readouterr().out
+
+   assert exit_code == 1
+   assert "DIFFERS check 3 option 1 value" in output

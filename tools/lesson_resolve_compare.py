@@ -25,6 +25,8 @@ import sys
 from datetime import date
 from pathlib import Path
 
+import sympy
+
 ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(ROOT))
 
@@ -74,9 +76,16 @@ def key_row(field, record_key, design_key):
 
    if is_statement:
       design_text = design_key.get("text") or design_key.get("label")
-      record_text = record_key.get("label") or record_key.get("mathjson")
+      record_text = record_key.get("text") or record_key.get("label")
+      design_value = design_key.get("expr")
+      record_value = record_key.get("mathjson")
+      same_text = text_row(field, record_text, design_text)
+      same_value = str(record_value) == str(design_value)
 
-      return text_row(field, record_text, design_text)
+      if not same_value:
+         return (field, False, f"record value {record_value!r} against design {design_value!r}")
+
+      return same_text
 
    try:
       record_expression = to_sympy(record_key["mathjson"])
@@ -201,6 +210,56 @@ def check_rows(record, design):
       label = f"check {index}"
       rows.append(text_row(f"{label} stem", (record_check.get("stem") or {}).get("text"), (design_check.get("stem") or {}).get("text")))
       rows.append(key_row(f"{label} key", record_check.get("answer_key"), design_check.get("key")))
+      rows.extend(option_rows(label, record_check.get("options") or [], design_check.get("options") or []))
+
+   return rows
+
+
+def option_value(option):
+   value = option["mathjson"] if "mathjson" in option else option["value"]
+   is_symbol_name = isinstance(value, str) and value.isidentifier()
+   is_mathjson = isinstance(value, (list, dict)) or is_symbol_name
+
+   if is_mathjson:
+      return to_sympy(value)
+
+   return parse_expression(str(value))
+
+
+def same_value(record_value, design_value):
+   both_undefined = record_value is sympy.nan and design_value is sympy.nan
+
+   if both_undefined:
+      return "equivalent"
+
+   return verify.equivalence(record_value, design_value)
+
+
+def option_rows(label, record_options, design_options):
+   """An option's letter, key flag, error path and value, so a distractor that says one number
+   while the key says another cannot pass on the key row alone."""
+   rows = []
+
+   for index, record_option, design_option in pairs(record_options, design_options):
+      field = f"{label} option {index}"
+      record_marks = (record_option.get("id"), bool(record_option.get("is_key")), record_option.get("error_path"))
+      design_marks = (design_option.get("id"), bool(design_option.get("is_key")), design_option.get("error_path"))
+      marks_equal = record_marks == design_marks
+      rows.append((f"{field} marks", marks_equal, "" if marks_equal else f"record {record_marks} against design {design_marks}"))
+      has_design_value = "expr" in design_option
+
+      if not has_design_value:
+         rows.append(text_row(f"{field} text", record_option.get("text"), design_option.get("text")))
+         continue
+
+      try:
+         outcome = same_value(option_value(record_option), parse_expression(str(design_option["expr"])))
+      except Exception as error:
+         rows.append((f"{field} value", False, f"the values did not compare: {type(error).__name__}: {error}"))
+         continue
+
+      is_equal = outcome == "equivalent"
+      rows.append((f"{field} value", is_equal, "" if is_equal else f"record {record_option} against design {design_option['expr']} ({outcome})"))
 
    return rows
 

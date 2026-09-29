@@ -122,7 +122,7 @@ BC-QA-03004 is `no_calculator` and "ordinarily the opening part of a multipart f
   {
    "id": "st-1",
    "archetype_id": "BC-QA-03004",
-   "cue": "The stem asks for dy/dx or a slope at a point, from an equation in x and y defining a curve.",
+   "cue": "The stem asks for dy/dx or a slope at a point, from an equation in x and y.",
    "method": "First written line: differentiate every term of both sides with respect to x.",
    "rival": "Rival: differentiating y terms as though y were the independent variable (BC-ERR-03007).",
    "separating_feature": "y depends on x, so every y term carries dy/dx.",
@@ -256,7 +256,7 @@ BC-QA-03004 is `no_calculator` and "ordinarily the opening part of a multipart f
  ],
  "refresher": ["ki-1", "err-BC-ERR-03007", "err-BC-ERR-03008", "err-BC-ERR-03009", "ex-1"],
  "read_minutes": {"full": 3.6, "brief": 3.0},
- "word_count": {"full": 534, "brief": 449},
+ "word_count": {"full": 531, "brief": 446},
  "research_lines": [
   {"file": "research/units/unit-03-differentiation-composite-implicit-inverse.md", "line": "A term containing both variables is a product, so the product rule applies and the factor in y still carries dy/dx"}
  ],

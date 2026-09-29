@@ -134,7 +134,7 @@ No motion, interactive or model mode applies (docs/lessons/unit-03/README.md, se
   {
    "id": "st-1",
    "archetype_id": "BC-QA-03001",
-   "cue": "The stem asks for the derivative of the composite, from a formula built by composition, alone or as one factor of a product.",
+   "cue": "The stem asks for a composite's derivative, from a formula built by composition, alone or as a product factor.",
    "method": "First written line: identify the outer and inner functions, u = inner expression.",
    "rival": "Rival: differentiating the outer function and leaving out the inner derivative (BC-ERR-03001).",
    "separating_feature": "Each named layer owns one factor of the derivative.",
@@ -233,7 +233,7 @@ No motion, interactive or model mode applies (docs/lessons/unit-03/README.md, se
  ],
  "refresher": ["ki-1", "err-BC-ERR-03001", "err-BC-ERR-03002", "ex-1"],
  "read_minutes": {"full": 3.0, "brief": 3.0},
- "word_count": {"full": 446, "brief": 446},
+ "word_count": {"full": 442, "brief": 442},
  "research_lines": [
   {"file": "research/units/unit-03-differentiation-composite-implicit-inverse.md", "line": "Applying the rule requires naming the outer and the inner function first"}
  ],

@@ -121,7 +121,7 @@ BC-QA-08011 is `either`; the design takes Section I Part A, 2.14 minutes per que
   {
    "id": "st-1",
    "archetype_id": "BC-QA-08011",
-   "cue": "The stem asks for a volume, from a base region, the shape of the cross sections and the axis they are perpendicular to.",
+   "cue": "The stem asks for a volume from a base region, a cross section shape, and the perpendicular axis.",
    "method": "First written line: the side as the distance between the boundary curves.",
    "rival": "Rival: each boundary function squared separately (BC-ERR-99011).",
    "separating_feature": "The slice has one end on each curve.",
@@ -261,7 +261,7 @@ BC-QA-08011 is `either`; the design takes Section I Part A, 2.14 minutes per que
  ],
  "refresher": ["ki-1", "err-BC-ERR-08028", "err-BC-ERR-99011", "err-BC-ERR-99033", "ex-1"],
  "read_minutes": {"full": 3.6, "brief": 3.0},
- "word_count": {"full": 535, "brief": 449},
+ "word_count": {"full": 530, "brief": 444},
  "research_lines": [
   {"file": "research/units/unit-08-applications-integration.md", "line": "The side is a distance in the plane region, so it is the difference of the two boundary functions"}
  ],

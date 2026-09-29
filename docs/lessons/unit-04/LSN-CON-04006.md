@@ -136,7 +136,7 @@ BC-QA-04005 is `calculator` with a multipart free response structure, so Section
   {
    "id": "st-1",
    "archetype_id": "BC-QA-04005",
-   "cue": "A contextual model or its rate is given with a time interval; the stem asks a rate, its meaning, or its long run value.",
+   "cue": "A model or its rate over a time interval; the stem asks a rate, its meaning or long run value.",
    "method": "First line: name the quantity and its input, then the rate at the instant.",
    "rival": "Rival: infinity substituted into the rate in place of a limit expression (BC-ERR-99007).",
    "separating_feature": "End behaviour asked: write the limit first.",
@@ -587,8 +587,8 @@ BC-QA-04005 is `calculator` with a multipart free response structure, so Section
   "research/exam/exam-structure.md#Section and part layout"
  ],
  "word_count": {
-  "full": 568,
-  "brief": 448
+  "full": 564,
+  "brief": 444
  },
  "read_minutes": {
   "full": 3.8,

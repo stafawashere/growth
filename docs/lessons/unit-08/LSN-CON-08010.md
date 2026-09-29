@@ -125,7 +125,7 @@ BC-QA-08008 is `either`; the design takes Section I Part A, 2.14 minutes per que
   {
    "id": "st-1",
    "archetype_id": "BC-QA-08008",
-   "cue": "The stem asks for the area of a region enclosed by two graphs, from the curve equations or a shaded figure.",
+   "cue": "The stem asks for the area of a region between two graphs, from the curve equations or a shaded figure.",
    "method": "First written line: the upper curve named, then the integral of upper minus lower with its limits.",
    "rival": "Rival: the reversed order, reported as a negative area (BC-ERR-08020).",
    "separating_feature": "One interior input in both functions fixes the order.",
@@ -274,7 +274,7 @@ BC-QA-08008 is `either`; the design takes Section I Part A, 2.14 minutes per que
  ],
  "refresher": ["ki-1", "err-BC-ERR-06018", "err-BC-ERR-08020", "err-BC-ERR-99006", "err-BC-ERR-99011", "ex-1"],
  "read_minutes": {"full": 3.9, "brief": 3.0},
- "word_count": {"full": 573, "brief": 442},
+ "word_count": {"full": 572, "brief": 441},
  "research_lines": [
   {"file": "research/units/unit-08-applications-integration.md", "line": "An area is reported as a nonnegative quantity"}
  ],

@@ -142,7 +142,7 @@ BC-QA-04004 has calculator status either, so the lesson takes Section I Part A, 
   {
    "id": "st-1",
    "archetype_id": "BC-QA-04004",
-   "cue": "A position or velocity function and an open time interval; the stem asks during which intervals the particle moves a stated way.",
+   "cue": "A position or velocity function on an open interval; the stem asks when the particle moves a stated way.",
    "method": "First line: \\(v(t)=0\\), solved on the interval.",
    "rival": "Rival: integer times sampled (BC-ERR-04010), or direction read from the position (BC-ERR-04008).",
    "separating_feature": "The word interval: only solved zeros can bound it.",
@@ -689,8 +689,8 @@ BC-QA-04004 has calculator status either, so the lesson takes Section I Part A, 
   "research/exam/exam-structure.md#Section and part layout"
  ],
  "word_count": {
-  "full": 531,
-  "brief": 340
+  "full": 528,
+  "brief": 337
  },
  "read_minutes": {
   "full": 3.6,

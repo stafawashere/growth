@@ -136,7 +136,7 @@ BC-QA-03002 is `either` on calculator status and a single MCQ; this draw is inte
   {
    "id": "st-1",
    "archetype_id": "BC-QA-03002",
-   "cue": "The stem asks for the derivative of the composite at the stated input, from a table of f, f', g and g'.",
+   "cue": "The stem asks for the composite's derivative at the stated input, from a table of f, f', g and g'.",
    "method": "First written line: the inner function at the given input, g(a).",
    "rival": "Rival: the outer derivative read at the stated input (BC-ERR-03003).",
    "separating_feature": "The outer derivative's row is g(a).",
@@ -146,7 +146,7 @@ BC-QA-03002 is `either` on calculator status and a single MCQ; this draw is inte
   {
    "id": "st-2",
    "archetype_id": "BC-QA-03001",
-   "cue": "The stem asks for the derivative of the composite, from a formula built by composition, possibly one factor of a product.",
+   "cue": "The stem asks for the composite's derivative, from a formula built by composition, possibly one factor of a product.",
    "method": "First written line: identify the outer and inner functions.",
    "rival": "Rival: the composite factor differentiated without the enclosing product or quotient rule (BC-ERR-03006).",
    "separating_feature": "The operation applied last picks the first rule.",
@@ -323,7 +323,7 @@ BC-QA-03002 is `either` on calculator status and a single MCQ; this draw is inte
  ],
  "refresher": ["ki-1", "err-BC-ERR-03001", "err-BC-ERR-03002", "err-BC-ERR-03003", "err-BC-ERR-03004", "ex-1"],
  "read_minutes": {"full": 5.1, "brief": 2.8},
- "word_count": {"full": 755, "brief": 417},
+ "word_count": {"full": 751, "brief": 415},
  "research_lines": [
   {"file": "research/units/unit-03-differentiation-composite-implicit-inverse.md", "line": "Look up the inner value first, then look up the outer derivative at that value."}
  ],

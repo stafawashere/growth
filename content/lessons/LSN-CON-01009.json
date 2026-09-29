@@ -3,7 +3,7 @@
  "version": 1,
  "kind": "concept",
  "target_id": "BC-CON-01009",
- "status": "signed_off",
+ "status": "draft",
  "snapshot_digest": "a6a8ec9d3f59ab8f712e33d30cc22fc64bf2c478fbe7312e3e3118d319c6a42f",
  "source_digest": "d1d1dc3f91a935f9d1d1ebcb1657ce5a0e1eaeee488fda12ee055503429be81e",
  "read_minutes": {
@@ -11,12 +11,50 @@
   "brief": 3.0
  },
  "word_count": {
-  "full": 483,
-  "brief": 379
+  "full": 478,
+  "brief": 374
  },
  "sections": [
   {
    "id": "LSN-CON-01009#s1",
+   "type": "prediction",
+   "bands": [
+    "low",
+    "mid"
+   ],
+   "skills": [
+    "BC-SKL-01029",
+    "BC-SKL-01030",
+    "BC-SKL-01031"
+   ],
+   "sources": [
+    "BC-CON-01009",
+    "research/units/unit-01-limits-continuity.md#1.7 Selecting Procedures for Determining Limits"
+   ],
+   "evidence_tag": "inferred",
+   "stem": {
+    "text": "Predict. Substituting x = -2 into \\(\\frac{x^2+x-2}{x^2-x-6}\\) gives 0 over 0. What is the limit as x approaches -2?",
+    "command_verb": "predict"
+   },
+   "format": "short_answer",
+   "answer_key": {
+    "form": "numeric",
+    "mathjson": [
+     "Rational",
+     3,
+     5
+    ]
+   },
+   "resolution": {
+    "text": "The form after substitution picks the procedure: zero over zero calls for rewriting, and the rewritten quotient gives \\(\\frac{3}{5}\\) at -2."
+   },
+   "delivery": {
+    "mode": "text",
+    "reason": "rule 6"
+   }
+  },
+  {
+   "id": "LSN-CON-01009#s2",
    "type": "orientation",
    "bands": [
     "low",
@@ -32,7 +70,7 @@
     "research/units/unit-01-limits-continuity.md#1.7 Selecting Procedures for Determining Limits"
    ],
    "evidence_tag": "inferred",
-   "text": "A response substitutes the target first and names what comes out: a value, zero over zero, or a nonzero number over zero. That form picks the procedure: a value is the answer, zero over zero calls for rewriting, nonzero over zero calls for the sign on each side.",
+   "text": "A response substitutes the target first and names what comes out: a value, zero over zero, or a nonzero number over zero. That form picks the procedure.",
    "delivery": {
     "mode": "text",
     "reason": "rule 5: BC-SKL-01029 to 01031 carry BC-REP-01 and BC-REP-04 only (unit-01 README delivery map)",
@@ -42,7 +80,7 @@
    }
   },
   {
-   "id": "LSN-CON-01009#s2",
+   "id": "LSN-CON-01009#s3",
    "type": "key_ideas",
    "bands": [
     "low",
@@ -57,15 +95,11 @@
     "ced:44",
     "research/units/unit-01-limits-continuity.md#1.7 Selecting Procedures for Determining Limits"
    ],
-   "evidence_tag": "verified",
+   "evidence_tag": "inferred",
    "ek_id": null,
    "depth": "core",
-   "text": "Substituting the target gives one of three forms. A determinate value is the limit; rewriting stops there. Zero over zero calls for rewriting. A nonzero number over zero calls for the sign on each side. L'Hospital's rule is not in the Unit 1 set; it enters at topic 4.7.",
-   "notation": "the classification stated in words before any computation",
-   "quote": {
-    "text": "This topic is intended to focus on the skill of selecting an appropriate procedure for determining limits.",
-    "source": "ced:44"
-   },
+   "text": "Substituting gives a value, zero over zero, or a nonzero number over zero. A value is the limit; zero over zero calls for rewriting; nonzero over zero calls for the sign on each side. L'Hospital's rule is not in the Unit 1 set.",
+   "notation": "classification",
    "delivery": {
     "mode": "text",
     "reason": "rule 5: a classification rule with no figure-bearing BC-REP",
@@ -75,7 +109,7 @@
    }
   },
   {
-   "id": "LSN-CON-01009#s3",
+   "id": "LSN-CON-01009#s4",
    "type": "strategy",
    "bands": [
     "low",
@@ -87,17 +121,29 @@
     "BC-SKL-01031"
    ],
    "sources": [
-    "BC-QA-01014"
+    "BC-QA-01014",
+    "BC-ERR-01006"
    ],
    "evidence_tag": "inferred",
    "archetype_id": "BC-QA-01014",
-   "cue": "For each given limit, identify a method and use it: the stem names no method.",
-   "method": "First line: substitute the target and classify the form.",
-   "rival": "Rival: dividing the numerator limit by a zero denominator limit (BC-ERR-01006).",
-   "separating_feature": "The quotient theorem needs a nonzero denominator limit; zero there sends the choice to rewriting or signs."
+   "cue": "Several limits, no method named.",
+   "method": "Substitute the target and classify the form.",
+   "rival": "Dividing by a zero denominator limit.",
+   "separating_feature": "A zero denominator limit sends the choice to rewriting or signs.",
+   "contrast": {
+    "this": {
+     "text": "Identify a method for \\(\\lim_{x\\to3}\\frac{x^2-9}{x^2-5x+6}\\) and use it.",
+     "archetype_id": "BC-QA-01014"
+    },
+    "not_this": {
+     "text": "Use the squeeze theorem to find \\(\\lim_{x\\to0}x^2\\sin\\frac{1}{x}\\).",
+     "why_not": "The stem names the method, so nothing is selected."
+    },
+    "feature": "The stem names no method."
+   }
   },
   {
-   "id": "LSN-CON-01009#s4",
+   "id": "LSN-CON-01009#s5",
    "type": "worked_example",
    "bands": [
     "low",
@@ -249,6 +295,7 @@
     ]
    },
    "relation": "distinct",
+   "fix_prompt": true,
    "possible_reason": {
     "misconception_id": "BC-MIS-01001",
     "text": "a missing or displaced function value is read as a missing or displaced limit"
@@ -290,6 +337,7 @@
     ]
    },
    "relation": "distinct",
+   "fix_prompt": true,
    "possible_reason": {
     "misconception_id": "BC-MIS-01005",
     "text": "applies the quotient and composite theorems as formal rules without the denominator condition"
@@ -331,6 +379,7 @@
     ]
    },
    "relation": "distinct",
+   "fix_prompt": true,
    "possible_reason": {
     "misconception_id": "BC-MIS-01006",
     "text": "the symbol zero over zero as an answer, reading it as zero"
@@ -373,6 +422,7 @@
     ]
    },
    "relation": "distinct",
+   "fix_prompt": true,
    "possible_reason": {
     "misconception_id": "BC-MIS-01006",
     "text": "a nonexistence verdict rather than as a signal to rewrite"
@@ -439,7 +489,7 @@
     "form": "factor",
     "pole_power": 1
    },
-   "completes": "LSN-CON-01009#s4",
+   "completes": "LSN-CON-01009#s5",
    "stem": {
     "text": "The form is zero over zero and factoring leaves \\(\\frac{x-1}{x-3}\\) for \\(x\\ne-2\\). Find the limit at \\(-2\\).",
     "command_verb": "find"
@@ -748,19 +798,20 @@
   }
  ],
  "refresher": [
-  "LSN-CON-01009#s2",
+  "LSN-CON-01009#s3",
   "LSN-CON-01009#err-BC-ERR-01003",
   "LSN-CON-01009#err-BC-ERR-01006",
   "LSN-CON-01009#err-BC-ERR-01008",
   "LSN-CON-01009#err-BC-ERR-01009",
-  "LSN-CON-01009#s4"
+  "LSN-CON-01009#s5"
  ],
+ "no_figure_reason": "A classification rule stated in words. No skill carries a figure-bearing representation and the key idea describes no process to watch, so text and the step reveal serve.",
  "provenance": {
   "author": "tools/lesson_transcribe.py",
-  "prompt_version": "generator/lesson_v1",
+  "prompt_version": "generator/lesson_v2",
   "design_path": "docs/lessons/unit-01/LSN-CON-01009.md",
-  "signed_off_by": "claude-opus-5-5",
-  "signed_off_at": "2026-09-29",
+  "signed_off_by": null,
+  "signed_off_at": null,
   "not_human": true
  }
 }

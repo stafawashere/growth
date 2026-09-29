@@ -3,20 +3,68 @@
  "version": 1,
  "kind": "concept",
  "target_id": "BC-CON-01006",
- "status": "signed_off",
+ "status": "draft",
  "snapshot_digest": "a6a8ec9d3f59ab8f712e33d30cc22fc64bf2c478fbe7312e3e3118d319c6a42f",
  "source_digest": "946184128e8c683d5aac0322afe25799679e0ddf5d95d4b5b728776a18273014",
  "read_minutes": {
-  "full": 5.8,
+  "full": 5.5,
   "brief": 3.0
  },
  "word_count": {
-  "full": 693,
-  "brief": 357
+  "full": 702,
+  "brief": 372
  },
  "sections": [
   {
    "id": "LSN-CON-01006#s1",
+   "type": "prediction",
+   "bands": [
+    "low",
+    "mid"
+   ],
+   "skills": [
+    "BC-SKL-01009",
+    "BC-SKL-01014",
+    "BC-SKL-01015",
+    "BC-SKL-01017"
+   ],
+   "sources": [
+    "BC-CON-01006",
+    "research/units/unit-01-limits-continuity.md#1.3 Estimating Limit Values from Graphs"
+   ],
+   "evidence_tag": "inferred",
+   "stem": {
+    "text": "Predict. A graph has an open circle at (3, 2) and a dot at (3, 0). What is the limit of f at x = 3?",
+    "command_verb": "predict"
+   },
+   "format": "mcq",
+   "options": [
+    {
+     "id": "A",
+     "label": "0",
+     "is_key": false
+    },
+    {
+     "id": "B",
+     "label": "2",
+     "is_key": true
+    },
+    {
+     "id": "C",
+     "label": "It does not exist",
+     "is_key": false
+    }
+   ],
+   "resolution": {
+    "text": "The limit is the height both sides approach, 2; the dot gives f(3), not the limit."
+   },
+   "delivery": {
+    "mode": "text",
+    "reason": "rule 6"
+   }
+  },
+  {
+   "id": "LSN-CON-01006#s2",
    "type": "orientation",
    "bands": [
     "low",
@@ -34,7 +82,7 @@
     "research/units/unit-01-limits-continuity.md#1.4 Estimating Limit Values from Tables"
    ],
    "evidence_tag": "inferred",
-   "text": "A response reads the heights a graph approaches, or the values a table approaches, from both sides of the input, and states an estimate, not a proof.",
+   "text": "A response reads the height each side approaches.",
    "delivery": {
     "mode": "figure",
     "reason": "rule 3: BC-REP-02 on BC-SKL-01009; unit README delivery map",
@@ -101,7 +149,7 @@
    }
   },
   {
-   "id": "LSN-CON-01006#s2",
+   "id": "LSN-CON-01006#s3",
    "type": "key_ideas",
    "bands": [
     "low",
@@ -119,7 +167,7 @@
    "evidence_tag": "inferred",
    "ek_id": "BC-EK-LIM-1C5",
    "depth": "core",
-   "text": "Values at inputs approaching the target from both sides support an estimate of the two sided limit; one side supports only a one sided estimate. A finite table leaves the behaviour between its rows open.",
+   "text": "Values approaching from both sides support an estimate; a finite table leaves the rows between open.",
    "notation": "estimate",
    "delivery": {
     "mode": "motion",
@@ -186,7 +234,7 @@
    }
   },
   {
-   "id": "LSN-CON-01006#s3",
+   "id": "LSN-CON-01006#s4",
    "type": "key_ideas",
    "bands": [
     "low"
@@ -271,7 +319,7 @@
    }
   },
   {
-   "id": "LSN-CON-01006#s4",
+   "id": "LSN-CON-01006#s5",
    "type": "key_ideas",
    "bands": [
     "low",
@@ -285,14 +333,10 @@
     "BC-EK-LIM-1C3",
     "ced:40"
    ],
-   "evidence_tag": "verified",
+   "evidence_tag": "inferred",
    "ek_id": "BC-EK-LIM-1C3",
    "depth": "core",
-   "text": "A window at one scale can hide a hole or an oscillation, so a graphical reading supports an estimate, not a proof.",
-   "quote": {
-    "text": "graphical representations of functions may miss important function behavior.",
-    "source": "ced:40"
-   },
+   "text": "A window can hide a hole, so a graph supports an estimate.",
    "delivery": {
     "mode": "figure",
     "reason": "rule 3: BC-REP-02 on BC-SKL-01014, a scale that hides behaviour",
@@ -358,7 +402,7 @@
    }
   },
   {
-   "id": "LSN-CON-01006#s5",
+   "id": "LSN-CON-01006#s6",
    "type": "strategy",
    "bands": [
     "low",
@@ -368,17 +412,29 @@
     "BC-SKL-01009"
    ],
    "sources": [
-    "BC-QA-01001"
+    "BC-QA-01001",
+    "BC-ERR-01001"
    ],
    "evidence_tag": "verified",
    "archetype_id": "BC-QA-01001",
-   "cue": "A graph with breaks; limits or values asked at named inputs.",
-   "method": "First line: locate the input, then read each side's height.",
-   "rival": "The dot's height read as the limit (BC-ERR-01001).",
-   "separating_feature": "The limit is read beside the input, the value at it."
+   "cue": "A graph with named inputs.",
+   "method": "Read each side's height.",
+   "rival": "The dot read as the limit.",
+   "separating_feature": "Read beside the input.",
+   "contrast": {
+    "this": {
+     "text": "A graph has a hole at x = 2 and a dot at (2, 5). Estimate the limit at x = 2.",
+     "archetype_id": "BC-QA-01001"
+    },
+    "not_this": {
+     "text": "Evaluate the limit of (x**2 - 4)/(x - 2) at x = 2.",
+     "why_not": "Only a formula is given."
+    },
+    "feature": "A graph, not a formula."
+   }
   },
   {
-   "id": "LSN-CON-01006#s6",
+   "id": "LSN-CON-01006#s7",
    "type": "strategy",
    "bands": [
     "low",
@@ -389,17 +445,18 @@
     "BC-SKL-01017"
    ],
    "sources": [
-    "BC-QA-01002"
+    "BC-QA-01002",
+    "BC-ERR-01005"
    ],
    "evidence_tag": "verified",
    "archetype_id": "BC-QA-01002",
    "cue": "A table at inputs approaching the target from both sides, and a request for an estimate.",
-   "method": "First line: group the rows approaching from the left, then from the right.",
-   "rival": "Agreement to several places taken as proof (BC-ERR-01005).",
+   "method": "Group the rows approaching from the left, then from the right.",
+   "rival": "Agreement to several places taken as proof.",
    "separating_feature": "The answer says what the table suggests."
   },
   {
-   "id": "LSN-CON-01006#s7",
+   "id": "LSN-CON-01006#s8",
    "type": "strategy",
    "bands": [
     "low",
@@ -409,17 +466,18 @@
     "BC-SKL-01014"
    ],
    "sources": [
-    "BC-QA-01013"
+    "BC-QA-01013",
+    "BC-ERR-01002"
    ],
    "evidence_tag": "verified",
    "archetype_id": "BC-QA-01013",
    "cue": "A limit fact in one form, and candidate graphs or tables to match.",
-   "method": "First line: read the behaviour as input, side and value.",
-   "rival": "A one sided value matched to a two sided statement (BC-ERR-01002).",
+   "method": "Read the behaviour as input, side and value.",
+   "rival": "A one sided value matched to a two sided statement.",
    "separating_feature": "A match keeps input, side and value."
   },
   {
-   "id": "LSN-CON-01006#s8",
+   "id": "LSN-CON-01006#s9",
    "type": "worked_example",
    "bands": [
     "low",
@@ -511,7 +569,7 @@
    }
   },
   {
-   "id": "LSN-CON-01006#s9",
+   "id": "LSN-CON-01006#s10",
    "type": "worked_example",
    "bands": [
     "low"
@@ -546,7 +604,9 @@
     },
     {
      "cue": "On each side the outputs alternate near 2 and near -1.",
-     "why": "No single value is approached as the rows close in."
+     "why": "No single value is approached as the rows close in.",
+     "expression": "DNE",
+     "relation": "new"
     },
     {
      "cue": "The stem allows an explanation instead of an estimate.",
@@ -558,6 +618,7 @@
     "mathjson": "DNE",
     "text": "The table suggests that the limit does not exist, since the outputs alternate near 2 and near -1 on both sides."
    },
+   "fade_from": 3,
    "delivery": {
     "mode": "step_reveal",
     "reason": "rule 1; the rows render as a table inside the problem (BC-REP-03 given)",
@@ -593,6 +654,7 @@
     "expression": 2
    },
    "relation": "distinct",
+   "fix_prompt": true,
    "possible_reason": {
     "misconception_id": "BC-MIS-01001",
     "text": "the limit as another name for evaluation"
@@ -631,6 +693,7 @@
     "expression": "DNE"
    },
    "relation": "distinct",
+   "fix_prompt": true,
    "possible_reason": {
     "misconception_id": "BC-MIS-01002",
     "text": "a single one sided approach as sufficient"
@@ -668,6 +731,7 @@
     "expression": 2
    },
    "relation": "distinct",
+   "fix_prompt": true,
    "possible_reason": {
     "misconception_id": "BC-MIS-01001",
     "text": "a missing or displaced function value is read as a missing or displaced limit"
@@ -705,6 +769,7 @@
     "expression": "DNE"
    },
    "relation": "distinct",
+   "fix_prompt": true,
    "possible_reason": {
     "misconception_id": "BC-MIS-01004",
     "text": "oscillation or behaviour between the tabulated inputs is not considered"
@@ -733,7 +798,7 @@
    ],
    "evidence_tag": "inferred",
    "prerequisite_id": "BC-PRQ-06005",
-   "text": "Estimating rests on reading f at a stated input from a graph or a table. The failure: a value pulled from the wrong row or the wrong input."
+   "text": "Estimating reads f at a stated input from a graph or table."
   }
  ],
  "checks": [
@@ -760,7 +825,7 @@
     "justify": "bare",
     "request": "hole"
    },
-   "completes": "LSN-CON-01006#s8",
+   "completes": "LSN-CON-01006#s9",
    "stem": {
     "text": "Left of x = 3, f(x) = x - 1; right of 3, f(x) = 6 - 4x/3; the dot is (3, 0). Estimate the limit at x = 3.",
     "command_verb": "estimate"
@@ -971,20 +1036,20 @@
   }
  ],
  "refresher": [
-  "LSN-CON-01006#s2",
-  "LSN-CON-01006#s4",
+  "LSN-CON-01006#s3",
+  "LSN-CON-01006#s5",
   "LSN-CON-01006#err-BC-ERR-01001",
   "LSN-CON-01006#err-BC-ERR-01002",
   "LSN-CON-01006#err-BC-ERR-01003",
   "LSN-CON-01006#err-BC-ERR-01004",
-  "LSN-CON-01006#s8"
+  "LSN-CON-01006#s9"
  ],
  "provenance": {
   "author": "tools/lesson_transcribe.py",
-  "prompt_version": "generator/lesson_v1",
+  "prompt_version": "generator/lesson_v2",
   "design_path": "docs/lessons/unit-01/LSN-CON-01006.md",
-  "signed_off_by": "claude-opus-5-5",
-  "signed_off_at": "2026-09-29",
+  "signed_off_by": null,
+  "signed_off_at": null,
   "not_human": true
  }
 }

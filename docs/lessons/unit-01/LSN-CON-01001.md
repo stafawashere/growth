@@ -9,9 +9,13 @@ purpose: Authoring spec for the concept lesson on BC-CON-01001, the instantaneou
 
 Concept BC-CON-01001 (skills BC-SKL-01001, BC-SKL-01002, BC-SKL-01003, BC-SKL-01004), topic 1.1 of Unit 1, loaded by one archetype, BC-QA-01012 (family derivative-definition-limit). It is a root of the unit's concept order (docs/lessons/unit-01/README.md, section 1) and the first limit process the course builds.
 
+## Prediction
+
+Served first in both bands. Short answer on ex-1's own numbers: the averages of \(s(t)=2t^2+t+3\) over \([1,1+h]\) are 5.2, 5.02 and 5.002 as \(h\) shrinks, and the student gives the rate at \(t=1\). Key 5, the limit step of ex-1, so the blind re-solve of ex-1 covers it. The resolution shows that the averages are \(5+2h\) and approach 5, and states the concept's claim in the record's words. Sources: BC-CON-01001 and the topic 1.1 section that ki-1 cites. Delivery: text.
+
 ## Orientation
 
-Served text (40 words), from BC-CON-01001 `description_plain` and the topic's Assessment behaviour paragraph, which names the average rate with supporting work, the relation of the two kinds of rate, and formula or table sources (research/units/unit-01-limits-continuity.md#1.1 Introducing Calculus: Can Change Occur at an Instant?). No count, no frequency.
+Served text (25 words), from BC-CON-01001 `description_plain` and the topic's Assessment behaviour paragraph, which names the average rate with supporting work, the relation of the two kinds of rate, and formula or table sources (research/units/unit-01-limits-continuity.md#1.1 Introducing Calculus: Can Change Occur at an Instant?). No count, no frequency.
 
 ## Key ideas
 
@@ -25,13 +29,15 @@ The four skills map three BC-EK: BC-EK-CHA-1A2 (BC-SKL-01001, 01002), BC-EK-CHA-
 
 - BC-QA-01012 (family derivative-definition-limit; research/question-analysis/question-archetypes.md#BC-QA-01012 Instantaneous rate approached through average rates over shrinking intervals): `typical_wording` "Compute the average rate of change over each of the given intervals and describe what these values indicate about the rate at the named instant"; `common_givens` a quantity given by a formula or a table and a nested set of intervals closing on the instant; `asked_to_produce` the average rates, the value they approach, the instantaneous rate at the point. The signal is a list of intervals sharing one endpoint and shrinking, with a question about one instant. `multipart_structure` places it inside a multipart free response question; the topic's Assessment behaviour paragraph adds MCQ forms that ask for one average rate or for the statement relating the two kinds of rate. No `official_examples` are recorded.
 
+The contrast pair on st-1 takes its near miss from this list: the same function \(s(t)=3t^2+t\) asked once as averages over \([2,2+h]\) closing on an instant, and once as the average over \([2,5]\), where one interval and no instant are named (BC-SKL-01001 alone). The separating feature is intervals closing on an instant.
+
 What says "not this concept": a single interval with no instant named asks only for an average rate (BC-SKL-01001 alone); a stem naming a derivative value or a derivative rule belongs to Unit 2.
 
 ## Method choice
 
 One strategy block, both bands.
 
-- st-1, BC-QA-01012. Cue, from `common_givens` and `asked_to_produce`: a quantity by formula or table and intervals closing on an instant, with a question about what the averages indicate. Method, `expected_solution_path[0]`: compute the average rate over each interval. First written line: the quotient over the first interval. Rival, `wrong_approaches`: the change reported without dividing (BC-ERR-01029), or one average taken as the exact rate (BC-ERR-01030). Separating feature: every average has a denominator, and only the value the averages approach is the rate at the instant.
+- st-1, BC-QA-01012. Cue, from `common_givens` and `asked_to_produce`: a quantity by formula or table and intervals closing on an instant, with a question about what the averages indicate. Method, `expected_solution_path[0]`: compute the average rate over each interval. The first written line is the quotient over the first interval, served without a label. Rival, `wrong_approaches`: the change reported without dividing (BC-ERR-01029), or one average taken as the exact rate (BC-ERR-01030). Separating feature: every average has a denominator, and only the value the averages approach is the rate at the instant.
 
 The archetype record carries `asked_to_produce` and `common_givens`, so the block is verified. The research entry for BC-QA-01012 still reads "none recorded" for both; the snapshot record is the source (library gap, Sources).
 
@@ -84,14 +90,15 @@ Every non-text choice is [inferred], settled by the modality A/B in the build pl
 
 ## Band plan
 
-- Low (full): orientation, ki-1, ki-2, ki-3, st-1, ex-1, err-BC-ERR-01029, err-BC-ERR-01030, chk-1, chk-2, chk-3, bridge BC-PRQ-06005 when the state gates it. 576 words, 3.9 minutes (cap 900 and 6).
-- Mid (brief): orientation, ki-1, st-1, ex-1, both error blocks, chk-1, chk-2, bridge when gated. 441 words, 2.95 minutes (cap 450 and 3).
+- Low (full), served order: prediction, orientation, bridge BC-PRQ-06005 when the state gates it, ki-1, ki-2, ki-3, st-1 with its contrast pair, ex-1, chk-1, err-BC-ERR-01029, err-BC-ERR-01030, chk-2, chk-3. 580 words, 3.9 minutes (cap 900 and 6).
+- Mid (brief): prediction, orientation, bridge when gated, ki-1, st-1 with its contrast pair, ex-1, chk-1, both error blocks, chk-2. 449 words, 3.0 minutes (cap 450 and 3).
 - Refresher: ki-1, err-BC-ERR-01029, err-BC-ERR-01030, ex-1.
 
 ## Sources
 
 - BC-CON-01001; BC-SKL-01001, BC-SKL-01002, BC-SKL-01003, BC-SKL-01004; BC-EK-CHA-1A1, BC-EK-CHA-1A2, BC-EK-CHA-1A3; ced:38
 - BC-QA-01012; BC-TOP-0101, BC-TOP-0201
+- Prediction pr-1 and the contrast pair: BC-CON-01001, BC-SKL-01001, BC-ERR-01029, BC-ERR-01030
 - BC-ERR-01029, BC-ERR-01030; BC-MIS-01017, BC-MIS-02001, BC-MIS-01003
 - BC-PRQ-06005
 - research/units/unit-01-limits-continuity.md#1.1 Introducing Calculus: Can Change Occur at an Instant?
@@ -117,8 +124,25 @@ Every non-text choice is [inferred], settled by the modality A/B in the build pl
   "BC-SKL-01003",
   "BC-SKL-01004"
  ],
+ "prediction": {
+  "id": "pr-1",
+  "stem": {
+   "text": "Predict. For s(t) = 2t^2 + t + 3, average rates over [1, 1 + h] are 5.2, 5.02, 5.002 as h shrinks. What is the rate at t = 1?",
+   "command_verb": "predict"
+  },
+  "format": "short_answer",
+  "key": {
+   "form": "numeric",
+   "expr": "5"
+  },
+  "resolution": "The averages are 5 + 2h, which approach 5. The rate at an instant is the value they approach.",
+  "sources": [
+   "BC-CON-01001",
+   "research/units/unit-01-limits-continuity.md#1.1 Introducing Calculus: Can Change Occur at an Instant?"
+  ]
+ },
  "orientation": {
-  "text": "A response divides the change in a quantity by the change in the input over intervals closing on an instant, then names the value those averages approach as the rate at that instant. Stems give a formula or a table.",
+  "text": "A response divides the change in a quantity by the change in input over intervals closing on an instant, then names the value they approach.",
   "sources": [
    "BC-CON-01001",
    "research/units/unit-01-limits-continuity.md#1.1 Introducing Calculus: Can Change Occur at an Instant?"
@@ -129,7 +153,7 @@ Every non-text choice is [inferred], settled by the modality A/B in the build pl
    "id": "ki-1",
    "ek_id": "BC-EK-CHA-1A3",
    "depth": "core",
-   "text": "The rate at an instant is the value that average rates approach as intervals containing the point shrink toward it (BC-EK-CHA-1A3, ced:38). It is never the quotient evaluated at the point itself.",
+   "text": "The rate at an instant is the value average rates approach as intervals shrink toward the point. It is never the quotient at the point.",
    "notation": "instantaneous rate of change",
    "quote": null,
    "sources": [
@@ -142,7 +166,7 @@ Every non-text choice is [inferred], settled by the modality A/B in the build pl
    "id": "ki-2",
    "ek_id": "BC-EK-CHA-1A2",
    "depth": "extended",
-   "text": "The average rate of change of f from a to b is (f(b) - f(a))/(b - a), with a not equal to b. At a single point the change in the input is zero, so the quotient divides by zero and no average rate exists there (BC-EK-CHA-1A2, ced:38).",
+   "text": "The average rate of change of f from a to b is (f(b) - f(a))/(b - a), with a not equal to b. At a single point the change in the input is zero, so the quotient divides by zero and no average rate exists there.",
    "notation": "average rate of change",
    "quote": {
     "text": "the average rate of change is undefined at a point where the change in the independent variable would be zero.",
@@ -157,7 +181,7 @@ Every non-text choice is [inferred], settled by the modality A/B in the build pl
    "id": "ki-3",
    "ek_id": "BC-EK-CHA-1A1",
    "depth": "extended",
-   "text": "Calculus models change through limits (BC-EK-CHA-1A1, ced:38). The rate at an instant is the first such limit, and it is the definition the derivative of Unit 2 is built on.",
+   "text": "Calculus models change through limits. The rate at an instant is the first such limit, and it is the definition the derivative of Unit 2 is built on.",
    "notation": "",
    "quote": {
     "text": "Calculus uses limits to understand and model dynamic change.",
@@ -174,14 +198,27 @@ Every non-text choice is [inferred], settled by the modality A/B in the build pl
   {
    "id": "st-1",
    "archetype_id": "BC-QA-01012",
-   "cue": "Intervals closing on one instant, with a formula or table, and a question about what the averages indicate.",
-   "method": "First line: the quotient over the first interval.",
-   "rival": "The change reported undivided (BC-ERR-01029), or one average taken as the exact rate (BC-ERR-01030).",
-   "separating_feature": "Each average has a denominator; only their limit is the rate at the instant.",
+   "cue": "Intervals closing on an instant, and a question about averages.",
+   "method": "The quotient over the first interval.",
+   "rival": "The change undivided, or one average as the rate.",
+   "separating_feature": "Only the limit of the averages is the instant's rate.",
    "sources": [
-    "BC-QA-01012"
+    "BC-QA-01012",
+    "BC-ERR-01029",
+    "BC-ERR-01030"
    ],
-   "evidence_tag": "verified"
+   "evidence_tag": "verified",
+   "contrast": {
+    "this": {
+     "text": "For s(t) = 3t^2 + t, find the average rates over [2, 2 + h] as h shrinks and what they indicate.",
+     "archetype_id": "BC-QA-01012"
+    },
+    "not_this": {
+     "text": "For s(t) = 3t^2 + t, find the average rate of change over [2, 5].",
+     "why_not": "One interval, no instant, no limit."
+    },
+    "feature": "Intervals closing on an instant."
+   }
   }
  ],
  "worked_examples": [
@@ -208,28 +245,28 @@ Every non-text choice is [inferred], settled by the modality A/B in the build pl
    "calculator_status": "no_calculator",
    "steps": [
     {
-     "cue": "Every interval starts at t = 1: one quotient over [1, 1 + h].",
-     "why": "Change in s over change in t, with s(1) = 6.",
+     "cue": "Quotient over [1, 1 + h].",
+     "why": "Change in s over change in t.",
      "expr": "(2*(1+h)**2 + (1+h) + 3 - 6)/h",
      "relation": "new"
     },
     {
-     "cue": "The numerator is 5h + 2h^2, so divide by h.",
+     "cue": "Divide the numerator by h.",
      "why": "Averages: 5.2, 5.02, 5.002.",
      "expr": "5 + 2*h",
      "relation": "equivalent"
     },
     {
-     "cue": "The stem asks what they indicate: take their limit as h shrinks.",
-     "why": "5 + 2h approaches 5; no single interval gives 5.",
+     "cue": "Take the limit as h shrinks.",
+     "why": "5 + 2h approaches 5.",
      "expr": "5",
      "relation": "limit",
      "variable": "h",
      "point": "0"
     },
     {
-     "cue": "The stem asks about t = 1: name the limit as that rate.",
-     "why": "That limit is the definition of the rate."
+     "cue": "Name the limit as the rate.",
+     "why": "That limit defines the rate."
     }
    ],
    "answer": {
@@ -246,11 +283,11 @@ Every non-text choice is [inferred], settled by the modality A/B in the build pl
    "scoring_consequence": "The point for the average rate with supporting work is lost because the quotient is absent.",
    "wrong_step": {
     "text": "s(1.1) - s(1) = 0.52 reported as the rate.",
-    "expr": "2*(11/10)**2 + 11/10 + 3 - 6"
+    "expr": "0.52"
    },
    "right_step": {
     "text": "Divided by 0.1: 5.2.",
-    "expr": "(2*(11/10)**2 + 11/10 + 3 - 6)/(1/10)"
+    "expr": "5.2"
    },
    "relation": "distinct",
    "possible_reason": {
@@ -260,7 +297,8 @@ Every non-text choice is [inferred], settled by the modality A/B in the build pl
    "sources": [
     "BC-ERR-01029",
     "BC-MIS-02001"
-   ]
+   ],
+   "fix_prompt": true
   },
   {
    "error_id": "BC-ERR-01030",
@@ -268,7 +306,7 @@ Every non-text choice is [inferred], settled by the modality A/B in the build pl
    "scoring_consequence": "A point requiring the limiting description is lost, although an approximation phrased as an estimate can still earn credit.",
    "wrong_step": {
     "text": "5.2, the average over [1, 1.1], given as the rate.",
-    "expr": "26/5"
+    "expr": "5.2"
    },
    "right_step": {
     "text": "The averages approach 5, the rate.",
@@ -282,14 +320,15 @@ Every non-text choice is [inferred], settled by the modality A/B in the build pl
    "sources": [
     "BC-ERR-01030",
     "BC-MIS-01017"
-   ]
+   ],
+   "fix_prompt": true
   }
  ],
  "representations": null,
  "prerequisite_bridges": [
   {
    "prq_id": "BC-PRQ-06005",
-   "text": "Each average needs the quantity at both ends of its interval. The failure: a value read for the wrong input, or f and f' interchanged."
+   "text": "Averages need f at both interval ends. Failure: f read at the wrong input."
   }
  ],
  "time": {
@@ -643,11 +682,11 @@ Every non-text choice is [inferred], settled by the modality A/B in the build pl
  ],
  "read_minutes": {
   "full": 3.9,
-  "brief": 2.95
+  "brief": 3.0
  },
  "word_count": {
-  "full": 576,
-  "brief": 441
+  "full": 580,
+  "brief": 449
  },
  "research_lines": [
   {

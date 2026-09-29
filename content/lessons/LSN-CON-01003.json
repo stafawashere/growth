@@ -3,20 +3,66 @@
  "version": 1,
  "kind": "concept",
  "target_id": "BC-CON-01003",
- "status": "signed_off",
+ "status": "draft",
  "snapshot_digest": "a6a8ec9d3f59ab8f712e33d30cc22fc64bf2c478fbe7312e3e3118d319c6a42f",
  "source_digest": "c05c5cc53815ca63b9dd352c50ac71d9a9217d6b909bfce8dcfda0712bb929df",
  "read_minutes": {
-  "full": 2.2,
-  "brief": 2.2
+  "full": 2.95,
+  "brief": 2.95
  },
  "word_count": {
-  "full": 249,
-  "brief": 249
+  "full": 366,
+  "brief": 366
  },
  "sections": [
   {
    "id": "LSN-CON-01003#s1",
+   "type": "prediction",
+   "bands": [
+    "low",
+    "mid"
+   ],
+   "skills": [
+    "BC-SKL-01005",
+    "BC-SKL-01007"
+   ],
+   "sources": [
+    "BC-CON-01003",
+    "research/units/unit-01-limits-continuity.md#1.9 Connecting Multiple Representations of Limits"
+   ],
+   "evidence_tag": "inferred",
+   "stem": {
+    "text": "Predict. The limit of g(x) as x approaches -3 from the right is negative infinity. What does the graph of g do near x = -3?",
+    "command_verb": "predict"
+   },
+   "format": "mcq",
+   "options": [
+    {
+     "id": "A",
+     "label": "A vertical asymptote at x = -3, falling on the right",
+     "is_key": true
+    },
+    {
+     "id": "B",
+     "label": "A horizontal asymptote at y = -3",
+     "is_key": false
+    },
+    {
+     "id": "C",
+     "label": "A lowest point at x = -3",
+     "is_key": false
+    }
+   ],
+   "resolution": {
+    "text": "Infinity as the value claims outputs unbounded near a vertical line, so g falls without bound beside x = -3."
+   },
+   "delivery": {
+    "mode": "text",
+    "reason": "rule 6"
+   }
+  },
+  {
+   "id": "LSN-CON-01003#s2",
    "type": "orientation",
    "bands": [
     "low",
@@ -32,7 +78,7 @@
     "research/units/unit-01-limits-continuity.md#1.9 Connecting Multiple Representations of Limits"
    ],
    "evidence_tag": "inferred",
-   "text": "A response turns a described approach into limit symbols, or a written limit into words, keeping the input, the side the arrow names and the claimed value. Infinity as the value and infinity under the arrow make different claims.",
+   "text": "A response turns a described approach into limit symbols, or a written limit into words, keeping the input, the side the arrow names and the claimed value.",
    "delivery": {
     "mode": "text",
     "reason": "rule 5: BC-SKL-01005 carries BC-REP-01 and BC-REP-04 only; unit README delivery map",
@@ -42,7 +88,7 @@
    }
   },
   {
-   "id": "LSN-CON-01003#s2",
+   "id": "LSN-CON-01003#s3",
    "type": "key_ideas",
    "bands": [
     "low",
@@ -60,7 +106,7 @@
    "evidence_tag": "inferred",
    "ek_id": "BC-EK-LIM-1A1",
    "depth": "core",
-   "text": "A limit statement names three things: the input x approaches, the side (a minus superscript for the left, a plus for the right, none for both) and the claimed value (BC-EK-LIM-1A1, ced:39). Infinity as the value claims outputs unbounded near a vertical line; infinity under the arrow claims end behaviour.",
+   "text": "A limit statement names three things: the input x approaches, the side (a minus superscript for the left, a plus for the right, none for both) and the claimed value. Infinity as the value claims outputs unbounded near a vertical line; infinity under the arrow claims end behaviour.",
    "notation": "lim as x approaches c from the left; lim as x approaches c from the right",
    "delivery": {
     "mode": "text",
@@ -72,7 +118,7 @@
    }
   },
   {
-   "id": "LSN-CON-01003#s3",
+   "id": "LSN-CON-01003#s4",
    "type": "strategy",
    "bands": [
     "low",
@@ -83,17 +129,29 @@
     "BC-SKL-01007"
    ],
    "sources": [
-    "BC-QA-01013"
+    "BC-QA-01013",
+    "BC-ERR-01033"
    ],
    "evidence_tag": "verified",
    "archetype_id": "BC-QA-01013",
    "cue": "A limit fact in one form, with candidate sentences, graphs or tables to match against it.",
-   "method": "First line: read the statement as input, side and value.",
-   "rival": "Reading a vertical asymptote statement as end behaviour, or the reverse (BC-ERR-01033).",
-   "separating_feature": "Where the infinity symbol sits: in the value, or under the arrow."
+   "method": "Read the statement as input, side and value.",
+   "rival": "Reading a vertical asymptote statement as end behaviour, or the reverse.",
+   "separating_feature": "Where the infinity symbol sits: in the value, or under the arrow.",
+   "contrast": {
+    "this": {
+     "text": "The limit of h(x) as x approaches 4 from the left is infinity. Which statement describes the graph of h?",
+     "archetype_id": "BC-QA-01013"
+    },
+    "not_this": {
+     "text": "The limit of h(x) as x approaches infinity is 4. Which statement describes the graph of h?",
+     "why_not": "Infinity sits under the arrow, so it claims end behaviour, not a vertical line."
+    },
+    "feature": "Where the infinity symbol sits: in the value or under the arrow."
+   }
   },
   {
-   "id": "LSN-CON-01003#s4",
+   "id": "LSN-CON-01003#s5",
    "type": "worked_example",
    "bands": [
     "low",
@@ -193,7 +251,7 @@
     "letter": "g",
     "statement": "infinite_limit"
    },
-   "completes": "LSN-CON-01003#s4",
+   "completes": "LSN-CON-01003#s5",
    "stem": {
     "text": "The limit of g(x) as x approaches -3 from the right is negative infinity. Name the asymptote of the graph of g.",
     "command_verb": "name"
@@ -271,15 +329,16 @@
   }
  ],
  "refresher": [
-  "LSN-CON-01003#s2",
-  "LSN-CON-01003#s4"
+  "LSN-CON-01003#s3",
+  "LSN-CON-01003#s5"
  ],
+ "no_figure_reason": "Neither skill carries a figure-bearing representation, and the key idea is a reading rule for symbols with no process in it, so no drawn block fits.",
  "provenance": {
   "author": "tools/lesson_transcribe.py",
-  "prompt_version": "generator/lesson_v1",
+  "prompt_version": "generator/lesson_v2",
   "design_path": "docs/lessons/unit-01/LSN-CON-01003.md",
-  "signed_off_by": "claude-opus-5-5",
-  "signed_off_at": "2026-09-29",
+  "signed_off_by": null,
+  "signed_off_at": null,
   "not_human": true
  }
 }

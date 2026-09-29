@@ -3,7 +3,7 @@
  "version": 1,
  "kind": "concept",
  "target_id": "BC-CON-01002",
- "status": "signed_off",
+ "status": "draft",
  "snapshot_digest": "a6a8ec9d3f59ab8f712e33d30cc22fc64bf2c478fbe7312e3e3118d319c6a42f",
  "source_digest": "b03975a35861cebe3840f0068a87d9e443613886a2c322c450a85f72fe63c8c5",
  "read_minutes": {
@@ -11,12 +11,58 @@
   "brief": 3.0
  },
  "word_count": {
-  "full": 450,
-  "brief": 359
+  "full": 456,
+  "brief": 370
  },
  "sections": [
   {
    "id": "LSN-CON-01002#s1",
+   "type": "prediction",
+   "bands": [
+    "low",
+    "mid"
+   ],
+   "skills": [
+    "BC-SKL-01006",
+    "BC-SKL-01008"
+   ],
+   "sources": [
+    "BC-CON-01002",
+    "research/units/unit-01-limits-continuity.md#1.2 Defining Limits and Using Limit Notation"
+   ],
+   "evidence_tag": "inferred",
+   "stem": {
+    "text": "Predict. Both segments of f head to height 3 at x = 2; a dot sits at (2, -1). What is the limit?",
+    "command_verb": "predict"
+   },
+   "format": "mcq",
+   "options": [
+    {
+     "id": "A",
+     "label": "3",
+     "is_key": true
+    },
+    {
+     "id": "B",
+     "label": "-1",
+     "is_key": false
+    },
+    {
+     "id": "C",
+     "label": "No limit",
+     "is_key": false
+    }
+   ],
+   "resolution": {
+    "text": "Both sides approach 3, the height approached. The dot is f(2) = -1, a separate value."
+   },
+   "delivery": {
+    "mode": "text",
+    "reason": "rule 6"
+   }
+  },
+  {
+   "id": "LSN-CON-01002#s2",
    "type": "orientation",
    "bands": [
     "low",
@@ -32,7 +78,7 @@
     "research/units/unit-01-limits-continuity.md#1.3 Estimating Limit Values from Graphs"
    ],
    "evidence_tag": "inferred",
-   "text": "A response reports the value f(x) approaches as x nears the input, kept apart from f at the input, which can differ or be missing. Stems give a graph or a limit statement.",
+   "text": "A response reports the value f(x) approaches near the input, apart from f at the input.",
    "delivery": {
     "mode": "figure",
     "reason": "rule 3: BC-REP-02 on BC-SKL-01008; unit README delivery map",
@@ -103,7 +149,7 @@
    }
   },
   {
-   "id": "LSN-CON-01002#s2",
+   "id": "LSN-CON-01002#s3",
    "type": "key_ideas",
    "bands": [
     "low",
@@ -120,7 +166,7 @@
    "evidence_tag": "inferred",
    "ek_id": "BC-EK-LIM-1A1",
    "depth": "core",
-   "text": "The limit of f(x) as x approaches c is the number R that f(x) gets arbitrarily close to for x near c, x not equal to c (BC-EK-LIM-1A1, ced:39). The value f(c) plays no part.",
+   "text": "The limit as x approaches c is the number R that f(x) nears for x close to c, x not equal to c. The value f(c) plays no part.",
    "notation": "lim as x approaches c of f(x) equals R",
    "delivery": {
     "mode": "motion",
@@ -188,7 +234,7 @@
    }
   },
   {
-   "id": "LSN-CON-01002#s3",
+   "id": "LSN-CON-01002#s4",
    "type": "key_ideas",
    "bands": [
     "low"
@@ -203,7 +249,7 @@
    "evidence_tag": "verified",
    "ek_id": "BC-EK-LIM-1B1",
    "depth": "extended",
-   "text": "A graph, a table and a written statement can carry one limit claim; reading any of them means naming the input approached and the value approached (BC-EK-LIM-1B1, ced:39).",
+   "text": "A graph, a table and a written statement can carry one limit claim; reading any of them means naming the input approached and the value approached.",
    "quote": {
     "text": "A limit can be expressed in multiple ways, including graphically, numerically, and analytically.",
     "source": "ced:39"
@@ -217,7 +263,7 @@
    }
   },
   {
-   "id": "LSN-CON-01002#s4",
+   "id": "LSN-CON-01002#s5",
    "type": "strategy",
    "bands": [
     "low",
@@ -227,17 +273,30 @@
     "BC-SKL-01008"
    ],
    "sources": [
-    "BC-QA-01001"
+    "BC-QA-01001",
+    "BC-ERR-01001",
+    "BC-ERR-01003"
    ],
    "evidence_tag": "verified",
    "archetype_id": "BC-QA-01001",
-   "cue": "A graph with breaks; limits or function values asked at named inputs.",
-   "method": "First line: locate the input, then read each side's height.",
-   "rival": "Reading the dot (BC-ERR-01001), or calling the limit absent where f is undefined (BC-ERR-01003).",
-   "separating_feature": "The limit comes from the curve beside the input, the value from the dot."
+   "cue": "A graph with breaks; a limit asked at a named input.",
+   "method": "Locate the input, then read each side's height.",
+   "rival": "Reading the dot, or calling the limit absent.",
+   "separating_feature": "The limit comes from the curve, the value from the dot.",
+   "contrast": {
+    "this": {
+     "text": "Open circle at (4, 2), dot at (4, 7). Find the limit at x = 4.",
+     "archetype_id": "BC-QA-01001"
+    },
+    "not_this": {
+     "text": "Open circle at (4, 2), dot at (4, 7). Find g(4).",
+     "why_not": "It asks for the dot's value, not the height approached."
+    },
+    "feature": "Limit or value asked."
+   }
   },
   {
-   "id": "LSN-CON-01002#s5",
+   "id": "LSN-CON-01002#s6",
    "type": "strategy",
    "bands": [
     "low",
@@ -247,17 +306,18 @@
     "BC-SKL-01006"
    ],
    "sources": [
-    "BC-QA-01013"
+    "BC-QA-01013",
+    "BC-ERR-01002"
    ],
    "evidence_tag": "verified",
    "archetype_id": "BC-QA-01013",
    "cue": "A limit fact in one representation, and candidate graphs, tables or expressions to match against it.",
-   "method": "First line: read the limit behaviour from the supplied representation, in neutral words.",
-   "rival": "Matching a one sided value to a two sided statement (BC-ERR-01002).",
+   "method": "Read the limit behaviour from the supplied representation, in neutral words.",
+   "rival": "Matching a one sided value to a two sided statement.",
    "separating_feature": "A match keeps the input, the side and the value."
   },
   {
-   "id": "LSN-CON-01002#s6",
+   "id": "LSN-CON-01002#s7",
    "type": "worked_example",
    "bands": [
     "low",
@@ -292,8 +352,8 @@
    "calculator_status": "no_calculator",
    "steps": [
     {
-     "cue": "Left of x = 2 the segment starts at (0, 0).",
-     "why": "There f(x) = 3x/2.",
+     "cue": "Left branch.",
+     "why": "f(x) = 3x/2.",
      "expression": [
       "Multiply",
       [
@@ -306,8 +366,8 @@
      "relation": "new"
     },
     {
-     "cue": "Read the height approached from the left.",
-     "why": "An open circle marks a height approached.",
+     "cue": "Left height.",
+     "why": "Open circle: height approached.",
      "expression": 3,
      "relation": "limit",
      "variable": "x",
@@ -315,8 +375,8 @@
      "dir": "-"
     },
     {
-     "cue": "The right segment runs to (5, 4).",
-     "why": "There f(x) = (x + 7)/3.",
+     "cue": "Right branch.",
+     "why": "f(x) = (x + 7)/3.",
      "expression": [
       "Add",
       [
@@ -337,8 +397,8 @@
      "relation": "new"
     },
     {
-     "cue": "Read the height approached from the right.",
-     "why": "Both sides give 3, so the limit is 3.",
+     "cue": "Right height.",
+     "why": "Both sides give 3: the limit is 3.",
      "expression": 3,
      "relation": "limit",
      "variable": "x",
@@ -346,8 +406,8 @@
      "dir": "+"
     },
     {
-     "cue": "The filled point gives f(2), a value separate from the limit.",
-     "why": "f(2) = -1, a separate answer."
+     "cue": "The dot.",
+     "why": "f(2) = -1, separate from the limit."
     }
    ],
    "answer": {
@@ -389,6 +449,7 @@
     "expression": 3
    },
    "relation": "distinct",
+   "fix_prompt": true,
    "possible_reason": {
     "misconception_id": "BC-MIS-01001",
     "text": "the limit as another name for evaluation"
@@ -426,6 +487,7 @@
     "expression": 3
    },
    "relation": "distinct",
+   "fix_prompt": true,
    "possible_reason": {
     "misconception_id": "BC-MIS-01001",
     "text": "a missing or displaced function value is read as a missing or displaced limit"
@@ -452,7 +514,7 @@
    ],
    "evidence_tag": "inferred",
    "prerequisite_id": "BC-PRQ-06005",
-   "text": "Graph reading rests on evaluating f at a stated input and telling f from its value at a point. The failure: a height read at the wrong input."
+   "text": "Graph reading rests on f at a stated input. Failure: a height read at the wrong input."
   }
  ],
  "checks": [
@@ -479,7 +541,7 @@
     "justify": "bare",
     "request": "hole"
    },
-   "completes": "LSN-CON-01002#s6",
+   "completes": "LSN-CON-01002#s7",
    "stem": {
     "text": "Both segments of f head to height 3 at x = 2; the dot is at (2, -1). Write the limit of f at x = 2.",
     "command_verb": "write"
@@ -614,17 +676,17 @@
   }
  ],
  "refresher": [
-  "LSN-CON-01002#s2",
+  "LSN-CON-01002#s3",
   "LSN-CON-01002#err-BC-ERR-01001",
   "LSN-CON-01002#err-BC-ERR-01003",
-  "LSN-CON-01002#s6"
+  "LSN-CON-01002#s7"
  ],
  "provenance": {
   "author": "tools/lesson_transcribe.py",
-  "prompt_version": "generator/lesson_v1",
+  "prompt_version": "generator/lesson_v2",
   "design_path": "docs/lessons/unit-01/LSN-CON-01002.md",
-  "signed_off_by": "claude-opus-5-5",
-  "signed_off_at": "2026-09-29",
+  "signed_off_by": null,
+  "signed_off_at": null,
   "not_human": true
  }
 }

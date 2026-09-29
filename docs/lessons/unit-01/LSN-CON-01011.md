@@ -9,6 +9,10 @@ purpose: Authoring spec for the concept lesson on BC-CON-01011, connecting graph
 
 Concept BC-CON-01011 (skills BC-SKL-01036, BC-SKL-01037, BC-SKL-01038), topic 1.9 of Unit 1, loaded by BC-QA-01013 (primary). The unit attack map places it eleventh, after BC-CON-01006, with figure delivery.
 
+## Prediction
+
+Served first, both bands, on ex-1's own limit fact \(\lim_{x\to3^-}g(x)=\infty\). Form: `mcq`, three options, key B. The question asks for the concept's core claim before any rule is stated: what the infinity symbol in the value slot says about the graph. Distractor A reads the 3 as a value the outputs settle to, distractor C moves the infinity under the arrow. The resolution names the vertical asymptote and the other position of the symbol, in the record's words. Sources: BC-CON-01011 and the topic section the key idea cites. Delivery: text.
+
 ## Orientation
 
 Served text, from BC-CON-01011 `description_plain` and the topic's Assessment behaviour paragraph (research/units/unit-01-limits-continuity.md#1.9 Connecting Multiple Representations of Limits): MCQ forms ask which representation matches; FRQ forms ask for the behaviour in words. Stated as what a response shows. No count, no frequency. Delivered as a figure.
@@ -25,6 +29,8 @@ No skill of BC-CON-01011 lists `essential_knowledge` and ced:46 prints no essent
 
 What says "not this concept": a stem that asks for the value of a limit from a formula (BC-CON-01007, 01008), or reads only notation without a second representation (BC-CON-01003).
 
+The near miss for st-1 comes from the "not this concept" stems above: a formula asking for the value of a limit (BC-CON-01007 and 01008). It shares the limit notation but gives no second representation to convert into.
+
 ## Method choice
 
 - st-1, BC-QA-01013, verified (`asked_to_produce` and `common_givens` present). Method, `expected_solution_path[0]`: read the limit behaviour from the supplied representation. Rival, `wrong_approaches`: reading a vertical asymptote statement as end behaviour (BC-ERR-01033). Separating feature: where the infinity symbol sits (the unit-01 README row, Infinite limit against limit at infinity).
@@ -34,7 +40,7 @@ What says "not this concept": a stem that asks for the value of a limit from a f
 - ex-1, BC-QA-01013, both bands: statement infinite_limit, number 3, side left, growth up, letter g, direction positive; \(\lim_{x\to3^-}g(x)=\infty\). Steps follow `expected_solution_path`: read the behaviour (side, value slot), state it neutrally, test against the forms, produce the match. Answer form statement.
 - ex-2, BC-QA-01013, low band: statement limit_at_infinity, number \(-2\), direction positive, letter k; \(\lim_{x\to\infty}k(x)=-2\). Two steps. Answer form statement.
 
-The notes of the `parameter_spec` fix what each statement kind means. No published BC-QA-01013 draw matches either. Neither example carries a valued chain: the answer is a verbal description, so the checker confirms the draws, not a value. On the MCQ shape nothing is written [inferred].
+The notes of the `parameter_spec` fix what each statement kind means. No published BC-QA-01013 draw matches either. ex-1 carries no valued chain: the answer is a verbal description, so the checker confirms the draw, not a value. ex-2 carries two valued lines, the limit statement and the asymptote equation, so the fade has a valued step before it. Fade: `fade_from` 2. Step 1 (the infinity under the arrow, read as end behaviour) is shown and the student writes the description; step 2, the horizontal asymptote, is then revealed. The fade falls there because step 1 holds the only reading the concept needs and step 2 is its statement. On the MCQ shape nothing is written [inferred].
 
 ## Scoring
 
@@ -49,13 +55,15 @@ Four active errors meet the skills, in the bundle's order. Low band all four, mi
 - err-BC-ERR-01033 (ex-2). Wrong: \(x=-2\). Right: \(y=-2\). Distinct. Reason, words from BC-MIS-01018.
 - err-BC-ERR-01021 (ex-2). Wrong: \(k(\infty)=-2\). Right: the limit kept. Distinct. Reason, words from BC-MIS-99008.
 
+All four blocks are distinct, so all four carry `fix_prompt` true.
+
 ## Representations
 
 None as a separate block. The topic's Representations paragraph names graph to table, analytic statement to words and stated conditions to a sketch; the orientation figure and the ki-1 figure with its table carry these, at the cap of two representations per screen.
 
 ## Prerequisite bridge
 
-Two BC-PRQ parents, supporting edges, gated by state: BC-PRQ-01003 (piecewise rule) and BC-PRQ-06005 (function notation and evaluation). Each restates `description_plain` and names the `failure_signature`.
+Two BC-PRQ parents, supporting edges, gated by state: BC-PRQ-01003 (piecewise rule) and BC-PRQ-06005 (function notation and evaluation). Each is one short line from `description_plain`, with the `failure_signature` kept, to stay under the brief cap.
 
 ## Time
 
@@ -79,8 +87,8 @@ Non-text choices are [inferred], settled by the modality A/B.
 
 ## Band plan
 
-- Low (full): orientation, ki-1, st-1, ex-1, err-BC-ERR-01002, err-BC-ERR-01020, err-BC-ERR-01033, err-BC-ERR-01021, chk-1, ex-2, chk-2, chk-3, two bridges when gated in. 618 words, 4.2 minutes (cap 900 and 6).
-- Mid (brief): orientation, ki-1, st-1, ex-1, err-BC-ERR-01002, err-BC-ERR-01020, chk-1, chk-2, bridges when gated in. 438 words, 3.0 minutes (cap 450 and 3).
+- Low (full), in the served order of 2026-09-29: prediction, orientation, bridges when gated in, ki-1, st-1 (contrast pair on st-1), ex-1 and its scoring lines (none), chk-1, err-BC-ERR-01002, err-BC-ERR-01020, err-BC-ERR-01033, err-BC-ERR-01021 (each a fix prompt), ex-2 faded from step 2, chk-2, representations (none), chk-3. 628 words, 4.19 minutes (cap 900 and 6).
+- Mid (brief): prediction, orientation, bridges when gated in, ki-1, st-1 with its contrast pair, ex-1, chk-1, err-BC-ERR-01002, err-BC-ERR-01020, chk-2. 448 words, 2.99 minutes (cap 450 and 3).
 - Refresher: ki-1, the four error blocks, ex-1.
 
 ## Sources
@@ -98,6 +106,7 @@ Non-text choices are [inferred], settled by the modality A/B.
 - [inferred] The representative functions in the figures. Settled by a figure_kind on BC-QA-01013.
 - [inferred] Nothing written on the MCQ shape. Settled by timed response logs.
 - BC-CON-01011 lists no misconceptions (unit-01 README, Library gaps); the possible reasons come from the misconceptions the error records link.
+- Prediction and contrast stems: written for this lesson, no published item shares them (content/items_* searched). Citations sit in each block's `sources` array, never in served text.
 
 ## Machine record
 
@@ -112,8 +121,38 @@ Non-text choices are [inferred], settled by the modality A/B.
   "BC-SKL-01037",
   "BC-SKL-01038"
  ],
+ "prediction": {
+  "id": "pr-1",
+  "stem": {
+   "text": "Before the rule: \\(\\lim_{x\\to3^-}g(x)=\\infty\\). What do the outputs of \\(g\\) do as \\(x\\) nears 3 from the left?",
+   "command_verb": "predict"
+  },
+  "format": "mcq",
+  "options": [
+   {
+    "id": "A",
+    "label": "They settle near 3.",
+    "is_key": false
+   },
+   {
+    "id": "B",
+    "label": "They grow without bound.",
+    "is_key": true
+   },
+   {
+    "id": "C",
+    "label": "They level off as \\(x\\) grows.",
+    "is_key": false
+   }
+  ],
+  "resolution": "Infinity in the value slot means the outputs grow without bound: a vertical asymptote at \\(x=3\\).",
+  "sources": [
+   "BC-CON-01011",
+   "research/units/unit-01-limits-continuity.md#1.9 Connecting Multiple Representations of Limits"
+  ]
+ },
  "orientation": {
-  "text": "A graph, a table, a formula and a sentence can carry one limit fact. A response converts between them keeping the input, the side of approach and the value, or states the behaviour in words.",
+  "text": "One limit fact can be a graph, a table, a formula or a sentence. A response converts between them, keeping input, side and value.",
   "sources": [
    "BC-CON-01011",
    "research/units/unit-01-limits-continuity.md#1.9 Connecting Multiple Representations of Limits"
@@ -124,8 +163,8 @@ Non-text choices are [inferred], settled by the modality A/B.
    "id": "ki-1",
    "ek_id": null,
    "depth": "core",
-   "text": "A conversion keeps three things: the input approached, the direction of approach, the claimed value. It must not lose three distinctions: the limit against the function value, one sided against two sided, and an infinite limit against a limit at infinity. Infinity in the value slot, as in \\(\\lim_{x\\to3^-}g(x)=\\infty\\), says a vertical asymptote; infinity under the arrow, as in \\(\\lim_{x\\to\\infty}k(x)=-2\\), says end behaviour.",
-   "notation": "the limit notation of topic 1.2 with the infinite forms of topics 1.14 and 1.15",
+   "text": "A conversion keeps the input approached, the side and the claimed value, and must not swap the limit for the function value, one sided for two sided, or an infinite limit for a limit at infinity. Infinity in the value slot says vertical asymptote; under the arrow, end behaviour.",
+   "notation": "limit notation with its infinite forms",
    "quote": {
     "text": "This topic is intended to focus on connecting representations.",
     "source": "ced:46"
@@ -140,14 +179,25 @@ Non-text choices are [inferred], settled by the modality A/B.
   {
    "id": "st-1",
    "archetype_id": "BC-QA-01013",
-   "cue": "A limit fact in one representation and candidate graphs, tables or sentences; the stem asks which matches.",
-   "method": "First line: read the limit behaviour from the supplied representation.",
-   "rival": "Rival: reading a vertical asymptote statement as end behaviour (BC-ERR-01033).",
-   "separating_feature": "Where the infinity symbol sits: in the value, a vertical asymptote; under the arrow, end behaviour.",
+   "cue": "A limit fact in one form; which candidate matches?",
+   "method": "Read the limit behaviour from the supplied representation.",
+   "rival": "Rival: swapping vertical asymptote and end behaviour.",
+   "separating_feature": "Infinity in the value, or under the arrow.",
    "sources": [
     "BC-QA-01013"
    ],
-   "evidence_tag": "verified"
+   "evidence_tag": "verified",
+   "contrast": {
+    "this": {
+     "text": "Given \\(\\lim_{x\\to5^+}p(x)=-\\infty\\), describe the graph of \\(p\\) near \\(x=5\\).",
+     "archetype_id": "BC-QA-01013"
+    },
+    "not_this": {
+     "text": "Find \\(\\lim_{x\\to5}\\frac{x^2-25}{x-5}\\).",
+     "why_not": "It asks for a computed value, not a conversion."
+    },
+    "feature": "One limit fact given, asked for in another form."
+   }
   }
  ],
  "worked_examples": [
@@ -216,17 +266,22 @@ Non-text choices are [inferred], settled by the modality A/B.
    "steps": [
     {
      "cue": "Infinity sits under the arrow: \\(x\\) grows without bound.",
-     "why": "This is end behaviour on the right, not behaviour near a finite input."
+     "why": "This is end behaviour on the right, not behaviour near a finite input.",
+     "expr": "Limit(k(x), x, oo) = -2",
+     "relation": "new"
     },
     {
      "cue": "The value is the number \\(-2\\).",
-     "why": "As \\(x\\) grows, \\(k(x)\\) approaches \\(-2\\): horizontal asymptote \\(y=-2\\) on the right."
+     "why": "As \\(x\\) grows, \\(k(x)\\) approaches \\(-2\\): horizontal asymptote \\(y=-2\\) on the right.",
+     "expr": "y = -2",
+     "relation": "new"
     }
    ],
    "answer": {
     "form": "statement",
     "expr": "y = -2"
-   }
+   },
+   "fade_from": 2
   }
  ],
  "what_a_reader_scores": [],
@@ -251,7 +306,8 @@ Non-text choices are [inferred], settled by the modality A/B.
    "sources": [
     "BC-ERR-01002",
     "BC-MIS-01002"
-   ]
+   ],
+   "fix_prompt": true
   },
   {
    "error_id": "BC-ERR-01020",
@@ -273,7 +329,8 @@ Non-text choices are [inferred], settled by the modality A/B.
    "sources": [
     "BC-ERR-01020",
     "BC-MIS-01012"
-   ]
+   ],
+   "fix_prompt": true
   },
   {
    "error_id": "BC-ERR-01033",
@@ -295,7 +352,8 @@ Non-text choices are [inferred], settled by the modality A/B.
    "sources": [
     "BC-ERR-01033",
     "BC-MIS-01018"
-   ]
+   ],
+   "fix_prompt": true
   },
   {
    "error_id": "BC-ERR-01021",
@@ -317,18 +375,19 @@ Non-text choices are [inferred], settled by the modality A/B.
    "sources": [
     "BC-ERR-01021",
     "BC-MIS-99008"
-   ]
+   ],
+   "fix_prompt": true
   }
  ],
  "representations": null,
  "prerequisite_bridges": [
   {
    "prq_id": "BC-PRQ-01003",
-   "text": "Pick the branch of a piecewise rule for an input. Evaluating the wrong branch at a boundary marks this gap."
+   "text": "Pick the piecewise branch for an input; a wrong branch marks this gap."
   },
   {
    "prq_id": "BC-PRQ-06005",
-   "text": "Read \\(f(t)\\) and evaluation at a stated input. Pulling values for the wrong input marks this gap."
+   "text": "Read \\(f(t)\\) at a stated input; the wrong input marks this gap."
   }
  ],
  "time": {
@@ -720,12 +779,12 @@ Non-text choices are [inferred], settled by the modality A/B.
   "research/scoring/notation-requirements.md#Limit notation"
  ],
  "read_minutes": {
-  "full": 4.2,
-  "brief": 3.0
+  "full": 4.19,
+  "brief": 2.99
  },
  "word_count": {
-  "full": 618,
-  "brief": 438
+  "full": 628,
+  "brief": 448
  }
 }
 ```

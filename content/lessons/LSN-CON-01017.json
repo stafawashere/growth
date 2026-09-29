@@ -3,7 +3,7 @@
  "version": 1,
  "kind": "concept",
  "target_id": "BC-CON-01017",
- "status": "signed_off",
+ "status": "draft",
  "snapshot_digest": "a6a8ec9d3f59ab8f712e33d30cc22fc64bf2c478fbe7312e3e3118d319c6a42f",
  "source_digest": "66d8a054b3e6d322d30c8204f99dabf5ceab49116ad5285dafae737d0f194417",
  "read_minutes": {
@@ -17,6 +17,55 @@
  "sections": [
   {
    "id": "LSN-CON-01017#s1",
+   "type": "prediction",
+   "bands": [
+    "low",
+    "mid"
+   ],
+   "skills": [
+    "BC-SKL-01058",
+    "BC-SKL-01059",
+    "BC-SKL-01060",
+    "BC-SKL-01061",
+    "BC-SKL-01063"
+   ],
+   "sources": [
+    "BC-CON-01017",
+    "research/units/unit-01-limits-continuity.md#1.15 Connecting Limits at Infinity and Horizontal Asymptotes"
+   ],
+   "evidence_tag": "inferred",
+   "stem": {
+    "text": "Predict \\(\\lim_{x\\to-\\infty}\\frac{\\sqrt{4x^2+5}}{3x+1}\\).",
+    "command_verb": "predict"
+   },
+   "format": "mcq",
+   "options": [
+    {
+     "id": "A",
+     "label": "Positive \\(\\frac23\\)",
+     "is_key": false
+    },
+    {
+     "id": "B",
+     "label": "Negative \\(\\frac23\\)",
+     "is_key": true
+    },
+    {
+     "id": "C",
+     "label": "\\(\\frac43\\)",
+     "is_key": false
+    }
+   ],
+   "resolution": {
+    "text": "Dividing by the dominant power leaves \\(\\frac{|x|}{x}\\) times \\(\\frac23\\), and \\(\\frac{|x|}{x}=-1\\) when \\(x<0\\), so the limit is \\(-\\frac23\\)."
+   },
+   "delivery": {
+    "mode": "text",
+    "reason": "rule 6"
+   }
+  },
+  {
+   "id": "LSN-CON-01017#s2",
    "type": "orientation",
    "bands": [
     "low",
@@ -34,7 +83,7 @@
     "research/units/unit-01-limits-continuity.md#1.15 Connecting Limits at Infinity and Horizontal Asymptotes"
    ],
    "evidence_tag": "inferred",
-   "text": "A response writes the limit with the variable growing without bound, for the function the stem names, then its value. A finite value is a horizontal asymptote.",
+   "text": "A response writes the limit as the variable grows without bound, for the function the stem names, then its value. A finite value is a horizontal asymptote.",
    "delivery": {
     "mode": "figure",
     "reason": "rule 3: BC-REP-02 on BC-SKL-01059 and BC-SKL-01063",
@@ -97,7 +146,7 @@
    }
   },
   {
-   "id": "LSN-CON-01017#s2",
+   "id": "LSN-CON-01017#s3",
    "type": "key_ideas",
    "bands": [
     "low",
@@ -114,15 +163,11 @@
     "ced:52",
     "research/units/unit-01-limits-continuity.md#1.15 Connecting Limits at Infinity and Horizontal Asymptotes"
    ],
-   "evidence_tag": "verified",
+   "evidence_tag": "inferred",
    "ek_id": "BC-EK-LIM-2D3",
    "depth": "core",
-   "text": "Divide by the dominant power (BC-EK-LIM-2D3, ced:52). Under a square root it carries the sign of the end: \\(\\sqrt{x^2}=|x|\\), which is \\(-x\\) as \\(x\\to-\\infty\\).",
+   "text": "Divide by the dominant power. Under a square root it carries the sign of the end: \\(\\sqrt{x^2}=|x|\\), which is \\(-x\\) as \\(x\\to-\\infty\\).",
    "notation": "horizontal asymptote; end behaviour",
-   "quote": {
-    "text": "The concept of a limit can be extended to include limits at infinity.",
-    "source": "ced:52"
-   },
    "delivery": {
     "mode": "motion",
     "reason": "rule 2: a limit process, the window widening toward negative infinity; rule 3, BC-REP-02 on BC-SKL-01063",
@@ -202,7 +247,7 @@
    }
   },
   {
-   "id": "LSN-CON-01017#s3",
+   "id": "LSN-CON-01017#s4",
    "type": "key_ideas",
    "bands": [
     "low",
@@ -219,14 +264,10 @@
     "ced:52",
     "research/units/unit-01-limits-continuity.md#1.15 Connecting Limits at Infinity and Horizontal Asymptotes"
    ],
-   "evidence_tag": "verified",
+   "evidence_tag": "inferred",
    "ek_id": "BC-EK-LIM-2D4",
    "depth": "core",
-   "text": "A finite limit \\(L\\) at either end gives the horizontal asymptote \\(y=L\\) (BC-EK-LIM-2D4, ced:52). Each end is checked on its own.",
-   "quote": {
-    "text": "Limits at infinity describe end behavior.",
-    "source": "ced:52"
-   },
+   "text": "A finite limit \\(L\\) at either end gives the horizontal asymptote \\(y=L\\). Each end is checked on its own.",
    "delivery": {
     "mode": "figure",
     "reason": "rule 3: BC-REP-02 on BC-SKL-01059",
@@ -288,7 +329,7 @@
    }
   },
   {
-   "id": "LSN-CON-01017#s4",
+   "id": "LSN-CON-01017#s5",
    "type": "strategy",
    "bands": [
     "low",
@@ -302,17 +343,29 @@
     "BC-SKL-01063"
    ],
    "sources": [
-    "BC-QA-01010"
+    "BC-QA-01010",
+    "BC-ERR-01021"
    ],
    "evidence_tag": "verified",
    "archetype_id": "BC-QA-01010",
-   "cue": "A model or rule, and the stem asks for a limit expression for long run behaviour and its value.",
-   "method": "First written line: the limit of the named function as the variable grows without bound.",
-   "rival": "Substituting infinity into the expression as a number (BC-ERR-01021).",
-   "separating_feature": "Infinity sits under the arrow, never inside the expression."
+   "cue": "A rule; asks for long run behaviour and its value.",
+   "method": "The limit of the named function as the variable grows without bound.",
+   "rival": "Substituting infinity into the expression as a number.",
+   "separating_feature": "Infinity under the arrow, never inside.",
+   "contrast": {
+    "this": {
+     "text": "Find \\(\\lim_{x\\to-\\infty}\\frac{\\sqrt{9x^2+2}}{5x-4}\\).",
+     "archetype_id": "BC-QA-01010"
+    },
+    "not_this": {
+     "text": "Find \\(\\lim_{x\\to-2^+}\\frac{3x}{x+2}\\).",
+     "why_not": "The input is finite and the value infinite: a vertical asymptote."
+    },
+    "feature": "Infinity under the arrow, not in the value."
+   }
   },
   {
-   "id": "LSN-CON-01017#s5",
+   "id": "LSN-CON-01017#s6",
    "type": "worked_example",
    "bands": [
     "low",
@@ -345,7 +398,7 @@
    "steps": [
     {
      "cue": "The arrow points to \\(-\\infty\\).",
-     "why": "The limit is written first; it is the expression point.",
+     "why": "Written first: the expression point.",
      "expression": [
       "Multiply",
       [
@@ -387,7 +440,7 @@
      "relation": "new"
     },
     {
-     "cue": "The dominant power is \\(x\\); under the root it is \\(|x|\\).",
+     "cue": "Dominant power \\(x\\); under the root, \\(|x|\\).",
      "why": "\\(\\sqrt{x^2}=|x|\\).",
      "expression": [
       "Multiply",
@@ -466,7 +519,7 @@
    }
   },
   {
-   "id": "LSN-CON-01017#s6",
+   "id": "LSN-CON-01017#s7",
    "type": "worked_example",
    "bands": [
     "low"
@@ -555,6 +608,7 @@
     "form": "numeric",
     "mathjson": 0
    },
+   "fade_from": 3,
    "delivery": {
     "mode": "step_reveal",
     "reason": "rule 1",
@@ -562,7 +616,7 @@
    }
   },
   {
-   "id": "LSN-CON-01017#s7",
+   "id": "LSN-CON-01017#s8",
    "type": "what_a_reader_scores",
    "bands": [
     "low",
@@ -580,7 +634,7 @@
     "BC-PT-99004"
    ],
    "evidence_tag": "verified",
-   "example_id": "LSN-CON-01017#s5",
+   "example_id": "LSN-CON-01017#s6",
    "lines": [
     {
      "point_type_id": "BC-PT-99054",
@@ -593,7 +647,7 @@
    ]
   },
   {
-   "id": "LSN-CON-01017#s8",
+   "id": "LSN-CON-01017#s9",
    "type": "what_a_reader_scores",
    "bands": [
     "low"
@@ -610,7 +664,7 @@
     "BC-PT-99004"
    ],
    "evidence_tag": "verified",
-   "example_id": "LSN-CON-01017#s6",
+   "example_id": "LSN-CON-01017#s7",
    "lines": [
     {
      "point_type_id": "BC-PT-99054",
@@ -649,6 +703,7 @@
     "expression": 0
    },
    "relation": "distinct",
+   "fix_prompt": true,
    "possible_reason": {
     "misconception_id": "BC-MIS-01014",
     "text": "treats a statement about the long run rate as a statement about the long run amount"
@@ -694,6 +749,7 @@
     ]
    },
    "relation": "distinct",
+   "fix_prompt": true,
    "delivery": {
     "mode": "step_reveal",
     "reason": "rule 1",
@@ -743,6 +799,7 @@
     ]
    },
    "relation": "distinct",
+   "fix_prompt": true,
    "possible_reason": {
     "misconception_id": "BC-MIS-01018",
     "text": "does not separate a limit whose value is infinite from a limit taken as the variable grows without bound"
@@ -786,6 +843,7 @@
     ]
    },
    "relation": "distinct",
+   "fix_prompt": true,
    "possible_reason": {
     "misconception_id": "BC-MIS-99008",
     "text": "substitutes the infinity symbol for the variable and computes with the result"
@@ -814,7 +872,7 @@
    ],
    "evidence_tag": "inferred",
    "prerequisite_id": "BC-PRQ-01004",
-   "text": "Compare numerator and denominator degrees for large inputs. The slip: computing values instead."
+   "text": "Compare degrees for large inputs. Slip: computing values instead."
   },
   {
    "id": "LSN-CON-01017#prq-BC-PRQ-06005",
@@ -831,7 +889,7 @@
    ],
    "evidence_tag": "inferred",
    "prerequisite_id": "BC-PRQ-06005",
-   "text": "\\(A\\) and \\(A'\\) are different functions. The slip: \\(f\\) and \\(f'\\) interchanged."
+   "text": "\\(A\\) and \\(A'\\) differ. Slip: \\(f\\) and \\(f'\\) interchanged."
   }
  ],
  "checks": [
@@ -851,7 +909,7 @@
     "inner_const": "5",
     "radical_place": "numerator"
    },
-   "completes": "LSN-CON-01017#s5",
+   "completes": "LSN-CON-01017#s6",
    "stem": {
     "text": "\\(\\frac{\\sqrt{4x^2+5}}{3x+1}=\\frac{|x|\\sqrt{4+5/x^2}}{x(3+1/x)}\\). Evaluate the limit as \\(x\\to-\\infty\\).",
     "command_verb": "evaluate"
@@ -1266,20 +1324,20 @@
   }
  ],
  "refresher": [
-  "LSN-CON-01017#s2",
   "LSN-CON-01017#s3",
+  "LSN-CON-01017#s4",
   "LSN-CON-01017#err-BC-ERR-01022",
   "LSN-CON-01017#err-BC-ERR-01023",
   "LSN-CON-01017#err-BC-ERR-01033",
   "LSN-CON-01017#err-BC-ERR-01021",
-  "LSN-CON-01017#s5"
+  "LSN-CON-01017#s6"
  ],
  "provenance": {
   "author": "tools/lesson_transcribe.py",
-  "prompt_version": "generator/lesson_v1",
+  "prompt_version": "generator/lesson_v2",
   "design_path": "docs/lessons/unit-01/LSN-CON-01017.md",
-  "signed_off_by": "claude-opus-5-5",
-  "signed_off_at": "2026-09-29",
+  "signed_off_by": null,
+  "signed_off_at": null,
   "not_human": true
  }
 }

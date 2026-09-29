@@ -9,6 +9,10 @@ purpose: Authoring spec for the concept lesson on BC-CON-01018, relative magnitu
 
 Concept BC-CON-01018 (one skill, BC-SKL-01062), topic 1.15 of Unit 1 (BC-TOP-0115), shared with BC-CON-01017. One archetype loads the skill, BC-QA-01010, which lists BC-PT-99054 and BC-PT-99004. The bundle's `errors` list is empty: no active BC-ERR names BC-SKL-01062.
 
+## Prediction
+
+Served first, both bands, on ex-1's own pair, \(f(x)=5x+2\) and \(g(x)=\sqrt{16x^2+3}\) as \(x\to-\infty\). Form `mcq`, three options, key "Their sizes stay in a fixed ratio". The question asks how the two compare before the quotient limit is named, so the student commits to the concept's core claim that the comparison is read from a quotient. Source: BC-CON-01018 and the topic's Relative magnitudes paragraph (research/units/unit-01-limits-continuity.md#1.15 Connecting Limits at Infinity and Horizontal Asymptotes). The resolution states the quotient's limit and what it says about the sizes, and passes no verdict. The finite nonzero reading stays [inferred], as in ex-1. Delivery: text.
+
 ## Orientation
 
 Served text, from BC-CON-01018 `description_plain` and the topic's Assessment behaviour paragraph (research/units/unit-01-limits-continuity.md#1.15 Connecting Limits at Infinity and Horizontal Asymptotes): a response writes the limit of the quotient of the two quantities as the variable grows without bound, evaluates it, and reads from the value which quantity grows faster.
@@ -21,19 +25,19 @@ One BC-EK maps to the skill, BC-EK-LIM-2D5 (ced:52), so one core block, both ban
 
 ## Recognition
 
-- BC-QA-01010 (family end-behaviour-limit; research/question-analysis/question-archetypes.md#BC-QA-01010 End behaviour described by a limit at infinity): `asked_to_produce` a limit expression for the end behaviour and its value; `common_givens` include a model function in a context and a formula for its rate. The topic's Assessment behaviour paragraph adds that multi-concept variants compare the growth of two quantities in the same part. The signal for this concept is two named quantities and a question about which grows faster, or whether one outgrows the other.
+- BC-QA-01010 (family end-behaviour-limit; research/question-analysis/question-archetypes.md#BC-QA-01010 End behaviour described by a limit at infinity): `asked_to_produce` a limit expression for the end behaviour and its value; `common_givens` include a model function in a context and a formula for its rate. The topic's Assessment behaviour paragraph adds that multi-concept variants compare the growth of two quantities in the same part. The signal for this concept is two named quantities and a question about which grows faster, or whether one outgrows the other. The contrast pair's near miss comes from BC-CON-01017 in the same archetype: one modelled quantity and its horizontal asymptote, with no second quantity to divide by.
 
 What says "not this concept": one quantity and "long run" or "horizontal asymptote" (BC-CON-01017); a finite input under the arrow (BC-CON-01016).
 
 ## Method choice
 
-- st-1, BC-QA-01010, both bands. Cue, from `asked_to_produce` and `common_givens`: two quantities, and the stem asks which grows faster for large inputs. Method, `expected_solution_path[0]` applied to the quotient: write the limit of the quotient as the variable grows without bound. Rival, `wrong_approaches`: substituting infinity into the expression as a number (BC-ERR-01021). Separating feature: infinity sits under the arrow, and the quotient, not each quantity alone, is what the limit is taken on.
+- st-1, BC-QA-01010, both bands. Cue, from `asked_to_produce` and `common_givens`: two quantities, and the stem asks which grows faster for large inputs. Method, `expected_solution_path[0]` applied to the quotient: write the limit of the quotient as the variable grows without bound (no leading label is served). Rival, `wrong_approaches`: substituting infinity into the expression as a number (BC-ERR-01021). Separating feature: infinity sits under the arrow, and the quotient, not each quantity alone, is what the limit is taken on. The block carries the contrast pair: `this` compares \(u(x)=7x-3\) and \(v(x)=\sqrt{9x^2+1}\) by the limit of their quotient; `not_this` asks for one quantity's long run behaviour and its horizontal asymptote; the feature is two quantities compared, not one quantity's value.
 
 ## Solution path
 
 - ex-1, BC-QA-01010, both bands, no calculator. Draw: root_coef 4, linear_coef 5, linear_const 2, inner_const 3, radical_place denominator: \(f(x)=5x+2\) against \(g(x)=\sqrt{16x^2+3}\) as \(x\to-\infty\). Constraints hold (\(5\ne4\), \(5\ne16\)). Chain: the quotient (new, BC-PT-99054), the \(|x|\) form (equivalent), \(-\frac54\) (limit at \(-\infty\), BC-PT-99004), then the reading: a finite nonzero value, so neither outgrows the other [inferred]. A fluent solver writes the quotient limit and the value.
 
-The README delivery map pairs this example with a model: the quotient at \(x=-10\), \(-100\), \(-1000\), shown as a table inside the step reveal.
+Only one example is designed, so nothing is faded. The README delivery map pairs this example with a model: the quotient at \(x=-10\), \(-100\), \(-1000\), shown as a table inside the step reveal.
 
 ## Scoring
 
@@ -70,14 +74,14 @@ Two checks only: check 3 needs error blocks and the bundle holds none (listed un
 
 ## Delivery
 
-- orientation: text. Rule 5; BC-SKL-01062 carries BC-REP-01 only.
-- ki-1: text. Rule 5, same reason; no figure exists for motion (docs/lessons/unit-01/README.md, section 6).
-- ex-1: step_reveal. Rule 1, with the model table of quotients at growing \(|x|\) inside the reveal, because rule 2 names a computed sequence as the idea [inferred].
+- orientation: text. Rule 6; BC-SKL-01062 carries BC-REP-01 only.
+- ki-1: model. Rule 2, the model clause: the idea is the behaviour of a computed sequence, the quotient at \(x=-10\), \(-100\), \(-1000\), shown as a table (docs/lessons/unit-01/README.md, section 6) [inferred]. This is the lesson's drawn block, chosen under figure presence, so no `no_figure_reason` is carried.
+- ex-1: step_reveal. Rule 1.
 
 ## Band plan
 
-- Low (full): orientation, ki-1, st-1, ex-1 with its scoring lines, chk-1, chk-2, the bridge. 362 words, 2.5 minutes (cap 900 and 6).
-- Mid (brief): the same blocks, since there is one key idea, one strategy block, one example and no error block. 362 words, 2.5 minutes (cap 450 and 3).
+- Low (full): pr-1, orientation, the bridge when gated, ki-1, st-1 with its contrast pair, ex-1 with its scoring lines, chk-1, chk-2. 435 words, 2.9 minutes (cap 900 and 6).
+- Mid (brief): the same blocks, since there is one key idea, one strategy block, one example and no error block. 435 words, 2.9 minutes (cap 450 and 3).
 - Refresher: ki-1, ex-1.
 
 ## Sources
@@ -93,7 +97,7 @@ Two checks only: check 3 needs error blocks and the bundle holds none (listed un
 - [inferred] The finite nonzero reading in ex-1 (neither outgrows the other). Settled by a CED or scoring guideline page stating them.
 - [inferred] Two checks, because no BC-ERR names BC-SKL-01062. Settled by a library error record on the skill.
 - [inferred] Exam part I-A for `calculator_status` either. Settled by a plan 15 rule for either.
-- [inferred] The model table inside ex-1. Settled by the modality A/B.
+- [inferred] The model table on ki-1 and the finite nonzero reading in the prediction's resolution and key. Settled by the modality A/B and by a page stating the reading.
 
 ## Machine record
 
@@ -104,6 +108,18 @@ Two checks only: check 3 needs error blocks and the bundle holds none (listed un
  "target_id": "BC-CON-01018",
  "unit": "01",
  "skills": ["BC-SKL-01062"],
+ "prediction": {
+  "id": "pr-1",
+  "stem": {"text": "Let \\(f(x)=5x+2\\) and \\(g(x)=\\sqrt{16x^2+3}\\). Predict how their sizes compare as \\(x\\to-\\infty\\).", "command_verb": "predict"},
+  "format": "mcq",
+  "options": [
+   {"id": "A", "label": "\\(f\\) outgrows \\(g\\) without bound", "is_key": false},
+   {"id": "B", "label": "\\(g\\) outgrows \\(f\\) without bound", "is_key": false},
+   {"id": "C", "label": "Their sizes stay in a fixed ratio", "is_key": true}
+  ],
+  "resolution": "The quotient \\(\\frac{f(x)}{g(x)}\\) tends to \\(-\\frac54\\), finite and nonzero, so \\(|f|\\) stays near \\(\\frac54\\) of \\(g\\).",
+  "sources": ["BC-CON-01018", "BC-EK-LIM-2D5", "research/units/unit-01-limits-continuity.md#1.15 Connecting Limits at Infinity and Horizontal Asymptotes"]
+ },
  "orientation": {
   "text": "A response writes the limit of the quotient of two quantities as the variable grows without bound, evaluates it, and reads from the value which quantity grows faster.",
   "sources": ["BC-CON-01018", "research/units/unit-01-limits-continuity.md#1.15 Connecting Limits at Infinity and Horizontal Asymptotes"]
@@ -113,7 +129,7 @@ Two checks only: check 3 needs error blocks and the bundle holds none (listed un
    "id": "ki-1",
    "ek_id": "BC-EK-LIM-2D5",
    "depth": "core",
-   "text": "Two quantities, or their rates, are compared by the limit of their quotient (BC-EK-LIM-2D5, ced:52). The limit is taken as the variable grows without bound, and its value tells which quantity grows faster (BC-CON-01018).",
+   "text": "Two quantities, or their rates, are compared by the limit of their quotient as the variable grows without bound. The value tells which quantity grows faster.",
    "notation": "",
    "quote": {"text": "Relative magnitudes of functions and their rates of change can be compared using limits.", "source": "ced:52"},
    "sources": ["BC-EK-LIM-2D5", "ced:52", "research/units/unit-01-limits-continuity.md#1.15 Connecting Limits at Infinity and Horizontal Asymptotes"]
@@ -124,10 +140,15 @@ Two checks only: check 3 needs error blocks and the bundle holds none (listed un
    "id": "st-1",
    "archetype_id": "BC-QA-01010",
    "cue": "Two quantities, and the stem asks which grows faster for large inputs.",
-   "method": "First written line: the limit of their quotient as the variable grows without bound.",
-   "rival": "Substituting infinity into the expression as a number (BC-ERR-01021).",
+   "method": "The limit of their quotient as the variable grows without bound.",
+   "rival": "Substituting infinity into the expression as a number.",
    "separating_feature": "The limit is taken on the quotient, with infinity under the arrow.",
-   "sources": ["BC-QA-01010"],
+   "contrast": {
+    "this": {"text": "Compare \\(u(x)=7x-3\\) and \\(v(x)=\\sqrt{9x^2+1}\\) as \\(x\\to-\\infty\\) using \\(\\lim\\frac{u(x)}{v(x)}\\).", "archetype_id": "BC-QA-01010"},
+    "not_this": {"text": "Describe the long run behaviour of \\(A(t)=\\frac{7t}{t+2}\\) and give its horizontal asymptote.", "why_not": "One quantity's own end value is asked, not a comparison of two."},
+    "feature": "Two quantities compared, not one quantity's long run value."
+   },
+   "sources": ["BC-QA-01010", "BC-ERR-01021"],
    "evidence_tag": "verified"
   }
  ],
@@ -196,16 +217,16 @@ Two checks only: check 3 needs error blocks and the bundle holds none (listed un
   }
  ],
  "delivery": [
-  {"block": "orientation", "mode": "text", "reason": "rule 5: BC-SKL-01062 carries BC-REP-01 only", "sources": ["BC-SKL-01062"]},
-  {"block": "ki-1", "mode": "text", "reason": "rule 5: BC-REP-01 only, so no figure exists for motion", "sources": ["BC-SKL-01062"]},
-  {"block": "ex-1", "mode": "step_reveal", "reason": "rule 1; rule 2 names a computed sequence as the idea, so the reveal carries a model table of the quotient at growing |x|", "sources": ["BC-SKL-01062"],
+  {"block": "orientation", "mode": "text", "reason": "rule 6: BC-SKL-01062 carries BC-REP-01 only", "sources": ["BC-SKL-01062"]},
+  {"block": "ki-1", "mode": "model", "reason": "rule 2, the model clause: the idea is the behaviour of a computed sequence, the quotient at growing |x|; BC-REP-01 only, so no figure exists for motion", "sources": ["BC-SKL-01062"],
    "spec": {"kind": "table", "columns": ["x", "f(x)/g(x)"], "rows": [["-10", "-1.1989"], ["-100", "-1.2450"], ["-1000", "-1.2495"]],
     "labels": [{"text": "quotient settles at -5/4", "placement": "inside"}]},
-   "fallback": "the same three rows as static text", "keyboard": "Tab moves between rows; no control"}
+   "fallback": "the same three rows as static text", "keyboard": "Tab moves between rows; no control"},
+  {"block": "ex-1", "mode": "step_reveal", "reason": "rule 1", "sources": []}
  ],
  "refresher": ["ki-1", "ex-1"],
- "read_minutes": {"full": 2.5, "brief": 2.5},
- "word_count": {"full": 362, "brief": 362},
+ "read_minutes": {"full": 2.9, "brief": 2.9},
+ "word_count": {"full": 435, "brief": 435},
  "research_lines": [
   {"file": "research/units/unit-01-limits-continuity.md", "line": "Relative magnitudes of functions and their rates of change can be compared using limits (BC-EK-LIM-2D5)."}
  ],

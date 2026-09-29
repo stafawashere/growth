@@ -3,20 +3,68 @@
  "version": 1,
  "kind": "concept",
  "target_id": "BC-CON-01016",
- "status": "signed_off",
+ "status": "draft",
  "snapshot_digest": "a6a8ec9d3f59ab8f712e33d30cc22fc64bf2c478fbe7312e3e3118d319c6a42f",
  "source_digest": "9a32899471d351a10dcb741acef74b70f6f425712843c8a4242c30288b18768f",
  "read_minutes": {
-  "full": 3.7,
-  "brief": 2.9
+  "full": 3.8,
+  "brief": 3.0
  },
  "word_count": {
-  "full": 465,
-  "brief": 364
+  "full": 491,
+  "brief": 394
  },
  "sections": [
   {
    "id": "LSN-CON-01016#s1",
+   "type": "prediction",
+   "bands": [
+    "low",
+    "mid"
+   ],
+   "skills": [
+    "BC-SKL-01054",
+    "BC-SKL-01055",
+    "BC-SKL-01056",
+    "BC-SKL-01057"
+   ],
+   "sources": [
+    "BC-CON-01016",
+    "research/units/unit-01-limits-continuity.md#1.14 Connecting Infinite Limits and Vertical Asymptotes"
+   ],
+   "evidence_tag": "inferred",
+   "stem": {
+    "text": "Let \\(f(x)=\\frac{2(x-1)(x-3)}{(x-1)(x+2)}\\). Predict where the graph of \\(f\\) has a vertical asymptote.",
+    "command_verb": "predict"
+   },
+   "format": "mcq",
+   "options": [
+    {
+     "id": "A",
+     "label": "At \\(x=-2\\) and \\(x=1\\)",
+     "is_key": false
+    },
+    {
+     "id": "B",
+     "label": "At \\(x=-2\\) only",
+     "is_key": true
+    },
+    {
+     "id": "C",
+     "label": "At \\(x=1\\) only",
+     "is_key": false
+    }
+   ],
+   "resolution": {
+    "text": "Dividing out \\(x-1\\) leaves \\(\\frac{2(x-3)}{x+2}\\), so \\(x=1\\) is a removable break. Only \\(x=-2\\), a zero of the remaining denominator, gives unbounded values."
+   },
+   "delivery": {
+    "mode": "text",
+    "reason": "rule 6"
+   }
+  },
+  {
+   "id": "LSN-CON-01016#s2",
    "type": "orientation",
    "bands": [
     "low",
@@ -33,7 +81,7 @@
     "research/units/unit-01-limits-continuity.md#1.14 Connecting Infinite Limits and Vertical Asymptotes"
    ],
    "evidence_tag": "inferred",
-   "text": "A response simplifies first, places a vertical asymptote at each zero of the denominator that survives, and states the behaviour on each side as a one sided infinite limit.",
+   "text": "A response simplifies first, places an asymptote at each surviving zero of the denominator, and states each side's infinite limit.",
    "delivery": {
     "mode": "figure",
     "reason": "rule 3: BC-REP-02 on BC-SKL-01056 and BC-SKL-01057",
@@ -98,7 +146,7 @@
    }
   },
   {
-   "id": "LSN-CON-01016#s2",
+   "id": "LSN-CON-01016#s3",
    "type": "key_ideas",
    "bands": [
     "low",
@@ -116,7 +164,7 @@
    "evidence_tag": "verified",
    "ek_id": "BC-EK-LIM-2D1",
    "depth": "core",
-   "text": "A limit written as \\(\\infty\\) records growth without bound; it does not say a real limit exists (BC-EK-LIM-2D1, ced:51). Each side is written separately whenever the sign differs across the input.",
+   "text": "A limit written as \\(\\infty\\) records growth without bound; it does not say a real limit exists. Each side is written separately when the sign differs.",
    "notation": "vertical asymptote",
    "quote": {
     "text": "The concept of a limit can be extended to include infinite limits.",
@@ -209,7 +257,7 @@
    }
   },
   {
-   "id": "LSN-CON-01016#s3",
+   "id": "LSN-CON-01016#s4",
    "type": "key_ideas",
    "bands": [
     "low",
@@ -228,7 +276,7 @@
    "evidence_tag": "verified",
    "ek_id": "BC-EK-LIM-2D2",
    "depth": "core",
-   "text": "Simplify first (research/units/unit-01-limits-continuity.md#1.14 Connecting Infinite Limits and Vertical Asymptotes). A factor that divides out leaves a removable break; only a zero of the simplified denominator is an asymptote.",
+   "text": "Simplify first. A factor that divides out leaves a removable break; only a zero of the simplified denominator is an asymptote.",
    "quote": {
     "text": "Asymptotic and unbounded behavior of functions can be described and explained using limits.",
     "source": "ced:51"
@@ -296,7 +344,7 @@
    }
   },
   {
-   "id": "LSN-CON-01016#s4",
+   "id": "LSN-CON-01016#s5",
    "type": "strategy",
    "bands": [
     "low",
@@ -308,17 +356,30 @@
     "BC-SKL-01056"
    ],
    "sources": [
-    "BC-QA-01009"
+    "BC-QA-01009",
+    "BC-ERR-01019",
+    "BC-QA-01010"
    ],
    "evidence_tag": "inferred",
    "archetype_id": "BC-QA-01009",
-   "cue": "A rational rule; the stem asks for the vertical asymptotes and the behaviour near each.",
-   "method": "First written line: factor numerator and denominator.",
-   "rival": "One two sided infinite limit where the sides differ in sign (BC-ERR-01019).",
-   "separating_feature": "The sign of the simplified quotient on each side."
+   "cue": "A rational rule; asymptotes and the behaviour near each.",
+   "method": "Factor numerator and denominator.",
+   "rival": "One two sided infinite limit where the sides differ in sign.",
+   "separating_feature": "The sign of the simplified quotient on each side.",
+   "contrast": {
+    "this": {
+     "text": "Find the vertical asymptotes of \\(p(x)=\\frac{(x-4)(x+1)}{(x+1)(x-3)}\\).",
+     "archetype_id": "BC-QA-01009"
+    },
+    "not_this": {
+     "text": "Find \\(\\lim_{x\\to\\infty}\\frac{(x-4)(x+1)}{(x+1)(x-3)}\\).",
+     "why_not": "Infinity is under the arrow, so it asks for a horizontal asymptote."
+    },
+    "feature": "Infinity under the arrow, not a finite input."
+   }
   },
   {
-   "id": "LSN-CON-01016#s5",
+   "id": "LSN-CON-01016#s6",
    "type": "strategy",
    "bands": [
     "low",
@@ -328,17 +389,18 @@
     "BC-SKL-01057"
    ],
    "sources": [
-    "BC-QA-01007"
+    "BC-QA-01007",
+    "BC-ERR-01018"
    ],
    "evidence_tag": "inferred",
    "archetype_id": "BC-QA-01007",
    "cue": "A function with breaks; the stem asks to classify each and give a reason.",
-   "method": "First written line: the inputs where the function is undefined or the rule changes.",
-   "rival": "A vertical asymptote named at a factor that divides out (BC-ERR-01018).",
+   "method": "The inputs where the function is undefined or the rule changes.",
+   "rival": "A vertical asymptote named at a factor that divides out.",
    "separating_feature": "Whether the factor survives cancellation."
   },
   {
-   "id": "LSN-CON-01016#s6",
+   "id": "LSN-CON-01016#s7",
    "type": "worked_example",
    "bands": [
     "low",
@@ -369,7 +431,7 @@
    "steps": [
     {
      "cue": "Both parts arrive factored.",
-     "why": "Factors are what cancel, so the factored form is read first."
+     "why": "Factors are what cancel."
     },
     {
      "cue": "\\(x-1\\) sits in both parts.",
@@ -478,7 +540,7 @@
     },
     {
      "cue": "Just left of \\(-2\\): the denominator is small negative.",
-     "why": "Opposite sign, so each side gets its own statement.",
+     "why": "Opposite sign: a separate statement.",
      "expression": "PositiveInfinity",
      "relation": "limit",
      "variable": "x",
@@ -531,6 +593,7 @@
     ]
    },
    "relation": "distinct",
+   "fix_prompt": true,
    "possible_reason": {
     "misconception_id": "BC-MIS-01011",
     "text": "any zero of the original denominator as unbounded behaviour without simplifying first"
@@ -569,6 +632,7 @@
     "expression": "PositiveInfinity"
    },
    "relation": "distinct",
+   "fix_prompt": true,
    "possible_reason": {
     "misconception_id": "BC-MIS-01012",
     "text": "writes one statement where the two sides carry opposite signs"
@@ -626,6 +690,7 @@
     ]
    },
    "relation": "distinct",
+   "fix_prompt": true,
    "possible_reason": {
     "misconception_id": "BC-MIS-01012",
     "text": "reads the infinity symbol as a real value"
@@ -652,7 +717,7 @@
    ],
    "evidence_tag": "inferred",
    "prerequisite_id": "BC-PRQ-01001",
-   "text": "Factor and cancel a common factor. The slip: stopping at zero over zero with no factoring tried."
+   "text": "Factor and cancel a common factor. Slip: stopping at zero over zero."
   },
   {
    "id": "LSN-CON-01016#prq-BC-PRQ-01009",
@@ -670,7 +735,7 @@
    ],
    "evidence_tag": "inferred",
    "prerequisite_id": "BC-PRQ-01009",
-   "text": "Find the sign of a quotient on each side of a zero of its denominator. The slip: one two sided infinite limit where the signs differ."
+   "text": "Sign of a quotient beside a zero of its denominator. Slip: one two sided limit where signs differ."
   }
  ],
  "checks": [
@@ -690,7 +755,7 @@
     "zero": "3",
     "form": "factored"
    },
-   "completes": "LSN-CON-01016#s6",
+   "completes": "LSN-CON-01016#s7",
    "stem": {
     "text": "For \\(f(x)=\\frac{2(x-3)}{x+2}\\), \\(x\\ne1\\), \\(\\lim_{x\\to-2^+}f(x)=-\\infty\\). State \\(\\lim_{x\\to-2^-}f(x)\\).",
     "command_verb": "state"
@@ -951,19 +1016,19 @@
   }
  ],
  "refresher": [
-  "LSN-CON-01016#s2",
   "LSN-CON-01016#s3",
+  "LSN-CON-01016#s4",
   "LSN-CON-01016#err-BC-ERR-01018",
   "LSN-CON-01016#err-BC-ERR-01019",
   "LSN-CON-01016#err-BC-ERR-01020",
-  "LSN-CON-01016#s6"
+  "LSN-CON-01016#s7"
  ],
  "provenance": {
   "author": "tools/lesson_transcribe.py",
-  "prompt_version": "generator/lesson_v1",
+  "prompt_version": "generator/lesson_v2",
   "design_path": "docs/lessons/unit-01/LSN-CON-01016.md",
-  "signed_off_by": "claude-opus-5-5",
-  "signed_off_at": "2026-09-29",
+  "signed_off_by": null,
+  "signed_off_at": null,
   "not_human": true
  }
 }

@@ -9,9 +9,13 @@ purpose: Authoring spec for the concept lesson on BC-CON-01002, the limit at a p
 
 Concept BC-CON-01002 (skills BC-SKL-01006, BC-SKL-01008), topics 1.2 to 1.4 of Unit 1, loaded by BC-QA-01001 (family limit-from-graph) and BC-QA-01013 (family representation-consistency). It is a root of the unit's concept order (docs/lessons/unit-01/README.md, section 1).
 
+## Prediction
+
+Served first in both bands. Multiple choice on ex-1's own numbers: both segments of f head to height 3 at \(x=2\) and a dot sits at \((2,-1)\), and the student picks the limit from 3, -1 and no limit. Key 3, ex-1's answer. The resolution states that the limit is the height both sides approach and that the dot is \(f(2)\), a separate value. Sources: BC-CON-01002 and the topic 1.2 section that ki-1 cites. Delivery: text.
+
 ## Orientation
 
-Served text, from BC-CON-01002 `description_plain` and the Assessment behaviour paragraphs of topics 1.2 and 1.3, which ask what a written statement claims, whether the function value matters, and for limits and function values at named inputs of a graph (research/units/unit-01-limits-continuity.md#1.2 Defining Limits and Using Limit Notation; research/units/unit-01-limits-continuity.md#1.3 Estimating Limit Values from Graphs). No count, no frequency.
+Served text (16 words), from BC-CON-01002 `description_plain` and the Assessment behaviour paragraphs of topics 1.2 and 1.3, which ask what a written statement claims, whether the function value matters, and for limits and function values at named inputs of a graph (research/units/unit-01-limits-continuity.md#1.2 Defining Limits and Using Limit Notation; research/units/unit-01-limits-continuity.md#1.3 Estimating Limit Values from Graphs). No count, no frequency.
 
 ## Key ideas
 
@@ -26,6 +30,8 @@ The epsilon delta definition is excluded from assessment (ced:39), so no block s
 
 - BC-QA-01001 (research/question-analysis/question-archetypes.md#BC-QA-01001 Limit estimated from a graph including one sided values): `typical_wording` "Using the graph of f shown, find the stated limits or explain why a limit does not exist"; `common_givens` a graph of a function with one or more breaks; `asked_to_produce` two sided and one sided limits, function values at named inputs, a nonexistence statement with a reason. The signal is an open circle and a filled point at one input with the stem asking for both a limit and a value. Official example BC-MCQ-CED-011.
 - BC-QA-01013 (research/question-analysis/question-archetypes.md#BC-QA-01013 Limit claim matched across graphical, numerical, and analytic representations): `typical_wording` "Which of the given representations is consistent with the stated limit behaviour of f at the named input?"; `common_givens` a limit fact in one representation and candidate representations. The signal is a stem that gives a limit statement and asks which picture, table or sentence matches it.
+
+The contrast pair on st-1 takes its near miss from the wrong reading in BC-ERR-01001: one graph, one open circle and one dot, asked once for the limit at the input and once for the value there. The separating feature is whether a limit or a value is asked.
 
 What says "not this concept": a superscript sign on the arrow or a stem naming a side asks for a one sided limit (BC-CON-01004); a stem asking whether f is continuous asks for the value, the limit and their comparison (BC-CON-01013), per the unit README's neighbour table.
 
@@ -85,14 +91,15 @@ Every non-text choice is [inferred], settled by the modality A/B.
 
 ## Band plan
 
-- Low (full): orientation, ki-1, ki-2, st-1, st-2, ex-1, err-BC-ERR-01001, err-BC-ERR-01003, chk-1, chk-2, bridge when gated. 539 words, 3.6 minutes (cap 900 and 6).
-- Mid (brief): orientation, ki-1, st-1, ex-1, both error blocks, chk-1, chk-2, bridge when gated. 448 words, 3.0 minutes (cap 450 and 3).
+- Low (full), served order: prediction, orientation, bridge when gated, ki-1, ki-2, st-1 with its contrast pair, st-2, ex-1, chk-1, err-BC-ERR-01001, err-BC-ERR-01003, chk-2. 534 words, 3.6 minutes (cap 900 and 6).
+- Mid (brief): prediction, orientation, bridge when gated, ki-1, st-1 with its contrast pair, ex-1, chk-1, both error blocks, chk-2. 448 words, 3.0 minutes (cap 450 and 3).
 - Refresher: ki-1, err-BC-ERR-01001, err-BC-ERR-01003, ex-1.
 
 ## Sources
 
 - BC-CON-01002; BC-SKL-01006, BC-SKL-01008; BC-EK-LIM-1A1, BC-EK-LIM-1B1; ced:39
 - BC-QA-01001, BC-QA-01013; BC-MCQ-CED-011
+- Prediction pr-1 and the contrast pair: BC-CON-01002, BC-ERR-01001
 - BC-ERR-01001, BC-ERR-01003, BC-ERR-01002; BC-MIS-01001, BC-MIS-01003, BC-MIS-01009
 - BC-PRQ-06005
 - research/units/unit-01-limits-continuity.md#1.2 Defining Limits and Using Limit Notation
@@ -117,8 +124,38 @@ Every non-text choice is [inferred], settled by the modality A/B.
   "BC-SKL-01006",
   "BC-SKL-01008"
  ],
+ "prediction": {
+  "id": "pr-1",
+  "stem": {
+   "text": "Predict. Both segments of f head to height 3 at x = 2; a dot sits at (2, -1). What is the limit?",
+   "command_verb": "predict"
+  },
+  "format": "mcq",
+  "options": [
+   {
+    "id": "A",
+    "label": "3",
+    "is_key": true
+   },
+   {
+    "id": "B",
+    "label": "-1",
+    "is_key": false
+   },
+   {
+    "id": "C",
+    "label": "No limit",
+    "is_key": false
+   }
+  ],
+  "resolution": "Both sides approach 3, the height approached. The dot is f(2) = -1, a separate value.",
+  "sources": [
+   "BC-CON-01002",
+   "research/units/unit-01-limits-continuity.md#1.2 Defining Limits and Using Limit Notation"
+  ]
+ },
  "orientation": {
-  "text": "A response reports the value f(x) approaches as x nears the input, kept apart from f at the input, which can differ or be missing. Stems give a graph or a limit statement.",
+  "text": "A response reports the value f(x) approaches near the input, apart from f at the input.",
   "sources": [
    "BC-CON-01002",
    "research/units/unit-01-limits-continuity.md#1.2 Defining Limits and Using Limit Notation",
@@ -130,7 +167,7 @@ Every non-text choice is [inferred], settled by the modality A/B.
    "id": "ki-1",
    "ek_id": "BC-EK-LIM-1A1",
    "depth": "core",
-   "text": "The limit of f(x) as x approaches c is the number R that f(x) gets arbitrarily close to for x near c, x not equal to c (BC-EK-LIM-1A1, ced:39). The value f(c) plays no part.",
+   "text": "The limit as x approaches c is the number R that f(x) nears for x close to c, x not equal to c. The value f(c) plays no part.",
    "notation": "lim as x approaches c of f(x) equals R",
    "quote": null,
    "sources": [
@@ -142,7 +179,7 @@ Every non-text choice is [inferred], settled by the modality A/B.
    "id": "ki-2",
    "ek_id": "BC-EK-LIM-1B1",
    "depth": "extended",
-   "text": "A graph, a table and a written statement can carry one limit claim; reading any of them means naming the input approached and the value approached (BC-EK-LIM-1B1, ced:39).",
+   "text": "A graph, a table and a written statement can carry one limit claim; reading any of them means naming the input approached and the value approached.",
    "notation": "",
    "quote": {
     "text": "A limit can be expressed in multiple ways, including graphically, numerically, and analytically.",
@@ -158,24 +195,38 @@ Every non-text choice is [inferred], settled by the modality A/B.
   {
    "id": "st-1",
    "archetype_id": "BC-QA-01001",
-   "cue": "A graph with breaks; limits or function values asked at named inputs.",
-   "method": "First line: locate the input, then read each side's height.",
-   "rival": "Reading the dot (BC-ERR-01001), or calling the limit absent where f is undefined (BC-ERR-01003).",
-   "separating_feature": "The limit comes from the curve beside the input, the value from the dot.",
+   "cue": "A graph with breaks; a limit asked at a named input.",
+   "method": "Locate the input, then read each side's height.",
+   "rival": "Reading the dot, or calling the limit absent.",
+   "separating_feature": "The limit comes from the curve, the value from the dot.",
    "sources": [
-    "BC-QA-01001"
+    "BC-QA-01001",
+    "BC-ERR-01001",
+    "BC-ERR-01003"
    ],
-   "evidence_tag": "verified"
+   "evidence_tag": "verified",
+   "contrast": {
+    "this": {
+     "text": "Open circle at (4, 2), dot at (4, 7). Find the limit at x = 4.",
+     "archetype_id": "BC-QA-01001"
+    },
+    "not_this": {
+     "text": "Open circle at (4, 2), dot at (4, 7). Find g(4).",
+     "why_not": "It asks for the dot's value, not the height approached."
+    },
+    "feature": "Limit or value asked."
+   }
   },
   {
    "id": "st-2",
    "archetype_id": "BC-QA-01013",
    "cue": "A limit fact in one representation, and candidate graphs, tables or expressions to match against it.",
-   "method": "First line: read the limit behaviour from the supplied representation, in neutral words.",
-   "rival": "Matching a one sided value to a two sided statement (BC-ERR-01002).",
+   "method": "Read the limit behaviour from the supplied representation, in neutral words.",
+   "rival": "Matching a one sided value to a two sided statement.",
    "separating_feature": "A match keeps the input, the side and the value.",
    "sources": [
-    "BC-QA-01013"
+    "BC-QA-01013",
+    "BC-ERR-01002"
    ],
    "evidence_tag": "verified"
   }
@@ -209,14 +260,14 @@ Every non-text choice is [inferred], settled by the modality A/B.
    "calculator_status": "no_calculator",
    "steps": [
     {
-     "cue": "Left of x = 2 the segment starts at (0, 0).",
-     "why": "There f(x) = 3x/2.",
+     "cue": "Left branch.",
+     "why": "f(x) = 3x/2.",
      "expr": "3*x/2",
      "relation": "new"
     },
     {
-     "cue": "Read the height approached from the left.",
-     "why": "An open circle marks a height approached.",
+     "cue": "Left height.",
+     "why": "Open circle: height approached.",
      "expr": "3",
      "relation": "limit",
      "variable": "x",
@@ -224,14 +275,14 @@ Every non-text choice is [inferred], settled by the modality A/B.
      "dir": "-"
     },
     {
-     "cue": "The right segment runs to (5, 4).",
-     "why": "There f(x) = (x + 7)/3.",
+     "cue": "Right branch.",
+     "why": "f(x) = (x + 7)/3.",
      "expr": "(x + 7)/3",
      "relation": "new"
     },
     {
-     "cue": "Read the height approached from the right.",
-     "why": "Both sides give 3, so the limit is 3.",
+     "cue": "Right height.",
+     "why": "Both sides give 3: the limit is 3.",
      "expr": "3",
      "relation": "limit",
      "variable": "x",
@@ -239,8 +290,8 @@ Every non-text choice is [inferred], settled by the modality A/B.
      "dir": "+"
     },
     {
-     "cue": "The filled point gives f(2), a value separate from the limit.",
-     "why": "f(2) = -1, a separate answer."
+     "cue": "The dot.",
+     "why": "f(2) = -1, separate from the limit."
     }
    ],
    "answer": {
@@ -271,7 +322,8 @@ Every non-text choice is [inferred], settled by the modality A/B.
    "sources": [
     "BC-ERR-01001",
     "BC-MIS-01001"
-   ]
+   ],
+   "fix_prompt": true
   },
   {
    "error_id": "BC-ERR-01003",
@@ -293,14 +345,15 @@ Every non-text choice is [inferred], settled by the modality A/B.
    "sources": [
     "BC-ERR-01003",
     "BC-MIS-01001"
-   ]
+   ],
+   "fix_prompt": true
   }
  ],
  "representations": null,
  "prerequisite_bridges": [
   {
    "prq_id": "BC-PRQ-06005",
-   "text": "Graph reading rests on evaluating f at a stated input and telling f from its value at a point. The failure: a height read at the wrong input."
+   "text": "Graph reading rests on f at a stated input. Failure: a height read at the wrong input."
   }
  ],
  "time": {
@@ -614,7 +667,7 @@ Every non-text choice is [inferred], settled by the modality A/B.
   "brief": 3.0
  },
  "word_count": {
-  "full": 539,
+  "full": 534,
   "brief": 448
  },
  "research_lines": [

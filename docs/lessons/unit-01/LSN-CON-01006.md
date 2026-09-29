@@ -9,6 +9,10 @@ purpose: Authoring spec for the concept lesson on BC-CON-01006, estimating a lim
 
 Concept BC-CON-01006 (skills BC-SKL-01009, BC-SKL-01014, BC-SKL-01015, BC-SKL-01017), topics 1.3 and 1.4 of Unit 1, loaded by BC-QA-01001 (limit-from-graph), BC-QA-01002 (limit-from-table) and BC-QA-01013 (representation-consistency). It sits fourth in the unit's concept order because four concepts hang from it (docs/lessons/unit-01/README.md, section 1).
 
+## Prediction
+
+Served first, both bands. Pose on ex-1's own numbers: the graph with an open circle at \(x=3\) and a dot below it, and ask which statement holds for the limit. Form `mcq`, three short options, key: the limit is 2. The resolution states that the limit is the height both sides approach and that the dot is the value of \(f\) at 3, from BC-CON-01006 and the topic 1.3 paragraph. Nothing is graded and the resolution carries no verdict word.
+
 ## Orientation
 
 Served text, from BC-CON-01006 `description_plain` and the Assessment behaviour paragraphs of topics 1.3 and 1.4, which ask for limits and values at marked breaks of a graph, for the estimate from a short table, and for what a table can establish (research/units/unit-01-limits-continuity.md#1.3 Estimating Limit Values from Graphs; research/units/unit-01-limits-continuity.md#1.4 Estimating Limit Values from Tables). No count, no frequency.
@@ -29,6 +33,8 @@ The four skills map three BC-EK: BC-EK-LIM-1C2 (BC-SKL-01009, ced:40), BC-EK-LIM
 
 What says "not this concept": a formula to evaluate with no graph or table points to the analytic concepts (BC-CON-01007, 01008); the unit README's neighbour table names the feature that splits an estimate from a settled limit, a table that is deliberately inconclusive or covers one side only.
 
+The contrast pair on st-1 takes its near miss from the analytic sibling: `this` is a graph with a hole and a dot on BC-QA-01001, `not_this` is a formula whose limit at the same input is evaluated algebraically (BC-CON-01007), and the feature is a drawn graph against a formula alone.
+
 ## Method choice
 
 Three strategy blocks, low band all, mid band st-1.
@@ -43,6 +49,8 @@ All three archetypes carry `asked_to_produce` and `common_givens` in the snapsho
 
 - ex-1, BC-QA-01001, both bands, no calculator. Draw: hole_x 3, jump_x 6, start_y -1, hole_y 2, hole_value 0, left_limit -2, right_limit 1, end_y 3, jump_value 4, value_mark marked, justify bare, request hole. Near \(x=3\) the left segment is \(x-1\) and the right segment \(6-4x/3\), both heading to 2, with a dot at \((3,0)\). Steps: each branch (valued, new) and its one sided limit (valued, limit from each side). Answer 2.
 - ex-2, BC-QA-01002, low band only. Draw: target 1, left_value 2, right_value -1, left_slope 3, right_slope -2, curvature 0, behaviour oscillate. The rows at distances 0.1, 0.01, 0.001, 0.0001 on each side read 2.3000, -1.0200, 2.0030, -1.0002 (the spec's notes: outputs alternate between the two approached values, plus slope times distance). Steps: group the rows by side, read each side, conclude. Answer: a statement, the table suggests that the limit does not exist.
+
+ex-2 is faded from step 3: the student reads the grouped rows and the alternation of the outputs (step 2 carries the value DNE), writes the explanation, and then step 3 appears. The fade falls there because the first two steps only read the table and the last is the sentence a written response must supply.
 
 A fluent solver writes nothing on the MCQ shape and holds the row grouping in the head (docs/lessons/unit-01/README.md, section 5) [inferred].
 
@@ -91,9 +99,9 @@ Every non-text choice is [inferred], settled by the modality A/B.
 
 ## Band plan
 
-- Low (full): orientation, ki-1, ki-2, ki-3, st-1, st-2, st-3, ex-1, four error blocks, chk-1, chk-2, chk-3, ex-2, bridge when gated.
-- Mid (brief): orientation, ki-1, ki-3, st-1, ex-1, err-BC-ERR-01001, err-BC-ERR-01002, chk-1, chk-2, bridge when gated.
-- Totals: full 825 words, 5.8 minutes (cap 900 and 6); brief 447 words, 3.0 minutes (cap 450 and 3).
+- Low (full): pr-1, orientation, bridge when gated, ki-1, ki-2, ki-3, st-1 with its contrast, st-2, st-3, ex-1, chk-1, four error blocks, ex-2 faded from step 3, chk-2, chk-3.
+- Mid (brief): pr-1, orientation, bridge when gated, ki-1, ki-3, st-1 with its contrast, ex-1, chk-1, err-BC-ERR-01001, err-BC-ERR-01002, chk-2.
+- Totals: full 818 words, 5.5 minutes (cap 900 and 6); brief 446 words, 3.0 minutes (cap 450 and 3).
 - Refresher: ki-1, ki-3, the four error blocks, ex-1.
 
 ## Sources
@@ -122,19 +130,23 @@ Every non-text choice is [inferred], settled by the modality A/B.
  "target_id": "BC-CON-01006",
  "unit": "01",
  "skills": ["BC-SKL-01009", "BC-SKL-01014", "BC-SKL-01015", "BC-SKL-01017"],
+ "prediction": {"id": "pr-1", "stem": {"text": "Predict. A graph has an open circle at (3, 2) and a dot at (3, 0). What is the limit of f at x = 3?", "command_verb": "predict"}, "format": "mcq",
+  "options": [{"id": "A", "label": "0", "is_key": false}, {"id": "B", "label": "2", "is_key": true}, {"id": "C", "label": "It does not exist", "is_key": false}],
+  "resolution": "The limit is the height both sides approach, 2; the dot gives f(3), not the limit.", "sources": ["BC-CON-01006", "research/units/unit-01-limits-continuity.md#1.3 Estimating Limit Values from Graphs"]},
  "orientation": {
-  "text": "A response reads the heights a graph approaches, or the values a table approaches, from both sides of the input, and states an estimate, not a proof.",
+  "text": "A response reads the height each side approaches.",
   "sources": ["BC-CON-01006", "research/units/unit-01-limits-continuity.md#1.3 Estimating Limit Values from Graphs", "research/units/unit-01-limits-continuity.md#1.4 Estimating Limit Values from Tables"]
  },
  "key_ideas": [
-  {"id": "ki-1", "ek_id": "BC-EK-LIM-1C5", "depth": "core", "text": "Values at inputs approaching the target from both sides support an estimate of the two sided limit; one side supports only a one sided estimate. A finite table leaves the behaviour between its rows open.", "notation": "estimate", "quote": null, "sources": ["BC-EK-LIM-1C5", "ced:41", "research/units/unit-01-limits-continuity.md#1.4 Estimating Limit Values from Tables"]},
+  {"id": "ki-1", "ek_id": "BC-EK-LIM-1C5", "depth": "core", "text": "Values approaching from both sides support an estimate; a finite table leaves the rows between open.", "notation": "estimate", "quote": null, "sources": ["BC-EK-LIM-1C5", "ced:41", "research/units/unit-01-limits-continuity.md#1.4 Estimating Limit Values from Tables"]},
   {"id": "ki-2", "ek_id": "BC-EK-LIM-1C2", "depth": "extended", "text": "On a graph, the estimate is the height the curve approaches from each side of the input.", "notation": "", "quote": {"text": "Graphical information about a function can be used to estimate limits.", "source": "ced:40"}, "sources": ["BC-EK-LIM-1C2", "ced:40"]},
-  {"id": "ki-3", "ek_id": "BC-EK-LIM-1C3", "depth": "core", "text": "A window at one scale can hide a hole or an oscillation, so a graphical reading supports an estimate, not a proof.", "notation": "", "quote": {"text": "graphical representations of functions may miss important function behavior.", "source": "ced:40"}, "sources": ["BC-EK-LIM-1C3", "ced:40"]}
+  {"id": "ki-3", "ek_id": "BC-EK-LIM-1C3", "depth": "core", "text": "A window can hide a hole, so a graph supports an estimate.", "notation": "", "quote": null, "sources": ["BC-EK-LIM-1C3", "ced:40"]}
  ],
  "strategy": [
-  {"id": "st-1", "archetype_id": "BC-QA-01001", "cue": "A graph with breaks; limits or values asked at named inputs.", "method": "First line: locate the input, then read each side's height.", "rival": "The dot's height read as the limit (BC-ERR-01001).", "separating_feature": "The limit is read beside the input, the value at it.", "sources": ["BC-QA-01001"], "evidence_tag": "verified"},
-  {"id": "st-2", "archetype_id": "BC-QA-01002", "cue": "A table at inputs approaching the target from both sides, and a request for an estimate.", "method": "First line: group the rows approaching from the left, then from the right.", "rival": "Agreement to several places taken as proof (BC-ERR-01005).", "separating_feature": "The answer says what the table suggests.", "sources": ["BC-QA-01002"], "evidence_tag": "verified"},
-  {"id": "st-3", "archetype_id": "BC-QA-01013", "cue": "A limit fact in one form, and candidate graphs or tables to match.", "method": "First line: read the behaviour as input, side and value.", "rival": "A one sided value matched to a two sided statement (BC-ERR-01002).", "separating_feature": "A match keeps input, side and value.", "sources": ["BC-QA-01013"], "evidence_tag": "verified"}
+  {"id": "st-1", "archetype_id": "BC-QA-01001", "cue": "A graph with named inputs.", "method": "Read each side's height.", "rival": "The dot read as the limit.", "separating_feature": "Read beside the input.", "sources": ["BC-QA-01001", "BC-ERR-01001"], "evidence_tag": "verified",
+   "contrast": {"this": {"text": "A graph has a hole at x = 2 and a dot at (2, 5). Estimate the limit at x = 2.", "archetype_id": "BC-QA-01001"}, "not_this": {"text": "Evaluate the limit of (x**2 - 4)/(x - 2) at x = 2.", "why_not": "Only a formula is given."}, "feature": "A graph, not a formula."}},
+  {"id": "st-2", "archetype_id": "BC-QA-01002", "cue": "A table at inputs approaching the target from both sides, and a request for an estimate.", "method": "Group the rows approaching from the left, then from the right.", "rival": "Agreement to several places taken as proof.", "separating_feature": "The answer says what the table suggests.", "sources": ["BC-QA-01002", "BC-ERR-01005"], "evidence_tag": "verified"},
+  {"id": "st-3", "archetype_id": "BC-QA-01013", "cue": "A limit fact in one form, and candidate graphs or tables to match.", "method": "Read the behaviour as input, side and value.", "rival": "A one sided value matched to a two sided statement.", "separating_feature": "A match keeps input, side and value.", "sources": ["BC-QA-01013", "BC-ERR-01002"], "evidence_tag": "verified"}
  ],
  "worked_examples": [
   {
@@ -156,12 +168,13 @@ Every non-text choice is [inferred], settled by the modality A/B.
    "id": "ex-2",
    "archetype_id": "BC-QA-01002",
    "bands": ["low"],
+   "fade_from": 3,
    "parameter_draw": {"target": 1, "left_value": 2, "right_value": -1, "left_slope": 3, "right_slope": -2, "curvature": 0, "behaviour": "oscillate"},
    "problem": {"text": "The table gives f at x = 0.9, 0.99, 0.999, 0.9999 as 2.3000, -1.0200, 2.0030, -1.0002, and at x = 1.1, 1.01, 1.001, 1.0001 with the same values. State what the table suggests about the limit of f at x = 1, and why.", "command_verb": "estimate"},
    "calculator_status": "no_calculator",
    "steps": [
     {"cue": "Group the rows: four from the left, four from the right.", "why": "Each side is read on its own before any comparison."},
-    {"cue": "On each side the outputs alternate near 2 and near -1.", "why": "No single value is approached as the rows close in."},
+    {"cue": "On each side the outputs alternate near 2 and near -1.", "why": "No single value is approached as the rows close in.", "expr": "DNE", "relation": "new"},
     {"cue": "The stem allows an explanation instead of an estimate.", "why": "The table suggests the limit does not exist; it proves nothing between rows."}
    ],
    "answer": {"form": "statement", "expr": "DNE", "text": "The table suggests that the limit does not exist, since the outputs alternate near 2 and near -1 on both sides."}
@@ -169,14 +182,14 @@ Every non-text choice is [inferred], settled by the modality A/B.
  ],
  "what_a_reader_scores": [],
  "common_errors": [
-  {"error_id": "BC-ERR-01001", "observed_behavior": "The response gives the plotted or defined value of the function at the input in place of the value the function approaches there.", "scoring_consequence": "The reading point is lost, and in a continuity part the comparison of limit with value collapses.", "wrong_step": {"text": "The dot's height 0 reported as the limit.", "expr": "0"}, "right_step": {"text": "Both sides head to 2.", "expr": "2"}, "relation": "distinct", "possible_reason": {"misconception_id": "BC-MIS-01001", "text": "the limit as another name for evaluation"}, "sources": ["BC-ERR-01001", "BC-MIS-01001"]},
-  {"error_id": "BC-ERR-01002", "observed_behavior": "The response reports the value approached from one side as the limit although the two sides differ.", "scoring_consequence": "The value point is lost because the correct response is that the limit does not exist.", "wrong_step": {"text": "At x = 6, the left height -2 reported as the limit.", "expr": "-2"}, "right_step": {"text": "The sides give -2 and 1: no limit.", "expr": "DNE"}, "relation": "distinct", "possible_reason": {"misconception_id": "BC-MIS-01002", "text": "a single one sided approach as sufficient"}, "sources": ["BC-ERR-01002", "BC-MIS-01002"]},
-  {"error_id": "BC-ERR-01003", "observed_behavior": "The response states that the limit does not exist on the grounds that the function has no value at the input.", "scoring_consequence": "Both the value point and any justification point are lost.", "wrong_step": {"text": "With the dot at (3, 0) removed, the limit is called nonexistent.", "expr": "DNE"}, "right_step": {"text": "Both sides still head to 2.", "expr": "2"}, "relation": "distinct", "possible_reason": {"misconception_id": "BC-MIS-01001", "text": "a missing or displaced function value is read as a missing or displaced limit"}, "sources": ["BC-ERR-01003", "BC-MIS-01001"]},
-  {"error_id": "BC-ERR-01004", "observed_behavior": "The response reports one of the values the function oscillates between as the limit near the input.", "scoring_consequence": "The value point is lost because no limit exists.", "wrong_step": {"text": "In ex-2's table, 2 reported as the limit.", "expr": "2"}, "right_step": {"text": "The outputs keep alternating: no limit is suggested.", "expr": "DNE"}, "relation": "distinct", "possible_reason": {"misconception_id": "BC-MIS-01004", "text": "oscillation or behaviour between the tabulated inputs is not considered"}, "sources": ["BC-ERR-01004", "BC-MIS-01004"]}
+  {"error_id": "BC-ERR-01001", "observed_behavior": "The response gives the plotted or defined value of the function at the input in place of the value the function approaches there.", "scoring_consequence": "The reading point is lost, and in a continuity part the comparison of limit with value collapses.", "wrong_step": {"text": "The dot's height 0 reported as the limit.", "expr": "0"}, "right_step": {"text": "Both sides head to 2.", "expr": "2"}, "relation": "distinct", "fix_prompt": true, "possible_reason": {"misconception_id": "BC-MIS-01001", "text": "the limit as another name for evaluation"}, "sources": ["BC-ERR-01001", "BC-MIS-01001"]},
+  {"error_id": "BC-ERR-01002", "observed_behavior": "The response reports the value approached from one side as the limit although the two sides differ.", "scoring_consequence": "The value point is lost because the correct response is that the limit does not exist.", "wrong_step": {"text": "At x = 6, the left height -2 reported as the limit.", "expr": "-2"}, "right_step": {"text": "The sides give -2 and 1: no limit.", "expr": "DNE"}, "relation": "distinct", "fix_prompt": true, "possible_reason": {"misconception_id": "BC-MIS-01002", "text": "a single one sided approach as sufficient"}, "sources": ["BC-ERR-01002", "BC-MIS-01002"]},
+  {"error_id": "BC-ERR-01003", "observed_behavior": "The response states that the limit does not exist on the grounds that the function has no value at the input.", "scoring_consequence": "Both the value point and any justification point are lost.", "wrong_step": {"text": "With the dot at (3, 0) removed, the limit is called nonexistent.", "expr": "DNE"}, "right_step": {"text": "Both sides still head to 2.", "expr": "2"}, "relation": "distinct", "fix_prompt": true, "possible_reason": {"misconception_id": "BC-MIS-01001", "text": "a missing or displaced function value is read as a missing or displaced limit"}, "sources": ["BC-ERR-01003", "BC-MIS-01001"]},
+  {"error_id": "BC-ERR-01004", "observed_behavior": "The response reports one of the values the function oscillates between as the limit near the input.", "scoring_consequence": "The value point is lost because no limit exists.", "wrong_step": {"text": "In ex-2's table, 2 reported as the limit.", "expr": "2"}, "right_step": {"text": "The outputs keep alternating: no limit is suggested.", "expr": "DNE"}, "relation": "distinct", "fix_prompt": true, "possible_reason": {"misconception_id": "BC-MIS-01004", "text": "oscillation or behaviour between the tabulated inputs is not considered"}, "sources": ["BC-ERR-01004", "BC-MIS-01004"]}
  ],
  "representations": null,
  "prerequisite_bridges": [
-  {"prq_id": "BC-PRQ-06005", "text": "Estimating rests on reading f at a stated input from a graph or a table. The failure: a value pulled from the wrong row or the wrong input."}
+  {"prq_id": "BC-PRQ-06005", "text": "Estimating reads f at a stated input from a graph or table."}
  ],
  "time": {"exam_part": "I-A", "budget_minutes": 2.14, "source": "research/exam/exam-structure.md#Section and part layout", "written_steps": {"ex-1": [2, 4], "ex-2": []}, "skipped_steps": {"ex-1": [1, 3], "ex-2": [1, 2, 3]}},
  "checks": [
@@ -229,8 +242,8 @@ Every non-text choice is [inferred], settled by the modality A/B.
   {"block": "err-BC-ERR-01004", "mode": "step_reveal", "reason": "rule 1", "sources": []}
  ],
  "refresher": ["ki-1", "ki-3", "err-BC-ERR-01001", "err-BC-ERR-01002", "err-BC-ERR-01003", "err-BC-ERR-01004", "ex-1"],
- "read_minutes": {"full": 5.8, "brief": 3.0},
- "word_count": {"full": 825, "brief": 447},
+ "read_minutes": {"full": 5.5, "brief": 3.0},
+ "word_count": {"full": 818, "brief": 446},
  "research_lines": [
   {"file": "research/units/unit-01-limits-continuity.md", "line": "A finite table does not determine the behaviour between its rows, so an estimate remains an estimate."}
  ],

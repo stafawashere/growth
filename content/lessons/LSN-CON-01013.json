@@ -3,20 +3,54 @@
  "version": 1,
  "kind": "concept",
  "target_id": "BC-CON-01013",
- "status": "signed_off",
+ "status": "draft",
  "snapshot_digest": "a6a8ec9d3f59ab8f712e33d30cc22fc64bf2c478fbe7312e3e3118d319c6a42f",
  "source_digest": "872d0bf44f9b0e596e33f8e738bb7db4d438d4bc2f4192b25f45b864c2fbd108",
  "read_minutes": {
-  "full": 4.1,
-  "brief": 2.9
+  "full": 4.2,
+  "brief": 2.99
  },
  "word_count": {
-  "full": 493,
-  "brief": 358
+  "full": 525,
+  "brief": 390
  },
  "sections": [
   {
    "id": "LSN-CON-01013#s1",
+   "type": "prediction",
+   "bands": [
+    "low",
+    "mid"
+   ],
+   "skills": [
+    "BC-SKL-01043",
+    "BC-SKL-01044",
+    "BC-SKL-01045"
+   ],
+   "sources": [
+    "BC-CON-01013",
+    "research/units/unit-01-limits-continuity.md#1.11 Defining Continuity at a Point"
+   ],
+   "evidence_tag": "inferred",
+   "stem": {
+    "text": "Before the rule: \\(f(x)=\\frac{2x^2-5x+2}{x-2}\\) for \\(x\\ne2\\), \\(f(2)=-1\\). What must \\(f(2)\\) be for \\(f\\) to be continuous at 2?",
+    "command_verb": "predict"
+   },
+   "format": "short_answer",
+   "answer_key": {
+    "form": "numeric",
+    "mathjson": 3
+   },
+   "resolution": {
+    "text": "Continuity at 2 needs \\(f(2)\\) to exist, the limit to exist, and the two to agree. The quotient reduces to \\(2x-1\\), so the limit is 3."
+   },
+   "delivery": {
+    "mode": "text",
+    "reason": "rule 6"
+   }
+  },
+  {
+   "id": "LSN-CON-01013#s2",
    "type": "orientation",
    "bands": [
     "low",
@@ -32,7 +66,7 @@
     "research/units/unit-01-limits-continuity.md#1.11 Defining Continuity at a Point"
    ],
    "evidence_tag": "inferred",
-   "text": "A response checks three conditions at the named input, the value, the limit and their agreement, and gives the reason: the condition that fails with the values that show it. Questions ask whether a piecewise function is continuous at a boundary.",
+   "text": "A response checks three conditions at the named input, the value, the limit and their agreement, and names the failed condition with its values.",
    "delivery": {
     "mode": "figure",
     "reason": "rule 3: BC-REP-02 on BC-SKL-01044 (unit-01 README delivery map)",
@@ -95,7 +129,7 @@
    }
   },
   {
-   "id": "LSN-CON-01013#s2",
+   "id": "LSN-CON-01013#s3",
    "type": "key_ideas",
    "bands": [
     "low",
@@ -115,8 +149,8 @@
    "evidence_tag": "verified",
    "ek_id": "BC-EK-LIM-2A2",
    "depth": "core",
-   "text": "\\(f\\) is continuous at \\(x=c\\) when \\(f(c)\\) exists, \\(\\lim_{x\\to c}f(x)\\) exists, and the two are equal (BC-EK-LIM-2A2, ced:48). They are separate demands, and the third presupposes the first two. A reason names the failed condition with its values, not the definition; a bare continuity statement earns no credit in sg-25:12.",
-   "notation": "continuous at a point; the three conditions written as separate lines",
+   "text": "\\(f\\) is continuous at \\(x=c\\) when \\(f(c)\\) exists, \\(\\lim_{x\\to c}f(x)\\) exists, and the two are equal. A reason names the failed condition with its values, not the definition; a bare continuity statement earns no credit in the scoring guideline.",
+   "notation": "continuous at a point",
    "quote": {
     "text": "A function f is continuous at x equals c provided that f of c exists",
     "source": "ced:48"
@@ -205,7 +239,7 @@
    }
   },
   {
-   "id": "LSN-CON-01013#s3",
+   "id": "LSN-CON-01013#s4",
    "type": "strategy",
    "bands": [
     "low",
@@ -221,13 +255,24 @@
    ],
    "evidence_tag": "inferred",
    "archetype_id": "BC-QA-01006",
-   "cue": "Is the given function continuous at the named input? Justify.",
-   "method": "First line: evaluate the function at the named input.",
-   "rival": "Rival: continuity from matching one sided limits alone (BC-ERR-01015).",
-   "separating_feature": "Agreeing limits settle condition two only; the value still has to match them."
+   "cue": "Is the function continuous at the named input? Justify.",
+   "method": "Evaluate the function at the named input.",
+   "rival": "Rival: continuity from matching one sided limits alone.",
+   "separating_feature": "Agreeing limits settle condition two only.",
+   "contrast": {
+    "this": {
+     "text": "Let \\(f(x)=\\frac{x^2-9}{x-3}\\) for \\(x\\ne3\\), \\(f(3)=5\\). Is \\(f\\) continuous at \\(x=3\\)? Justify.",
+     "archetype_id": "BC-QA-01006"
+    },
+    "not_this": {
+     "text": "Let \\(f(x)=\\frac{x^2-9}{x-3}\\) for \\(x\\ne3\\). Find \\(\\lim_{x\\to3}f(x)\\).",
+     "why_not": "It asks only for the approached value."
+    },
+    "feature": "The word continuous, with a value given at the input."
+   }
   },
   {
-   "id": "LSN-CON-01013#s4",
+   "id": "LSN-CON-01013#s5",
    "type": "worked_example",
    "bands": [
     "low",
@@ -364,6 +409,7 @@
     "expression": 3
    },
    "relation": "distinct",
+   "fix_prompt": true,
    "possible_reason": {
     "misconception_id": "BC-MIS-01001",
     "text": "treats the limit as another name for evaluation"
@@ -402,6 +448,7 @@
     "expression": 3
    },
    "relation": "distinct",
+   "fix_prompt": true,
    "possible_reason": {
     "misconception_id": "BC-MIS-01009",
     "text": "holds one of the three conditions as the whole definition"
@@ -439,6 +486,7 @@
     "expression": 4
    },
    "relation": "distinct",
+   "fix_prompt": true,
    "possible_reason": {
     "misconception_id": "BC-MIS-01009",
     "text": "most often that the function is defined there or that the one sided limits agree"
@@ -498,6 +546,7 @@
     "expression": 4
    },
    "relation": "distinct",
+   "fix_prompt": true,
    "possible_reason": {
     "misconception_id": "BC-MIS-01010",
     "text": "treats naming the definition or the theorem as the argument"
@@ -523,7 +572,7 @@
    ],
    "evidence_tag": "inferred",
    "prerequisite_id": "BC-PRQ-01003",
-   "text": "Pick the branch of a piecewise rule for an input. Evaluating the wrong branch at a boundary marks this gap."
+   "text": "Pick the piecewise branch for an input; the wrong branch at a boundary marks this gap."
   },
   {
    "id": "LSN-CON-01013#prq-BC-PRQ-06005",
@@ -541,7 +590,7 @@
    ],
    "evidence_tag": "inferred",
    "prerequisite_id": "BC-PRQ-06005",
-   "text": "Tell a function from its value at a point, \\(f\\) from \\(f(c)\\). Values read for the wrong input mark this gap."
+   "text": "Tell \\(f\\) from \\(f(c)\\); values read for the wrong input mark this gap."
   }
  ],
  "checks": [
@@ -564,7 +613,7 @@
     "left_slope": 2,
     "right_slope": 2
    },
-   "completes": "LSN-CON-01013#s4",
+   "completes": "LSN-CON-01013#s5",
    "stem": {
     "text": "For the \\(f\\) above, \\(f(2)=-1\\) and \\(\\lim_{x\\to2}f(x)=3\\). Is \\(f\\) continuous at 2? Name the failed condition.",
     "command_verb": "determine"
@@ -783,19 +832,19 @@
   }
  ],
  "refresher": [
-  "LSN-CON-01013#s2",
+  "LSN-CON-01013#s3",
   "LSN-CON-01013#err-BC-ERR-01001",
   "LSN-CON-01013#err-BC-ERR-01014",
   "LSN-CON-01013#err-BC-ERR-01015",
   "LSN-CON-01013#err-BC-ERR-01016",
-  "LSN-CON-01013#s4"
+  "LSN-CON-01013#s5"
  ],
  "provenance": {
   "author": "tools/lesson_transcribe.py",
-  "prompt_version": "generator/lesson_v1",
+  "prompt_version": "generator/lesson_v2",
   "design_path": "docs/lessons/unit-01/LSN-CON-01013.md",
-  "signed_off_by": "claude-opus-5-5",
-  "signed_off_at": "2026-09-29",
+  "signed_off_by": null,
+  "signed_off_at": null,
   "not_human": true
  }
 }

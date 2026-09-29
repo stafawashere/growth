@@ -9,6 +9,10 @@ purpose: Authoring spec for the concept lesson on BC-CON-01008, the indeterminat
 
 Concept BC-CON-01008 (skills BC-SKL-01024 to BC-SKL-01028), topics 1.6 and 1.7 of Unit 1, loaded by BC-QA-01004 (primary). The unit attack map (docs/lessons/unit-01/README.md) places it eighth, a root concept, with text delivery.
 
+## Prediction
+
+Served first, both bands. Pose on ex-1's own quotient: substitution at \(x=2\) gives zero over zero, and the student writes the limit. Form `short_answer`, key \(-\frac{5}{2}\), which is ex-1's answer. The resolution says that zero over zero carries no value and that the rewritten quotient gives the limit, from BC-CON-01008 and the topic 1.6 paragraph. It carries no verdict word.
+
 ## Orientation
 
 Served text, from BC-CON-01008 `description_plain` and the topic's Assessment behaviour paragraph (research/units/unit-01-limits-continuity.md#1.6 Determining Limits Using Algebraic Manipulation): a response shows zero over zero with the two limits written separately, rewrites, and evaluates. The sg-23:14 rule on a limit written equal to zero over zero is the one scoring statement in the paragraph, stated as what a response shows. No count, no frequency.
@@ -23,13 +27,13 @@ All five skills map to one BC-EK, BC-EK-LIM-1E1 (ced:43), so one core block, bot
 
 - BC-QA-01004 (family limit-algebraic-rewrite, MCQ or one part of a larger question, no calculator; research/question-analysis/question-archetypes.md#BC-QA-01004 Indeterminate limit resolved by algebraic rewriting). `typical_wording`: "Find the value of the given limit, or show that it does not exist." `common_givens`: a quotient that gives zero over zero under substitution; a trigonometric quotient at zero. `asked_to_produce`: separate limits of the numerator and denominator; the value of the limit. Official examples: BC-MCQ-CED-001, BC-MCQ-SAMPLE-002. The signal is a quotient whose top and bottom both vanish at the target.
 
-What says "not this concept": substitution gives a defined value, so substitution settles the limit (BC-SKL-01031, BC-CON-01009); substitution gives a nonzero number over zero, which calls for one sided sign analysis and points to BC-CON-01016 (unit-01 README, Recognition features between neighbouring concepts); the variable grows without bound (BC-CON-01017). L'Hospital's rule is not available in Unit 1 (research/units/unit-01-limits-continuity.md#1.6 Determining Limits Using Algebraic Manipulation).
+What says "not this concept": substitution gives a defined value, so substitution settles the limit (BC-SKL-01031, BC-CON-01009); substitution gives a nonzero number over zero, which calls for one sided sign analysis and points to BC-CON-01016 (unit-01 README, Recognition features between neighbouring concepts); the variable grows without bound (BC-CON-01017). The contrast pair on st-1 takes its near miss from the nonzero over zero neighbour: `this` is a quotient whose top and bottom both vanish at the target, `not_this` is a quotient whose top does not vanish (BC-CON-01016), and the feature is that both vanish. L'Hospital's rule is not available in Unit 1 (research/units/unit-01-limits-continuity.md#1.6 Determining Limits Using Algebraic Manipulation).
 
 ## Method choice
 
 One strategy block (one archetype family), low and mid bands.
 
-- st-1, BC-QA-01004. Cue from `asked_to_produce` and `common_givens`. Method, `expected_solution_path[0]`: substitute and observe the indeterminate form. First written line: the numerator limit and the denominator limit on separate lines (sg-23:14). Rival, `wrong_approaches`: declaring the limit nonexistent on seeing zero over zero (BC-ERR-01009). Separating feature: zero over zero signals a rewrite; a nonzero number over zero does not. The archetype carries `asked_to_produce` and `common_givens`, so the block is verified.
+- st-1, BC-QA-01004. Cue from `asked_to_produce` and `common_givens`. Method, `expected_solution_path[0]`: substitute and observe the indeterminate form. Written first: the numerator limit and the denominator limit on separate lines (sg-23:14). Rival, `wrong_approaches`: declaring the limit nonexistent on seeing zero over zero (BC-ERR-01009). Separating feature: zero over zero signals a rewrite; a nonzero number over zero does not. The archetype carries `asked_to_produce` and `common_givens`, so the block is verified.
 
 ## Solution path
 
@@ -76,12 +80,12 @@ No check draw equals a published BC-QA-01004 `parameter_draw`.
 - ki-1: text. Rule 5; the rewriting is shown in the step reveal of ex-1.
 - ex-1 and the four error blocks: step_reveal. Rule 1.
 
-No figure, motion, interactive or model entry: no figure-bearing BC-REP and no process to watch.
+No figure, motion, interactive or model entry, and the machine record states `no_figure_reason`: no figure-bearing BC-REP on any skill and no process in the key idea to watch.
 
 ## Band plan
 
-- Low (full): orientation, ki-1, st-1, ex-1, err-BC-ERR-01008, err-BC-ERR-01009, err-BC-ERR-01010, err-BC-ERR-01011, chk-1, chk-2, chk-3, the four bridges when gated in. 563 words, 3.8 minutes (cap 900 and 6).
-- Mid (brief): orientation, ki-1, st-1, ex-1, err-BC-ERR-01008, err-BC-ERR-01009, chk-1, chk-2, the bridges when gated in. 429 words, 2.9 minutes (cap 450 and 3).
+- Low (full): pr-1, orientation, the four bridges when gated in, ki-1, st-1 with its contrast, ex-1, chk-1, err-BC-ERR-01008, err-BC-ERR-01009, err-BC-ERR-01010, err-BC-ERR-01011, chk-2, chk-3. There is no second example, so nothing fades. 569 words, 3.8 minutes (cap 900 and 6).
+- Mid (brief): pr-1, orientation, the bridges when gated in, ki-1, st-1 with its contrast, ex-1, chk-1, err-BC-ERR-01008, err-BC-ERR-01009, chk-2. 435 words, 2.9 minutes (cap 450 and 3).
 - Refresher: ki-1, the four error blocks, ex-1.
 
 ## Sources
@@ -111,11 +115,30 @@ No figure, motion, interactive or model entry: no figure-bearing BC-REP and no p
   "BC-SKL-01027",
   "BC-SKL-01028"
  ],
- "orientation": {
-  "text": "A response shows substitution giving zero over zero, the numerator limit and denominator limit written separately, then rewrites the quotient into an equivalent form and evaluates it at the target. A limit written equal to zero over zero does not establish the form (sg-23:14).",
+ "prediction": {
+  "id": "pr-1",
+  "stem": {
+   "text": "Predict. Substituting x = 2 into \\(\\frac{x^2+x-6}{x^2-6x+8}\\) gives zero over zero. What is \\(\\lim_{x\\to2}\\frac{x^2+x-6}{x^2-6x+8}\\)?",
+   "command_verb": "predict"
+  },
+  "format": "short_answer",
+  "key": {
+   "form": "numeric",
+   "expr": "-5/2"
+  },
+  "resolution": "Zero over zero carries no value. Rewritten as \\(\\frac{x+3}{x-4}\\), the quotient gives \\(-\\frac{5}{2}\\) at 2.",
   "sources": [
    "BC-CON-01008",
    "research/units/unit-01-limits-continuity.md#1.6 Determining Limits Using Algebraic Manipulation"
+  ]
+ },
+ "no_figure_reason": "A symbolic rewriting rule. No skill carries a figure-bearing representation and the key idea describes no process to watch, so text and the step reveal serve.",
+ "orientation": {
+  "text": "A response shows substitution giving zero over zero, the numerator limit and denominator limit written separately, then rewrites the quotient into an equivalent form and evaluates it at the target.",
+  "sources": [
+   "BC-CON-01008",
+   "research/units/unit-01-limits-continuity.md#1.6 Determining Limits Using Algebraic Manipulation",
+   "sg-23:14"
   ]
  },
  "key_ideas": [
@@ -123,12 +146,9 @@ No figure, motion, interactive or model entry: no figure-bearing BC-REP and no p
    "id": "ki-1",
    "ek_id": "BC-EK-LIM-1E1",
    "depth": "core",
-   "text": "Zero over zero carries no value, so the expression is rearranged into an equivalent form first (BC-EK-LIM-1E1, ced:43). CED routes: factoring out a common factor, a conjugate, alternate trigonometric forms. The rewritten form agrees with the original near the target, which is all the limit uses.",
+   "text": "Zero over zero carries no value, so the expression is rewritten as an equivalent form: factor out a common factor, use a conjugate, or use an alternate trigonometric form. The rewrite agrees with the original near the target, which is all the limit uses.",
    "notation": "indeterminate form zero over zero",
-   "quote": {
-    "text": "It may be necessary or helpful to rearrange expressions into equivalent forms before evaluating limits.",
-    "source": "ced:43"
-   },
+   "quote": null,
    "sources": [
     "BC-EK-LIM-1E1",
     "ced:43",
@@ -140,14 +160,26 @@ No figure, motion, interactive or model entry: no figure-bearing BC-REP and no p
   {
    "id": "st-1",
    "archetype_id": "BC-QA-01004",
-   "cue": "A limit of a quotient that gives zero over zero under substitution.",
-   "method": "First line: substitute, writing the numerator limit and denominator limit separately.",
-   "rival": "Rival: declaring no limit on seeing zero over zero (BC-ERR-01009).",
+   "cue": "A quotient that gives zero over zero.",
+   "method": "Substitute, writing both limits separately.",
+   "rival": "Declaring no limit on seeing zero over zero.",
    "separating_feature": "Zero over zero signals a rewrite; nonzero over zero does not.",
    "sources": [
-    "BC-QA-01004"
+    "BC-QA-01004",
+    "BC-ERR-01009"
    ],
-   "evidence_tag": "verified"
+   "evidence_tag": "verified",
+   "contrast": {
+    "this": {
+     "text": "Find \\(\\lim_{x\\to3}\\frac{x^2-9}{x-3}\\).",
+     "archetype_id": "BC-QA-01004"
+    },
+    "not_this": {
+     "text": "Find \\(\\lim_{x\\to3}\\frac{x^2+1}{x-3}\\).",
+     "why_not": "Substitution gives 10 over 0, not zero over zero."
+    },
+    "feature": "Both top and bottom vanish at the target."
+   }
   }
  ],
  "worked_examples": [
@@ -225,7 +257,8 @@ No figure, motion, interactive or model entry: no figure-bearing BC-REP and no p
    "sources": [
     "BC-ERR-01008",
     "BC-MIS-01006"
-   ]
+   ],
+   "fix_prompt": true
   },
   {
    "error_id": "BC-ERR-01009",
@@ -247,7 +280,8 @@ No figure, motion, interactive or model entry: no figure-bearing BC-REP and no p
    "sources": [
     "BC-ERR-01009",
     "BC-MIS-01006"
-   ]
+   ],
+   "fix_prompt": true
   },
   {
    "error_id": "BC-ERR-01010",
@@ -269,7 +303,8 @@ No figure, motion, interactive or model entry: no figure-bearing BC-REP and no p
    "sources": [
     "BC-ERR-01010",
     "BC-MIS-01007"
-   ]
+   ],
+   "fix_prompt": true
   },
   {
    "error_id": "BC-ERR-01011",
@@ -291,7 +326,8 @@ No figure, motion, interactive or model entry: no figure-bearing BC-REP and no p
    "sources": [
     "BC-ERR-01011",
     "BC-MIS-99011"
-   ]
+   ],
+   "fix_prompt": true
   }
  ],
  "representations": null,
@@ -616,8 +652,8 @@ No figure, motion, interactive or model entry: no figure-bearing BC-REP and no p
   "brief": 2.9
  },
  "word_count": {
-  "full": 563,
-  "brief": 429
+  "full": 569,
+  "brief": 435
  }
 }
 ```

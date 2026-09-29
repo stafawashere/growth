@@ -3,20 +3,67 @@
  "version": 1,
  "kind": "concept",
  "target_id": "BC-CON-01011",
- "status": "signed_off",
+ "status": "draft",
  "snapshot_digest": "a6a8ec9d3f59ab8f712e33d30cc22fc64bf2c478fbe7312e3e3118d319c6a42f",
  "source_digest": "dd653d96eaf12894b403a92505d5e79ebcb953b6f0aec5383e896d264e592d04",
  "read_minutes": {
-  "full": 4.2,
-  "brief": 3.0
+  "full": 4.19,
+  "brief": 2.99
  },
  "word_count": {
-  "full": 514,
-  "brief": 376
+  "full": 536,
+  "brief": 398
  },
  "sections": [
   {
    "id": "LSN-CON-01011#s1",
+   "type": "prediction",
+   "bands": [
+    "low",
+    "mid"
+   ],
+   "skills": [
+    "BC-SKL-01036",
+    "BC-SKL-01037",
+    "BC-SKL-01038"
+   ],
+   "sources": [
+    "BC-CON-01011",
+    "research/units/unit-01-limits-continuity.md#1.9 Connecting Multiple Representations of Limits"
+   ],
+   "evidence_tag": "inferred",
+   "stem": {
+    "text": "Before the rule: \\(\\lim_{x\\to3^-}g(x)=\\infty\\). What do the outputs of \\(g\\) do as \\(x\\) nears 3 from the left?",
+    "command_verb": "predict"
+   },
+   "format": "mcq",
+   "options": [
+    {
+     "id": "A",
+     "label": "They settle near 3.",
+     "is_key": false
+    },
+    {
+     "id": "B",
+     "label": "They grow without bound.",
+     "is_key": true
+    },
+    {
+     "id": "C",
+     "label": "They level off as \\(x\\) grows.",
+     "is_key": false
+    }
+   ],
+   "resolution": {
+    "text": "Infinity in the value slot means the outputs grow without bound: a vertical asymptote at \\(x=3\\)."
+   },
+   "delivery": {
+    "mode": "text",
+    "reason": "rule 6"
+   }
+  },
+  {
+   "id": "LSN-CON-01011#s2",
    "type": "orientation",
    "bands": [
     "low",
@@ -32,7 +79,7 @@
     "research/units/unit-01-limits-continuity.md#1.9 Connecting Multiple Representations of Limits"
    ],
    "evidence_tag": "inferred",
-   "text": "A graph, a table, a formula and a sentence can carry one limit fact. A response converts between them keeping the input, the side of approach and the value, or states the behaviour in words.",
+   "text": "One limit fact can be a graph, a table, a formula or a sentence. A response converts between them, keeping input, side and value.",
    "delivery": {
     "mode": "figure",
     "reason": "rule 3: BC-REP-02 on BC-SKL-01036 and BC-SKL-01038 (unit-01 README delivery map)",
@@ -90,7 +137,7 @@
    }
   },
   {
-   "id": "LSN-CON-01011#s2",
+   "id": "LSN-CON-01011#s3",
    "type": "key_ideas",
    "bands": [
     "low",
@@ -108,8 +155,8 @@
    "evidence_tag": "verified",
    "ek_id": null,
    "depth": "core",
-   "text": "A conversion keeps three things: the input approached, the direction of approach, the claimed value. It must not lose three distinctions: the limit against the function value, one sided against two sided, and an infinite limit against a limit at infinity. Infinity in the value slot, as in \\(\\lim_{x\\to3^-}g(x)=\\infty\\), says a vertical asymptote; infinity under the arrow, as in \\(\\lim_{x\\to\\infty}k(x)=-2\\), says end behaviour.",
-   "notation": "the limit notation of topic 1.2 with the infinite forms of topics 1.14 and 1.15",
+   "text": "A conversion keeps the input approached, the side and the claimed value, and must not swap the limit for the function value, one sided for two sided, or an infinite limit for a limit at infinity. Infinity in the value slot says vertical asymptote; under the arrow, end behaviour.",
+   "notation": "limit notation with its infinite forms",
    "quote": {
     "text": "This topic is intended to focus on connecting representations.",
     "source": "ced:46"
@@ -190,7 +237,7 @@
    }
   },
   {
-   "id": "LSN-CON-01011#s3",
+   "id": "LSN-CON-01011#s4",
    "type": "strategy",
    "bands": [
     "low",
@@ -206,13 +253,24 @@
    ],
    "evidence_tag": "verified",
    "archetype_id": "BC-QA-01013",
-   "cue": "A limit fact in one representation and candidate graphs, tables or sentences; the stem asks which matches.",
-   "method": "First line: read the limit behaviour from the supplied representation.",
-   "rival": "Rival: reading a vertical asymptote statement as end behaviour (BC-ERR-01033).",
-   "separating_feature": "Where the infinity symbol sits: in the value, a vertical asymptote; under the arrow, end behaviour."
+   "cue": "A limit fact in one form; which candidate matches?",
+   "method": "Read the limit behaviour from the supplied representation.",
+   "rival": "Rival: swapping vertical asymptote and end behaviour.",
+   "separating_feature": "Infinity in the value, or under the arrow.",
+   "contrast": {
+    "this": {
+     "text": "Given \\(\\lim_{x\\to5^+}p(x)=-\\infty\\), describe the graph of \\(p\\) near \\(x=5\\).",
+     "archetype_id": "BC-QA-01013"
+    },
+    "not_this": {
+     "text": "Find \\(\\lim_{x\\to5}\\frac{x^2-25}{x-5}\\).",
+     "why_not": "It asks for a computed value, not a conversion."
+    },
+    "feature": "One limit fact given, asked for in another form."
+   }
   },
   {
-   "id": "LSN-CON-01011#s4",
+   "id": "LSN-CON-01011#s5",
    "type": "worked_example",
    "bands": [
     "low",
@@ -270,7 +328,7 @@
    }
   },
   {
-   "id": "LSN-CON-01011#s5",
+   "id": "LSN-CON-01011#s6",
    "type": "worked_example",
    "bands": [
     "low"
@@ -301,17 +359,40 @@
    "steps": [
     {
      "cue": "Infinity sits under the arrow: \\(x\\) grows without bound.",
-     "why": "This is end behaviour on the right, not behaviour near a finite input."
+     "why": "This is end behaviour on the right, not behaviour near a finite input.",
+     "expression": [
+      "Equal",
+      [
+       "Limit",
+       [
+        "Apply",
+        "k",
+        "x"
+       ],
+       "x",
+       "PositiveInfinity",
+       "-"
+      ],
+      -2
+     ],
+     "relation": "new"
     },
     {
      "cue": "The value is the number \\(-2\\).",
-     "why": "As \\(x\\) grows, \\(k(x)\\) approaches \\(-2\\): horizontal asymptote \\(y=-2\\) on the right."
+     "why": "As \\(x\\) grows, \\(k(x)\\) approaches \\(-2\\): horizontal asymptote \\(y=-2\\) on the right.",
+     "expression": [
+      "Equal",
+      "y",
+      -2
+     ],
+     "relation": "new"
     }
    ],
    "answer": {
     "form": "statement",
     "mathjson": "y = -2"
    },
+   "fade_from": 2,
    "delivery": {
     "mode": "step_reveal",
     "reason": "rule 1",
@@ -365,6 +446,7 @@
     ]
    },
    "relation": "distinct",
+   "fix_prompt": true,
    "possible_reason": {
     "misconception_id": "BC-MIS-01002",
     "text": "treats a single one sided approach as sufficient"
@@ -410,6 +492,7 @@
     ]
    },
    "relation": "distinct",
+   "fix_prompt": true,
    "possible_reason": {
     "misconception_id": "BC-MIS-01012",
     "text": "reads the infinity symbol as a real value"
@@ -456,6 +539,7 @@
     ]
    },
    "relation": "distinct",
+   "fix_prompt": true,
    "possible_reason": {
     "misconception_id": "BC-MIS-01018",
     "text": "vertical and horizontal asymptote statements are exchanged"
@@ -515,6 +599,7 @@
     ]
    },
    "relation": "distinct",
+   "fix_prompt": true,
    "possible_reason": {
     "misconception_id": "BC-MIS-99008",
     "text": "substitutes the infinity symbol for the variable"
@@ -540,7 +625,7 @@
    ],
    "evidence_tag": "inferred",
    "prerequisite_id": "BC-PRQ-01003",
-   "text": "Pick the branch of a piecewise rule for an input. Evaluating the wrong branch at a boundary marks this gap."
+   "text": "Pick the piecewise branch for an input; a wrong branch marks this gap."
   },
   {
    "id": "LSN-CON-01011#prq-BC-PRQ-06005",
@@ -558,7 +643,7 @@
    ],
    "evidence_tag": "inferred",
    "prerequisite_id": "BC-PRQ-06005",
-   "text": "Read \\(f(t)\\) and evaluation at a stated input. Pulling values for the wrong input marks this gap."
+   "text": "Read \\(f(t)\\) at a stated input; the wrong input marks this gap."
   }
  ],
  "checks": [
@@ -579,7 +664,7 @@
     "letter": "g",
     "statement": "infinite_limit"
    },
-   "completes": "LSN-CON-01011#s4",
+   "completes": "LSN-CON-01011#s5",
    "stem": {
     "text": "In \\(\\lim_{x\\to3^-}g(x)=\\infty\\) the side is left and the value is infinite. Describe the graph near \\(x=3\\).",
     "command_verb": "describe"
@@ -723,19 +808,19 @@
   }
  ],
  "refresher": [
-  "LSN-CON-01011#s2",
+  "LSN-CON-01011#s3",
   "LSN-CON-01011#err-BC-ERR-01002",
   "LSN-CON-01011#err-BC-ERR-01020",
   "LSN-CON-01011#err-BC-ERR-01033",
   "LSN-CON-01011#err-BC-ERR-01021",
-  "LSN-CON-01011#s4"
+  "LSN-CON-01011#s5"
  ],
  "provenance": {
   "author": "tools/lesson_transcribe.py",
-  "prompt_version": "generator/lesson_v1",
+  "prompt_version": "generator/lesson_v2",
   "design_path": "docs/lessons/unit-01/LSN-CON-01011.md",
-  "signed_off_by": "claude-opus-5-5",
-  "signed_off_at": "2026-09-29",
+  "signed_off_by": null,
+  "signed_off_at": null,
   "not_human": true
  }
 }

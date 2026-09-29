@@ -9,6 +9,10 @@ purpose: Authoring spec for the concept lesson on BC-CON-01012, classifying disc
 
 Concept BC-CON-01012 (skills BC-SKL-01039 to BC-SKL-01042), topic 1.10 of Unit 1, loaded by BC-QA-01007 (primary), BC-QA-01006 and BC-QA-01009. The unit attack map places it twelfth, after BC-CON-01006 and BC-CON-01008, with figure delivery.
 
+## Prediction
+
+Served first, both bands, on ex-1's rule. Form: `mcq`, three options, key B. The question asks for the concept's core claim, that the one sided limits settle the type, before it is stated. Distractor A is the asymptote reading of a zero denominator, distractor C the jump. The resolution states what the reduced rule gives and the deciding rule in the record's words. Sources: BC-CON-01012 and the topic section the key idea cites. Delivery: text.
+
 ## Orientation
 
 Served text, from BC-CON-01012 `description_plain` and the topic's Assessment behaviour paragraph (research/units/unit-01-limits-continuity.md#1.10 Exploring Types of Discontinuities): MCQ forms ask for the classification of each break; justification variants demand the limits that support it. No count, no frequency. Delivered as a figure.
@@ -17,7 +21,7 @@ Served text, from BC-CON-01012 `description_plain` and the topic's Assessment be
 
 All four skills map to BC-EK-LIM-2A1 (ced:47): one core block, both bands.
 
-- ki-1 (core). Paraphrase of the topic's Required mathematical knowledge paragraph (Types; Deciding rule) and of BC-SKL-01042 (check each branch boundary and each excluded point). Anchor quote (13 words) from ced:47. Notation line from the concept record and the topic.
+- ki-1 (core). Paraphrase of the topic's Required mathematical knowledge paragraph (Types; Deciding rule) and of BC-SKL-01042 (check each branch boundary and each excluded point). No anchor quote, to keep the brief form under its cap. Notation line from the concept record and the topic.
 
 ## Recognition
 
@@ -26,6 +30,8 @@ All four skills map to BC-EK-LIM-2A1 (ced:47): one core block, both bands.
 - BC-QA-01009 (infinite-limit-asymptote, MCQ; research/question-analysis/question-archetypes.md#BC-QA-01009 Vertical asymptote located and the one sided infinite limits stated). "Find the vertical asymptotes ... describe the behaviour." The signal is asymptote location and sided infinite limits; BC-CON-01016 owns it.
 
 What says "not this concept": a question about removing the break with a parameter (BC-QA-01008, BC-CON-01015); a limit at infinity (BC-CON-01017).
+
+The near miss for st-1 comes from BC-QA-01008 (BC-CON-01015), listed above as "not this concept": the same rational rule with a hole, but the stem asks for a constant that repairs it instead of a type. The unit-01 README row for removable against vertical asymptote separates the two by whether the factor cancels.
 
 ## Method choice
 
@@ -38,7 +44,7 @@ Three strategy blocks, low band all, mid band st-1. None of the three archetypes
 ## Solution path
 
 - ex-1, BC-QA-01007, both bands: coefficient 2, cancelled_root 1, pole \(-1\), zero 3, form factored, target removable; \(f(x)=\frac{2(x-1)(x-3)}{(x-1)(x+1)^2}\) (the `parameter_spec` notes). Steps follow `expected_solution_path`: locate (the rule, `new`), reduce (`equivalent`), one sided limits at 1 (`limit`, value \(-1\)), classify removable; at \(-1\) the squared factor gives \(-\infty\) on both sides, stated in words since the checker cannot confirm an infinite value. Answer form statement.
-- ex-2, BC-QA-01006, low band: boundary 2, jump, closed side left, left_limit 3, right_limit \(-1\), slopes 1 and 2, point_value 3 (the closed left side gives \(f(2)=3\)); \(x+1\) for \(x\le2\), \(2x-5\) for \(x>2\) [inferred shape]. Left limit 3 (`limit`, dir \(-\)), right limit \(-1\) (`limit`, dir +), jump.
+- ex-2, BC-QA-01006, low band: boundary 2, jump, closed side left, left_limit 3, right_limit \(-1\), slopes 1 and 2, point_value 3 (the closed left side gives \(f(2)=3\)); \(x+1\) for \(x\le2\), \(2x-5\) for \(x>2\) [inferred shape]. Left limit 3 (`limit`, dir \(-\)), right limit \(-1\) (`limit`, dir +), jump. Fade: `fade_from` 4. Steps 1 to 3 (the left rule, the left limit 3, the right rule) are shown; the student writes the right limit and the type, and steps 4 and 5 then reveal. The fade falls there because the left limit has just modelled the move the right limit repeats, and the type follows from comparing the two.
 
 No published draw matches either. A fluent solver writes the reduced form and the limits [inferred].
 
@@ -57,13 +63,15 @@ The bundle lists five errors; the first four in its order are served (linked BC-
 
 BC-ERR-01020 falls beyond the cap.
 
+All four blocks are distinct, so all four carry `fix_prompt` true.
+
 ## Representations
 
 None as a separate block. The topic's Representations paragraph names rule to classification and graph to classification; the orientation figure and the ki-1 panels carry the graph side.
 
 ## Prerequisite bridge
 
-Five BC-PRQ parents, supporting edges, gated by state: BC-PRQ-01001, 01003, 01006, 01008, 01009. Each bridge restates `description_plain`; four name the `failure_signature` as the gap and BC-PRQ-01009's names the skill only, to stay under the brief cap.
+Five BC-PRQ parents, supporting edges, gated by state: BC-PRQ-01001, 01003, 01006, 01008, 01009. Each bridge is cut to one short line from `description_plain`, with the `failure_signature` kept where it fits, to stay under the brief cap.
 
 ## Time
 
@@ -83,8 +91,8 @@ BC-QA-01007 is `no_calculator`, a single MCQ: Section I Part A, 2.14 minutes (re
 
 ## Band plan
 
-- Low (full): orientation, ki-1, st-1, st-2, st-3, ex-1, err-BC-ERR-01003, err-BC-ERR-01015, err-BC-ERR-01017, err-BC-ERR-01018, chk-1, ex-2, chk-2, chk-3, five bridges when gated in. 722 words, 4.9 minutes (cap 900 and 6).
-- Mid (brief): orientation, ki-1, st-1, ex-1, err-BC-ERR-01003, err-BC-ERR-01015, chk-1, chk-2, bridges when gated in. 431 words, 2.9 minutes (cap 450 and 3).
+- Low (full), in the served order of 2026-09-29: prediction, orientation, bridges when gated in, ki-1, st-1, st-2, st-3 (contrast pair on st-1), ex-1 and its scoring lines (none), chk-1, err-BC-ERR-01003, err-BC-ERR-01015, err-BC-ERR-01017, err-BC-ERR-01018 (each a fix prompt), ex-2 faded from step 4, chk-2, representations (none), chk-3. 730 words, 4.87 minutes (cap 900 and 6).
+- Mid (brief): prediction, orientation, bridges when gated in, ki-1, st-1 with its contrast pair, ex-1, chk-1, err-BC-ERR-01003, err-BC-ERR-01015, chk-2. 445 words, 2.97 minutes (cap 450 and 3).
 - Refresher: ki-1, the four error blocks, ex-1.
 
 ## Sources
@@ -104,6 +112,7 @@ BC-QA-01007 is `no_calculator`, a single MCQ: Section I Part A, 2.14 minutes (re
 - [inferred] The ex-2 piecewise shape. Settled by the BC-QA-01006 template.
 - [inferred] Lines held in the head. Settled by timed response logs.
 - [inferred] No possible reason for BC-ERR-01017. Settled by a branch-selection misconception record.
+- Prediction and contrast stems: written for this lesson, no published item shares them (content/items_* searched). Citations sit in each block's `sources` array, never in served text.
 
 ## Machine record
 
@@ -119,8 +128,38 @@ BC-QA-01007 is `no_calculator`, a single MCQ: Section I Part A, 2.14 minutes (re
   "BC-SKL-01041",
   "BC-SKL-01042"
  ],
+ "prediction": {
+  "id": "pr-1",
+  "stem": {
+   "text": "Before the rule: what do the outputs of \\(f(x)=\\frac{2(x-1)(x-3)}{(x-1)(x+1)^2}\\) do as \\(x\\) nears 1?",
+   "command_verb": "predict"
+  },
+  "format": "mcq",
+  "options": [
+   {
+    "id": "A",
+    "label": "Grow without bound on both sides.",
+    "is_key": false
+   },
+   {
+    "id": "B",
+    "label": "Approach \\(-1\\) from both sides.",
+    "is_key": true
+   },
+   {
+    "id": "C",
+    "label": "Approach different values from each side.",
+    "is_key": false
+   }
+  ],
+  "resolution": "The factor \\(x-1\\) divides out, leaving \\(\\frac{2(x-3)}{(x+1)^2}\\), which tends to \\(-1\\) from both sides: equal finite one sided limits, so a removable break.",
+  "sources": [
+   "BC-CON-01012",
+   "research/units/unit-01-limits-continuity.md#1.10 Exploring Types of Discontinuities"
+  ]
+ },
  "orientation": {
-  "text": "A response names each break of a rule or graph removable, jump, or vertical asymptote, and backs the name with the one sided limits there.",
+  "text": "A response names each break removable, jump, or vertical asymptote, and backs the name with the one sided limits there.",
   "sources": [
    "BC-CON-01012",
    "research/units/unit-01-limits-continuity.md#1.10 Exploring Types of Discontinuities"
@@ -132,11 +171,8 @@ BC-QA-01007 is `no_calculator`, a single MCQ: Section I Part A, 2.14 minutes (re
    "ek_id": "BC-EK-LIM-2A1",
    "depth": "core",
    "text": "Three types, settled by the one sided limits. Both exist and agree: removable. Both exist and differ: jump. At least one is infinite: vertical asymptote. The function value decides only whether a break is present.",
-   "notation": "removable discontinuity; jump discontinuity; discontinuity due to a vertical asymptote",
-   "quote": {
-    "text": "Types of discontinuities include removable discontinuities, jump discontinuities, and discontinuities due to vertical asymptotes.",
-    "source": "ced:47"
-   },
+   "notation": "removable, jump, vertical asymptote",
+   "quote": null,
    "sources": [
     "BC-EK-LIM-2A1",
     "ced:47",
@@ -148,21 +184,32 @@ BC-QA-01007 is `no_calculator`, a single MCQ: Section I Part A, 2.14 minutes (re
   {
    "id": "st-1",
    "archetype_id": "BC-QA-01007",
-   "cue": "Classify each discontinuity of a given rule or graph, with a reason.",
-   "method": "First line: locate the inputs where the function is undefined or the rule changes.",
-   "rival": "Rival: naming a vertical asymptote at a factor that divides out (BC-ERR-01018).",
+   "cue": "Classify each discontinuity of a rule or graph, with a reason.",
+   "method": "Locate the inputs where the function is undefined.",
+   "rival": "Rival: naming an asymptote at a factor that divides out.",
    "separating_feature": "Whether the denominator factor cancels.",
    "sources": [
     "BC-QA-01007"
    ],
-   "evidence_tag": "inferred"
+   "evidence_tag": "inferred",
+   "contrast": {
+    "this": {
+     "text": "Let \\(g(x)=\\frac{(x-2)(x+4)}{(x-2)(x-5)}\\). Classify each discontinuity of \\(g\\).",
+     "archetype_id": "BC-QA-01007"
+    },
+    "not_this": {
+     "text": "Let \\(h(x)=\\frac{x^2-4}{x-2}\\) for \\(x\\ne2\\), \\(h(2)=a\\). Find \\(a\\) so \\(h\\) is continuous.",
+     "why_not": "It asks for a repairing value, not a name."
+    },
+    "feature": "Name the break, or choose a repairing value."
+   }
   },
   {
    "id": "st-2",
    "archetype_id": "BC-QA-01006",
    "cue": "Determine whether a piecewise function is continuous at a named input, and justify.",
-   "method": "First line: evaluate the function at the named input.",
-   "rival": "Rival: continuity from matching one sided limits alone (BC-ERR-01015).",
+   "method": "Evaluate the function at the named input.",
+   "rival": "Rival: continuity from matching one sided limits alone.",
    "separating_feature": "A continuity verdict needs the value; a type needs only the one sided limits.",
    "sources": [
     "BC-QA-01006"
@@ -173,8 +220,8 @@ BC-QA-01007 is `no_calculator`, a single MCQ: Section I Part A, 2.14 minutes (re
    "id": "st-3",
    "archetype_id": "BC-QA-01009",
    "cue": "Find the vertical asymptotes and describe the behaviour near each.",
-   "method": "First line: factor numerator and denominator.",
-   "rival": "Rival: one two sided infinite limit where the sides differ in sign (BC-ERR-01019).",
+   "method": "Factor numerator and denominator.",
+   "rival": "Rival: one two sided infinite limit where the sides differ in sign.",
    "separating_feature": "The sign of the reduced quotient on each side of each remaining zero.",
    "sources": [
     "BC-QA-01009"
@@ -298,7 +345,8 @@ BC-QA-01007 is `no_calculator`, a single MCQ: Section I Part A, 2.14 minutes (re
    "answer": {
     "form": "statement",
     "expr": "x = 2"
-   }
+   },
+   "fade_from": 4
   }
  ],
  "what_a_reader_scores": [],
@@ -323,7 +371,8 @@ BC-QA-01007 is `no_calculator`, a single MCQ: Section I Part A, 2.14 minutes (re
    "sources": [
     "BC-ERR-01003",
     "BC-MIS-01001"
-   ]
+   ],
+   "fix_prompt": true
   },
   {
    "error_id": "BC-ERR-01015",
@@ -345,7 +394,8 @@ BC-QA-01007 is `no_calculator`, a single MCQ: Section I Part A, 2.14 minutes (re
    "sources": [
     "BC-ERR-01015",
     "BC-MIS-01009"
-   ]
+   ],
+   "fix_prompt": true
   },
   {
    "error_id": "BC-ERR-01017",
@@ -363,7 +413,8 @@ BC-QA-01007 is `no_calculator`, a single MCQ: Section I Part A, 2.14 minutes (re
    "possible_reason": null,
    "sources": [
     "BC-ERR-01017"
-   ]
+   ],
+   "fix_prompt": true
   },
   {
    "error_id": "BC-ERR-01018",
@@ -385,30 +436,31 @@ BC-QA-01007 is `no_calculator`, a single MCQ: Section I Part A, 2.14 minutes (re
    "sources": [
     "BC-ERR-01018",
     "BC-MIS-01011"
-   ]
+   ],
+   "fix_prompt": true
   }
  ],
  "representations": null,
  "prerequisite_bridges": [
   {
    "prq_id": "BC-PRQ-01001",
-   "text": "Factor and cancel a common factor. Stopping at zero over zero unfactored marks this gap."
+   "text": "Factor and cancel a common factor."
   },
   {
    "prq_id": "BC-PRQ-01003",
-   "text": "Pick the branch that applies on each side of a boundary. The wrong branch marks this gap."
+   "text": "Pick the branch for each side."
   },
   {
    "prq_id": "BC-PRQ-01006",
-   "text": "Rewrite an absolute value as two branches. Equal one sided limits assumed marks this gap."
+   "text": "Rewrite an absolute value as two branches."
   },
   {
    "prq_id": "BC-PRQ-01008",
-   "text": "State where an expression is defined. Counting points outside the domain marks this gap."
+   "text": "State where an expression is defined."
   },
   {
    "prq_id": "BC-PRQ-01009",
-   "text": "Find the sign of a quotient on each side of a zero of its denominator."
+   "text": "Find a quotient's sign on each side of a zero."
   }
  ],
  "time": {
@@ -870,12 +922,12 @@ BC-QA-01007 is `no_calculator`, a single MCQ: Section I Part A, 2.14 minutes (re
   "research/exam/exam-structure.md#Section and part layout"
  ],
  "read_minutes": {
-  "full": 4.9,
-  "brief": 2.9
+  "full": 4.87,
+  "brief": 2.97
  },
  "word_count": {
-  "full": 722,
-  "brief": 431
+  "full": 730,
+  "brief": 445
  }
 }
 ```

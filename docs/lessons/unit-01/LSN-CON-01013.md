@@ -9,6 +9,10 @@ purpose: Authoring spec for the concept lesson on BC-CON-01013, continuity at a 
 
 Concept BC-CON-01013 (skills BC-SKL-01043, BC-SKL-01044, BC-SKL-01045), topic 1.11 of Unit 1, loaded by BC-QA-01006 (primary). The unit attack map places it thirteenth, after BC-CON-01004 and BC-CON-01006, and its delivery map picks interactive for the key idea.
 
+## Prediction
+
+Served first, both bands, on ex-1's rule and value. Form: `short_answer`, numeric key 3, which is ex-1's valued limit step, so the blind re-solve of the example covers it. The question asks for the concept's core claim, that the value must agree with the limit, before the three conditions are stated. The resolution gives the three demands and the number they produce. Sources: BC-CON-01013 and the topic section the key idea cites. Delivery: text.
+
 ## Orientation
 
 Served text, from BC-CON-01013 `description_plain` and the topic's Assessment behaviour paragraph (research/units/unit-01-limits-continuity.md#1.11 Defining Continuity at a Point): MCQ forms ask whether a piecewise function is continuous at a boundary; FRQ forms require continuity statements with reasons, where the reason carries its own point (sg-25:12). Stated as what a response shows. Delivered as a figure.
@@ -24,6 +28,8 @@ All three skills map to BC-EK-LIM-2A2 (ced:48): one core block, both bands.
 - BC-QA-01006 (family continuity-at-a-point, one FRQ part or a single MCQ, no calculator; research/question-analysis/question-archetypes.md#BC-QA-01006 Continuity at a point tested against the three conditions). `typical_wording`: "Determine whether the given function is continuous at the named input. Justify your answer." `asked_to_produce`: the function value, the one sided limits, a conclusion naming the condition that fails. `common_givens` is empty. Official example BC-MCQ-PE2012-036 (a calculator item, though the archetype is `no_calculator`; unit-01 README, Library gaps). The signal is the word "continuous" with a named input, usually a piecewise boundary or a separately defined point.
 
 What says "not this concept": the stem asks only for a limit, the approached value (BC-CON-01002, 01004; unit-01 README row, Limit exists against continuity); continuity on an interval (BC-CON-01014); a parameter to make the function continuous (BC-CON-01015).
+
+The near miss for st-1 comes from the unit-01 README row, Limit exists against continuity: the same rule with the same hole, but the stem asks only for the approached value (BC-CON-01002, 01004). A limit stem needs one number; a continuity stem also gives a value to compare.
 
 ## Method choice
 
@@ -50,13 +56,15 @@ The bundle lists six errors; the first four in its order are served (linked BC-M
 
 BC-ERR-01017 and BC-ERR-99001 fall beyond the cap.
 
+All four blocks are distinct, so all four carry `fix_prompt` true.
+
 ## Representations
 
 None as a separate block. The topic's Representations paragraph names rule to verdict and graph to verdict; the orientation figure and the ki-1 interactive carry the graph side.
 
 ## Prerequisite bridge
 
-Two BC-PRQ parents, supporting edges, gated by state: BC-PRQ-01003 (piecewise rule) and BC-PRQ-06005 (function notation and evaluation). Each restates `description_plain` and names the `failure_signature`.
+Two BC-PRQ parents, supporting edges, gated by state: BC-PRQ-01003 (piecewise rule) and BC-PRQ-06005 (function notation and evaluation). Each is one short line from `description_plain`, with the `failure_signature` kept, to stay under the brief cap.
 
 ## Time
 
@@ -76,8 +84,8 @@ BC-QA-01006 is `no_calculator`, one FRQ part or a single MCQ; the MCQ shape is S
 
 ## Band plan
 
-- Low (full): orientation, ki-1, st-1, ex-1, err-BC-ERR-01001, err-BC-ERR-01014, err-BC-ERR-01015, err-BC-ERR-01016, chk-1, chk-2, chk-3, two bridges when gated in. 610 words, 4.1 minutes (cap 900 and 6).
-- Mid (brief): orientation, ki-1, st-1, ex-1, err-BC-ERR-01001, err-BC-ERR-01014, chk-1, chk-2, bridges when gated in. 428 words, 2.9 minutes (cap 450 and 3).
+- Low (full), in the served order of 2026-09-29: prediction, orientation, bridges when gated in, ki-1, st-1 (contrast pair on st-1), ex-1 and its scoring lines (none), chk-1, err-BC-ERR-01001, err-BC-ERR-01014, err-BC-ERR-01015, err-BC-ERR-01016 (each a fix prompt), chk-2, representations (none), chk-3. 630 words, 4.2 minutes (cap 900 and 6).
+- Mid (brief): prediction, orientation, bridges when gated in, ki-1, st-1 with its contrast pair, ex-1, chk-1, err-BC-ERR-01001, err-BC-ERR-01014, chk-2. 448 words, 2.99 minutes (cap 450 and 3).
 - Refresher: ki-1, the four error blocks, ex-1.
 
 ## Sources
@@ -97,6 +105,7 @@ BC-QA-01006 is `no_calculator`, one FRQ part or a single MCQ; the MCQ shape is S
 - [inferred] The value-break rule shape. Settled by the BC-QA-01006 template.
 - [inferred] sg-25:12 read onto a continuity-at-a-point reason. Settled by a guideline scoring such a reason.
 - [inferred] One control per screen. Settled by the modality A/B.
+- Prediction and contrast stems: written for this lesson, no published item shares them (content/items_* searched). Citations sit in each block's `sources` array, never in served text.
 
 ## Machine record
 
@@ -111,8 +120,25 @@ BC-QA-01006 is `no_calculator`, one FRQ part or a single MCQ; the MCQ shape is S
   "BC-SKL-01044",
   "BC-SKL-01045"
  ],
+ "prediction": {
+  "id": "pr-1",
+  "stem": {
+   "text": "Before the rule: \\(f(x)=\\frac{2x^2-5x+2}{x-2}\\) for \\(x\\ne2\\), \\(f(2)=-1\\). What must \\(f(2)\\) be for \\(f\\) to be continuous at 2?",
+   "command_verb": "predict"
+  },
+  "format": "short_answer",
+  "key": {
+   "form": "numeric",
+   "expr": "3"
+  },
+  "resolution": "Continuity at 2 needs \\(f(2)\\) to exist, the limit to exist, and the two to agree. The quotient reduces to \\(2x-1\\), so the limit is 3.",
+  "sources": [
+   "BC-CON-01013",
+   "research/units/unit-01-limits-continuity.md#1.11 Defining Continuity at a Point"
+  ]
+ },
  "orientation": {
-  "text": "A response checks three conditions at the named input, the value, the limit and their agreement, and gives the reason: the condition that fails with the values that show it. Questions ask whether a piecewise function is continuous at a boundary.",
+  "text": "A response checks three conditions at the named input, the value, the limit and their agreement, and names the failed condition with its values.",
   "sources": [
    "BC-CON-01013",
    "research/units/unit-01-limits-continuity.md#1.11 Defining Continuity at a Point"
@@ -123,8 +149,8 @@ BC-QA-01006 is `no_calculator`, one FRQ part or a single MCQ; the MCQ shape is S
    "id": "ki-1",
    "ek_id": "BC-EK-LIM-2A2",
    "depth": "core",
-   "text": "\\(f\\) is continuous at \\(x=c\\) when \\(f(c)\\) exists, \\(\\lim_{x\\to c}f(x)\\) exists, and the two are equal (BC-EK-LIM-2A2, ced:48). They are separate demands, and the third presupposes the first two. A reason names the failed condition with its values, not the definition; a bare continuity statement earns no credit in sg-25:12.",
-   "notation": "continuous at a point; the three conditions written as separate lines",
+   "text": "\\(f\\) is continuous at \\(x=c\\) when \\(f(c)\\) exists, \\(\\lim_{x\\to c}f(x)\\) exists, and the two are equal. A reason names the failed condition with its values, not the definition; a bare continuity statement earns no credit in the scoring guideline.",
+   "notation": "continuous at a point",
    "quote": {
     "text": "A function f is continuous at x equals c provided that f of c exists",
     "source": "ced:48"
@@ -141,14 +167,25 @@ BC-QA-01006 is `no_calculator`, one FRQ part or a single MCQ; the MCQ shape is S
   {
    "id": "st-1",
    "archetype_id": "BC-QA-01006",
-   "cue": "Is the given function continuous at the named input? Justify.",
-   "method": "First line: evaluate the function at the named input.",
-   "rival": "Rival: continuity from matching one sided limits alone (BC-ERR-01015).",
-   "separating_feature": "Agreeing limits settle condition two only; the value still has to match them.",
+   "cue": "Is the function continuous at the named input? Justify.",
+   "method": "Evaluate the function at the named input.",
+   "rival": "Rival: continuity from matching one sided limits alone.",
+   "separating_feature": "Agreeing limits settle condition two only.",
    "sources": [
     "BC-QA-01006"
    ],
-   "evidence_tag": "inferred"
+   "evidence_tag": "inferred",
+   "contrast": {
+    "this": {
+     "text": "Let \\(f(x)=\\frac{x^2-9}{x-3}\\) for \\(x\\ne3\\), \\(f(3)=5\\). Is \\(f\\) continuous at \\(x=3\\)? Justify.",
+     "archetype_id": "BC-QA-01006"
+    },
+    "not_this": {
+     "text": "Let \\(f(x)=\\frac{x^2-9}{x-3}\\) for \\(x\\ne3\\). Find \\(\\lim_{x\\to3}f(x)\\).",
+     "why_not": "It asks only for the approached value."
+    },
+    "feature": "The word continuous, with a value given at the input."
+   }
   }
  ],
  "worked_examples": [
@@ -234,7 +271,8 @@ BC-QA-01006 is `no_calculator`, one FRQ part or a single MCQ; the MCQ shape is S
    "sources": [
     "BC-ERR-01001",
     "BC-MIS-01001"
-   ]
+   ],
+   "fix_prompt": true
   },
   {
    "error_id": "BC-ERR-01014",
@@ -256,7 +294,8 @@ BC-QA-01006 is `no_calculator`, one FRQ part or a single MCQ; the MCQ shape is S
    "sources": [
     "BC-ERR-01014",
     "BC-MIS-01009"
-   ]
+   ],
+   "fix_prompt": true
   },
   {
    "error_id": "BC-ERR-01015",
@@ -278,7 +317,8 @@ BC-QA-01006 is `no_calculator`, one FRQ part or a single MCQ; the MCQ shape is S
    "sources": [
     "BC-ERR-01015",
     "BC-MIS-01009"
-   ]
+   ],
+   "fix_prompt": true
   },
   {
    "error_id": "BC-ERR-01016",
@@ -300,18 +340,19 @@ BC-QA-01006 is `no_calculator`, one FRQ part or a single MCQ; the MCQ shape is S
    "sources": [
     "BC-ERR-01016",
     "BC-MIS-01010"
-   ]
+   ],
+   "fix_prompt": true
   }
  ],
  "representations": null,
  "prerequisite_bridges": [
   {
    "prq_id": "BC-PRQ-01003",
-   "text": "Pick the branch of a piecewise rule for an input. Evaluating the wrong branch at a boundary marks this gap."
+   "text": "Pick the piecewise branch for an input; the wrong branch at a boundary marks this gap."
   },
   {
    "prq_id": "BC-PRQ-06005",
-   "text": "Tell a function from its value at a point, \\(f\\) from \\(f(c)\\). Values read for the wrong input mark this gap."
+   "text": "Tell \\(f\\) from \\(f(c)\\); values read for the wrong input mark this gap."
   }
  ],
  "time": {
@@ -753,12 +794,12 @@ BC-QA-01006 is `no_calculator`, one FRQ part or a single MCQ; the MCQ shape is S
   "research/scoring/justification-requirements.md#Theorem hypotheses"
  ],
  "read_minutes": {
-  "full": 4.1,
-  "brief": 2.9
+  "full": 4.2,
+  "brief": 2.99
  },
  "word_count": {
-  "full": 610,
-  "brief": 428
+  "full": 630,
+  "brief": 448
  }
 }
 ```

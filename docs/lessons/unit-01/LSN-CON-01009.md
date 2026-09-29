@@ -9,6 +9,10 @@ purpose: Authoring spec for the concept lesson on BC-CON-01009, selecting a proc
 
 Concept BC-CON-01009 (skills BC-SKL-01029, BC-SKL-01030, BC-SKL-01031), topic 1.7 of Unit 1, loaded by BC-QA-01014 (primary). The unit attack map places it ninth, after BC-CON-01007 and BC-CON-01008, with text delivery.
 
+## Prediction
+
+Served first, both bands. Pose on ex-1's own quotient: substitution at \(x=-2\) gives 0 over 0, and the student writes the limit. Form `short_answer`, key \(\frac{3}{5}\), which is ex-1's answer. The resolution says that the form after substitution picks the procedure and that zero over zero calls for rewriting, from BC-CON-01009 and the topic 1.7 paragraph. It carries no verdict word.
+
 ## Orientation
 
 Served text, from BC-CON-01009 `description_plain` (the form under substitution decides the method) and the topic's Required mathematical knowledge and Assessment behaviour paragraphs (research/units/unit-01-limits-continuity.md#1.7 Selecting Procedures for Determining Limits), stated as what a response shows: the substitution, the named form, the procedure it calls for. No count, no frequency.
@@ -17,13 +21,15 @@ Served text, from BC-CON-01009 `description_plain` (the form under substitution 
 
 No skill of BC-CON-01009 lists `essential_knowledge` (BC-SKL-01029, 01030, 01031 carry an empty list), and ced:44 prints no essential knowledge statement for topic 1.7, so the one core block carries `ek_id` null and is tagged [inferred].
 
-- ki-1 (core). Paraphrase of the topic's Required mathematical knowledge paragraph (Classification under substitution; Procedure set available in Unit 1). Anchor quote (17 words) from ced:44. Notation line from the topic: the classification stated in words before any computation (the concept's `notation` field is empty).
+- ki-1 (core). Paraphrase of the topic's Required mathematical knowledge paragraph (Classification under substitution; Procedure set available in Unit 1). No quote in the served block, to hold the brief form under its cap. Notation line from the topic: the classification stated in words before any computation (the concept's `notation` field is empty).
 
 ## Recognition
 
 - BC-QA-01014 (family procedure-selection, single MCQ, no calculator; research/question-analysis/question-archetypes.md#BC-QA-01014 Procedure selected for a limit from the form of the expression). `typical_wording`: "For each of the given limits, identify an appropriate method and use it to determine the limit." `asked_to_produce`: a classification of the form after substitution, an appropriate procedure, the value. `common_givens` is empty. No official example. The signal is a stem that asks for a method or offers several limits side by side with no method named; the multi-concept form mixes a determinate substitution, an indeterminate quotient and a limit at infinity in one item (research/units/unit-01-limits-continuity.md#1.7 Selecting Procedures for Determining Limits).
 
 What says "not this concept": a stem that already names the method (squeeze, a supplied inequality, BC-CON-01010) or supplies the limits of the pieces (BC-CON-01007); a stem that says the form is zero over zero and asks only for the value (BC-CON-01008).
+
+The contrast pair on st-1 takes its near miss from the first of those: `this` is a limit with no method named on BC-QA-01014, `not_this` is a stem that names the squeeze theorem (BC-CON-01010), and the feature is that no method is named.
 
 ## Method choice
 
@@ -70,15 +76,15 @@ BC-QA-01014 is `no_calculator`, "Typically a single multiple choice item", so Se
 
 ## Delivery
 
-- orientation: text; ki-1: text. Rule 5; the unit-01 README gives text for BC-CON-01009 (BC-REP-01 and BC-REP-04 only).
+- orientation: text; ki-1: text. Rule 5; the unit-01 README gives text for BC-CON-01009 (BC-REP-01 and BC-REP-04 only). The machine record states `no_figure_reason`: no figure-bearing BC-REP on any skill and no process in the key idea.
 - ex-1 and the four error blocks: step_reveal. Rule 1.
 
 The README notes a decision lesson (`contrast`) would carry the method choice across BC-CON-01007, 01008, 01016 and 01017 if confusable_sets returned it; the unit has no derived set, so this lesson stays text.
 
 ## Band plan
 
-- Low (full): orientation, ki-1, st-1, ex-1, err-BC-ERR-01003, err-BC-ERR-01006, err-BC-ERR-01008, err-BC-ERR-01009, chk-1, chk-2, chk-3, two bridges when gated in. 581 words, 4.0 minutes (cap 900 and 6).
-- Mid (brief): orientation, ki-1, st-1, ex-1, err-BC-ERR-01003, err-BC-ERR-01006, chk-1, chk-2, bridges when gated in. 438 words, 3.0 minutes (cap 450 and 3).
+- Low (full): pr-1, orientation, two bridges when gated in, ki-1, st-1 with its contrast, ex-1, chk-1, err-BC-ERR-01003, err-BC-ERR-01006, err-BC-ERR-01008, err-BC-ERR-01009, chk-2, chk-3. There is no second example, so nothing fades. 576 words, 4.0 minutes (cap 900 and 6).
+- Mid (brief): pr-1, orientation, bridges when gated in, ki-1, st-1 with its contrast, ex-1, chk-1, err-BC-ERR-01003, err-BC-ERR-01006, chk-2. 433 words, 3.0 minutes (cap 450 and 3).
 - Refresher: ki-1, the four error blocks, ex-1.
 
 ## Sources
@@ -108,8 +114,26 @@ The README notes a decision lesson (`contrast`) would carry the method choice ac
   "BC-SKL-01030",
   "BC-SKL-01031"
  ],
+ "prediction": {
+  "id": "pr-1",
+  "stem": {
+   "text": "Predict. Substituting x = -2 into \\(\\frac{x^2+x-2}{x^2-x-6}\\) gives 0 over 0. What is the limit as x approaches -2?",
+   "command_verb": "predict"
+  },
+  "format": "short_answer",
+  "key": {
+   "form": "numeric",
+   "expr": "3/5"
+  },
+  "resolution": "The form after substitution picks the procedure: zero over zero calls for rewriting, and the rewritten quotient gives \\(\\frac{3}{5}\\) at -2.",
+  "sources": [
+   "BC-CON-01009",
+   "research/units/unit-01-limits-continuity.md#1.7 Selecting Procedures for Determining Limits"
+  ]
+ },
+ "no_figure_reason": "A classification rule stated in words. No skill carries a figure-bearing representation and the key idea describes no process to watch, so text and the step reveal serve.",
  "orientation": {
-  "text": "A response substitutes the target first and names what comes out: a value, zero over zero, or a nonzero number over zero. That form picks the procedure: a value is the answer, zero over zero calls for rewriting, nonzero over zero calls for the sign on each side.",
+  "text": "A response substitutes the target first and names what comes out: a value, zero over zero, or a nonzero number over zero. That form picks the procedure.",
   "sources": [
    "BC-CON-01009",
    "research/units/unit-01-limits-continuity.md#1.7 Selecting Procedures for Determining Limits"
@@ -120,12 +144,9 @@ The README notes a decision lesson (`contrast`) would carry the method choice ac
    "id": "ki-1",
    "ek_id": null,
    "depth": "core",
-   "text": "Substituting the target gives one of three forms. A determinate value is the limit; rewriting stops there. Zero over zero calls for rewriting. A nonzero number over zero calls for the sign on each side. L'Hospital's rule is not in the Unit 1 set; it enters at topic 4.7.",
-   "notation": "the classification stated in words before any computation",
-   "quote": {
-    "text": "This topic is intended to focus on the skill of selecting an appropriate procedure for determining limits.",
-    "source": "ced:44"
-   },
+   "text": "Substituting gives a value, zero over zero, or a nonzero number over zero. A value is the limit; zero over zero calls for rewriting; nonzero over zero calls for the sign on each side. L'Hospital's rule is not in the Unit 1 set.",
+   "notation": "classification",
+   "quote": null,
    "sources": [
     "ced:44",
     "research/units/unit-01-limits-continuity.md#1.7 Selecting Procedures for Determining Limits"
@@ -136,14 +157,26 @@ The README notes a decision lesson (`contrast`) would carry the method choice ac
   {
    "id": "st-1",
    "archetype_id": "BC-QA-01014",
-   "cue": "For each given limit, identify a method and use it: the stem names no method.",
-   "method": "First line: substitute the target and classify the form.",
-   "rival": "Rival: dividing the numerator limit by a zero denominator limit (BC-ERR-01006).",
-   "separating_feature": "The quotient theorem needs a nonzero denominator limit; zero there sends the choice to rewriting or signs.",
+   "cue": "Several limits, no method named.",
+   "method": "Substitute the target and classify the form.",
+   "rival": "Dividing by a zero denominator limit.",
+   "separating_feature": "A zero denominator limit sends the choice to rewriting or signs.",
    "sources": [
-    "BC-QA-01014"
+    "BC-QA-01014",
+    "BC-ERR-01006"
    ],
-   "evidence_tag": "inferred"
+   "evidence_tag": "inferred",
+   "contrast": {
+    "this": {
+     "text": "Identify a method for \\(\\lim_{x\\to3}\\frac{x^2-9}{x^2-5x+6}\\) and use it.",
+     "archetype_id": "BC-QA-01014"
+    },
+    "not_this": {
+     "text": "Use the squeeze theorem to find \\(\\lim_{x\\to0}x^2\\sin\\frac{1}{x}\\).",
+     "why_not": "The stem names the method, so nothing is selected."
+    },
+    "feature": "The stem names no method."
+   }
   }
  ],
  "worked_examples": [
@@ -223,7 +256,8 @@ The README notes a decision lesson (`contrast`) would carry the method choice ac
    "sources": [
     "BC-ERR-01003",
     "BC-MIS-01001"
-   ]
+   ],
+   "fix_prompt": true
   },
   {
    "error_id": "BC-ERR-01006",
@@ -245,7 +279,8 @@ The README notes a decision lesson (`contrast`) would carry the method choice ac
    "sources": [
     "BC-ERR-01006",
     "BC-MIS-01005"
-   ]
+   ],
+   "fix_prompt": true
   },
   {
    "error_id": "BC-ERR-01008",
@@ -267,7 +302,8 @@ The README notes a decision lesson (`contrast`) would carry the method choice ac
    "sources": [
     "BC-ERR-01008",
     "BC-MIS-01006"
-   ]
+   ],
+   "fix_prompt": true
   },
   {
    "error_id": "BC-ERR-01009",
@@ -289,7 +325,8 @@ The README notes a decision lesson (`contrast`) would carry the method choice ac
    "sources": [
     "BC-ERR-01009",
     "BC-MIS-01006"
-   ]
+   ],
+   "fix_prompt": true
   }
  ],
  "representations": null,
@@ -607,8 +644,8 @@ The README notes a decision lesson (`contrast`) would carry the method choice ac
   "brief": 3.0
  },
  "word_count": {
-  "full": 581,
-  "brief": 438
+  "full": 576,
+  "brief": 433
  }
 }
 ```

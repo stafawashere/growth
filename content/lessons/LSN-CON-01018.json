@@ -3,20 +3,66 @@
  "version": 1,
  "kind": "concept",
  "target_id": "BC-CON-01018",
- "status": "signed_off",
+ "status": "draft",
  "snapshot_digest": "a6a8ec9d3f59ab8f712e33d30cc22fc64bf2c478fbe7312e3e3118d319c6a42f",
  "source_digest": "c7525f365a382235eb1b1f0ec8e3f1e4866e713102152b21eb544d04c2d89b9e",
  "read_minutes": {
-  "full": 2.5,
-  "brief": 2.5
+  "full": 2.9,
+  "brief": 2.9
  },
  "word_count": {
-  "full": 320,
-  "brief": 320
+  "full": 393,
+  "brief": 393
  },
  "sections": [
   {
    "id": "LSN-CON-01018#s1",
+   "type": "prediction",
+   "bands": [
+    "low",
+    "mid"
+   ],
+   "skills": [
+    "BC-SKL-01062"
+   ],
+   "sources": [
+    "BC-CON-01018",
+    "BC-EK-LIM-2D5",
+    "research/units/unit-01-limits-continuity.md#1.15 Connecting Limits at Infinity and Horizontal Asymptotes"
+   ],
+   "evidence_tag": "inferred",
+   "stem": {
+    "text": "Let \\(f(x)=5x+2\\) and \\(g(x)=\\sqrt{16x^2+3}\\). Predict how their sizes compare as \\(x\\to-\\infty\\).",
+    "command_verb": "predict"
+   },
+   "format": "mcq",
+   "options": [
+    {
+     "id": "A",
+     "label": "\\(f\\) outgrows \\(g\\) without bound",
+     "is_key": false
+    },
+    {
+     "id": "B",
+     "label": "\\(g\\) outgrows \\(f\\) without bound",
+     "is_key": false
+    },
+    {
+     "id": "C",
+     "label": "Their sizes stay in a fixed ratio",
+     "is_key": true
+    }
+   ],
+   "resolution": {
+    "text": "The quotient \\(\\frac{f(x)}{g(x)}\\) tends to \\(-\\frac54\\), finite and nonzero, so \\(|f|\\) stays near \\(\\frac54\\) of \\(g\\)."
+   },
+   "delivery": {
+    "mode": "text",
+    "reason": "rule 6"
+   }
+  },
+  {
+   "id": "LSN-CON-01018#s2",
    "type": "orientation",
    "bands": [
     "low",
@@ -33,14 +79,14 @@
    "text": "A response writes the limit of the quotient of two quantities as the variable grows without bound, evaluates it, and reads from the value which quantity grows faster.",
    "delivery": {
     "mode": "text",
-    "reason": "rule 5: BC-SKL-01062 carries BC-REP-01 only",
+    "reason": "rule 6: BC-SKL-01062 carries BC-REP-01 only",
     "sources": [
      "BC-SKL-01062"
     ]
    }
   },
   {
-   "id": "LSN-CON-01018#s2",
+   "id": "LSN-CON-01018#s3",
    "type": "key_ideas",
    "bands": [
     "low",
@@ -57,21 +103,50 @@
    "evidence_tag": "verified",
    "ek_id": "BC-EK-LIM-2D5",
    "depth": "core",
-   "text": "Two quantities, or their rates, are compared by the limit of their quotient (BC-EK-LIM-2D5, ced:52). The limit is taken as the variable grows without bound, and its value tells which quantity grows faster (BC-CON-01018).",
+   "text": "Two quantities, or their rates, are compared by the limit of their quotient as the variable grows without bound. The value tells which quantity grows faster.",
    "quote": {
     "text": "Relative magnitudes of functions and their rates of change can be compared using limits.",
     "source": "ced:52"
    },
    "delivery": {
-    "mode": "text",
-    "reason": "rule 5: BC-REP-01 only, so no figure exists for motion",
+    "mode": "model",
+    "reason": "rule 2, the model clause: the idea is the behaviour of a computed sequence, the quotient at growing |x|; BC-REP-01 only, so no figure exists for motion",
     "sources": [
      "BC-SKL-01062"
-    ]
+    ],
+    "spec": {
+     "kind": "table",
+     "columns": [
+      "x",
+      "f(x)/g(x)"
+     ],
+     "rows": [
+      [
+       "-10",
+       "-1.1989"
+      ],
+      [
+       "-100",
+       "-1.2450"
+      ],
+      [
+       "-1000",
+       "-1.2495"
+      ]
+     ],
+     "labels": [
+      {
+       "text": "quotient settles at -5/4",
+       "placement": "inside"
+      }
+     ]
+    },
+    "fallback": "the same three rows as static text",
+    "keyboard": "Tab moves between rows; no control"
    }
   },
   {
-   "id": "LSN-CON-01018#s3",
+   "id": "LSN-CON-01018#s4",
    "type": "strategy",
    "bands": [
     "low",
@@ -81,17 +156,29 @@
     "BC-SKL-01062"
    ],
    "sources": [
-    "BC-QA-01010"
+    "BC-QA-01010",
+    "BC-ERR-01021"
    ],
    "evidence_tag": "verified",
    "archetype_id": "BC-QA-01010",
    "cue": "Two quantities, and the stem asks which grows faster for large inputs.",
-   "method": "First written line: the limit of their quotient as the variable grows without bound.",
-   "rival": "Substituting infinity into the expression as a number (BC-ERR-01021).",
-   "separating_feature": "The limit is taken on the quotient, with infinity under the arrow."
+   "method": "The limit of their quotient as the variable grows without bound.",
+   "rival": "Substituting infinity into the expression as a number.",
+   "separating_feature": "The limit is taken on the quotient, with infinity under the arrow.",
+   "contrast": {
+    "this": {
+     "text": "Compare \\(u(x)=7x-3\\) and \\(v(x)=\\sqrt{9x^2+1}\\) as \\(x\\to-\\infty\\) using \\(\\lim\\frac{u(x)}{v(x)}\\).",
+     "archetype_id": "BC-QA-01010"
+    },
+    "not_this": {
+     "text": "Describe the long run behaviour of \\(A(t)=\\frac{7t}{t+2}\\) and give its horizontal asymptote.",
+     "why_not": "One quantity's own end value is asked, not a comparison of two."
+    },
+    "feature": "Two quantities compared, not one quantity's long run value."
+   }
   },
   {
-   "id": "LSN-CON-01018#s4",
+   "id": "LSN-CON-01018#s5",
    "type": "worked_example",
    "bands": [
     "low",
@@ -236,43 +323,12 @@
    },
    "delivery": {
     "mode": "step_reveal",
-    "reason": "rule 1; rule 2 names a computed sequence as the idea, so the reveal carries a model table of the quotient at growing |x|",
-    "sources": [
-     "BC-SKL-01062"
-    ],
-    "spec": {
-     "kind": "table",
-     "columns": [
-      "x",
-      "f(x)/g(x)"
-     ],
-     "rows": [
-      [
-       "-10",
-       "-1.1989"
-      ],
-      [
-       "-100",
-       "-1.2450"
-      ],
-      [
-       "-1000",
-       "-1.2495"
-      ]
-     ],
-     "labels": [
-      {
-       "text": "quotient settles at -5/4",
-       "placement": "inside"
-      }
-     ]
-    },
-    "fallback": "the same three rows as static text",
-    "keyboard": "Tab moves between rows; no control"
+    "reason": "rule 1",
+    "sources": []
    }
   },
   {
-   "id": "LSN-CON-01018#s5",
+   "id": "LSN-CON-01018#s6",
    "type": "what_a_reader_scores",
    "bands": [
     "low",
@@ -286,7 +342,7 @@
     "BC-PT-99004"
    ],
    "evidence_tag": "verified",
-   "example_id": "LSN-CON-01018#s4",
+   "example_id": "LSN-CON-01018#s5",
    "lines": [
     {
      "point_type_id": "BC-PT-99054",
@@ -333,7 +389,7 @@
     "inner_const": "3",
     "radical_place": "denominator"
    },
-   "completes": "LSN-CON-01018#s4",
+   "completes": "LSN-CON-01018#s5",
    "stem": {
     "text": "\\(\\frac{5x+2}{\\sqrt{16x^2+3}}=\\frac{x(5+2/x)}{|x|\\sqrt{16+3/x^2}}\\). Evaluate the limit as \\(x\\to-\\infty\\).",
     "command_verb": "evaluate"
@@ -564,15 +620,15 @@
   }
  ],
  "refresher": [
-  "LSN-CON-01018#s2",
-  "LSN-CON-01018#s4"
+  "LSN-CON-01018#s3",
+  "LSN-CON-01018#s5"
  ],
  "provenance": {
   "author": "tools/lesson_transcribe.py",
-  "prompt_version": "generator/lesson_v1",
+  "prompt_version": "generator/lesson_v2",
   "design_path": "docs/lessons/unit-01/LSN-CON-01018.md",
-  "signed_off_by": "claude-opus-5-5",
-  "signed_off_at": "2026-09-29",
+  "signed_off_by": null,
+  "signed_off_at": null,
   "not_human": true
  }
 }

@@ -9,6 +9,10 @@ purpose: Authoring spec for the concept lesson on BC-CON-01010, the squeeze theo
 
 Concept BC-CON-01010 (skills BC-SKL-01032 to BC-SKL-01035), topic 1.8 of Unit 1, loaded by BC-QA-01005 (primary). The unit attack map places it tenth, after BC-CON-01009, and its delivery map picks motion for the key idea.
 
+## Prediction
+
+Served first, both bands. Pose on ex-1's own function: \(f(x)=2+3(x-1)\sin\frac{1}{x-1}\), with the sine factor named as having no limit at 1, and ask for the limit. Form `short_answer`, key 2, which is ex-1's answer. The resolution says that the bounded factor and the vanishing factor trap f between bounds that both tend to 2, from BC-CON-01010 and the topic 1.8 paragraph. It carries no verdict word, and it differs from chk-1, which supplies the inequality.
+
 ## Orientation
 
 Served text, from BC-CON-01010 `description_plain` and the topic's Assessment behaviour paragraph (research/units/unit-01-limits-continuity.md#1.8 Determining Limits Using the Squeeze Theorem): MCQ forms supply the inequality and ask for the limit; FRQ forms would demand the inequality and the two bound limits as separate steps. Stated as what a response shows. No count, no frequency. Delivered as a figure (Delivery).
@@ -17,13 +21,15 @@ Served text, from BC-CON-01010 `description_plain` and the topic's Assessment be
 
 All four skills map to BC-EK-LIM-1E2 (ced:45): one core block, both bands.
 
-- ki-1 (core). Paraphrase of the topic's Required mathematical knowledge paragraph (Squeeze theorem; Hypotheses as a separate demand, BC-MPS-3C on ced:45) and of BC-SKL-01035 (bound the oscillating part between negative one and one and multiply through). Anchor quote (13 words) from ced:45. Notation line from the concept record and the topic: squeeze theorem; the inequality written with the trapped function in the middle.
+- ki-1 (core). Paraphrase of the topic's Required mathematical knowledge paragraph (Squeeze theorem; Hypotheses as a separate demand, BC-MPS-3C on ced:45) and of BC-SKL-01035 (bound the oscillating part between negative one and one and multiply through). No quote in the served block, to hold the brief form under its cap. Notation line from the concept record and the topic: squeeze theorem; the inequality written with the trapped function in the middle.
 
 ## Recognition
 
 - BC-QA-01005 (family squeeze-theorem, one FRQ part or a single MCQ, no calculator; research/question-analysis/question-archetypes.md#BC-QA-01005 Limit determined by the squeeze theorem with its hypotheses stated). `typical_wording`: "The stated inequality holds near the given input. Use it to determine the limit of the trapped function and justify your answer." `common_givens`: a function trapped between two bounding functions; a bounding inequality that holds near the input. `asked_to_produce`: a bounding inequality, the limits of the two bounds, the limit with justification. No official example. The signal is a sine or cosine of a reciprocal, or any factor with no limit of its own, multiplied by a factor that vanishes at the target, or a supplied inequality.
 
 What says "not this concept": every factor has its own limit, so the product theorem settles it (BC-CON-01007; unit-01 README, Squeeze against direct substitution); a quotient giving zero over zero with polynomial parts (BC-CON-01008).
+
+The contrast pair on st-1 takes its near miss from the first of those: `this` is a vanishing factor times a cosine of a reciprocal on BC-QA-01005, `not_this` is the same vanishing factor times a cosine of x, which has its own limit (BC-CON-01007), and the feature is that one factor has no limit of its own.
 
 ## Method choice
 
@@ -71,12 +77,12 @@ BC-QA-01005 is `no_calculator`, one FRQ part or a single MCQ. The MCQ shape is S
 - ki-1: motion. Rule 2, a limit being taken (the bounds pinching toward 1), as the README names. Three frames at half-widths 1, 0.1 and 0.01; arrow keys step; reduced motion cross-fades on key press; the fallback is the static strip.
 - ex-1 and the three error blocks: step_reveal. Rule 1.
 
-Every non-text choice is [inferred], settled by the modality A/B.
+The lesson already carries drawn blocks (orientation figure, ki-1 motion), so no `no_figure_reason` is stated. Every non-text choice is [inferred], settled by the modality A/B.
 
 ## Band plan
 
-- Low (full): orientation, ki-1, st-1, ex-1, err-BC-ERR-01012, err-BC-ERR-01013, err-BC-ERR-99008, chk-1, chk-2, chk-3, two bridges when gated in. 590 words, 4.0 minutes (cap 900 and 6).
-- Mid (brief): orientation, ki-1, st-1, ex-1, err-BC-ERR-01012, err-BC-ERR-01013, chk-1, chk-2, bridges when gated in. 447 words, 3.0 minutes (cap 450 and 3).
+- Low (full): pr-1, orientation, two bridges when gated in, ki-1, st-1 with its contrast, ex-1, chk-1, err-BC-ERR-01012, err-BC-ERR-01013, err-BC-ERR-99008, chk-2, chk-3. There is no second example, so nothing fades. 577 words, 4.0 minutes (cap 900 and 6).
+- Mid (brief): pr-1, orientation, bridges when gated in, ki-1, st-1 with its contrast, ex-1, chk-1, err-BC-ERR-01012, err-BC-ERR-01013, chk-2. 434 words, 3.0 minutes (cap 450 and 3).
 - Refresher: ki-1, the three error blocks, ex-1.
 
 ## Sources
@@ -110,8 +116,25 @@ Every non-text choice is [inferred], settled by the modality A/B.
   "BC-SKL-01034",
   "BC-SKL-01035"
  ],
+ "prediction": {
+  "id": "pr-1",
+  "stem": {
+   "text": "Predict. \\(f(x)=2+3(x-1)\\sin\\frac{1}{x-1}\\), and \\(\\sin\\frac{1}{x-1}\\) oscillates without a limit at 1. What is \\(\\lim_{x\\to1}f(x)\\)?",
+   "command_verb": "predict"
+  },
+  "format": "short_answer",
+  "key": {
+   "form": "numeric",
+   "expr": "2"
+  },
+  "resolution": "The sine factor is bounded and \\(3(x-1)\\) vanishes, so f is trapped between bounds that both tend to 2.",
+  "sources": [
+   "BC-CON-01010",
+   "research/units/unit-01-limits-continuity.md#1.8 Determining Limits Using the Squeeze Theorem"
+  ]
+ },
  "orientation": {
-  "text": "A response shows the trapped function between two bounds near the target, the limit of each bound, and the conclusion that the trapped function shares that limit. The inequality is either supplied or built from an oscillating factor.",
+  "text": "A response shows the trapped function between two bounds near the target, the limit of each bound, and the conclusion that the trapped function shares that limit.",
   "sources": [
    "BC-CON-01010",
    "research/units/unit-01-limits-continuity.md#1.8 Determining Limits Using the Squeeze Theorem"
@@ -122,12 +145,9 @@ Every non-text choice is [inferred], settled by the modality A/B.
    "id": "ki-1",
    "ek_id": "BC-EK-LIM-1E2",
    "depth": "core",
-   "text": "If \\(g(x)\\le f(x)\\le h(x)\\) for all \\(x\\) near \\(c\\), except possibly at \\(c\\), and \\(g\\) and \\(h\\) both have limit \\(L\\) at \\(c\\), then \\(\\lim_{x\\to c}f(x)=L\\). The hypotheses are their own demand: the inequality is shown to hold near \\(c\\), and each bound's limit is taken. The usual case bounds an oscillating factor between \\(-1\\) and 1, then multiplies through by the vanishing factor.",
+   "text": "If \\(g(x)\\le f(x)\\le h(x)\\) near \\(c\\) and \\(g\\) and \\(h\\) both tend to \\(L\\), then \\(\\lim_{x\\to c}f(x)=L\\). The hypotheses are their own demand: the inequality is shown, and each bound's limit is taken. The usual case bounds an oscillating factor between \\(-1\\) and 1.",
    "notation": "squeeze theorem; the inequality written with the trapped function in the middle",
-   "quote": {
-    "text": "The limit of a function may be found by using the squeeze theorem.",
-    "source": "ced:45"
-   },
+   "quote": null,
    "sources": [
     "BC-EK-LIM-1E2",
     "ced:45",
@@ -139,14 +159,26 @@ Every non-text choice is [inferred], settled by the modality A/B.
   {
    "id": "st-1",
    "archetype_id": "BC-QA-01005",
-   "cue": "A function trapped between two bounds, or an oscillating factor times a vanishing factor, with the limit asked.",
-   "method": "First line: bound the oscillating factor between fixed values.",
-   "rival": "Rival: substituting the target into the bounds instead of taking their limits (BC-ERR-01013).",
-   "separating_feature": "The oscillating factor has no limit of its own, so the product theorem has nothing to multiply.",
+   "cue": "An oscillating factor times a vanishing factor.",
+   "method": "Bound the oscillating factor between fixed values.",
+   "rival": "Substituting the target into the bounds.",
+   "separating_feature": "The oscillating factor has no limit of its own.",
    "sources": [
-    "BC-QA-01005"
+    "BC-QA-01005",
+    "BC-ERR-01013"
    ],
-   "evidence_tag": "verified"
+   "evidence_tag": "verified",
+   "contrast": {
+    "this": {
+     "text": "Find \\(\\lim_{x\\to0}x^2\\cos\\frac{1}{x}\\) and justify.",
+     "archetype_id": "BC-QA-01005"
+    },
+    "not_this": {
+     "text": "Find \\(\\lim_{x\\to0}x^2\\cos x\\).",
+     "why_not": "Each factor has its own limit, so the product theorem settles it."
+    },
+    "feature": "One factor has no limit of its own."
+   }
   }
  ],
  "worked_examples": [
@@ -236,7 +268,8 @@ Every non-text choice is [inferred], settled by the modality A/B.
    "sources": [
     "BC-ERR-01012",
     "BC-MIS-01008"
-   ]
+   ],
+   "fix_prompt": true
   },
   {
    "error_id": "BC-ERR-01013",
@@ -258,7 +291,8 @@ Every non-text choice is [inferred], settled by the modality A/B.
    "sources": [
     "BC-ERR-01013",
     "BC-MIS-01008"
-   ]
+   ],
+   "fix_prompt": false
   },
   {
    "error_id": "BC-ERR-99008",
@@ -282,7 +316,8 @@ Every non-text choice is [inferred], settled by the modality A/B.
     "BC-MIS-99009",
     "BC-SKL-01032",
     "cr-23:16"
-   ]
+   ],
+   "fix_prompt": true
   }
  ],
  "representations": null,
@@ -734,8 +769,8 @@ Every non-text choice is [inferred], settled by the modality A/B.
   "brief": 3.0
  },
  "word_count": {
-  "full": 590,
-  "brief": 447
+  "full": 577,
+  "brief": 434
  }
 }
 ```

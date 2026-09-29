@@ -3,7 +3,7 @@
  "version": 1,
  "kind": "concept",
  "target_id": "BC-CON-01019",
- "status": "signed_off",
+ "status": "draft",
  "snapshot_digest": "a6a8ec9d3f59ab8f712e33d30cc22fc64bf2c478fbe7312e3e3118d319c6a42f",
  "source_digest": "114024a848bb00eaf3a023857f7f051293b0f223e0dd2acd25e6c3a910a52cde",
  "read_minutes": {
@@ -11,12 +11,61 @@
   "brief": 3.0
  },
  "word_count": {
-  "full": 521,
-  "brief": 412
+  "full": 527,
+  "brief": 418
  },
  "sections": [
   {
    "id": "LSN-CON-01019#s1",
+   "type": "prediction",
+   "bands": [
+    "low",
+    "mid"
+   ],
+   "skills": [
+    "BC-SKL-01064",
+    "BC-SKL-01065",
+    "BC-SKL-01066",
+    "BC-SKL-01067",
+    "BC-SKL-01068"
+   ],
+   "sources": [
+    "BC-CON-01019",
+    "research/units/unit-01-limits-continuity.md#1.16 Working with the Intermediate Value Theorem (IVT)"
+   ],
+   "evidence_tag": "inferred",
+   "stem": {
+    "text": "\\(f\\) is differentiable, \\(f(1)=-4\\), \\(f(3)=2\\), \\(f(5)=7\\), \\(f(8)=1\\). Predict how many \\(c\\) in \\((1,8)\\) must have \\(f(c)=0\\).",
+    "command_verb": "predict"
+   },
+   "format": "mcq",
+   "options": [
+    {
+     "id": "A",
+     "label": "Exactly one",
+     "is_key": false
+    },
+    {
+     "id": "B",
+     "label": "At least one",
+     "is_key": true
+    },
+    {
+     "id": "C",
+     "label": "Possibly none",
+     "is_key": false
+    }
+   ],
+   "resolution": {
+    "text": "Continuity follows from differentiability and 0 lies between \\(-4\\) and \\(1\\), so at least one input works."
+   },
+   "delivery": {
+    "mode": "text",
+    "reason": "rule 6"
+   }
+  },
+  {
+   "id": "LSN-CON-01019#s2",
    "type": "orientation",
    "bands": [
     "low",
@@ -34,7 +83,7 @@
     "research/units/unit-01-limits-continuity.md#1.16 Working with the Intermediate Value Theorem (IVT)"
    ],
    "evidence_tag": "inferred",
-   "text": "A response derives continuity from differentiability, shows the target strictly between two function values, and answers yes.",
+   "text": "A response derives continuity, shows the target between two values, and answers yes.",
    "delivery": {
     "mode": "table",
     "reason": "rule 4: BC-REP-03 on BC-SKL-01065, BC-SKL-01066, BC-SKL-01068",
@@ -74,7 +123,7 @@
    }
   },
   {
-   "id": "LSN-CON-01019#s2",
+   "id": "LSN-CON-01019#s3",
    "type": "key_ideas",
    "bands": [
     "low",
@@ -92,15 +141,11 @@
     "ced:53",
     "research/units/unit-01-limits-continuity.md#1.16 Working with the Intermediate Value Theorem (IVT)"
    ],
-   "evidence_tag": "verified",
+   "evidence_tag": "inferred",
    "ek_id": "BC-EK-FUN-1A1",
    "depth": "core",
-   "text": "Hypotheses: continuity on the closed interval, and the target between two function values (BC-EK-FUN-1A1, ced:53). Conclusion: at least one input, not exactly one.",
+   "text": "Hypotheses: continuity on \\([a,b]\\), target between the endpoint values. Conclusion: at least one input, not exactly one.",
    "notation": "Intermediate Value Theorem",
-   "quote": {
-    "text": "there is at least one number c between a and b",
-    "source": "ced:53"
-   },
    "delivery": {
     "mode": "table",
     "reason": "rule 4: BC-REP-03 on BC-SKL-01066; the straddling pair picked from tabulated values",
@@ -147,7 +192,7 @@
    }
   },
   {
-   "id": "LSN-CON-01019#s3",
+   "id": "LSN-CON-01019#s4",
    "type": "strategy",
    "bands": [
     "low",
@@ -161,17 +206,29 @@
     "BC-SKL-01068"
    ],
    "sources": [
-    "BC-QA-01011"
+    "BC-QA-01011",
+    "BC-ERR-01025"
    ],
    "evidence_tag": "verified",
    "archetype_id": "BC-QA-01011",
-   "cue": "A tabulated differentiable function, a target, an open interval: must some input give it?",
-   "method": "First written line: \\(f\\) is differentiable, so continuous.",
-   "rival": "Continuity asserted without a reason (BC-ERR-01025).",
-   "separating_feature": "The word because, and the property it cites."
+   "cue": "Table, target, interval: must one exist?",
+   "method": "\\(f\\) is differentiable, so continuous.",
+   "rival": "Continuity with no reason.",
+   "separating_feature": "Because, and the property it cites.",
+   "contrast": {
+    "this": {
+     "text": "\\(f\\) differentiable; \\(f(2)=-3\\), \\(f(6)=5\\). Must \\(f(c)=1\\) on \\((2,6)\\)?",
+     "archetype_id": "BC-QA-01011"
+    },
+    "not_this": {
+     "text": "\\(f\\) differentiable; \\(f(2)=-3\\), \\(f(6)=5\\). Must \\(f'(c)=2\\) on \\((2,6)\\)?",
+     "why_not": "A slope target calls for the Mean Value Theorem."
+    },
+    "feature": "A value of \\(f\\), not a slope."
+   }
   },
   {
-   "id": "LSN-CON-01019#s4",
+   "id": "LSN-CON-01019#s5",
    "type": "worked_example",
    "bands": [
     "low",
@@ -212,24 +269,24 @@
    "calculator_status": "no_calculator",
    "steps": [
     {
-     "cue": "\"Must there be\" with a target.",
+     "cue": "\"Must there be\" and a target.",
      "why": "Differentiable, so continuous on \\([1,8]\\).",
      "point_type_id": "BC-PT-99015"
     },
     {
-     "cue": "Two values on opposite sides of 0.",
+     "cue": "Opposite sides of 0.",
      "why": "\\(f(1)\\) and \\(f(8)\\) differ in sign.",
      "expression": -4,
      "relation": "new"
     },
     {
-     "cue": "The product is negative.",
-     "why": "Write \\(-4<0<1\\) and yes.",
+     "cue": "Negative product.",
+     "why": "Write \\(-4<0<1\\), then yes.",
      "point_type_id": "BC-PT-99016"
     },
     {
      "cue": "Existence only.",
-     "why": "At least one \\(c\\) in \\((1,8)\\)."
+     "why": "At least one \\(c\\)."
     }
    ],
    "answer": {
@@ -243,7 +300,7 @@
    }
   },
   {
-   "id": "LSN-CON-01019#s5",
+   "id": "LSN-CON-01019#s6",
    "type": "what_a_reader_scores",
    "bands": [
     "low",
@@ -261,7 +318,7 @@
     "BC-PT-99016"
    ],
    "evidence_tag": "verified",
-   "example_id": "LSN-CON-01019#s4",
+   "example_id": "LSN-CON-01019#s5",
    "lines": [
     {
      "point_type_id": "BC-PT-99015",
@@ -326,10 +383,7 @@
     ]
    },
    "relation": "distinct",
-   "possible_reason": {
-    "misconception_id": "BC-MIS-01010",
-    "text": "treats naming the definition or the theorem as the argument"
-   },
+   "fix_prompt": true,
    "delivery": {
     "mode": "step_reveal",
     "reason": "rule 1",
@@ -356,14 +410,14 @@
    "observed_behavior": "The response states that the function is continuous but gives no basis for the statement.",
    "scoring_consequence": "The point for the continuity hypothesis is not earned by a bare statement that the function is continuous; the response must say that it is continuous because it is differentiable or give an equivalent reason (sg-25:12).",
    "wrong_step": {
-    "text": "Written: continuous.",
+    "text": "Continuous.",
     "expression": [
      "Set",
      "continuous"
     ]
    },
    "right_step": {
-    "text": "Written: differentiable, so continuous.",
+    "text": "Differentiable, so continuous.",
     "expression": [
      "Set",
      "continuous",
@@ -371,10 +425,7 @@
     ]
    },
    "relation": "distinct",
-   "possible_reason": {
-    "misconception_id": "BC-MIS-01015",
-    "text": "treats the stated setting as discharging the hypotheses of a theorem"
-   },
+   "fix_prompt": true,
    "delivery": {
     "mode": "step_reveal",
     "reason": "rule 1",
@@ -409,6 +460,7 @@
     "expression": -4
    },
    "relation": "distinct",
+   "fix_prompt": true,
    "possible_reason": {
     "misconception_id": "BC-MIS-01016",
     "text": "applies it without checking that the target lies between the endpoint values"
@@ -459,6 +511,7 @@
     ]
    },
    "relation": "distinct",
+   "fix_prompt": true,
    "possible_reason": {
     "misconception_id": "BC-MIS-01016",
     "text": "reads the conclusion of the Intermediate Value Theorem as producing a unique input"
@@ -484,7 +537,7 @@
    ],
    "evidence_tag": "inferred",
    "prerequisite_id": "BC-PRQ-01008",
-   "text": "Domain first. Slip: continuity claimed outside it."
+   "text": "Domain first. Slip: continuity outside it."
   },
   {
    "id": "LSN-CON-01019#prq-BC-PRQ-01010",
@@ -504,7 +557,7 @@
    ],
    "evidence_tag": "inferred",
    "prerequisite_id": "BC-PRQ-01010",
-   "text": "Open against closed. Slip: a closed interval where the theorem gives an interior point."
+   "text": "Open against closed. Slip: closed for the point."
   }
  ],
  "checks": [
@@ -533,7 +586,7 @@
     "target": "0",
     "pair": "outer"
    },
-   "completes": "LSN-CON-01019#s4",
+   "completes": "LSN-CON-01019#s5",
    "stem": {
     "text": "Given continuity and \\(-4<0<1\\), write the conclusion.",
     "command_verb": "write"
@@ -706,19 +759,19 @@
   }
  ],
  "refresher": [
-  "LSN-CON-01019#s2",
+  "LSN-CON-01019#s3",
   "LSN-CON-01019#err-BC-ERR-01016",
   "LSN-CON-01019#err-BC-ERR-01025",
   "LSN-CON-01019#err-BC-ERR-01026",
   "LSN-CON-01019#err-BC-ERR-01027",
-  "LSN-CON-01019#s4"
+  "LSN-CON-01019#s5"
  ],
  "provenance": {
   "author": "tools/lesson_transcribe.py",
-  "prompt_version": "generator/lesson_v1",
+  "prompt_version": "generator/lesson_v2",
   "design_path": "docs/lessons/unit-01/LSN-CON-01019.md",
-  "signed_off_by": "claude-opus-5-5",
-  "signed_off_at": "2026-09-29",
+  "signed_off_by": null,
+  "signed_off_at": null,
   "not_human": true
  }
 }

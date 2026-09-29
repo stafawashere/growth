@@ -9,6 +9,10 @@ purpose: Authoring spec for the concept lesson on BC-CON-01016, infinite limits 
 
 Concept BC-CON-01016 (skills BC-SKL-01054, BC-SKL-01055, BC-SKL-01056, BC-SKL-01057), topic 1.14 of Unit 1 (BC-TOP-0114), loaded by BC-QA-01009 (primary, three of the four skills) and BC-QA-01007 (through BC-SKL-01057). Neither archetype carries `point_types`, so the lesson says nothing about points.
 
+## Prediction
+
+Served first, both bands, on ex-1's own function \(f(x)=\frac{2(x-1)(x-3)}{(x-1)(x+2)}\). Form `mcq`, three options, key "At \(x=-2\) only". The question asks where the graph has a vertical asymptote before any rule about simplifying is stated, so the student commits to the concept's core claim that a surviving zero of the denominator is the only asymptote. Source: BC-CON-01016 and the topic's Locating asymptotes paragraph (research/units/unit-01-limits-continuity.md#1.14 Connecting Infinite Limits and Vertical Asymptotes). The resolution shows the division and states what it leaves; it passes no verdict. Delivery: text.
+
 ## Orientation
 
 Served text, from BC-CON-01016 `description_plain` and the topic's Assessment behaviour paragraph (research/units/unit-01-limits-continuity.md#1.14 Connecting Infinite Limits and Vertical Asymptotes): a response simplifies first, locates the vertical asymptotes at the zeros of the denominator that survive, and states the behaviour on each side as a one sided infinite limit.
@@ -25,20 +29,20 @@ Two BC-EK map to the skills, both on ced:51: BC-EK-LIM-2D1 (BC-SKL-01054, 01055)
 - BC-QA-01009 (family infinite-limit-asymptote, MCQ, no calculator; research/question-analysis/question-archetypes.md#BC-QA-01009 Vertical asymptote located and the one sided infinite limits stated): `typical_wording` "Find the vertical asymptotes of the graph of the given function and describe the behaviour of the function near each one"; `asked_to_produce` the locations of the vertical asymptotes and one sided infinite limit statements; `common_givens` empty. The signal is "vertical asymptote" or "behaviour near" with a rational rule.
 - BC-QA-01007 (family discontinuity-classification, MCQ, no calculator; research/question-analysis/question-archetypes.md#BC-QA-01007 Discontinuity classified from a rule or a graph): `typical_wording` "Classify each discontinuity of the given function and give a reason for each classification"; `asked_to_produce` a classification as removable, jump or vertical asymptote with a reason; `common_givens` empty. The signal is "classify" with a break.
 
-What says "not this concept": the infinity symbol under the arrow rather than in the value (BC-CON-01017, the BC-MIS-01018 probe named in docs/lessons/unit-01/README.md section 3); substitution giving zero over zero with a factor that cancels everywhere (BC-CON-01008); a named constant to solve for (BC-CON-01015). No official example is recorded for either archetype.
+What says "not this concept": the infinity symbol under the arrow rather than in the value (BC-CON-01017, the BC-MIS-01018 probe named in docs/lessons/unit-01/README.md section 3); substitution giving zero over zero with a factor that cancels everywhere (BC-CON-01008); a named constant to solve for (BC-CON-01015). No official example is recorded for either archetype. The contrast pair's near miss is the sibling concept BC-CON-01017: the same rational rule with the variable tending to infinity, which asks for a horizontal asymptote (BC-QA-01010, the BC-MIS-01018 probe named in docs/lessons/unit-01/README.md section 3).
 
 ## Method choice
 
 Two strategy blocks, low band both, mid band the first. Both archetypes have empty `common_givens`, so both blocks carry `evidence_tag: inferred` and their cues rest on `typical_wording` and `asked_to_produce`.
 
-- st-1, BC-QA-01009. Cue: a rational rule, and the stem asks where the vertical asymptotes are and how the function behaves near each. Method, `expected_solution_path[0]`: factor numerator and denominator. Rival, `wrong_approaches`: one two sided infinite limit written where the sides differ in sign (BC-ERR-01019). Separating feature: the sign of the simplified quotient on each side of the surviving zero.
+- st-1, BC-QA-01009. Cue: a rational rule, and the stem asks where the vertical asymptotes are and how the function behaves near each. Method, `expected_solution_path[0]`: factor numerator and denominator (no leading label is served). Rival, `wrong_approaches`: one two sided infinite limit written where the sides differ in sign (BC-ERR-01019). Separating feature: the sign of the simplified quotient on each side of the surviving zero. The block carries the contrast pair: `this` asks for the vertical asymptotes of \(p(x)=\frac{(x-4)(x+1)}{(x+1)(x-3)}\); `not_this` asks for the limit of the same rule as \(x\to\infty\); the feature is that infinity sits under the arrow rather than a finite input making the denominator vanish.
 - st-2, BC-QA-01007. Cue: a function with breaks, and the stem asks to classify each with a reason. Method: locate the inputs where the function is undefined or the rule changes. Rival: a vertical asymptote named at a factor that divides out (BC-ERR-01018). Separating feature: whether the factor survives cancellation.
 
 ## Solution path
 
 - ex-1, BC-QA-01009, both bands, no calculator. Draw: coefficient 2, cancelled_root 1, pole \(-2\), zero 3, form factored, giving \(f(x)=\frac{2(x-1)(x-3)}{(x-1)(x+2)}\). Constraints hold (\(1\ne-2\), \(3\ne-2\), \(3\ne1\)). Steps follow `expected_solution_path`: factored form read (no value), the expression (valued, new), the simplified form (valued, equivalent), the surviving zero (no value), the right-hand limit (valued, limit from the right), the left-hand limit (valued, new then limit from the left). A fluent solver writes the simplified form, the location and the two one sided statements, and holds the sign arithmetic in the head.
 
-Each infinite value carries relation `limit` with its side (`dir`), so the checker recomputes it. The answer and the check keys are statements, because the response is a location with two one sided limits, not one value.
+Only one example is designed, so nothing is faded. Each infinite value carries relation `limit` with its side (`dir`), so the checker recomputes it. The answer and the check keys are statements, because the response is a location with two one sided limits, not one value.
 
 ## Scoring
 
@@ -46,7 +50,7 @@ None. Neither BC-QA-01009 nor BC-QA-01007 lists `point_types`, so under plan 15 
 
 ## Traps
 
-Three active errors meet the concept's skills, in the bundle's order (all linked BC-MIS high, so by id). Low band all three, mid band the first two.
+Three active errors meet the concept's skills, in the bundle's order (all linked BC-MIS high, so by id). Low band all three, mid band the first two. All three are `distinct`, so each is a fix prompt: the student writes the right step before it appears.
 
 - err-BC-ERR-01018 (BC-MIS-01011, BC-MIS-01012). Wrong step on ex-1's draw: asymptotes at \(x=-2\) and \(x=1\). Right step: at \(x=-2\) only; \(x=1\) is removable. Distinct. Possible reason, words from BC-MIS-01011.
 - err-BC-ERR-01019 (BC-MIS-01012, BC-MIS-01011). Wrong step: \(\lim_{x\to-2}f(x)=-\infty\). Right step: \(+\infty\) from the left, \(-\infty\) from the right. Distinct. Possible reason, words from BC-MIS-01012.
@@ -79,18 +83,20 @@ No draw equals a published BC-QA-01009 `parameter_draw` (content/items_gen_unit0
 - ki-2: figure. Rule 3, BC-REP-02 on BC-SKL-01057: the removable hole and the asymptote on one graph, each labelled by whether its factor survives.
 - ex-1 and the three error blocks: step_reveal. Rule 1.
 
+Figure presence: three drawn blocks (two figures and a motion), so no `no_figure_reason` is needed.
+
 Every non-text choice is [inferred], settled by the modality A/B in the build plan.
 
 ## Band plan
 
-- Low (full): orientation, ki-1, ki-2, st-1, st-2, ex-1, the three error blocks, chk-1, chk-2, chk-3, the two bridges. 553 words, 3.7 minutes (cap 900 and 6).
-- Mid (brief): orientation, ki-1, ki-2, st-1, ex-1, err-01018, err-01019, chk-1, chk-2, the two bridges. 422 words, 2.9 minutes (cap 450 and 3).
+- Low (full): pr-1, orientation, the two bridges when gated, ki-1, ki-2, st-1 with its contrast pair, st-2, ex-1, chk-1, the three error blocks, chk-2, chk-3. 566 words, 3.8 minutes (cap 900 and 6).
+- Mid (brief): pr-1, orientation, the two bridges when gated, ki-1, ki-2, st-1 with its contrast pair, ex-1, chk-1, err-01018, err-01019, chk-2. 439 words, 3.0 minutes (cap 450 and 3).
 - Refresher: ki-1, ki-2, err-BC-ERR-01018, err-BC-ERR-01019, err-BC-ERR-01020, ex-1.
 
 ## Sources
 
 - BC-CON-01016; BC-SKL-01054, BC-SKL-01055, BC-SKL-01056, BC-SKL-01057; BC-EK-LIM-2D1, BC-EK-LIM-2D2; ced:51
-- BC-QA-01009, BC-QA-01007
+- BC-QA-01009, BC-QA-01007; BC-QA-01010 (the contrast near miss)
 - BC-ERR-01018, BC-ERR-01019, BC-ERR-01020; BC-MIS-01011, BC-MIS-01012, BC-MIS-99008
 - BC-PRQ-01001, BC-PRQ-01009
 - research/units/unit-01-limits-continuity.md#1.14 Connecting Infinite Limits and Vertical Asymptotes
@@ -109,8 +115,20 @@ Every non-text choice is [inferred], settled by the modality A/B in the build pl
  "target_id": "BC-CON-01016",
  "unit": "01",
  "skills": ["BC-SKL-01054", "BC-SKL-01055", "BC-SKL-01056", "BC-SKL-01057"],
+ "prediction": {
+  "id": "pr-1",
+  "stem": {"text": "Let \\(f(x)=\\frac{2(x-1)(x-3)}{(x-1)(x+2)}\\). Predict where the graph of \\(f\\) has a vertical asymptote.", "command_verb": "predict"},
+  "format": "mcq",
+  "options": [
+   {"id": "A", "label": "At \\(x=-2\\) and \\(x=1\\)", "is_key": false},
+   {"id": "B", "label": "At \\(x=-2\\) only", "is_key": true},
+   {"id": "C", "label": "At \\(x=1\\) only", "is_key": false}
+  ],
+  "resolution": "Dividing out \\(x-1\\) leaves \\(\\frac{2(x-3)}{x+2}\\), so \\(x=1\\) is a removable break. Only \\(x=-2\\), a zero of the remaining denominator, gives unbounded values.",
+  "sources": ["BC-CON-01016", "research/units/unit-01-limits-continuity.md#1.14 Connecting Infinite Limits and Vertical Asymptotes"]
+ },
  "orientation": {
-  "text": "A response simplifies first, places a vertical asymptote at each zero of the denominator that survives, and states the behaviour on each side as a one sided infinite limit.",
+  "text": "A response simplifies first, places an asymptote at each surviving zero of the denominator, and states each side's infinite limit.",
   "sources": ["BC-CON-01016", "research/units/unit-01-limits-continuity.md#1.14 Connecting Infinite Limits and Vertical Asymptotes"]
  },
  "key_ideas": [
@@ -118,7 +136,7 @@ Every non-text choice is [inferred], settled by the modality A/B in the build pl
    "id": "ki-1",
    "ek_id": "BC-EK-LIM-2D1",
    "depth": "core",
-   "text": "A limit written as \\(\\infty\\) records growth without bound; it does not say a real limit exists (BC-EK-LIM-2D1, ced:51). Each side is written separately whenever the sign differs across the input.",
+   "text": "A limit written as \\(\\infty\\) records growth without bound; it does not say a real limit exists. Each side is written separately when the sign differs.",
    "notation": "vertical asymptote",
    "quote": {"text": "The concept of a limit can be extended to include infinite limits.", "source": "ced:51"},
    "sources": ["BC-EK-LIM-2D1", "ced:51", "research/units/unit-01-limits-continuity.md#1.14 Connecting Infinite Limits and Vertical Asymptotes"]
@@ -127,7 +145,7 @@ Every non-text choice is [inferred], settled by the modality A/B in the build pl
    "id": "ki-2",
    "ek_id": "BC-EK-LIM-2D2",
    "depth": "core",
-   "text": "Simplify first (research/units/unit-01-limits-continuity.md#1.14 Connecting Infinite Limits and Vertical Asymptotes). A factor that divides out leaves a removable break; only a zero of the simplified denominator is an asymptote.",
+   "text": "Simplify first. A factor that divides out leaves a removable break; only a zero of the simplified denominator is an asymptote.",
    "notation": "",
    "quote": {"text": "Asymptotic and unbounded behavior of functions can be described and explained using limits.", "source": "ced:51"},
    "sources": ["BC-EK-LIM-2D2", "ced:51", "research/units/unit-01-limits-continuity.md#1.14 Connecting Infinite Limits and Vertical Asymptotes"]
@@ -137,21 +155,26 @@ Every non-text choice is [inferred], settled by the modality A/B in the build pl
   {
    "id": "st-1",
    "archetype_id": "BC-QA-01009",
-   "cue": "A rational rule; the stem asks for the vertical asymptotes and the behaviour near each.",
-   "method": "First written line: factor numerator and denominator.",
-   "rival": "One two sided infinite limit where the sides differ in sign (BC-ERR-01019).",
+   "cue": "A rational rule; asymptotes and the behaviour near each.",
+   "method": "Factor numerator and denominator.",
+   "rival": "One two sided infinite limit where the sides differ in sign.",
    "separating_feature": "The sign of the simplified quotient on each side.",
-   "sources": ["BC-QA-01009"],
+   "contrast": {
+    "this": {"text": "Find the vertical asymptotes of \\(p(x)=\\frac{(x-4)(x+1)}{(x+1)(x-3)}\\).", "archetype_id": "BC-QA-01009"},
+    "not_this": {"text": "Find \\(\\lim_{x\\to\\infty}\\frac{(x-4)(x+1)}{(x+1)(x-3)}\\).", "why_not": "Infinity is under the arrow, so it asks for a horizontal asymptote."},
+    "feature": "Infinity under the arrow, not a finite input."
+   },
+   "sources": ["BC-QA-01009", "BC-ERR-01019", "BC-QA-01010"],
    "evidence_tag": "inferred"
   },
   {
    "id": "st-2",
    "archetype_id": "BC-QA-01007",
    "cue": "A function with breaks; the stem asks to classify each and give a reason.",
-   "method": "First written line: the inputs where the function is undefined or the rule changes.",
-   "rival": "A vertical asymptote named at a factor that divides out (BC-ERR-01018).",
+   "method": "The inputs where the function is undefined or the rule changes.",
+   "rival": "A vertical asymptote named at a factor that divides out.",
    "separating_feature": "Whether the factor survives cancellation.",
-   "sources": ["BC-QA-01007"],
+   "sources": ["BC-QA-01007", "BC-ERR-01018"],
    "evidence_tag": "inferred"
   }
  ],
@@ -164,13 +187,13 @@ Every non-text choice is [inferred], settled by the modality A/B in the build pl
    "problem": {"text": "Let \\(f(x)=\\frac{2(x-1)(x-3)}{(x-1)(x+2)}\\). Find the vertical asymptotes and describe \\(f\\) near each.", "command_verb": "find"},
    "calculator_status": "no_calculator",
    "steps": [
-    {"cue": "Both parts arrive factored.", "why": "Factors are what cancel, so the factored form is read first."},
+    {"cue": "Both parts arrive factored.", "why": "Factors are what cancel."},
     {"cue": "\\(x-1\\) sits in both parts.", "why": "A shared factor divides out.", "expr": "2*(x-1)*(x-3)/((x-1)*(x+2))", "relation": "new"},
     {"cue": "Divide out \\(x-1\\), recording \\(x\\ne1\\).", "why": "At 1 the break is removable.", "expr": "2*(x-3)/(x+2)", "relation": "equivalent"},
     {"cue": "The simplified denominator is \\(x+2\\).", "why": "Only a surviving zero gives an asymptote: \\(x=-2\\)."},
     {"cue": "Just right of \\(-2\\): numerator near \\(-10\\), denominator small positive.", "why": "Negative over small positive.", "expr": "-oo", "relation": "limit", "variable": "x", "point": "-2", "dir": "+"},
     {"cue": "Left of \\(-2\\), the same simplified form.", "why": "Each side is taken on its own.", "expr": "2*(x-3)/(x+2)", "relation": "new"},
-    {"cue": "Just left of \\(-2\\): the denominator is small negative.", "why": "Opposite sign, so each side gets its own statement.", "expr": "oo", "relation": "limit", "variable": "x", "point": "-2", "dir": "-"}
+    {"cue": "Just left of \\(-2\\): the denominator is small negative.", "why": "Opposite sign: a separate statement.", "expr": "oo", "relation": "limit", "variable": "x", "point": "-2", "dir": "-"}
    ],
    "answer": {"form": "statement", "expr": "x = -2 only; left limit oo, right limit -oo"}
   }
@@ -184,6 +207,7 @@ Every non-text choice is [inferred], settled by the modality A/B in the build pl
    "wrong_step": {"text": "Asymptotes at \\(-2\\) and \\(1\\).", "expr": "FiniteSet(-2, 1)"},
    "right_step": {"text": "At \\(-2\\) only.", "expr": "FiniteSet(-2)"},
    "relation": "distinct",
+   "fix_prompt": true,
    "possible_reason": {"misconception_id": "BC-MIS-01011", "text": "any zero of the original denominator as unbounded behaviour without simplifying first"},
    "sources": ["BC-ERR-01018", "BC-MIS-01011"]
   },
@@ -194,6 +218,7 @@ Every non-text choice is [inferred], settled by the modality A/B in the build pl
    "wrong_step": {"text": "\\(\\lim_{x\\to-2}f(x)=-\\infty\\).", "expr": "-oo"},
    "right_step": {"text": "From the left, \\(\\infty\\).", "expr": "oo"},
    "relation": "distinct",
+   "fix_prompt": true,
    "possible_reason": {"misconception_id": "BC-MIS-01012", "text": "writes one statement where the two sides carry opposite signs"},
    "sources": ["BC-ERR-01019", "BC-MIS-01012"]
   },
@@ -204,14 +229,15 @@ Every non-text choice is [inferred], settled by the modality A/B in the build pl
    "wrong_step": {"text": "Left limit \\(\\infty\\) read as a real value, so it exists.", "expr": "oo"},
    "right_step": {"text": "\\(\\frac{1}{f(x)}=\\frac{x+2}{2(x-3)}\\to0\\): \\(f\\) passes every bound, no real limit.", "expr": "(x+2)/(2*(x-3))"},
    "relation": "distinct",
+   "fix_prompt": true,
    "possible_reason": {"misconception_id": "BC-MIS-01012", "text": "reads the infinity symbol as a real value"},
    "sources": ["BC-ERR-01020", "BC-MIS-01012"]
   }
  ],
  "representations": null,
  "prerequisite_bridges": [
-  {"prq_id": "BC-PRQ-01001", "text": "Factor and cancel a common factor. The slip: stopping at zero over zero with no factoring tried."},
-  {"prq_id": "BC-PRQ-01009", "text": "Find the sign of a quotient on each side of a zero of its denominator. The slip: one two sided infinite limit where the signs differ."}
+  {"prq_id": "BC-PRQ-01001", "text": "Factor and cancel a common factor. Slip: stopping at zero over zero."},
+  {"prq_id": "BC-PRQ-01009", "text": "Sign of a quotient beside a zero of its denominator. Slip: one two sided limit where signs differ."}
  ],
  "time": {"exam_part": "I-A", "budget_minutes": 2.14, "source": "research/exam/exam-structure.md#Section and part layout", "written_steps": {"ex-1": [3, 4, 5, 7]}, "skipped_steps": {"ex-1": [1, 2, 6]}},
  "checks": [
@@ -305,8 +331,8 @@ Every non-text choice is [inferred], settled by the modality A/B in the build pl
   {"block": "err-BC-ERR-01020", "mode": "step_reveal", "reason": "rule 1", "sources": []}
  ],
  "refresher": ["ki-1", "ki-2", "err-BC-ERR-01018", "err-BC-ERR-01019", "err-BC-ERR-01020", "ex-1"],
- "read_minutes": {"full": 3.7, "brief": 2.9},
- "word_count": {"full": 553, "brief": 422},
+ "read_minutes": {"full": 3.8, "brief": 3.0},
+ "word_count": {"full": 566, "brief": 439},
  "research_lines": [
   {"file": "research/units/unit-01-limits-continuity.md", "line": "A factor that divides out produces a removable discontinuity rather than a vertical asymptote."}
  ],

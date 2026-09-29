@@ -3,20 +3,68 @@
  "version": 1,
  "kind": "concept",
  "target_id": "BC-CON-01012",
- "status": "signed_off",
+ "status": "draft",
  "snapshot_digest": "a6a8ec9d3f59ab8f712e33d30cc22fc64bf2c478fbe7312e3e3118d319c6a42f",
  "source_digest": "63b8370770f2f04b3f39778baa6430809c76ea9ab78ea3c782edb36ac30626b3",
  "read_minutes": {
-  "full": 4.9,
-  "brief": 2.9
+  "full": 4.87,
+  "brief": 2.97
  },
  "word_count": {
-  "full": 584,
-  "brief": 334
+  "full": 633,
+  "brief": 389
  },
  "sections": [
   {
    "id": "LSN-CON-01012#s1",
+   "type": "prediction",
+   "bands": [
+    "low",
+    "mid"
+   ],
+   "skills": [
+    "BC-SKL-01039",
+    "BC-SKL-01040",
+    "BC-SKL-01041",
+    "BC-SKL-01042"
+   ],
+   "sources": [
+    "BC-CON-01012",
+    "research/units/unit-01-limits-continuity.md#1.10 Exploring Types of Discontinuities"
+   ],
+   "evidence_tag": "inferred",
+   "stem": {
+    "text": "Before the rule: what do the outputs of \\(f(x)=\\frac{2(x-1)(x-3)}{(x-1)(x+1)^2}\\) do as \\(x\\) nears 1?",
+    "command_verb": "predict"
+   },
+   "format": "mcq",
+   "options": [
+    {
+     "id": "A",
+     "label": "Grow without bound on both sides.",
+     "is_key": false
+    },
+    {
+     "id": "B",
+     "label": "Approach \\(-1\\) from both sides.",
+     "is_key": true
+    },
+    {
+     "id": "C",
+     "label": "Approach different values from each side.",
+     "is_key": false
+    }
+   ],
+   "resolution": {
+    "text": "The factor \\(x-1\\) divides out, leaving \\(\\frac{2(x-3)}{(x+1)^2}\\), which tends to \\(-1\\) from both sides: equal finite one sided limits, so a removable break."
+   },
+   "delivery": {
+    "mode": "text",
+    "reason": "rule 6"
+   }
+  },
+  {
+   "id": "LSN-CON-01012#s2",
    "type": "orientation",
    "bands": [
     "low",
@@ -33,7 +81,7 @@
     "research/units/unit-01-limits-continuity.md#1.10 Exploring Types of Discontinuities"
    ],
    "evidence_tag": "inferred",
-   "text": "A response names each break of a rule or graph removable, jump, or vertical asymptote, and backs the name with the one sided limits there.",
+   "text": "A response names each break removable, jump, or vertical asymptote, and backs the name with the one sided limits there.",
    "delivery": {
     "mode": "figure",
     "reason": "rule 3: BC-REP-02 on BC-SKL-01039, 01040 and 01041 (unit-01 README delivery map)",
@@ -97,7 +145,7 @@
    }
   },
   {
-   "id": "LSN-CON-01012#s2",
+   "id": "LSN-CON-01012#s3",
    "type": "key_ideas",
    "bands": [
     "low",
@@ -114,15 +162,11 @@
     "ced:47",
     "research/units/unit-01-limits-continuity.md#1.10 Exploring Types of Discontinuities"
    ],
-   "evidence_tag": "verified",
+   "evidence_tag": "inferred",
    "ek_id": "BC-EK-LIM-2A1",
    "depth": "core",
    "text": "Three types, settled by the one sided limits. Both exist and agree: removable. Both exist and differ: jump. At least one is infinite: vertical asymptote. The function value decides only whether a break is present.",
-   "notation": "removable discontinuity; jump discontinuity; discontinuity due to a vertical asymptote",
-   "quote": {
-    "text": "Types of discontinuities include removable discontinuities, jump discontinuities, and discontinuities due to vertical asymptotes.",
-    "source": "ced:47"
-   },
+   "notation": "removable, jump, vertical asymptote",
    "delivery": {
     "mode": "figure",
     "reason": "rule 3: BC-REP-02 on BC-SKL-01039, 01040, 01041; not promoted, BC-QA-01007 difficulty_variables name no varying quantity",
@@ -225,7 +269,7 @@
    }
   },
   {
-   "id": "LSN-CON-01012#s3",
+   "id": "LSN-CON-01012#s4",
    "type": "strategy",
    "bands": [
     "low",
@@ -241,13 +285,24 @@
    ],
    "evidence_tag": "inferred",
    "archetype_id": "BC-QA-01007",
-   "cue": "Classify each discontinuity of a given rule or graph, with a reason.",
-   "method": "First line: locate the inputs where the function is undefined or the rule changes.",
-   "rival": "Rival: naming a vertical asymptote at a factor that divides out (BC-ERR-01018).",
-   "separating_feature": "Whether the denominator factor cancels."
+   "cue": "Classify each discontinuity of a rule or graph, with a reason.",
+   "method": "Locate the inputs where the function is undefined.",
+   "rival": "Rival: naming an asymptote at a factor that divides out.",
+   "separating_feature": "Whether the denominator factor cancels.",
+   "contrast": {
+    "this": {
+     "text": "Let \\(g(x)=\\frac{(x-2)(x+4)}{(x-2)(x-5)}\\). Classify each discontinuity of \\(g\\).",
+     "archetype_id": "BC-QA-01007"
+    },
+    "not_this": {
+     "text": "Let \\(h(x)=\\frac{x^2-4}{x-2}\\) for \\(x\\ne2\\), \\(h(2)=a\\). Find \\(a\\) so \\(h\\) is continuous.",
+     "why_not": "It asks for a repairing value, not a name."
+    },
+    "feature": "Name the break, or choose a repairing value."
+   }
   },
   {
-   "id": "LSN-CON-01012#s4",
+   "id": "LSN-CON-01012#s5",
    "type": "strategy",
    "bands": [
     "low",
@@ -262,12 +317,12 @@
    "evidence_tag": "inferred",
    "archetype_id": "BC-QA-01006",
    "cue": "Determine whether a piecewise function is continuous at a named input, and justify.",
-   "method": "First line: evaluate the function at the named input.",
-   "rival": "Rival: continuity from matching one sided limits alone (BC-ERR-01015).",
+   "method": "Evaluate the function at the named input.",
+   "rival": "Rival: continuity from matching one sided limits alone.",
    "separating_feature": "A continuity verdict needs the value; a type needs only the one sided limits."
   },
   {
-   "id": "LSN-CON-01012#s5",
+   "id": "LSN-CON-01012#s6",
    "type": "strategy",
    "bands": [
     "low",
@@ -282,12 +337,12 @@
    "evidence_tag": "inferred",
    "archetype_id": "BC-QA-01009",
    "cue": "Find the vertical asymptotes and describe the behaviour near each.",
-   "method": "First line: factor numerator and denominator.",
-   "rival": "Rival: one two sided infinite limit where the sides differ in sign (BC-ERR-01019).",
+   "method": "Factor numerator and denominator.",
+   "rival": "Rival: one two sided infinite limit where the sides differ in sign.",
    "separating_feature": "The sign of the reduced quotient on each side of each remaining zero."
   },
   {
-   "id": "LSN-CON-01012#s6",
+   "id": "LSN-CON-01012#s7",
    "type": "worked_example",
    "bands": [
     "low",
@@ -411,7 +466,7 @@
    }
   },
   {
-   "id": "LSN-CON-01012#s7",
+   "id": "LSN-CON-01012#s8",
    "type": "worked_example",
    "bands": [
     "low"
@@ -491,6 +546,7 @@
     "form": "statement",
     "mathjson": "x = 2"
    },
+   "fade_from": 4,
    "delivery": {
     "mode": "step_reveal",
     "reason": "rule 1",
@@ -524,6 +580,7 @@
     "expression": -1
    },
    "relation": "distinct",
+   "fix_prompt": true,
    "possible_reason": {
     "misconception_id": "BC-MIS-01001",
     "text": "a missing or displaced function value is read as a missing or displaced limit"
@@ -562,6 +619,7 @@
     "expression": "NaN"
    },
    "relation": "distinct",
+   "fix_prompt": true,
    "possible_reason": {
     "misconception_id": "BC-MIS-01009",
     "text": "holds one of the three conditions as the whole definition"
@@ -598,6 +656,7 @@
     "expression": -1
    },
    "relation": "distinct",
+   "fix_prompt": true,
    "delivery": {
     "mode": "step_reveal",
     "reason": "rule 1",
@@ -639,6 +698,7 @@
     ]
    },
    "relation": "distinct",
+   "fix_prompt": true,
    "possible_reason": {
     "misconception_id": "BC-MIS-01011",
     "text": "reads any zero of the original denominator as unbounded behaviour without simplifying first"
@@ -664,7 +724,7 @@
    ],
    "evidence_tag": "inferred",
    "prerequisite_id": "BC-PRQ-01001",
-   "text": "Factor and cancel a common factor. Stopping at zero over zero unfactored marks this gap."
+   "text": "Factor and cancel a common factor."
   },
   {
    "id": "LSN-CON-01012#prq-BC-PRQ-01003",
@@ -682,7 +742,7 @@
    ],
    "evidence_tag": "inferred",
    "prerequisite_id": "BC-PRQ-01003",
-   "text": "Pick the branch that applies on each side of a boundary. The wrong branch marks this gap."
+   "text": "Pick the branch for each side."
   },
   {
    "id": "LSN-CON-01012#prq-BC-PRQ-01006",
@@ -699,7 +759,7 @@
    ],
    "evidence_tag": "inferred",
    "prerequisite_id": "BC-PRQ-01006",
-   "text": "Rewrite an absolute value as two branches. Equal one sided limits assumed marks this gap."
+   "text": "Rewrite an absolute value as two branches."
   },
   {
    "id": "LSN-CON-01012#prq-BC-PRQ-01008",
@@ -716,7 +776,7 @@
    ],
    "evidence_tag": "inferred",
    "prerequisite_id": "BC-PRQ-01008",
-   "text": "State where an expression is defined. Counting points outside the domain marks this gap."
+   "text": "State where an expression is defined."
   },
   {
    "id": "LSN-CON-01012#prq-BC-PRQ-01009",
@@ -733,7 +793,7 @@
    ],
    "evidence_tag": "inferred",
    "prerequisite_id": "BC-PRQ-01009",
-   "text": "Find the sign of a quotient on each side of a zero of its denominator."
+   "text": "Find a quotient's sign on each side of a zero."
   }
  ],
  "checks": [
@@ -754,7 +814,7 @@
     "form": "factored",
     "target": "removable"
    },
-   "completes": "LSN-CON-01012#s6",
+   "completes": "LSN-CON-01012#s7",
    "stem": {
     "text": "For the \\(f\\) above, \\(\\lim_{x\\to1}f(x)=-1\\) and \\(f(1)\\) is undefined. Classify the break at \\(x=1\\).",
     "command_verb": "classify"
@@ -967,19 +1027,19 @@
   }
  ],
  "refresher": [
-  "LSN-CON-01012#s2",
+  "LSN-CON-01012#s3",
   "LSN-CON-01012#err-BC-ERR-01003",
   "LSN-CON-01012#err-BC-ERR-01015",
   "LSN-CON-01012#err-BC-ERR-01017",
   "LSN-CON-01012#err-BC-ERR-01018",
-  "LSN-CON-01012#s6"
+  "LSN-CON-01012#s7"
  ],
  "provenance": {
   "author": "tools/lesson_transcribe.py",
-  "prompt_version": "generator/lesson_v1",
+  "prompt_version": "generator/lesson_v2",
   "design_path": "docs/lessons/unit-01/LSN-CON-01012.md",
-  "signed_off_by": "claude-opus-5-5",
-  "signed_off_at": "2026-09-29",
+  "signed_off_by": null,
+  "signed_off_at": null,
   "not_human": true
  }
 }

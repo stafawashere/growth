@@ -9,9 +9,13 @@ purpose: Authoring spec for the concept lesson on BC-CON-01005, the three ways a
 
 Concept BC-CON-01005 (skills BC-SKL-01011, BC-SKL-01012, BC-SKL-01013), topics 1.3 and 1.4 of Unit 1, loaded by one archetype, BC-QA-01001 (family limit-from-graph). Its hard parent is BC-CON-01004 (docs/lessons/unit-01/README.md, section 1).
 
+## Prediction
+
+Served first in both bands. Multiple choice on ex-1's own numbers: at \(x=5\) the graph heads to height 4 from the left and to 0 from the right with a dot at \((5,2)\), and the student picks the limit from 4, 2 and "No limit". Key "No limit", ex-1's answer. The resolution states that differing sides leave no single height approached. Sources: BC-CON-01005 and the topic 1.3 section that ki-1 cites. Delivery: text.
+
 ## Orientation
 
-Served text, from BC-CON-01005 `description_plain` and the topic 1.3 Assessment behaviour paragraph, which asks which failure mode applies and for a reason for a nonexistence claim (research/units/unit-01-limits-continuity.md#1.3 Estimating Limit Values from Graphs). No count, no frequency.
+Served text (18 words), from BC-CON-01005 `description_plain` and the topic 1.3 Assessment behaviour paragraph, which asks which failure mode applies and for a reason for a nonexistence claim (research/units/unit-01-limits-continuity.md#1.3 Estimating Limit Values from Graphs). No count, no frequency.
 
 ## Key ideas
 
@@ -22,6 +26,8 @@ All three skills map one BC-EK, BC-EK-LIM-1C4 (ced:40), so one core block, both 
 ## Recognition
 
 - BC-QA-01001 (research/question-analysis/question-archetypes.md#BC-QA-01001 Limit estimated from a graph including one sided values): `typical_wording` "Using the graph of f shown, find the stated limits or explain why a limit does not exist"; `common_givens` a graph with one or more breaks; `asked_to_produce` includes "a statement that a limit does not exist with a reason". The signal is the phrase "or explain why", or a graph where the curve jumps, rises without bound, or wiggles faster near the input. `difficulty_variables` include "whether an infinite branch is included" and "whether a nonexistence answer must be justified". Official example BC-MCQ-CED-011.
+
+The contrast pair on st-1 takes its near miss from the not-this list below: a jump at an input asked for a limit or a reason, beside a graph whose two sides head to one open circle, where the limit exists (BC-CON-01002). The separating feature is whether the two sides agree.
 
 What says "not this concept": two sides heading to one height at an open circle is a limit that exists (BC-CON-01002); a stem asking for the sign of an infinite limit or an asymptote belongs to BC-CON-01016.
 
@@ -79,15 +85,16 @@ Every non-text choice is [inferred], settled by the modality A/B.
 
 ## Band plan
 
-- Low (full): orientation, ki-1, st-1, ex-1, three error blocks, chk-1, chk-2, chk-3, bridges when gated.
-- Mid (brief): orientation, ki-1, st-1, ex-1, err-BC-ERR-01002, err-BC-ERR-01020, chk-1, chk-2, bridges when gated.
-- Totals: full 529 words, 3.6 minutes (cap 900 and 6); brief 450 words, 3.0 minutes (cap 450 and 3).
+- Low (full), served order: prediction, orientation, bridges when gated, ki-1, st-1 with its contrast pair, ex-1, chk-1, three error blocks, chk-2, chk-3.
+- Mid (brief): prediction, orientation, bridges when gated, ki-1, st-1 with its contrast pair, ex-1, chk-1, err-BC-ERR-01002, err-BC-ERR-01020, chk-2.
+- Totals: full 529 words, 3.55 minutes (cap 900 and 6); brief 450 words, 3.0 minutes (cap 450 and 3).
 - Refresher: ki-1, the three error blocks, ex-1.
 
 ## Sources
 
 - BC-CON-01005; BC-SKL-01011, BC-SKL-01012, BC-SKL-01013; BC-EK-LIM-1C4; ced:40
 - BC-QA-01001; BC-MCQ-CED-011
+- Prediction pr-1 and the contrast pair: BC-CON-01005, BC-CON-01002
 - BC-ERR-01002, BC-ERR-01020, BC-ERR-01004; BC-MIS-01001, BC-MIS-01002, BC-MIS-01003, BC-MIS-01004, BC-MIS-01012, BC-MIS-99008
 - BC-PRQ-01003, BC-PRQ-01005, BC-PRQ-01006, BC-PRQ-01009
 - research/units/unit-01-limits-continuity.md#1.3 Estimating Limit Values from Graphs
@@ -110,8 +117,38 @@ Every non-text choice is [inferred], settled by the modality A/B.
   "BC-SKL-01012",
   "BC-SKL-01013"
  ],
+ "prediction": {
+  "id": "pr-1",
+  "stem": {
+   "text": "Predict. At x = 5, f heads to 4 from the left, 0 from the right; a dot sits at (5, 2). What is the limit?",
+   "command_verb": "predict"
+  },
+  "format": "mcq",
+  "options": [
+   {
+    "id": "A",
+    "label": "4",
+    "is_key": false
+   },
+   {
+    "id": "B",
+    "label": "2",
+    "is_key": false
+   },
+   {
+    "id": "C",
+    "label": "No limit",
+    "is_key": true
+   }
+  ],
+  "resolution": "The sides differ, so no height is approached and the limit does not exist.",
+  "sources": [
+   "BC-CON-01005",
+   "research/units/unit-01-limits-continuity.md#1.3 Estimating Limit Values from Graphs"
+  ]
+ },
  "orientation": {
-  "text": "A response that says a limit does not exist names why: sides that differ, values unbounded, or values oscillating. Stems give a graph and ask for the limit or the reason.",
+  "text": "A response saying a limit does not exist names why: sides differ, values are unbounded, or values oscillate.",
   "sources": [
    "BC-CON-01005",
    "research/units/unit-01-limits-continuity.md#1.3 Estimating Limit Values from Graphs"
@@ -122,7 +159,7 @@ Every non-text choice is [inferred], settled by the modality A/B.
    "id": "ki-1",
    "ek_id": "BC-EK-LIM-1C4",
    "depth": "core",
-   "text": "Three failure modes (BC-EK-LIM-1C4, ced:40): sides that differ, as |x|/x at 0 from each side; values unbounded, as 1/x^2 at 0; values oscillating, as sin(1/x) at 0. Each needs its mode named.",
+   "text": "Three failure modes: sides that differ, as |x|/x at 0; values unbounded, as 1/x^2 at 0; values oscillating, as sin(1/x) at 0. Each needs its mode named.",
    "notation": "does not exist",
    "quote": null,
    "sources": [
@@ -136,14 +173,26 @@ Every non-text choice is [inferred], settled by the modality A/B.
   {
    "id": "st-1",
    "archetype_id": "BC-QA-01001",
-   "cue": "A graph with breaks and the words or explain why a limit does not exist.",
-   "method": "First line: locate the input, then read each side.",
-   "rival": "One side reported as the two sided limit (BC-ERR-01002).",
+   "cue": "A graph with breaks, and explain why it does not exist.",
+   "method": "Locate the input, then read each side.",
+   "rival": "One side reported as the two sided limit.",
    "separating_feature": "The reason names which of the three modes applies.",
    "sources": [
-    "BC-QA-01001"
+    "BC-QA-01001",
+    "BC-ERR-01002"
    ],
-   "evidence_tag": "verified"
+   "evidence_tag": "verified",
+   "contrast": {
+    "this": {
+     "text": "f jumps at x = 2, from 1 to 6. Find the limit or explain why not.",
+     "archetype_id": "BC-QA-01001"
+    },
+    "not_this": {
+     "text": "Both sides of f head to an open circle at (2, 1). Find the limit.",
+     "why_not": "Both sides head to 1: the limit exists."
+    },
+    "feature": "Do both sides agree?"
+   }
   }
  ],
  "worked_examples": [
@@ -175,14 +224,14 @@ Every non-text choice is [inferred], settled by the modality A/B.
    "calculator_status": "no_calculator",
    "steps": [
     {
-     "cue": "Left of 5 the segment rises to (5, 4).",
-     "why": "There f(x) = 3x - 11.",
+     "cue": "Left branch.",
+     "why": "f(x) = 3x - 11.",
      "expr": "3*x - 11",
      "relation": "new"
     },
     {
-     "cue": "Read the left height.",
-     "why": "It heads to 4.",
+     "cue": "Left height.",
+     "why": "Heads to 4.",
      "expr": "4",
      "relation": "limit",
      "variable": "x",
@@ -190,14 +239,14 @@ Every non-text choice is [inferred], settled by the modality A/B.
      "dir": "-"
     },
     {
-     "cue": "Right of 5 the segment starts at (5, 0).",
-     "why": "There f(x) = 5 - x.",
+     "cue": "Right branch.",
+     "why": "f(x) = 5 - x.",
      "expr": "5 - x",
      "relation": "new"
     },
     {
-     "cue": "Read the right height.",
-     "why": "It heads to 0.",
+     "cue": "Right height.",
+     "why": "Heads to 0.",
      "expr": "0",
      "relation": "limit",
      "variable": "x",
@@ -205,8 +254,8 @@ Every non-text choice is [inferred], settled by the modality A/B.
      "dir": "+"
     },
     {
-     "cue": "The stem says explain why: name the mode.",
-     "why": "Sides differ, 4 and 0: no limit. The dot at 2 plays no part."
+     "cue": "Name the mode.",
+     "why": "Sides 4 and 0 differ: no limit. The dot plays no part."
     }
    ],
    "answer": {
@@ -238,7 +287,8 @@ Every non-text choice is [inferred], settled by the modality A/B.
    "sources": [
     "BC-ERR-01002",
     "BC-MIS-01002"
-   ]
+   ],
+   "fix_prompt": true
   },
   {
    "error_id": "BC-ERR-01020",
@@ -260,7 +310,8 @@ Every non-text choice is [inferred], settled by the modality A/B.
    "sources": [
     "BC-ERR-01020",
     "BC-MIS-01012"
-   ]
+   ],
+   "fix_prompt": true
   },
   {
    "error_id": "BC-ERR-01004",
@@ -278,26 +329,27 @@ Every non-text choice is [inferred], settled by the modality A/B.
    "possible_reason": null,
    "sources": [
     "BC-ERR-01004"
-   ]
+   ],
+   "fix_prompt": true
   }
  ],
  "representations": null,
  "prerequisite_bridges": [
   {
    "prq_id": "BC-PRQ-01003",
-   "text": "Piecewise rules: pick the branch whose condition holds. The failure: the wrong branch at a boundary."
+   "text": "Pick the branch whose condition holds. Failure: the wrong branch."
   },
   {
    "prq_id": "BC-PRQ-01006",
-   "text": "An absolute value splits into two branches. The failure: its two one sided limits treated as equal."
+   "text": "Absolute value has two branches. Failure: equal sides."
   },
   {
    "prq_id": "BC-PRQ-01009",
-   "text": "The sign of a quotient on each side of a zero of its denominator. The failure: one infinite limit written where the signs differ."
+   "text": "Quotient signs beside a zero denominator. Failure: one infinite limit."
   },
   {
    "prq_id": "BC-PRQ-01005",
-   "text": "Sine and cosine stay between -1 and 1. The failure: an oscillating factor treated as unbounded."
+   "text": "Sine and cosine stay in [-1, 1]. Failure: seen as unbounded."
   }
  ],
  "time": {
@@ -672,7 +724,7 @@ Every non-text choice is [inferred], settled by the modality A/B.
   "ex-1"
  ],
  "read_minutes": {
-  "full": 3.6,
+  "full": 3.55,
   "brief": 3.0
  },
  "word_count": {

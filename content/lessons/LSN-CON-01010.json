@@ -3,7 +3,7 @@
  "version": 1,
  "kind": "concept",
  "target_id": "BC-CON-01010",
- "status": "signed_off",
+ "status": "draft",
  "snapshot_digest": "a6a8ec9d3f59ab8f712e33d30cc22fc64bf2c478fbe7312e3e3118d319c6a42f",
  "source_digest": "e7c49c719576b4701f69dc68825c8d479d13da494ba04493c0778d0abad49cc1",
  "read_minutes": {
@@ -11,12 +11,47 @@
   "brief": 3.0
  },
  "word_count": {
-  "full": 496,
-  "brief": 400
+  "full": 483,
+  "brief": 387
  },
  "sections": [
   {
    "id": "LSN-CON-01010#s1",
+   "type": "prediction",
+   "bands": [
+    "low",
+    "mid"
+   ],
+   "skills": [
+    "BC-SKL-01032",
+    "BC-SKL-01033",
+    "BC-SKL-01034",
+    "BC-SKL-01035"
+   ],
+   "sources": [
+    "BC-CON-01010",
+    "research/units/unit-01-limits-continuity.md#1.8 Determining Limits Using the Squeeze Theorem"
+   ],
+   "evidence_tag": "inferred",
+   "stem": {
+    "text": "Predict. \\(f(x)=2+3(x-1)\\sin\\frac{1}{x-1}\\), and \\(\\sin\\frac{1}{x-1}\\) oscillates without a limit at 1. What is \\(\\lim_{x\\to1}f(x)\\)?",
+    "command_verb": "predict"
+   },
+   "format": "short_answer",
+   "answer_key": {
+    "form": "numeric",
+    "mathjson": 2
+   },
+   "resolution": {
+    "text": "The sine factor is bounded and \\(3(x-1)\\) vanishes, so f is trapped between bounds that both tend to 2."
+   },
+   "delivery": {
+    "mode": "text",
+    "reason": "rule 6"
+   }
+  },
+  {
+   "id": "LSN-CON-01010#s2",
    "type": "orientation",
    "bands": [
     "low",
@@ -33,7 +68,7 @@
     "research/units/unit-01-limits-continuity.md#1.8 Determining Limits Using the Squeeze Theorem"
    ],
    "evidence_tag": "inferred",
-   "text": "A response shows the trapped function between two bounds near the target, the limit of each bound, and the conclusion that the trapped function shares that limit. The inequality is either supplied or built from an oscillating factor.",
+   "text": "A response shows the trapped function between two bounds near the target, the limit of each bound, and the conclusion that the trapped function shares that limit.",
    "delivery": {
     "mode": "figure",
     "reason": "rule 3: BC-REP-02 on BC-SKL-01033 and BC-SKL-01035 (unit-01 README delivery map)",
@@ -105,7 +140,7 @@
    }
   },
   {
-   "id": "LSN-CON-01010#s2",
+   "id": "LSN-CON-01010#s3",
    "type": "key_ideas",
    "bands": [
     "low",
@@ -122,15 +157,11 @@
     "ced:45",
     "research/units/unit-01-limits-continuity.md#1.8 Determining Limits Using the Squeeze Theorem"
    ],
-   "evidence_tag": "verified",
+   "evidence_tag": "inferred",
    "ek_id": "BC-EK-LIM-1E2",
    "depth": "core",
-   "text": "If \\(g(x)\\le f(x)\\le h(x)\\) for all \\(x\\) near \\(c\\), except possibly at \\(c\\), and \\(g\\) and \\(h\\) both have limit \\(L\\) at \\(c\\), then \\(\\lim_{x\\to c}f(x)=L\\). The hypotheses are their own demand: the inequality is shown to hold near \\(c\\), and each bound's limit is taken. The usual case bounds an oscillating factor between \\(-1\\) and 1, then multiplies through by the vanishing factor.",
+   "text": "If \\(g(x)\\le f(x)\\le h(x)\\) near \\(c\\) and \\(g\\) and \\(h\\) both tend to \\(L\\), then \\(\\lim_{x\\to c}f(x)=L\\). The hypotheses are their own demand: the inequality is shown, and each bound's limit is taken. The usual case bounds an oscillating factor between \\(-1\\) and 1.",
    "notation": "squeeze theorem; the inequality written with the trapped function in the middle",
-   "quote": {
-    "text": "The limit of a function may be found by using the squeeze theorem.",
-    "source": "ced:45"
-   },
    "delivery": {
     "mode": "motion",
     "reason": "rule 2: a limit being taken, the bounds pinching toward the input; rule 3, BC-REP-02 on BC-SKL-01033 and BC-SKL-01035",
@@ -230,7 +261,7 @@
    }
   },
   {
-   "id": "LSN-CON-01010#s3",
+   "id": "LSN-CON-01010#s4",
    "type": "strategy",
    "bands": [
     "low",
@@ -243,17 +274,29 @@
     "BC-SKL-01035"
    ],
    "sources": [
-    "BC-QA-01005"
+    "BC-QA-01005",
+    "BC-ERR-01013"
    ],
    "evidence_tag": "verified",
    "archetype_id": "BC-QA-01005",
-   "cue": "A function trapped between two bounds, or an oscillating factor times a vanishing factor, with the limit asked.",
-   "method": "First line: bound the oscillating factor between fixed values.",
-   "rival": "Rival: substituting the target into the bounds instead of taking their limits (BC-ERR-01013).",
-   "separating_feature": "The oscillating factor has no limit of its own, so the product theorem has nothing to multiply."
+   "cue": "An oscillating factor times a vanishing factor.",
+   "method": "Bound the oscillating factor between fixed values.",
+   "rival": "Substituting the target into the bounds.",
+   "separating_feature": "The oscillating factor has no limit of its own.",
+   "contrast": {
+    "this": {
+     "text": "Find \\(\\lim_{x\\to0}x^2\\cos\\frac{1}{x}\\) and justify.",
+     "archetype_id": "BC-QA-01005"
+    },
+    "not_this": {
+     "text": "Find \\(\\lim_{x\\to0}x^2\\cos x\\).",
+     "why_not": "Each factor has its own limit, so the product theorem settles it."
+    },
+    "feature": "One factor has no limit of its own."
+   }
   },
   {
-   "id": "LSN-CON-01010#s4",
+   "id": "LSN-CON-01010#s5",
    "type": "worked_example",
    "bands": [
     "low",
@@ -412,6 +455,7 @@
     ]
    },
    "relation": "distinct",
+   "fix_prompt": true,
    "possible_reason": {
     "misconception_id": "BC-MIS-01008",
     "text": "handles the inequality as an equation"
@@ -449,6 +493,7 @@
     "expression": 2
    },
    "relation": "equivalent",
+   "fix_prompt": false,
    "possible_reason": {
     "misconception_id": "BC-MIS-01008",
     "text": "treats the bounding functions as things to evaluate at the target rather than as functions whose limits must agree"
@@ -488,6 +533,7 @@
     "expression": 0
    },
    "relation": "distinct",
+   "fix_prompt": true,
    "possible_reason": {
     "misconception_id": "BC-MIS-99009",
     "text": "recalls a theorem by its conclusion and applies it without establishing the conditions"
@@ -553,7 +599,7 @@
     "wave": "sin",
     "naming": "open"
    },
-   "completes": "LSN-CON-01010#s4",
+   "completes": "LSN-CON-01010#s5",
    "stem": {
     "text": "For \\(x\\ne1\\), \\(2-3|x-1|\\le f(x)\\le2+3|x-1|\\). Find \\(\\lim_{x\\to1}f(x)\\).",
     "command_verb": "find"
@@ -752,18 +798,18 @@
   }
  ],
  "refresher": [
-  "LSN-CON-01010#s2",
+  "LSN-CON-01010#s3",
   "LSN-CON-01010#err-BC-ERR-01012",
   "LSN-CON-01010#err-BC-ERR-01013",
   "LSN-CON-01010#err-BC-ERR-99008",
-  "LSN-CON-01010#s4"
+  "LSN-CON-01010#s5"
  ],
  "provenance": {
   "author": "tools/lesson_transcribe.py",
-  "prompt_version": "generator/lesson_v1",
+  "prompt_version": "generator/lesson_v2",
   "design_path": "docs/lessons/unit-01/LSN-CON-01010.md",
-  "signed_off_by": "claude-opus-5-5",
-  "signed_off_at": "2026-09-29",
+  "signed_off_by": null,
+  "signed_off_at": null,
   "not_human": true
  }
 }

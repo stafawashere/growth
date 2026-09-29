@@ -9,6 +9,10 @@ purpose: Authoring spec for the concept lesson on BC-CON-01019, the Intermediate
 
 Concept BC-CON-01019 (skills BC-SKL-01064 to BC-SKL-01068), topic 1.16 of Unit 1 (BC-TOP-0116), loaded by one archetype, BC-QA-01011 (primary), which lists BC-PT-99015 and BC-PT-99016. Official examples BC-FRQ-2014-Q4-B, BC-FRQ-2022-Q4-B (sg-22:14), BC-FRQ-2025-Q3-B (sg-25:12), BC-FRQ-2026-Q1-D (sg-26:5).
 
+## Prediction
+
+Served first, both bands, on ex-1's own numbers (BC-QA-01011: inputs 1, 3, 5, 8, outputs \(-4\), 2, 7, 1, target 0). Form `mcq`, three options, key "At least one". The question asks how many inputs the theorem guarantees, so the student commits to the concept's core claim (existence, not uniqueness) before the key idea states it. Source: BC-CON-01019 and the topic's paragraph on the conclusion (research/units/unit-01-limits-continuity.md#1.16 Working with the Intermediate Value Theorem (IVT)). The resolution says what continuity and the straddle give and that the values do not fix a count; it passes no verdict. Delivery: text.
+
 ## Orientation
 
 Served text, from BC-CON-01019 `description_plain` and the topic's Assessment behaviour paragraph (research/units/unit-01-limits-continuity.md#1.16 Working with the Intermediate Value Theorem (IVT)): a response derives continuity from differentiability, shows the target strictly between two function values, and answers yes; the conclusion is at least one input in the open interval.
@@ -17,23 +21,23 @@ Served text, from BC-CON-01019 `description_plain` and the topic's Assessment be
 
 One BC-EK maps to all five skills, BC-EK-FUN-1A1 (ced:53), so one core block, both bands.
 
-- ki-1 (core), BC-EK-FUN-1A1. Paraphrase of the topic's three paragraphs: two hypotheses, continuity on the closed interval and the target between the endpoint values; the conclusion is existence of at least one input, not uniqueness and not a location. Anchor quote (11 words) from ced:53. Notation line: Intermediate Value Theorem.
+- ki-1 (core), BC-EK-FUN-1A1. Paraphrase of the topic's three paragraphs: two hypotheses, continuity on the closed interval and the target between the endpoint values; the conclusion is existence of at least one input, not uniqueness and not a location. No anchor quote is served, because the brief form is at its word cap. Notation line: Intermediate Value Theorem.
 
 ## Recognition
 
 - BC-QA-01011 (family ivt-existence, one FRQ part, no calculator; research/question-analysis/question-archetypes.md#BC-QA-01011 Existence of a solution argued from the Intermediate Value Theorem): `typical_wording` "Must there be a value in the stated open interval at which the function equals the given number? Justify your answer"; `common_givens` a table of selected values of a differentiable function, a table of values of the derivative of a twice differentiable function, a difference of two rate functions, a target value and an open interval; `asked_to_produce` a statement that the function is continuous because it is differentiable, an inequality placing the target between two attained values, and a yes with justification. The signal is "must there be" (research/scoring/command-verbs.md#BC-CV-19 Must there be a value, or is there a time, such that) with a target value and a differentiable function.
 
-What says "not this concept": a target that is a slope or an average rate (the Mean Value Theorem, where sg-23:3 refuses an IVT appeal; research/scoring/justification-requirements.md#Theorem hypotheses); "on which intervals is f continuous" (BC-CON-01014, which supplies the hypothesis here).
+What says "not this concept": a target that is a slope or an average rate (the Mean Value Theorem, where sg-23:3 refuses an IVT appeal; research/scoring/justification-requirements.md#Theorem hypotheses). The contrast pair's near miss comes from there: the same table and interval with a target on \(f'\) instead of \(f\), which the archetype's distractor "naming a different theorem" names; "on which intervals is f continuous" (BC-CON-01014, which supplies the hypothesis here).
 
 ## Method choice
 
-- st-1, BC-QA-01011, both bands. Cue, from `asked_to_produce` and `common_givens`: a differentiable function tabulated, a target and an open interval, and the stem asks whether some input must give the target. Method, `expected_solution_path[0]`: state that the function is continuous and give the reason. First written line: "\(f\) is differentiable, so \(f\) is continuous on \([a,b]\)." Rival, `wrong_approaches`: asserting continuity without deriving it from differentiability (BC-ERR-01025). Separating feature: the word "because" and the property it cites.
+- st-1, BC-QA-01011, both bands. Cue, from `asked_to_produce` and `common_givens`: a differentiable function tabulated, a target and an open interval, and the stem asks whether some input must give the target. Method, `expected_solution_path[0]`: state that the function is continuous and give the reason: "\(f\) is differentiable, so \(f\) is continuous on \([a,b]\)." Rival, `wrong_approaches`: asserting continuity without deriving it from differentiability (BC-ERR-01025). Separating feature: the word "because" and the property it cites. The block carries the contrast pair: `this` asks whether \(f(c)=1\) must occur on \((2,6)\) for a differentiable \(f\) with \(f(2)=-3\) and \(f(6)=5\); `not_this` keeps those givens and asks for \(f'(c)=2\), which is the Mean Value Theorem (the average rate is \(\frac{5-(-3)}{6-2}=2\)); the feature is that the target is a value of \(f\), not a slope.
 
 ## Solution path
 
 - ex-1, BC-QA-01011, both bands, no calculator. Draw: inputs 1, 3, 5, 8; outputs \(-4\), 2, 7, 1; target 0; pair outer. The constraint for outer holds, \((-4-0)(1-0)<0\). Steps follow `expected_solution_path`: continuity with its reason (no value, BC-PT-99015), the straddle product (valued), the inequality \(-4<0<1\) (no value, BC-PT-99016), the conclusion (no value). The answer is a statement, so the checker confirms the straddle product only.
 
-Every step is written: each carries a point (docs/lessons/unit-01/README.md, section 5).
+Every step is written: each carries a point (docs/lessons/unit-01/README.md, section 5). Only one example is designed, so nothing is faded.
 
 ## Scoring
 
@@ -49,8 +53,10 @@ Point losses the scoring research names: hypotheses not verified, BC-ERR-99008 (
 
 Six active errors meet the skills; the first four in the bundle's order are served (BC-ERR-01028, wrong theorem named, and BC-ERR-99008 fall outside the cap of 4; the scoring line above covers the wrong theorem). Low band all four, mid band the first two.
 
-- err-BC-ERR-01016 (BC-MIS-01010, BC-MIS-01009): the definition restated with no values or interval, \(\lim_{x\to c}f(x)-f(c)\), against "differentiable: continuous on \([1,8]\)", the interval. Distinct.
-- err-BC-ERR-01025 (BC-MIS-01015, BC-MIS-01010): lines written {continuous} against {differentiable, continuous}. Distinct.
+All four blocks are `distinct`, so each is a fix prompt: the student writes the right step before it appears.
+
+- err-BC-ERR-01016 (BC-MIS-01010, BC-MIS-01009), possible reason left null for the word cap: the definition restated with no values or interval, \(\lim_{x\to c}f(x)-f(c)\), against "differentiable: continuous on \([1,8]\)", the interval. Distinct.
+- err-BC-ERR-01025 (BC-MIS-01015, BC-MIS-01010), possible reason left null for the word cap: lines written {continuous} against {differentiable, continuous}. Distinct.
 - err-BC-ERR-01026 (BC-MIS-01016, BC-MIS-01015): \(f(3)=2\) and \(f(8)=1\), both above 0, against \(f(1)=-4<0<1=f(8)\). Distinct.
 - err-BC-ERR-01027 (BC-MIS-01016, BC-MIS-01010): "exactly one \(c\)", a single point, against "at least one \(c\)" somewhere in \((1,8)\). Distinct.
 
@@ -80,10 +86,12 @@ No draw equals a published BC-QA-01011 `parameter_draw`.
 - ki-1: table. Rule 4: the same table with the straddling pair marked (docs/lessons/unit-01/README.md, section 6).
 - ex-1 and the four error blocks: step_reveal. Rule 1.
 
+Figure presence: the two table blocks are drawn blocks, so no `no_figure_reason` is needed.
+
 ## Band plan
 
-- Low (full): orientation, ki-1, st-1, ex-1 with its scoring lines, the four error blocks, chk-1, chk-2, chk-3, the two bridges. 606 words, 4.1 minutes (cap 900 and 6).
-- Mid (brief): orientation, ki-1, st-1, ex-1 with its scoring lines, err-01016, err-01025, chk-1, chk-2, the two bridges. 450 words, 3.0 minutes (cap 450 and 3).
+- Low (full): pr-1, orientation, the two bridges when gated, ki-1, st-1 with its contrast pair, ex-1 with its scoring lines, chk-1, the four error blocks, chk-2, chk-3. 605 words, 4.1 minutes (cap 900 and 6).
+- Mid (brief): pr-1, orientation, the two bridges when gated, ki-1, st-1 with its contrast pair, ex-1 with its scoring lines, chk-1, err-01016, err-01025, chk-2. 449 words, 3.0 minutes (cap 450 and 3). The brief sits at its cap, so no anchor quote is served and the two mid error blocks carry no possible reason.
 - Refresher: ki-1, err-BC-ERR-01016, err-BC-ERR-01025, err-BC-ERR-01026, err-BC-ERR-01027, ex-1.
 
 ## Sources
@@ -110,8 +118,20 @@ No draw equals a published BC-QA-01011 `parameter_draw`.
  "target_id": "BC-CON-01019",
  "unit": "01",
  "skills": ["BC-SKL-01064", "BC-SKL-01065", "BC-SKL-01066", "BC-SKL-01067", "BC-SKL-01068"],
+ "prediction": {
+  "id": "pr-1",
+  "stem": {"text": "\\(f\\) is differentiable, \\(f(1)=-4\\), \\(f(3)=2\\), \\(f(5)=7\\), \\(f(8)=1\\). Predict how many \\(c\\) in \\((1,8)\\) must have \\(f(c)=0\\).", "command_verb": "predict"},
+  "format": "mcq",
+  "options": [
+   {"id": "A", "label": "Exactly one", "is_key": false},
+   {"id": "B", "label": "At least one", "is_key": true},
+   {"id": "C", "label": "Possibly none", "is_key": false}
+  ],
+  "resolution": "Continuity follows from differentiability and 0 lies between \\(-4\\) and \\(1\\), so at least one input works.",
+  "sources": ["BC-CON-01019", "research/units/unit-01-limits-continuity.md#1.16 Working with the Intermediate Value Theorem (IVT)"]
+ },
  "orientation": {
-  "text": "A response derives continuity from differentiability, shows the target strictly between two function values, and answers yes.",
+  "text": "A response derives continuity, shows the target between two values, and answers yes.",
   "sources": ["BC-CON-01019", "research/units/unit-01-limits-continuity.md#1.16 Working with the Intermediate Value Theorem (IVT)"]
  },
  "key_ideas": [
@@ -119,9 +139,9 @@ No draw equals a published BC-QA-01011 `parameter_draw`.
    "id": "ki-1",
    "ek_id": "BC-EK-FUN-1A1",
    "depth": "core",
-   "text": "Hypotheses: continuity on the closed interval, and the target between two function values (BC-EK-FUN-1A1, ced:53). Conclusion: at least one input, not exactly one.",
+   "text": "Hypotheses: continuity on \\([a,b]\\), target between the endpoint values. Conclusion: at least one input, not exactly one.",
    "notation": "Intermediate Value Theorem",
-   "quote": {"text": "there is at least one number c between a and b", "source": "ced:53"},
+   "quote": null,
    "sources": ["BC-EK-FUN-1A1", "ced:53", "research/units/unit-01-limits-continuity.md#1.16 Working with the Intermediate Value Theorem (IVT)"]
   }
  ],
@@ -129,11 +149,16 @@ No draw equals a published BC-QA-01011 `parameter_draw`.
   {
    "id": "st-1",
    "archetype_id": "BC-QA-01011",
-   "cue": "A tabulated differentiable function, a target, an open interval: must some input give it?",
-   "method": "First written line: \\(f\\) is differentiable, so continuous.",
-   "rival": "Continuity asserted without a reason (BC-ERR-01025).",
-   "separating_feature": "The word because, and the property it cites.",
-   "sources": ["BC-QA-01011"],
+   "cue": "Table, target, interval: must one exist?",
+   "method": "\\(f\\) is differentiable, so continuous.",
+   "rival": "Continuity with no reason.",
+   "separating_feature": "Because, and the property it cites.",
+   "contrast": {
+    "this": {"text": "\\(f\\) differentiable; \\(f(2)=-3\\), \\(f(6)=5\\). Must \\(f(c)=1\\) on \\((2,6)\\)?", "archetype_id": "BC-QA-01011"},
+    "not_this": {"text": "\\(f\\) differentiable; \\(f(2)=-3\\), \\(f(6)=5\\). Must \\(f'(c)=2\\) on \\((2,6)\\)?", "why_not": "A slope target calls for the Mean Value Theorem."},
+    "feature": "A value of \\(f\\), not a slope."
+   },
+   "sources": ["BC-QA-01011", "BC-ERR-01025"],
    "evidence_tag": "verified"
   }
  ],
@@ -146,10 +171,10 @@ No draw equals a published BC-QA-01011 `parameter_draw`.
    "problem": {"text": "\\(f\\) differentiable; \\(f(1)=-4\\), \\(f(3)=2\\), \\(f(5)=7\\), \\(f(8)=1\\). Must \\(f(c)=0\\) on \\((1,8)\\)? Justify.", "command_verb": "justify"},
    "calculator_status": "no_calculator",
    "steps": [
-    {"cue": "\"Must there be\" with a target.", "why": "Differentiable, so continuous on \\([1,8]\\).", "point_type_id": "BC-PT-99015"},
-    {"cue": "Two values on opposite sides of 0.", "why": "\\(f(1)\\) and \\(f(8)\\) differ in sign.", "expr": "(-4 - 0)*(1 - 0)", "relation": "new"},
-    {"cue": "The product is negative.", "why": "Write \\(-4<0<1\\) and yes.", "point_type_id": "BC-PT-99016"},
-    {"cue": "Existence only.", "why": "At least one \\(c\\) in \\((1,8)\\)."}
+    {"cue": "\"Must there be\" and a target.", "why": "Differentiable, so continuous on \\([1,8]\\).", "point_type_id": "BC-PT-99015"},
+    {"cue": "Opposite sides of 0.", "why": "\\(f(1)\\) and \\(f(8)\\) differ in sign.", "expr": "(-4 - 0)*(1 - 0)", "relation": "new"},
+    {"cue": "Negative product.", "why": "Write \\(-4<0<1\\), then yes.", "point_type_id": "BC-PT-99016"},
+    {"cue": "Existence only.", "why": "At least one \\(c\\)."}
    ],
    "answer": {"form": "statement", "expr": "Yes: at least one c in (1, 8) with f(c) = 0"}
   }
@@ -167,17 +192,19 @@ No draw equals a published BC-QA-01011 `parameter_draw`.
    "wrong_step": {"text": "By definition: \\(\\lim_{x\\to c}f(x)=f(c)\\).", "expr": "Limit(f(x), x, c) - f(c)"},
    "right_step": {"text": "Differentiable: continuous on \\([1,8]\\).", "expr": "Interval(1, 8)"},
    "relation": "distinct",
-   "possible_reason": {"misconception_id": "BC-MIS-01010", "text": "treats naming the definition or the theorem as the argument"},
+   "fix_prompt": true,
+   "possible_reason": null,
    "sources": ["BC-ERR-01016", "BC-MIS-01010"]
   },
   {
    "error_id": "BC-ERR-01025",
    "observed_behavior": "The response states that the function is continuous but gives no basis for the statement.",
    "scoring_consequence": "The point for the continuity hypothesis is not earned by a bare statement that the function is continuous; the response must say that it is continuous because it is differentiable or give an equivalent reason (sg-25:12).",
-   "wrong_step": {"text": "Written: continuous.", "expr": "FiniteSet(continuous)"},
-   "right_step": {"text": "Written: differentiable, so continuous.", "expr": "FiniteSet(differentiable, continuous)"},
+   "wrong_step": {"text": "Continuous.", "expr": "FiniteSet(continuous)"},
+   "right_step": {"text": "Differentiable, so continuous.", "expr": "FiniteSet(differentiable, continuous)"},
    "relation": "distinct",
-   "possible_reason": {"misconception_id": "BC-MIS-01015", "text": "treats the stated setting as discharging the hypotheses of a theorem"},
+   "fix_prompt": true,
+   "possible_reason": null,
    "sources": ["BC-ERR-01025", "BC-MIS-01015"]
   },
   {
@@ -187,6 +214,7 @@ No draw equals a published BC-QA-01011 `parameter_draw`.
    "wrong_step": {"text": "\\(f(3)=2\\), \\(f(8)=1\\): both above 0.", "expr": "(2 - 0)*(1 - 0)"},
    "right_step": {"text": "\\(f(1)=-4<0<1=f(8)\\).", "expr": "(-4 - 0)*(1 - 0)"},
    "relation": "distinct",
+   "fix_prompt": true,
    "possible_reason": {"misconception_id": "BC-MIS-01016", "text": "applies it without checking that the target lies between the endpoint values"},
    "sources": ["BC-ERR-01026", "BC-MIS-01016"]
   },
@@ -197,14 +225,15 @@ No draw equals a published BC-QA-01011 `parameter_draw`.
    "wrong_step": {"text": "Exactly one \\(c\\): a single point.", "expr": "FiniteSet(c)"},
    "right_step": {"text": "At least one \\(c\\), somewhere in \\((1,8)\\).", "expr": "Interval.open(1, 8)"},
    "relation": "distinct",
+   "fix_prompt": true,
    "possible_reason": {"misconception_id": "BC-MIS-01016", "text": "reads the conclusion of the Intermediate Value Theorem as producing a unique input"},
    "sources": ["BC-ERR-01027", "BC-MIS-01016"]
   }
  ],
  "representations": null,
  "prerequisite_bridges": [
-  {"prq_id": "BC-PRQ-01008", "text": "Domain first. Slip: continuity claimed outside it."},
-  {"prq_id": "BC-PRQ-01010", "text": "Open against closed. Slip: a closed interval where the theorem gives an interior point."}
+  {"prq_id": "BC-PRQ-01008", "text": "Domain first. Slip: continuity outside it."},
+  {"prq_id": "BC-PRQ-01010", "text": "Open against closed. Slip: closed for the point."}
  ],
  "time": {"exam_part": "II-B", "budget_minutes": 15.0, "source": "research/exam/exam-structure.md#Section and part layout", "written_steps": {"ex-1": [1, 2, 3, 4]}, "skipped_steps": {"ex-1": []}},
  "checks": [
@@ -282,7 +311,7 @@ No draw equals a published BC-QA-01011 `parameter_draw`.
  ],
  "refresher": ["ki-1", "err-BC-ERR-01016", "err-BC-ERR-01025", "err-BC-ERR-01026", "err-BC-ERR-01027", "ex-1"],
  "read_minutes": {"full": 4.1, "brief": 3.0},
- "word_count": {"full": 606, "brief": 450},
+ "word_count": {"full": 605, "brief": 449},
  "research_lines": [
   {"file": "research/scoring/justification-requirements.md", "line": "The hypothesis point is earned only by deriving continuity rather than asserting it."}
  ],

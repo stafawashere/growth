@@ -9,6 +9,10 @@ purpose: Authoring spec for the concept lesson on BC-CON-01017, limits at infini
 
 Concept BC-CON-01017 (skills BC-SKL-01058, BC-SKL-01059, BC-SKL-01060, BC-SKL-01061, BC-SKL-01063), topic 1.15 of Unit 1 (BC-TOP-0115), loaded by one archetype, BC-QA-01010 (primary), which lists BC-PT-99054 and BC-PT-99004. Official examples BC-FRQ-2025-Q1-C (sg-25:4) and BC-MCQ-PE2012-021.
 
+## Prediction
+
+Served first, both bands, on ex-1's own limit, \(\lim_{x\to-\infty}\frac{\sqrt{4x^2+5}}{3x+1}\). Form `mcq`, three value options, key "Negative \(\frac23\)". The three values are the ones the sign of the root and the ratio of the coefficients produce, so the student commits to the concept's core claim, that the dominant power under a root carries the sign of the end, before it is stated. Source: BC-CON-01017 and the topic's Limits at infinity paragraph (research/units/unit-01-limits-continuity.md#1.15 Connecting Limits at Infinity and Horizontal Asymptotes). The resolution shows the division and the sign of \(\frac{|x|}{x}\) and passes no verdict. Delivery: text.
+
 ## Orientation
 
 Served text, from BC-CON-01017 `description_plain` and the topic's Assessment behaviour paragraph (research/units/unit-01-limits-continuity.md#1.15 Connecting Limits at Infinity and Horizontal Asymptotes): a response writes the limit with the variable increasing or decreasing without bound, for the function the stem names, then its value; a finite value is a horizontal asymptote.
@@ -17,23 +21,23 @@ Served text, from BC-CON-01017 `description_plain` and the topic's Assessment be
 
 Two BC-EK map to the skills, both on ced:52: BC-EK-LIM-2D3 (all five skills except BC-SKL-01060) and BC-EK-LIM-2D4 (BC-SKL-01058, 01059, 01060, 01063). Two core blocks, both bands.
 
-- ki-1 (core), BC-EK-LIM-2D3. Paraphrase of the Limits at infinity and Method paragraphs: divide by the dominant power; under a square root the dominant power carries the sign of the end examined, so \(\sqrt{x^2}=|x|\), which is \(-x\) as \(x\to-\infty\). Anchor quote (13 words) from ced:52. Notation line: horizontal asymptote; end behaviour.
-- ki-2 (core), BC-EK-LIM-2D4. Paraphrase of the Horizontal asymptotes paragraph: a finite limit \(L\) at either end gives \(y=L\), and the two ends are checked separately. Anchor quote (6 words) from ced:52.
+- ki-1 (core), BC-EK-LIM-2D3. Paraphrase of the Limits at infinity and Method paragraphs: divide by the dominant power; under a square root the dominant power carries the sign of the end examined, so \(\sqrt{x^2}=|x|\), which is \(-x\) as \(x\to-\infty\). No anchor quote is served, because the brief form needs the room for the prediction and the contrast pair. Notation line: horizontal asymptote; end behaviour.
+- ki-2 (core), BC-EK-LIM-2D4. Paraphrase of the Horizontal asymptotes paragraph: a finite limit \(L\) at either end gives \(y=L\), and the two ends are checked separately. No anchor quote is served, for the same reason. Both key ideas stay core.
 
 ## Recognition
 
 - BC-QA-01010 (family end-behaviour-limit, one FRQ part, calculator either; research/question-analysis/question-archetypes.md#BC-QA-01010 End behaviour described by a limit at infinity): `typical_wording` "Write a limit expression that describes the long run behaviour of the given quantity and evaluate it"; `common_givens` a model function in a context, a formula for the rate of change of the model, candidate functions for a stated horizontal asymptote; `asked_to_produce` a limit expression for the end behaviour and its value. The signals are "long run", "end behaviour", "horizontal asymptote", or a variable "increasing without bound". In BC-FRQ-2025-Q1-C the stem names the rate, and the value point goes only to the rate's limit (sg-25:4).
 
-What says "not this concept": the infinity symbol in the value with a finite input under the arrow (BC-CON-01016, the BC-MIS-01018 probe); a quotient of two growing quantities compared (BC-CON-01018, in the same topic).
+What says "not this concept": the infinity symbol in the value with a finite input under the arrow (BC-CON-01016, the BC-MIS-01018 probe). The contrast pair's near miss comes from there: a one sided limit at \(-2\) of a rational rule, where the value, not the input, is infinite; a quotient of two growing quantities compared (BC-CON-01018, in the same topic).
 
 ## Method choice
 
-- st-1, BC-QA-01010, both bands. Cue, from `asked_to_produce` and `common_givens`: a model or rule, and the stem asks for a limit expression for long run behaviour and its value. Method, `expected_solution_path[0]`: identify the function whose end behaviour is requested, then write the limit with the variable increasing without bound. Rival, `wrong_approaches`: substituting infinity into the expression as a number (BC-ERR-01021). Separating feature: the infinity symbol sits under the arrow and never inside the expression.
+- st-1, BC-QA-01010, both bands. Cue, from `asked_to_produce` and `common_givens`: a model or rule, and the stem asks for a limit expression for long run behaviour and its value. Method, `expected_solution_path[0]`: identify the function whose end behaviour is requested, then write the limit with the variable increasing without bound (no leading label is served). Rival, `wrong_approaches`: substituting infinity into the expression as a number (BC-ERR-01021). Separating feature: the infinity symbol sits under the arrow and never inside the expression. The block carries the contrast pair: `this` asks for a limit at \(-\infty\) of a radical quotient; `not_this` asks for a one sided limit at \(-2\) of a rational rule; the feature is where the infinity sits.
 
 ## Solution path
 
 - ex-1, BC-QA-01010, both bands, no calculator. Draw: root_coef 2, linear_coef 3, linear_const 1, inner_const 5, radical_place numerator, giving \(\lim_{x\to-\infty}\frac{\sqrt{4x^2+5}}{3x+1}\). Constraints hold (\(3\ne2\), \(3\ne4\)). Chain: the expression (new, tagged BC-PT-99054), the form with \(|x|\) factored out (equivalent), the value \(-\frac23\) (limit at \(-\infty\)). A fluent solver writes all three lines; the value line is tagged BC-PT-99004.
-- ex-2, BC-QA-01010, low band, no calculator. A contextual draw outside `parameter_spec`: amount \(A(t)=\frac{6t}{2t+1}\), stem asks for the long run rate. Chain: \(A\) (new), \(A'(t)\) (differentiate, tagged BC-PT-99054), 0 (limit at \(\infty\), tagged BC-PT-99004). The spec has no contextual or rate parameter, so the draw carries its own keys [inferred].
+- ex-2, BC-QA-01010, low band, no calculator, faded from step 3 (`fade_from: 3`): the student is shown \(A(t)\) and its derivative and writes the limit value, then sees the withheld step. The fade falls there because the two shown steps carry the choice the example teaches (the rate names \(A'\)) and the withheld step is the value line that ex-1 has already modelled. A contextual draw outside `parameter_spec`: amount \(A(t)=\frac{6t}{2t+1}\), stem asks for the long run rate. Chain: \(A\) (new), \(A'(t)\) (differentiate, tagged BC-PT-99054), 0 (limit at \(\infty\), tagged BC-PT-99004). The spec has no contextual or rate parameter, so the draw carries its own keys [inferred].
 
 ## Scoring
 
@@ -47,7 +51,7 @@ Point losses the scoring research names for this shape: limit notation introduce
 
 ## Traps
 
-Five active errors meet the skills; the first four in the bundle's order are served (BC-ERR-01024, sign under a radical at negative infinity, falls fifth and is carried by ki-1 instead). Low band all four, mid band the first two.
+All four served blocks are `distinct`, so each is a fix prompt: the student writes the right step before it appears. Five active errors meet the skills; the first four in the bundle's order are served (BC-ERR-01024, sign under a radical at negative infinity, falls fifth and is carried by ki-1 instead). Low band all four, mid band the first two.
 
 - err-BC-ERR-01022 (BC-MIS-01014, BC-MIS-01018), on ex-2: wrong \(\lim A=3\), right \(\lim A'=0\). Distinct.
 - err-BC-ERR-01023 (BC-MIS-99008, BC-MIS-01005), on ex-1: wrong \(\frac43\) (leading coefficients 4 and 3), right \(-\frac23\). Distinct. Possible reason null.
@@ -81,12 +85,14 @@ No draw equals a published BC-QA-01010 `parameter_draw`.
 - ki-2: figure. Rule 3: the two ends of one graph with different asymptotes.
 - ex-1, ex-2 and the four error blocks: step_reveal. Rule 1.
 
+Figure presence: three drawn blocks (two figures and a motion), so no `no_figure_reason` is needed.
+
 Every non-text choice is [inferred], settled by the modality A/B.
 
 ## Band plan
 
-- Low (full): orientation, ki-1, ki-2, st-1, ex-1 with its scoring lines, the four error blocks, chk-1, chk-2, chk-3, ex-2 with its scoring lines, the two bridges. 746 words, 5.0 minutes (cap 900 and 6).
-- Mid (brief): orientation, ki-1, ki-2, st-1, ex-1 with its scoring lines, err-01022, err-01023, chk-1, chk-2, the two bridges. 449 words, 3.0 minutes (cap 450 and 3).
+- Low (full): pr-1, orientation, the two bridges when gated, ki-1, ki-2, st-1 with its contrast pair, ex-1 with its scoring lines, chk-1, the four error blocks, ex-2 faded from step 3 with its scoring lines, chk-2, chk-3. 739 words, 5.0 minutes (cap 900 and 6).
+- Mid (brief): pr-1, orientation, the two bridges when gated, ki-1, ki-2, st-1 with its contrast pair, ex-1 with its scoring lines, chk-1, err-01022, err-01023, chk-2. 442 words, 3.0 minutes (cap 450 and 3). The brief sits near its cap, so no anchor quote is served.
 - Refresher: ki-1, ki-2, err-BC-ERR-01022, err-BC-ERR-01023, err-BC-ERR-01033, err-BC-ERR-01021, ex-1.
 
 ## Sources
@@ -115,8 +121,20 @@ Every non-text choice is [inferred], settled by the modality A/B.
  "target_id": "BC-CON-01017",
  "unit": "01",
  "skills": ["BC-SKL-01058", "BC-SKL-01059", "BC-SKL-01060", "BC-SKL-01061", "BC-SKL-01063"],
+ "prediction": {
+  "id": "pr-1",
+  "stem": {"text": "Predict \\(\\lim_{x\\to-\\infty}\\frac{\\sqrt{4x^2+5}}{3x+1}\\).", "command_verb": "predict"},
+  "format": "mcq",
+  "options": [
+   {"id": "A", "label": "Positive \\(\\frac23\\)", "is_key": false},
+   {"id": "B", "label": "Negative \\(\\frac23\\)", "is_key": true},
+   {"id": "C", "label": "\\(\\frac43\\)", "is_key": false}
+  ],
+  "resolution": "Dividing by the dominant power leaves \\(\\frac{|x|}{x}\\) times \\(\\frac23\\), and \\(\\frac{|x|}{x}=-1\\) when \\(x<0\\), so the limit is \\(-\\frac23\\).",
+  "sources": ["BC-CON-01017", "research/units/unit-01-limits-continuity.md#1.15 Connecting Limits at Infinity and Horizontal Asymptotes"]
+ },
  "orientation": {
-  "text": "A response writes the limit with the variable growing without bound, for the function the stem names, then its value. A finite value is a horizontal asymptote.",
+  "text": "A response writes the limit as the variable grows without bound, for the function the stem names, then its value. A finite value is a horizontal asymptote.",
   "sources": ["BC-CON-01017", "research/units/unit-01-limits-continuity.md#1.15 Connecting Limits at Infinity and Horizontal Asymptotes"]
  },
  "key_ideas": [
@@ -124,18 +142,18 @@ Every non-text choice is [inferred], settled by the modality A/B.
    "id": "ki-1",
    "ek_id": "BC-EK-LIM-2D3",
    "depth": "core",
-   "text": "Divide by the dominant power (BC-EK-LIM-2D3, ced:52). Under a square root it carries the sign of the end: \\(\\sqrt{x^2}=|x|\\), which is \\(-x\\) as \\(x\\to-\\infty\\).",
+   "text": "Divide by the dominant power. Under a square root it carries the sign of the end: \\(\\sqrt{x^2}=|x|\\), which is \\(-x\\) as \\(x\\to-\\infty\\).",
    "notation": "horizontal asymptote; end behaviour",
-   "quote": {"text": "The concept of a limit can be extended to include limits at infinity.", "source": "ced:52"},
+   "quote": null,
    "sources": ["BC-EK-LIM-2D3", "ced:52", "research/units/unit-01-limits-continuity.md#1.15 Connecting Limits at Infinity and Horizontal Asymptotes"]
   },
   {
    "id": "ki-2",
    "ek_id": "BC-EK-LIM-2D4",
    "depth": "core",
-   "text": "A finite limit \\(L\\) at either end gives the horizontal asymptote \\(y=L\\) (BC-EK-LIM-2D4, ced:52). Each end is checked on its own.",
+   "text": "A finite limit \\(L\\) at either end gives the horizontal asymptote \\(y=L\\). Each end is checked on its own.",
    "notation": "",
-   "quote": {"text": "Limits at infinity describe end behavior.", "source": "ced:52"},
+   "quote": null,
    "sources": ["BC-EK-LIM-2D4", "ced:52", "research/units/unit-01-limits-continuity.md#1.15 Connecting Limits at Infinity and Horizontal Asymptotes"]
   }
  ],
@@ -143,11 +161,16 @@ Every non-text choice is [inferred], settled by the modality A/B.
   {
    "id": "st-1",
    "archetype_id": "BC-QA-01010",
-   "cue": "A model or rule, and the stem asks for a limit expression for long run behaviour and its value.",
-   "method": "First written line: the limit of the named function as the variable grows without bound.",
-   "rival": "Substituting infinity into the expression as a number (BC-ERR-01021).",
-   "separating_feature": "Infinity sits under the arrow, never inside the expression.",
-   "sources": ["BC-QA-01010"],
+   "cue": "A rule; asks for long run behaviour and its value.",
+   "method": "The limit of the named function as the variable grows without bound.",
+   "rival": "Substituting infinity into the expression as a number.",
+   "separating_feature": "Infinity under the arrow, never inside.",
+   "contrast": {
+    "this": {"text": "Find \\(\\lim_{x\\to-\\infty}\\frac{\\sqrt{9x^2+2}}{5x-4}\\).", "archetype_id": "BC-QA-01010"},
+    "not_this": {"text": "Find \\(\\lim_{x\\to-2^+}\\frac{3x}{x+2}\\).", "why_not": "The input is finite and the value infinite: a vertical asymptote."},
+    "feature": "Infinity under the arrow, not in the value."
+   },
+   "sources": ["BC-QA-01010", "BC-ERR-01021"],
    "evidence_tag": "verified"
   }
  ],
@@ -160,8 +183,8 @@ Every non-text choice is [inferred], settled by the modality A/B.
    "problem": {"text": "Find \\(\\lim_{x\\to-\\infty}\\frac{\\sqrt{4x^2+5}}{3x+1}\\).", "command_verb": "find"},
    "calculator_status": "no_calculator",
    "steps": [
-    {"cue": "The arrow points to \\(-\\infty\\).", "why": "The limit is written first; it is the expression point.", "expr": "sqrt(4*x**2+5)/(3*x+1)", "relation": "new", "point_type_id": "BC-PT-99054"},
-    {"cue": "The dominant power is \\(x\\); under the root it is \\(|x|\\).", "why": "\\(\\sqrt{x^2}=|x|\\).", "expr": "Abs(x)*sqrt(4+5/x**2)/(x*(3+1/x))", "relation": "equivalent"},
+    {"cue": "The arrow points to \\(-\\infty\\).", "why": "Written first: the expression point.", "expr": "sqrt(4*x**2+5)/(3*x+1)", "relation": "new", "point_type_id": "BC-PT-99054"},
+    {"cue": "Dominant power \\(x\\); under the root, \\(|x|\\).", "why": "\\(\\sqrt{x^2}=|x|\\).", "expr": "Abs(x)*sqrt(4+5/x**2)/(x*(3+1/x))", "relation": "equivalent"},
     {"cue": "\\(x<0\\), so \\(\\frac{|x|}{x}=-1\\).", "why": "The \\(\\frac1x\\) terms vanish: \\(-\\frac23\\).", "expr": "-2/3", "relation": "limit", "variable": "x", "point": "-oo", "point_type_id": "BC-PT-99004"}
    ],
    "answer": {"form": "numeric", "expr": "-2/3"}
@@ -170,6 +193,7 @@ Every non-text choice is [inferred], settled by the modality A/B.
    "id": "ex-2",
    "archetype_id": "BC-QA-01010",
    "bands": ["low"],
+   "fade_from": 3,
    "parameter_draw": {"context": "amount_and_rate", "amount": "6*t/(2*t+1)", "subject": "rate"},
    "problem": {"text": "An amount is \\(A(t)=\\frac{6t}{2t+1}\\). Write a limit expression for the long run rate of change of \\(A\\) and evaluate it.", "command_verb": "write"},
    "calculator_status": "no_calculator",
@@ -197,6 +221,7 @@ Every non-text choice is [inferred], settled by the modality A/B.
    "wrong_step": {"text": "\\(\\lim_{t\\to\\infty}A(t)=3\\).", "expr": "3"},
    "right_step": {"text": "\\(\\lim_{t\\to\\infty}A'(t)=0\\).", "expr": "0"},
    "relation": "distinct",
+   "fix_prompt": true,
    "possible_reason": {"misconception_id": "BC-MIS-01014", "text": "treats a statement about the long run rate as a statement about the long run amount"},
    "sources": ["BC-ERR-01022", "BC-MIS-01014"]
   },
@@ -207,6 +232,7 @@ Every non-text choice is [inferred], settled by the modality A/B.
    "wrong_step": {"text": "\\(\\frac43\\) from 4 and 3.", "expr": "4/3"},
    "right_step": {"text": "\\(\\sqrt{4x^2}=2|x|\\): \\(-\\frac23\\).", "expr": "-2/3"},
    "relation": "distinct",
+   "fix_prompt": true,
    "possible_reason": null,
    "sources": ["BC-ERR-01023"]
   },
@@ -217,6 +243,7 @@ Every non-text choice is [inferred], settled by the modality A/B.
    "wrong_step": {"text": "End behaviour given as \\(x=-\\frac13\\).", "expr": "x = -1/3"},
    "right_step": {"text": "End behaviour \\(y=-\\frac23\\).", "expr": "y = -2/3"},
    "relation": "distinct",
+   "fix_prompt": true,
    "possible_reason": {"misconception_id": "BC-MIS-01018", "text": "does not separate a limit whose value is infinite from a limit taken as the variable grows without bound"},
    "sources": ["BC-ERR-01033", "BC-MIS-01018"]
   },
@@ -227,14 +254,15 @@ Every non-text choice is [inferred], settled by the modality A/B.
    "wrong_step": {"text": "\\(\\frac{\\sqrt{4\\cdot\\infty^2+5}}{3\\cdot\\infty+1}\\).", "expr": "sqrt(4*oo**2+5)/(3*oo+1)"},
    "right_step": {"text": "The \\(|x|\\) form, then \\(-\\frac23\\).", "expr": "-2/3"},
    "relation": "distinct",
+   "fix_prompt": true,
    "possible_reason": {"misconception_id": "BC-MIS-99008", "text": "substitutes the infinity symbol for the variable and computes with the result"},
    "sources": ["BC-ERR-01021", "BC-MIS-99008"]
   }
  ],
  "representations": null,
  "prerequisite_bridges": [
-  {"prq_id": "BC-PRQ-01004", "text": "Compare numerator and denominator degrees for large inputs. The slip: computing values instead."},
-  {"prq_id": "BC-PRQ-06005", "text": "\\(A\\) and \\(A'\\) are different functions. The slip: \\(f\\) and \\(f'\\) interchanged."}
+  {"prq_id": "BC-PRQ-01004", "text": "Compare degrees for large inputs. Slip: computing values instead."},
+  {"prq_id": "BC-PRQ-06005", "text": "\\(A\\) and \\(A'\\) differ. Slip: \\(f\\) and \\(f'\\) interchanged."}
  ],
  "time": {"exam_part": "I-A", "budget_minutes": 2.14, "source": "research/exam/exam-structure.md#Section and part layout", "written_steps": {"ex-1": [1, 2, 3], "ex-2": [2, 3]}, "skipped_steps": {"ex-1": [], "ex-2": [1]}},
  "checks": [
@@ -328,7 +356,7 @@ Every non-text choice is [inferred], settled by the modality A/B.
  ],
  "refresher": ["ki-1", "ki-2", "err-BC-ERR-01022", "err-BC-ERR-01023", "err-BC-ERR-01033", "err-BC-ERR-01021", "ex-1"],
  "read_minutes": {"full": 5.0, "brief": 3.0},
- "word_count": {"full": 746, "brief": 449},
+ "word_count": {"full": 739, "brief": 442},
  "research_lines": [
   {"file": "research/scoring/notation-requirements.md", "line": "sg-25:4 states that for the end-behaviour value point, arithmetic with infinity will be considered as scratch work and will not be considered in scoring."}
  ],

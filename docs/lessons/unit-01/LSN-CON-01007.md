@@ -9,6 +9,10 @@ purpose: Authoring spec for the concept lesson on BC-CON-01007, limits of sums, 
 
 Concept BC-CON-01007 (skills BC-SKL-01018, BC-SKL-01019, BC-SKL-01020, BC-SKL-01021, BC-SKL-01022), topic 1.5 of Unit 1, loaded by BC-QA-01003 (limit-by-theorems) and BC-QA-01014 (procedure-selection). Its hard parent is BC-CON-01006 and BC-CON-01009 hangs from it (docs/lessons/unit-01/README.md, section 1).
 
+## Prediction
+
+Served first, both bands. Pose on ex-1's own numbers: the limits 2 and 3 at \(x=1\) beside the differing table values, with \(h(x)=x^2+2\), and ask what \(h(f(x))/g(x)\) approaches. Form `short_answer`, key 2, which is ex-1's answer. The resolution says that the theorems combine the supplied limits and not the table values, from BC-CON-01007 and the topic 1.5 paragraph. It carries no verdict word.
+
 ## Orientation
 
 Served text, from BC-CON-01007 `description_plain` and the topic 1.5 Assessment behaviour paragraph, which supplies the limits of two functions and asks for the limit of a combination, and tests the denominator condition (research/units/unit-01-limits-continuity.md#1.5 Determining Limits Using Algebraic Properties of Limits). No count, no frequency.
@@ -26,6 +30,8 @@ All five skills map one BC-EK, BC-EK-LIM-1D2 (ced:42), so one core block, both b
 
 What says "not this concept": zero over zero after substitution sends the limit to rewriting (BC-CON-01008); a nonzero number over zero points to an infinite limit (BC-CON-01016); both from the unit README's neighbour table.
 
+The contrast pair on st-1 takes its near miss from that neighbour: `this` is supplied limits of f and g on BC-QA-01003, `not_this` is a formula that gives zero over zero on substitution (BC-CON-01008), and the feature is limits given against a formula alone.
+
 ## Method choice
 
 Two strategy blocks, low band both, mid band st-1.
@@ -36,7 +42,7 @@ Two strategy blocks, low band both, mid band st-1.
 ## Solution path
 
 - ex-1, BC-QA-01003, both bands, no calculator. Draw: point 1, shift 2, limit_f 2, limit_g 3, table_f [0, 4, 1, -2, 3, 1], table_g [1, -1, 2, 3, -2, 4], justify bare. Every constraint holds: \(h(1)=3\) lies in 0 to 5 and differs from 1; the tabulated \(f(1)=4\) and \(g(1)=-1\) differ from the limits; the four derived values key 2, both_values \(-18\), denominator_value \(-6\), wrong_order \(-2/3\) are distinct. Steps: record the limits (no value), check the denominator (no value), apply the composite and quotient theorems (valued, new), report (valued, equivalent, tagged BC-PT-99004).
-- ex-2, BC-QA-01014, low band only, no calculator. Draw: target 2, top_root -1, bottom_root 3, root_value 1, lead_top 1, lead_bottom 1, form factor, pole_power 1, giving \((x^2-x-2)/(x^2-5x+6)\); the construction of the factor form from these parameters is [inferred]. Steps: substitute and see zero over zero (no value), the expression (valued, new), the cancelled form (valued, equivalent), the limit (valued, limit at 2). Answer \(-3\).
+- ex-2, BC-QA-01014, low band only, no calculator. Draw: target 2, top_root -1, bottom_root 3, root_value 1, lead_top 1, lead_bottom 1, form factor, pole_power 1, giving \((x^2-x-2)/(x^2-5x+6)\); the construction of the factor form from these parameters is [inferred]. Steps: substitute and see zero over zero (no value), the expression (valued, new), the cancelled form (valued, equivalent), the limit (valued, limit at 2). Answer \(-3\). Faded from step 3: steps 1 and 2 are shown (the zero over zero reading and the expression), the student writes the cancelled form and the limit, and then steps 3 and 4 appear. The fade falls there because the substitution and the choice to rewrite are the method decision, and the last two steps are the algebra the student can produce from it.
 
 A fluent solver on ex-1 writes the substituted combination and the value, holding the record of supplied limits in the head (docs/lessons/unit-01/README.md, section 5).
 
@@ -82,9 +88,9 @@ Every non-text choice is [inferred], settled by the modality A/B.
 
 ## Band plan
 
-- Low (full): orientation, ki-1, st-1, st-2, ex-1 with its scoring line, three error blocks, chk-1, chk-2, chk-3, ex-2, bridges when gated.
-- Mid (brief): orientation, ki-1, st-1, ex-1 with its scoring line, err-BC-ERR-01001, err-BC-ERR-01006, chk-1, chk-2, bridges when gated.
-- Totals: full 649 words, 4.4 minutes (cap 900 and 6); brief 448 words, 3.0 minutes (cap 450 and 3).
+- Low (full): pr-1, orientation, bridges when gated, ki-1, st-1 with its contrast, st-2, ex-1 with its scoring line, chk-1, three error blocks, ex-2 faded from step 3, chk-2, chk-3.
+- Mid (brief): pr-1, orientation, bridges when gated, ki-1, st-1 with its contrast, ex-1 with its scoring line, chk-1, err-BC-ERR-01001, err-BC-ERR-01006, chk-2.
+- Totals: full 647 words, 4.4 minutes (cap 900 and 6); brief 449 words, 3.0 minutes (cap 450 and 3).
 - Refresher: ki-1, the three error blocks, ex-1.
 
 ## Sources
@@ -119,8 +125,25 @@ Every non-text choice is [inferred], settled by the modality A/B.
   "BC-SKL-01021",
   "BC-SKL-01022"
  ],
+ "prediction": {
+  "id": "pr-1",
+  "stem": {
+   "text": "Predict. At x = 1, f tends to 2 and g to 3, though f(1) = 4, g(1) = -1. With h(x) = x^2 + 2, what does h(f(x))/g(x) approach?",
+   "command_verb": "predict"
+  },
+  "format": "short_answer",
+  "key": {
+   "form": "numeric",
+   "expr": "2"
+  },
+  "resolution": "The limits combine, not the table values: h(2) over 3 is 2.",
+  "sources": [
+   "BC-CON-01007",
+   "research/units/unit-01-limits-continuity.md#1.5 Determining Limits Using Algebraic Properties of Limits"
+  ]
+ },
  "orientation": {
-  "text": "A response finds the limit of a sum, product, quotient or composite from the limits of its pieces and checks each theorem's condition. Stems set limits beside differing table values.",
+  "text": "A response combines the pieces' limits and checks conditions.",
   "sources": [
    "BC-CON-01007",
    "research/units/unit-01-limits-continuity.md#1.5 Determining Limits Using Algebraic Properties of Limits"
@@ -131,8 +154,8 @@ Every non-text choice is [inferred], settled by the modality A/B.
    "id": "ki-1",
    "ek_id": "BC-EK-LIM-1D2",
    "depth": "core",
-   "text": "Limits pass through sums, differences, products, quotients and composites. A quotient needs a nonzero denominator limit; a composite, an outer function continuous at the inner limit.",
-   "notation": "limit theorems",
+   "text": "Limits pass through combinations; a quotient needs a nonzero denominator limit.",
+   "notation": "",
    "quote": null,
    "sources": [
     "BC-EK-LIM-1D2",
@@ -145,24 +168,38 @@ Every non-text choice is [inferred], settled by the modality A/B.
   {
    "id": "st-1",
    "archetype_id": "BC-QA-01003",
-   "cue": "Limits of f and g supplied at one input; the limit of a combination asked.",
-   "method": "First line: record the supplied limits.",
-   "rival": "A zero denominator limit divided by (BC-ERR-01006), or the composite reversed (BC-ERR-01007).",
-   "separating_feature": "Theorems take limits only; a quotient needs a nonzero denominator.",
+   "cue": "Limits given at one input.",
+   "method": "Record the supplied limits.",
+   "rival": "A zero denominator limit divided by.",
+   "separating_feature": "Theorems take limits only.",
    "sources": [
-    "BC-QA-01003"
+    "BC-QA-01003",
+    "BC-ERR-01006",
+    "BC-ERR-01007"
    ],
-   "evidence_tag": "verified"
+   "evidence_tag": "verified",
+   "contrast": {
+    "this": {
+     "text": "Limits at x = 2: f 5, g 4. Find the limit of f(x)g(x).",
+     "archetype_id": "BC-QA-01003"
+    },
+    "not_this": {
+     "text": "Evaluate the limit of (x^2 - 4)/(x - 2) at x = 2.",
+     "why_not": "Zero over zero calls for rewriting."
+    },
+    "feature": "Limits given, not a formula."
+   }
   },
   {
    "id": "st-2",
    "archetype_id": "BC-QA-01014",
    "cue": "Several limits, each to be matched to a method and evaluated.",
-   "method": "First line: substitute the target input into each expression.",
-   "rival": "The quotient of limits taken with a zero denominator (BC-ERR-01006).",
+   "method": "Substitute the target input into each expression.",
+   "rival": "The quotient of limits taken with a zero denominator.",
    "separating_feature": "A real value settles the limit; zero over zero sends it to rewriting.",
    "sources": [
-    "BC-QA-01014"
+    "BC-QA-01014",
+    "BC-ERR-01006"
    ],
    "evidence_tag": "inferred"
   }
@@ -237,6 +274,7 @@ Every non-text choice is [inferred], settled by the modality A/B.
    "bands": [
     "low"
    ],
+   "fade_from": 3,
    "parameter_draw": {
     "target": 2,
     "top_root": -1,
@@ -315,7 +353,8 @@ Every non-text choice is [inferred], settled by the modality A/B.
    "possible_reason": null,
    "sources": [
     "BC-ERR-01001"
-   ]
+   ],
+   "fix_prompt": true
   },
   {
    "error_id": "BC-ERR-01006",
@@ -337,7 +376,8 @@ Every non-text choice is [inferred], settled by the modality A/B.
    "sources": [
     "BC-ERR-01006",
     "BC-MIS-01005"
-   ]
+   ],
+   "fix_prompt": true
   },
   {
    "error_id": "BC-ERR-01007",
@@ -359,18 +399,19 @@ Every non-text choice is [inferred], settled by the modality A/B.
    "sources": [
     "BC-ERR-01007",
     "BC-MIS-01005"
-   ]
+   ],
+   "fix_prompt": true
   }
  ],
  "representations": null,
  "prerequisite_bridges": [
   {
    "prq_id": "BC-PRQ-01008",
-   "text": "Substitution needs the input inside the domain. The failure: continuity claimed at inputs outside it."
+   "text": "Substitution needs the input inside the domain."
   },
   {
    "prq_id": "BC-PRQ-06005",
-   "text": "Reading f(g(x)) at an input. The failure: a value read for the wrong input."
+   "text": "Reading f(g(x)) at an input."
   }
  ],
  "time": {
@@ -735,8 +776,8 @@ Every non-text choice is [inferred], settled by the modality A/B.
   "brief": 3.0
  },
  "word_count": {
-  "full": 649,
-  "brief": 448
+  "full": 647,
+  "brief": 449
  },
  "research_lines": [
   {

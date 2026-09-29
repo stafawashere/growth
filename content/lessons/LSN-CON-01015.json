@@ -3,20 +3,55 @@
  "version": 1,
  "kind": "concept",
  "target_id": "BC-CON-01015",
- "status": "signed_off",
+ "status": "draft",
  "snapshot_digest": "a6a8ec9d3f59ab8f712e33d30cc22fc64bf2c478fbe7312e3e3118d319c6a42f",
  "source_digest": "bff6f04f111f1a8f6333b9f264ed676c87ce677f390e75ccdbaab96d5f04419c",
  "read_minutes": {
-  "full": 3.74,
-  "brief": 3.0
+  "full": 3.68,
+  "brief": 2.96
  },
  "word_count": {
-  "full": 481,
-  "brief": 387
+  "full": 485,
+  "brief": 393
  },
  "sections": [
   {
    "id": "LSN-CON-01015#s1",
+   "type": "prediction",
+   "bands": [
+    "low",
+    "mid"
+   ],
+   "skills": [
+    "BC-SKL-01050",
+    "BC-SKL-01051",
+    "BC-SKL-01052",
+    "BC-SKL-01053"
+   ],
+   "sources": [
+    "BC-CON-01015",
+    "research/units/unit-01-limits-continuity.md#1.13 Removing Discontinuities"
+   ],
+   "evidence_tag": "inferred",
+   "stem": {
+    "text": "Before the rule: \\(f(x)=\\frac{x^2-1}{x-1}\\) for \\(x<1\\), \\(f(x)=kx+m\\) for \\(x\\ge1\\). What must \\(k+m\\) equal for continuity at 1?",
+    "command_verb": "predict"
+   },
+   "format": "short_answer",
+   "answer_key": {
+    "form": "numeric",
+    "mathjson": 2
+   },
+   "resolution": {
+    "text": "At a boundary the two sides and the value must agree. The left branch reduces to \\(x+1\\), which tends to 2, so \\(k+m\\) must equal 2."
+   },
+   "delivery": {
+    "mode": "text",
+    "reason": "rule 6"
+   }
+  },
+  {
+   "id": "LSN-CON-01015#s2",
    "type": "orientation",
    "bands": [
     "low",
@@ -33,7 +68,7 @@
     "research/units/unit-01-limits-continuity.md#1.13 Removing Discontinuities"
    ],
    "evidence_tag": "inferred",
-   "text": "A response writes one matching equation per boundary, from both branches and the boundary value, then solves for the constants. A removable break is repaired by setting the value equal to the limit.",
+   "text": "A response writes one matching equation per boundary and solves for the constants.",
    "delivery": {
     "mode": "figure",
     "reason": "rule 3: BC-REP-02 on BC-SKL-01050 and BC-SKL-01053",
@@ -117,7 +152,7 @@
    }
   },
   {
-   "id": "LSN-CON-01015#s2",
+   "id": "LSN-CON-01015#s3",
    "type": "key_ideas",
    "bands": [
     "low"
@@ -134,7 +169,7 @@
    "evidence_tag": "verified",
    "ek_id": "BC-EK-LIM-2C1",
    "depth": "extended",
-   "text": "When the limit exists at a break, defining or redefining the value there as the limit removes the break (BC-EK-LIM-2C1, ced:50). A jump or an infinite break has no limit, so no value repairs it.",
+   "text": "When the limit exists at a break, defining or redefining the value there as the limit removes the break. A jump or an infinite break has no limit, so no value repairs it.",
    "quote": {
     "text": "it is possible to remove the discontinuity by defining or redefining the value of the function at that point",
     "source": "ced:50"
@@ -198,7 +233,7 @@
    }
   },
   {
-   "id": "LSN-CON-01015#s3",
+   "id": "LSN-CON-01015#s4",
    "type": "key_ideas",
    "bands": [
     "low",
@@ -213,14 +248,10 @@
     "ced:50",
     "research/units/unit-01-limits-continuity.md#1.13 Removing Discontinuities"
    ],
-   "evidence_tag": "verified",
+   "evidence_tag": "inferred",
    "ek_id": "BC-EK-LIM-2C2",
    "depth": "core",
-   "text": "At a boundary of a piecewise rule, the left expression, the right expression and the function value must agree (BC-EK-LIM-2C2, ced:50). All three enter, so each boundary gives one equation, and two unknowns need two boundaries.",
-   "quote": {
-    "text": "as well as the value of the function at the boundary.",
-    "source": "ced:50"
-   },
+   "text": "At a boundary the left expression, the right expression and the function value must agree. Each boundary gives one equation.",
    "delivery": {
     "mode": "interactive",
     "reason": "rule 3 promoted: BC-QA-01008 common_givens name a piecewise rule with unknown constants and the stem asks for the joining value",
@@ -297,7 +328,7 @@
    }
   },
   {
-   "id": "LSN-CON-01015#s4",
+   "id": "LSN-CON-01015#s5",
    "type": "strategy",
    "bands": [
     "low",
@@ -314,13 +345,24 @@
    ],
    "evidence_tag": "verified",
    "archetype_id": "BC-QA-01008",
-   "cue": "A piecewise rule with one or two unknown constants, and the stem asks for their values.",
-   "method": "First written line: the one sided limit from each branch at the first boundary.",
-   "rival": "The rival matches the one sided limits and ignores the value (BC-ERR-01015).",
-   "separating_feature": "The branch whose condition holds the equals sign supplies the value, and the value enters the equation."
+   "cue": "A piecewise rule with unknown constants; find them.",
+   "method": "One sided limit from each branch at the first boundary.",
+   "rival": "The rival ignores the value.",
+   "separating_feature": "The branch holding the equals sign gives the value.",
+   "contrast": {
+    "this": {
+     "text": "Let \\(g(x)=cx+1\\) for \\(x<3\\), \\(g(x)=x^2-c\\) for \\(x\\ge3\\). Find \\(c\\) so \\(g\\) is continuous.",
+     "archetype_id": "BC-QA-01008"
+    },
+    "not_this": {
+     "text": "Let \\(g(x)=2x+1\\) for \\(x<3\\), \\(g(x)=x^2-2\\) for \\(x\\ge3\\). Is \\(g\\) continuous at 3?",
+     "why_not": "No constant is unknown."
+    },
+    "feature": "A letter other than x inside a branch."
+   }
   },
   {
-   "id": "LSN-CON-01015#s5",
+   "id": "LSN-CON-01015#s6",
    "type": "worked_example",
    "bands": [
     "low",
@@ -506,6 +548,7 @@
     "expression": 2
    },
    "relation": "distinct",
+   "fix_prompt": true,
    "possible_reason": {
     "misconception_id": "BC-MIS-01001",
     "text": "a missing or displaced function value is read as a missing or displaced limit"
@@ -543,6 +586,7 @@
     "expression": "False"
    },
    "relation": "distinct",
+   "fix_prompt": true,
    "possible_reason": {
     "misconception_id": "BC-MIS-01009",
     "text": "most often that the function is defined there or that the one sided limits agree"
@@ -595,6 +639,7 @@
     ]
    },
    "relation": "distinct",
+   "fix_prompt": true,
    "delivery": {
     "mode": "step_reveal",
     "reason": "rule 1",
@@ -616,7 +661,7 @@
    ],
    "evidence_tag": "inferred",
    "prerequisite_id": "BC-PRQ-01001",
-   "text": "Factor and divide out a common factor: \\(\\frac{x^2-1}{x-1}=x+1\\) for \\(x\\ne1\\). The slip: stopping at \\(\\frac00\\) with no factoring tried."
+   "text": "Factor and divide out a common factor; stopping at \\(\\frac00\\) marks this gap."
   },
   {
    "id": "LSN-CON-01015#prq-BC-PRQ-01003",
@@ -635,7 +680,7 @@
    ],
    "evidence_tag": "inferred",
    "prerequisite_id": "BC-PRQ-01003",
-   "text": "Read a piecewise rule by the branch whose condition holds. The slip: the wrong branch evaluated at a boundary."
+   "text": "Read a piecewise rule by its branch; a wrong branch marks this gap."
   }
  ],
  "checks": [
@@ -655,7 +700,7 @@
     "lift": "3",
     "check": "values"
    },
-   "completes": "LSN-CON-01015#s5",
+   "completes": "LSN-CON-01015#s6",
    "stem": {
     "text": "The matching equations are \\(k+m=2\\) and \\(3k+m=12\\). Find \\(k\\) and \\(m\\).",
     "command_verb": "find"
@@ -961,18 +1006,18 @@
   }
  ],
  "refresher": [
-  "LSN-CON-01015#s3",
+  "LSN-CON-01015#s4",
   "LSN-CON-01015#err-BC-ERR-01003",
   "LSN-CON-01015#err-BC-ERR-01015",
   "LSN-CON-01015#err-BC-ERR-01017",
-  "LSN-CON-01015#s5"
+  "LSN-CON-01015#s6"
  ],
  "provenance": {
   "author": "tools/lesson_transcribe.py",
-  "prompt_version": "generator/lesson_v1",
+  "prompt_version": "generator/lesson_v2",
   "design_path": "docs/lessons/unit-01/LSN-CON-01015.md",
-  "signed_off_by": "claude-opus-5-5",
-  "signed_off_at": "2026-09-29",
+  "signed_off_by": null,
+  "signed_off_at": null,
   "not_human": true
  }
 }

@@ -147,7 +147,7 @@ BC-QA-07011 is `no_calculator`, one FRQ part or one MCQ; the FRQ form is taken, 
     "integrand": "gauss"
    },
    "problem": {
-    "text": "dy/dx = 2y^2 with y(1) = 1/2. Find the particular solution and the interval on which it is valid.",
+    "text": "dy/dx = 2y^2 with y(1) = 1/2. Find the interval on which the particular solution is valid.",
     "command_verb": "find"
    },
    "calculator_status": "no_calculator",
@@ -465,8 +465,8 @@ BC-QA-07011 is `no_calculator`, one FRQ part or one MCQ; the FRQ form is taken, 
   "research/exam/exam-structure.md#Section and part layout"
  ],
  "word_count": {
-  "full": 419,
-  "brief": 419
+  "full": 417,
+  "brief": 417
  },
  "read_minutes": {
   "full": 2.8,

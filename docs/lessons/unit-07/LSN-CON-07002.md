@@ -74,8 +74,8 @@ BC-QA-07007 is `no_calculator` and its `multipart_structure` names a single MCQ 
 
 ## Band plan
 
-- Low (full): orientation, ki-1, st-1, ex-1 and its lines, ex-2 and its lines, three error blocks, chk-1 to chk-3, two bridges. FULLW words, FULLM minutes (cap 900 and 6).
-- Mid (brief): orientation, ki-1, st-1, ex-1 and its lines, err-BC-ERR-07006, err-BC-ERR-07007, chk-1, chk-2, bridges. BRIEFW words, BRIEFM minutes (cap 450 and 3).
+- Low (full): orientation, ki-1, st-1, ex-1 and its lines, ex-2 and its lines, three error blocks, chk-1 to chk-3, two bridges. 758 words, 5.1 minutes (cap 900 and 6).
+- Mid (brief): orientation, ki-1, st-1, ex-1 and its lines, err-BC-ERR-07006, err-BC-ERR-07007, chk-1, chk-2, bridges. 433 words, 2.9 minutes (cap 450 and 3).
 - Refresher: ki-1, the three error blocks, ex-1.
 
 ## Sources
@@ -277,8 +277,8 @@ BC-QA-07007 is `no_calculator` and its `multipart_structure` names a single MCQ 
   {"block": "err-BC-ERR-07008", "mode": "step_reveal", "reason": "rule 1", "sources": []}
  ],
  "refresher": ["ki-1", "err-BC-ERR-07006", "err-BC-ERR-07007", "err-BC-ERR-07008", "ex-1"],
- "read_minutes": {"full": 0, "brief": 0},
- "word_count": {"full": 0, "brief": 0},
+ "read_minutes": {"full": 5.1, "brief": 2.9},
+ "word_count": {"full": 758, "brief": 433},
  "research_lines": [
   {"file": "research/units/unit-07-differential-equations.md", "line": "One input at which the two sides disagree is enough to show that a candidate is not a solution."}
  ],

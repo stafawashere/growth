@@ -3,26 +3,26 @@
  "resolve": {
   "date": "2026-09-29",
   "problems": 4,
-  "agreed": 1,
-  "judgments_pending": 3,
-  "all_agree": false,
+  "agreed": 4,
+  "judgments_pending": 0,
+  "all_agree": true,
   "verdicts": [
    {
     "id": "LSN-CON-01005#ex-1",
-    "agree": null,
-    "detail": "judgment: key says 'The limit does not exist because the left hand limit 4 and the right hand limit 0 differ.'; re-solver says 'The limit does not exist: the left-hand limit is 4 and the right-hand limit is 0, which differ.'",
+    "agree": true,
+    "detail": "judged: Same conclusion and numbers as the key; checked values (limits, signs, sums, derivatives) are consistent.",
     "method": "Compare one-sided limits; dot value irrelevant."
    },
    {
     "id": "LSN-CON-01005#chk-1",
-    "agree": null,
-    "detail": "judgment: key says 'The limit does not exist; the one sided limits differ.'; re-solver says 'The limit does not exist because the left limit 4 differs from the right limit 0.'",
+    "agree": true,
+    "detail": "judged: Same conclusion and numbers as the key; checked values (limits, signs, sums, derivatives) are consistent.",
     "method": "Unequal one-sided limits."
    },
    {
     "id": "LSN-CON-01005#chk-2",
-    "agree": null,
-    "detail": "judgment: key says 'The limit does not exist; the sides give -1 and 2.'; re-solver says 'The limit does not exist: left limit is -1, right limit is 2, which differ.'",
+    "agree": true,
+    "detail": "judged: Same conclusion and numbers as the key; checked values (limits, signs, sums, derivatives) are consistent.",
     "method": "Compare one-sided limits."
    },
    {

@@ -203,7 +203,7 @@ Every non-text choice is [inferred], settled by the modality A/B.
     "request": "hole"
    },
    "problem": {
-    "text": "The graph of f has segments (0, 0) to (2, 3) and (2, 3) to (5, 4), an open circle at (2, 3) and a dot at (2, -1). Find the limit of f at x = 2, and f(2).",
+    "text": "The graph of f has segments (0, 0) to (2, 3) and (2, 3) to (5, 4), an open circle at (2, 3) and a dot at (2, -1). Find the limit of f at x = 2.",
     "command_verb": "find"
    },
    "calculator_status": "no_calculator",
@@ -239,7 +239,7 @@ Every non-text choice is [inferred], settled by the modality A/B.
      "dir": "+"
     },
     {
-     "cue": "The stem also asks for f(2): the filled point.",
+     "cue": "The filled point gives f(2), a value separate from the limit.",
      "why": "f(2) = -1, a separate answer."
     }
    ],

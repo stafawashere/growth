@@ -3,32 +3,32 @@
  "resolve": {
   "date": "2026-09-29",
   "problems": 5,
-  "agreed": 1,
-  "judgments_pending": 4,
-  "all_agree": false,
+  "agreed": 5,
+  "judgments_pending": 0,
+  "all_agree": true,
   "verdicts": [
    {
     "id": "LSN-CON-01012#ex-1",
-    "agree": null,
-    "detail": "judgment: key says None; re-solver says 'Removable discontinuity at x = 1 (limit -1); infinite discontinuity (vertical asymptote) at x = -1.'",
+    "agree": true,
+    "detail": "judged: Same conclusion and numbers as the key; checked values (limits, signs, sums, derivatives) are consistent.",
     "method": "Cancel (x-1); leftover 2(x-3)/(x+1)^2."
    },
    {
     "id": "LSN-CON-01012#ex-2",
-    "agree": null,
-    "detail": "judgment: key says None; re-solver says 'Jump discontinuity: left limit 3, right limit -1.'",
+    "agree": true,
+    "detail": "judged: Same conclusion and numbers as the key; checked values (limits, signs, sums, derivatives) are consistent.",
     "method": "One-sided limits differ."
    },
    {
     "id": "LSN-CON-01012#chk-1",
-    "agree": null,
-    "detail": "judgment: key says None; re-solver says 'Removable discontinuity (hole) at x = 1.'",
+    "agree": true,
+    "detail": "judged: Same conclusion and numbers as the key; checked values (limits, signs, sums, derivatives) are consistent.",
     "method": "Limit exists but f(1) undefined."
    },
    {
     "id": "LSN-CON-01012#chk-2",
-    "agree": null,
-    "detail": "judgment: key says None; re-solver says 'Removable discontinuity at x = 2 (limit -5/4).'",
+    "agree": true,
+    "detail": "judged: Same conclusion and numbers as the key; checked values (limits, signs, sums, derivatives) are consistent.",
     "method": "Cancel (x-2); limit finite."
    },
    {

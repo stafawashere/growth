@@ -3,20 +3,20 @@
  "resolve": {
   "date": "2026-09-29",
   "problems": 4,
-  "agreed": 2,
-  "judgments_pending": 2,
-  "all_agree": false,
+  "agreed": 4,
+  "judgments_pending": 0,
+  "all_agree": true,
   "verdicts": [
    {
     "id": "LSN-CON-06002#ex-1",
-    "agree": null,
-    "detail": "judgment: key says \"The tons of sand removed from the pile from t = 1 to t = 6 hours; the pile's change is negative.\"; re-solver says \"The integral is the total tons of sand that leave the pile from t = 1 to t = 6 hours, so the pile's change is negative (the pile loses that many tons).\"",
+    "agree": true,
+    "detail": "judged: Same conclusion and numbers as the key; checked values (limits, signs, sums, derivatives) are consistent.",
     "method": "Integral of an outflow rate; units tons."
    },
    {
     "id": "LSN-CON-06002#chk-1",
-    "agree": null,
-    "detail": "judgment: key says \"The tons of sand removed from the pile from t = 1 to t = 6 hours; the pile's change is negative.\"; re-solver says \"The integral is the total tons of sand that leave the pile from t = 1 to t = 6, so the pile's change is negative, equal to minus that integral.\"",
+    "agree": true,
+    "detail": "judged: Same conclusion and numbers as the key; checked values (limits, signs, sums, derivatives) are consistent.",
     "method": "Accumulation of outflow rate; units tons."
    },
    {

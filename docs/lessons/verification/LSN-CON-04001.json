@@ -3,26 +3,26 @@
  "resolve": {
   "date": "2026-09-29",
   "problems": 4,
-  "agreed": 1,
-  "judgments_pending": 3,
-  "all_agree": false,
+  "agreed": 4,
+  "judgments_pending": 0,
+  "all_agree": true,
   "verdicts": [
    {
     "id": "LSN-CON-04001#ex-1",
-    "agree": null,
-    "detail": "judgment: key says 'At t = 9 minutes the amount of water in the tank is decreasing at 3.5 liters per minute.'; re-solver says 'At t=9 minutes, the water in the tank is decreasing at 3.5 liters per minute'",
+    "agree": true,
+    "detail": "judged: Same conclusion and numbers as the key; checked values (limits, signs, sums, derivatives) are consistent.",
     "method": "derivative interpretation"
    },
    {
     "id": "LSN-CON-04001#chk-1",
-    "agree": null,
-    "detail": "judgment: key says 'decreasing at 3.5 liters per minute'; re-solver says 'decreasing at a rate of 3.5 liters per minute'",
+    "agree": true,
+    "detail": "judged: Same conclusion and numbers as the key; checked values (limits, signs, sums, derivatives) are consistent.",
     "method": "derivative interpretation"
    },
    {
     "id": "LSN-CON-04001#chk-2",
-    "agree": null,
-    "detail": "judgment: key says 'At t = 10 hours the snow depth is increasing at 2.5 centimeters per hour.'; re-solver says 'At t=10 hours, the snow depth is increasing at 2.5 centimeters per hour'",
+    "agree": true,
+    "detail": "judged: Same conclusion and numbers as the key; checked values (limits, signs, sums, derivatives) are consistent.",
     "method": "derivative interpretation"
    },
    {

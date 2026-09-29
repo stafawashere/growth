@@ -3,20 +3,20 @@
  "resolve": {
   "date": "2026-09-29",
   "problems": 3,
-  "agreed": 1,
-  "judgments_pending": 2,
-  "all_agree": false,
+  "agreed": 3,
+  "judgments_pending": 0,
+  "all_agree": true,
   "verdicts": [
    {
     "id": "LSN-CON-01004#ex-1",
-    "agree": null,
-    "detail": "judgment: key says 'The left hand limit is 3, the right hand limit is 4, so the limit of f at x = 1 does not exist.'; re-solver says 'Left limit 3, right limit 4; the limit at x = 1 does not exist because the one-sided limits differ.'",
+    "agree": true,
+    "detail": "judged: Same conclusion and numbers as the key; checked values (limits, signs, sums, derivatives) are consistent.",
     "method": "Substitute into each piece."
    },
    {
     "id": "LSN-CON-01004#chk-1",
-    "agree": null,
-    "detail": "judgment: key says 'The limit does not exist.'; re-solver says 'The limit does not exist, since 3 is not equal to 4.'",
+    "agree": true,
+    "detail": "judged: Same conclusion and numbers as the key; checked values (limits, signs, sums, derivatives) are consistent.",
     "method": "Unequal one-sided limits."
    },
    {

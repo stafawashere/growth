@@ -157,7 +157,7 @@ Every non-text choice is [inferred], settled by the modality A/B.
    "archetype_id": "BC-QA-01002",
    "bands": ["low"],
    "parameter_draw": {"target": 1, "left_value": 2, "right_value": -1, "left_slope": 3, "right_slope": -2, "curvature": 0, "behaviour": "oscillate"},
-   "problem": {"text": "The table gives f at x = 0.9, 0.99, 0.999, 0.9999 as 2.3000, -1.0200, 2.0030, -1.0002, and at x = 1.1, 1.01, 1.001, 1.0001 with the same values. Estimate the limit of f at x = 1, or explain why the table does not determine it.", "command_verb": "estimate"},
+   "problem": {"text": "The table gives f at x = 0.9, 0.99, 0.999, 0.9999 as 2.3000, -1.0200, 2.0030, -1.0002, and at x = 1.1, 1.01, 1.001, 1.0001 with the same values. State what the table suggests about the limit of f at x = 1, and why.", "command_verb": "estimate"},
    "calculator_status": "no_calculator",
    "steps": [
     {"cue": "Group the rows: four from the left, four from the right.", "why": "Each side is read on its own before any comparison."},
@@ -230,7 +230,7 @@ Every non-text choice is [inferred], settled by the modality A/B.
  ],
  "refresher": ["ki-1", "err-BC-ERR-01001", "err-BC-ERR-01002", "err-BC-ERR-01003", "err-BC-ERR-01004", "ex-1"],
  "read_minutes": {"full": 5.8, "brief": 3.0},
- "word_count": {"full": 860, "brief": 445},
+ "word_count": {"full": 858, "brief": 445},
  "research_lines": [
   {"file": "research/units/unit-01-limits-continuity.md", "line": "A finite table does not determine the behaviour between its rows, so an estimate remains an estimate."}
  ],

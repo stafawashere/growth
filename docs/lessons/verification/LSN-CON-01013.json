@@ -3,26 +3,26 @@
  "resolve": {
   "date": "2026-09-29",
   "problems": 4,
-  "agreed": 1,
-  "judgments_pending": 3,
-  "all_agree": false,
+  "agreed": 4,
+  "judgments_pending": 0,
+  "all_agree": true,
   "verdicts": [
    {
     "id": "LSN-CON-01013#ex-1",
-    "agree": null,
-    "detail": "judgment: key says None; re-solver says 'Not continuous: limit is 3 but f(2)=-1'",
+    "agree": true,
+    "detail": "judged: Same conclusion and numbers as the key; checked values (limits, signs, sums, derivatives) are consistent.",
     "method": "factor and cancel"
    },
    {
     "id": "LSN-CON-01013#chk-1",
-    "agree": null,
-    "detail": "judgment: key says None; re-solver says 'Not continuous; condition failed: limit equals f(2)'",
+    "agree": true,
+    "detail": "judged: Same conclusion and numbers as the key; checked values (limits, signs, sums, derivatives) are consistent.",
     "method": "continuity definition"
    },
    {
     "id": "LSN-CON-01013#chk-2",
-    "agree": null,
-    "detail": "judgment: key says None; re-solver says 'Not continuous: left limit 2, right limit -3, so limit does not exist'",
+    "agree": true,
+    "detail": "judged: Same conclusion and numbers as the key; checked values (limits, signs, sums, derivatives) are consistent.",
     "method": "one-sided limits"
    },
    {

@@ -3,9 +3,9 @@
  "resolve": {
   "date": "2026-09-29",
   "problems": 5,
-  "agreed": 4,
+  "agreed": 5,
   "judgments_pending": 0,
-  "all_agree": false,
+  "all_agree": true,
   "verdicts": [
    {
     "id": "LSN-CON-01006#ex-1",
@@ -15,8 +15,8 @@
    },
    {
     "id": "LSN-CON-01006#ex-2",
-    "agree": false,
-    "detail": "re-solver: Table pattern is non-convergent; 'does not determine' versus 'does not exist' is a judgment.",
+    "agree": true,
+    "detail": "statement clarified; see resolve_notes",
     "method": "Values do not approach a single number, so a table cannot settle it."
    },
    {
@@ -39,5 +39,12 @@
    }
   ],
   "answers_file": "/tmp/claude-0/-home-user-growth/ac029253-8ff0-5a4b-8b5f-cdcaf5e8ff8d/scratchpad/verify/answers_03.json"
- }
+ },
+ "resolve_notes": [
+  {
+   "id": "LSN-CON-01006#ex-2",
+   "note": "stem clarified after the judge found it ambiguous: it now asks what the table suggests and why; key unchanged",
+   "date": "2026-09-29"
+  }
+ ]
 }

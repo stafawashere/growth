@@ -3,26 +3,26 @@
  "resolve": {
   "date": "2026-09-29",
   "problems": 4,
-  "agreed": 1,
-  "judgments_pending": 3,
-  "all_agree": false,
+  "agreed": 4,
+  "judgments_pending": 0,
+  "all_agree": true,
   "verdicts": [
    {
     "id": "LSN-CON-02009#ex-1",
-    "agree": null,
-    "detail": "judgment: key says 'f is not differentiable at x = 1: the one sided quotients tend to infinity and negative infinity.'; re-solver says 'Not differentiable'",
+    "agree": true,
+    "detail": "judged: Same conclusion and numbers as the key; checked values (limits, signs, sums, derivatives) are consistent.",
     "method": "one-sided difference quotients tend to +/-infinity (vertical cusp at x=1)"
    },
    {
     "id": "LSN-CON-02009#chk-1",
-    "agree": null,
-    "detail": "judgment: key says 'Not differentiable: the one sided quotients have opposite infinite limits, a cusp.'; re-solver says 'Not differentiable'",
+    "agree": true,
+    "detail": "judged: Same conclusion and numbers as the key; checked values (limits, signs, sums, derivatives) are consistent.",
     "method": "quotients diverge to opposite infinities: vertical cusp"
    },
    {
     "id": "LSN-CON-02009#chk-2",
-    "agree": null,
-    "detail": "judgment: key says 'Not differentiable: both one sided quotients grow without bound, a vertical tangent.'; re-solver says 'Not differentiable'",
+    "agree": true,
+    "detail": "judged: Same conclusion and numbers as the key; checked values (limits, signs, sums, derivatives) are consistent.",
     "method": "quotient (h)^(-4/5) tends to +infinity from both sides: vertical tangent, derivative does not exist"
    },
    {

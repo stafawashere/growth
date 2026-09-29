@@ -3,26 +3,26 @@
  "resolve": {
   "date": "2026-09-29",
   "problems": 4,
-  "agreed": 1,
-  "judgments_pending": 3,
-  "all_agree": false,
+  "agreed": 4,
+  "judgments_pending": 0,
+  "all_agree": true,
   "verdicts": [
    {
     "id": "LSN-CON-06004#ex-1",
-    "agree": null,
-    "detail": "judgment: key says '60, an underestimate, because r is increasing on [0, 8].'; re-solver says 'The left sum is 60, an underestimate because r is increasing so each left value is the smallest on its subinterval.'",
+    "agree": true,
+    "detail": "judged: Same conclusion and numbers as the key; checked values (limits, signs, sums, derivatives) are consistent.",
     "method": "Left sum 2*3+2*5+1*8+3*12=60; units mm."
    },
    {
     "id": "LSN-CON-06004#chk-1",
-    "agree": null,
-    "detail": "judgment: key says 'An underestimate, because r is increasing on [0, 8].'; re-solver says 'The left sum of 60 is an underestimate because an increasing r is smallest at each left endpoint.'",
+    "agree": true,
+    "detail": "judged: Same conclusion and numbers as the key; checked values (limits, signs, sums, derivatives) are consistent.",
     "method": "Monotonic reasoning."
    },
    {
     "id": "LSN-CON-06004#chk-2",
-    "agree": null,
-    "detail": "judgment: key says '57, an underestimate, because R is decreasing on [0, 8].'; re-solver says 'The right sum is 57, an underestimate because a decreasing R is smallest at each right endpoint.'",
+    "agree": true,
+    "detail": "judged: Same conclusion and numbers as the key; checked values (limits, signs, sums, derivatives) are consistent.",
     "method": "Right sum 1*14+3*9+2*6+2*2=57."
    },
    {

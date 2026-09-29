@@ -3,14 +3,14 @@
  "resolve": {
   "date": "2026-09-29",
   "problems": 3,
-  "agreed": 2,
+  "agreed": 3,
   "judgments_pending": 0,
-  "all_agree": false,
+  "all_agree": true,
   "verdicts": [
    {
     "id": "LSN-CON-01002#ex-1",
-    "agree": false,
-    "detail": "re-solver: Asks for two values (limit and f(2)); numeric answer gives the limit 3 only, f(2) = -1.",
+    "agree": true,
+    "detail": "statement clarified; see resolve_notes",
     "method": "Both one-sided limits are 3; f(2) = -1 (dot) is a separate value, so limit 3 and f(2) = -1."
    },
    {
@@ -27,5 +27,12 @@
    }
   ],
   "answers_file": "/tmp/claude-0/-home-user-growth/ac029253-8ff0-5a4b-8b5f-cdcaf5e8ff8d/scratchpad/verify/answers_03.json"
- }
+ },
+ "resolve_notes": [
+  {
+   "id": "LSN-CON-01002#ex-1",
+   "note": "stem narrowed to the limit alone after the re-solver noted the key held only the limit; f(2) stays a worked step; key unchanged",
+   "date": "2026-09-29"
+  }
+ ]
 }

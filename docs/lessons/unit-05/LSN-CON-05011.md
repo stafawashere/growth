@@ -217,7 +217,7 @@ BC-QA-05009 is `either`, an MCQ or one FRQ feature question, so Section I Part A
    "archetype_id": "BC-QA-05009",
    "parameter_draw": {"first_root": -2, "root_gap": 4, "steepness": "1/2", "orientation": 1, "lift": 1, "lettering": "ABC", "framing": "derivatives"},
    "completes": "ex-1",
-   "stem": {"text": "The graph of \\(f'\\) crosses the axis at \\(-2\\) and \\(2\\) and turns at \\(0\\). Give (minimum, inflection) of \\(f\\).", "command_verb": "find"},
+   "stem": {"text": "\\(f'\\) is negative on \\((-2, 2)\\), zero at \\(-2\\) and \\(2\\), and turns at \\(0\\). Give (minimum, inflection) of \\(f\\).", "command_verb": "find"},
    "key": {"form": "symbolic", "expr": "Tuple(2, 0)"},
    "steps": [
     {"text": "The graph of \\(f'\\) goes from negative to positive at 2.", "expr": "x**2/2 - 2", "relation": "new"},

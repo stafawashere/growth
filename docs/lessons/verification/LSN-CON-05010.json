@@ -3,26 +3,26 @@
  "resolve": {
   "date": "2026-09-29",
   "problems": 3,
-  "agreed": 0,
-  "judgments_pending": 3,
-  "all_agree": false,
+  "agreed": 3,
+  "judgments_pending": 0,
+  "all_agree": true,
   "verdicts": [
    {
     "id": "LSN-CON-05010#ex-1",
-    "agree": null,
-    "detail": "judgment: key says None; re-solver says \"Yes, g has an absolute minimum of -26 at x = 3, because x = 3 is the only critical point on x > 0 and g''(3) = 18 > 0 (g' changes from negative to positive there).\"",
+    "agree": true,
+    "detail": "judged: Same conclusion and numbers as the key; checked values (limits, signs, sums, derivatives) are consistent.",
     "method": "g'=6x(x-3), single critical point"
    },
    {
     "id": "LSN-CON-05010#chk-1",
-    "agree": null,
-    "detail": "judgment: key says None; re-solver says \"g has an absolute minimum at x = 3, value g(3) = -26, since g''(3) = 18 > 0 makes it a relative minimum and it is the only critical point on x > 0.\"",
+    "agree": true,
+    "detail": "judged: Same conclusion and numbers as the key; checked values (limits, signs, sums, derivatives) are consistent.",
     "method": "second derivative test with unique critical point"
    },
    {
     "id": "LSN-CON-05010#chk-2",
-    "agree": null,
-    "detail": "judgment: key says None; re-solver says \"Yes, f has an absolute minimum at x = -3, because on x < 0 the only critical point is -3 and f' changes from negative to positive there; there is no absolute maximum since f increases without bound as x goes to -infinity.\"",
+    "agree": true,
+    "detail": "judged: Same conclusion and numbers as the key; checked values (limits, signs, sums, derivatives) are consistent.",
     "method": "first derivative test, unique critical point"
    }
   ],

@@ -3,32 +3,32 @@
  "resolve": {
   "date": "2026-09-29",
   "problems": 5,
-  "agreed": 1,
-  "judgments_pending": 4,
-  "all_agree": false,
+  "agreed": 5,
+  "judgments_pending": 0,
+  "all_agree": true,
   "verdicts": [
    {
     "id": "LSN-CON-05002#ex-1",
-    "agree": null,
-    "detail": "judgment: key says None; re-solver says 'Yes, f must attain a maximum value on [-1, 4] because f is differentiable, hence continuous, on the closed interval, so the Extreme Value Theorem applies.'",
+    "agree": true,
+    "detail": "judged: Same conclusion and numbers as the key; checked values (limits, signs, sums, derivatives) are consistent.",
     "method": "EVT"
    },
    {
     "id": "LSN-CON-05002#ex-2",
-    "agree": null,
-    "detail": "judgment: key says None; re-solver says 'No, g need not attain a minimum on [0, 6] because the jump at x = 2 means g is not continuous, so the Extreme Value Theorem does not apply.'",
+    "agree": true,
+    "detail": "judged: Same conclusion and numbers as the key; checked values (limits, signs, sums, derivatives) are consistent.",
     "method": "EVT hypothesis fails"
    },
    {
     "id": "LSN-CON-05002#chk-1",
-    "agree": null,
-    "detail": "judgment: key says 'Yes, by the Extreme Value Theorem.'; re-solver says 'Yes, f must attain a maximum value on [-1, 4] by the Extreme Value Theorem because f is continuous on the closed interval.'",
+    "agree": true,
+    "detail": "judged: Same conclusion and numbers as the key; checked values (limits, signs, sums, derivatives) are consistent.",
     "method": "EVT"
    },
    {
     "id": "LSN-CON-05002#chk-2",
-    "agree": null,
-    "detail": "judgment: key says 'Yes: continuous on the closed interval, Extreme Value Theorem.'; re-solver says 'Yes, h must attain a minimum value on [1, 4] by the Extreme Value Theorem because h is continuous on the closed interval [1, 4].'",
+    "agree": true,
+    "detail": "judged: Same conclusion and numbers as the key; checked values (limits, signs, sums, derivatives) are consistent.",
     "method": "EVT"
    },
    {

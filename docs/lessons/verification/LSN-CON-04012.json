@@ -3,26 +3,26 @@
  "resolve": {
   "date": "2026-09-29",
   "problems": 4,
-  "agreed": 1,
-  "judgments_pending": 3,
-  "all_agree": false,
+  "agreed": 4,
+  "judgments_pending": 0,
+  "all_agree": true,
   "verdicts": [
    {
     "id": "LSN-CON-04012#ex-1",
-    "agree": null,
-    "detail": "judgment: key says None; re-solver says \"The tangent-line value 2.2 is an overestimate because f''(x) = -4x < 0 on [1, 1.2], so f is concave down and lies below its tangent line.\"",
+    "agree": true,
+    "detail": "judged: Same conclusion and numbers as the key; checked values (limits, signs, sums, derivatives) are consistent.",
     "method": "Concavity via f''."
    },
    {
     "id": "LSN-CON-04012#chk-1",
-    "agree": null,
-    "detail": "judgment: key says None; re-solver says \"The value 2.2 is an overestimate because f''(x) = -4x < 0 on [1, 1.2], so f is concave down and lies below its tangent line.\"",
+    "agree": true,
+    "detail": "judged: Same conclusion and numbers as the key; checked values (limits, signs, sums, derivatives) are consistent.",
     "method": "Concavity via f''."
    },
    {
     "id": "LSN-CON-04012#chk-2",
-    "agree": null,
-    "detail": "judgment: key says None; re-solver says \"The tangent-line value 2.7 is an underestimate because f''(x) = 2x > 0 on [1, 1.1], so f is concave up and lies above its tangent line.\"",
+    "agree": true,
+    "detail": "judged: Same conclusion and numbers as the key; checked values (limits, signs, sums, derivatives) are consistent.",
     "method": "Concavity via f''."
    },
    {

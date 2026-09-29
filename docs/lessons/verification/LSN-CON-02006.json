@@ -1,0 +1,118 @@
+{
+ "id": "LSN-CON-02006",
+ "resolve": {
+  "date": "2026-09-29",
+  "problems": 4,
+  "agreed": 4,
+  "judgments_pending": 0,
+  "all_agree": true,
+  "verdicts": [
+   {
+    "id": "LSN-CON-02006#ex-1",
+    "agree": true,
+    "detail": "agree (symbolic)",
+    "method": "derivative definition"
+   },
+   {
+    "id": "LSN-CON-02006#chk-1",
+    "agree": true,
+    "detail": "agree (symbolic)",
+    "method": "f'(9)"
+   },
+   {
+    "id": "LSN-CON-02006#chk-2",
+    "agree": true,
+    "detail": "agree (symbolic)",
+    "method": "derivative of 3ln x at 1/2"
+   },
+   {
+    "id": "LSN-CON-02006#chk-3",
+    "agree": true,
+    "detail": "key option C, re-solver C",
+    "method": "derivative of 2sin at pi/3"
+   }
+  ],
+  "answers_file": "/tmp/claude-0/-home-user-growth/ac029253-8ff0-5a4b-8b5f-cdcaf5e8ff8d/scratchpad/verify/answers_04.json"
+ },
+ "audit": {
+  "date": "2026-09-29",
+  "auditor": "claude-opus-5-5",
+  "blocks": [
+   {
+    "id": "orientation",
+    "verdict": "ok",
+    "evidence": "Paraphrase of BC-CON-02006, BC-QA-02003 expected_solution_path and BC-ERR-02009; 48 words."
+   },
+   {
+    "id": "ki-1",
+    "verdict": "ok",
+    "evidence": "fixed 2026-09-29: rule list restated within BC-EK-FUN-3A4 scope: sin, cos, e^x, ln; the sqrt rule removed (no power rule EK in the bundle)."
+   },
+   {
+    "id": "st-1",
+    "verdict": "ok",
+    "evidence": "Cue, first line and rival (BC-ERR-02009) from BC-QA-02003 common_givens, expected_solution_path[0] and wrong_approaches."
+   },
+   {
+    "id": "ex-1",
+    "verdict": "ok",
+    "evidence": "SymPy: limit h to 0 of (4 sqrt(9+h) - 12)/h = 2/3; d/dx 4 sqrt x = 2/sqrt x."
+   },
+   {
+    "id": "err-BC-ERR-02009",
+    "verdict": "ok",
+    "evidence": "Verbatim from BC-ERR-02009; possible reason quotes BC-MIS-02004."
+   },
+   {
+    "id": "err-BC-ERR-02010",
+    "verdict": "ok",
+    "evidence": "Verbatim observed behaviour; wrong base 12 gives 2/sqrt 12, distinct from 2/3."
+   },
+   {
+    "id": "err-BC-ERR-02024",
+    "verdict": "ok",
+    "evidence": "fixed 2026-09-29: block dropped; BC-ERR-02024 concerns product or quotient rule positions. Removed from delivery, refresher, sources and prose."
+   },
+   {
+    "id": "representations",
+    "verdict": "ok",
+    "evidence": "Null; BC-SKL-02035 carries BC-REP-01 only."
+   },
+   {
+    "id": "BC-PRQ-02005",
+    "verdict": "ok",
+    "evidence": "Paraphrase of BC-PRQ-02005 description_plain and failure_signature."
+   },
+   {
+    "id": "chk-1",
+    "verdict": "ok",
+    "evidence": "SymPy: 2/sqrt(9) = 2/3."
+   },
+   {
+    "id": "chk-2",
+    "verdict": "ok",
+    "evidence": "SymPy: limit of (3 ln(1/2+t) - 3 ln(1/2))/t = 6."
+   },
+   {
+    "id": "chk-3",
+    "verdict": "ok",
+    "evidence": "fixed 2026-09-29: option A re-derived from BC-ERR-02010 (derivative evaluated at the wrong input): 2cos x at 0 gives 2. SymPy: key limit = 1, A = 2, B = 2cos(sqrt 3). Key C unchanged."
+   }
+  ],
+  "advice": [
+   "A second example from a sin, cos, exp or ln family would align ex-1 with the rules FUN-3A4 names; ex-1 uses sqrt x, whose rule belongs to topic 2.5.",
+   "Text delivery suits a symbolic recognition; the lesson teaches the stem (0/0 difference quotient shape), the first line (match f and a) and the rival (does not exist) well."
+  ],
+  "counts": {
+   "ok": 12,
+   "unsourced": 0,
+   "wrong": 0,
+   "over_cap": 0,
+   "lint": 0
+  },
+  "fix_notes": [
+   "ki-1 rules now sin, cos, e^x, ln (FUN-3A4 scope); err-BC-ERR-02024 dropped with BC-MIS-02011, BC-MIS-02014 sources; chk-3 option A now 'The limit is 2.' via BC-ERR-02010; word_count 361/342.",
+   "Left: ex-1 still uses the sqrt family (the archetype template draw; its rule is not sourced to an EK in this bundle, not flagged); preference for a second example from a FUN-3A4 family."
+  ]
+ }
+}

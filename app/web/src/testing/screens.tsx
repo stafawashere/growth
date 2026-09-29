@@ -30,6 +30,9 @@ import { CalibrationCurve } from "../progress/CalibrationCurve";
 import { MasteryMap } from "../progress/MasteryMap";
 import { RepresentationMatrix } from "../progress/RepresentationMatrix";
 import { ReviewScreen } from "../review/ReviewScreen";
+import { LESSON, planFor } from "../lessons/fixtures";
+import { LessonReader } from "../lessons/LessonReader";
+import { LessonLibrary } from "../progress/LessonLibrary";
 import { SessionScreen } from "../session/SessionScreen";
 import { AccessibilitySection } from "../settings/AccessibilitySection";
 import { OperatorSettings } from "../settings/ExperimentsSection";
@@ -383,7 +386,156 @@ async function accountScreen(status: client.AuthStatus, firstControl: string) {
    return container;
 }
 
+/* The lesson reader's screens (docs/plan/15-lessons.md UI), one per state that draws something of
+   its own: every mode block, the revealed steps, the wrong-beside-right pair, a check answered
+   wrong, the contrast screen, a refresher and the progress Lessons section. */
+function lessonReader(sectionIds: string[], checkIds: string[] = [], overrides: Partial<Parameters<typeof LessonReader>[0]> = {}) {
+   return inPage(
+      <LessonReader
+         lesson={LESSON}
+         plan={planFor(sectionIds, checkIds)}
+         band="low"
+         context="session"
+         conceptName="the product rule"
+         onComplete={vi.fn()}
+         onSkip={vi.fn()}
+         onSectionViewed={vi.fn()}
+         onCheckAnswer={vi.fn().mockResolvedValue({ correct: false, error_id: "BC-ERR-02020", anchor: "#err-BC-ERR-02020", explanation_anchor: null })}
+         {...overrides}
+      />
+   );
+}
+
+function revealEveryStep() {
+   while (screen.queryByTestId("lesson-next-step") !== null) {
+      fireEvent.click(screen.getByTestId("lesson-next-step"));
+   }
+}
+
+const LESSON_SCREENS: Screen[] = [
+   {
+      name: "lesson, worked example with every step shown",
+      mount: async () => {
+         const container = lessonReader(["LSN-CON-02013#s5"]);
+
+         revealEveryStep();
+
+         return container;
+      }
+   },
+   {
+      name: "lesson, error block with the wrong step beside the right step",
+      mount: async () => {
+         const container = lessonReader(["LSN-CON-02013#err-BC-ERR-02020"]);
+
+         revealEveryStep();
+
+         return container;
+      }
+   },
+   { name: "lesson, key idea with its quote", mount: async () => lessonReader(["LSN-CON-02013#s2"]) },
+   { name: "lesson, strategy", mount: async () => lessonReader(["LSN-CON-02013#s3"]) },
+   { name: "lesson, figure", mount: async () => lessonReader(["LSN-CON-02013#r-figure"]) },
+   { name: "lesson, table with marked rows", mount: async () => lessonReader(["LSN-CON-02013#r-table"]) },
+   { name: "lesson, figure that cannot be drawn shows its fallback", mount: async () => lessonReader(["LSN-CON-02013#r-unknown"]) },
+   {
+      name: "lesson, motion stepped one frame",
+      mount: async () => {
+         const container = lessonReader(["LSN-CON-02013#r-motion"]);
+
+         fireEvent.keyDown(screen.getByTestId("frame-stepper"), { key: "ArrowRight" });
+
+         return container;
+      }
+   },
+   { name: "lesson, interactive control", mount: async () => lessonReader(["LSN-CON-02013#r-interactive"]) },
+   {
+      name: "lesson, model with its current row",
+      mount: async () => {
+         const container = lessonReader(["LSN-CON-02013#r-model"]);
+
+         fireEvent.click(screen.getByTestId("model-run"));
+
+         return container;
+      }
+   },
+   {
+      name: "lesson, decision stems side by side",
+      mount: async () => {
+         const container = lessonReader(["LSN-CON-02013#s3"], [], { lesson: { ...LESSON, kind: "decision" } });
+
+         fireEvent.click(screen.getByTestId("lesson-next"));
+         await screen.findByTestId("contrast-panel");
+
+         return container;
+      }
+   },
+   {
+      name: "lesson, check answered wrong with its error link",
+      mount: async () => {
+         const container = lessonReader([], ["LSN-CON-02013#chk-3"]);
+
+         fireEvent.click(container.querySelector("input[type='radio']")!);
+         fireEvent.click(screen.getByTestId("lesson-check-submit"));
+         await screen.findByTestId("lesson-link");
+
+         return container;
+      }
+   },
+   {
+      name: "lesson, refresher panel",
+      mount: async () => inPage(
+         <LessonReader
+            lesson={LESSON}
+            plan={planFor(["LSN-CON-02013#s2", "LSN-CON-02013#err-BC-ERR-02020", "LSN-CON-02013#s5"], [], "T1")}
+            band="low"
+            context="session"
+            conceptName="the product rule"
+            onComplete={vi.fn()}
+            onSkip={vi.fn()}
+            onSectionViewed={vi.fn()}
+            onCheckAnswer={vi.fn()}
+         />
+      )
+   },
+   {
+      name: "lesson, library end screen",
+      mount: async () => {
+         const container = lessonReader(["LSN-CON-02013#s1"], [], { context: "library" });
+
+         fireEvent.click(screen.getByTestId("lesson-next"));
+
+         return container;
+      }
+   },
+   {
+      name: "progress Lessons section",
+      mount: async () =>
+         inPage(
+            <section className="card">
+               <LessonLibrary
+                  library={{
+                     units: [
+                        {
+                           id: "BC-UNIT-02",
+                           name: "Differentiation: Definition and Fundamental Properties",
+                           order: 2,
+                           concepts: [
+                              { concept_id: "BC-CON-02013", name: "The product rule", lesson_id: "LSN-CON-02013", version: 1, servable: true, state: "read", read_at: "2026-10-03T09:00:00Z" },
+                              { concept_id: "BC-CON-02014", name: "The quotient rule", lesson_id: null, version: null, servable: false, state: "not_available", read_at: null }
+                           ]
+                        }
+                     ]
+                  }}
+                  onOpenLesson={vi.fn()}
+               />
+            </section>
+         )
+   }
+];
+
 export const SCREENS: Screen[] = [
+   ...LESSON_SCREENS,
    {
       name: "app shell with the token notice",
       mount: async () => {

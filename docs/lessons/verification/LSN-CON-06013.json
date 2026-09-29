@@ -1,0 +1,125 @@
+{
+ "id": "LSN-CON-06013",
+ "resolve": {
+  "date": "2026-09-29",
+  "problems": 4,
+  "agreed": 4,
+  "judgments_pending": 0,
+  "all_agree": true,
+  "verdicts": [
+   {
+    "id": "LSN-CON-06013#ex-1",
+    "agree": true,
+    "detail": "agree (symbolic)",
+    "method": "Hand computation (areas, FTC, substitution)."
+   },
+   {
+    "id": "LSN-CON-06013#chk-1",
+    "agree": true,
+    "detail": "agree (symbolic)",
+    "method": "Hand computation (areas, FTC, substitution)."
+   },
+   {
+    "id": "LSN-CON-06013#chk-2",
+    "agree": true,
+    "detail": "agree (symbolic)",
+    "method": "Hand computation (areas, FTC, substitution)."
+   },
+   {
+    "id": "LSN-CON-06013#chk-3",
+    "agree": true,
+    "detail": "agree (symbolic)",
+    "method": "Hand computation (areas, FTC, substitution)."
+   }
+  ],
+  "answers_file": "/tmp/claude-0/-home-user-growth/ac029253-8ff0-5a4b-8b5f-cdcaf5e8ff8d/scratchpad/verify/answers_09.json"
+ },
+ "audit": {
+  "date": "2026-09-29",
+  "auditor": "claude-opus-5-5",
+  "blocks": [
+   {
+    "id": "orientation",
+    "verdict": "ok",
+    "evidence": "Paraphrases BC-CON-06013 description_formal; 24 words."
+   },
+   {
+    "id": "ki-1",
+    "verdict": "ok",
+    "evidence": "Matches the topic's Net change and average value paragraph; 30 words."
+   },
+   {
+    "id": "st-1",
+    "verdict": "ok",
+    "evidence": "Method from BC-QA-08001 expected_solution_path; rival is wrong_approaches[0], averaging endpoint values."
+   },
+   {
+    "id": "st-2",
+    "verdict": "ok",
+    "evidence": "Method is BC-QA-06015 expected_solution_path[0]; rival wrong_approaches[0]; 1/(b - a) marker from parameter_spec notes."
+   },
+   {
+    "id": "ex-1",
+    "verdict": "ok",
+    "evidence": "SymPy N((1/3)Integral(4cos(t^2/2)+1,(t,0,3))) = 1.76865, reported 1.769; draw meets amplitude > abs(shift) and length^2 >= 4 scale."
+   },
+   {
+    "id": "what_a_reader_scores:ex-1",
+    "verdict": "ok",
+    "evidence": "Lines reproduce BC-PT-99020 and BC-PT-99004 record fields including the precision rule."
+   },
+   {
+    "id": "err-BC-ERR-06016",
+    "verdict": "ok",
+    "evidence": "Record text matches; BC-MIS-06014 linked and quoted."
+   },
+   {
+    "id": "err-BC-ERR-06030",
+    "verdict": "ok",
+    "evidence": "Record text matches; BC-MIS-06014 linked."
+   },
+   {
+    "id": "err-BC-ERR-99015",
+    "verdict": "ok",
+    "evidence": "W(0) = 5 so (W(3) - W(0))/3 = (4cos(9/2) + 1 - 5)/3; BC-MIS-99006 linked."
+   },
+   {
+    "id": "err-BC-ERR-06032",
+    "verdict": "ok",
+    "evidence": "t^2/2 read in degrees is pi t^2/360; SymPy 4.998 versus 1.769, distinct."
+   },
+   {
+    "id": "representations",
+    "verdict": "ok",
+    "evidence": "null; BC-REP-01, 05, 09 are not figure bearing."
+   },
+   {
+    "id": "chk-1",
+    "verdict": "ok",
+    "evidence": "SymPy 1.76865, key 1.769."
+   },
+   {
+    "id": "chk-2",
+    "verdict": "ok",
+    "evidence": "SymPy (2/7)Integral(3cos(t^2/2)-1,(t,0,7/2)) = -0.29655, key -0.297."
+   },
+   {
+    "id": "chk-3",
+    "verdict": "ok",
+    "evidence": "SymPy key 3.15259 to 3.153; A (W(4)-W(0))/4 = -0.627; C degree mode 7.995; D undivided 12.610; all verified."
+   }
+  ],
+  "advice": [
+   "err-BC-ERR-06030 is an interpretation error, but its wrong_step shows the undivided integral expression, which is the BC-ERR-06016 picture; the wrong step should keep the average expression and change only the sentence.",
+   "The lesson has no bridge; BC-SKL-06038 has a hard prerequisite BC-SKL-06034 that a bridge could name.",
+   "Recognition of the average value stem and its rival are taught; the interpretation habit (units, interval) from BC-QA-06015 has no worked example or check."
+  ],
+  "counts": {
+   "ok": 14,
+   "unsourced": 0,
+   "wrong": 0,
+   "over_cap": 0,
+   "lint": 0
+  }
+ }
+}

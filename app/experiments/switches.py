@@ -1,7 +1,8 @@
 """The A/B switches of docs/plan/10 "A/B readiness", per-item or per-skill randomisation within
 the one student.
 
-Only the two experiments 10 marks powered for a single student are defined. Each has a state:
+The two experiments 10 marks powered for a single student are defined, and lesson_first_contact
+from docs/plan/15-lessons.md, Within-student A/B, whose power 15 calls marginal. Each has a state:
 off serves the shipped arm to every unit, on serves the treatment arm to every unit, randomised
 assigns each new unit an arm and serves it. Turning a switch to randomised assigns only units first
 seen after that instant, and a unit's arm is written once and never changed, so a skill put in the
@@ -33,6 +34,7 @@ STATES = (OFF, ON, RANDOMISED)
 
 FEEDBACK_ELABORATION = "feedback_elaboration"
 RETRIEVAL_ENTRY = "retrieval_entry"
+LESSON_FIRST_CONTACT = "lesson_first_contact"
 
 PROBABILITY_BAND_EDGE = 0.5
 
@@ -64,6 +66,13 @@ DEFINITIONS = {
       control_arm="entry_1",
       treatment_arm="entry_3",
       description="A skill joins the mixed-review pool after 1 against 3 unaided successes at stage unsupported.",
+   ),
+   LESSON_FIRST_CONTACT: Definition(
+      name=LESSON_FIRST_CONTACT,
+      unit="concept",
+      control_arm="lesson_before_first_item",
+      treatment_arm="example_first",
+      description="A concept's lesson before its first item against the first item example first, the lesson after it.",
    ),
 }
 

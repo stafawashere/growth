@@ -1,0 +1,151 @@
+{
+ "id": "LSN-CON-07005",
+ "resolve": {
+  "date": "2026-09-29",
+  "problems": 5,
+  "agreed": 5,
+  "judgments_pending": 0,
+  "all_agree": true,
+  "verdicts": [
+   {
+    "id": "LSN-CON-07005#ex-1",
+    "agree": true,
+    "detail": "judged: Same conclusion and numbers as the key; checked values (limits, signs, sums, derivatives) are consistent.",
+    "method": "For y>1 and x>0 the sign of dy/dx is the sign of (x-2)."
+   },
+   {
+    "id": "LSN-CON-07005#ex-2",
+    "agree": true,
+    "detail": "judged: Same conclusion and numbers as the key; checked values (limits, signs, sums, derivatives) are consistent.",
+    "method": "Slope (2-y)/2 is negative for y>2; solve the linear equation."
+   },
+   {
+    "id": "LSN-CON-07005#chk-1",
+    "agree": true,
+    "detail": "judged: Same conclusion and numbers as the key; checked values (limits, signs, sums, derivatives) are consistent.",
+    "method": "Sign of (x-2) with other factors positive."
+   },
+   {
+    "id": "LSN-CON-07005#chk-2",
+    "agree": true,
+    "detail": "judged: Same conclusion and numbers as the key; checked values (limits, signs, sums, derivatives) are consistent.",
+    "method": "For y<0, -2y>0 and t+2>0, so the sign of dy/dt is the sign of (t-3)."
+   },
+   {
+    "id": "LSN-CON-07005#chk-3",
+    "agree": true,
+    "detail": "key option A, re-solver A",
+    "method": "For y>2, x>0 the sign is the sign of -(x-4): positive to negative, so a maximum at x=4."
+   }
+  ],
+  "answers_file": "/tmp/claude-0/-home-user-growth/ac029253-8ff0-5a4b-8b5f-cdcaf5e8ff8d/scratchpad/verify/answers_10.json"
+ },
+ "audit": {
+  "date": "2026-09-29",
+  "auditor": "claude-opus-5-5",
+  "blocks": [
+   {
+    "id": "orientation",
+    "verdict": "ok",
+    "evidence": "Paraphrases BC-CON-07005 description_plain and the Sketching standard (never crossing the equilibrium segments, sg-23:9); a horizontal row of zero slope is a constant solution."
+   },
+   {
+    "id": "ki-1",
+    "verdict": "wrong",
+    "evidence": "\"the flat row is an equilibrium they approach but never cross\" is false in general: for dy/dx = x(y-2), y(0) = 3, SymPy gives y = e^(x^2/2)+2, which tends to infinity both ways and never approaches y = 2. The research Reading behaviour paragraph says only \"whether they approach\"."
+   },
+   {
+    "id": "st-1",
+    "verdict": "ok",
+    "evidence": "BC-QA-07010 expected_solution_path[0] and wrong_approaches."
+   },
+   {
+    "id": "st-2",
+    "verdict": "ok",
+    "evidence": "BC-QA-07001 expected_solution_path[0] and [1], wrong_approaches, common_givens."
+   },
+   {
+    "id": "st-3",
+    "verdict": "ok",
+    "evidence": "BC-QA-07005 expected_solution_path[0] and [1], wrong_approaches."
+   },
+   {
+    "id": "ex-1",
+    "verdict": "ok",
+    "evidence": "SymPy: with y > 1 and x > 0 only x-2 vanishes; sign of (y-1)(x+1)(x-2) is negative at x = 1, positive for x > 2; relative minimum at x = 2."
+   },
+   {
+    "id": "ex-2",
+    "verdict": "ok",
+    "evidence": "SymPy: (2-3)/2 = -1/2 at (0,3); zero at y = 2; solution 2+e^(-x/2) stays above and flattens toward 2."
+   },
+   {
+    "id": "what_a_reader_scores:ex-1",
+    "verdict": "ok",
+    "evidence": "BC-PT-99010 line matches the bundle fields."
+   },
+   {
+    "id": "what_a_reader_scores:ex-2",
+    "verdict": "ok",
+    "evidence": "BC-PT-99065 line matches the bundle fields."
+   },
+   {
+    "id": "err-BC-ERR-05013",
+    "verdict": "wrong",
+    "evidence": "The record is an extremum declared where the derivative keeps its sign; on this draw the sign of x-2 does change at 2 (SymPy: -1 at x = 1, +1 at x = 3), so the \"wrong step\" reaches a true conclusion and the block does not exhibit the recorded error."
+   },
+   {
+    "id": "err-BC-ERR-05021",
+    "verdict": "ok",
+    "evidence": "Record fields verbatim; sign left of 2 is -1, so reading +1 gives a false maximum."
+   },
+   {
+    "id": "err-BC-ERR-05025",
+    "verdict": "ok",
+    "evidence": "Record fields verbatim; x = -1 lies outside x > 0; BC-MIS-05028 is linked."
+   },
+   {
+    "id": "err-BC-ERR-07013",
+    "verdict": "ok",
+    "evidence": "Record fields verbatim; x(2-y)/2 versus (2-y)/2."
+   },
+   {
+    "id": "representations",
+    "verdict": "ok",
+    "evidence": "null; the interactive orientation and ki-1 motion carry BC-REP-07."
+   },
+   {
+    "id": "BC-PRQ-07006",
+    "verdict": "ok",
+    "evidence": "Paraphrases description_plain (locating a point from its coordinates)."
+   },
+   {
+    "id": "chk-1",
+    "verdict": "ok",
+    "evidence": "SymPy: x-2 = -1 at x = 1; key relative minimum at x = 2."
+   },
+   {
+    "id": "chk-2",
+    "verdict": "ok",
+    "evidence": "SymPy: -2y > 0 for y < 0; sign of (t+2)(t-3) negative then positive; relative minimum at t = 3."
+   },
+   {
+    "id": "chk-3",
+    "verdict": "ok",
+    "evidence": "SymPy: -(y-2) < 0 for y > 2; product positive for 0 < x < 4 and negative after; relative maximum at 4. Option D: sign changes negative to positive at -3, so \"minimum at -3\" is consistent."
+   }
+  ],
+  "advice": [
+   "Replace ki-1 \"approach but never cross\" with \"never cross; whether a solution approaches the level depends on the sign of the right side on each side of it\".",
+   "err-BC-ERR-05013 needs a draw where the right side vanishes without a sign change (a squared factor), or the block should be reassigned; chk-3 option C uses the same error path for a missing reason rather than a missing sign change.",
+   "Interactive for the orientation reading and motion for tracing the curve suit their ideas; the lesson teaches the first line (right side zero) and the rival (solving first) well."
+  ],
+  "counts": {
+   "ok": 16,
+   "unsourced": 0,
+   "wrong": 2,
+   "over_cap": 0,
+   "lint": 0
+  }
+ }
+}

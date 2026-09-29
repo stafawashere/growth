@@ -1,0 +1,93 @@
+{
+ "id": "LSN-CON-07003",
+ "resolve": {
+  "date": "2026-09-29",
+  "problems": 3,
+  "agreed": 3,
+  "judgments_pending": 0,
+  "all_agree": true,
+  "verdicts": [
+   {
+    "id": "LSN-CON-07003#ex-1",
+    "agree": true,
+    "detail": "agree (symbolic)",
+    "method": "dy/dx = Ce^x = y-4 for all C; y(0)=4+C=2 gives C=-2."
+   },
+   {
+    "id": "LSN-CON-07003#chk-1",
+    "agree": true,
+    "detail": "agree (symbolic)",
+    "method": "y(0)=4+C=2 gives C=-2."
+   },
+   {
+    "id": "LSN-CON-07003#chk-2",
+    "agree": true,
+    "detail": "agree (symbolic)",
+    "method": "Verify dy/dx=-2Ce^(-2x)=-2(y-1); y(0)=1+C=3 gives C=2."
+   }
+  ],
+  "answers_file": "/tmp/claude-0/-home-user-growth/ac029253-8ff0-5a4b-8b5f-cdcaf5e8ff8d/scratchpad/verify/answers_10.json"
+ },
+ "audit": {
+  "date": "2026-09-29",
+  "auditor": "claude-opus-5-5",
+  "blocks": [
+   {
+    "id": "orientation",
+    "verdict": "ok",
+    "evidence": "Paraphrases BC-CON-07003 and the multi-concept variant in the 7.2 Assessment behaviour paragraph; 24 words."
+   },
+   {
+    "id": "ki-1",
+    "verdict": "ok",
+    "evidence": "Matches the Multiplicity paragraph and description_plain (one curve through each point); quote is FUN-7.B.2 verbatim on ced:138."
+   },
+   {
+    "id": "st-1",
+    "verdict": "ok",
+    "evidence": "Method from expected_solution_path[0], rival from wrong_approaches, feature from difficulty_variables \"arbitrary constant\"."
+   },
+   {
+    "id": "ex-1",
+    "verdict": "ok",
+    "evidence": "SymPy: diff(4+Ce^x) = Ce^x = (4+Ce^x)-4; 4+C = 2 gives C = -2; particular solution 4-2e^x."
+   },
+   {
+    "id": "what_a_reader_scores:ex-1",
+    "verdict": "ok",
+    "evidence": "BC-PT-99068 and BC-PT-99005 lines match the bundle point type fields."
+   },
+   {
+    "id": "err-BC-ERR-07009",
+    "verdict": "ok",
+    "evidence": "Record fields verbatim; BC-MIS-07005 is a linked possible misconception."
+   },
+   {
+    "id": "representations",
+    "verdict": "ok",
+    "evidence": "null; BC-REP-01, 04, 06 only."
+   },
+   {
+    "id": "chk-1",
+    "verdict": "ok",
+    "evidence": "SymPy: 4+C = 2 gives C = -2, key 4-2e^x."
+   },
+   {
+    "id": "chk-2",
+    "verdict": "ok",
+    "evidence": "SymPy: diff(1+Ce^(-2x)) = -2Ce^(-2x) = -2((1+Ce^(-2x))-1); 1+C = 3 gives C = 2; key 1+2e^(-2x)."
+   }
+  ],
+  "advice": [
+   "The error record is named \"General solution reported as the only solution\"; the block shows a particular solution called the only one. Consider a wrong step that presents the family as a single function, as observed_behavior reads.",
+   "The lesson teaches the constant held through differentiation and the point fixing it; recognition of a C in the candidate as the stem signal is clear."
+  ],
+  "counts": {
+   "ok": 9,
+   "unsourced": 0,
+   "wrong": 0,
+   "over_cap": 0,
+   "lint": 0
+  }
+ }
+}

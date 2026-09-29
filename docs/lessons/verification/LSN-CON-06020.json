@@ -1,0 +1,132 @@
+{
+ "id": "LSN-CON-06020",
+ "resolve": {
+  "date": "2026-09-29",
+  "problems": 5,
+  "agreed": 5,
+  "judgments_pending": 0,
+  "all_agree": true,
+  "verdicts": [
+   {
+    "id": "LSN-CON-06020#ex-1",
+    "agree": true,
+    "detail": "agree (symbolic)",
+    "method": "Integration by parts with u=3x, dv=e^(-2x) dx."
+   },
+   {
+    "id": "LSN-CON-06020#ex-2",
+    "agree": true,
+    "detail": "agree (symbolic)",
+    "method": "Polynomial division: 4(x^2+5)/(x-2)=4(x+2)+36/(x-2)."
+   },
+   {
+    "id": "LSN-CON-06020#chk-1",
+    "agree": true,
+    "detail": "agree (symbolic)",
+    "method": "Integrate (3/2)e^(-2x) to get -(3/4)e^(-2x)."
+   },
+   {
+    "id": "LSN-CON-06020#chk-2",
+    "agree": true,
+    "detail": "agree (symbolic)",
+    "method": "Integration by parts with u=2x, dv=e^(3x) dx."
+   },
+   {
+    "id": "LSN-CON-06020#chk-3",
+    "agree": true,
+    "detail": "key option C, re-solver C",
+    "method": "Parts setup: u=5x, dv=e^(-x)dx (A and D are misapplied substitutions, B is not a first line)."
+   }
+  ],
+  "answers_file": "/tmp/claude-0/-home-user-growth/ac029253-8ff0-5a4b-8b5f-cdcaf5e8ff8d/scratchpad/verify/answers_10.json"
+ },
+ "audit": {
+  "date": "2026-09-29",
+  "auditor": "claude-opus-5-5",
+  "blocks": [
+   {
+    "id": "orientation",
+    "verdict": "ok",
+    "evidence": "Paraphrases BC-CON-06020 and expected_solution_path; 29 words."
+   },
+   {
+    "id": "ki-1",
+    "verdict": "ok",
+    "evidence": "Paraphrases research 6.14 Structural markers; quote found on ced:131."
+   },
+   {
+    "id": "ki-2",
+    "verdict": "ok",
+    "evidence": "Paraphrases BC-EK-FUN-6D3 (long division) and expected_solution_path chaining step."
+   },
+   {
+    "id": "ki-3",
+    "verdict": "ok",
+    "evidence": "Paraphrases BC-EK-FUN-6C3 and research 6.14 Structural markers last clause."
+   },
+   {
+    "id": "st-1",
+    "verdict": "ok",
+    "evidence": "Method expected_solution_path[0]; rival BC-ERR-06020 from wrong_approaches."
+   },
+   {
+    "id": "ex-1",
+    "verdict": "ok",
+    "evidence": "SymPy: integrate(3x e^(-2x)) minus key = 0."
+   },
+   {
+    "id": "ex-2",
+    "verdict": "ok",
+    "evidence": "SymPy: apart(4(x^2+5)/(x-2)) = 4x + 8 + 36/(x-2); derivative of key minus integrand = 0."
+   },
+   {
+    "id": "err-BC-ERR-06020",
+    "verdict": "ok",
+    "evidence": "Record verbatim; 3x times (-1/2)e^(-2x) reproduces the wrong line."
+   },
+   {
+    "id": "err-BC-ERR-06022",
+    "verdict": "ok",
+    "evidence": "SymPy: (3x^2/2)(-(1/2)e^(-2x)) = -3x^2 e^(-2x)/4."
+   },
+   {
+    "id": "representations",
+    "verdict": "ok",
+    "evidence": "null; BC-REP-01 on the archetype, BC-REP-09 only on ki-3 which has no example."
+   },
+   {
+    "id": "bridge-BC-PRQ-06001",
+    "verdict": "ok",
+    "evidence": "Paraphrases description_plain and failure_signature."
+   },
+   {
+    "id": "chk-1",
+    "verdict": "ok",
+    "evidence": "SymPy: finish of the parts expression matches the key."
+   },
+   {
+    "id": "chk-2",
+    "verdict": "ok",
+    "evidence": "SymPy: integrate(2x e^(3x)) minus key = 0."
+   },
+   {
+    "id": "chk-3",
+    "verdict": "ok",
+    "evidence": "Key C is the parts first line; B reproduces (5x^2/2)(-e^(-x)); A and D are substitutions whose precondition fails."
+   }
+  ],
+  "advice": [
+   "No what_a_reader_scores entry: BC-QA-06016 has no point_types, so scoring habits are absent; the scoring_pattern (setup and antiderivative scored separately, sg-23:18) could be stated in a why line.",
+   "ex-2 exercises chaining only through long division; no block shows a technique that leaves a second non basic integral, which ki-2 names.",
+   "st-1 cue says a transcendental factor while common_givens names a cosine; acceptable as a generalisation.",
+   "A side by side contrast of the markers (substitution, parts, partial fractions, division) would serve ki-1 better than plain text."
+  ],
+  "counts": {
+   "ok": 14,
+   "unsourced": 0,
+   "wrong": 0,
+   "over_cap": 0,
+   "lint": 0
+  }
+ }
+}

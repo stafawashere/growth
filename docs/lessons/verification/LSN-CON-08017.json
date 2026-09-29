@@ -1,0 +1,151 @@
+{
+ "id": "LSN-CON-08017",
+ "resolve": {
+  "date": "2026-09-29",
+  "problems": 5,
+  "agreed": 5,
+  "judgments_pending": 0,
+  "all_agree": true,
+  "verdicts": [
+   {
+    "id": "LSN-CON-08017#ex-1",
+    "agree": true,
+    "detail": "agree (symbolic)",
+    "method": "Disks: pi integral of x from 0 to 4."
+   },
+   {
+    "id": "LSN-CON-08017#ex-2",
+    "agree": true,
+    "detail": "agree (symbolic)",
+    "method": "Disks: pi integral of x^4 from 0 to 2."
+   },
+   {
+    "id": "LSN-CON-08017#chk-1",
+    "agree": true,
+    "detail": "agree (symbolic)",
+    "method": "Direct integration."
+   },
+   {
+    "id": "LSN-CON-08017#chk-2",
+    "agree": true,
+    "detail": "agree (symbolic)",
+    "method": "Disks: pi integral of 9x^2 from 0 to 2."
+   },
+   {
+    "id": "LSN-CON-08017#chk-3",
+    "agree": true,
+    "detail": "agree (symbolic)",
+    "method": "Disks: pi integral of 4x from 1 to 4."
+   }
+  ],
+  "answers_file": "/tmp/claude-0/-home-user-growth/ac029253-8ff0-5a4b-8b5f-cdcaf5e8ff8d/scratchpad/verify/answers_13.json"
+ },
+ "audit": {
+  "date": "2026-09-29",
+  "auditor": "claude-opus-5-5",
+  "blocks": [
+   {
+    "id": "orientation",
+    "verdict": "ok",
+    "evidence": "Paraphrases BC-CON-08017 and 8.9 Assessment behaviour (multiple of pi without calculator); 36 words."
+   },
+   {
+    "id": "ki-1",
+    "verdict": "ok",
+    "evidence": "8.9 Disc method, Variable of integration and Notation paragraphs; 36 words."
+   },
+   {
+    "id": "st-1",
+    "verdict": "ok",
+    "evidence": "From BC-QA-08012 and 8.9 MCQ distractors (unsquared radius, missing pi); within caps."
+   },
+   {
+    "id": "ex-1",
+    "verdict": "ok",
+    "evidence": "SymPy: radius sqrt(x), Integral(pi*x,(x,0,4)) = 8*pi."
+   },
+   {
+    "id": "ex-2",
+    "verdict": "ok",
+    "evidence": "SymPy: Integral(pi*x^4,(x,0,2)) = 32*pi/5."
+   },
+   {
+    "id": "reader-ex-1",
+    "verdict": "ok",
+    "evidence": "BC-PT-99058 line matches bundle fields."
+   },
+   {
+    "id": "reader-ex-2",
+    "verdict": "ok",
+    "evidence": "BC-PT-99001, 99058, 99004 lines match bundle fields."
+   },
+   {
+    "id": "err-BC-ERR-08023",
+    "verdict": "ok",
+    "evidence": "Verbatim; SymPy Integral(pi*x,(y,0,4)) = 4*pi*x, not a number, as the consequence states."
+   },
+   {
+    "id": "err-BC-ERR-08024",
+    "verdict": "ok",
+    "evidence": "Verbatim record text; shown mirrored (x integral on y values 0 to 2), disclosed inferred; SymPy 2*pi vs 8*pi."
+   },
+   {
+    "id": "err-BC-ERR-08036",
+    "verdict": "ok",
+    "evidence": "Verbatim; SymPy unsquared 16*pi/3 vs 8*pi."
+   },
+   {
+    "id": "err-BC-ERR-08037",
+    "verdict": "ok",
+    "evidence": "Verbatim; SymPy 8 vs 8*pi."
+   },
+   {
+    "id": "representations",
+    "verdict": "ok",
+    "evidence": "null; 8.9 conversions carried by ki-1 motion."
+   },
+   {
+    "id": "bridge-BC-PRQ-06002",
+    "verdict": "ok",
+    "evidence": "Paraphrase of BC-PRQ-06002."
+   },
+   {
+    "id": "bridge-BC-PRQ-08002",
+    "verdict": "ok",
+    "evidence": "Paraphrase of BC-PRQ-08002."
+   },
+   {
+    "id": "bridge-BC-PRQ-08004",
+    "verdict": "ok",
+    "evidence": "Paraphrase of BC-PRQ-08004."
+   },
+   {
+    "id": "chk-1",
+    "verdict": "ok",
+    "evidence": "SymPy: 8*pi."
+   },
+   {
+    "id": "chk-2",
+    "verdict": "ok",
+    "evidence": "SymPy: Integral(pi*9x^2,(x,0,2)) = 24*pi."
+   },
+   {
+    "id": "chk-3",
+    "verdict": "ok",
+    "evidence": "SymPy: key 30*pi; A limits 2 to 4 gives 24*pi; B pi*2sqrt(x) gives 28*pi/3; D 30; distinct."
+   }
+  ],
+  "advice": [
+   "err-BC-ERR-08037 possible reason cites BC-MIS-08019 (a fraction in front of the area) for a dropped pi; BC-MIS-08020 or 08015 may read closer.",
+   "err-BC-ERR-08024 is shown mirrored from its record wording; the served observed_behavior (an integral in y with x limits) does not match the displayed step.",
+   "ki-1 as motion suits the sweep of a region about an axis. Lesson teaches stem, first line and rival well."
+  ],
+  "counts": {
+   "ok": 18,
+   "unsourced": 0,
+   "wrong": 0,
+   "over_cap": 0,
+   "lint": 0
+  }
+ }
+}

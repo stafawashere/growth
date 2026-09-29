@@ -1,0 +1,138 @@
+{
+ "id": "LSN-CON-04004",
+ "resolve": {
+  "date": "2026-09-29",
+  "problems": 4,
+  "agreed": 4,
+  "judgments_pending": 0,
+  "all_agree": true,
+  "verdicts": [
+   {
+    "id": "LSN-CON-04004#ex-1",
+    "agree": true,
+    "detail": "agree (symbolic)",
+    "method": "v<0"
+   },
+   {
+    "id": "LSN-CON-04004#chk-1",
+    "agree": true,
+    "detail": "agree (symbolic)",
+    "method": "v<0"
+   },
+   {
+    "id": "LSN-CON-04004#chk-2",
+    "agree": true,
+    "detail": "agree (symbolic)",
+    "method": "v>0"
+   },
+   {
+    "id": "LSN-CON-04004#chk-3",
+    "agree": true,
+    "detail": "key option A, re-solver A",
+    "method": "v(2)=-1"
+   }
+  ],
+  "answers_file": "/tmp/claude-0/-home-user-growth/ac029253-8ff0-5a4b-8b5f-cdcaf5e8ff8d/scratchpad/verify/answers_05.json"
+ },
+ "audit": {
+  "date": "2026-09-29",
+  "auditor": "claude-opus-5-5",
+  "blocks": [
+   {
+    "id": "orientation",
+    "verdict": "ok",
+    "evidence": "Paraphrases BC-CON-04004 description_plain and the 4.2 Sign analysis paragraph."
+   },
+   {
+    "id": "ki-1",
+    "verdict": "ok",
+    "evidence": "4.2 Speed and Sign analysis paragraphs (crabbc-25:22); no quote claimed."
+   },
+   {
+    "id": "st-1",
+    "verdict": "ok",
+    "evidence": "Cue from BC-QA-04004 common_givens and typical_wording; rivals BC-ERR-04010 and BC-ERR-04008 from wrong_approaches."
+   },
+   {
+    "id": "st-2",
+    "verdict": "ok",
+    "evidence": "Cue from BC-QA-04010 common_givens; method from expected_solution_path; rival BC-ERR-08011."
+   },
+   {
+    "id": "ex-1",
+    "verdict": "ok",
+    "evidence": "SymPy: factor(diff((t-2)**2*(t-4)))=(t-2)(3t-10), zeros [2,10/3], v<0 on (2,10/3); turning_time 10/3 non integer as spec requires."
+   },
+   {
+    "id": "what_a_reader_scores:ex-1",
+    "verdict": "ok",
+    "evidence": "Empty; BC-QA-04004 point_types is empty, so nothing to copy."
+   },
+   {
+    "id": "err-BC-ERR-04007",
+    "verdict": "ok",
+    "evidence": "SymPy: v(3)=-1, speed Abs(-1)=1; scoring_consequence copied."
+   },
+   {
+    "id": "err-BC-ERR-04008",
+    "verdict": "ok",
+    "evidence": "SymPy: x<0 on (0,2) union (2,4); against v<0 on (2,10/3); scoring_consequence copied (cr-22:20)."
+   },
+   {
+    "id": "err-BC-ERR-04010",
+    "verdict": "ok",
+    "evidence": "SymPy: v(3)=-1<0, v(4)=4>0, so integer sampling misses 10/3; (2,3) is a plausible sampled answer; scoring_consequence copied."
+   },
+   {
+    "id": "err-BC-ERR-07026",
+    "verdict": "ok",
+    "evidence": "fixed 2026-09-29: restaged on st-2's BC-QA-04010 question built on ex-1's velocity with x(0)=-16 given; right step now t^3-8t^2+20t-16 (SymPy: expand((t-2)**2*(t-4)) equals it, integrate((t-2)*(3t-10)) = t^3-8t^2+20t); Traps prose, sources and inferred claim updated."
+   },
+   {
+    "id": "representations",
+    "verdict": "ok",
+    "evidence": "null."
+   },
+   {
+    "id": "bridge-BC-PRQ-04005",
+    "verdict": "ok",
+    "evidence": "Paraphrases BC-PRQ-04005 description_plain and failure_signature."
+   },
+   {
+    "id": "bridge-BC-PRQ-04009",
+    "verdict": "ok",
+    "evidence": "Paraphrases BC-PRQ-04009 description_plain and failure_signature."
+   },
+   {
+    "id": "chk-1",
+    "verdict": "ok",
+    "evidence": "SymPy: zeros of (t-2)(3t-10) are 2, 10/3; v<0 on (2,10/3)."
+   },
+   {
+    "id": "chk-2",
+    "verdict": "ok",
+    "evidence": "SymPy: v=-2(t-1)(3t-7), v>0 on (1,7/3); turning 7/3 non integer."
+   },
+   {
+    "id": "chk-3",
+    "verdict": "ok",
+    "evidence": "SymPy: v=(t-3)(3t-5), v(2)=-1, x(2)=1, zeros 5/3 and 3; each distractor traces its named error."
+   }
+  ],
+  "advice": [
+   "err-BC-ERR-07026 (position rebuilt with no constant) does not arise from ex-1's question and dilutes the direction lesson; consider dropping it or pairing it with a BC-QA-04010 example.",
+   "ki-1 as interactive suits a sign reading across the interval. The lesson teaches the stem, the first line v(t)=0 and the sampling rival well; it names no scoring point, since BC-QA-04004 has none, so the interval communication habit rests on crabbc-25:22 only."
+  ],
+  "counts": {
+   "ok": 16,
+   "unsourced": 0,
+   "wrong": 0,
+   "over_cap": 0,
+   "lint": 0
+  },
+  "fix_notes": [
+   "err-BC-ERR-07026 now stated on a BC-QA-04010 question (v and x(0)=-16 given, x(t) asked) rather than on ex-1, which asks for direction; word_count.full 531.",
+   "Left as preferences: no BC-QA-04010 worked example; no scoring point named since BC-QA-04004 has none; ki-1 interactive mode."
+  ]
+ }
+}

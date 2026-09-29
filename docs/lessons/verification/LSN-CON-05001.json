@@ -1,0 +1,157 @@
+{
+ "id": "LSN-CON-05001",
+ "resolve": {
+  "date": "2026-09-29",
+  "problems": 5,
+  "agreed": 5,
+  "judgments_pending": 0,
+  "all_agree": true,
+  "verdicts": [
+   {
+    "id": "LSN-CON-05001#ex-1",
+    "agree": true,
+    "detail": "judged: Same conclusion and numbers as the key; checked values (limits, signs, sums, derivatives) are consistent.",
+    "method": "MVT."
+   },
+   {
+    "id": "LSN-CON-05001#ex-2",
+    "agree": true,
+    "detail": "agree (symbolic)",
+    "method": "f'(c)=3c^2+2 = (38-5)/3 = 11, c=sqrt(3)."
+   },
+   {
+    "id": "LSN-CON-05001#chk-1",
+    "agree": true,
+    "detail": "judged: Same conclusion and numbers as the key; checked values (limits, signs, sums, derivatives) are consistent.",
+    "method": "MVT."
+   },
+   {
+    "id": "LSN-CON-05001#chk-2",
+    "agree": true,
+    "detail": "judged: Same conclusion and numbers as the key; checked values (limits, signs, sums, derivatives) are consistent.",
+    "method": "MVT."
+   },
+   {
+    "id": "LSN-CON-05001#chk-3",
+    "agree": true,
+    "detail": "key option B, re-solver B",
+    "method": "Average rate (19-7)/6=2, continuity from differentiability, MVT."
+   }
+  ],
+  "answers_file": "/tmp/claude-0/-home-user-growth/ac029253-8ff0-5a4b-8b5f-cdcaf5e8ff8d/scratchpad/verify/answers_06.json"
+ },
+ "audit": {
+  "date": "2026-09-29",
+  "auditor": "claude-opus-5-5",
+  "blocks": [
+   {
+    "id": "orientation",
+    "verdict": "ok",
+    "evidence": "Paraphrases unit 5.1 Assessment behaviour and BC-QA-05001 expected_solution_path; 30 words."
+   },
+   {
+    "id": "ki-1",
+    "verdict": "ok",
+    "evidence": "ced:99 FUN-1.B.1 quote verbatim; Rolle case from research unit 5.1 (sg-23:3); 38 words."
+   },
+   {
+    "id": "st-1",
+    "verdict": "ok",
+    "evidence": "BC-QA-05001 expected_solution_path[0] and wrong_approaches 'solving for c when only existence was asked'; 24 words."
+   },
+   {
+    "id": "st-2",
+    "verdict": "ok",
+    "evidence": "BC-QA-05002 expected_solution_path[0] and wrong_approaches 'differentiating the average rate of change expression'; 25 words."
+   },
+   {
+    "id": "ex-1",
+    "verdict": "ok",
+    "evidence": "SymPy: (17 - 2)/(6 - 1) = 3, matching the named value."
+   },
+   {
+    "id": "ex-2",
+    "verdict": "ok",
+    "evidence": "SymPy: f(3) = 38, f(0) = 5, rate 11; 3c^2 + 2 = 11 gives c = -sqrt(3), sqrt(3); only sqrt(3) (about 1.73) lies in (0, 3)."
+   },
+   {
+    "id": "reader-ex-1",
+    "verdict": "ok",
+    "evidence": "BC-PT-99017 in BC-QA-05001 point_types; earns and does_not_earn verbatim."
+   },
+   {
+    "id": "err-BC-ERR-05002",
+    "verdict": "ok",
+    "evidence": "Bundle text matches; BC-MIS-99009 listed."
+   },
+   {
+    "id": "err-BC-ERR-05004",
+    "verdict": "ok",
+    "evidence": "Bundle text matches; BC-MIS-05002 listed."
+   },
+   {
+    "id": "err-BC-ERR-05005",
+    "verdict": "ok",
+    "evidence": "SymPy: roots -sqrt(3), sqrt(3); -sqrt(3) outside (0, 3); bundle text matches."
+   },
+   {
+    "id": "err-BC-ERR-05006",
+    "verdict": "ok",
+    "evidence": "Bundle text matches (sg-23:3); BC-MIS-05005 listed."
+   },
+   {
+    "id": "representations",
+    "verdict": "ok",
+    "evidence": "Table values equal ex-1's; BC-REP-03 on the skills and BC-QA-05001 common_givens."
+   },
+   {
+    "id": "BC-PRQ-05001",
+    "verdict": "ok",
+    "evidence": "Paraphrases description_plain (setting an expression to zero)."
+   },
+   {
+    "id": "BC-PRQ-05004",
+    "verdict": "ok",
+    "evidence": "Paraphrases description_plain (open and closed endpoints)."
+   },
+   {
+    "id": "BC-PRQ-05008",
+    "verdict": "ok",
+    "evidence": "Paraphrases description_plain (change in output over change in input)."
+   },
+   {
+    "id": "BC-PRQ-06005",
+    "verdict": "ok",
+    "evidence": "Paraphrases description_plain (a function against its value at a point)."
+   },
+   {
+    "id": "chk-1",
+    "verdict": "ok",
+    "evidence": "SymPy: (17 - 2)/(6 - 1) = 3; key yes by the Mean Value Theorem with continuity from differentiability."
+   },
+   {
+    "id": "chk-2",
+    "verdict": "ok",
+    "evidence": "SymPy: (18 - (-2))/(7 - 2) = 4."
+   },
+   {
+    "id": "chk-3",
+    "verdict": "ok",
+    "evidence": "SymPy: (19 - 7)/(8 - 2) = 2; key B; A, C, D map to BC-ERR-05002, 05004, 05006 as stated."
+   }
+  ],
+  "advice": [
+   "The time budget takes Section I Part A (2.14 minutes) while ex-1 is written as an FRQ justification; the design flags this as inferred, but the served pacing may not match the shape practised.",
+   "chk-3 option C ('Rate 2, so the average rate is 2') reads as a tautology; a distractor that says 'The average rate is 2' alone would read more naturally.",
+   "Modes fit: the table serves tabular data, step_reveal the processes. Recognition (must there be against find the value), the first line and the rival, and the three scoring components are all taught; the IVT contrast is covered.",
+   "ex-2 has no scoring line because BC-QA-05002 lists no point_types; the reader sees no scoring habit for the find c shape."
+  ],
+  "counts": {
+   "ok": 19,
+   "unsourced": 0,
+   "wrong": 0,
+   "over_cap": 0,
+   "lint": 0
+  }
+ }
+}

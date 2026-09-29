@@ -1,0 +1,141 @@
+{
+ "id": "LSN-CON-07002",
+ "resolve": {
+  "date": "2026-09-29",
+  "problems": 5,
+  "agreed": 5,
+  "judgments_pending": 0,
+  "all_agree": true,
+  "verdicts": [
+   {
+    "id": "LSN-CON-07002#ex-1",
+    "agree": true,
+    "detail": "judged: Same conclusion and numbers as the key; checked values (limits, signs, sums, derivatives) are consistent.",
+    "method": "Substitute into the equation and check the initial value."
+   },
+   {
+    "id": "LSN-CON-07002#ex-2",
+    "agree": true,
+    "detail": "judged: Same conclusion and numbers as the key; checked values (limits, signs, sums, derivatives) are consistent.",
+    "method": "Substitute into the equation and check the initial value."
+   },
+   {
+    "id": "LSN-CON-07002#chk-1",
+    "agree": true,
+    "detail": "judged: Same conclusion and numbers as the key; checked values (limits, signs, sums, derivatives) are consistent.",
+    "method": "Check the initial value."
+   },
+   {
+    "id": "LSN-CON-07002#chk-2",
+    "agree": true,
+    "detail": "judged: Same conclusion and numbers as the key; checked values (limits, signs, sums, derivatives) are consistent.",
+    "method": "Substitute into the equation and check the initial value."
+   },
+   {
+    "id": "LSN-CON-07002#chk-3",
+    "agree": true,
+    "detail": "key option D, re-solver D",
+    "method": "dy/dx = 4e^x = y+2 so it solves the equation, but y(0) = 2, not 0."
+   }
+  ],
+  "answers_file": "/tmp/claude-0/-home-user-growth/ac029253-8ff0-5a4b-8b5f-cdcaf5e8ff8d/scratchpad/verify/answers_10.json"
+ },
+ "audit": {
+  "date": "2026-09-29",
+  "auditor": "claude-opus-5-5",
+  "blocks": [
+   {
+    "id": "orientation",
+    "verdict": "ok",
+    "evidence": "Paraphrases BC-CON-07002 description_plain and the 7.2 archetype path (differentiate, substitute, compare, check the point); 23 words."
+   },
+   {
+    "id": "ki-1",
+    "verdict": "ok",
+    "evidence": "Matches the 7.2 Verification and Refutation paragraphs; quote is FUN-7.B.1 verbatim on ced:138."
+   },
+   {
+    "id": "st-1",
+    "verdict": "ok",
+    "evidence": "Method is expected_solution_path[0] \"differentiate the candidate\"; rival is wrong_approaches of BC-QA-07007; cue 20 words or fewer."
+   },
+   {
+    "id": "ex-1",
+    "verdict": "ok",
+    "evidence": "SymPy: diff(3-2e^(2x)) = -4e^(2x); 2((3-2e^(2x))-3) simplifies to -4e^(2x); value at 0 is 1."
+   },
+   {
+    "id": "ex-2",
+    "verdict": "ok",
+    "evidence": "SymPy: diff(2+3e^(-x)) = -3e^(-x) = -((2+3e^(-x))-2); value at 0 is 5, not 4."
+   },
+   {
+    "id": "what_a_reader_scores:ex-1",
+    "verdict": "ok",
+    "evidence": "BC-PT-99068 line reproduces the bundle earns and does_not_earn fields."
+   },
+   {
+    "id": "what_a_reader_scores:ex-2",
+    "verdict": "ok",
+    "evidence": "BC-PT-99068 and BC-PT-99005 lines reproduce the bundle point type fields."
+   },
+   {
+    "id": "err-BC-ERR-07006",
+    "verdict": "ok",
+    "evidence": "observed_behavior and scoring_consequence verbatim from the record; candidate 3-2e^(2x) versus derivative -4e^(2x) checked."
+   },
+   {
+    "id": "err-BC-ERR-07007",
+    "verdict": "ok",
+    "evidence": "Record fields verbatim; BC-MIS-07005 is a linked possible misconception; 3-2e^0 = 1."
+   },
+   {
+    "id": "err-BC-ERR-07008",
+    "verdict": "ok",
+    "evidence": "Record fields verbatim; 2+3e^0 = 5 checked."
+   },
+   {
+    "id": "representations",
+    "verdict": "ok",
+    "evidence": "null; bundle names only BC-REP-01 and BC-REP-06, none figure bearing."
+   },
+   {
+    "id": "BC-PRQ-06005",
+    "verdict": "ok",
+    "evidence": "Paraphrases description_plain and failure_signature (f and f prime interchanged)."
+   },
+   {
+    "id": "BC-PRQ-07002",
+    "verdict": "ok",
+    "evidence": "Leibniz notation prerequisite; left side as the derivative is a fair reading."
+   },
+   {
+    "id": "chk-1",
+    "verdict": "ok",
+    "evidence": "SymPy: 3-2e^(2*0) = 1, key consistent with ex-1."
+   },
+   {
+    "id": "chk-2",
+    "verdict": "ok",
+    "evidence": "SymPy: diff(-1+3e^(-3x)) = -9e^(-3x) = -3((-1+3e^(-3x))+1); value at 0 is 2."
+   },
+   {
+    "id": "chk-3",
+    "verdict": "ok",
+    "evidence": "SymPy: diff(-2+4e^x) = 4e^x = y+2; y(0) = 2. Distractor A: y against y+2 gives -2+4e^x vs 4e^x, matching BC-ERR-07006."
+   }
+  ],
+  "advice": [
+   "err-BC-ERR-07008 is illustrated on ex-2, where the candidate does solve the equation and fails only the initial condition; the record is about a negative verdict on the equation with no disagreeing input, so a draw where the sides actually disagree at a named input would illustrate it more faithfully.",
+   "Delivery modes fit: text for the rule, step_reveal for the demonstration chain.",
+   "Recognition, first written line (the derivative) and rival (solving from scratch) are all taught; the scoring habit of closing the chain and showing the value at the stated input is explicit."
+  ],
+  "counts": {
+   "ok": 16,
+   "unsourced": 0,
+   "wrong": 0,
+   "over_cap": 0,
+   "lint": 0
+  }
+ }
+}

@@ -1,0 +1,95 @@
+{
+ "id": "LSN-CON-07009",
+ "resolve": {
+  "date": "2026-09-29",
+  "problems": 3,
+  "agreed": 3,
+  "judgments_pending": 0,
+  "all_agree": true,
+  "verdicts": [
+   {
+    "id": "LSN-CON-07009#ex-1",
+    "agree": true,
+    "detail": "judged: interval Interval.open(-oo, 2) equals the key; stem narrowed to the interval after the re-solver noted it asked for two things",
+    "method": "y = 1/(4-2x); valid on the interval containing x=1 where defined, x<2."
+   },
+   {
+    "id": "LSN-CON-07009#chk-1",
+    "agree": true,
+    "detail": "agree (symbolic)",
+    "method": "Denominator zero at x=2; interval contains x=1."
+   },
+   {
+    "id": "LSN-CON-07009#chk-2",
+    "agree": true,
+    "detail": "agree (symbolic)",
+    "method": "y = 2/(2x+1); interval containing x=0."
+   }
+  ],
+  "answers_file": "/tmp/claude-0/-home-user-growth/ac029253-8ff0-5a4b-8b5f-cdcaf5e8ff8d/scratchpad/verify/answers_11.json"
+ },
+ "audit": {
+  "date": "2026-09-29",
+  "auditor": "claude-opus-5-5",
+  "blocks": [
+   {
+    "id": "orientation",
+    "verdict": "ok",
+    "evidence": "Paraphrases BC-CON-07009 description_plain and BC-ERR-07031 consequence."
+   },
+   {
+    "id": "ki-1",
+    "verdict": "ok",
+    "evidence": "FUN-7.E.3 on ced:143 plus the research 7.7 paragraph; the no crossing reason is declared inferred in the record."
+   },
+   {
+    "id": "st-1",
+    "verdict": "ok",
+    "evidence": "Cue from BC-QA-07011 typical_wording; method from expected_solution_path[2]; rival is wrong_approaches[0]."
+   },
+   {
+    "id": "ex-1",
+    "verdict": "ok",
+    "evidence": "SymPy dsolve check residual 0 and initial value 0: y = 1/(4 - 2x) solves dy/dx = 2y**2, y(1) = 1/2; blowup = start + 1/(rate*initial) = 2; interval (-oo, 2)."
+   },
+   {
+    "id": "err-BC-ERR-07031",
+    "verdict": "ok",
+    "evidence": "Observed behavior, consequence and BC-MIS-07019 text match the bundle."
+   },
+   {
+    "id": "representations",
+    "verdict": "ok",
+    "evidence": "null."
+   },
+   {
+    "id": "bridge-BC-PRQ-05003",
+    "verdict": "ok",
+    "evidence": "Paraphrase of description_plain and failure_signature."
+   },
+   {
+    "id": "chk-1",
+    "verdict": "ok",
+    "evidence": "Denominator zero at 2; interval containing 1 is (-oo, 2)."
+   },
+   {
+    "id": "chk-2",
+    "verdict": "ok",
+    "evidence": "SymPy dsolve check residual 0 and initial value 0: y = 2/(2x + 1) for dy/dx = -y**2, y(0) = 2; break -1/2; interval (-1/2, oo)."
+   }
+  ],
+  "advice": [
+   "st-1 rival (branch by the sign of C) does not match the interval idea the block teaches; its separating feature is about the interval, so rival and feature do not contrast.",
+   "ki-1 at 68 words carries the no crossing reason that is marked inferred; a reader cannot tell it is beyond the CED wording.",
+   "No reader lines and one error block: the scoring habit (state the interval with the solution) rests on the orientation and the error block alone.",
+   "A number line interactive for the break and the side holding the initial input would suit the reading in ex-1 steps 6 to 8 better than text."
+  ],
+  "counts": {
+   "ok": 9,
+   "unsourced": 0,
+   "wrong": 0,
+   "over_cap": 0,
+   "lint": 0
+  }
+ }
+}

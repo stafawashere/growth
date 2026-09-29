@@ -1,0 +1,152 @@
+{
+ "id": "LSN-CON-04007",
+ "resolve": {
+  "date": "2026-09-29",
+  "problems": 5,
+  "agreed": 5,
+  "judgments_pending": 0,
+  "all_agree": true,
+  "verdicts": [
+   {
+    "id": "LSN-CON-04007#ex-1",
+    "agree": true,
+    "detail": "agree (symbolic)",
+    "method": "Differentiate x^2+y^2=225 implicitly, y=12; units ft/s (top moving down)."
+   },
+   {
+    "id": "LSN-CON-04007#ex-2",
+    "agree": true,
+    "detail": "agree (symbolic)",
+    "method": "Implicit differentiation of 2x^2+xy+y^2=4 at (1,-2)."
+   },
+   {
+    "id": "LSN-CON-04007#chk-1",
+    "agree": true,
+    "detail": "re-solver arithmetic error refuted by SymPy; see resolve_notes",
+    "method": "Solve 18+24y'=0; units ft/s."
+   },
+   {
+    "id": "LSN-CON-04007#chk-2",
+    "agree": true,
+    "detail": "agree (symbolic)",
+    "method": "dA/dt=2*pi*r*dr/dt; units cm^2/min."
+   },
+   {
+    "id": "LSN-CON-04007#chk-3",
+    "agree": true,
+    "detail": "agree (symbolic)",
+    "method": "Implicit differentiation at (1,1)."
+   }
+  ],
+  "answers_file": "/tmp/claude-0/-home-user-growth/ac029253-8ff0-5a4b-8b5f-cdcaf5e8ff8d/scratchpad/verify/answers_06.json"
+ },
+ "resolve_notes": [
+  {
+   "id": "LSN-CON-04007#chk-1",
+   "note": "re-solver error: the stem gives 2(9)(2) + 2(12) dy/dt = 0, so 36 + 24 dy/dt = 0 and dy/dt = -3/2; the re-solver used 18 in place of 36 (SymPy: solve(Eq(36 + 24*d, 0), d) = [-3/2]).",
+   "design_correct": true
+  }
+ ],
+ "audit": {
+  "date": "2026-09-29",
+  "auditor": "claude-opus-5-5",
+  "blocks": [
+   {
+    "id": "orientation",
+    "verdict": "ok",
+    "evidence": "Paraphrases the concept description and unit research section; within 60 words; no lint."
+   },
+   {
+    "id": "ki-1",
+    "verdict": "ok",
+    "evidence": "Quote found verbatim on the cited CED page; claims match the EK and research section; within 120 words."
+   },
+   {
+    "id": "ki-2",
+    "verdict": "ok",
+    "evidence": "Quote found verbatim on the cited CED page; claims match the EK and research section; within 120 words."
+   },
+   {
+    "id": "st-1",
+    "verdict": "ok",
+    "evidence": "Cue, method and rival match the archetype record; within 80 words."
+   },
+   {
+    "id": "ex-1",
+    "verdict": "ok",
+    "evidence": "Every step and the key verified by SymPy; cues within 20 and whys within 25 words."
+   },
+   {
+    "id": "ex-2",
+    "verdict": "ok",
+    "evidence": "Every step and the key verified by SymPy; cues within 20 and whys within 25 words."
+   },
+   {
+    "id": "scores-ex-1",
+    "verdict": "ok",
+    "evidence": "Line built from the point type record fields in the bundle (name, rubric citations, notation requirements)."
+   },
+   {
+    "id": "err-BC-ERR-04015",
+    "verdict": "ok",
+    "evidence": "observed_behavior, scoring_consequence and misconception text found verbatim in the bundle; wrong and right values verified by SymPy."
+   },
+   {
+    "id": "err-BC-ERR-04017",
+    "verdict": "ok",
+    "evidence": "observed_behavior, scoring_consequence and misconception text found verbatim in the bundle; wrong and right values verified by SymPy."
+   },
+   {
+    "id": "err-BC-ERR-04018",
+    "verdict": "ok",
+    "evidence": "observed_behavior, scoring_consequence and misconception text found verbatim in the bundle; wrong and right values verified by SymPy."
+   },
+   {
+    "id": "err-BC-ERR-99013",
+    "verdict": "ok",
+    "evidence": "observed_behavior, scoring_consequence and misconception text found verbatim in the bundle; wrong and right values verified by SymPy."
+   },
+   {
+    "id": "representations",
+    "verdict": "ok",
+    "evidence": "No representations block; null."
+   },
+   {
+    "id": "BC-PRQ-04008",
+    "verdict": "ok",
+    "evidence": "Paraphrase of the prerequisite record in the bundle; within 60 words."
+   },
+   {
+    "id": "chk-1",
+    "verdict": "ok",
+    "evidence": "Key and every option or step value verified by SymPy."
+   },
+   {
+    "id": "chk-2",
+    "verdict": "ok",
+    "evidence": "Key and every option or step value verified by SymPy."
+   },
+   {
+    "id": "chk-3",
+    "verdict": "ok",
+    "evidence": "fixed 2026-09-29: option C recomputed on its BC-ERR-04018 path (3xy with x held constant loses 3y dx/dt): 4 + 7 dy/dt = 0 gives -4/7 (SymPy solve), replacing -5/2; options -10/7, 2, -4/7, -5/7 distinct; prose Checks line updated."
+   }
+  ],
+  "advice": [
+   "ki-1's interactive slider on the ladder foot serves the reading of which labels move; good fit for a reading.",
+   "chk-3 option C: relabel the derivation as y held constant, or recompute with x held constant (that path gives -4/7).",
+   "The lesson teaches the stem signal, the first written line (named quantities and rates in t) and the rival dy/dx; BC-PT-99023 scoring line is attached. Units habit appears only in ex-1 step 5 and chk-1."
+  ],
+  "counts": {
+   "ok": 16,
+   "unsourced": 0,
+   "wrong": 0,
+   "over_cap": 0,
+   "lint": 0
+  }
+ },
+ "fix_notes": [
+  "chk-3 option C now -4/7 with derivation x held constant (SymPy: solve(4 + 3*d + 4*d) = [-4/7]); the y held constant value -5/2 is no longer served, so C no longer equals the spec's derived frozen_rate.",
+  "Left as preferences: units habit coverage beyond ex-1 step 5 and chk-1; ki-1 slider comment was praise, no change."
+ ]
+}

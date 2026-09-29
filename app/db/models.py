@@ -24,6 +24,12 @@ probe can never train the model it measures.
 P5 adds assessment_parts, assessment_responses and mock_results for the unit check, the timed
 part drills and the full mock (docs/plan/05, 11 P5), which 06 names routes for but no tables. Each
 carries user_id for the same reason.
+
+The lessons layer adds five tables (docs/lessons/BUILD-PLAN.md Slice L1, docs/plan/15-lessons.md
+Migrations). lessons and lesson_verifications are shared content like items and
+item_verifications, with no user_id, so export and purge leave them alone; lesson_state,
+lesson_events and lesson_check_responses carry user_id and are the student's. attempts gains the
+two nullable preceded_by_lesson columns, added to an existing file by app/db/migrate.py.
 """
 from sqlalchemy import JSON, Integer, LargeBinary, Text, event, text
 from sqlalchemy.orm import DeclarativeBase, Mapped, mapped_column
@@ -216,6 +222,8 @@ class Attempt(Base):
    transcription_corrected: Mapped[int | None] = mapped_column(Integer, nullable=True)
    grading_state: Mapped[str | None] = mapped_column(Text, nullable=True)
    credit_record: Mapped[str | None] = mapped_column(Text, nullable=True)
+   preceded_by_lesson_id: Mapped[str | None] = mapped_column(Text, nullable=True)
+   preceded_by_lesson_version: Mapped[int | None] = mapped_column(Integer, nullable=True)
    snapshot_id: Mapped[str] = mapped_column(Text, nullable=False)
    created_at: Mapped[str] = mapped_column(Text, nullable=False)
    updated_at: Mapped[str] = mapped_column(Text, nullable=False)
@@ -545,6 +553,98 @@ class MockResult(Base):
    band_low: Mapped[int] = mapped_column(Integer, nullable=False)
    band_high: Mapped[int] = mapped_column(Integer, nullable=False)
    payload: Mapped[str] = mapped_column(Text, nullable=False)
+   created_at: Mapped[str] = mapped_column(Text, nullable=False)
+   updated_at: Mapped[str] = mapped_column(Text, nullable=False)
+
+
+class Lesson(Base):
+   """One version of a lesson record, the body stored as ingested (15, Storage and versioning)."""
+
+   __tablename__ = "lessons"
+
+   id: Mapped[str] = mapped_column(Text, primary_key=True)
+   version: Mapped[int] = mapped_column(Integer, primary_key=True)
+   kind: Mapped[str] = mapped_column(Text, nullable=False)
+   target_id: Mapped[str] = mapped_column(Text, nullable=False)
+   snapshot_id: Mapped[str] = mapped_column(Text, nullable=False)
+   body: Mapped[dict] = mapped_column(JSON, nullable=False)
+   read_minutes_full: Mapped[float] = mapped_column(nullable=False)
+   read_minutes_brief: Mapped[float] = mapped_column(nullable=False)
+   status: Mapped[str] = mapped_column(Text, nullable=False)
+   provenance: Mapped[dict] = mapped_column(JSON, nullable=False)
+   source_digest: Mapped[str] = mapped_column(Text, nullable=False)
+   created_at: Mapped[str] = mapped_column(Text, nullable=False)
+   updated_at: Mapped[str] = mapped_column(Text, nullable=False)
+
+
+class LessonVerification(Base):
+   __tablename__ = "lesson_verifications"
+
+   id: Mapped[str] = mapped_column(Text, primary_key=True)
+   lesson_id: Mapped[str] = mapped_column(Text, nullable=False)
+   version: Mapped[int] = mapped_column(Integer, nullable=False)
+   section_id: Mapped[str | None] = mapped_column(Text, nullable=True)
+   check_type: Mapped[str] = mapped_column(Text, nullable=False)
+   outcome: Mapped[str] = mapped_column(Text, nullable=False)
+   detail: Mapped[str | None] = mapped_column(Text, nullable=True)
+   created_at: Mapped[str] = mapped_column(Text, nullable=False)
+   updated_at: Mapped[str] = mapped_column(Text, nullable=False)
+
+
+class LessonState(Base):
+   """A gate read in front of the ladder, one row per user and lesson; a missing row is unseen
+   (15, State)."""
+
+   __tablename__ = "lesson_state"
+
+   user_id: Mapped[str] = mapped_column(Text, primary_key=True)
+   lesson_id: Mapped[str] = mapped_column(Text, primary_key=True)
+   status: Mapped[str] = mapped_column(Text, nullable=False)
+   version_seen: Mapped[int | None] = mapped_column(Integer, nullable=True)
+   band_served: Mapped[str | None] = mapped_column(Text, nullable=True)
+   first_served_at: Mapped[str | None] = mapped_column(Text, nullable=True)
+   read_at: Mapped[str | None] = mapped_column(Text, nullable=True)
+   read_source: Mapped[str | None] = mapped_column(Text, nullable=True)
+   refresher_due_reason: Mapped[str | None] = mapped_column(Text, nullable=True)
+   refresher_served_at: Mapped[str | None] = mapped_column(Text, nullable=True)
+   refresher_count: Mapped[int] = mapped_column(Integer, nullable=False, default=0, server_default=text("0"))
+   created_at: Mapped[str] = mapped_column(Text, nullable=False)
+   updated_at: Mapped[str] = mapped_column(Text, nullable=False)
+
+
+class LessonEvent(Base):
+   __tablename__ = "lesson_events"
+
+   id: Mapped[str] = mapped_column(Text, primary_key=True)
+   user_id: Mapped[str] = mapped_column(Text, nullable=False)
+   session_id: Mapped[str | None] = mapped_column(Text, nullable=True)
+   lesson_id: Mapped[str] = mapped_column(Text, nullable=False)
+   version: Mapped[int] = mapped_column(Integer, nullable=False)
+   kind: Mapped[str] = mapped_column(Text, nullable=False)
+   event: Mapped[str] = mapped_column(Text, nullable=False)
+   section_id: Mapped[str | None] = mapped_column(Text, nullable=True)
+   mode: Mapped[str | None] = mapped_column(Text, nullable=True)
+   reason: Mapped[str | None] = mapped_column(Text, nullable=True)
+   band: Mapped[str | None] = mapped_column(Text, nullable=True)
+   elapsed_ms: Mapped[int | None] = mapped_column(Integer, nullable=True)
+   created_at: Mapped[str] = mapped_column(Text, nullable=False)
+   updated_at: Mapped[str] = mapped_column(Text, nullable=False)
+
+
+class LessonCheckResponse(Base):
+   """A lesson check answer. It never reaches attempts (15, invariant L2)."""
+
+   __tablename__ = "lesson_check_responses"
+
+   id: Mapped[str] = mapped_column(Text, primary_key=True)
+   user_id: Mapped[str] = mapped_column(Text, nullable=False)
+   lesson_id: Mapped[str] = mapped_column(Text, nullable=False)
+   version: Mapped[int] = mapped_column(Integer, nullable=False)
+   check_id: Mapped[str] = mapped_column(Text, nullable=False)
+   response: Mapped[str | None] = mapped_column(Text, nullable=True)
+   correct: Mapped[int | None] = mapped_column(Integer, nullable=True)
+   error_id: Mapped[str | None] = mapped_column(Text, nullable=True)
+   elapsed_ms: Mapped[int | None] = mapped_column(Integer, nullable=True)
    created_at: Mapped[str] = mapped_column(Text, nullable=False)
    updated_at: Mapped[str] = mapped_column(Text, nullable=False)
 

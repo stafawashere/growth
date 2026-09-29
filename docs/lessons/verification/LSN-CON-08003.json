@@ -1,0 +1,95 @@
+{
+ "id": "LSN-CON-08003",
+ "resolve": {
+  "date": "2026-09-29",
+  "problems": 3,
+  "agreed": 3,
+  "judgments_pending": 0,
+  "all_agree": true,
+  "verdicts": [
+   {
+    "id": "LSN-CON-08003#ex-1",
+    "agree": true,
+    "detail": "agree (symbolic)",
+    "method": "Integrate v from 0 to 7/2; units meters."
+   },
+   {
+    "id": "LSN-CON-08003#chk-1",
+    "agree": true,
+    "detail": "agree (symbolic)",
+    "method": "Antiderivative evaluation."
+   },
+   {
+    "id": "LSN-CON-08003#chk-2",
+    "agree": true,
+    "detail": "agree (symbolic)",
+    "method": "Integrate v from 0 to 6; units feet."
+   }
+  ],
+  "answers_file": "/tmp/claude-0/-home-user-growth/ac029253-8ff0-5a4b-8b5f-cdcaf5e8ff8d/scratchpad/verify/answers_11.json"
+ },
+ "audit": {
+  "date": "2026-09-29",
+  "auditor": "claude-opus-5-5",
+  "blocks": [
+   {
+    "id": "orientation",
+    "verdict": "ok",
+    "evidence": "Paraphrases BC-CON-08003 description_formal and CHA-4.C.1; 25 words."
+   },
+   {
+    "id": "ki-1",
+    "verdict": "ok",
+    "evidence": "CHA-4.C.1 on ced:153 and research 8.2 Displacement paragraph; the sign reading is standard."
+   },
+   {
+    "id": "st-1",
+    "verdict": "ok",
+    "evidence": "BC-QA-08003 path starts 'classify the requested quantity'; rival is its wrong_approach."
+   },
+   {
+    "id": "ex-1",
+    "verdict": "ok",
+    "evidence": "SymPy: integral of -t^2 + 4t - 3 on [0, 7/2] is -7/24."
+   },
+   {
+    "id": "err-BC-ERR-99010",
+    "verdict": "ok",
+    "evidence": "Record text matches; SymPy: integral of |v| on [0, 7/2] is 71/24, signed value -7/24."
+   },
+   {
+    "id": "representations",
+    "verdict": "ok",
+    "evidence": "null; nothing to audit."
+   },
+   {
+    "id": "BC-PRQ-06005",
+    "verdict": "ok",
+    "evidence": "In bundle prerequisites; paraphrases its failure_signature."
+   },
+   {
+    "id": "chk-1",
+    "verdict": "ok",
+    "evidence": "SymPy: -7/24."
+   },
+   {
+    "id": "chk-2",
+    "verdict": "ok",
+    "evidence": "SymPy: integral of 2t^2 - 12t + 10 on [0, 6] is -12."
+   }
+  ],
+  "advice": [
+   "The only error block is for a distance stem, the rival quantity, not an error in computing displacement; it teaches the rival but leaves displacement itself without an error block.",
+   "No reader-scores entry: the lesson does not show what a reader credits for displacement (setup, value, units).",
+   "ex-1 step 1 has no expression; it is a classification step, which suits the archetype but should render as text rather than step_reveal math.",
+   "Two short answer checks both only evaluate an integral; neither asks the learner to classify displacement versus distance from wording."
+  ],
+  "counts": {
+   "ok": 9,
+   "unsourced": 0,
+   "wrong": 0,
+   "over_cap": 0,
+   "lint": 0
+  }
+ }
+}

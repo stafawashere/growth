@@ -1,0 +1,156 @@
+{
+ "id": "LSN-CON-06001",
+ "resolve": {
+  "date": "2026-09-29",
+  "problems": 5,
+  "agreed": 5,
+  "judgments_pending": 0,
+  "all_agree": true,
+  "verdicts": [
+   {
+    "id": "LSN-CON-06001#ex-1",
+    "agree": true,
+    "detail": "agree (symbolic)",
+    "method": "Signed areas 3 - 2 - 2*pi."
+   },
+   {
+    "id": "LSN-CON-06001#ex-2",
+    "agree": true,
+    "detail": "judged: Same conclusion and numbers as the key; checked values (limits, signs, sums, derivatives) are consistent.",
+    "method": "Integral of a rate is accumulated amount; units gallons."
+   },
+   {
+    "id": "LSN-CON-06001#chk-1",
+    "agree": true,
+    "detail": "agree (symbolic)",
+    "method": "Sum 3-2-2*pi."
+   },
+   {
+    "id": "LSN-CON-06001#chk-2",
+    "agree": true,
+    "detail": "agree (symbolic)",
+    "method": "From 1: 1.5 - 3 + 2*pi (semicircle above)."
+   },
+   {
+    "id": "LSN-CON-06001#chk-3",
+    "agree": true,
+    "detail": "key option A, re-solver A",
+    "method": "Divides by length 4, giving average rate in gallons per hour over the interval."
+   }
+  ],
+  "answers_file": "/tmp/claude-0/-home-user-growth/ac029253-8ff0-5a4b-8b5f-cdcaf5e8ff8d/scratchpad/verify/answers_08.json"
+ },
+ "audit": {
+  "date": "2026-09-29",
+  "auditor": "claude-opus-5-5",
+  "blocks": [
+   {
+    "id": "orientation",
+    "verdict": "ok",
+    "evidence": "Paraphrase of BC-CON-06001 and FUN CHA-4.A.1 on ced:118; 25 words."
+   },
+   {
+    "id": "ki-1",
+    "verdict": "ok",
+    "evidence": "Paraphrase of CHA-4.A.1 and CHA-4.A.3 on ced:118; 26 words."
+   },
+   {
+    "id": "ki-2",
+    "verdict": "ok",
+    "evidence": "Paraphrase of CHA-4.A.2 on ced:118 and BC-QA-06004 expected_solution_path; 24 words."
+   },
+   {
+    "id": "st-1",
+    "verdict": "ok",
+    "evidence": "BC-QA-06004 verified; method is expected_solution_path[0]; rival from wrong_approaches (BC-ERR-06014)."
+   },
+   {
+    "id": "st-2",
+    "verdict": "ok",
+    "evidence": "BC-QA-06015 verified; method is expected_solution_path[0]; rival combines both wrong_approaches."
+   },
+   {
+    "id": "ex-1",
+    "verdict": "ok",
+    "evidence": "SymPy: integrate the piecewise f on [0,8] gives 3 - 2 - 2*pi = 1 - 2*pi."
+   },
+   {
+    "id": "ex-2",
+    "verdict": "ok",
+    "evidence": "Units gallons/hour times hour = gallons; interval requirement from sg-23:2 via BC-ERR-06029 scoring_consequence."
+   },
+   {
+    "id": "wars-ex-1",
+    "verdict": "ok",
+    "evidence": "Line copies BC-PT-99069 name, earns and does_not_earn from the bundle."
+   },
+   {
+    "id": "err-BC-ERR-06014",
+    "verdict": "ok",
+    "evidence": "Bundle text verbatim; 3+2+2*pi versus 3-2-2*pi; BC-MIS-08024 paraphrase."
+   },
+   {
+    "id": "err-BC-ERR-06030",
+    "verdict": "ok",
+    "evidence": "Bundle text verbatim; average (1-2*pi)/8 from CHA-4.B.1 on ced:152."
+   },
+   {
+    "id": "err-BC-ERR-06013",
+    "verdict": "ok",
+    "evidence": "Bundle text verbatim; full circle 4*pi versus semicircle 2*pi; BC-MIS-08019 verbatim."
+   },
+   {
+    "id": "err-BC-ERR-06029",
+    "verdict": "ok",
+    "evidence": "Bundle text verbatim; BC-MIS-08009 verbatim."
+   },
+   {
+    "id": "representations",
+    "verdict": "ok",
+    "evidence": "SymPy on the spec expression gives F(1..8) = 2, 3, 2, 1, 1-pi, 1-2*pi, matching the listed values."
+   },
+   {
+    "id": "bridge-BC-PRQ-06005",
+    "verdict": "ok",
+    "evidence": "Paraphrase of BC-PRQ-06005 failure_signature; 16 words."
+   },
+   {
+    "id": "bridge-BC-PRQ-06007",
+    "verdict": "ok",
+    "evidence": "Paraphrase of BC-PRQ-06007 failure_signature; 18 words."
+   },
+   {
+    "id": "chk-1",
+    "verdict": "ok",
+    "evidence": "SymPy: 3 - 2 - 2*pi = 1 - 2*pi."
+   },
+   {
+    "id": "chk-2",
+    "verdict": "ok",
+    "evidence": "SymPy: 3/2 - 3 + 2*pi = 2*pi - 3/2 for the draw with lower limit 1 and the arc above."
+   },
+   {
+    "id": "chk-3",
+    "verdict": "ok",
+    "evidence": "CHA-4.B.1 on ced:152: (1/4) times the integral is the average rate on [2,6]; B and D are the total read of BC-ERR-06030, C omits the interval (BC-ERR-06029)."
+   }
+  ],
+  "advice": [
+   "The representations spec field named function holds the running total F(x), not the rate f; the renderer or author could misread it as f. Rename or document the field.",
+   "Orientation, ki-1 and ki-2 all serve the same static graph; three figures of one picture add little. The shaded orientation could be text and ki-2 carry the partition.",
+   "chk-3 options B and D share one error path and read nearly alike; one could instead carry the rate units error (gallons per hour for a total).",
+   "The lesson teaches recognition for both archetypes, the first written line (partition; units of the integrand) and the rivals, and the scoring habit through the BC-PT-99069 line and sg-23:2 interpretation requirement."
+  ],
+  "counts": {
+   "ok": 18,
+   "unsourced": 0,
+   "wrong": 0,
+   "over_cap": 0,
+   "lint": 0
+  }
+ },
+ "fix_notes": [
+  "Fixed representations field naming (advice defect): kept F in spec.function, since ModelTable evaluates spec.function directly at x_values; relabelled computed, the column header (F(x), running total) and the figure's function field to say it holds F, not the rate f.",
+  "Left as preferences: three figures of one graph; chk-3 options B and D sharing an error path."
+ ]
+}

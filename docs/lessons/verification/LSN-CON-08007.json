@@ -1,0 +1,114 @@
+{
+ "id": "LSN-CON-08007",
+ "resolve": {
+  "date": "2026-09-29",
+  "problems": 3,
+  "agreed": 3,
+  "judgments_pending": 0,
+  "all_agree": true,
+  "verdicts": [
+   {
+    "id": "LSN-CON-08007#ex-1",
+    "agree": true,
+    "detail": "agree (symbolic)",
+    "method": "50+integral of E-L from 0 to 3 by calculator; gallons."
+   },
+   {
+    "id": "LSN-CON-08007#chk-1",
+    "agree": true,
+    "detail": "agree (symbolic)",
+    "method": "Numerical integration."
+   },
+   {
+    "id": "LSN-CON-08007#chk-2",
+    "agree": true,
+    "detail": "agree (symbolic)",
+    "method": "30+numerical integral of net rate from 0 to 2; tons."
+   }
+  ],
+  "answers_file": "/tmp/claude-0/-home-user-growth/ac029253-8ff0-5a4b-8b5f-cdcaf5e8ff8d/scratchpad/verify/answers_12.json"
+ },
+ "audit": {
+  "date": "2026-09-29",
+  "auditor": "claude-opus-5-5",
+  "blocks": [
+   {
+    "id": "orientation",
+    "verdict": "ok",
+    "evidence": "Paraphrases BC-CON-08007 and the BC-QA-06006 solution path; three decimals from BC-PT-99004 precision."
+   },
+   {
+    "id": "ki-1",
+    "verdict": "ok",
+    "evidence": "ced:154 CHA-4.D.2 plus the 8.3 Net rate paragraph."
+   },
+   {
+    "id": "ki-2",
+    "verdict": "ok",
+    "evidence": "ced:154 CHA-4.E.1 and the Amount at a time conclusion; units product is dimensional arithmetic."
+   },
+   {
+    "id": "st-1",
+    "verdict": "ok",
+    "evidence": "Method and rival match BC-QA-06006 expected_solution_path[0] and both wrong_approaches; cue matches common_givens; 17 word cue."
+   },
+   {
+    "id": "ex-1",
+    "verdict": "ok",
+    "evidence": "SymPy: N(50 + Integral(6+2sin(t^2/3)-(3+cos(t/2)),(t,0,3))) = 60.09487, reported 60.095; rates match the BC-QA-06006 spec notes."
+   },
+   {
+    "id": "reader-ex-1",
+    "verdict": "ok",
+    "evidence": "BC-PT-99001 line verbatim from the bundle."
+   },
+   {
+    "id": "err-BC-ERR-08013",
+    "verdict": "ok",
+    "evidence": "Verbatim BC-ERR-08013; SymPy E+L gives 82.085, distinct from 60.095."
+   },
+   {
+    "id": "err-BC-ERR-99009",
+    "verdict": "ok",
+    "evidence": "Verbatim BC-ERR-99009; SymPy unparenthesised integrand gives 64.085, distinct; reason fragment from BC-MIS-08007."
+   },
+   {
+    "id": "representations",
+    "verdict": "ok",
+    "evidence": "null; no figure conversion named for a net rate."
+   },
+   {
+    "id": "bridge-BC-PRQ-06005",
+    "verdict": "ok",
+    "evidence": "Paraphrases BC-PRQ-06005 function versus value."
+   },
+   {
+    "id": "time",
+    "verdict": "ok",
+    "evidence": "exam-structure.md: Section II Part A 30 minutes for 2 questions, 15.0 per question."
+   },
+   {
+    "id": "chk-1",
+    "verdict": "ok",
+    "evidence": "SymPy: 60.09487 rounds to 60.095."
+   },
+   {
+    "id": "chk-2",
+    "verdict": "ok",
+    "evidence": "SymPy: N(30 + Integral(8+sin(t^2/4)-(2+2cos(t/2)),(t,0,2))) = 39.25465, key 39.255; draw matches spec."
+   }
+  ],
+  "advice": [
+   "ex-1 tags BC-PT-99001 only, though BC-PT-99068 is in the bundle and the answer point is where three decimals matter; the scoring habit of reporting three places is stated but no reader line shows it.",
+   "The lesson never shows the change ask (no initial amount added), which is the difficulty dial in BC-QA-06006; a check with ask change would test the recognition half of the orientation.",
+   "A signed net rate is well served by a short graph of E minus L crossing zero; text only is adequate but ki-1's 'rises where positive' claim has no picture."
+  ],
+  "counts": {
+   "ok": 13,
+   "unsourced": 0,
+   "wrong": 0,
+   "over_cap": 0,
+   "lint": 0
+  }
+ }
+}

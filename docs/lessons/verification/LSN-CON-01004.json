@@ -1,0 +1,135 @@
+{
+ "id": "LSN-CON-01004",
+ "resolve": {
+  "date": "2026-09-29",
+  "problems": 3,
+  "agreed": 3,
+  "judgments_pending": 0,
+  "all_agree": true,
+  "verdicts": [
+   {
+    "id": "LSN-CON-01004#ex-1",
+    "agree": true,
+    "detail": "judged: Same conclusion and numbers as the key; checked values (limits, signs, sums, derivatives) are consistent.",
+    "method": "Substitute into each piece."
+   },
+   {
+    "id": "LSN-CON-01004#chk-1",
+    "agree": true,
+    "detail": "judged: Same conclusion and numbers as the key; checked values (limits, signs, sums, derivatives) are consistent.",
+    "method": "Unequal one-sided limits."
+   },
+   {
+    "id": "LSN-CON-01004#chk-2",
+    "agree": true,
+    "detail": "agree (symbolic)",
+    "method": "Right piece -2x+7 at x=2 gives 3."
+   }
+  ],
+  "answers_file": "/tmp/claude-0/-home-user-growth/ac029253-8ff0-5a4b-8b5f-cdcaf5e8ff8d/scratchpad/verify/answers_03.json"
+ },
+ "audit": {
+  "date": "2026-09-29",
+  "auditor": "claude-opus-5-5",
+  "blocks": [
+   {
+    "id": "orientation",
+    "verdict": "ok",
+    "evidence": "Paraphrases BC-CON-01004 and the 1.3 research paragraph; 44 words."
+   },
+   {
+    "id": "ki-1",
+    "verdict": "ok",
+    "evidence": "LIM-1.C.1 on ced:40 and research 1.3 line 'exists exactly when both one sided limits exist and agree'; 32 words."
+   },
+   {
+    "id": "ki-2",
+    "verdict": "ok",
+    "evidence": "Quote matches LIM-1.D.1 on ced:42; branch rule paraphrases BC-PRQ-01003."
+   },
+   {
+    "id": "ki-3",
+    "verdict": "ok",
+    "evidence": "Quote matches LIM-1.C.2 on ced:40."
+   },
+   {
+    "id": "ki-4",
+    "verdict": "ok",
+    "evidence": "Quote matches LIM-1.C.5 on ced:41; table rows 5 - 1.1 = 3.9, 5 - 1.01 = 3.99, 5 - 1.001 = 3.999."
+   },
+   {
+    "id": "st-1",
+    "verdict": "ok",
+    "evidence": "Method follows BC-QA-01006 expected_solution_path[0..2]; rival BC-ERR-01017 in wrong_approaches; tagged inferred for missing common_givens."
+   },
+   {
+    "id": "st-2",
+    "verdict": "ok",
+    "evidence": "BC-QA-01001 path and wrong_approaches (BC-ERR-01002)."
+   },
+   {
+    "id": "st-3",
+    "verdict": "ok",
+    "evidence": "BC-QA-01002 common_givens, path[0], wrong_approaches (BC-ERR-01002)."
+   },
+   {
+    "id": "ex-1",
+    "verdict": "ok",
+    "evidence": "SymPy: limit(2x+1, x, 1, -) = 3, limit(5-x, x, 1, +) = 4; 3 != 4 so DNE; f(1) = 4 = point_value on the closed right side."
+   },
+   {
+    "id": "what_a_reader_scores",
+    "verdict": "ok",
+    "evidence": "Empty; no point_types on BC-QA-01006, 01001, 01002."
+   },
+   {
+    "id": "err-BC-ERR-01002",
+    "verdict": "ok",
+    "evidence": "Verbatim record text; wrong 3 against right DNE; reason paraphrases BC-MIS-01002."
+   },
+   {
+    "id": "err-BC-ERR-01017",
+    "verdict": "ok",
+    "evidence": "Verbatim record text; SymPy: 2*1+1 = 3 against 5-1 = 4, distinct."
+   },
+   {
+    "id": "representations",
+    "verdict": "ok",
+    "evidence": "null; no claim served."
+   },
+   {
+    "id": "bridge-BC-PRQ-01003",
+    "verdict": "ok",
+    "evidence": "Paraphrases BC-PRQ-01003 description and failure_signature; 23 words."
+   },
+   {
+    "id": "bridge-BC-PRQ-06005",
+    "verdict": "ok",
+    "evidence": "Paraphrases BC-PRQ-06005; 20 words."
+   },
+   {
+    "id": "chk-1",
+    "verdict": "ok",
+    "evidence": "Sides 3 and 4 differ, key DNE, consistent with ex-1."
+   },
+   {
+    "id": "chk-2",
+    "verdict": "ok",
+    "evidence": "SymPy: 3x-7 at 2 = -1 (closed left, point_value -1), limit(-2x+7, x, 2, +) = 3; key 3."
+   }
+  ],
+  "advice": [
+   "ki-1 as interactive (slider reading heights from each side) and ki-4 as a table fit their ideas well.",
+   "Both checks are on BC-QA-01006; st-2 (graph) and st-3 (table) have no check, so the graph and table stems are taught but not tested.",
+   "ex-1 skips the 'f at the boundary' first line that st-1 names as the first written line; the lesson's stated first line and its worked example disagree.",
+   "err-BC-ERR-01017 carries possible_reason null although the record lists BC-MIS-01009 and BC-MIS-01019; acceptable, but a reason would help the refresher."
+  ],
+  "counts": {
+   "ok": 17,
+   "unsourced": 0,
+   "wrong": 0,
+   "over_cap": 0,
+   "lint": 0
+  }
+ }
+}

@@ -1,0 +1,155 @@
+{
+ "id": "LSN-CON-04008",
+ "resolve": {
+  "date": "2026-09-29",
+  "problems": 4,
+  "agreed": 4,
+  "judgments_pending": 0,
+  "all_agree": true,
+  "verdicts": [
+   {
+    "id": "LSN-CON-04008#ex-1",
+    "agree": true,
+    "detail": "agree (symbolic)",
+    "method": "V=pi h^3/12, so 6=(pi*16/4)h'; units ft/min."
+   },
+   {
+    "id": "LSN-CON-04008#chk-1",
+    "agree": true,
+    "detail": "agree (symbolic)",
+    "method": "Solve 6=4*pi*h'; units ft/min."
+   },
+   {
+    "id": "LSN-CON-04008#chk-2",
+    "agree": true,
+    "detail": "agree (symbolic)",
+    "method": "x x'+y y'=0 with y=6; units ft/s."
+   },
+   {
+    "id": "LSN-CON-04008#chk-3",
+    "agree": true,
+    "detail": "agree (symbolic)",
+    "method": "V=pi h^3/27, so 9=pi*h'; units cm/s."
+   }
+  ],
+  "answers_file": "/tmp/claude-0/-home-user-growth/ac029253-8ff0-5a4b-8b5f-cdcaf5e8ff8d/scratchpad/verify/answers_06.json"
+ },
+ "audit": {
+  "date": "2026-09-29",
+  "auditor": "claude-opus-5-5",
+  "blocks": [
+   {
+    "id": "orientation",
+    "verdict": "ok",
+    "evidence": "Paraphrases the concept description and unit research section; within 60 words; no lint."
+   },
+   {
+    "id": "ki-1",
+    "verdict": "ok",
+    "evidence": "Quote found verbatim on the cited CED page; claims match the EK and research section; within 120 words."
+   },
+   {
+    "id": "ki-2",
+    "verdict": "ok",
+    "evidence": "Quote found verbatim on the cited CED page; claims match the EK and research section; within 120 words."
+   },
+   {
+    "id": "st-1",
+    "verdict": "ok",
+    "evidence": "Cue, method and rival match the archetype record; within 80 words."
+   },
+   {
+    "id": "st-2",
+    "verdict": "ok",
+    "evidence": "Cue, method and rival match the archetype record; within 80 words."
+   },
+   {
+    "id": "ex-1",
+    "verdict": "ok",
+    "evidence": "Every step and the key verified by SymPy; cues within 20 and whys within 25 words."
+   },
+   {
+    "id": "scores-ex-1",
+    "verdict": "ok",
+    "evidence": "Line built from the point type record fields in the bundle (name, rubric citations, notation requirements)."
+   },
+   {
+    "id": "err-BC-ERR-04016",
+    "verdict": "ok",
+    "evidence": "observed_behavior, scoring_consequence and misconception text found verbatim in the bundle; wrong and right values verified by SymPy."
+   },
+   {
+    "id": "err-BC-ERR-04018",
+    "verdict": "ok",
+    "evidence": "observed_behavior, scoring_consequence and misconception text found verbatim in the bundle; wrong and right values verified by SymPy."
+   },
+   {
+    "id": "err-BC-ERR-04019",
+    "verdict": "ok",
+    "evidence": "observed_behavior, scoring_consequence and misconception text found verbatim in the bundle; wrong and right values verified by SymPy."
+   },
+   {
+    "id": "err-BC-ERR-99013",
+    "verdict": "ok",
+    "evidence": "observed_behavior, scoring_consequence and misconception text found verbatim in the bundle; wrong and right values verified by SymPy."
+   },
+   {
+    "id": "representations",
+    "verdict": "ok",
+    "evidence": "No representations block; null."
+   },
+   {
+    "id": "BC-PRQ-04001",
+    "verdict": "ok",
+    "evidence": "Paraphrase of the prerequisite record in the bundle; within 60 words."
+   },
+   {
+    "id": "BC-PRQ-04002",
+    "verdict": "ok",
+    "evidence": "Paraphrase of the prerequisite record in the bundle; within 60 words."
+   },
+   {
+    "id": "BC-PRQ-04003",
+    "verdict": "ok",
+    "evidence": "Paraphrase of the prerequisite record in the bundle; within 60 words."
+   },
+   {
+    "id": "BC-PRQ-04008",
+    "verdict": "ok",
+    "evidence": "Paraphrase of the prerequisite record in the bundle; within 60 words."
+   },
+   {
+    "id": "chk-1",
+    "verdict": "ok",
+    "evidence": "Key and every option or step value verified by SymPy."
+   },
+   {
+    "id": "chk-2",
+    "verdict": "ok",
+    "evidence": "Key and every option or step value verified by SymPy."
+   },
+   {
+    "id": "chk-3",
+    "verdict": "ok",
+    "evidence": "Key and every option or step value verified by SymPy."
+   }
+  ],
+  "advice": [
+   "chk-2 parameter_draw (size 5, ratio 2, leg long) does not generate the 6, 8, 10 triangle in the stem; chk-3 draw ratio 2 against the stem's height 3 times radius. Align draws with stems.",
+   "Orientation as a static figure and ki-1 as a slider both show the cone; one of them is redundant.",
+   "st-1 and st-2 teach recognition and first line well; the elimination step (similar triangles) is the lesson's core and is carried by ex-1 step 2, which has no expr."
+  ],
+  "counts": {
+   "ok": 19,
+   "unsourced": 0,
+   "wrong": 0,
+   "over_cap": 0,
+   "lint": 0
+  }
+ },
+ "fix_notes": [
+  "chk-2 parameter_draw size 5 set to 8 (the foot distance) so the draw reads as the stem; under app/generation/templates/qa_04006.py ratio 2, leg long already gives ladder 10, foot 8, top 6, key -4 feet per second. Not equal to any published BC-QA-04006 draw (checker draw_exclusion clean).",
+  "chk-3 left unchanged: the template makes the cone height ratio + 1 times the radius, so ratio 2 is the stem's height 3 times radius; template build gives key 9/pi centimeters per second. Prose now states this.",
+  "Left as preferences: orientation figure and ki-1 slider both showing the cone; ex-1 step 2 (similar triangles) carrying no expr."
+ ]
+}

@@ -1,0 +1,104 @@
+{
+ "id": "LSN-CON-03010",
+ "resolve": {
+  "date": "2026-09-29",
+  "problems": 3,
+  "agreed": 3,
+  "judgments_pending": 0,
+  "all_agree": true,
+  "verdicts": [
+   {
+    "id": "LSN-CON-03010#ex-1",
+    "agree": true,
+    "detail": "agree (symbolic)",
+    "method": "hand differentiation/evaluation"
+   },
+   {
+    "id": "LSN-CON-03010#chk-1",
+    "agree": true,
+    "detail": "agree (symbolic)",
+    "method": "hand differentiation/evaluation"
+   },
+   {
+    "id": "LSN-CON-03010#chk-2",
+    "agree": true,
+    "detail": "agree (symbolic)",
+    "method": "hand differentiation/evaluation"
+   }
+  ],
+  "answers_file": "/tmp/claude-0/-home-user-growth/ac029253-8ff0-5a4b-8b5f-cdcaf5e8ff8d/scratchpad/verify/answers_02.json"
+ },
+ "audit": {
+  "date": "2026-09-29",
+  "auditor": "claude-opus-5-5",
+  "blocks": [
+   {
+    "id": "orientation",
+    "verdict": "ok",
+    "evidence": "Paraphrase of BC-CON-03010 description_formal and BC-PRQ-03005 (operator apart from result); 25 words."
+   },
+   {
+    "id": "ki-1",
+    "verdict": "ok",
+    "evidence": "Paraphrase of BC-EK-FUN-3F2 and concept description_formal; quote verbatim on ced:80."
+   },
+   {
+    "id": "st-1",
+    "verdict": "ok",
+    "evidence": "fixed 2026-09-29: rebuilt for this concept: cue names the second derivative in one notation and the first in the other; method d^2y/dx^2 = d/dx(y') (expected_solution_path[0]); rival BC-ERR-03022 from the archetype common_distractors 'the second derivative reported in the wrong notation', evidence_tag inferred since wrong_approaches holds no notation entry."
+   },
+   {
+    "id": "ex-1",
+    "verdict": "ok",
+    "evidence": "fixed 2026-09-29: problem now gives y' in prime form and asks d^2y/dx^2, answer written as y''(2); step 1 writes the Leibniz naming line d^2y/dx^2 = d/dx(-2xy + 3y + x) and is written, not skipped; SymPy yp(2)=1, y''=-2y-2x yp+3yp+1, value -2."
+   },
+   {
+    "id": "what_a_reader_scores:ex-1",
+    "verdict": "ok",
+    "evidence": "BC-PT-99022 and BC-PT-99027 text verbatim from bundle point_types."
+   },
+   {
+    "id": "representations",
+    "verdict": "ok",
+    "evidence": "null; BC-REP-04 is verbal only."
+   },
+   {
+    "id": "err-BC-ERR-03022",
+    "verdict": "ok",
+    "evidence": "Record text verbatim; wrong yp*(-2xy + 3y + x) is a product, SymPy differs from right -2y - 2x yp + 3 yp + 1; possible_reason from BC-MIS-03014, listed on the error."
+   },
+   {
+    "id": "BC-PRQ-03005",
+    "verdict": "ok",
+    "evidence": "Paraphrase of description_plain and failure_signature; 21 words."
+   },
+   {
+    "id": "chk-1",
+    "verdict": "ok",
+    "evidence": "fixed 2026-09-29: stem gives d^2y/dx^2 in Leibniz form with dy/dx = 1 at x = 2 and asks y''(2), so reading the notation is tested; SymPy value -2."
+   },
+   {
+    "id": "chk-2",
+    "verdict": "ok",
+    "evidence": "fixed 2026-09-29: stem gives dy/dx in Leibniz form and asks y'' in x, y and y' then y''(1); SymPy y''=y+x yp+2yp-1, yp(1)=2, value 6."
+   }
+  ],
+  "advice": [
+   "The concept is reading prime and Leibniz notation interchangeably, yet st-1, ex-1 and both checks teach computing a second derivative (the BC-CON-03009 procedure) with a rival (BC-ERR-05060) that is not a notation error; recognition of the notation stem is weak.",
+   "ex-1 asks to name y''(2) in Leibniz notation, but step 1 carrying that naming is skipped from written steps and the answer records only -2; the notation answer is never written.",
+   "ki-1 lists equivalent notations; a small table (prime form, Leibniz form, meaning) would suit tabular content better than text.",
+   "No check tests notation reading (for example, which expression names the second derivative); both checks are numeric computations."
+  ],
+  "counts": {
+   "ok": 10,
+   "unsourced": 0,
+   "wrong": 0,
+   "over_cap": 0,
+   "lint": 0
+  }
+ },
+ "fix_notes": [
+  "Fixed the concept mismatch named in advice: st-1, ex-1, chk-1 and chk-2 rebuilt around reading prime and Leibniz notation interchangeably on the BC-QA-03008 draws; the Leibniz naming is now a written step; both checks switch notation between given and asked. Word count 448 both forms, 3.0 minutes, checker clean.",
+  "Left: no MCQ notation check (only one held error, BC-ERR-03022, so a 4 option MCQ with error blocks is not possible); a notation table for ki-1 (preference)."
+ ]
+}

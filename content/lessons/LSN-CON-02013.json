@@ -1,900 +1,839 @@
 {
-   "id": "LSN-CON-02013",
-   "version": 1,
-   "kind": "concept",
-   "target_id": "BC-CON-02013",
-   "status": "draft",
-   "snapshot_digest": "00839b8c36a7c5d46e3c3d2386e9f5665283703b31c30eedff1ab54062911e92",
-   "source_digest": "d2fc93d5f4f33ed594600e6c14aa78517a78973beee30b94ca625ae6a9560345",
-   "read_minutes": {
-      "full": 4.0,
-      "brief": 2.5
-   },
-   "word_count": {
-      "full": 563,
-      "brief": 344
-   },
-   "sections": [
-      {
-         "id": "LSN-CON-02013#s1",
-         "type": "orientation",
-         "bands": [
-            "low",
-            "mid"
-         ],
-         "skills": [
-            "BC-SKL-02036",
-            "BC-SKL-02037",
-            "BC-SKL-02038"
-         ],
-         "sources": [
-            "ced:67"
-         ],
-         "evidence_tag": "inferred",
-         "text": "A response shows the derivative of a product as two terms added: the first factor times the derivative of the second, and the second factor times the derivative of the first. Questions ask for it symbolically or from values at a point."
-      },
-      {
-         "id": "LSN-CON-02013#s2",
-         "type": "key_ideas",
-         "bands": [
-            "low",
-            "mid"
-         ],
-         "skills": [
-            "BC-SKL-02036",
-            "BC-SKL-02037",
-            "BC-SKL-02038"
-         ],
-         "sources": [
-            "ced:67"
-         ],
-         "evidence_tag": "verified",
-         "ek_id": "BC-EK-FUN-3B1",
-         "depth": "core",
-         "text": "For a product \\(fg\\) the derivative is \\(f'g+fg'\\) (BC-EK-FUN-3B1, ced:67). It is not \\(f'g'\\), which expanding a simple product and differentiating term by term shows at once. A product of polynomials can also be expanded first, which is sometimes shorter.",
-         "notation": "product rule",
-         "quote": {
-            "text": "Derivatives of products of differentiable functions can be found using the product rule.",
-            "source": "ced:67"
-         }
-      },
-      {
-         "id": "LSN-CON-02013#s3",
-         "type": "strategy",
-         "bands": [
-            "low",
-            "mid"
-         ],
-         "skills": [
-            "BC-SKL-02036",
-            "BC-SKL-02038"
-         ],
-         "sources": [
-            "ced:67"
-         ],
-         "evidence_tag": "inferred",
-         "archetype_id": "BC-QA-02008",
-         "cue": "The stem asks for the derivative of the product or quotient, from a product or quotient of two differentiable expressions.",
-         "method": "First written step: identify the two factors and their derivatives.",
-         "rival": "The rival is multiplying the derivatives of the two factors.",
-         "separating_feature": "A product gives two terms, each with one derivative."
-      },
-      {
-         "id": "LSN-CON-02013#s4",
-         "type": "strategy",
-         "bands": [
-            "low",
-            "mid"
-         ],
-         "skills": [
-            "BC-SKL-02037"
-         ],
-         "sources": [
-            "ced:67"
-         ],
-         "evidence_tag": "inferred",
-         "archetype_id": "BC-QA-02009",
-         "cue": "The stem asks for the derivative value at the named input, from a table of values of two functions and their derivatives.",
-         "method": "First written step: record the four supplied values at the named input.",
-         "rival": "The rival is placing a function value where the rule calls for a derivative value.",
-         "separating_feature": "Each of the four numbers is labelled a value or a derivative before it is used."
-      },
-      {
-         "id": "LSN-CON-02013#s5",
-         "type": "worked_example",
-         "bands": [
-            "low",
-            "mid"
-         ],
-         "skills": [
-            "BC-SKL-02036"
-         ],
-         "sources": [
-            "ced:67"
-         ],
-         "evidence_tag": "inferred",
-         "archetype_id": "BC-QA-02008",
-         "parameter_draw": {
-            "structure": "product of two polynomials",
-            "first_factor": "x^2 + 1",
-            "second_factor": "x^3 - 2x"
-         },
-         "problem": {
-            "text": "Let \\(h(x)=(x^2+1)(x^3-2x)\\). Find \\(h'(x)\\).",
-            "command_verb": "find"
-         },
-         "calculator_status": "no_calculator",
-         "steps": [
-            {
-               "cue": "The stem is a product of \\(f=x^2+1\\) and \\(g=x^3-2x\\).",
-               "why": "Each factor needs its own derivative: \\(f'=2x\\) and \\(g'=3x^2-2\\)."
-            },
-            {
-               "cue": "Two factors are multiplied, so the rule is \\(f'g+fg'\\).",
-               "why": "Both terms are needed. Each keeps one factor and differentiates the other.",
-               "expression": [
-                  "Add",
-                  [
-                     "Multiply",
-                     [
-                        "Multiply",
-                        2,
-                        "x"
-                     ],
-                     [
-                        "Add",
-                        [
-                           "Power",
-                           "x",
-                           3
-                        ],
-                        [
-                           "Multiply",
-                           -2,
-                           "x"
-                        ]
-                     ]
-                  ],
-                  [
-                     "Multiply",
-                     [
-                        "Add",
-                        [
-                           "Power",
-                           "x",
-                           2
-                        ],
-                        1
-                     ],
-                     [
-                        "Add",
-                        [
-                           "Multiply",
-                           3,
-                           [
-                              "Power",
-                              "x",
-                              2
-                           ]
-                        ],
-                        -2
-                     ]
-                  ]
-               ],
-               "point_type_id": "BC-PT-99022"
-            },
-            {
-               "cue": "The stem asks for \\(h'(x)\\), so multiply out and collect terms.",
-               "why": "Expanding first agrees: \\(x^5-x^3-2x\\) differentiates to \\(5x^4-3x^2-2\\).",
-               "expression": [
-                  "Add",
-                  [
-                     "Multiply",
-                     5,
-                     [
-                        "Power",
-                        "x",
-                        4
-                     ]
-                  ],
-                  [
-                     "Multiply",
-                     -3,
-                     [
-                        "Power",
-                        "x",
-                        2
-                     ]
-                  ],
-                  -2
-               ]
-            }
-         ],
-         "answer": {
-            "form": "symbolic",
-            "mathjson": [
-               "Add",
-               [
-                  "Multiply",
-                  5,
-                  [
-                     "Power",
-                     "x",
-                     4
-                  ]
-               ],
-               [
-                  "Multiply",
-                  -3,
-                  [
-                     "Power",
-                     "x",
-                     2
-                  ]
-               ],
-               -2
-            ]
-         }
-      },
-      {
-         "id": "LSN-CON-02013#s6",
-         "type": "worked_example",
-         "bands": [
-            "low"
-         ],
-         "skills": [
-            "BC-SKL-02036"
-         ],
-         "sources": [
-            "ced:67"
-         ],
-         "evidence_tag": "inferred",
-         "archetype_id": "BC-QA-02008",
-         "parameter_draw": {
-            "structure": "product with a transcendental factor",
-            "first_factor": "x",
-            "second_factor": "e^x"
-         },
-         "problem": {
-            "text": "Let \\(h(x)=xe^x\\). Find \\(h'(x)\\).",
-            "command_verb": "find"
-         },
-         "calculator_status": "no_calculator",
-         "steps": [
-            {
-               "cue": "The stem is a product of \\(f=x\\) and \\(g=e^x\\).",
-               "why": "Each factor needs its own derivative: \\(f'=1\\) and \\(g'=e^x\\)."
-            },
-            {
-               "cue": "Two factors are multiplied, so the rule is \\(f'g+fg'\\).",
-               "why": "The first term differentiates \\(f\\) and the second differentiates \\(g\\).",
-               "expression": [
-                  "Add",
-                  [
-                     "Multiply",
-                     1,
-                     [
-                        "Exp",
-                        "x"
-                     ]
-                  ],
-                  [
-                     "Multiply",
-                     "x",
-                     [
-                        "Exp",
-                        "x"
-                     ]
-                  ]
-               ],
-               "point_type_id": "BC-PT-99022"
-            },
-            {
-               "cue": "Both terms contain \\(e^x\\).",
-               "why": "Factoring out \\(e^x\\) gives a shorter form of the same derivative.",
-               "expression": [
-                  "Multiply",
-                  [
-                     "Add",
-                     "x",
-                     1
-                  ],
-                  [
-                     "Exp",
-                     "x"
-                  ]
-               ]
-            }
-         ],
-         "answer": {
-            "form": "symbolic",
-            "mathjson": [
-               "Multiply",
-               [
-                  "Add",
-                  "x",
-                  1
-               ],
-               [
-                  "Exp",
-                  "x"
-               ]
-            ]
-         }
-      },
-      {
-         "id": "LSN-CON-02013#s7",
-         "type": "what_a_reader_scores",
-         "bands": [
-            "low",
-            "mid"
-         ],
-         "skills": [
-            "BC-SKL-02036"
-         ],
-         "sources": [
-            "sg-25:20",
-            "sg-25:21",
-            "sg-22:16",
-            "sg-23:19"
-         ],
-         "evidence_tag": "verified",
-         "example_id": "LSN-CON-02013#s5",
-         "lines": [
-            {
-               "point_type_id": "BC-PT-99022",
-               "text": "Product rule. Earned by: A differentiation that correctly applies the product rule to the given expression (sg-25:20, sg-22:16). Not earned by: A response that treats one factor as constant, which sg-22:16 states is eligible for the chain rule point but not this one."
-            }
-         ]
-      },
-      {
-         "id": "LSN-CON-02013#s8",
-         "type": "what_a_reader_scores",
-         "bands": [
-            "low"
-         ],
-         "skills": [
-            "BC-SKL-02036"
-         ],
-         "sources": [
-            "sg-25:20",
-            "sg-25:21",
-            "sg-22:16",
-            "sg-23:19"
-         ],
-         "evidence_tag": "verified",
-         "example_id": "LSN-CON-02013#s6",
-         "lines": [
-            {
-               "point_type_id": "BC-PT-99022",
-               "text": "Product rule. Earned by: A differentiation that correctly applies the product rule to the given expression (sg-25:20, sg-22:16). Not earned by: A response that treats one factor as constant, which sg-22:16 states is eligible for the chain rule point but not this one."
-            }
-         ]
-      },
-      {
-         "id": "LSN-CON-02013#err-BC-ERR-02020",
-         "type": "common_error",
-         "bands": [
-            "low",
-            "mid"
-         ],
-         "skills": [
-            "BC-SKL-02036",
-            "BC-SKL-02037",
-            "BC-SKL-02038"
-         ],
-         "sources": [
-            "ced:67"
-         ],
-         "evidence_tag": "inferred",
-         "error_id": "BC-ERR-02020",
-         "observed_behavior": "The response multiplies the derivatives of the two factors together.",
-         "scoring_consequence": "The rule point and the result point are both lost.",
-         "wrong_step": {
-            "text": "The derivatives of the two factors are multiplied: \\(f'g'\\).",
-            "expression": [
-               "Multiply",
-               [
-                  "Multiply",
-                  2,
-                  "x"
-               ],
-               [
-                  "Add",
-                  [
-                     "Multiply",
-                     3,
-                     [
-                        "Power",
-                        "x",
-                        2
-                     ]
-                  ],
-                  -2
-               ]
-            ]
-         },
-         "right_step": {
-            "text": "The rule adds two terms: \\(f'g+fg'\\).",
-            "expression": [
-               "Add",
-               [
-                  "Multiply",
-                  5,
-                  [
-                     "Power",
-                     "x",
-                     4
-                  ]
-               ],
-               [
-                  "Multiply",
-                  -3,
-                  [
-                     "Power",
-                     "x",
-                     2
-                  ]
-               ],
-               -2
-            ]
-         },
-         "relation": "distinct",
-         "possible_reason": {
-            "misconception_id": "BC-MIS-02011",
-            "text": "the derivative of a product is taken as the product of the derivatives"
-         }
-      },
-      {
-         "id": "LSN-CON-02013#err-BC-ERR-02023",
-         "type": "common_error",
-         "bands": [
-            "low",
-            "mid"
-         ],
-         "skills": [
-            "BC-SKL-02038"
-         ],
-         "sources": [
-            "ced:68"
-         ],
-         "evidence_tag": "inferred",
-         "error_id": "BC-ERR-02023",
-         "observed_behavior": "The response applies the full quotient rule to an expression whose denominator carries no variable.",
-         "scoring_consequence": "No point is necessarily lost but the additional algebra invites a further error.",
-         "wrong_step": {
-            "text": "The full quotient rule is applied to \\(\\frac{x^2+3}{4}\\).",
-            "expression": [
-               "Divide",
-               [
-                  "Subtract",
-                  [
-                     "Multiply",
-                     [
-                        "Multiply",
-                        2,
-                        "x"
-                     ],
-                     4
-                  ],
-                  [
-                     "Multiply",
-                     [
-                        "Add",
-                        [
-                           "Power",
-                           "x",
-                           2
-                        ],
-                        3
-                     ],
-                     0
-                  ]
-               ],
-               [
-                  "Power",
-                  4,
-                  2
-               ]
-            ]
-         },
-         "right_step": {
-            "text": "The denominator is constant, so differentiate term by term: \\(\\frac{x}{2}\\).",
-            "expression": [
-               "Divide",
-               "x",
-               2
-            ]
-         },
-         "relation": "equivalent"
-      },
-      {
-         "id": "LSN-CON-02013#err-BC-ERR-02024",
-         "type": "common_error",
-         "bands": [
-            "low",
-            "mid"
-         ],
-         "skills": [
-            "BC-SKL-02037"
-         ],
-         "sources": [
-            "ced:67",
-            "ced:68"
-         ],
-         "evidence_tag": "inferred",
-         "error_id": "BC-ERR-02024",
-         "observed_behavior": "The response substitutes the value of a function into a position in the product or quotient rule that calls for the value of its derivative.",
-         "scoring_consequence": "The value point is lost.",
-         "wrong_step": {
-            "text": "With \\(f(1)=2\\), \\(f'(1)=3\\), \\(g(1)=-1\\), \\(g'(1)=4\\), using \\(f(1)\\) in place of \\(f'(1)\\) gives 6.",
-            "expression": 6
-         },
-         "right_step": {
-            "text": "The rule gives \\(f'(1)g(1)+f(1)g'(1)=5\\).",
-            "expression": 5
-         },
-         "relation": "distinct",
-         "possible_reason": {
-            "misconception_id": "BC-MIS-02011",
-            "text": "supplied values are placed in the wrong positions"
-         }
-      }
+ "id": "LSN-CON-02013",
+ "version": 1,
+ "kind": "concept",
+ "target_id": "BC-CON-02013",
+ "status": "draft",
+ "snapshot_digest": "a6a8ec9d3f59ab8f712e33d30cc22fc64bf2c478fbe7312e3e3118d319c6a42f",
+ "source_digest": "d2fc93d5f4f33ed594600e6c14aa78517a78973beee30b94ca625ae6a9560345",
+ "read_minutes": {
+  "full": 4.5,
+  "brief": 2.7
+ },
+ "word_count": {
+  "full": 596,
+  "brief": 375
+ },
+ "sections": [
+  {
+   "id": "LSN-CON-02013#s1",
+   "type": "orientation",
+   "bands": [
+    "low",
+    "mid"
    ],
-   "checks": [
-      {
-         "id": "LSN-CON-02013#chk-1",
-         "check_kind": "completion",
-         "bands": [
-            "low",
-            "mid"
-         ],
-         "format": "short_answer",
-         "archetype_id": "BC-QA-02008",
-         "parameter_draw": {
-            "structure": "product of two polynomials",
-            "first_factor": "x^2 + 1",
-            "second_factor": "x^3 - 2x"
-         },
-         "completes": "LSN-CON-02013#s5",
-         "stem": {
-            "text": "The product rule gives \\(h'(x)=(2x)(x^3-2x)+(x^2+1)(3x^2-2)\\). Multiply out and collect terms to write \\(h'(x)\\).",
-            "command_verb": "write"
-         },
-         "answer_key": {
-            "form": "symbolic",
-            "mathjson": [
-               "Add",
-               [
-                  "Multiply",
-                  5,
-                  [
-                     "Power",
-                     "x",
-                     4
-                  ]
-               ],
-               [
-                  "Multiply",
-                  -3,
-                  [
-                     "Power",
-                     "x",
-                     2
-                  ]
-               ],
-               -2
-            ]
-         },
-         "worked_solution": [
-            {
-               "step": 1,
-               "text": "The rule gives the two terms \\((2x)(x^3-2x)\\) and \\((x^2+1)(3x^2-2)\\).",
-               "mathjson": [
-                  "Add",
-                  [
-                     "Multiply",
-                     [
-                        "Multiply",
-                        2,
-                        "x"
-                     ],
-                     [
-                        "Add",
-                        [
-                           "Power",
-                           "x",
-                           3
-                        ],
-                        [
-                           "Multiply",
-                           -2,
-                           "x"
-                        ]
-                     ]
-                  ],
-                  [
-                     "Multiply",
-                     [
-                        "Add",
-                        [
-                           "Power",
-                           "x",
-                           2
-                        ],
-                        1
-                     ],
-                     [
-                        "Add",
-                        [
-                           "Multiply",
-                           3,
-                           [
-                              "Power",
-                              "x",
-                              2
-                           ]
-                        ],
-                        -2
-                     ]
-                  ]
-               ],
-               "point_type_id": "BC-PT-99022"
-            },
-            {
-               "step": 2,
-               "text": "Multiplying out and collecting terms gives \\(5x^4-3x^2-2\\).",
-               "mathjson": [
-                  "Add",
-                  [
-                     "Multiply",
-                     5,
-                     [
-                        "Power",
-                        "x",
-                        4
-                     ]
-                  ],
-                  [
-                     "Multiply",
-                     -3,
-                     [
-                        "Power",
-                        "x",
-                        2
-                     ]
-                  ],
-                  -2
-               ]
-            }
-         ],
-         "calculator_status": "no_calculator",
-         "representation": "BC-REP-01",
-         "skills": [
-            "BC-SKL-02036"
-         ]
-      },
-      {
-         "id": "LSN-CON-02013#chk-2",
-         "check_kind": "isomorph",
-         "bands": [
-            "low",
-            "mid"
-         ],
-         "format": "short_answer",
-         "archetype_id": "BC-QA-02008",
-         "parameter_draw": {
-            "structure": "product of two polynomials",
-            "first_factor": "x^2 - 3",
-            "second_factor": "x^3 + x"
-         },
-         "stem": {
-            "text": "Let \\(h(x)=(x^2-3)(x^3+x)\\). Find \\(h'(x)\\).",
-            "command_verb": "find"
-         },
-         "answer_key": {
-            "form": "symbolic",
-            "mathjson": [
-               "Add",
-               [
-                  "Multiply",
-                  5,
-                  [
-                     "Power",
-                     "x",
-                     4
-                  ]
-               ],
-               [
-                  "Multiply",
-                  -6,
-                  [
-                     "Power",
-                     "x",
-                     2
-                  ]
-               ],
-               -3
-            ]
-         },
-         "worked_solution": [
-            {
-               "step": 1,
-               "text": "The rule gives \\((2x)(x^3+x)+(x^2-3)(3x^2+1)\\).",
-               "mathjson": [
-                  "Add",
-                  [
-                     "Multiply",
-                     [
-                        "Multiply",
-                        2,
-                        "x"
-                     ],
-                     [
-                        "Add",
-                        [
-                           "Power",
-                           "x",
-                           3
-                        ],
-                        "x"
-                     ]
-                  ],
-                  [
-                     "Multiply",
-                     [
-                        "Add",
-                        [
-                           "Power",
-                           "x",
-                           2
-                        ],
-                        -3
-                     ],
-                     [
-                        "Add",
-                        [
-                           "Multiply",
-                           3,
-                           [
-                              "Power",
-                              "x",
-                              2
-                           ]
-                        ],
-                        1
-                     ]
-                  ]
-               ],
-               "point_type_id": "BC-PT-99022"
-            },
-            {
-               "step": 2,
-               "text": "Multiplying out and collecting terms gives \\(5x^4-6x^2-3\\).",
-               "mathjson": [
-                  "Add",
-                  [
-                     "Multiply",
-                     5,
-                     [
-                        "Power",
-                        "x",
-                        4
-                     ]
-                  ],
-                  [
-                     "Multiply",
-                     -6,
-                     [
-                        "Power",
-                        "x",
-                        2
-                     ]
-                  ],
-                  -3
-               ]
-            }
-         ],
-         "calculator_status": "no_calculator",
-         "representation": "BC-REP-01",
-         "skills": [
-            "BC-SKL-02036"
-         ]
-      },
-      {
-         "id": "LSN-CON-02013#chk-3",
-         "check_kind": "mcq",
-         "bands": [
-            "low"
-         ],
-         "format": "mcq",
-         "archetype_id": "BC-QA-02009",
-         "parameter_draw": {
-            "kind": "product",
-            "a": 2,
-            "values": {
-               "f": 3,
-               "f_prime": 5,
-               "g": 4,
-               "g_prime": -1
-            },
-            "names": [
-               "f",
-               "g"
-            ]
-         },
-         "stem": {
-            "text": "Suppose \\(f(2)=3\\), \\(f'(2)=5\\), \\(g(2)=4\\), \\(g'(2)=-1\\) and \\(h(x)=f(x)g(x)\\). Find \\(h'(2)\\).",
-            "command_verb": "find"
-         },
-         "answer_key": {
-            "form": "symbolic",
-            "mathjson": 17
-         },
-         "worked_solution": [
-            {
-               "step": 1,
-               "text": "The rule gives \\(h'(2)=f'(2)g(2)+f(2)g'(2)=5(4)+3(-1)\\)."
-            },
-            {
-               "step": 2,
-               "text": "That is \\(17\\).",
-               "mathjson": 17,
-               "point_type_id": "BC-PT-99022"
-            }
-         ],
-         "options": [
-            {
-               "id": "A",
-               "is_key": false,
-               "error_path": "BC-ERR-02024",
-               "value": 9,
-               "derivation": "f(2) used in place of f'(2): 3(4) + 3(-1)",
-               "mechanism": "reversed_quantities"
-            },
-            {
-               "id": "B",
-               "is_key": false,
-               "error_path": "BC-ERR-02020",
-               "value": -5,
-               "derivation": "the two derivatives multiplied: 5(-1)",
-               "mechanism": "conceptual_confusion"
-            },
-            {
-               "id": "C",
-               "is_key": true,
-               "error_path": null,
-               "value": 17
-            },
-            {
-               "id": "D",
-               "is_key": false,
-               "error_path": "BC-ERR-02024",
-               "value": 32,
-               "derivation": "g(2) used in place of g'(2): 5(4) + 3(4)",
-               "mechanism": "reversed_quantities"
-            }
-         ],
-         "calculator_status": "no_calculator",
-         "representation": "BC-REP-03",
-         "skills": [
-            "BC-SKL-02037"
-         ]
-      }
+   "skills": [
+    "BC-SKL-02036",
+    "BC-SKL-02037",
+    "BC-SKL-02038"
    ],
-   "refresher": [
-      "LSN-CON-02013#s2",
-      "LSN-CON-02013#err-BC-ERR-02020",
-      "LSN-CON-02013#err-BC-ERR-02023",
-      "LSN-CON-02013#err-BC-ERR-02024",
-      "LSN-CON-02013#s5"
+   "sources": [
+    "BC-CON-02013",
+    "research/units/unit-02-differentiation-definition-properties.md#2.8 The Product Rule"
    ],
-   "provenance": {
-      "author": "claude-sonnet-5-5",
-      "prompt_version": "generator/lesson_v1",
-      "generated_at": "2026-09-28T00:00:00Z",
-      "signed_off_by": null,
-      "signed_off_at": null,
-      "not_human": true
+   "evidence_tag": "inferred",
+   "text": "A response shows the derivative of a product as two terms added: the first factor times the derivative of the second, plus the second factor times the derivative of the first. Questions ask for it symbolically, or from values of the two functions and their derivatives supplied at one input.",
+   "delivery": {
+    "mode": "text",
+    "reason": "rule 5: a symbolic rule, BC-REP-01 givens on BC-SKL-02036",
+    "sources": [
+     "BC-SKL-02036"
+    ]
    }
+  },
+  {
+   "id": "LSN-CON-02013#s2",
+   "type": "key_ideas",
+   "bands": [
+    "low",
+    "mid"
+   ],
+   "skills": [
+    "BC-SKL-02036",
+    "BC-SKL-02037",
+    "BC-SKL-02038"
+   ],
+   "sources": [
+    "BC-EK-FUN-3B1",
+    "ced:67",
+    "research/units/unit-02-differentiation-definition-properties.md#2.8 The Product Rule"
+   ],
+   "evidence_tag": "verified",
+   "ek_id": "BC-EK-FUN-3B1",
+   "depth": "core",
+   "text": "For a product \\(fg\\) the derivative is \\(f'g+fg'\\) (BC-EK-FUN-3B1, ced:67). It is not \\(f'g'\\), which expanding a simple product and differentiating term by term shows at once. A product of polynomials can also be expanded first and differentiated term by term, which is sometimes the shorter route.",
+   "notation": "product rule",
+   "quote": {
+    "text": "Derivatives of products of differentiable functions can be found using the product rule.",
+    "source": "ced:67"
+   },
+   "delivery": {
+    "mode": "text",
+    "reason": "rule 5: an algebraic identity with no figure-bearing BC-REP on the skills",
+    "sources": [
+     "BC-SKL-02036"
+    ]
+   }
+  },
+  {
+   "id": "LSN-CON-02013#s3",
+   "type": "strategy",
+   "bands": [
+    "low",
+    "mid"
+   ],
+   "skills": [
+    "BC-SKL-02036",
+    "BC-SKL-02038"
+   ],
+   "sources": [
+    "BC-QA-02008"
+   ],
+   "evidence_tag": "verified",
+   "archetype_id": "BC-QA-02008",
+   "cue": "The stem asks for the derivative of the product or quotient, from a product or quotient of two differentiable expressions.",
+   "method": "First written line: name the two factors and their derivatives, \\(f\\), \\(g\\), \\(f'\\), \\(g'\\).",
+   "rival": "The rival is multiplying the derivatives of the two factors (BC-ERR-02020).",
+   "separating_feature": "A product gives two terms, each holding exactly one derivative."
+  },
+  {
+   "id": "LSN-CON-02013#s4",
+   "type": "strategy",
+   "bands": [
+    "low",
+    "mid"
+   ],
+   "skills": [
+    "BC-SKL-02037"
+   ],
+   "sources": [
+    "BC-QA-02009"
+   ],
+   "evidence_tag": "verified",
+   "archetype_id": "BC-QA-02009",
+   "cue": "The stem asks for the derivative value at the named input, from a table of two functions and their derivatives.",
+   "method": "First written line: record the four supplied values at the named input, each labelled a value or a derivative.",
+   "rival": "The rival is placing a function value where the rule calls for a derivative value (BC-ERR-02024).",
+   "separating_feature": "Each of the four numbers is labelled before it is used."
+  },
+  {
+   "id": "LSN-CON-02013#s5",
+   "type": "worked_example",
+   "bands": [
+    "low",
+    "mid"
+   ],
+   "skills": [
+    "BC-SKL-02036",
+    "BC-SKL-02038"
+   ],
+   "sources": [
+    "BC-QA-02008"
+   ],
+   "evidence_tag": "inferred",
+   "archetype_id": "BC-QA-02008",
+   "parameter_draw": {
+    "structure": "product",
+    "numerator": "quadratic",
+    "leading": 1,
+    "constant": 3,
+    "trig": "cos"
+   },
+   "problem": {
+    "text": "Let \\(h(x)=(x^2+3)\\cos x\\). Find \\(h'(x)\\).",
+    "command_verb": "find"
+   },
+   "calculator_status": "no_calculator",
+   "steps": [
+    {
+     "cue": "The stem is a product of \\(f=x^2+3\\) and \\(g=\\cos x\\).",
+     "why": "Each factor needs its own derivative: \\(f'=2x\\) and \\(g'=-\\sin x\\)."
+    },
+    {
+     "cue": "Two factors are multiplied, so the rule is \\(f'g+fg'\\).",
+     "why": "Both terms are needed. Each keeps one factor and differentiates the other.",
+     "expression": [
+      "Add",
+      [
+       "Multiply",
+       -1,
+       [
+        "Add",
+        3,
+        [
+         "Power",
+         "x",
+         2
+        ]
+       ],
+       [
+        "Sin",
+        "x"
+       ]
+      ],
+      [
+       "Multiply",
+       2,
+       "x",
+       [
+        "Cos",
+        "x"
+       ]
+      ]
+     ],
+     "point_type_id": "BC-PT-99022",
+     "relation": "new"
+    },
+    {
+     "cue": "The stem asks for \\(h'(x)\\), so clear the double sign.",
+     "why": "The answer is the rule line tidied; no further simplification is required.",
+     "expression": [
+      "Add",
+      [
+       "Multiply",
+       -1,
+       [
+        "Add",
+        3,
+        [
+         "Power",
+         "x",
+         2
+        ]
+       ],
+       [
+        "Sin",
+        "x"
+       ]
+      ],
+      [
+       "Multiply",
+       2,
+       "x",
+       [
+        "Cos",
+        "x"
+       ]
+      ]
+     ],
+     "relation": "equivalent"
+    }
+   ],
+   "answer": {
+    "form": "symbolic",
+    "mathjson": [
+     "Add",
+     [
+      "Multiply",
+      -1,
+      [
+       "Add",
+       3,
+       [
+        "Power",
+        "x",
+        2
+       ]
+      ],
+      [
+       "Sin",
+       "x"
+      ]
+     ],
+     [
+      "Multiply",
+      2,
+      "x",
+      [
+       "Cos",
+       "x"
+      ]
+     ]
+    ]
+   },
+   "delivery": {
+    "mode": "step_reveal",
+    "reason": "rule 1",
+    "sources": []
+   }
+  },
+  {
+   "id": "LSN-CON-02013#s6",
+   "type": "worked_example",
+   "bands": [
+    "low"
+   ],
+   "skills": [
+    "BC-SKL-02037"
+   ],
+   "sources": [
+    "BC-QA-02009"
+   ],
+   "evidence_tag": "inferred",
+   "archetype_id": "BC-QA-02009",
+   "parameter_draw": {
+    "f_values": 3,
+    "f_slopes": -2,
+    "g_values": 4,
+    "g_slopes": 5,
+    "row": 1,
+    "start": 0,
+    "form": "product"
+   },
+   "problem": {
+    "text": "The table gives \\(f(1)=3\\), \\(f'(1)=-2\\), \\(g(1)=4\\), \\(g'(1)=5\\). Let \\(h(x)=f(x)g(x)\\). Find \\(h'(1)\\).",
+    "command_verb": "find"
+   },
+   "calculator_status": "no_calculator",
+   "steps": [
+    {
+     "cue": "Four values at the input 1, two of them derivative values.",
+     "why": "Label each before use: \\(f(1)=3\\), \\(f'(1)=-2\\), \\(g(1)=4\\), \\(g'(1)=5\\)."
+    },
+    {
+     "cue": "\\(h\\) is a product, so \\(h'(1)=f'(1)g(1)+f(1)g'(1)\\).",
+     "why": "Each term holds one derivative value and one function value.",
+     "expression": 7,
+     "point_type_id": "BC-PT-99022",
+     "relation": "new"
+    },
+    {
+     "cue": "The stem asks for a value.",
+     "why": "Arithmetic on the substituted line.",
+     "expression": 7,
+     "relation": "equivalent"
+    }
+   ],
+   "answer": {
+    "form": "numeric",
+    "mathjson": 7
+   },
+   "delivery": {
+    "mode": "step_reveal",
+    "reason": "rule 1; the four supplied values render as a table inside the problem (BC-REP-03 given)",
+    "sources": [
+     "BC-SKL-02037"
+    ]
+   }
+  },
+  {
+   "id": "LSN-CON-02013#s7",
+   "type": "what_a_reader_scores",
+   "bands": [
+    "low",
+    "mid"
+   ],
+   "skills": [
+    "BC-SKL-02036",
+    "BC-SKL-02038"
+   ],
+   "sources": [
+    "BC-PT-99022"
+   ],
+   "evidence_tag": "verified",
+   "example_id": "LSN-CON-02013#s5",
+   "lines": [
+    {
+     "point_type_id": "BC-PT-99022",
+     "text": "Product rule. Earned by: A differentiation that correctly applies the product rule to the given expression (sg-25:20, sg-22:16). Not earned by: A response that treats one factor as constant, which sg-22:16 states is eligible for the chain rule point but not this one."
+    }
+   ]
+  },
+  {
+   "id": "LSN-CON-02013#s8",
+   "type": "what_a_reader_scores",
+   "bands": [
+    "low"
+   ],
+   "skills": [
+    "BC-SKL-02037"
+   ],
+   "sources": [
+    "BC-PT-99022"
+   ],
+   "evidence_tag": "verified",
+   "example_id": "LSN-CON-02013#s6",
+   "lines": [
+    {
+     "point_type_id": "BC-PT-99022",
+     "text": "Product rule. Earned by: A differentiation that correctly applies the product rule to the given expression (sg-25:20, sg-22:16). Not earned by: A response that treats one factor as constant, which sg-22:16 states is eligible for the chain rule point but not this one."
+    }
+   ]
+  },
+  {
+   "id": "LSN-CON-02013#err-BC-ERR-02020",
+   "type": "common_error",
+   "bands": [
+    "low",
+    "mid"
+   ],
+   "skills": [
+    "BC-SKL-02036",
+    "BC-SKL-02037",
+    "BC-SKL-02038"
+   ],
+   "sources": [
+    "BC-ERR-02020",
+    "BC-MIS-02011"
+   ],
+   "evidence_tag": "inferred",
+   "error_id": "BC-ERR-02020",
+   "observed_behavior": "The response multiplies the derivatives of the two factors together.",
+   "scoring_consequence": "The rule point and the result point are both lost.",
+   "wrong_step": {
+    "text": "The derivatives of the two factors are multiplied: \\(f'g'=2x(-\\sin x)\\).",
+    "expression": [
+     "Multiply",
+     -2,
+     "x",
+     [
+      "Sin",
+      "x"
+     ]
+    ]
+   },
+   "right_step": {
+    "text": "The rule adds two terms: \\(f'g+fg'=2x\\cos x-(x^2+3)\\sin x\\).",
+    "expression": [
+     "Add",
+     [
+      "Multiply",
+      -1,
+      [
+       "Add",
+       3,
+       [
+        "Power",
+        "x",
+        2
+       ]
+      ],
+      [
+       "Sin",
+       "x"
+      ]
+     ],
+     [
+      "Multiply",
+      2,
+      "x",
+      [
+       "Cos",
+       "x"
+      ]
+     ]
+    ]
+   },
+   "relation": "distinct",
+   "possible_reason": {
+    "misconception_id": "BC-MIS-02011",
+    "text": "the derivative of a product is taken as the product of the derivatives"
+   },
+   "delivery": {
+    "mode": "step_reveal",
+    "reason": "rule 1",
+    "sources": []
+   }
+  },
+  {
+   "id": "LSN-CON-02013#err-BC-ERR-02023",
+   "type": "common_error",
+   "bands": [
+    "low",
+    "mid"
+   ],
+   "skills": [
+    "BC-SKL-02038"
+   ],
+   "sources": [
+    "BC-ERR-02023"
+   ],
+   "evidence_tag": "inferred",
+   "error_id": "BC-ERR-02023",
+   "observed_behavior": "The response applies the full quotient rule to an expression whose denominator carries no variable.",
+   "scoring_consequence": "No point is necessarily lost but the additional algebra invites a further error.",
+   "wrong_step": {
+    "text": "The full quotient rule is applied to \\(\\frac{x^2+3}{4}\\).",
+    "expression": [
+     "Multiply",
+     [
+      "Rational",
+      1,
+      2
+     ],
+     "x"
+    ]
+   },
+   "right_step": {
+    "text": "The denominator is constant, so differentiate term by term: \\(\\frac{x}{2}\\).",
+    "expression": [
+     "Multiply",
+     [
+      "Rational",
+      1,
+      2
+     ],
+     "x"
+    ]
+   },
+   "relation": "equivalent",
+   "delivery": {
+    "mode": "step_reveal",
+    "reason": "rule 1",
+    "sources": []
+   }
+  },
+  {
+   "id": "LSN-CON-02013#err-BC-ERR-02024",
+   "type": "common_error",
+   "bands": [
+    "low",
+    "mid"
+   ],
+   "skills": [
+    "BC-SKL-02037"
+   ],
+   "sources": [
+    "BC-ERR-02024",
+    "BC-MIS-02011"
+   ],
+   "evidence_tag": "inferred",
+   "error_id": "BC-ERR-02024",
+   "observed_behavior": "The response substitutes the value of a function into a position in the product or quotient rule that calls for the value of its derivative.",
+   "scoring_consequence": "The value point is lost.",
+   "wrong_step": {
+    "text": "With \\(f(1)=3\\), \\(f'(1)=-2\\), \\(g(1)=4\\), \\(g'(1)=5\\), using \\(f(1)\\) in place of \\(f'(1)\\) gives \\(3\\cdot4+3\\cdot5=27\\).",
+    "expression": 27
+   },
+   "right_step": {
+    "text": "The rule gives \\(f'(1)g(1)+f(1)g'(1)=-8+15=7\\).",
+    "expression": 7
+   },
+   "relation": "distinct",
+   "possible_reason": {
+    "misconception_id": "BC-MIS-02011",
+    "text": "supplied values are placed in the wrong positions"
+   },
+   "delivery": {
+    "mode": "step_reveal",
+    "reason": "rule 1",
+    "sources": []
+   }
+  }
+ ],
+ "checks": [
+  {
+   "id": "LSN-CON-02013#chk-1",
+   "check_kind": "completion",
+   "bands": [
+    "low",
+    "mid"
+   ],
+   "format": "short_answer",
+   "archetype_id": "BC-QA-02008",
+   "parameter_draw": {
+    "structure": "product",
+    "numerator": "quadratic",
+    "leading": 1,
+    "constant": 3,
+    "trig": "cos"
+   },
+   "completes": "LSN-CON-02013#s5",
+   "stem": {
+    "text": "The product rule gives \\(h'(x)=(2x)(\\cos x)+(x^2+3)(-\\sin x)\\). Write \\(h'(x)\\) with the double sign cleared.",
+    "command_verb": "write"
+   },
+   "answer_key": {
+    "form": "symbolic",
+    "mathjson": [
+     "Add",
+     [
+      "Multiply",
+      -1,
+      [
+       "Add",
+       3,
+       [
+        "Power",
+        "x",
+        2
+       ]
+      ],
+      [
+       "Sin",
+       "x"
+      ]
+     ],
+     [
+      "Multiply",
+      2,
+      "x",
+      [
+       "Cos",
+       "x"
+      ]
+     ]
+    ]
+   },
+   "worked_solution": [
+    {
+     "step": 1,
+     "text": "The rule gives the two terms \\((2x)(\\cos x)\\) and \\((x^2+3)(-\\sin x)\\).",
+     "mathjson": [
+      "Add",
+      [
+       "Multiply",
+       -1,
+       [
+        "Add",
+        3,
+        [
+         "Power",
+         "x",
+         2
+        ]
+       ],
+       [
+        "Sin",
+        "x"
+       ]
+      ],
+      [
+       "Multiply",
+       2,
+       "x",
+       [
+        "Cos",
+        "x"
+       ]
+      ]
+     ],
+     "point_type_id": "BC-PT-99022",
+     "relation": "new"
+    },
+    {
+     "step": 2,
+     "text": "Clearing the double sign gives \\(2x\\cos x-(x^2+3)\\sin x\\).",
+     "mathjson": [
+      "Add",
+      [
+       "Multiply",
+       -1,
+       [
+        "Add",
+        3,
+        [
+         "Power",
+         "x",
+         2
+        ]
+       ],
+       [
+        "Sin",
+        "x"
+       ]
+      ],
+      [
+       "Multiply",
+       2,
+       "x",
+       [
+        "Cos",
+        "x"
+       ]
+      ]
+     ],
+     "relation": "equivalent"
+    }
+   ],
+   "calculator_status": "no_calculator",
+   "representation": "BC-REP-01",
+   "skills": [
+    "BC-SKL-02036"
+   ]
+  },
+  {
+   "id": "LSN-CON-02013#chk-2",
+   "check_kind": "isomorph",
+   "bands": [
+    "low",
+    "mid"
+   ],
+   "format": "short_answer",
+   "archetype_id": "BC-QA-02008",
+   "parameter_draw": {
+    "structure": "product",
+    "numerator": "quadratic",
+    "leading": 1,
+    "constant": -2,
+    "trig": "sin"
+   },
+   "stem": {
+    "text": "Let \\(h(x)=(x^2-2)\\sin x\\). Find \\(h'(x)\\).",
+    "command_verb": "find"
+   },
+   "answer_key": {
+    "form": "symbolic",
+    "mathjson": [
+     "Add",
+     [
+      "Multiply",
+      [
+       "Add",
+       -2,
+       [
+        "Power",
+        "x",
+        2
+       ]
+      ],
+      [
+       "Cos",
+       "x"
+      ]
+     ],
+     [
+      "Multiply",
+      2,
+      "x",
+      [
+       "Sin",
+       "x"
+      ]
+     ]
+    ]
+   },
+   "worked_solution": [
+    {
+     "step": 1,
+     "text": "The rule gives \\((2x)(\\sin x)+(x^2-2)(\\cos x)\\).",
+     "mathjson": [
+      "Add",
+      [
+       "Multiply",
+       [
+        "Add",
+        -2,
+        [
+         "Power",
+         "x",
+         2
+        ]
+       ],
+       [
+        "Cos",
+        "x"
+       ]
+      ],
+      [
+       "Multiply",
+       2,
+       "x",
+       [
+        "Sin",
+        "x"
+       ]
+      ]
+     ],
+     "point_type_id": "BC-PT-99022",
+     "relation": "new"
+    }
+   ],
+   "calculator_status": "no_calculator",
+   "representation": "BC-REP-01",
+   "skills": [
+    "BC-SKL-02036"
+   ]
+  },
+  {
+   "id": "LSN-CON-02013#chk-3",
+   "check_kind": "mcq",
+   "bands": [
+    "low"
+   ],
+   "format": "mcq",
+   "archetype_id": "BC-QA-02009",
+   "parameter_draw": {
+    "f_values": -1,
+    "f_slopes": 4,
+    "g_values": 2,
+    "g_slopes": -3,
+    "row": 2,
+    "start": 0,
+    "form": "product"
+   },
+   "stem": {
+    "text": "Suppose \\(f(2)=-1\\), \\(f'(2)=4\\), \\(g(2)=2\\), \\(g'(2)=-3\\) and \\(h(x)=f(x)g(x)\\). Find \\(h'(2)\\).",
+    "command_verb": "find"
+   },
+   "answer_key": {
+    "form": "numeric",
+    "mathjson": 11
+   },
+   "worked_solution": [
+    {
+     "step": 1,
+     "text": "The rule gives \\(h'(2)=f'(2)g(2)+f(2)g'(2)=4(2)+(-1)(-3)\\).",
+     "mathjson": 11,
+     "point_type_id": "BC-PT-99022",
+     "relation": "new"
+    },
+    {
+     "step": 2,
+     "text": "That is 11.",
+     "mathjson": 11,
+     "relation": "equivalent"
+    }
+   ],
+   "options": [
+    {
+     "id": "A",
+     "is_key": false,
+     "error_path": "BC-ERR-02024",
+     "value": 1,
+     "derivation": "f(2) used in place of f'(2): (-1)(2) + (-1)(-3)"
+    },
+    {
+     "id": "B",
+     "is_key": false,
+     "error_path": "BC-ERR-02020",
+     "value": -12,
+     "derivation": "the two derivatives multiplied: 4(-3)"
+    },
+    {
+     "id": "C",
+     "is_key": true,
+     "error_path": null,
+     "value": 11
+    },
+    {
+     "id": "D",
+     "is_key": false,
+     "error_path": "BC-ERR-02024",
+     "value": 6,
+     "derivation": "g(2) used in place of g'(2): 4(2) + (-1)(2)"
+    }
+   ],
+   "calculator_status": "no_calculator",
+   "representation": "BC-REP-03",
+   "skills": [
+    "BC-SKL-02037"
+   ]
+  }
+ ],
+ "refresher": [
+  "LSN-CON-02013#s2",
+  "LSN-CON-02013#err-BC-ERR-02020",
+  "LSN-CON-02013#err-BC-ERR-02023",
+  "LSN-CON-02013#err-BC-ERR-02024",
+  "LSN-CON-02013#s5"
+ ],
+ "provenance": {
+  "author": "tools/lesson_transcribe.py",
+  "prompt_version": "generator/lesson_v1",
+  "design_path": "docs/lessons/unit-02/LSN-CON-02013.md",
+  "signed_off_by": null,
+  "signed_off_at": null,
+  "not_human": true
+ }
 }

@@ -1533,3 +1533,200 @@ th {
 .comparison-grid > div > * + * {
    margin-top: var(--growth-space-8);
 }
+
+/* Lessons (docs/plan/15-lessons.md UI; TEMPLATE.md Delivery): the reader, its mode blocks and the
+   progress Lessons section. Layout only, with every colour a token already in use above; a state
+   drawn in colour here also carries a glyph and a word in the markup (08 Accessibility). The frame
+   cross-fade of a motion block is motion.css's, so nothing here animates. */
+
+.lesson-reader > * + * {
+   margin-top: var(--growth-space-16);
+}
+
+.lesson-screen > * + *,
+.lesson-section > * + *,
+.lesson-check > * + *,
+.lesson-inline > * + * {
+   margin-top: var(--growth-space-16);
+}
+
+.lesson-actions {
+   margin-top: var(--growth-space-32);
+}
+
+.lesson-steps {
+   margin: 0;
+   padding: var(--growth-space-8) var(--growth-space-24) var(--growth-space-8) var(--growth-space-48);
+   background: var(--growth-surface-sunken);
+   border: var(--growth-stroke-hairline) solid var(--growth-border-hairline);
+   border-radius: var(--growth-space-4);
+}
+
+.lesson-steps > li {
+   padding-block: var(--growth-space-8);
+}
+
+.lesson-step-row,
+.lesson-pair,
+.lesson-beside,
+.contrast-grid {
+   display: flex;
+   flex-wrap: wrap;
+   gap: var(--growth-space-16) var(--growth-space-24);
+}
+
+.lesson-step-row > *,
+.lesson-pair > *,
+.lesson-beside > *,
+.contrast-grid > * {
+   flex: auto;
+   flex-basis: calc(var(--growth-space-96) * 2);
+   min-width: 0;
+}
+
+.lesson-step-why {
+   color: var(--growth-text-secondary);
+}
+
+.lesson-pair-side,
+.contrast-stem {
+   padding: var(--growth-space-12) var(--growth-space-16);
+   border: var(--growth-stroke-hairline) solid var(--growth-border-hairline);
+   border-radius: var(--growth-space-4);
+}
+
+.lesson-pair-side > * + *,
+.contrast-stem > * + * {
+   margin-top: var(--growth-space-8);
+}
+
+.lesson-strategy {
+   margin: 0;
+}
+
+.lesson-strategy > div + div {
+   margin-top: var(--growth-space-12);
+}
+
+.lesson-strategy dd {
+   margin: 0;
+}
+
+.lesson-checklist {
+   list-style: none;
+   padding: 0;
+}
+
+.lesson-checklist > li + li {
+   margin-top: var(--growth-space-8);
+}
+
+.lesson-quote {
+   margin: 0;
+   padding-inline-start: var(--growth-space-16);
+   border-inline-start: var(--growth-stroke-mark) solid var(--growth-border-hairline);
+   color: var(--growth-text-secondary);
+}
+
+.lesson-figure {
+   margin: 0;
+}
+
+.lesson-figure > * + * {
+   margin-top: var(--growth-space-16);
+}
+
+.lesson-fallback {
+   padding: var(--growth-space-12) var(--growth-space-16);
+   border: var(--growth-stroke-hairline) dashed var(--growth-border-hairline);
+   border-radius: var(--growth-space-4);
+}
+
+.lesson-panels {
+   display: flex;
+   flex-wrap: wrap;
+   gap: var(--growth-space-16);
+}
+
+.lesson-panels[data-layout="stacked"] {
+   flex-direction: column;
+}
+
+.lesson-panels > .lesson-panel {
+   flex: auto;
+   flex-basis: calc(var(--growth-space-96) * 2);
+   min-width: 0;
+}
+
+.lesson-panels > * + * {
+   margin-top: 0;
+}
+
+.lesson-row-current > td {
+   background: var(--growth-accent-tint-1);
+}
+
+.lesson-row-marked > td {
+   background: var(--growth-surface-sunken);
+}
+
+.lesson-row-mark {
+   white-space: nowrap;
+}
+
+.frame-stepper,
+.figure-control,
+.model-table {
+   display: flex;
+   flex-direction: column;
+   gap: var(--growth-space-12);
+}
+
+.lesson-frame-fading {
+   opacity: 0;
+}
+
+.figure-control-slider {
+   display: flex;
+   flex-wrap: wrap;
+   align-items: center;
+   gap: var(--growth-space-12);
+}
+
+.lesson-question {
+   font-family: "Inter Medium", "Inter", system-ui, sans-serif;
+}
+
+.contrast-feature {
+   padding-inline-start: var(--growth-space-8);
+   border-inline-start: var(--growth-stroke-curve) solid var(--growth-accent-base);
+}
+
+.lesson-refresher {
+   max-height: calc(var(--growth-space-96) * 6);
+   overflow-y: auto;
+}
+
+.lesson-refresher > * + * {
+   margin-top: var(--growth-space-32);
+}
+
+.lesson-library-list {
+   list-style: none;
+   padding: 0;
+}
+
+.lesson-library-unit > * + * {
+   margin-top: var(--growth-space-8);
+}
+
+.lesson-library-row {
+   display: flex;
+   flex-wrap: wrap;
+   justify-content: space-between;
+   gap: var(--growth-space-8) var(--growth-space-16);
+   padding-block: var(--growth-space-8);
+   width: -webkit-fill-available;
+   width: stretch;
+   text-align: start;
+}

@@ -1,0 +1,142 @@
+{
+ "id": "LSN-CON-01011",
+ "resolve": {
+  "date": "2026-09-29",
+  "problems": 5,
+  "agreed": 5,
+  "judgments_pending": 0,
+  "all_agree": true,
+  "verdicts": [
+   {
+    "id": "LSN-CON-01011#ex-1",
+    "agree": true,
+    "detail": "judged: Same conclusion and numbers as the key; checked values (limits, signs, sums, derivatives) are consistent.",
+    "method": "Infinite one-sided limit."
+   },
+   {
+    "id": "LSN-CON-01011#ex-2",
+    "agree": true,
+    "detail": "judged: Same conclusion and numbers as the key; checked values (limits, signs, sums, derivatives) are consistent.",
+    "method": "Limit at infinity."
+   },
+   {
+    "id": "LSN-CON-01011#chk-1",
+    "agree": true,
+    "detail": "judged: Same conclusion and numbers as the key; checked values (limits, signs, sums, derivatives) are consistent.",
+    "method": "Infinite one-sided limit."
+   },
+   {
+    "id": "LSN-CON-01011#chk-2",
+    "agree": true,
+    "detail": "judged: Same conclusion and numbers as the key; checked values (limits, signs, sums, derivatives) are consistent.",
+    "method": "Infinite one-sided limit."
+   },
+   {
+    "id": "LSN-CON-01011#chk-3",
+    "agree": true,
+    "detail": "key option A, re-solver A",
+    "method": "Right-sided limit of negative infinity means decreasing without bound with a vertical asymptote."
+   }
+  ],
+  "answers_file": "/tmp/claude-0/-home-user-growth/ac029253-8ff0-5a4b-8b5f-cdcaf5e8ff8d/scratchpad/verify/answers_03.json"
+ },
+ "audit": {
+  "date": "2026-09-29",
+  "auditor": "claude-opus-5-5",
+  "blocks": [
+   {
+    "id": "orientation",
+    "verdict": "ok",
+    "evidence": "Paraphrase of BC-CON-01011 description_plain and the 1.9 Equivalence across representations paragraph; 35 words."
+   },
+   {
+    "id": "ki-1",
+    "verdict": "ok",
+    "evidence": "fixed 2026-09-29: the [inferred: no BC-EK is mapped] tag removed from served text; the claim already sits in the inferred array."
+   },
+   {
+    "id": "st-1",
+    "verdict": "ok",
+    "evidence": "Method BC-QA-01013 expected_solution_path[0]; rival BC-ERR-01033 in wrong_approaches; cue from common_givens and typical_wording."
+   },
+   {
+    "id": "ex-1",
+    "verdict": "ok",
+    "evidence": "Left sided infinite limit at 3 read as vertical asymptote x = 3 with g increasing without bound from the left; matches parameter_spec notes for infinite_limit."
+   },
+   {
+    "id": "ex-2",
+    "verdict": "ok",
+    "evidence": "Limit at infinity equal to -2 read as horizontal asymptote y = -2 on the right; matches parameter_spec notes for limit_at_infinity."
+   },
+   {
+    "id": "err-BC-ERR-01002",
+    "verdict": "ok",
+    "evidence": "Record text verbatim; SymPy Limit(g(x),x,3,'+-') and Limit(g(x),x,3,'-') are distinct objects; BC-MIS-01002 listed."
+   },
+   {
+    "id": "err-BC-ERR-01020",
+    "verdict": "ok",
+    "evidence": "Record text verbatim; BC-MIS-01012 listed, reason quoted from its description."
+   },
+   {
+    "id": "err-BC-ERR-01033",
+    "verdict": "ok",
+    "evidence": "Record text verbatim; x = -2 against y = -2 distinct; BC-MIS-01018 listed."
+   },
+   {
+    "id": "err-BC-ERR-01021",
+    "verdict": "ok",
+    "evidence": "Record text verbatim including sg-25:4; BC-MIS-99008 listed."
+   },
+   {
+    "id": "representations",
+    "verdict": "ok",
+    "evidence": "null; 1.9 conversions carried by the orientation figure and the ki-1 figure with table."
+   },
+   {
+    "id": "BC-PRQ-01003",
+    "verdict": "ok",
+    "evidence": "Paraphrase of description_plain and failure_signature."
+   },
+   {
+    "id": "BC-PRQ-06005",
+    "verdict": "ok",
+    "evidence": "Paraphrase of description_plain and failure_signature."
+   },
+   {
+    "id": "chk-1",
+    "verdict": "ok",
+    "evidence": "Key x = 3 matches ex-1."
+   },
+   {
+    "id": "chk-2",
+    "verdict": "ok",
+    "evidence": "Right sided limit to negative infinity at -1: vertical asymptote x = -1, decreasing from the right; correct."
+   },
+   {
+    "id": "chk-3",
+    "verdict": "ok",
+    "evidence": "Key A correct; B, C, D match BC-ERR-01033, 01002, 01020 observed behaviours and are all false for the stated limit."
+   }
+  ],
+  "advice": [
+   "err-BC-ERR-01002's record says the two sides differ, but the stem supplies only the left side; the wrong step is an overclaim rather than a report of differing sides, so the served observed_behavior sits loosely on this draw.",
+   "ki-1 served text ends with [inferred: no BC-EK is mapped]; authoring metadata should not reach the student.",
+   "chk-3 option D says the limit of h at 2 exists, while the stem is one sided at 2 from the right; wording it as the right hand limit would keep the distractor on BC-ERR-01020 alone.",
+   "The archetype is matching among candidate graphs, tables and sentences, but every example and check is notation to words; no item shows a graph or table candidate, so the graph and table conversions named in 1.9 rest on the ki-1 figure only. An interactive figure where the reader picks the matching graph would serve the reading better than a static figure.",
+   "No scoring habit is taught; the sg-25:4 point for presenting a limit expression is mentioned in the design and could be a one line habit in err-BC-ERR-01021."
+  ],
+  "counts": {
+   "ok": 15,
+   "unsourced": 0,
+   "wrong": 0,
+   "over_cap": 0,
+   "lint": 0
+  },
+  "fix_notes": [
+   "Removed the [inferred] tag from ki-1's served text.",
+   "Left as preferences: err-BC-ERR-01002 draw fit, chk-3 option D wording as a right hand limit, graph or table candidates and an interactive picking figure, a scoring habit line from sg-25:4."
+  ]
+ }
+}

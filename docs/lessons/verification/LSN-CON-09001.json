@@ -1,0 +1,116 @@
+{
+ "id": "LSN-CON-09001",
+ "resolve": {
+  "date": "2026-09-29",
+  "problems": 4,
+  "agreed": 4,
+  "judgments_pending": 0,
+  "all_agree": true,
+  "verdicts": [
+   {
+    "id": "LSN-CON-09001#ex-1",
+    "agree": true,
+    "detail": "agree (symbolic)",
+    "method": "(dy/dt)/(dx/dt) at t=3/2."
+   },
+   {
+    "id": "LSN-CON-09001#chk-1",
+    "agree": true,
+    "detail": "agree (symbolic)",
+    "method": "6cos(9/8)/(38/13)."
+   },
+   {
+    "id": "LSN-CON-09001#chk-2",
+    "agree": true,
+    "detail": "agree (symbolic)",
+    "method": "(dy/dt)/(dx/dt) at t=5/2."
+   },
+   {
+    "id": "LSN-CON-09001#chk-3",
+    "agree": true,
+    "detail": "agree (symbolic)",
+    "method": "(dy/dt)/(dx/dt) at t=1; MCQ options not shown."
+   }
+  ],
+  "answers_file": "/tmp/claude-0/-home-user-growth/ac029253-8ff0-5a4b-8b5f-cdcaf5e8ff8d/scratchpad/verify/answers_13.json"
+ },
+ "audit": {
+  "date": "2026-09-29",
+  "auditor": "claude-opus-5-5",
+  "blocks": [
+   {
+    "id": "orientation",
+    "verdict": "ok",
+    "evidence": "Paraphrase of BC-CON-09001 description_plain and the 9.1 Notation paragraph; 33 words."
+   },
+   {
+    "id": "ki-1",
+    "verdict": "ok",
+    "evidence": "Quote verbatim from CHA-3.G.1 on ced:171; 'rates in time, not slopes' paraphrases the 9.1 Notation sentence; 44 words."
+   },
+   {
+    "id": "st-1",
+    "verdict": "ok",
+    "evidence": "Cue from common_givens, method from expected_solution_path[0], rival verbatim from wrong_approaches of BC-QA-09001."
+   },
+   {
+    "id": "ex-1",
+    "verdict": "ok",
+    "evidence": "SymPy: dx/dt at 3/2 = 38/13, dy/dt = 6*cos(9/8), quotient 0.88505 rounds to 0.885."
+   },
+   {
+    "id": "what_a_reader_scores:ex-1",
+    "verdict": "ok",
+    "evidence": "BC-PT-99049 line quotes the bundle's earns, does_not_earn and notation fields."
+   },
+   {
+    "id": "err-BC-ERR-09001",
+    "verdict": "ok",
+    "evidence": "Observed behaviour and consequence verbatim; dropped chain factor is a listed non_conceptual_cause; 4cos(9/8) vs 6cos(9/8) correct."
+   },
+   {
+    "id": "representations",
+    "verdict": "ok",
+    "evidence": "null."
+   },
+   {
+    "id": "bridge-BC-PRQ-06005",
+    "verdict": "ok",
+    "evidence": "Paraphrase of BC-PRQ-06005 description_plain and failure_signature; 21 words."
+   },
+   {
+    "id": "time",
+    "verdict": "ok",
+    "evidence": "30 minutes over 2 questions in Section II Part A = 15.0 (exam-structure.md)."
+   },
+   {
+    "id": "chk-1",
+    "verdict": "ok",
+    "evidence": "SymPy: 6*cos(9/8)/(38/13) = 0.88505, key 0.885."
+   },
+   {
+    "id": "chk-2",
+    "verdict": "ok",
+    "evidence": "SymPy: dx/dt(5/2)=107/29, dy/dt=-(4t/3)sin(t^2/3), slope -0.78734, key -0.787."
+   },
+   {
+    "id": "chk-3",
+    "verdict": "ok",
+    "evidence": "SymPy: key 1.6463; A 3cos(0.75)/2 = 1.0975; C 4.5cos(0.75)/1.5 = 2.1951; D 4.5cos(0.75 deg)/2 = 2.2498; degree mode is a listed non_conceptual_cause."
+   }
+  ],
+  "advice": [
+   "Orientation delivered as a figure of the path is reasonable, but the text states a writing habit; the figure adds little to it.",
+   "ki-1 as motion fits: tracing t forward and dropping to both axes separates the parameter from x, which is BC-MIS-09001.",
+   "err-BC-ERR-09001 has possible_reason null although the bundle lists BC-MIS-09001; the chain factor slip is non conceptual, so null is defensible, but a second error block showing the parameter read as x would teach the misconception the concept names.",
+   "All three checks use the same drift plus log plus trig family; the difficulty_variables (a component given only through its derivative, an imported component) are not exercised."
+  ],
+  "counts": {
+   "ok": 12,
+   "unsourced": 0,
+   "wrong": 0,
+   "over_cap": 0,
+   "lint": 0
+  }
+ }
+}

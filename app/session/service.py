@@ -27,6 +27,9 @@ from app.engine.prior import p_compensatory, p_knowledge, primary_skill
 from app.engine.select import format_for_item, retrievability_map
 from app.engine.state import Confidence, FadingStage, MasteryState, ResponseFormat
 from app.engine.update import Observation, apply_observation, rule_based_mastery_states
+from app.lessons import gate as lesson_gate
+from app.lessons import refresh as lesson_refresh
+from app.lessons import repository as lesson_repository
 from app.runtime.bank import served_steps, supports_completion
 from app.session import diagnostic_session, repository
 from app.session.build import assemble_session
@@ -41,6 +44,8 @@ CONFIDENCE_FROM_STUDENT = "student"
 CONFIDENCE_FROM_SESSION_CLOSE = "session_close"
 
 RESPONSE_FIELDS = ("mathjson", "units", "option_id")
+
+READING_KINDS = lesson_repository.READING_KINDS
 
 
 def new_id(prefix):
@@ -66,6 +71,10 @@ def utc_now():
    return datetime.now(timezone.utc)
 
 
+def is_reading(entry):
+   return entry.get("kind") in READING_KINDS
+
+
 def unexplained_violations(served, graph, shortfalls):
    """Window violations that no logged shortfall accounts for.
 
@@ -73,7 +82,7 @@ def unexplained_violations(served, graph, shortfalls):
    plan's own "once 2 units are open" reading applied to every soft rule; anything else the
    independent check in app/engine/interleave.py finds is a real violation.
    """
-   records = [graph.archetypes[item["archetype_id"]] for item in served]
+   records = [graph.archetypes[item["archetype_id"]] for item in served if not is_reading(item)]
    explained = {(entry[0], entry[1]) for entry in shortfalls}
 
    return [
@@ -155,6 +164,13 @@ def open_session(
       )
 
    opens_learning = mode == LEARNING_MODE
+   lesson_inputs = None
+
+   if opens_learning:
+      lesson_inputs = load_lesson_inputs(
+         db, user_id, states, graph, history, today, experiment_default, started_at
+      )
+
    assembled = assemble_session(
       states,
       graph,
@@ -168,6 +184,7 @@ def open_session(
       user_id=user_id,
       retrieval_entry=retrieval_entry,
       openers=opens_learning,
+      lessons=lesson_inputs,
    )
    opened_first_skills = [
       graph.concept_skills[concept_id][0] for concept_id in assembled.opener_concepts
@@ -189,8 +206,104 @@ def open_session(
    )
    db.add(row)
    db.flush()
+   lesson_repository.write_session_reading(
+      db, user_id, row.id, assembled.lessons, assembled.lesson_deferrals, now=started_at
+   )
 
    return row
+
+
+def placement_only(concept_id, states, graph):
+   """A concept whose skills are all mastered with no credited observation was mastered by the
+   diagnostic's placement or by seeding, not by practice (15, Cold start)."""
+   skills = lesson_gate.concept_skill_map(graph).get(concept_id, ())
+
+   return all(states[skill].credited_observation_count == 0 for skill in skills if skill in states)
+
+
+def bypass_placement(db, user_id, states, graph, servable, lesson_states, now):
+   """15 Cold start: bypassed_by_placement on every placed concept whose lesson has no state yet.
+   The diagnostic's own module is not this slice's, so the write happens when the first learning
+   session after placement opens, which is before any lesson could be inserted."""
+   bypassed = []
+
+   for concept_id in lesson_gate.bypass_placed_concepts(states, graph):
+      found = servable.get(concept_id)
+      has_no_state = found is not None and found[0] not in lesson_states
+
+      if has_no_state and placement_only(concept_id, states, graph):
+         bypassed.append(found[0])
+
+   lesson_repository.write_bypassed(db, user_id, bypassed, now=now)
+
+   for lesson_id in bypassed:
+      lesson_states[lesson_id] = {"status": lesson_gate.BYPASSED}
+
+
+def example_first_chooser(db, user_id, experiment_default, now):
+   """The lesson_first_contact switch (15, Within-student A/B), unit concept, stratified by unit.
+   The five productive-failure targets are excluded and stay in the control arm."""
+   if experiment_default is None:
+      return None
+
+   treatment = switches.DEFINITIONS[switches.LESSON_FIRST_CONTACT].treatment_arm
+
+   def serves_example_first(concept_id, archetype):
+      is_excluded = concept_id in constants.PRODUCTIVE_FAILURE_TARGETS
+
+      if is_excluded:
+         return False
+
+      arm = switches.arm_for(
+         db,
+         user_id,
+         switches.LESSON_FIRST_CONTACT,
+         concept_id,
+         archetype.get("primary_unit") or concept_id,
+         None,
+         experiment_default,
+         now,
+      )
+
+      return arm == treatment
+
+   return serves_example_first
+
+
+def gap_skills(db, user_id, graph):
+   gaps = []
+
+   for gap_id, archetype_id in lesson_repository.prerequisite_gaps(db, user_id):
+      record = graph.archetypes.get(archetype_id)
+
+      if record is not None:
+         gaps.append((gap_id, tuple(record["skills"])))
+
+   return gaps
+
+
+def load_lesson_inputs(db, user_id, states, graph, history, today, experiment_default, now):
+   servable = lesson_repository.servable_map(db)
+   lesson_states = lesson_repository.lesson_states(db, user_id)
+   bypass_placement(db, user_id, states, graph, servable, lesson_states, now)
+   refreshers = lesson_refresh.refresher_targets(
+      states,
+      history,
+      lesson_states,
+      today,
+      graph=graph,
+      servable=servable,
+      prerequisite_gaps=gap_skills(db, user_id, graph),
+   )
+
+   return lesson_gate.LessonInputs(
+      servable=servable,
+      bodies=lesson_repository.lesson_bodies(db, servable.values()),
+      lesson_states=lesson_states,
+      completion_ratios=lesson_repository.completion_ratios(db, user_id),
+      example_first=example_first_chooser(db, user_id, experiment_default, now),
+      refreshers=tuple(refreshers),
+   )
 
 
 def entry_candidates(states):
@@ -237,9 +350,12 @@ def consumed_positions(db, session_row):
    for row in attempt_rows(db, session_row.id):
       remaining[row.item_id] = remaining.get(row.item_id, 0) + 1
 
-   consumed = set()
+   consumed = set(lesson_repository.consumed_reading_slots(db, session_row))
 
    for block, position, item in served_positions(session_row):
+      if is_reading(item):
+         continue
+
       item_id = item["id"]
       has_attempt_left = remaining.get(item_id, 0) > 0
 
@@ -313,10 +429,21 @@ def resolve_served_stage(db, session_row, block, position, item):
 
 
 def resolve_slot(db, session_row, block, position, item):
-   """The stage first, because R29's format is resolved per stage."""
+   """The stage first, because R29's format is resolved per stage. A lesson or refresher slot has
+   no stage; it is served with the stored record body the reader renders."""
+   if is_reading(item):
+      return reading_slot(db, item)
+
    staged = resolve_served_stage(db, session_row, block, position, item)
 
    return resolve_served_format(db, session_row, block, position, staged)
+
+
+def reading_slot(db, entry):
+   stored = db.get(models.Lesson, (entry["lesson_id"], entry["version"]))
+   body = stored.body if stored is not None else None
+
+   return dict(entry, lesson=body)
 
 
 def next_item(db, session_id):
@@ -331,7 +458,8 @@ def next_item(db, session_id):
 
    for block, position, item in served_positions(session_row):
       is_consumed = (block, position) in consumed
-      is_attempted = item["id"] in attempted
+      # A lesson whose item was answered anyway has been passed over, so it is not served late.
+      is_attempted = item.get("before_item_id" if is_reading(item) else "id") in attempted
 
       if not is_consumed and not is_attempted:
          return resolve_slot(db, session_row, block, position, item)
@@ -349,6 +477,9 @@ def served_item(db, session_id):
 
    if is_exhausted:
       return None
+
+   if is_reading(item):
+      return item
 
    stage = FadingStage(item["stage"])
    is_unsupported = stage == FadingStage.UNSUPPORTED
@@ -375,7 +506,7 @@ def stored_response(answer):
 
 def queue_slot(session_row, item_id):
    for block, position, item in served_positions(session_row):
-      if item["id"] == item_id:
+      if item.get("id") == item_id:
          return block, position, item
 
    raise ValueError(f"{item_id} is not in the queue of session {session_row.id}")
@@ -397,7 +528,7 @@ def served_as_opener(session_row, attempt):
    """is_opener_attempt for the routes after submission, where an attempt whose item no serving
    slot holds (a diagnostic queue, a slot rewritten since) is simply not an opener."""
    for _block, _position, item in served_positions(session_row):
-      if item["id"] == attempt.item_id:
+      if item.get("id") == attempt.item_id:
          return is_opener_slot(item)
 
    return False
@@ -574,6 +705,8 @@ def record_attempt(
       per_skill_states=json.dumps(
          {skill: state.value for skill, state in per_skill_states.items()}
       ),
+      preceded_by_lesson_id=item.get("preceded_by_lesson_id"),
+      preceded_by_lesson_version=item.get("preceded_by_lesson_version"),
       snapshot_id=session_row.snapshot_id,
       created_at=submitted_at.isoformat(),
       updated_at=submitted_at.isoformat(),

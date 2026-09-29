@@ -1,0 +1,135 @@
+{
+ "id": "LSN-CON-03007",
+ "resolve": {
+  "date": "2026-09-29",
+  "problems": 4,
+  "agreed": 4,
+  "judgments_pending": 0,
+  "all_agree": true,
+  "verdicts": [
+   {
+    "id": "LSN-CON-03007#ex-1",
+    "agree": true,
+    "detail": "agree (symbolic)",
+    "method": "product and chain rule"
+   },
+   {
+    "id": "LSN-CON-03007#chk-1",
+    "agree": true,
+    "detail": "agree (symbolic)",
+    "method": "evaluate"
+   },
+   {
+    "id": "LSN-CON-03007#chk-2",
+    "agree": true,
+    "detail": "agree (symbolic)",
+    "method": "product and chain rule"
+   },
+   {
+    "id": "LSN-CON-03007#chk-3",
+    "agree": true,
+    "detail": "agree (symbolic)",
+    "method": "product and chain rule"
+   }
+  ],
+  "answers_file": "/tmp/claude-0/-home-user-growth/ac029253-8ff0-5a4b-8b5f-cdcaf5e8ff8d/scratchpad/verify/answers_05.json"
+ },
+ "audit": {
+  "date": "2026-09-29",
+  "auditor": "claude-opus-5-5",
+  "blocks": [
+   {
+    "id": "orientation",
+    "verdict": "ok",
+    "evidence": "Paraphrases BC-CON-03007 description_plain and BC-QA-03007 expected_solution_path; 28 words."
+   },
+   {
+    "id": "ki-1",
+    "verdict": "ok",
+    "evidence": "Paraphrases 3.4 Required mathematical knowledge (Standard derivatives, Composite form, Derivation); formulas standard; ced:78 FUN-3.E.2."
+   },
+   {
+    "id": "st-1",
+    "verdict": "ok",
+    "evidence": "Method from BC-QA-03007 expected_solution_path[0..1]; rival wrong_approaches[0] (BC-ERR-03017); product framing follows parameter_spec notes h(x)=coefficient x^power F(u)."
+   },
+   {
+    "id": "st-2",
+    "verdict": "ok",
+    "evidence": "From BC-QA-03010 expected_solution_path[0] and wrong_approaches[0]."
+   },
+   {
+    "id": "st-3",
+    "verdict": "ok",
+    "evidence": "From BC-QA-06018 common_givens[0], expected_solution_path[0] and wrong_approaches[0]."
+   },
+   {
+    "id": "ex-1",
+    "verdict": "ok",
+    "evidence": "SymPy: d/dx 3x atan(2x-3) matches step 3; value at 2 is 3pi/4 + 6; draw satisfies constraints (arctan, |at|=2, u=1)."
+   },
+   {
+    "id": "err-BC-ERR-03006",
+    "verdict": "ok",
+    "evidence": "Record text verbatim; wrong step is the second product rule term alone, distinct from the full derivative."
+   },
+   {
+    "id": "err-BC-ERR-03018",
+    "verdict": "ok",
+    "evidence": "Record text verbatim; factor 2 dropped gives 3atan(2x-3)+3x/(1+(2x-3)^2), distinct."
+   },
+   {
+    "id": "err-BC-ERR-03017",
+    "verdict": "ok",
+    "evidence": "fixed 2026-09-29: wrong step is now the radical misplaced branch of the record, 3atan(2x-3)+6x/sqrt(1+(2x-3)^2), defined at 2 (SymPy 3pi/4+6sqrt(2) against right 3pi/4+6)."
+   },
+   {
+    "id": "representations",
+    "verdict": "ok",
+    "evidence": "null; 3.4 Representations names BC-REP-01, BC-REP-05, BC-REP-09, none figure shaped."
+   },
+   {
+    "id": "bridge-BC-PRQ-03004",
+    "verdict": "ok",
+    "evidence": "Paraphrases BC-PRQ-03004 description_plain and failure_signature; arctan(1)=pi/4 correct."
+   },
+   {
+    "id": "bridge-BC-PRQ-03006",
+    "verdict": "ok",
+    "evidence": "Paraphrases BC-PRQ-03006 failure_signature."
+   },
+   {
+    "id": "chk-1",
+    "verdict": "ok",
+    "evidence": "SymPy: 3pi/4 + 6 at x=2."
+   },
+   {
+    "id": "chk-2",
+    "verdict": "ok",
+    "evidence": "SymPy: d/dx 2x asin(3x-5/2) at 1 is pi/3 + 4sqrt(3); inner value 1/2 matches spec derived inner_value sign/2."
+   },
+   {
+    "id": "chk-3",
+    "verdict": "ok",
+    "evidence": "SymPy: h'(-2)=pi+6; B 6, C pi+2, D pi-6 each reproduce the stated error; inner value -1 matches sign -1."
+   }
+  ],
+  "advice": [
+   "err-BC-ERR-03017 wrong expression has sqrt(1 - (2x-3)^2), which is zero at x=2, so the wrong line cannot be evaluated at the example's input; that is instructive but unremarked. A note in the right step or a draw where the wrong line gives a finite value would make the contrast concrete.",
+   "st-2 and st-3 appear only in the low band with no example or check; recognition of the identity derivation and the integral form is served as text only.",
+   "Delivery fits: formulas and a chain factor are symbolic, served as text and step reveal. The lesson teaches the stem signal, the first written line and the rival; scoring habits appear only through error consequences, which is consistent with no point types."
+  ],
+  "counts": {
+   "ok": 15,
+   "unsourced": 0,
+   "wrong": 0,
+   "over_cap": 0,
+   "lint": 0
+  }
+ },
+ "fix_notes": [
+  "err-BC-ERR-03017 wrong expression changed to a misplaced radical, finite at x=2; prose trap line updated.",
+  "word_count full 586, read_minutes full 3.91.",
+  "Left as preferences: st-2 and st-3 without example or check."
+ ]
+}

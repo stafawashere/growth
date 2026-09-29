@@ -1,0 +1,120 @@
+{
+ "id": "LSN-CON-08008",
+ "resolve": {
+  "date": "2026-09-29",
+  "problems": 4,
+  "agreed": 4,
+  "judgments_pending": 0,
+  "all_agree": true,
+  "verdicts": [
+   {
+    "id": "LSN-CON-08008#ex-1",
+    "agree": true,
+    "detail": "agree (symbolic)",
+    "method": "Critical points t=4 and 8 by A'=0; compare A(0)=100, A(4), A(8), A(12)=136, so the maximum is at t=12."
+   },
+   {
+    "id": "LSN-CON-08008#chk-1",
+    "agree": true,
+    "detail": "agree (symbolic)",
+    "method": "Candidates test: A(12)=136 is largest of the four values, at t=12."
+   },
+   {
+    "id": "LSN-CON-08008#chk-2",
+    "agree": true,
+    "detail": "agree (symbolic)",
+    "method": "A'=0 at t=8,16; A(24)=108 exceeds A(8)~89.2, A(0)=60, A(16); tons; max at t=24."
+   },
+   {
+    "id": "LSN-CON-08008#chk-3",
+    "agree": true,
+    "detail": "key option C, re-solver C",
+    "method": "Candidates test with endpoint t=8: A(8)=40+8=48 exceeds other candidates."
+   }
+  ],
+  "answers_file": "/tmp/claude-0/-home-user-growth/ac029253-8ff0-5a4b-8b5f-cdcaf5e8ff8d/scratchpad/verify/answers_12.json"
+ },
+ "audit": {
+  "date": "2026-09-29",
+  "auditor": "claude-opus-5-5",
+  "blocks": [
+   {
+    "id": "orientation",
+    "verdict": "ok",
+    "evidence": "Paraphrases BC-QA-08006 expected_solution_path and the 8.3 Maximum paragraph; 39 words."
+   },
+   {
+    "id": "ki-1",
+    "verdict": "ok",
+    "evidence": "ced:154 CHA-4.D.1 and the 8.3 Maximum of an accumulated amount paragraph including sg-25:5; 57 words."
+   },
+   {
+    "id": "st-1",
+    "verdict": "over_cap",
+    "evidence": "cue is 23 words, cap 20: 'The stem asks for the time of the maximum and a justification, from an amount defined by an integral on a closed interval.'"
+   },
+   {
+    "id": "ex-1",
+    "verdict": "ok",
+    "evidence": "SymPy: A(t) = 100 + 3t + 36 sin(pi t/6)/pi, A' equals the rate, zeros {4, 8}; A(0)=100, A(4)=121.924, A(8)=114.076, A(12)=136; draw net 3, times 2, period 12 gives 3+6cos(pi t/6)."
+   },
+   {
+    "id": "reader-ex-1",
+    "verdict": "ok",
+    "evidence": "BC-PT-99011 line verbatim from the bundle record."
+   },
+   {
+    "id": "err-BC-ERR-08016",
+    "verdict": "ok",
+    "evidence": "Verbatim BC-ERR-08016; reason fragment from BC-MIS-99010; SymPy A(4) < A(12)."
+   },
+   {
+    "id": "err-BC-ERR-99004",
+    "verdict": "ok",
+    "evidence": "Verbatim BC-ERR-99004; justification-requirements.md Global versus local arguments."
+   },
+   {
+    "id": "representations",
+    "verdict": "ok",
+    "evidence": "null; BC-REP-05 and 09 only."
+   },
+   {
+    "id": "bridge-BC-PRQ-08001",
+    "verdict": "ok",
+    "evidence": "Paraphrases BC-PRQ-08001 description_plain on finding every solution with a solver."
+   },
+   {
+    "id": "time",
+    "verdict": "ok",
+    "evidence": "exam-structure.md: Section II Part A 30 minutes for 2 questions."
+   },
+   {
+    "id": "chk-1",
+    "verdict": "ok",
+    "evidence": "Max(100, 121.924, 114.076, 136) = 136 at t = 12."
+   },
+   {
+    "id": "chk-2",
+    "verdict": "ok",
+    "evidence": "SymPy: zeros {8, 16}; A(0)=60, A(8)=89.232, A(16)=78.768, A(24)=108; key 24."
+   },
+   {
+    "id": "chk-3",
+    "verdict": "ok",
+    "evidence": "SymPy: zeros {8/3, 16/3}; A(8/3)=44.872, A(16/3)=43.128, A(8)=48; A' at t near 8 is 3 > 0 so D is a true but local statement; key C."
+   }
+  ],
+  "advice": [
+   "ki-1 describes the maximum as where the net rate changes from positive to negative or an endpoint, yet the example's answer is the endpoint; a line saying the right endpoint wins when the net rate is positive at the end would sharpen recognition.",
+   "The candidates comparison is tabular data (four times, four amounts); a small table would serve it better than the step why text.",
+   "BC-PT-99013 (derivative set to zero) is tagged on chk-2 but not in ex-1's reader lines; the first written line the orientation names is not shown as a scored line."
+  ],
+  "counts": {
+   "ok": 12,
+   "unsourced": 0,
+   "wrong": 0,
+   "over_cap": 1,
+   "lint": 0
+  }
+ }
+}

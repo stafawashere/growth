@@ -1,0 +1,99 @@
+{
+ "id": "LSN-CON-01018",
+ "resolve": {
+  "date": "2026-09-29",
+  "problems": 3,
+  "agreed": 3,
+  "judgments_pending": 0,
+  "all_agree": true,
+  "verdicts": [
+   {
+    "id": "LSN-CON-01018#ex-1",
+    "agree": true,
+    "detail": "agree (symbolic)",
+    "method": "divide by |x|"
+   },
+   {
+    "id": "LSN-CON-01018#chk-1",
+    "agree": true,
+    "detail": "agree (symbolic)",
+    "method": "divide by |x|"
+   },
+   {
+    "id": "LSN-CON-01018#chk-2",
+    "agree": true,
+    "detail": "agree (symbolic)",
+    "method": "divide by |x|"
+   }
+  ],
+  "answers_file": "/tmp/claude-0/-home-user-growth/ac029253-8ff0-5a4b-8b5f-cdcaf5e8ff8d/scratchpad/verify/answers_04.json"
+ },
+ "audit": {
+  "date": "2026-09-29",
+  "auditor": "claude-opus-5-5",
+  "blocks": [
+   {
+    "id": "orientation",
+    "verdict": "ok",
+    "evidence": "Paraphrases BC-CON-01018 and the 1.15 Relative magnitudes paragraph."
+   },
+   {
+    "id": "ki-1",
+    "verdict": "ok",
+    "evidence": "fixed 2026-09-29: three readings of the quotient limit removed; ki-1 now states only the LIM-2.D.5 comparison (ced:52) and that the limit's value tells which quantity grows faster (BC-CON-01018 description_plain, 1.15 topic text); inferred entry narrowed to the ex-1 finite nonzero reading."
+   },
+   {
+    "id": "st-1",
+    "verdict": "ok",
+    "evidence": "Rival BC-ERR-01021 is a BC-QA-01010 wrong_approaches entry; method paraphrases BC-SKL-01062."
+   },
+   {
+    "id": "ex-1",
+    "verdict": "ok",
+    "evidence": "SymPy: limit (5x+2)/sqrt(16x^2+3) as x->-oo is -5/4."
+   },
+   {
+    "id": "reader-ex-1",
+    "verdict": "ok",
+    "evidence": "Lines are the bundle BC-PT-99054 and BC-PT-99004 records."
+   },
+   {
+    "id": "representations",
+    "verdict": "ok",
+    "evidence": "null."
+   },
+   {
+    "id": "bridge-BC-PRQ-01004",
+    "verdict": "ok",
+    "evidence": "Paraphrases BC-PRQ-01004 description_plain and failure_signature."
+   },
+   {
+    "id": "chk-1",
+    "verdict": "ok",
+    "evidence": "SymPy: -5/4."
+   },
+   {
+    "id": "chk-2",
+    "verdict": "ok",
+    "evidence": "SymPy: limit sqrt(4x^2+3)/(5x-1) as x->-oo is -2/5."
+   }
+  ],
+  "advice": [
+   "ki-1 is a comparison of three outcomes (0, unbounded, finite nonzero) delivered as text; a contrast or a small table of the three cases would serve it better. The inferred list mentions a model table inside ex-1 that the delivery record does not contain.",
+   "ex-1 and both checks use a finite nonzero case with a sign flip at negative infinity, so the lesson never shows a 0 or unbounded quotient, which are the readings that decide which quantity grows faster.",
+   "No error blocks and no rival worked out; the rival (substituting infinity) is named in st-1 only."
+  ],
+  "counts": {
+   "ok": 9,
+   "unsourced": 0,
+   "wrong": 0,
+   "over_cap": 0,
+   "lint": 0
+  }
+ },
+ "fix_notes": [
+  "ki-1 rewritten to the sourced comparison; the three readings removed from served text and prose.",
+  "word_count 362/362.",
+  "Left as preferences: ki-1 as a table of cases; no 0 or unbounded quotient example; no error blocks (bundle holds none)."
+ ]
+}

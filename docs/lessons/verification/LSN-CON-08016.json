@@ -1,0 +1,158 @@
+{
+ "id": "LSN-CON-08016",
+ "resolve": {
+  "date": "2026-09-29",
+  "problems": 5,
+  "agreed": 5,
+  "judgments_pending": 0,
+  "all_agree": true,
+  "verdicts": [
+   {
+    "id": "LSN-CON-08016#ex-1",
+    "agree": true,
+    "detail": "agree (symbolic)",
+    "method": "Semicircles: (pi/8) integral of diameter squared."
+   },
+   {
+    "id": "LSN-CON-08016#ex-2",
+    "agree": true,
+    "detail": "agree (symbolic)",
+    "method": "Isosceles right triangles with hypotenuse d: area d^2/4."
+   },
+   {
+    "id": "LSN-CON-08016#chk-1",
+    "agree": true,
+    "detail": "agree (symbolic)",
+    "method": "Substitute u=x-2, integral of (1-u^2)^2 is 16/15."
+   },
+   {
+    "id": "LSN-CON-08016#chk-2",
+    "agree": true,
+    "detail": "agree (symbolic)",
+    "method": "Equilateral triangles: (sqrt(3)/4) integral of d^2 on [-1,1]."
+   },
+   {
+    "id": "LSN-CON-08016#chk-3",
+    "agree": true,
+    "detail": "agree (symbolic)",
+    "method": "Semicircles: (pi/8) integral of x^2(3-x)^2 on [0,3]."
+   }
+  ],
+  "answers_file": "/tmp/claude-0/-home-user-growth/ac029253-8ff0-5a4b-8b5f-cdcaf5e8ff8d/scratchpad/verify/answers_13.json"
+ },
+ "audit": {
+  "date": "2026-09-29",
+  "auditor": "claude-opus-5-5",
+  "blocks": [
+   {
+    "id": "orientation",
+    "verdict": "ok",
+    "evidence": "Paraphrases BC-CON-08016 and 8.8 Assessment behaviour; 28 words."
+   },
+   {
+    "id": "ki-1",
+    "verdict": "ok",
+    "evidence": "8.8 Triangular sections: equilateral s^2 sqrt(3)/4, leg s^2/2, hypotenuse s^2/4; quote found on ced:159."
+   },
+   {
+    "id": "ki-2",
+    "verdict": "ok",
+    "evidence": "8.8 Semicircular sections: radius s/2, area pi s^2/8; SymPy pi*(s/2)**2/2 = pi*s**2/8."
+   },
+   {
+    "id": "st-1",
+    "verdict": "ok",
+    "evidence": "From BC-QA-08011 fields and 8.8 Conversions tested (role of the distance); within caps."
+   },
+   {
+    "id": "ex-1",
+    "verdict": "ok",
+    "evidence": "SymPy: Integral(pi*(x-1)^2(3-x)^2/8,(x,1,3)) = 2*pi/15; distance nonnegative on [1,3]."
+   },
+   {
+    "id": "ex-2",
+    "verdict": "ok",
+    "evidence": "SymPy: hypotenuse 2x(2-x), area s^2/4 = x^2(2-x)^2, Integral over [0,2] = 16/15."
+   },
+   {
+    "id": "reader-ex-1",
+    "verdict": "ok",
+    "evidence": "BC-PT-99001 line matches bundle fields."
+   },
+   {
+    "id": "reader-ex-2",
+    "verdict": "ok",
+    "evidence": "BC-PT-99001 and BC-PT-99004 lines match bundle fields (99004 carries precision_rules in place of the empty notation field)."
+   },
+   {
+    "id": "err-BC-ERR-08030",
+    "verdict": "ok",
+    "evidence": "Verbatim from bundle; SymPy wrong pi/8 (f^2-g^2) = 7*pi/15 vs right 2*pi/15."
+   },
+   {
+    "id": "err-BC-ERR-08033",
+    "verdict": "ok",
+    "evidence": "Verbatim from bundle; s^2/2 vs s^2/4, factor two as stated; reason slice of BC-MIS-08019."
+   },
+   {
+    "id": "err-BC-ERR-08034",
+    "verdict": "ok",
+    "evidence": "Verbatim; SymPy radius s gives 8*pi/15, four times 2*pi/15 as the consequence says."
+   },
+   {
+    "id": "err-BC-ERR-06013",
+    "verdict": "ok",
+    "evidence": "Verbatim; SymPy full circle on s/2 gives 4*pi/15 vs 2*pi/15; reason slice of BC-MIS-08019, which the error lists."
+   },
+   {
+    "id": "representations",
+    "verdict": "ok",
+    "evidence": "null; 8.8 Representations carried by ki figures."
+   },
+   {
+    "id": "bridge-BC-PRQ-06002",
+    "verdict": "ok",
+    "evidence": "Paraphrase of BC-PRQ-06002 description_plain."
+   },
+   {
+    "id": "bridge-BC-PRQ-06007",
+    "verdict": "ok",
+    "evidence": "Paraphrase of BC-PRQ-06007 (semicircular regions)."
+   },
+   {
+    "id": "bridge-BC-PRQ-08005",
+    "verdict": "ok",
+    "evidence": "Paraphrase of BC-PRQ-08005 description_plain."
+   },
+   {
+    "id": "chk-1",
+    "verdict": "ok",
+    "evidence": "SymPy: 2*pi/15; shifted form over [-1,1] also 2*pi/15."
+   },
+   {
+    "id": "chk-2",
+    "verdict": "ok",
+    "evidence": "SymPy: distance 1-x^2, Integral(sqrt(3)/4 (1-x^2)^2,(x,-1,1)) = 4*sqrt(3)/15."
+   },
+   {
+    "id": "chk-3",
+    "verdict": "ok",
+    "evidence": "SymPy: key 81*pi/80; A 81*pi/20 (radius s), C 81*pi/40 (full circle), D -9*pi/80 (pi/8 (f^2-g^2)); distinct."
+   }
+  ],
+  "advice": [
+   "err-BC-ERR-08030 describes a washer integrand; here it is applied in the reverse direction (f^2 - g^2 in place of (f - g)^2); the served observed_behavior reads oddly against the semicircle example.",
+   "err-BC-ERR-06013 is a region area error from Unit 6 repurposed to a slice; consider whether it earns one of the four error slots over BC-ERR-08032.",
+   "Bridge BC-PRQ-06002 (radicals as powers) is not exercised by any draw in this lesson.",
+   "chk-3 option D is negative (-9*pi/80) and so implausible as a volume distractor.",
+   "Orientation is text; a small figure of the slice shapes could serve the comparison better. Stem recognition, first line and rival are well taught through the leg vs hypotenuse and radius vs diameter contrasts."
+  ],
+  "counts": {
+   "ok": 19,
+   "unsourced": 0,
+   "wrong": 0,
+   "over_cap": 0,
+   "lint": 0
+  }
+ }
+}

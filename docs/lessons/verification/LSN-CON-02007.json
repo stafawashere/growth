@@ -1,0 +1,151 @@
+{
+ "id": "LSN-CON-02007",
+ "resolve": {
+  "date": "2026-09-29",
+  "problems": 5,
+  "agreed": 5,
+  "judgments_pending": 0,
+  "all_agree": true,
+  "verdicts": [
+   {
+    "id": "LSN-CON-02007#ex-1",
+    "agree": true,
+    "detail": "agree (symbolic)",
+    "method": "average rate over [4,10]"
+   },
+   {
+    "id": "LSN-CON-02007#ex-2",
+    "agree": true,
+    "detail": "agree (symbolic)",
+    "method": "derivative W'(2)=3cos(1)+1/3, hundred cars per hour"
+   },
+   {
+    "id": "LSN-CON-02007#chk-1",
+    "agree": true,
+    "detail": "agree (symbolic)",
+    "method": "arithmetic"
+   },
+   {
+    "id": "LSN-CON-02007#chk-2",
+    "agree": true,
+    "detail": "agree (symbolic)",
+    "method": "average rate over [3,8]"
+   },
+   {
+    "id": "LSN-CON-02007#chk-3",
+    "agree": true,
+    "detail": "agree (symbolic)",
+    "method": "average rate over [2,6]"
+   }
+  ],
+  "answers_file": "/tmp/claude-0/-home-user-growth/ac029253-8ff0-5a4b-8b5f-cdcaf5e8ff8d/scratchpad/verify/answers_04.json"
+ },
+ "audit": {
+  "date": "2026-09-29",
+  "auditor": "claude-opus-5-5",
+  "blocks": [
+   {
+    "id": "orientation",
+    "verdict": "ok",
+    "evidence": "Paraphrase of BC-CON-02007 and 2.3 Method and Assessment behaviour; 46 words."
+   },
+   {
+    "id": "ki-1",
+    "verdict": "ok",
+    "evidence": "BC-EK-CHA-2D1 quote verbatim on ced:62; 'contains or abuts', difference and quotient, and units from 2.3 Method and Units paragraphs."
+   },
+   {
+    "id": "ki-2",
+    "verdict": "ok",
+    "evidence": "BC-EK-CHA-2D2 quote verbatim on ced:62; setup and three places from BC-QA-02013 asked_to_produce."
+   },
+   {
+    "id": "st-1",
+    "verdict": "ok",
+    "evidence": "fixed 2026-09-29: cue cut to 19 words by dropping \"work and\"."
+   },
+   {
+    "id": "st-2",
+    "verdict": "ok",
+    "evidence": "From BC-QA-02013 common_givens and asked_to_produce; rival BC-ERR-02031 recorded as inferred."
+   },
+   {
+    "id": "ex-1",
+    "verdict": "ok",
+    "evidence": "fixed 2026-09-29: parameter_draw readings reordered to the served pairing; previously: SymPy: (38-71)/(10-4) = -11/2."
+   },
+   {
+    "id": "ex-2",
+    "verdict": "ok",
+    "evidence": "SymPy: W'(t) = (3t/2)cos(t^2/4) + 1/(1+t) exactly; W'(2) = 1.9542403, reported 1.954."
+   },
+   {
+    "id": "reader-scores:ex-1",
+    "verdict": "ok",
+    "evidence": "Empty entry, recorded as inferred with its library gap."
+   },
+   {
+    "id": "err-BC-ERR-02001",
+    "verdict": "ok",
+    "evidence": "Verbatim record; SymPy 38-71 = -33."
+   },
+   {
+    "id": "err-BC-ERR-02002",
+    "verdict": "ok",
+    "evidence": "Verbatim record; quotient with no value."
+   },
+   {
+    "id": "err-BC-ERR-02003",
+    "verdict": "ok",
+    "evidence": "Verbatim record; possible reason from BC-MIS-02008."
+   },
+   {
+    "id": "err-BC-ERR-02004",
+    "verdict": "ok",
+    "evidence": "Verbatim record; SymPy (50-71)/(6-4) = -21/2, distinct from -11/2."
+   },
+   {
+    "id": "representations",
+    "verdict": "ok",
+    "evidence": "SymPy: y = x^2/4 + 1 at x = 2 is 2 with slope 1; tangent y = x passes (0,0) and (4,4). Tangent reading from 2.3 Representations (graph to estimated slope)."
+   },
+   {
+    "id": "BC-PRQ-02004",
+    "verdict": "ok",
+    "evidence": "Paraphrase of BC-PRQ-02004 (the form names the variable)."
+   },
+   {
+    "id": "chk-1",
+    "verdict": "ok",
+    "evidence": "fixed 2026-09-29: parameter_draw readings reordered to the served pairing; previously: Key -11/2 equals ex-1."
+   },
+   {
+    "id": "chk-2",
+    "verdict": "ok",
+    "evidence": "SymPy: (44-20)/(8-3) = 24/5."
+   },
+   {
+    "id": "chk-3",
+    "verdict": "ok",
+    "evidence": "SymPy: key 21/4; A 21 (BC-ERR-02001), B (23-14)/3 = 3 and D (35-23)/1 = 12 (BC-ERR-02004)."
+   }
+  ],
+  "advice": [
+   "ex-1 and chk-1 parameter_draw list readings [25,38,50,71,86] ascending against times [0,4,6,10,12] with trend decreasing; the served stem pairs them in reverse. The draw should record the served pairing.",
+   "ki-1 says the interval 'contains or abuts' the point, while every example and check uses a bracketing pair; the named interval form of BC-QA-04002 is not practised here (it is in LSN-CON-02001).",
+   "The calculator strand (ki-2, st-2, ex-2) has no check, and BC-ERR-02031 and BC-ERR-02032 have no error blocks although st-2 names BC-ERR-02031 as the rival.",
+   "Table delivery for ki-1 and a static figure for the tangent reading suit their ideas."
+  ],
+  "counts": {
+   "ok": 17,
+   "unsourced": 0,
+   "wrong": 0,
+   "over_cap": 0,
+   "lint": 0
+  },
+  "fix_notes": [
+   "st-1 cue cut to 19 words; ex-1 and chk-1 parameter_draw readings now the served pairing [86,71,50,38,25] (record and Solution path prose); word_count 699/363.",
+   "Left as preferences: named interval form not practised; calculator strand has no check and no BC-ERR-02031/02032 blocks."
+  ]
+ }
+}

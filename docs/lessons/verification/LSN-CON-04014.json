@@ -1,0 +1,109 @@
+{
+ "id": "LSN-CON-04014",
+ "resolve": {
+  "date": "2026-09-29",
+  "problems": 3,
+  "agreed": 3,
+  "judgments_pending": 0,
+  "all_agree": true,
+  "verdicts": [
+   {
+    "id": "LSN-CON-04014#ex-1",
+    "agree": true,
+    "detail": "agree (symbolic)",
+    "method": "L'Hospital: 2f'(4)/e^0."
+   },
+   {
+    "id": "LSN-CON-04014#chk-1",
+    "agree": true,
+    "detail": "agree (symbolic)",
+    "method": "2f'(4)/1."
+   },
+   {
+    "id": "LSN-CON-04014#chk-2",
+    "agree": true,
+    "detail": "agree (symbolic)",
+    "method": "L'Hospital: 3f'(3)/cos(0)."
+   }
+  ],
+  "answers_file": "/tmp/claude-0/-home-user-growth/ac029253-8ff0-5a4b-8b5f-cdcaf5e8ff8d/scratchpad/verify/answers_06.json"
+ },
+ "audit": {
+  "date": "2026-09-29",
+  "auditor": "claude-opus-5-5",
+  "blocks": [
+   {
+    "id": "orientation",
+    "verdict": "ok",
+    "evidence": "Paraphrases BC-CON-04014 and unit 4.7 The hypothesis (ced:84); 17 words."
+   },
+   {
+    "id": "ki-1",
+    "verdict": "ok",
+    "evidence": "Research unit 4.7 The hypothesis (ced:84, sg-23:14); quote 'Limits of the indeterminate forms 0 over 0' on ced:93; 25 words."
+   },
+   {
+    "id": "ki-2",
+    "verdict": "ok",
+    "evidence": "Research unit 4.7 Continuity from differentiability (sg-23:14); quote 'such forms are said to be indeterminate' is on ced:93; 28 words."
+   },
+   {
+    "id": "st-1",
+    "verdict": "ok",
+    "evidence": "expected_solution_path[0] and wrong_approaches (BC-ERR-04029) of BC-QA-04009; 23 words."
+   },
+   {
+    "id": "ex-1",
+    "verdict": "ok",
+    "evidence": "SymPy: numerator 4 - 4 = 0, e^(x - 2) - 1 at 2 is 0, 2*(-3)/e^0 = -6."
+   },
+   {
+    "id": "reader-ex-1",
+    "verdict": "ok",
+    "evidence": "BC-PT-99055 line verbatim from the bundle."
+   },
+   {
+    "id": "err-BC-ERR-04028",
+    "verdict": "ok",
+    "evidence": "Bundle text matches; BC-MIS-04014 listed."
+   },
+   {
+    "id": "err-BC-ERR-04029",
+    "verdict": "ok",
+    "evidence": "Bundle text matches; value -6 unchanged, equivalent is right; BC-MIS-04015 listed."
+   },
+   {
+    "id": "representations",
+    "verdict": "ok",
+    "evidence": "null; ki-2 figure carries BC-REP-02 as the skill lists."
+   },
+   {
+    "id": "BC-PRQ-04008",
+    "verdict": "ok",
+    "evidence": "BC-PRQ-04008 description_plain names each quantity and whether it varies; the text paraphrases it."
+   },
+   {
+    "id": "chk-1",
+    "verdict": "ok",
+    "evidence": "SymPy: 2*(-3)/exp(0) = -6."
+   },
+   {
+    "id": "chk-2",
+    "verdict": "ok",
+    "evidence": "SymPy: f(3x) + 1 at 1 is 0, sin(0) = 0, 3*2/cos(0) = 6."
+   }
+  ],
+  "advice": [
+   "ki-2 anchors its continuity idea with the LIM-4.A.1 indeterminacy quote, which does not support it; the idea is sourced from the research line, but the quote should be dropped or the EK mapping noted.",
+   "The ki-2 figure (a smooth curve through (4, 4)) conveys 'no hole, no jump' well; a curve known only through values is shown as if known, which may mislead slightly.",
+   "The bridge BC-PRQ-04008 is weakly related. Only two checks, as the design notes; no MCQ exercises recognition of the rival."
+  ],
+  "counts": {
+   "ok": 12,
+   "unsourced": 0,
+   "wrong": 0,
+   "over_cap": 0,
+   "lint": 0
+  }
+ }
+}

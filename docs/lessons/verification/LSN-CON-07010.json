@@ -1,0 +1,141 @@
+{
+ "id": "LSN-CON-07010",
+ "resolve": {
+  "date": "2026-09-29",
+  "problems": 4,
+  "agreed": 4,
+  "judgments_pending": 0,
+  "all_agree": true,
+  "verdicts": [
+   {
+    "id": "LSN-CON-07010#ex-1",
+    "agree": true,
+    "detail": "agree (symbolic)",
+    "method": "Exponential growth; k = (ln 3)/2 per hour is the continuous relative growth rate."
+   },
+   {
+    "id": "LSN-CON-07010#chk-1",
+    "agree": true,
+    "detail": "agree (symbolic)",
+    "method": "Substitute k."
+   },
+   {
+    "id": "LSN-CON-07010#chk-2",
+    "agree": true,
+    "detail": "agree (symbolic)",
+    "method": "Exponential decay, k = ln(2/5)/2."
+   },
+   {
+    "id": "LSN-CON-07010#chk-3",
+    "agree": true,
+    "detail": "agree (symbolic)",
+    "method": "Half-life 3, k = -ln2/3."
+   }
+  ],
+  "answers_file": "/tmp/claude-0/-home-user-growth/ac029253-8ff0-5a4b-8b5f-cdcaf5e8ff8d/scratchpad/verify/answers_11.json"
+ },
+ "audit": {
+  "date": "2026-09-29",
+  "auditor": "claude-opus-5-5",
+  "blocks": [
+   {
+    "id": "orientation",
+    "verdict": "ok",
+    "evidence": "Paraphrases BC-CON-07010 and BC-QA-07008 expected_solution_path."
+   },
+   {
+    "id": "ki-1",
+    "verdict": "ok",
+    "evidence": "FUN-7.F.2 on ced:144 and the research Sign of the constant paragraph."
+   },
+   {
+    "id": "ki-2",
+    "verdict": "ok",
+    "evidence": "FUN-7.G.1 on ced:144 and expected_solution_path steps 3 and 4."
+   },
+   {
+    "id": "ki-3",
+    "verdict": "ok",
+    "evidence": "FUN-7.F.1 on ced:144; the one derivative away rider is BC-ERR-07038 and BC-SIG-07037 in the research 7.8 section."
+   },
+   {
+    "id": "st-1",
+    "verdict": "ok",
+    "evidence": "Method from expected_solution_path[0]; rival is BC-QA-07008 wrong_approaches[0]."
+   },
+   {
+    "id": "ex-1",
+    "verdict": "ok",
+    "evidence": "SymPy: 600 = 200*exp(2k) gives k = log(3)/2; 200*exp(log(3)*2/2) = 600; triples every 2 hours."
+   },
+   {
+    "id": "err-BC-ERR-07001",
+    "verdict": "ok",
+    "evidence": "BC-MIS-07001 text matches."
+   },
+   {
+    "id": "err-BC-ERR-07034",
+    "verdict": "ok",
+    "evidence": "Line through (0, 200) and (2, 600) is 200 + 200t; BC-MIS-07021 text matches."
+   },
+   {
+    "id": "err-BC-ERR-07035",
+    "verdict": "ok",
+    "evidence": "BC-MIS-07022 text matches; exp(200kt) fails P(0) = 200."
+   },
+   {
+    "id": "err-BC-ERR-07036",
+    "verdict": "ok",
+    "evidence": "Consequence quoted; BC-MIS-07022 names the second pair."
+   },
+   {
+    "id": "representations",
+    "verdict": "ok",
+    "evidence": "null."
+   },
+   {
+    "id": "bridge-BC-PRQ-06003",
+    "verdict": "ok",
+    "evidence": "Logarithm rules per description_plain."
+   },
+   {
+    "id": "bridge-BC-PRQ-07001",
+    "verdict": "ok",
+    "evidence": "Taking a logarithm of both sides per description_plain."
+   },
+   {
+    "id": "bridge-BC-PRQ-07003",
+    "verdict": "ok",
+    "evidence": "Matches failure_signature on the omitted constant."
+   },
+   {
+    "id": "chk-1",
+    "verdict": "ok",
+    "evidence": "Substitution of k = log(3)/2 gives the ex-1 answer."
+   },
+   {
+    "id": "chk-2",
+    "verdict": "ok",
+    "evidence": "SymPy: 200 = 500*exp(2k) gives k = log(10)/2 - log(5) = log(2/5)/2."
+   },
+   {
+    "id": "chk-3",
+    "verdict": "ok",
+    "evidence": "SymPy: k = log(2**(2/3)/2) = -log(2)/3; C: line slope -200/3; D: 400 in exponent with k = -log(2)/3; A: dM/dt = M."
+   }
+  ],
+  "advice": [
+   "ki-2 is delivered as a table though it is one formula and one sentence; text would serve it, a table suits tabular data only.",
+   "ki-3 (motion along a line) has no example, check or error block, so it is served as an unsupported aside.",
+   "The interpretation of k (units and direction) is taught only in ex-1 step 6; no check asks for it, and BC-ERR-07037 is not served.",
+   "err-BC-ERR-07036 wrong step k = ln 200 is an invented value; a derivation line would make the error path readable."
+  ],
+  "counts": {
+   "ok": 17,
+   "unsourced": 0,
+   "wrong": 0,
+   "over_cap": 0,
+   "lint": 0
+  }
+ }
+}

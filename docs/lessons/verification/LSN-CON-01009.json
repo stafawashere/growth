@@ -1,0 +1,130 @@
+{
+ "id": "LSN-CON-01009",
+ "resolve": {
+  "date": "2026-09-29",
+  "problems": 4,
+  "agreed": 4,
+  "judgments_pending": 0,
+  "all_agree": true,
+  "verdicts": [
+   {
+    "id": "LSN-CON-01009#ex-1",
+    "agree": true,
+    "detail": "agree (symbolic)",
+    "method": "Factor and cancel (x+2): (x-1)/(x-3) at -2 = 3/5."
+   },
+   {
+    "id": "LSN-CON-01009#chk-1",
+    "agree": true,
+    "detail": "agree (symbolic)",
+    "method": "(-3)/(-5)."
+   },
+   {
+    "id": "LSN-CON-01009#chk-2",
+    "agree": true,
+    "detail": "agree (symbolic)",
+    "method": "Factor and cancel (x-1): (x+4)/(x-5) at 1."
+   },
+   {
+    "id": "LSN-CON-01009#chk-3",
+    "agree": true,
+    "detail": "key option D, re-solver D",
+    "method": "0/0 indeterminate form: factor and cancel."
+   }
+  ],
+  "answers_file": "/tmp/claude-0/-home-user-growth/ac029253-8ff0-5a4b-8b5f-cdcaf5e8ff8d/scratchpad/verify/answers_03.json"
+ },
+ "audit": {
+  "date": "2026-09-29",
+  "auditor": "claude-opus-5-5",
+  "blocks": [
+   {
+    "id": "orientation",
+    "verdict": "ok",
+    "evidence": "Paraphrase of BC-CON-01009 description_plain and the 1.7 Classification under substitution paragraph; 48 words."
+   },
+   {
+    "id": "ki-1",
+    "verdict": "ok",
+    "evidence": "fixed 2026-09-29: the [inferred: no BC-EK is mapped] tag removed from served text; the claim already sits in the inferred array."
+   },
+   {
+    "id": "st-1",
+    "verdict": "ok",
+    "evidence": "Method BC-QA-01014 expected_solution_path[0]; rival BC-ERR-01006 in wrong_approaches; separating feature from the 1.7 classification paragraph."
+   },
+   {
+    "id": "ex-1",
+    "verdict": "ok",
+    "evidence": "SymPy: x**2+x-2 = (x+2)(x-1), x**2-x-6 = (x+2)(x-3); both vanish at -2; limit of (x-1)/(x-3) at -2 is 3/5."
+   },
+   {
+    "id": "err-BC-ERR-01003",
+    "verdict": "ok",
+    "evidence": "Record text verbatim; wrong nan against 3/5; BC-MIS-01001 listed on the error, reason quoted from its description."
+   },
+   {
+    "id": "err-BC-ERR-01006",
+    "verdict": "ok",
+    "evidence": "Record text verbatim; 0/0 is nan in SymPy against 3/5; BC-MIS-01005 listed."
+   },
+   {
+    "id": "err-BC-ERR-01008",
+    "verdict": "ok",
+    "evidence": "Record text verbatim; 0 against 3/5; BC-MIS-01006 listed."
+   },
+   {
+    "id": "err-BC-ERR-01009",
+    "verdict": "ok",
+    "evidence": "Record text verbatim; nan against 3/5; BC-MIS-01006 listed."
+   },
+   {
+    "id": "representations",
+    "verdict": "ok",
+    "evidence": "null; 1.7 Representations names BC-REP-01 to BC-REP-04 only."
+   },
+   {
+    "id": "BC-PRQ-01001",
+    "verdict": "ok",
+    "evidence": "Paraphrase of description_plain and failure_signature (stops at zero over zero unfactored)."
+   },
+   {
+    "id": "BC-PRQ-01008",
+    "verdict": "ok",
+    "evidence": "Paraphrase of description_plain and failure_signature."
+   },
+   {
+    "id": "chk-1",
+    "verdict": "ok",
+    "evidence": "SymPy: limit of (x-1)/(x-3) at -2 is 3/5."
+   },
+   {
+    "id": "chk-2",
+    "verdict": "ok",
+    "evidence": "SymPy: (x-1)(x+4) = x**2+3x-4, (x-1)(x-5) = x**2-6x+5; limit at 1 is -5/4."
+   },
+   {
+    "id": "chk-3",
+    "verdict": "ok",
+    "evidence": "SymPy: 16-12-4 = 0 and 16-24+8 = 0; (x+1)/(x-2) at 4 is 5/2; distractors match BC-ERR-01008, 01009, 01006 observed behaviours."
+   }
+  ],
+  "advice": [
+   "ki-1 served text ends with the bracketed tag [inferred: no BC-EK is mapped]; that is authoring metadata and should not reach the student.",
+   "The lesson teaches only the zero over zero branch in a worked example; the nonzero over zero branch named in the orientation, ki-1 and st-1 is never shown or checked, so recognition of the third form rests on text alone. A one line contrast item (a nonzero number over zero) would make the selection skill visible.",
+   "chk-3 asks which procedure follows, which fits asked_to_produce; chk-1 and chk-2 only ask for values, so the classification line the lesson calls the first written line is never itself assessed.",
+   "Text delivery suits a classification rule; a small comparison table of the three forms against their procedures would carry the contrast more directly."
+  ],
+  "counts": {
+   "ok": 14,
+   "unsourced": 0,
+   "wrong": 0,
+   "over_cap": 0,
+   "lint": 0
+  },
+  "fix_notes": [
+   "Removed the [inferred] tag from ki-1's served text.",
+   "Left as preferences: a nonzero over zero contrast item, a check on the classification line, a comparison table delivery."
+  ]
+ }
+}

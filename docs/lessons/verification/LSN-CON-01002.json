@@ -1,0 +1,122 @@
+{
+ "id": "LSN-CON-01002",
+ "resolve": {
+  "date": "2026-09-29",
+  "problems": 3,
+  "agreed": 3,
+  "judgments_pending": 0,
+  "all_agree": true,
+  "verdicts": [
+   {
+    "id": "LSN-CON-01002#ex-1",
+    "agree": true,
+    "detail": "statement clarified; see resolve_notes",
+    "method": "Both one-sided limits are 3; f(2) = -1 (dot) is a separate value, so limit 3 and f(2) = -1."
+   },
+   {
+    "id": "LSN-CON-01002#chk-1",
+    "agree": true,
+    "detail": "agree (symbolic)",
+    "method": "Limit ignores the dot; both sides approach 3."
+   },
+   {
+    "id": "LSN-CON-01002#chk-2",
+    "agree": true,
+    "detail": "agree (symbolic)",
+    "method": "Both segments approach height 2 at x=1."
+   }
+  ],
+  "answers_file": "/tmp/claude-0/-home-user-growth/ac029253-8ff0-5a4b-8b5f-cdcaf5e8ff8d/scratchpad/verify/answers_03.json"
+ },
+ "resolve_notes": [
+  {
+   "id": "LSN-CON-01002#ex-1",
+   "note": "stem narrowed to the limit alone after the re-solver noted the key held only the limit; f(2) stays a worked step; key unchanged",
+   "date": "2026-09-29"
+  }
+ ],
+ "audit": {
+  "date": "2026-09-29",
+  "auditor": "claude-opus-5-5",
+  "blocks": [
+   {
+    "id": "orientation",
+    "verdict": "ok",
+    "evidence": "Paraphrases BC-CON-01002 description_plain and the 1.2 and 1.3 Assessment behaviour paragraphs; 33 words."
+   },
+   {
+    "id": "ki-1",
+    "verdict": "ok",
+    "evidence": "Paraphrase of the ced:39 definition (arbitrarily close, x not equal to c); 35 words."
+   },
+   {
+    "id": "ki-2",
+    "verdict": "ok",
+    "evidence": "Quote matches LIM-1.B.1 on ced:39 verbatim; 28 words."
+   },
+   {
+    "id": "st-1",
+    "verdict": "ok",
+    "evidence": "Cue, method and rivals match BC-QA-01001 common_givens, expected_solution_path[0] and wrong_approaches (BC-ERR-01001, BC-ERR-01003); cue 12 words."
+   },
+   {
+    "id": "st-2",
+    "verdict": "ok",
+    "evidence": "Matches BC-QA-01013 common_givens, path[0..1] and wrong_approaches (BC-ERR-01002); cue 16 words."
+   },
+   {
+    "id": "ex-1",
+    "verdict": "ok",
+    "evidence": "SymPy: limit(3x/2, x, 2, -) = 3, limit((x+7)/3, x, 2, +) = 3, (x+7)/3 at 5 = 4, matching the draw's segment notes; steps follow expected_solution_path."
+   },
+   {
+    "id": "what_a_reader_scores",
+    "verdict": "ok",
+    "evidence": "Empty; BC-QA-01001 and BC-QA-01013 carry no point_types."
+   },
+   {
+    "id": "err-BC-ERR-01001",
+    "verdict": "ok",
+    "evidence": "observed_behavior and scoring_consequence verbatim from BC-ERR-01001; wrong -1 differs from right 3; reason paraphrases BC-MIS-01001."
+   },
+   {
+    "id": "err-BC-ERR-01003",
+    "verdict": "ok",
+    "evidence": "Verbatim from BC-ERR-01003; DNE against 3 on the draw with the dot removed; reason quotes BC-MIS-01001."
+   },
+   {
+    "id": "representations",
+    "verdict": "ok",
+    "evidence": "null; no claim served."
+   },
+   {
+    "id": "bridge-BC-PRQ-06005",
+    "verdict": "ok",
+    "evidence": "Paraphrases BC-PRQ-06005 description_plain and failure_signature; 28 words."
+   },
+   {
+    "id": "chk-1",
+    "verdict": "ok",
+    "evidence": "SymPy: limit(3x/2, x, 2, -) = 3; key 3 equals ex-1 answer."
+   },
+   {
+    "id": "chk-2",
+    "verdict": "ok",
+    "evidence": "SymPy: 4x-2 at 0 = -2, limit at 1 from left = 2; (12-2x)/5 at 6 = 0, limit at 1 from right = 2; key 2."
+   }
+  ],
+  "advice": [
+   "Delivery modes fit: figure for the graph reading, motion for the limit being taken, step_reveal for the worked process.",
+   "err-BC-ERR-01003 serves the scoring_consequence 'Both the value point and any justification point are lost' while the design states the lesson says nothing about points (R14); consider dropping or neutralising scoring_consequence text in served error blocks.",
+   "The lesson teaches the stem and first line well for BC-QA-01001, but BC-QA-01013 has a strategy block and no worked example or check, so the matching rival (BC-ERR-01002) is never practised.",
+   "chk-2's parameter_draw has value_mark 'unmarked', which in the spec governs the jump point only; harmless, but the stem's dot at (1, 4) is the hole_value point, which reviewers may misread."
+  ],
+  "counts": {
+   "ok": 13,
+   "unsourced": 0,
+   "wrong": 0,
+   "over_cap": 0,
+   "lint": 0
+  }
+ }
+}

@@ -5,14 +5,14 @@
    "target_id": "BC-CON-02013",
    "status": "draft",
    "snapshot_digest": "00839b8c36a7c5d46e3c3d2386e9f5665283703b31c30eedff1ab54062911e92",
-   "source_digest": "5431c32220908b2b08e57ab2ebdd4923947d38dd728737710ccadfd637f5d5ab",
+   "source_digest": "d2fc93d5f4f33ed594600e6c14aa78517a78973beee30b94ca625ae6a9560345",
    "read_minutes": {
       "full": 4.0,
       "brief": 2.5
    },
    "word_count": {
-      "full": 570,
-      "brief": 351
+      "full": 563,
+      "brief": 344
    },
    "sections": [
       {
@@ -31,7 +31,11 @@
             "ced:67"
          ],
          "evidence_tag": "inferred",
-         "text": "A response shows the derivative of a product as two terms added: the first factor times the derivative of the second, and the second factor times the derivative of the first. Questions ask for it symbolically or from values at a point. The text calls it \"the product rule\"."
+         "text": "A response shows the derivative of a product as two terms added: the first factor times the derivative of the second, and the second factor times the derivative of the first. Questions ask for it symbolically or from values at a point.",
+         "delivery": {
+            "mode": "text",
+            "reason": "rule 5: a symbolic rule, BC-REP-01 givens on BC-SKL-02036"
+         }
       },
       {
          "id": "LSN-CON-02013#s2",
@@ -56,6 +60,10 @@
          "quote": {
             "text": "Derivatives of products of differentiable functions can be found using the product rule.",
             "source": "ced:67"
+         },
+         "delivery": {
+            "mode": "text",
+            "reason": "rule 5: an algebraic identity with no figure-bearing BC-REP on the skills"
          }
       },
       {
@@ -234,6 +242,10 @@
                ],
                -2
             ]
+         },
+         "delivery": {
+            "mode": "text",
+            "reason": "planted: a worked example served as prose"
          }
       },
       {
@@ -320,6 +332,10 @@
                   "x"
                ]
             ]
+         },
+         "delivery": {
+            "mode": "step_reveal",
+            "reason": "rule 1; the four supplied values render as a table inside the problem (BC-REP-03 given)"
          }
       },
       {
@@ -443,6 +459,10 @@
          "possible_reason": {
             "misconception_id": "BC-MIS-02011",
             "text": "the derivative of a product is taken as the product of the derivatives"
+         },
+         "delivery": {
+            "mode": "step_reveal",
+            "reason": "rule 1"
          }
       },
       {
@@ -506,7 +526,11 @@
                2
             ]
          },
-         "relation": "equivalent"
+         "relation": "equivalent",
+         "delivery": {
+            "mode": "step_reveal",
+            "reason": "rule 1"
+         }
       },
       {
          "id": "LSN-CON-02013#err-BC-ERR-02024",
@@ -538,6 +562,10 @@
          "possible_reason": {
             "misconception_id": "BC-MIS-02011",
             "text": "supplied values are placed in the wrong positions"
+         },
+         "delivery": {
+            "mode": "step_reveal",
+            "reason": "rule 1"
          }
       }
    ],

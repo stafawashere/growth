@@ -1,0 +1,131 @@
+{
+ "id": "LSN-CON-03008",
+ "resolve": {
+  "date": "2026-09-29",
+  "problems": 4,
+  "agreed": 4,
+  "judgments_pending": 0,
+  "all_agree": true,
+  "verdicts": [
+   {
+    "id": "LSN-CON-03008#ex-1",
+    "agree": true,
+    "detail": "agree (symbolic)",
+    "method": "product rule"
+   },
+   {
+    "id": "LSN-CON-03008#chk-1",
+    "agree": true,
+    "detail": "agree (symbolic)",
+    "method": "evaluate"
+   },
+   {
+    "id": "LSN-CON-03008#chk-2",
+    "agree": true,
+    "detail": "agree (symbolic)",
+    "method": "product rule"
+   },
+   {
+    "id": "LSN-CON-03008#chk-3",
+    "agree": true,
+    "detail": "agree (symbolic)",
+    "method": "product rule"
+   }
+  ],
+  "answers_file": "/tmp/claude-0/-home-user-growth/ac029253-8ff0-5a4b-8b5f-cdcaf5e8ff8d/scratchpad/verify/answers_05.json"
+ },
+ "audit": {
+  "date": "2026-09-29",
+  "auditor": "claude-opus-5-5",
+  "blocks": [
+   {
+    "id": "orientation",
+    "verdict": "ok",
+    "evidence": "Paraphrases BC-CON-03008 description_plain and the 3.5 Order of rules paragraph; 27 words."
+   },
+   {
+    "id": "ki-1",
+    "verdict": "ok",
+    "evidence": "Paraphrases 3.5 Classification, Order of rules and Rewriting; quote verbatim from ced:79; ek_id null is correct since no BC-EK is mapped and tagged inferred."
+   },
+   {
+    "id": "st-1",
+    "verdict": "ok",
+    "evidence": "Method from BC-QA-03009 expected_solution_path[0] and [2]; rivals are wrong_approaches[0..1] with ids; cue from common_givens[0]."
+   },
+   {
+    "id": "ex-1",
+    "verdict": "ok",
+    "evidence": "SymPy: derivative of 2x^2 e^(3x-1) equals both step 2 and step 3 forms; value at -1 is 2e^(-4); derived exponent_at -4, inner_rate 3, key_factor 1, distinct list [1, 3, -1] holds."
+   },
+   {
+    "id": "err-BC-ERR-03002",
+    "verdict": "ok",
+    "evidence": "fixed 2026-09-29: block redrawn on the three layer composite e^((3x-1)^2); SymPy derivative (18x-6)e^((3x-1)^2); wrong 2(3x-1)e^((3x-1)^2) omits the innermost 3."
+   },
+   {
+    "id": "err-BC-ERR-03006",
+    "verdict": "ok",
+    "evidence": "Record text verbatim; 6x^2 e^(3x-1) alone is distinct from the derivative."
+   },
+   {
+    "id": "err-BC-ERR-03020",
+    "verdict": "ok",
+    "evidence": "Record text verbatim; SymPy: 2x(2+6x)e^(3x-1) differs from the derivative."
+   },
+   {
+    "id": "err-BC-ERR-99036",
+    "verdict": "ok",
+    "evidence": "Record text verbatim; exponent treated as a power gives 2x^2(3x-1)e^(3x-2), distinct."
+   },
+   {
+    "id": "representations",
+    "verdict": "ok",
+    "evidence": "null; 3.5 Representations names BC-REP-01 and BC-REP-04 only."
+   },
+   {
+    "id": "bridge-BC-PRQ-03001",
+    "verdict": "ok",
+    "evidence": "Paraphrases BC-PRQ-03001 description_plain and failure_signature."
+   },
+   {
+    "id": "bridge-BC-PRQ-03006",
+    "verdict": "ok",
+    "evidence": "Paraphrases BC-PRQ-03006 failure_signature."
+   },
+   {
+    "id": "chk-1",
+    "verdict": "ok",
+    "evidence": "SymPy: 2e^(-4) at x=-1."
+   },
+   {
+    "id": "chk-2",
+    "verdict": "ok",
+    "evidence": "SymPy: derivative of 3x e^(-2x+2) matches step; value at 2 is -9e^(-2)."
+   },
+   {
+    "id": "chk-3",
+    "verdict": "ok",
+    "evidence": "fixed 2026-09-29: option B re-derived from BC-ERR-03020 (held via BC-SKL-03029): e^u+4x^2e^u factored with a sign slip as (4x^2-1)e^u, SymPy 3e^3 at x=1; key 5e^3 unchanged; BC-SKL-03029 added to skills."
+   }
+  ],
+  "advice": [
+   "err-BC-ERR-03002 and chk-3 option B attach a two layer inner factor omission to a record scoped to three layer compositions; BC-MIS-03001 fits the behaviour, but an error record for a dropped inner derivative in a single composition is needed, or the draw should nest three layers.",
+   "The rewrite step (step 3) is served as optional and is also where BC-ERR-03020 lives; the lesson shows the risk well but never says when a rewrite is worth writing on an MCQ.",
+   "Delivery fits: a classification rule is text, the procedure is step reveal. Recognition, first line and rival are taught; scoring habits are carried by error consequences only."
+  ],
+  "counts": {
+   "ok": 14,
+   "unsourced": 0,
+   "wrong": 0,
+   "over_cap": 0,
+   "lint": 0
+  }
+ },
+ "fix_notes": [
+  "err-BC-ERR-03002 on e^((3x-1)^2).",
+  "chk-3 option B now 3e^3 via BC-ERR-03020.",
+  "word_count 547/423, read_minutes 3.65/2.82.",
+  "Left as preferences: when a rewrite is worth writing on an MCQ."
+ ]
+}

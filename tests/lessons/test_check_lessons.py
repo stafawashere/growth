@@ -109,3 +109,125 @@ def test_sets_mode_prints_the_count(snapshot, capsys):
    assert exit_code == 0
    assert f"confusable sets: {expected}" in output
    assert expected > 0
+
+
+DELIVERY_FINDINGS = {
+   "red_delivery.json": "must be step_reveal",
+   "red_delivery__fallback.json": "needs a fallback",
+   "red_delivery__reduced_motion.json": "needs a reduced_motion line",
+   "red_delivery__placement.json": "places a label",
+   "red_delivery__count.json": "at most 2",
+   "red_delivery__kind.json": "is not a known spec kind",
+}
+
+
+@pytest.mark.parametrize("file_name", sorted(DELIVERY_FINDINGS))
+def test_delivery_fixture_fails_for_its_planted_rule(file_name, context):
+   messages = check_lessons.lint_delivery(load_fixture(file_name), context)
+   expected = DELIVERY_FINDINGS[file_name]
+
+   assert any(expected in message for message in messages), messages
+
+
+def test_a_missing_delivery_fails_the_schema(context):
+   lesson = load_fixture("red_schema__delivery.json")
+   findings = check_lesson(lesson, context)
+   lesson["sections"][0]["delivery"] = {"mode": "text", "reason": "restored"}
+   restored = check_lessons.lint_schema(lesson, context)
+
+   assert "schema" in findings
+   assert any(message.startswith("sections/0") for message in findings["schema"])
+   assert restored == []
+
+
+def test_a_strategy_block_carrying_delivery_fails_the_schema(context, hand_authored):
+   strategy = next(section for section in hand_authored["sections"] if section["type"] == "strategy")
+   strategy["delivery"] = {"mode": "text", "reason": "planted"}
+   findings = check_lesson(hand_authored, context)
+
+   assert "schema" in findings
+
+
+def test_hand_authored_delivery_matches_its_design(hand_authored):
+   modes = [section["delivery"]["mode"] for section in hand_authored["sections"] if "delivery" in section]
+
+   assert modes == ["text", "text", "step_reveal", "step_reveal", "step_reveal", "step_reveal", "step_reveal"]
+
+
+def test_cli_takes_a_file_path(tmp_path, capsys):
+   record = tmp_path / HAND_AUTHORED.name
+   record.write_text(HAND_AUTHORED.read_text())
+
+   exit_code = check_lessons.main(["check_lessons.py", str(record)])
+
+   assert exit_code == 0
+   assert "lessons read: 1" in capsys.readouterr().out
+
+
+def test_three_drawn_blocks_are_not_capped_per_lesson(context, hand_authored):
+   spec = {"kind": "graph", "curves": [{"expr": "x**2"}], "labels": [{"text": "y", "placement": "inside"}]}
+
+   for section in hand_authored["sections"][:2] + [hand_authored["sections"][2]]:
+      if "delivery" in section:
+         section["delivery"] = {"mode": "figure", "reason": "planted", "spec": spec, "fallback": "f", "keyboard": "k"}
+
+   assert check_lessons.lint_delivery(hand_authored, context) == []
+
+
+def example_with_steps(hand_authored, steps):
+   example = next(section for section in hand_authored["sections"] if section["type"] == "worked_example")
+   example["steps"] = [{"cue": "c", "why": "w", **step} for step in steps]
+   example["answer"] = {"form": "symbolic", "mathjson": steps[-1]["expression"]}
+
+   return example
+
+
+def test_a_differentiate_relation_is_checked_as_a_derivative(context, hand_authored):
+   example_with_steps(hand_authored, [
+      {"expression": ["Power", "x", 3], "relation": "new"},
+      {"expression": ["Multiply", 3, ["Power", "x", 2]], "relation": "differentiate", "variable": "x"},
+   ])
+   good = check_lessons.lint_step_equivalence(hand_authored, context)
+   hand_authored["sections"][4]["steps"][1]["expression"] = ["Multiply", 2, ["Power", "x", 2]]
+   bad = check_lessons.lint_step_equivalence(hand_authored, context)
+
+   assert good == []
+   assert any("is not the derivative" in message for message in bad)
+
+
+def test_equation_steps_chain_without_crashing(context, hand_authored):
+   example_with_steps(hand_authored, [
+      {"expression": ["Equal", ["Add", "k", "m"], 2], "relation": "new"},
+      {"expression": ["Equal", "k", ["Add", 2, ["Negate", "m"]]], "relation": "equivalent"},
+   ])
+
+   assert check_lessons.lint_step_equivalence(hand_authored, context) == []
+
+
+def test_error_block_with_equations_compares(context, hand_authored):
+   block = next(section for section in hand_authored["sections"] if section["type"] == "common_error")
+   block["wrong_step"]["expression"] = ["Equal", ["Add", "k", "m"], 3]
+   block["right_step"]["expression"] = ["Equal", ["Add", "k", "m"], 2]
+   block["relation"] = "distinct"
+
+   assert check_lessons.relation_messages(block) == []
+
+
+def test_a_research_citation_is_held_when_its_heading_exists(context, hand_authored):
+   good = "research/units/unit-02-differentiation-definition-properties.md#2.8 The Product Rule"
+   bad = "research/units/unit-02-differentiation-definition-properties.md#No Such Heading"
+   hand_authored["sections"][0]["sources"] = [good]
+   held = check_lessons.unknown_source_messages(hand_authored, context)
+   hand_authored["sections"][0]["sources"] = [bad]
+   missing = check_lessons.unknown_source_messages(hand_authored, context)
+
+   assert held == []
+   assert any("heading is not" in message for message in missing)
+
+
+def test_a_numeric_key_on_a_no_calculator_check_is_allowed(context, hand_authored):
+   check = hand_authored["checks"][2]
+   check["answer_key"]["form"] = "numeric"
+   check["calculator_status"] = "no_calculator"
+
+   assert check_lessons.lint_calculator_boundary(hand_authored, context) == []

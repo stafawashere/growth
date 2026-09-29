@@ -1,0 +1,130 @@
+{
+ "id": "LSN-CON-02012",
+ "resolve": {
+  "date": "2026-09-29",
+  "problems": 4,
+  "agreed": 4,
+  "judgments_pending": 0,
+  "all_agree": true,
+  "verdicts": [
+   {
+    "id": "LSN-CON-02012#ex-1",
+    "agree": true,
+    "detail": "agree (symbolic)",
+    "method": "direct computation"
+   },
+   {
+    "id": "LSN-CON-02012#chk-1",
+    "agree": true,
+    "detail": "agree (symbolic)",
+    "method": "direct computation"
+   },
+   {
+    "id": "LSN-CON-02012#chk-2",
+    "agree": true,
+    "detail": "agree (symbolic)",
+    "method": "direct computation"
+   },
+   {
+    "id": "LSN-CON-02012#chk-3",
+    "agree": true,
+    "detail": "agree (symbolic)",
+    "method": "direct computation"
+   }
+  ],
+  "answers_file": "/tmp/claude-0/-home-user-growth/ac029253-8ff0-5a4b-8b5f-cdcaf5e8ff8d/scratchpad/verify/answers_01.json"
+ },
+ "audit": {
+  "date": "2026-09-29",
+  "auditor": "claude-opus-5-5",
+  "blocks": [
+   {
+    "id": "orientation",
+    "verdict": "ok",
+    "evidence": "32 words; paraphrases BC-CON-02012 and BC-QA-02007 asked_to_produce (derivative or its value at a stated input)."
+   },
+   {
+    "id": "ki-1",
+    "verdict": "ok",
+    "evidence": "34 words; four rules from research 2.7 Specific rules, domain note from its Notation line, power remark paraphrases BC-MIS-02010; quote matches ced:66 verbatim."
+   },
+   {
+    "id": "st-1",
+    "verdict": "ok",
+    "evidence": "Method paraphrases BC-QA-02007 expected_solution_path; rival is its wrong_approaches entry (BC-ERR-02019)."
+   },
+   {
+    "id": "ex-1",
+    "verdict": "ok",
+    "evidence": "SymPy: diff of 3*sin(x)+2*cos(x)-exp(x)+4*log(x)+5 is 3*cos(x)-2*sin(x)-exp(x)+4/x; at x=pi/2 it equals -2-exp(pi/2)+8/pi."
+   },
+   {
+    "id": "scores-ex-1",
+    "verdict": "ok",
+    "evidence": "BC-PT-99004 is on BC-QA-02007 point_types; every sentence of the line is found in the point type record's earns, does_not_earn and precision fields."
+   },
+   {
+    "id": "err-BC-ERR-02016",
+    "verdict": "ok",
+    "evidence": "Record text verbatim; wrong minus right equals 5, distinct holds."
+   },
+   {
+    "id": "err-BC-ERR-02018",
+    "verdict": "ok",
+    "evidence": "Record text verbatim; wrong minus right equals 4*sin(x), distinct holds."
+   },
+   {
+    "id": "err-BC-ERR-02019",
+    "verdict": "ok",
+    "evidence": "Record text verbatim; x*exp(x-1) differs from exp(x), distinct holds."
+   },
+   {
+    "id": "representations",
+    "verdict": "ok",
+    "evidence": "null; research 2.7 Representations names BC-REP-01 only."
+   },
+   {
+    "id": "bridge-BC-PRQ-01005",
+    "verdict": "ok",
+    "evidence": "26 words; paraphrases description_plain (exact values, bounds) and failure_signature (oscillation treated as unbounded)."
+   },
+   {
+    "id": "bridge-BC-PRQ-06002",
+    "verdict": "ok",
+    "evidence": "17 words; paraphrases description_plain and failure_signature."
+   },
+   {
+    "id": "bridge-BC-PRQ-06003",
+    "verdict": "ok",
+    "evidence": "24 words; paraphrases description_plain (domain of ln, log rules) and failure_signature (answers not combined)."
+   },
+   {
+    "id": "chk-1",
+    "verdict": "ok",
+    "evidence": "SymPy: 3*cos(x)-2*sin(x)-exp(x)+4/x at pi/2 equals -2-exp(pi/2)+8/pi."
+   },
+   {
+    "id": "chk-2",
+    "verdict": "ok",
+    "evidence": "SymPy: diff(-2*sin(x)+4*cos(x)+3*exp(x)-log(x)-7,x) equals -2*cos(x)-4*sin(x)+3*exp(x)-1/x."
+   },
+   {
+    "id": "chk-3",
+    "verdict": "ok",
+    "evidence": "SymPy: f'(pi/2)=-3+2*exp(pi/2)+4/pi; A (sign dropped) 3+..., B (-4 carried) -7+..., D 2*x*exp(x-1) at pi/2 gives pi*exp(pi/2-1); all match derivations and differ from the key."
+   }
+  ],
+  "advice": [
+   "The ex-1 answer is an exact expression, yet scores-ex-1 serves the three decimal precision rule of BC-PT-99004, which does not bear on an exact no calculator answer and may distract; consider serving only the earns line.",
+   "Of three bridges, BC-PRQ-06002 and BC-PRQ-06003 bear on only one term each; BC-PRQ-01005 is the one ex-1 actually needs (sin and cos at pi/2).",
+   "The rival (e^x treated as a power) versus the right move is a comparison and suits a contrast mode; the lesson otherwise teaches recognition, first line and rival clearly."
+  ],
+  "counts": {
+   "ok": 15,
+   "unsourced": 0,
+   "wrong": 0,
+   "over_cap": 0,
+   "lint": 0
+  }
+ }
+}

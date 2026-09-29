@@ -4,8 +4,10 @@ key verification"; docs/plan/11-phased-delivery.md R9's settle-rate measurement.
 import json
 from pathlib import Path
 
+import sympy
+
 from app.items.mathjson import to_sympy
-from app.items.verify import distractor_checks, equivalence, verify_item
+from app.items.verify import compare_expressions, distractor_checks, equivalence, verify_item
 
 ROOT = Path(__file__).resolve().parents[2]
 PAIRS_PATH = ROOT / "tests" / "fixtures" / "answers_equiv" / "pairs.json"
@@ -176,3 +178,38 @@ def test_an_option_without_is_key_is_refused():
 
    assert verdict["verified"] is False
    assert "option_without_is_key" in verdict["violations"]
+
+
+def test_equations_are_equivalent_when_their_zero_forms_agree_up_to_sign():
+   k, m = sympy.symbols("k m")
+
+   assert equivalence(sympy.Eq(k + m, 2), sympy.Eq(2 - m, k)) == "equivalent"
+   assert equivalence(sympy.Eq(2 * k, 4), sympy.Eq(k, 2)) != "equivalent"
+   assert equivalence(sympy.Eq(k + m, 2), sympy.Eq(k + m, 3)) == "not_equivalent"
+
+
+def test_an_equation_against_an_expression_is_not_equivalent_and_does_not_crash():
+   k, m = sympy.symbols("k m")
+
+   assert equivalence(sympy.Eq(k + m, 2), k + m - 2) == "not_equivalent"
+   assert compare_expressions(sympy.Eq(k + m, 2), k + m - 2) == "distinct"
+
+
+def test_finite_sets_compare_element_by_element():
+   k, m = sympy.symbols("k m")
+   key = sympy.FiniteSet(sympy.Eq(k, 5), sympy.Eq(m, -3))
+   same = sympy.FiniteSet(sympy.Eq(m + 3, 0), sympy.Eq(k - 5, 0))
+   other = sympy.FiniteSet(sympy.Eq(k, 5), sympy.Eq(m, 3))
+
+   assert equivalence(key, same) == "equivalent"
+   assert equivalence(key, other) == "not_equivalent"
+   assert equivalence(sympy.FiniteSet(1, 2), sympy.FiniteSet(2, 1, 3)) == "not_equivalent"
+   assert compare_expressions(key, same) == "equal"
+   assert compare_expressions(key, other) == "distinct"
+
+
+def test_nan_against_a_finite_value_is_distinct():
+   assert compare_expressions(sympy.nan, sympy.Integer(3)) == "distinct"
+   assert equivalence(sympy.nan, sympy.Integer(3)) == "not_equivalent"
+   assert equivalence(sympy.nan, sympy.nan) == "equivalent"
+   assert equivalence(sympy.oo, sympy.oo) == "equivalent"

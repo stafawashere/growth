@@ -1,0 +1,133 @@
+{
+ "id": "LSN-CON-05008",
+ "resolve": {
+  "date": "2026-09-29",
+  "problems": 4,
+  "agreed": 4,
+  "judgments_pending": 0,
+  "all_agree": true,
+  "verdicts": [
+   {
+    "id": "LSN-CON-05008#ex-1",
+    "agree": true,
+    "detail": "agree (symbolic)",
+    "method": "f' changes from increasing to decreasing at x=3 so f'' changes sign"
+   },
+   {
+    "id": "LSN-CON-05008#chk-1",
+    "agree": true,
+    "detail": "agree (symbolic)",
+    "method": "slope signs of f' change + to - at 3 only"
+   },
+   {
+    "id": "LSN-CON-05008#chk-2",
+    "agree": true,
+    "detail": "agree (symbolic)",
+    "method": "slopes -,-,+,+,-,-: changes at 2 and 4"
+   },
+   {
+    "id": "LSN-CON-05008#chk-3",
+    "agree": true,
+    "detail": "agree (symbolic)",
+    "method": "slopes +,-,-,-,+,+: changes at 1 and 4"
+   }
+  ],
+  "answers_file": "/tmp/claude-0/-home-user-growth/ac029253-8ff0-5a4b-8b5f-cdcaf5e8ff8d/scratchpad/verify/answers_07.json"
+ },
+ "audit": {
+  "date": "2026-09-29",
+  "auditor": "claude-opus-5-5",
+  "blocks": [
+   {
+    "id": "orientation",
+    "verdict": "ok",
+    "evidence": "Paraphrases BC-CON-05008 and the 5.6 assessment paragraph; reason through the supplied graph matches BC-PT-99061."
+   },
+   {
+    "id": "ki-1",
+    "verdict": "ok",
+    "evidence": "Quote matches ced:104 FUN-4.A.6 verbatim; candidate versus sign change matches the concept description_plain."
+   },
+   {
+    "id": "st-1",
+    "verdict": "ok",
+    "evidence": "Rival matches BC-QA-05005 distractor 'listing every zero of the given plotted function' and BC-ERR-05034."
+   },
+   {
+    "id": "ex-1",
+    "verdict": "ok",
+    "evidence": "SymPy: slopes 2, 3, 1, -2, -1, -2 switch sign only at x = 3."
+   },
+   {
+    "id": "scores-ex-1",
+    "verdict": "ok",
+    "evidence": "Line reproduces BC-PT-99061 name, earns and does_not_earn from the bundle."
+   },
+   {
+    "id": "err-BC-ERR-05032",
+    "verdict": "ok",
+    "evidence": "observed_behavior and scoring_consequence copied from the record."
+   },
+   {
+    "id": "err-BC-ERR-05033",
+    "verdict": "ok",
+    "evidence": "SymPy: zeros of the ex-1 f' are 4/3 and 5."
+   },
+   {
+    "id": "err-BC-ERR-05034",
+    "verdict": "ok",
+    "evidence": "Corners at 1, 2, 3, 4, 5 are the ex-1 breakpoints; record text copied."
+   },
+   {
+    "id": "err-BC-ERR-05035",
+    "verdict": "ok",
+    "evidence": "Record text copied; matches BC-PT-99061 does_not_earn."
+   },
+   {
+    "id": "representations",
+    "verdict": "ok",
+    "evidence": "At x = 1 the slopes are 2 then 3 (same sign), at x = 3 they are 1 then -2 (turn); SymPy confirmed."
+   },
+   {
+    "id": "BC-PRQ-05001",
+    "verdict": "ok",
+    "evidence": "Matches the BC-PRQ-05001 description."
+   },
+   {
+    "id": "BC-PRQ-05003",
+    "verdict": "ok",
+    "evidence": "Matches BC-PRQ-05003 'restricting any conclusion to that set'."
+   },
+   {
+    "id": "chk-1",
+    "verdict": "ok",
+    "evidence": "SymPy: same draw as ex-1, key {3}."
+   },
+   {
+    "id": "chk-2",
+    "verdict": "ok",
+    "evidence": "SymPy: slopes -2, -1, 2, 1, -1, -3 switch at 2 and 4."
+   },
+   {
+    "id": "chk-3",
+    "verdict": "ok",
+    "evidence": "SymPy: slopes 2, -1, -3, -1, 2, 1 switch at 1 and 4; f' zeros at 8/3 and 5 so A and D correct; B lists all corners."
+   }
+  ],
+  "advice": [
+   "err-BC-ERR-05034 illustrates every corner of a piecewise linear f', while the record describes f'' reaching zero and returning to the same sign; the illustration fits, but a sentence tying a corner with unchanged slope sign to 'same sign of f''' would help.",
+   "The representation contrasting a turn with a steepness change is a contrast delivered well; the lesson covers recognition, first line, rival and the reason point.",
+   "BC-ERR-99023 (omitting a corner where the derivative graph turns) is in the bundle but not illustrated; chk-2 covers it implicitly."
+  ],
+  "counts": {
+   "ok": 15,
+   "unsourced": 0,
+   "wrong": 0,
+   "over_cap": 0,
+   "lint": 0
+  }
+ },
+ "fix_notes": [
+  "No findings and no defects; left as preferences: a sentence tying an unchanged slope sign to the same sign of f''; BC-ERR-99023 not illustrated."
+ ]
+}

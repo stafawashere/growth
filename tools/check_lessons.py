@@ -7,7 +7,13 @@ checks reuse app/items (equivalence, numeric_check, run_checks, error_path_findi
 duplicate gate's official-corpus index in app/generation/dedupe.py, and the quote rule of
 qa/07_quotes.py, reimplemented over content/lessons.
 
-Usage: python3 tools/check_lessons.py <directory>
+Where a lint and tools/check_lesson_designs.py cover the same rule, the lint mirrors the design
+checker's rule, because a faithful transcription of a design that passes the design checker must
+pass here (docs/lessons/BUILD-PLAN.md, amendments A-D1 to A-D5 and A-1 to A-8, which were written
+against the design checker). The design checker is imported lazily (design_rules below), since it
+imports this module.
+
+Usage: python3 tools/check_lessons.py <file or directory> [<file or directory> ...]
        python3 tools/check_lessons.py --sets
 """
 import importlib.util
@@ -20,6 +26,7 @@ ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(ROOT))
 
 import jsonschema
+import sympy
 from jsonschema.exceptions import best_match
 
 from app.content.loader import LoaderError, load_snapshot
@@ -62,8 +69,6 @@ DASH_CODES = (8212, 8211)
 DASHES = re.compile("[" + "".join(chr(code) for code in DASH_CODES) + "]")
 EMOJI_RANGES = ((0x1F300, 0x1FAFF), (0x2600, 0x27BF), (0xFE0F, 0xFE0F), (0x2B00, 0x2BFF))
 EMOJI = re.compile("[" + "".join(f"{chr(low)}-{chr(high)}" for low, high in EMOJI_RANGES) + "]")
-QUOTE_CODES = (34, 8220, 8221)
-QUOTE_MARKS = re.compile("[" + "".join(chr(code) for code in QUOTE_CODES) + "]")
 PRAISE = re.compile(
    r"\b(great|excellent|well done|nice work|good job|awesome|fantastic|perfect|congratulations|"
    r"brilliant|impressive|amazing|wonderful)\b",
@@ -85,6 +90,52 @@ SECOND_PERSON_BELIEF = re.compile(
    re.I,
 )
 SCORING_CITATION = re.compile(r"\b(?:sg|cr)-\d{2}:\d+\b")
+
+DELIVERED_TYPES = (plan.ORIENTATION, plan.KEY_IDEAS, plan.WORKED_EXAMPLE, plan.COMMON_ERROR, plan.REPRESENTATIONS)
+STEP_REVEAL_TYPES = (plan.WORKED_EXAMPLE, plan.COMMON_ERROR)
+UNDRAWN_MODES = ("text", "step_reveal")
+SPEC_KINDS = (
+   "graph",
+   "table",
+   "graph_panels",
+   "stacked_graphs",
+   "graph_pair",
+   "graph_with_table",
+   "slope_field",
+   "implicit_curve",
+   "region",
+   "diagram",
+   "geometric_diagram",
+   "parametric_path",
+   "vector_diagram",
+   "washer",
+   "slice_shapes",
+   "graph_sweep",
+   "graph_zoom",
+   "numeric_experiment",
+   "particle_on_line",
+   "number_line_pair",
+   "parametric_trace",
+   "solid_from_slices",
+   "solid_of_revolution",
+   "euler_steps",
+   "solution_curves",
+   "field_trace",
+   "inverse_pair",
+   "table_sweep",
+   "panels",
+   "region_with_axis",
+   "stems",
+)
+RESEARCH_CITATION = re.compile(r"^research/[\w\-/.]+\.md(?:#.+)?$")
+PAGE_CITATION = re.compile(r"^(ced|sg-\d{2}|cr-\d{2}|crabbc-\d{2}):(\d+)$")
+
+
+def design_rules():
+   """tools/check_lesson_designs, imported on first use because it imports this module."""
+   from tools import check_lesson_designs
+
+   return check_lesson_designs
 
 
 def normalise_text(text):
@@ -204,6 +255,25 @@ def prose_of(lesson):
    return texts
 
 
+VERBATIM_FIELDS = {
+   plan.READER_SCORES: ("lines[].text",),
+   plan.COMMON_ERROR: ("observed_behavior", "scoring_consequence"),
+}
+
+
+def authored_prose(lesson):
+   """prose_of without the fields copied verbatim from library records (the reader_checks lines
+   and an error's behaviour and consequence), which rule_style leaves out as authored_record
+   does, since the author did not write them."""
+   verbatim = []
+
+   for section in lesson["sections"]:
+      for path in VERBATIM_FIELDS.get(section["type"], ()):
+         verbatim.extend(plan.prose_values(section, path))
+
+   return [text for text in prose_of(lesson) if text not in verbatim]
+
+
 def raw_text(lesson):
    return json.dumps(lesson, ensure_ascii=False)
 
@@ -293,28 +363,82 @@ def lint_referential(lesson, context):
 
 
 def unknown_source_messages(lesson, context):
+   """A block's source is known when the authoring bundle holds it, or when the design checker
+   would accept it: an active BC id (rule_referential), a page citation with a cached page
+   (rule_citations), or a research citation whose file exists and holds the heading, in the file
+   or in the bundle's topic sections (rule_research_lines)."""
    is_concept = lesson["kind"] == "concept"
 
    if not is_concept:
       return []
 
-   bundle_text = json.dumps(context.bundle(lesson["target_id"]), ensure_ascii=False)
+   bundle = context.bundle(lesson["target_id"])
+   bundle_text = json.dumps(bundle, ensure_ascii=False)
    messages = []
 
    for record in lesson["sections"]:
       for source in record["sources"]:
-         is_known = f'"{source}"' in bundle_text or source in bundle_text
+         problem = source_problem(source, bundle, bundle_text, context)
 
-         if not is_known:
-            messages.append(f"{record['id']} cites {source}, which the authoring bundle does not hold")
-
-         is_ced = source.startswith("ced:")
-         page_is_cached = source in context.bundle(lesson["target_id"])["ced_pages"]
-
-         if is_ced and not page_is_cached:
-            messages.append(f"{record['id']} cites {source}, which is not cached")
+         if problem is not None:
+            messages.append(f"{record['id']} cites {source}, {problem}")
 
    return messages
+
+
+def source_problem(source, bundle, bundle_text, context):
+   is_research = RESEARCH_CITATION.match(source) is not None
+
+   if is_research:
+      return research_problem(source, bundle)
+
+   is_page = PAGE_CITATION.match(source) is not None
+
+   if is_page:
+      return None if page_is_cached(context, source) else "which is not cached"
+
+   is_held = f'"{source}"' in bundle_text or source in bundle_text
+
+   if is_held:
+      return None
+
+   record = context.snapshot.ids.get(source)
+   is_active = record is not None and record.get("status") == "active"
+
+   if is_active:
+      return None
+
+   return "which the authoring bundle does not hold"
+
+
+def page_is_cached(context, source):
+   match = PAGE_CITATION.match(source)
+   page_file = Path(context.cache_dir) / match.group(1) / f"page-{int(match.group(2)):03d}.txt"
+
+   return page_file.exists()
+
+
+def research_problem(source, bundle):
+   designs = design_rules()
+   file_part, _, heading = source.partition("#")
+   path = ROOT / file_part
+
+   if not path.exists():
+      return "whose research file does not exist"
+
+   heading = heading.strip()
+   has_no_heading = heading == ""
+
+   if has_no_heading:
+      return None
+
+   texts = [path.read_text()] + list((bundle.get("topic_sections") or {}).values())
+   is_present = any(designs.heading_present(text, heading) for text in texts)
+
+   if not is_present:
+      return "whose heading is not in the research file or the topic sections"
+
+   return None
 
 
 def unknown_archetype_messages(lesson, context):
@@ -431,26 +555,10 @@ def cardinality_messages(lesson, context):
 def bundle_alignment_messages(lesson, bundle):
    messages = []
    expected_eks = sorted({ek for skill in bundle["skills"] for ek in skill.get("essential_knowledge") or []})
-   stated_eks = sorted(section["ek_id"] for section in sections_of(lesson, plan.KEY_IDEAS))
+   stated_eks = sorted(section["ek_id"] for section in sections_of(lesson, plan.KEY_IDEAS) if section.get("ek_id"))
 
    if stated_eks != expected_eks:
       messages.append(f"key ideas cover {stated_eks}, and the skills map {expected_eks}")
-
-   families = []
-   family_archetypes = []
-
-   for archetype in bundle["archetypes"]:
-      is_new_family = archetype["family"] not in families
-
-      if is_new_family:
-         families.append(archetype["family"])
-         family_archetypes.append(archetype["id"])
-
-   expected_strategy = family_archetypes[:constants.STRATEGY_BLOCKS_MAX]
-   stated_strategy = [section["archetype_id"] for section in sections_of(lesson, plan.STRATEGY)]
-
-   if stated_strategy != expected_strategy:
-      messages.append(f"strategy blocks name {stated_strategy}, and the archetype families give {expected_strategy}")
 
    expected_bridges = sorted(record["id"] for record in bundle["prerequisites"])
    stated_bridges = sorted(
@@ -551,37 +659,127 @@ def lint_band_coverage(lesson, context):
    return messages
 
 
+def valued_step_records(record):
+   """The steps of an example or a check that carry a value, with their position."""
+   is_example = record.get("type") == plan.WORKED_EXAMPLE
+   steps = record["steps"] if is_example else record["worked_solution"]
+   key = "expression" if is_example else "mathjson"
+
+   return [(index, step[key], step) for index, step in enumerate(steps) if key in step]
+
+
+def relation_holds(designs, relation, step, previous, current):
+   """One link of tools/check_lesson_designs.check_chain over converted expressions: the message
+   when current does not follow from previous under the step's relation, else None."""
+   equivalent = designs.equivalent
+   as_value = designs.as_value
+
+   if relation == "equivalent":
+      return None if equivalent(previous, current) else "is not equivalent to the step before it"
+
+   variable = sympy.Symbol(step.get("variable", "x"))
+
+   if relation == "differentiate":
+      expected = sympy.diff(as_value(previous), variable)
+
+      return None if equivalent(expected, current) else "is not the derivative of the step before it"
+
+   if relation == "integrate":
+      back = sympy.diff(as_value(current), variable)
+
+      return None if equivalent(back, as_value(previous)) else "does not differentiate back to the step before it"
+
+   if relation == "evaluate":
+      substitution = {
+         sympy.Symbol(name): designs.parse_expression(value) for name, value in (step.get("subs") or {}).items()
+      }
+      expected = as_value(previous).subs(substitution)
+      is_close = equivalent(expected, current) or (step.get("approx") and designs.close_enough(expected, current))
+
+      return None if is_close else f"is not the step before it evaluated at {step.get('subs')}"
+
+   if relation == "solve":
+      roots = as_value(current)
+      candidates = list(roots) if isinstance(roots, (sympy.FiniteSet, set, tuple, list)) else [roots]
+      zero_form = designs.as_zero_form(previous)
+      failing = [root for root in candidates if not equivalent(zero_form.subs(variable, root), sympy.Integer(0))]
+
+      return None if not failing else f"roots {failing} do not satisfy the step before it"
+
+   point = designs.parse_expression(step.get("point", "0"))
+   expected = sympy.limit(as_value(previous), variable, point, dir=step.get("dir", "+-"))
+
+   return None if equivalent(expected, current) else "is not the limit of the step before it"
+
+
+def step_text(step):
+   return normalise_text(step.get("text") or f"{step.get('cue')} {step.get('why')}")
+
+
+def chain_messages(record):
+   """tools/check_lesson_designs.check_chain over a record's valued steps: each follows from the
+   one before under its relation, and a step without a relation is held to equivalence, the
+   design checker's default. A restatement is a step whose words and MathJSON both repeat the
+   step before it: the design checker compares the SymPy strings as written, which the record
+   cannot keep, because parsing evaluates "(-2)*4 + 3*5" to the 7 of the next line, and to_sympy
+   evaluates a factored quotient to its cancelled form. Returns the messages and the last converted expression."""
+   designs = design_rules()
+   messages = []
+   previous = None
+   previous_value = None
+   previous_step = None
+   last = None
+
+   for index, value, step in valued_step_records(record):
+      try:
+         current = to_expression(value)
+      except (UnsupportedMathJSON, TypeError, ValueError) as error:
+         messages.append(f"{record['id']} step {index + 1} did not convert: {error}")
+         previous = None
+         continue
+
+      relation = step.get("relation", "equivalent")
+      is_first = previous is None
+
+      if relation not in designs.RELATIONS:
+         messages.append(f"{record['id']} step {index + 1} relation {relation!r} is not one of {designs.RELATIONS}")
+      elif relation == "equivalent" and not is_first and previous_step == step_text(step) and previous_value == value:
+         messages.append(f"{record['id']} step {index + 1} restates the step before it")
+      elif not is_first and relation != "new":
+         try:
+            problem = relation_holds(designs, relation, step, previous, current)
+         except Exception as error:
+            problem = f"did not compare: {type(error).__name__}"
+
+         if problem is not None:
+            messages.append(f"{record['id']} step {index + 1} {problem}")
+
+      previous = current
+      previous_value = value
+      previous_step = step_text(step)
+      last = current
+
+   return messages, last
+
+
 def lint_step_equivalence(lesson, context):
+   """Mirrors the chain half of rule_steps and rule_keys: every example is chained, a check with
+   a statement key is not, and a record with a key but no valued step is reported."""
    messages = []
 
    for record in solved_records(lesson):
-      steps = valued_steps(record)
+      is_example = record.get("type") == plan.WORKED_EXAMPLE
       is_statement = answer_form(record) == "statement"
 
-      if is_statement:
+      if is_statement and not is_example:
          continue
 
-      if not steps:
+      found, last = chain_messages(record)
+      messages.extend(found)
+      has_no_value = last is None and not valued_step_records(record)
+
+      if has_no_value and not is_statement:
          messages.append(f"{record['id']} has no step carrying a value")
-         continue
-
-      try:
-         expressions = [(index, to_expression(value)) for index, value in steps]
-      except UnsupportedMathJSON as error:
-         messages.append(f"{record['id']} has an expression that did not convert: {error}")
-         continue
-
-      for (_, previous), (index, current) in zip(expressions, expressions[1:]):
-         is_vacuous = previous == current
-
-         if is_vacuous:
-            messages.append(f"{record['id']} step {index + 1} restates the step before it")
-            continue
-
-         outcome = verify.equivalence(previous, current)
-
-         if outcome != "equivalent":
-            messages.append(f"{record['id']} step {index + 1} does not follow from the step before ({outcome})")
 
    return messages
 
@@ -600,111 +798,190 @@ def answer_expression(record):
    return to_expression(answer["mathjson"])
 
 
-def lint_final_answer(lesson, context):
-   messages = []
-   examples = sections_of(lesson, plan.WORKED_EXAMPLE)
+def last_valued_expression(record):
+   converted = []
 
-   for example in examples:
-      steps = valued_steps(example)
-      has_no_steps = len(steps) == 0
-      is_statement = example["answer"]["form"] == "statement"
-
-      if has_no_steps or is_statement:
-         continue
-
+   for _, value, _ in valued_step_records(record):
       try:
-         key = answer_expression(example)
-         last = to_expression(steps[-1][1])
-      except UnsupportedMathJSON as error:
-         messages.append(f"{example['id']} answer did not convert: {error}")
-         continue
+         converted.append(to_expression(value))
+      except (UnsupportedMathJSON, TypeError, ValueError):
+         converted.append(None)
 
-      symbolic = verify.equivalence(key, last)
-      numeric = verify.numeric_check(key, last)
+   return converted[-1] if converted else None
 
-      if symbolic != "equivalent" or numeric is not True:
-         messages.append(f"{example['id']} answer is not the last valued step ({symbolic}, numeric {numeric})")
+
+def key_matches(designs, key, last, is_calculator):
+   return designs.equivalent(key, last) or (is_calculator and designs.close_enough(key, last))
+
+
+def lint_final_answer(lesson, context):
+   """Mirrors rule_steps (examples) and rule_keys (checks): the key is the last valued step, or
+   within three places of it on a calculator record; a check's key equals the answer of the
+   example it completes; a key option equals the key and no two options are equal."""
+   designs = design_rules()
+   messages = []
+
+   for example in sections_of(lesson, plan.WORKED_EXAMPLE):
+      messages.extend(example_key_messages(designs, example))
+
+   examples = {example["id"]: example for example in sections_of(lesson, plan.WORKED_EXAMPLE)}
 
    for check in lesson["checks"]:
-      messages.extend(check_key_messages(check, context))
+      messages.extend(check_key_messages(designs, check, examples))
 
    return messages
 
 
-def check_key_messages(check, context):
-   messages = []
+def example_key_messages(designs, example):
+   is_statement = example["answer"]["form"] == "statement"
+   last = last_valued_expression(example)
+
+   if is_statement or last is None:
+      return []
 
    try:
-      results = run_checks(check, context.active_error_ids)
-   except (UnsupportedMathJSON, ValueError, KeyError) as error:
-      return [f"{check['id']} did not run: {error}"]
+      key = answer_expression(example)
+   except (UnsupportedMathJSON, TypeError, ValueError) as error:
+      return [f"{example['id']} answer did not convert: {error}"]
 
-   for result in results:
-      is_key_check = result["check_type"] != "distractor_distinct"
-      did_not_pass = result["outcome"] != "pass"
+   is_calculator = example["calculator_status"] == "calculator"
 
-      if is_key_check and did_not_pass:
-         messages.append(f"{check['id']} {result['check_type']} {result['outcome']}")
+   if not key_matches(designs, key, last, is_calculator):
+      return [f"{example['id']} answer is not the last valued step"]
+
+   return []
+
+
+def check_key_messages(designs, check, examples):
+   messages = []
+   options = check.get("options") or []
+   key_options = [option for option in options if option.get("is_key")]
+
+   if options and len(key_options) != 1:
+      messages.append(f"{check['id']} needs exactly one key option")
+
+   is_statement = check["answer_key"]["form"] == "statement"
+
+   if is_statement:
+      return messages
+
+   try:
+      key = answer_expression(check)
+   except (UnsupportedMathJSON, TypeError, ValueError) as error:
+      return messages + [f"{check['id']} key did not convert: {error}"]
+
+   last = last_valued_expression(check)
+   is_calculator = check["calculator_status"] == "calculator"
+
+   if last is not None and not key_matches(designs, key, last, is_calculator):
+      messages.append(f"{check['id']} key is not the last valued step")
+
+   completes = examples.get(check.get("completes"))
+
+   if completes is not None:
+      messages.extend(completion_messages(designs, check, completes, key))
+
+   messages.extend(option_messages(designs, check, options, key))
+
+   return messages
+
+
+def completion_messages(designs, check, example, key):
+   try:
+      answer = answer_expression(example)
+   except (UnsupportedMathJSON, TypeError, ValueError):
+      answer = None
+
+   if answer is None or not designs.equivalent(answer, key):
+      return [f"{check['id']} key differs from the answer of {example['id']}"]
+
+   return []
+
+
+def option_messages(designs, check, options, key):
+   messages = []
+
+   for option in options:
+      if "value" not in option:
+         messages.append(f"{check['id']} option {option['id']} has no value")
+         continue
+
+      try:
+         value = to_expression(option["value"])
+      except (UnsupportedMathJSON, TypeError, ValueError):
+         messages.append(f"{check['id']} option {option['id']} did not convert")
+         continue
+
+      if option.get("is_key") and not designs.equivalent(value, key):
+         messages.append(f"{check['id']} key option {option['id']} does not equal the key")
 
    return messages
 
 
 def lint_calculator_boundary(lesson, context):
+   """The calculator half of rule_steps and rule_keys: only a calculator record may state a key
+   that is a three place approximation of its last step rather than equal to it. Numeric keys on
+   no_calculator records are allowed, as the design checker allows them."""
+   designs = design_rules()
    messages = []
 
    for record in solved_records(lesson):
-      status = record["calculator_status"]
-      is_example = record.get("type") == plan.WORKED_EXAMPLE
-      answer = record["answer"] if is_example else record["answer_key"]
-      steps = record["steps"] if is_example else record["worked_solution"]
-      step_key = "expression" if is_example else "mathjson"
-      approximated = contains_float(answer["mathjson"]) or any(
-         contains_float(step.get(step_key)) for step in steps
-      )
-      archetype = context.snapshot.archetypes.get(record["archetype_id"])
+      is_calculator = record["calculator_status"] == "calculator"
+      is_statement = answer_form(record) == "statement"
+      last = last_valued_expression(record)
 
-      if archetype is not None:
-         allowed = archetype["calculator_status"] in (status, "either")
+      if is_calculator or is_statement or last is None:
+         continue
 
-         if not allowed:
-            messages.append(f"{record['id']} is {status} on a {archetype['calculator_status']} archetype")
+      try:
+         key = answer_expression(record)
+      except (UnsupportedMathJSON, TypeError, ValueError):
+         continue
 
-      if status == "no_calculator":
-         is_numeric_answer = answer["form"] == "numeric"
+      is_approximation = not designs.equivalent(key, last) and designs.close_enough(key, last)
 
-         if approximated or is_numeric_answer:
-            messages.append(f"{record['id']} is no_calculator and its path or answer is numeric")
-
-      if status == "calculator":
-         states_three_decimals = answer["form"] == "numeric" and answer.get("decimals") == 3
-
-         if not states_three_decimals:
-            messages.append(f"{record['id']} is calculator and does not state its answer to three decimals")
+      if is_approximation:
+         messages.append(f"{record['id']} is {record['calculator_status']} and its key approximates its last step")
 
    return messages
 
 
 def lint_distractor_rules(lesson, context):
+   """Rejection rules 5, 6 and 7 of plan 04 as rule_keys and rule_distractor_paths state them:
+   no distractor equals the key or another option under the design checker's equivalent, and
+   every distractor carries an error_path. A check with a statement key compares no values, as
+   rule_keys does not."""
+   designs = design_rules()
    messages = []
 
    for check in lesson["checks"]:
-      has_options = bool(check.get("options"))
+      options = check.get("options") or []
+      is_statement = check["answer_key"]["form"] == "statement"
 
-      if not has_options:
+      for option in options:
+         is_distractor = not option.get("is_key")
+
+         if is_distractor and not option.get("error_path"):
+            messages.append(f"{check['id']} distractor {option['id']} carries no error_path")
+
+      if is_statement:
          continue
 
-      try:
-         results = run_checks(check, context.active_error_ids)
-      except (UnsupportedMathJSON, ValueError, KeyError) as error:
-         messages.append(f"{check['id']} did not run: {error}")
-         continue
+      values = []
 
-      for result in results:
-         is_distractor_check = result["check_type"] == "distractor_distinct"
-         did_not_pass = result["outcome"] != "pass"
+      for option in options:
+         try:
+            values.append((option, to_expression(option["value"])))
+         except (KeyError, UnsupportedMathJSON, TypeError, ValueError):
+            continue
 
-         if is_distractor_check and did_not_pass:
-            messages.append(f"{check['id']} distractor rules {result['outcome']}: {result['detail']['violations']}")
+      for left_index in range(len(values)):
+         for right_index in range(left_index + 1, len(values)):
+            left, left_value = values[left_index]
+            right, right_value = values[right_index]
+
+            if designs.equivalent(left_value, right_value):
+               messages.append(f"{check['id']} options {left['id']} and {right['id']} are equal")
 
    return messages
 
@@ -748,12 +1025,6 @@ def lint_quotes(lesson, context):
 
       if quote is not None:
          messages.extend(quote_messages(section, quote, context))
-
-      for text in prose_without_quote(section):
-         has_marks = QUOTE_MARKS.search(text) is not None
-
-         if has_marks:
-            messages.append(f"{section['id']} carries quoted text outside its quote field: {text[:60]}")
 
    return messages
 
@@ -844,7 +1115,7 @@ def lint_style(lesson, context):
       ("second-person belief statement", SECOND_PERSON_BELIEF),
    )
 
-   for text in prose_of(lesson):
+   for text in authored_prose(lesson):
       for name, pattern in patterns:
          found = pattern.search(text)
 
@@ -868,6 +1139,8 @@ def lint_prediction(lesson, context):
 
 
 def lint_citations(lesson, context):
+   """A scoring citation in the prose is in the authoring input or, as rule_citations accepts,
+   has a cached page."""
    is_concept = lesson["kind"] == "concept"
 
    if not is_concept:
@@ -878,7 +1151,7 @@ def lint_citations(lesson, context):
 
    for text in prose_of(lesson):
       for citation in SCORING_CITATION.findall(text):
-         is_in_input = citation in bundle_text
+         is_in_input = citation in bundle_text or page_is_cached(context, citation)
 
          if not is_in_input:
             messages.append(f"{citation} is cited but is not in the authoring input")
@@ -897,7 +1170,7 @@ def lint_caps(lesson, context):
 
    for section_type, limit in limits:
       for section in sections_of(lesson, section_type):
-         words = plan.section_words(section)
+         words = capped_words(section)
 
          if words > limit:
             messages.append(f"{section['id']} is {words} words, and the cap is {limit}")
@@ -917,6 +1190,17 @@ def lint_caps(lesson, context):
    messages.extend(band_cap_messages(lesson))
 
    return messages
+
+
+def capped_words(section):
+   """The words rule_caps counts: a key idea's text without its notation or quote, the four
+   strategy fields, the orientation's or a bridge's text."""
+   is_strategy = section["type"] == plan.STRATEGY
+
+   if is_strategy:
+      return sum(words_in(section[key]) for key in ("cue", "method", "rival", "separating_feature"))
+
+   return words_in(section["text"])
 
 
 def band_cap_messages(lesson):
@@ -1003,21 +1287,20 @@ def lint_draw_exclusion(lesson, context):
       draw = record["parameter_draw"]
 
       for item_id, published in context.published_draws(record["archetype_id"]):
-         if published == draw:
+         if design_rules().stringified(published) == design_rules().stringified(draw):
             messages.append(f"{record['id']} repeats the parameter draw of published item {item_id}")
 
    return messages
 
 
 def lint_strategy_trace(lesson, context):
+   """Mirrors the strategy half of rule_inferred: a block on an archetype without both
+   asked_to_produce and common_givens rests on typical_wording and is tagged inferred, and every
+   block states its cue, method, rival and separating feature."""
    messages = []
 
    for section in sections_of(lesson, plan.STRATEGY):
-      archetype = context.snapshot.archetypes.get(section["archetype_id"])
-
-      if archetype is None:
-         continue
-
+      archetype = context.snapshot.archetypes.get(section["archetype_id"]) or {}
       messages.extend(strategy_messages(section, archetype))
 
    return messages
@@ -1025,39 +1308,14 @@ def lint_strategy_trace(lesson, context):
 
 def strategy_messages(section, archetype):
    messages = []
-   asked = archetype.get("asked_to_produce") or []
-   givens = archetype.get("common_givens") or []
-   has_cue_fields = len(asked) > 0
-
-   if has_cue_fields:
-      cue_sources = asked + givens
-   else:
-      cue_sources = archetype.get("typical_wording") or []
-
-   cue = normalise_text(section["cue"])
-   traces_cue = any(normalise_text(entry) in cue for entry in cue_sources)
-
-   if not traces_cue:
-      messages.append(f"{section['id']} cue does not carry the archetype's own words")
+   has_cue_fields = bool(archetype.get("asked_to_produce")) and bool(archetype.get("common_givens"))
 
    if not has_cue_fields and section["evidence_tag"] != "inferred":
       messages.append(f"{section['id']} builds on typical_wording alone and must be tagged inferred")
 
-   path = archetype.get("expected_solution_path") or []
-   names_first_step = bool(path) and normalise_text(path[0]) in normalise_text(section["method"])
-
-   if not names_first_step:
-      messages.append(f"{section['id']} method does not name expected_solution_path[0]")
-
-   rivals = [
-      re.sub(r"\s*\(BC-[A-Z]+-\d+\)\s*$", "", entry)
-      for entry in (archetype.get("wrong_approaches") or []) + (archetype.get("prohibited_shortcuts") or [])
-   ]
-   rival = normalise_text(section["rival"])
-   traces_rival = any(normalise_text(entry) in rival for entry in rivals)
-
-   if not traces_rival:
-      messages.append(f"{section['id']} rival is not a wrong approach of the archetype")
+   for key in ("cue", "method", "rival", "separating_feature"):
+      if not normalise_text(section.get(key)):
+         messages.append(f"{section['id']} lacks {key}")
 
    return messages
 
@@ -1106,12 +1364,15 @@ def lint_reader_scores(lesson, context):
       messages.extend(tag_messages(example, listed, tagged, scores))
 
       if scores is not None and listed:
-         messages.extend(scores_line_messages(scores, tagged, context))
+         messages.extend(scores_line_messages(scores, tagged, context, listed))
 
    return messages
 
 
 def tag_messages(example, listed, tagged, scores):
+   """Mirrors rule_reader_scores: tags only on an archetype that lists point types, and only
+   types it lists; a tagged example has its scoring section. A design's empty scoring entry is
+   transcribed as no section, so an untagged example needs none."""
    messages = []
    has_no_point_types = len(listed) == 0
 
@@ -1126,30 +1387,38 @@ def tag_messages(example, listed, tagged, scores):
    if listed and stray:
       messages.append(f"{example['id']} tags {stray}, which the archetype does not list")
 
-   if listed and not tagged:
-      messages.append(f"{example['id']} tags no step with a point type")
-
    if listed and tagged and scores is None:
       messages.append(f"{example['id']} has no what_a_reader_scores section")
 
    return messages
 
 
-def scores_line_messages(scores, tagged, context):
+def scores_line_messages(scores, tagged, context, listed=()):
    stated_ids = [line["point_type_id"] for line in scores["lines"]]
+   messages = []
+   untold = [point for point in tagged if point not in stated_ids]
 
-   if stated_ids != tagged[:constants.READER_CHECK_LINES_MAX]:
-      return [f"{scores['id']} lines cover {stated_ids}, and the example tags {tagged}"]
+   if untold:
+      messages.append(f"{scores['id']} does not list {untold}, which the example tags")
+
+   stray = [point for point in stated_ids if listed and point not in listed]
+
+   if stray:
+      messages.append(f"{scores['id']} lists {stray}, which the archetype does not list")
+
+   known = [point for point in stated_ids if point in context.snapshot.scoring_points]
 
    try:
-      expected = reader_checks(stated_ids, context.snapshot)
+      expected = reader_checks(known, context.snapshot)
    except KeyError as error:
-      return [f"{scores['id']} {error}"]
+      return messages + [f"{scores['id']} {error}"]
 
-   if scores["lines"] != expected:
-      return [f"{scores['id']} lines differ from reader_checks over the current records"]
+   given = [line["text"] for line in scores["lines"]]
 
-   return []
+   if given != [line["text"] for line in expected]:
+      messages.append(f"{scores['id']} lines differ from reader_checks over the current records")
+
+   return messages
 
 
 def lint_error_blocks(lesson, context):
@@ -1180,10 +1449,10 @@ def lint_error_blocks(lesson, context):
 def error_record_messages(block, record, bundle, context):
    messages = []
 
-   if block["observed_behavior"] != record["observed_behavior"]:
+   if normalise_text(block["observed_behavior"]) != normalise_text(record["observed_behavior"]):
       messages.append(f"{block['id']} observed_behavior is not the record's")
 
-   if block["scoring_consequence"] != record["scoring_consequence"]:
+   if normalise_text(block["scoring_consequence"]) != normalise_text(record["scoring_consequence"]):
       messages.append(f"{block['id']} scoring_consequence is not the record's")
 
    allowed_skills = set(record["skills"]) & set(bundle["concept"]["skills"])
@@ -1219,13 +1488,16 @@ def reason_messages(block, reason, record, context):
 
 
 def relation_messages(block):
+   """Mirrors rule_errors: the wrong and right steps are compared with the design checker's
+   equivalent, which reads an equation against a value by its right side."""
    try:
       wrong = to_expression(block["wrong_step"]["expression"])
       right = to_expression(block["right_step"]["expression"])
-   except UnsupportedMathJSON as error:
+   except (UnsupportedMathJSON, TypeError, ValueError) as error:
       return [f"{block['id']} step did not convert: {error}"]
 
-   comparison = verify.compare_expressions(wrong, right)
+   are_equivalent = design_rules().equivalent(wrong, right)
+   comparison = verify.EQUAL if are_equivalent else verify.DISTINCT
    wanted = verify.DISTINCT if block["relation"] == "distinct" else verify.EQUAL
 
    if comparison != wanted:
@@ -1312,6 +1584,115 @@ def lint_discrimination_checks(lesson, context):
    return messages
 
 
+def labels_of(node):
+   """The labels rule_delivery reads: any object naming a placement, or carrying text and at, at
+   any depth, because panels and sweeps nest whole specs."""
+   found = []
+
+   if isinstance(node, dict):
+      is_label = "placement" in node or ("text" in node and "at" in node)
+
+      if is_label:
+         found.append(node)
+
+      for value in node.values():
+         found.extend(labels_of(value))
+   elif isinstance(node, list):
+      for value in node:
+         found.extend(labels_of(value))
+
+   return found
+
+
+def delivered_blocks(lesson):
+   blocks = [(section["id"], section) for section in lesson["sections"] if section["type"] in DELIVERED_TYPES]
+   decision = lesson.get("decision")
+
+   if decision is not None:
+      blocks.append(("decision stems", decision))
+
+   return blocks
+
+
+def spec_messages(block_id, mode, delivery):
+   designs = design_rules()
+   spec = delivery.get("spec")
+   messages = []
+
+   if not isinstance(spec, dict) or not spec.get("kind"):
+      return [f"{block_id} {mode} needs a spec with a kind"]
+
+   kind = spec.get("kind")
+
+   if kind not in SPEC_KINDS:
+      messages.append(f"{block_id} spec kind {kind!r} is not a known spec kind")
+
+   for label in labels_of(spec):
+      is_inside = label.get("placement", "inside") == "inside"
+
+      if not is_inside:
+         messages.append(f"{block_id} spec places a label {label.get('text')!r} outside the figure")
+
+   representations = spec.get("representations") or []
+   per_screen_max = designs.REPRESENTATIONS_PER_SCREEN_MAX
+
+   if len(representations) > per_screen_max:
+      messages.append(f"{block_id} carries {len(representations)} representations, at most {per_screen_max} per screen")
+
+   return messages
+
+
+def delivery_messages(block_id, section, delivery):
+   mode = delivery["mode"]
+   is_drawn = mode not in UNDRAWN_MODES
+   is_decision = section.get("type") is None
+   messages = []
+
+   if section.get("type") in STEP_REVEAL_TYPES and mode != "step_reveal":
+      messages.append(f"{block_id} is a {section['type']} and must be step_reveal, not {mode}")
+
+   if is_decision and mode != "contrast":
+      messages.append(f"{block_id} of a decision lesson must be contrast, not {mode}")
+
+   if mode == "contrast" and not is_decision:
+      messages.append(f"{block_id} is contrast, which only a decision lesson's stems carry")
+
+   if is_drawn:
+      messages.extend(spec_messages(block_id, mode, delivery))
+
+      if not delivery.get("fallback"):
+         messages.append(f"{block_id} {mode} needs a fallback")
+
+      if not delivery.get("keyboard"):
+         messages.append(f"{block_id} {mode} needs a keyboard line")
+
+   if mode == "motion" and not delivery.get("reduced_motion"):
+      messages.append(f"{block_id} motion needs a reduced_motion line")
+
+   return messages
+
+
+def lint_delivery(lesson, context):
+   """Mirrors rule_delivery (amendment A-D1): every served block names its delivery, worked
+   examples and error blocks are step_reveal, the stems are contrast, a drawn block carries a
+   spec of a known kind with every label inside, a fallback and a keyboard line, motion carries a
+   reduced_motion line, and a spec shows at most REPRESENTATIONS_PER_SCREEN_MAX representations.
+   TEMPLATE.md caps representations per screen, not drawn blocks per lesson, so there is no
+   lesson cap."""
+   messages = []
+
+   for block_id, section in delivered_blocks(lesson):
+      delivery = section.get("delivery")
+
+      if delivery is None:
+         messages.append(f"{block_id} carries no delivery")
+         continue
+
+      messages.extend(delivery_messages(block_id, section, delivery))
+
+   return messages
+
+
 LINTS = {
    "schema": lint_schema,
    "referential": lint_referential,
@@ -1339,6 +1720,7 @@ LINTS = {
    "provenance": lint_provenance,
    "decision_stems": lint_decision_stems,
    "discrimination_checks": lint_discrimination_checks,
+   "delivery": lint_delivery,
 }
 
 
@@ -1368,23 +1750,42 @@ def check_lesson(lesson, context):
    return findings
 
 
+def lesson_paths(paths):
+   """Every *.json named, or inside a directory named, in the order given."""
+   found = []
+
+   for given in paths:
+      path = Path(given)
+
+      if path.is_dir():
+         found.extend(sorted(child for child in path.iterdir() if child.suffix == ".json"))
+      elif path.suffix == ".json":
+         found.append(path)
+
+   return found
+
+
 def load_lessons(directory):
-   paths = sorted(path for path in Path(directory).iterdir() if path.suffix == ".json")
-
-   return [(path.name, json.loads(path.read_text())) for path in paths]
+   return [(path.name, json.loads(path.read_text())) for path in lesson_paths([directory])]
 
 
-def check_directory(directory, context):
-   lessons = load_lessons(directory)
+def check_paths(paths, context):
    findings_by_file = {}
+   count = 0
 
-   for file_name, lesson in lessons:
+   for path in lesson_paths(paths):
+      lesson = json.loads(path.read_text())
+      count += 1
       findings = check_lesson(lesson, context)
 
       if findings:
-         findings_by_file[file_name] = findings
+         findings_by_file[path.name] = findings
 
-   return {"lesson_count": len(lessons), "findings_by_file": findings_by_file}
+   return {"lesson_count": count, "findings_by_file": findings_by_file}
+
+
+def check_directory(directory, context):
+   return check_paths([directory], context)
 
 
 def print_report(report):
@@ -1413,11 +1814,13 @@ def print_sets(snapshot):
 
 
 def main(argv):
-   is_sets_mode = argv[1:] == ["--sets"]
-   takes_one_directory = len(argv) == 2 and not argv[1].startswith("--")
+   arguments = argv[1:]
+   is_sets_mode = arguments == ["--sets"]
+   paths = [argument for argument in arguments if not argument.startswith("--")]
+   takes_paths = len(paths) > 0 and len(paths) == len(arguments)
 
-   if not is_sets_mode and not takes_one_directory:
-      print("usage: python3 tools/check_lessons.py <directory> | --sets", file=sys.stderr)
+   if not is_sets_mode and not takes_paths:
+      print("usage: python3 tools/check_lessons.py <file or directory> [...] | --sets", file=sys.stderr)
 
       return 1
 
@@ -1433,7 +1836,14 @@ def main(argv):
 
       return 0
 
-   report = check_directory(Path(argv[1]), Context(snapshot))
+   missing = [path for path in paths if not Path(path).exists()]
+
+   if missing:
+      print(f"refusing: {', '.join(missing)} does not exist", file=sys.stderr)
+
+      return 1
+
+   report = check_paths(paths, Context(snapshot))
    print_report(report)
    has_no_lessons = report["lesson_count"] == 0
 

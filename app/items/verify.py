@@ -232,7 +232,136 @@ def _answer_parent(function, arguments, connection):
       connection.send((_CHILD_ERROR, RuntimeError(repr(unpicklable))))
 
 
+def _structured_outcome(left, right):
+   """Equivalent, not_equivalent, or None when the pair is two plain expressions and the scalar
+   comparison below decides it. Lesson keys and steps carry equations, sets and tuples, which
+   cannot be subtracted, and NaN or an infinity, whose difference with anything is NaN; the rules
+   mirror tools/check_lesson_designs.equivalent, the design checker the lesson records are
+   transcribed from (docs/lessons/BUILD-PLAN.md, The design to record path)."""
+   is_identical = left == right
+
+   if is_identical:
+      return "equivalent"
+
+   left_is_equation = isinstance(left, sympy.Eq)
+   right_is_equation = isinstance(right, sympy.Eq)
+
+   if left_is_equation and right_is_equation:
+      return _equation_outcome(left, right)
+
+   if left_is_equation or right_is_equation:
+      return "not_equivalent"
+
+   left_is_collection = isinstance(left, (sympy.Set, sympy.Tuple))
+   right_is_collection = isinstance(right, (sympy.Set, sympy.Tuple))
+
+   if left_is_collection or right_is_collection:
+      return _collection_outcome(left, right)
+
+   is_expression_pair = isinstance(left, sympy.Expr) and isinstance(right, sympy.Expr)
+
+   if not is_expression_pair:
+      return "not_equivalent"
+
+   has_special_value = _is_special_value(left) or _is_special_value(right)
+
+   if has_special_value:
+      return "not_equivalent"
+
+   return None
+
+
+def _is_special_value(expression):
+   return expression.has(sympy.nan) or expression in (sympy.oo, -sympy.oo, sympy.zoo)
+
+
+def _equation_outcome(left, right):
+   left_zero = left.lhs - left.rhs
+   right_zero = right.lhs - right.rhs
+   same_sign = _equivalence_impl(left_zero, right_zero)
+
+   if same_sign == "equivalent":
+      return "equivalent"
+
+   opposite_sign = _equivalence_impl(left_zero, -right_zero)
+
+   if opposite_sign == "equivalent":
+      return "equivalent"
+
+   both_refuted = same_sign == "not_equivalent" and opposite_sign == "not_equivalent"
+
+   if both_refuted:
+      return "not_equivalent"
+
+   return "unsettled"
+
+
+def _collection_outcome(left, right):
+   both_finite_sets = isinstance(left, sympy.FiniteSet) and isinstance(right, sympy.FiniteSet)
+
+   if both_finite_sets:
+      return _elementwise_outcome(list(left.args), list(right.args), ordered=False)
+
+   both_tuples = isinstance(left, sympy.Tuple) and isinstance(right, sympy.Tuple)
+
+   if both_tuples:
+      return _elementwise_outcome(list(left.args), list(right.args), ordered=True)
+
+   both_sets = isinstance(left, sympy.Set) and isinstance(right, sympy.Set)
+
+   if both_sets and sympy.simplify(left) == sympy.simplify(right):
+      return "equivalent"
+
+   return "not_equivalent"
+
+
+def _elementwise_outcome(left_parts, right_parts, ordered):
+   has_same_size = len(left_parts) == len(right_parts)
+
+   if not has_same_size:
+      return "not_equivalent"
+
+   if ordered:
+      outcomes = [_equivalence_impl(a, b) for a, b in zip(left_parts, right_parts)]
+
+      if all(outcome == "equivalent" for outcome in outcomes):
+         return "equivalent"
+
+      if "not_equivalent" in outcomes:
+         return "not_equivalent"
+
+      return "unsettled"
+
+   unmatched = list(right_parts)
+   saw_unsettled = False
+
+   for part in left_parts:
+      match = None
+
+      for index, candidate in enumerate(unmatched):
+         outcome = _equivalence_impl(part, candidate)
+
+         if outcome == "equivalent":
+            match = index
+            break
+
+         if outcome == "unsettled":
+            saw_unsettled = True
+
+      if match is None:
+         return "unsettled" if saw_unsettled else "not_equivalent"
+
+      unmatched.pop(match)
+
+   return "equivalent"
+
+
 def _equivalence_impl(left, right):
+   structured = _structured_outcome(left, right)
+
+   if structured is not None:
+      return structured
+
    difference = left - right
    settles_to_zero = _settles_to_zero(difference)
 
@@ -380,6 +509,12 @@ def compare_expressions(key, candidate, timeout_s=COMPARISON_TIMEOUT_S):
 
 
 def _compare_impl(key, candidate):
+   structured = _structured_outcome(key, candidate)
+   structured_answer = {"equivalent": EQUAL, "not_equivalent": DISTINCT, "unsettled": UNSETTLED_VIOLATION}
+
+   if structured is not None:
+      return structured_answer[structured]
+
    settles_to_zero = _settles_to_zero(key - candidate)
 
    if settles_to_zero:

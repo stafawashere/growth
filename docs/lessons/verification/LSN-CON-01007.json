@@ -1,0 +1,147 @@
+{
+ "id": "LSN-CON-01007",
+ "resolve": {
+  "date": "2026-09-29",
+  "problems": 5,
+  "agreed": 5,
+  "judgments_pending": 0,
+  "all_agree": true,
+  "verdicts": [
+   {
+    "id": "LSN-CON-01007#ex-1",
+    "agree": true,
+    "detail": "agree (symbolic)",
+    "method": "Limit laws: h(2)/3 = 6/3 = 2, using limits not function values."
+   },
+   {
+    "id": "LSN-CON-01007#ex-2",
+    "agree": true,
+    "detail": "agree (symbolic)",
+    "method": "Factor and cancel (x-2): (x+1)/(x-3) at 2 is -3."
+   },
+   {
+    "id": "LSN-CON-01007#chk-1",
+    "agree": true,
+    "detail": "agree (symbolic)",
+    "method": "(4+2)/3 = 2."
+   },
+   {
+    "id": "LSN-CON-01007#chk-2",
+    "agree": true,
+    "detail": "agree (symbolic)",
+    "method": "h(-2)/(-1) = 5/(-1) = -5."
+   },
+   {
+    "id": "LSN-CON-01007#chk-3",
+    "agree": true,
+    "detail": "agree (symbolic)",
+    "method": "h(3)/2 = 6/2 = 3."
+   }
+  ],
+  "answers_file": "/tmp/claude-0/-home-user-growth/ac029253-8ff0-5a4b-8b5f-cdcaf5e8ff8d/scratchpad/verify/answers_03.json"
+ },
+ "audit": {
+  "date": "2026-09-29",
+  "auditor": "claude-opus-5-5",
+  "blocks": [
+   {
+    "id": "orientation",
+    "verdict": "ok",
+    "evidence": "Paraphrase of BC-CON-01007 description_plain and the BC-QA-01003 parameter_spec notes (limits in the stem differ from tabulated values); 31 words."
+   },
+   {
+    "id": "ki-1",
+    "verdict": "ok",
+    "evidence": "fixed 2026-09-29: record ids (BC-EK-LIM-1D2, ced:42) removed from the served text; both stay in the block sources."
+   },
+   {
+    "id": "st-1",
+    "verdict": "ok",
+    "evidence": "Method is BC-QA-01003 expected_solution_path[0]; both rivals are its wrong_approaches (BC-ERR-01006, BC-ERR-01007)."
+   },
+   {
+    "id": "st-2",
+    "verdict": "ok",
+    "evidence": "Method is BC-QA-01014 expected_solution_path[0]; rival BC-ERR-01006 is in its wrong_approaches; tagged inferred for empty common_givens."
+   },
+   {
+    "id": "ex-1",
+    "verdict": "ok",
+    "evidence": "SymPy: (2**2+2)/3 = 2; draw meets every constraint: h(1)=3, table_f[1]=4, table_g[1]=-1, derived 2, -18, -6, -2/3 distinct."
+   },
+   {
+    "id": "ex-2",
+    "verdict": "ok",
+    "evidence": "SymPy: (x**2-x-2)/(x**2-5x+6) factors as (x-2)(x+1)/((x-2)(x-3)); limit at 2 of (x+1)/(x-3) is -3."
+   },
+   {
+    "id": "what_a_reader_scores:ex-1",
+    "verdict": "ok",
+    "evidence": "BC-PT-99004 earns, does_not_earn and precision_rules copied verbatim from the snapshot point type record."
+   },
+   {
+    "id": "err-BC-ERR-01001",
+    "verdict": "ok",
+    "evidence": "Record text verbatim; SymPy (4**2+2)/(-1) = -18 against 2; relation distinct holds."
+   },
+   {
+    "id": "err-BC-ERR-01006",
+    "verdict": "ok",
+    "evidence": "fixed 2026-09-29: rebuilt on ex-1's draw so the mid band shows it beside ex-1: wrong f/(g - 3) at 1 as 2/0 (SymPy zoo), right denominator limit 3 - 3 = 0 so the quotient theorem fails; distinct."
+   },
+   {
+    "id": "err-BC-ERR-01007",
+    "verdict": "ok",
+    "evidence": "Record text verbatim; f(h(1)) = table_f[3] = -2, SymPy -2/3 against 2; BC-MIS-01005 listed on the error."
+   },
+   {
+    "id": "representations",
+    "verdict": "ok",
+    "evidence": "null; the 1.5 Representations paragraph conversion is carried by the ki-1 and orientation tables."
+   },
+   {
+    "id": "BC-PRQ-01008",
+    "verdict": "ok",
+    "evidence": "Paraphrase of description_plain and failure_signature (intervals of continuity outside the domain)."
+   },
+   {
+    "id": "BC-PRQ-06005",
+    "verdict": "ok",
+    "evidence": "Paraphrase of description_plain and failure_signature (values pulled for the wrong input)."
+   },
+   {
+    "id": "chk-1",
+    "verdict": "ok",
+    "evidence": "SymPy: (2**2+2)/3 = 2, key 2."
+   },
+   {
+    "id": "chk-2",
+    "verdict": "ok",
+    "evidence": "SymPy: ((-2)**2+1)/(-1) = -5; constraints hold (h(1)=2, table values 0 and 2 differ from limits; derived -5, 1/2, -5/2, -1 distinct)."
+   },
+   {
+    "id": "chk-3",
+    "verdict": "ok",
+    "evidence": "SymPy: (3**2-3)/2 = 3; A (1-3)/4 = -1/2, B 6/4 = 3/2, C f(h(2)) = f(1) = 2 over 2 = 1; all distinct from the key and from each other."
+   }
+  ],
+  "advice": [
+   "Served ki-1 text carries record ids in parentheses (BC-EK-LIM-1D2, ced:42); a student reads these as citation noise.",
+   "Delivery fits: the orientation table sets limits against table values, which is exactly the recognition cue, and ki-1 as a table of combination against condition suits tabular content.",
+   "The mid band drops st-2 and ex-2, so a mid reader never sees the zero over zero exit that separates this concept from BC-CON-01008; err-BC-ERR-01006 in the mid band then points at ex-2, which that band does not show.",
+   "No scoring habit beyond the bare answer is taught; the archetype's scoring_pattern expects the denominator condition in a justified response, which st-1 names but no check asks the student to write."
+  ],
+  "counts": {
+   "ok": 16,
+   "unsourced": 0,
+   "wrong": 0,
+   "over_cap": 0,
+   "lint": 0
+  },
+  "fix_notes": [
+   "Removed the parenthetical record ids from ki-1's served text (ids remain in sources).",
+   "Rebuilt err-BC-ERR-01006 on ex-1's draw (f/(g - 3) at 1) instead of ex-2, which the mid band does not serve; trimmed the orientation and st-1 separating feature by a word each to keep brief at 448 words (cap 450).",
+   "Left as preferences: no check asks for the denominator condition line; mid band still omits st-2 and ex-2 (template puts ex-2 in low only); delivery modes."
+  ]
+ }
+}

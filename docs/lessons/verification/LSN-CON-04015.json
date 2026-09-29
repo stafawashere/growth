@@ -1,0 +1,125 @@
+{
+ "id": "LSN-CON-04015",
+ "resolve": {
+  "date": "2026-09-29",
+  "problems": 4,
+  "agreed": 4,
+  "judgments_pending": 0,
+  "all_agree": true,
+  "verdicts": [
+   {
+    "id": "LSN-CON-04015#ex-1",
+    "agree": true,
+    "detail": "agree (symbolic)",
+    "method": "L'Hospital: 2f'(2)/cos 0."
+   },
+   {
+    "id": "LSN-CON-04015#chk-1",
+    "agree": true,
+    "detail": "agree (symbolic)",
+    "method": "2*5/1."
+   },
+   {
+    "id": "LSN-CON-04015#chk-2",
+    "agree": true,
+    "detail": "agree (symbolic)",
+    "method": "L'Hospital: 3f'(3)/3 = -2."
+   },
+   {
+    "id": "LSN-CON-04015#chk-3",
+    "agree": true,
+    "detail": "agree (symbolic)",
+    "method": "L'Hospital: 3f'(6)/1."
+   }
+  ],
+  "answers_file": "/tmp/claude-0/-home-user-growth/ac029253-8ff0-5a4b-8b5f-cdcaf5e8ff8d/scratchpad/verify/answers_06.json"
+ },
+ "audit": {
+  "date": "2026-09-29",
+  "auditor": "claude-opus-5-5",
+  "blocks": [
+   {
+    "id": "orientation",
+    "verdict": "ok",
+    "evidence": "Paraphrases unit 4.7 The conclusion and BC-SKL-04037 (repeat when still indeterminate); 27 words."
+   },
+   {
+    "id": "ki-1",
+    "verdict": "ok",
+    "evidence": "Research unit 4.7 The conclusion (ced:84); quote on ced:93; chain factor from BC-ERR-04031; 38 words."
+   },
+   {
+    "id": "st-1",
+    "verdict": "ok",
+    "evidence": "wrong_approaches of BC-QA-04009 names BC-ERR-04030; 26 words."
+   },
+   {
+    "id": "ex-1",
+    "verdict": "ok",
+    "evidence": "SymPy: 2f'(2)/cos(0) = 10; cos(x - 1) at 1 is 1, nonzero."
+   },
+   {
+    "id": "reader-ex-1",
+    "verdict": "ok",
+    "evidence": "BC-PT-99055 line verbatim."
+   },
+   {
+    "id": "err-BC-ERR-03003",
+    "verdict": "ok",
+    "evidence": "Bundle text matches; 2f'(1) = -2 against 2f'(2) = 10; BC-MIS-03002 listed."
+   },
+   {
+    "id": "err-BC-ERR-04029",
+    "verdict": "ok",
+    "evidence": "Bundle text matches; value 10 unchanged, equivalent."
+   },
+   {
+    "id": "err-BC-ERR-04030",
+    "verdict": "ok",
+    "evidence": "Bundle text matches; SymPy: the quotient rule expression differs from 2f'(2x)/cos(x - 1)."
+   },
+   {
+    "id": "err-BC-ERR-04031",
+    "verdict": "ok",
+    "evidence": "SymPy: f'(2) = 5 against 2f'(2) = 10; bundle text matches (cr-23:15)."
+   },
+   {
+    "id": "representations",
+    "verdict": "ok",
+    "evidence": "null; skills carry BC-REP-01 only."
+   },
+   {
+    "id": "BC-PRQ-04008",
+    "verdict": "ok",
+    "evidence": "BC-PRQ-04008 description_plain names each quantity and whether it varies; the text paraphrases it."
+   },
+   {
+    "id": "chk-1",
+    "verdict": "ok",
+    "evidence": "SymPy: 2*5/cos(0) = 10."
+   },
+   {
+    "id": "chk-2",
+    "verdict": "ok",
+    "evidence": "SymPy: f(3) = 0 so 0/0; 3*(-2)/(3*1^2) = -2."
+   },
+   {
+    "id": "chk-3",
+    "verdict": "ok",
+    "evidence": "SymPy: 3f'(6)/1 = 6; A 3f'(2) = -9; B N'D - ND' at 2 is 0 since N(2) = D(2) = 0; C f'(6) = 2."
+   }
+  ],
+  "advice": [
+   "BC-SKL-04037 (apply the rule again) appears only in the orientation; no example or check needs a second application, so that skill is not practised.",
+   "ex-1's first step asserts both limits are 0 without their reasons; a reader coming here first sees the form point modelled only by carry over from BC-CON-04014.",
+   "Text and step_reveal fit a symbolic rule. The bridge BC-PRQ-04008 is weakly related."
+  ],
+  "counts": {
+   "ok": 14,
+   "unsourced": 0,
+   "wrong": 0,
+   "over_cap": 0,
+   "lint": 0
+  }
+ }
+}

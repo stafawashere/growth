@@ -1,0 +1,138 @@
+{
+ "id": "LSN-CON-04001",
+ "resolve": {
+  "date": "2026-09-29",
+  "problems": 4,
+  "agreed": 4,
+  "judgments_pending": 0,
+  "all_agree": true,
+  "verdicts": [
+   {
+    "id": "LSN-CON-04001#ex-1",
+    "agree": true,
+    "detail": "judged: Same conclusion and numbers as the key; checked values (limits, signs, sums, derivatives) are consistent.",
+    "method": "derivative interpretation"
+   },
+   {
+    "id": "LSN-CON-04001#chk-1",
+    "agree": true,
+    "detail": "judged: Same conclusion and numbers as the key; checked values (limits, signs, sums, derivatives) are consistent.",
+    "method": "derivative interpretation"
+   },
+   {
+    "id": "LSN-CON-04001#chk-2",
+    "agree": true,
+    "detail": "judged: Same conclusion and numbers as the key; checked values (limits, signs, sums, derivatives) are consistent.",
+    "method": "derivative interpretation"
+   },
+   {
+    "id": "LSN-CON-04001#chk-3",
+    "agree": true,
+    "detail": "key option A, re-solver A",
+    "method": "sign and units"
+   }
+  ],
+  "answers_file": "/tmp/claude-0/-home-user-growth/ac029253-8ff0-5a4b-8b5f-cdcaf5e8ff8d/scratchpad/verify/answers_05.json"
+ },
+ "audit": {
+  "date": "2026-09-29",
+  "auditor": "claude-opus-5-5",
+  "blocks": [
+   {
+    "id": "orientation",
+    "verdict": "ok",
+    "evidence": "Paraphrases BC-CON-04001 description_plain and the 4.1 Interpretation paragraph; 32 words."
+   },
+   {
+    "id": "ki-1",
+    "verdict": "ok",
+    "evidence": "Paraphrases ced:87 CHA-3.A.1 and the 4.1 Derivative as an instantaneous rate paragraph; rate against amount contrast from BC-SKL-04003."
+   },
+   {
+    "id": "ki-2",
+    "verdict": "ok",
+    "evidence": "Paraphrases the 4.1 Interpretation paragraph; quote verbatim from ced:87 CHA-3.A.2."
+   },
+   {
+    "id": "st-1",
+    "verdict": "ok",
+    "evidence": "Method is BC-QA-04001 expected_solution_path[0]; rival is wrong_approaches[0] (BC-ERR-04003); cue from typical_wording."
+   },
+   {
+    "id": "ex-1",
+    "verdict": "ok",
+    "evidence": "Draw tank, instant 9, magnitude 7/2, negative gives stated_value -7/2 per the derived expression; sentence names quantity, instant, direction, size and liters per minute."
+   },
+   {
+    "id": "reader-ex-1-BC-PT-99008",
+    "verdict": "ok",
+    "evidence": "Earned and not earned text verbatim from BC-PT-99008; units_required yes stated."
+   },
+   {
+    "id": "err-BC-ERR-04001",
+    "verdict": "ok",
+    "evidence": "Record text verbatim; minutes per liter is the exchanged units case in observed_behavior."
+   },
+   {
+    "id": "err-BC-ERR-04003",
+    "verdict": "ok",
+    "evidence": "Record text verbatim; 3.5 liters is a function value where a derivative value is asked."
+   },
+   {
+    "id": "err-BC-ERR-04005",
+    "verdict": "ok",
+    "evidence": "Record text verbatim; negative rate described as an increase."
+   },
+   {
+    "id": "err-BC-ERR-99027",
+    "verdict": "ok",
+    "evidence": "Record text verbatim; the wrong sentence omits the instant, relation equivalent correct since values agree."
+   },
+   {
+    "id": "representations",
+    "verdict": "ok",
+    "evidence": "null; 4.1 Representations conversion BC-REP-05 to BC-REP-04 is a sentence, not a figure."
+   },
+   {
+    "id": "bridge-BC-PRQ-04004",
+    "verdict": "ok",
+    "evidence": "Paraphrases BC-PRQ-04004 description_plain and failure_signature."
+   },
+   {
+    "id": "bridge-BC-PRQ-04008",
+    "verdict": "ok",
+    "evidence": "Paraphrases BC-PRQ-04008 description_plain and failure_signature."
+   },
+   {
+    "id": "chk-1",
+    "verdict": "ok",
+    "evidence": "Same draw; key decreasing at 3.5 liters per minute."
+   },
+   {
+    "id": "chk-2",
+    "verdict": "ok",
+    "evidence": "Draw snow, 10, 5/2, positive gives stated_value 5/2; key names instant, direction, size, centimeters per hour."
+   },
+   {
+    "id": "chk-3",
+    "verdict": "ok",
+    "evidence": "Draw balloon, 3, 4, negative gives -4; A correct; B, C, D each garble one element per parameter_spec notes and match the stated error ids."
+   }
+  ],
+  "advice": [
+   "ki-2 notation 'units of f per unit of t' is the CHA-3.A.3 statement, which is not mapped to these skills; it is true, but it belongs to BC-CON-04002.",
+   "No check asks for the sign language trap that BC-PT-99008 names as not earned (decreasing at a rate of -3.5); a distractor with that wording would exercise the scoring habit the reader line states.",
+   "Delivery fits: definitions and sentence rules are text; the interpretation procedure is step reveal. Recognition, first line, rival and the reader's checklist are all taught."
+  ],
+  "counts": {
+   "ok": 16,
+   "unsourced": 0,
+   "wrong": 0,
+   "over_cap": 0,
+   "lint": 0
+  }
+ },
+ "fix_notes": [
+  "No block verdict other than ok and no defect advice; nothing changed. Left as preferences: ki-2 units notation belongs to BC-CON-04002, no distractor for the sign language trap."
+ ]
+}

@@ -1,0 +1,1026 @@
+{
+ "id": "LSN-CON-01014",
+ "version": 1,
+ "kind": "concept",
+ "target_id": "BC-CON-01014",
+ "status": "draft",
+ "snapshot_digest": "a6a8ec9d3f59ab8f712e33d30cc22fc64bf2c478fbe7312e3e3118d319c6a42f",
+ "source_digest": "e6eab2008a1239cf5f1ae4c6256188077759ede4236abb5720b83f3dd8685059",
+ "read_minutes": {
+  "full": 3.6,
+  "brief": 3.0
+ },
+ "word_count": {
+  "full": 417,
+  "brief": 346
+ },
+ "sections": [
+  {
+   "id": "LSN-CON-01014#s1",
+   "type": "orientation",
+   "bands": [
+    "low",
+    "mid"
+   ],
+   "skills": [
+    "BC-SKL-01046",
+    "BC-SKL-01047",
+    "BC-SKL-01048",
+    "BC-SKL-01049"
+   ],
+   "sources": [
+    "BC-CON-01014",
+    "research/units/unit-01-limits-continuity.md#1.12 Confirming Continuity over an Interval"
+   ],
+   "evidence_tag": "inferred",
+   "text": "A response lists the largest intervals on which a rule is continuous: every input where the rule is undefined is removed, and the reason names the family, continuous on its domain.",
+   "delivery": {
+    "mode": "text",
+    "reason": "rule 5: BC-SKL-01046 to 01049 carry BC-REP-01 and BC-REP-04 only"
+   }
+  },
+  {
+   "id": "LSN-CON-01014#s2",
+   "type": "key_ideas",
+   "bands": [
+    "low"
+   ],
+   "skills": [
+    "BC-SKL-01046",
+    "BC-SKL-01048",
+    "BC-SKL-01049"
+   ],
+   "sources": [
+    "BC-EK-LIM-2B1",
+    "ced:49",
+    "research/units/unit-01-limits-continuity.md#1.12 Confirming Continuity over an Interval"
+   ],
+   "evidence_tag": "verified",
+   "ek_id": "BC-EK-LIM-2B1",
+   "depth": "extended",
+   "text": "A function is continuous on an interval when it is continuous at every point of that interval (BC-EK-LIM-2B1, ced:49). At an endpoint of a closed interval only one side lies in the interval, so the condition there is one sided: the value exists and matches the limit from inside.",
+   "notation": "continuous on an interval",
+   "quote": {
+    "text": "A function is continuous on an interval if the function is continuous at each point in the interval.",
+    "source": "ced:49"
+   },
+   "delivery": {
+    "mode": "text",
+    "reason": "rule 5: a definition with no figure-bearing BC-REP on the skills"
+   }
+  },
+  {
+   "id": "LSN-CON-01014#s3",
+   "type": "key_ideas",
+   "bands": [
+    "low",
+    "mid"
+   ],
+   "skills": [
+    "BC-SKL-01046",
+    "BC-SKL-01047"
+   ],
+   "sources": [
+    "BC-EK-LIM-2B2",
+    "ced:49",
+    "research/units/unit-01-limits-continuity.md#1.12 Confirming Continuity over an Interval"
+   ],
+   "evidence_tag": "verified",
+   "ek_id": "BC-EK-LIM-2B2",
+   "depth": "core",
+   "text": "The six standard families are continuous at every point of their domains (BC-EK-LIM-2B2, ced:49). The domain restriction does the work: the undefined inputs are excluded, and what remains, as open intervals between them, is the answer.",
+   "notation": "open, closed and half open interval notation",
+   "quote": {
+    "text": "Polynomial, rational, power, exponential, logarithmic, and trigonometric functions are continuous on all points in their domains.",
+    "source": "ced:49"
+   },
+   "delivery": {
+    "mode": "text",
+    "reason": "rule 5: a family statement, BC-REP-04 on BC-SKL-01047"
+   }
+  },
+  {
+   "id": "LSN-CON-01014#s4",
+   "type": "strategy",
+   "bands": [
+    "low",
+    "mid"
+   ],
+   "skills": [
+    "BC-SKL-01046",
+    "BC-SKL-01047",
+    "BC-SKL-01048",
+    "BC-SKL-01049"
+   ],
+   "sources": [
+    "BC-QA-01015"
+   ],
+   "evidence_tag": "inferred",
+   "archetype_id": "BC-QA-01015",
+   "cue": "A rule is given and the stem asks for the intervals on which it is continuous, with a reason naming its family.",
+   "method": "First written line: identify every input at which the expression is undefined, by setting the denominator to zero or the radicand below zero.",
+   "rival": "The rival writes the domain as a single interval when it has several pieces.",
+   "separating_feature": "Each excluded input splits the line, so the answer has one more piece than there are excluded inputs."
+  },
+  {
+   "id": "LSN-CON-01014#s5",
+   "type": "worked_example",
+   "bands": [
+    "low",
+    "mid"
+   ],
+   "skills": [
+    "BC-SKL-01046",
+    "BC-SKL-01047",
+    "BC-SKL-01049"
+   ],
+   "sources": [
+    "BC-QA-01015",
+    "ced:49"
+   ],
+   "evidence_tag": "inferred",
+   "archetype_id": "BC-QA-01015",
+   "parameter_draw": {
+    "coefficient": "2",
+    "zero": "3",
+    "roots": [
+     "-2",
+     "1"
+    ],
+    "family": "rational"
+   },
+   "problem": {
+    "text": "Let \\(f(x)=\\frac{2(x-3)}{x^2+x-2}\\). State the intervals on which \\(f\\) is continuous and give a reason.",
+    "command_verb": "state"
+   },
+   "calculator_status": "no_calculator",
+   "steps": [
+    {
+     "cue": "A rational rule is undefined only where its denominator is zero.",
+     "why": "Those inputs are outside the domain.",
+     "expression": [
+      "Equal",
+      [
+       "Add",
+       -2,
+       "x",
+       [
+        "Power",
+        "x",
+        2
+       ]
+      ],
+      0
+     ]
+    },
+    {
+     "cue": "The quadratic factors as \\((x+2)(x-1)\\).",
+     "why": "The excluded inputs are \\(-2\\) and \\(1\\).",
+     "expression": [
+      "Set",
+      -2,
+      1
+     ]
+    },
+    {
+     "cue": "The stem asks for a reason, and \\(f\\) is a quotient of polynomials.",
+     "why": "Rational functions are continuous on their domains: the family and its domain."
+    },
+    {
+     "cue": "Two excluded inputs split the line into three pieces.",
+     "why": "Each piece is open at an excluded input, since \\(f\\) has no value there.",
+     "expression": [
+      "Union",
+      [
+       "Interval",
+       [
+        "Open",
+        "NegativeInfinity"
+       ],
+       [
+        "Open",
+        -2
+       ]
+      ],
+      [
+       "Interval",
+       [
+        "Open",
+        -2
+       ],
+       [
+        "Open",
+        1
+       ]
+      ],
+      [
+       "Interval",
+       [
+        "Open",
+        1
+       ],
+       [
+        "Open",
+        "PositiveInfinity"
+       ]
+      ]
+     ]
+    },
+    {
+     "cue": "No piece has a closed endpoint.",
+     "why": "No one sided check is needed."
+    }
+   ],
+   "answer": {
+    "form": "symbolic",
+    "mathjson": [
+     "Union",
+     [
+      "Interval",
+      [
+       "Open",
+       "NegativeInfinity"
+      ],
+      [
+       "Open",
+       -2
+      ]
+     ],
+     [
+      "Interval",
+      [
+       "Open",
+       -2
+      ],
+      [
+       "Open",
+       1
+      ]
+     ],
+     [
+      "Interval",
+      [
+       "Open",
+       1
+      ],
+      [
+       "Open",
+       "PositiveInfinity"
+      ]
+     ]
+    ]
+   },
+   "delivery": {
+    "mode": "step_reveal",
+    "reason": "rule 1"
+   }
+  },
+  {
+   "id": "LSN-CON-01014#err-BC-ERR-01031",
+   "type": "common_error",
+   "bands": [
+    "low",
+    "mid"
+   ],
+   "skills": [
+    "BC-SKL-01046",
+    "BC-SKL-01048",
+    "BC-SKL-01049"
+   ],
+   "sources": [
+    "BC-ERR-01031",
+    "BC-MIS-01019"
+   ],
+   "evidence_tag": "inferred",
+   "error_id": "BC-ERR-01031",
+   "observed_behavior": "The response reports an interval of continuity whose interior or endpoint contains a point where the function is undefined.",
+   "scoring_consequence": "The interval point is lost.",
+   "wrong_step": {
+    "text": "\\((-\\infty,-2)\\cup(-2,\\infty)\\) keeps \\(1\\) inside.",
+    "expression": [
+     "Union",
+     [
+      "Interval",
+      [
+       "Open",
+       "NegativeInfinity"
+      ],
+      [
+       "Open",
+       -2
+      ]
+     ],
+     [
+      "Interval",
+      [
+       "Open",
+       -2
+      ],
+      [
+       "Open",
+       "PositiveInfinity"
+      ]
+     ]
+    ]
+   },
+   "right_step": {
+    "text": "\\((-\\infty,-2)\\cup(-2,1)\\cup(1,\\infty)\\).",
+    "expression": [
+     "Union",
+     [
+      "Interval",
+      [
+       "Open",
+       "NegativeInfinity"
+      ],
+      [
+       "Open",
+       -2
+      ]
+     ],
+     [
+      "Interval",
+      [
+       "Open",
+       -2
+      ],
+      [
+       "Open",
+       1
+      ]
+     ],
+     [
+      "Interval",
+      [
+       "Open",
+       1
+      ],
+      [
+       "Open",
+       "PositiveInfinity"
+      ]
+     ]
+    ]
+   },
+   "relation": "distinct",
+   "possible_reason": {
+    "misconception_id": "BC-MIS-01019",
+    "text": "without excluding the inputs outside that domain"
+   },
+   "delivery": {
+    "mode": "step_reveal",
+    "reason": "rule 1"
+   }
+  },
+  {
+   "id": "LSN-CON-01014#err-BC-ERR-01032",
+   "type": "common_error",
+   "bands": [
+    "low",
+    "mid"
+   ],
+   "skills": [
+    "BC-SKL-01046",
+    "BC-SKL-01049"
+   ],
+   "sources": [
+    "BC-ERR-01032"
+   ],
+   "evidence_tag": "inferred",
+   "error_id": "BC-ERR-01032",
+   "observed_behavior": "The response writes a closed interval endpoint at an input that is not in the domain of the function.",
+   "scoring_consequence": "The interval point is lost on notation.",
+   "wrong_step": {
+    "text": "\\((-2,1]\\) is closed where \\(f\\) has no value.",
+    "expression": [
+     "Union",
+     [
+      "Interval",
+      [
+       "Open",
+       "NegativeInfinity"
+      ],
+      [
+       "Open",
+       -2
+      ]
+     ],
+     [
+      "Interval",
+      [
+       "Open",
+       -2
+      ],
+      [
+       "Open",
+       "PositiveInfinity"
+      ]
+     ]
+    ]
+   },
+   "right_step": {
+    "text": "\\((-2,1)\\) is open at both ends.",
+    "expression": [
+     "Union",
+     [
+      "Interval",
+      [
+       "Open",
+       "NegativeInfinity"
+      ],
+      [
+       "Open",
+       -2
+      ]
+     ],
+     [
+      "Interval",
+      [
+       "Open",
+       -2
+      ],
+      [
+       "Open",
+       1
+      ]
+     ],
+     [
+      "Interval",
+      [
+       "Open",
+       1
+      ],
+      [
+       "Open",
+       "PositiveInfinity"
+      ]
+     ]
+    ]
+   },
+   "relation": "distinct",
+   "delivery": {
+    "mode": "step_reveal",
+    "reason": "rule 1"
+   }
+  },
+  {
+   "id": "LSN-CON-01014#prq-BC-PRQ-01003",
+   "type": "prerequisite_bridge",
+   "bands": [
+    "low",
+    "mid"
+   ],
+   "skills": [
+    "BC-SKL-01046",
+    "BC-SKL-01047",
+    "BC-SKL-01048",
+    "BC-SKL-01049"
+   ],
+   "sources": [
+    "BC-PRQ-01003"
+   ],
+   "evidence_tag": "inferred",
+   "prerequisite_id": "BC-PRQ-01003",
+   "text": "A piecewise rule is read by choosing the branch whose condition holds for the input. The slip: the wrong branch evaluated at a boundary input."
+  },
+  {
+   "id": "LSN-CON-01014#prq-BC-PRQ-01008",
+   "type": "prerequisite_bridge",
+   "bands": [
+    "low",
+    "mid"
+   ],
+   "skills": [
+    "BC-SKL-01046",
+    "BC-SKL-01047",
+    "BC-SKL-01048",
+    "BC-SKL-01049"
+   ],
+   "sources": [
+    "BC-PRQ-01008"
+   ],
+   "evidence_tag": "inferred",
+   "prerequisite_id": "BC-PRQ-01008",
+   "text": "An expression is undefined where a denominator is zero or a logarithm has a nonpositive argument. The slip: intervals of continuity that include points outside the domain."
+  },
+  {
+   "id": "LSN-CON-01014#prq-BC-PRQ-01010",
+   "type": "prerequisite_bridge",
+   "bands": [
+    "low",
+    "mid"
+   ],
+   "skills": [
+    "BC-SKL-01046",
+    "BC-SKL-01047",
+    "BC-SKL-01048",
+    "BC-SKL-01049"
+   ],
+   "sources": [
+    "BC-PRQ-01010"
+   ],
+   "evidence_tag": "inferred",
+   "prerequisite_id": "BC-PRQ-01010",
+   "text": "A bracket is an inequality: \\((a,b]\\) means \\(a<x\\le b\\). The slip: a closed end written where the input is excluded."
+  }
+ ],
+ "checks": [
+  {
+   "id": "LSN-CON-01014#chk-1",
+   "check_kind": "completion",
+   "bands": [
+    "low",
+    "mid"
+   ],
+   "format": "short_answer",
+   "archetype_id": "BC-QA-01015",
+   "parameter_draw": {
+    "coefficient": "2",
+    "zero": "3",
+    "roots": [
+     "-2",
+     "1"
+    ],
+    "family": "rational"
+   },
+   "completes": "LSN-CON-01014#s5",
+   "stem": {
+    "text": "For \\(f(x)=\\frac{2(x-3)}{x^2+x-2}\\) the excluded inputs are \\(-2\\) and \\(1\\). Write the intervals on which \\(f\\) is continuous.",
+    "command_verb": "write"
+   },
+   "answer_key": {
+    "form": "symbolic",
+    "mathjson": [
+     "Union",
+     [
+      "Interval",
+      [
+       "Open",
+       "NegativeInfinity"
+      ],
+      [
+       "Open",
+       -2
+      ]
+     ],
+     [
+      "Interval",
+      [
+       "Open",
+       -2
+      ],
+      [
+       "Open",
+       1
+      ]
+     ],
+     [
+      "Interval",
+      [
+       "Open",
+       1
+      ],
+      [
+       "Open",
+       "PositiveInfinity"
+      ]
+     ]
+    ]
+   },
+   "worked_solution": [
+    {
+     "step": 1,
+     "text": "The excluded inputs are the roots of the denominator.",
+     "mathjson": [
+      "Set",
+      -2,
+      1
+     ]
+    },
+    {
+     "step": 2,
+     "text": "Two excluded inputs give three open pieces.",
+     "mathjson": [
+      "Union",
+      [
+       "Interval",
+       [
+        "Open",
+        "NegativeInfinity"
+       ],
+       [
+        "Open",
+        -2
+       ]
+      ],
+      [
+       "Interval",
+       [
+        "Open",
+        -2
+       ],
+       [
+        "Open",
+        1
+       ]
+      ],
+      [
+       "Interval",
+       [
+        "Open",
+        1
+       ],
+       [
+        "Open",
+        "PositiveInfinity"
+       ]
+      ]
+     ]
+    }
+   ],
+   "calculator_status": "no_calculator",
+   "representation": "BC-REP-01",
+   "skills": [
+    "BC-SKL-01046"
+   ]
+  },
+  {
+   "id": "LSN-CON-01014#chk-2",
+   "check_kind": "isomorph",
+   "bands": [
+    "low",
+    "mid"
+   ],
+   "format": "short_answer",
+   "archetype_id": "BC-QA-01015",
+   "parameter_draw": {
+    "coefficient": "1",
+    "zero": "0",
+    "roots": [
+     "-3",
+     "2"
+    ],
+    "family": "radical"
+   },
+   "stem": {
+    "text": "Let \\(g(x)=\\frac{\\sqrt{x+3}}{x-2}\\). State the intervals on which \\(g\\) is continuous.",
+    "command_verb": "state"
+   },
+   "answer_key": {
+    "form": "symbolic",
+    "mathjson": [
+     "Union",
+     [
+      "Interval",
+      -3,
+      [
+       "Open",
+       2
+      ]
+     ],
+     [
+      "Interval",
+      [
+       "Open",
+       2
+      ],
+      [
+       "Open",
+       "PositiveInfinity"
+      ]
+     ]
+    ]
+   },
+   "worked_solution": [
+    {
+     "step": 1,
+     "text": "The radicand needs \\(x\\ge -3\\) and the denominator excludes \\(2\\).",
+     "mathjson": [
+      "SetMinus",
+      [
+       "Interval",
+       -3,
+       "PositiveInfinity"
+      ],
+      [
+       "Set",
+       2
+      ]
+     ]
+    },
+    {
+     "step": 2,
+     "text": "Closed at \\(-3\\), where \\(g\\) has a value and the right-hand limit matches it; open at \\(2\\).",
+     "mathjson": [
+      "Union",
+      [
+       "Interval",
+       -3,
+       [
+        "Open",
+        2
+       ]
+      ],
+      [
+       "Interval",
+       [
+        "Open",
+        2
+       ],
+       [
+        "Open",
+        "PositiveInfinity"
+       ]
+      ]
+     ]
+    }
+   ],
+   "calculator_status": "no_calculator",
+   "representation": "BC-REP-01",
+   "skills": [
+    "BC-SKL-01046",
+    "BC-SKL-01049"
+   ]
+  },
+  {
+   "id": "LSN-CON-01014#chk-3",
+   "check_kind": "mcq",
+   "bands": [
+    "low"
+   ],
+   "format": "mcq",
+   "archetype_id": "BC-QA-01015",
+   "parameter_draw": {
+    "coefficient": "1",
+    "zero": "-1",
+    "roots": [
+     "-3",
+     "4"
+    ],
+    "family": "rational"
+   },
+   "stem": {
+    "text": "Let \\(h(x)=\\frac{x+1}{x^2-x-12}\\). On which set is \\(h\\) continuous?",
+    "command_verb": "identify"
+   },
+   "answer_key": {
+    "form": "symbolic",
+    "mathjson": [
+     "Union",
+     [
+      "Interval",
+      [
+       "Open",
+       "NegativeInfinity"
+      ],
+      [
+       "Open",
+       -3
+      ]
+     ],
+     [
+      "Interval",
+      [
+       "Open",
+       -3
+      ],
+      [
+       "Open",
+       4
+      ]
+     ],
+     [
+      "Interval",
+      [
+       "Open",
+       4
+      ],
+      [
+       "Open",
+       "PositiveInfinity"
+      ]
+     ]
+    ]
+   },
+   "worked_solution": [
+    {
+     "step": 1,
+     "text": "The denominator is \\((x+3)(x-4)\\), zero at \\(-3\\) and \\(4\\).",
+     "mathjson": [
+      "Equal",
+      [
+       "Add",
+       -12,
+       [
+        "Power",
+        "x",
+        2
+       ],
+       [
+        "Multiply",
+        -1,
+        "x"
+       ]
+      ],
+      0
+     ]
+    },
+    {
+     "step": 2,
+     "text": "The roots are \\(-3\\) and \\(4\\).",
+     "mathjson": [
+      "Set",
+      -3,
+      4
+     ]
+    },
+    {
+     "step": 3,
+     "text": "Three open pieces.",
+     "mathjson": [
+      "Union",
+      [
+       "Interval",
+       [
+        "Open",
+        "NegativeInfinity"
+       ],
+       [
+        "Open",
+        -3
+       ]
+      ],
+      [
+       "Interval",
+       [
+        "Open",
+        -3
+       ],
+       [
+        "Open",
+        4
+       ]
+      ],
+      [
+       "Interval",
+       [
+        "Open",
+        4
+       ],
+       [
+        "Open",
+        "PositiveInfinity"
+       ]
+      ]
+     ]
+    }
+   ],
+   "options": [
+    {
+     "id": "A",
+     "is_key": false,
+     "error_path": "BC-ERR-01031",
+     "value": [
+      "Union",
+      [
+       "Interval",
+       [
+        "Open",
+        "NegativeInfinity"
+       ],
+       [
+        "Open",
+        -3
+       ]
+      ],
+      [
+       "Interval",
+       [
+        "Open",
+        -3
+       ],
+       [
+        "Open",
+        "PositiveInfinity"
+       ]
+      ]
+     ],
+     "label": "\\((-\\infty,-3)\\cup(-3,\\infty)\\)",
+     "derivation": "only -3 removed, so 4 stays inside"
+    },
+    {
+     "id": "B",
+     "is_key": false,
+     "error_path": "BC-ERR-01031",
+     "value": [
+      "Interval",
+      [
+       "Open",
+       "NegativeInfinity"
+      ],
+      [
+       "Open",
+       "PositiveInfinity"
+      ]
+     ],
+     "label": "\\((-\\infty,\\infty)\\)",
+     "derivation": "neither excluded input removed"
+    },
+    {
+     "id": "C",
+     "is_key": false,
+     "error_path": "BC-ERR-01032",
+     "value": [
+      "Union",
+      [
+       "Interval",
+       [
+        "Open",
+        "NegativeInfinity"
+       ],
+       [
+        "Open",
+        4
+       ]
+      ],
+      [
+       "Interval",
+       [
+        "Open",
+        4
+       ],
+       [
+        "Open",
+        "PositiveInfinity"
+       ]
+      ]
+     ],
+     "label": "\\((-\\infty,-3)\\cup[-3,4)\\cup(4,\\infty)\\)",
+     "derivation": "closed bracket at -3 puts -3 back in the set"
+    },
+    {
+     "id": "D",
+     "is_key": true,
+     "error_path": null,
+     "value": [
+      "Union",
+      [
+       "Interval",
+       [
+        "Open",
+        "NegativeInfinity"
+       ],
+       [
+        "Open",
+        -3
+       ]
+      ],
+      [
+       "Interval",
+       [
+        "Open",
+        -3
+       ],
+       [
+        "Open",
+        4
+       ]
+      ],
+      [
+       "Interval",
+       [
+        "Open",
+        4
+       ],
+       [
+        "Open",
+        "PositiveInfinity"
+       ]
+      ]
+     ],
+     "label": "\\((-\\infty,-3)\\cup(-3,4)\\cup(4,\\infty)\\)"
+    }
+   ],
+   "calculator_status": "no_calculator",
+   "representation": "BC-REP-01",
+   "skills": [
+    "BC-SKL-01046",
+    "BC-SKL-01049"
+   ]
+  }
+ ],
+ "refresher": [
+  "LSN-CON-01014#s3",
+  "LSN-CON-01014#err-BC-ERR-01031",
+  "LSN-CON-01014#err-BC-ERR-01032",
+  "LSN-CON-01014#s5"
+ ],
+ "provenance": {
+  "author": "claude-opus-5-5",
+  "prompt_version": "generator/lesson_v1",
+  "generated_at": "2026-09-29T00:00:00Z",
+  "signed_off_by": null,
+  "signed_off_at": null,
+  "not_human": true
+ }
+}

@@ -1,0 +1,918 @@
+{
+ "id": "LSN-CON-02002",
+ "version": 1,
+ "kind": "concept",
+ "target_id": "BC-CON-02002",
+ "status": "draft",
+ "snapshot_digest": "a6a8ec9d3f59ab8f712e33d30cc22fc64bf2c478fbe7312e3e3118d319c6a42f",
+ "source_digest": "1f7e3018376f795cc448dbd3f49beb94bbe03a808337046c6ad7ad4dda059048",
+ "read_minutes": {
+  "full": 3.4,
+  "brief": 2.1
+ },
+ "word_count": {
+  "full": 502,
+  "brief": 311
+ },
+ "sections": [
+  {
+   "id": "LSN-CON-02002#s1",
+   "type": "orientation",
+   "bands": [
+    "low",
+    "mid"
+   ],
+   "skills": [
+    "BC-SKL-02004",
+    "BC-SKL-02005",
+    "BC-SKL-02006",
+    "BC-SKL-02007"
+   ],
+   "sources": [
+    "BC-CON-02002",
+    "research/units/unit-02-differentiation-definition-properties.md#2.1 Defining Average and Instantaneous Rates of Change at a Point",
+    "research/units/unit-02-differentiation-definition-properties.md#2.2 Defining the Derivative of a Function and Using Derivative Notation"
+   ],
+   "evidence_tag": "verified",
+   "text": "A response shows the rate at one instant as the value the average rates approach as the interval shrinks to nothing: the difference quotient at the point, inside a limit, simplified with the limit kept, then evaluated. An average over a whole interval is not the rate at an instant.",
+   "delivery": {
+    "mode": "text",
+    "reason": "rule 5: a statement of what a response shows"
+   }
+  },
+  {
+   "id": "LSN-CON-02002#s2",
+   "type": "key_ideas",
+   "bands": [
+    "low",
+    "mid"
+   ],
+   "skills": [
+    "BC-SKL-02004",
+    "BC-SKL-02005",
+    "BC-SKL-02006",
+    "BC-SKL-02007"
+   ],
+   "sources": [
+    "BC-EK-CHA-2B1",
+    "ced:60",
+    "research/units/unit-02-differentiation-definition-properties.md#2.2 Defining the Derivative of a Function and Using Derivative Notation"
+   ],
+   "evidence_tag": "verified",
+   "ek_id": "BC-EK-CHA-2B1",
+   "depth": "core",
+   "text": "The rate of change of \\(f\\) at \\(x=a\\) is \\(\\lim_{h\\to0}\\frac{f(a+h)-f(a)}{h}\\) or \\(\\lim_{x\\to a}\\frac{f(x)-f(a)}{x-a}\\), provided the limit exists (BC-EK-CHA-2B1, ced:60). Both name one number, \\(f'(a)\\). Each quotient is a secant slope; as \\(h\\) shrinks the secants close on the tangent. At \\(h=0\\) the quotient is \\(\\frac{0}{0}\\), so \\(h\\) is divided out before the limit is taken.",
+   "notation": "f prime of a",
+   "quote": {
+    "text": "These are equivalent forms of the definition of the derivative",
+    "source": "ced:60"
+   },
+   "delivery": {
+    "mode": "motion",
+    "reason": "rule 2: the key idea describes a limit being taken, a secant closing to a tangent (unit README delivery map)",
+    "spec": {
+     "kind": "graph_sweep",
+     "representations": [
+      "BC-REP-02"
+     ],
+     "axes": {
+      "x": [
+       0,
+       3.5
+      ],
+      "y": [
+       -1,
+       12
+      ]
+     },
+     "curves": [
+      {
+       "expr": "2*x**2 - 3*x + 1",
+       "domain": [
+        0,
+        3.5
+       ]
+      }
+     ],
+     "points": [
+      {
+       "at": [
+        2,
+        3
+       ],
+       "label": {
+        "text": "(2, 3)",
+        "placement": "inside",
+        "at": "just above the point"
+       }
+      }
+     ],
+     "parameter": {
+      "name": "h",
+      "frames": [
+       1,
+       0.5,
+       0.25,
+       0.1,
+       0.01
+      ]
+     },
+     "secant": {
+      "through": [
+       "(2, f(2))",
+       "(2 + h, f(2 + h))"
+      ],
+      "slope": "2*h + 5"
+     },
+     "tangent": {
+      "slope": 5,
+      "frames": "last only"
+     },
+     "labels": [
+      {
+       "text": "h = frame value",
+       "placement": "inside",
+       "at": "top left corner"
+      },
+      {
+       "text": "secant slope 2h + 5",
+       "placement": "inside",
+       "at": "along the secant"
+      },
+      {
+       "text": "tangent slope 5",
+       "placement": "inside",
+       "at": "along the tangent on the last frame"
+      }
+     ]
+    },
+    "fallback": "the five frames as static small panels in one row, h decreasing left to right, the last showing the tangent",
+    "keyboard": "left and right arrow keys step between frames; Home returns to h = 1; each frame announces h and the secant slope",
+    "reduced_motion": "no auto-advance: each arrow key press cross-fades to the next frame"
+   }
+  },
+  {
+   "id": "LSN-CON-02002#s3",
+   "type": "strategy",
+   "bands": [
+    "low",
+    "mid"
+   ],
+   "skills": [
+    "BC-SKL-02006",
+    "BC-SKL-02007"
+   ],
+   "sources": [
+    "BC-QA-02002"
+   ],
+   "evidence_tag": "verified",
+   "archetype_id": "BC-QA-02002",
+   "cue": "A function rule, and the stem says use the definition of the derivative.",
+   "method": "First line: the difference quotient for the rule at the named input, inside \\(\\lim_{h\\to0}\\).",
+   "rival": "Rival: the power rule presented as the definition (BC-ERR-02008).",
+   "separating_feature": "The word definition: the quotient must be on the page."
+  },
+  {
+   "id": "LSN-CON-02002#s4",
+   "type": "strategy",
+   "bands": [
+    "low"
+   ],
+   "skills": [
+    "BC-SKL-02004"
+   ],
+   "sources": [
+    "BC-QA-02012"
+   ],
+   "evidence_tag": "verified",
+   "archetype_id": "BC-QA-02012",
+   "cue": "A derivative written in one notation; the stem asks for the same quantity in another.",
+   "method": "First line: name the function and the independent variable the notation carries.",
+   "rival": "Rival: Leibniz notation split and cancelled as a fraction (BC-ERR-02029).",
+   "separating_feature": "\\(f'(a)\\) names one number at one input."
+  },
+  {
+   "id": "LSN-CON-02002#s5",
+   "type": "worked_example",
+   "bands": [
+    "low",
+    "mid"
+   ],
+   "skills": [
+    "BC-SKL-02006",
+    "BC-SKL-02007"
+   ],
+   "sources": [
+    "BC-QA-02002"
+   ],
+   "evidence_tag": "verified",
+   "archetype_id": "BC-QA-02002",
+   "parameter_draw": {
+    "leading": 2,
+    "linear": -3,
+    "constant": 1,
+    "point": 2,
+    "degree": 2
+   },
+   "problem": {
+    "text": "Let \\(f(x)=2x^2-3x+1\\). Use the definition of the derivative to find \\(f'(2)\\).",
+    "command_verb": "find"
+   },
+   "calculator_status": "no_calculator",
+   "steps": [
+    {
+     "cue": "The stem says definition, at the input 2.",
+     "why": "\\(f'(2)=\\lim_{h\\to0}\\frac{f(2+h)-f(2)}{h}\\), with \\(f(2)=3\\).",
+     "expression": [
+      "Divide",
+      [
+       "Add",
+       [
+        "Multiply",
+        2,
+        [
+         "Power",
+         [
+          "Add",
+          2,
+          "h"
+         ],
+         2
+        ]
+       ],
+       [
+        "Multiply",
+        -1,
+        [
+         "Multiply",
+         3,
+         [
+          "Add",
+          2,
+          "h"
+         ]
+        ]
+       ],
+       1,
+       [
+        "Multiply",
+        -1,
+        3
+       ]
+      ],
+      "h"
+     ]
+    },
+    {
+     "cue": "At \\(h=0\\) the quotient is \\(\\frac{0}{0}\\), so expand and divide out \\(h\\).",
+     "why": "The numerator is \\(2h^2+5h\\); the limit symbol stays on this line.",
+     "expression": [
+      "Add",
+      [
+       "Multiply",
+       2,
+       "h"
+      ],
+      5
+     ]
+    },
+    {
+     "cue": "Nothing divides by \\(h\\) now, so substitute \\(h=0\\).",
+     "why": "The limit is the rate at 2.",
+     "expression": 5
+    }
+   ],
+   "answer": {
+    "form": "numeric",
+    "mathjson": 5
+   },
+   "delivery": {
+    "mode": "step_reveal",
+    "reason": "rule 1"
+   }
+  },
+  {
+   "id": "LSN-CON-02002#s6",
+   "type": "worked_example",
+   "bands": [
+    "low"
+   ],
+   "skills": [
+    "BC-SKL-02005",
+    "BC-SKL-02004",
+    "BC-SKL-02006"
+   ],
+   "sources": [
+    "BC-QA-02014"
+   ],
+   "evidence_tag": "verified",
+   "archetype_id": "BC-QA-02014",
+   "parameter_draw": {
+    "degree": 2,
+    "leading": 3,
+    "linear": -4,
+    "constant": 6,
+    "instant": 2,
+    "context": "position"
+   },
+   "problem": {
+    "text": "A particle's position at time \\(t\\) is \\(s(t)=3t^2-4t+6\\). At what rate is the position changing at the instant \\(t=2\\)?",
+    "command_verb": "find"
+   },
+   "calculator_status": "no_calculator",
+   "steps": [
+    {
+     "cue": "One instant is named, so average over \\([2,2+h]\\).",
+     "why": "The average rate is \\(\\frac{s(2+h)-s(2)}{h}\\), with \\(s(2)=10\\).",
+     "expression": [
+      "Divide",
+      [
+       "Add",
+       [
+        "Multiply",
+        3,
+        [
+         "Power",
+         [
+          "Add",
+          2,
+          "h"
+         ],
+         2
+        ]
+       ],
+       [
+        "Multiply",
+        -1,
+        [
+         "Multiply",
+         4,
+         [
+          "Add",
+          2,
+          "h"
+         ]
+        ]
+       ],
+       6,
+       [
+        "Multiply",
+        -1,
+        10
+       ]
+      ],
+      "h"
+     ]
+    },
+    {
+     "cue": "At \\(h=0\\) this is \\(\\frac{0}{0}\\): expand and divide out \\(h\\).",
+     "why": "The average over \\([2,2+h]\\) is \\(8+3h\\).",
+     "expression": [
+      "Add",
+      [
+       "Multiply",
+       3,
+       "h"
+      ],
+      8
+     ]
+    },
+    {
+     "cue": "The instant is the interval shrunk to zero length.",
+     "why": "The averages approach 8, the rate at \\(t=2\\).",
+     "expression": 8
+    }
+   ],
+   "answer": {
+    "form": "numeric",
+    "mathjson": 8
+   },
+   "delivery": {
+    "mode": "step_reveal",
+    "reason": "rule 1"
+   }
+  },
+  {
+   "id": "LSN-CON-02002#err-BC-ERR-02006",
+   "type": "common_error",
+   "bands": [
+    "low",
+    "mid"
+   ],
+   "skills": [
+    "BC-SKL-02006"
+   ],
+   "sources": [
+    "BC-ERR-02006",
+    "BC-MIS-02003"
+   ],
+   "evidence_tag": "verified",
+   "error_id": "BC-ERR-02006",
+   "observed_behavior": "The response manipulates the difference quotient without carrying the limit symbol and attaches it only to the final line.",
+   "scoring_consequence": "A notation point is lost where the definition itself is being assessed.",
+   "wrong_step": {
+    "text": "\\(f'(2)=\\frac{2h^2+5h}{h}=2h+5\\), with no limit written.",
+    "expression": [
+     "Add",
+     [
+      "Multiply",
+      2,
+      "h"
+     ],
+     5
+    ]
+   },
+   "right_step": {
+    "text": "\\(\\lim_{h\\to0}(2h+5)=5\\).",
+    "expression": 5
+   },
+   "relation": "distinct",
+   "possible_reason": {
+    "misconception_id": "BC-MIS-02003",
+    "text": "intermediate lines assert equalities that are false before the limit is taken"
+   },
+   "delivery": {
+    "mode": "step_reveal",
+    "reason": "rule 1"
+   }
+  },
+  {
+   "id": "LSN-CON-02002#err-BC-ERR-02030",
+   "type": "common_error",
+   "bands": [
+    "low",
+    "mid"
+   ],
+   "skills": [
+    "BC-SKL-02006"
+   ],
+   "sources": [
+    "BC-ERR-02030",
+    "BC-MIS-02015"
+   ],
+   "evidence_tag": "verified",
+   "error_id": "BC-ERR-02030",
+   "observed_behavior": "The response reports a function where a number is requested, or a number where the function is requested.",
+   "scoring_consequence": "The conversion point is lost.",
+   "wrong_step": {
+    "text": "\\(4x-3\\), where \\(f'(2)\\) is asked.",
+    "expression": [
+     "Add",
+     [
+      "Multiply",
+      4,
+      "x"
+     ],
+     [
+      "Multiply",
+      -1,
+      3
+     ]
+    ]
+   },
+   "right_step": {
+    "text": "\\(f'(2)=5\\).",
+    "expression": 5
+   },
+   "relation": "distinct",
+   "possible_reason": {
+    "misconception_id": "BC-MIS-02015",
+    "text": "the derivative function is confused with its value"
+   },
+   "delivery": {
+    "mode": "step_reveal",
+    "reason": "rule 1"
+   }
+  },
+  {
+   "id": "LSN-CON-02002#err-BC-ERR-02033",
+   "type": "common_error",
+   "bands": [
+    "low"
+   ],
+   "skills": [
+    "BC-SKL-02004",
+    "BC-SKL-02005"
+   ],
+   "sources": [
+    "BC-ERR-02033"
+   ],
+   "evidence_tag": "verified",
+   "error_id": "BC-ERR-02033",
+   "observed_behavior": "Asked for the rate of change at one instant, the response divides the change over a whole interval, usually from the starting time to that instant, by the length of the interval and reports that average.",
+   "scoring_consequence": "The value reported is an average rate over an interval, so an answer point for the rate at the instant is not earned.",
+   "wrong_step": {
+    "text": "\\(\\frac{s(2)-s(0)}{2-0}=\\frac{10-6}{2}=2\\).",
+    "expression": [
+     "Divide",
+     [
+      "Add",
+      10,
+      [
+       "Multiply",
+       -1,
+       6
+      ]
+     ],
+     [
+      "Add",
+      2,
+      [
+       "Multiply",
+       -1,
+       0
+      ]
+     ]
+    ]
+   },
+   "right_step": {
+    "text": "\\(\\lim_{h\\to0}(8+3h)=8\\).",
+    "expression": 8
+   },
+   "relation": "distinct",
+   "delivery": {
+    "mode": "step_reveal",
+    "reason": "rule 1"
+   }
+  },
+  {
+   "id": "LSN-CON-02002#s7",
+   "type": "representations",
+   "bands": [
+    "low"
+   ],
+   "skills": [
+    "BC-SKL-02004",
+    "BC-SKL-02005"
+   ],
+   "sources": [
+    "research/units/unit-02-differentiation-definition-properties.md#2.1 Defining Average and Instantaneous Rates of Change at a Point"
+   ],
+   "evidence_tag": "verified",
+   "text": "Average rates of \\(s(t)=3t^2-4t+6\\) over \\([2,2+h]\\) for \\(h=1, 0.1, 0.01, 0.001\\): 11, 8.3, 8.03, 8.003. They settle on 8.",
+   "figure": {
+    "kind": "numeric_experiment",
+    "function": "3*t**2 - 4*t + 6",
+    "at": 2,
+    "h_values": [
+     1,
+     0.1,
+     0.01,
+     0.001
+    ],
+    "columns": [
+     "h",
+     "average rate over [2, 2 + h]"
+    ],
+    "labels": [
+     {
+      "text": "averages approach 8",
+      "placement": "inside",
+      "at": "row below the last value"
+     }
+    ]
+   },
+   "delivery": {
+    "mode": "model",
+    "reason": "template model row: the meaning is a computed sequence of difference quotients at shrinking h, and BC-QA-02014 carries BC-DF-15 (productive-failure target)",
+    "spec": {
+     "kind": "numeric_experiment",
+     "representations": [
+      "BC-REP-03"
+     ],
+     "function": "3*t**2 - 4*t + 6",
+     "at": 2,
+     "h_values": [
+      1,
+      0.1,
+      0.01,
+      0.001
+     ],
+     "computed": "(s(2 + h) - s(2))/h",
+     "columns": [
+      "h",
+      "average rate over [2, 2 + h]"
+     ],
+     "labels": [
+      {
+       "text": "h",
+       "placement": "inside",
+       "at": "first column header"
+      },
+      {
+       "text": "averages approach 8",
+       "placement": "inside",
+       "at": "row below the last value"
+      }
+     ]
+    },
+    "fallback": "the four computed rows printed as a static table with the closing label",
+    "keyboard": "a Run control reached by Tab and pressed with Enter or Space adds one row per press; the table is read in row order"
+   }
+  },
+  {
+   "id": "LSN-CON-02002#prq-BC-PRQ-02005",
+   "type": "prerequisite_bridge",
+   "bands": [
+    "low",
+    "mid"
+   ],
+   "skills": [
+    "BC-SKL-02006",
+    "BC-SKL-02007"
+   ],
+   "sources": [
+    "BC-PRQ-02005"
+   ],
+   "evidence_tag": "verified",
+   "prerequisite_id": "BC-PRQ-02005",
+   "text": "In \\(f(a+h)\\) the base point is \\(a\\) and the increment \\(h\\); name both before writing the quotient."
+  }
+ ],
+ "checks": [
+  {
+   "id": "LSN-CON-02002#chk-1",
+   "check_kind": "completion",
+   "bands": [
+    "low",
+    "mid"
+   ],
+   "format": "short_answer",
+   "archetype_id": "BC-QA-02002",
+   "parameter_draw": {
+    "leading": 2,
+    "linear": -3,
+    "constant": 1,
+    "point": 2,
+    "degree": 2
+   },
+   "completes": "LSN-CON-02002#s5",
+   "stem": {
+    "text": "The definition gives \\(f'(2)=\\lim_{h\\to0}(2h+5)\\). Find \\(f'(2)\\).",
+    "command_verb": "find"
+   },
+   "answer_key": {
+    "form": "numeric",
+    "mathjson": 5
+   },
+   "worked_solution": [
+    {
+     "step": 1,
+     "text": "The simplified quotient \\(2h+5\\).",
+     "mathjson": [
+      "Add",
+      [
+       "Multiply",
+       2,
+       "h"
+      ],
+      5
+     ]
+    },
+    {
+     "step": 2,
+     "text": "Its limit as \\(h\\to0\\) is 5.",
+     "mathjson": 5
+    }
+   ],
+   "calculator_status": "no_calculator",
+   "representation": "BC-REP-01",
+   "skills": [
+    "BC-SKL-02006"
+   ]
+  },
+  {
+   "id": "LSN-CON-02002#chk-2",
+   "check_kind": "isomorph",
+   "bands": [
+    "low",
+    "mid"
+   ],
+   "format": "short_answer",
+   "archetype_id": "BC-QA-02002",
+   "parameter_draw": {
+    "leading": -1,
+    "linear": 4,
+    "constant": -2,
+    "point": -1,
+    "degree": 2
+   },
+   "stem": {
+    "text": "Let \\(f(x)=-x^2+4x-2\\). Use the definition of the derivative to find \\(f'(-1)\\).",
+    "command_verb": "find"
+   },
+   "answer_key": {
+    "form": "numeric",
+    "mathjson": 6
+   },
+   "worked_solution": [
+    {
+     "step": 1,
+     "text": "\\(\\lim_{h\\to0}\\frac{f(-1+h)-f(-1)}{h}\\), with \\(f(-1)=-7\\).",
+     "mathjson": [
+      "Divide",
+      [
+       "Add",
+       [
+        "Multiply",
+        -1,
+        [
+         "Power",
+         [
+          "Add",
+          -1,
+          "h"
+         ],
+         2
+        ]
+       ],
+       [
+        "Multiply",
+        4,
+        [
+         "Add",
+         -1,
+         "h"
+        ]
+       ],
+       [
+        "Multiply",
+        -1,
+        2
+       ],
+       7
+      ],
+      "h"
+     ]
+    },
+    {
+     "step": 2,
+     "text": "Dividing out \\(h\\) leaves \\(6-h\\).",
+     "mathjson": [
+      "Add",
+      6,
+      [
+       "Multiply",
+       -1,
+       "h"
+      ]
+     ]
+    },
+    {
+     "step": 3,
+     "text": "The limit is 6.",
+     "mathjson": 6
+    }
+   ],
+   "calculator_status": "no_calculator",
+   "representation": "BC-REP-01",
+   "skills": [
+    "BC-SKL-02006"
+   ]
+  },
+  {
+   "id": "LSN-CON-02002#chk-3",
+   "check_kind": "mcq",
+   "bands": [
+    "low"
+   ],
+   "format": "mcq",
+   "archetype_id": "BC-QA-02014",
+   "parameter_draw": {
+    "degree": 2,
+    "leading": 2,
+    "linear": 1,
+    "constant": 3,
+    "instant": 3,
+    "context": "height"
+   },
+   "stem": {
+    "text": "A balloon's height at time \\(t\\) is \\(f(t)=2t^2+t+3\\). At what rate is the height changing at the instant \\(t=3\\)?",
+    "command_verb": "find"
+   },
+   "answer_key": {
+    "form": "numeric",
+    "mathjson": 13
+   },
+   "worked_solution": [
+    {
+     "step": 1,
+     "text": "The average over \\([3,3+h]\\), with \\(f(3)=24\\).",
+     "mathjson": [
+      "Divide",
+      [
+       "Add",
+       [
+        "Multiply",
+        2,
+        [
+         "Power",
+         [
+          "Add",
+          3,
+          "h"
+         ],
+         2
+        ]
+       ],
+       3,
+       "h",
+       3,
+       [
+        "Multiply",
+        -1,
+        24
+       ]
+      ],
+      "h"
+     ]
+    },
+    {
+     "step": 2,
+     "text": "Dividing out \\(h\\) leaves \\(13+2h\\).",
+     "mathjson": [
+      "Add",
+      [
+       "Multiply",
+       2,
+       "h"
+      ],
+      13
+     ]
+    },
+    {
+     "step": 3,
+     "text": "The limit is 13.",
+     "mathjson": 13
+    }
+   ],
+   "options": [
+    {
+     "id": "A",
+     "is_key": false,
+     "error_path": "BC-ERR-02033",
+     "value": 7,
+     "derivation": "the average over [0, 3]: (24 - 3)/3"
+    },
+    {
+     "id": "B",
+     "is_key": false,
+     "error_path": "BC-ERR-02030",
+     "value": [
+      "Add",
+      [
+       "Multiply",
+       4,
+       "t"
+      ],
+      1
+     ],
+     "derivation": "the rate as a function of t reported where a number is asked"
+    },
+    {
+     "id": "C",
+     "is_key": true,
+     "error_path": null,
+     "value": 13
+    },
+    {
+     "id": "D",
+     "is_key": false,
+     "error_path": "BC-ERR-02006",
+     "value": [
+      "Add",
+      13,
+      [
+       "Multiply",
+       2,
+       "h"
+      ]
+     ],
+     "derivation": "the simplified quotient reported with the limit dropped"
+    }
+   ],
+   "calculator_status": "no_calculator",
+   "representation": "BC-REP-05",
+   "skills": [
+    "BC-SKL-02005",
+    "BC-SKL-02004"
+   ]
+  }
+ ],
+ "refresher": [
+  "LSN-CON-02002#s2",
+  "LSN-CON-02002#err-BC-ERR-02006",
+  "LSN-CON-02002#err-BC-ERR-02030",
+  "LSN-CON-02002#err-BC-ERR-02033",
+  "LSN-CON-02002#s5"
+ ],
+ "provenance": {
+  "author": "claude-opus-5-5",
+  "prompt_version": "generator/lesson_v1",
+  "generated_at": "2026-09-29T00:00:00Z",
+  "design_path": "docs/lessons/unit-02/LSN-CON-02002.md",
+  "signed_off_by": null,
+  "signed_off_at": null,
+  "not_human": true
+ }
+}

@@ -1,0 +1,1023 @@
+{
+ "id": "LSN-CON-01015",
+ "version": 1,
+ "kind": "concept",
+ "target_id": "BC-CON-01015",
+ "status": "draft",
+ "snapshot_digest": "a6a8ec9d3f59ab8f712e33d30cc22fc64bf2c478fbe7312e3e3118d319c6a42f",
+ "source_digest": "bff6f04f111f1a8f6333b9f264ed676c87ce677f390e75ccdbaab96d5f04419c",
+ "read_minutes": {
+  "full": 3.7,
+  "brief": 3.0
+ },
+ "word_count": {
+  "full": 472,
+  "brief": 378
+ },
+ "sections": [
+  {
+   "id": "LSN-CON-01015#s1",
+   "type": "orientation",
+   "bands": [
+    "low",
+    "mid"
+   ],
+   "skills": [
+    "BC-SKL-01050",
+    "BC-SKL-01051",
+    "BC-SKL-01052",
+    "BC-SKL-01053"
+   ],
+   "sources": [
+    "BC-CON-01015",
+    "research/units/unit-01-limits-continuity.md#1.13 Removing Discontinuities"
+   ],
+   "evidence_tag": "verified",
+   "text": "A response writes one matching equation per boundary, using the branch on each side and the value at the boundary, then solves for the constants. A removable break is repaired by setting the value equal to the limit.",
+   "delivery": {
+    "mode": "figure",
+    "reason": "rule 3: BC-REP-02 on BC-SKL-01050 and BC-SKL-01053",
+    "spec": {
+     "kind": "graph",
+     "window": {
+      "x": [
+       -2,
+       5
+      ],
+      "y": [
+       -2,
+       20
+      ]
+     },
+     "curves": [
+      {
+       "expr": "x + 1",
+       "domain": [
+        -2,
+        1
+       ],
+       "open_end": 1
+      },
+      {
+       "expr": "5*x - 3",
+       "domain": [
+        1,
+        3
+       ],
+       "closed_ends": [
+        1,
+        3
+       ]
+      },
+      {
+       "expr": "x**2 + 3",
+       "domain": [
+        3,
+        5
+       ],
+       "open_end": 3
+      }
+     ],
+     "points": [
+      {
+       "x": 1,
+       "y": 2,
+       "style": "filled"
+      },
+      {
+       "x": 3,
+       "y": 12,
+       "style": "filled"
+      }
+     ],
+     "labels": [
+      {
+       "text": "(1, 2)",
+       "placement": "inside"
+      },
+      {
+       "text": "(3, 12)",
+       "placement": "inside"
+      },
+      {
+       "text": "k = 5, m = -3",
+       "placement": "inside"
+      }
+     ],
+     "representations": [
+      "BC-REP-02"
+     ]
+    },
+    "fallback": "the same graph as a static image with the two join points listed beneath in text",
+    "keyboard": "none needed: the figure has no control"
+   }
+  },
+  {
+   "id": "LSN-CON-01015#s2",
+   "type": "key_ideas",
+   "bands": [
+    "low"
+   ],
+   "skills": [
+    "BC-SKL-01050",
+    "BC-SKL-01053"
+   ],
+   "sources": [
+    "BC-EK-LIM-2C1",
+    "ced:50",
+    "research/units/unit-01-limits-continuity.md#1.13 Removing Discontinuities"
+   ],
+   "evidence_tag": "verified",
+   "ek_id": "BC-EK-LIM-2C1",
+   "depth": "extended",
+   "text": "When the limit exists at a break, defining or redefining the value there as the limit removes the break (BC-EK-LIM-2C1, ced:50). A jump or an infinite break has no limit, so no value repairs it.",
+   "notation": "",
+   "quote": {
+    "text": "it is possible to remove the discontinuity by defining or redefining the value of the function at that point",
+    "source": "ced:50"
+   },
+   "delivery": {
+    "mode": "figure",
+    "reason": "rule 3: BC-REP-02 on BC-SKL-01050",
+    "spec": {
+     "kind": "graph",
+     "window": {
+      "x": [
+       -2,
+       4
+      ],
+      "y": [
+       -1,
+       5
+      ]
+     },
+     "curves": [
+      {
+       "expr": "(x**2 - 1)/(x - 1)",
+       "domain": [
+        -2,
+        4
+       ]
+      }
+     ],
+     "points": [
+      {
+       "x": 1,
+       "y": 2,
+       "style": "open"
+      },
+      {
+       "x": 1,
+       "y": 2,
+       "style": "filled",
+       "caption": "repaired value"
+      }
+     ],
+     "labels": [
+      {
+       "text": "limit 2 at x = 1",
+       "placement": "inside"
+      },
+      {
+       "text": "f(1) defined as 2",
+       "placement": "inside"
+      }
+     ],
+     "representations": [
+      "BC-REP-02"
+     ]
+    },
+    "fallback": "the graph with the open circle, then the same graph with the filled point, as two static images",
+    "keyboard": "none needed: the figure has no control"
+   }
+  },
+  {
+   "id": "LSN-CON-01015#s3",
+   "type": "key_ideas",
+   "bands": [
+    "low",
+    "mid"
+   ],
+   "skills": [
+    "BC-SKL-01051",
+    "BC-SKL-01052"
+   ],
+   "sources": [
+    "BC-EK-LIM-2C2",
+    "ced:50",
+    "research/units/unit-01-limits-continuity.md#1.13 Removing Discontinuities"
+   ],
+   "evidence_tag": "verified",
+   "ek_id": "BC-EK-LIM-2C2",
+   "depth": "core",
+   "text": "At a boundary of a piecewise rule, the left expression, the right expression and the function value must agree (BC-EK-LIM-2C2, ced:50). All three enter, so each boundary gives one equation, and two unknowns need two boundaries.",
+   "notation": "",
+   "quote": {
+    "text": "as well as the value of the function at the boundary.",
+    "source": "ced:50"
+   },
+   "delivery": {
+    "mode": "interactive",
+    "reason": "rule 3 promoted: BC-QA-01008 common_givens name a piecewise rule with unknown constants and the stem asks for the joining value",
+    "spec": {
+     "kind": "graph",
+     "window": {
+      "x": [
+       -2,
+       5
+      ],
+      "y": [
+       -4,
+       24
+      ]
+     },
+     "curves": [
+      {
+       "expr": "x + 1",
+       "domain": [
+        -2,
+        1
+       ]
+      },
+      {
+       "expr": "k*x + 2 - k",
+       "domain": [
+        1,
+        3
+       ]
+      },
+      {
+       "expr": "x**2 + 3",
+       "domain": [
+        3,
+        5
+       ]
+      }
+     ],
+     "control": {
+      "type": "slider",
+      "parameter": "k",
+      "domain": {
+       "min": 0,
+       "max": 8,
+       "step": 1
+      },
+      "initial": 1
+     },
+     "question": "At which k does the middle segment meet the right branch at x = 3?",
+     "labels": [
+      {
+       "text": "pivot (1, 2)",
+       "placement": "inside"
+      },
+      {
+       "text": "target (3, 12)",
+       "placement": "inside"
+      },
+      {
+       "text": "k",
+       "placement": "inside"
+      }
+     ],
+     "representations": [
+      "BC-REP-02"
+     ]
+    },
+    "fallback": "the graph at k = 3, 5 and 7 as three static images with the right end height stated under each",
+    "keyboard": "the slider takes focus with Tab; Left and Right arrows change k by 1; Home and End jump to 0 and 8"
+   }
+  },
+  {
+   "id": "LSN-CON-01015#s4",
+   "type": "strategy",
+   "bands": [
+    "low",
+    "mid"
+   ],
+   "skills": [
+    "BC-SKL-01050",
+    "BC-SKL-01051",
+    "BC-SKL-01052",
+    "BC-SKL-01053"
+   ],
+   "sources": [
+    "BC-QA-01008"
+   ],
+   "evidence_tag": "verified",
+   "archetype_id": "BC-QA-01008",
+   "cue": "A piecewise rule with one or two unknown constants, and the stem asks for their values.",
+   "method": "First written line: the one sided limit from each branch at the first boundary.",
+   "rival": "The rival matches the two one sided limits and ignores the defined value (BC-ERR-01015).",
+   "separating_feature": "The branch whose condition holds the equals sign supplies the value, and the value enters the equation."
+  },
+  {
+   "id": "LSN-CON-01015#s5",
+   "type": "worked_example",
+   "bands": [
+    "low",
+    "mid"
+   ],
+   "skills": [
+    "BC-SKL-01050",
+    "BC-SKL-01051",
+    "BC-SKL-01052",
+    "BC-SKL-01053"
+   ],
+   "sources": [
+    "BC-QA-01008"
+   ],
+   "evidence_tag": "inferred",
+   "archetype_id": "BC-QA-01008",
+   "parameter_draw": {
+    "left_end": "1",
+    "right_end": "3",
+    "curvature": "1",
+    "lift": "3",
+    "check": "values"
+   },
+   "problem": {
+    "text": "\\(f(x)=\\frac{x^2-1}{x-1}\\) for \\(x<1\\), \\(kx+m\\) for \\(1\\le x\\le3\\), \\(x^2+3\\) for \\(x>3\\). Find \\(k\\) and \\(m\\) so \\(f\\) is continuous.",
+    "command_verb": "find"
+   },
+   "calculator_status": "no_calculator",
+   "steps": [
+    {
+     "cue": "Boundary \\(x=1\\): the first branch owns \\(x<1\\).",
+     "why": "The left limit comes from the branch that holds just left of 1.",
+     "expression": [
+      "Multiply",
+      [
+       "Add",
+       [
+        "Power",
+        "x",
+        2
+       ],
+       [
+        "Multiply",
+        -1,
+        1
+       ]
+      ],
+      [
+       "Power",
+       [
+        "Add",
+        "x",
+        [
+         "Multiply",
+         -1,
+         1
+        ]
+       ],
+       -1
+      ]
+     ]
+    },
+    {
+     "cue": "Substitution gives \\(\\frac00\\), so divide out \\(x-1\\).",
+     "why": "The branch equals \\(x+1\\) away from 1.",
+     "expression": 2
+    },
+    {
+     "cue": "\\(1\\le x\\) puts \\(x=1\\) in the middle branch.",
+     "why": "\\(f(1)=k+m\\), the right limit is \\(k+m\\), and both must equal 2.",
+     "expression": [
+      "Equal",
+      [
+       "Add",
+       "k",
+       "m"
+      ],
+      2
+     ]
+    },
+    {
+     "cue": "Boundary \\(x=3\\): \\(f(3)=3k+m\\); the right branch tends to \\(12\\).",
+     "why": "The second boundary gives the second equation.",
+     "expression": [
+      "Equal",
+      [
+       "Add",
+       [
+        "Multiply",
+        3,
+        "k"
+       ],
+       "m"
+      ],
+      12
+     ]
+    },
+    {
+     "cue": "Two equations share \\(m\\).",
+     "why": "Subtracting removes \\(m\\).",
+     "expression": [
+      "Equal",
+      [
+       "Add",
+       [
+        "Multiply",
+        3,
+        "k"
+       ],
+       "m",
+       [
+        "Multiply",
+        -1,
+        [
+         "Add",
+         "k",
+         "m"
+        ]
+       ]
+      ],
+      [
+       "Add",
+       12,
+       [
+        "Multiply",
+        -1,
+        2
+       ]
+      ]
+     ]
+    },
+    {
+     "cue": "One unknown left.",
+     "why": "\\(2k=10\\).",
+     "expression": 5
+    },
+    {
+     "cue": "The stem asks for both constants.",
+     "why": "\\(m=2-k=-3\\).",
+     "expression": [
+      "Set",
+      [
+       "Equal",
+       "k",
+       5
+      ],
+      [
+       "Equal",
+       "m",
+       -3
+      ]
+     ]
+    }
+   ],
+   "answer": {
+    "form": "symbolic",
+    "mathjson": [
+     "Set",
+     [
+      "Equal",
+      "k",
+      5
+     ],
+     [
+      "Equal",
+      "m",
+      -3
+     ]
+    ]
+   },
+   "delivery": {
+    "mode": "step_reveal",
+    "reason": "rule 1"
+   }
+  },
+  {
+   "id": "LSN-CON-01015#err-BC-ERR-01003",
+   "type": "common_error",
+   "bands": [
+    "low",
+    "mid"
+   ],
+   "skills": [
+    "BC-SKL-01053"
+   ],
+   "sources": [
+    "BC-ERR-01003",
+    "BC-MIS-01001"
+   ],
+   "evidence_tag": "inferred",
+   "error_id": "BC-ERR-01003",
+   "observed_behavior": "The response states that the limit does not exist on the grounds that the function has no value at the input.",
+   "scoring_consequence": "Both the value point and any justification point are lost.",
+   "wrong_step": {
+    "text": "\\(\\frac{x^2-1}{x-1}\\) has no value at 1, so the left limit is called nonexistent.",
+    "expression": [
+     "Multiply",
+     [
+      "Add",
+      [
+       "Power",
+       1,
+       2
+      ],
+      [
+       "Multiply",
+       -1,
+       1
+      ]
+     ],
+     [
+      "Power",
+      [
+       "Add",
+       1,
+       [
+        "Multiply",
+        -1,
+        1
+       ]
+      ],
+      -1
+     ]
+    ]
+   },
+   "right_step": {
+    "text": "The factor divides out: the left limit is 2.",
+    "expression": 2
+   },
+   "relation": "distinct",
+   "possible_reason": {
+    "misconception_id": "BC-MIS-01001",
+    "text": "a missing or displaced function value is read as a missing or displaced limit"
+   },
+   "delivery": {
+    "mode": "step_reveal",
+    "reason": "rule 1"
+   }
+  },
+  {
+   "id": "LSN-CON-01015#err-BC-ERR-01015",
+   "type": "common_error",
+   "bands": [
+    "low",
+    "mid"
+   ],
+   "skills": [
+    "BC-SKL-01051"
+   ],
+   "sources": [
+    "BC-ERR-01015",
+    "BC-MIS-01009"
+   ],
+   "evidence_tag": "inferred",
+   "error_id": "BC-ERR-01015",
+   "observed_behavior": "The response concludes continuity because the two one sided limits agree, without comparing them with the function value.",
+   "scoring_consequence": "The justification point is lost, and a parameter solved this way can be wrong when the defined value differs.",
+   "wrong_step": {
+    "text": "Limits matched only: \\(k+m=2\\).",
+    "expression": [
+     "Equal",
+     [
+      "Add",
+      [
+       "Multiply",
+       "k",
+       1
+      ],
+      "m"
+     ],
+     2
+    ]
+   },
+   "right_step": {
+    "text": "\\(f(1)=k+m\\) compared too: \\(k+m=2\\).",
+    "expression": [
+     "Equal",
+     [
+      "Add",
+      "k",
+      "m"
+     ],
+     2
+    ]
+   },
+   "relation": "equivalent",
+   "possible_reason": {
+    "misconception_id": "BC-MIS-01009",
+    "text": "most often that the function is defined there or that the one sided limits agree"
+   },
+   "delivery": {
+    "mode": "step_reveal",
+    "reason": "rule 1"
+   }
+  },
+  {
+   "id": "LSN-CON-01015#err-BC-ERR-01017",
+   "type": "common_error",
+   "bands": [
+    "low"
+   ],
+   "skills": [
+    "BC-SKL-01051"
+   ],
+   "sources": [
+    "BC-ERR-01017"
+   ],
+   "evidence_tag": "inferred",
+   "error_id": "BC-ERR-01017",
+   "observed_behavior": "The response substitutes the boundary input into the branch that does not apply on that side.",
+   "scoring_consequence": "The one sided limit is wrong and every point depending on it is lost.",
+   "wrong_step": {
+    "text": "\\(x^2+3\\) used at 1: \\(k+m=4\\).",
+    "expression": [
+     "Equal",
+     [
+      "Add",
+      "k",
+      "m"
+     ],
+     [
+      "Add",
+      [
+       "Power",
+       1,
+       2
+      ],
+      3
+     ]
+    ]
+   },
+   "right_step": {
+    "text": "The left branch gives \\(k+m=2\\).",
+    "expression": [
+     "Equal",
+     [
+      "Add",
+      "k",
+      "m"
+     ],
+     2
+    ]
+   },
+   "relation": "distinct",
+   "delivery": {
+    "mode": "step_reveal",
+    "reason": "rule 1"
+   }
+  },
+  {
+   "id": "LSN-CON-01015#prq-BC-PRQ-01001",
+   "type": "prerequisite_bridge",
+   "bands": [
+    "low",
+    "mid"
+   ],
+   "skills": [
+    "BC-SKL-01050"
+   ],
+   "sources": [
+    "BC-PRQ-01001"
+   ],
+   "evidence_tag": "inferred",
+   "prerequisite_id": "BC-PRQ-01001",
+   "text": "Factor and divide out a common factor: \\(\\frac{x^2-1}{x-1}=x+1\\) for \\(x\\ne1\\). The slip: stopping at \\(\\frac00\\) with no factoring tried."
+  },
+  {
+   "id": "LSN-CON-01015#prq-BC-PRQ-01003",
+   "type": "prerequisite_bridge",
+   "bands": [
+    "low",
+    "mid"
+   ],
+   "skills": [
+    "BC-SKL-01051",
+    "BC-SKL-01052",
+    "BC-SKL-01053"
+   ],
+   "sources": [
+    "BC-PRQ-01003"
+   ],
+   "evidence_tag": "inferred",
+   "prerequisite_id": "BC-PRQ-01003",
+   "text": "Read a piecewise rule by the branch whose condition holds. The slip: the wrong branch evaluated at a boundary."
+  }
+ ],
+ "checks": [
+  {
+   "id": "LSN-CON-01015#chk-1",
+   "check_kind": "completion",
+   "bands": [
+    "low",
+    "mid"
+   ],
+   "format": "short_answer",
+   "archetype_id": "BC-QA-01008",
+   "parameter_draw": {
+    "left_end": "1",
+    "right_end": "3",
+    "curvature": "1",
+    "lift": "3",
+    "check": "values"
+   },
+   "completes": "LSN-CON-01015#s5",
+   "stem": {
+    "text": "The matching equations are \\(k+m=2\\) and \\(3k+m=12\\). Find \\(k\\) and \\(m\\).",
+    "command_verb": "find"
+   },
+   "answer_key": {
+    "form": "symbolic",
+    "mathjson": [
+     "Set",
+     [
+      "Equal",
+      "k",
+      5
+     ],
+     [
+      "Equal",
+      "m",
+      -3
+     ]
+    ]
+   },
+   "worked_solution": [
+    {
+     "step": 1,
+     "text": "Subtract: \\(2k=10\\).",
+     "mathjson": [
+      "Equal",
+      [
+       "Multiply",
+       2,
+       "k"
+      ],
+      10
+     ]
+    },
+    {
+     "step": 2,
+     "text": "\\(k=5\\).",
+     "mathjson": 5
+    },
+    {
+     "step": 3,
+     "text": "\\(m=2-5=-3\\).",
+     "mathjson": [
+      "Set",
+      [
+       "Equal",
+       "k",
+       5
+      ],
+      [
+       "Equal",
+       "m",
+       -3
+      ]
+     ]
+    }
+   ],
+   "calculator_status": "no_calculator",
+   "representation": "BC-REP-01",
+   "skills": [
+    "BC-SKL-01052"
+   ]
+  },
+  {
+   "id": "LSN-CON-01015#chk-2",
+   "check_kind": "isomorph",
+   "bands": [
+    "low",
+    "mid"
+   ],
+   "format": "short_answer",
+   "archetype_id": "BC-QA-01008",
+   "parameter_draw": {
+    "left_end": "-1",
+    "right_end": "2",
+    "curvature": "1",
+    "lift": "0",
+    "check": "values"
+   },
+   "stem": {
+    "text": "\\(f(x)=\\frac{x^2-1}{x+1}\\) for \\(x<-1\\), \\(kx+m\\) for \\(-1\\le x\\le2\\), \\(x^2\\) for \\(x>2\\). Find \\(k\\) and \\(m\\).",
+    "command_verb": "find"
+   },
+   "answer_key": {
+    "form": "symbolic",
+    "mathjson": [
+     "Set",
+     [
+      "Equal",
+      "k",
+      2
+     ],
+     [
+      "Equal",
+      "m",
+      0
+     ]
+    ]
+   },
+   "worked_solution": [
+    {
+     "step": 1,
+     "text": "At \\(-1\\): the left branch tends to \\(-2\\), so \\(-k+m=-2\\).",
+     "mathjson": [
+      "Equal",
+      [
+       "Add",
+       [
+        "Multiply",
+        -1,
+        "k"
+       ],
+       "m"
+      ],
+      -2
+     ]
+    },
+    {
+     "step": 2,
+     "text": "At 2: \\(2k+m=4\\).",
+     "mathjson": [
+      "Equal",
+      [
+       "Add",
+       [
+        "Multiply",
+        2,
+        "k"
+       ],
+       "m"
+      ],
+      4
+     ]
+    },
+    {
+     "step": 3,
+     "text": "Subtract: \\(3k=6\\).",
+     "mathjson": [
+      "Equal",
+      [
+       "Multiply",
+       3,
+       "k"
+      ],
+      6
+     ]
+    },
+    {
+     "step": 4,
+     "text": "\\(k=2\\).",
+     "mathjson": 2
+    },
+    {
+     "step": 5,
+     "text": "\\(m=0\\).",
+     "mathjson": [
+      "Set",
+      [
+       "Equal",
+       "k",
+       2
+      ],
+      [
+       "Equal",
+       "m",
+       0
+      ]
+     ]
+    }
+   ],
+   "calculator_status": "no_calculator",
+   "representation": "BC-REP-01",
+   "skills": [
+    "BC-SKL-01052"
+   ]
+  },
+  {
+   "id": "LSN-CON-01015#chk-3",
+   "check_kind": "mcq",
+   "bands": [
+    "low"
+   ],
+   "format": "mcq",
+   "archetype_id": "BC-QA-01008",
+   "parameter_draw": {
+    "left_end": "2",
+    "right_end": "4",
+    "curvature": "1",
+    "lift": "-2",
+    "check": "values"
+   },
+   "stem": {
+    "text": "\\(f(x)=\\frac{x^2-4}{x-2}\\) for \\(x<2\\), \\(kx+m\\) for \\(2\\le x\\le4\\), \\(x^2-2\\) for \\(x>4\\). For which \\(k\\) is \\(f\\) continuous?",
+    "command_verb": "find"
+   },
+   "answer_key": {
+    "form": "symbolic",
+    "mathjson": 5
+   },
+   "worked_solution": [
+    {
+     "step": 1,
+     "text": "At 2: \\(2k+m=4\\).",
+     "mathjson": [
+      "Equal",
+      [
+       "Add",
+       [
+        "Multiply",
+        2,
+        "k"
+       ],
+       "m"
+      ],
+      4
+     ]
+    },
+    {
+     "step": 2,
+     "text": "At 4: \\(4k+m=14\\).",
+     "mathjson": [
+      "Equal",
+      [
+       "Add",
+       [
+        "Multiply",
+        4,
+        "k"
+       ],
+       "m"
+      ],
+      14
+     ]
+    },
+    {
+     "step": 3,
+     "text": "Subtract: \\(2k=10\\).",
+     "mathjson": [
+      "Equal",
+      [
+       "Multiply",
+       2,
+       "k"
+      ],
+      10
+     ]
+    },
+    {
+     "step": 4,
+     "text": "\\(k=5\\).",
+     "mathjson": 5
+    }
+   ],
+   "options": [
+    {
+     "id": "A",
+     "is_key": false,
+     "error_path": "BC-ERR-01017",
+     "value": 6,
+     "derivation": "x^2-2 used at 2: 2k+m=2 with 4k+m=14"
+    },
+    {
+     "id": "B",
+     "is_key": false,
+     "error_path": "BC-ERR-01017",
+     "value": 1,
+     "derivation": "x+2 used at 4: 4k+m=6 with 2k+m=4"
+    },
+    {
+     "id": "C",
+     "is_key": true,
+     "error_path": null,
+     "value": 5
+    },
+    {
+     "id": "D",
+     "is_key": false,
+     "error_path": "BC-ERR-01017",
+     "value": 2,
+     "derivation": "wrong branch at both boundaries: 2k+m=2 with 4k+m=6"
+    }
+   ],
+   "calculator_status": "no_calculator",
+   "representation": "BC-REP-01",
+   "skills": [
+    "BC-SKL-01052"
+   ]
+  }
+ ],
+ "refresher": [
+  "LSN-CON-01015#s3",
+  "LSN-CON-01015#err-BC-ERR-01003",
+  "LSN-CON-01015#err-BC-ERR-01015",
+  "LSN-CON-01015#err-BC-ERR-01017",
+  "LSN-CON-01015#s5"
+ ],
+ "provenance": {
+  "author": "claude-opus-5-5",
+  "prompt_version": "generator/lesson_v1",
+  "generated_at": "2026-09-29T00:00:00Z",
+  "signed_off_by": null,
+  "signed_off_at": null,
+  "not_human": true
+ }
+}

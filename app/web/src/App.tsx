@@ -15,13 +15,14 @@ import { ActionFailed } from "./status/LoadState";
 const AssessmentRoute = lazy(() => import("./assessment/AssessmentRoute").then((module) => ({ default: module.AssessmentRoute })));
 const MetricsRoute = lazy(() => import("./evaluation/MetricsRoute").then((module) => ({ default: module.MetricsRoute })));
 const LessonRoute = lazy(() => import("./lessons/LessonRoute").then((module) => ({ default: module.LessonRoute })));
+const LessonsRoute = lazy(() => import("./lessons/LessonsRoute").then((module) => ({ default: module.LessonsRoute })));
 const FrqRoute = lazy(() => import("./frq/FrqRoute").then((module) => ({ default: module.FrqRoute })));
 const OnboardingRoute = lazy(() => import("./onboarding/OnboardingRoute").then((module) => ({ default: module.OnboardingRoute })));
 const ProgressRoute = lazy(() => import("./progress/ProgressRoute").then((module) => ({ default: module.ProgressRoute })));
 const ReviewRoute = lazy(() => import("./review/ReviewRoute").then((module) => ({ default: module.ReviewRoute })));
 const SessionScreen = lazy(() => import("./session/SessionScreen").then((module) => ({ default: module.SessionScreen })));
 
-export type Destination = "home" | "session" | "settings" | "progress" | "review" | "onboarding" | "frq" | "mock" | "lesson";
+export type Destination = "home" | "lessons" | "session" | "settings" | "progress" | "review" | "onboarding" | "frq" | "mock" | "lesson";
 
 export interface DestinationEntry {
    id: Destination;
@@ -36,10 +37,12 @@ export interface UnsuppliedInput {
 /* 08-design-brief.md, Information architecture: settings is reached from the top bar, a session
    from home's one primary action, progress, review, the free-response unit check and the mock
    exam from home, and onboarding only when home sends a first login, an unfinished diagnostic or
-   a long gap there, so none of the last six is here. The library lesson reader is reached only from
-   progress's Lessons section and returns there (15 UI), so it is not here either. */
+   a long gap there, so none of the last six is here. Lessons has its own tab (the operator's ruling
+   of 2026-09-29, amending 15 UI); the lesson reader opens from it or from progress's Lessons section
+   and returns to whichever opened it, so the reader itself is not here. */
 export const DESTINATIONS: ReadonlyArray<DestinationEntry> = [
    { id: "home", label: "Home" },
+   { id: "lessons", label: "Lessons" },
    { id: "settings", label: "Settings" }
 ];
 
@@ -60,6 +63,7 @@ const settingsInputs = [] as const satisfies ReadonlyArray<{
 
 export const UNSUPPLIED_INPUTS: Record<Destination, ReadonlyArray<UnsuppliedInput>> = {
    home: [],
+   lessons: [],
    session: [],
    settings: settingsInputs,
    progress: [],
@@ -72,7 +76,7 @@ export const UNSUPPLIED_INPUTS: Record<Destination, ReadonlyArray<UnsuppliedInpu
 
 type SessionTarget = { resumeSessionId: string | null };
 
-type LessonTarget = { lessonId: string; conceptName: string };
+type LessonTarget = { lessonId: string; conceptName: string; returnTo: "lessons" | "progress" };
 
 type OnboardingTarget = { reason: OnboardingReason; resumeSessionId: string | null };
 
@@ -258,7 +262,7 @@ export function App() {
    }
 
    function openLesson(lessonId: string, conceptName: string) {
-      setLessonTarget({ lessonId, conceptName });
+      setLessonTarget({ lessonId, conceptName, returnTo: destination === "lessons" ? "lessons" : "progress" });
       setDestination("lesson");
    }
 
@@ -347,13 +351,15 @@ export function App() {
 
                {destination === "session" ? <SessionScreen resumeSessionId={sessionTarget.resumeSessionId} /> : null}
 
+               {destination === "lessons" ? <LessonsRoute onOpenLesson={openLesson} /> : null}
+
                {destination === "progress" ? <ProgressRoute onOpenLesson={openLesson} /> : null}
 
                {destination === "lesson" && lessonTarget !== null ? (
                   <LessonRoute
                      lessonId={lessonTarget.lessonId}
                      conceptName={lessonTarget.conceptName}
-                     onLeave={() => setDestination("progress")}
+                     onLeave={() => setDestination(lessonTarget.returnTo)}
                   />
                ) : null}
 

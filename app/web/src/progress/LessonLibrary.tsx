@@ -34,6 +34,8 @@ export function stateCopy(concept: LibraryConcept) {
 export interface LessonLibraryProps {
    library: LibraryPayload;
    onOpenLesson: (lessonId: string, conceptName: string) => void;
+   /* false on the Lessons tab, whose page header already names the list. */
+   titled?: boolean;
 }
 
 function Row({ concept, onOpenLesson }: { concept: LibraryConcept; onOpenLesson: LessonLibraryProps["onOpenLesson"] }) {
@@ -67,14 +69,21 @@ function Row({ concept, onOpenLesson }: { concept: LibraryConcept; onOpenLesson:
    );
 }
 
-export function LessonLibrary({ library, onOpenLesson }: LessonLibraryProps) {
+export function LessonLibrary({ library, onOpenLesson, titled = true }: LessonLibraryProps) {
    const units = [...library.units].sort((first, second) => first.order - second.order);
 
    return (
-      <section className="lesson-library" data-testid="lesson-library" aria-labelledby="lesson-library-heading">
-         <h2 className="section-heading" id="lesson-library-heading">
-            Lessons
-         </h2>
+      <section
+         className="lesson-library"
+         data-testid="lesson-library"
+         aria-labelledby={titled ? "lesson-library-heading" : undefined}
+         aria-label={titled ? undefined : "Lessons"}
+      >
+         {titled ? (
+            <h2 className="section-heading" id="lesson-library-heading">
+               Lessons
+            </h2>
+         ) : null}
 
          <p className="muted">{MASTERY_DISCLAIMER}</p>
 

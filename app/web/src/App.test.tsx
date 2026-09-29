@@ -46,7 +46,8 @@ const PROPS_INTERFACE_BY_DESTINATION: Record<Destination, { file: string; name: 
    onboarding: { file: "onboarding/OnboardingRoute.tsx", name: "OnboardingRouteProps" },
    frq: { file: "frq/FrqRoute.tsx", name: "FrqRouteProps" },
    mock: { file: "assessment/AssessmentRoute.tsx", name: "AssessmentRouteProps" },
-   lesson: { file: "lessons/LessonRoute.tsx", name: "LessonRouteProps" }
+   lesson: { file: "lessons/LessonRoute.tsx", name: "LessonRouteProps" },
+   lessons: { file: "lessons/LessonsRoute.tsx", name: "LessonsRouteProps" }
 };
 
 /* P2 scope item 6 brought the progress screen into phase with its calibration curve. Stage 3 of the
@@ -62,7 +63,7 @@ const OUT_OF_PHASE_SCREENS: string[] = [];
    screen (08, Information architecture). */
 const REACHED_FROM_HOME = ["Progress", "Review", "Free response", "Mock exam"];
 
-const BAR_DESTINATIONS = ["home", "settings"];
+const BAR_DESTINATIONS = ["home", "lessons", "settings"];
 
 /* A local wall-clock moment, so the calendar date the renderer counts from is the same in every
    time zone the suite runs in. */
@@ -486,13 +487,13 @@ afterEach(() => {
 });
 
 describe("the client shell", () => {
-   it("offers home and settings from the bar, opens no session from it, and names no out-of-phase screen", () => {
+   it("offers home, lessons and settings from the bar, opens no session from it, and names no out-of-phase screen", () => {
       mockServer(readyProgress);
       render(<App />);
 
       const labels = buttonsIn(screen.getByRole("navigation")).map((button) => button.textContent);
 
-      expect(labels).toEqual(["Home", "Settings"]);
+      expect(labels).toEqual(["Home", "Lessons", "Settings"]);
       expect(DESTINATIONS.map((entry) => entry.id)).toEqual(BAR_DESTINATIONS);
 
       const shellSource = sourceOf("App.tsx").toLowerCase();
@@ -620,7 +621,7 @@ describe("the client shell", () => {
 
       const labels = buttonsIn(screen.getByRole("navigation")).map((button) => button.textContent);
 
-      expect(labels).toEqual(["Home", "Settings"]);
+      expect(labels).toEqual(["Home", "Lessons", "Settings"]);
       expect(DESTINATIONS.map((entry) => entry.id)).toEqual(BAR_DESTINATIONS);
       expect(mocked.openDiagnostic).not.toHaveBeenCalled();
       expect(mocked.openSession).not.toHaveBeenCalled();
@@ -1271,7 +1272,7 @@ describe("the P7 evaluation screens in the shell", () => {
 
       const labels = buttonsIn(screen.getByRole("navigation")).map((button) => button.textContent);
 
-      expect(labels).toEqual(["Home", "Settings"]);
+      expect(labels).toEqual(["Home", "Lessons", "Settings"]);
 
       visit("settings");
 
@@ -1314,7 +1315,7 @@ describe("home when its requests fail", () => {
 });
 
 describe("the library lesson reader", () => {
-   it("is reached only from progress, is never on the bar, and its back returns to progress", async () => {
+   it("opens from progress, is never on the bar itself, and its back returns to progress", async () => {
       mockServer(readyProgress);
       mocked.readLibrary.mockResolvedValue({
          units: [
@@ -1340,10 +1341,40 @@ describe("the library lesson reader", () => {
       fireEvent.click(await screen.findByRole("button", { name: /The product rule/ }));
 
       expect(await screen.findByTestId("lesson-reader")).toBeTruthy();
-      expect(buttonsIn(screen.getByRole("navigation")).map((button) => button.textContent)).toEqual(["Home", "Settings"]);
+      expect(buttonsIn(screen.getByRole("navigation")).map((button) => button.textContent)).toEqual(["Home", "Lessons", "Settings"]);
 
       fireEvent.click(screen.getByTestId("lesson-back"));
 
+      expect(await screen.findByTestId("lesson-library")).toBeTruthy();
+   });
+
+   it("has its own Lessons tab, which lists the lessons and takes the reader's back", async () => {
+      mockServer(readyProgress);
+      mocked.readLibrary.mockResolvedValue({
+         units: [
+            {
+               id: "BC-UNIT-02",
+               name: "Differentiation: Definition and Fundamental Properties",
+               order: 2,
+               concepts: [
+                  { concept_id: "BC-CON-02013", name: "The product rule", lesson_id: "LSN-CON-02013", version: 1, servable: true, state: "coming_up", read_at: null }
+               ]
+            }
+         ]
+      });
+      mocked.readLessonPlan.mockResolvedValue({ lesson: LESSON, plan: planFor(["LSN-CON-02013#s1"]), band: "low", state: null });
+      mocked.postLessonEvent.mockResolvedValue({ ok: true, state: null });
+
+      render(<App />);
+
+      fireEvent.click(await screen.findByRole("button", { name: "Lessons" }));
+      fireEvent.click(await screen.findByRole("button", { name: /The product rule/ }));
+
+      expect(await screen.findByTestId("lesson-reader")).toBeTruthy();
+
+      fireEvent.click(screen.getByTestId("lesson-back"));
+
+      expect(await screen.findByRole("heading", { name: "Lessons", level: 1 })).toBeTruthy();
       expect(await screen.findByTestId("lesson-library")).toBeTruthy();
    });
 });

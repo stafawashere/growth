@@ -2364,6 +2364,36 @@ items) and items 3 and 6 (Slices 3 and 4). Every gate 11 names for P2 now exists
   ingest, routes, reader, 19 lessons) is next, behind the throughput ruling above, since lessons
   add minutes to block 2 without adding mastery evidence.
 
+- 2026-09-29, lessons into the app (L1 to L3 records), on the operator's instruction to implement the
+  Unit 1 to 8 lessons and leave Units 9 and 10 for later. All 127 Unit 1 to 8 concept lessons are
+  transcribed into `content/lessons/`, and every one is `signed_off`: its record equals its design
+  (`tools/lesson_resolve_compare.py`, now also comparing each check option's letter, key flag, error
+  path and value), its blind re-solve agrees on every worked example and check, and its audit holds
+  no non-ok block (`tools/lesson_sign_off.py`, new). `tools/check_lessons.py content/lessons`: 127
+  read, 127 clean. Work this session: LSN-CON-08021 (arc length) designed and audited; a delta blind
+  re-solve of 32 lessons whose problems or keys changed after the first pass (133 problems, all agree,
+  33 statement answers judged with SymPy evidence, `docs/lessons/verification/answers/`); audits of
+  08010 to 08014; fixes and independent re-audits of every changed block (06011, 07004 to 07006,
+  08008, 08010, 08012, 01006, 01010, 02004, 02006, 02007, 04002, 04008, 04011, 06003); the design
+  checker caps a strategy cue at 20 words (strengthened). App: the empty set converts to MathJSON;
+  the reader drops citation-only parentheticals and evidence tags from served text and leaves out an
+  error pair's expression when both steps share it; ingest lints across a process pool (127 records
+  95 s to 39 s at server start); the NoticesPayload brace the lessons merge dropped is restored;
+  Lessons is its own top-bar tab (the operator's ruling this session, amending 15 UI and 08
+  Information architecture, which kept the library inside progress). Tests, each file under
+  `timeout`: 19 lesson-related pytest files exit 0 (tests/lessons, tests/items/test_mathjson and
+  test_verify, tests/session lesson gate, refresh, purge and service, tests/api lessons routes and
+  session; the invariants at LESSON_INVARIANT_DEMO_EXAMPLES=15, the 1,000-case run was stopped by
+  the operator for time); vitest over src/App.test.tsx, src/progress, src/lessons 17 files, 156
+  tests; the render harness over every record, 256 of 256. Two tests changed with the product: the
+  route test's keys follow the re-transcribed 02013 record, and the shell's pinned bar lists gain
+  Lessons. The deferral integration test now follows the deferred concept across later sessions,
+  since selection keeps its random ties (it failed 2 runs in 3 before; red again with the deferral
+  rule broken). Open: Units 9 and 10 (41 concept designs), 77 prerequisite and 9 decision lessons;
+  the library corrections the designers listed (research 7.3 Independence reversed, the
+  qa_08014 generator's 08041 distractor, retired BC-ERR-08005 still named); the full 1,000-case
+  invariants gate, to be run as parallel per-test processes.
+
 - 2026-09-29, ruling (a) on the mastery throughput, by the operator. `FAILURE_DECAY_ON_SUCCESS`
   0.7 in `app/engine/constants.py`; `app/engine/update.py` multiplies `f_k` by it on a direct full
   success before that success's credit, never on a partial, notation-only answer, failure or

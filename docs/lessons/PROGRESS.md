@@ -51,7 +51,7 @@ Decision ids: LSN-DEC-<unit>-<nn>, nn numbering the unit's sets in the order con
 
 ## Next action
 
-- Session of 2026-09-29 ended on the Opus weekly limit. Read docs/lessons/HANDOFF.md first: it lists what is verified, what is partial and unverified (worker C and D edits under app/), the unfixed audit findings, the served-text sweep, the delta re-solve, and the order to resume in.
+- 2026-09-29: every Unit 1 to 8 concept lesson (127) is signed off and in `content/lessons/`; the app serves them (Lessons tab, first contact in block 2, feedback links). Units 9 and 10, the 77 prerequisite lessons and 9 decision lessons wait for the operator. BUILD-LEDGER.md, "lessons into the app", has the counts and the open items. HANDOFF.md describes the state before this session.
 
 ## Manifest
 
@@ -59,139 +59,139 @@ Decision ids: LSN-DEC-<unit>-<nn>, nn numbering the unit's sets in the order con
 
 | Kind | todo | designed | checked | resolved | signed_off | total |
 |---|---|---|---|---|---|---|
-| concept | 42 | 0 | 128 | 0 | 0 | 170 |
+| concept | 41 | 0 | 2 | 0 | 127 | 170 |
 | prerequisite | 77 | 0 | 0 | 0 | 0 | 77 |
 | decision | 9 | 0 | 1 | 0 | 0 | 10 |
 
 | Lesson | Target | Unit | Status | Note |
 |---|---|---|---|---|
-| LSN-CON-01001 | BC-CON-01001 | 01 | checked | checker clean 2026-09-29 |
-| LSN-CON-01002 | BC-CON-01002 | 01 | checked | checker clean 2026-09-29 |
-| LSN-CON-01003 | BC-CON-01003 | 01 | checked | checker clean 2026-09-29 |
-| LSN-CON-01004 | BC-CON-01004 | 01 | checked | checker clean 2026-09-29 |
-| LSN-CON-01005 | BC-CON-01005 | 01 | checked | checker clean 2026-09-29 |
-| LSN-CON-01006 | BC-CON-01006 | 01 | checked | checker clean 2026-09-29 |
-| LSN-CON-01007 | BC-CON-01007 | 01 | checked | checker clean 2026-09-29 |
-| LSN-CON-01008 | BC-CON-01008 | 01 | checked | checker clean 2026-09-29 |
-| LSN-CON-01009 | BC-CON-01009 | 01 | checked | checker clean 2026-09-29 |
-| LSN-CON-01010 | BC-CON-01010 | 01 | checked | checker clean 2026-09-29 |
-| LSN-CON-01011 | BC-CON-01011 | 01 | checked | checker clean 2026-09-29 |
-| LSN-CON-01012 | BC-CON-01012 | 01 | checked | checker clean 2026-09-29 |
-| LSN-CON-01013 | BC-CON-01013 | 01 | checked | checker clean 2026-09-29 |
-| LSN-CON-01014 | BC-CON-01014 | 01 | checked | checker clean 2026-09-29 |
-| LSN-CON-01015 | BC-CON-01015 | 01 | checked | checker clean 2026-09-29 |
-| LSN-CON-01016 | BC-CON-01016 | 01 | checked | checker clean 2026-09-29 |
-| LSN-CON-01017 | BC-CON-01017 | 01 | checked | checker clean 2026-09-29 |
-| LSN-CON-01018 | BC-CON-01018 | 01 | checked | checker clean 2026-09-29 |
-| LSN-CON-01019 | BC-CON-01019 | 01 | checked | checker clean 2026-09-29 |
-| LSN-CON-02001 | BC-CON-02001 | 02 | checked | checker clean 2026-09-29 |
-| LSN-CON-02002 | BC-CON-02002 | 02 | checked | checker clean 2026-09-29 |
-| LSN-CON-02003 | BC-CON-02003 | 02 | checked | checker clean 2026-09-29 |
-| LSN-CON-02004 | BC-CON-02004 | 02 | checked | checker clean 2026-09-29 |
-| LSN-CON-02005 | BC-CON-02005 | 02 | checked | checker clean 2026-09-29 |
-| LSN-CON-02006 | BC-CON-02006 | 02 | checked | checker clean 2026-09-29 |
-| LSN-CON-02007 | BC-CON-02007 | 02 | checked | checker clean 2026-09-29 |
-| LSN-CON-02008 | BC-CON-02008 | 02 | checked | checker clean 2026-09-29 |
-| LSN-CON-02009 | BC-CON-02009 | 02 | checked | checker clean 2026-09-29 |
-| LSN-CON-02010 | BC-CON-02010 | 02 | checked | checker clean 2026-09-29 |
-| LSN-CON-02011 | BC-CON-02011 | 02 | checked | checker clean 2026-09-29 |
-| LSN-CON-02012 | BC-CON-02012 | 02 | checked | checker clean 2026-09-29 |
-| LSN-CON-02013 | BC-CON-02013 | 02 | checked | reference design; checker clean 2026-09-29 |
-| LSN-CON-02014 | BC-CON-02014 | 02 | checked | checker clean 2026-09-29 |
-| LSN-CON-02015 | BC-CON-02015 | 02 | checked | checker clean 2026-09-29 |
-| LSN-CON-03001 | BC-CON-03001 | 03 | checked | checker clean 2026-09-29 |
-| LSN-CON-03002 | BC-CON-03002 | 03 | checked | checker clean 2026-09-29 |
-| LSN-CON-03003 | BC-CON-03003 | 03 | checked | checker clean 2026-09-29 |
-| LSN-CON-03004 | BC-CON-03004 | 03 | checked | checker clean 2026-09-29 |
-| LSN-CON-03005 | BC-CON-03005 | 03 | checked | checker clean 2026-09-29 |
-| LSN-CON-03006 | BC-CON-03006 | 03 | checked | checker clean 2026-09-29 |
-| LSN-CON-03007 | BC-CON-03007 | 03 | checked | checker clean 2026-09-29 |
-| LSN-CON-03008 | BC-CON-03008 | 03 | checked | checker clean 2026-09-29 |
-| LSN-CON-03009 | BC-CON-03009 | 03 | checked | checker clean 2026-09-29 |
-| LSN-CON-03010 | BC-CON-03010 | 03 | checked | checker clean 2026-09-29 |
-| LSN-CON-04001 | BC-CON-04001 | 04 | checked | checker clean 2026-09-29 |
-| LSN-CON-04002 | BC-CON-04002 | 04 | checked | checker clean 2026-09-29 |
-| LSN-CON-04003 | BC-CON-04003 | 04 | checked | checker clean 2026-09-29 |
-| LSN-CON-04004 | BC-CON-04004 | 04 | checked | checker clean 2026-09-29 |
-| LSN-CON-04005 | BC-CON-04005 | 04 | checked | checker clean 2026-09-29 |
-| LSN-CON-04006 | BC-CON-04006 | 04 | checked | checker clean 2026-09-29 |
-| LSN-CON-04007 | BC-CON-04007 | 04 | checked | checker clean 2026-09-29 |
-| LSN-CON-04008 | BC-CON-04008 | 04 | checked | checker clean 2026-09-29 |
-| LSN-CON-04009 | BC-CON-04009 | 04 | checked | checker clean 2026-09-29 |
-| LSN-CON-04010 | BC-CON-04010 | 04 | checked | checker clean 2026-09-29 |
-| LSN-CON-04011 | BC-CON-04011 | 04 | checked | checker clean 2026-09-29 |
-| LSN-CON-04012 | BC-CON-04012 | 04 | checked | checker clean 2026-09-29 |
-| LSN-CON-04013 | BC-CON-04013 | 04 | checked | checker clean 2026-09-29 |
-| LSN-CON-04014 | BC-CON-04014 | 04 | checked | checker clean 2026-09-29 |
-| LSN-CON-04015 | BC-CON-04015 | 04 | checked | checker clean 2026-09-29 |
-| LSN-CON-05001 | BC-CON-05001 | 05 | checked | checker clean 2026-09-29 |
-| LSN-CON-05002 | BC-CON-05002 | 05 | checked | checker clean 2026-09-29 |
-| LSN-CON-05003 | BC-CON-05003 | 05 | checked | checker clean 2026-09-29 |
-| LSN-CON-05004 | BC-CON-05004 | 05 | checked | checker clean 2026-09-29 |
-| LSN-CON-05005 | BC-CON-05005 | 05 | checked | checker clean 2026-09-29 |
-| LSN-CON-05006 | BC-CON-05006 | 05 | checked | checker clean 2026-09-29 |
-| LSN-CON-05007 | BC-CON-05007 | 05 | checked | checker clean 2026-09-29 |
-| LSN-CON-05008 | BC-CON-05008 | 05 | checked | checker clean 2026-09-29 |
-| LSN-CON-05009 | BC-CON-05009 | 05 | checked | checker clean 2026-09-29 |
-| LSN-CON-05010 | BC-CON-05010 | 05 | checked | checker clean 2026-09-29 |
-| LSN-CON-05011 | BC-CON-05011 | 05 | checked | checker clean 2026-09-29 |
-| LSN-CON-05012 | BC-CON-05012 | 05 | checked | checker clean 2026-09-29 |
-| LSN-CON-05013 | BC-CON-05013 | 05 | checked | checker clean 2026-09-29 |
-| LSN-CON-05014 | BC-CON-05014 | 05 | checked | checker clean 2026-09-29 |
-| LSN-CON-05015 | BC-CON-05015 | 05 | checked | checker clean 2026-09-29 |
-| LSN-CON-06001 | BC-CON-06001 | 06 | checked | checker clean 2026-09-29 |
-| LSN-CON-06002 | BC-CON-06002 | 06 | checked | checker clean 2026-09-29 |
-| LSN-CON-06003 | BC-CON-06003 | 06 | checked | checker clean 2026-09-29 |
-| LSN-CON-06004 | BC-CON-06004 | 06 | checked | checker clean 2026-09-29 |
-| LSN-CON-06005 | BC-CON-06005 | 06 | checked | checker clean 2026-09-29 |
-| LSN-CON-06006 | BC-CON-06006 | 06 | checked | checker clean 2026-09-29 |
-| LSN-CON-06007 | BC-CON-06007 | 06 | checked | checker clean 2026-09-29 |
-| LSN-CON-06008 | BC-CON-06008 | 06 | checked | checker clean 2026-09-29 |
-| LSN-CON-06009 | BC-CON-06009 | 06 | checked | checker clean 2026-09-29 |
-| LSN-CON-06010 | BC-CON-06010 | 06 | checked | checker clean 2026-09-29 |
-| LSN-CON-06011 | BC-CON-06011 | 06 | checked | checker clean 2026-09-29 |
-| LSN-CON-06012 | BC-CON-06012 | 06 | checked | checker clean 2026-09-29 |
-| LSN-CON-06013 | BC-CON-06013 | 06 | checked | checker clean 2026-09-29 |
-| LSN-CON-06014 | BC-CON-06014 | 06 | checked | checker clean 2026-09-29 |
-| LSN-CON-06015 | BC-CON-06015 | 06 | checked | checker clean 2026-09-29 |
-| LSN-CON-06016 | BC-CON-06016 | 06 | checked | checker clean 2026-09-29 |
-| LSN-CON-06017 | BC-CON-06017 | 06 | checked | checker clean 2026-09-29 |
-| LSN-CON-06018 | BC-CON-06018 | 06 | checked | checker clean 2026-09-29 |
-| LSN-CON-06019 | BC-CON-06019 | 06 | checked | checker clean 2026-09-29 |
-| LSN-CON-06020 | BC-CON-06020 | 06 | checked | checker clean 2026-09-29 |
-| LSN-CON-07001 | BC-CON-07001 | 07 | checked | checker clean 2026-09-29 |
-| LSN-CON-07002 | BC-CON-07002 | 07 | checked | checker clean 2026-09-29 |
-| LSN-CON-07003 | BC-CON-07003 | 07 | checked | checker clean 2026-09-29 |
-| LSN-CON-07004 | BC-CON-07004 | 07 | checked | checker clean 2026-09-29 |
-| LSN-CON-07005 | BC-CON-07005 | 07 | checked | checker clean 2026-09-29 |
-| LSN-CON-07006 | BC-CON-07006 | 07 | checked | checker clean 2026-09-29 |
-| LSN-CON-07007 | BC-CON-07007 | 07 | checked | checker clean 2026-09-29 |
-| LSN-CON-07008 | BC-CON-07008 | 07 | checked | checker clean 2026-09-29 |
-| LSN-CON-07009 | BC-CON-07009 | 07 | checked | checker clean 2026-09-29 |
-| LSN-CON-07010 | BC-CON-07010 | 07 | checked | checker clean 2026-09-29 |
-| LSN-CON-07011 | BC-CON-07011 | 07 | checked | checker clean 2026-09-29 |
-| LSN-CON-07012 | BC-CON-07012 | 07 | checked | checker clean 2026-09-29 |
-| LSN-CON-08001 | BC-CON-08001 | 08 | checked | checker clean 2026-09-29 |
-| LSN-CON-08002 | BC-CON-08002 | 08 | checked | checker clean 2026-09-29 |
-| LSN-CON-08003 | BC-CON-08003 | 08 | checked | checker clean 2026-09-29 |
-| LSN-CON-08004 | BC-CON-08004 | 08 | checked | checker clean 2026-09-29 |
-| LSN-CON-08005 | BC-CON-08005 | 08 | checked | checker clean 2026-09-29 |
-| LSN-CON-08006 | BC-CON-08006 | 08 | checked | checker clean 2026-09-29 |
-| LSN-CON-08007 | BC-CON-08007 | 08 | checked | checker clean 2026-09-29 |
-| LSN-CON-08008 | BC-CON-08008 | 08 | checked | checker clean 2026-09-29 |
-| LSN-CON-08009 | BC-CON-08009 | 08 | checked | checker clean 2026-09-29 |
-| LSN-CON-08010 | BC-CON-08010 | 08 | checked | checker clean 2026-09-29 |
-| LSN-CON-08011 | BC-CON-08011 | 08 | checked | checker clean 2026-09-29 |
-| LSN-CON-08012 | BC-CON-08012 | 08 | checked | checker clean 2026-09-29 |
-| LSN-CON-08013 | BC-CON-08013 | 08 | checked | checker clean 2026-09-29 |
-| LSN-CON-08014 | BC-CON-08014 | 08 | checked | checker clean 2026-09-29 |
-| LSN-CON-08015 | BC-CON-08015 | 08 | checked | checker clean 2026-09-29 |
-| LSN-CON-08016 | BC-CON-08016 | 08 | checked | checker clean 2026-09-29 |
-| LSN-CON-08017 | BC-CON-08017 | 08 | checked | checker clean 2026-09-29 |
-| LSN-CON-08018 | BC-CON-08018 | 08 | checked | checker clean 2026-09-29 |
-| LSN-CON-08019 | BC-CON-08019 | 08 | checked | checker clean 2026-09-29 |
-| LSN-CON-08020 | BC-CON-08020 | 08 | checked | checker clean 2026-09-29 |
-| LSN-CON-08021 | BC-CON-08021 | 08 | todo |  |
+| LSN-CON-01001 | BC-CON-01001 | 01 | signed_off | record signed off 2026-09-29 |
+| LSN-CON-01002 | BC-CON-01002 | 01 | signed_off | record signed off 2026-09-29 |
+| LSN-CON-01003 | BC-CON-01003 | 01 | signed_off | record signed off 2026-09-29 |
+| LSN-CON-01004 | BC-CON-01004 | 01 | signed_off | record signed off 2026-09-29 |
+| LSN-CON-01005 | BC-CON-01005 | 01 | signed_off | record signed off 2026-09-29 |
+| LSN-CON-01006 | BC-CON-01006 | 01 | signed_off | record signed off 2026-09-29 |
+| LSN-CON-01007 | BC-CON-01007 | 01 | signed_off | record signed off 2026-09-29 |
+| LSN-CON-01008 | BC-CON-01008 | 01 | signed_off | record signed off 2026-09-29 |
+| LSN-CON-01009 | BC-CON-01009 | 01 | signed_off | record signed off 2026-09-29 |
+| LSN-CON-01010 | BC-CON-01010 | 01 | signed_off | record signed off 2026-09-29 |
+| LSN-CON-01011 | BC-CON-01011 | 01 | signed_off | record signed off 2026-09-29 |
+| LSN-CON-01012 | BC-CON-01012 | 01 | signed_off | record signed off 2026-09-29 |
+| LSN-CON-01013 | BC-CON-01013 | 01 | signed_off | record signed off 2026-09-29 |
+| LSN-CON-01014 | BC-CON-01014 | 01 | signed_off | record signed off 2026-09-29 |
+| LSN-CON-01015 | BC-CON-01015 | 01 | signed_off | record signed off 2026-09-29 |
+| LSN-CON-01016 | BC-CON-01016 | 01 | signed_off | record signed off 2026-09-29 |
+| LSN-CON-01017 | BC-CON-01017 | 01 | signed_off | record signed off 2026-09-29 |
+| LSN-CON-01018 | BC-CON-01018 | 01 | signed_off | record signed off 2026-09-29 |
+| LSN-CON-01019 | BC-CON-01019 | 01 | signed_off | record signed off 2026-09-29 |
+| LSN-CON-02001 | BC-CON-02001 | 02 | signed_off | record signed off 2026-09-29 |
+| LSN-CON-02002 | BC-CON-02002 | 02 | signed_off | record signed off 2026-09-29 |
+| LSN-CON-02003 | BC-CON-02003 | 02 | signed_off | record signed off 2026-09-29 |
+| LSN-CON-02004 | BC-CON-02004 | 02 | signed_off | record signed off 2026-09-29 |
+| LSN-CON-02005 | BC-CON-02005 | 02 | signed_off | record signed off 2026-09-29 |
+| LSN-CON-02006 | BC-CON-02006 | 02 | signed_off | record signed off 2026-09-29 |
+| LSN-CON-02007 | BC-CON-02007 | 02 | signed_off | record signed off 2026-09-29 |
+| LSN-CON-02008 | BC-CON-02008 | 02 | signed_off | record signed off 2026-09-29 |
+| LSN-CON-02009 | BC-CON-02009 | 02 | signed_off | record signed off 2026-09-29 |
+| LSN-CON-02010 | BC-CON-02010 | 02 | signed_off | record signed off 2026-09-29 |
+| LSN-CON-02011 | BC-CON-02011 | 02 | signed_off | record signed off 2026-09-29 |
+| LSN-CON-02012 | BC-CON-02012 | 02 | signed_off | record signed off 2026-09-29 |
+| LSN-CON-02013 | BC-CON-02013 | 02 | signed_off | record signed off 2026-09-29 |
+| LSN-CON-02014 | BC-CON-02014 | 02 | signed_off | record signed off 2026-09-29 |
+| LSN-CON-02015 | BC-CON-02015 | 02 | signed_off | record signed off 2026-09-29 |
+| LSN-CON-03001 | BC-CON-03001 | 03 | signed_off | record signed off 2026-09-29 |
+| LSN-CON-03002 | BC-CON-03002 | 03 | signed_off | record signed off 2026-09-29 |
+| LSN-CON-03003 | BC-CON-03003 | 03 | signed_off | record signed off 2026-09-29 |
+| LSN-CON-03004 | BC-CON-03004 | 03 | signed_off | record signed off 2026-09-29 |
+| LSN-CON-03005 | BC-CON-03005 | 03 | signed_off | record signed off 2026-09-29 |
+| LSN-CON-03006 | BC-CON-03006 | 03 | signed_off | record signed off 2026-09-29 |
+| LSN-CON-03007 | BC-CON-03007 | 03 | signed_off | record signed off 2026-09-29 |
+| LSN-CON-03008 | BC-CON-03008 | 03 | signed_off | record signed off 2026-09-29 |
+| LSN-CON-03009 | BC-CON-03009 | 03 | signed_off | record signed off 2026-09-29 |
+| LSN-CON-03010 | BC-CON-03010 | 03 | signed_off | record signed off 2026-09-29 |
+| LSN-CON-04001 | BC-CON-04001 | 04 | signed_off | record signed off 2026-09-29 |
+| LSN-CON-04002 | BC-CON-04002 | 04 | signed_off | record signed off 2026-09-29 |
+| LSN-CON-04003 | BC-CON-04003 | 04 | signed_off | record signed off 2026-09-29 |
+| LSN-CON-04004 | BC-CON-04004 | 04 | signed_off | record signed off 2026-09-29 |
+| LSN-CON-04005 | BC-CON-04005 | 04 | signed_off | record signed off 2026-09-29 |
+| LSN-CON-04006 | BC-CON-04006 | 04 | signed_off | record signed off 2026-09-29 |
+| LSN-CON-04007 | BC-CON-04007 | 04 | signed_off | record signed off 2026-09-29 |
+| LSN-CON-04008 | BC-CON-04008 | 04 | signed_off | record signed off 2026-09-29 |
+| LSN-CON-04009 | BC-CON-04009 | 04 | signed_off | record signed off 2026-09-29 |
+| LSN-CON-04010 | BC-CON-04010 | 04 | signed_off | record signed off 2026-09-29 |
+| LSN-CON-04011 | BC-CON-04011 | 04 | signed_off | record signed off 2026-09-29 |
+| LSN-CON-04012 | BC-CON-04012 | 04 | signed_off | record signed off 2026-09-29 |
+| LSN-CON-04013 | BC-CON-04013 | 04 | signed_off | record signed off 2026-09-29 |
+| LSN-CON-04014 | BC-CON-04014 | 04 | signed_off | record signed off 2026-09-29 |
+| LSN-CON-04015 | BC-CON-04015 | 04 | signed_off | record signed off 2026-09-29 |
+| LSN-CON-05001 | BC-CON-05001 | 05 | signed_off | record signed off 2026-09-29 |
+| LSN-CON-05002 | BC-CON-05002 | 05 | signed_off | record signed off 2026-09-29 |
+| LSN-CON-05003 | BC-CON-05003 | 05 | signed_off | record signed off 2026-09-29 |
+| LSN-CON-05004 | BC-CON-05004 | 05 | signed_off | record signed off 2026-09-29 |
+| LSN-CON-05005 | BC-CON-05005 | 05 | signed_off | record signed off 2026-09-29 |
+| LSN-CON-05006 | BC-CON-05006 | 05 | signed_off | record signed off 2026-09-29 |
+| LSN-CON-05007 | BC-CON-05007 | 05 | signed_off | record signed off 2026-09-29 |
+| LSN-CON-05008 | BC-CON-05008 | 05 | signed_off | record signed off 2026-09-29 |
+| LSN-CON-05009 | BC-CON-05009 | 05 | signed_off | record signed off 2026-09-29 |
+| LSN-CON-05010 | BC-CON-05010 | 05 | signed_off | record signed off 2026-09-29 |
+| LSN-CON-05011 | BC-CON-05011 | 05 | signed_off | record signed off 2026-09-29 |
+| LSN-CON-05012 | BC-CON-05012 | 05 | signed_off | record signed off 2026-09-29 |
+| LSN-CON-05013 | BC-CON-05013 | 05 | signed_off | record signed off 2026-09-29 |
+| LSN-CON-05014 | BC-CON-05014 | 05 | signed_off | record signed off 2026-09-29 |
+| LSN-CON-05015 | BC-CON-05015 | 05 | signed_off | record signed off 2026-09-29 |
+| LSN-CON-06001 | BC-CON-06001 | 06 | signed_off | record signed off 2026-09-29 |
+| LSN-CON-06002 | BC-CON-06002 | 06 | signed_off | record signed off 2026-09-29 |
+| LSN-CON-06003 | BC-CON-06003 | 06 | signed_off | record signed off 2026-09-29 |
+| LSN-CON-06004 | BC-CON-06004 | 06 | signed_off | record signed off 2026-09-29 |
+| LSN-CON-06005 | BC-CON-06005 | 06 | signed_off | record signed off 2026-09-29 |
+| LSN-CON-06006 | BC-CON-06006 | 06 | signed_off | record signed off 2026-09-29 |
+| LSN-CON-06007 | BC-CON-06007 | 06 | signed_off | record signed off 2026-09-29 |
+| LSN-CON-06008 | BC-CON-06008 | 06 | signed_off | record signed off 2026-09-29 |
+| LSN-CON-06009 | BC-CON-06009 | 06 | signed_off | record signed off 2026-09-29 |
+| LSN-CON-06010 | BC-CON-06010 | 06 | signed_off | record signed off 2026-09-29 |
+| LSN-CON-06011 | BC-CON-06011 | 06 | signed_off | record signed off 2026-09-29 |
+| LSN-CON-06012 | BC-CON-06012 | 06 | signed_off | record signed off 2026-09-29 |
+| LSN-CON-06013 | BC-CON-06013 | 06 | signed_off | record signed off 2026-09-29 |
+| LSN-CON-06014 | BC-CON-06014 | 06 | signed_off | record signed off 2026-09-29 |
+| LSN-CON-06015 | BC-CON-06015 | 06 | signed_off | record signed off 2026-09-29 |
+| LSN-CON-06016 | BC-CON-06016 | 06 | signed_off | record signed off 2026-09-29 |
+| LSN-CON-06017 | BC-CON-06017 | 06 | signed_off | record signed off 2026-09-29 |
+| LSN-CON-06018 | BC-CON-06018 | 06 | signed_off | record signed off 2026-09-29 |
+| LSN-CON-06019 | BC-CON-06019 | 06 | signed_off | record signed off 2026-09-29 |
+| LSN-CON-06020 | BC-CON-06020 | 06 | signed_off | record signed off 2026-09-29 |
+| LSN-CON-07001 | BC-CON-07001 | 07 | signed_off | record signed off 2026-09-29 |
+| LSN-CON-07002 | BC-CON-07002 | 07 | signed_off | record signed off 2026-09-29 |
+| LSN-CON-07003 | BC-CON-07003 | 07 | signed_off | record signed off 2026-09-29 |
+| LSN-CON-07004 | BC-CON-07004 | 07 | signed_off | record signed off 2026-09-29 |
+| LSN-CON-07005 | BC-CON-07005 | 07 | signed_off | record signed off 2026-09-29 |
+| LSN-CON-07006 | BC-CON-07006 | 07 | signed_off | record signed off 2026-09-29 |
+| LSN-CON-07007 | BC-CON-07007 | 07 | signed_off | record signed off 2026-09-29 |
+| LSN-CON-07008 | BC-CON-07008 | 07 | signed_off | record signed off 2026-09-29 |
+| LSN-CON-07009 | BC-CON-07009 | 07 | signed_off | record signed off 2026-09-29 |
+| LSN-CON-07010 | BC-CON-07010 | 07 | signed_off | record signed off 2026-09-29 |
+| LSN-CON-07011 | BC-CON-07011 | 07 | signed_off | record signed off 2026-09-29 |
+| LSN-CON-07012 | BC-CON-07012 | 07 | signed_off | record signed off 2026-09-29 |
+| LSN-CON-08001 | BC-CON-08001 | 08 | signed_off | record signed off 2026-09-29 |
+| LSN-CON-08002 | BC-CON-08002 | 08 | signed_off | record signed off 2026-09-29 |
+| LSN-CON-08003 | BC-CON-08003 | 08 | signed_off | record signed off 2026-09-29 |
+| LSN-CON-08004 | BC-CON-08004 | 08 | signed_off | record signed off 2026-09-29 |
+| LSN-CON-08005 | BC-CON-08005 | 08 | signed_off | record signed off 2026-09-29 |
+| LSN-CON-08006 | BC-CON-08006 | 08 | signed_off | record signed off 2026-09-29 |
+| LSN-CON-08007 | BC-CON-08007 | 08 | signed_off | record signed off 2026-09-29 |
+| LSN-CON-08008 | BC-CON-08008 | 08 | signed_off | record signed off 2026-09-29 |
+| LSN-CON-08009 | BC-CON-08009 | 08 | signed_off | record signed off 2026-09-29 |
+| LSN-CON-08010 | BC-CON-08010 | 08 | signed_off | record signed off 2026-09-29 |
+| LSN-CON-08011 | BC-CON-08011 | 08 | signed_off | record signed off 2026-09-29 |
+| LSN-CON-08012 | BC-CON-08012 | 08 | signed_off | record signed off 2026-09-29 |
+| LSN-CON-08013 | BC-CON-08013 | 08 | signed_off | record signed off 2026-09-29 |
+| LSN-CON-08014 | BC-CON-08014 | 08 | signed_off | record signed off 2026-09-29 |
+| LSN-CON-08015 | BC-CON-08015 | 08 | signed_off | record signed off 2026-09-29 |
+| LSN-CON-08016 | BC-CON-08016 | 08 | signed_off | record signed off 2026-09-29 |
+| LSN-CON-08017 | BC-CON-08017 | 08 | signed_off | record signed off 2026-09-29 |
+| LSN-CON-08018 | BC-CON-08018 | 08 | signed_off | record signed off 2026-09-29 |
+| LSN-CON-08019 | BC-CON-08019 | 08 | signed_off | record signed off 2026-09-29 |
+| LSN-CON-08020 | BC-CON-08020 | 08 | signed_off | record signed off 2026-09-29 |
+| LSN-CON-08021 | BC-CON-08021 | 08 | signed_off | record signed off 2026-09-29 |
 | LSN-CON-09001 | BC-CON-09001 | 09 | checked | checker clean 2026-09-29 |
 | LSN-CON-09002 | BC-CON-09002 | 09 | todo |  |
 | LSN-CON-09003 | BC-CON-09003 | 09 | todo |  |

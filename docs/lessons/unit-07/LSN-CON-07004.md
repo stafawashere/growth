@@ -115,7 +115,7 @@ BC-QA-07002 is `no_calculator` and its `multipart_structure` names a single MCQ 
    "id": "ki-2",
    "ek_id": "BC-EK-FUN-7C2",
    "depth": "core",
-   "text": "Segments are horizontal where the right side vanishes. With no x in the right side the field repeats along every vertical line; with no y, along every horizontal line.",
+   "text": "Segments are horizontal where the right side vanishes. With no x in the right side the field repeats along every horizontal line; with no y, along every vertical line.",
    "notation": "segment slope",
    "quote": {"text": "Slope fields provide information about the behavior of solutions to first-order differential equations.", "source": "ced:139"},
    "sources": ["BC-EK-FUN-7C2", "ced:139", "research/units/unit-07-differential-equations.md#7.3 Sketching Slope Fields"]

@@ -45,5 +45,70 @@
    }
   ],
   "answers_file": "/tmp/claude-0/-home-user-growth/ac029253-8ff0-5a4b-8b5f-cdcaf5e8ff8d/scratchpad/verify/answers_13.json"
+ },
+ "audit": {
+  "date": "2026-09-29",
+  "auditor": "claude-opus-5-5",
+  "blocks": [
+   {
+    "id": "orientation",
+    "verdict": "ok",
+    "evidence": "Paraphrases BC-SKL-06017 and BC-SKL-06019 description_formal; 44 words."
+   },
+   {
+    "id": "st-1",
+    "verdict": "wrong",
+    "evidence": "Method says 'x alone in the upper limit', but stem-1 and chk-2 have upper limits x^2 and 3x; the written answers are Integral(cos(t),(t,0,x**2)) and Integral(sin(t),(t,1,3*x)), not F(x)=Integral(f(t),(t,a,x))."
+   },
+   {
+    "id": "st-2",
+    "verdict": "over_cap",
+    "evidence": "Cue is 23 words, over the 20 word cue cap."
+   },
+   {
+    "id": "stem-1",
+    "verdict": "unsourced",
+    "evidence": "parameter_draw keys integrand, lower, upper_limit, task are not parameters of BC-QA-06012, whose parameter_spec draws h(x) = integral from a to k x^n of (p t^2 + r) dt; cos t is outside it."
+   },
+   {
+    "id": "stem-2",
+    "verdict": "unsourced",
+    "evidence": "Same draw outside BC-QA-06012's parameter_spec; SymPy F'(x) = 2*x*cos(x**2) confirms the chain method fits."
+   },
+   {
+    "id": "time",
+    "verdict": "ok",
+    "evidence": "BC-QA-06012 calculator_status no_calculator; 62/29 = 2.14 minutes in Section I Part A."
+   },
+   {
+    "id": "chk-1",
+    "verdict": "unsourced",
+    "evidence": "Key correct (SymPy F'(x) = 2*x*cos(x**2), chain rule). Option C error_path BC-ERR-06028 records an answer left in t, not an integral written where a derivative was asked."
+   },
+   {
+    "id": "chk-2",
+    "verdict": "unsourced",
+    "evidence": "Key write is correct. Option B error_path BC-ERR-99032 records malformed integral notation (function equal to its own integral, summation sign, constant on a definite integral), not a derivative method offered."
+   },
+   {
+    "id": "chk-3",
+    "verdict": "unsourced",
+    "evidence": "Key correct (SymPy H'(x) = 3*sin(3*x)). Option A error_path BC-ERR-06028 is mismatched as in chk-1."
+   }
+  ],
+  "advice": [
+   "The contrast delivery for the two stems fits a decision whose only selecting feature is the verb.",
+   "stem-1 and chk-2 describe the accumulation in words and ask for it written, which tests reading more than the write method; with an upper limit of x^2 the write side has no decision content beyond copying.",
+   "Both strategy blocks carry archetype_id BC-QA-06012, which is a differentiation archetype only; st-1 is disclosed as inferred but the id should not claim the archetype.",
+   "Checks are method naming only; one check where the stem gives F and asks for F(2) style values would test the rival at a point, which BC-QA-06012's asked_to_produce names.",
+   "The orientation names the rival habit (naming the task before writing) but no block states the scoring consequence of BC-ERR-06027 (answer point lost, sg-24:15)."
+  ],
+  "counts": {
+   "ok": 2,
+   "unsourced": 5,
+   "wrong": 1,
+   "over_cap": 1,
+   "lint": 0
+  }
  }
 }

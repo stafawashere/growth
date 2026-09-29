@@ -40,7 +40,7 @@ BC-QA-07007 lists BC-PT-99005, 99068, 99004. ex-1 tags BC-PT-99068 on the compar
 
 ## Traps
 
-One active error meets the skill: BC-ERR-07009. Both bands. On ex-1's draw: y = 4 - 2e^x given as the only solution. Possible reason, words from BC-MIS-07005.
+One active error meets the skill: BC-ERR-07009. Both bands. On ex-1's draw: the family 4 + Ce^x reported as the one solution, with C never fixed by y(0) = 2. Possible reason, words from BC-MIS-07005.
 
 ## Representations
 
@@ -147,8 +147,8 @@ BC-QA-07007 is `no_calculator` and its `multipart_structure` names a single MCQ 
    "error_id": "BC-ERR-07009",
    "observed_behavior": "The response treats the family with its constant as a single function.",
    "scoring_consequence": "The distinction the essential knowledge draws between a family and a particular solution is lost.",
-   "wrong_step": {"text": "4 - 2e^x called the only solution.", "expr": "4 - 2*exp(x)"},
-   "right_step": {"text": "4 + Ce^x, every C.", "expr": "4 + C*exp(x)"},
+   "wrong_step": {"text": "4 + Ce^x reported as the one solution; C left unfixed.", "expr": "4 + C*exp(x)"},
+   "right_step": {"text": "A family; y(0) = 2 fixes C = -2.", "expr": "4 - 2*exp(x)"},
    "relation": "distinct",
    "possible_reason": {"misconception_id": "BC-MIS-07005", "text": "reads the equation as determining a single function"},
    "sources": ["BC-ERR-07009", "BC-MIS-07005"]

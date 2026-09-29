@@ -43,7 +43,7 @@ BC-QA-07007 lists BC-PT-99005, 99068 and 99004. ex-1 tags BC-PT-99068 (the chain
 
 ## Traps
 
-Three active errors meet the skills, in the bundle's order: BC-ERR-07006, BC-ERR-07007, BC-ERR-07008. Low band all three; mid band the first two. BC-ERR-07006 and 07007 on ex-1's draw, BC-ERR-07008 on ex-2's draw, where a verdict of failure is the right answer.
+Three active errors meet the skills, in the bundle's order: BC-ERR-07006, BC-ERR-07007, BC-ERR-07008. Low band all three; mid band the first two. BC-ERR-07006 and 07007 on ex-1's draw, BC-ERR-07008 on a candidate that fails the equation itself: y = 2 + 3e^x for dy/dx = -(y - 2), where the sides disagree at x = 0 (3 against -3).
 
 - err-BC-ERR-07006: the candidate put where its derivative belongs. No possible reason: the linked descriptions do not name the step.
 - err-BC-ERR-07007: verdict with no check at x = 0. Possible reason, words from BC-MIS-07005.
@@ -193,8 +193,8 @@ BC-QA-07007 is `no_calculator` and its `multipart_structure` names a single MCQ 
    "error_id": "BC-ERR-07008",
    "observed_behavior": "The response says a candidate is not a solution and shows nothing that fails.",
    "scoring_consequence": "The verdict is unsupported even when correct.",
-   "wrong_step": {"text": "No, with nothing shown.", "expr": "2 + 3*exp(-x)"},
-   "right_step": {"text": "y(0) = 5, not 4.", "expr": "2 + 3*exp(-0)"},
+   "wrong_step": {"text": "y = 2 + 3e^x for dy/dx = -(y - 2): no, with nothing shown.", "expr": "2 + 3*exp(x)"},
+   "right_step": {"text": "At x = 0 the left side is 3, the right side -3.", "expr": "-3"},
    "relation": "distinct",
    "possible_reason": null,
    "sources": ["BC-ERR-07008"]

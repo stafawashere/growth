@@ -41,7 +41,7 @@ ex-1 tags BC-PT-99010 on the classification; ex-2 tags BC-PT-99065 on the curve.
 
 ## Traps
 
-Ten active errors meet the skills; the first four in the bundle's order: BC-ERR-05013, 05021, 05025, 07013. The first three on ex-1's draw; BC-ERR-07013 on ex-2's draw, where the field depends on y only. Possible reason on BC-ERR-05025 from BC-MIS-05028.
+Ten active errors meet the skills; the first four in the bundle's order: BC-ERR-05013, 05021, 05025, 07013. BC-ERR-05025 and 05021 on ex-1's draw; BC-ERR-05013 on dy/dx = (y - 1)(x - 2)^2, y > 1, where the right side vanishes at 2 without a sign change; BC-ERR-07013 on ex-2's draw, where the field depends on y only. Possible reason on BC-ERR-05025 from BC-MIS-05028.
 
 ## Representations
 
@@ -105,7 +105,7 @@ BC-QA-07001 is `no_calculator`, the opening part of a free-response question, so
    "id": "ki-1",
    "ek_id": "BC-EK-FUN-7C3",
    "depth": "core",
-   "text": "A solution curve through a point is tangent to the segment at every point it passes. The sign of the right side says where solutions rise or fall, the flat row is an equilibrium they approach but never cross, and a sign change of the right side marks a turning point.",
+   "text": "A solution curve through a point is tangent to the segment at every point it passes. The sign of the right side says where solutions rise or fall, the flat row is an equilibrium they never cross, whether they approach it depends on the sign of the right side on each side of it, and a sign change of the right side marks a turning point.",
    "notation": "solution curve; horizontal asymptote",
    "quote": {"text": "Solutions to differential equations are functions or families of functions.", "source": "ced:140"},
    "sources": ["BC-EK-FUN-7C3", "ced:140", "research/units/unit-07-differential-equations.md#7.4 Reasoning Using Slope Fields"]
@@ -188,9 +188,9 @@ BC-QA-07001 is `no_calculator`, the opening part of a free-response question, so
    "error_id": "BC-ERR-05013",
    "observed_behavior": "The response reports a relative maximum or minimum at an input where the derivative is zero but keeps its sign on both sides.",
    "scoring_consequence": "The single answer with reason point is lost.",
-   "wrong_step": {"text": "dy/dx = 0 at 2, so an extremum.", "expr": "2"},
-   "right_step": {"text": "Sign changes at 2.", "expr": "2"},
-   "relation": "equivalent",
+   "wrong_step": {"text": "dy/dx = (y - 1)(x - 2)^2 is 0 at 2, so an extremum at 2.", "expr": "FiniteSet(2)"},
+   "right_step": {"text": "Positive on both sides of 2: no extremum.", "expr": "EmptySet"},
+   "relation": "distinct",
    "possible_reason": null,
    "sources": ["BC-ERR-05013"]
   },

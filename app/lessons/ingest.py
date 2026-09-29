@@ -100,7 +100,9 @@ def digest_moved(record, snapshot, context):
    if not target_is_known:
       return True
 
-   if context is not None and hasattr(context, "bundle"):
+   has_context = context is not None
+
+   if has_context:
       current = context.bundle(target)["source_digest"]
    else:
       current = authoring_bundle(target, snapshot)["source_digest"]

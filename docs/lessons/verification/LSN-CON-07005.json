@@ -51,8 +51,8 @@
    },
    {
     "id": "ki-1",
-    "verdict": "wrong",
-    "evidence": "\"the flat row is an equilibrium they approach but never cross\" is false in general: for dy/dx = x(y-2), y(0) = 3, SymPy gives y = e^(x^2/2)+2, which tends to infinity both ways and never approaches y = 2. The research Reading behaviour paragraph says only \"whether they approach\"."
+    "verdict": "ok",
+    "evidence": "fixed 2026-09-30: text now says a solution never crosses the flat row but need not approach it, the sign of the right side on each side deciding; never crossing sourced to sg-23:9 and BC-PT-99065 with the uniqueness condition listed as inferred; SymPy dsolve: x(y - 2), y(0) = 3 gives exp(x**2/2) + 2, limit oo both ways; (2 - y)/2, y(0) = 3 gives 2 + exp(-x/2), limit 2 as x to oo."
    },
    {
     "id": "st-1",
@@ -91,8 +91,8 @@
    },
    {
     "id": "err-BC-ERR-05013",
-    "verdict": "wrong",
-    "evidence": "The record is an extremum declared where the derivative keeps its sign; on this draw the sign of x-2 does change at 2 (SymPy: -1 at x = 1, +1 at x = 3), so the \"wrong step\" reaches a true conclusion and the block does not exhibit the recorded error."
+    "verdict": "ok",
+    "evidence": "fixed 2026-09-30: re-staged on dy/dx = (y - 1)(x - 2)**2, y > 1, where the right side is zero at 2 and keeps its sign: wrong FiniteSet(2) against right EmptySet; SymPy: zero set in x {2}, value 1 at x = 1 and at x = 3 with y = 2; the off-spec draw is listed as inferred."
    },
    {
     "id": "err-BC-ERR-05021",
@@ -141,11 +141,14 @@
    "Interactive for the orientation reading and motion for tracing the curve suit their ideas; the lesson teaches the first line (right side zero) and the rival (solving first) well."
   ],
   "counts": {
-   "ok": 16,
+   "ok": 18,
    "unsourced": 0,
-   "wrong": 2,
+   "wrong": 0,
    "over_cap": 0,
    "lint": 0
   }
- }
+ },
+ "fix_notes": [
+  "ki-1 restated (never crosses, need not approach); err-BC-ERR-05013 on a squared-factor draw so the derivative keeps its sign; two inferred entries added; word_count 765/419 to 789/443, read_minutes 5.1/2.8 to 5.3/3.0. No check stem or key changed; chk-3 option C still carries BC-ERR-05013 for a zero-only reason on a draw where the sign does change (auditor advice, not fixed)."
+ ]
 }

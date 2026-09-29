@@ -50,7 +50,7 @@ Three active errors meet the skills, in the bundle's order (linked BC-MIS at sev
 
 - err-BC-ERR-06031: h taken as -1 across all of [1, 4], giving -12, against -18. Possible reason, words from BC-MIS-06026.
 - err-BC-ERR-99012: the sign kept on reversal, 18, against -18. Possible reason, words from BC-MIS-99004.
-- err-BC-ERR-99032: the whole supplied integral from 0 to 4 used, -30, against -18. Possible reason, words from BC-MIS-08012.
+- err-BC-ERR-99032: a constant of integration attached to the definite integral, -18 + C, against -18; the record names this move (cr-22:3). No possible reason line: neither linked BC-MIS (99011, 08012) describes it.
 
 ## Representations
 
@@ -68,7 +68,7 @@ BC-QA-06013 is `no_calculator`, one part of a multipart FRQ or a single MCQ; the
 
 - chk-1, completion of ex-1, both bands: the forward value 18 is given; the student reverses. Key -18.
 - chk-2, isomorph, both bands. Draw: forward, start -1, gaps [2, 1, 2], first_value -3, whole_value 5, multiple 2, steps [1, 3]. Key 23.
-- chk-3, MCQ, low band. Draw: reversed, start 1, gaps [2, 1, 1], first_value -2, whole_value 6, multiple -2, steps [3, -2]. Key 15. Distractors: 20 (BC-ERR-06031, jump_error), -15 (BC-ERR-99012, lower_error), 11 (BC-ERR-99032, limit_error).
+- chk-3, MCQ, low band. Draw: reversed, start 1, gaps [2, 1, 1], first_value -2, whole_value 6, multiple -2, steps [3, -2]. Key 15. Distractors: 20 (BC-ERR-06031, jump_error), -15 (BC-ERR-99012, lower_error), 15 + C (BC-ERR-99032, a constant of integration attached to the value).
 
 ## Delivery
 
@@ -79,7 +79,7 @@ BC-QA-06013 is `no_calculator`, one part of a multipart FRQ or a single MCQ; the
 
 ## Band plan
 
-- Low (full): orientation, ki-1, ki-2, st-1, st-2, ex-1 with its scoring line, the three error blocks, chk-1 to chk-3. 650 words, 4.4 minutes (cap 900 and 6).
+- Low (full): orientation, ki-1, ki-2, st-1, st-2, ex-1 with its scoring line, the three error blocks, chk-1 to chk-3. 642 words, 4.4 minutes (cap 900 and 6).
 - Mid (brief): orientation, ki-1, st-1, ex-1 with its scoring line, err-BC-ERR-06031, err-BC-ERR-99012, chk-1, chk-2. 446 words, 3.0 minutes (cap 450 and 3).
 - Refresher: ki-1, the three error blocks, ex-1.
 
@@ -87,7 +87,7 @@ BC-QA-06013 is `no_calculator`, one part of a multipart FRQ or a single MCQ; the
 
 - BC-CON-06011; BC-SKL-06029, BC-SKL-06030, BC-SKL-06031, BC-SKL-06032, BC-SKL-06033; BC-EK-FUN-6A2, BC-EK-FUN-6A3; ced:123
 - BC-QA-06013, BC-QA-99010; BC-PT-99004; sg-25:18
-- BC-ERR-06031, BC-ERR-99012, BC-ERR-99032; BC-MIS-06026, BC-MIS-99004, BC-MIS-08012
+- BC-ERR-06031, BC-ERR-99012, BC-ERR-99032; BC-MIS-06026, BC-MIS-99004; cr-22:3
 - research/units/unit-06-integration-accumulation.md#6.6 Applying Properties of Definite Integrals
 - research/question-analysis/question-archetypes.md#BC-QA-06013 Manipulating definite integrals with their properties
 - research/question-analysis/question-archetypes.md#BC-QA-99010 Accumulation bounded above by a comparison function with a supplied improper integral
@@ -197,11 +197,11 @@ BC-QA-06013 is `no_calculator`, one part of a multipart FRQ or a single MCQ; the
    "error_id": "BC-ERR-99032",
    "observed_behavior": "Responses asked for an integral expression write statements that are not integral expressions, such as the function set equal to its own integral, a summation sign placed in front of an integral, or a constant of integration attached to a definite integral, and some reverse the limits or use limits that were never given.",
    "scoring_consequence": "The expression point is not earned, since the requested object is an integral expression and nothing else is being scored in that part.",
-   "wrong_step": {"text": "f over 0 to 4 used.", "expr": "-(3*9 + 2*2 + (-1)*1)"},
-   "right_step": {"text": "f over 1 to 4.", "expr": "-18"},
+   "wrong_step": {"text": "A constant attached to the definite integral: -18 + C.", "expr": "-18 + C"},
+   "right_step": {"text": "A definite integral is a number: -18.", "expr": "-18"},
    "relation": "distinct",
-   "possible_reason": {"misconception_id": "BC-MIS-08012", "text": "from the stated domain instead of from where the region actually begins and ends"},
-   "sources": ["BC-ERR-99032", "BC-MIS-08012"]
+   "possible_reason": null,
+   "sources": ["BC-ERR-99032", "cr-22:3"]
   }
  ],
  "representations": null,
@@ -261,7 +261,7 @@ BC-QA-06013 is `no_calculator`, one part of a multipart FRQ or a single MCQ; the
     {"id": "A", "is_key": false, "expr": "20", "error_path": "BC-ERR-06031", "derivation": "h taken as -2 across the whole interval, no split at the jump"},
     {"id": "B", "is_key": false, "expr": "-15", "error_path": "BC-ERR-99012", "derivation": "the forward value, sign kept on reversal"},
     {"id": "C", "is_key": true, "expr": "15", "error_path": null},
-    {"id": "D", "is_key": false, "expr": "11", "error_path": "BC-ERR-99032", "derivation": "the supplied integral from 1 to 5 used in place of 3 to 5"}
+    {"id": "D", "is_key": false, "expr": "15 + C", "error_path": "BC-ERR-99032", "derivation": "a constant of integration attached to the definite integral's value"}
    ],
    "calculator_status": "no_calculator",
    "skills": ["BC-SKL-06030"]
@@ -287,7 +287,7 @@ BC-QA-06013 is `no_calculator`, one part of a multipart FRQ or a single MCQ; the
  ],
  "refresher": ["ki-1", "err-BC-ERR-06031", "err-BC-ERR-99012", "err-BC-ERR-99032", "ex-1"],
  "read_minutes": {"full": 4.4, "brief": 3.0},
- "word_count": {"full": 650, "brief": 446},
+ "word_count": {"full": 642, "brief": 446},
  "research_lines": [
   {"file": "research/units/unit-06-integration-accumulation.md", "line": "The integral from a to b equals the negative of the integral from b to a"}
  ],
@@ -295,6 +295,6 @@ BC-QA-06013 is `no_calculator`, one part of a multipart FRQ or a single MCQ; the
   {"claim": "ki-2 is served as a static figure rather than text.", "settles": "The modality A/B in the build plan: skip rate and time to first credited success by mode."},
   {"claim": "BC-QA-06013's scoring pattern is inferred in the record from parts where a correct value alone earns the point.", "settles": "A scoring guideline for a dedicated properties part."}
  ],
- "sources": ["BC-CON-06011", "BC-SKL-06029", "BC-SKL-06030", "BC-SKL-06031", "BC-SKL-06032", "BC-SKL-06033", "BC-EK-FUN-6A2", "BC-EK-FUN-6A3", "ced:123", "BC-QA-06013", "BC-QA-99010", "BC-PT-99004", "sg-25:18", "BC-ERR-06031", "BC-ERR-99012", "BC-ERR-99032", "BC-MIS-06026", "BC-MIS-99004", "BC-MIS-08012", "research/units/unit-06-integration-accumulation.md#6.6 Applying Properties of Definite Integrals", "research/question-analysis/question-archetypes.md#BC-QA-06013 Manipulating definite integrals with their properties", "research/exam/exam-structure.md#Section and part layout"]
+ "sources": ["BC-CON-06011", "BC-SKL-06029", "BC-SKL-06030", "BC-SKL-06031", "BC-SKL-06032", "BC-SKL-06033", "BC-EK-FUN-6A2", "BC-EK-FUN-6A3", "ced:123", "BC-QA-06013", "BC-QA-99010", "BC-PT-99004", "sg-25:18", "BC-ERR-06031", "BC-ERR-99012", "BC-ERR-99032", "BC-MIS-06026", "BC-MIS-99004", "cr-22:3", "research/units/unit-06-integration-accumulation.md#6.6 Applying Properties of Definite Integrals", "research/question-analysis/question-archetypes.md#BC-QA-06013 Manipulating definite integrals with their properties", "research/exam/exam-structure.md#Section and part layout"]
 }
 ```

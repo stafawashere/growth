@@ -74,8 +74,8 @@ BC-QA-08006 is `calculator`, the closing part of the calculator free response qu
 
 ## Band plan
 
-- Low (full): orientation, ki-1, st-1, ex-1 with its reader line, both error blocks, chk-1 to chk-3, the bridge. 500 words, 3.4 minutes (cap 900 and 6).
-- Mid (brief): orientation, ki-1, st-1, ex-1 with its reader line, both error blocks, chk-1, chk-2, the bridge. 450 words, 3.0 minutes (cap 450 and 3).
+- Low (full): orientation, ki-1, st-1, ex-1 with its reader line, both error blocks, chk-1 to chk-3, the bridge. 496 words, 3.4 minutes (cap 900 and 6).
+- Mid (brief): orientation, ki-1, st-1, ex-1 with its reader line, both error blocks, chk-1, chk-2, the bridge. 446 words, 3.0 minutes (cap 450 and 3).
 - Refresher: ki-1, err-BC-ERR-08016, err-BC-ERR-99004, ex-1.
 
 ## Sources
@@ -122,7 +122,7 @@ BC-QA-08006 is `calculator`, the closing part of the calculator free response qu
   {
    "id": "st-1",
    "archetype_id": "BC-QA-08006",
-   "cue": "The stem asks for the time of the maximum and a justification, from an amount defined by an integral on a closed interval.",
+   "cue": "The stem asks when an amount defined by an integral on a closed interval is greatest, with a justification.",
    "method": "First written line: \\(A'(t)=\\) net rate \\(=0\\).",
    "rival": "Rival: a local argument, or a table missing an endpoint (BC-ERR-99004).",
    "separating_feature": "A closed interval makes both endpoints candidates.",
@@ -246,7 +246,7 @@ BC-QA-08006 is `calculator`, the closing part of the calculator free response qu
  ],
  "refresher": ["ki-1", "err-BC-ERR-08016", "err-BC-ERR-99004", "ex-1"],
  "read_minutes": {"full": 3.4, "brief": 3.0},
- "word_count": {"full": 500, "brief": 450},
+ "word_count": {"full": 496, "brief": 446},
  "research_lines": [
   {"file": "research/scoring/justification-requirements.md", "line": "The sharpest recurring rule is that a local argument does not justify a global claim."}
  ],

@@ -15,7 +15,7 @@ Served text, from BC-CON-07005 `description_plain` and the topic's Assessment be
 
 ## Key ideas
 
-All five skills map to BC-EK-FUN-7C3 (ced:140), one core block, both bands, from the Solution curve and Reading behaviour paragraphs. Anchor quote from ced:140.
+All five skills map to BC-EK-FUN-7C3 (ced:140), one core block, both bands, from the Solution curve and Reading behaviour paragraphs. Anchor quote from ced:140. The Reading behaviour paragraph says the field shows "whether" solutions approach a horizontal asymptote, so ki-1 says a solution need not approach the flat row: SymPy gives y = e^(x^2/2) + 2 for dy/dx = x(y - 2), y(0) = 3, which tends to infinity both ways, and y = 2 + e^(-x/2) for dy/dx = (2 - y)/2, y(0) = 3, which approaches 2 from above. "Never crosses" is the sketch standard's correct side condition (sg-23:9, BC-PT-99065); it holds where solutions through a point are unique, as for this lesson's polynomial right sides [inferred].
 
 ## Recognition
 
@@ -69,8 +69,8 @@ BC-QA-07001 is `no_calculator`, the opening part of a free-response question, so
 
 ## Band plan
 
-- Low (full): orientation, ki-1, st-1 to st-3, ex-1 and ex-2 with lines, four error blocks, chk-1 to chk-3, bridge. 765 words, 5.1 minutes (cap 900 and 6).
-- Mid (brief): orientation, ki-1, st-1, ex-1 and its line, err-BC-ERR-05013, err-BC-ERR-05021, chk-1, chk-2, bridge. 419 words, 2.8 minutes (cap 450 and 3).
+- Low (full): orientation, ki-1, st-1 to st-3, ex-1 and ex-2 with lines, four error blocks, chk-1 to chk-3, bridge. 789 words, 5.3 minutes (cap 900 and 6).
+- Mid (brief): orientation, ki-1, st-1, ex-1 and its line, err-BC-ERR-05013, err-BC-ERR-05021, chk-1, chk-2, bridge. 443 words, 3.0 minutes (cap 450 and 3).
 - Refresher: ki-1, the four error blocks, ex-1.
 
 ## Sources
@@ -85,7 +85,7 @@ BC-QA-07001 is `no_calculator`, the opening part of a free-response question, so
 - research/question-analysis/question-archetypes.md#BC-QA-07010 Behaviour of a solution obtained from the differential equation itself
 - research/scoring/justification-requirements.md#Reasons about slope fields and concavity
 - research/exam/exam-structure.md#Section and part layout
-- [inferred] ex-1 on BC-QA-07010; BC-PT-99005 untagged; interactive and motion modes. Settled as listed in the machine record.
+- [inferred] ex-1 on BC-QA-07010; BC-PT-99005 untagged; interactive and motion modes; BC-ERR-05013 on an off-spec draw with a squared factor; never crossing the flat row resting on uniqueness. Settled as listed in the machine record.
 
 ## Machine record
 
@@ -105,10 +105,10 @@ BC-QA-07001 is `no_calculator`, the opening part of a free-response question, so
    "id": "ki-1",
    "ek_id": "BC-EK-FUN-7C3",
    "depth": "core",
-   "text": "A solution curve through a point is tangent to the segment at every point it passes. The sign of the right side says where solutions rise or fall, the flat row is an equilibrium they never cross, whether they approach it depends on the sign of the right side on each side of it, and a sign change of the right side marks a turning point.",
+   "text": "A solution curve through a point is tangent to the segment at every point it passes. The sign of the right side says where solutions rise or fall, and a sign change marks a turning point. A solution never crosses the flat row, an equilibrium, but need not approach it; the sign of the right side on each side decides.",
    "notation": "solution curve; horizontal asymptote",
    "quote": {"text": "Solutions to differential equations are functions or families of functions.", "source": "ced:140"},
-   "sources": ["BC-EK-FUN-7C3", "ced:140", "research/units/unit-07-differential-equations.md#7.4 Reasoning Using Slope Fields"]
+   "sources": ["BC-EK-FUN-7C3", "ced:140", "BC-PT-99065", "sg-23:9", "research/units/unit-07-differential-equations.md#7.4 Reasoning Using Slope Fields"]
   }
  ],
  "strategy": [
@@ -188,7 +188,7 @@ BC-QA-07001 is `no_calculator`, the opening part of a free-response question, so
    "error_id": "BC-ERR-05013",
    "observed_behavior": "The response reports a relative maximum or minimum at an input where the derivative is zero but keeps its sign on both sides.",
    "scoring_consequence": "The single answer with reason point is lost.",
-   "wrong_step": {"text": "dy/dx = (y - 1)(x - 2)^2 is 0 at 2, so an extremum at 2.", "expr": "FiniteSet(2)"},
+   "wrong_step": {"text": "dy/dx = (y - 1)(x - 2)^2, y > 1, is 0 at 2, so an extremum at 2.", "expr": "FiniteSet(2)"},
    "right_step": {"text": "Positive on both sides of 2: no extremum.", "expr": "EmptySet"},
    "relation": "distinct",
    "possible_reason": null,
@@ -310,8 +310,8 @@ BC-QA-07001 is `no_calculator`, the opening part of a free-response question, so
   {"block": "err-BC-ERR-07013", "mode": "step_reveal", "reason": "rule 1", "sources": []}
  ],
  "refresher": ["ki-1", "err-BC-ERR-05013", "err-BC-ERR-05021", "err-BC-ERR-05025", "err-BC-ERR-07013", "ex-1"],
- "read_minutes": {"full": 5.1, "brief": 2.8},
- "word_count": {"full": 765, "brief": 419},
+ "read_minutes": {"full": 5.3, "brief": 3.0},
+ "word_count": {"full": 789, "brief": 443},
  "research_lines": [
   {"file": "research/units/unit-07-differential-equations.md", "line": "A solution curve through a point follows the segments of the field, so it is tangent to the segment at every point it passes"}
  ],
@@ -319,7 +319,9 @@ BC-QA-07001 is `no_calculator`, the opening part of a free-response question, so
   {"claim": "ex-1 uses BC-QA-07010 rather than the primary BC-QA-07001, because the first two error blocks served in the mid band are classification errors.", "settles": "An error ordering that places sketch errors first for BC-CON-07005, or a reviewer decision on example choice."},
   {"claim": "BC-PT-99005 is not tagged on the critical input in ex-1, to keep the brief band at or under 450 words.", "settles": "A band cap that excludes reader lines."},
   {"claim": "The orientation is an interactive draggable point and ki-1 a motion trace.", "settles": "The modality A/B in the build plan."},
-  {"claim": "BC-ERR-07013 is shown on ex-2's draw, not ex-1's.", "settles": "A field-reading error block whose draw matches ex-1."}
+  {"claim": "BC-ERR-07013 is shown on ex-2's draw, not ex-1's.", "settles": "A field-reading error block whose draw matches ex-1."},
+  {"claim": "BC-ERR-05013 is shown on dy/dx = (y - 1)(x - 2)^2, y > 1, which BC-QA-07010's parameter_spec cannot produce (its roots are simple, so the sign always changes); the squared factor follows the record's non_conceptual_causes entry on a factor of even multiplicity.", "settles": "A BC-QA-07010 parameter that allows a repeated root, or a reviewer decision on off-spec error draws."},
+  {"claim": "ki-1's never crosses the flat row holds where solutions through a point are unique; the library states it as the sketch standard's correct side condition (sg-23:9), not as a theorem.", "settles": "A research or CED line stating the uniqueness condition."}
  ],
  "sources": ["BC-CON-07005", "BC-SKL-07014", "BC-SKL-07015", "BC-SKL-07016", "BC-SKL-07017", "BC-SKL-07018", "BC-EK-FUN-7C3", "ced:140", "BC-QA-07001", "BC-QA-07002", "BC-QA-07005", "BC-QA-07010", "BC-FRQ-2023-Q3-A", "BC-FRQ-2024-Q3-A", "BC-PT-99010", "BC-PT-99065", "sg-23:9", "sg-24:9", "sg-26:11", "BC-ERR-05013", "BC-ERR-05021", "BC-ERR-05025", "BC-ERR-07013", "BC-MIS-05028", "BC-PRQ-07006", "research/units/unit-07-differential-equations.md#7.4 Reasoning Using Slope Fields", "research/question-analysis/question-archetypes.md#BC-QA-07001 Solution curve sketched on a supplied slope field", "research/question-analysis/question-archetypes.md#BC-QA-07005 Direction of an approximation decided from the second derivative of a solution", "research/question-analysis/question-archetypes.md#BC-QA-07010 Behaviour of a solution obtained from the differential equation itself", "research/scoring/justification-requirements.md#Reasons about slope fields and concavity", "research/exam/exam-structure.md#Section and part layout"]
 }

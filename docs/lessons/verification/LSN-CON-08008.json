@@ -50,8 +50,8 @@
    },
    {
     "id": "st-1",
-    "verdict": "over_cap",
-    "evidence": "cue is 23 words, cap 20: 'The stem asks for the time of the maximum and a justification, from an amount defined by an integral on a closed interval.'"
+    "verdict": "ok",
+    "evidence": "fixed 2026-09-30: cue shortened to 19 words, 'The stem asks when an amount defined by an integral on a closed interval is greatest, with a justification.'; no value changed, so no SymPy check applies."
    },
    {
     "id": "ex-1",
@@ -110,11 +110,14 @@
    "BC-PT-99013 (derivative set to zero) is tagged on chk-2 but not in ex-1's reader lines; the first written line the orientation names is not shown as a scored line."
   ],
   "counts": {
-   "ok": 12,
+   "ok": 13,
    "unsourced": 0,
    "wrong": 0,
-   "over_cap": 1,
+   "over_cap": 0,
    "lint": 0
   }
- }
+ },
+ "fix_notes": [
+  "st-1 cue cut from 23 to 19 words; word_count 500/450 to 496/446. No check or example changed."
+ ]
 }

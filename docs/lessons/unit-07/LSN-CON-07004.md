@@ -18,7 +18,7 @@ Served text, from BC-CON-07004 `description_plain` and the topic's Assessment be
 BC-SKL-07010 and 07011 map to BC-EK-FUN-7C1; BC-SKL-07012 and 07013 map to BC-EK-FUN-7C2 (ced:139). Two core blocks, both bands.
 
 - ki-1 (core), BC-EK-FUN-7C1, from the Construction paragraph. No quote, to hold the brief band.
-- ki-2 (core), BC-EK-FUN-7C2, from the Zero slope locus and Independence paragraphs. Anchor quote from ced:139.
+- ki-2 (core), BC-EK-FUN-7C2. The zero slope sentence is from the Zero slope locus paragraph. The independence sentence rests on BC-SKL-07013 (`description_formal`: whether the slope depends on the independent variable, the dependent variable, or both, and the resulting pattern) and the BC-ERR-07013 `discriminating_probe`, with the direction checked in SymPy: for dy/dx = 2(y + 1) the slope is 2 at (0, 0), (1, 0) and (2, 0) and 4 at (0, 1). It is not taken from the research 7.3 Independence paragraph, which states the direction reversed [inferred]. Anchor quote from ced:139.
 
 ## Recognition
 
@@ -87,6 +87,7 @@ BC-QA-07002 is `no_calculator` and its `multipart_structure` names a single MCQ 
 - research/scoring/justification-requirements.md#Reasons about slope fields and concavity
 - research/exam/exam-structure.md#Section and part layout
 - [inferred] Figures rather than text. Settled by the modality A/B.
+- [inferred] ki-2's independence direction, from BC-SKL-07013 and SymPy, since the research 7.3 Independence paragraph states it reversed. Settled by a corrected research paragraph or a CED line.
 
 ## Machine record
 
@@ -115,10 +116,10 @@ BC-QA-07002 is `no_calculator` and its `multipart_structure` names a single MCQ 
    "id": "ki-2",
    "ek_id": "BC-EK-FUN-7C2",
    "depth": "core",
-   "text": "Segments are horizontal where the right side vanishes. With no x in the right side the field repeats along every horizontal line; with no y, along every vertical line.",
+   "text": "Segments are horizontal where the right side vanishes. With no x in the right side, segments are identical along each horizontal line; with no y, along each vertical line.",
    "notation": "segment slope",
    "quote": {"text": "Slope fields provide information about the behavior of solutions to first-order differential equations.", "source": "ced:139"},
-   "sources": ["BC-EK-FUN-7C2", "ced:139", "research/units/unit-07-differential-equations.md#7.3 Sketching Slope Fields"]
+   "sources": ["BC-EK-FUN-7C2", "ced:139", "BC-SKL-07013", "BC-ERR-07013", "research/units/unit-07-differential-equations.md#7.3 Sketching Slope Fields"]
   }
  ],
  "strategy": [
@@ -306,7 +307,8 @@ BC-QA-07002 is `no_calculator` and its `multipart_structure` names a single MCQ 
   {"file": "research/units/unit-07-differential-equations.md", "line": "Segments are horizontal exactly where the right side vanishes"}
  ],
  "inferred": [
-  {"claim": "The orientation and both key ideas are served as static figures rather than text.", "settles": "The modality A/B in the build plan: skip rate and time to first credited success by mode."}
+  {"claim": "The orientation and both key ideas are served as static figures rather than text.", "settles": "The modality A/B in the build plan: skip rate and time to first credited success by mode."},
+  {"claim": "ki-2's independence direction (no x: identical along each horizontal line; no y: along each vertical line) is derived from BC-SKL-07013 and checked in SymPy, because research/units/unit-07-differential-equations.md 7.3 Independence states it reversed.", "settles": "A corrected Independence paragraph in the research file, or a CED line stating the pattern."}
  ],
  "sources": ["BC-CON-07004", "BC-SKL-07010", "BC-SKL-07011", "BC-SKL-07012", "BC-SKL-07013", "BC-EK-FUN-7C1", "BC-EK-FUN-7C2", "ced:139", "BC-QA-07002", "BC-QA-07010", "BC-PT-99083", "sg-26:11", "BC-ERR-07010", "BC-ERR-07011", "BC-ERR-07012", "BC-ERR-07013", "BC-MIS-99015", "BC-PRQ-06005", "BC-PRQ-07006", "research/units/unit-07-differential-equations.md#7.3 Sketching Slope Fields", "research/question-analysis/question-archetypes.md#BC-QA-07002 Slope field matched to or built from a differential equation", "research/question-analysis/question-archetypes.md#BC-QA-07010 Behaviour of a solution obtained from the differential equation itself", "research/scoring/justification-requirements.md#Reasons about slope fields and concavity", "research/exam/exam-structure.md#Section and part layout"]
 }

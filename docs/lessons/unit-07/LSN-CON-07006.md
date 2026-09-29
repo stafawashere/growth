@@ -38,7 +38,7 @@ BC-QA-07004 lists BC-PT-99034, 99004, 99005. ex-1 tags BC-PT-99034 on the first 
 
 ## Traps
 
-Nine active errors meet the skills; the first four in the bundle's order: BC-ERR-07018, 07019, 07020, 07021. All on ex-1's draw. Possible reasons from BC-MIS-07010, 07011, 07012.
+Nine active errors meet the skills; the first four in the bundle's order: BC-ERR-07018, 07019, 07020, 07021. All on ex-1's draw. In BC-ERR-07020 and 07021 each line names the slope used and the resulting approximation of y(1), and the expression is that approximation (11/2 and 7/2 against 4). Possible reasons from BC-MIS-07010, 07011, 07012.
 
 ## Representations
 
@@ -67,7 +67,7 @@ BC-QA-07004 is `no_calculator`, one 2 point part of a free-response question, so
 
 ## Band plan
 
-- Low (full): orientation, ki-1, st-1, ex-1 and its lines, four error blocks, chk-1 to chk-3, representations, bridge. 561 words, 3.8 minutes (cap 900 and 6).
+- Low (full): orientation, ki-1, st-1, ex-1 and its lines, four error blocks, chk-1 to chk-3, representations, bridge. 588 words, 4.0 minutes (cap 900 and 6).
 - Mid (brief): orientation, ki-1, st-1, ex-1 and its lines, err-BC-ERR-07018, err-BC-ERR-07019, chk-1, chk-2, bridge. 433 words, 2.9 minutes (cap 450 and 3).
 - Refresher: ki-1, the four error blocks, ex-1.
 
@@ -282,8 +282,8 @@ BC-QA-07004 is `no_calculator`, one 2 point part of a free-response question, so
   {"block": "err-BC-ERR-07021", "mode": "step_reveal", "reason": "rule 1", "sources": []}
  ],
  "refresher": ["ki-1", "err-BC-ERR-07018", "err-BC-ERR-07019", "err-BC-ERR-07020", "err-BC-ERR-07021", "ex-1"],
- "read_minutes": {"full": 3.8, "brief": 2.9},
- "word_count": {"full": 561, "brief": 433},
+ "read_minutes": {"full": 4.0, "brief": 2.9},
+ "word_count": {"full": 588, "brief": 433},
  "research_lines": [
   {"file": "research/units/unit-07-differential-equations.md", "line": "the new point then replaces the old one"}
  ],

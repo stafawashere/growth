@@ -85,8 +85,8 @@
    },
    {
     "id": "err-BC-ERR-99032",
-    "verdict": "wrong",
-    "evidence": "Bundle BC-ERR-99032 describes non-integral statements (function equal to its own integral, summation sign, constant on a definite integral, limits never given) and an expression point; the served wrong step uses the supplied [0,4] value in place of [1,4] in a value question, which that record does not describe."
+    "verdict": "ok",
+    "evidence": "fixed 2026-09-30: re-staged on a move BC-ERR-99032's observed_behavior names, a constant of integration attached to a definite integral (cr-22:3): wrong -18 + C against right -18, possible reason removed since neither linked BC-MIS (99011, 08012) describes it; SymPy: (-18 + C) - (-18) = C, not zero, so distinct."
    },
    {
     "id": "representations",
@@ -105,8 +105,8 @@
    },
    {
     "id": "chk-3",
-    "verdict": "wrong",
-    "evidence": "Key 15 and values of A (20), B (-15), D (11) verified by SymPy, but distractor D carries error_path BC-ERR-99032: Bundle BC-ERR-99032 describes non-integral statements (function equal to its own integral, summation sign, constant on a definite integral, limits never given) and an expression point; the served wrong step uses the supplied [0,4] value in place of [1,4] in a value question, which that record does not describe."
+    "verdict": "ok",
+    "evidence": "fixed 2026-09-30: option D is now 15 + C with error_path BC-ERR-99032, the constant attached to the definite integral's value; key 15 and stem unchanged; SymPy: key -(-2*8 + 3*1 - 2*1) = 15, options 20, -15, 15, 15 + C pairwise distinct."
    }
   ],
   "advice": [
@@ -116,11 +116,14 @@
    "The table for ki-1 fits tabulated integral values; the split figure for ki-2 fits the jump."
   ],
   "counts": {
-   "ok": 12,
+   "ok": 14,
    "unsourced": 0,
-   "wrong": 2,
+   "wrong": 0,
    "over_cap": 0,
    "lint": 0
   }
- }
+ },
+ "fix_notes": [
+  "Re-staged err-BC-ERR-99032 on the record's constant-of-integration move (-18 + C against -18, cr-22:3) and replaced chk-3 option D (11, wrong interval) with 15 + C on the same path; dropped BC-MIS-08012 from the block and sources; word_count.full 650 to 642. chk-3 key and stem unchanged; option D changed."
+ ]
 }

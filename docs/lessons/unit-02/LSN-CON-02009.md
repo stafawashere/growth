@@ -11,7 +11,7 @@ Concept BC-CON-02009 (skills BC-SKL-02021, BC-SKL-02022, BC-SKL-02023), topic 2.
 
 ## Orientation
 
-Served text (46 words), from BC-CON-02009 `description_plain` and the topic's Assessment behaviour paragraph (research/units/unit-02-differentiation-definition-properties.md#2.4 Connecting Differentiability and Continuity: Determining When Derivatives Do and Do Not Exist): MCQ forms ask whether the function is differentiable at a named point and why, and the reason carries its own weight. Delivered as a static three panel figure (Delivery).
+Served text (37 words), from BC-CON-02009 `description_plain` and the topic's Assessment behaviour paragraph (research/units/unit-02-differentiation-definition-properties.md#2.4 Connecting Differentiability and Continuity: Determining When Derivatives Do and Do Not Exist): MCQ forms ask whether the function is differentiable at a named point and why, and the reason carries its own weight. Delivered as a static three panel figure (Delivery).
 
 ## Key ideas
 
@@ -80,8 +80,8 @@ No draw equals a published BC-QA-02005 `parameter_draw`.
 
 ## Band plan
 
-- Low (full): orientation, ki-1, st-1, st-2, ex-1, err-BC-ERR-02012, err-BC-ERR-02013, err-BC-ERR-03012, chk-1, chk-2, chk-3, the bridge. 0 words, 6.0 minutes (cap 900 and 6).
-- Mid (brief): orientation, ki-1, st-1, ex-1, err-BC-ERR-02012, err-BC-ERR-02013, chk-1, chk-2, the bridge. 0 words, 3.0 minutes (cap 450 and 3).
+- Low (full): orientation, ki-1, st-1, st-2, ex-1, err-BC-ERR-02012, err-BC-ERR-02013, err-BC-ERR-03012, chk-1, chk-2, chk-3, the bridge. 623 words, 4.2 minutes (cap 900 and 6).
+- Mid (brief): orientation, ki-1, st-1, ex-1, err-BC-ERR-02012, err-BC-ERR-02013, chk-1, chk-2, the bridge. 434 words, 2.9 minutes (cap 450 and 3).
 - Refresher: ki-1, err-BC-ERR-02012, err-BC-ERR-02013, err-BC-ERR-03012, ex-1.
 
 ## Sources
@@ -682,12 +682,12 @@ No draw equals a published BC-QA-02005 `parameter_draw`.
   "ex-1"
  ],
  "read_minutes": {
-  "full": 6.0,
-  "brief": 3.0
+  "full": 4.2,
+  "brief": 2.9
  },
  "word_count": {
-  "full": 0,
-  "brief": 0
+  "full": 623,
+  "brief": 434
  },
  "research_lines": [
   {

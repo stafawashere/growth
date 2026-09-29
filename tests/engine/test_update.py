@@ -393,6 +393,51 @@ def test_mastery_conditions(states, graph, label, violation):
    assert states[skill].mastered is False
 
 
+def test_the_example_stage_is_skipped_when_every_gating_parent_is_mastered(states, graph):
+   """R32: a first credited full success not rated guess, with every gating parent mastered,
+   starts the skill at completion. A guess, an unmastered parent, or a second observation leaves
+   the ladder to the counter pair."""
+   skill = "BC-SKL-01024"
+   parent = "BC-SKL-01028"
+
+   def fresh(parent_mastered):
+      states[skill] = SkillState(skill_id=skill, beta=0.0, fading_stage=FadingStage.EXAMPLE)
+      states[parent] = SkillState(skill_id=parent, beta=0.0, mastered=parent_mastered)
+
+   def push(confidence):
+      apply_observation(
+         states,
+         graph,
+         observation_for(
+            NO_FEEDBACK_ARCHETYPE, [skill], MasteryState.MASTERED,
+            served_stage=FadingStage.EXAMPLE, confidence=confidence,
+         ),
+         TODAY,
+      )
+
+   fresh(parent_mastered=True)
+   push(Confidence.UNSURE)
+
+   assert states[skill].fading_stage == FadingStage.COMPLETION
+   assert states[skill].consecutive_successes == 1
+
+   fresh(parent_mastered=True)
+   push(Confidence.GUESS)
+
+   assert states[skill].fading_stage == FadingStage.EXAMPLE
+
+   fresh(parent_mastered=False)
+   push(Confidence.CONFIDENT)
+
+   assert states[skill].fading_stage == FadingStage.EXAMPLE
+
+   fresh(parent_mastered=True)
+   states[skill].credited_observation_count = 1
+   push(Confidence.CONFIDENT)
+
+   assert states[skill].fading_stage == FadingStage.EXAMPLE
+
+
 def test_fading_ladder(states, graph):
    skill = "BC-SKL-01024"
    state = SkillState(skill_id=skill, beta=0.0, fading_stage=FadingStage.EXAMPLE)

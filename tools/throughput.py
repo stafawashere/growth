@@ -135,6 +135,55 @@ def serve_profile(history, graph):
    return profile
 
 
+def blocking_ancestors(skill_id, graph, memo):
+   if skill_id in memo:
+      return memo[skill_id]
+
+   ancestors = set()
+
+   for parent in graph.blocking_parents(skill_id):
+      ancestors.add(parent)
+      ancestors |= blocking_ancestors(parent, graph, memo)
+
+   memo[skill_id] = frozenset(ancestors)
+
+   return memo[skill_id]
+
+
+def blocker_weights(states, graph, teachable):
+   """For every unmastered skill, how many unmastered teachable skills sit behind it on the
+   blocking chains, so the skill whose mastery would open the most is visible."""
+   memo = {}
+   weights = Counter()
+   unmastered = [skill_id for skill_id in teachable if not states[skill_id].mastered]
+
+   for skill_id in unmastered:
+      for ancestor in blocking_ancestors(skill_id, graph, memo):
+         is_open_blocker = ancestor in states and not states[ancestor].mastered
+
+         if is_open_blocker:
+            weights[ancestor] += 1
+
+   return weights
+
+
+def observation_histogram(states, teachable):
+   """Unmastered teachable skills by observation count band."""
+   bands = Counter()
+
+   for skill_id in teachable:
+      state = states[skill_id]
+
+      if state.mastered:
+         continue
+
+      count = state.observation_count
+      band = "0" if count == 0 else "1-9" if count < 10 else "10-29" if count < 30 else "30+"
+      bands[band] += 1
+
+   return dict(bands)
+
+
 def stuck_rows(states, graph, engine_graph, world_model, today, min_observations, profile):
    rows = []
 
@@ -145,7 +194,7 @@ def stuck_rows(states, graph, engine_graph, world_model, today, min_observations
       if not is_candidate:
          continue
 
-      available = engine_graph.archetype_counts.get(skill_id)
+      available = engine_graph.servable_archetype_count(skill_id, states)
       blocking = [parent for parent in graph.blocking_parents(skill_id) if not states[parent].mastered]
       served = profile.get(skill_id, {})
       rows.append({
@@ -270,6 +319,7 @@ def run_one(seed, ability, days, checkpoints, min_observations, trace=None, worl
    )
    last_day = whole_graph.START_DAY + timedelta(days=days - 1)
    profile = serve_profile(history, graph)
+   weights = blocker_weights(states, graph, teachable)
    known = [skill_id for skill_id in teachable if world_model.knows(skill_id)]
    mastered = [skill_id for skill_id in teachable if states[skill_id].mastered]
    false_mastered = [skill_id for skill_id in mastered if not world_model.knows(skill_id)]
@@ -290,6 +340,21 @@ def run_one(seed, ability, days, checkpoints, min_observations, trace=None, worl
       "unit_sizes": {unit: len(skills) for unit, skills in by_unit.items()},
       "completion": unit_completion_days(snapshots, by_unit),
       "stuck": stuck_rows(states, graph, engine_graph, world_model, last_day, min_observations, profile),
+      "unmastered_by_observations": observation_histogram(states, teachable),
+      "top_blockers": [
+         {
+            "skill": skill_id,
+            "blocked": weight,
+            "observations": states[skill_id].observation_count,
+            "failing": failing_conditions(
+               states[skill_id], last_day, engine_graph.servable_archetype_count(skill_id, states)
+            ),
+            "p": round(probability(states[skill_id]), 3),
+            "unaided": states[skill_id].unaided_success_count,
+            "on_fringe": all(states[parent].mastered for parent in graph.blocking_parents(skill_id)),
+         }
+         for skill_id, weight in weights.most_common(12)
+      ],
       "failure_rate": failure_rate_by_window(history),
       "trace": trace_skill(history, graph, trace) if trace else [],
    }
@@ -318,6 +383,17 @@ def format_run(result):
    lines.append("failure rate by 30-day window: " + ", ".join(
       f"day {start}+ {rate} of {count}" for start, count, rate in result["failure_rate"]
    ))
+   lines.append("unmastered by observation count: " + ", ".join(
+      f"{band} obs {count}" for band, count in sorted(result["unmastered_by_observations"].items())
+   ))
+   lines.append("top blockers (unmastered skills with the most unmastered teachable skills behind them):")
+
+   for row in result["top_blockers"]:
+      lines.append(
+         f"  {row['skill']} blocks {row['blocked']} obs={row['observations']} unaided={row['unaided']} "
+         f"p={row['p']} on_fringe={row['on_fringe']} fail={','.join(row['failing'])}"
+      )
+
    stuck = result["stuck"]
    lines.append(f"unmastered with at least the observation floor: {len(stuck)}")
 

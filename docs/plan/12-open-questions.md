@@ -139,6 +139,8 @@ Every parameter below is [inferred] unless noted. The authoritative per-engine l
 | Role max output tokens | tutor 600, grader 2,000, transcriber 1,500, diagnostician 2,000, generator 4,000, verifier 3,000 | 13 | the rate of `stop_reason: "max_tokens"` in production |
 | Cache TTL per role | 1h everywhere, and no breakpoint for a role making fewer than three calls in an hour | 13 | the measured cache hit rate per role |
 | Bank draw rule | least recently served within the archetype, replacing uniform random | 13, 02 | the repeat-exposure rate measured on real serves |
+| Distinct-archetype corroboration denominator | the archetypes servable today (every blocking parent of the archetype's primary mastered), corrected 2026-09-29 from a static count | 02 | the un-mastery rate on a second archetype after a declaration made on one |
+| Example-stage skip | completion on a first credited full success not rated guess with every blocking parent mastered; implemented 2026-09-29 | 01, 02 | the first-attempt success rate at completion against example for skills whose parents are all mastered |
 | Distinct-item corroboration | the three credited unaided successes must come from three distinct item ids | 13, 02 | the false-mastery declaration rate in simulation |
 | Item bank size | 40 verified items per archetype, generated 20 first and topped up on measurement, conditional on the draw rule becoming least recently served (was 30 to 60 until 2026-09-20) | 06, 13 | the 95th percentile per-archetype serve count over the first 60 days of real use, projected to 230 days |
 | Key error rate threshold | unset; measured in P1 | 10, 11 | 100-item audit |

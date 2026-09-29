@@ -43,6 +43,41 @@ class EngineGraph:
    supporting_parents: dict
    hard_children: dict
    archetype_counts: dict = field(default_factory=dict)
+   blocking_parents: dict = field(default_factory=dict)
+   archetype_primaries: dict = field(default_factory=dict)
+
+   def servable_archetype_count(self, skill_id, states):
+      """Mastery condition 3's denominator: the archetypes listing the skill that the student can
+      be served today, meaning every blocking parent of the archetype's primary skill is
+      mastered. A graph built without primaries (the P1 fixture) falls back to the static count."""
+      has_primaries = len(self.archetype_primaries) > 0
+
+      if not has_primaries:
+         return self.archetype_counts.get(skill_id)
+
+      servable = 0
+
+      for _, primary in self.archetype_primaries.get(skill_id, ()):
+         gate_clear = all(
+            states[parent].mastered
+            for parent in self.blocking_parents.get(primary, ())
+            if parent in states
+         )
+
+         if gate_clear:
+            servable += 1
+
+      return servable
+
+   def gating_parents_of(self, skill_id, states):
+      """The parents the example skip of 02 reads: the blocking parents when the snapshot gave
+      them, otherwise every hard parent that has a state."""
+      has_blocking = len(self.blocking_parents) > 0
+
+      if has_blocking:
+         return list(self.blocking_parents.get(skill_id, ()))
+
+      return [parent for parent in self.hard_parents.get(skill_id, ()) if parent in states]
 
 
 @dataclass
@@ -254,6 +289,23 @@ def drop_fading(state):
    state.fading_stage = FADING_ORDER[position - 1]
 
 
+def should_skip_example(state, states, graph, skill_id, is_full_success, confidence):
+   """R32's example skip: a skill whose every gating parent is mastered starts at completion when
+   its first credited attempt is a full success not rated guess. It is the initial stage, read once
+   before the counter pair takes over, so a skill with any credited history is left alone."""
+   is_first_credited = state.credited_observation_count == 0
+   at_example = state.fading_stage == FadingStage.EXAMPLE
+   is_guess = Confidence(confidence) == Confidence.GUESS
+   applies = is_first_credited and at_example and is_full_success and not is_guess
+
+   if not applies:
+      return False
+
+   parents = graph.gating_parents_of(skill_id, states)
+
+   return all(states[parent].mastered for parent in parents if parent in states)
+
+
 def move_counters(state, is_credited_success, is_credited_failure):
    if is_credited_success:
       state.consecutive_successes += 1
@@ -391,6 +443,10 @@ def apply_observation(states, graph, observation, today):
       is_credited_failure = f_credit > 0.0 or is_gap
 
       is_full_success = mastery_state == MasteryState.MASTERED
+      skips_example = should_skip_example(state, states, graph, skill_id, is_full_success, observation.confidence)
+
+      if skips_example:
+         state.fading_stage = FadingStage.COMPLETION
 
       if is_full_success:
          state.f *= constants.FAILURE_DECAY_ON_SUCCESS
@@ -454,7 +510,7 @@ def apply_observation(states, graph, observation, today):
 
          continue
 
-      archetypes_available = graph.archetype_counts.get(skill_id)
+      archetypes_available = graph.servable_archetype_count(skill_id, states)
       is_mastered = evaluate_mastery(state, today, archetypes_available)
 
       if is_mastered:

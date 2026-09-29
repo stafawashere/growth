@@ -624,7 +624,6 @@ BC-QA-04006 has calculator status either, so the lesson takes Section I Part A, 
      "BC-REP-08",
      "BC-REP-01"
     ],
-    "configuration": "ladder against a wall, x^2 + y^2 = 225",
     "controls": [
      {
       "type": "slider",
@@ -644,22 +643,90 @@ BC-QA-04006 has calculator status either, so the lesson takes Section I Part A, 
     "labels": [
      {
       "text": "ladder 15 ft (fixed)",
-      "placement": "inside"
+      "placement": "inside",
+      "at": [
+       5,
+       7
+      ]
      },
      {
       "text": "x(t): foot to wall",
-      "placement": "inside"
+      "placement": "inside",
+      "at": [
+       3,
+       1
+      ]
      },
      {
       "text": "y(t): top height",
-      "placement": "inside"
+      "placement": "inside",
+      "at": [
+       0.5,
+       14.5
+      ]
      },
      {
       "text": "x = 9, y = 12 only at this instant",
-      "placement": "inside"
+      "placement": "inside",
+      "at": [
+       7,
+       13
+      ]
      }
     ],
-    "question": "As the foot slides out, which labelled lengths change and which stay fixed?"
+    "question": "As the foot slides out, which labelled lengths change and which stay fixed?",
+    "window": {
+     "x": [
+      -1,
+      16
+     ],
+     "y": [
+      -1,
+      16
+     ]
+    },
+    "segments": [
+     {
+      "from": [
+       0,
+       0
+      ],
+      "to": [
+       0,
+       15.5
+      ]
+     },
+     {
+      "from": [
+       0,
+       0
+      ],
+      "to": [
+       15.5,
+       0
+      ]
+     },
+     {
+      "from": [
+       9,
+       0
+      ],
+      "to": [
+       0,
+       12
+      ]
+     }
+    ],
+    "points": [
+     {
+      "x": "x",
+      "y": 0
+     },
+     {
+      "x": 0,
+      "y": "sqrt(225 - x**2)"
+     }
+    ]
    },
    "fallback": "two static frames of the ladder at x = 9 and x = 12, with 15 fixed and x and y labelled inside each",
    "keyboard": "Tab focuses the slider; left and right arrow keys move the foot by 0.5 feet; Enter reads out x, y and the fixed length"

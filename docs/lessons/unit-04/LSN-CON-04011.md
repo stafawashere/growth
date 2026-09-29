@@ -542,10 +542,10 @@ BC-QA-04008 has `calculator_status` either, so Section I Part A, 2.14 minutes (r
     },
     "curves": [
      {
-      "expr": "tangent line 4 - (x - 1)"
+      "expr": "4 - (x - 1)"
      },
      {
-      "expr": "f near x = 1, concave up"
+      "expr": "4 - (x - 1) + (x - 1)**2"
      }
     ],
     "points": [
@@ -615,6 +615,28 @@ BC-QA-04008 has `calculator_status` either, so Section I Part A, 2.14 minutes (r
      {
       "text": "point of tangency",
       "placement": "inside"
+     }
+    ],
+    "curves": [
+     {
+      "expr": "4 - (x - 1) + (x - 1)**2"
+     },
+     {
+      "expr": "4 - (x - 1)"
+     }
+    ],
+    "points": [
+     {
+      "x": 1,
+      "y": 4
+     },
+     {
+      "x": "1 + half_width/2",
+      "y": "4 - half_width/2 + half_width**2/4"
+     },
+     {
+      "x": "1 + half_width/2",
+      "y": "4 - half_width/2"
      }
     ]
    },

@@ -293,14 +293,273 @@ BC-QA-08011 is `either`, so Section I Part A, 2.14 minutes (research/exam/exam-s
  "delivery": [
   {"block": "orientation", "mode": "text", "reason": "rule 6: a statement of what a response shows", "sources": ["BC-CON-08016"]},
   {"block": "ki-1", "mode": "figure", "reason": "rule 4: BC-REP-08 on BC-SKL-08036 and BC-SKL-08037; not promoted, the BC-QA-08011 difficulty_variables vary a category", "sources": ["BC-SKL-08036", "BC-SKL-08037"],
-   "spec": {"kind": "slice_shapes", "representations": ["BC-REP-08"],
-    "panels": [{"shape": "equilateral triangle", "distance_role": "side"}, {"shape": "right isosceles triangle", "distance_role": "leg"}, {"shape": "right isosceles triangle", "distance_role": "hypotenuse"}],
-    "labels": [{"text": "s = side: s^2 sqrt(3)/4", "placement": "inside"}, {"text": "s = leg: s^2/2", "placement": "inside"}, {"text": "s = hypotenuse: s^2/4", "placement": "inside"}]},
+   "spec": {
+    "kind": "slice_shapes",
+    "representations": [
+     "BC-REP-08"
+    ],
+    "panels": [
+     {
+      "distance_role": "side",
+      "window": {
+       "x": [
+        -0.5,
+        2.5
+       ],
+       "y": [
+        -0.5,
+        2.2
+       ]
+      },
+      "segments": [
+       {
+        "from": [
+         0,
+         0
+        ],
+        "to": [
+         2,
+         0
+        ]
+       },
+       {
+        "from": [
+         2,
+         0
+        ],
+        "to": [
+         1,
+         1.732
+        ]
+       },
+       {
+        "from": [
+         1,
+         1.732
+        ],
+        "to": [
+         0,
+         0
+        ]
+       }
+      ],
+      "points": [
+       [
+        0,
+        0
+       ],
+       [
+        2,
+        0
+       ]
+      ]
+     },
+     {
+      "distance_role": "leg",
+      "window": {
+       "x": [
+        -0.5,
+        2.5
+       ],
+       "y": [
+        -0.5,
+        2.2
+       ]
+      },
+      "segments": [
+       {
+        "from": [
+         0,
+         0
+        ],
+        "to": [
+         2,
+         0
+        ]
+       },
+       {
+        "from": [
+         2,
+         0
+        ],
+        "to": [
+         0,
+         2
+        ]
+       },
+       {
+        "from": [
+         0,
+         2
+        ],
+        "to": [
+         0,
+         0
+        ]
+       }
+      ],
+      "points": [
+       [
+        0,
+        0
+       ],
+       [
+        2,
+        0
+       ]
+      ]
+     },
+     {
+      "distance_role": "hypotenuse",
+      "window": {
+       "x": [
+        -0.5,
+        2.5
+       ],
+       "y": [
+        -0.5,
+        2.2
+       ]
+      },
+      "segments": [
+       {
+        "from": [
+         0,
+         0
+        ],
+        "to": [
+         2,
+         0
+        ]
+       },
+       {
+        "from": [
+         2,
+         0
+        ],
+        "to": [
+         1,
+         1
+        ]
+       },
+       {
+        "from": [
+         1,
+         1
+        ],
+        "to": [
+         0,
+         0
+        ]
+       }
+      ],
+      "points": [
+       [
+        0,
+        0
+       ],
+       [
+        2,
+        0
+       ]
+      ]
+     }
+    ],
+    "labels": [
+     {
+      "text": "s = side: s^2 sqrt(3)/4",
+      "placement": "inside"
+     },
+     {
+      "text": "s = leg: s^2/2",
+      "placement": "inside"
+     },
+     {
+      "text": "s = hypotenuse: s^2/4",
+      "placement": "inside"
+     }
+    ]
+   },
    "fallback": "the same three panels as a static image with the three labels, and the formulas as text beneath", "keyboard": "none needed: the figure has no control"},
   {"block": "ki-2", "mode": "figure", "reason": "rule 4: BC-REP-08 on BC-SKL-08038", "sources": ["BC-SKL-08038"],
-   "spec": {"kind": "slice_shapes", "representations": ["BC-REP-08"],
-    "panels": [{"shape": "semicircle", "distance_role": "diameter"}],
-    "labels": [{"text": "s = diameter", "placement": "inside"}, {"text": "r = s/2", "placement": "inside"}, {"text": "area pi s^2/8", "placement": "inside"}]},
+   "spec": {
+    "kind": "slice_shapes",
+    "representations": [
+     "BC-REP-08"
+    ],
+    "panels": [
+     {
+      "distance_role": "diameter",
+      "window": {
+       "x": [
+        -0.5,
+        2.5
+       ],
+       "y": [
+        -0.5,
+        1.5
+       ]
+      },
+      "curves": [
+       {
+        "type": "semicircle",
+        "center": [
+         1,
+         0
+        ],
+        "radius": 1
+       }
+      ],
+      "segments": [
+       {
+        "from": [
+         0,
+         0
+        ],
+        "to": [
+         2,
+         0
+        ]
+       },
+       {
+        "from": [
+         1,
+         0
+        ],
+        "to": [
+         1,
+         1
+        ],
+        "style": "dashed"
+       }
+      ],
+      "points": [
+       [
+        0,
+        0
+       ],
+       [
+        2,
+        0
+       ]
+      ]
+     }
+    ],
+    "labels": [
+     {
+      "text": "s = diameter",
+      "placement": "inside"
+     },
+     {
+      "text": "r = s/2",
+      "placement": "inside"
+     },
+     {
+      "text": "area pi s^2/8",
+      "placement": "inside"
+     }
+    ]
+   },
    "fallback": "the semicircle as a static image with the three labels", "keyboard": "none needed: the figure has no control"},
   {"block": "ex-1", "mode": "step_reveal", "reason": "rule 1", "sources": []},
   {"block": "ex-2", "mode": "step_reveal", "reason": "rule 1", "sources": []},

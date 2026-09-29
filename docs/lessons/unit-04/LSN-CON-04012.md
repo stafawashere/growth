@@ -469,10 +469,10 @@ BC-QA-04008 has `calculator_status` either, so Section I Part A, 2.14 minutes (r
     },
     "curves": [
      {
-      "expr": "f near x = 1, concave down"
+      "expr": "2 + (x - 1) - (x - 1)**2/2"
      },
      {
-      "expr": "tangent line 2 + (x - 1)"
+      "expr": "2 + (x - 1)"
      }
     ],
     "labels": [
@@ -503,7 +503,9 @@ BC-QA-04008 has `calculator_status` either, so Section I Part A, 2.14 minutes (r
      "BC-REP-02",
      "BC-REP-04"
     ],
-    "curve": "a curve concave down for x < 0 and concave up for x > 0",
+    "curve": {
+     "expr": "x**3"
+    },
     "controls": [
      {
       "type": "draggable_point",
@@ -528,7 +530,21 @@ BC-QA-04008 has `calculator_status` either, so Section I Part A, 2.14 minutes (r
       "placement": "inside"
      }
     ],
-    "question": "At the chosen point, does the tangent line over or underestimate nearby values?"
+    "question": "At the chosen point, does the tangent line over or underestimate nearby values?",
+    "window": {
+     "x": [
+      -1.5,
+      1.5
+     ],
+     "y": [
+      -3.5,
+      3.5
+     ]
+    },
+    "tangent": {
+     "at": "x",
+     "slope": "3*x**2"
+    }
    },
    "fallback": "two static frames, one point in each concavity region, with the label that holds",
    "keyboard": "Tab focuses the point; left and right arrow keys move it along the curve"

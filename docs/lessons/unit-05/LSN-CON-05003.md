@@ -640,10 +640,54 @@ BC-QA-05014 is `no_calculator` and a single multiple choice or short answer ques
      "BC-REP-02"
     ],
     "panels": [
-     "smooth turn",
-     "cusp",
-     "corner",
-     "vertical tangent"
+     {
+      "curves": [
+       {
+        "expr": "2 - x**2"
+       }
+      ],
+      "points": [
+       {
+        "x": 0
+       }
+      ]
+     },
+     {
+      "curves": [
+       {
+        "expr": "abs(x)**(2/3)"
+       }
+      ],
+      "points": [
+       {
+        "x": 0
+       }
+      ]
+     },
+     {
+      "curves": [
+       {
+        "expr": "abs(x)"
+       }
+      ],
+      "points": [
+       {
+        "x": 0
+       }
+      ]
+     },
+     {
+      "curves": [
+       {
+        "expr": "x**(1/3)"
+       }
+      ],
+      "points": [
+       {
+        "x": 0
+       }
+      ]
+     }
     ],
     "labels": [
      {
@@ -662,7 +706,17 @@ BC-QA-05014 is `no_calculator` and a single multiple choice or short answer ques
       "text": "vertical tangent: f' does not exist",
       "placement": "inside"
      }
-    ]
+    ],
+    "window": {
+     "x": [
+      -2,
+      2
+     ],
+     "y": [
+      -2,
+      3
+     ]
+    }
    },
    "fallback": "four static panels in a row with the same labels",
    "keyboard": "no control; the panels are read in order with Tab"
@@ -681,21 +735,78 @@ BC-QA-05014 is `no_calculator` and a single multiple choice or short answer ques
      "BC-REP-02"
     ],
     "panels": [
-     "relative maximum lower than the left endpoint on a closed interval",
-     "f' = 0 with f rising on both sides"
-    ],
-    "labels": [
      {
-      "text": "relative max, not absolute",
-      "placement": "inside"
+      "window": {
+       "x": [
+        -1,
+        4.5
+       ],
+       "y": [
+        2,
+        8
+       ]
+      },
+      "curves": [
+       {
+        "expr": "-x**3/3 + 2*x**2 - 3*x + 5",
+        "domain": [
+         -0.5,
+         4
+        ]
+       }
+      ],
+      "points": [
+       {
+        "x": -0.5
+       },
+       {
+        "x": 3
+       },
+       {
+        "x": 4
+       }
+      ],
+      "labels": [
+       {
+        "text": "relative max, not absolute",
+        "placement": "inside",
+        "at": "above (3, 5)"
+       },
+       {
+        "text": "endpoint higher",
+        "placement": "inside",
+        "at": "right (-0.5, 7.042)"
+       }
+      ]
      },
      {
-      "text": "endpoint higher",
-      "placement": "inside"
-     },
-     {
-      "text": "f' = 0, no sign change: neither",
-      "placement": "inside"
+      "window": {
+       "x": [
+        -2,
+        2
+       ],
+       "y": [
+        -3,
+        3
+       ]
+      },
+      "curves": [
+       {
+        "expr": "x**3"
+       }
+      ],
+      "points": [
+       {
+        "x": 0,
+        "y": 0
+       }
+      ],
+      "labels": [
+       {
+        "text": "f' = 0, no sign change: neither",
+        "placement": "inside"
+       }
+      ]
      }
     ]
    },

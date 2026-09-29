@@ -262,8 +262,400 @@ BC-QA-05011 is `either`, so Section I Part A, 2.14 minutes per question, in the 
  "delivery": [
   {"block": "orientation", "mode": "text", "reason": "rule 5: a statement of what a response shows; the diagram is served once, on ki-1", "sources": ["BC-SKL-05049"]},
   {"block": "ki-1", "mode": "figure", "reason": "rule 3: BC-REP-08 on BC-SKL-05049; not promoted, BC-QA-05011 difficulty_variables are yes or no features", "sources": ["BC-SKL-05049", "BC-QA-05011"],
-   "spec": {"kind": "geometric_diagram", "representations": ["BC-REP-08"], "shapes": ["a 24 by 24 square sheet with an x by x square cut at each corner", "the folded open box beside it"],
-    "labels": [{"text": "x", "placement": "inside"}, {"text": "24 - 2x", "placement": "inside"}, {"text": "V = x(24 - 2x)^2", "placement": "inside"}, {"text": "0 <= x <= 12", "placement": "inside"}]},
+   "spec": {
+    "kind": "geometric_diagram",
+    "representations": [
+     "BC-REP-08"
+    ],
+    "labels": [
+     {
+      "text": "x",
+      "placement": "inside",
+      "at": [
+       1,
+       1.5
+      ]
+     },
+     {
+      "text": "24 - 2x",
+      "placement": "inside",
+      "at": [
+       8,
+       1.5
+      ]
+     },
+     {
+      "text": "V = x(24 - 2x)^2",
+      "placement": "inside",
+      "at": [
+       30,
+       16
+      ]
+     },
+     {
+      "text": "0 <= x <= 12",
+      "placement": "inside",
+      "at": [
+       30,
+       20
+      ]
+     }
+    ],
+    "window": {
+     "x": [
+      -2,
+      56
+     ],
+     "y": [
+      -2,
+      26
+     ]
+    },
+    "segments": [
+     {
+      "from": [
+       4,
+       0
+      ],
+      "to": [
+       20,
+       0
+      ]
+     },
+     {
+      "from": [
+       20,
+       0
+      ],
+      "to": [
+       20,
+       4
+      ]
+     },
+     {
+      "from": [
+       20,
+       4
+      ],
+      "to": [
+       24,
+       4
+      ]
+     },
+     {
+      "from": [
+       24,
+       4
+      ],
+      "to": [
+       24,
+       20
+      ]
+     },
+     {
+      "from": [
+       24,
+       20
+      ],
+      "to": [
+       20,
+       20
+      ]
+     },
+     {
+      "from": [
+       20,
+       20
+      ],
+      "to": [
+       20,
+       24
+      ]
+     },
+     {
+      "from": [
+       20,
+       24
+      ],
+      "to": [
+       4,
+       24
+      ]
+     },
+     {
+      "from": [
+       4,
+       24
+      ],
+      "to": [
+       4,
+       20
+      ]
+     },
+     {
+      "from": [
+       4,
+       20
+      ],
+      "to": [
+       0,
+       20
+      ]
+     },
+     {
+      "from": [
+       0,
+       20
+      ],
+      "to": [
+       0,
+       4
+      ]
+     },
+     {
+      "from": [
+       0,
+       4
+      ],
+      "to": [
+       4,
+       4
+      ]
+     },
+     {
+      "from": [
+       4,
+       4
+      ],
+      "to": [
+       4,
+       0
+      ]
+     },
+     {
+      "from": [
+       0,
+       0
+      ],
+      "to": [
+       4,
+       0
+      ],
+      "style": "dashed"
+     },
+     {
+      "from": [
+       0,
+       0
+      ],
+      "to": [
+       0,
+       4
+      ],
+      "style": "dashed"
+     },
+     {
+      "from": [
+       20,
+       0
+      ],
+      "to": [
+       24,
+       0
+      ],
+      "style": "dashed"
+     },
+     {
+      "from": [
+       24,
+       0
+      ],
+      "to": [
+       24,
+       4
+      ],
+      "style": "dashed"
+     },
+     {
+      "from": [
+       24,
+       24
+      ],
+      "to": [
+       20,
+       24
+      ],
+      "style": "dashed"
+     },
+     {
+      "from": [
+       24,
+       24
+      ],
+      "to": [
+       24,
+       20
+      ],
+      "style": "dashed"
+     },
+     {
+      "from": [
+       0,
+       24
+      ],
+      "to": [
+       4,
+       24
+      ],
+      "style": "dashed"
+     },
+     {
+      "from": [
+       0,
+       24
+      ],
+      "to": [
+       0,
+       20
+      ],
+      "style": "dashed"
+     },
+     {
+      "from": [
+       4,
+       4
+      ],
+      "to": [
+       20,
+       4
+      ],
+      "style": "dashed"
+     },
+     {
+      "from": [
+       20,
+       4
+      ],
+      "to": [
+       20,
+       20
+      ],
+      "style": "dashed"
+     },
+     {
+      "from": [
+       20,
+       20
+      ],
+      "to": [
+       4,
+       20
+      ],
+      "style": "dashed"
+     },
+     {
+      "from": [
+       4,
+       20
+      ],
+      "to": [
+       4,
+       4
+      ],
+      "style": "dashed"
+     },
+     {
+      "from": [
+       30,
+       0
+      ],
+      "to": [
+       46,
+       0
+      ]
+     },
+     {
+      "from": [
+       46,
+       0
+      ],
+      "to": [
+       46,
+       4
+      ]
+     },
+     {
+      "from": [
+       46,
+       4
+      ],
+      "to": [
+       30,
+       4
+      ]
+     },
+     {
+      "from": [
+       30,
+       4
+      ],
+      "to": [
+       30,
+       0
+      ]
+     },
+     {
+      "from": [
+       30,
+       4
+      ],
+      "to": [
+       36,
+       10
+      ]
+     },
+     {
+      "from": [
+       36,
+       10
+      ],
+      "to": [
+       52,
+       10
+      ]
+     },
+     {
+      "from": [
+       52,
+       10
+      ],
+      "to": [
+       46,
+       4
+      ]
+     },
+     {
+      "from": [
+       46,
+       0
+      ],
+      "to": [
+       52,
+       6
+      ]
+     },
+     {
+      "from": [
+       52,
+       6
+      ],
+      "to": [
+       52,
+       10
+      ]
+     }
+    ]
+   },
    "fallback": "the same sheet and box, static, as a described diagram with the four labels inside", "keyboard": "none needed; no control"},
   {"block": "ex-1", "mode": "step_reveal", "reason": "rule 1", "sources": []},
   {"block": "err-BC-ERR-05050", "mode": "step_reveal", "reason": "rule 1", "sources": []},

@@ -480,7 +480,7 @@ Every key is a verdict, so each is a statement key with option labels.
     "BC-QA-05010"
    ],
    "spec": {
-    "kind": "graph",
+    "kind": "graph_panels",
     "representations": [
      "BC-REP-02"
     ],
@@ -496,16 +496,63 @@ Every key is a verdict, so each is a statement key with option labels.
     },
     "panels": [
      {
-      "curve": "continuous curve on [0, 6]",
-      "marks": [
-       "filled endpoints at x = 0 and x = 6",
-       "highest and lowest points marked"
+      "curves": [
+       {
+        "expr": "3 + 2*sin(x)",
+        "domain": [
+         0,
+         6
+        ]
+       }
+      ],
+      "points": [
+       {
+        "x": 0
+       },
+       {
+        "x": 6
+       },
+       {
+        "x": 1.5708
+       },
+       {
+        "x": 4.7124
+       }
       ]
      },
      {
-      "curve": "same curve with a jump at x = 2",
-      "marks": [
-       "open and filled dots at x = 2"
+      "curves": [
+       {
+        "expr": "3 + 2*sin(x)",
+        "domain": [
+         0,
+         2
+        ]
+       },
+       {
+        "expr": "1.5 + 2*sin(x)",
+        "domain": [
+         2,
+         6
+        ]
+       }
+      ],
+      "points": [
+       {
+        "x": 0
+       },
+       {
+        "x": 6
+       },
+       {
+        "x": 2,
+        "y": 4.819,
+        "style": "open"
+       },
+       {
+        "x": 2,
+        "y": 3.319
+       }
       ]
      }
     ],

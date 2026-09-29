@@ -501,7 +501,13 @@ Every non-text choice is [inferred]; settled by the modality A/B.
     "representations": [
      "BC-REP-02"
     ],
-    "curve": "an increasing curve on [0, 8]",
+    "curve": {
+     "expr": "x**2/8 + 1",
+     "domain": [
+      0,
+      8
+     ]
+    },
     "rectangles": {
      "sum": "left",
      "n": 4
@@ -533,17 +539,254 @@ Every non-text choice is [inferred]; settled by the modality A/B.
     ],
     "panels": [
      {
-      "curve": "increasing",
       "sums": [
        "left",
        "right"
+      ],
+      "curves": [
+       {
+        "expr": "x**2/8 + 1",
+        "domain": [
+         0,
+         8
+        ]
+       }
+      ],
+      "window": {
+       "x": [
+        -0.5,
+        8.5
+       ],
+       "y": [
+        -0.5,
+        10
+       ]
+      },
+      "rectangles": {
+       "sum": "left",
+       "n": 4
+      },
+      "segments": [
+       {
+        "from": [
+         0,
+         0
+        ],
+        "to": [
+         0,
+         1.5
+        ],
+        "style": "dashed"
+       },
+       {
+        "from": [
+         2,
+         0
+        ],
+        "to": [
+         2,
+         3
+        ],
+        "style": "dashed"
+       },
+       {
+        "from": [
+         4,
+         0
+        ],
+        "to": [
+         4,
+         5.5
+        ],
+        "style": "dashed"
+       },
+       {
+        "from": [
+         6,
+         0
+        ],
+        "to": [
+         6,
+         9
+        ],
+        "style": "dashed"
+       },
+       {
+        "from": [
+         0,
+         1.5
+        ],
+        "to": [
+         2,
+         1.5
+        ],
+        "style": "dashed"
+       },
+       {
+        "from": [
+         2,
+         3
+        ],
+        "to": [
+         4,
+         3
+        ],
+        "style": "dashed"
+       },
+       {
+        "from": [
+         4,
+         5.5
+        ],
+        "to": [
+         6,
+         5.5
+        ],
+        "style": "dashed"
+       },
+       {
+        "from": [
+         6,
+         9
+        ],
+        "to": [
+         8,
+         9
+        ],
+        "style": "dashed"
+       },
+       {
+        "from": [
+         8,
+         0
+        ],
+        "to": [
+         8,
+         9
+        ],
+        "style": "dashed"
+       }
       ]
      },
      {
-      "curve": "concave up",
       "sums": [
        "trapezoid",
        "midpoint"
+      ],
+      "curves": [
+       {
+        "expr": "(x - 4)**2/4 + 1",
+        "domain": [
+         0,
+         8
+        ]
+       }
+      ],
+      "window": {
+       "x": [
+        -0.5,
+        8.5
+       ],
+       "y": [
+        -0.5,
+        6
+       ]
+      },
+      "rectangles": {
+       "sum": "midpoint",
+       "n": 4
+      },
+      "segments": [
+       {
+        "from": [
+         0,
+         5
+        ],
+        "to": [
+         2,
+         2
+        ]
+       },
+       {
+        "from": [
+         2,
+         2
+        ],
+        "to": [
+         4,
+         1
+        ]
+       },
+       {
+        "from": [
+         4,
+         1
+        ],
+        "to": [
+         6,
+         2
+        ]
+       },
+       {
+        "from": [
+         6,
+         2
+        ],
+        "to": [
+         8,
+         5
+        ]
+       },
+       {
+        "from": [
+         0,
+         0
+        ],
+        "to": [
+         0,
+         5
+        ]
+       },
+       {
+        "from": [
+         2,
+         0
+        ],
+        "to": [
+         2,
+         2
+        ]
+       },
+       {
+        "from": [
+         4,
+         0
+        ],
+        "to": [
+         4,
+         1
+        ]
+       },
+       {
+        "from": [
+         6,
+         0
+        ],
+        "to": [
+         6,
+         2
+        ]
+       },
+       {
+        "from": [
+         8,
+         0
+        ],
+        "to": [
+         8,
+         5
+        ]
+       }
       ]
      }
     ],

@@ -620,20 +620,115 @@ BC-QA-04006 has `calculator_status` either, so Section I Part A, 2.14 minutes (r
     "representations": [
      "BC-REP-08"
     ],
-    "shape": "cone, vertex down, water to depth h",
     "labels": [
      {
       "text": "h",
-      "placement": "inside"
+      "placement": "inside",
+      "at": [
+       0.2,
+       2
+      ]
      },
      {
       "text": "r",
-      "placement": "inside"
+      "placement": "inside",
+      "at": [
+       0.6,
+       4.5
+      ]
      },
      {
       "text": "height = 2 times top radius",
-      "placement": "inside"
+      "placement": "inside",
+      "at": [
+       -3.8,
+       6.8
+      ]
      }
+    ],
+    "window": {
+     "x": [
+      -4,
+      4
+     ],
+     "y": [
+      -0.5,
+      7
+     ]
+    },
+    "segments": [
+     {
+      "from": [
+       -3,
+       6
+      ],
+      "to": [
+       0,
+       0
+      ]
+     },
+     {
+      "from": [
+       0,
+       0
+      ],
+      "to": [
+       3,
+       6
+      ]
+     },
+     {
+      "from": [
+       3,
+       6
+      ],
+      "to": [
+       -3,
+       6
+      ]
+     },
+     {
+      "from": [
+       -2,
+       4
+      ],
+      "to": [
+       2,
+       4
+      ]
+     },
+     {
+      "from": [
+       0,
+       0
+      ],
+      "to": [
+       0,
+       4
+      ],
+      "style": "dashed"
+     },
+     {
+      "from": [
+       0,
+       4
+      ],
+      "to": [
+       2,
+       4
+      ],
+      "style": "dashed"
+     }
+    ],
+    "points": [
+     [
+      0,
+      0
+     ],
+     [
+      2,
+      4
+     ]
     ]
    },
    "fallback": "the same labelled cone as a static image",
@@ -653,7 +748,6 @@ BC-QA-04006 has `calculator_status` either, so Section I Part A, 2.14 minutes (r
      "BC-REP-08",
      "BC-REP-01"
     ],
-    "shape": "cone, vertex down, height 2 times top radius",
     "controls": [
      {
       "type": "slider",
@@ -673,18 +767,98 @@ BC-QA-04006 has `calculator_status` either, so Section I Part A, 2.14 minutes (r
     "labels": [
      {
       "text": "h: varies",
-      "placement": "inside"
+      "placement": "inside",
+      "at": [
+       0.2,
+       1
+      ]
      },
      {
       "text": "r = h/2: varies",
-      "placement": "inside"
+      "placement": "inside",
+      "at": [
+       -3.8,
+       0.5
+      ]
      },
      {
       "text": "cone shape: fixed",
-      "placement": "inside"
+      "placement": "inside",
+      "at": [
+       -3.8,
+       6.8
+      ]
      }
     ],
-    "question": "Which labels change as the depth changes, and which equation ties them?"
+    "question": "Which labels change as the depth changes, and which equation ties them?",
+    "window": {
+     "x": [
+      -4,
+      4
+     ],
+     "y": [
+      -0.5,
+      7
+     ]
+    },
+    "segments": [
+     {
+      "from": [
+       -3,
+       6
+      ],
+      "to": [
+       0,
+       0
+      ]
+     },
+     {
+      "from": [
+       0,
+       0
+      ],
+      "to": [
+       3,
+       6
+      ]
+     },
+     {
+      "from": [
+       3,
+       6
+      ],
+      "to": [
+       -3,
+       6
+      ]
+     },
+     {
+      "from": [
+       0,
+       0
+      ],
+      "to": [
+       0,
+       6
+      ],
+      "style": "dashed"
+     }
+    ],
+    "curves": [
+     {
+      "expr": "h + 0*sqrt(h**2/4 - x**2)"
+     }
+    ],
+    "points": [
+     {
+      "x": "-h/2",
+      "y": "h"
+     },
+     {
+      "x": "h/2",
+      "y": "h"
+     }
+    ]
    },
    "fallback": "two static frames of the cone at h = 2 and h = 4 with the same labels",
    "keyboard": "Tab focuses the slider; left and right arrow keys step h by 0.5"

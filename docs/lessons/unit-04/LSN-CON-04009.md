@@ -585,20 +585,83 @@ BC-QA-04006 has `calculator_status` either, so Section I Part A, 2.14 minutes (r
     "representations": [
      "BC-REP-08"
     ],
-    "shape": "ladder against a wall",
     "labels": [
      {
       "text": "15: fixed",
-      "placement": "inside"
+      "placement": "inside",
+      "at": [
+       5,
+       7
+      ]
      },
      {
       "text": "x: varies",
-      "placement": "inside"
+      "placement": "inside",
+      "at": [
+       4,
+       1
+      ]
      },
      {
       "text": "y: varies",
-      "placement": "inside"
+      "placement": "inside",
+      "at": [
+       0.5,
+       6
+      ]
      }
+    ],
+    "window": {
+     "x": [
+      -1,
+      16
+     ],
+     "y": [
+      -1,
+      16
+     ]
+    },
+    "segments": [
+     {
+      "from": [
+       0,
+       0
+      ],
+      "to": [
+       0,
+       15.5
+      ]
+     },
+     {
+      "from": [
+       0,
+       0
+      ],
+      "to": [
+       15.5,
+       0
+      ]
+     },
+     {
+      "from": [
+       9,
+       0
+      ],
+      "to": [
+       0,
+       12
+      ]
+     }
+    ],
+    "points": [
+     [
+      9,
+      0
+     ],
+     [
+      0,
+      12
+     ]
     ]
    },
    "fallback": "the same labelled ladder as a static image",
@@ -619,7 +682,6 @@ BC-QA-04006 has `calculator_status` either, so Section I Part A, 2.14 minutes (r
      "BC-REP-08",
      "BC-REP-01"
     ],
-    "shape": "15 meter ladder against a wall",
     "controls": [
      {
       "type": "slider",
@@ -639,18 +701,82 @@ BC-QA-04006 has `calculator_status` either, so Section I Part A, 2.14 minutes (r
     "labels": [
      {
       "text": "x: changes",
-      "placement": "inside"
+      "placement": "inside",
+      "at": [
+       3,
+       1
+      ]
      },
      {
       "text": "y: changes",
-      "placement": "inside"
+      "placement": "inside",
+      "at": [
+       0.5,
+       14.5
+      ]
      },
      {
       "text": "15: stays",
-      "placement": "inside"
+      "placement": "inside",
+      "at": [
+       5,
+       7
+      ]
      }
     ],
-    "question": "Which of the stated numbers would still hold one second later?"
+    "question": "Which of the stated numbers would still hold one second later?",
+    "window": {
+     "x": [
+      -1,
+      16
+     ],
+     "y": [
+      -1,
+      16
+     ]
+    },
+    "segments": [
+     {
+      "from": [
+       0,
+       0
+      ],
+      "to": [
+       0,
+       15.5
+      ]
+     },
+     {
+      "from": [
+       0,
+       0
+      ],
+      "to": [
+       15.5,
+       0
+      ]
+     },
+     {
+      "from": [
+       9,
+       0
+      ],
+      "to": [
+       0,
+       12
+      ]
+     }
+    ],
+    "points": [
+     {
+      "x": "x",
+      "y": 0
+     },
+     {
+      "x": 0,
+      "y": "sqrt(225 - x**2)"
+     }
+    ]
    },
    "fallback": "two static frames at x = 9 and x = 11 with the same labels",
    "keyboard": "Tab focuses the slider; left and right arrow keys step x by 1"

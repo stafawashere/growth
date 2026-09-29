@@ -266,11 +266,78 @@ BC-QA-03006 is `calculator_status` either, a single MCQ or one FRQ part. The des
  "delivery": [
   {"block": "orientation", "mode": "text", "reason": "rule 5: a statement of what a response shows", "sources": ["BC-CON-03006"]},
   {"block": "ki-1", "mode": "interactive", "reason": "rule 3 promoted: BC-REP-02 on BC-SKL-03016 and BC-SKL-03019; BC-QA-03006 difficulty_variables name a graphically given function and the stem asks for a reading of the slope relationship", "sources": ["BC-SKL-03016", "BC-SKL-03019", "BC-QA-03006"],
-   "spec": {"kind": "inverse_pair", "representations": ["BC-REP-02", "BC-REP-01"], "curves": ["f(x) = x^3/4 + x", "the inverse of f, drawn as the reflection of f in y = x", "y = x, dashed"], "window": {"x": [-3, 5], "y": [-3, 5]},
-    "controls": [{"type": "slider", "name": "c", "range": [-2, 2], "step": 0.25, "start": 1}],
-    "drawn": ["the point (c, f(c)) with the tangent line of f there", "the point (f(c), c) with the tangent line of the inverse there", "both slopes as numbers"],
-    "labels": [{"text": "slope of f at (c, f(c))", "placement": "inside"}, {"text": "slope of the inverse at (f(c), c)", "placement": "inside"}, {"text": "y = x", "placement": "inside"}],
-    "question": "As c moves, how does the slope of the inverse at (f(c), c) compare with the slope of f at (c, f(c))?"},
+   "spec": {
+    "kind": "inverse_pair",
+    "representations": [
+     "BC-REP-02",
+     "BC-REP-01"
+    ],
+    "curves": [
+     "f(x) = x^3/4 + x",
+     {
+      "expr": "(2*x + sqrt(4*x**2 + 64/27))**(1/3) + (2*x - sqrt(4*x**2 + 64/27))**(1/3)"
+     },
+     "y = x, dashed",
+     {
+      "expr": "c**3/4 + c + (3*c**2/4 + 1)*(x - c)"
+     },
+     {
+      "expr": "c + (x - (c**3/4 + c))/(3*c**2/4 + 1)"
+     }
+    ],
+    "window": {
+     "x": [
+      -3,
+      5
+     ],
+     "y": [
+      -3,
+      5
+     ]
+    },
+    "controls": [
+     {
+      "type": "slider",
+      "name": "c",
+      "range": [
+       -2,
+       2
+      ],
+      "step": 0.25,
+      "start": 1
+     }
+    ],
+    "drawn": [
+     "the point (c, f(c)) with the tangent line of f there",
+     "the point (f(c), c) with the tangent line of the inverse there",
+     "both slopes as numbers"
+    ],
+    "labels": [
+     {
+      "text": "slope of f at (c, f(c))",
+      "placement": "inside"
+     },
+     {
+      "text": "slope of the inverse at (f(c), c)",
+      "placement": "inside"
+     },
+     {
+      "text": "y = x",
+      "placement": "inside"
+     }
+    ],
+    "question": "As c moves, how does the slope of the inverse at (f(c), c) compare with the slope of f at (c, f(c))?",
+    "points": [
+     {
+      "x": "c",
+      "y": "c**3/4 + c"
+     },
+     {
+      "x": "c**3/4 + c",
+      "y": "c"
+     }
+    ]
+   },
    "fallback": "a static figure at c = 1: the points (1, 1.25) and (1.25, 1) marked, slopes 1.75 and 4/7 written inside the figure beside their tangent lines",
    "keyboard": "Tab focuses the slider; left and right arrow keys move c by one step; Home and End jump to the ends of the range"},
   {"block": "ex-1", "mode": "step_reveal", "reason": "rule 1", "sources": []},

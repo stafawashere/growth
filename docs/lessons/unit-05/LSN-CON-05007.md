@@ -551,7 +551,17 @@ BC-QA-05004 has `calculator_status` either, so the lesson takes Section I Part A
      "BC-REP-02"
     ],
     "top": "f' through (0, -2), (1, 1), (2, 3), (3, 1), (4, -1), (5, 0), (6, 2)",
-    "bottom": "f with f(0) = 0, the tangent drawn at the slider's x",
+    "bottom": {
+     "curve": "1.25*x**2 - 6*x - 0.25*(x - 1)*abs(x - 1) - (x - 2)*abs(x - 2) + 0.75*(x - 4)*abs(x - 4) + 0.25*(x - 5)*abs(x - 5) + 14",
+     "interval": [
+      0,
+      6
+     ],
+     "tangent": {
+      "at": "x",
+      "slope": "-6 + 2.5*x - 0.5*abs(x - 1) - 2*abs(x - 2) + 1.5*abs(x - 4) + 0.5*abs(x - 5)"
+     }
+    },
     "controls": [
      {
       "type": "slider",

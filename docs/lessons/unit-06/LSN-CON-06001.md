@@ -951,7 +951,7 @@ Every non-text choice is [inferred]; settled by the modality A/B.
      "BC-REP-02",
      "BC-REP-03"
     ],
-    "function": "f from ex-1",
+    "function": "2*(abs(x) - abs(x - 1) + 1)/2 + 4*((abs(x - 1) - abs(x - 3) + 4)/2 - 1) - (((abs(x - 1) - abs(x - 3) + 4)/2)**2 - 1) + (((abs(x - 3) - abs(x - 4) + 7)/2)**2 - 9) - 8*((abs(x - 3) - abs(x - 4) + 7)/2 - 3) - (((abs(x - 4) - abs(x - 8))/2)*sqrt(4 - ((abs(x - 4) - abs(x - 8))/2)**2)/2 + 2*asin((abs(x - 4) - abs(x - 8))/4) + pi)",
     "computed": "∫_0^x f(t) dt",
     "x_values": [
      1,

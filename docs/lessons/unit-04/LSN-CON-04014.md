@@ -457,7 +457,7 @@ Two checks: the bundle holds two errors, fewer than chk-3's three distractors ne
     },
     "curves": [
      {
-      "expr": "f near x = 4, through (4, 4) with slope -3"
+      "expr": "4 - 3*(x - 4) + (x - 4)**3/2"
      }
     ],
     "points": [

@@ -715,20 +715,113 @@ Every non-text choice is [inferred]; settled by the modality A/B.
     "representations": [
      "BC-REP-02"
     ],
-    "curve": "an increasing concave-down curve on [0, 4]",
     "n": 4,
     "panels": [
      {
-      "sum": "left"
+      "sum": "left",
+      "rectangles": {
+       "sum": "left",
+       "n": 4
+      }
      },
      {
-      "sum": "right"
+      "sum": "right",
+      "rectangles": {
+       "sum": "right",
+       "n": 4
+      }
      },
      {
-      "sum": "midpoint"
+      "sum": "midpoint",
+      "rectangles": {
+       "sum": "midpoint",
+       "n": 4
+      }
      },
      {
-      "sum": "trapezoid"
+      "sum": "trapezoid",
+      "segments": [
+       {
+        "from": [
+         0,
+         0
+        ],
+        "to": [
+         1,
+         1.75
+        ]
+       },
+       {
+        "from": [
+         1,
+         1.75
+        ],
+        "to": [
+         2,
+         3
+        ]
+       },
+       {
+        "from": [
+         2,
+         3
+        ],
+        "to": [
+         3,
+         3.75
+        ]
+       },
+       {
+        "from": [
+         3,
+         3.75
+        ],
+        "to": [
+         4,
+         4
+        ]
+       },
+       {
+        "from": [
+         1,
+         0
+        ],
+        "to": [
+         1,
+         1.75
+        ]
+       },
+       {
+        "from": [
+         2,
+         0
+        ],
+        "to": [
+         2,
+         3
+        ]
+       },
+       {
+        "from": [
+         3,
+         0
+        ],
+        "to": [
+         3,
+         3.75
+        ]
+       },
+       {
+        "from": [
+         4,
+         0
+        ],
+        "to": [
+         4,
+         4
+        ]
+       }
+      ]
      }
     ],
     "labels": [
@@ -752,7 +845,26 @@ Every non-text choice is [inferred]; settled by the modality A/B.
       "placement": "inside",
       "at": "panel 4 top"
      }
-    ]
+    ],
+    "curves": [
+     {
+      "expr": "2*x - x**2/4",
+      "domain": [
+       0,
+       4
+      ]
+     }
+    ],
+    "window": {
+     "x": [
+      -0.5,
+      4.5
+     ],
+     "y": [
+      -0.5,
+      4.5
+     ]
+    }
    },
    "fallback": "the four panels as one static image with their labels",
    "keyboard": "none needed: the figure has no control"

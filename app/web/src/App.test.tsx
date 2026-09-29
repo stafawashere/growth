@@ -27,6 +27,7 @@ import type {
 import { App, DESTINATIONS, UNSUPPLIED_INPUTS, type Destination } from "./App";
 import { daysToExam, formatPlanDate } from "./home/dates";
 import { LOAD_FAILED_TEXT, RETRY_LABEL } from "./status/LoadState";
+import { LESSON, planFor } from "./lessons/fixtures";
 
 vi.mock("./api/client");
 
@@ -44,7 +45,8 @@ const PROPS_INTERFACE_BY_DESTINATION: Record<Destination, { file: string; name: 
    review: { file: "review/ReviewRoute.tsx", name: "ReviewRouteProps" },
    onboarding: { file: "onboarding/OnboardingRoute.tsx", name: "OnboardingRouteProps" },
    frq: { file: "frq/FrqRoute.tsx", name: "FrqRouteProps" },
-   mock: { file: "assessment/AssessmentRoute.tsx", name: "AssessmentRouteProps" }
+   mock: { file: "assessment/AssessmentRoute.tsx", name: "AssessmentRouteProps" },
+   lesson: { file: "lessons/LessonRoute.tsx", name: "LessonRouteProps" }
 };
 
 /* P2 scope item 6 brought the progress screen into phase with its calibration curve. Stage 3 of the
@@ -1308,5 +1310,40 @@ describe("home when its requests fail", () => {
       fireEvent.click(screen.getByRole("button", { name: RETRY_LABEL }));
 
       expect(await screen.findByRole("button", { name: "Start today's set" })).toBeTruthy();
+   });
+});
+
+describe("the library lesson reader", () => {
+   it("is reached only from progress, is never on the bar, and its back returns to progress", async () => {
+      mockServer(readyProgress);
+      mocked.readLibrary.mockResolvedValue({
+         units: [
+            {
+               id: "BC-UNIT-02",
+               name: "Differentiation: Definition and Fundamental Properties",
+               order: 2,
+               concepts: [
+                  { concept_id: "BC-CON-02013", name: "The product rule", lesson_id: "LSN-CON-02013", version: 1, servable: true, state: "coming_up", read_at: null }
+               ]
+            }
+         ]
+      });
+      mocked.readLessonPlan.mockResolvedValue({ lesson: LESSON, plan: planFor(["LSN-CON-02013#s1"]), band: "low", state: null });
+      mocked.postLessonEvent.mockResolvedValue({ ok: true, state: null });
+
+      render(<App />);
+
+      expect(DESTINATIONS.map((entry) => entry.id)).not.toContain("lesson");
+      expect(UNSUPPLIED_INPUTS.lesson).toEqual([]);
+
+      fireEvent.click(await screen.findByRole("button", { name: "Progress" }));
+      fireEvent.click(await screen.findByRole("button", { name: /The product rule/ }));
+
+      expect(await screen.findByTestId("lesson-reader")).toBeTruthy();
+      expect(buttonsIn(screen.getByRole("navigation")).map((button) => button.textContent)).toEqual(["Home", "Settings"]);
+
+      fireEvent.click(screen.getByTestId("lesson-back"));
+
+      expect(await screen.findByTestId("lesson-library")).toBeTruthy();
    });
 });

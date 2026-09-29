@@ -13,13 +13,14 @@ import { ActionFailed } from "./status/LoadState";
 
 const AssessmentRoute = lazy(() => import("./assessment/AssessmentRoute").then((module) => ({ default: module.AssessmentRoute })));
 const MetricsRoute = lazy(() => import("./evaluation/MetricsRoute").then((module) => ({ default: module.MetricsRoute })));
+const LessonRoute = lazy(() => import("./lessons/LessonRoute").then((module) => ({ default: module.LessonRoute })));
 const FrqRoute = lazy(() => import("./frq/FrqRoute").then((module) => ({ default: module.FrqRoute })));
 const OnboardingRoute = lazy(() => import("./onboarding/OnboardingRoute").then((module) => ({ default: module.OnboardingRoute })));
 const ProgressRoute = lazy(() => import("./progress/ProgressRoute").then((module) => ({ default: module.ProgressRoute })));
 const ReviewRoute = lazy(() => import("./review/ReviewRoute").then((module) => ({ default: module.ReviewRoute })));
 const SessionScreen = lazy(() => import("./session/SessionScreen").then((module) => ({ default: module.SessionScreen })));
 
-export type Destination = "home" | "session" | "settings" | "progress" | "review" | "onboarding" | "frq" | "mock";
+export type Destination = "home" | "session" | "settings" | "progress" | "review" | "onboarding" | "frq" | "mock" | "lesson";
 
 export interface DestinationEntry {
    id: Destination;
@@ -34,7 +35,8 @@ export interface UnsuppliedInput {
 /* 08-design-brief.md, Information architecture: settings is reached from the top bar, a session
    from home's one primary action, progress, review, the free-response unit check and the mock
    exam from home, and onboarding only when home sends a first login, an unfinished diagnostic or
-   a long gap there, so none of the last six is here. */
+   a long gap there, so none of the last six is here. The library lesson reader is reached only from
+   progress's Lessons section and returns there (15 UI), so it is not here either. */
 export const DESTINATIONS: ReadonlyArray<DestinationEntry> = [
    { id: "home", label: "Home" },
    { id: "settings", label: "Settings" }
@@ -63,10 +65,13 @@ export const UNSUPPLIED_INPUTS: Record<Destination, ReadonlyArray<UnsuppliedInpu
    review: [],
    onboarding: [],
    frq: [],
-   mock: []
+   mock: [],
+   lesson: []
 };
 
 type SessionTarget = { resumeSessionId: string | null };
+
+type LessonTarget = { lessonId: string; conceptName: string };
 
 type OnboardingTarget = { reason: OnboardingReason; resumeSessionId: string | null };
 
@@ -152,6 +157,8 @@ export function App() {
       reason: "first_login",
       resumeSessionId: null
    });
+
+   const [lessonTarget, setLessonTarget] = useState<LessonTarget | null>(null);
 
    const [access, setAccess] = useState<Access>("unknown");
    const [settingsPage, setSettingsPage] = useState<SettingsPage>("settings");
@@ -248,6 +255,11 @@ export function App() {
       setDestination("session");
    }
 
+   function openLesson(lessonId: string, conceptName: string) {
+      setLessonTarget({ lessonId, conceptName });
+      setDestination("lesson");
+   }
+
    function startOnboarding(reason: OnboardingReason, resumeSessionId: string | null) {
       setOnboardingTarget({ reason, resumeSessionId });
       setDestination("onboarding");
@@ -332,7 +344,15 @@ export function App() {
 
                {destination === "session" ? <SessionScreen resumeSessionId={sessionTarget.resumeSessionId} /> : null}
 
-               {destination === "progress" ? <ProgressRoute /> : null}
+               {destination === "progress" ? <ProgressRoute onOpenLesson={openLesson} /> : null}
+
+               {destination === "lesson" && lessonTarget !== null ? (
+                  <LessonRoute
+                     lessonId={lessonTarget.lessonId}
+                     conceptName={lessonTarget.conceptName}
+                     onLeave={() => setDestination("progress")}
+                  />
+               ) : null}
 
                {destination === "review" ? <ReviewRoute /> : null}
 

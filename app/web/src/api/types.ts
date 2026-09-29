@@ -1036,3 +1036,223 @@ export interface UnfinishedAssessment {
 export interface UnfinishedPayload {
    unfinished: UnfinishedAssessment[];
 }
+/* Lessons, docs/plan/15-lessons.md and the lessons framework contract: the record the server
+   stores (schemas/lessons/lesson.schema.json), the plan app/lessons/plan.py LessonPlan.as_dict
+   returns, and the payloads of app/api/routes/lessons.py. */
+
+export type LessonDeliveryMode = "text" | "step_reveal" | "figure" | "table" | "motion" | "interactive" | "model" | "contrast";
+
+/* A delivery spec is the design's declarative spec verbatim, so only its kind is typed here and the
+   mode components read the rest defensively. */
+export type LessonSpec = { kind: string } & Record<string, unknown>;
+
+export interface LessonDelivery {
+   mode: LessonDeliveryMode;
+   reason: string;
+   spec?: LessonSpec;
+   fallback?: string;
+   keyboard?: string;
+   reduced_motion?: string;
+}
+
+export type LessonSectionType =
+   | "orientation"
+   | "key_ideas"
+   | "strategy"
+   | "worked_example"
+   | "what_a_reader_scores"
+   | "common_error"
+   | "representations"
+   | "prerequisite_bridge";
+
+export interface LessonWorkedStep {
+   cue: string;
+   why: string;
+   expression?: unknown;
+   point_type_id?: string;
+}
+
+export interface LessonErrorStep {
+   text: string;
+   expression?: unknown;
+}
+
+export interface LessonSection {
+   id: string;
+   type: LessonSectionType;
+   bands?: string[];
+   delivery?: LessonDelivery;
+   text?: string;
+   notation?: string;
+   quote?: { text: string; source?: string };
+   depth?: "core" | "extended";
+   cue?: string;
+   method?: string;
+   rival?: string;
+   separating_feature?: string;
+   problem?: { text: string; command_verb?: string };
+   steps?: LessonWorkedStep[];
+   answer?: { form?: string; mathjson?: unknown };
+   example_id?: string;
+   lines?: Array<{ point_type_id?: string; text: string }>;
+   error_id?: string;
+   observed_behavior?: string;
+   scoring_consequence?: string;
+   wrong_step?: LessonErrorStep;
+   right_step?: LessonErrorStep;
+   relation?: "distinct" | "equivalent";
+   possible_reason?: { misconception_id?: string; text: string };
+   prerequisite_id?: string;
+}
+
+export interface LessonCheckOption {
+   id: string;
+   value?: unknown;
+   label?: string;
+   mathjson?: unknown;
+   error_path?: string | null;
+}
+
+export interface LessonCheck {
+   id: string;
+   check_kind: "completion" | "isomorph" | "mcq" | "discrimination";
+   bands?: string[];
+   format: "short_answer" | "mcq";
+   stem: { text: string; command_verb?: string };
+   options?: LessonCheckOption[];
+   worked_solution?: Array<{ step: number; text: string; mathjson?: unknown }>;
+   completes?: string;
+   calculator_status?: string;
+   representation?: string;
+}
+
+export interface LessonDecisionStem {
+   id: string;
+   archetype_id: string;
+   method: string;
+   parameter_draw?: unknown;
+   text: string;
+}
+
+export interface LessonDecision {
+   unit: string;
+   skills: string[];
+   selecting_feature: string;
+   delivery: LessonDelivery;
+   stems: LessonDecisionStem[];
+}
+
+export type LessonStatus = "draft" | "checked" | "resolved" | "signed_off" | "stale" | "retired";
+
+export interface LessonRecord {
+   id: string;
+   version: number;
+   kind: "concept" | "prerequisite" | "decision";
+   target_id: string;
+   status: LessonStatus;
+   read_minutes: { full: number; brief: number };
+   word_count: { full: number; brief: number };
+   sections: LessonSection[];
+   checks: LessonCheck[];
+   refresher?: string[];
+   decision?: LessonDecision;
+}
+
+export type LessonBand = "low" | "mid";
+
+export type LessonReason = "first_contact" | "feedback" | "read_again" | "T1" | "T2" | "T3" | "T4" | "T5";
+
+export interface LessonSectionRef {
+   id: string;
+   type: LessonSectionType | "check";
+   form: "full" | "steps_only";
+}
+
+export interface LessonPlan {
+   lesson_id: string;
+   version: number;
+   band: LessonBand | "none";
+   reason: LessonReason;
+   sections: LessonSectionRef[];
+   checks: string[];
+   minutes: number;
+   words: number;
+   anchors: string[];
+}
+
+/* The user's lesson_state row, as the server writes it; null before any read. */
+export interface LessonStateRow {
+   status?: string;
+   read_source?: string | null;
+   read_at?: string | null;
+   version_seen?: number | null;
+}
+
+export type LessonRecordPayload = LessonRecord & { state: LessonStateRow | null };
+
+export interface LessonPlanPayload {
+   lesson: LessonRecord;
+   plan: LessonPlan;
+   band: LessonBand;
+   state: LessonStateRow | null;
+}
+
+export type LessonEventKind = "opened" | "section_viewed" | "completed" | "skipped";
+
+export interface LessonEventBody {
+   event: LessonEventKind;
+   section_id?: string;
+   mode?: string;
+   elapsed_ms: number;
+   band?: LessonBand;
+   reason?: LessonReason;
+}
+
+export interface LessonStatePayload {
+   ok: boolean;
+   state: LessonStateRow | null;
+}
+
+export interface LessonCheckAnswerBody {
+   answer?: unknown;
+   option_id?: string;
+   elapsed_ms: number;
+}
+
+export interface LessonCheckVerdict {
+   correct: boolean;
+   error_id: string | null;
+   anchor: string | null;
+   explanation_anchor: string | null;
+}
+
+export type LibraryLessonState =
+   | "unseen"
+   | "deferred"
+   | "served"
+   | "read"
+   | "skipped"
+   | "bypassed_by_placement"
+   | "coming_up"
+   | "not_available";
+
+export interface LibraryConcept {
+   concept_id: string;
+   name: string;
+   lesson_id: string | null;
+   version: number | null;
+   servable: boolean;
+   state: LibraryLessonState;
+   read_at: string | null;
+}
+
+export interface LibraryUnit {
+   id: string;
+   name: string;
+   order: number;
+   concepts: LibraryConcept[];
+}
+
+export interface LibraryPayload {
+   units: LibraryUnit[];
+}

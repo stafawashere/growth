@@ -19,6 +19,15 @@ import type {
    FeedbackPayload,
    FrqAttempt,
    FrqUnitsPayload,
+   LessonBand,
+   LessonCheckAnswerBody,
+   LessonCheckVerdict,
+   LessonEventBody,
+   LessonPlanPayload,
+   LessonReason,
+   LessonRecordPayload,
+   LessonStatePayload,
+   LibraryPayload,
    GradingsPayload,
    HighlightRange,
    MasteryMapPayload,
@@ -683,4 +692,43 @@ export function saveCheckQuestion(sessionId: string, number: number, fields: Sav
 
 export function submitCheck(sessionId: string, fields?: DayFields) {
    return requestJson<CheckResult>(`/unit-checks/${encodeURIComponent(sessionId)}/submit`, jsonInit("POST", fields ?? {}));
+}
+/* Lessons, app/api/routes/lessons.py. A check id carries the lesson id and a # (LSN-CON-02013#chk-1),
+   so every id is encoded into its path segment. */
+function lessonPath(lessonId: string) {
+   return `/lessons/${encodeURIComponent(lessonId)}`;
+}
+
+export function readLibrary(unit?: string) {
+   const query = unit === undefined ? "" : `?unit=${encodeURIComponent(unit)}`;
+
+   return requestJson<LibraryPayload>(`/lessons${query}`);
+}
+
+export function readLesson(lessonId: string, version?: number) {
+   const query = version === undefined ? "" : `?version=${version}`;
+
+   return requestJson<LessonRecordPayload>(`${lessonPath(lessonId)}${query}`);
+}
+
+export function readLessonPlan(lessonId: string, band: LessonBand, reason?: LessonReason) {
+   const query = reason === undefined ? `?band=${band}` : `?band=${band}&reason=${encodeURIComponent(reason)}`;
+
+   return requestJson<LessonPlanPayload>(`${lessonPath(lessonId)}/plan${query}`);
+}
+
+export function postLessonEvent(lessonId: string, body: LessonEventBody) {
+   return requestJson<LessonStatePayload>(`${lessonPath(lessonId)}/events`, jsonInit("POST", body));
+}
+
+export function postSessionLessonEvent(sessionId: string, lessonId: string, body: LessonEventBody) {
+   const path = `/sessions/${encodeURIComponent(sessionId)}/lessons/${encodeURIComponent(lessonId)}/events`;
+
+   return requestJson<LessonStatePayload>(path, jsonInit("POST", body));
+}
+
+export function answerLessonCheck(lessonId: string, checkId: string, body: LessonCheckAnswerBody) {
+   const path = `${lessonPath(lessonId)}/checks/${encodeURIComponent(checkId)}/answers`;
+
+   return requestJson<LessonCheckVerdict>(path, jsonInit("POST", body));
 }

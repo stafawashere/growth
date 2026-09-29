@@ -14,6 +14,8 @@ import { NodeMark } from "../progress/MasteryMap";
 import { ProvisionalPoints } from "../review/ProvisionalPoints";
 import { ConfidencePrompt } from "../session/ConfidencePrompt";
 import { StepMarks } from "../session/StepMarks";
+import { LessonTable } from "../lessons/LessonTable";
+import { LessonLibrary } from "../progress/LessonLibrary";
 import { OperatorSettings } from "../settings/ExperimentsSection";
 import { SettingsScreen } from "../settings/SettingsScreen";
 import { DESKTOP_WIDTH, VIEWPORT_WIDTHS, colourlessDeclarations, isSvgElement, resolvedSvgPaint, setViewportWidth } from "../testing/cascade";
@@ -153,6 +155,35 @@ describe.each(VIEWPORT_WIDTHS)("eval_greyscale_states at %i px", (width) => {
       );
 
       expectDistinct(states);
+   });
+
+   it("a lesson table's current, marked and plain rows, and the library's row states, read without colour", () => {
+      const table = { kind: "table", columns: ["h", "rate"], rows: [["1", "11"], ["1", "11"], ["1", "11"]], marked_rows: [2] };
+      const row = (index: number) => (container: HTMLElement) => container.querySelectorAll("tbody tr")[index];
+
+      expectDistinct({
+         current: described(<LessonTable spec={table} currentRow={0} />, row(0)),
+         marked: described(<LessonTable spec={table} currentRow={0} />, row(1)),
+         plain: described(<LessonTable spec={table} currentRow={0} />, row(2))
+      });
+
+      const concept = { concept_id: "BC-CON-02013", name: "The product rule", lesson_id: "LSN-CON-02013", version: 1, servable: true, read_at: null };
+      const libraryRow = (state: "read" | "coming_up" | "bypassed_by_placement" | "unseen" | "not_available") =>
+         described(
+            <LessonLibrary
+               library={{ units: [{ id: "BC-UNIT-02", name: "Unit 2", order: 2, concepts: [{ ...concept, state, read_at: state === "read" ? "2026-10-03" : null }] }] }}
+               onOpenLesson={vi.fn()}
+            />,
+            (container) => container.querySelector("[data-testid='lesson-library-row']")!
+         );
+
+      expectDistinct({
+         read: libraryRow("read"),
+         comingUp: libraryRow("coming_up"),
+         placed: libraryRow("bypassed_by_placement"),
+         notRead: libraryRow("unseen"),
+         notAvailable: libraryRow("not_available")
+      });
    });
 
    it("a chosen answer option and a crossed-out option read without colour", () => {

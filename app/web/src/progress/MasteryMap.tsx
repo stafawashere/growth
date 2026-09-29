@@ -16,6 +16,7 @@ import type { MasteryMapPayload, MasteryNode, MasteryNodeState, MasteryUnit } fr
 
 export interface MasteryMapProps {
    map: MasteryMapPayload;
+   onOpenSkill?: (skillId: string, name: string) => void;
 }
 
 interface Position {
@@ -196,7 +197,7 @@ function Legend() {
    );
 }
 
-export function MasteryMap({ map }: MasteryMapProps) {
+export function MasteryMap({ map, onOpenSkill }: MasteryMapProps) {
    const units = map.units.filter((unit) => unit.nodes.length > 0);
    const [active, setActive] = useState<Position>({ unitIndex: 0, nodeIndex: 0 });
    const [isShowing, setIsShowing] = useState(false);
@@ -205,7 +206,7 @@ export function MasteryMap({ map }: MasteryMapProps) {
 
    if (!hasNodes) {
       return (
-         <section aria-labelledby="mastery-heading">
+         <section aria-labelledby="mastery-heading" className="section">
             <h2 id="mastery-heading" className="section-heading">
                What you can do, and how well it is holding
             </h2>
@@ -236,7 +237,7 @@ export function MasteryMap({ map }: MasteryMapProps) {
    }
 
    return (
-      <section aria-labelledby="mastery-heading">
+      <section aria-labelledby="mastery-heading" className="section">
          <h2 id="mastery-heading" className="section-heading">
             What you can do, and how well it is holding
          </h2>
@@ -282,9 +283,17 @@ export function MasteryMap({ map }: MasteryMapProps) {
             ))}
          </div>
 
-         <p className="muted" data-testid="mastery-caption">
-            {isShowing ? nodeSentence(activeNode) : "Select a mark, or move to one with the arrow keys, to read it."}
-         </p>
+         <div className="cluster">
+            <p className="muted" data-testid="mastery-caption">
+               {isShowing ? nodeSentence(activeNode) : "Select a mark, or move to one with the arrow keys, to read it."}
+            </p>
+
+            {isShowing && onOpenSkill !== undefined ? (
+               <button type="button" className="button-secondary button-small" onClick={() => onOpenSkill(activeNode.skill_id, activeNode.name)}>
+                  Open this skill
+               </button>
+            ) : null}
+         </div>
 
          <MapList units={units} />
       </section>

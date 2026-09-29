@@ -257,7 +257,7 @@ export function CalibrationCurve({ calibration }: CalibrationCurveProps) {
    const canDraw = calibration.available && hasBins;
 
    return (
-      <section aria-labelledby="calibration-heading">
+      <section aria-labelledby="calibration-heading" className="section">
          <h2 id="calibration-heading" className="section-heading">
             Calibration, last {calibration.window_days} days
          </h2>

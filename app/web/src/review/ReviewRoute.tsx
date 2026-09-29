@@ -5,11 +5,14 @@ import type { ErrorNoteEntry, ReviewPayload } from "../api/types";
 import { ReviewScreen } from "./ReviewScreen";
 import { useLoad } from "../status/load";
 import { Loading } from "../status/LoadState";
-import { PageHeader } from "../page/PageHeader";
+import { Page, PageHeader } from "../ui/Page";
 
-/* Review takes no input from the shell: it is reached from home and reads GET /review. An edited
-   note goes through the session route that wrote it, which replaces the note. */
-export interface ReviewRouteProps {}
+/* Review reads GET /review. An edited note goes through the session route that wrote it, which
+   replaces the note. Practising what is coming back opens a set, whose first block serves the due
+   reviews. */
+export interface ReviewRouteProps {
+   onStartPractice?: () => void;
+}
 
 function saveFailure(problem: unknown) {
    const hasDetail = problem instanceof ApiError && problem.detail !== "";
@@ -17,7 +20,7 @@ function saveFailure(problem: unknown) {
    return new Error(hasDetail ? problem.detail : "The note was not saved.");
 }
 
-export function ReviewRoute(_props: ReviewRouteProps) {
+export function ReviewRoute(props: ReviewRouteProps) {
    const load = useLoad(readReview);
    const [edited, setEdited] = useState<ReviewPayload | null>(null);
 
@@ -27,13 +30,17 @@ export function ReviewRoute(_props: ReviewRouteProps) {
 
    if (load.kind === "failed") {
       return (
-         <section className="card">
-            <PageHeader title="Review" />
+         <Page header={<PageHeader eyebrow="Revisit, refine, retain" title="Review" />}>
+            <div className="state state-failed">
+               <p data-testid="review-failed" role="alert">
+                  The review record could not be loaded.
+               </p>
 
-            <p data-testid="review-failed" className="muted">
-               The review record could not be loaded.
-            </p>
-         </section>
+               <button type="button" className="button-secondary" onClick={load.retry}>
+                  Try again
+               </button>
+            </div>
+         </Page>
       );
    }
 
@@ -69,6 +76,7 @@ export function ReviewRoute(_props: ReviewRouteProps) {
          provisionalPoints={review.provisional_points}
          onSaveNote={saveNote}
          onAskForReread={review.grading_available ? reread : undefined}
+         onStartPractice={props.onStartPractice}
       />
    );
 }

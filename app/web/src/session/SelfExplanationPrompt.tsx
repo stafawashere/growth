@@ -19,12 +19,14 @@ export function SelfExplanationPrompt({ prompt, value, onChange }: SelfExplanati
    return (
       <section
          {...affordanceProps("selfExplanationPrompt")}
-         className={`${motionClass("selfExplanationPrompt")} field`}
+         className={`${motionClass("selfExplanationPrompt")} form-field`}
          data-testid="self-explanation-prompt"
       >
-         <label htmlFor={fieldId}>{prompt}</label>
+         <label className="field-label" htmlFor={fieldId}>
+            {prompt}
+         </label>
 
-         <textarea id={fieldId} value={value} onChange={(event) => onChange(event.target.value)} />
+         <textarea id={fieldId} className="input" value={value} onChange={(event) => onChange(event.target.value)} />
       </section>
    );
 }

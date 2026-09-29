@@ -38,7 +38,8 @@ import { ErrorNoteField } from "./ErrorNoteField";
 import { collectsConfidence, Item, servesChoice } from "./Item";
 import { SelfExplanationPrompt } from "./SelfExplanationPrompt";
 import { StepMarks } from "./StepMarks";
-import { PageHeader } from "../page/PageHeader";
+import { Icon } from "../ui/Icon";
+import { Page, PageHeader } from "../ui/Page";
 
 export const SET_FINISHED = "That is today's set finished.";
 
@@ -122,6 +123,30 @@ function isActivatingTarget(target: HTMLElement) {
 
 export const NEXT_LABEL = "Next item";
 
+/* The verdict line at the top of feedback: a glyph and a word as well as the colour, so the
+   greyscale render says the same thing. An opener carries no verdict, only the comparison. */
+function FeedbackHead(props: { correct: boolean | null; isOpener: boolean }) {
+   const hasVerdict = props.correct !== null && !props.isOpener;
+
+   if (!hasVerdict) {
+      return (
+         <div className="feedback-head">
+            <span className="eyebrow">Feedback</span>
+         </div>
+      );
+   }
+
+   return (
+      <div className="feedback-head" data-testid="feedback-verdict">
+         <span className={props.correct ? "status-icon text-correct" : "status-icon text-incorrect"}>
+            <Icon name={props.correct ? "check" : "alert"} size="md" />
+         </span>
+
+         <h2>{props.correct ? "That holds." : "Not yet. Here is where it turned."}</h2>
+      </div>
+   );
+}
+
 /* Every session lesson event carries the slot's band and reason: the route tells a refresher
    (T1 to T5) from a first-contact lesson by the reason, and the forecast reads the band. */
 function lessonEventBody(lesson: ServedLesson, fields: Omit<LessonEventBody, "band" | "reason">): LessonEventBody {
@@ -133,9 +158,59 @@ function lessonEventBody(lesson: ServedLesson, fields: Omit<LessonEventBody, "ba
 
 export interface SessionScreenProps {
    resumeSessionId: string | null;
+   onLeave?: () => void;
+   onOpened?: (sessionId: string) => void;
 }
 
-export function SessionScreen({ resumeSessionId }: SessionScreenProps) {
+const STAGE_TITLE: Record<ServedItem["stage"], string> = {
+   example: "Worked example",
+   completion: "Finish the solution",
+   unsupported: "On your own"
+};
+
+export const OPENER_TITLE = "Before the method";
+
+function stageTitle(item: ServedItem) {
+   return item.is_opener === true ? OPENER_TITLE : STAGE_TITLE[item.stage];
+}
+
+/* The set's progress as steps: the items already worked, the current one, and those still to come.
+   It is drawn only once GET /sessions/{id} has said what remains. */
+function SetProgress(props: { worked: number; remaining: Remaining }) {
+   const total = props.worked + props.remaining.items;
+   const hasSteps = total > 0;
+
+   if (!hasSteps) {
+      return null;
+   }
+
+   const current = Math.min(props.worked, total - 1);
+   const steps = Array.from({ length: total }, (_, index) => {
+      if (index < current) {
+         return "done";
+      }
+
+      return index === current ? "current" : "ahead";
+   });
+
+   return (
+      <div
+         className="progress-steps"
+         role="progressbar"
+         aria-label="Items in this set"
+         aria-valuemin={1}
+         aria-valuemax={total}
+         aria-valuenow={current + 1}
+         data-testid="set-progress"
+      >
+         {steps.map((state, index) => (
+            <span key={index} className="progress-step" data-state={state} />
+         ))}
+      </div>
+   );
+}
+
+export function SessionScreen({ resumeSessionId, onLeave, onOpened }: SessionScreenProps) {
    const [session, setSession] = useState<SessionPayload | null>(null);
    const [item, setItem] = useState<ServedItem | null>(null);
    const [lesson, setLesson] = useState<ServedLesson | null>(null);
@@ -227,6 +302,10 @@ export function SessionScreen({ resumeSessionId }: SessionScreenProps) {
       reached
          .then((payload) => {
             setSession(payload);
+
+            if (!isResuming) {
+               onOpened?.(payload.id);
+            }
 
             return advance(payload.id);
          })
@@ -466,14 +545,25 @@ export function SessionScreen({ resumeSessionId }: SessionScreenProps) {
 
    if (finished) {
       return (
-         <section className="card session-end" data-testid="session-end">
-            <PageHeader title={stopped ? SET_STOPPED : SET_FINISHED} />
+         <section data-testid="session-end">
+            <Page header={<PageHeader eyebrow={stopped ? "Set stopped" : "Session complete"} title={stopped ? SET_STOPPED : SET_FINISHED} />}>
+               <div className="card stack">
+                  {worked.items > 0 ? <p>{workedSentence(worked.items)}</p> : null}
 
-            {worked.items > 0 ? <p>{workedSentence(worked.items)}</p> : null}
+                  {worked.corrected > 0 ? <p>{correctedSentence(worked.corrected)}</p> : null}
 
-            {worked.corrected > 0 ? <p>{correctedSentence(worked.corrected)}</p> : null}
+                  <p className="muted">Today shows what is due next, in minutes, whenever you open it.</p>
+               </div>
 
-            <p className="muted">Home shows what is due next, in minutes, whenever you open it.</p>
+               {onLeave !== undefined ? (
+                  <div className="cluster">
+                     <button type="button" className="button-secondary" onClick={onLeave}>
+                        <Icon name="back" />
+                        Back to Today
+                     </button>
+                  </div>
+               ) : null}
+            </Page>
          </section>
       );
    }
@@ -497,10 +587,12 @@ export function SessionScreen({ resumeSessionId }: SessionScreenProps) {
       }
 
       return (
-         <div data-testid="session-lesson" data-lesson-kind={shown.kind}>
+         <div data-testid="session-lesson" data-lesson-kind={shown.kind} className="stack stack-loose">
             <div className="session-meta">
+               <span className="eyebrow">{shown.kind === "refresher" ? "A short refresher" : "A lesson first"}</span>
+
                {remaining !== null ? (
-                  <span className="muted" data-testid="session-remaining">
+                  <span className="helper" data-testid="session-remaining">
                      {remainingSentence(remaining)}
                   </span>
                ) : null}
@@ -557,7 +649,7 @@ export function SessionScreen({ resumeSessionId }: SessionScreenProps) {
       <div className="you-wrote" data-testid="you-wrote">
          <p className="eyebrow">{YOU_WROTE_LABEL}</p>
 
-         <p>
+         <p className="note-quote">
             {chosenOption !== null ? (
                chosenOption.label !== undefined ? (
                   <MathText text={chosenOption.label} />
@@ -633,29 +725,29 @@ export function SessionScreen({ resumeSessionId }: SessionScreenProps) {
       }
    }
 
+   const sessionAside = (
+      <>
+         {remaining !== null ? (
+            <span data-testid="session-remaining">{remainingSentence(remaining)}</span>
+         ) : null}
+
+         {isConfirmingStop ? null : (
+            <button type="button" className="text-button session-stop" onClick={() => setIsConfirmingStop(true)}>
+               {STOP_LABEL}
+            </button>
+         )}
+      </>
+   );
+
    return (
-      <div>
-         <div className="session-meta">
-            <span className="badge">Stage: {item.stage}</span>
-
-            {remaining !== null ? (
-               <span className="muted" data-testid="session-remaining">
-                  {remainingSentence(remaining)}
-               </span>
-            ) : null}
-
-            {isConfirmingStop ? null : (
-               <button type="button" className="text-button session-stop" onClick={() => setIsConfirmingStop(true)}>
-                  {STOP_LABEL}
-               </button>
-            )}
-         </div>
+      <Page header={<PageHeader eyebrow={<span data-testid="session-stage">Stage: {item.stage}</span>} title={stageTitle(item)} aside={sessionAside} />}>
+         {remaining !== null ? <SetProgress worked={worked.items} remaining={remaining} /> : null}
 
          {isConfirmingStop ? (
-            <div role="alertdialog" aria-label="Stop this set" className="notice notice-framed" data-testid="stop-confirmation">
-               <p>This closes today&apos;s set. What you answered is kept, and home builds the next set from it.</p>
+            <div role="alertdialog" aria-label="Stop this set" className="callout callout-row" data-testid="stop-confirmation">
+               <p>This closes today&apos;s set. What you answered is kept, and Today builds the next set from it.</p>
 
-               <div className="choice-row">
+               <div className="cluster">
                   <button type="button" className="button-primary" onClick={stop}>
                      {STOP_CONFIRM_LABEL}
                   </button>
@@ -671,6 +763,8 @@ export function SessionScreen({ resumeSessionId }: SessionScreenProps) {
 
          {showsFeedback ? (
             <section className="card feedback" data-testid="feedback">
+               <FeedbackHead correct={committed?.correct ?? null} isOpener={isOpener} />
+
                {comparison !== null ? <ComparisonPanel comparison={comparison} attempt={youWrote} /> : youWrote}
 
                {hasFigure ? (
@@ -693,7 +787,9 @@ export function SessionScreen({ resumeSessionId }: SessionScreenProps) {
 
                {wasCorrected ? <ErrorNoteField value={errorNote} onChange={setErrorNote} /> : null}
 
-               <div className="submit-row submit-row-end">
+               <div className="submit-row">
+                  {owesNote ? <p className="helper">Write the note first, so the retry comes back with it.</p> : <span />}
+
                   <button
                      type="button"
                      className="motion-instant-question-move button-primary"
@@ -701,6 +797,7 @@ export function SessionScreen({ resumeSessionId }: SessionScreenProps) {
                      onClick={moveOn}
                   >
                      {NEXT_LABEL}
+                     <Icon name="next" />
                   </button>
                </div>
             </section>
@@ -720,6 +817,6 @@ export function SessionScreen({ resumeSessionId }: SessionScreenProps) {
                awaitingConfidence={awaitsRating}
             />
          )}
-      </div>
+      </Page>
    );
 }

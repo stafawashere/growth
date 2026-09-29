@@ -110,7 +110,7 @@ function cellAt(sourceName: string, targetName: string) {
 
 describe("the representation matrix on progress", () => {
    it("puts correct of attempts in the source row and target column, and blanks a pair that is no translation", async () => {
-      render(<ProgressRoute />);
+      render(<ProgressRoute tab="representations" />);
 
       await screen.findByTestId("representation-matrix");
 
@@ -122,7 +122,7 @@ describe("the representation matrix on progress", () => {
    });
 
    it("states the translation attempt count against the graded practice attempts", async () => {
-      render(<ProgressRoute />);
+      render(<ProgressRoute tab="representations" />);
 
       const count = await screen.findByTestId("translation-attempts");
 
@@ -133,17 +133,20 @@ describe("the representation matrix on progress", () => {
 
    it("keeps the checkpoint history drawn when the matrix fails to load", async () => {
       mocked.readRepresentations.mockRejectedValue(new Error("the connection dropped"));
-      render(<ProgressRoute />);
+      render(<ProgressRoute tab="representations" />);
 
       expect(await screen.findByTestId("matrix-failed")).toBeTruthy();
-      expect(await screen.findByTestId("checkpoint-history")).toBeTruthy();
       expect(screen.queryByTestId("representation-matrix")).toBeNull();
+
+      fireEvent.click(screen.getByRole("tab", { name: "Checkpoints" }));
+
+      expect(await screen.findByTestId("checkpoint-history")).toBeTruthy();
    });
 });
 
 describe("the checkpoint history on progress", () => {
    it("gives each finished checkpoint's form year, total, per-question result against the published mean and who scored it", async () => {
-      render(<ProgressRoute />);
+      render(<ProgressRoute tab="checkpoints" />);
 
       const result = await screen.findByTestId("checkpoint-result");
       const questions = within(result)
@@ -164,7 +167,7 @@ describe("the checkpoint history on progress", () => {
          ...checkpointsAvailable,
          history: [{ ...finished, scored_by: "per_point_grader" }]
       });
-      render(<ProgressRoute />);
+      render(<ProgressRoute tab="checkpoints" />);
 
       const result = await screen.findByTestId("checkpoint-result");
 
@@ -172,7 +175,7 @@ describe("the checkpoint history on progress", () => {
    });
 
    it("opens the checkpoint screen from the history when one is available", async () => {
-      render(<ProgressRoute />);
+      render(<ProgressRoute tab="checkpoints" />);
 
       fireEvent.click(await screen.findByRole("button", { name: "Take a checkpoint" }));
 
@@ -182,7 +185,7 @@ describe("the checkpoint history on progress", () => {
 
    it("states the day the next checkpoint opens and offers none before it", async () => {
       mocked.readCheckpoints.mockResolvedValue(checkpointsWaiting);
-      render(<ProgressRoute />);
+      render(<ProgressRoute tab="checkpoints" />);
 
       const opensOn = await screen.findByTestId("checkpoint-opens-on");
 
@@ -192,7 +195,7 @@ describe("the checkpoint history on progress", () => {
    });
 
    it("gives each finished concept probe as correct of graded", async () => {
-      render(<ProgressRoute />);
+      render(<ProgressRoute tab="probes" />);
 
       const line = await screen.findByTestId("probe-result");
 

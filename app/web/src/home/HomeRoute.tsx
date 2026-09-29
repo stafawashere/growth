@@ -1,6 +1,7 @@
-import { useEffect } from "react";
-import { readMe, readProgress, type MePayload } from "../api/client";
-import type { ProgressPayload } from "../api/types";
+import { useEffect, useState } from "react";
+
+import { readMe, readPace, readProgress, type MePayload } from "../api/client";
+import type { PacePayload, ProgressPayload } from "../api/types";
 import type { OnboardingReason } from "../onboarding/OnboardingScreen";
 import { daysToExam, formatPlanDate } from "./dates";
 import { HomeScreen, type HomeScreenStatus, type QueueLine } from "./HomeScreen";
@@ -11,11 +12,38 @@ export interface HomeRouteProps {
    today: () => Date;
    onStartSession: () => void;
    onResumeSession: (sessionId: string) => void;
-   onOpenProgress?: () => void;
-   onOpenReview?: () => void;
-   onOpenFreeResponse?: () => void;
-   onOpenMockExam?: () => void;
    onStartOnboarding?: (reason: OnboardingReason, resumeSessionId: string | null) => void;
+}
+
+function isPacePayload(value: unknown): value is PacePayload {
+   const isObject = typeof value === "object" && value !== null;
+
+   return isObject && typeof (value as PacePayload).verdict === "string" && typeof (value as PacePayload).statement === "string";
+}
+
+/* The pace verdict rides on the countdown. It is read on its own so home never waits for it or
+   fails with it: a verdict that cannot be read leaves the countdown without its mark. */
+function usePace() {
+   const [pace, setPace] = useState<PacePayload | null>(null);
+
+   useEffect(() => {
+      let isCurrent = true;
+
+      Promise.resolve()
+         .then(() => readPace())
+         .then((payload) => {
+            if (isCurrent && isPacePayload(payload)) {
+               setPace(payload);
+            }
+         })
+         .catch(() => undefined);
+
+      return () => {
+         isCurrent = false;
+      };
+   }, []);
+
+   return pace;
 }
 
 async function readHome(): Promise<{ me: MePayload; progress: ProgressPayload }> {
@@ -65,17 +93,9 @@ export function queueLinesFrom(progress: ProgressPayload): QueueLine[] {
    ];
 }
 
-export function HomeRoute({
-   today,
-   onStartSession,
-   onResumeSession,
-   onOpenProgress,
-   onOpenReview,
-   onOpenFreeResponse,
-   onOpenMockExam,
-   onStartOnboarding
-}: HomeRouteProps) {
+export function HomeRoute({ today, onStartSession, onResumeSession, onStartOnboarding }: HomeRouteProps) {
    const load = useLoad(readHome);
+   const pace = usePace();
    const redirects = load.kind === "loaded" && sendsToOnboarding(load.value.progress);
 
    useEffect(() => {
@@ -122,14 +142,11 @@ export function HomeRoute({
          queueMinutes={Math.ceil(progress.forecast_minutes)}
          queueLines={queueLinesFrom(progress)}
          focus={progress.focus ?? []}
+         pace={pace === null ? null : { verdict: pace.verdict, statement: pace.statement }}
          onStartSession={onStartSession}
          onAddPracticeSet={onStartSession}
          onResumeSession={resume}
          onStartRediagnostic={() => onStartOnboarding?.("long_gap", null)}
-         onOpenProgress={onOpenProgress}
-         onOpenReview={onOpenReview}
-         onOpenFreeResponse={onOpenFreeResponse}
-         onOpenMockExam={onOpenMockExam}
       />
    );
 }

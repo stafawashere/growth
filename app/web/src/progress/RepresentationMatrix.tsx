@@ -30,7 +30,7 @@ export function RepresentationMatrix({ matrix }: RepresentationMatrixProps) {
    const hasTranslations = matrix.translation_attempts > 0;
 
    return (
-      <section aria-labelledby="representation-heading" data-testid="representation-matrix">
+      <section aria-labelledby="representation-heading" data-testid="representation-matrix" className="section">
          <h2 id="representation-heading" className="section-heading">
             Representations, source by target
          </h2>

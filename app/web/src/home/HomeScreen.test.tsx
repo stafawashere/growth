@@ -289,8 +289,8 @@ describe("design tokens, primary button vocabulary across every screen", () => {
    });
 });
 describe("HomeScreen, long gap", () => {
-   it("offers only the re-diagnostic in place of the queue, with Progress still reachable", () => {
-      const props = { ...baseProps(), status: "longGap" as const, onOpenProgress: vi.fn() };
+   it("offers only the re-diagnostic in place of the queue", () => {
+      const props = { ...baseProps(), status: "longGap" as const };
       render(<HomeScreen {...props} />);
 
       expect(screen.queryAllByTestId("queue-line")).toHaveLength(0);
@@ -300,7 +300,6 @@ describe("HomeScreen, long gap", () => {
       const primary = screen.getByRole("button", { name: "Start the re-diagnostic" });
 
       expect(primary.className).toContain("button-primary");
-      expect(screen.getByRole("button", { name: "Progress" })).toBeTruthy();
 
       fireEvent.click(primary);
 

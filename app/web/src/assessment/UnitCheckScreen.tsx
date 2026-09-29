@@ -20,7 +20,7 @@ import { MathValue } from "../math/MathValue";
 import { ConfidencePrompt } from "../session/ConfidencePrompt";
 import { refusalText } from "./format";
 import { Loading } from "../status/LoadState";
-import { PageHeader } from "../page/PageHeader";
+import { Page, PageHeader, Section } from "../ui/Page";
 
 /* 05 "Unit check": untimed, one question at a time with a confidence rating, and no correctness
    anywhere until the whole check is submitted, so one question's feedback cannot answer the
@@ -93,14 +93,13 @@ function Breakdown(props: { result: CheckResult }) {
    const skillCount = coveredCount + unreached.length;
 
    return (
-      <section className="card" data-testid="unit-check-breakdown">
-         <PageHeader title="Unit check, what it showed" />
+      <section data-testid="unit-check-breakdown">
+         <Page header={<PageHeader eyebrow="Unit check" title="Unit check, what it showed" intro="Each question with its worked solution, what moved in your record, and what the check reached." />}>
+         <Section title="Each question">
 
-         <h2 className="section-heading">Each question</h2>
-
-         <ol className="review-list">
+         <ol className="list">
             {result.items.map((item) => (
-               <li key={item.number} data-testid="check-item">
+               <li key={item.number} data-testid="check-item" className="list-row list-row-start">
                   <p>
                      Question {item.number}: <strong>{verdictText(item)}</strong>
                      {item.answered ? <> Your answer: {answerText(item.answer)}.</> : null}
@@ -120,37 +119,39 @@ function Breakdown(props: { result: CheckResult }) {
                </li>
             ))}
          </ol>
+         </Section>
 
-         <h2 className="section-heading">What moved</h2>
-
+         <Section title="What moved">
          {result.moved.length === 0 ? <p className="muted">No skill's record changed.</p> : null}
 
-         <ul className="review-list" data-testid="moved-skills">
+         <ul className="list" data-testid="moved-skills">
             {result.moved.map((skill: MovedSkill) => (
-               <li key={skill.skill_id}>
-                  <span>{skill.name}</span>
-                  <span className="muted">
+               <li key={skill.skill_id} className="list-row">
+                  <span className="list-row-title">{skill.name}</span>
+                  <span className="list-row-meta">
                      Before: {snapshotText(skill.before)}. After: {snapshotText(skill.after)}.
                   </span>
                </li>
             ))}
          </ul>
+         </Section>
 
-         <h2 className="section-heading">Coverage</h2>
-
+         <Section title="Coverage">
          <p data-testid="coverage">
             The check reached {coveredCount} of the unit's {skillCount} skills.
          </p>
 
          {unreached.length > 0 ? (
-            <ul className="review-list" data-testid="unreached-skills">
+            <ul className="list" data-testid="unreached-skills">
                {unreached.map(([skillId, reason]) => (
-                  <li key={skillId}>
+                  <li key={skillId} className="list-row list-row-meta">
                      {skillId}: {reason}
                   </li>
                ))}
             </ul>
          ) : null}
+         </Section>
+         </Page>
       </section>
    );
 }
@@ -237,9 +238,9 @@ export function UnitCheckScreen({ sessionId, initial, unitTitle }: UnitCheckScre
 
    if (question === undefined) {
       return (
-         <section className="card">
-            <p className="muted">This unit check holds no questions.</p>
-         </section>
+         <div className="state">
+            <p>This unit check holds no questions.</p>
+         </div>
       );
    }
 
@@ -251,67 +252,86 @@ export function UnitCheckScreen({ sessionId, initial, unitTitle }: UnitCheckScre
    const isLast = index === questions.length - 1;
 
    return (
-      <section className="card" data-testid="unit-check">
-         <PageHeader title={unitTitle === undefined ? "Unit check" : `Unit check, ${unitTitle}`} />
-
-         <p className="muted">Untimed. Nothing is marked right or wrong until you submit the whole check.</p>
-
-         <p data-testid="question-position">
-            Question {index + 1} of {questions.length}
-         </p>
-
-         {problem !== null ? <p role="alert">{problem}</p> : null}
-
-         <p className="item-stem">
-            <MathText text={item.stem} />
-         </p>
-
-         {hasFigure ? <FigureView spec={item.figure_spec} /> : null}
-
-         {servesChoice(question) ? (
-            <McqControl
-               key={question.number}
-               groupLabel="My answer"
-               options={item.options ?? []}
-               selectedId={current.answer?.option_id ?? null}
-               onSelect={(optionId) => change(question.number, { answer: { option_id: optionId } })}
-            />
-         ) : (
-            <div data-testid="math-answer">
-               <MathAnswerField
-                  key={question.number}
-                  label="My answer"
-                  onChange={(mathjson) => typeAnswer(question.number, mathjson)}
-                  onLoadFailure={() => setAnswerUnavailable(true)}
+      <section data-testid="unit-check">
+         <Page
+            header={
+               <PageHeader
+                  eyebrow="Unit check"
+                  title={unitTitle === undefined ? "Unit check" : `Unit check, ${unitTitle}`}
+                  intro="Untimed. Nothing is marked right or wrong until you submit the whole check."
+                  aside={
+                     <span data-testid="question-position">
+                        Question {index + 1} of {questions.length}
+                     </span>
+                  }
                />
+            }
+         >
+            {problem !== null ? (
+               <p role="alert" className="notice">
+                  {problem}
+               </p>
+            ) : null}
 
-               {answerUnavailable ? <p role="alert">The math keyboard did not load, so this question cannot take an answer.</p> : null}
+            <article className="card item">
+               <div className="question">
+                  <div className="question-stem">
+                     <p className="item-stem">
+                        <MathText text={item.stem} />
+                     </p>
+
+                     {hasFigure ? <FigureView spec={item.figure_spec} /> : null}
+                  </div>
+               </div>
+
+               {servesChoice(question) ? (
+                  <McqControl
+                     key={question.number}
+                     groupLabel="My answer"
+                     options={item.options ?? []}
+                     selectedId={current.answer?.option_id ?? null}
+                     onSelect={(optionId) => change(question.number, { answer: { option_id: optionId } })}
+                  />
+               ) : (
+                  <div data-testid="math-answer">
+                     <MathAnswerField
+                        key={question.number}
+                        label="My answer"
+                        onChange={(mathjson) => typeAnswer(question.number, mathjson)}
+                        onLoadFailure={() => setAnswerUnavailable(true)}
+                     />
+
+                     {answerUnavailable ? <p role="alert">The math keyboard did not load, so this question cannot take an answer.</p> : null}
+                  </div>
+               )}
+
+               <ConfidencePrompt
+                  key={`confidence-${question.number}`}
+                  value={current.confidence}
+                  onChange={(confidence) => change(question.number, { confidence })}
+               />
+            </article>
+
+            <div className="submit-row">
+               <div className="cluster">
+                  <button type="button" className="text-button motion-instant-question-move" disabled={isFirst} onClick={() => goTo(index - 1)}>
+                     Back
+                  </button>
+
+                  <button type="button" className="text-button motion-instant-question-move" disabled={isLast} onClick={() => goTo(index + 1)}>
+                     Next
+                  </button>
+
+                  <span className="helper">
+                     {answeredCount} of {questions.length} answered.
+                  </span>
+               </div>
+
+               <button type="button" className="button-primary" onClick={submit}>
+                  Submit check
+               </button>
             </div>
-         )}
-
-         <ConfidencePrompt
-            key={`confidence-${question.number}`}
-            value={current.confidence}
-            onChange={(confidence) => change(question.number, { confidence })}
-         />
-
-         <div className="choice-row">
-            <button type="button" className="text-button motion-instant-question-move" disabled={isFirst} onClick={() => goTo(index - 1)}>
-               Back
-            </button>
-
-            <button type="button" className="text-button motion-instant-question-move" disabled={isLast} onClick={() => goTo(index + 1)}>
-               Next
-            </button>
-         </div>
-
-         <p className="muted">
-            {answeredCount} of {questions.length} answered.
-         </p>
-
-         <button type="button" className="button-primary" onClick={submit}>
-            Submit check
-         </button>
+         </Page>
       </section>
    );
 }

@@ -3,6 +3,8 @@ import path from "node:path";
 import fs from "node:fs";
 import { describe, expect, it, vi, beforeEach } from "vitest";
 
+import { SESSION_ENDED_EVENT, readMe as readMeForSignal, readReview as readReviewForSignal, reauthenticate as reauthenticateForSignal } from "./client";
+
 import {
    ApiError,
    openSession,
@@ -1301,5 +1303,30 @@ describe("evaluation response shape vocabulary", () => {
 
       expect(nextItem).toContain("dict(_as_item_dict(item_row), format=");
       expect(sorted(declared)).toEqual(sorted([...returnedFields("runtime/bank.py", "_as_item_dict"), "format"]));
+   });
+});
+
+describe("the session-ended signal", () => {
+   async function heardAfter(call: () => Promise<unknown>, status: number) {
+      const heard = vi.fn();
+
+      vi.stubGlobal("fetch", vi.fn().mockResolvedValue(jsonResponse(status, { detail: "refused" })));
+      window.addEventListener(SESSION_ENDED_EVENT, heard);
+
+      await call().catch(() => undefined);
+
+      window.removeEventListener(SESSION_ENDED_EVENT, heard);
+
+      return heard.mock.calls.length;
+   }
+
+   it("is raised by a 401 from a route the student works in", async () => {
+      expect(await heardAfter(() => readReviewForSignal(), 401)).toBe(1);
+   });
+
+   it("is not raised by a 401 from /me or an auth route, nor by another failure", async () => {
+      expect(await heardAfter(() => readMeForSignal(), 401)).toBe(0);
+      expect(await heardAfter(() => reauthenticateForSignal({ password: "wrong" }), 401)).toBe(0);
+      expect(await heardAfter(() => readReviewForSignal(), 503)).toBe(0);
    });
 });

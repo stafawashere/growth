@@ -27,6 +27,7 @@ from app.auth.service import (
    LOCKOUT_FREE_FAILURES,
    LOCKOUT_MAX_SECONDS,
    REAUTH_TTL_SECONDS,
+   SESSION_RENEW_INTERVAL_SECONDS,
    SESSION_TTL_SECONDS,
 )
 from app.providers.router import CooldownBoard
@@ -72,6 +73,7 @@ class Settings:
    seed_hook: Any = None
    purge_hook: Any = None
    session_ttl_seconds: int = SESSION_TTL_SECONDS
+   session_renew_interval_seconds: int = SESSION_RENEW_INTERVAL_SECONDS
    reauth_ttl_seconds: int = REAUTH_TTL_SECONDS
    rng_seed: int = 7
    rng: Any = None
@@ -216,10 +218,12 @@ def create_app(settings):
    from app.api.routes import assessment, auth, content, evaluation, export, frq, health, lessons, me, notices, progress, purge, review, review_screen, sessions
    from app.api.routes import settings as settings_routes
    from app.api.security_headers import SecurityHeadersMiddleware
+   from app.api.session_renewal import SessionRenewalMiddleware
    from starlette.middleware.gzip import GZipMiddleware
 
    application = FastAPI(title="Growth", version="0.0.1")
    application.add_middleware(SecurityHeadersMiddleware)
+   application.add_middleware(SessionRenewalMiddleware)
    application.add_middleware(GZipMiddleware, minimum_size=1024)
    application.state.settings = settings
    application.state.engine = settings.resolve_engine()

@@ -14,16 +14,18 @@ function MockRow({ mock }: { mock: MockHistoryRow }) {
    const { band, multiple_choice: multipleChoice, free_response: freeResponse } = mock;
 
    return (
-      <li data-testid="mock-history-row">
-         <span>{takenOn}</span>
-         <span>
-            Band: {band.low} to {band.high}
-         </span>
-         <span>
-            Multiple choice {multipleChoice.correct} of {multipleChoice.total} correct
-         </span>
-         <span>
-            Free response {freeResponse.earned} of {freeResponse.total} points, {freeResponse.pending} pending
+      <li data-testid="mock-history-row" className="list-row">
+         <span className="list-row-lead">{takenOn}</span>
+         <span className="list-row-body">
+            <span className="list-row-title">
+               Band: {band.low} to {band.high}
+            </span>
+            <span className="list-row-meta">
+               Multiple choice {multipleChoice.correct} of {multipleChoice.total} correct
+            </span>
+            <span className="list-row-meta">
+               Free response {freeResponse.earned} of {freeResponse.total} points, {freeResponse.pending} pending
+            </span>
          </span>
       </li>
    );
@@ -33,13 +35,13 @@ export function MockHistory({ history }: MockHistoryProps) {
    const hasHistory = history.mocks.length > 0;
 
    return (
-      <section aria-labelledby="mock-history-heading" data-testid="mock-history">
+      <section aria-labelledby="mock-history-heading" data-testid="mock-history" className="section">
          <h2 id="mock-history-heading" className="section-heading">
             Mock history
          </h2>
 
          {hasHistory ? (
-            <ul className="review-list">
+            <ul className="list">
                {history.mocks.map((mock) => (
                   <MockRow key={mock.session_id} mock={mock} />
                ))}

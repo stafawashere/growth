@@ -74,7 +74,7 @@ describe("the AI call notices in the app shell", () => {
       signedInServer();
       render(<App />);
 
-      await screen.findByRole("button", { name: "Sign out" });
+      await screen.findByRole("button", { name: "Account and settings" });
       await settle();
 
       expect(mocked.readNotices).toHaveBeenCalledTimes(1);
@@ -83,6 +83,7 @@ describe("the AI call notices in the app shell", () => {
 
       expect(await screen.findByTestId("ai-notice")).toBeTruthy();
 
+      fireEvent.click(screen.getByRole("button", { name: "Account and settings" }));
       fireEvent.click(screen.getByRole("button", { name: "Sign out" }));
 
       await screen.findByRole("button", { name: "Sign in" });
@@ -102,7 +103,7 @@ describe("the AI call notices in the app shell", () => {
       signedInServer();
       render(<App />);
 
-      await screen.findByRole("button", { name: "Sign out" });
+      await screen.findByRole("button", { name: "Account and settings" });
       await settle();
       await advancePoll();
       await advancePoll();

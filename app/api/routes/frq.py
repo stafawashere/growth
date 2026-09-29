@@ -269,6 +269,25 @@ def delete_image(attempt_id: str, image_id: str, db=Depends(get_db, scope="funct
    return {"deleted": image.id}
 
 
+@router.delete("/frq/photos")
+def delete_every_photo(db=Depends(get_db, scope="function"), user=Depends(current_user)):
+   """08's settings wireframe, Data: "Delete my FRQ photos". Every stored page photo of the
+   student goes the way DELETE /attempts/{aid}/images/{iid} takes one: the bytes are dropped, the
+   row keeps its deletion time, and each is audited."""
+   now = utc_now()
+   kept = db.execute(
+      select(models.FrqImage).where(models.FrqImage.user_id == user.id, models.FrqImage.deleted_at.is_(None))
+   ).scalars().all()
+
+   for image in kept:
+      image.data = None
+      image.deleted_at = now.isoformat()
+      image.updated_at = now.isoformat()
+      write_audit(db, user.id, "frq_image_deleted", image.id, {"attempt_id": image.attempt_id}, now=now)
+
+   return {"deleted": len(kept)}
+
+
 @router.post("/attempts/{attempt_id}/transcription")
 def run_read_back(attempt_id: str, db=Depends(get_db, scope="function"), settings=Depends(get_settings), user=Depends(current_user)):
    attempt, _session_row = owned_attempt(db, attempt_id, user)

@@ -30,7 +30,8 @@ from app.audit.vocabulary import is_known_action
 from app.auth import passwords
 from app.db import models
 
-SESSION_TTL_SECONDS = 60 * 60 * 24 * 30
+SESSION_TTL_SECONDS = 60 * 60 * 24 * 90
+SESSION_RENEW_INTERVAL_SECONDS = 60 * 60
 REAUTH_TTL_SECONDS = 300
 PURGE_GRACE_DAYS = 30
 LOCKOUT_FREE_FAILURES = 4
@@ -461,6 +462,27 @@ def resolve_session(db, token, now=None):
       return None
 
    return row
+
+
+def renew_session(db, auth_session, settings, now=None):
+   """Slides the expiry forward on use, so a session ends only after session_ttl_seconds without a
+   request. The row is written at most once per session_renew_interval_seconds, which keeps a burst
+   of requests from turning every read into a write. Returns True when the expiry moved, and the
+   caller then sends the cookie again with a fresh max-age."""
+   moment = now or utc_now()
+   current_expiry = datetime.fromisoformat(auth_session.expires_at)
+   renewed_expiry = moment + timedelta(seconds=settings.session_ttl_seconds)
+   seconds_gained = (renewed_expiry - current_expiry).total_seconds()
+   is_recent = seconds_gained < settings.session_renew_interval_seconds
+
+   if is_recent:
+      return False
+
+   auth_session.expires_at = as_iso(renewed_expiry)
+   auth_session.updated_at = as_iso(moment)
+   db.flush()
+
+   return True
 
 
 def consume_reauth(db, auth_session, token, now=None):

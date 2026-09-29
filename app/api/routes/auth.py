@@ -4,7 +4,9 @@ password.
 Ruled 2026-09-27 on the operator's instruction, reversing docs/plan/09-security-and-privacy.md's
 passkey-only rule for this installation. 06's API surface lists these paths, and BUILD-LEDGER.md
 records the ruling: POST /auth/signup, /auth/login, /auth/logout, /auth/reauth,
-/auth/password/change and /auth/recovery/reset, and GET /auth/status.
+/auth/password/change and /auth/recovery/reset, and GET /auth/status. POST /auth/recovery/rotate
+hands a signed-in student a new recovery code behind a fresh re-authentication, so the code can be
+replaced without first losing the password.
 
 Every route that takes a credential first runs app/auth/guard.py refuse_untrusted_auth_request,
 which stands in for the origin binding a passkey ceremony carried: the Host must be one this
@@ -29,9 +31,13 @@ from app.api.deps import current_session, get_db, get_dummy_hash, get_settings
 from app.auth import service
 from app.auth.cookies import clear_session_cookie, is_loopback, request_host_is_loopback, set_session_cookie
 from app.auth.guard import refuse_rate_limited, refuse_untrusted_auth_request
-from app.auth.recovery import reset_password_via_recovery
+from app.db import models
+from app.auth.recovery import issue_recovery_code, reset_password_via_recovery
 
 router = APIRouter(prefix="/auth", tags=["auth"])
+
+ROTATE_NEEDS_REAUTH_DETAIL = "a new recovery code needs a fresh password re-authentication"
+ROTATE_AUDIT_ACTION = "recovery_code_issued"
 
 
 def body_of(payload):
@@ -250,3 +256,31 @@ def recovery_reset(
       "user_id": finished["user"].id,
       "recovery_code": finished["recovery_code"],
    }
+
+
+@router.post("/recovery/rotate")
+def recovery_rotate(
+   request: Request,
+   payload: dict = Body(default=None),
+   db=Depends(get_db, scope="function"),
+   settings=Depends(get_settings),
+   auth_session=Depends(current_session),
+):
+   untrusted = refuse_untrusted_auth_request(request, settings)
+
+   if untrusted is not None:
+      return untrusted
+
+   fields = body_of(payload)
+   now = service.utc_now()
+   is_reauthenticated = service.consume_reauth(db, auth_session, fields.get("reauth_token"), now)
+
+   if not is_reauthenticated:
+      return JSONResponse(status_code=401, content={"detail": ROTATE_NEEDS_REAUTH_DETAIL})
+
+   user = db.get(models.User, auth_session.user_id)
+   code = issue_recovery_code(db, user, now)
+   service.write_audit(db, user.id, ROTATE_AUDIT_ACTION, f"users:{user.id}", None, now)
+
+   return {"recovery_code": code}
+

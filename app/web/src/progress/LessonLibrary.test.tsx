@@ -76,7 +76,7 @@ describe("the Lessons section of progress", () => {
       expect(screen.queryByRole("button", { name: /The chain rule/ })).toBeNull();
    });
 
-   it("progress shows the section under the mastery map and opens the reader, whose back returns to progress", async () => {
+   it("progress shows the section on its Lessons tab and opens the reader, whose back returns to progress", async () => {
       mocked.readMasteryMap.mockRejectedValue(new Error("offline"));
       mocked.readCalibration.mockRejectedValue(new Error("offline"));
       mocked.readRepresentations.mockRejectedValue(new Error("offline"));
@@ -89,12 +89,11 @@ describe("the Lessons section of progress", () => {
 
       render(<ProgressRoute />);
 
-      const library = await screen.findByTestId("lesson-library");
-      const order = Array.from(document.querySelectorAll("[data-testid='mastery-failed'], [data-testid='lesson-library']")).map((node) =>
-         node.getAttribute("data-testid")
-      );
+      expect(await screen.findByTestId("mastery-failed")).toBeTruthy();
 
-      expect(order).toEqual(["mastery-failed", "lesson-library"]);
+      fireEvent.click(screen.getByRole("tab", { name: "Lessons" }));
+
+      const library = await screen.findByTestId("lesson-library");
 
       fireEvent.click(within(library).getByRole("button", { name: /The product rule/ }));
 

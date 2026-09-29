@@ -2,6 +2,7 @@ import { useId } from "react";
 import type { ServedOption } from "../api/types";
 import { MathText } from "../math/MathText";
 import { MathValue } from "../math/MathValue";
+import { Icon } from "../ui/Icon";
 
 export interface McqControlProps {
    groupLabel: string;
@@ -25,24 +26,28 @@ function optionMathSource(option: ServedOption) {
    return option.value;
 }
 
+const OPTION_LETTERS = ["A", "B", "C", "D", "E"];
+
 export function McqControl(props: McqControlProps) {
    const { groupLabel, options, selectedId, onSelect, eliminatedIds, onToggleEliminated } = props;
    const groupName = useId();
    const offersEliminator = onToggleEliminated !== undefined;
 
    return (
-      <fieldset className="choice-group option-list">
-         <legend>{groupLabel}</legend>
-         {options.map((option) => {
+      <fieldset className="option-list">
+         <legend className="field-label">{groupLabel}</legend>
+
+         {options.map((option, index) => {
             const isSelected = selectedId === option.id;
             const hasLabel = option.label !== undefined;
             const mathSource = optionMathSource(option);
+            const letter = OPTION_LETTERS[index] ?? option.id;
 
             const isEliminated = eliminatedIds?.includes(option.id) ?? false;
             const optionText = hasLabel ? <MathText text={option.label!} /> : <MathValue value={mathSource ?? option.id} className="option-math" />;
 
             const choice = (
-               <label key={option.id}>
+               <label key={option.id} className="option" data-selected={isSelected ? "true" : undefined}>
                   <input
                      type="radio"
                      name={groupName}
@@ -50,7 +55,10 @@ export function McqControl(props: McqControlProps) {
                      checked={isSelected}
                      onChange={() => onSelect(option.id)}
                   />
-                  {offersEliminator ? <span className={isEliminated ? "crossed-out" : undefined}>({option.id}) {optionText}</span> : <span>{optionText}</span>}
+
+                  <span className="option-letter" data-letter={letter} aria-hidden="true" />
+
+                  <span className={isEliminated ? "option-content crossed-out" : "option-content"}>{optionText}</span>
                </label>
             );
 
@@ -59,16 +67,18 @@ export function McqControl(props: McqControlProps) {
             }
 
             return (
-               <div key={option.id} className="choice-option" data-testid="choice-option" data-eliminated={isEliminated}>
+               <div key={option.id} className="option-row" data-testid="choice-option" data-eliminated={isEliminated}>
                   {choice}
 
                   <button
                      type="button"
-                     className="text-button motion-instant-eliminate-option"
+                     className="icon-button icon-button-small motion-instant-eliminate-option"
                      aria-pressed={isEliminated}
+                     aria-label={isEliminated ? `Restore option ${option.id}` : `Cross out option ${option.id}`}
+                     title={isEliminated ? `Restore option ${option.id}` : `Cross out option ${option.id}`}
                      onClick={() => onToggleEliminated(option.id)}
                   >
-                     {isEliminated ? `Restore option ${option.id}` : `Cross out option ${option.id}`}
+                     <Icon name={isEliminated ? "refresh" : "close"} />
                   </button>
                </div>
             );

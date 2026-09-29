@@ -42,16 +42,16 @@ export function CheckpointResult({ checkpoint }: { checkpoint: CheckpointView })
    const isSelfScored = checkpoint.scored_by === SCORED_BY_STUDENT;
 
    return (
-      <article data-testid="checkpoint-result">
-         <h3 className="label-heading">{checkpoint.form_year} released free-response form</h3>
+      <article data-testid="checkpoint-result" className="card card-compact">
+         <h3>{checkpoint.form_year} released free-response form</h3>
 
          <p data-testid="checkpoint-total">
             {checkpoint.total_earned} of {checkpoint.total_possible} points.
          </p>
 
-         <ul>
+         <ul className="list">
             {checkpoint.questions.map((result) => (
-               <li key={result.question} data-testid="checkpoint-question">
+               <li key={result.question} data-testid="checkpoint-question" className="list-row list-row-meta">
                   Question {result.question}, {result.earned} of {result.possible} points,{" "}
                   {publishedMeanText(result)}.
                </li>
@@ -72,7 +72,7 @@ export function CheckpointHistory({ checkpoints, onOpenCheckpoint }: CheckpointH
    const hasNoFormLeft = !canOpen && !waitsForADay;
 
    return (
-      <section aria-labelledby="checkpoint-heading" data-testid="checkpoint-history">
+      <section aria-labelledby="checkpoint-heading" data-testid="checkpoint-history" className="section">
          <h2 id="checkpoint-heading" className="section-heading">
             Checkpoint history
          </h2>
@@ -84,9 +84,11 @@ export function CheckpointHistory({ checkpoints, onOpenCheckpoint }: CheckpointH
          )}
 
          {canOpen ? (
-            <button type="button" className="text-button" onClick={onOpenCheckpoint}>
-               {isOpen ? "Continue the checkpoint" : "Take a checkpoint"}
-            </button>
+            <div className="cluster">
+               <button type="button" className="button-secondary" onClick={onOpenCheckpoint}>
+                  {isOpen ? "Continue the checkpoint" : "Take a checkpoint"}
+               </button>
+            </div>
          ) : null}
 
          {waitsForADay ? (
@@ -106,7 +108,7 @@ function ProbeResult({ administration }: { administration: ProbeAdministration }
    const hasGraded = administration.graded > 0;
 
    return (
-      <li data-testid="probe-result">
+      <li data-testid="probe-result" className="list-row">
          {hasGraded
             ? `${administration.correct} of ${administration.graded} graded items correct.`
             : "No item of this probe could be graded."}
@@ -123,13 +125,13 @@ export function ProbeHistory({ probe, onOpenProbe }: ProbeHistoryProps) {
    const hasNoItems = !canOpen && !waitsForADay;
 
    return (
-      <section aria-labelledby="probe-heading" data-testid="probe-history">
+      <section aria-labelledby="probe-heading" data-testid="probe-history" className="section">
          <h2 id="probe-heading" className="section-heading">
             Concept probe
          </h2>
 
          {hasHistory ? (
-            <ul>
+            <ul className="list">
                {history.map((administration) => (
                   <ProbeResult key={administration.id} administration={administration} />
                ))}
@@ -139,9 +141,11 @@ export function ProbeHistory({ probe, onOpenProbe }: ProbeHistoryProps) {
          )}
 
          {canOpen ? (
-            <button type="button" className="text-button" onClick={onOpenProbe}>
-               {isOpen ? "Continue the concept probe" : "Take the concept probe"}
-            </button>
+            <div className="cluster">
+               <button type="button" className="button-secondary" onClick={onOpenProbe}>
+                  {isOpen ? "Continue the concept probe" : "Take the concept probe"}
+               </button>
+            </div>
          ) : null}
 
          {waitsForADay ? (

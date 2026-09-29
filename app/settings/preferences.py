@@ -6,6 +6,10 @@ says an extension is an explicit act rather than a default, so a changed exam da
 the purge date; only a request that names purge_after does. Desired retention is read from the
 engine and is never written here. 08's queue settings also name a daily minute target, which has
 no column in 06 and so is not served.
+
+The if-then plan of 01's "Implementation intention and queue-bound streak" is kept on users as one
+line of the student's own words, read and written through /settings/study-plan so the queue
+settings payload stays as it was. An empty plan clears it.
 """
 from datetime import date
 
@@ -66,5 +70,35 @@ def update_dates(db, user, fields, timestamp):
    user.updated_at = timestamp
    db.flush()
    db.refresh(user)
+
+   return user
+
+
+STUDY_PLAN_LIMIT = 280
+
+
+def study_plan_view(user):
+   return {"study_plan": user.study_plan}
+
+
+def validated_study_plan(value):
+   is_text = isinstance(value, str)
+
+   if not is_text:
+      raise SettingsRefused("study_plan must be text")
+
+   plan = value.strip()
+   is_too_long = len(plan) > STUDY_PLAN_LIMIT
+
+   if is_too_long:
+      raise SettingsRefused(f"an if-then plan is at most {STUDY_PLAN_LIMIT} characters")
+
+   return plan if plan != "" else None
+
+
+def update_study_plan(db, user, value, timestamp):
+   user.study_plan = validated_study_plan(value)
+   user.updated_at = timestamp
+   db.flush()
 
    return user

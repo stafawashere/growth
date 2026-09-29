@@ -79,7 +79,7 @@ interface AiNoticeToastProps {
    onDismiss: (id: number) => void;
 }
 
-function AiNoticeToast(props: AiNoticeToastProps) {
+export function AiNoticeToast(props: AiNoticeToastProps) {
    const { notice, visibleMilliseconds, onDismiss } = props;
    const title = noticeTitle(notice);
    const isAnswer = notice.outcome === "answered";
@@ -93,8 +93,8 @@ function AiNoticeToast(props: AiNoticeToastProps) {
    }, [notice.id, visibleMilliseconds, onDismiss]);
 
    return (
-      <div className="notice notice-framed ai-notice" data-testid="ai-notice">
-         <p>{title}</p>
+      <div className="ai-notice" data-testid="ai-notice">
+         <strong>{title}</strong>
 
          <p className="caption">{noticeSource(notice)}</p>
 
@@ -210,13 +210,13 @@ export function AiNoticesSetting(props: AiNoticesSettingProps) {
    }
 
    return (
-      <section className="card settings" data-testid="ai-notices-settings">
-         <h2 className="section-heading">AI activity</h2>
+      <section className="section" data-testid="ai-notices-settings">
+         <h2 className="section-header">AI activity</h2>
 
-         <fieldset className="choice-group">
-            <legend>Notices</legend>
+         <fieldset>
+            <legend className="visually-hidden">Notices</legend>
 
-            <label className="check-row">
+            <label className="check">
                <input type="checkbox" checked={props.enabled} onChange={(event) => change(event.target.checked)} />
                Show a short notice each time the app asks an AI model something
             </label>

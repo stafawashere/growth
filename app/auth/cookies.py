@@ -5,6 +5,12 @@ the request's own host (Host header / request.url.hostname) are loopback, becaus
 reached through a reverse proxy or a port forward can still carry a LAN or public Host. The
 application refuses outright, rather than downgrading, to set the session cookie when the request
 itself arrived over plain http on a non-loopback origin, since 09 says refuse.
+
+A browser keys cookies on the host alone, never the port, so every installation on localhost used
+to share the one growth_session cookie: signing in to a second server on another port replaced the
+first server's token and signed the student out of it. The name now carries the port whenever the
+origin names one (growth_session_8000), and the bare name is still read, so a cookie set before the
+change keeps working until the next renewal moves it to the port name.
 """
 from fastapi import HTTPException
 
@@ -18,6 +24,26 @@ def is_loopback(host):
 
 def request_host_is_loopback(request):
    return is_loopback(request.url.hostname)
+
+
+def session_cookie_name(request):
+   port = request.url.port
+   names_a_port = port is not None
+
+   if not names_a_port:
+      return SESSION_COOKIE
+
+   return f"{SESSION_COOKIE}_{port}"
+
+
+def read_session_token(request):
+   own_name = session_cookie_name(request)
+   own_token = request.cookies.get(own_name)
+
+   if own_token:
+      return own_token
+
+   return request.cookies.get(SESSION_COOKIE)
 
 
 def cookie_is_secure(bind_host, request):
@@ -37,7 +63,7 @@ def refuses_session_cookie(request):
 
 def cookie_kwargs(bind_host, request, max_age):
    return {
-      "key": SESSION_COOKIE,
+      "key": session_cookie_name(request),
       "httponly": True,
       "samesite": "lax",
       "secure": cookie_is_secure(bind_host, request),
@@ -57,10 +83,13 @@ def set_session_cookie(response, bind_host, request, token, max_age):
 
 
 def clear_session_cookie(response, bind_host, request):
-   response.delete_cookie(
-      key=SESSION_COOKIE,
-      path="/",
-      httponly=True,
-      samesite="lax",
-      secure=cookie_is_secure(bind_host, request),
-   )
+   names = {session_cookie_name(request), SESSION_COOKIE}
+
+   for name in sorted(names):
+      response.delete_cookie(
+         key=name,
+         path="/",
+         httponly=True,
+         samesite="lax",
+         secure=cookie_is_secure(bind_host, request),
+      )

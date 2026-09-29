@@ -79,7 +79,7 @@ describe("SettingsRoute, budget cap change", () => {
       mocked.reauthenticate.mockResolvedValue({ reauth_token: "token-cap" });
       mocked.updateBudget.mockResolvedValue(budgetsWith(7));
 
-      render(<SettingsRoute purgeConfirmationPhrase={null} saveFile={vi.fn()} />);
+      render(<SettingsRoute tab="budgets" purgeConfirmationPhrase={null} saveFile={vi.fn()} />);
 
       fireEvent.click(await screen.findByRole("button", { name: "open" }));
       fireEvent.change(screen.getByLabelText(/cap \$/), { target: { value: "4" } });
@@ -107,7 +107,7 @@ describe("SettingsRoute, budget cap change", () => {
    });
 
    it("sends no cap change when the password prompt is closed, and hands the save back undone", async () => {
-      render(<SettingsRoute purgeConfirmationPhrase={null} saveFile={vi.fn()} />);
+      render(<SettingsRoute tab="budgets" purgeConfirmationPhrase={null} saveFile={vi.fn()} />);
 
       fireEvent.click(await screen.findByRole("button", { name: "open" }));
       fireEvent.change(screen.getByLabelText(/cap \$/), { target: { value: "4" } });
@@ -135,7 +135,7 @@ describe("SettingsRoute, export", () => {
       mocked.requestExport.mockResolvedValue({ id: "JOB-1", status: "done", created_at: "2027-01-05T09:00:00" });
       mocked.readExport.mockResolvedValue(archive);
 
-      render(<SettingsRoute purgeConfirmationPhrase={null} saveFile={saveFile} />);
+      render(<SettingsRoute tab="data" purgeConfirmationPhrase={null} saveFile={saveFile} />);
 
       fireEvent.click(screen.getByRole("button", { name: "export" }));
       await confirmPassword();
@@ -153,7 +153,7 @@ describe("SettingsRoute, export", () => {
       mocked.reauthenticate.mockResolvedValue({ reauth_token: "token-stale" });
       mocked.requestExport.mockRejectedValue(refused(401));
 
-      render(<SettingsRoute purgeConfirmationPhrase={null} saveFile={saveFile} />);
+      render(<SettingsRoute tab="data" purgeConfirmationPhrase={null} saveFile={saveFile} />);
 
       const exportButton = screen.getByRole("button", { name: "export" }) as HTMLButtonElement;
 
@@ -173,7 +173,7 @@ describe("SettingsRoute, export", () => {
       mocked.requestExport.mockResolvedValue({ id: "JOB-2", status: "done", created_at: "2027-01-05T09:00:00" });
       mocked.readExport.mockResolvedValue(new Blob(["{}"]));
 
-      render(<SettingsRoute purgeConfirmationPhrase={null} saveFile={vi.fn()} />);
+      render(<SettingsRoute tab="data" purgeConfirmationPhrase={null} saveFile={vi.fn()} />);
 
       const exportButton = screen.getByRole("button", { name: "export" }) as HTMLButtonElement;
 
@@ -184,7 +184,7 @@ describe("SettingsRoute, export", () => {
    });
 
    it("requests no export when the password prompt is closed", async () => {
-      render(<SettingsRoute purgeConfirmationPhrase={null} saveFile={vi.fn()} />);
+      render(<SettingsRoute tab="data" purgeConfirmationPhrase={null} saveFile={vi.fn()} />);
 
       const exportButton = screen.getByRole("button", { name: "export" }) as HTMLButtonElement;
 
@@ -207,7 +207,7 @@ describe("SettingsRoute, export", () => {
       mocked.requestExport.mockResolvedValue({ id: "JOB-3", status: "done", created_at: "2027-01-05T09:00:00" });
       mocked.readExport.mockResolvedValue(new Blob(["{}"]));
 
-      render(<SettingsRoute purgeConfirmationPhrase={null} saveFile={saveFile} />);
+      render(<SettingsRoute tab="data" purgeConfirmationPhrase={null} saveFile={saveFile} />);
 
       fireEvent.click(screen.getByRole("button", { name: "export" }));
       await confirmPassword();
@@ -225,7 +225,7 @@ describe("SettingsRoute, export", () => {
    });
 
    it("moves focus to the password field when the prompt opens", async () => {
-      render(<SettingsRoute purgeConfirmationPhrase={null} saveFile={vi.fn()} />);
+      render(<SettingsRoute tab="data" purgeConfirmationPhrase={null} saveFile={vi.fn()} />);
 
       fireEvent.click(screen.getByRole("button", { name: "export" }));
 
@@ -241,7 +241,7 @@ describe("SettingsRoute, purge", () => {
       mocked.reauthenticate.mockResolvedValue({ reauth_token: "token-purge" });
       mocked.requestPurge.mockResolvedValue({ purged: true, deleted: {} });
 
-      render(<SettingsRoute purgeConfirmationPhrase="PHRASE UNDER TEST" saveFile={vi.fn()} />);
+      render(<SettingsRoute tab="data" purgeConfirmationPhrase="PHRASE UNDER TEST" saveFile={vi.fn()} />);
 
       fireEvent.change(screen.getByLabelText(/type/i), { target: { value: "PHRASE UNDER TEST" } });
       fireEvent.click(screen.getByRole("button", { name: /verify identity/i }));
@@ -264,7 +264,7 @@ describe("SettingsRoute, purge", () => {
    it("keeps purge disabled when the password is refused", async () => {
       mocked.reauthenticate.mockRejectedValue(passwordRefused("the password is incorrect"));
 
-      render(<SettingsRoute purgeConfirmationPhrase="PHRASE UNDER TEST" saveFile={vi.fn()} />);
+      render(<SettingsRoute tab="data" purgeConfirmationPhrase="PHRASE UNDER TEST" saveFile={vi.fn()} />);
 
       fireEvent.change(screen.getByLabelText(/type/i), { target: { value: "PHRASE UNDER TEST" } });
       fireEvent.click(screen.getByRole("button", { name: /verify identity/i }));
@@ -287,7 +287,7 @@ describe("SettingsRoute, queue and purge dates", () => {
          desired_retention: 0.9
       });
 
-      render(<SettingsRoute purgeConfirmationPhrase={null} saveFile={vi.fn()} />);
+      render(<SettingsRoute tab="study" purgeConfirmationPhrase={null} saveFile={vi.fn()} />);
 
       const field = within(await screen.findByTestId("date-field-exam date"));
 
@@ -305,7 +305,7 @@ describe("SettingsRoute, queue and purge dates", () => {
          desired_retention: 0.9
       });
 
-      render(<SettingsRoute purgeConfirmationPhrase={null} saveFile={vi.fn()} />);
+      render(<SettingsRoute tab="data" purgeConfirmationPhrase={null} saveFile={vi.fn()} />);
 
       const field = within(await screen.findByTestId("date-field-purge date"));
 

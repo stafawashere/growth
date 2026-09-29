@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 
 import type { CheckpointPart, CheckpointQuestion, CheckpointSection, CheckpointView } from "../api/types";
 import { CheckpointResult } from "../progress/CheckpointHistory";
-import { PageHeader } from "../page/PageHeader";
+import { PageHeader } from "../ui/Page";
 
 /* The six-week checkpoint (11 P7 scope item 5). The form is released College Board material used by
    reference only (app/checkpoint/forms.py): this screen names the year, the parts and the questions
@@ -28,7 +28,7 @@ export interface CheckpointScreenProps {
 
 export function CheckpointIntro({ refusal, onStart, onLeave }: CheckpointIntroProps) {
    return (
-      <section className="card" data-testid="checkpoint-intro">
+      <section className="screen" data-testid="checkpoint-intro">
          <PageHeader title="Checkpoint" />
 
          <p>
@@ -94,7 +94,7 @@ function PartScore(props: {
    }
 
    return (
-      <div className="field" data-testid="part-score" data-record-id={part.record_id}>
+      <div className="form-field" data-testid="part-score" data-record-id={part.record_id}>
          <label>
             Part ({part.part.toLowerCase()}), points earned out of {part.points}
             <input
@@ -199,7 +199,7 @@ export function CheckpointScreen({ checkpoint, onScore, onFinish, onLeave }: Che
 
    if (isFinished) {
       return (
-         <section className="card" data-testid="checkpoint-finished">
+         <section className="screen" data-testid="checkpoint-finished">
             <PageHeader title="Checkpoint" />
 
             <CheckpointResult checkpoint={checkpoint} />
@@ -214,7 +214,7 @@ export function CheckpointScreen({ checkpoint, onScore, onFinish, onLeave }: Che
    }
 
    return (
-      <section className="card" data-testid="checkpoint-screen">
+      <section className="screen" data-testid="checkpoint-screen">
          <PageHeader eyebrow="Checkpoint" title={<>{checkpoint.form_year} released free-response form</>} />
 
          <p>{MASTERY_NOTE}</p>

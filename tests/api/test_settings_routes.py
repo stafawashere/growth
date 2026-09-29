@@ -203,6 +203,24 @@ def test_put_budgets_without_a_fresh_reauth_changes_nothing(world):
    assert budget_rows(world.engine) == []
 
 
+def test_a_refused_budget_change_spends_the_reauth_token(world):
+   client = world.client()
+   world.register(client)
+   token = world.reauth(client).json()["reauth_token"]
+   forged = client.put(
+      "/settings/budgets",
+      json={"role": "tutor", "cap_usd": 0.5, "cap_tokens": None, "reauth_token": "not-a-token"},
+   )
+   replayed = client.put(
+      "/settings/budgets",
+      json={"role": "tutor", "cap_usd": 0.5, "cap_tokens": None, "reauth_token": token},
+   )
+
+   assert forged.status_code == 401
+   assert replayed.status_code == 401
+   assert cap_changes(world.engine) == []
+
+
 def test_put_budgets_writes_the_cap_and_the_audit_entry(world):
    client = world.client()
    world.register(client)

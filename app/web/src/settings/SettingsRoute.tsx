@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useRef, useState, type ReactNode } from "react";
 import {
    readBudgets,
    readExport,
@@ -13,6 +13,7 @@ import {
 import type { BudgetsPayload, ProviderRole, SettingsPayload } from "../api/types";
 import { usePasswordReauth } from "../account/ReauthPrompt";
 import { SettingsScreen } from "./SettingsScreen";
+import type { SettingsTab } from "../routing";
 
 /* purgeConfirmationPhrase has no source a client route serves and no plan sentence, so the caller
    passes it, and null withholds the purge controls rather than guessing a phrase. saveFile is the
@@ -22,13 +23,15 @@ import { SettingsScreen } from "./SettingsScreen";
 export interface SettingsRouteProps {
    purgeConfirmationPhrase: string | null;
    saveFile: (name: string, contents: Blob) => void;
+   tab?: SettingsTab;
+   beforePurge?: ReactNode;
 }
 
 function exportFileName(exportId: string) {
    return `growth-export-${exportId}.json`;
 }
 
-export function SettingsRoute({ purgeConfirmationPhrase, saveFile }: SettingsRouteProps) {
+export function SettingsRoute({ purgeConfirmationPhrase, saveFile, tab = "study", beforePurge }: SettingsRouteProps) {
    const [providers, setProviders] = useState<ProviderRole[] | null>(null);
    const [budgets, setBudgets] = useState<BudgetsPayload | null>(null);
    const [queueSettings, setQueueSettings] = useState<SettingsPayload | null>(null);
@@ -138,6 +141,8 @@ export function SettingsRoute({ purgeConfirmationPhrase, saveFile }: SettingsRou
    return (
       <>
          <SettingsScreen
+            tab={tab}
+            beforePurge={beforePurge}
             providers={providers}
             budgets={budgets}
             onCapChange={changeCap}

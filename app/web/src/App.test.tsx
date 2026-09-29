@@ -37,17 +37,17 @@ const SOURCE_ROOT = join(__dirname);
 
 const DESIGN_BRIEF = readFileSync(join(SOURCE_ROOT, "..", "..", "..", "docs", "plan", "08-design-brief.md"), "utf8");
 
-const PROPS_INTERFACE_BY_DESTINATION: Record<Destination, { file: string; name: string }> = {
+const PROPS_INTERFACE_BY_DESTINATION: Partial<Record<Destination, { file: string; name: string }>> = {
    home: { file: "home/HomeScreen.tsx", name: "HomeScreenProps" },
    session: { file: "session/SessionScreen.tsx", name: "SessionScreenProps" },
    settings: { file: "settings/SettingsScreen.tsx", name: "SettingsScreenProps" },
    progress: { file: "progress/ProgressRoute.tsx", name: "ProgressRouteProps" },
    review: { file: "review/ReviewRoute.tsx", name: "ReviewRouteProps" },
    onboarding: { file: "onboarding/OnboardingRoute.tsx", name: "OnboardingRouteProps" },
-   frq: { file: "frq/FrqRoute.tsx", name: "FrqRouteProps" },
-   mock: { file: "assessment/AssessmentRoute.tsx", name: "AssessmentRouteProps" },
+   assessments: { file: "assessment/AssessmentRoute.tsx", name: "AssessmentRouteProps" },
    lesson: { file: "lessons/LessonRoute.tsx", name: "LessonRouteProps" },
-   lessons: { file: "lessons/LessonsRoute.tsx", name: "LessonsRouteProps" }
+   lessons: { file: "lessons/LessonsRoute.tsx", name: "LessonsRouteProps" },
+   account: { file: "account/AccountPage.tsx", name: "AccountPageProps" }
 };
 
 /* P2 scope item 6 brought the progress screen into phase with its calibration curve. Stage 3 of the
@@ -59,11 +59,11 @@ const PROPS_INTERFACE_BY_DESTINATION: Record<Destination, { file: string; name: 
    from the bar, so no screen is out of phase any more. */
 const OUT_OF_PHASE_SCREENS: string[] = [];
 
-/* The screens reached from home's secondary buttons, never from the bar and never the landing
-   screen (08, Information architecture). */
-const REACHED_FROM_HOME = ["Progress", "Review", "Free response", "Mock exam"];
+/* The redesign's bar (the operator's ruling of 2026-09-29, amending 08's information architecture):
+   five tabs, with settings and the account behind the avatar menu. */
+const BAR_DESTINATIONS = ["home", "lessons", "review", "progress", "assessments"];
 
-const BAR_DESTINATIONS = ["home", "lessons", "settings"];
+const BAR_LABELS = ["Today", "Lessons", "Review", "Progress", "Assessments"];
 
 /* A local wall-clock moment, so the calendar date the renderer counts from is the same in every
    time zone the suite runs in. */
@@ -383,10 +383,19 @@ function declaredPropertyNames(relativePath: string, interfaceName: string): str
    return [...properties].map((match) => match[1]);
 }
 
-function visit(destination: Destination): void {
-   const label = DESTINATIONS.find((entry) => entry.id === destination)!.label;
+function visit(label: string): void {
+   fireEvent.click(within(screen.getByRole("navigation", { name: "Main" })).getByRole("link", { name: label }));
+}
 
-   fireEvent.click(screen.getByRole("button", { name: label }));
+function openFromMenu(item: "Account" | "Settings"): void {
+   fireEvent.click(screen.getByRole("button", { name: "Account and settings" }));
+   fireEvent.click(screen.getByRole("button", { name: item }));
+}
+
+function barLabels() {
+   return within(screen.getByRole("navigation", { name: "Main" }))
+      .getAllByRole("link")
+      .map((link) => link.textContent);
 }
 
 function leafValues(value: unknown, into: unknown[] = []): unknown[] {
@@ -467,10 +476,6 @@ function untracedFigures(payloads: unknown[], derived: number[]) {
    return offenders;
 }
 
-function buttonsIn(container: HTMLElement) {
-   return Array.from(container.querySelectorAll("button"));
-}
-
 function neverAnswers() {
    return new Promise<never>(() => undefined);
 }
@@ -479,6 +484,8 @@ beforeEach(() => {
    vi.clearAllMocks();
    vi.useFakeTimers({ toFake: ["Date"] });
    vi.setSystemTime(PINNED_NOW);
+   window.history.replaceState(null, "", "/");
+   window.localStorage.clear();
 });
 
 afterEach(() => {
@@ -487,13 +494,11 @@ afterEach(() => {
 });
 
 describe("the client shell", () => {
-   it("offers home, lessons and settings from the bar, opens no session from it, and names no out-of-phase screen", () => {
+   it("offers Today, Lessons, Review, Progress and Assessments from the bar, opens no session from it, and names no out-of-phase screen", () => {
       mockServer(readyProgress);
       render(<App />);
 
-      const labels = buttonsIn(screen.getByRole("navigation")).map((button) => button.textContent);
-
-      expect(labels).toEqual(["Home", "Lessons", "Settings"]);
+      expect(barLabels()).toEqual(BAR_LABELS);
       expect(DESTINATIONS.map((entry) => entry.id)).toEqual(BAR_DESTINATIONS);
 
       const shellSource = sourceOf("App.tsx").toLowerCase();
@@ -503,7 +508,7 @@ describe("the client shell", () => {
       expect(mocked.openSession).not.toHaveBeenCalled();
    });
 
-   it("reaches progress from home and never from the bar or as the landing screen", async () => {
+   it("reaches progress from the bar and never as the landing screen, with the calibration curve on its own tab", async () => {
       mockServer(readyProgress);
       mocked.readCalibration.mockResolvedValue({
          available: false,
@@ -519,60 +524,59 @@ describe("the client shell", () => {
 
       await screen.findByText(/Start today's set/);
 
-      expect(within(screen.getByRole("navigation")).queryByRole("button", { name: "Progress" })).toBeNull();
-      expect(screen.queryByTestId("calibration-not-yet")).toBeNull();
+      expect(screen.queryByTestId("mastery-map")).toBeNull();
+      expect(mocked.readMasteryMap).not.toHaveBeenCalled();
+
+      visit("Progress");
+
+      expect(await screen.findByTestId("mastery-map")).toBeTruthy();
+      expect(screen.queryByText(/Start today's set/)).toBeNull();
       expect(mocked.readCalibration).not.toHaveBeenCalled();
 
-      fireEvent.click(screen.getByRole("button", { name: "Progress" }));
+      fireEvent.click(screen.getByRole("tab", { name: "Calibration" }));
 
       expect(await screen.findByTestId("calibration-not-yet")).toBeTruthy();
-      expect(screen.queryByText(/Start today's set/)).toBeNull();
       expect(mocked.readCalibration).toHaveBeenCalledTimes(1);
    });
 
-   it("reaches review from home and never from the bar or as the landing screen", async () => {
+   it("reaches review from the bar and never as the landing screen", async () => {
       mockServer(readyProgress);
       mocked.readReview.mockResolvedValue(reviewPayload);
       render(<App />);
 
       await screen.findByText(/Start today's set/);
 
-      const bar = within(screen.getByRole("navigation"));
-
-      for (const label of REACHED_FROM_HOME) {
-         expect(bar.queryByRole("button", { name: label }), `${label} is on the bar`).toBeNull();
-      }
-
       expect(screen.queryByRole("heading", { name: "Review" })).toBeNull();
       expect(mocked.readReview).not.toHaveBeenCalled();
 
-      fireEvent.click(screen.getByRole("button", { name: "Review" }));
+      visit("Review");
 
       expect(await screen.findByRole("heading", { name: "Review" })).toBeTruthy();
       expect(screen.queryByText(/Start today's set/)).toBeNull();
       expect(mocked.readReview).toHaveBeenCalledTimes(1);
    });
 
-   it("reaches the free-response unit check from home and never from the bar or as the landing screen", async () => {
+   it("reaches the free-response unit check from the Assessments tab and never as the landing screen", async () => {
       mockServer(readyProgress);
       mocked.readFrqUnits.mockResolvedValue({ units: [{ unit_id: "BC-UNIT-05", title: "Analytical applications", questions: 1 }] });
+      mocked.readAssessmentShape.mockResolvedValue(assessmentShape);
+      mocked.readCheckUnits.mockResolvedValue({ units: [] });
       render(<App />);
 
       await screen.findByText(/Start today's set/);
 
-      const bar = within(screen.getByRole("navigation"));
+      expect(screen.queryByTestId("frq-setup")).toBeNull();
 
-      expect(bar.queryByRole("button", { name: "Free response" })).toBeNull();
-      expect(mocked.readFrqUnits).not.toHaveBeenCalled();
+      visit("Assessments");
+      fireEvent.click(await screen.findByRole("button", { name: /Free response/ }));
 
-      fireEvent.click(screen.getByRole("button", { name: "Free response" }));
-
-      expect(await screen.findByTestId("frq-units")).toBeTruthy();
-      expect(screen.getByRole("button", { name: "Analytical applications" })).toBeTruthy();
+      expect(await screen.findByTestId("frq-setup")).toBeTruthy();
+      expect(screen.getByRole("option", { name: "Analytical applications" })).toBeTruthy();
       expect(screen.queryByText(/Start today's set/)).toBeNull();
+      expect(mocked.openUnitCheck).not.toHaveBeenCalled();
    });
 
-   it("reaches the mock exam from home and never from the bar or as the landing screen", async () => {
+   it("reaches the mock exam from the Assessments tab and never as the landing screen", async () => {
       mockServer(readyProgress);
       mocked.readAssessmentShape.mockResolvedValue(assessmentShape);
       mocked.readCheckUnits.mockResolvedValue({ units: [] });
@@ -580,34 +584,16 @@ describe("the client shell", () => {
 
       await screen.findByText(/Start today's set/);
 
-      const bar = within(screen.getByRole("navigation"));
-
-      expect(bar.queryByRole("button", { name: "Mock exam" })).toBeNull();
       expect(screen.queryByTestId("assessment-setup")).toBeNull();
       expect(mocked.readAssessmentShape).not.toHaveBeenCalled();
 
-      fireEvent.click(screen.getByRole("button", { name: "Mock exam" }));
+      visit("Assessments");
+      fireEvent.click(await screen.findByRole("button", { name: /Full mock exam/ }));
 
       expect(await screen.findByTestId("mock-setup")).toBeTruthy();
       expect(screen.queryByText(/Start today's set/)).toBeNull();
       expect(mocked.readAssessmentShape).toHaveBeenCalledTimes(1);
       expect(mocked.openMock).not.toHaveBeenCalled();
-   });
-
-   it("draws the mastery map above the calibration curve on progress", async () => {
-      mockServer(readyProgress);
-      mocked.readCalibration.mockResolvedValue(calibrationNotYet);
-      mocked.readMasteryMap.mockResolvedValue(masteryPayload);
-      render(<App />);
-
-      fireEvent.click(await screen.findByRole("button", { name: "Progress" }));
-
-      const map = await screen.findByTestId("mastery-map");
-      const curve = await screen.findByTestId("calibration-not-yet");
-      const mapComesFirst = map.compareDocumentPosition(curve) & Node.DOCUMENT_POSITION_FOLLOWING;
-
-      expect(mapComesFirst).toBeTruthy();
-      expect(mocked.readMasteryMap).toHaveBeenCalledTimes(1);
    });
 
    it("lands a first login on the onboarding intro rather than home's queue, and never puts onboarding on the bar", async () => {
@@ -619,9 +605,7 @@ describe("the client shell", () => {
       expect(screen.queryByText(/Start today's set/)).toBeNull();
       expect(screen.queryAllByTestId("queue-line")).toHaveLength(0);
 
-      const labels = buttonsIn(screen.getByRole("navigation")).map((button) => button.textContent);
-
-      expect(labels).toEqual(["Home", "Lessons", "Settings"]);
+      expect(barLabels()).toEqual(BAR_LABELS);
       expect(DESTINATIONS.map((entry) => entry.id)).toEqual(BAR_DESTINATIONS);
       expect(mocked.openDiagnostic).not.toHaveBeenCalled();
       expect(mocked.openSession).not.toHaveBeenCalled();
@@ -637,7 +621,7 @@ describe("the client shell", () => {
       expect(screen.queryByText(/Start today's set/)).toBeNull();
       expect(screen.queryAllByTestId("queue-line")).toHaveLength(0);
       expect(screen.queryByTestId("diagnostic-intro")).toBeNull();
-      expect(screen.getByRole("button", { name: "Progress" })).toBeTruthy();
+      expect(barLabels()).toContain("Progress");
 
       await settled();
 
@@ -687,8 +671,8 @@ describe("the client shell", () => {
    });
 
    it("names every input it still cannot supply, using the name the screen itself declares", () => {
-      for (const destination of ["home", "session", "settings", "progress", "review", "onboarding"] as Destination[]) {
-         const target = PROPS_INTERFACE_BY_DESTINATION[destination];
+      for (const destination of ["home", "session", "settings", "progress", "review", "onboarding", "assessments", "account"] as Destination[]) {
+         const target = PROPS_INTERFACE_BY_DESTINATION[destination]!;
          const declared = declaredPropertyNames(target.file, target.name);
          const listed = UNSUPPLIED_INPUTS[destination].map((input) => input.name);
          const undeclared = listed.filter((name) => !declared.includes(name));
@@ -702,14 +686,15 @@ describe("the client shell", () => {
    it("wires the purge confirmation phrase rather than leaving the purge controls withheld", async () => {
       mockServer(readyProgress);
       render(<App />);
-      visit("settings");
+      openFromMenu("Settings");
+      fireEvent.click(await screen.findByRole("tab", { name: "Your data" }));
 
       expect(screen.queryByText("purgeConfirmationPhrase")).toBeNull();
       expect(screen.queryByText("This screen is not built yet")).toBeNull();
       expect(await screen.findByText(/delete my data/i)).toBeTruthy();
    });
 
-   it("offers a signed-in student the password change on settings and nowhere else", async () => {
+   it("offers a signed-in student the password change on the account page and nowhere else", async () => {
       mockServer(readyProgress);
       render(<App />);
 
@@ -717,7 +702,12 @@ describe("the client shell", () => {
 
       expect(screen.queryByRole("button", { name: "Change password" })).toBeNull();
 
-      visit("settings");
+      openFromMenu("Settings");
+      await screen.findByRole("tab", { name: "Study" });
+
+      expect(screen.queryByRole("button", { name: "Change password" })).toBeNull();
+
+      openFromMenu("Account");
 
       expect(await screen.findByRole("button", { name: "Change password" })).toBeTruthy();
    });
@@ -751,7 +741,7 @@ describe("home over GET /me and GET /progress", () => {
       mockServer(readyProgress);
       render(<App />);
 
-      expect(await screen.findByText(/About 23 minutes/)).toBeTruthy();
+      expect(await screen.findByText("23 minutes")).toBeTruthy();
 
       const lines = screen.getAllByTestId("queue-line").map((line) => line.textContent);
       const days = daysToExam(me.exam_date, PINNED_NOW);
@@ -761,7 +751,10 @@ describe("home over GET /me and GET /progress", () => {
          "4 skills at your current frontier",
          "7 corrected items coming back"
       ]);
-      expect(screen.getByText(`Exam: 10 May 2027, ${days} days away`)).toBeTruthy();
+      const countdown = screen.getByTestId("exam-countdown");
+
+      expect(within(countdown).getByText(String(days))).toBeTruthy();
+      expect(within(countdown).getByText("10 May 2027")).toBeTruthy();
       expect(screen.getByRole("button", { name: "Start today's set" })).toBeTruthy();
    });
 
@@ -796,7 +789,7 @@ describe("home over GET /me and GET /progress", () => {
       render(<App />);
 
       expect(await screen.findByRole("button", { name: "Start today's set" })).toBeTruthy();
-      expect(screen.getByText(/About 5 minutes/)).toBeTruthy();
+      expect(screen.getByText("5 minutes")).toBeTruthy();
    });
 
    it("keeps the ready queue when only the forecast is zero, since a count is still due", async () => {
@@ -810,7 +803,7 @@ describe("home over GET /me and GET /progress", () => {
       mockServer({ ...readyProgress, session_in_progress: "SES-9" });
       render(<App />);
 
-      fireEvent.click(await screen.findByRole("button", { name: "Resume" }));
+      fireEvent.click(await screen.findByRole("button", { name: "Resume today's set" }));
 
       await screen.findByText(servedItem.stem);
 
@@ -870,7 +863,7 @@ describe("no fabricated figure", () => {
       const derived = [daysToExam(me.exam_date, PINNED_NOW)];
 
       render(<App />);
-      await screen.findByText(/About 23 minutes/);
+      await screen.findByText("23 minutes");
 
       expect(document.body.textContent).toMatch(/\d/);
       expect(untracedFigures(payloads, derived), "home").toEqual([]);
@@ -880,12 +873,21 @@ describe("no fabricated figure", () => {
 
       expect(untracedFigures(payloads, derived), "session").toEqual([]);
 
-      visit("settings");
+      openFromMenu("Settings");
+      await screen.findByText("Desired retention");
+
+      expect(untracedFigures(payloads, derived), "settings, study").toEqual([]);
+
+      fireEvent.click(screen.getByRole("tab", { name: "Budgets" }));
       fireEvent.click(await screen.findByRole("button", { name: "open" }));
-      await screen.findByText(/Default retention/);
 
       expect(screen.getAllByTestId("per-role-cap-row").length).toBe(budgetsPayload.roles.length);
-      expect(untracedFigures(payloads, derived), "settings").toEqual([]);
+      expect(untracedFigures(payloads, derived), "settings, budgets").toEqual([]);
+
+      fireEvent.click(screen.getByRole("tab", { name: "Your data" }));
+      await screen.findByText(/Default retention/);
+
+      expect(untracedFigures(payloads, derived), "settings, data").toEqual([]);
    });
 
    it("traces every digit on progress and review to a mocked response value", async () => {
@@ -893,15 +895,15 @@ describe("no fabricated figure", () => {
       const derived = [daysToExam(me.exam_date, PINNED_NOW)];
 
       render(<App />);
-      fireEvent.click(await screen.findByRole("button", { name: "Progress" }));
+      await screen.findByText("23 minutes");
+      visit("Progress");
       await screen.findByTestId("mastery-map");
       fireEvent.click(screen.getAllByRole("button", { name: /Chain rule with three layers/ })[0]);
 
       expect(screen.getByTestId("mastery-caption").textContent).toContain("11 days ago");
       expect(untracedFigures(payloads, derived), "progress").toEqual([]);
 
-      visit("home");
-      fireEvent.click(await screen.findByRole("button", { name: "Review" }));
+      visit("Review");
       await screen.findByText("Limit by conjugate");
 
       expect(document.body.textContent).toContain("in 2 days");
@@ -952,7 +954,12 @@ describe("no fabricated figure", () => {
       expect(screen.getByTestId("home-waiting")).toBeTruthy();
       expect(document.body.textContent ?? "").not.toMatch(/\d/);
 
-      visit("settings");
+      openFromMenu("Settings");
+
+      expect(screen.getByRole("heading", { name: "Queue settings" })).toBeTruthy();
+      expect(document.body.textContent ?? "").not.toMatch(/\d/);
+
+      fireEvent.click(screen.getByRole("tab", { name: "Budgets" }));
 
       expect(screen.getByRole("heading", { name: "Budgets" })).toBeTruthy();
       expect(document.body.textContent ?? "").not.toMatch(/\d/);
@@ -968,9 +975,10 @@ describe("no fabricated figure", () => {
       expect(await screen.findByTestId("home-failed")).toBeTruthy();
       expect(document.body.textContent ?? "").not.toMatch(/\d/);
 
-      visit("settings");
+      openFromMenu("Settings");
+      fireEvent.click(await screen.findByRole("tab", { name: "Budgets" }));
 
-      await waitFor(() => expect(mocked.readBudgets).toHaveBeenCalledTimes(1));
+      await waitFor(() => expect(mocked.readBudgets).toHaveBeenCalled());
       await Promise.resolve();
 
       expect(screen.getByRole("heading", { name: "Budgets" })).toBeTruthy();
@@ -1119,16 +1127,18 @@ describe("signed out over GET /me", () => {
 });
 
 describe("signing out", () => {
-   it("keeps sign-out out of the main navigation and offers it in the header", async () => {
+   it("keeps sign-out out of the main navigation and offers it in the header's account menu", async () => {
       mockServer(readyProgress);
       render(<App />);
 
       await screen.findByText(/Start today's set/);
 
-      const header = screen.getByRole("banner");
+      const header = screen.getAllByRole("banner").find((banner) => banner.classList.contains("app-header"))!;
+
+      fireEvent.click(within(header).getByRole("button", { name: "Account and settings" }));
 
       expect(within(header).getByRole("button", { name: "Sign out" })).toBeTruthy();
-      expect(within(screen.getByRole("navigation")).queryByRole("button", { name: "Sign out" })).toBeNull();
+      expect(within(screen.getByRole("navigation", { name: "Main" })).queryByRole("button", { name: "Sign out" })).toBeNull();
    });
 
    it("ends the session over POST /auth/logout and lands on the account screen", async () => {
@@ -1137,6 +1147,7 @@ describe("signing out", () => {
       render(<App />);
 
       await screen.findByText(/Start today's set/);
+      fireEvent.click(screen.getByRole("button", { name: "Account and settings" }));
       fireEvent.click(screen.getByRole("button", { name: "Sign out" }));
 
       expect(await screen.findByRole("button", { name: "Sign in" })).toBeTruthy();
@@ -1153,6 +1164,7 @@ describe("signing out", () => {
       render(<App />);
 
       await screen.findByText(/Start today's set/);
+      fireEvent.click(screen.getByRole("button", { name: "Account and settings" }));
       fireEvent.click(screen.getByRole("button", { name: "Sign out" }));
 
       expect(await screen.findByRole("button", { name: "Sign in" })).toBeTruthy();
@@ -1164,10 +1176,14 @@ describe("signing out", () => {
       render(<App />);
 
       await screen.findByText(/Start today's set/);
+      fireEvent.click(screen.getByRole("button", { name: "Account and settings" }));
       fireEvent.click(screen.getByRole("button", { name: "Sign out" }));
 
       expect(await screen.findByTestId("action-failed")).toBeTruthy();
-      expect(screen.getByRole("navigation")).toBeTruthy();
+      expect(screen.getByRole("navigation", { name: "Main" })).toBeTruthy();
+
+      fireEvent.click(screen.getByRole("button", { name: "Account and settings" }));
+
       expect((screen.getByRole("button", { name: "Sign out" }) as HTMLButtonElement).disabled).toBe(false);
    });
 });
@@ -1264,20 +1280,18 @@ describe("the P7 evaluation screens in the shell", () => {
       expect(screen.queryByRole("button", { name: "Evidence of learning" })).toBeNull();
       expect(mocked.readMetrics).not.toHaveBeenCalled();
 
-      visit("settings");
+      openFromMenu("Settings");
+      fireEvent.click(await screen.findByRole("tab", { name: "Operator" }));
       fireEvent.click(await screen.findByRole("button", { name: "Evidence of learning" }));
 
       expect(await screen.findByTestId("metrics-view")).toBeTruthy();
       expect(mocked.readMetrics).toHaveBeenCalledTimes(1);
+      expect(barLabels()).toEqual(BAR_LABELS);
 
-      const labels = buttonsIn(screen.getByRole("navigation")).map((button) => button.textContent);
-
-      expect(labels).toEqual(["Home", "Lessons", "Settings"]);
-
-      visit("settings");
+      openFromMenu("Settings");
 
       expect(screen.queryByTestId("metrics-view")).toBeNull();
-      expect(screen.getByRole("heading", { name: "Budgets" })).toBeTruthy();
+      expect(screen.getByRole("heading", { name: "Queue settings" })).toBeTruthy();
    });
 
    it("traces every digit on the matrix, the checkpoint history and the experiments to a mocked response value", async () => {
@@ -1285,14 +1299,25 @@ describe("the P7 evaluation screens in the shell", () => {
       const derived = [daysToExam(me.exam_date, PINNED_NOW)];
 
       render(<App />);
-      fireEvent.click(await screen.findByRole("button", { name: "Progress" }));
+      await screen.findByText("23 minutes");
+      visit("Progress");
+      fireEvent.click(await screen.findByRole("tab", { name: "Representations" }));
       await screen.findByTestId("representation-matrix");
+
+      expect(untracedFigures(payloads, derived), "progress, representations").toEqual([]);
+
+      fireEvent.click(screen.getByRole("tab", { name: "Checkpoints" }));
       await screen.findByTestId("checkpoint-result");
+
+      expect(untracedFigures(payloads, derived), "progress, checkpoints").toEqual([]);
+
+      fireEvent.click(screen.getByRole("tab", { name: "Concept probes" }));
       await screen.findByTestId("probe-result");
 
-      expect(untracedFigures(payloads, derived), "progress").toEqual([]);
+      expect(untracedFigures(payloads, derived), "progress, probes").toEqual([]);
 
-      visit("settings");
+      openFromMenu("Settings");
+      fireEvent.click(await screen.findByRole("tab", { name: "Operator" }));
       await screen.findByTestId("experiment-switch");
 
       expect(untracedFigures(payloads, derived), "settings").toEqual([]);
@@ -1337,11 +1362,13 @@ describe("the library lesson reader", () => {
       expect(DESTINATIONS.map((entry) => entry.id)).not.toContain("lesson");
       expect(UNSUPPLIED_INPUTS.lesson).toEqual([]);
 
-      fireEvent.click(await screen.findByRole("button", { name: "Progress" }));
+      await screen.findByText("23 minutes");
+      visit("Progress");
+      fireEvent.click(await screen.findByRole("tab", { name: "Lessons" }));
       fireEvent.click(await screen.findByRole("button", { name: /The product rule/ }));
 
       expect(await screen.findByTestId("lesson-reader")).toBeTruthy();
-      expect(buttonsIn(screen.getByRole("navigation")).map((button) => button.textContent)).toEqual(["Home", "Lessons", "Settings"]);
+      expect(barLabels()).toEqual(BAR_LABELS);
 
       fireEvent.click(screen.getByTestId("lesson-back"));
 
@@ -1367,7 +1394,8 @@ describe("the library lesson reader", () => {
 
       render(<App />);
 
-      fireEvent.click(await screen.findByRole("button", { name: "Lessons" }));
+      await screen.findByText("23 minutes");
+      visit("Lessons");
       fireEvent.click(await screen.findByRole("button", { name: /The product rule/ }));
 
       expect(await screen.findByTestId("lesson-reader")).toBeTruthy();

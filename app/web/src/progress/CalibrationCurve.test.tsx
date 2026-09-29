@@ -133,7 +133,7 @@ describe("the progress route", () => {
 
    it("loads the calibration record and draws the curve from it", async () => {
       mocked.readCalibration.mockResolvedValue(available);
-      render(<ProgressRoute />);
+      render(<ProgressRoute tab="calibration" />);
 
       expect(await screen.findByTestId("calibration-curve")).toBeTruthy();
       expect(mocked.readCalibration).toHaveBeenCalledTimes(1);
@@ -141,7 +141,7 @@ describe("the progress route", () => {
 
    it("shows the not-yet state when the server has fewer than 30 rated attempts", async () => {
       mocked.readCalibration.mockResolvedValue(notYet);
-      render(<ProgressRoute />);
+      render(<ProgressRoute tab="calibration" />);
 
       expect(await screen.findByTestId("calibration-not-yet")).toBeTruthy();
       expect(screen.queryByTestId("calibration-curve")).toBeNull();
@@ -149,7 +149,7 @@ describe("the progress route", () => {
 
    it("says the record could not be loaded rather than drawing a stand-in", async () => {
       mocked.readCalibration.mockRejectedValue(new Error("the connection dropped"));
-      render(<ProgressRoute />);
+      render(<ProgressRoute tab="calibration" />);
 
       expect(await screen.findByTestId("progress-failed")).toBeTruthy();
       expect(screen.queryByTestId("calibration-curve")).toBeNull();

@@ -118,7 +118,7 @@ describe("the review screen", () => {
    });
 
    it("filters the error notes by what the search box holds, and says when nothing matches", () => {
-      renderScreen();
+      renderScreen({ initialTab: "notes" });
 
       const search = screen.getByLabelText("Search my notes");
 
@@ -139,7 +139,7 @@ describe("the review screen", () => {
    });
 
    it("edits a note from the keyboard and hands the trimmed text to the save handler", async () => {
-      const onSaveNote = renderScreen();
+      const onSaveNote = renderScreen({ initialTab: "notes" });
 
       fireEvent.click(screen.getByRole("button", { name: `Edit the note "${NOTES[0].note}"` }));
 
@@ -154,7 +154,7 @@ describe("the review screen", () => {
    });
 
    it("keeps the field open and shows why when the save is refused, and Escape abandons the edit", async () => {
-      renderScreen({ onSaveNote: vi.fn().mockRejectedValue(new Error("the error note is one line")) });
+      renderScreen({ initialTab: "notes", onSaveNote: vi.fn().mockRejectedValue(new Error("the error note is one line")) });
 
       fireEvent.click(screen.getByRole("button", { name: `Edit the note "${NOTES[1].note}"` }));
       fireEvent.keyDown(screen.getByLabelText("In one line, what went wrong?"), { key: "Enter" });
@@ -167,7 +167,7 @@ describe("the review screen", () => {
    });
 
    it("shows the provisional points empty state until P3 supplies points", () => {
-      renderScreen();
+      renderScreen({ initialTab: "provisional" });
 
       expect(screen.getByTestId("provisional-empty")).toBeTruthy();
       expect(screen.queryByRole("button", { name: "Ask for a re-read" })).toBeNull();
@@ -176,13 +176,13 @@ describe("the review screen", () => {
    it("offers a re-read on each provisional point only once P3 plugs a handler in", () => {
       const onAskForReread = vi.fn();
 
-      renderScreen({ provisionalPoints: [POINT, { ...POINT, grading_id: "GRD-2", disputed: true }] });
+      renderScreen({ initialTab: "provisional", provisionalPoints: [POINT, { ...POINT, grading_id: "GRD-2", disputed: true }] });
 
       expect(screen.getAllByTestId("provisional-point")).toHaveLength(2);
       expect(screen.queryByRole("button", { name: "Ask for a re-read" })).toBeNull();
 
       cleanup();
-      renderScreen({ provisionalPoints: [POINT, { ...POINT, grading_id: "GRD-2", disputed: true }], onAskForReread });
+      renderScreen({ initialTab: "provisional", provisionalPoints: [POINT, { ...POINT, grading_id: "GRD-2", disputed: true }], onAskForReread });
 
       const buttons = screen.getAllByRole("button", { name: "Ask for a re-read" });
 
@@ -208,6 +208,7 @@ describe("the review route over GET /review", () => {
       mocked.submitErrorNote.mockResolvedValue({ id: "ATT-7", error_note: "I drop the inner derivative." });
       render(<ReviewRoute />);
 
+      fireEvent.click(await screen.findByRole("tab", { name: "My error notes" }));
       fireEvent.click(await screen.findByRole("button", { name: `Edit the note "${NOTES[1].note}"` }));
       fireEvent.change(screen.getByLabelText("In one line, what went wrong?"), {
          target: { value: "I drop the inner derivative" }
@@ -231,6 +232,7 @@ describe("the review route over GET /review", () => {
       mocked.askForReread.mockResolvedValue({ grading_id: "GRD-9", attempt_id: "ATT-9", rereading: true });
       render(<ReviewRoute />);
 
+      fireEvent.click(await screen.findByRole("tab", { name: "Provisional points" }));
       fireEvent.click(await screen.findByRole("button", { name: "Ask for a re-read" }));
 
       await waitFor(() => expect(mocked.askForReread).toHaveBeenCalledWith("GRD-9"));

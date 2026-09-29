@@ -4,7 +4,7 @@ import { McqControl } from "../input/McqControl";
 import { FigureView } from "../figures/FigureView";
 import { MathText } from "../math/MathText";
 import { ANSWER_UNAVAILABLE } from "../session/Item";
-import { PageHeader } from "../page/PageHeader";
+import { PageHeader } from "../ui/Page";
 
 /* The stable concept probe (11 P7 scope item 6). Items come one at a time in the set's fixed order,
    with no feedback and no confidence rating, because the probe measures and must not teach
@@ -41,7 +41,7 @@ export interface ProbeFinishedProps {
 
 export function ProbeIntro({ refusal, onStart, onLeave }: ProbeIntroProps) {
    return (
-      <section className="card" data-testid="probe-intro">
+      <section className="screen" data-testid="probe-intro">
          <PageHeader title="Concept probe" />
 
          <p>
@@ -116,7 +116,7 @@ export function ProbeFinished({ administration, onLeave }: ProbeFinishedProps) {
    const hasUngraded = ungraded > 0;
 
    return (
-      <section className="card" data-testid="probe-finished">
+      <section className="screen" data-testid="probe-finished">
          <PageHeader title="Concept probe" />
 
          <p data-testid="probe-score">

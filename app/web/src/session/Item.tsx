@@ -137,39 +137,55 @@ export function Item(props: ItemProps) {
    const asksForConfidence = canDrawStage && collectsConfidence(item.stage) && !takesNoAnswer;
    const asksToCommit = canDrawStage && !takesNoAnswer && !isCommitted;
 
+   const promptKind = servesMcq ? "Concept check" : "Solve";
+
    return (
       <article className="card item" data-testid="item" data-stage={item.stage}>
-         {isOpener ? <p className="eyebrow" data-testid="opener-note">{OPENER_NOTE}</p> : null}
+         <div className="question">
+            <div className="question-stem">
+               {isOpener ? (
+                  <p className="eyebrow" data-testid="opener-note">
+                     {OPENER_NOTE}
+                  </p>
+               ) : (
+                  <span className="eyebrow">{promptKind}</span>
+               )}
 
-         <p className={allowsCalculator ? "item-stem item-stem-beside-tool" : "item-stem"} data-testid="item-stem"><MathText text={item.stem} /></p>
+               <p className={allowsCalculator ? "item-stem item-stem-beside-tool" : "item-stem"} data-testid="item-stem">
+                  <MathText text={item.stem} />
+               </p>
 
-         {allowsCalculator ? (
-            <DesmosPanel />
-         ) : null}
+               {allowsCalculator ? <DesmosPanel /> : null}
 
-         {hasFigure ? <FigureView spec={item.figure_spec} /> : null}
+               {hasFigure ? <FigureView spec={item.figure_spec} /> : null}
+            </div>
 
-         {needsWorkedSteps && !canDrawStage ? (
-            <p data-testid="worked-steps-unavailable">{WORKED_STEPS_MISSING}</p>
-         ) : null}
+            {needsWorkedSteps && !canDrawStage ? (
+               <p className="callout" data-testid="worked-steps-unavailable">
+                  {WORKED_STEPS_MISSING}
+               </p>
+            ) : null}
 
-         {needsWorkedSteps && canDrawStage ? <p className="eyebrow">Worked so far</p> : null}
+            {needsWorkedSteps && canDrawStage ? (
+               <div className="stack stack-tight">
+                  <span className="eyebrow">Worked so far</span>
 
-         {needsWorkedSteps && canDrawStage ? (
-            <ol className="worked-steps" data-testid="worked-steps">
-               {shownSteps.map((step) => (
-                  <li key={step.index} data-step-index={step.index}>
-                     <MathText text={step.text} />
-                  </li>
-               ))}
+                  <ol className="worked-steps" data-testid="worked-steps">
+                     {shownSteps.map((step) => (
+                        <li key={step.index} data-step-index={step.index}>
+                           <MathText text={step.text} />
+                        </li>
+                     ))}
 
-               {blankedStep !== null ? (
-                  <li className="blanked-step" data-testid="blanked-step" data-step-index={blankedStep.index}>
-                     This step is mine to write.
-                  </li>
-               ) : null}
-            </ol>
-         ) : null}
+                     {blankedStep !== null ? (
+                        <li className="blanked-step" data-testid="blanked-step" data-step-index={blankedStep.index}>
+                           This step is mine to write.
+                        </li>
+                     ) : null}
+                  </ol>
+               </div>
+            ) : null}
+         </div>
 
          {showsAnswerArea ? (
             <div>
@@ -212,7 +228,7 @@ export function Item(props: ItemProps) {
 
          {asksToCommit ? (
             <div className="submit-row">
-               <p className="caption key-hint" data-testid="key-hint">
+               <p className="helper key-hint" data-testid="key-hint">
                   {keyHint(servesMcq)}
                </p>
 

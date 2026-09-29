@@ -69,6 +69,18 @@ Recommended next slice: P2 review mode and FSRS scheduling with `test_desired_re
 replay only, since the P1 gates still open are the operator's and the engine needs a finite due
 queue to teach from now to May 2027.
 
+## Client redesign and session persistence, 2026-09-29 [verified]
+
+The operator asked for the client rewritten to the design in `mockup-redesign/` (gitignored), a real endpoint behind every view, and sessions that never sign the student out, and delegated every decision. The working record is `mockup-redesign/PORT-STATUS.md`; this is its summary.
+
+Logouts: every local server (ports 8000 to 8003, several started by agent sessions) set the same `growth_session` cookie, and a browser keys cookies on host, not port, so signing in to one server replaced another's token. The local database showed two recovery resets and no ordinary login. The cookie is now named per port (`growth_session_8000`), the bare name is still read and migrated, and sessions slide to 90 days from the last request, renewed at most hourly (`app/auth/service.py` `renew_session`, `app/api/deps.py`, `app/api/session_renewal.py`). The ruling is in `docs/plan/09-security-and-privacy.md`, "Session lifetime". The client keeps the non-secret account (id, username, display name) in localStorage so a reload draws the signed-in app at once, treats a network error or a 5xx as offline, and signs out only on a 401 from `/me`; a 401 from any other route raises `SESSION_ENDED_EVENT` and the shell asks `/me` before believing it. Also fixed: `PUT /settings/budgets` raised on a refused re-authentication, which rolled back the token spend.
+
+New routes: `PUT /me` (display name), `GET /me` names the username, `POST /auth/recovery/rotate` (re-authenticated), `GET` and `PUT /settings/study-plan` (01's if-then plan, a new nullable `users.study_plan` column added by the additive migration), `DELETE /frq/photos` (08's "Delete my FRQ photos"), `GET /progress/skills/{skill_id}` (a mastery node opened: criteria in the record's words and its prerequisites with their states). Each has tests that were seen red with the route broken.
+
+Client: five tabs (Today, Lessons, Review, Progress, Assessments) and an avatar menu (Account, Settings, theme, sign out), hash routes so a reload or the back button keeps the place, and no footer. The mockup's palette went into `app/design/growth-tokens.json` over 08's seventeen roles; no gate was loosened. What the gates ruled out of the mockup, and what replaced it: gradients, grain and blur (08 anti-patterns); z-index, so the top bar is static and the phone tab bar is fixed; an amber warning colour (08 keeps two semantic colours), replaced by glyphs and patterns; hover transitions and the spinner (motion lives in motion.css at 300 ms). Decorative hairlines are ring shadows in the tint ramp; control boundaries keep 3:1 borders. Not built, shown honestly instead: changing a role's provider or model (key storage is not served), a daily minute target (01 makes the queue the unit), a photo retention preference, and the mockup's gallery, states page and reset preview.
+
+Tests whose expectation changed with the new design are listed in `PORT-STATUS.md`: App shell navigation, the tab each progress, review and settings section now lives on, the settings scope-17 gate now read across the tabs, the resume cards, and sign-out through the menu. `tests/db/test_models.py::test_models_create_all` fails on a clean HEAD checkout as well (it does not list the lesson tables) and was left alone.
+
 ## Done [verified]
 - 2026-09-23, Slice 2 of the subscription backend: live validation, latency, Slice 1's three
   defects closed, and the runtime cost lines moved to $0.00 API on the subscription backend.

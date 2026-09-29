@@ -37,38 +37,54 @@ export function ChangePasswordControl() {
    const isWorking = state.working;
 
    return (
-      <section className="card settings" data-testid="password-settings">
-         <h2 className="section-heading">Password</h2>
+      <section className="section" data-testid="password-settings">
+         <h2 className="section-header">Password</h2>
 
-         <form className="field" onSubmit={submit}>
-            <label htmlFor="current-password">Current password</label>
+         <p className="helper">Changing it signs out every other device. This one stays signed in.</p>
 
-            <input
-               id="current-password"
-               type="password"
-               autoComplete="current-password"
-               value={currentPassword}
-               disabled={isWorking}
-               onChange={(event) => setCurrentPassword(event.target.value)}
-            />
+         <form className="stack" onSubmit={submit}>
+            <div className="form-field">
+               <label className="field-label" htmlFor="current-password">
+                  Current password
+               </label>
 
-            <label htmlFor="new-password">New password</label>
+               <input
+                  id="current-password"
+                  className="input"
+                  type="password"
+                  autoComplete="current-password"
+                  value={currentPassword}
+                  disabled={isWorking}
+                  onChange={(event) => setCurrentPassword(event.target.value)}
+               />
+            </div>
 
-            <input
-               id="new-password"
-               type="password"
-               autoComplete="new-password"
-               value={newPassword}
-               disabled={isWorking}
-               onChange={(event) => setNewPassword(event.target.value)}
-            />
+            <div className="form-field">
+               <label className="field-label" htmlFor="new-password">
+                  New password
+               </label>
 
-            <button type="submit" className="text-button" disabled={isWorking}>
-               Change password
-            </button>
+               <input
+                  id="new-password"
+                  className="input"
+                  type="password"
+                  autoComplete="new-password"
+                  value={newPassword}
+                  disabled={isWorking}
+                  onChange={(event) => setNewPassword(event.target.value)}
+               />
+            </div>
+
+            <div className="cluster">
+               <button type="submit" className="button-secondary" disabled={isWorking}>
+                  Change password
+               </button>
+            </div>
          </form>
 
-         <p role="status">{state.changed ? "Password changed. Other devices are signed out." : ""}</p>
+         <p role="status" className="helper">
+            {state.changed ? "Password changed. Other devices are signed out." : ""}
+         </p>
 
          <FeedbackLine feedback={state.feedback} />
       </section>

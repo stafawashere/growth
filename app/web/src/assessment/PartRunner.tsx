@@ -657,7 +657,7 @@ export function PartRunner({ part, radianNote, sectionCount, onSave, onSubmit, o
                         </ul>
                      ) : null}
 
-                     <label className="field">
+                     <label className="form-field">
                         <span>Notes on this question</span>
                         <textarea
                            value={current.notes}

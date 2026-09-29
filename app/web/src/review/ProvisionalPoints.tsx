@@ -15,8 +15,8 @@ export function ProvisionalPoints({ points, onAskForReread }: ProvisionalPointsP
    const offersReread = onAskForReread !== undefined;
 
    return (
-      <section aria-labelledby="provisional-heading">
-         <h2 id="provisional-heading" className="section-heading">
+      <section aria-labelledby="provisional-heading" className="section">
+         <h2 id="provisional-heading" className="visually-hidden">
             Provisional points
          </h2>
 
@@ -28,25 +28,29 @@ export function ProvisionalPoints({ points, onAskForReread }: ProvisionalPointsP
          )}
 
          {hasPoints ? (
-            <ul className="review-list">
+            <ul className="list">
                {points.map((point) => {
                   const canAskForReread = offersReread && !point.disputed;
 
                   return (
-                     <li key={point.grading_id} data-testid="provisional-point">
-                        <span>
-                           {point.label}, {point.point_label}
-                        </span>
+                     <li key={point.grading_id} className="list-row" data-testid="provisional-point">
+                        <div className="list-row-body">
+                           <span className="list-row-title">
+                              {point.label}, {point.point_label}
+                           </span>
 
-                        <span className="muted">{point.reason}</span>
+                           <span className="list-row-meta">{point.reason}</span>
+                        </div>
 
-                        {point.disputed ? <span className="muted">Re-read asked for</span> : null}
+                        <div className="list-row-trail">
+                           {point.disputed ? <span className="badge badge-strong">Re-read asked for</span> : null}
 
-                        {canAskForReread ? (
-                           <button type="button" className="text-button" onClick={() => onAskForReread!(point.grading_id)}>
-                              Ask for a re-read
-                           </button>
-                        ) : null}
+                           {canAskForReread ? (
+                              <button type="button" className="button-secondary button-small" onClick={() => onAskForReread!(point.grading_id)}>
+                                 Ask for a re-read
+                              </button>
+                           ) : null}
+                        </div>
                      </li>
                   );
                })}

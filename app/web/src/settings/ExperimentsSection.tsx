@@ -34,30 +34,34 @@ function SwitchRow(props: {
    const hasRandomisedFrom = isRandomised && experiment.randomised_from !== null;
 
    return (
-      <li data-testid="experiment-switch" data-state={experiment.state}>
-         <span className="label-heading">{experiment.name}</span>
+      <li data-testid="experiment-switch" data-state={experiment.state} className="list-row list-row-start">
+         <div className="list-row-body">
+            <span className="list-row-title">{experiment.name}</span>
 
-         <span className="muted">{experiment.description}</span>
+            <span className="list-row-meta">{experiment.description}</span>
 
-         <span className="muted">
-            {hasRandomisedFrom
-               ? `randomised since ${formatPlanDate((experiment.randomised_from as string).slice(0, 10))}`
-               : experiment.state}
-            , {experiment.unit} units assigned {assignedText(experiment)}
-         </span>
+            <span className="helper">
+               {hasRandomisedFrom
+                  ? `randomised since ${formatPlanDate((experiment.randomised_from as string).slice(0, 10))}`
+                  : experiment.state}
+               , {experiment.unit} units assigned {assignedText(experiment)}
+            </span>
+         </div>
 
-         {EXPERIMENT_STATES.map((state) => (
-            <button
-               key={state}
-               type="button"
-               className="text-button"
-               aria-pressed={experiment.state === state}
-               disabled={working || experiment.state === state}
-               onClick={() => onChange(experiment.name, state)}
-            >
-               {state}
-            </button>
-         ))}
+         <div className="list-row-trail segmented" role="group" aria-label={`${experiment.name} state`}>
+            {EXPERIMENT_STATES.map((state) => (
+               <button
+                  key={state}
+                  type="button"
+                  className="segment"
+                  aria-pressed={experiment.state === state}
+                  disabled={working || experiment.state === state}
+                  onClick={() => onChange(experiment.name, state)}
+               >
+                  {state}
+               </button>
+            ))}
+         </div>
       </li>
    );
 }
@@ -113,11 +117,11 @@ export function ExperimentsSection() {
    }
 
    return (
-      <section data-testid="experiments-section">
-         <h2 className="section-heading">Experiments</h2>
+      <section data-testid="experiments-section" className="section">
+         <h2 className="section-header">Experiments</h2>
 
          {experiments === null ? null : (
-            <ul>
+            <ul className="list">
                {experiments.map((experiment) => (
                   <SwitchRow key={experiment.name} experiment={experiment} working={working} onChange={change} />
                ))}
@@ -129,18 +133,20 @@ export function ExperimentsSection() {
 
 export function OperatorSettings({ onOpenEvidence }: OperatorSettingsProps) {
    return (
-      <section className="card settings" data-testid="operator-settings">
+      <div className="stack stack-wide" data-testid="operator-settings">
          <ExperimentsSection />
 
-         <section>
-            <h2 className="section-heading">{EVIDENCE_LABEL}</h2>
+         <section className="section">
+            <h2 className="section-header">{EVIDENCE_LABEL}</h2>
 
             <p className="muted">The learning metrics and the experiment results, each with what it is counted over.</p>
 
-            <button type="button" className="text-button" onClick={onOpenEvidence}>
-               {EVIDENCE_LABEL}
-            </button>
+            <div className="cluster">
+               <button type="button" className="button-secondary" onClick={onOpenEvidence}>
+                  {EVIDENCE_LABEL}
+               </button>
+            </div>
          </section>
-      </section>
+      </div>
    );
 }

@@ -3,10 +3,11 @@ import type { ReactElement } from "react";
 import { expect, vi } from "vitest";
 
 import { AccountScreen } from "../account/AccountScreen";
-import { ChangePasswordControl } from "../account/ChangePasswordControl";
 import { App } from "../App";
 import * as client from "../api/client";
 import type {
+   AiNotice,
+   AssessmentShape,
    AttemptResult,
    CalibrationPayload,
    FeedbackPayload,
@@ -14,7 +15,9 @@ import type {
    FrqAttempt,
    FrqQuestion,
    GradingsPayload,
+   LibraryPayload,
    MasteryMapPayload,
+   PacePayload,
    ServedItem,
    SessionPayload,
    StepMark
@@ -33,11 +36,19 @@ import { ReviewScreen } from "../review/ReviewScreen";
 import { LESSON, planFor } from "../lessons/fixtures";
 import { LessonReader } from "../lessons/LessonReader";
 import { LessonLibrary } from "../progress/LessonLibrary";
+import { AiNoticeToast } from "../notices/AiNotices";
+import { ElaboratedPanel } from "../session/ElaboratedPanel";
 import { SessionScreen } from "../session/SessionScreen";
-import { AccessibilitySection } from "../settings/AccessibilitySection";
-import { OperatorSettings } from "../settings/ExperimentsSection";
 import { ReauthPromptView } from "../account/ReauthPrompt";
-import { SettingsScreen } from "../settings/SettingsScreen";
+import { SettingsPage } from "../settings/SettingsPage";
+import { AccountPage } from "../account/AccountPage";
+import { AssessmentRoute } from "../assessment/AssessmentRoute";
+import { FrqUnitCheck } from "../frq/FrqRoute";
+import { LessonsRoute } from "../lessons/LessonsRoute";
+import { PaceStatement } from "../progress/PaceStatement";
+import type { SettingsTab } from "../routing";
+import { Loading } from "../status/LoadState";
+import type { CountdownPace } from "../ui/Countdown";
 
 /* Test support: the screens and states the P8 evals render, each inside the app page App renders
    every destination in. A caller must vi.mock("../api/client") before using the screens that read
@@ -317,7 +328,7 @@ async function photographedReadBack() {
    return container;
 }
 
-function homeScreen(status: HomeScreenStatus) {
+function homeScreen(status: HomeScreenStatus, pace: CountdownPace | null = null) {
    return inPage(
       <HomeScreen
          status={status}
@@ -343,10 +354,7 @@ function homeScreen(status: HomeScreenStatus) {
          onAddPracticeSet={vi.fn()}
          onResumeSession={vi.fn()}
          onStartRediagnostic={vi.fn()}
-         onOpenProgress={vi.fn()}
-         onOpenReview={vi.fn()}
-         onOpenFreeResponse={vi.fn()}
-         onOpenMockExam={vi.fn()}
+         pace={pace}
       />
    );
 }
@@ -534,6 +542,180 @@ const LESSON_SCREENS: Screen[] = [
    }
 ];
 
+const AI_NOTICE: AiNotice = {
+   id: 4,
+   role: "tutor",
+   provider: "subscription",
+   model: "claude-sonnet-5",
+   outcome: "answered",
+   replayed: false,
+   asked: "a one-line hint",
+   answered: "the hint arrived",
+   created_at: "2027-01-05T09:30:00"
+};
+
+const ME: client.MePayload = { id: "USR-1", username: "sam", display_name: "student", exam_date: "2027-05-10", purge_after: "2027-06-09" };
+
+const PACE = {
+   as_of: "2027-01-05",
+   verdict: "ahead",
+   statement: "Ahead of pace.",
+   exam_date: "2027-05-10",
+   days_to_exam: 125,
+   review_reserve_days: 28,
+   new_mastery_deadline: "2027-04-12",
+   skills: { total: 541, held: 120, fading: 6, assumed: 0, remaining: 421, remaining_weighted: 400 },
+   rate: { window_start: "2026-12-06", window_days: 30, earned_weighted: 40, weekly: 9.3, required_weekly: 8.1, pace_ratio: 1.1, projected_finish: "2027-03-30" },
+   study_time: {
+      window_start: "2026-12-06",
+      window_days: 30,
+      active_days: 20,
+      timed_attempts: 80,
+      attempts: 90,
+      minutes: 600,
+      minutes_per_active_day: 30,
+      active_days_per_week: 5,
+      minutes_per_week: 150
+   },
+   evidence: {
+      graded_attempts: 90,
+      recent_accuracy: { value: 0.8, correct: 16, graded: 20, days: 14 },
+      retention_30_day: { value: null, correct: 0, attempts: 0 }
+   },
+   caveat: "A pace on mastering the exam's skills, not a predicted AP score."
+} as unknown as PacePayload;
+
+const LESSONS_LIBRARY: LibraryPayload = {
+   units: [
+      {
+         id: "BC-UNIT-02",
+         name: "Differentiation: Definition and Fundamental Properties",
+         order: 2,
+         concepts: [
+            { concept_id: "BC-CON-02013", name: "The product rule", lesson_id: "LSN-CON-02013", version: 1, servable: true, state: "read", read_at: "2027-01-02T09:00:00" },
+            { concept_id: "BC-CON-02014", name: "The quotient rule", lesson_id: "LSN-CON-02014", version: 1, servable: true, state: "coming_up", read_at: null },
+            { concept_id: "BC-CON-02015", name: "Derivatives of the other trigonometric functions", lesson_id: null, version: null, servable: false, state: "not_available", read_at: null }
+         ]
+      }
+   ]
+};
+
+async function settingsPage(tab: SettingsTab) {
+   mocked.readProviders.mockResolvedValue({
+      roles: [{ role: "tutor", provider: "anthropic", model: "claude-sonnet-5", wired: true }],
+      chains: { tutor: ["subscription"], grading: ["subscription"] },
+      cooling: []
+   });
+   mocked.readBudgets.mockResolvedValue({
+      day: "2027-01-05",
+      roles: [
+         {
+            role: "tutor",
+            cap_usd: 6,
+            cap_tokens: 70000,
+            cost_usd: 1.25,
+            tokens_in: 800,
+            tokens_out: 90,
+            tokens_cached_read: 31,
+            tokens_cached_write: 17,
+            hard_stopped: false
+         }
+      ],
+      month_to_date_usd: 3.5
+   });
+   mocked.readSettings.mockResolvedValue({ exam_date: "2027-05-10", purge_after: "2027-06-09", desired_retention: 0.9 });
+   mocked.readStudyPlan.mockResolvedValue({ study_plan: "After breakfast, at my desk." });
+   mocked.readExperiments.mockResolvedValue({
+      experiments: [
+         {
+            name: "worked_example_fading",
+            description: "Fade worked steps.",
+            unit: "skill",
+            arms: ["control", "treatment"],
+            state: "on",
+            randomised_from: null,
+            assigned_units: { control: 3, treatment: 4 }
+         }
+      ]
+   });
+
+   const container = inPage(
+      <SettingsPage
+         tab={tab}
+         onChangeTab={vi.fn()}
+         purgeConfirmationPhrase="delete my data"
+         saveFile={vi.fn()}
+         aiNoticesOn
+         onAiNoticesChange={vi.fn()}
+         onOpenEvidence={vi.fn()}
+         onRunDiagnostic={vi.fn()}
+      />
+   );
+
+   await settle();
+
+   if (tab === "budgets") {
+      fireEvent.click(await screen.findByRole("button", { name: "open" }));
+   }
+
+   if (tab === "operator") {
+      await waitFor(() => expect(screen.getAllByTestId("experiment-switch").length).toBeGreaterThan(0));
+   }
+
+   return container;
+}
+
+async function assessmentsHub(format: "unit" | "drill" | "mock") {
+   mocked.readAssessmentShape.mockResolvedValue({
+      form: "2027",
+      parts: [
+         {
+            key: "I-A",
+            section: "I",
+            part: "A",
+            label: "Section I, Part A",
+            question_type: "Multiple choice",
+            multiple_choice: true,
+            question_count: 30,
+            minutes: 60,
+            calculator: false,
+            calculator_label: "No calculator",
+            calculator_note: null,
+            first_number: 1,
+            budget_seconds_per_question: 120,
+            tools: []
+         }
+      ],
+      multiple_choice_total: 45,
+      free_response_total: 6,
+      points_per_free_response_question: 9,
+      section_weights: {},
+      testing_minutes: 195,
+      reference_sheet: { shown: false, note: "No reference sheet is shown." },
+      radian_note: "Radian mode.",
+      timed_available: true
+   } as unknown as AssessmentShape);
+   mocked.readCheckUnits.mockResolvedValue({
+      units: [{ unit_id: "BC-UNIT-01", items: 8, covered_skills: 8, unit_skills: 40, available: true, title: "Limits and Continuity" }]
+   });
+   mocked.readUnfinished.mockResolvedValue({
+      unfinished: [{ id: "MOCK-1", mode: "mock", sub_mode: null, started_at: "2027-01-04T09:00:00", parts_closed: 1, parts_total: 4 }]
+   });
+   mocked.readFrqUnits.mockResolvedValue({ units: [] });
+   mocked.readCheckpoints.mockRejectedValue(new Error("offline"));
+
+   const container = inPage(<AssessmentRoute format={format} onChangeFormat={vi.fn()} />);
+
+   await screen.findByTestId("resume-list");
+   await settle();
+
+   if (format === "drill") {
+      fireEvent.click(screen.getByRole("radio", { name: /Section I, Part A/ }));
+   }
+
+   return container;
+}
+
 export const SCREENS: Screen[] = [
    ...LESSON_SCREENS,
    {
@@ -709,7 +891,11 @@ export const SCREENS: Screen[] = [
          const container = inPage(<SessionScreen resumeSessionId={null} />);
 
          await screen.findByTestId("item");
-         fireEvent.click(screen.getAllByRole("radio")[0]);
+
+         const firstOption = screen.getAllByRole("radio")[0];
+
+         fireEvent.click(firstOption);
+         act(() => firstOption.focus());
 
          return container;
       }
@@ -803,65 +989,119 @@ export const SCREENS: Screen[] = [
          return container;
       }
    },
+   ...(["study", "providers", "budgets", "accessibility", "operator", "data"] as SettingsTab[]).map((tab) => ({
+      name: `settings, ${tab}`,
+      mount: async () => settingsPage(tab)
+   })),
    {
-      name: "settings",
+      name: "settings, the password prompt",
+      mount: async () =>
+         inPage(<ReauthPromptView working={false} feedback={{ kind: "refused", detail: "the password is incorrect" }} onSubmit={vi.fn()} onCancel={vi.fn()} />)
+   },
+   {
+      name: "app shell, signed in with the account menu open",
       mount: async () => {
-         mocked.readExperiments.mockResolvedValue({
-            experiments: [
-               {
-                  name: "worked_example_fading",
-                  description: "Fade worked steps.",
-                  unit: "skill",
-                  arms: ["control", "treatment"],
-                  state: "on",
-                  randomised_from: null,
-                  assigned_units: { control: 3, treatment: 4 }
-               }
-            ]
-         });
+         mocked.readAuthStatus.mockResolvedValue({ user_exists: true });
+         mocked.readMe.mockResolvedValue(ME);
+         mocked.readProgress.mockRejectedValue(new Error("offline"));
 
+         const { container } = render(<App />);
+
+         fireEvent.click(await screen.findByRole("button", { name: "Account and settings" }));
+
+         return container;
+      }
+   },
+   { name: "home, ready with the pace verdict", mount: async () => homeScreen("ready", { verdict: "on_pace", statement: "On pace." }) },
+   { name: "home, ready and behind pace", mount: async () => homeScreen("ready", { verdict: "behind", statement: "Behind pace." }) },
+   { name: "progress, the pace statement", mount: async () => inPage(<PaceStatement pace={PACE} />) },
+   ...(["unit", "drill", "mock"] as const).map((format) => ({
+      name: `assessments, ${format} setup`,
+      mount: async () => assessmentsHub(format)
+   })),
+   {
+      name: "assessments, a free-response unit check",
+      mount: async () =>
+         inPage(
+            <FrqUnitCheck
+               check={{ session_id: "SES-F", mode: "frq_unit_check", unit_id: "BC-UNIT-05", questions: [FRQ_QUESTION] }}
+               onLeave={vi.fn()}
+            />
+         )
+   },
+   {
+      name: "lessons tab",
+      mount: async () => {
+         mocked.readLibrary.mockResolvedValue(LESSONS_LIBRARY);
+
+         const container = inPage(<LessonsRoute onOpenLesson={vi.fn()} />);
+
+         await screen.findByTestId("lesson-library");
+         fireEvent.click(screen.getAllByRole("button", { pressed: false })[0]);
+
+         return container;
+      }
+   },
+   ...(["notes", "provisional"] as const).map((initialTab) => ({
+      name: `review, ${initialTab} tab`,
+      mount: async () =>
+         inPage(
+            <ReviewScreen
+               initialTab={initialTab}
+               comingBack={[]}
+               errorNotes={[{ attempt_id: "ATT-40", session_id: "SES-8", note: "Wrong order.", written_on: "2027-01-04", label: "Quotient rule" }]}
+               provisionalPoints={[
+                  { grading_id: "G-1", attempt_id: "ATT-1", label: "Question 1", point_label: "Answer", reason: "Two readings", disputed: false },
+                  { grading_id: "G-2", attempt_id: "ATT-1", label: "Question 1", point_label: "Setup", reason: "Two readings", disputed: true }
+               ]}
+               onSaveNote={vi.fn()}
+               onAskForReread={vi.fn()}
+            />
+         )
+   })),
+   {
+      name: "account page",
+      mount: async () => {
+         mocked.readMe.mockResolvedValue(ME);
+
+         const container = inPage(<AccountPage onRenamed={vi.fn()} onSignOut={vi.fn()} />);
+
+         await screen.findByDisplayValue("student");
+
+         return container;
+      }
+   },
+   { name: "a screen still loading", mount: async () => inPage(<Loading testId="catalogue-loading" />) },
+   {
+      name: "an AI call notice",
+      mount: async () =>
+         inPage(
+            <div className="ai-notices">
+               <AiNoticeToast
+                  notice={AI_NOTICE}
+                  visibleMilliseconds={60000}
+                  onDismiss={vi.fn()}
+               />
+            </div>
+         )
+   },
+   {
+      name: "session feedback, the lesson opened at the error's block",
+      mount: async () => {
+         mocked.readLesson.mockResolvedValue({ ...LESSON, state: null });
+
+         const feedback = feedbackFor("unsupported");
          const container = inPage(
-            <>
-               <SettingsScreen
-                  providers={[{ role: "tutor", provider: "anthropic", model: "claude-sonnet-5", wired: true }]}
-                  budgets={{
-                     day: "2027-01-05",
-                     roles: [
-                        {
-                           role: "tutor",
-                           cap_usd: 6,
-                           cap_tokens: 70000,
-                           cost_usd: 1.25,
-                           tokens_in: 800,
-                           tokens_out: 90,
-                           tokens_cached_read: 31,
-                           tokens_cached_write: 17,
-                           hard_stopped: false
-                        }
-                     ],
-                     month_to_date_usd: 3.5
-                  }}
-                  onCapChange={vi.fn()}
-                  queueSettings={{ exam_date: "2027-05-10", purge_after: "2027-06-09", desired_retention: 0.9 }}
-                  onSettingsChange={vi.fn()}
-                  onExport={vi.fn()}
-                  purgeConfirmationPhrase="delete my data"
-                  onReauthenticate={vi.fn()}
-                  onPurge={vi.fn()}
-               />
-               <ReauthPromptView
-                  working={false}
-                  feedback={{ kind: "refused", detail: "the password is incorrect" }}
-                  onSubmit={vi.fn()}
-                  onCancel={vi.fn()}
-               />
-               <AccessibilitySection />
-               <ChangePasswordControl />
-               <OperatorSettings onOpenEvidence={vi.fn()} />
-            </>
+            <ElaboratedPanel
+               elaborated={feedback.elaborated}
+               sentence={feedback.sentence}
+               lessonLink={{ lesson_id: LESSON.id, version: 1, anchor: LESSON.sections[0].id }}
+            />
          );
 
-         await waitFor(() => expect(screen.getAllByTestId("experiment-switch").length).toBeGreaterThan(0));
+         fireEvent.click(screen.getByTestId("read-error-part"));
+         await screen.findByTestId("error-lesson");
+         await settle();
 
          return container;
       }

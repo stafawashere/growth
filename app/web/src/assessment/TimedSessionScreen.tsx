@@ -24,7 +24,7 @@ import { CaptureScreen } from "../frq/CaptureScreen";
 import { refusalText, withLabel } from "./format";
 import { PartRunner } from "./PartRunner";
 import { Loading } from "../status/LoadState";
-import { PageHeader } from "../page/PageHeader";
+import { PageHeader } from "../ui/Page";
 
 /* A full mock or a part drill, from the first part's start to the result. Parts run in order and
    a closed part is never offered again. The only way forward is the next part, and there is no
@@ -257,7 +257,7 @@ export function TimedSessionScreen({ kind, sessionId, initial, pollMilliseconds,
 
    if (session === null) {
       return loadFailed ? (
-         <section className="card">
+         <section className="screen">
             <p className="muted">This timed session could not be loaded.</p>
          </section>
       ) : (
@@ -315,16 +315,16 @@ export function TimedSessionScreen({ kind, sessionId, initial, pollMilliseconds,
 
    if (nextPart !== undefined && lastClosed === null) {
       return (
-         <section className="card" data-testid="part-intro">
-            <PageHeader title={kind === "mocks" ? "Mock exam" : "Part drill"} />
+         <section className="screen" data-testid="part-intro">
+            <PageHeader eyebrow="Timed" title={kind === "mocks" ? "Mock exam" : "Part drill"} intro="The timer starts when you start the part, and a submitted part cannot be reopened." />
 
             {problemLine}
 
-            <PartFacts part={nextPart} />
+            <div className="card stack">
+               <PartFacts part={nextPart} />
 
-            <p className="muted">{session.reference_sheet.note}</p>
-
-            <p>The timer starts when you start the part, and a submitted part cannot be reopened.</p>
+               <p className="helper">{session.reference_sheet.note}</p>
+            </div>
 
             <button type="button" className="button-primary" onClick={() => start(nextPart.position)}>
                Start the part
@@ -335,7 +335,7 @@ export function TimedSessionScreen({ kind, sessionId, initial, pollMilliseconds,
 
    if (nextPart !== undefined && lastClosed !== null) {
       return (
-         <section className="card" data-testid="break-screen">
+         <section className="screen" data-testid="break-screen">
             <PageHeader title="Break" />
 
             {problemLine}
@@ -344,9 +344,11 @@ export function TimedSessionScreen({ kind, sessionId, initial, pollMilliseconds,
 
             {lastClosed.closed_by === "time" ? <p className="muted">Time ran out on {lastClosed.label}, so it closed as you left it.</p> : null}
 
-            <h2 className="section-heading">Next</h2>
+            <div className="card stack">
+               <h2>Next</h2>
 
-            <PartFacts part={nextPart} />
+               <PartFacts part={nextPart} />
+            </div>
 
             <button type="button" className="button-primary" onClick={() => start(nextPart.position)}>
                Start next part
@@ -358,7 +360,7 @@ export function TimedSessionScreen({ kind, sessionId, initial, pollMilliseconds,
    }
 
    return (
-      <section className="card" data-testid="timed-finished">
+      <section className="screen" data-testid="timed-finished">
          <PageHeader title="Every part is closed" />
 
          {problemLine}

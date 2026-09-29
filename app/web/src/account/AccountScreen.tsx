@@ -1,7 +1,7 @@
 import { useEffect, useRef, useState, type FormEvent, type Ref } from "react";
 
 import { ApiError, readAuthStatus, resetWithRecoveryCode, signIn, signUp } from "../api/client";
-import { PageHeader } from "../page/PageHeader";
+import { Page, PageHeader } from "../ui/Page";
 import { useLoad } from "../status/load";
 import { ActionFailed, LoadFailed, Loading } from "../status/LoadState";
 
@@ -30,7 +30,11 @@ export function FeedbackLine(props: { feedback: Feedback }) {
    const { feedback } = props;
 
    if (feedback.kind === "refused") {
-      return <p role="alert">{feedback.detail}</p>;
+      return (
+         <p role="alert" className="field-error">
+            {feedback.detail}
+         </p>
+      );
    }
 
    if (feedback.kind === "failed") {
@@ -50,11 +54,14 @@ function PasswordField(props: {
    onChange: (value: string) => void;
 }) {
    return (
-      <>
-         <label htmlFor={props.id}>{props.label}</label>
+      <div className="form-field">
+         <label className="field-label" htmlFor={props.id}>
+            {props.label}
+         </label>
 
          <input
             id={props.id}
+            className="input"
             type="password"
             autoComplete={props.autoComplete}
             ref={props.inputRef}
@@ -62,7 +69,7 @@ function PasswordField(props: {
             disabled={props.disabled}
             onChange={(event) => props.onChange(event.target.value)}
          />
-      </>
+      </div>
    );
 }
 
@@ -73,11 +80,14 @@ function UsernameField(props: {
    onChange: (value: string) => void;
 }) {
    return (
-      <>
-         <label htmlFor="account-username">Username</label>
+      <div className="form-field">
+         <label className="field-label" htmlFor="account-username">
+            Username
+         </label>
 
          <input
             id="account-username"
+            className="input"
             type="text"
             autoComplete="username"
             autoCapitalize="none"
@@ -87,7 +97,7 @@ function UsernameField(props: {
             disabled={props.disabled}
             onChange={(event) => props.onChange(event.target.value)}
          />
-      </>
+      </div>
    );
 }
 
@@ -199,24 +209,17 @@ export function AccountScreen({ onSignedIn }: AccountScreenProps) {
 
    if (state.kind === "recoveryCode") {
       return (
-         <section className="card">
-            <PageHeader title="Recovery code" />
+         <Page header={<PageHeader eyebrow="Growth account" title="Recovery code" intro="This recovery code is shown once. Keep it somewhere safe and apart from this device." />}>
+            <div className="stack">
+               <p className="code-block">
+                  <code>{state.code}</code>
+               </p>
 
-            <p className="muted">This recovery code is shown once.</p>
-
-            <p>
-               <code>{state.code}</code>
-            </p>
-
-            <button
-               type="button"
-               className="button-primary"
-               ref={acknowledgeButtonRef}
-               onClick={acknowledgeRecoveryCode}
-            >
-               I have saved it
-            </button>
-         </section>
+               <button type="button" className="button-primary button-block" ref={acknowledgeButtonRef} onClick={acknowledgeRecoveryCode}>
+                  I have saved it
+               </button>
+            </div>
+         </Page>
       );
    }
 
@@ -230,57 +233,67 @@ export function AccountScreen({ onSignedIn }: AccountScreenProps) {
 
    if (showsRecovery) {
       return (
-         <section className="card">
-            <PageHeader title="Account" />
-
-            {needsPassword ? (
-               <p className="muted">
-                  This account has no password yet. Enter your recovery code and choose a username and
-                  a password.
-               </p>
-            ) : null}
-
-            <form className="field" onSubmit={submitRecovery}>
-               <label htmlFor="recovery-code-input">Recovery code</label>
-
-               <input
-                  id="recovery-code-input"
-                  type="text"
-                  autoComplete="off"
-                  autoCapitalize="none"
-                  spellCheck={false}
-                  ref={recoveryCodeInputRef}
-                  value={recoveryCode}
-                  disabled={recoveryIsWorking}
-                  onChange={(event) => setRecoveryCode(event.target.value)}
+         <Page
+            header={
+               <PageHeader
+                  eyebrow="Recover your account"
+                  title="Account"
+                  intro={
+                     needsPassword
+                        ? "This account has no password yet. Enter your recovery code and choose a username and a password."
+                        : "A recovery code sets a new password and gives you a fresh code."
+                  }
                />
+            }
+         >
+            <div className="stack stack-loose">
+               <form className="stack" onSubmit={submitRecovery}>
+                  <div className="form-field">
+                     <label className="field-label" htmlFor="recovery-code-input">
+                        Recovery code
+                     </label>
 
-               {needsPassword ? (
-                  <UsernameField value={username} disabled={recoveryIsWorking} onChange={setUsername} />
-               ) : null}
+                     <input
+                        id="recovery-code-input"
+                        className="input"
+                        type="text"
+                        autoComplete="off"
+                        autoCapitalize="none"
+                        spellCheck={false}
+                        ref={recoveryCodeInputRef}
+                        value={recoveryCode}
+                        disabled={recoveryIsWorking}
+                        onChange={(event) => setRecoveryCode(event.target.value)}
+                     />
+                  </div>
 
-               <PasswordField
-                  id="recovery-new-password"
-                  label="New password"
-                  autoComplete="new-password"
-                  value={password}
-                  disabled={recoveryIsWorking}
-                  onChange={setPassword}
-               />
+                  {needsPassword ? <UsernameField value={username} disabled={recoveryIsWorking} onChange={setUsername} /> : null}
 
-               <button type="submit" className="button-primary" disabled={recoveryIsWorking}>
-                  Reset password
-               </button>
-            </form>
+                  <PasswordField
+                     id="recovery-new-password"
+                     label="New password"
+                     autoComplete="new-password"
+                     value={password}
+                     disabled={recoveryIsWorking}
+                     onChange={setPassword}
+                  />
 
-            {needsPassword ? null : (
-               <button type="button" className="text-button" disabled={recoveryIsWorking} onClick={closeRecovery}>
-                  Back to sign in
-               </button>
-            )}
+                  <button type="submit" className="button-primary button-block" disabled={recoveryIsWorking}>
+                     Reset password
+                  </button>
+               </form>
 
-            <FeedbackLine feedback={recoveryFeedback} />
-         </section>
+               {needsPassword ? null : (
+                  <div className="cluster">
+                     <button type="button" className="text-button" disabled={recoveryIsWorking} onClick={closeRecovery}>
+                        Back to sign in
+                     </button>
+                  </div>
+               )}
+
+               <FeedbackLine feedback={recoveryFeedback} />
+            </div>
+         </Page>
       );
    }
 
@@ -289,36 +302,44 @@ export function AccountScreen({ onSignedIn }: AccountScreenProps) {
    const submitLabel = userExists ? "Sign in" : "Create account";
 
    return (
-      <section className="card">
-         <PageHeader title="Account" />
-
-         {userExists ? null : <p className="muted">Choose a username and a password for this installation.</p>}
-
-         <form className="field" onSubmit={(event) => submitCredentials(event, userExists)}>
-            <UsernameField value={username} disabled={isWorking} onChange={setUsername} />
-
-            <PasswordField
-               id="account-password"
-               label="Password"
-               inputRef={passwordInputRef}
-               autoComplete={userExists ? "current-password" : "new-password"}
-               value={password}
-               disabled={isWorking}
-               onChange={setPassword}
+      <Page
+         header={
+            <PageHeader
+               eyebrow="Growth account"
+               title="Account"
+               intro={userExists ? "Welcome back. Pick up where you left off." : "Choose a username and a password for this installation."}
             />
+         }
+      >
+         <div className="stack stack-loose">
+            <form className="stack" onSubmit={(event) => submitCredentials(event, userExists)}>
+               <UsernameField value={username} disabled={isWorking} onChange={setUsername} />
 
-            <button type="submit" className="button-primary" disabled={isWorking}>
-               {submitLabel}
-            </button>
-         </form>
+               <PasswordField
+                  id="account-password"
+                  label="Password"
+                  inputRef={passwordInputRef}
+                  autoComplete={userExists ? "current-password" : "new-password"}
+                  value={password}
+                  disabled={isWorking}
+                  onChange={setPassword}
+               />
 
-         {userExists ? (
-            <button type="button" className="text-button" disabled={isWorking} onClick={openRecovery}>
-               Use recovery code
-            </button>
-         ) : null}
+               <button type="submit" className="button-primary button-block" disabled={isWorking}>
+                  {submitLabel}
+               </button>
+            </form>
 
-         <FeedbackLine feedback={state.feedback} />
-      </section>
+            {userExists ? (
+               <div className="cluster">
+                  <button type="button" className="text-button" disabled={isWorking} onClick={openRecovery}>
+                     Use recovery code
+                  </button>
+               </div>
+            ) : null}
+
+            <FeedbackLine feedback={state.feedback} />
+         </div>
+      </Page>
    );
 }

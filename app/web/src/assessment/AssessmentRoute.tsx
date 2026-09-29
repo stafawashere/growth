@@ -1,28 +1,36 @@
 import { useState } from "react";
 
-import { openCheck, openDrill, openMock, readCheck, readTimedSession, type CaptureMode } from "../api/client";
-import type { AssessmentResult, AssessmentSession, PartKey, TimedKind, UnfinishedAssessment } from "../api/types";
+import { openCheck, openDrill, openMock, openUnitCheck, readCheck, readTimedSession, type CaptureMode } from "../api/client";
+import type { AssessmentResult, AssessmentSession, PartKey, TimedKind, UnfinishedAssessment, UnitCheckPayload } from "../api/types";
+import { CheckpointRoute } from "../evaluation/CheckpointRoute";
+import { FrqUnitCheck } from "../frq/FrqRoute";
+import type { AssessmentFormat } from "../routing";
 import { refusalText } from "./format";
 import { ResultScreen } from "./ResultScreen";
 import { SetupScreen } from "./SetupScreen";
 import { TimedSessionScreen } from "./TimedSessionScreen";
 import { UnitCheckScreen } from "./UnitCheckScreen";
 
-/* The assessment area, reached from home's "Mock exam" button and never from the bar (08,
-   Information architecture). It opens a full mock, a part drill or a unit check and follows it
-   to its result. */
+/* The Assessments tab (the operator's ruling of 2026-09-29, amending 08's information
+   architecture). It opens a unit check, a free-response unit check, a part drill, a full mock or a
+   checkpoint and follows each to its end. The shell passes the chosen format so the address
+   carries it; rendered without one, the hub keeps its own. */
 
 export interface AssessmentRouteProps {
    pollMilliseconds?: number;
+   format?: AssessmentFormat;
+   onChangeFormat?: (format: AssessmentFormat) => void;
 }
 
 type AssessmentPage =
    | { kind: "setup" }
    | { kind: "timed"; timedKind: TimedKind; session: AssessmentSession }
    | { kind: "unitCheck"; session: AssessmentSession; title: string }
+   | { kind: "freeResponse"; check: UnitCheckPayload }
+   | { kind: "checkpoint"; openCheckpointId: string | null }
    | { kind: "result"; result: AssessmentResult };
 
-export function AssessmentRoute({ pollMilliseconds }: AssessmentRouteProps) {
+export function AssessmentRoute({ pollMilliseconds, format, onChangeFormat }: AssessmentRouteProps) {
    const [page, setPage] = useState<AssessmentPage>({ kind: "setup" });
    const [problem, setProblem] = useState<string | null>(null);
 
@@ -50,6 +58,12 @@ export function AssessmentRoute({ pollMilliseconds }: AssessmentRouteProps) {
    function startUnitCheck(unitId: string, title: string) {
       open(async () => ({ kind: "unitCheck", session: await openCheck(unitId), title }), "The unit check could not be opened.");
    }
+
+   function startFreeResponse(unitId: string) {
+      open(async () => ({ kind: "freeResponse", check: await openUnitCheck(unitId) }), "The unit check could not be opened.");
+   }
+
+   const backToSetup = () => setPage({ kind: "setup" });
 
    /* A resumed session opens on the screen its mode belongs to. A mock whose parts are all closed
       lands on its capture and finish step, because that is where TimedSessionScreen puts it. */
@@ -83,9 +97,31 @@ export function AssessmentRoute({ pollMilliseconds }: AssessmentRouteProps) {
       return <UnitCheckScreen sessionId={page.session.id} initial={page.session} unitTitle={page.title} />;
    }
 
-   if (page.kind === "result") {
-      return <ResultScreen result={page.result} onDone={() => setPage({ kind: "setup" })} />;
+   if (page.kind === "freeResponse") {
+      return <FrqUnitCheck check={page.check} pollMilliseconds={pollMilliseconds} onLeave={backToSetup} />;
    }
 
-   return <SetupScreen problem={problem} onStartMock={startMock} onStartDrill={startDrill} onStartUnitCheck={startUnitCheck} onResume={resume} />;
+   if (page.kind === "checkpoint") {
+      return <CheckpointRoute openCheckpointId={page.openCheckpointId} onLeave={backToSetup} />;
+   }
+
+   if (page.kind === "result") {
+      return <ResultScreen result={page.result} onDone={backToSetup} />;
+   }
+
+   return (
+      <SetupScreen
+         problem={problem}
+         format={format}
+         onChangeFormat={onChangeFormat}
+         onStartMock={startMock}
+         onStartDrill={startDrill}
+         onStartUnitCheck={startUnitCheck}
+         onStartFreeResponse={startFreeResponse}
+         onOpenCheckpoint={(openCheckpointId) => setPage({ kind: "checkpoint", openCheckpointId })}
+         onResume={resume}
+      />
+   );
 }
+
+export const AssessmentsRoute = AssessmentRoute;

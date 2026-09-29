@@ -22,28 +22,30 @@ export function ConfidencePrompt({ value, onChange }: ConfidencePromptProps) {
    return (
       <fieldset
          {...affordanceProps("confidencePrompt")}
-         className={`${motionClass("confidencePrompt")} choice-group choice-tiles`}
+         className={`${motionClass("confidencePrompt")} confidence`}
          data-testid="confidence-prompt"
       >
-         <legend>{CONFIDENCE_QUESTION}</legend>
+         <legend className="field-label">{CONFIDENCE_QUESTION}</legend>
 
-         {CONFIDENCE_CHOICES.map((choice) => {
-            const isChosen = value === choice.value;
+         <div className="choice-group">
+            {CONFIDENCE_CHOICES.map((choice) => {
+               const isChosen = value === choice.value;
 
-            return (
-               <label key={choice.value}>
-                  <input
-                     type="radio"
-                     name={groupName}
-                     value={choice.value}
-                     checked={isChosen}
-                     aria-label={choice.label}
-                     onChange={() => onChange(choice.value)}
-                  />
-                  {choice.label}
-               </label>
-            );
-         })}
+               return (
+                  <label key={choice.value} className="choice-chip" data-confidence={choice.value} data-chosen={isChosen ? "true" : undefined}>
+                     <input
+                        type="radio"
+                        name={groupName}
+                        value={choice.value}
+                        checked={isChosen}
+                        aria-label={choice.label}
+                        onChange={() => onChange(choice.value)}
+                     />
+                     {choice.label}
+                  </label>
+               );
+            })}
+         </div>
       </fieldset>
    );
 }

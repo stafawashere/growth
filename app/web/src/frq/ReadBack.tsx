@@ -114,7 +114,7 @@ export function ReadBackEditor({ readBack, onChange }: ReadBackEditorProps) {
                <legend>Part ({part.part_id})</legend>
 
                {part.lines.map((line, lineIndex) => (
-                  <div key={lineIndex} className="field read-back-edit-line">
+                  <div key={lineIndex} className="form-field read-back-edit-line">
                      <label>
                         Line {lineIndex + 1}
                         <input
@@ -162,7 +162,7 @@ export function ReadBackEditor({ readBack, onChange }: ReadBackEditorProps) {
                   Add a line to part ({part.part_id})
                </button>
 
-               <label className="field">
+               <label className="form-field">
                   Answer to part ({part.part_id})
                   <input
                      type="text"

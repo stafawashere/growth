@@ -20,13 +20,16 @@ export function ErrorNoteField({ value, onChange }: ErrorNoteFieldProps) {
    return (
       <section
          {...affordanceProps("errorNoteField")}
-         className={`${motionClass("errorNoteField")} field`}
+         className={`${motionClass("errorNoteField")} form-field`}
          data-testid="error-note-field"
       >
-         <label htmlFor={fieldId}>{ERROR_NOTE_LABEL}</label>
+         <label className="field-label" htmlFor={fieldId}>
+            {ERROR_NOTE_LABEL}
+         </label>
 
          <input
             id={fieldId}
+            className="input"
             type="text"
             value={value}
             maxLength={ERROR_NOTE_MAX_CHARACTERS}

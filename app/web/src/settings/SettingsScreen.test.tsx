@@ -3,6 +3,8 @@ import { cleanup, fireEvent, render, screen, waitFor, within } from "@testing-li
 import { readFileSync } from "node:fs";
 import { join } from "node:path";
 import type { BudgetsPayload, ProviderRole, RoleBudget, SettingsPayload } from "../api/types";
+import type { SettingsTab } from "../routing";
+import { SETTINGS_TABS } from "../routing";
 import { SettingsScreen, type SettingsScreenProps } from "./SettingsScreen";
 
 function scopeSeventeenSections(): string[] {
@@ -56,8 +58,9 @@ function capRow() {
    return within(screen.getByTestId("per-role-cap-row"));
 }
 
-function baseProps(): SettingsScreenProps {
+function baseProps(tab: SettingsTab = "study"): SettingsScreenProps {
    return {
+      tab,
       providers,
       budgets,
       onCapChange: vi.fn().mockResolvedValue(true),
@@ -75,17 +78,19 @@ afterEach(() => {
 });
 
 describe("SettingsScreen, section scope", () => {
-   it("renders only the P1-allowed sections named in 11-phased-delivery.md scope 17", () => {
-      render(<SettingsScreen {...baseProps()} />);
-
+   it("renders only the P1-allowed sections named in 11-phased-delivery.md scope 17, across its tabs", () => {
       const expectedSections = scopeSeventeenSections()
          .map((section) => section.toLowerCase())
          .sort();
 
-      const headings = screen
-         .getAllByRole("heading", { level: 2 })
-         .map((heading) => (heading.textContent ?? "").trim().toLowerCase())
-         .sort();
+      const headings = SETTINGS_TABS.flatMap((tab) => {
+         const { unmount } = render(<SettingsScreen {...baseProps(tab)} />);
+         const onTab = screen.queryAllByRole("heading", { level: 2 }).map((heading) => (heading.textContent ?? "").trim().toLowerCase());
+
+         unmount();
+
+         return onTab;
+      }).sort();
 
       expect(headings).toEqual(expectedSections);
    });
@@ -93,7 +98,7 @@ describe("SettingsScreen, section scope", () => {
 
 describe("SettingsScreen, purge", () => {
    it("cannot be triggered without the typed confirmation and a password re-authentication", async () => {
-      const props = baseProps();
+      const props = baseProps("data");
 
       render(<SettingsScreen {...props} />);
 
@@ -129,7 +134,7 @@ describe("SettingsScreen, purge", () => {
    });
 
    it("keeps purge disabled when the password re-authentication fails", async () => {
-      const props = baseProps();
+      const props = baseProps("data");
       props.onReauthenticate = vi.fn().mockResolvedValue(false);
 
       render(<SettingsScreen {...props} />);
@@ -155,7 +160,7 @@ describe("SettingsScreen, purge", () => {
 
 describe("SettingsScreen, purge without a confirmation phrase", () => {
    it("withholds the typed field and both purge controls when no phrase was supplied", () => {
-      const props = baseProps();
+      const props = baseProps("data");
 
       render(<SettingsScreen {...props} purgeConfirmationPhrase={null} />);
 
@@ -181,7 +186,7 @@ describe("SettingsScreen, providers and budgets", () => {
          { role: "generator", provider: null, model: null, wired: false }
       ];
 
-      render(<SettingsScreen {...baseProps()} providers={manyProviders} />);
+      render(<SettingsScreen {...baseProps("providers")} providers={manyProviders} />);
 
       const rows = screen.getAllByTestId("provider-row");
 
@@ -189,11 +194,15 @@ describe("SettingsScreen, providers and budgets", () => {
       expect(rows[0].textContent).toContain("claude-sonnet-5");
       expect(rows[1].textContent).toContain("not wired");
       expect(screen.queryByRole("button", { name: "change" })).toBeNull();
+
+      cleanup();
+      render(<SettingsScreen {...baseProps("budgets")} />);
+
       expect(screen.getByText(/1\.23/)).toBeTruthy();
    });
 
    it("keeps the per-role caps hidden until the open control is used", () => {
-      render(<SettingsScreen {...baseProps()} />);
+      render(<SettingsScreen {...baseProps("budgets")} />);
 
       expect(screen.queryAllByTestId("per-role-cap-row").length).toBe(0);
    });
@@ -201,7 +210,7 @@ describe("SettingsScreen, providers and budgets", () => {
    it("reveals per-role caps behind the open control, ranging over props rather than a typed-out list", () => {
       const manyCaps = [roleBudget("tutor", 2, 0.5), roleBudget("generator", 3, 1), roleBudget("verifier", 1.5, 0)];
 
-      render(<SettingsScreen {...baseProps()} budgets={{ ...budgets, roles: manyCaps }} />);
+      render(<SettingsScreen {...baseProps("budgets")} budgets={{ ...budgets, roles: manyCaps }} />);
 
       fireEvent.click(screen.getByRole("button", { name: "open" }));
 
@@ -220,7 +229,7 @@ describe("SettingsScreen, providers and budgets", () => {
    });
 
    it("hands a changed cap to onCapChange as numbers, a blank field as null", () => {
-      const props = baseProps();
+      const props = baseProps("budgets");
 
       render(<SettingsScreen {...props} />);
       fireEvent.click(screen.getByRole("button", { name: "open" }));
@@ -233,7 +242,7 @@ describe("SettingsScreen, providers and budgets", () => {
    });
 
    it("refuses to save a role left with no cap at all, which the server refuses too", () => {
-      const props = baseProps();
+      const props = baseProps("budgets");
 
       render(<SettingsScreen {...props} />);
       fireEvent.click(screen.getByRole("button", { name: "open" }));
@@ -249,7 +258,7 @@ describe("SettingsScreen, providers and budgets", () => {
    });
 
    it("refuses to save a cap that is not a number rather than sending it as no cap", () => {
-      const props = baseProps();
+      const props = baseProps("budgets");
 
       render(<SettingsScreen {...props} />);
       fireEvent.click(screen.getByRole("button", { name: "open" }));
@@ -268,16 +277,23 @@ describe("SettingsScreen, providers and budgets", () => {
 
 describe("SettingsScreen, sections whose request has not answered", () => {
    it("renders every heading and no digit while providers, budgets and queue settings are null", () => {
-      render(<SettingsScreen {...baseProps()} providers={null} budgets={null} queueSettings={null} />);
+      const headingCount = SETTINGS_TABS.reduce((count, tab) => {
+         const { unmount } = render(<SettingsScreen {...baseProps(tab)} providers={null} budgets={null} queueSettings={null} />);
+         const onTab = screen.queryAllByRole("heading", { level: 2 }).length;
 
-      expect(screen.getAllByRole("heading", { level: 2 }).length).toBe(scopeSeventeenSections().length);
-      expect(document.body.textContent ?? "").not.toMatch(/\d/);
+         expect(document.body.textContent ?? "").not.toMatch(/\d/);
+         unmount();
+
+         return count + onTab;
+      }, 0);
+
+      expect(headingCount).toBe(scopeSeventeenSections().length);
    });
 });
 
 describe("SettingsScreen, retention line", () => {
    it("states the plan's default retention, in the plan's own words and date form, only at exam date plus 30 days", () => {
-      render(<SettingsScreen {...baseProps()} />);
+      render(<SettingsScreen {...baseProps("data")} />);
 
       const line = screen.getByText(/Default retention/).textContent ?? "";
 
@@ -286,7 +302,7 @@ describe("SettingsScreen, retention line", () => {
 
       cleanup();
 
-      render(<SettingsScreen {...baseProps()} queueSettings={{ ...queueSettings, purge_after: "2027-07-01" }} />);
+      render(<SettingsScreen {...baseProps("data")} queueSettings={{ ...queueSettings, purge_after: "2027-07-01" }} />);
 
       expect(screen.queryByText(/Default retention/)).toBeNull();
    });
@@ -302,12 +318,12 @@ describe("SettingsScreen, design tokens", () => {
 
 describe("SettingsScreen, editable dates", () => {
    const dateCases = [
-      { label: "exam date", field: "exam_date", saved: queueSettings.exam_date, typed: "2028-05-08" },
-      { label: "purge date", field: "purge_after", saved: queueSettings.purge_after, typed: "2028-06-07" }
+      { label: "exam date", field: "exam_date", saved: queueSettings.exam_date, typed: "2028-05-08", tab: "study" as const },
+      { label: "purge date", field: "purge_after", saved: queueSettings.purge_after, typed: "2028-06-07", tab: "data" as const }
    ];
 
    it.each(dateCases)("sends a changed $label as $field and nothing else", async (dateCase) => {
-      const props = baseProps();
+      const props = baseProps(dateCase.tab);
 
       render(<SettingsScreen {...props} />);
 
@@ -339,7 +355,7 @@ describe("SettingsScreen, editable dates", () => {
 
 describe("SettingsScreen, an action that did not happen", () => {
    it("marks export done only when it happened and hands the control back when it did not", async () => {
-      const props = baseProps();
+      const props = baseProps("data");
 
       props.onExport = vi.fn().mockResolvedValueOnce(false).mockResolvedValueOnce(true);
       render(<SettingsScreen {...props} />);
@@ -359,7 +375,7 @@ describe("SettingsScreen, an action that did not happen", () => {
    });
 
    it("asks for a new verification after a purge that did not happen and shows no done state", async () => {
-      const props = baseProps();
+      const props = baseProps("data");
 
       props.onPurge = vi.fn().mockResolvedValue(false);
       render(<SettingsScreen {...props} />);
@@ -382,7 +398,7 @@ describe("SettingsScreen, an action that did not happen", () => {
    });
 
    it("hands a cap row's save back with the typed value when the change did not happen", async () => {
-      const props = baseProps();
+      const props = baseProps("budgets");
 
       props.onCapChange = vi.fn().mockResolvedValue(false);
       render(<SettingsScreen {...props} />);
@@ -402,15 +418,20 @@ describe("SettingsScreen, an action that did not happen", () => {
    });
 });
 describe("SettingsScreen, the operator's machinery", () => {
-   it("keeps providers and budgets closed, after the student's own sections", () => {
-      render(<SettingsScreen {...baseProps()} />);
+   it("keeps providers and budgets on their own tabs, off the student's study and data tabs", () => {
+      for (const tab of ["study", "data"] as const) {
+         const { unmount } = render(<SettingsScreen {...baseProps(tab)} />);
 
-      const disclosure = screen.getByTestId("operator-providers-budgets") as HTMLDetailsElement;
-      const headings = screen.getAllByRole("heading", { level: 2 }).map((heading) => heading.textContent);
+         expect(screen.queryByRole("heading", { name: "Providers" })).toBeNull();
+         expect(screen.queryByRole("heading", { name: "Budgets" })).toBeNull();
+         unmount();
+      }
 
-      expect(disclosure.open).toBe(false);
-      expect(within(disclosure).getByRole("heading", { name: "Providers" })).toBeTruthy();
-      expect(within(disclosure).getByRole("heading", { name: "Budgets" })).toBeTruthy();
-      expect(headings.indexOf("Providers")).toBeGreaterThan(headings.indexOf("Purge"));
+      render(<SettingsScreen {...baseProps("providers")} />);
+      expect(screen.getByRole("heading", { name: "Providers" })).toBeTruthy();
+      cleanup();
+
+      render(<SettingsScreen {...baseProps("budgets")} />);
+      expect(screen.getByRole("heading", { name: "Budgets" })).toBeTruthy();
    });
 });

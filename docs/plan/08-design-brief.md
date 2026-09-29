@@ -156,6 +156,8 @@ Each entry is banned outright. The reason is one line and the citation is the ev
 
 Six screens plus settings. The tree below lists each screen and its states.
 
+Ruled 2026-09-29 on the operator's instruction, with the redesign in `mockup-redesign/`: the top bar carries five tabs, Today (home, with the session and onboarding opened from it), Lessons, Review, Progress and Assessments (the unit check, the free-response unit check, the part drill, the mock and the checkpoint), and settings and the account open from the avatar menu at its end. Every screen below keeps its states; only where each is reached from changed. The page has no footer.
+
 ```
 app
 ├── onboarding

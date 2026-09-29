@@ -16,7 +16,7 @@ export function MetricsRoute({ onLeave }: MetricsRouteProps) {
          {metrics.kind === "waiting" ? <Loading testId="metrics-waiting" /> : null}
 
          {metrics.kind === "failed" ? (
-            <section className="card">
+            <section className="screen">
                <p data-testid="metrics-failed" className="muted">
                   The learning metrics could not be loaded.
                </p>

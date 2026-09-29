@@ -1,92 +1,81 @@
-import { Suspense, lazy, useEffect, useState } from "react";
+import { Suspense, lazy, useCallback, useEffect, useRef, useState } from "react";
 
 import { AccountScreen } from "./account/AccountScreen";
-import { ChangePasswordControl } from "./account/ChangePasswordControl";
-import { ApiError, readAuthStatus, readMe, signOut } from "./api/client";
+import { accountFrom, forgetCachedAccount, readCachedAccount, saveCachedAccount, type CachedAccount } from "./account/cachedAccount";
+import { ApiError, SESSION_ENDED_EVENT, readAuthStatus, readMe, signOut, type MePayload } from "./api/client";
 import { HomeRoute } from "./home/HomeRoute";
-import { AiNotices, AiNoticesSetting, readAiNoticesEnabled } from "./notices/AiNotices";
+import { AiNotices, readAiNoticesEnabled } from "./notices/AiNotices";
 import type { OnboardingReason } from "./onboarding/OnboardingScreen";
-import { OperatorSettings } from "./settings/ExperimentsSection";
-import type { SettingsScreenProps } from "./settings/SettingsScreen";
-import { AccessibilitySection } from "./settings/AccessibilitySection";
-import { SettingsRoute } from "./settings/SettingsRoute";
-import { ActionFailed } from "./status/LoadState";
+import { usePlace, type GoOptions, type Place, type View } from "./routing";
+import { AccountMenu } from "./shell/AccountMenu";
+import { TABS, TopBar } from "./shell/TopBar";
+import { ActionFailed, RETRY_LABEL } from "./status/LoadState";
 
-const AssessmentRoute = lazy(() => import("./assessment/AssessmentRoute").then((module) => ({ default: module.AssessmentRoute })));
+const AccountPage = lazy(() => import("./account/AccountPage").then((module) => ({ default: module.AccountPage })));
+const AssessmentsRoute = lazy(() => import("./assessment/AssessmentRoute").then((module) => ({ default: module.AssessmentsRoute })));
+const CheckpointRoute = lazy(() => import("./evaluation/CheckpointRoute").then((module) => ({ default: module.CheckpointRoute })));
 const MetricsRoute = lazy(() => import("./evaluation/MetricsRoute").then((module) => ({ default: module.MetricsRoute })));
+const ProbeRoute = lazy(() => import("./evaluation/ProbeRoute").then((module) => ({ default: module.ProbeRoute })));
 const LessonRoute = lazy(() => import("./lessons/LessonRoute").then((module) => ({ default: module.LessonRoute })));
 const LessonsRoute = lazy(() => import("./lessons/LessonsRoute").then((module) => ({ default: module.LessonsRoute })));
-const FrqRoute = lazy(() => import("./frq/FrqRoute").then((module) => ({ default: module.FrqRoute })));
 const OnboardingRoute = lazy(() => import("./onboarding/OnboardingRoute").then((module) => ({ default: module.OnboardingRoute })));
 const ProgressRoute = lazy(() => import("./progress/ProgressRoute").then((module) => ({ default: module.ProgressRoute })));
 const ReviewRoute = lazy(() => import("./review/ReviewRoute").then((module) => ({ default: module.ReviewRoute })));
 const SessionScreen = lazy(() => import("./session/SessionScreen").then((module) => ({ default: module.SessionScreen })));
+const SettingsPage = lazy(() => import("./settings/SettingsPage").then((module) => ({ default: module.SettingsPage })));
 
-export type Destination = "home" | "lessons" | "session" | "settings" | "progress" | "review" | "onboarding" | "frq" | "mock" | "lesson";
+export type Destination = View;
 
 export interface DestinationEntry {
-   id: Destination;
+   id: (typeof TABS)[number]["id"];
    label: string;
 }
+
+/* The redesign's information architecture (mockup-redesign/, the operator's ruling of 2026-09-29,
+   amending 08's): Today, Lessons, Review, Progress and Assessments are tabs on the bar; settings and
+   the account open from the avatar menu; a session and onboarding open from Today, a lesson from
+   Lessons or Progress, and a checkpoint or probe from Progress. */
+export const DESTINATIONS: ReadonlyArray<DestinationEntry> = TABS.map((entry) => ({ id: entry.id, label: entry.label }));
 
 export interface UnsuppliedInput {
    name: string;
    wants: string;
 }
 
-/* 08-design-brief.md, Information architecture: settings is reached from the top bar, a session
-   from home's one primary action, progress, review, the free-response unit check and the mock
-   exam from home, and onboarding only when home sends a first login, an unfinished diagnostic or
-   a long gap there, so none of the last six is here. Lessons has its own tab (the operator's ruling
-   of 2026-09-29, amending 15 UI); the lesson reader opens from it or from progress's Lessons section
-   and returns to whichever opened it, so the reader itself is not here. */
-export const DESTINATIONS: ReadonlyArray<DestinationEntry> = [
-   { id: "home", label: "Home" },
-   { id: "lessons", label: "Lessons" },
-   { id: "settings", label: "Settings" }
-];
-
-const TOKEN_PROBE = "--growth-surface-page";
+export const UNSUPPLIED_INPUTS: Record<Destination, ReadonlyArray<UnsuppliedInput>> = {
+   home: [],
+   session: [],
+   onboarding: [],
+   lessons: [],
+   lesson: [],
+   review: [],
+   progress: [],
+   checkpoint: [],
+   probe: [],
+   assessments: [],
+   settings: [],
+   evidence: [],
+   account: []
+};
 
 /* Ruled 2026-09-23: the purge confirmation phrase is the literal text "delete my data", matching
    app/api/routes/purge.py's PURGE_CONFIRMATION. 08 gives no phrase of its own, so this is the
    operator's decision rather than a plan reading, and it is why this is a constant here rather
    than a value the client reads off a route. */
-export const OPERATOR_EXPERIMENTS_SUMMARY = "For the operator: experiments and evidence of learning";
-
 export const PURGE_CONFIRMATION_PHRASE = "delete my data";
 
-const settingsInputs = [] as const satisfies ReadonlyArray<{
-   name: Extract<keyof SettingsScreenProps, string>;
-   wants: string;
-}>;
+export const OPERATOR_EXPERIMENTS_SUMMARY = "For the operator: experiments and evidence of learning";
 
-export const UNSUPPLIED_INPUTS: Record<Destination, ReadonlyArray<UnsuppliedInput>> = {
-   home: [],
-   lessons: [],
-   session: [],
-   settings: settingsInputs,
-   progress: [],
-   review: [],
-   onboarding: [],
-   frq: [],
-   mock: [],
-   lesson: []
-};
+export const OFFLINE_TEXT = "The app could not reach its server, so what you see may be out of date. You are still signed in.";
 
-type SessionTarget = { resumeSessionId: string | null };
+const TOKEN_PROBE = "--growth-surface-page";
 
-type LessonTarget = { lessonId: string; conceptName: string; returnTo: "lessons" | "progress" };
-
-type OnboardingTarget = { reason: OnboardingReason; resumeSessionId: string | null };
-
+/* unknown: nothing cached and /me has not answered. signedIn: /me answered, or this browser holds the
+   account from an earlier visit and /me has not refused it. signedOut: /me answered 401, or the
+   account must set a password first. */
 type Access = "unknown" | "signedIn" | "signedOut";
 
 type SignOutState = "idle" | "working" | "failed";
-
-/* The operator's evidence of learning opens from settings and returns there. It is a page of
-   settings rather than a destination, so it is never on the bar and home cannot reach it. */
-type SettingsPage = "settings" | "evidence";
 
 function isSignedOut(failure: unknown) {
    const isServerRefusal = failure instanceof ApiError;
@@ -113,7 +102,7 @@ function saveFile(name: string, contents: Blob) {
 
 function TokenNotice() {
    return (
-      <p role="status" className="notice notice-framed">
+      <p role="status" className="notice">
          The generated design tokens stylesheet is absent, so every colour, type and spacing custom
          property on this page resolves to nothing and falls back to the browser default. The
          operator fills the token file and the build writes the stylesheet from it.
@@ -121,56 +110,71 @@ function TokenNotice() {
    );
 }
 
-function AppFooter() {
+function OfflineNotice(props: { onRetry: () => void }) {
    return (
-      <footer className="app-footer">
-         <p>AP Calculus BC</p>
-      </footer>
-   );
-}
+      <div role="status" className="callout callout-row" data-testid="offline-notice">
+         <p>{OFFLINE_TEXT}</p>
 
-function UnsuppliedPanel(props: { destination: Destination }) {
-   const inputs = UNSUPPLIED_INPUTS[props.destination];
-   const hasGap = inputs.length > 0;
-
-   if (!hasGap) {
-      return null;
-   }
-
-   return (
-      <section className="notice notice-framed">
-         <p className="muted">
-            No route on this client supplies the input below, so the part of this screen that needs
-            it is held back rather than rendered with a stand-in.
-         </p>
-
-         <ul>
-            {inputs.map((input) => (
-               <li key={input.name} data-testid="unsupplied-input" className="muted">
-                  <code>{input.name}</code>, {input.wants}
-               </li>
-            ))}
-         </ul>
-      </section>
+         <button type="button" className="button-secondary button-small" onClick={props.onRetry}>
+            {RETRY_LABEL}
+         </button>
+      </div>
    );
 }
 
 export function App() {
-   const [destination, setDestination] = useState<Destination>("home");
-   const [sessionTarget, setSessionTarget] = useState<SessionTarget>({ resumeSessionId: null });
-   const [onboardingTarget, setOnboardingTarget] = useState<OnboardingTarget>({
-      reason: "first_login",
-      resumeSessionId: null
-   });
-
-   const [lessonTarget, setLessonTarget] = useState<LessonTarget | null>(null);
-
-   const [access, setAccess] = useState<Access>("unknown");
-   const [settingsPage, setSettingsPage] = useState<SettingsPage>("settings");
+   const [place, go] = usePlace();
+   const [account, setAccount] = useState<CachedAccount | null>(readCachedAccount);
+   const [access, setAccess] = useState<Access>(() => (readCachedAccount() === null ? "unknown" : "signedIn"));
+   const [offline, setOffline] = useState(false);
    const [signOutState, setSignOutState] = useState<SignOutState>("idle");
    const [aiNoticesOn, setAiNoticesOn] = useState<boolean>(readAiNoticesEnabled);
+   const [barVisits, setBarVisits] = useState(0);
+   const main = useRef<HTMLElement | null>(null);
+   const checking = useRef(false);
 
    const tokensAreLoaded = tokenStylesheetIsLoaded();
+
+   const acceptMe = useCallback((me: MePayload) => {
+      const known = accountFrom(me);
+
+      saveCachedAccount(known);
+      setAccount(known);
+      setOffline(false);
+      setAccess("signedIn");
+   }, []);
+
+   const endSession = useCallback(() => {
+      forgetCachedAccount();
+      setAccount(null);
+      setOffline(false);
+      setAccess("signedOut");
+   }, []);
+
+   /* Only a 401 from /me signs the student out. A network failure or a server error leaves them
+      signed in, says the app is out of reach, and checks again when asked or when the browser
+      comes back online. */
+   const checkSession = useCallback(async () => {
+      if (checking.current) {
+         return;
+      }
+
+      checking.current = true;
+
+      try {
+         const me = await readMe();
+
+         acceptMe(me);
+      } catch (failure) {
+         if (isSignedOut(failure)) {
+            endSession();
+         } else {
+            setOffline(readCachedAccount() !== null);
+         }
+      } finally {
+         checking.current = false;
+      }
+   }, [acceptMe, endSession]);
 
    useEffect(() => {
       let isCurrent = true;
@@ -183,27 +187,17 @@ export function App() {
             .then((status) => status?.needs_password === true)
             .catch(() => false);
 
+         if (!isCurrent) {
+            return;
+         }
+
          if (needsPassword) {
-            if (isCurrent) {
-               setAccess("signedOut");
-            }
+            endSession();
 
             return;
          }
 
-         try {
-            await readMe();
-
-            if (isCurrent) {
-               setAccess("signedIn");
-            }
-         } catch (failure) {
-            const shouldSignIn = isCurrent && isSignedOut(failure);
-
-            if (shouldSignIn) {
-               setAccess("signedOut");
-            }
-         }
+         await checkSession();
       }
 
       void decideAccess();
@@ -211,13 +205,31 @@ export function App() {
       return () => {
          isCurrent = false;
       };
-   }, []);
+   }, [checkSession, endSession]);
+
+   useEffect(() => {
+      function recheck() {
+         void checkSession();
+      }
+
+      window.addEventListener(SESSION_ENDED_EVENT, recheck);
+      window.addEventListener("online", recheck);
+
+      return () => {
+         window.removeEventListener(SESSION_ENDED_EVENT, recheck);
+         window.removeEventListener("online", recheck);
+      };
+   }, [checkSession]);
+
+   useEffect(() => {
+      main.current?.focus({ preventScroll: true });
+   }, [place]);
 
    function enterAfterSignIn() {
       readMe().then(
-         () => {
-            setDestination("home");
-            setAccess("signedIn");
+         (me) => {
+            acceptMe(me);
+            go({ view: "home" });
          },
          () => undefined
       );
@@ -241,161 +253,182 @@ export function App() {
       }
 
       setSignOutState("idle");
-      setSettingsPage("settings");
-      setDestination("home");
-      setAccess("signedOut");
+      endSession();
+      go({ view: "home" });
    }
 
-   function visit(destination: Destination) {
-      setSettingsPage("settings");
-      setDestination(destination);
-   }
-
-   function startSession() {
-      setSessionTarget({ resumeSessionId: null });
-      setDestination("session");
-   }
-
-   function resumeSession(sessionId: string) {
-      setSessionTarget({ resumeSessionId: sessionId });
-      setDestination("session");
-   }
-
-   function openLesson(lessonId: string, conceptName: string) {
-      setLessonTarget({ lessonId, conceptName, returnTo: destination === "lessons" ? "lessons" : "progress" });
-      setDestination("lesson");
+   /* A tab on the bar always lands on that tab's own first page, even when the student is already
+      somewhere inside it, so routes that keep an inner page are drawn afresh. */
+   function goFromBar(next: Place) {
+      setBarVisits((visits) => visits + 1);
+      go(next);
    }
 
    function startOnboarding(reason: OnboardingReason, resumeSessionId: string | null) {
-      setOnboardingTarget({ reason, resumeSessionId });
-      setDestination("onboarding");
+      go({ view: "onboarding", reason, resumeSessionId });
+   }
+
+   /* Home hands a first login or an unfinished diagnostic straight on, so that step replaces home in
+      the history rather than leaving a page the back button would bounce off. */
+   function redirectToOnboarding(reason: OnboardingReason, resumeSessionId: string | null) {
+      go({ view: "onboarding", reason, resumeSessionId }, { replace: true });
+   }
+
+   function openLesson(returnTo: "lessons" | "progress") {
+      return (lessonId: string, conceptName: string) => go({ view: "lesson", lessonId, conceptName, returnTo });
    }
 
    if (access === "signedOut") {
       return (
          <>
-            <header className="app-header">
-               <div className="app-bar">
-                  <span className="app-brand">Calculus BC</span>
-               </div>
-            </header>
+            <a className="skip-link" href="#main">
+               Skip to content
+            </a>
 
-            <main className="app-page">
+            <TopBar view={null} go={go} />
+
+            <main className="app-page" id="main" tabIndex={-1} ref={main}>
                {tokensAreLoaded ? null : <TokenNotice />}
 
                <AccountScreen onSignedIn={enterAfterSignIn} />
             </main>
 
-            <AppFooter />
          </>
       );
    }
 
-   const isSigningOut = signOutState === "working";
    const showsAiNotices = access === "signedIn" && aiNoticesOn;
+   const menuCurrent = place.view === "account" ? "account" : place.view === "settings" || place.view === "evidence" ? "settings" : null;
 
    return (
       <>
-         <header className="app-header">
-            <div className="app-bar">
-               <nav className="app-nav" aria-label="Main">
-                  <span className="app-brand">Calculus BC</span>
+         <a className="skip-link" href="#main">
+            Skip to content
+         </a>
 
-                  {DESTINATIONS.map((entry) => (
-                     <span key={entry.id} className={entry.id === "settings" ? "app-bar-end" : undefined}>
-                        <button
-                           type="button"
-                           className="text-button"
-                           aria-current={destination === entry.id ? "page" : undefined}
-                           onClick={() => visit(entry.id)}
-                        >
-                           {entry.label}
-                        </button>
-                     </span>
-                  ))}
-               </nav>
+         <TopBar
+            view={place.view}
+            go={goFromBar}
+            menu={
+               <AccountMenu
+                  account={account}
+                  current={menuCurrent}
+                  signingOut={signOutState === "working"}
+                  onOpenAccount={() => go({ view: "account" })}
+                  onOpenSettings={() => go({ view: "settings", tab: "study" })}
+                  onSignOut={leave}
+               />
+            }
+         />
 
-               <button type="button" className="text-button" disabled={isSigningOut} onClick={leave}>
-                  Sign out
-               </button>
-            </div>
-         </header>
-
-         <main className="app-page">
+         <main className="app-page" id="main" tabIndex={-1} ref={main}>
             {tokensAreLoaded ? null : <TokenNotice />}
+
+            {offline ? <OfflineNotice onRetry={() => void checkSession()} /> : null}
 
             {signOutState === "failed" ? <ActionFailed /> : null}
 
             <Suspense fallback={null}>
-
-               {destination === "home" ? (
-                  <HomeRoute
-                     today={() => new Date()}
-                     onStartSession={startSession}
-                     onResumeSession={resumeSession}
-                     onOpenProgress={() => setDestination("progress")}
-                     onOpenReview={() => setDestination("review")}
-                     onOpenFreeResponse={() => setDestination("frq")}
-                     onOpenMockExam={() => setDestination("mock")}
-                     onStartOnboarding={startOnboarding}
-                  />
-               ) : null}
-
-               {destination === "onboarding" ? (
-                  <OnboardingRoute
-                     reason={onboardingTarget.reason}
-                     resumeSessionId={onboardingTarget.resumeSessionId}
-                     onFinished={() => setDestination("home")}
-                  />
-               ) : null}
-
-               {destination === "session" ? <SessionScreen resumeSessionId={sessionTarget.resumeSessionId} /> : null}
-
-               {destination === "lessons" ? <LessonsRoute onOpenLesson={openLesson} /> : null}
-
-               {destination === "progress" ? <ProgressRoute onOpenLesson={openLesson} /> : null}
-
-               {destination === "lesson" && lessonTarget !== null ? (
-                  <LessonRoute
-                     lessonId={lessonTarget.lessonId}
-                     conceptName={lessonTarget.conceptName}
-                     onLeave={() => setDestination(lessonTarget.returnTo)}
-                     backLabel={lessonTarget.returnTo === "lessons" ? "Back to lessons" : "Back to progress"}
-                  />
-               ) : null}
-
-               {destination === "review" ? <ReviewRoute /> : null}
-
-               {destination === "frq" ? <FrqRoute /> : null}
-
-               {destination === "mock" ? <AssessmentRoute /> : null}
-
-               {destination === "settings" && settingsPage === "settings" ? (
-                  <>
-                     <SettingsRoute purgeConfirmationPhrase={PURGE_CONFIRMATION_PHRASE} saveFile={saveFile} />
-                     <AccessibilitySection />
-                     <AiNoticesSetting enabled={aiNoticesOn} onChange={setAiNoticesOn} />
-                     <ChangePasswordControl />
-                     <details className="operator-details" data-testid="operator-experiments-evidence">
-                        <summary>{OPERATOR_EXPERIMENTS_SUMMARY}</summary>
-
-                        <OperatorSettings onOpenEvidence={() => setSettingsPage("evidence")} />
-                     </details>
-                  </>
-               ) : null}
-
-               {destination === "settings" && settingsPage === "evidence" ? (
-                  <MetricsRoute onLeave={() => setSettingsPage("settings")} />
-               ) : null}
-
+               <PlaceView
+                  place={place}
+                  go={go}
+                  barVisits={barVisits}
+                  aiNoticesOn={aiNoticesOn}
+                  onAiNoticesChange={setAiNoticesOn}
+                  onStartOnboarding={startOnboarding}
+                  onRedirectToOnboarding={redirectToOnboarding}
+                  openLesson={openLesson}
+                  onRenamed={acceptMe}
+                  onSignOut={leave}
+               />
             </Suspense>
-
-            <UnsuppliedPanel destination={destination} />
          </main>
 
-         <AppFooter />
 
          <AiNotices active={showsAiNotices} />
       </>
    );
+}
+
+function PlaceView(props: {
+   place: Place;
+   barVisits: number;
+   go: (place: Place, options?: GoOptions) => void;
+   aiNoticesOn: boolean;
+   onAiNoticesChange: (enabled: boolean) => void;
+   onStartOnboarding: (reason: OnboardingReason, resumeSessionId: string | null) => void;
+   onRedirectToOnboarding: (reason: OnboardingReason, resumeSessionId: string | null) => void;
+   openLesson: (returnTo: "lessons" | "progress") => (lessonId: string, conceptName: string) => void;
+   onRenamed: (me: MePayload) => void;
+   onSignOut: () => void;
+}) {
+   const { place, go } = props;
+
+   switch (place.view) {
+      case "home":
+         return (
+            <HomeRoute
+               today={() => new Date()}
+               onStartSession={() => go({ view: "session", resumeSessionId: null })}
+               onResumeSession={(sessionId) => go({ view: "session", resumeSessionId: sessionId })}
+               onStartOnboarding={props.onRedirectToOnboarding}
+            />
+         );
+      case "session":
+         return (
+            <SessionScreen
+               resumeSessionId={place.resumeSessionId}
+               onLeave={() => go({ view: "home" })}
+               onOpened={(sessionId) => go({ view: "session", resumeSessionId: sessionId }, { replace: true })}
+            />
+         );
+      case "onboarding":
+         return <OnboardingRoute reason={place.reason} resumeSessionId={place.resumeSessionId} onFinished={() => go({ view: "home" })} />;
+      case "lessons":
+         return <LessonsRoute onOpenLesson={props.openLesson("lessons")} />;
+      case "lesson":
+         return (
+            <LessonRoute
+               lessonId={place.lessonId}
+               conceptName={place.conceptName}
+               onLeave={() => go(place.returnTo === "lessons" ? { view: "lessons" } : { view: "progress", tab: "lessons" })}
+               backLabel={place.returnTo === "lessons" ? "Back to lessons" : "Back to progress"}
+            />
+         );
+      case "review":
+         return <ReviewRoute onStartPractice={() => go({ view: "session", resumeSessionId: null })} />;
+      case "progress":
+         return (
+            <ProgressRoute
+               tab={place.tab}
+               onChangeTab={(tab) => go({ view: "progress", tab })}
+               onOpenLesson={props.openLesson("progress")}
+               onOpenCheckpoint={(openCheckpointId) => go({ view: "checkpoint", openCheckpointId })}
+               onOpenProbe={(openAdministrationId) => go({ view: "probe", openAdministrationId })}
+            />
+         );
+      case "checkpoint":
+         return <CheckpointRoute openCheckpointId={place.openCheckpointId} onLeave={() => go({ view: "progress", tab: "checkpoints" })} />;
+      case "probe":
+         return <ProbeRoute openAdministrationId={place.openAdministrationId} onLeave={() => go({ view: "progress", tab: "probes" })} />;
+      case "assessments":
+         return <AssessmentsRoute key={props.barVisits} format={place.format} onChangeFormat={(format) => go({ view: "assessments", format })} />;
+      case "settings":
+         return (
+            <SettingsPage
+               tab={place.tab}
+               onChangeTab={(tab) => go({ view: "settings", tab })}
+               purgeConfirmationPhrase={PURGE_CONFIRMATION_PHRASE}
+               saveFile={saveFile}
+               aiNoticesOn={props.aiNoticesOn}
+               onAiNoticesChange={props.onAiNoticesChange}
+               onOpenEvidence={() => go({ view: "evidence" })}
+               onRunDiagnostic={() => props.onStartOnboarding("long_gap", null)}
+            />
+         );
+      case "evidence":
+         return <MetricsRoute onLeave={() => go({ view: "settings", tab: "operator" })} />;
+      case "account":
+         return <AccountPage onRenamed={props.onRenamed} onSignOut={props.onSignOut} />;
+   }
 }

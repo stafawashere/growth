@@ -5,7 +5,10 @@ import { MathAnswerField } from "../input/MathAnswerField";
 import { FigureView } from "../figures/FigureView";
 import { MathText } from "../math/MathText";
 import { ANSWER_UNAVAILABLE, COMMIT_LABEL } from "../session/Item";
-import { PageHeader } from "../page/PageHeader";
+import { StudyPlanSection } from "../settings/StudySections";
+import { Icon } from "../ui/Icon";
+import { List } from "../ui/List";
+import { Page, PageHeader } from "../ui/Page";
 
 export type OnboardingReason = "first_login" | "long_gap";
 
@@ -62,21 +65,41 @@ export function DiagnosticIntro({ reason, onStart }: DiagnosticIntroProps) {
    const copy = INTRO_COPY[reason];
 
    return (
-      <section className="card" data-testid="diagnostic-intro">
-         <PageHeader title={copy.title} />
+      <section data-testid="diagnostic-intro">
+         <Page header={<PageHeader eyebrow={reason === "first_login" ? "Placement" : "Returning after a break"} title={copy.title} intro={copy.purpose} />}>
+            <div className="card stack">
+               <h2>What to expect</h2>
 
-         <p>{copy.purpose}</p>
+               <ul className="expect-list">
+                  <li>
+                     <Icon name="check" />
+                     <span>
+                        It stops early once it has enough to place you, because more questions after that would not change where you
+                        start.
+                     </span>
+                  </li>
 
-         <p>
-            It stops early once it has enough to place you, because more questions after that would not
-            change where you start.
-         </p>
+                  <li>
+                     <Icon name="check" />
+                     <span>If a question covers something you have not learned yet, say so and it moves on.</span>
+                  </li>
 
-         <p>There is no score at the end. You see where each unit stands, in words.</p>
+                  <li>
+                     <Icon name="check" />
+                     <span>There is no score at the end. You see where each unit stands, in words.</span>
+                  </li>
+               </ul>
+            </div>
 
-         <button type="button" className="button-primary" onClick={onStart}>
-            {copy.startLabel}
-         </button>
+            {reason === "first_login" ? <StudyPlanSection /> : null}
+
+            <div className="cluster">
+               <button type="button" className="button-primary button-large" onClick={onStart}>
+                  {copy.startLabel}
+                  <Icon name="next" />
+               </button>
+            </div>
+         </Page>
       </section>
    );
 }
@@ -109,62 +132,80 @@ export function DiagnosticItem(props: DiagnosticItemProps) {
    }
 
    return (
-      <article className="card item" data-testid="diagnostic-item" data-state={state}>
-         <h2 className="eyebrow">
-            Question {questionNumber} of at most {item.diagnostic_cap}
-         </h2>
+      <Page
+         header={
+            <PageHeader
+               eyebrow="Placement"
+               title={
+                  <>
+                     Question {questionNumber} of at most {item.diagnostic_cap}
+                  </>
+               }
+               intro={EARLY_STOP_NOTE}
+            />
+         }
+      >
+         <article className="card item" data-testid="diagnostic-item" data-state={state}>
+            <div className="question">
+               <div className="question-stem">
+                  <span className="eyebrow">Solve</span>
 
-         <p className="item-stem" data-testid="item-stem"><MathText text={item.stem} /></p>
+                  <p className="item-stem" data-testid="item-stem">
+                     <MathText text={item.stem} />
+                  </p>
 
-         {item.figure_spec ? <FigureView spec={item.figure_spec} /> : null}
-
-         <div data-testid="math-answer">
-            <MathAnswerField key={item.id} label="My answer" onChange={onAnswerChange} onLoadFailure={onAnswerUnavailable} />
-
-            {answerUnavailable ? <p data-testid="answer-unavailable">{ANSWER_UNAVAILABLE}</p> : null}
-         </div>
-
-         <div className="submit-row">
-            <button type="button" className="text-button" disabled={isSubmitted} onClick={onNotLearned}>
-               {NOT_LEARNED_LABEL}
-            </button>
-
-            {offersSkip && !isConfirmingSkip ? (
-               <button type="button" className="text-button" disabled={isSubmitted} onClick={() => setIsConfirmingSkip(true)}>
-                  {SKIP_UNIT_LABEL}
-               </button>
-            ) : null}
-
-            {offersCheck ? (
-               <button
-                  type="button"
-                  className="motion-instant-submit-answer button-primary"
-                  disabled={!canCheck}
-                  onClick={onCheck}
-               >
-                  {COMMIT_LABEL}
-               </button>
-            ) : null}
-         </div>
-
-         {offersSkip && isConfirmingSkip ? (
-            <div role="alertdialog" aria-label="Skip this unit" className="notice notice-framed" data-testid="skip-unit-confirmation">
-               <p>Every question still to come from this unit is answered &quot;{NOT_LEARNED_LABEL}&quot;, this one included.</p>
-
-               <div className="choice-row">
-                  <button type="button" className="text-button" disabled={isSubmitted} onClick={skipUnit}>
-                     {SKIP_UNIT_CONFIRM_LABEL}
-                  </button>
-
-                  <button type="button" className="text-button" onClick={() => setIsConfirmingSkip(false)}>
-                     {KEEP_ANSWERING_LABEL}
-                  </button>
+                  {item.figure_spec ? <FigureView spec={item.figure_spec} /> : null}
                </div>
             </div>
-         ) : null}
 
-         <p className="caption">{EARLY_STOP_NOTE}</p>
-      </article>
+            <div data-testid="math-answer">
+               <MathAnswerField key={item.id} label="My answer" onChange={onAnswerChange} onLoadFailure={onAnswerUnavailable} />
+
+               {answerUnavailable ? <p data-testid="answer-unavailable">{ANSWER_UNAVAILABLE}</p> : null}
+            </div>
+
+            <div className="submit-row">
+               <div className="cluster">
+                  <button type="button" className="text-button" disabled={isSubmitted} onClick={onNotLearned}>
+                     {NOT_LEARNED_LABEL}
+                  </button>
+
+                  {offersSkip && !isConfirmingSkip ? (
+                     <button type="button" className="text-button" disabled={isSubmitted} onClick={() => setIsConfirmingSkip(true)}>
+                        {SKIP_UNIT_LABEL}
+                     </button>
+                  ) : null}
+               </div>
+
+               {offersCheck ? (
+                  <button
+                     type="button"
+                     className="motion-instant-submit-answer button-primary"
+                     disabled={!canCheck}
+                     onClick={onCheck}
+                  >
+                     {COMMIT_LABEL}
+                  </button>
+               ) : null}
+            </div>
+
+            {offersSkip && isConfirmingSkip ? (
+               <div role="alertdialog" aria-label="Skip this unit" className="callout" data-testid="skip-unit-confirmation">
+                  <p>Every question still to come from this unit is answered &quot;{NOT_LEARNED_LABEL}&quot;, this one included.</p>
+
+                  <div className="cluster">
+                     <button type="button" className="text-button" disabled={isSubmitted} onClick={skipUnit}>
+                        {SKIP_UNIT_CONFIRM_LABEL}
+                     </button>
+
+                     <button type="button" className="text-button" onClick={() => setIsConfirmingSkip(false)}>
+                        {KEEP_ANSWERING_LABEL}
+                     </button>
+                  </div>
+               </div>
+            ) : null}
+         </article>
+      </Page>
    );
 }
 
@@ -173,25 +214,47 @@ export interface DiagnosticResultViewProps {
    onFinished: () => void;
 }
 
+const UNIT_STATE_TONE: Record<DiagnosticUnitState, string> = {
+   not_started: "badge",
+   partial: "badge",
+   fluent: "badge badge-correct",
+   unresolved: "badge",
+   not_probed: "badge"
+};
+
 export function DiagnosticResultView({ units, onFinished }: DiagnosticResultViewProps) {
    return (
-      <section className="card" data-testid="diagnostic-result">
-         <PageHeader title="Where you are starting" />
+      <section data-testid="diagnostic-result">
+         <Page
+            header={
+               <PageHeader
+                  eyebrow="Diagnostic complete"
+                  title="Where you are starting"
+                  intro="There is no score. This is where each unit stands, and today's set starts from it."
+               />
+            }
+         >
+            <List as="ul" label="Where each unit stands">
+               {units.map((entry) => (
+                  <li key={entry.unit} data-testid="diagnostic-unit" className="list-row">
+                     <div className="list-row-body">
+                        <span className="list-row-title">{entry.title}</span>
+                     </div>
 
-         <p>There is no score. This is where each unit stands, and today&apos;s set starts from it.</p>
+                     <div className="list-row-trail">
+                        <span className={UNIT_STATE_TONE[entry.state]}>{UNIT_STATE_WORDS[entry.state]}</span>
+                     </div>
+                  </li>
+               ))}
+            </List>
 
-         <dl className="unit-states">
-            {units.map((entry) => (
-               <div key={entry.unit} data-testid="diagnostic-unit">
-                  <dt>{entry.title}</dt>
-                  <dd>{UNIT_STATE_WORDS[entry.state]}</dd>
-               </div>
-            ))}
-         </dl>
-
-         <button type="button" className="button-primary" onClick={onFinished}>
-            {FINISHED_LABEL}
-         </button>
+            <div className="cluster">
+               <button type="button" className="button-primary button-large" onClick={onFinished}>
+                  {FINISHED_LABEL}
+                  <Icon name="next" />
+               </button>
+            </div>
+         </Page>
       </section>
    );
 }

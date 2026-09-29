@@ -9,7 +9,8 @@ import type {
    LessonRecord,
    LessonSection as LessonSectionRecord
 } from "../api/types";
-import { PageHeader } from "../page/PageHeader";
+import { Icon } from "../ui/Icon";
+import { PageHeader } from "../ui/Page";
 import { ContrastPanel } from "./ContrastPanel";
 import { LessonCheck } from "./LessonCheck";
 import { sectionIdMatches } from "./LessonLink";
@@ -216,23 +217,33 @@ export function LessonReader(props: LessonReaderProps) {
    const inlineSection = inlineAnchor === null ? undefined : lesson.sections.find((section) => sectionIdMatches(section.id, inlineAnchor));
    const topBar = topBarFor(context, conceptName, plan.minutes);
 
+   const partNumber = Math.min(index + 1, screens.length);
+
    return (
-      <section className="card lesson-reader" data-testid="lesson-reader" data-context={context}>
+      <section className="lesson-reader stack stack-loose" data-testid="lesson-reader" data-context={context}>
          {isSession ? (
-            <p className="eyebrow" data-testid="lesson-top-bar">
+            <p className="lead" data-testid="lesson-top-bar">
                {topBar}
             </p>
          ) : (
-            <PageHeader title={<span data-testid="lesson-top-bar">{topBar}</span>} />
+            <PageHeader eyebrow="Lesson" title={<span data-testid="lesson-top-bar">{topBar}</span>} />
          )}
 
-         <p className="caption" data-testid="lesson-part">
-            Part {Math.min(index + 1, screens.length)} of {screens.length}
-         </p>
+         <div className="stack stack-tight">
+            <p className="helper" data-testid="lesson-part">
+               Part {partNumber} of {screens.length}
+            </p>
+
+            <div className="progress-steps" aria-hidden="true">
+               {screens.map((screen, position) => (
+                  <span key={`${screen.id}-${position}`} className="progress-step" data-state={position < index ? "done" : position === index ? "current" : "ahead"} />
+               ))}
+            </div>
+         </div>
 
          <div
             key={`${current.id}-${index}`}
-            className="lesson-screen"
+            className="card lesson-screen"
             data-testid="lesson-screen"
             data-screen-kind={current.kind}
             data-section-id={current.kind === "end" ? undefined : current.id}
@@ -258,34 +269,39 @@ export function LessonReader(props: LessonReaderProps) {
             {current.kind === "end" ? <p data-testid="lesson-end">{isSession ? END_OF_SESSION_LESSON : END_OF_LIBRARY_LESSON}</p> : null}
          </div>
 
-         <div className="action-row lesson-actions">
+         <div className="submit-row lesson-actions">
+            <div className="cluster">
+               {returnTo !== null ? (
+                  <button type="button" className="text-button" data-testid="lesson-return" onClick={backToCheck}>
+                     <Icon name="back" />
+                     Back to the check
+                  </button>
+               ) : null}
+
+               {!isEnd && isSession ? (
+                  <button type="button" className="text-button" data-testid="lesson-skip" onClick={skip}>
+                     Skip to the problem
+                  </button>
+               ) : null}
+
+               {!isEnd && !isSession ? (
+                  <button type="button" className="text-button" data-testid="lesson-back" onClick={skip}>
+                     {backLabel}
+                  </button>
+               ) : null}
+            </div>
+
             {isEnd ? (
                <button type="button" className="button-primary" data-testid="lesson-finish" onClick={finish}>
                   {isSession ? "Go to the problem" : backLabel}
+                  <Icon name="next" />
                </button>
             ) : (
                <button type="button" className="button-primary" data-testid="lesson-next" onClick={next}>
                   Next part
+                  <Icon name="next" />
                </button>
             )}
-
-            {returnTo !== null ? (
-               <button type="button" className="text-button" data-testid="lesson-return" onClick={backToCheck}>
-                  Back to the check
-               </button>
-            ) : null}
-
-            {!isEnd && isSession ? (
-               <button type="button" className="text-button" data-testid="lesson-skip" onClick={skip}>
-                  Skip to the problem
-               </button>
-            ) : null}
-
-            {!isEnd && !isSession ? (
-               <button type="button" className="text-button" data-testid="lesson-back" onClick={skip}>
-                  {backLabel}
-               </button>
-            ) : null}
          </div>
       </section>
    );

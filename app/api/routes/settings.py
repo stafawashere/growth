@@ -5,8 +5,12 @@ forces re-authentication for changing a budget cap, so it consumes a fresh re-au
 the way POST /purge does. The request body is checked first, so a malformed change does not spend
 the token. Setting a provider key and the provider test call are not served: key storage needs the
 libsodium binding 06 names for provider_configs, which is not installed.
+
+A refused re-authentication is returned rather than raised, as /purge and /export do, because
+app/api/deps.py get_db rolls back on an exception and would undo consume_reauth clearing the token.
 """
 from fastapi import APIRouter, Body, Depends, HTTPException
+from fastapi.responses import JSONResponse
 
 from app.api.deps import current_session, current_user, get_db, get_settings
 from app.auth import service as auth_service
@@ -43,6 +47,23 @@ def update_settings(payload: dict = Body(default=None), db=Depends(get_db, scope
    return preferences.settings_view(user, now.date())
 
 
+@router.get("/settings/study-plan")
+def read_study_plan(user=Depends(current_user)):
+   return preferences.study_plan_view(user)
+
+
+@router.put("/settings/study-plan")
+def change_study_plan(payload: dict = Body(default=None), db=Depends(get_db, scope="function"), user=Depends(current_user)):
+   fields = fields_of(payload)
+
+   try:
+      preferences.update_study_plan(db, user, fields.get("study_plan"), auth_service.as_iso(auth_service.utc_now()))
+   except preferences.SettingsRefused as refused:
+      raise HTTPException(status_code=400, detail=str(refused)) from refused
+
+   return preferences.study_plan_view(user)
+
+
 @router.get("/settings/providers")
 def read_providers(settings=Depends(get_settings), user=Depends(current_user)):
    return providers.providers_view(settings)
@@ -75,7 +96,10 @@ def change_budget(
    is_reauthenticated = auth_service.consume_reauth(db, auth_session, fields.get("reauth_token"), now)
 
    if not is_reauthenticated:
-      raise HTTPException(status_code=401, detail="changing a budget cap needs a fresh password re-authentication")
+      return JSONResponse(
+         status_code=401,
+         content={"detail": "changing a budget cap needs a fresh password re-authentication"},
+      )
 
    budgets.change_cap(db, user.id, role, fields, configured=settings.tutor_caps, now=now)
 

@@ -1,5 +1,5 @@
 import { afterEach, beforeEach, describe, expect, it, vi } from "vitest";
-import { cleanup, fireEvent, render, screen } from "@testing-library/react";
+import { cleanup, fireEvent, render, screen, within } from "@testing-library/react";
 
 import * as client from "../api/client";
 import type { UnfinishedAssessment } from "../api/types";
@@ -69,11 +69,12 @@ describe("resuming an unfinished assessment from setup", () => {
 
       const list = await screen.findByTestId("resume-list");
 
-      expect(Array.from(list.querySelectorAll("li")).map((entry) => entry.textContent)).toEqual([
-         "Resume Full mock examStarted 24 September 2026, 2 of 2 parts closed",
-         "Resume Part drill, I-BStarted 23 September 2026, 0 of 1 parts closed",
-         "Resume Unit check, Limits and ContinuityStarted 22 September 2026, 0 of 1 parts closed"
+      expect(within(list).getAllByTestId("resume-entry").map((entry) => entry.textContent)).toEqual([
+         "In progressFull mock examStarted 24 September 2026, 2 of 2 parts closedResume",
+         "In progressPart drill, I-BStarted 23 September 2026, 0 of 1 parts closedResume",
+         "In progressUnit check, Limits and ContinuityStarted 22 September 2026, 0 of 1 parts closedResume"
       ]);
+      expect(within(list).getByRole("button", { name: "Resume Full mock exam" })).toBeTruthy();
    });
 
    it("lands a mock whose parts are all closed on its capture and finish step", async () => {

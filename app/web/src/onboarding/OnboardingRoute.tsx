@@ -134,8 +134,8 @@ export function OnboardingRoute({ reason, resumeSessionId, onFinished }: Onboard
 
    if (stage.kind === "failed") {
       return (
-         <section className="card">
-            <p data-testid="onboarding-failed" className="muted">
+         <section className="state state-failed">
+            <p data-testid="onboarding-failed" role="alert">
                The diagnostic could not be loaded.
             </p>
          </section>

@@ -43,7 +43,7 @@ function Row({ concept, onOpenLesson }: { concept: LibraryConcept; onOpenLesson:
    const content = (
       <>
          <span className="lesson-library-name">{concept.name}</span>
-         <span className="muted">{stateCopy(concept)}</span>
+         <span className="helper">{stateCopy(concept)}</span>
       </>
    );
 
@@ -74,7 +74,7 @@ export function LessonLibrary({ library, onOpenLesson, titled = true }: LessonLi
 
    return (
       <section
-         className="lesson-library"
+         className="lesson-library section"
          data-testid="lesson-library"
          aria-labelledby={titled ? "lesson-library-heading" : undefined}
          aria-label={titled ? undefined : "Lessons"}
@@ -85,11 +85,11 @@ export function LessonLibrary({ library, onOpenLesson, titled = true }: LessonLi
             </h2>
          ) : null}
 
-         <p className="muted">{MASTERY_DISCLAIMER}</p>
+         <p className="callout">{MASTERY_DISCLAIMER}</p>
 
          {units.map((unit) => (
             <section key={unit.id} className="lesson-library-unit" data-testid="lesson-library-unit">
-               <h3 className="label-heading">{unit.name}</h3>
+               <h3 className="section-header">{unit.name}</h3>
 
                <ul className="lesson-library-list">
                   {unit.concepts.map((concept) => (

@@ -250,7 +250,7 @@ export function GraphingPanel(props: { onOpenChange?: (isOpen: boolean) => void 
                   ))}
                </fieldset>
 
-               <label className="field">
+               <label className="form-field">
                   <span>y =</span>
                   <input value={source} onChange={(event) => setSource(event.target.value)} spellCheck={false} />
                </label>
@@ -264,7 +264,7 @@ export function GraphingPanel(props: { onOpenChange?: (isOpen: boolean) => void 
 
                <div className="graphing-window">
                   {(Object.keys(DEFAULT_WINDOW) as (keyof WindowText)[]).map((edge) => (
-                     <label key={edge} className="field">
+                     <label key={edge} className="form-field">
                         <span>{edge.replace("Min", " min").replace("Max", " max")}</span>
                         <input value={windowText[edge]} onChange={(event) => changeWindow(edge, event.target.value)} />
                      </label>
@@ -280,7 +280,7 @@ export function GraphingPanel(props: { onOpenChange?: (isOpen: boolean) => void 
                <ResultLine result={zeros} testId="graphing-zeros" />
 
                <div className="graphing-window">
-                  <label className="field">
+                  <label className="form-field">
                      <span>Derivative at x =</span>
                      <input value={pointText} onChange={(event) => setPointText(event.target.value)} />
                   </label>
@@ -293,12 +293,12 @@ export function GraphingPanel(props: { onOpenChange?: (isOpen: boolean) => void 
                <ResultLine result={derivative} testId="graphing-derivative" />
 
                <div className="graphing-window">
-                  <label className="field">
+                  <label className="form-field">
                      <span>Integral from</span>
                      <input value={lowerText} onChange={(event) => setLowerText(event.target.value)} />
                   </label>
 
-                  <label className="field">
+                  <label className="form-field">
                      <span>to</span>
                      <input value={upperText} onChange={(event) => setUpperText(event.target.value)} />
                   </label>

@@ -34,7 +34,7 @@ function LineInput(props: { label: string; line: ReadBackLine; onChange: (line: 
    }
 
    return (
-      <label className="field">
+      <label className="form-field">
          {label}
          <input type="text" value={line.content} onChange={(event) => onChange({ ...line, content: event.target.value })} />
       </label>

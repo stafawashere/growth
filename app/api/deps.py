@@ -4,12 +4,16 @@ Every session-scoped route depends on current_session, so a request without a li
 reaches a query, and every query is scoped by the user id the cookie resolved to. A session whose
 user has no password is refused as well: that user was migrated from passkeys and must reset first,
 and app/db/migrate.py already signed such sessions out, so this is the second line.
+
+A live session is renewed here as well. When its expiry moves, or when the token arrived under the
+bare cookie name rather than this port's, the token is left on request.state and
+app/api/session_renewal.py sends the cookie again on the way out.
 """
 from fastapi import Depends, HTTPException, Request
 from sqlalchemy.orm import Session as OrmSession
 
 from app.auth import service
-from app.auth.cookies import SESSION_COOKIE
+from app.auth.cookies import read_session_token, session_cookie_name
 from app.db import models
 
 
@@ -38,7 +42,7 @@ def get_db(request: Request):
 
 
 def current_session(request: Request, db=Depends(get_db, scope="function")):
-   token = request.cookies.get(SESSION_COOKIE)
+   token = read_session_token(request)
    auth_session = service.resolve_session(db, token)
    is_anonymous = auth_session is None
 
@@ -50,6 +54,14 @@ def current_session(request: Request, db=Depends(get_db, scope="function")):
 
    if needs_password:
       raise HTTPException(status_code=401, detail="a session is required")
+
+   settings = get_settings(request)
+   was_renewed = service.renew_session(db, auth_session, settings)
+   arrived_under_bare_name = request.cookies.get(session_cookie_name(request)) != token
+   should_resend_cookie = was_renewed or arrived_under_bare_name
+
+   if should_resend_cookie:
+      request.state.renewed_session_token = token
 
    return auth_session
 

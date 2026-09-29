@@ -326,6 +326,47 @@ export interface MasteryUnit {
    nodes: MasteryNode[];
 }
 
+/* app/progress/pace.py pace_verdict. A pace on mastering the exam's skills, never a predicted score. */
+export type PaceVerdict = "complete" | "ahead" | "on_pace" | "behind" | "well_behind" | "too_early" | "exam_passed";
+
+export interface PacePayload {
+   as_of: string;
+   verdict: PaceVerdict;
+   statement: string;
+   exam_date: string;
+   days_to_exam: number;
+   review_reserve_days: number;
+   new_mastery_deadline: string;
+   skills: { total: number; held: number; fading: number; assumed: number; remaining: number; remaining_weighted: number };
+   rate: {
+      window_start: string;
+      window_days: number;
+      earned_weighted: number;
+      weekly: number;
+      required_weekly: number;
+      pace_ratio: number | null;
+      projected_finish: string | null;
+   };
+   study_time: {
+      window_start: string;
+      window_days: number;
+      active_days: number;
+      timed_attempts: number;
+      attempts: number;
+      minutes: number | null;
+      minutes_per_active_day: number | null;
+      active_days_per_week: number;
+      minutes_per_week: number | null;
+   };
+   evidence: {
+      graded_attempts: number;
+      practice_days: number;
+      recent_accuracy: { correct: number; graded: number; days: number; value: number | null };
+      retention_30_day: { correct: number; attempts: number; value: number | null; floor: number };
+   };
+   caveat: string;
+}
+
 export interface MasteryMapPayload {
    today: string;
    states: MasteryNodeState[];

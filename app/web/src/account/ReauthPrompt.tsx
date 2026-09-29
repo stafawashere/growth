@@ -1,6 +1,7 @@
 import { useEffect, useRef, useState, type FormEvent } from "react";
 
 import { reauthenticate } from "../api/client";
+import { Dialog } from "../ui/Dialog";
 import { FeedbackLine, NO_FEEDBACK, feedbackFrom, type Feedback } from "./AccountScreen";
 
 export class ReauthCancelled extends Error {
@@ -38,37 +39,42 @@ export function ReauthPromptView({ working, feedback, onSubmit, onCancel }: Reau
    }
 
    return (
-      <section className="card settings" aria-labelledby="reauth-heading" data-testid="reauth-prompt">
-         <h2 className="section-heading" id="reauth-heading">
-            Confirm your password
-         </h2>
+      <Dialog open title="Confirm your password" onClose={onCancel}>
+         <section aria-label="Confirm your password" data-testid="reauth-prompt" className="stack">
+            <p className="muted">This action needs your password again.</p>
 
-         <p className="muted">This action needs your password again.</p>
+            <form className="stack" onSubmit={submit}>
+               <div className="form-field">
+                  <label className="field-label" htmlFor="reauth-password">
+                     Password
+                  </label>
 
-         <form className="field" onSubmit={submit}>
-            <label htmlFor="reauth-password">Password</label>
+                  <input
+                     id="reauth-password"
+                     className="input"
+                     type="password"
+                     autoComplete="current-password"
+                     ref={passwordInputRef}
+                     value={password}
+                     disabled={working}
+                     onChange={(event) => setPassword(event.target.value)}
+                  />
+               </div>
 
-            <input
-               id="reauth-password"
-               type="password"
-               autoComplete="current-password"
-               ref={passwordInputRef}
-               value={password}
-               disabled={working}
-               onChange={(event) => setPassword(event.target.value)}
-            />
+               <FeedbackLine feedback={feedback} />
 
-            <button type="submit" className="button-primary" disabled={working}>
-               Confirm
-            </button>
-         </form>
+               <div className="dialog-actions">
+                  <button type="button" className="button-secondary" disabled={working} onClick={onCancel}>
+                     Cancel
+                  </button>
 
-         <button type="button" className="text-button" disabled={working} onClick={onCancel}>
-            Cancel
-         </button>
-
-         <FeedbackLine feedback={feedback} />
-      </section>
+                  <button type="submit" className="button-primary" disabled={working}>
+                     Confirm
+                  </button>
+               </div>
+            </form>
+         </section>
+      </Dialog>
    );
 }
 

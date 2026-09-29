@@ -1,12 +1,17 @@
 import { useState } from "react";
 
 import type { ComingBackEntry, ErrorNoteEntry, ProvisionalPoint } from "../api/types";
+import { Icon } from "../ui/Icon";
+import { List } from "../ui/List";
+import { Page, PageHeader } from "../ui/Page";
+import { TabPanel, Tabs } from "../ui/Tabs";
 import { ProvisionalPoints } from "./ProvisionalPoints";
-import { PageHeader } from "../page/PageHeader";
 
 /* The review screen, 08-design-brief.md "Review": what is coming back, the student's own error
    notes, and the provisional points. The list arrives in the order block 1 serves it, so the
    hypercorrection lane, the errors made at confident, comes first. */
+
+export type ReviewTab = "coming" | "notes" | "provisional";
 
 export interface ReviewScreenProps {
    comingBack: ReadonlyArray<ComingBackEntry>;
@@ -14,13 +19,22 @@ export interface ReviewScreenProps {
    provisionalPoints: ReadonlyArray<ProvisionalPoint>;
    onSaveNote: (entry: ErrorNoteEntry, note: string) => Promise<void>;
    onAskForReread?: (gradingId: string) => void;
+   onStartPractice?: () => void;
+   initialTab?: ReviewTab;
 }
+
+const REVIEW_TABS: ReadonlyArray<{ id: ReviewTab; label: string }> = [
+   { id: "coming", label: "Coming back" },
+   { id: "notes", label: "My error notes" },
+   { id: "provisional", label: "Provisional points" }
+];
 
 const WAS_RATED: Record<string, string> = {
    confident: "was confident",
    unsure: "was unsure",
    guess: "was a guess"
 };
+
 
 export function whenBack(daysUntil: number) {
    if (daysUntil === 0) {
@@ -30,29 +44,50 @@ export function whenBack(daysUntil: number) {
    return daysUntil === 1 ? "tomorrow" : `in ${daysUntil} days`;
 }
 
-function ComingBack({ entries }: { entries: ReadonlyArray<ComingBackEntry> }) {
+function ComingBack({ entries, onStartPractice }: { entries: ReadonlyArray<ComingBackEntry>; onStartPractice?: () => void }) {
    const hasEntries = entries.length > 0;
+   const offersPractice = hasEntries && onStartPractice !== undefined;
 
    return (
-      <section aria-labelledby="coming-back-heading">
-         <h2 id="coming-back-heading" className="section-heading">
-            Coming back to you
-         </h2>
+      <section aria-labelledby="coming-back-heading" className="section">
+         <div className="section-header section-header-plain">
+            <h2 id="coming-back-heading" className="visually-hidden">
+               Coming back to you
+            </h2>
+
+            <p className="helper">High-confidence errors come first.</p>
+
+            {offersPractice ? (
+               <button type="button" className="button-secondary button-small" onClick={onStartPractice}>
+                  Practise these now
+               </button>
+            ) : null}
+         </div>
 
          {hasEntries ? (
-            <ul className="review-list">
+            <List as="ul">
                {entries.map((entry) => {
                   const rating = entry.confidence === null ? null : WAS_RATED[entry.confidence];
+                  const isPriority = entry.lane === "hypercorrection";
 
                   return (
-                     <li key={entry.item_id} data-testid="coming-back" data-lane={entry.lane}>
-                        <span className="label-heading">{whenBack(entry.days_until)}</span>
-                        <span>{entry.label}</span>
-                        {rating === null ? null : <span className="muted">({rating})</span>}
+                     <li key={entry.item_id} className="list-row" data-testid="coming-back" data-lane={entry.lane}>
+                        <span className="list-row-lead label-heading">{whenBack(entry.days_until)}</span>
+
+                        <div className="list-row-body">
+                           <span className="list-row-title">{entry.label}</span>
+                           {rating === null ? null : <span className="list-row-meta">({rating})</span>}
+                        </div>
+
+                        {isPriority ? (
+                           <span className="list-row-trail" title="Priority review: an error made while confident">
+                              <Icon name="flag" />
+                           </span>
+                        ) : null}
                      </li>
                   );
                })}
-            </ul>
+            </List>
          ) : (
             <p className="muted" data-testid="coming-back-empty">
                Nothing you corrected is waiting to come back.
@@ -114,57 +149,65 @@ function NoteRow(props: { entry: ErrorNoteEntry; onSave: (entry: ErrorNoteEntry,
 
    if (isEditing) {
       return (
-         <li data-testid="error-note">
-            <div className="field">
-               <label htmlFor={fieldId}>In one line, what went wrong?</label>
-               <input
-                  id={fieldId}
-                  type="text"
-                  value={draft}
-                  onChange={(event) => setDraft(event.target.value)}
-                  onKeyDown={(event) => {
-                     if (event.key === "Enter") {
-                        save();
-                     }
+         <li data-testid="error-note" className="list-row list-row-start">
+            <div className="list-row-body">
+               <div className="form-field">
+                  <label className="field-label" htmlFor={fieldId}>
+                     In one line, what went wrong?
+                  </label>
+                  <input
+                     id={fieldId}
+                     className="input"
+                     type="text"
+                     value={draft}
+                     onChange={(event) => setDraft(event.target.value)}
+                     onKeyDown={(event) => {
+                        if (event.key === "Enter") {
+                           save();
+                        }
 
-                     if (event.key === "Escape") {
-                        setDraft(null);
-                     }
-                  }}
-               />
+                        if (event.key === "Escape") {
+                           setDraft(null);
+                        }
+                     }}
+                  />
+               </div>
+
+               {failure === null ? null : (
+                  <p role="alert" className="field-error">
+                     {failure}
+                  </p>
+               )}
             </div>
 
-            <button type="button" className="text-button" disabled={isSaving} onClick={save}>
-               Save
-            </button>
+            <div className="list-row-trail">
+               <button type="button" className="button-secondary button-small" disabled={isSaving} onClick={save}>
+                  Save
+               </button>
 
-            <button type="button" className="text-button" disabled={isSaving} onClick={() => setDraft(null)}>
-               Cancel
-            </button>
-
-            {failure === null ? null : (
-               <p role="alert" className="muted">
-                  {failure}
-               </p>
-            )}
+               <button type="button" className="text-button" disabled={isSaving} onClick={() => setDraft(null)}>
+                  Cancel
+               </button>
+            </div>
          </li>
       );
    }
 
    return (
-      <li data-testid="error-note">
-         <q>{entry.note}</q>
-         <span className="caption">
-            {entry.label}, {entry.written_on}
-         </span>
-         <button
-            type="button"
-            className="text-button"
-            aria-label={`Edit the note "${entry.note}"`}
-            onClick={() => setDraft(entry.note)}
-         >
-            edit
-         </button>
+      <li data-testid="error-note" className="list-row list-row-start">
+         <div className="list-row-body">
+            <q className="note-quote">{entry.note}</q>
+            <span className="caption">
+               {entry.label}, {entry.written_on}
+            </span>
+         </div>
+
+         <div className="list-row-trail">
+            <button type="button" className="text-button" aria-label={`Edit the note "${entry.note}"`} onClick={() => setDraft(entry.note)}>
+               <Icon name="edit" />
+               edit
+            </button>
+         </div>
       </li>
    );
 }
@@ -182,20 +225,17 @@ function ErrorNotes(props: {
    const searchFoundNothing = hasNotes && !hasMatches;
 
    return (
-      <section aria-labelledby="error-notes-heading">
-         <h2 id="error-notes-heading" className="section-heading">
+      <section aria-labelledby="error-notes-heading" className="section">
+         <h2 id="error-notes-heading" className="visually-hidden">
             My error notes
          </h2>
 
          {hasNotes ? (
-            <div className="field">
-               <label htmlFor="error-note-search">Search my notes</label>
-               <input
-                  id="error-note-search"
-                  type="search"
-                  value={query}
-                  onChange={(event) => setQuery(event.target.value)}
-               />
+            <div className="form-field">
+               <label className="field-label" htmlFor="error-note-search">
+                  Search my notes
+               </label>
+               <input id="error-note-search" className="input" type="search" value={query} onChange={(event) => setQuery(event.target.value)} />
             </div>
          ) : (
             <p className="muted" data-testid="error-notes-empty">
@@ -210,26 +250,34 @@ function ErrorNotes(props: {
          ) : null}
 
          {hasMatches ? (
-            <ul className="review-list">
+            <List as="ul">
                {shown.map((entry) => (
                   <NoteRow key={entry.attempt_id} entry={entry} onSave={onSave} />
                ))}
-            </ul>
+            </List>
          ) : null}
       </section>
    );
 }
 
 export function ReviewScreen(props: ReviewScreenProps) {
+   const [tab, setTab] = useState<ReviewTab>(props.initialTab ?? "coming");
+
    return (
-      <section className="card review">
-         <PageHeader title="Review" />
+      <section className="review" data-testid="review-screen">
+         <Page header={<PageHeader eyebrow="Revisit, refine, retain" title="Review" intro="The ideas worth meeting again." />}>
+            <div className="stack stack-loose">
+               <Tabs items={REVIEW_TABS} active={tab} onChange={setTab} label="Review sections" idPrefix="review" />
 
-         <ComingBack entries={props.comingBack} />
+               <TabPanel idPrefix="review" active={tab}>
+                  {tab === "coming" ? <ComingBack entries={props.comingBack} onStartPractice={props.onStartPractice} /> : null}
 
-         <ErrorNotes notes={props.errorNotes} onSave={props.onSaveNote} />
+                  {tab === "notes" ? <ErrorNotes notes={props.errorNotes} onSave={props.onSaveNote} /> : null}
 
-         <ProvisionalPoints points={props.provisionalPoints} onAskForReread={props.onAskForReread} />
+                  {tab === "provisional" ? <ProvisionalPoints points={props.provisionalPoints} onAskForReread={props.onAskForReread} /> : null}
+               </TabPanel>
+            </div>
+         </Page>
       </section>
    );
 }

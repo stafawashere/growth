@@ -144,7 +144,7 @@ export function ProbeRoute({ openAdministrationId, onLeave }: ProbeRouteProps) {
 
    if (stage.kind === "failed") {
       return (
-         <section className="card">
+         <section className="screen">
             <p data-testid="probe-failed" className="muted">
                The concept probe could not be loaded.
             </p>

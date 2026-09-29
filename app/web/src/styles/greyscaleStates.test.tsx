@@ -291,6 +291,7 @@ describe.each(VIEWPORT_WIDTHS)("eval_greyscale_states at %i px", (width) => {
 
       inPage(
          <SettingsScreen
+            tab="data"
             providers={null}
             budgets={null}
             onCapChange={vi.fn()}

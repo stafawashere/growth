@@ -119,7 +119,7 @@ export function CheckpointRoute({ openCheckpointId, onLeave }: CheckpointRoutePr
 
    if (stage.kind === "failed") {
       return (
-         <section className="card">
+         <section className="screen">
             <p data-testid="checkpoint-failed" className="muted">
                The checkpoint could not be loaded.
             </p>

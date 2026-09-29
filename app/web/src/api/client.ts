@@ -1,4 +1,5 @@
 import type {
+   MasteryNodeState,
    AssessmentAnswer,
    AssessmentResult,
    AssessmentSession,
@@ -31,6 +32,7 @@ import type {
    GradingsPayload,
    HighlightRange,
    MasteryMapPayload,
+   PacePayload,
    MetricsPayload,
    MockHistoryPayload,
    NoticesPayload,
@@ -99,6 +101,7 @@ export interface CloseResult {
 
 export interface MePayload {
    id: string;
+   username?: string | null;
    display_name: string | null;
    exam_date: string;
    purge_after: string | null;
@@ -205,13 +208,42 @@ export interface ProbeNextItemResponse {
    item: ProbeServedItem | null;
 }
 
+/* FastAPI's validation errors carry a list of objects in detail; each one's msg is the sentence. */
+function readableDetail(detail: unknown) {
+   const isList = Array.isArray(detail);
+
+   if (!isList) {
+      return String(detail);
+   }
+
+   return (detail as unknown[])
+      .map((entry) => {
+         const hasMessage = typeof entry === "object" && entry !== null && "msg" in entry;
+
+         return hasMessage ? String((entry as { msg: unknown }).msg) : String(entry);
+      })
+      .join("; ");
+}
+
+/* A 401 from any route but the auth routes and /me means the session ended while the student was
+   working. The shell listens for this and asks /me whether that is so, rather than trusting one
+   refusal: a refused re-authentication also answers 401 and must not sign anyone out. */
+export const SESSION_ENDED_EVENT = "growth:session-ended";
+
+function reportsSessionEnded(path: string, status: number) {
+   const isUnauthorised = status === 401;
+   const isAccountCheck = path.startsWith("/auth/") || path === "/me";
+
+   return isUnauthorised && !isAccountCheck;
+}
+
 async function detailFrom(response: Response) {
    try {
       const body = await response.json();
       const hasDetail = typeof body === "object" && body !== null && "detail" in body;
 
       if (hasDetail) {
-         return String((body as { detail: unknown }).detail);
+         return readableDetail((body as { detail: unknown }).detail);
       }
    } catch {
       // response carried no JSON body to read a detail from
@@ -231,6 +263,12 @@ async function request(path: string, init?: RequestInit) {
    });
 
    if (!response.ok) {
+      const sessionEnded = reportsSessionEnded(path, response.status);
+
+      if (sessionEnded) {
+         window.dispatchEvent(new CustomEvent(SESSION_ENDED_EVENT));
+      }
+
       throw new ApiError(response.status, await detailFrom(response));
    }
 
@@ -314,6 +352,10 @@ export function readMe() {
    return requestJson<MePayload>("/me");
 }
 
+export function renameDisplayName(displayName: string) {
+   return requestJson<MePayload>("/me", jsonInit("PUT", { display_name: displayName }));
+}
+
 export function requestPurge(fields: RequestPurgeFields) {
    return requestJson<PurgeResult>("/purge", jsonInit("POST", fields));
 }
@@ -337,6 +379,37 @@ export function readMasteryMap() {
    return requestJson<MasteryMapPayload>("/progress/mastery");
 }
 
+export interface SkillPrerequisite {
+   id: string;
+   name: string;
+   kind: "hard" | "supporting";
+   state: MasteryNodeState | null;
+}
+
+export interface SkillDetail {
+   skill_id: string;
+   name: string;
+   unit_id: string | null;
+   state: MasteryNodeState;
+   assumed: boolean;
+   last_success_on: string | null;
+   days_since_success: number | null;
+   description: string | null;
+   mastered_if: string | null;
+   partially_mastered_if: string | null;
+   prerequisites: SkillPrerequisite[];
+   concept_id: string | null;
+   lesson_id: string | null;
+}
+
+export function readSkill(skillId: string) {
+   return requestJson<SkillDetail>(`/progress/skills/${encodeURIComponent(skillId)}`);
+}
+
+export function readPace() {
+   return requestJson<PacePayload>("/progress/pace");
+}
+
 export function readMetrics(today?: string) {
    return requestJson<MetricsPayload>(withToday("/progress/metrics", today));
 }
@@ -355,6 +428,18 @@ export function readSettings() {
 
 export function updateSettings(fields: UpdateSettingsFields) {
    return requestJson<SettingsPayload>("/settings", jsonInit("PUT", fields));
+}
+
+export interface StudyPlanPayload {
+   study_plan: string | null;
+}
+
+export function readStudyPlan() {
+   return requestJson<StudyPlanPayload>("/settings/study-plan");
+}
+
+export function updateStudyPlan(studyPlan: string) {
+   return requestJson<StudyPlanPayload>("/settings/study-plan", jsonInit("PUT", { study_plan: studyPlan }));
 }
 
 export function readProviders() {
@@ -516,6 +601,14 @@ export function resetWithRecoveryCode(fields: RecoveryResetFields) {
    return requestJson<RecoveryResetResult>("/auth/recovery/reset", jsonInit("POST", fields));
 }
 
+export interface RotateRecoveryResult {
+   recovery_code: string;
+}
+
+export function rotateRecoveryCode(reauthToken: string) {
+   return requestJson<RotateRecoveryResult>("/auth/recovery/rotate", jsonInit("POST", { reauth_token: reauthToken }));
+}
+
 /* needs_password is served only to a caller on this machine, so its absence means no more than
    that the server did not say. */
 export interface AuthStatus {
@@ -572,6 +665,22 @@ export function photoAddress(attemptId: string, imageId: string) {
 
 export function uploadPhoto(attemptId: string, fields: PhotoFields) {
    return requestJson<PhotoVerdict>(`/attempts/${encodeURIComponent(attemptId)}/images`, jsonInit("POST", fields));
+}
+
+export interface PhotoDeleted {
+   deleted: string;
+}
+
+export interface PhotosDeleted {
+   deleted: number;
+}
+
+export function deleteEveryPhoto() {
+   return requestJson<PhotosDeleted>("/frq/photos", jsonInit("DELETE"));
+}
+
+export function deletePhoto(attemptId: string, imageId: string) {
+   return requestJson<PhotoDeleted>(photoAddress(attemptId, imageId), jsonInit("DELETE"));
 }
 
 export function requestReadBack(attemptId: string) {

@@ -5,10 +5,13 @@ runs the Session assembly rule without persisting anything. The progress screen 
 sections from their own paths, GET /progress/mastery for the map and GET /progress/calibration for
 the curve beneath it, so home's read stays as cheap as it was.
 """
+from datetime import date
+
 from fastapi import APIRouter, Depends, HTTPException
 
 from app.api.deps import current_user, get_db, get_settings
-from app.progress import calibration, mastery
+from app.progress import calibration, mastery, pace, skill_detail
+from app.progress.attempt_log import load_attempts
 from app.session import preview, repository
 
 router = APIRouter(tags=["progress"])
@@ -67,3 +70,50 @@ def read_mastery_map(
    graph = settings.session_context.graph
 
    return mastery.mastery_map(db, user.id, states, graph, day, settings.content_root)
+
+
+@router.get("/progress/pace")
+def read_pace(
+   today: str | None = None,
+   db=Depends(get_db, scope="function"),
+   settings=Depends(get_settings),
+   user=Depends(current_user),
+):
+   """The pace verdict above the mastery map: whether the skills are being mastered fast enough to
+   all be held before the exam date on the account, with the numbers the verdict rests on."""
+   try:
+      day = preview.assembly_day(today)
+   except preview.UnreadableDay as unreadable:
+      raise HTTPException(status_code=422, detail=str(unreadable)) from unreadable
+
+   context = settings.session_context
+   states = repository.load_states(db, user.id)
+   attempts = load_attempts(db, user.id, context.archetypes)
+
+   return pace.pace_verdict(context.graph, states, attempts, date.fromisoformat(user.exam_date), day)
+
+
+@router.get("/progress/skills/{skill_id}")
+def read_skill(
+   skill_id: str,
+   today: str | None = None,
+   db=Depends(get_db, scope="function"),
+   settings=Depends(get_settings),
+   user=Depends(current_user),
+):
+   """One node of the mastery map opened: its state, what mastering it means, and what it is
+   built on."""
+   try:
+      day = preview.assembly_day(today)
+   except preview.UnreadableDay as unreadable:
+      raise HTTPException(status_code=422, detail=str(unreadable)) from unreadable
+
+   states = repository.load_states(db, user.id)
+   detail = skill_detail.skill_detail(db, user.id, states, settings.session_context.graph, settings.snapshot, day, skill_id)
+   is_unknown = detail is None
+
+   if is_unknown:
+      raise HTTPException(status_code=404, detail="no such skill")
+
+   return detail
+

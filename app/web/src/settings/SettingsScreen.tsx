@@ -1,8 +1,9 @@
-import { useEffect, useState } from "react";
+import { useEffect, useId, useState, type ReactNode } from "react";
 import type { UpdateSettingsFields } from "../api/client";
 import type { BudgetsPayload, ProviderRole, RoleBudget, SettingsPayload } from "../api/types";
 import { daysBetween, formatPlanDate } from "../home/dates";
-import { PageHeader } from "../page/PageHeader";
+import type { SettingsTab } from "../routing";
+import { Stat, StatGroup } from "../ui/Stats";
 
 /* Each section takes the payload of the route that feeds it, or null while that request is in
    flight or after it failed, and a null section renders its heading and no figure. None of these
@@ -16,6 +17,8 @@ import { PageHeader } from "../page/PageHeader";
 export type SettingsAction = () => Promise<boolean>;
 
 export interface SettingsScreenProps {
+   tab: SettingsTab;
+   beforePurge?: ReactNode;
    providers: ReadonlyArray<ProviderRole> | null;
    budgets: BudgetsPayload | null;
    onCapChange: (role: string, capUsd: number | null, capTokens: number | null) => Promise<boolean>;
@@ -34,6 +37,20 @@ export const DEFAULT_RETENTION_DAYS = 30;
 export const DONE_OUTCOME = "done";
 
 const warningTextStyle = { color: "var(--growth-state-incorrect)" };
+
+function SettingsRow(props: { title: ReactNode; meta?: ReactNode; children?: ReactNode; trail?: ReactNode; testId?: string }) {
+   return (
+      <div className="list-row" data-testid={props.testId}>
+         <div className="list-row-body">
+            <span className="list-row-title">{props.title}</span>
+            {props.meta !== undefined ? <span className="list-row-meta">{props.meta}</span> : null}
+            {props.children}
+         </div>
+
+         {props.trail !== undefined ? <div className="list-row-trail">{props.trail}</div> : null}
+      </div>
+   );
+}
 
 function useAction<Args extends unknown[]>(run: (...args: Args) => Promise<boolean>) {
    const [working, setWorking] = useState(false);
@@ -102,41 +119,55 @@ function RoleCapRow(props: { budget: RoleBudget; onCapChange: SettingsScreenProp
    const isUnreadable = Number.isNaN(capUsd) || Number.isNaN(capTokens);
    const canSave = !namesNoCap && !isUnreadable && !save.working;
 
+   const capUsdId = useId();
+   const capTokensId = useId();
+
    return (
-      <li data-testid="per-role-cap-row">
-         <span className="muted">{budget.role}</span>
+      <li data-testid="per-role-cap-row" className="list-row cap-row">
+         <div className="list-row-body">
+            <span className="list-row-title role-name">{budget.role}</span>
+            <span className="list-row-meta">spent today ${budget.cost_usd.toFixed(2)}</span>
+         </div>
 
-         <label>
-            cap $
-            <input
-               type="text"
-               inputMode="decimal"
-               value={capUsdField}
-               onChange={(event) => setCapUsdField(event.target.value)}
-            />
-         </label>
+         <div className="list-row-trail cap-fields">
+            <div className="form-field">
+               <label className="field-label" htmlFor={capUsdId}>
+                  cap $
+               </label>
+               <input
+                  id={capUsdId}
+                  className="input input-small input-inline"
+                  type="text"
+                  inputMode="decimal"
+                  value={capUsdField}
+                  onChange={(event) => setCapUsdField(event.target.value)}
+               />
+            </div>
 
-         <label>
-            cap tokens
-            <input
-               type="text"
-               inputMode="numeric"
-               value={capTokensField}
-               onChange={(event) => setCapTokensField(event.target.value)}
-            />
-         </label>
+            <div className="form-field">
+               <label className="field-label" htmlFor={capTokensId}>
+                  cap tokens
+               </label>
+               <input
+                  id={capTokensId}
+                  className="input input-small input-inline"
+                  type="text"
+                  inputMode="numeric"
+                  value={capTokensField}
+                  onChange={(event) => setCapTokensField(event.target.value)}
+               />
+            </div>
 
-         <span className="muted">spent today ${budget.cost_usd.toFixed(2)}</span>
-
-         <button
-            type="button"
-            className="text-button"
-            disabled={!canSave}
-            data-outcome={save.outcome}
-            onClick={() => save.trigger(budget.role, capUsd, capTokens)}
-         >
-            save
-         </button>
+            <button
+               type="button"
+               className="button-secondary button-small"
+               disabled={!canSave}
+               data-outcome={save.outcome}
+               onClick={() => save.trigger(budget.role, capUsd, capTokens)}
+            >
+               save
+            </button>
+         </div>
       </li>
    );
 }
@@ -159,16 +190,19 @@ function DateField(props: {
    const isFilled = value !== "";
    const canSave = isChanged && isFilled && !save.working;
 
+   const inputId = useId();
+
    return (
-      <div data-testid={`date-field-${label}`}>
-         <label>
+      <div data-testid={`date-field-${label}`} className="cluster date-field">
+         <label className="visually-hidden" htmlFor={inputId}>
             {label}
-            <input type="date" value={value} onChange={(event) => setValue(event.target.value)} />
          </label>
+
+         <input id={inputId} className="input input-inline" type="date" value={value} onChange={(event) => setValue(event.target.value)} />
 
          <button
             type="button"
-            className="text-button"
+            className="button-secondary button-small"
             disabled={!canSave}
             data-outcome={save.outcome}
             onClick={() => save.trigger(value)}
@@ -183,25 +217,23 @@ function ProvidersSection(props: { providers: SettingsScreenProps["providers"] }
    const { providers } = props;
 
    return (
-      <section>
-         <h2 className="section-heading">Providers</h2>
+      <section className="section">
+         <h2 className="section-header">Providers</h2>
+
+         <p className="helper">One role, one responsibility. Each role is served by the provider and model below; keys are set by the operator on the server.</p>
 
          {providers === null ? null : (
-            <table>
-               <tbody>
-                  {providers.map((row) => (
-                     <tr key={row.role} data-testid="provider-row">
-                        <td className="muted">{row.role}</td>
-
-                        <td className="muted">{row.provider ?? ""}</td>
-
-                        <td className="muted">{row.model ?? ""}</td>
-
-                        <td className="muted">{row.wired ? "wired" : "not wired"}</td>
-                     </tr>
-                  ))}
-               </tbody>
-            </table>
+            <div className="list list-flush">
+               {providers.map((row) => (
+                  <SettingsRow
+                     key={row.role}
+                     testId="provider-row"
+                     title={<span className="role-name">{row.role}</span>}
+                     meta={[row.provider, row.model].filter((part) => part !== null && part !== "").join(", ")}
+                     trail={<span className={row.wired ? "badge badge-correct" : "badge"}>{row.wired ? "wired" : "not wired"}</span>}
+                  />
+               ))}
+            </div>
          )}
       </section>
    );
@@ -216,25 +248,28 @@ function BudgetsSection(props: {
    const [showPerRoleCaps, setShowPerRoleCaps] = useState(false);
 
    return (
-      <section>
-         <h2 className="section-heading">Budgets</h2>
+      <section className="section">
+         <h2 className="section-header">Budgets</h2>
+
+         <p className="helper">Keep usage predictable. Changing a cap asks for your password again.</p>
 
          {budgets === null ? null : (
             <>
-               <button type="button" className="text-button" onClick={() => setShowPerRoleCaps(true)}>
-                  open
-               </button>
+               <StatGroup>
+                  <Stat value={`$${budgets.month_to_date_usd.toFixed(2)}`} label="this month so far" />
+               </StatGroup>
 
-               <p className="muted">this month so far ${budgets.month_to_date_usd.toFixed(2)}</p>
+               <div className="cluster">
+                  <button type="button" className="button-secondary" aria-expanded={showPerRoleCaps} onClick={() => setShowPerRoleCaps(true)}>
+                     open
+                  </button>
+                  <span className="helper">Per-role daily caps</span>
+               </div>
 
                {showPerRoleCaps && (
-                  <ul>
+                  <ul className="list">
                      {budgets.roles.map((budget) => (
-                        <RoleCapRow
-                           key={budget.role}
-                           budget={budget}
-                           onCapChange={onCapChange}
-                        />
+                        <RoleCapRow key={budget.role} budget={budget} onCapChange={onCapChange} />
                      ))}
                   </ul>
                )}
@@ -251,22 +286,23 @@ function QueueSettingsSection(props: {
    const { queueSettings, onSettingsChange } = props;
 
    return (
-      <section>
-         <h2 className="section-heading">Queue settings</h2>
+      <section className="section">
+         <h2 className="section-header">Queue settings</h2>
 
          {queueSettings === null ? null : (
-            <>
-               <DateField
-                  label="exam date"
-                  savedValue={queueSettings.exam_date}
-                  onSave={(value) => onSettingsChange({ exam_date: value })}
+            <div className="list list-flush">
+               <SettingsRow
+                  title="Exam target date"
+                  meta="Used for your countdown. Confirm the date with your school."
+                  trail={<DateField label="exam date" savedValue={queueSettings.exam_date} onSave={(value) => onSettingsChange({ exam_date: value })} />}
                />
 
-               <dl>
-                  <dt className="muted">desired retention</dt>
-                  <dd>{queueSettings.desired_retention}</dd>
-               </dl>
-            </>
+               <SettingsRow
+                  title="Desired retention"
+                  meta="The recall target the scheduler holds each skill to. The engine sets it, and it rises as the exam nears."
+                  trail={<span className="badge badge-strong">{queueSettings.desired_retention}</span>}
+               />
+            </div>
          )}
       </section>
    );
@@ -283,32 +319,40 @@ function DataExportSection(props: {
    const statesDefaultRetention = queueSettings !== null && purgesAtTheDefault(queueSettings);
 
    return (
-      <section>
-         <h2 className="section-heading">Data export</h2>
+      <section className="section">
+         <h2 className="section-header">Data export</h2>
 
-         <button
-            type="button"
-            className="text-button"
-            disabled={exporting.working}
-            data-outcome={exporting.outcome}
-            onClick={() => exporting.trigger()}
-         >
-            export
-         </button>
-
-         {queueSettings === null ? null : (
-            <DateField
-               label="purge date"
-               savedValue={queueSettings.purge_after ?? ""}
-               onSave={(value) => onSettingsChange({ purge_after: value })}
+         <div className="list list-flush">
+            <SettingsRow
+               title="Export everything"
+               meta="Download notes, answers, settings and assessment history as JSON. Asks for your password again."
+               trail={
+                  <button
+                     type="button"
+                     className="button-secondary button-small"
+                     disabled={exporting.working}
+                     data-outcome={exporting.outcome}
+                     onClick={() => exporting.trigger()}
+                  >
+                     export
+                  </button>
+               }
             />
-         )}
 
-         {statesDefaultRetention ? (
-            <p className="muted">
-               Default retention: until {DEFAULT_RETENTION_DAYS} days after {formatPlanDate(queueSettings.exam_date)}.
-            </p>
-         ) : null}
+            {queueSettings === null ? null : (
+               <SettingsRow
+                  title="Purge date"
+                  meta={
+                     statesDefaultRetention ? (
+                        <>Default retention: until {DEFAULT_RETENTION_DAYS} days after {formatPlanDate(queueSettings.exam_date)}.</>
+                     ) : (
+                        "Your records are kept until this date."
+                     )
+                  }
+                  trail={<DateField label="purge date" savedValue={queueSettings.purge_after ?? ""} onSave={(value) => onSettingsChange({ purge_after: value })} />}
+               />
+            )}
+         </div>
       </section>
    );
 }
@@ -346,66 +390,74 @@ function PurgeSection(props: {
       await purging.trigger(typedConfirmation);
    }
 
+   const confirmationId = useId();
+
    return (
-      <section>
-         <h2 className="section-heading">Purge</h2>
+      <section className="section">
+         <h2 className="section-header">Purge</h2>
 
          <p style={warningTextStyle}>Purging is destructive and irreversible.</p>
 
          {hasPhrase ? (
-            <label>
-               Type &quot;{purgeConfirmationPhrase}&quot; to confirm
-               <input type="text" value={typedConfirmation} onChange={handleConfirmationChange} />
-            </label>
+            <div className="form-field">
+               <label className="field-label" htmlFor={confirmationId}>
+                  Type &quot;{purgeConfirmationPhrase}&quot; to confirm
+               </label>
+               <input id={confirmationId} className="input" type="text" value={typedConfirmation} onChange={handleConfirmationChange} />
+            </div>
          ) : null}
 
-         <button type="button" className="text-button" disabled={!canVerify} onClick={handleVerify}>
-            verify identity
-         </button>
+         <div className="cluster">
+            <button type="button" className="button-secondary" disabled={!canVerify} onClick={handleVerify}>
+               verify identity
+            </button>
 
-         <button
-            type="button"
-            className="text-button text-button-destructive"
-            disabled={!canPurge}
-            data-outcome={purging.outcome}
-            onClick={handlePurge}
-         >
-            purge everything
-         </button>
+            <button
+               type="button"
+               className="text-button text-button-destructive"
+               disabled={!canPurge}
+               data-outcome={purging.outcome}
+               onClick={handlePurge}
+            >
+               purge everything
+            </button>
+         </div>
       </section>
    );
 }
 
-/* Which model serves each role and what it may spend are the operator's machinery, not study
-   settings, so they sit closed beneath the student's own sections. */
-export const OPERATOR_PROVIDERS_SUMMARY = "For the operator: providers and budgets";
+/* The sections this screen owns, by the settings tab each belongs to. 11's scope 17 names these
+   five and no more; the study plan, accessibility, AI notices and the operator's switches are drawn
+   beside them by SettingsPage. */
+export const SECTIONS_BY_TAB: Record<SettingsTab, ReadonlyArray<string>> = {
+   study: ["Queue settings"],
+   providers: ["Providers"],
+   budgets: ["Budgets"],
+   accessibility: [],
+   operator: [],
+   data: ["Data export", "Purge"]
+};
 
 export function SettingsScreen(props: SettingsScreenProps) {
+   const { tab } = props;
+
    return (
-      <section className="card settings">
-         <PageHeader title="Settings" />
+      <div className="settings stack stack-wide">
+         {tab === "study" ? <QueueSettingsSection queueSettings={props.queueSettings} onSettingsChange={props.onSettingsChange} /> : null}
 
-         <QueueSettingsSection queueSettings={props.queueSettings} onSettingsChange={props.onSettingsChange} />
+         {tab === "providers" ? <ProvidersSection providers={props.providers} /> : null}
 
-         <DataExportSection
-            queueSettings={props.queueSettings}
-            onSettingsChange={props.onSettingsChange}
-            onExport={props.onExport}
-         />
+         {tab === "budgets" ? <BudgetsSection budgets={props.budgets} onCapChange={props.onCapChange} /> : null}
 
-         <PurgeSection
-            purgeConfirmationPhrase={props.purgeConfirmationPhrase}
-            onReauthenticate={props.onReauthenticate}
-            onPurge={props.onPurge}
-         />
+         {tab === "data" ? (
+            <>
+               <DataExportSection queueSettings={props.queueSettings} onSettingsChange={props.onSettingsChange} onExport={props.onExport} />
 
-         <details className="operator-details" data-testid="operator-providers-budgets">
-            <summary>{OPERATOR_PROVIDERS_SUMMARY}</summary>
+               {props.beforePurge}
 
-            <ProvidersSection providers={props.providers} />
-
-            <BudgetsSection budgets={props.budgets} onCapChange={props.onCapChange} />
-         </details>
-      </section>
+               <PurgeSection purgeConfirmationPhrase={props.purgeConfirmationPhrase} onReauthenticate={props.onReauthenticate} onPurge={props.onPurge} />
+            </>
+         ) : null}
+      </div>
    );
 }

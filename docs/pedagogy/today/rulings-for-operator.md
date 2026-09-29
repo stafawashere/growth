@@ -36,3 +36,13 @@ Nothing here was adopted. Each entry names the technique, where it was seen, the
 | C5 | The pace verdict on the exam countdown reads as a target or a prediction | Left as it is | Whether "pace" is prediction talk under the project rule |
 | C6 | Letting the student choose which block to start with (ALEKS carousel, Math Academy dashboard) | Not offered; one next action per screen | A within-student A/B on completion, if the operator wants the autonomy support |
 | C7 | A statement-keyed item's key label is verified only by identity (question-standards.md 12) | Left; flagged in the audit | Whether a second reader should judge every statement key, which is human time |
+
+## Rulings added during the build [uncertain]
+
+| Id | Decision | Default taken | What would settle it |
+|---|---|---|---|
+| C8 | Four of the nine lints (option count, distinct error paths, value option type, distractor provenance) run only under `--standards` because the operator's fixture in tests/fixtures/items_p1 fails them | Left behind the flag; the five others run by default | Whether the fixture may be regenerated with four options and derivations, after which the four lints can join the default run |
+| C9 | The `calculator_decimals` lint as first written flagged the 20 exact-value items of BC-QA-99001 (a calculator archetype whose stems ask for an exact value) | The lint was scoped to the standard as written (a stem asking for decimals or a decimal key); the items are unchanged | Whether BC-QA-99001 should be reclassified no_calculator |
+| C10 | `tests/sim/test_today_policies.py::test_the_running_app_passes_no_retrieval_ordering`, written this run when the ordering was simulation-only, now fails by design because the treatment arm of `selection_priority` passes an ordering through service.py and preview.py | Left red and unedited, since a failing test is never edited to pass; the switch-off test asserts the behavioural form of the same invariant | Retire it or rewrite it as "under the default state the app passes no ordering", which is what the switch-off test already checks |
+| C11 | `tests/api/test_evaluation_routes.py::test_metrics_view_renders` fails on main since the ai-fixes merge (the metrics view omits `lesson_first_contact`) and now also omits `selection_priority` | Not touched; `app/experiments/analysis.py` is outside the brief | A comparison for both switches in the analysis view |
+| C12 | The mathjson renderer drops trailing zeros, so a key stored as 4.290 renders as 4.29 while the lint asks for three places | Left; a background task chip names the renderer fix | Whether the client should render stored decimal strings verbatim |

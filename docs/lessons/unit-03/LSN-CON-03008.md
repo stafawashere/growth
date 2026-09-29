@@ -76,8 +76,8 @@ BC-QA-03009 is `no_calculator`, a single MCQ: Section I Part A, 2.14 minutes per
 
 ## Band plan
 
-- Low (full): orientation, ki-1, st-1, ex-1, the four error blocks, chk-1 to chk-3, the two bridges. 532 words, 3.6 minutes (cap 900 and 6).
-- Mid (brief): orientation, ki-1, st-1, ex-1, err-BC-ERR-03002, err-BC-ERR-03006, chk-1, chk-2, the two bridges. 408 words, 2.8 minutes (cap 450 and 3).
+- Low (full): orientation, ki-1, st-1, ex-1, the four error blocks, chk-1 to chk-3, the two bridges. 547 words, 3.65 minutes (cap 900 and 6).
+- Mid (brief): orientation, ki-1, st-1, ex-1, err-BC-ERR-03002, err-BC-ERR-03006, chk-1, chk-2, the two bridges. 423 words, 2.82 minutes (cap 450 and 3).
 - Refresher: ki-1, err-BC-ERR-03002, err-BC-ERR-03006, err-BC-ERR-03020, err-BC-ERR-99036, ex-1.
 
 ## Sources
@@ -264,8 +264,8 @@ BC-QA-03009 is `no_calculator`, a single MCQ: Section I Part A, 2.14 minutes per
   {"block": "err-BC-ERR-99036", "mode": "step_reveal", "reason": "rule 1", "sources": []}
  ],
  "refresher": ["ki-1", "err-BC-ERR-03002", "err-BC-ERR-03006", "err-BC-ERR-03020", "err-BC-ERR-99036", "ex-1"],
- "read_minutes": {"full": 3.6, "brief": 2.8},
- "word_count": {"full": 532, "brief": 408},
+ "read_minutes": {"full": 3.65, "brief": 2.82},
+ "word_count": {"full": 547, "brief": 423},
  "research_lines": [
   {"file": "research/units/unit-03-differentiation-composite-implicit-inverse.md", "line": "An expression is classified by the operation applied last"}
  ],

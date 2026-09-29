@@ -38,6 +38,10 @@ Decision ids: LSN-DEC-<unit>-<nn>, nn numbering the unit's sets in the order con
 - D2. Step relations in the machine record are equivalent, differentiate, integrate, evaluate, solve, limit and new, each checked by SymPy in tools/check_lesson_designs.py. Evidence: tools/check_lessons.py only accepts equivalence between consecutive valued steps, so the hand-authored lesson leaves evaluation and root-finding steps unvalued; a design that teaches the whole path needs the other relations checked, not skipped.
 - D3. Lessons on the 2 concepts without an active error (BC-CON-01003, BC-CON-01018) carry 2 checks, which plan 15 allows (LESSON_CHECKS_MIN 2). Evidence: the count above.
 
+- D4. The Unit 6 antidifferentiation-technique skills form one confusable component of 21 skills (computed with app/lessons/confusable.py components over confusable_graph), above DECISION_SET_MAX 6, so no technique decision lesson is derived; plan 15 names that drill first for L6. Recorded as a proposed amendment (split the component by archetype family, or raise the cap for a named set). The other two Unit 6 components above the cap hold 9 skills each.
+- D5. Unit READMEs written by designers claimed `confusable_with` empty; the loaded snapshot has it filled on 505 skills (67 in Unit 1, 45 in Unit 2, 62 in Unit 5). The three README lines were corrected by hand before commit and later README prompts say so.
+- D6. The design checker accepts `crabbc-YY:<page>` citations (cache/text/crabbc-25 exists), because the 2025 Chief Reader pages are where several archetype scoring notes live.
+
 ## Failed hypotheses
 
 - None yet.

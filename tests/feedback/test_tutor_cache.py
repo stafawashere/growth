@@ -2,17 +2,19 @@
 spends a second tutor call against the budget cap of docs/plan/07-ai-provider-layer.md nor shows
 a different sentence than the one the student already read.
 """
+import json
+
 import pytest
-from sqlalchemy import create_engine
+from sqlalchemy import create_engine, select
 from sqlalchemy.orm import Session as OrmSession
 from sqlalchemy.pool import StaticPool
 
 from app.db import models
 from app.engine.state import FadingStage
 from app.feedback import render, tutor
-from app.providers.base import ProviderResult, Usage
+from app.providers.base import Message, ProviderResult, Usage
 from app.providers.guard import ProviderCallFailed
-from app.providers.subscription import SubscriptionAuthFailed
+from app.providers.subscription import SubscriptionAuthFailed, SubscriptionLimitReached
 
 NOW = "2026-09-20T09:00:00+00:00"
 
@@ -211,3 +213,27 @@ class SignedOutProvider:
 def test_an_expired_sign_in_is_raised_so_the_caller_can_mark_the_tutor_unavailable():
    with pytest.raises(SubscriptionAuthFailed):
       tutor.compose_sentence(SignedOutProvider(), make_feedback())
+
+
+class LimitedProvider:
+   def generate(self, request):
+      raise SubscriptionLimitReached("the five-hour window is spent")
+
+
+def test_a_queued_frq_call_names_its_template_so_the_drain_rebuilds_the_same_request():
+   engine = open_engine()
+   fields = {"points_not_earned": "Part (b). The point needed: a named sign change.", "observed_errors": ""}
+
+   with OrmSession(engine) as db:
+      attempt = make_attempt(db)
+
+      with pytest.raises(SubscriptionLimitReached):
+         tutor.compose(LimitedProvider(), fields, tutor.FRQ_POINTS, db=db, attempt=attempt, user_id="USR-0001")
+
+      job = db.scalars(select(models.Job)).one()
+
+   payload = json.loads(job.payload)
+   messages = [Message(role=message["role"], content=message["content"]) for message in payload["messages"]]
+   rebuilt = tutor.request_from_messages(messages, template=payload["template"])
+
+   assert rebuilt == tutor.request_for(fields, template=tutor.FRQ_POINTS)

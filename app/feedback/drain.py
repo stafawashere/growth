@@ -178,7 +178,16 @@ def drain_one(db, job, links, clock, now, tutor_caps, board, report):
       return None
 
    messages = [Message(role=message["role"], content=message["content"]) for message in payload["messages"]]
-   request = tutor.request_from_messages(messages, model=payload.get("model"))
+   template = payload.get("template") or tutor.ELABORATED
+   is_known_template = template in tutor.TEMPLATES
+
+   if not is_known_template:
+      settle_job(job, FAILED_STATE, now, "unknown_template")
+      report.failed = report.failed + 1
+
+      return None
+
+   request = tutor.request_from_messages(messages, model=payload.get("model"), template=template)
    guarded = guarded_for(links, db, payload.get("user_id"), tutor_caps, clock, board)
 
    try:

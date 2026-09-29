@@ -481,6 +481,25 @@ describe("SessionScreen error note, 11 P1 scope item 10", () => {
       cleanup();
    });
 
+   it("shows the tutor's note on a correct answer the student rated a guess", async () => {
+      stageFlow("unsupported");
+      mocked.submitAttempt.mockResolvedValue({ ...attempt("unsupported"), correct: true });
+      mocked.readFeedback.mockResolvedValue({
+         ...feedback("unsupported"),
+         kind: serverKind("correct"),
+         elaborated: null,
+         confidence: "guess",
+         sentence: "The product rule decides this item."
+      });
+
+      await commitOn(COMMIT_BUTTONS);
+      await screen.findByTestId("feedback");
+
+      expect(screen.getByTestId("tutor-sentence").textContent).toBe("The product rule decides this item.");
+
+      cleanup();
+   });
+
    it("holds a corrected item on the feedback screen until the note is written", async () => {
       stageFlow("unsupported");
 

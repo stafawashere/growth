@@ -13,6 +13,7 @@ from sqlalchemy import func, select
 
 from app.auth.service import utc_now
 from app.db import models
+from app.feedback.render import FeedbackKind
 from app.providers.base import (
    CacheSettings,
    Message,
@@ -26,7 +27,17 @@ from app.providers.guard import BudgetStopped, ProviderCallFailed
 from app.providers.model_routing import model_for
 from app.providers.subscription import SubscriptionAuthFailed, SubscriptionLimitReached
 
-TEMPLATE_PATH = Path(__file__).resolve().parents[2] / "prompts" / "feedback" / "elaborated_v2.md"
+PROMPTS_DIR = Path(__file__).resolve().parents[2] / "prompts"
+TEMPLATE_PATH = PROMPTS_DIR / "feedback" / "elaborated_v2.md"
+ELABORATED = "elaborated"
+FRQ_POINTS = "frq_points"
+CORRECT_REINFORCEMENT = "correct_reinforcement"
+TEMPLATES = {
+   ELABORATED: TEMPLATE_PATH,
+   FRQ_POINTS: PROMPTS_DIR / "tutor" / "frq_points_v1.md",
+   CORRECT_REINFORCEMENT: PROMPTS_DIR / "tutor" / "correct_reinforcement_v1.md",
+}
+LOW_CONFIDENCE_RATINGS = ("guess", "unsure")
 TUTOR_MODEL = model_for("tutor")
 MAX_OUTPUT_TOKENS = 600
 PREFIX_CACHE_TTL = "1h"
@@ -39,22 +50,25 @@ TUTOR_CALLS_PER_ITEM = 3
 LIMIT_QUEUE_REASON = "subscription_limit_reached"
 
 
-def template_text():
-   return TEMPLATE_PATH.read_text()
+def template_text(template=ELABORATED):
+   is_elaborated = template == ELABORATED
+   path = TEMPLATE_PATH if is_elaborated else TEMPLATES[template]
+
+   return path.read_text()
 
 
-def request_for(fields):
-   text = template_text()
+def request_for(fields, template=ELABORATED):
+   text = template_text(template)
    rendered = render_template(text, fields)
 
-   return request_from_messages([Message(role="user", content=rendered)])
+   return request_from_messages([Message(role="user", content=rendered)], template=template)
 
 
-def request_from_messages(messages, model=None):
-   """A queued call stores only its rendered messages, so a later drain rebuilds the rest of the
-   request from the same template and options the live call used. TUTOR_MODEL is read at call
-   time, never bound as a default."""
-   system, _variable_section = split_template(template_text())
+def request_from_messages(messages, model=None, template=ELABORATED):
+   """A queued call stores only its rendered messages and the name of its template, so a later
+   drain rebuilds the rest of the request from the same template and options the live call used.
+   TUTOR_MODEL is read at call time, never bound as a default."""
+   system, _variable_section = split_template(template_text(template))
    request = ProviderRequest(
       role="tutor",
       model=TUTOR_MODEL,
@@ -126,6 +140,91 @@ def record_call(db, attempt, accounting):
 
 
 def compose_sentence(provider, feedback, db=None, attempt=None, user_id=None):
+   payload = feedback.elaborated
+   fields = payload.as_prompt_fields() if payload is not None else None
+
+   return compose(provider, fields, ELABORATED, db=db, attempt=attempt, user_id=user_id)
+
+
+def reinforcement_fields(feedback, archetype, worked_solution):
+   """A correct answer rated a guess or unsure gets two sentences naming the rule that made it
+   right, since that is the answer most likely to be forgotten or reversed. A confident correct
+   answer gets none, which keeps the tutor's calls on the answers that gain from one."""
+   is_correct = feedback.kind == FeedbackKind.CORRECT
+   rating = feedback.confidence.value if feedback.confidence is not None else None
+   is_low_confidence = rating in LOW_CONFIDENCE_RATINGS
+   has_solution = worked_solution is not None and str(worked_solution).strip() != ""
+   reinforces = is_correct and is_low_confidence and has_solution
+
+   if not reinforces:
+      return None
+
+   path = archetype.get("expected_solution_path") or []
+
+   return {
+      "solution_path": "; ".join(str(step) for step in path),
+      "worked_solution": worked_solution,
+   }
+
+
+def compose_reinforcement(provider, feedback, archetype, worked_solution, db=None, attempt=None, user_id=None):
+   fields = reinforcement_fields(feedback, archetype, worked_solution)
+
+   return compose(provider, fields, CORRECT_REINFORCEMENT, db=db, attempt=attempt, user_id=user_id)
+
+
+def point_line(part_id, criterion, row):
+   quote = (row.evidence_quote or "").strip()
+   rubric_field = (row.rule_field or "").strip()
+
+   return (
+      f"Part ({part_id}). The point needed: {criterion}. Rubric field applied: {rubric_field}. "
+      f"Rule the grader cited: {row.rationale}. Quote from the work: {quote}."
+   )
+
+
+def frq_points_fields(record, rows, observed_errors, errors):
+   """The points a graded question did not earn, each with its criterion, the rubric field and
+   rule the grader cited and the quote the grader took from the work, plus, for each error the
+   diagnostician observed, its recorded behavior and the evidence it quoted. The criterion and the
+   grader's words are already on the result screen. No worked solution and no other rubric text
+   is passed. A question with a point still provisional, or with no point lost, gets no call."""
+   criteria = {point["point_id"]: point["criterion"] for part in record["parts"] for point in part["points"]}
+   has_provisional = any(row.provisional for row in rows)
+   lost_rows = [row for row in rows if row.earned == 0]
+   has_lost = len(lost_rows) > 0
+   explains = has_lost and not has_provisional
+
+   if not explains:
+      return None
+
+   lines = [point_line(row.part_id, criteria.get(row.point_id, ""), row) for row in lost_rows]
+   behaviors = []
+
+   for observed in observed_errors:
+      error_id = observed.get("error_id")
+      behavior = (errors.get(error_id) or {}).get("observed_behavior") or ""
+      evidence = (observed.get("evidence") or "").strip()
+      has_evidence = evidence != ""
+
+      if has_evidence:
+         behaviors.append(f"{behavior} Seen in the work: {evidence}.")
+      elif behavior:
+         behaviors.append(behavior)
+
+   return {
+      "points_not_earned": " ".join(lines),
+      "observed_errors": " ".join(behaviors),
+   }
+
+
+def compose_frq_explanation(provider, record, rows, observed_errors, errors, db=None, attempt=None, user_id=None):
+   fields = frq_points_fields(record, rows, observed_errors, errors)
+
+   return compose(provider, fields, FRQ_POINTS, db=db, attempt=attempt, user_id=user_id)
+
+
+def compose(provider, fields, template, db=None, attempt=None, user_id=None):
    """The selected payload becomes one paragraph. No provider means no sentence, not an error.
 
    With a session and an attempt row the sentence is cached on the attempt, so re-reading the
@@ -167,8 +266,7 @@ def compose_sentence(provider, feedback, db=None, attempt=None, user_id=None):
          return stored
 
    has_provider = provider is not None
-   payload = feedback.elaborated
-   has_payload = payload is not None
+   has_payload = fields is not None
    composes = has_provider and has_payload
 
    if not composes:
@@ -180,7 +278,7 @@ def compose_sentence(provider, feedback, db=None, attempt=None, user_id=None):
       return None
 
    try:
-      request = request_for(payload.as_prompt_fields())
+      request = request_for(fields, template=template)
    except (OSError, ValueError):
       return None
 
@@ -233,7 +331,8 @@ def compose_sentence(provider, feedback, db=None, attempt=None, user_id=None):
 
    if limit_reached:
       if caches:
-         queue_call(db, user_id, attempt.id, request, reason=LIMIT_QUEUE_REASON, now=utc_now())
+         queued_template = None if template == ELABORATED else template
+         queue_call(db, user_id, attempt.id, request, reason=LIMIT_QUEUE_REASON, now=utc_now(), template=queued_template)
 
       raise SubscriptionLimitReached(f"the {request.role} call was queued behind a subscription limit")
 

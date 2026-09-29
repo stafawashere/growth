@@ -61,7 +61,7 @@ Decision ids: LSN-DEC-<unit>-<nn>, nn numbering the unit's sets in the order con
 
 | Kind | todo | designed | checked | resolved | signed_off | total |
 |---|---|---|---|---|---|---|
-| concept | 126 | 0 | 44 | 0 | 0 | 170 |
+| concept | 119 | 0 | 51 | 0 | 0 | 170 |
 | prerequisite | 77 | 0 | 0 | 0 | 0 | 77 |
 | decision | 9 | 0 | 1 | 0 | 0 | 10 |
 
@@ -111,13 +111,13 @@ Decision ids: LSN-DEC-<unit>-<nn>, nn numbering the unit's sets in the order con
 | LSN-CON-03008 | BC-CON-03008 | 03 | checked | checker clean 2026-09-29 |
 | LSN-CON-03009 | BC-CON-03009 | 03 | checked | checker clean 2026-09-29 |
 | LSN-CON-03010 | BC-CON-03010 | 03 | checked | checker clean 2026-09-29 |
-| LSN-CON-04001 | BC-CON-04001 | 04 | todo |  |
-| LSN-CON-04002 | BC-CON-04002 | 04 | todo |  |
-| LSN-CON-04003 | BC-CON-04003 | 04 | todo |  |
-| LSN-CON-04004 | BC-CON-04004 | 04 | todo |  |
-| LSN-CON-04005 | BC-CON-04005 | 04 | todo |  |
-| LSN-CON-04006 | BC-CON-04006 | 04 | todo |  |
-| LSN-CON-04007 | BC-CON-04007 | 04 | todo |  |
+| LSN-CON-04001 | BC-CON-04001 | 04 | checked | checker clean 2026-09-29 |
+| LSN-CON-04002 | BC-CON-04002 | 04 | checked | checker clean 2026-09-29 |
+| LSN-CON-04003 | BC-CON-04003 | 04 | checked | checker clean 2026-09-29 |
+| LSN-CON-04004 | BC-CON-04004 | 04 | checked | checker clean 2026-09-29 |
+| LSN-CON-04005 | BC-CON-04005 | 04 | checked | checker clean 2026-09-29 |
+| LSN-CON-04006 | BC-CON-04006 | 04 | checked | checker clean 2026-09-29 |
+| LSN-CON-04007 | BC-CON-04007 | 04 | checked | checker clean 2026-09-29 |
 | LSN-CON-04008 | BC-CON-04008 | 04 | todo |  |
 | LSN-CON-04009 | BC-CON-04009 | 04 | todo |  |
 | LSN-CON-04010 | BC-CON-04010 | 04 | todo |  |

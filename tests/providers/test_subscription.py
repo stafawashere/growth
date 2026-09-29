@@ -13,6 +13,7 @@ from app.providers import guard
 from app.providers.base import Message, ProviderRequest, RefusedBeforeWire
 from app.providers.guard import DevSpendLedger, GuardedProvider, SubscriptionSpendLedger
 from app.providers.subscription import (
+   SubscriptionAuthFailed,
    SubscriptionBinaryMissing,
    SubscriptionLimitReached,
    SubscriptionProvider,
@@ -223,6 +224,25 @@ def test_an_error_that_names_no_limit_stays_a_transport_error(cli, ledger):
    (cli.home / "fake_claude_message").write_text("API Error: 500 Internal server error")
 
    with pytest.raises(SubscriptionTransportError):
+      provider_for(cli, ledger).generate(tutor_request())
+
+
+def test_an_expired_sign_in_raises_the_auth_error_which_is_still_a_transport_error(cli, ledger):
+   cli.mode("auth_expired")
+
+   with pytest.raises(SubscriptionAuthFailed) as raised:
+      provider_for(cli, ledger).generate(tutor_request())
+
+   assert isinstance(raised.value, SubscriptionTransportError)
+   assert not isinstance(raised.value, SubscriptionLimitReached)
+
+
+@pytest.mark.parametrize("line", ("Invalid API key \u00b7 Please run /login", "Failed to authenticate: token revoked"))
+def test_an_invalid_login_line_raises_the_auth_error(cli, ledger, line):
+   cli.mode("limit_message")
+   (cli.home / "fake_claude_message").write_text(line)
+
+   with pytest.raises(SubscriptionAuthFailed):
       provider_for(cli, ledger).generate(tutor_request())
 
 

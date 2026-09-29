@@ -37,6 +37,7 @@ through to the API.
 """
 import base64
 import json
+import logging
 import os
 import re
 import shutil
@@ -116,10 +117,27 @@ _LIMIT_PATTERNS = tuple(
    )
 )
 
+_AUTH_PATTERNS = tuple(
+   re.compile(pattern, re.IGNORECASE)
+   for pattern in (
+      r"authentication_failed",
+      r"failed to authenticate",
+      r"invalid api key",
+      r"oauth session expired",
+   )
+)
+
+logger = logging.getLogger(__name__)
+_sign_in_warning = {"logged": False}
+
 
 class SubscriptionTransportError(RuntimeError):
    """A CLI failure that is not a usage limit: a timeout, a non-zero exit, or output that is
    not the JSON result. The message names the role and the CLI's subtype, never its output."""
+
+
+class SubscriptionAuthFailed(SubscriptionTransportError):
+   """The CLI's login expired or was rejected, so no call can succeed until someone signs in again."""
 
 
 class SubscriptionBinaryMissing(SubscriptionTransportError, RefusedBeforeWire):
@@ -136,6 +154,23 @@ class SubscriptionSingleUserError(RuntimeError):
 
 def max_budget_for(role):
    return ROLE_MAX_BUDGET_USD.get(role, DEFAULT_MAX_BUDGET_USD)
+
+
+def is_auth_message(text):
+   is_text = isinstance(text, str) and text != ""
+
+   if not is_text:
+      return False
+
+   return any(pattern.search(text) for pattern in _AUTH_PATTERNS)
+
+
+def warn_sign_in_failed_once():
+   if _sign_in_warning["logged"]:
+      return
+
+   _sign_in_warning["logged"] = True
+   logger.warning("The claude CLI sign-in expired or was rejected. Log in again with the claude CLI.")
 
 
 def is_limit_message(text):
@@ -416,6 +451,13 @@ class SubscriptionProvider(Provider):
 
       if hit_a_limit:
          raise SubscriptionLimitReached(f"the Claude subscription usage limit stopped role {request.role}")
+
+      auth_texts = (payload.get("error"),) + candidate_texts
+      sign_in_failed = any(is_auth_message(text) for text in auth_texts)
+
+      if sign_in_failed:
+         warn_sign_in_failed_once()
+         raise SubscriptionAuthFailed(f"the Claude sign-in expired or was rejected on role {request.role}")
 
       raise SubscriptionTransportError(
          f"the claude CLI failed on role {request.role}: exit {completed.returncode}, subtype {subtype}"

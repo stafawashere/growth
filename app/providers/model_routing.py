@@ -12,10 +12,10 @@ built, not a record of what is already wired.
 from app.providers.guard import ROLES
 
 ROLE_MODELS = {
-   "tutor": "claude-sonnet-5",
-   "grader": "claude-sonnet-5",
-   "transcriber": "claude-sonnet-5",
-   "diagnostician": "claude-sonnet-5",
+   "tutor": "claude-sonnet-5-5",
+   "grader": "claude-sonnet-5-5",
+   "transcriber": "claude-sonnet-5-5",
+   "diagnostician": "claude-sonnet-5-5",
    "generator": "claude-opus-5-5",
    "verifier": "claude-haiku-4-5",
 }

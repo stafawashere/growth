@@ -54,9 +54,14 @@ class ScriptedProvider:
       if request.role == "transcriber":
          text = json.dumps(self.read_back)
       elif request.role == "grader":
-         point_id = self.point_of(request)
-         decisions = self.grader_answers.get(point_id, {})
-         text = json.dumps(grading(decisions.get(request.sample_label, self.default_decision)))
+         verdicts = []
+
+         for point_id in self.points_of(request):
+            decisions = self.grader_answers.get(point_id, {})
+            verdict = grading(decisions.get(request.sample_label, self.default_decision))
+            verdicts.append(dict(verdict, point_id=point_id))
+
+         text = json.dumps({"verdicts": verdicts})
       else:
          text = json.dumps({"observed_errors": [], "matched_signals": [], "skill_readings": [], "gap_descriptions_matched": []})
 
@@ -65,16 +70,10 @@ class ScriptedProvider:
    def stream(self, request):
       yield from ()
 
-   def point_of(self, request):
+   def points_of(self, request):
       content = request.messages[0].content
 
-      for point_id in ("a1", "a2", "b1", "b2"):
-         criterion_marker = CRITERIA[point_id]
-
-         if criterion_marker in content:
-            return point_id
-
-      return None
+      return [point_id for point_id in ("a1", "a2", "b1", "b2") if CRITERIA[point_id] in content]
 
 
 CRITERIA = {}

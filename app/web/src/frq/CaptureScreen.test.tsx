@@ -198,6 +198,17 @@ describe("free-response capture", () => {
       await waitFor(() => expect(mocked.askForReread).toHaveBeenCalledWith("GRD-2"));
    });
 
+   it("shows the tutor's paragraph on the points not earned under the graded points", async () => {
+      await reachReadBack();
+      mocked.confirmReadBack.mockResolvedValue(attempt({ transcription_confirmed: true }));
+      mocked.readGradings.mockResolvedValue({ ...GRADED, tutor_explanation: "Part (b) needed the sign change named.", tutor_unavailable: false });
+
+      fireEvent.click(screen.getByLabelText("unsure"));
+      fireEvent.click(screen.getByRole("button", { name: "Yes, grade it" }));
+
+      expect((await screen.findByTestId("frq-tutor-explanation")).textContent).toBe("Part (b) needed the sign change named.");
+   });
+
    it("grades a typed answer without a photograph or a read-back", async () => {
       mocked.startFrqAttempt.mockResolvedValue(attempt({ capture_mode: "typed" }));
       mocked.submitTypedAnswer.mockResolvedValue(attempt({ capture_mode: "typed", transcription_confirmed: true }));

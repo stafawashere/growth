@@ -98,7 +98,7 @@ export function AiNoticeToast(props: AiNoticeToastProps) {
 
          <p className="caption">{noticeSource(notice)}</p>
 
-         <p>Asked: {notice.asked}</p>
+         <p>{notice.asked}</p>
 
          <p>
             {isAnswer ? "Answer: " : "Result: "}

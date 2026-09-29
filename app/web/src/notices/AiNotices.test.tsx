@@ -78,7 +78,8 @@ describe("the AI call notices", () => {
 
       expect(shown.textContent).toContain("AI tutor: answered");
       expect(shown.textContent).toContain("claude-sonnet-5, replayed from a recording");
-      expect(shown.textContent).toContain("Asked: Asked the tutor to explain the step you missed");
+      expect(shown.textContent).toContain("Asked the tutor to explain the step you missed");
+      expect(shown.textContent).not.toContain("Asked: Asked");
       expect(shown.textContent).toContain("Answer: Feedback sentence 5.");
       expect(mocked.readNotices).toHaveBeenCalledWith(0);
       expect(mocked.readNotices).toHaveBeenCalledWith(4);

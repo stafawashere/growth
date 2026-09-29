@@ -111,6 +111,9 @@ _EFFORT_RANK = {level: rank for rank, level in enumerate(_EFFORT_LEVELS)}
 _OPUS_5_FAMILY = "claude-opus-5"
 _OPUS_5_MAX_EFFORT_FOR_DISABLED_THINKING = "high"
 _HAIKU_4_5_FAMILY = "claude-haiku-4-5"
+_SONNET_5_5_FAMILY = "claude-sonnet-5-5"
+_SONNET_5_5_THINKING_OFF = {"type": "between_tools"}
+_SONNET_5_5_MAX_EFFORT_FOR_THINKING_OFF = "high"
 
 # docs/plan/07-ai-provider-layer.md, "Stream error retryability" table: sourced from the
 # claude-api skill's shared/error-codes.md HTTP error code summary, which marks 429
@@ -433,6 +436,7 @@ class AnthropicProvider(Provider):
 
       _guard_provider_options(provider_options)
       _guard_thinking_effort_for_model(request.model, provider_options)
+      _guard_sonnet_5_5_thinking_off_effort(request.model, provider_options)
       _guard_effort_supported_by_model(request.model, provider_options)
 
       system_block = {"type": "text", "text": request.system}
@@ -465,7 +469,7 @@ class AnthropicProvider(Provider):
       thinking = provider_options.get("thinking")
 
       if thinking is not None:
-         body["thinking"] = dict(thinking)
+         body["thinking"] = _wire_thinking(request.model, thinking)
 
       return body
 
@@ -603,6 +607,41 @@ def _guard_thinking_effort_for_model(model, provider_options):
       raise RefusedOption(
          "Opus 5 accepts thinking: disabled only at effort high or below "
          "(docs/plan/13-ai-engineering.md, 'tutor, kept' / the Opus 5 thinking correction)"
+      )
+
+
+def _wire_thinking(model, thinking):
+   """Sonnet 5.5 returns 400 on thinking: disabled and turns thinking off with between_tools
+   instead (the claude-api skill, Migrating to Claude Sonnet 5.5), so the neutral request keeps
+   saying disabled and only the wire body names the Sonnet 5.5 spelling."""
+   is_disabled_thinking = thinking == _DISABLED_THINKING
+   is_sonnet_5_5 = _is_model_family(model, _SONNET_5_5_FAMILY)
+   needs_between_tools = is_disabled_thinking and is_sonnet_5_5
+
+   if needs_between_tools:
+      return dict(_SONNET_5_5_THINKING_OFF)
+
+   return dict(thinking)
+
+
+def _guard_sonnet_5_5_thinking_off_effort(model, provider_options):
+   is_sonnet_5_5 = _is_model_family(model, _SONNET_5_5_FAMILY)
+   is_thinking_disabled = provider_options.get("thinking") == _DISABLED_THINKING
+   turns_thinking_off = is_sonnet_5_5 and is_thinking_disabled
+
+   if not turns_thinking_off:
+      return
+
+   output_config = provider_options.get("output_config") or {}
+   effort = output_config.get("effort", _SONNET_5_5_MAX_EFFORT_FOR_THINKING_OFF)
+   effort_rank = _EFFORT_RANK[effort]
+   max_allowed_rank = _EFFORT_RANK[_SONNET_5_5_MAX_EFFORT_FOR_THINKING_OFF]
+   effort_too_high = effort_rank > max_allowed_rank
+
+   if effort_too_high:
+      raise RefusedOption(
+         "Sonnet 5.5 accepts thinking: between_tools only at effort high or below "
+         "(the claude-api skill, Migrating to Claude Sonnet 5.5)"
       )
 
 

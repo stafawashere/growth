@@ -544,6 +544,7 @@ def finish(db, session_row, attempt, record, grading, work, context, now, previo
    attempt.grading_state = PARTLY_GRADED if has_pending else GRADED
    earned_all = all(decision.earned == 1 for decision in grading.decisions)
    attempt.correct = None if has_pending else int(earned_all)
+   attempt.tutor_sentence = None
    attempt.updated_at = stamp(now)
    db.flush()
 

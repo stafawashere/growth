@@ -18,7 +18,7 @@ from app.items.verify import ChildDiedError
 from app.lessons import repository as lesson_repository
 from app.providers.guard import BudgetStopped
 from app.providers.router import chain_for
-from app.providers.subscription import SubscriptionLimitReached
+from app.providers.subscription import SubscriptionAuthFailed, SubscriptionLimitReached
 from app.session import diagnostic_session, preview, probes, service
 
 router = APIRouter(prefix="/sessions", tags=["sessions"])
@@ -392,7 +392,14 @@ def read_feedback(
    if is_verification_only:
       feedback = render.verification_only(feedback)
 
-   sentence, tutor_unavailable = tutor_sentence_for(settings, db, user, attempt, feedback)
+   is_correct = feedback.kind == render.FeedbackKind.CORRECT
+   reinforces = is_correct and not is_verification_only
+
+   if reinforces:
+      sentence, tutor_unavailable = reinforcement_for(settings, db, user, attempt, feedback, archetype, item.worked_solution)
+   else:
+      sentence, tutor_unavailable = tutor_sentence_for(settings, db, user, attempt, feedback)
+
    link = None if is_verification_only else lesson_link_for(db, attempt, archetype, error_path, context.graph)
 
    return dict(render.as_dict(feedback), sentence=sentence, tutor_unavailable=tutor_unavailable, lesson_link=link)
@@ -479,16 +486,36 @@ def tutor_sentence_for(settings, db, user, attempt, feedback):
    call counts, then the paid API only when GROWTH_AI_BACKEND=api put it in the chain, each link
    behind its own guard. Only the API link is tracked against the persistent developer spend cap.
    """
+   def compose(guarded):
+      return tutor.compose_sentence(guarded, feedback, db=db, attempt=attempt, user_id=user.id)
+
+   return tutor_call(settings, db, user, compose)
+
+
+def reinforcement_for(settings, db, user, attempt, feedback, archetype, worked_solution):
+   def compose(guarded):
+      return tutor.compose_reinforcement(
+         guarded, feedback, archetype, worked_solution, db=db, attempt=attempt, user_id=user.id
+      )
+
+   return tutor_call(settings, db, user, compose)
+
+
+def tutor_call(settings, db, user, compose):
+   """One tutor call down the tutor's chain, whichever template composes it. The second value says
+   the tutor is unavailable, for the line 07's hard-stop table puts where it happened."""
    guarded = chain_for(settings, db, user.id, "tutor_links", "tutor", settings.tutor_caps)
 
    if guarded is None:
       return None, False
 
    try:
-      sentence = tutor.compose_sentence(guarded, feedback, db=db, attempt=attempt, user_id=user.id)
+      sentence = compose(guarded)
    except BudgetStopped:
       return None, True
    except SubscriptionLimitReached:
+      return None, True
+   except SubscriptionAuthFailed:
       return None, True
 
    return sentence, False

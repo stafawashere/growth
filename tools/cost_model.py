@@ -32,6 +32,7 @@ PRICES = {
    "claude-opus-5": {"input": 5.00, "write_5m": 6.25, "write_1h": 10.00, "read": 0.50, "output": 25.00},
    "claude-opus-5-5": {"input": 4.00, "write_5m": 5.00, "write_1h": 8.00, "read": 0.20, "output": 20.00},
    "claude-sonnet-5": {"input": 2.00, "write_5m": 2.50, "write_1h": 4.00, "read": 0.20, "output": 10.00},
+   "claude-sonnet-5-5": {"input": 2.00, "write_5m": 2.50, "write_1h": 4.00, "read": 0.20, "output": 10.00},
    "claude-haiku-4-5": {"input": 1.00, "write_5m": 1.25, "write_1h": 2.00, "read": 0.10, "output": 5.00},
    "gemini-3.8-flash": {"input": 0.75, "read": 0.075, "output": 3.75},
    "gemini-3.8-flash-2027": {"input": 1.50, "read": 0.15, "output": 7.50},
@@ -136,17 +137,18 @@ ROLES = {
 # app/providers/model_routing.py ROLE_MODELS is the same table restated for the application, and
 # tests/providers/test_model_routing.py asserts the two agree role by role, so a change here that
 # is not carried into the app fails a test rather than drifting silently. tutor, grader,
-# transcriber and diagnostician read their model from ROLES above, which already holds them on
-# Claude; generator and verifier are named explicitly, because ROLES["template"] and
+# transcriber and diagnostician run on claude-sonnet-5-5, which the claude-api skill prices the
+# same as claude-sonnet-5 in ROLES above, so their lines print the same figures; generator and
+# verifier are named explicitly too, because ROLES["template"] and
 # ROLES["verifier"] stay on their 2026-09-20 pricing (Opus 5 and Gemini) so the figures
 # 13-ai-engineering.md and docs/operator/ai-operating-costs.md already quote keep printing, and
 # the Claude-only tier prices generator on claude-opus-5-5 and verifier on claude-haiku-4-5
 # instead (see tier.hundred_claude_only below).
 CLAUDE_ONLY_ROLE_MODELS = {
-   "tutor": ROLES["tutor"]["model"],
-   "grader": ROLES["grader"]["model"],
-   "transcriber": ROLES["transcriber"]["model"],
-   "diagnostician": ROLES["diagnostician"]["model"],
+   "tutor": "claude-sonnet-5-5",
+   "grader": "claude-sonnet-5-5",
+   "transcriber": "claude-sonnet-5-5",
+   "diagnostician": "claude-sonnet-5-5",
    "generator": "claude-opus-5-5",
    "verifier": "claude-haiku-4-5",
 }

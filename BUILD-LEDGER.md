@@ -2308,6 +2308,54 @@ items) and items 3 and 6 (Slices 3 and 4). Every gate 11 names for P2 now exists
   statement-keyed, so they serve only as choices. The opener mapping in
   `PRODUCTIVE_FAILURE_TARGETS` was not rechecked against a live session.
 
+- 2026-09-29, prerequisite gates, second session, on the operator's delegation. Commits a3118af
+  and the one that carries this entry, both on main.
+  Mastery deadlock. `app/runtime/graphs.py` counted, for mastery condition 3, every archetype that
+  lists a skill. BC-SKL-02005 was asked for a success on BC-QA-02003, whose primary skill is gated
+  behind 02006, which is gated behind 02005, so 02005 could never be mastered and 416 teachable
+  skills below it stayed shut. The count now leaves out an archetype whose primary skill is gated
+  behind the skill; 02005 is the only skill whose requirement changes. Plan 02 condition 3 records
+  it as Corrected 2026-09-29. `test_every_teachable_skill_can_meet_the_distinct_archetype_condition`
+  walks the graph under condition 3 and read 416 unreached skills before the fix.
+  Synthetic bank. `app/sim/whole_graph.py` ITEMS_PER_ARCHETYPE 3 to 20, the published bank's floor
+  (20 to 28 items on each of 148 archetypes). At 3 a fresh student on the 6-archetype Unit 1 entry
+  fringe had every item inside the 7-day repeat window by day 4 and got empty sessions until day 9.
+  Placement support. `test_placement_support_is_what_a_correct_answer_loaded_and_what_sits_above_it`
+  covers `diagnostic.supported_in_run`; red when a wrong answer is credited and when the ancestor
+  walk is dropped.
+  Library. `tools/sync_dependents.py` and `tools/merge_staging.py sync-dependents.json`: 166 skills
+  gained the prerequisites and dependents the new edges imply, nothing else changed. The full
+  replay (merge_staging over every staging file, then link_official_evidence) was run and
+  discarded: it rewrote created dates to 2026-09-29 on hundreds of records, dropped BC-PT-99068
+  from BC-QA-99004's point_types and a rubric instance from BC-PT-99080. That replay is not safe to
+  run on this tree until merge_staging keeps created and the link pass stops removing entries.
+  LSN-CON-02013's source_digest restamped: the only change in its sources is BC-SKL-02013's
+  dependents gaining 03005 and 05040, which the lesson does not teach.
+  Checks, in this session: `tests/engine` 78 passed and the 3 below failed, before the two new
+  tests (each passed alone); `tests/progress tests/session tests/content` 98 passed;
+  `tests/content tests/engine/test_entry_fringe.py tests/engine/test_selection.py` 39 passed after
+  the sync; `tests/lessons` 71 passed; `tests/api tests/runtime` 257 passed, 1 failed
+  (`test_unauthenticated_reachable_routes_match_the_documented_list` wants `/assets`, mounted only
+  when `app/web/dist` is built, which this clone lacks); `eval_false_mastery_within_ceiling`
+  passed, two_term 0 of 336 declared, random_control 0 of 373 (0 of 87 before); `qa/12_report.py`
+  13 PASS, 00_manifest FAIL on 97 cached PDFs absent from this clone.
+  Still red, premise collisions left for the operator: `test_two_term_selection_whole_graph` (2
+  units chosen of more than 3), `test_exam_weight_quota_tilts_blocks_two_and_three_toward_the_heavy_units`
+  (0.0 against 0.0), `test_interleave_full_constraints` (6 of 10 units). Each assumes students
+  reach many units within 12 to 40 days. With the entry fringe in Unit 1, placement that accepts
+  an underestimate (02, the 30-item cap), and mastery needing a 7-day span, no student reaches
+  Units 5, 6, 9 or 10 in 15 days: a synthetic student at ability 3.0 in every unit mastered 0
+  skills in 15 days and 51 in 40. Proposed: run the quota and interleave tests from placed
+  students whose known units span the course, or over a longer horizon. Not changed, since that
+  rewrites the premise.
+  Throughput, the largest open risk. The same perfect student, run from 2026-10-01 for 220 days,
+  masters 120 of 539 teachable skills (16 by day 20, 70 by day 80, 113 by day 160); cff11f5
+  reached 49. Cause: strength is beta + log(1+c) - 0.5 log(1+f), and slips plus failure credit
+  propagated from children keep f growing, so sigmoid(m) sits under 0.9 for tens of successes
+  (BC-SKL-01054: 46 unaided successes over 38 days, 0.866). The longest blocking chain is 18
+  skills (01001 to 10073), at least 8 days each. Changing GAMMA, RHO, the 0.90 threshold or
+  failure propagation loosens mastery, so it waits for the operator.
+
 ## In progress [inferred]
 
 Stage 1, items for Units 4 to 10, is complete in the worktree `../growth-content` on branch

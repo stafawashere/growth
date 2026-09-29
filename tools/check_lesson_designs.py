@@ -731,6 +731,11 @@ def rule_caps(design, context):
       if total > constants.STRATEGY_WORDS_MAX:
          messages.append(f"{block.get('id')} has {total} words, cap {constants.STRATEGY_WORDS_MAX}")
 
+      cue_words = words_in(block.get("cue", ""))
+
+      if cue_words > constants.CUE_WORDS_MAX:
+         messages.append(f"{block.get('id')} cue has {cue_words} words, cap {constants.CUE_WORDS_MAX}")
+
    examples = record.get("worked_examples") or []
 
    if len(examples) > constants.WORKED_EXAMPLES_MAX:

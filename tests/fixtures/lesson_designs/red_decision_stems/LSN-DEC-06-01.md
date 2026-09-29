@@ -54,7 +54,7 @@ Three discrimination checks, method-naming only, no execution. Options are the t
 
 ## Band plan
 
-The low band serves: orientation, the two stems, st-1, st-2, chk-1, chk-2, chk-3. 350 words in the full form (all three checks) and 238 in the brief form (checks 1 and 2, the first strategy block), 2.4 and 1.6 minutes. Refresher: st-1, st-2.
+The low band serves: orientation, the two stems, st-1, st-2, chk-1, chk-2, chk-3. 345 words in the full form (all three checks) and 238 in the brief form (checks 1 and 2, the first strategy block), 2.4 and 1.6 minutes. Refresher: st-1, st-2.
 
 ## Sources
 
@@ -101,7 +101,7 @@ The low band serves: orientation, the two stems, st-1, st-2, chk-1, chk-2, chk-3
   {
    "id": "st-2",
    "archetype_id": "BC-QA-06012",
-   "cue": "The stem asks for the value of the derivative of the accumulation function at a stated input, from a graph of the integrand.",
+   "cue": "The stem asks for the accumulation function's derivative at a stated input, from a graph of the integrand.",
    "method": "First written line: state that the derivative of the accumulation equals the integrand at the upper limit.",
    "rival": "The rival is evaluating the integrand at the upper limit without the chain rule factor (BC-ERR-06027).",
    "separating_feature": "The verb is find the derivative, and a composite upper limit adds the factor of its own derivative.",
@@ -320,7 +320,7 @@ The low band serves: orientation, the two stems, st-1, st-2, chk-1, chk-2, chk-3
   "brief": 1.6
  },
  "word_count": {
-  "full": 350,
+  "full": 345,
   "brief": 238
  },
  "research_lines": [],

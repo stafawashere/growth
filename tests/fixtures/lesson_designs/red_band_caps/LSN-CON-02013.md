@@ -165,7 +165,7 @@ No motion, interactive or model mode applies: the concept has no parameter that 
   {
    "id": "st-2",
    "archetype_id": "BC-QA-02009",
-   "cue": "The stem asks for the derivative value at the named input, from a table of values of two functions and their derivatives.",
+   "cue": "The stem asks for the derivative value at the named input, from a table of two functions and their derivatives.",
    "method": "First written line: record the four supplied values at the named input, each labelled a value or a derivative.",
    "rival": "The rival is placing a function value where the rule calls for a derivative value (BC-ERR-02024).",
    "separating_feature": "Each of the four numbers is labelled before it is used.",
@@ -595,7 +595,7 @@ No motion, interactive or model mode applies: the concept has no parameter that 
   "brief": 2.7
  },
  "word_count": {
-  "full": 627,
+  "full": 625,
   "brief": 394
  },
  "research_lines": [

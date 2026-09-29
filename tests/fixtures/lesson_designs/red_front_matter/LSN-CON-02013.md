@@ -143,7 +143,7 @@ No motion, interactive or model mode applies: the concept has no parameter that 
   {
    "id": "st-2",
    "archetype_id": "BC-QA-02009",
-   "cue": "The stem asks for the derivative value at the named input, from a table of values of two functions and their derivatives.",
+   "cue": "The stem asks for the derivative value at the named input, from a table of two functions and their derivatives.",
    "method": "First written line: record the four supplied values at the named input, each labelled a value or a derivative.",
    "rival": "The rival is placing a function value where the rule calls for a derivative value (BC-ERR-02024).",
    "separating_feature": "Each of the four numbers is labelled before it is used.",
@@ -287,7 +287,7 @@ No motion, interactive or model mode applies: the concept has no parameter that 
  ],
  "refresher": ["ki-1", "err-BC-ERR-02020", "err-BC-ERR-02023", "err-BC-ERR-02024", "ex-1"],
  "read_minutes": {"full": 4.5, "brief": 2.7},
- "word_count": {"full": 626, "brief": 394},
+ "word_count": {"full": 624, "brief": 394},
  "research_lines": [
   {"file": "research/scoring/notation-requirements.md", "line": "simplification is optional, but attempted simplification must be correct"},
   {"file": "research/units/unit-02-differentiation-definition-properties.md", "line": "MCQ forms ask for the derivative of a product, either symbolically or from supplied values at a point."}

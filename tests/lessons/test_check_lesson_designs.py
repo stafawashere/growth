@@ -101,3 +101,16 @@ def test_manifest_counts_match_the_snapshot(snapshot, context):
    assert kinds["concept"] == len(snapshot.concepts)
    assert kinds["prerequisite"] == len(snapshot.prerequisites)
    assert kinds["decision"] == len(check_lesson_designs.confusable_sets(snapshot))
+
+
+def test_a_strategy_cue_over_its_cap_fails_caps(tmp_path, context):
+   clean = FIXTURE_DIR / "clean" / "LSN-CON-02013.md"
+   record_text = clean.read_text()
+   design = design_of(clean)
+   cue = design.record["strategy"][0]["cue"]
+   long_cue = " ".join(["word"] * 21)
+   planted = tmp_path / "LSN-CON-02013.md"
+   planted.write_text(record_text.replace(cue, long_cue, 1))
+   findings = check_design(design_of(planted), context)
+
+   assert any(message.startswith("st-1 cue has 21 words") for message in findings.get("caps", []))

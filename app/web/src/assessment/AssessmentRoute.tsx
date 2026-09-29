@@ -7,7 +7,8 @@ import { FrqUnitCheck } from "../frq/FrqRoute";
 import type { AssessmentFormat } from "../routing";
 import { refusalText } from "./format";
 import { ResultScreen } from "./ResultScreen";
-import { SetupScreen } from "./SetupScreen";
+import { useAgentScreen } from "../agent/AgentProvider";
+import { SetupScreen, formatTitleOf } from "./SetupScreen";
 import { TimedSessionScreen } from "./TimedSessionScreen";
 import { UnitCheckScreen } from "./UnitCheckScreen";
 
@@ -33,6 +34,10 @@ type AssessmentPage =
 export function AssessmentRoute({ pollMilliseconds, format, onChangeFormat }: AssessmentRouteProps) {
    const [page, setPage] = useState<AssessmentPage>({ kind: "setup" });
    const [problem, setProblem] = useState<string | null>(null);
+   const shownFormat = format ?? "unit";
+   const formatTitle = formatTitleOf(shownFormat);
+
+   useAgentScreen({ kind: "assessments", format: shownFormat }, { formatName: formatTitle.charAt(0).toLowerCase() + formatTitle.slice(1) });
 
    async function open(work: () => Promise<AssessmentPage>, fallback: string) {
       setProblem(null);

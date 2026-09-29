@@ -1,5 +1,6 @@
 import { useEffect, useRef, useState } from "react";
 
+import { useAgentScreen } from "../agent/AgentProvider";
 import {
    finishMock,
    readAssessmentShape,
@@ -164,6 +165,11 @@ export function TimedSessionScreen({ kind, sessionId, initial, pollMilliseconds,
    const [capturing, setCapturing] = useState<FreeResponseCapture | null>(null);
    const pendingSaves = useRef<Promise<unknown>>(Promise.resolve());
    const [shape, setShape] = useState<AssessmentShape | null>(null);
+   const runsPart = session !== null && capturing === null && session.parts.some((part) => part.status === "open");
+
+   /* The tutor is not available while a part's clock runs (docs/agent/design.md, "The entry
+      point"), so a running part tells the shell it is timed. */
+   useAgentScreen(runsPart ? { kind: "assessments", format: kind === "mocks" ? "mock" : "drill", timed: true } : null);
 
    function accept(payload: AssessmentSession) {
       setSession(payload);

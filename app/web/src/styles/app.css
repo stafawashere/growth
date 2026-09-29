@@ -301,6 +301,17 @@ th:last-child {
    margin-left: auto;
 }
 
+.app-bar-end {
+   display: flex;
+   align-items: center;
+   gap: var(--growth-space-12);
+   margin-left: auto;
+}
+
+.app-bar-end .account-menu {
+   margin-left: 0;
+}
+
 .account-trigger {
    display: inline-flex;
    align-items: center;
@@ -3035,4 +3046,279 @@ h3.section-header {
       align-items: stretch;
    }
 
+}
+
+/* The live tutor (docs/agent/design.md): the Ask button in the bar, the panel as an aside docked
+   right below the bar from 900 px, and a bottom sheet under 900 px. The frame around the aside is
+   transparent to layout on desktop; under 900 px it is a column over the viewport whose spacer
+   takes what the sheet does not, so half, full and collapsed need no viewport length. main's
+   bottom padding while the sheet is open is the sheet's measured height, set by AgentProvider. */
+
+.ask-control {
+   display: flex;
+   flex-direction: column;
+   align-items: center;
+}
+
+.ask-button {
+   display: inline-flex;
+   align-items: center;
+   gap: var(--growth-space-8);
+   min-height: calc(var(--growth-space-4) * 11);
+   padding: 0 var(--growth-space-12);
+   border-radius: calc(var(--growth-space-96) * 10);
+   color: var(--growth-text-secondary);
+   font-family: "Inter Medium", "Inter", system-ui, sans-serif;
+   font-weight: normal;
+   font-size: var(--growth-type-label);
+   line-height: var(--growth-leading-label);
+}
+
+.ask-button:hover,
+.ask-button[aria-expanded="true"] {
+   background: var(--growth-surface-raised);
+   color: var(--growth-text-primary);
+}
+
+.ask-button:disabled {
+   color: var(--growth-text-muted);
+}
+
+.ask-reason {
+   max-width: calc(var(--growth-space-48) * 3);
+   color: var(--growth-text-secondary);
+   font-size: var(--growth-type-caption);
+   line-height: var(--growth-leading-caption);
+   text-align: center;
+}
+
+.agent-frame {
+   display: contents;
+}
+
+.agent-frame-spacer {
+   display: none;
+}
+
+.agent-panel {
+   display: flex;
+   flex-direction: column;
+   gap: var(--growth-space-16);
+   padding: var(--growth-space-16) var(--growth-space-24);
+   overflow-y: auto;
+   background: var(--growth-surface-page);
+   color: var(--growth-text-primary);
+   box-shadow: 0 0 0 var(--growth-stroke-hairline) var(--growth-accent-tint-3);
+}
+
+.agent-header {
+   display: flex;
+   flex-direction: column;
+   gap: var(--growth-space-8);
+}
+
+.agent-title-row {
+   display: flex;
+   flex-wrap: wrap;
+   align-items: center;
+   justify-content: space-between;
+   gap: var(--growth-space-8);
+}
+
+.agent-title {
+   margin: 0;
+   font-size: var(--growth-type-heading);
+   line-height: var(--growth-leading-heading);
+}
+
+.agent-header-actions {
+   display: flex;
+   flex-wrap: wrap;
+   align-items: center;
+   gap: var(--growth-space-12);
+}
+
+.agent-peek {
+   margin: 0;
+   overflow: hidden;
+   text-overflow: ellipsis;
+   white-space: nowrap;
+}
+
+.agent-context {
+   display: flex;
+   flex-direction: column;
+   gap: var(--growth-space-4);
+}
+
+.agent-context-line {
+   margin: 0;
+   color: var(--growth-text-secondary);
+   font-size: var(--growth-type-label);
+   line-height: var(--growth-leading-label);
+}
+
+.agent-disclosure summary {
+   color: var(--growth-text-secondary);
+   font-size: var(--growth-type-label);
+   line-height: var(--growth-leading-label);
+}
+
+.agent-fields {
+   margin: var(--growth-space-4) 0 0;
+   padding-left: var(--growth-space-24);
+   font-size: var(--growth-type-caption);
+   line-height: var(--growth-leading-caption);
+}
+
+.agent-guardrail {
+   margin: 0;
+   padding: var(--growth-space-12) var(--growth-space-16);
+   border-radius: var(--growth-space-8);
+   background: var(--growth-surface-raised);
+   color: var(--growth-text-primary);
+   font-size: var(--growth-type-label);
+   line-height: var(--growth-leading-label);
+   box-shadow: 0 0 0 var(--growth-stroke-hairline) var(--growth-accent-tint-3);
+}
+
+.agent-conversation {
+   flex: auto;
+   min-height: 0;
+}
+
+.agent-empty {
+   margin: 0;
+   color: var(--growth-text-secondary);
+   font-size: var(--growth-type-label);
+   line-height: var(--growth-leading-label);
+}
+
+.agent-turns {
+   display: flex;
+   flex-direction: column;
+   gap: var(--growth-space-16);
+   margin: 0;
+   padding: 0;
+   list-style: none;
+}
+
+.agent-turn p {
+   margin: 0;
+}
+
+.agent-turn-student {
+   align-self: flex-end;
+   max-width: stretch;
+   padding: var(--growth-space-8) var(--growth-space-12);
+   border-radius: var(--growth-space-8);
+   background: var(--growth-surface-raised);
+   color: var(--growth-text-primary);
+}
+
+.agent-reply {
+   display: flex;
+   flex-direction: column;
+   gap: var(--growth-space-8);
+}
+
+.agent-writing {
+   color: var(--growth-text-muted);
+}
+
+.agent-composer {
+   display: flex;
+   flex-direction: column;
+   gap: var(--growth-space-8);
+}
+
+.agent-composer-row {
+   display: flex;
+   flex-wrap: wrap;
+   align-items: center;
+   gap: var(--growth-space-12);
+}
+
+.agent-hint {
+   margin: 0;
+}
+
+.agent-reason {
+   flex: auto;
+   flex-basis: 0;
+   min-width: calc(var(--growth-space-48) * 3);
+   margin: 0;
+   color: var(--growth-text-primary);
+   font-size: var(--growth-type-label);
+   line-height: var(--growth-leading-label);
+}
+
+@media (min-width: 900px) {
+   .agent-panel {
+      position: fixed;
+      top: calc(var(--growth-space-8) * 7);
+      right: 0;
+      bottom: 0;
+      width: calc(var(--growth-space-64) * 5);
+   }
+
+   :root[data-agent-panel] .app-page {
+      margin-right: calc(var(--growth-space-64) * 5);
+      margin-left: auto;
+   }
+}
+
+@media (min-width: 1100px) {
+   .agent-panel {
+      width: calc(var(--growth-space-96) * 4);
+   }
+
+   :root[data-agent-panel] .app-page {
+      margin-right: calc(var(--growth-space-96) * 4);
+   }
+}
+
+@media (max-width: 899px) {
+   .agent-frame {
+      position: fixed;
+      top: 0;
+      right: 0;
+      bottom: 0;
+      left: 0;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      pointer-events: none;
+   }
+
+   .agent-frame-spacer {
+      display: block;
+      flex: auto;
+      flex-basis: 0;
+   }
+
+   .agent-frame[data-sheet-height="full"] .agent-frame-spacer {
+      flex: none;
+      height: calc(var(--growth-space-8) * 7);
+   }
+
+   .agent-panel {
+      flex: auto;
+      flex-basis: 0;
+      width: stretch;
+      max-width: calc(var(--growth-space-64) * 10);
+      padding: var(--growth-space-12) var(--growth-space-16);
+      border-radius: var(--growth-space-12) var(--growth-space-12) 0 0;
+      pointer-events: auto;
+   }
+
+   .agent-frame[data-sheet-height="full"] .agent-panel {
+      flex: auto;
+   }
+
+   .agent-frame[data-sheet-height="collapsed"] .agent-panel {
+      flex: none;
+      min-height: calc(var(--growth-space-8) * 7);
+      gap: var(--growth-space-4);
+   }
 }

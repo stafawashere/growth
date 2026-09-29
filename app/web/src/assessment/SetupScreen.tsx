@@ -43,6 +43,10 @@ interface FormatEntry {
    icon: IconName;
 }
 
+export function formatTitleOf(format: AssessmentFormat) {
+   return FORMATS.find((entry) => entry.id === format)?.title ?? format;
+}
+
 const FORMATS: ReadonlyArray<FormatEntry> = [
    { id: "unit", title: "Unit check", meta: "Untimed, marked at the end", icon: "doc" },
    { id: "frq", title: "Free response", meta: "Untimed, graded point by point", icon: "edit" },

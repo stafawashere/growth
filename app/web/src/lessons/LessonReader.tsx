@@ -1,4 +1,4 @@
-import { useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 
 import type {
    LessonBand,
@@ -55,7 +55,16 @@ export interface LessonReaderProps {
    conceptName?: string;
    /* The library back and finish label, naming where the reader returns. */
    backLabel?: string;
+   /* Told the screen on show each time it changes, for the live tutor's context line. A refresher
+      is one panel, so it reports its first section as part 1 of 1. */
+   onPositionChange?: (position: LessonPosition) => void;
    now?: () => number;
+}
+
+export interface LessonPosition {
+   sectionId: string;
+   index: number;
+   count: number;
 }
 
 export const REFRESHER_REASONS = ["T1", "T2", "T3", "T4", "T5"];
@@ -198,6 +207,15 @@ export function LessonReader(props: LessonReaderProps) {
    const [showAllSteps, setShowAllSteps] = useState(false);
    const enteredAt = useRef(now());
    const isRefresher = REFRESHER_REASONS.includes(plan.reason);
+   const shownIndex = Math.min(index, screens.length - 1);
+   const positionSectionId = isRefresher ? plan.sections[0]?.id ?? lesson.id : screens[shownIndex].id;
+   const positionIndex = isRefresher ? 0 : shownIndex;
+   const positionCount = isRefresher ? 1 : screens.length;
+   const onPositionChange = props.onPositionChange;
+
+   useEffect(() => {
+      onPositionChange?.({ sectionId: positionSectionId, index: positionIndex, count: positionCount });
+   }, [onPositionChange, positionSectionId, positionIndex, positionCount]);
 
    if (isRefresher) {
       return (

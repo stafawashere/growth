@@ -1523,3 +1523,76 @@ export interface AgentProfilePayload {
    version: number | null;
    experiment: ExperimentState | "absent";
 }
+
+/* The one structured shape the client sends with every turn as screen (docs/agent/architecture.md,
+   "The screen context"; schemas/agent/screen.schema.json). Never the draft answer, the selected
+   option or a key. section_index counts from 0. */
+export type AgentScreen =
+   | { kind: "today" }
+   | {
+        kind: "session_item";
+        session_id: string;
+        attempt_id: string;
+        item_id: string;
+        format: ServedFormat;
+        served_stage: FadingStage;
+        submitted: boolean;
+        feedback_kind?: string;
+     }
+   | {
+        kind: "session_lesson";
+        session_id: string;
+        lesson_id: string;
+        version: number;
+        section_id: string;
+        section_index: number;
+        section_count: number;
+     }
+   | {
+        kind: "lesson";
+        lesson_id: string;
+        version: number;
+        section_id: string;
+        section_index: number;
+        section_count: number;
+        return_to: string | null;
+     }
+   | { kind: "review" }
+   | { kind: "progress"; tab: string; skill_id?: string }
+   | { kind: "assessments"; format: string; timed?: boolean }
+   | { kind: "settings"; tab: string }
+   | { kind: "other"; view: string };
+
+/* POST /agent/turns, answered as text/event-stream (docs/agent/architecture.md, "Streaming end to
+   end"). */
+export interface AgentTurnBody {
+   conversation_id: string | null;
+   screen: AgentScreen;
+   message: string;
+}
+
+export type AgentErrorKind = "usage_limit" | "daily_cap" | "minute_cap" | "sign_in" | "unavailable" | "timed" | "ceiling" | "refused";
+
+export interface AgentStartEvent {
+   conversation_id: string;
+   turn_id: string;
+   screen_line: string;
+   can_see: string[];
+}
+
+export interface AgentTextEvent {
+   delta: string;
+}
+
+export interface AgentEndEvent {
+   turn_id: string;
+   outcome: AgentTurnOutcome;
+   turns_on_item: number;
+   turns_in_conversation: number;
+}
+
+export interface AgentErrorEvent {
+   kind: AgentErrorKind;
+   resets_at?: string | null;
+   copy?: string;
+}

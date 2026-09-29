@@ -8,6 +8,7 @@ import type {
    AgentMemoryEntry,
    AgentProfilePayload,
    AgentSettingsPayload,
+   AgentTurnBody,
    MasteryNodeState,
    AssessmentAnswer,
    AssessmentResult,
@@ -913,4 +914,21 @@ export function updateAgentSettings(fields: AgentSettingsPayload) {
 
 export function readAgentProfile() {
    return requestJson<AgentProfilePayload>("/agent/profile");
+}
+
+/* POST /agent/turns answers text/event-stream, so the body is handed back unread for
+   agent/useAgentStream.ts to parse frame by frame. A refusal is not thrown here: the caller reads a
+   4xx JSON body as the turn's error and treats a 5xx like no connection. */
+export function openAgentTurnStream(body: AgentTurnBody, signal: AbortSignal) {
+   return fetch("/agent/turns", {
+      method: "POST",
+      credentials: "include",
+      headers: { "Content-Type": "application/json", Accept: "text/event-stream" },
+      body: JSON.stringify(body),
+      signal
+   });
+}
+
+export async function closeAgentConversation(conversationId: string) {
+   await request(`${agentConversationPath(conversationId)}/close`, jsonInit("POST", {}));
 }

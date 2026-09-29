@@ -47,6 +47,7 @@ import { FrqUnitCheck } from "../frq/FrqRoute";
 import { LessonsRoute } from "../lessons/LessonsRoute";
 import { PaceStatement } from "../progress/PaceStatement";
 import type { SettingsTab } from "../routing";
+import { TutorHarness, UNCHECKED_ITEM, frame } from "./agent";
 import { Loading } from "../status/LoadState";
 import type { CountdownPace } from "../ui/Countdown";
 
@@ -639,6 +640,33 @@ async function settingsPage(tab: SettingsTab) {
       ]
    });
 
+   mocked.readAgentMemories.mockResolvedValue({
+      memory_paused: false,
+      groups: [
+         {
+            kind: "preference",
+            label: "How you like to be helped",
+            entries: [{ id: "MEM-1", kind: "preference", text: "Short questions first", skill_ids: [], created_at: "2027-01-04T09:00:00", source_conversation_id: "ACV-1", editable: true }]
+         }
+      ]
+   });
+   mocked.readAgentConversations.mockResolvedValue({
+      conversations: [{ id: "ACV-1", opened_at: "2027-01-04T09:00:00", last_turn_at: "2027-01-04T09:05:00", closed_at: null, opened_on_screen: "today", turn_count: 2 }]
+   });
+   mocked.readAgentConversation.mockResolvedValue({
+      id: "ACV-1",
+      opened_at: "2027-01-04T09:00:00",
+      last_turn_at: "2027-01-04T09:05:00",
+      closed_at: null,
+      opened_on_screen: "today",
+      turn_count: 2,
+      turns: [
+         { id: "ATN-1", role: "student", text: "Where do I start?", created_at: "2027-01-04T09:00:00", outcome: null },
+         { id: "ATN-2", role: "agent", text: "What does the question ask for?", created_at: "2027-01-04T09:00:05", outcome: "complete" }
+      ]
+   });
+   mocked.readAgentProfile.mockResolvedValue({ profile: null, version: null, experiment: "off" });
+
    const container = inPage(
       <SettingsPage
          tab={tab}
@@ -656,6 +684,11 @@ async function settingsPage(tab: SettingsTab) {
 
    if (tab === "budgets") {
       fireEvent.click(await screen.findByRole("button", { name: "open" }));
+   }
+
+   if (tab === "tutor") {
+      fireEvent.click(await screen.findByRole("button", { name: "Open" }));
+      await screen.findByText("What does the question ask for?");
    }
 
    if (tab === "operator") {
@@ -715,6 +748,84 @@ async function assessmentsHub(format: "unit" | "drill" | "mock") {
 
    return container;
 }
+
+function sseResponse(frames: string[], keepsOpen = false) {
+   const encoder = new TextEncoder();
+   const body = new ReadableStream<Uint8Array>({
+      start(controller) {
+         for (const text of frames) {
+            controller.enqueue(encoder.encode(text));
+         }
+
+         if (!keepsOpen) {
+            controller.close();
+         }
+      }
+   });
+
+   return { ok: true, status: 200, body, json: async () => ({}) } as unknown as Response;
+}
+
+async function tutorPanel(answer: () => Promise<Response>, question: string) {
+   mocked.openAgentTurnStream.mockImplementation(answer);
+
+   const { container } = render(<TutorHarness screen={UNCHECKED_ITEM} />);
+
+   fireEvent.click(screen.getByRole("button", { name: "Ask, Ctrl+/" }));
+   fireEvent.change(screen.getByLabelText("Message to the tutor"), { target: { value: question } });
+   fireEvent.click(screen.getByRole("button", { name: "Send" }));
+   await settle();
+   await settle();
+
+   return container;
+}
+
+/* The live tutor: the panel on an unchecked item with a reply, the wait before the first text, no
+   connection, and the Ask button on a timed part. */
+const TUTOR_SCREENS: Screen[] = [
+   {
+      name: "tutor panel, a reply on an unchecked item",
+      mount: async () => {
+         const container = await tutorPanel(
+            async () =>
+               sseResponse([
+                  frame("start", { conversation_id: "ACV-1", turn_id: "ATN-1", screen_line: "", can_see: [] }),
+                  frame("text", { delta: "What does \\(0/0\\) tell you about the form of this limit?" }),
+                  frame("end", { turn_id: "ATN-1", outcome: "complete", turns_on_item: 1, turns_in_conversation: 1 })
+               ]),
+            "I plugged in 3 and got 0/0."
+         );
+
+         await waitFor(() => expect(screen.getByTestId("agent-status").textContent).toContain("tell you about the form"));
+
+         return container;
+      }
+   },
+   {
+      name: "tutor panel, writing a reply",
+      mount: async () => {
+         const container = await tutorPanel(async () => sseResponse([], true), "Where do I start?");
+
+         await screen.findByText("Writing a reply");
+
+         return container;
+      }
+   },
+   {
+      name: "tutor panel, no connection",
+      mount: async () => {
+         const container = await tutorPanel(() => Promise.reject(new TypeError("Failed to fetch")), "Are you there?");
+
+         await screen.findByText(/No connection to the tutor/);
+
+         return container;
+      }
+   },
+   {
+      name: "tutor, the Ask button on a timed part",
+      mount: async () => render(<TutorHarness screen={{ kind: "assessments", format: "mock", timed: true }} />).container
+   }
+];
 
 export const SCREENS: Screen[] = [
    ...LESSON_SCREENS,
@@ -989,7 +1100,7 @@ export const SCREENS: Screen[] = [
          return container;
       }
    },
-   ...(["study", "providers", "budgets", "accessibility", "operator", "data"] as SettingsTab[]).map((tab) => ({
+   ...(["study", "providers", "budgets", "accessibility", "operator", "data", "tutor"] as SettingsTab[]).map((tab) => ({
       name: `settings, ${tab}`,
       mount: async () => settingsPage(tab)
    })),
@@ -1105,5 +1216,6 @@ export const SCREENS: Screen[] = [
 
          return container;
       }
-   }
+   },
+   ...TUTOR_SCREENS
 ];

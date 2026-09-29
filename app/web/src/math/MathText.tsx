@@ -1,8 +1,18 @@
-import { latexToAccessibleText, renderLatexToMarkup, splitInlineMath, type TextOrMathSegment } from "./mathjson";
+import { latexToAccessibleText, renderLatexToMarkup, renderTutorLatex, splitInlineMath, type TextOrMathSegment } from "./mathjson";
+
+/* "item" typesets curated content; "tutor" typesets the live tutor's replies with KaTeX's
+   untrusted settings (renderTutorLatex). */
+export type MathRenderer = "item" | "tutor";
 
 export interface MathTextProps {
    text: string;
+   renderer?: MathRenderer;
 }
+
+const RENDERERS: Record<MathRenderer, (latex: string, displayMode: boolean) => string> = {
+   item: renderLatexToMarkup,
+   tutor: renderTutorLatex
+};
 
 /* Stems and worked-solution steps are plain text that may carry LaTeX delimited \( like this \)
    (app/items/ingest.py records, e.g. tests/fixtures/items_p1). Agent-drafted items carry no
@@ -14,8 +24,9 @@ export interface MathTextProps {
 
    A formula too long to sit in a sentence without wrapping mid-expression gets a line of its own,
    and the punctuation that closes the sentence goes with it so it is not stranded below. */
-export function MathText({ text }: MathTextProps) {
+export function MathText({ text, renderer = "item" }: MathTextProps) {
    const segments = displayLongFormulas(splitInlineMath(text));
+   const render = RENDERERS[renderer];
 
    return (
       <>
@@ -24,7 +35,7 @@ export function MathText({ text }: MathTextProps) {
                return <span key={index}>{segment.text}</span>;
             }
 
-            const markup = renderLatexToMarkup(segment.latex, segment.isDisplayed);
+            const markup = render(segment.latex, segment.isDisplayed);
             const isRendered = markup !== "";
 
             if (!isRendered) {
@@ -48,8 +59,8 @@ function displayLongFormulas(segments: TextOrMathSegment[]): PlacedSegment[] {
 
    for (const segment of segments) {
       if (segment.kind === "math") {
-         const isDisplayed = segment.latex.length > LONGEST_INLINE_LATEX;
-         placed.push({ ...segment, isDisplayed });
+         const isDisplayed = segment.displayed === true || segment.latex.length > LONGEST_INLINE_LATEX;
+         placed.push({ kind: "math", latex: segment.latex, isDisplayed });
          continue;
       }
 

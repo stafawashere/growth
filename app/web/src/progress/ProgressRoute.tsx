@@ -22,6 +22,7 @@ import { MockHistory } from "./MockHistory";
 import { PaceStatement } from "./PaceStatement";
 import { RepresentationMatrix } from "./RepresentationMatrix";
 import { SkillDetailDialog } from "./SkillDetail";
+import { useAgentScreen } from "../agent/AgentProvider";
 import { Loading } from "../status/LoadState";
 import type { ProgressTab } from "../routing";
 import { Page, PageHeader } from "../ui/Page";
@@ -99,6 +100,8 @@ function PaceSection() {
 function MasteryTab(props: { onOpenLesson: (lessonId: string, conceptName: string) => void }) {
    const mastery = useLoad<MasteryMapPayload>(readMasteryMap);
    const [opened, setOpened] = useState<{ skillId: string; name: string } | null>(null);
+
+   useAgentScreen(opened === null ? null : { kind: "progress", tab: "mastery", skill_id: opened.skillId }, { skillName: opened?.name });
 
    if (mastery.kind === "waiting") {
       return <Waiting testId="mastery-waiting" />;
@@ -240,6 +243,9 @@ export function ProgressRoute(props: ProgressRouteProps) {
    const isControlled = props.tab !== undefined && props.onChangeTab !== undefined;
    const tab = isControlled ? (props.tab as ProgressTab) : ownTab;
    const changeTab = isControlled ? (props.onChangeTab as (tab: ProgressTab) => void) : setOwnTab;
+   const tabName = PROGRESS_TAB_ITEMS.find((item) => item.id === tab)?.label ?? tab;
+
+   useAgentScreen({ kind: "progress", tab }, { tabName });
    const backToOverview = () => setPage({ kind: "overview" });
 
    if (page.kind === "checkpoint") {

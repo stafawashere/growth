@@ -157,6 +157,33 @@ describe("the AI call notices", () => {
    });
 });
 
+describe("the AI call notices beside the tutor panel", () => {
+   it("skips the agent role's notices while the panel is open and keeps every other role's", async () => {
+      serve(0, { notices: [notice(1, { role: "agent" }), notice(2, { role: "tutor" })], latest: 2 }, { notices: [notice(3, { role: "agent" })], latest: 3 });
+
+      const { rerender } = render(<AiNotices active={true} hideAgentNotices={true} pollMilliseconds={POLL} visibleMilliseconds={LONG} />);
+
+      await waitFor(() => expect(mocked.readNotices.mock.calls.length).toBeGreaterThanOrEqual(4));
+
+      const shown = screen.getAllByTestId("ai-notice").map((element) => element.textContent ?? "");
+
+      expect(shown).toHaveLength(1);
+      expect(shown[0]).toContain("AI tutor: answered");
+
+      rerender(<AiNotices active={true} hideAgentNotices={false} pollMilliseconds={POLL} visibleMilliseconds={LONG} />);
+      await pause(POLL * 3);
+
+      expect(screen.getAllByTestId("ai-notice")).toHaveLength(1);
+   });
+
+   it("shows the agent role's notices while the panel is closed", async () => {
+      serve(0, { notices: [notice(1, { role: "agent" })], latest: 1 });
+      render(<AiNotices active={true} hideAgentNotices={false} pollMilliseconds={POLL} visibleMilliseconds={LONG} />);
+
+      expect((await screen.findByTestId("ai-notice")).textContent).toContain("AI agent: answered");
+   });
+});
+
 describe("the AI notices setting", () => {
    it("is on by default and remembers being turned off", () => {
       expect(readAiNoticesEnabled()).toBe(true);

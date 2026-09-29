@@ -60,7 +60,7 @@ Decision ids: LSN-DEC-<unit>-<nn>, nn numbering the unit's sets in the order con
 
 | Kind | todo | designed | checked | resolved | signed_off | total |
 |---|---|---|---|---|---|---|
-| concept | 43 | 0 | 127 | 0 | 0 | 170 |
+| concept | 42 | 0 | 128 | 0 | 0 | 170 |
 | prerequisite | 77 | 0 | 0 | 0 | 0 | 77 |
 | decision | 9 | 0 | 1 | 0 | 0 | 10 |
 
@@ -199,7 +199,7 @@ Decision ids: LSN-DEC-<unit>-<nn>, nn numbering the unit's sets in the order con
 | LSN-CON-09004 | BC-CON-09004 | 09 | todo |  |
 | LSN-CON-09005 | BC-CON-09005 | 09 | todo |  |
 | LSN-CON-09006 | BC-CON-09006 | 09 | todo |  |
-| LSN-CON-09007 | BC-CON-09007 | 09 | todo | partial draft on disk from a stopped designer; one checker finding; halted 2026-09-29 |
+| LSN-CON-09007 | BC-CON-09007 | 09 | checked | checker clean 2026-09-29 after a word count correction |
 | LSN-CON-09008 | BC-CON-09008 | 09 | todo |  |
 | LSN-CON-09009 | BC-CON-09009 | 09 | todo |  |
 | LSN-CON-09010 | BC-CON-09010 | 09 | todo |  |

@@ -237,7 +237,7 @@ Every non-text choice is [inferred], settled by the modality A/B in the build pl
  ],
  "refresher": ["ki-1", "err-BC-ERR-09019", "err-BC-ERR-99010", "ex-1"],
  "read_minutes": {"full": 3.0, "brief": 3.0},
- "word_count": {"full": 439, "brief": 439},
+ "word_count": {"full": 438, "brief": 438},
  "research_lines": [
   {"file": "research/units/unit-09-parametric-polar-vector.md", "line": "Each component carries its own constant of integration."},
   {"file": "research/scoring/common-point-losses.md", "line": "Displacement setup given where total distance was asked"}

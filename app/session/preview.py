@@ -146,6 +146,44 @@ def reviewable_skills(states, graph, today):
    return due_skills(states, graph, today, retrievability) | hypercorrection_skills(states, today)
 
 
+FOCUS_SKILL_LIMIT = 4
+
+
+def unit_number(unit_id):
+   return int(unit_id.rsplit("-", 1)[-1])
+
+
+def block_focus(block_name, items, graph):
+   """What one block of today's set works on: its item count, the primary skills of its items by
+   name in serving order, and the units they sit in."""
+   skill_ids = []
+
+   for item in items:
+      skill_id = graph.primary_skill(item["archetype_id"])
+      is_new = skill_id not in skill_ids
+
+      if is_new:
+         skill_ids.append(skill_id)
+
+   records = [graph.skills.get(skill_id, {"id": skill_id}) for skill_id in skill_ids]
+   names = [record.get("name", record["id"]) for record in records]
+   units = sorted({unit_number(record["unit"]) for record in records if "unit" in record})
+
+   return {
+      "block": block_name,
+      "items": len(items),
+      "skills": names[:FOCUS_SKILL_LIMIT],
+      "more_skills": max(len(names) - FOCUS_SKILL_LIMIT, 0),
+      "units": units,
+   }
+
+
+def set_focus(session, graph):
+   blocks = (("review", session.block1), ("learn", session.block2), ("mixed", session.block3))
+
+   return [block_focus(name, items, graph) for name, items in blocks if len(items) > 0]
+
+
 def queue_preview(db, user_id, graph, bank, today, rng):
    states = repository.load_states(db, user_id)
    history = repository.load_attempts_history(db, user_id)
@@ -175,4 +213,5 @@ def queue_preview(db, user_id, graph, bank, today, rng):
       "due_today_skills": len(session.due_queue.skills),
       "due_today_minutes": session.due_queue.minutes,
       "session_in_progress": open_session_id(db, user_id),
+      "focus": set_focus(session, graph),
    }

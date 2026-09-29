@@ -34,6 +34,8 @@ from app.session.diagnoses import write_rule_diagnosis
 
 SERVING_BLOCKS = ("block1", "block2", "block3", diagnostic_session.ITEMS_KEY)
 
+LEARNING_MODE = "learning"
+
 CONFIDENCE_FROM_STUDENT = "student"
 
 CONFIDENCE_FROM_SESSION_CLOSE = "session_close"
@@ -152,6 +154,7 @@ def open_session(
          db, user_id, entry_candidates(states), experiment_default, started_at
       )
 
+   opens_learning = mode == LEARNING_MODE
    assembled = assemble_session(
       states,
       graph,
@@ -164,7 +167,12 @@ def open_session(
       db=db,
       user_id=user_id,
       retrieval_entry=retrieval_entry,
+      openers=opens_learning,
    )
+   opened_first_skills = [
+      graph.concept_skills[concept_id][0] for concept_id in assembled.opener_concepts
+   ]
+   repository.mark_openers_done(db, user_id, opened_first_skills, started_at)
    is_rehearsal = mode == "rehearsal"
    row = models.Session(
       id=new_id("SES"),
@@ -377,6 +385,24 @@ def queue_item(session_row, item_id):
    return queue_slot(session_row, item_id)[2]
 
 
+def is_opener_slot(item):
+   return item.get("is_opener") is True
+
+
+def is_opener_attempt(session_row, attempt):
+   return is_opener_slot(queue_item(session_row, attempt.item_id))
+
+
+def served_as_opener(session_row, attempt):
+   """is_opener_attempt for the routes after submission, where an attempt whose item no serving
+   slot holds (a diagnostic queue, a slot rewritten since) is simply not an opener."""
+   for _block, _position, item in served_positions(session_row):
+      if item["id"] == attempt.item_id:
+         return is_opener_slot(item)
+
+   return False
+
+
 def collects_confidence(stage):
    """A rating is collected before feedback on every stage (11 P1 scope 10), example included:
    the operator's ruling on how a skill leaves stage example (BUILD-LEDGER.md, "Decisions taken
@@ -472,6 +498,11 @@ def record_attempt(
 ):
    """Write one attempt row and, once it is graded and rated, apply its single observation.
 
+   A productive-failure opener (02, Session assembly) is recorded as graded, so the comparison
+   with the canonical method has the student's answer to work from, but its observation is
+   applied at once as not_attempted on every loaded skill: observation_count moves, as 02's
+   schema table says an uncredited observation does, and nothing else in skills_state does.
+
    A grader is a callable over the queue item and the submitted answer that returns the R12
    verdict, which overrides anything the submission claims about itself. Callers that pass no
    grader are trusted to have graded the answer already, which is why the HTTP layer always
@@ -512,8 +543,10 @@ def record_attempt(
    verdict = grader(item, answer) if grades_here else {}
    graded_answer = {**answer, **verdict}
    is_graded = graded_answer.get("correct") is not None
+   is_opener = is_opener_slot(item)
+   is_credited = is_graded and not is_opener
 
-   if is_graded:
+   if is_credited:
       per_skill_states = rule_based_mastery_states(archetype, graded_answer)
    else:
       per_skill_states = {
@@ -546,7 +579,7 @@ def record_attempt(
       updated_at=submitted_at.isoformat(),
    )
    is_unsupported = FadingStage(item["stage"]) == FadingStage.UNSUPPORTED
-   reads_the_feedback_switch = experiment_default is not None and is_unsupported
+   reads_the_feedback_switch = experiment_default is not None and is_unsupported and not is_opener
 
    if reads_the_feedback_switch:
       arm = switches.arm_for(
@@ -566,6 +599,16 @@ def record_attempt(
 
    if is_graded:
       write_rule_diagnosis(db, attempt.id, per_skill_states, graded_answer, submitted_at)
+
+   applies_uncredited = is_opener and is_graded
+
+   if applies_uncredited:
+      apply_attempt(
+         db, session_row, attempt, archetype, Confidence.UNSURE, today, engine_graph, submitted_at
+      )
+
+   if is_opener:
+      return attempt
 
    has_rating = confidence is not None
    awaits_rating = collects_confidence(item["stage"]) and not has_rating
@@ -595,6 +638,8 @@ def record_confidence(
 
    An ungraded attempt still takes the rating, because 11 collects one before feedback on every
    item, but it has no observation to apply, so the rating is stored and mastery is left alone.
+   A productive-failure opener is the same: its uncredited observation was applied when it was
+   submitted, and the rating never reaches the update (02, Session assembly).
    """
    attempt = db.get(models.Attempt, attempt_id)
    already_rated = attempt.confidence is not None
@@ -608,8 +653,10 @@ def record_confidence(
       raise ValueError("record_confidence applies the observation and needs the engine context")
 
    is_graded = attempt.correct is not None
+   session_row = db.get(models.Session, attempt.session_id)
+   stores_rating_only = not is_graded or is_opener_attempt(session_row, attempt)
 
-   if not is_graded:
+   if stores_rating_only:
       attempt.confidence = Confidence(confidence).value
       attempt.confidence_source = CONFIDENCE_FROM_STUDENT
       attempt.updated_at = as_datetime(now or today).isoformat()
@@ -617,7 +664,6 @@ def record_confidence(
 
       return attempt
 
-   session_row = db.get(models.Session, attempt.session_id)
    item = queue_item(session_row, attempt.item_id)
    attempt.confidence = Confidence(confidence).value
    attempt.confidence_source = CONFIDENCE_FROM_STUDENT
@@ -710,6 +756,12 @@ def record_self_explanation(db, attempt_id, answer):
       raise SelfExplanationEmpty(f"the self-explanation for attempt {attempt_id} is empty")
 
    attempt = db.get(models.Attempt, attempt_id)
+   session_row = db.get(models.Session, attempt.session_id)
+
+   if served_as_opener(session_row, attempt):
+      raise SelfExplanationNotInvited(
+         f"attempt {attempt_id} is a productive-failure opener, whose feedback is the comparison"
+      )
 
    if not invites_self_explanation(attempt):
       raise SelfExplanationNotInvited(
@@ -762,7 +814,8 @@ def unrated_graded_attempts(db, session_row):
    for attempt in attempt_rows(db, session_row.id):
       is_graded = attempt.correct is not None
       awaits_rating = collects_confidence(attempt.served_stage) and attempt.confidence is None
-      needs_update = is_graded and awaits_rating
+      was_applied_at_submission = is_opener_attempt(session_row, attempt)
+      needs_update = is_graded and awaits_rating and not was_applied_at_submission
 
       if needs_update:
          result.append(attempt)

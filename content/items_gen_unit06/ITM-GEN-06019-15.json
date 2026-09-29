@@ -1,0 +1,303 @@
+{
+   "id": "ITM-GEN-06019-15",
+   "archetype_id": "BC-QA-06019",
+   "variant_id": null,
+   "format": "mcq",
+   "stem": {
+      "text": "Find the indefinite integral \\( \\int \\left(x - 3\\right) \\left(x - 2\\right)\\,dx \\).",
+      "command_verb": "find"
+   },
+   "answer_key": {
+      "form": "symbolic",
+      "mathjson": [
+         "Add",
+         [
+            "Multiply",
+            [
+               "Rational",
+               1,
+               3
+            ],
+            [
+               "Power",
+               "x",
+               3
+            ]
+         ],
+         [
+            "Multiply",
+            -1,
+            [
+               "Rational",
+               5,
+               2
+            ],
+            [
+               "Power",
+               "x",
+               2
+            ]
+         ],
+         [
+            "Multiply",
+            6,
+            "x"
+         ]
+      ]
+   },
+   "worked_solution": [
+      {
+         "step": 1,
+         "text": "Expand the product so that every term is a power of x: \\( \\left(x - 3\\right) \\left(x - 2\\right) = x^{2} - 5 x + 6 \\).",
+         "mathjson": [
+            "Add",
+            [
+               "Power",
+               "x",
+               2
+            ],
+            [
+               "Multiply",
+               -1,
+               5,
+               "x"
+            ],
+            6
+         ],
+         "rule_named": "rearrangement into an equivalent form"
+      },
+      {
+         "step": 2,
+         "text": "Apply the power rule for antiderivatives to each term: the integral is \\( \\frac{x^{3}}{3} - \\frac{5 x^{2}}{2} + 6 x + C \\).",
+         "mathjson": [
+            "Add",
+            [
+               "Multiply",
+               [
+                  "Rational",
+                  1,
+                  3
+               ],
+               [
+                  "Power",
+                  "x",
+                  3
+               ]
+            ],
+            [
+               "Multiply",
+               -1,
+               [
+                  "Rational",
+                  5,
+                  2
+               ],
+               [
+                  "Power",
+                  "x",
+                  2
+               ]
+            ],
+            [
+               "Multiply",
+               6,
+               "x"
+            ]
+         ],
+         "rule_named": "power rule for antiderivatives"
+      },
+      {
+         "step": 3,
+         "text": "Check: the derivative of \\( \\frac{x^{3}}{3} - \\frac{5 x^{2}}{2} + 6 x \\) is \\( x^{2} - 5 x + 6 \\), which is the integrand.",
+         "rule_named": "antiderivative verified by differentiating"
+      }
+   ],
+   "options": [
+      {
+         "id": "A",
+         "is_key": false,
+         "error_path": "BC-ERR-06033",
+         "value": [
+            "Add",
+            [
+               "Power",
+               "x",
+               3
+            ],
+            [
+               "Multiply",
+               -1,
+               5,
+               [
+                  "Power",
+                  "x",
+                  2
+               ]
+            ],
+            [
+               "Multiply",
+               6,
+               "x"
+            ]
+         ],
+         "derivation": "each exponent raised by one with no division by the new exponent",
+         "mechanism": "algebra_slip"
+      },
+      {
+         "id": "B",
+         "is_key": true,
+         "error_path": null,
+         "value": [
+            "Add",
+            [
+               "Multiply",
+               [
+                  "Rational",
+                  1,
+                  3
+               ],
+               [
+                  "Power",
+                  "x",
+                  3
+               ]
+            ],
+            [
+               "Multiply",
+               -1,
+               [
+                  "Rational",
+                  5,
+                  2
+               ],
+               [
+                  "Power",
+                  "x",
+                  2
+               ]
+            ],
+            [
+               "Multiply",
+               6,
+               "x"
+            ]
+         ]
+      },
+      {
+         "id": "C",
+         "is_key": false,
+         "error_path": "BC-ERR-06022",
+         "value": [
+            "Multiply",
+            [
+               "Rational",
+               1,
+               4
+            ],
+            [
+               "Power",
+               "x",
+               2
+            ],
+            [
+               "Add",
+               "x",
+               -6
+            ],
+            [
+               "Add",
+               "x",
+               -4
+            ]
+         ],
+         "derivation": "each factor antidifferentiated on its own and the two results multiplied",
+         "mechanism": "product_rule_omitted"
+      },
+      {
+         "id": "D",
+         "is_key": false,
+         "error_path": "BC-ERR-06033",
+         "value": [
+            "Add",
+            [
+               "Multiply",
+               [
+                  "Rational",
+                  1,
+                  2
+               ],
+               [
+                  "Power",
+                  "x",
+                  3
+               ]
+            ],
+            [
+               "Multiply",
+               -1,
+               5,
+               [
+                  "Power",
+                  "x",
+                  2
+               ]
+            ],
+            [
+               "Multiply",
+               6,
+               "x"
+            ]
+         ],
+         "derivation": "each exponent raised by one and the term divided by the old exponent instead of the new one",
+         "mechanism": "algebra_slip"
+      }
+   ],
+   "calculator_status": "no_calculator",
+   "representation": "BC-REP-01",
+   "difficulty_settings": [
+      {
+         "difficulty_factor_id": "BC-DF-06",
+         "setting": "low"
+      },
+      {
+         "difficulty_factor_id": "BC-DF-07",
+         "setting": "off"
+      },
+      {
+         "difficulty_factor_id": "BC-DF-13",
+         "setting": "low"
+      }
+   ],
+   "skills": [
+      "BC-SKL-06045",
+      "BC-SKL-06055",
+      "BC-SKL-06040"
+   ],
+   "parameter_draw": {
+      "structure": "product",
+      "coefficient": "1",
+      "first": "-2",
+      "second": "-3",
+      "power": "2"
+   },
+   "predicted_success_probability": 0.3318,
+   "provenance": {
+      "template_id": "TPL-BC-QA-06019-v1",
+      "template_version": "1",
+      "spec_version": "1",
+      "parameter_seed": "BC-QA-06019:spec-1:item-15:try-15",
+      "parameter_draw": {
+         "structure": "product",
+         "coefficient": "1",
+         "first": "-2",
+         "second": "-3",
+         "power": "2"
+      },
+      "model": "claude-opus-5-5 offline template, stage 15 of 2026-09-28",
+      "prompt_version": "generator/template_v1",
+      "generated_at": "2026-09-29T01:14:01Z",
+      "content_snapshot": "4363b6af148968a69a2134723832cc77bc13e1afea35e7db51a39bd994390a32",
+      "no_official_examples": true,
+      "requested_success_probability": 0.2592
+   }
+}

@@ -83,7 +83,8 @@ const readyProgress: ProgressPayload = {
    forecast_minutes: 23,
    due_today_skills: 12,
    due_today_minutes: 15,
-   session_in_progress: null
+   session_in_progress: null,
+   focus: []
 };
 
 const settingsPayload: SettingsPayload = {

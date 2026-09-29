@@ -105,8 +105,16 @@ TRANSFORMS = {"reformat": reformat, "light_edit": light_edit, "paraphrase": para
 
 
 def served_and_candidate_records():
-   """Only the committed banks, so every pair the sample names can be rebuilt from the repository."""
-   return {record["id"]: record for record in dedupe.load_bank_records()}
+   """Only the committed banks, so every pair the sample names can be rebuilt from the repository.
+   A record withdrawn after the sample was drawn is still committed under
+   content/generation_review/rejected, with its text unchanged, so it is read from there."""
+   records = {record["id"]: record for record in dedupe.load_bank_records()}
+
+   for path in sorted((dedupe.CONTENT_DIR / "generation_review" / "rejected").glob("ITM-*.json")):
+      withdrawn = json.loads(path.read_text())
+      records.setdefault(withdrawn["id"], withdrawn)
+
+   return records
 
 
 def page_words(page_id):

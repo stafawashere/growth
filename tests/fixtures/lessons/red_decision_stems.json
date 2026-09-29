@@ -1,0 +1,188 @@
+{
+   "id": "LSN-DEC-06-01",
+   "version": 1,
+   "kind": "decision",
+   "target_id": "BC-UNIT-06",
+   "status": "draft",
+   "snapshot_digest": "00839b8c36a7c5d46e3c3d2386e9f5665283703b31c30eedff1ab54062911e92",
+   "source_digest": "0000000000000000000000000000000000000000000000000000000000000000",
+   "read_minutes": {
+      "full": 0.5,
+      "brief": 0.5
+   },
+   "word_count": {
+      "full": 71,
+      "brief": 71
+   },
+   "sections": [
+      {
+         "id": "LSN-DEC-06-01#s1",
+         "type": "strategy",
+         "bands": [
+            "low",
+            "mid"
+         ],
+         "skills": [
+            "BC-SKL-06019"
+         ],
+         "sources": [
+            "sg-24:15"
+         ],
+         "evidence_tag": "inferred",
+         "archetype_id": "BC-QA-06012",
+         "cue": "The stem asks for the value of the derivative of the accumulation function at a stated input, from a graph of the integrand.",
+         "method": "First written step: state that the derivative of the accumulation equals the integrand at the upper limit.",
+         "rival": "The rival is evaluating the integrand at the upper limit without the chain rule factor.",
+         "separating_feature": "An upper limit that is a function of x adds the factor of its own derivative."
+      }
+   ],
+   "checks": [
+      {
+         "id": "LSN-DEC-06-01#chk-1",
+         "check_kind": "discrimination",
+         "bands": [
+            "low",
+            "mid"
+         ],
+         "format": "mcq",
+         "archetype_id": "BC-QA-06012",
+         "parameter_draw": {
+            "integrand": "cos(t)",
+            "upper_limit": "x^2",
+            "task": "name the method 1"
+         },
+         "stem": {
+            "text": "For \\(F(x)=\\int_0^{x^2}\\cos t\\,dt\\), name the method that gives \\(F'(x)\\).",
+            "command_verb": "name"
+         },
+         "answer_key": {
+            "form": "statement",
+            "mathjson": "chain",
+            "label": "Evaluate the integrand at the upper limit, then multiply by the derivative of the upper limit"
+         },
+         "worked_solution": [
+            {
+               "step": 1,
+               "text": "The upper limit is a function of x, so the chain rule factor is needed."
+            }
+         ],
+         "options": [
+            {
+               "id": "A",
+               "is_key": false,
+               "error_path": "BC-ERR-06027",
+               "label": "Evaluate the integrand at the upper limit and stop"
+            },
+            {
+               "id": "B",
+               "is_key": true,
+               "error_path": null,
+               "label": "Evaluate the integrand at the upper limit, then multiply by the derivative of the upper limit"
+            },
+            {
+               "id": "C",
+               "is_key": false,
+               "error_path": "BC-ERR-06028",
+               "label": "Write the accumulation as a definite integral with a variable upper limit"
+            }
+         ],
+         "calculator_status": "no_calculator",
+         "representation": "BC-REP-01",
+         "skills": [
+            "BC-SKL-06019"
+         ]
+      },
+      {
+         "id": "LSN-DEC-06-01#chk-2",
+         "check_kind": "discrimination",
+         "bands": [
+            "low",
+            "mid"
+         ],
+         "format": "mcq",
+         "archetype_id": "BC-QA-06012",
+         "parameter_draw": {
+            "integrand": "cos(t)",
+            "upper_limit": "x^2",
+            "task": "name the method 2"
+         },
+         "stem": {
+            "text": "For \\(G(x)=\\int_1^{3x}\\sin t\\,dt\\), name the method that gives \\(G'(x)\\).",
+            "command_verb": "name"
+         },
+         "answer_key": {
+            "form": "statement",
+            "mathjson": "chain",
+            "label": "Evaluate the integrand at the upper limit, then multiply by the derivative of the upper limit"
+         },
+         "worked_solution": [
+            {
+               "step": 1,
+               "text": "The upper limit is a function of x, so the chain rule factor is needed."
+            }
+         ],
+         "options": [
+            {
+               "id": "A",
+               "is_key": false,
+               "error_path": "BC-ERR-06027",
+               "label": "Evaluate the integrand at the upper limit and stop"
+            },
+            {
+               "id": "B",
+               "is_key": true,
+               "error_path": null,
+               "label": "Evaluate the integrand at the upper limit, then multiply by the derivative of the upper limit"
+            }
+         ],
+         "calculator_status": "no_calculator",
+         "representation": "BC-REP-01",
+         "skills": [
+            "BC-SKL-06019"
+         ]
+      }
+   ],
+   "refresher": [
+      "LSN-DEC-06-01#s1"
+   ],
+   "decision": {
+      "unit": "BC-UNIT-06",
+      "skills": [
+         "BC-SKL-06017",
+         "BC-SKL-06019"
+      ],
+      "selecting_feature": "task",
+      "stems": [
+         {
+            "id": "LSN-DEC-06-01#stem-1",
+            "archetype_id": "BC-QA-06012",
+            "method": "Differentiate the accumulation function with the chain rule",
+            "parameter_draw": {
+               "integrand": "cos(t)",
+               "upper_limit": "x^2",
+               "task": "differentiate"
+            },
+            "text": "Let \\(F(x)=\\int_0^{x^2}\\cos t\\,dt\\). Find \\(F'(x)\\)."
+         },
+         {
+            "id": "LSN-DEC-06-01#stem-2",
+            "archetype_id": "BC-QA-06012",
+            "method": "Write the accumulation as a definite integral with a variable upper limit",
+            "parameter_draw": {
+               "integrand": "cos(t)",
+               "upper_limit": "x^3",
+               "task": "write"
+            },
+            "text": "Write \\(F(x)\\), the accumulation of \\(\\cos t\\) from 0 to \\(x^2\\), as a definite integral."
+         }
+      ]
+   },
+   "provenance": {
+      "author": "claude-sonnet-5-5",
+      "prompt_version": "generator/lesson_v1",
+      "generated_at": "2026-09-28T00:00:00Z",
+      "signed_off_by": null,
+      "signed_off_at": null,
+      "not_human": true
+   }
+}

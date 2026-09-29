@@ -196,7 +196,8 @@ const progress: ProgressPayload = {
    forecast_minutes: 10,
    due_today_skills: 2,
    due_today_minutes: 10,
-   session_in_progress: null
+   session_in_progress: null,
+   focus: []
 };
 
 const session: SessionPayload = {

@@ -64,6 +64,18 @@ DIAG_NOT_LEARNED_RATES = (("not_started", 0.8), ("partial", 0.2), ("fluent", 0.0
 
 DECAYED_SUPPORT_CAP_RETRIEVABILITY = 0.5
 
+# One concept per conceptual target of 01, "Productive-failure openers for conceptual targets":
+# limits, the derivative definition, accumulation, polar and parametric area, series convergence.
+# 01 and 02 name units, not concepts, so the concept chosen in each unit is inferred from its name.
+PRODUCTIVE_FAILURE_TARGETS = (
+   "BC-CON-01002",
+   "BC-CON-02002",
+   "BC-CON-06001",
+   "BC-CON-09015",
+   "BC-CON-10002",
+)
+PRODUCTIVE_FAILURE_FACTORS = frozenset({"BC-DF-13", "BC-DF-15"})
+
 BLOCK1_MAX_ITEMS = 5
 BLOCK1_MAX_MINUTES = 5.0
 BLOCK2_MAX_MINUTES = 25.0

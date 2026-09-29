@@ -1,6 +1,6 @@
 """Eval 27 from docs/plan/11-phased-delivery.md, P1: the cold-start p_A_knowledge distribution.
 
-The test asserts only that the distribution computes over all 139 active archetypes and is
+The test asserts only that the distribution computes over all 148 active archetypes and is
 finite everywhere. The 0.3 floor on the 90th percentile is a merge gate on the published number,
 so the percentiles are printed for the pull request rather than asserted here.
 """
@@ -49,7 +49,7 @@ def eval_cold_start_pA_distribution(capsys):
    split = sorted(prior.p_knowledge(record, states, hard_parents) for record in archetypes.values())
    compensatory = sorted(prior.p_compensatory(record, states) for record in archetypes.values())
 
-   assert len(split) == 139
+   assert len(split) == 148
    assert all(math.isfinite(value) for value in split)
    assert all(0.0 <= value <= 1.0 for value in split)
 

@@ -426,3 +426,49 @@ def test_the_payload_names_the_template_the_tutor_renders():
    rendered_template = tutor.TEMPLATE_PATH.relative_to(repository_root).as_posix()
 
    assert render.ELABORATED_TEMPLATE == rendered_template
+
+
+def opener_feedback(correct, chosen_option=None, error_record=None, submitted=True):
+   return render.render_feedback(
+      stage=FadingStage.UNSUPPORTED,
+      archetype=ARCHETYPE,
+      item=ITEM,
+      submitted=submitted,
+      correct=correct,
+      chosen_option=chosen_option,
+      error_record=error_record,
+      confidence=Confidence.UNSURE,
+      is_opener=True,
+      answer={"option_id": "B"},
+   )
+
+
+def test_an_opener_miss_is_the_attempt_beside_the_worked_solution_under_one_line():
+   feedback = opener_feedback(False, WRONG_OPTION, ERROR_RECORD)
+   comparison = render.as_dict(feedback)["comparison"]
+
+   assert feedback.kind == render.FeedbackKind.COMPARISON
+   assert feedback.elaborated is None
+   assert feedback.self_explanation_prompt is None
+   assert comparison["label"] == (
+      "The method's first step is to substitute and observe the indeterminate form. "
+      "Cancels a term of a sum rather than a factor of a product."
+   )
+   assert comparison["error_id"] == "BC-ERR-01004"
+   assert comparison["attempt"] == {"option_id": "B"}
+   assert [step["text"] for step in comparison["worked_steps"]] == list(WORKED_STEP_TEXTS)
+
+
+def test_an_opener_miss_with_no_error_record_names_only_the_first_step():
+   comparison = render.as_dict(opener_feedback(False))["comparison"]
+
+   assert comparison["label"] == "The method's first step is to substitute and observe the indeterminate form."
+   assert comparison["observed_behavior"] == ""
+   assert comparison["error_id"] is None
+
+
+def test_an_ungraded_opener_still_gets_the_comparison_and_an_unsubmitted_one_nothing():
+   assert opener_feedback(None).kind == render.FeedbackKind.COMPARISON
+   assert opener_feedback(None, submitted=False).kind == render.FeedbackKind.WITHHELD
+   assert opener_feedback(True).kind == render.FeedbackKind.CORRECT
+

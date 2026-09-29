@@ -10458,3 +10458,300 @@ Mapped difficulty factors: BC-DF-08 (Multi-step dependency), BC-DF-09 (Theorem r
 - the preceding part of the same question supplies the first integral, which is BC-QA-99009
 
 **Record note.** Distinct from BC-QA-06013 because an inequality between two functions carries the argument rather than the algebraic properties of the integral alone. Recorded from the documented archetype gap on BC-FRQ-2018-Q2-C. Tagged single-source because only the free-response document is cached for 2018.
+
+## Archetypes added for library gaps, 2026-09-28 [inferred]
+
+Nine archetypes were minted in stage 15 on the operator's delegation. Six cover atomic skills that no active archetype isolated (inverse function derivatives derived from the identity, critical points where the derivative fails to exist, sums over equal subintervals from a formula or a graph, inverse trigonometric antiderivatives, antiderivatives after rearrangement, separability). Three are generation archetypes for the productive-failure openers of BC-CON-02002, BC-CON-09015 and BC-CON-10002: their stems name no method, and each carries BC-DF-15. Every record carries a parameter spec and a template in `app/generation/templates/`. The section is tagged inferred because each record is built from CED statements and, where one is cited, a scoring guideline page, not from an official question of the same shape.
+
+### BC-QA-03010 Inverse trigonometric derivative derived from the identity f(g(x)) = x
+
+Evidence tag: inferred. Scope: shared. Primary unit: BC-UNIT-03. Units: BC-UNIT-03. Sources: ced:77, ced:78.
+
+**Description.** An inverse tangent, sine or cosine of a linear expression is given together with the identity it satisfies, such as tan(g(x)) equal to the inner expression. The response must differentiate the identity by the chain rule, replace the trigonometric factor through the Pythagorean identity on the principal branch, and solve for the derivative.
+
+**Family.** inverse-function-derivative
+
+**Concepts and skills required.** BC-SKL-03020, BC-SKL-03023, BC-SKL-03022, BC-SKL-03002
+
+**Representations.** BC-REP-01 (Symbolic (analytical) expression)
+
+**Calculator status.** no_calculator
+
+**Scoring point types.** none recorded.
+
+**Common distractors.**
+- the inner derivative factor dropped (BC-ERR-03018)
+- the inverse sine pattern used for the inverse tangent or the reverse (BC-ERR-03017)
+- a sign misplaced in the Pythagorean identity or in the derivative of the cosine (BC-ERR-03017)
+
+**Invariant structure.** The identity f(g(x)) = x is supplied, with f the tangent, sine or cosine and g its inverse composed with a linear expression, and the derivative of g is obtained by differentiating that identity rather than by quoting a formula. The trigonometric factor the chain rule produces is rewritten in x through the Pythagorean identity, with the sign fixed by the principal branch.
+
+**Expected solution path.**
+- differentiate both sides of the identity, applying the chain rule to the composite on the left
+- rewrite the trigonometric factor in terms of x by the Pythagorean identity on the principal branch
+- solve for the derivative of g and simplify
+
+Mapped difficulty factors: BC-DF-04 (Notation complexity), BC-DF-06 (Algebraic burden)
+
+**Record note.** Covers the derivation named in FUN-3.E.1 and FUN-3.E.2 (ced:77, ced:78), which BC-QA-03006 and BC-QA-03007 compute from formulas rather than derive. Minted 2026-09-28 in stage 15 (library gaps) on the operator's delegation.
+
+### BC-QA-05014 Every critical point found, including inputs where the derivative fails to exist
+
+Evidence tag: inferred. Scope: shared. Primary unit: BC-UNIT-05. Units: BC-UNIT-05, BC-UNIT-02. Sources: ced:100, sg-23:15.
+
+**Description.** A function whose derivative is zero at some inputs and fails to exist at others is given by a formula. The response must list every critical point: the zeros of the derivative, and the inputs in the domain where the derivative fails to exist because of a cusp, a vertical tangent or a corner, while excluding an input outside the domain.
+
+**Family.** critical-points
+
+**Concepts and skills required.** BC-SKL-05011, BC-SKL-05010, BC-SKL-02022, BC-SKL-02023
+
+**Representations.** BC-REP-01 (Symbolic (analytical) expression)
+
+**Calculator status.** no_calculator
+
+**Scoring point types.** BC-PT-99013.
+
+**Common distractors.**
+- only the zeros of the derivative reported (BC-ERR-05011)
+- the excluded input kept as a critical point (BC-ERR-05010)
+- the excluded input reported in place of the cusp, tangent or corner (BC-ERR-05010)
+
+**Invariant structure.** The function is defined at an input where its derivative fails to exist, so that input is a critical point, and it is undefined at another input where the derivative formula also breaks down, so that input is not. The zeros of the derivative, when there are any, come from setting its numerator to zero.
+
+**Expected solution path.**
+- differentiate the function
+- solve for the inputs where the derivative is zero
+- find the inputs where the derivative fails to exist and keep those at which the function is defined
+- report the complete list of critical points
+
+Mapped difficulty factors: BC-DF-06 (Algebraic burden), BC-DF-17 (Case splitting at a boundary)
+
+**Record note.** FUN-1.C.2 (ced:100) counts inputs where the derivative fails to exist; no active archetype isolated them before. Minted 2026-09-28 in stage 15 (library gaps) on the operator's delegation.
+
+### BC-QA-06017 Riemann or trapezoidal sum with equal subintervals for a function given by a formula or a graph
+
+Evidence tag: inferred. Scope: shared. Primary unit: BC-UNIT-06. Units: BC-UNIT-06. Sources: ced:119, sg-23:2, sg-25:13.
+
+**Description.** A function is given by a formula or by a graph made of line segments, and a definite integral is to be approximated with a named left, right, midpoint or trapezoidal sum over a stated number of subintervals of equal width. The response must find the width, choose the sample points the named sum uses, and add the products.
+
+**Family.** integral-approximation
+
+**Concepts and skills required.** BC-SKL-06009, BC-SKL-06007, BC-SKL-06005, BC-SKL-06006, BC-SKL-06008
+
+**Representations.** BC-REP-01 (Symbolic (analytical) expression), BC-REP-02 (Graphical)
+
+**Calculator status.** no_calculator
+
+**Scoring point types.** BC-PT-99018, BC-PT-99019.
+
+**Common distractors.**
+- the opposite endpoint used (BC-ERR-06002)
+- the sample values added without the width (BC-ERR-06003)
+- a different named sum computed (BC-ERR-99028)
+- the factor one half applied to one trapezoid only (BC-ERR-06004)
+
+**Invariant structure.** The subintervals have equal width, computed from the interval and the number of subintervals, and the sample points are those the named sum prescribes. The function is read from its formula or from the vertices of its graph, never from a table.
+
+**Expected solution path.**
+- compute the common width of the subintervals
+- list the sample points the named sum uses
+- write the sum of width times function value, or the trapezoidal form
+- evaluate the sum
+
+Mapped difficulty factors: BC-DF-03 (Unusual representation), BC-DF-06 (Algebraic burden)
+
+**Record note.** LIM-5.A.1 and LIM-5.A.2 (ced:119) name functions given graphically and analytically; BC-QA-06001 and BC-QA-06002 cover tables only. Minted 2026-09-28 in stage 15 (library gaps) on the operator's delegation.
+
+### BC-QA-06018 Antiderivative matched to an inverse trigonometric form, directly or after completing the square
+
+Evidence tag: inferred. Scope: shared. Primary unit: BC-UNIT-06. Units: BC-UNIT-06, BC-UNIT-03. Sources: ced:125, ced:127.
+
+**Description.** An integrand of the form a constant over a sum of squares, or over the square root of a difference of squares, is given either directly or with the quadratic expanded. The response must complete the square where needed, recognise the inverse tangent or inverse sine pattern, and antidifferentiate with the scaling factor the substitution introduces.
+
+**Family.** antidifferentiation-technique
+
+**Concepts and skills required.** BC-SKL-06043, BC-SKL-06054, BC-SKL-06047, BC-SKL-06048, BC-SKL-03021
+
+**Representations.** BC-REP-01 (Symbolic (analytical) expression)
+
+**Calculator status.** no_calculator
+
+**Scoring point types.** none recorded.
+
+**Common distractors.**
+- the scaling factor from the differential dropped (BC-ERR-06019)
+- the other inverse trigonometric pattern used (BC-ERR-03017)
+- a logarithm or power produced by a substitution whose inner derivative is absent (BC-ERR-06020)
+
+**Invariant structure.** The integrand is a constant over a quadratic, or over the square root of a quadratic, that becomes a sum or difference of squares, so the antiderivative is an inverse tangent or inverse sine. The scaling constant from the substitution u equal to the shifted input over the scale is carried through.
+
+**Expected solution path.**
+- complete the square in the quadratic when it is expanded
+- recognise the inverse tangent or inverse sine derivative pattern
+- substitute and carry the scaling constant
+- write the antiderivative with the constant of integration
+
+Mapped difficulty factors: BC-DF-06 (Algebraic burden), BC-DF-15 (Unsignposted procedure selection)
+
+**Record note.** FUN-6.D.3 (ced:127) names completing the square, and FUN-6.C.2 (ced:125) ties antiderivatives to derivative rules; the inverse trigonometric forms had no archetype. Minted 2026-09-28 in stage 15 (library gaps) on the operator's delegation.
+
+### BC-QA-06019 Antiderivative found after splitting a fraction or expanding a product, and confirmed by differentiating
+
+Evidence tag: inferred. Scope: shared. Primary unit: BC-UNIT-06. Units: BC-UNIT-06. Sources: ced:125, ced:127.
+
+**Description.** A product of binomials or a fraction whose numerator is a sum is to be antidifferentiated, and the options are candidate antiderivatives. The response must rewrite the integrand as a sum of powers, apply the power rule to each term, and confirm the candidate by checking that its derivative returns the integrand.
+
+**Family.** antidifferentiation-technique
+
+**Concepts and skills required.** BC-SKL-06045, BC-SKL-06055, BC-SKL-06040
+
+**Representations.** BC-REP-01 (Symbolic (analytical) expression)
+
+**Calculator status.** no_calculator
+
+**Scoring point types.** none recorded.
+
+**Common distractors.**
+- the factors, or the numerator and denominator, antidifferentiated separately (BC-ERR-06022)
+- exponents raised with no division by the new exponent (BC-ERR-06033)
+- exponents raised and divided by the old exponent (BC-ERR-06033)
+
+**Invariant structure.** The integrand is not in a form any rule applies to directly; expanding the product or dividing each term of the numerator by the denominator turns it into a sum of powers, including negative or fractional powers, none of them the power minus one.
+
+**Expected solution path.**
+- expand the product or split the fraction into a sum of powers
+- apply the power rule for antiderivatives term by term
+- confirm the result by differentiating it back to the integrand
+
+Mapped difficulty factors: BC-DF-06 (Algebraic burden), BC-DF-13 (Reversed reasoning direction)
+
+**Record note.** FUN-6.C.1 and FUN-6.C.2 (ced:125) define an antiderivative by F' = f, and FUN-6.D.3 (ced:127) names rearrangement into equivalent forms. Minted 2026-09-28 in stage 15 (library gaps) on the operator's delegation.
+
+### BC-QA-07012 Differential equation judged separable or not, and a separable one separated
+
+Evidence tag: inferred. Scope: shared. Primary unit: BC-UNIT-07. Units: BC-UNIT-07. Sources: ced:142, sg-23:12.
+
+**Description.** A differential equation dy/dx equal to an expanded expression in x and y is given. The response must decide whether the right side factors into a function of x times a function of y, and if it does, write the equation with the y factors beside dy and the x factors beside dx; if it does not, say so.
+
+**Family.** separation-of-variables
+
+**Concepts and skills required.** BC-SKL-07028, BC-SKL-07024
+
+**Representations.** BC-REP-06 (Differential equation)
+
+**Calculator status.** no_calculator
+
+**Scoring point types.** BC-PT-99028.
+
+**Common distractors.**
+- the sum divided by y term by term as though it factored (BC-ERR-07028)
+- a false factorisation of a sum that does not factor (BC-ERR-07028)
+- the y factor multiplied onto the dy side instead of divided (BC-ERR-99014)
+- dx moved across with y left beside it (BC-ERR-07024)
+
+**Invariant structure.** The right side is printed expanded, as a sum of terms, so whether it factors into a function of x times a function of y must be decided rather than read off. When it factors, the separated form keeps every y factor with dy and every x factor with dx; when a term carries no common factor, the equation is not separable.
+
+**Expected solution path.**
+- look for a common factor that makes the right side a function of x times a function of y
+- if one exists, divide by the y factor and multiply by dx
+- if none exists, conclude that the equation is not separable
+
+Mapped difficulty factors: BC-DF-11 (Unfamiliar surface presentation), BC-DF-15 (Unsignposted procedure selection)
+
+**Record note.** FUN-7.D.1 (ced:142) says only some equations are separable; BC-QA-07003 always supplies a separable one. Minted 2026-09-28 in stage 15 (library gaps) on the operator's delegation.
+
+### BC-QA-02014 Rate at an instant found before the derivative is defined, as a limit of average rates
+
+Evidence tag: inferred. Scope: shared. Primary unit: BC-UNIT-02. Units: BC-UNIT-02. Sources: ced:60, ced:61.
+
+**Description.** A quantity in context is given as a polynomial in time and the rate at which it changes at one instant is asked for, with no mention of a derivative or a limit. The response has to build the rate itself: average rates over shrinking intervals that start at the instant, and the value they approach. It is the productive-failure opener for BC-CON-02002, so the method is not expected yet and the canonical solution is shown afterwards.
+
+**Family.** derivative-definition-limit
+
+**Concepts and skills required.** BC-SKL-02005, BC-SKL-02004, BC-SKL-02006, BC-SKL-02012, BC-SKL-02002
+
+**Representations.** BC-REP-05 (Contextual model)
+
+**Calculator status.** no_calculator
+
+**Scoring point types.** none recorded.
+
+**Common distractors.**
+- the average rate from time zero to the instant (BC-ERR-02033)
+- the value of the quantity at the instant (BC-ERR-02027)
+- the change from time zero with no division (BC-ERR-02001)
+
+**Invariant structure.** The stem asks for a rate at an instant and names no method, no derivative and no limit. The only tool the student already has is the average rate over an interval, so the task is generated from it: shrink the interval to the instant and find the value the averages approach.
+
+**Expected solution path.**
+- write the average rate over a short interval starting at the instant
+- simplify the difference quotient
+- find the value it approaches as the interval shrinks to zero length
+
+Mapped difficulty factors: BC-DF-06 (Algebraic burden), BC-DF-15 (Unsignposted procedure selection)
+
+**Record note.** Generation archetype for the productive-failure opener of BC-CON-02002 (01 Productive-failure openers; stage 14 had no archetype for this target). CHA-2.A and CHA-2.B (ced:60, ced:61). Minted 2026-09-28 in stage 15 (library gaps) on the operator's delegation.
+
+### BC-QA-09014 Area of a polar region found before the polar area integral is taught
+
+Evidence tag: inferred. Scope: BC_only. Primary unit: BC-UNIT-09. Units: BC-UNIT-09. Sources: ced:178, sg-25:8.
+
+**Description.** A limacon-shaped polar curve is given, and the area of the region it encloses, or of the part swept between two rays, is asked for with no method named. The response has to build the area from thin sectors of radius r, each of area one half r squared times its angle, and integrate over the angles swept. It is the productive-failure opener for BC-CON-09015.
+
+**Family.** polar-area
+
+**Concepts and skills required.** BC-SKL-09035, BC-SKL-09036, BC-SKL-09038
+
+**Representations.** BC-REP-13 (Polar equation)
+
+**Calculator status.** no_calculator
+
+**Scoring point types.** BC-PT-99048.
+
+**Common distractors.**
+- the factor one half omitted (BC-ERR-09035)
+- r integrated instead of its square (BC-ERR-09036)
+- the wrong angles swept (BC-ERR-09037)
+
+**Invariant structure.** The radius stays positive, so the curve is traced once over a full turn and the region is swept once by the rays from the pole. The stem names no integral and no formula; the area follows from the sector area one half r squared times the angle, summed over the angles the region spans.
+
+**Expected solution path.**
+- cut the region into thin sectors by rays from the pole
+- write the area of one sector as one half r squared times its angle
+- integrate over the angles the region sweeps
+- evaluate the integral exactly
+
+Mapped difficulty factors: BC-DF-06 (Algebraic burden), BC-DF-15 (Unsignposted procedure selection)
+
+**Record note.** Generation archetype for the productive-failure opener of BC-CON-09015 (01 Productive-failure openers; stage 14 had no archetype for this target). CHA-5.D (ced:178). Minted 2026-09-28 in stage 15 (library gaps) on the operator's delegation.
+
+### BC-QA-10021 Sum of a series found from its partial sums before any test is taught
+
+Evidence tag: inferred. Scope: BC_only. Primary unit: BC-UNIT-10. Units: BC-UNIT-10. Sources: ced:186, ced:187.
+
+**Description.** A convergent series is given by a formula for its partial sums or as a telescoping series written unsplit, and its sum is asked for, with no test named. The response has to reason from the definition: a series converges exactly when its partial sums approach a finite limit, and that limit is the sum. It is the productive-failure opener for BC-CON-10002, and the answer is a value so the item can be served as a short answer.
+
+**Family.** series-value
+
+**Concepts and skills required.** BC-SKL-10003, BC-SKL-10004, BC-SKL-10005, BC-SKL-10002
+
+**Representations.** BC-REP-11 (Series (finite partial sums or infinite))
+
+**Calculator status.** no_calculator
+
+**Scoring point types.** none recorded.
+
+**Common distractors.**
+- the limit of the terms, 0, reported as the sum (BC-ERR-10001)
+- the first or second partial sum reported as the sum (BC-ERR-99038)
+
+**Invariant structure.** The sum is read from the sequence of partial sums, given directly or obtained by cancellation, never from a named test or a remembered formula. The terms of every series shown approach 0, so the limit of the terms and the limit of the partial sums have to be told apart.
+
+**Expected solution path.**
+- obtain the nth partial sum, directly or by cancelling a telescoping sum
+- take its limit as n increases
+- report that limit as the sum
+
+Mapped difficulty factors: BC-DF-13 (Reversed reasoning direction), BC-DF-15 (Unsignposted procedure selection)
+
+**Record note.** Generation archetype for the productive-failure opener of BC-CON-10002 (01 Productive-failure openers; stage 14 had no archetype for this target). Spec version 2 replaced a statement-keyed first version the same day, because app/session/build.py opener_options serves only items with a value to type. LIM-7.A.1 and LIM-7.A.2 (ced:186). Minted 2026-09-28 in stage 15 (library gaps) on the operator's delegation.

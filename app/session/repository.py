@@ -127,29 +127,69 @@ def save_states(db, user_id, states, snapshot_id, now):
    db.flush()
 
 
+def mark_openers_done(db, user_id, skill_ids, now):
+   """Sets concept_opener_done on each concept's first skill and writes nothing else of the row,
+   because placing the opener is not an observation (02, Session assembly)."""
+   for skill_id in skill_ids:
+      row = db.get(models.SkillState, (user_id, skill_id))
+      has_row = row is not None
+
+      if not has_row:
+         continue
+
+      row.concept_opener_done = 1
+      row.updated_at = as_iso(now)
+
+   db.flush()
+
+
+def opener_item_ids(queue_text):
+   """The block 2 slots session assembly placed as productive-failure openers."""
+   has_queue = bool(queue_text)
+
+   if not has_queue:
+      return frozenset()
+
+   queue = json.loads(queue_text)
+
+   return frozenset(
+      item["id"]
+      for item in queue.get("block2", [])
+      if item.get("is_opener") is True
+   )
+
+
 def load_attempts_history(db, user_id):
    """The attempt rows assemble_session reads: requeue, repeat window, forecast and format.
 
    A diagnostic miss is not marked corrected, because the diagnostic shows no correction, so it
-   never comes back through the R5 requeue. A free-response attempt is left out altogether: its
-   question is point-graded and may only be served in the four modes R10 names, so the
-   micro-session's requeue and repeat window must never see it.
+   never comes back through the R5 requeue. A productive-failure opener's miss is not marked
+   corrected either: the attempt is expected to fail and carries no credit (02, Session
+   assembly), so it is neither requeued nor listed for an error note. A free-response attempt is
+   left out altogether: its question is point-graded and may only be served in the four modes R10
+   names, so the micro-session's requeue and repeat window must never see it.
    """
    archetype_of = dict(db.execute(select(models.Item.id, models.Item.archetype_id)).all())
    rows = db.execute(
-      select(models.Attempt, models.Session.started_at, models.Session.mode)
+      select(models.Attempt, models.Session.started_at, models.Session.mode, models.Session.queue)
       .join(models.Session, models.Session.id == models.Attempt.session_id)
       .where(models.Session.user_id == user_id)
       .where(models.Attempt.format != FREE_RESPONSE_FORMAT)
       .order_by(models.Attempt.started_at)
    ).all()
    history = []
+   openers_by_session = {}
 
-   for attempt, started_at, mode in rows:
+   for attempt, started_at, mode, queue_text in rows:
       submitted_at = attempt.submitted_at or started_at
       was_diagnostic = mode == "diagnostic"
+
+      if attempt.session_id not in openers_by_session:
+         openers_by_session[attempt.session_id] = opener_item_ids(queue_text)
+
+      was_opener = attempt.item_id in openers_by_session[attempt.session_id]
       was_wrong = attempt.correct is not None and attempt.correct == 0
-      is_incorrect = was_wrong and not was_diagnostic
+      is_incorrect = was_wrong and not was_diagnostic and not was_opener
       minutes = None
       has_elapsed = attempt.elapsed_ms is not None
 

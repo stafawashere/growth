@@ -2356,6 +2356,11 @@
    "name": "Calculator value rounded to too few places",
    "status": "active"
   },
+  "BC-ERR-02033": {
+   "created": "2026-09-28",
+   "name": "Average rate over an interval reported as the rate at an instant",
+   "status": "active"
+  },
   "BC-ERR-03001": {
    "created": "2026-09-19",
    "name": "Inner derivative omitted from a chain rule application",
@@ -3106,6 +3111,11 @@
   "BC-ERR-06032": {
    "created": "2026-09-19",
    "name": "Calculator left in degree mode for a trigonometric integrand",
+   "status": "active"
+  },
+  "BC-ERR-06033": {
+   "created": "2026-09-28",
+   "name": "Power rule for antiderivatives applied with the wrong divisor",
    "status": "active"
   },
   "BC-ERR-07001": {
@@ -8538,6 +8548,11 @@
    "name": "Derivative at a point produced with technology",
    "status": "active"
   },
+  "BC-QA-02014": {
+   "created": "2026-09-28",
+   "name": "Rate at an instant found before the derivative is defined, as a limit of average rates",
+   "status": "active"
+  },
   "BC-QA-03001": {
    "created": "2026-09-19",
    "name": "Chain rule derivative of a composite given symbolically",
@@ -8581,6 +8596,11 @@
   "BC-QA-03009": {
    "created": "2026-09-19",
    "name": "Selecting the differentiation procedure for a given expression",
+   "status": "active"
+  },
+  "BC-QA-03010": {
+   "created": "2026-09-28",
+   "name": "Inverse trigonometric derivative derived from the identity f(g(x)) = x",
    "status": "active"
   },
   "BC-QA-04001": {
@@ -8698,6 +8718,11 @@
    "name": "Second derivative test applied at a critical point",
    "status": "active"
   },
+  "BC-QA-05014": {
+   "created": "2026-09-28",
+   "name": "Every critical point found, including inputs where the derivative fails to exist",
+   "status": "active"
+  },
   "BC-QA-06001": {
    "created": "2026-09-19",
    "name": "Riemann sum from a table with over or under estimate reasoning",
@@ -8779,6 +8804,21 @@
    "name": "Selecting an antidifferentiation technique from the form of the integrand",
    "status": "active"
   },
+  "BC-QA-06017": {
+   "created": "2026-09-28",
+   "name": "Riemann or trapezoidal sum with equal subintervals for a function given by a formula or a graph",
+   "status": "active"
+  },
+  "BC-QA-06018": {
+   "created": "2026-09-28",
+   "name": "Antiderivative matched to an inverse trigonometric form, directly or after completing the square",
+   "status": "active"
+  },
+  "BC-QA-06019": {
+   "created": "2026-09-28",
+   "name": "Antiderivative found after splitting a fraction or expanding a product, and confirmed by differentiating",
+   "status": "active"
+  },
   "BC-QA-07001": {
    "created": "2026-09-19",
    "name": "Solution curve sketched on a supplied slope field",
@@ -8832,6 +8872,11 @@
   "BC-QA-07011": {
    "created": "2026-09-19",
    "name": "Particular solution with a domain restriction or an accumulation form",
+   "status": "active"
+  },
+  "BC-QA-07012": {
+   "created": "2026-09-28",
+   "name": "Differential equation judged separable or not, and a separable one separated",
    "status": "active"
   },
   "BC-QA-08001": {
@@ -8972,6 +9017,11 @@
    "name": "Area inside one polar curve and outside another",
    "status": "active"
   },
+  "BC-QA-09014": {
+   "created": "2026-09-28",
+   "name": "Area of a polar region found before the polar area integral is taught",
+   "status": "active"
+  },
   "BC-QA-10001": {
    "created": "2026-09-19",
    "name": "Selecting a convergence test for a given series",
@@ -9070,6 +9120,11 @@
   "BC-QA-10020": {
    "created": "2026-09-19",
    "name": "Convergence to the function at a specified input decided with a reason",
+   "status": "active"
+  },
+  "BC-QA-10021": {
+   "created": "2026-09-28",
+   "name": "Convergence of a series decided from its partial sums before any test is taught",
    "status": "active"
   },
   "BC-QA-99001": {
@@ -16195,7 +16250,8 @@
   "BC-SKL-06046": {
    "created": "2026-09-19",
    "name": "Recognise an integrand with no closed-form antiderivative",
-   "status": "active"
+   "status": "retired",
+   "superseded_by": "BC-SKL-06074"
   },
   "BC-SKL-06047": {
    "created": "2026-09-19",

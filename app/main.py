@@ -168,6 +168,7 @@ DEFAULT_CONTENT_ROOT = REPO_ROOT / "data"
 DEFAULT_TUTOR_CAP_USD = 1.00
 DEFAULT_TUTOR_CAP_TOKENS = 250000
 DEFAULT_WEB_DIST_DIR = REPO_ROOT / "app" / "web" / "dist"
+ASSET_CACHE_CONTROL = "public, max-age=31536000, immutable"
 DEFAULT_TOKENS_PATH = REPO_ROOT / "app" / "design" / "growth-tokens.json"
 DEFAULT_CONTENT_DIR = REPO_ROOT / "content"
 DEFAULT_ITEMS_DIR = DEFAULT_CONTENT_DIR / "items_p1_agent"
@@ -572,6 +573,20 @@ def _tokens_css_response(env):
    return Response(content=stylesheet, media_type="text/css")
 
 
+class HashedAssetFiles(StaticFiles):
+   """Vite puts a content hash in every file name under dist/assets, so a given URL never changes
+   its bytes and the browser can keep it for a year without revalidating."""
+
+   async def get_response(self, path, scope):
+      response = await super().get_response(path, scope)
+      is_served_file = response.status_code == 200
+
+      if is_served_file:
+         response.headers["Cache-Control"] = ASSET_CACHE_CONTROL
+
+      return response
+
+
 def mount_client(application, env, dist_dir=DEFAULT_WEB_DIST_DIR):
    """Serves the operator's token stylesheet and the built React client from the same
    application, added after every router create_app already registered so none of those routes
@@ -598,7 +613,7 @@ def mount_client(application, env, dist_dir=DEFAULT_WEB_DIST_DIR):
       return _tokens_css_response(env)
 
    if assets_dir.is_dir():
-      application.mount("/assets", StaticFiles(directory=str(assets_dir)), name="web-assets")
+      application.mount("/assets", HashedAssetFiles(directory=str(assets_dir)), name="web-assets")
 
    @application.get("/")
    def serve_client_index():
@@ -683,5 +698,22 @@ def __getattr__(name):
 
    if _application is None:
       _application = build_application()
+      _application.router.add_event_handler("startup", ingest_the_bank_before_serving(_application))
 
    return _application
+
+
+def ingest_the_bank_before_serving(application):
+   """The bank verifies every record it has not stored yet, in a child process each, the first
+   time anything reads it. Left to that first read, the request hangs for minutes and holds the
+   database write lock the whole time, so every sign-in behind it fails. The server's own start
+   pays it instead, before it accepts a connection."""
+   bank = application.state.settings.session_context.bank
+
+   def ingest():
+      ensures = getattr(bank, "ensure_ingested", None)
+
+      if ensures is not None:
+         ensures()
+
+   return ingest

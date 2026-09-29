@@ -1,0 +1,1893 @@
+{
+ "archetypes": [
+  {
+   "anchor_quote": "The chain rule and definition of an inverse function can be used to find the derivative of an inverse function, provided the derivative exists.",
+   "asked_to_produce": [
+    "the derivative of the inverse function as an expression in x"
+   ],
+   "calculator_status": "no_calculator",
+   "common_distractors": [
+    "the inner derivative factor dropped (BC-ERR-03018)",
+    "the inverse sine pattern used for the inverse tangent or the reverse (BC-ERR-03017)",
+    "a sign misplaced in the Pythagorean identity or in the derivative of the cosine (BC-ERR-03017)"
+   ],
+   "common_givens": [
+    "an inverse trigonometric function of a linear expression",
+    "the identity it satisfies",
+    "the principal branch"
+   ],
+   "created": "2026-09-28",
+   "description": "An inverse tangent, sine or cosine of a linear expression is given together with the identity it satisfies, such as tan(g(x)) equal to the inner expression. The response must differentiate the identity by the chain rule, replace the trigonometric factor through the Pythagorean identity on the principal branch, and solve for the derivative.",
+   "difficulty_factors": [
+    "BC-DF-04",
+    "BC-DF-06"
+   ],
+   "difficulty_variables": [
+    "whether the inverse is the tangent, which needs no radical, or the sine or cosine, which need a branch sign"
+   ],
+   "doc_id": "ced",
+   "doc_page": 77,
+   "evidence_tag": "inferred",
+   "expected_solution_path": [
+    "differentiate both sides of the identity, applying the chain rule to the composite on the left",
+    "rewrite the trigonometric factor in terms of x by the Pythagorean identity on the principal branch",
+    "solve for the derivative of g and simplify"
+   ],
+   "family": "inverse-function-derivative",
+   "id": "BC-QA-03010",
+   "invariant_structure": "The identity f(g(x)) = x is supplied, with f the tangent, sine or cosine and g its inverse composed with a linear expression, and the derivative of g is obtained by differentiating that identity rather than by quoting a formula. The trigonometric factor the chain rule produces is rewritten in x through the Pythagorean identity, with the sign fixed by the principal branch.",
+   "misconceptions": [],
+   "multi_skill_extensions": [],
+   "multipart_structure": "A single multiple choice or short answer question.",
+   "name": "Inverse trigonometric derivative derived from the identity f(g(x)) = x",
+   "notes": "Covers the derivation named in FUN-3.E.1 and FUN-3.E.2 (ced:77, ced:78), which BC-QA-03006 and BC-QA-03007 compute from formulas rather than derive. Minted 2026-09-28 in stage 15 (library gaps) on the operator's delegation.",
+   "official_examples": [],
+   "parameter_spec": {
+    "calculator_guard": "exact(key)",
+    "constraints": [
+     "slope != scale",
+     "gcd(slope, scale) == 1"
+    ],
+    "derived": [
+     {
+      "expression": "slope * slope_sign",
+      "name": "inner_rate"
+     }
+    ],
+    "dial_bindings": [
+     {
+      "difficulty_factor_id": "BC-DF-06",
+      "parameter": "inverse",
+      "settings": {
+       "arccos": "medium",
+       "arcsin": "medium",
+       "arctan": "low"
+      }
+     },
+     {
+      "difficulty_factor_id": "BC-DF-04",
+      "parameter": "inverse",
+      "settings": {
+       "arccos": "high",
+       "arcsin": "high",
+       "arctan": "high"
+      }
+     }
+    ],
+    "evidence_tag": "inferred",
+    "invariants": [
+     "exact(key)",
+     "inner_rate != 0"
+    ],
+    "notes": "g(x) is the inverse tangent, sine or cosine of u = (p x + q)/a, stated with the identity tan(g(x)) = u, sin(g(x)) = u or cos(g(x)) = u. Differentiating the identity by the chain rule and replacing sec^2 g, cos g or sin g through the Pythagorean identity on the principal branch gives p a/(a^2 + (p x + q)^2), p/sqrt(a^2 - (p x + q)^2) or -p/sqrt(a^2 - (p x + q)^2). The slope and the scale differ and are coprime, so dropping the inner factor p/a always changes the answer.",
+    "parameters": [
+     {
+      "domain": {
+       "values": [
+        "arctan",
+        "arcsin",
+        "arccos"
+       ]
+      },
+      "name": "inverse",
+      "role": "difficulty",
+      "type": "label"
+     },
+     {
+      "domain": {
+       "max": 5,
+       "min": 2,
+       "step": 1
+      },
+      "name": "slope",
+      "role": "safe",
+      "type": "integer"
+     },
+     {
+      "domain": {
+       "values": [
+        -1,
+        1
+       ]
+      },
+      "name": "slope_sign",
+      "role": "safe",
+      "type": "integer"
+     },
+     {
+      "domain": {
+       "max": 10,
+       "min": -10,
+       "step": 1
+      },
+      "name": "offset",
+      "role": "safe",
+      "type": "integer"
+     },
+     {
+      "domain": {
+       "max": 11,
+       "min": 2,
+       "step": 1
+      },
+      "name": "scale",
+      "role": "safe",
+      "type": "integer"
+     }
+    ],
+    "representation_bindings": [
+     {
+      "figure_kind": null,
+      "representation": "BC-REP-01",
+      "requires": [
+       "inverse",
+       "slope",
+       "slope_sign",
+       "offset",
+       "scale"
+      ]
+     }
+    ],
+    "spec_version": "1"
+   },
+   "point_types": [],
+   "prerequisites": [
+    "BC-PRQ-03003",
+    "BC-PRQ-03004",
+    "BC-PRQ-03001"
+   ],
+   "primary_unit": "BC-UNIT-03",
+   "prohibited_shortcuts": [],
+   "representations": [
+    "BC-REP-01"
+   ],
+   "safe_variables": [
+    "the slope and intercept of the inner linear expression",
+    "the divisor that scales it"
+   ],
+   "scope": "shared",
+   "scoring_pattern": "No scoring guideline in the corpus scores this derivation, so the archetype carries no point types; the answer is checked as an expression.",
+   "skills": [
+    "BC-SKL-03020",
+    "BC-SKL-03023",
+    "BC-SKL-03022",
+    "BC-SKL-03002"
+   ],
+   "sources": [
+    "ced:77",
+    "ced:78"
+   ],
+   "status": "active",
+   "typical_wording": [
+    "differentiate both sides of this identity with respect to x to find the derivative of g"
+   ],
+   "units": [
+    "BC-UNIT-03"
+   ],
+   "variants": [],
+   "wrong_approaches": [
+    "quoting a remembered derivative formula without the inner factor"
+   ]
+  },
+  {
+   "anchor_quote": "A point on a function where the first derivative equals zero or fails to exist is a critical point of the function.",
+   "asked_to_produce": [
+    "the complete list of critical points"
+   ],
+   "calculator_status": "no_calculator",
+   "common_distractors": [
+    "only the zeros of the derivative reported (BC-ERR-05011)",
+    "the excluded input kept as a critical point (BC-ERR-05010)",
+    "the excluded input reported in place of the cusp, tangent or corner (BC-ERR-05010)"
+   ],
+   "common_givens": [
+    "a quotient with a fractional power or an absolute value in the numerator",
+    "the input excluded from the domain"
+   ],
+   "created": "2026-09-28",
+   "description": "A function whose derivative is zero at some inputs and fails to exist at others is given by a formula. The response must list every critical point: the zeros of the derivative, and the inputs in the domain where the derivative fails to exist because of a cusp, a vertical tangent or a corner, while excluding an input outside the domain.",
+   "difficulty_factors": [
+    "BC-DF-06",
+    "BC-DF-17"
+   ],
+   "difficulty_variables": [
+    "whether the failure is a cusp, a vertical tangent or a corner",
+    "whether the derivative has a zero at all"
+   ],
+   "doc_id": "ced",
+   "doc_page": 100,
+   "evidence_tag": "inferred",
+   "expected_solution_path": [
+    "differentiate the function",
+    "solve for the inputs where the derivative is zero",
+    "find the inputs where the derivative fails to exist and keep those at which the function is defined",
+    "report the complete list of critical points"
+   ],
+   "family": "critical-points",
+   "id": "BC-QA-05014",
+   "invariant_structure": "The function is defined at an input where its derivative fails to exist, so that input is a critical point, and it is undefined at another input where the derivative formula also breaks down, so that input is not. The zeros of the derivative, when there are any, come from setting its numerator to zero.",
+   "misconceptions": [],
+   "multi_skill_extensions": [],
+   "multipart_structure": "A single multiple choice or short answer question; the same step opens many free response parts on extrema.",
+   "name": "Every critical point found, including inputs where the derivative fails to exist",
+   "notes": "FUN-1.C.2 (ced:100) counts inputs where the derivative fails to exist; no active archetype isolated them before. Minted 2026-09-28 in stage 15 (library gaps) on the operator's delegation.",
+   "official_examples": [],
+   "parameter_spec": {
+    "calculator_guard": "True",
+    "constraints": [
+     "root != pole",
+     "shape != 'vertical' or (3 * root - pole) % 2 == 0"
+    ],
+    "derived": [
+     {
+      "expression": "3 * root - 2 * pole",
+      "name": "cusp_zero"
+     },
+     {
+      "expression": "(3 * root - pole) / 2",
+      "name": "vertical_zero"
+     }
+    ],
+    "dial_bindings": [
+     {
+      "difficulty_factor_id": "BC-DF-06",
+      "parameter": "shape",
+      "settings": {
+       "corner": "low",
+       "cusp": "medium",
+       "vertical": "medium"
+      }
+     },
+     {
+      "difficulty_factor_id": "BC-DF-17",
+      "parameter": "shape",
+      "settings": {
+       "corner": "low",
+       "cusp": "off",
+       "vertical": "off"
+      }
+     }
+    ],
+    "evidence_tag": "inferred",
+    "invariants": [
+     "cusp_zero != root and cusp_zero != pole",
+     "vertical_zero != root and vertical_zero != pole"
+    ],
+    "notes": "f(x) = k (x - r)^(2/3)/(x - d), k (x - r)^(1/3)/(x - d) or k |x - r|/(x - d), defined for x != d. The derivative is zero at 3r - 2d, at (3r - d)/2, or nowhere; it fails to exist at x = r (cusp, vertical tangent or corner) where f is defined, and at x = d, which is outside the domain and so is not a critical point.",
+    "parameters": [
+     {
+      "domain": {
+       "values": [
+        "cusp",
+        "vertical",
+        "corner"
+       ]
+      },
+      "name": "shape",
+      "role": "difficulty",
+      "type": "label"
+     },
+     {
+      "domain": {
+       "max": 6,
+       "min": -6,
+       "step": 1
+      },
+      "name": "root",
+      "role": "safe",
+      "type": "integer"
+     },
+     {
+      "domain": {
+       "max": 6,
+       "min": -6,
+       "step": 1
+      },
+      "name": "pole",
+      "role": "safe",
+      "type": "integer"
+     },
+     {
+      "domain": {
+       "exclude": [
+        0
+       ],
+       "max": 5,
+       "min": -5,
+       "step": 1
+      },
+      "name": "multiplier",
+      "role": "safe",
+      "type": "integer"
+     }
+    ],
+    "representation_bindings": [
+     {
+      "figure_kind": null,
+      "representation": "BC-REP-01",
+      "requires": [
+       "shape",
+       "root",
+       "pole",
+       "multiplier"
+      ]
+     }
+    ],
+    "spec_version": "1"
+   },
+   "point_types": [
+    "BC-PT-99013"
+   ],
+   "prerequisites": [
+    "BC-PRQ-05001",
+    "BC-PRQ-05003",
+    "BC-PRQ-02001"
+   ],
+   "primary_unit": "BC-UNIT-05",
+   "prohibited_shortcuts": [],
+   "representations": [
+    "BC-REP-01"
+   ],
+   "safe_variables": [
+    "the location of the cusp, tangent or corner",
+    "the excluded input",
+    "the constant multiplier"
+   ],
+   "scope": "shared",
+   "scoring_pattern": "Where a free response part asks for extrema, one point is earned for considering the derivative equal to zero (sg-23:15); this archetype isolates the fuller list the definition requires.",
+   "skills": [
+    "BC-SKL-05011",
+    "BC-SKL-05010",
+    "BC-SKL-02022",
+    "BC-SKL-02023"
+   ],
+   "sources": [
+    "ced:100",
+    "sg-23:15"
+   ],
+   "status": "active",
+   "typical_wording": [
+    "find all critical points of f"
+   ],
+   "units": [
+    "BC-UNIT-05",
+    "BC-UNIT-02"
+   ],
+   "variants": [],
+   "wrong_approaches": [
+    "setting only the derivative equal to zero"
+   ]
+  },
+  {
+   "anchor_quote": "Definite integrals can be approximated using a left Riemann sum, a right Riemann sum, a midpoint Riemann sum, or a trapezoidal sum",
+   "asked_to_produce": [
+    "the value of the named sum"
+   ],
+   "calculator_status": "no_calculator",
+   "common_distractors": [
+    "the opposite endpoint used (BC-ERR-06002)",
+    "the sample values added without the width (BC-ERR-06003)",
+    "a different named sum computed (BC-ERR-99028)",
+    "the factor one half applied to one trapezoid only (BC-ERR-06004)"
+   ],
+   "common_givens": [
+    "a formula or a graph of line segments",
+    "the interval of integration",
+    "the number of subintervals"
+   ],
+   "created": "2026-09-28",
+   "description": "A function is given by a formula or by a graph made of line segments, and a definite integral is to be approximated with a named left, right, midpoint or trapezoidal sum over a stated number of subintervals of equal width. The response must find the width, choose the sample points the named sum uses, and add the products.",
+   "difficulty_factors": [
+    "BC-DF-03",
+    "BC-DF-06"
+   ],
+   "difficulty_variables": [
+    "formula or graph",
+    "which of the four sums is named"
+   ],
+   "doc_id": "ced",
+   "doc_page": 119,
+   "evidence_tag": "inferred",
+   "expected_solution_path": [
+    "compute the common width of the subintervals",
+    "list the sample points the named sum uses",
+    "write the sum of width times function value, or the trapezoidal form",
+    "evaluate the sum"
+   ],
+   "family": "integral-approximation",
+   "id": "BC-QA-06017",
+   "invariant_structure": "The subintervals have equal width, computed from the interval and the number of subintervals, and the sample points are those the named sum prescribes. The function is read from its formula or from the vertices of its graph, never from a table.",
+   "misconceptions": [
+    "BC-MIS-06001",
+    "BC-MIS-06002",
+    "BC-MIS-06004"
+   ],
+   "multi_skill_extensions": [],
+   "multipart_structure": "A single multiple choice or short answer question, or one part of a free response question worth two points.",
+   "name": "Riemann or trapezoidal sum with equal subintervals for a function given by a formula or a graph",
+   "notes": "LIM-5.A.1 and LIM-5.A.2 (ced:119) name functions given graphically and analytically; BC-QA-06001 and BC-QA-06002 cover tables only. Minted 2026-09-28 in stage 15 (library gaps) on the operator's delegation.",
+   "official_examples": [],
+   "parameter_spec": {
+    "calculator_guard": "exact(key)",
+    "constraints": [
+     "source == 'formula' or distinct([graph_left, graph_right, graph_mid, graph_trap, graph_left / 2, graph_right / 2, graph_mid / 2, graph_trap / 2, graph_bad_trap])",
+     "source == 'graph' or distinct([formula_left, formula_right, formula_mid, formula_trap, formula_left / width, formula_right / width, formula_mid / width, formula_trap / width, formula_bad_trap])"
+    ],
+    "derived": [
+     {
+      "expression": "2 * (heights[0] + heights[2] + heights[4] + heights[6])",
+      "name": "graph_left"
+     },
+     {
+      "expression": "2 * (heights[2] + heights[4] + heights[6] + heights[8])",
+      "name": "graph_right"
+     },
+     {
+      "expression": "2 * (heights[1] + heights[3] + heights[5] + heights[7])",
+      "name": "graph_mid"
+     },
+     {
+      "expression": "(graph_left + graph_right) / 2",
+      "name": "graph_trap"
+     },
+     {
+      "expression": "graph_trap + (heights[2] + 2 * heights[4] + 2 * heights[6] + heights[8])",
+      "name": "graph_bad_trap"
+     },
+     {
+      "expression": "leading * start**2 + constant",
+      "name": "value_0"
+     },
+     {
+      "expression": "leading * (start + width)**2 + constant",
+      "name": "value_1"
+     },
+     {
+      "expression": "leading * (start + 2 * width)**2 + constant",
+      "name": "value_2"
+     },
+     {
+      "expression": "leading * (start + 3 * width)**2 + constant",
+      "name": "value_3"
+     },
+     {
+      "expression": "leading * (start + 4 * width)**2 + constant",
+      "name": "value_4"
+     },
+     {
+      "expression": "leading * (start + width / 2)**2 + constant",
+      "name": "middle_0"
+     },
+     {
+      "expression": "leading * (start + width + width / 2)**2 + constant",
+      "name": "middle_1"
+     },
+     {
+      "expression": "leading * (start + 2 * width + width / 2)**2 + constant",
+      "name": "middle_2"
+     },
+     {
+      "expression": "leading * (start + 3 * width + width / 2)**2 + constant",
+      "name": "middle_3"
+     },
+     {
+      "expression": "width * sum([value_0, value_1, value_2, value_3][:pieces])",
+      "name": "formula_left"
+     },
+     {
+      "expression": "width * sum([value_1, value_2, value_3, value_4][:pieces])",
+      "name": "formula_right"
+     },
+     {
+      "expression": "width * sum([middle_0, middle_1, middle_2, middle_3][:pieces])",
+      "name": "formula_mid"
+     },
+     {
+      "expression": "(formula_left + formula_right) / 2",
+      "name": "formula_trap"
+     },
+     {
+      "expression": "2 * formula_trap - width * (value_0 + value_1) / 2",
+      "name": "formula_bad_trap"
+     }
+    ],
+    "dial_bindings": [
+     {
+      "difficulty_factor_id": "BC-DF-03",
+      "parameter": "source",
+      "settings": {
+       "formula": "off",
+       "graph": "low"
+      }
+     },
+     {
+      "difficulty_factor_id": "BC-DF-06",
+      "parameter": "method",
+      "settings": {
+       "left": "off",
+       "midpoint": "low",
+       "right": "off",
+       "trapezoid": "low"
+      }
+     }
+    ],
+    "evidence_tag": "inferred",
+    "invariants": [
+     "exact(key)",
+     "key != 0"
+    ],
+    "notes": "Formula: f(x) = m x^2 + c on [a, a + n w] with n equal subintervals of width w, never 1, and a >= 0 so f is monotone there. Graph: line segments through (k, h_k) for k = 0 to 8, four subintervals of width 2, so every sample point is a vertex. The sum of the sample values alone, the opposite endpoint, the wrong sum type, and a trapezoidal sum with only the first trapezoid halved are the distractors; the constraints keep all of them apart from the key.",
+    "parameters": [
+     {
+      "domain": {
+       "values": [
+        "formula",
+        "graph"
+       ]
+      },
+      "name": "source",
+      "role": "difficulty",
+      "type": "label"
+     },
+     {
+      "domain": {
+       "values": [
+        "left",
+        "right",
+        "midpoint",
+        "trapezoid"
+       ]
+      },
+      "name": "method",
+      "role": "difficulty",
+      "type": "label"
+     },
+     {
+      "count": 9,
+      "domain": {
+       "max": 6,
+       "min": -2,
+       "step": 1
+      },
+      "name": "heights",
+      "role": "safe",
+      "type": "integer"
+     },
+     {
+      "domain": {
+       "exclude": [
+        0
+       ],
+       "max": 3,
+       "min": -3,
+       "step": 1
+      },
+      "name": "leading",
+      "role": "safe",
+      "type": "integer"
+     },
+     {
+      "domain": {
+       "max": 9,
+       "min": 0,
+       "step": 1
+      },
+      "name": "constant",
+      "role": "safe",
+      "type": "integer"
+     },
+     {
+      "domain": {
+       "max": 4,
+       "min": 0,
+       "step": 1
+      },
+      "name": "start",
+      "role": "safe",
+      "type": "integer"
+     },
+     {
+      "domain": {
+       "values": [
+        2,
+        3,
+        4
+       ]
+      },
+      "name": "pieces",
+      "role": "safe",
+      "type": "integer"
+     },
+     {
+      "domain": {
+       "values": [
+        "1/2",
+        2,
+        3
+       ]
+      },
+      "name": "width",
+      "role": "safe",
+      "type": "rational"
+     }
+    ],
+    "representation_bindings": [
+     {
+      "figure_kind": null,
+      "representation": "BC-REP-01",
+      "requires": [
+       "method",
+       "leading",
+       "constant",
+       "start",
+       "pieces",
+       "width"
+      ]
+     },
+     {
+      "figure_kind": "function_graph",
+      "representation": "BC-REP-02",
+      "requires": [
+       "method",
+       "heights"
+      ]
+     }
+    ],
+    "spec_version": "1"
+   },
+   "point_types": [
+    "BC-PT-99018",
+    "BC-PT-99019"
+   ],
+   "prerequisites": [
+    "BC-PRQ-06005",
+    "BC-PRQ-06012",
+    "BC-PRQ-06007"
+   ],
+   "primary_unit": "BC-UNIT-06",
+   "prohibited_shortcuts": [],
+   "representations": [
+    "BC-REP-01",
+    "BC-REP-02"
+   ],
+   "safe_variables": [
+    "the coefficients of the formula",
+    "the heights of the graph",
+    "the left endpoint of the interval",
+    "the number of subintervals"
+   ],
+   "scope": "shared",
+   "scoring_pattern": "Where a free response part asks for the sum, one point is earned for the form of the sum and one for its value (sg-23:2, sg-25:13).",
+   "skills": [
+    "BC-SKL-06009",
+    "BC-SKL-06007",
+    "BC-SKL-06005",
+    "BC-SKL-06006",
+    "BC-SKL-06008"
+   ],
+   "sources": [
+    "ced:119",
+    "sg-23:2",
+    "sg-25:13"
+   ],
+   "status": "active",
+   "typical_wording": [
+    "use a midpoint Riemann sum with four subintervals of equal width to approximate the integral"
+   ],
+   "units": [
+    "BC-UNIT-06"
+   ],
+   "variants": [],
+   "wrong_approaches": [
+    "using the table-reading habit of unequal widths on a uniform partition"
+   ]
+  },
+  {
+   "anchor_quote": "Techniques for finding antiderivatives include rearrangements into equivalent forms, such as long division and completing the square.",
+   "asked_to_produce": [
+    "an antiderivative with the constant of integration"
+   ],
+   "calculator_status": "no_calculator",
+   "common_distractors": [
+    "the scaling factor from the differential dropped (BC-ERR-06019)",
+    "the other inverse trigonometric pattern used (BC-ERR-03017)",
+    "a logarithm or power produced by a substitution whose inner derivative is absent (BC-ERR-06020)"
+   ],
+   "common_givens": [
+    "a constant over a quadratic or over the square root of a quadratic"
+   ],
+   "created": "2026-09-28",
+   "description": "An integrand of the form a constant over a sum of squares, or over the square root of a difference of squares, is given either directly or with the quadratic expanded. The response must complete the square where needed, recognise the inverse tangent or inverse sine pattern, and antidifferentiate with the scaling factor the substitution introduces.",
+   "difficulty_factors": [
+    "BC-DF-06",
+    "BC-DF-15"
+   ],
+   "difficulty_variables": [
+    "direct form or expanded quadratic",
+    "inverse tangent or inverse sine"
+   ],
+   "doc_id": "ced",
+   "doc_page": 127,
+   "evidence_tag": "inferred",
+   "expected_solution_path": [
+    "complete the square in the quadratic when it is expanded",
+    "recognise the inverse tangent or inverse sine derivative pattern",
+    "substitute and carry the scaling constant",
+    "write the antiderivative with the constant of integration"
+   ],
+   "family": "antidifferentiation-technique",
+   "id": "BC-QA-06018",
+   "invariant_structure": "The integrand is a constant over a quadratic, or over the square root of a quadratic, that becomes a sum or difference of squares, so the antiderivative is an inverse tangent or inverse sine. The scaling constant from the substitution u equal to the shifted input over the scale is carried through.",
+   "misconceptions": [
+    "BC-MIS-06017",
+    "BC-MIS-06022"
+   ],
+   "multi_skill_extensions": [],
+   "multipart_structure": "A single multiple choice or short answer question.",
+   "name": "Antiderivative matched to an inverse trigonometric form, directly or after completing the square",
+   "notes": "FUN-6.D.3 (ced:127) names completing the square, and FUN-6.C.2 (ced:125) ties antiderivatives to derivative rules; the inverse trigonometric forms had no archetype. Minted 2026-09-28 in stage 15 (library gaps) on the operator's delegation.",
+   "official_examples": [],
+   "parameter_spec": {
+    "calculator_guard": "exact(key)",
+    "constraints": [
+     "numerator != scale"
+    ],
+    "derived": [],
+    "dial_bindings": [
+     {
+      "difficulty_factor_id": "BC-DF-06",
+      "parameter": "form",
+      "settings": {
+       "direct": "low",
+       "square": "medium"
+      }
+     },
+     {
+      "difficulty_factor_id": "BC-DF-15",
+      "parameter": "kind",
+      "settings": {
+       "arcsin": "low",
+       "arctan": "low"
+      }
+     }
+    ],
+    "evidence_tag": "inferred",
+    "invariants": [
+     "exact(key)",
+     "numerator != scale"
+    ],
+    "notes": "Integrands k/(a^2 + u^2) and k/sqrt(a^2 - u^2) with u = x, or u = x + h hidden in an expanded quadratic that must be completed to a square. The antiderivatives are (k/a) arctan(u/a) and k arcsin(u/a). The numerator is never equal to the scale, so dropping or inventing the factor 1/a always changes the answer.",
+    "parameters": [
+     {
+      "domain": {
+       "values": [
+        "arctan",
+        "arcsin"
+       ]
+      },
+      "name": "kind",
+      "role": "difficulty",
+      "type": "label"
+     },
+     {
+      "domain": {
+       "values": [
+        "direct",
+        "square"
+       ]
+      },
+      "name": "form",
+      "role": "difficulty",
+      "type": "label"
+     },
+     {
+      "domain": {
+       "max": 9,
+       "min": 2,
+       "step": 1
+      },
+      "name": "scale",
+      "role": "safe",
+      "type": "integer"
+     },
+     {
+      "domain": {
+       "max": 12,
+       "min": 2,
+       "step": 1
+      },
+      "name": "numerator",
+      "role": "safe",
+      "type": "integer"
+     },
+     {
+      "domain": {
+       "exclude": [
+        0
+       ],
+       "max": 5,
+       "min": -5,
+       "step": 1
+      },
+      "name": "shift",
+      "role": "safe",
+      "type": "integer"
+     }
+    ],
+    "representation_bindings": [
+     {
+      "figure_kind": null,
+      "representation": "BC-REP-01",
+      "requires": [
+       "kind",
+       "form",
+       "scale",
+       "numerator",
+       "shift"
+      ]
+     }
+    ],
+    "spec_version": "1"
+   },
+   "point_types": [],
+   "prerequisites": [
+    "BC-PRQ-06004",
+    "BC-PRQ-06010",
+    "BC-PRQ-06001",
+    "BC-PRQ-03004"
+   ],
+   "primary_unit": "BC-UNIT-06",
+   "prohibited_shortcuts": [],
+   "representations": [
+    "BC-REP-01"
+   ],
+   "safe_variables": [
+    "the numerator constant",
+    "the scale",
+    "the shift"
+   ],
+   "scope": "shared",
+   "scoring_pattern": "No scoring guideline in the corpus scores this form, so the archetype carries no point types; the answer is checked as an antiderivative up to a constant.",
+   "skills": [
+    "BC-SKL-06043",
+    "BC-SKL-06054",
+    "BC-SKL-06047",
+    "BC-SKL-06048",
+    "BC-SKL-03021"
+   ],
+   "sources": [
+    "ced:125",
+    "ced:127"
+   ],
+   "status": "active",
+   "typical_wording": [
+    "find the indefinite integral"
+   ],
+   "units": [
+    "BC-UNIT-06",
+    "BC-UNIT-03"
+   ],
+   "variants": [],
+   "wrong_approaches": [
+    "forcing a logarithm by treating the quadratic as u without its derivative present"
+   ]
+  },
+  {
+   "anchor_quote": "Differentiation rules provide the foundation for finding antiderivatives.",
+   "asked_to_produce": [
+    "an antiderivative with the constant of integration"
+   ],
+   "calculator_status": "no_calculator",
+   "common_distractors": [
+    "the factors, or the numerator and denominator, antidifferentiated separately (BC-ERR-06022)",
+    "exponents raised with no division by the new exponent (BC-ERR-06033)",
+    "exponents raised and divided by the old exponent (BC-ERR-06033)"
+   ],
+   "common_givens": [
+    "a product of two binomials",
+    "or a fraction whose numerator is a sum"
+   ],
+   "created": "2026-09-28",
+   "description": "A product of binomials or a fraction whose numerator is a sum is to be antidifferentiated, and the options are candidate antiderivatives. The response must rewrite the integrand as a sum of powers, apply the power rule to each term, and confirm the candidate by checking that its derivative returns the integrand.",
+   "difficulty_factors": [
+    "BC-DF-06",
+    "BC-DF-13"
+   ],
+   "difficulty_variables": [
+    "product, fraction over a power of x, or fraction over the square root of x"
+   ],
+   "doc_id": "ced",
+   "doc_page": 125,
+   "evidence_tag": "inferred",
+   "expected_solution_path": [
+    "expand the product or split the fraction into a sum of powers",
+    "apply the power rule for antiderivatives term by term",
+    "confirm the result by differentiating it back to the integrand"
+   ],
+   "family": "antidifferentiation-technique",
+   "id": "BC-QA-06019",
+   "invariant_structure": "The integrand is not in a form any rule applies to directly; expanding the product or dividing each term of the numerator by the denominator turns it into a sum of powers, including negative or fractional powers, none of them the power minus one.",
+   "misconceptions": [
+    "BC-MIS-06019",
+    "BC-MIS-02009"
+   ],
+   "multi_skill_extensions": [],
+   "multipart_structure": "A single multiple choice or short answer question.",
+   "name": "Antiderivative found after splitting a fraction or expanding a product, and confirmed by differentiating",
+   "notes": "FUN-6.C.1 and FUN-6.C.2 (ced:125) define an antiderivative by F' = f, and FUN-6.D.3 (ced:127) names rearrangement into equivalent forms. Minted 2026-09-28 in stage 15 (library gaps) on the operator's delegation.",
+   "official_examples": [],
+   "parameter_spec": {
+    "calculator_guard": "exact(key)",
+    "constraints": [
+     "second + coefficient * first != 0"
+    ],
+    "derived": [
+     {
+      "expression": "second + coefficient * first",
+      "name": "middle"
+     }
+    ],
+    "dial_bindings": [
+     {
+      "difficulty_factor_id": "BC-DF-06",
+      "parameter": "structure",
+      "settings": {
+       "fraction": "medium",
+       "product": "low",
+       "root": "medium"
+      }
+     },
+     {
+      "difficulty_factor_id": "BC-DF-13",
+      "parameter": "structure",
+      "settings": {
+       "fraction": "low",
+       "product": "low",
+       "root": "low"
+      }
+     }
+    ],
+    "evidence_tag": "inferred",
+    "invariants": [
+     "exact(key)",
+     "middle != 0"
+    ],
+    "notes": "Product (x + p)(c x + q), expanded to c x^2 + (q + c p) x + p q with the middle coefficient kept nonzero; fraction (c x^(k+1) + p)/x^k = c x + p x^(-k) with k = 2 or 3, so no logarithm arises; root (c x + p)/sqrt(x) = c x^(1/2) + p x^(-1/2). The options are candidate antiderivatives and the check is that the derivative of the chosen one returns the integrand.",
+    "parameters": [
+     {
+      "domain": {
+       "values": [
+        "product",
+        "fraction",
+        "root"
+       ]
+      },
+      "name": "structure",
+      "role": "difficulty",
+      "type": "label"
+     },
+     {
+      "domain": {
+       "max": 4,
+       "min": 1,
+       "step": 1
+      },
+      "name": "coefficient",
+      "role": "safe",
+      "type": "integer"
+     },
+     {
+      "domain": {
+       "exclude": [
+        0
+       ],
+       "max": 6,
+       "min": -6,
+       "step": 1
+      },
+      "name": "first",
+      "role": "safe",
+      "type": "integer"
+     },
+     {
+      "domain": {
+       "exclude": [
+        0
+       ],
+       "max": 6,
+       "min": -6,
+       "step": 1
+      },
+      "name": "second",
+      "role": "safe",
+      "type": "integer"
+     },
+     {
+      "domain": {
+       "values": [
+        2,
+        3
+       ]
+      },
+      "name": "power",
+      "role": "safe",
+      "type": "integer"
+     }
+    ],
+    "representation_bindings": [
+     {
+      "figure_kind": null,
+      "representation": "BC-REP-01",
+      "requires": [
+       "structure",
+       "coefficient",
+       "first",
+       "second",
+       "power"
+      ]
+     }
+    ],
+    "spec_version": "1"
+   },
+   "point_types": [],
+   "prerequisites": [
+    "BC-PRQ-06001",
+    "BC-PRQ-06002"
+   ],
+   "primary_unit": "BC-UNIT-06",
+   "prohibited_shortcuts": [],
+   "representations": [
+    "BC-REP-01"
+   ],
+   "safe_variables": [
+    "the constants in the factors or in the numerator",
+    "the power of x in the denominator"
+   ],
+   "scope": "shared",
+   "scoring_pattern": "No scoring guideline in the corpus scores this form, so the archetype carries no point types; the answer is checked as an antiderivative up to a constant.",
+   "skills": [
+    "BC-SKL-06045",
+    "BC-SKL-06055",
+    "BC-SKL-06040"
+   ],
+   "sources": [
+    "ced:125",
+    "ced:127"
+   ],
+   "status": "active",
+   "typical_wording": [
+    "find the indefinite integral"
+   ],
+   "units": [
+    "BC-UNIT-06"
+   ],
+   "variants": [],
+   "wrong_approaches": [
+    "antidifferentiating the factors of a product separately"
+   ]
+  },
+  {
+   "anchor_quote": "Some differential equations can be solved by separation of variables.",
+   "asked_to_produce": [
+    "the separated equation, or the statement that it is not separable"
+   ],
+   "calculator_status": "no_calculator",
+   "common_distractors": [
+    "the sum divided by y term by term as though it factored (BC-ERR-07028)",
+    "a false factorisation of a sum that does not factor (BC-ERR-07028)",
+    "the y factor multiplied onto the dy side instead of divided (BC-ERR-99014)",
+    "dx moved across with y left beside it (BC-ERR-07024)"
+   ],
+   "common_givens": [
+    "a differential equation with an expanded right side"
+   ],
+   "created": "2026-09-28",
+   "description": "A differential equation dy/dx equal to an expanded expression in x and y is given. The response must decide whether the right side factors into a function of x times a function of y, and if it does, write the equation with the y factors beside dy and the x factors beside dx; if it does not, say so.",
+   "difficulty_factors": [
+    "BC-DF-11",
+    "BC-DF-15"
+   ],
+   "difficulty_variables": [
+    "whether the equation is separable"
+   ],
+   "doc_id": "ced",
+   "doc_page": 142,
+   "evidence_tag": "inferred",
+   "expected_solution_path": [
+    "look for a common factor that makes the right side a function of x times a function of y",
+    "if one exists, divide by the y factor and multiply by dx",
+    "if none exists, conclude that the equation is not separable"
+   ],
+   "family": "separation-of-variables",
+   "id": "BC-QA-07012",
+   "invariant_structure": "The right side is printed expanded, as a sum of terms, so whether it factors into a function of x times a function of y must be decided rather than read off. When it factors, the separated form keeps every y factor with dy and every x factor with dx; when a term carries no common factor, the equation is not separable.",
+   "misconceptions": [],
+   "multi_skill_extensions": [],
+   "multipart_structure": "A single multiple choice or short answer question; the separation is the first step of every free response part on separable equations.",
+   "name": "Differential equation judged separable or not, and a separable one separated",
+   "notes": "FUN-7.D.1 (ced:142) says only some equations are separable; BC-QA-07003 always supplies a separable one. Minted 2026-09-28 in stage 15 (library gaps) on the operator's delegation.",
+   "official_examples": [],
+   "parameter_spec": {
+    "calculator_guard": "True",
+    "constraints": [],
+    "derived": [],
+    "dial_bindings": [
+     {
+      "difficulty_factor_id": "BC-DF-15",
+      "parameter": "separable",
+      "settings": {
+       "no": "low",
+       "yes": "low"
+      }
+     },
+     {
+      "difficulty_factor_id": "BC-DF-11",
+      "parameter": "separable",
+      "settings": {
+       "no": "off",
+       "yes": "low"
+      }
+     }
+    ],
+    "evidence_tag": "inferred",
+    "invariants": [
+     "constant != 0",
+     "coefficient != 0"
+    ],
+    "notes": "Separable: dy/dx = a g(x) y + a c g(x), printed expanded, which factors as a g(x)(y + c). Not separable: dy/dx = a g(x) y + c with c nonzero and g not constant, since f f_xy = f_x f_y fails for f = a g y + c. The separated form keeps every y factor with dy and every x factor with dx.",
+    "parameters": [
+     {
+      "domain": {
+       "values": [
+        "yes",
+        "no"
+       ]
+      },
+      "name": "separable",
+      "role": "difficulty",
+      "type": "label"
+     },
+     {
+      "domain": {
+       "values": [
+        "linear",
+        "square",
+        "cube",
+        "exponential",
+        "cosine",
+        "sine"
+       ]
+      },
+      "name": "factor",
+      "role": "safe",
+      "type": "label"
+     },
+     {
+      "domain": {
+       "exclude": [
+        0
+       ],
+       "max": 6,
+       "min": -6,
+       "step": 1
+      },
+      "name": "coefficient",
+      "role": "safe",
+      "type": "integer"
+     },
+     {
+      "domain": {
+       "exclude": [
+        0
+       ],
+       "max": 9,
+       "min": -9,
+       "step": 1
+      },
+      "name": "constant",
+      "role": "safe",
+      "type": "integer"
+     }
+    ],
+    "representation_bindings": [
+     {
+      "figure_kind": null,
+      "representation": "BC-REP-06",
+      "requires": [
+       "separable",
+       "factor",
+       "coefficient",
+       "constant"
+      ]
+     }
+    ],
+    "spec_version": "1"
+   },
+   "point_types": [
+    "BC-PT-99028"
+   ],
+   "prerequisites": [
+    "BC-PRQ-07002"
+   ],
+   "primary_unit": "BC-UNIT-07",
+   "prohibited_shortcuts": [],
+   "representations": [
+    "BC-REP-06"
+   ],
+   "safe_variables": [
+    "the function of x",
+    "the coefficient",
+    "the constant"
+   ],
+   "scope": "shared",
+   "scoring_pattern": "Where a free response part solves a separable equation, the first point is for the separation, and a response with no separation earns none of the part's points (sg-23:12).",
+   "skills": [
+    "BC-SKL-07028",
+    "BC-SKL-07024"
+   ],
+   "sources": [
+    "ced:142",
+    "sg-23:12"
+   ],
+   "status": "active",
+   "typical_wording": [
+    "decide whether the differential equation can be solved by separation of variables, and if it can, separate the variables"
+   ],
+   "units": [
+    "BC-UNIT-07"
+   ],
+   "variants": [],
+   "wrong_approaches": [
+    "dividing each term by y separately"
+   ]
+  },
+  {
+   "anchor_quote": "Derivatives allow us to determine rates of change at an instant by applying limits to knowledge about rates of change over intervals.",
+   "asked_to_produce": [
+    "the rate at the instant"
+   ],
+   "calculator_status": "no_calculator",
+   "common_distractors": [
+    "the average rate from time zero to the instant (BC-ERR-02033)",
+    "the value of the quantity at the instant (BC-ERR-02027)",
+    "the change from time zero with no division (BC-ERR-02001)"
+   ],
+   "common_givens": [
+    "a polynomial model in context",
+    "a named instant"
+   ],
+   "created": "2026-09-28",
+   "description": "A quantity in context is given as a polynomial in time and the rate at which it changes at one instant is asked for, with no mention of a derivative or a limit. The response has to build the rate itself: average rates over shrinking intervals that start at the instant, and the value they approach. It is the productive-failure opener for BC-CON-02002, so the method is not expected yet and the canonical solution is shown afterwards.",
+   "difficulty_factors": [
+    "BC-DF-06",
+    "BC-DF-15"
+   ],
+   "difficulty_variables": [
+    "quadratic or cubic model"
+   ],
+   "doc_id": "ced",
+   "doc_page": 60,
+   "evidence_tag": "inferred",
+   "expected_solution_path": [
+    "write the average rate over a short interval starting at the instant",
+    "simplify the difference quotient",
+    "find the value it approaches as the interval shrinks to zero length"
+   ],
+   "family": "derivative-definition-limit",
+   "id": "BC-QA-02014",
+   "invariant_structure": "The stem asks for a rate at an instant and names no method, no derivative and no limit. The only tool the student already has is the average rate over an interval, so the task is generated from it: shrink the interval to the instant and find the value the averages approach.",
+   "misconceptions": [
+    "BC-MIS-02001",
+    "BC-MIS-02014"
+   ],
+   "multi_skill_extensions": [],
+   "multipart_structure": "A single short answer or multiple choice question, served as an opener before the derivative is taught.",
+   "name": "Rate at an instant found before the derivative is defined, as a limit of average rates",
+   "notes": "Generation archetype for the productive-failure opener of BC-CON-02002 (01 Productive-failure openers; stage 14 had no archetype for this target). CHA-2.A and CHA-2.B (ced:60, ced:61). Minted 2026-09-28 in stage 15 (library gaps) on the operator's delegation.",
+   "official_examples": [],
+   "parameter_spec": {
+    "calculator_guard": "exact(key)",
+    "constraints": [
+     "rate != 0",
+     "distinct([rate, average, value, change])"
+    ],
+    "derived": [
+     {
+      "expression": "degree * leading * instant**(degree - 1) + linear",
+      "name": "rate"
+     },
+     {
+      "expression": "leading * instant**(degree - 1) + linear",
+      "name": "average"
+     },
+     {
+      "expression": "leading * instant**degree + linear * instant + constant",
+      "name": "value"
+     },
+     {
+      "expression": "leading * instant**degree + linear * instant",
+      "name": "change"
+     }
+    ],
+    "dial_bindings": [
+     {
+      "difficulty_factor_id": "BC-DF-06",
+      "parameter": "degree",
+      "settings": {
+       "2": "low",
+       "3": "medium"
+      }
+     },
+     {
+      "difficulty_factor_id": "BC-DF-15",
+      "parameter": "degree",
+      "settings": {
+       "2": "low",
+       "3": "low"
+      }
+     }
+    ],
+    "evidence_tag": "inferred",
+    "invariants": [
+     "exact(key)",
+     "key == rate"
+    ],
+    "notes": "A quantity f(t) = a t^d + b t + c with d = 2 or 3 is given in context and the rate at one instant t0 is asked for, with no mention of a derivative or a limit: the productive-failure opener for BC-CON-02002. The canonical answer is the limit of the average rate over [t0, t0 + h] as h approaches 0, d a t0^(d - 1) + b. The distractors are the average rate over [0, t0], the value f(t0), and the change f(t0) - f(0); the constraints keep all four apart and the rate nonzero.",
+    "parameters": [
+     {
+      "domain": {
+       "values": [
+        2,
+        3
+       ]
+      },
+      "name": "degree",
+      "role": "difficulty",
+      "type": "integer"
+     },
+     {
+      "domain": {
+       "exclude": [
+        0
+       ],
+       "max": 5,
+       "min": -5,
+       "step": 1
+      },
+      "name": "leading",
+      "role": "safe",
+      "type": "integer"
+     },
+     {
+      "domain": {
+       "max": 9,
+       "min": -9,
+       "step": 1
+      },
+      "name": "linear",
+      "role": "safe",
+      "type": "integer"
+     },
+     {
+      "domain": {
+       "max": 20,
+       "min": 0,
+       "step": 1
+      },
+      "name": "constant",
+      "role": "safe",
+      "type": "integer"
+     },
+     {
+      "domain": {
+       "max": 5,
+       "min": 2,
+       "step": 1
+      },
+      "name": "instant",
+      "role": "safe",
+      "type": "integer"
+     },
+     {
+      "domain": {
+       "values": [
+        "height",
+        "position",
+        "volume"
+       ]
+      },
+      "name": "context",
+      "role": "safe",
+      "type": "label"
+     }
+    ],
+    "representation_bindings": [
+     {
+      "figure_kind": null,
+      "representation": "BC-REP-05",
+      "requires": [
+       "degree",
+       "leading",
+       "linear",
+       "constant",
+       "instant",
+       "context"
+      ]
+     }
+    ],
+    "spec_version": "1"
+   },
+   "point_types": [],
+   "prerequisites": [
+    "BC-PRQ-02005",
+    "BC-PRQ-02003"
+   ],
+   "primary_unit": "BC-UNIT-02",
+   "prohibited_shortcuts": [],
+   "representations": [
+    "BC-REP-05"
+   ],
+   "safe_variables": [
+    "the context",
+    "the coefficients",
+    "the instant"
+   ],
+   "scope": "shared",
+   "scoring_pattern": "No scoring guideline scores an opener; the answer is checked as a value.",
+   "skills": [
+    "BC-SKL-02005",
+    "BC-SKL-02004",
+    "BC-SKL-02006",
+    "BC-SKL-02012",
+    "BC-SKL-02002"
+   ],
+   "sources": [
+    "ced:60",
+    "ced:61"
+   ],
+   "status": "active",
+   "typical_wording": [
+    "at what rate is the quantity changing at the instant t equal to a named time"
+   ],
+   "units": [
+    "BC-UNIT-02"
+   ],
+   "variants": [],
+   "wrong_approaches": [
+    "averaging over the whole interval from the start"
+   ]
+  },
+  {
+   "anchor_quote": "The concept of calculating areas in rectangular coordinates can be extended to polar coordinates.",
+   "asked_to_produce": [
+    "the exact area"
+   ],
+   "calculator_status": "no_calculator",
+   "common_distractors": [
+    "the factor one half omitted (BC-ERR-09035)",
+    "r integrated instead of its square (BC-ERR-09036)",
+    "the wrong angles swept (BC-ERR-09037)"
+   ],
+   "common_givens": [
+    "a polar equation",
+    "the rays that bound the region, when it is not the whole enclosed region"
+   ],
+   "created": "2026-09-28",
+   "description": "A limacon-shaped polar curve is given, and the area of the region it encloses, or of the part swept between two rays, is asked for with no method named. The response has to build the area from thin sectors of radius r, each of area one half r squared times its angle, and integrate over the angles swept. It is the productive-failure opener for BC-CON-09015.",
+   "difficulty_factors": [
+    "BC-DF-06",
+    "BC-DF-15"
+   ],
+   "difficulty_variables": [
+    "the whole region or the part between two rays"
+   ],
+   "doc_id": "ced",
+   "doc_page": 178,
+   "evidence_tag": "inferred",
+   "expected_solution_path": [
+    "cut the region into thin sectors by rays from the pole",
+    "write the area of one sector as one half r squared times its angle",
+    "integrate over the angles the region sweeps",
+    "evaluate the integral exactly"
+   ],
+   "family": "polar-area",
+   "id": "BC-QA-09014",
+   "invariant_structure": "The radius stays positive, so the curve is traced once over a full turn and the region is swept once by the rays from the pole. The stem names no integral and no formula; the area follows from the sector area one half r squared times the angle, summed over the angles the region spans.",
+   "misconceptions": [],
+   "multi_skill_extensions": [],
+   "multipart_structure": "A single short answer or multiple choice question, served as an opener before polar area is taught.",
+   "name": "Area of a polar region found before the polar area integral is taught",
+   "notes": "Generation archetype for the productive-failure opener of BC-CON-09015 (01 Productive-failure openers; stage 14 had no archetype for this target). CHA-5.D (ced:178). Minted 2026-09-28 in stage 15 (library gaps) on the operator's delegation.",
+   "official_examples": [],
+   "parameter_spec": {
+    "calculator_guard": "exact(key)",
+    "constraints": [
+     "abs(amplitude) < base"
+    ],
+    "derived": [],
+    "dial_bindings": [
+     {
+      "difficulty_factor_id": "BC-DF-06",
+      "parameter": "region",
+      "settings": {
+       "full": "low",
+       "half": "low",
+       "quarter": "medium"
+      }
+     },
+     {
+      "difficulty_factor_id": "BC-DF-15",
+      "parameter": "region",
+      "settings": {
+       "full": "low",
+       "half": "low",
+       "quarter": "low"
+      }
+     }
+    ],
+    "evidence_tag": "inferred",
+    "invariants": [
+     "exact(key)",
+     "key > 0"
+    ],
+    "notes": "r = a + b cos(k theta) or a + b sin(k theta) with 0 < |b| < a, so r > 0 and the curve is traced once on [0, 2 pi]. The region is the whole enclosed region, or the part swept between the rays theta = 0 and theta = pi or pi/2. The stem names no method: it is the productive-failure opener for BC-CON-09015, and the canonical solution builds the area from thin sectors of area one half r squared d theta. The distractors drop the one half, integrate r instead of r squared, or sweep the wrong angles.",
+    "parameters": [
+     {
+      "domain": {
+       "values": [
+        "full",
+        "half",
+        "quarter"
+       ]
+      },
+      "name": "region",
+      "role": "difficulty",
+      "type": "label"
+     },
+     {
+      "domain": {
+       "values": [
+        "cos",
+        "sin"
+       ]
+      },
+      "name": "trig",
+      "role": "safe",
+      "type": "label"
+     },
+     {
+      "domain": {
+       "values": [
+        1,
+        2
+       ]
+      },
+      "name": "frequency",
+      "role": "safe",
+      "type": "integer"
+     },
+     {
+      "domain": {
+       "max": 15,
+       "min": 2,
+       "step": 1
+      },
+      "name": "base",
+      "role": "safe",
+      "type": "integer"
+     },
+     {
+      "domain": {
+       "exclude": [
+        0
+       ],
+       "max": 14,
+       "min": -14,
+       "step": 1
+      },
+      "name": "amplitude",
+      "role": "safe",
+      "type": "integer"
+     }
+    ],
+    "representation_bindings": [
+     {
+      "figure_kind": null,
+      "representation": "BC-REP-13",
+      "requires": [
+       "region",
+       "trig",
+       "frequency",
+       "base",
+       "amplitude"
+      ]
+     }
+    ],
+    "spec_version": "1"
+   },
+   "point_types": [
+    "BC-PT-99048"
+   ],
+   "prerequisites": [
+    "BC-PRQ-06005",
+    "BC-PRQ-09004",
+    "BC-PRQ-08006"
+   ],
+   "primary_unit": "BC-UNIT-09",
+   "prohibited_shortcuts": [],
+   "representations": [
+    "BC-REP-13"
+   ],
+   "safe_variables": [
+    "the constant and the amplitude of the curve",
+    "cosine or sine",
+    "the angular frequency"
+   ],
+   "scope": "BC_only",
+   "scoring_pattern": "No scoring guideline scores an opener. Where a free response part asks for a polar area, points are earned for the integrand with the square of r and for the answer (sg-25:8), which is what the canonical solution shows.",
+   "skills": [
+    "BC-SKL-09035",
+    "BC-SKL-09036",
+    "BC-SKL-09038"
+   ],
+   "sources": [
+    "ced:178",
+    "sg-25:8"
+   ],
+   "status": "active",
+   "typical_wording": [
+    "find the area of the region enclosed by the polar curve"
+   ],
+   "units": [
+    "BC-UNIT-09"
+   ],
+   "variants": [],
+   "wrong_approaches": [
+    "treating the region as a rectangle in the angle and the radius"
+   ]
+  },
+  {
+   "anchor_quote": "if and only if the limit of its sequence of partial sums exists and equals S",
+   "asked_to_produce": [
+    "the sum of the series"
+   ],
+   "calculator_status": "no_calculator",
+   "common_distractors": [
+    "the limit of the terms, 0, reported as the sum (BC-ERR-10001)",
+    "the first or second partial sum reported as the sum (BC-ERR-99038)"
+   ],
+   "common_givens": [
+    "a formula for the nth partial sum",
+    "or an unsplit telescoping term"
+   ],
+   "created": "2026-09-28",
+   "description": "A convergent series is given by a formula for its partial sums or as a telescoping series written unsplit, and its sum is asked for, with no test named. The response has to reason from the definition: a series converges exactly when its partial sums approach a finite limit, and that limit is the sum. It is the productive-failure opener for BC-CON-10002, and the answer is a value so the item can be served as a short answer.",
+   "difficulty_factors": [
+    "BC-DF-13",
+    "BC-DF-15"
+   ],
+   "difficulty_variables": [
+    "rational partial sums, exponential partial sums, or a telescoping series"
+   ],
+   "doc_id": "ced",
+   "doc_page": 186,
+   "evidence_tag": "inferred",
+   "expected_solution_path": [
+    "obtain the nth partial sum, directly or by cancelling a telescoping sum",
+    "take its limit as n increases",
+    "report that limit as the sum"
+   ],
+   "family": "series-value",
+   "id": "BC-QA-10021",
+   "invariant_structure": "The sum is read from the sequence of partial sums, given directly or obtained by cancellation, never from a named test or a remembered formula. The terms of every series shown approach 0, so the limit of the terms and the limit of the partial sums have to be told apart.",
+   "misconceptions": [],
+   "multi_skill_extensions": [],
+   "multipart_structure": "A single short answer or multiple choice question, served as an opener before convergence tests are taught.",
+   "name": "Sum of a series found from its partial sums before any test is taught",
+   "notes": "Generation archetype for the productive-failure opener of BC-CON-10002 (01 Productive-failure openers; stage 14 had no archetype for this target). Spec version 2 replaced a statement-keyed first version the same day, because app/session/build.py opener_options serves only items with a value to type. LIM-7.A.1 and LIM-7.A.2 (ced:186). Minted 2026-09-28 in stage 15 (library gaps) on the operator's delegation.",
+   "official_examples": [],
+   "parameter_spec": {
+    "calculator_guard": "exact(key)",
+    "constraints": [
+     "family != 'rational' or distinct([0, lead / rate, (lead + shift) / (rate + offset), (2 * lead + shift) / (2 * rate + offset)])",
+     "family != 'exponential' or distinct([0, lead, lead - offset * ratio, lead - offset * ratio**2])",
+     "gcd(lead, rate) == 1"
+    ],
+    "derived": [],
+    "dial_bindings": [
+     {
+      "difficulty_factor_id": "BC-DF-13",
+      "parameter": "family",
+      "settings": {
+       "exponential": "low",
+       "rational": "low",
+       "telescoping": "off"
+      }
+     },
+     {
+      "difficulty_factor_id": "BC-DF-15",
+      "parameter": "family",
+      "settings": {
+       "exponential": "low",
+       "rational": "low",
+       "telescoping": "low"
+      }
+     }
+    ],
+    "evidence_tag": "inferred",
+    "invariants": [
+     "exact(key)",
+     "key != 0"
+    ],
+    "notes": "rational: S_n = (p n + q)/(r n + s), whose limit p/r is the sum. exponential: S_n = p - s c^n with 0 < c < 1, whose limit p is the sum. telescoping: the series of k/((n + m)(n + m + 1)) from n = 1, whose partial sums k/(m + 1) - k/(n + m + 1) approach k/(m + 1). No test is named and the answer is a value, so the item can be served as a short answer opener for BC-CON-10002; the canonical solution reads the sum as the limit of the partial sums. The distractors are 0, the limit of the terms, and the first and second partial sums; the constraints keep all four apart.",
+    "parameters": [
+     {
+      "domain": {
+       "values": [
+        "rational",
+        "exponential",
+        "telescoping"
+       ]
+      },
+      "name": "family",
+      "role": "difficulty",
+      "type": "label"
+     },
+     {
+      "domain": {
+       "max": 9,
+       "min": 1,
+       "step": 1
+      },
+      "name": "lead",
+      "role": "safe",
+      "type": "integer"
+     },
+     {
+      "domain": {
+       "max": 9,
+       "min": -9,
+       "step": 1
+      },
+      "name": "shift",
+      "role": "safe",
+      "type": "integer"
+     },
+     {
+      "domain": {
+       "max": 5,
+       "min": 1,
+       "step": 1
+      },
+      "name": "rate",
+      "role": "safe",
+      "type": "integer"
+     },
+     {
+      "domain": {
+       "max": 9,
+       "min": 1,
+       "step": 1
+      },
+      "name": "offset",
+      "role": "safe",
+      "type": "integer"
+     },
+     {
+      "domain": {
+       "values": [
+        "1/2",
+        "1/3",
+        "2/3",
+        "1/4",
+        "3/4"
+       ]
+      },
+      "name": "ratio",
+      "role": "safe",
+      "type": "rational"
+     },
+     {
+      "domain": {
+       "max": 9,
+       "min": 1,
+       "step": 1
+      },
+      "name": "numerator",
+      "role": "safe",
+      "type": "integer"
+     },
+     {
+      "domain": {
+       "max": 6,
+       "min": 0,
+       "step": 1
+      },
+      "name": "start",
+      "role": "safe",
+      "type": "integer"
+     }
+    ],
+    "representation_bindings": [
+     {
+      "figure_kind": null,
+      "representation": "BC-REP-11",
+      "requires": [
+       "family",
+       "lead",
+       "shift",
+       "rate",
+       "offset",
+       "ratio",
+       "numerator",
+       "start"
+      ]
+     }
+    ],
+    "spec_version": "2"
+   },
+   "point_types": [],
+   "prerequisites": [
+    "BC-PRQ-10004",
+    "BC-PRQ-10003",
+    "BC-PRQ-10008",
+    "BC-PRQ-06005",
+    "BC-PRQ-06006"
+   ],
+   "primary_unit": "BC-UNIT-10",
+   "prohibited_shortcuts": [],
+   "representations": [
+    "BC-REP-11"
+   ],
+   "safe_variables": [
+    "the coefficients of the partial sum formula",
+    "the ratio in an exponential partial sum",
+    "the numerator and the starting shift of the telescoping term"
+   ],
+   "scope": "BC_only",
+   "scoring_pattern": "No scoring guideline scores an opener; the answer is checked as a value.",
+   "skills": [
+    "BC-SKL-10003",
+    "BC-SKL-10004",
+    "BC-SKL-10005",
+    "BC-SKL-10002"
+   ],
+   "sources": [
+    "ced:186",
+    "ced:187"
+   ],
+   "status": "active",
+   "typical_wording": [
+    "the series converges; find its sum"
+   ],
+   "units": [
+    "BC-UNIT-10"
+   ],
+   "variants": [],
+   "wrong_approaches": [
+    "taking the limit of the general term as the value of the series"
+   ]
+  }
+ ],
+ "registry": "archetypes"
+}

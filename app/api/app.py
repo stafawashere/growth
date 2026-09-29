@@ -215,9 +215,11 @@ def create_app(settings):
    from app.api.routes import assessment, auth, content, evaluation, export, frq, health, me, progress, purge, review, review_screen, sessions
    from app.api.routes import settings as settings_routes
    from app.api.security_headers import SecurityHeadersMiddleware
+   from starlette.middleware.gzip import GZipMiddleware
 
    application = FastAPI(title="Growth", version="0.0.1")
    application.add_middleware(SecurityHeadersMiddleware)
+   application.add_middleware(GZipMiddleware, minimum_size=1024)
    application.state.settings = settings
    application.state.engine = settings.resolve_engine()
    application.state.auth_limiter = SlidingWindowLimiter()

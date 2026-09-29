@@ -1,0 +1,275 @@
+{
+   "id": "ITM-GEN-06017-16",
+   "archetype_id": "BC-QA-06017",
+   "variant_id": null,
+   "format": "mcq",
+   "stem": {
+      "text": "The graph of the function f on the interval \\( [0, 8] \\) consists of line segments, as shown. Use a left Riemann sum with 4 subintervals of equal width to approximate \\( \\int_{0}^{8} f(x)\\,dx \\).",
+      "command_verb": "approximate"
+   },
+   "answer_key": {
+      "form": "symbolic",
+      "mathjson": 20
+   },
+   "worked_solution": [
+      {
+         "step": 1,
+         "text": "The interval has length \\( 8 \\), so each of the 4 subintervals has width \\( 2 \\), and the sum is \\( 2\\left(f(0) + f(2) + f(4) + f(6)\\right) \\).",
+         "point_type_id": "BC-PT-99018",
+         "rule_named": "form of the sum"
+      },
+      {
+         "step": 2,
+         "text": "Reading the values of f and adding gives \\( 20 \\).",
+         "mathjson": 20,
+         "point_type_id": "BC-PT-99019",
+         "rule_named": "value of the sum"
+      }
+   ],
+   "options": [
+      {
+         "id": "A",
+         "is_key": false,
+         "error_path": "BC-ERR-99028",
+         "value": -2,
+         "derivation": "a midpoint sum computed in place of the left sum",
+         "mechanism": "conceptual_confusion"
+      },
+      {
+         "id": "B",
+         "is_key": false,
+         "error_path": "BC-ERR-06002",
+         "value": 16,
+         "derivation": "right endpoints used where left endpoints were asked for",
+         "mechanism": "reversed_quantities"
+      },
+      {
+         "id": "C",
+         "is_key": true,
+         "error_path": null,
+         "value": 20
+      },
+      {
+         "id": "D",
+         "is_key": false,
+         "error_path": "BC-ERR-06003",
+         "value": 10,
+         "derivation": "the left sample values added without multiplying by the width 2",
+         "mechanism": "conceptual_confusion"
+      }
+   ],
+   "calculator_status": "no_calculator",
+   "representation": "BC-REP-02",
+   "difficulty_settings": [
+      {
+         "difficulty_factor_id": "BC-DF-03",
+         "setting": "low"
+      },
+      {
+         "difficulty_factor_id": "BC-DF-06",
+         "setting": "off"
+      },
+      {
+         "difficulty_factor_id": "BC-DF-07",
+         "setting": "off"
+      }
+   ],
+   "skills": [
+      "BC-SKL-06009",
+      "BC-SKL-06007",
+      "BC-SKL-06005",
+      "BC-SKL-06006",
+      "BC-SKL-06008"
+   ],
+   "parameter_draw": {
+      "source": "graph",
+      "method": "left",
+      "heights": [
+         "0",
+         "-1",
+         "-1",
+         "3",
+         "5",
+         "-2",
+         "6",
+         "-1",
+         "-2"
+      ],
+      "leading": "1",
+      "constant": "8",
+      "start": "3",
+      "pieces": "3",
+      "width": "1/2"
+   },
+   "predicted_success_probability": 0.4134,
+   "provenance": {
+      "template_id": "TPL-BC-QA-06017-v1",
+      "template_version": "1",
+      "spec_version": "1",
+      "parameter_seed": "BC-QA-06017:spec-1:item-16:try-18",
+      "parameter_draw": {
+         "source": "graph",
+         "method": "left",
+         "heights": [
+            "0",
+            "-1",
+            "-1",
+            "3",
+            "5",
+            "-2",
+            "6",
+            "-1",
+            "-2"
+         ],
+         "leading": "1",
+         "constant": "8",
+         "start": "3",
+         "pieces": "3",
+         "width": "1/2"
+      },
+      "model": "claude-opus-5-5 offline template, stage 15 of 2026-09-28",
+      "prompt_version": "generator/template_v1",
+      "generated_at": "2026-09-29T01:14:01Z",
+      "content_snapshot": "4363b6af148968a69a2134723832cc77bc13e1afea35e7db51a39bd994390a32",
+      "no_official_examples": true,
+      "requested_success_probability": 0.4134
+   },
+   "figure": {
+      "kind": "function_graph",
+      "domain": [
+         -0.5,
+         8.5
+      ],
+      "range": [
+         -3.0,
+         7.0
+      ],
+      "curves": [
+         {
+            "segments": [
+               [
+                  [
+                     0,
+                     0
+                  ],
+                  [
+                     1,
+                     -1
+                  ],
+                  [
+                     2,
+                     -1
+                  ],
+                  [
+                     3,
+                     3
+                  ],
+                  [
+                     4,
+                     5
+                  ],
+                  [
+                     5,
+                     -2
+                  ],
+                  [
+                     6,
+                     6
+                  ],
+                  [
+                     7,
+                     -1
+                  ],
+                  [
+                     8,
+                     -2
+                  ]
+               ]
+            ],
+            "style": "solid"
+         }
+      ],
+      "fills": [],
+      "marks": [
+         {
+            "type": "point",
+            "at": [
+               0.0,
+               0.0
+            ]
+         },
+         {
+            "type": "point",
+            "at": [
+               1.0,
+               -1.0
+            ]
+         },
+         {
+            "type": "point",
+            "at": [
+               2.0,
+               -1.0
+            ]
+         },
+         {
+            "type": "point",
+            "at": [
+               3.0,
+               3.0
+            ]
+         },
+         {
+            "type": "point",
+            "at": [
+               4.0,
+               5.0
+            ]
+         },
+         {
+            "type": "point",
+            "at": [
+               5.0,
+               -2.0
+            ]
+         },
+         {
+            "type": "point",
+            "at": [
+               6.0,
+               6.0
+            ]
+         },
+         {
+            "type": "point",
+            "at": [
+               7.0,
+               -1.0
+            ]
+         },
+         {
+            "type": "point",
+            "at": [
+               8.0,
+               -2.0
+            ]
+         }
+      ],
+      "labels": [
+         {
+            "text": "y = f(x)",
+            "anchor": [
+               0.3,
+               6.6
+            ],
+            "placement": "inside"
+         }
+      ],
+      "gridlines": true,
+      "axis_titles": [
+         "x",
+         "y"
+      ],
+      "alt": "The graph of f is made of line segments joining the points (0, 0), (1, -1), (2, -1), (3, 3), (4, 5), (5, -2), (6, 6), (7, -1), (8, -2)."
+   }
+}

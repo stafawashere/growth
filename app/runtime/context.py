@@ -1,19 +1,18 @@
 """Builds the SessionContext app/session/service.py is called with, from the live library.
 
 docs/plan/11-phased-delivery.md P1 scope items 1 and 14: loads the registries through
-app/content/loader.py, persists the content_snapshots row through app/content/persist.py, builds
-the fringe graph app/engine/select.py and app/session/build.py read and the engine graph
-app/engine/update.py reads, and wires the item bank of app/runtime/bank.py. No second loader is
-built here.
+app/content/loader.py, persists the content_snapshots row through app/content/reload.py, which
+first reconciles every user's skills_state rows when the digest has changed (06, "Library updates
+and retired IDs") and raises ReloadRefused when it cannot, builds the fringe graph
+app/engine/select.py and app/session/build.py read and the engine graph app/engine/update.py
+reads, and wires the item bank of app/runtime/bank.py. No second loader is built here.
 """
 import json
 from pathlib import Path
 
-from sqlalchemy.orm import Session as OrmSession
-
 from app.api.app import SessionContext
 from app.content.loader import load_snapshot
-from app.content.persist import record_snapshot
+from app.content.reload import reload_snapshot
 from app.runtime.bank import ItemBank, ItemSource
 from app.runtime.graphs import graphs_from_snapshot
 
@@ -44,15 +43,21 @@ def build_bank(engine, snapshot, snapshot_id, items_directories, retired_directo
 
 
 def build_session_context(
-   engine, content_root=None, library_commit=None, loaded_at=None, items_directories=(), retired_directories=()
+   engine,
+   content_root=None,
+   library_commit=None,
+   loaded_at=None,
+   items_directories=(),
+   retired_directories=(),
+   today=None,
 ):
+   """today is the day a merge re-evaluates the D2 mastery conditions on, the server's local date
+   when none is given."""
    root = content_root or DEFAULT_CONTENT_ROOT
    snapshot = load_snapshot(root)
-
-   with OrmSession(engine) as db:
-      row = record_snapshot(db, snapshot, library_commit=library_commit, loaded_at=loaded_at)
-      db.commit()
-      snapshot_id = row.id
+   snapshot_id = reload_snapshot(
+      engine, snapshot, library_commit=library_commit, loaded_at=loaded_at, today=today
+   )
 
    graph, engine_graph = graphs_from_snapshot(snapshot)
 

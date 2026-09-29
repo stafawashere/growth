@@ -1,0 +1,307 @@
+{
+   "id": "ITM-GEN-06016-35",
+   "archetype_id": "BC-QA-06016",
+   "variant_id": "BC-QV-06016-01",
+   "format": "mcq",
+   "stem": {
+      "text": "Find the indefinite integral \\( \\int \\frac{x^{2} + 2}{x - 2}\\,dx \\).",
+      "command_verb": "find"
+   },
+   "answer_key": {
+      "form": "symbolic",
+      "mathjson": [
+         "Add",
+         [
+            "Multiply",
+            [
+               "Rational",
+               1,
+               2
+            ],
+            [
+               "Power",
+               "x",
+               2
+            ]
+         ],
+         [
+            "Multiply",
+            2,
+            "x"
+         ],
+         [
+            "Multiply",
+            6,
+            [
+               "Ln",
+               [
+                  "Abs",
+                  [
+                     "Add",
+                     "x",
+                     -2
+                  ]
+               ]
+            ]
+         ]
+      ]
+   },
+   "worked_solution": [
+      {
+         "step": 1,
+         "text": "The numerator has degree 2 and the denominator degree 1, so the rational function is improper and must be divided before any logarithm appears.",
+         "rule_named": "technique selected by structure"
+      },
+      {
+         "step": 2,
+         "text": "Long division gives \\( \\frac{x^{2} + 2}{x - 2} = x + 2 + \\frac{6}{x - 2} \\).",
+         "mathjson": [
+            "Add",
+            "x",
+            2,
+            [
+               "Multiply",
+               6,
+               [
+                  "Power",
+                  [
+                     "Add",
+                     "x",
+                     -2
+                  ],
+                  -1
+               ]
+            ]
+         ],
+         "rule_named": "polynomial long division"
+      },
+      {
+         "step": 3,
+         "text": "Antidifferentiate term by term: the integral is \\( \\frac{x^{2}}{2} + 2 x + 6 \\ln{\\left(\\left|{x - 2}\\right| \\right)} + C \\).",
+         "mathjson": [
+            "Add",
+            [
+               "Multiply",
+               [
+                  "Rational",
+                  1,
+                  2
+               ],
+               [
+                  "Power",
+                  "x",
+                  2
+               ]
+            ],
+            [
+               "Multiply",
+               2,
+               "x"
+            ],
+            [
+               "Multiply",
+               6,
+               [
+                  "Ln",
+                  [
+                     "Abs",
+                     [
+                        "Add",
+                        "x",
+                        -2
+                     ]
+                  ]
+               ]
+            ]
+         ],
+         "rule_named": "antiderivatives of a polynomial and of 1 over a linear factor"
+      }
+   ],
+   "options": [
+      {
+         "id": "A",
+         "is_key": true,
+         "error_path": null,
+         "value": [
+            "Add",
+            [
+               "Multiply",
+               [
+                  "Rational",
+                  1,
+                  2
+               ],
+               [
+                  "Power",
+                  "x",
+                  2
+               ]
+            ],
+            [
+               "Multiply",
+               2,
+               "x"
+            ],
+            [
+               "Multiply",
+               6,
+               [
+                  "Ln",
+                  [
+                     "Abs",
+                     [
+                        "Add",
+                        "x",
+                        -2
+                     ]
+                  ]
+               ]
+            ]
+         ]
+      },
+      {
+         "id": "B",
+         "is_key": false,
+         "error_path": "BC-ERR-06020",
+         "value": [
+            "Multiply",
+            [
+               "Add",
+               [
+                  "Power",
+                  "x",
+                  2
+               ],
+               2
+            ],
+            [
+               "Ln",
+               [
+                  "Abs",
+                  [
+                     "Add",
+                     "x",
+                     -2
+                  ]
+               ]
+            ]
+         ],
+         "derivation": "u taken as the denominator and the whole numerator treated as though it were du, so it is carried in front of the logarithm",
+         "mechanism": "conceptual_confusion"
+      },
+      {
+         "id": "C",
+         "is_key": false,
+         "error_path": "BC-ERR-06022",
+         "value": [
+            "Multiply",
+            [
+               "Add",
+               [
+                  "Multiply",
+                  [
+                     "Rational",
+                     1,
+                     3
+                  ],
+                  [
+                     "Power",
+                     "x",
+                     3
+                  ]
+               ],
+               [
+                  "Multiply",
+                  2,
+                  "x"
+               ]
+            ],
+            [
+               "Ln",
+               [
+                  "Abs",
+                  [
+                     "Add",
+                     "x",
+                     -2
+                  ]
+               ]
+            ]
+         ],
+         "derivation": "the numerator and 1 over the denominator antidifferentiated separately and the results multiplied",
+         "mechanism": "product_rule_omitted"
+      },
+      {
+         "id": "D",
+         "is_key": false,
+         "error_path": "BC-ERR-06026",
+         "value": [
+            "Multiply",
+            6,
+            [
+               "Ln",
+               [
+                  "Abs",
+                  [
+                     "Add",
+                     "x",
+                     -2
+                  ]
+               ]
+            ]
+         ],
+         "derivation": "the improper fraction split directly, keeping only the constant 6 over x - 2 and losing the polynomial part",
+         "mechanism": "conceptual_confusion"
+      }
+   ],
+   "calculator_status": "no_calculator",
+   "representation": "BC-REP-01",
+   "difficulty_settings": [
+      {
+         "difficulty_factor_id": "BC-DF-07",
+         "setting": "off"
+      },
+      {
+         "difficulty_factor_id": "BC-DF-15",
+         "setting": "medium"
+      }
+   ],
+   "skills": [
+      "BC-SKL-06071",
+      "BC-SKL-06072",
+      "BC-SKL-06073",
+      "BC-SKL-06074",
+      "BC-SKL-06056",
+      "BC-SKL-06041",
+      "BC-SKL-06053"
+   ],
+   "parameter_draw": {
+      "structure": "improper_rational",
+      "multiplier": "1",
+      "rate": "4",
+      "rate_sign": "-1",
+      "shift": "-2",
+      "constant": "2"
+   },
+   "predicted_success_probability": 0.1978,
+   "provenance": {
+      "template_id": "TPL-BC-QA-06016-v1",
+      "template_version": "1",
+      "spec_version": "1",
+      "parameter_seed": "BC-QA-06016:spec-1:item-35:try-13",
+      "parameter_draw": {
+         "structure": "improper_rational",
+         "multiplier": "1",
+         "rate": "4",
+         "rate_sign": "-1",
+         "shift": "-2",
+         "constant": "2"
+      },
+      "model": "claude-opus-5-5 offline template, stage 5 of 2026-09-24",
+      "prompt_version": "generator/template_v1",
+      "generated_at": "2026-09-29T01:15:20Z",
+      "content_snapshot": "4363b6af148968a69a2134723832cc77bc13e1afea35e7db51a39bd994390a32",
+      "no_official_examples": true,
+      "requested_success_probability": 0.2592
+   }
+}

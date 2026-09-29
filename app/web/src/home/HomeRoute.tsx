@@ -121,6 +121,7 @@ export function HomeRoute({
          daysToExam={daysToExam(me.exam_date, today())}
          queueMinutes={Math.ceil(progress.forecast_minutes)}
          queueLines={queueLinesFrom(progress)}
+         focus={progress.focus ?? []}
          onStartSession={onStartSession}
          onAddPracticeSet={onStartSession}
          onResumeSession={resume}

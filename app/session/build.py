@@ -2,7 +2,10 @@
 
 Block 1 due reviews, block 2 fringe learning, block 3 interleaved mixed review, block 4 the
 calibration and error-note list. The minute forecast is an assembly input only, never a target.
-The productive-failure opener is out of P1 scope (R35), so block 2 opens with an ordinary item.
+In a learning session block 2 opens with the productive-failure opener when one is due (02,
+Session assembly; 01, Productive-failure openers), which the operator brought into scope on
+2026-09-28 in place of R35's deferral. The other callers, home's queue preview and the
+simulations, do not ask for it, so they neither place an opener nor set the flag.
 
 The pending-probe queue is handed to block 2 alone, which is where 11-phased-delivery.md test 15
 puts the served probe. The drain path inside next_item_review stays wired for review-mode sessions.
@@ -25,10 +28,11 @@ from sqlalchemy import select
 from app.auth.service import write_audit
 from app.db import models
 from app.engine import constants
-from app.engine.fringe import covered_due_skills, retrieval_eligible
+from app.engine.fringe import covered_due_skills, gated_records, outer_fringe, retrieval_eligible
 from app.engine.interleave import window_filter
 from app.engine.select import (
    DEFAULT_RULES,
+   dress_item,
    due_skills,
    filter_interleaving,
    hypercorrection_skills,
@@ -36,6 +40,7 @@ from app.engine.select import (
    next_item_retrieval,
    next_item_review,
    pick_named_item,
+   requires_choice,
    retrievability_map,
    review_eligible,
    session_now,
@@ -43,6 +48,8 @@ from app.engine.select import (
 from app.engine.state import Confidence
 
 COVERAGE_GAP_ACTION = "coverage_gap_fail_closed"
+
+OPENER_GAP_ACTION = "opener_gap_fail_open"
 
 
 @dataclass
@@ -58,6 +65,8 @@ class Session:
    due_queue: "DueQueue | None" = None
    shortfalls: list = field(default_factory=list)
    unit_counts: dict = field(default_factory=dict)
+   opener_concepts: list = field(default_factory=list)
+   opener_gaps: list = field(default_factory=list)
 
    @property
    def blocks(self):
@@ -323,11 +332,15 @@ def due_today_queue(states, graph, bank, attempts_history, today, retrievability
 
 
 def gap_already_recorded(db, user_id, archetype_id, today):
+   return recorded_on_day(db, COVERAGE_GAP_ACTION, user_id, f"archetypes:{archetype_id}", today)
+
+
+def recorded_on_day(db, action, user_id, subject, today):
    statement = (
       select(models.AuditLog.detail)
-      .where(models.AuditLog.action == COVERAGE_GAP_ACTION)
+      .where(models.AuditLog.action == action)
       .where(models.AuditLog.actor == user_id)
-      .where(models.AuditLog.subject == f"archetypes:{archetype_id}")
+      .where(models.AuditLog.subject == subject)
    )
    day = today.isoformat()
 
@@ -364,6 +377,143 @@ def write_coverage_gap_audit(db, user_id, archetype_ids, graph, today):
          "reason": "no published item for this fringe archetype",
       }
       write_audit(db, user_id, COVERAGE_GAP_ACTION, f"archetypes:{archetype_id}", detail)
+
+
+def write_opener_gap_audit(db, user_id, concept_ids, graph, today):
+   """The opener fails open: with no published generation item for a due concept, block 2 opens
+   with an ordinary item and the flag stays 0. One row per user per concept per assembly day, as
+   the coverage gap is recorded, so a gap that stands shows for how long it has stood."""
+   for concept_id in concept_ids:
+      subject = f"concepts:{concept_id}"
+
+      if recorded_on_day(db, OPENER_GAP_ACTION, user_id, subject, today):
+         continue
+
+      detail = {
+         "concept_id": concept_id,
+         "skills": list(graph.concept_skills.get(concept_id, ())),
+         "day": today.isoformat(),
+         "reason": "no published item on a BC-DF-13 or BC-DF-15 archetype of this concept",
+      }
+      write_audit(db, user_id, OPENER_GAP_ACTION, subject, detail)
+
+
+def openers_due(states, graph, fringe):
+   """02 Session assembly: a target concept is due its opener while any of its skills is on the
+   fringe and the flag on its first skill is still 0."""
+   on_fringe = set(fringe)
+   due = []
+
+   for concept_id in constants.PRODUCTIVE_FAILURE_TARGETS:
+      skills = graph.concept_skills.get(concept_id, ())
+      has_skills = len(skills) > 0
+
+      if not has_skills:
+         continue
+
+      first_state = states.get(skills[0])
+      has_flag_row = first_state is not None
+
+      if not has_flag_row:
+         continue
+
+      already_opened = bool(first_state.concept_opener_done)
+      reaches_fringe = any(skill in on_fringe for skill in skills)
+      is_due = reaches_fringe and not already_opened
+
+      if is_due:
+         due.append(concept_id)
+
+   return due
+
+
+def is_generation_archetype(record):
+   factors = set(record.get("difficulty_factors") or ())
+
+   return len(factors & constants.PRODUCTIVE_FAILURE_FACTORS) > 0
+
+
+def opener_options(record, bank, excluded_ids):
+   """An opener is always short answer, and a statement-keyed item has nothing to type, so it is
+   never an opener."""
+   options = []
+
+   for item in bank.published_items(record["id"]):
+      is_excluded = item["id"] in excluded_ids
+      is_typable = not requires_choice(item)
+
+      if is_typable and not is_excluded:
+         options.append(item)
+
+   return options
+
+
+def opener_records(concept_id, states, graph, bank, excluded_ids):
+   """Archetypes loading a skill of the concept whose factors make the item a generation task
+   (01, Library IDs used), cleared by gating as every learning-mode item is (invariant 3), and
+   holding a published short-answer item not served in the repeat window."""
+   concept_skills = set(graph.concept_skills.get(concept_id, ()))
+   loading = []
+
+   for record in graph.archetypes.values():
+      loads_concept = len(concept_skills & set(record["skills"])) > 0
+      is_generation = is_generation_archetype(record)
+
+      if loads_concept and is_generation:
+         loading.append(record)
+
+   gated = gated_records(loading, states, graph)
+   excluded = set(excluded_ids)
+
+   return [record for record in gated if len(opener_options(record, bank, excluded)) > 0]
+
+
+@dataclass(frozen=True)
+class OpenerChoice:
+   entry: dict | None
+   concept_id: str | None
+   gaps: tuple
+   shortfalls: tuple
+
+
+def choose_opener(
+   states, graph, bank, rng, excluded_ids, history, user_attempts, retrievability, rules
+):
+   """The first due concept with a servable generation item gets the opener. A due concept with
+   none is a gap; one whose items the interleaving window refuses waits for a later session."""
+   gaps = []
+   fringe = outer_fringe(states, graph)
+
+   for concept_id in openers_due(states, graph, fringe):
+      records = opener_records(concept_id, states, graph, bank, excluded_ids)
+      has_records = len(records) > 0
+
+      if not has_records:
+         gaps.append(concept_id)
+         continue
+
+      allowed, shortfalls = window_filter(records, history, graph, rules)
+      window_allows = len(allowed) > 0
+
+      if not window_allows:
+         continue
+
+      record = rng.choice(sorted(allowed, key=lambda candidate: candidate["id"]))
+      options = opener_options(record, bank, set(excluded_ids))
+      item = rng.choice(sorted(options, key=lambda candidate: candidate["id"]))
+      entry = dress_item(
+         record,
+         item,
+         states,
+         graph,
+         user_attempts,
+         retrievability=retrievability,
+         opener_concept=concept_id,
+      )
+
+      return OpenerChoice(entry, concept_id, tuple(gaps), shortfalls)
+
+   return OpenerChoice(None, None, tuple(gaps), ())
 
 
 def corrected_today(attempts_history, today):
@@ -416,7 +566,11 @@ def assemble_session(
    user_id=None,
    ordering=None,
    retrieval_entry=None,
+   openers=False,
 ):
+   """openers places the productive-failure opener in block 2 and sets concept_opener_done on
+   the in-memory state of the concept's first skill; the caller persists the flag. Only a learning
+   session asks for it (app/session/service.py open_session)."""
    retrievability = retrievability_map(states, today, retrievability)
    now = session_now(today, now)
    history = []
@@ -519,6 +673,23 @@ def assemble_session(
 
    assembled = 0.0
    gaps = ()
+   opener_pending = openers
+
+   def place_opener():
+      choice = choose_opener(
+         states, graph, bank, rng, blocked_later, history, attempts_history, retrievability, rules
+      )
+      session.opener_gaps.extend(choice.gaps)
+      is_placed = choice.entry is not None
+
+      if not is_placed:
+         return None
+
+      first_skill = graph.concept_skills[choice.concept_id][0]
+      states[first_skill].concept_opener_done = True
+      session.opener_concepts.append(choice.concept_id)
+
+      return serve(session.block2, choice.entry, choice.shortfalls)
 
    while True:
       selection = next_item_learning(
@@ -532,6 +703,21 @@ def assemble_session(
          ordering=ordering,
       )
       gaps = gaps or selection.coverage_gaps
+      is_probe = selection.item is not None and selection.item.get("is_probe") is True
+      opens_now = opener_pending and not is_probe
+
+      if opens_now:
+         opener_pending = False
+         opener_minutes = place_opener()
+         was_placed = opener_minutes is not None
+
+         if was_placed:
+            assembled += opener_minutes
+
+         reselects = was_placed and selection.item is not None
+
+         if reselects:
+            continue
 
       if selection.item is None:
          break
@@ -547,6 +733,11 @@ def assemble_session(
 
    if has_gaps and has_audit_target:
       write_coverage_gap_audit(db, user_id, gaps, graph, today)
+
+   has_opener_gaps = len(session.opener_gaps) > 0
+
+   if has_opener_gaps and has_audit_target:
+      write_opener_gap_audit(db, user_id, session.opener_gaps, graph, today)
 
    pool = eligible_records(states, graph, bank, unsupported_successes, retrieval_entry)
    assembled = 0.0

@@ -1,0 +1,104 @@
+{
+   "id": "ITM-GEN-07012-13",
+   "archetype_id": "BC-QA-07012",
+   "variant_id": null,
+   "format": "mcq",
+   "stem": {
+      "text": "Consider the differential equation \\( \\frac{dy}{dx} = 6 x y + 4 \\). Decide whether it can be solved by separation of variables. If it can, write it with every factor involving y on the side of dy and every factor involving x on the side of dx; if it cannot, say so.",
+      "command_verb": "determine"
+   },
+   "answer_key": {
+      "form": "statement",
+      "label": "The equation cannot be separated."
+   },
+   "worked_solution": [
+      {
+         "step": 1,
+         "text": "Separation needs \\( 6 x y + 4 \\) to be a function of x times a function of y. The term \\( 4 \\) contains no y and no factor \\( x \\), so no such factorisation exists.",
+         "rule_named": "test for a product of a function of x and a function of y"
+      },
+      {
+         "step": 2,
+         "text": "Equivalently, for \\( F = 6 x y + 4 \\) a product form would force \\( F F_{xy} = F_x F_y \\), which fails because the difference is \\( 24 \\). The equation cannot be separated.",
+         "point_type_id": "BC-PT-99028",
+         "rule_named": "separability decided"
+      }
+   ],
+   "options": [
+      {
+         "id": "A",
+         "is_key": false,
+         "error_path": "BC-ERR-07024",
+         "label": "\\( dy = \\left(6 x y + 4\\right)dx \\)",
+         "derivation": "dx moved across with y still on the side of dx, so nothing was separated",
+         "mechanism": "conceptual_confusion"
+      },
+      {
+         "id": "B",
+         "is_key": false,
+         "error_path": "BC-ERR-07028",
+         "label": "\\( \\frac{dy}{y + 4} = 6 x\\,dx \\)",
+         "derivation": "the constant treated as though it carried the factor 6 x, so the sum was factored falsely",
+         "mechanism": "conceptual_confusion"
+      },
+      {
+         "id": "C",
+         "is_key": false,
+         "error_path": "BC-ERR-07028",
+         "label": "\\( \\frac{dy}{y} = \\left(6 x + 4\\right)dx \\)",
+         "derivation": "the first term divided by y and the constant left beside it, as though the sum factored",
+         "mechanism": "algebra_slip"
+      },
+      {
+         "id": "D",
+         "is_key": true,
+         "error_path": null,
+         "label": "The equation cannot be separated."
+      }
+   ],
+   "calculator_status": "no_calculator",
+   "representation": "BC-REP-06",
+   "difficulty_settings": [
+      {
+         "difficulty_factor_id": "BC-DF-07",
+         "setting": "off"
+      },
+      {
+         "difficulty_factor_id": "BC-DF-11",
+         "setting": "off"
+      },
+      {
+         "difficulty_factor_id": "BC-DF-15",
+         "setting": "low"
+      }
+   ],
+   "skills": [
+      "BC-SKL-07028",
+      "BC-SKL-07024"
+   ],
+   "parameter_draw": {
+      "separable": "no",
+      "factor": "linear",
+      "coefficient": "6",
+      "constant": "4"
+   },
+   "predicted_success_probability": 0.4134,
+   "provenance": {
+      "template_id": "TPL-BC-QA-07012-v1",
+      "template_version": "1",
+      "spec_version": "1",
+      "parameter_seed": "BC-QA-07012:spec-1:item-13:try-13",
+      "parameter_draw": {
+         "separable": "no",
+         "factor": "linear",
+         "coefficient": "6",
+         "constant": "4"
+      },
+      "model": "claude-opus-5-5 offline template, stage 15 of 2026-09-28",
+      "prompt_version": "generator/template_v1",
+      "generated_at": "2026-09-29T01:14:01Z",
+      "content_snapshot": "4363b6af148968a69a2134723832cc77bc13e1afea35e7db51a39bd994390a32",
+      "no_official_examples": true,
+      "requested_success_probability": 0.4134
+   }
+}

@@ -90,7 +90,16 @@ def requires_choice(item):
    return item.get("requires_choice") is True
 
 
+def is_opener_item(item):
+   return item.get("is_opener") is True
+
+
 def format_for_item(user_attempts, item, stage):
+   """An opener is a generation task (01, Productive-failure openers), so R29's MCQ turn never
+   reaches it; app/session/build.py opener_records keeps statement-keyed items out of openers."""
+   if is_opener_item(item):
+      return ResponseFormat.SHORT_ANSWER
+
    if requires_choice(item):
       return ResponseFormat.MCQ
 
@@ -119,12 +128,28 @@ def constrained_candidates(records, history, graph, bank, excluded_ids, rules, u
    return filter_exam_weight(allowed, unit_counts), shortfalls
 
 
-def dress_item(record, chosen, states, graph, user_attempts, is_probe=False, retrievability=None):
-   stage = serve_stage(record, states, graph, retrievability)
+def dress_item(
+   record, chosen, states, graph, user_attempts, is_probe=False, retrievability=None, opener_concept=None
+):
+   """opener_concept marks the productive-failure opener of 02 Session assembly, served at stage
+   unsupported whatever the stored stage, so no worked step is shown and feedback waits for the
+   submission."""
+   is_opener = opener_concept is not None
+
+   if is_opener:
+      stage = FadingStage.UNSUPPORTED
+   else:
+      stage = serve_stage(record, states, graph, retrievability)
+
    served = dict(chosen)
    served["stage"] = stage
-   served["format"] = format_for_item(user_attempts, chosen, stage)
    served["is_probe"] = is_probe
+
+   if is_opener:
+      served["is_opener"] = True
+      served["opener_concept"] = opener_concept
+
+   served["format"] = format_for_item(user_attempts, served, stage)
 
    return served
 

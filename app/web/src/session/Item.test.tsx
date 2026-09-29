@@ -2,8 +2,9 @@ import { describe, expect, it, vi } from "vitest";
 import { cleanup, render, screen } from "@testing-library/react";
 import { P1_FEEDBACK_AFFORDANCES, AFFORDANCE_ATTRIBUTE } from "../affordances";
 import type { FadingStage, ServedFormat, ServedItem, ServedStep } from "../api/types";
+import { OPEN_DESMOS_LABEL } from "../input/DesmosPanel";
 import type { ItemProps } from "./Item";
-import { ANSWER_UNAVAILABLE, CALCULATOR_NOTE, COMMIT_LABEL, Item } from "./Item";
+import { ANSWER_UNAVAILABLE, COMMIT_LABEL, Item } from "./Item";
 
 const SELF_EXPLANATION_PROMPT = "Which rule justifies step 3, and why does it apply here?";
 
@@ -337,13 +338,13 @@ describe("Item figure and calculator note", () => {
    it("says a calculator is allowed only on a calculator item", () => {
       renderDressedItem({ calculator_status: "calculator" });
 
-      expect(screen.getByTestId("calculator-note").textContent).toBe(CALCULATOR_NOTE);
+      expect(screen.getByRole("button", { name: OPEN_DESMOS_LABEL })).not.toBeNull();
 
       cleanup();
 
       renderDressedItem({ calculator_status: "no_calculator" });
 
-      expect(screen.queryByTestId("calculator-note")).toBeNull();
+      expect(screen.queryByRole("button", { name: OPEN_DESMOS_LABEL })).toBeNull();
 
       cleanup();
    });

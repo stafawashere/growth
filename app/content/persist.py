@@ -10,12 +10,18 @@ def _now_iso():
    return datetime.now(timezone.utc).isoformat()
 
 
-def record_snapshot(db_session, snapshot, library_commit=None, loaded_at=None):
-   active_rows = (
+def active_snapshot_rows(db_session):
+   return (
       db_session.query(ContentSnapshot)
       .filter(ContentSnapshot.status == "active")
       .all()
    )
+
+
+def record_snapshot(db_session, snapshot, library_commit=None, loaded_at=None, row_id=None):
+   """row_id lets a reload name the new row before it exists, so skills_state rows reconciled in
+   their own transactions can point at it (app/content/reload.py)."""
+   active_rows = active_snapshot_rows(db_session)
    unchanged_row = next(
       (row for row in active_rows if row.digest == snapshot.digest),
       None,
@@ -37,7 +43,7 @@ def record_snapshot(db_session, snapshot, library_commit=None, loaded_at=None):
 
    timestamp = _now_iso()
    row = ContentSnapshot(
-      id=uuid.uuid4().hex,
+      id=row_id or uuid.uuid4().hex,
       loaded_at=loaded_at or timestamp,
       library_commit=library_commit,
       digest=snapshot.digest,

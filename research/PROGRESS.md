@@ -19,9 +19,9 @@ Counters are regenerated from `qa/12_report.py`; narrative status is updated by 
 | 3 | unit fan-out | done 2026-09-19 (10 units, 541 skills, 134 archetypes) |
 | 4 | official FRQ, scoring, sample indexing | done 2026-09-19 (249 FRQ part records over 2012 partial, 2013 to 2015, 2018, 2019, 2021 to 2026; 91 MCQ records; 69 point types; 38 Chief Reader errors) |
 | 5 | archetypes, points, misconceptions, diagnostics synthesis | done 2026-09-19 (129 active archetypes in 72 families, 17 difficulty factors, 945 edges with 0 cycles, 57 duplicate records retired) |
-| 6 | evidence files, skeptic pass, closure | skeptic pass done (fixes applied: inverted BC-ERR-99030 instance, skill tag policy, citation sync, adaptive metadata rewritten for all 541 skills); intra-unit edges for Units 8, 9, 10 authored; error causes enriched for all 390 active errors; diagnostic signals cover every active skill; independent-assessability flag added; mastery-state vocabulary unified; sg-24 and sample MCQ documents recovered by OCR (tools/ocr_pages.py) and their records re-derived; 10 gap archetypes, 7 new point types, misconception causal prerequisites filled |
+| 6 | evidence files, skeptic pass, closure | skeptic pass done (fixes applied: inverted BC-ERR-99030 instance, skill tag policy, citation sync, adaptive metadata rewritten for all 541 skills); intra-unit edges for Units 8, 9, 10 authored; error causes enriched for all 390 active errors; diagnostic signals cover every active skill; independent-assessability flag added; mastery-state vocabulary unified; sg-24 and sample MCQ documents recovered by OCR (tools/ocr_pages.py) and their records re-derived; 10 gap archetypes, 7 new point types, misconception causal prerequisites filled; 2026-09-28 corrections: BC-CON-06001 and BC-CON-06007 skill lists matched to the skills' concept back-references (list total 544 to 541), and seven unloaded skills added to active archetypes whose solution paths exercise them (unloaded skills 19 to 12); confusable_with filled on 505 of 541 skills (1178 symmetric pairs, at most 6 per skill) by tools/derive_confusable.py; asked_to_produce, common_givens and wrong_approaches written for the 78 active archetypes that lacked them (78, 74 and 73 filled; the rest left absent where the cached pages give no support, listed in the staging file); 2026-09-28 stage 15: nine archetypes minted (BC-QA-03010, 05014, 06017, 06018, 06019, 07012 for skills no archetype isolated, and BC-QA-02014, 09014, 10021 as generation archetypes for the productive-failure openers of BC-CON-02002, 09015 and 10002), 148 active of 153 records; BC-ERR-02033 and BC-ERR-06033 minted (393 active of 427); BC-SKL-06046 retired into BC-SKL-06074 (541 records, 540 active), its edge to BC-SKL-06074 left in prereq_edges.csv |
 
-## Counters (from qa/last_report.json, 2026-09-19)
+## Counters (from qa/last_report.json, 2026-09-28)
 
 | Registry | Records |
 |---|---|
@@ -34,10 +34,10 @@ Counters are regenerated from `qa/12_report.py`; narrative status is updated by 
 | skills.json:concepts | 170 |
 | skills.json:skills | 541 |
 | skills.json:prerequisites | 77 |
-| archetypes.json:archetypes | 144 |
+| archetypes.json:archetypes | 153 |
 | archetypes.json:variants | 395 |
 | scoring_points.json:point_types | 76 |
-| errors.json:errors | 425 |
+| errors.json:errors | 427 |
 | misconceptions.json:misconceptions | 236 |
 | diagnostic_signals.json:signals | 711 |
 | taxonomies.json:representations | 14 |
@@ -49,7 +49,7 @@ Counters are regenerated from `qa/12_report.py`; narrative status is updated by 
 | cache:documents_ok | 97 |
 | cache:documents_missing | 60 |
 
-QA: all 13 checks pass (00 to 10 plus 13_adaptive and 14_diagnosis); 11_freshness is network-only and run on demand.
+QA: all 14 checks pass (00 to 10 plus 13_adaptive, 14_diagnosis and 15_determinism_labels); 11_freshness is network-only and run on demand.
 
 ## Sources and years
 

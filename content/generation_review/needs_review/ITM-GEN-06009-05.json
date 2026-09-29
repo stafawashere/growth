@@ -1,0 +1,342 @@
+{
+   "id": "ITM-GEN-06009-05",
+   "archetype_id": "BC-QA-06009",
+   "variant_id": "BC-QV-06009-01",
+   "format": "mcq",
+   "stem": {
+      "text": "Find \\( \\int - 5 w e^{2 w}\\,dw \\).",
+      "command_verb": "find"
+   },
+   "answer_key": {
+      "form": "symbolic",
+      "mathjson": [
+         "Add",
+         "C",
+         [
+            "Multiply",
+            -1,
+            [
+               "Rational",
+               5,
+               2
+            ],
+            "w",
+            [
+               "Exp",
+               [
+                  "Multiply",
+                  2,
+                  "w"
+               ]
+            ]
+         ],
+         [
+            "Multiply",
+            [
+               "Rational",
+               5,
+               4
+            ],
+            [
+               "Exp",
+               [
+                  "Multiply",
+                  2,
+                  "w"
+               ]
+            ]
+         ]
+      ]
+   },
+   "worked_solution": [
+      {
+         "step": 1,
+         "text": "Let \\( u = - 5 w \\) and \\( dv = e^{2 w}\\,dw \\), so \\( du = -5\\,dw \\) and \\( v = \\frac{e^{2 w}}{2} \\).",
+         "point_type_id": "BC-PT-99056",
+         "rule_named": "choice of u and dv"
+      },
+      {
+         "step": 2,
+         "text": "Integration by parts gives \\( - \\frac{5 w e^{2 w}}{2} - \\int - \\frac{5 e^{2 w}}{2}\\,dw \\).",
+         "point_type_id": "BC-PT-99057",
+         "rule_named": "integration by parts"
+      },
+      {
+         "step": 3,
+         "text": "The remaining integral is basic, so the antiderivative is \\( C - \\frac{5 w e^{2 w}}{2} + \\frac{5 e^{2 w}}{4} \\).",
+         "mathjson": [
+            "Add",
+            "C",
+            [
+               "Multiply",
+               -1,
+               [
+                  "Rational",
+                  5,
+                  2
+               ],
+               "w",
+               [
+                  "Exp",
+                  [
+                     "Multiply",
+                     2,
+                     "w"
+                  ]
+               ]
+            ],
+            [
+               "Multiply",
+               [
+                  "Rational",
+                  5,
+                  4
+               ],
+               [
+                  "Exp",
+                  [
+                     "Multiply",
+                     2,
+                     "w"
+                  ]
+               ]
+            ]
+         ],
+         "point_type_id": "BC-PT-99004",
+         "rule_named": "basic antiderivative"
+      }
+   ],
+   "options": [
+      {
+         "id": "A",
+         "is_key": false,
+         "error_path": "BC-ERR-06022",
+         "value": [
+            "Add",
+            "C",
+            [
+               "Multiply",
+               -1,
+               [
+                  "Rational",
+                  5,
+                  4
+               ],
+               [
+                  "Power",
+                  "w",
+                  2
+               ],
+               [
+                  "Exp",
+                  [
+                     "Multiply",
+                     2,
+                     "w"
+                  ]
+               ]
+            ]
+         ],
+         "derivation": "the two factors antidifferentiated separately, - \\frac{5 w^{2}}{2} times \\frac{e^{2 w}}{2}, and multiplied",
+         "mechanism": "conceptual_confusion"
+      },
+      {
+         "id": "B",
+         "is_key": false,
+         "error_path": "BC-ERR-99025",
+         "value": [
+            "Add",
+            "C",
+            [
+               "Multiply",
+               -1,
+               [
+                  "Rational",
+                  5,
+                  2
+               ],
+               "w",
+               [
+                  "Exp",
+                  [
+                     "Multiply",
+                     2,
+                     "w"
+                  ]
+               ]
+            ],
+            [
+               "Multiply",
+               [
+                  "Rational",
+                  5,
+                  2
+               ],
+               [
+                  "Exp",
+                  [
+                     "Multiply",
+                     2,
+                     "w"
+                  ]
+               ]
+            ]
+         ],
+         "derivation": "the remaining integral of v du antidifferentiated without dividing by 2 a second time",
+         "mechanism": "algebra_slip"
+      },
+      {
+         "id": "C",
+         "is_key": true,
+         "error_path": null,
+         "value": [
+            "Add",
+            "C",
+            [
+               "Multiply",
+               -1,
+               [
+                  "Rational",
+                  5,
+                  2
+               ],
+               "w",
+               [
+                  "Exp",
+                  [
+                     "Multiply",
+                     2,
+                     "w"
+                  ]
+               ]
+            ],
+            [
+               "Multiply",
+               [
+                  "Rational",
+                  5,
+                  4
+               ],
+               [
+                  "Exp",
+                  [
+                     "Multiply",
+                     2,
+                     "w"
+                  ]
+               ]
+            ]
+         ]
+      },
+      {
+         "id": "D",
+         "is_key": false,
+         "error_path": "BC-ERR-06023",
+         "value": [
+            "Add",
+            "C",
+            [
+               "Multiply",
+               -1,
+               [
+                  "Rational",
+                  5,
+                  2
+               ],
+               "w",
+               [
+                  "Exp",
+                  [
+                     "Multiply",
+                     2,
+                     "w"
+                  ]
+               ]
+            ],
+            [
+               "Multiply",
+               -1,
+               [
+                  "Rational",
+                  5,
+                  4
+               ],
+               [
+                  "Exp",
+                  [
+                     "Multiply",
+                     2,
+                     "w"
+                  ]
+               ]
+            ]
+         ],
+         "derivation": "the minus sign before the integral of v du dropped",
+         "mechanism": "sign_error"
+      }
+   ],
+   "calculator_status": "no_calculator",
+   "representation": "BC-REP-01",
+   "difficulty_settings": [
+      {
+         "difficulty_factor_id": "BC-DF-02",
+         "setting": "off"
+      },
+      {
+         "difficulty_factor_id": "BC-DF-06",
+         "setting": "off"
+      },
+      {
+         "difficulty_factor_id": "BC-DF-07",
+         "setting": "off"
+      }
+   ],
+   "skills": [
+      "BC-SKL-06057",
+      "BC-SKL-06058",
+      "BC-SKL-06059",
+      "BC-SKL-06060",
+      "BC-SKL-06061",
+      "BC-SKL-06034",
+      "BC-SKL-06044"
+   ],
+   "parameter_draw": {
+      "multiplier": "-5",
+      "rate": "2",
+      "variable": "w",
+      "reach": "1",
+      "partner": "exponential",
+      "form": "indefinite"
+   },
+   "predicted_success_probability": 0.4134,
+   "provenance": {
+      "template_id": "TPL-BC-QA-06009-v1",
+      "template_version": "1",
+      "spec_version": "1",
+      "parameter_seed": "BC-QA-06009:spec-1:item-5:try-0",
+      "parameter_draw": {
+         "multiplier": "-5",
+         "rate": "2",
+         "variable": "w",
+         "reach": "1",
+         "partner": "exponential",
+         "form": "indefinite"
+      },
+      "model": "claude-opus-5-5 offline template, stage 5 of 2026-09-24, run D",
+      "prompt_version": "generator/template_v1",
+      "generated_at": "2026-09-29T01:14:54Z",
+      "content_snapshot": "4363b6af148968a69a2134723832cc77bc13e1afea35e7db51a39bd994390a32",
+      "no_official_examples": false,
+      "requested_success_probability": 0.4134
+   },
+   "review": {
+      "item_id": "ITM-GEN-06009-05",
+      "status": "needs_review",
+      "rules": [
+         4
+      ],
+      "notes": [
+         "held before publication: the stored key carries the constant of integration C, and tools/key_recheck.py's control perturbs a computed answer by sqrt(2)/7, which a check that accepts any constant cannot tell apart, so the control fails whenever this item is sampled; the item waits for the operator's ruling on the control"
+      ]
+   }
+}

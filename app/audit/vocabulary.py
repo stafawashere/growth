@@ -36,6 +36,11 @@ login_failed_lockout is written once each time wrong passwords lock the account,
 the lock deadline and nothing of the password. password_changed and password_reset_via_recovery are
 09's recovery-code-used entry split by how the password was set. recovery_code_issued is the
 operator's command line in app/auth/issue_recovery_code.py handing out a fresh code.
+
+Added 2026-09-28 with the productive-failure opener: opener_gap_fail_open, because an opener due
+for a concept with no published generation item is skipped rather than refused, the fail-open
+twin of coverage_gap_fail_closed, and an operator needs the same queryable record of which concept
+had nothing to open with. It is bounded the same way, one row per user, concept and day.
 """
 AUDIT_ACTIONS = (
    "account_created",
@@ -52,6 +57,7 @@ AUDIT_ACTIONS = (
    "frq_image_deleted",
    "grading_rerun",
    "login_failed_lockout",
+   "opener_gap_fail_open",
    "password_changed",
    "password_reset_via_recovery",
    "provider_key_removed",

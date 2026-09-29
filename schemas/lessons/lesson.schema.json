@@ -1,0 +1,471 @@
+{
+ "$schema": "https://json-schema.org/draft/2020-12/schema",
+ "$id": "lessons/lesson.schema.json",
+ "title": "Lesson record, docs/plan/15-lessons.md content model",
+ "type": "object",
+ "required": [
+  "id",
+  "version",
+  "kind",
+  "target_id",
+  "status",
+  "snapshot_digest",
+  "source_digest",
+  "read_minutes",
+  "word_count",
+  "sections",
+  "checks",
+  "refresher",
+  "provenance"
+ ],
+ "additionalProperties": false,
+ "properties": {
+  "id": {
+   "type": "string",
+   "pattern": "^LSN-(CON|PRQ)-\\d{5}$|^LSN-DEC-\\d{2}-\\d{2}$"
+  },
+  "version": {
+   "type": "integer",
+   "minimum": 1
+  },
+  "kind": {
+   "enum": [
+    "concept",
+    "prerequisite",
+    "decision"
+   ]
+  },
+  "target_id": {
+   "type": "string",
+   "pattern": "^(BC-CON-\\d{5}|BC-PRQ-\\d{5}|BC-UNIT-\\d{2})$"
+  },
+  "status": {
+   "enum": [
+    "draft",
+    "checked",
+    "resolved",
+    "signed_off",
+    "stale",
+    "retired"
+   ]
+  },
+  "snapshot_digest": {
+   "type": "string",
+   "minLength": 8
+  },
+  "source_digest": {
+   "type": "string",
+   "pattern": "^[0-9a-f]{64}$"
+  },
+  "read_minutes": {
+   "type": "object",
+   "required": [
+    "full",
+    "brief"
+   ],
+   "additionalProperties": false,
+   "properties": {
+    "full": {
+     "type": "number",
+     "exclusiveMinimum": 0
+    },
+    "brief": {
+     "type": "number",
+     "exclusiveMinimum": 0
+    }
+   }
+  },
+  "word_count": {
+   "type": "object",
+   "required": [
+    "full",
+    "brief"
+   ],
+   "additionalProperties": false,
+   "properties": {
+    "full": {
+     "type": "integer",
+     "minimum": 1
+    },
+    "brief": {
+     "type": "integer",
+     "minimum": 1
+    }
+   }
+  },
+  "sections": {
+   "type": "array",
+   "minItems": 1,
+   "items": {
+    "oneOf": [
+     {"$ref": "#/$defs/orientation"},
+     {"$ref": "#/$defs/key_ideas"},
+     {"$ref": "#/$defs/strategy"},
+     {"$ref": "#/$defs/worked_example"},
+     {"$ref": "#/$defs/what_a_reader_scores"},
+     {"$ref": "#/$defs/common_error"},
+     {"$ref": "#/$defs/representations"},
+     {"$ref": "#/$defs/prerequisite_bridge"}
+    ]
+   }
+  },
+  "checks": {
+   "type": "array",
+   "items": {"$ref": "#/$defs/check"}
+  },
+  "refresher": {
+   "type": "array",
+   "items": {"$ref": "#/$defs/section_id"}
+  },
+  "decision": {"$ref": "#/$defs/decision"},
+  "provenance": {
+   "type": "object",
+   "required": [
+    "author",
+    "prompt_version",
+    "generated_at",
+    "signed_off_by",
+    "signed_off_at",
+    "not_human"
+   ],
+   "additionalProperties": false,
+   "properties": {
+    "author": {"type": "string", "minLength": 1},
+    "prompt_version": {"type": "string", "minLength": 1},
+    "generated_at": {"type": "string", "minLength": 10},
+    "signed_off_by": {"type": ["string", "null"]},
+    "signed_off_at": {"type": ["string", "null"]},
+    "not_human": {"const": true}
+   }
+  }
+ },
+ "if": {
+  "properties": {"kind": {"const": "decision"}}
+ },
+ "then": {
+  "required": ["decision"]
+ },
+ "$defs": {
+  "section_id": {
+   "type": "string",
+   "pattern": "^LSN-(CON|PRQ)-\\d{5}#[A-Za-z0-9-]+$|^LSN-DEC-\\d{2}-\\d{2}#[A-Za-z0-9-]+$"
+  },
+  "evidence_tag": {
+   "enum": [
+    "verified",
+    "single-source",
+    "inferred",
+    "uncertain"
+   ]
+  },
+  "bands": {
+   "type": "array",
+   "minItems": 1,
+   "uniqueItems": true,
+   "items": {"enum": ["low", "mid"]}
+  },
+  "id_list": {
+   "type": "array",
+   "items": {"type": "string", "pattern": "^BC-[A-Z]+-[A-Za-z0-9-]+$"}
+  },
+  "source_list": {
+   "type": "array",
+   "minItems": 1,
+   "items": {"type": "string", "minLength": 3}
+  },
+  "mathjson": {
+   "type": ["number", "string", "array"]
+  },
+  "text": {
+   "type": "string",
+   "minLength": 1
+  },
+  "answer": {
+   "type": "object",
+   "required": ["form", "mathjson"],
+   "properties": {
+    "form": {"enum": ["symbolic", "numeric", "statement"]},
+    "mathjson": {"$ref": "#/$defs/mathjson"},
+    "decimals": {"type": "integer"},
+    "label": {"type": "string"}
+   }
+  },
+  "block_common": {
+   "type": "object",
+   "required": ["id", "type", "bands", "skills", "sources", "evidence_tag"],
+   "properties": {
+    "id": {"$ref": "#/$defs/section_id"},
+    "bands": {"$ref": "#/$defs/bands"},
+    "skills": {"$ref": "#/$defs/id_list"},
+    "sources": {"$ref": "#/$defs/source_list"},
+    "evidence_tag": {"$ref": "#/$defs/evidence_tag"},
+    "quote": {
+     "type": "object",
+     "required": ["text", "source"],
+     "additionalProperties": false,
+     "properties": {
+      "text": {"$ref": "#/$defs/text"},
+      "source": {"type": "string", "pattern": "^ced:\\d+$"}
+     }
+    }
+   }
+  },
+  "orientation": {
+   "allOf": [{"$ref": "#/$defs/block_common"}],
+   "required": ["text"],
+   "properties": {
+    "type": {"const": "orientation"},
+    "text": {"$ref": "#/$defs/text"}
+   },
+   "unevaluatedProperties": false
+  },
+  "key_ideas": {
+   "allOf": [{"$ref": "#/$defs/block_common"}],
+   "required": ["ek_id", "depth", "text"],
+   "properties": {
+    "type": {"const": "key_ideas"},
+    "ek_id": {"type": "string", "pattern": "^BC-EK-[A-Z]{3}-\\d+[A-Z]\\d+$"},
+    "depth": {"enum": ["core", "extended"]},
+    "text": {"$ref": "#/$defs/text"},
+    "notation": {"type": "string"}
+   },
+   "unevaluatedProperties": false
+  },
+  "strategy": {
+   "allOf": [{"$ref": "#/$defs/block_common"}],
+   "required": ["archetype_id", "cue", "method", "rival", "separating_feature"],
+   "properties": {
+    "type": {"const": "strategy"},
+    "archetype_id": {"type": "string", "pattern": "^BC-QA-\\d{5}$"},
+    "cue": {"$ref": "#/$defs/text"},
+    "method": {"$ref": "#/$defs/text"},
+    "rival": {"$ref": "#/$defs/text"},
+    "separating_feature": {"$ref": "#/$defs/text"}
+   },
+   "unevaluatedProperties": false
+  },
+  "step": {
+   "type": "object",
+   "required": ["cue", "why"],
+   "additionalProperties": false,
+   "properties": {
+    "cue": {"$ref": "#/$defs/text"},
+    "why": {"$ref": "#/$defs/text"},
+    "expression": {"$ref": "#/$defs/mathjson"},
+    "point_type_id": {"type": "string", "pattern": "^BC-PT-\\d{5}$"}
+   }
+  },
+  "worked_example": {
+   "allOf": [{"$ref": "#/$defs/block_common"}],
+   "required": ["archetype_id", "parameter_draw", "problem", "calculator_status", "steps", "answer"],
+   "properties": {
+    "type": {"const": "worked_example"},
+    "archetype_id": {"type": "string", "pattern": "^BC-QA-\\d{5}$"},
+    "parameter_draw": {"type": "object"},
+    "problem": {
+     "type": "object",
+     "required": ["text"],
+     "properties": {
+      "text": {"$ref": "#/$defs/text"},
+      "command_verb": {"type": "string"}
+     }
+    },
+    "calculator_status": {"enum": ["calculator", "no_calculator", "either"]},
+    "steps": {
+     "type": "array",
+     "minItems": 2,
+     "items": {"$ref": "#/$defs/step"}
+    },
+    "answer": {"$ref": "#/$defs/answer"}
+   },
+   "unevaluatedProperties": false
+  },
+  "what_a_reader_scores": {
+   "allOf": [{"$ref": "#/$defs/block_common"}],
+   "required": ["example_id", "lines"],
+   "properties": {
+    "type": {"const": "what_a_reader_scores"},
+    "example_id": {"$ref": "#/$defs/section_id"},
+    "lines": {
+     "type": "array",
+     "minItems": 1,
+     "maxItems": 6,
+     "items": {
+      "type": "object",
+      "required": ["point_type_id", "text"],
+      "additionalProperties": false,
+      "properties": {
+       "point_type_id": {"type": "string", "pattern": "^BC-PT-\\d{5}$"},
+       "text": {"$ref": "#/$defs/text"}
+      }
+     }
+    }
+   },
+   "unevaluatedProperties": false
+  },
+  "common_error": {
+   "allOf": [{"$ref": "#/$defs/block_common"}],
+   "required": [
+    "error_id",
+    "observed_behavior",
+    "scoring_consequence",
+    "wrong_step",
+    "right_step",
+    "relation"
+   ],
+   "properties": {
+    "type": {"const": "common_error"},
+    "error_id": {"type": "string", "pattern": "^BC-ERR-\\d{5}$"},
+    "observed_behavior": {"$ref": "#/$defs/text"},
+    "scoring_consequence": {"$ref": "#/$defs/text"},
+    "wrong_step": {"$ref": "#/$defs/error_step"},
+    "right_step": {"$ref": "#/$defs/error_step"},
+    "relation": {"enum": ["distinct", "equivalent"]},
+    "possible_reason": {
+     "type": "object",
+     "required": ["misconception_id", "text"],
+     "additionalProperties": false,
+     "properties": {
+      "misconception_id": {"type": "string", "pattern": "^BC-MIS-\\d{5}$"},
+      "text": {"$ref": "#/$defs/text"}
+     }
+    }
+   },
+   "unevaluatedProperties": false
+  },
+  "error_step": {
+   "type": "object",
+   "required": ["text", "expression"],
+   "additionalProperties": false,
+   "properties": {
+    "text": {"$ref": "#/$defs/text"},
+    "expression": {"$ref": "#/$defs/mathjson"}
+   }
+  },
+  "representations": {
+   "allOf": [{"$ref": "#/$defs/block_common"}],
+   "required": ["text"],
+   "properties": {
+    "type": {"const": "representations"},
+    "text": {"$ref": "#/$defs/text"},
+    "figure": {"type": "object"}
+   },
+   "unevaluatedProperties": false
+  },
+  "prerequisite_bridge": {
+   "allOf": [{"$ref": "#/$defs/block_common"}],
+   "required": ["prerequisite_id", "text"],
+   "properties": {
+    "type": {"const": "prerequisite_bridge"},
+    "prerequisite_id": {"type": "string", "pattern": "^BC-PRQ-\\d{5}$"},
+    "text": {"$ref": "#/$defs/text"}
+   },
+   "unevaluatedProperties": false
+  },
+  "option": {
+   "type": "object",
+   "required": ["id", "is_key", "error_path"],
+   "properties": {
+    "id": {"type": "string"},
+    "is_key": {"type": "boolean"},
+    "error_path": {"type": ["string", "null"]},
+    "value": {"$ref": "#/$defs/mathjson"},
+    "label": {"type": "string"},
+    "derivation": {"type": "string"},
+    "mechanism": {"type": "string"}
+   }
+  },
+  "solution_step": {
+   "type": "object",
+   "required": ["step", "text"],
+   "properties": {
+    "step": {"type": "integer"},
+    "text": {"$ref": "#/$defs/text"},
+    "mathjson": {"$ref": "#/$defs/mathjson"},
+    "point_type_id": {"type": "string", "pattern": "^BC-PT-\\d{5}$"},
+    "rule_named": {"type": "string"}
+   }
+  },
+  "check": {
+   "type": "object",
+   "required": [
+    "id",
+    "check_kind",
+    "bands",
+    "format",
+    "archetype_id",
+    "parameter_draw",
+    "stem",
+    "answer_key",
+    "worked_solution",
+    "calculator_status",
+    "representation",
+    "skills"
+   ],
+   "additionalProperties": false,
+   "properties": {
+    "id": {"$ref": "#/$defs/section_id"},
+    "check_kind": {"enum": ["completion", "isomorph", "mcq", "discrimination"]},
+    "bands": {"$ref": "#/$defs/bands"},
+    "format": {"enum": ["short_answer", "mcq"]},
+    "archetype_id": {"type": "string", "pattern": "^BC-QA-\\d{5}$"},
+    "parameter_draw": {"type": "object"},
+    "completes": {"$ref": "#/$defs/section_id"},
+    "stem": {
+     "type": "object",
+     "required": ["text"],
+     "properties": {
+      "text": {"$ref": "#/$defs/text"},
+      "command_verb": {"type": "string"}
+     }
+    },
+    "answer_key": {"$ref": "#/$defs/answer"},
+    "worked_solution": {
+     "type": "array",
+     "minItems": 1,
+     "items": {"$ref": "#/$defs/solution_step"}
+    },
+    "options": {
+     "type": "array",
+     "items": {"$ref": "#/$defs/option"}
+    },
+    "calculator_status": {"enum": ["calculator", "no_calculator", "either"]},
+    "representation": {"type": "string", "pattern": "^BC-REP-\\d{2}$"},
+    "skills": {"$ref": "#/$defs/id_list"}
+   },
+   "allOf": [
+    {
+     "if": {"properties": {"format": {"const": "mcq"}}},
+     "then": {"required": ["options"], "properties": {"options": {"minItems": 2, "maxItems": 4}}}
+    }
+   ]
+  },
+  "decision": {
+   "type": "object",
+   "required": ["unit", "skills", "selecting_feature", "stems"],
+   "additionalProperties": false,
+   "properties": {
+    "unit": {"type": "string", "pattern": "^BC-UNIT-\\d{2}$"},
+    "skills": {"$ref": "#/$defs/id_list"},
+    "selecting_feature": {"type": "string", "minLength": 1},
+    "stems": {
+     "type": "array",
+     "minItems": 2,
+     "maxItems": 4,
+     "items": {
+      "type": "object",
+      "required": ["id", "archetype_id", "method", "parameter_draw", "text"],
+      "additionalProperties": false,
+      "properties": {
+       "id": {"$ref": "#/$defs/section_id"},
+       "archetype_id": {"type": "string", "pattern": "^BC-QA-\\d{5}$"},
+       "method": {"$ref": "#/$defs/text"},
+       "parameter_draw": {"type": "object"},
+       "text": {"$ref": "#/$defs/text"}
+      }
+     }
+    }
+   }
+  }
+ }
+}

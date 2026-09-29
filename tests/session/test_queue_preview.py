@@ -329,3 +329,30 @@ def test_the_same_user_on_the_next_day_gets_a_different_draw():
    tomorrow = preview.user_assembly_rng(PROCESS_SEED, USER_ID, TODAY + timedelta(days=1))
 
    assert draw_state(today) != draw_state(tomorrow)
+
+
+def test_the_focus_names_each_served_block_by_its_primary_skills(tmp_path):
+   world = make_world(tmp_path)
+
+   with OrmSession(world.engine) as db:
+      previewed = world.preview(db)
+      row = world.open(db)
+      db.commit()
+      queue = json.loads(db.get(models.Session, row.id).queue)
+
+   served_blocks = [
+      (name, queue[key])
+      for name, key in (("review", "block1"), ("learn", "block2"), ("mixed", "block3"))
+      if len(queue[key]) > 0
+   ]
+
+   assert [entry["block"] for entry in previewed["focus"]] == [name for name, _ in served_blocks]
+
+   for entry, (_, items) in zip(previewed["focus"], served_blocks):
+      primary_ids = list(dict.fromkeys(world.graph.primary_skill(item["archetype_id"]) for item in items))
+      named = [world.graph.skills.get(skill_id, {}).get("name", skill_id) for skill_id in primary_ids]
+      shown_count = len(entry["skills"]) + entry["more_skills"]
+
+      assert entry["items"] == len(items)
+      assert entry["skills"] == named[:preview.FOCUS_SKILL_LIMIT]
+      assert shown_count == len(named)

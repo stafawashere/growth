@@ -1,11 +1,17 @@
-"""Twelve simulated weeks through the real routes with the A/B switches randomised, then a
+"""Sixteen simulated weeks through the real routes with the A/B switches randomised, then a
 checkpoint, a probe and the metrics view: the P7 machinery end to end on seeded data.
 
 The student is a coin weighted by the item's archetype, so the run is reproducible and asks
 nothing of a model. The fixture bank serves about five items a session, far fewer than the real
-bank, so it takes twelve weeks here for both feedback arms to pass the 30-outcome floor an interval
+bank, so it takes many weeks here for both feedback arms to pass the 30-outcome floor an interval
 needs. It shows the machinery works, not that anything was learned: no number here is evidence
 about the real student.
+
+The run was twelve weeks until the decayed-support cap (02 Decay, stage 14). The cap serves some
+decayed skills at completion, which reads no feedback switch, and the verification-only arm fell
+from 30 outcomes to 25 against the floor. The floor is 10's and did not move; the run was
+lengthened to sixteen weeks, where the arms reach 64 and 38 with the cap and 71 and 41 without it
+(BUILD-LEDGER.md, stage 14 follow-ups).
 
 The registered user's id is pinned. app/auth/service.py new_id gives every registration a fresh
 uuid4, and that id seeds the experiment tie-breaks (app/experiments/switches.py default_seed) and
@@ -28,7 +34,7 @@ from app.runtime.probe_set import probe_item_ids
 from tests.api.conftest import KEY_MATHJSON, TODAY, WRONG_MATHJSON
 from tests.api.test_evaluation_routes import publish_probe_items, run_checkpoint
 
-WEEKS = 12
+WEEKS = 16
 SEED = 20260924
 SEEDED_USER_ID = f"USER-seeded-weeks-{SEED}"
 WORKED_STEPS = [
@@ -38,8 +44,8 @@ WORKED_STEPS = [
 
 
 def give_every_item_worked_steps(engine):
-   """The shared fixture rows carry a one-line worked solution, enough for stage unsupported. Eight
-   weeks of failures fade some skills back to completion, which serves steps, so these rows get
+   """The shared fixture rows carry a one-line worked solution, enough for stage unsupported. Weeks
+   of failures fade some skills back to completion, which serves steps, so these rows get
    two."""
    with OrmSession(engine) as db:
       db.execute(update(models.Item).values(worked_solution=json.dumps(WORKED_STEPS)))

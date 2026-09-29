@@ -88,6 +88,9 @@ export interface QueueSlot {
    stage: FadingStage;
    format: ServedFormat;
    is_probe: boolean;
+   /* app/session/build.py: the productive-failure opener, first ordinary item of block 2. */
+   is_opener?: boolean;
+   opener_concept?: string;
 }
 
 /* GET /sessions/{id}/next: the slot plus app/session/service.py served_item's steps and the
@@ -153,6 +156,17 @@ export interface ElaboratedPayload {
    error_id: string | null;
 }
 
+/* app/feedback/render.py comparison_as_dict: an opener that missed, its attempt beside the worked
+   solution under one line naming the gap. attempt is the response as it was stored. */
+export interface ComparisonPayload {
+   label: string;
+   first_step: string;
+   observed_behavior: string;
+   attempt: Record<string, unknown>;
+   worked_steps: Array<{ index: number; text: string }>;
+   error_id: string | null;
+}
+
 /* app/api/routes/sessions.py read_feedback: render.as_dict plus the two tutor fields. */
 export interface FeedbackPayload {
    kind: string;
@@ -161,6 +175,7 @@ export interface FeedbackPayload {
    elaborated: ElaboratedPayload | null;
    self_explanation_prompt: string | null;
    confidence: Confidence | null;
+   comparison?: ComparisonPayload | null;
    sentence: string | null;
    tutor_unavailable: boolean;
 }
@@ -181,6 +196,18 @@ export interface ProgressPayload {
    due_today_skills: number;
    due_today_minutes: number;
    session_in_progress: string | null;
+   focus: BlockFocus[];
+}
+
+export type FocusBlock = "review" | "learn" | "mixed";
+
+/* app/session/preview.py block_focus. */
+export interface BlockFocus {
+   block: FocusBlock;
+   items: number;
+   skills: string[];
+   more_skills: number;
+   units: number[];
 }
 
 /* GET /sessions/{id}/next on a diagnostic session: app/session/diagnostic_session.py advance

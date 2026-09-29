@@ -1,0 +1,104 @@
+{
+   "id": "ITM-GEN-07012-16",
+   "archetype_id": "BC-QA-07012",
+   "variant_id": null,
+   "format": "mcq",
+   "stem": {
+      "text": "Consider the differential equation \\( \\frac{dy}{dx} = 6 x y - 24 x \\). Decide whether it can be solved by separation of variables. If it can, write it with every factor involving y on the side of dy and every factor involving x on the side of dx; if it cannot, say so.",
+      "command_verb": "determine"
+   },
+   "answer_key": {
+      "form": "statement",
+      "label": "\\( \\frac{dy}{y - 4} = 6 x\\,dx \\)"
+   },
+   "worked_solution": [
+      {
+         "step": 1,
+         "text": "The two terms share the factor \\( 6 x \\), so \\( \\frac{dy}{dx} = 6 x y - 24 x = 6 x\\left(y - 4\\right) \\), a function of x times a function of y.",
+         "rule_named": "right side factored into a function of x times a function of y"
+      },
+      {
+         "step": 2,
+         "text": "Divide by \\( y - 4 \\) and multiply by dx: \\( \\frac{dy}{y - 4} = 6 x\\,dx \\).",
+         "point_type_id": "BC-PT-99028",
+         "rule_named": "separation of variables"
+      }
+   ],
+   "options": [
+      {
+         "id": "A",
+         "is_key": false,
+         "error_path": "BC-ERR-07028",
+         "label": "\\( \\frac{dy}{y} = \\left(- 24 x + 6 x\\right)dx \\)",
+         "derivation": "only the first term divided by y, as though the sum split term by term",
+         "mechanism": "algebra_slip"
+      },
+      {
+         "id": "B",
+         "is_key": false,
+         "error_path": "BC-ERR-07024",
+         "label": "\\( dy = 6 x\\left(y - 4\\right)\\,dx \\)",
+         "derivation": "dx moved across with y still on the side of dx, so nothing was separated",
+         "mechanism": "conceptual_confusion"
+      },
+      {
+         "id": "C",
+         "is_key": false,
+         "error_path": "BC-ERR-99014",
+         "label": "\\( \\left(y - 4\\right)dy = 6 x\\,dx \\)",
+         "derivation": "the factor y - 4 multiplied onto the dy side instead of divided",
+         "mechanism": "algebra_slip"
+      },
+      {
+         "id": "D",
+         "is_key": true,
+         "error_path": null,
+         "label": "\\( \\frac{dy}{y - 4} = 6 x\\,dx \\)"
+      }
+   ],
+   "calculator_status": "no_calculator",
+   "representation": "BC-REP-06",
+   "difficulty_settings": [
+      {
+         "difficulty_factor_id": "BC-DF-07",
+         "setting": "off"
+      },
+      {
+         "difficulty_factor_id": "BC-DF-11",
+         "setting": "low"
+      },
+      {
+         "difficulty_factor_id": "BC-DF-15",
+         "setting": "low"
+      }
+   ],
+   "skills": [
+      "BC-SKL-07028",
+      "BC-SKL-07024"
+   ],
+   "parameter_draw": {
+      "separable": "yes",
+      "factor": "linear",
+      "coefficient": "6",
+      "constant": "-4"
+   },
+   "predicted_success_probability": 0.3318,
+   "provenance": {
+      "template_id": "TPL-BC-QA-07012-v1",
+      "template_version": "1",
+      "spec_version": "1",
+      "parameter_seed": "BC-QA-07012:spec-1:item-16:try-16",
+      "parameter_draw": {
+         "separable": "yes",
+         "factor": "linear",
+         "coefficient": "6",
+         "constant": "-4"
+      },
+      "model": "claude-opus-5-5 offline template, stage 15 of 2026-09-28",
+      "prompt_version": "generator/template_v1",
+      "generated_at": "2026-09-29T01:14:01Z",
+      "content_snapshot": "4363b6af148968a69a2134723832cc77bc13e1afea35e7db51a39bd994390a32",
+      "no_official_examples": true,
+      "requested_success_probability": 0.4134
+   }
+}

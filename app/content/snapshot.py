@@ -36,3 +36,4 @@ class ContentSnapshot:
    inert_top_ids: frozenset
    counts: dict
    digest: str
+   ids: dict = field(default_factory=dict)

@@ -101,6 +101,12 @@ TEMPLATE_THINKING_TOKENS = 2400
 # extended gate today, so an average archetype is authored more than once.
 TEMPLATE_ATTEMPTS = 2.5
 
+LESSON_CONCEPTS = 170
+LESSON_PREREQUISITES = 77
+LESSON_AUTHORING_ATTEMPTS = 1.5
+LESSON_BODY_TO_TEMPLATE_RATIO = 2.0
+LESSON_SIGNOFF_BLOCKS = 8
+
 # Per-role token assumptions. prefix is cached above the breakpoint; writes is how many times the
 # prefix is written over the cycle; uncached is input below the breakpoint per call.
 ROLES = {
@@ -836,6 +842,23 @@ def figures():
       add(f"draw.repeat_share_random_bank_{bank}_at_33", expected_repeat_share_random(UNIFORM_SERVES_PER_ARCHETYPE, bank))
       add(f"draw.repeat_share_lrs_bank_{bank}_at_33", repeat_share_least_recently_served(UNIFORM_SERVES_PER_ARCHETYPE, bank))
       add(f"draw.repeat_share_lrs_bank_{bank}_at_164", repeat_share_least_recently_served(TOP_DECILE_SERVES, bank))
+
+   # Lessons (15) are authored, blind re-solved and signed off offline, so these lines
+   # price the work at API rates without any of it reaching the key.
+   lesson_count = LESSON_CONCEPTS + LESSON_PREREQUISITES
+   lesson_author_calls = round(lesson_count * LESSON_AUTHORING_ATTEMPTS)
+   lesson_author_call = out["template.call_on_opus_5_5"] * LESSON_BODY_TO_TEMPLATE_RATIO
+   lesson_resolves = (LESSON_CONCEPTS * (2 + 3)) + (LESSON_PREREQUISITES * (1 + 2))
+   lesson_signoff_calls = lesson_count * LESSON_SIGNOFF_BLOCKS
+   add("lessons.count", lesson_count)
+   add("lessons.author_calls", lesson_author_calls)
+   add("lessons.author_call", lesson_author_call)
+   add("lessons.author_cycle", lesson_author_calls * lesson_author_call)
+   add("lessons.verify_calls", lesson_resolves)
+   add("lessons.verify_cycle", lesson_resolves * out["verifier.call_on_haiku_batch"])
+   add("lessons.signoff_calls", lesson_signoff_calls)
+   add("lessons.signoff_cycle", lesson_signoff_calls * out["verifier.call_on_haiku_batch"])
+   add("lessons.total", out["lessons.author_cycle"] + out["lessons.verify_cycle"] + out["lessons.signoff_cycle"])
 
    return out
 

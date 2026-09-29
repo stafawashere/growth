@@ -1,0 +1,69 @@
+{
+ "errors": [
+  {
+   "archetypes": [
+    "BC-QA-02014"
+   ],
+   "created": "2026-09-28",
+   "discriminating_probe": "Ask whether the average rate from the instant to a slightly later time gives the same number; a student who expects it to holds that a rate belongs to an interval, while one who sees it change reached for the nearest available average.",
+   "evidence_tag": "inferred",
+   "id": "BC-ERR-02033",
+   "name": "Average rate over an interval reported as the rate at an instant",
+   "non_conceptual_causes": [
+    "the average rate over a named interval is the only rate computation available before the derivative",
+    "the starting time is the only other input the problem supplies",
+    "the question read as asking for the rate up to that instant"
+   ],
+   "notes": "Minted 2026-09-28 in stage 15 for the productive-failure opener BC-QA-02014, whose first distractor it names. CHA-2 separates rates over intervals from rates at an instant (ced:60).",
+   "observed_behavior": "Asked for the rate of change at one instant, the response divides the change over a whole interval, usually from the starting time to that instant, by the length of the interval and reports that average.",
+   "official_evidence": [],
+   "possible_misconceptions": [],
+   "related_errors": [
+    "BC-ERR-02001"
+   ],
+   "scope": "shared",
+   "scoring_consequence": "The value reported is an average rate over an interval, so an answer point for the rate at the instant is not earned.",
+   "skills": [
+    "BC-SKL-02004",
+    "BC-SKL-02005"
+   ],
+   "sources": [
+    "ced:60"
+   ]
+  },
+  {
+   "archetypes": [
+    "BC-QA-06019"
+   ],
+   "created": "2026-09-28",
+   "discriminating_probe": "Ask the student to differentiate the proposed antiderivative and compare it with the integrand; one who expects the check to succeed holds the rule wrongly, while one who spots the stray factor made a slip.",
+   "evidence_tag": "inferred",
+   "id": "BC-ERR-06033",
+   "name": "Power rule for antiderivatives applied with the wrong divisor",
+   "non_conceptual_causes": [
+    "the derivative power rule, which multiplies by the old exponent, run backwards by rote",
+    "the division carried out on the first term and forgotten on the later ones",
+    "a negative or fractional new exponent avoided as a divisor"
+   ],
+   "notes": "Minted 2026-09-28 in stage 15 for BC-QA-06019, whose two power-rule distractors it names; FUN-6.C.2 ties antiderivatives to the differentiation rules (ced:125).",
+   "observed_behavior": "The response raises each exponent by one but does not divide by the new exponent, or divides by the old exponent instead.",
+   "official_evidence": [],
+   "possible_misconceptions": [
+    "BC-MIS-02009"
+   ],
+   "related_errors": [
+    "BC-ERR-02015"
+   ],
+   "scope": "shared",
+   "scoring_consequence": "The proposed function does not differentiate to the integrand, so an antiderivative point is not earned.",
+   "skills": [
+    "BC-SKL-06040",
+    "BC-SKL-06055"
+   ],
+   "sources": [
+    "ced:125"
+   ]
+  }
+ ],
+ "registry": "errors"
+}

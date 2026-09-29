@@ -1,0 +1,139 @@
+{
+   "id": "ITM-GEN-10021-26",
+   "archetype_id": "BC-QA-10021",
+   "variant_id": null,
+   "format": "mcq",
+   "stem": {
+      "text": "The series \\( \\sum_{n=1}^{\\infty} \\frac{1}{\\left(n + 5\\right) \\left(n + 6\\right)} \\) converges. Find its sum.",
+      "command_verb": "find"
+   },
+   "answer_key": {
+      "form": "symbolic",
+      "mathjson": [
+         "Rational",
+         1,
+         6
+      ]
+   },
+   "worked_solution": [
+      {
+         "step": 1,
+         "text": "A series converges exactly when its sequence of partial sums approaches a finite limit, and that limit is its sum.",
+         "rule_named": "convergence as the limit of the partial sums"
+      },
+      {
+         "step": 2,
+         "text": "Each term splits as \\( \\frac{1}{\\left(n + 5\\right) \\left(n + 6\\right)} = \\frac{1}{n + 5} - \\frac{1}{n + 6} \\), so in the nth partial sum every middle term cancels and \\( S_n = \\frac{1}{6} - \\frac{1}{n + 6} \\).",
+         "rule_named": "partial sums of a telescoping series"
+      },
+      {
+         "step": 3,
+         "text": "As n increases, \\( \\frac{1}{n + 6} \\) approaches 0, so the sum is \\( \\frac{1}{6} \\).",
+         "mathjson": [
+            "Rational",
+            1,
+            6
+         ],
+         "rule_named": "limit of the partial sums"
+      }
+   ],
+   "options": [
+      {
+         "id": "A",
+         "is_key": true,
+         "error_path": null,
+         "value": [
+            "Rational",
+            1,
+            6
+         ]
+      },
+      {
+         "id": "B",
+         "is_key": false,
+         "error_path": "BC-ERR-99038",
+         "value": [
+            "Rational",
+            1,
+            42
+         ],
+         "derivation": "the first partial sum reported as the sum",
+         "mechanism": "conceptual_confusion"
+      },
+      {
+         "id": "C",
+         "is_key": false,
+         "error_path": "BC-ERR-99038",
+         "value": [
+            "Rational",
+            1,
+            24
+         ],
+         "derivation": "the second partial sum reported as the sum",
+         "mechanism": "conceptual_confusion"
+      },
+      {
+         "id": "D",
+         "is_key": false,
+         "error_path": "BC-ERR-10001",
+         "value": 0,
+         "derivation": "the terms approach 0, and that limit was reported as the sum of the series",
+         "mechanism": "conceptual_confusion"
+      }
+   ],
+   "calculator_status": "no_calculator",
+   "representation": "BC-REP-11",
+   "difficulty_settings": [
+      {
+         "difficulty_factor_id": "BC-DF-07",
+         "setting": "off"
+      },
+      {
+         "difficulty_factor_id": "BC-DF-13",
+         "setting": "off"
+      },
+      {
+         "difficulty_factor_id": "BC-DF-15",
+         "setting": "low"
+      }
+   ],
+   "skills": [
+      "BC-SKL-10003",
+      "BC-SKL-10004",
+      "BC-SKL-10005",
+      "BC-SKL-10002"
+   ],
+   "parameter_draw": {
+      "family": "telescoping",
+      "lead": "6",
+      "shift": "0",
+      "rate": "1",
+      "offset": "7",
+      "ratio": "2/3",
+      "numerator": "1",
+      "start": "5"
+   },
+   "predicted_success_probability": 0.4134,
+   "provenance": {
+      "template_id": "TPL-BC-QA-10021-v2",
+      "template_version": "2",
+      "spec_version": "2",
+      "parameter_seed": "BC-QA-10021:spec-2:item-26:try-4",
+      "parameter_draw": {
+         "family": "telescoping",
+         "lead": "6",
+         "shift": "0",
+         "rate": "1",
+         "offset": "7",
+         "ratio": "2/3",
+         "numerator": "1",
+         "start": "5"
+      },
+      "model": "claude-opus-5-5 offline template, stage 15 of 2026-09-28",
+      "prompt_version": "generator/template_v1",
+      "generated_at": "2026-09-29T01:32:08Z",
+      "content_snapshot": "00839b8c36a7c5d46e3c3d2386e9f5665283703b31c30eedff1ab54062911e92",
+      "no_official_examples": true,
+      "requested_success_probability": 0.4134
+   }
+}

@@ -1,0 +1,126 @@
+{
+   "id": "ITM-GEN-02014-17",
+   "archetype_id": "BC-QA-02014",
+   "variant_id": null,
+   "format": "mcq",
+   "stem": {
+      "text": "A particle moves along a line, and its position, in centimeters, is \\( s(t) = - 4 t^{2} + 8 t + 1 \\) for time t in seconds. At what rate is the position of the particle changing at the instant t = 5 seconds?",
+      "command_verb": "find"
+   },
+   "answer_key": {
+      "form": "symbolic",
+      "mathjson": -32
+   },
+   "worked_solution": [
+      {
+         "step": 1,
+         "text": "An average rate is available over any interval, so take the short interval from t = 5 to t = 5 + h. The average rate over it is \\( \\frac{s(5 + h) - s(5)}{h} \\).",
+         "rule_named": "average rate of change over a short interval"
+      },
+      {
+         "step": 2,
+         "text": "Expanding and dividing by h leaves \\( \\frac{s(5 + h) - s(5)}{h} = - 4 h - 32 \\), which still depends on the length h of the interval.",
+         "mathjson": [
+            "Add",
+            [
+               "Multiply",
+               -1,
+               4,
+               "h"
+            ],
+            -32
+         ],
+         "rule_named": "difference quotient simplified"
+      },
+      {
+         "step": 3,
+         "text": "The rate at the instant is what these averages approach as h approaches 0: \\( \\lim_{h \\to 0} \\frac{s(5 + h) - s(5)}{h} = -32 \\). This limit is the derivative \\( s'(5) \\).",
+         "mathjson": -32,
+         "rule_named": "limit of the difference quotient"
+      }
+   ],
+   "options": [
+      {
+         "id": "A",
+         "is_key": false,
+         "error_path": "BC-ERR-02027",
+         "value": -59,
+         "derivation": "the value s(5) reported as the rate",
+         "mechanism": "conceptual_confusion"
+      },
+      {
+         "id": "B",
+         "is_key": false,
+         "error_path": "BC-ERR-02001",
+         "value": -60,
+         "derivation": "the change s(5) - s(0) reported without dividing by the elapsed time",
+         "mechanism": "algebra_slip"
+      },
+      {
+         "id": "C",
+         "is_key": true,
+         "error_path": null,
+         "value": -32
+      },
+      {
+         "id": "D",
+         "is_key": false,
+         "error_path": "BC-ERR-02033",
+         "value": -12,
+         "derivation": "the average rate over the whole interval from t = 0 to t = 5 reported as the rate at the instant",
+         "mechanism": "conceptual_confusion"
+      }
+   ],
+   "calculator_status": "no_calculator",
+   "representation": "BC-REP-05",
+   "difficulty_settings": [
+      {
+         "difficulty_factor_id": "BC-DF-06",
+         "setting": "low"
+      },
+      {
+         "difficulty_factor_id": "BC-DF-07",
+         "setting": "off"
+      },
+      {
+         "difficulty_factor_id": "BC-DF-15",
+         "setting": "low"
+      }
+   ],
+   "skills": [
+      "BC-SKL-02005",
+      "BC-SKL-02004",
+      "BC-SKL-02006",
+      "BC-SKL-02012",
+      "BC-SKL-02002"
+   ],
+   "parameter_draw": {
+      "degree": "2",
+      "leading": "-4",
+      "linear": "8",
+      "constant": "1",
+      "instant": "5",
+      "context": "position"
+   },
+   "predicted_success_probability": 0.3318,
+   "provenance": {
+      "template_id": "TPL-BC-QA-02014-v1",
+      "template_version": "1",
+      "spec_version": "1",
+      "parameter_seed": "BC-QA-02014:spec-1:item-17:try-17",
+      "parameter_draw": {
+         "degree": "2",
+         "leading": "-4",
+         "linear": "8",
+         "constant": "1",
+         "instant": "5",
+         "context": "position"
+      },
+      "model": "claude-opus-5-5 offline template, stage 15 of 2026-09-28",
+      "prompt_version": "generator/template_v1",
+      "generated_at": "2026-09-29T01:14:01Z",
+      "content_snapshot": "4363b6af148968a69a2134723832cc77bc13e1afea35e7db51a39bd994390a32",
+      "no_official_examples": true,
+      "requested_success_probability": 0.3318
+   }
+}

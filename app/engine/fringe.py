@@ -51,9 +51,12 @@ class Graph:
    inert_top: frozenset
    _skills_with_archetype: frozenset = field(default=frozenset())
    conversion_pairs: frozenset = field(default=frozenset())
+   concept_skills: dict = field(default_factory=dict)
 
    @classmethod
-   def from_records(cls, archetypes, skills, edges, inert_top, conversion_pairs=frozenset()):
+   def from_records(
+      cls, archetypes, skills, edges, inert_top, conversion_pairs=frozenset(), concepts=()
+   ):
       inert = frozenset(inert_top)
       archetype_map = {record["id"]: record for record in archetypes}
       skill_map = {record["id"]: record for record in skills}
@@ -80,6 +83,10 @@ class Graph:
          for record in archetype_map.values()
          for skill in record["skills"]
       }
+      concept_skills = {
+         record["id"]: tuple(skill for skill in record["skills"] if skill in skill_map)
+         for record in concepts
+      }
 
       return cls(
          archetypes=archetype_map,
@@ -90,6 +97,7 @@ class Graph:
          inert_top=inert,
          _skills_with_archetype=frozenset(loaded),
          conversion_pairs=frozenset(conversion_pairs),
+         concept_skills=concept_skills,
       )
 
    def primary_skill(self, archetype_id):
@@ -260,11 +268,27 @@ def due_coverage(archetype, states, graph, today, retrievability=None):
    return len(covered_due_skills(archetype, states, graph, today, retrievability))
 
 
+def decay_capped_stage(state, primary_retrievability):
+   """02 Decay: a skill whose R_k has fallen below 0.5 is capped at completion on its next
+   encounter. The cap is on the stage served, never on the stored fading_stage, which only the R7
+   counter pair writes; the attempt row's served_stage is the record of it."""
+   stored_unsupported = state.fading_stage == FadingStage.UNSUPPORTED
+   has_decayed = primary_retrievability < constants.DECAYED_SUPPORT_CAP_RETRIEVABILITY
+   is_capped = stored_unsupported and has_decayed
+
+   if is_capped:
+      return FadingStage.COMPLETION
+
+   return state.fading_stage
+
+
 def serve_stage(archetype, states, graph, retrievability=None):
    """R32: the bands pick the initial stage only, the stored stage wins once a credited
-   observation exists. An uncredited attempt (NOT_ATTEMPTED, a prerequisite gap with no credit)
-   moves observation_count but never fading_stage, so the bands stay live until credit lands.
-   p_A is read at today's retrievability, the m_k of 02 with its decay term, which changes
+   observation exists, apart from the decay cap of 02 Decay, which serves a decayed unsupported
+   skill at completion without writing the stage. An uncredited attempt (NOT_ATTEMPTED, a
+   prerequisite gap with no credit) moves observation_count but never fading_stage, so the bands
+   stay live until credit lands. retrievability is the R_k map for today; a caller that passes
+   none gets R_k = 1 for every skill, so neither the cap nor the decay term fires. p_A is read at today's retrievability, the m_k of 02 with its decay term, which changes
    nothing while LAMBDA is 0 (R3).
    """
    primary = primary_skill(archetype)
@@ -272,7 +296,7 @@ def serve_stage(archetype, states, graph, retrievability=None):
    has_history = state.credited_observation_count > 0
 
    if has_history:
-      return state.fading_stage
+      return decay_capped_stage(state, retrievability_of(primary, retrievability))
 
    knowledge = p_knowledge(archetype, states, graph.hard_parents, retrievability)
 

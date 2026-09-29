@@ -1,0 +1,215 @@
+{
+   "id": "ITM-GEN-06018-20",
+   "archetype_id": "BC-QA-06018",
+   "variant_id": null,
+   "format": "mcq",
+   "stem": {
+      "text": "Find the indefinite integral \\( \\int \\frac{11}{x^{2} + 9}\\,dx \\).",
+      "command_verb": "find"
+   },
+   "answer_key": {
+      "form": "symbolic",
+      "mathjson": [
+         "Multiply",
+         [
+            "Rational",
+            11,
+            3
+         ],
+         [
+            "Arctan",
+            [
+               "Multiply",
+               [
+                  "Rational",
+                  1,
+                  3
+               ],
+               "x"
+            ]
+         ]
+      ]
+   },
+   "worked_solution": [
+      {
+         "step": 1,
+         "text": "The integrand has the shape of an inverse trigonometric derivative, \\( \\frac{d}{dx} \\arctan\\left(\\frac{x}{3}\\right) = \\frac{3}{9 + x^{2}} \\).",
+         "rule_named": "antiderivative read from a derivative rule"
+      },
+      {
+         "step": 2,
+         "text": "With \\( u = \\frac{x}{3}, \\; dx = 3\\,du \\), the integral becomes \\( \\int \\frac{11}{9\\left(1 + u^{2}\\right)} \\cdot 3\\,du = \\frac{11}{3} \\int \\frac{du}{1 + u^{2}} \\), which is \\( \\frac{11 \\arctan{\\left(\\frac{x}{3} \\right)}}{3} + C \\).",
+         "mathjson": [
+            "Multiply",
+            [
+               "Rational",
+               11,
+               3
+            ],
+            [
+               "Arctan",
+               [
+                  "Multiply",
+                  [
+                     "Rational",
+                     1,
+                     3
+                  ],
+                  "x"
+               ]
+            ]
+         ],
+         "rule_named": "substitution into the inverse trigonometric form"
+      }
+   ],
+   "options": [
+      {
+         "id": "A",
+         "is_key": false,
+         "error_path": "BC-ERR-06019",
+         "value": [
+            "Multiply",
+            11,
+            [
+               "Arctan",
+               [
+                  "Multiply",
+                  [
+                     "Rational",
+                     1,
+                     3
+                  ],
+                  "x"
+               ]
+            ]
+         ],
+         "derivation": "the factor 1/3 that dx = 3 du introduces dropped",
+         "mechanism": "algebra_slip"
+      },
+      {
+         "id": "B",
+         "is_key": false,
+         "error_path": "BC-ERR-03017",
+         "value": [
+            "Multiply",
+            [
+               "Rational",
+               11,
+               3
+            ],
+            [
+               "Arcsin",
+               [
+                  "Multiply",
+                  [
+                     "Rational",
+                     1,
+                     3
+                  ],
+                  "x"
+               ]
+            ]
+         ],
+         "derivation": "the inverse sine pattern used for a sum of squares",
+         "mechanism": "conceptual_confusion"
+      },
+      {
+         "id": "C",
+         "is_key": false,
+         "error_path": "BC-ERR-06020",
+         "value": [
+            "Multiply",
+            11,
+            [
+               "Ln",
+               [
+                  "Add",
+                  [
+                     "Power",
+                     "x",
+                     2
+                  ],
+                  9
+               ]
+            ]
+         ],
+         "derivation": "the quadratic taken as u and dx treated as du, although 2x is not present, giving a logarithm",
+         "mechanism": "conceptual_confusion"
+      },
+      {
+         "id": "D",
+         "is_key": true,
+         "error_path": null,
+         "value": [
+            "Multiply",
+            [
+               "Rational",
+               11,
+               3
+            ],
+            [
+               "Arctan",
+               [
+                  "Multiply",
+                  [
+                     "Rational",
+                     1,
+                     3
+                  ],
+                  "x"
+               ]
+            ]
+         ]
+      }
+   ],
+   "calculator_status": "no_calculator",
+   "representation": "BC-REP-01",
+   "difficulty_settings": [
+      {
+         "difficulty_factor_id": "BC-DF-06",
+         "setting": "low"
+      },
+      {
+         "difficulty_factor_id": "BC-DF-07",
+         "setting": "off"
+      },
+      {
+         "difficulty_factor_id": "BC-DF-15",
+         "setting": "low"
+      }
+   ],
+   "skills": [
+      "BC-SKL-06043",
+      "BC-SKL-06054",
+      "BC-SKL-06047",
+      "BC-SKL-06048",
+      "BC-SKL-03021"
+   ],
+   "parameter_draw": {
+      "kind": "arctan",
+      "form": "direct",
+      "scale": "3",
+      "numerator": "11",
+      "shift": "5"
+   },
+   "predicted_success_probability": 0.3318,
+   "provenance": {
+      "template_id": "TPL-BC-QA-06018-v1",
+      "template_version": "1",
+      "spec_version": "1",
+      "parameter_seed": "BC-QA-06018:spec-1:item-20:try-20",
+      "parameter_draw": {
+         "kind": "arctan",
+         "form": "direct",
+         "scale": "3",
+         "numerator": "11",
+         "shift": "5"
+      },
+      "model": "claude-opus-5-5 offline template, stage 15 of 2026-09-28",
+      "prompt_version": "generator/template_v1",
+      "generated_at": "2026-09-29T01:14:01Z",
+      "content_snapshot": "4363b6af148968a69a2134723832cc77bc13e1afea35e7db51a39bd994390a32",
+      "no_official_examples": true,
+      "requested_success_probability": 0.3318
+   }
+}

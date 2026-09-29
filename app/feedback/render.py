@@ -26,6 +26,13 @@ unsupported it gets the ungraded kind: no verdict, no elaborated error and no wo
 example and completion the same attempt keeps its step marks, every given step with no verdict and
 the blank with none either, because no verdict exists to put there.
 
+A productive-failure opener that missed, or that the grader could not settle, gets the comparison
+kind instead (01, Productive-failure openers: the comparison step is obligatory). The student's
+attempt sits beside the item's worked solution under one line naming the gap, built from the first
+step of the archetype's expected_solution_path and, when the chosen option names one, the
+observed_behavior of its BC-ERR record. It carries no verdict word, no self-explanation prompt and
+nothing for the tutor, so no model call is made for it.
+
 The confidence rating and the hypercorrection flag belong to app/session/service.py and
 app/engine/update.py; this module only refuses to render feedback for a stage whose rating has not
 been recorded yet.
@@ -51,6 +58,7 @@ class FeedbackKind(str, Enum):
    CORRECT = "correct"
    UNGRADED = "ungraded"
    VERIFICATION = "verification"
+   COMPARISON = "comparison"
 
 
 @dataclass(frozen=True)
@@ -87,6 +95,16 @@ class ElaboratedPayload:
 
 
 @dataclass(frozen=True)
+class ComparisonPayload:
+   label: str
+   first_step: str
+   observed_behavior: str
+   attempt: dict
+   worked_steps: tuple[dict, ...]
+   error_id: str | None
+
+
+@dataclass(frozen=True)
 class Feedback:
    kind: FeedbackKind
    stage: FadingStage
@@ -94,6 +112,7 @@ class Feedback:
    elaborated: ElaboratedPayload | None = None
    self_explanation_prompt: str | None = None
    confidence: Confidence | None = None
+   comparison: ComparisonPayload | None = None
 
 
 def self_explanation_prompt(step_number):
@@ -193,6 +212,40 @@ def elaborated_payload(archetype, item, chosen_option, error_record):
    )
 
 
+def comparison_label(first_step, observed_behavior):
+   """One line, in the library's own words: the method's first step, then what the matched error
+   record says responses did, when there is one."""
+   label = f"The method's first step is to {first_step}."
+   observed = observed_behavior.strip()
+   has_observed = observed != ""
+
+   if has_observed:
+      sentence = observed[0].upper() + observed[1:]
+      is_closed = sentence.endswith(".")
+      label = f"{label} {sentence if is_closed else sentence + '.'}"
+
+   return " ".join(label.split())
+
+
+def opener_comparison(archetype, item, answer, error_record):
+   record = error_record or {}
+   first_step = archetype["expected_solution_path"][0]
+   observed = record.get("observed_behavior") or ""
+   steps = tuple(
+      {"index": position, "text": step["text"]}
+      for position, step in enumerate(worked_steps(item["worked_solution"]), start=1)
+   )
+
+   return ComparisonPayload(
+      label=comparison_label(first_step, observed),
+      first_step=first_step,
+      observed_behavior=observed,
+      attempt=dict(answer or {}),
+      worked_steps=steps,
+      error_id=record.get("id"),
+   )
+
+
 def render_feedback(
    stage,
    archetype,
@@ -202,11 +255,23 @@ def render_feedback(
    chosen_option=None,
    error_record=None,
    confidence=None,
+   is_opener=False,
+   answer=None,
 ):
    served_stage = FadingStage(stage)
    rating = Confidence(confidence) if confidence is not None else None
 
    _check_rating(served_stage, submitted, rating)
+
+   is_opener_short_of_the_key = is_opener and submitted and correct is not True
+
+   if is_opener_short_of_the_key:
+      return Feedback(
+         kind=FeedbackKind.COMPARISON,
+         stage=served_stage,
+         confidence=rating,
+         comparison=opener_comparison(archetype, item, answer, error_record),
+      )
 
    shows_steps = served_stage in STEP_VERIFICATION_STAGES
 
@@ -250,6 +315,8 @@ def verification_only(feedback):
 def as_dict(feedback):
    payload = feedback.elaborated
    has_payload = payload is not None
+   comparison = feedback.comparison
+   has_comparison = comparison is not None
 
    return {
       "kind": feedback.kind.value,
@@ -261,6 +328,18 @@ def as_dict(feedback):
       "elaborated": dict(payload.as_prompt_fields(), error_id=payload.error_id) if has_payload else None,
       "self_explanation_prompt": feedback.self_explanation_prompt,
       "confidence": feedback.confidence.value if feedback.confidence is not None else None,
+      "comparison": comparison_as_dict(comparison) if has_comparison else None,
+   }
+
+
+def comparison_as_dict(comparison):
+   return {
+      "label": comparison.label,
+      "first_step": comparison.first_step,
+      "observed_behavior": comparison.observed_behavior,
+      "attempt": comparison.attempt,
+      "worked_steps": [dict(step) for step in comparison.worked_steps],
+      "error_id": comparison.error_id,
    }
 
 

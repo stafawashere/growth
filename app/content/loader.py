@@ -118,9 +118,12 @@ def _registry_file_names():
 
 
 def _digest_for(root):
+   """ids.json is hashed with the registries because a tombstone alone changes what
+   reconciliation does to a skills_state row (06, Library updates and retired IDs)."""
    hasher = hashlib.sha256()
    paths = [root / name for name in _registry_file_names()]
    paths.append(root / "prereq_edges.csv")
+   paths.append(root / "ids.json")
 
    for path in sorted(paths):
       hasher.update(path.name.encode("utf-8"))
@@ -408,4 +411,5 @@ def load_snapshot(root):
       inert_top_ids=inert_top_ids,
       counts=counts,
       digest=digest,
+      ids=ids_doc["ids"],
    )

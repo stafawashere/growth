@@ -156,45 +156,89 @@ def _merge_into(existing_row, old_row, today, report):
    )
 
 
-def reconcile_skills_state(db_session, new_snapshot, ids_registry, today, snapshot_row_id, actor="worker"):
-   active_ids = set(new_snapshot.skills) | set(new_snapshot.prerequisites)
+KEEP = "keep"
+ORPHAN = "orphan"
+SUCCEED = "succeed"
+
+
+def classify(skill_id, active_ids, ids_registry):
+   """06's four cases for one skills_state row, or ReloadRefused for the fourth."""
+   is_active = skill_id in active_ids
+
+   if is_active:
+      return KEEP, None
+
+   tombstone = ids_registry.get(skill_id)
+   is_tombstone = tombstone is not None and tombstone.get("status") == "retired"
+
+   if not is_tombstone:
+      raise ReloadRefused("neither active in the new snapshot nor tombstoned in data/ids.json")
+
+   successor_id = tombstone.get("superseded_by")
+
+   if successor_id is None:
+      return ORPHAN, None
+
+   successor_is_active = successor_id in active_ids
+
+   if not successor_is_active:
+      raise ReloadRefused(
+         f"its tombstone names superseded_by {successor_id!r}, which is not active in the new snapshot"
+      )
+
+   return SUCCEED, successor_id
+
+
+def active_skill_ids(new_snapshot):
+   return set(new_snapshot.skills) | set(new_snapshot.prerequisites)
+
+
+def refusals(db_session, new_snapshot, ids_registry):
+   """Every row the reload would refuse over, found before any row is written, so a refusal
+   leaves every user's rows as they were."""
+   active_ids = active_skill_ids(new_snapshot)
+   found = []
+
+   for user_id, skill_id in db_session.query(SkillStateRow.user_id, SkillStateRow.skill_id).all():
+      try:
+         classify(skill_id, active_ids, ids_registry)
+      except ReloadRefused as refusal:
+         found.append(f"skills_state row {user_id}/{skill_id}: {refusal}")
+
+   return found
+
+
+def reconcile_skills_state(
+   db_session, new_snapshot, ids_registry, today, snapshot_row_id, actor="worker", user_id=None
+):
+   """user_id limits the pass to one user's rows, the unit app/content/reload.py commits."""
+   active_ids = active_skill_ids(new_snapshot)
    report = ReloadReport()
-   rows = db_session.query(SkillStateRow).all()
+   query = db_session.query(SkillStateRow)
+
+   if user_id is not None:
+      query = query.filter(SkillStateRow.user_id == user_id)
+
+   rows = query.all()
 
    for row in rows:
-      is_active = row.skill_id in active_ids
+      try:
+         outcome, successor_id = classify(row.skill_id, active_ids, ids_registry)
+      except ReloadRefused as refusal:
+         raise ReloadRefused(f"skills_state row {row.user_id}/{row.skill_id}: {refusal}") from refusal
 
-      if is_active:
+      if outcome == KEEP:
          row.snapshot_id = snapshot_row_id
          row.updated_at = _now_iso()
          report.kept.append((row.user_id, row.skill_id))
          continue
 
-      tombstone = ids_registry.get(row.skill_id)
-      is_tombstone = tombstone is not None and tombstone.get("status") == "retired"
-
-      if not is_tombstone:
-         raise ReloadRefused(
-            f"skills_state row {row.user_id}/{row.skill_id} is neither active in the new "
-            f"snapshot nor tombstoned in data/ids.json"
-         )
-
-      successor_id = tombstone.get("superseded_by")
-
-      if successor_id is None:
+      if outcome == ORPHAN:
          row.snapshot_id = snapshot_row_id
          row.updated_at = _now_iso()
          report.orphaned.append((row.user_id, row.skill_id))
          _write_audit_entry(db_session, actor, "skill_orphaned", row.skill_id, None)
          continue
-
-      successor_is_active = successor_id in active_ids
-
-      if not successor_is_active:
-         raise ReloadRefused(
-            f"tombstone for {row.skill_id} names superseded_by {successor_id!r}, "
-            f"which is not active in the new snapshot"
-         )
 
       existing_successor = db_session.get(SkillStateRow, (row.user_id, successor_id))
 
@@ -203,6 +247,7 @@ def reconcile_skills_state(db_session, new_snapshot, ids_registry, today, snapsh
          row.skill_id = successor_id
          row.snapshot_id = snapshot_row_id
          row.updated_at = _now_iso()
+         db_session.flush()
          report.rewritten.append((old_skill_id, successor_id))
          _write_audit_entry(db_session, actor, "skill_rewritten", old_skill_id, successor_id)
       else:

@@ -1,12 +1,24 @@
 {
  "archetypes": [
   {
+   "asked_to_produce": [
+    "an interpretation of the definite integral with units and the time interval",
+    "a left, right, or midpoint Riemann sum with every product shown",
+    "a numerical approximation of the integral",
+    "an over or under estimate decision with a reason"
+   ],
    "calculator_status": "calculator",
    "common_distractors": [
     "using a single uniform width for unevenly spaced data",
     "using the opposite endpoint from the one requested",
     "reporting the sum of the rate values without multiplying by widths",
     "dividing by the number of subintervals as though averaging"
+   ],
+   "common_givens": [
+    "a table of rate values at selected times",
+    "the subintervals to use or those indicated by the table",
+    "a statement that the rate is differentiable, increasing, or decreasing",
+    "an initial amount of the quantity"
    ],
    "created": "2026-09-19",
    "description": "A contextual rate is given at selected times in a table; the response approximates the definite integral of the rate with a left or right Riemann sum over the subintervals the data indicate, and may be asked whether the approximation is an under or over estimate.",
@@ -292,20 +304,35 @@
    "units": [
     "BC-UNIT-06"
    ],
-   "updated": "2026-09-27",
+   "updated": "2026-09-28",
    "variants": [
     "BC-QV-06001-01",
     "BC-QV-06001-02",
     "BC-QV-06001-03"
+   ],
+   "wrong_approaches": [
+    "multiplying every table value by one common width on unevenly spaced data (BC-ERR-06001)",
+    "building the sum with the endpoint opposite the one requested (BC-ERR-06002)",
+    "reporting the integral of the rate as the amount without the initial amount (BC-ERR-06015)"
    ]
   },
   {
+   "asked_to_produce": [
+    "a trapezoidal sum with each term shown",
+    "a numerical approximation of the integral",
+    "an approximation of an average value"
+   ],
    "calculator_status": "no_calculator",
    "common_distractors": [
     "halving only one of the terms",
     "applying a single common width to unevenly spaced data",
     "using the average of all table values times the total width",
     "adding the left and right sums without dividing by two"
+   ],
+   "common_givens": [
+    "a table of rate values at unevenly spaced inputs",
+    "the subintervals indicated by the table",
+    "a contextual quantity with its units"
    ],
    "created": "2026-09-19",
    "description": "A contextual rate is tabulated and the response approximates its definite integral with a trapezoidal sum over the subintervals indicated by the data.",
@@ -520,14 +547,25 @@
    "units": [
     "BC-UNIT-06"
    ],
-   "updated": "2026-09-27",
+   "updated": "2026-09-28",
    "variants": [
     "BC-QV-06002-01",
     "BC-QV-06002-02",
     "BC-QV-06002-03"
+   ],
+   "wrong_approaches": [
+    "applying one common width to unevenly spaced table inputs (BC-ERR-06001)",
+    "giving a left or right Riemann sum in place of the trapezoidal sum (BC-ERR-99028)"
    ]
   },
   {
+   "asked_to_produce": [
+    "the value of g prime at a stated input with a reason",
+    "the values of g at stated inputs",
+    "the inputs where g has a point of inflection with a reason tied to the graph of f",
+    "the critical points of g with a reason",
+    "the input where g attains an absolute minimum or maximum with a justification"
+   ],
    "calculator_status": "no_calculator",
    "common_distractors": [
     "treating the graph shown as the graph of g rather than of f",
@@ -535,6 +573,12 @@
     "giving a relative extremum argument where a global argument is demanded",
     "counting a semicircular region as a full circle",
     "reporting a signed area as an unsigned area"
+   ],
+   "common_givens": [
+    "a graph of f made of line segments and semicircles or a quarter circle",
+    "an accumulation function g with a fixed lower limit",
+    "a closed interval of definition",
+    "the area of a region bounded by the graph"
    ],
    "created": "2026-09-19",
    "description": "A function f is given by a graph made of segments and circular arcs, an accumulation function g is defined as the integral of f from a fixed input to x, and the response evaluates g, differentiates g, and locates extrema and points of inflection of g.",
@@ -775,20 +819,34 @@
    "units": [
     "BC-UNIT-06"
    ],
-   "updated": "2026-09-27",
+   "updated": "2026-09-28",
    "variants": [
     "BC-QV-06003-01",
     "BC-QV-06003-02",
     "BC-QV-06003-03"
+   ],
+   "wrong_approaches": [
+    "reading extrema or inflection points of g directly off the plotted graph of f (BC-ERR-06008)",
+    "placing inflection points of g at the zeros of f (BC-ERR-06009)",
+    "justifying an absolute extremum with a local sign change argument (BC-ERR-99004)"
    ]
   },
   {
+   "asked_to_produce": [
+    "the value of a definite integral over a stated interval",
+    "labelled values of an accumulation function"
+   ],
    "calculator_status": "no_calculator",
    "common_distractors": [
     "adding the areas of regions below the axis as positive",
     "using the area of a full circle for a semicircular region",
     "using the wrong radius or base length read off the figure",
     "reversing the sign of the whole integral"
+   ],
+   "common_givens": [
+    "a graph of f made of line segments and semicircles",
+    "an accumulation function with a fixed lower limit",
+    "the area of a region bounded by the graph"
    ],
    "created": "2026-09-19",
    "description": "The graph of a function composed of line segments and circular arcs is given and the response evaluates a definite integral over a stated interval as a sum of signed areas.",
@@ -958,11 +1016,15 @@
    "units": [
     "BC-UNIT-06"
    ],
-   "updated": "2026-09-27",
+   "updated": "2026-09-28",
    "variants": [
     "BC-QV-06004-01",
     "BC-QV-06004-02",
     "BC-QV-06004-03"
+   ],
+   "wrong_approaches": [
+    "adding regions below the axis as positive area (BC-ERR-06014)",
+    "ignoring the sign change when the upper limit lies below the lower limit (BC-ERR-99012)"
    ]
   },
   {
@@ -1311,7 +1373,7 @@
     "BC-UNIT-06",
     "BC-UNIT-08"
    ],
-   "updated": "2026-09-27",
+   "updated": "2026-09-28",
    "variants": [
     "BC-QV-06005-01",
     "BC-QV-06005-02",
@@ -1579,7 +1641,7 @@
     "BC-UNIT-06",
     "BC-UNIT-08"
    ],
-   "updated": "2026-09-27",
+   "updated": "2026-09-28",
    "variants": [
     "BC-QV-06006-01",
     "BC-QV-06006-02",
@@ -1682,7 +1744,7 @@
    "units": [
     "BC-UNIT-06"
    ],
-   "updated": "2026-09-27",
+   "updated": "2026-09-28",
    "variants": [
     "BC-QV-06007-01",
     "BC-QV-06007-02",
@@ -1690,12 +1752,23 @@
    ]
   },
   {
+   "asked_to_produce": [
+    "an antiderivative with supporting work",
+    "the value of a definite integral",
+    "a definite integral rewritten in the substituted variable",
+    "the area of a region"
+   ],
    "calculator_status": "no_calculator",
    "common_distractors": [
     "forgetting the constant factor introduced by du",
     "leaving the original limits attached to an expression written in u",
     "omitting the constant of integration in an indefinite integral",
     "omitting the absolute value inside a logarithmic antiderivative"
+   ],
+   "common_givens": [
+    "an explicit composite integrand",
+    "the limits of integration",
+    "a stated substitution"
    ],
    "created": "2026-09-19",
    "description": "An integrand is a composite multiplied by a constant multiple of the derivative of its inner expression, and the response finds the indefinite integral or evaluates a definite integral by substitution.",
@@ -1903,7 +1976,8 @@
     "BC-SKL-06050",
     "BC-SKL-06051",
     "BC-SKL-06052",
-    "BC-SKL-06034"
+    "BC-SKL-06034",
+    "BC-SKL-06042"
    ],
    "sources": [
     "ced:126",
@@ -1918,20 +1992,35 @@
    "units": [
     "BC-UNIT-06"
    ],
-   "updated": "2026-09-27",
+   "updated": "2026-09-28",
    "variants": [
     "BC-QV-06008-01",
     "BC-QV-06008-02",
     "BC-QV-06008-03"
+   ],
+   "wrong_approaches": [
+    "substituting for an inner expression whose derivative does not appear in the integrand (BC-ERR-06020)",
+    "evaluating the u expression at the original x limits (BC-ERR-06018)"
    ]
   },
   {
+   "asked_to_produce": [
+    "a choice of u and dv",
+    "the u times v minus the integral of v du expression",
+    "an antiderivative with a constant of integration",
+    "the value of a definite integral"
+   ],
    "calculator_status": "no_calculator",
    "common_distractors": [
     "swapping the roles of u and dv so the remaining integral is harder",
     "dropping the minus sign before the integral of v du",
     "antidifferentiating the two factors separately and multiplying",
     "omitting the boundary term when the integral is definite"
+   ],
+   "common_givens": [
+    "a product of a linear factor and a cosine",
+    "an unknown function with a stated endpoint value and a stated integral",
+    "a table of values of a function and its derivative"
    ],
    "created": "2026-09-19",
    "description": "An integrand is a product of unlike factors, one of which simplifies on differentiation, and the response applies integration by parts to find an indefinite integral or evaluate a definite one.",
@@ -2112,7 +2201,8 @@
     "BC-SKL-06059",
     "BC-SKL-06060",
     "BC-SKL-06061",
-    "BC-SKL-06034"
+    "BC-SKL-06034",
+    "BC-SKL-06044"
    ],
    "sources": [
     "sg-24:18",
@@ -2128,20 +2218,34 @@
    "units": [
     "BC-UNIT-06"
    ],
-   "updated": "2026-09-27",
+   "updated": "2026-09-28",
    "variants": [
     "BC-QV-06009-01",
     "BC-QV-06009-02",
     "BC-QV-06009-03"
+   ],
+   "wrong_approaches": [
+    "antidifferentiating each factor of the product and multiplying the results (BC-ERR-06022)",
+    "choosing u and dv the wrong way round (BC-ERR-99025)"
    ]
   },
   {
+   "asked_to_produce": [
+    "a partial fraction decomposition",
+    "logarithmic antiderivatives",
+    "the value of a definite integral"
+   ],
    "calculator_status": "no_calculator",
    "common_distractors": [
     "sign errors when solving for the constants",
     "omitting the absolute value inside each logarithm",
     "decomposing without first dividing an improper rational integrand",
     "antidifferentiating a reciprocal of a linear factor without dividing by its leading coefficient"
+   ],
+   "common_givens": [
+    "a rational function whose quadratic denominator factors into distinct linear factors",
+    "a family of functions with the parameter fixed at a stated value",
+    "the limits of integration"
    ],
    "created": "2026-09-19",
    "description": "A rational integrand with a denominator that factors into distinct linear factors is decomposed and antidifferentiated into a combination of natural logarithms.",
@@ -2333,20 +2437,34 @@
    "units": [
     "BC-UNIT-06"
    ],
-   "updated": "2026-09-27",
+   "updated": "2026-09-28",
    "variants": [
     "BC-QV-06010-01",
     "BC-QV-06010-02",
     "BC-QV-06010-03"
+   ],
+   "wrong_approaches": [
+    "decomposing an improper rational integrand without dividing first (BC-ERR-06026)"
    ]
   },
   {
+   "asked_to_produce": [
+    "the improper integral written as a limit of definite integrals",
+    "an antiderivative",
+    "a value or a statement of divergence with a reason",
+    "a parameter value that gives the integral a stated value"
+   ],
    "calculator_status": "no_calculator",
    "common_distractors": [
     "writing arithmetic with infinity in place of a limit",
     "dropping the limit notation once the antiderivative is found",
     "reporting a value for a divergent integral",
     "keeping the original limits after a substitution"
+   ],
+   "common_givens": [
+    "an explicit integrand on an infinite interval",
+    "an integrand unbounded at a point of the interval",
+    "a family of functions with the parameter fixed at a stated value"
    ],
    "created": "2026-09-19",
    "description": "An integral with an infinite limit of integration or an unbounded integrand is rewritten as a limit of definite integrals and evaluated, or shown to diverge.",
@@ -2543,7 +2661,8 @@
     "BC-SKL-06067",
     "BC-SKL-06068",
     "BC-SKL-06069",
-    "BC-SKL-06070"
+    "BC-SKL-06070",
+    "BC-SKL-06040"
    ],
    "sources": [
     "sg-23:17",
@@ -2556,20 +2675,32 @@
    "units": [
     "BC-UNIT-06"
    ],
-   "updated": "2026-09-27",
+   "updated": "2026-09-28",
    "variants": [
     "BC-QV-06011-01",
     "BC-QV-06011-02",
     "BC-QV-06011-03"
+   ],
+   "wrong_approaches": [
+    "substituting infinity and computing with it in place of a limit (BC-ERR-99007)",
+    "evaluating the u expression at the original limits after a substitution (BC-ERR-06018)"
    ]
   },
   {
+   "asked_to_produce": [
+    "the value of the derivative of the accumulation function at a stated input",
+    "the values of the accumulation function and its first two derivatives at a point"
+   ],
    "calculator_status": "no_calculator",
    "common_distractors": [
     "substituting the variable of integration instead of the upper limit",
     "forgetting the chain rule factor for a composite upper limit",
     "differentiating the integrand as well as evaluating it",
     "treating the accumulation function as the integrand"
+   ],
+   "common_givens": [
+    "a graph of the integrand",
+    "a table of values of an unknown derivative inside the integrand"
    ],
    "created": "2026-09-19",
    "description": "A function is defined as a definite integral with a variable upper limit and the response differentiates it, possibly with a composite upper limit, and evaluates the derivative at a point.",
@@ -2788,20 +2919,33 @@
    "units": [
     "BC-UNIT-06"
    ],
-   "updated": "2026-09-27",
+   "updated": "2026-09-28",
    "variants": [
     "BC-QV-06012-01",
     "BC-QV-06012-02",
     "BC-QV-06012-03"
+   ],
+   "wrong_approaches": [
+    "evaluating the integrand at the upper limit without the chain rule factor (BC-ERR-06027)",
+    "writing the accumulation of f prime as f of x without the value at the lower limit (BC-ERR-99012)"
    ]
   },
   {
+   "asked_to_produce": [
+    "the value of a definite integral over a different interval",
+    "the value of the integral of a linear combination involving a derivative"
+   ],
    "calculator_status": "no_calculator",
    "common_distractors": [
     "adding integrals over overlapping rather than adjacent intervals",
     "forgetting the sign change when the limits are reversed",
     "distributing an integral across a product or a quotient",
     "treating the integral of a constant as the constant itself"
+   ],
+   "common_givens": [
+    "the value of a definite integral over a stated interval",
+    "a graph of f made of line segments and a quarter circle",
+    "a graph of a piecewise linear function"
    ],
    "created": "2026-09-19",
    "description": "Values of definite integrals over stated intervals are supplied and the response combines them using the constant multiple, sum, reversal, and adjacent interval properties to produce the value of a different integral.",
@@ -3040,20 +3184,32 @@
    "units": [
     "BC-UNIT-06"
    ],
-   "updated": "2026-09-27",
+   "updated": "2026-09-28",
    "variants": [
     "BC-QV-06013-01",
     "BC-QV-06013-02",
     "BC-QV-06013-03"
+   ],
+   "wrong_approaches": [
+    "keeping the sign when the limits of integration are reversed (BC-ERR-99012)",
+    "writing the integral of f prime as f at the upper limit alone (BC-ERR-99012)"
    ]
   },
   {
+   "asked_to_produce": [
+    "an equivalent definite integral",
+    "an equivalent limit of Riemann sums"
+   ],
    "calculator_status": "no_calculator",
    "common_distractors": [
     "reading the interval as zero to one when the width expression says otherwise",
     "omitting the width factor from the integrand",
     "using the number of subintervals as a limit of integration",
     "treating the index of summation as the variable of integration"
+   ],
+   "common_givens": [
+    "a definite integral with stated limits",
+    "a limit of a Riemann sum in sigma notation"
    ],
    "created": "2026-09-19",
    "description": "A limit of Riemann sums in sigma notation is given and the response writes the equivalent definite integral, or a definite integral is given and the response writes it as a limit of Riemann sums.",
@@ -3237,7 +3393,7 @@
    "units": [
     "BC-UNIT-06"
    ],
-   "updated": "2026-09-27",
+   "updated": "2026-09-28",
    "variants": [
     "BC-QV-06014-01",
     "BC-QV-06014-02",
@@ -3465,12 +3621,19 @@
    ]
   },
   {
+   "asked_to_produce": [
+    "an indefinite integral with supporting work",
+    "the technique the integrand's structure calls for"
+   ],
    "calculator_status": "no_calculator",
    "common_distractors": [
     "attempting substitution when the derivative of the proposed inner expression is not present",
     "attempting parts on a composite that substitution resolves",
     "dividing a rational integrand that is already proper",
     "antidifferentiating an integrand that has no closed-form antiderivative"
+   ],
+   "common_givens": [
+    "a product of a linear factor and a cosine"
    ],
    "created": "2026-09-19",
    "description": "Several integrands of different structure are presented and the response classifies each and names or applies the technique that its structure calls for.",
@@ -3637,7 +3800,9 @@
     "BC-SKL-06072",
     "BC-SKL-06073",
     "BC-SKL-06074",
-    "BC-SKL-06056"
+    "BC-SKL-06056",
+    "BC-SKL-06041",
+    "BC-SKL-06053"
    ],
    "sources": [
     "ced:131",
@@ -3651,20 +3816,33 @@
    "units": [
     "BC-UNIT-06"
    ],
-   "updated": "2026-09-24",
+   "updated": "2026-09-28",
    "variants": [
     "BC-QV-06016-01",
     "BC-QV-06016-02",
     "BC-QV-06016-03"
+   ],
+   "wrong_approaches": [
+    "substituting for an inner expression whose derivative is absent (BC-ERR-06020)",
+    "antidifferentiating the factors of a product separately and multiplying (BC-ERR-06022)",
+    "decomposing an improper rational integrand without dividing first (BC-ERR-06026)"
    ]
   },
   {
+   "asked_to_produce": [
+    "the derivative of the composite",
+    "dy/dx for the given expression"
+   ],
    "calculator_status": "no_calculator",
    "common_distractors": [
     "the derivative of the outer function with the inner derivative omitted",
     "the derivative of the inner function alone",
     "the product of the two derivatives evaluated at the same input",
     "the outer derivative with the inner function differentiated in the wrong place"
+   ],
+   "common_givens": [
+    "a formula built by composition",
+    "a composite that is one factor of a product or quotient"
    ],
    "created": "2026-09-19",
    "description": "A formula built by composition is supplied and the response produces its derivative, often with a product, quotient, or second layer inside.",
@@ -3883,7 +4061,8 @@
    "skills": [
     "BC-SKL-03002",
     "BC-SKL-03003",
-    "BC-SKL-03006"
+    "BC-SKL-03006",
+    "BC-SKL-03001"
    ],
    "sources": [
     "ced:75",
@@ -3898,20 +4077,32 @@
    "units": [
     "BC-UNIT-03"
    ],
-   "updated": "2026-09-27",
+   "updated": "2026-09-28",
    "variants": [
     "BC-QV-03001-01",
     "BC-QV-03001-02",
     "BC-QV-03001-03"
+   ],
+   "wrong_approaches": [
+    "differentiating the outer function and leaving out the inner derivative (BC-ERR-03001)",
+    "stopping the chain rule before the innermost layer of a nested composite (BC-ERR-03002)",
+    "differentiating the composite factor alone without the enclosing product or quotient rule (BC-ERR-03006)"
    ]
   },
   {
+   "asked_to_produce": [
+    "the value of the derivative of the composite at the stated input"
+   ],
    "calculator_status": "either",
    "common_distractors": [
     "f prime and g prime evaluated at the same input and multiplied",
     "the outer derivative read at the input rather than at the inner output",
     "the sum of the two derivatives",
     "the value of the composite rather than of its derivative"
+   ],
+   "common_givens": [
+    "a table of values of f, f prime, g, and g prime at selected inputs",
+    "a composite or combination of the tabulated functions"
    ],
    "created": "2026-09-19",
    "description": "A table gives values of two functions and their derivatives at selected inputs, and the response evaluates the derivative of a composite or of a combination at one input.",
@@ -4125,19 +4316,30 @@
    "units": [
     "BC-UNIT-03"
    ],
-   "updated": "2026-09-24",
+   "updated": "2026-09-28",
    "variants": [
     "BC-QV-03002-01",
     "BC-QV-03002-02",
     "BC-QV-03002-03"
+   ],
+   "wrong_approaches": [
+    "reading the outer derivative at the stated input instead of at the inner output (BC-ERR-03003)",
+    "adding the two tabulated derivatives instead of multiplying them (BC-ERR-03004)"
    ]
   },
   {
+   "asked_to_produce": [
+    "the value of the derivative of the composite at the stated input"
+   ],
    "calculator_status": "no_calculator",
    "common_distractors": [
     "the slope of the outer graph read at the input rather than at the inner output",
     "the product of the two function values",
     "a slope read at a point where the graph has a corner"
+   ],
+   "common_givens": [
+    "graphs of the two component functions, piecewise linear or otherwise readable",
+    "a stated input"
    ],
    "created": "2026-09-19",
    "description": "Graphs of two functions are supplied and the response evaluates the derivative of their composite at a stated input by reading values and slopes off the figures.",
@@ -4302,19 +4504,33 @@
    "units": [
     "BC-UNIT-03"
    ],
-   "updated": "2026-09-24",
+   "updated": "2026-09-28",
    "variants": [
     "BC-QV-03003-01",
     "BC-QV-03003-02"
+   ],
+   "wrong_approaches": [
+    "reading the slope of the outer graph at the stated input instead of at the inner output (BC-ERR-03003)",
+    "reading a slope at a corner of the graph as though the derivative existed there (BC-ERR-03005)"
    ]
   },
   {
+   "asked_to_produce": [
+    "an implicit derivative dy/dx",
+    "a verification of a stated expression for dy/dx",
+    "a numerical slope at a point"
+   ],
    "calculator_status": "no_calculator",
    "common_distractors": [
     "y terms differentiated without the dy/dx factor",
     "a mixed term differentiated as though one variable were constant",
     "the right hand side of the equation dropped",
     "dy/dx solved for before the terms are collected"
+   ],
+   "common_givens": [
+    "an equation in x and y defining a curve",
+    "a stated expression for dy/dx to verify",
+    "a point on the curve"
    ],
    "created": "2026-09-19",
    "description": "An equation in x and y is supplied and the response differentiates implicitly, solves for dy/dx, and in many cases verifies a stated expression or evaluates the slope at a point.",
@@ -4529,21 +4745,36 @@
    "units": [
     "BC-UNIT-03"
    ],
-   "updated": "2026-09-27",
+   "updated": "2026-09-28",
    "variants": [
     "BC-QV-03004-01",
     "BC-QV-03004-02",
     "BC-QV-03004-03",
     "BC-QV-03004-04"
+   ],
+   "wrong_approaches": [
+    "differentiating y terms as though y were the independent variable (BC-ERR-03007)",
+    "differentiating a mixed term as though one variable were constant (BC-ERR-03008)",
+    "differentiating one side and dropping the right side of the equation (BC-ERR-03009)"
    ]
   },
   {
+   "asked_to_produce": [
+    "coordinates of a point with a horizontal or vertical tangent",
+    "an explanation why no such point exists",
+    "a decision whether a stated line is tangent to the curve"
+   ],
    "calculator_status": "no_calculator",
    "common_distractors": [
     "a coordinate that satisfies the condition on dy/dx but not the curve equation",
     "the two conditions swapped, so a zero denominator is read as a horizontal tangent",
     "only one of two candidate values reported",
     "a conclusion stated without connecting dy/dx to the curve"
+   ],
+   "common_givens": [
+    "an equation defining the curve",
+    "an expression for dy/dx, supplied or found in an earlier part",
+    "a stated horizontal line or a point on the curve"
    ],
    "created": "2026-09-19",
    "description": "Given a curve and its dy/dx, the response decides where the tangent line is horizontal or vertical, or whether a stated line can be tangent to the curve.",
@@ -4706,20 +4937,32 @@
    "units": [
     "BC-UNIT-03"
    ],
-   "updated": "2026-09-24",
+   "updated": "2026-09-28",
    "variants": [
     "BC-QV-03005-01",
     "BC-QV-03005-02",
     "BC-QV-03005-03"
+   ],
+   "wrong_approaches": [
+    "setting the denominator to zero for a horizontal tangent or the numerator for a vertical one (BC-ERR-03012)",
+    "reporting a point from the dy/dx condition without substituting into the curve equation (BC-ERR-03013)",
+    "setting the numerator to zero without checking that the denominator is nonzero (BC-ERR-05057)"
    ]
   },
   {
+   "asked_to_produce": [
+    "the derivative of the inverse function at the stated value"
+   ],
    "calculator_status": "either",
    "common_distractors": [
     "the reciprocal of the derivative taken at the stated value rather than at the matching input",
     "the derivative of the original function reported unchanged",
     "the negative of the derivative",
     "the reciprocal of the function value"
+   ],
+   "common_givens": [
+    "a function given by formula, table, or graph",
+    "a value that is an output of the original function"
    ],
    "created": "2026-09-19",
    "description": "A function is supplied by formula, table, or graph and the response computes the derivative of its inverse at a stated value.",
@@ -4869,20 +5112,33 @@
    "units": [
     "BC-UNIT-03"
    ],
-   "updated": "2026-09-24",
+   "updated": "2026-09-28",
    "variants": [
     "BC-QV-03006-01",
     "BC-QV-03006-02",
     "BC-QV-03006-03"
+   ],
+   "wrong_approaches": [
+    "taking the reciprocal of the derivative at the stated value instead of at the matching input (BC-ERR-03015)",
+    "taking the reciprocal of the function value instead of the derivative (BC-ERR-03016)"
    ]
   },
   {
+   "asked_to_produce": [
+    "the derivative of the inverse trigonometric expression",
+    "a rate of change of the modelled quantity at a stated time"
+   ],
    "calculator_status": "either",
    "common_distractors": [
     "the standard formula used without the inner derivative",
     "the inner expression left unsquared inside the radical or denominator",
     "the inverse sine formula used for the inverse tangent",
     "the derivative of the ordinary trigonometric function reported"
+   ],
+   "common_givens": [
+    "an expression with an inverse trigonometric function of an inner expression",
+    "a contextual model built on an inverse tangent, sometimes with its derivative supplied",
+    "an equation relating an inverse sine and another function"
    ],
    "created": "2026-09-19",
    "description": "An expression containing an inverse trigonometric function is supplied and the response differentiates it, often evaluating the result at a point.",
@@ -5079,20 +5335,33 @@
    "units": [
     "BC-UNIT-03"
    ],
-   "updated": "2026-09-27",
+   "updated": "2026-09-28",
    "variants": [
     "BC-QV-03007-01",
     "BC-QV-03007-02",
     "BC-QV-03007-03"
+   ],
+   "wrong_approaches": [
+    "using the inverse sine derivative formula for an inverse tangent (BC-ERR-03017)",
+    "writing the standard formula with the variable in place of the inner expression (BC-ERR-03018)"
    ]
   },
   {
+   "asked_to_produce": [
+    "an expression for the second derivative",
+    "the value of the second derivative at a point"
+   ],
    "calculator_status": "no_calculator",
    "common_distractors": [
     "the dependent variable treated as a constant when differentiating",
     "the product rule omitted on a mixed term",
     "the first derivative value not substituted",
     "the second derivative reported in the wrong notation"
+   ],
+   "common_givens": [
+    "a differential equation for dy/dx",
+    "an initial condition or a point on the solution curve",
+    "a function or a derivative expression"
    ],
    "created": "2026-09-19",
    "description": "A function, a derivative, or a differential equation is supplied and the response produces the second or a higher derivative, often evaluating it at a point.",
@@ -5281,20 +5550,32 @@
    "units": [
     "BC-UNIT-03"
    ],
-   "updated": "2026-09-27",
+   "updated": "2026-09-28",
    "variants": [
     "BC-QV-03008-01",
     "BC-QV-03008-02",
     "BC-QV-03008-03"
+   ],
+   "wrong_approaches": [
+    "differentiating the derivative expression as though the dependent variable were constant (BC-ERR-05060)",
+    "omitting the product rule on a term containing both variables (BC-ERR-03008)",
+    "evaluating the second derivative without first finding dy/dx at the point (BC-ERR-03023)"
    ]
   },
   {
+   "asked_to_produce": [
+    "the derivative of the given expression",
+    "the rule the expression requires"
+   ],
    "calculator_status": "no_calculator",
    "common_distractors": [
     "the product rule applied to a composite",
     "the chain rule applied to a product",
     "the power rule applied to an exponential",
     "a rule applied in the wrong order"
+   ],
+   "common_givens": [
+    "an expression built from products, quotients, compositions, or exponentials"
    ],
    "created": "2026-09-19",
    "description": "An expression is supplied whose differentiation needs the right rule chosen first, and the response must classify the structure before differentiating.",
@@ -5487,15 +5768,24 @@
    "units": [
     "BC-UNIT-03"
    ],
-   "updated": "2026-09-24",
+   "updated": "2026-09-28",
    "variants": [
     "BC-QV-03009-01",
     "BC-QV-03009-02",
     "BC-QV-03009-03"
+   ],
+   "wrong_approaches": [
+    "applying the power rule to an exponential term (BC-ERR-99036)",
+    "differentiating a composite factor without the enclosing product or quotient rule (BC-ERR-03006)"
    ]
   },
   {
-   "asked_to_produce": [],
+   "asked_to_produce": [
+    "two sided limits at named inputs",
+    "one sided limits at named inputs",
+    "function values at named inputs",
+    "a statement that a limit does not exist with a reason"
+   ],
    "calculator_status": "no_calculator",
    "common_distractors": [
     "reporting the plotted function value as the limit",
@@ -5503,7 +5793,9 @@
     "answering that the limit is the open circle height when a closed point sits elsewhere",
     "answering that the limit does not exist merely because the function is undefined there"
    ],
-   "common_givens": [],
+   "common_givens": [
+    "a graph of a function with one or more breaks"
+   ],
    "created": "2026-09-19",
    "description": "A graph of a function with one or more breaks is given and the response reports two sided and one sided limits and function values at named inputs, or states that a limit does not exist.",
    "difficulty_factors": [
@@ -5759,10 +6051,19 @@
    "units": [
     "BC-UNIT-01"
    ],
-   "updated": "2026-09-27"
+   "updated": "2026-09-28",
+   "wrong_approaches": [
+    "reading the plotted function value instead of the value approached (BC-ERR-01001)",
+    "reading one side only and reporting it as the two sided limit (BC-ERR-01002)",
+    "declaring the limit nonexistent because the function is undefined at the input (BC-ERR-01003)"
+   ]
   },
   {
-   "asked_to_produce": [],
+   "asked_to_produce": [
+    "an estimate of the limit",
+    "a one sided estimate",
+    "an explanation when the table does not settle the limit"
+   ],
    "calculator_status": "either",
    "common_distractors": [
     "reading the output at the row nearest the target as the limit",
@@ -5770,7 +6071,9 @@
     "reporting a value the table only approaches on one side",
     "treating an estimate as an exact value"
    ],
-   "common_givens": [],
+   "common_givens": [
+    "a table of function values at inputs approaching the target from both sides"
+   ],
    "created": "2026-09-19",
    "description": "Selected values of a function at inputs approaching a target from both sides are tabulated and the response reports the estimated limit, or a one sided estimate, from the table.",
    "difficulty_factors": [
@@ -5949,10 +6252,17 @@
    "units": [
     "BC-UNIT-01"
    ],
-   "updated": "2026-09-24"
+   "updated": "2026-09-28",
+   "wrong_approaches": [
+    "treating agreement of the tabulated outputs as proof of the limit (BC-ERR-01005)",
+    "reading the rows on one side only and reporting that value as the limit (BC-ERR-01002)"
+   ]
   },
   {
-   "asked_to_produce": [],
+   "asked_to_produce": [
+    "the limit of a sum, difference, product, quotient, or composite",
+    "a single answer value"
+   ],
    "calculator_status": "no_calculator",
    "common_distractors": [
     "applying the quotient theorem when the denominator limit is zero",
@@ -5960,7 +6270,11 @@
     "adding when a product is requested",
     "asserting that a limit of a quotient is the quotient of the function values"
    ],
-   "common_givens": [],
+   "common_givens": [
+    "the limits of two functions at a point",
+    "a graph of a function made of line segments and a circle arc",
+    "a quotient built from a function, its derivative, and an elementary function"
+   ],
    "created": "2026-09-19",
    "description": "The limits of two functions at a point are supplied and the response evaluates the limit of a sum, difference, product, quotient, or composite built from them.",
    "difficulty_factors": [
@@ -6169,10 +6483,17 @@
    "units": [
     "BC-UNIT-01"
    ],
-   "updated": "2026-09-27"
+   "updated": "2026-09-28",
+   "wrong_approaches": [
+    "dividing the numerator limit by a denominator limit of zero (BC-ERR-01006)",
+    "applying the inner function to the limit of the outer function (BC-ERR-01007)"
+   ]
   },
   {
-   "asked_to_produce": [],
+   "asked_to_produce": [
+    "separate limits of the numerator and denominator",
+    "the value of the limit"
+   ],
    "calculator_status": "no_calculator",
    "common_distractors": [
     "reporting zero because the numerator tends to zero",
@@ -6180,7 +6501,10 @@
     "cancelling a term rather than a factor",
     "dropping the sign introduced by the conjugate"
    ],
-   "common_givens": [],
+   "common_givens": [
+    "a quotient that gives zero over zero under substitution",
+    "a trigonometric quotient at zero"
+   ],
    "created": "2026-09-19",
    "description": "A quotient that gives zero over zero under substitution is presented and the response rewrites it into an equivalent form and evaluates the limit.",
    "difficulty_factors": [
@@ -6333,10 +6657,19 @@
    "units": [
     "BC-UNIT-01"
    ],
-   "updated": "2026-09-27"
+   "updated": "2026-09-28",
+   "wrong_approaches": [
+    "declaring the limit nonexistent on seeing zero over zero instead of rewriting (BC-ERR-01009)",
+    "reporting zero from the numerator alone without the denominator (BC-ERR-01008)",
+    "cancelling a common term rather than a common factor (BC-ERR-01010)"
+   ]
   },
   {
-   "asked_to_produce": [],
+   "asked_to_produce": [
+    "a bounding inequality",
+    "the limits of the two bounds",
+    "the limit of the trapped function with justification"
+   ],
    "calculator_status": "no_calculator",
    "common_distractors": [
     "multiplying the inequality by a factor that changes sign without reversing it",
@@ -6344,7 +6677,10 @@
     "concluding from a bound on one side only",
     "omitting the statement that the bounds share a limit"
    ],
-   "common_givens": [],
+   "common_givens": [
+    "a function trapped between two bounding functions",
+    "a bounding inequality that holds near the input"
+   ],
    "created": "2026-09-19",
    "description": "A function trapped between two bounding functions is presented and the response verifies the bounding inequality, evaluates the bounds, and concludes the limit.",
    "difficulty_factors": [
@@ -6512,10 +6848,18 @@
    "units": [
     "BC-UNIT-01"
    ],
-   "updated": "2026-09-24"
+   "updated": "2026-09-28",
+   "wrong_approaches": [
+    "substituting the target into the bounds instead of taking their limits (BC-ERR-01013)",
+    "multiplying the inequality by a sign changing factor without reversing it (BC-ERR-01012)"
+   ]
   },
   {
-   "asked_to_produce": [],
+   "asked_to_produce": [
+    "the function value at the named input",
+    "the one sided limits at the input",
+    "a continuity conclusion naming the condition that fails"
+   ],
    "calculator_status": "no_calculator",
    "common_distractors": [
     "checking only that the function is defined at the input",
@@ -6723,10 +7067,18 @@
    "units": [
     "BC-UNIT-01"
    ],
-   "updated": "2026-09-27"
+   "updated": "2026-09-28",
+   "wrong_approaches": [
+    "concluding continuity because the function is defined at the input (BC-ERR-01014)",
+    "concluding continuity from matching one sided limits without the function value (BC-ERR-01015)",
+    "evaluating the branch that does not apply on that side of the boundary (BC-ERR-01017)"
+   ]
   },
   {
-   "asked_to_produce": [],
+   "asked_to_produce": [
+    "a classification of each discontinuity as removable, jump, or vertical asymptote",
+    "a reason for each classification"
+   ],
    "calculator_status": "no_calculator",
    "common_distractors": [
     "classifying a cancelling factor as a vertical asymptote",
@@ -6911,10 +7263,17 @@
    "units": [
     "BC-UNIT-01"
    ],
-   "updated": "2026-09-24"
+   "updated": "2026-09-28",
+   "wrong_approaches": [
+    "naming a vertical asymptote at a factor that divides out (BC-ERR-01018)",
+    "declaring the limit nonexistent because the function is undefined at the break (BC-ERR-01003)"
+   ]
   },
   {
-   "asked_to_produce": [],
+   "asked_to_produce": [
+    "a matching equation at each boundary",
+    "the value or values of the unknown constants"
+   ],
    "calculator_status": "no_calculator",
    "common_distractors": [
     "matching only the two limits and ignoring the defined value",
@@ -6922,7 +7281,9 @@
     "solving one equation for two unknowns",
     "reporting a value that makes the branches equal at the wrong input"
    ],
-   "common_givens": [],
+   "common_givens": [
+    "a piecewise rule with one or two unknown constants"
+   ],
    "created": "2026-09-19",
    "description": "A piecewise rule containing one or two unknown constants is given and the response determines the constants that make the function continuous.",
    "difficulty_factors": [
@@ -7080,10 +7441,17 @@
    "units": [
     "BC-UNIT-01"
    ],
-   "updated": "2026-09-24"
+   "updated": "2026-09-28",
+   "wrong_approaches": [
+    "matching the two one sided limits and ignoring the defined value (BC-ERR-01015)",
+    "substituting the boundary into the branch for the other side (BC-ERR-01017)"
+   ]
   },
   {
-   "asked_to_produce": [],
+   "asked_to_produce": [
+    "the locations of the vertical asymptotes",
+    "one sided infinite limit statements"
+   ],
    "calculator_status": "no_calculator",
    "common_distractors": [
     "naming an asymptote at a cancelled factor",
@@ -7252,10 +7620,17 @@
    "units": [
     "BC-UNIT-01"
    ],
-   "updated": "2026-09-24"
+   "updated": "2026-09-28",
+   "wrong_approaches": [
+    "naming an asymptote at a cancelled factor (BC-ERR-01018)",
+    "writing one two sided infinite limit when the sides differ in sign (BC-ERR-01019)"
+   ]
   },
   {
-   "asked_to_produce": [],
+   "asked_to_produce": [
+    "a limit expression for the end behaviour",
+    "the value of the limit"
+   ],
    "calculator_status": "either",
    "common_distractors": [
     "writing the limit of the amount when the rate was requested",
@@ -7263,7 +7638,11 @@
     "reporting the limit of the rate as the limit of the amount",
     "omitting the limit expression and giving only a value"
    ],
-   "common_givens": [],
+   "common_givens": [
+    "a model function in a context",
+    "a formula for the rate of change of the model",
+    "candidate functions for a stated horizontal asymptote"
+   ],
    "created": "2026-09-19",
    "description": "A function or a contextual model is given and the response writes the limit expression describing behaviour for inputs of large magnitude and evaluates it.",
    "difficulty_factors": [
@@ -7433,10 +7812,19 @@
    "units": [
     "BC-UNIT-01"
    ],
-   "updated": "2026-09-27"
+   "updated": "2026-09-28",
+   "wrong_approaches": [
+    "substituting infinity into the expression as a number (BC-ERR-01021)",
+    "writing the limit of the amount when the rate was requested (BC-ERR-01022)",
+    "taking the ratio of leading coefficients without comparing degrees (BC-ERR-01023)"
+   ]
   },
   {
-   "asked_to_produce": [],
+   "asked_to_produce": [
+    "a statement that the function is continuous because it is differentiable",
+    "an inequality placing the target between two attained values",
+    "a yes answer with justification"
+   ],
    "calculator_status": "no_calculator",
    "common_distractors": [
     "asserting continuity without a reason",
@@ -7445,7 +7833,12 @@
     "naming a different theorem",
     "locating a value rather than arguing existence"
    ],
-   "common_givens": [],
+   "common_givens": [
+    "a table of selected values of a differentiable function",
+    "a table of values of the derivative of a twice differentiable function",
+    "a difference of two rate functions",
+    "a target value and an open interval"
+   ],
    "created": "2026-09-19",
    "description": "A function known to be continuous or differentiable is given by a table, a graph, or a rule, and the response argues that the function attains a stated value somewhere in an interval.",
    "difficulty_factors": [
@@ -7610,10 +8003,19 @@
    "units": [
     "BC-UNIT-01"
    ],
-   "updated": "2026-09-27"
+   "updated": "2026-09-28",
+   "wrong_approaches": [
+    "naming a theorem other than the Intermediate Value Theorem (BC-ERR-01028)",
+    "asserting continuity without deriving it from differentiability (BC-ERR-01025)",
+    "claiming exactly one input from an existence theorem (BC-ERR-01027)"
+   ]
   },
   {
-   "asked_to_produce": [],
+   "asked_to_produce": [
+    "average rates of change over each interval",
+    "the value the averages approach",
+    "the instantaneous rate at the point"
+   ],
    "calculator_status": "either",
    "common_distractors": [
     "reporting the difference in outputs without dividing",
@@ -7621,7 +8023,10 @@
     "calling the last average the exact instantaneous rate",
     "omitting the units"
    ],
-   "common_givens": [],
+   "common_givens": [
+    "a quantity given by a formula or a table",
+    "a nested set of intervals closing on the instant"
+   ],
    "created": "2026-09-19",
    "description": "A quantity is given by a formula or a table and the response computes average rates of change over intervals closing on a point and describes what those averages approach.",
    "difficulty_factors": [
@@ -7832,10 +8237,16 @@
    "units": [
     "BC-UNIT-01"
    ],
-   "updated": "2026-09-24"
+   "updated": "2026-09-28",
+   "wrong_approaches": [
+    "reporting the change in output without dividing by the change in input (BC-ERR-01029)",
+    "taking one average rate as the exact rate at the instant (BC-ERR-01030)"
+   ]
   },
   {
-   "asked_to_produce": [],
+   "asked_to_produce": [
+    "the representation that matches the stated limit behaviour"
+   ],
    "calculator_status": "no_calculator",
    "common_distractors": [
     "matching on the function value rather than the limit",
@@ -7843,7 +8254,10 @@
     "choosing a representation that agrees away from the target input only",
     "confusing an infinite limit with a limit at infinity"
    ],
-   "common_givens": [],
+   "common_givens": [
+    "a limit fact in one representation",
+    "candidate graphical, numerical, or analytic representations"
+   ],
    "created": "2026-09-19",
    "description": "A limit fact is presented in one representation and the response selects or produces the equivalent presentation in another.",
    "difficulty_factors": [
@@ -8016,10 +8430,18 @@
    "units": [
     "BC-UNIT-01"
    ],
-   "updated": "2026-09-24"
+   "updated": "2026-09-28",
+   "wrong_approaches": [
+    "reading a vertical asymptote statement as end behaviour or the reverse (BC-ERR-01033)",
+    "matching a one sided value to a two sided limit statement (BC-ERR-01002)"
+   ]
   },
   {
-   "asked_to_produce": [],
+   "asked_to_produce": [
+    "a classification of the form after substitution",
+    "an appropriate procedure for each limit",
+    "the value of the limit"
+   ],
    "calculator_status": "no_calculator",
    "common_distractors": [
     "rewriting an expression that substitution already settles",
@@ -8231,10 +8653,18 @@
    "units": [
     "BC-UNIT-01"
    ],
-   "updated": "2026-09-24"
+   "updated": "2026-09-28",
+   "wrong_approaches": [
+    "dividing the numerator limit by a denominator limit of zero (BC-ERR-01006)",
+    "declaring the limit nonexistent on seeing zero over zero instead of rewriting (BC-ERR-01009)",
+    "taking the ratio of leading coefficients without comparing degrees (BC-ERR-01023)"
+   ]
   },
   {
-   "asked_to_produce": [],
+   "asked_to_produce": [
+    "the intervals on which the function is continuous",
+    "a reason naming the function family and its domain"
+   ],
    "calculator_status": "no_calculator",
    "common_distractors": [
     "including an excluded input inside a stated interval",
@@ -8242,7 +8672,9 @@
     "using closed brackets at an excluded input",
     "omitting the reason when one is demanded"
    ],
-   "common_givens": [],
+   "common_givens": [
+    "a function given by a rule"
+   ],
    "created": "2026-09-19",
    "description": "A function given by a rule is presented and the response states the intervals on which it is continuous.",
    "difficulty_factors": [
@@ -8390,14 +8822,24 @@
    "units": [
     "BC-UNIT-01"
    ],
-   "updated": "2026-09-24"
+   "updated": "2026-09-28"
   },
   {
+   "asked_to_produce": [
+    "a convergence or divergence verdict naming the series",
+    "the name of an applicable test",
+    "a check of that test's conditions"
+   ],
    "calculator_status": "no_calculator",
    "common_distractors": [
     "concluding convergence because the terms approach zero",
     "applying the alternating series test to a series of positive terms",
     "using the geometric formula on a series without a constant ratio"
+   ],
+   "common_givens": [
+    "a series of numbers in sigma or expanded form",
+    "a comparison series named for a required test",
+    "several series to classify together"
    ],
    "created": "2026-09-19",
    "description": "A numerical series is presented and the response must name a test whose conditions it satisfies and apply it to a verdict.",
@@ -8664,19 +9106,32 @@
    "units": [
     "BC-UNIT-10"
    ],
-   "updated": "2026-09-27",
+   "updated": "2026-09-28",
    "variants": [
     "BC-QV-10001-01",
     "BC-QV-10001-02",
     "BC-QV-10001-03"
+   ],
+   "wrong_approaches": [
+    "concluding convergence because the terms approach zero (BC-ERR-10008)",
+    "applying the alternating series test to a series of positive terms (BC-ERR-10015)",
+    "reporting the limit of the general term as the behaviour of the series (BC-ERR-10001)"
    ]
   },
   {
+   "asked_to_produce": [
+    "the value of the series",
+    "a divergence statement when the series diverges"
+   ],
    "calculator_status": "no_calculator",
    "common_distractors": [
     "adding the first few terms and reporting the total",
     "using the index zero term as the first term",
     "reporting the limit of the general term"
+   ],
+   "common_givens": [
+    "a geometric or telescoping series",
+    "a series obtained by evaluating a power series at a point"
    ],
    "created": "2026-09-19",
    "description": "A convergent series is given and the response must produce its value rather than a partial sum.",
@@ -8851,18 +9306,33 @@
    "units": [
     "BC-UNIT-10"
    ],
-   "updated": "2026-09-24",
+   "updated": "2026-09-28",
    "variants": [
     "BC-QV-10002-01",
     "BC-QV-10002-02"
+   ],
+   "wrong_approaches": [
+    "adding the first few terms instead of summing in closed form (BC-ERR-99038)",
+    "reporting the limit of the general term as the value (BC-ERR-10001)"
    ]
   },
   {
+   "asked_to_produce": [
+    "the first term and common ratio",
+    "the value of the series at a point",
+    "the closed form of the series on its interval of convergence"
+   ],
    "calculator_status": "no_calculator",
    "common_distractors": [
     "taking the coefficient as the ratio",
     "applying the formula without checking the size of the ratio",
     "using the index zero term when the series starts elsewhere"
+   ],
+   "common_givens": [
+    "a power series stated to be geometric",
+    "a derivative series from an earlier part",
+    "an input at which the series is evaluated",
+    "a closed form to verify"
    ],
    "created": "2026-09-19",
    "description": "A series, numerical or in a variable, is recognised as geometric and summed with the closed form, with the convergence condition recorded.",
@@ -9067,19 +9537,35 @@
    "units": [
     "BC-UNIT-10"
    ],
-   "updated": "2026-09-27",
+   "updated": "2026-09-28",
    "variants": [
     "BC-QV-10003-01",
     "BC-QV-10003-02",
     "BC-QV-10003-03"
+   ],
+   "wrong_approaches": [
+    "adding the first few terms instead of using the closed form (BC-ERR-99038)",
+    "applying the closed form with a ratio of size at least one (BC-ERR-10005)"
    ]
   },
   {
+   "asked_to_produce": [
+    "the numerical series being tested",
+    "a convergence or divergence verdict with a reason",
+    "the conditions of the named test"
+   ],
    "calculator_status": "no_calculator",
    "common_distractors": [
     "stating the conclusion with no conditions",
     "reversing the comparison inequality",
     "concluding convergence from terms approaching zero"
+   ],
+   "common_givens": [
+    "a Maclaurin series with its radius of convergence",
+    "a value of x at an end of the interval",
+    "candidate series in sigma notation",
+    "a positive-term series known to converge",
+    "a p-series and a geometric series sharing a parameter"
    ],
    "created": "2026-09-19",
    "description": "A numerical series is given together with, or in need of, a specific test, and the response applies it with its conditions.",
@@ -9289,14 +9775,25 @@
    "units": [
     "BC-UNIT-10"
    ],
-   "updated": "2026-09-27",
+   "updated": "2026-09-28",
    "variants": [
     "BC-QV-10004-01",
     "BC-QV-10004-02",
     "BC-QV-10004-03"
+   ],
+   "wrong_approaches": [
+    "concluding convergence because the terms approach zero (BC-ERR-10008)",
+    "applying a comparison test to an alternating series (BC-ERR-10015)",
+    "bounding the terms in the direction that supports no conclusion (BC-ERR-10016)"
    ]
   },
   {
+   "asked_to_produce": [
+    "the three conditions of the integral test",
+    "the matching improper integral",
+    "an evaluation with limit notation",
+    "a convergence conclusion for the series"
+   ],
    "calculator_status": "no_calculator",
    "common_distractors": [
     "listing fewer than three conditions",
@@ -9304,6 +9801,10 @@
     "substituting the infinity symbol into the antiderivative",
     "reporting the integral's value as the sum",
     "reporting the sum of the series as the integral's value"
+   ],
+   "common_givens": [
+    "a series of numbers with an exponential general term",
+    "a positive decreasing continuous function whose values give the terms"
    ],
    "created": "2026-09-19",
    "description": "The response states the three conditions the integral test requires, sets up the matching improper integral, evaluates it with limit notation, and transfers the conclusion.",
@@ -9461,20 +9962,33 @@
    "units": [
     "BC-UNIT-10"
    ],
-   "updated": "2026-09-27",
+   "updated": "2026-09-28",
    "variants": [
     "BC-QV-10005-01",
     "BC-QV-10005-02",
     "BC-QV-10005-03"
+   ],
+   "wrong_approaches": [
+    "substituting the infinity symbol into the antiderivative (BC-ERR-10011)",
+    "taking the integral's value as the sum of the series (BC-ERR-10013)"
    ]
   },
   {
+   "asked_to_produce": [
+    "a limit of the quotient of general terms with limit notation",
+    "a statement that the limit is positive and finite",
+    "a conclusion naming the series"
+   ],
    "calculator_status": "no_calculator",
    "common_distractors": [
     "comparing the limit with one",
     "omitting limit notation",
     "omitting absolute values when absolute convergence is the claim",
     "concluding about an unnamed series"
+   ],
+   "common_givens": [
+    "a named comparison series",
+    "a Maclaurin series evaluated at a point"
    ],
    "created": "2026-09-19",
    "description": "A comparison series is named or chosen, the limit of the ratio of general terms is computed with limit notation, and the conclusion is transferred to a specified series.",
@@ -9691,19 +10205,31 @@
    "units": [
     "BC-UNIT-10"
    ],
-   "updated": "2026-09-27",
+   "updated": "2026-09-28",
    "variants": [
     "BC-QV-10006-01",
     "BC-QV-10006-02",
     "BC-QV-10006-03"
+   ],
+   "wrong_approaches": [
+    "comparing the limit with one as in the ratio test (BC-ERR-10019)",
+    "running the comparison on signed terms while claiming absolute convergence (BC-ERR-10018)"
    ]
   },
   {
+   "asked_to_produce": [
+    "a classification as absolutely convergent, conditionally convergent, or divergent",
+    "a conclusion naming the series"
+   ],
    "calculator_status": "no_calculator",
    "common_distractors": [
     "swapping the two labels",
     "testing only one of the two series",
     "treating conditional convergence as a weaker absolute convergence"
+   ],
+   "common_givens": [
+    "a series with an alternating factor",
+    "candidate alternating series in sigma notation"
    ],
    "created": "2026-09-19",
    "description": "A series with mixed signs is classified as absolutely convergent, conditionally convergent, or divergent, with both tests reported.",
@@ -9887,19 +10413,35 @@
    "units": [
     "BC-UNIT-10"
    ],
-   "updated": "2026-09-27",
+   "updated": "2026-09-28",
    "variants": [
     "BC-QV-10007-01",
     "BC-QV-10007-02"
+   ],
+   "wrong_approaches": [
+    "testing the signed terms while claiming absolute convergence (BC-ERR-10018)",
+    "labelling a series absolutely convergent from the signed series alone (BC-ERR-10023)"
    ]
   },
   {
+   "asked_to_produce": [
+    "the first omitted term evaluated at the given input",
+    "a statement that the series alternates with terms decreasing to zero",
+    "an inequality comparing the error bound with the tolerance",
+    "an upper bound on the error"
+   ],
    "calculator_status": "no_calculator",
    "common_distractors": [
     "using a term already inside the partial sum",
     "using a term further along than the first omitted one",
     "writing the error as equal to the bound",
     "omitting the statement of the conditions"
+   ],
+   "common_givens": [
+    "a power series and an input value",
+    "a partial sum or Taylor polynomial approximation",
+    "a tolerance for the error",
+    "a statement that the terms alternate and decrease to zero"
    ],
    "created": "2026-09-19",
    "description": "A partial sum approximates the value of an alternating series and the response bounds the error by the first omitted term and compares it with a stated number.",
@@ -10107,20 +10649,35 @@
    "units": [
     "BC-UNIT-10"
    ],
-   "updated": "2026-09-27",
+   "updated": "2026-09-28",
    "variants": [
     "BC-QV-10008-01",
     "BC-QV-10008-02",
     "BC-QV-10008-03"
+   ],
+   "wrong_approaches": [
+    "reaching for the Lagrange error bound where the alternating series bound applies (BC-ERR-10033)",
+    "bounding with a term already inside the partial sum (BC-ERR-10024)"
    ]
   },
   {
+   "asked_to_produce": [
+    "the form of the Lagrange error bound",
+    "an inequality showing the error is at most the tolerance",
+    "the smallest bound the Lagrange bound guarantees"
+   ],
    "calculator_status": "no_calculator",
    "common_distractors": [
     "using the derivative of the same order as the polynomial",
     "omitting the factorial",
     "writing the error as equal to the bound",
     "stopping before the comparison with the tolerance"
+   ],
+   "common_givens": [
+    "a bound on the next derivative over an interval",
+    "a Taylor polynomial of stated degree about a centre",
+    "an input near the centre",
+    "a tolerance for the error"
    ],
    "created": "2026-09-19",
    "description": "A bound on the next derivative is supplied on an interval and the response shows that a Taylor polynomial approximation lies within a stated tolerance.",
@@ -10311,18 +10868,33 @@
    "units": [
     "BC-UNIT-10"
    ],
-   "updated": "2026-09-27",
+   "updated": "2026-09-28",
    "variants": [
     "BC-QV-10009-01",
     "BC-QV-10009-02"
+   ],
+   "wrong_approaches": [
+    "using the alternating series bound where the Lagrange bound is the tool (BC-ERR-10033)",
+    "building the bound from the wrong derivative order or factorial (BC-ERR-10032)"
    ]
   },
   {
+   "asked_to_produce": [
+    "the next derivative from the relation",
+    "the Taylor polynomial of the stated degree about the centre",
+    "an approximation from the polynomial"
+   ],
    "calculator_status": "no_calculator",
    "common_distractors": [
     "omitting a product rule factor",
     "placing derivative values directly as coefficients",
     "including a term of higher degree than requested"
+   ],
+   "common_givens": [
+    "function and first derivative values at the centre",
+    "a relation defining higher derivatives from lower ones",
+    "a differential equation with an initial condition",
+    "derivative values at a centre"
    ],
    "created": "2026-09-19",
    "description": "Derivatives are defined by a relation, the response differentiates to the required order, evaluates at the centre, and assembles the polynomial.",
@@ -10515,19 +11087,29 @@
    "units": [
     "BC-UNIT-10"
    ],
-   "updated": "2026-09-27",
+   "updated": "2026-09-28",
    "variants": [
     "BC-QV-10010-01",
     "BC-QV-10010-02",
     "BC-QV-10010-03"
+   ],
+   "wrong_approaches": [
+    "differentiating the relation without the product or chain rule (BC-ERR-10028)",
+    "placing derivative values directly as coefficients (BC-ERR-10029)"
    ]
   },
   {
+   "asked_to_produce": [
+    "the Taylor polynomial of the stated degree about the given centre"
+   ],
    "calculator_status": "no_calculator",
    "common_distractors": [
     "omitting the factorials",
     "pairing a derivative with the wrong power",
     "extending the polynomial beyond the requested degree"
+   ],
+   "common_givens": [
+    "a table of the function and its derivatives at the centre"
    ],
    "created": "2026-09-19",
    "description": "A table lists the function and several derivatives at a point and the response assembles the requested Taylor polynomial.",
@@ -10714,18 +11296,31 @@
    "units": [
     "BC-UNIT-10"
    ],
-   "updated": "2026-09-27",
+   "updated": "2026-09-28",
    "variants": [
     "BC-QV-10011-01",
     "BC-QV-10011-02"
+   ],
+   "wrong_approaches": [
+    "placing derivative values directly as coefficients (BC-ERR-10029)"
    ]
   },
   {
+   "asked_to_produce": [
+    "the Taylor polynomial of the stated degree for the related function",
+    "the derivative relation for the related function",
+    "the first terms of a standard Maclaurin series"
+   ],
    "calculator_status": "no_calculator",
    "common_distractors": [
     "misremembering a standard series",
     "omitting a product rule factor",
     "presenting a polynomial with terms of higher degree"
+   ],
+   "common_givens": [
+    "a function defined through a derivative relation with a value at the centre",
+    "a product of the known function with an exponential",
+    "values or a Taylor polynomial of the first function at the centre"
    ],
    "created": "2026-09-19",
    "description": "A second function is defined from the first by a product, a derivative, or an antiderivative, and its Taylor polynomial is requested.",
@@ -10915,20 +11510,37 @@
    "units": [
     "BC-UNIT-10"
    ],
-   "updated": "2026-09-27",
+   "updated": "2026-09-28",
    "variants": [
     "BC-QV-10012-01",
     "BC-QV-10012-02",
     "BC-QV-10012-03"
+   ],
+   "wrong_approaches": [
+    "differentiating the defining relation without the product rule (BC-ERR-10028)",
+    "multiplying a misremembered standard Maclaurin series (BC-ERR-10040)"
    ]
   },
   {
+   "asked_to_produce": [
+    "the ratio of consecutive terms",
+    "the limit of the ratio",
+    "the interior of the interval",
+    "an analysis of each endpoint",
+    "the interval of convergence"
+   ],
    "calculator_status": "no_calculator",
    "common_distractors": [
     "stopping at the open interval",
     "dropping the absolute value when solving",
     "using one endpoint verdict at both ends",
     "naming a test whose conditions the endpoint series fails"
+   ],
+   "common_givens": [
+    "a power series with its general term",
+    "the centre of the series",
+    "an instruction to use the ratio test",
+    "a series built from a given standard series"
    ],
    "created": "2026-09-19",
    "description": "A power series is given and the response finds the interval of convergence, justifying the interior with the ratio test and each endpoint with a suitable test.",
@@ -11125,20 +11737,34 @@
    "units": [
     "BC-UNIT-10"
    ],
-   "updated": "2026-09-27",
+   "updated": "2026-09-28",
    "variants": [
     "BC-QV-10013-01",
     "BC-QV-10013-02",
     "BC-QV-10013-03",
     "BC-QV-10013-04"
+   ],
+   "wrong_approaches": [
+    "reporting the open interval without testing the endpoints (BC-ERR-10037)",
+    "applying a comparison test to an alternating endpoint series (BC-ERR-99017)",
+    "substituting the endpoint for the index (BC-ERR-10034)"
    ]
   },
   {
+   "asked_to_produce": [
+    "the ratio of consecutive terms",
+    "the limit of the ratio",
+    "the radius of convergence stated as a value"
+   ],
    "calculator_status": "no_calculator",
    "common_distractors": [
     "presenting an interval instead of a radius",
     "inverting the coefficient quotient",
     "reporting the limit of the coefficients as the radius"
+   ],
+   "common_givens": [
+    "a Maclaurin or Taylor series in sigma notation",
+    "an instruction to use the ratio test"
    ],
    "created": "2026-09-19",
    "description": "A Maclaurin or Taylor series is supplied and only the radius of convergence is requested.",
@@ -11316,19 +11942,31 @@
    "units": [
     "BC-UNIT-10"
    ],
-   "updated": "2026-09-27",
+   "updated": "2026-09-28",
    "variants": [
     "BC-QV-10014-01",
     "BC-QV-10014-02"
+   ],
+   "wrong_approaches": [
+    "solving the ratio inequality into an interval without naming the radius (BC-ERR-10036)",
+    "running the ratio test without absolute values (BC-ERR-10022)"
    ]
   },
   {
+   "asked_to_produce": [
+    "the numerical series at the endpoint",
+    "a convergence or divergence verdict with a named test"
+   ],
    "calculator_status": "no_calculator",
    "common_distractors": [
     "substituting into the index",
     "losing the alternating factor",
     "applying a comparison test to an alternating series",
     "assuming the other endpoint behaves the same way"
+   ],
+   "common_givens": [
+    "a power series with its radius of convergence",
+    "an endpoint value of x"
    ],
    "created": "2026-09-19",
    "description": "The value at one end of an interval is substituted into a power series and the resulting numerical series is tested by a named test.",
@@ -11568,19 +12206,31 @@
    "units": [
     "BC-UNIT-10"
    ],
-   "updated": "2026-09-24",
+   "updated": "2026-09-28",
    "variants": [
     "BC-QV-10015-01",
     "BC-QV-10015-02",
     "BC-QV-10015-03"
+   ],
+   "wrong_approaches": [
+    "substituting the endpoint for the index (BC-ERR-10034)",
+    "applying a comparison test to an alternating endpoint series (BC-ERR-10015)"
    ]
   },
   {
+   "asked_to_produce": [
+    "the first nonzero terms of the series",
+    "the general term of the series"
+   ],
    "calculator_status": "no_calculator",
    "common_distractors": [
     "a general term that does not reproduce the displayed terms",
     "an index offset by one",
     "a missing alternating factor"
+   ],
+   "common_givens": [
+    "a Taylor series for a function whose derivative series is requested",
+    "the centre of the series"
    ],
    "created": "2026-09-19",
    "description": "The response presents a stated number of nonzero terms of a Taylor series together with its general term.",
@@ -11764,19 +12414,34 @@
    "units": [
     "BC-UNIT-10"
    ],
-   "updated": "2026-09-24",
+   "updated": "2026-09-28",
    "variants": [
     "BC-QV-10016-01",
     "BC-QV-10016-02",
     "BC-QV-10016-03"
+   ],
+   "wrong_approaches": [
+    "differentiating the general term with respect to the index (BC-ERR-99018)",
+    "writing terms from a misremembered standard series (BC-ERR-10040)"
    ]
   },
   {
+   "asked_to_produce": [
+    "the first nonzero terms of the new series",
+    "the general term of the new series",
+    "the first terms of a standard Maclaurin series",
+    "the function a given series converges to"
+   ],
    "calculator_status": "no_calculator",
    "common_distractors": [
     "substituting without raising the whole expression to the power",
     "misremembering the parity or the signs of a standard series",
     "shifting the centre"
+   ],
+   "common_givens": [
+    "a given Maclaurin series for a related function",
+    "a function formed by substitution into or multiplication of that series",
+    "a power series whose sum function is to be named"
    ],
    "created": "2026-09-19",
    "description": "A function is written as a substitution into, or a multiple of, one of the standard Maclaurin series and the resulting series is requested.",
@@ -11964,19 +12629,33 @@
    "units": [
     "BC-UNIT-10"
    ],
-   "updated": "2026-09-27",
+   "updated": "2026-09-28",
    "variants": [
     "BC-QV-10017-01",
     "BC-QV-10017-02",
     "BC-QV-10017-03"
+   ],
+   "wrong_approaches": [
+    "recalling a standard series with wrong signs or powers (BC-ERR-10040)",
+    "substituting without raising the whole expression to the power (BC-ERR-10041)"
    ]
   },
   {
+   "asked_to_produce": [
+    "the first nonzero terms of the derivative series",
+    "the general term of the derivative series",
+    "the radius of convergence of the derivative series"
+   ],
    "calculator_status": "no_calculator",
    "common_distractors": [
     "differentiating with respect to the index",
     "recomputing and misreporting the radius",
     "carrying the original interval including its endpoints"
+   ],
+   "common_givens": [
+    "a power series with its general term",
+    "the radius of convergence of the original series",
+    "a function in closed form whose derivative series is requested"
    ],
    "created": "2026-09-19",
    "description": "A power series is differentiated term by term and the response reports the new series and its radius of convergence.",
@@ -12155,19 +12834,33 @@
    "units": [
     "BC-UNIT-10"
    ],
-   "updated": "2026-09-27",
+   "updated": "2026-09-28",
    "variants": [
     "BC-QV-10018-01",
     "BC-QV-10018-02",
     "BC-QV-10018-03"
+   ],
+   "wrong_approaches": [
+    "differentiating the general term with respect to the index (BC-ERR-99018)",
+    "claiming the derived series has a different radius (BC-ERR-10042)"
    ]
   },
   {
+   "asked_to_produce": [
+    "a series or polynomial for the antiderivative",
+    "the constant fixed by the supplied value",
+    "an approximation of the accumulation function at a point"
+   ],
    "calculator_status": "no_calculator",
    "common_distractors": [
     "omitting the constant of integration",
     "integrating with respect to the index",
     "changing the radius"
+   ],
+   "common_givens": [
+    "a known series or Taylor polynomial for the integrand",
+    "a function defined as an integral of the known function",
+    "a value of the antiderivative at one input"
    ],
    "created": "2026-09-19",
    "description": "A known series is integrated term by term to represent an antiderivative, with the constant fixed by a given value.",
@@ -12350,18 +13043,28 @@
    "units": [
     "BC-UNIT-10"
    ],
-   "updated": "2026-09-27",
+   "updated": "2026-09-28",
    "variants": [
     "BC-QV-10019-01",
     "BC-QV-10019-02"
    ]
   },
   {
+   "asked_to_produce": [
+    "a yes or no verdict on convergence to the function at the input",
+    "a reason placing the input relative to the interval of convergence"
+   ],
    "calculator_status": "no_calculator",
    "common_distractors": [
     "answering with no reason",
     "treating the series as valid for all inputs",
     "using the interior of the interval as though it were closed"
+   ],
+   "common_givens": [
+    "an interval of convergence from an earlier part",
+    "a statement that the radius matches the original series",
+    "a closed form for the function",
+    "a specific input"
    ],
    "created": "2026-09-19",
    "description": "The response decides whether a series converges to the function at a stated input and gives the position of that input relative to the interval as the reason.",
@@ -12525,10 +13228,13 @@
    "units": [
     "BC-UNIT-10"
    ],
-   "updated": "2026-09-27",
+   "updated": "2026-09-28",
    "variants": [
     "BC-QV-10020-01",
     "BC-QV-10020-02"
+   ],
+   "wrong_approaches": [
+    "substituting into the geometric closed form at an input whose ratio has size at least one (BC-ERR-10005)"
    ]
   },
   {
@@ -12782,7 +13488,7 @@
     "BC-UNIT-08",
     "BC-UNIT-06"
    ],
-   "updated": "2026-09-27",
+   "updated": "2026-09-28",
    "variants": [
     "BC-QV-06007-01",
     "BC-QV-06007-02",
@@ -13043,7 +13749,7 @@
    "units": [
     "BC-UNIT-08"
    ],
-   "updated": "2026-09-27",
+   "updated": "2026-09-28",
    "variants": [
     "BC-QV-08002-01",
     "BC-QV-08002-02"
@@ -13306,7 +14012,7 @@
    "units": [
     "BC-UNIT-08"
    ],
-   "updated": "2026-09-27",
+   "updated": "2026-09-28",
    "variants": [
     "BC-QV-08003-01",
     "BC-QV-08003-02",
@@ -13403,7 +14109,7 @@
    "units": [
     "BC-UNIT-08"
    ],
-   "updated": "2026-09-27",
+   "updated": "2026-09-28",
    "variants": [
     "BC-QV-08004-01",
     "BC-QV-08004-02",
@@ -13503,7 +14209,7 @@
    "units": [
     "BC-UNIT-08"
    ],
-   "updated": "2026-09-27",
+   "updated": "2026-09-28",
    "variants": [
     "BC-QV-08005-01",
     "BC-QV-08005-02",
@@ -13740,7 +14446,7 @@
    "units": [
     "BC-UNIT-08"
    ],
-   "updated": "2026-09-27",
+   "updated": "2026-09-28",
    "variants": [
     "BC-QV-08006-01",
     "BC-QV-08006-02",
@@ -13832,7 +14538,7 @@
    "units": [
     "BC-UNIT-08"
    ],
-   "updated": "2026-09-27",
+   "updated": "2026-09-28",
    "variants": [
     "BC-QV-08007-01",
     "BC-QV-08007-02"
@@ -14091,7 +14797,7 @@
    "units": [
     "BC-UNIT-08"
    ],
-   "updated": "2026-09-27",
+   "updated": "2026-09-28",
    "variants": [
     "BC-QV-08008-01",
     "BC-QV-08008-02",
@@ -14320,7 +15026,7 @@
    "units": [
     "BC-UNIT-08"
    ],
-   "updated": "2026-09-27",
+   "updated": "2026-09-28",
    "variants": [
     "BC-QV-08009-01",
     "BC-QV-08009-02"
@@ -14889,7 +15595,7 @@
    "units": [
     "BC-UNIT-08"
    ],
-   "updated": "2026-09-27",
+   "updated": "2026-09-28",
    "variants": [
     "BC-QV-08011-01",
     "BC-QV-08011-02",
@@ -15134,7 +15840,7 @@
    "units": [
     "BC-UNIT-08"
    ],
-   "updated": "2026-09-27",
+   "updated": "2026-09-28",
    "variants": [
     "BC-QV-08012-01",
     "BC-QV-08012-02",
@@ -15379,7 +16085,7 @@
    "units": [
     "BC-UNIT-08"
    ],
-   "updated": "2026-09-27",
+   "updated": "2026-09-28",
    "variants": [
     "BC-QV-08013-01",
     "BC-QV-08013-02",
@@ -15622,7 +16328,7 @@
    "units": [
     "BC-UNIT-08"
    ],
-   "updated": "2026-09-27",
+   "updated": "2026-09-28",
    "variants": [
     "BC-QV-08014-01",
     "BC-QV-08014-02",
@@ -15860,7 +16566,7 @@
    "units": [
     "BC-UNIT-05"
    ],
-   "updated": "2026-09-27",
+   "updated": "2026-09-28",
    "variants": [
     "BC-QV-05001-01",
     "BC-QV-05001-02",
@@ -16256,7 +16962,8 @@
     "BC-SKL-05020",
     "BC-SKL-05021",
     "BC-SKL-05022",
-    "BC-SKL-05023"
+    "BC-SKL-05023",
+    "BC-SKL-05013"
    ],
    "sources": [
     "sg-23:13",
@@ -16269,7 +16976,7 @@
    "units": [
     "BC-UNIT-05"
    ],
-   "updated": "2026-09-27",
+   "updated": "2026-09-28",
    "variants": [
     "BC-QV-05003-01",
     "BC-QV-05003-02",
@@ -16434,7 +17141,7 @@
    "units": [
     "BC-UNIT-05"
    ],
-   "updated": "2026-09-27",
+   "updated": "2026-09-28",
    "variants": [
     "BC-QV-05004-01",
     "BC-QV-05004-02",
@@ -16578,7 +17285,7 @@
    "units": [
     "BC-UNIT-05"
    ],
-   "updated": "2026-09-27",
+   "updated": "2026-09-28",
    "variants": [
     "BC-QV-05005-01",
     "BC-QV-05005-02",
@@ -16923,7 +17630,7 @@
    "units": [
     "BC-UNIT-05"
    ],
-   "updated": "2026-09-27",
+   "updated": "2026-09-28",
    "variants": [
     "BC-QV-05006-01",
     "BC-QV-05006-02",
@@ -17171,7 +17878,7 @@
    "units": [
     "BC-UNIT-05"
    ],
-   "updated": "2026-09-27",
+   "updated": "2026-09-28",
    "variants": [
     "BC-QV-05007-01",
     "BC-QV-05007-02",
@@ -17406,7 +18113,7 @@
    "units": [
     "BC-UNIT-05"
    ],
-   "updated": "2026-09-27",
+   "updated": "2026-09-28",
    "variants": [
     "BC-QV-05008-01",
     "BC-QV-05008-02",
@@ -17637,7 +18344,7 @@
    "units": [
     "BC-UNIT-05"
    ],
-   "updated": "2026-09-27",
+   "updated": "2026-09-28",
    "variants": [
     "BC-QV-05009-01",
     "BC-QV-05009-02",
@@ -18613,10 +19320,13 @@
    "units": [
     "BC-UNIT-02"
    ],
-   "updated": "2026-09-27"
+   "updated": "2026-09-28"
   },
   {
-   "asked_to_produce": [],
+   "asked_to_produce": [
+    "a difference quotient inside a limit",
+    "the derivative function or its value at a named input"
+   ],
    "calculator_status": "no_calculator",
    "common_distractors": [
     "setting the increment to zero before cancelling",
@@ -18624,7 +19334,9 @@
     "expanding the shifted term incorrectly",
     "differentiating by rule and presenting the result as the definition"
    ],
-   "common_givens": [],
+   "common_givens": [
+    "a function rule"
+   ],
    "created": "2026-09-19",
    "description": "A rule is given and the response produces the derivative by setting up and evaluating the limit of a difference quotient rather than by a rule.",
    "difficulty_factors": [
@@ -18790,10 +19502,16 @@
    "units": [
     "BC-UNIT-02"
    ],
-   "updated": "2026-09-27"
+   "updated": "2026-09-28",
+   "wrong_approaches": [
+    "differentiating by the power rule and presenting it as the definition (BC-ERR-02008)",
+    "substituting zero for the increment before dividing it out (BC-ERR-02005)"
+   ]
   },
   {
-   "asked_to_produce": [],
+   "asked_to_produce": [
+    "the value of the limit"
+   ],
    "calculator_status": "no_calculator",
    "common_distractors": [
     "applying a rewriting technique that does not resolve the form",
@@ -18801,7 +19519,9 @@
     "reporting the value of the function rather than of its derivative",
     "concluding that the limit does not exist"
    ],
-   "common_givens": [],
+   "common_givens": [
+    "a limit in difference quotient form"
+   ],
    "created": "2026-09-19",
    "description": "A limit in difference quotient form is presented and the response evaluates it by identifying the underlying function and base point.",
    "difficulty_factors": [
@@ -18969,10 +19689,17 @@
    "units": [
     "BC-UNIT-02"
    ],
-   "updated": "2026-09-24"
+   "updated": "2026-09-28",
+   "wrong_approaches": [
+    "treating the difference quotient form as unresolvable and reporting that the limit does not exist (BC-ERR-02009)"
+   ]
   },
   {
-   "asked_to_produce": [],
+   "asked_to_produce": [
+    "a statement that the function is continuous because it is differentiable",
+    "an answer with justification from the theorem",
+    "a limit value after the continuity step"
+   ],
    "calculator_status": "no_calculator",
    "common_distractors": [
     "asserting continuity with no reason",
@@ -18980,7 +19707,11 @@
     "citing differentiability of the wrong function",
     "omitting the step entirely"
    ],
-   "common_givens": [],
+   "common_givens": [
+    "a statement that the function is differentiable",
+    "function values at the ends of an interval",
+    "a limit of a quotient built from the function"
+   ],
    "created": "2026-09-19",
    "description": "A function is stated to be differentiable and the response establishes that it is continuous in order to use a theorem that requires continuity.",
    "difficulty_factors": [
@@ -19164,10 +19895,18 @@
    "units": [
     "BC-UNIT-02"
    ],
-   "updated": "2026-09-24"
+   "updated": "2026-09-28",
+   "wrong_approaches": [
+    "inferring differentiability from continuity (BC-ERR-02012)",
+    "applying the theorem without establishing continuity from differentiability (BC-ERR-99008)"
+   ]
   },
   {
-   "asked_to_produce": [],
+   "asked_to_produce": [
+    "a verdict on differentiability at the named input",
+    "a reason based on one sided slopes or the tangent line",
+    "the inputs where the function is continuous but not differentiable"
+   ],
    "calculator_status": "no_calculator",
    "common_distractors": [
     "concluding differentiability from continuity",
@@ -19175,7 +19914,11 @@
     "reporting one of the two one sided slopes as the derivative",
     "treating a vertical tangent as a slope of zero"
    ],
-   "common_givens": [],
+   "common_givens": [
+    "a piecewise-defined function rule",
+    "a graph of a piecewise-defined function with its tangent lines described",
+    "an absolute value function"
+   ],
    "created": "2026-09-19",
    "description": "A function continuous at a point is presented and the response determines whether the derivative exists there and gives a reason.",
    "difficulty_factors": [
@@ -19339,10 +20082,17 @@
    "units": [
     "BC-UNIT-02"
    ],
-   "updated": "2026-09-27"
+   "updated": "2026-09-28",
+   "wrong_approaches": [
+    "concluding differentiability from continuity (BC-ERR-02012)",
+    "judging non-differentiability from the look of the graph without one sided slopes (BC-ERR-02013)"
+   ]
   },
   {
-   "asked_to_produce": [],
+   "asked_to_produce": [
+    "the derivative of the given function",
+    "its value at an input when one is named"
+   ],
    "calculator_status": "no_calculator",
    "common_distractors": [
     "reducing the exponent without multiplying by it",
@@ -19350,7 +20100,9 @@
     "leaving a radical undifferentiated",
     "dropping the negative sign produced by a negative exponent"
    ],
-   "common_givens": [],
+   "common_givens": [
+    "an expression built from powers, radicals, and reciprocals"
+   ],
    "created": "2026-09-19",
    "description": "An expression built from powers, radicals, and reciprocals is presented and the response differentiates it using the power, constant multiple, sum, and difference rules.",
    "difficulty_factors": [
@@ -19534,10 +20286,13 @@
    "units": [
     "BC-UNIT-02"
    ],
-   "updated": "2026-09-24"
+   "updated": "2026-09-28"
   },
   {
-   "asked_to_produce": [],
+   "asked_to_produce": [
+    "the derivative of the given function",
+    "a derivative value at a stated input"
+   ],
    "calculator_status": "no_calculator",
    "common_distractors": [
     "giving sine as the derivative of cosine without the negative sign",
@@ -19545,7 +20300,10 @@
     "giving the logarithm rule with the wrong reciprocal",
     "treating the exponential base as a variable"
    ],
-   "common_givens": [],
+   "common_givens": [
+    "an expression with sine, cosine, exponential, or logarithm terms",
+    "a graph of the derivative of a function combined with a logarithm"
+   ],
    "created": "2026-09-19",
    "description": "An expression containing sine, cosine, the natural exponential, or the natural logarithm is presented and the response differentiates it.",
    "difficulty_factors": [
@@ -19744,10 +20502,16 @@
    "units": [
     "BC-UNIT-02"
    ],
-   "updated": "2026-09-27"
+   "updated": "2026-09-28",
+   "wrong_approaches": [
+    "treating the natural exponential as a power of the variable and applying the power rule (BC-ERR-02019)"
+   ]
   },
   {
-   "asked_to_produce": [],
+   "asked_to_produce": [
+    "the derivative of the product or quotient",
+    "a parameter value from a stated tangent slope"
+   ],
    "calculator_status": "no_calculator",
    "common_distractors": [
     "multiplying the two derivatives together",
@@ -19755,7 +20519,11 @@
     "omitting the square on the denominator",
     "applying the quotient rule where the denominator is a constant"
    ],
-   "common_givens": [],
+   "common_givens": [
+    "a product or quotient of two differentiable expressions",
+    "a family of rational functions with a constant parameter",
+    "a stated tangent slope at an input"
+   ],
    "created": "2026-09-19",
    "description": "A product or a quotient of two differentiable expressions is presented and the response differentiates it.",
    "difficulty_factors": [
@@ -19925,10 +20693,18 @@
    "units": [
     "BC-UNIT-02"
    ],
-   "updated": "2026-09-27"
+   "updated": "2026-09-28",
+   "wrong_approaches": [
+    "multiplying the derivatives of the two factors (BC-ERR-02020)",
+    "applying the full quotient rule to a constant denominator (BC-ERR-02023)",
+    "differentiating numerator and denominator separately (BC-ERR-02026)"
+   ]
   },
   {
-   "asked_to_produce": [],
+   "asked_to_produce": [
+    "the product or quotient rule with the supplied values in place",
+    "the derivative value at the named input"
+   ],
    "calculator_status": "no_calculator",
    "common_distractors": [
     "reading a value of the function where a value of the derivative is needed",
@@ -19936,7 +20712,10 @@
     "using the wrong row of the table",
     "omitting the denominator square"
    ],
-   "common_givens": [],
+   "common_givens": [
+    "a table of values of two functions and their derivatives",
+    "a graph of a function with an accumulation function defined from it"
+   ],
    "created": "2026-09-19",
    "description": "The values of two functions and of their derivatives at an input are supplied in a table or read from graphs and the response evaluates the derivative of their product or quotient there.",
    "difficulty_factors": [
@@ -20154,10 +20933,16 @@
    "units": [
     "BC-UNIT-02"
    ],
-   "updated": "2026-09-27"
+   "updated": "2026-09-28",
+   "wrong_approaches": [
+    "multiplying the derivatives of the two factors (BC-ERR-02020)",
+    "placing a function value where the rule calls for a derivative value (BC-ERR-02024)"
+   ]
   },
   {
-   "asked_to_produce": [],
+   "asked_to_produce": [
+    "the derivative of the given trigonometric function"
+   ],
    "calculator_status": "no_calculator",
    "common_distractors": [
     "giving secant squared as the derivative of cotangent",
@@ -20165,7 +20950,9 @@
     "differentiating numerator and denominator separately",
     "leaving the result in a form the question does not accept"
    ],
-   "common_givens": [],
+   "common_givens": [
+    "an expression containing tangent, cotangent, secant, or cosecant"
+   ],
    "created": "2026-09-19",
    "description": "An expression containing one of the remaining trigonometric functions is presented and the response differentiates it after rewriting.",
    "difficulty_factors": [
@@ -20377,10 +21164,16 @@
    "units": [
     "BC-UNIT-02"
    ],
-   "updated": "2026-09-24"
+   "updated": "2026-09-28",
+   "wrong_approaches": [
+    "differentiating the numerator and denominator of the rewritten quotient separately (BC-ERR-02026)"
+   ]
   },
   {
-   "asked_to_produce": [],
+   "asked_to_produce": [
+    "an equation of the tangent line at the named point",
+    "the points where the tangent has a stated slope"
+   ],
    "calculator_status": "no_calculator",
    "common_distractors": [
     "using the function value as the slope",
@@ -20388,7 +21181,11 @@
     "writing the line through the origin",
     "evaluating the derivative at the wrong input"
    ],
-   "common_givens": [],
+   "common_givens": [
+    "a function rule",
+    "a named point or input",
+    "a rational function and a target slope"
+   ],
    "created": "2026-09-19",
    "description": "A function is given and the response produces the equation of the line tangent to its graph at a named point.",
    "difficulty_factors": [
@@ -20570,10 +21367,17 @@
    "units": [
     "BC-UNIT-02"
    ],
-   "updated": "2026-09-27"
+   "updated": "2026-09-28",
+   "wrong_approaches": [
+    "using the function value as the slope (BC-ERR-02027)",
+    "assembling point slope form with the point and slope exchanged (BC-ERR-04023)"
+   ]
   },
   {
-   "asked_to_produce": [],
+   "asked_to_produce": [
+    "an equivalent expression in the requested notation",
+    "a statement of what the notation denotes"
+   ],
    "calculator_status": "no_calculator",
    "common_distractors": [
     "reading the Leibniz form as a quotient of two quantities",
@@ -20581,7 +21385,9 @@
     "changing the independent variable",
     "confusing the derivative function with its value at a point"
    ],
-   "common_givens": [],
+   "common_givens": [
+    "a derivative written in one notation"
+   ],
    "created": "2026-09-19",
    "description": "A derivative is presented in one notation and the response writes it in another or states what it denotes.",
    "difficulty_factors": [
@@ -20775,10 +21581,16 @@
    "units": [
     "BC-UNIT-02"
    ],
-   "updated": "2026-09-24"
+   "updated": "2026-09-28",
+   "wrong_approaches": [
+    "treating Leibniz notation as a fraction whose parts separate and cancel (BC-ERR-02029)"
+   ]
   },
   {
-   "asked_to_produce": [],
+   "asked_to_produce": [
+    "a setup naming the quantity computed",
+    "the derivative value at the named input to three decimal places"
+   ],
    "calculator_status": "calculator",
    "common_distractors": [
     "reporting the function value instead of the derivative value",
@@ -20786,7 +21598,9 @@
     "rounding to fewer places than required",
     "presenting a bare value with no setup"
    ],
-   "common_givens": [],
+   "common_givens": [
+    "a function model of a contextual quantity in a calculator active part"
+   ],
    "created": "2026-09-19",
    "description": "A function is supplied in a calculator active setting and the response reports the value of its derivative at a named input.",
    "difficulty_factors": [
@@ -20983,15 +21797,25 @@
    "units": [
     "BC-UNIT-02"
    ],
-   "updated": "2026-09-24"
+   "updated": "2026-09-28"
   },
   {
+   "asked_to_produce": [
+    "the value of the derivative at a stated input",
+    "an interpretation of that value in context",
+    "units of the rate"
+   ],
    "calculator_status": "either",
    "common_distractors": [
     "an interpretation of the amount rather than of the rate",
     "units inverted",
     "the interval or instant omitted",
     "a restatement of the notation with no reference to the situation"
+   ],
+   "common_givens": [
+    "a contextual model given by a formula",
+    "units of the quantity and of the independent variable",
+    "a numerical value of the derivative"
    ],
    "created": "2026-09-19",
    "description": "A modelled quantity and a numerical rate are supplied and the response writes what that rate means in the situation, with units.",
@@ -21187,14 +22011,23 @@
    "units": [
     "BC-UNIT-04"
    ],
-   "updated": "2026-09-27",
+   "updated": "2026-09-28",
    "variants": [
     "BC-QV-04001-01",
     "BC-QV-04001-02",
     "BC-QV-04001-03"
+   ],
+   "wrong_approaches": [
+    "reading the derivative value as an amount of the quantity or a change over an interval (BC-ERR-04003)",
+    "describing a negative rate as an increase or as a magnitude (BC-ERR-04005)"
    ]
   },
   {
+   "asked_to_produce": [
+    "an approximation of the derivative at an interior input",
+    "supporting work of a difference and a quotient",
+    "units of measure"
+   ],
    "calculator_status": "either",
    "common_distractors": [
     "the quotient written without the difference",
@@ -21206,6 +22039,11 @@
     "inverting the quotient",
     "omitting the units",
     "giving the units of the quantity rather than of its rate"
+   ],
+   "common_givens": [
+    "a table of values of a contextual quantity at selected inputs",
+    "a table of values of a rate when a second derivative is approximated",
+    "the interval for the average rate of change"
    ],
    "created": "2026-09-19",
    "description": "A quantity is tabulated at selected inputs and the response approximates the derivative at an interior input using an average rate of change over an interval the prompt names.",
@@ -21419,20 +22257,34 @@
     "BC-UNIT-04",
     "BC-UNIT-02"
    ],
-   "updated": "2026-09-27",
+   "updated": "2026-09-28",
    "variants": [
     "BC-QV-04002-01",
     "BC-QV-04002-02",
     "BC-QV-04002-03"
+   ],
+   "wrong_approaches": [
+    "reporting the difference of the values without dividing by the difference of the inputs (BC-ERR-02001)",
+    "using a pair of rows other than the named or bracketing interval (BC-ERR-02004)"
    ]
   },
   {
+   "asked_to_produce": [
+    "the velocity at a stated time",
+    "the acceleration",
+    "a decision whether the speed is increasing or decreasing, with a reason"
+   ],
    "calculator_status": "either",
    "common_distractors": [
     "the speed decided from the sign of the acceleration alone",
     "speed reported as a negative number",
     "the position value reported where a velocity was asked for",
     "a general rule quoted without being applied to the given particle"
+   ],
+   "common_givens": [
+    "a position function of time",
+    "a velocity function of time",
+    "the sign of the acceleration at an instant"
    ],
    "created": "2026-09-19",
    "description": "A particle moves on a line with position or velocity supplied as a function of time, and the response produces velocity, acceleration, or speed at an instant and decides whether the speed is increasing.",
@@ -21672,21 +22524,34 @@
    "units": [
     "BC-UNIT-04"
    ],
-   "updated": "2026-09-27",
+   "updated": "2026-09-28",
    "variants": [
     "BC-QV-04003-01",
     "BC-QV-04003-02",
     "BC-QV-04003-03",
     "BC-QV-04003-04"
+   ],
+   "wrong_approaches": [
+    "deciding the speed from the sign of the acceleration alone (BC-ERR-99003)",
+    "differentiating the wrong number of times for the quantity requested (BC-ERR-04006)"
    ]
   },
   {
+   "asked_to_produce": [
+    "the intervals when the particles move in opposite directions",
+    "a sign analysis of velocity over the whole interval"
+   ],
    "calculator_status": "either",
    "common_distractors": [
     "integer inputs sampled instead of the equation being solved",
     "a sign chart presented with no stated reading",
     "an interval reported that covers only part of the prompt's interval",
     "direction reported from the sign of the position"
+   ],
+   "common_givens": [
+    "a position function for one particle",
+    "a velocity function for another particle",
+    "an open time interval"
    ],
    "created": "2026-09-19",
    "description": "The response determines when a particle moves in a stated direction, when it is at rest, or when two particles move in opposite directions, from the sign of velocity across a whole interval.",
@@ -21878,20 +22743,35 @@
    "units": [
     "BC-UNIT-04"
    ],
-   "updated": "2026-09-24",
+   "updated": "2026-09-28",
    "variants": [
     "BC-QV-04004-01",
     "BC-QV-04004-02",
     "BC-QV-04004-03"
+   ],
+   "wrong_approaches": [
+    "sampling integer times instead of solving velocity equal to zero (BC-ERR-04010)",
+    "reading the direction of motion from the sign of the position (BC-ERR-04008)"
    ]
   },
   {
+   "asked_to_produce": [
+    "the time when the instantaneous rate equals the average rate",
+    "a limit expression for the end behaviour of the rate and its value",
+    "whether a rate is increasing or decreasing at a stated time, with a reason"
+   ],
    "calculator_status": "calculator",
    "common_distractors": [
     "a value of the model reported where a rate was requested",
     "motion vocabulary used for a non-motion quantity",
     "arithmetic performed with infinity in place of a limit expression",
     "an inappropriately rounded decimal answer"
+   ],
+   "common_givens": [
+    "a contextual model given by a formula",
+    "the derivative of the model supplied in the stem",
+    "rate functions for a quantity other than position",
+    "a time interval"
    ],
    "created": "2026-09-19",
    "description": "A quantity such as a temperature, a population, an affected area, or a reading rate is modelled, and the response computes or interprets its rate of change, sometimes including the end behaviour of that rate.",
@@ -22094,20 +22974,33 @@
    "units": [
     "BC-UNIT-04"
    ],
-   "updated": "2026-09-27",
+   "updated": "2026-09-28",
    "variants": [
     "BC-QV-04005-01",
     "BC-QV-04005-02",
     "BC-QV-04005-03"
+   ],
+   "wrong_approaches": [
+    "substituting infinity and computing with it in place of a limit expression (BC-ERR-99007)"
    ]
   },
   {
+   "asked_to_produce": [
+    "the rate of change of the requested quantity at the stated instant",
+    "units of the rate"
+   ],
    "calculator_status": "either",
    "common_distractors": [
     "values substituted before the differentiation",
     "a varying dimension treated as a constant",
     "the chain rule factor omitted so that the derivative is taken with respect to a length rather than time",
     "the requested rate confused with the supplied one"
+   ],
+   "common_givens": [
+    "one or more supplied rates",
+    "a formula relating the quantities",
+    "the dimensions at the instant",
+    "a figure of the configuration"
    ],
    "created": "2026-09-19",
    "description": "A geometric configuration changes with time, one or more rates are supplied, and the response finds the rate of change of another quantity at a stated instant.",
@@ -22329,21 +23222,35 @@
    "units": [
     "BC-UNIT-04"
    ],
-   "updated": "2026-09-27",
+   "updated": "2026-09-28",
    "variants": [
     "BC-QV-04006-01",
     "BC-QV-04006-02",
     "BC-QV-04006-03",
     "BC-QV-04006-04"
+   ],
+   "wrong_approaches": [
+    "substituting instantaneous values before differentiating (BC-ERR-04020)",
+    "differentiating with respect to a length and stopping short of a rate in time (BC-ERR-04017)",
+    "treating one changing dimension as constant so the product rule is lost (BC-ERR-99013)"
    ]
   },
   {
+   "asked_to_produce": [
+    "the rate of change of the other coordinate at that instant",
+    "an implicit derivative with respect to time"
+   ],
    "calculator_status": "no_calculator",
    "common_distractors": [
     "differentiation with respect to x with no further work",
     "dy/dx and dy/dt confused",
     "the product rule omitted on the mixed term",
     "a sign error in the substituted rate"
+   ],
+   "common_givens": [
+    "an equation of the curve in x and y",
+    "a point on the curve",
+    "the rate of change of one coordinate at that instant"
    ],
    "created": "2026-09-19",
    "description": "A particle moves along a curve given by an equation in two variables, one coordinate rate is supplied, and the response finds the other coordinate rate at a stated point.",
@@ -22546,20 +23453,36 @@
    "units": [
     "BC-UNIT-04"
    ],
-   "updated": "2026-09-24",
+   "updated": "2026-09-28",
    "variants": [
     "BC-QV-04007-01",
     "BC-QV-04007-02",
     "BC-QV-04007-03"
+   ],
+   "wrong_approaches": [
+    "differentiating with respect to x and stopping without the chain rule to time (BC-ERR-04017)",
+    "differentiating a mixed term as though one variable were constant (BC-ERR-04018)",
+    "using the value of dy/dx where dy/dt is needed (BC-ERR-99013)"
    ]
   },
   {
+   "asked_to_produce": [
+    "the slope at the point of tangency",
+    "a tangent line approximation at a nearby input",
+    "an expression for the second derivative",
+    "an overestimate or underestimate judgement with a reason"
+   ],
    "calculator_status": "either",
    "common_distractors": [
     "the point and the slope exchanged in the point-slope form",
     "the direction of the error argued from whether the function is increasing",
     "the approximation evaluated at the point of tangency rather than at the nearby input",
     "an arithmetic error introduced while isolating the dependent variable unnecessarily"
+   ],
+   "common_givens": [
+    "an implicitly defined curve with dy/dx supplied",
+    "a differential equation with an initial condition",
+    "the point of tangency and a nearby input"
    ],
    "created": "2026-09-19",
    "description": "A point on a curve and the derivative there are supplied, and the response approximates a nearby function value with the tangent line and may be asked whether the approximation is too large or too small.",
@@ -22768,20 +23691,35 @@
    "units": [
     "BC-UNIT-04"
    ],
-   "updated": "2026-09-27",
+   "updated": "2026-09-28",
    "variants": [
     "BC-QV-04008-01",
     "BC-QV-04008-02",
     "BC-QV-04008-03"
+   ],
+   "wrong_approaches": [
+    "judging over or underestimate without appealing to concavity (BC-ERR-99020)",
+    "evaluating the tangent line at the point of tangency instead of the nearby input (BC-ERR-04024)",
+    "solving the differential equation when it already supplies the slope (BC-ERR-99035)"
    ]
   },
   {
+   "asked_to_produce": [
+    "the value of the limit, or a statement that it does not exist, with justification",
+    "separate limits of the numerator and denominator",
+    "a limit of the ratio of derivatives"
+   ],
    "calculator_status": "no_calculator",
    "common_distractors": [
     "the quotient written explicitly equal to zero over zero",
     "the quotient rule applied instead of separate derivatives",
     "the rule applied with no check of the form",
     "an incorrect derivative of the numerator when it contains an unknown function"
+   ],
+   "common_givens": [
+    "a quotient containing a function known only through a graph of its derivative and one value",
+    "an accumulation function defined from a graph",
+    "values of a function and its derivative at one input"
    ],
    "created": "2026-09-19",
    "description": "A limit of a quotient is supplied, often with one function known only through given properties, and the response establishes the indeterminate form and applies the rule.",
@@ -22986,20 +23924,34 @@
    "units": [
     "BC-UNIT-04"
    ],
-   "updated": "2026-09-27",
+   "updated": "2026-09-28",
    "variants": [
     "BC-QV-04009-01",
     "BC-QV-04009-02",
     "BC-QV-04009-03"
+   ],
+   "wrong_approaches": [
+    "differentiating the whole quotient by the quotient rule instead of numerator and denominator separately (BC-ERR-04030)",
+    "applying the rule with no check that the form is indeterminate (BC-ERR-04029)",
+    "reporting zero because the numerator tends to zero (BC-ERR-01008)"
    ]
   },
   {
+   "asked_to_produce": [
+    "the position at the stated time",
+    "a definite integral of the velocity",
+    "an antiderivative of the velocity"
+   ],
    "calculator_status": "either",
    "common_distractors": [
     "the displacement reported where the position was requested",
     "the initial condition omitted",
     "the speed integrated in place of the velocity",
     "the limits of integration left unchanged after a substitution"
+   ],
+   "common_givens": [
+    "a velocity function of time",
+    "the position at one time"
    ],
    "created": "2026-09-19",
    "description": "A velocity function and a position at one time are supplied, and the response finds the position at another time.",
@@ -23204,10 +24156,14 @@
    "units": [
     "BC-UNIT-04"
    ],
-   "updated": "2026-09-24",
+   "updated": "2026-09-28",
    "variants": [
     "BC-QV-04010-01",
     "BC-QV-04010-02"
+   ],
+   "wrong_approaches": [
+    "reporting the integral of the velocity as the position without the initial position (BC-ERR-08011)",
+    "running the accumulation in the wrong direction in time (BC-ERR-09021)"
    ]
   },
   {
@@ -23431,7 +24387,7 @@
    "units": [
     "BC-UNIT-09"
    ],
-   "updated": "2026-09-27",
+   "updated": "2026-09-28",
    "variants": [
     "BC-QV-09001-01",
     "BC-QV-09001-02",
@@ -23676,7 +24632,7 @@
    "units": [
     "BC-UNIT-09"
    ],
-   "updated": "2026-09-27",
+   "updated": "2026-09-28",
    "variants": [
     "BC-QV-09002-01",
     "BC-QV-09002-02"
@@ -24094,7 +25050,7 @@
    "units": [
     "BC-UNIT-09"
    ],
-   "updated": "2026-09-27",
+   "updated": "2026-09-28",
    "variants": [
     "BC-QV-09004-01",
     "BC-QV-09004-02"
@@ -24367,7 +25323,7 @@
    "units": [
     "BC-UNIT-09"
    ],
-   "updated": "2026-09-27",
+   "updated": "2026-09-28",
    "variants": [
     "BC-QV-09005-01",
     "BC-QV-09005-02",
@@ -24584,7 +25540,7 @@
    "units": [
     "BC-UNIT-09"
    ],
-   "updated": "2026-09-27",
+   "updated": "2026-09-28",
    "variants": [
     "BC-QV-09006-01",
     "BC-QV-09006-02"
@@ -24798,7 +25754,7 @@
    "units": [
     "BC-UNIT-09"
    ],
-   "updated": "2026-09-27",
+   "updated": "2026-09-28",
    "variants": [
     "BC-QV-09007-01",
     "BC-QV-09007-02"
@@ -25035,7 +25991,7 @@
    "units": [
     "BC-UNIT-09"
    ],
-   "updated": "2026-09-27",
+   "updated": "2026-09-28",
    "variants": [
     "BC-QV-09008-01",
     "BC-QV-09008-02"
@@ -25246,7 +26202,7 @@
    "units": [
     "BC-UNIT-09"
    ],
-   "updated": "2026-09-27",
+   "updated": "2026-09-28",
    "variants": [
     "BC-QV-09009-01",
     "BC-QV-09009-02"
@@ -25465,7 +26421,7 @@
    "units": [
     "BC-UNIT-09"
    ],
-   "updated": "2026-09-27",
+   "updated": "2026-09-28",
    "variants": [
     "BC-QV-09010-01",
     "BC-QV-09010-02"
@@ -25688,7 +26644,7 @@
    "units": [
     "BC-UNIT-09"
    ],
-   "updated": "2026-09-27",
+   "updated": "2026-09-28",
    "variants": [
     "BC-QV-09011-01",
     "BC-QV-09011-02",
@@ -25897,7 +26853,7 @@
    "units": [
     "BC-UNIT-09"
    ],
-   "updated": "2026-09-27",
+   "updated": "2026-09-28",
    "variants": [
     "BC-QV-09012-01",
     "BC-QV-09012-02",
@@ -26094,7 +27050,7 @@
    "units": [
     "BC-UNIT-09"
    ],
-   "updated": "2026-09-27",
+   "updated": "2026-09-28",
    "variants": [
     "BC-QV-09013-01",
     "BC-QV-09013-02",
@@ -26314,7 +27270,7 @@
    "units": [
     "BC-UNIT-07"
    ],
-   "updated": "2026-09-27",
+   "updated": "2026-09-28",
    "variants": [
     "BC-QV-07001-01",
     "BC-QV-07001-02",
@@ -26523,7 +27479,7 @@
    "units": [
     "BC-UNIT-07"
    ],
-   "updated": "2026-09-27",
+   "updated": "2026-09-28",
    "variants": [
     "BC-QV-07002-01",
     "BC-QV-07002-02",
@@ -26751,7 +27707,7 @@
    "units": [
     "BC-UNIT-07"
    ],
-   "updated": "2026-09-27",
+   "updated": "2026-09-28",
    "variants": [
     "BC-QV-07003-01",
     "BC-QV-07003-02",
@@ -27025,7 +27981,7 @@
    "units": [
     "BC-UNIT-07"
    ],
-   "updated": "2026-09-27",
+   "updated": "2026-09-28",
    "variants": [
     "BC-QV-07004-01",
     "BC-QV-07004-02",
@@ -27268,7 +28224,7 @@
    "units": [
     "BC-UNIT-07"
    ],
-   "updated": "2026-09-27",
+   "updated": "2026-09-28",
    "variants": [
     "BC-QV-07005-01",
     "BC-QV-07005-02",
@@ -27465,7 +28421,7 @@
    "units": [
     "BC-UNIT-07"
    ],
-   "updated": "2026-09-27",
+   "updated": "2026-09-28",
    "variants": [
     "BC-QV-07006-01",
     "BC-QV-07006-02",
@@ -27669,7 +28625,7 @@
    "units": [
     "BC-UNIT-07"
    ],
-   "updated": "2026-09-27",
+   "updated": "2026-09-28",
    "variants": [
     "BC-QV-07007-01",
     "BC-QV-07007-02",
@@ -27882,7 +28838,7 @@
    "units": [
     "BC-UNIT-07"
    ],
-   "updated": "2026-09-27",
+   "updated": "2026-09-28",
    "variants": [
     "BC-QV-07008-01",
     "BC-QV-07008-02",
@@ -28092,7 +29048,7 @@
    "units": [
     "BC-UNIT-07"
    ],
-   "updated": "2026-09-27",
+   "updated": "2026-09-28",
    "variants": [
     "BC-QV-07009-01",
     "BC-QV-07009-02",
@@ -28307,7 +29263,7 @@
    "units": [
     "BC-UNIT-07"
    ],
-   "updated": "2026-09-27",
+   "updated": "2026-09-28",
    "variants": [
     "BC-QV-07010-01",
     "BC-QV-07010-02",
@@ -28736,7 +29692,7 @@
     "BC-UNIT-09",
     "BC-UNIT-03"
    ],
-   "updated": "2026-09-27",
+   "updated": "2026-09-28",
    "wrong_approaches": [
     "differentiating the polar equation and reporting dr/dtheta"
    ]
@@ -28950,7 +29906,7 @@
     "BC-UNIT-09",
     "BC-UNIT-03"
    ],
-   "updated": "2026-09-27",
+   "updated": "2026-09-28",
    "wrong_approaches": [
     "treating the coordinate as the radial function itself"
    ]
@@ -29141,7 +30097,7 @@
     "BC-UNIT-09",
     "BC-UNIT-03"
    ],
-   "updated": "2026-09-27",
+   "updated": "2026-09-28",
    "wrong_approaches": [
     "using the parametric slope formula with the radial function as one coordinate"
    ]
@@ -29352,7 +30308,7 @@
    "units": [
     "BC-UNIT-09"
    ],
-   "updated": "2026-09-27",
+   "updated": "2026-09-28",
    "wrong_approaches": [
     "equating the radial function to the stated coordinate value"
    ]
@@ -29562,7 +30518,7 @@
    "units": [
     "BC-UNIT-09"
    ],
-   "updated": "2026-09-27",
+   "updated": "2026-09-28",
    "wrong_approaches": [
     "differentiating the radial function alone and calling it the velocity"
    ]
@@ -29792,7 +30748,7 @@
    "units": [
     "BC-UNIT-09"
    ],
-   "updated": "2026-09-27",
+   "updated": "2026-09-28",
    "wrong_approaches": [
     "measuring the gap as a Cartesian distance between two points"
    ]
@@ -30003,7 +30959,7 @@
     "BC-UNIT-08",
     "BC-UNIT-02"
    ],
-   "updated": "2026-09-27",
+   "updated": "2026-09-28",
    "wrong_approaches": [
     "integrating the function and dividing by the interval length"
    ]
@@ -30235,7 +31191,7 @@
     "BC-UNIT-06",
     "BC-UNIT-08"
    ],
-   "updated": "2026-09-27",
+   "updated": "2026-09-28",
    "wrong_approaches": [
     "treating the part as a net change question because the stem gives an initial condition"
    ]
@@ -30463,7 +31419,7 @@
     "BC-UNIT-08",
     "BC-UNIT-06"
    ],
-   "updated": "2026-09-27",
+   "updated": "2026-09-28",
    "wrong_approaches": [
     "treating the constant cross-section as a variable cross-section and squaring it"
    ]
@@ -30669,9 +31625,1906 @@
     "BC-UNIT-06",
     "BC-UNIT-08"
    ],
-   "updated": "2026-09-27",
+   "updated": "2026-09-28",
    "wrong_approaches": [
     "claiming the total converges rather than bounding it"
+   ]
+  },
+  {
+   "anchor_quote": "The chain rule and definition of an inverse function can be used to find the derivative of an inverse function, provided the derivative exists.",
+   "asked_to_produce": [
+    "the derivative of the inverse function as an expression in x"
+   ],
+   "calculator_status": "no_calculator",
+   "common_distractors": [
+    "the inner derivative factor dropped (BC-ERR-03018)",
+    "the inverse sine pattern used for the inverse tangent or the reverse (BC-ERR-03017)",
+    "a sign misplaced in the Pythagorean identity or in the derivative of the cosine (BC-ERR-03017)"
+   ],
+   "common_givens": [
+    "an inverse trigonometric function of a linear expression",
+    "the identity it satisfies",
+    "the principal branch"
+   ],
+   "created": "2026-09-28",
+   "description": "An inverse tangent, sine or cosine of a linear expression is given together with the identity it satisfies, such as tan(g(x)) equal to the inner expression. The response must differentiate the identity by the chain rule, replace the trigonometric factor through the Pythagorean identity on the principal branch, and solve for the derivative.",
+   "difficulty_factors": [
+    "BC-DF-04",
+    "BC-DF-06"
+   ],
+   "difficulty_variables": [
+    "whether the inverse is the tangent, which needs no radical, or the sine or cosine, which need a branch sign"
+   ],
+   "doc_id": "ced",
+   "doc_page": 77,
+   "evidence_tag": "inferred",
+   "expected_solution_path": [
+    "differentiate both sides of the identity, applying the chain rule to the composite on the left",
+    "rewrite the trigonometric factor in terms of x by the Pythagorean identity on the principal branch",
+    "solve for the derivative of g and simplify"
+   ],
+   "family": "inverse-function-derivative",
+   "id": "BC-QA-03010",
+   "invariant_structure": "The identity f(g(x)) = x is supplied, with f the tangent, sine or cosine and g its inverse composed with a linear expression, and the derivative of g is obtained by differentiating that identity rather than by quoting a formula. The trigonometric factor the chain rule produces is rewritten in x through the Pythagorean identity, with the sign fixed by the principal branch.",
+   "misconceptions": [],
+   "multi_skill_extensions": [],
+   "multipart_structure": "A single multiple choice or short answer question.",
+   "name": "Inverse trigonometric derivative derived from the identity f(g(x)) = x",
+   "notes": "Covers the derivation named in FUN-3.E.1 and FUN-3.E.2 (ced:77, ced:78), which BC-QA-03006 and BC-QA-03007 compute from formulas rather than derive. Minted 2026-09-28 in stage 15 (library gaps) on the operator's delegation.",
+   "official_examples": [],
+   "parameter_spec": {
+    "calculator_guard": "exact(key)",
+    "constraints": [
+     "slope != scale",
+     "gcd(slope, scale) == 1"
+    ],
+    "derived": [
+     {
+      "expression": "slope * slope_sign",
+      "name": "inner_rate"
+     }
+    ],
+    "dial_bindings": [
+     {
+      "difficulty_factor_id": "BC-DF-06",
+      "parameter": "inverse",
+      "settings": {
+       "arccos": "medium",
+       "arcsin": "medium",
+       "arctan": "low"
+      }
+     },
+     {
+      "difficulty_factor_id": "BC-DF-04",
+      "parameter": "inverse",
+      "settings": {
+       "arccos": "high",
+       "arcsin": "high",
+       "arctan": "high"
+      }
+     }
+    ],
+    "evidence_tag": "inferred",
+    "invariants": [
+     "exact(key)",
+     "inner_rate != 0"
+    ],
+    "notes": "g(x) is the inverse tangent, sine or cosine of u = (p x + q)/a, stated with the identity tan(g(x)) = u, sin(g(x)) = u or cos(g(x)) = u. Differentiating the identity by the chain rule and replacing sec^2 g, cos g or sin g through the Pythagorean identity on the principal branch gives p a/(a^2 + (p x + q)^2), p/sqrt(a^2 - (p x + q)^2) or -p/sqrt(a^2 - (p x + q)^2). The slope and the scale differ and are coprime, so dropping the inner factor p/a always changes the answer.",
+    "parameters": [
+     {
+      "domain": {
+       "values": [
+        "arctan",
+        "arcsin",
+        "arccos"
+       ]
+      },
+      "name": "inverse",
+      "role": "difficulty",
+      "type": "label"
+     },
+     {
+      "domain": {
+       "max": 5,
+       "min": 2,
+       "step": 1
+      },
+      "name": "slope",
+      "role": "safe",
+      "type": "integer"
+     },
+     {
+      "domain": {
+       "values": [
+        -1,
+        1
+       ]
+      },
+      "name": "slope_sign",
+      "role": "safe",
+      "type": "integer"
+     },
+     {
+      "domain": {
+       "max": 10,
+       "min": -10,
+       "step": 1
+      },
+      "name": "offset",
+      "role": "safe",
+      "type": "integer"
+     },
+     {
+      "domain": {
+       "max": 11,
+       "min": 2,
+       "step": 1
+      },
+      "name": "scale",
+      "role": "safe",
+      "type": "integer"
+     }
+    ],
+    "representation_bindings": [
+     {
+      "figure_kind": null,
+      "representation": "BC-REP-01",
+      "requires": [
+       "inverse",
+       "slope",
+       "slope_sign",
+       "offset",
+       "scale"
+      ]
+     }
+    ],
+    "spec_version": "1"
+   },
+   "point_types": [],
+   "prerequisites": [
+    "BC-PRQ-03003",
+    "BC-PRQ-03004",
+    "BC-PRQ-03001"
+   ],
+   "primary_unit": "BC-UNIT-03",
+   "prohibited_shortcuts": [],
+   "representations": [
+    "BC-REP-01"
+   ],
+   "safe_variables": [
+    "the slope and intercept of the inner linear expression",
+    "the divisor that scales it"
+   ],
+   "scope": "shared",
+   "scoring_pattern": "No scoring guideline in the corpus scores this derivation, so the archetype carries no point types; the answer is checked as an expression.",
+   "skills": [
+    "BC-SKL-03020",
+    "BC-SKL-03023",
+    "BC-SKL-03022",
+    "BC-SKL-03002"
+   ],
+   "sources": [
+    "ced:77",
+    "ced:78"
+   ],
+   "status": "active",
+   "typical_wording": [
+    "differentiate both sides of this identity with respect to x to find the derivative of g"
+   ],
+   "units": [
+    "BC-UNIT-03"
+   ],
+   "updated": "2026-09-28",
+   "variants": [],
+   "wrong_approaches": [
+    "quoting a remembered derivative formula without the inner factor"
+   ]
+  },
+  {
+   "anchor_quote": "A point on a function where the first derivative equals zero or fails to exist is a critical point of the function.",
+   "asked_to_produce": [
+    "the complete list of critical points"
+   ],
+   "calculator_status": "no_calculator",
+   "common_distractors": [
+    "only the zeros of the derivative reported (BC-ERR-05011)",
+    "the excluded input kept as a critical point (BC-ERR-05010)",
+    "the excluded input reported in place of the cusp, tangent or corner (BC-ERR-05010)"
+   ],
+   "common_givens": [
+    "a quotient with a fractional power or an absolute value in the numerator",
+    "the input excluded from the domain"
+   ],
+   "created": "2026-09-28",
+   "description": "A function whose derivative is zero at some inputs and fails to exist at others is given by a formula. The response must list every critical point: the zeros of the derivative, and the inputs in the domain where the derivative fails to exist because of a cusp, a vertical tangent or a corner, while excluding an input outside the domain.",
+   "difficulty_factors": [
+    "BC-DF-06",
+    "BC-DF-17"
+   ],
+   "difficulty_variables": [
+    "whether the failure is a cusp, a vertical tangent or a corner",
+    "whether the derivative has a zero at all"
+   ],
+   "doc_id": "ced",
+   "doc_page": 100,
+   "evidence_tag": "inferred",
+   "expected_solution_path": [
+    "differentiate the function",
+    "solve for the inputs where the derivative is zero",
+    "find the inputs where the derivative fails to exist and keep those at which the function is defined",
+    "report the complete list of critical points"
+   ],
+   "family": "critical-points",
+   "id": "BC-QA-05014",
+   "invariant_structure": "The function is defined at an input where its derivative fails to exist, so that input is a critical point, and it is undefined at another input where the derivative formula also breaks down, so that input is not. The zeros of the derivative, when there are any, come from setting its numerator to zero.",
+   "misconceptions": [],
+   "multi_skill_extensions": [],
+   "multipart_structure": "A single multiple choice or short answer question; the same step opens many free response parts on extrema.",
+   "name": "Every critical point found, including inputs where the derivative fails to exist",
+   "notes": "FUN-1.C.2 (ced:100) counts inputs where the derivative fails to exist; no active archetype isolated them before. Minted 2026-09-28 in stage 15 (library gaps) on the operator's delegation.",
+   "official_examples": [],
+   "parameter_spec": {
+    "calculator_guard": "True",
+    "constraints": [
+     "root != pole",
+     "shape != 'vertical' or (3 * root - pole) % 2 == 0"
+    ],
+    "derived": [
+     {
+      "expression": "3 * root - 2 * pole",
+      "name": "cusp_zero"
+     },
+     {
+      "expression": "(3 * root - pole) / 2",
+      "name": "vertical_zero"
+     }
+    ],
+    "dial_bindings": [
+     {
+      "difficulty_factor_id": "BC-DF-06",
+      "parameter": "shape",
+      "settings": {
+       "corner": "low",
+       "cusp": "medium",
+       "vertical": "medium"
+      }
+     },
+     {
+      "difficulty_factor_id": "BC-DF-17",
+      "parameter": "shape",
+      "settings": {
+       "corner": "low",
+       "cusp": "off",
+       "vertical": "off"
+      }
+     }
+    ],
+    "evidence_tag": "inferred",
+    "invariants": [
+     "cusp_zero != root and cusp_zero != pole",
+     "vertical_zero != root and vertical_zero != pole"
+    ],
+    "notes": "f(x) = k (x - r)^(2/3)/(x - d), k (x - r)^(1/3)/(x - d) or k |x - r|/(x - d), defined for x != d. The derivative is zero at 3r - 2d, at (3r - d)/2, or nowhere; it fails to exist at x = r (cusp, vertical tangent or corner) where f is defined, and at x = d, which is outside the domain and so is not a critical point.",
+    "parameters": [
+     {
+      "domain": {
+       "values": [
+        "cusp",
+        "vertical",
+        "corner"
+       ]
+      },
+      "name": "shape",
+      "role": "difficulty",
+      "type": "label"
+     },
+     {
+      "domain": {
+       "max": 6,
+       "min": -6,
+       "step": 1
+      },
+      "name": "root",
+      "role": "safe",
+      "type": "integer"
+     },
+     {
+      "domain": {
+       "max": 6,
+       "min": -6,
+       "step": 1
+      },
+      "name": "pole",
+      "role": "safe",
+      "type": "integer"
+     },
+     {
+      "domain": {
+       "exclude": [
+        0
+       ],
+       "max": 5,
+       "min": -5,
+       "step": 1
+      },
+      "name": "multiplier",
+      "role": "safe",
+      "type": "integer"
+     }
+    ],
+    "representation_bindings": [
+     {
+      "figure_kind": null,
+      "representation": "BC-REP-01",
+      "requires": [
+       "shape",
+       "root",
+       "pole",
+       "multiplier"
+      ]
+     }
+    ],
+    "spec_version": "1"
+   },
+   "point_types": [
+    "BC-PT-99013"
+   ],
+   "prerequisites": [
+    "BC-PRQ-05001",
+    "BC-PRQ-05003",
+    "BC-PRQ-02001"
+   ],
+   "primary_unit": "BC-UNIT-05",
+   "prohibited_shortcuts": [],
+   "representations": [
+    "BC-REP-01"
+   ],
+   "safe_variables": [
+    "the location of the cusp, tangent or corner",
+    "the excluded input",
+    "the constant multiplier"
+   ],
+   "scope": "shared",
+   "scoring_pattern": "Where a free response part asks for extrema, one point is earned for considering the derivative equal to zero (sg-23:15); this archetype isolates the fuller list the definition requires.",
+   "skills": [
+    "BC-SKL-05011",
+    "BC-SKL-05010",
+    "BC-SKL-02022",
+    "BC-SKL-02023"
+   ],
+   "sources": [
+    "ced:100",
+    "sg-23:15"
+   ],
+   "status": "active",
+   "typical_wording": [
+    "find all critical points of f"
+   ],
+   "units": [
+    "BC-UNIT-05",
+    "BC-UNIT-02"
+   ],
+   "updated": "2026-09-28",
+   "variants": [],
+   "wrong_approaches": [
+    "setting only the derivative equal to zero"
+   ]
+  },
+  {
+   "anchor_quote": "Definite integrals can be approximated using a left Riemann sum, a right Riemann sum, a midpoint Riemann sum, or a trapezoidal sum",
+   "asked_to_produce": [
+    "the value of the named sum"
+   ],
+   "calculator_status": "no_calculator",
+   "common_distractors": [
+    "the opposite endpoint used (BC-ERR-06002)",
+    "the sample values added without the width (BC-ERR-06003)",
+    "a different named sum computed (BC-ERR-99028)",
+    "the factor one half applied to one trapezoid only (BC-ERR-06004)"
+   ],
+   "common_givens": [
+    "a formula or a graph of line segments",
+    "the interval of integration",
+    "the number of subintervals"
+   ],
+   "created": "2026-09-28",
+   "description": "A function is given by a formula or by a graph made of line segments, and a definite integral is to be approximated with a named left, right, midpoint or trapezoidal sum over a stated number of subintervals of equal width. The response must find the width, choose the sample points the named sum uses, and add the products.",
+   "difficulty_factors": [
+    "BC-DF-03",
+    "BC-DF-06"
+   ],
+   "difficulty_variables": [
+    "formula or graph",
+    "which of the four sums is named"
+   ],
+   "doc_id": "ced",
+   "doc_page": 119,
+   "evidence_tag": "inferred",
+   "expected_solution_path": [
+    "compute the common width of the subintervals",
+    "list the sample points the named sum uses",
+    "write the sum of width times function value, or the trapezoidal form",
+    "evaluate the sum"
+   ],
+   "family": "integral-approximation",
+   "id": "BC-QA-06017",
+   "invariant_structure": "The subintervals have equal width, computed from the interval and the number of subintervals, and the sample points are those the named sum prescribes. The function is read from its formula or from the vertices of its graph, never from a table.",
+   "misconceptions": [
+    "BC-MIS-06001",
+    "BC-MIS-06002",
+    "BC-MIS-06004"
+   ],
+   "multi_skill_extensions": [],
+   "multipart_structure": "A single multiple choice or short answer question, or one part of a free response question worth two points.",
+   "name": "Riemann or trapezoidal sum with equal subintervals for a function given by a formula or a graph",
+   "notes": "LIM-5.A.1 and LIM-5.A.2 (ced:119) name functions given graphically and analytically; BC-QA-06001 and BC-QA-06002 cover tables only. Minted 2026-09-28 in stage 15 (library gaps) on the operator's delegation.",
+   "official_examples": [],
+   "parameter_spec": {
+    "calculator_guard": "exact(key)",
+    "constraints": [
+     "source == 'formula' or distinct([graph_left, graph_right, graph_mid, graph_trap, graph_left / 2, graph_right / 2, graph_mid / 2, graph_trap / 2, graph_bad_trap])",
+     "source == 'graph' or distinct([formula_left, formula_right, formula_mid, formula_trap, formula_left / width, formula_right / width, formula_mid / width, formula_trap / width, formula_bad_trap])"
+    ],
+    "derived": [
+     {
+      "expression": "2 * (heights[0] + heights[2] + heights[4] + heights[6])",
+      "name": "graph_left"
+     },
+     {
+      "expression": "2 * (heights[2] + heights[4] + heights[6] + heights[8])",
+      "name": "graph_right"
+     },
+     {
+      "expression": "2 * (heights[1] + heights[3] + heights[5] + heights[7])",
+      "name": "graph_mid"
+     },
+     {
+      "expression": "(graph_left + graph_right) / 2",
+      "name": "graph_trap"
+     },
+     {
+      "expression": "graph_trap + (heights[2] + 2 * heights[4] + 2 * heights[6] + heights[8])",
+      "name": "graph_bad_trap"
+     },
+     {
+      "expression": "leading * start**2 + constant",
+      "name": "value_0"
+     },
+     {
+      "expression": "leading * (start + width)**2 + constant",
+      "name": "value_1"
+     },
+     {
+      "expression": "leading * (start + 2 * width)**2 + constant",
+      "name": "value_2"
+     },
+     {
+      "expression": "leading * (start + 3 * width)**2 + constant",
+      "name": "value_3"
+     },
+     {
+      "expression": "leading * (start + 4 * width)**2 + constant",
+      "name": "value_4"
+     },
+     {
+      "expression": "leading * (start + width / 2)**2 + constant",
+      "name": "middle_0"
+     },
+     {
+      "expression": "leading * (start + width + width / 2)**2 + constant",
+      "name": "middle_1"
+     },
+     {
+      "expression": "leading * (start + 2 * width + width / 2)**2 + constant",
+      "name": "middle_2"
+     },
+     {
+      "expression": "leading * (start + 3 * width + width / 2)**2 + constant",
+      "name": "middle_3"
+     },
+     {
+      "expression": "width * sum([value_0, value_1, value_2, value_3][:pieces])",
+      "name": "formula_left"
+     },
+     {
+      "expression": "width * sum([value_1, value_2, value_3, value_4][:pieces])",
+      "name": "formula_right"
+     },
+     {
+      "expression": "width * sum([middle_0, middle_1, middle_2, middle_3][:pieces])",
+      "name": "formula_mid"
+     },
+     {
+      "expression": "(formula_left + formula_right) / 2",
+      "name": "formula_trap"
+     },
+     {
+      "expression": "2 * formula_trap - width * (value_0 + value_1) / 2",
+      "name": "formula_bad_trap"
+     }
+    ],
+    "dial_bindings": [
+     {
+      "difficulty_factor_id": "BC-DF-03",
+      "parameter": "source",
+      "settings": {
+       "formula": "off",
+       "graph": "low"
+      }
+     },
+     {
+      "difficulty_factor_id": "BC-DF-06",
+      "parameter": "method",
+      "settings": {
+       "left": "off",
+       "midpoint": "low",
+       "right": "off",
+       "trapezoid": "low"
+      }
+     }
+    ],
+    "evidence_tag": "inferred",
+    "invariants": [
+     "exact(key)",
+     "key != 0"
+    ],
+    "notes": "Formula: f(x) = m x^2 + c on [a, a + n w] with n equal subintervals of width w, never 1, and a >= 0 so f is monotone there. Graph: line segments through (k, h_k) for k = 0 to 8, four subintervals of width 2, so every sample point is a vertex. The sum of the sample values alone, the opposite endpoint, the wrong sum type, and a trapezoidal sum with only the first trapezoid halved are the distractors; the constraints keep all of them apart from the key.",
+    "parameters": [
+     {
+      "domain": {
+       "values": [
+        "formula",
+        "graph"
+       ]
+      },
+      "name": "source",
+      "role": "difficulty",
+      "type": "label"
+     },
+     {
+      "domain": {
+       "values": [
+        "left",
+        "right",
+        "midpoint",
+        "trapezoid"
+       ]
+      },
+      "name": "method",
+      "role": "difficulty",
+      "type": "label"
+     },
+     {
+      "count": 9,
+      "domain": {
+       "max": 6,
+       "min": -2,
+       "step": 1
+      },
+      "name": "heights",
+      "role": "safe",
+      "type": "integer"
+     },
+     {
+      "domain": {
+       "exclude": [
+        0
+       ],
+       "max": 3,
+       "min": -3,
+       "step": 1
+      },
+      "name": "leading",
+      "role": "safe",
+      "type": "integer"
+     },
+     {
+      "domain": {
+       "max": 9,
+       "min": 0,
+       "step": 1
+      },
+      "name": "constant",
+      "role": "safe",
+      "type": "integer"
+     },
+     {
+      "domain": {
+       "max": 4,
+       "min": 0,
+       "step": 1
+      },
+      "name": "start",
+      "role": "safe",
+      "type": "integer"
+     },
+     {
+      "domain": {
+       "values": [
+        2,
+        3,
+        4
+       ]
+      },
+      "name": "pieces",
+      "role": "safe",
+      "type": "integer"
+     },
+     {
+      "domain": {
+       "values": [
+        "1/2",
+        2,
+        3
+       ]
+      },
+      "name": "width",
+      "role": "safe",
+      "type": "rational"
+     }
+    ],
+    "representation_bindings": [
+     {
+      "figure_kind": null,
+      "representation": "BC-REP-01",
+      "requires": [
+       "method",
+       "leading",
+       "constant",
+       "start",
+       "pieces",
+       "width"
+      ]
+     },
+     {
+      "figure_kind": "function_graph",
+      "representation": "BC-REP-02",
+      "requires": [
+       "method",
+       "heights"
+      ]
+     }
+    ],
+    "spec_version": "1"
+   },
+   "point_types": [
+    "BC-PT-99018",
+    "BC-PT-99019"
+   ],
+   "prerequisites": [
+    "BC-PRQ-06005",
+    "BC-PRQ-06012",
+    "BC-PRQ-06007"
+   ],
+   "primary_unit": "BC-UNIT-06",
+   "prohibited_shortcuts": [],
+   "representations": [
+    "BC-REP-01",
+    "BC-REP-02"
+   ],
+   "safe_variables": [
+    "the coefficients of the formula",
+    "the heights of the graph",
+    "the left endpoint of the interval",
+    "the number of subintervals"
+   ],
+   "scope": "shared",
+   "scoring_pattern": "Where a free response part asks for the sum, one point is earned for the form of the sum and one for its value (sg-23:2, sg-25:13).",
+   "skills": [
+    "BC-SKL-06009",
+    "BC-SKL-06007",
+    "BC-SKL-06005",
+    "BC-SKL-06006",
+    "BC-SKL-06008"
+   ],
+   "sources": [
+    "ced:119",
+    "sg-23:2",
+    "sg-25:13"
+   ],
+   "status": "active",
+   "typical_wording": [
+    "use a midpoint Riemann sum with four subintervals of equal width to approximate the integral"
+   ],
+   "units": [
+    "BC-UNIT-06"
+   ],
+   "updated": "2026-09-28",
+   "variants": [],
+   "wrong_approaches": [
+    "using the table-reading habit of unequal widths on a uniform partition"
+   ]
+  },
+  {
+   "anchor_quote": "Techniques for finding antiderivatives include rearrangements into equivalent forms, such as long division and completing the square.",
+   "asked_to_produce": [
+    "an antiderivative with the constant of integration"
+   ],
+   "calculator_status": "no_calculator",
+   "common_distractors": [
+    "the scaling factor from the differential dropped (BC-ERR-06019)",
+    "the other inverse trigonometric pattern used (BC-ERR-03017)",
+    "a logarithm or power produced by a substitution whose inner derivative is absent (BC-ERR-06020)"
+   ],
+   "common_givens": [
+    "a constant over a quadratic or over the square root of a quadratic"
+   ],
+   "created": "2026-09-28",
+   "description": "An integrand of the form a constant over a sum of squares, or over the square root of a difference of squares, is given either directly or with the quadratic expanded. The response must complete the square where needed, recognise the inverse tangent or inverse sine pattern, and antidifferentiate with the scaling factor the substitution introduces.",
+   "difficulty_factors": [
+    "BC-DF-06",
+    "BC-DF-15"
+   ],
+   "difficulty_variables": [
+    "direct form or expanded quadratic",
+    "inverse tangent or inverse sine"
+   ],
+   "doc_id": "ced",
+   "doc_page": 127,
+   "evidence_tag": "inferred",
+   "expected_solution_path": [
+    "complete the square in the quadratic when it is expanded",
+    "recognise the inverse tangent or inverse sine derivative pattern",
+    "substitute and carry the scaling constant",
+    "write the antiderivative with the constant of integration"
+   ],
+   "family": "antidifferentiation-technique",
+   "id": "BC-QA-06018",
+   "invariant_structure": "The integrand is a constant over a quadratic, or over the square root of a quadratic, that becomes a sum or difference of squares, so the antiderivative is an inverse tangent or inverse sine. The scaling constant from the substitution u equal to the shifted input over the scale is carried through.",
+   "misconceptions": [
+    "BC-MIS-06017",
+    "BC-MIS-06022"
+   ],
+   "multi_skill_extensions": [],
+   "multipart_structure": "A single multiple choice or short answer question.",
+   "name": "Antiderivative matched to an inverse trigonometric form, directly or after completing the square",
+   "notes": "FUN-6.D.3 (ced:127) names completing the square, and FUN-6.C.2 (ced:125) ties antiderivatives to derivative rules; the inverse trigonometric forms had no archetype. Minted 2026-09-28 in stage 15 (library gaps) on the operator's delegation.",
+   "official_examples": [],
+   "parameter_spec": {
+    "calculator_guard": "exact(key)",
+    "constraints": [
+     "numerator != scale"
+    ],
+    "derived": [],
+    "dial_bindings": [
+     {
+      "difficulty_factor_id": "BC-DF-06",
+      "parameter": "form",
+      "settings": {
+       "direct": "low",
+       "square": "medium"
+      }
+     },
+     {
+      "difficulty_factor_id": "BC-DF-15",
+      "parameter": "kind",
+      "settings": {
+       "arcsin": "low",
+       "arctan": "low"
+      }
+     }
+    ],
+    "evidence_tag": "inferred",
+    "invariants": [
+     "exact(key)",
+     "numerator != scale"
+    ],
+    "notes": "Integrands k/(a^2 + u^2) and k/sqrt(a^2 - u^2) with u = x, or u = x + h hidden in an expanded quadratic that must be completed to a square. The antiderivatives are (k/a) arctan(u/a) and k arcsin(u/a). The numerator is never equal to the scale, so dropping or inventing the factor 1/a always changes the answer.",
+    "parameters": [
+     {
+      "domain": {
+       "values": [
+        "arctan",
+        "arcsin"
+       ]
+      },
+      "name": "kind",
+      "role": "difficulty",
+      "type": "label"
+     },
+     {
+      "domain": {
+       "values": [
+        "direct",
+        "square"
+       ]
+      },
+      "name": "form",
+      "role": "difficulty",
+      "type": "label"
+     },
+     {
+      "domain": {
+       "max": 9,
+       "min": 2,
+       "step": 1
+      },
+      "name": "scale",
+      "role": "safe",
+      "type": "integer"
+     },
+     {
+      "domain": {
+       "max": 12,
+       "min": 2,
+       "step": 1
+      },
+      "name": "numerator",
+      "role": "safe",
+      "type": "integer"
+     },
+     {
+      "domain": {
+       "exclude": [
+        0
+       ],
+       "max": 5,
+       "min": -5,
+       "step": 1
+      },
+      "name": "shift",
+      "role": "safe",
+      "type": "integer"
+     }
+    ],
+    "representation_bindings": [
+     {
+      "figure_kind": null,
+      "representation": "BC-REP-01",
+      "requires": [
+       "kind",
+       "form",
+       "scale",
+       "numerator",
+       "shift"
+      ]
+     }
+    ],
+    "spec_version": "1"
+   },
+   "point_types": [],
+   "prerequisites": [
+    "BC-PRQ-06004",
+    "BC-PRQ-06010",
+    "BC-PRQ-06001",
+    "BC-PRQ-03004"
+   ],
+   "primary_unit": "BC-UNIT-06",
+   "prohibited_shortcuts": [],
+   "representations": [
+    "BC-REP-01"
+   ],
+   "safe_variables": [
+    "the numerator constant",
+    "the scale",
+    "the shift"
+   ],
+   "scope": "shared",
+   "scoring_pattern": "No scoring guideline in the corpus scores this form, so the archetype carries no point types; the answer is checked as an antiderivative up to a constant.",
+   "skills": [
+    "BC-SKL-06043",
+    "BC-SKL-06054",
+    "BC-SKL-06047",
+    "BC-SKL-06048",
+    "BC-SKL-03021"
+   ],
+   "sources": [
+    "ced:125",
+    "ced:127"
+   ],
+   "status": "active",
+   "typical_wording": [
+    "find the indefinite integral"
+   ],
+   "units": [
+    "BC-UNIT-06",
+    "BC-UNIT-03"
+   ],
+   "updated": "2026-09-28",
+   "variants": [],
+   "wrong_approaches": [
+    "forcing a logarithm by treating the quadratic as u without its derivative present"
+   ]
+  },
+  {
+   "anchor_quote": "Differentiation rules provide the foundation for finding antiderivatives.",
+   "asked_to_produce": [
+    "an antiderivative with the constant of integration"
+   ],
+   "calculator_status": "no_calculator",
+   "common_distractors": [
+    "the factors, or the numerator and denominator, antidifferentiated separately (BC-ERR-06022)",
+    "exponents raised with no division by the new exponent (BC-ERR-06033)",
+    "exponents raised and divided by the old exponent (BC-ERR-06033)"
+   ],
+   "common_givens": [
+    "a product of two binomials",
+    "or a fraction whose numerator is a sum"
+   ],
+   "created": "2026-09-28",
+   "description": "A product of binomials or a fraction whose numerator is a sum is to be antidifferentiated, and the options are candidate antiderivatives. The response must rewrite the integrand as a sum of powers, apply the power rule to each term, and confirm the candidate by checking that its derivative returns the integrand.",
+   "difficulty_factors": [
+    "BC-DF-06",
+    "BC-DF-13"
+   ],
+   "difficulty_variables": [
+    "product, fraction over a power of x, or fraction over the square root of x"
+   ],
+   "doc_id": "ced",
+   "doc_page": 125,
+   "evidence_tag": "inferred",
+   "expected_solution_path": [
+    "expand the product or split the fraction into a sum of powers",
+    "apply the power rule for antiderivatives term by term",
+    "confirm the result by differentiating it back to the integrand"
+   ],
+   "family": "antidifferentiation-technique",
+   "id": "BC-QA-06019",
+   "invariant_structure": "The integrand is not in a form any rule applies to directly; expanding the product or dividing each term of the numerator by the denominator turns it into a sum of powers, including negative or fractional powers, none of them the power minus one.",
+   "misconceptions": [
+    "BC-MIS-06019",
+    "BC-MIS-02009"
+   ],
+   "multi_skill_extensions": [],
+   "multipart_structure": "A single multiple choice or short answer question.",
+   "name": "Antiderivative found after splitting a fraction or expanding a product, and confirmed by differentiating",
+   "notes": "FUN-6.C.1 and FUN-6.C.2 (ced:125) define an antiderivative by F' = f, and FUN-6.D.3 (ced:127) names rearrangement into equivalent forms. Minted 2026-09-28 in stage 15 (library gaps) on the operator's delegation.",
+   "official_examples": [],
+   "parameter_spec": {
+    "calculator_guard": "exact(key)",
+    "constraints": [
+     "second + coefficient * first != 0"
+    ],
+    "derived": [
+     {
+      "expression": "second + coefficient * first",
+      "name": "middle"
+     }
+    ],
+    "dial_bindings": [
+     {
+      "difficulty_factor_id": "BC-DF-06",
+      "parameter": "structure",
+      "settings": {
+       "fraction": "medium",
+       "product": "low",
+       "root": "medium"
+      }
+     },
+     {
+      "difficulty_factor_id": "BC-DF-13",
+      "parameter": "structure",
+      "settings": {
+       "fraction": "low",
+       "product": "low",
+       "root": "low"
+      }
+     }
+    ],
+    "evidence_tag": "inferred",
+    "invariants": [
+     "exact(key)",
+     "middle != 0"
+    ],
+    "notes": "Product (x + p)(c x + q), expanded to c x^2 + (q + c p) x + p q with the middle coefficient kept nonzero; fraction (c x^(k+1) + p)/x^k = c x + p x^(-k) with k = 2 or 3, so no logarithm arises; root (c x + p)/sqrt(x) = c x^(1/2) + p x^(-1/2). The options are candidate antiderivatives and the check is that the derivative of the chosen one returns the integrand.",
+    "parameters": [
+     {
+      "domain": {
+       "values": [
+        "product",
+        "fraction",
+        "root"
+       ]
+      },
+      "name": "structure",
+      "role": "difficulty",
+      "type": "label"
+     },
+     {
+      "domain": {
+       "max": 4,
+       "min": 1,
+       "step": 1
+      },
+      "name": "coefficient",
+      "role": "safe",
+      "type": "integer"
+     },
+     {
+      "domain": {
+       "exclude": [
+        0
+       ],
+       "max": 6,
+       "min": -6,
+       "step": 1
+      },
+      "name": "first",
+      "role": "safe",
+      "type": "integer"
+     },
+     {
+      "domain": {
+       "exclude": [
+        0
+       ],
+       "max": 6,
+       "min": -6,
+       "step": 1
+      },
+      "name": "second",
+      "role": "safe",
+      "type": "integer"
+     },
+     {
+      "domain": {
+       "values": [
+        2,
+        3
+       ]
+      },
+      "name": "power",
+      "role": "safe",
+      "type": "integer"
+     }
+    ],
+    "representation_bindings": [
+     {
+      "figure_kind": null,
+      "representation": "BC-REP-01",
+      "requires": [
+       "structure",
+       "coefficient",
+       "first",
+       "second",
+       "power"
+      ]
+     }
+    ],
+    "spec_version": "1"
+   },
+   "point_types": [],
+   "prerequisites": [
+    "BC-PRQ-06001",
+    "BC-PRQ-06002"
+   ],
+   "primary_unit": "BC-UNIT-06",
+   "prohibited_shortcuts": [],
+   "representations": [
+    "BC-REP-01"
+   ],
+   "safe_variables": [
+    "the constants in the factors or in the numerator",
+    "the power of x in the denominator"
+   ],
+   "scope": "shared",
+   "scoring_pattern": "No scoring guideline in the corpus scores this form, so the archetype carries no point types; the answer is checked as an antiderivative up to a constant.",
+   "skills": [
+    "BC-SKL-06045",
+    "BC-SKL-06055",
+    "BC-SKL-06040"
+   ],
+   "sources": [
+    "ced:125",
+    "ced:127"
+   ],
+   "status": "active",
+   "typical_wording": [
+    "find the indefinite integral"
+   ],
+   "units": [
+    "BC-UNIT-06"
+   ],
+   "updated": "2026-09-28",
+   "variants": [],
+   "wrong_approaches": [
+    "antidifferentiating the factors of a product separately"
+   ]
+  },
+  {
+   "anchor_quote": "Some differential equations can be solved by separation of variables.",
+   "asked_to_produce": [
+    "the separated equation, or the statement that it is not separable"
+   ],
+   "calculator_status": "no_calculator",
+   "common_distractors": [
+    "the sum divided by y term by term as though it factored (BC-ERR-07028)",
+    "a false factorisation of a sum that does not factor (BC-ERR-07028)",
+    "the y factor multiplied onto the dy side instead of divided (BC-ERR-99014)",
+    "dx moved across with y left beside it (BC-ERR-07024)"
+   ],
+   "common_givens": [
+    "a differential equation with an expanded right side"
+   ],
+   "created": "2026-09-28",
+   "description": "A differential equation dy/dx equal to an expanded expression in x and y is given. The response must decide whether the right side factors into a function of x times a function of y, and if it does, write the equation with the y factors beside dy and the x factors beside dx; if it does not, say so.",
+   "difficulty_factors": [
+    "BC-DF-11",
+    "BC-DF-15"
+   ],
+   "difficulty_variables": [
+    "whether the equation is separable"
+   ],
+   "doc_id": "ced",
+   "doc_page": 142,
+   "evidence_tag": "inferred",
+   "expected_solution_path": [
+    "look for a common factor that makes the right side a function of x times a function of y",
+    "if one exists, divide by the y factor and multiply by dx",
+    "if none exists, conclude that the equation is not separable"
+   ],
+   "family": "separation-of-variables",
+   "id": "BC-QA-07012",
+   "invariant_structure": "The right side is printed expanded, as a sum of terms, so whether it factors into a function of x times a function of y must be decided rather than read off. When it factors, the separated form keeps every y factor with dy and every x factor with dx; when a term carries no common factor, the equation is not separable.",
+   "misconceptions": [],
+   "multi_skill_extensions": [],
+   "multipart_structure": "A single multiple choice or short answer question; the separation is the first step of every free response part on separable equations.",
+   "name": "Differential equation judged separable or not, and a separable one separated",
+   "notes": "FUN-7.D.1 (ced:142) says only some equations are separable; BC-QA-07003 always supplies a separable one. Minted 2026-09-28 in stage 15 (library gaps) on the operator's delegation.",
+   "official_examples": [],
+   "parameter_spec": {
+    "calculator_guard": "True",
+    "constraints": [],
+    "derived": [],
+    "dial_bindings": [
+     {
+      "difficulty_factor_id": "BC-DF-15",
+      "parameter": "separable",
+      "settings": {
+       "no": "low",
+       "yes": "low"
+      }
+     },
+     {
+      "difficulty_factor_id": "BC-DF-11",
+      "parameter": "separable",
+      "settings": {
+       "no": "off",
+       "yes": "low"
+      }
+     }
+    ],
+    "evidence_tag": "inferred",
+    "invariants": [
+     "constant != 0",
+     "coefficient != 0"
+    ],
+    "notes": "Separable: dy/dx = a g(x) y + a c g(x), printed expanded, which factors as a g(x)(y + c). Not separable: dy/dx = a g(x) y + c with c nonzero and g not constant, since f f_xy = f_x f_y fails for f = a g y + c. The separated form keeps every y factor with dy and every x factor with dx.",
+    "parameters": [
+     {
+      "domain": {
+       "values": [
+        "yes",
+        "no"
+       ]
+      },
+      "name": "separable",
+      "role": "difficulty",
+      "type": "label"
+     },
+     {
+      "domain": {
+       "values": [
+        "linear",
+        "square",
+        "cube",
+        "exponential",
+        "cosine",
+        "sine"
+       ]
+      },
+      "name": "factor",
+      "role": "safe",
+      "type": "label"
+     },
+     {
+      "domain": {
+       "exclude": [
+        0
+       ],
+       "max": 6,
+       "min": -6,
+       "step": 1
+      },
+      "name": "coefficient",
+      "role": "safe",
+      "type": "integer"
+     },
+     {
+      "domain": {
+       "exclude": [
+        0
+       ],
+       "max": 9,
+       "min": -9,
+       "step": 1
+      },
+      "name": "constant",
+      "role": "safe",
+      "type": "integer"
+     }
+    ],
+    "representation_bindings": [
+     {
+      "figure_kind": null,
+      "representation": "BC-REP-06",
+      "requires": [
+       "separable",
+       "factor",
+       "coefficient",
+       "constant"
+      ]
+     }
+    ],
+    "spec_version": "1"
+   },
+   "point_types": [
+    "BC-PT-99028"
+   ],
+   "prerequisites": [
+    "BC-PRQ-07002"
+   ],
+   "primary_unit": "BC-UNIT-07",
+   "prohibited_shortcuts": [],
+   "representations": [
+    "BC-REP-06"
+   ],
+   "safe_variables": [
+    "the function of x",
+    "the coefficient",
+    "the constant"
+   ],
+   "scope": "shared",
+   "scoring_pattern": "Where a free response part solves a separable equation, the first point is for the separation, and a response with no separation earns none of the part's points (sg-23:12).",
+   "skills": [
+    "BC-SKL-07028",
+    "BC-SKL-07024"
+   ],
+   "sources": [
+    "ced:142",
+    "sg-23:12"
+   ],
+   "status": "active",
+   "typical_wording": [
+    "decide whether the differential equation can be solved by separation of variables, and if it can, separate the variables"
+   ],
+   "units": [
+    "BC-UNIT-07"
+   ],
+   "updated": "2026-09-28",
+   "variants": [],
+   "wrong_approaches": [
+    "dividing each term by y separately"
+   ]
+  },
+  {
+   "anchor_quote": "Derivatives allow us to determine rates of change at an instant by applying limits to knowledge about rates of change over intervals.",
+   "asked_to_produce": [
+    "the rate at the instant"
+   ],
+   "calculator_status": "no_calculator",
+   "common_distractors": [
+    "the average rate from time zero to the instant (BC-ERR-02033)",
+    "the value of the quantity at the instant (BC-ERR-02027)",
+    "the change from time zero with no division (BC-ERR-02001)"
+   ],
+   "common_givens": [
+    "a polynomial model in context",
+    "a named instant"
+   ],
+   "created": "2026-09-28",
+   "description": "A quantity in context is given as a polynomial in time and the rate at which it changes at one instant is asked for, with no mention of a derivative or a limit. The response has to build the rate itself: average rates over shrinking intervals that start at the instant, and the value they approach. It is the productive-failure opener for BC-CON-02002, so the method is not expected yet and the canonical solution is shown afterwards.",
+   "difficulty_factors": [
+    "BC-DF-06",
+    "BC-DF-15"
+   ],
+   "difficulty_variables": [
+    "quadratic or cubic model"
+   ],
+   "doc_id": "ced",
+   "doc_page": 60,
+   "evidence_tag": "inferred",
+   "expected_solution_path": [
+    "write the average rate over a short interval starting at the instant",
+    "simplify the difference quotient",
+    "find the value it approaches as the interval shrinks to zero length"
+   ],
+   "family": "derivative-definition-limit",
+   "id": "BC-QA-02014",
+   "invariant_structure": "The stem asks for a rate at an instant and names no method, no derivative and no limit. The only tool the student already has is the average rate over an interval, so the task is generated from it: shrink the interval to the instant and find the value the averages approach.",
+   "misconceptions": [
+    "BC-MIS-02001",
+    "BC-MIS-02014"
+   ],
+   "multi_skill_extensions": [],
+   "multipart_structure": "A single short answer or multiple choice question, served as an opener before the derivative is taught.",
+   "name": "Rate at an instant found before the derivative is defined, as a limit of average rates",
+   "notes": "Generation archetype for the productive-failure opener of BC-CON-02002 (01 Productive-failure openers; stage 14 had no archetype for this target). CHA-2.A and CHA-2.B (ced:60, ced:61). Minted 2026-09-28 in stage 15 (library gaps) on the operator's delegation.",
+   "official_examples": [],
+   "parameter_spec": {
+    "calculator_guard": "exact(key)",
+    "constraints": [
+     "rate != 0",
+     "distinct([rate, average, value, change])"
+    ],
+    "derived": [
+     {
+      "expression": "degree * leading * instant**(degree - 1) + linear",
+      "name": "rate"
+     },
+     {
+      "expression": "leading * instant**(degree - 1) + linear",
+      "name": "average"
+     },
+     {
+      "expression": "leading * instant**degree + linear * instant + constant",
+      "name": "value"
+     },
+     {
+      "expression": "leading * instant**degree + linear * instant",
+      "name": "change"
+     }
+    ],
+    "dial_bindings": [
+     {
+      "difficulty_factor_id": "BC-DF-06",
+      "parameter": "degree",
+      "settings": {
+       "2": "low",
+       "3": "medium"
+      }
+     },
+     {
+      "difficulty_factor_id": "BC-DF-15",
+      "parameter": "degree",
+      "settings": {
+       "2": "low",
+       "3": "low"
+      }
+     }
+    ],
+    "evidence_tag": "inferred",
+    "invariants": [
+     "exact(key)",
+     "key == rate"
+    ],
+    "notes": "A quantity f(t) = a t^d + b t + c with d = 2 or 3 is given in context and the rate at one instant t0 is asked for, with no mention of a derivative or a limit: the productive-failure opener for BC-CON-02002. The canonical answer is the limit of the average rate over [t0, t0 + h] as h approaches 0, d a t0^(d - 1) + b. The distractors are the average rate over [0, t0], the value f(t0), and the change f(t0) - f(0); the constraints keep all four apart and the rate nonzero.",
+    "parameters": [
+     {
+      "domain": {
+       "values": [
+        2,
+        3
+       ]
+      },
+      "name": "degree",
+      "role": "difficulty",
+      "type": "integer"
+     },
+     {
+      "domain": {
+       "exclude": [
+        0
+       ],
+       "max": 5,
+       "min": -5,
+       "step": 1
+      },
+      "name": "leading",
+      "role": "safe",
+      "type": "integer"
+     },
+     {
+      "domain": {
+       "max": 9,
+       "min": -9,
+       "step": 1
+      },
+      "name": "linear",
+      "role": "safe",
+      "type": "integer"
+     },
+     {
+      "domain": {
+       "max": 20,
+       "min": 0,
+       "step": 1
+      },
+      "name": "constant",
+      "role": "safe",
+      "type": "integer"
+     },
+     {
+      "domain": {
+       "max": 5,
+       "min": 2,
+       "step": 1
+      },
+      "name": "instant",
+      "role": "safe",
+      "type": "integer"
+     },
+     {
+      "domain": {
+       "values": [
+        "height",
+        "position",
+        "volume"
+       ]
+      },
+      "name": "context",
+      "role": "safe",
+      "type": "label"
+     }
+    ],
+    "representation_bindings": [
+     {
+      "figure_kind": null,
+      "representation": "BC-REP-05",
+      "requires": [
+       "degree",
+       "leading",
+       "linear",
+       "constant",
+       "instant",
+       "context"
+      ]
+     }
+    ],
+    "spec_version": "1"
+   },
+   "point_types": [],
+   "prerequisites": [
+    "BC-PRQ-02005",
+    "BC-PRQ-02003"
+   ],
+   "primary_unit": "BC-UNIT-02",
+   "prohibited_shortcuts": [],
+   "representations": [
+    "BC-REP-05"
+   ],
+   "safe_variables": [
+    "the context",
+    "the coefficients",
+    "the instant"
+   ],
+   "scope": "shared",
+   "scoring_pattern": "No scoring guideline scores an opener; the answer is checked as a value.",
+   "skills": [
+    "BC-SKL-02005",
+    "BC-SKL-02004",
+    "BC-SKL-02006",
+    "BC-SKL-02012",
+    "BC-SKL-02002"
+   ],
+   "sources": [
+    "ced:60",
+    "ced:61"
+   ],
+   "status": "active",
+   "typical_wording": [
+    "at what rate is the quantity changing at the instant t equal to a named time"
+   ],
+   "units": [
+    "BC-UNIT-02"
+   ],
+   "updated": "2026-09-28",
+   "variants": [],
+   "wrong_approaches": [
+    "averaging over the whole interval from the start"
+   ]
+  },
+  {
+   "anchor_quote": "The concept of calculating areas in rectangular coordinates can be extended to polar coordinates.",
+   "asked_to_produce": [
+    "the exact area"
+   ],
+   "calculator_status": "no_calculator",
+   "common_distractors": [
+    "the factor one half omitted (BC-ERR-09035)",
+    "r integrated instead of its square (BC-ERR-09036)",
+    "the wrong angles swept (BC-ERR-09037)"
+   ],
+   "common_givens": [
+    "a polar equation",
+    "the rays that bound the region, when it is not the whole enclosed region"
+   ],
+   "created": "2026-09-28",
+   "description": "A limacon-shaped polar curve is given, and the area of the region it encloses, or of the part swept between two rays, is asked for with no method named. The response has to build the area from thin sectors of radius r, each of area one half r squared times its angle, and integrate over the angles swept. It is the productive-failure opener for BC-CON-09015.",
+   "difficulty_factors": [
+    "BC-DF-06",
+    "BC-DF-15"
+   ],
+   "difficulty_variables": [
+    "the whole region or the part between two rays"
+   ],
+   "doc_id": "ced",
+   "doc_page": 178,
+   "evidence_tag": "inferred",
+   "expected_solution_path": [
+    "cut the region into thin sectors by rays from the pole",
+    "write the area of one sector as one half r squared times its angle",
+    "integrate over the angles the region sweeps",
+    "evaluate the integral exactly"
+   ],
+   "family": "polar-area",
+   "id": "BC-QA-09014",
+   "invariant_structure": "The radius stays positive, so the curve is traced once over a full turn and the region is swept once by the rays from the pole. The stem names no integral and no formula; the area follows from the sector area one half r squared times the angle, summed over the angles the region spans.",
+   "misconceptions": [],
+   "multi_skill_extensions": [],
+   "multipart_structure": "A single short answer or multiple choice question, served as an opener before polar area is taught.",
+   "name": "Area of a polar region found before the polar area integral is taught",
+   "notes": "Generation archetype for the productive-failure opener of BC-CON-09015 (01 Productive-failure openers; stage 14 had no archetype for this target). CHA-5.D (ced:178). Minted 2026-09-28 in stage 15 (library gaps) on the operator's delegation.",
+   "official_examples": [],
+   "parameter_spec": {
+    "calculator_guard": "exact(key)",
+    "constraints": [
+     "abs(amplitude) < base"
+    ],
+    "derived": [],
+    "dial_bindings": [
+     {
+      "difficulty_factor_id": "BC-DF-06",
+      "parameter": "region",
+      "settings": {
+       "full": "low",
+       "half": "low",
+       "quarter": "medium"
+      }
+     },
+     {
+      "difficulty_factor_id": "BC-DF-15",
+      "parameter": "region",
+      "settings": {
+       "full": "low",
+       "half": "low",
+       "quarter": "low"
+      }
+     }
+    ],
+    "evidence_tag": "inferred",
+    "invariants": [
+     "exact(key)",
+     "key > 0"
+    ],
+    "notes": "r = a + b cos(k theta) or a + b sin(k theta) with 0 < |b| < a, so r > 0 and the curve is traced once on [0, 2 pi]. The region is the whole enclosed region, or the part swept between the rays theta = 0 and theta = pi or pi/2. The stem names no method: it is the productive-failure opener for BC-CON-09015, and the canonical solution builds the area from thin sectors of area one half r squared d theta. The distractors drop the one half, integrate r instead of r squared, or sweep the wrong angles.",
+    "parameters": [
+     {
+      "domain": {
+       "values": [
+        "full",
+        "half",
+        "quarter"
+       ]
+      },
+      "name": "region",
+      "role": "difficulty",
+      "type": "label"
+     },
+     {
+      "domain": {
+       "values": [
+        "cos",
+        "sin"
+       ]
+      },
+      "name": "trig",
+      "role": "safe",
+      "type": "label"
+     },
+     {
+      "domain": {
+       "values": [
+        1,
+        2
+       ]
+      },
+      "name": "frequency",
+      "role": "safe",
+      "type": "integer"
+     },
+     {
+      "domain": {
+       "max": 15,
+       "min": 2,
+       "step": 1
+      },
+      "name": "base",
+      "role": "safe",
+      "type": "integer"
+     },
+     {
+      "domain": {
+       "exclude": [
+        0
+       ],
+       "max": 14,
+       "min": -14,
+       "step": 1
+      },
+      "name": "amplitude",
+      "role": "safe",
+      "type": "integer"
+     }
+    ],
+    "representation_bindings": [
+     {
+      "figure_kind": null,
+      "representation": "BC-REP-13",
+      "requires": [
+       "region",
+       "trig",
+       "frequency",
+       "base",
+       "amplitude"
+      ]
+     }
+    ],
+    "spec_version": "1"
+   },
+   "point_types": [
+    "BC-PT-99048"
+   ],
+   "prerequisites": [
+    "BC-PRQ-06005",
+    "BC-PRQ-09004",
+    "BC-PRQ-08006"
+   ],
+   "primary_unit": "BC-UNIT-09",
+   "prohibited_shortcuts": [],
+   "representations": [
+    "BC-REP-13"
+   ],
+   "safe_variables": [
+    "the constant and the amplitude of the curve",
+    "cosine or sine",
+    "the angular frequency"
+   ],
+   "scope": "BC_only",
+   "scoring_pattern": "No scoring guideline scores an opener. Where a free response part asks for a polar area, points are earned for the integrand with the square of r and for the answer (sg-25:8), which is what the canonical solution shows.",
+   "skills": [
+    "BC-SKL-09035",
+    "BC-SKL-09036",
+    "BC-SKL-09038"
+   ],
+   "sources": [
+    "ced:178",
+    "sg-25:8"
+   ],
+   "status": "active",
+   "typical_wording": [
+    "find the area of the region enclosed by the polar curve"
+   ],
+   "units": [
+    "BC-UNIT-09"
+   ],
+   "updated": "2026-09-28",
+   "variants": [],
+   "wrong_approaches": [
+    "treating the region as a rectangle in the angle and the radius"
+   ]
+  },
+  {
+   "anchor_quote": "if and only if the limit of its sequence of partial sums exists and equals S",
+   "asked_to_produce": [
+    "the sum of the series"
+   ],
+   "calculator_status": "no_calculator",
+   "common_distractors": [
+    "the limit of the terms, 0, reported as the sum (BC-ERR-10001)",
+    "the first or second partial sum reported as the sum (BC-ERR-99038)"
+   ],
+   "common_givens": [
+    "a formula for the nth partial sum",
+    "or an unsplit telescoping term"
+   ],
+   "created": "2026-09-28",
+   "description": "A convergent series is given by a formula for its partial sums or as a telescoping series written unsplit, and its sum is asked for, with no test named. The response has to reason from the definition: a series converges exactly when its partial sums approach a finite limit, and that limit is the sum. It is the productive-failure opener for BC-CON-10002, and the answer is a value so the item can be served as a short answer.",
+   "difficulty_factors": [
+    "BC-DF-13",
+    "BC-DF-15"
+   ],
+   "difficulty_variables": [
+    "rational partial sums, exponential partial sums, or a telescoping series"
+   ],
+   "doc_id": "ced",
+   "doc_page": 186,
+   "evidence_tag": "inferred",
+   "expected_solution_path": [
+    "obtain the nth partial sum, directly or by cancelling a telescoping sum",
+    "take its limit as n increases",
+    "report that limit as the sum"
+   ],
+   "family": "series-value",
+   "id": "BC-QA-10021",
+   "invariant_structure": "The sum is read from the sequence of partial sums, given directly or obtained by cancellation, never from a named test or a remembered formula. The terms of every series shown approach 0, so the limit of the terms and the limit of the partial sums have to be told apart.",
+   "misconceptions": [],
+   "multi_skill_extensions": [],
+   "multipart_structure": "A single short answer or multiple choice question, served as an opener before convergence tests are taught.",
+   "name": "Sum of a series found from its partial sums before any test is taught",
+   "notes": "Generation archetype for the productive-failure opener of BC-CON-10002 (01 Productive-failure openers; stage 14 had no archetype for this target). Spec version 2 replaced a statement-keyed first version the same day, because app/session/build.py opener_options serves only items with a value to type. LIM-7.A.1 and LIM-7.A.2 (ced:186). Minted 2026-09-28 in stage 15 (library gaps) on the operator's delegation.",
+   "official_examples": [],
+   "parameter_spec": {
+    "calculator_guard": "exact(key)",
+    "constraints": [
+     "family != 'rational' or distinct([0, lead / rate, (lead + shift) / (rate + offset), (2 * lead + shift) / (2 * rate + offset)])",
+     "family != 'exponential' or distinct([0, lead, lead - offset * ratio, lead - offset * ratio**2])",
+     "gcd(lead, rate) == 1"
+    ],
+    "derived": [],
+    "dial_bindings": [
+     {
+      "difficulty_factor_id": "BC-DF-13",
+      "parameter": "family",
+      "settings": {
+       "exponential": "low",
+       "rational": "low",
+       "telescoping": "off"
+      }
+     },
+     {
+      "difficulty_factor_id": "BC-DF-15",
+      "parameter": "family",
+      "settings": {
+       "exponential": "low",
+       "rational": "low",
+       "telescoping": "low"
+      }
+     }
+    ],
+    "evidence_tag": "inferred",
+    "invariants": [
+     "exact(key)",
+     "key != 0"
+    ],
+    "notes": "rational: S_n = (p n + q)/(r n + s), whose limit p/r is the sum. exponential: S_n = p - s c^n with 0 < c < 1, whose limit p is the sum. telescoping: the series of k/((n + m)(n + m + 1)) from n = 1, whose partial sums k/(m + 1) - k/(n + m + 1) approach k/(m + 1). No test is named and the answer is a value, so the item can be served as a short answer opener for BC-CON-10002; the canonical solution reads the sum as the limit of the partial sums. The distractors are 0, the limit of the terms, and the first and second partial sums; the constraints keep all four apart.",
+    "parameters": [
+     {
+      "domain": {
+       "values": [
+        "rational",
+        "exponential",
+        "telescoping"
+       ]
+      },
+      "name": "family",
+      "role": "difficulty",
+      "type": "label"
+     },
+     {
+      "domain": {
+       "max": 9,
+       "min": 1,
+       "step": 1
+      },
+      "name": "lead",
+      "role": "safe",
+      "type": "integer"
+     },
+     {
+      "domain": {
+       "max": 9,
+       "min": -9,
+       "step": 1
+      },
+      "name": "shift",
+      "role": "safe",
+      "type": "integer"
+     },
+     {
+      "domain": {
+       "max": 5,
+       "min": 1,
+       "step": 1
+      },
+      "name": "rate",
+      "role": "safe",
+      "type": "integer"
+     },
+     {
+      "domain": {
+       "max": 9,
+       "min": 1,
+       "step": 1
+      },
+      "name": "offset",
+      "role": "safe",
+      "type": "integer"
+     },
+     {
+      "domain": {
+       "values": [
+        "1/2",
+        "1/3",
+        "2/3",
+        "1/4",
+        "3/4"
+       ]
+      },
+      "name": "ratio",
+      "role": "safe",
+      "type": "rational"
+     },
+     {
+      "domain": {
+       "max": 9,
+       "min": 1,
+       "step": 1
+      },
+      "name": "numerator",
+      "role": "safe",
+      "type": "integer"
+     },
+     {
+      "domain": {
+       "max": 6,
+       "min": 0,
+       "step": 1
+      },
+      "name": "start",
+      "role": "safe",
+      "type": "integer"
+     }
+    ],
+    "representation_bindings": [
+     {
+      "figure_kind": null,
+      "representation": "BC-REP-11",
+      "requires": [
+       "family",
+       "lead",
+       "shift",
+       "rate",
+       "offset",
+       "ratio",
+       "numerator",
+       "start"
+      ]
+     }
+    ],
+    "spec_version": "2"
+   },
+   "point_types": [],
+   "prerequisites": [
+    "BC-PRQ-10004",
+    "BC-PRQ-10003",
+    "BC-PRQ-10008",
+    "BC-PRQ-06005",
+    "BC-PRQ-06006"
+   ],
+   "primary_unit": "BC-UNIT-10",
+   "prohibited_shortcuts": [],
+   "representations": [
+    "BC-REP-11"
+   ],
+   "safe_variables": [
+    "the coefficients of the partial sum formula",
+    "the ratio in an exponential partial sum",
+    "the numerator and the starting shift of the telescoping term"
+   ],
+   "scope": "BC_only",
+   "scoring_pattern": "No scoring guideline scores an opener; the answer is checked as a value.",
+   "skills": [
+    "BC-SKL-10003",
+    "BC-SKL-10004",
+    "BC-SKL-10005",
+    "BC-SKL-10002"
+   ],
+   "sources": [
+    "ced:186",
+    "ced:187"
+   ],
+   "status": "active",
+   "typical_wording": [
+    "the series converges; find its sum"
+   ],
+   "units": [
+    "BC-UNIT-10"
+   ],
+   "updated": "2026-09-28",
+   "variants": [],
+   "wrong_approaches": [
+    "taking the limit of the general term as the value of the series"
    ]
   }
  ],
@@ -30697,7 +33550,7 @@
     "sg-23:2",
     "sg-23:3"
    ],
-   "updated": "2026-09-27"
+   "updated": "2026-09-28"
   },
   {
    "archetype": "BC-QA-06001",
@@ -30716,7 +33569,7 @@
     "sg-23:2",
     "sg-23:3"
    ],
-   "updated": "2026-09-27"
+   "updated": "2026-09-28"
   },
   {
    "archetype": "BC-QA-06001",
@@ -30735,7 +33588,7 @@
     "sg-23:2",
     "sg-23:3"
    ],
-   "updated": "2026-09-27"
+   "updated": "2026-09-28"
   },
   {
    "archetype": "BC-QA-06002",
@@ -30756,7 +33609,7 @@
     "sg-25:13",
     "frq-25:6"
    ],
-   "updated": "2026-09-27"
+   "updated": "2026-09-28"
   },
   {
    "archetype": "BC-QA-06002",
@@ -30777,7 +33630,7 @@
     "sg-25:13",
     "frq-25:6"
    ],
-   "updated": "2026-09-27"
+   "updated": "2026-09-28"
   },
   {
    "archetype": "BC-QA-06002",
@@ -30814,7 +33667,7 @@
     "sg-25:15",
     "sg-25:16"
    ],
-   "updated": "2026-09-27"
+   "updated": "2026-09-28"
   },
   {
    "archetype": "BC-QA-06003",
@@ -30834,7 +33687,7 @@
     "sg-25:15",
     "sg-25:16"
    ],
-   "updated": "2026-09-27"
+   "updated": "2026-09-28"
   },
   {
    "archetype": "BC-QA-06003",
@@ -30855,7 +33708,7 @@
     "sg-25:15",
     "sg-25:16"
    ],
-   "updated": "2026-09-27"
+   "updated": "2026-09-28"
   },
   {
    "archetype": "BC-QA-06004",
@@ -30874,7 +33727,7 @@
     "sg-25:18",
     "sg-24:12"
    ],
-   "updated": "2026-09-27"
+   "updated": "2026-09-28"
   },
   {
    "archetype": "BC-QA-06004",
@@ -30897,7 +33750,7 @@
     "sg-25:18",
     "sg-24:12"
    ],
-   "updated": "2026-09-27"
+   "updated": "2026-09-28"
   },
   {
    "archetype": "BC-QA-06004",
@@ -30916,7 +33769,7 @@
     "sg-25:18",
     "sg-24:12"
    ],
-   "updated": "2026-09-27"
+   "updated": "2026-09-28"
   },
   {
    "archetype": "BC-QA-06005",
@@ -30936,7 +33789,7 @@
     "sg-24:3",
     "sg-24:4"
    ],
-   "updated": "2026-09-27"
+   "updated": "2026-09-28"
   },
   {
    "archetype": "BC-QA-06005",
@@ -30960,7 +33813,7 @@
     "sg-24:3",
     "sg-24:4"
    ],
-   "updated": "2026-09-27"
+   "updated": "2026-09-28"
   },
   {
    "archetype": "BC-QA-06005",
@@ -30983,7 +33836,7 @@
     "sg-24:3",
     "sg-24:4"
    ],
-   "updated": "2026-09-27"
+   "updated": "2026-09-28"
   },
   {
    "archetype": "BC-QA-06006",
@@ -31003,7 +33856,7 @@
     "ced:124",
     "sg-24:4"
    ],
-   "updated": "2026-09-27"
+   "updated": "2026-09-28"
   },
   {
    "archetype": "BC-QA-06006",
@@ -31039,7 +33892,7 @@
     "ced:124",
     "sg-24:4"
    ],
-   "updated": "2026-09-27"
+   "updated": "2026-09-28"
   },
   {
    "archetype": "BC-QA-08001",
@@ -31060,7 +33913,7 @@
     "sg-23:3",
     "sg-23:4"
    ],
-   "updated": "2026-09-27"
+   "updated": "2026-09-28"
   },
   {
    "archetype": "BC-QA-08001",
@@ -31082,7 +33935,7 @@
     "sg-23:3",
     "sg-23:4"
    ],
-   "updated": "2026-09-27"
+   "updated": "2026-09-28"
   },
   {
    "archetype": "BC-QA-08001",
@@ -31102,7 +33955,7 @@
     "sg-23:3",
     "sg-23:4"
    ],
-   "updated": "2026-09-27"
+   "updated": "2026-09-28"
   },
   {
    "archetype": "BC-QA-06008",
@@ -31139,7 +33992,7 @@
     "ced:126",
     "sg-23:17"
    ],
-   "updated": "2026-09-27"
+   "updated": "2026-09-28"
   },
   {
    "archetype": "BC-QA-06008",
@@ -31175,7 +34028,7 @@
     "sg-24:18",
     "sg-23:18"
    ],
-   "updated": "2026-09-27"
+   "updated": "2026-09-28"
   },
   {
    "archetype": "BC-QA-06009",
@@ -31194,7 +34047,7 @@
     "sg-24:18",
     "sg-23:18"
    ],
-   "updated": "2026-09-27"
+   "updated": "2026-09-28"
   },
   {
    "archetype": "BC-QA-06009",
@@ -31230,7 +34083,7 @@
    "sources": [
     "ced:129"
    ],
-   "updated": "2026-09-27"
+   "updated": "2026-09-28"
   },
   {
    "archetype": "BC-QA-06010",
@@ -31282,7 +34135,7 @@
     "sg-23:17",
     "frq-23:9"
    ],
-   "updated": "2026-09-27"
+   "updated": "2026-09-28"
   },
   {
    "archetype": "BC-QA-06011",
@@ -31301,7 +34154,7 @@
     "sg-23:17",
     "frq-23:9"
    ],
-   "updated": "2026-09-27"
+   "updated": "2026-09-28"
   },
   {
    "archetype": "BC-QA-06011",
@@ -31320,7 +34173,7 @@
     "sg-23:17",
     "frq-23:9"
    ],
-   "updated": "2026-09-27"
+   "updated": "2026-09-28"
   },
   {
    "archetype": "BC-QA-06012",
@@ -31341,7 +34194,7 @@
     "sg-24:15",
     "sg-25:16"
    ],
-   "updated": "2026-09-27"
+   "updated": "2026-09-28"
   },
   {
    "archetype": "BC-QA-06012",
@@ -31377,7 +34230,7 @@
     "sg-24:15",
     "sg-25:16"
    ],
-   "updated": "2026-09-27"
+   "updated": "2026-09-28"
   },
   {
    "archetype": "BC-QA-06013",
@@ -31396,7 +34249,7 @@
    "sources": [
     "ced:123"
    ],
-   "updated": "2026-09-27"
+   "updated": "2026-09-28"
   },
   {
    "archetype": "BC-QA-06013",
@@ -31414,7 +34267,7 @@
    "sources": [
     "ced:123"
    ],
-   "updated": "2026-09-27"
+   "updated": "2026-09-28"
   },
   {
    "archetype": "BC-QA-06013",
@@ -31612,7 +34465,7 @@
    "sources": [
     "ced:79"
    ],
-   "updated": "2026-09-27"
+   "updated": "2026-09-28"
   },
   {
    "archetype": "BC-QA-03001",
@@ -31630,7 +34483,7 @@
    "sources": [
     "ced:72"
    ],
-   "updated": "2026-09-27"
+   "updated": "2026-09-28"
   },
   {
    "archetype": "BC-QA-03002",
@@ -31936,7 +34789,7 @@
    "sources": [
     "sg-25:20"
    ],
-   "updated": "2026-09-27"
+   "updated": "2026-09-28"
   },
   {
    "archetype": "BC-QA-03008",
@@ -31970,7 +34823,7 @@
    "sources": [
     "ced:80"
    ],
-   "updated": "2026-09-27"
+   "updated": "2026-09-28"
   },
   {
    "archetype": "BC-QA-03009",
@@ -32149,7 +35002,7 @@
    "sources": [
     "ced:42"
    ],
-   "updated": "2026-09-27"
+   "updated": "2026-09-28"
   },
   {
    "archetype": "BC-QA-01003",
@@ -32488,7 +35341,7 @@
    "sources": [
     "sg-25:4"
    ],
-   "updated": "2026-09-27"
+   "updated": "2026-09-28"
   },
   {
    "archetype": "BC-QA-01010",
@@ -32506,7 +35359,7 @@
    "sources": [
     "ced:52"
    ],
-   "updated": "2026-09-27"
+   "updated": "2026-09-28"
   },
   {
    "archetype": "BC-QA-01010",
@@ -32558,7 +35411,7 @@
    "sources": [
     "sg-25:12"
    ],
-   "updated": "2026-09-27"
+   "updated": "2026-09-28"
   },
   {
    "archetype": "BC-QA-01011",
@@ -32577,7 +35430,7 @@
     "ced:49",
     "ced:53"
    ],
-   "updated": "2026-09-27"
+   "updated": "2026-09-28"
   },
   {
    "archetype": "BC-QA-01011",
@@ -32614,7 +35467,7 @@
    "sources": [
     "sg-25:12"
    ],
-   "updated": "2026-09-27"
+   "updated": "2026-09-28"
   },
   {
    "archetype": "BC-QA-01012",
@@ -32917,7 +35770,7 @@
     "sg-25:26",
     "ced:187"
    ],
-   "updated": "2026-09-27"
+   "updated": "2026-09-28"
   },
   {
    "archetype": "BC-QA-10003",
@@ -32937,7 +35790,7 @@
     "sg-25:26",
     "ced:187"
    ],
-   "updated": "2026-09-27"
+   "updated": "2026-09-28"
   },
   {
    "archetype": "BC-QA-10003",
@@ -32956,7 +35809,7 @@
     "sg-25:26",
     "ced:187"
    ],
-   "updated": "2026-09-27"
+   "updated": "2026-09-28"
   },
   {
    "archetype": "BC-QA-10004",
@@ -32994,7 +35847,7 @@
     "sg-24:20",
     "ced:191"
    ],
-   "updated": "2026-09-27"
+   "updated": "2026-09-28"
   },
   {
    "archetype": "BC-QA-10004",
@@ -33014,7 +35867,7 @@
     "sg-24:20",
     "ced:191"
    ],
-   "updated": "2026-09-27"
+   "updated": "2026-09-28"
   },
   {
    "archetype": "BC-QA-10005",
@@ -33033,7 +35886,7 @@
     "sg-21:21",
     "sg-21:22"
    ],
-   "updated": "2026-09-27"
+   "updated": "2026-09-28"
   },
   {
    "archetype": "BC-QA-10005",
@@ -33085,7 +35938,7 @@
    "sources": [
     "sg-21:23"
    ],
-   "updated": "2026-09-27"
+   "updated": "2026-09-28"
   },
   {
    "archetype": "BC-QA-10006",
@@ -33103,7 +35956,7 @@
    "sources": [
     "sg-21:23"
    ],
-   "updated": "2026-09-27"
+   "updated": "2026-09-28"
   },
   {
    "archetype": "BC-QA-10006",
@@ -33174,7 +36027,7 @@
     "sg-24:21",
     "sg-21:25"
    ],
-   "updated": "2026-09-27"
+   "updated": "2026-09-28"
   },
   {
    "archetype": "BC-QA-10008",
@@ -33198,7 +36051,7 @@
     "sg-24:21",
     "sg-21:25"
    ],
-   "updated": "2026-09-27"
+   "updated": "2026-09-28"
   },
   {
    "archetype": "BC-QA-10008",
@@ -33222,7 +36075,7 @@
     "sg-24:21",
     "sg-21:25"
    ],
-   "updated": "2026-09-27"
+   "updated": "2026-09-28"
   },
   {
    "archetype": "BC-QA-10009",
@@ -33241,7 +36094,7 @@
    "sources": [
     "sg-23:20"
    ],
-   "updated": "2026-09-27"
+   "updated": "2026-09-28"
   },
   {
    "archetype": "BC-QA-10009",
@@ -33277,7 +36130,7 @@
    "sources": [
     "sg-23:19"
    ],
-   "updated": "2026-09-27"
+   "updated": "2026-09-28"
   },
   {
    "archetype": "BC-QA-10010",
@@ -33297,7 +36150,7 @@
    "sources": [
     "sg-23:19"
    ],
-   "updated": "2026-09-27"
+   "updated": "2026-09-28"
   },
   {
    "archetype": "BC-QA-10010",
@@ -33315,7 +36168,7 @@
    "sources": [
     "sg-23:19"
    ],
-   "updated": "2026-09-27"
+   "updated": "2026-09-28"
   },
   {
    "archetype": "BC-QA-10011",
@@ -33334,7 +36187,7 @@
     "ced:196",
     "sg-23:19"
    ],
-   "updated": "2026-09-27"
+   "updated": "2026-09-28"
   },
   {
    "archetype": "BC-QA-10011",
@@ -33353,7 +36206,7 @@
     "ced:196",
     "sg-23:19"
    ],
-   "updated": "2026-09-27"
+   "updated": "2026-09-28"
   },
   {
    "archetype": "BC-QA-10012",
@@ -33374,7 +36227,7 @@
     "sg-23:20",
     "sg-23:21"
    ],
-   "updated": "2026-09-27"
+   "updated": "2026-09-28"
   },
   {
    "archetype": "BC-QA-10012",
@@ -33394,7 +36247,7 @@
     "sg-23:20",
     "sg-23:21"
    ],
-   "updated": "2026-09-27"
+   "updated": "2026-09-28"
   },
   {
    "archetype": "BC-QA-10012",
@@ -33414,7 +36267,7 @@
     "sg-23:20",
     "sg-23:21"
    ],
-   "updated": "2026-09-27"
+   "updated": "2026-09-28"
   },
   {
    "archetype": "BC-QA-10013",
@@ -33437,7 +36290,7 @@
     "sg-22:20",
     "sg-22:21"
    ],
-   "updated": "2026-09-27"
+   "updated": "2026-09-28"
   },
   {
    "archetype": "BC-QA-10013",
@@ -33459,7 +36312,7 @@
     "sg-22:20",
     "sg-22:21"
    ],
-   "updated": "2026-09-27"
+   "updated": "2026-09-28"
   },
   {
    "archetype": "BC-QA-10013",
@@ -33482,7 +36335,7 @@
     "sg-22:20",
     "sg-22:21"
    ],
-   "updated": "2026-09-27"
+   "updated": "2026-09-28"
   },
   {
    "archetype": "BC-QA-10013",
@@ -33522,7 +36375,7 @@
    "sources": [
     "sg-21:24"
    ],
-   "updated": "2026-09-27"
+   "updated": "2026-09-28"
   },
   {
    "archetype": "BC-QA-10014",
@@ -33540,7 +36393,7 @@
    "sources": [
     "sg-21:24"
    ],
-   "updated": "2026-09-27"
+   "updated": "2026-09-28"
   },
   {
    "archetype": "BC-QA-10015",
@@ -33615,7 +36468,7 @@
     "sg-25:26",
     "sg-24:22"
    ],
-   "updated": "2026-09-27"
+   "updated": "2026-09-28"
   },
   {
    "archetype": "BC-QA-10016",
@@ -33634,7 +36487,7 @@
     "sg-25:26",
     "sg-24:22"
    ],
-   "updated": "2026-09-27"
+   "updated": "2026-09-28"
   },
   {
    "archetype": "BC-QA-10016",
@@ -33653,7 +36506,7 @@
     "sg-25:26",
     "sg-24:22"
    ],
-   "updated": "2026-09-27"
+   "updated": "2026-09-28"
   },
   {
    "archetype": "BC-QA-10017",
@@ -33673,7 +36526,7 @@
     "ced:200",
     "sg-23:21"
    ],
-   "updated": "2026-09-27"
+   "updated": "2026-09-28"
   },
   {
    "archetype": "BC-QA-10017",
@@ -33695,7 +36548,7 @@
     "ced:200",
     "sg-23:21"
    ],
-   "updated": "2026-09-27"
+   "updated": "2026-09-28"
   },
   {
    "archetype": "BC-QA-10017",
@@ -33716,7 +36569,7 @@
     "ced:200",
     "sg-23:21"
    ],
-   "updated": "2026-09-27"
+   "updated": "2026-09-28"
   },
   {
    "archetype": "BC-QA-10018",
@@ -33740,7 +36593,7 @@
     "sg-25:26",
     "ced:198"
    ],
-   "updated": "2026-09-27"
+   "updated": "2026-09-28"
   },
   {
    "archetype": "BC-QA-10018",
@@ -33795,7 +36648,7 @@
     "ced:200",
     "sg-23:21"
    ],
-   "updated": "2026-09-27"
+   "updated": "2026-09-28"
   },
   {
    "archetype": "BC-QA-10019",
@@ -33814,7 +36667,7 @@
     "ced:200",
     "sg-23:21"
    ],
-   "updated": "2026-09-27"
+   "updated": "2026-09-28"
   },
   {
    "archetype": "BC-QA-10020",
@@ -33832,7 +36685,7 @@
    "sources": [
     "sg-25:27"
    ],
-   "updated": "2026-09-27"
+   "updated": "2026-09-28"
   },
   {
    "archetype": "BC-QA-10020",
@@ -33850,7 +36703,7 @@
    "sources": [
     "sg-25:27"
    ],
-   "updated": "2026-09-27"
+   "updated": "2026-09-28"
   },
   {
    "archetype": "BC-QA-08001",
@@ -33873,7 +36726,7 @@
    "sources": [
     "sg-25:2"
    ],
-   "updated": "2026-09-27"
+   "updated": "2026-09-28"
   },
   {
    "archetype": "BC-QA-08001",
@@ -33907,7 +36760,7 @@
    "sources": [
     "sg-24:3"
    ],
-   "updated": "2026-09-27"
+   "updated": "2026-09-28"
   },
   {
    "archetype": "BC-QA-08002",
@@ -33926,7 +36779,7 @@
    "sources": [
     "sg-25:4"
    ],
-   "updated": "2026-09-27"
+   "updated": "2026-09-28"
   },
   {
    "archetype": "BC-QA-08002",
@@ -33944,7 +36797,7 @@
    "sources": [
     "frq-25:3"
    ],
-   "updated": "2026-09-27"
+   "updated": "2026-09-28"
   },
   {
    "archetype": "BC-QA-08003",
@@ -34012,7 +36865,7 @@
    "sources": [
     "sg-24:4"
    ],
-   "updated": "2026-09-27"
+   "updated": "2026-09-28"
   },
   {
    "archetype": "BC-QA-06005",
@@ -34031,7 +36884,7 @@
    "sources": [
     "sg-25:14"
    ],
-   "updated": "2026-09-27"
+   "updated": "2026-09-28"
   },
   {
    "archetype": "BC-QA-06005",
@@ -34068,7 +36921,7 @@
    "sources": [
     "ced:154"
    ],
-   "updated": "2026-09-27"
+   "updated": "2026-09-28"
   },
   {
    "archetype": "BC-QA-06006",
@@ -34105,7 +36958,7 @@
    "sources": [
     "ced:154"
    ],
-   "updated": "2026-09-27"
+   "updated": "2026-09-28"
   },
   {
    "archetype": "BC-QA-08006",
@@ -34126,7 +36979,7 @@
    "sources": [
     "sg-25:5"
    ],
-   "updated": "2026-09-27"
+   "updated": "2026-09-28"
   },
   {
    "archetype": "BC-QA-08006",
@@ -34148,7 +37001,7 @@
    "sources": [
     "sg-25:5"
    ],
-   "updated": "2026-09-27"
+   "updated": "2026-09-28"
   },
   {
    "archetype": "BC-QA-08006",
@@ -34166,7 +37019,7 @@
    "sources": [
     "sg-25:5"
    ],
-   "updated": "2026-09-27"
+   "updated": "2026-09-28"
   },
   {
    "archetype": "BC-QA-06015",
@@ -34202,7 +37055,7 @@
    "sources": [
     "sg-24:3"
    ],
-   "updated": "2026-09-27"
+   "updated": "2026-09-28"
   },
   {
    "archetype": "BC-QA-08008",
@@ -34220,7 +37073,7 @@
    "sources": [
     "sg-23:16"
    ],
-   "updated": "2026-09-27"
+   "updated": "2026-09-28"
   },
   {
    "archetype": "BC-QA-08008",
@@ -34255,7 +37108,7 @@
    "sources": [
     "ced:155"
    ],
-   "updated": "2026-09-27"
+   "updated": "2026-09-28"
   },
   {
    "archetype": "BC-QA-08009",
@@ -34353,7 +37206,7 @@
    "sources": [
     "ced:158"
    ],
-   "updated": "2026-09-27"
+   "updated": "2026-09-28"
   },
   {
    "archetype": "BC-QA-08011",
@@ -34421,7 +37274,7 @@
    "sources": [
     "ced:160"
    ],
-   "updated": "2026-09-27"
+   "updated": "2026-09-28"
   },
   {
    "archetype": "BC-QA-08012",
@@ -34487,7 +37340,7 @@
    "sources": [
     "ced:163"
    ],
-   "updated": "2026-09-27"
+   "updated": "2026-09-28"
   },
   {
    "archetype": "BC-QA-08013",
@@ -34523,7 +37376,7 @@
    "sources": [
     "sg-24:16"
    ],
-   "updated": "2026-09-27"
+   "updated": "2026-09-28"
   },
   {
    "archetype": "BC-QA-08014",
@@ -34573,7 +37426,7 @@
    "sources": [
     "sg-23:3"
    ],
-   "updated": "2026-09-27"
+   "updated": "2026-09-28"
   },
   {
    "archetype": "BC-QA-05001",
@@ -34593,7 +37446,7 @@
    "sources": [
     "sg-25:4"
    ],
-   "updated": "2026-09-27"
+   "updated": "2026-09-28"
   },
   {
    "archetype": "BC-QA-05001",
@@ -34612,7 +37465,7 @@
    "sources": [
     "sg-23:3"
    ],
-   "updated": "2026-09-27"
+   "updated": "2026-09-28"
   },
   {
    "archetype": "BC-QA-05002",
@@ -34679,7 +37532,7 @@
    "sources": [
     "sg-23:13"
    ],
-   "updated": "2026-09-27"
+   "updated": "2026-09-28"
   },
   {
    "archetype": "BC-QA-05003",
@@ -34699,7 +37552,7 @@
    "sources": [
     "sg-23:13"
    ],
-   "updated": "2026-09-27"
+   "updated": "2026-09-28"
   },
   {
    "archetype": "BC-QA-05003",
@@ -34737,7 +37590,7 @@
    "sources": [
     "sg-23:14"
    ],
-   "updated": "2026-09-27"
+   "updated": "2026-09-28"
   },
   {
    "archetype": "BC-QA-05004",
@@ -34774,7 +37627,7 @@
    "sources": [
     "sg-23:14"
    ],
-   "updated": "2026-09-27"
+   "updated": "2026-09-28"
   },
   {
    "archetype": "BC-QA-05005",
@@ -34793,7 +37646,7 @@
    "sources": [
     "sg-25:17"
    ],
-   "updated": "2026-09-27"
+   "updated": "2026-09-28"
   },
   {
    "archetype": "BC-QA-05005",
@@ -34830,7 +37683,7 @@
    "sources": [
     "sg-25:17"
    ],
-   "updated": "2026-09-27"
+   "updated": "2026-09-28"
   },
   {
    "archetype": "BC-QA-05006",
@@ -34848,7 +37701,7 @@
    "sources": [
     "sg-23:15"
    ],
-   "updated": "2026-09-27"
+   "updated": "2026-09-28"
   },
   {
    "archetype": "BC-QA-05006",
@@ -34871,7 +37724,7 @@
     "sg-25:18",
     "sg-25:19"
    ],
-   "updated": "2026-09-27"
+   "updated": "2026-09-28"
   },
   {
    "archetype": "BC-QA-05006",
@@ -34893,7 +37746,7 @@
    "sources": [
     "sg-25:19"
    ],
-   "updated": "2026-09-27"
+   "updated": "2026-09-28"
   },
   {
    "archetype": "BC-QA-05007",
@@ -34912,7 +37765,7 @@
    "sources": [
     "sg-24:10"
    ],
-   "updated": "2026-09-27"
+   "updated": "2026-09-28"
   },
   {
    "archetype": "BC-QA-05007",
@@ -34948,7 +37801,7 @@
    "sources": [
     "sg-24:10"
    ],
-   "updated": "2026-09-27"
+   "updated": "2026-09-28"
   },
   {
    "archetype": "BC-QA-05008",
@@ -34966,7 +37819,7 @@
    "sources": [
     "ced:101"
    ],
-   "updated": "2026-09-27"
+   "updated": "2026-09-28"
   },
   {
    "archetype": "BC-QA-05008",
@@ -35000,7 +37853,7 @@
    "sources": [
     "sg-25:17"
    ],
-   "updated": "2026-09-27"
+   "updated": "2026-09-28"
   },
   {
    "archetype": "BC-QA-05009",
@@ -35278,7 +38131,7 @@
    "sources": [
     "sg-24:2"
    ],
-   "updated": "2026-09-27"
+   "updated": "2026-09-28"
   },
   {
    "archetype": "BC-QA-02001",
@@ -35297,7 +38150,7 @@
    "sources": [
     "sg-25:11"
    ],
-   "updated": "2026-09-27"
+   "updated": "2026-09-28"
   },
   {
    "archetype": "BC-QA-02001",
@@ -35317,7 +38170,7 @@
    "sources": [
     "sg-25:11"
    ],
-   "updated": "2026-09-27"
+   "updated": "2026-09-28"
   },
   {
    "archetype": "BC-QA-02002",
@@ -35593,7 +38446,7 @@
    "sources": [
     "ced:66"
    ],
-   "updated": "2026-09-27"
+   "updated": "2026-09-28"
   },
   {
    "archetype": "BC-QA-02007",
@@ -35675,7 +38528,7 @@
    "sources": [
     "ced:68"
    ],
-   "updated": "2026-09-27"
+   "updated": "2026-09-28"
   },
   {
    "archetype": "BC-QA-02008",
@@ -35693,7 +38546,7 @@
    "sources": [
     "ced:68"
    ],
-   "updated": "2026-09-27"
+   "updated": "2026-09-28"
   },
   {
    "archetype": "BC-QA-02009",
@@ -35728,7 +38581,7 @@
     "ced:62",
     "ced:67"
    ],
-   "updated": "2026-09-27"
+   "updated": "2026-09-28"
   },
   {
    "archetype": "BC-QA-02009",
@@ -35811,7 +38664,7 @@
    "sources": [
     "ced:61"
    ],
-   "updated": "2026-09-27"
+   "updated": "2026-09-28"
   },
   {
    "archetype": "BC-QA-02011",
@@ -35961,7 +38814,7 @@
    "sources": [
     "sg-24:2"
    ],
-   "updated": "2026-09-27"
+   "updated": "2026-09-28"
   },
   {
    "archetype": "BC-QA-04001",
@@ -35982,7 +38835,7 @@
    "sources": [
     "cr-24:4"
    ],
-   "updated": "2026-09-27"
+   "updated": "2026-09-28"
   },
   {
    "archetype": "BC-QA-04001",
@@ -36000,7 +38853,7 @@
    "sources": [
     "ced:87"
    ],
-   "updated": "2026-09-27"
+   "updated": "2026-09-28"
   },
   {
    "archetype": "BC-QA-04002",
@@ -36020,7 +38873,7 @@
    "sources": [
     "sg-25:11"
    ],
-   "updated": "2026-09-27"
+   "updated": "2026-09-28"
   },
   {
    "archetype": "BC-QA-04002",
@@ -36041,7 +38894,7 @@
    "sources": [
     "sg-25:11"
    ],
-   "updated": "2026-09-27"
+   "updated": "2026-09-28"
   },
   {
    "archetype": "BC-QA-04002",
@@ -36060,7 +38913,7 @@
    "sources": [
     "sg-24:2"
    ],
-   "updated": "2026-09-27"
+   "updated": "2026-09-28"
   },
   {
    "archetype": "BC-QA-04003",
@@ -36079,7 +38932,7 @@
    "sources": [
     "crabbc-25:20"
    ],
-   "updated": "2026-09-27"
+   "updated": "2026-09-28"
   },
   {
    "archetype": "BC-QA-04003",
@@ -36194,7 +39047,7 @@
    "sources": [
     "sg-25:2"
    ],
-   "updated": "2026-09-27"
+   "updated": "2026-09-28"
   },
   {
    "archetype": "BC-QA-04005",
@@ -36263,7 +39116,7 @@
    "sources": [
     "ced:91"
    ],
-   "updated": "2026-09-27"
+   "updated": "2026-09-28"
   },
   {
    "archetype": "BC-QA-04006",
@@ -36361,7 +39214,7 @@
    "sources": [
     "cr-24:17"
    ],
-   "updated": "2026-09-27"
+   "updated": "2026-09-28"
   },
   {
    "archetype": "BC-QA-04008",
@@ -36395,7 +39248,7 @@
    "sources": [
     "ced:92"
    ],
-   "updated": "2026-09-27"
+   "updated": "2026-09-28"
   },
   {
    "archetype": "BC-QA-04009",
@@ -36415,7 +39268,7 @@
    "sources": [
     "sg-23:14"
    ],
-   "updated": "2026-09-27"
+   "updated": "2026-09-28"
   },
   {
    "archetype": "BC-QA-04009",
@@ -36499,7 +39352,7 @@
    "sources": [
     "frq-23:4"
    ],
-   "updated": "2026-09-27"
+   "updated": "2026-09-28"
   },
   {
    "archetype": "BC-QA-09001",
@@ -36535,7 +39388,7 @@
    "sources": [
     "sg-23:7"
    ],
-   "updated": "2026-09-27"
+   "updated": "2026-09-28"
   },
   {
    "archetype": "BC-QA-09002",
@@ -36635,7 +39488,7 @@
    "sources": [
     "frq-23:4"
    ],
-   "updated": "2026-09-27"
+   "updated": "2026-09-28"
   },
   {
    "archetype": "BC-QA-09004",
@@ -36656,7 +39509,7 @@
    "sources": [
     "sg-23:6"
    ],
-   "updated": "2026-09-27"
+   "updated": "2026-09-28"
   },
   {
    "archetype": "BC-QA-09005",
@@ -36675,7 +39528,7 @@
    "sources": [
     "sg-24:7"
    ],
-   "updated": "2026-09-27"
+   "updated": "2026-09-28"
   },
   {
    "archetype": "BC-QA-09005",
@@ -36693,7 +39546,7 @@
    "sources": [
     "sg-23:7"
    ],
-   "updated": "2026-09-27"
+   "updated": "2026-09-28"
   },
   {
    "archetype": "BC-QA-09005",
@@ -36711,7 +39564,7 @@
    "sources": [
     "ced:175"
    ],
-   "updated": "2026-09-27"
+   "updated": "2026-09-28"
   },
   {
    "archetype": "BC-QA-09006",
@@ -36730,7 +39583,7 @@
    "sources": [
     "sg-24:5"
    ],
-   "updated": "2026-09-27"
+   "updated": "2026-09-28"
   },
   {
    "archetype": "BC-QA-09006",
@@ -36749,7 +39602,7 @@
    "sources": [
     "sg-23:6"
    ],
-   "updated": "2026-09-27"
+   "updated": "2026-09-28"
   },
   {
    "archetype": "BC-QA-09007",
@@ -36772,7 +39625,7 @@
    "sources": [
     "sg-24:6"
    ],
-   "updated": "2026-09-27"
+   "updated": "2026-09-28"
   },
   {
    "archetype": "BC-QA-09007",
@@ -36790,7 +39643,7 @@
    "sources": [
     "sg-24:6"
    ],
-   "updated": "2026-09-27"
+   "updated": "2026-09-28"
   },
   {
    "archetype": "BC-QA-09008",
@@ -36808,7 +39661,7 @@
    "sources": [
     "frq-24:4"
    ],
-   "updated": "2026-09-27"
+   "updated": "2026-09-28"
   },
   {
    "archetype": "BC-QA-09008",
@@ -36826,7 +39679,7 @@
    "sources": [
     "sg-24:8"
    ],
-   "updated": "2026-09-27"
+   "updated": "2026-09-28"
   },
   {
    "archetype": "BC-QA-09009",
@@ -36847,7 +39700,7 @@
    "sources": [
     "sg-25:7"
    ],
-   "updated": "2026-09-27"
+   "updated": "2026-09-28"
   },
   {
    "archetype": "BC-QA-09009",
@@ -36865,7 +39718,7 @@
    "sources": [
     "sg-25:7"
    ],
-   "updated": "2026-09-27"
+   "updated": "2026-09-28"
   },
   {
    "archetype": "BC-QA-09010",
@@ -36885,7 +39738,7 @@
    "sources": [
     "sg-25:10"
    ],
-   "updated": "2026-09-27"
+   "updated": "2026-09-28"
   },
   {
    "archetype": "BC-QA-09010",
@@ -36905,7 +39758,7 @@
    "sources": [
     "sg-25:10"
    ],
-   "updated": "2026-09-27"
+   "updated": "2026-09-28"
   },
   {
    "archetype": "BC-QA-09011",
@@ -36923,7 +39776,7 @@
    "sources": [
     "frq-25:4"
    ],
-   "updated": "2026-09-27"
+   "updated": "2026-09-28"
   },
   {
    "archetype": "BC-QA-09011",
@@ -36941,7 +39794,7 @@
    "sources": [
     "sg-25:9"
    ],
-   "updated": "2026-09-27"
+   "updated": "2026-09-28"
   },
   {
    "archetype": "BC-QA-09011",
@@ -36959,7 +39812,7 @@
    "sources": [
     "sg-25:9"
    ],
-   "updated": "2026-09-27"
+   "updated": "2026-09-28"
   },
   {
    "archetype": "BC-QA-09012",
@@ -36978,7 +39831,7 @@
    "sources": [
     "frq-25:4"
    ],
-   "updated": "2026-09-27"
+   "updated": "2026-09-28"
   },
   {
    "archetype": "BC-QA-09012",
@@ -36996,7 +39849,7 @@
    "sources": [
     "ced:178"
    ],
-   "updated": "2026-09-27"
+   "updated": "2026-09-28"
   },
   {
    "archetype": "BC-QA-09012",
@@ -37014,7 +39867,7 @@
    "sources": [
     "sg-25:8"
    ],
-   "updated": "2026-09-27"
+   "updated": "2026-09-28"
   },
   {
    "archetype": "BC-QA-09013",
@@ -37035,7 +39888,7 @@
    "sources": [
     "frq-25:4"
    ],
-   "updated": "2026-09-27"
+   "updated": "2026-09-28"
   },
   {
    "archetype": "BC-QA-09013",
@@ -37055,7 +39908,7 @@
    "sources": [
     "sg-25:7"
    ],
-   "updated": "2026-09-27"
+   "updated": "2026-09-28"
   },
   {
    "archetype": "BC-QA-09013",
@@ -37074,7 +39927,7 @@
    "sources": [
     "ced:179"
    ],
-   "updated": "2026-09-27"
+   "updated": "2026-09-28"
   },
   {
    "archetype": "BC-QA-07001",
@@ -37092,7 +39945,7 @@
    "sources": [
     "sg-23:9"
    ],
-   "updated": "2026-09-27"
+   "updated": "2026-09-28"
   },
   {
    "archetype": "BC-QA-07001",
@@ -37126,7 +39979,7 @@
    "sources": [
     "sg-24:9"
    ],
-   "updated": "2026-09-27"
+   "updated": "2026-09-28"
   },
   {
    "archetype": "BC-QA-07002",
@@ -37144,7 +39997,7 @@
    "sources": [
     "ced:139"
    ],
-   "updated": "2026-09-27"
+   "updated": "2026-09-28"
   },
   {
    "archetype": "BC-QA-07002",
@@ -37162,7 +40015,7 @@
    "sources": [
     "ced:139"
    ],
-   "updated": "2026-09-27"
+   "updated": "2026-09-28"
   },
   {
    "archetype": "BC-QA-07002",
@@ -37199,7 +40052,7 @@
    "sources": [
     "sg-23:12"
    ],
-   "updated": "2026-09-27"
+   "updated": "2026-09-28"
   },
   {
    "archetype": "BC-QA-07003",
@@ -37218,7 +40071,7 @@
    "sources": [
     "sg-24:11"
    ],
-   "updated": "2026-09-27"
+   "updated": "2026-09-28"
   },
   {
    "archetype": "BC-QA-07003",
@@ -37239,7 +40092,7 @@
    "sources": [
     "sg-24:11"
    ],
-   "updated": "2026-09-27"
+   "updated": "2026-09-28"
   },
   {
    "archetype": "BC-QA-07004",
@@ -37259,7 +40112,7 @@
    "sources": [
     "sg-25:23"
    ],
-   "updated": "2026-09-27"
+   "updated": "2026-09-28"
   },
   {
    "archetype": "BC-QA-07004",
@@ -37278,7 +40131,7 @@
     "sg-24:17",
     "sg-25:23"
    ],
-   "updated": "2026-09-27"
+   "updated": "2026-09-28"
   },
   {
    "archetype": "BC-QA-07004",
@@ -37299,7 +40152,7 @@
    "sources": [
     "sg-25:23"
    ],
-   "updated": "2026-09-27"
+   "updated": "2026-09-28"
   },
   {
    "archetype": "BC-QA-07005",
@@ -37318,7 +40171,7 @@
    "sources": [
     "sg-23:11"
    ],
-   "updated": "2026-09-27"
+   "updated": "2026-09-28"
   },
   {
    "archetype": "BC-QA-07005",
@@ -37337,7 +40190,7 @@
    "sources": [
     "sg-23:11"
    ],
-   "updated": "2026-09-27"
+   "updated": "2026-09-28"
   },
   {
    "archetype": "BC-QA-07005",
@@ -37419,7 +40272,7 @@
    "sources": [
     "ced:138"
    ],
-   "updated": "2026-09-27"
+   "updated": "2026-09-28"
   },
   {
    "archetype": "BC-QA-07007",
@@ -37438,7 +40291,7 @@
     "ced:138",
     "ced-clarifications-2026:2"
    ],
-   "updated": "2026-09-27"
+   "updated": "2026-09-28"
   },
   {
    "archetype": "BC-QA-07007",
@@ -37569,7 +40422,7 @@
    "sources": [
     "sg-24:10"
    ],
-   "updated": "2026-09-27"
+   "updated": "2026-09-28"
   },
   {
    "archetype": "BC-QA-07010",
@@ -37587,7 +40440,7 @@
    "sources": [
     "sg-24:10"
    ],
-   "updated": "2026-09-27"
+   "updated": "2026-09-28"
   },
   {
    "archetype": "BC-QA-07010",
@@ -37605,7 +40458,7 @@
    "sources": [
     "sg-24:10"
    ],
-   "updated": "2026-09-27"
+   "updated": "2026-09-28"
   },
   {
    "archetype": "BC-QA-07011",
@@ -37674,7 +40527,7 @@
     "sg-19:3"
    ],
    "status": "active",
-   "updated": "2026-09-27"
+   "updated": "2026-09-28"
   }
  ]
 }

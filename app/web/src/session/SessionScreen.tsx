@@ -22,6 +22,7 @@ import { FigureView } from "../figures/FigureView";
 import { MathText } from "../math/MathText";
 import { MathValue } from "../math/MathValue";
 import { ActionFailed, LoadFailed, Loading } from "../status/LoadState";
+import { ComparisonPanel } from "./ComparisonPanel";
 import { CONFIDENCE_CHOICES } from "./ConfidencePrompt";
 import { ElaboratedPanel } from "./ElaboratedPanel";
 import { ErrorNoteField } from "./ErrorNoteField";
@@ -247,10 +248,14 @@ export function SessionScreen({ resumeSessionId }: SessionScreenProps) {
             confidence: ratesConfidence ? confidence : undefined
          });
 
+         /* An opener miss is not corrected: it is neither requeued nor noted (02, Session
+            assembly), so it does not come back in Review. */
+         const isCorrection = result.correct === false && item.is_opener !== true;
+
          setCommitted(result);
          setWorked((sofar) => ({
             items: sofar.items + 1,
-            corrected: sofar.corrected + (result.correct === false ? 1 : 0)
+            corrected: sofar.corrected + (isCorrection ? 1 : 0)
          }));
 
          /* The attempt row the server wrote is what says whether the rating was recorded, so an
@@ -308,7 +313,8 @@ export function SessionScreen({ resumeSessionId }: SessionScreenProps) {
       }
 
       const note = errorNote.trim();
-      const wasCorrected = committed.correct === false;
+      const wasOpener = item !== null && item.is_opener === true;
+      const wasCorrected = committed.correct === false && !wasOpener;
       const owesNote = wasCorrected && note.length === 0;
 
       if (owesNote) {
@@ -349,7 +355,7 @@ export function SessionScreen({ resumeSessionId }: SessionScreenProps) {
       } finally {
          inFlight.current = false;
       }
-   }, [session, committed, feedback, errorNote, selfExplanation, advance]);
+   }, [session, item, committed, feedback, errorNote, selfExplanation, advance]);
 
    const stop = useCallback(async () => {
       const isIdle = !inFlight.current;
@@ -402,12 +408,16 @@ export function SessionScreen({ resumeSessionId }: SessionScreenProps) {
 
    const showsFeedback = feedback !== null || feedbackUnreadable;
    const hasFigure = item.figure_spec !== null && item.figure_spec !== undefined;
+   const comparison = feedback?.comparison ?? null;
+   const showsComparison = comparison !== null;
    const marksSteps = feedback !== null && feedback.stage !== "unsupported";
-   const showsElaborated = feedback !== null && feedback.stage === "unsupported";
+   const showsElaborated = feedback !== null && feedback.stage === "unsupported" && !showsComparison;
 
    /* 11 P1 scope item 10: one note per corrected item, written before the retry is scheduled. An
-      item the student got right is requeued by nothing and asks for nothing. */
-   const wasCorrected = committed !== null && committed.correct === false;
+      item the student got right is requeued by nothing and asks for nothing, and neither is an
+      opener, whose feedback is the comparison alone. */
+   const isOpener = item.is_opener === true;
+   const wasCorrected = committed !== null && committed.correct === false && !isOpener;
    const owesNote = wasCorrected && errorNote.trim().length === 0;
    const awaitsRating =
       committed !== null && collectsConfidence(committed.served_stage) && committed.confidence === null;
@@ -416,6 +426,24 @@ export function SessionScreen({ resumeSessionId }: SessionScreenProps) {
    const chosenOption = choiceServed ? (item.options ?? []).find((option) => option.id === selectedOptionId) ?? null : null;
    const wroteMath = !choiceServed && answerMathJson !== null;
    const showsWhatWasWritten = chosenOption !== null || wroteMath;
+
+   const youWrote = showsWhatWasWritten ? (
+      <div className="you-wrote" data-testid="you-wrote">
+         <p className="eyebrow">{YOU_WROTE_LABEL}</p>
+
+         <p>
+            {chosenOption !== null ? (
+               chosenOption.label !== undefined ? (
+                  <MathText text={chosenOption.label} />
+               ) : (
+                  <MathValue value={chosenOption.mathjson ?? chosenOption.value ?? chosenOption.id} />
+               )
+            ) : (
+               <MathValue value={answerMathJson} />
+            )}
+         </p>
+      </div>
+   ) : null;
 
    const shownItem = item;
 
@@ -517,23 +545,8 @@ export function SessionScreen({ resumeSessionId }: SessionScreenProps) {
 
          {showsFeedback ? (
             <section className="card feedback" data-testid="feedback">
-               {showsWhatWasWritten ? (
-                  <div className="you-wrote" data-testid="you-wrote">
-                     <p className="eyebrow">{YOU_WROTE_LABEL}</p>
+               {comparison !== null ? <ComparisonPanel comparison={comparison} attempt={youWrote} /> : youWrote}
 
-                     <p>
-                        {chosenOption !== null ? (
-                           chosenOption.label !== undefined ? (
-                              <MathText text={chosenOption.label} />
-                           ) : (
-                              <MathValue value={chosenOption.mathjson ?? chosenOption.value ?? chosenOption.id} />
-                           )
-                        ) : (
-                           <MathValue value={answerMathJson} />
-                        )}
-                     </p>
-                  </div>
-               ) : null}
                {hasFigure ? (
                   <div data-testid="feedback-figure">
                      <FigureView spec={item.figure_spec} />
@@ -547,7 +560,7 @@ export function SessionScreen({ resumeSessionId }: SessionScreenProps) {
                ) : null}
 
                <SelfExplanationPrompt
-                  prompt={feedback?.self_explanation_prompt ?? null}
+                  prompt={showsComparison ? null : feedback?.self_explanation_prompt ?? null}
                   value={selfExplanation}
                   onChange={setSelfExplanation}
                />

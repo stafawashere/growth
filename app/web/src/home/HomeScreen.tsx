@@ -1,3 +1,4 @@
+import type { BlockFocus, FocusBlock } from "../api/types";
 import { PageHeader } from "../page/PageHeader";
 
 export interface QueueLine {
@@ -14,6 +15,7 @@ export interface HomeScreenProps {
    daysToExam: number;
    queueMinutes: number;
    queueLines: ReadonlyArray<QueueLine>;
+   focus?: ReadonlyArray<BlockFocus>;
    onStartSession: () => void;
    onAddPracticeSet: () => void;
    onResumeSession: () => void;
@@ -32,8 +34,58 @@ function ExamFooter(props: { examDate: string; daysToExam: number }) {
    );
 }
 
+const focusCopy: Record<FocusBlock, { title: string; intent: string }> = {
+   review: {
+      title: "Review",
+      intent: "Skills you have learned whose recall is fading, brought back before they slip."
+   },
+   learn: {
+      title: "New ground",
+      intent: "Skills whose prerequisites you now hold, so they are the next ones within reach."
+   },
+   mixed: {
+      title: "Mixed practice",
+      intent: "Earlier skills shuffled across units, so you practise choosing the method as well as using it."
+   }
+};
+
+function unitList(units: ReadonlyArray<number>) {
+   const label = units.length === 1 ? "Unit" : "Units";
+
+   return `${label} ${units.join(", ")}`;
+}
+
+function FocusBlockCard(props: { focus: BlockFocus }) {
+   const { block, items, skills, more_skills: moreSkills, units } = props.focus;
+   const copy = focusCopy[block];
+   const itemWord = items === 1 ? "item" : "items";
+   const hasUnits = units.length > 0;
+
+   return (
+      <li className="focus-block" data-testid="focus-block">
+         <div className="focus-head">
+            <span className="focus-title">{copy.title}</span>
+            <span className="focus-meta">
+               {items} {itemWord}
+               {hasUnits && <> &middot; {unitList(units)}</>}
+            </span>
+         </div>
+
+         <p className="focus-intent">{copy.intent}</p>
+
+         <ul className="focus-skills">
+            {skills.map((skill) => (
+               <li key={skill}>{skill}</li>
+            ))}
+            {moreSkills > 0 && <li className="focus-more">and {moreSkills} more</li>}
+         </ul>
+      </li>
+   );
+}
+
 function ReadyQueue(props: HomeScreenProps) {
-   const { queueMinutes, queueLines, onStartSession } = props;
+   const { queueMinutes, queueLines, focus = [], onStartSession } = props;
+   const hasFocus = focus.length > 0;
 
    return (
       <>
@@ -46,6 +98,20 @@ function ReadyQueue(props: HomeScreenProps) {
                </li>
             ))}
          </ul>
+
+         {hasFocus && (
+            <section className="focus" aria-labelledby="focus-heading">
+               <h2 id="focus-heading" className="focus-heading">
+                  What today&apos;s set works on
+               </h2>
+
+               <ol className="focus-blocks">
+                  {focus.map((entry) => (
+                     <FocusBlockCard key={entry.block} focus={entry} />
+                  ))}
+               </ol>
+            </section>
+         )}
 
          <button type="button" className="button-primary" onClick={onStartSession}>
             Start today&apos;s set

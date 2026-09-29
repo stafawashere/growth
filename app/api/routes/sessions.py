@@ -350,6 +350,7 @@ def read_feedback(
    chosen = chosen_option(item, answer)
    error_path = (chosen or {}).get("error_path")
    error_record = context.errors.get(error_path) if error_path else None
+   is_opener = service.served_as_opener(row, attempt)
 
    try:
       feedback = render.render_feedback(
@@ -361,9 +362,16 @@ def read_feedback(
          chosen_option=chosen,
          error_record=error_record,
          confidence=attempt.confidence,
+         is_opener=is_opener,
+         answer=answer,
       )
    except ValueError as refused:
       raise HTTPException(status_code=409, detail=str(refused)) from refused
+
+   is_comparison = feedback.kind == render.FeedbackKind.COMPARISON
+
+   if is_comparison:
+      return dict(render.as_dict(feedback), sentence=None, tutor_unavailable=False)
 
    feedback_arm = switches.recorded_arms(attempt).get(switches.FEEDBACK_ELABORATION)
    is_verification_only = feedback_arm == switches.DEFINITIONS[switches.FEEDBACK_ELABORATION].treatment_arm
@@ -452,7 +460,8 @@ def submit_error_note(
    fields = body_of(payload)
    row = owned_session(db, session_id, user)
    attempted = owned_attempt(db, row, attempt_id)
-   was_corrected = attempted.correct == 0
+   is_opener = service.served_as_opener(row, attempted)
+   was_corrected = attempted.correct == 0 and not is_opener
 
    if not was_corrected:
       raise HTTPException(

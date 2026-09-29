@@ -1,0 +1,137 @@
+{
+   "id": "ITM-GEN-06017-18",
+   "archetype_id": "BC-QA-06017",
+   "variant_id": null,
+   "format": "mcq",
+   "stem": {
+      "text": "Let \\( f(x) = 6 - 3 x^{2} \\). Use a midpoint Riemann sum with 2 subintervals of equal width to approximate \\( \\int_{1}^{5} f(x)\\,dx \\).",
+      "command_verb": "approximate"
+   },
+   "answer_key": {
+      "form": "symbolic",
+      "mathjson": -96
+   },
+   "worked_solution": [
+      {
+         "step": 1,
+         "text": "The interval has length \\( 4 \\), so each of the 2 subintervals has width \\( 2 \\), and the sum is \\( 2\\left(f(2) + f(4)\\right) \\).",
+         "point_type_id": "BC-PT-99018",
+         "rule_named": "form of the sum"
+      },
+      {
+         "step": 2,
+         "text": "Reading the values of f and adding gives \\( -96 \\).",
+         "mathjson": -96,
+         "point_type_id": "BC-PT-99019",
+         "rule_named": "value of the sum"
+      }
+   ],
+   "options": [
+      {
+         "id": "A",
+         "is_key": false,
+         "error_path": "BC-ERR-99028",
+         "value": -108,
+         "derivation": "a trapezoidal sum computed in place of the midpoint sum",
+         "mechanism": "conceptual_confusion"
+      },
+      {
+         "id": "B",
+         "is_key": false,
+         "error_path": "BC-ERR-06003",
+         "value": -48,
+         "derivation": "the midpoint values added without multiplying by the width 2",
+         "mechanism": "conceptual_confusion"
+      },
+      {
+         "id": "C",
+         "is_key": false,
+         "error_path": "BC-ERR-99028",
+         "value": -36,
+         "derivation": "the left endpoint of each subinterval used in place of its midpoint",
+         "mechanism": "conceptual_confusion"
+      },
+      {
+         "id": "D",
+         "is_key": true,
+         "error_path": null,
+         "value": -96
+      }
+   ],
+   "calculator_status": "no_calculator",
+   "representation": "BC-REP-01",
+   "difficulty_settings": [
+      {
+         "difficulty_factor_id": "BC-DF-03",
+         "setting": "off"
+      },
+      {
+         "difficulty_factor_id": "BC-DF-06",
+         "setting": "low"
+      },
+      {
+         "difficulty_factor_id": "BC-DF-07",
+         "setting": "off"
+      }
+   ],
+   "skills": [
+      "BC-SKL-06009",
+      "BC-SKL-06007",
+      "BC-SKL-06005",
+      "BC-SKL-06006",
+      "BC-SKL-06008"
+   ],
+   "parameter_draw": {
+      "source": "formula",
+      "method": "midpoint",
+      "heights": [
+         "1",
+         "4",
+         "1",
+         "2",
+         "4",
+         "4",
+         "6",
+         "6",
+         "-1"
+      ],
+      "leading": "-3",
+      "constant": "6",
+      "start": "1",
+      "pieces": "2",
+      "width": "2"
+   },
+   "predicted_success_probability": 0.4134,
+   "provenance": {
+      "template_id": "TPL-BC-QA-06017-v1",
+      "template_version": "1",
+      "spec_version": "1",
+      "parameter_seed": "BC-QA-06017:spec-1:item-18:try-20",
+      "parameter_draw": {
+         "source": "formula",
+         "method": "midpoint",
+         "heights": [
+            "1",
+            "4",
+            "1",
+            "2",
+            "4",
+            "4",
+            "6",
+            "6",
+            "-1"
+         ],
+         "leading": "-3",
+         "constant": "6",
+         "start": "1",
+         "pieces": "2",
+         "width": "2"
+      },
+      "model": "claude-opus-5-5 offline template, stage 15 of 2026-09-28",
+      "prompt_version": "generator/template_v1",
+      "generated_at": "2026-09-29T01:14:01Z",
+      "content_snapshot": "4363b6af148968a69a2134723832cc77bc13e1afea35e7db51a39bd994390a32",
+      "no_official_examples": true,
+      "requested_success_probability": 0.4134
+   }
+}

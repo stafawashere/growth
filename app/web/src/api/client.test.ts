@@ -470,6 +470,7 @@ const serverShapes = {
          routeFunctionName("api/routes/sessions.py", "POST", "/sessions/{}/attempts/{}/self-explanation")
       ),
    ProgressPayload: () => returnedFields("session/preview.py", "queue_preview"),
+   BlockFocus: () => returnedFields("session/preview.py", "block_focus"),
    CalibrationPayload: () => returnedFields("progress/calibration.py", "calibration_view"),
    CalibrationBin: () => returnedFields("progress/calibration.py", "bin_view"),
    MasteryMapPayload: () => returnedFields("progress/mastery.py", "mastery_map"),

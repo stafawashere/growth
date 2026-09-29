@@ -33,8 +33,8 @@ def test_graph_acyclic():
    top_edges_from = [edge for edge in top_edges if "BC-TOP" in edge["from"]]
    top_edges_to = [edge for edge in top_edges if "BC-TOP" in edge["to"]]
 
-   assert len(snapshot.edges) == 1226
-   assert snapshot.counts["consumed_edges"] == 1226
+   assert len(snapshot.edges) == 1375
+   assert snapshot.counts["consumed_edges"] == 1375
    assert len(top_edges) == 48
    assert len(top_edges_from) == 31
    assert len(top_edges_to) == 17
@@ -46,15 +46,15 @@ def test_loader_against_real_data():
    assert snapshot.counts["BC-SKL"] == 541
    assert snapshot.counts["BC-CON"] == 170
    assert snapshot.counts["BC-PRQ"] == 77
-   assert snapshot.counts["edges"] == 1226
-   assert snapshot.counts["hard_prerequisite"] == 602
+   assert snapshot.counts["edges"] == 1375
+   assert snapshot.counts["hard_prerequisite"] == 751
    assert snapshot.counts["supporting"] == 622
    assert snapshot.counts["co_requisite"] == 2
-   assert snapshot.counts["BC-QA_active"] == 139
-   assert snapshot.counts["BC-QA_families"] == 77
+   assert snapshot.counts["BC-QA_active"] == 148
+   assert snapshot.counts["BC-QA_families"] == 78
    assert snapshot.counts["BC-QV"] == 395
    assert snapshot.counts["BC-PT"] == 76
-   assert snapshot.counts["BC-ERR_active"] == 391
+   assert snapshot.counts["BC-ERR_active"] == 393
    assert snapshot.counts["BC-MIS_active"] == 213
    assert snapshot.counts["BC-SIG"] == 711
    assert snapshot.counts["BC-REP"] == 14
@@ -63,8 +63,8 @@ def test_loader_against_real_data():
    assert snapshot.counts["frq_parts"] == 249
    assert snapshot.counts["BC-MCQ"] == 91
    assert snapshot.counts["BC-TOP_edges"] == 48
-   assert snapshot.counts["empty_point_types"] == 56
-   assert snapshot.counts["empty_official_examples"] == 36
+   assert snapshot.counts["empty_point_types"] == 61
+   assert snapshot.counts["empty_official_examples"] == 45
    assert snapshot.counts["skill_in_no_archetype"] >= 1
    assert "BC-SKL-02001" not in {
       skill_id for record in snapshot.archetypes.values() for skill_id in record["skills"]

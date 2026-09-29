@@ -1,22 +1,23 @@
-import { useEffect, useState } from "react";
+import { Suspense, lazy, useEffect, useState } from "react";
 
 import { AccountScreen } from "./account/AccountScreen";
 import { ChangePasswordControl } from "./account/ChangePasswordControl";
 import { ApiError, readAuthStatus, readMe, signOut } from "./api/client";
-import { AssessmentRoute } from "./assessment/AssessmentRoute";
-import { MetricsRoute } from "./evaluation/MetricsRoute";
-import { FrqRoute } from "./frq/FrqRoute";
 import { HomeRoute } from "./home/HomeRoute";
-import { OnboardingRoute } from "./onboarding/OnboardingRoute";
 import type { OnboardingReason } from "./onboarding/OnboardingScreen";
-import { ProgressRoute } from "./progress/ProgressRoute";
-import { ReviewRoute } from "./review/ReviewRoute";
-import { SessionScreen } from "./session/SessionScreen";
 import { OperatorSettings } from "./settings/ExperimentsSection";
 import type { SettingsScreenProps } from "./settings/SettingsScreen";
 import { AccessibilitySection } from "./settings/AccessibilitySection";
 import { SettingsRoute } from "./settings/SettingsRoute";
 import { ActionFailed } from "./status/LoadState";
+
+const AssessmentRoute = lazy(() => import("./assessment/AssessmentRoute").then((module) => ({ default: module.AssessmentRoute })));
+const MetricsRoute = lazy(() => import("./evaluation/MetricsRoute").then((module) => ({ default: module.MetricsRoute })));
+const FrqRoute = lazy(() => import("./frq/FrqRoute").then((module) => ({ default: module.FrqRoute })));
+const OnboardingRoute = lazy(() => import("./onboarding/OnboardingRoute").then((module) => ({ default: module.OnboardingRoute })));
+const ProgressRoute = lazy(() => import("./progress/ProgressRoute").then((module) => ({ default: module.ProgressRoute })));
+const ReviewRoute = lazy(() => import("./review/ReviewRoute").then((module) => ({ default: module.ReviewRoute })));
+const SessionScreen = lazy(() => import("./session/SessionScreen").then((module) => ({ default: module.SessionScreen })));
 
 export type Destination = "home" | "session" | "settings" | "progress" | "review" | "onboarding" | "frq" | "mock";
 
@@ -306,53 +307,57 @@ export function App() {
 
             {signOutState === "failed" ? <ActionFailed /> : null}
 
-            {destination === "home" ? (
-               <HomeRoute
-                  today={() => new Date()}
-                  onStartSession={startSession}
-                  onResumeSession={resumeSession}
-                  onOpenProgress={() => setDestination("progress")}
-                  onOpenReview={() => setDestination("review")}
-                  onOpenFreeResponse={() => setDestination("frq")}
-                  onOpenMockExam={() => setDestination("mock")}
-                  onStartOnboarding={startOnboarding}
-               />
-            ) : null}
+            <Suspense fallback={null}>
 
-            {destination === "onboarding" ? (
-               <OnboardingRoute
-                  reason={onboardingTarget.reason}
-                  resumeSessionId={onboardingTarget.resumeSessionId}
-                  onFinished={() => setDestination("home")}
-               />
-            ) : null}
+               {destination === "home" ? (
+                  <HomeRoute
+                     today={() => new Date()}
+                     onStartSession={startSession}
+                     onResumeSession={resumeSession}
+                     onOpenProgress={() => setDestination("progress")}
+                     onOpenReview={() => setDestination("review")}
+                     onOpenFreeResponse={() => setDestination("frq")}
+                     onOpenMockExam={() => setDestination("mock")}
+                     onStartOnboarding={startOnboarding}
+                  />
+               ) : null}
 
-            {destination === "session" ? <SessionScreen resumeSessionId={sessionTarget.resumeSessionId} /> : null}
+               {destination === "onboarding" ? (
+                  <OnboardingRoute
+                     reason={onboardingTarget.reason}
+                     resumeSessionId={onboardingTarget.resumeSessionId}
+                     onFinished={() => setDestination("home")}
+                  />
+               ) : null}
 
-            {destination === "progress" ? <ProgressRoute /> : null}
+               {destination === "session" ? <SessionScreen resumeSessionId={sessionTarget.resumeSessionId} /> : null}
 
-            {destination === "review" ? <ReviewRoute /> : null}
+               {destination === "progress" ? <ProgressRoute /> : null}
 
-            {destination === "frq" ? <FrqRoute /> : null}
+               {destination === "review" ? <ReviewRoute /> : null}
 
-            {destination === "mock" ? <AssessmentRoute /> : null}
+               {destination === "frq" ? <FrqRoute /> : null}
 
-            {destination === "settings" && settingsPage === "settings" ? (
-               <>
-                  <SettingsRoute purgeConfirmationPhrase={PURGE_CONFIRMATION_PHRASE} saveFile={saveFile} />
-                  <AccessibilitySection />
-                  <ChangePasswordControl />
-                  <details className="operator-details" data-testid="operator-experiments-evidence">
-                     <summary>{OPERATOR_EXPERIMENTS_SUMMARY}</summary>
+               {destination === "mock" ? <AssessmentRoute /> : null}
 
-                     <OperatorSettings onOpenEvidence={() => setSettingsPage("evidence")} />
-                  </details>
-               </>
-            ) : null}
+               {destination === "settings" && settingsPage === "settings" ? (
+                  <>
+                     <SettingsRoute purgeConfirmationPhrase={PURGE_CONFIRMATION_PHRASE} saveFile={saveFile} />
+                     <AccessibilitySection />
+                     <ChangePasswordControl />
+                     <details className="operator-details" data-testid="operator-experiments-evidence">
+                        <summary>{OPERATOR_EXPERIMENTS_SUMMARY}</summary>
 
-            {destination === "settings" && settingsPage === "evidence" ? (
-               <MetricsRoute onLeave={() => setSettingsPage("settings")} />
-            ) : null}
+                        <OperatorSettings onOpenEvidence={() => setSettingsPage("evidence")} />
+                     </details>
+                  </>
+               ) : null}
+
+               {destination === "settings" && settingsPage === "evidence" ? (
+                  <MetricsRoute onLeave={() => setSettingsPage("settings")} />
+               ) : null}
+
+            </Suspense>
 
             <UnsuppliedPanel destination={destination} />
          </main>

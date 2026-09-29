@@ -2076,6 +2076,158 @@ items) and items 3 and 6 (Slices 3 and 4). Every gate 11 names for P2 now exists
   was so before this change and is listed under Known defects. After the security and code
   reviews, tests/auth, the route list, auth status, export and tests/db `215 passed in 13.79s`.
 
+- 2026-09-28, stage 14 (engine gaps), on the operator's instruction. Three rules of 02 and 06
+  that had storage or constants and no code behind them now run. Nothing was committed.
+  The productive-failure opener (02 Session assembly, 01 Productive-failure openers), which 11
+  P1 scope item 9 had deferred (R35); the operator's instruction brings it into scope, and 11
+  itself is not edited. `app/session/build.py` `assemble_session(openers=True)`, asked for only by
+  `app/session/service.py` `open_session` in mode learning, places one opener as the first
+  ordinary item of block 2: after a pending probe (R6), before any fringe item. A concept is due
+  while any skill of its concept record is on the fringe and `concept_opener_done` on the
+  record's first skill is 0; the item is a published item, not served in the repeat window, of an
+  archetype that loads a skill of the concept, carries BC-DF-13 or BC-DF-15 and clears gating
+  (invariant 3), dressed by `app/engine/select.py` `dress_item(opener_concept=...)` at stage
+  unsupported with `is_opener` and `opener_concept` on the slot. Assembly sets the flag on the
+  in-memory state and `open_session` writes it through `repository.mark_openers_done`, which
+  touches `concept_opener_done` and `updated_at` only; one opener per session, at most once per
+  concept. `record_attempt` records an opener attempt graded, writes `not_attempted` for every
+  loaded skill into `attempts.per_skill_states` and applies it at once, so `observation_count`
+  moves (02's schema table: every direct observation, including uncredited ones) and no other
+  `skills_state` field does; `record_confidence` stores the rating without applying it,
+  `close_session` skips it, the feedback A/B switch is not read for it, and
+  `load_attempts_history` does not mark an opener miss corrected, so it is neither requeued nor
+  listed in block 4. With no eligible item the opener is skipped, the flag stays 0 and
+  `opener_gap_fail_open` (new in `app/audit/vocabulary.py`, 31 names) is written once per user,
+  concept and day. Diagnostic, review and rehearsal sessions place none, and blocks 1 and 3
+  never do. `Graph.concept_skills` (from `data/skills.json` concept records, through
+  `app/runtime/graphs.py`) carries the concept's skills; home's queue preview and the simulations
+  do not ask for openers. The web client reads `is_opener` and heads the item with "Try this
+  before the method is shown." (`app/web/src/session/Item.tsx`, `api/types.ts`).
+  Targets, `PRODUCTIVE_FAILURE_TARGETS` in `app/engine/constants.py` [inferred]: 01 and 02 name
+  units, not concepts, and 01 caps the mechanic at once per target, so each target maps to one
+  concept chosen by name in its unit: limits BC-CON-01002 (The limit of a function at a point),
+  the derivative definition BC-CON-02002 (Instantaneous rate of change as the limit of a
+  difference quotient), accumulation BC-CON-06001 (Accumulation of change as area under a rate
+  graph), polar and parametric area BC-CON-09015 (Area of a polar region as an integral of one
+  half r squared; no concept covers parametric area), series convergence BC-CON-10002
+  (Convergence of a series as a limit of its partial sums). Only BC-CON-01002 (BC-QA-01013) and
+  BC-CON-06001 (BC-QA-06004) have an active BC-DF-13 or BC-DF-15 archetype loading one of their
+  skills, checked against `data/` on this date (18 such archetypes in all); the other three will
+  fail open and write the gap row until the library or the mapping changes.
+  The decayed-support cap (02 Decay): `app/engine/fringe.py` `serve_stage` serves completion when
+  the primary skill has a credited observation, its stored stage is unsupported and its R_k is
+  below `DECAYED_SUPPORT_CAP_RETRIEVABILITY` (0.5), and writes nothing, so R7's counter pair stays
+  the only writer of `fading_stage` and `attempts.served_stage` records the cap. Every assembly
+  path already hands today's R_k map through `dress_item` (`retrievability_map` in
+  `assemble_session`, `next_item_learning`, `next_item_review`, `next_item_retrieval`, and the
+  requeue's `pick_named_item`); `resolve_served_stage` reads the stage frozen at assembly, so no
+  plumbing change was needed, and a caller with no map still gets R_k = 1 and no cap. Block 3 is
+  capped too [inferred]: 02 calls it interleaved mixed review, and the criterion behaviour 02
+  keeps free of support is rehearsal's (05), not block 3's. This departs from R32's "returns it
+  unchanged" for a served stage only, on the Decay rule of the same document.
+  The snapshot reload (06 Library updates and retired IDs): `app/content/reload.py` (new)
+  `reload_snapshot`, called by `app/runtime/context.py` `build_session_context`. An unchanged
+  digest, or no active row, reconciles nothing. A new digest first checks every `skills_state`
+  row against the active ids and `data/ids.json` (`reconcile.refusals`, sharing
+  `reconcile.classify` with `reconcile_skills_state`); any refusal writes a rejected
+  `content_snapshots` row, keeps the old row active, leaves every row as it was and raises
+  `ReloadRefused`. Otherwise each user is reconciled in its own transaction
+  (`reconcile_skills_state(user_id=...)`) against a row id fixed beforehand, and only then is the
+  new row made active and `content_snapshot_reloaded` written once with users, kept, rewritten,
+  merged and orphaned counts and both digests. `ContentSnapshot.ids` carries the registry
+  `app/content/loader.py` already read; `record_snapshot` takes an optional `row_id`.
+  Tests added: `tests/session/test_opener.py` (8), `tests/engine/test_decay_cap.py` (7),
+  `tests/runtime/test_snapshot_reload.py` (3), `app/web/src/session/opener.test.tsx` (2). Each was
+  shown red against a planted break from a scratchpad script and green on restore: 12 breaks for
+  the opener (openers never asked, flag not persisted, opener credited, rating applied, every mode
+  opening, opener ahead of the probe, no gap row, gap row not deduplicated, opener miss requeued,
+  stage left to the bands, any archetype of the concept, a diagnostic slot marked opener), 6 for
+  the cap (cap removed, threshold at 0.9, stored stage ignored, stage written, cap before the
+  history check, R_k dropped in `dress_item`), 6 for the reload (reconcile on every load, never,
+  no pre-check, no audit row, ids not on the snapshot, refusal not recorded), and 2 for the header.
+  Checks. `tests/engine tests/session tests/content tests/audit tests/runtime` in the working
+  tree: `8 failed, 214 passed in 46.47s`, all 8 whole-graph or live-data tests
+  (test_interleave_full x2, test_two_term_whole_graph x3, test_diagnostic placement,
+  test_loader x2, one pinning 1226 edges against 1375); `data/` and `data/prereq_edges.csv` were
+  being changed by another session during this stage, and the same code on HEAD's `data/` in a
+  scratch worktree gave `219 passed in 52.76s`. tests/api, db, progress, experiments, feedback,
+  diagnosis and e2e on HEAD's data with this change: `3 failed, 342 passed in 476.42s`. Pristine
+  HEAD fails test_unauthenticated_routes and, on one of two runs, test_agent_drafts_served as
+  well, so those two are not this change. vitest `Tests 712 passed (712)`; `tsc --noEmit` exit 0.
+  The full pytest suite was not run (it has taken 25 to 49 minutes).
+  Open. `tests/api/test_seeded_weeks.py::eval_the_harness_runs_end_to_end_on_seeded_weeks` fails
+  with the cap: the verification-only feedback arm reaches 25 outcomes against the 30 floor
+  (control 52), where without the cap it reached exactly 30 (control 55). The cap serves some
+  decayed skills at completion, which reads no feedback switch. The test was not changed; it
+  needs the operator's ruling (more weeks, or a floor the run reaches with margin). Three of five
+  targets have no generation archetype. The comparison step 01 makes obligatory (the attempt
+  beside the canonical method, the gap named) is not built; the feedback screen shows the
+  ordinary verdict, and 15's `comparison` callout is where it would go. An opener at stage
+  unsupported takes R29's format turn, so it can be served as multiple choice. 01 says the
+  opener replaces block 2 on the day and runs 10 to 15 minutes; 02, which owns it (R5), makes it
+  the first ordinary item, and the forecast gives it the 3-minute default. The client may still
+  offer an error note after an opener miss. `data/ids.json` is not in the snapshot digest, so a
+  tombstone added with no other registry change triggers no reconciliation. The concept records
+  of BC-CON-06001 and BC-CON-06007 list skills whose own `concept` field names another concept;
+  the concept record is what the opener reads.
+- 2026-09-28, stage 14 follow-ups, on the operator's delegation. Four of stage 14's open items
+  closed. Nothing was committed.
+  The seeded run, on the operator's ruling that the 30-outcome floor is 10's Newcombe requirement
+  and does not move. `tests/api/test_seeded_weeks.py` `WEEKS` goes from 12 to 16; this is a
+  change to the seeded run's length, not to the floor or any assertion. Outcomes per feedback arm
+  (control, verification-only), measured by a scratchpad copy of the test body with the cap on
+  and with `DECAYED_SUPPORT_CAP_RETRIEVABILITY` set below every R_k: 12 weeks capped 52 and 25,
+  uncapped 55 and 30 (both match stage 14's figures); 15 weeks capped 63 and 34, uncapped 68 and
+  38; 16 weeks capped 64 and 38, uncapped 71 and 41. Sixteen is the shortest run tried whose
+  smaller arm clears 30 by at least 5 under both engines (margins 8 and 11). The run takes about
+  15 seconds.
+  Openers are short answer. `app/engine/select.py` `format_for_item` returns SHORT_ANSWER for a
+  slot carrying `is_opener` before R29's turn is read, and `dress_item` now marks the slot before
+  it asks for the format, so the format frozen at assembly and the one `resolve_served_format`
+  re-reads when the slot is served agree. A statement-keyed item (`requires_choice`) has nothing
+  to type, so `app/session/build.py` `opener_options` keeps it out of openers; a target whose only
+  generation items are statement-keyed fails open and writes the gap row as before.
+  The comparison step (01, Productive-failure openers). `app/feedback/render.py` gains the
+  `comparison` kind: an opener submitted and not correct (a miss, or an answer the grader could
+  not settle) gets the item's worked steps beside the stored attempt under one line, "The
+  method's first step is to" plus the first step of the archetype's `expected_solution_path`,
+  followed by the matched BC-ERR record's `observed_behavior` when the chosen option names one.
+  No verdict word, no violated step, no self-explanation prompt. `app/api/routes/sessions.py`
+  `read_feedback` returns it with `sentence` None and makes no tutor call, and does not read the
+  feedback switch for it; the error-note route refuses an opener attempt with 409, and
+  `app/session/service.py` `record_self_explanation` refuses one as not invited
+  (`served_as_opener`, which reads the slot and treats an item no serving slot holds as no
+  opener). The client renders `ComparisonPanel.tsx` in place of the elaborated panel, with the
+  student's "You wrote" block and "The method" side by side, offers no error note or
+  self-explanation prompt after an opener, and does not count an opener miss as corrected on the
+  end screen. 15 puts the comparison callout on the lesson's first worked example; lessons are
+  not built, so it sits on the opener's feedback screen until they are [inferred].
+  The digest. `app/content/loader.py` `_digest_for` hashes `data/ids.json` with the registries,
+  `sources.json` and `prereq_edges.csv`, so a tombstone alone reconciles. No test pinned a digest
+  value, so no pin changed. The live digest changes once with this, so the next start with an
+  active row runs one reconciliation that keeps every row whose id is still active.
+  Tests added: `tests/session/test_opener.py` (2: short answer on a turn R29 gives to MCQ, no
+  statement-keyed opener), `tests/api/test_opener_feedback.py` (4), `tests/feedback/test_render.py`
+  (3), `tests/runtime/test_snapshot_reload.py` (1: a tombstone alone changes the digest and
+  merges), `app/web/src/session/openerComparison.test.tsx` (3). Each was shown red against a
+  planted break from a scratchpad script and green on restore, 12 breaks: the opener rule
+  removed, the format read from the undressed item, statement-keyed items allowed, render
+  ignoring the opener, the route not passing it, the error note and the self-explanation taken
+  for an opener, the client offering the note, showing the prompt and dropping the panel,
+  ids.json out of the digest, and the seeded run back at 12 weeks.
+  Checks. `tests/api/test_seeded_weeks.py tests/session tests/engine/test_decay_cap.py
+  tests/runtime tests/content`: `108 passed in 29.20s`, tests/content included (its edge-count
+  pin passed on today's `data/`). tests/feedback, tests/engine and the feedback, error-note,
+  self-explanation, routes, ungraded and served-steps API tests: `4 failed, 179 passed`, the 4
+  being test_interleave_full and three of test_two_term_whole_graph, which read live `data/` and
+  fail the same with this change's engine edits reverted. vitest `Tests 715 passed (715)`;
+  `tsc --noEmit` exit 0. The first vitest run failed two stylesheet gates on a grid literal in the
+  new `.comparison-grid` rule; the rule was rewritten in tokens, the gates were not touched.
+  Open. The opener's 10 to 15 minutes against 02's first-ordinary-item placement, the three
+  targets with no generation archetype, and the BC-CON-06001 and BC-CON-06007 concept records
+  stand as stage 14 left them. An opener short answer carries no error path from the grader, so
+  the comparison line names the first step alone until a short-answer error match exists.
+
 ## In progress [inferred]
 
 Stage 1, items for Units 4 to 10, is complete in the worktree `../growth-content` on branch

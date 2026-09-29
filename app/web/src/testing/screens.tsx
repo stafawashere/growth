@@ -326,6 +326,16 @@ function homeScreen(status: HomeScreenStatus) {
             { id: "frontier", label: "skills at your current frontier", count: 4 },
             { id: "corrected", label: "corrected items coming back", count: 7 }
          ]}
+         focus={[
+            { block: "review", items: 5, skills: ["Compute a right Riemann sum from a table of values"], more_skills: 0, units: [6] },
+            {
+               block: "learn",
+               items: 8,
+               skills: ["Find the radius of convergence of a power series", "Apply the ratio test"],
+               more_skills: 3,
+               units: [10]
+            }
+         ]}
          onStartSession={vi.fn()}
          onAddPracticeSet={vi.fn()}
          onResumeSession={vi.fn()}

@@ -1,0 +1,111 @@
+{
+   "id": "ITM-GEN-05014-03",
+   "archetype_id": "BC-QA-05014",
+   "variant_id": null,
+   "format": "mcq",
+   "stem": {
+      "text": "Let \\( f(x) = - \\frac{4 \\left|{x - 4}\\right|}{x} \\) for \\( x \\ne 0 \\). Find all critical points of f.",
+      "command_verb": "find"
+   },
+   "answer_key": {
+      "form": "statement",
+      "label": "The only critical point of f is x = 4."
+   },
+   "worked_solution": [
+      {
+         "step": 1,
+         "text": "For x other than 4 and 0, \\( f'(x) = - \\frac{16}{x^{2}} \\text{ for } x > 4 \\text{ and } f'(x) = \\frac{16}{x^{2}} \\text{ for } x < 4 \\). The derivative is never 0.",
+         "rule_named": "quotient and chain rules"
+      },
+      {
+         "step": 2,
+         "text": "The numerator -16 is never 0, so \\( f'(x) = 0 \\) has no solution.",
+         "point_type_id": "BC-PT-99013",
+         "rule_named": "critical point where the derivative is zero"
+      },
+      {
+         "step": 3,
+         "text": "At x = 4 the function is defined, \\( f(4) = 0 \\), and the one-sided derivatives there have opposite signs, so the graph of f has a corner there; so the derivative fails to exist at an input in the domain and x = 4 is a critical point. At x = 0 the derivative also fails to exist, but f is not defined there, so x = 0 is not a critical point.",
+         "rule_named": "critical point where the derivative fails to exist"
+      }
+   ],
+   "options": [
+      {
+         "id": "A",
+         "is_key": true,
+         "error_path": null,
+         "label": "The only critical point of f is x = 4."
+      },
+      {
+         "id": "B",
+         "is_key": false,
+         "error_path": "BC-ERR-05011",
+         "label": "f has no critical points.",
+         "derivation": "f' is never 0, so no critical point was reported, with the corner skipped",
+         "mechanism": "conceptual_confusion"
+      },
+      {
+         "id": "C",
+         "is_key": false,
+         "error_path": "BC-ERR-05010",
+         "label": "The only critical point of f is x = 0.",
+         "derivation": "the excluded input 0 reported as the only place where f' fails to exist, with the corner missed",
+         "mechanism": "compound"
+      },
+      {
+         "id": "D",
+         "is_key": false,
+         "error_path": "BC-ERR-05010",
+         "label": "The critical points of f are x = 0 and x = 4.",
+         "derivation": "the excluded input 0 kept beside the corner",
+         "mechanism": "theorem_condition_ignored"
+      }
+   ],
+   "calculator_status": "no_calculator",
+   "representation": "BC-REP-01",
+   "difficulty_settings": [
+      {
+         "difficulty_factor_id": "BC-DF-06",
+         "setting": "low"
+      },
+      {
+         "difficulty_factor_id": "BC-DF-07",
+         "setting": "off"
+      },
+      {
+         "difficulty_factor_id": "BC-DF-17",
+         "setting": "low"
+      }
+   ],
+   "skills": [
+      "BC-SKL-05011",
+      "BC-SKL-05010",
+      "BC-SKL-02022",
+      "BC-SKL-02023"
+   ],
+   "parameter_draw": {
+      "shape": "corner",
+      "root": "4",
+      "pole": "0",
+      "multiplier": "-4"
+   },
+   "predicted_success_probability": 0.3318,
+   "provenance": {
+      "template_id": "TPL-BC-QA-05014-v1",
+      "template_version": "1",
+      "spec_version": "1",
+      "parameter_seed": "BC-QA-05014:spec-1:item-3:try-3",
+      "parameter_draw": {
+         "shape": "corner",
+         "root": "4",
+         "pole": "0",
+         "multiplier": "-4"
+      },
+      "model": "claude-opus-5-5 offline template, stage 15 of 2026-09-28",
+      "prompt_version": "generator/template_v1",
+      "generated_at": "2026-09-29T01:14:01Z",
+      "content_snapshot": "4363b6af148968a69a2134723832cc77bc13e1afea35e7db51a39bd994390a32",
+      "no_official_examples": true,
+      "requested_success_probability": 0.3318
+   }
+}

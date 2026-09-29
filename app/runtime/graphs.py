@@ -23,6 +23,7 @@ def graphs_from_snapshot(snapshot):
       edges=list(snapshot.edges),
       inert_top=snapshot.inert_top_ids,
       conversion_pairs=conversion_pairs_from(snapshot.representations.values()),
+      concepts=list(snapshot.concepts.values()),
    )
    engine_graph = EngineGraph(
       hard_parents=snapshot.hard_parents,

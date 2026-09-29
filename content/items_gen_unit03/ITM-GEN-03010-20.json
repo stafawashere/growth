@@ -1,0 +1,297 @@
+{
+   "id": "ITM-GEN-03010-20",
+   "archetype_id": "BC-QA-03010",
+   "variant_id": null,
+   "format": "mcq",
+   "stem": {
+      "text": "Let \\( g(x) = \\arccos\\left(\\frac{5 x + 4}{4}\\right) \\) for \\( -1 < \\frac{5 x + 4}{4} < 1 \\), so that \\( 0 \\le g(x) \\le \\pi \\) and \\( \\cos\\left(g(x)\\right) = \\frac{5 x + 4}{4} \\). Differentiate both sides of this identity with respect to x to find \\( g'(x) \\).",
+      "command_verb": "find"
+   },
+   "answer_key": {
+      "form": "symbolic",
+      "mathjson": [
+         "Multiply",
+         -1,
+         5,
+         [
+            "Power",
+            [
+               "Add",
+               16,
+               [
+                  "Negate",
+                  [
+                     "Power",
+                     [
+                        "Add",
+                        [
+                           "Multiply",
+                           5,
+                           "x"
+                        ],
+                        4
+                     ],
+                     2
+                  ]
+               ]
+            ],
+            [
+               "Rational",
+               -1,
+               2
+            ]
+         ]
+      ]
+   },
+   "worked_solution": [
+      {
+         "step": 1,
+         "text": "Differentiate both sides of \\( \\cos\\left(g(x)\\right) = \\frac{5 x + 4}{4} \\) with respect to x. The chain rule on the left gives \\( -\\sin\\left(g(x)\\right) \\cdot g'(x) = \\frac{5}{4} \\).",
+         "rule_named": "chain rule on the identity f(g(x)) = x"
+      },
+      {
+         "step": 2,
+         "text": "Express the trigonometric factor in x by the Pythagorean identity, with the positive root because the sine is not negative on this branch: \\( \\sin\\left(g(x)\\right) = \\sqrt{1 - \\cos^{2}\\left(g(x)\\right)} = \\sqrt{1 - \\left(\\frac{5 x}{4} + 1\\right)^{2}} \\).",
+         "rule_named": "Pythagorean identity on the principal branch"
+      },
+      {
+         "step": 3,
+         "text": "Solve for the derivative: \\( g'(x) = - \\frac{5}{\\sqrt{16 - \\left(5 x + 4\\right)^{2}}} \\).",
+         "mathjson": [
+            "Multiply",
+            -1,
+            5,
+            [
+               "Power",
+               [
+                  "Add",
+                  16,
+                  [
+                     "Negate",
+                     [
+                        "Power",
+                        [
+                           "Add",
+                           [
+                              "Multiply",
+                              5,
+                              "x"
+                           ],
+                           4
+                        ],
+                        2
+                     ]
+                  ]
+               ],
+               [
+                  "Rational",
+                  -1,
+                  2
+               ]
+            ]
+         ],
+         "rule_named": "solve the differentiated identity"
+      }
+   ],
+   "options": [
+      {
+         "id": "A",
+         "is_key": true,
+         "error_path": null,
+         "value": [
+            "Multiply",
+            -1,
+            5,
+            [
+               "Power",
+               [
+                  "Add",
+                  16,
+                  [
+                     "Negate",
+                     [
+                        "Power",
+                        [
+                           "Add",
+                           [
+                              "Multiply",
+                              5,
+                              "x"
+                           ],
+                           4
+                        ],
+                        2
+                     ]
+                  ]
+               ],
+               [
+                  "Rational",
+                  -1,
+                  2
+               ]
+            ]
+         ]
+      },
+      {
+         "id": "B",
+         "is_key": false,
+         "error_path": "BC-ERR-03018",
+         "value": [
+            "Multiply",
+            -1,
+            4,
+            [
+               "Power",
+               [
+                  "Add",
+                  16,
+                  [
+                     "Negate",
+                     [
+                        "Power",
+                        [
+                           "Add",
+                           [
+                              "Multiply",
+                              5,
+                              "x"
+                           ],
+                           4
+                        ],
+                        2
+                     ]
+                  ]
+               ],
+               [
+                  "Rational",
+                  -1,
+                  2
+               ]
+            ]
+         ],
+         "derivation": "the factor 5/4 from differentiating the inner expression omitted",
+         "mechanism": "chain_rule_omitted"
+      },
+      {
+         "id": "C",
+         "is_key": false,
+         "error_path": "BC-ERR-03017",
+         "value": [
+            "Multiply",
+            -1,
+            20,
+            [
+               "Power",
+               [
+                  "Add",
+                  [
+                     "Power",
+                     [
+                        "Add",
+                        [
+                           "Multiply",
+                           5,
+                           "x"
+                        ],
+                        4
+                     ],
+                     2
+                  ],
+                  16
+               ],
+               -1
+            ]
+         ],
+         "derivation": "the inverse tangent pattern, one over 1 plus the square, used in place of the radical pattern",
+         "mechanism": "conceptual_confusion"
+      },
+      {
+         "id": "D",
+         "is_key": false,
+         "error_path": "BC-ERR-03017",
+         "value": [
+            "Multiply",
+            5,
+            [
+               "Power",
+               [
+                  "Add",
+                  16,
+                  [
+                     "Negate",
+                     [
+                        "Power",
+                        [
+                           "Add",
+                           [
+                              "Multiply",
+                              5,
+                              "x"
+                           ],
+                           4
+                        ],
+                        2
+                     ]
+                  ]
+               ],
+               [
+                  "Rational",
+                  -1,
+                  2
+               ]
+            ]
+         ],
+         "derivation": "the sign of the derivative of the cosine lost, so the inverse sine and inverse cosine results are exchanged",
+         "mechanism": "sign_error"
+      }
+   ],
+   "calculator_status": "no_calculator",
+   "representation": "BC-REP-01",
+   "difficulty_settings": [
+      {
+         "difficulty_factor_id": "BC-DF-04",
+         "setting": "high"
+      },
+      {
+         "difficulty_factor_id": "BC-DF-06",
+         "setting": "medium"
+      },
+      {
+         "difficulty_factor_id": "BC-DF-07",
+         "setting": "off"
+      }
+   ],
+   "skills": [
+      "BC-SKL-03020",
+      "BC-SKL-03023",
+      "BC-SKL-03022",
+      "BC-SKL-03002"
+   ],
+   "parameter_draw": {
+      "inverse": "arccos",
+      "slope": "5",
+      "slope_sign": "1",
+      "offset": "4",
+      "scale": "4"
+   },
+   "predicted_success_probability": 0.148,
+   "provenance": {
+      "template_id": "TPL-BC-QA-03010-v1",
+      "template_version": "1",
+      "spec_version": "1",
+      "parameter_seed": "BC-QA-03010:spec-1:item-20:try-20",
+      "parameter_draw": {
+         "inverse": "arccos",
+         "slope": "5",
+         "slope_sign": "1",
+         "offset": "4",
+         "scale": "4"
+      },
+      "model": "claude-opus-5-5 offline template, stage 15 of 2026-09-28",
+      "prompt_version": "generator/template_v1",
+      "generated_at": "2026-09-29T01:14:01Z",
+      "content_snapshot": "4363b6af148968a69a2134723832cc77bc13e1afea35e7db51a39bd994390a32",
+      "no_official_examples": true,
+      "requested_success_probability": 0.1978
+   }
+}

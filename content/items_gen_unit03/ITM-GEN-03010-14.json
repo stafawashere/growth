@@ -1,0 +1,278 @@
+{
+   "id": "ITM-GEN-03010-14",
+   "archetype_id": "BC-QA-03010",
+   "variant_id": null,
+   "format": "mcq",
+   "stem": {
+      "text": "Let \\( g(x) = \\arctan\\left(\\frac{- 3 x - 9}{10}\\right) \\), so that \\( -\\frac{\\pi}{2} < g(x) < \\frac{\\pi}{2} \\) and \\( \\tan\\left(g(x)\\right) = \\frac{- 3 x - 9}{10} \\). Differentiate both sides of this identity with respect to x to find \\( g'(x) \\).",
+      "command_verb": "find"
+   },
+   "answer_key": {
+      "form": "symbolic",
+      "mathjson": [
+         "Multiply",
+         -1,
+         30,
+         [
+            "Power",
+            [
+               "Add",
+               [
+                  "Power",
+                  [
+                     "Add",
+                     [
+                        "Multiply",
+                        -1,
+                        3,
+                        "x"
+                     ],
+                     -9
+                  ],
+                  2
+               ],
+               100
+            ],
+            -1
+         ]
+      ]
+   },
+   "worked_solution": [
+      {
+         "step": 1,
+         "text": "Differentiate both sides of \\( \\tan\\left(g(x)\\right) = \\frac{- 3 x - 9}{10} \\) with respect to x. The chain rule on the left gives \\( \\sec^{2}\\left(g(x)\\right) \\cdot g'(x) = - \\frac{3}{10} \\).",
+         "rule_named": "chain rule on the identity f(g(x)) = x"
+      },
+      {
+         "step": 2,
+         "text": "Express the trigonometric factor in x by the Pythagorean identity for tangent and secant: \\( \\sec^{2}\\left(g(x)\\right) = 1 + \\tan^{2}\\left(g(x)\\right) = \\left(- \\frac{3 x}{10} - \\frac{9}{10}\\right)^{2} + 1 \\).",
+         "rule_named": "Pythagorean identity on the principal branch"
+      },
+      {
+         "step": 3,
+         "text": "Solve for the derivative: \\( g'(x) = - \\frac{30}{\\left(- 3 x - 9\\right)^{2} + 100} \\).",
+         "mathjson": [
+            "Multiply",
+            -1,
+            30,
+            [
+               "Power",
+               [
+                  "Add",
+                  [
+                     "Power",
+                     [
+                        "Add",
+                        [
+                           "Multiply",
+                           -1,
+                           3,
+                           "x"
+                        ],
+                        -9
+                     ],
+                     2
+                  ],
+                  100
+               ],
+               -1
+            ]
+         ],
+         "rule_named": "solve the differentiated identity"
+      }
+   ],
+   "options": [
+      {
+         "id": "A",
+         "is_key": false,
+         "error_path": "BC-ERR-03017",
+         "value": [
+            "Multiply",
+            -1,
+            30,
+            [
+               "Power",
+               [
+                  "Add",
+                  100,
+                  [
+                     "Negate",
+                     [
+                        "Power",
+                        [
+                           "Add",
+                           [
+                              "Multiply",
+                              -1,
+                              3,
+                              "x"
+                           ],
+                           -9
+                        ],
+                        2
+                     ]
+                  ]
+               ],
+               -1
+            ]
+         ],
+         "derivation": "the secant squared replaced by 1 minus the tangent squared, a sign misplaced in the identity",
+         "mechanism": "sign_error"
+      },
+      {
+         "id": "B",
+         "is_key": true,
+         "error_path": null,
+         "value": [
+            "Multiply",
+            -1,
+            30,
+            [
+               "Power",
+               [
+                  "Add",
+                  [
+                     "Power",
+                     [
+                        "Add",
+                        [
+                           "Multiply",
+                           -1,
+                           3,
+                           "x"
+                        ],
+                        -9
+                     ],
+                     2
+                  ],
+                  100
+               ],
+               -1
+            ]
+         ]
+      },
+      {
+         "id": "C",
+         "is_key": false,
+         "error_path": "BC-ERR-03017",
+         "value": [
+            "Multiply",
+            -1,
+            3,
+            [
+               "Power",
+               [
+                  "Add",
+                  100,
+                  [
+                     "Negate",
+                     [
+                        "Power",
+                        [
+                           "Add",
+                           [
+                              "Multiply",
+                              -1,
+                              3,
+                              "x"
+                           ],
+                           -9
+                        ],
+                        2
+                     ]
+                  ]
+               ],
+               [
+                  "Rational",
+                  -1,
+                  2
+               ]
+            ]
+         ],
+         "derivation": "the inverse sine pattern, one over a square root, used in place of the inverse tangent pattern",
+         "mechanism": "conceptual_confusion"
+      },
+      {
+         "id": "D",
+         "is_key": false,
+         "error_path": "BC-ERR-03018",
+         "value": [
+            "Multiply",
+            100,
+            [
+               "Power",
+               [
+                  "Add",
+                  [
+                     "Power",
+                     [
+                        "Add",
+                        [
+                           "Multiply",
+                           -1,
+                           3,
+                           "x"
+                        ],
+                        -9
+                     ],
+                     2
+                  ],
+                  100
+               ],
+               -1
+            ]
+         ],
+         "derivation": "the factor -3/10 from differentiating the inner expression omitted",
+         "mechanism": "chain_rule_omitted"
+      }
+   ],
+   "calculator_status": "no_calculator",
+   "representation": "BC-REP-01",
+   "difficulty_settings": [
+      {
+         "difficulty_factor_id": "BC-DF-04",
+         "setting": "high"
+      },
+      {
+         "difficulty_factor_id": "BC-DF-06",
+         "setting": "low"
+      },
+      {
+         "difficulty_factor_id": "BC-DF-07",
+         "setting": "off"
+      }
+   ],
+   "skills": [
+      "BC-SKL-03020",
+      "BC-SKL-03023",
+      "BC-SKL-03022",
+      "BC-SKL-03002"
+   ],
+   "parameter_draw": {
+      "inverse": "arctan",
+      "slope": "3",
+      "slope_sign": "-1",
+      "offset": "-9",
+      "scale": "10"
+   },
+   "predicted_success_probability": 0.1978,
+   "provenance": {
+      "template_id": "TPL-BC-QA-03010-v1",
+      "template_version": "1",
+      "spec_version": "1",
+      "parameter_seed": "BC-QA-03010:spec-1:item-14:try-14",
+      "parameter_draw": {
+         "inverse": "arctan",
+         "slope": "3",
+         "slope_sign": "-1",
+         "offset": "-9",
+         "scale": "10"
+      },
+      "model": "claude-opus-5-5 offline template, stage 15 of 2026-09-28",
+      "prompt_version": "generator/template_v1",
+      "generated_at": "2026-09-29T01:14:01Z",
+      "content_snapshot": "4363b6af148968a69a2134723832cc77bc13e1afea35e7db51a39bd994390a32",
+      "no_official_examples": true,
+      "requested_success_probability": 0.1978
+   }
+}

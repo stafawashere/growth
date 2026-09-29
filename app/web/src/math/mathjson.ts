@@ -12,6 +12,11 @@ const INLINE_MATH = /\\\(([\s\S]*?)\\\)/g;
 /* compute-engine writes the constant e as its own \exponentialE, which KaTeX renders as an error. */
 const COMPUTE_ENGINE_E = /\\exponentialE(?![a-zA-Z])/g;
 
+/* Inline math would otherwise set the limit's subscript beside lim, as textbooks never do. */
+const STACKED_LIMIT_MACROS = {
+   "\\lim": "\\mathop{\\mathrm{lim}}\\limits"
+};
+
 export function mathJsonToLatex(node: unknown): string {
    if (node === null || node === undefined) {
       return "";
@@ -46,6 +51,7 @@ export function renderLatexToMarkup(latex: string, displayMode = false): string 
          throwOnError: false,
          errorColor: "var(--growth-text-primary)",
          output: "htmlAndMathml",
+         macros: { ...STACKED_LIMIT_MACROS },
          displayMode
       });
    } catch {

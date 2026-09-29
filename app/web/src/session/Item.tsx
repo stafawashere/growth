@@ -27,7 +27,7 @@ export const COMMIT_LABEL = "Check my answer";
 export const WORKED_STEPS_MISSING =
    "The worked steps for this problem have not reached me, so I cannot work through it yet.";
 
-export const CALCULATOR_NOTE = "Calculator allowed for this item.";
+export const OPENER_NOTE = "Try this before the method is shown.";
 
 export const ANSWER_UNAVAILABLE =
    "The math keyboard did not load, so this problem cannot take my answer. Nothing I type here would be saved.";
@@ -113,6 +113,7 @@ export function Item(props: ItemProps) {
       );
    }
 
+   const isOpener = item.is_opener === true;
    const isExample = item.stage === "example";
    const isCompletion = item.stage === "completion";
    const needsWorkedSteps = isExample || isCompletion;
@@ -138,11 +139,13 @@ export function Item(props: ItemProps) {
 
    return (
       <article className="card item" data-testid="item" data-stage={item.stage}>
-         <p className="item-stem" data-testid="item-stem"><MathText text={item.stem} /></p>
+         {isOpener ? <p className="eyebrow" data-testid="opener-note">{OPENER_NOTE}</p> : null}
 
-         {allowsCalculator ? <p className="item-calculator" data-testid="calculator-note">{CALCULATOR_NOTE}</p> : null}
+         <p className={allowsCalculator ? "item-stem item-stem-beside-tool" : "item-stem"} data-testid="item-stem"><MathText text={item.stem} /></p>
 
-         {allowsCalculator ? <DesmosPanel /> : null}
+         {allowsCalculator ? (
+            <DesmosPanel />
+         ) : null}
 
          {hasFigure ? <FigureView spec={item.figure_spec} /> : null}
 

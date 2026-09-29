@@ -33,13 +33,13 @@ One strategy block, both bands.
 
 ## Solution path
 
-- ex-1, BC-QA-05008, both bands, no calculator. Draw: first_zero -1, second_zero 3, gap 1, scale 2, direction increasing, leading_sign 1, domain_break odd, so f'(x) = 2(x + 1)(x - 3)/(x - 1) per the spec's notes, with f undefined at x = 1. No published BC-QA-05008 item carries this draw. Steps follow `expected_solution_path`: zeros of the numerator (new, solve), the undefined input (no value), signs by test values (no value), the intervals (new), the reason (no value, tagged BC-PT-99063).
+- ex-1, BC-QA-05008, both bands, no calculator. Draw: first_zero -1, second_zero 3, gap 1, scale 2, direction increasing, leading_sign 1, domain_break odd, so f'(x) = 2(x + 1)(x - 3)/(x - 1) per the spec's notes, with f undefined at x = 1. No published BC-QA-05008 item carries this draw. Steps follow `expected_solution_path`: zeros of the numerator (new, solve), the undefined input (no value), signs by test values (no value), the intervals (new), the reason (no value, tagged BC-PT-99005: the intervals with the sign analysis that produces them).
 
 A fluent solver writes the partition points, the intervals and the reason sentence; test values are held in the head. A drawn sign chart earns nothing on its own (research/scoring/justification-requirements.md#Sign analysis of a derivative).
 
 ## Scoring
 
-BC-QA-05008 lists BC-PT-99005, BC-PT-99063 and BC-PT-99010. ex-1 tags BC-PT-99063 on the reason step, the justification point; its line is `reader_checks(["BC-PT-99063"])`. The research scores this archetype by analogy with the concavity part of the family (sg-23:14), so the line's compound-condition wording is the analogy's. For the author: an unnamed referent such as the function or the graph forfeits the reason (sg-25:17, research/scoring/justification-requirements.md#Reasons tied to the object the prompt names; research/scoring/common-point-losses.md#Notation points).
+BC-QA-05008 lists BC-PT-99005, BC-PT-99063 and BC-PT-99010. ex-1 tags BC-PT-99005 on the reason step: ex-1 asks a single condition, and BC-PT-99063 earns only a reason matched to a compound condition (sg-26:16), so the intervals with their sign analysis are scored as an answer with supporting work; its line is `reader_checks(["BC-PT-99005"])`. For the author: an unnamed referent such as the function or the graph forfeits the reason (sg-25:17, research/scoring/justification-requirements.md#Reasons tied to the object the prompt names; research/scoring/common-point-losses.md#Notation points).
 
 ## Traps
 
@@ -205,7 +205,7 @@ BC-QA-05008 has `calculator_status` either, so the lesson takes Section I Part A
     {
      "cue": "Give a reason.",
      "why": "f is increasing there because f'(x) > 0 on (-1, 1) and (3, oo).",
-     "point_type_id": "BC-PT-99063"
+     "point_type_id": "BC-PT-99005"
     }
    ],
    "answer": {
@@ -218,12 +218,12 @@ BC-QA-05008 has `calculator_status` either, so the lesson takes Section I Part A
   {
    "example_id": "ex-1",
    "point_type_ids": [
-    "BC-PT-99063"
+    "BC-PT-99005"
    ],
    "lines": [
     {
-     "point_type_id": "BC-PT-99063",
-     "text": "Reason for an interval answer citing the derivative's behaviour. Earned by: A reason citing the sign of the derivative and the increasing or decreasing behaviour of the derivative, matched to the compound condition asked (sg-26:16, sg-23:14). Not earned by: A reason addressing only one half of a compound condition, which sg-26:16 lists as two special cases earning the interval point but not this one."
+     "point_type_id": "BC-PT-99005",
+     "text": "Answer with supporting work or setup shown. Earned by: The correct value together with the setup the prompt demanded, such as a difference and a quotient from a table or an equation that produces the value (sg-26:2, sg-25:4). Not earned by: An unsupported value (sg-23:10, sg-22:9), or a setup with no value (sg-26:2). Notation: sg-22:6 withholds this point for an equation of the form function equals constant, such as a derivative expression set equal to a number without evaluation. Precision: A reported decimal answer must be accurate to three places after the decimal point, rounded or truncated; at most one point per question is lost to inappropriate rounding (sg-25:2, sg-26:2)."
     }
    ]
   }

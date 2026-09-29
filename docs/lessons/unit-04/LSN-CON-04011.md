@@ -40,16 +40,16 @@ BC-QA-04008 lists BC-PT-99025, BC-PT-99068, BC-PT-99004 and BC-PT-99005. ex-1 ta
 
 ## Traps
 
-Five active errors meet the skills; the first four in the bundle's order are served: BC-ERR-04024, BC-ERR-99035, BC-ERR-04023, BC-ERR-04027. BC-ERR-99022 is left out by the cap. On ex-1's draw; mid band the first two.
+Five active errors meet the skills; four are served: BC-ERR-04024, BC-ERR-99035, BC-ERR-04023, BC-ERR-99022. BC-ERR-04027 is left out: its record describes a derivative in both coordinates evaluated off the point, and ex-1 supplies an explicit f'(x). On ex-1's draw; mid band the first two.
 
 - err-BC-ERR-04024: the line at x = 1 returns 4. Reason words from BC-MIS-04012.
 - err-BC-ERR-99035: f''(1) = 4 used for the slope. Reason words from BC-MIS-07002.
 - err-BC-ERR-04023: slope and height exchanged. No reason line.
-- err-BC-ERR-04027: slope taken at 1.1. No reason line.
+- err-BC-ERR-99022: 4 - (x - 1) simplified to 3 - x, so 19/10 in place of 39/10. No reason line (the record links no misconception).
 
 ## Representations
 
-None as a separate block; the orientation figure and ki-1's motion carry the curve and tangent (BC-REP-02).
+None as a separate block; the orientation figure and ki-1's motion carry the curve and tangent (BC-REP-02). Both draw the true f(x) = (2/3)x^3 - 3x + 19/3, the antiderivative of 2x^2 - 3 through (1, 4).
 
 ## Prerequisite bridge
 
@@ -63,7 +63,7 @@ BC-QA-04008 has `calculator_status` either, so Section I Part A, 2.14 minutes (r
 
 - chk-1, completion of ex-1, both bands. Key 39/10.
 - chk-2, isomorph, both bands: curvature 3, offset -1, anchor 1, height -2, step 1/5. Key -8/5.
-- chk-3, MCQ, low band: curvature -1, offset 5, anchor 2, height 3, step -1/5. Key 14/5. Distractors: 3 (BC-ERR-04024), 2/5 (BC-ERR-04023), 331/125 (BC-ERR-04027).
+- chk-3, MCQ, low band: curvature -1, offset 5, anchor 2, height 3, step -1/5. Key 14/5. Distractors: 3 (BC-ERR-04024), 2/5 (BC-ERR-04023), -4/5 (BC-ERR-99022, (3 + 1)(x - 2) at 1.8).
 
 ## Delivery
 
@@ -75,13 +75,13 @@ BC-QA-04008 has `calculator_status` either, so Section I Part A, 2.14 minutes (r
 
 - Low (full): orientation, ki-1, st-1, ex-1 with its scoring line, four error blocks, chk-1 to chk-3, the bridge. 519 words, 3.5 minutes (cap 900 and 6).
 - Mid (brief): orientation, ki-1, st-1, ex-1 with its scoring line, err-BC-ERR-04024, err-BC-ERR-99035, chk-1, chk-2, the bridge. 410 words, 2.8 minutes (cap 450 and 3).
-- Refresher: ki-1, err-BC-ERR-04024, err-BC-ERR-99035, err-BC-ERR-04023, err-BC-ERR-04027, ex-1.
+- Refresher: ki-1, err-BC-ERR-04024, err-BC-ERR-99035, err-BC-ERR-04023, err-BC-ERR-99022, ex-1.
 
 ## Sources
 
 - BC-CON-04011; BC-SKL-04028, BC-SKL-04029, BC-SKL-04032; BC-EK-CHA-3F1; ced:92
 - BC-QA-04008, BC-QA-02011; BC-PT-99025; crabbc-25:25
-- BC-ERR-04024, BC-ERR-99035, BC-ERR-04023, BC-ERR-04027; BC-MIS-04012, BC-MIS-07002
+- BC-ERR-04024, BC-ERR-99035, BC-ERR-04023, BC-ERR-99022; BC-MIS-04012, BC-MIS-07002
 - BC-PRQ-04006
 - research/units/unit-04-contextual-applications-differentiation.md#4.6 Approximating Values of a Function Using Local Linearity and Linearization
 - research/question-analysis/question-archetypes.md#BC-QA-04008 Tangent line approximation with an over or under estimate judgement
@@ -282,21 +282,21 @@ BC-QA-04008 has `calculator_status` either, so Section I Part A, 2.14 minutes (r
    ]
   },
   {
-   "error_id": "BC-ERR-04027",
-   "observed_behavior": "An expression for the derivative involving both coordinates is evaluated at coordinates other than the point of tangency.",
-   "scoring_consequence": "The slope point is lost, though the approximation point may still be earned on the incorrect slope (crabbc-25:25).",
+   "error_id": "BC-ERR-99022",
+   "observed_behavior": "Responses simplify a numerical or algebraic expression that the exam does not require to be simplified, and introduce sign, order of operations or fraction errors that spoil an otherwise correct result.",
+   "scoring_consequence": "A point already secured by the correct setup can be lost when the simplified final form is wrong.",
    "wrong_step": {
-    "text": "f'(1.1).",
-    "expr": "-29/50"
+    "text": "Simplified as 4 - x - 1 = 3 - x, at x = 1.1.",
+    "expr": "19/10"
    },
    "right_step": {
-    "text": "f'(1).",
-    "expr": "-1"
+    "text": "Left as 4 - (x - 1), at x = 1.1.",
+    "expr": "39/10"
    },
    "relation": "distinct",
    "possible_reason": null,
    "sources": [
-    "BC-ERR-04027"
+    "BC-ERR-99022"
    ]
   }
  ],
@@ -505,9 +505,9 @@ BC-QA-04008 has `calculator_status` either, so Section I Part A, 2.14 minutes (r
     {
      "id": "D",
      "is_key": false,
-     "expr": "331/125",
-     "error_path": "BC-ERR-04027",
-     "derivation": "slope f'(1.8) = 1.76 used"
+     "expr": "-4/5",
+     "error_path": "BC-ERR-99022",
+     "derivation": "3 + (x - 2) simplified with the order of operations broken as (3 + 1)(x - 2), at x = 1.8"
     }
    ],
    "calculator_status": "no_calculator",
@@ -545,7 +545,7 @@ BC-QA-04008 has `calculator_status` either, so Section I Part A, 2.14 minutes (r
       "expr": "4 - (x - 1)"
      },
      {
-      "expr": "4 - (x - 1) + (x - 1)**2"
+      "expr": "2*x**3/3 - 3*x + 19/3"
      }
     ],
     "points": [
@@ -619,7 +619,7 @@ BC-QA-04008 has `calculator_status` either, so Section I Part A, 2.14 minutes (r
     ],
     "curves": [
      {
-      "expr": "4 - (x - 1) + (x - 1)**2"
+      "expr": "2*x**3/3 - 3*x + 19/3"
      },
      {
       "expr": "4 - (x - 1)"
@@ -632,7 +632,7 @@ BC-QA-04008 has `calculator_status` either, so Section I Part A, 2.14 minutes (r
      },
      {
       "x": "1 + half_width/2",
-      "y": "4 - half_width/2 + half_width**2/4"
+      "y": "4 - half_width/2 + half_width**2/2 + half_width**3/12"
      },
      {
       "x": "1 + half_width/2",
@@ -669,7 +669,7 @@ BC-QA-04008 has `calculator_status` either, so Section I Part A, 2.14 minutes (r
    "sources": []
   },
   {
-   "block": "err-BC-ERR-04027",
+   "block": "err-BC-ERR-99022",
    "mode": "step_reveal",
    "reason": "rule 1",
    "sources": []
@@ -680,7 +680,7 @@ BC-QA-04008 has `calculator_status` either, so Section I Part A, 2.14 minutes (r
   "err-BC-ERR-04024",
   "err-BC-ERR-99035",
   "err-BC-ERR-04023",
-  "err-BC-ERR-04027",
+  "err-BC-ERR-99022",
   "ex-1"
  ],
  "research_lines": [
@@ -699,7 +699,7 @@ BC-QA-04008 has `calculator_status` either, so Section I Part A, 2.14 minutes (r
    "settles": "The modality A/B in the build plan: skip rate and time to first credited success by mode."
   },
   {
-   "claim": "BC-ERR-99022 is not served because the cap of four error blocks is reached.",
+   "claim": "BC-ERR-04027 is not served: its record describes a derivative in both coordinates, and the BC-QA-04008 draws supply an explicit f'(x), so BC-ERR-99022 takes the fourth error block.",
    "settles": "A review of error order for BC-CON-04011."
   }
  ],
@@ -717,7 +717,7 @@ BC-QA-04008 has `calculator_status` either, so Section I Part A, 2.14 minutes (r
   "BC-ERR-04024",
   "BC-ERR-99035",
   "BC-ERR-04023",
-  "BC-ERR-04027",
+  "BC-ERR-99022",
   "BC-MIS-04012",
   "BC-MIS-07002",
   "BC-PRQ-04006",

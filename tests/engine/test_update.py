@@ -197,10 +197,41 @@ def test_correct_never_lowers_m(
       TODAY,
    )
 
-   assert states[named].f == pytest.approx(counted_failures)
+   assert states[named].f == pytest.approx(counted_failures * constants.FAILURE_DECAY_ON_SUCCESS)
 
    for skill, state in states.items():
       assert strength(state) >= before[skill] - 1e-12
+
+
+def test_only_a_full_success_decays_the_failure_count(states, graph):
+   """Operator ruling (a), 2026-09-29: old failures shrink by FAILURE_DECAY_ON_SUCCESS on each full
+   success, after R-PFA (Galyardt and Goldin 2015). A partial, a notation-only answer, a failure and
+   a success credited to an ancestor by propagation leave the count alone."""
+   skill = "BC-SKL-01024"
+   expected_f = {
+      MasteryState.MASTERED: 2.0 * constants.FAILURE_DECAY_ON_SUCCESS,
+      MasteryState.NOTATION_ONLY: 2.0,
+      MasteryState.PARTIAL_PROCEDURAL: 2.5,
+      MasteryState.NOT_MASTERED: 3.0,
+      MasteryState.NOT_ATTEMPTED: 2.0,
+   }
+
+   for mastery_state, expected in expected_f.items():
+      state = SkillState(skill_id=skill, beta=0.0, f=2.0)
+      probe_states = dict(states)
+      probe_states[skill] = state
+      apply_observation(probe_states, graph, observation_for(NO_FEEDBACK_ARCHETYPE, [skill], mastery_state), TODAY)
+
+      assert state.f == pytest.approx(expected), mastery_state
+
+   child = "BC-SKL-03006"
+   ancestor = sorted(graph.hard_parents[child])[0]
+   probe_states = dict(states)
+   probe_states[ancestor] = SkillState(skill_id=ancestor, beta=0.0, f=2.0)
+   probe_states[child] = SkillState(skill_id=child, beta=0.0)
+   apply_observation(probe_states, graph, observation_for("BC-QA-03008", [child], MasteryState.MASTERED), TODAY)
+
+   assert probe_states[ancestor].f == pytest.approx(2.0)
 
 
 @settings(max_examples=PROPERTY_EXAMPLES, suppress_health_check=[HealthCheck.function_scoped_fixture])

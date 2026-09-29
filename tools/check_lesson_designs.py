@@ -182,6 +182,11 @@ def equivalent(left, right):
 
    left = as_value(left)
    right = as_value(right)
+   is_same_object = left == right
+
+   if is_same_object:
+      return True
+
    is_set_pair = isinstance(left, sympy.Set) and isinstance(right, sympy.Set)
 
    if is_set_pair:

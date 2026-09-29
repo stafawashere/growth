@@ -83,8 +83,8 @@ BC-QA-01007 is `no_calculator`, a single MCQ: Section I Part A, 2.14 minutes (re
 
 ## Band plan
 
-- Low (full): orientation, ki-1, st-1, st-2, st-3, ex-1, err-BC-ERR-01003, err-BC-ERR-01015, err-BC-ERR-01017, err-BC-ERR-01018, chk-1, ex-2, chk-2, chk-3, five bridges when gated in. 722 words, 4.9 minutes (cap 900 and 6).
-- Mid (brief): orientation, ki-1, st-1, ex-1, err-BC-ERR-01003, err-BC-ERR-01015, chk-1, chk-2, bridges when gated in. 431 words, 2.9 minutes (cap 450 and 3).
+- Low (full): orientation, ki-1, st-1, st-2, st-3, ex-1, err-BC-ERR-01003, err-BC-ERR-01015, err-BC-ERR-01017, err-BC-ERR-01018, chk-1, ex-2, chk-2, chk-3, five bridges when gated in. 724 words, 4.9 minutes (cap 900 and 6).
+- Mid (brief): orientation, ki-1, st-1, ex-1, err-BC-ERR-01003, err-BC-ERR-01015, chk-1, chk-2, bridges when gated in. 433 words, 2.9 minutes (cap 450 and 3).
 - Refresher: ki-1, the four error blocks, ex-1.
 
 ## Sources
@@ -458,7 +458,7 @@ BC-QA-01007 is `no_calculator`, a single MCQ: Section I Part A, 2.14 minutes (re
    },
    "completes": "ex-1",
    "stem": {
-    "text": "In ex-1, \\(\\lim_{x\\to1}f(x)=-1\\) and \\(f(1)\\) is undefined. Classify the break at \\(x=1\\).",
+    "text": "For the \\(f\\) above, \\(\\lim_{x\\to1}f(x)=-1\\) and \\(f(1)\\) is undefined. Classify the break at \\(x=1\\).",
     "command_verb": "classify"
    },
    "key": {
@@ -874,8 +874,8 @@ BC-QA-01007 is `no_calculator`, a single MCQ: Section I Part A, 2.14 minutes (re
   "brief": 2.9
  },
  "word_count": {
-  "full": 722,
-  "brief": 431
+  "full": 724,
+  "brief": 433
  }
 }
 ```

@@ -9,6 +9,10 @@ purpose: Authoring spec for the concept lesson on BC-CON-02003, the derivative a
 
 Concept BC-CON-02003 (skills BC-SKL-02008, BC-SKL-02009), topic 2.2 of Unit 2, loaded by BC-QA-02002 only. Its hard parent is BC-CON-02002 (unit README section 1); BC-CON-02006 holds it as a supporting parent.
 
+## Prediction
+
+One multiple choice question on worked example 1's own function, \(f(x)=-x^2+5x+4\), asked before the rule is shown: what the limit of the difference quotient produces as \(h\to0\) with \(x\) left a letter. The key is \(-2x+5\), a function of \(x\) (ex-1's third valued step); the distractors are the value 0, from the numerator vanishing, and the simplified quotient \(-2x-h+5\) with \(h\) still in it. The resolution, shown on the key idea screen beside the student's choice, names the result as the derivative function and gives its value at 3. No verdict word. Sources: BC-CON-02003 and the topic 2.2 section the key idea cites.
+
 ## Orientation
 
 Served text (43 words), from BC-CON-02003 `description_plain` and the topic's Assessment behaviour paragraph (research/units/unit-02-differentiation-definition-properties.md#2.2 Defining the Derivative of a Function and Using Derivative Notation): the response writes the limit of the difference quotient at a general input, expands, divides out the increment with the limit carried, and takes the limit. No count, no frequency.
@@ -24,19 +28,21 @@ BC-SKL-02008 maps BC-EK-CHA-2B2 and BC-SKL-02009 maps BC-EK-CHA-2B1 and BC-EK-CH
 
 - BC-QA-02002 (family derivative-definition-limit, MCQ or one part, no calculator; research/question-analysis/question-archetypes.md#BC-QA-02002 Derivative computed from the limit definition): `typical_wording` "Use the definition of the derivative to find the derivative of the given function, or its value at the named input"; `common_givens` a function rule; `asked_to_produce` a difference quotient inside a limit, and the derivative function or its value. The signal is the word definition with no input named, or with the function asked first. Official example BC-MCQ-SAMPLE-006.
 
+Contrast pair on st-1: this stem is on BC-QA-02002 with the word definition and no input named; not this stem is the same function with no definition demanded, where a differentiation rule is allowed (the `wrong_approaches` entry of the power rule presented as the definition, and the rule concepts from BC-CON-02010). The separating feature is the word definition.
+
 What says "not this concept": the stem names no definition (a rule is allowed, BC-CON-02010 onward); the limit is already written and asks to be evaluated (BC-CON-02006); one input and a rate asked in context (BC-CON-02002).
 
 ## Method choice
 
 - st-1, BC-QA-02002, low and mid bands. Cue from `asked_to_produce` and `common_givens`. Method, `expected_solution_path[0]`: write the difference quotient for the given rule, at a general \(x\). Rival, `wrong_approaches`: differentiating by the power rule and presenting it as the definition (BC-ERR-02008); the second entry, zero substituted for the increment before it is divided out (BC-ERR-02005), is a trap below. Separating feature: the word definition in the stem.
 
-The archetype carries `asked_to_produce` and `common_givens`, so the block is not tagged inferred.
+The archetype carries `asked_to_produce` and `common_givens`, so the block is not tagged inferred. The `method` text carries no leading label; the rival's record id sits in the block's `sources`.
 
 ## Solution path
 
 - ex-1, BC-QA-02002, both bands, no calculator. Draw: leading \(-1\), linear 5, constant 4, point 3, degree 2, giving \(f(x)=-x^2+5x+4\), \(f'(x)\) and then \(f'(3)\). Steps follow `expected_solution_path`: the quotient at \(x\) (new), expanded and with \(h\) divided out (equivalent), the limit \(-2x+5\) (limit, \(h\to0\)), the value at 3 (evaluate). A fluent solver writes all four lines; the expansion of \((x+h)^2\) is held in the head only when it is short.
 
-One example: the archetype has one shape, and ex-1 already carries both the function and a value. No productive-failure comparison (BC-CON-02002 is the unit's target).
+One example: the archetype has one shape, and ex-1 already carries both the function and a value, so nothing is faded. No productive-failure comparison (BC-CON-02002 is the unit's target).
 
 ## Scoring
 
@@ -80,10 +86,12 @@ No draw equals a published BC-QA-02002 `parameter_draw` (content/items_gen_unit0
 - ex-1: step_reveal. Rule 1.
 - err-BC-ERR-02005, err-BC-ERR-02006, err-BC-ERR-02007, err-BC-ERR-02008: step_reveal. Rule 1.
 
+No drawn block: none of rules 2 to 5 applies. The skills carry BC-REP-01 only, so rules 4 and 5 do not select a figure or a table, and the key ideas describe algebra on a quotient, not a process to draw, so rules 2 and 3 do not select motion or an interactive. The machine record states `no_figure_reason`. The prediction is delivered as text.
+
 ## Band plan
 
-- Low (full): orientation, ki-1, ki-2, st-1, ex-1, the four error blocks, chk-1, chk-2, chk-3, the two bridges. 517 words, 3.45 minutes (cap 900 and 6).
-- Mid (brief): orientation, ki-1, st-1, ex-1, err-02005, err-02006, chk-1, chk-2, the bridges. 358 words, 2.4 minutes (cap 450 and 3).
+- Low (full), in served order: prediction, orientation, the two bridges, ki-1, ki-2, st-1 with its contrast pair, ex-1, chk-1, the four error blocks, chk-2, chk-3. 589 words, 4.0 minutes (cap 900 and 6). There is no example 2, so nothing is faded.
+- Mid (brief): prediction, orientation, the bridges, ki-1, st-1 with its contrast pair, ex-1, chk-1, err-02005, err-02006, chk-2. 431 words, 2.9 minutes (cap 450 and 3).
 - Refresher: ki-1, err-BC-ERR-02005, err-BC-ERR-02006, err-BC-ERR-02007, err-BC-ERR-02008, ex-1.
 
 ## Sources
@@ -107,6 +115,19 @@ No draw equals a published BC-QA-02002 `parameter_draw` (content/items_gen_unit0
  "target_id": "BC-CON-02003",
  "unit": "02",
  "skills": ["BC-SKL-02008", "BC-SKL-02009"],
+ "prediction": {
+  "id": "pr-1",
+  "stem": {"text": "Predict. Let \\(f(x)=-x^2+5x+4\\) and let \\(h\\to0\\) in \\(\\frac{f(x+h)-f(x)}{h}\\), keeping \\(x\\) a letter. What is the limit?", "command_verb": "predict"},
+  "format": "mcq",
+  "options": [
+   {"id": "A", "label": "\\(-2x+5\\), a function of \\(x\\)", "is_key": true},
+   {"id": "B", "label": "\\(0\\), since the numerator vanishes", "is_key": false},
+   {"id": "C", "label": "\\(-2x-h+5\\), which still holds \\(h\\)", "is_key": false}
+  ],
+  "resolution": "The limit is the derivative function, \\(f'(x)=-2x+5\\), a rule in \\(x\\). Its value at 3 is \\(-1\\).",
+  "sources": ["BC-CON-02003", "research/units/unit-02-differentiation-definition-properties.md#2.2 Defining the Derivative of a Function and Using Derivative Notation"]
+ },
+ "no_figure_reason": "The concept is the algebra of a difference quotient at a general input. Its skills carry only a symbolic representation and no key idea describes a process to draw, so no figure fits.",
  "orientation": {
   "text": "A response writes the derivative as a function: the limit as \\(h\\to0\\) of \\(\\frac{f(x+h)-f(x)}{h}\\), expanded, with \\(h\\) divided out and the limit carried on every line, then taken. When the stem says use the definition, the quotient and its simplification are the work.",
   "sources": ["BC-CON-02003", "research/units/unit-02-differentiation-definition-properties.md#2.2 Defining the Derivative of a Function and Using Derivative Notation"]
@@ -116,7 +137,7 @@ No draw equals a published BC-QA-02002 `parameter_draw` (content/items_gen_unit0
    "id": "ki-1",
    "ek_id": "BC-EK-CHA-2B2",
    "depth": "core",
-   "text": "The derivative of \\(f\\) is the function whose value at \\(x\\) is \\(\\lim_{h\\to0}\\frac{f(x+h)-f(x)}{h}\\), provided the limit exists (BC-EK-CHA-2B2, ced:61). The input stays a letter, so the result is a rule, \\(f'(x)\\). At \\(h=0\\) the quotient is \\(\\frac{0}{0}\\): expand \\(f(x+h)\\), subtract, divide out \\(h\\), then let \\(h\\to0\\).",
+   "text": "The derivative of \\(f\\) is the function whose value at \\(x\\) is \\(\\lim_{h\\to0}\\frac{f(x+h)-f(x)}{h}\\), provided the limit exists. The input stays a letter, so the result is a rule, \\(f'(x)\\). At \\(h=0\\) the quotient is \\(\\frac{0}{0}\\): expand \\(f(x+h)\\), subtract, divide out \\(h\\), then let \\(h\\to0\\).",
    "notation": "f prime of x",
    "quote": {"text": "The derivative of f is the function whose value", "source": "ced:61"},
    "sources": ["BC-EK-CHA-2B2", "ced:61", "research/units/unit-02-differentiation-definition-properties.md#2.2 Defining the Derivative of a Function and Using Derivative Notation"]
@@ -125,7 +146,7 @@ No draw equals a published BC-QA-02002 `parameter_draw` (content/items_gen_unit0
    "id": "ki-2",
    "ek_id": "BC-EK-CHA-2B1",
    "depth": "extended",
-   "text": "At one input the same limit gives a number: \\(f'(a)=\\lim_{h\\to0}\\frac{f(a+h)-f(a)}{h}\\), or \\(\\lim_{x\\to a}\\frac{f(x)-f(a)}{x-a}\\) (BC-EK-CHA-2B1). Substituting \\(a\\) into \\(f'(x)\\) gives the same number.",
+   "text": "At one input the same limit gives a number: \\(f'(a)=\\lim_{h\\to0}\\frac{f(a+h)-f(a)}{h}\\), or \\(\\lim_{x\\to a}\\frac{f(x)-f(a)}{x-a}\\). Substituting \\(a\\) into \\(f'(x)\\) gives the same number.",
    "notation": "f prime of a",
    "quote": null,
    "sources": ["BC-EK-CHA-2B1", "ced:60", "research/units/unit-02-differentiation-definition-properties.md#2.2 Defining the Derivative of a Function and Using Derivative Notation"]
@@ -136,10 +157,15 @@ No draw equals a published BC-QA-02002 `parameter_draw` (content/items_gen_unit0
    "id": "st-1",
    "archetype_id": "BC-QA-02002",
    "cue": "A function rule; the stem says use the definition to find the derivative, or its value.",
-   "method": "First line: \\(\\lim_{h\\to0}\\frac{f(x+h)-f(x)}{h}\\) with the rule substituted.",
-   "rival": "Rival: the power rule's result with the definition copied around it (BC-ERR-02008).",
+   "method": "\\(\\lim_{h\\to0}\\frac{f(x+h)-f(x)}{h}\\) with the rule substituted.",
+   "rival": "The power rule's result with the definition copied around it.",
    "separating_feature": "The word definition: the quotient and its simplification carry the work.",
-   "sources": ["BC-QA-02002"],
+   "contrast": {
+    "this": {"text": "Let \\(g(x)=x^2+3x\\). Use the definition of the derivative to find \\(g'(x)\\).", "archetype_id": "BC-QA-02002"},
+    "not_this": {"text": "Let \\(g(x)=x^2+3x\\). Find \\(g'(x)\\).", "why_not": "No definition is demanded, so a differentiation rule is allowed."},
+    "feature": "The word definition in the stem."
+   },
+   "sources": ["BC-QA-02002", "BC-ERR-02008"],
    "evidence_tag": "verified"
   }
  ],
@@ -169,6 +195,7 @@ No draw equals a published BC-QA-02002 `parameter_draw` (content/items_gen_unit0
    "wrong_step": {"text": "\\(h=0\\) in \\(\\frac{-2xh-h^2+5h}{h}\\) gives \\(\\frac{0}{0}\\).", "expr": "(-2*x*0 - 0**2 + 5*0)/0"},
    "right_step": {"text": "Divide out \\(h\\) first: \\(-2x-h+5\\), limit \\(-2x+5\\).", "expr": "-2*x + 5"},
    "relation": "distinct",
+   "fix_prompt": true,
    "possible_reason": {"misconception_id": "BC-MIS-02002", "text": "the increment is set to zero immediately"},
    "sources": ["BC-ERR-02005", "BC-MIS-02002"]
   },
@@ -179,6 +206,7 @@ No draw equals a published BC-QA-02002 `parameter_draw` (content/items_gen_unit0
    "wrong_step": {"text": "\\(f'(x)=-2x-h+5\\), no limit written.", "expr": "-2*x - h + 5"},
    "right_step": {"text": "\\(\\lim_{h\\to0}(-2x-h+5)=-2x+5\\).", "expr": "-2*x + 5"},
    "relation": "distinct",
+   "fix_prompt": true,
    "possible_reason": {"misconception_id": "BC-MIS-02003", "text": "intermediate lines assert equalities that are false before the limit is taken"},
    "sources": ["BC-ERR-02006", "BC-MIS-02003"]
   },
@@ -189,6 +217,7 @@ No draw equals a published BC-QA-02002 `parameter_draw` (content/items_gen_unit0
    "wrong_step": {"text": "\\(-(x+h)^2\\) taken as \\(-x^2-h^2\\); the quotient becomes \\(5-h\\).", "expr": "5 - h"},
    "right_step": {"text": "\\(-(x+h)^2=-x^2-2xh-h^2\\); the quotient is \\(-2x-h+5\\).", "expr": "-2*x - h + 5"},
    "relation": "distinct",
+   "fix_prompt": true,
    "possible_reason": null,
    "sources": ["BC-ERR-02007"]
   },
@@ -199,6 +228,7 @@ No draw equals a published BC-QA-02002 `parameter_draw` (content/items_gen_unit0
    "wrong_step": {"text": "The limit is written, then \\(-2x+5\\) at once by the power rule, with no quotient line.", "expr": "-2*x + 5"},
    "right_step": {"text": "The quotient simplified to \\(-2x-h+5\\) inside the limit: the line the lost points attach to.", "expr": "-2*x - h + 5"},
    "relation": "distinct",
+   "fix_prompt": true,
    "possible_reason": {"misconception_id": "BC-MIS-02002", "text": "the answer is produced by a rule and the definition is copied around it"},
    "sources": ["BC-ERR-02008", "BC-MIS-02002"]
   }
@@ -280,8 +310,8 @@ No draw equals a published BC-QA-02002 `parameter_draw` (content/items_gen_unit0
   {"block": "err-BC-ERR-02008", "mode": "step_reveal", "reason": "rule 1", "sources": []}
  ],
  "refresher": ["ki-1", "err-BC-ERR-02005", "err-BC-ERR-02006", "err-BC-ERR-02007", "err-BC-ERR-02008", "ex-1"],
- "read_minutes": {"full": 3.45, "brief": 2.4},
- "word_count": {"full": 517, "brief": 358},
+ "read_minutes": {"full": 4.0, "brief": 2.9},
+ "word_count": {"full": 589, "brief": 431},
  "research_lines": [
   {"file": "research/units/unit-02-differentiation-definition-properties.md", "line": "The derivative of f is the function whose value at x is the limit as h tends to zero of the quotient of f(x plus h) minus f(x) by h, provided this limit exists"}
  ],

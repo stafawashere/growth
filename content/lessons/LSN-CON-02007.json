@@ -3,20 +3,69 @@
  "version": 1,
  "kind": "concept",
  "target_id": "BC-CON-02007",
- "status": "signed_off",
+ "status": "draft",
  "snapshot_digest": "a6a8ec9d3f59ab8f712e33d30cc22fc64bf2c478fbe7312e3e3118d319c6a42f",
  "source_digest": "86e5d3a91322d732683ab04f013f3a28e91f63b1d87dadec4f74af41bafa22ee",
  "read_minutes": {
-  "full": 4.7,
-  "brief": 2.8
+  "full": 4.9,
+  "brief": 3.0
  },
  "word_count": {
-  "full": 639,
-  "brief": 380
+  "full": 668,
+  "brief": 412
  },
  "sections": [
   {
    "id": "LSN-CON-02007#s1",
+   "type": "prediction",
+   "bands": [
+    "low",
+    "mid"
+   ],
+   "skills": [
+    "BC-SKL-02014",
+    "BC-SKL-02015",
+    "BC-SKL-02016",
+    "BC-SKL-02017",
+    "BC-SKL-02018"
+   ],
+   "sources": [
+    "BC-CON-02007",
+    "research/units/unit-02-differentiation-definition-properties.md#2.3 Estimating Derivatives of a Function at a Point"
+   ],
+   "evidence_tag": "inferred",
+   "stem": {
+    "text": "Predict before the rule: an oven reads \\(H(4)=71\\), \\(H(6)=50\\), \\(H(10)=38\\). Which best estimates \\(H'(6)\\)?",
+    "command_verb": "predict"
+   },
+   "format": "mcq",
+   "options": [
+    {
+     "id": "A",
+     "label": "The value \\(H(6)=50\\).",
+     "is_key": false
+    },
+    {
+     "id": "B",
+     "label": "The average rate from \\(t=4\\) to \\(t=10\\).",
+     "is_key": true
+    },
+    {
+     "id": "C",
+     "label": "\\(H(10)-H(4)\\), with no division.",
+     "is_key": false
+    }
+   ],
+   "resolution": {
+    "text": "The derivative at 6 is a rate at one instant, and rows 4 and 10 bracket it. The average rate \\(\\frac{38-71}{10-4}=-\\frac{11}{2}\\) degrees per minute estimates it."
+   },
+   "delivery": {
+    "mode": "text",
+    "reason": "rule 6"
+   }
+  },
+  {
+   "id": "LSN-CON-02007#s2",
    "type": "orientation",
    "bands": [
     "low",
@@ -34,7 +83,7 @@
     "research/units/unit-02-differentiation-definition-properties.md#2.3 Estimating Derivatives of a Function at a Point"
    ],
    "evidence_tag": "inferred",
-   "text": "A response estimates a derivative at a point from nearby values: the average rate over rows that bracket the point, with the difference, the quotient and compound units shown. From a graph it is the tangent's slope; from a calculator, a value with its setup named.",
+   "text": "A response estimates a derivative at a point from nearby values: a difference and a quotient over bracketing rows, with compound units. From a graph, a tangent slope; from a calculator, a named setup.",
    "delivery": {
     "mode": "text",
     "reason": "rule 5: a statement of what a response shows",
@@ -44,7 +93,7 @@
    }
   },
   {
-   "id": "LSN-CON-02007#s2",
+   "id": "LSN-CON-02007#s3",
    "type": "key_ideas",
    "bands": [
     "low",
@@ -61,15 +110,11 @@
     "ced:62",
     "research/units/unit-02-differentiation-definition-properties.md#2.3 Estimating Derivatives of a Function at a Point"
    ],
-   "evidence_tag": "verified",
+   "evidence_tag": "inferred",
    "ek_id": "BC-EK-CHA-2D1",
    "depth": "core",
-   "text": "From a table (BC-EK-CHA-2D1, ced:62): the average rate over an interval that contains or abuts the point, difference and quotient both shown. From a graph: the slope of the tangent at the point, from two points on it. Units: the quantity's units per unit of input.",
+   "text": "From a table: the average rate over an interval that contains or abuts the point, difference and quotient both shown. From a graph: the slope of the tangent at the point. Units: the quantity's units per unit of input.",
    "notation": "approximately equal to",
-   "quote": {
-    "text": "The derivative at a point can be estimated from information given in tables or graphs.",
-    "source": "ced:62"
-   },
    "delivery": {
     "mode": "table",
     "reason": "rule 4: BC-SKL-02014 and BC-SKL-02016 list BC-REP-03 (unit README delivery map)",
@@ -136,7 +181,7 @@
    }
   },
   {
-   "id": "LSN-CON-02007#s3",
+   "id": "LSN-CON-02007#s4",
    "type": "key_ideas",
    "bands": [
     "low",
@@ -150,15 +195,11 @@
     "ced:62",
     "BC-QA-02013"
    ],
-   "evidence_tag": "verified",
+   "evidence_tag": "inferred",
    "ek_id": "BC-EK-CHA-2D2",
    "depth": "core",
-   "text": "Technology gives the derivative of a supplied model at a point (BC-EK-CHA-2D2, ced:62). The written line names what was computed, such as \\(W'(2)\\), and the value is reported to three decimal places.",
+   "text": "Technology gives the derivative of a supplied model at a point. The written line names what was computed, as \\(W'(2)\\), and the value has three decimal places.",
    "notation": "approximately equal to",
-   "quote": {
-    "text": "Technology can be used to calculate or estimate the value of a derivative of a function at a point.",
-    "source": "ced:62"
-   },
    "delivery": {
     "mode": "text",
     "reason": "rule 5: BC-REP-09 and BC-REP-01 on BC-SKL-02018, neither figure-bearing",
@@ -168,7 +209,7 @@
    }
   },
   {
-   "id": "LSN-CON-02007#s4",
+   "id": "LSN-CON-02007#s5",
    "type": "strategy",
    "bands": [
     "low",
@@ -184,13 +225,24 @@
    ],
    "evidence_tag": "verified",
    "archetype_id": "BC-QA-04002",
-   "cue": "A table of a contextual quantity; the stem asks to approximate a derivative at a tabulated input, with units.",
-   "method": "First line: the two rows that bracket the point, differenced, over their inputs' difference.",
-   "rival": "Rival: a pair of rows other than the bracketing pair (BC-ERR-02004).",
-   "separating_feature": "The two rows sit on either side of the point."
+   "cue": "A table; the stem asks to approximate a derivative at a tabulated input, with units.",
+   "method": "The two rows that bracket the point, differenced, over their inputs' difference.",
+   "rival": "Rival: a pair of rows other than the bracketing pair.",
+   "separating_feature": "The two rows sit on either side of the point.",
+   "contrast": {
+    "this": {
+     "text": "A table gives \\(P(1)=8\\), \\(P(3)=14\\), \\(P(5)=20\\). Approximate \\(P'(3)\\), with units.",
+     "archetype_id": "BC-QA-04002"
+    },
+    "not_this": {
+     "text": "Find the average rate of change of \\(P\\) over \\(1\\le t\\le5\\), with units.",
+     "why_not": "It asks for an average rate over a named interval."
+    },
+    "feature": "A derivative symbol at a tabulated input, no named interval."
+   }
   },
   {
-   "id": "LSN-CON-02007#s5",
+   "id": "LSN-CON-02007#s6",
    "type": "strategy",
    "bands": [
     "low",
@@ -206,12 +258,12 @@
    "evidence_tag": "verified",
    "archetype_id": "BC-QA-02013",
    "cue": "A function model in a calculator part; the stem asks for the derivative at an input, with setup.",
-   "method": "First line: the setup naming the quantity, such as \\(W'(2)\\), then the calculator value.",
-   "rival": "Rival: a bare calculator number with no setup (BC-ERR-02031).",
+   "method": "The setup naming the quantity, such as \\(W'(2)\\), then the calculator value.",
+   "rival": "Rival: a bare calculator number with no setup.",
    "separating_feature": "A formula and a calculator part, not a table."
   },
   {
-   "id": "LSN-CON-02007#s6",
+   "id": "LSN-CON-02007#s7",
    "type": "worked_example",
    "bands": [
     "low",
@@ -295,7 +347,7 @@
    }
   },
   {
-   "id": "LSN-CON-02007#s7",
+   "id": "LSN-CON-02007#s8",
    "type": "worked_example",
    "bands": [
     "low"
@@ -417,6 +469,7 @@
     "form": "numeric",
     "mathjson": 1.954
    },
+   "fade_from": 2,
    "delivery": {
     "mode": "step_reveal",
     "reason": "rule 1",
@@ -454,6 +507,7 @@
     ]
    },
    "relation": "distinct",
+   "fix_prompt": true,
    "possible_reason": {
     "misconception_id": "BC-MIS-02001",
     "text": "the division by the change in the input is omitted"
@@ -498,6 +552,7 @@
     ]
    },
    "relation": "equivalent",
+   "fix_prompt": false,
    "delivery": {
     "mode": "step_reveal",
     "reason": "rule 1",
@@ -539,6 +594,7 @@
     ]
    },
    "relation": "equivalent",
+   "fix_prompt": false,
    "possible_reason": {
     "misconception_id": "BC-MIS-02008",
     "text": "copies them from the table header"
@@ -585,6 +641,7 @@
     ]
    },
    "relation": "distinct",
+   "fix_prompt": true,
    "possible_reason": {
     "misconception_id": "BC-MIS-02001",
     "text": "applied to the wrong pair of values"
@@ -596,7 +653,7 @@
    }
   },
   {
-   "id": "LSN-CON-02007#s8",
+   "id": "LSN-CON-02007#s9",
    "type": "representations",
    "bands": [
     "low"
@@ -769,7 +826,7 @@
     "context": "oven",
     "trend": "decreasing"
    },
-   "completes": "LSN-CON-02007#s6",
+   "completes": "LSN-CON-02007#s7",
    "stem": {
     "text": "The work reads \\(H'(6)\\approx\\frac{38-71}{10-4}\\). Give the value.",
     "command_verb": "give"
@@ -980,20 +1037,20 @@
   }
  ],
  "refresher": [
-  "LSN-CON-02007#s2",
   "LSN-CON-02007#s3",
+  "LSN-CON-02007#s4",
   "LSN-CON-02007#err-BC-ERR-02001",
   "LSN-CON-02007#err-BC-ERR-02002",
   "LSN-CON-02007#err-BC-ERR-02003",
   "LSN-CON-02007#err-BC-ERR-02004",
-  "LSN-CON-02007#s6"
+  "LSN-CON-02007#s7"
  ],
  "provenance": {
   "author": "tools/lesson_transcribe.py",
-  "prompt_version": "generator/lesson_v1",
+  "prompt_version": "generator/lesson_v2",
   "design_path": "docs/lessons/unit-02/LSN-CON-02007.md",
-  "signed_off_by": "claude-opus-5-5",
-  "signed_off_at": "2026-09-29",
+  "signed_off_by": null,
+  "signed_off_at": null,
   "not_human": true
  }
 }

@@ -3,20 +3,69 @@
  "version": 1,
  "kind": "concept",
  "target_id": "BC-CON-02014",
- "status": "signed_off",
+ "status": "draft",
  "snapshot_digest": "a6a8ec9d3f59ab8f712e33d30cc22fc64bf2c478fbe7312e3e3118d319c6a42f",
  "source_digest": "1c3a73d24d3490a95718e0ac794420b45f6ec119f7c1247b53cc265a5cc3590a",
  "read_minutes": {
-  "full": 4.4,
-  "brief": 2.5
+  "full": 4.9,
+  "brief": 3.0
  },
  "word_count": {
-  "full": 638,
-  "brief": 363
+  "full": 703,
+  "brief": 432
  },
  "sections": [
   {
    "id": "LSN-CON-02014#s1",
+   "type": "prediction",
+   "bands": [
+    "low",
+    "mid"
+   ],
+   "skills": [
+    "BC-SKL-02039",
+    "BC-SKL-02040",
+    "BC-SKL-02041",
+    "BC-SKL-02042"
+   ],
+   "sources": [
+    "BC-CON-02014",
+    "BC-EK-FUN-3B2",
+    "ced:68"
+   ],
+   "evidence_tag": "inferred",
+   "stem": {
+    "text": "Predict before the rule. For \\(h(x)=\\frac{3x^2-2}{\\sin x}\\), the pieces have derivatives \\(6x\\) and \\(\\cos x\\). Which expression is \\(h'(x)\\)?",
+    "command_verb": "predict"
+   },
+   "format": "mcq",
+   "options": [
+    {
+     "id": "A",
+     "label": "\\(\\frac{6x}{\\cos x}\\), the two derivatives divided",
+     "is_key": false
+    },
+    {
+     "id": "B",
+     "label": "\\(\\frac{6x\\sin x-(3x^2-2)\\cos x}{\\sin^2x}\\)",
+     "is_key": true
+    },
+    {
+     "id": "C",
+     "label": "\\(\\frac{(3x^2-2)\\cos x-6x\\sin x}{\\sin^2x}\\)",
+     "is_key": false
+    }
+   ],
+   "resolution": {
+    "text": "The quotient rule is \\(\\frac{vu'-uv'}{v^2}\\): the denominator times the numerator's derivative, minus the numerator times the denominator's derivative, over the denominator squared. The order of the subtraction matters."
+   },
+   "delivery": {
+    "mode": "text",
+    "reason": "rule 6"
+   }
+  },
+  {
+   "id": "LSN-CON-02014#s2",
    "type": "orientation",
    "bands": [
     "low",
@@ -43,7 +92,7 @@
    }
   },
   {
-   "id": "LSN-CON-02014#s2",
+   "id": "LSN-CON-02014#s3",
    "type": "key_ideas",
    "bands": [
     "low",
@@ -60,27 +109,58 @@
     "ced:68",
     "research/units/unit-02-differentiation-definition-properties.md#2.9 The Quotient Rule"
    ],
-   "evidence_tag": "verified",
+   "evidence_tag": "inferred",
    "ek_id": "BC-EK-FUN-3B2",
    "depth": "core",
-   "text": "For \\(\\frac{u}{v}\\) the derivative is \\(\\frac{vu'-uv'}{v^2}\\) (BC-EK-FUN-3B2, ced:68). Order matters: reversing the numerator terms flips the sign of the whole derivative. The denominator is squared. When the denominator carries no variable, the constant multiple rule is shorter.",
+   "text": "For \\(\\frac{u}{v}\\) the derivative is \\(\\frac{vu'-uv'}{v^2}\\). Order matters: reversing the numerator terms flips the sign of the whole derivative. The denominator is squared. When the denominator carries no variable, the constant multiple rule is shorter.",
    "notation": "quotient rule",
-   "quote": {
-    "text": "Derivatives of quotients of differentiable functions can be found using the quotient rule.",
-    "source": "ced:68"
-   },
    "delivery": {
-    "mode": "text",
-    "reason": "rule 5: an algebraic rule, no figure-bearing BC-REP on BC-SKL-02039, 02040, 02042",
+    "mode": "table",
+    "reason": "rule 5: BC-REP-03 supplied values on BC-SKL-02041, laid beside the rule as numbers",
     "sources": [
-     "BC-SKL-02039",
-     "BC-SKL-02040",
-     "BC-SKL-02042"
-    ]
+     "BC-SKL-02041"
+    ],
+    "spec": {
+     "kind": "table",
+     "representations": [
+      "BC-REP-03"
+     ],
+     "columns": [
+      "quantity at x = 2",
+      "value"
+     ],
+     "rows": [
+      [
+       "f(2)",
+       6
+      ],
+      [
+       "f'(2)",
+       1
+      ],
+      [
+       "g(2)",
+       2
+      ],
+      [
+       "g'(2)",
+       3
+      ]
+     ],
+     "labels": [
+      {
+       "text": "(g(2)f'(2) - f(2)g'(2)) / g(2)^2 = -4, while f'(2)/g'(2) = 1/3",
+       "placement": "inside",
+       "at": "last line of the table frame"
+      }
+     ]
+    },
+    "fallback": "the same four rows as a text list, with the two quotients written after them",
+    "keyboard": "none needed; the table is read row by row in order by a screen reader"
    }
   },
   {
-   "id": "LSN-CON-02014#s3",
+   "id": "LSN-CON-02014#s4",
    "type": "strategy",
    "bands": [
     "low",
@@ -97,12 +177,23 @@
    "evidence_tag": "verified",
    "archetype_id": "BC-QA-02008",
    "cue": "The stem asks for the derivative of a quotient of two differentiable expressions.",
-   "method": "First written line: \\(u\\), \\(v\\), \\(u'\\), \\(v'\\), then \\(\\frac{vu'-uv'}{v^2}\\).",
-   "rival": "The rival is differentiating numerator and denominator separately (BC-ERR-02026).",
-   "separating_feature": "A variable denominator: its derivative enters the numerator, subtracted second."
+   "method": "\\(u\\), \\(v\\), \\(u'\\), \\(v'\\), then \\(\\frac{vu'-uv'}{v^2}\\).",
+   "rival": "The rival is differentiating numerator and denominator separately.",
+   "separating_feature": "A variable denominator: its derivative enters the numerator, subtracted second.",
+   "contrast": {
+    "this": {
+     "text": "Let \\(k(x)=\\frac{x^3+4}{\\cos x}\\). Find \\(k'(x)\\).",
+     "archetype_id": "BC-QA-02008"
+    },
+    "not_this": {
+     "text": "Let \\(m(x)=\\frac{x^3+4}{5}\\). Find \\(m'(x)\\).",
+     "why_not": "The denominator is a constant, so the constant multiple rule applies, not the quotient rule."
+    },
+    "feature": "A variable in the denominator."
+   }
   },
   {
-   "id": "LSN-CON-02014#s4",
+   "id": "LSN-CON-02014#s5",
    "type": "strategy",
    "bands": [
     "low",
@@ -117,12 +208,12 @@
    "evidence_tag": "verified",
    "archetype_id": "BC-QA-02009",
    "cue": "The stem asks for the derivative value at a named input, from a table of two functions and their derivatives.",
-   "method": "First written line: the four values at the input, each labelled a value or a derivative.",
-   "rival": "The rival is placing a function value where the rule calls for a derivative value (BC-ERR-02024).",
+   "method": "The four values at the input, each labelled a value or a derivative.",
+   "rival": "The rival is placing a function value where the rule calls for a derivative value.",
    "separating_feature": "Each number is labelled before it is placed."
   },
   {
-   "id": "LSN-CON-02014#s5",
+   "id": "LSN-CON-02014#s6",
    "type": "worked_example",
    "bands": [
     "low",
@@ -300,7 +391,7 @@
    }
   },
   {
-   "id": "LSN-CON-02014#s6",
+   "id": "LSN-CON-02014#s7",
    "type": "worked_example",
    "bands": [
     "low"
@@ -366,16 +457,17 @@
     "form": "numeric",
     "mathjson": 1
    },
+   "fade_from": 3,
    "delivery": {
     "mode": "step_reveal",
-    "reason": "rule 1; the four supplied values render as a table inside the problem (BC-REP-03 on BC-SKL-02041)",
+    "reason": "rule 1; the four supplied values are written in the problem text",
     "sources": [
      "BC-SKL-02041"
     ]
    }
   },
   {
-   "id": "LSN-CON-02014#s7",
+   "id": "LSN-CON-02014#s8",
    "type": "what_a_reader_scores",
    "bands": [
     "low",
@@ -390,7 +482,7 @@
     "BC-PT-99080"
    ],
    "evidence_tag": "verified",
-   "example_id": "LSN-CON-02014#s5",
+   "example_id": "LSN-CON-02014#s6",
    "lines": [
     {
      "point_type_id": "BC-PT-99080",
@@ -399,7 +491,7 @@
    ]
   },
   {
-   "id": "LSN-CON-02014#s8",
+   "id": "LSN-CON-02014#s9",
    "type": "what_a_reader_scores",
    "bands": [
     "low"
@@ -411,7 +503,7 @@
     "BC-PT-99004"
    ],
    "evidence_tag": "verified",
-   "example_id": "LSN-CON-02014#s6",
+   "example_id": "LSN-CON-02014#s7",
    "lines": [
     {
      "point_type_id": "BC-PT-99004",
@@ -533,6 +625,7 @@
     ]
    },
    "relation": "distinct",
+   "fix_prompt": true,
    "possible_reason": {
     "misconception_id": "BC-MIS-02012",
     "text": "the two numerator terms as interchangeable"
@@ -657,6 +750,7 @@
     ]
    },
    "relation": "distinct",
+   "fix_prompt": true,
    "possible_reason": {
     "misconception_id": "BC-MIS-02012",
     "text": "the denominator as carrying no square"
@@ -709,6 +803,7 @@
     ]
    },
    "relation": "equivalent",
+   "fix_prompt": false,
    "delivery": {
     "mode": "step_reveal",
     "reason": "rule 1",
@@ -742,6 +837,7 @@
     "expression": 1
    },
    "relation": "distinct",
+   "fix_prompt": true,
    "possible_reason": {
     "misconception_id": "BC-MIS-02011",
     "text": "supplied values are placed in the wrong positions"
@@ -770,7 +866,7 @@
     "trig": "sin",
     "angle": "1/4"
    },
-   "completes": "LSN-CON-02014#s5",
+   "completes": "LSN-CON-02014#s6",
    "stem": {
     "text": "\\(h'(x)=\\frac{6x\\sin x-(3x^2-2)\\cos x}{\\sin^2x}\\). Find \\(h'(\\frac{\\pi}{4})\\).",
     "command_verb": "find"
@@ -1183,19 +1279,19 @@
   }
  ],
  "refresher": [
-  "LSN-CON-02014#s2",
+  "LSN-CON-02014#s3",
   "LSN-CON-02014#err-BC-ERR-02021",
   "LSN-CON-02014#err-BC-ERR-02022",
   "LSN-CON-02014#err-BC-ERR-02023",
   "LSN-CON-02014#err-BC-ERR-02024",
-  "LSN-CON-02014#s5"
+  "LSN-CON-02014#s6"
  ],
  "provenance": {
   "author": "tools/lesson_transcribe.py",
-  "prompt_version": "generator/lesson_v1",
+  "prompt_version": "generator/lesson_v2",
   "design_path": "docs/lessons/unit-02/LSN-CON-02014.md",
-  "signed_off_by": "claude-opus-5-5",
-  "signed_off_at": "2026-09-29",
+  "signed_off_by": null,
+  "signed_off_at": null,
   "not_human": true
  }
 }

@@ -9,6 +9,10 @@ purpose: Authoring spec for the concept lesson on BC-CON-02009, the ways a deriv
 
 Concept BC-CON-02009 (skills BC-SKL-02021, BC-SKL-02022, BC-SKL-02023), topic 2.4 of Unit 2, loaded by BC-QA-02005 (primary) and BC-QA-05014. The structure follows LSN-CON-02013.
 
+## Prediction
+
+Served first, both bands, on ex-1's function (source BC-CON-02009 and the topic's 2.4 section, research/units/unit-02-differentiation-definition-properties.md#2.4 Connecting Differentiability and Continuity: Determining When Derivatives Do and Do Not Exist). Form `mcq`, three options, key: not necessarily, the one sided quotients at 1 decide. The distractors are continuity taken as a derivative and continuity taken as ruling one out. The resolution states that a continuous function may lack a derivative and what the quotients of ex-1 do, without a verdict word.
+
 ## Orientation
 
 Served text (37 words), from BC-CON-02009 `description_plain` and the topic's Assessment behaviour paragraph (research/units/unit-02-differentiation-definition-properties.md#2.4 Connecting Differentiability and Continuity: Determining When Derivatives Do and Do Not Exist): MCQ forms ask whether the function is differentiable at a named point and why, and the reason carries its own weight. Delivered as a static three panel figure (Delivery).
@@ -17,12 +21,14 @@ Served text (37 words), from BC-CON-02009 `description_plain` and the topic's As
 
 One BC-EK maps to the three skills, BC-EK-FUN-2A2 (ced:63), so one core block, both bands.
 
-- ki-1 (core). The converse fails, with the two CED routes (unequal one sided limits of the quotient at the corner of \(|x|\), a vertical tangent at the cube root), paraphrased from the Converse fails paragraph. Anchor quote (14 words) from ced:63. Notation line: corner; vertical tangent.
+- ki-1 (core). The converse fails, with the two CED routes (unequal one sided limits of the quotient at the corner of \(|x|\), a vertical tangent at the cube root), paraphrased from the Converse fails paragraph. No anchor quote, to hold the brief cap. Notation line: corner; vertical tangent.
 
 ## Recognition
 
 - BC-QA-02005 (family differentiability-and-continuity, single MCQ or one part, no calculator; research/question-analysis/question-archetypes.md#BC-QA-02005 Point of non-differentiability identified on a continuous function): `typical_wording` "Is the given function differentiable at the named input? Give a reason for your answer."; `common_givens` a piecewise rule, a graph with its tangent lines described, an absolute value function; `asked_to_produce` a verdict, a reason from one sided slopes or the tangent line, the inputs where the function is continuous but not differentiable. The signal is the word differentiable asked about a named input, with a fractional power, an absolute value or a piecewise boundary there. `official_examples`: BC-MCQ-CED-002, BC-MCQ-SAMPLE-003, BC-MCQ-PE2012-011.
 - BC-QA-05014 (family critical-points; research/question-analysis/question-archetypes.md#BC-QA-05014 Every critical point found, including inputs where the derivative fails to exist): `typical_wording` "find all critical points of f"; `common_givens` a quotient with a fractional power or absolute value in the numerator. The signal is a critical point question on such a rule, where the inputs with no derivative join the list.
+
+The contrast pair on st-1 takes its near miss from the sibling concept BC-CON-02008 (BC-QA-02004): a stem that gives differentiability and asks about continuity, the reverse of BC-QA-02005's direction. The `this` stem is a fresh draw on BC-QA-02005.
 
 What says "not this concept": the stem states differentiability and asks for continuity (BC-CON-02008); the function is discontinuous at the input, so the contrapositive settles it (BC-SKL-02024).
 
@@ -30,14 +36,14 @@ What says "not this concept": the stem states differentiability and asks for con
 
 Two strategy blocks, low and mid bands, the first only in mid.
 
-- st-1, BC-QA-02005. Method, `expected_solution_path[0]`: confirm that the function is continuous at the input; then the two one sided quotients. Rival, `wrong_approaches`: continuity taken as differentiability (BC-ERR-02012) or the look of the graph (BC-ERR-02013). Separating feature: continuity is only the entry condition.
-- st-2, BC-QA-05014. Method, `expected_solution_path[0]`: differentiate. Rival, `wrong_approaches`: setting only the derivative equal to zero. Separating feature: the fractional power or absolute value marks an input with no derivative where the function is defined.
+- st-1, BC-QA-02005. Method, `expected_solution_path[0]`, written without a leading label: continuity at the input, then the two one sided quotients. The contrast pair rides on this block. Rival, `wrong_approaches`: continuity taken as differentiability (BC-ERR-02012) or the look of the graph (BC-ERR-02013). Separating feature: continuity is only the entry condition.
+- st-2, BC-QA-05014. Method, `expected_solution_path[0]`, written without a leading label: the derivative, then its zeros and the inputs where it fails to exist. Rival, `wrong_approaches`: setting only the derivative equal to zero. Separating feature: the fractional power or absolute value marks an input with no derivative where the function is defined.
 
 ## Solution path
 
 - ex-1, BC-QA-02005, both bands, no calculator. Draw: coefficient 2, exponent 2/3, point 1, shift 3, giving \(f(x)=2(x-1)^{2/3}+3\) (the `parameter_spec` notes: an even numerator gives a cusp, one sided quotients of opposite signs). Steps follow `expected_solution_path`: continuity (no value), right quotient and its limit \(\infty\), left quotient and its limit \(-\infty\), the verdict. A fluent solver writes the two limits and the verdict and holds the continuity check and the quotient setup in the head.
 
-No productive-failure opener targets this concept, so no comparison callout.
+No productive-failure opener targets this concept, so no comparison callout. The design has one example, so nothing is faded.
 
 ## Scoring
 
@@ -73,21 +79,21 @@ No draw equals a published BC-QA-02005 `parameter_draw`.
 
 ## Delivery
 
-- orientation: figure, three static panels (corner, cusp, vertical tangent) with labels inside. Rule 3, BC-REP-02 on all three skills; unit README delivery map [inferred].
+- orientation: figure, three static panels (the drawn blocks, so no `no_figure_reason`) (corner, cusp, vertical tangent) with labels inside. Rule 3, BC-REP-02 on all three skills; unit README delivery map [inferred].
 - ki-1: motion, left and right secants of \(|x|\) from the origin closing as \(h\) shrinks, slopes \(-1\) and 1 labelled inside; reduced motion steps frames on key press; fallback the last frame with a slope table. Rule 2 [inferred; settled by the modality A/B].
 - ex-1: step_reveal. Rule 1.
 - err-BC-ERR-02012, err-BC-ERR-02013, err-BC-ERR-03012: step_reveal. Rule 1.
 
 ## Band plan
 
-- Low (full): orientation, ki-1, st-1, st-2, ex-1, err-BC-ERR-02012, err-BC-ERR-02013, err-BC-ERR-03012, chk-1, chk-2, chk-3, the bridge. 630 words, 4.2 minutes (cap 900 and 6).
-- Mid (brief): orientation, ki-1, st-1, ex-1, err-BC-ERR-02012, err-BC-ERR-02013, chk-1, chk-2, the bridge. 441 words, 2.94 minutes (cap 450 and 3).
+- Low (full): prediction, orientation, the bridge, ki-1, st-1 with the contrast pair, st-2, ex-1, chk-1, err-BC-ERR-02012, err-BC-ERR-02013, err-BC-ERR-03012, chk-2, chk-3. 634 words, 4.3 minutes (cap 900 and 6).
+- Mid (brief): prediction, orientation, the bridge, ki-1, st-1 with the contrast pair, ex-1, chk-1, err-BC-ERR-02012, err-BC-ERR-02013, chk-2. 448 words, 3.0 minutes (cap 450 and 3).
 - Refresher: ki-1, err-BC-ERR-02012, err-BC-ERR-02013, err-BC-ERR-03012, ex-1.
 
 ## Sources
 
 - BC-CON-02009; BC-SKL-02021, BC-SKL-02022, BC-SKL-02023; BC-EK-FUN-2A2; ced:63
-- BC-QA-02005, BC-QA-05014; BC-MCQ-CED-002, BC-MCQ-SAMPLE-003, BC-MCQ-PE2012-011
+- BC-QA-02005, BC-QA-05014; BC-QA-02004 (the contrast near miss); BC-MCQ-CED-002, BC-MCQ-SAMPLE-003, BC-MCQ-PE2012-011
 - BC-ERR-02012, BC-ERR-02013, BC-ERR-03012; BC-MIS-02006, BC-MIS-02007
 - BC-PRQ-02001
 - research/units/unit-02-differentiation-definition-properties.md#2.4 Connecting Differentiability and Continuity: Determining When Derivatives Do and Do Not Exist
@@ -111,8 +117,38 @@ No draw equals a published BC-QA-02005 `parameter_draw`.
   "BC-SKL-02022",
   "BC-SKL-02023"
  ],
+ "prediction": {
+  "id": "pr-1",
+  "stem": {
+   "text": "Predict before the rule: \\(f(x)=2(x-1)^{2/3}+3\\) is continuous at \\(x=1\\). Must \\(f'(1)\\) exist?",
+   "command_verb": "predict"
+  },
+  "format": "mcq",
+  "options": [
+   {
+    "id": "A",
+    "label": "Yes: continuity gives a derivative.",
+    "is_key": false
+   },
+   {
+    "id": "B",
+    "label": "Not necessarily: the one sided quotients decide.",
+    "is_key": true
+   },
+   {
+    "id": "C",
+    "label": "No: a continuous function has no derivative.",
+    "is_key": false
+   }
+  ],
+  "resolution": "A continuous function may lack a derivative. At 1 the one sided quotients tend to \\(\\infty\\) and \\(-\\infty\\), so \\(f'(1)\\) does not exist.",
+  "sources": [
+   "BC-CON-02009",
+   "research/units/unit-02-differentiation-definition-properties.md#2.4 Connecting Differentiability and Continuity: Determining When Derivatives Do and Do Not Exist"
+  ]
+ },
  "orientation": {
-  "text": "A response decides whether a derivative exists where the function is continuous, and names the reason from the one sided difference quotients: a corner, a cusp or a vertical tangent means no derivative. Continuity alone never settles it.",
+  "text": "A response decides whether a derivative exists at a point of continuity, naming the reason from the one sided quotients.",
   "sources": [
    "BC-CON-02009",
    "research/units/unit-02-differentiation-definition-properties.md#2.4 Connecting Differentiability and Continuity: Determining When Derivatives Do and Do Not Exist"
@@ -123,12 +159,9 @@ No draw equals a published BC-QA-02005 `parameter_draw`.
    "id": "ki-1",
    "ek_id": "BC-EK-FUN-2A2",
    "depth": "core",
-   "text": "A continuous function can fail to be differentiable at a point of its domain (BC-EK-FUN-2A2, ced:63). At a corner, as for \\(|x|\\) at 0, the quotient has different limits from left and right. At a vertical tangent, as for the cube root at 0, the tangent has no slope. The verdict comes from the one sided quotients, not the look of the graph.",
+   "text": "A continuous function can fail to be differentiable at a point of its domain. At a corner, as for \\(|x|\\) at 0, the one sided quotients differ. At a vertical tangent, as for the cube root at 0, the tangent has no slope.",
    "notation": "corner; vertical tangent",
-   "quote": {
-    "text": "A continuous function may fail to be differentiable at a point in its domain.",
-    "source": "ced:63"
-   },
+   "quote": null,
    "sources": [
     "BC-EK-FUN-2A2",
     "ced:63",
@@ -140,20 +173,31 @@ No draw equals a published BC-QA-02005 `parameter_draw`.
   {
    "id": "st-1",
    "archetype_id": "BC-QA-02005",
-   "cue": "The stem names an input of continuity and asks whether the function is differentiable there, with a reason.",
-   "method": "First line: continuity at the input, then the two one sided quotients.",
-   "rival": "Rival: differentiability from continuity (BC-ERR-02012), or the look of the graph (BC-ERR-02013).",
-   "separating_feature": "Continuity is only the entry condition; the verdict needs both one sided limits of the quotient.",
+   "cue": "The stem asks whether a function is differentiable at a named input.",
+   "method": "Continuity at the input, then the two one sided quotients.",
+   "rival": "Differentiability from continuity, or from the look of the graph.",
+   "separating_feature": "Continuity is the entry condition; the verdict needs both one sided limits.",
    "sources": [
     "BC-QA-02005"
    ],
-   "evidence_tag": "verified"
+   "evidence_tag": "verified",
+   "contrast": {
+    "this": {
+     "text": "Let \\(f(x)=4(x+3)^{2/3}\\). Is \\(f\\) differentiable at \\(x=-3\\)? Give a reason.",
+     "archetype_id": "BC-QA-02005"
+    },
+    "not_this": {
+     "text": "\\(g\\) is differentiable at \\(x=3\\). Must \\(g\\) be continuous at \\(x=3\\)?",
+     "why_not": "Differentiability is given and continuity is the conclusion."
+    },
+    "feature": "The stem gives continuity and asks about the derivative, not the reverse."
+   }
   },
   {
    "id": "st-2",
    "archetype_id": "BC-QA-05014",
    "cue": "The stem asks for all critical points of a quotient with a fractional power or an absolute value.",
-   "method": "First written line: the derivative, then its zeros and the inputs where it fails to exist.",
+   "method": "The derivative, then its zeros and the inputs where it fails to exist.",
    "rival": "The rival is setting only the derivative equal to zero.",
    "separating_feature": "A fractional power or absolute value marks an input where the function is defined but has no derivative.",
    "sources": [
@@ -243,6 +287,7 @@ No draw equals a published BC-QA-02005 `parameter_draw`.
     "expr": "oo"
    },
    "relation": "distinct",
+   "fix_prompt": true,
    "possible_reason": {
     "misconception_id": "BC-MIS-02006",
     "text": "continuity at a point is taken to supply a derivative there"
@@ -265,6 +310,7 @@ No draw equals a published BC-QA-02005 `parameter_draw`.
     "expr": "2*h**(2/3)/h"
    },
    "relation": "distinct",
+   "fix_prompt": true,
    "possible_reason": {
     "misconception_id": "BC-MIS-02007",
     "text": "decides whether a derivative exists from how the curve looks"
@@ -287,6 +333,7 @@ No draw equals a published BC-QA-02005 `parameter_draw`.
     "expr": "1"
    },
    "relation": "distinct",
+   "fix_prompt": true,
    "possible_reason": {
     "misconception_id": "BC-MIS-02007",
     "text": "a vertical tangent is read as a slope"
@@ -301,7 +348,7 @@ No draw equals a published BC-QA-02005 `parameter_draw`.
  "prerequisite_bridges": [
   {
    "prq_id": "BC-PRQ-02001",
-   "text": "One sided quotients rest on simplifying a difference quotient: evaluate at the shifted input, subtract, divide out the common factor. A quotient written but never reduced to a form where the increment can go to zero is the gap to close first."
+   "text": "One sided quotients rest on simplifying a difference quotient: evaluate at the shifted input, subtract, divide out the common factor."
   }
  ],
  "time": {
@@ -681,14 +728,8 @@ No draw equals a published BC-QA-02005 `parameter_draw`.
   "err-BC-ERR-03012",
   "ex-1"
  ],
- "read_minutes": {
-  "full": 4.2,
-  "brief": 2.94
- },
- "word_count": {
-  "full": 630,
-  "brief": 441
- },
+ "read_minutes": {"full": 4.3, "brief": 3.0},
+ "word_count": {"full": 634, "brief": 448},
  "research_lines": [
   {
    "file": "research/question-analysis/question-archetypes.md",

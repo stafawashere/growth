@@ -3,20 +3,66 @@
  "version": 1,
  "kind": "concept",
  "target_id": "BC-CON-02004",
- "status": "signed_off",
+ "status": "draft",
  "snapshot_digest": "a6a8ec9d3f59ab8f712e33d30cc22fc64bf2c478fbe7312e3e3118d319c6a42f",
  "source_digest": "2bdad155abe559b81c2dd5b16a89b93259e6bd7e7c933a685bbb140c0e10aa8a",
  "read_minutes": {
-  "full": 4.2,
-  "brief": 2.8
+  "full": 4.4,
+  "brief": 3.0
  },
  "word_count": {
-  "full": 522,
-  "brief": 366
+  "full": 567,
+  "brief": 413
  },
  "sections": [
   {
    "id": "LSN-CON-02004#s1",
+   "type": "prediction",
+   "bands": [
+    "low",
+    "mid"
+   ],
+   "skills": [
+    "BC-SKL-02010",
+    "BC-SKL-02011"
+   ],
+   "sources": [
+    "BC-CON-02004",
+    "research/units/unit-02-differentiation-definition-properties.md#2.2 Defining the Derivative of a Function and Using Derivative Notation"
+   ],
+   "evidence_tag": "inferred",
+   "stem": {
+    "text": "Predict. \\(V(t)\\) liters at \\(t\\) minutes, and \\(V'(4)=-6\\). Which is the same in Leibniz notation?",
+    "command_verb": "predict"
+   },
+   "format": "mcq",
+   "options": [
+    {
+     "id": "A",
+     "label": "\\(\\frac{V(4)}{4}=-6\\)",
+     "is_key": false
+    },
+    {
+     "id": "B",
+     "label": "\\(\\left.\\frac{dV}{dt}\\right|_{t=4}=-6\\)",
+     "is_key": true
+    },
+    {
+     "id": "C",
+     "label": "\\(dV=-6\\)",
+     "is_key": false
+    }
+   ],
+   "resolution": {
+    "text": "\\(V'(4)\\) names the function \\(V\\), the variable \\(t\\) and the input 4; the Leibniz form keeps all three."
+   },
+   "delivery": {
+    "mode": "text",
+    "reason": "rule 6"
+   }
+  },
+  {
+   "id": "LSN-CON-02004#s2",
    "type": "orientation",
    "bands": [
     "low",
@@ -31,7 +77,7 @@
     "research/units/unit-02-differentiation-definition-properties.md#2.2 Defining the Derivative of a Function and Using Derivative Notation"
    ],
    "evidence_tag": "inferred",
-   "text": "A response reads derivative notation as naming a function, the variable it is differentiated with respect to, and, where shown, the input: \\(f'(a)\\), \\(\\left.\\frac{dy}{dx}\\right|_{x=a}\\) and \\(y'\\) at \\(a\\) are one number. Stems ask which expression denotes the same quantity, or what it means.",
+   "text": "A response reads derivative notation as naming a function, the variable it is differentiated with respect to, and, where shown, the input: \\(f'(a)\\), \\(\\left.\\frac{dy}{dx}\\right|_{x=a}\\) and \\(y'\\) at \\(a\\) are one number.",
    "delivery": {
     "mode": "text",
     "reason": "rule 5: a statement of what a response shows",
@@ -41,7 +87,7 @@
    }
   },
   {
-   "id": "LSN-CON-02004#s2",
+   "id": "LSN-CON-02004#s3",
    "type": "key_ideas",
    "bands": [
     "low",
@@ -56,15 +102,11 @@
     "BC-MIS-02015",
     "research/units/unit-02-differentiation-definition-properties.md#2.2 Defining the Derivative of a Function and Using Derivative Notation"
    ],
-   "evidence_tag": "verified",
+   "evidence_tag": "inferred",
    "ek_id": "BC-EK-CHA-2B3",
    "depth": "core",
-   "text": "For \\(y=f(x)\\) the derivative is written \\(\\frac{dy}{dx}\\), \\(f'(x)\\) or \\(y'\\) (BC-EK-CHA-2B3, ced:61). Each names a function and the variable of differentiation. A value at one input carries the input: \\(f'(4)\\) is \\(\\left.\\frac{dy}{dx}\\right|_{x=4}\\). \\(\\frac{dy}{dx}\\) is one symbol, not a quotient.",
+   "text": "For \\(y=f(x)\\) the derivative is written \\(\\frac{dy}{dx}\\), \\(f'(x)\\) or \\(y'\\). Each names a function and the variable of differentiation. A value at one input carries the input: \\(f'(4)\\) is \\(\\left.\\frac{dy}{dx}\\right|_{x=4}\\). \\(\\frac{dy}{dx}\\) is one symbol, not a quotient.",
    "notation": "dy by dx; f prime of x; y prime",
-   "quote": {
-    "text": "notations for the derivative",
-    "source": "ced:61"
-   },
    "delivery": {
     "mode": "text",
     "reason": "rule 5: the reading of symbols, BC-REP-01 and BC-REP-04 on BC-SKL-02010",
@@ -74,7 +116,7 @@
    }
   },
   {
-   "id": "LSN-CON-02004#s3",
+   "id": "LSN-CON-02004#s4",
    "type": "key_ideas",
    "bands": [
     "low"
@@ -90,7 +132,7 @@
    "evidence_tag": "verified",
    "ek_id": "BC-EK-CHA-2B4",
    "depth": "extended",
-   "text": "One derivative value has four faces (BC-EK-CHA-2B4, ced:61): a tangent slope on a graph, a quotient from a table, a formula, a sentence with units. \\(V'(4)=-6\\) reads: at \\(t=4\\) the volume is falling at 6 liters per minute.",
+   "text": "One derivative value has four faces: a tangent slope on a graph, a quotient from a table, a formula, a sentence with units. \\(V'(4)=-6\\) reads: at \\(t=4\\) the volume is falling at 6 liters per minute.",
    "notation": "dy by dx",
    "quote": {
     "text": "The derivative can be represented graphically, numerically, analytically, and verbally.",
@@ -189,7 +231,7 @@
    }
   },
   {
-   "id": "LSN-CON-02004#s4",
+   "id": "LSN-CON-02004#s5",
    "type": "strategy",
    "bands": [
     "low",
@@ -200,17 +242,29 @@
     "BC-SKL-02011"
    ],
    "sources": [
-    "BC-QA-02012"
+    "BC-QA-02012",
+    "BC-ERR-02029"
    ],
    "evidence_tag": "verified",
    "archetype_id": "BC-QA-02012",
-   "cue": "A derivative in one notation; the stem asks for the same quantity in another, or what it denotes.",
-   "method": "First line: name the function, the independent variable, and the input if shown.",
-   "rival": "Rival: the Leibniz form split and cancelled as a fraction (BC-ERR-02029).",
-   "separating_feature": "A value at an input keeps the input in every notation."
+   "cue": "A derivative in one notation; the same quantity is asked in another.",
+   "method": "Name the function, the independent variable, and the input if shown.",
+   "rival": "The Leibniz form split and cancelled as a fraction.",
+   "separating_feature": "A value at an input keeps the input in every notation.",
+   "contrast": {
+    "this": {
+     "text": "\\(P=h(x)\\) and \\(h'(5)=9\\). Which expression denotes the same quantity?",
+     "archetype_id": "BC-QA-02012"
+    },
+    "not_this": {
+     "text": "Let \\(h(x)=x^2\\). Write the tangent line to \\(h\\) at \\(x=5\\).",
+     "why_not": "A line is asked, not the same derivative in another notation."
+    },
+    "feature": "The same quantity restated, not a new quantity produced."
+   }
   },
   {
-   "id": "LSN-CON-02004#s5",
+   "id": "LSN-CON-02004#s6",
    "type": "worked_example",
    "bands": [
     "low",
@@ -362,6 +416,7 @@
     ]
    },
    "relation": "distinct",
+   "fix_prompt": true,
    "possible_reason": {
     "misconception_id": "BC-MIS-02015",
     "text": "the derivative function is confused with its value"
@@ -457,6 +512,7 @@
     ]
    },
    "relation": "distinct",
+   "fix_prompt": true,
    "possible_reason": {
     "misconception_id": "BC-MIS-99005",
     "text": "does not distinguish the variable of differentiation"
@@ -519,6 +575,7 @@
     ]
    },
    "relation": "distinct",
+   "fix_prompt": true,
    "possible_reason": {
     "misconception_id": "BC-MIS-02015",
     "text": "the Leibniz form is treated as a fraction"
@@ -573,6 +630,7 @@
     ]
    },
    "relation": "distinct",
+   "fix_prompt": true,
    "possible_reason": {
     "misconception_id": "BC-MIS-03014",
     "text": "notation is mixed within a line"
@@ -598,7 +656,7 @@
    ],
    "evidence_tag": "inferred",
    "prerequisite_id": "BC-PRQ-02004",
-   "text": "Each form names the variable it differentiates with respect to; one expression keeps one form."
+   "text": "Each form names its variable of differentiation."
   }
  ],
  "checks": [
@@ -619,7 +677,7 @@
     "at": 4,
     "value": -6
    },
-   "completes": "LSN-CON-02004#s5",
+   "completes": "LSN-CON-02004#s6",
    "stem": {
     "text": "\\(V'(4)=-6\\) names \\(V\\), the variable \\(t\\) and the input 4. Write it in Leibniz notation.",
     "command_verb": "write"
@@ -835,19 +893,19 @@
   }
  ],
  "refresher": [
-  "LSN-CON-02004#s2",
+  "LSN-CON-02004#s3",
   "LSN-CON-02004#err-BC-ERR-02030",
   "LSN-CON-02004#err-BC-ERR-04017",
   "LSN-CON-02004#err-BC-ERR-02029",
   "LSN-CON-02004#err-BC-ERR-03022",
-  "LSN-CON-02004#s5"
+  "LSN-CON-02004#s6"
  ],
  "provenance": {
   "author": "tools/lesson_transcribe.py",
-  "prompt_version": "generator/lesson_v1",
+  "prompt_version": "generator/lesson_v2",
   "design_path": "docs/lessons/unit-02/LSN-CON-02004.md",
-  "signed_off_by": "claude-opus-5-5",
-  "signed_off_at": "2026-09-29",
+  "signed_off_by": null,
+  "signed_off_at": null,
   "not_human": true
  }
 }

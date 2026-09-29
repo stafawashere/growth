@@ -3,20 +3,68 @@
  "version": 1,
  "kind": "concept",
  "target_id": "BC-CON-02002",
- "status": "signed_off",
+ "status": "draft",
  "snapshot_digest": "a6a8ec9d3f59ab8f712e33d30cc22fc64bf2c478fbe7312e3e3118d319c6a42f",
  "source_digest": "1f7e3018376f795cc448dbd3f49beb94bbe03a808337046c6ad7ad4dda059048",
  "read_minutes": {
-  "full": 3.8,
-  "brief": 2.4
+  "full": 4.4,
+  "brief": 3.0
  },
  "word_count": {
-  "full": 502,
-  "brief": 311
+  "full": 595,
+  "brief": 408
  },
  "sections": [
   {
    "id": "LSN-CON-02002#s1",
+   "type": "prediction",
+   "bands": [
+    "low",
+    "mid"
+   ],
+   "skills": [
+    "BC-SKL-02004",
+    "BC-SKL-02005",
+    "BC-SKL-02006",
+    "BC-SKL-02007"
+   ],
+   "sources": [
+    "BC-CON-02002",
+    "research/units/unit-02-differentiation-definition-properties.md#2.1 Defining Average and Instantaneous Rates of Change at a Point"
+   ],
+   "evidence_tag": "inferred",
+   "stem": {
+    "text": "Predict. The average rates of \\(f(x)=2x^2-3x+1\\) over \\([2,3]\\), \\([2,2.1]\\) and \\([2,2.01]\\) are 7, 5.2 and 5.02. What is the rate at the instant \\(x=2\\)?",
+    "command_verb": "predict"
+   },
+   "format": "mcq",
+   "options": [
+    {
+     "id": "A",
+     "label": "\\(7\\)",
+     "is_key": false
+    },
+    {
+     "id": "B",
+     "label": "\\(5\\)",
+     "is_key": true
+    },
+    {
+     "id": "C",
+     "label": "Undefined, since the quotient is \\(\\frac{0}{0}\\)",
+     "is_key": false
+    }
+   ],
+   "resolution": {
+    "text": "The rate at an instant is the value the average rates approach as the interval shrinks to nothing: \\(f'(2)=5\\), since each average is \\(2h+5\\)."
+   },
+   "delivery": {
+    "mode": "text",
+    "reason": "rule 6"
+   }
+  },
+  {
+   "id": "LSN-CON-02002#s2",
    "type": "orientation",
    "bands": [
     "low",
@@ -44,7 +92,7 @@
    }
   },
   {
-   "id": "LSN-CON-02002#s2",
+   "id": "LSN-CON-02002#s3",
    "type": "key_ideas",
    "bands": [
     "low",
@@ -64,7 +112,7 @@
    "evidence_tag": "verified",
    "ek_id": "BC-EK-CHA-2B1",
    "depth": "core",
-   "text": "The rate of change of \\(f\\) at \\(x=a\\) is \\(\\lim_{h\\to0}\\frac{f(a+h)-f(a)}{h}\\) or \\(\\lim_{x\\to a}\\frac{f(x)-f(a)}{x-a}\\), provided the limit exists (BC-EK-CHA-2B1, ced:60). Both name one number, \\(f'(a)\\). Each quotient is a secant slope; as \\(h\\) shrinks the secants close on the tangent. At \\(h=0\\) the quotient is \\(\\frac{0}{0}\\), so \\(h\\) is divided out before the limit is taken.",
+   "text": "The rate of change of \\(f\\) at \\(x=a\\) is \\(\\lim_{h\\to0}\\frac{f(a+h)-f(a)}{h}\\) or \\(\\lim_{x\\to a}\\frac{f(x)-f(a)}{x-a}\\), provided the limit exists. Both name one number, \\(f'(a)\\). Each quotient is a secant slope; as \\(h\\) shrinks the secants close on the tangent. At \\(h=0\\) the quotient is \\(\\frac{0}{0}\\), so \\(h\\) is divided out before the limit is taken.",
    "notation": "f prime of a",
    "quote": {
     "text": "These are equivalent forms of the definition of the derivative",
@@ -159,7 +207,7 @@
    }
   },
   {
-   "id": "LSN-CON-02002#s3",
+   "id": "LSN-CON-02002#s4",
    "type": "strategy",
    "bands": [
     "low",
@@ -170,17 +218,29 @@
     "BC-SKL-02007"
    ],
    "sources": [
-    "BC-QA-02002"
+    "BC-QA-02002",
+    "BC-ERR-02008"
    ],
    "evidence_tag": "verified",
    "archetype_id": "BC-QA-02002",
    "cue": "A function rule, and the stem says use the definition of the derivative.",
-   "method": "First line: the difference quotient for the rule at the named input, inside \\(\\lim_{h\\to0}\\).",
-   "rival": "Rival: the power rule presented as the definition (BC-ERR-02008).",
-   "separating_feature": "The word definition: the quotient must be on the page."
+   "method": "The difference quotient for the rule at the named input, inside \\(\\lim_{h\\to0}\\).",
+   "rival": "The power rule presented as the definition.",
+   "separating_feature": "The word definition: the quotient must be on the page.",
+   "contrast": {
+    "this": {
+     "text": "Let \\(g(x)=x^2+5x\\). Use the definition of the derivative to find \\(g'(1)\\).",
+     "archetype_id": "BC-QA-02002"
+    },
+    "not_this": {
+     "text": "Let \\(g(x)=x^2+5x\\). Find the average rate of change of \\(g\\) over \\(1\\le x\\le 3\\).",
+     "why_not": "Two endpoints are named, so a quotient with no limit is asked."
+    },
+    "feature": "One named input inside a limit against two named endpoints."
+   }
   },
   {
-   "id": "LSN-CON-02002#s4",
+   "id": "LSN-CON-02002#s5",
    "type": "strategy",
    "bands": [
     "low",
@@ -190,17 +250,18 @@
     "BC-SKL-02004"
    ],
    "sources": [
-    "BC-QA-02012"
+    "BC-QA-02012",
+    "BC-ERR-02029"
    ],
    "evidence_tag": "verified",
    "archetype_id": "BC-QA-02012",
    "cue": "A derivative written in one notation; the stem asks for the same quantity in another.",
-   "method": "First line: name the function and the independent variable the notation carries.",
-   "rival": "Rival: Leibniz notation split and cancelled as a fraction (BC-ERR-02029).",
+   "method": "Name the function and the independent variable the notation carries.",
+   "rival": "Leibniz notation split and cancelled as a fraction.",
    "separating_feature": "\\(f'(a)\\) names one number at one input."
   },
   {
-   "id": "LSN-CON-02002#s5",
+   "id": "LSN-CON-02002#s6",
    "type": "worked_example",
    "bands": [
     "low",
@@ -297,7 +358,7 @@
    }
   },
   {
-   "id": "LSN-CON-02002#s6",
+   "id": "LSN-CON-02002#s7",
    "type": "worked_example",
    "bands": [
     "low"
@@ -388,6 +449,7 @@
     "form": "numeric",
     "mathjson": 8
    },
+   "fade_from": 2,
    "delivery": {
     "mode": "step_reveal",
     "reason": "rule 1",
@@ -429,6 +491,7 @@
     "expression": 5
    },
    "relation": "distinct",
+   "fix_prompt": true,
    "possible_reason": {
     "misconception_id": "BC-MIS-02003",
     "text": "intermediate lines assert equalities that are false before the limit is taken"
@@ -474,6 +537,7 @@
     "expression": 5
    },
    "relation": "distinct",
+   "fix_prompt": true,
    "possible_reason": {
     "misconception_id": "BC-MIS-02015",
     "text": "the derivative function is confused with its value"
@@ -511,6 +575,7 @@
     "expression": 8
    },
    "relation": "distinct",
+   "fix_prompt": true,
    "delivery": {
     "mode": "step_reveal",
     "reason": "rule 1",
@@ -518,7 +583,7 @@
    }
   },
   {
-   "id": "LSN-CON-02002#s7",
+   "id": "LSN-CON-02002#s8",
    "type": "representations",
    "bands": [
     "low"
@@ -633,7 +698,7 @@
     "point": 2,
     "degree": 2
    },
-   "completes": "LSN-CON-02002#s5",
+   "completes": "LSN-CON-02002#s6",
    "stem": {
     "text": "The definition gives \\(f'(2)=\\lim_{h\\to0}(2h+5)\\). Find \\(f'(2)\\).",
     "command_verb": "find"
@@ -878,18 +943,18 @@
   }
  ],
  "refresher": [
-  "LSN-CON-02002#s2",
+  "LSN-CON-02002#s3",
   "LSN-CON-02002#err-BC-ERR-02006",
   "LSN-CON-02002#err-BC-ERR-02030",
   "LSN-CON-02002#err-BC-ERR-02033",
-  "LSN-CON-02002#s5"
+  "LSN-CON-02002#s6"
  ],
  "provenance": {
   "author": "tools/lesson_transcribe.py",
-  "prompt_version": "generator/lesson_v1",
+  "prompt_version": "generator/lesson_v2",
   "design_path": "docs/lessons/unit-02/LSN-CON-02002.md",
-  "signed_off_by": "claude-opus-5-5",
-  "signed_off_at": "2026-09-29",
+  "signed_off_by": null,
+  "signed_off_at": null,
   "not_human": true
  }
 }

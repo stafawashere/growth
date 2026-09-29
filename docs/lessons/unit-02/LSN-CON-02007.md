@@ -9,6 +9,10 @@ purpose: Authoring spec for the concept lesson on BC-CON-02007, estimating a der
 
 Concept BC-CON-02007 (skills BC-SKL-02014, BC-SKL-02015, BC-SKL-02016, BC-SKL-02017, BC-SKL-02018), topic 2.3 of Unit 2, loaded by BC-QA-02013 (listed first), BC-QA-02009 and BC-QA-04002. Its hard parents are BC-CON-02002 and BC-CON-02005 (unit README section 1). It shares LSN-DEC-02-01 with BC-CON-02001 and LSN-DEC-02-02 with BC-CON-02004 and BC-CON-02005.
 
+## Prediction
+
+Served first, both bands, on ex-1's numbers (source BC-CON-02007 and the topic's 2.3 section, research/units/unit-02-differentiation-definition-properties.md#2.3 Estimating Derivatives of a Function at a Point). Form `mcq`, three options, key: the average rate of change from \(t=4\) to \(t=10\). The distractors are the two readings the traps record, a bare value and a difference with no division. The resolution states what the rows give and why, without a verdict word.
+
 ## Orientation
 
 Served text (46 words), from BC-CON-02007 `description_plain` and the topic's Assessment behaviour paragraph (research/units/unit-02-differentiation-definition-properties.md#2.3 Estimating Derivatives of a Function at a Point): a response estimates the derivative at a point by an average rate over an interval that brackets or abuts the point, shows the difference and the quotient, and attaches compound units; from a graph, a tangent slope; with technology, a named setup and three decimals. No count, no frequency.
@@ -17,8 +21,8 @@ Served text (46 words), from BC-CON-02007 `description_plain` and the topic's As
 
 BC-SKL-02014 to BC-SKL-02017 map BC-EK-CHA-2D1; BC-SKL-02018 maps BC-EK-CHA-2D2. Two blocks, both on ced:62.
 
-- ki-1 (core, BC-EK-CHA-2D1). The table method and the graph method, and the units rule, paraphrased from the topic's Estimation, Method from a table and Units paragraphs. Anchor quote (15 words) from ced:62. Notation line: approximately equal to.
-- ki-2 (core, BC-EK-CHA-2D2). Core so that the mid band teaches BC-SKL-02018, which no other mid block holds (plan 15, Sourcing, Pipeline step 2). Technology gives the value; the written work names what was computed and reports three decimals (BC-QA-02013 `asked_to_produce`). Anchor quote (19 words) from ced:62.
+- ki-1 (core, BC-EK-CHA-2D1). The table method and the graph method, and the units rule, paraphrased from the topic's Estimation, Method from a table and Units paragraphs. No anchor quote, to hold the brief cap. Notation line: approximately equal to.
+- ki-2 (core, BC-EK-CHA-2D2). Core so that the mid band teaches BC-SKL-02018, which no other mid block holds (plan 15, Sourcing, Pipeline step 2). Technology gives the value; the written work names what was computed and reports three decimals (BC-QA-02013 `asked_to_produce`). No anchor quote, to hold the brief cap.
 
 ## Recognition
 
@@ -26,21 +30,23 @@ BC-SKL-02014 to BC-SKL-02017 map BC-EK-CHA-2D1; BC-SKL-02018 maps BC-EK-CHA-2D2.
 - BC-QA-02013 (family technology-numerical-result, one calculator FRQ part; research/question-analysis/question-archetypes.md#BC-QA-02013 Derivative at a point produced with technology): `typical_wording` "Find the value of the derivative at the named input. Show the setup for your calculations"; `common_givens` a function model in a calculator active part. The signal is a formula model and a calculator part.
 - BC-QA-02009 (family derivative-from-table): loads BC-SKL-02017 where one supplied value must be read as a slope from a graph (`difficulty_variables`); its rule half belongs to BC-CON-02013 and BC-CON-02014.
 
+The contrast pair on st-1 takes its near miss from BC-CON-02001 through the LSN-DEC-02-01 selector: a stem that names the interval and asks for an average rate, where BC-QA-04002 asks for a derivative symbol at a tabulated input. The `this` stem is a fresh draw on BC-QA-04002.
+
 What says "not this concept": the interval is named and no point is estimated, which is an average rate (BC-CON-02001, the LSN-DEC-02-01 selector); a function rule with no data and no calculator (the rules). No archetype isolates BC-SKL-02017 (unit README section 3).
 
 ## Method choice
 
 One block per family: derivative-from-table (BC-QA-04002 stands for it) and technology-numerical-result (BC-QA-02013).
 
-- st-1, BC-QA-04002. Cue from `asked_to_produce` and `common_givens`. Method, `expected_solution_path[0]`: select the two tabulated values the interval determines, here the rows bracketing the point. Rival, `wrong_approaches`: a pair of rows other than the named or bracketing interval (BC-ERR-02004). Separating feature: the two rows sit on either side of the point.
-- st-2, BC-QA-02013. Method, `expected_solution_path[0]`: enter the function, with the written setup naming \(W'(2)\). The archetype's `wrong_approaches` and `prohibited_shortcuts` are empty, so the rival is taken from its error record, a value with no setup (BC-ERR-02031) [inferred]. Separating feature: a formula in a calculator part.
+- st-1, BC-QA-04002. Cue from `asked_to_produce` and `common_givens`. Method, `expected_solution_path[0]`, written without a leading label: the two tabulated values the interval determines, here the rows bracketing the point. The contrast pair rides on this block. Rival, `wrong_approaches`: a pair of rows other than the named or bracketing interval (BC-ERR-02004). Separating feature: the two rows sit on either side of the point.
+- st-2, BC-QA-02013. Method, `expected_solution_path[0]`, written without a leading label: enter the function, with the written setup naming \(W'(2)\). The archetype's `wrong_approaches` and `prohibited_shortcuts` are empty, so the rival is taken from its error record, a value with no setup (BC-ERR-02031) [inferred]. Separating feature: a formula in a calculator part.
 
 Both archetypes carry `asked_to_produce` and `common_givens`, so neither block is tagged inferred; the st-2 rival is listed under Sources.
 
 ## Solution path
 
 - ex-1, BC-QA-04002, both bands, no calculator. Draw: times 0, 4, 6, 10, 12; readings 86, 71, 50, 38, 25 (served pairing); context oven; trend decreasing, so \(H(0)=86\), \(H(4)=71\), \(H(6)=50\), \(H(10)=38\), \(H(12)=25\), point \(t=6\), bracketing rows \(t=4\) and \(t=10\). Steps follow `expected_solution_path`: choose the rows (no value), difference over difference (valued), divide (valued), units (no value). A fluent solver writes the quotient, the value and the units; the row choice is read.
-- ex-2, BC-QA-02013, low band, calculator. Draw: level 24, swing 3, scale 4, at 2, context traffic, framing context, so \(W(t)=24+3\sin(\frac{t^2}{4})+\ln(1+t)\) hundred cars. Valued chain: \(W\) (new), \(W'\) (differentiate, what the calculator computes), \(W'(2)\approx1.954\) (evaluate, approx). Written: the setup naming \(W'(2)\) and the value; the keystrokes are not written.
+- ex-2, BC-QA-02013, low band, calculator. Draw: level 24, swing 3, scale 4, at 2, context traffic, framing context, so \(W(t)=24+3\sin(\frac{t^2}{4})+\ln(1+t)\) hundred cars. Valued chain: \(W\) (new), \(W'\) (differentiate, what the calculator computes), \(W'(2)\approx1.954\) (evaluate, approx). Written: the setup naming \(W'(2)\) and the value; the keystrokes are not written. Faded from step 2: step 1 (the setup) is shown, the student computes and writes the value, and steps 2 and 3 then reveal. The fade falls there because the fluent solver writes only the setup and the value, so the withheld middle step is the one held in the head.
 
 The bundle lists BC-QA-02013 first; ex-1 is BC-QA-04002 because the first four error blocks in the bundle's order are table errors and fall on its draw [inferred].
 
@@ -88,20 +94,20 @@ No draw equals a published BC-QA-04002 or BC-QA-02013 `parameter_draw` (content/
 - ki-2: text. Rule 5; BC-REP-09 is not figure-bearing.
 - ex-1, ex-2: step_reveal. Rule 1.
 - err-BC-ERR-02001, err-BC-ERR-02002, err-BC-ERR-02003, err-BC-ERR-02004: step_reveal. Rule 1.
-- representations: figure. Rule 3; BC-SKL-02017 lists BC-REP-02. Static: nothing varies in the stem's reading.
+- representations: figure. It and the ki-1 table are the drawn blocks. Rule 3; BC-SKL-02017 lists BC-REP-02. Static: nothing varies in the stem's reading.
 
 Every non-text choice is [inferred], settled by the modality A/B.
 
 ## Band plan
 
-- Low (full): orientation, ki-1, ki-2, st-1, st-2, ex-1, the four error blocks, chk-1, ex-2, chk-2, representations, chk-3, the bridge. 699 words, 4.7 minutes (cap 900 and 6).
-- Mid (brief): orientation, ki-1, ki-2, st-1, ex-1, err-02001, err-02002, chk-1, chk-2, the bridge. 417 words, 2.8 minutes (cap 450 and 3).
+- Low (full): prediction, orientation, the bridge, ki-1, ki-2, st-1 with the contrast pair, st-2, ex-1, chk-1, the four error blocks, ex-2 faded from step 2, chk-2, representations, chk-3. 728 words, 4.9 minutes (cap 900 and 6).
+- Mid (brief): prediction, orientation, the bridge, ki-1, ki-2, st-1 with the contrast pair, ex-1, chk-1, err-02001, err-02002, chk-2. 449 words, 3.0 minutes (cap 450 and 3).
 - Refresher: ki-1, ki-2, err-BC-ERR-02001, err-BC-ERR-02002, err-BC-ERR-02003, err-BC-ERR-02004, ex-1.
 
 ## Sources
 
 - BC-CON-02007; BC-SKL-02014, BC-SKL-02015, BC-SKL-02016, BC-SKL-02017, BC-SKL-02018; BC-EK-CHA-2D1, BC-EK-CHA-2D2; ced:62
-- BC-QA-04002, BC-QA-02013, BC-QA-02009; BC-FRQ-2021-Q1-A, BC-FRQ-2022-Q4-A, BC-FRQ-2024-Q1-A, BC-FRQ-2025-Q3-A, BC-FRQ-2026-Q1-A
+- BC-QA-04002, BC-QA-02013, BC-QA-02009; BC-CON-02001 (the contrast near miss); BC-FRQ-2021-Q1-A, BC-FRQ-2022-Q4-A, BC-FRQ-2024-Q1-A, BC-FRQ-2025-Q3-A, BC-FRQ-2026-Q1-A
 - BC-PT-99005, BC-PT-99006, BC-PT-99008; sg-25:11, sg-25:4; cr-22:14, cr-24:4; BC-ERR-99005, BC-ERR-99019, BC-ERR-99021
 - BC-ERR-02001, BC-ERR-02002, BC-ERR-02003, BC-ERR-02004, BC-ERR-02024, BC-ERR-02031, BC-ERR-02032, BC-ERR-09023; BC-MIS-02001, BC-MIS-02003, BC-MIS-02004, BC-MIS-02008
 - BC-PRQ-02004
@@ -127,8 +133,12 @@ Every non-text choice is [inferred], settled by the modality A/B.
  "target_id": "BC-CON-02007",
  "unit": "02",
  "skills": ["BC-SKL-02014", "BC-SKL-02015", "BC-SKL-02016", "BC-SKL-02017", "BC-SKL-02018"],
+ "prediction": {"id": "pr-1", "stem": {"text": "Predict before the rule: an oven reads \\(H(4)=71\\), \\(H(6)=50\\), \\(H(10)=38\\). Which best estimates \\(H'(6)\\)?", "command_verb": "predict"}, "format": "mcq",
+  "options": [{"id": "A", "label": "The value \\(H(6)=50\\).", "is_key": false}, {"id": "B", "label": "The average rate from \\(t=4\\) to \\(t=10\\).", "is_key": true}, {"id": "C", "label": "\\(H(10)-H(4)\\), with no division.", "is_key": false}],
+  "resolution": "The derivative at 6 is a rate at one instant, and rows 4 and 10 bracket it. The average rate \\(\\frac{38-71}{10-4}=-\\frac{11}{2}\\) degrees per minute estimates it.",
+  "sources": ["BC-CON-02007", "research/units/unit-02-differentiation-definition-properties.md#2.3 Estimating Derivatives of a Function at a Point"]},
  "orientation": {
-  "text": "A response estimates a derivative at a point from nearby values: the average rate over rows that bracket the point, with the difference, the quotient and compound units shown. From a graph it is the tangent's slope; from a calculator, a value with its setup named.",
+  "text": "A response estimates a derivative at a point from nearby values: a difference and a quotient over bracketing rows, with compound units. From a graph, a tangent slope; from a calculator, a named setup.",
   "sources": ["BC-CON-02007", "research/units/unit-02-differentiation-definition-properties.md#2.3 Estimating Derivatives of a Function at a Point"]
  },
  "key_ideas": [
@@ -136,18 +146,18 @@ Every non-text choice is [inferred], settled by the modality A/B.
    "id": "ki-1",
    "ek_id": "BC-EK-CHA-2D1",
    "depth": "core",
-   "text": "From a table (BC-EK-CHA-2D1, ced:62): the average rate over an interval that contains or abuts the point, difference and quotient both shown. From a graph: the slope of the tangent at the point, from two points on it. Units: the quantity's units per unit of input.",
+   "text": "From a table: the average rate over an interval that contains or abuts the point, difference and quotient both shown. From a graph: the slope of the tangent at the point. Units: the quantity's units per unit of input.",
    "notation": "approximately equal to",
-   "quote": {"text": "The derivative at a point can be estimated from information given in tables or graphs.", "source": "ced:62"},
+   "quote": null,
    "sources": ["BC-EK-CHA-2D1", "ced:62", "research/units/unit-02-differentiation-definition-properties.md#2.3 Estimating Derivatives of a Function at a Point"]
   },
   {
    "id": "ki-2",
    "ek_id": "BC-EK-CHA-2D2",
    "depth": "core",
-   "text": "Technology gives the derivative of a supplied model at a point (BC-EK-CHA-2D2, ced:62). The written line names what was computed, such as \\(W'(2)\\), and the value is reported to three decimal places.",
+   "text": "Technology gives the derivative of a supplied model at a point. The written line names what was computed, as \\(W'(2)\\), and the value has three decimal places.",
    "notation": "approximately equal to",
-   "quote": {"text": "Technology can be used to calculate or estimate the value of a derivative of a function at a point.", "source": "ced:62"},
+   "quote": null,
    "sources": ["BC-EK-CHA-2D2", "ced:62", "BC-QA-02013"]
   }
  ],
@@ -155,19 +165,24 @@ Every non-text choice is [inferred], settled by the modality A/B.
   {
    "id": "st-1",
    "archetype_id": "BC-QA-04002",
-   "cue": "A table of a contextual quantity; the stem asks to approximate a derivative at a tabulated input, with units.",
-   "method": "First line: the two rows that bracket the point, differenced, over their inputs' difference.",
-   "rival": "Rival: a pair of rows other than the bracketing pair (BC-ERR-02004).",
+   "cue": "A table; the stem asks to approximate a derivative at a tabulated input, with units.",
+   "method": "The two rows that bracket the point, differenced, over their inputs' difference.",
+   "rival": "Rival: a pair of rows other than the bracketing pair.",
    "separating_feature": "The two rows sit on either side of the point.",
    "sources": ["BC-QA-04002"],
-   "evidence_tag": "verified"
+   "evidence_tag": "verified",
+   "contrast": {
+    "this": {"text": "A table gives \\(P(1)=8\\), \\(P(3)=14\\), \\(P(5)=20\\). Approximate \\(P'(3)\\), with units.", "archetype_id": "BC-QA-04002"},
+    "not_this": {"text": "Find the average rate of change of \\(P\\) over \\(1\\le t\\le5\\), with units.", "why_not": "It asks for an average rate over a named interval."},
+    "feature": "A derivative symbol at a tabulated input, no named interval."
+   }
   },
   {
    "id": "st-2",
    "archetype_id": "BC-QA-02013",
    "cue": "A function model in a calculator part; the stem asks for the derivative at an input, with setup.",
-   "method": "First line: the setup naming the quantity, such as \\(W'(2)\\), then the calculator value.",
-   "rival": "Rival: a bare calculator number with no setup (BC-ERR-02031).",
+   "method": "The setup naming the quantity, such as \\(W'(2)\\), then the calculator value.",
+   "rival": "Rival: a bare calculator number with no setup.",
    "separating_feature": "A formula and a calculator part, not a table.",
    "sources": ["BC-QA-02013", "BC-ERR-02031"],
    "evidence_tag": "verified"
@@ -193,6 +208,7 @@ Every non-text choice is [inferred], settled by the modality A/B.
    "id": "ex-2",
    "archetype_id": "BC-QA-02013",
    "bands": ["low"],
+   "fade_from": 2,
    "parameter_draw": {"level": 24, "swing": 3, "scale": 4, "at": 2, "context": "traffic", "framing": "context"},
    "problem": {"text": "Cars on a highway number \\(W(t)=24+3\\sin(\\frac{t^2}{4})+\\ln(1+t)\\) hundred at \\(t\\) hours, \\(0\\le t\\le4\\). Using a calculator, find \\(W'(2)\\) to three decimal places, with units.", "command_verb": "find"},
    "calculator_status": "calculator",
@@ -215,6 +231,7 @@ Every non-text choice is [inferred], settled by the modality A/B.
    "wrong_step": {"text": "\\(38-71=-33\\).", "expr": "38 - 71"},
    "right_step": {"text": "\\(\\frac{38-71}{10-4}\\).", "expr": "(38 - 71)/(10 - 4)"},
    "relation": "distinct",
+   "fix_prompt": true,
    "possible_reason": {"misconception_id": "BC-MIS-02001", "text": "the division by the change in the input is omitted"},
    "sources": ["BC-ERR-02001", "BC-MIS-02001"]
   },
@@ -225,6 +242,7 @@ Every non-text choice is [inferred], settled by the modality A/B.
    "wrong_step": {"text": "\\(\\frac{38-71}{10-4}\\), and no number.", "expr": "(38 - 71)/(10 - 4)"},
    "right_step": {"text": "\\(-\\frac{11}{2}\\).", "expr": "-11/2"},
    "relation": "equivalent",
+   "fix_prompt": false,
    "possible_reason": null,
    "sources": ["BC-ERR-02002"]
   },
@@ -235,6 +253,7 @@ Every non-text choice is [inferred], settled by the modality A/B.
    "wrong_step": {"text": "\\(-\\frac{11}{2}\\) degrees Fahrenheit.", "expr": "-11/2"},
    "right_step": {"text": "\\(-\\frac{11}{2}\\) degrees Fahrenheit per minute.", "expr": "(38 - 71)/(10 - 4)"},
    "relation": "equivalent",
+   "fix_prompt": false,
    "possible_reason": {"misconception_id": "BC-MIS-02008", "text": "copies them from the table header"},
    "sources": ["BC-ERR-02003", "BC-MIS-02008"]
   },
@@ -245,6 +264,7 @@ Every non-text choice is [inferred], settled by the modality A/B.
    "wrong_step": {"text": "Rows 4 and 6: \\(\\frac{50-71}{6-4}=-\\frac{21}{2}\\).", "expr": "(50 - 71)/(6 - 4)"},
    "right_step": {"text": "Rows 4 and 10: \\(-\\frac{11}{2}\\).", "expr": "(38 - 71)/(10 - 4)"},
    "relation": "distinct",
+   "fix_prompt": true,
    "possible_reason": {"misconception_id": "BC-MIS-02001", "text": "applied to the wrong pair of values"},
    "sources": ["BC-ERR-02004", "BC-MIS-02001"]
   }
@@ -338,8 +358,8 @@ Every non-text choice is [inferred], settled by the modality A/B.
    "keyboard": "none needed; the figure is static and its text alternative reads the two points and the slope"}
  ],
  "refresher": ["ki-1", "ki-2", "err-BC-ERR-02001", "err-BC-ERR-02002", "err-BC-ERR-02003", "err-BC-ERR-02004", "ex-1"],
- "read_minutes": {"full": 4.7, "brief": 2.8},
- "word_count": {"full": 699, "brief": 417},
+ "read_minutes": {"full": 4.9, "brief": 3.0},
+ "word_count": {"full": 728, "brief": 449},
  "research_lines": [
   {"file": "research/units/unit-02-differentiation-definition-properties.md", "line": "Use the average rate of change over an interval from the table that contains or abuts the point, and present both the difference and the quotient."},
   {"file": "research/scoring/common-point-losses.md", "line": "Units are scored separately from the value"}

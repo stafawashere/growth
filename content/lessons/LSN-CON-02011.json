@@ -3,20 +3,69 @@
  "version": 1,
  "kind": "concept",
  "target_id": "BC-CON-02011",
- "status": "signed_off",
+ "status": "draft",
  "snapshot_digest": "a6a8ec9d3f59ab8f712e33d30cc22fc64bf2c478fbe7312e3e3118d319c6a42f",
  "source_digest": "8534c2c1780b394e1fcfa1561944acc638f560f865f5c7b3d1b2ed5860e5a378",
  "read_minutes": {
-  "full": 2.7,
-  "brief": 2.5
+  "full": 3.2,
+  "brief": 3.0
  },
  "word_count": {
-  "full": 334,
-  "brief": 310
+  "full": 415,
+  "brief": 393
  },
  "sections": [
   {
    "id": "LSN-CON-02011#s1",
+   "type": "prediction",
+   "bands": [
+    "low",
+    "mid"
+   ],
+   "skills": [
+    "BC-SKL-02028",
+    "BC-SKL-02029",
+    "BC-SKL-02030",
+    "BC-SKL-02031"
+   ],
+   "sources": [
+    "BC-CON-02011",
+    "BC-EK-FUN-3A2",
+    "ced:65"
+   ],
+   "evidence_tag": "inferred",
+   "stem": {
+    "text": "Predict before the rule. For \\(f(x)=5x^4-\\frac{3}{x}+8\\), the derivative is found term by term. What does the constant term 8 contribute to \\(f'(x)\\)?",
+    "command_verb": "predict"
+   },
+   "format": "mcq",
+   "options": [
+    {
+     "id": "A",
+     "label": "The term 8 stays in \\(f'(x)\\) unchanged",
+     "is_key": false
+    },
+    {
+     "id": "B",
+     "label": "The term 8 contributes 0, so it drops out",
+     "is_key": true
+    },
+    {
+     "id": "C",
+     "label": "The term 8 is multiplied by the exponent 4",
+     "is_key": false
+    }
+   ],
+   "resolution": {
+    "text": "The derivative of a constant function is zero, so the 8 contributes 0. The multipliers 5 and \\(-3\\) stay in front of their terms, and each multiplies the derivative of its own power."
+   },
+   "delivery": {
+    "mode": "text",
+    "reason": "rule 6"
+   }
+  },
+  {
+   "id": "LSN-CON-02011#s2",
    "type": "orientation",
    "bands": [
     "low",
@@ -33,7 +82,7 @@
     "research/units/unit-02-differentiation-definition-properties.md#2.6 Derivative Rules: Constant, Sum, Difference, and Constant Multiple"
    ],
    "evidence_tag": "inferred",
-   "text": "A response differentiates a sum or difference term by term, keeps each constant multiplier in front, and sends each constant term to zero. Questions ask for the derivative of a polynomial or of a linear combination, and application parts differentiate a supplied model the same way.",
+   "text": "A response differentiates a sum or difference term by term, keeps each constant multiplier in front, and sends each constant term to zero.",
    "delivery": {
     "mode": "text",
     "reason": "rule 5: BC-REP-01 only on BC-SKL-02028 to 02031; unit README delivery map",
@@ -43,7 +92,7 @@
    }
   },
   {
-   "id": "LSN-CON-02011#s2",
+   "id": "LSN-CON-02011#s3",
    "type": "key_ideas",
    "bands": [
     "low",
@@ -62,7 +111,7 @@
    "evidence_tag": "verified",
    "ek_id": "BC-EK-FUN-3A2",
    "depth": "core",
-   "text": "Sums, differences and constant multiples are differentiated by rule (BC-EK-FUN-3A2, ced:65): \\((f\\pm g)'=f'\\pm g'\\) and \\((cf)'=cf'\\). The derivative of a constant function is zero, the constant multiple rule applied to the zeroth power. So a constant multiplier stays; a constant term disappears.",
+   "text": "Sums, differences and constant multiples are differentiated by rule: \\((f\\pm g)'=f'\\pm g'\\) and \\((cf)'=cf'\\). The derivative of a constant function is zero, the constant multiple rule applied to the zeroth power. So a constant multiplier stays; a constant term disappears.",
    "notation": "constant multiple rule; sum rule; difference rule",
    "quote": {
     "text": "Sums, differences, and constant multiples of functions can be differentiated using derivative rules.",
@@ -78,7 +127,7 @@
    }
   },
   {
-   "id": "LSN-CON-02011#s3",
+   "id": "LSN-CON-02011#s4",
    "type": "key_ideas",
    "bands": [
     "low"
@@ -94,7 +143,7 @@
    "evidence_tag": "inferred",
    "ek_id": "BC-EK-FUN-3A3",
    "depth": "extended",
-   "text": "The power rule with the sum, difference and constant multiple properties differentiates any polynomial term by term (BC-EK-FUN-3A3, ced:65).",
+   "text": "The power rule with the sum, difference and constant multiple properties differentiates any polynomial term by term.",
    "notation": "constant multiple rule; sum rule",
    "delivery": {
     "mode": "text",
@@ -105,7 +154,7 @@
    }
   },
   {
-   "id": "LSN-CON-02011#s4",
+   "id": "LSN-CON-02011#s5",
    "type": "strategy",
    "bands": [
     "low",
@@ -124,12 +173,23 @@
    "evidence_tag": "inferred",
    "archetype_id": "BC-QA-02006",
    "cue": "The stem asks for the derivative of a sum of constant multiples of powers, with or without a constant term.",
-   "method": "First written line: every term as a constant times a power of \\(x\\).",
-   "rival": "The rival is carrying the constant term into the derivative (BC-ERR-02016) [inferred: the archetype records no wrong approach].",
-   "separating_feature": "A multiplier touches a power and stays; a constant stands alone and goes to zero."
+   "method": "Every term written as a constant times a power of \\(x\\).",
+   "rival": "The rival is carrying the constant term into the derivative.",
+   "separating_feature": "A multiplier touches a power and stays; a constant stands alone and goes to zero.",
+   "contrast": {
+    "this": {
+     "text": "Let \\(g(x)=4x^3-\\frac{6}{x^2}+5\\). Find \\(g'(x)\\).",
+     "archetype_id": "BC-QA-02006"
+    },
+    "not_this": {
+     "text": "Let \\(h(x)=(4x^3-6)(x^2+5)\\). Find \\(h'(x)\\).",
+     "why_not": "Two variable factors are multiplied, so the product rule applies, not term by term differentiation."
+    },
+    "feature": "Terms joined by plus or minus, each a number times a power, against factors multiplied."
+   }
   },
   {
-   "id": "LSN-CON-02011#s5",
+   "id": "LSN-CON-02011#s6",
    "type": "worked_example",
    "bands": [
     "low",
@@ -366,6 +426,7 @@
     ]
    },
    "relation": "distinct",
+   "fix_prompt": true,
    "possible_reason": {
     "misconception_id": "BC-MIS-02009",
     "text": "the exponent decreasing but not the multiplication by the original exponent"
@@ -445,6 +506,7 @@
     ]
    },
    "relation": "distinct",
+   "fix_prompt": true,
    "possible_reason": {
     "misconception_id": "BC-MIS-02009",
     "text": "does not see constants and radicals as powers"
@@ -493,7 +555,7 @@
     "reciprocal_power": "1",
     "constant": "8"
    },
-   "completes": "LSN-CON-02011#s5",
+   "completes": "LSN-CON-02011#s6",
    "stem": {
     "text": "For \\(f(x)=5x^4-\\frac3x+8\\), the rule gives \\(20x^3+3x^{-2}\\). Write \\(f'(x)\\) in fraction form.",
     "command_verb": "write"
@@ -977,17 +1039,18 @@
   }
  ],
  "refresher": [
-  "LSN-CON-02011#s2",
+  "LSN-CON-02011#s3",
   "LSN-CON-02011#err-BC-ERR-02015",
   "LSN-CON-02011#err-BC-ERR-02016",
-  "LSN-CON-02011#s5"
+  "LSN-CON-02011#s6"
  ],
+ "no_figure_reason": "The skills carry BC-REP-01 only, and the key ideas state symbolic rules with no process, so no figure, table or motion fits.",
  "provenance": {
   "author": "tools/lesson_transcribe.py",
-  "prompt_version": "generator/lesson_v1",
+  "prompt_version": "generator/lesson_v2",
   "design_path": "docs/lessons/unit-02/LSN-CON-02011.md",
-  "signed_off_by": "claude-opus-5-5",
-  "signed_off_at": "2026-09-29",
+  "signed_off_by": null,
+  "signed_off_at": null,
   "not_human": true
  }
 }

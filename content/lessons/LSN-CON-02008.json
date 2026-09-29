@@ -3,7 +3,7 @@
  "version": 1,
  "kind": "concept",
  "target_id": "BC-CON-02008",
- "status": "signed_off",
+ "status": "draft",
  "snapshot_digest": "a6a8ec9d3f59ab8f712e33d30cc22fc64bf2c478fbe7312e3e3118d319c6a42f",
  "source_digest": "cc77b0674108ddc42857809517f7352d045fd3b202bd44713591034f1e09b342",
  "read_minutes": {
@@ -11,12 +11,59 @@
   "brief": 3.0
  },
  "word_count": {
-  "full": 605,
-  "brief": 415
+  "full": 608,
+  "brief": 418
  },
  "sections": [
   {
    "id": "LSN-CON-02008#s1",
+   "type": "prediction",
+   "bands": [
+    "low",
+    "mid"
+   ],
+   "skills": [
+    "BC-SKL-02019",
+    "BC-SKL-02020",
+    "BC-SKL-02024"
+   ],
+   "sources": [
+    "BC-CON-02008",
+    "research/units/unit-02-differentiation-definition-properties.md#2.4 Connecting Differentiability and Continuity: Determining When Derivatives Do and Do Not Exist"
+   ],
+   "evidence_tag": "inferred",
+   "stem": {
+    "text": "Predict before the rule: \\(g\\) is differentiable for all \\(x\\) and \\(g(2)=-2\\). What is true of \\(\\lim_{x\\to2}g(x)\\)?",
+    "command_verb": "predict"
+   },
+   "format": "mcq",
+   "options": [
+    {
+     "id": "A",
+     "label": "The limit equals \\(-2\\).",
+     "is_key": true
+    },
+    {
+     "id": "B",
+     "label": "The limit may differ from \\(-2\\).",
+     "is_key": false
+    },
+    {
+     "id": "C",
+     "label": "The limit need not exist.",
+     "is_key": false
+    }
+   ],
+   "resolution": {
+    "text": "Differentiable at 2 means continuous at 2, so \\(\\lim_{x\\to2}g(x)=g(2)=-2\\)."
+   },
+   "delivery": {
+    "mode": "text",
+    "reason": "rule 6"
+   }
+  },
+  {
+   "id": "LSN-CON-02008#s2",
    "type": "orientation",
    "bands": [
     "low",
@@ -32,7 +79,7 @@
     "research/units/unit-02-differentiation-definition-properties.md#2.4 Connecting Differentiability and Continuity: Determining When Derivatives Do and Do Not Exist"
    ],
    "evidence_tag": "inferred",
-   "text": "A response writes continuity as derived from a stated differentiability: the function is continuous because it is differentiable. Questions ask which direction of the implication holds, or use it inside an argument to replace a limit by a value or to meet an existence theorem's continuity hypothesis.",
+   "text": "A response writes continuity as derived from a stated differentiability, then uses it to replace a limit by a value or meet a theorem's hypothesis.",
    "delivery": {
     "mode": "text",
     "reason": "rule 5: BC-REP-04 verbal statements on BC-SKL-02019; unit README delivery map",
@@ -42,7 +89,7 @@
    }
   },
   {
-   "id": "LSN-CON-02008#s2",
+   "id": "LSN-CON-02008#s3",
    "type": "key_ideas",
    "bands": [
     "low",
@@ -58,15 +105,11 @@
     "ced:63",
     "research/units/unit-02-differentiation-definition-properties.md#2.4 Connecting Differentiability and Continuity: Determining When Derivatives Do and Do Not Exist"
    ],
-   "evidence_tag": "verified",
+   "evidence_tag": "inferred",
    "ek_id": "BC-EK-FUN-2A1",
    "depth": "core",
-   "text": "If a function is differentiable at a point, it is continuous there, and an input outside the domain of \\(f\\) is outside the domain of \\(f'\\) (BC-EK-FUN-2A1, ced:63). The implication runs one way. Its contrapositive: if a function is not continuous at a point, it is not differentiable there. Continuity alone supplies nothing about the derivative. In an argument the step carries its reason: \\(g\\) is continuous because it is differentiable.",
+   "text": "A function differentiable at a point is continuous there, and an input outside the domain of \\(f\\) is outside the domain of \\(f'\\). The implication runs one way. Contrapositive: not continuous at a point means not differentiable there. Continuity alone supplies nothing about the derivative.",
    "notation": "differentiable implies continuous",
-   "quote": {
-    "text": "If a function is differentiable at a point, then it is continuous at that point.",
-    "source": "ced:63"
-   },
    "delivery": {
     "mode": "text",
     "reason": "rule 5: the implication is a verbal rule (BC-REP-04 on BC-SKL-02019 and 02020); unit README delivery map",
@@ -77,7 +120,7 @@
    }
   },
   {
-   "id": "LSN-CON-02008#s3",
+   "id": "LSN-CON-02008#s4",
    "type": "strategy",
    "bands": [
     "low",
@@ -93,13 +136,24 @@
    ],
    "evidence_tag": "verified",
    "archetype_id": "BC-QA-02004",
-   "cue": "The stem states that the function is differentiable and asks for a justified conclusion or a limit value.",
-   "method": "First written line: \\(g\\) is differentiable, so \\(g\\) is continuous.",
-   "rival": "The rival is reversing the implication (BC-ERR-02012), or applying the theorem without establishing continuity from differentiability (BC-ERR-99008).",
-   "separating_feature": "The stem supplies differentiability, so continuity is the conclusion drawn from it, never the premise."
+   "cue": "The stem states differentiability and asks for a justified conclusion or a value.",
+   "method": "\\(g\\) is differentiable, so \\(g\\) is continuous.",
+   "rival": "Reversing the implication, or citing the theorem with no continuity established.",
+   "separating_feature": "The stem supplies differentiability, so continuity is the conclusion, never the premise.",
+   "contrast": {
+    "this": {
+     "text": "Given \\(h\\) differentiable with \\(h(4)=7\\), find \\(\\lim_{x\\to4}(2h(x)-3)\\), justifying the step.",
+     "archetype_id": "BC-QA-02004"
+    },
+    "not_this": {
+     "text": "\\(f\\) is continuous at \\(x=2\\). Must \\(f\\) be differentiable there?",
+     "why_not": "The premise is continuity, and continuity supplies nothing about the derivative."
+    },
+    "feature": "Which property the stem supplies: differentiability gives continuity, not the reverse."
+   }
   },
   {
-   "id": "LSN-CON-02008#s4",
+   "id": "LSN-CON-02008#s5",
    "type": "worked_example",
    "bands": [
     "low",
@@ -175,7 +229,7 @@
    }
   },
   {
-   "id": "LSN-CON-02008#s5",
+   "id": "LSN-CON-02008#s6",
    "type": "worked_example",
    "bands": [
     "low"
@@ -246,6 +300,7 @@
     "mathjson": "yes",
     "text": "Yes. g is continuous because it is differentiable, and g(0) < 1 < g(8)."
    },
+   "fade_from": 3,
    "delivery": {
     "mode": "step_reveal",
     "reason": "rule 1",
@@ -280,6 +335,7 @@
     "expression": -1
    },
    "relation": "equivalent",
+   "fix_prompt": false,
    "possible_reason": {
     "misconception_id": "BC-MIS-02005",
     "text": "continuity is asserted rather than derived from the differentiability stated in the stem"
@@ -317,6 +373,7 @@
     "expression": -1
    },
    "relation": "equivalent",
+   "fix_prompt": false,
    "possible_reason": {
     "misconception_id": "BC-MIS-02006",
     "text": "the implication as running in both directions"
@@ -354,6 +411,7 @@
     "expression": -24
    },
    "relation": "equivalent",
+   "fix_prompt": false,
    "possible_reason": {
     "misconception_id": "BC-MIS-99009",
     "text": "continuity is asserted rather than derived from differentiability"
@@ -365,7 +423,7 @@
    }
   },
   {
-   "id": "LSN-CON-02008#s6",
+   "id": "LSN-CON-02008#s7",
    "type": "representations",
    "bands": [
     "low"
@@ -525,7 +583,7 @@
     "target": "1",
     "argument": "limit"
    },
-   "completes": "LSN-CON-02008#s4",
+   "completes": "LSN-CON-02008#s5",
    "stem": {
     "text": "\\(g\\) is differentiable, so \\(g\\) is continuous at 2 and \\(\\lim_{x\\to2}(3g(x)+5)=3g(2)+5\\), with \\(g(2)=-2\\). Write the value of the limit.",
     "command_verb": "write"
@@ -707,18 +765,18 @@
   }
  ],
  "refresher": [
-  "LSN-CON-02008#s2",
+  "LSN-CON-02008#s3",
   "LSN-CON-02008#err-BC-ERR-02011",
   "LSN-CON-02008#err-BC-ERR-02012",
   "LSN-CON-02008#err-BC-ERR-99008",
-  "LSN-CON-02008#s4"
+  "LSN-CON-02008#s5"
  ],
  "provenance": {
   "author": "tools/lesson_transcribe.py",
-  "prompt_version": "generator/lesson_v1",
+  "prompt_version": "generator/lesson_v2",
   "design_path": "docs/lessons/unit-02/LSN-CON-02008.md",
-  "signed_off_by": "claude-opus-5-5",
-  "signed_off_at": "2026-09-29",
+  "signed_off_by": null,
+  "signed_off_at": null,
   "not_human": true
  }
 }

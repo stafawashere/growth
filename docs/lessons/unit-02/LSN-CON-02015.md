@@ -9,19 +9,25 @@ purpose: Authoring spec for the concept lesson on BC-CON-02015, the derivatives 
 
 Concept BC-CON-02015 (skills BC-SKL-02043, BC-SKL-02044, BC-SKL-02045, BC-SKL-02046), topic 2.10 of Unit 2, loaded by BC-QA-02010 only. The structure follows LSN-CON-02013.
 
+## Prediction
+
+Served first, both bands. On ex-1's function, \(h(x)=3\sec x-2\cot x\), the student picks the derivative of \(-2\cot x\): \(-2\csc^2x\), \(2\csc^2x\) or \(2\sec^2x\). Format `mcq`, key \(2\csc^2x\). The first distractor is the sign error BC-ERR-02025 records. The resolution states that the cotangent, written as \(\frac{\cos x}{\sin x}\), differentiates to \(-\csc^2x\) by the quotient rule and that the cofunctions carry a negative sign, in the words of BC-EK-FUN-3B3 on ced:69. Sources: BC-CON-02015, BC-EK-FUN-3B3, ced:69 [verified].
+
 ## Orientation
 
-Served text, from BC-CON-02015 `description_plain` and the topic's Assessment behaviour paragraph (research/units/unit-02-differentiation-definition-properties.md#2.10 Finding the Derivatives of Tangent, Cotangent, Secant, and/or Cosecant Functions): rewrite, quotient rule, identity, requested form. No count, no frequency.
+Served text, from BC-CON-02015 `description_plain` and the topic's Assessment behaviour paragraph (research/units/unit-02-differentiation-definition-properties.md#2.10 Finding the Derivatives of Tangent, Cotangent, Secant, and/or Cosecant Functions): rewrite, quotient rule, identity. The sentence on the requested trigonometric form was cut to bring the brief form under 450 words. No count, no frequency.
 
 ## Key ideas
 
 One BC-EK maps to the four skills, BC-EK-FUN-3B3 (ced:69), so one core block, both bands.
 
-- ki-1 (core). The rewriting, the four results and why the identity choice is assessed, paraphrased from the Rewriting, Results and Why the rewriting matters paragraphs. Anchor quote (14 words) from ced:69. The concept's notation field is empty, so the notation line is the topic's [inferred source choice].
+- ki-1 (core). The rewriting, the four results and why the identity choice is assessed, paraphrased from the Rewriting, Results and Why the rewriting matters paragraphs. The anchor quote was dropped to bring the brief form under 450 words. The concept's notation field is empty, so the notation line is the topic's [inferred source choice].
 
 ## Recognition
 
 - BC-QA-02010 (family rule-manipulation, single MCQ, no calculator; research/question-analysis/question-archetypes.md#BC-QA-02010 Derivative of a tangent, cotangent, secant, or cosecant expression): `typical_wording` "Find the derivative of the given function."; `common_givens` an expression containing tangent, cotangent, secant or cosecant; `asked_to_produce` the derivative. The signal is one of the four names in the stem; the spec always pairs a tangent or secant with a cofunction, so one term carries a negative sign. No `official_examples`.
+
+The contrast pair on st-1 takes its near miss from the sibling concept BC-CON-02012. `this` pairs a tangent with a cosecant on BC-QA-02010 (a different draw from every published item). `not_this` pairs a sine with a cosine, which reads as the same kind of trigonometric expression but needs no rewriting; the feature is one of the four reciprocal or quotient functions named in the stem.
 
 What says "not this concept": only sine and cosine as whole terms (BC-CON-02012); a quotient of polynomial and trigonometric pieces with no reciprocal function (BC-CON-02014).
 
@@ -29,7 +35,7 @@ What says "not this concept": only sine and cosine as whole terms (BC-CON-02012)
 
 One strategy block, both bands.
 
-- st-1, BC-QA-02010. Method, `expected_solution_path[0]`: rewrite the function using sine and cosine. Rival, `wrong_approaches`: numerator and denominator differentiated separately (BC-ERR-02026). Separating feature: after rewriting, a variable denominator.
+- st-1, BC-QA-02010. Method, `expected_solution_path[0]`: rewrite the function using sine and cosine, served with no leading label. Rival, `wrong_approaches`: numerator and denominator differentiated separately (BC-ERR-02026). Separating feature: after rewriting, a variable denominator.
 
 ## Solution path
 
@@ -45,9 +51,9 @@ None. BC-QA-02010 lists no `point_types`, so no step is tagged and the lesson sa
 
 Three active errors meet the concept's skills, in the bundle's order. Low band all three, mid band the first two.
 
-- err-BC-ERR-02021 (BC-MIS-02012): numerator reversed on the secant term. Distinct.
-- err-BC-ERR-02025 (BC-MIS-02013): the cotangent derivative without its sign. Distinct.
-- err-BC-ERR-02026: pieces differentiated separately, \(2\tan x\). Distinct. No possible reason: neither linked BC-MIS description names this move.
+- err-BC-ERR-02021 (BC-MIS-02012): numerator reversed on the secant term. Distinct, `fix_prompt` true.
+- err-BC-ERR-02025 (BC-MIS-02013): the cotangent derivative without its sign. Distinct, `fix_prompt` true.
+- err-BC-ERR-02026: pieces differentiated separately, \(2\tan x\). Distinct, `fix_prompt` true. No possible reason: neither linked BC-MIS description names this move.
 
 ## Representations
 
@@ -75,12 +81,12 @@ No draw equals a published BC-QA-02010 `parameter_draw`.
 - ex-1: step_reveal. Rule 1.
 - err-BC-ERR-02021, err-BC-ERR-02025, err-BC-ERR-02026: step_reveal. Rule 1.
 
-No non-text mode applies [inferred; settled by the modality A/B].
+No drawn block applies: BC-REP-04 is not figure-bearing under rules 2 to 5 and no key idea describes a process, so the machine record states `no_figure_reason` [inferred; settled by the modality A/B].
 
 ## Band plan
 
-- Low (full): orientation, ki-1, st-1, ex-1, err-BC-ERR-02021, err-BC-ERR-02025, err-BC-ERR-02026, chk-1, chk-2, chk-3, the bridge. 414 words, 2.8 minutes (cap 900 and 6).
-- Mid (brief): orientation, ki-1, st-1, ex-1, err-BC-ERR-02021, err-BC-ERR-02025, chk-1, chk-2, the bridge. 370 words, 2.5 minutes (cap 450 and 3).
+- Low (full): prediction, orientation, the bridge, ki-1, st-1 with its contrast pair, ex-1, chk-1, err-BC-ERR-02021, err-BC-ERR-02025, err-BC-ERR-02026, chk-2, chk-3. 486 words, 3.3 minutes (cap 900 and 6). No second example, so no fade.
+- Mid (brief): prediction, orientation, the bridge, ki-1, st-1 with its contrast pair, ex-1, chk-1, err-BC-ERR-02021, err-BC-ERR-02025, chk-2. 442 words, 3.0 minutes (cap 450 and 3).
 - Refresher: ki-1, err-BC-ERR-02021, err-BC-ERR-02025, err-BC-ERR-02026, ex-1.
 
 ## Sources
@@ -94,7 +100,7 @@ No non-text mode applies [inferred; settled by the modality A/B].
 - research/exam/exam-structure.md#Section and part layout
 - [inferred] Notation line from the topic. Settled by a staging pass.
 - [inferred] The written and held lines under MCQ time. Settled by timing data on BC-QA-02010 items.
-- [inferred] No non-text mode. Settled by the modality A/B.
+- [inferred] No drawn block, `no_figure_reason` stated. Settled by the modality A/B.
 
 ## Machine record
 
@@ -110,8 +116,40 @@ No non-text mode applies [inferred; settled by the modality A/B].
   "BC-SKL-02045",
   "BC-SKL-02046"
  ],
+ "prediction": {
+  "id": "pr-1",
+  "stem": {
+   "text": "Predict before the rule. In \\(h(x)=3\\sec x-2\\cot x\\), the cotangent term is written with sine and cosine and differentiated. What is the derivative of \\(-2\\cot x\\)?",
+   "command_verb": "predict"
+  },
+  "format": "mcq",
+  "options": [
+   {
+    "id": "A",
+    "label": "\\(-2\\csc^2x\\), keeping the sign of the term",
+    "is_key": false
+   },
+   {
+    "id": "B",
+    "label": "\\(2\\csc^2x\\), the negative sign of the cotangent rule carried through",
+    "is_key": true
+   },
+   {
+    "id": "C",
+    "label": "\\(2\\sec^2x\\), the cofunctions exchanged",
+    "is_key": false
+   }
+  ],
+  "resolution": "Written as \\(\\frac{\\cos x}{\\sin x}\\), the cotangent differentiates by the quotient rule to \\(-\\csc^2x\\). With the coefficient \\(-2\\), the term gives \\(2\\csc^2x\\). The two cofunctions carry a negative sign.",
+  "sources": [
+   "BC-CON-02015",
+   "BC-EK-FUN-3B3",
+   "ced:69"
+  ]
+ },
+ "no_figure_reason": "The skills carry BC-REP-01 and BC-REP-04, neither figure-bearing under the delivery rules, and the conversion is symbolic with no process, so no figure, table or motion fits.",
  "orientation": {
-  "text": "A response differentiates tangent, cotangent, secant or cosecant by writing it with sine and cosine, applying the quotient rule, and simplifying with the Pythagorean identity. Questions ask for the derivative of an expression containing one of the four, in the trigonometric form requested.",
+  "text": "A response differentiates tangent, cotangent, secant or cosecant by writing it with sine and cosine, applying the quotient rule, and simplifying with the Pythagorean identity.",
   "sources": [
    "BC-CON-02015",
    "research/units/unit-02-differentiation-definition-properties.md#2.10 Finding the Derivatives of Tangent, Cotangent, Secant, and/or Cosecant Functions"
@@ -122,12 +160,9 @@ No non-text mode applies [inferred; settled by the modality A/B].
    "id": "ki-1",
    "ek_id": "BC-EK-FUN-3B3",
    "depth": "core",
-   "text": "Each of the four is a quotient of sine and cosine, so rewriting it lets the quotient rule differentiate it (BC-EK-FUN-3B3, ced:69). Simplified with \\(\\sin^2x+\\cos^2x=1\\): \\((\\tan x)'=\\sec^2x\\), \\((\\cot x)'=-\\csc^2x\\), \\((\\sec x)'=\\sec x\\tan x\\), \\((\\csc x)'=-\\csc x\\cot x\\). The two cofunctions carry the negative sign. Choosing the identity is part of the work.",
+   "text": "Each of the four is a quotient of sine and cosine, so rewriting it lets the quotient rule differentiate it. Simplified with \\(\\sin^2x+\\cos^2x=1\\): \\((\\tan x)'=\\sec^2x\\), \\((\\cot x)'=-\\csc^2x\\), \\((\\sec x)'=\\sec x\\tan x\\), \\((\\csc x)'=-\\csc x\\cot x\\). The two cofunctions carry the negative sign. Choosing the identity is part of the work.",
    "notation": "The result written in the trigonometric form the question requests.",
-   "quote": {
-    "text": "Rearranging tangent, cotangent, secant, and cosecant functions using identities allows differentiation using derivative rules.",
-    "source": "ced:69"
-   },
+   "quote": null,
    "sources": [
     "BC-EK-FUN-3B3",
     "ced:69",
@@ -140,13 +175,24 @@ No non-text mode applies [inferred; settled by the modality A/B].
    "id": "st-1",
    "archetype_id": "BC-QA-02010",
    "cue": "The stem asks for the derivative of an expression containing tangent, cotangent, secant or cosecant.",
-   "method": "First written line: each such function rewritten with sine and cosine.",
-   "rival": "The rival is differentiating the numerator and denominator of the rewritten quotient separately (BC-ERR-02026).",
+   "method": "Each such function rewritten with sine and cosine.",
+   "rival": "The rival is differentiating the numerator and denominator of the rewritten quotient separately.",
    "separating_feature": "After rewriting, a variable sits in the denominator, so the quotient rule applies.",
    "sources": [
     "BC-QA-02010"
    ],
-   "evidence_tag": "verified"
+   "evidence_tag": "verified",
+   "contrast": {
+    "this": {
+     "text": "Let \\(g(x)=5\\tan x-\\csc x\\). Find \\(g'(x)\\).",
+     "archetype_id": "BC-QA-02010"
+    },
+    "not_this": {
+     "text": "Let \\(r(x)=5\\sin x-\\cos x\\). Find \\(r'(x)\\).",
+     "why_not": "Only sine and cosine appear, so their own rules apply with no rewriting."
+    },
+    "feature": "Tangent, cotangent, secant or cosecant named in the stem."
+   }
   }
  ],
  "worked_examples": [
@@ -225,7 +271,8 @@ No non-text mode applies [inferred; settled by the modality A/B].
    "sources": [
     "BC-ERR-02021",
     "BC-MIS-02012"
-   ]
+   ],
+   "fix_prompt": true
   },
   {
    "error_id": "BC-ERR-02025",
@@ -247,7 +294,8 @@ No non-text mode applies [inferred; settled by the modality A/B].
    "sources": [
     "BC-ERR-02025",
     "BC-MIS-02013"
-   ]
+   ],
+   "fix_prompt": true
   },
   {
    "error_id": "BC-ERR-02026",
@@ -265,7 +313,8 @@ No non-text mode applies [inferred; settled by the modality A/B].
    "possible_reason": null,
    "sources": [
     "BC-ERR-02026"
-   ]
+   ],
+   "fix_prompt": true
   }
  ],
  "representations": null,
@@ -511,12 +560,12 @@ No non-text mode applies [inferred; settled by the modality A/B].
   "ex-1"
  ],
  "read_minutes": {
-  "full": 2.8,
-  "brief": 2.5
+  "full": 3.3,
+  "brief": 3.0
  },
  "word_count": {
-  "full": 414,
-  "brief": 370
+  "full": 486,
+  "brief": 442
  },
  "research_lines": [
   {

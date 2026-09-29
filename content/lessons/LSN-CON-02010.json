@@ -3,7 +3,7 @@
  "version": 1,
  "kind": "concept",
  "target_id": "BC-CON-02010",
- "status": "signed_off",
+ "status": "draft",
  "snapshot_digest": "a6a8ec9d3f59ab8f712e33d30cc22fc64bf2c478fbe7312e3e3118d319c6a42f",
  "source_digest": "af3c1ea38338b57ddf6bbff2200999c836a35c6033fffec8d3c015f420e70546",
  "read_minutes": {
@@ -11,12 +11,59 @@
   "brief": 2.9
  },
  "word_count": {
-  "full": 574,
-  "brief": 377
+  "full": 573,
+  "brief": 383
  },
  "sections": [
   {
    "id": "LSN-CON-02010#s1",
+   "type": "prediction",
+   "bands": [
+    "low",
+    "mid"
+   ],
+   "skills": [
+    "BC-SKL-02025",
+    "BC-SKL-02026",
+    "BC-SKL-02027"
+   ],
+   "sources": [
+    "BC-CON-02010",
+    "research/units/unit-02-differentiation-definition-properties.md#2.5 Applying the Power Rule"
+   ],
+   "evidence_tag": "inferred",
+   "stem": {
+    "text": "Predict before the rule: the term \\(4x^3\\) of \\(f(x)=4x^3+6\\sqrt{x}-5\\) has which derivative?",
+    "command_verb": "predict"
+   },
+   "format": "mcq",
+   "options": [
+    {
+     "id": "A",
+     "label": "\\(4x^2\\)",
+     "is_key": false
+    },
+    {
+     "id": "B",
+     "label": "\\(12x^2\\)",
+     "is_key": true
+    },
+    {
+     "id": "C",
+     "label": "\\(12x^3\\)",
+     "is_key": false
+    }
+   ],
+   "resolution": {
+    "text": "The derivative of \\(x^r\\) is \\(rx^{r-1}\\): multiply by the exponent, then lower it by one. So \\(4x^3\\) gives \\(3\\cdot4x^2=12x^2\\)."
+   },
+   "delivery": {
+    "mode": "text",
+    "reason": "rule 6"
+   }
+  },
+  {
+   "id": "LSN-CON-02010#s2",
    "type": "orientation",
    "bands": [
     "low",
@@ -32,7 +79,7 @@
     "research/units/unit-02-differentiation-definition-properties.md#2.5 Applying the Power Rule"
    ],
    "evidence_tag": "inferred",
-   "text": "A response differentiates a power by multiplying by the exponent and lowering the exponent by one, after rewriting any radical or reciprocal as a power. Questions ask for the derivative of a power or of an expression that becomes one after rewriting, and some ask for a case derived from the definition.",
+   "text": "A response differentiates a power by multiplying by the exponent and lowering it by one, after rewriting any radical or reciprocal as a power. Some questions ask for a case derived from the definition.",
    "delivery": {
     "mode": "text",
     "reason": "rule 5: BC-REP-01 only on BC-SKL-02025 to 02027; unit README delivery map",
@@ -42,7 +89,7 @@
    }
   },
   {
-   "id": "LSN-CON-02010#s2",
+   "id": "LSN-CON-02010#s3",
    "type": "key_ideas",
    "bands": [
     "low",
@@ -58,15 +105,11 @@
     "ced:64",
     "research/units/unit-02-differentiation-definition-properties.md#2.5 Applying the Power Rule"
    ],
-   "evidence_tag": "verified",
+   "evidence_tag": "inferred",
    "ek_id": "BC-EK-FUN-3A1",
    "depth": "core",
-   "text": "For \\(f(x)=x^r\\) the derivative is \\(rx^{r-1}\\) (BC-EK-FUN-3A1, ced:64). Two moves, never one: multiply by the old exponent, then lower it by one. The rule holds for a general real exponent, so a radical or a reciprocal is first rewritten as a power: \\(\\sqrt{x}=x^{1/2}\\), \\(\\frac{1}{x^2}=x^{-2}\\). For one specific exponent the rule also comes out of the difference quotient, by expanding and dividing out the increment.",
+   "text": "For \\(f(x)=x^r\\) the derivative is \\(rx^{r-1}\\): multiply by the old exponent, then lower it by one. A radical or a reciprocal is first rewritten as a power: \\(\\sqrt{x}=x^{1/2}\\), \\(\\frac{1}{x^2}=x^{-2}\\). For one specific exponent the rule also comes out of the difference quotient, by expanding and dividing out the increment.",
    "notation": "power rule; the exponent written as a fraction or a negative number",
-   "quote": {
-    "text": "Direct application of the definition of the derivative and specific rules can be used to calculate the derivative",
-    "source": "ced:64"
-   },
    "delivery": {
     "mode": "text",
     "reason": "rule 5: a symbolic rule with no figure-bearing BC-REP; unit README delivery map",
@@ -77,7 +120,7 @@
    }
   },
   {
-   "id": "LSN-CON-02010#s3",
+   "id": "LSN-CON-02010#s4",
    "type": "strategy",
    "bands": [
     "low",
@@ -94,12 +137,23 @@
    "evidence_tag": "inferred",
    "archetype_id": "BC-QA-02006",
    "cue": "The stem asks for the derivative of an expression built from powers, radicals and reciprocals.",
-   "method": "First written line: the expression with every radical and reciprocal rewritten as a power.",
-   "rival": "The rival is lowering the exponent without multiplying by it (BC-ERR-02015) [inferred: the archetype records no wrong approach].",
-   "separating_feature": "Each term changes coefficient and exponent together."
+   "method": "The expression with every radical and reciprocal rewritten as a power.",
+   "rival": "Lowering the exponent without multiplying by it.",
+   "separating_feature": "Each term changes coefficient and exponent together.",
+   "contrast": {
+    "this": {
+     "text": "Find \\(g'(x)\\) for \\(g(x)=5x^4-\\frac{2}{\\sqrt{x}}+9\\).",
+     "archetype_id": "BC-QA-02006"
+    },
+    "not_this": {
+     "text": "Find \\(g'(x)\\) for \\(g(x)=x^2\\sin x\\).",
+     "why_not": "A product of two variable factors, one of them sine, calls for the product rule."
+    },
+    "feature": "Each term is one power of \\(x\\), not a product of variable factors."
+   }
   },
   {
-   "id": "LSN-CON-02010#s4",
+   "id": "LSN-CON-02010#s5",
    "type": "strategy",
    "bands": [
     "low",
@@ -114,12 +168,12 @@
    "evidence_tag": "verified",
    "archetype_id": "BC-QA-02002",
    "cue": "The stem says use the definition of the derivative, from a function rule.",
-   "method": "First written line: the difference quotient for the given rule inside the limit.",
-   "rival": "The rival is differentiating by the power rule and presenting it as the definition (BC-ERR-02008).",
+   "method": "The difference quotient for the given rule inside the limit.",
+   "rival": "Differentiating by the power rule and presenting it as the definition.",
    "separating_feature": "The word definition in the stem forbids the rule as the route."
   },
   {
-   "id": "LSN-CON-02010#s5",
+   "id": "LSN-CON-02010#s6",
    "type": "worked_example",
    "bands": [
     "low",
@@ -308,7 +362,7 @@
    }
   },
   {
-   "id": "LSN-CON-02010#s6",
+   "id": "LSN-CON-02010#s7",
    "type": "worked_example",
    "bands": [
     "low"
@@ -422,6 +476,7 @@
     "form": "numeric",
     "mathjson": 1
    },
+   "fade_from": 3,
    "delivery": {
     "mode": "step_reveal",
     "reason": "rule 1",
@@ -455,6 +510,7 @@
     "expression": 1
    },
    "relation": "distinct",
+   "fix_prompt": true,
    "possible_reason": {
     "misconception_id": "BC-MIS-02002",
     "text": "the increment is set to zero immediately"
@@ -492,6 +548,7 @@
     "expression": 1
    },
    "relation": "equivalent",
+   "fix_prompt": false,
    "possible_reason": {
     "misconception_id": "BC-MIS-02002",
     "text": "the answer is produced by a rule and the definition is copied around it"
@@ -578,6 +635,7 @@
     ]
    },
    "relation": "distinct",
+   "fix_prompt": true,
    "possible_reason": {
     "misconception_id": "BC-MIS-02009",
     "text": "the exponent decreasing but not the multiplication by the original exponent"
@@ -663,6 +721,7 @@
     ]
    },
    "relation": "distinct",
+   "fix_prompt": true,
    "possible_reason": {
     "misconception_id": "BC-MIS-02009",
     "text": "does not see constants and radicals as powers"
@@ -711,7 +770,7 @@
     "reciprocal_power": "1",
     "constant": "-5"
    },
-   "completes": "LSN-CON-02010#s5",
+   "completes": "LSN-CON-02010#s6",
    "stem": {
     "text": "For \\(f(x)=4x^3+6\\sqrt{x}-5\\), the rule gives \\(12x^2+3x^{-1/2}\\). Write \\(f'(x)\\) with the radical restored.",
     "command_verb": "write"
@@ -1190,19 +1249,20 @@
   }
  ],
  "refresher": [
-  "LSN-CON-02010#s2",
+  "LSN-CON-02010#s3",
   "LSN-CON-02010#err-BC-ERR-02005",
   "LSN-CON-02010#err-BC-ERR-02008",
   "LSN-CON-02010#err-BC-ERR-02015",
   "LSN-CON-02010#err-BC-ERR-02017",
-  "LSN-CON-02010#s5"
+  "LSN-CON-02010#s6"
  ],
+ "no_figure_reason": "The power rule is symbolic and its skills carry BC-REP-01 only. No key idea describes a process or a graph, so no figure, table or motion fits.",
  "provenance": {
   "author": "tools/lesson_transcribe.py",
-  "prompt_version": "generator/lesson_v1",
+  "prompt_version": "generator/lesson_v2",
   "design_path": "docs/lessons/unit-02/LSN-CON-02010.md",
-  "signed_off_by": "claude-opus-5-5",
-  "signed_off_at": "2026-09-29",
+  "signed_off_by": null,
+  "signed_off_at": null,
   "not_human": true
  }
 }

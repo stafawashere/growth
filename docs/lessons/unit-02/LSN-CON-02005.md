@@ -9,20 +9,26 @@ purpose: Authoring spec for the concept lesson on BC-CON-02005, the derivative a
 
 Concept BC-CON-02005 (skills BC-SKL-02012, BC-SKL-02013), topic 2.2 of Unit 2, loaded by BC-QA-02011 (listed first) and BC-QA-02014. Its hard parent is BC-CON-02002; BC-CON-02007 and BC-CON-02009 build on it (unit README section 1).
 
+## Prediction
+
+One multiple choice question on worked example 1's own function, \(f(x)=-x^2+4x+2\), asked before the rule is shown: the point \((3,5)\) lies on the graph and the student picks the slope of the tangent there. The key is \(-2\), ex-1's valued slope step; the distractors are the height 5 (BC-ERR-02027) and \(f'(5)=-6\), the derivative at the wrong input (BC-ERR-02028). The resolution, shown on the key idea screen beside the student's choice, names the derivative at 3 as the slope and the height as what places the line. No verdict word. Sources: BC-CON-02005 and the topic 2.2 section the key idea cites.
+
 ## Orientation
 
-Served text (42 words), from BC-CON-02005 `description_plain` and the topic's Assessment behaviour paragraph (research/units/unit-02-differentiation-definition-properties.md#2.2 Defining the Derivative of a Function and Using Derivative Notation): a response reads \(f'(a)\) as the slope of the line touching the curve at \((a,f(a))\) and writes that line from the slope and the point. No count, no frequency.
+Served text (23 words), from BC-CON-02005 `description_plain` and the topic's Assessment behaviour paragraph (research/units/unit-02-differentiation-definition-properties.md#2.2 Defining the Derivative of a Function and Using Derivative Notation): a response reads \(f'(a)\) as the slope of the line touching the curve at \((a,f(a))\) and writes that line from the slope and the point. No count, no frequency.
 
 ## Key ideas
 
 Both skills map BC-EK-CHA-2C1 (ced:61), so one core block, both bands.
 
-- ki-1 (core). The derivative at a point as the tangent slope, and the tangent line from the slope and the point of tangency, paraphrased from the topic's Tangent line paragraph; the two numbers from one input have separate roles (BC-MIS-02014's description names the swap). Anchor quote (22 words) from ced:61. Notation line: tangent line.
+- ki-1 (core). The derivative at a point as the tangent slope, and the tangent line from the slope and the point of tangency, paraphrased from the topic's Tangent line paragraph; the two numbers from one input have separate roles (BC-MIS-02014's description names the swap). No anchor quote (the ced:61 sentence is the citation in `sources`; the 22 word quote would break the brief cap). Notation line: tangent line.
 
 ## Recognition
 
 - BC-QA-02011 (family tangent-line-approximation, one FRQ part or MCQ, no calculator; research/question-analysis/question-archetypes.md#BC-QA-02011 Tangent line written at a point on a curve): `typical_wording` "Write an equation for the line tangent to the graph of the given function at the named point"; `common_givens` a function rule and a named point or input; `asked_to_produce` an equation of the tangent line. The signal is the word tangent with one point or input. Official examples BC-FRQ-2015-Q5-A and BC-MCQ-PE2012-019; the second loads the quotient rule as well (unit README section 3).
 - BC-QA-02014 (family derivative-definition-limit): the rate at one named instant, whose value is the tangent slope there (BC-SKL-02012).
+
+Contrast pair on st-1: this stem is on BC-QA-02011, a rule and a named point with the tangent line asked; not this stem is the BC-CON-02007 shape, a slope estimated from a table with no rule to differentiate. The separating feature is a rule and a point against data.
 
 What says "not this concept": a notation conversion (BC-CON-02004); a slope read from data rather than a rule (BC-CON-02007); the line then used to approximate a value (Unit 4, BC-QA-04008). The LSN-DEC-02-02 selector is what the stem asks to produce.
 
@@ -33,11 +39,11 @@ One block per family: tangent-line-approximation (BC-QA-02011) and derivative-de
 - st-1, BC-QA-02011. Cue from `asked_to_produce` and `common_givens`. Method, `expected_solution_path[0]`: differentiate the function. Rival, `wrong_approaches`: the function value used as the slope (BC-ERR-02027). Separating feature: the slope comes from \(f'\), the point from \(f\).
 - st-2, BC-QA-02014. Method, `expected_solution_path[0]`: the average rate over a short interval starting at the instant. Rival, `wrong_approaches`: averaging over the whole interval from the start. Separating feature: one instant, whose rate is the tangent slope.
 
-Both archetypes carry `asked_to_produce` and `common_givens`, so neither block is tagged inferred.
+Both archetypes carry `asked_to_produce` and `common_givens`, so neither block is tagged inferred. The `method` texts carry no leading label; the rivals' record ids sit in each block's `sources`.
 
 ## Solution path
 
-- ex-1, BC-QA-02011, both bands, no calculator. Draw: square \(-1\), linear 4, constant 2, at 3, given input, so \(f(x)=-x^2+4x+2\), slope \(-2\), height 5 (the spec's derived `slope` and `height`; its `wrong_slope`, \(f'(5)=-6\), is BC-ERR-02028's value). Steps follow `expected_solution_path`: differentiate (valued), evaluate the derivative at 3 (evaluate, tagged BC-PT-99082), evaluate the function at 3 (valued, new chain), point slope form (valued, tagged BC-PT-99082). A fluent solver writes all four; the height is computed on the page because the stem gives only the input.
+- ex-1, BC-QA-02011, both bands, no calculator. Draw: square \(-1\), linear 4, constant 2, at 3, given input, so \(f(x)=-x^2+4x+2\), slope \(-2\), height 5 (the spec's derived `slope` and `height`; its `wrong_slope`, \(f'(5)=-6\), is BC-ERR-02028's value). Steps follow `expected_solution_path`: differentiate (valued), evaluate the derivative at 3 (evaluate, tagged BC-PT-99082), evaluate the function at 3 (valued, new chain), point slope form (valued, tagged BC-PT-99082). A fluent solver writes all four; the height is computed on the page because the stem gives only the input. One example only, so nothing is faded.
 
 ## Scoring
 
@@ -80,12 +86,12 @@ No draw equals a published BC-QA-02011 `parameter_draw` (content/items_gen_unit0
 - ex-1: step_reveal. Rule 1.
 - err-BC-ERR-02027, err-BC-ERR-02028, err-BC-ERR-04023: step_reveal. Rule 1.
 
-Both figure choices are [inferred], settled by the modality A/B.
+Both figure choices are [inferred], settled by the modality A/B. The lesson already carries drawn blocks, so it states no `no_figure_reason`. The prediction is delivered as text.
 
 ## Band plan
 
-- Low (full): orientation, ki-1, st-1, st-2, ex-1 with its scoring line, the three error blocks, chk-1, chk-2, chk-3, the bridge. 555 words, 3.8 minutes (cap 900 and 6).
-- Mid (brief): orientation, ki-1, st-1, ex-1 with its scoring line, err-02027, err-02028, chk-1, chk-2, the bridge. 445 words, 3.0 minutes (cap 450 and 3).
+- Low (full), in served order: prediction, orientation, the bridge, ki-1, st-1 with its contrast pair, st-2, ex-1 with its scoring line, chk-1, the three error blocks, chk-2, chk-3. 555 words, 3.8 minutes (cap 900 and 6). There is no example 2, so nothing is faded.
+- Mid (brief): prediction, orientation, the bridge, ki-1, st-1 with its contrast pair, ex-1 with its scoring line, chk-1, err-02027, err-02028, chk-2. 448 words, 3.0 minutes (cap 450 and 3).
 - Refresher: ki-1, err-BC-ERR-02027, err-BC-ERR-02028, err-BC-ERR-04023, ex-1.
 
 ## Sources
@@ -111,8 +117,20 @@ Both figure choices are [inferred], settled by the modality A/B.
  "target_id": "BC-CON-02005",
  "unit": "02",
  "skills": ["BC-SKL-02012", "BC-SKL-02013"],
+ "prediction": {
+  "id": "pr-1",
+  "stem": {"text": "Predict. The point \\((3,5)\\) lies on the graph of \\(f(x)=-x^2+4x+2\\). What is the slope of the tangent there?", "command_verb": "predict"},
+  "format": "mcq",
+  "options": [
+   {"id": "A", "label": "\\(5\\)", "is_key": false},
+   {"id": "B", "label": "\\(-2\\)", "is_key": true},
+   {"id": "C", "label": "\\(-6\\)", "is_key": false}
+  ],
+  "resolution": "The slope of the tangent is the derivative there: \\(f'(3)=-2\\). The height 5 places the line and does not tilt it.",
+  "sources": ["BC-CON-02005", "research/units/unit-02-differentiation-definition-properties.md#2.2 Defining the Derivative of a Function and Using Derivative Notation"]
+ },
  "orientation": {
-  "text": "A response reads \\(f'(a)\\) as the slope of the line touching the curve at \\((a,f(a))\\), and writes that line from two numbers with different roles: the slope \\(f'(a)\\) and the height \\(f(a)\\). Stems ask for the tangent line at a named point.",
+  "text": "A response reads \\(f'(a)\\) as the slope of the tangent at \\((a,f(a))\\) and writes the line from that slope and the height \\(f(a)\\).",
   "sources": ["BC-CON-02005", "research/units/unit-02-differentiation-definition-properties.md#2.2 Defining the Derivative of a Function and Using Derivative Notation"]
  },
  "key_ideas": [
@@ -120,9 +138,9 @@ Both figure choices are [inferred], settled by the modality A/B.
    "id": "ki-1",
    "ek_id": "BC-EK-CHA-2C1",
    "depth": "core",
-   "text": "\\(f'(a)\\) is the slope of the tangent at \\((a,f(a))\\) (BC-EK-CHA-2C1, ced:61), and with that point it fixes the line: \\(y=f(a)+f'(a)(x-a)\\). One input gives two numbers: the height places the line, the slope tilts it.",
+   "text": "\\(f'(a)\\) is the slope of the tangent at \\((a,f(a))\\), and with that point it fixes the line: \\(y=f(a)+f'(a)(x-a)\\). One input gives two numbers: the height places the line, the slope tilts it.",
    "notation": "tangent line",
-   "quote": {"text": "The derivative of a function at a point is the slope of the line tangent to a graph of the function at that point.", "source": "ced:61"},
+   "quote": null,
    "sources": ["BC-EK-CHA-2C1", "ced:61", "BC-MIS-02014", "research/units/unit-02-differentiation-definition-properties.md#2.2 Defining the Derivative of a Function and Using Derivative Notation"]
   }
  ],
@@ -130,19 +148,24 @@ Both figure choices are [inferred], settled by the modality A/B.
   {
    "id": "st-1",
    "archetype_id": "BC-QA-02011",
-   "cue": "A function rule and a named point or input; the stem asks for the tangent line.",
-   "method": "First line: differentiate the function.",
-   "rival": "Rival: the function value used as the slope (BC-ERR-02027).",
+   "cue": "A rule and a named point; a tangent line is asked.",
+   "method": "Differentiate the function.",
+   "rival": "The function value used as the slope.",
    "separating_feature": "The slope comes from \\(f'\\), the point from \\(f\\).",
-   "sources": ["BC-QA-02011"],
+   "contrast": {
+    "this": {"text": "Write the tangent line to \\(g(x)=x^2+3x\\) at \\(x=2\\).", "archetype_id": "BC-QA-02011"},
+    "not_this": {"text": "A table gives \\(g(1)=4\\) and \\(g(3)=10\\). Estimate \\(g'(2)\\).", "why_not": "The slope is estimated from data, with no rule to differentiate."},
+    "feature": "A rule and a point, not values in a table."
+   },
+   "sources": ["BC-QA-02011", "BC-ERR-02027"],
    "evidence_tag": "verified"
   },
   {
    "id": "st-2",
    "archetype_id": "BC-QA-02014",
    "cue": "A polynomial model and one named instant; the stem asks for the rate at that instant.",
-   "method": "First line: the average rate over a short interval starting at the instant.",
-   "rival": "Rival: averaging over the whole interval from the start.",
+   "method": "The average rate over a short interval starting at the instant.",
+   "rival": "Averaging over the whole interval from the start.",
    "separating_feature": "One instant: its rate is the tangent slope there.",
    "sources": ["BC-QA-02014"],
    "evidence_tag": "verified"
@@ -157,9 +180,9 @@ Both figure choices are [inferred], settled by the modality A/B.
    "problem": {"text": "Let \\(f(x)=-x^2+4x+2\\). Write an equation for the line tangent to the graph of \\(f\\) at \\(x=3\\).", "command_verb": "write"},
    "calculator_status": "no_calculator",
    "steps": [
-    {"cue": "The stem asks for a tangent line; its slope comes from \\(f'\\).", "why": "Differentiate first.", "expr": "-2*x + 4", "relation": "new"},
+    {"cue": "The slope comes from \\(f'\\).", "why": "Differentiate first.", "expr": "-2*x + 4", "relation": "new"},
     {"cue": "The tangency is at \\(x=3\\).", "why": "The slope is \\(f'(3)=-2\\).", "expr": "-2", "relation": "evaluate", "subs": {"x": "3"}, "point_type_id": "BC-PT-99082"},
-    {"cue": "The stem gives the input only, so the height is computed.", "why": "\\(f(3)=5\\): the point is \\((3,5)\\).", "expr": "5", "relation": "new"},
+    {"cue": "Only the input is given.", "why": "\\(f(3)=5\\): the point is \\((3,5)\\).", "expr": "5", "relation": "new"},
     {"cue": "Slope and point in hand: point slope form.", "why": "The slope multiplies \\(x-3\\); the height stands alone.", "expr": "y = 5 - 2*(x - 3)", "relation": "new", "point_type_id": "BC-PT-99082"}
    ],
    "answer": {"form": "symbolic", "expr": "y = 5 - 2*(x - 3)"}
@@ -176,6 +199,7 @@ Both figure choices are [inferred], settled by the modality A/B.
    "wrong_step": {"text": "Slope \\(f(3)=5\\): \\(y=5+5(x-3)\\).", "expr": "y = 5 + 5*(x - 3)"},
    "right_step": {"text": "Slope \\(f'(3)=-2\\): \\(y=5-2(x-3)\\).", "expr": "y = 5 - 2*(x - 3)"},
    "relation": "distinct",
+   "fix_prompt": true,
    "possible_reason": {"misconception_id": "BC-MIS-02014", "text": "the height is used as a slope"},
    "sources": ["BC-ERR-02027", "BC-MIS-02014"]
   },
@@ -186,6 +210,7 @@ Both figure choices are [inferred], settled by the modality A/B.
    "wrong_step": {"text": "\\(f'(5)=-6\\): \\(y=5-6(x-3)\\).", "expr": "y = 5 - 6*(x - 3)"},
    "right_step": {"text": "\\(f'(3)=-2\\): \\(y=5-2(x-3)\\).", "expr": "y = 5 - 2*(x - 3)"},
    "relation": "distinct",
+   "fix_prompt": true,
    "possible_reason": {"misconception_id": "BC-MIS-02014", "text": "treats the two numbers computed at the point of tangency as playing the same role"},
    "sources": ["BC-ERR-02028", "BC-MIS-02014"]
   },
@@ -196,13 +221,14 @@ Both figure choices are [inferred], settled by the modality A/B.
    "wrong_step": {"text": "\\(y=-2+5(x-3)\\): height and slope exchanged.", "expr": "y = -2 + 5*(x - 3)"},
    "right_step": {"text": "\\(y=5-2(x-3)\\).", "expr": "y = 5 - 2*(x - 3)"},
    "relation": "distinct",
+   "fix_prompt": true,
    "possible_reason": null,
    "sources": ["BC-ERR-04023", "crabbc-25:25"]
   }
  ],
  "representations": null,
  "prerequisite_bridges": [
-  {"prq_id": "BC-PRQ-02003", "text": "Through \\((a,b)\\) with slope \\(m\\): \\(y=b+m(x-a)\\). A correct slope with no line is this gap."}
+  {"prq_id": "BC-PRQ-02003", "text": "Through \\((a,b)\\) with slope \\(m\\): \\(y=b+m(x-a)\\)."}
  ],
  "time": {"exam_part": "II-B", "budget_minutes": 15.0, "source": "research/exam/exam-structure.md#Section and part layout", "written_steps": {"ex-1": [1, 2, 3, 4]}, "skipped_steps": {"ex-1": []}},
  "checks": [
@@ -287,7 +313,7 @@ Both figure choices are [inferred], settled by the modality A/B.
  ],
  "refresher": ["ki-1", "err-BC-ERR-02027", "err-BC-ERR-02028", "err-BC-ERR-04023", "ex-1"],
  "read_minutes": {"full": 3.8, "brief": 3.0},
- "word_count": {"full": 555, "brief": 445},
+ "word_count": {"full": 555, "brief": 448},
  "research_lines": [
   {"file": "research/units/unit-02-differentiation-definition-properties.md", "line": "The derivative of a function at a point is the slope of the line tangent to the graph at that point"},
   {"file": "research/scoring/notation-requirements.md", "line": "a response with an incorrect equation of the form \"function equals constant\" will not earn the point"}

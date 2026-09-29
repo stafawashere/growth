@@ -3,20 +3,67 @@
  "version": 1,
  "kind": "concept",
  "target_id": "BC-CON-02001",
- "status": "signed_off",
+ "status": "draft",
  "snapshot_digest": "a6a8ec9d3f59ab8f712e33d30cc22fc64bf2c478fbe7312e3e3118d319c6a42f",
  "source_digest": "96a07e098c9898ab266fe405ce50b174f99fda116092e00ae335bc80e996f67b",
  "read_minutes": {
-  "full": 3.5,
-  "brief": 2.9
+  "full": 3.6,
+  "brief": 3.0
  },
  "word_count": {
-  "full": 409,
-  "brief": 361
+  "full": 438,
+  "brief": 393
  },
  "sections": [
   {
    "id": "LSN-CON-02001#s1",
+   "type": "prediction",
+   "bands": [
+    "low",
+    "mid"
+   ],
+   "skills": [
+    "BC-SKL-02001",
+    "BC-SKL-02002",
+    "BC-SKL-02003"
+   ],
+   "sources": [
+    "BC-CON-02001",
+    "research/units/unit-02-differentiation-definition-properties.md#2.1 Defining Average and Instantaneous Rates of Change at a Point"
+   ],
+   "evidence_tag": "inferred",
+   "stem": {
+    "text": "Predict. \\(D(3)=31\\) and \\(D(8)=52\\) meters. Which gives the average rate over \\(3\\le t\\le 8\\)?",
+    "command_verb": "predict"
+   },
+   "format": "mcq",
+   "options": [
+    {
+     "id": "A",
+     "label": "\\(52-31\\)",
+     "is_key": false
+    },
+    {
+     "id": "B",
+     "label": "\\(\\frac{52-31}{8-3}\\)",
+     "is_key": true
+    },
+    {
+     "id": "C",
+     "label": "\\(\\frac{52+31}{2}\\)",
+     "is_key": false
+    }
+   ],
+   "resolution": {
+    "text": "The average rate is the change in output divided by the change in input: \\(\\frac{21}{5}\\) meters per minute."
+   },
+   "delivery": {
+    "mode": "text",
+    "reason": "rule 6"
+   }
+  },
+  {
+   "id": "LSN-CON-02001#s2",
    "type": "orientation",
    "bands": [
     "low",
@@ -33,7 +80,7 @@
     "sg-25:11"
    ],
    "evidence_tag": "inferred",
-   "text": "A response shows an average rate as a quotient: the change in output over the named interval divided by the change in input, with the compound units of a rate. A difference alone is not a rate. Stems supply a table or a formula.",
+   "text": "A response shows an average rate as a quotient with compound units: the change in output divided by the change in input over the named interval.",
    "delivery": {
     "mode": "text",
     "reason": "rule 5: a statement of what a response shows",
@@ -43,7 +90,7 @@
    }
   },
   {
-   "id": "LSN-CON-02001#s2",
+   "id": "LSN-CON-02001#s3",
    "type": "key_ideas",
    "bands": [
     "low",
@@ -60,15 +107,11 @@
     "research/units/unit-02-differentiation-definition-properties.md#2.1 Defining Average and Instantaneous Rates of Change at a Point",
     "research/units/unit-02-differentiation-definition-properties.md#2.3 Estimating Derivatives of a Function at a Point"
    ],
-   "evidence_tag": "verified",
+   "evidence_tag": "inferred",
    "ek_id": "BC-EK-CHA-2A1",
    "depth": "core",
-   "text": "The average rate of \\(f\\) over an interval is \\(\\frac{f(a+h)-f(a)}{h}\\) or \\(\\frac{f(x)-f(a)}{x-a}\\) (BC-EK-CHA-2A1, ced:60): a change in output over the matching change in input. From a table, the interval names two rows: values on top, inputs below. Units: output units per input unit.",
+   "text": "The average rate of \\(f\\) over an interval is \\(\\frac{f(a+h)-f(a)}{h}\\) or \\(\\frac{f(x)-f(a)}{x-a}\\) : a change in output over the matching change in input. From a table, the interval names two rows. Units: output per input.",
    "notation": "difference quotient",
-   "quote": {
-    "text": "express the average rate of change of a function over an interval",
-    "source": "ced:60"
-   },
    "delivery": {
     "mode": "table",
     "reason": "rule 4: BC-SKL-02002 lists BC-REP-03; the unit README delivery map names a table for the average rate over a tabulated interval",
@@ -128,7 +171,7 @@
    }
   },
   {
-   "id": "LSN-CON-02001#s3",
+   "id": "LSN-CON-02001#s4",
    "type": "strategy",
    "bands": [
     "low",
@@ -139,17 +182,29 @@
     "BC-SKL-02003"
    ],
    "sources": [
-    "BC-QA-04002"
+    "BC-QA-04002",
+    "BC-ERR-02001"
    ],
    "evidence_tag": "verified",
    "archetype_id": "BC-QA-04002",
-   "cue": "A table and a named interval; the stem asks for an approximation with work and units.",
-   "method": "First line: the two named values, differenced, over the difference of their inputs.",
-   "rival": "Rival: the difference without the division (BC-ERR-02001).",
-   "separating_feature": "A rate has a per in its units, so a quotient appears."
+   "cue": "A table, a named interval, an approximation with units.",
+   "method": "The two named values, differenced, over the difference of their inputs.",
+   "rival": "The difference without the division.",
+   "separating_feature": "A rate has a per in its units, so a quotient appears.",
+   "contrast": {
+    "this": {
+     "text": "A table gives \\(V(4)=20\\) and \\(V(10)=31\\) gallons. Using the average rate over \\(4\\le t\\le 10\\), approximate \\(V'(6)\\) with units.",
+     "archetype_id": "BC-QA-04002"
+    },
+    "not_this": {
+     "text": "\\(V(t)=t^2+2t\\) gallons. At what rate is the volume changing at \\(t=6\\)?",
+     "why_not": "One instant and no interval asks for the limit of average rates."
+    },
+    "feature": "Two named endpoints against one named instant."
+   }
   },
   {
-   "id": "LSN-CON-02001#s4",
+   "id": "LSN-CON-02001#s5",
    "type": "strategy",
    "bands": [
     "low",
@@ -164,12 +219,12 @@
    "evidence_tag": "verified",
    "archetype_id": "BC-QA-02014",
    "cue": "A polynomial model and one named instant; the stem asks for the rate at that instant.",
-   "method": "First written line: the average rate over a short interval starting at the instant, \\(\\frac{f(t_0+h)-f(t_0)}{h}\\).",
+   "method": "The average rate over a short interval starting at the instant, \\(\\frac{f(t_0+h)-f(t_0)}{h}\\).",
    "rival": "The rival averages over the whole interval from the start.",
    "separating_feature": "One instant is named, not two endpoints."
   },
   {
-   "id": "LSN-CON-02001#s5",
+   "id": "LSN-CON-02001#s6",
    "type": "worked_example",
    "bands": [
     "low",
@@ -223,7 +278,7 @@
      "relation": "new"
     },
     {
-     "cue": "The stem asks for a value; no calculator.",
+     "cue": "A value is asked; no calculator.",
      "why": "The exact fraction stands.",
      "expression": [
       "Rational",
@@ -233,7 +288,7 @@
      "relation": "equivalent"
     },
     {
-     "cue": "The stem says units.",
+     "cue": "Units are asked.",
      "why": "Meters over minutes: meters per minute, scored separately."
     }
    ],
@@ -283,6 +338,7 @@
     ]
    },
    "relation": "distinct",
+   "fix_prompt": true,
    "possible_reason": {
     "misconception_id": "BC-MIS-02001",
     "text": "the division by the change in the input is omitted"
@@ -328,6 +384,7 @@
     ]
    },
    "relation": "equivalent",
+   "fix_prompt": false,
    "possible_reason": {
     "misconception_id": "BC-MIS-02008",
     "text": "copies them from the table header"
@@ -353,7 +410,7 @@
    ],
    "evidence_tag": "inferred",
    "prerequisite_id": "BC-PRQ-02005",
-   "text": "\\(f(a+h)\\) is one value of \\(f\\): base point \\(a\\), increment \\(h\\)."
+   "text": "\\(f(a+h)\\) is one value of \\(f\\), at the shifted input."
   },
   {
    "id": "LSN-CON-02001#prq-BC-PRQ-02001",
@@ -370,7 +427,7 @@
    ],
    "evidence_tag": "inferred",
    "prerequisite_id": "BC-PRQ-02001",
-   "text": "The shifted value is expanded, subtracted, and the common factor divided out before \\(h\\) is set to zero."
+   "text": "Expand the shifted value and divide out \\(h\\) before setting \\(h\\) to zero."
   }
  ],
  "checks": [
@@ -401,7 +458,7 @@
     "context": "runner",
     "trend": "increasing"
    },
-   "completes": "LSN-CON-02001#s5",
+   "completes": "LSN-CON-02001#s6",
    "stem": {
     "text": "The work reads \\(D'(6)\\approx\\frac{52-31}{8-3}\\). Give the value.",
     "command_verb": "give"
@@ -611,17 +668,17 @@
   }
  ],
  "refresher": [
-  "LSN-CON-02001#s2",
+  "LSN-CON-02001#s3",
   "LSN-CON-02001#err-BC-ERR-02001",
   "LSN-CON-02001#err-BC-ERR-02003",
-  "LSN-CON-02001#s5"
+  "LSN-CON-02001#s6"
  ],
  "provenance": {
   "author": "tools/lesson_transcribe.py",
-  "prompt_version": "generator/lesson_v1",
+  "prompt_version": "generator/lesson_v2",
   "design_path": "docs/lessons/unit-02/LSN-CON-02001.md",
-  "signed_off_by": "claude-opus-5-5",
-  "signed_off_at": "2026-09-29",
+  "signed_off_by": null,
+  "signed_off_at": null,
   "not_human": true
  }
 }

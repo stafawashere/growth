@@ -3,20 +3,68 @@
  "version": 1,
  "kind": "concept",
  "target_id": "BC-CON-02013",
- "status": "signed_off",
+ "status": "draft",
  "snapshot_digest": "a6a8ec9d3f59ab8f712e33d30cc22fc64bf2c478fbe7312e3e3118d319c6a42f",
  "source_digest": "d2fc93d5f4f33ed594600e6c14aa78517a78973beee30b94ca625ae6a9560345",
  "read_minutes": {
   "full": 4.5,
-  "brief": 2.7
+  "brief": 3.0
  },
  "word_count": {
-  "full": 596,
-  "brief": 375
+  "full": 640,
+  "brief": 423
  },
  "sections": [
   {
    "id": "LSN-CON-02013#s1",
+   "type": "prediction",
+   "bands": [
+    "low",
+    "mid"
+   ],
+   "skills": [
+    "BC-SKL-02036",
+    "BC-SKL-02037",
+    "BC-SKL-02038"
+   ],
+   "sources": [
+    "BC-CON-02013",
+    "BC-EK-FUN-3B1",
+    "ced:67"
+   ],
+   "evidence_tag": "inferred",
+   "stem": {
+    "text": "Predict before the rule. For \\(h(x)=(x^2+3)\\cos x\\), the factors have derivatives \\(2x\\) and \\(-\\sin x\\). Which expression is \\(h'(x)\\)?",
+    "command_verb": "predict"
+   },
+   "format": "mcq",
+   "options": [
+    {
+     "id": "A",
+     "label": "\\(2x(-\\sin x)\\), the two derivatives multiplied",
+     "is_key": false
+    },
+    {
+     "id": "B",
+     "label": "\\(2x\\cos x+(x^2+3)(-\\sin x)\\), two terms added",
+     "is_key": true
+    },
+    {
+     "id": "C",
+     "label": "\\((x^2+3)(-\\sin x)\\), only the second factor differentiated",
+     "is_key": false
+    }
+   ],
+   "resolution": {
+    "text": "The derivative of a product is \\(f'g+fg'\\): two terms, each keeping one factor and differentiating the other. Here that is \\(2x\\cos x+(x^2+3)(-\\sin x)\\), not the product \\(f'g'\\)."
+   },
+   "delivery": {
+    "mode": "text",
+    "reason": "rule 6"
+   }
+  },
+  {
+   "id": "LSN-CON-02013#s2",
    "type": "orientation",
    "bands": [
     "low",
@@ -32,7 +80,7 @@
     "research/units/unit-02-differentiation-definition-properties.md#2.8 The Product Rule"
    ],
    "evidence_tag": "inferred",
-   "text": "A response shows the derivative of a product as two terms added: the first factor times the derivative of the second, plus the second factor times the derivative of the first. Questions ask for it symbolically, or from values of the two functions and their derivatives supplied at one input.",
+   "text": "A response shows the derivative of a product as two terms added: the first factor times the derivative of the second, plus the second factor times the derivative of the first.",
    "delivery": {
     "mode": "text",
     "reason": "rule 5: a symbolic rule, BC-REP-01 givens on BC-SKL-02036",
@@ -42,7 +90,7 @@
    }
   },
   {
-   "id": "LSN-CON-02013#s2",
+   "id": "LSN-CON-02013#s3",
    "type": "key_ideas",
    "bands": [
     "low",
@@ -58,25 +106,58 @@
     "ced:67",
     "research/units/unit-02-differentiation-definition-properties.md#2.8 The Product Rule"
    ],
-   "evidence_tag": "verified",
+   "evidence_tag": "inferred",
    "ek_id": "BC-EK-FUN-3B1",
    "depth": "core",
-   "text": "For a product \\(fg\\) the derivative is \\(f'g+fg'\\) (BC-EK-FUN-3B1, ced:67). It is not \\(f'g'\\), which expanding a simple product and differentiating term by term shows at once. A product of polynomials can also be expanded first and differentiated term by term, which is sometimes the shorter route.",
+   "text": "For a product \\(fg\\) the derivative is \\(f'g+fg'\\). It is not \\(f'g'\\), which expanding a simple product and differentiating term by term shows at once. A product of polynomials can also be expanded first and differentiated term by term, which is sometimes the shorter route.",
    "notation": "product rule",
-   "quote": {
-    "text": "Derivatives of products of differentiable functions can be found using the product rule.",
-    "source": "ced:67"
-   },
    "delivery": {
-    "mode": "text",
-    "reason": "rule 5: an algebraic identity with no figure-bearing BC-REP on the skills",
+    "mode": "table",
+    "reason": "rule 5: BC-REP-03 supplied values on BC-SKL-02037, laid beside the rule as numbers",
     "sources": [
-     "BC-SKL-02036"
-    ]
+     "BC-SKL-02037"
+    ],
+    "spec": {
+     "kind": "table",
+     "representations": [
+      "BC-REP-03"
+     ],
+     "columns": [
+      "quantity at x = 3",
+      "value"
+     ],
+     "rows": [
+      [
+       "f(3)",
+       2
+      ],
+      [
+       "f'(3)",
+       5
+      ],
+      [
+       "g(3)",
+       -1
+      ],
+      [
+       "g'(3)",
+       4
+      ]
+     ],
+     "labels": [
+      {
+       "text": "f'(3)g(3) + f(3)g'(3) = 3, while f'(3)g'(3) = 20",
+       "placement": "inside",
+       "at": "last line of the table frame"
+      }
+     ]
+    },
+    "fallback": "the same four rows as a text list, with the two products written after them",
+    "keyboard": "none needed; the table is read row by row in order by a screen reader"
    }
   },
   {
-   "id": "LSN-CON-02013#s3",
+   "id": "LSN-CON-02013#s4",
    "type": "strategy",
    "bands": [
     "low",
@@ -91,13 +172,24 @@
    ],
    "evidence_tag": "verified",
    "archetype_id": "BC-QA-02008",
-   "cue": "The stem asks for the derivative of the product or quotient, from a product or quotient of two differentiable expressions.",
-   "method": "First written line: name the two factors and their derivatives, \\(f\\), \\(g\\), \\(f'\\), \\(g'\\).",
-   "rival": "The rival is multiplying the derivatives of the two factors (BC-ERR-02020).",
-   "separating_feature": "A product gives two terms, each holding exactly one derivative."
+   "cue": "Two differentiable expressions multiplied or divided, and the derivative asked.",
+   "method": "Name the two factors and their derivatives, \\(f\\), \\(g\\), \\(f'\\), \\(g'\\).",
+   "rival": "The rival is multiplying the derivatives of the two factors.",
+   "separating_feature": "A product gives two terms, each holding exactly one derivative.",
+   "contrast": {
+    "this": {
+     "text": "Let \\(p(x)=(x^3-4)\\sin x\\). Find \\(p'(x)\\).",
+     "archetype_id": "BC-QA-02008"
+    },
+    "not_this": {
+     "text": "Let \\(q(x)=\\sin(x^3-4)\\). Find \\(q'(x)\\).",
+     "why_not": "One function sits inside another, so the chain rule applies, not the product rule."
+    },
+    "feature": "Two factors multiplied, against one function inside another."
+   }
   },
   {
-   "id": "LSN-CON-02013#s4",
+   "id": "LSN-CON-02013#s5",
    "type": "strategy",
    "bands": [
     "low",
@@ -112,12 +204,12 @@
    "evidence_tag": "verified",
    "archetype_id": "BC-QA-02009",
    "cue": "The stem asks for the derivative value at the named input, from a table of two functions and their derivatives.",
-   "method": "First written line: record the four supplied values at the named input, each labelled a value or a derivative.",
-   "rival": "The rival is placing a function value where the rule calls for a derivative value (BC-ERR-02024).",
+   "method": "Record the four supplied values at the named input, each labelled a value or a derivative.",
+   "rival": "The rival is placing a function value where the rule calls for a derivative value.",
    "separating_feature": "Each of the four numbers is labelled before it is used."
   },
   {
-   "id": "LSN-CON-02013#s5",
+   "id": "LSN-CON-02013#s6",
    "type": "worked_example",
    "bands": [
     "low",
@@ -258,7 +350,7 @@
    }
   },
   {
-   "id": "LSN-CON-02013#s6",
+   "id": "LSN-CON-02013#s7",
    "type": "worked_example",
    "bands": [
     "low"
@@ -308,16 +400,17 @@
     "form": "numeric",
     "mathjson": 7
    },
+   "fade_from": 3,
    "delivery": {
     "mode": "step_reveal",
-    "reason": "rule 1; the four supplied values render as a table inside the problem (BC-REP-03 given)",
+    "reason": "rule 1; the four supplied values are written in the problem text",
     "sources": [
      "BC-SKL-02037"
     ]
    }
   },
   {
-   "id": "LSN-CON-02013#s7",
+   "id": "LSN-CON-02013#s8",
    "type": "what_a_reader_scores",
    "bands": [
     "low",
@@ -331,7 +424,7 @@
     "BC-PT-99022"
    ],
    "evidence_tag": "verified",
-   "example_id": "LSN-CON-02013#s5",
+   "example_id": "LSN-CON-02013#s6",
    "lines": [
     {
      "point_type_id": "BC-PT-99022",
@@ -340,7 +433,7 @@
    ]
   },
   {
-   "id": "LSN-CON-02013#s8",
+   "id": "LSN-CON-02013#s9",
    "type": "what_a_reader_scores",
    "bands": [
     "low"
@@ -352,7 +445,7 @@
     "BC-PT-99022"
    ],
    "evidence_tag": "verified",
-   "example_id": "LSN-CON-02013#s6",
+   "example_id": "LSN-CON-02013#s7",
    "lines": [
     {
      "point_type_id": "BC-PT-99022",
@@ -425,6 +518,7 @@
     ]
    },
    "relation": "distinct",
+   "fix_prompt": true,
    "possible_reason": {
     "misconception_id": "BC-MIS-02011",
     "text": "the derivative of a product is taken as the product of the derivatives"
@@ -477,6 +571,7 @@
     ]
    },
    "relation": "equivalent",
+   "fix_prompt": false,
    "delivery": {
     "mode": "step_reveal",
     "reason": "rule 1",
@@ -510,6 +605,7 @@
     "expression": 7
    },
    "relation": "distinct",
+   "fix_prompt": true,
    "possible_reason": {
     "misconception_id": "BC-MIS-02011",
     "text": "supplied values are placed in the wrong positions"
@@ -538,7 +634,7 @@
     "constant": 3,
     "trig": "cos"
    },
-   "completes": "LSN-CON-02013#s5",
+   "completes": "LSN-CON-02013#s6",
    "stem": {
     "text": "The product rule gives \\(h'(x)=(2x)(\\cos x)+(x^2+3)(-\\sin x)\\). Write \\(h'(x)\\) with the double sign cleared.",
     "command_verb": "write"
@@ -822,18 +918,18 @@
   }
  ],
  "refresher": [
-  "LSN-CON-02013#s2",
+  "LSN-CON-02013#s3",
   "LSN-CON-02013#err-BC-ERR-02020",
   "LSN-CON-02013#err-BC-ERR-02023",
   "LSN-CON-02013#err-BC-ERR-02024",
-  "LSN-CON-02013#s5"
+  "LSN-CON-02013#s6"
  ],
  "provenance": {
   "author": "tools/lesson_transcribe.py",
-  "prompt_version": "generator/lesson_v1",
+  "prompt_version": "generator/lesson_v2",
   "design_path": "docs/lessons/unit-02/LSN-CON-02013.md",
-  "signed_off_by": "claude-opus-5-5",
-  "signed_off_at": "2026-09-29",
+  "signed_off_by": null,
+  "signed_off_at": null,
   "not_human": true
  }
 }

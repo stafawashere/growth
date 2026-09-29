@@ -3,7 +3,7 @@
  "version": 1,
  "kind": "concept",
  "target_id": "BC-CON-02005",
- "status": "signed_off",
+ "status": "draft",
  "snapshot_digest": "a6a8ec9d3f59ab8f712e33d30cc22fc64bf2c478fbe7312e3e3118d319c6a42f",
  "source_digest": "9d1512369a94fd4b91d4b9aa16b62655f36ae594eb892b8012a6cd37ac6125b5",
  "read_minutes": {
@@ -11,12 +11,58 @@
   "brief": 3.0
  },
  "word_count": {
-  "full": 506,
-  "brief": 405
+  "full": 515,
+  "brief": 417
  },
  "sections": [
   {
    "id": "LSN-CON-02005#s1",
+   "type": "prediction",
+   "bands": [
+    "low",
+    "mid"
+   ],
+   "skills": [
+    "BC-SKL-02012",
+    "BC-SKL-02013"
+   ],
+   "sources": [
+    "BC-CON-02005",
+    "research/units/unit-02-differentiation-definition-properties.md#2.2 Defining the Derivative of a Function and Using Derivative Notation"
+   ],
+   "evidence_tag": "inferred",
+   "stem": {
+    "text": "Predict. The point \\((3,5)\\) lies on the graph of \\(f(x)=-x^2+4x+2\\). What is the slope of the tangent there?",
+    "command_verb": "predict"
+   },
+   "format": "mcq",
+   "options": [
+    {
+     "id": "A",
+     "label": "\\(5\\)",
+     "is_key": false
+    },
+    {
+     "id": "B",
+     "label": "\\(-2\\)",
+     "is_key": true
+    },
+    {
+     "id": "C",
+     "label": "\\(-6\\)",
+     "is_key": false
+    }
+   ],
+   "resolution": {
+    "text": "The slope of the tangent is the derivative there: \\(f'(3)=-2\\). The height 5 places the line and does not tilt it."
+   },
+   "delivery": {
+    "mode": "text",
+    "reason": "rule 6"
+   }
+  },
+  {
+   "id": "LSN-CON-02005#s2",
    "type": "orientation",
    "bands": [
     "low",
@@ -31,7 +77,7 @@
     "research/units/unit-02-differentiation-definition-properties.md#2.2 Defining the Derivative of a Function and Using Derivative Notation"
    ],
    "evidence_tag": "inferred",
-   "text": "A response reads \\(f'(a)\\) as the slope of the line touching the curve at \\((a,f(a))\\), and writes that line from two numbers with different roles: the slope \\(f'(a)\\) and the height \\(f(a)\\). Stems ask for the tangent line at a named point.",
+   "text": "A response reads \\(f'(a)\\) as the slope of the tangent at \\((a,f(a))\\) and writes the line from that slope and the height \\(f(a)\\).",
    "delivery": {
     "mode": "figure",
     "reason": "rule 3: BC-SKL-02012 and BC-SKL-02013 list BC-REP-02 (unit README delivery map)",
@@ -101,7 +147,7 @@
    }
   },
   {
-   "id": "LSN-CON-02005#s2",
+   "id": "LSN-CON-02005#s3",
    "type": "key_ideas",
    "bands": [
     "low",
@@ -117,15 +163,11 @@
     "BC-MIS-02014",
     "research/units/unit-02-differentiation-definition-properties.md#2.2 Defining the Derivative of a Function and Using Derivative Notation"
    ],
-   "evidence_tag": "verified",
+   "evidence_tag": "inferred",
    "ek_id": "BC-EK-CHA-2C1",
    "depth": "core",
-   "text": "\\(f'(a)\\) is the slope of the tangent at \\((a,f(a))\\) (BC-EK-CHA-2C1, ced:61), and with that point it fixes the line: \\(y=f(a)+f'(a)(x-a)\\). One input gives two numbers: the height places the line, the slope tilts it.",
+   "text": "\\(f'(a)\\) is the slope of the tangent at \\((a,f(a))\\), and with that point it fixes the line: \\(y=f(a)+f'(a)(x-a)\\). One input gives two numbers: the height places the line, the slope tilts it.",
    "notation": "tangent line",
-   "quote": {
-    "text": "The derivative of a function at a point is the slope of the line tangent to a graph of the function at that point.",
-    "source": "ced:61"
-   },
    "delivery": {
     "mode": "figure",
     "reason": "rule 3: BC-REP-02 on BC-SKL-02012; no promotion, BC-QA-02011 names no varying quantity read as a relationship",
@@ -236,7 +278,7 @@
    }
   },
   {
-   "id": "LSN-CON-02005#s3",
+   "id": "LSN-CON-02005#s4",
    "type": "strategy",
    "bands": [
     "low",
@@ -247,17 +289,29 @@
     "BC-SKL-02013"
    ],
    "sources": [
-    "BC-QA-02011"
+    "BC-QA-02011",
+    "BC-ERR-02027"
    ],
    "evidence_tag": "verified",
    "archetype_id": "BC-QA-02011",
-   "cue": "A function rule and a named point or input; the stem asks for the tangent line.",
-   "method": "First line: differentiate the function.",
-   "rival": "Rival: the function value used as the slope (BC-ERR-02027).",
-   "separating_feature": "The slope comes from \\(f'\\), the point from \\(f\\)."
+   "cue": "A rule and a named point; a tangent line is asked.",
+   "method": "Differentiate the function.",
+   "rival": "The function value used as the slope.",
+   "separating_feature": "The slope comes from \\(f'\\), the point from \\(f\\).",
+   "contrast": {
+    "this": {
+     "text": "Write the tangent line to \\(g(x)=x^2+3x\\) at \\(x=2\\).",
+     "archetype_id": "BC-QA-02011"
+    },
+    "not_this": {
+     "text": "A table gives \\(g(1)=4\\) and \\(g(3)=10\\). Estimate \\(g'(2)\\).",
+     "why_not": "The slope is estimated from data, with no rule to differentiate."
+    },
+    "feature": "A rule and a point, not values in a table."
+   }
   },
   {
-   "id": "LSN-CON-02005#s4",
+   "id": "LSN-CON-02005#s5",
    "type": "strategy",
    "bands": [
     "low",
@@ -272,12 +326,12 @@
    "evidence_tag": "verified",
    "archetype_id": "BC-QA-02014",
    "cue": "A polynomial model and one named instant; the stem asks for the rate at that instant.",
-   "method": "First line: the average rate over a short interval starting at the instant.",
-   "rival": "Rival: averaging over the whole interval from the start.",
+   "method": "The average rate over a short interval starting at the instant.",
+   "rival": "Averaging over the whole interval from the start.",
    "separating_feature": "One instant: its rate is the tangent slope there."
   },
   {
-   "id": "LSN-CON-02005#s5",
+   "id": "LSN-CON-02005#s6",
    "type": "worked_example",
    "bands": [
     "low",
@@ -306,7 +360,7 @@
    "calculator_status": "no_calculator",
    "steps": [
     {
-     "cue": "The stem asks for a tangent line; its slope comes from \\(f'\\).",
+     "cue": "The slope comes from \\(f'\\).",
      "why": "Differentiate first.",
      "expression": [
       "Add",
@@ -330,7 +384,7 @@
      }
     },
     {
-     "cue": "The stem gives the input only, so the height is computed.",
+     "cue": "Only the input is given.",
      "why": "\\(f(3)=5\\): the point is \\((3,5)\\).",
      "expression": 5,
      "relation": "new"
@@ -378,7 +432,7 @@
    }
   },
   {
-   "id": "LSN-CON-02005#s6",
+   "id": "LSN-CON-02005#s7",
    "type": "what_a_reader_scores",
    "bands": [
     "low",
@@ -392,7 +446,7 @@
     "BC-PT-99082"
    ],
    "evidence_tag": "verified",
-   "example_id": "LSN-CON-02005#s5",
+   "example_id": "LSN-CON-02005#s6",
    "lines": [
     {
      "point_type_id": "BC-PT-99082",
@@ -452,6 +506,7 @@
     ]
    },
    "relation": "distinct",
+   "fix_prompt": true,
    "possible_reason": {
     "misconception_id": "BC-MIS-02014",
     "text": "the height is used as a slope"
@@ -513,6 +568,7 @@
     ]
    },
    "relation": "distinct",
+   "fix_prompt": true,
    "possible_reason": {
     "misconception_id": "BC-MIS-02014",
     "text": "treats the two numbers computed at the point of tangency as playing the same role"
@@ -574,6 +630,7 @@
     ]
    },
    "relation": "distinct",
+   "fix_prompt": true,
    "delivery": {
     "mode": "step_reveal",
     "reason": "rule 1",
@@ -596,7 +653,7 @@
    ],
    "evidence_tag": "inferred",
    "prerequisite_id": "BC-PRQ-02003",
-   "text": "Through \\((a,b)\\) with slope \\(m\\): \\(y=b+m(x-a)\\). A correct slope with no line is this gap."
+   "text": "Through \\((a,b)\\) with slope \\(m\\): \\(y=b+m(x-a)\\)."
   }
  ],
  "checks": [
@@ -616,7 +673,7 @@
     "at": 3,
     "given": "input"
    },
-   "completes": "LSN-CON-02005#s5",
+   "completes": "LSN-CON-02005#s6",
    "stem": {
     "text": "\\(f'(3)=-2\\) and \\(f(3)=5\\). Write the tangent line at \\(x=3\\).",
     "command_verb": "write"
@@ -919,18 +976,18 @@
   }
  ],
  "refresher": [
-  "LSN-CON-02005#s2",
+  "LSN-CON-02005#s3",
   "LSN-CON-02005#err-BC-ERR-02027",
   "LSN-CON-02005#err-BC-ERR-02028",
   "LSN-CON-02005#err-BC-ERR-04023",
-  "LSN-CON-02005#s5"
+  "LSN-CON-02005#s6"
  ],
  "provenance": {
   "author": "tools/lesson_transcribe.py",
-  "prompt_version": "generator/lesson_v1",
+  "prompt_version": "generator/lesson_v2",
   "design_path": "docs/lessons/unit-02/LSN-CON-02005.md",
-  "signed_off_by": "claude-opus-5-5",
-  "signed_off_at": "2026-09-29",
+  "signed_off_by": null,
+  "signed_off_at": null,
   "not_human": true
  }
 }

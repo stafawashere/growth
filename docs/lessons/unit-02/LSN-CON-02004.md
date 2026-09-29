@@ -9,20 +9,26 @@ purpose: Authoring spec for the concept lesson on BC-CON-02004, derivative notat
 
 Concept BC-CON-02004 (skills BC-SKL-02010, BC-SKL-02011), topic 2.2 of Unit 2, loaded by BC-QA-02012 only. Its hard parent is BC-CON-02002 (unit README section 1). It sits in the confusable set of LSN-DEC-02-02 with BC-CON-02005 and BC-CON-02007.
 
+## Prediction
+
+One multiple choice question on worked example 1's own numbers, asked before the rule is shown: \(V'(4)=-6\) for the volume \(V(t)\) of a tank, and the student picks the Leibniz statement that says the same. The key is ex-1's answer; the distractors are the two notation slips the error blocks carry, the quotient \(\frac{V(4)}{4}\) (BC-ERR-02029) and the differential \(dV\) in place of the derivative (BC-ERR-03022). The resolution, shown on the key idea screen beside the student's choice, names the function, the variable and the input the prime form carries. No verdict word. Sources: BC-CON-02004 and the topic 2.2 section the key idea cites.
+
 ## Orientation
 
-Served text (43 words), from BC-CON-02004 `description_plain` and the topic's Assessment behaviour paragraph (research/units/unit-02-differentiation-definition-properties.md#2.2 Defining the Derivative of a Function and Using Derivative Notation): conceptual variants ask what the notation denotes, so a response reads each form as naming a function, the variable of differentiation and, where shown, the input. No count, no frequency.
+Served text (31 words), from BC-CON-02004 `description_plain` and the topic's Assessment behaviour paragraph (research/units/unit-02-differentiation-definition-properties.md#2.2 Defining the Derivative of a Function and Using Derivative Notation): conceptual variants ask what the notation denotes, so a response reads each form as naming a function, the variable of differentiation and, where shown, the input. No count, no frequency.
 
 ## Key ideas
 
 BC-SKL-02010 maps BC-EK-CHA-2B3 and BC-EK-CHA-2B4; BC-SKL-02011 maps BC-EK-CHA-2B4. Two blocks.
 
-- ki-1 (core, BC-EK-CHA-2B3, ced:61). The three notations for \(y=f(x)\); what each names; a value at an input carries the input in every form; the Leibniz form is one symbol (BC-MIS-02015's description names the fraction reading as the failure). Anchor quote (4 words) from ced:61, the only clean run of the EK's cached text. Notation line from the concept record.
+- ki-1 (core, BC-EK-CHA-2B3, ced:61). The three notations for \(y=f(x)\); what each names; a value at an input carries the input in every form; the Leibniz form is one symbol (BC-MIS-02015's description names the fraction reading as the failure). No anchor quote for this block (the run in the EK's cached text is too short to serve). Notation line from the concept record.
 - ki-2 (extended, BC-EK-CHA-2B4, ced:61). The four representations of one derivative value: a slope on a graph, a quotient from a table, a formula, a sentence with units. Anchor quote (10 words) from ced:61.
 
 ## Recognition
 
 - BC-QA-02012 (family notation-translation, MCQ, no calculator; research/question-analysis/question-archetypes.md#BC-QA-02012 Derivative notation read or converted): `typical_wording` "Which of the given expressions denotes the same quantity as the expression shown?"; `common_givens` a derivative written in one notation; `asked_to_produce` an equivalent expression in the requested notation, or a statement of what the notation denotes. The signal is a derivative symbol in the stem and a request for "the same quantity" or "what it means". The archetype has no `official_examples`.
+
+Contrast pair on st-1: this stem is on BC-QA-02012 and asks for the same quantity in another notation; not this stem is the BC-CON-02005 shape, the same function with a line asked at the point (a sibling concept in the LSN-DEC-02-02 set). The separating feature is a restatement of one quantity against a new quantity to produce.
 
 What says "not this concept": a number is asked from a function rule (BC-CON-02002, BC-CON-02003); a line is asked (BC-CON-02005); an estimate from data (BC-CON-02007). The LSN-DEC-02-02 selector is what the stem asks to produce (unit README section 3).
 
@@ -30,13 +36,13 @@ What says "not this concept": a number is asked from a function rule (BC-CON-020
 
 - st-1, BC-QA-02012, low and mid bands. Cue from `asked_to_produce` and `common_givens`. Method, `expected_solution_path[0]`: identify the function and the independent variable from the supplied notation. Rival, `wrong_approaches`: treating Leibniz notation as a fraction whose parts separate and cancel (BC-ERR-02029). Separating feature: a value at an input keeps the input in every notation.
 
-The archetype carries `asked_to_produce` and `common_givens`, so the block is not tagged inferred.
+The archetype carries `asked_to_produce` and `common_givens`, so the block is not tagged inferred. The `method` text carries no leading label; the rival's record id sits in the block's `sources`.
 
 ## Solution path
 
 - ex-1, BC-QA-02012, both bands, no calculator. Draw: order first, framing context, supplied prime, setting 0 (the tank, liters, minutes, from the generation template's context list), at 4, value \(-6\), giving \(V'(4)=-6\). Steps follow `expected_solution_path`: identify function, variable and input (no value), write the equivalent Leibniz statement (valued, new), state what it denotes with units (no value). A fluent solver writes the Leibniz line and the sentence; the identification is read, not written.
 
-The answer is a statement, so the valued step carries the Leibniz statement as a SymPy equation, and the answer key is `statement`.
+One example only, so nothing is faded. The answer is a statement, so the valued step carries the Leibniz statement as a SymPy equation, and the answer key is `statement`.
 
 ## Scoring
 
@@ -50,6 +56,8 @@ Four active errors meet the concept's skills; all four are shown, in the bundle'
 - err-BC-ERR-04017 (BC-MIS-04008, BC-MIS-99005). Wrong: \(\frac{dV}{dh}=6h\) from \(V=3h^2\), and the work stops. Right: \(\frac{dV}{dt}=6h\frac{dh}{dt}=6(1)(-1)=-6\). Distinct (SymPy: \(\frac{d}{dh}3h^2=6h\); \(\frac{d}{dt}3h(t)^2=6h\,h'(t)\), which is \(-6\) at \(h=1\), \(h'=-1\)). Possible reason from BC-MIS-99005.
 - err-BC-ERR-02029 (BC-MIS-02015, BC-MIS-03003). Wrong: \(\frac{V(4)}{4}=-6\). Right: \(\left.\frac{dV}{dt}\right|_{t=4}=-6\). Distinct. Possible reason from BC-MIS-02015.
 - err-BC-ERR-03022 (BC-MIS-03014, BC-MIS-03003). Wrong: \(dV=-6\). Right: \(\frac{dV}{dt}=-6\) at \(t=4\). Distinct. Possible reason from BC-MIS-03014.
+
+All four relations are distinct, so all four blocks are fix prompts.
 
 The wrong and right steps are SymPy equations over the symbols the notation names (dV, dt, V, t) and over `Derivative` and `Subs`, so the CAS separates them structurally.
 
@@ -81,10 +89,12 @@ No draw equals a published BC-QA-02012 `parameter_draw` (content/items_gen_unit0
 - ex-1: step_reveal. Rule 1.
 - err-BC-ERR-02030, err-BC-ERR-04017, err-BC-ERR-02029, err-BC-ERR-03022: step_reveal. Rule 1.
 
+The lesson already carries a drawn block (the figure on ki-2), so it states no `no_figure_reason`. The prediction is delivered as text.
+
 ## Band plan
 
-- Low (full): orientation, ki-1, ki-2, st-1, ex-1, the four error blocks, chk-1, chk-2, chk-3, the bridge. 622 words, 4.2 minutes (cap 900 and 6).
-- Mid (brief): orientation, ki-1, st-1, ex-1, err-02030, err-04017, chk-1, chk-2, the bridge. 404 words, 2.8 minutes (cap 450 and 3).
+- Low (full), in served order: prediction, orientation, the bridge, ki-1, ki-2, st-1 with its contrast pair, ex-1, chk-1, the four error blocks, chk-2, chk-3. 659 words, 4.4 minutes (cap 900 and 6). There is no example 2, so nothing is faded.
+- Mid (brief): prediction, orientation, the bridge, ki-1, st-1 with its contrast pair, ex-1, chk-1, err-02030, err-04017, chk-2. 443 words, 3.0 minutes (cap 450 and 3).
 - Refresher: ki-1, err-BC-ERR-02030, err-BC-ERR-04017, err-BC-ERR-02029, err-BC-ERR-03022, ex-1.
 
 ## Sources
@@ -111,8 +121,20 @@ No draw equals a published BC-QA-02012 `parameter_draw` (content/items_gen_unit0
  "target_id": "BC-CON-02004",
  "unit": "02",
  "skills": ["BC-SKL-02010", "BC-SKL-02011"],
+ "prediction": {
+  "id": "pr-1",
+  "stem": {"text": "Predict. \\(V(t)\\) liters at \\(t\\) minutes, and \\(V'(4)=-6\\). Which is the same in Leibniz notation?", "command_verb": "predict"},
+  "format": "mcq",
+  "options": [
+   {"id": "A", "label": "\\(\\frac{V(4)}{4}=-6\\)", "is_key": false},
+   {"id": "B", "label": "\\(\\left.\\frac{dV}{dt}\\right|_{t=4}=-6\\)", "is_key": true},
+   {"id": "C", "label": "\\(dV=-6\\)", "is_key": false}
+  ],
+  "resolution": "\\(V'(4)\\) names the function \\(V\\), the variable \\(t\\) and the input 4; the Leibniz form keeps all three.",
+  "sources": ["BC-CON-02004", "research/units/unit-02-differentiation-definition-properties.md#2.2 Defining the Derivative of a Function and Using Derivative Notation"]
+ },
  "orientation": {
-  "text": "A response reads derivative notation as naming a function, the variable it is differentiated with respect to, and, where shown, the input: \\(f'(a)\\), \\(\\left.\\frac{dy}{dx}\\right|_{x=a}\\) and \\(y'\\) at \\(a\\) are one number. Stems ask which expression denotes the same quantity, or what it means.",
+  "text": "A response reads derivative notation as naming a function, the variable it is differentiated with respect to, and, where shown, the input: \\(f'(a)\\), \\(\\left.\\frac{dy}{dx}\\right|_{x=a}\\) and \\(y'\\) at \\(a\\) are one number.",
   "sources": ["BC-CON-02004", "research/units/unit-02-differentiation-definition-properties.md#2.2 Defining the Derivative of a Function and Using Derivative Notation"]
  },
  "key_ideas": [
@@ -120,16 +142,16 @@ No draw equals a published BC-QA-02012 `parameter_draw` (content/items_gen_unit0
    "id": "ki-1",
    "ek_id": "BC-EK-CHA-2B3",
    "depth": "core",
-   "text": "For \\(y=f(x)\\) the derivative is written \\(\\frac{dy}{dx}\\), \\(f'(x)\\) or \\(y'\\) (BC-EK-CHA-2B3, ced:61). Each names a function and the variable of differentiation. A value at one input carries the input: \\(f'(4)\\) is \\(\\left.\\frac{dy}{dx}\\right|_{x=4}\\). \\(\\frac{dy}{dx}\\) is one symbol, not a quotient.",
+   "text": "For \\(y=f(x)\\) the derivative is written \\(\\frac{dy}{dx}\\), \\(f'(x)\\) or \\(y'\\). Each names a function and the variable of differentiation. A value at one input carries the input: \\(f'(4)\\) is \\(\\left.\\frac{dy}{dx}\\right|_{x=4}\\). \\(\\frac{dy}{dx}\\) is one symbol, not a quotient.",
    "notation": "dy by dx; f prime of x; y prime",
-   "quote": {"text": "notations for the derivative", "source": "ced:61"},
+   "quote": null,
    "sources": ["BC-EK-CHA-2B3", "ced:61", "BC-MIS-02015", "research/units/unit-02-differentiation-definition-properties.md#2.2 Defining the Derivative of a Function and Using Derivative Notation"]
   },
   {
    "id": "ki-2",
    "ek_id": "BC-EK-CHA-2B4",
    "depth": "extended",
-   "text": "One derivative value has four faces (BC-EK-CHA-2B4, ced:61): a tangent slope on a graph, a quotient from a table, a formula, a sentence with units. \\(V'(4)=-6\\) reads: at \\(t=4\\) the volume is falling at 6 liters per minute.",
+   "text": "One derivative value has four faces: a tangent slope on a graph, a quotient from a table, a formula, a sentence with units. \\(V'(4)=-6\\) reads: at \\(t=4\\) the volume is falling at 6 liters per minute.",
    "notation": "dy by dx",
    "quote": {"text": "The derivative can be represented graphically, numerically, analytically, and verbally.", "source": "ced:61"},
    "sources": ["BC-EK-CHA-2B4", "ced:61"]
@@ -139,11 +161,16 @@ No draw equals a published BC-QA-02012 `parameter_draw` (content/items_gen_unit0
   {
    "id": "st-1",
    "archetype_id": "BC-QA-02012",
-   "cue": "A derivative in one notation; the stem asks for the same quantity in another, or what it denotes.",
-   "method": "First line: name the function, the independent variable, and the input if shown.",
-   "rival": "Rival: the Leibniz form split and cancelled as a fraction (BC-ERR-02029).",
+   "cue": "A derivative in one notation; the same quantity is asked in another.",
+   "method": "Name the function, the independent variable, and the input if shown.",
+   "rival": "The Leibniz form split and cancelled as a fraction.",
    "separating_feature": "A value at an input keeps the input in every notation.",
-   "sources": ["BC-QA-02012"],
+   "contrast": {
+    "this": {"text": "\\(P=h(x)\\) and \\(h'(5)=9\\). Which expression denotes the same quantity?", "archetype_id": "BC-QA-02012"},
+    "not_this": {"text": "Let \\(h(x)=x^2\\). Write the tangent line to \\(h\\) at \\(x=5\\).", "why_not": "A line is asked, not the same derivative in another notation."},
+    "feature": "The same quantity restated, not a new quantity produced."
+   },
+   "sources": ["BC-QA-02012", "BC-ERR-02029"],
    "evidence_tag": "verified"
   }
  ],
@@ -172,6 +199,7 @@ No draw equals a published BC-QA-02012 `parameter_draw` (content/items_gen_unit0
    "wrong_step": {"text": "\\(\\frac{dV}{dt}=-6\\): the input is gone.", "expr": "Eq(Derivative(V(t), t), -6)"},
    "right_step": {"text": "\\(\\left.\\frac{dV}{dt}\\right|_{t=4}=-6\\).", "expr": "Eq(Subs(Derivative(V(t), t), t, 4), -6)"},
    "relation": "distinct",
+   "fix_prompt": true,
    "possible_reason": {"misconception_id": "BC-MIS-02015", "text": "the derivative function is confused with its value"},
    "sources": ["BC-ERR-02030", "BC-MIS-02015"]
   },
@@ -182,6 +210,7 @@ No draw equals a published BC-QA-02012 `parameter_draw` (content/items_gen_unit0
    "wrong_step": {"text": "Given \\(V=3h^2\\) and \\(\\frac{dh}{dt}=-1\\) at \\(h=1\\): \\(\\frac{dV}{dh}=6h\\), and the work stops.", "expr": "Eq(Derivative(V(h), h), 6*h)"},
    "right_step": {"text": "Through the chain rule: \\(\\frac{dV}{dt}=6h\\frac{dh}{dt}=6(1)(-1)=-6\\).", "expr": "Eq(Derivative(V(t), t), 6*h(t)*Derivative(h(t), t))"},
    "relation": "distinct",
+   "fix_prompt": true,
    "possible_reason": {"misconception_id": "BC-MIS-99005", "text": "does not distinguish the variable of differentiation"},
    "sources": ["BC-ERR-04017", "BC-MIS-99005", "cr-24:18"]
   },
@@ -192,6 +221,7 @@ No draw equals a published BC-QA-02012 `parameter_draw` (content/items_gen_unit0
    "wrong_step": {"text": "\\(\\frac{V(4)}{4}=-6\\): volume over time.", "expr": "Eq(V/t, -6)"},
    "right_step": {"text": "\\(\\frac{dV}{dt}=-6\\) at \\(t=4\\): a rate.", "expr": "Eq(dV/dt, -6)"},
    "relation": "distinct",
+   "fix_prompt": true,
    "possible_reason": {"misconception_id": "BC-MIS-02015", "text": "the Leibniz form is treated as a fraction"},
    "sources": ["BC-ERR-02029", "BC-MIS-02015"]
   },
@@ -202,13 +232,14 @@ No draw equals a published BC-QA-02012 `parameter_draw` (content/items_gen_unit0
    "wrong_step": {"text": "\\(dV=-6\\).", "expr": "Eq(dV, -6)"},
    "right_step": {"text": "\\(\\frac{dV}{dt}=-6\\) at \\(t=4\\).", "expr": "Eq(dV/dt, -6)"},
    "relation": "distinct",
+   "fix_prompt": true,
    "possible_reason": {"misconception_id": "BC-MIS-03014", "text": "notation is mixed within a line"},
    "sources": ["BC-ERR-03022", "BC-MIS-03014", "crabbc-25:25"]
   }
  ],
  "representations": null,
  "prerequisite_bridges": [
-  {"prq_id": "BC-PRQ-02004", "text": "Each form names the variable it differentiates with respect to; one expression keeps one form."}
+  {"prq_id": "BC-PRQ-02004", "text": "Each form names its variable of differentiation."}
  ],
  "time": {"exam_part": "I-A", "budget_minutes": 2.14, "source": "research/exam/exam-structure.md#Section and part layout", "written_steps": {"ex-1": [2, 3]}, "skipped_steps": {"ex-1": [1]}},
  "checks": [
@@ -284,8 +315,8 @@ No draw equals a published BC-QA-02012 `parameter_draw` (content/items_gen_unit0
   {"block": "err-BC-ERR-03022", "mode": "step_reveal", "reason": "rule 1", "sources": []}
  ],
  "refresher": ["ki-1", "err-BC-ERR-02030", "err-BC-ERR-04017", "err-BC-ERR-02029", "err-BC-ERR-03022", "ex-1"],
- "read_minutes": {"full": 4.2, "brief": 2.8},
- "word_count": {"full": 622, "brief": 404},
+ "read_minutes": {"full": 4.4, "brief": 3.0},
+ "word_count": {"full": 659, "brief": 443},
  "research_lines": [
   {"file": "research/scoring/notation-requirements.md", "line": "Loose derivative notation is generally accepted when the intent is clear."},
   {"file": "research/units/unit-02-differentiation-definition-properties.md", "line": "Conceptual variants ask what the notation denotes"}

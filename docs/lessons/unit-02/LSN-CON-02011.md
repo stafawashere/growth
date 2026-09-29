@@ -9,9 +9,13 @@ purpose: Authoring spec for the concept lesson on BC-CON-02011, linearity of dif
 
 Concept BC-CON-02011 (skills BC-SKL-02028, BC-SKL-02029, BC-SKL-02030, BC-SKL-02031), topic 2.6 of Unit 2, loaded by BC-QA-02006 only. The structure follows LSN-CON-02013.
 
+## Prediction
+
+Served first, both bands. On ex-1's numbers, \(f(x)=5x^4-\frac3x+8\), the student picks what the constant term 8 contributes to \(f'(x)\): stays, contributes 0, or is multiplied by the exponent 4. Format `mcq`, key "contributes 0, so it drops out". The distractors are the constant carried (BC-ERR-02016) and a power rule applied to a term that is not a power. The resolution states that the derivative of a constant function is zero and that multipliers stay in front, in the words of BC-EK-FUN-3A2 on ced:65. Sources: BC-CON-02011, BC-EK-FUN-3A2, ced:65 [verified].
+
 ## Orientation
 
-Served text, from BC-CON-02011 `description_plain` and the topic's Assessment behaviour paragraph (research/units/unit-02-differentiation-definition-properties.md#2.6 Derivative Rules: Constant, Sum, Difference, and Constant Multiple): term by term differentiation, multipliers kept, constants to zero; MCQ forms and supplied models in application parts. No count, no frequency.
+Served text, from BC-CON-02011 `description_plain` and the topic's Assessment behaviour paragraph (research/units/unit-02-differentiation-definition-properties.md#2.6 Derivative Rules: Constant, Sum, Difference, and Constant Multiple): term by term differentiation, multipliers kept, constants to zero. The sentence on MCQ forms and supplied models in application parts was cut to bring the brief form under 450 words. No count, no frequency.
 
 ## Key ideas
 
@@ -26,11 +30,13 @@ Two BC-EK map to the skills: BC-EK-FUN-3A2 (BC-SKL-02028 to 02030) and BC-EK-FUN
 
 What says "not this concept": two variable factors multiplied or divided (BC-CON-02013, 02014); a constant denominator, which this concept's constant multiple rule handles instead of the quotient rule (BC-ERR-02023, taught in BC-CON-02014).
 
+The contrast pair on st-1 takes its near miss from the sibling concept BC-CON-02013. `this` is a sum of constant multiples of powers with a lone constant (BC-QA-02006 wording, a different draw from every published item). `not_this` multiplies two binomials, which reads as a polynomial but calls for the product rule; the feature is terms joined by plus or minus against factors multiplied.
+
 ## Method choice
 
 One strategy block, both bands.
 
-- st-1, BC-QA-02006. Method, `expected_solution_path[0]`: rewrite radicals and reciprocals as powers, so every term is a constant times a power. Rival: the constant term carried (BC-ERR-02016); the archetype records no `wrong_approaches`, so the rival is [inferred] and the block is tagged inferred. Separating feature: a multiplier touches a power; a constant stands alone.
+- st-1, BC-QA-02006. Method, `expected_solution_path[0]`: rewrite radicals and reciprocals as powers, so every term is a constant times a power. The served method text carries no leading label. Rival: the constant term carried (BC-ERR-02016); the archetype records no `wrong_approaches`, so the rival is [inferred] and the block is tagged inferred. Separating feature: a multiplier touches a power; a constant stands alone.
 
 ## Solution path
 
@@ -46,8 +52,8 @@ None. BC-QA-02006 lists no `point_types`, so no step is tagged and the lesson sa
 
 Two active errors meet the concept's skills, in the bundle's order; both bands show both.
 
-- err-BC-ERR-02015 (BC-MIS-02009): \(5x^3-3x^{-2}\) against \(20x^3+3x^{-2}\). Distinct.
-- err-BC-ERR-02016 (BC-MIS-02009): the 8 carried. Distinct.
+- err-BC-ERR-02015 (BC-MIS-02009): \(5x^3-3x^{-2}\) against \(20x^3+3x^{-2}\). Distinct, `fix_prompt` true.
+- err-BC-ERR-02016 (BC-MIS-02009): the 8 carried. Distinct, `fix_prompt` true.
 
 ## Representations
 
@@ -75,12 +81,12 @@ No draw equals a published BC-QA-02006 `parameter_draw`.
 - ex-1: step_reveal. Rule 1.
 - err-BC-ERR-02015, err-BC-ERR-02016: step_reveal. Rule 1.
 
-No non-text mode applies [inferred; settled by the modality A/B].
+No drawn block applies: no skill carries a figure-bearing BC-REP (rules 2 to 5 do not select), so the machine record states `no_figure_reason` [inferred; settled by the modality A/B].
 
 ## Band plan
 
-- Low (full): orientation, ki-1, ki-2, st-1, ex-1, err-BC-ERR-02015, err-BC-ERR-02016, chk-1, chk-2, chk-3, the bridge. 390 words, 2.6 minutes (cap 900 and 6).
-- Mid (brief): orientation, ki-1, st-1, ex-1, err-BC-ERR-02015, err-BC-ERR-02016, chk-1, chk-2, the bridge. 362 words, 2.5 minutes (cap 450 and 3).
+- Low (full): prediction, orientation, ki-1, ki-2, st-1 with its contrast pair, ex-1, chk-1, err-BC-ERR-02015, err-BC-ERR-02016, chk-2, chk-3, the bridge. 472 words, 3.2 minutes (cap 900 and 6). No second example, so no fade.
+- Mid (brief): prediction, orientation, bridge, ki-1, st-1 with its contrast pair, ex-1, chk-1, err-BC-ERR-02015, err-BC-ERR-02016, chk-2. 446 words, 3.0 minutes (cap 450 and 3).
 - Refresher: ki-1, err-BC-ERR-02015, err-BC-ERR-02016, ex-1.
 
 ## Sources
@@ -94,7 +100,7 @@ No non-text mode applies [inferred; settled by the modality A/B].
 - research/exam/exam-structure.md#Section and part layout
 - [inferred] st-1's rival. Settled by a staging pass adding `wrong_approaches` to BC-QA-02006.
 - [inferred] The example carries a reciprocal term because BC-QA-02006's spec always includes one. Settled by a polynomial-only archetype.
-- [inferred] No non-text mode. Settled by the modality A/B.
+- [inferred] No drawn block, `no_figure_reason` stated. Settled by the modality A/B.
 
 ## Machine record
 
@@ -110,8 +116,40 @@ No non-text mode applies [inferred; settled by the modality A/B].
   "BC-SKL-02030",
   "BC-SKL-02031"
  ],
+ "prediction": {
+  "id": "pr-1",
+  "stem": {
+   "text": "Predict before the rule. For \\(f(x)=5x^4-\\frac{3}{x}+8\\), the derivative is found term by term. What does the constant term 8 contribute to \\(f'(x)\\)?",
+   "command_verb": "predict"
+  },
+  "format": "mcq",
+  "options": [
+   {
+    "id": "A",
+    "label": "The term 8 stays in \\(f'(x)\\) unchanged",
+    "is_key": false
+   },
+   {
+    "id": "B",
+    "label": "The term 8 contributes 0, so it drops out",
+    "is_key": true
+   },
+   {
+    "id": "C",
+    "label": "The term 8 is multiplied by the exponent 4",
+    "is_key": false
+   }
+  ],
+  "resolution": "The derivative of a constant function is zero, so the 8 contributes 0. The multipliers 5 and \\(-3\\) stay in front of their terms, and each multiplies the derivative of its own power.",
+  "sources": [
+   "BC-CON-02011",
+   "BC-EK-FUN-3A2",
+   "ced:65"
+  ]
+ },
+ "no_figure_reason": "The skills carry BC-REP-01 only, and the key ideas state symbolic rules with no process, so no figure, table or motion fits.",
  "orientation": {
-  "text": "A response differentiates a sum or difference term by term, keeps each constant multiplier in front, and sends each constant term to zero. Questions ask for the derivative of a polynomial or of a linear combination, and application parts differentiate a supplied model the same way.",
+  "text": "A response differentiates a sum or difference term by term, keeps each constant multiplier in front, and sends each constant term to zero.",
   "sources": [
    "BC-CON-02011",
    "research/units/unit-02-differentiation-definition-properties.md#2.6 Derivative Rules: Constant, Sum, Difference, and Constant Multiple"
@@ -122,7 +160,7 @@ No non-text mode applies [inferred; settled by the modality A/B].
    "id": "ki-1",
    "ek_id": "BC-EK-FUN-3A2",
    "depth": "core",
-   "text": "Sums, differences and constant multiples are differentiated by rule (BC-EK-FUN-3A2, ced:65): \\((f\\pm g)'=f'\\pm g'\\) and \\((cf)'=cf'\\). The derivative of a constant function is zero, the constant multiple rule applied to the zeroth power. So a constant multiplier stays; a constant term disappears.",
+   "text": "Sums, differences and constant multiples are differentiated by rule: \\((f\\pm g)'=f'\\pm g'\\) and \\((cf)'=cf'\\). The derivative of a constant function is zero, the constant multiple rule applied to the zeroth power. So a constant multiplier stays; a constant term disappears.",
    "notation": "constant multiple rule; sum rule; difference rule",
    "quote": {
     "text": "Sums, differences, and constant multiples of functions can be differentiated using derivative rules.",
@@ -138,7 +176,7 @@ No non-text mode applies [inferred; settled by the modality A/B].
    "id": "ki-2",
    "ek_id": "BC-EK-FUN-3A3",
    "depth": "extended",
-   "text": "The power rule with the sum, difference and constant multiple properties differentiates any polynomial term by term (BC-EK-FUN-3A3, ced:65).",
+   "text": "The power rule with the sum, difference and constant multiple properties differentiates any polynomial term by term.",
    "notation": "constant multiple rule; sum rule",
    "quote": null,
    "sources": [
@@ -153,14 +191,25 @@ No non-text mode applies [inferred; settled by the modality A/B].
    "id": "st-1",
    "archetype_id": "BC-QA-02006",
    "cue": "The stem asks for the derivative of a sum of constant multiples of powers, with or without a constant term.",
-   "method": "First written line: every term as a constant times a power of \\(x\\).",
-   "rival": "The rival is carrying the constant term into the derivative (BC-ERR-02016) [inferred: the archetype records no wrong approach].",
+   "method": "Every term written as a constant times a power of \\(x\\).",
+   "rival": "The rival is carrying the constant term into the derivative.",
    "separating_feature": "A multiplier touches a power and stays; a constant stands alone and goes to zero.",
    "sources": [
     "BC-QA-02006",
     "BC-ERR-02016"
    ],
-   "evidence_tag": "inferred"
+   "evidence_tag": "inferred",
+   "contrast": {
+    "this": {
+     "text": "Let \\(g(x)=4x^3-\\frac{6}{x^2}+5\\). Find \\(g'(x)\\).",
+     "archetype_id": "BC-QA-02006"
+    },
+    "not_this": {
+     "text": "Let \\(h(x)=(4x^3-6)(x^2+5)\\). Find \\(h'(x)\\).",
+     "why_not": "Two variable factors are multiplied, so the product rule applies, not term by term differentiation."
+    },
+    "feature": "Terms joined by plus or minus, each a number times a power, against factors multiplied."
+   }
   }
  ],
  "worked_examples": [
@@ -240,7 +289,8 @@ No non-text mode applies [inferred; settled by the modality A/B].
    "sources": [
     "BC-ERR-02015",
     "BC-MIS-02009"
-   ]
+   ],
+   "fix_prompt": true
   },
   {
    "error_id": "BC-ERR-02016",
@@ -262,7 +312,8 @@ No non-text mode applies [inferred; settled by the modality A/B].
    "sources": [
     "BC-ERR-02016",
     "BC-MIS-02009"
-   ]
+   ],
+   "fix_prompt": true
   }
  ],
  "representations": null,
@@ -513,12 +564,12 @@ No non-text mode applies [inferred; settled by the modality A/B].
   "ex-1"
  ],
  "read_minutes": {
-  "full": 2.7,
-  "brief": 2.5
+  "full": 3.2,
+  "brief": 3.0
  },
  "word_count": {
-  "full": 391,
-  "brief": 363
+  "full": 472,
+  "brief": 446
  },
  "research_lines": [
   {

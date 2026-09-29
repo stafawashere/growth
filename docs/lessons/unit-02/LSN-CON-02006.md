@@ -9,6 +9,10 @@ purpose: Authoring spec for the concept lesson on BC-CON-02006, recognising a li
 
 Concept BC-CON-02006 (skill BC-SKL-02035), topic 2.7 of Unit 2, loaded by BC-QA-02003 only. Its hard parent is BC-CON-02002 and its supporting parent BC-CON-02003 (unit README section 1).
 
+## Prediction
+
+Served first, both bands, on ex-1's numbers (source BC-CON-02006 and the topic's 2.7 section, research/units/unit-02-differentiation-definition-properties.md#2.7 Derivatives of cos x, sin x, e^x, and ln x). Form `mcq`, three options, key: the limit is the slope of \(y=4\sqrt{x}\) at \(x=9\). The distractors are the two readings the errors below record, a limit that does not exist and the function value 12. The resolution states what the reading gives and why, without a verdict word.
+
 ## Orientation
 
 Served text (48 words), from BC-CON-02006 `description_plain` and the topic's Assessment behaviour paragraph (research/units/unit-02-differentiation-definition-properties.md#2.7 Derivatives of cos x, sin x, e^x, and ln x): justification variants identify the underlying function and base point of a recognised limit, so a response names both, states the limit as the derivative there, and evaluates by the rule. No count, no frequency.
@@ -23,11 +27,13 @@ BC-SKL-02035 maps BC-EK-LIM-3A1 (ced:66), so one core block, both bands.
 
 - BC-QA-02003 (family derivative-definition-limit, MCQ, no calculator; research/question-analysis/question-archetypes.md#BC-QA-02003 Limit recognised as a derivative of a known function): `typical_wording` "Evaluate the given limit"; `common_givens` a limit in difference quotient form; `asked_to_produce` the value of the limit. The signal is the shape: substitution gives \(\frac{0}{0}\), and the numerator is a known function at a shifted input minus the same function at a base input, over the shift. The archetype has no `official_examples` (none in 2023 to 2025).
 
+The contrast pair on st-1 takes its near miss from Unit 1: a limit that also gives \(\frac{0}{0}\) but whose numerator is not a difference of one function's values, so algebra resolves it (BC-SKL-01024 is `confusable_with` on BC-SKL-02035). The `this` stem is a fresh draw on BC-QA-02003, an exponential at base 2.
+
 What says "not this concept": the numerator is not a difference of one function's values (a Unit 1 limit, rewritten by algebra); the stem says use the definition on a rule (BC-CON-02003); a rate at an instant in context (BC-CON-02002).
 
 ## Method choice
 
-- st-1, BC-QA-02003, low and mid bands. Cue from `asked_to_produce` and `common_givens`. Method, `expected_solution_path[0]`: compare the numerator with a difference of function values. Rival, `wrong_approaches`: treating the difference quotient form as unresolvable and reporting that the limit does not exist (BC-ERR-02009). Separating feature: the constant in the numerator is a value of the same function at the base point.
+- st-1, BC-QA-02003, low and mid bands. Cue from `asked_to_produce` and `common_givens`. Method, `expected_solution_path[0]`, written without a leading label: the numerator compared with a difference of function values. The contrast pair rides on this block. Rival, `wrong_approaches`: treating the difference quotient form as unresolvable and reporting that the limit does not exist (BC-ERR-02009). Separating feature: the constant in the numerator is a value of the same function at the base point.
 
 The archetype carries `asked_to_produce` and `common_givens`, so the block is not tagged inferred.
 
@@ -70,19 +76,20 @@ No draw equals a published BC-QA-02003 `parameter_draw` (content/items_gen_unit0
 ## Delivery
 
 - orientation, ki-1: text. Rule 5; BC-SKL-02035 carries BC-REP-01 only (unit README delivery map).
+- No drawn block: `no_figure_reason` states it. The skill carries BC-REP-01 only and no key idea describes a process.
 - ex-1: step_reveal. Rule 1.
 - err-BC-ERR-02009, err-BC-ERR-02010: step_reveal. Rule 1.
 
 ## Band plan
 
-- Low (full): orientation, ki-1, st-1, ex-1, the three error blocks, chk-1, chk-2, chk-3, the bridge. 411 words, 2.8 minutes (cap 900 and 6).
-- Mid (brief): orientation, ki-1, st-1, ex-1, err-02009, err-02010, chk-1, chk-2, the bridge. 342 words, 2.3 minutes (cap 450 and 3).
+- Low (full): prediction, orientation, the bridge, ki-1, st-1 with the contrast pair, ex-1, chk-1, the three error blocks, chk-2, chk-3. 492 words, 3.3 minutes (cap 900 and 6).
+- Mid (brief): prediction, orientation, the bridge, ki-1, st-1 with the contrast pair, ex-1, chk-1, err-02009, err-02010, chk-2. 423 words, 2.9 minutes (cap 450 and 3).
 - Refresher: ki-1, err-BC-ERR-02009, err-BC-ERR-02010, err-BC-ERR-02024, ex-1.
 
 ## Sources
 
 - BC-CON-02006; BC-SKL-02035; BC-EK-LIM-3A1, BC-EK-FUN-3A4; ced:66
-- BC-QA-02003
+- BC-QA-02003; BC-SKL-01024 (the contrast near miss)
 - BC-ERR-02009, BC-ERR-02010, BC-ERR-02024; BC-MIS-02002, BC-MIS-02004, BC-MIS-02014
 - BC-PRQ-02005
 - research/units/unit-02-differentiation-definition-properties.md#2.7 Derivatives of cos x, sin x, e^x, and ln x
@@ -100,6 +107,19 @@ No draw equals a published BC-QA-02003 `parameter_draw` (content/items_gen_unit0
  "target_id": "BC-CON-02006",
  "unit": "02",
  "skills": ["BC-SKL-02035"],
+ "prediction": {
+  "id": "pr-1",
+  "stem": {"text": "Predict before the rule: \\(\\lim_{h\\to0}\\frac{4\\sqrt{9+h}-12}{h}\\) gives \\(\\frac{0}{0}\\) at \\(h=0\\). What is the limit?", "command_verb": "predict"},
+  "format": "mcq",
+  "options": [
+   {"id": "A", "label": "It does not exist, because substitution gives \\(\\frac{0}{0}\\).", "is_key": false},
+   {"id": "B", "label": "The slope of \\(y=4\\sqrt{x}\\) at \\(x=9\\).", "is_key": true},
+   {"id": "C", "label": "The value 12, since \\(4\\sqrt{9}=12\\).", "is_key": false}
+  ],
+  "resolution": "The numerator is \\(f(9+h)-f(9)\\) for \\(f(x)=4\\sqrt{x}\\), so the limit is \\(f'(9)=\\frac{2}{3}\\), a slope. A \\(\\frac{0}{0}\\) form of this shape has a value.",
+  "sources": ["BC-CON-02006", "research/units/unit-02-differentiation-definition-properties.md#2.7 Derivatives of cos x, sin x, e^x, and ln x"]
+ },
+ "no_figure_reason": "The concept is a symbolic reading of a limit. Its one skill carries BC-REP-01 only and no key idea describes a process, so no figure, table or motion fits.",
  "orientation": {
   "text": "A response reads a limit shaped like a difference quotient as a derivative already known: it names the function and the base point, states the limit as that derivative there, and evaluates by the rule. Substitution gives \\(\\frac{0}{0}\\); that form does not mean the limit fails to exist.",
   "sources": ["BC-CON-02006", "research/units/unit-02-differentiation-definition-properties.md#2.7 Derivatives of cos x, sin x, e^x, and ln x"]
@@ -109,7 +129,7 @@ No draw equals a published BC-QA-02003 `parameter_draw` (content/items_gen_unit0
    "id": "ki-1",
    "ek_id": "BC-EK-LIM-3A1",
    "depth": "core",
-   "text": "If the numerator is a known function at a shifted input minus the same function at the base, over the shift, the limit is that function's derivative at the base (BC-EK-LIM-3A1, ced:66). Match \\(\\frac{f(a+h)-f(a)}{h}\\) or \\(\\frac{f(x)-f(a)}{x-a}\\), name \\(f\\) and \\(a\\), then use the rule (BC-EK-FUN-3A4): \\((\\sin x)'=\\cos x\\), \\((\\cos x)'=-\\sin x\\), \\((e^x)'=e^x\\), \\((\\ln x)'=\\frac{1}{x}\\).",
+   "text": "If the numerator is a known function at a shifted input minus the same function at the base, over the shift, the limit is that function's derivative at the base Match \\(\\frac{f(a+h)-f(a)}{h}\\) or \\(\\frac{f(x)-f(a)}{x-a}\\), name \\(f\\) and \\(a\\), then use the rule: \\((\\sin x)'=\\cos x\\), \\((\\cos x)'=-\\sin x\\), \\((e^x)'=e^x\\), \\((\\ln x)'=\\frac{1}{x}\\).",
    "notation": "",
    "quote": {"text": "recognizing an expression for the definition of the derivative of a function whose derivative is known offers a strategy for determining a limit", "source": "ced:66"},
    "sources": ["BC-EK-LIM-3A1", "BC-EK-FUN-3A4", "ced:66", "research/units/unit-02-differentiation-definition-properties.md#2.7 Derivatives of cos x, sin x, e^x, and ln x"]
@@ -120,11 +140,16 @@ No draw equals a published BC-QA-02003 `parameter_draw` (content/items_gen_unit0
    "id": "st-1",
    "archetype_id": "BC-QA-02003",
    "cue": "A limit in difference quotient form; the stem asks for its value.",
-   "method": "First line: compare the numerator with a difference of values of a known function.",
-   "rival": "Rival: \\(\\frac{0}{0}\\) read as unresolvable, the limit reported as nonexistent (BC-ERR-02009).",
+   "method": "Compare the numerator with a difference of values of a known function.",
+   "rival": "Rival: \\(\\frac{0}{0}\\) read as unresolvable, the limit reported as nonexistent.",
    "separating_feature": "The constant in the numerator is the same function's value at the base.",
    "sources": ["BC-QA-02003"],
-   "evidence_tag": "verified"
+   "evidence_tag": "verified",
+   "contrast": {
+    "this": {"text": "Find \\(\\lim_{h\\to0}\\frac{5e^{2+h}-5e^{2}}{h}\\).", "archetype_id": "BC-QA-02003"},
+    "not_this": {"text": "Find \\(\\lim_{h\\to0}\\frac{h^2+5h}{h}\\).", "why_not": "The numerator is not a difference of one function's values, so factoring and cancelling \\(h\\) resolves it."},
+    "feature": "A numerator that subtracts the same function's value at the base point."
+   }
   }
  ],
  "worked_examples": [
@@ -152,6 +177,7 @@ No draw equals a published BC-QA-02003 `parameter_draw` (content/items_gen_unit0
    "wrong_step": {"text": "Substitution gives \\(\\frac{0}{0}\\), reported as: the limit does not exist.", "expr": "(4*sqrt(9+0) - 12)/0"},
    "right_step": {"text": "The limit is \\(f'(9)=\\frac{2}{3}\\).", "expr": "2/3"},
    "relation": "distinct",
+   "fix_prompt": true,
    "possible_reason": {"misconception_id": "BC-MIS-02004", "text": "a difference quotient whose underlying derivative is known is not recognised as such"},
    "sources": ["BC-ERR-02009", "BC-MIS-02004"]
   },
@@ -162,6 +188,7 @@ No draw equals a published BC-QA-02003 `parameter_draw` (content/items_gen_unit0
    "wrong_step": {"text": "The constant 12 taken as the base: \\(f'(12)=\\frac{2}{\\sqrt{12}}\\).", "expr": "2/sqrt(12)"},
    "right_step": {"text": "The base is 9: \\(f'(9)=\\frac{2}{3}\\).", "expr": "2/3"},
    "relation": "distinct",
+   "fix_prompt": true,
    "possible_reason": null,
    "sources": ["BC-ERR-02010"]
   },
@@ -172,6 +199,7 @@ No draw equals a published BC-QA-02003 `parameter_draw` (content/items_gen_unit0
    "wrong_step": {"text": "The height \\(f(9)=4\\sqrt{9}=12\\) reported as the limit.", "expr": "4*sqrt(9)"},
    "right_step": {"text": "The slope \\(f'(9)=\\frac{2}{3}\\) is the limit.", "expr": "2/3"},
    "relation": "distinct",
+   "fix_prompt": true,
    "possible_reason": {"misconception_id": "BC-MIS-02014", "text": "the height is used as a slope"},
    "sources": ["BC-ERR-02024", "BC-MIS-02014"]
   }
@@ -249,8 +277,8 @@ No draw equals a published BC-QA-02003 `parameter_draw` (content/items_gen_unit0
   {"block": "err-BC-ERR-02024", "mode": "step_reveal", "reason": "rule 1", "sources": []}
  ],
  "refresher": ["ki-1", "err-BC-ERR-02009", "err-BC-ERR-02010", "err-BC-ERR-02024", "ex-1"],
- "read_minutes": {"full": 2.8, "brief": 2.3},
- "word_count": {"full": 411, "brief": 342},
+ "read_minutes": {"full": 3.3, "brief": 2.9},
+ "word_count": {"full": 492, "brief": 423},
  "research_lines": [
   {"file": "research/units/unit-02-differentiation-definition-properties.md", "line": "justification variants identify the underlying function and base point of a recognised limit"}
  ],

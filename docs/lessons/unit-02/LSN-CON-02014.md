@@ -9,6 +9,10 @@ purpose: Authoring spec for the concept lesson on BC-CON-02014, the quotient rul
 
 Concept BC-CON-02014 (skills BC-SKL-02039, BC-SKL-02040, BC-SKL-02041, BC-SKL-02042), topic 2.9 of Unit 2, loaded by BC-QA-02008 (primary) and BC-QA-02009. The structure follows LSN-CON-02013, the product rule beside it.
 
+## Prediction
+
+Served first, both bands. On ex-1's function, \(h(x)=\frac{3x^2-2}{\sin x}\), with the piece derivatives \(6x\) and \(\cos x\) stated, the student picks \(h'(x)\): the two derivatives divided, the rule with the denominator's term first, or the rule with the numerator subtracted the other way round. Format `mcq`, key the rule with \(vu'\) first. The distractors are the error BC-ERR-02026 records and BC-ERR-02021. The resolution states \(\frac{vu'-uv'}{v^2}\) and that order matters, in the words of BC-EK-FUN-3B2 on ced:68. Sources: BC-CON-02014, BC-EK-FUN-3B2, ced:68 [verified].
+
 ## Orientation
 
 Served text, from BC-CON-02014 `description_plain` and the topic's Assessment behaviour paragraph (research/units/unit-02-differentiation-definition-properties.md#2.9 The Quotient Rule): the rule's order and square, asked symbolically or from supplied values. No count, no frequency.
@@ -17,12 +21,14 @@ Served text, from BC-CON-02014 `description_plain` and the topic's Assessment be
 
 One BC-EK maps to the four skills, BC-EK-FUN-3B2 (ced:68), so one core block, both bands.
 
-- ki-1 (core). The rule, order matters, the square, and the constant denominator route, paraphrased from the Quotient rule, Order matters and Constant denominator paragraphs. Anchor quote (13 words) from ced:68. Notation line: quotient rule.
+- ki-1 (core). The rule, order matters, the square, and the constant denominator route, paraphrased from the Quotient rule, Order matters and Constant denominator paragraphs. Notation line: quotient rule. The anchor quote was dropped to bring the brief form under 450 words.
 
 ## Recognition
 
 - BC-QA-02008 (family rule-manipulation, MCQ or one part, no calculator; research/question-analysis/question-archetypes.md#BC-QA-02008 Derivative of a product or a quotient by rule): `typical_wording` "Find the derivative of the given function."; `common_givens` a product or quotient of two differentiable expressions, a family of rational functions with a constant parameter, a stated tangent slope; `asked_to_produce` the derivative, or a parameter from a stated slope. The signal is a fraction bar with the variable below it. `official_examples`: BC-FRQ-2019-Q5-A, BC-FRQ-2014-Q3-C.
 - BC-QA-02009 (family derivative-from-table; research/question-analysis/question-archetypes.md#BC-QA-02009 Derivative of a product or quotient evaluated from supplied values): four values at one input, two of them derivatives, and a quotient \(\frac{f}{g}\). `official_examples`: BC-FRQ-2021-Q4-B, BC-MCQ-CED-003.
+
+The contrast pair on st-1 takes its near miss from the constant denominator case, which BC-ERR-02023 records. `this` is a polynomial over a cosine on BC-QA-02008 (a different draw from every published item). `not_this` puts the same numerator over 5, which reads as a fraction but calls for the constant multiple rule; the feature is a variable in the denominator.
 
 What says "not this concept": a constant denominator (constant multiple rule, BC-SKL-02042, BC-ERR-02023); two factors multiplied (BC-CON-02013); tan, cot, sec or csc, which BC-CON-02015 rewrites first.
 
@@ -30,13 +36,13 @@ What says "not this concept": a constant denominator (constant multiple rule, BC
 
 Two strategy blocks, low and mid bands, the first only in mid.
 
-- st-1, BC-QA-02008. Method, `expected_solution_path[0]`: identify the two pieces and their derivatives; first written line \(u, v, u', v'\), then the rule. Rival, `wrong_approaches`: numerator and denominator differentiated separately (BC-ERR-02026). Separating feature: a variable denominator.
+- st-1, BC-QA-02008. Method, `expected_solution_path[0]`: identify the two pieces and their derivatives, written as \(u\), \(v\), \(u'\), \(v'\), then the rule; the served text carries no leading label. Rival, `wrong_approaches`: numerator and denominator differentiated separately (BC-ERR-02026). Separating feature: a variable denominator.
 - st-2, BC-QA-02009. Method, `expected_solution_path[0]`: record the four values. Rival, `wrong_approaches`: a function value in a derivative position (BC-ERR-02024). Separating feature: each number labelled first.
 
 ## Solution path
 
 - ex-1, BC-QA-02008, both bands, no calculator. Draw: numerator quadratic, leading 3, constant \(-2\), trig sin, angle 1/4: \(h(x)=\frac{3x^2-2}{\sin x}\) at \(\frac{\pi}{4}\). Steps: identify pieces (no value), rule line (tagged BC-PT-99080), value \(\sqrt2(\frac{3\pi}{2}-\frac{3\pi^2}{16}+2)\). A fluent solver writes the rule line and the value.
-- ex-2, BC-QA-02009, low band. Draw row 1 of the table: \(f(1)=-3\), \(f'(1)=5\), \(g(1)=2\), \(g'(1)=-2\), form quotient. Steps: label the values (no value), the substituted rule, the value 1 (tagged BC-PT-99004). Key 1.
+- ex-2, BC-QA-02009, low band. Draw row 1 of the table: \(f(1)=-3\), \(f'(1)=5\), \(g(1)=2\), \(g'(1)=-2\), form quotient. Steps: label the values (no value), the substituted rule, the value 1 (tagged BC-PT-99004). Key 1. ex-2 is faded from step 3: steps 1 and 2 are shown, the student writes the value, and then the arithmetic step is revealed. The fade falls there because step 2 is the valued rule line and step 3 is the arithmetic the student can produce from it.
 
 No productive-failure opener targets this concept, so no comparison callout.
 
@@ -54,10 +60,10 @@ Point losses the scoring research names for rule shapes: simplification is optio
 
 Five active errors meet the concept's skills; the cap is 4, so the first four in the bundle's order are served (BC-ERR-02026 is served in LSN-CON-02015, where the rewritten trigonometric quotient carries it). Low band all four, mid band the first two.
 
-- err-BC-ERR-02021 (BC-MIS-02012): numerator reversed on ex-1. Distinct.
-- err-BC-ERR-02022 (BC-MIS-02012): \(\sin x\) below the line, not \(\sin^2x\). Distinct.
-- err-BC-ERR-02023: the full rule on \(\frac{3x^2-2}{5}\) against \(\frac{6x}{5}\). Equivalent, which is the record's own consequence.
-- err-BC-ERR-02024 (BC-MIS-02011): on ex-2, \(f(1)\) for \(f'(1)\) gives \(-3\) against 1. Distinct.
+- err-BC-ERR-02021 (BC-MIS-02012): numerator reversed on ex-1. Distinct, `fix_prompt` true.
+- err-BC-ERR-02022 (BC-MIS-02012): \(\sin x\) below the line, not \(\sin^2x\). Distinct, `fix_prompt` true.
+- err-BC-ERR-02023: the full rule on \(\frac{3x^2-2}{5}\) against \(\frac{6x}{5}\). Equivalent, which is the record's own consequence; `fix_prompt` false.
+- err-BC-ERR-02024 (BC-MIS-02011): on ex-2, \(f(1)\) for \(f'(1)\) gives \(-3\) against 1. Distinct, `fix_prompt` true.
 
 ## Representations
 
@@ -81,17 +87,18 @@ No draw equals a published BC-QA-02008 or BC-QA-02009 `parameter_draw`.
 
 ## Delivery
 
-- orientation, ki-1: text. Rule 5, BC-REP-01; unit README delivery map.
+- orientation: text. Rule 5, BC-REP-01; unit README delivery map.
+- ki-1: table. Rule 5, BC-REP-03 supplied values on BC-SKL-02041: four values at one input (f(2)=6, f'(2)=1, g(2)=2, g'(2)=3, a draw used by no example or check) with the rule's quotient, \(-4\), beside the quotient of the derivatives, \(\frac13\). The table puts the prediction's claim in numbers; its label sits inside the table frame. Fallback a text list, keyboard none needed.
 - ex-1: step_reveal. Rule 1.
-- ex-2: step_reveal with the supplied values as a table inside the problem (BC-REP-03 on BC-SKL-02041). Rule 1.
+- ex-2: step_reveal with the supplied values written in the problem text. Rule 1.
 - err-BC-ERR-02021, err-BC-ERR-02022, err-BC-ERR-02023, err-BC-ERR-02024: step_reveal. Rule 1.
 
-No non-text mode applies [inferred; settled by the modality A/B].
+No motion, interactive or model mode applies: the concept has no parameter that varies and no process to watch [inferred; settled by the modality A/B].
 
 ## Band plan
 
-- Low (full): orientation, ki-1, st-1, st-2, ex-1 with its scoring line, the four error blocks, chk-1, chk-2, chk-3, ex-2 with its scoring line. 657 words, 4.4 minutes (cap 900 and 6).
-- Mid (brief): orientation, ki-1, st-1, ex-1 with its scoring line, err-BC-ERR-02021, err-BC-ERR-02022, chk-1, chk-2. 373 words, 2.5 minutes (cap 450 and 3).
+- Low (full): prediction, orientation, ki-1, st-1 with its contrast pair, st-2, ex-1 with its scoring line, chk-1, the four error blocks, ex-2 faded from step 3 with its scoring line, chk-2, chk-3. 722 words, 4.9 minutes (cap 900 and 6).
+- Mid (brief): prediction, orientation, ki-1, st-1 with its contrast pair, ex-1 with its scoring line, chk-1, err-BC-ERR-02021, err-BC-ERR-02022, chk-2. 442 words, 3.0 minutes (cap 450 and 3).
 - Refresher: ki-1, err-BC-ERR-02021, err-BC-ERR-02022, err-BC-ERR-02023, err-BC-ERR-02024, ex-1.
 
 ## Sources
@@ -106,7 +113,7 @@ No non-text mode applies [inferred; settled by the modality A/B].
 - research/scoring/notation-requirements.md#Simplification
 - research/scoring/common-point-losses.md#Answer points
 - research/exam/exam-structure.md#Section and part layout
-- [inferred] No non-text mode. Settled by the modality A/B.
+- [inferred] The ki-1 table as the drawn block, and no motion, interactive or model mode. Settled by the modality A/B.
 
 ## Machine record
 
@@ -122,6 +129,37 @@ No non-text mode applies [inferred; settled by the modality A/B].
   "BC-SKL-02041",
   "BC-SKL-02042"
  ],
+ "prediction": {
+  "id": "pr-1",
+  "stem": {
+   "text": "Predict before the rule. For \\(h(x)=\\frac{3x^2-2}{\\sin x}\\), the pieces have derivatives \\(6x\\) and \\(\\cos x\\). Which expression is \\(h'(x)\\)?",
+   "command_verb": "predict"
+  },
+  "format": "mcq",
+  "options": [
+   {
+    "id": "A",
+    "label": "\\(\\frac{6x}{\\cos x}\\), the two derivatives divided",
+    "is_key": false
+   },
+   {
+    "id": "B",
+    "label": "\\(\\frac{6x\\sin x-(3x^2-2)\\cos x}{\\sin^2x}\\)",
+    "is_key": true
+   },
+   {
+    "id": "C",
+    "label": "\\(\\frac{(3x^2-2)\\cos x-6x\\sin x}{\\sin^2x}\\)",
+    "is_key": false
+   }
+  ],
+  "resolution": "The quotient rule is \\(\\frac{vu'-uv'}{v^2}\\): the denominator times the numerator's derivative, minus the numerator times the denominator's derivative, over the denominator squared. The order of the subtraction matters.",
+  "sources": [
+   "BC-CON-02014",
+   "BC-EK-FUN-3B2",
+   "ced:68"
+  ]
+ },
  "orientation": {
   "text": "A response differentiates a quotient as the denominator times the numerator's derivative, minus the numerator times the denominator's derivative, over the denominator squared. Questions ask for it symbolically or from supplied values.",
   "sources": [
@@ -134,12 +172,9 @@ No non-text mode applies [inferred; settled by the modality A/B].
    "id": "ki-1",
    "ek_id": "BC-EK-FUN-3B2",
    "depth": "core",
-   "text": "For \\(\\frac{u}{v}\\) the derivative is \\(\\frac{vu'-uv'}{v^2}\\) (BC-EK-FUN-3B2, ced:68). Order matters: reversing the numerator terms flips the sign of the whole derivative. The denominator is squared. When the denominator carries no variable, the constant multiple rule is shorter.",
+   "text": "For \\(\\frac{u}{v}\\) the derivative is \\(\\frac{vu'-uv'}{v^2}\\). Order matters: reversing the numerator terms flips the sign of the whole derivative. The denominator is squared. When the denominator carries no variable, the constant multiple rule is shorter.",
    "notation": "quotient rule",
-   "quote": {
-    "text": "Derivatives of quotients of differentiable functions can be found using the quotient rule.",
-    "source": "ced:68"
-   },
+   "quote": null,
    "sources": [
     "BC-EK-FUN-3B2",
     "ced:68",
@@ -152,20 +187,31 @@ No non-text mode applies [inferred; settled by the modality A/B].
    "id": "st-1",
    "archetype_id": "BC-QA-02008",
    "cue": "The stem asks for the derivative of a quotient of two differentiable expressions.",
-   "method": "First written line: \\(u\\), \\(v\\), \\(u'\\), \\(v'\\), then \\(\\frac{vu'-uv'}{v^2}\\).",
-   "rival": "The rival is differentiating numerator and denominator separately (BC-ERR-02026).",
+   "method": "\\(u\\), \\(v\\), \\(u'\\), \\(v'\\), then \\(\\frac{vu'-uv'}{v^2}\\).",
+   "rival": "The rival is differentiating numerator and denominator separately.",
    "separating_feature": "A variable denominator: its derivative enters the numerator, subtracted second.",
    "sources": [
     "BC-QA-02008"
    ],
-   "evidence_tag": "verified"
+   "evidence_tag": "verified",
+   "contrast": {
+    "this": {
+     "text": "Let \\(k(x)=\\frac{x^3+4}{\\cos x}\\). Find \\(k'(x)\\).",
+     "archetype_id": "BC-QA-02008"
+    },
+    "not_this": {
+     "text": "Let \\(m(x)=\\frac{x^3+4}{5}\\). Find \\(m'(x)\\).",
+     "why_not": "The denominator is a constant, so the constant multiple rule applies, not the quotient rule."
+    },
+    "feature": "A variable in the denominator."
+   }
   },
   {
    "id": "st-2",
    "archetype_id": "BC-QA-02009",
    "cue": "The stem asks for the derivative value at a named input, from a table of two functions and their derivatives.",
-   "method": "First written line: the four values at the input, each labelled a value or a derivative.",
-   "rival": "The rival is placing a function value where the rule calls for a derivative value (BC-ERR-02024).",
+   "method": "The four values at the input, each labelled a value or a derivative.",
+   "rival": "The rival is placing a function value where the rule calls for a derivative value.",
    "separating_feature": "Each number is labelled before it is placed.",
    "sources": [
     "BC-QA-02009"
@@ -278,7 +324,8 @@ No non-text mode applies [inferred; settled by the modality A/B].
    "answer": {
     "form": "numeric",
     "expr": "1"
-   }
+   },
+   "fade_from": 3
   }
  ],
  "what_a_reader_scores": [
@@ -328,7 +375,8 @@ No non-text mode applies [inferred; settled by the modality A/B].
    "sources": [
     "BC-ERR-02021",
     "BC-MIS-02012"
-   ]
+   ],
+   "fix_prompt": true
   },
   {
    "error_id": "BC-ERR-02022",
@@ -350,7 +398,8 @@ No non-text mode applies [inferred; settled by the modality A/B].
    "sources": [
     "BC-ERR-02022",
     "BC-MIS-02012"
-   ]
+   ],
+   "fix_prompt": true
   },
   {
    "error_id": "BC-ERR-02023",
@@ -368,7 +417,8 @@ No non-text mode applies [inferred; settled by the modality A/B].
    "possible_reason": null,
    "sources": [
     "BC-ERR-02023"
-   ]
+   ],
+   "fix_prompt": false
   },
   {
    "error_id": "BC-ERR-02024",
@@ -390,7 +440,8 @@ No non-text mode applies [inferred; settled by the modality A/B].
    "sources": [
     "BC-ERR-02024",
     "BC-MIS-02011"
-   ]
+   ],
+   "fix_prompt": true
   }
  ],
  "representations": null,
@@ -609,13 +660,48 @@ No non-text mode applies [inferred; settled by the modality A/B].
   },
   {
    "block": "ki-1",
-   "mode": "text",
-   "reason": "rule 5: an algebraic rule, no figure-bearing BC-REP on BC-SKL-02039, 02040, 02042",
+   "mode": "table",
+   "reason": "rule 5: BC-REP-03 supplied values on BC-SKL-02041, laid beside the rule as numbers",
    "sources": [
-    "BC-SKL-02039",
-    "BC-SKL-02040",
-    "BC-SKL-02042"
-   ]
+    "BC-SKL-02041"
+   ],
+   "spec": {
+    "kind": "table",
+    "representations": [
+     "BC-REP-03"
+    ],
+    "columns": [
+     "quantity at x = 2",
+     "value"
+    ],
+    "rows": [
+     [
+      "f(2)",
+      6
+     ],
+     [
+      "f'(2)",
+      1
+     ],
+     [
+      "g(2)",
+      2
+     ],
+     [
+      "g'(2)",
+      3
+     ]
+    ],
+    "labels": [
+     {
+      "text": "(g(2)f'(2) - f(2)g'(2)) / g(2)^2 = -4, while f'(2)/g'(2) = 1/3",
+      "placement": "inside",
+      "at": "last line of the table frame"
+     }
+    ]
+   },
+   "fallback": "the same four rows as a text list, with the two quotients written after them",
+   "keyboard": "none needed; the table is read row by row in order by a screen reader"
   },
   {
    "block": "ex-1",
@@ -626,7 +712,7 @@ No non-text mode applies [inferred; settled by the modality A/B].
   {
    "block": "ex-2",
    "mode": "step_reveal",
-   "reason": "rule 1; the four supplied values render as a table inside the problem (BC-REP-03 on BC-SKL-02041)",
+   "reason": "rule 1; the four supplied values are written in the problem text",
    "sources": [
     "BC-SKL-02041"
    ]
@@ -665,12 +751,12 @@ No non-text mode applies [inferred; settled by the modality A/B].
   "ex-1"
  ],
  "read_minutes": {
-  "full": 4.4,
-  "brief": 2.5
+  "full": 4.9,
+  "brief": 3.0
  },
  "word_count": {
-  "full": 657,
-  "brief": 373
+  "full": 722,
+  "brief": 442
  },
  "research_lines": [
   {
@@ -680,7 +766,7 @@ No non-text mode applies [inferred; settled by the modality A/B].
  ],
  "inferred": [
   {
-   "claim": "No non-text delivery mode serves this concept better than text and step reveal.",
+   "claim": "The table on ki-1 serves the concept better than text alone, and no motion, interactive or model mode serves it better than that.",
    "settles": "The modality A/B in the build plan: skip rate and time to first credited success by mode."
   }
  ],

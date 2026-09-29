@@ -9,6 +9,10 @@ purpose: Authoring spec for the concept lesson on BC-CON-02010, the power rule, 
 
 Concept BC-CON-02010 (skills BC-SKL-02025, BC-SKL-02026, BC-SKL-02027), topic 2.5 of Unit 2, loaded by BC-QA-02006 (primary) and BC-QA-02002. The structure follows LSN-CON-02013.
 
+## Prediction
+
+Served first, both bands, on ex-1's function (source BC-CON-02010 and the topic's 2.5 section, research/units/unit-02-differentiation-definition-properties.md#2.5 Applying the Power Rule). Form `mcq`, three options, key: \(12x^2\) for the term \(4x^3\). The distractors are the two readings the traps record, the exponent lowered with no factor and the factor taken with no lowering. The resolution states the rule and applies it to the term, without a verdict word.
+
 ## Orientation
 
 Served text, from BC-CON-02010 `description_plain` and the topic's Assessment behaviour paragraph (research/units/unit-02-differentiation-definition-properties.md#2.5 Applying the Power Rule): the two moves of the rule, the rewriting that comes first, and the definition-derived case. No count, no frequency.
@@ -17,12 +21,14 @@ Served text, from BC-CON-02010 `description_plain` and the topic's Assessment be
 
 One BC-EK maps to the three skills, BC-EK-FUN-3A1 (ced:64), so one core block, both bands.
 
-- ki-1 (core). The rule \(rx^{r-1}\), the scope of the exponent (radicals and reciprocals rewritten), and the relation to the definition, paraphrased from the topic's Required mathematical knowledge paragraph. Anchor quote (18 words) from ced:64. Notation line from the concept record and topic: power rule; the exponent as a fraction or a negative number.
+- ki-1 (core). The rule \(rx^{r-1}\), the scope of the exponent (radicals and reciprocals rewritten), and the relation to the definition, paraphrased from the topic's Required mathematical knowledge paragraph. No anchor quote, to hold the brief cap. Notation line from the concept record and topic: power rule; the exponent as a fraction or a negative number.
 
 ## Recognition
 
 - BC-QA-02006 (family rule-manipulation, single MCQ, no calculator; research/question-analysis/question-archetypes.md#BC-QA-02006 Derivative of a polynomial or power expression by rule): `typical_wording` "Find the derivative of the given function."; `common_givens` an expression built from powers, radicals and reciprocals; `asked_to_produce` the derivative, and its value at a named input. The signal is a root sign or a variable in a denominator, with no product or quotient of two variable factors.
 - BC-QA-02002 (family derivative-definition-limit; research/question-analysis/question-archetypes.md#BC-QA-02002 Derivative computed from the limit definition): `typical_wording` "Use the definition of the derivative to find ..."; `common_givens` a function rule. The signal is the phrase use the definition. `official_examples`: BC-MCQ-SAMPLE-006.
+
+The contrast pair on st-1 takes its near miss from the sibling concepts named below: a product of two variable factors with sine, which calls for the product rule (BC-CON-02013) and BC-CON-02012. The `this` stem is a fresh draw on BC-QA-02006.
 
 What says "not this concept": a product or quotient of two variable factors (BC-CON-02013, 02014); sine, cosine, \(e^x\) or \(\ln x\) (BC-CON-02012), where the exponent move does not apply.
 
@@ -30,13 +36,13 @@ What says "not this concept": a product or quotient of two variable factors (BC-
 
 Two strategy blocks, low and mid bands, the first only in mid.
 
-- st-1, BC-QA-02006. Method, `expected_solution_path[0]`: rewrite radicals and reciprocals as powers. Rival: exponent lowered without the factor (BC-ERR-02015); the archetype records no `wrong_approaches` or `prohibited_shortcuts`, so the rival is [inferred] from the errors its skills carry and the block is tagged inferred. Separating feature: coefficient and exponent change together.
-- st-2, BC-QA-02002. Method, `expected_solution_path[0]`: write the difference quotient. Rival, `wrong_approaches`: the rule dressed as the definition (BC-ERR-02008). Separating feature: the word definition.
+- st-1, BC-QA-02006. Method, `expected_solution_path[0]`, written without a leading label: every radical and reciprocal rewritten as a power. The contrast pair rides on this block. Rival: exponent lowered without the factor (BC-ERR-02015); the archetype records no `wrong_approaches` or `prohibited_shortcuts`, so the rival is [inferred] from the errors its skills carry and the block is tagged inferred. Separating feature: coefficient and exponent change together.
+- st-2, BC-QA-02002. Method, `expected_solution_path[0]`, written without a leading label: the difference quotient for the given rule inside the limit. Rival, `wrong_approaches`: the rule dressed as the definition (BC-ERR-02008). Separating feature: the word definition.
 
 ## Solution path
 
 - ex-1, BC-QA-02006, both bands, no calculator. Draw: leading 4, degree 3, second radical, second coefficient 6, root index 2, constant \(-5\): \(f(x)=4x^3+6\sqrt{x}-5\). Steps: the given (valued), rewrite (equivalent), differentiate, return to radical form. A fluent solver writes the rewritten line, the derivative and the final form, and reads the given.
-- ex-2, BC-QA-02002, low band. Draw: leading 2, linear \(-3\), constant 1, point 1, degree 2: \(f(x)=2x^2-3x+1\), \(f'(1)=1\). Every line is written, because the definition's lines are the work asked for.
+- ex-2, BC-QA-02002, low band. Draw: leading 2, linear \(-3\), constant 1, point 1, degree 2: \(f(x)=2x^2-3x+1\), \(f'(1)=1\). Every line is written, because the definition's lines are the work asked for. Faded from step 3: steps 1 and 2 (the quotient and the simplified numerator) are shown, the student writes the limit, and steps 3 and 4 (dividing out the increment, then the limit) then reveal. The fade falls there because the two withheld lines are the ones the trap records (BC-ERR-02005) put at risk.
 
 No productive-failure opener targets this concept, so no comparison callout.
 
@@ -80,18 +86,18 @@ No draw equals a published BC-QA-02006 or BC-QA-02002 `parameter_draw`.
 - ex-1, ex-2: step_reveal. Rule 1.
 - err-BC-ERR-02005, err-BC-ERR-02008, err-BC-ERR-02015, err-BC-ERR-02017: step_reveal. Rule 1.
 
-No figure, motion, interactive or model mode applies [inferred; settled by the modality A/B].
+No figure, motion, interactive or model mode applies [inferred; settled by the modality A/B]. `no_figure_reason` states it: the skills carry BC-REP-01 only and no key idea describes a process.
 
 ## Band plan
 
-- Low (full): orientation, ki-1, st-1, st-2, ex-1, err-BC-ERR-02005, err-BC-ERR-02008, err-BC-ERR-02015, err-BC-ERR-02017, chk-1, chk-2, chk-3, ex-2, the bridge. 622 words, 4.2 minutes (cap 900 and 6).
-- Mid (brief): orientation, ki-1, st-1, ex-1, err-BC-ERR-02005, err-BC-ERR-02008, chk-1, chk-2, the bridge. 421 words, 2.9 minutes (cap 450 and 3).
+- Low (full): prediction, orientation, the bridge, ki-1, st-1 with the contrast pair, st-2, ex-1, chk-1, err-BC-ERR-02005, err-BC-ERR-02008, err-BC-ERR-02015, err-BC-ERR-02017, ex-2 faded from step 3, chk-2, chk-3. 621 words, 4.2 minutes (cap 900 and 6).
+- Mid (brief): prediction, orientation, the bridge, ki-1, st-1 with the contrast pair, ex-1, chk-1, err-BC-ERR-02005, err-BC-ERR-02008, chk-2. 427 words, 2.9 minutes (cap 450 and 3).
 - Refresher: ki-1, err-BC-ERR-02005, err-BC-ERR-02008, err-BC-ERR-02015, err-BC-ERR-02017, ex-1.
 
 ## Sources
 
 - BC-CON-02010; BC-SKL-02025, BC-SKL-02026, BC-SKL-02027; BC-EK-FUN-3A1; ced:64
-- BC-QA-02006, BC-QA-02002; BC-MCQ-SAMPLE-006
+- BC-QA-02006, BC-QA-02002; BC-MCQ-SAMPLE-006; BC-CON-02012, BC-CON-02013 (the contrast near miss)
 - BC-ERR-02005, BC-ERR-02008, BC-ERR-02015, BC-ERR-02017; BC-MIS-02002, BC-MIS-02009
 - BC-PRQ-06002
 - research/units/unit-02-differentiation-definition-properties.md#2.5 Applying the Power Rule
@@ -114,8 +120,39 @@ No figure, motion, interactive or model mode applies [inferred; settled by the m
   "BC-SKL-02026",
   "BC-SKL-02027"
  ],
+ "prediction": {
+  "id": "pr-1",
+  "stem": {
+   "text": "Predict before the rule: the term \\(4x^3\\) of \\(f(x)=4x^3+6\\sqrt{x}-5\\) has which derivative?",
+   "command_verb": "predict"
+  },
+  "format": "mcq",
+  "options": [
+   {
+    "id": "A",
+    "label": "\\(4x^2\\)",
+    "is_key": false
+   },
+   {
+    "id": "B",
+    "label": "\\(12x^2\\)",
+    "is_key": true
+   },
+   {
+    "id": "C",
+    "label": "\\(12x^3\\)",
+    "is_key": false
+   }
+  ],
+  "resolution": "The derivative of \\(x^r\\) is \\(rx^{r-1}\\): multiply by the exponent, then lower it by one. So \\(4x^3\\) gives \\(3\\cdot4x^2=12x^2\\).",
+  "sources": [
+   "BC-CON-02010",
+   "research/units/unit-02-differentiation-definition-properties.md#2.5 Applying the Power Rule"
+  ]
+ },
+ "no_figure_reason": "The power rule is symbolic and its skills carry BC-REP-01 only. No key idea describes a process or a graph, so no figure, table or motion fits.",
  "orientation": {
-  "text": "A response differentiates a power by multiplying by the exponent and lowering the exponent by one, after rewriting any radical or reciprocal as a power. Questions ask for the derivative of a power or of an expression that becomes one after rewriting, and some ask for a case derived from the definition.",
+  "text": "A response differentiates a power by multiplying by the exponent and lowering it by one, after rewriting any radical or reciprocal as a power. Some questions ask for a case derived from the definition.",
   "sources": [
    "BC-CON-02010",
    "research/units/unit-02-differentiation-definition-properties.md#2.5 Applying the Power Rule"
@@ -126,12 +163,9 @@ No figure, motion, interactive or model mode applies [inferred; settled by the m
    "id": "ki-1",
    "ek_id": "BC-EK-FUN-3A1",
    "depth": "core",
-   "text": "For \\(f(x)=x^r\\) the derivative is \\(rx^{r-1}\\) (BC-EK-FUN-3A1, ced:64). Two moves, never one: multiply by the old exponent, then lower it by one. The rule holds for a general real exponent, so a radical or a reciprocal is first rewritten as a power: \\(\\sqrt{x}=x^{1/2}\\), \\(\\frac{1}{x^2}=x^{-2}\\). For one specific exponent the rule also comes out of the difference quotient, by expanding and dividing out the increment.",
+   "text": "For \\(f(x)=x^r\\) the derivative is \\(rx^{r-1}\\): multiply by the old exponent, then lower it by one. A radical or a reciprocal is first rewritten as a power: \\(\\sqrt{x}=x^{1/2}\\), \\(\\frac{1}{x^2}=x^{-2}\\). For one specific exponent the rule also comes out of the difference quotient, by expanding and dividing out the increment.",
    "notation": "power rule; the exponent written as a fraction or a negative number",
-   "quote": {
-    "text": "Direct application of the definition of the derivative and specific rules can be used to calculate the derivative",
-    "source": "ced:64"
-   },
+   "quote": null,
    "sources": [
     "BC-EK-FUN-3A1",
     "ced:64",
@@ -144,21 +178,32 @@ No figure, motion, interactive or model mode applies [inferred; settled by the m
    "id": "st-1",
    "archetype_id": "BC-QA-02006",
    "cue": "The stem asks for the derivative of an expression built from powers, radicals and reciprocals.",
-   "method": "First written line: the expression with every radical and reciprocal rewritten as a power.",
-   "rival": "The rival is lowering the exponent without multiplying by it (BC-ERR-02015) [inferred: the archetype records no wrong approach].",
+   "method": "The expression with every radical and reciprocal rewritten as a power.",
+   "rival": "Lowering the exponent without multiplying by it.",
    "separating_feature": "Each term changes coefficient and exponent together.",
    "sources": [
     "BC-QA-02006",
     "BC-ERR-02015"
    ],
-   "evidence_tag": "inferred"
+   "evidence_tag": "inferred",
+   "contrast": {
+    "this": {
+     "text": "Find \\(g'(x)\\) for \\(g(x)=5x^4-\\frac{2}{\\sqrt{x}}+9\\).",
+     "archetype_id": "BC-QA-02006"
+    },
+    "not_this": {
+     "text": "Find \\(g'(x)\\) for \\(g(x)=x^2\\sin x\\).",
+     "why_not": "A product of two variable factors, one of them sine, calls for the product rule."
+    },
+    "feature": "Each term is one power of \\(x\\), not a product of variable factors."
+   }
   },
   {
    "id": "st-2",
    "archetype_id": "BC-QA-02002",
    "cue": "The stem says use the definition of the derivative, from a function rule.",
-   "method": "First written line: the difference quotient for the given rule inside the limit.",
-   "rival": "The rival is differentiating by the power rule and presenting it as the definition (BC-ERR-02008).",
+   "method": "The difference quotient for the given rule inside the limit.",
+   "rival": "Differentiating by the power rule and presenting it as the definition.",
    "separating_feature": "The word definition in the stem forbids the rule as the route.",
    "sources": [
     "BC-QA-02002"
@@ -226,6 +271,7 @@ No figure, motion, interactive or model mode applies [inferred; settled by the m
    "bands": [
     "low"
    ],
+   "fade_from": 3,
    "parameter_draw": {
     "leading": "2",
     "linear": "-3",
@@ -287,6 +333,7 @@ No figure, motion, interactive or model mode applies [inferred; settled by the m
     "expr": "1"
    },
    "relation": "distinct",
+   "fix_prompt": true,
    "possible_reason": {
     "misconception_id": "BC-MIS-02002",
     "text": "the increment is set to zero immediately"
@@ -309,6 +356,7 @@ No figure, motion, interactive or model mode applies [inferred; settled by the m
     "expr": "1"
    },
    "relation": "equivalent",
+   "fix_prompt": false,
    "possible_reason": {
     "misconception_id": "BC-MIS-02002",
     "text": "the answer is produced by a rule and the definition is copied around it"
@@ -331,6 +379,7 @@ No figure, motion, interactive or model mode applies [inferred; settled by the m
     "expr": "12*x**2+3*x**(-1/2)"
    },
    "relation": "distinct",
+   "fix_prompt": true,
    "possible_reason": {
     "misconception_id": "BC-MIS-02009",
     "text": "the exponent decreasing but not the multiplication by the original exponent"
@@ -353,6 +402,7 @@ No figure, motion, interactive or model mode applies [inferred; settled by the m
     "expr": "12*x**2+3/sqrt(x)"
    },
    "relation": "distinct",
+   "fix_prompt": true,
    "possible_reason": {
     "misconception_id": "BC-MIS-02009",
     "text": "does not see constants and radicals as powers"
@@ -629,14 +679,8 @@ No figure, motion, interactive or model mode applies [inferred; settled by the m
   "err-BC-ERR-02017",
   "ex-1"
  ],
- "read_minutes": {
-  "full": 4.2,
-  "brief": 2.9
- },
- "word_count": {
-  "full": 622,
-  "brief": 421
- },
+ "read_minutes": {"full": 4.2, "brief": 2.9},
+ "word_count": {"full": 621, "brief": 427},
  "research_lines": [
   {
    "file": "research/units/unit-02-differentiation-definition-properties.md",

@@ -3,20 +3,67 @@
  "version": 1,
  "kind": "concept",
  "target_id": "BC-CON-02009",
- "status": "signed_off",
+ "status": "draft",
  "snapshot_digest": "a6a8ec9d3f59ab8f712e33d30cc22fc64bf2c478fbe7312e3e3118d319c6a42f",
  "source_digest": "931c874dc380376b0626624fc26c011fb29d25d9f1912fa09edfe94f85286159",
  "read_minutes": {
-  "full": 4.2,
-  "brief": 2.94
+  "full": 4.3,
+  "brief": 3.0
  },
  "word_count": {
-  "full": 495,
-  "brief": 365
+  "full": 521,
+  "brief": 394
  },
  "sections": [
   {
    "id": "LSN-CON-02009#s1",
+   "type": "prediction",
+   "bands": [
+    "low",
+    "mid"
+   ],
+   "skills": [
+    "BC-SKL-02021",
+    "BC-SKL-02022",
+    "BC-SKL-02023"
+   ],
+   "sources": [
+    "BC-CON-02009",
+    "research/units/unit-02-differentiation-definition-properties.md#2.4 Connecting Differentiability and Continuity: Determining When Derivatives Do and Do Not Exist"
+   ],
+   "evidence_tag": "inferred",
+   "stem": {
+    "text": "Predict before the rule: \\(f(x)=2(x-1)^{2/3}+3\\) is continuous at \\(x=1\\). Must \\(f'(1)\\) exist?",
+    "command_verb": "predict"
+   },
+   "format": "mcq",
+   "options": [
+    {
+     "id": "A",
+     "label": "Yes: continuity gives a derivative.",
+     "is_key": false
+    },
+    {
+     "id": "B",
+     "label": "Not necessarily: the one sided quotients decide.",
+     "is_key": true
+    },
+    {
+     "id": "C",
+     "label": "No: a continuous function has no derivative.",
+     "is_key": false
+    }
+   ],
+   "resolution": {
+    "text": "A continuous function may lack a derivative. At 1 the one sided quotients tend to \\(\\infty\\) and \\(-\\infty\\), so \\(f'(1)\\) does not exist."
+   },
+   "delivery": {
+    "mode": "text",
+    "reason": "rule 6"
+   }
+  },
+  {
+   "id": "LSN-CON-02009#s2",
    "type": "orientation",
    "bands": [
     "low",
@@ -32,7 +79,7 @@
     "research/units/unit-02-differentiation-definition-properties.md#2.4 Connecting Differentiability and Continuity: Determining When Derivatives Do and Do Not Exist"
    ],
    "evidence_tag": "inferred",
-   "text": "A response decides whether a derivative exists where the function is continuous, and names the reason from the one sided difference quotients: a corner, a cusp or a vertical tangent means no derivative. Continuity alone never settles it.",
+   "text": "A response decides whether a derivative exists at a point of continuity, naming the reason from the one sided quotients.",
    "delivery": {
     "mode": "figure",
     "reason": "rule 3: BC-REP-02 on BC-SKL-02021, 02022 and 02023; unit README delivery map; the orientation names three fixed shapes, nothing varies",
@@ -114,7 +161,7 @@
    }
   },
   {
-   "id": "LSN-CON-02009#s2",
+   "id": "LSN-CON-02009#s3",
    "type": "key_ideas",
    "bands": [
     "low",
@@ -130,15 +177,11 @@
     "ced:63",
     "research/units/unit-02-differentiation-definition-properties.md#2.4 Connecting Differentiability and Continuity: Determining When Derivatives Do and Do Not Exist"
    ],
-   "evidence_tag": "verified",
+   "evidence_tag": "inferred",
    "ek_id": "BC-EK-FUN-2A2",
    "depth": "core",
-   "text": "A continuous function can fail to be differentiable at a point of its domain (BC-EK-FUN-2A2, ced:63). At a corner, as for \\(|x|\\) at 0, the quotient has different limits from left and right. At a vertical tangent, as for the cube root at 0, the tangent has no slope. The verdict comes from the one sided quotients, not the look of the graph.",
+   "text": "A continuous function can fail to be differentiable at a point of its domain. At a corner, as for \\(|x|\\) at 0, the one sided quotients differ. At a vertical tangent, as for the cube root at 0, the tangent has no slope.",
    "notation": "corner; vertical tangent",
-   "quote": {
-    "text": "A continuous function may fail to be differentiable at a point in its domain.",
-    "source": "ced:63"
-   },
    "delivery": {
     "mode": "motion",
     "reason": "rule 2: the key idea describes a one sided limit being taken, left and right secants closing to two slopes; unit README delivery map",
@@ -209,7 +252,7 @@
    }
   },
   {
-   "id": "LSN-CON-02009#s3",
+   "id": "LSN-CON-02009#s4",
    "type": "strategy",
    "bands": [
     "low",
@@ -225,13 +268,24 @@
    ],
    "evidence_tag": "verified",
    "archetype_id": "BC-QA-02005",
-   "cue": "The stem names an input of continuity and asks whether the function is differentiable there, with a reason.",
-   "method": "First line: continuity at the input, then the two one sided quotients.",
-   "rival": "Rival: differentiability from continuity (BC-ERR-02012), or the look of the graph (BC-ERR-02013).",
-   "separating_feature": "Continuity is only the entry condition; the verdict needs both one sided limits of the quotient."
+   "cue": "The stem asks whether a function is differentiable at a named input.",
+   "method": "Continuity at the input, then the two one sided quotients.",
+   "rival": "Differentiability from continuity, or from the look of the graph.",
+   "separating_feature": "Continuity is the entry condition; the verdict needs both one sided limits.",
+   "contrast": {
+    "this": {
+     "text": "Let \\(f(x)=4(x+3)^{2/3}\\). Is \\(f\\) differentiable at \\(x=-3\\)? Give a reason.",
+     "archetype_id": "BC-QA-02005"
+    },
+    "not_this": {
+     "text": "\\(g\\) is differentiable at \\(x=3\\). Must \\(g\\) be continuous at \\(x=3\\)?",
+     "why_not": "Differentiability is given and continuity is the conclusion."
+    },
+    "feature": "The stem gives continuity and asks about the derivative, not the reverse."
+   }
   },
   {
-   "id": "LSN-CON-02009#s4",
+   "id": "LSN-CON-02009#s5",
    "type": "strategy",
    "bands": [
     "low",
@@ -247,12 +301,12 @@
    "evidence_tag": "verified",
    "archetype_id": "BC-QA-05014",
    "cue": "The stem asks for all critical points of a quotient with a fractional power or an absolute value.",
-   "method": "First written line: the derivative, then its zeros and the inputs where it fails to exist.",
+   "method": "The derivative, then its zeros and the inputs where it fails to exist.",
    "rival": "The rival is setting only the derivative equal to zero.",
    "separating_feature": "A fractional power or absolute value marks an input where the function is defined but has no derivative."
   },
   {
-   "id": "LSN-CON-02009#s5",
+   "id": "LSN-CON-02009#s6",
    "type": "worked_example",
    "bands": [
     "low",
@@ -390,6 +444,7 @@
     "expression": "PositiveInfinity"
    },
    "relation": "distinct",
+   "fix_prompt": true,
    "possible_reason": {
     "misconception_id": "BC-MIS-02006",
     "text": "continuity at a point is taken to supply a derivative there"
@@ -460,6 +515,7 @@
     ]
    },
    "relation": "distinct",
+   "fix_prompt": true,
    "possible_reason": {
     "misconception_id": "BC-MIS-02007",
     "text": "decides whether a derivative exists from how the curve looks"
@@ -497,6 +553,7 @@
     "expression": 1
    },
    "relation": "distinct",
+   "fix_prompt": true,
    "possible_reason": {
     "misconception_id": "BC-MIS-02007",
     "text": "a vertical tangent is read as a slope"
@@ -522,7 +579,7 @@
    ],
    "evidence_tag": "inferred",
    "prerequisite_id": "BC-PRQ-02001",
-   "text": "One sided quotients rest on simplifying a difference quotient: evaluate at the shifted input, subtract, divide out the common factor. A quotient written but never reduced to a form where the increment can go to zero is the gap to close first."
+   "text": "One sided quotients rest on simplifying a difference quotient: evaluate at the shifted input, subtract, divide out the common factor."
   }
  ],
  "checks": [
@@ -541,7 +598,7 @@
     "point": "1",
     "shift": "3"
    },
-   "completes": "LSN-CON-02009#s5",
+   "completes": "LSN-CON-02009#s6",
    "stem": {
     "text": "The quotients at 1 tend to \\(\\infty\\) (right) and \\(-\\infty\\) (left). State the verdict and reason.",
     "command_verb": "state"
@@ -770,18 +827,18 @@
   }
  ],
  "refresher": [
-  "LSN-CON-02009#s2",
+  "LSN-CON-02009#s3",
   "LSN-CON-02009#err-BC-ERR-02012",
   "LSN-CON-02009#err-BC-ERR-02013",
   "LSN-CON-02009#err-BC-ERR-03012",
-  "LSN-CON-02009#s5"
+  "LSN-CON-02009#s6"
  ],
  "provenance": {
   "author": "tools/lesson_transcribe.py",
-  "prompt_version": "generator/lesson_v1",
+  "prompt_version": "generator/lesson_v2",
   "design_path": "docs/lessons/unit-02/LSN-CON-02009.md",
-  "signed_off_by": "claude-opus-5-5",
-  "signed_off_at": "2026-09-29",
+  "signed_off_by": null,
+  "signed_off_at": null,
   "not_human": true
  }
 }

@@ -9,26 +9,32 @@ purpose: Authoring spec for the concept lesson on BC-CON-02001, the average rate
 
 Concept BC-CON-02001 (skills BC-SKL-02001, BC-SKL-02002, BC-SKL-02003), topic 2.1 of Unit 2, loaded by BC-QA-02014 (listed first in the bundle) and BC-QA-04002. It is a root of the unit (docs/lessons/unit-02/README.md section 1), so no Unit 2 concept precedes it.
 
+## Prediction
+
+One multiple choice question on worked example 1's own numbers, asked before the rule is shown: the runner covered 31 meters by minute 3 and 52 meters by minute 8, and the student picks the expression that gives the average rate over \(3\le t\le 8\). The key is the quotient, whose value is ex-1's answer; the distractors are the bare difference (BC-ERR-02001) and the mean of the two readings. The resolution, shown on the key idea screen beside the student's choice, states the quotient and its value with units. No verdict word. Sources: BC-CON-02001 and the topic 2.1 section the key idea cites.
+
 ## Orientation
 
-Served text (44 words), from BC-CON-02001 `description_plain` and the topic's Assessment behaviour paragraph (research/units/unit-02-differentiation-definition-properties.md#2.1 Defining Average and Instantaneous Rates of Change at a Point): a response shows the change in the output divided by the change in the input, uses the two values the interval names, and carries the compound units of a rate; a difference alone is not a rate (sg-25:11, sg-24:2). No count, no frequency.
+Served text (26 words), from BC-CON-02001 `description_plain` and the topic's Assessment behaviour paragraph (research/units/unit-02-differentiation-definition-properties.md#2.1 Defining Average and Instantaneous Rates of Change at a Point): a response shows the change in the output divided by the change in the input, uses the two values the interval names, and carries the compound units of a rate; a difference alone is not a rate (sg-25:11, sg-24:2). No count, no frequency.
 
 ## Key ideas
 
 The three skills all map BC-EK-CHA-2A1 (ced:60), so one core block, both bands.
 
-- ki-1 (core). The two difference quotients, paraphrased from the topic's Required mathematical knowledge paragraph, and the units rule from topic 2.3's Units paragraph (research/units/unit-02-differentiation-definition-properties.md#2.3 Estimating Derivatives of a Function at a Point): both quotients divide a change in output by the matching change in input; from a table the interval names the two rows. Anchor quote (12 words) from ced:60. Notation line from the concept record: difference quotient.
+- ki-1 (core). The two difference quotients, paraphrased from the topic's Required mathematical knowledge paragraph, and the units rule from topic 2.3's Units paragraph (research/units/unit-02-differentiation-definition-properties.md#2.3 Estimating Derivatives of a Function at a Point): both quotients divide a change in output by the matching change in input; from a table the interval names the two rows. No anchor quote (the ced:60 wording is the citation in `sources`). Notation line from the concept record: difference quotient.
 
 ## Recognition
 
 - BC-QA-04002 (family derivative-from-table; research/question-analysis/question-archetypes.md#BC-QA-04002 Approximating a derivative from a table with units): `typical_wording` "approximate the derivative at the stated input using the average rate of change over the named interval; show the work and indicate units of measure"; `common_givens` a table of values of a contextual quantity and the interval; `asked_to_produce` a difference and a quotient, and units of measure. The signal is a named interval with two endpoints in a table. It is the opening part of table based FRQs: BC-FRQ-2021-Q1-A, BC-FRQ-2022-Q4-A, BC-FRQ-2024-Q1-A, BC-FRQ-2025-Q3-A, BC-FRQ-2026-Q1-A (`official_examples`).
 - BC-QA-02014 (family derivative-definition-limit; research/question-analysis/question-archetypes.md#BC-QA-02014 Rate at an instant found before the derivative is defined, as a limit of average rates): `typical_wording` "at what rate is the quantity changing at the instant t equal to a named time". Its first written line is an average rate over a short interval starting at the instant, which is this concept's quotient; the question itself belongs to BC-CON-02002.
 
+Contrast pair on st-1: this stem gives two tabulated values and a named interval and asks for an approximation with units; not this stem is the BC-QA-02014 shape, a polynomial model and one named instant, which is the rate at an instant and belongs to BC-CON-02002 (the rival archetype, and the `wrong_approaches` entry of averaging over the whole interval from the start). The separating feature is two named endpoints against one named instant.
+
 What says "not this concept": a single instant with no interval asks for the rate at a point (BC-CON-02002); an interval that must be chosen to bracket a point asks for a derivative estimate (BC-CON-02007, the LSN-DEC-02-01 selector in the unit README section 3).
 
 ## Method choice
 
-- st-1, BC-QA-04002. Cue from `asked_to_produce` and `common_givens`: a table, a named interval, and an approximation with work and units. Method, `expected_solution_path[0]`: select the two tabulated values the named interval determines. First written line: those two values over the difference of their inputs. Rival, `wrong_approaches`: the difference without the division (BC-ERR-02001). Separating feature: a rate carries a per in its units, so a quotient is on the page.
+- st-1, BC-QA-04002. Cue from `asked_to_produce` and `common_givens`: a table, a named interval, and an approximation with work and units. Method, `expected_solution_path[0]`: select the two tabulated values the named interval determines. First written line: those two values over the difference of their inputs. Rival, `wrong_approaches`: the difference without the division (BC-ERR-02001). Separating feature: a rate carries a per in its units, so a quotient is on the page. The `method` text carries no leading label.
 - st-2, BC-QA-02014. Cue: the rate at one named instant, from a polynomial model. Method, `expected_solution_path[0]`: write the average rate over a short interval starting at the instant. Rival, `wrong_approaches`: averaging over the whole interval from the start. Separating feature: one instant is named, not two endpoints.
 
 Both archetypes carry `asked_to_produce` and `common_givens`, so neither block is tagged inferred.
@@ -37,7 +43,7 @@ Both archetypes carry `asked_to_produce` and `common_givens`, so neither block i
 
 - ex-1, BC-QA-04002, both bands, no calculator. Draw: times 1, 3, 6, 8, 11; readings 20, 31, 43, 52, 70; context runner; trend increasing, giving \(D(3)=31\), \(D(8)=52\) on the named interval \(3\le t\le 8\) and the point \(t=6\) inside it. Steps follow `expected_solution_path`: select the two values (no value), form the difference over the difference (valued), divide (valued), attach the units (no value). No step carries a point tag (Scoring). A fluent solver writes the quotient line, the value and the units, and holds the row selection in the head. The context's units (meters, minutes) come from the generation template for this archetype, not from `parameter_spec` [inferred].
 
-BC-QA-02014 is listed first in the bundle, but its answer is a rate at an instant, which is BC-CON-02002's idea; ex-1 is drawn from BC-QA-04002, whose answer is this concept's average rate [inferred]. One example only. No productive-failure opener targets this concept (BC-CON-02002 is the unit's target), so no comparison callout.
+BC-QA-02014 is listed first in the bundle, but its answer is a rate at an instant, which is BC-CON-02002's idea; ex-1 is drawn from BC-QA-04002, whose answer is this concept's average rate [inferred]. One example only, so nothing is faded. No productive-failure opener targets this concept (BC-CON-02002 is the unit's target), so no comparison callout.
 
 ## Scoring
 
@@ -60,8 +66,8 @@ None as a separate block. The topic's Representations paragraph names one figure
 
 Two BC-PRQ parents, both `supporting` on BC-SKL-02001, from `description_plain` and `failure_signature`:
 
-- BC-PRQ-02005: \(f(a+h)\) is one value of \(f\), at the shifted input; \(a\) is the base point and \(h\) the increment.
-- BC-PRQ-02001: the quotient in increment form needs the shifted value expanded, subtracted and the common factor divided out before \(h\) can be set to zero.
+- BC-PRQ-02005: \(f(a+h)\) is one value of \(f\), at the shifted input.
+- BC-PRQ-02001: expand the shifted value and divide out \(h\) before setting \(h\) to zero.
 
 ## Time
 
@@ -82,12 +88,12 @@ No example or check draw equals a published BC-QA-04002 `parameter_draw` (conten
 - ex-1: step_reveal. Rule 1.
 - err-BC-ERR-02001, err-BC-ERR-02003: step_reveal. Rule 1.
 
-The table choice is [inferred], settled by the modality A/B in the build plan.
+The table choice is [inferred], settled by the modality A/B in the build plan. The lesson already carries a drawn block (the table on ki-1), so it states no `no_figure_reason`. The prediction is delivered as text.
 
 ## Band plan
 
-- Low (full): orientation, ki-1, st-1, st-2, ex-1, err-02001, err-02003, chk-1, chk-2, chk-3, the two bridges (counted in both bands, served when state gates them in). 512 words, 3.5 minutes (cap 900 and 6).
-- Mid (brief): orientation, ki-1, st-1, ex-1, err-02001, err-02003, chk-1, chk-2, the bridges. 422 words, 2.9 minutes (cap 450 and 3).
+- Low (full), in served order: prediction, orientation, the two bridges (counted in both bands, served when state gates them in), ki-1, st-1 with its contrast pair, st-2, ex-1, chk-1, err-02001, err-02003, chk-2, chk-3. 535 words, 3.6 minutes (cap 900 and 6). Example 2 does not exist, so nothing is faded.
+- Mid (brief): prediction, orientation, the bridges, ki-1, st-1 with its contrast pair, ex-1, chk-1, err-02001, err-02003, chk-2. 448 words, 3.0 minutes (cap 450 and 3).
 - Refresher: ki-1, err-BC-ERR-02001, err-BC-ERR-02003, ex-1.
 
 ## Sources
@@ -119,8 +125,20 @@ The table choice is [inferred], settled by the modality A/B in the build plan.
  "target_id": "BC-CON-02001",
  "unit": "02",
  "skills": ["BC-SKL-02001", "BC-SKL-02002", "BC-SKL-02003"],
+ "prediction": {
+  "id": "pr-1",
+  "stem": {"text": "Predict. \\(D(3)=31\\) and \\(D(8)=52\\) meters. Which gives the average rate over \\(3\\le t\\le 8\\)?", "command_verb": "predict"},
+  "format": "mcq",
+  "options": [
+   {"id": "A", "label": "\\(52-31\\)", "is_key": false},
+   {"id": "B", "label": "\\(\\frac{52-31}{8-3}\\)", "is_key": true},
+   {"id": "C", "label": "\\(\\frac{52+31}{2}\\)", "is_key": false}
+  ],
+  "resolution": "The average rate is the change in output divided by the change in input: \\(\\frac{21}{5}\\) meters per minute.",
+  "sources": ["BC-CON-02001", "research/units/unit-02-differentiation-definition-properties.md#2.1 Defining Average and Instantaneous Rates of Change at a Point"]
+ },
  "orientation": {
-  "text": "A response shows an average rate as a quotient: the change in output over the named interval divided by the change in input, with the compound units of a rate. A difference alone is not a rate. Stems supply a table or a formula.",
+  "text": "A response shows an average rate as a quotient with compound units: the change in output divided by the change in input over the named interval.",
   "sources": ["BC-CON-02001", "research/units/unit-02-differentiation-definition-properties.md#2.1 Defining Average and Instantaneous Rates of Change at a Point", "sg-25:11"]
  },
  "key_ideas": [
@@ -128,9 +146,9 @@ The table choice is [inferred], settled by the modality A/B in the build plan.
    "id": "ki-1",
    "ek_id": "BC-EK-CHA-2A1",
    "depth": "core",
-   "text": "The average rate of \\(f\\) over an interval is \\(\\frac{f(a+h)-f(a)}{h}\\) or \\(\\frac{f(x)-f(a)}{x-a}\\) (BC-EK-CHA-2A1, ced:60): a change in output over the matching change in input. From a table, the interval names two rows: values on top, inputs below. Units: output units per input unit.",
+   "text": "The average rate of \\(f\\) over an interval is \\(\\frac{f(a+h)-f(a)}{h}\\) or \\(\\frac{f(x)-f(a)}{x-a}\\) : a change in output over the matching change in input. From a table, the interval names two rows. Units: output per input.",
    "notation": "difference quotient",
-   "quote": {"text": "express the average rate of change of a function over an interval", "source": "ced:60"},
+   "quote": null,
    "sources": ["BC-EK-CHA-2A1", "ced:60", "research/units/unit-02-differentiation-definition-properties.md#2.1 Defining Average and Instantaneous Rates of Change at a Point", "research/units/unit-02-differentiation-definition-properties.md#2.3 Estimating Derivatives of a Function at a Point"]
   }
  ],
@@ -138,18 +156,23 @@ The table choice is [inferred], settled by the modality A/B in the build plan.
   {
    "id": "st-1",
    "archetype_id": "BC-QA-04002",
-   "cue": "A table and a named interval; the stem asks for an approximation with work and units.",
-   "method": "First line: the two named values, differenced, over the difference of their inputs.",
-   "rival": "Rival: the difference without the division (BC-ERR-02001).",
+   "cue": "A table, a named interval, an approximation with units.",
+   "method": "The two named values, differenced, over the difference of their inputs.",
+   "rival": "The difference without the division.",
    "separating_feature": "A rate has a per in its units, so a quotient appears.",
-   "sources": ["BC-QA-04002"],
+   "contrast": {
+    "this": {"text": "A table gives \\(V(4)=20\\) and \\(V(10)=31\\) gallons. Using the average rate over \\(4\\le t\\le 10\\), approximate \\(V'(6)\\) with units.", "archetype_id": "BC-QA-04002"},
+    "not_this": {"text": "\\(V(t)=t^2+2t\\) gallons. At what rate is the volume changing at \\(t=6\\)?", "why_not": "One instant and no interval asks for the limit of average rates."},
+    "feature": "Two named endpoints against one named instant."
+   },
+   "sources": ["BC-QA-04002", "BC-ERR-02001"],
    "evidence_tag": "verified"
   },
   {
    "id": "st-2",
    "archetype_id": "BC-QA-02014",
    "cue": "A polynomial model and one named instant; the stem asks for the rate at that instant.",
-   "method": "First written line: the average rate over a short interval starting at the instant, \\(\\frac{f(t_0+h)-f(t_0)}{h}\\).",
+   "method": "The average rate over a short interval starting at the instant, \\(\\frac{f(t_0+h)-f(t_0)}{h}\\).",
    "rival": "The rival averages over the whole interval from the start.",
    "separating_feature": "One instant is named, not two endpoints.",
    "sources": ["BC-QA-02014"],
@@ -167,8 +190,8 @@ The table choice is [inferred], settled by the modality A/B in the build plan.
    "steps": [
     {"cue": "The stem names \\(3\\le t\\le 8\\): read rows 3 and 8.", "why": "\\(D(3)=31\\), \\(D(8)=52\\); the row at 6 is the point, not an endpoint."},
     {"cue": "A rate is asked: difference of values over difference of inputs.", "why": "The answer point needs both on the page.", "expr": "(52 - 31)/(8 - 3)", "relation": "new"},
-    {"cue": "The stem asks for a value; no calculator.", "why": "The exact fraction stands.", "expr": "21/5", "relation": "equivalent"},
-    {"cue": "The stem says units.", "why": "Meters over minutes: meters per minute, scored separately."}
+    {"cue": "A value is asked; no calculator.", "why": "The exact fraction stands.", "expr": "21/5", "relation": "equivalent"},
+    {"cue": "Units are asked.", "why": "Meters over minutes: meters per minute, scored separately."}
    ],
    "answer": {"form": "numeric", "expr": "21/5"}
   }
@@ -184,6 +207,7 @@ The table choice is [inferred], settled by the modality A/B in the build plan.
    "wrong_step": {"text": "\\(52-31=21\\).", "expr": "52 - 31"},
    "right_step": {"text": "\\(\\frac{52-31}{8-3}=\\frac{21}{5}\\).", "expr": "(52 - 31)/(8 - 3)"},
    "relation": "distinct",
+   "fix_prompt": true,
    "possible_reason": {"misconception_id": "BC-MIS-02001", "text": "the division by the change in the input is omitted"},
    "sources": ["BC-ERR-02001", "BC-MIS-02001"]
   },
@@ -194,14 +218,15 @@ The table choice is [inferred], settled by the modality A/B in the build plan.
    "wrong_step": {"text": "\\(\\frac{21}{5}\\) meters.", "expr": "21/5"},
    "right_step": {"text": "\\(\\frac{21}{5}\\) meters per minute.", "expr": "(52 - 31)/(8 - 3)"},
    "relation": "equivalent",
+   "fix_prompt": false,
    "possible_reason": {"misconception_id": "BC-MIS-02008", "text": "copies them from the table header"},
    "sources": ["BC-ERR-02003", "BC-MIS-02008"]
   }
  ],
  "representations": null,
  "prerequisite_bridges": [
-  {"prq_id": "BC-PRQ-02005", "text": "\\(f(a+h)\\) is one value of \\(f\\): base point \\(a\\), increment \\(h\\)."},
-  {"prq_id": "BC-PRQ-02001", "text": "The shifted value is expanded, subtracted, and the common factor divided out before \\(h\\) is set to zero."}
+  {"prq_id": "BC-PRQ-02005", "text": "\\(f(a+h)\\) is one value of \\(f\\), at the shifted input."},
+  {"prq_id": "BC-PRQ-02001", "text": "Expand the shifted value and divide out \\(h\\) before setting \\(h\\) to zero."}
  ],
  "time": {"exam_part": "I-A", "budget_minutes": 2.14, "source": "research/exam/exam-structure.md#Section and part layout", "written_steps": {"ex-1": [2, 3, 4]}, "skipped_steps": {"ex-1": [1]}},
  "checks": [
@@ -272,8 +297,8 @@ The table choice is [inferred], settled by the modality A/B in the build plan.
   {"block": "err-BC-ERR-02003", "mode": "step_reveal", "reason": "rule 1", "sources": []}
  ],
  "refresher": ["ki-1", "err-BC-ERR-02001", "err-BC-ERR-02003", "ex-1"],
- "read_minutes": {"full": 3.5, "brief": 2.9},
- "word_count": {"full": 512, "brief": 422},
+ "read_minutes": {"full": 3.6, "brief": 3.0},
+ "word_count": {"full": 535, "brief": 448},
  "research_lines": [
   {"file": "research/units/unit-02-differentiation-definition-properties.md", "line": "FRQ forms compute an average rate with supporting work and units"},
   {"file": "research/scoring/common-point-losses.md", "line": "Units are scored separately from the value"}

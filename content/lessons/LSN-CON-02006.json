@@ -3,20 +3,65 @@
  "version": 1,
  "kind": "concept",
  "target_id": "BC-CON-02006",
- "status": "signed_off",
+ "status": "draft",
  "snapshot_digest": "a6a8ec9d3f59ab8f712e33d30cc22fc64bf2c478fbe7312e3e3118d319c6a42f",
  "source_digest": "e1b13ac542c788275bf7b12814c2fa147a2615c50b451a731f6656f018619c03",
  "read_minutes": {
-  "full": 2.8,
-  "brief": 2.3
+  "full": 3.3,
+  "brief": 2.9
  },
  "word_count": {
-  "full": 354,
-  "brief": 304
+  "full": 435,
+  "brief": 385
  },
  "sections": [
   {
    "id": "LSN-CON-02006#s1",
+   "type": "prediction",
+   "bands": [
+    "low",
+    "mid"
+   ],
+   "skills": [
+    "BC-SKL-02035"
+   ],
+   "sources": [
+    "BC-CON-02006",
+    "research/units/unit-02-differentiation-definition-properties.md#2.7 Derivatives of cos x, sin x, e^x, and ln x"
+   ],
+   "evidence_tag": "inferred",
+   "stem": {
+    "text": "Predict before the rule: \\(\\lim_{h\\to0}\\frac{4\\sqrt{9+h}-12}{h}\\) gives \\(\\frac{0}{0}\\) at \\(h=0\\). What is the limit?",
+    "command_verb": "predict"
+   },
+   "format": "mcq",
+   "options": [
+    {
+     "id": "A",
+     "label": "It does not exist, because substitution gives \\(\\frac{0}{0}\\).",
+     "is_key": false
+    },
+    {
+     "id": "B",
+     "label": "The slope of \\(y=4\\sqrt{x}\\) at \\(x=9\\).",
+     "is_key": true
+    },
+    {
+     "id": "C",
+     "label": "The value 12, since \\(4\\sqrt{9}=12\\).",
+     "is_key": false
+    }
+   ],
+   "resolution": {
+    "text": "The numerator is \\(f(9+h)-f(9)\\) for \\(f(x)=4\\sqrt{x}\\), so the limit is \\(f'(9)=\\frac{2}{3}\\), a slope. A \\(\\frac{0}{0}\\) form of this shape has a value."
+   },
+   "delivery": {
+    "mode": "text",
+    "reason": "rule 6"
+   }
+  },
+  {
+   "id": "LSN-CON-02006#s2",
    "type": "orientation",
    "bands": [
     "low",
@@ -40,7 +85,7 @@
    }
   },
   {
-   "id": "LSN-CON-02006#s2",
+   "id": "LSN-CON-02006#s3",
    "type": "key_ideas",
    "bands": [
     "low",
@@ -58,7 +103,7 @@
    "evidence_tag": "verified",
    "ek_id": "BC-EK-LIM-3A1",
    "depth": "core",
-   "text": "If the numerator is a known function at a shifted input minus the same function at the base, over the shift, the limit is that function's derivative at the base (BC-EK-LIM-3A1, ced:66). Match \\(\\frac{f(a+h)-f(a)}{h}\\) or \\(\\frac{f(x)-f(a)}{x-a}\\), name \\(f\\) and \\(a\\), then use the rule (BC-EK-FUN-3A4): \\((\\sin x)'=\\cos x\\), \\((\\cos x)'=-\\sin x\\), \\((e^x)'=e^x\\), \\((\\ln x)'=\\frac{1}{x}\\).",
+   "text": "If the numerator is a known function at a shifted input minus the same function at the base, over the shift, the limit is that function's derivative at the base Match \\(\\frac{f(a+h)-f(a)}{h}\\) or \\(\\frac{f(x)-f(a)}{x-a}\\), name \\(f\\) and \\(a\\), then use the rule: \\((\\sin x)'=\\cos x\\), \\((\\cos x)'=-\\sin x\\), \\((e^x)'=e^x\\), \\((\\ln x)'=\\frac{1}{x}\\).",
    "quote": {
     "text": "recognizing an expression for the definition of the derivative of a function whose derivative is known offers a strategy for determining a limit",
     "source": "ced:66"
@@ -72,7 +117,7 @@
    }
   },
   {
-   "id": "LSN-CON-02006#s3",
+   "id": "LSN-CON-02006#s4",
    "type": "strategy",
    "bands": [
     "low",
@@ -87,12 +132,23 @@
    "evidence_tag": "verified",
    "archetype_id": "BC-QA-02003",
    "cue": "A limit in difference quotient form; the stem asks for its value.",
-   "method": "First line: compare the numerator with a difference of values of a known function.",
-   "rival": "Rival: \\(\\frac{0}{0}\\) read as unresolvable, the limit reported as nonexistent (BC-ERR-02009).",
-   "separating_feature": "The constant in the numerator is the same function's value at the base."
+   "method": "Compare the numerator with a difference of values of a known function.",
+   "rival": "Rival: \\(\\frac{0}{0}\\) read as unresolvable, the limit reported as nonexistent.",
+   "separating_feature": "The constant in the numerator is the same function's value at the base.",
+   "contrast": {
+    "this": {
+     "text": "Find \\(\\lim_{h\\to0}\\frac{5e^{2+h}-5e^{2}}{h}\\).",
+     "archetype_id": "BC-QA-02003"
+    },
+    "not_this": {
+     "text": "Find \\(\\lim_{h\\to0}\\frac{h^2+5h}{h}\\).",
+     "why_not": "The numerator is not a difference of one function's values, so factoring and cancelling \\(h\\) resolves it."
+    },
+    "feature": "A numerator that subtracts the same function's value at the base point."
+   }
   },
   {
-   "id": "LSN-CON-02006#s4",
+   "id": "LSN-CON-02006#s5",
    "type": "worked_example",
    "bands": [
     "low",
@@ -215,6 +271,7 @@
     ]
    },
    "relation": "distinct",
+   "fix_prompt": true,
    "possible_reason": {
     "misconception_id": "BC-MIS-02004",
     "text": "a difference quotient whose underlying derivative is known is not recognised as such"
@@ -271,6 +328,7 @@
     ]
    },
    "relation": "distinct",
+   "fix_prompt": true,
    "delivery": {
     "mode": "step_reveal",
     "reason": "rule 1",
@@ -308,6 +366,7 @@
     ]
    },
    "relation": "distinct",
+   "fix_prompt": true,
    "possible_reason": {
     "misconception_id": "BC-MIS-02014",
     "text": "the height is used as a slope"
@@ -353,7 +412,7 @@
     "increment": "h",
     "shape": "increment"
    },
-   "completes": "LSN-CON-02006#s4",
+   "completes": "LSN-CON-02006#s5",
    "stem": {
     "text": "The limit is \\(f'(9)\\) for \\(f(x)=4\\sqrt{x}\\), and \\(f'(x)=\\frac{2}{\\sqrt{x}}\\). Find the limit.",
     "command_verb": "find"
@@ -573,18 +632,19 @@
   }
  ],
  "refresher": [
-  "LSN-CON-02006#s2",
+  "LSN-CON-02006#s3",
   "LSN-CON-02006#err-BC-ERR-02009",
   "LSN-CON-02006#err-BC-ERR-02010",
   "LSN-CON-02006#err-BC-ERR-02024",
-  "LSN-CON-02006#s4"
+  "LSN-CON-02006#s5"
  ],
+ "no_figure_reason": "The concept is a symbolic reading of a limit. Its one skill carries BC-REP-01 only and no key idea describes a process, so no figure, table or motion fits.",
  "provenance": {
   "author": "tools/lesson_transcribe.py",
-  "prompt_version": "generator/lesson_v1",
+  "prompt_version": "generator/lesson_v2",
   "design_path": "docs/lessons/unit-02/LSN-CON-02006.md",
-  "signed_off_by": "claude-opus-5-5",
-  "signed_off_at": "2026-09-29",
+  "signed_off_by": null,
+  "signed_off_at": null,
   "not_human": true
  }
 }

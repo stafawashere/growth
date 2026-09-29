@@ -9,6 +9,10 @@ purpose: Authoring spec for the concept lesson on BC-CON-02008, differentiabilit
 
 Concept BC-CON-02008 (skills BC-SKL-02019, BC-SKL-02020, BC-SKL-02024), topic 2.4 of Unit 2, loaded by BC-QA-02004 only. The structure follows LSN-CON-02013.
 
+## Prediction
+
+Served first, both bands, on ex-1's numbers (source BC-CON-02008 concept record and the topic's 2.4 section). Form `mcq`, three options, key: the limit equals \(-2\), the value of \(g\) at 2. The other options are the readings that treat differentiability as silent about the limit. The resolution states the implication and what it gives on this draw, without a verdict word.
+
 ## Orientation
 
 Served text (45 words), from BC-CON-02008 `description_plain` and the topic's Assessment behaviour paragraph (research/units/unit-02-differentiation-definition-properties.md#2.4 Connecting Differentiability and Continuity: Determining When Derivatives Do and Do Not Exist): continuity is written as derived from the stated differentiability, and the implication is used inside a larger argument to replace a limit by a value or to meet an existence theorem's hypothesis (sg-25:12, sg-23:14). No count, no frequency.
@@ -17,11 +21,13 @@ Served text (45 words), from BC-CON-02008 `description_plain` and the topic's As
 
 One BC-EK maps to the three skills, BC-EK-FUN-2A1 (ced:63), so one core block, both bands.
 
-- ki-1 (core). The implication, the domain remark, the one way direction and the contrapositive, paraphrased from the topic's Required mathematical knowledge paragraph (Implication, Contrapositive, Justification standard). Anchor quote (15 words) from ced:63. Notation line from the concept record: differentiable implies continuous.
+- ki-1 (core). The implication, the domain remark, the one way direction and the contrapositive, paraphrased from the topic's Required mathematical knowledge paragraph (Implication, Contrapositive, Justification standard). No anchor quote, to hold the brief cap. Notation line from the concept record: differentiable implies continuous.
 
 ## Recognition
 
 - BC-QA-02004 (family differentiability-and-continuity, one part of a free response question, no calculator; research/question-analysis/question-archetypes.md#BC-QA-02004 Continuity deduced from differentiability inside a larger argument): `typical_wording` "Justify the conclusion, stating any property of the function that your argument relies on"; `common_givens` a statement that the function is differentiable, function values at the ends of an interval, a limit of a quotient built from the function; `asked_to_produce` a statement that the function is continuous because it is differentiable, an answer justified from the theorem, a limit value after the continuity step. The signal is the word differentiable in the stem, before the parts, with a part that needs continuity. The archetype lists no `official_examples`; the topic names the 2025 and 2023 parts (sg-25:12, sg-23:14).
+
+The contrast pair on st-1 takes its near miss from the sibling concept BC-CON-02009 and the `wrong_approaches` entry behind BC-ERR-02012: a stem that gives continuity and asks about the derivative (BC-QA-02005). The `this` stem is a fresh draw on BC-QA-02004.
 
 What says "not this concept": the stem gives continuity and asks whether the derivative exists (BC-CON-02009, BC-QA-02005); the stem gives a piecewise rule and asks about a corner or cusp (BC-CON-02009).
 
@@ -29,12 +35,12 @@ What says "not this concept": the stem gives continuity and asks whether the der
 
 One strategy block, both bands.
 
-- st-1, BC-QA-02004. Cue from `asked_to_produce` and `common_givens`. Method, `expected_solution_path[0]`: read the differentiability statement from the stem; first written line: \(g\) is differentiable, so \(g\) is continuous. Rival, `wrong_approaches`: inferring differentiability from continuity (BC-ERR-02012) or applying the theorem without establishing continuity from differentiability (BC-ERR-99008). Separating feature: which property the stem supplies.
+- st-1, BC-QA-02004. Cue from `asked_to_produce` and `common_givens`. Method, `expected_solution_path[0]`, written without a leading label: read the differentiability statement from the stem and write that \(g\) is differentiable, so \(g\) is continuous. The contrast pair rides on this block. Rival, `wrong_approaches`: inferring differentiability from continuity (BC-ERR-02012) or applying the theorem without establishing continuity from differentiability (BC-ERR-99008). Separating feature: which property the stem supplies.
 
 ## Solution path
 
 - ex-1, BC-QA-02004, both bands, no calculator. Draw: inputs 0, 2, 5, 8; values \(-3, -2, 3, 7\); slopes 1, \(-3\), 2, 4; scale 3, offset 5, target 1, argument limit. Steps follow `expected_solution_path`: the continuity sentence (no value), the limit replaced by \(3g(2)+5\) (valued), the value \(-1\). A fluent solver writes all three; the continuity sentence is never skipped because it is the reason the limit step rests on.
-- ex-2, BC-QA-02004, low band, the same table with argument existence and target 1: continuity from differentiability, the target bracketed by \(g(0)\) and \(g(8)\) through a negative product, and the conclusion. The product line is held in the head; the bracketing inequality is written.
+- ex-2, BC-QA-02004, low band, the same table with argument existence and target 1: continuity from differentiability, the target bracketed by \(g(0)\) and \(g(8)\) through a negative product, and the conclusion. The product line is held in the head; the bracketing inequality is written. Faded from step 3: steps 1 and 2 are shown (the continuity sentence and the product setup, the one valued step), the student writes the answer, and steps 3 and 4 (the product's value and the conclusion) then reveal. The fade falls there because the setup is the only step that needs the theorem's condition named.
 
 No productive-failure opener targets this concept, so no comparison callout.
 
@@ -77,18 +83,18 @@ No draw equals a published BC-QA-02004 `parameter_draw` (content/items_gen_unit0
 - ex-1: step_reveal, the table of supplied values inside the problem (BC-REP-03 on BC-SKL-02020). Rule 1.
 - ex-2: step_reveal. Rule 1.
 - err-BC-ERR-02011, err-BC-ERR-02012, err-BC-ERR-99008: step_reveal. Rule 1.
-- representations: figure. Rule 3, BC-REP-02 on BC-SKL-02024; nothing varies, so no promotion. Static figure with both labels inside, fallback alt text, no control [inferred; settled by the modality A/B].
+- representations: figure. It is the drawn block, so no `no_figure_reason`. Rule 3, BC-REP-02 on BC-SKL-02024; nothing varies, so no promotion. Static figure with both labels inside, fallback alt text, no control [inferred; settled by the modality A/B].
 
 ## Band plan
 
-- Low (full): orientation, ki-1, st-1, ex-1, err-BC-ERR-02011, err-BC-ERR-02012, err-BC-ERR-99008, representations, chk-1, chk-2, chk-3, ex-2. 691 words, 4.7 minutes (cap 900 and 6).
-- Mid (brief): orientation, ki-1, st-1, ex-1, err-BC-ERR-02011, err-BC-ERR-02012, chk-1, chk-2. 446 words, 3.0 minutes (cap 450 and 3).
+- Low (full): prediction, orientation, ki-1, st-1 with the contrast pair, ex-1, chk-1, err-BC-ERR-02011, err-BC-ERR-02012, err-BC-ERR-99008, ex-2 faded from step 3, chk-2, representations, chk-3. 694 words, 4.7 minutes (cap 900 and 6).
+- Mid (brief): prediction, orientation, ki-1, st-1 with the contrast pair, ex-1, chk-1, err-BC-ERR-02011, err-BC-ERR-02012, chk-2. 449 words, 3.0 minutes (cap 450 and 3).
 - Refresher: ki-1, err-BC-ERR-02011, err-BC-ERR-02012, err-BC-ERR-99008, ex-1.
 
 ## Sources
 
 - BC-CON-02008; BC-SKL-02019, BC-SKL-02020, BC-SKL-02024; BC-EK-FUN-2A1; ced:63
-- BC-QA-02004
+- BC-QA-02004; BC-QA-02005 (the contrast near miss)
 - BC-ERR-02011, BC-ERR-02012, BC-ERR-99008; BC-MIS-02005, BC-MIS-02006, BC-MIS-99009
 - sg-25:12, sg-23:14
 - research/units/unit-02-differentiation-definition-properties.md#2.4 Connecting Differentiability and Continuity: Determining When Derivatives Do and Do Not Exist
@@ -110,8 +116,38 @@ No draw equals a published BC-QA-02004 `parameter_draw` (content/items_gen_unit0
   "BC-SKL-02020",
   "BC-SKL-02024"
  ],
+ "prediction": {
+  "id": "pr-1",
+  "stem": {
+   "text": "Predict before the rule: \\(g\\) is differentiable for all \\(x\\) and \\(g(2)=-2\\). What is true of \\(\\lim_{x\\to2}g(x)\\)?",
+   "command_verb": "predict"
+  },
+  "format": "mcq",
+  "options": [
+   {
+    "id": "A",
+    "label": "The limit equals \\(-2\\).",
+    "is_key": true
+   },
+   {
+    "id": "B",
+    "label": "The limit may differ from \\(-2\\).",
+    "is_key": false
+   },
+   {
+    "id": "C",
+    "label": "The limit need not exist.",
+    "is_key": false
+   }
+  ],
+  "resolution": "Differentiable at 2 means continuous at 2, so \\(\\lim_{x\\to2}g(x)=g(2)=-2\\).",
+  "sources": [
+   "BC-CON-02008",
+   "research/units/unit-02-differentiation-definition-properties.md#2.4 Connecting Differentiability and Continuity: Determining When Derivatives Do and Do Not Exist"
+  ]
+ },
  "orientation": {
-  "text": "A response writes continuity as derived from a stated differentiability: the function is continuous because it is differentiable. Questions ask which direction of the implication holds, or use it inside an argument to replace a limit by a value or to meet an existence theorem's continuity hypothesis.",
+  "text": "A response writes continuity as derived from a stated differentiability, then uses it to replace a limit by a value or meet a theorem's hypothesis.",
   "sources": [
    "BC-CON-02008",
    "research/units/unit-02-differentiation-definition-properties.md#2.4 Connecting Differentiability and Continuity: Determining When Derivatives Do and Do Not Exist"
@@ -122,12 +158,9 @@ No draw equals a published BC-QA-02004 `parameter_draw` (content/items_gen_unit0
    "id": "ki-1",
    "ek_id": "BC-EK-FUN-2A1",
    "depth": "core",
-   "text": "If a function is differentiable at a point, it is continuous there, and an input outside the domain of \\(f\\) is outside the domain of \\(f'\\) (BC-EK-FUN-2A1, ced:63). The implication runs one way. Its contrapositive: if a function is not continuous at a point, it is not differentiable there. Continuity alone supplies nothing about the derivative. In an argument the step carries its reason: \\(g\\) is continuous because it is differentiable.",
+   "text": "A function differentiable at a point is continuous there, and an input outside the domain of \\(f\\) is outside the domain of \\(f'\\). The implication runs one way. Contrapositive: not continuous at a point means not differentiable there. Continuity alone supplies nothing about the derivative.",
    "notation": "differentiable implies continuous",
-   "quote": {
-    "text": "If a function is differentiable at a point, then it is continuous at that point.",
-    "source": "ced:63"
-   },
+   "quote": null,
    "sources": [
     "BC-EK-FUN-2A1",
     "ced:63",
@@ -139,14 +172,25 @@ No draw equals a published BC-QA-02004 `parameter_draw` (content/items_gen_unit0
   {
    "id": "st-1",
    "archetype_id": "BC-QA-02004",
-   "cue": "The stem states that the function is differentiable and asks for a justified conclusion or a limit value.",
-   "method": "First written line: \\(g\\) is differentiable, so \\(g\\) is continuous.",
-   "rival": "The rival is reversing the implication (BC-ERR-02012), or applying the theorem without establishing continuity from differentiability (BC-ERR-99008).",
-   "separating_feature": "The stem supplies differentiability, so continuity is the conclusion drawn from it, never the premise.",
+   "cue": "The stem states differentiability and asks for a justified conclusion or a value.",
+   "method": "\\(g\\) is differentiable, so \\(g\\) is continuous.",
+   "rival": "Reversing the implication, or citing the theorem with no continuity established.",
+   "separating_feature": "The stem supplies differentiability, so continuity is the conclusion, never the premise.",
    "sources": [
     "BC-QA-02004"
    ],
-   "evidence_tag": "verified"
+   "evidence_tag": "verified",
+   "contrast": {
+    "this": {
+     "text": "Given \\(h\\) differentiable with \\(h(4)=7\\), find \\(\\lim_{x\\to4}(2h(x)-3)\\), justifying the step.",
+     "archetype_id": "BC-QA-02004"
+    },
+    "not_this": {
+     "text": "\\(f\\) is continuous at \\(x=2\\). Must \\(f\\) be differentiable there?",
+     "why_not": "The premise is continuity, and continuity supplies nothing about the derivative."
+    },
+    "feature": "Which property the stem supplies: differentiability gives continuity, not the reverse."
+   }
   }
  ],
  "worked_examples": [
@@ -215,6 +259,7 @@ No draw equals a published BC-QA-02004 `parameter_draw` (content/items_gen_unit0
    "bands": [
     "low"
    ],
+   "fade_from": 3,
    "parameter_draw": {
     "inputs": [
      "0",
@@ -288,6 +333,7 @@ No draw equals a published BC-QA-02004 `parameter_draw` (content/items_gen_unit0
     "expr": "-1"
    },
    "relation": "equivalent",
+   "fix_prompt": false,
    "possible_reason": {
     "misconception_id": "BC-MIS-02005",
     "text": "continuity is asserted rather than derived from the differentiability stated in the stem"
@@ -310,6 +356,7 @@ No draw equals a published BC-QA-02004 `parameter_draw` (content/items_gen_unit0
     "expr": "3*(-2)+5"
    },
    "relation": "equivalent",
+   "fix_prompt": false,
    "possible_reason": {
     "misconception_id": "BC-MIS-02006",
     "text": "the implication as running in both directions"
@@ -332,6 +379,7 @@ No draw equals a published BC-QA-02004 `parameter_draw` (content/items_gen_unit0
     "expr": "-24"
    },
    "relation": "equivalent",
+   "fix_prompt": false,
    "possible_reason": {
     "misconception_id": "BC-MIS-99009",
     "text": "continuity is asserted rather than derived from differentiability"
@@ -743,14 +791,8 @@ No draw equals a published BC-QA-02004 `parameter_draw` (content/items_gen_unit0
   "err-BC-ERR-99008",
   "ex-1"
  ],
- "read_minutes": {
-  "full": 4.7,
-  "brief": 3.0
- },
- "word_count": {
-  "full": 691,
-  "brief": 446
- },
+ "read_minutes": {"full": 4.7, "brief": 3.0},
+ "word_count": {"full": 694, "brief": 449},
  "research_lines": [
   {
    "file": "research/units/unit-02-differentiation-definition-properties.md",

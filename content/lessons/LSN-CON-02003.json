@@ -3,20 +3,66 @@
  "version": 1,
  "kind": "concept",
  "target_id": "BC-CON-02003",
- "status": "signed_off",
+ "status": "draft",
  "snapshot_digest": "a6a8ec9d3f59ab8f712e33d30cc22fc64bf2c478fbe7312e3e3118d319c6a42f",
  "source_digest": "3b4d7c7e737b0781614e88c8a4535c2b6990058977919e236d09e0edb5a8e5bb",
  "read_minutes": {
-  "full": 3.45,
-  "brief": 2.4
+  "full": 4.0,
+  "brief": 2.9
  },
  "word_count": {
-  "full": 458,
-  "brief": 310
+  "full": 530,
+  "brief": 383
  },
  "sections": [
   {
    "id": "LSN-CON-02003#s1",
+   "type": "prediction",
+   "bands": [
+    "low",
+    "mid"
+   ],
+   "skills": [
+    "BC-SKL-02008",
+    "BC-SKL-02009"
+   ],
+   "sources": [
+    "BC-CON-02003",
+    "research/units/unit-02-differentiation-definition-properties.md#2.2 Defining the Derivative of a Function and Using Derivative Notation"
+   ],
+   "evidence_tag": "inferred",
+   "stem": {
+    "text": "Predict. Let \\(f(x)=-x^2+5x+4\\) and let \\(h\\to0\\) in \\(\\frac{f(x+h)-f(x)}{h}\\), keeping \\(x\\) a letter. What is the limit?",
+    "command_verb": "predict"
+   },
+   "format": "mcq",
+   "options": [
+    {
+     "id": "A",
+     "label": "\\(-2x+5\\), a function of \\(x\\)",
+     "is_key": true
+    },
+    {
+     "id": "B",
+     "label": "\\(0\\), since the numerator vanishes",
+     "is_key": false
+    },
+    {
+     "id": "C",
+     "label": "\\(-2x-h+5\\), which still holds \\(h\\)",
+     "is_key": false
+    }
+   ],
+   "resolution": {
+    "text": "The limit is the derivative function, \\(f'(x)=-2x+5\\), a rule in \\(x\\). Its value at 3 is \\(-1\\)."
+   },
+   "delivery": {
+    "mode": "text",
+    "reason": "rule 6"
+   }
+  },
+  {
+   "id": "LSN-CON-02003#s2",
    "type": "orientation",
    "bands": [
     "low",
@@ -41,7 +87,7 @@
    }
   },
   {
-   "id": "LSN-CON-02003#s2",
+   "id": "LSN-CON-02003#s3",
    "type": "key_ideas",
    "bands": [
     "low",
@@ -59,7 +105,7 @@
    "evidence_tag": "verified",
    "ek_id": "BC-EK-CHA-2B2",
    "depth": "core",
-   "text": "The derivative of \\(f\\) is the function whose value at \\(x\\) is \\(\\lim_{h\\to0}\\frac{f(x+h)-f(x)}{h}\\), provided the limit exists (BC-EK-CHA-2B2, ced:61). The input stays a letter, so the result is a rule, \\(f'(x)\\). At \\(h=0\\) the quotient is \\(\\frac{0}{0}\\): expand \\(f(x+h)\\), subtract, divide out \\(h\\), then let \\(h\\to0\\).",
+   "text": "The derivative of \\(f\\) is the function whose value at \\(x\\) is \\(\\lim_{h\\to0}\\frac{f(x+h)-f(x)}{h}\\), provided the limit exists. The input stays a letter, so the result is a rule, \\(f'(x)\\). At \\(h=0\\) the quotient is \\(\\frac{0}{0}\\): expand \\(f(x+h)\\), subtract, divide out \\(h\\), then let \\(h\\to0\\).",
    "notation": "f prime of x",
    "quote": {
     "text": "The derivative of f is the function whose value",
@@ -74,7 +120,7 @@
    }
   },
   {
-   "id": "LSN-CON-02003#s3",
+   "id": "LSN-CON-02003#s4",
    "type": "key_ideas",
    "bands": [
     "low"
@@ -90,7 +136,7 @@
    "evidence_tag": "inferred",
    "ek_id": "BC-EK-CHA-2B1",
    "depth": "extended",
-   "text": "At one input the same limit gives a number: \\(f'(a)=\\lim_{h\\to0}\\frac{f(a+h)-f(a)}{h}\\), or \\(\\lim_{x\\to a}\\frac{f(x)-f(a)}{x-a}\\) (BC-EK-CHA-2B1). Substituting \\(a\\) into \\(f'(x)\\) gives the same number.",
+   "text": "At one input the same limit gives a number: \\(f'(a)=\\lim_{h\\to0}\\frac{f(a+h)-f(a)}{h}\\), or \\(\\lim_{x\\to a}\\frac{f(x)-f(a)}{x-a}\\). Substituting \\(a\\) into \\(f'(x)\\) gives the same number.",
    "notation": "f prime of a",
    "delivery": {
     "mode": "text",
@@ -101,7 +147,7 @@
    }
   },
   {
-   "id": "LSN-CON-02003#s4",
+   "id": "LSN-CON-02003#s5",
    "type": "strategy",
    "bands": [
     "low",
@@ -112,17 +158,29 @@
     "BC-SKL-02009"
    ],
    "sources": [
-    "BC-QA-02002"
+    "BC-QA-02002",
+    "BC-ERR-02008"
    ],
    "evidence_tag": "verified",
    "archetype_id": "BC-QA-02002",
    "cue": "A function rule; the stem says use the definition to find the derivative, or its value.",
-   "method": "First line: \\(\\lim_{h\\to0}\\frac{f(x+h)-f(x)}{h}\\) with the rule substituted.",
-   "rival": "Rival: the power rule's result with the definition copied around it (BC-ERR-02008).",
-   "separating_feature": "The word definition: the quotient and its simplification carry the work."
+   "method": "\\(\\lim_{h\\to0}\\frac{f(x+h)-f(x)}{h}\\) with the rule substituted.",
+   "rival": "The power rule's result with the definition copied around it.",
+   "separating_feature": "The word definition: the quotient and its simplification carry the work.",
+   "contrast": {
+    "this": {
+     "text": "Let \\(g(x)=x^2+3x\\). Use the definition of the derivative to find \\(g'(x)\\).",
+     "archetype_id": "BC-QA-02002"
+    },
+    "not_this": {
+     "text": "Let \\(g(x)=x^2+3x\\). Find \\(g'(x)\\).",
+     "why_not": "No definition is demanded, so a differentiation rule is allowed."
+    },
+    "feature": "The word definition in the stem."
+   }
   },
   {
-   "id": "LSN-CON-02003#s5",
+   "id": "LSN-CON-02003#s6",
    "type": "worked_example",
    "bands": [
     "low",
@@ -279,6 +337,7 @@
     ]
    },
    "relation": "distinct",
+   "fix_prompt": true,
    "possible_reason": {
     "misconception_id": "BC-MIS-02002",
     "text": "the increment is set to zero immediately"
@@ -338,6 +397,7 @@
     ]
    },
    "relation": "distinct",
+   "fix_prompt": true,
    "possible_reason": {
     "misconception_id": "BC-MIS-02003",
     "text": "intermediate lines assert equalities that are false before the limit is taken"
@@ -395,6 +455,7 @@
     ]
    },
    "relation": "distinct",
+   "fix_prompt": true,
    "delivery": {
     "mode": "step_reveal",
     "reason": "rule 1",
@@ -449,6 +510,7 @@
     ]
    },
    "relation": "distinct",
+   "fix_prompt": true,
    "possible_reason": {
     "misconception_id": "BC-MIS-02002",
     "text": "the answer is produced by a rule and the definition is copied around it"
@@ -511,7 +573,7 @@
     "point": 3,
     "degree": 2
    },
-   "completes": "LSN-CON-02003#s5",
+   "completes": "LSN-CON-02003#s6",
    "stem": {
     "text": "The definition gives \\(f'(x)=-2x+5\\). Find \\(f'(3)\\).",
     "command_verb": "find"
@@ -782,19 +844,20 @@
   }
  ],
  "refresher": [
-  "LSN-CON-02003#s2",
+  "LSN-CON-02003#s3",
   "LSN-CON-02003#err-BC-ERR-02005",
   "LSN-CON-02003#err-BC-ERR-02006",
   "LSN-CON-02003#err-BC-ERR-02007",
   "LSN-CON-02003#err-BC-ERR-02008",
-  "LSN-CON-02003#s5"
+  "LSN-CON-02003#s6"
  ],
+ "no_figure_reason": "The concept is the algebra of a difference quotient at a general input. Its skills carry only a symbolic representation and no key idea describes a process to draw, so no figure fits.",
  "provenance": {
   "author": "tools/lesson_transcribe.py",
-  "prompt_version": "generator/lesson_v1",
+  "prompt_version": "generator/lesson_v2",
   "design_path": "docs/lessons/unit-02/LSN-CON-02003.md",
-  "signed_off_by": "claude-opus-5-5",
-  "signed_off_at": "2026-09-29",
+  "signed_off_by": null,
+  "signed_off_at": null,
   "not_human": true
  }
 }

@@ -9,6 +9,10 @@ purpose: Authoring spec for the concept lesson on BC-CON-02002, the instantaneou
 
 Concept BC-CON-02002 (skills BC-SKL-02004, BC-SKL-02005, BC-SKL-02006, BC-SKL-02007), topics 2.1 and 2.2 of Unit 2, loaded by BC-QA-02002 (listed first), BC-QA-02014, BC-QA-02003 and BC-QA-02012. Its hard parent is BC-CON-02001 (unit README section 1). It is the unit's productive-failure target: BC-QA-02014 carries BC-DF-15 in its `dial_bindings`.
 
+## Prediction
+
+One multiple choice question on worked example 1's own function, \(f(x)=2x^2-3x+1\), asked before the rule is shown: the average rates over \([2,3]\), \([2,2.1]\) and \([2,2.01]\) are 7, 5.2 and 5.02 (arithmetic on the example's function), and the student picks the rate at the instant \(x=2\). The key is 5, ex-1's answer; the distractors are the longest-interval average and the quotient at zero increment, \(\frac00\). The resolution, shown on the key idea screen beside the student's choice, names the limit of the averages as the rate. No verdict word. Sources: BC-CON-02002 and the topic 2.1 section the key idea cites.
+
 ## Orientation
 
 Served text (50 words), from BC-CON-02002 `description_plain` and the Assessment behaviour paragraphs of topics 2.1 and 2.2 (research/units/unit-02-differentiation-definition-properties.md#2.1 Defining Average and Instantaneous Rates of Change at a Point; research/units/unit-02-differentiation-definition-properties.md#2.2 Defining the Derivative of a Function and Using Derivative Notation): a response writes the difference quotient at the point inside a limit, simplifies it with the limit kept, and evaluates. No count, no frequency.
@@ -26,6 +30,8 @@ All four skills map BC-EK-CHA-2B1 (ced:60), so one core block, both bands.
 - BC-QA-02003 (same family): a limit already in difference quotient form, which BC-CON-02006 teaches; this concept supplies the reading of the quotient.
 - BC-QA-02012 (family notation-translation; research/question-analysis/question-archetypes.md#BC-QA-02012 Derivative notation read or converted): a derivative in one notation, the same quantity asked in another; this concept supplies \(f'(a)\) as one number.
 
+Contrast pair on st-1: this stem is on BC-QA-02002, a function rule with the word definition and one named input; not this stem asks for the average rate over two named endpoints, the BC-CON-02001 shape, a quotient with no limit. The separating feature is one input inside a limit against two named endpoints.
+
 What says "not this concept": two endpoints named (an average, BC-CON-02001); the derivative asked as a function of \(x\) (BC-CON-02003); a rule named or no definition demanded (the rules, BC-CON-02010 onward).
 
 ## Method choice
@@ -35,12 +41,12 @@ One block per archetype family: derivative-definition-limit (BC-QA-02002 stands 
 - st-1, BC-QA-02002. Cue from `asked_to_produce` and `common_givens`. Method, `expected_solution_path[0]`: write the difference quotient for the given rule, here inside the limit at the named input. Rival, `wrong_approaches`: the power rule presented as the definition (BC-ERR-02008). Separating feature: the stem says definition.
 - st-2, BC-QA-02012. Method, `expected_solution_path[0]`: identify the function and the independent variable from the supplied notation. Rival, `wrong_approaches`: Leibniz notation separated and cancelled as a fraction (BC-ERR-02029). Separating feature: \(f'(a)\) names one number at one input.
 
-Both archetypes carry `asked_to_produce` and `common_givens`, so neither block is tagged inferred.
+Both archetypes carry `asked_to_produce` and `common_givens`, so neither block is tagged inferred. The `method` texts carry no leading label; the record ids of the rivals sit in each block's `sources`.
 
 ## Solution path
 
 - ex-1, BC-QA-02002, both bands, no calculator. Draw: leading 2, linear \(-3\), constant 1, point 2, degree 2, giving \(f(x)=2x^2-3x+1\) and \(f'(2)\). Valued chain as the template fixes it for a limit definition: the difference quotient (new), its simplified form \(2h+5\) (equivalent), the limit 5 (limit, \(h\to0\)).
-- ex-2, BC-QA-02014, low band only, no calculator. Draw: degree 2, leading 3, linear \(-4\), constant 6, instant 2, context position, giving \(s(t)=3t^2-4t+6\) and the rate at \(t=2\). Same chain: quotient over \([2,2+h]\), \(8+3h\), limit 8. This is the opener archetype's canonical path.
+- ex-2, BC-QA-02014, low band only, faded from step 2, no calculator. Draw: degree 2, leading 3, linear \(-4\), constant 6, instant 2, context position, giving \(s(t)=3t^2-4t+6\) and the rate at \(t=2\). Same chain: quotient over \([2,2+h]\), \(8+3h\), limit 8. This is the opener archetype's canonical path. Only step 1, the quotient over \([2,2+h]\), is shown: it carries the one decision the example teaches (one instant named, so average from the instant), and the student expands, divides out \(h\) and takes the limit to write the answer before steps 2 and 3 reveal.
 
 A fluent solver writes all three lines of each, and holds the expansion of the shifted term in the head when it is short (unit README section 5). Comparison gap for the productive-failure target: when the BC-QA-02014 opener preceded the lesson, ex-1 opens with a comparison callout naming the gap between the opener attempt and the canonical method, the average over the whole interval from the start against the limit of averages over \([t_0,t_0+h]\) (BC-QA-02014 `wrong_approaches`, BC-ERR-02033; docs/plan/15-lessons.md Within a concept, step 2).
 
@@ -84,12 +90,12 @@ No draw equals a published BC-QA-02002 or BC-QA-02014 `parameter_draw` (content/
 - err-BC-ERR-02006, err-BC-ERR-02030, err-BC-ERR-02033: step_reveal. Rule 1.
 - representations: model. The template's model row: the meaning is the behaviour of a computed sequence of values, and the concept is a productive-failure target (BC-DF-15 on BC-QA-02014).
 
-Every non-text choice is [inferred], settled by the modality A/B in the build plan.
+Every non-text choice is [inferred], settled by the modality A/B in the build plan. The lesson already carries drawn blocks (the motion and the model), so it states no `no_figure_reason`. The prediction is delivered as text.
 
 ## Band plan
 
-- Low (full): orientation, ki-1, st-1, st-2, ex-1, err-02006, err-02030, err-02033, chk-1, ex-2, chk-2, representations, chk-3, the bridge. 555 words, 3.8 minutes (cap 900 and 6).
-- Mid (brief): orientation, ki-1, st-1, ex-1, err-02006, err-02030, chk-1, chk-2, the bridge. 345 words, 2.4 minutes (cap 450 and 3).
+- Low (full), in served order: prediction, orientation, the bridge, ki-1, st-1 with its contrast pair, st-2, ex-1, chk-1, err-02006, err-02030, err-02033, ex-2 faded from step 2, chk-2, representations, chk-3. 648 words, 4.4 minutes (cap 900 and 6).
+- Mid (brief): prediction, orientation, the bridge, ki-1, st-1 with its contrast pair, ex-1, chk-1, err-02006, err-02030, chk-2. 442 words, 3.0 minutes (cap 450 and 3).
 - Refresher: ki-1, err-BC-ERR-02006, err-BC-ERR-02030, err-BC-ERR-02033, ex-1.
 
 ## Sources
@@ -118,6 +124,18 @@ Every non-text choice is [inferred], settled by the modality A/B in the build pl
  "target_id": "BC-CON-02002",
  "unit": "02",
  "skills": ["BC-SKL-02004", "BC-SKL-02005", "BC-SKL-02006", "BC-SKL-02007"],
+ "prediction": {
+  "id": "pr-1",
+  "stem": {"text": "Predict. The average rates of \\(f(x)=2x^2-3x+1\\) over \\([2,3]\\), \\([2,2.1]\\) and \\([2,2.01]\\) are 7, 5.2 and 5.02. What is the rate at the instant \\(x=2\\)?", "command_verb": "predict"},
+  "format": "mcq",
+  "options": [
+   {"id": "A", "label": "\\(7\\)", "is_key": false},
+   {"id": "B", "label": "\\(5\\)", "is_key": true},
+   {"id": "C", "label": "Undefined, since the quotient is \\(\\frac{0}{0}\\)", "is_key": false}
+  ],
+  "resolution": "The rate at an instant is the value the average rates approach as the interval shrinks to nothing: \\(f'(2)=5\\), since each average is \\(2h+5\\).",
+  "sources": ["BC-CON-02002", "research/units/unit-02-differentiation-definition-properties.md#2.1 Defining Average and Instantaneous Rates of Change at a Point"]
+ },
  "orientation": {
   "text": "A response shows the rate at one instant as the value the average rates approach as the interval shrinks to nothing: the difference quotient at the point, inside a limit, simplified with the limit kept, then evaluated. An average over a whole interval is not the rate at an instant.",
   "sources": ["BC-CON-02002", "research/units/unit-02-differentiation-definition-properties.md#2.1 Defining Average and Instantaneous Rates of Change at a Point", "research/units/unit-02-differentiation-definition-properties.md#2.2 Defining the Derivative of a Function and Using Derivative Notation"]
@@ -127,7 +145,7 @@ Every non-text choice is [inferred], settled by the modality A/B in the build pl
    "id": "ki-1",
    "ek_id": "BC-EK-CHA-2B1",
    "depth": "core",
-   "text": "The rate of change of \\(f\\) at \\(x=a\\) is \\(\\lim_{h\\to0}\\frac{f(a+h)-f(a)}{h}\\) or \\(\\lim_{x\\to a}\\frac{f(x)-f(a)}{x-a}\\), provided the limit exists (BC-EK-CHA-2B1, ced:60). Both name one number, \\(f'(a)\\). Each quotient is a secant slope; as \\(h\\) shrinks the secants close on the tangent. At \\(h=0\\) the quotient is \\(\\frac{0}{0}\\), so \\(h\\) is divided out before the limit is taken.",
+   "text": "The rate of change of \\(f\\) at \\(x=a\\) is \\(\\lim_{h\\to0}\\frac{f(a+h)-f(a)}{h}\\) or \\(\\lim_{x\\to a}\\frac{f(x)-f(a)}{x-a}\\), provided the limit exists. Both name one number, \\(f'(a)\\). Each quotient is a secant slope; as \\(h\\) shrinks the secants close on the tangent. At \\(h=0\\) the quotient is \\(\\frac{0}{0}\\), so \\(h\\) is divided out before the limit is taken.",
    "notation": "f prime of a",
    "quote": {"text": "These are equivalent forms of the definition of the derivative", "source": "ced:60"},
    "sources": ["BC-EK-CHA-2B1", "ced:60", "research/units/unit-02-differentiation-definition-properties.md#2.2 Defining the Derivative of a Function and Using Derivative Notation"]
@@ -138,20 +156,25 @@ Every non-text choice is [inferred], settled by the modality A/B in the build pl
    "id": "st-1",
    "archetype_id": "BC-QA-02002",
    "cue": "A function rule, and the stem says use the definition of the derivative.",
-   "method": "First line: the difference quotient for the rule at the named input, inside \\(\\lim_{h\\to0}\\).",
-   "rival": "Rival: the power rule presented as the definition (BC-ERR-02008).",
+   "method": "The difference quotient for the rule at the named input, inside \\(\\lim_{h\\to0}\\).",
+   "rival": "The power rule presented as the definition.",
    "separating_feature": "The word definition: the quotient must be on the page.",
-   "sources": ["BC-QA-02002"],
+   "contrast": {
+    "this": {"text": "Let \\(g(x)=x^2+5x\\). Use the definition of the derivative to find \\(g'(1)\\).", "archetype_id": "BC-QA-02002"},
+    "not_this": {"text": "Let \\(g(x)=x^2+5x\\). Find the average rate of change of \\(g\\) over \\(1\\le x\\le 3\\).", "why_not": "Two endpoints are named, so a quotient with no limit is asked."},
+    "feature": "One named input inside a limit against two named endpoints."
+   },
+   "sources": ["BC-QA-02002", "BC-ERR-02008"],
    "evidence_tag": "verified"
   },
   {
    "id": "st-2",
    "archetype_id": "BC-QA-02012",
    "cue": "A derivative written in one notation; the stem asks for the same quantity in another.",
-   "method": "First line: name the function and the independent variable the notation carries.",
-   "rival": "Rival: Leibniz notation split and cancelled as a fraction (BC-ERR-02029).",
+   "method": "Name the function and the independent variable the notation carries.",
+   "rival": "Leibniz notation split and cancelled as a fraction.",
    "separating_feature": "\\(f'(a)\\) names one number at one input.",
-   "sources": ["BC-QA-02012"],
+   "sources": ["BC-QA-02012", "BC-ERR-02029"],
    "evidence_tag": "verified"
   }
  ],
@@ -182,7 +205,8 @@ Every non-text choice is [inferred], settled by the modality A/B in the build pl
     {"cue": "At \\(h=0\\) this is \\(\\frac{0}{0}\\): expand and divide out \\(h\\).", "why": "The average over \\([2,2+h]\\) is \\(8+3h\\).", "expr": "3*h + 8", "relation": "equivalent"},
     {"cue": "The instant is the interval shrunk to zero length.", "why": "The averages approach 8, the rate at \\(t=2\\).", "expr": "8", "relation": "limit", "variable": "h", "point": "0"}
    ],
-   "answer": {"form": "numeric", "expr": "8"}
+   "answer": {"form": "numeric", "expr": "8"},
+   "fade_from": 2
   }
  ],
  "what_a_reader_scores": [],
@@ -194,6 +218,7 @@ Every non-text choice is [inferred], settled by the modality A/B in the build pl
    "wrong_step": {"text": "\\(f'(2)=\\frac{2h^2+5h}{h}=2h+5\\), with no limit written.", "expr": "2*h + 5"},
    "right_step": {"text": "\\(\\lim_{h\\to0}(2h+5)=5\\).", "expr": "5"},
    "relation": "distinct",
+   "fix_prompt": true,
    "possible_reason": {"misconception_id": "BC-MIS-02003", "text": "intermediate lines assert equalities that are false before the limit is taken"},
    "sources": ["BC-ERR-02006", "BC-MIS-02003"]
   },
@@ -204,6 +229,7 @@ Every non-text choice is [inferred], settled by the modality A/B in the build pl
    "wrong_step": {"text": "\\(4x-3\\), where \\(f'(2)\\) is asked.", "expr": "4*x - 3"},
    "right_step": {"text": "\\(f'(2)=5\\).", "expr": "5"},
    "relation": "distinct",
+   "fix_prompt": true,
    "possible_reason": {"misconception_id": "BC-MIS-02015", "text": "the derivative function is confused with its value"},
    "sources": ["BC-ERR-02030", "BC-MIS-02015"]
   },
@@ -214,6 +240,7 @@ Every non-text choice is [inferred], settled by the modality A/B in the build pl
    "wrong_step": {"text": "\\(\\frac{s(2)-s(0)}{2-0}=\\frac{10-6}{2}=2\\).", "expr": "(10 - 6)/(2 - 0)"},
    "right_step": {"text": "\\(\\lim_{h\\to0}(8+3h)=8\\).", "expr": "8"},
    "relation": "distinct",
+   "fix_prompt": true,
    "possible_reason": null,
    "sources": ["BC-ERR-02033"]
   }
@@ -311,8 +338,8 @@ Every non-text choice is [inferred], settled by the modality A/B in the build pl
    "keyboard": "a Run control reached by Tab and pressed with Enter or Space adds one row per press; the table is read in row order"}
  ],
  "refresher": ["ki-1", "err-BC-ERR-02006", "err-BC-ERR-02030", "err-BC-ERR-02033", "ex-1"],
- "read_minutes": {"full": 3.8, "brief": 2.4},
- "word_count": {"full": 555, "brief": 345},
+ "read_minutes": {"full": 4.4, "brief": 3.0},
+ "word_count": {"full": 648, "brief": 442},
  "research_lines": [
   {"file": "research/units/unit-02-differentiation-definition-properties.md", "line": "justification variants ask why a limit is needed for the rate at an instant"},
   {"file": "research/units/unit-02-differentiation-definition-properties.md", "line": "The difference quotient is indeterminate at zero increment, so the increment is divided out of the numerator before the limit is taken."}

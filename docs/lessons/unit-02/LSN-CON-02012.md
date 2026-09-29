@@ -9,19 +9,25 @@ purpose: Authoring spec for the concept lesson on BC-CON-02012, the derivatives 
 
 Concept BC-CON-02012 (skills BC-SKL-02032, BC-SKL-02033, BC-SKL-02034), topic 2.7 of Unit 2, loaded by BC-QA-02007 only. The limit-read-as-derivative half of the topic belongs to BC-CON-02006. The structure follows LSN-CON-02013.
 
+## Prediction
+
+Served first, both bands. On ex-1's function, \(f(x)=3\sin x+2\cos x-e^x+4\ln x+5\), the student picks the derivative of the exponential term: \(-e^x\), \(-xe^{x-1}\) or \(-\frac{e^{x+1}}{x+1}\). Format `mcq`, key \(-e^x\). The second option is the exponent move that BC-ERR-02019 records. The resolution states that the natural exponential is its own derivative and is not a power of \(x\), from BC-EK-FUN-3A4 on ced:66. Sources: BC-CON-02012, BC-EK-FUN-3A4, ced:66 [verified].
+
 ## Orientation
 
-Served text, from BC-CON-02012 `description_plain` and the topic's Assessment behaviour paragraph (research/units/unit-02-differentiation-definition-properties.md#2.7 Derivatives of cos x, sin x, e^x, and ln x): one rule per function, term by term, and the value at a stated input. No count, no frequency.
+Served text, from BC-CON-02012 `description_plain` and the topic's Assessment behaviour paragraph (research/units/unit-02-differentiation-definition-properties.md#2.7 Derivatives of cos x, sin x, e^x, and ln x): one rule per function, term by term. The sentence on the value at a stated input was cut to bring the brief form under 450 words. No count, no frequency.
 
 ## Key ideas
 
 One BC-EK maps to the three skills, BC-EK-FUN-3A4 (ced:66), so one core block, both bands.
 
-- ki-1 (core). The four rules and the logarithm's domain, paraphrased from the Specific rules paragraph. Anchor quote (16 words) from ced:66. The concept record's notation field is empty, so the notation line is the topic's: the logarithm derivative stated where the logarithm is defined [inferred source choice].
+- ki-1 (core). The four rules and the logarithm's domain, paraphrased from the Specific rules paragraph. Anchor quote (16 words) from ced:66. The concept record's notation field is empty, so the notation line names the rules [inferred source choice]. The anchor quote was dropped to bring the brief form under 450 words; the logarithm's domain stays in the text.
 
 ## Recognition
 
 - BC-QA-02007 (family rule-manipulation, single MCQ, no calculator; research/question-analysis/question-archetypes.md#BC-QA-02007 Derivative of an expression built from the basic transcendental functions): `typical_wording` "Find the derivative of the given function."; `common_givens` an expression with sine, cosine, exponential or logarithm terms, or a graph of a derivative combined with a logarithm; `asked_to_produce` the derivative or its value at a stated input. The signal is sin, cos, \(e^x\) or ln as whole terms, not multiplied together. `official_examples`: BC-FRQ-2013-Q3-D, BC-FRQ-2026-Q4-A, where the rule sits inside a larger part.
+
+The contrast pair on st-1 takes its near miss from the sibling concept BC-CON-02013. `this` is a sum of sine, exponential and logarithm terms on BC-QA-02007 (a different draw from every published item). `not_this` multiplies \(e^x\) by \(\sin x\), which reads as transcendental terms but calls for the product rule; the feature is terms added against factors multiplied.
 
 What says "not this concept": a limit shaped as a difference quotient (BC-CON-02006); tan, cot, sec or csc (BC-CON-02015); a product of a transcendental factor and another variable factor (BC-CON-02013).
 
@@ -49,9 +55,9 @@ BC-PT-99023 (chain rule) and BC-PT-99005 belong to free response draws with an i
 
 Three active errors meet the concept's skills, in the bundle's order. Low band all three, mid band the first two.
 
-- err-BC-ERR-02016 (BC-MIS-02009): the constant 5 carried. Distinct.
-- err-BC-ERR-02018 (BC-MIS-02010): \(+2\sin x\) from \(2\cos x\). Distinct.
-- err-BC-ERR-02019 (BC-MIS-02010): \(-e^x\) differentiated as \(-xe^{x-1}\). Distinct.
+- err-BC-ERR-02016 (BC-MIS-02009): the constant 5 carried. Distinct, `fix_prompt` true.
+- err-BC-ERR-02018 (BC-MIS-02010): \(+2\sin x\) from \(2\cos x\). Distinct, `fix_prompt` true.
+- err-BC-ERR-02019 (BC-MIS-02010): \(-e^x\) differentiated as \(-xe^{x-1}\). Distinct, `fix_prompt` true.
 
 ## Representations
 
@@ -83,12 +89,12 @@ No draw equals a published BC-QA-02007 `parameter_draw`.
 - ex-1: step_reveal. Rule 1.
 - err-BC-ERR-02016, err-BC-ERR-02018, err-BC-ERR-02019: step_reveal. Rule 1.
 
-No non-text mode applies [inferred; settled by the modality A/B].
+No drawn block applies: no skill carries a figure-bearing BC-REP and the key ideas describe no process (rules 2 to 5 do not select), so the machine record states `no_figure_reason` [inferred; settled by the modality A/B].
 
 ## Band plan
 
-- Low (full): orientation, ki-1, st-1, ex-1, err-BC-ERR-02016, err-BC-ERR-02018, err-BC-ERR-02019, chk-1, chk-2, chk-3, the three bridges. 489 words, 3.3 minutes (cap 900 and 6).
-- Mid (brief): orientation, ki-1, st-1, ex-1, err-BC-ERR-02016, err-BC-ERR-02018, chk-1, chk-2, the three bridges. 444 words, 3.0 minutes (cap 450 and 3).
+- Low (full): prediction, orientation, the three bridges, ki-1, st-1 with its contrast pair, ex-1, chk-1, err-BC-ERR-02016, err-BC-ERR-02018, err-BC-ERR-02019, chk-2, chk-3. 493 words, 3.3 minutes (cap 900 and 6). No second example, so no fade.
+- Mid (brief): prediction, orientation, the three bridges, ki-1, st-1 with its contrast pair, ex-1, chk-1, err-BC-ERR-02016, err-BC-ERR-02018, chk-2. 448 words, 3.0 minutes (cap 450 and 3).
 - Refresher: ki-1, err-BC-ERR-02016, err-BC-ERR-02018, err-BC-ERR-02019, ex-1.
 
 ## Sources
@@ -118,8 +124,40 @@ No non-text mode applies [inferred; settled by the modality A/B].
   "BC-SKL-02033",
   "BC-SKL-02034"
  ],
+ "prediction": {
+  "id": "pr-1",
+  "stem": {
+   "text": "Predict before the rule. For \\(f(x)=3\\sin x+2\\cos x-e^x+4\\ln x+5\\), what is the derivative of its exponential term?",
+   "command_verb": "predict"
+  },
+  "format": "mcq",
+  "options": [
+   {
+    "id": "A",
+    "label": "\\(-e^x\\)",
+    "is_key": true
+   },
+   {
+    "id": "B",
+    "label": "\\(-xe^{x-1}\\)",
+    "is_key": false
+   },
+   {
+    "id": "C",
+    "label": "\\(-\\frac{e^{x+1}}{x+1}\\)",
+    "is_key": false
+   }
+  ],
+  "resolution": "The natural exponential is its own derivative, so \\(-e^x\\) differentiates to \\(-e^x\\). It is not a power of \\(x\\), so the exponent move does not apply.",
+  "sources": [
+   "BC-CON-02012",
+   "BC-EK-FUN-3A4",
+   "ced:66"
+  ]
+ },
+ "no_figure_reason": "The skills carry BC-REP-01 only, and the key ideas state symbolic rules with no process, so no figure, table or motion fits.",
  "orientation": {
-  "text": "A response differentiates sine, cosine, \\(e^x\\) and \\(\\ln x\\) each by its own rule, term by term, carrying constants and signs. Questions ask for the derivative or its value at a stated input.",
+  "text": "A response differentiates sine, cosine, \\(e^x\\) and \\(\\ln x\\) each by its own rule, term by term, carrying constants and signs.",
   "sources": [
    "BC-CON-02012",
    "BC-PT-99004",
@@ -136,12 +174,9 @@ No non-text mode applies [inferred; settled by the modality A/B].
    "id": "ki-1",
    "ek_id": "BC-EK-FUN-3A4",
    "depth": "core",
-   "text": "Each basic transcendental function has its own rule (BC-EK-FUN-3A4, ced:66): \\((\\sin x)'=\\cos x\\), \\((\\cos x)'=-\\sin x\\), \\((e^x)'=e^x\\), and \\((\\ln x)'=\\frac1x\\) on \\(x>0\\), where the logarithm is defined. None is a power of \\(x\\), so the exponent move never applies.",
-   "notation": "The logarithm derivative stated on the domain where the logarithm is defined.",
-   "quote": {
-    "text": "Specific rules can be used to find the derivatives for sine, cosine, exponential, and logarithmic functions.",
-    "source": "ced:66"
-   },
+   "text": "Each basic transcendental function has its own rule: \\((\\sin x)'=\\cos x\\), \\((\\cos x)'=-\\sin x\\), \\((e^x)'=e^x\\), and \\((\\ln x)'=\\frac1x\\) on \\(x>0\\), where the logarithm is defined.",
+   "notation": "rules for sine, cosine, exponential, logarithm",
+   "quote": null,
    "sources": [
     "BC-EK-FUN-3A4",
     "ced:66",
@@ -153,14 +188,25 @@ No non-text mode applies [inferred; settled by the modality A/B].
   {
    "id": "st-1",
    "archetype_id": "BC-QA-02007",
-   "cue": "The stem asks for a derivative or its value at an input, from sine, cosine, exponential or logarithm terms.",
-   "method": "First written line: the rule named for each term, then the derivative term by term.",
-   "rival": "The rival is treating \\(e^x\\) as a power of \\(x\\) and applying the power rule (BC-ERR-02019).",
-   "separating_feature": "The variable sits in the exponent or inside the function name, not in a base raised to a number.",
+   "cue": "Sine, cosine, exponential or logarithm terms, with a derivative or its value asked.",
+   "method": "The rule named for each term, then the derivative term by term.",
+   "rival": "The rival is treating \\(e^x\\) as a power of \\(x\\).",
+   "separating_feature": "The variable sits in the exponent or inside the function, not in a base.",
    "sources": [
     "BC-QA-02007"
    ],
-   "evidence_tag": "verified"
+   "evidence_tag": "verified",
+   "contrast": {
+    "this": {
+     "text": "Let \\(g(x)=5\\sin x-3e^x+2\\ln x\\) for \\(x>0\\). Find \\(g'(x)\\).",
+     "archetype_id": "BC-QA-02007"
+    },
+    "not_this": {
+     "text": "Let \\(h(x)=e^x\\sin x\\). Find \\(h'(x)\\).",
+     "why_not": "The factors are multiplied, so the product rule applies."
+    },
+    "feature": "Terms added, not multiplied."
+   }
   }
  ],
  "worked_examples": [
@@ -251,7 +297,8 @@ No non-text mode applies [inferred; settled by the modality A/B].
    "sources": [
     "BC-ERR-02016",
     "BC-MIS-02009"
-   ]
+   ],
+   "fix_prompt": true
   },
   {
    "error_id": "BC-ERR-02018",
@@ -273,7 +320,8 @@ No non-text mode applies [inferred; settled by the modality A/B].
    "sources": [
     "BC-ERR-02018",
     "BC-MIS-02010"
-   ]
+   ],
+   "fix_prompt": true
   },
   {
    "error_id": "BC-ERR-02019",
@@ -295,7 +343,8 @@ No non-text mode applies [inferred; settled by the modality A/B].
    "sources": [
     "BC-ERR-02019",
     "BC-MIS-02010"
-   ]
+   ],
+   "fix_prompt": true
   }
  ],
  "representations": null,
@@ -553,8 +602,8 @@ No non-text mode applies [inferred; settled by the modality A/B].
   "brief": 3.0
  },
  "word_count": {
-  "full": 489,
-  "brief": 444
+  "full": 493,
+  "brief": 448
  },
  "research_lines": [
   {

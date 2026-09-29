@@ -27,5 +27,83 @@
    }
   ],
   "answers_file": "/tmp/claude-0/-home-user-growth/ac029253-8ff0-5a4b-8b5f-cdcaf5e8ff8d/scratchpad/verify/answers_05.json"
+ },
+ "audit": {
+  "date": "2026-09-29",
+  "auditor": "claude-opus-5-5",
+  "blocks": [
+   {
+    "id": "orientation",
+    "verdict": "ok",
+    "evidence": "Paraphrases BC-CON-04005 description_formal and the 4.2 Speeding up paragraph."
+   },
+   {
+    "id": "ki-1",
+    "verdict": "ok",
+    "evidence": "4.2 Speeding up paragraph (cr-22:21) and Sign analysis paragraph (crabbc-25:22); no quote."
+   },
+   {
+    "id": "st-1",
+    "verdict": "ok",
+    "evidence": "Cue is BC-QA-04003 typical_wording; rival BC-ERR-99003 from wrong_approaches."
+   },
+   {
+    "id": "ex-1",
+    "verdict": "ok",
+    "evidence": "SymPy: v(2)=-3, a(t)=3t^2-4t+4, a(2)=8, opposite signs so decreasing; draw reproduces constant=-11."
+   },
+   {
+    "id": "what_a_reader_scores:ex-1",
+    "verdict": "ok",
+    "evidence": "Line matches BC-PT-99027 record verbatim; in BC-QA-04003 point_types."
+   },
+   {
+    "id": "err-BC-ERR-04011",
+    "verdict": "ok",
+    "evidence": "observed_behavior and scoring_consequence copied from the bundle; possible reason paraphrases BC-MIS-04017."
+   },
+   {
+    "id": "err-BC-ERR-99003",
+    "verdict": "ok",
+    "evidence": "SymPy: -3*8=-24<0 so slowing down; a(2)=8>0 alone gives the wrong conclusion; bundle text copied."
+   },
+   {
+    "id": "representations",
+    "verdict": "ok",
+    "evidence": "null."
+   },
+   {
+    "id": "bridge-BC-PRQ-04005",
+    "verdict": "ok",
+    "evidence": "Paraphrases BC-PRQ-04005."
+   },
+   {
+    "id": "bridge-BC-PRQ-04009",
+    "verdict": "ok",
+    "evidence": "Paraphrases BC-PRQ-04009."
+   },
+   {
+    "id": "chk-1",
+    "verdict": "ok",
+    "evidence": "SymPy: -3*8=-24, opposite signs, decreasing."
+   },
+   {
+    "id": "chk-2",
+    "verdict": "ok",
+    "evidence": "SymPy: v(1)=-2, a(1)=-1, same sign, increasing; draw reproduces constant=2."
+   }
+  ],
+  "advice": [
+   "err-BC-ERR-04011 is about an interval sign chart with no sentence, but it is staged on ex-1's single instant, where no interval exists; the contrast does not match its idea. An interval example for BC-SKL-04012 would carry it.",
+   "A comparison of two signs is a contrast; a two column sign table for v and a would serve ki-1 better than plain text.",
+   "The reason sentence that earns the speed point carries no point tag (flagged inferred); the scoring habit of naming both signs is taught through the rival only."
+  ],
+  "counts": {
+   "ok": 12,
+   "unsourced": 0,
+   "wrong": 0,
+   "over_cap": 0,
+   "lint": 0
+  }
  }
 }

@@ -49,7 +49,7 @@ Point losses the scoring research names: hypotheses not verified, BC-ERR-99008 (
 
 Six active errors meet the skills; the first four in the bundle's order are served (BC-ERR-01028, wrong theorem named, and BC-ERR-99008 fall outside the cap of 4; the scoring line above covers the wrong theorem). Low band all four, mid band the first two.
 
-- err-BC-ERR-01016 (BC-MIS-01010, BC-MIS-01009): the definition restated with no values or interval, \(\lim_{x\to c}f(x)-f(c)\), against "differentiable, so continuous on \([1,8]\)", the interval. Distinct.
+- err-BC-ERR-01016 (BC-MIS-01010, BC-MIS-01009): the definition restated with no values or interval, \(\lim_{x\to c}f(x)-f(c)\), against "differentiable: continuous on \([1,8]\)", the interval. Distinct.
 - err-BC-ERR-01025 (BC-MIS-01015, BC-MIS-01010): lines written {continuous} against {differentiable, continuous}. Distinct.
 - err-BC-ERR-01026 (BC-MIS-01016, BC-MIS-01015): \(f(3)=2\) and \(f(8)=1\), both above 0, against \(f(1)=-4<0<1=f(8)\). Distinct.
 - err-BC-ERR-01027 (BC-MIS-01016, BC-MIS-01010): "exactly one \(c\)", a single point, against "at least one \(c\)" somewhere in \((1,8)\). Distinct.
@@ -82,7 +82,7 @@ No draw equals a published BC-QA-01011 `parameter_draw`.
 
 ## Band plan
 
-- Low (full): orientation, ki-1, st-1, ex-1 with its scoring lines, the four error blocks, chk-1, chk-2, chk-3, the two bridges. 600 words, 4.0 minutes (cap 900 and 6).
+- Low (full): orientation, ki-1, st-1, ex-1 with its scoring lines, the four error blocks, chk-1, chk-2, chk-3, the two bridges. 606 words, 4.1 minutes (cap 900 and 6).
 - Mid (brief): orientation, ki-1, st-1, ex-1 with its scoring lines, err-01016, err-01025, chk-1, chk-2, the two bridges. 450 words, 3.0 minutes (cap 450 and 3).
 - Refresher: ki-1, err-BC-ERR-01016, err-BC-ERR-01025, err-BC-ERR-01026, err-BC-ERR-01027, ex-1.
 
@@ -164,8 +164,8 @@ No draw equals a published BC-QA-01011 `parameter_draw`.
    "error_id": "BC-ERR-01016",
    "observed_behavior": "The response asserts that the function is or is not continuous because of the definition of continuity, without naming the condition that fails or the values that show it.",
    "scoring_consequence": "The justification point is lost; a scoring guideline requires the reason rather than the assertion (sg-25:12).",
-   "wrong_step": {"text": "Continuous by definition: \\(\\lim_{x\\to c}f(x)=f(c)\\), no interval named.", "expr": "Limit(f(x), x, c) - f(c)"},
-   "right_step": {"text": "Differentiable, so continuous on \\([1,8]\\).", "expr": "Interval(1, 8)"},
+   "wrong_step": {"text": "By definition: \\(\\lim_{x\\to c}f(x)=f(c)\\).", "expr": "Limit(f(x), x, c) - f(c)"},
+   "right_step": {"text": "Differentiable: continuous on \\([1,8]\\).", "expr": "Interval(1, 8)"},
    "relation": "distinct",
    "possible_reason": {"misconception_id": "BC-MIS-01010", "text": "treats naming the definition or the theorem as the argument"},
    "sources": ["BC-ERR-01016", "BC-MIS-01010"]
@@ -174,8 +174,8 @@ No draw equals a published BC-QA-01011 `parameter_draw`.
    "error_id": "BC-ERR-01025",
    "observed_behavior": "The response states that the function is continuous but gives no basis for the statement.",
    "scoring_consequence": "The point for the continuity hypothesis is not earned by a bare statement that the function is continuous; the response must say that it is continuous because it is differentiable or give an equivalent reason (sg-25:12).",
-   "wrong_step": {"text": "Lines written: continuous.", "expr": "FiniteSet(continuous)"},
-   "right_step": {"text": "Lines written: differentiable, so continuous.", "expr": "FiniteSet(differentiable, continuous)"},
+   "wrong_step": {"text": "Written: continuous.", "expr": "FiniteSet(continuous)"},
+   "right_step": {"text": "Written: differentiable, so continuous.", "expr": "FiniteSet(differentiable, continuous)"},
    "relation": "distinct",
    "possible_reason": {"misconception_id": "BC-MIS-01015", "text": "treats the stated setting as discharging the hypotheses of a theorem"},
    "sources": ["BC-ERR-01025", "BC-MIS-01015"]
@@ -281,8 +281,8 @@ No draw equals a published BC-QA-01011 `parameter_draw`.
   {"block": "err-BC-ERR-01027", "mode": "step_reveal", "reason": "rule 1", "sources": []}
  ],
  "refresher": ["ki-1", "err-BC-ERR-01016", "err-BC-ERR-01025", "err-BC-ERR-01026", "err-BC-ERR-01027", "ex-1"],
- "read_minutes": {"full": 4.0, "brief": 3.0},
- "word_count": {"full": 600, "brief": 450},
+ "read_minutes": {"full": 4.1, "brief": 3.0},
+ "word_count": {"full": 606, "brief": 450},
  "research_lines": [
   {"file": "research/scoring/justification-requirements.md", "line": "The hypothesis point is earned only by deriving continuity rather than asserting it."}
  ],

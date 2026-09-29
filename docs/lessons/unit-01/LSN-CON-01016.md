@@ -83,8 +83,8 @@ Every non-text choice is [inferred], settled by the modality A/B in the build pl
 
 ## Band plan
 
-- Low (full): orientation, ki-1, ki-2, st-1, st-2, ex-1, the three error blocks, chk-1, chk-2, chk-3, the two bridges. 542 words, 3.7 minutes (cap 900 and 6).
-- Mid (brief): orientation, ki-1, ki-2, st-1, ex-1, err-01018, err-01019, chk-1, chk-2, the two bridges. 417 words, 2.8 minutes (cap 450 and 3).
+- Low (full): orientation, ki-1, ki-2, st-1, st-2, ex-1, the three error blocks, chk-1, chk-2, chk-3, the two bridges. 553 words, 3.7 minutes (cap 900 and 6).
+- Mid (brief): orientation, ki-1, ki-2, st-1, ex-1, err-01018, err-01019, chk-1, chk-2, the two bridges. 422 words, 2.9 minutes (cap 450 and 3).
 - Refresher: ki-1, ki-2, err-BC-ERR-01018, err-BC-ERR-01019, err-BC-ERR-01020, ex-1.
 
 ## Sources
@@ -305,8 +305,8 @@ Every non-text choice is [inferred], settled by the modality A/B in the build pl
   {"block": "err-BC-ERR-01020", "mode": "step_reveal", "reason": "rule 1", "sources": []}
  ],
  "refresher": ["ki-1", "ki-2", "err-BC-ERR-01018", "err-BC-ERR-01019", "err-BC-ERR-01020", "ex-1"],
- "read_minutes": {"full": 3.7, "brief": 2.8},
- "word_count": {"full": 542, "brief": 417},
+ "read_minutes": {"full": 3.7, "brief": 2.9},
+ "word_count": {"full": 553, "brief": 422},
  "research_lines": [
   {"file": "research/units/unit-01-limits-continuity.md", "line": "A factor that divides out produces a removable discontinuity rather than a vertical asymptote."}
  ],

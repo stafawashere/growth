@@ -52,7 +52,7 @@
    {
     "id": "ki-1",
     "verdict": "ok",
-    "evidence": "Paraphrase of the 1.5 Limit theorems paragraph (quotient needs nonzero denominator limit, composite needs outer continuity); EK LIM-1.D.2 verbatim on ced:42."
+    "evidence": "fixed 2026-09-29: record ids (BC-EK-LIM-1D2, ced:42) removed from the served text; both stay in the block sources."
    },
    {
     "id": "st-1",
@@ -87,7 +87,7 @@
    {
     "id": "err-BC-ERR-01006",
     "verdict": "ok",
-    "evidence": "Record text verbatim; wrong expr evaluates to nan (0/0) in SymPy against -3; possible_reason is a fragment of BC-MIS-01005, listed on the error."
+    "evidence": "fixed 2026-09-29: rebuilt on ex-1's draw so the mid band shows it beside ex-1: wrong f/(g - 3) at 1 as 2/0 (SymPy zoo), right denominator limit 3 - 3 = 0 so the quotient theorem fails; distinct."
    },
    {
     "id": "err-BC-ERR-01007",
@@ -137,6 +137,11 @@
    "wrong": 0,
    "over_cap": 0,
    "lint": 0
-  }
+  },
+  "fix_notes": [
+   "Removed the parenthetical record ids from ki-1's served text (ids remain in sources).",
+   "Rebuilt err-BC-ERR-01006 on ex-1's draw (f/(g - 3) at 1) instead of ex-2, which the mid band does not serve; trimmed the orientation and st-1 separating feature by a word each to keep brief at 448 words (cap 450).",
+   "Left as preferences: no check asks for the denominator condition line; mid band still omits st-2 and ex-2 (template puts ex-2 in low only); delivery modes."
+  ]
  }
 }

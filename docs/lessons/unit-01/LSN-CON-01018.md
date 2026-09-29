@@ -76,8 +76,8 @@ Two checks only: check 3 needs error blocks and the bundle holds none (listed un
 
 ## Band plan
 
-- Low (full): orientation, ki-1, st-1, ex-1 with its scoring lines, chk-1, chk-2, the bridge. 369 words, 2.5 minutes (cap 900 and 6).
-- Mid (brief): the same blocks, since there is one key idea, one strategy block, one example and no error block. 369 words, 2.5 minutes (cap 450 and 3).
+- Low (full): orientation, ki-1, st-1, ex-1 with its scoring lines, chk-1, chk-2, the bridge. 362 words, 2.5 minutes (cap 900 and 6).
+- Mid (brief): the same blocks, since there is one key idea, one strategy block, one example and no error block. 362 words, 2.5 minutes (cap 450 and 3).
 - Refresher: ki-1, ex-1.
 
 ## Sources
@@ -205,7 +205,7 @@ Two checks only: check 3 needs error blocks and the bundle holds none (listed un
  ],
  "refresher": ["ki-1", "ex-1"],
  "read_minutes": {"full": 2.5, "brief": 2.5},
- "word_count": {"full": 369, "brief": 369},
+ "word_count": {"full": 362, "brief": 362},
  "research_lines": [
   {"file": "research/units/unit-01-limits-continuity.md", "line": "Relative magnitudes of functions and their rates of change can be compared using limits (BC-EK-LIM-2D5)."}
  ],

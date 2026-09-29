@@ -33,5 +33,88 @@
    }
   ],
   "answers_file": "/tmp/claude-0/-home-user-growth/ac029253-8ff0-5a4b-8b5f-cdcaf5e8ff8d/scratchpad/verify/answers_05.json"
+ },
+ "audit": {
+  "date": "2026-09-29",
+  "auditor": "claude-opus-5-5",
+  "blocks": [
+   {
+    "id": "orientation",
+    "verdict": "ok",
+    "evidence": "Paraphrases BC-CON-04006 description_plain and the 4.3 End behaviour paragraph."
+   },
+   {
+    "id": "ki-1",
+    "verdict": "ok",
+    "evidence": "4.3 Common structure (ced:84), Units, and End behaviour (sg-25:4) paragraphs; quote matches CHA-3.C.1 on ced:89 verbatim."
+   },
+   {
+    "id": "st-1",
+    "verdict": "ok",
+    "evidence": "Cue from BC-QA-04005 common_givens and typical_wording; rival BC-ERR-99007 from wrong_approaches."
+   },
+   {
+    "id": "ex-1",
+    "verdict": "ok",
+    "evidence": "SymPy: diff(20+60(1-exp(-t/8)))=15/2 exp(-t/8), limit 0, value at 4 is 4.54898; rate 4.549 in (0.5,20) as spec invariant requires."
+   },
+   {
+    "id": "what_a_reader_scores:ex-1",
+    "verdict": "ok",
+    "evidence": "Line matches BC-PT-99014 record verbatim; in BC-QA-04005 point_types; placement tagged inferred."
+   },
+   {
+    "id": "err-BC-ERR-04012",
+    "verdict": "ok",
+    "evidence": "observed_behavior and scoring_consequence copied from the bundle."
+   },
+   {
+    "id": "err-BC-ERR-04013",
+    "verdict": "ok",
+    "evidence": "Bundle text copied; possible reason paraphrases BC-MIS-04007."
+   },
+   {
+    "id": "err-BC-ERR-99007",
+    "verdict": "ok",
+    "evidence": "SymPy: 15/2*exp(-oo)=0 equals the limit, relation equivalent correct; bundle text copied."
+   },
+   {
+    "id": "representations",
+    "verdict": "ok",
+    "evidence": "null."
+   },
+   {
+    "id": "bridge-BC-PRQ-04008",
+    "verdict": "ok",
+    "evidence": "Paraphrases BC-PRQ-04008 description_plain and failure_signature (ced:84)."
+   },
+   {
+    "id": "chk-1",
+    "verdict": "ok",
+    "evidence": "SymPy: 7.5 exp(-1/2)=4.54898, key 4.549."
+   },
+   {
+    "id": "chk-2",
+    "verdict": "ok",
+    "evidence": "SymPy: 10 exp(-3/5)=5.48812, key 5.488; 50/5=10 matches draw."
+   },
+   {
+    "id": "chk-3",
+    "verdict": "ok",
+    "evidence": "SymPy: -4 exp(-1/2)=-2.42612, key -2.426; 40/10=4 matches draw; distractors trace BC-ERR-04012, 04013, 99007."
+   }
+  ],
+  "advice": [
+   "BC-QA-04005's first typical wording (time where instantaneous rate equals average rate) is not taught; the lesson covers rate value and end behaviour only.",
+   "ex-1 asks for the limit and M'(4) but step order puts the sign statement between them without the stem asking for it; the BC-PT-99014 step reads as unmotivated to a student. Time budget II-A 15.0 minutes is a whole FRQ, not this part.",
+   "Delivery fits: contrast of named against bare values in the error blocks is well chosen."
+  ],
+  "counts": {
+   "ok": 13,
+   "unsourced": 0,
+   "wrong": 0,
+   "over_cap": 0,
+   "lint": 0
+  }
  }
 }

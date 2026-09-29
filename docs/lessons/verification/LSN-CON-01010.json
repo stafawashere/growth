@@ -46,7 +46,7 @@
    {
     "id": "ki-1",
     "verdict": "ok",
-    "evidence": "Theorem statement matches BC-CON-01010 description_formal and 1.8 Squeeze theorem paragraph; hypotheses sentence from Hypotheses as a separate demand; quote verbatim LIM-1.E.2 on ced:45."
+    "evidence": "fixed 2026-09-29: record ids (BC-EK-LIM-1E2, ced:45) removed from the served text; both stay in the block sources."
    },
    {
     "id": "st-1",
@@ -70,8 +70,8 @@
    },
    {
     "id": "err-BC-ERR-99008",
-    "verdict": "unsourced",
-    "evidence": "The record's observed_behavior and scoring_consequence concern the Mean Value Theorem, the Intermediate Value Theorem and L'Hospital's Rule; the block serves them for the squeeze theorem, and no bundle record, ced:45 or the 1.8 section says a squeeze condition point exists or is lost this way (BC-QA-01005 has no official FRQ part)."
+    "verdict": "ok",
+    "evidence": "fixed 2026-09-29: block removed: no error the lesson's skills hold (bundle errors are BC-ERR-01012, 01013, 99008 only) describes an unverified squeeze inequality; delivery, refresher, sources, inferred entry and prose updated; chk-3 option C re-pointed to BC-ERR-01013 (upper bound evaluated at 0, SymPy 3+|0|^3 = 3)."
    },
    {
     "id": "representations",
@@ -111,11 +111,17 @@
    "The lesson teaches the three lines scoring_pattern names (inequality, bound limits, conclusion) through ex-1, but no check asks the student to write the inequality line themselves; chk-3 recognises it only."
   ],
   "counts": {
-   "ok": 12,
-   "unsourced": 1,
+   "ok": 13,
+   "unsourced": 0,
    "wrong": 0,
    "over_cap": 0,
    "lint": 0
-  }
+  },
+  "fix_notes": [
+   "Removed err-BC-ERR-99008 (unsourced for the squeeze theorem) and its delivery, refresher, source and inferred entries; no replacement error fits among the errors the skills hold.",
+   "chk-3 option C now carries BC-ERR-01013: the upper bound alone evaluated at 0.",
+   "Removed record ids from ki-1's served text (same defect class as 01007 and 01012).",
+   "Left as preferences: ki-1 motion and orientation figure, the reversal case never derived by the student, no check asking the student to write the inequality."
+  ]
  }
 }

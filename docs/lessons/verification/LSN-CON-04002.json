@@ -27,5 +27,93 @@
    }
   ],
   "answers_file": "/tmp/claude-0/-home-user-growth/ac029253-8ff0-5a4b-8b5f-cdcaf5e8ff8d/scratchpad/verify/answers_05.json"
+ },
+ "audit": {
+  "date": "2026-09-29",
+  "auditor": "claude-opus-5-5",
+  "blocks": [
+   {
+    "id": "orientation",
+    "verdict": "ok",
+    "evidence": "Paraphrases BC-CON-04002 description_plain and the 4.1 Approximation paragraph (difference of values over difference of inputs, sg-25:11)."
+   },
+   {
+    "id": "ki-1",
+    "verdict": "ok",
+    "evidence": "Units paragraph of 4.1 research: unit of f over unit of x, second derivative over the square, words per minute per minute (sg-25:11); separate units point per BC-ERR-04001."
+   },
+   {
+    "id": "ki-2",
+    "verdict": "ok",
+    "evidence": "Approximation paragraph of 4.1 research (sg-25:11); anchor quote matches CHA-3.A.1 on ced:87 verbatim."
+   },
+   {
+    "id": "ki-3",
+    "verdict": "ok",
+    "evidence": "4.3 Units paragraph; anchor quote matches CHA-3.C.1 on ced:89 verbatim."
+   },
+   {
+    "id": "st-1",
+    "verdict": "ok",
+    "evidence": "Cue from BC-QA-04002 typical_wording; rivals BC-ERR-02001 and BC-ERR-02004 from wrong_approaches."
+   },
+   {
+    "id": "st-2",
+    "verdict": "ok",
+    "evidence": "Cue from BC-QA-04001 typical_wording; method is expected_solution_path; rival BC-ERR-04003 from wrong_approaches."
+   },
+   {
+    "id": "ex-1",
+    "verdict": "ok",
+    "evidence": "SymPy: Rational(55-31,4)=6; one sided 9/2, 15/2 and change 24 distinct as the spec constraint requires; draw within BC-QA-04002 parameter domains."
+   },
+   {
+    "id": "what_a_reader_scores:ex-1",
+    "verdict": "ok",
+    "evidence": "Line matches BC-PT-99006 name, earns and does_not_earn fields verbatim; BC-PT-99006 is in BC-QA-04002 point_types."
+   },
+   {
+    "id": "err-BC-ERR-04001",
+    "verdict": "ok",
+    "evidence": "observed_behavior and scoring_consequence copied from the bundle; 6 per minute against 6 minutes per degree is the exchanged ratio the record names."
+   },
+   {
+    "id": "err-BC-ERR-04004",
+    "verdict": "ok",
+    "evidence": "SymPy: (55-31)/(6-2)=6, relation equivalent correct; scoring_consequence copied from the bundle (sg-25:11)."
+   },
+   {
+    "id": "representations",
+    "verdict": "ok",
+    "evidence": "null; 4.1 Representations names BC-REP-03 to BC-REP-04, carried by the ki-2 table."
+   },
+   {
+    "id": "bridge-BC-PRQ-04004",
+    "verdict": "ok",
+    "evidence": "Paraphrases BC-PRQ-04004 description_plain and failure_signature."
+   },
+   {
+    "id": "chk-1",
+    "verdict": "ok",
+    "evidence": "SymPy: (55-31)/(6-2)=6 degrees Celsius per minute."
+   },
+   {
+    "id": "chk-2",
+    "verdict": "ok",
+    "evidence": "SymPy: (50-20)/(7-3)=15/2; one sided 13/2, 17/2 and change 30 distinct; units megabytes per second."
+   }
+  ],
+  "advice": [
+   "Delivery fits: ki-2 as a table matches the tabular givens; the error blocks as step_reveal show the wrong line against the right one, though a side by side contrast would serve BC-ERR-04001 better than a reveal sequence.",
+   "Recognition of the stem, the first written line and the rival are taught for BC-QA-04002; BC-QA-04001 (interpretation) has a strategy block but no worked example or check, so the interpretation sentence is never practiced.",
+   "The scoring habit for the estimate (BC-PT-99005, difference and quotient shown) appears only through err-BC-ERR-04004; a reader scores line for it on ex-1 would make the two point structure explicit."
+  ],
+  "counts": {
+   "ok": 14,
+   "unsourced": 0,
+   "wrong": 0,
+   "over_cap": 0,
+   "lint": 0
+  }
  }
 }

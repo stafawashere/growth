@@ -27,5 +27,77 @@
    }
   ],
   "answers_file": "/tmp/claude-0/-home-user-growth/ac029253-8ff0-5a4b-8b5f-cdcaf5e8ff8d/scratchpad/verify/answers_05.json"
+ },
+ "audit": {
+  "date": "2026-09-29",
+  "auditor": "claude-opus-5-5",
+  "blocks": [
+   {
+    "id": "orientation",
+    "verdict": "ok",
+    "evidence": "Paraphrases BC-CON-04003 description_plain and formal: velocity is x prime, acceleration v prime."
+   },
+   {
+    "id": "ki-1",
+    "verdict": "ok",
+    "evidence": "4.2 Required knowledge paragraph; anchor quote matches CHA-3.B.1 on ced:88 verbatim."
+   },
+   {
+    "id": "st-1",
+    "verdict": "ok",
+    "evidence": "Cue from BC-QA-04003 common_givens and asked_to_produce; rival BC-ERR-04006 from wrong_approaches."
+   },
+   {
+    "id": "st-2",
+    "verdict": "unsourced",
+    "evidence": "Rival 'differentiating' is not in BC-QA-04010 wrong_approaches, which list only BC-ERR-08011 and BC-ERR-09021; the BC-ERR-08011 half is sourced."
+   },
+   {
+    "id": "ex-1",
+    "verdict": "ok",
+    "evidence": "SymPy: x'(t)=3t^2-6t-4, x'(2)=-4, x''(2)=6; draw reproduces BC-QA-04003 derived linear=-4 and velocity_at=-4 for heading left."
+   },
+   {
+    "id": "what_a_reader_scores:ex-1",
+    "verdict": "ok",
+    "evidence": "Lines match BC-PT-99004 and BC-PT-99027 records verbatim; both in BC-QA-04003 point_types."
+   },
+   {
+    "id": "err-BC-ERR-04006",
+    "verdict": "ok",
+    "evidence": "SymPy: x(2)=-10 against v(2)=-4, distinct; observed_behavior and scoring_consequence copied from the bundle."
+   },
+   {
+    "id": "representations",
+    "verdict": "ok",
+    "evidence": "null; no separate representation block claimed."
+   },
+   {
+    "id": "bridge-BC-PRQ-04008",
+    "verdict": "ok",
+    "evidence": "Paraphrases BC-PRQ-04008 description_plain and failure_signature."
+   },
+   {
+    "id": "chk-1",
+    "verdict": "ok",
+    "evidence": "SymPy: v(2)=-4, a(2)=6."
+   },
+   {
+    "id": "chk-2",
+    "verdict": "ok",
+    "evidence": "SymPy: v'(t)=-3t^2+4t+3, v'(1)=4; draw reproduces constant=-9 and velocity_at=-5."
+   }
+  ],
+  "advice": [
+   "Speed and the speeding up decision are in BC-QA-04003 asked_to_produce but belong to BC-CON-04005; fine to omit here, but st-2 (BC-QA-04010, accumulation) has no example or check and reads as a distraction in a differentiation lesson.",
+   "Only one error block; the lesson teaches the first line and the rival well but no scoring contrast beyond the answer points. Step_reveal suits the derivative chain as a process."
+  ],
+  "counts": {
+   "ok": 10,
+   "unsourced": 1,
+   "wrong": 0,
+   "over_cap": 0,
+   "lint": 0
+  }
  }
 }

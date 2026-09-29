@@ -9,7 +9,7 @@ purpose: Index of the research base behind the lesson-framework redesign of 2026
 
 Built on 2026-09-29 during the overnight lesson redesign, on the operator's delegation. The product files were written by claude-sonnet-5-5 research agents from the live web, one product per agent, under one shared brief; the learning-science file by another; the synthesis, the clean-slate design, the gap analysis and the rulings file by claude-fable-5-1, the orchestrator. Nothing here was written by a person, and nothing here is a mathematical or scoring claim inside a lesson: CLAUDE.md's rule that lesson facts come only from the local library holds, and the web was read only to study products and learning science.
 
-## Files
+## Files [verified]
 
 | File | What it holds |
 |---|---|
@@ -31,14 +31,14 @@ Built on 2026-09-29 during the overnight lesson redesign, on the operator's dele
 | `growth-gap-analysis.md` | The measured state of the 127 lessons and the reader before the redesign, each flaw named against the synthesis and the clean-slate design |
 | `rulings-for-operator.md` | Every technique a project rule forbids and every cap the framework designed inside, for the operator to rule on |
 
-## How to read the tags
+## How to read the tags [verified]
 
 Every level-two heading carries one tag. `[verified]` means two independent sources agree on the section's main claims. `[single-source]` means one source carries them, usually the vendor describing itself. `[inferred]` means the writer deduced them from product behaviour or from other sections. `[uncertain]` means the sources conflict or are thin. Most product sections are `[single-source]` because vendors document themselves and few independent measurements exist; the synthesis says so and leans on the learning-science file for ranking.
 
-## What the research base is not
+## What the research base is not [verified]
 
 It is not a source of lesson content. A lesson's facts, worked steps, error descriptions and scoring claims come from the authoring bundle, `research/` and `cache/text/` only, as `docs/lessons/TEMPLATE.md` requires. The research base decides how a lesson is shaped, paced and checked, never what it says about calculus.
 
-## Where the conclusions went
+## Where the conclusions went [inferred]
 
 The framework that follows from these files is in `docs/lessons/TEMPLATE.md` (revised), `docs/plan/15-lessons.md` (the "Plan amendments, 2026-09-29" section), `schemas/lessons/lesson.schema.json`, `tools/check_lessons.py`, `tools/check_lesson_designs.py`, `prompts/generator/lesson_v2.md` and `app/web/src/lessons/`. The build is recorded in `BUILD-LEDGER.md`, "Lesson framework redesign, 2026-09-29".

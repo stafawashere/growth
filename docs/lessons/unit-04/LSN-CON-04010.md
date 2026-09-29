@@ -32,7 +32,7 @@ Not this concept: a stem asking what the derivative of a named function means at
 
 ## Solution path
 
-- ex-1, BC-QA-04006, both bands, no calculator. Draw: ladder, size 7, rate 4, ratio 1, leg short, centimeter, minute; the template reads the ladder units as meters: a 5 meter ladder, foot 3 meters out, sliding away at 4 meters per minute. Not a published draw.
+- ex-1, BC-QA-04006, both bands, no calculator. Draw: ladder, size 3, rate 4, ratio 1, leg short, meter, minute; a 5 meter ladder, foot 3 meters out, sliding away at 4 meters per minute. Not a published draw.
 - Steps: relating equation (new), differentiation (new), instant (evaluate), rate (solve), then the sentence with units and direction (no value). A fluent solver writes all; y = 4 from the 3, 4, 5 triangle is held in the head.
 
 ## Scoring

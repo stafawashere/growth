@@ -32,7 +32,7 @@ Not this concept: a quantity fixed for the whole motion, such as a ladder's leng
 
 ## Solution path
 
-- ex-1, BC-QA-04006, both bands, no calculator. Draw: shape ladder, size 6, rate 2, ratio 3, leg short, meter, second; a 15 meter ladder, foot 9 meters out sliding away at 2 meters per second. No published BC-QA-04006 item carries this draw.
+- ex-1, BC-QA-04006, both bands, no calculator. Draw: shape ladder, size 9, rate 2, ratio 3, leg short, meter, second; a 15 meter ladder, foot 9 meters out sliding away at 2 meters per second. No published BC-QA-04006 item carries this draw.
 - Steps: relating equation (new); x = 9 put into it (evaluate); y = 12 (solve); differentiation in t (new); the instant substituted (evaluate); the rate (solve). The first three recover the missing value; a fluent solver writes all six.
 
 ## Scoring

@@ -275,7 +275,7 @@ BC-QA-03006 is `calculator_status` either, a single MCQ or one FRQ part. The des
     "curves": [
      "f(x) = x^3/4 + x",
      {
-      "expr": "(2*x + sqrt(4*x**2 + 64/27))**(1/3) + (2*x - sqrt(4*x**2 + 64/27))**(1/3)"
+      "expr": "sign(2*x + sqrt(4*x**2 + 64/27))*Abs(2*x + sqrt(4*x**2 + 64/27))**(1/3) + sign(2*x - sqrt(4*x**2 + 64/27))*Abs(2*x - sqrt(4*x**2 + 64/27))**(1/3)"
      },
      "y = x, dashed",
      {

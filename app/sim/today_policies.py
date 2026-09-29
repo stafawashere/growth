@@ -5,16 +5,16 @@ of block 2 choices, so two-term nearly is the random control, and that the forge
 serves the candidate reaching the truly least-retained known skill, is far ahead on delayed mastery
 per item and on retention at day 30. The policies here are what the engine could do with what it
 can see. Nothing in app/engine or app/session imports this module; each policy reaches selection
-only through the ordering hooks that the running app never passes.
+only through the ordering hooks. Retrievability priority lives in app/engine/priority.py, which the
+running app also orders with under the selection_priority switch, so both run one implementation.
 
-Readings fixed here: a skill counts toward retrievability priority only once it has a memory
-(stability set), because R_k is 1 by definition before that; the Elo item logit is the negated
-mean beta of the loaded skills, since beta enters strength with a plus sign and so is an easiness;
-spread reads the hook's history, which is the current session's served items, blocks 1 and 2.
+Readings fixed here: the Elo item logit is the negated mean beta of the loaded skills, since beta
+enters strength with a plus sign and so is an easiness; spread reads the hook's history, which is the current session's served items, blocks 1
+and 2.
 """
 import math
 
-from app.engine.fringe import due_coverage, retrievability_of
+from app.engine.priority import retrievability_need, retrievability_priority_ordering, seeded_pool
 from app.sim import learning
 
 ELO_K = 0.4
@@ -22,51 +22,6 @@ TARGET_RAW = 0.75
 SPREAD_SKILL_WINDOW = 5
 SPREAD_UNIT_WINDOW = 3
 SPREAD_FAMILY_WINDOW = 10
-
-
-def seeded_pool(records, rng):
-   pool = sorted(records, key=lambda record: record["id"])
-   rng.shuffle(pool)
-
-   return pool
-
-
-def reached_skills(record, graph):
-   """The loaded skills and their 1-hop gating parents, each once, as due coverage reads them."""
-   reached = []
-
-   for skill_id in record["skills"]:
-      for candidate in [skill_id] + graph.gating_parents(skill_id):
-         if candidate not in reached:
-            reached.append(candidate)
-
-   return reached
-
-
-def retrievability_priority(record, states, graph, retrievability):
-   priority = 0.0
-
-   for skill_id in reached_skills(record, graph):
-      state = states.get(skill_id)
-      has_memory = state is not None and state.stability is not None
-
-      if has_memory:
-         priority += 1.0 - retrievability_of(skill_id, retrievability)
-
-   return priority
-
-
-def retrievability_priority_ordering(records, states, graph, today, retrievability, rng, history):
-   """Most forgotten reach first, then due coverage, then the seeded shuffle."""
-   pool = seeded_pool(records, rng)
-
-   def key(record):
-      priority = retrievability_priority(record, states, graph, retrievability)
-      cover = due_coverage(record, states, graph, today, retrievability)
-
-      return (-priority, -cover)
-
-   return sorted(pool, key=key)
 
 
 def sigmoid(logit):
@@ -114,7 +69,7 @@ class EloTarget:
 
       def key(record):
          distance = abs(self.expected_success(record, states) - self.target)
-         priority = retrievability_priority(record, states, graph, retrievability)
+         priority = retrievability_need(record, states, graph, retrievability)
 
          return (distance, -priority)
 
@@ -156,7 +111,7 @@ def spread_ordering(records, states, graph, today, retrievability, rng, history)
       return score
 
    def key(record):
-      priority = retrievability_priority(record, states, graph, retrievability)
+      priority = retrievability_need(record, states, graph, retrievability)
 
       return (-spread(record), -priority)
 

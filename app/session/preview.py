@@ -46,6 +46,7 @@ from sqlalchemy import select
 from app.db import models
 from app.engine import constants
 from app.engine.select import due_skills, hypercorrection_skills, retrievability_map
+from app.experiments import switches
 from app.session import repository
 from app.session.build import assemble_session
 
@@ -184,11 +185,28 @@ def set_focus(session, graph):
    return [block_focus(name, items, graph) for name, items in blocks if len(items) > 0]
 
 
-def queue_preview(db, user_id, graph, bank, today, rng):
+def preview_orderings(db, user_id, today, experiment_default):
+   """No session exists yet, so under a randomised selection_priority the day stands in for the
+   session unit and the arm is read, not assigned; the session opened later draws its own. Under
+   off or on the preview orders exactly as that session will."""
+   if experiment_default is None:
+      return None, None
+
+   return switches.selection_ordering(
+      db, user_id, today.isoformat(), experiment_default, None, assigns=False
+   )
+
+
+def queue_preview(db, user_id, graph, bank, today, rng, experiment_default=None):
    states = repository.load_states(db, user_id)
    history = repository.load_attempts_history(db, user_id)
    reviewable = reviewable_skills(states, graph, today)
-   session = assemble_session(states, graph, bank, None, history, rng, today)
+   ordering, retrieval_ordering = preview_orderings(db, user_id, today, experiment_default)
+   session = assemble_session(
+      states, graph, bank, None, history, rng, today,
+      ordering=ordering,
+      retrieval_ordering=retrieval_ordering,
+   )
 
    requeued_ids = {item["id"] for item in session.requeued}
    reviewed_items = [item for item in session.block1 if item["id"] not in requeued_ids]

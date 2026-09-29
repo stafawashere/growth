@@ -46,6 +46,10 @@ Added 2026-09-29 with the lessons layer (docs/plan/15-lessons.md, API, migration
 lesson_gap_fail_open, the lessons twin of opener_gap_fail_open, bounded one row per user, concept
 and day; lesson_stale, written when ingest finds a record whose sources moved or whose ids went
 inactive; lesson_signed_off, written when ingest first stores a signed_off version.
+
+Added 2026-09-29 with the Today redesign (docs/pedagogy/today/design.md D4): due_skill_unserved,
+a due skill block 1 leaves unserved with its reason, so the rulings on the block 1 cap and the
+retrieval floor rest on counts. It is bounded one row per user, skill and day.
 """
 AUDIT_ACTIONS = (
    "account_created",
@@ -58,6 +62,7 @@ AUDIT_ACTIONS = (
    "coverage_gap_fail_closed",
    "dev_spend_cap_refused",
    "dev_spend_ledger_reconcile_failed",
+   "due_skill_unserved",
    "export_produced",
    "frq_image_deleted",
    "grading_rerun",

@@ -32,6 +32,7 @@ from app.engine.fringe import covered_due_skills, gated_records, outer_fringe, r
 from app.engine.interleave import window_filter
 from app.engine.select import (
    DEFAULT_RULES,
+   archetypes_touching,
    dress_item,
    due_skills,
    filter_interleaving,
@@ -40,6 +41,7 @@ from app.engine.select import (
    next_item_retrieval,
    next_item_review,
    pick_named_item,
+   reached_skills,
    requires_choice,
    retrievability_map,
    review_eligible,
@@ -53,6 +55,13 @@ from app.lessons.plan import FIRST_CONTACT, plan_lesson
 COVERAGE_GAP_ACTION = "coverage_gap_fail_closed"
 
 OPENER_GAP_ACTION = "opener_gap_fail_open"
+
+DUE_UNSERVED_ACTION = "due_skill_unserved"
+
+NO_PUBLISHED_ITEM = "no_published_item"
+BELOW_RETRIEVAL_FLOOR = "below_retrieval_floor"
+REFUSED_BY_WINDOW = "refused_by_window"
+PAST_BLOCK_CAP = "past_block_cap"
 
 ITEM_KIND = "item"
 LESSON_KIND = "lesson"
@@ -260,6 +269,11 @@ class DueQueue:
    hypercorrection date has come, which block 1 serves ahead of the FSRS order, and
    hypercorrection_archetypes the archetypes loading them directly that would serve them. minutes
    is the forecast over every archetype and requeued item in the queue.
+
+   uncovered_reasons names, for every due skill block 1 leaves unserved, why (design.md D4): no
+   reaching archetype has a published item, the reaching ones are all under the retrieval floor or
+   gated, the window refuses every eligible one, or the cover reaches it only past block 1's cap.
+   It is keyed wider than uncovered_skills, which holds only the first two reasons.
    """
    skills: tuple
    archetypes: tuple
@@ -268,6 +282,7 @@ class DueQueue:
    minutes: float
    hypercorrection_skills: tuple = ()
    hypercorrection_archetypes: tuple = ()
+   uncovered_reasons: dict = field(default_factory=dict)
 
    @property
    def item_count(self):
@@ -325,7 +340,82 @@ def is_published_item(bank, item_id, archetype_id):
    return any(item["id"] == item_id for item in bank.published_items(archetype_id))
 
 
-def due_today_queue(states, graph, bank, attempts_history, today, retrievability=None):
+def within_block1_cap(chosen, ahead, attempts_history):
+   """The prefix of the cover block 1 has room for once the archetypes ahead of it are served,
+   cut at the first archetype that would pass the item cap or the minute cap, as block 1 stops."""
+   items = len(ahead)
+   minutes = sum(forecast_minutes(archetype_id, attempts_history) for archetype_id in ahead)
+   within = []
+
+   for archetype_id in chosen:
+      minutes_after = minutes + forecast_minutes(archetype_id, attempts_history)
+      has_item_room = items < constants.BLOCK1_MAX_ITEMS
+      has_minute_room = minutes_after <= constants.BLOCK1_MAX_MINUTES
+      fits = has_item_room and has_minute_room
+
+      if not fits:
+         break
+
+      within.append(archetype_id)
+      items += 1
+      minutes = minutes_after
+
+   return within
+
+
+def unserved_reason(reaching, eligible_ids, graph, history, rules):
+   has_published = len(reaching) > 0
+
+   if not has_published:
+      return NO_PUBLISHED_ITEM
+
+   eligible = [record for record in reaching if record["id"] in eligible_ids]
+
+   if not eligible:
+      return BELOW_RETRIEVAL_FLOOR
+
+   allowed = window_filter(eligible, history, graph, rules)[0]
+
+   if not allowed:
+      return REFUSED_BY_WINDOW
+
+   return PAST_BLOCK_CAP
+
+
+def unserved_reasons(
+   due, chosen, ahead, states, graph, bank, today, retrievability, attempts_history, history, rules
+):
+   served = set()
+
+   for archetype_id in within_block1_cap(chosen, ahead, attempts_history):
+      record = graph.archetypes[archetype_id]
+      served |= covered_due_skills(record, states, graph, today, retrievability)
+
+   unserved = sorted(set(due) - served)
+   unserved_set = set(unserved)
+   published = [
+      record
+      for record in archetypes_touching(unserved, graph, include_parents=True)
+      if bank.has_published_item(record["id"])
+   ]
+   eligible = review_eligible(unserved, states, graph, bank, retrievability=retrievability)
+   eligible_ids = {record["id"] for record in eligible}
+   reaching = {skill_id: [] for skill_id in unserved}
+
+   for record in published:
+      for skill_id in reached_skills(record, graph, include_parents=True) & unserved_set:
+         reaching[skill_id].append(record)
+
+   return {
+      skill_id: unserved_reason(reaching[skill_id], eligible_ids, graph, history, rules)
+      for skill_id in unserved
+   }
+
+
+def due_today_queue(
+   states, graph, bank, attempts_history, today, retrievability=None, history=(), rules=DEFAULT_RULES
+):
+   """history is the session's served items so far, which the window reads for uncovered_reasons."""
    retrievability = retrievability_map(states, today, retrievability)
    due = due_skills(states, graph, today, retrievability)
    hyper = hypercorrection_skills(states, today)
@@ -342,6 +432,10 @@ def due_today_queue(states, graph, bank, attempts_history, today, retrievability
       forecast_minutes(archetype_id, attempts_history)
       for archetype_id in served_archetypes
    )
+   ahead = requeued_archetypes + list(hyper_chosen)
+   reasons = unserved_reasons(
+      due, chosen, ahead, states, graph, bank, today, retrievability, attempts_history, history, rules
+   )
 
    return DueQueue(
       skills=tuple(sorted(due)),
@@ -351,6 +445,7 @@ def due_today_queue(states, graph, bank, attempts_history, today, retrievability
       minutes=minutes,
       hypercorrection_skills=tuple(sorted(hyper)),
       hypercorrection_archetypes=tuple(hyper_chosen),
+      uncovered_reasons=reasons,
    )
 
 
@@ -400,6 +495,20 @@ def write_coverage_gap_audit(db, user_id, archetype_ids, graph, today):
          "reason": "no published item for this fringe archetype",
       }
       write_audit(db, user_id, COVERAGE_GAP_ACTION, f"archetypes:{archetype_id}", detail)
+
+
+def write_due_unserved_audit(db, user_id, reasons, today):
+   """D4: every due skill block 1 leaves unserved, with its reason, so the rulings on the block 1
+   cap and the retrieval floor rest on counts. One row per user per skill per assembly day, as the
+   coverage gap is recorded."""
+   for skill_id, reason in sorted(reasons.items()):
+      subject = f"skills:{skill_id}"
+
+      if recorded_on_day(db, DUE_UNSERVED_ACTION, user_id, subject, today):
+         continue
+
+      detail = {"skill": skill_id, "day": today.isoformat(), "reason": reason}
+      write_audit(db, user_id, DUE_UNSERVED_ACTION, subject, detail)
 
 
 def write_opener_gap_audit(db, user_id, concept_ids, graph, today):
@@ -893,8 +1002,13 @@ def assemble_session(
    session = Session()
    placement = LessonPlacement(session, lessons, states, graph, retrievability)
    session.due_queue = due_today_queue(
-      states, graph, bank, attempts_history, today, retrievability
+      states, graph, bank, attempts_history, today, retrievability, history, rules
    )
+   writes_audit = db is not None and user_id is not None
+
+   if writes_audit:
+      write_due_unserved_audit(db, user_id, session.due_queue.uncovered_reasons, today)
+
    recent = recently_served(attempts_history, today)[0]
    requeue = requeue_ready(attempts_history, today)
    ready_ids = {item_id for item_id, _ in requeue}

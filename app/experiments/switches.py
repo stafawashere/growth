@@ -1,12 +1,13 @@
 """The A/B switches of docs/plan/10 "A/B readiness", per-item or per-skill randomisation within
 the one student.
 
-The two experiments 10 marks powered for a single student are defined, and lesson_first_contact
-from docs/plan/15-lessons.md, Within-student A/B, whose power 15 calls marginal. Each has a state:
-off serves the shipped arm to every unit, on serves the treatment arm to every unit, randomised
-assigns each new unit an arm and serves it. Turning a switch to randomised assigns only units first
-seen after that instant, and a unit's arm is written once and never changed, so a skill put in the
-3-success arm stays there for the life of the experiment.
+The two experiments 10 marks powered for a single student are defined, lesson_first_contact from
+docs/plan/15-lessons.md, Within-student A/B, whose power 15 calls marginal, and selection_priority
+from docs/pedagogy/today/design.md D2, whose unit is the session. Each has a state: off serves the
+shipped arm to every unit, on serves the treatment arm to every unit, randomised assigns each new
+unit an arm and serves it. Turning a switch to randomised assigns only units first seen after that
+instant, and a unit's arm is written once and never changed, so a skill put in the 3-success arm
+stays there for the life of the experiment.
 
 Assignment is stratified, as 10 asks, so chance imbalance cannot dominate a small sample. A unit's
 stratum is its primary skill plus, for item units, a band of the engine's predicted success
@@ -26,6 +27,7 @@ from dataclasses import dataclass
 from sqlalchemy import select
 
 from app.db import models
+from app.engine.priority import retrievability_priority_ordering
 
 OFF = "off"
 ON = "on"
@@ -35,6 +37,9 @@ STATES = (OFF, ON, RANDOMISED)
 FEEDBACK_ELABORATION = "feedback_elaboration"
 RETRIEVAL_ENTRY = "retrieval_entry"
 LESSON_FIRST_CONTACT = "lesson_first_contact"
+SELECTION_PRIORITY = "selection_priority"
+
+SESSION_STRATUM = "session"
 
 PROBABILITY_BAND_EDGE = 0.5
 
@@ -73,6 +78,13 @@ DEFINITIONS = {
       control_arm="lesson_before_first_item",
       treatment_arm="example_first",
       description="A concept's lesson before its first item against the first item example first, the lesson after it.",
+   ),
+   SELECTION_PRIORITY: Definition(
+      name=SELECTION_PRIORITY,
+      unit="session",
+      control_arm="two_term",
+      treatment_arm="retrievability_priority",
+      description="Blocks 2 and 3 ordered by due coverage against ordered by the most forgotten reach first.",
    ),
 }
 
@@ -250,6 +262,50 @@ def retrieval_entry_thresholds(db, user_id, skill_ids, default_state, now):
       ]
       for skill_id in sorted(skill_ids)
    }
+
+
+def peeked_arm(db, user_id, name, unit_id, primary_skill, p_predicted, default_state):
+   """The arm arm_for would give, with nothing written: no experiment row and no assignment."""
+   definition = DEFINITIONS[name]
+   row = db.get(models.Experiment, (user_id, name))
+   state = row.state if row is not None else resolve_default(default_state, name)
+
+   if state == OFF:
+      return definition.control_arm
+
+   if state == ON:
+      return definition.treatment_arm
+
+   assigned = existing_assignment(db, user_id, name, unit_id)
+
+   if assigned is not None:
+      return assigned.arm
+
+   seed = row.seed if row is not None else default_seed(user_id, name)
+   stratum = stratum_for(definition, primary_skill, p_predicted)
+
+   return balanced_arm(definition, stratum_counts(db, user_id, name, stratum), seed, unit_id)
+
+
+def selection_ordering(db, user_id, session_unit_id, default_state, now, assigns=True):
+   """The (ordering, retrieval_ordering) pair assemble_session takes for blocks 2 and 3. Every
+   session is one stratum, since a session has no primary skill. assigns=False reads the arm
+   without writing, for home's preview, which persists nothing."""
+   if assigns:
+      arm = arm_for(
+         db, user_id, SELECTION_PRIORITY, session_unit_id, SESSION_STRATUM, None, default_state, now
+      )
+   else:
+      arm = peeked_arm(
+         db, user_id, SELECTION_PRIORITY, session_unit_id, SESSION_STRATUM, None, default_state
+      )
+
+   is_treatment = arm == DEFINITIONS[SELECTION_PRIORITY].treatment_arm
+
+   if is_treatment:
+      return retrievability_priority_ordering, retrievability_priority_ordering
+
+   return None, None
 
 
 def switch_view(db, user_id, default_state, now):

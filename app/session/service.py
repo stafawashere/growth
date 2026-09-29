@@ -156,11 +156,16 @@ def open_session(
 
    states = repository.load_states(db, user_id)
    history = repository.load_attempts_history(db, user_id)
+   session_id = new_id("SES")
    retrieval_entry = None
+   ordering, retrieval_ordering = None, None
 
    if experiment_default is not None:
       retrieval_entry = switches.retrieval_entry_thresholds(
          db, user_id, entry_candidates(states), experiment_default, started_at
+      )
+      ordering, retrieval_ordering = switches.selection_ordering(
+         db, user_id, session_id, experiment_default, started_at
       )
 
    opens_learning = mode == LEARNING_MODE
@@ -185,6 +190,8 @@ def open_session(
       retrieval_entry=retrieval_entry,
       openers=opens_learning,
       lessons=lesson_inputs,
+      ordering=ordering,
+      retrieval_ordering=retrieval_ordering,
    )
    opened_first_skills = [
       graph.concept_skills[concept_id][0] for concept_id in assembled.opener_concepts
@@ -192,7 +199,7 @@ def open_session(
    repository.mark_openers_done(db, user_id, opened_first_skills, started_at)
    is_rehearsal = mode == "rehearsal"
    row = models.Session(
-      id=new_id("SES"),
+      id=session_id,
       user_id=user_id,
       mode=mode,
       sub_mode=sub_mode,

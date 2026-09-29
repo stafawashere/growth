@@ -32,7 +32,9 @@ def read_progress(
    except preview.UnreadableDay as unreadable:
       raise HTTPException(status_code=422, detail=str(unreadable)) from unreadable
 
-   return preview.queue_preview(db, user.id, context.graph, context.bank, day, rng)
+   return preview.queue_preview(
+      db, user.id, context.graph, context.bank, day, rng, settings.experiment_default_state
+   )
 
 
 @router.get("/progress/calibration")

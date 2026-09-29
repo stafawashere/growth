@@ -232,8 +232,8 @@ def next_item_learning(
    ordering=None,
 ):
    """unit_counts, when given, is the per-unit tally the exam-weight quota reads (blocks 2 and 3).
-   ordering replaces the two-term ordering only in simulation (app/sim/five_term.py); the running
-   app never passes one."""
+   ordering replaces the two-term ordering: the simulations pass their candidate policies, and the
+   running app passes one only under the treatment arm of the selection_priority switch."""
    retrievability = retrievability_map(states, today, retrievability)
    probe_archetype = drain_probe_queue(probes, graph, bank, session_now(today, now))
 
@@ -403,8 +403,8 @@ def next_item_retrieval(
    retrieval_ordering=None,
 ):
    """Block 3: the retrieval-eligible pool is the candidate set, not a filter over a wider pick.
-   retrieval_ordering replaces the two-term ordering only in simulation (app/sim/today_policies.py),
-   as ordering does in block 2; the running app never passes one."""
+   retrieval_ordering replaces the two-term ordering as ordering does in block 2, in simulation
+   and under the treatment arm of the selection_priority switch."""
    retrievability = retrievability_map(states, today, retrievability)
    servable = [record for record in pool if bank.has_published_item(record["id"])]
    gated = gated_records(servable, states, graph)

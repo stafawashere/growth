@@ -402,8 +402,8 @@ Every non-text choice is [inferred]; settled by the modality A/B.
   "text": "Run the running total of ex-1's rate from x = 0: 2, 3, 2, 1, then 1 - π at 6 and 1 - 2π at 8. It rises while f is positive and falls while f is negative.",
   "figure": {
    "kind": "numeric_experiment",
-   "function": "f from ex-1",
-   "computed": "∫_0^x f(t) dt",
+   "function": "F(x) = ∫_0^x f(t) dt, the running total of ex-1's rate f",
+   "computed": "F(x), evaluated at each x",
    "x_values": [
     1,
     2,
@@ -952,7 +952,7 @@ Every non-text choice is [inferred]; settled by the modality A/B.
      "BC-REP-03"
     ],
     "function": "2*(abs(x) - abs(x - 1) + 1)/2 + 4*((abs(x - 1) - abs(x - 3) + 4)/2 - 1) - (((abs(x - 1) - abs(x - 3) + 4)/2)**2 - 1) + (((abs(x - 3) - abs(x - 4) + 7)/2)**2 - 9) - 8*((abs(x - 3) - abs(x - 4) + 7)/2 - 3) - (((abs(x - 4) - abs(x - 8))/2)*sqrt(4 - ((abs(x - 4) - abs(x - 8))/2)**2)/2 + 2*asin((abs(x - 4) - abs(x - 8))/4) + pi)",
-    "computed": "∫_0^x f(t) dt",
+    "computed": "F(x) = ∫_0^x f(t) dt, the running total; the field function holds F, not the rate f",
     "x_values": [
      1,
      2,
@@ -963,7 +963,7 @@ Every non-text choice is [inferred]; settled by the modality A/B.
     ],
     "columns": [
      "x",
-     "running total"
+     "F(x), running total"
     ],
     "labels": [
      {

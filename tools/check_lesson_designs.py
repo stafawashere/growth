@@ -894,6 +894,21 @@ def rule_band_caps(design, context):
    return messages
 
 
+VERBATIM_KEYS = ("observed_behavior", "scoring_consequence", "lines")
+
+
+def authored_record(node):
+   """The machine record without the fields copied verbatim from library records (error
+   behaviour and consequence text, reader_checks lines), which the model did not write."""
+   if isinstance(node, dict):
+      return {key: authored_record(value) for key, value in node.items() if key not in VERBATIM_KEYS}
+
+   if isinstance(node, list):
+      return [authored_record(value) for value in node]
+
+   return node
+
+
 def rule_style(design, context):
    messages = []
    raw = design.text
@@ -920,7 +935,7 @@ def rule_style(design, context):
          if found:
             messages.append(f"{name}: {found.group(0)!r} in {line.strip()[:60]!r}")
 
-   record_text = json.dumps(design.record or {}, ensure_ascii=False)
+   record_text = json.dumps(authored_record(design.record or {}), ensure_ascii=False)
 
    for name, pattern in patterns:
       found = pattern.search(record_text)

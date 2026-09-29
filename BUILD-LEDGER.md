@@ -2428,7 +2428,7 @@ items) and items 3 and 6 (Slices 3 and 4). Every gate 11 names for P2 now exists
   spaced-repetition model the plan cites re-encodes a lapsed item at its shortest interval, and
   the app shows the solution after every attempt (03). `WorldRules.relearn_on_feedback` (on in
   `WORLD`, off in `LEGACY_WORLD`): a known skill the student could not retrieve for an item is
-  re-anchored, last retrieved today, with no growth. Plan 10 "Forgetting" and 12's register
+  re-anchored, last retrieved today, with one growth step of its half-life undone. Plan 10 "Forgetting" and 12's register
   record it.
   Rejected form, measured first: restarting the lapsed skill at the initial 5-day half-life, SM-2's
   full reset. Seeds 1, 2, 3 fell to 222, 211 and 259 of 539 (from 277, 255 and 288), because a
@@ -2529,6 +2529,22 @@ items) and items 3 and 6 (Slices 3 and 4). Every gate 11 names for P2 now exists
   no unaided success ever made a skill retrieval-eligible. Every assertion of both tests is
   unchanged. `test_a_student_placed_across_the_course_keeps_the_known_boundary_open` pins the
   helper.
+  Reviewer (opus, read-only) on the diff since 1f9435f: no loosened assertion, threshold or
+  fixture; the two premise-changed tests keep every assertion. Addressed: the skip's parent set
+  is now recorded in 02 as a dated correction (blocking parents, not every hard parent); the
+  ledger sentence that said "no growth" for the relearn rule now matches the code; the compound
+  conditions and a local import it named are tidied. Left open, disclosed in 02 and 12: a skill
+  declared on one servable archetype is not re-examined when a second opens, only by the
+  un-mastery rule (a credited failure at unsupported there, or strength under 0.75); what would
+  settle it is the un-mastery rate on second archetypes.
+  Final read, kept engine: ability 3.0 seeds 1, 2, 3 master 396, 405 and 396 of 539 by 2027-05-07
+  (Unit 1 completes on day 159 for seed 1; no other unit completes), against 114, 45 and 80 in the
+  fixed world and 277, 255 and 288 in the learning world at the start of the session; 20
+  population students mean 161.7 (min 67, max 252), 0 false masteries, 5 of 20 complete one unit.
+  Acceptance 1 is not met: the pace roughly doubled for the ability-3.0 student and no rule, world
+  or scheduling change left inside the binding rules closes the last 140 skills; the evidence
+  above says the 19-deep chains with a 7-day span per skill and the placement that starts a
+  knowing student at Unit 1 are what remains, and both need an operator ruling.
 
 ## In progress [inferred]
 

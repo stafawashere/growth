@@ -1,0 +1,118 @@
+{
+ "LSN-CON-01012#ex-1": {
+  "agree": true,
+  "reason": "removable at 1 (SymPy limit -1, f(1) undefined) and vertical asymptote at -1 (limits -oo) match the design's two classifications"
+ },
+ "LSN-CON-01012#ex-2": {
+  "agree": true,
+  "reason": "jump at 2, limits 3 and -1, matches the design's jump verdict"
+ },
+ "LSN-CON-01012#chk-1": {
+  "agree": true,
+  "reason": "removable at 1 matches the design's final step"
+ },
+ "LSN-CON-01012#chk-2": {
+  "agree": true,
+  "reason": "removable at 2 with limit -5/4 matches the design's final step"
+ },
+ "LSN-CON-01013#ex-1": {
+  "agree": true,
+  "reason": "limit 3 (SymPy) against f(2) = -1, condition three fails: matches"
+ },
+ "LSN-CON-01013#chk-1": {
+  "agree": true,
+  "reason": "limit 3 not equal to f(2) = -1: matches condition three failing"
+ },
+ "LSN-CON-01013#chk-2": {
+  "agree": true,
+  "reason": "one sided limits 2 and -3 differ, no limit: matches condition two failing"
+ },
+ "LSN-CON-01016#ex-1": {
+  "agree": true,
+  "reason": "only asymptote x = -2, left +oo and right -oo (SymPy): matches"
+ },
+ "LSN-CON-01016#chk-1": {
+  "agree": true,
+  "reason": "left limit +oo (SymPy): matches"
+ },
+ "LSN-CON-01016#chk-2": {
+  "agree": true,
+  "reason": "asymptote x = 2, right limit -oo (SymPy): matches"
+ },
+ "LSN-CON-01019#ex-1": {
+  "agree": true,
+  "reason": "yes by the IVT; the re-solver's interval (1, 3) lies inside the design's (1, 8)"
+ },
+ "LSN-CON-01019#chk-1": {
+  "agree": true,
+  "reason": "IVT conclusion, some c with f(c) = 0: matches"
+ },
+ "LSN-CON-01019#chk-2": {
+  "agree": true,
+  "reason": "yes, c in (2, 4) from f(4) < 1 < f(2): matches"
+ },
+ "LSN-CON-02009#ex-1": {
+  "agree": true,
+  "reason": "cusp, opposite infinite one sided quotients: matches"
+ },
+ "LSN-CON-02009#chk-1": {
+  "agree": true,
+  "reason": "not differentiable, cusp: matches"
+ },
+ "LSN-CON-02009#chk-2": {
+  "agree": true,
+  "reason": "not differentiable, vertical tangent: matches"
+ },
+ "LSN-CON-05002#ex-1": {
+  "agree": true,
+  "reason": "yes by the Extreme Value Theorem: matches"
+ },
+ "LSN-CON-05002#ex-2": {
+  "agree": true,
+  "reason": "no minimum assured, the theorem does not apply: matches"
+ },
+ "LSN-CON-05002#chk-1": {
+  "agree": true,
+  "reason": "yes by the Extreme Value Theorem: matches"
+ },
+ "LSN-CON-05002#chk-2": {
+  "agree": true,
+  "reason": "yes by the Extreme Value Theorem: matches"
+ },
+ "LSN-CON-05009#ex-1": {
+  "agree": true,
+  "reason": "f'(2) = 0 and f''(2) = 18 > 0 (SymPy), relative minimum: matches"
+ },
+ "LSN-CON-05009#chk-1": {
+  "agree": true,
+  "reason": "relative minimum at 2: matches"
+ },
+ "LSN-CON-05009#chk-2": {
+  "agree": true,
+  "reason": "h''(4) = -18 < 0 (SymPy), relative maximum at 4: matches"
+ },
+ "LSN-CON-07001#ex-1": {
+  "agree": true,
+  "reason": "dT/dt = k(70 - T), T(0) = 95 is the key with the variable renamed"
+ },
+ "LSN-CON-07001#chk-1": {
+  "agree": true,
+  "reason": "dH/dt = k(70 - H), H(0) = 95 equals the key"
+ },
+ "LSN-CON-01015#ex-1": {
+  "agree": true,
+  "reason": "k = 5, m = -3 is the key pair written as equations"
+ },
+ "LSN-CON-01015#chk-1": {
+  "agree": true,
+  "reason": "k = 5, m = -3 is the key pair written as equations"
+ },
+ "LSN-CON-01015#chk-2": {
+  "agree": true,
+  "reason": "k = 2, m = 0 is the key pair written as equations"
+ },
+ "LSN-CON-04007#chk-1": {
+  "agree": true,
+  "reason": "re-solver slip: 2(9)(2) is 36, not 18; SymPy solve(36 + 24*y) gives -3/2, the key"
+ }
+}

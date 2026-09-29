@@ -33,5 +33,106 @@
    }
   ],
   "answers_file": "/tmp/claude-0/-home-user-growth/ac029253-8ff0-5a4b-8b5f-cdcaf5e8ff8d/scratchpad/verify/answers_12.json"
+ },
+ "audit": {
+  "date": "2026-09-30",
+  "auditor": "claude-opus-5-5",
+  "blocks": [
+   {
+    "id": "orientation",
+    "verdict": "ok",
+    "evidence": "Paraphrases BC-CON-08010 description_plain and the 8.4 Assessment behaviour paragraph (integrand, antiderivative, answer scored separately); 24 words."
+   },
+   {
+    "id": "ki-1",
+    "verdict": "ok",
+    "evidence": "Area in x from the 8.4 Area between curves paragraph; reversed-difference answer loss confirmed on cached sg-23 page 17; quote verbatim ced:155 CHA-5.A.1; 59 words."
+   },
+   {
+    "id": "st-1",
+    "verdict": "over_cap",
+    "evidence": "Cue has 21 words, cap 20: 'The stem asks for the area of a region enclosed by two graphs, from the curve equations or a shaded figure.'"
+   },
+   {
+    "id": "ex-1",
+    "verdict": "ok",
+    "evidence": "SymPy: f - g = -(x-2)(x-5), f(3) = 2 > g(3) = 0, integral 2 to 5 = 9/2 = bulge*width**3/6; F' matches the integrand; all four spec constraints hold."
+   },
+   {
+    "id": "reader",
+    "verdict": "ok",
+    "evidence": "BC-PT-99059 is listed on BC-QA-08008; the line is the checker-recomputed reader_checks text."
+   },
+   {
+    "id": "err-BC-ERR-06018",
+    "verdict": "ok",
+    "evidence": "Verbatim record; u = x - 2 gives u(3 - u), SymPy -15/2 on [2, 5] against 9/2 on [0, 3]; reason fragment from BC-MIS-06016."
+   },
+   {
+    "id": "err-BC-ERR-08020",
+    "verdict": "ok",
+    "evidence": "Verbatim record; SymPy g - f on [2, 5] = -9/2; reason fragment from BC-MIS-08011."
+   },
+   {
+    "id": "err-BC-ERR-99006",
+    "verdict": "wrong",
+    "evidence": "wrong_step and right_step expr are the same string Integral(-x**2 + 7*x - 10, (x, 2, 5)); LessonSection.tsx renders wrong_step.expression, and its MathJSON converts to LaTeX ending in \\operatorname{d}x, so the wrong step shows the dx its text says is missing and the block does not exhibit BC-ERR-99006."
+   },
+   {
+    "id": "err-BC-ERR-99011",
+    "verdict": "ok",
+    "evidence": "Verbatim record; squaring the difference for an area is the first behaviour it names; SymPy 81/10 against 9/2; reason fragment from BC-MIS-99003."
+   },
+   {
+    "id": "representations",
+    "verdict": "ok",
+    "evidence": "null; the 8.4 Representations conversion BC-REP-02 to BC-REP-01 is carried by the orientation and ki-1 figures."
+   },
+   {
+    "id": "bridge-BC-PRQ-06002",
+    "verdict": "ok",
+    "evidence": "Paraphrases BC-PRQ-06002 description_plain and failure_signature; 13 words."
+   },
+   {
+    "id": "bridge-BC-PRQ-06005",
+    "verdict": "ok",
+    "evidence": "Paraphrases BC-PRQ-06005 (wrong input, f' for f); 20 words."
+   },
+   {
+    "id": "time",
+    "verdict": "ok",
+    "evidence": "I-A 2.14 from exam-structure.md#Section and part layout; either status listed as inferred."
+   },
+   {
+    "id": "chk-1",
+    "verdict": "ok",
+    "evidence": "Completion of ex-1; SymPy integral of -x**2 + 7x - 10 on [2, 5] = 9/2."
+   },
+   {
+    "id": "chk-2",
+    "verdict": "ok",
+    "evidence": "Draw gives f = 6 - x - 2x**2, g = x + 2 meeting at -2 and 1; f(0) = 6 > 2; SymPy area 9; constraints hold."
+   },
+   {
+    "id": "chk-3",
+    "verdict": "ok",
+    "evidence": "Key C = 8/3 (SymPy); A g - f = -8/3 (ERR-08020), B squared difference 64/15 (ERR-99011), D u = x - 1 with x limits 1, 3 kept = -4/3 (ERR-06018); values distinct."
+   }
+  ],
+  "advice": [
+   "BC-ERR-99006: the draw's omitted dx is not ambiguous (integrand and limits are all in x), and research/scoring/notation-requirements.md#The differential is normally optional says a bare missing differential is forgiven, so the block overstates the loss here; drop the wrong-step expr and pick a draw where the variable is in doubt, or cut the block.",
+   "BC-ERR-08021 (reversed difference asserted equal to the positive area) is what ki-1 and the Scoring section teach, but the bundle order serves BC-ERR-06018 first, a substitution a polynomial draw never invites; a ruling on relevance over bundle order would let 08021 in.",
+   "The topic's second named MCQ distractor, the integral of one function alone (BC-MIS-08010), appears in no block or option.",
+   "Served text carries ids and page cites: ki-1 '(sg-23:17)', st-1 rival '(BC-ERR-08020)' (recurring served-text class).",
+   "The orientation and ki-1 show the same region twice; the orientation window y in [-3, 3] clips f for x above 5.24, outside the shaded part.",
+   "BC-PRQ-06002 (radicals and reciprocals as powers) has nothing to act on in a polynomial-only lesson."
+  ],
+  "counts": {
+   "ok": 14,
+   "unsourced": 0,
+   "wrong": 1,
+   "over_cap": 1,
+   "lint": 0
+  }
  }
 }

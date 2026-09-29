@@ -39,5 +39,115 @@
    }
   ],
   "answers_file": "/tmp/claude-0/-home-user-growth/ac029253-8ff0-5a4b-8b5f-cdcaf5e8ff8d/scratchpad/verify/answers_12.json"
+ },
+ "audit": {
+  "date": "2026-09-30",
+  "auditor": "claude-opus-5-5",
+  "blocks": [
+   {
+    "id": "orientation",
+    "verdict": "ok",
+    "evidence": "Paraphrases BC-CON-08014 description_plain and the 8.7 Notation and Assessment behaviour paragraphs (no pi for polygonal slices); 32 words."
+   },
+   {
+    "id": "ki-1",
+    "verdict": "ok",
+    "evidence": "8.7 Cross section volume, Square and rectangular sections and Side length paragraphs; no quote (allowed); 39 words."
+   },
+   {
+    "id": "st-1",
+    "verdict": "ok",
+    "evidence": "Method is expected_solution_path[0]; rival is wrong_approaches[1]; cue 18 words, total 43."
+   },
+   {
+    "id": "ex-1",
+    "verdict": "ok",
+    "evidence": "Draw gives g = x + 1, f = -x**2 + 3x + 1, f - g = x(2 - x); area 2x**2(2-x)**2; SymPy integral on [0, 2] = 32/15; both spec constraints hold."
+   },
+   {
+    "id": "ex-2",
+    "verdict": "ok",
+    "evidence": "Draw gives g = 1, side 2(x+1)(1-x); SymPy integral of its square on [-1, 1] = 64/15; constraints hold."
+   },
+   {
+    "id": "reader",
+    "verdict": "ok",
+    "evidence": "BC-PT-99001 and BC-PT-99004 are listed on BC-QA-08011; lines are the recomputed reader_checks text; integration by parts points rightly untagged."
+   },
+   {
+    "id": "err-BC-ERR-08023",
+    "verdict": "ok",
+    "evidence": "Verbatim record; x integrand under dy, SymPy value still holds x; reason fragment from BC-MIS-08013."
+   },
+   {
+    "id": "err-BC-ERR-08029",
+    "verdict": "ok",
+    "evidence": "Verbatim record; pi on a polygonal (rectangle) integrand, SymPy 32pi/15 against 32/15; reason fragment from BC-MIS-08015."
+   },
+   {
+    "id": "err-BC-ERR-08030",
+    "verdict": "ok",
+    "evidence": "Verbatim record; f**2 - g**2 for (f - g)**2 is the 'squared difference expanded term by term' clause; SymPy 64/5 against 32/15; reason fragment from BC-MIS-08017."
+   },
+   {
+    "id": "err-BC-ERR-08031",
+    "verdict": "ok",
+    "evidence": "Verbatim record; rectangle of height twice the base taken as a square, SymPy 16/15 against 32/15; null reason justified."
+   },
+   {
+    "id": "representations",
+    "verdict": "ok",
+    "evidence": "null; the 8.7 verbal-solid to slice-diagram conversion is carried by ki-1's motion."
+   },
+   {
+    "id": "bridge-BC-PRQ-06002",
+    "verdict": "ok",
+    "evidence": "Paraphrases BC-PRQ-06002 description_plain and failure_signature; 11 words."
+   },
+   {
+    "id": "bridge-BC-PRQ-08002",
+    "verdict": "ok",
+    "evidence": "Paraphrases BC-PRQ-08002 (x integrand under dy); 18 words."
+   },
+   {
+    "id": "bridge-BC-PRQ-08004",
+    "verdict": "ok",
+    "evidence": "Paraphrases BC-PRQ-08004 (larger minus smaller, not a bare value); 14 words."
+   },
+   {
+    "id": "time",
+    "verdict": "ok",
+    "evidence": "I-A 2.14 from exam-structure.md#Section and part layout; either status listed as inferred."
+   },
+   {
+    "id": "chk-1",
+    "verdict": "ok",
+    "evidence": "Completion of ex-1; expansion 8x**2 - 8x**3 + 2x**4 and 64/3 - 32 + 64/5 = 32/15 (SymPy)."
+   },
+   {
+    "id": "chk-2",
+    "verdict": "ok",
+    "evidence": "Draw gives g = x, f = 4x - x**2, side 3x - x**2 on [0, 3]; SymPy 81/10; constraints hold."
+   },
+   {
+    "id": "chk-3",
+    "verdict": "ok",
+    "evidence": "Area 12x**2(1-x)**2 on [0, 1], key C 2/5 (SymPy); A 2pi/5 (ERR-08029), B 3(f**2 - g**2) = 17/5 (ERR-08030), D side squared only 2/15 (ERR-08031); distinct."
+   }
+  ],
+  "advice": [
+   "The stems of ex-1, ex-2, chk-2 and chk-3 never say R is the base of a solid; 'find the volume' has no stated solid, and 'height twice the base' uses base for the rectangle's side while R is the base region. Adding 'R is the base of a solid' and 'height twice its side in R' would remove the ambiguity.",
+   "BC-ERR-08029's observed_behavior names square or triangular sections; the block and chk-3 option A put pi on a rectangle. The record name (polygonal) covers it, but ex-2 (squares) would match the record text literally.",
+   "BC-ERR-99011, which the 8.7 Notation paragraph names as the Chief Reader's wrong-family record, falls past the cap of 4 while BC-ERR-08023 (dy on an x integrand) is served first by bundle order.",
+   "BC-SKL-08034 (the slicing axis) is probed only by the dy block; no example or check slices perpendicular to the y-axis.",
+   "Mid band serves only err-BC-ERR-08023 and err-BC-ERR-08029, so the squared-difference error the st-1 rival warns about never reaches the mid band."
+  ],
+  "counts": {
+   "ok": 18,
+   "unsourced": 0,
+   "wrong": 0,
+   "over_cap": 0,
+   "lint": 0
+  }
  }
 }

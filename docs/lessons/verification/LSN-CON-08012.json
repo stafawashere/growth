@@ -33,5 +33,105 @@
    }
   ],
   "answers_file": "/tmp/claude-0/-home-user-growth/ac029253-8ff0-5a4b-8b5f-cdcaf5e8ff8d/scratchpad/verify/answers_12.json"
+ },
+ "audit": {
+  "date": "2026-09-30",
+  "auditor": "claude-opus-5-5",
+  "blocks": [
+   {
+    "id": "orientation",
+    "verdict": "ok",
+    "evidence": "Paraphrases BC-CON-08012 description_plain and the 8.5 Assessment behaviour paragraph (horizontal slice as the efficient choice); 34 words."
+   },
+   {
+    "id": "ki-1",
+    "verdict": "ok",
+    "evidence": "8.5 Area in y, Choice of variable and Notation paragraphs; quote verbatim ced:156 CHA-5.A.2; 57 words."
+   },
+   {
+    "id": "st-1",
+    "verdict": "ok",
+    "evidence": "Method is expected_solution_path[0]; rival is the single wrong_approaches entry; cue 20 words, total 49."
+   },
+   {
+    "id": "ex-1",
+    "verdict": "ok",
+    "evidence": "Draw gives x = y**2 and x = y + 2 (offset 2); SymPy roots -1, 2, keep 2; 3 > 1 at y = 1; integral = 10/3 = area_value; x-slice check 10/3; constraints hold."
+   },
+   {
+    "id": "reader",
+    "verdict": "ok",
+    "evidence": "Empty; BC-QA-08009 point_types is empty."
+   },
+   {
+    "id": "err-BC-ERR-08020",
+    "verdict": "ok",
+    "evidence": "Verbatim record; left minus right SymPy -10/3; reason fragment from BC-MIS-08011."
+   },
+   {
+    "id": "err-BC-ERR-08023",
+    "verdict": "ok",
+    "evidence": "Verbatim record; sqrt(x) - (x - 2) under dy is an x integrand with dy, SymPy value still holds x; reason fragment from BC-MIS-08013."
+   },
+   {
+    "id": "err-BC-ERR-08024",
+    "verdict": "ok",
+    "evidence": "Verbatim record; x limits 0 and 4 on the y integral give SymPy -16/3 = x_limits_value; reason fragment from BC-MIS-08012."
+   },
+   {
+    "id": "err-BC-ERR-99006",
+    "verdict": "wrong",
+    "evidence": "wrong_step and right_step expr are the same string Integral(y + 2 - y**2, (y, 0, 2)); LessonSection.tsx renders wrong_step.expression, and its MathJSON converts to LaTeX ending in \\operatorname{d}y, so the wrong step shows the dy its text says is missing and the block does not exhibit BC-ERR-99006."
+   },
+   {
+    "id": "representations",
+    "verdict": "ok",
+    "evidence": "null; the 8.5 figure to horizontal slice conversion is carried by the orientation and ki-1 figures."
+   },
+   {
+    "id": "bridge-BC-PRQ-06005",
+    "verdict": "ok",
+    "evidence": "Paraphrases BC-PRQ-06005 (wrong input, f' for f); 20 words."
+   },
+   {
+    "id": "bridge-BC-PRQ-08002",
+    "verdict": "ok",
+    "evidence": "Paraphrases BC-PRQ-08002 description_plain and failure_signature; 23 words."
+   },
+   {
+    "id": "time",
+    "verdict": "ok",
+    "evidence": "I-A 2.14 from exam-structure.md#Section and part layout; either status listed as inferred."
+   },
+   {
+    "id": "chk-1",
+    "verdict": "ok",
+    "evidence": "Completion of ex-1; SymPy 10/3."
+   },
+   {
+    "id": "chk-2",
+    "verdict": "ok",
+    "evidence": "Draw gives x = y**2, x = y + 6 (offset 6); SymPy roots -2, 3, keep 3; area 27/2, same as the two-piece x integral; constraints hold."
+   },
+   {
+    "id": "chk-3",
+    "verdict": "ok",
+    "evidence": "Draw gives x = 2y**2, x = 2y + 4; key A 20/3 (SymPy, x-slice check agrees); B left minus right -20/3 (ERR-08020), C x forms under dy (ERR-08023), D x value 8 as upper limit = -736/3 (ERR-08024)."
+   }
+  ],
+  "advice": [
+   "BC-ERR-99006: with a y integrand and y limits the omitted dy is not ambiguous, and research/scoring/notation-requirements.md#The differential is normally optional says a bare missing differential is forgiven; the block overstates the loss on this draw.",
+   "BC-SKL-08026 (choose x or y) is taught in ki-1 but no check asks the student to choose, or shows the two x integrals the region would need; a contrast of the two setups would test it.",
+   "chk-3 option C is an expression in x, not a number, which the MCQ form allows but a student may read as a trick option.",
+   "Served text carries the id '(BC-ERR-08023)' in the st-1 rival (recurring served-text class).",
+   "BC-PRQ-06005 bridge (function values at an input) fits loosely; which curve is right is read from x values, not function values."
+  ],
+  "counts": {
+   "ok": 15,
+   "unsourced": 0,
+   "wrong": 1,
+   "over_cap": 0,
+   "lint": 0
+  }
  }
 }

@@ -1,0 +1,922 @@
+{
+ "designs": [
+  "docs/lessons/unit-01/LSN-CON-01001.md",
+  "docs/lessons/unit-01/LSN-CON-01007.md",
+  "docs/lessons/unit-01/LSN-CON-01012.md",
+  "docs/lessons/unit-01/LSN-CON-01013.md",
+  "docs/lessons/unit-01/LSN-CON-01014.md",
+  "docs/lessons/unit-01/LSN-CON-01015.md",
+  "docs/lessons/unit-01/LSN-CON-01016.md",
+  "docs/lessons/unit-01/LSN-CON-01019.md",
+  "docs/lessons/unit-02/LSN-CON-02001.md",
+  "docs/lessons/unit-02/LSN-CON-02002.md",
+  "docs/lessons/unit-02/LSN-CON-02003.md",
+  "docs/lessons/unit-02/LSN-CON-02009.md",
+  "docs/lessons/unit-03/LSN-CON-03007.md",
+  "docs/lessons/unit-03/LSN-CON-03008.md",
+  "docs/lessons/unit-03/LSN-CON-03009.md",
+  "docs/lessons/unit-03/LSN-CON-03010.md",
+  "docs/lessons/unit-04/LSN-CON-04007.md",
+  "docs/lessons/unit-05/LSN-CON-05002.md",
+  "docs/lessons/unit-05/LSN-CON-05004.md",
+  "docs/lessons/unit-05/LSN-CON-05009.md",
+  "docs/lessons/unit-07/LSN-CON-07001.md",
+  "docs/lessons/unit-01/LSN-CON-01002.md",
+  "docs/lessons/unit-05/LSN-CON-05011.md",
+  "docs/lessons/unit-07/LSN-CON-07009.md",
+  "docs/lessons/unit-06/LSN-CON-06011.md"
+ ],
+ "problems": [
+  {
+   "id": "LSN-CON-01001#ex-1",
+   "kind": "worked_example",
+   "text": "Let s(t) = 2t^2 + t + 3. Find the average rate of change of s over [1, 1 + h] for h = 0.1, 0.01, 0.001, and state what these indicate about the rate at t = 1.",
+   "calculator_status": "no_calculator",
+   "answer_form": "numeric"
+  },
+  {
+   "id": "LSN-CON-01001#chk-1",
+   "kind": "completion",
+   "text": "For s(t) = 2t^2 + t + 3 the averages over [1, 1 + h] are 5 + 2h. Find the rate of s at t = 1.",
+   "calculator_status": "no_calculator",
+   "answer_form": "numeric"
+  },
+  {
+   "id": "LSN-CON-01001#chk-2",
+   "kind": "isomorph",
+   "text": "Let s(t) = 3t^2 - 2t + 1. From average rates over [1, 1 + h], find the rate of s at t = 1.",
+   "calculator_status": "no_calculator",
+   "answer_form": "numeric"
+  },
+  {
+   "id": "LSN-CON-01001#chk-3",
+   "kind": "mcq",
+   "text": "Let V(t) = t^2 + 2t + 4. Which value do average rates of V over [2, 2 + h] approach as h shrinks?",
+   "calculator_status": "no_calculator",
+   "answer_form": "numeric"
+  },
+  {
+   "id": "LSN-CON-01007#ex-1",
+   "kind": "worked_example",
+   "text": "Limits at x = 1: f 2, g 3. Table: f(1) = 4, g(1) = -1, f(3) = -2. With h(x) = x^2 + 2, find the limit of h(f(x))/g(x) at x = 1.",
+   "calculator_status": "no_calculator",
+   "answer_form": "numeric"
+  },
+  {
+   "id": "LSN-CON-01007#ex-2",
+   "kind": "worked_example",
+   "text": "Find the limit of (x^2 - x - 2)/(x^2 - 5x + 6) as x approaches 2.",
+   "calculator_status": "no_calculator",
+   "answer_form": "numeric"
+  },
+  {
+   "id": "LSN-CON-01007#chk-1",
+   "kind": "completion",
+   "text": "The theorems give the limit as (2^2 + 2)/3. Find its value.",
+   "calculator_status": "no_calculator",
+   "answer_form": "numeric"
+  },
+  {
+   "id": "LSN-CON-01007#chk-2",
+   "kind": "isomorph",
+   "text": "Limits at 1: f -2, g -1. Table: f(1) = 0, g(1) = 2. With h(x) = x^2 + 1, find the limit of h(f(x))/g(x) at 1.",
+   "calculator_status": "no_calculator",
+   "answer_form": "numeric"
+  },
+  {
+   "id": "LSN-CON-01007#chk-3",
+   "kind": "mcq",
+   "text": "Limits at 2: f 3, g 2. Table: f(1) = 2, f(2) = -1, g(2) = 4. With h(x) = x^2 - 3, find the limit of h(f(x))/g(x) at x = 2.",
+   "calculator_status": "no_calculator",
+   "answer_form": "numeric"
+  },
+  {
+   "id": "LSN-CON-01012#ex-1",
+   "kind": "worked_example",
+   "text": "Let \\(f(x)=\\frac{2(x-1)(x-3)}{(x-1)(x+1)^2}\\). Classify each discontinuity of \\(f\\).",
+   "calculator_status": "no_calculator",
+   "answer_form": "statement"
+  },
+  {
+   "id": "LSN-CON-01012#ex-2",
+   "kind": "worked_example",
+   "text": "Let \\(f(x)=x+1\\) for \\(x\\le2\\) and \\(f(x)=2x-5\\) for \\(x>2\\). Classify the break at \\(x=2\\).",
+   "calculator_status": "no_calculator",
+   "answer_form": "statement"
+  },
+  {
+   "id": "LSN-CON-01012#chk-1",
+   "kind": "completion",
+   "text": "For the \\(f\\) above, \\(\\lim_{x\\to1}f(x)=-1\\) and \\(f(1)\\) is undefined. Classify the break at \\(x=1\\).",
+   "calculator_status": "no_calculator",
+   "answer_form": "statement",
+   "options": []
+  },
+  {
+   "id": "LSN-CON-01012#chk-2",
+   "kind": "isomorph",
+   "text": "Let \\(f(x)=\\frac{-(x-2)(x+3)}{(x-2)x^2}\\). Classify the discontinuity at \\(x=2\\).",
+   "calculator_status": "no_calculator",
+   "answer_form": "statement",
+   "options": []
+  },
+  {
+   "id": "LSN-CON-01012#chk-3",
+   "kind": "mcq",
+   "text": "Let \\(f(x)=\\frac{3x(x+2)}{(x+2)(x-1)^2}\\). Which classifies its discontinuities?",
+   "calculator_status": "no_calculator",
+   "answer_form": "statement",
+   "options": [
+    {
+     "id": "A",
+     "label": "Vertical asymptotes at \\(x=-2\\) and \\(x=1\\)."
+    },
+    {
+     "id": "B",
+     "label": "Removable at \\(x=-2\\); vertical asymptote at \\(x=1\\)."
+    },
+    {
+     "id": "C",
+     "label": "No limit at \\(x=-2\\) because \\(f(-2)\\) is undefined; vertical asymptote at \\(x=1\\)."
+    },
+    {
+     "id": "D",
+     "label": "Continuous at \\(x=-2\\), since both one sided limits equal \\(-\\frac{2}{3}\\)."
+    }
+   ]
+  },
+  {
+   "id": "LSN-CON-01013#ex-1",
+   "kind": "worked_example",
+   "text": "Let \\(f(x)=\\frac{2x^2-5x+2}{x-2}\\) for \\(x\\ne2\\), \\(f(2)=-1\\). Is \\(f\\) continuous at \\(x=2\\)? Justify.",
+   "calculator_status": "no_calculator",
+   "answer_form": "statement"
+  },
+  {
+   "id": "LSN-CON-01013#chk-1",
+   "kind": "completion",
+   "text": "For the \\(f\\) above, \\(f(2)=-1\\) and \\(\\lim_{x\\to2}f(x)=3\\). Is \\(f\\) continuous at 2? Name the failed condition.",
+   "calculator_status": "no_calculator",
+   "answer_form": "statement",
+   "options": []
+  },
+  {
+   "id": "LSN-CON-01013#chk-2",
+   "kind": "isomorph",
+   "text": "Let \\(f(x)=x+3\\) for \\(x\\le-1\\), \\(f(x)=-2x-5\\) for \\(x>-1\\). Is \\(f\\) continuous at \\(-1\\)? Justify.",
+   "calculator_status": "no_calculator",
+   "answer_form": "statement",
+   "options": []
+  },
+  {
+   "id": "LSN-CON-01013#chk-3",
+   "kind": "mcq",
+   "text": "Let \\(f(x)=\\frac{3x^2-2x}{x}\\) for \\(x\\ne0\\), \\(f(0)=1\\). Which response gives a correct verdict with its reason?",
+   "calculator_status": "no_calculator",
+   "answer_form": "statement",
+   "options": [
+    {
+     "id": "A",
+     "label": "Continuous at 0, because \\(f(0)=1\\) is defined."
+    },
+    {
+     "id": "B",
+     "label": "Continuous at 0, because both one sided limits equal \\(-2\\)."
+    },
+    {
+     "id": "C",
+     "label": "Not continuous at 0: \\(\\lim_{x\\to0}f(x)=-2\\) but \\(f(0)=1\\)."
+    },
+    {
+     "id": "D",
+     "label": "Not continuous at 0, by the definition of continuity."
+    }
+   ]
+  },
+  {
+   "id": "LSN-CON-01014#ex-1",
+   "kind": "worked_example",
+   "text": "Let \\(f(x)=\\frac{2(x-3)}{x^2+x-2}\\). State the intervals on which \\(f\\) is continuous and give a reason.",
+   "calculator_status": "no_calculator",
+   "answer_form": "symbolic"
+  },
+  {
+   "id": "LSN-CON-01014#chk-1",
+   "kind": "completion",
+   "text": "For \\(f(x)=\\frac{2(x-3)}{x^2+x-2}\\) the excluded inputs are \\(-2\\) and \\(1\\). Write the intervals on which \\(f\\) is continuous.",
+   "calculator_status": "no_calculator",
+   "answer_form": "symbolic"
+  },
+  {
+   "id": "LSN-CON-01014#chk-2",
+   "kind": "isomorph",
+   "text": "Let \\(g(x)=\\frac{\\sqrt{x+3}}{x-2}\\). State the intervals on which \\(g\\) is continuous.",
+   "calculator_status": "no_calculator",
+   "answer_form": "symbolic"
+  },
+  {
+   "id": "LSN-CON-01014#chk-3",
+   "kind": "mcq",
+   "text": "Let \\(h(x)=\\frac{x+1}{x^2-x-12}\\). On which set is \\(h\\) continuous?",
+   "calculator_status": "no_calculator",
+   "answer_form": "symbolic"
+  },
+  {
+   "id": "LSN-CON-01015#ex-1",
+   "kind": "worked_example",
+   "text": "\\(f(x)=\\frac{x^2-1}{x-1}\\) for \\(x<1\\), \\(kx+m\\) for \\(1\\le x\\le3\\), \\(x^2+3\\) for \\(x>3\\). Find \\(k\\) and \\(m\\) so \\(f\\) is continuous.",
+   "calculator_status": "no_calculator",
+   "answer_form": "symbolic"
+  },
+  {
+   "id": "LSN-CON-01015#chk-1",
+   "kind": "completion",
+   "text": "The matching equations are \\(k+m=2\\) and \\(3k+m=12\\). Find \\(k\\) and \\(m\\).",
+   "calculator_status": "no_calculator",
+   "answer_form": "symbolic"
+  },
+  {
+   "id": "LSN-CON-01015#chk-2",
+   "kind": "isomorph",
+   "text": "\\(f(x)=\\frac{x^2-1}{x+1}\\) for \\(x<-1\\), \\(kx+m\\) for \\(-1\\le x\\le2\\), \\(x^2\\) for \\(x>2\\). Find \\(k\\) and \\(m\\).",
+   "calculator_status": "no_calculator",
+   "answer_form": "symbolic"
+  },
+  {
+   "id": "LSN-CON-01015#chk-3",
+   "kind": "mcq",
+   "text": "\\(f(x)=\\frac{x^2-4}{x-2}\\) for \\(x<2\\), \\(kx+m\\) for \\(2\\le x\\le4\\), \\(x^2-2\\) for \\(x>4\\). For which \\(k\\) is \\(f\\) continuous?",
+   "calculator_status": "no_calculator",
+   "answer_form": "numeric"
+  },
+  {
+   "id": "LSN-CON-01016#ex-1",
+   "kind": "worked_example",
+   "text": "Let \\(f(x)=\\frac{2(x-1)(x-3)}{(x-1)(x+2)}\\). Find the vertical asymptotes and describe \\(f\\) near each.",
+   "calculator_status": "no_calculator",
+   "answer_form": "statement"
+  },
+  {
+   "id": "LSN-CON-01016#chk-1",
+   "kind": "completion",
+   "text": "For \\(f(x)=\\frac{2(x-3)}{x+2}\\), \\(x\\ne1\\), \\(\\lim_{x\\to-2^+}f(x)=-\\infty\\). State \\(\\lim_{x\\to-2^-}f(x)\\).",
+   "calculator_status": "no_calculator",
+   "answer_form": "statement",
+   "options": []
+  },
+  {
+   "id": "LSN-CON-01016#chk-2",
+   "kind": "isomorph",
+   "text": "Let \\(g(x)=\\frac{-x(x+3)}{(x+3)(x-2)}\\). Locate the vertical asymptote and state \\(\\lim_{x\\to2^+}g(x)\\).",
+   "calculator_status": "no_calculator",
+   "answer_form": "statement",
+   "options": []
+  },
+  {
+   "id": "LSN-CON-01016#chk-3",
+   "kind": "mcq",
+   "text": "Let \\(h(x)=\\frac{3(x-2)(x-4)}{(x-2)(x+1)}\\). Which statement is true?",
+   "calculator_status": "no_calculator",
+   "answer_form": "statement",
+   "options": [
+    {
+     "id": "A",
+     "label": "Asymptotes at \\(x=-1\\) and \\(x=2\\)."
+    },
+    {
+     "id": "B",
+     "label": "\\(\\lim_{x\\to-1}h(x)=-\\infty\\)."
+    },
+    {
+     "id": "C",
+     "label": "Only \\(x=-1\\); \\(\\infty\\) from the left, \\(-\\infty\\) from the right."
+    },
+    {
+     "id": "D",
+     "label": "The limit at \\(-1\\) exists and equals \\(\\infty\\)."
+    }
+   ]
+  },
+  {
+   "id": "LSN-CON-01019#ex-1",
+   "kind": "worked_example",
+   "text": "\\(f\\) differentiable; \\(f(1)=-4\\), \\(f(3)=2\\), \\(f(5)=7\\), \\(f(8)=1\\). Must \\(f(c)=0\\) on \\((1,8)\\)? Justify.",
+   "calculator_status": "no_calculator",
+   "answer_form": "statement"
+  },
+  {
+   "id": "LSN-CON-01019#chk-1",
+   "kind": "completion",
+   "text": "Given continuity and \\(-4<0<1\\), write the conclusion.",
+   "calculator_status": "no_calculator",
+   "answer_form": "statement",
+   "options": []
+  },
+  {
+   "id": "LSN-CON-01019#chk-2",
+   "kind": "isomorph",
+   "text": "\\(f\\) differentiable; \\(f(0)=3\\), \\(f(2)=5\\), \\(f(4)=-2\\), \\(f(7)=6\\). Must \\(f(c)=1\\) on \\((0,7)\\)?",
+   "calculator_status": "no_calculator",
+   "answer_form": "statement",
+   "options": []
+  },
+  {
+   "id": "LSN-CON-01019#chk-3",
+   "kind": "mcq",
+   "text": "\\(f\\) is differentiable; \\(f(2)=5\\), \\(f(4)=-3\\), \\(f(6)=1\\), \\(f(9)=-6\\). Which response earns both points for \\(f(c)=-1\\) on \\((2,9)\\)?",
+   "calculator_status": "no_calculator",
+   "answer_form": "statement",
+   "options": [
+    {
+     "id": "A",
+     "label": "\\(f\\) is continuous and \\(-6<-1<5\\), so yes."
+    },
+    {
+     "id": "B",
+     "label": "Differentiable, so continuous; \\(-6<-1<5\\); yes, at least one \\(c\\)."
+    },
+    {
+     "id": "C",
+     "label": "No: \\(f(2)=5\\) and \\(f(6)=1\\) are both above \\(-1\\)."
+    },
+    {
+     "id": "D",
+     "label": "Differentiable, so continuous; \\(-6<-1<5\\); exactly one \\(c\\)."
+    }
+   ]
+  },
+  {
+   "id": "LSN-CON-02001#ex-1",
+   "kind": "worked_example",
+   "text": "A runner has covered \\(D(t)\\) meters at \\(t\\) minutes: \\(D(1)=20\\), \\(D(3)=31\\), \\(D(6)=43\\), \\(D(8)=52\\), \\(D(11)=70\\). Using the average rate over \\(3\\le t\\le 8\\), approximate \\(D'(6)\\) with units.",
+   "calculator_status": "no_calculator",
+   "answer_form": "numeric"
+  },
+  {
+   "id": "LSN-CON-02001#chk-1",
+   "kind": "completion",
+   "text": "The work reads \\(D'(6)\\approx\\frac{52-31}{8-3}\\). Give the value.",
+   "calculator_status": "no_calculator",
+   "answer_form": "numeric"
+  },
+  {
+   "id": "LSN-CON-02001#chk-2",
+   "kind": "isomorph",
+   "text": "\\(P(t)\\) hundred people are in a stadium at \\(t\\) minutes: \\(P(0)=12\\), \\(P(2)=18\\), \\(P(5)=30\\), \\(P(7)=41\\), \\(P(10)=47\\). Using the average rate over \\(2\\le t\\le 7\\), approximate \\(P'(5)\\).",
+   "calculator_status": "no_calculator",
+   "answer_form": "numeric"
+  },
+  {
+   "id": "LSN-CON-02001#chk-3",
+   "kind": "mcq",
+   "text": "\\(H(t)\\) degrees Fahrenheit is an oven's temperature at \\(t\\) minutes: \\(H(2)=75\\), \\(H(4)=58\\), \\(H(5)=40\\), \\(H(9)=22\\), \\(H(12)=15\\). Using the average rate over \\(4\\le t\\le 9\\), which approximates \\(H'(5)\\)?",
+   "calculator_status": "no_calculator",
+   "answer_form": "statement",
+   "options": [
+    {
+     "id": "A",
+     "label": "\\(-36\\) degrees Fahrenheit"
+    },
+    {
+     "id": "B",
+     "label": "\\(-\\frac{36}{5}\\) degrees Fahrenheit per minute"
+    },
+    {
+     "id": "C",
+     "label": "\\(-\\frac{36}{5}\\) degrees Fahrenheit"
+    },
+    {
+     "id": "D",
+     "label": "\\(-36\\) degrees Fahrenheit per minute"
+    }
+   ]
+  },
+  {
+   "id": "LSN-CON-02002#ex-1",
+   "kind": "worked_example",
+   "text": "Let \\(f(x)=2x^2-3x+1\\). Use the definition of the derivative to find \\(f'(2)\\).",
+   "calculator_status": "no_calculator",
+   "answer_form": "numeric"
+  },
+  {
+   "id": "LSN-CON-02002#ex-2",
+   "kind": "worked_example",
+   "text": "A particle's position at time \\(t\\) is \\(s(t)=3t^2-4t+6\\). At what rate is the position changing at the instant \\(t=2\\)?",
+   "calculator_status": "no_calculator",
+   "answer_form": "numeric"
+  },
+  {
+   "id": "LSN-CON-02002#chk-1",
+   "kind": "completion",
+   "text": "The definition gives \\(f'(2)=\\lim_{h\\to0}(2h+5)\\). Find \\(f'(2)\\).",
+   "calculator_status": "no_calculator",
+   "answer_form": "numeric"
+  },
+  {
+   "id": "LSN-CON-02002#chk-2",
+   "kind": "isomorph",
+   "text": "Let \\(f(x)=-x^2+4x-2\\). Use the definition of the derivative to find \\(f'(-1)\\).",
+   "calculator_status": "no_calculator",
+   "answer_form": "numeric"
+  },
+  {
+   "id": "LSN-CON-02002#chk-3",
+   "kind": "mcq",
+   "text": "A balloon's height at time \\(t\\) is \\(f(t)=2t^2+t+3\\). At what rate is the height changing at the instant \\(t=3\\)?",
+   "calculator_status": "no_calculator",
+   "answer_form": "numeric"
+  },
+  {
+   "id": "LSN-CON-02003#ex-1",
+   "kind": "worked_example",
+   "text": "Let \\(f(x)=-x^2+5x+4\\). Use the definition of the derivative to find \\(f'(x)\\), then \\(f'(3)\\).",
+   "calculator_status": "no_calculator",
+   "answer_form": "numeric"
+  },
+  {
+   "id": "LSN-CON-02003#chk-1",
+   "kind": "completion",
+   "text": "The definition gives \\(f'(x)=-2x+5\\). Find \\(f'(3)\\).",
+   "calculator_status": "no_calculator",
+   "answer_form": "numeric"
+  },
+  {
+   "id": "LSN-CON-02003#chk-2",
+   "kind": "isomorph",
+   "text": "Let \\(f(x)=x^2-2x+3\\). Use the definition of the derivative to find \\(f'(x)\\), then \\(f'(-2)\\).",
+   "calculator_status": "no_calculator",
+   "answer_form": "numeric"
+  },
+  {
+   "id": "LSN-CON-02003#chk-3",
+   "kind": "mcq",
+   "text": "Let \\(f(x)=3x^2-x+2\\). Using the definition of the derivative, what is \\(f'(1)\\)?",
+   "calculator_status": "no_calculator",
+   "answer_form": "numeric"
+  },
+  {
+   "id": "LSN-CON-02009#ex-1",
+   "kind": "worked_example",
+   "text": "Let \\(f(x)=2(x-1)^{2/3}+3\\), the power read as a real cube root. Is \\(f\\) differentiable at \\(x=1\\)? Give a reason.",
+   "calculator_status": "no_calculator",
+   "answer_form": "statement"
+  },
+  {
+   "id": "LSN-CON-02009#chk-1",
+   "kind": "completion",
+   "text": "The quotients at 1 tend to \\(\\infty\\) (right) and \\(-\\infty\\) (left). State the verdict and reason.",
+   "calculator_status": "no_calculator",
+   "answer_form": "statement",
+   "options": []
+  },
+  {
+   "id": "LSN-CON-02009#chk-2",
+   "kind": "isomorph",
+   "text": "Let \\(f(x)=3(x+2)^{1/5}+1\\), the power read as a real fifth root. Is \\(f\\) differentiable at \\(x=-2\\)? Give a reason.",
+   "calculator_status": "no_calculator",
+   "answer_form": "statement",
+   "options": []
+  },
+  {
+   "id": "LSN-CON-02009#chk-3",
+   "kind": "mcq",
+   "text": "Let \\(f(x)=-(x-2)^{1/3}\\), the power read as a real cube root. Which statement about \\(f\\) at \\(x=2\\) is correct?",
+   "calculator_status": "no_calculator",
+   "answer_form": "statement",
+   "options": [
+    {
+     "id": "A",
+     "label": "Differentiable, because \\(f\\) is continuous at \\(x=2\\)."
+    },
+    {
+     "id": "B",
+     "label": "Not differentiable, because the graph has a sharp point at \\(x=2\\)."
+    },
+    {
+     "id": "C",
+     "label": "Differentiable: the numerator of \\(f'(x)=\\frac{-1}{3(x-2)^{2/3}}\\) is never zero, so there is no vertical tangent."
+    },
+    {
+     "id": "D",
+     "label": "Not differentiable: both one sided quotients tend to \\(-\\infty\\)."
+    }
+   ]
+  },
+  {
+   "id": "LSN-CON-03007#ex-1",
+   "kind": "worked_example",
+   "text": "h(x) = 3x arctan(2x - 3). Find h'(2).",
+   "calculator_status": "no_calculator",
+   "answer_form": "symbolic"
+  },
+  {
+   "id": "LSN-CON-03007#chk-1",
+   "kind": "completion",
+   "text": "h'(x) = 3 arctan(2x - 3) + 6x/(1 + (2x - 3)^2). Find h'(2).",
+   "calculator_status": "no_calculator",
+   "answer_form": "symbolic"
+  },
+  {
+   "id": "LSN-CON-03007#chk-2",
+   "kind": "isomorph",
+   "text": "h(x) = 2x arcsin(3x - 5/2). Find h'(1).",
+   "calculator_status": "no_calculator",
+   "answer_form": "symbolic"
+  },
+  {
+   "id": "LSN-CON-03007#chk-3",
+   "kind": "mcq",
+   "text": "h(x) = x^2 arctan(3x + 5). What is h'(-2)?",
+   "calculator_status": "no_calculator",
+   "answer_form": "symbolic"
+  },
+  {
+   "id": "LSN-CON-03008#ex-1",
+   "kind": "worked_example",
+   "text": "h(x) = 2x^2 e^(3x - 1). Find h'(-1).",
+   "calculator_status": "no_calculator",
+   "answer_form": "symbolic"
+  },
+  {
+   "id": "LSN-CON-03008#chk-1",
+   "kind": "completion",
+   "text": "h'(x) = 2x(2 + 3x)e^(3x - 1). Find h'(-1).",
+   "calculator_status": "no_calculator",
+   "answer_form": "symbolic"
+  },
+  {
+   "id": "LSN-CON-03008#chk-2",
+   "kind": "isomorph",
+   "text": "h(x) = 3x e^(-2x + 2). Find h'(2).",
+   "calculator_status": "no_calculator",
+   "answer_form": "symbolic"
+  },
+  {
+   "id": "LSN-CON-03008#chk-3",
+   "kind": "mcq",
+   "text": "h(x) = x e^(2x^2 + 1). What is h'(1)?",
+   "calculator_status": "no_calculator",
+   "answer_form": "symbolic"
+  },
+  {
+   "id": "LSN-CON-03009#ex-1",
+   "kind": "worked_example",
+   "text": "dy/dx = 2xy + y - 3x. Find d^2y/dx^2 at the point (1, 2).",
+   "calculator_status": "no_calculator",
+   "answer_form": "numeric"
+  },
+  {
+   "id": "LSN-CON-03009#chk-1",
+   "kind": "completion",
+   "text": "d^2y/dx^2 = 2y + 2x dy/dx + dy/dx - 3; dy/dx = 3 at (1, 2). Evaluate there.",
+   "calculator_status": "no_calculator",
+   "answer_form": "numeric"
+  },
+  {
+   "id": "LSN-CON-03009#chk-2",
+   "kind": "isomorph",
+   "text": "y' = -xy + 2y + 3x and y(1) = 1. Find y''(1).",
+   "calculator_status": "no_calculator",
+   "answer_form": "numeric"
+  },
+  {
+   "id": "LSN-CON-03009#chk-3",
+   "kind": "mcq",
+   "text": "dy/dx = xy + 2y + x through (2, -1). What is d^2y/dx^2 at (2, -1)?",
+   "calculator_status": "no_calculator",
+   "answer_form": "numeric"
+  },
+  {
+   "id": "LSN-CON-03010#ex-1",
+   "kind": "worked_example",
+   "text": "y' = -2xy + 3y + x and y(2) = 1. Find d^2y/dx^2 at x = 2, written as y''(2).",
+   "calculator_status": "no_calculator",
+   "answer_form": "numeric"
+  },
+  {
+   "id": "LSN-CON-03010#chk-1",
+   "kind": "completion",
+   "text": "d^2y/dx^2 = -2y - 2x dy/dx + 3 dy/dx + 1; at x = 2, y = 1 and dy/dx = 1. Find y''(2).",
+   "calculator_status": "no_calculator",
+   "answer_form": "numeric"
+  },
+  {
+   "id": "LSN-CON-03010#chk-2",
+   "kind": "isomorph",
+   "text": "dy/dx = xy + 2y - x, y(1) = 1. Write y'' in x, y and y', then find y''(1).",
+   "calculator_status": "no_calculator",
+   "answer_form": "numeric"
+  },
+  {
+   "id": "LSN-CON-04007#ex-1",
+   "kind": "worked_example",
+   "text": "A 15 foot ladder leans on a wall. Its foot slides away at 2 feet per second. When the foot is 9 feet out, how fast is the top moving?",
+   "calculator_status": "no_calculator",
+   "answer_form": "numeric"
+  },
+  {
+   "id": "LSN-CON-04007#ex-2",
+   "kind": "worked_example",
+   "text": "A particle moves on \\(2x^2+xy+y^2=4\\). At \\((1,-2)\\), \\(dx/dt=3\\). Find \\(dy/dt\\) there.",
+   "calculator_status": "no_calculator",
+   "answer_form": "numeric"
+  },
+  {
+   "id": "LSN-CON-04007#chk-1",
+   "kind": "completion",
+   "text": "\\(2(9)(2)+2(12)\\,dy/dt=0\\). Find \\(dy/dt\\) with units.",
+   "calculator_status": "no_calculator",
+   "answer_form": "numeric"
+  },
+  {
+   "id": "LSN-CON-04007#chk-2",
+   "kind": "isomorph",
+   "text": "A circle's radius grows at 2 centimeters per minute. How fast is its area growing when the radius is 6 centimeters?",
+   "calculator_status": "no_calculator",
+   "answer_form": "symbolic"
+  },
+  {
+   "id": "LSN-CON-04007#chk-3",
+   "kind": "mcq",
+   "text": "On \\(x^2+3xy+2y^2=6\\), at \\((1,1)\\), \\(dx/dt=2\\). What is \\(dy/dt\\)?",
+   "calculator_status": "no_calculator",
+   "answer_form": "numeric"
+  },
+  {
+   "id": "LSN-CON-05002#ex-1",
+   "kind": "worked_example",
+   "text": "f is differentiable on [-1, 4], with a relative maximum at x = 1. Must f attain a maximum value on [-1, 4]? Justify.",
+   "calculator_status": "no_calculator",
+   "answer_form": "statement"
+  },
+  {
+   "id": "LSN-CON-05002#ex-2",
+   "kind": "worked_example",
+   "text": "g has a jump at x = 2 and a relative minimum at x = 4. Must g attain a minimum value on [0, 6]?",
+   "calculator_status": "no_calculator",
+   "answer_form": "statement"
+  },
+  {
+   "id": "LSN-CON-05002#chk-1",
+   "kind": "completion",
+   "text": "[-1, 4] is closed; f is continuous there because differentiable. Finish: must f attain a maximum value?",
+   "calculator_status": "no_calculator",
+   "answer_form": "statement",
+   "options": []
+  },
+  {
+   "id": "LSN-CON-05002#chk-2",
+   "kind": "isomorph",
+   "text": "h is continuous on [1, 4] with a relative minimum at x = 2. Must h attain a minimum value on [1, 4]?",
+   "calculator_status": "no_calculator",
+   "answer_form": "statement",
+   "options": []
+  },
+  {
+   "id": "LSN-CON-05002#chk-3",
+   "kind": "mcq",
+   "text": "g is differentiable on (-2, 3), relative minimum at x = 0. Must g attain a minimum value on (-2, 3)?",
+   "calculator_status": "no_calculator",
+   "answer_form": "statement",
+   "options": [
+    {
+     "id": "A",
+     "label": "Yes, by the Extreme Value Theorem."
+    },
+    {
+     "id": "B",
+     "label": "Yes, at x = 0."
+    },
+    {
+     "id": "C",
+     "label": "No conclusion: the interval is open."
+    },
+    {
+     "id": "D",
+     "label": "Yes, the minimum value is g(0)."
+    }
+   ]
+  },
+  {
+   "id": "LSN-CON-05004#ex-1",
+   "kind": "worked_example",
+   "text": "For x ≠ 1, f'(x) = 2(x + 1)(x - 3)/(x - 1). On what open intervals is f increasing? Give a reason.",
+   "calculator_status": "no_calculator",
+   "answer_form": "symbolic"
+  },
+  {
+   "id": "LSN-CON-05004#chk-1",
+   "kind": "completion",
+   "text": "Signs of f' on (-oo, -1), (-1, 1), (1, 3), (3, oo): -, +, -, +. Where is f increasing?",
+   "calculator_status": "no_calculator",
+   "answer_form": "symbolic"
+  },
+  {
+   "id": "LSN-CON-05004#chk-2",
+   "kind": "isomorph",
+   "text": "f'(x) = (x + 2)(x - 2). Where is f decreasing?",
+   "calculator_status": "no_calculator",
+   "answer_form": "symbolic"
+  },
+  {
+   "id": "LSN-CON-05004#chk-3",
+   "kind": "mcq",
+   "text": "f is undefined at x = 2 and f'(x) = x(x - 4)/(x - 2). Where is f increasing?",
+   "calculator_status": "no_calculator",
+   "answer_form": "symbolic"
+  },
+  {
+   "id": "LSN-CON-05009#ex-1",
+   "kind": "worked_example",
+   "text": "Let \\(f(x)=2x^3-3x^2-12x+2\\). Determine whether \\(x=2\\) is the location of a relative minimum, a relative maximum, or neither. Justify.",
+   "calculator_status": "no_calculator",
+   "answer_form": "statement"
+  },
+  {
+   "id": "LSN-CON-05009#chk-1",
+   "kind": "completion",
+   "text": "For \\(f(x)=2x^3-3x^2-12x+2\\), \\(f'(2)=0\\) and \\(f''(x)=12x-6\\). Classify \\(x=2\\) and give the reason.",
+   "calculator_status": "no_calculator",
+   "answer_form": "statement",
+   "options": []
+  },
+  {
+   "id": "LSN-CON-05009#chk-2",
+   "kind": "isomorph",
+   "text": "\\(h'(x)=-6(x-1)(x-4)\\). Classify the critical point \\(x=4\\) with the second derivative test.",
+   "calculator_status": "no_calculator",
+   "answer_form": "statement",
+   "options": []
+  },
+  {
+   "id": "LSN-CON-05009#chk-3",
+   "kind": "mcq",
+   "text": "\\(g'(x)=-6(x+3)(x-1)\\), so \\(g''(x)=-12x-12\\). Which statement about \\(g\\) is justified?",
+   "calculator_status": "no_calculator",
+   "answer_form": "statement",
+   "options": [
+    {
+     "id": "A",
+     "label": "Relative minimum at \\(x=-3\\), since \\(g'(-3)=0\\) and \\(g''(-3)=24>0\\)."
+    },
+    {
+     "id": "B",
+     "label": "Relative maximum at \\(x=-3\\), since \\(g''(-3)=24\\)."
+    },
+    {
+     "id": "C",
+     "label": "Relative maximum at \\(x=2\\), since \\(g''(2)=-36<0\\)."
+    },
+    {
+     "id": "D",
+     "label": "Neither at \\(x=-3\\): the second derivative test gives no extremum."
+    }
+   ]
+  },
+  {
+   "id": "LSN-CON-07001#ex-1",
+   "kind": "worked_example",
+   "text": "Tea is 95 degrees at t = 0 minutes. Its temperature changes at a rate proportional to the difference between 70 degrees and its temperature, constant k > 0. Write the differential equation and initial condition.",
+   "calculator_status": "no_calculator",
+   "answer_form": "statement"
+  },
+  {
+   "id": "LSN-CON-07001#chk-1",
+   "kind": "completion",
+   "text": "Tea: H degrees at t minutes, H = 95 at t = 0, rate proportional to 70 - H. Write both lines.",
+   "calculator_status": "no_calculator",
+   "answer_form": "statement",
+   "options": []
+  },
+  {
+   "id": "LSN-CON-07001#chk-2",
+   "kind": "isomorph",
+   "text": "A concentration C, 25 at t = 0 minutes, changes at a rate proportional to 40 minus C, with constant k > 0. Write the differential equation.",
+   "calculator_status": "no_calculator",
+   "answer_form": "symbolic"
+  },
+  {
+   "id": "LSN-CON-07001#chk-3",
+   "kind": "mcq",
+   "text": "A price P is 60 at t = 0 hours and changes at a rate proportional to 50 minus P. Which models it, k > 0?",
+   "calculator_status": "no_calculator",
+   "answer_form": "symbolic"
+  },
+  {
+   "id": "LSN-CON-01002#ex-1",
+   "kind": "worked_example",
+   "text": "The graph of f has segments (0, 0) to (2, 3) and (2, 3) to (5, 4), an open circle at (2, 3) and a dot at (2, -1). Find the limit of f at x = 2.",
+   "calculator_status": "no_calculator",
+   "answer_form": "numeric"
+  },
+  {
+   "id": "LSN-CON-01002#chk-1",
+   "kind": "completion",
+   "text": "Both segments of f head to height 3 at x = 2; the dot is at (2, -1). Write the limit of f at x = 2.",
+   "calculator_status": "no_calculator",
+   "answer_form": "numeric"
+  },
+  {
+   "id": "LSN-CON-01002#chk-2",
+   "kind": "isomorph",
+   "text": "f has segments (0, -2) to (1, 2) and (1, 2) to (6, 0), an open circle at (1, 2), a dot at (1, 4). Find the limit of f at x = 1.",
+   "calculator_status": "no_calculator",
+   "answer_form": "numeric"
+  },
+  {
+   "id": "LSN-CON-05011#ex-1",
+   "kind": "worked_example",
+   "text": "The graph of \\(f'\\) is the parabola \\(y=\\frac{x^2}{2}-2\\). Find the \\(x\\)-coordinate of the relative minimum of \\(f\\) and of the inflection point of \\(f\\). Give reasons.",
+   "calculator_status": "no_calculator",
+   "answer_form": "symbolic"
+  },
+  {
+   "id": "LSN-CON-05011#chk-1",
+   "kind": "completion",
+   "text": "\\(f'\\) is negative on \\((-2, 2)\\), zero at \\(-2\\) and \\(2\\), and turns at \\(0\\). Give (minimum, inflection) of \\(f\\).",
+   "calculator_status": "no_calculator",
+   "answer_form": "symbolic"
+  },
+  {
+   "id": "LSN-CON-05011#chk-2",
+   "kind": "isomorph",
+   "text": "The graph of \\(f'\\) is \\(y=-(x+3)(x+1)\\). Give (relative minimum of \\(f\\), inflection of \\(f\\)).",
+   "calculator_status": "no_calculator",
+   "answer_form": "symbolic"
+  },
+  {
+   "id": "LSN-CON-05011#chk-3",
+   "kind": "mcq",
+   "text": "The graph of \\(f'\\) is \\(y=x^2-2x\\). Which statement about \\(f\\) is true?",
+   "calculator_status": "no_calculator",
+   "answer_form": "statement",
+   "options": [
+    {
+     "id": "A",
+     "label": "\\(f\\) has a relative minimum at \\(x=1\\)."
+    },
+    {
+     "id": "B",
+     "label": "\\(f\\) is increasing on \\(x>1\\)."
+    },
+    {
+     "id": "C",
+     "label": "\\(f\\) has a relative minimum at \\(x=2\\) and an inflection point at \\(x=1\\)."
+    },
+    {
+     "id": "D",
+     "label": "\\(f\\) has inflection points at \\(x=0\\) and \\(x=2\\)."
+    }
+   ]
+  },
+  {
+   "id": "LSN-CON-07009#ex-1",
+   "kind": "worked_example",
+   "text": "dy/dx = 2y^2 with y(1) = 1/2. Find the interval on which the particular solution is valid.",
+   "calculator_status": "no_calculator",
+   "answer_form": "symbolic"
+  },
+  {
+   "id": "LSN-CON-07009#chk-1",
+   "kind": "completion",
+   "text": "y = 1/(4 - 2x) solves dy/dx = 2y^2 with y(1) = 1/2. State the interval on which it is the particular solution.",
+   "calculator_status": "no_calculator",
+   "answer_form": "symbolic"
+  },
+  {
+   "id": "LSN-CON-07009#chk-2",
+   "kind": "isomorph",
+   "text": "dy/dx = -y^2 with y(0) = 2. Find the interval on which the particular solution is valid.",
+   "calculator_status": "no_calculator",
+   "answer_form": "symbolic"
+  },
+  {
+   "id": "LSN-CON-06011#ex-1",
+   "kind": "worked_example",
+   "text": "f from 0 to 1 is 4; from 0 to 4 is 9. h = 2 for x < 3, -1 after. Find the integral from 4 to 1 of (3f + h).",
+   "calculator_status": "no_calculator",
+   "answer_form": "symbolic"
+  },
+  {
+   "id": "LSN-CON-06011#chk-1",
+   "kind": "completion",
+   "text": "From 1 to 4 it is 18. Find it from 4 to 1.",
+   "calculator_status": "no_calculator",
+   "answer_form": "symbolic"
+  },
+  {
+   "id": "LSN-CON-06011#chk-2",
+   "kind": "isomorph",
+   "text": "f from -1 to 1 is -3; from -1 to 4 is 5. h = 1 for x < 2, 3 after. Find 1 to 4 of (2f + h).",
+   "calculator_status": "no_calculator",
+   "answer_form": "symbolic"
+  },
+  {
+   "id": "LSN-CON-06011#chk-3",
+   "kind": "mcq",
+   "text": "f from 1 to 3 is -2; from 1 to 5 is 6. h = 3 for x < 4, -2 after. The integral from 5 to 3 of (-2f + h) is",
+   "calculator_status": "no_calculator",
+   "answer_form": "symbolic"
+  }
+ ]
+}

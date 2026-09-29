@@ -9,6 +9,10 @@ purpose: Authoring spec for the concept lesson on BC-CON-04004, direction of mot
 
 Concept BC-CON-04004 (skills BC-SKL-04008, BC-SKL-04009, BC-SKL-04011), topic 4.2 of Unit 4, loaded by BC-QA-04004, BC-QA-04003 and BC-QA-04010. Its hard parents are BC-CON-04002 and BC-CON-04003 (docs/lessons/unit-04/README.md, section 1).
 
+## Prediction
+
+Both bands, served first. Form `mcq`, three options, on ex-1's own position \(x(t)=(t-2)^2(t-4)\). The student picks which sign shows whether the particle moves left: that of the position, of the velocity or of the acceleration. Key: the sign of the velocity. The resolution states the rule (\(v<0\) is left, \(v>0\) is right, with ex-1's \(v(t)=(t-2)(3t-10)\)) and never grades the choice. Sources: BC-CON-04004 and the 4.2 topic section that ki-1 cites (BC-EK-CHA-3B1, ced:88). Delivery: text. [inferred] Settled by the prediction's first-try rate in the build plan.
+
 ## Orientation
 
 Served text, from BC-CON-04004 `description_plain` and the Assessment behaviour paragraph (research/units/unit-04-contextual-applications-differentiation.md#4.2 Straight-Line Motion: Connecting Position, Velocity, and Acceleration): direction from the sign of velocity, speed as its size, and intervals of a direction as the part the 2025 report describes (crabbc-25:20). No count, no frequency.
@@ -26,12 +30,13 @@ All three skills map BC-EK-CHA-3B1 (ced:88): one core block, both bands.
 - BC-QA-04010 (research/question-analysis/question-archetypes.md#BC-QA-04010 Position recovered from velocity with an initial condition): position from velocity, where BC-SKL-04011 meets the constant of integration.
 
 Not this concept: whether the speed is increasing (BC-CON-04005), which needs the acceleration's sign too.
+The contrast pair on st-1 sets an interval-of-direction stem beside a speed-at-an-instant stem on the same particle. Where the near miss comes from: the sibling concept BC-CON-04005, which shares the particle and its functions but asks whether the speed is increasing, so it needs the acceleration's sign as well. The separating feature is that intervals of a direction need only the sign of velocity.
 
 ## Method choice
 
-Two strategy blocks, one per archetype family (motion-by-differentiation, whose primary here is BC-QA-04004, and motion-by-accumulation); st-1 both bands, st-2 the low band.
+Two strategy blocks, one per archetype family (motion-by-differentiation, whose primary here is BC-QA-04004, and motion-by-accumulation); st-1 both bands, st-2 the low band. The reader prints its own labels, so no field starts with one, and the error ids sit in `sources`.
 
-- st-1, BC-QA-04004. Method, `expected_solution_path[0]`: solve the equation velocity equal to zero on the interval. Rival, `wrong_approaches`: sampling integer times (BC-ERR-04010), or reading direction from the sign of the position (BC-ERR-04008). Separating feature: the stem asks for intervals.
+- st-1, BC-QA-04004. Method, `expected_solution_path[0]`: solve the equation velocity equal to zero on the interval. Rival, `wrong_approaches`: sampling integer times (BC-ERR-04010), or reading direction from the sign of the position (BC-ERR-04008). Separating feature: the stem asks for intervals. Carries the contrast pair.
 - st-2, BC-QA-04010. Method: the known position plus the accumulated change. Rival: the integral reported as the position (BC-ERR-08011).
 
 Both archetypes carry `asked_to_produce` and `common_givens` in the snapshot, so both blocks are verified.
@@ -40,6 +45,7 @@ Both archetypes carry `asked_to_produce` and `common_givens` in the snapshot, so
 
 - ex-1, BC-QA-04004, both bands. Draw from `parameter_spec`: double_root 2, single_root 4, size 1, leading positive, horizon 8, direction left, time_units seconds. Position (t - 2)^2 (t - 4), velocity (t - 2)(3t - 10), turning time 10/3, not an integer as the spec's invariant requires. No published BC-QA-04004 item carries this draw.
 - Steps follow `expected_solution_path`: position (new), velocity (differentiate), the zeros (solve), the sign on each piece in words (no value), the interval (new). A fluent solver writes steps 2 to 5; the sign on each piece is one line of words, not a chart ({JS}).
+One example, so it is not faded and carries no `fade_from`.
 
 ## Scoring
 
@@ -55,6 +61,7 @@ Seven active errors meet the skills; the first four in the bundle's order are se
 - err-BC-ERR-07026: asked for x(t) from v(t) = (t - 2)(3t - 10) and x(0) = -16, the antiderivative t^3 - 8t^2 + 20t with no constant, against t^3 - 8t^2 + 20t - 16 [inferred: a BC-QA-04010 question on ex-1's velocity, no worked example of its own]. Possible reason from BC-MIS-07016.
 
 Not served, past the cap of four: BC-ERR-08011, BC-ERR-09021, BC-ERR-99030.
+All four blocks are distinct, so each carries `fix_prompt` true: the student writes the right step before it is shown. Every value is an integer or an exact fraction the text writes as a fraction, so the decimal rule changes no expression.
 
 ## Representations
 
@@ -76,14 +83,15 @@ BC-QA-04004 has calculator status either, so the lesson takes Section I Part A, 
 
 ## Delivery
 
-- orientation: text. Rule 5; the figure-bearing representation is served once, on ki-1.
-- ki-1: interactive. Rule 3 promoted: BC-REP-02 on BC-SKL-04009; BC-QA-04004 `difficulty_variables` "whether a zero of the velocity is not an integer" and "whether the velocity changes sign more than once" name what varies, and the stem asks for intervals of a direction (docs/lessons/unit-04/README.md, section 6) [inferred; settled by the modality A/B]. One slider on t, labels inside, fallback the static line with sign intervals, keyboard arrows.
+- pr-1: text. Rule 6, a prediction on ex-1's position; the drawn picture is held for ki-1 so the answer is not shown first.
+- orientation: text. Rule 6; the figure-bearing representation is served once, on ki-1.
+- ki-1: interactive. Rule 4 promoted: BC-REP-02 on BC-SKL-04009; BC-QA-04004 `difficulty_variables` "whether a zero of the velocity is not an integer" and "whether the velocity changes sign more than once" name what varies, and the stem asks for intervals of a direction (docs/lessons/unit-04/README.md, section 6) [inferred; settled by the modality A/B]. One slider on t, labels inside, fallback the static line with sign intervals, keyboard arrows. This is the lesson's drawn block, so no `no_figure_reason` is carried.
 - ex-1 and the four error blocks: step_reveal. Rule 1.
 
 ## Band plan
 
-- Low (full): orientation, ki-1, st-1, st-2, ex-1, four error blocks, chk-1 to chk-3, both bridges. 531 words, 3.6 minutes (cap 900 and 6).
-- Mid (brief): orientation, ki-1, st-1, ex-1, err-BC-ERR-04007, err-BC-ERR-04008, chk-1, chk-2, both bridges. 340 words, 2.3 minutes (cap 450 and 3).
+- Low (full): prediction, orientation, both bridges, ki-1, st-1 with its contrast, st-2, ex-1, chk-1, four error blocks, chk-2, chk-3. 624 words, 4.2 minutes (cap 900 and 6).
+- Mid (brief): prediction, orientation, both bridges, ki-1, st-1 with its contrast, ex-1, chk-1, err-BC-ERR-04007, err-BC-ERR-04008, chk-2. 437 words, 3.0 minutes (cap 450 and 3).
 - Refresher: ki-1, the four error blocks, ex-1.
 
 ## Sources
@@ -115,6 +123,38 @@ BC-QA-04004 has calculator status either, so the lesson takes Section I Part A, 
   "BC-SKL-04009",
   "BC-SKL-04011"
  ],
+ "prediction": {
+  "id": "pr-1",
+  "stem": {
+   "text": "Predict which sign shows whether the particle with position \\(x(t)=(t-2)^2(t-4)\\) moves left.",
+   "command_verb": "predict"
+  },
+  "format": "mcq",
+  "options": [
+   {
+    "id": "A",
+    "label": "The sign of \\(x(t)\\)",
+    "is_key": false
+   },
+   {
+    "id": "B",
+    "label": "The sign of \\(v(t)=x'(t)\\)",
+    "is_key": true
+   },
+   {
+    "id": "C",
+    "label": "The sign of \\(a(t)=x''(t)\\)",
+    "is_key": false
+   }
+  ],
+  "resolution": "The sign of velocity gives the direction: \\(v<0\\) is left, \\(v>0\\) is right. Here \\(v(t)=(t-2)(3t-10)\\), so the sign of \\(v\\), not of \\(x\\) or \\(a\\), decides.",
+  "sources": [
+   "BC-CON-04004",
+   "BC-EK-CHA-3B1",
+   "ced:88",
+   "research/units/unit-04-contextual-applications-differentiation.md#4.2 Straight-Line Motion: Connecting Position, Velocity, and Acceleration"
+  ]
+ },
  "orientation": {
   "text": "The sign of velocity gives the direction of motion; speed is its size with the sign removed. For intervals of a direction, a response solves v(t) = 0, reads the sign on each piece, and covers the whole stated interval.",
   "sources": [
@@ -127,7 +167,7 @@ BC-QA-04004 has calculator status either, so the lesson takes Section I Part A, 
    "id": "ki-1",
    "ek_id": "BC-EK-CHA-3B1",
    "depth": "core",
-   "text": "Velocity positive: moving right; negative: moving left; zero: at rest. Speed is \\(|v(t)|\\), never negative. The zeros of \\(v\\) split the interval and the sign is constant between consecutive zeros, so the conclusion rests on solved zeros, not sampled inputs (crabbc-25:22).",
+   "text": "Velocity positive: moving right; negative: moving left; zero: at rest. Speed is \\(|v(t)|\\), never negative. The zeros of \\(v\\) split the interval and the sign is constant between consecutive zeros, so the conclusion rests on solved zeros, not sampled inputs.",
    "notation": "speed equals the absolute value of v of t",
    "quote": null,
    "sources": [
@@ -143,23 +183,37 @@ BC-QA-04004 has calculator status either, so the lesson takes Section I Part A, 
    "id": "st-1",
    "archetype_id": "BC-QA-04004",
    "cue": "A position or velocity function on an open interval; the stem asks when the particle moves a stated way.",
-   "method": "First line: \\(v(t)=0\\), solved on the interval.",
-   "rival": "Rival: integer times sampled (BC-ERR-04010), or direction read from the position (BC-ERR-04008).",
+   "method": "\\(v(t)=0\\), solved on the interval.",
+   "rival": "Integer times sampled, or direction read from the position.",
    "separating_feature": "The word interval: only solved zeros can bound it.",
    "sources": [
-    "BC-QA-04004"
+    "BC-QA-04004",
+    "BC-ERR-04010",
+    "BC-ERR-04008"
    ],
-   "evidence_tag": "verified"
+   "evidence_tag": "verified",
+   "contrast": {
+    "this": {
+     "text": "A particle's position is \\(x(t)=(t-1)^2(t-5)\\) for \\(0<t<9\\) seconds. Find every interval on which it moves right.",
+     "archetype_id": "BC-QA-04004"
+    },
+    "not_this": {
+     "text": "For the same particle, is its speed increasing or decreasing at \\(t=2\\)? Give a reason.",
+     "why_not": "It asks about speed at one instant, which needs the signs of \\(v\\) and \\(a\\)."
+    },
+    "feature": "Intervals of a direction need only the sign of \\(v\\)."
+   }
   },
   {
    "id": "st-2",
    "archetype_id": "BC-QA-04010",
    "cue": "Velocity and the position at one time given; position at another time asked.",
-   "method": "First line: position equals the known position plus the integral of velocity.",
-   "rival": "Rival: the integral reported as the position (BC-ERR-08011).",
+   "method": "Position equals the known position plus the integral of velocity.",
+   "rival": "The integral reported as the position.",
    "separating_feature": "A known position is supplied beside the velocity.",
    "sources": [
-    "BC-QA-04010"
+    "BC-QA-04010",
+    "BC-ERR-08011"
    ],
    "evidence_tag": "verified"
   }
@@ -246,7 +300,8 @@ BC-QA-04004 has calculator status either, so the lesson takes Section I Part A, 
     "BC-MIS-04005"
    ],
    "observed_behavior": "A negative number is reported as the speed of the particle.",
-   "scoring_consequence": "The answer point is lost."
+   "scoring_consequence": "The answer point is lost.",
+   "fix_prompt": true
   },
   {
    "error_id": "BC-ERR-04008",
@@ -264,7 +319,8 @@ BC-QA-04004 has calculator status either, so the lesson takes Section I Part A, 
     "BC-ERR-04008"
    ],
    "observed_behavior": "The response argues the direction of travel from whether the position is positive or negative.",
-   "scoring_consequence": "The reasoning point is lost; the 2022 Chief Reader report records responses arguing from the wrong function in a related part (cr-22:20)."
+   "scoring_consequence": "The reasoning point is lost; the 2022 Chief Reader report records responses arguing from the wrong function in a related part (cr-22:20).",
+   "fix_prompt": true
   },
   {
    "error_id": "BC-ERR-04010",
@@ -286,7 +342,8 @@ BC-QA-04004 has calculator status either, so the lesson takes Section I Part A, 
     "BC-MIS-04017"
    ],
    "observed_behavior": "Integer times are substituted into the velocity in place of solving the equation velocity equal to zero, so a non-integer zero is missed.",
-   "scoring_consequence": "The 2025 Chief Reader report records this behaviour directly and links it to the loss of the two analysis points, whose mean scores were 0.04 and 0.03 (crabbc-25:20, crabbc-25:22)."
+   "scoring_consequence": "The 2025 Chief Reader report records this behaviour directly and links it to the loss of the two analysis points, whose mean scores were 0.04 and 0.03 (crabbc-25:20, crabbc-25:22).",
+   "fix_prompt": true
   },
   {
    "error_id": "BC-ERR-07026",
@@ -308,7 +365,8 @@ BC-QA-04004 has calculator status either, so the lesson takes Section I Part A, 
     "BC-MIS-07016"
    ],
    "observed_behavior": "The antiderivative equation is written with no constant.",
-   "scoring_consequence": "At most the first two points are available; the guideline caps the response there."
+   "scoring_consequence": "At most the first two points are available; the guideline caps the response there.",
+   "fix_prompt": true
   }
  ],
  "representations": null,
@@ -527,6 +585,14 @@ BC-QA-04004 has calculator status either, so the lesson takes Section I Part A, 
  ],
  "delivery": [
   {
+   "block": "pr-1",
+   "mode": "text",
+   "reason": "rule 6: a prediction on ex-1's position with the picture held for ki-1",
+   "sources": [
+    "BC-SKL-04009"
+   ]
+  },
+  {
    "block": "orientation",
    "mode": "text",
    "reason": "rule 5 for a statement of what a response shows; the figure-bearing BC-REP-02 is served once, on ki-1",
@@ -537,7 +603,7 @@ BC-QA-04004 has calculator status either, so the lesson takes Section I Part A, 
   {
    "block": "ki-1",
    "mode": "interactive",
-   "reason": "rule 3 promoted: BC-REP-02 in BC-SKL-04009 representations; BC-QA-04004 difficulty_variables name a non-integer zero and more than one sign change, and the stem asks for intervals of a direction",
+   "reason": "rule 4 promoted: BC-REP-02 in BC-SKL-04009 representations; BC-QA-04004 difficulty_variables name a non-integer zero and more than one sign change, and the stem asks for intervals of a direction",
    "sources": [
     "BC-SKL-04009",
     "BC-QA-04004"
@@ -689,12 +755,12 @@ BC-QA-04004 has calculator status either, so the lesson takes Section I Part A, 
   "research/exam/exam-structure.md#Section and part layout"
  ],
  "word_count": {
-  "full": 528,
-  "brief": 337
+  "full": 624,
+  "brief": 437
  },
  "read_minutes": {
-  "full": 3.6,
-  "brief": 2.3
+  "full": 4.2,
+  "brief": 3.0
  }
 }
 ```

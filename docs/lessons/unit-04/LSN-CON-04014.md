@@ -9,6 +9,10 @@ purpose: Authoring spec for the concept lesson on BC-CON-04014, establishing the
 
 Concept BC-CON-04014 (skills BC-SKL-04034, BC-SKL-04038), topic 4.7, loaded by BC-QA-04009. No hard parent in the unit; BC-CON-04013 supports it (docs/lessons/unit-04/README.md, section 1).
 
+## Prediction
+
+One question on ex-1's own numbers, both bands, served first: Predict before the rule: f is differentiable with f(4) = 4. What is the limit of f(2x) - 4 as x tends to 2? Form: `short_answer` with numeric key 0, which is a valued step of ex-1. Resolution shown on the key idea screen: A differentiable function is continuous, so f(2x) tends to f(4) = 4 as x tends to 2 and the numerator tends to 0. That is the first half of the rule's hypothesis. Sources: the concept record and the topic section the key idea cites.
+
 ## Orientation
 
 Served text, from BC-CON-04014 `description_plain` and the topic's Assessment behaviour paragraph (research/units/unit-04-contextual-applications-differentiation.md#4.7 Using L'Hospital's Rule for Determining Limits of Indeterminate Forms): a response shows the form is indeterminate before using the rule, taking the limit of a function known through values as its value because differentiability gives continuity.
@@ -25,6 +29,8 @@ BC-SKL-04034 maps to BC-EK-LIM-4A2 and BC-SKL-04038 to BC-EK-LIM-4A1 (ced:93): t
 BC-QA-04009 (research/question-analysis/question-archetypes.md#BC-QA-04009 Limit of an indeterminate form with L'Hospital's rule): `common_givens` "a quotient containing a function known only through a graph of its derivative and one value" and "values of a function and its derivative at one input"; `difficulty_variables` "whether differentiability must be used to evaluate a limit in the numerator". The signal: an unknown f inside the numerator with f and f' given at the inner point. FRQ shape: BC-FRQ-2023-Q4-C, BC-FRQ-2013-Q5-A.
 
 Not this concept: a quotient of named elementary functions, where the limits are read directly.
+
+The near miss comes from a quotient of named elementary functions, where each limit is read directly and no differentiability reason is asked for. That stem is the `not_this` of the contrast pair on st-1.
 
 ## Method choice
 
@@ -74,8 +80,8 @@ Two checks: the bundle holds two errors, fewer than chk-3's three distractors ne
 
 ## Band plan
 
-- Low (full): orientation, ki-1, ki-2, st-1, ex-1 with its scoring line, two error blocks, chk-1, chk-2, the bridge. 435 words, 2.9 minutes (cap 900 and 6).
-- Mid (brief): the same blocks. 435 words, 2.9 minutes (cap 450 and 3).
+- Low (full): prediction, orientation, the bridge, key ideas, st-1 with the contrast pair, ex-1 with its scoring line, chk-1, err-BC-ERR-04028, err-BC-ERR-04029, chk-2. 450 words, 3.0 minutes (cap 900 and 6).
+- Mid (brief): prediction, orientation, the bridge, core key ideas, st-1 with the contrast pair, ex-1 with its scoring line, chk-1, err-BC-ERR-04028, err-BC-ERR-04029, chk-2. 450 words, 3.0 minutes (cap 450 and 3).
 - Refresher: ki-1, ki-2, err-BC-ERR-04028, err-BC-ERR-04029, ex-1.
 
 ## Sources
@@ -104,8 +110,26 @@ Two checks: the bundle holds two errors, fewer than chk-3's three distractors ne
   "BC-SKL-04034",
   "BC-SKL-04038"
  ],
+ "prediction": {
+  "id": "pr-1",
+  "stem": {
+   "text": "Predict: f is differentiable and f(4) = 4. What is the limit of f(2x) - 4 as x tends to 2?",
+   "command_verb": "predict"
+  },
+  "format": "short_answer",
+  "key": {
+   "form": "numeric",
+   "expr": "0"
+  },
+  "resolution": "Differentiable means continuous, so f(2x) tends to 4 and the numerator tends to 0.",
+  "sources": [
+   "BC-CON-04014",
+   "BC-EK-LIM-4A1",
+   "research/units/unit-04-contextual-applications-differentiation.md#4.7 Using L'Hospital's Rule for Determining Limits of Indeterminate Forms"
+  ]
+ },
  "orientation": {
-  "text": "Before using the rule, show the form is indeterminate with two separate limits, each with its reason.",
+  "text": "Show the form is indeterminate with two separate limits, each with its reason.",
   "sources": [
    "BC-CON-04014",
    "research/units/unit-04-contextual-applications-differentiation.md#4.7 Using L'Hospital's Rule for Determining Limits of Indeterminate Forms"
@@ -116,8 +140,8 @@ Two checks: the bundle holds two errors, fewer than chk-3's three distractors ne
    "id": "ki-1",
    "ek_id": "BC-EK-LIM-4A2",
    "depth": "core",
-   "text": "The rule's hypothesis: numerator and denominator both tend to 0, or both to infinity. It is checked first, as two separate limits, before any derivative.",
-   "notation": "separate limits of numerator and denominator",
+   "text": "Both limits tend to 0, or both to infinity; check this first, before any derivative.",
+   "notation": "two separate limits",
    "quote": {
     "text": "Limits of the indeterminate forms 0 over 0",
     "source": "ced:93"
@@ -134,7 +158,7 @@ Two checks: the bundle holds two errors, fewer than chk-3's three distractors ne
    "id": "ki-2",
    "ek_id": "BC-EK-LIM-4A1",
    "depth": "core",
-   "text": "When the numerator holds a function known only through values, its limit comes from differentiability: differentiable at the point means continuous there, so the limit equals the value.",
+   "text": "A function known only through values is differentiable, so continuous.",
    "notation": "differentiable implies continuous",
    "quote": {
     "text": "such forms are said to be indeterminate",
@@ -152,14 +176,26 @@ Two checks: the bundle holds two errors, fewer than chk-3's three distractors ne
   {
    "id": "st-1",
    "archetype_id": "BC-QA-04009",
-   "cue": "An unknown f in the numerator, with f and f' given at the inner point.",
-   "method": "First line: the numerator's limit, citing differentiability for continuity.",
-   "rival": "Rival: the rule applied with no form checked (BC-ERR-04029).",
+   "cue": "An unknown f in the numerator.",
+   "method": "The numerator's limit, citing differentiability.",
+   "rival": "The rule with no form checked.",
    "separating_feature": "f known only through values.",
    "sources": [
-    "BC-QA-04009"
+    "BC-QA-04009",
+    "BC-ERR-04029"
    ],
-   "evidence_tag": "verified"
+   "evidence_tag": "verified",
+   "contrast": {
+    "this": {
+     "text": "g is differentiable, g(3) = 2. Find the limit of (g(3x) - 2)/(x - 1) as x tends to 1.",
+     "archetype_id": "BC-QA-04009"
+    },
+    "not_this": {
+     "text": "Find the limit of sin(x)/(e^x - 1) as x tends to 0.",
+     "why_not": "Each limit is read directly."
+    },
+    "feature": "An unknown f in the numerator."
+   }
   }
  ],
  "worked_examples": [
@@ -187,19 +223,19 @@ Two checks: the bundle holds two errors, fewer than chk-3's three distractors ne
    "steps": [
     {
      "cue": "Unknown f in the numerator.",
-     "why": "Differentiable, so continuous: f(2x) tends to f(4) = 4.",
+     "why": "Continuous: f(2x) tends to 4.",
      "expr": "4 - 4",
      "relation": "new"
     },
     {
      "cue": "Numerator limit.",
-     "why": "Stated alone.",
+     "why": "Alone.",
      "expr": "0",
      "relation": "equivalent",
      "point_type_id": "BC-PT-99055"
     },
     {
-     "cue": "Denominator next.",
+     "cue": "Denominator.",
      "why": "Its own limit.",
      "expr": "exp(x - 2) - 1",
      "relation": "new"
@@ -214,11 +250,11 @@ Two checks: the bundle holds two errors, fewer than chk-3's three distractors ne
     },
     {
      "cue": "Hypothesis met.",
-     "why": "0/0 stated in words."
+     "why": "0/0, in words."
     },
     {
      "cue": "Rule applies.",
-     "why": "2f'(2x) over e^(x - 2), at x = 2.",
+     "why": "2f'(2x) over e^(x - 2).",
      "expr": "2*(-3)/exp(0)",
      "relation": "new"
     }
@@ -257,6 +293,7 @@ Two checks: the bundle holds two errors, fewer than chk-3's three distractors ne
     "expr": "0"
    },
    "relation": "distinct",
+   "fix_prompt": true,
    "possible_reason": {
     "misconception_id": "BC-MIS-04014",
     "text": "as values that may be written on the right of an equals sign"
@@ -279,6 +316,7 @@ Two checks: the bundle holds two errors, fewer than chk-3's three distractors ne
     "expr": "-6"
    },
    "relation": "equivalent",
+   "fix_prompt": false,
    "possible_reason": {
     "misconception_id": "BC-MIS-04015",
     "text": "treats the rule as a general device for limits that resist substitution"
@@ -293,7 +331,7 @@ Two checks: the bundle holds two errors, fewer than chk-3's three distractors ne
  "prerequisite_bridges": [
   {
    "prq_id": "BC-PRQ-04008",
-   "text": "Name each quantity given in the stem and whether it varies."
+   "text": "Name each quantity in the stem and whether it varies."
   }
  ],
  "time": {
@@ -547,12 +585,12 @@ Two checks: the bundle holds two errors, fewer than chk-3's three distractors ne
   "research/exam/exam-structure.md#Section and part layout"
  ],
  "word_count": {
-  "full": 435,
-  "brief": 435
+  "full": 450,
+  "brief": 450
  },
  "read_minutes": {
-  "full": 2.9,
-  "brief": 2.9
+  "full": 3.0,
+  "brief": 3.0
  }
 }
 ```

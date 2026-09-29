@@ -9,6 +9,10 @@ purpose: Authoring spec for the concept lesson on BC-CON-04013, recognising zero
 
 Concept BC-CON-04013 (skill BC-SKL-04033), topic 4.7, loaded by BC-QA-04009 (family lhospital-limit). No hard parent in the unit; BC-CON-04014 supports it (docs/lessons/unit-04/README.md, section 1).
 
+## Prediction
+
+One question on ex-1's own numbers, both bands, served first: Predict before the rule: f(3) = 2, so f(3x) - 2 and x - 1 both tend to 0 as x tends to 1. What does that say about the limit of their ratio? Form: `mcq` with three options (A, The limit is 0, because the numerator tends to 0; B, The limit is not settled yet, and more work is needed (the key); C, The limit does not exist, because the denominator tends to 0). Resolution shown on the key idea screen: Two parts that both tend to 0 leave the ratio's limit unsettled: the form is indeterminate. Here the ratio's limit is -12, a value neither part's limit shows on its own. Sources: the concept record and the topic section the key idea cites.
+
 ## Orientation
 
 Served text, from BC-CON-04013 `description_plain` and the topic's Assessment behaviour paragraph (research/units/unit-04-contextual-applications-differentiation.md#4.7 Using L'Hospital's Rule for Determining Limits of Indeterminate Forms): a response computes the limit of the numerator and of the denominator as two separate statements, and names the form in words; neither 0/0 nor the numerator's limit is the answer.
@@ -24,6 +28,8 @@ BC-SKL-04033 maps to BC-EK-LIM-4A1 (ced:93), one core block.
 BC-QA-04009 (research/question-analysis/question-archetypes.md#BC-QA-04009 Limit of an indeterminate form with L'Hospital's rule): `typical_wording` "find the value of the stated limit, or show that it does not exist, and justify the answer"; `common_givens` a quotient with a function known through values and derivatives; `asked_to_produce` "separate limits of the numerator and denominator". The signal: substituting the limit point sends both parts to zero. Shapes: MCQ (BC-MCQ-SAMPLE-001) and one part of a graphical analysis FRQ (BC-FRQ-2023-Q4-C, BC-FRQ-2021-Q4-C).
 
 Not this concept: a quotient whose denominator tends to a nonzero number; direct substitution settles it.
+
+The near miss comes from a quotient whose denominator tends to a nonzero number, where direct substitution settles the limit and no form is named. That stem is the `not_this` of the contrast pair on st-1.
 
 ## Method choice
 
@@ -74,8 +80,8 @@ BC-QA-04009 is `no_calculator` and one part of a graphical analysis FRQ, so Sect
 
 ## Band plan
 
-- Low (full): orientation, ki-1, st-1, ex-1 with its scoring line, three error blocks, chk-1 to chk-3, the bridge. 510 words, 3.4 minutes (cap 900 and 6).
-- Mid (brief): orientation, ki-1, st-1, ex-1 with its scoring line, err-BC-ERR-01008, err-BC-ERR-04028, chk-1, chk-2, the bridge. 391 words, 2.7 minutes (cap 450 and 3).
+- Low (full): prediction, orientation, the bridge, key ideas, st-1 with the contrast pair, ex-1 with its scoring line, chk-1, err-BC-ERR-01008, err-BC-ERR-04028, err-BC-ERR-04029, chk-2, chk-3. 565 words, 3.77 minutes (cap 900 and 6).
+- Mid (brief): prediction, orientation, the bridge, core key ideas, st-1 with the contrast pair, ex-1 with its scoring line, chk-1, err-BC-ERR-01008, err-BC-ERR-04028, chk-2. 446 words, 2.98 minutes (cap 450 and 3).
 - Refresher: ki-1, err-BC-ERR-01008, err-BC-ERR-04028, err-BC-ERR-04029, ex-1.
 
 ## Sources
@@ -103,8 +109,39 @@ BC-QA-04009 is `no_calculator` and one part of a graphical analysis FRQ, so Sect
  "skills": [
   "BC-SKL-04033"
  ],
+ "prediction": {
+  "id": "pr-1",
+  "stem": {
+   "text": "Predict: as x tends to 1, f(3x) - 2 and x - 1 both tend to 0. What follows for their ratio's limit?",
+   "command_verb": "predict"
+  },
+  "format": "mcq",
+  "options": [
+   {
+    "id": "A",
+    "label": "It is 0",
+    "is_key": false
+   },
+   {
+    "id": "B",
+    "label": "It is not settled yet",
+    "is_key": true
+   },
+   {
+    "id": "C",
+    "label": "It does not exist",
+    "is_key": false
+   }
+  ],
+  "resolution": "Both tending to 0 leaves the ratio's limit unsettled: an indeterminate form. Here the limit is -12.",
+  "sources": [
+   "BC-CON-04013",
+   "BC-EK-LIM-4A1",
+   "research/units/unit-04-contextual-applications-differentiation.md#4.7 Using L'Hospital's Rule for Determining Limits of Indeterminate Forms"
+  ]
+ },
  "orientation": {
-  "text": "Take the limit of the numerator and of the denominator as two separate statements, then name the form in words. 0/0 is a signal to keep working, never the answer.",
+  "text": "Take the numerator's and denominator's limits separately, then name the form in words.",
   "sources": [
    "BC-CON-04013",
    "research/units/unit-04-contextual-applications-differentiation.md#4.7 Using L'Hospital's Rule for Determining Limits of Indeterminate Forms"
@@ -115,7 +152,7 @@ BC-QA-04009 is `no_calculator` and one part of a graphical analysis FRQ, so Sect
    "id": "ki-1",
    "ek_id": "BC-EK-LIM-4A1",
    "depth": "core",
-   "text": "When numerator and denominator both tend to 0, or both to infinity, the ratio's limit is not yet settled: the form is indeterminate. The form is shown by two separate limits; writing the quotient equal to 0/0 is marked wrong.",
+   "text": "When both parts tend to 0, or both to infinity, the ratio's limit is unsettled: indeterminate. Show it with two separate limits.",
    "notation": "0/0 and infinity/infinity",
    "quote": {
     "text": "such forms are said to be indeterminate",
@@ -134,14 +171,26 @@ BC-QA-04009 is `no_calculator` and one part of a graphical analysis FRQ, so Sect
   {
    "id": "st-1",
    "archetype_id": "BC-QA-04009",
-   "cue": "A quotient whose parts both vanish at the limit point.",
-   "method": "First lines: the numerator's limit, then the denominator's, separately.",
-   "rival": "Rival: 0 reported from the numerator alone (BC-ERR-01008).",
+   "cue": "Both parts of a quotient vanish at the limit point.",
+   "method": "The numerator's limit, then the denominator's.",
+   "rival": "0 reported from the numerator alone.",
    "separating_feature": "The denominator's own limit.",
    "sources": [
-    "BC-QA-04009"
+    "BC-QA-04009",
+    "BC-ERR-01008"
    ],
-   "evidence_tag": "verified"
+   "evidence_tag": "verified",
+   "contrast": {
+    "this": {
+     "text": "g(4) = 1 and g'(4) = 3. Find the limit of (g(2x) - 1)/(x - 2) as x tends to 2.",
+     "archetype_id": "BC-QA-04009"
+    },
+    "not_this": {
+     "text": "Find the limit of (x^2 + 1)/(x + 3) as x tends to 2.",
+     "why_not": "The denominator tends to 5; substitution settles it."
+    },
+    "feature": "Does the denominator tend to 0?"
+   }
   }
  ],
  "worked_examples": [
@@ -169,13 +218,13 @@ BC-QA-04009 is `no_calculator` and one part of a graphical analysis FRQ, so Sect
    "steps": [
     {
      "cue": "Numerator first.",
-     "why": "Differentiable, so continuous: f(3x) tends to f(3) = 2.",
+     "why": "Differentiable, so continuous: f(3x) tends to 2.",
      "expr": "2 - 2",
      "relation": "new"
     },
     {
      "cue": "Its limit.",
-     "why": "A separate statement.",
+     "why": "Its own statement.",
      "expr": "0",
      "relation": "equivalent",
      "point_type_id": "BC-PT-99055"
@@ -196,11 +245,11 @@ BC-QA-04009 is `no_calculator` and one part of a graphical analysis FRQ, so Sect
     },
     {
      "cue": "Both zero.",
-     "why": "Form 0/0 in words: the rule applies."
+     "why": "Form 0/0, in words."
     },
     {
      "cue": "Ratio of derivatives.",
-     "why": "3f'(3x) over 1, at x = 1.",
+     "why": "3f'(3x) over 1 at x = 1.",
      "expr": "3*(-4)/1",
      "relation": "new"
     }
@@ -239,6 +288,7 @@ BC-QA-04009 is `no_calculator` and one part of a graphical analysis FRQ, so Sect
     "expr": "-12"
    },
    "relation": "distinct",
+   "fix_prompt": true,
    "possible_reason": {
     "misconception_id": "BC-MIS-01006",
     "text": "treats the symbol zero over zero as an answer"
@@ -261,6 +311,7 @@ BC-QA-04009 is `no_calculator` and one part of a graphical analysis FRQ, so Sect
     "expr": "0"
    },
    "relation": "distinct",
+   "fix_prompt": true,
    "possible_reason": {
     "misconception_id": "BC-MIS-04014",
     "text": "as values that may be written on the right of an equals sign"
@@ -283,6 +334,7 @@ BC-QA-04009 is `no_calculator` and one part of a graphical analysis FRQ, so Sect
     "expr": "-12"
    },
    "relation": "equivalent",
+   "fix_prompt": false,
    "possible_reason": {
     "misconception_id": "BC-MIS-04015",
     "text": "no form is checked before it is used"
@@ -297,7 +349,7 @@ BC-QA-04009 is `no_calculator` and one part of a graphical analysis FRQ, so Sect
  "prerequisite_bridges": [
   {
    "prq_id": "BC-PRQ-04008",
-   "text": "Name each quantity given in the stem and whether it varies."
+   "text": "Name each quantity in the stem and whether it varies."
   }
  ],
  "time": {
@@ -665,12 +717,12 @@ BC-QA-04009 is `no_calculator` and one part of a graphical analysis FRQ, so Sect
   "research/exam/exam-structure.md#Section and part layout"
  ],
  "word_count": {
-  "full": 510,
-  "brief": 391
+  "full": 565,
+  "brief": 446
  },
  "read_minutes": {
-  "full": 3.4,
-  "brief": 2.7
+  "full": 3.77,
+  "brief": 2.98
  }
 }
 ```

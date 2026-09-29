@@ -3,20 +3,67 @@
  "version": 1,
  "kind": "concept",
  "target_id": "BC-CON-04009",
- "status": "signed_off",
+ "status": "draft",
  "snapshot_digest": "a6a8ec9d3f59ab8f712e33d30cc22fc64bf2c478fbe7312e3e3118d319c6a42f",
  "source_digest": "b1f1c307b2de031a2bcd42283d5a7658900d97b0a3a318d15409b2150b403727",
  "read_minutes": {
-  "full": 3.8,
-  "brief": 2.9
+  "full": 3.9,
+  "brief": 3.0
  },
  "word_count": {
-  "full": 472,
-  "brief": 367
+  "full": 504,
+  "brief": 400
  },
  "sections": [
   {
    "id": "LSN-CON-04009#s1",
+   "type": "prediction",
+   "bands": [
+    "low",
+    "mid"
+   ],
+   "skills": [
+    "BC-SKL-04023",
+    "BC-SKL-04026",
+    "BC-SKL-04027"
+   ],
+   "sources": [
+    "BC-CON-04009",
+    "research/units/unit-04-contextual-applications-differentiation.md#4.5 Solving Related Rates Problems"
+   ],
+   "evidence_tag": "inferred",
+   "stem": {
+    "text": "Predict. On x^2 + y^2 = 225 the foot is at x = 9. Does 9 go in before or after differentiating in t?",
+    "command_verb": "predict"
+   },
+   "format": "mcq",
+   "options": [
+    {
+     "id": "A",
+     "label": "Before: 81 + y^2 = 225.",
+     "is_key": false
+    },
+    {
+     "id": "B",
+     "label": "After: x varies.",
+     "is_key": true
+    },
+    {
+     "id": "C",
+     "label": "Either order.",
+     "is_key": false
+    }
+   ],
+   "resolution": {
+    "text": "After: x changes with time, so its rate term must stay."
+   },
+   "delivery": {
+    "mode": "text",
+    "reason": "rule 6"
+   }
+  },
+  {
+   "id": "LSN-CON-04009#s2",
    "type": "orientation",
    "bands": [
     "low",
@@ -32,7 +79,7 @@
     "research/units/unit-04-contextual-applications-differentiation.md#4.5 Solving Related Rates Problems"
    ],
    "evidence_tag": "inferred",
-   "text": "Keep every varying quantity as a variable through the differentiation. Put the instant's values in afterwards, and find any missing value from the relating equation at that instant.",
+   "text": "Keep varying quantities as variables through differentiation; substitute the instant afterwards.",
    "delivery": {
     "mode": "figure",
     "reason": "rule 3: BC-REP-08 on BC-SKL-04026 and BC-SKL-04027",
@@ -129,7 +176,7 @@
    }
   },
   {
-   "id": "LSN-CON-04009#s2",
+   "id": "LSN-CON-04009#s3",
    "type": "key_ideas",
    "bands": [
     "low",
@@ -149,7 +196,7 @@
    "evidence_tag": "verified",
    "ek_id": "BC-EK-CHA-3E1",
    "depth": "core",
-   "text": "A value stated for one instant is not a constant: it goes in after the differentiation. A quantity fixed for the whole motion may go in at any stage. A value the substitution needs but the stem omits comes from the relating equation at that instant.",
+   "text": "A one-instant value goes in after differentiating; a value fixed throughout may go in at any stage. A missing value comes from the relating equation.",
    "notation": "values substituted into the differentiated equation",
    "quote": {
     "text": "relating it to other quantities whose rates of change are known",
@@ -270,7 +317,7 @@
    }
   },
   {
-   "id": "LSN-CON-04009#s3",
+   "id": "LSN-CON-04009#s4",
    "type": "strategy",
    "bands": [
     "low",
@@ -282,17 +329,29 @@
     "BC-SKL-04027"
    ],
    "sources": [
-    "BC-QA-04006"
+    "BC-QA-04006",
+    "BC-ERR-04020"
    ],
    "evidence_tag": "verified",
    "archetype_id": "BC-QA-04006",
-   "cue": "\"At the instant when\" a dimension has a value.",
-   "method": "Differentiate the relating equation first; substitute after.",
-   "rival": "Rival: the value put in first (BC-ERR-04020).",
-   "separating_feature": "Instant values change; fixed lengths do not."
+   "cue": "\"At the instant when\" a value is given.",
+   "method": "Differentiate first; substitute after.",
+   "rival": "The value put in first.",
+   "separating_feature": "Instant values change; fixed lengths do not.",
+   "contrast": {
+    "this": {
+     "text": "A 13 foot ladder's foot slides out at 3 feet per second. Find dy/dt at foot 5 feet.",
+     "archetype_id": "BC-QA-04006"
+    },
+    "not_this": {
+     "text": "L = 13 throughout in x^2 + y^2 = L^2. May 13 go in first?",
+     "why_not": "L is fixed."
+    },
+    "feature": "Fixed, or true at one instant?"
+   }
   },
   {
-   "id": "LSN-CON-04009#s4",
+   "id": "LSN-CON-04009#s5",
    "type": "strategy",
    "bands": [
     "low",
@@ -308,11 +367,11 @@
    "archetype_id": "BC-QA-04007",
    "cue": "A point on a curve and one coordinate rate.",
    "method": "Differentiate the curve in t, then put in the point and the rate.",
-   "rival": "Rival: the point substituted before differentiating.",
+   "rival": "The point substituted before differentiating.",
    "separating_feature": "The point holds for one instant only."
   },
   {
-   "id": "LSN-CON-04009#s5",
+   "id": "LSN-CON-04009#s6",
    "type": "worked_example",
    "bands": [
     "low",
@@ -344,8 +403,8 @@
    "calculator_status": "no_calculator",
    "steps": [
     {
-     "cue": "The ladder's length is fixed.",
-     "why": "Only 15 is constant.",
+     "cue": "Ladder length is fixed.",
+     "why": "15 is constant.",
      "expression": [
       "Equal",
       [
@@ -366,8 +425,8 @@
      "relation": "new"
     },
     {
-     "cue": "y is not given.",
-     "why": "Recover it at the instant.",
+     "cue": "y not given.",
+     "why": "Recover it.",
      "expression": [
       "Equal",
       [
@@ -388,13 +447,13 @@
     },
     {
      "cue": "Solve for y.",
-     "why": "Height is positive.",
+     "why": "Positive root.",
      "expression": 12,
      "relation": "solve",
      "variable": "y"
     },
     {
-     "cue": "Back to the general equation.",
+     "cue": "General equation.",
      "why": "x and y both vary.",
      "expression": [
       "Equal",
@@ -419,7 +478,7 @@
      "relation": "new"
     },
     {
-     "cue": "Now the instant.",
+     "cue": "The instant.",
      "why": "x = 9, y = 12, dx/dt = 2.",
      "expression": [
       "Equal",
@@ -468,7 +527,7 @@
    }
   },
   {
-   "id": "LSN-CON-04009#s6",
+   "id": "LSN-CON-04009#s7",
    "type": "what_a_reader_scores",
    "bands": [
     "low",
@@ -483,7 +542,7 @@
     "BC-PT-99023"
    ],
    "evidence_tag": "verified",
-   "example_id": "LSN-CON-04009#s5",
+   "example_id": "LSN-CON-04009#s6",
    "lines": [
     {
      "point_type_id": "BC-PT-99023",
@@ -546,6 +605,7 @@
     ]
    },
    "relation": "distinct",
+   "fix_prompt": true,
    "possible_reason": {
     "misconception_id": "BC-MIS-04011",
     "text": "so they are substituted before the differentiation"
@@ -594,6 +654,7 @@
     ]
    },
    "relation": "distinct",
+   "fix_prompt": true,
    "delivery": {
     "mode": "step_reveal",
     "reason": "rule 1",
@@ -635,6 +696,7 @@
     ]
    },
    "relation": "distinct",
+   "fix_prompt": true,
    "possible_reason": {
     "misconception_id": "BC-MIS-04008",
     "text": "so the rates with respect to time never appear"
@@ -660,7 +722,7 @@
    ],
    "evidence_tag": "inferred",
    "prerequisite_id": "BC-PRQ-04007",
-   "text": "Isolate one unknown in a linear equation; otherwise the rate is never extracted."
+   "text": "Solve a linear equation."
   },
   {
    "id": "LSN-CON-04009#prq-BC-PRQ-04008",
@@ -678,7 +740,7 @@
    ],
    "evidence_tag": "inferred",
    "prerequisite_id": "BC-PRQ-04008",
-   "text": "Name each quantity, its unit, and whether it varies."
+   "text": "Naming quantities."
   }
  ],
  "checks": [
@@ -700,7 +762,7 @@
     "length_unit": "meter",
     "time_unit": "second"
    },
-   "completes": "LSN-CON-04009#s5",
+   "completes": "LSN-CON-04009#s6",
    "stem": {
     "text": "For ex-1, 2x dx/dt + 2y dy/dt = 0 and y = 12 when x = 9. Find dy/dt.",
     "command_verb": "find"
@@ -1101,18 +1163,18 @@
   }
  ],
  "refresher": [
-  "LSN-CON-04009#s2",
+  "LSN-CON-04009#s3",
   "LSN-CON-04009#err-BC-ERR-04020",
   "LSN-CON-04009#err-BC-ERR-04022",
   "LSN-CON-04009#err-BC-ERR-99013",
-  "LSN-CON-04009#s5"
+  "LSN-CON-04009#s6"
  ],
  "provenance": {
   "author": "tools/lesson_transcribe.py",
-  "prompt_version": "generator/lesson_v1",
+  "prompt_version": "generator/lesson_v2",
   "design_path": "docs/lessons/unit-04/LSN-CON-04009.md",
-  "signed_off_by": "claude-opus-5-5",
-  "signed_off_at": "2026-09-29",
+  "signed_off_by": null,
+  "signed_off_at": null,
   "not_human": true
  }
 }

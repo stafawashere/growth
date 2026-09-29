@@ -3,7 +3,7 @@
  "version": 1,
  "kind": "concept",
  "target_id": "BC-CON-04002",
- "status": "signed_off",
+ "status": "draft",
  "snapshot_digest": "a6a8ec9d3f59ab8f712e33d30cc22fc64bf2c478fbe7312e3e3118d319c6a42f",
  "source_digest": "94d38e317ab67012ab343849ce0a79e0176a2259d54c9cf667ca99b2cd8d8173",
  "read_minutes": {
@@ -11,12 +11,64 @@
   "brief": 3.0
  },
  "word_count": {
-  "full": 515,
-  "brief": 395
+  "full": 520,
+  "brief": 405
  },
  "sections": [
   {
    "id": "LSN-CON-04002#s1",
+   "type": "prediction",
+   "bands": [
+    "low",
+    "mid"
+   ],
+   "skills": [
+    "BC-SKL-04001",
+    "BC-SKL-04004",
+    "BC-SKL-04014"
+   ],
+   "sources": [
+    "BC-CON-04002",
+    "BC-EK-CHA-3A3",
+    "ced:87",
+    "research/units/unit-04-contextual-applications-differentiation.md#4.1 Interpreting the Meaning of the Derivative in Context"
+   ],
+   "evidence_tag": "inferred",
+   "stem": {
+    "text": "Predict the units of \\(T'(4)\\) from \\((55-31)/(6-2)\\), with \\(T\\) in degrees Celsius and \\(t\\) in minutes.",
+    "command_verb": "predict"
+   },
+   "format": "mcq",
+   "options": [
+    {
+     "id": "A",
+     "label": "Degrees Celsius",
+     "is_key": false
+    },
+    {
+     "id": "B",
+     "label": "Degrees Celsius per minute",
+     "is_key": true
+    },
+    {
+     "id": "C",
+     "label": "Minutes per degree Celsius",
+     "is_key": false
+    }
+   ],
+   "resolution": {
+    "text": "Degrees Celsius over minutes: the function's unit over the input's unit, so \\(T'(4)\\) is in degrees Celsius per minute."
+   },
+   "delivery": {
+    "mode": "text",
+    "reason": "rule 6: a prediction on ex-1's numbers, asking for units",
+    "sources": [
+     "BC-SKL-04001"
+    ]
+   }
+  },
+  {
+   "id": "LSN-CON-04002#s2",
    "type": "orientation",
    "bands": [
     "low",
@@ -32,7 +84,7 @@
     "research/units/unit-04-contextual-applications-differentiation.md#4.1 Interpreting the Meaning of the Derivative in Context"
    ],
    "evidence_tag": "inferred",
-   "text": "A response shows a difference of values over a difference of inputs, the value, then its units, the function's unit over the input's unit.",
+   "text": "A response shows a difference over a difference, then units.",
    "delivery": {
     "mode": "text",
     "reason": "rule 5: a statement of what a response shows, BC-REP-04 and BC-REP-05 on BC-SKL-04001",
@@ -42,7 +94,7 @@
    }
   },
   {
-   "id": "LSN-CON-04002#s2",
+   "id": "LSN-CON-04002#s3",
    "type": "key_ideas",
    "bands": [
     "low",
@@ -60,8 +112,7 @@
    "evidence_tag": "inferred",
    "ek_id": "BC-EK-CHA-3A3",
    "depth": "core",
-   "text": "A derivative's unit is the function's unit over the input's unit, as in degrees Celsius per minute. A second derivative divides by the input's unit twice (sg-25:11). Units carry their own point.",
-   "notation": "units of f per unit of x",
+   "text": "A derivative's unit is the function's unit over the input's unit, as in degrees Celsius per minute.",
    "delivery": {
     "mode": "text",
     "reason": "rule 5: CHA-3A3 is a rule about units with BC-REP-04 and BC-REP-05 givens",
@@ -71,7 +122,7 @@
    }
   },
   {
-   "id": "LSN-CON-04002#s3",
+   "id": "LSN-CON-04002#s4",
    "type": "key_ideas",
    "bands": [
     "low"
@@ -88,7 +139,7 @@
    "evidence_tag": "verified",
    "ek_id": "BC-EK-CHA-3A1",
    "depth": "extended",
-   "text": "The derivative at an input is the instantaneous rate of change there. From a table, the average rate of change over an interval containing the input approximates it, written as a difference of values divided by a difference of inputs (sg-25:11).",
+   "text": "The derivative at an input is the instantaneous rate of change there. From a table, the average rate of change over an interval containing the input approximates it, written as a difference of values divided by a difference of inputs.",
    "notation": "f prime of a",
    "quote": {
     "text": "The derivative of a function can be interpreted as the instantaneous rate of change with respect to its independent variable.",
@@ -96,7 +147,7 @@
    },
    "delivery": {
     "mode": "table",
-    "reason": "rule 4: BC-REP-03 in BC-SKL-04004 representations and BC-QA-04002 common_givens, a table of values of a contextual quantity",
+    "reason": "rule 5: BC-REP-03 in BC-SKL-04004 representations and BC-QA-04002 common_givens, a table of values of a contextual quantity",
     "sources": [
      "BC-SKL-04004",
      "BC-QA-04002"
@@ -140,7 +191,7 @@
    }
   },
   {
-   "id": "LSN-CON-04002#s4",
+   "id": "LSN-CON-04002#s5",
    "type": "key_ideas",
    "bands": [
     "low",
@@ -157,7 +208,7 @@
    "evidence_tag": "inferred",
    "ek_id": "BC-EK-CHA-3C1",
    "depth": "core",
-   "text": "A model's rate is its derivative at the named instant. For \\(V(t)\\) liters at \\(t\\) hours, \\(V'(2)\\) is in liters per hour, in the context's words.",
+   "text": "A model's rate is its derivative at the named instant, in the context's words: \\(V'(2)\\) is in liters per hour.",
    "delivery": {
     "mode": "text",
     "reason": "rule 5: CHA-3C1 on BC-SKL-04014 carries BC-REP-01, BC-REP-05 and BC-REP-09, none figure-bearing",
@@ -167,7 +218,7 @@
    }
   },
   {
-   "id": "LSN-CON-04002#s5",
+   "id": "LSN-CON-04002#s6",
    "type": "strategy",
    "bands": [
     "low",
@@ -178,17 +229,30 @@
     "BC-SKL-04004"
    ],
    "sources": [
-    "BC-QA-04002"
+    "BC-QA-04002",
+    "BC-ERR-02001",
+    "BC-ERR-02004"
    ],
    "evidence_tag": "verified",
    "archetype_id": "BC-QA-04002",
-   "cue": "A table, a named interval, and the words approximate the derivative, show the work, indicate units.",
-   "method": "First line: the difference of the two named rows over the difference of their inputs.",
-   "rival": "The difference never divided (BC-ERR-02001), or a one-sided pair of rows (BC-ERR-02004).",
-   "separating_feature": "The named interval fixes both rows, which bracket the input."
+   "cue": "A table and a named interval.",
+   "method": "The named rows' difference over the inputs' difference.",
+   "rival": "The difference never divided.",
+   "separating_feature": "The named interval fixes both rows.",
+   "contrast": {
+    "this": {
+     "text": "A table gives \\(V\\) in liters at \\(t=0,3,6,9\\) hours. Approximate \\(V'(6)\\) over \\([3,9]\\) with units.",
+     "archetype_id": "BC-QA-04002"
+    },
+    "not_this": {
+     "text": "Find the change in \\(V\\) from \\(t=3\\) to \\(t=9\\).",
+     "why_not": "Change alone, in liters; no division."
+    },
+    "feature": "A rate divides by the interval."
+   }
   },
   {
-   "id": "LSN-CON-04002#s6",
+   "id": "LSN-CON-04002#s7",
    "type": "strategy",
    "bands": [
     "low",
@@ -198,17 +262,18 @@
     "BC-SKL-04001"
    ],
    "sources": [
-    "BC-QA-04001"
+    "BC-QA-04001",
+    "BC-ERR-04003"
    ],
    "evidence_tag": "verified",
    "archetype_id": "BC-QA-04001",
    "cue": "A value of a derivative is given, and the stem says using correct units, interpret it in context.",
-   "method": "First line: name the quantity and the instant, then the direction and the units.",
-   "rival": "Rival: reading the value as an amount of the quantity (BC-ERR-04003).",
+   "method": "Name the quantity and the instant, then the direction and the units.",
+   "rival": "Reading the value as an amount of the quantity.",
    "separating_feature": "A derivative value is a rate, so its unit has a per."
   },
   {
-   "id": "LSN-CON-04002#s7",
+   "id": "LSN-CON-04002#s8",
    "type": "worked_example",
    "bands": [
     "low",
@@ -280,7 +345,7 @@
    }
   },
   {
-   "id": "LSN-CON-04002#s8",
+   "id": "LSN-CON-04002#s9",
    "type": "what_a_reader_scores",
    "bands": [
     "low",
@@ -294,7 +359,7 @@
     "BC-PT-99006"
    ],
    "evidence_tag": "verified",
-   "example_id": "LSN-CON-04002#s7",
+   "example_id": "LSN-CON-04002#s8",
    "lines": [
     {
      "point_type_id": "BC-PT-99006",
@@ -349,6 +414,7 @@
     ]
    },
    "relation": "distinct",
+   "fix_prompt": true,
    "possible_reason": {
     "misconception_id": "BC-MIS-04003",
     "text": "the unit as something added at the end"
@@ -385,6 +451,7 @@
     "expression": 6
    },
    "relation": "equivalent",
+   "fix_prompt": false,
    "delivery": {
     "mode": "step_reveal",
     "reason": "rule 1",
@@ -408,7 +475,7 @@
    ],
    "evidence_tag": "inferred",
    "prerequisite_id": "BC-PRQ-04004",
-   "text": "A compound unit is a quotient, such as degrees Celsius per minute, attached to the value. The failure: a correct number with the unit missing or upside down."
+   "text": "A compound unit is a quotient, such as degrees Celsius per minute, attached to the value."
   }
  ],
  "checks": [
@@ -439,7 +506,7 @@
     "context": "oven",
     "trend": "increasing"
    },
-   "completes": "LSN-CON-04002#s7",
+   "completes": "LSN-CON-04002#s8",
    "stem": {
     "text": "The setup is \\((55-31)/(6-2)\\). Give \\(T'(4)\\) with its units.",
     "command_verb": "give"
@@ -539,18 +606,18 @@
   }
  ],
  "refresher": [
-  "LSN-CON-04002#s2",
-  "LSN-CON-04002#s4",
+  "LSN-CON-04002#s3",
+  "LSN-CON-04002#s5",
   "LSN-CON-04002#err-BC-ERR-04001",
   "LSN-CON-04002#err-BC-ERR-04004",
-  "LSN-CON-04002#s7"
+  "LSN-CON-04002#s8"
  ],
  "provenance": {
   "author": "tools/lesson_transcribe.py",
-  "prompt_version": "generator/lesson_v1",
+  "prompt_version": "generator/lesson_v2",
   "design_path": "docs/lessons/unit-04/LSN-CON-04002.md",
-  "signed_off_by": "claude-opus-5-5",
-  "signed_off_at": "2026-09-29",
+  "signed_off_by": null,
+  "signed_off_at": null,
   "not_human": true
  }
 }

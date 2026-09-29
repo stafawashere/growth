@@ -9,9 +9,13 @@ purpose: Authoring spec for the concept lesson on BC-CON-04001, interpreting a d
 
 Concept BC-CON-04001 (skills BC-SKL-04002, BC-SKL-04003, BC-SKL-04005), topic 4.1 of Unit 4, loaded by one archetype, BC-QA-04001 (family derivative-in-context). Its hard parent is BC-CON-04002, the units (docs/lessons/unit-04/README.md, section 1).
 
+## Prediction
+
+Both bands, served first, before any rule. Form `mcq`, three options, on ex-1's own numbers: \(W'(9)=-3.5\) for water in a tank, in liters, at \(t\) minutes. The student picks among an amount, a decrease at a rate and an increase at a rate. Key: the water decreases 3.5 liters per minute. The resolution states what the derivative gives (a rate at the instant, in liters per minute, negative so decreasing) and never grades the choice. Sources: BC-CON-04001 and the 4.1 topic section that ki-1 cites (BC-EK-CHA-3A1, ced:87). Delivery: text. [inferred] Settled by the prediction's first-try rate in the build plan.
+
 ## Orientation
 
-Served text, from BC-CON-04001 `description_plain` and the Assessment behaviour paragraph (research/units/unit-04-contextual-applications-differentiation.md#4.1 Interpreting the Meaning of the Derivative in Context), stated as what the sentence must hold. No count, no frequency.
+Served text, from BC-CON-04001 `description_plain` and the Assessment behaviour paragraph (research/units/unit-04-contextual-applications-differentiation.md#4.1 Interpreting the Meaning of the Derivative in Context), stated as what the sentence must hold and cut to fit the brief cap. No count, no frequency.
 
 ## Key ideas
 
@@ -25,17 +29,19 @@ BC-SKL-04002 maps BC-EK-CHA-3A1 and BC-EK-CHA-3A2, BC-SKL-04003 maps BC-EK-CHA-3
 BC-QA-04001 (research/question-analysis/question-archetypes.md#BC-QA-04001 Interpreting the value of a derivative in context with units): `typical_wording` "using correct units, interpret the meaning of the stated value in the context of the problem"; `common_givens` a contextual model, the units of the quantity and of the input, a numerical value of the derivative; `asked_to_produce` the value, its interpretation, the units of the rate. The signal: the word interpret beside a primed symbol and a number. Shapes: one part of a multipart contextual FRQ, often sharing the part with a computation (BC-FRQ-2013-Q1-A, BC-FRQ-2014-Q1-B, BC-FRQ-2023-Q1-D, BC-FRQ-2018-Q2-A), and an MCQ choosing among sentences (BC-MCQ-SAMPLE-013).
 
 Not this concept: a stem asking for the units alone (BC-CON-04002), for an estimate from a table (BC-QA-04002), or for the amount at an instant, which is a function value.
+The contrast pair on st-1 sets an interpretation stem beside its near miss. Where the near miss comes from: the `wrong_approaches` entry that reads the value as an amount (BC-ERR-04003), so the near-miss stem gives an unprimed function value, which asks for an amount and not a rate. The separating feature is the prime.
 
 ## Method choice
 
 One strategy block: BC-QA-04001 is the only archetype loading these skills.
 
-- st-1, BC-QA-04001. Method, `expected_solution_path[0]`: name the quantity and the instant. Rival from `wrong_approaches`: the value read as an amount (BC-ERR-04003), or a negative rate described as an increase or a magnitude (BC-ERR-04005). Separating feature: the prime on the given symbol. The archetype carries `asked_to_produce` and `common_givens`, so the block is verified.
+- st-1, BC-QA-04001. Method, `expected_solution_path[0]`: name the quantity and the instant. Rival from `wrong_approaches`: the value read as an amount (BC-ERR-04003), carried in `sources` and not in the served text. Separating feature: the prime on the given symbol. The reader prints its own labels, so no field starts with one. The archetype carries `asked_to_produce` and `common_givens`, so the block is verified. The block carries the contrast pair: a primed coffee temperature to interpret, beside an unprimed one.
 
 ## Solution path
 
 - ex-1, BC-QA-04001, both bands. Draw from `parameter_spec`: context tank, instant 9, magnitude 7/2, sign negative, order first, so the stated value is -7/2. No published BC-QA-04001 item carries this draw.
 - Steps follow `expected_solution_path`: name the rate and the instant (new, -7/2), the direction from the sign, the units as liters per minute, the sentence about the rate (tagged BC-PT-99008). The answer is a statement. A fluent solver writes only the sentence; the three reads before it are held in the head.
+One example, so it is not faded and carries no `fade_from`.
 
 ## Scoring
 
@@ -47,10 +53,12 @@ Point losses for the author: a rate of a rate described as a rate, a true statem
 
 Four active errors meet the skills, in the bundle's order: BC-ERR-04001, BC-ERR-04003, BC-ERR-04005, BC-ERR-99027. Low band all four; mid band the first two. All on ex-1's draw.
 
-- err-BC-ERR-04001: minutes per liter against liters per minute. Possible reason from BC-MIS-04003.
-- err-BC-ERR-04003: 3.5 liters held against a rate of -3.5 liters per minute. Possible reason from BC-MIS-04001.
-- err-BC-ERR-04005: increasing against decreasing. Possible reason from BC-MIS-04002.
-- err-BC-ERR-99027: the same value with no instant and no direction; the values are equal, so the relation is equivalent and the loss is the missing phrases.
+- err-BC-ERR-04001: minutes per liter against liters per minute. Possible reason from BC-MIS-04003. Distinct, so `fix_prompt` true.
+- err-BC-ERR-04003: 3.5 liters held against a rate of -3.5 liters per minute. Possible reason from BC-MIS-04001. Distinct, `fix_prompt` true.
+- err-BC-ERR-04005: increasing against decreasing. Possible reason from BC-MIS-04002. Distinct, `fix_prompt` true.
+- err-BC-ERR-99027: the same value with no instant and no direction; the values are equal, so the relation is equivalent, `fix_prompt` false, and the loss is the missing phrases.
+
+The text writes 3.5, so every expression is the decimal 3.5 or -3.5, not 7/2.
 
 ## Representations
 
@@ -72,13 +80,16 @@ BC-QA-04001 has calculator status either, so the lesson takes Section I Part A, 
 
 ## Delivery
 
+- pr-1: text. Rule 6, a prediction on ex-1's numbers with nothing to draw.
 - orientation, ki-1, ki-2: text. Rule 5: the three skills carry BC-REP-04 and BC-REP-05 only (docs/lessons/unit-04/README.md, section 6).
 - ex-1 and the four error blocks: step_reveal. Rule 1.
 
+Figure presence: no drawn block. No rule of 2 to 5 applies, because BC-REP-04 and BC-REP-05 are a model read into a sentence and no key idea describes a process, so the record carries `no_figure_reason`.
+
 ## Band plan
 
-- Low (full): orientation, ki-1, ki-2, st-1, ex-1 with its scoring line, four error blocks, chk-1 to chk-3, both bridges. 687 words, 4.6 minutes (cap 900 and 6).
-- Mid (brief): orientation, ki-1, st-1, ex-1 with its scoring line, err-BC-ERR-04001, err-BC-ERR-04003, chk-1, chk-2, both bridges. 434 words, 2.9 minutes (cap 450 and 3).
+- Low (full): prediction, orientation, both bridges, ki-1, ki-2, st-1 with its contrast, ex-1 with its scoring line, chk-1, four error blocks, chk-2, chk-3. 702 words, 4.7 minutes (cap 900 and 6).
+- Mid (brief): prediction, orientation, both bridges, ki-1, st-1 with its contrast, ex-1 with its scoring line, chk-1, err-BC-ERR-04001, err-BC-ERR-04003, chk-2. 449 words, 3.0 minutes (cap 450 and 3). The orientation, ki-1, the strategy cue, the prediction and the bridges were shortened to fit.
 - Refresher: ki-1, the four error blocks, ex-1.
 
 ## Sources
@@ -107,8 +118,41 @@ BC-QA-04001 has calculator status either, so the lesson takes Section I Part A, 
   "BC-SKL-04003",
   "BC-SKL-04005"
  ],
+ "prediction": {
+  "id": "pr-1",
+  "stem": {
+   "text": "Predict what \\(W'(9)=-3.5\\) says, for \\(W(t)\\) liters of water at \\(t\\) minutes.",
+   "command_verb": "predict"
+  },
+  "format": "mcq",
+  "options": [
+   {
+    "id": "A",
+    "label": "The tank holds 3.5 liters.",
+    "is_key": false
+   },
+   {
+    "id": "B",
+    "label": "The water decreases 3.5 liters per minute.",
+    "is_key": true
+   },
+   {
+    "id": "C",
+    "label": "The water increases 3.5 liters per minute.",
+    "is_key": false
+   }
+  ],
+  "resolution": "\\(W'(9)\\) is a rate at \\(t=9\\), in liters per minute. It is negative, so the water is decreasing.",
+  "sources": [
+   "BC-CON-04001",
+   "BC-EK-CHA-3A1",
+   "ced:87",
+   "research/units/unit-04-contextual-applications-differentiation.md#4.1 Interpreting the Meaning of the Derivative in Context"
+  ]
+ },
+ "no_figure_reason": "The three skills carry only BC-REP-04 and BC-REP-05, a model read into a sentence, and the key ideas describe no process. No figure-bearing representation applies.",
  "orientation": {
-  "text": "A derivative value says how fast the modelled quantity changes at one instant. A response interprets it in one sentence: the quantity, the instant, increasing or decreasing, the size, and the units.",
+  "text": "A derivative value is a rate at one instant. A response names quantity, instant, direction, size and units.",
   "sources": [
    "BC-CON-04001",
    "research/units/unit-04-contextual-applications-differentiation.md#4.1 Interpreting the Meaning of the Derivative in Context"
@@ -119,8 +163,8 @@ BC-QA-04001 has calculator status either, so the lesson takes Section I Part A, 
    "id": "ki-1",
    "ek_id": "BC-EK-CHA-3A1",
    "depth": "core",
-   "text": "The derivative at an input is the instantaneous rate of change of the quantity there: how fast, not how much. \\(W'(9)\\) is a rate at \\(t=9\\), not an amount of water.",
-   "notation": "f prime of a as a rate at the instant a",
+   "text": "The derivative is the instantaneous rate of change: how fast, not how much. \\(W'(9)\\) is a rate at \\(t=9\\).",
+   "notation": "f prime of a, a rate",
    "quote": null,
    "sources": [
     "BC-EK-CHA-3A1",
@@ -151,14 +195,26 @@ BC-QA-04001 has calculator status either, so the lesson takes Section I Part A, 
   {
    "id": "st-1",
    "archetype_id": "BC-QA-04001",
-   "cue": "A derivative value is given with the words interpret, using correct units.",
-   "method": "First line: name the quantity and the instant.",
-   "rival": "Rival: the value read as an amount (BC-ERR-04003).",
-   "separating_feature": "The prime on the given symbol makes it a rate.",
+   "cue": "A derivative value to interpret.",
+   "method": "Name the quantity and the instant.",
+   "rival": "The value read as an amount.",
+   "separating_feature": "The prime makes it a rate.",
    "sources": [
-    "BC-QA-04001"
+    "BC-QA-04001",
+    "BC-ERR-04003"
    ],
-   "evidence_tag": "verified"
+   "evidence_tag": "verified",
+   "contrast": {
+    "this": {
+     "text": "\\(C'(5)=-2\\) for a coffee's temperature in degrees Celsius. Interpret it.",
+     "archetype_id": "BC-QA-04001"
+    },
+    "not_this": {
+     "text": "\\(C(5)=62\\), the coffee's temperature. Interpret it.",
+     "why_not": "No prime: an amount, not a rate."
+    },
+    "feature": "A prime marks a rate."
+   }
   }
  ],
  "worked_examples": [
@@ -228,11 +284,11 @@ BC-QA-04001 has calculator status either, so the lesson takes Section I Part A, 
    "error_id": "BC-ERR-04001",
    "wrong_step": {
     "text": "Decreasing at 3.5 minutes per liter.",
-    "expr": "7/2*minute/liter"
+    "expr": "3.5*minute/liter"
    },
    "right_step": {
     "text": "Decreasing at 3.5 liters per minute.",
-    "expr": "7/2*liter/minute"
+    "expr": "3.5*liter/minute"
    },
    "relation": "distinct",
    "possible_reason": {
@@ -244,17 +300,18 @@ BC-QA-04001 has calculator status either, so the lesson takes Section I Part A, 
     "BC-MIS-04003"
    ],
    "observed_behavior": "A correct numerical rate is reported with no units, or with the units of the quantity alone, or with the numerator and denominator units exchanged.",
-   "scoring_consequence": "The units point is a separate point in the 2024 and 2025 table based questions and is lost outright (sg-24:2, sg-25:11); BC-ERR-99005 records the same behaviour across years."
+   "scoring_consequence": "The units point is a separate point in the 2024 and 2025 table based questions and is lost outright (sg-24:2, sg-25:11); BC-ERR-99005 records the same behaviour across years.",
+   "fix_prompt": true
   },
   {
    "error_id": "BC-ERR-04003",
    "wrong_step": {
     "text": "3.5 liters in the tank.",
-    "expr": "7/2*liter"
+    "expr": "3.5*liter"
    },
    "right_step": {
     "text": "A rate, liters per minute.",
-    "expr": "-7/2*liter/minute"
+    "expr": "-3.5*liter/minute"
    },
    "relation": "distinct",
    "possible_reason": {
@@ -266,17 +323,18 @@ BC-QA-04001 has calculator status either, so the lesson takes Section I Part A, 
     "BC-MIS-04001"
    ],
    "observed_behavior": "The response supplies a value of the modelled function where the question asked for a value of its derivative, or the reverse.",
-   "scoring_consequence": "The answer point is lost; BC-ERR-99030 records confusion of the direction of change with the quantity itself."
+   "scoring_consequence": "The answer point is lost; BC-ERR-99030 records confusion of the direction of change with the quantity itself.",
+   "fix_prompt": true
   },
   {
    "error_id": "BC-ERR-04005",
    "wrong_step": {
     "text": "Increasing at 3.5 liters per minute.",
-    "expr": "7/2"
+    "expr": "3.5"
    },
    "right_step": {
     "text": "Decreasing at 3.5 liters per minute.",
-    "expr": "-7/2"
+    "expr": "-3.5"
    },
    "relation": "distinct",
    "possible_reason": {
@@ -288,17 +346,18 @@ BC-QA-04001 has calculator status either, so the lesson takes Section I Part A, 
     "BC-MIS-04002"
    ],
    "observed_behavior": "A negative rate is reported as a magnitude or is described as an increase.",
-   "scoring_consequence": "The interpretation point is lost; BC-ERR-99030 records the same confusion of direction with quantity."
+   "scoring_consequence": "The interpretation point is lost; BC-ERR-99030 records the same confusion of direction with quantity.",
+   "fix_prompt": true
   },
   {
    "error_id": "BC-ERR-99027",
    "wrong_step": {
     "text": "It changes at 3.5 liters per minute.",
-    "expr": "-7/2"
+    "expr": "-3.5"
    },
    "right_step": {
     "text": "At \\(t=9\\) the water decreases at 3.5 liters per minute.",
-    "expr": "-7/2"
+    "expr": "-3.5"
    },
    "relation": "equivalent",
    "possible_reason": null,
@@ -306,18 +365,19 @@ BC-QA-04001 has calculator status either, so the lesson takes Section I Part A, 
     "BC-ERR-99027"
    ],
    "observed_behavior": "Responses interpret a derivative or an integral without naming the quantity, the interval, or the fact that a rate is itself changing, or they answer a different question than the one asked.",
-   "scoring_consequence": "The interpretation point requires the key phrases, so an answer missing the interval or the rate of a rate is not earned."
+   "scoring_consequence": "The interpretation point requires the key phrases, so an answer missing the interval or the rate of a rate is not earned.",
+   "fix_prompt": false
   }
  ],
  "representations": null,
  "prerequisite_bridges": [
   {
    "prq_id": "BC-PRQ-04004",
-   "text": "A compound unit is a quotient, such as liters per minute, attached to the value; otherwise it goes missing or upside down."
+   "text": "A compound unit is a quotient, such as liters per minute, attached to the value."
   },
   {
    "prq_id": "BC-PRQ-04008",
-   "text": "Name each quantity, its unit, and whether it varies; unnamed quantities leave the sentence nothing to be about."
+   "text": "Name each quantity, its unit, and whether it varies."
   }
  ],
  "time": {
@@ -484,6 +544,14 @@ BC-QA-04001 has calculator status either, so the lesson takes Section I Part A, 
  ],
  "delivery": [
   {
+   "block": "pr-1",
+   "mode": "text",
+   "reason": "rule 6: a prediction on ex-1's numbers with no picture in the question",
+   "sources": [
+    "BC-SKL-04003"
+   ]
+  },
+  {
    "block": "orientation",
    "mode": "text",
    "reason": "rule 5: BC-SKL-04002, 04003, 04005 carry BC-REP-04 and BC-REP-05 only",
@@ -589,12 +657,12 @@ BC-QA-04001 has calculator status either, so the lesson takes Section I Part A, 
   "research/exam/exam-structure.md#Section and part layout"
  ],
  "word_count": {
-  "full": 687,
-  "brief": 434
+  "full": 702,
+  "brief": 449
  },
  "read_minutes": {
-  "full": 4.6,
-  "brief": 2.9
+  "full": 4.7,
+  "brief": 3.0
  }
 }
 ```

@@ -9,17 +9,21 @@ purpose: Authoring spec for the concept lesson on BC-CON-04002, the units of a d
 
 Concept BC-CON-04002 (skills BC-SKL-04001, BC-SKL-04004, BC-SKL-04014), topics 4.1 and 4.3 of Unit 4, loaded by BC-QA-04001, BC-QA-04002 and BC-QA-04005. It is first in the unit's skill order because BC-SKL-04001 is the root of the 4.1 to 4.3 chain (docs/lessons/unit-04/README.md, section 1).
 
+## Prediction
+
+Both bands, served first. Form `mcq`, three options, on ex-1's own numbers: the setup \((55-31)/(6-2)\) with \(T\) in degrees Celsius and \(t\) in minutes. The student picks the units of \(T'(4)\) among degrees Celsius, degrees Celsius per minute and minutes per degree Celsius. Key: degrees Celsius per minute. The resolution states the rule (the function's unit over the input's unit) and never grades the choice. Sources: BC-CON-04002 and the 4.1 topic section that ki-1 cites (BC-EK-CHA-3A3, ced:87). Delivery: text. [inferred] Settled by the prediction's first-try rate in the build plan.
+
 ## Orientation
 
-Served text, from BC-CON-04002 `description_plain` and the Assessment behaviour paragraph (research/units/unit-04-contextual-applications-differentiation.md#4.1 Interpreting the Meaning of the Derivative in Context). It states the units rule as what a response writes, and the table form of the approximation, whose estimate and units are scored as two points (sg-24:2, sg-25:11). No count, no frequency.
+Served text, from BC-CON-04002 `description_plain` and the Assessment behaviour paragraph (research/units/unit-04-contextual-applications-differentiation.md#4.1 Interpreting the Meaning of the Derivative in Context): what a response writes, a difference over a difference and then the units. Cut to ten words to fit the brief cap once the prediction and the contrast were added. No count, no frequency.
 
 ## Key ideas
 
-The three skills map three BC-EK: BC-SKL-04001 to BC-EK-CHA-3A3, BC-SKL-04004 to BC-EK-CHA-3A1, BC-SKL-04014 to BC-EK-CHA-3C1. Two core blocks (ki-1, ki-3), one extended.
+The three skills map three BC-EK: BC-SKL-04001 to BC-EK-CHA-3A3, BC-SKL-04004 to BC-EK-CHA-3A1, BC-SKL-04014 to BC-EK-CHA-3C1. Two core blocks (ki-1, ki-3), one extended. The scoring source sg-25:11 sits in `sources`, not in the served text.
 
-- ki-1 (core, BC-EK-CHA-3A3, ced:87). Paraphrase of the Units paragraph of Required mathematical knowledge: function unit over input unit, the second derivative over the input unit squared (sg-25:11). No anchor quote, to hold the brief band under its cap.
+- ki-1 (core, BC-EK-CHA-3A3, ced:87). Paraphrase of the Units paragraph of Required mathematical knowledge: function unit over input unit. No anchor quote and no notation line, to hold the brief band under its cap.
 - ki-2 (extended, BC-EK-CHA-3A1, ced:87). The Approximation paragraph: the average rate over an interval containing the input approximates the derivative, written as a difference over a difference (sg-25:11). Anchor quote from ced:87.
-- ki-3 (core, BC-EK-CHA-3C1, ced:89). Core so that the mid band teaches BC-SKL-04014 (differentiate the model, evaluate it, and attach the right units), which no other mid block holds (plan 15, Sourcing, Pipeline step 2). From the 4.3 Units paragraph and its model to rate expression conversion (research/units/unit-04-contextual-applications-differentiation.md#4.3 Rates of Change in Applied Contexts Other Than Motion): the rate is the model's derivative at the named instant, in the quantity's unit over the input's unit, in the context's words. No anchor quote and no notation line, to hold the brief band under its cap.
+- ki-3 (core, BC-EK-CHA-3C1, ced:89). Core so that the mid band teaches BC-SKL-04014 (differentiate the model, evaluate it, and attach the right units), which no other mid block holds (plan 15, Sourcing, Pipeline step 2). From the 4.3 Units paragraph (research/units/unit-04-contextual-applications-differentiation.md#4.3 Rates of Change in Applied Contexts Other Than Motion): the rate is the model's derivative at the named instant, in the context's words. No anchor quote and no notation line.
 
 ## Recognition
 
@@ -28,12 +32,13 @@ The three skills map three BC-EK: BC-SKL-04001 to BC-EK-CHA-3A3, BC-SKL-04004 to
 - BC-QA-04005 (research/question-analysis/question-archetypes.md#BC-QA-04005 Contextual rate in a setting other than motion), same family as BC-QA-04001: a calculator model whose rate is reported with units (BC-SKL-04014).
 
 Not this concept: a stem asking for the amount of the quantity at an instant (a function value, BC-SKL-04003), or for a rate of a different named quantity.
+The contrast pair on st-1 sets a table stem that asks for a rate beside a near miss that asks for the bare change over the same interval. Where the near miss comes from: the `wrong_approaches` entry in which the difference is never divided (BC-ERR-02001). The separating feature is the division by the interval's length.
 
 ## Method choice
 
-Two strategy blocks, one per archetype family (derivative-from-table, derivative-in-context); st-1 serves both bands, st-2 the low band.
+Two strategy blocks, one per archetype family (derivative-from-table, derivative-in-context); st-1 serves both bands, st-2 the low band. The reader prints its own labels, so no field starts with one, and the error ids sit in `sources`.
 
-- st-1, BC-QA-04002. Method, `expected_solution_path[0]`: select the two tabulated values the named interval determines. Rival from `wrong_approaches`: the difference never divided (BC-ERR-02001) or a wrong pair of rows (BC-ERR-02004). Separating feature: the named interval.
+- st-1, BC-QA-04002. Method, `expected_solution_path[0]`: select the two tabulated values the named interval determines. Rival from `wrong_approaches`: the difference never divided (BC-ERR-02001) or a wrong pair of rows (BC-ERR-02004). Separating feature: the named interval. Carries the contrast pair.
 - st-2, BC-QA-04001. Method: name the quantity and the instant. Rival: the value read as an amount (BC-ERR-04003). Separating feature: a derivative value is a rate, so its unit is a quotient.
 
 Both archetypes carry `asked_to_produce` and `common_givens` in the snapshot, so neither block is tagged inferred.
@@ -42,6 +47,7 @@ Both archetypes carry `asked_to_produce` and `common_givens` in the snapshot, so
 
 - ex-1, BC-QA-04002, both bands, no calculator. Draw from `parameter_spec`: times [0, 2, 4, 6, 10], readings [20, 31, 40, 55, 70], context oven, trend increasing. The named interval runs from the second to the fourth row: key (55 - 31)/(6 - 2) = 6; the one-sided rates 9/2 and 15/2 and the bare change 24 are distinct, as the spec's constraint requires. No published BC-QA-04002 item carries this draw.
 - Steps follow `expected_solution_path`: choose the rows (no value), difference over difference (new), divide (equivalent), attach the units (no value, tagged BC-PT-99006). A fluent solver writes steps 2 to 4 and holds the row choice in the head.
+One example, so it is not faded and carries no `fade_from`.
 
 ## Scoring
 
@@ -53,8 +59,10 @@ Point losses for the author: absent units, the original quantity's units on a de
 
 Two active errors meet the skills, in the bundle's order: BC-ERR-04001, BC-ERR-04004 (both linked to BC-MIS-04003, severity high). Both bands show both, on ex-1's draw.
 
-- err-BC-ERR-04001: 6 minutes per degree Celsius against 6 degrees Celsius per minute. Possible reason in words from BC-MIS-04003.
-- err-BC-ERR-04004: the bare value 6 against the quotient that shows the difference; the two are equal as values, so the relation is equivalent and the loss is the missing setup (sg-25:11).
+- err-BC-ERR-04001: 6 minutes per degree Celsius against 6 degrees Celsius per minute. Possible reason in words from BC-MIS-04003. Distinct, so `fix_prompt` true.
+- err-BC-ERR-04004: the bare value 6 against the quotient that shows the difference; the two are equal as values, so the relation is equivalent, `fix_prompt` false, and the loss is the missing setup (sg-25:11).
+
+Every value is an integer, so the decimal rule changes no expression.
 
 ## Representations
 
@@ -76,16 +84,17 @@ BC-QA-04002 has calculator status either, so the lesson takes Section I Part A, 
 
 ## Delivery
 
+- pr-1: text. Rule 6, a prediction on ex-1's numbers asking for units.
 - orientation: text. Rule 5.
 - ki-1: text. Rule 5, the units rule (docs/lessons/unit-04/README.md, section 6).
-- ki-2: table. Rule 4: BC-REP-03 in BC-SKL-04004 and in BC-QA-04002 `common_givens` [inferred; settled by the modality A/B]. Fallback: the table as text rows. Keyboard: Tab between cells.
-- ki-3: text. Rule 5.
+- ki-2: table. Rule 5: BC-REP-03 in BC-SKL-04004 and in BC-QA-04002 `common_givens` [inferred; settled by the modality A/B]. Fallback: the table as text rows. Keyboard: Tab between cells. This is the lesson's drawn block, so no `no_figure_reason` is carried.
+- ki-3: text. Rule 6.
 - ex-1, err-BC-ERR-04001, err-BC-ERR-04004: step_reveal. Rule 1.
 
 ## Band plan
 
-- Low (full): orientation, ki-1, ki-2, ki-3, st-1, st-2, ex-1 with its scoring line, both error blocks, chk-1, chk-2, the bridge. 569 words, 4.2 minutes (cap 900 and 6).
-- Mid (brief): orientation, ki-1, ki-3, st-1, ex-1 with its scoring line, both error blocks, chk-1, chk-2, the bridge. 449 words, 3.0 minutes (cap 450 and 3).
+- Low (full): prediction, orientation, bridge, ki-1, ki-2, ki-3, st-1 with its contrast, st-2, ex-1 with its scoring line, chk-1, both error blocks, chk-2. 562 words, 4.2 minutes (cap 900 and 6).
+- Mid (brief): prediction, orientation, bridge, ki-1, ki-3, st-1 with its contrast, ex-1 with its scoring line, chk-1, both error blocks, chk-2. 447 words, 3.0 minutes (cap 450 and 3). The orientation, ki-1, ki-3, the st-1 fields and the bridge were shortened to fit.
 - Refresher: ki-1, ki-3, err-BC-ERR-04001, err-BC-ERR-04004, ex-1.
 
 ## Sources
@@ -117,8 +126,40 @@ BC-QA-04002 has calculator status either, so the lesson takes Section I Part A, 
   "BC-SKL-04004",
   "BC-SKL-04014"
  ],
+ "prediction": {
+  "id": "pr-1",
+  "stem": {
+   "text": "Predict the units of \\(T'(4)\\) from \\((55-31)/(6-2)\\), with \\(T\\) in degrees Celsius and \\(t\\) in minutes.",
+   "command_verb": "predict"
+  },
+  "format": "mcq",
+  "options": [
+   {
+    "id": "A",
+    "label": "Degrees Celsius",
+    "is_key": false
+   },
+   {
+    "id": "B",
+    "label": "Degrees Celsius per minute",
+    "is_key": true
+   },
+   {
+    "id": "C",
+    "label": "Minutes per degree Celsius",
+    "is_key": false
+   }
+  ],
+  "resolution": "Degrees Celsius over minutes: the function's unit over the input's unit, so \\(T'(4)\\) is in degrees Celsius per minute.",
+  "sources": [
+   "BC-CON-04002",
+   "BC-EK-CHA-3A3",
+   "ced:87",
+   "research/units/unit-04-contextual-applications-differentiation.md#4.1 Interpreting the Meaning of the Derivative in Context"
+  ]
+ },
  "orientation": {
-  "text": "A response shows a difference of values over a difference of inputs, the value, then its units, the function's unit over the input's unit.",
+  "text": "A response shows a difference over a difference, then units.",
   "sources": [
    "BC-CON-04002",
    "research/units/unit-04-contextual-applications-differentiation.md#4.1 Interpreting the Meaning of the Derivative in Context"
@@ -129,8 +170,8 @@ BC-QA-04002 has calculator status either, so the lesson takes Section I Part A, 
    "id": "ki-1",
    "ek_id": "BC-EK-CHA-3A3",
    "depth": "core",
-   "text": "A derivative's unit is the function's unit over the input's unit, as in degrees Celsius per minute. A second derivative divides by the input's unit twice (sg-25:11). Units carry their own point.",
-   "notation": "units of f per unit of x",
+   "text": "A derivative's unit is the function's unit over the input's unit, as in degrees Celsius per minute.",
+   "notation": "",
    "quote": null,
    "sources": [
     "BC-EK-CHA-3A3",
@@ -143,7 +184,7 @@ BC-QA-04002 has calculator status either, so the lesson takes Section I Part A, 
    "id": "ki-2",
    "ek_id": "BC-EK-CHA-3A1",
    "depth": "extended",
-   "text": "The derivative at an input is the instantaneous rate of change there. From a table, the average rate of change over an interval containing the input approximates it, written as a difference of values divided by a difference of inputs (sg-25:11).",
+   "text": "The derivative at an input is the instantaneous rate of change there. From a table, the average rate of change over an interval containing the input approximates it, written as a difference of values divided by a difference of inputs.",
    "notation": "f prime of a",
    "quote": {
     "text": "The derivative of a function can be interpreted as the instantaneous rate of change with respect to its independent variable.",
@@ -160,7 +201,7 @@ BC-QA-04002 has calculator status either, so the lesson takes Section I Part A, 
    "id": "ki-3",
    "ek_id": "BC-EK-CHA-3C1",
    "depth": "core",
-   "text": "A model's rate is its derivative at the named instant. For \\(V(t)\\) liters at \\(t\\) hours, \\(V'(2)\\) is in liters per hour, in the context's words.",
+   "text": "A model's rate is its derivative at the named instant, in the context's words: \\(V'(2)\\) is in liters per hour.",
    "notation": "",
    "quote": null,
    "sources": [
@@ -174,24 +215,38 @@ BC-QA-04002 has calculator status either, so the lesson takes Section I Part A, 
   {
    "id": "st-1",
    "archetype_id": "BC-QA-04002",
-   "cue": "A table, a named interval, and the words approximate the derivative, show the work, indicate units.",
-   "method": "First line: the difference of the two named rows over the difference of their inputs.",
-   "rival": "The difference never divided (BC-ERR-02001), or a one-sided pair of rows (BC-ERR-02004).",
-   "separating_feature": "The named interval fixes both rows, which bracket the input.",
+   "cue": "A table and a named interval.",
+   "method": "The named rows' difference over the inputs' difference.",
+   "rival": "The difference never divided.",
+   "separating_feature": "The named interval fixes both rows.",
    "sources": [
-    "BC-QA-04002"
+    "BC-QA-04002",
+    "BC-ERR-02001",
+    "BC-ERR-02004"
    ],
-   "evidence_tag": "verified"
+   "evidence_tag": "verified",
+   "contrast": {
+    "this": {
+     "text": "A table gives \\(V\\) in liters at \\(t=0,3,6,9\\) hours. Approximate \\(V'(6)\\) over \\([3,9]\\) with units.",
+     "archetype_id": "BC-QA-04002"
+    },
+    "not_this": {
+     "text": "Find the change in \\(V\\) from \\(t=3\\) to \\(t=9\\).",
+     "why_not": "Change alone, in liters; no division."
+    },
+    "feature": "A rate divides by the interval."
+   }
   },
   {
    "id": "st-2",
    "archetype_id": "BC-QA-04001",
    "cue": "A value of a derivative is given, and the stem says using correct units, interpret it in context.",
-   "method": "First line: name the quantity and the instant, then the direction and the units.",
-   "rival": "Rival: reading the value as an amount of the quantity (BC-ERR-04003).",
+   "method": "Name the quantity and the instant, then the direction and the units.",
+   "rival": "Reading the value as an amount of the quantity.",
    "separating_feature": "A derivative value is a rate, so its unit has a per.",
    "sources": [
-    "BC-QA-04001"
+    "BC-QA-04001",
+    "BC-ERR-04003"
    ],
    "evidence_tag": "verified"
   }
@@ -291,7 +346,8 @@ BC-QA-04002 has calculator status either, so the lesson takes Section I Part A, 
     "BC-MIS-04003"
    ],
    "observed_behavior": "A correct numerical rate is reported with no units, or with the units of the quantity alone, or with the numerator and denominator units exchanged.",
-   "scoring_consequence": "The units point is a separate point in the 2024 and 2025 table based questions and is lost outright (sg-24:2, sg-25:11); BC-ERR-99005 records the same behaviour across years."
+   "scoring_consequence": "The units point is a separate point in the 2024 and 2025 table based questions and is lost outright (sg-24:2, sg-25:11); BC-ERR-99005 records the same behaviour across years.",
+   "fix_prompt": true
   },
   {
    "error_id": "BC-ERR-04004",
@@ -309,14 +365,15 @@ BC-QA-04002 has calculator status either, so the lesson takes Section I Part A, 
     "BC-ERR-04004"
    ],
    "observed_behavior": "The approximation is written as a single quotient or as a bare number with no visible difference of tabulated values.",
-   "scoring_consequence": "The 2025 rubric states that the setup expression by itself is not sufficient for the point, which requires the answer together with a difference and a quotient using values from the table (sg-25:11)."
+   "scoring_consequence": "The 2025 rubric states that the setup expression by itself is not sufficient for the point, which requires the answer together with a difference and a quotient using values from the table (sg-25:11).",
+   "fix_prompt": false
   }
  ],
  "representations": null,
  "prerequisite_bridges": [
   {
    "prq_id": "BC-PRQ-04004",
-   "text": "A compound unit is a quotient, such as degrees Celsius per minute, attached to the value. The failure: a correct number with the unit missing or upside down."
+   "text": "A compound unit is a quotient, such as degrees Celsius per minute, attached to the value."
   }
  ],
  "time": {
@@ -447,6 +504,14 @@ BC-QA-04002 has calculator status either, so the lesson takes Section I Part A, 
  ],
  "delivery": [
   {
+   "block": "pr-1",
+   "mode": "text",
+   "reason": "rule 6: a prediction on ex-1's numbers, asking for units",
+   "sources": [
+    "BC-SKL-04001"
+   ]
+  },
+  {
    "block": "orientation",
    "mode": "text",
    "reason": "rule 5: a statement of what a response shows, BC-REP-04 and BC-REP-05 on BC-SKL-04001",
@@ -465,7 +530,7 @@ BC-QA-04002 has calculator status either, so the lesson takes Section I Part A, 
   {
    "block": "ki-2",
    "mode": "table",
-   "reason": "rule 4: BC-REP-03 in BC-SKL-04004 representations and BC-QA-04002 common_givens, a table of values of a contextual quantity",
+   "reason": "rule 5: BC-REP-03 in BC-SKL-04004 representations and BC-QA-04002 common_givens, a table of values of a contextual quantity",
    "sources": [
     "BC-SKL-04004",
     "BC-QA-04002"
@@ -589,8 +654,8 @@ BC-QA-04002 has calculator status either, so the lesson takes Section I Part A, 
   "research/exam/exam-structure.md#Section and part layout"
  ],
  "word_count": {
-  "full": 569,
-  "brief": 449
+  "full": 562,
+  "brief": 447
  },
  "read_minutes": {
   "full": 4.2,

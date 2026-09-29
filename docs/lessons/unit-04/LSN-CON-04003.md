@@ -9,9 +9,13 @@ purpose: Authoring spec for the concept lesson on BC-CON-04003, velocity and acc
 
 Concept BC-CON-04003 (skills BC-SKL-04006, BC-SKL-04007), topic 4.2 of Unit 4, loaded by BC-QA-04003 (motion-by-differentiation) and BC-QA-04010 (motion-by-accumulation). It has no in-unit hard parent and opens the motion chain that BC-CON-04004 and BC-CON-04005 continue (docs/lessons/unit-04/README.md, section 3).
 
+## Prediction
+
+Both bands, served first. Form `mcq`, three options, on ex-1's own function \(x(t)=t^3-3t^2-4t+2\). The student picks which function gives the acceleration: the position itself, its first derivative or its second. Key: the second derivative. The resolution states the chain (velocity is the derivative of position, acceleration the derivative of velocity) and never grades the choice. Sources: BC-CON-04003 and the 4.2 topic section that ki-1 cites (BC-EK-CHA-3B1, ced:88). Delivery: text. [inferred] Settled by the prediction's first-try rate in the build plan.
+
 ## Orientation
 
-Served text, from BC-CON-04003 `description_plain` and the Assessment behaviour paragraph (research/units/unit-04-contextual-applications-differentiation.md#4.2 Straight-Line Motion: Connecting Position, Velocity, and Acceleration), which lists velocity or acceleration at an instant as the opening parts of the particle motion question (crabbc-25:20). No count, no frequency.
+Served text, from BC-CON-04003 `description_plain` and the Assessment behaviour paragraph (research/units/unit-04-contextual-applications-differentiation.md#4.2 Straight-Line Motion: Connecting Position, Velocity, and Acceleration), which lists velocity or acceleration at an instant as the opening parts of the particle motion question (crabbc-25:20). Cut to 20 words to fit the brief cap. No count, no frequency.
 
 ## Key ideas
 
@@ -25,12 +29,13 @@ Both skills map BC-EK-CHA-3B1 (ced:88): one core block, both bands.
 - BC-QA-04010 (research/question-analysis/question-archetypes.md#BC-QA-04010 Position recovered from velocity with an initial condition), the other family: velocity and a known position given, position asked. The signal is a position at one time supplied beside the velocity.
 
 Not this concept: speed or direction (BC-CON-04004), whether the speed is increasing (BC-CON-04005).
+The contrast pair on st-1 sets a velocity given and an acceleration asked beside a velocity given with a known position and a position asked. Where the near miss comes from: the sibling family BC-QA-04010, whose position-from-velocity stem shares the function of time and the instant but runs the chain backward. The separating feature is the known position.
 
 ## Method choice
 
-Two strategy blocks, one per archetype family; st-1 both bands, st-2 the low band.
+Two strategy blocks, one per archetype family; st-1 both bands, st-2 the low band. The reader prints its own labels, so no field starts with one, and the error ids sit in `sources`.
 
-- st-1, BC-QA-04003. Method, `expected_solution_path[0]`: differentiate the supplied function as many times as the question needs. Rival, `wrong_approaches`: the wrong number of differentiations (BC-ERR-04006). Separating feature: the given letter against the requested letter.
+- st-1, BC-QA-04003. Method, `expected_solution_path[0]`: differentiate the supplied function as many times as the question needs. Rival, `wrong_approaches`: the wrong number of differentiations (BC-ERR-04006). Separating feature: the given letter against the requested letter. Carries the contrast pair.
 - st-2, BC-QA-04010. Method: position as the initial position plus the accumulated change. Rival: the integral reported as the position (BC-ERR-08011). Separating feature: the direction of the chain.
 
 Both archetypes carry `asked_to_produce` and `common_givens` in the snapshot, so both blocks are verified.
@@ -39,6 +44,7 @@ Both archetypes carry `asked_to_produce` and `common_givens` in the snapshot, so
 
 - ex-1, BC-QA-04003, both bands, no calculator. Draw: cubic 1, quadratic -3, free 2, speed_value 4, instant 2, given position, heading left. Derived: linear -4, constant 2, so x(t) = t^3 - 3t^2 - 4t + 2, v(2) = -4, a(2) = 6, misread velocity x(2) = -10. No published BC-QA-04003 item carries this draw.
 - Steps: position (new), velocity (differentiate), v(2) (evaluate, BC-PT-99004), acceleration (new), a(2) (evaluate, BC-PT-99027), both values (new). A fluent solver writes steps 2 to 5 and skips the restated position and the final pairing.
+One example, so it is not faded and carries no `fade_from`.
 
 ## Scoring
 
@@ -50,7 +56,7 @@ For the author: the speed conclusion that follows these parts is scored only whe
 
 One active error meets the skills: BC-ERR-04006 (linked BC-MIS-04004, severity medium, and BC-MIS-04001). Both bands.
 
-- err-BC-ERR-04006: x(2) = -10 reported as the velocity, against v(2) = -4. Possible reason in words from BC-MIS-04004.
+- err-BC-ERR-04006: x(2) = -10 reported as the velocity, against v(2) = -4. Possible reason in words from BC-MIS-04004. Distinct, so `fix_prompt` true. Every value is an integer, so the decimal rule changes no expression.
 
 ## Representations
 
@@ -72,13 +78,16 @@ BC-QA-04003 has calculator status either, so the lesson takes Section I Part A, 
 
 ## Delivery
 
-- orientation, ki-1: text. Rule 5: BC-REP-01 and BC-REP-05 only (docs/lessons/unit-04/README.md, section 6).
+- pr-1: text. Rule 6, a prediction on ex-1's function with no picture in the question.
+- orientation, ki-1: text. Rule 6: BC-REP-01 and BC-REP-05 only (docs/lessons/unit-04/README.md, section 6).
 - ex-1, err-BC-ERR-04006: step_reveal. Rule 1.
+
+Figure presence: no drawn block. No rule of 2 to 5 applies, because both skills carry BC-REP-01 and BC-REP-05 and the key idea describes no process, so the record carries `no_figure_reason`.
 
 ## Band plan
 
-- Low (full): orientation, ki-1, st-1, st-2, ex-1 with its scoring lines, the error block, chk-1, chk-2, the bridge. 457 words, 3.1 minutes (cap 900 and 6).
-- Mid (brief): orientation, ki-1, st-1, ex-1 with its scoring lines, the error block, chk-1, chk-2, the bridge. 406 words, 2.8 minutes (cap 450 and 3).
+- Low (full): prediction, orientation, bridge, ki-1, st-1 with its contrast, st-2, ex-1 with its scoring lines, chk-1, the error block, chk-2. 470 words, 3.2 minutes (cap 900 and 6).
+- Mid (brief): prediction, orientation, bridge, ki-1, st-1 with its contrast, ex-1 with its scoring lines, chk-1, the error block, chk-2. 423 words, 2.9 minutes (cap 450 and 3). The orientation, the st-1 fields and the bridge were shortened to fit.
 - Refresher: ki-1, err-BC-ERR-04006, ex-1.
 
 ## Sources
@@ -106,8 +115,41 @@ BC-QA-04003 has calculator status either, so the lesson takes Section I Part A, 
   "BC-SKL-04006",
   "BC-SKL-04007"
  ],
+ "prediction": {
+  "id": "pr-1",
+  "stem": {
+   "text": "Predict which function gives the particle's acceleration, for position \\(x(t)=t^3-3t^2-4t+2\\).",
+   "command_verb": "predict"
+  },
+  "format": "mcq",
+  "options": [
+   {
+    "id": "A",
+    "label": "\\(x(t)\\) itself",
+    "is_key": false
+   },
+   {
+    "id": "B",
+    "label": "\\(x'(t)\\), the first derivative",
+    "is_key": false
+   },
+   {
+    "id": "C",
+    "label": "\\(x''(t)\\), the second derivative",
+    "is_key": true
+   }
+  ],
+  "resolution": "Velocity is the derivative of position and acceleration the derivative of velocity, so \\(a(t)=x''(t)=6t-6\\).",
+  "sources": [
+   "BC-CON-04003",
+   "BC-EK-CHA-3B1",
+   "ced:88",
+   "research/units/unit-04-contextual-applications-differentiation.md#4.2 Straight-Line Motion: Connecting Position, Velocity, and Acceleration"
+  ]
+ },
+ "no_figure_reason": "The two skills carry BC-REP-01 and BC-REP-05 only, a symbolic rule and a sentence, and the key idea describes no process. The velocity graph belongs to BC-CON-04004.",
  "orientation": {
-  "text": "Velocity is the derivative of position, and acceleration the derivative of velocity. A response differentiates the given function as many times as the requested quantity needs, then evaluates at the instant.",
+  "text": "Velocity is the derivative of position, acceleration the derivative of velocity. A response differentiates as often as the request needs.",
   "sources": [
    "BC-CON-04003",
    "research/units/unit-04-contextual-applications-differentiation.md#4.2 Straight-Line Motion: Connecting Position, Velocity, and Acceleration"
@@ -135,24 +177,37 @@ BC-QA-04003 has calculator status either, so the lesson takes Section I Part A, 
   {
    "id": "st-1",
    "archetype_id": "BC-QA-04003",
-   "cue": "A position or velocity function of time is given; the stem asks for velocity or acceleration at a stated time.",
-   "method": "First line: the derivative the request needs, written as \\(v(t)=\\) or \\(a(t)=\\).",
-   "rival": "Rival: differentiating the wrong number of times (BC-ERR-04006).",
-   "separating_feature": "The given letter against the requested one sets the count.",
+   "cue": "A function of time; velocity or acceleration asked.",
+   "method": "\\(v(t)=\\) or \\(a(t)=\\), the derivative the request needs.",
+   "rival": "The wrong number of derivatives.",
+   "separating_feature": "Given letter against requested letter.",
    "sources": [
-    "BC-QA-04003"
+    "BC-QA-04003",
+    "BC-ERR-04006"
    ],
-   "evidence_tag": "verified"
+   "evidence_tag": "verified",
+   "contrast": {
+    "this": {
+     "text": "A particle's velocity is \\(v(t)=t^2-5t\\). Find its acceleration at \\(t=4\\).",
+     "archetype_id": "BC-QA-04003"
+    },
+    "not_this": {
+     "text": "\\(v(t)=t^2-5t\\) and \\(x(0)=3\\). Find the position at \\(t=4\\).",
+     "why_not": "Position from velocity is an integral."
+    },
+    "feature": "A given position means accumulate."
+   }
   },
   {
    "id": "st-2",
    "archetype_id": "BC-QA-04010",
    "cue": "A velocity function and the position at one time are given; the stem asks for the position at another time.",
-   "method": "First line: position equals the known position plus the integral of velocity.",
-   "rival": "Rival: the integral reported without the known position (BC-ERR-08011).",
+   "method": "Position equals the known position plus the integral of velocity.",
+   "rival": "The integral reported without the known position.",
    "separating_feature": "Going from velocity back to position runs the chain backward.",
    "sources": [
-    "BC-QA-04010"
+    "BC-QA-04010",
+    "BC-ERR-08011"
    ],
    "evidence_tag": "verified"
   }
@@ -272,14 +327,15 @@ BC-QA-04003 has calculator status either, so the lesson takes Section I Part A, 
     "BC-MIS-04004"
    ],
    "observed_behavior": "Acceleration is reported where velocity was asked for, or position where velocity was asked for.",
-   "scoring_consequence": "The answer point is lost although each differentiation performed is correct."
+   "scoring_consequence": "The answer point is lost although each differentiation performed is correct.",
+   "fix_prompt": true
   }
  ],
  "representations": null,
  "prerequisite_bridges": [
   {
    "prq_id": "BC-PRQ-04008",
-   "text": "Name each quantity, its unit, and whether it varies; here, which letter is position and which is velocity. Unnamed, the count of derivatives cannot begin."
+   "text": "Name each quantity and its unit; here, which letter is position and which velocity."
   }
  ],
  "time": {
@@ -423,6 +479,14 @@ BC-QA-04003 has calculator status either, so the lesson takes Section I Part A, 
  ],
  "delivery": [
   {
+   "block": "pr-1",
+   "mode": "text",
+   "reason": "rule 6: a prediction on ex-1's function with no picture in the question",
+   "sources": [
+    "BC-SKL-04006"
+   ]
+  },
+  {
    "block": "orientation",
    "mode": "text",
    "reason": "rule 5: BC-SKL-04006 and BC-SKL-04007 carry BC-REP-01 and BC-REP-05",
@@ -494,12 +558,12 @@ BC-QA-04003 has calculator status either, so the lesson takes Section I Part A, 
   "research/exam/exam-structure.md#Section and part layout"
  ],
  "word_count": {
-  "full": 457,
-  "brief": 406
+  "full": 470,
+  "brief": 423
  },
  "read_minutes": {
-  "full": 3.1,
-  "brief": 2.8
+  "full": 3.2,
+  "brief": 2.9
  }
 }
 ```

@@ -3,20 +3,68 @@
  "version": 1,
  "kind": "concept",
  "target_id": "BC-CON-04011",
- "status": "signed_off",
+ "status": "draft",
  "snapshot_digest": "a6a8ec9d3f59ab8f712e33d30cc22fc64bf2c478fbe7312e3e3118d319c6a42f",
  "source_digest": "cdeaea56cfad6ac0147e7de310bf3cc8feeaffd4f0a5d39f91d1be2884b6fa8a",
  "read_minutes": {
-  "full": 3.71,
-  "brief": 2.8
+  "full": 3.93,
+  "brief": 2.99
  },
  "word_count": {
-  "full": 476,
-  "brief": 356
+  "full": 521,
+  "brief": 401
  },
  "sections": [
   {
    "id": "LSN-CON-04011#s1",
+   "type": "prediction",
+   "bands": [
+    "low",
+    "mid"
+   ],
+   "skills": [
+    "BC-SKL-04028",
+    "BC-SKL-04029",
+    "BC-SKL-04032"
+   ],
+   "sources": [
+    "BC-CON-04011",
+    "BC-EK-CHA-3F1",
+    "research/units/unit-04-contextual-applications-differentiation.md#4.6 Approximating Values of a Function Using Local Linearity and Linearization"
+   ],
+   "evidence_tag": "inferred",
+   "stem": {
+    "text": "Predict: f(1) = 4, f'(x) = 2x^2 - 3. Which value best approximates f(1.1)?",
+    "command_verb": "predict"
+   },
+   "format": "mcq",
+   "options": [
+    {
+     "id": "A",
+     "label": "About 4",
+     "is_key": false
+    },
+    {
+     "id": "B",
+     "label": "About 3.9",
+     "is_key": true
+    },
+    {
+     "id": "C",
+     "label": "About 4.1",
+     "is_key": false
+    }
+   ],
+   "resolution": {
+    "text": "The tangent line has slope f'(1) = -1 through (1, 4), so its height at 1.1 is 3.9. Near tangency that height approximates f."
+   },
+   "delivery": {
+    "mode": "text",
+    "reason": "rule 6"
+   }
+  },
+  {
+   "id": "LSN-CON-04011#s2",
    "type": "orientation",
    "bands": [
     "low",
@@ -32,7 +80,7 @@
     "research/units/unit-04-contextual-applications-differentiation.md#4.6 Approximating Values of a Function Using Local Linearity and Linearization"
    ],
    "evidence_tag": "inferred",
-   "text": "Find the slope at the point of tangency, write the tangent line in point-slope form, and evaluate it at the nearby input. Leave the arithmetic unsimplified where it can be.",
+   "text": "Find the slope at the tangency point, write the line, and evaluate it at the nearby input.",
    "delivery": {
     "mode": "figure",
     "reason": "rule 3: BC-REP-02 on BC-SKL-04028 and BC-SKL-04029",
@@ -89,7 +137,7 @@
    }
   },
   {
-   "id": "LSN-CON-04011#s2",
+   "id": "LSN-CON-04011#s3",
    "type": "key_ideas",
    "bands": [
     "low",
@@ -109,7 +157,7 @@
    "evidence_tag": "verified",
    "ek_id": "BC-EK-CHA-3F1",
    "depth": "core",
-   "text": "Near the point of tangency the curve and its tangent line are close, so the line's height at a nearby input approximates the function there. The slope is the derivative at the point; when dy/dx involves y, both coordinates go in. Point-slope form is enough.",
+   "text": "Near the point of tangency, the tangent line's height at a nearby input approximates the function. The slope is the derivative there; point-slope form is enough.",
    "notation": "f(a) + f'(a)(x - a)",
    "quote": {
     "text": "The tangent line is the graph of a locally linear approximation of the function near the point of tangency.",
@@ -188,7 +236,7 @@
    }
   },
   {
-   "id": "LSN-CON-04011#s3",
+   "id": "LSN-CON-04011#s4",
    "type": "strategy",
    "bands": [
     "low",
@@ -200,17 +248,29 @@
     "BC-SKL-04032"
    ],
    "sources": [
-    "BC-QA-04008"
+    "BC-QA-04008",
+    "BC-ERR-04024"
    ],
    "evidence_tag": "verified",
    "archetype_id": "BC-QA-04008",
-   "cue": "A known point, a supplied derivative, \"approximate\" at a nearby input.",
-   "method": "First line: the derivative evaluated at the point of tangency.",
-   "rival": "Rival: the line evaluated at the point itself (BC-ERR-04024).",
-   "separating_feature": "Two inputs: slope from the first, evaluation at the second."
+   "cue": "A known point, a supplied derivative, a nearby input.",
+   "method": "The derivative evaluated at the point of tangency.",
+   "rival": "The line evaluated at the point itself.",
+   "separating_feature": "Slope from one input, value at the other.",
+   "contrast": {
+    "this": {
+     "text": "g(2) = 5, g'(x) = x^2 - 1. Approximate g(2.1) by the tangent line at x = 2.",
+     "archetype_id": "BC-QA-04008"
+    },
+    "not_this": {
+     "text": "Write an equation of the tangent line to g at x = 2.",
+     "why_not": "The line itself is the answer."
+    },
+    "feature": "A second input to evaluate at."
+   }
   },
   {
-   "id": "LSN-CON-04011#s4",
+   "id": "LSN-CON-04011#s5",
    "type": "worked_example",
    "bands": [
     "low",
@@ -242,7 +302,7 @@
    "steps": [
     {
      "cue": "The derivative is supplied.",
-     "why": "Evaluate it; nothing to solve.",
+     "why": "Nothing to solve.",
      "expression": [
       "Add",
       -3,
@@ -312,7 +372,7 @@
    }
   },
   {
-   "id": "LSN-CON-04011#s5",
+   "id": "LSN-CON-04011#s6",
    "type": "what_a_reader_scores",
    "bands": [
     "low",
@@ -327,7 +387,7 @@
     "BC-PT-99025"
    ],
    "evidence_tag": "verified",
-   "example_id": "LSN-CON-04011#s4",
+   "example_id": "LSN-CON-04011#s5",
    "lines": [
     {
      "point_type_id": "BC-PT-99025",
@@ -366,6 +426,7 @@
     ]
    },
    "relation": "distinct",
+   "fix_prompt": true,
    "possible_reason": {
     "misconception_id": "BC-MIS-04012",
     "text": "treats the tangent line value as the function value rather than as an approximation"
@@ -403,6 +464,7 @@
     "expression": -1
    },
    "relation": "distinct",
+   "fix_prompt": true,
    "possible_reason": {
     "misconception_id": "BC-MIS-07002",
     "text": "does not separate a constraint on the rate from a formula for the amount"
@@ -455,6 +517,7 @@
     ]
    },
    "relation": "distinct",
+   "fix_prompt": true,
    "delivery": {
     "mode": "step_reveal",
     "reason": "rule 1",
@@ -493,6 +556,7 @@
     "expression": -1
    },
    "relation": "distinct",
+   "fix_prompt": true,
    "possible_reason": {
     "misconception_id": "BC-MIS-04012",
     "text": "the distinction between the two inputs and the question of error direction do not arise"
@@ -520,7 +584,7 @@
    ],
    "evidence_tag": "inferred",
    "prerequisite_id": "BC-PRQ-04006",
-   "text": "A line through a point with a given slope, evaluated at another input; otherwise point and slope get exchanged."
+   "text": "A line through a point with a slope, evaluated at another input."
   }
  ],
  "checks": [
@@ -541,7 +605,7 @@
     "step": "1/10",
     "judgement": "off"
    },
-   "completes": "LSN-CON-04011#s4",
+   "completes": "LSN-CON-04011#s5",
    "stem": {
     "text": "For ex-1 the tangent line is y = 4 - (x - 1). Approximate f(1.1).",
     "command_verb": "approximate"
@@ -809,19 +873,19 @@
   }
  ],
  "refresher": [
-  "LSN-CON-04011#s2",
+  "LSN-CON-04011#s3",
   "LSN-CON-04011#err-BC-ERR-04024",
   "LSN-CON-04011#err-BC-ERR-99035",
   "LSN-CON-04011#err-BC-ERR-04023",
   "LSN-CON-04011#err-BC-ERR-04027",
-  "LSN-CON-04011#s4"
+  "LSN-CON-04011#s5"
  ],
  "provenance": {
   "author": "tools/lesson_transcribe.py",
-  "prompt_version": "generator/lesson_v1",
+  "prompt_version": "generator/lesson_v2",
   "design_path": "docs/lessons/unit-04/LSN-CON-04011.md",
-  "signed_off_by": "claude-opus-5-5",
-  "signed_off_at": "2026-09-29",
+  "signed_off_by": null,
+  "signed_off_at": null,
   "not_human": true
  }
 }

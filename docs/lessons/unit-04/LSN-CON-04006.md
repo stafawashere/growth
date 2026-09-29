@@ -9,6 +9,10 @@ purpose: Authoring spec for the concept lesson on BC-CON-04006, the shared struc
 
 Concept BC-CON-04006 (skills BC-SKL-04013, BC-SKL-04015, BC-SKL-04016), topic 4.3 of Unit 4, loaded by one archetype, BC-QA-04005 (family derivative-in-context). Its hard parent is BC-CON-04002 (docs/lessons/unit-04/README.md, section 1).
 
+## Prediction
+
+Served first in both bands. Multiple choice on ex-1's own model, \(M(t)=20+60(1-e^{-t/8})\): what \(M'(4)\) measures. Three options, key the medicine's rate of change in milligrams per hour, the others a velocity and the amount itself. The resolution states the rate of change of the named quantity in the record's words. Sources: BC-CON-04006 and the topic 4.3 section that ki-1 cites. Delivery: text.
+
 ## Orientation
 
 Served text, from BC-CON-04006 `description_plain` and the Assessment behaviour paragraph (research/units/unit-04-contextual-applications-differentiation.md#4.3 Rates of Change in Applied Contexts Other Than Motion), which describes the calculator question on one context asking a rate, its meaning and an end behaviour limit (sg-25:2, sg-25:4). No count, no frequency.
@@ -25,11 +29,13 @@ BC-QA-04005 (research/question-analysis/question-archetypes.md#BC-QA-04005 Conte
 
 Not this concept: a particle's position, velocity or acceleration (BC-CON-04003), whose vocabulary is motion.
 
+The contrast pair on st-1 takes its near miss from that sibling: a tank whose long run rate is asked, beside a particle's velocity at an instant. The separating feature is a non-position quantity with a long run rate asked.
+
 ## Method choice
 
 One strategy block: BC-QA-04005 is the only archetype loading these skills.
 
-- st-1, BC-QA-04005. Method, `expected_solution_path[0]`: identify the quantity and its independent variable. Rival, `wrong_approaches`: substituting infinity in place of a limit expression (BC-ERR-99007). Separating feature: an end behaviour request, answered with the limit written before any value. The archetype carries `asked_to_produce` and `common_givens`, so the block is verified.
+- st-1, BC-QA-04005. Method, `expected_solution_path[0]`: identify the quantity and its independent variable, served without a label. Rival, `wrong_approaches`: substituting infinity in place of a limit expression (BC-ERR-99007). Separating feature: an end behaviour request, answered with the limit written before any value. The archetype carries `asked_to_produce` and `common_givens`, so the block is verified.
 
 ## Solution path
 
@@ -44,7 +50,7 @@ For the author: sg-25:4 awards a point for the limit expression and one for its 
 
 ## Traps
 
-Three active errors meet the skills, in the bundle's order: BC-ERR-04012, BC-ERR-04013, BC-ERR-99007. Low band all three; mid band the first two. All on ex-1's draw.
+Three active errors meet the skills, in the bundle's order: BC-ERR-04012, BC-ERR-04013, BC-ERR-99007. Low band all three; mid band the first two. All on ex-1's draw. Only BC-ERR-04012 is a fix prompt (relation distinct); the other two share ex-1's value and keep the reveal form.
 
 - err-BC-ERR-04012: 4.549 with nothing named, against the quantity, the input and the units. No possible reason: the linked descriptions do not name the naming step.
 - err-BC-ERR-04013: velocity against the amount of medicine; the values agree, so the relation is equivalent. Possible reason from BC-MIS-04007.
@@ -72,17 +78,19 @@ BC-QA-04005 is `calculator` with a multipart free response structure, so Section
 
 - orientation, ki-1: text. Rule 5: BC-REP-01, 04, 05 only; the limit is scored as notation retained (sg-25:4), not a process to watch (docs/lessons/unit-04/README.md, section 6).
 - ex-1 and the three error blocks: step_reveal. Rule 1.
+- No drawn block. No skill carries a figure-bearing BC-REP and the key idea states a notation habit, so the record carries `no_figure_reason`.
 
 ## Band plan
 
-- Low (full): orientation, ki-1, st-1, ex-1 with its scoring line, three error blocks, chk-1 to chk-3, the bridge. 568 words, 3.8 minutes (cap 900 and 6).
-- Mid (brief): orientation, ki-1, st-1, ex-1 with its scoring line, err-BC-ERR-04012, err-BC-ERR-04013, chk-1, chk-2, the bridge. 448 words, 3.0 minutes (cap 450 and 3).
+- Low (full), served order: prediction, orientation, bridge BC-PRQ-04008 when gated, ki-1, st-1 with its contrast pair, ex-1 with its scoring line, chk-1, err-BC-ERR-04012, err-BC-ERR-04013, err-BC-ERR-99007, chk-2, chk-3. 565 words, 3.8 minutes (cap 900 and 6). This design has one worked example, so nothing is faded.
+- Mid (brief): prediction, orientation, bridge when gated, ki-1, st-1 with its contrast pair, ex-1 with its scoring line, chk-1, err-BC-ERR-04012, err-BC-ERR-04013, chk-2. 445 words, 3.0 minutes (cap 450 and 3).
 - Refresher: ki-1, the three error blocks, ex-1.
 
 ## Sources
 
 - BC-CON-04006; BC-SKL-04013, BC-SKL-04015, BC-SKL-04016; BC-EK-CHA-3C1; ced:89, ced:84
 - BC-QA-04005; BC-PT-99014; sg-25:2, sg-25:3, sg-25:4
+- Prediction pr-1 and the contrast pair: BC-CON-04006, BC-CON-04003, BC-ERR-99007
 - BC-ERR-04012, BC-ERR-04013, BC-ERR-99007; BC-MIS-04007, BC-MIS-99008; BC-PRQ-04008
 - research/units/unit-04-contextual-applications-differentiation.md#4.3 Rates of Change in Applied Contexts Other Than Motion
 - research/question-analysis/question-archetypes.md#BC-QA-04005 Contextual rate in a setting other than motion
@@ -105,8 +113,39 @@ BC-QA-04005 is `calculator` with a multipart free response structure, so Section
   "BC-SKL-04015",
   "BC-SKL-04016"
  ],
+ "prediction": {
+  "id": "pr-1",
+  "stem": {
+   "text": "Predict. M(t) = 20 + 60(1 - e^(-t/8)) milligrams at t hours. What does M'(4) measure?",
+   "command_verb": "predict"
+  },
+  "format": "mcq",
+  "options": [
+   {
+    "id": "A",
+    "label": "The velocity of the medicine.",
+    "is_key": false
+   },
+   {
+    "id": "B",
+    "label": "The medicine's rate of change, in milligrams per hour.",
+    "is_key": true
+   },
+   {
+    "id": "C",
+    "label": "The amount of medicine, in milligrams.",
+    "is_key": false
+   }
+  ],
+  "resolution": "M'(4) is the medicine's rate of change, in milligrams per hour.",
+  "sources": [
+   "BC-CON-04006",
+   "research/units/unit-04-contextual-applications-differentiation.md#4.3 Rates of Change in Applied Contexts Other Than Motion"
+  ]
+ },
+ "no_figure_reason": "No skill carries a figure-bearing representation (only BC-REP-01, 04, 05 and 09), and the key idea states a notation habit for a limit, not a process the student watches.",
  "orientation": {
-  "text": "A contextual rate problem has one structure: a named quantity, its input, a derivative read as a rate. A response names both, uses the context's words and units, and keeps limit notation.",
+  "text": "A contextual rate names its quantity and input, and words its derivative in context units.",
   "sources": [
    "BC-CON-04006",
    "research/units/unit-04-contextual-applications-differentiation.md#4.3 Rates of Change in Applied Contexts Other Than Motion"
@@ -117,7 +156,7 @@ BC-QA-04005 is `calculator` with a multipart free response structure, so Section
    "id": "ki-1",
    "ek_id": "BC-EK-CHA-3C1",
    "depth": "core",
-   "text": "Motion's mathematics carries over, its vocabulary does not: a drug amount's rate is not a velocity (ced:84). Each rate carries quantity units per input unit. Long run behaviour of a rate is a limit as the input grows, written with the limit kept, never infinity substituted (sg-25:4).",
+   "text": "A non-motion rate keeps the context's words, not a velocity. Units are quantity per input unit. Long run behaviour is a limit, never infinity substituted.",
    "notation": "rate of change of the named quantity",
    "quote": {
     "text": "The derivative can be used to solve problems involving rates of change in applied contexts.",
@@ -136,14 +175,27 @@ BC-QA-04005 is `calculator` with a multipart free response structure, so Section
   {
    "id": "st-1",
    "archetype_id": "BC-QA-04005",
-   "cue": "A model or its rate over a time interval; the stem asks a rate, its meaning or long run value.",
-   "method": "First line: name the quantity and its input, then the rate at the instant.",
-   "rival": "Rival: infinity substituted into the rate in place of a limit expression (BC-ERR-99007).",
+   "cue": "A model or rate over time; rate, meaning or long run value asked.",
+   "method": "Name the quantity and input, then the rate.",
+   "rival": "Infinity substituted for a limit.",
    "separating_feature": "End behaviour asked: write the limit first.",
    "sources": [
-    "BC-QA-04005"
+    "BC-QA-04005",
+    "BC-ERR-99007",
+    "BC-CON-04003"
    ],
-   "evidence_tag": "verified"
+   "evidence_tag": "verified",
+   "contrast": {
+    "this": {
+     "text": "V(t) = 50 + 30(1 - e^(-t/5)) liters. Write and evaluate the limit of V'(t) as t grows.",
+     "archetype_id": "BC-QA-04005"
+    },
+    "not_this": {
+     "text": "x(t) = t^3 - 6t. Find the velocity at t = 2.",
+     "why_not": "Motion vocabulary."
+    },
+    "feature": "A long run rate of a non-position quantity."
+   }
   }
  ],
  "worked_examples": [
@@ -170,8 +222,8 @@ BC-QA-04005 is `calculator` with a multipart free response structure, so Section
    "calculator_status": "calculator",
    "steps": [
     {
-     "cue": "Quantity: medicine, milligrams; input: hours.",
-     "why": "Rates will be milligrams per hour.",
+     "cue": "Medicine in mg; input hours.",
+     "why": "Milligrams per hour.",
      "expr": "20 + 60*(1 - exp(-t/8))",
      "relation": "new"
     },
@@ -183,13 +235,13 @@ BC-QA-04005 is `calculator` with a multipart free response structure, so Section
      "variable": "t"
     },
     {
-     "cue": "\\(M'(t)>0\\) for every \\(t\\).",
-     "why": "The amount of medicine is increasing.",
+     "cue": "\\(M'(t)>0\\).",
+     "why": "Increasing.",
      "point_type_id": "BC-PT-99014"
     },
     {
-     "cue": "End behaviour: the limit written first.",
-     "why": "\\(\\lim_{t\\to\\infty}7.5e^{-t/8}=0\\) milligrams per hour.",
+     "cue": "Limit written first.",
+     "why": "\\(\\lim_{t\\to\\infty}7.5e^{-t/8}=0\\).",
      "expr": "0",
      "relation": "limit",
      "variable": "t",
@@ -202,7 +254,7 @@ BC-QA-04005 is `calculator` with a multipart free response structure, so Section
      "relation": "new"
     },
     {
-     "cue": "Calculator, three decimals.",
+     "cue": "Calculator.",
      "why": "4.549 milligrams per hour.",
      "expr": "4.549",
      "relation": "evaluate",
@@ -249,7 +301,8 @@ BC-QA-04005 is `calculator` with a multipart free response structure, so Section
     "BC-ERR-04012"
    ],
    "observed_behavior": "The response computes without saying which quantity is modelled or what the input variable measures.",
-   "scoring_consequence": "Later interpretation points become unavailable because the answer cannot be tied to the situation; BC-ERR-99033 records variables introduced without being defined."
+   "scoring_consequence": "Later interpretation points become unavailable because the answer cannot be tied to the situation; BC-ERR-99033 records variables introduced without being defined.",
+   "fix_prompt": true
   },
   {
    "error_id": "BC-ERR-04013",
@@ -271,7 +324,8 @@ BC-QA-04005 is `calculator` with a multipart free response structure, so Section
     "BC-MIS-04007"
    ],
    "observed_behavior": "The response calls the rate of change of a temperature, a population, or an area a velocity.",
-   "scoring_consequence": "The 2025 scoring notes show a response calling an average value an average velocity treated as unclear communication and scored as scratch work, so the points survived in that instance (sg-25:3); the CED nonetheless directs that context vocabulary be used (ced:84)."
+   "scoring_consequence": "The 2025 scoring notes show a response calling an average value an average velocity treated as unclear communication and scored as scratch work, so the points survived in that instance (sg-25:3); the CED nonetheless directs that context vocabulary be used (ced:84).",
+   "fix_prompt": false
   },
   {
    "error_id": "BC-ERR-99007",
@@ -293,14 +347,15 @@ BC-QA-04005 is `calculator` with a multipart free response structure, so Section
     "BC-MIS-99008"
    ],
    "observed_behavior": "Responses substitute the infinity symbol for the variable and compute with it, or open an improper integral with limit notation and then abandon it before the evaluation is complete.",
-   "scoring_consequence": "The response becomes ineligible for the final point of the part; in improper integral parts the evaluation points are lost."
+   "scoring_consequence": "The response becomes ineligible for the final point of the part; in improper integral parts the evaluation points are lost.",
+   "fix_prompt": false
   }
  ],
  "representations": null,
  "prerequisite_bridges": [
   {
    "prq_id": "BC-PRQ-04008",
-   "text": "Name each quantity, its unit, and whether it varies. Unnamed, the response cannot begin (ced:84)."
+   "text": "Name each quantity, unit and whether it varies."
   }
  ],
  "time": {
@@ -587,8 +642,8 @@ BC-QA-04005 is `calculator` with a multipart free response structure, so Section
   "research/exam/exam-structure.md#Section and part layout"
  ],
  "word_count": {
-  "full": 564,
-  "brief": 444
+  "full": 565,
+  "brief": 445
  },
  "read_minutes": {
   "full": 3.8,

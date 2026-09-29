@@ -3,7 +3,7 @@
  "version": 1,
  "kind": "concept",
  "target_id": "BC-CON-04006",
- "status": "signed_off",
+ "status": "draft",
  "snapshot_digest": "a6a8ec9d3f59ab8f712e33d30cc22fc64bf2c478fbe7312e3e3118d319c6a42f",
  "source_digest": "34e7e883225e00722d1d47e10e17100ce8811ea485dd15d1569321e7d8d78505",
  "read_minutes": {
@@ -11,12 +11,59 @@
   "brief": 3.0
  },
  "word_count": {
-  "full": 472,
-  "brief": 409
+  "full": 480,
+  "brief": 417
  },
  "sections": [
   {
    "id": "LSN-CON-04006#s1",
+   "type": "prediction",
+   "bands": [
+    "low",
+    "mid"
+   ],
+   "skills": [
+    "BC-SKL-04013",
+    "BC-SKL-04015",
+    "BC-SKL-04016"
+   ],
+   "sources": [
+    "BC-CON-04006",
+    "research/units/unit-04-contextual-applications-differentiation.md#4.3 Rates of Change in Applied Contexts Other Than Motion"
+   ],
+   "evidence_tag": "inferred",
+   "stem": {
+    "text": "Predict. M(t) = 20 + 60(1 - e^(-t/8)) milligrams at t hours. What does M'(4) measure?",
+    "command_verb": "predict"
+   },
+   "format": "mcq",
+   "options": [
+    {
+     "id": "A",
+     "label": "The velocity of the medicine.",
+     "is_key": false
+    },
+    {
+     "id": "B",
+     "label": "The medicine's rate of change, in milligrams per hour.",
+     "is_key": true
+    },
+    {
+     "id": "C",
+     "label": "The amount of medicine, in milligrams.",
+     "is_key": false
+    }
+   ],
+   "resolution": {
+    "text": "M'(4) is the medicine's rate of change, in milligrams per hour."
+   },
+   "delivery": {
+    "mode": "text",
+    "reason": "rule 6"
+   }
+  },
+  {
+   "id": "LSN-CON-04006#s2",
    "type": "orientation",
    "bands": [
     "low",
@@ -32,7 +79,7 @@
     "research/units/unit-04-contextual-applications-differentiation.md#4.3 Rates of Change in Applied Contexts Other Than Motion"
    ],
    "evidence_tag": "inferred",
-   "text": "A contextual rate problem has one structure: a named quantity, its input, a derivative read as a rate. A response names both, uses the context's words and units, and keeps limit notation.",
+   "text": "A contextual rate names its quantity and input, and words its derivative in context units.",
    "delivery": {
     "mode": "text",
     "reason": "rule 5: BC-SKL-04013 and BC-SKL-04015 carry BC-REP-04 and BC-REP-05",
@@ -42,7 +89,7 @@
    }
   },
   {
-   "id": "LSN-CON-04006#s2",
+   "id": "LSN-CON-04006#s3",
    "type": "key_ideas",
    "bands": [
     "low",
@@ -63,7 +110,7 @@
    "evidence_tag": "verified",
    "ek_id": "BC-EK-CHA-3C1",
    "depth": "core",
-   "text": "Motion's mathematics carries over, its vocabulary does not: a drug amount's rate is not a velocity (ced:84). Each rate carries quantity units per input unit. Long run behaviour of a rate is a limit as the input grows, written with the limit kept, never infinity substituted (sg-25:4).",
+   "text": "A non-motion rate keeps the context's words, not a velocity. Units are quantity per input unit. Long run behaviour is a limit, never infinity substituted.",
    "notation": "rate of change of the named quantity",
    "quote": {
     "text": "The derivative can be used to solve problems involving rates of change in applied contexts.",
@@ -78,7 +125,7 @@
    }
   },
   {
-   "id": "LSN-CON-04006#s3",
+   "id": "LSN-CON-04006#s4",
    "type": "strategy",
    "bands": [
     "low",
@@ -90,17 +137,30 @@
     "BC-SKL-04016"
    ],
    "sources": [
-    "BC-QA-04005"
+    "BC-QA-04005",
+    "BC-ERR-99007",
+    "BC-CON-04003"
    ],
    "evidence_tag": "verified",
    "archetype_id": "BC-QA-04005",
-   "cue": "A model or its rate over a time interval; the stem asks a rate, its meaning or long run value.",
-   "method": "First line: name the quantity and its input, then the rate at the instant.",
-   "rival": "Rival: infinity substituted into the rate in place of a limit expression (BC-ERR-99007).",
-   "separating_feature": "End behaviour asked: write the limit first."
+   "cue": "A model or rate over time; rate, meaning or long run value asked.",
+   "method": "Name the quantity and input, then the rate.",
+   "rival": "Infinity substituted for a limit.",
+   "separating_feature": "End behaviour asked: write the limit first.",
+   "contrast": {
+    "this": {
+     "text": "V(t) = 50 + 30(1 - e^(-t/5)) liters. Write and evaluate the limit of V'(t) as t grows.",
+     "archetype_id": "BC-QA-04005"
+    },
+    "not_this": {
+     "text": "x(t) = t^3 - 6t. Find the velocity at t = 2.",
+     "why_not": "Motion vocabulary."
+    },
+    "feature": "A long run rate of a non-position quantity."
+   }
   },
   {
-   "id": "LSN-CON-04006#s4",
+   "id": "LSN-CON-04006#s5",
    "type": "worked_example",
    "bands": [
     "low",
@@ -132,8 +192,8 @@
    "calculator_status": "calculator",
    "steps": [
     {
-     "cue": "Quantity: medicine, milligrams; input: hours.",
-     "why": "Rates will be milligrams per hour.",
+     "cue": "Medicine in mg; input hours.",
+     "why": "Milligrams per hour.",
      "expression": [
       "Add",
       80,
@@ -183,13 +243,13 @@
      "variable": "t"
     },
     {
-     "cue": "\\(M'(t)>0\\) for every \\(t\\).",
-     "why": "The amount of medicine is increasing.",
+     "cue": "\\(M'(t)>0\\).",
+     "why": "Increasing.",
      "point_type_id": "BC-PT-99014"
     },
     {
-     "cue": "End behaviour: the limit written first.",
-     "why": "\\(\\lim_{t\\to\\infty}7.5e^{-t/8}=0\\) milligrams per hour.",
+     "cue": "Limit written first.",
+     "why": "\\(\\lim_{t\\to\\infty}7.5e^{-t/8}=0\\).",
      "expression": 0,
      "relation": "limit",
      "variable": "t",
@@ -221,7 +281,7 @@
      "relation": "new"
     },
     {
-     "cue": "Calculator, three decimals.",
+     "cue": "Calculator.",
      "why": "4.549 milligrams per hour.",
      "expression": 4.549,
      "relation": "evaluate",
@@ -242,7 +302,7 @@
    }
   },
   {
-   "id": "LSN-CON-04006#s5",
+   "id": "LSN-CON-04006#s6",
    "type": "what_a_reader_scores",
    "bands": [
     "low",
@@ -257,7 +317,7 @@
     "BC-PT-99014"
    ],
    "evidence_tag": "verified",
-   "example_id": "LSN-CON-04006#s4",
+   "example_id": "LSN-CON-04006#s5",
    "lines": [
     {
      "point_type_id": "BC-PT-99014",
@@ -300,6 +360,7 @@
     ]
    },
    "relation": "distinct",
+   "fix_prompt": true,
    "delivery": {
     "mode": "step_reveal",
     "reason": "rule 1",
@@ -333,6 +394,7 @@
     "expression": 4.549
    },
    "relation": "equivalent",
+   "fix_prompt": false,
    "possible_reason": {
     "misconception_id": "BC-MIS-04007",
     "text": "maps every rate context onto the vocabulary of a moving particle"
@@ -370,6 +432,7 @@
     "expression": 0
    },
    "relation": "equivalent",
+   "fix_prompt": false,
    "possible_reason": {
     "misconception_id": "BC-MIS-99008",
     "text": "substitutes the infinity symbol for the variable and computes with the result"
@@ -397,7 +460,7 @@
    ],
    "evidence_tag": "inferred",
    "prerequisite_id": "BC-PRQ-04008",
-   "text": "Name each quantity, its unit, and whether it varies. Unnamed, the response cannot begin (ced:84)."
+   "text": "Name each quantity, unit and whether it varies."
   }
  ],
  "checks": [
@@ -419,7 +482,7 @@
     "trend": "rising",
     "supplied": "model"
    },
-   "completes": "LSN-CON-04006#s4",
+   "completes": "LSN-CON-04006#s5",
    "stem": {
     "text": "\\(M'(t)=7.5e^{-t/8}\\) milligrams per hour. Give \\(M'(4)\\) to three decimals.",
     "command_verb": "give"
@@ -634,18 +697,19 @@
   }
  ],
  "refresher": [
-  "LSN-CON-04006#s2",
+  "LSN-CON-04006#s3",
   "LSN-CON-04006#err-BC-ERR-04012",
   "LSN-CON-04006#err-BC-ERR-04013",
   "LSN-CON-04006#err-BC-ERR-99007",
-  "LSN-CON-04006#s4"
+  "LSN-CON-04006#s5"
  ],
+ "no_figure_reason": "No skill carries a figure-bearing representation (only BC-REP-01, 04, 05 and 09), and the key idea states a notation habit for a limit, not a process the student watches.",
  "provenance": {
   "author": "tools/lesson_transcribe.py",
-  "prompt_version": "generator/lesson_v1",
+  "prompt_version": "generator/lesson_v2",
   "design_path": "docs/lessons/unit-04/LSN-CON-04006.md",
-  "signed_off_by": "claude-opus-5-5",
-  "signed_off_at": "2026-09-29",
+  "signed_off_by": null,
+  "signed_off_at": null,
   "not_human": true
  }
 }

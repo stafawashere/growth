@@ -9,15 +9,19 @@ purpose: Authoring spec for the concept lesson on BC-CON-04005, deciding whether
 
 Concept BC-CON-04005 (skills BC-SKL-04010, BC-SKL-04012), topic 4.2 of Unit 4, loaded by BC-QA-04003 and BC-QA-04004. Its hard parents are BC-CON-04003 and BC-CON-04004 (docs/lessons/unit-04/README.md, section 1).
 
+## Prediction
+
+Both bands, served first. Form `mcq`, three options, on ex-1's own values \(v(2)=-3\) and \(a(2)=8\). The student picks whether the speed is increasing at \(t=2\): increasing because the acceleration is positive, decreasing because the signs differ, or neither. Key: decreasing, since the signs differ. The resolution states the rule (the same sign increases, opposite signs decrease) and never grades the choice. Sources: BC-CON-04005 and the 4.2 topic section that ki-1 cites (BC-EK-CHA-3B1, ced:88). Delivery: text. [inferred] Settled by the prediction's first-try rate in the build plan.
+
 ## Orientation
 
-Served text, from BC-CON-04005 `description_plain` and the Assessment behaviour paragraph (research/units/unit-04-contextual-applications-differentiation.md#4.2 Straight-Line Motion: Connecting Position, Velocity, and Acceleration), whose justification variants require both signs named and applied to the particle in the problem (crabbc-25:23). No count, no frequency.
+Served text, from BC-CON-04005 `description_plain` and the Assessment behaviour paragraph (research/units/unit-04-contextual-applications-differentiation.md#4.2 Straight-Line Motion: Connecting Position, Velocity, and Acceleration), whose justification variants require both signs named and applied to the particle in the problem (crabbc-25:23). Cut to 16 words to fit the brief cap. No count, no frequency.
 
 ## Key ideas
 
 Both skills map BC-EK-CHA-3B1: one core block, both bands.
 
-- ki-1 (core, BC-EK-CHA-3B1, ced:88). The Speeding up and slowing down paragraph of Required mathematical knowledge, hypotheses then conclusion (cr-22:21), with the Sign analysis paragraph's reading in words (crabbc-25:22). No anchor quote: the bundle's `ced_pages` for this concept is empty (library gap), so no quote can be checked against a bundle page; ced:88 is cited from the skill's BC-EK.
+- ki-1 (core, BC-EK-CHA-3B1, ced:88). The Speeding up and slowing down paragraph of Required mathematical knowledge, hypotheses then conclusion, with the Sign analysis paragraph's reading in words; the scoring sources cr-22:21 and crabbc-25:22 sit in `sources`, not in the served text. No anchor quote: the bundle's `ced_pages` for this concept is empty (library gap), so no quote can be checked against a bundle page; ced:88 is cited from the skill's BC-EK.
 
 ## Recognition
 
@@ -25,17 +29,19 @@ Both skills map BC-EK-CHA-3B1: one core block, both bands.
 - BC-QA-04004 (research/question-analysis/question-archetypes.md#BC-QA-04004 Direction of motion and sign analysis over an interval), same family: the sign analysis over an interval whose reading must be stated in words, BC-SKL-04012.
 
 Not this concept: find the acceleration (one value, BC-CON-04003), or which way the particle moves (one sign, BC-CON-04004).
+The contrast pair on st-1 sets a speed-decision stem beside a stem that asks for the acceleration on the same velocity. Where the near miss comes from: the sibling concept BC-CON-04003, whose stem also gives a velocity and asks for a value at an instant. The separating feature is that a speed decision needs both signs.
 
 ## Method choice
 
-One strategy block: BC-QA-04003 and BC-QA-04004 share the family motion-by-differentiation, and BC-QA-04003 is listed first.
+One strategy block: BC-QA-04003 and BC-QA-04004 share the family motion-by-differentiation, and BC-QA-04003 is listed first. The reader prints its own labels, so no field starts with one, and the error id sits in `sources`.
 
-- st-1, BC-QA-04003. Method, `expected_solution_path[0]` with its next step: differentiate as needed, then evaluate velocity and acceleration at the instant. Rival, `wrong_approaches`: the speed decided from the acceleration alone (BC-ERR-99003). Separating feature: speed is a size, so the direction of motion enters. The archetype carries `asked_to_produce` and `common_givens` in the snapshot, so the block is verified.
+- st-1, BC-QA-04003. Method, `expected_solution_path[0]` with its next step: differentiate as needed, then evaluate velocity and acceleration at the instant, cut to each sign of \(v\) and \(a\). Rival, `wrong_approaches`: the speed decided from the acceleration alone (BC-ERR-99003). Separating feature: speed is a size, so the direction of motion enters. The archetype carries `asked_to_produce` and `common_givens` in the snapshot, so the block is verified. Carries the contrast pair.
 
 ## Solution path
 
 - ex-1, BC-QA-04003, both bands, no calculator. Draw: cubic 1, quadratic -2, free 4, speed_value 3, instant 2, given velocity, heading left. Derived: constant -11, v(t) = t^3 - 2t^2 + 4t - 11, v(2) = -3, a(2) = 8. Heading left makes the acceleration-only verdict wrong, as the spec's notes intend. No published BC-QA-04003 item carries this draw.
 - Steps: velocity (new), acceleration (differentiate), a(2) (evaluate, BC-PT-99027), v(2) (new), the comparison in words (no value). The answer is a statement. A fluent solver writes steps 2 to 5; the conclusion names both signs and this particle.
+One example, so it is not faded and carries no `fade_from`.
 
 ## Scoring
 
@@ -49,6 +55,7 @@ Two active errors meet the skills, in the bundle's order: BC-ERR-04011, BC-ERR-9
 
 - err-BC-ERR-04011: for v(t) = (t - 2)(3t - 10) on 0 < t < 8, a sign chart with zeros 2 and 10/3 and no sentence, against the same chart read in words: left on (2, 10/3) [inferred: a BC-QA-04004 draw with no worked example in this lesson]. Possible reason from BC-MIS-04017.
 - err-BC-ERR-99003: a(2) > 0 read as speeding up, against the product v(2)a(2) < 0. Possible reason from BC-MIS-99001.
+Both blocks are distinct, so each carries `fix_prompt` true. Every value is an integer, so the decimal rule changes no expression.
 
 ## Representations
 
@@ -70,13 +77,16 @@ BC-QA-04003 has calculator status either, so the lesson takes Section I Part A, 
 
 ## Delivery
 
-- orientation, ki-1: text. Rule 5: no figure-bearing representation on BC-SKL-04010 or BC-SKL-04012 (docs/lessons/unit-04/README.md, section 6).
+- pr-1: text. Rule 6, a prediction on ex-1's values with nothing to draw.
+- orientation, ki-1: text. Rule 6: no figure-bearing representation on BC-SKL-04010 or BC-SKL-04012 (docs/lessons/unit-04/README.md, section 6).
 - ex-1, err-BC-ERR-04011, err-BC-ERR-99003: step_reveal. Rule 1.
+
+Figure presence: no drawn block. No rule of 2 to 5 applies, because the skills carry BC-REP-01, BC-REP-04 and BC-REP-05 and the key idea is a sign comparison at one instant, so the record carries `no_figure_reason`.
 
 ## Band plan
 
-- Low (full): orientation, ki-1, st-1, ex-1 with its scoring line, both error blocks, chk-1, chk-2, both bridges. 447 words, 3.0 minutes (cap 900 and 6).
-- Mid (brief): the same blocks, since the lesson has one core key idea, one strategy block, two error blocks and two checks. 447 words, 3.0 minutes (cap 450 and 3).
+- Low (full): prediction, orientation, both bridges, ki-1, st-1 with its contrast, ex-1 with its scoring line, chk-1, both error blocks, chk-2. 446 words, 3.0 minutes (cap 900 and 6).
+- Mid (brief): the same blocks, since the lesson has one core key idea, one strategy block, two error blocks and two checks. 446 words, 3.0 minutes (cap 450 and 3). The orientation, ki-1, the st-1 fields and the bridges were shortened to fit.
 - Refresher: ki-1, err-BC-ERR-04011, err-BC-ERR-99003, ex-1.
 
 ## Sources
@@ -108,8 +118,41 @@ BC-QA-04003 has calculator status either, so the lesson takes Section I Part A, 
   "BC-SKL-04010",
   "BC-SKL-04012"
  ],
+ "prediction": {
+  "id": "pr-1",
+  "stem": {
+   "text": "Predict whether the speed is increasing at \\(t=2\\), given \\(v(2)=-3\\) and \\(a(2)=8\\).",
+   "command_verb": "predict"
+  },
+  "format": "mcq",
+  "options": [
+   {
+    "id": "A",
+    "label": "Increasing, since \\(a(2)\\) is positive.",
+    "is_key": false
+   },
+   {
+    "id": "B",
+    "label": "Decreasing, since the signs differ.",
+    "is_key": true
+   },
+   {
+    "id": "C",
+    "label": "Neither, since the values are unequal.",
+    "is_key": false
+   }
+  ],
+  "resolution": "Speed increases when \\(v\\) and \\(a\\) share a sign and decreases when they differ. Here they differ, so the speed is decreasing.",
+  "sources": [
+   "BC-CON-04005",
+   "BC-EK-CHA-3B1",
+   "ced:88",
+   "research/units/unit-04-contextual-applications-differentiation.md#4.2 Straight-Line Motion: Connecting Position, Velocity, and Acceleration"
+  ]
+ },
+ "no_figure_reason": "BC-SKL-04010 and BC-SKL-04012 list no figure-bearing representation, only BC-REP-01, BC-REP-04 and BC-REP-05, and the key idea is a sign comparison at one instant with no process.",
  "orientation": {
-  "text": "Whether a particle speeds up at an instant needs two signs: velocity and acceleration there. A response states both, compares them, and applies the conclusion to this particle at this instant.",
+  "text": "A speed decision needs the signs of velocity and acceleration, stated and applied to this particle.",
   "sources": [
    "BC-CON-04005",
    "research/units/unit-04-contextual-applications-differentiation.md#4.2 Straight-Line Motion: Connecting Position, Velocity, and Acceleration"
@@ -120,8 +163,8 @@ BC-QA-04003 has calculator status either, so the lesson takes Section I Part A, 
    "id": "ki-1",
    "ek_id": "BC-EK-CHA-3B1",
    "depth": "core",
-   "text": "With \\(v(t_0)\\) and \\(a(t_0)\\) both known: the same sign means the speed is increasing, opposite signs mean it is decreasing. The sign of the acceleration alone does not settle it (cr-22:21). Over an interval, the reading of a sign analysis is written in words for the whole interval (crabbc-25:22).",
-   "notation": "signs of v of t and a of t compared",
+   "text": "The same sign of \\(v(t_0)\\) and \\(a(t_0)\\): speed increasing. Opposite signs: decreasing. The sign of acceleration alone does not settle it. Over an interval, read the signs in words.",
+   "notation": "signs of v and a compared",
    "quote": null,
    "sources": [
     "BC-EK-CHA-3B1",
@@ -136,14 +179,26 @@ BC-QA-04003 has calculator status either, so the lesson takes Section I Part A, 
   {
    "id": "st-1",
    "archetype_id": "BC-QA-04003",
-   "cue": "The stem asks: is the speed increasing, decreasing, or neither at the stated time, and give a reason.",
-   "method": "First line: \\(v(t_0)\\) and \\(a(t_0)\\), each with its sign.",
-   "rival": "Rival: the conclusion from the sign of acceleration alone (BC-ERR-99003).",
-   "separating_feature": "Speed is a size, so direction enters: both signs.",
+   "cue": "Speed increasing or decreasing; give a reason.",
+   "method": "Each sign of \\(v\\) and \\(a\\).",
+   "rival": "The acceleration's sign alone.",
+   "separating_feature": "Speed is a size: both signs.",
    "sources": [
-    "BC-QA-04003"
+    "BC-QA-04003",
+    "BC-ERR-99003"
    ],
-   "evidence_tag": "verified"
+   "evidence_tag": "verified",
+   "contrast": {
+    "this": {
+     "text": "\\(v(t)=t^2-6t+5\\). Is the speed increasing or decreasing at \\(t=2\\)? Give a reason.",
+     "archetype_id": "BC-QA-04003"
+    },
+    "not_this": {
+     "text": "\\(v(t)=t^2-6t+5\\). Find the acceleration at \\(t=2\\).",
+     "why_not": "One value, \\(a(2)\\); no decision about speed."
+    },
+    "feature": "A speed decision needs both signs."
+   }
   }
  ],
  "worked_examples": [
@@ -245,7 +300,8 @@ BC-QA-04003 has calculator status either, so the lesson takes Section I Part A, 
     "BC-MIS-04017"
    ],
    "observed_behavior": "A number line or table of signs appears with no sentence saying what it shows about the direction of motion over the interval.",
-   "scoring_consequence": "The 2025 report records that responses failing to communicate what the chart showed over the whole interval did not earn the analysis points (crabbc-25:22, crabbc-25:23); BC-ERR-99001 records vague referents in justification across years."
+   "scoring_consequence": "The 2025 report records that responses failing to communicate what the chart showed over the whole interval did not earn the analysis points (crabbc-25:22, crabbc-25:23); BC-ERR-99001 records vague referents in justification across years.",
+   "fix_prompt": true
   },
   {
    "error_id": "BC-ERR-99003",
@@ -267,18 +323,19 @@ BC-QA-04003 has calculator status either, so the lesson takes Section I Part A, 
     "BC-MIS-99001"
    ],
    "observed_behavior": "Responses conclude that a particle is speeding up or slowing down from the sign of acceleration by itself, without also considering the sign of velocity at that instant.",
-   "scoring_consequence": "The reasoning point for speeding up or slowing down is not earned, even when the reported acceleration value is correct."
+   "scoring_consequence": "The reasoning point for speeding up or slowing down is not earned, even when the reported acceleration value is correct.",
+   "fix_prompt": true
   }
  ],
  "representations": null,
  "prerequisite_bridges": [
   {
    "prq_id": "BC-PRQ-04005",
-   "text": "Absolute value is size without sign; speed is \\(|v|\\). The failure: a negative speed, or a direction answered with a size."
+   "text": "Absolute value is size without sign; speed is \\(|v|\\)."
   },
   {
    "prq_id": "BC-PRQ-04009",
-   "text": "Solve for zeros, split the interval, find each piece's sign. The failure: intervals from sampled integers."
+   "text": "Zeros split the interval; find each piece's sign."
   }
  ],
  "time": {
@@ -408,6 +465,14 @@ BC-QA-04003 has calculator status either, so the lesson takes Section I Part A, 
  ],
  "delivery": [
   {
+   "block": "pr-1",
+   "mode": "text",
+   "reason": "rule 6: a prediction on ex-1's values with no picture in the question",
+   "sources": [
+    "BC-SKL-04010"
+   ]
+  },
+  {
    "block": "orientation",
    "mode": "text",
    "reason": "rule 5: BC-SKL-04010 carries BC-REP-01 and BC-REP-05, BC-SKL-04012 BC-REP-01 and BC-REP-04",
@@ -505,8 +570,8 @@ BC-QA-04003 has calculator status either, so the lesson takes Section I Part A, 
   "research/exam/exam-structure.md#Section and part layout"
  ],
  "word_count": {
-  "full": 447,
-  "brief": 447
+  "full": 446,
+  "brief": 446
  },
  "read_minutes": {
   "full": 3.0,

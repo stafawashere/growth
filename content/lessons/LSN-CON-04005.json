@@ -3,7 +3,7 @@
  "version": 1,
  "kind": "concept",
  "target_id": "BC-CON-04005",
- "status": "signed_off",
+ "status": "draft",
  "snapshot_digest": "a6a8ec9d3f59ab8f712e33d30cc22fc64bf2c478fbe7312e3e3118d319c6a42f",
  "source_digest": "b0b715c573001d504517c6e04a4f8fd0244a212d630a9cd88e0677f9adbc36f8",
  "read_minutes": {
@@ -11,12 +11,63 @@
   "brief": 3.0
  },
  "word_count": {
-  "full": 384,
-  "brief": 384
+  "full": 403,
+  "brief": 403
  },
  "sections": [
   {
    "id": "LSN-CON-04005#s1",
+   "type": "prediction",
+   "bands": [
+    "low",
+    "mid"
+   ],
+   "skills": [
+    "BC-SKL-04010",
+    "BC-SKL-04012"
+   ],
+   "sources": [
+    "BC-CON-04005",
+    "BC-EK-CHA-3B1",
+    "ced:88",
+    "research/units/unit-04-contextual-applications-differentiation.md#4.2 Straight-Line Motion: Connecting Position, Velocity, and Acceleration"
+   ],
+   "evidence_tag": "inferred",
+   "stem": {
+    "text": "Predict whether the speed is increasing at \\(t=2\\), given \\(v(2)=-3\\) and \\(a(2)=8\\).",
+    "command_verb": "predict"
+   },
+   "format": "mcq",
+   "options": [
+    {
+     "id": "A",
+     "label": "Increasing, since \\(a(2)\\) is positive.",
+     "is_key": false
+    },
+    {
+     "id": "B",
+     "label": "Decreasing, since the signs differ.",
+     "is_key": true
+    },
+    {
+     "id": "C",
+     "label": "Neither, since the values are unequal.",
+     "is_key": false
+    }
+   ],
+   "resolution": {
+    "text": "Speed increases when \\(v\\) and \\(a\\) share a sign and decreases when they differ. Here they differ, so the speed is decreasing."
+   },
+   "delivery": {
+    "mode": "text",
+    "reason": "rule 6: a prediction on ex-1's values with no picture in the question",
+    "sources": [
+     "BC-SKL-04010"
+    ]
+   }
+  },
+  {
+   "id": "LSN-CON-04005#s2",
    "type": "orientation",
    "bands": [
     "low",
@@ -31,7 +82,7 @@
     "research/units/unit-04-contextual-applications-differentiation.md#4.2 Straight-Line Motion: Connecting Position, Velocity, and Acceleration"
    ],
    "evidence_tag": "inferred",
-   "text": "Whether a particle speeds up at an instant needs two signs: velocity and acceleration there. A response states both, compares them, and applies the conclusion to this particle at this instant.",
+   "text": "A speed decision needs the signs of velocity and acceleration, stated and applied to this particle.",
    "delivery": {
     "mode": "text",
     "reason": "rule 5: BC-SKL-04010 carries BC-REP-01 and BC-REP-05, BC-SKL-04012 BC-REP-01 and BC-REP-04",
@@ -41,7 +92,7 @@
    }
   },
   {
-   "id": "LSN-CON-04005#s2",
+   "id": "LSN-CON-04005#s3",
    "type": "key_ideas",
    "bands": [
     "low",
@@ -61,8 +112,8 @@
    "evidence_tag": "inferred",
    "ek_id": "BC-EK-CHA-3B1",
    "depth": "core",
-   "text": "With \\(v(t_0)\\) and \\(a(t_0)\\) both known: the same sign means the speed is increasing, opposite signs mean it is decreasing. The sign of the acceleration alone does not settle it (cr-22:21). Over an interval, the reading of a sign analysis is written in words for the whole interval (crabbc-25:22).",
-   "notation": "signs of v of t and a of t compared",
+   "text": "The same sign of \\(v(t_0)\\) and \\(a(t_0)\\): speed increasing. Opposite signs: decreasing. The sign of acceleration alone does not settle it. Over an interval, read the signs in words.",
+   "notation": "signs of v and a compared",
    "delivery": {
     "mode": "text",
     "reason": "rule 5: a sign comparison rule with no figure-bearing representation",
@@ -73,7 +124,7 @@
    }
   },
   {
-   "id": "LSN-CON-04005#s3",
+   "id": "LSN-CON-04005#s4",
    "type": "strategy",
    "bands": [
     "low",
@@ -83,17 +134,29 @@
     "BC-SKL-04010"
    ],
    "sources": [
-    "BC-QA-04003"
+    "BC-QA-04003",
+    "BC-ERR-99003"
    ],
    "evidence_tag": "verified",
    "archetype_id": "BC-QA-04003",
-   "cue": "The stem asks: is the speed increasing, decreasing, or neither at the stated time, and give a reason.",
-   "method": "First line: \\(v(t_0)\\) and \\(a(t_0)\\), each with its sign.",
-   "rival": "Rival: the conclusion from the sign of acceleration alone (BC-ERR-99003).",
-   "separating_feature": "Speed is a size, so direction enters: both signs."
+   "cue": "Speed increasing or decreasing; give a reason.",
+   "method": "Each sign of \\(v\\) and \\(a\\).",
+   "rival": "The acceleration's sign alone.",
+   "separating_feature": "Speed is a size: both signs.",
+   "contrast": {
+    "this": {
+     "text": "\\(v(t)=t^2-6t+5\\). Is the speed increasing or decreasing at \\(t=2\\)? Give a reason.",
+     "archetype_id": "BC-QA-04003"
+    },
+    "not_this": {
+     "text": "\\(v(t)=t^2-6t+5\\). Find the acceleration at \\(t=2\\).",
+     "why_not": "One value, \\(a(2)\\); no decision about speed."
+    },
+    "feature": "A speed decision needs both signs."
+   }
   },
   {
-   "id": "LSN-CON-04005#s4",
+   "id": "LSN-CON-04005#s5",
    "type": "worked_example",
    "bands": [
     "low",
@@ -207,7 +270,7 @@
    }
   },
   {
-   "id": "LSN-CON-04005#s5",
+   "id": "LSN-CON-04005#s6",
    "type": "what_a_reader_scores",
    "bands": [
     "low",
@@ -220,7 +283,7 @@
     "BC-PT-99027"
    ],
    "evidence_tag": "verified",
-   "example_id": "LSN-CON-04005#s4",
+   "example_id": "LSN-CON-04005#s5",
    "lines": [
     {
      "point_type_id": "BC-PT-99027",
@@ -277,6 +340,7 @@
     ]
    },
    "relation": "distinct",
+   "fix_prompt": true,
    "possible_reason": {
     "misconception_id": "BC-MIS-04017",
     "text": "the communicated conclusion does not cover the interval"
@@ -314,6 +378,7 @@
     "expression": -24
    },
    "relation": "distinct",
+   "fix_prompt": true,
    "possible_reason": {
     "misconception_id": "BC-MIS-99001",
     "text": "the sign of acceleration by itself decides whether a particle is speeding up or slowing down"
@@ -339,7 +404,7 @@
    ],
    "evidence_tag": "inferred",
    "prerequisite_id": "BC-PRQ-04005",
-   "text": "Absolute value is size without sign; speed is \\(|v|\\). The failure: a negative speed, or a direction answered with a size."
+   "text": "Absolute value is size without sign; speed is \\(|v|\\)."
   },
   {
    "id": "LSN-CON-04005#prq-BC-PRQ-04009",
@@ -356,7 +421,7 @@
    ],
    "evidence_tag": "inferred",
    "prerequisite_id": "BC-PRQ-04009",
-   "text": "Solve for zeros, split the interval, find each piece's sign. The failure: intervals from sampled integers."
+   "text": "Zeros split the interval; find each piece's sign."
   }
  ],
  "checks": [
@@ -378,7 +443,7 @@
     "given": "velocity",
     "heading": "left"
    },
-   "completes": "LSN-CON-04005#s4",
+   "completes": "LSN-CON-04005#s5",
    "stem": {
     "text": "\\(v(2)=-3\\) and \\(a(2)=8\\). Is the speed increasing or decreasing at \\(t=2\\)? Give a reason.",
     "command_verb": "determine"
@@ -510,17 +575,18 @@
   }
  ],
  "refresher": [
-  "LSN-CON-04005#s2",
+  "LSN-CON-04005#s3",
   "LSN-CON-04005#err-BC-ERR-04011",
   "LSN-CON-04005#err-BC-ERR-99003",
-  "LSN-CON-04005#s4"
+  "LSN-CON-04005#s5"
  ],
+ "no_figure_reason": "BC-SKL-04010 and BC-SKL-04012 list no figure-bearing representation, only BC-REP-01, BC-REP-04 and BC-REP-05, and the key idea is a sign comparison at one instant with no process.",
  "provenance": {
   "author": "tools/lesson_transcribe.py",
-  "prompt_version": "generator/lesson_v1",
+  "prompt_version": "generator/lesson_v2",
   "design_path": "docs/lessons/unit-04/LSN-CON-04005.md",
-  "signed_off_by": "claude-opus-5-5",
-  "signed_off_at": "2026-09-29",
+  "signed_off_by": null,
+  "signed_off_at": null,
   "not_human": true
  }
 }

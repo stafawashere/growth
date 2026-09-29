@@ -3,20 +3,54 @@
  "version": 1,
  "kind": "concept",
  "target_id": "BC-CON-04014",
- "status": "signed_off",
+ "status": "draft",
  "snapshot_digest": "a6a8ec9d3f59ab8f712e33d30cc22fc64bf2c478fbe7312e3e3118d319c6a42f",
  "source_digest": "675dd60b102bfdf60f96017de131e26d704d72cfca850b8d9e310f146e0c3b9a",
  "read_minutes": {
-  "full": 2.9,
-  "brief": 2.9
+  "full": 3.0,
+  "brief": 3.0
  },
  "word_count": {
-  "full": 385,
-  "brief": 385
+  "full": 401,
+  "brief": 401
  },
  "sections": [
   {
    "id": "LSN-CON-04014#s1",
+   "type": "prediction",
+   "bands": [
+    "low",
+    "mid"
+   ],
+   "skills": [
+    "BC-SKL-04034",
+    "BC-SKL-04038"
+   ],
+   "sources": [
+    "BC-CON-04014",
+    "BC-EK-LIM-4A1",
+    "research/units/unit-04-contextual-applications-differentiation.md#4.7 Using L'Hospital's Rule for Determining Limits of Indeterminate Forms"
+   ],
+   "evidence_tag": "inferred",
+   "stem": {
+    "text": "Predict: f is differentiable and f(4) = 4. What is the limit of f(2x) - 4 as x tends to 2?",
+    "command_verb": "predict"
+   },
+   "format": "short_answer",
+   "answer_key": {
+    "form": "numeric",
+    "mathjson": 0
+   },
+   "resolution": {
+    "text": "Differentiable means continuous, so f(2x) tends to 4 and the numerator tends to 0."
+   },
+   "delivery": {
+    "mode": "text",
+    "reason": "rule 6"
+   }
+  },
+  {
+   "id": "LSN-CON-04014#s2",
    "type": "orientation",
    "bands": [
     "low",
@@ -31,7 +65,7 @@
     "research/units/unit-04-contextual-applications-differentiation.md#4.7 Using L'Hospital's Rule for Determining Limits of Indeterminate Forms"
    ],
    "evidence_tag": "inferred",
-   "text": "Before using the rule, show the form is indeterminate with two separate limits, each with its reason.",
+   "text": "Show the form is indeterminate with two separate limits, each with its reason.",
    "delivery": {
     "mode": "text",
     "reason": "rule 5: a statement of what a response shows",
@@ -41,7 +75,7 @@
    }
   },
   {
-   "id": "LSN-CON-04014#s2",
+   "id": "LSN-CON-04014#s3",
    "type": "key_ideas",
    "bands": [
     "low",
@@ -60,8 +94,8 @@
    "evidence_tag": "verified",
    "ek_id": "BC-EK-LIM-4A2",
    "depth": "core",
-   "text": "The rule's hypothesis: numerator and denominator both tend to 0, or both to infinity. It is checked first, as two separate limits, before any derivative.",
-   "notation": "separate limits of numerator and denominator",
+   "text": "Both limits tend to 0, or both to infinity; check this first, before any derivative.",
+   "notation": "two separate limits",
    "quote": {
     "text": "Limits of the indeterminate forms 0 over 0",
     "source": "ced:93"
@@ -75,7 +109,7 @@
    }
   },
   {
-   "id": "LSN-CON-04014#s3",
+   "id": "LSN-CON-04014#s4",
    "type": "key_ideas",
    "bands": [
     "low",
@@ -93,7 +127,7 @@
    "evidence_tag": "verified",
    "ek_id": "BC-EK-LIM-4A1",
    "depth": "core",
-   "text": "When the numerator holds a function known only through values, its limit comes from differentiability: differentiable at the point means continuous there, so the limit equals the value.",
+   "text": "A function known only through values is differentiable, so continuous.",
    "notation": "differentiable implies continuous",
    "quote": {
     "text": "such forms are said to be indeterminate",
@@ -149,7 +183,7 @@
    }
   },
   {
-   "id": "LSN-CON-04014#s4",
+   "id": "LSN-CON-04014#s5",
    "type": "strategy",
    "bands": [
     "low",
@@ -160,17 +194,29 @@
     "BC-SKL-04038"
    ],
    "sources": [
-    "BC-QA-04009"
+    "BC-QA-04009",
+    "BC-ERR-04029"
    ],
    "evidence_tag": "verified",
    "archetype_id": "BC-QA-04009",
-   "cue": "An unknown f in the numerator, with f and f' given at the inner point.",
-   "method": "First line: the numerator's limit, citing differentiability for continuity.",
-   "rival": "Rival: the rule applied with no form checked (BC-ERR-04029).",
-   "separating_feature": "f known only through values."
+   "cue": "An unknown f in the numerator.",
+   "method": "The numerator's limit, citing differentiability.",
+   "rival": "The rule with no form checked.",
+   "separating_feature": "f known only through values.",
+   "contrast": {
+    "this": {
+     "text": "g is differentiable, g(3) = 2. Find the limit of (g(3x) - 2)/(x - 1) as x tends to 1.",
+     "archetype_id": "BC-QA-04009"
+    },
+    "not_this": {
+     "text": "Find the limit of sin(x)/(e^x - 1) as x tends to 0.",
+     "why_not": "Each limit is read directly."
+    },
+    "feature": "An unknown f in the numerator."
+   }
   },
   {
-   "id": "LSN-CON-04014#s5",
+   "id": "LSN-CON-04014#s6",
    "type": "worked_example",
    "bands": [
     "low",
@@ -202,19 +248,19 @@
    "steps": [
     {
      "cue": "Unknown f in the numerator.",
-     "why": "Differentiable, so continuous: f(2x) tends to f(4) = 4.",
+     "why": "Continuous: f(2x) tends to 4.",
      "expression": 0,
      "relation": "new"
     },
     {
      "cue": "Numerator limit.",
-     "why": "Stated alone.",
+     "why": "Alone.",
      "expression": 0,
      "point_type_id": "BC-PT-99055",
      "relation": "equivalent"
     },
     {
-     "cue": "Denominator next.",
+     "cue": "Denominator.",
      "why": "Its own limit.",
      "expression": [
       "Add",
@@ -240,11 +286,11 @@
     },
     {
      "cue": "Hypothesis met.",
-     "why": "0/0 stated in words."
+     "why": "0/0, in words."
     },
     {
      "cue": "Rule applies.",
-     "why": "2f'(2x) over e^(x - 2), at x = 2.",
+     "why": "2f'(2x) over e^(x - 2).",
      "expression": -6,
      "relation": "new"
     }
@@ -260,7 +306,7 @@
    }
   },
   {
-   "id": "LSN-CON-04014#s6",
+   "id": "LSN-CON-04014#s7",
    "type": "what_a_reader_scores",
    "bands": [
     "low",
@@ -274,7 +320,7 @@
     "BC-PT-99055"
    ],
    "evidence_tag": "verified",
-   "example_id": "LSN-CON-04014#s5",
+   "example_id": "LSN-CON-04014#s6",
    "lines": [
     {
      "point_type_id": "BC-PT-99055",
@@ -309,6 +355,7 @@
     "expression": 0
    },
    "relation": "distinct",
+   "fix_prompt": true,
    "possible_reason": {
     "misconception_id": "BC-MIS-04014",
     "text": "as values that may be written on the right of an equals sign"
@@ -346,6 +393,7 @@
     "expression": -6
    },
    "relation": "equivalent",
+   "fix_prompt": false,
    "possible_reason": {
     "misconception_id": "BC-MIS-04015",
     "text": "treats the rule as a general device for limits that resist substitution"
@@ -372,7 +420,7 @@
    ],
    "evidence_tag": "inferred",
    "prerequisite_id": "BC-PRQ-04008",
-   "text": "Name each quantity given in the stem and whether it varies."
+   "text": "Name each quantity in the stem and whether it varies."
   }
  ],
  "checks": [
@@ -394,7 +442,7 @@
     "near_slope": 5,
     "denominator": "exponential"
    },
-   "completes": "LSN-CON-04014#s5",
+   "completes": "LSN-CON-04014#s6",
    "stem": {
     "text": "For ex-1 the form is 0/0. Finish with the ratio of derivatives.",
     "command_verb": "find"
@@ -492,18 +540,18 @@
   }
  ],
  "refresher": [
-  "LSN-CON-04014#s2",
   "LSN-CON-04014#s3",
+  "LSN-CON-04014#s4",
   "LSN-CON-04014#err-BC-ERR-04028",
   "LSN-CON-04014#err-BC-ERR-04029",
-  "LSN-CON-04014#s5"
+  "LSN-CON-04014#s6"
  ],
  "provenance": {
   "author": "tools/lesson_transcribe.py",
-  "prompt_version": "generator/lesson_v1",
+  "prompt_version": "generator/lesson_v2",
   "design_path": "docs/lessons/unit-04/LSN-CON-04014.md",
-  "signed_off_by": "claude-opus-5-5",
-  "signed_off_at": "2026-09-29",
+  "signed_off_by": null,
+  "signed_off_at": null,
   "not_human": true
  }
 }

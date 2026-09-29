@@ -3,20 +3,68 @@
  "version": 1,
  "kind": "concept",
  "target_id": "BC-CON-04015",
- "status": "signed_off",
+ "status": "draft",
  "snapshot_digest": "a6a8ec9d3f59ab8f712e33d30cc22fc64bf2c478fbe7312e3e3118d319c6a42f",
  "source_digest": "7a3d7ca80a6dac58500ad1bc1e13a1cbf2aee994812f9e4550181200684a700f",
  "read_minutes": {
-  "full": 3.6,
-  "brief": 2.6
+  "full": 3.94,
+  "brief": 3.0
  },
  "word_count": {
-  "full": 459,
-  "brief": 343
+  "full": 519,
+  "brief": 403
  },
  "sections": [
   {
    "id": "LSN-CON-04015#s1",
+   "type": "prediction",
+   "bands": [
+    "low",
+    "mid"
+   ],
+   "skills": [
+    "BC-SKL-04035",
+    "BC-SKL-04036",
+    "BC-SKL-04037"
+   ],
+   "sources": [
+    "BC-CON-04015",
+    "BC-EK-LIM-4A2",
+    "research/units/unit-04-contextual-applications-differentiation.md#4.7 Using L'Hospital's Rule for Determining Limits of Indeterminate Forms"
+   ],
+   "evidence_tag": "inferred",
+   "stem": {
+    "text": "Predict: the form is 0/0, f(2) = 3, f'(2) = 5. What is the limit of (f(2x) - 3)/sin(x - 1) as x tends to 1?",
+    "command_verb": "predict"
+   },
+   "format": "mcq",
+   "options": [
+    {
+     "id": "A",
+     "label": "0",
+     "is_key": false
+    },
+    {
+     "id": "B",
+     "label": "5",
+     "is_key": false
+    },
+    {
+     "id": "C",
+     "label": "10",
+     "is_key": true
+    }
+   ],
+   "resolution": {
+    "text": "The limit is 2f'(2) over cos(0), which is 10. The factor 2 from the inner function stays."
+   },
+   "delivery": {
+    "mode": "text",
+    "reason": "rule 6"
+   }
+  },
+  {
+   "id": "LSN-CON-04015#s2",
    "type": "orientation",
    "bands": [
     "low",
@@ -32,7 +80,7 @@
     "research/units/unit-04-contextual-applications-differentiation.md#4.7 Using L'Hospital's Rule for Determining Limits of Indeterminate Forms"
    ],
    "evidence_tag": "inferred",
-   "text": "Once the form is shown indeterminate, differentiate numerator and denominator separately, keep limit notation, and evaluate. If the new limit is still indeterminate, apply the rule again.",
+   "text": "Once the form is shown, differentiate numerator and denominator separately, keep limit notation, and evaluate.",
    "delivery": {
     "mode": "text",
     "reason": "rule 5: BC-SKL-04035, BC-SKL-04036 and BC-SKL-04037 carry BC-REP-01 only",
@@ -42,7 +90,7 @@
    }
   },
   {
-   "id": "LSN-CON-04015#s2",
+   "id": "LSN-CON-04015#s3",
    "type": "key_ideas",
    "bands": [
     "low",
@@ -62,7 +110,7 @@
    "evidence_tag": "verified",
    "ek_id": "BC-EK-LIM-4A2",
    "depth": "core",
-   "text": "Under the hypothesis, the limit of the quotient equals the limit of the numerator's derivative over the denominator's derivative: the ratio of the derivatives, not the derivative of the ratio. An inner function keeps its chain rule factor.",
+   "text": "The limit of the quotient equals the limit of the numerator's derivative over the denominator's derivative, not the derivative of the ratio. An inner function keeps its chain factor.",
    "notation": "limit of f'/g'",
    "quote": {
     "text": "Limits of the indeterminate forms 0 over 0",
@@ -77,7 +125,7 @@
    }
   },
   {
-   "id": "LSN-CON-04015#s3",
+   "id": "LSN-CON-04015#s4",
    "type": "strategy",
    "bands": [
     "low",
@@ -89,17 +137,29 @@
     "BC-SKL-04037"
    ],
    "sources": [
-    "BC-QA-04009"
+    "BC-QA-04009",
+    "BC-ERR-04030"
    ],
    "evidence_tag": "verified",
    "archetype_id": "BC-QA-04009",
    "cue": "Form shown 0/0; the value is asked.",
-   "method": "Next line: the limit of the numerator's derivative over the denominator's derivative.",
-   "rival": "Rival: the quotient rule on the whole ratio (BC-ERR-04030).",
-   "separating_feature": "Two separate derivatives, one ratio."
+   "method": "The limit of the numerator's derivative over the denominator's derivative.",
+   "rival": "The quotient rule on the whole ratio.",
+   "separating_feature": "Two separate derivatives, one ratio.",
+   "contrast": {
+    "this": {
+     "text": "g(6) = 1, g'(6) = 4, form 0/0. Find the limit of (g(3x) - 1)/sin(x - 2) as x tends to 2.",
+     "archetype_id": "BC-QA-04009"
+    },
+    "not_this": {
+     "text": "Differentiate y = (g(3x) - 1)/sin(x - 2).",
+     "why_not": "The quotient rule, with no limit."
+    },
+    "feature": "A limit of a 0/0 form."
+   }
   },
   {
-   "id": "LSN-CON-04015#s4",
+   "id": "LSN-CON-04015#s5",
    "type": "worked_example",
    "bands": [
     "low",
@@ -142,7 +202,7 @@
      "relation": "new"
     },
     {
-     "cue": "Denominator separately.",
+     "cue": "Denominator.",
      "why": "Its own derivative.",
      "expression": [
       "Cos",
@@ -156,7 +216,7 @@
     },
     {
      "cue": "At x = 1.",
-     "why": "Nonzero: no second application.",
+     "why": "Nonzero: stop.",
      "expression": 1,
      "relation": "evaluate",
      "subs": {
@@ -181,7 +241,7 @@
    }
   },
   {
-   "id": "LSN-CON-04015#s5",
+   "id": "LSN-CON-04015#s6",
    "type": "what_a_reader_scores",
    "bands": [
     "low",
@@ -196,7 +256,7 @@
     "BC-PT-99055"
    ],
    "evidence_tag": "verified",
-   "example_id": "LSN-CON-04015#s4",
+   "example_id": "LSN-CON-04015#s5",
    "lines": [
     {
      "point_type_id": "BC-PT-99055",
@@ -231,6 +291,7 @@
     "expression": 10
    },
    "relation": "distinct",
+   "fix_prompt": true,
    "possible_reason": {
     "misconception_id": "BC-MIS-03002",
     "text": "the inner output plays no part in where the outer derivative is read"
@@ -268,6 +329,7 @@
     "expression": 10
    },
    "relation": "equivalent",
+   "fix_prompt": false,
    "possible_reason": {
     "misconception_id": "BC-MIS-04015",
     "text": "no form is checked before it is used"
@@ -368,6 +430,7 @@
     ]
    },
    "relation": "distinct",
+   "fix_prompt": true,
    "possible_reason": {
     "misconception_id": "BC-MIS-04016",
     "text": "reads the conclusion as the limit of the derivative of the quotient"
@@ -404,6 +467,7 @@
     "expression": 10
    },
    "relation": "distinct",
+   "fix_prompt": true,
    "delivery": {
     "mode": "step_reveal",
     "reason": "rule 1",
@@ -427,7 +491,7 @@
    ],
    "evidence_tag": "inferred",
    "prerequisite_id": "BC-PRQ-04008",
-   "text": "Name each quantity given in the stem and whether it varies."
+   "text": "Name each quantity in the stem and whether it varies."
   }
  ],
  "checks": [
@@ -449,7 +513,7 @@
     "near_slope": -1,
     "denominator": "sine"
    },
-   "completes": "LSN-CON-04015#s4",
+   "completes": "LSN-CON-04015#s5",
    "stem": {
     "text": "For ex-1 the derivatives are 2f'(2x) and cos(x - 1). Evaluate the limit.",
     "command_verb": "find"
@@ -617,19 +681,20 @@
   }
  ],
  "refresher": [
-  "LSN-CON-04015#s2",
+  "LSN-CON-04015#s3",
   "LSN-CON-04015#err-BC-ERR-03003",
   "LSN-CON-04015#err-BC-ERR-04029",
   "LSN-CON-04015#err-BC-ERR-04030",
   "LSN-CON-04015#err-BC-ERR-04031",
-  "LSN-CON-04015#s4"
+  "LSN-CON-04015#s5"
  ],
+ "no_figure_reason": "A symbolic rule: no skill of the concept carries a figure-bearing representation, and the key idea describes a replacement of one limit by another, not a process drawn over a curve.",
  "provenance": {
   "author": "tools/lesson_transcribe.py",
-  "prompt_version": "generator/lesson_v1",
+  "prompt_version": "generator/lesson_v2",
   "design_path": "docs/lessons/unit-04/LSN-CON-04015.md",
-  "signed_off_by": "claude-opus-5-5",
-  "signed_off_at": "2026-09-29",
+  "signed_off_by": null,
+  "signed_off_at": null,
   "not_human": true
  }
 }

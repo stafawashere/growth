@@ -3,20 +3,71 @@
  "version": 1,
  "kind": "concept",
  "target_id": "BC-CON-04003",
- "status": "signed_off",
+ "status": "draft",
  "snapshot_digest": "a6a8ec9d3f59ab8f712e33d30cc22fc64bf2c478fbe7312e3e3118d319c6a42f",
  "source_digest": "bd419bbcbc499ee5068a5dc617f9fbe969b84b25a5f21978d364eb3ec1a8bea7",
  "read_minutes": {
-  "full": 3.1,
-  "brief": 2.8
+  "full": 3.2,
+  "brief": 2.9
  },
  "word_count": {
-  "full": 415,
-  "brief": 364
+  "full": 439,
+  "brief": 392
  },
  "sections": [
   {
    "id": "LSN-CON-04003#s1",
+   "type": "prediction",
+   "bands": [
+    "low",
+    "mid"
+   ],
+   "skills": [
+    "BC-SKL-04006",
+    "BC-SKL-04007"
+   ],
+   "sources": [
+    "BC-CON-04003",
+    "BC-EK-CHA-3B1",
+    "ced:88",
+    "research/units/unit-04-contextual-applications-differentiation.md#4.2 Straight-Line Motion: Connecting Position, Velocity, and Acceleration"
+   ],
+   "evidence_tag": "inferred",
+   "stem": {
+    "text": "Predict which function gives the particle's acceleration, for position \\(x(t)=t^3-3t^2-4t+2\\).",
+    "command_verb": "predict"
+   },
+   "format": "mcq",
+   "options": [
+    {
+     "id": "A",
+     "label": "\\(x(t)\\) itself",
+     "is_key": false
+    },
+    {
+     "id": "B",
+     "label": "\\(x'(t)\\), the first derivative",
+     "is_key": false
+    },
+    {
+     "id": "C",
+     "label": "\\(x''(t)\\), the second derivative",
+     "is_key": true
+    }
+   ],
+   "resolution": {
+    "text": "Velocity is the derivative of position and acceleration the derivative of velocity, so \\(a(t)=x''(t)=6t-6\\)."
+   },
+   "delivery": {
+    "mode": "text",
+    "reason": "rule 6: a prediction on ex-1's function with no picture in the question",
+    "sources": [
+     "BC-SKL-04006"
+    ]
+   }
+  },
+  {
+   "id": "LSN-CON-04003#s2",
    "type": "orientation",
    "bands": [
     "low",
@@ -31,7 +82,7 @@
     "research/units/unit-04-contextual-applications-differentiation.md#4.2 Straight-Line Motion: Connecting Position, Velocity, and Acceleration"
    ],
    "evidence_tag": "inferred",
-   "text": "Velocity is the derivative of position, and acceleration the derivative of velocity. A response differentiates the given function as many times as the requested quantity needs, then evaluates at the instant.",
+   "text": "Velocity is the derivative of position, acceleration the derivative of velocity. A response differentiates as often as the request needs.",
    "delivery": {
     "mode": "text",
     "reason": "rule 5: BC-SKL-04006 and BC-SKL-04007 carry BC-REP-01 and BC-REP-05",
@@ -41,7 +92,7 @@
    }
   },
   {
-   "id": "LSN-CON-04003#s2",
+   "id": "LSN-CON-04003#s3",
    "type": "key_ideas",
    "bands": [
     "low",
@@ -74,7 +125,7 @@
    }
   },
   {
-   "id": "LSN-CON-04003#s3",
+   "id": "LSN-CON-04003#s4",
    "type": "strategy",
    "bands": [
     "low",
@@ -85,17 +136,29 @@
     "BC-SKL-04007"
    ],
    "sources": [
-    "BC-QA-04003"
+    "BC-QA-04003",
+    "BC-ERR-04006"
    ],
    "evidence_tag": "verified",
    "archetype_id": "BC-QA-04003",
-   "cue": "A position or velocity function of time is given; the stem asks for velocity or acceleration at a stated time.",
-   "method": "First line: the derivative the request needs, written as \\(v(t)=\\) or \\(a(t)=\\).",
-   "rival": "Rival: differentiating the wrong number of times (BC-ERR-04006).",
-   "separating_feature": "The given letter against the requested one sets the count."
+   "cue": "A function of time; velocity or acceleration asked.",
+   "method": "\\(v(t)=\\) or \\(a(t)=\\), the derivative the request needs.",
+   "rival": "The wrong number of derivatives.",
+   "separating_feature": "Given letter against requested letter.",
+   "contrast": {
+    "this": {
+     "text": "A particle's velocity is \\(v(t)=t^2-5t\\). Find its acceleration at \\(t=4\\).",
+     "archetype_id": "BC-QA-04003"
+    },
+    "not_this": {
+     "text": "\\(v(t)=t^2-5t\\) and \\(x(0)=3\\). Find the position at \\(t=4\\).",
+     "why_not": "Position from velocity is an integral."
+    },
+    "feature": "A given position means accumulate."
+   }
   },
   {
-   "id": "LSN-CON-04003#s4",
+   "id": "LSN-CON-04003#s5",
    "type": "strategy",
    "bands": [
     "low",
@@ -105,17 +168,18 @@
     "BC-SKL-04006"
    ],
    "sources": [
-    "BC-QA-04010"
+    "BC-QA-04010",
+    "BC-ERR-08011"
    ],
    "evidence_tag": "verified",
    "archetype_id": "BC-QA-04010",
    "cue": "A velocity function and the position at one time are given; the stem asks for the position at another time.",
-   "method": "First line: position equals the known position plus the integral of velocity.",
-   "rival": "Rival: the integral reported without the known position (BC-ERR-08011).",
+   "method": "Position equals the known position plus the integral of velocity.",
+   "rival": "The integral reported without the known position.",
    "separating_feature": "Going from velocity back to position runs the chain backward."
   },
   {
-   "id": "LSN-CON-04003#s5",
+   "id": "LSN-CON-04003#s6",
    "type": "worked_example",
    "bands": [
     "low",
@@ -273,7 +337,7 @@
    }
   },
   {
-   "id": "LSN-CON-04003#s6",
+   "id": "LSN-CON-04003#s7",
    "type": "what_a_reader_scores",
    "bands": [
     "low",
@@ -288,7 +352,7 @@
     "BC-PT-99027"
    ],
    "evidence_tag": "verified",
-   "example_id": "LSN-CON-04003#s5",
+   "example_id": "LSN-CON-04003#s6",
    "lines": [
     {
      "point_type_id": "BC-PT-99004",
@@ -328,6 +392,7 @@
     "expression": -4
    },
    "relation": "distinct",
+   "fix_prompt": true,
    "possible_reason": {
     "misconception_id": "BC-MIS-04004",
     "text": "which one to differentiate is decided by guesswork"
@@ -354,7 +419,7 @@
    ],
    "evidence_tag": "inferred",
    "prerequisite_id": "BC-PRQ-04008",
-   "text": "Name each quantity, its unit, and whether it varies; here, which letter is position and which is velocity. Unnamed, the count of derivatives cannot begin."
+   "text": "Name each quantity and its unit; here, which letter is position and which velocity."
   }
  ],
  "checks": [
@@ -376,7 +441,7 @@
     "given": "position",
     "heading": "left"
    },
-   "completes": "LSN-CON-04003#s5",
+   "completes": "LSN-CON-04003#s6",
    "stem": {
     "text": "\\(v(t)=3t^2-6t-4\\) and \\(a(t)=6t-6\\). Give \\(v(2)\\) and \\(a(2)\\).",
     "command_verb": "give"
@@ -580,16 +645,17 @@
   }
  ],
  "refresher": [
-  "LSN-CON-04003#s2",
+  "LSN-CON-04003#s3",
   "LSN-CON-04003#err-BC-ERR-04006",
-  "LSN-CON-04003#s5"
+  "LSN-CON-04003#s6"
  ],
+ "no_figure_reason": "The two skills carry BC-REP-01 and BC-REP-05 only, a symbolic rule and a sentence, and the key idea describes no process. The velocity graph belongs to BC-CON-04004.",
  "provenance": {
   "author": "tools/lesson_transcribe.py",
-  "prompt_version": "generator/lesson_v1",
+  "prompt_version": "generator/lesson_v2",
   "design_path": "docs/lessons/unit-04/LSN-CON-04003.md",
-  "signed_off_by": "claude-opus-5-5",
-  "signed_off_at": "2026-09-29",
+  "signed_off_by": null,
+  "signed_off_at": null,
   "not_human": true
  }
 }

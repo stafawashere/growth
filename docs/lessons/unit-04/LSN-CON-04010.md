@@ -9,6 +9,10 @@ purpose: Authoring spec for the concept lesson on BC-CON-04010, isolating the re
 
 Concept BC-CON-04010 (skills BC-SKL-04024, BC-SKL-04025), topic 4.5, loaded by BC-QA-04006 (primary) and BC-QA-04007. Its hard parent is BC-CON-04009 (docs/lessons/unit-04/README.md, section 1).
 
+## Prediction
+
+Served first in both bands. Multiple choice on ex-1's instant equation \(24+8\,dy/dt=0\), with \(y\) in meters and \(t\) in minutes: how \(y\) is changing. Three options, key decreasing at 3 meters per minute, the others the wrong direction or units without the time. The resolution states the sign and the units, the concept's core claim in the record's words. Sources: BC-CON-04010 and the topic 4.5 section that ki-1 cites. Delivery: text.
+
 ## Orientation
 
 Served text, from BC-CON-04010 `description_plain` and the topic's Interpretation paragraph (research/units/unit-04-contextual-applications-differentiation.md#4.5 Solving Related Rates Problems): a response solves the differentiated equation for the requested rate and reports it with the quantity's units over time units, reading a negative sign as a decrease.
@@ -25,9 +29,11 @@ BC-QA-04006 (research/question-analysis/question-archetypes.md#BC-QA-04006 Relat
 
 Not this concept: a stem asking what the derivative of a named function means at a time, with no relating equation (BC-CON-04001).
 
+The contrast pair on st-1 takes its near miss from that sibling: a ladder whose top's rate is to be solved for, beside a given height function whose derivative at a time is to be explained. The separating feature is a rate to solve for, not one given.
+
 ## Method choice
 
-- st-1, BC-QA-04006. Method, `expected_solution_path[5]`: solve for the requested rate and report it with units. Rival: the equation left unsolved (BC-ERR-04021). Separating feature: the stem names one rate as the target.
+- st-1, BC-QA-04006. Method, `expected_solution_path[5]`: solve for the requested rate and report it with units (served without a label). Rival: the equation left unsolved (BC-ERR-04021). Separating feature: the stem names one rate as the target.
 - st-2, BC-QA-04007. Method, `expected_solution_path[3]`: solve for the requested rate. Rival: dy/dx reported in place of dy/dt (BC-ERR-99013, `wrong_approaches`). Separating feature: the stem supplies a rate in time.
 
 ## Solution path
@@ -41,7 +47,7 @@ BC-QA-04006 lists BC-PT-99006 (units); ex-1 tags it on the reported rate. Units 
 
 ## Traps
 
-Three active errors, in the bundle's order: BC-ERR-04001, BC-ERR-04005, BC-ERR-04021. On ex-1's draw; the mid band shows the first two.
+Three active errors, in the bundle's order: BC-ERR-04001, BC-ERR-04005, BC-ERR-04021. On ex-1's draw; the mid band shows the first two. BC-ERR-04005 and BC-ERR-04021 are fix prompts (relation distinct); BC-ERR-04001 is not (equivalent).
 
 - err-BC-ERR-04001: -3 reported in meters; the same value, so the pair is marked equivalent. Reason words from BC-MIS-04003.
 - err-BC-ERR-04005: 3 reported as an increase, against -3. Reason words from BC-MIS-04002.
@@ -69,16 +75,18 @@ BC-QA-04006 has `calculator_status` either, so Section I Part A, 2.14 minutes (r
 
 - orientation and ki-1: text. Rule 5: BC-SKL-04024 carries BC-REP-01 and BC-REP-09, BC-SKL-04025 BC-REP-04 and BC-REP-05 (docs/lessons/unit-04/README.md, section 6).
 - ex-1 and the three error blocks: step_reveal. Rule 1.
+- No drawn block. No skill carries a figure-bearing BC-REP and the key idea holds no process, so the record carries `no_figure_reason`.
 
 ## Band plan
 
-- Low (full): orientation, ki-1, st-1, st-2, ex-1 with its scoring line, three error blocks, chk-1 to chk-3, two bridges. 514 words, 3.5 minutes (cap 900 and 6).
-- Mid (brief): orientation, ki-1, st-1, ex-1 with its scoring line, err-BC-ERR-04001, err-BC-ERR-04005, chk-1, chk-2, two bridges. 399 words, 2.7 minutes (cap 450 and 3).
-- Refresher: ki-1, err-BC-ERR-04001, err-BC-ERR-04005, err-BC-ERR-04021, ex-1.
+- Low (full), served order: prediction, orientation, bridges BC-PRQ-04004 and 04007 when gated, ki-1, st-1 with its contrast pair, st-2, ex-1 with its scoring line, chk-1, the three error blocks, chk-2, chk-3. 558 words, 3.8 minutes (cap 900 and 6). This design has one worked example, so nothing is faded.
+- Mid (brief): prediction, orientation, bridges when gated, ki-1, st-1 with its contrast pair, ex-1 with its scoring line, chk-1, err-BC-ERR-04001, err-BC-ERR-04005, chk-2. 445 words, 3.0 minutes (cap 450 and 3).
+- Refresher: ki-1, the three error blocks, ex-1.
 
 ## Sources
 
 - BC-CON-04010; BC-SKL-04024, BC-SKL-04025; BC-EK-CHA-3E1; ced:91
+- Prediction pr-1 and the contrast pair: BC-CON-04010, BC-CON-04001, BC-ERR-04005
 - BC-QA-04006, BC-QA-04007; BC-PT-99006
 - BC-ERR-04001, BC-ERR-04005, BC-ERR-04021; BC-MIS-04002, BC-MIS-04003
 - BC-PRQ-04004, BC-PRQ-04007
@@ -102,8 +110,39 @@ BC-QA-04006 has `calculator_status` either, so Section I Part A, 2.14 minutes (r
   "BC-SKL-04024",
   "BC-SKL-04025"
  ],
+ "prediction": {
+  "id": "pr-1",
+  "stem": {
+   "text": "Predict. A ladder's top height y in meters satisfies 24 + 8 dy/dt = 0, with t in minutes. How is y changing?",
+   "command_verb": "predict"
+  },
+  "format": "mcq",
+  "options": [
+   {
+    "id": "A",
+    "label": "Increasing at 3 meters per minute.",
+    "is_key": false
+   },
+   {
+    "id": "B",
+    "label": "Decreasing at 3 meters per minute.",
+    "is_key": true
+   },
+   {
+    "id": "C",
+    "label": "Decreasing at 3 meters.",
+    "is_key": false
+   }
+  ],
+  "resolution": "dy/dt = -3: y decreases, in meters per minute.",
+  "sources": [
+   "BC-CON-04010",
+   "research/units/unit-04-contextual-applications-differentiation.md#4.5 Solving Related Rates Problems"
+  ]
+ },
+ "no_figure_reason": "No skill carries a figure-bearing representation (BC-REP-01, 04, 05 and 09 only), and the key idea states an algebra and units habit with no process to show.",
  "orientation": {
-  "text": "Solve the differentiated equation for the requested rate, then report it with the quantity's units over time units, and read a negative sign as the quantity decreasing.",
+  "text": "Solve the differentiated equation for the requested rate, and report units and direction.",
   "sources": [
    "BC-CON-04010",
    "research/units/unit-04-contextual-applications-differentiation.md#4.5 Solving Related Rates Problems"
@@ -114,7 +153,7 @@ BC-QA-04006 has `calculator_status` either, so Section I Part A, 2.14 minutes (r
    "id": "ki-1",
    "ek_id": "BC-EK-CHA-3E1",
    "depth": "core",
-   "text": "Once the instant's values are in, one unknown rate is left, isolated by algebra. The answer has units of the quantity divided by units of time, and its sign says whether the quantity grows or shrinks.",
+   "text": "One unknown rate is left once the instant's values are in. Its units are quantity over time, and its sign says grows or shrinks.",
    "notation": "units and sign of the rate",
    "quote": {
     "text": "finding a rate at which one quantity is changing",
@@ -133,22 +172,35 @@ BC-QA-04006 has `calculator_status` either, so Section I Part A, 2.14 minutes (r
    "archetype_id": "BC-QA-04006",
    "cue": "\"Find the rate\" with units asked.",
    "method": "Solve for that rate; state value, units and direction.",
-   "rival": "Rival: stopping at the equation (BC-ERR-04021).",
+   "rival": "Stopping at the equation.",
    "separating_feature": "The stem names one target rate.",
    "sources": [
-    "BC-QA-04006"
+    "BC-QA-04006",
+    "BC-ERR-04021"
    ],
-   "evidence_tag": "verified"
+   "evidence_tag": "verified",
+   "contrast": {
+    "this": {
+     "text": "A 13 foot ladder's foot slides out at 2 feet per second. How is the top's height changing at foot 5 feet?",
+     "archetype_id": "BC-QA-04006"
+    },
+    "not_this": {
+     "text": "y(t) = 12 - 0.5t^2 feet at t seconds. What does y'(2) mean?",
+     "why_not": "A given derivative to explain."
+    },
+    "feature": "A rate to solve for, not one given."
+   }
   },
   {
    "id": "st-2",
    "archetype_id": "BC-QA-04007",
    "cue": "One coordinate's rate given on a curve.",
    "method": "Solve the differentiated curve equation for the other rate.",
-   "rival": "Rival: dy/dx reported (BC-ERR-99013).",
+   "rival": "dy/dx reported.",
    "separating_feature": "The given rate is in time.",
    "sources": [
-    "BC-QA-04007"
+    "BC-QA-04007",
+    "BC-ERR-99013"
    ],
    "evidence_tag": "verified"
   }
@@ -253,7 +305,8 @@ BC-QA-04006 has `calculator_status` either, so Section I Part A, 2.14 minutes (r
    "sources": [
     "BC-ERR-04001",
     "BC-MIS-04003"
-   ]
+   ],
+   "fix_prompt": false
   },
   {
    "error_id": "BC-ERR-04005",
@@ -275,7 +328,8 @@ BC-QA-04006 has `calculator_status` either, so Section I Part A, 2.14 minutes (r
    "sources": [
     "BC-ERR-04005",
     "BC-MIS-04002"
-   ]
+   ],
+   "fix_prompt": true
   },
   {
    "error_id": "BC-ERR-04021",
@@ -293,18 +347,19 @@ BC-QA-04006 has `calculator_status` either, so Section I Part A, 2.14 minutes (r
    "possible_reason": null,
    "sources": [
     "BC-ERR-04021"
-   ]
+   ],
+   "fix_prompt": true
   }
  ],
  "representations": null,
  "prerequisite_bridges": [
   {
    "prq_id": "BC-PRQ-04004",
-   "text": "Compound units such as meters per minute; without them the unit is absent or inverted."
+   "text": "Compound units."
   },
   {
    "prq_id": "BC-PRQ-04007",
-   "text": "Isolate one unknown in a linear equation; otherwise the rate is never extracted."
+   "text": "Solve a linear equation."
   }
  ],
  "time": {
@@ -577,12 +632,12 @@ BC-QA-04006 has `calculator_status` either, so Section I Part A, 2.14 minutes (r
   "research/exam/exam-structure.md#Section and part layout"
  ],
  "word_count": {
-  "full": 514,
-  "brief": 399
+  "full": 558,
+  "brief": 445
  },
  "read_minutes": {
-  "full": 3.5,
-  "brief": 2.7
+  "full": 3.8,
+  "brief": 3.0
  }
 }
 ```

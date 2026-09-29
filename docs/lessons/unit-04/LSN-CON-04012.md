@@ -9,6 +9,10 @@ purpose: Authoring spec for the concept lesson on BC-CON-04012, deciding whether
 
 Concept BC-CON-04012 (skills BC-SKL-04030, BC-SKL-04031), topic 4.6, loaded by BC-QA-04008. Its hard parent is BC-CON-04011; concavity is used as a conclusion from Unit 5 (docs/lessons/unit-04/README.md, section 1).
 
+## Prediction
+
+One question on ex-1's own numbers, both bands, served first: Predict before the rule: f(1) = 2 and f'(x) = -2x^2 + 3. The tangent line at x = 1 gives f(1.2) about 2.2. Is f(1.2) itself more or less than 2.2? Form: `mcq` with three options (A, More than 2.2, because f is increasing at x = 1; B, Less than 2.2, because the curve bends below its tangent line (the key); C, Equal to 2.2, because the line touches the curve). Resolution shown on the key idea screen: Here f''(x) = -4x is negative on [1, 1.2], so the curve is concave down and lies below its tangent line. The line's value 2.2 sits above f(1.2), an overestimate. Sources: the concept record and the topic section the key idea cites.
+
 ## Orientation
 
 Served text, from BC-CON-04012 `description_plain` and the topic's Direction of the error paragraph (research/units/unit-04-contextual-applications-differentiation.md#4.6 Approximating Values of a Function Using Local Linearity and Linearization): a response states the sign of the second derivative on the interval between the point of tangency and the nearby input, names the concavity, and concludes over or under from it.
@@ -24,6 +28,8 @@ Both skills map to BC-EK-CHA-3F2 (ced:92), one core block.
 BC-QA-04008 (research/question-analysis/question-archetypes.md#BC-QA-04008 Tangent line approximation with an over or under estimate judgement): `asked_to_produce` "an overestimate or underestimate judgement with a reason" and "an expression for the second derivative"; `difficulty_variables` "whether the second derivative must be produced to support the judgement". The signal: "overestimate or underestimate" and "give a reason". The FRQ places it after the approximation part (BC-FRQ-2023-Q3-B).
 
 Not this concept: "approximate f at the nearby input" alone (BC-CON-04011).
+
+The near miss comes from BC-CON-04011, the approximation on its own, which shares the given point and derivative but asks for a value, not a direction. That stem is the `not_this` of the contrast pair on st-1.
 
 ## Method choice
 
@@ -72,13 +78,13 @@ BC-QA-04008 has `calculator_status` either, so Section I Part A, 2.14 minutes (r
 
 ## Band plan
 
-- Low (full): orientation, ki-1, st-1, ex-1 with its scoring line, three error blocks, chk-1 to chk-3, the bridge. 555 words, 3.7 minutes (cap 900 and 6).
-- Mid (brief): orientation, ki-1, st-1, ex-1 with its scoring line, err-BC-ERR-04026, err-BC-ERR-99020, chk-1, chk-2, the bridge. 444 words, 3.0 minutes (cap 450 and 3).
+- Low (full): prediction, orientation, the bridge, key ideas, st-1 with the contrast pair, ex-1 with its scoring line, chk-1, err-BC-ERR-04026, err-BC-ERR-99020, err-BC-ERR-99022, chk-2, chk-3. 561 words, 3.74 minutes (cap 900 and 6).
+- Mid (brief): prediction, orientation, the bridge, core key ideas, st-1 with the contrast pair, ex-1 with its scoring line, chk-1, err-BC-ERR-04026, err-BC-ERR-99020, chk-2. 450 words, 3.0 minutes (cap 450 and 3).
 - Refresher: ki-1, err-BC-ERR-04026, err-BC-ERR-99020, err-BC-ERR-99022, ex-1.
 
 ## Sources
 
-- BC-CON-04012; BC-SKL-04030, BC-SKL-04031; BC-EK-CHA-3F2; ced:92
+- BC-CON-04012, BC-CON-04011 (the near miss); BC-SKL-04030, BC-SKL-04031; BC-EK-CHA-3F2; ced:92
 - BC-QA-04008; BC-PT-99005; cr-23:11, cr-23:12
 - BC-ERR-04026, BC-ERR-99020, BC-ERR-99022; BC-MIS-05022, BC-MIS-07010
 - BC-PRQ-04008
@@ -102,8 +108,39 @@ BC-QA-04008 has `calculator_status` either, so Section I Part A, 2.14 minutes (r
   "BC-SKL-04030",
   "BC-SKL-04031"
  ],
+ "prediction": {
+  "id": "pr-1",
+  "stem": {
+   "text": "Predict: f'(x) = -2x^2 + 3; the tangent line gives f(1.2) about 2.2. Is f(1.2) more or less?",
+   "command_verb": "predict"
+  },
+  "format": "mcq",
+  "options": [
+   {
+    "id": "A",
+    "label": "More",
+    "is_key": false
+   },
+   {
+    "id": "B",
+    "label": "Less",
+    "is_key": true
+   },
+   {
+    "id": "C",
+    "label": "Equal",
+    "is_key": false
+   }
+  ],
+  "resolution": "f'' = -4x < 0 on [1, 1.2], so the curve lies below its tangent line.",
+  "sources": [
+   "BC-CON-04012",
+   "BC-EK-CHA-3F2",
+   "research/units/unit-04-contextual-applications-differentiation.md#4.6 Approximating Values of a Function Using Local Linearity and Linearization"
+  ]
+ },
  "orientation": {
-  "text": "State the sign of f'' between the point of tangency and the nearby input, name the concavity, and conclude over or under from it.",
+  "text": "Find the sign of f'', name the concavity, conclude over or under.",
   "sources": [
    "BC-CON-04012",
    "research/units/unit-04-contextual-applications-differentiation.md#4.6 Approximating Values of a Function Using Local Linearity and Linearization"
@@ -114,8 +151,8 @@ BC-QA-04008 has `calculator_status` either, so Section I Part A, 2.14 minutes (r
    "id": "ki-1",
    "ek_id": "BC-EK-CHA-3F2",
    "depth": "core",
-   "text": "With the concavity known on an interval holding both inputs: concave up puts the tangent line below the curve, an underestimate; concave down puts it above, an overestimate. Whether f increases decides nothing.",
-   "notation": "sign of f'' near the point",
+   "text": "Concave up: line below curve, underestimate. Concave down: line above, overestimate.",
+   "notation": "sign of f''",
    "quote": {
     "text": "may determine whether a tangent line value is an underestimate or an overestimate",
     "source": "ced:92"
@@ -131,14 +168,26 @@ BC-QA-04008 has `calculator_status` either, so Section I Part A, 2.14 minutes (r
   {
    "id": "st-1",
    "archetype_id": "BC-QA-04008",
-   "cue": "\"Overestimate or underestimate? Give a reason.\"",
-   "method": "First line: f'' and its sign between the two inputs.",
-   "rival": "Rival: the sign of f' (BC-ERR-99020).",
-   "separating_feature": "The asked word is estimate direction, which is bending, not rising.",
+   "cue": "Over or underestimate?",
+   "method": "f'' and its sign between the inputs.",
+   "rival": "The sign of f'.",
+   "separating_feature": "Bending, not rising.",
    "sources": [
-    "BC-QA-04008"
+    "BC-QA-04008",
+    "BC-ERR-99020"
    ],
-   "evidence_tag": "verified"
+   "evidence_tag": "verified",
+   "contrast": {
+    "this": {
+     "text": "h(1) = 3, h'(x) = 4 - x^2. Tangent line: h(1.1) about 3.3. Over or under?",
+     "archetype_id": "BC-QA-04008"
+    },
+    "not_this": {
+     "text": "Approximate h(1.1) by the tangent line at x = 1.",
+     "why_not": "A value, not a direction."
+    },
+    "feature": "Over or under."
+   }
   }
  ],
  "worked_examples": [
@@ -164,21 +213,21 @@ BC-QA-04008 has `calculator_status` either, so Section I Part A, 2.14 minutes (r
    "calculator_status": "no_calculator",
    "steps": [
     {
-     "cue": "Direction asked: bending decides.",
+     "cue": "Bending decides.",
      "why": "Start from f'.",
      "expr": "-2*x**2 + 3",
      "relation": "new"
     },
     {
      "cue": "Bending is f''.",
-     "why": "Differentiate f'.",
+     "why": "Differentiate.",
      "expr": "-4*x",
      "relation": "differentiate",
      "variable": "x"
     },
     {
      "cue": "Sign on [1, 1.2].",
-     "why": "Negative, concave down: line above curve, so overestimate.",
+     "why": "Negative: concave down, overestimate.",
      "point_type_id": "BC-PT-99005"
     }
    ],
@@ -216,6 +265,7 @@ BC-QA-04008 has `calculator_status` either, so Section I Part A, 2.14 minutes (r
     "expr": "-4*x"
    },
    "relation": "distinct",
+   "fix_prompt": true,
    "possible_reason": {
     "misconception_id": "BC-MIS-05022",
     "text": "supplies derivative notation in place of a statement about the object"
@@ -238,6 +288,7 @@ BC-QA-04008 has `calculator_status` either, so Section I Part A, 2.14 minutes (r
     "expr": "-4*x"
    },
    "relation": "distinct",
+   "fix_prompt": true,
    "possible_reason": {
     "misconception_id": "BC-MIS-07010",
     "text": "from the monotonicity of the solution rather than from its concavity"
@@ -260,6 +311,7 @@ BC-QA-04008 has `calculator_status` either, so Section I Part A, 2.14 minutes (r
     "expr": "11/5"
    },
    "relation": "distinct",
+   "fix_prompt": true,
    "possible_reason": null,
    "sources": [
     "BC-ERR-99022"
@@ -270,7 +322,7 @@ BC-QA-04008 has `calculator_status` either, so Section I Part A, 2.14 minutes (r
  "prerequisite_bridges": [
   {
    "prq_id": "BC-PRQ-04008",
-   "text": "Name each quantity in the setting, its unit, and whether it varies."
+   "text": "Name each quantity and whether it varies."
   }
  ],
  "time": {
@@ -603,6 +655,7 @@ BC-QA-04008 has `calculator_status` either, so Section I Part A, 2.14 minutes (r
  ],
  "sources": [
   "BC-CON-04012",
+  "BC-CON-04011",
   "BC-SKL-04030",
   "BC-SKL-04031",
   "BC-EK-CHA-3F2",
@@ -624,11 +677,11 @@ BC-QA-04008 has `calculator_status` either, so Section I Part A, 2.14 minutes (r
   "research/exam/exam-structure.md#Section and part layout"
  ],
  "word_count": {
-  "full": 555,
-  "brief": 444
+  "full": 561,
+  "brief": 450
  },
  "read_minutes": {
-  "full": 3.7,
+  "full": 3.74,
   "brief": 3.0
  }
 }

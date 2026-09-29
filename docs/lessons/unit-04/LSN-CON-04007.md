@@ -9,6 +9,10 @@ purpose: Authoring spec for the concept lesson on BC-CON-04007, each quantity in
 
 Concept BC-CON-04007 (skills BC-SKL-04017, BC-SKL-04019, BC-SKL-04022), topic 4.4 of Unit 4, loaded by BC-QA-04006 and BC-QA-04007 (family related-rates). Its hard parents are BC-CON-04006 and BC-CON-04008, a concept-level cycle resolved by the skill order (docs/lessons/unit-04/README.md, section 1).
 
+## Prediction
+
+Served first in both bands. Multiple choice on ex-1's relation \(x^2+y^2=225\), both \(x\) and \(y\) changing in time: what the derivative in \(t\) of the left side is. Three options, key \(2x\,dx/dt+2y\,dy/dt\), the others one rate factor missing or both dropped. The resolution says each varying quantity brings its own rate factor, the concept's core claim in the record's words. Sources: BC-CON-04007 and the topic 4.4 section that ki-1 cites. Delivery: text.
+
 ## Orientation
 
 Served text, from BC-CON-04007 `description_plain` and the Assessment behaviour paragraph (research/units/unit-04-contextual-applications-differentiation.md#4.4 Introduction to Related Rates): each varying quantity a function of time, the relation differentiated in t, the instant substituted after. No count, no frequency.
@@ -27,17 +31,19 @@ BC-SKL-04017 and BC-SKL-04019 map BC-EK-CHA-3D1; BC-SKL-04022 maps BC-EK-CHA-3D1
 
 Not this concept: a slope or dy/dx asked on the same curve (Unit 3 implicit differentiation). The rate of a coordinate supplied in time says differentiate in t (docs/lessons/unit-04/README.md, section 3).
 
+The contrast pair on st-1 takes its near miss from that Unit 3 sibling: a ladder whose top's rate is wanted, beside \(dy/dx\) on \(x^2+y^2=169\) at a point. The separating feature is that the wanted rate is per unit of time.
+
 ## Method choice
 
 One strategy block: BC-QA-04006 and BC-QA-04007 share the family related-rates, and BC-QA-04006 is listed first.
 
-- st-1, BC-QA-04006. Method, `expected_solution_path[0]`: name each varying quantity and record the rates in derivative notation. Rival, `wrong_approaches`: differentiating with respect to a length and stopping short of a rate in time (BC-ERR-04017); the other listed rivals are substituting before differentiating (BC-ERR-04020) and a lost product rule (BC-ERR-99013). Separating feature: the wanted rate is per unit of time. The archetype carries `asked_to_produce` and `common_givens`, so the block is verified.
+- st-1, BC-QA-04006. Method, `expected_solution_path[0]`: name each varying quantity and record the rates in derivative notation, served without a label. Rival, `wrong_approaches`: differentiating with respect to a length and stopping short of a rate in time (BC-ERR-04017); the other listed rivals are substituting before differentiating (BC-ERR-04020) and a lost product rule (BC-ERR-99013). Separating feature: the wanted rate is per unit of time. The archetype carries `asked_to_produce` and `common_givens`, so the block is verified.
 
 ## Solution path
 
 - ex-1, BC-QA-04006, both bands, no calculator. Draw: shape ladder, size 9, rate 2, ratio 3, leg short, foot, second: a 15 foot ladder on the 9, 12, 15 triangle [inferred: size read as the named leg]. Key -3/2 feet per second. No published BC-QA-04006 item carries this draw.
-- ex-2, BC-QA-04007, low band. Draw: square_x 2, mixed 1, square_y 1, point (1, -2), rate_x 3: curve 2x^2 + xy + y^2 = 4; x_part 2, y_part -3, key 2; frozen rate 3/2 and slope 2/3 distinct as the spec requires.
-- Steps follow `expected_solution_path`: relating equation (new), differentiated in t (new; SymPy has no implicit time here, so the rates are symbols dxdt and dydt), the instant substituted (evaluate), solved (solve), units. A fluent solver writes every line of ex-1; in ex-2 the curve is already on the page.
+- ex-2, BC-QA-04007, low band, faded from step 3. Draw: square_x 2, mixed 1, square_y 1, point (1, -2), rate_x 3: curve 2x^2 + xy + y^2 = 4; x_part 2, y_part -3, key 2; frozen rate 3/2 and slope 2/3 distinct as the spec requires.
+- Steps follow `expected_solution_path`: relating equation (new), differentiated in t (new; SymPy has no implicit time here, so the rates are symbols dxdt and dydt), the instant substituted (evaluate), solved (solve), units. A fluent solver writes every line of ex-1; in ex-2 the curve is already on the page. Ex-2 shows steps 1 and 2, the curve and its differentiated form with the product rule, then the student writes dy/dt before steps 3 and 4 (the substitution and the solve) reveal. The fade falls there because the differentiation is this concept's own work and the substitution is the mechanical remainder.
 
 ## Scoring
 
@@ -47,7 +53,7 @@ For the author: the 2022 report records few responses recognising that the chain
 
 ## Traps
 
-Five active errors meet the skills; the first four in the bundle's order are served: BC-ERR-04015, BC-ERR-04017, BC-ERR-04018, BC-ERR-99013. Low band all four; mid band the first two. The first two sit on ex-1's draw, the last two on ex-2's.
+Five active errors meet the skills; the first four in the bundle's order are served: BC-ERR-04015, BC-ERR-04017, BC-ERR-04018, BC-ERR-99013. Low band all four; mid band the first two. The first two sit on ex-1's draw, the last two on ex-2's. All four are fix prompts (relation distinct).
 
 - err-BC-ERR-04015: the given rate 2 reported, against -3/2. No possible reason: the linked descriptions concern differentiation and substitution, not which rate is given.
 - err-BC-ERR-04017: dy/dx = -3/4 at the instant, against dy/dt = -3/2. Possible reason from BC-MIS-04008.
@@ -83,13 +89,14 @@ BC-QA-04006 has calculator status either, so the lesson takes Section I Part A, 
 
 ## Band plan
 
-- Low (full): orientation, ki-1, ki-2, st-1, ex-1 with its scoring line, ex-2, four error blocks, chk-1 to chk-3, the bridge. 659 words, 4.4 minutes (cap 900 and 6).
-- Mid (brief): orientation, ki-1, st-1, ex-1 with its scoring line, err-BC-ERR-04015, err-BC-ERR-04017, chk-1, chk-2, the bridge. 446 words, 3.0 minutes (cap 450 and 3).
+- Low (full), served order: prediction, orientation, bridge BC-PRQ-04008 when gated, ki-1, ki-2, st-1 with its contrast pair, ex-1 with its scoring line, chk-1, err-BC-ERR-04015, err-BC-ERR-04017, err-BC-ERR-04018, err-BC-ERR-99013, ex-2 faded, chk-2, chk-3. 661 words, 4.5 minutes (cap 900 and 6).
+- Mid (brief): prediction, orientation, bridge when gated, ki-1, st-1 with its contrast pair, ex-1 with its scoring line, chk-1, err-BC-ERR-04015, err-BC-ERR-04017, chk-2. 448 words, 3.0 minutes (cap 450 and 3). The quote on ki-1 is cut to its first nine words to hold the cap.
 - Refresher: ki-1, the four error blocks, ex-1.
 
 ## Sources
 
 - BC-CON-04007; BC-SKL-04017, BC-SKL-04019, BC-SKL-04022; BC-EK-CHA-3D1, BC-EK-CHA-3D2; ced:90, ced:86, ced:84
+- Prediction pr-1 and the contrast pair: BC-CON-04007, BC-ERR-04017
 - BC-QA-04006, BC-QA-04007; BC-PT-99023; cr-22:7, cr-24:18, crabbc-25:24
 - BC-ERR-04015, BC-ERR-04017, BC-ERR-04018, BC-ERR-99013; BC-MIS-04008, BC-MIS-04009, BC-MIS-99005; BC-PRQ-04008
 - research/units/unit-04-contextual-applications-differentiation.md#4.4 Introduction to Related Rates
@@ -115,8 +122,38 @@ BC-QA-04006 has calculator status either, so the lesson takes Section I Part A, 
   "BC-SKL-04019",
   "BC-SKL-04022"
  ],
+ "prediction": {
+  "id": "pr-1",
+  "stem": {
+   "text": "Predict. If x^2 + y^2 = 225 and x, y change in time, what is the t-derivative of the left side?",
+   "command_verb": "predict"
+  },
+  "format": "mcq",
+  "options": [
+   {
+    "id": "A",
+    "label": "2x + 2y",
+    "is_key": false
+   },
+   {
+    "id": "B",
+    "label": "2x dx/dt + 2y dy/dt",
+    "is_key": true
+   },
+   {
+    "id": "C",
+    "label": "2y dy/dt",
+    "is_key": false
+   }
+  ],
+  "resolution": "Each varying quantity brings its own rate factor: 2x dx/dt + 2y dy/dt.",
+  "sources": [
+   "BC-CON-04007",
+   "research/units/unit-04-contextual-applications-differentiation.md#4.4 Introduction to Related Rates"
+  ]
+ },
  "orientation": {
-  "text": "Every changing quantity is a function of time. A response names them, differentiates the relation in t so each brings its own rate, then substitutes the instant.",
+  "text": "Each changing quantity depends on time; differentiate in t, then substitute the instant.",
   "sources": [
    "BC-CON-04007",
    "research/units/unit-04-contextual-applications-differentiation.md#4.4 Introduction to Related Rates"
@@ -127,10 +164,10 @@ BC-QA-04006 has calculator status either, so the lesson takes Section I Part A, 
    "id": "ki-1",
    "ek_id": "BC-EK-CHA-3D1",
    "depth": "core",
-   "text": "Each changing quantity is a function of time, so differentiating \\(x^2+y^2=225\\) with respect to \\(t\\) gives \\(2x\\,\\frac{dx}{dt}+2y\\,\\frac{dy}{dt}=0\\): one rate factor per varying quantity. Fixed lengths stay constants; values true only at the instant go in after differentiating.",
+   "text": "Each changing quantity is a function of time, so differentiating \\(x^2+y^2=225\\) in \\(t\\) gives \\(2x\\,\\frac{dx}{dt}+2y\\,\\frac{dy}{dt}=0\\): one rate per varying quantity. Instant values go in afterwards.",
    "notation": "dV/dt, dr/dt, dh/dt",
    "quote": {
-    "text": "The chain rule is the basis for differentiating variables in a related rates problem with respect to the same independent variable.",
+    "text": "The chain rule is the basis for differentiating variables",
     "source": "ced:90"
    },
    "sources": [
@@ -161,14 +198,26 @@ BC-QA-04006 has calculator status either, so the lesson takes Section I Part A, 
   {
    "id": "st-1",
    "archetype_id": "BC-QA-04006",
-   "cue": "Rates supplied, dimensions at an instant, and find the rate at which a stated quantity is changing at that instant.",
-   "method": "First line: name each varying quantity and write the given and wanted rates as derivatives in t.",
-   "rival": "Rival: differentiating in a length, stopping short of time (BC-ERR-04017).",
+   "cue": "Rates given, instant dimensions, another rate wanted.",
+   "method": "Name the varying quantities and write the rates in t.",
+   "rival": "Differentiating in a length, not time.",
    "separating_feature": "The wanted rate is per unit of time.",
    "sources": [
-    "BC-QA-04006"
+    "BC-QA-04006",
+    "BC-ERR-04017"
    ],
-   "evidence_tag": "verified"
+   "evidence_tag": "verified",
+   "contrast": {
+    "this": {
+     "text": "A 13 foot ladder's foot slides out at 3 feet per second. Find the top's rate when the foot is 5 feet out.",
+     "archetype_id": "BC-QA-04006"
+    },
+    "not_this": {
+     "text": "For x^2 + y^2 = 169, find dy/dx at (5, 12).",
+     "why_not": "A slope in x: no time."
+    },
+    "feature": "Wanted rate is per unit of time."
+   }
   }
  ],
  "worked_examples": [
@@ -195,20 +244,20 @@ BC-QA-04006 has calculator status either, so the lesson takes Section I Part A, 
    "calculator_status": "no_calculator",
    "steps": [
     {
-     "cue": "Foot \\(x(t)\\) and top \\(y(t)\\) vary; 15 is fixed.",
-     "why": "Given \\(dx/dt=2\\), wanted \\(dy/dt\\).",
+     "cue": "\\(x(t)\\), \\(y(t)\\) vary; 15 fixed.",
+     "why": "Given \\(dx/dt=2\\); wanted \\(dy/dt\\).",
      "expr": "x**2 + y**2 = 225",
      "relation": "new"
     },
     {
-     "cue": "Rates in time wanted: differentiate in \\(t\\).",
-     "why": "Each varying quantity brings its own rate.",
+     "cue": "Differentiate in \\(t\\).",
+     "why": "One rate per quantity.",
      "expr": "2*x*dxdt + 2*y*dydt = 0",
      "relation": "new",
      "point_type_id": "BC-PT-99023"
     },
     {
-     "cue": "Now the instant: \\(x=9\\), \\(y=12\\), \\(dx/dt=2\\).",
+     "cue": "Instant: \\(x=9\\), \\(y=12\\), \\(dx/dt=2\\).",
      "why": "\\(y=12\\) from \\(9^2+y^2=225\\).",
      "expr": "36 + 24*dydt = 0",
      "relation": "evaluate",
@@ -219,7 +268,7 @@ BC-QA-04006 has calculator status either, so the lesson takes Section I Part A, 
      }
     },
     {
-     "cue": "Solve for the wanted rate.",
+     "cue": "Solve.",
      "why": "\\(dy/dt=-3/2\\).",
      "expr": "-3/2",
      "relation": "solve",
@@ -227,7 +276,7 @@ BC-QA-04006 has calculator status either, so the lesson takes Section I Part A, 
     },
     {
      "cue": "Report with units.",
-     "why": "Negative: the top slides down at 1.5 feet per second."
+     "why": "The top falls 1.5 feet per second."
     }
    ],
    "answer": {
@@ -289,7 +338,8 @@ BC-QA-04006 has calculator status either, so the lesson takes Section I Part A, 
    "answer": {
     "form": "numeric",
     "expr": "2"
-   }
+   },
+   "fade_from": 3
   }
  ],
  "what_a_reader_scores": [
@@ -323,7 +373,8 @@ BC-QA-04006 has calculator status either, so the lesson takes Section I Part A, 
     "BC-ERR-04015"
    ],
    "observed_behavior": "The rate supplied in the stem is reported as the answer, or the requested rate is treated as known.",
-   "scoring_consequence": "The answer point is lost; BC-ERR-99033 records variables introduced without being defined as a related communication failure."
+   "scoring_consequence": "The answer point is lost; BC-ERR-99033 records variables introduced without being defined as a related communication failure.",
+   "fix_prompt": true
   },
   {
    "error_id": "BC-ERR-04017",
@@ -345,7 +396,8 @@ BC-QA-04006 has calculator status either, so the lesson takes Section I Part A, 
     "BC-MIS-04008"
    ],
    "observed_behavior": "The relating equation is differentiated with respect to a length or with respect to x, and the response stops there rather than continuing through the chain rule to a rate with respect to time.",
-   "scoring_consequence": "The Chief Reader report for 2024 records that responses differentiating with respect to x needed to continue through the chain rule and that many provided no work beyond that step (cr-24:18); BC-ERR-99013 records the same family across years."
+   "scoring_consequence": "The Chief Reader report for 2024 records that responses differentiating with respect to x needed to continue through the chain rule and that many provided no work beyond that step (cr-24:18); BC-ERR-99013 records the same family across years.",
+   "fix_prompt": true
   },
   {
    "error_id": "BC-ERR-04018",
@@ -367,7 +419,8 @@ BC-QA-04006 has calculator status either, so the lesson takes Section I Part A, 
     "BC-MIS-04009"
    ],
    "observed_behavior": "A term that multiplies two varying quantities is differentiated as though one of them were constant.",
-   "scoring_consequence": "The completely correct differentiation point is lost; BC-ERR-99013 names the missing product rule explicitly."
+   "scoring_consequence": "The completely correct differentiation point is lost; BC-ERR-99013 names the missing product rule explicitly.",
+   "fix_prompt": true
   },
   {
    "error_id": "BC-ERR-99013",
@@ -389,14 +442,15 @@ BC-QA-04006 has calculator status either, so the lesson takes Section I Part A, 
     "BC-MIS-99005"
    ],
    "observed_behavior": "Responses differentiate an implicit relation with respect to x when time is the independent variable, omit the product rule on a product of two changing quantities, or treat one quantity as constant, and confuse the notations for the several derivatives in play.",
-   "scoring_consequence": "The differentiation points in the part are not earned, and the numerical answer point depends on them."
+   "scoring_consequence": "The differentiation points in the part are not earned, and the numerical answer point depends on them.",
+   "fix_prompt": true
   }
  ],
  "representations": null,
  "prerequisite_bridges": [
   {
    "prq_id": "BC-PRQ-04008",
-   "text": "Name each quantity, its unit, and whether it varies. Unnamed, the response cannot begin (ced:84)."
+   "text": "Name each quantity, unit and whether it varies."
   }
  ],
  "time": {
@@ -836,11 +890,11 @@ BC-QA-04006 has calculator status either, so the lesson takes Section I Part A, 
   "research/exam/exam-structure.md#Section and part layout"
  ],
  "word_count": {
-  "full": 659,
-  "brief": 446
+  "full": 661,
+  "brief": 448
  },
  "read_minutes": {
-  "full": 4.4,
+  "full": 4.5,
   "brief": 3.0
  }
 }

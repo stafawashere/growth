@@ -9,6 +9,10 @@ purpose: Authoring spec for the concept lesson on BC-CON-04009, substituting val
 
 Concept BC-CON-04009 (skills BC-SKL-04023, BC-SKL-04026, BC-SKL-04027), topic 4.5, loaded by BC-QA-04006 (primary) and BC-QA-04007. Its hard parents are BC-CON-04007 and BC-CON-04008 (docs/lessons/unit-04/README.md, section 1).
 
+## Prediction
+
+Served first in both bands. Multiple choice on ex-1's relation \(x^2+y^2=225\) with the foot at \(x=9\): whether 9 goes in before or after differentiating in \(t\). Three options, key after, the others before or either order. The resolution says \(x\) changes with time, so its rate term must stay, the concept's core claim in the record's words. Sources: BC-CON-04009 and the topic 4.5 section that ki-1 cites. Delivery: text.
+
 ## Orientation
 
 Served text, from BC-CON-04009 `description_plain` and the topic's Assessment behaviour paragraph (research/units/unit-04-contextual-applications-differentiation.md#4.5 Solving Related Rates Problems): a response keeps every varying quantity as a variable through the differentiation, puts the instant's values in afterwards, and recovers any missing value from the relating equation.
@@ -25,9 +29,11 @@ BC-QA-04006 (research/question-analysis/question-archetypes.md#BC-QA-04006 Relat
 
 Not this concept: a quantity fixed for the whole motion, such as a ladder's length, which may be substituted at any stage.
 
+The contrast pair on st-1 takes its near miss from that case: a ladder whose foot distance is a one-instant value, beside the fixed length L, which may go in first. The separating feature is whether the value holds throughout or at one instant.
+
 ## Method choice
 
-- st-1, BC-QA-04006. Method, `expected_solution_path[4]` placed after [3]: differentiate first, then substitute. Rival from `wrong_approaches`: substituting instantaneous values before differentiating (BC-ERR-04020). Separating feature: does the value hold only "at the instant"?
+- st-1, BC-QA-04006. Method, `expected_solution_path[4]` placed after [3]: differentiate first, then substitute (served without a label). Rival from `wrong_approaches`: substituting instantaneous values before differentiating (BC-ERR-04020). Separating feature: does the value hold only "at the instant"?
 - st-2, BC-QA-04007. Method, `expected_solution_path[2]` after [0]: the point and the supplied rate go into the differentiated curve equation. Rival: the point substituted into the curve before differentiating. Separating feature: the coordinates are one instant's values.
 
 ## Solution path
@@ -41,7 +47,7 @@ BC-QA-04006 lists BC-PT-99023, BC-PT-99006, BC-PT-99004 and BC-PT-99022. ex-1 ta
 
 ## Traps
 
-Three active errors, in the bundle's order: BC-ERR-04020, BC-ERR-04022, BC-ERR-99013. On ex-1's draw; the mid band shows the first two.
+Three active errors, in the bundle's order: BC-ERR-04020, BC-ERR-04022, BC-ERR-99013. On ex-1's draw; the mid band shows the first two. All three are fix prompts (relation distinct).
 
 - err-BC-ERR-04020: x = 9 put in before differentiating, so dx/dt vanishes. Reason words from BC-MIS-04011.
 - err-BC-ERR-04022: y never computed, so the rate is left as -18/y. No reason line: the linked descriptions do not describe the missing value.
@@ -73,13 +79,14 @@ BC-QA-04006 has `calculator_status` either, so Section I Part A, 2.14 minutes (r
 
 ## Band plan
 
-- Low (full): orientation, ki-1, st-1, st-2, ex-1 with its scoring line, three error blocks, chk-1 to chk-3, two bridges. 561 words, 3.8 minutes (cap 900 and 6).
-- Mid (brief): orientation, ki-1, st-1, ex-1 with its scoring line, err-BC-ERR-04020, err-BC-ERR-04022, chk-1, chk-2, two bridges. 432 words, 2.9 minutes (cap 450 and 3).
-- Refresher: ki-1, err-BC-ERR-04020, err-BC-ERR-04022, err-BC-ERR-99013, ex-1.
+- Low (full), served order: prediction, orientation, bridges BC-PRQ-04007 and 04008 when gated, ki-1, st-1 with its contrast pair, st-2, ex-1 with its scoring line, chk-1, the three error blocks, chk-2, chk-3. 577 words, 3.9 minutes (cap 900 and 6). This design has one worked example, so nothing is faded.
+- Mid (brief): prediction, orientation, bridges when gated, ki-1, st-1 with its contrast pair, ex-1 with its scoring line, chk-1, err-BC-ERR-04020, err-BC-ERR-04022, chk-2. 449 words, 3.0 minutes (cap 450 and 3). The two bridges are one short phrase each to hold the cap; the ki-1 quote stays.
+- Refresher: ki-1, the three error blocks, ex-1.
 
 ## Sources
 
 - BC-CON-04009; BC-SKL-04023, BC-SKL-04026, BC-SKL-04027; BC-EK-CHA-3E1; ced:86, ced:91
+- Prediction pr-1 and the contrast pair: BC-CON-04009, BC-ERR-04020
 - BC-QA-04006, BC-QA-04007; BC-PT-99023; cr-24:18, crabbc-25:25
 - BC-ERR-04020, BC-ERR-04022, BC-ERR-99013; BC-MIS-04011, BC-MIS-04008
 - BC-PRQ-04007, BC-PRQ-04008
@@ -104,8 +111,38 @@ BC-QA-04006 has `calculator_status` either, so Section I Part A, 2.14 minutes (r
   "BC-SKL-04026",
   "BC-SKL-04027"
  ],
+ "prediction": {
+  "id": "pr-1",
+  "stem": {
+   "text": "Predict. On x^2 + y^2 = 225 the foot is at x = 9. Does 9 go in before or after differentiating in t?",
+   "command_verb": "predict"
+  },
+  "format": "mcq",
+  "options": [
+   {
+    "id": "A",
+    "label": "Before: 81 + y^2 = 225.",
+    "is_key": false
+   },
+   {
+    "id": "B",
+    "label": "After: x varies.",
+    "is_key": true
+   },
+   {
+    "id": "C",
+    "label": "Either order.",
+    "is_key": false
+   }
+  ],
+  "resolution": "After: x changes with time, so its rate term must stay.",
+  "sources": [
+   "BC-CON-04009",
+   "research/units/unit-04-contextual-applications-differentiation.md#4.5 Solving Related Rates Problems"
+  ]
+ },
  "orientation": {
-  "text": "Keep every varying quantity as a variable through the differentiation. Put the instant's values in afterwards, and find any missing value from the relating equation at that instant.",
+  "text": "Keep varying quantities as variables through differentiation; substitute the instant afterwards.",
   "sources": [
    "BC-CON-04009",
    "research/units/unit-04-contextual-applications-differentiation.md#4.5 Solving Related Rates Problems"
@@ -116,7 +153,7 @@ BC-QA-04006 has `calculator_status` either, so Section I Part A, 2.14 minutes (r
    "id": "ki-1",
    "ek_id": "BC-EK-CHA-3E1",
    "depth": "core",
-   "text": "A value stated for one instant is not a constant: it goes in after the differentiation. A quantity fixed for the whole motion may go in at any stage. A value the substitution needs but the stem omits comes from the relating equation at that instant.",
+   "text": "A one-instant value goes in after differentiating; a value fixed throughout may go in at any stage. A missing value comes from the relating equation.",
    "notation": "values substituted into the differentiated equation",
    "quote": {
     "text": "relating it to other quantities whose rates of change are known",
@@ -134,21 +171,33 @@ BC-QA-04006 has `calculator_status` either, so Section I Part A, 2.14 minutes (r
   {
    "id": "st-1",
    "archetype_id": "BC-QA-04006",
-   "cue": "\"At the instant when\" a dimension has a value.",
-   "method": "Differentiate the relating equation first; substitute after.",
-   "rival": "Rival: the value put in first (BC-ERR-04020).",
+   "cue": "\"At the instant when\" a value is given.",
+   "method": "Differentiate first; substitute after.",
+   "rival": "The value put in first.",
    "separating_feature": "Instant values change; fixed lengths do not.",
    "sources": [
-    "BC-QA-04006"
+    "BC-QA-04006",
+    "BC-ERR-04020"
    ],
-   "evidence_tag": "verified"
+   "evidence_tag": "verified",
+   "contrast": {
+    "this": {
+     "text": "A 13 foot ladder's foot slides out at 3 feet per second. Find dy/dt at foot 5 feet.",
+     "archetype_id": "BC-QA-04006"
+    },
+    "not_this": {
+     "text": "L = 13 throughout in x^2 + y^2 = L^2. May 13 go in first?",
+     "why_not": "L is fixed."
+    },
+    "feature": "Fixed, or true at one instant?"
+   }
   },
   {
    "id": "st-2",
    "archetype_id": "BC-QA-04007",
    "cue": "A point on a curve and one coordinate rate.",
    "method": "Differentiate the curve in t, then put in the point and the rate.",
-   "rival": "Rival: the point substituted before differentiating.",
+   "rival": "The point substituted before differentiating.",
    "separating_feature": "The point holds for one instant only.",
    "sources": [
     "BC-QA-04007"
@@ -180,14 +229,14 @@ BC-QA-04006 has `calculator_status` either, so Section I Part A, 2.14 minutes (r
    "calculator_status": "no_calculator",
    "steps": [
     {
-     "cue": "The ladder's length is fixed.",
-     "why": "Only 15 is constant.",
+     "cue": "Ladder length is fixed.",
+     "why": "15 is constant.",
      "expr": "x**2 + y**2 = 225",
      "relation": "new"
     },
     {
-     "cue": "y is not given.",
-     "why": "Recover it at the instant.",
+     "cue": "y not given.",
+     "why": "Recover it.",
      "expr": "81 + y**2 = 225",
      "relation": "evaluate",
      "subs": {
@@ -196,20 +245,20 @@ BC-QA-04006 has `calculator_status` either, so Section I Part A, 2.14 minutes (r
     },
     {
      "cue": "Solve for y.",
-     "why": "Height is positive.",
+     "why": "Positive root.",
      "expr": "12",
      "relation": "solve",
      "variable": "y"
     },
     {
-     "cue": "Back to the general equation.",
+     "cue": "General equation.",
      "why": "x and y both vary.",
      "expr": "2*x*dxdt + 2*y*dydt = 0",
      "relation": "new",
      "point_type_id": "BC-PT-99023"
     },
     {
-     "cue": "Now the instant.",
+     "cue": "The instant.",
      "why": "x = 9, y = 12, dx/dt = 2.",
      "expr": "36 + 24*dydt = 0",
      "relation": "evaluate",
@@ -268,7 +317,8 @@ BC-QA-04006 has `calculator_status` either, so Section I Part A, 2.14 minutes (r
    "sources": [
     "BC-ERR-04020",
     "BC-MIS-04011"
-   ]
+   ],
+   "fix_prompt": true
   },
   {
    "error_id": "BC-ERR-04022",
@@ -286,7 +336,8 @@ BC-QA-04006 has `calculator_status` either, so Section I Part A, 2.14 minutes (r
    "possible_reason": null,
    "sources": [
     "BC-ERR-04022"
-   ]
+   ],
+   "fix_prompt": true
   },
   {
    "error_id": "BC-ERR-99013",
@@ -308,18 +359,19 @@ BC-QA-04006 has `calculator_status` either, so Section I Part A, 2.14 minutes (r
    "sources": [
     "BC-ERR-99013",
     "BC-MIS-04008"
-   ]
+   ],
+   "fix_prompt": true
   }
  ],
  "representations": null,
  "prerequisite_bridges": [
   {
    "prq_id": "BC-PRQ-04007",
-   "text": "Isolate one unknown in a linear equation; otherwise the rate is never extracted."
+   "text": "Solve a linear equation."
   },
   {
    "prq_id": "BC-PRQ-04008",
-   "text": "Name each quantity, its unit, and whether it varies."
+   "text": "Naming quantities."
   }
  ],
  "time": {
@@ -859,12 +911,12 @@ BC-QA-04006 has `calculator_status` either, so Section I Part A, 2.14 minutes (r
   "research/exam/exam-structure.md#Section and part layout"
  ],
  "word_count": {
-  "full": 561,
-  "brief": 432
+  "full": 577,
+  "brief": 449
  },
  "read_minutes": {
-  "full": 3.8,
-  "brief": 2.9
+  "full": 3.9,
+  "brief": 3.0
  }
 }
 ```

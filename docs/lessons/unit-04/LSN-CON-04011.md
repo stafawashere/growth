@@ -9,6 +9,10 @@ purpose: Authoring spec for the concept lesson on BC-CON-04011, approximating a 
 
 Concept BC-CON-04011 (skills BC-SKL-04028, BC-SKL-04029, BC-SKL-04032), topic 4.6, loaded by BC-QA-04008 (family tangent-line-approximation). No hard parent in the unit (docs/lessons/unit-04/README.md, section 1).
 
+## Prediction
+
+One question on ex-1's own numbers, both bands, served first: Predict before the rule: f(1) = 4 and f'(x) = 2x^2 - 3. Which value best approximates f(1.1)? Form: `mcq` with three options (A, About 4, the value at x = 1; B, About 3.9, the height of the tangent line at x = 1.1 (the key); C, About 4.1, adding the step to f(1)). Resolution shown on the key idea screen: The tangent line at x = 1 passes through (1, 4) with slope f'(1) = -1, so its height at 1.1 is 4 - 0.1 = 3.9. Near the point of tangency that height approximates f. Sources: the concept record and the topic section the key idea cites.
+
 ## Orientation
 
 Served text, from BC-CON-04011 `description_plain` and the topic's Assessment behaviour paragraph (research/units/unit-04-contextual-applications-differentiation.md#4.6 Approximating Values of a Function Using Local Linearity and Linearization): a response finds the slope at the point of tangency, writes the tangent line in point-slope form, and evaluates it at the nearby input, leaving the arithmetic unsimplified where it can.
@@ -24,6 +28,8 @@ All three skills map to BC-EK-CHA-3F1 (ced:92), one core block.
 BC-QA-04008 (research/question-analysis/question-archetypes.md#BC-QA-04008 Tangent line approximation with an over or under estimate judgement): `typical_wording` "use the line tangent to the curve at the stated point to approximate the value of the function at a nearby input"; `common_givens` a supplied dy/dx or differential equation with a point, "the point of tangency and a nearby input"; `asked_to_produce` the slope and the approximation. The signal: two inputs, one where f is known and one nearby, and the word approximate. Shapes: MCQ, or one FRQ part after the part that produced the derivative (BC-FRQ-2023-Q3-B, BC-FRQ-2014-Q1-D).
 
 Not this concept: "write an equation for the tangent line" with no second input (BC-QA-02011, the line alone).
+
+The near miss comes from the tangent line alone (BC-QA-02011), which shares the given point and derivative but never asks for a value at a second input. That stem is the `not_this` of the contrast pair on st-1.
 
 ## Method choice
 
@@ -73,8 +79,8 @@ BC-QA-04008 has `calculator_status` either, so Section I Part A, 2.14 minutes (r
 
 ## Band plan
 
-- Low (full): orientation, ki-1, st-1, ex-1 with its scoring line, four error blocks, chk-1 to chk-3, the bridge. 551 words, 3.71 minutes (cap 900 and 6).
-- Mid (brief): orientation, ki-1, st-1, ex-1 with its scoring line, err-BC-ERR-04024, err-BC-ERR-99035, chk-1, chk-2, the bridge. 410 words, 2.8 minutes (cap 450 and 3).
+- Low (full): prediction, orientation, the bridge, key ideas, st-1 with the contrast pair, ex-1 with its scoring line, chk-1, err-BC-ERR-04024, err-BC-ERR-99035, err-BC-ERR-04023, err-BC-ERR-04027, chk-2, chk-3. 589 words, 3.93 minutes (cap 900 and 6).
+- Mid (brief): prediction, orientation, the bridge, core key ideas, st-1 with the contrast pair, ex-1 with its scoring line, chk-1, err-BC-ERR-04024, err-BC-ERR-99035, chk-2. 448 words, 2.99 minutes (cap 450 and 3).
 - Refresher: ki-1, err-BC-ERR-04024, err-BC-ERR-99035, err-BC-ERR-04023, err-BC-ERR-04027, ex-1.
 
 ## Sources
@@ -104,8 +110,39 @@ BC-QA-04008 has `calculator_status` either, so Section I Part A, 2.14 minutes (r
   "BC-SKL-04029",
   "BC-SKL-04032"
  ],
+ "prediction": {
+  "id": "pr-1",
+  "stem": {
+   "text": "Predict: f(1) = 4, f'(x) = 2x^2 - 3. Which value best approximates f(1.1)?",
+   "command_verb": "predict"
+  },
+  "format": "mcq",
+  "options": [
+   {
+    "id": "A",
+    "label": "About 4",
+    "is_key": false
+   },
+   {
+    "id": "B",
+    "label": "About 3.9",
+    "is_key": true
+   },
+   {
+    "id": "C",
+    "label": "About 4.1",
+    "is_key": false
+   }
+  ],
+  "resolution": "The tangent line has slope f'(1) = -1 through (1, 4), so its height at 1.1 is 3.9. Near tangency that height approximates f.",
+  "sources": [
+   "BC-CON-04011",
+   "BC-EK-CHA-3F1",
+   "research/units/unit-04-contextual-applications-differentiation.md#4.6 Approximating Values of a Function Using Local Linearity and Linearization"
+  ]
+ },
  "orientation": {
-  "text": "Find the slope at the point of tangency, write the tangent line in point-slope form, and evaluate it at the nearby input. Leave the arithmetic unsimplified where it can be.",
+  "text": "Find the slope at the tangency point, write the line, and evaluate it at the nearby input.",
   "sources": [
    "BC-CON-04011",
    "research/units/unit-04-contextual-applications-differentiation.md#4.6 Approximating Values of a Function Using Local Linearity and Linearization"
@@ -116,7 +153,7 @@ BC-QA-04008 has `calculator_status` either, so Section I Part A, 2.14 minutes (r
    "id": "ki-1",
    "ek_id": "BC-EK-CHA-3F1",
    "depth": "core",
-   "text": "Near the point of tangency the curve and its tangent line are close, so the line's height at a nearby input approximates the function there. The slope is the derivative at the point; when dy/dx involves y, both coordinates go in. Point-slope form is enough.",
+   "text": "Near the point of tangency, the tangent line's height at a nearby input approximates the function. The slope is the derivative there; point-slope form is enough.",
    "notation": "f(a) + f'(a)(x - a)",
    "quote": {
     "text": "The tangent line is the graph of a locally linear approximation of the function near the point of tangency.",
@@ -134,14 +171,26 @@ BC-QA-04008 has `calculator_status` either, so Section I Part A, 2.14 minutes (r
   {
    "id": "st-1",
    "archetype_id": "BC-QA-04008",
-   "cue": "A known point, a supplied derivative, \"approximate\" at a nearby input.",
-   "method": "First line: the derivative evaluated at the point of tangency.",
-   "rival": "Rival: the line evaluated at the point itself (BC-ERR-04024).",
-   "separating_feature": "Two inputs: slope from the first, evaluation at the second.",
+   "cue": "A known point, a supplied derivative, a nearby input.",
+   "method": "The derivative evaluated at the point of tangency.",
+   "rival": "The line evaluated at the point itself.",
+   "separating_feature": "Slope from one input, value at the other.",
    "sources": [
-    "BC-QA-04008"
+    "BC-QA-04008",
+    "BC-ERR-04024"
    ],
-   "evidence_tag": "verified"
+   "evidence_tag": "verified",
+   "contrast": {
+    "this": {
+     "text": "g(2) = 5, g'(x) = x^2 - 1. Approximate g(2.1) by the tangent line at x = 2.",
+     "archetype_id": "BC-QA-04008"
+    },
+    "not_this": {
+     "text": "Write an equation of the tangent line to g at x = 2.",
+     "why_not": "The line itself is the answer."
+    },
+    "feature": "A second input to evaluate at."
+   }
   }
  ],
  "worked_examples": [
@@ -168,7 +217,7 @@ BC-QA-04008 has `calculator_status` either, so Section I Part A, 2.14 minutes (r
    "steps": [
     {
      "cue": "The derivative is supplied.",
-     "why": "Evaluate it; nothing to solve.",
+     "why": "Nothing to solve.",
      "expr": "2*x**2 - 3",
      "relation": "new"
     },
@@ -233,6 +282,7 @@ BC-QA-04008 has `calculator_status` either, so Section I Part A, 2.14 minutes (r
     "expr": "39/10"
    },
    "relation": "distinct",
+   "fix_prompt": true,
    "possible_reason": {
     "misconception_id": "BC-MIS-04012",
     "text": "treats the tangent line value as the function value rather than as an approximation"
@@ -255,6 +305,7 @@ BC-QA-04008 has `calculator_status` either, so Section I Part A, 2.14 minutes (r
     "expr": "-1"
    },
    "relation": "distinct",
+   "fix_prompt": true,
    "possible_reason": {
     "misconception_id": "BC-MIS-07002",
     "text": "does not separate a constraint on the rate from a formula for the amount"
@@ -277,6 +328,7 @@ BC-QA-04008 has `calculator_status` either, so Section I Part A, 2.14 minutes (r
     "expr": "4 - (x - 1)"
    },
    "relation": "distinct",
+   "fix_prompt": true,
    "possible_reason": null,
    "sources": [
     "BC-ERR-04023"
@@ -295,6 +347,7 @@ BC-QA-04008 has `calculator_status` either, so Section I Part A, 2.14 minutes (r
     "expr": "-1"
    },
    "relation": "distinct",
+   "fix_prompt": true,
    "possible_reason": {
     "misconception_id": "BC-MIS-04012",
     "text": "the distinction between the two inputs and the question of error direction do not arise"
@@ -310,7 +363,7 @@ BC-QA-04008 has `calculator_status` either, so Section I Part A, 2.14 minutes (r
  "prerequisite_bridges": [
   {
    "prq_id": "BC-PRQ-04006",
-   "text": "A line through a point with a given slope, evaluated at another input; otherwise point and slope get exchanged."
+   "text": "A line through a point with a slope, evaluated at another input."
   }
  ],
  "time": {
@@ -733,12 +786,12 @@ BC-QA-04008 has `calculator_status` either, so Section I Part A, 2.14 minutes (r
   "research/exam/exam-structure.md#Section and part layout"
  ],
  "word_count": {
-  "full": 551,
-  "brief": 410
+  "full": 589,
+  "brief": 448
  },
  "read_minutes": {
-  "full": 3.71,
-  "brief": 2.8
+  "full": 3.93,
+  "brief": 2.99
  }
 }
 ```

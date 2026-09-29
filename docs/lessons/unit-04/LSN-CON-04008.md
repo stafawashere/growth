@@ -9,6 +9,10 @@ purpose: Authoring spec for the concept lesson on BC-CON-04008, the equation tha
 
 Concept BC-CON-04008 (skills BC-SKL-04018, BC-SKL-04020, BC-SKL-04021), topic 4.4, loaded by BC-QA-04006 (primary) and BC-QA-04007, both in family related-rates. Its hard parent is BC-CON-04007 (docs/lessons/unit-04/README.md, section 1).
 
+## Prediction
+
+Served first in both bands. Multiple choice on ex-1's cone, height 2 times its top radius with only \(dV/dt\) given: what comes before differentiating \(V=\frac{1}{3}\pi r^2h\). Three options, key writing \(V\) in \(h\) alone, the others holding \(r\) constant or substituting the depth. The resolution states that \(r=h/2\) leaves one variable and one rate, the concept's core claim in the record's words. Sources: BC-CON-04008 and the topic 4.4 section that ki-1 cites. Delivery: text.
+
 ## Orientation
 
 Served text, from BC-CON-04008 `description_plain` and the topic's Assessment behaviour paragraph (research/units/unit-04-contextual-applications-differentiation.md#4.4 Introduction to Related Rates): a response writes one equation among the quantities of the figure, from a formula, the Pythagorean theorem or a similar triangles proportion, and cuts it to the variables the supplied rates support before differentiating.
@@ -28,9 +32,11 @@ BC-QA-04007 (research/question-analysis/question-archetypes.md#BC-QA-04007 Relat
 
 Not this concept: a stem that supplies the quantity as a function of time; no relating equation is built.
 
+The contrast pair on st-1 takes its near miss from that case: a cone with a relating equation to build, beside a volume given as a function of \(t\) whose rate is a plain derivative. The separating feature is that a figure needs a relating equation.
+
 ## Method choice
 
-- st-1, BC-QA-04006. Method, `expected_solution_path[1]` after naming the quantities: write the relating equation, then eliminate what the rates cannot support. Rival from `wrong_approaches`: a varying dimension treated as constant (BC-ERR-99013). Separating feature: whether every varying dimension has a given or asked rate.
+- st-1, BC-QA-04006. Method, `expected_solution_path[1]` after naming the quantities: write the relating equation, then eliminate what the rates cannot support (served without a label). Rival from `wrong_approaches`: a varying dimension treated as constant (BC-ERR-99013). Separating feature: whether every varying dimension has a given or asked rate.
 - st-2, BC-QA-04007. Method, `expected_solution_path[0]`: differentiate the curve equation with respect to time. Rival: the mixed term differentiated as though one variable were constant (BC-ERR-04018). Separating feature: a term such as xy.
 
 ## Solution path
@@ -44,7 +50,7 @@ BC-QA-04006 lists BC-PT-99023, BC-PT-99006, BC-PT-99004 and BC-PT-99022. ex-1 ta
 
 ## Traps
 
-Five active errors meet the skills; the first four in the bundle's order are served: BC-ERR-04016, BC-ERR-04018, BC-ERR-04019, BC-ERR-99013. BC-ERR-99033 (variable never defined) is left out by the cap of four. All on ex-1's draw; the mid band shows the first two.
+Five active errors meet the skills; the first four in the bundle's order are served: BC-ERR-04016, BC-ERR-04018, BC-ERR-04019, BC-ERR-99013. BC-ERR-99033 (variable never defined) is left out by the cap of four. All on ex-1's draw; the mid band shows the first two. All four are fix prompts (relation distinct).
 
 - err-BC-ERR-04016: the cylinder formula against the cone formula. Reason words from BC-MIS-04010.
 - err-BC-ERR-04018: the radius held constant in V = (1/3) pi r^2 h, against the product rule. Reason words from BC-MIS-04009.
@@ -78,13 +84,14 @@ BC-QA-04006 has `calculator_status` either, so Section I Part A, 2.14 minutes (r
 
 ## Band plan
 
-- Low (full): orientation, ki-1, ki-2, st-1, st-2, ex-1 with its scoring line, four error blocks, chk-1 to chk-3, four bridges. 640 words, 4.4 minutes (cap 900 and 6).
-- Mid (brief): orientation, ki-1, ki-2, st-1, ex-1 with its scoring line, err-BC-ERR-04016, err-BC-ERR-04018, chk-1, chk-2, four bridges. 450 words, 3.0 minutes (cap 450 and 3).
-- Refresher: ki-1, ki-2, err-BC-ERR-04016, err-BC-ERR-04018, err-BC-ERR-04019, err-BC-ERR-99013, ex-1.
+- Low (full), served order: prediction, orientation, bridges BC-PRQ-04001, 04002, 04003 and 04008 when gated, ki-1, ki-2, st-1 with its contrast pair, st-2, ex-1 with its scoring line, chk-1, the four error blocks, chk-2, chk-3. 633 words, 4.3 minutes (cap 900 and 6). This design has one worked example, so nothing is faded.
+- Mid (brief): prediction, orientation, bridges when gated, ki-1, ki-2, st-1 with its contrast pair, ex-1 with its scoring line, chk-1, err-BC-ERR-04016, err-BC-ERR-04018, chk-2. 450 words, 3.0 minutes (cap 450 and 3). To hold the cap the ki-1 quote is cut to its first nine words and the ki-2 quote to seven, and the four bridges are one short phrase each; no quote is dropped.
+- Refresher: ki-1, ki-2, the four error blocks, ex-1.
 
 ## Sources
 
 - BC-CON-04008; BC-SKL-04018, BC-SKL-04020, BC-SKL-04021; BC-EK-CHA-3D1, BC-EK-CHA-3D2; ced:90
+- Prediction pr-1 and the contrast pair: BC-CON-04008, BC-ERR-99013
 - BC-QA-04006, BC-QA-04007; BC-PT-99023; cr-22:7
 - BC-ERR-04016, BC-ERR-04018, BC-ERR-04019, BC-ERR-99013; BC-MIS-04008, BC-MIS-04009, BC-MIS-04010
 - BC-PRQ-04001, BC-PRQ-04002, BC-PRQ-04003, BC-PRQ-04008
@@ -109,8 +116,38 @@ BC-QA-04006 has `calculator_status` either, so Section I Part A, 2.14 minutes (r
   "BC-SKL-04020",
   "BC-SKL-04021"
  ],
+ "prediction": {
+  "id": "pr-1",
+  "stem": {
+   "text": "Predict. A cone's height is 2 times its top radius and only dV/dt is given. What comes before differentiating V = pi r^2 h/3?",
+   "command_verb": "predict"
+  },
+  "format": "mcq",
+  "options": [
+   {
+    "id": "A",
+    "label": "Hold r constant.",
+    "is_key": false
+   },
+   {
+    "id": "B",
+    "label": "Write V in h alone.",
+    "is_key": true
+   },
+   {
+    "id": "C",
+    "label": "Put in h = 4.",
+    "is_key": false
+   }
+  ],
+  "resolution": "With r = h/2, V = pi h^3/12: one variable, one rate.",
+  "sources": [
+   "BC-CON-04008",
+   "research/units/unit-04-contextual-applications-differentiation.md#4.4 Introduction to Related Rates"
+  ]
+ },
  "orientation": {
-  "text": "Before differentiating, write one equation tying the figure's quantities together, from a formula, the Pythagorean theorem or similar triangles, cut to the variables the given rates support.",
+  "text": "One equation ties the figure's quantities, cut to the variables the given rates support.",
   "sources": [
    "BC-CON-04008",
    "research/units/unit-04-contextual-applications-differentiation.md#4.4 Introduction to Related Rates"
@@ -121,10 +158,10 @@ BC-QA-04006 has `calculator_status` either, so Section I Part A, 2.14 minutes (r
    "id": "ki-1",
    "ek_id": "BC-EK-CHA-3D1",
    "depth": "core",
-   "text": "Each quantity is a function of time, tied by one equation. A dimension with no given or asked rate is eliminated before differentiating.",
+   "text": "One equation ties the quantities, each a function of time. A dimension with no given or asked rate is eliminated first.",
    "notation": "dV/dt, dr/dt, dh/dt",
    "quote": {
-    "text": "The chain rule is the basis for differentiating variables in a related rates problem",
+    "text": "The chain rule is the basis for differentiating variables",
     "source": "ced:90"
    },
    "sources": [
@@ -137,10 +174,10 @@ BC-QA-04006 has `calculator_status` either, so Section I Part A, 2.14 minutes (r
    "id": "ki-2",
    "ek_id": "BC-EK-CHA-3D2",
    "depth": "core",
-   "text": "A term multiplying two varying quantities, such as r squared times h, takes the product rule, giving one rate factor for each.",
+   "text": "A term multiplying two varying quantities takes the product rule, one rate each.",
    "notation": "product rule",
    "quote": {
-    "text": "such as the product rule and the quotient rule, may also be necessary",
+    "text": "the product rule and the quotient rule",
     "source": "ced:90"
    },
    "sources": [
@@ -154,24 +191,37 @@ BC-QA-04006 has `calculator_status` either, so Section I Part A, 2.14 minutes (r
   {
    "id": "st-1",
    "archetype_id": "BC-QA-04006",
-   "cue": "A figure, one given rate, another asked at an instant.",
-   "method": "First line: the figure's formula, then eliminate each dimension with no given or asked rate.",
+   "cue": "Figure, one rate given, one wanted.",
+   "method": "The figure's formula; eliminate each dimension with no rate.",
    "rival": "A varying dimension held constant.",
-   "separating_feature": "Count varying dimensions against given and asked rates.",
+   "separating_feature": "Count varying dimensions against rates.",
    "sources": [
-    "BC-QA-04006"
+    "BC-QA-04006",
+    "BC-ERR-99013"
    ],
-   "evidence_tag": "verified"
+   "evidence_tag": "verified",
+   "contrast": {
+    "this": {
+     "text": "Water enters a cone, height 4 times top radius, at 5 cubic meters per minute. Find dh/dt at depth 2.",
+     "archetype_id": "BC-QA-04006"
+    },
+    "not_this": {
+     "text": "V(t) = 3t^2 + 2t. Find dV/dt at t = 2.",
+     "why_not": "V is given in t."
+    },
+    "feature": "A figure needs a relating equation."
+   }
   },
   {
    "id": "st-2",
    "archetype_id": "BC-QA-04007",
-   "cue": "A curve in x and y, a point and one coordinate rate.",
-   "method": "First line: the curve equation differentiated with respect to t.",
-   "rival": "Rival: xy differentiated with one factor constant (BC-ERR-04018).",
+   "cue": "A curve in x and y, a point, one coordinate rate.",
+   "method": "The curve equation differentiated in t.",
+   "rival": "xy differentiated with one factor constant.",
    "separating_feature": "A product of two varying quantities.",
    "sources": [
-    "BC-QA-04007"
+    "BC-QA-04007",
+    "BC-ERR-04018"
    ],
    "evidence_tag": "verified"
   }
@@ -201,12 +251,12 @@ BC-QA-04006 has `calculator_status` either, so Section I Part A, 2.14 minutes (r
    "steps": [
     {
      "cue": "A cone of water.",
-     "why": "Its volume formula ties V, r and h.",
+     "why": "Its volume formula.",
      "expr": "V = pi*r**2*h/3",
      "relation": "new"
     },
     {
-     "cue": "Only dV/dt is given.",
+     "cue": "Only dV/dt given.",
      "why": "Similar triangles: r = h/2."
     },
     {
@@ -220,13 +270,13 @@ BC-QA-04006 has `calculator_status` either, so Section I Part A, 2.14 minutes (r
     },
     {
      "cue": "One variable left.",
-     "why": "Differentiate with respect to t.",
+     "why": "Differentiate in t.",
      "expr": "dVdt = pi*h**2*dhdt/4",
      "relation": "new",
      "point_type_id": "BC-PT-99023"
     },
     {
-     "cue": "Now the instant.",
+     "cue": "The instant.",
      "why": "h = 4, dV/dt = 6.",
      "expr": "6 = 4*pi*dhdt",
      "relation": "evaluate",
@@ -236,7 +286,7 @@ BC-QA-04006 has `calculator_status` either, so Section I Part A, 2.14 minutes (r
      }
     },
     {
-     "cue": "One unknown rate.",
+     "cue": "Solve.",
      "why": "Feet per minute.",
      "expr": "3/(2*pi)",
      "relation": "solve",
@@ -284,7 +334,8 @@ BC-QA-04006 has `calculator_status` either, so Section I Part A, 2.14 minutes (r
    "sources": [
     "BC-ERR-04016",
     "BC-MIS-04010"
-   ]
+   ],
+   "fix_prompt": true
   },
   {
    "error_id": "BC-ERR-04018",
@@ -306,7 +357,8 @@ BC-QA-04006 has `calculator_status` either, so Section I Part A, 2.14 minutes (r
    "sources": [
     "BC-ERR-04018",
     "BC-MIS-04009"
-   ]
+   ],
+   "fix_prompt": true
   },
   {
    "error_id": "BC-ERR-04019",
@@ -328,7 +380,8 @@ BC-QA-04006 has `calculator_status` either, so Section I Part A, 2.14 minutes (r
    "sources": [
     "BC-ERR-04019",
     "BC-MIS-04010"
-   ]
+   ],
+   "fix_prompt": true
   },
   {
    "error_id": "BC-ERR-99013",
@@ -350,26 +403,27 @@ BC-QA-04006 has `calculator_status` either, so Section I Part A, 2.14 minutes (r
    "sources": [
     "BC-ERR-99013",
     "BC-MIS-04008"
-   ]
+   ],
+   "fix_prompt": true
   }
  ],
  "representations": null,
  "prerequisite_bridges": [
   {
    "prq_id": "BC-PRQ-04001",
-   "text": "Standard volume and area formulas; without them no relating equation starts."
+   "text": "Volume formulas."
   },
   {
    "prq_id": "BC-PRQ-04002",
-   "text": "The Pythagorean theorem; without it a ladder distance has no equation."
+   "text": "Pythagorean theorem."
   },
   {
    "prq_id": "BC-PRQ-04003",
-   "text": "Similar triangles remove one variable; without them two stay."
+   "text": "Similar triangles."
   },
   {
    "prq_id": "BC-PRQ-04008",
-   "text": "Name each quantity, its unit, and whether it varies."
+   "text": "Naming quantities."
   }
  ],
  "time": {
@@ -961,11 +1015,11 @@ BC-QA-04006 has `calculator_status` either, so Section I Part A, 2.14 minutes (r
   "research/exam/exam-structure.md#Section and part layout"
  ],
  "word_count": {
-  "full": 640,
+  "full": 633,
   "brief": 450
  },
  "read_minutes": {
-  "full": 4.4,
+  "full": 4.3,
   "brief": 3.0
  }
 }

@@ -3,20 +3,72 @@
  "version": 1,
  "kind": "concept",
  "target_id": "BC-CON-04004",
- "status": "signed_off",
+ "status": "draft",
  "snapshot_digest": "a6a8ec9d3f59ab8f712e33d30cc22fc64bf2c478fbe7312e3e3118d319c6a42f",
  "source_digest": "aeefa89eb66702a23c88c843faae7968035e08f5b393bfe45ff4b3f467a5fbbd",
  "read_minutes": {
-  "full": 3.6,
-  "brief": 2.3
+  "full": 4.2,
+  "brief": 3.0
  },
  "word_count": {
-  "full": 416,
-  "brief": 269
+  "full": 512,
+  "brief": 369
  },
  "sections": [
   {
    "id": "LSN-CON-04004#s1",
+   "type": "prediction",
+   "bands": [
+    "low",
+    "mid"
+   ],
+   "skills": [
+    "BC-SKL-04008",
+    "BC-SKL-04009",
+    "BC-SKL-04011"
+   ],
+   "sources": [
+    "BC-CON-04004",
+    "BC-EK-CHA-3B1",
+    "ced:88",
+    "research/units/unit-04-contextual-applications-differentiation.md#4.2 Straight-Line Motion: Connecting Position, Velocity, and Acceleration"
+   ],
+   "evidence_tag": "inferred",
+   "stem": {
+    "text": "Predict which sign shows whether the particle with position \\(x(t)=(t-2)^2(t-4)\\) moves left.",
+    "command_verb": "predict"
+   },
+   "format": "mcq",
+   "options": [
+    {
+     "id": "A",
+     "label": "The sign of \\(x(t)\\)",
+     "is_key": false
+    },
+    {
+     "id": "B",
+     "label": "The sign of \\(v(t)=x'(t)\\)",
+     "is_key": true
+    },
+    {
+     "id": "C",
+     "label": "The sign of \\(a(t)=x''(t)\\)",
+     "is_key": false
+    }
+   ],
+   "resolution": {
+    "text": "The sign of velocity gives the direction: \\(v<0\\) is left, \\(v>0\\) is right. Here \\(v(t)=(t-2)(3t-10)\\), so the sign of \\(v\\), not of \\(x\\) or \\(a\\), decides."
+   },
+   "delivery": {
+    "mode": "text",
+    "reason": "rule 6: a prediction on ex-1's position with the picture held for ki-1",
+    "sources": [
+     "BC-SKL-04009"
+    ]
+   }
+  },
+  {
+   "id": "LSN-CON-04004#s2",
    "type": "orientation",
    "bands": [
     "low",
@@ -42,7 +94,7 @@
    }
   },
   {
-   "id": "LSN-CON-04004#s2",
+   "id": "LSN-CON-04004#s3",
    "type": "key_ideas",
    "bands": [
     "low",
@@ -62,11 +114,11 @@
    "evidence_tag": "inferred",
    "ek_id": "BC-EK-CHA-3B1",
    "depth": "core",
-   "text": "Velocity positive: moving right; negative: moving left; zero: at rest. Speed is \\(|v(t)|\\), never negative. The zeros of \\(v\\) split the interval and the sign is constant between consecutive zeros, so the conclusion rests on solved zeros, not sampled inputs (crabbc-25:22).",
+   "text": "Velocity positive: moving right; negative: moving left; zero: at rest. Speed is \\(|v(t)|\\), never negative. The zeros of \\(v\\) split the interval and the sign is constant between consecutive zeros, so the conclusion rests on solved zeros, not sampled inputs.",
    "notation": "speed equals the absolute value of v of t",
    "delivery": {
     "mode": "interactive",
-    "reason": "rule 3 promoted: BC-REP-02 in BC-SKL-04009 representations; BC-QA-04004 difficulty_variables name a non-integer zero and more than one sign change, and the stem asks for intervals of a direction",
+    "reason": "rule 4 promoted: BC-REP-02 in BC-SKL-04009 representations; BC-QA-04004 difficulty_variables name a non-integer zero and more than one sign change, and the stem asks for intervals of a direction",
     "sources": [
      "BC-SKL-04009",
      "BC-QA-04004"
@@ -131,7 +183,7 @@
    }
   },
   {
-   "id": "LSN-CON-04004#s3",
+   "id": "LSN-CON-04004#s4",
    "type": "strategy",
    "bands": [
     "low",
@@ -142,17 +194,30 @@
     "BC-SKL-04011"
    ],
    "sources": [
-    "BC-QA-04004"
+    "BC-QA-04004",
+    "BC-ERR-04010",
+    "BC-ERR-04008"
    ],
    "evidence_tag": "verified",
    "archetype_id": "BC-QA-04004",
    "cue": "A position or velocity function on an open interval; the stem asks when the particle moves a stated way.",
-   "method": "First line: \\(v(t)=0\\), solved on the interval.",
-   "rival": "Rival: integer times sampled (BC-ERR-04010), or direction read from the position (BC-ERR-04008).",
-   "separating_feature": "The word interval: only solved zeros can bound it."
+   "method": "\\(v(t)=0\\), solved on the interval.",
+   "rival": "Integer times sampled, or direction read from the position.",
+   "separating_feature": "The word interval: only solved zeros can bound it.",
+   "contrast": {
+    "this": {
+     "text": "A particle's position is \\(x(t)=(t-1)^2(t-5)\\) for \\(0<t<9\\) seconds. Find every interval on which it moves right.",
+     "archetype_id": "BC-QA-04004"
+    },
+    "not_this": {
+     "text": "For the same particle, is its speed increasing or decreasing at \\(t=2\\)? Give a reason.",
+     "why_not": "It asks about speed at one instant, which needs the signs of \\(v\\) and \\(a\\)."
+    },
+    "feature": "Intervals of a direction need only the sign of \\(v\\)."
+   }
   },
   {
-   "id": "LSN-CON-04004#s4",
+   "id": "LSN-CON-04004#s5",
    "type": "strategy",
    "bands": [
     "low",
@@ -162,17 +227,18 @@
     "BC-SKL-04011"
    ],
    "sources": [
-    "BC-QA-04010"
+    "BC-QA-04010",
+    "BC-ERR-08011"
    ],
    "evidence_tag": "verified",
    "archetype_id": "BC-QA-04010",
    "cue": "Velocity and the position at one time given; position at another time asked.",
-   "method": "First line: position equals the known position plus the integral of velocity.",
-   "rival": "Rival: the integral reported as the position (BC-ERR-08011).",
+   "method": "Position equals the known position plus the integral of velocity.",
+   "rival": "The integral reported as the position.",
    "separating_feature": "A known position is supplied beside the velocity."
   },
   {
-   "id": "LSN-CON-04004#s5",
+   "id": "LSN-CON-04004#s6",
    "type": "worked_example",
    "bands": [
     "low",
@@ -338,6 +404,7 @@
     "expression": 1
    },
    "relation": "distinct",
+   "fix_prompt": true,
    "possible_reason": {
     "misconception_id": "BC-MIS-04005",
     "text": "reported as part of a speed"
@@ -412,6 +479,7 @@
     ]
    },
    "relation": "distinct",
+   "fix_prompt": true,
    "delivery": {
     "mode": "step_reveal",
     "reason": "rule 1",
@@ -469,6 +537,7 @@
     ]
    },
    "relation": "distinct",
+   "fix_prompt": true,
    "possible_reason": {
     "misconception_id": "BC-MIS-04017",
     "text": "zeros between samples are missed"
@@ -549,6 +618,7 @@
     ]
    },
    "relation": "distinct",
+   "fix_prompt": true,
    "possible_reason": {
     "misconception_id": "BC-MIS-07016",
     "text": "antidifferentiates without a constant"
@@ -614,7 +684,7 @@
     "direction": "left",
     "time_units": "seconds"
    },
-   "completes": "LSN-CON-04004#s5",
+   "completes": "LSN-CON-04004#s6",
    "stem": {
     "text": "\\(v(t)=(t-2)(3t-10)\\) on \\(0<t<8\\). From its zeros, find where the particle moves left.",
     "command_verb": "find"
@@ -934,19 +1004,19 @@
   }
  ],
  "refresher": [
-  "LSN-CON-04004#s2",
+  "LSN-CON-04004#s3",
   "LSN-CON-04004#err-BC-ERR-04007",
   "LSN-CON-04004#err-BC-ERR-04008",
   "LSN-CON-04004#err-BC-ERR-04010",
   "LSN-CON-04004#err-BC-ERR-07026",
-  "LSN-CON-04004#s5"
+  "LSN-CON-04004#s6"
  ],
  "provenance": {
   "author": "tools/lesson_transcribe.py",
-  "prompt_version": "generator/lesson_v1",
+  "prompt_version": "generator/lesson_v2",
   "design_path": "docs/lessons/unit-04/LSN-CON-04004.md",
-  "signed_off_by": "claude-opus-5-5",
-  "signed_off_at": "2026-09-29",
+  "signed_off_by": null,
+  "signed_off_at": null,
   "not_human": true
  }
 }

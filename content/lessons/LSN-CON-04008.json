@@ -3,20 +3,67 @@
  "version": 1,
  "kind": "concept",
  "target_id": "BC-CON-04008",
- "status": "signed_off",
+ "status": "draft",
  "snapshot_digest": "a6a8ec9d3f59ab8f712e33d30cc22fc64bf2c478fbe7312e3e3118d319c6a42f",
  "source_digest": "600154d474a9faf508a835fb243fb98331412bb2bf03afbf9867ed16ba07b58d",
  "read_minutes": {
-  "full": 4.4,
+  "full": 4.3,
   "brief": 3.0
  },
  "word_count": {
-  "full": 526,
-  "brief": 360
+  "full": 551,
+  "brief": 392
  },
  "sections": [
   {
    "id": "LSN-CON-04008#s1",
+   "type": "prediction",
+   "bands": [
+    "low",
+    "mid"
+   ],
+   "skills": [
+    "BC-SKL-04018",
+    "BC-SKL-04020",
+    "BC-SKL-04021"
+   ],
+   "sources": [
+    "BC-CON-04008",
+    "research/units/unit-04-contextual-applications-differentiation.md#4.4 Introduction to Related Rates"
+   ],
+   "evidence_tag": "inferred",
+   "stem": {
+    "text": "Predict. A cone's height is 2 times its top radius and only dV/dt is given. What comes before differentiating V = pi r^2 h/3?",
+    "command_verb": "predict"
+   },
+   "format": "mcq",
+   "options": [
+    {
+     "id": "A",
+     "label": "Hold r constant.",
+     "is_key": false
+    },
+    {
+     "id": "B",
+     "label": "Write V in h alone.",
+     "is_key": true
+    },
+    {
+     "id": "C",
+     "label": "Put in h = 4.",
+     "is_key": false
+    }
+   ],
+   "resolution": {
+    "text": "With r = h/2, V = pi h^3/12: one variable, one rate."
+   },
+   "delivery": {
+    "mode": "text",
+    "reason": "rule 6"
+   }
+  },
+  {
+   "id": "LSN-CON-04008#s2",
    "type": "orientation",
    "bands": [
     "low",
@@ -32,7 +79,7 @@
     "research/units/unit-04-contextual-applications-differentiation.md#4.4 Introduction to Related Rates"
    ],
    "evidence_tag": "inferred",
-   "text": "Before differentiating, write one equation tying the figure's quantities together, from a formula, the Pythagorean theorem or similar triangles, cut to the variables the given rates support.",
+   "text": "One equation ties the figure's quantities, cut to the variables the given rates support.",
    "delivery": {
     "mode": "figure",
     "reason": "rule 3: BC-REP-08 on BC-SKL-04018 and BC-SKL-04021",
@@ -161,7 +208,7 @@
    }
   },
   {
-   "id": "LSN-CON-04008#s2",
+   "id": "LSN-CON-04008#s3",
    "type": "key_ideas",
    "bands": [
     "low",
@@ -179,10 +226,10 @@
    "evidence_tag": "verified",
    "ek_id": "BC-EK-CHA-3D1",
    "depth": "core",
-   "text": "Each quantity is a function of time, tied by one equation. A dimension with no given or asked rate is eliminated before differentiating.",
+   "text": "One equation ties the quantities, each a function of time. A dimension with no given or asked rate is eliminated first.",
    "notation": "dV/dt, dr/dt, dh/dt",
    "quote": {
-    "text": "The chain rule is the basis for differentiating variables in a related rates problem",
+    "text": "The chain rule is the basis for differentiating variables",
     "source": "ced:90"
    },
    "delivery": {
@@ -315,7 +362,7 @@
    }
   },
   {
-   "id": "LSN-CON-04008#s3",
+   "id": "LSN-CON-04008#s4",
    "type": "key_ideas",
    "bands": [
     "low",
@@ -332,10 +379,10 @@
    "evidence_tag": "verified",
    "ek_id": "BC-EK-CHA-3D2",
    "depth": "core",
-   "text": "A term multiplying two varying quantities, such as r squared times h, takes the product rule, giving one rate factor for each.",
+   "text": "A term multiplying two varying quantities takes the product rule, one rate each.",
    "notation": "product rule",
    "quote": {
-    "text": "such as the product rule and the quotient rule, may also be necessary",
+    "text": "the product rule and the quotient rule",
     "source": "ced:90"
    },
    "delivery": {
@@ -347,7 +394,7 @@
    }
   },
   {
-   "id": "LSN-CON-04008#s4",
+   "id": "LSN-CON-04008#s5",
    "type": "strategy",
    "bands": [
     "low",
@@ -358,17 +405,29 @@
     "BC-SKL-04021"
    ],
    "sources": [
-    "BC-QA-04006"
+    "BC-QA-04006",
+    "BC-ERR-99013"
    ],
    "evidence_tag": "verified",
    "archetype_id": "BC-QA-04006",
-   "cue": "A figure, one given rate, another asked at an instant.",
-   "method": "First line: the figure's formula, then eliminate each dimension with no given or asked rate.",
+   "cue": "Figure, one rate given, one wanted.",
+   "method": "The figure's formula; eliminate each dimension with no rate.",
    "rival": "A varying dimension held constant.",
-   "separating_feature": "Count varying dimensions against given and asked rates."
+   "separating_feature": "Count varying dimensions against rates.",
+   "contrast": {
+    "this": {
+     "text": "Water enters a cone, height 4 times top radius, at 5 cubic meters per minute. Find dh/dt at depth 2.",
+     "archetype_id": "BC-QA-04006"
+    },
+    "not_this": {
+     "text": "V(t) = 3t^2 + 2t. Find dV/dt at t = 2.",
+     "why_not": "V is given in t."
+    },
+    "feature": "A figure needs a relating equation."
+   }
   },
   {
-   "id": "LSN-CON-04008#s5",
+   "id": "LSN-CON-04008#s6",
    "type": "strategy",
    "bands": [
     "low",
@@ -378,17 +437,18 @@
     "BC-SKL-04020"
    ],
    "sources": [
-    "BC-QA-04007"
+    "BC-QA-04007",
+    "BC-ERR-04018"
    ],
    "evidence_tag": "verified",
    "archetype_id": "BC-QA-04007",
-   "cue": "A curve in x and y, a point and one coordinate rate.",
-   "method": "First line: the curve equation differentiated with respect to t.",
-   "rival": "Rival: xy differentiated with one factor constant (BC-ERR-04018).",
+   "cue": "A curve in x and y, a point, one coordinate rate.",
+   "method": "The curve equation differentiated in t.",
+   "rival": "xy differentiated with one factor constant.",
    "separating_feature": "A product of two varying quantities."
   },
   {
-   "id": "LSN-CON-04008#s6",
+   "id": "LSN-CON-04008#s7",
    "type": "worked_example",
    "bands": [
     "low",
@@ -420,7 +480,7 @@
    "steps": [
     {
      "cue": "A cone of water.",
-     "why": "Its volume formula ties V, r and h.",
+     "why": "Its volume formula.",
      "expression": [
       "Equal",
       "V",
@@ -443,7 +503,7 @@
      "relation": "new"
     },
     {
-     "cue": "Only dV/dt is given.",
+     "cue": "Only dV/dt given.",
      "why": "Similar triangles: r = h/2."
     },
     {
@@ -474,7 +534,7 @@
     },
     {
      "cue": "One variable left.",
-     "why": "Differentiate with respect to t.",
+     "why": "Differentiate in t.",
      "expression": [
       "Equal",
       "dVdt",
@@ -498,7 +558,7 @@
      "relation": "new"
     },
     {
-     "cue": "Now the instant.",
+     "cue": "The instant.",
      "why": "h = 4, dV/dt = 6.",
      "expression": [
       "Equal",
@@ -517,7 +577,7 @@
      }
     },
     {
-     "cue": "One unknown rate.",
+     "cue": "Solve.",
      "why": "Feet per minute.",
      "expression": [
       "Multiply",
@@ -559,7 +619,7 @@
    }
   },
   {
-   "id": "LSN-CON-04008#s7",
+   "id": "LSN-CON-04008#s8",
    "type": "what_a_reader_scores",
    "bands": [
     "low",
@@ -573,7 +633,7 @@
     "BC-PT-99023"
    ],
    "evidence_tag": "verified",
-   "example_id": "LSN-CON-04008#s6",
+   "example_id": "LSN-CON-04008#s7",
    "lines": [
     {
      "point_type_id": "BC-PT-99023",
@@ -639,6 +699,7 @@
     ]
    },
    "relation": "distinct",
+   "fix_prompt": true,
    "possible_reason": {
     "misconception_id": "BC-MIS-04010",
     "text": "the equation is skipped or is chosen by resemblance"
@@ -725,6 +786,7 @@
     ]
    },
    "relation": "distinct",
+   "fix_prompt": true,
    "possible_reason": {
     "misconception_id": "BC-MIS-04009",
     "text": "only one rate factor appears where two are needed"
@@ -796,6 +858,7 @@
     ]
    },
    "relation": "distinct",
+   "fix_prompt": true,
    "possible_reason": {
     "misconception_id": "BC-MIS-04010",
     "text": "expects the supplied rates to determine the answer without a geometric relation"
@@ -869,6 +932,7 @@
     ]
    },
    "relation": "distinct",
+   "fix_prompt": true,
    "possible_reason": {
     "misconception_id": "BC-MIS-04008",
     "text": "so the rates with respect to time never appear"
@@ -894,7 +958,7 @@
    ],
    "evidence_tag": "inferred",
    "prerequisite_id": "BC-PRQ-04001",
-   "text": "Standard volume and area formulas; without them no relating equation starts."
+   "text": "Volume formulas."
   },
   {
    "id": "LSN-CON-04008#prq-BC-PRQ-04002",
@@ -911,7 +975,7 @@
    ],
    "evidence_tag": "inferred",
    "prerequisite_id": "BC-PRQ-04002",
-   "text": "The Pythagorean theorem; without it a ladder distance has no equation."
+   "text": "Pythagorean theorem."
   },
   {
    "id": "LSN-CON-04008#prq-BC-PRQ-04003",
@@ -928,7 +992,7 @@
    ],
    "evidence_tag": "inferred",
    "prerequisite_id": "BC-PRQ-04003",
-   "text": "Similar triangles remove one variable; without them two stay."
+   "text": "Similar triangles."
   },
   {
    "id": "LSN-CON-04008#prq-BC-PRQ-04008",
@@ -945,7 +1009,7 @@
    ],
    "evidence_tag": "inferred",
    "prerequisite_id": "BC-PRQ-04008",
-   "text": "Name each quantity, its unit, and whether it varies."
+   "text": "Naming quantities."
   }
  ],
  "checks": [
@@ -967,7 +1031,7 @@
     "length_unit": "foot",
     "time_unit": "minute"
    },
-   "completes": "LSN-CON-04008#s6",
+   "completes": "LSN-CON-04008#s7",
    "stem": {
     "text": "For the tank of ex-1, dV/dt = (pi h^2/4) dh/dt. With dV/dt = 6 and h = 4, find dh/dt.",
     "command_verb": "find"
@@ -1372,20 +1436,20 @@
   }
  ],
  "refresher": [
-  "LSN-CON-04008#s2",
   "LSN-CON-04008#s3",
+  "LSN-CON-04008#s4",
   "LSN-CON-04008#err-BC-ERR-04016",
   "LSN-CON-04008#err-BC-ERR-04018",
   "LSN-CON-04008#err-BC-ERR-04019",
   "LSN-CON-04008#err-BC-ERR-99013",
-  "LSN-CON-04008#s6"
+  "LSN-CON-04008#s7"
  ],
  "provenance": {
   "author": "tools/lesson_transcribe.py",
-  "prompt_version": "generator/lesson_v1",
+  "prompt_version": "generator/lesson_v2",
   "design_path": "docs/lessons/unit-04/LSN-CON-04008.md",
-  "signed_off_by": "claude-opus-5-5",
-  "signed_off_at": "2026-09-29",
+  "signed_off_by": null,
+  "signed_off_at": null,
   "not_human": true
  }
 }

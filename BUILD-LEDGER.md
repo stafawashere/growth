@@ -2480,6 +2480,38 @@ items) and items 3 and 6 (Slices 3 and 4). Every gate 11 names for P2 now exists
   their primary on the fringe, so these reach the student through block 3 only); 46 to 55
   teachable skills have no observation yet; 4, 2 and 1 meet every condition and wait for a direct
   observation to be re-evaluated, because propagated credit does not re-evaluate mastery.
+  Nondeterminism found and closed. The same seed gave 222 and 210 mastered at day 120 under two
+  Python hash seeds: `apply_observation` evaluated the touched skills in set order, and since the
+  condition 3 correction one skill's declaration can change another's servable count in the same
+  pass. It now iterates `sorted(touched)`; three hash seeds give 222. Every comparison below was
+  run after the fix, over seeds 1 to 8, because 3 seeds cannot separate a 10-skill change from
+  the run-to-run spread (326 to 438 under one policy).
+  Baseline after the kept changes, seeds 1 to 8: 396, 405, 396, 395, 439, 386, 380, 401, mean
+  399.8 of 539.
+  Rejected, block 2 candidates reaching a fringe skill through a mastered primary (02 candidates
+  by primary skill widened to any loaded fringe skill with gating clear): 3 seeds 386, 375, 426
+  against 392, 394, 374, inside the spread. With unmastered primaries ordered first: 8 seeds mean
+  391.8 against 388.8 before the determinism fix, inside the spread. Not kept.
+  Rejected, critical path first (block 2 ties ordered by the number of unmastered teachable
+  skills behind the primary): 8 seeds 346, 290, 331, 288, 370, 347, 330, 355, mean 332.1, against
+  388.8. Concentrating block 2 on the heaviest blockers starves breadth, and breadth is what the
+  7-day span rewards, since every fringe skill's span runs on the wall clock in parallel.
+  Rejected, archetypes not yet served today first at equal due coverage (01, same-day repeats):
+  8 seeds 386, 363, 364, 409, 417, 397, 425, 391, mean 394.0 against 399.8. Not kept.
+  Budget arithmetic, seed 1, after the kept changes: of c = 10,036 success credit delivered,
+  5,917 landed on skills not yet mastered and 4,119 on skills already mastered (co-loaded
+  prerequisites and blocks 1 and 3), across 8,699 and 5,647 skill loads. Reaching 0.9 on every
+  teachable skill needs 5,785 before any overshoot, and a skill served every two to three days
+  while its 7-day span runs overshoots by several successes. The 2,836 items a 45-minute day
+  delivers over 219 days are therefore about the total need with no slack, which is why
+  reallocation inside the day moves the count by less than the seed spread.
+  Session length, measured and not changed (a product decision): block 2 at 40 minutes instead of
+  25 gives seeds 1, 2, 3 411, 409 and 435 of 539 on 3,743 to 3,909 items; at 60 minutes 446, 405
+  and 458 on 4,535 to 4,958 items, false mastery 0 throughout. Items up 73 percent move mastery
+  up about 12 percent, so the day's length is not the whole ceiling either: the blocking chains
+  are 19 deep, each skill needs 2 supported successes and then 3 unaided successes on 3 days
+  spanning 7 before the next can open, so a chain served daily needs about 9 days per skill and
+  the deepest chain about 170 of the 219 days.
 
 ## In progress [inferred]
 

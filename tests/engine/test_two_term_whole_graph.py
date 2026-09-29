@@ -23,10 +23,14 @@ def library():
 
 
 def placed_states(library, seed):
+   """Students placed across the course (operator ruling 2, 2026-09-29): the 30-item diagnostic
+   pools by unit and places nothing for a student who knows parts of six units, so its output
+   put every student on the Unit 1 fringe and this test read 2 units where it asks for more
+   than 3."""
    bank = whole_graph.synthetic_bank(library.graph)
    student = whole_graph.make_student(f"placed-{seed}", random.Random(seed))
 
-   return whole_graph.run_diagnostic(student, bank, seed=seed).states, bank
+   return whole_graph.states_across_course(student), bank
 
 
 def test_two_term_selection_whole_graph(library):

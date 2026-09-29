@@ -182,6 +182,42 @@ def make_student(name, rng, unit_ability=None):
    )
 
 
+def states_across_course(student, today=START_DAY):
+   """A student placed across the course: every known teachable skill that another known skill
+   sits behind is mastered as the diagnostic's placement would mark it, and the outermost known
+   skills stay unmastered for the student to demonstrate, the underestimate a placement accepts.
+   The 30-item diagnostic pools its posterior by unit and places skills only in a unit read as
+   fluent, so a student who knows half of six units places into nothing; the gates and
+   interleaving tests that need students spread over the course start here instead (operator
+   ruling 2, 2026-09-29)."""
+   world = library()
+   graph = world.graph
+   states = fresh_states()
+   known = {
+      skill_id
+      for skill_id in graph.skills
+      if student.true_state.get(skill_id) and graph.has_archetype(skill_id)
+   }
+   interior = {
+      parent
+      for skill_id in known
+      for parent in graph.blocking_parents(skill_id)
+      if parent in known
+   }
+
+   for skill_id in sorted(interior):
+
+      state = states[skill_id]
+      state.mastered = True
+      state.mastered_at = diagnostic.as_datetime(today)
+      state.fading_stage = FadingStage.UNSUPPORTED
+      state.stability = diagnostic.fsrs.initial_stability(diagnostic.FIRST_REVIEW_GRADE)
+      state.difficulty = diagnostic.fsrs.initial_difficulty(diagnostic.FIRST_REVIEW_GRADE)
+      state.last_practised_at = diagnostic.as_datetime(today)
+
+   return states
+
+
 def diagnostic_outcome(world_model, record, response_format, today, rng):
    """A miss is declared not learned mostly when none of the item's skills is known, which is
    what the button on 08's diagnostic item offers a student who has not met the topic."""

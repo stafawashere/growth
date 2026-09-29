@@ -132,3 +132,30 @@ def test_condition_three_counts_the_archetypes_servable_today():
 
    assert engine_graph.servable_archetype_count(skill, states) == 2
    assert required_distinct_archetypes(engine_graph.servable_archetype_count(skill, states)) == 2
+
+
+def test_a_student_placed_across_the_course_keeps_the_known_boundary_open():
+   """Operator ruling 2, 2026-09-29: the interior of the known state is mastered, the outermost
+   known skills stay open for the student to demonstrate, and nothing unknown is mastered."""
+   import random
+
+   graph = whole_graph.library().graph
+   student = whole_graph.make_student("placed", random.Random(500))
+   states = whole_graph.states_across_course(student)
+   known = {skill_id for skill_id in graph.skills if student.true_state.get(skill_id) and graph.has_archetype(skill_id)}
+   mastered = {skill_id for skill_id in graph.skills if states[skill_id].mastered}
+
+   assert mastered
+   assert mastered <= known
+
+   for skill_id in mastered:
+      has_known_child = any(
+         skill_id in graph.blocking_parents(child) for child in known
+      )
+
+      assert has_known_child, skill_id
+
+   boundary = known - mastered
+
+   assert boundary
+   assert set(outer_fringe(states, graph)) & boundary

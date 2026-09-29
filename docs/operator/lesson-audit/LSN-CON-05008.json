@@ -42,88 +42,100 @@
   "auditor": "claude-opus-5-5",
   "blocks": [
    {
+    "id": "prediction",
+    "verdict": "ok",
+    "evidence": "SymPy on ex-1 f': slopes 2, 3, 1, -2, -1, -2, the only slope sign switch at x = 3 (peak 3); zeros 4/3 and 5 are not inflection points; key A only true option; resolution matches BC-CON-05008."
+   },
+   {
     "id": "orientation",
     "verdict": "ok",
-    "evidence": "Paraphrases BC-CON-05008 and the 5.6 assessment paragraph; reason through the supplied graph matches BC-PT-99061."
+    "evidence": "Shortened paraphrase of BC-CON-05008 and BC-PT-99061 (reason through the given graph)."
    },
    {
     "id": "ki-1",
     "verdict": "ok",
-    "evidence": "Quote matches ced:104 FUN-4.A.6 verbatim; candidate versus sign change matches the concept description_plain."
+    "evidence": "'A point of inflection needs f'' to change sign.' matches description_formal; quote unchanged, verbatim on cache/text/ced/page-104.txt."
    },
    {
     "id": "st-1",
     "verdict": "ok",
-    "evidence": "Rival matches BC-QA-05005 distractor 'listing every zero of the given plotted function' and BC-ERR-05034."
+    "evidence": "method 'Where the plotted f' turns.' has no label; rival 'Its zeros, or every corner.' is BC-ERR-05033 and BC-ERR-05034."
+   },
+   {
+    "id": "st-1.contrast",
+    "verdict": "ok",
+    "evidence": "this matches BC-QA-05005 typical_wording (find the inflection point from a graph of f'); not_this is a relative extremum stem (BC-CON-05005 description_formal: f' changing from positive to negative gives a relative maximum); why_not true; the zero-of-f' confusion is BC-ERR-05033."
    },
    {
     "id": "ex-1",
     "verdict": "ok",
-    "evidence": "SymPy: slopes 2, 3, 1, -2, -1, -2 switch sign only at x = 3."
+    "evidence": "Cues and one why shortened; SymPy slope switch only at 3, key {3} unchanged."
    },
    {
     "id": "scores-ex-1",
     "verdict": "ok",
-    "evidence": "Line reproduces BC-PT-99061 name, earns and does_not_earn from the bundle."
+    "evidence": "Line reproduces BC-PT-99061 name, earns and does_not_earn from the bundle. (unchanged since 2026-09-29)"
    },
    {
     "id": "err-BC-ERR-05032",
     "verdict": "ok",
-    "evidence": "observed_behavior and scoring_consequence copied from the record."
+    "evidence": "relation distinct, fix_prompt true; only fix_prompt added, no expr rewritten, other fields as audited"
    },
    {
     "id": "err-BC-ERR-05033",
     "verdict": "ok",
-    "evidence": "SymPy: zeros of the ex-1 f' are 4/3 and 5."
+    "evidence": "relation distinct, fix_prompt true; only fix_prompt added, no expr rewritten, other fields as audited"
    },
    {
     "id": "err-BC-ERR-05034",
     "verdict": "ok",
-    "evidence": "Corners at 1, 2, 3, 4, 5 are the ex-1 breakpoints; record text copied."
+    "evidence": "relation distinct, fix_prompt true; only fix_prompt added, no expr rewritten, other fields as audited"
    },
    {
     "id": "err-BC-ERR-05035",
     "verdict": "ok",
-    "evidence": "Record text copied; matches BC-PT-99061 does_not_earn."
+    "evidence": "relation distinct, fix_prompt true; only fix_prompt added, no expr rewritten, other fields as audited"
    },
    {
     "id": "representations",
     "verdict": "ok",
-    "evidence": "At x = 1 the slopes are 2 then 3 (same sign), at x = 3 they are 1 then -2 (turn); SymPy confirmed."
+    "evidence": "At x = 1 the slopes are 2 then 3 (same sign), at x = 3 they are 1 then -2 (turn); SymPy confirmed. (unchanged since 2026-09-29)"
    },
    {
     "id": "BC-PRQ-05001",
     "verdict": "ok",
-    "evidence": "Matches the BC-PRQ-05001 description."
+    "evidence": "Shortened to 'Zeros.'; not false."
    },
    {
     "id": "BC-PRQ-05003",
     "verdict": "ok",
-    "evidence": "Matches BC-PRQ-05003 'restricting any conclusion to that set'."
+    "evidence": "Shortened to 'Domain.'; not false."
    },
    {
     "id": "chk-1",
     "verdict": "ok",
-    "evidence": "SymPy: same draw as ex-1, key {3}."
+    "evidence": "fixed 2026-09-29: stem now opens 'The example's f' has slopes 2, 3, 1, -2, -1, -2'; values, key {3} and word count unchanged. Reworded check for a delta blind re-solve: chk-1."
    },
    {
     "id": "chk-2",
     "verdict": "ok",
-    "evidence": "SymPy: slopes -2, -1, 2, 1, -1, -3 switch at 2 and 4."
+    "evidence": "SymPy: slopes -2, -1, 2, 1, -1, -3 switch at 2 and 4. (unchanged since 2026-09-29)"
    },
    {
     "id": "chk-3",
     "verdict": "ok",
-    "evidence": "SymPy: slopes 2, -1, -3, -1, 2, 1 switch at 1 and 4; f' zeros at 8/3 and 5 so A and D correct; B lists all corners."
+    "evidence": "SymPy: slopes 2, -1, -3, -1, 2, 1 switch at 1 and 4; f' zeros at 8/3 and 5 so A and D correct; B lists all corners. (unchanged since 2026-09-29)"
    }
   ],
   "advice": [
-   "err-BC-ERR-05034 illustrates every corner of a piecewise linear f', while the record describes f'' reaching zero and returning to the same sign; the illustration fits, but a sentence tying a corner with unchanged slope sign to 'same sign of f''' would help.",
-   "The representation contrasting a turn with a steepness change is a contrast delivered well; the lesson covers recognition, first line, rival and the reason point.",
-   "BC-ERR-99023 (omitting a corner where the derivative graph turns) is in the bundle but not illustrated; chk-2 covers it implicitly."
+   "The contrast not_this reads 'f' crosses zero at x = 4. Where is the relative maximum of f?'; a crossing from negative to positive gives a minimum, so 'crosses zero from positive to negative' would make the stem well posed, and the why_not could say the same direction.",
+   "ki-1 lost 'in the domain' and the f' turning reading; BC-ERR-05032 and ex-1 still carry both, but the key idea alone no longer names the domain condition.",
+   "The bridges are now one word each ('Zeros.', 'Domain.').",
+   "The ex-1 reader line (generated from BC-PT-99061) carries sg citations in served text; the generator should strip them.",
+   "Delivery reasons cite rule 3 for figure and interactive and rule 5 for text; under the current TEMPLATE.md numbering these are rules 4 and 6."
   ],
   "counts": {
-   "ok": 15,
+   "ok": 17,
    "unsourced": 0,
    "wrong": 0,
    "over_cap": 0,

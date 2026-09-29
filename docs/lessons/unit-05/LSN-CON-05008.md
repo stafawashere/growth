@@ -75,9 +75,9 @@ BC-QA-05005 is `no_calculator` and one 2-point part of a free-response question,
 
 ## Delivery
 
-- orientation: text. Rule 5, per the unit delivery map.
-- ki-1: interactive, a point dragged along the graph of f' building the sign chart of f'' as it passes each corner. Rule 3 promoted: BC-REP-02 on BC-SKL-05032 to 05035, with BC-QA-05005 `difficulty_variables` "how many points of inflection there are" and "whether a candidate is a touching zero with no sign change" [inferred; settled by the modality A/B].
-- representations: figure. Rule 3 on BC-REP-02.
+- orientation: text. Rule 6, per the unit delivery map.
+- ki-1: interactive, a point dragged along the graph of f' building the sign chart of f'' as it passes each corner. Rule 4 promoted: BC-REP-02 on BC-SKL-05032 to 05035, with BC-QA-05005 `difficulty_variables` "how many points of inflection there are" and "whether a candidate is a touching zero with no sign change" [inferred; settled by the modality A/B].
+- representations: figure. Rule 4 on BC-REP-02.
 - ex-1 and the four error blocks: step_reveal. Rule 1.
 
 ## Band plan
@@ -406,7 +406,7 @@ BC-QA-05005 is `no_calculator` and one 2-point part of a free-response question,
    },
    "completes": "ex-1",
    "stem": {
-    "text": "The ex-1 f' has slopes 2, 3, 1, -2, -1, -2 on its six segments. List the inflection points.",
+    "text": "The example's f' has slopes 2, 3, 1, -2, -1, -2 on its six segments. List the inflection points.",
     "command_verb": "find"
    },
    "key": {
@@ -540,7 +540,7 @@ BC-QA-05005 is `no_calculator` and one 2-point part of a free-response question,
   {
    "block": "orientation",
    "mode": "text",
-   "reason": "rule 5: a statement of what a response shows; unit README delivery map",
+   "reason": "rule 6: a statement of what a response shows; unit README delivery map",
    "sources": [
     "BC-SKL-05035"
    ]
@@ -548,7 +548,7 @@ BC-QA-05005 is `no_calculator` and one 2-point part of a free-response question,
   {
    "block": "ki-1",
    "mode": "interactive",
-   "reason": "rule 3 promoted: BC-REP-02 on BC-SKL-05032 to 05035; BC-QA-05005 difficulty_variables how many points of inflection there are and whether a candidate is a touching zero",
+   "reason": "rule 4 promoted: BC-REP-02 on BC-SKL-05032 to 05035; BC-QA-05005 difficulty_variables how many points of inflection there are and whether a candidate is a touching zero",
    "sources": [
     "BC-SKL-05033",
     "BC-SKL-05034",
@@ -631,7 +631,7 @@ BC-QA-05005 is `no_calculator` and one 2-point part of a free-response question,
   {
    "block": "representations",
    "mode": "figure",
-   "reason": "rule 3: BC-REP-02 on BC-SKL-05034; unit README delivery map, the touching-zero case",
+   "reason": "rule 4: BC-REP-02 on BC-SKL-05034; unit README delivery map, the touching-zero case",
    "sources": [
     "BC-SKL-05034"
    ],

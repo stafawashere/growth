@@ -75,9 +75,9 @@ BC-QA-05004 has `calculator_status` either, so the lesson takes Section I Part A
 
 ## Delivery
 
-- orientation: figure. Rule 3 on BC-REP-02 in BC-SKL-05031 (docs/lessons/unit-05/README.md, section 6).
-- ki-1: interactive, a point sliding along the graph of f' with the tangent drawn on f. Rule 3 promoted by BC-QA-05004 `common_givens` "a graph of the derivative" and `difficulty_variables` "whether the question asks for concave up or concave down"; TEMPLATE names concavity against the tangent as an interactive case [inferred; settled by the modality A/B].
-- ki-2: text. Rule 5; BC-SKL-05030 carries BC-REP-01 only.
+- orientation: figure. Rule 4 on BC-REP-02 in BC-SKL-05031 (docs/lessons/unit-05/README.md, section 6).
+- ki-1: interactive, a point sliding along the graph of f' with the tangent drawn on f. Rule 4 promoted by BC-QA-05004 `common_givens` "a graph of the derivative" and `difficulty_variables` "whether the question asks for concave up or concave down"; TEMPLATE names concavity against the tangent as an interactive case [inferred; settled by the modality A/B].
+- ki-2: text. Rule 6; BC-SKL-05030 carries BC-REP-01 only.
 - ex-1 and the four error blocks: step_reveal. Rule 1.
 
 ## Band plan
@@ -411,7 +411,7 @@ BC-QA-05004 has `calculator_status` either, so the lesson takes Section I Part A
    },
    "completes": "ex-1",
    "stem": {
-    "text": "The ex-1 f' falls only from x = 2 to x = 4. Where is f concave down?",
+    "text": "The example's f' falls only from x = 2 to x = 4. Where is f concave down?",
     "command_verb": "find"
    },
    "key": {
@@ -545,7 +545,7 @@ BC-QA-05004 has `calculator_status` either, so the lesson takes Section I Part A
   {
    "block": "orientation",
    "mode": "figure",
-   "reason": "rule 3: BC-REP-02 on BC-SKL-05031; unit README delivery map",
+   "reason": "rule 4: BC-REP-02 on BC-SKL-05031; unit README delivery map",
    "sources": [
     "BC-SKL-05031"
    ],
@@ -586,7 +586,7 @@ BC-QA-05004 has `calculator_status` either, so the lesson takes Section I Part A
   {
    "block": "ki-1",
    "mode": "interactive",
-   "reason": "rule 3 promoted: BC-REP-02 on BC-SKL-05031; BC-QA-05004 common_givens a graph of the derivative and difficulty_variables concave up or concave down, a reading the stem tests",
+   "reason": "rule 4 promoted: BC-REP-02 on BC-SKL-05031; BC-QA-05004 common_givens a graph of the derivative and difficulty_variables concave up or concave down, a reading the stem tests",
    "sources": [
     "BC-SKL-05031",
     "BC-QA-05004"
@@ -638,7 +638,7 @@ BC-QA-05004 has `calculator_status` either, so the lesson takes Section I Part A
   {
    "block": "ki-2",
    "mode": "text",
-   "reason": "rule 5: BC-SKL-05030 carries BC-REP-01 only",
+   "reason": "rule 6: BC-SKL-05030 carries BC-REP-01 only",
    "sources": [
     "BC-SKL-05030"
    ]

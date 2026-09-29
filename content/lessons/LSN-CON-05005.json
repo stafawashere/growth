@@ -3,7 +3,7 @@
  "version": 1,
  "kind": "concept",
  "target_id": "BC-CON-05005",
- "status": "draft",
+ "status": "signed_off",
  "snapshot_digest": "a6a8ec9d3f59ab8f712e33d30cc22fc64bf2c478fbe7312e3e3118d319c6a42f",
  "source_digest": "2f8a1bb94bf20489502820b61924d8c300100b2aa0a4ee619c9c48bb25571e9c",
  "read_minutes": {
@@ -11,8 +11,8 @@
   "brief": 3.0
  },
  "word_count": {
-  "full": 543,
-  "brief": 417
+  "full": 539,
+  "brief": 413
  },
  "sections": [
   {
@@ -57,7 +57,7 @@
     }
    ],
    "resolution": {
-    "text": "Near 1, (x - 1)^2 and x + 2 are positive, so f' > 0 on both sides. f' does not change sign, so neither."
+    "text": "Near 1, f' > 0 on both sides. No sign change, so neither."
    },
    "delivery": {
     "mode": "text",
@@ -84,10 +84,10 @@
     "sg-23:13"
    ],
    "evidence_tag": "inferred",
-   "text": "A response classifies the critical point and gives, as its reason, how the sign of f' behaves there.",
+   "text": "A response classifies the critical point and gives the sign behaviour of f' there as its reason.",
    "delivery": {
     "mode": "text",
-    "reason": "rule 5: a statement of what a response shows; the figure-bearing BC-REP-02 is served once, on ki-1",
+    "reason": "rule 6: a statement of what a response shows; the figure-bearing BC-REP-02 is served once, on ki-1",
     "sources": [
      "BC-SKL-05022"
     ]
@@ -120,7 +120,7 @@
    "notation": "sign change of f'",
    "delivery": {
     "mode": "interactive",
-    "reason": "rule 3 promoted: BC-REP-02 on BC-SKL-05019 to 05021; BC-QA-05003 common_givens a named input and difficulty_variables whether the answer is neither",
+    "reason": "rule 4 promoted: BC-REP-02 on BC-SKL-05019 to 05021; BC-QA-05003 common_givens a named input and difficulty_variables whether the answer is neither",
     "sources": [
      "BC-SKL-05020",
      "BC-SKL-05021",
@@ -195,7 +195,7 @@
    "archetype_id": "BC-QA-05003",
    "cue": "Maximum, minimum or neither at a named input?",
    "method": "Locate the input on f'.",
-   "rival": "The second derivative test.",
+   "rival": "The second derivative test with only f' given and its slope not discussed.",
    "separating_feature": "f' is given; read its sign each side.",
    "contrast": {
     "this": {
@@ -203,8 +203,8 @@
      "archetype_id": "BC-QA-05003"
     },
     "not_this": {
-     "text": "f'(x) = 2(x + 3)^2(x - 4). Find the absolute maximum value of f on [-5, 6].",
-     "why_not": "It asks for candidate values."
+     "text": "f'(x) = 2(x + 3)^2(x - 4). Find where f attains its absolute maximum on [-5, 6].",
+     "why_not": "It needs the candidates test."
     },
     "feature": "Relative at an input, or absolute."
    }
@@ -637,8 +637,8 @@
   "author": "tools/lesson_transcribe.py",
   "prompt_version": "generator/lesson_v2",
   "design_path": "docs/lessons/unit-05/LSN-CON-05005.md",
-  "signed_off_by": null,
-  "signed_off_at": null,
+  "signed_off_by": "claude-opus-5-5",
+  "signed_off_at": "2026-09-29",
   "not_human": true
  }
 }

@@ -3,7 +3,7 @@
  "version": 1,
  "kind": "concept",
  "target_id": "BC-CON-05012",
- "status": "draft",
+ "status": "signed_off",
  "snapshot_digest": "a6a8ec9d3f59ab8f712e33d30cc22fc64bf2c478fbe7312e3e3118d319c6a42f",
  "source_digest": "b1a6810c817f72347a2c173ce7d1449cd580a81685f697345c4d0af450692cd9",
  "read_minutes": {
@@ -11,8 +11,8 @@
   "brief": 3.0
  },
  "word_count": {
-  "full": 575,
-  "brief": 409
+  "full": 573,
+  "brief": 408
  },
  "sections": [
   {
@@ -87,7 +87,7 @@
    "text": "A response matches turning points with zeros, twice, and names the object each reason is about.",
    "delivery": {
     "mode": "figure",
-    "reason": "rule 3: BC-REP-02 on BC-SKL-05045; three fixed curves",
+    "reason": "rule 4: BC-REP-02 on BC-SKL-05045; three fixed curves",
     "sources": [
      "BC-SKL-05045"
     ],
@@ -168,7 +168,7 @@
    },
    "delivery": {
     "mode": "interactive",
-    "reason": "rule 3 promoted: BC-REP-02 on BC-SKL-05045; BC-QA-05009 difficulty_variables 'whether three objects are in play rather than two' and the stem asks for a reading along x",
+    "reason": "rule 4 promoted: BC-REP-02 on BC-SKL-05045; BC-QA-05009 difficulty_variables 'whether three objects are in play rather than two' and the stem asks for a reading along x",
     "sources": [
      "BC-SKL-05045",
      "BC-QA-05009"
@@ -262,8 +262,8 @@
      "archetype_id": "BC-QA-05009"
     },
     "not_this": {
-     "text": "Only the graph of \\(f'\\) is shown. Sketch \\(f\\).",
-     "why_not": "That reconstructs \\(f\\) from \\(f'\\)."
+     "text": "Only \\(f'\\) is plotted. On what intervals is \\(f\\) concave down?",
+     "why_not": "One curve, read for concavity."
     },
     "feature": "Three curves to sort, or one to read."
    }
@@ -302,7 +302,7 @@
    "calculator_status": "no_calculator",
    "steps": [
     {
-     "cue": "Turning points first: B turns at \\(-1\\) and \\(2\\).",
+     "cue": "B turns at \\(-1\\) and \\(2\\).",
      "why": "Which curve crosses the axis there?",
      "expression": [
       "Multiply",
@@ -571,7 +571,7 @@
     "research/units/unit-05-analytical-applications-differentiation.md#5.9 Connecting a Function, Its First Derivative, and Its Second Derivative"
    ],
    "evidence_tag": "inferred",
-   "text": "Sign table for ex-1: cut at \\(-1\\), \\(\\frac{1}{2}\\), \\(2\\). Each piece carries the sign of \\(f'\\) and of \\(f''\\), read together as rising or falling and concave up or down.",
+   "text": "The sign table cuts at \\(-1\\), \\(\\frac{1}{2}\\), \\(2\\). Each piece carries the sign of \\(f'\\) and of \\(f''\\), read together as rising or falling and concave up or down.",
    "figure": {
     "kind": "table",
     "representations": [
@@ -616,7 +616,7 @@
    },
    "delivery": {
     "mode": "table",
-    "reason": "rule 4: BC-REP-03 on BC-SKL-05047 and 05048",
+    "reason": "rule 5: BC-REP-03 on BC-SKL-05047 and 05048",
     "sources": [
      "BC-SKL-05047",
      "BC-SKL-05048"
@@ -953,8 +953,8 @@
   "author": "tools/lesson_transcribe.py",
   "prompt_version": "generator/lesson_v2",
   "design_path": "docs/lessons/unit-05/LSN-CON-05012.md",
-  "signed_off_by": null,
-  "signed_off_at": null,
+  "signed_off_by": "claude-opus-5-5",
+  "signed_off_at": "2026-09-29",
   "not_human": true
  }
 }

@@ -80,14 +80,14 @@ Every key is a verdict, so each is a statement key with option labels.
 
 ## Delivery
 
-- orientation: text. Rule 5.
-- ki-1: figure. Rule 3 on BC-REP-02 in BC-SKL-05008; not promoted, because BC-QA-05010 `difficulty_variables` are yes or no features, not a varying quantity (docs/lessons/unit-05/README.md, section 6) [inferred; settled by the modality A/B].
+- orientation: text. Rule 6.
+- ki-1: figure. Rule 4 on BC-REP-02 in BC-SKL-05008; not promoted, because BC-QA-05010 `difficulty_variables` are yes or no features, not a varying quantity (docs/lessons/unit-05/README.md, section 6) [inferred; settled by the modality A/B].
 - ex-1, ex-2 and the three error blocks: step_reveal. Rule 1.
 
 ## Band plan
 
-- Low (full), in served order: prediction, orientation, the bridge, ki-1, st-1 with its contrast pair, ex-1, chk-1, the three error blocks, ex-2 faded from step 3, chk-2, chk-3. 621 words, 4.2 minutes (cap 900 and 6).
-- Mid (brief): prediction, orientation, the bridge, ki-1, st-1 with its contrast pair, ex-1, chk-1, err-BC-ERR-05007, err-BC-ERR-05008, chk-2. 449 words, 3.0 minutes (cap 450 and 3).
+- Low (full), in served order: prediction, orientation, the bridge, ki-1, st-1 with its contrast pair, ex-1, chk-1, the three error blocks, ex-2 faded from step 3, chk-2, chk-3. 620 words, 4.2 minutes (cap 900 and 6).
+- Mid (brief): prediction, orientation, the bridge, ki-1, st-1 with its contrast pair, ex-1, chk-1, err-BC-ERR-05007, err-BC-ERR-05008, chk-2. 448 words, 3.0 minutes (cap 450 and 3).
 - Refresher: ki-1, err-BC-ERR-05007, err-BC-ERR-05008, err-BC-ERR-99008, ex-1.
 
 ## Sources
@@ -187,11 +187,11 @@ Every key is a verdict, so each is a statement key with option labels.
    "evidence_tag": "verified",
    "contrast": {
     "this": {
-     "text": "h is continuous on [2, 7] with a relative minimum at x = 5. Must h attain a maximum value there?",
+     "text": "h is continuous on [2, 7] with a relative minimum at x = 5. Must h attain a maximum value on [2, 7]?",
      "archetype_id": "BC-QA-05010"
     },
     "not_this": {
-     "text": "h is continuous on [2, 7]. Find the input in [2, 7] where h attains its maximum value.",
+     "text": "h is continuous on [2, 7]. Find the input where h attains its maximum value.",
      "why_not": "It asks where the maximum occurs, so the candidates test applies."
     },
     "feature": "Whether existence or the location is asked."
@@ -522,7 +522,7 @@ Every key is a verdict, so each is a statement key with option labels.
   {
    "block": "orientation",
    "mode": "text",
-   "reason": "rule 5: a statement of what a response shows; the figure-bearing BC-REP-02 is served once, on ki-1",
+   "reason": "rule 6: a statement of what a response shows; the figure-bearing BC-REP-02 is served once, on ki-1",
    "sources": [
     "BC-SKL-05007"
    ]
@@ -530,7 +530,7 @@ Every key is a verdict, so each is a statement key with option labels.
   {
    "block": "ki-1",
    "mode": "figure",
-   "reason": "rule 3: BC-REP-02 on BC-SKL-05008; not promoted, BC-QA-05010 difficulty_variables are yes or no features",
+   "reason": "rule 4: BC-REP-02 on BC-SKL-05008; not promoted, BC-QA-05010 difficulty_variables are yes or no features",
    "sources": [
     "BC-SKL-05008",
     "BC-QA-05010"
@@ -700,8 +700,8 @@ Every key is a verdict, so each is a statement key with option labels.
   "research/exam/exam-structure.md#Section and part layout"
  ],
  "word_count": {
-  "full": 621,
-  "brief": 449
+  "full": 620,
+  "brief": 448
  },
  "read_minutes": {
   "full": 4.2,

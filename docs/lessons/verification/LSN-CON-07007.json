@@ -39,108 +39,133 @@
   "auditor": "claude-opus-5-5",
   "blocks": [
    {
+    "id": "prediction",
+    "verdict": "ok",
+    "evidence": "SymPy: dy/y = 2x dx is equivalent to dy/dx = 2xy and separated; B dy = 2xy dx is equivalent but keeps y on the dx side; C y dy = 2x dx gives dy/dx = 2x/y, not equal to 2xy; resolution matches the 7.6 Separation paragraph (BC-EK-FUN-7D1)."
+   },
+   {
     "id": "orientation",
     "verdict": "ok",
-    "evidence": "Paraphrases BC-CON-07007 and the research 7.6 line: no separation earns none of the four (sg-23:12)."
+    "evidence": "Shortened to the 7.6 Scoring shape sequence (separate, antiderivatives, one constant, solve); true."
    },
    {
     "id": "ki-1",
-    "verdict": "ok",
-    "evidence": "Paraphrase of FUN-7.D.1 on ced:142; the sum case is BC-SKL-07028 and BC-MIS-07014."
+    "verdict": "wrong",
+    "evidence": "\"A sum does not separate.\" is false: SymPy factor(x*y + x) = x*(y + 1), a sum that separates. The earlier \"a sum with no common factor\" was the true form; BC-SKL-07028 says not separable when the right side will not factor, and st-2's separating_feature says a common factor exists."
    },
    {
     "id": "ki-2",
     "verdict": "ok",
-    "evidence": "Paraphrase of FUN-7.D.2 on ced:142 and expected_solution_path steps 2 to 5."
+    "evidence": "Shortened; one constant and the initial condition from the 7.6 Scoring shape and 7.7 Uniqueness paragraphs."
    },
    {
     "id": "st-1",
+    "verdict": "lint",
+    "evidence": "Stripping the label capitalised the variable: method \"Y with dy, x with dx.\" and separating_feature \"Y varies, so it moves first.\" now name Y, not y."
+   },
+   {
+    "id": "st-1.contrast",
     "verdict": "ok",
-    "evidence": "Method and rival match BC-QA-07003 expected_solution_path[0] and wrong_approaches[0]."
+    "evidence": "this matches BC-QA-07003 typical_wording (separation, particular solution, initial condition); SymPy: 4e^(x^3) satisfies y' = 3x^2 y and y(0) = 4, so not_this is a true verification stem (BC-QA-07007 shape, not BC-QA-07003's own); why_not and feature true."
    },
    {
     "id": "st-2",
     "verdict": "ok",
-    "evidence": "Method and rival match BC-QA-07012 expected_solution_path[0] and wrong_approaches[0]."
+    "evidence": "Label strip only; BC-QA-07012 expected_solution_path[0] and wrong_approaches."
    },
    {
     "id": "ex-1",
     "verdict": "ok",
-    "evidence": "SymPy dsolve check residual 0 and initial value 0: y = 3*exp(x**2 - 1) solves dy/dx = 2xy, y(1) = 3; C = ln 3 - 1."
+    "evidence": "Whys and cues shortened; SymPy values unchanged: log|y| = x^2 + C, C = log 3 - 1, y = 3e^(x^2 - 1)."
    },
    {
     "id": "reader-ex-1",
     "verdict": "ok",
-    "evidence": "Lines for BC-PT-99028, 99031, 99032 carry the point_types text and its sg citations."
+    "evidence": "Lines for BC-PT-99028, 99031, 99032 carry the point_types text and its sg citations.",
+    "note": "unchanged since 2026-09-29"
    },
    {
     "id": "err-BC-ERR-07024",
     "verdict": "ok",
-    "evidence": "Integrating 2xy in x with y fixed gives x**2*y + C; consequence quoted from the bundle."
+    "evidence": "Only change fix_prompt true; relation distinct; exprs differ."
    },
    {
     "id": "err-BC-ERR-07025",
     "verdict": "ok",
-    "evidence": "ln y = 2x is the x side left unintegrated; consequence quoted from the bundle."
+    "evidence": "Only change fix_prompt true; relation distinct; log(y) = 2x against log(y) = x^2 + C."
    },
    {
     "id": "err-BC-ERR-07026",
     "verdict": "ok",
-    "evidence": "Consequence and BC-MIS-07016 text match the bundle."
+    "evidence": "Only change fix_prompt true; relation distinct; C missing against present."
    },
    {
     "id": "err-BC-ERR-07028",
     "verdict": "ok",
-    "evidence": "2xy + 3 has no common factor; BC-MIS-07014 text matches."
+    "evidence": "Only change fix_prompt true; relation distinct; exprs differ."
    },
    {
     "id": "representations",
     "verdict": "ok",
-    "evidence": "null; the 7.6 Representations paragraph names BC-REP-01 and BC-REP-06 only."
+    "evidence": "null; the 7.6 Representations paragraph names BC-REP-01 and BC-REP-06 only.",
+    "note": "unchanged since 2026-09-29"
    },
    {
     "id": "bridge-BC-PRQ-06003",
     "verdict": "ok",
-    "evidence": "Matches the failure_signature on ln of a negative quantity."
+    "evidence": "Shortened; within BC-PRQ-06003 description_plain (absolute value inside ln)."
    },
    {
     "id": "bridge-BC-PRQ-07001",
     "verdict": "ok",
-    "evidence": "Matches the failure_signature on no explicit expression."
+    "evidence": "Shortened; BC-PRQ-07001 description_plain (exponentiating and isolating the variable)."
    },
    {
     "id": "bridge-BC-PRQ-07002",
     "verdict": "ok",
-    "evidence": "Matches the failure_signature on the differential not moved across."
+    "evidence": "Shortened; BC-PRQ-07002 description_plain (dy/dx split into dy and dx)."
    },
    {
     "id": "chk-1",
     "verdict": "ok",
-    "evidence": "exp(log(3) + x**2 - 1) simplifies to 3*exp(x**2 - 1)."
+    "evidence": "exp(log(3) + x**2 - 1) simplifies to 3*exp(x**2 - 1).",
+    "note": "unchanged since 2026-09-29"
    },
    {
     "id": "chk-2",
     "verdict": "ok",
-    "evidence": "SymPy dsolve check residual 0 and initial value 0 for dy/dx = -2x**2 y, y(0) = 5."
+    "evidence": "SymPy dsolve check residual 0 and initial value 0 for dy/dx = -2x**2 y, y(0) = 5.",
+    "note": "unchanged since 2026-09-29"
    },
    {
     "id": "chk-3",
     "verdict": "ok",
-    "evidence": "SymPy dsolve check residual 0 and initial value 0 for key; A: y held at 2 gives 4x**2 + C, C = -2; C: ln y = 4x + C gives 2e^(4x - 4); D: ln y = 2x**2 gives e^(2x**2)."
+    "evidence": "SymPy dsolve check residual 0 and initial value 0 for key; A: y held at 2 gives 4x**2 + C, C = -2; C: ln y = 4x + C gives 2e^(4x - 4); D: ln y = 2x**2 gives e^(2x**2).",
+    "note": "unchanged since 2026-09-29"
+   },
+   {
+    "id": "no_figure_reason",
+    "verdict": "ok",
+    "evidence": "Skills BC-SKL-07024 to 07028 carry BC-REP-01 and 06 only, none in the figure-bearing set (02, 07, 08, 12, 13, 14); ki-1 and ki-2 state rules, no process; README section 6 row agrees."
+   },
+   {
+    "id": "delivery.pr-1",
+    "verdict": "ok",
+    "evidence": "text by TEMPLATE Delivery rule 6; not a drawn block."
    }
   ],
   "advice": [
-   "Delivery modes fit: text for the rule statements, step_reveal for the process lines.",
-   "st-2 is served low band only, so the mid band never sees the separable or not judgment that BC-QA-07012 and ki-1 raise; err-BC-ERR-07028 is also low band only.",
-   "The reader lines teach the separation, constant and answer habits; the antiderivative points are untagged, so the scoring of the two antiderivatives is not shown (declared inferred).",
-   "err-BC-ERR-07024 right_step writes log(y) without absolute value while ex-1 writes log(Abs(y)); consistent notation would read better."
+   "Restore ki-1 to \"A sum with no common factor does not separate.\" (the pre-redesign wording).",
+   "st-1 method and separating_feature should start with a lower-case y, for example \"Put y with dy and x with dx.\"",
+   "The three reader-score lines carry page citations (sg-26:13 and others); verbatim record text the reader strips, not lint.",
+   "Earlier advice on st-2 and err-BC-ERR-07028 being low band only, and on log(y) against log(Abs(y)), still stands."
   ],
   "counts": {
-   "ok": 18,
+   "ok": 20,
    "unsourced": 0,
-   "wrong": 0,
+   "wrong": 1,
    "over_cap": 0,
-   "lint": 0
+   "lint": 1
   }
  }
 }

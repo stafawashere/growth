@@ -3,7 +3,7 @@
  "version": 1,
  "kind": "concept",
  "target_id": "BC-CON-05013",
- "status": "draft",
+ "status": "signed_off",
  "snapshot_digest": "a6a8ec9d3f59ab8f712e33d30cc22fc64bf2c478fbe7312e3e3118d319c6a42f",
  "source_digest": "8059dd1c4a40f1d75502af6321e9b50675874ceb14ceba735ebd4456b8b84b31",
  "read_minutes": {
@@ -89,7 +89,7 @@
    "text": "A response defines the variables, reduces the objective to one variable, states the domain, then verifies the extremum.",
    "delivery": {
     "mode": "text",
-    "reason": "rule 5: a statement of what a response shows; the diagram is served once, on ki-1",
+    "reason": "rule 6: a statement of what a response shows; the diagram is served once, on ki-1",
     "sources": [
      "BC-SKL-05049"
     ]
@@ -121,7 +121,7 @@
    "notation": "objective function; constraint; domain",
    "delivery": {
     "mode": "figure",
-    "reason": "rule 3: BC-REP-08 on BC-SKL-05049; not promoted, BC-QA-05011 difficulty_variables are yes or no features",
+    "reason": "rule 4: BC-REP-08 on BC-SKL-05049; not promoted, BC-QA-05011 difficulty_variables are yes or no features",
     "sources": [
      "BC-SKL-05049",
      "BC-QA-05011"
@@ -553,8 +553,8 @@
      "archetype_id": "BC-QA-05011"
     },
     "not_this": {
-     "text": "\\(V(x)=x(20-2x)^2\\) on \\(0\\le x\\le 10\\). Find its largest value.",
-     "why_not": "The objective is already in one variable."
+     "text": "\\(g(x)=6x-x^2\\) on \\([0,5]\\). Where does \\(g\\) attain its absolute maximum?",
+     "why_not": "No situation; the function is given."
     },
     "feature": "A situation to model, or a function given."
    }
@@ -1259,8 +1259,8 @@
   "author": "tools/lesson_transcribe.py",
   "prompt_version": "generator/lesson_v2",
   "design_path": "docs/lessons/unit-05/LSN-CON-05013.md",
-  "signed_off_by": null,
-  "signed_off_at": null,
+  "signed_off_by": "claude-opus-5-5",
+  "signed_off_at": "2026-09-29",
   "not_human": true
  }
 }

@@ -27,7 +27,7 @@ BC-SKL-05038 maps to BC-EK-FUN-4A8 (ced:105): one core block, both bands.
 
 BC-QA-05013 (research/question-analysis/question-archetypes.md#BC-QA-05013 Second derivative test applied at a critical point): `typical_wording` "determine whether the critical point is the location of a relative minimum, a relative maximum, or neither"; `common_givens` a function and a critical point; `difficulty_variables` "whether the question demands a global claim". The signal for this concept: the word "absolute", or "on the interval", beside a function with one critical point inside the stated interval. The global demand is what changes the justification (sg-25:19). Shape: one part of an FRQ or an MCQ; no `official_examples` in the record, and BC-ERR-05039 cites BC-FRQ-2022-Q3-D.
 
-What says "not this concept" (the contrast pair's near miss is the relative-only claim of BC-CON-05009 and the local-for-global rival of BC-ERR-05039 and BC-MIS-05018): "relative" alone (BC-CON-05009), or a closed interval with endpoints to compare (candidates test, BC-CON-05006).
+The contrast pair on st-1: `this` is the BC-QA-05013 `typical_wording` on \(f(x)=x^3-12x\) with the global demand its `difficulty_variables` name (only critical point 2 on x > 0, f''(2) = 12, so a relative minimum and, as the only critical point, the absolute one). `not_this` is a BC-QA-05006 `typical_wording` stem from outside this archetype, the absolute minimum value on [0, 3], which the candidates test answers: f(0) = 0, f(2) = -16, f(3) = -9, minimum -16 (SymPy). What says "not this concept": "relative" alone (BC-CON-05009), or a closed interval with endpoints to compare (candidates test, BC-CON-05006).
 
 ## Method choice
 
@@ -69,19 +69,20 @@ Two checks: the bundle holds one error, so no three-distractor MCQ can be built 
 
 ## Delivery
 
-- orientation: text. Rule 5: BC-SKL-05038 carries BC-REP-01, 04, 05 (docs/lessons/unit-05/README.md, section 6).
-- ki-1: text. Rule 5. No block is drawn, so the machine record carries `no_figure_reason`: BC-SKL-05038 carries BC-REP-01, 04 and 05, none figure-bearing, and no key idea describes a process. Example 1 is the only worked example, so nothing is faded.
+- orientation: text. Rule 6: BC-SKL-05038 carries BC-REP-01, 04, 05 (docs/lessons/unit-05/README.md, section 6).
+- ki-1: text. Rule 6. No block is drawn, so the machine record carries `no_figure_reason`: BC-SKL-05038 carries BC-REP-01, 04 and 05, none figure-bearing, and no key idea describes a process. Example 1 is the only worked example, so nothing is faded.
 - ex-1 and err-BC-ERR-05039: step_reveal. Rule 1.
 
 ## Band plan
 
-- Low (full): served order of 2026-09-29: prediction, orientation, ki-1, st-1 with its contrast pair, ex-1, chk-1, err-BC-ERR-05039, chk-2. 441 words, 3.0 minutes (cap 900 and 6). No scoring lines, no bridges, no representations.
-- Mid (brief): the same blocks. 441 words, 3.0 minutes (cap 450 and 3).
+- Low (full): served order of 2026-09-29: prediction, orientation, ki-1, st-1 with its contrast pair, ex-1, chk-1, err-BC-ERR-05039, chk-2. 443 words, 3.0 minutes (cap 900 and 6). No scoring lines, no bridges, no representations.
+- Mid (brief): the same blocks. 443 words, 3.0 minutes (cap 450 and 3).
 - Refresher: ki-1, err-BC-ERR-05039, ex-1.
 
 ## Sources
 
-- Prediction and contrast pair: BC-CON-05010, BC-CON-05009, BC-ERR-05039, BC-MIS-05018 (as above).
+- Prediction: BC-CON-05010, BC-CON-05009, BC-ERR-05039, BC-MIS-05018 (as above).
+- Contrast pair: BC-QA-05013; BC-QA-05006 and BC-CON-05006 for the not-this stem; research/question-analysis/question-archetypes.md#BC-QA-05006 Absolute extremum by the candidates test with a global justification
 
 - BC-CON-05010; BC-SKL-05038; BC-EK-FUN-4A8; ced:105
 - BC-QA-05013; sg-22:12, sg-25:5, sg-25:19
@@ -177,14 +178,14 @@ Two checks: the bundle holds one error, so no three-distractor MCQ can be built 
    "evidence_tag": "verified",
    "contrast": {
     "this": {
-     "text": "\\(f(x)=x^3-12x\\) on \\(x>0\\). Justify that \\(f\\) has an absolute minimum.",
+     "text": "\\(f(x)=x^3-12x\\) on \\(x>0\\). Is \\(x=2\\) a relative minimum, maximum or neither, and is it absolute?",
      "archetype_id": "BC-QA-05013"
     },
     "not_this": {
-     "text": "\\(f(x)=x^3-12x\\). Justify that \\(f\\) has a relative minimum at \\(x=2\\).",
-     "why_not": "Relative asks for the local test alone, with no uniqueness clause."
+     "text": "\\(f(x)=x^3-12x\\). Find the absolute minimum value of \\(f\\) on \\([0,3]\\).",
+     "why_not": "A closed interval with endpoints asks for the candidates test."
     },
-    "feature": "Absolute on an interval adds the only critical point."
+    "feature": "A classified critical point, or candidates compared."
    }
   }
  ],
@@ -415,7 +416,7 @@ Two checks: the bundle holds one error, so no three-distractor MCQ can be built 
   {
    "block": "orientation",
    "mode": "text",
-   "reason": "rule 5: BC-SKL-05038 carries BC-REP-01, 04, 05 only",
+   "reason": "rule 6: BC-SKL-05038 carries BC-REP-01, 04, 05 only",
    "sources": [
     "BC-SKL-05038"
    ]
@@ -423,7 +424,7 @@ Two checks: the bundle holds one error, so no three-distractor MCQ can be built 
   {
    "block": "ki-1",
    "mode": "text",
-   "reason": "rule 5: a theorem statement with no figure-bearing representation",
+   "reason": "rule 6: a theorem statement with no figure-bearing representation",
    "sources": [
     "BC-SKL-05038"
    ]
@@ -451,8 +452,8 @@ Two checks: the bundle holds one error, so no three-distractor MCQ can be built 
   "brief": 3.0
  },
  "word_count": {
-  "full": 441,
-  "brief": 441
+  "full": 443,
+  "brief": 443
  },
  "research_lines": [
   {
@@ -476,6 +477,8 @@ Two checks: the bundle holds one error, so no three-distractor MCQ can be built 
  ],
  "sources": [
   "BC-CON-05010",
+  "BC-QA-05006",
+  "BC-CON-05006",
   "BC-SKL-05038",
   "BC-EK-FUN-4A8",
   "ced:105",

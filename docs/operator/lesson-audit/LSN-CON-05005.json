@@ -42,84 +42,92 @@
   "auditor": "claude-opus-5-5",
   "blocks": [
    {
+    "id": "prediction",
+    "verdict": "ok",
+    "evidence": "Posed on ex-1's f'; SymPy: f'(1) = 0, f'(0.9) = 0.087 > 0, f'(1.1) = 0.093 > 0, so neither (C) is the only true option; resolution true (ced:102 FUN-4.A.2); no verdict word, no id."
+   },
+   {
     "id": "orientation",
     "verdict": "ok",
-    "evidence": "Paraphrase of BC-CON-05005, the 5.4 topic and sg-23:13 (one point for answer with reason); 31 words."
+    "evidence": "Shortened paraphrase of BC-CON-05005, the 5.4 section and sg-23:13 (classification with a reason naming the sign of f')."
    },
    {
     "id": "ki-1",
     "verdict": "ok",
-    "evidence": "fixed 2026-09-29: ki-1 interactive window y widened to [-50, 15] so f' (minimum -48 at x = -3, maximum 12 at x = 2 on [-3, 2]) is not cut off."
+    "evidence": "Paraphrase of ced:102 FUN-4.A.2 with the sg-23:13 wording advice; quote dropped (null)."
    },
    {
     "id": "st-1",
     "verdict": "ok",
-    "evidence": "BC-QA-05003 path[0] and wrong_approaches."
+    "evidence": "fixed 2026-09-29: rival now 'The second derivative test with only f' given and its slope not discussed.', carrying the BC-QA-05003 wrong_approaches condition."
+   },
+   {
+    "id": "st-1.contrast",
+    "verdict": "ok",
+    "evidence": "fixed 2026-09-29: not_this now 'f'(x) = 2(x + 3)^2(x - 4). Find where f attains its absolute maximum on [-5, 6].' (BC-QA-05006 typical_wording, input form), why_not 'It needs the candidates test.' SymPy: zeros of f' are -3, 4; f' <= 0 on [-5, 4], > 0 on (4, 6]; integral of f' from -5 to 6 is -1001/6, so f(6) < f(-5) and the maximum is at x = -5, determinable with no function value. Recognition prose and Sources name BC-QA-05006."
    },
    {
     "id": "st-2",
     "verdict": "ok",
-    "evidence": "BC-QA-05007 path[0] and wrong_approaches (solving the differential equation first)."
+    "evidence": "method 'The derivative from the relation.' has no label; BC-QA-05007 path[0] and wrong_approaches."
    },
    {
     "id": "ex-1",
     "verdict": "ok",
-    "evidence": "SymPy: f'(1) = 0; 3(x-1)^2(x+2) > 0 on both sides of 1 near 1; neither."
+    "evidence": "SymPy: f'(1) = 0; 3(x-1)^2(x+2) > 0 on both sides of 1 near 1; neither. (unchanged since 2026-09-29)"
    },
    {
     "id": "reader-ex-1",
     "verdict": "ok",
-    "evidence": "BC-PT-99012 text verbatim; in BC-QA-05003 point_types."
+    "evidence": "BC-PT-99012 text verbatim; in BC-QA-05003 point_types. (unchanged since 2026-09-29)"
    },
    {
     "id": "err-BC-ERR-05013",
     "verdict": "ok",
-    "evidence": "Record text verbatim; BC-MIS-05008 paraphrased."
+    "evidence": "fix_prompt true equals relation distinct; wrong and right expr differ (extremum_at_1 against neither_at_1); record text unchanged otherwise. Earlier: Record text verbatim; BC-MIS-05008 paraphrased."
    },
    {
     "id": "err-BC-ERR-05018",
     "verdict": "ok",
-    "evidence": "Record text verbatim."
+    "evidence": "fix_prompt true equals relation distinct; wrong and right expr differ (it_does_not_change_sign against f_prime_does_not_change_sign); record text unchanged otherwise. Earlier: Record text verbatim."
    },
    {
     "id": "err-BC-ERR-05020",
     "verdict": "ok",
-    "evidence": "Record text verbatim; critical points of ex-1 are -2 and 1."
+    "evidence": "fix_prompt true equals relation distinct; wrong and right expr differ (FiniteSet(0, 2) against FiniteSet(-2, 1)); record text unchanged otherwise. Earlier: Record text verbatim; critical points of ex-1 are -2 and 1."
    },
    {
     "id": "err-BC-ERR-05021",
     "verdict": "ok",
-    "evidence": "Record text verbatim; f' negative to positive at -2 is a minimum."
+    "evidence": "fix_prompt true equals relation distinct; wrong and right expr differ (relative_maximum_at_minus_2 against relative_minimum_at_minus_2); record text unchanged otherwise. Earlier: Record text verbatim; f' negative to positive at -2 is a minimum."
    },
    {
     "id": "representations",
     "verdict": "ok",
-    "evidence": "null."
+    "evidence": "null. (unchanged since 2026-09-29)"
    },
    {
     "id": "chk-1",
     "verdict": "ok",
-    "evidence": "f' > 0 both sides: neither."
+    "evidence": "f' > 0 both sides: neither. (unchanged since 2026-09-29)"
    },
    {
     "id": "chk-2",
     "verdict": "ok",
-    "evidence": "2(x+1)(x-3) positive left of -1, negative right: relative maximum."
+    "evidence": "2(x+1)(x-3) positive left of -1, negative right: relative maximum. (unchanged since 2026-09-29)"
    },
    {
     "id": "chk-3",
     "verdict": "ok",
-    "evidence": "x^2(x+3): negative to positive at -3, no change at 0; key C; distractors map to 05013, 05021, 05018."
+    "evidence": "x^2(x+3): negative to positive at -3, no change at 0; key C; distractors map to 05013, 05021, 05018. (unchanged since 2026-09-29)"
    }
   ],
   "advice": [
-   "st-2 (BC-QA-05007) has no worked example or check; a reader meets the cue once and never practises it.",
-   "BC-ERR-05023 (positive before and after) is taught only inside ki-1; it is a sourced scoring trap (sg-23:13) and would suit an error block or a distractor.",
-   "ki-1 interactive window y [-10, 12] clips f' below x about -2.3 (f'(-2.5) is about -18.4); widen the window or start x at -2.4.",
-   "The lesson teaches recognition, the first line and the rival clearly; the reason sentence naming f' is well drilled by chk-3 option D."
+   "ki-1 dropped 'The extreme value is f(c), found separately'; no check asks for the value, so no gap here.",
+   "st-2 (BC-QA-05007) still has no worked example or check, as the earlier audit noted."
   ],
   "counts": {
-   "ok": 14,
+   "ok": 16,
    "unsourced": 0,
    "wrong": 0,
    "over_cap": 0,

@@ -66,8 +66,8 @@
    },
    {
     "id": "st-1.contrast",
-    "verdict": "lint",
-    "evidence": "this is a BC-QA-05010 stem (TW 'must the function attain a maximum value on the closed interval'), but 'Must h attain a maximum value there?' can read as 'at x = 5', the relative minimum just named, which flips the answer to no; 'on [2, 7]' fixes it. not_this (find the input where h attains its maximum) is the BC-QA-05006 location stem and why_not, feature are true."
+    "verdict": "ok",
+    "evidence": "fixed 2026-09-29: this now ends 'Must h attain a maximum value on [2, 7]?', so it cannot be read as at x = 5; not_this shortened to 'Find the input where h attains its maximum value.' (interval already given) to hold the brief cap. Answers unchanged: yes by the Extreme Value Theorem, and the location stem is BC-QA-05006."
    },
    {
     "id": "ex-1",
@@ -131,15 +131,17 @@
    "The contrast pair's not_this points to BC-QA-05006 (the candidates test), which is not in this lesson's bundle; it is a real archetype, so this is recorded as sourced through the Recognition prose (BC-CON-05006)."
   ],
   "counts": {
-   "ok": 15,
+   "ok": 16,
    "unsourced": 0,
    "wrong": 0,
    "over_cap": 0,
-   "lint": 1
+   "lint": 0
   }
  },
  "fix_notes": [
   "chk-3 option D moved from BC-ERR-99008 to a value form of BC-ERR-05008, a held error with a block; Checks prose updated; word_count.full 523 to 524.",
-  "Left as preferences: no check tempting the differentiation rival; no official item for BC-QA-05010; ki-1 figure mode."
+  "Left as preferences: no check tempting the differentiation rival; no official item for BC-QA-05010; ki-1 figure mode.",
+  "st-1.contrast this stem 'there' replaced by 'on [2, 7]'; not_this drops the repeated interval; word_count 621/449 to 620/448.",
+  "Delivery reasons renumbered to the TEMPLATE selection rules (figure and promoted interactive rule 4, table rule 5, text rule 6) in the record and the Delivery prose."
  ]
 }

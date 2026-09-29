@@ -3,7 +3,7 @@
  "version": 1,
  "kind": "concept",
  "target_id": "BC-CON-05002",
- "status": "draft",
+ "status": "signed_off",
  "snapshot_digest": "a6a8ec9d3f59ab8f712e33d30cc22fc64bf2c478fbe7312e3e3118d319c6a42f",
  "source_digest": "b570036893f2a964e8217afc1fcfd1efd098f61ef5398dda8d4a3dc254cf8324",
  "read_minutes": {
@@ -11,8 +11,8 @@
   "brief": 3.0
  },
  "word_count": {
-  "full": 524,
-  "brief": 396
+  "full": 523,
+  "brief": 395
  },
  "sections": [
   {
@@ -82,7 +82,7 @@
    "text": "A response checks the interval is closed and f is continuous on it, saying where continuity comes from, then concludes a maximum and a minimum value are attained.",
    "delivery": {
     "mode": "text",
-    "reason": "rule 5: a statement of what a response shows; the figure-bearing BC-REP-02 is served once, on ki-1",
+    "reason": "rule 6: a statement of what a response shows; the figure-bearing BC-REP-02 is served once, on ki-1",
     "sources": [
      "BC-SKL-05007"
     ]
@@ -116,7 +116,7 @@
    },
    "delivery": {
     "mode": "figure",
-    "reason": "rule 3: BC-REP-02 on BC-SKL-05008; not promoted, BC-QA-05010 difficulty_variables are yes or no features",
+    "reason": "rule 4: BC-REP-02 on BC-SKL-05008; not promoted, BC-QA-05010 difficulty_variables are yes or no features",
     "sources": [
      "BC-SKL-05008",
      "BC-QA-05010"
@@ -236,11 +236,11 @@
    "separating_feature": "Must attain asks existence; nothing is located.",
    "contrast": {
     "this": {
-     "text": "h is continuous on [2, 7] with a relative minimum at x = 5. Must h attain a maximum value there?",
+     "text": "h is continuous on [2, 7] with a relative minimum at x = 5. Must h attain a maximum value on [2, 7]?",
      "archetype_id": "BC-QA-05010"
     },
     "not_this": {
-     "text": "h is continuous on [2, 7]. Find the input in [2, 7] where h attains its maximum value.",
+     "text": "h is continuous on [2, 7]. Find the input where h attains its maximum value.",
      "why_not": "It asks where the maximum occurs, so the candidates test applies."
     },
     "feature": "Whether existence or the location is asked."
@@ -646,8 +646,8 @@
   "author": "tools/lesson_transcribe.py",
   "prompt_version": "generator/lesson_v2",
   "design_path": "docs/lessons/unit-05/LSN-CON-05002.md",
-  "signed_off_by": null,
-  "signed_off_at": null,
+  "signed_off_by": "claude-opus-5-5",
+  "signed_off_at": "2026-09-29",
   "not_human": true
  }
 }

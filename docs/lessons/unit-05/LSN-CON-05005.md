@@ -28,7 +28,7 @@ All five skills map to BC-EK-FUN-4A2 (ced:102), so one core block, both bands.
 - BC-QA-05003 (research/question-analysis/question-archetypes.md#BC-QA-05003 Relative extremum classified from the behaviour of the first derivative): `typical_wording` "does the function have a relative minimum, a relative maximum, or neither at the named input, and give a reason for the answer"; `common_givens` a graph of the derivative made of segments and arcs, or a derivative formula, a named input; `asked_to_produce` the classification, a reason naming the sign behaviour of the derivative. The signal: "relative" and "neither" with a named input. FRQ appearances BC-FRQ-2013-Q4-A, BC-FRQ-2015-Q4-C, BC-FRQ-2015-Q5-B, BC-FRQ-2023-Q4-A.
 - BC-QA-05007 (research/question-analysis/question-archetypes.md#BC-QA-05007 Critical point located and classified for a function given indirectly): "the input at which the modelled quantity has a critical point, and determine whether it is ... a relative minimum, a relative maximum, or neither", given a differential equation with a sign fact or an accumulation function. FRQ appearances BC-FRQ-2021-Q3-B, BC-FRQ-2015-Q5-C, BC-FRQ-2024-Q3-B, BC-FRQ-2026-Q2-C.
 
-The near miss served in the contrast pair of st-1 comes from the sibling concept BC-CON-05006 and sg-25:5: the same derivative formula with the stem asking for the absolute maximum value on a closed interval, which the candidates test answers and a local sign argument does not. The pair differs in the one thing the feature names, relative at an input against absolute on an interval.
+The near miss served in the contrast pair of st-1 comes from the sibling concept BC-CON-05006 and sg-25:5: the same derivative formula with the stem asking where f attains its absolute maximum on a closed interval, BC-QA-05006 `typical_wording` "find the input at which the function attains an absolute minimum on the closed interval" turned to the maximum, from outside this lesson's archetypes. The candidates test answers it and a local sign argument does not. The input is determinable from f' alone: f' <= 0 on [-5, 4] and f' > 0 on (4, 6], and f(6) - f(-5) = -1001/6 (SymPy), so the maximum is at x = -5. The stem asks for the input because no value of f is given. The pair differs in the one thing the feature names, relative at an input against absolute on an interval.
 
 What says "not this concept": "absolute" on a closed interval asks for the candidates test (BC-CON-05006), and a local test does not earn that justification (sg-25:5).
 
@@ -80,20 +80,20 @@ BC-QA-05003 has `calculator_status` either, so the lesson takes Section I Part A
 
 ## Delivery
 
-- orientation: text. Rule 5, per the unit delivery map.
-- ki-1: interactive, a point sliding through the named input on a graph of f', reading the sign each side; window x [-3, 2] and y [-50, 15], which holds f' from -48 at x = -3 to 12 at x = 2. Rule 3 promoted: BC-REP-02 on BC-SKL-05019 to 05021, with BC-QA-05003 `common_givens` "a named input" and `difficulty_variables` "whether the answer is neither" (docs/lessons/unit-05/README.md, section 6) [inferred; settled by the modality A/B].
+- orientation: text. Rule 6, per the unit delivery map.
+- ki-1: interactive, a point sliding through the named input on a graph of f', reading the sign each side; window x [-3, 2] and y [-50, 15], which holds f' from -48 at x = -3 to 12 at x = 2. Rule 4 promoted: BC-REP-02 on BC-SKL-05019 to 05021, with BC-QA-05003 `common_givens` "a named input" and `difficulty_variables` "whether the answer is neither" (docs/lessons/unit-05/README.md, section 6) [inferred; settled by the modality A/B].
 - ex-1 and the four error blocks: step_reveal. Rule 1.
 
 ## Band plan
 
-- Low (full), in served order: prediction, orientation, ki-1, st-1 with its contrast pair, st-2, ex-1 with its scoring line, chk-1, the four error blocks, chk-2, chk-3. 629 words, 4.2 minutes (cap 900 and 6). There is one worked example, so nothing is faded.
-- Mid (brief): prediction, orientation, ki-1, st-1 with its contrast pair, ex-1 with its scoring line, chk-1, err-BC-ERR-05013, err-BC-ERR-05018, chk-2. 450 words, 3.0 minutes (cap 450 and 3).
+- Low (full), in served order: prediction, orientation, ki-1, st-1 with its contrast pair, st-2, ex-1 with its scoring line, chk-1, the four error blocks, chk-2, chk-3. 625 words, 4.2 minutes (cap 900 and 6). There is one worked example, so nothing is faded.
+- Mid (brief): prediction, orientation, ki-1, st-1 with its contrast pair, ex-1 with its scoring line, chk-1, err-BC-ERR-05013, err-BC-ERR-05018, chk-2. 446 words, 3.0 minutes (cap 450 and 3).
 - Refresher: ki-1, err-BC-ERR-05013, err-BC-ERR-05018, err-BC-ERR-05020, err-BC-ERR-05021, ex-1.
 
 ## Sources
 
 - BC-CON-05005; BC-SKL-05019 to BC-SKL-05023; BC-EK-FUN-4A2; ced:102
-- BC-CON-05006 (the sibling concept of the not-this stem in the contrast pair)
+- BC-CON-05006 and BC-QA-05006 (the sibling concept and the archetype of the not-this stem in the contrast pair); research/question-analysis/question-archetypes.md#BC-QA-05006 Absolute extremum by the candidates test with a global justification
 - BC-QA-05003, BC-QA-05007; BC-FRQ-2013-Q4-A, BC-FRQ-2015-Q4-C, BC-FRQ-2015-Q5-B, BC-FRQ-2023-Q4-A, BC-FRQ-2021-Q3-B, BC-FRQ-2015-Q5-C, BC-FRQ-2024-Q3-B, BC-FRQ-2026-Q2-C
 - BC-PT-99012, BC-PT-99013; sg-23:13, sg-25:5, sg-25:17
 - BC-ERR-05013, BC-ERR-05018, BC-ERR-05020, BC-ERR-05021, BC-ERR-05022, BC-ERR-05023, BC-ERR-99001, BC-ERR-05024; BC-MIS-05008, BC-MIS-05014
@@ -146,14 +146,14 @@ BC-QA-05003 has `calculator_status` either, so the lesson takes Section I Part A
     "is_key": true
    }
   ],
-  "resolution": "Near 1, (x - 1)^2 and x + 2 are positive, so f' > 0 on both sides. f' does not change sign, so neither.",
+  "resolution": "Near 1, f' > 0 on both sides. No sign change, so neither.",
   "sources": [
    "BC-CON-05005",
    "ced:102"
   ]
  },
  "orientation": {
-  "text": "A response classifies the critical point and gives, as its reason, how the sign of f' behaves there.",
+  "text": "A response classifies the critical point and gives the sign behaviour of f' there as its reason.",
   "sources": [
    "BC-CON-05005",
    "research/units/unit-05-analytical-applications-differentiation.md#5.4 Using the First Derivative Test to Determine Relative (Local) Extrema",
@@ -182,7 +182,7 @@ BC-QA-05003 has `calculator_status` either, so the lesson takes Section I Part A
    "archetype_id": "BC-QA-05003",
    "cue": "Maximum, minimum or neither at a named input?",
    "method": "Locate the input on f'.",
-   "rival": "The second derivative test.",
+   "rival": "The second derivative test with only f' given and its slope not discussed.",
    "separating_feature": "f' is given; read its sign each side.",
    "sources": [
     "BC-QA-05003"
@@ -194,8 +194,8 @@ BC-QA-05003 has `calculator_status` either, so the lesson takes Section I Part A
      "archetype_id": "BC-QA-05003"
     },
     "not_this": {
-     "text": "f'(x) = 2(x + 3)^2(x - 4). Find the absolute maximum value of f on [-5, 6].",
-     "why_not": "It asks for candidate values."
+     "text": "f'(x) = 2(x + 3)^2(x - 4). Find where f attains its absolute maximum on [-5, 6].",
+     "why_not": "It needs the candidates test."
     },
     "feature": "Relative at an input, or absolute."
    }
@@ -520,7 +520,7 @@ BC-QA-05003 has `calculator_status` either, so the lesson takes Section I Part A
   {
    "block": "orientation",
    "mode": "text",
-   "reason": "rule 5: a statement of what a response shows; the figure-bearing BC-REP-02 is served once, on ki-1",
+   "reason": "rule 6: a statement of what a response shows; the figure-bearing BC-REP-02 is served once, on ki-1",
    "sources": [
     "BC-SKL-05022"
    ]
@@ -528,7 +528,7 @@ BC-QA-05003 has `calculator_status` either, so the lesson takes Section I Part A
   {
    "block": "ki-1",
    "mode": "interactive",
-   "reason": "rule 3 promoted: BC-REP-02 on BC-SKL-05019 to 05021; BC-QA-05003 common_givens a named input and difficulty_variables whether the answer is neither",
+   "reason": "rule 4 promoted: BC-REP-02 on BC-SKL-05019 to 05021; BC-QA-05003 common_givens a named input and difficulty_variables whether the answer is neither",
    "sources": [
     "BC-SKL-05020",
     "BC-SKL-05021",
@@ -638,6 +638,7 @@ BC-QA-05003 has `calculator_status` either, so the lesson takes Section I Part A
  ],
  "sources": [
   "BC-CON-05005",
+  "BC-QA-05006",
   "BC-EK-FUN-4A2",
   "ced:102",
   "BC-QA-05003",
@@ -662,8 +663,8 @@ BC-QA-05003 has `calculator_status` either, so the lesson takes Section I Part A
   "research/exam/exam-structure.md#Section and part layout"
  ],
  "word_count": {
-  "full": 629,
-  "brief": 450
+  "full": 625,
+  "brief": 446
  },
  "read_minutes": {
   "full": 4.2,

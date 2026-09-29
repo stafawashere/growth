@@ -42,99 +42,108 @@
   "auditor": "claude-opus-5-5",
   "blocks": [
    {
+    "id": "prediction",
+    "verdict": "ok",
+    "evidence": "ex-1 f' joins (2, 3) and (3, 1), slope -2 (SymPy), so f' falls and stays positive; key A (down) is the only true option, B false; resolution matches ki-1 and BC-CON-05007 description_plain."
+   },
+   {
     "id": "orientation",
     "verdict": "ok",
-    "evidence": "Paraphrases BC-CON-05007 description and the 5.6 assessment paragraph: intervals where f' rises or falls, reason by behaviour of f'."
+    "evidence": "Shortened paraphrase of BC-CON-05007 and BC-QA-05004 asked_to_produce; no id."
    },
    {
     "id": "ki-1",
     "verdict": "ok",
-    "evidence": "Quote matches ced:104 FUN-4.A.4 verbatim; 'or its slopes' matches BC-QA-05004 scoring_pattern (sg-23:14)."
+    "evidence": "Shortened text true to FUN-4.A.4; quote unchanged and on cache/text/ced/page-104.txt (the cache uses a curly apostrophe in function's, the quote a straight one)."
    },
    {
     "id": "ki-2",
     "verdict": "ok",
-    "evidence": "FUN-4.A.5 on ced:104 names the second derivative giving intervals of concavity; f''>0 means f' increasing is standard."
+    "evidence": "'From f'': positive is up, negative down.' matches FUN-4.A.5 on ced:104."
    },
    {
     "id": "st-1",
     "verdict": "ok",
-    "evidence": "Rival matches BC-QA-05004 common_distractors 'reporting where the derivative is positive instead of where it is increasing'."
+    "evidence": "method 'Where f' decreases.' has no label and is expected_solution_path[0]; rival sourced by BC-ERR-05031."
+   },
+   {
+    "id": "st-1.contrast",
+    "verdict": "ok",
+    "evidence": "this matches BC-QA-05004 typical_wording (concave up or down on what intervals, from a graph of f'); SymPy on (0, 1), (2, 3), (4, -1), (6, 2): slopes 1, -2, 3/2, so concave up on (0, 2) and (4, 6); f' zeros 7/2 and 14/3, so increasing on (0, 7/2) and (14/3, 6); why_not and feature true, sourced by BC-CON-05004 and BC-ERR-05016."
    },
    {
     "id": "ex-1",
     "verdict": "ok",
-    "evidence": "SymPy: segment slopes of f' are 3, 2, -2, -2, 1, 2, so f' decreases only on (2, 4); endpoints optional per BC-PT-99062."
+    "evidence": "Cues shortened, 'only' dropped from step 1 why; SymPy slopes 3, 2, -2, -2, 1, 2, key (2, 4) unchanged."
    },
    {
     "id": "scores-ex-1",
     "verdict": "ok",
-    "evidence": "Line reproduces BC-PT-99063 name, earns and does_not_earn from the bundle."
+    "evidence": "Line reproduces BC-PT-99063 name, earns and does_not_earn from the bundle. (unchanged since 2026-09-29)"
    },
    {
     "id": "err-BC-ERR-05015",
     "verdict": "ok",
-    "evidence": "observed_behavior and scoring_consequence copied from the BC-ERR-05015 record."
+    "evidence": "relation distinct, fix_prompt true; only fix_prompt added, no expr rewritten, other fields as audited"
    },
    {
     "id": "err-BC-ERR-05016",
     "verdict": "ok",
-    "evidence": "Record text copied; (2, 4) is not an interval of decrease (f'>0 on (2, 7/2)), so it is a genuinely wrong step."
+    "evidence": "relation distinct, fix_prompt true; only fix_prompt added, no expr rewritten, other fields as audited"
    },
    {
     "id": "err-BC-ERR-05030",
     "verdict": "ok",
-    "evidence": "SymPy: slope on (4, 5) is 1; misreading it negative extends the falling stretch to (2, 5)."
+    "evidence": "relation distinct, fix_prompt true; only fix_prompt added, no expr rewritten, other fields as audited"
    },
    {
     "id": "err-BC-ERR-05031",
     "verdict": "ok",
-    "evidence": "SymPy: f' zeros at 2/3, 7/2, 5, f'<0 on (0, 2/3) U (7/2, 5)."
+    "evidence": "relation distinct, fix_prompt true; only fix_prompt added, no expr rewritten, other fields as audited"
    },
    {
     "id": "representations",
     "verdict": "ok",
-    "evidence": "null; the figure lives in delivery, nothing to verify."
+    "evidence": "null; the figure lives in delivery, nothing to verify. (unchanged since 2026-09-29)"
    },
    {
     "id": "BC-PRQ-05001",
     "verdict": "ok",
-    "evidence": "Matches the BC-PRQ-05001 description (zeros of an expression)."
+    "evidence": "Shortened to 'Zeros.'; not false."
    },
    {
     "id": "BC-PRQ-05002",
     "verdict": "ok",
-    "evidence": "Sign of an expression on each piece is consistent with the prerequisite record."
+    "evidence": "Shortened to 'Signs.'; not false."
    },
    {
     "id": "BC-PRQ-05006",
     "verdict": "ok",
-    "evidence": "Reading the plotted curve matches BC-PRQ-05006."
+    "evidence": "Shortened to 'The curve is f'.'; matches the prerequisite."
    },
    {
     "id": "chk-1",
     "verdict": "ok",
-    "evidence": "SymPy: same draw as ex-1, key (2, 4)."
+    "evidence": "fixed 2026-09-29: stem now opens 'The example's f' falls only from x = 2 to x = 4.'; values, key (2, 4) and word count unchanged. Reworded check for a delta blind re-solve: chk-1."
    },
    {
     "id": "chk-2",
     "verdict": "ok",
-    "evidence": "SymPy: slopes -3, -2, 1, 3, -2, 1, so f' rises on (2, 4) and (5, 6)."
+    "evidence": "SymPy: slopes -3, -2, 1, 3, -2, 1, so f' rises on (2, 4) and (5, 6). (unchanged since 2026-09-29)"
    },
    {
     "id": "chk-3",
     "verdict": "ok",
-    "evidence": "SymPy: slopes 2, -1, -2, -1, 3, 2, key (1, 4); A zeros 5/2 and 14/3 correct; C slope 3 on (4, 5) gives (1, 5); D slope 2 on (0, 1) gives (0, 4)."
+    "evidence": "SymPy: slopes 2, -1, -2, -1, 3, 2, key (1, 4); A zeros 5/2 and 14/3 correct; C slope 3 on (4, 5) gives (1, 5); D slope 2 on (0, 1) gives (0, 4). (unchanged since 2026-09-29)"
    }
   ],
   "advice": [
-   "The graph_pair bottom curve was checked with SymPy: its derivative equals the stated tangent slope and passes through heights -2, 1, 3, 1, -1, 0, 2; the interactive mode suits a reading of f' rising against f bending.",
-   "err-BC-ERR-05016 shows the reverse direction of the record (monotonicity reported where concavity was asked); the record's text reads the other way round. Consider a wrong step that matches the observed_behavior wording.",
-   "The reader-scores line describes a compound condition that needs both the sign and the direction of f'; ex-1 asks only a simple condition, so a reader may wonder whether its reason needs the sign. A sentence noting that the compound case needs both would close that gap.",
-   "The lesson teaches stem recognition, first line and rival well through st-1, chk-3 distractors and the four error blocks."
+   "The bridges are now one word each ('Zeros.', 'Signs.'); they no longer tell a gated student what to do and could carry a short clause again if the brief band has room.",
+   "The ex-1 reader line (generated from BC-PT-99063) carries sg citations in served text; the generator should strip them.",
+   "Delivery reasons cite rule 3 for figure and interactive and rule 5 for text; under the current TEMPLATE.md numbering these are rules 4 and 6."
   ],
   "counts": {
-   "ok": 17,
+   "ok": 19,
    "unsourced": 0,
    "wrong": 0,
    "over_cap": 0,

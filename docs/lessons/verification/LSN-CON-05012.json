@@ -60,8 +60,8 @@
    },
    {
     "id": "st-1.contrast",
-    "verdict": "unsourced",
-    "evidence": "not_this 'Only the graph of f' is shown. Sketch f.' is BC-QA-05009's own typical_wording 'sketch a possible graph of the function on the given interval' and asked_to_produce 'a sketch with the correct features', so the pair contrasts the archetype with itself; this and why_not are otherwise true."
+    "verdict": "ok",
+    "evidence": "fixed 2026-09-29: not_this now 'Only \\(f'\\) is plotted. On what intervals is \\(f\\) concave down?' (BC-QA-05004 typical_wording, outside BC-QA-05009), why_not 'One curve, read for concavity.'; feature unchanged. On ex-1's draw f'' = 1 - 2x < 0 on (1/2, oo) (SymPy), so the stem is answerable from f' alone. ex-1 step 1 cue shortened to 'B turns at \\(-1\\) and \\(2\\).' to hold the brief cap. Recognition and Sources name BC-QA-05004 and BC-CON-05007."
    },
    {
     "id": "ex-1",
@@ -90,8 +90,8 @@
    },
    {
     "id": "representations",
-    "verdict": "lint",
-    "evidence": "Served text opens 'Sign table for ex-1:' (content/lessons/LSN-CON-05012.json line 574), a block id in served text; the block is otherwise unchanged and its sign table was ok in the earlier audit."
+    "verdict": "ok",
+    "evidence": "fixed 2026-09-29: served text now opens 'The sign table cuts at'; the block id is gone and the table is unchanged."
    },
    {
     "id": "BC-PRQ-06005",
@@ -122,16 +122,18 @@
    "The lesson teaches the stem signal, the first written line (turning points) and the rival (vertical scale); scoring habits are thin because BC-QA-05009 has no point_types, which the design states."
   ],
   "counts": {
-   "ok": 13,
-   "unsourced": 1,
+   "ok": 15,
+   "unsourced": 0,
    "wrong": 0,
    "over_cap": 0,
-   "lint": 1
+   "lint": 0
   }
  },
  "fix_notes": [
   "st-1 evidence_tag fixed by the orchestrator.",
   "Fixed err-BC-ERR-05049 (advice defect): the wrong conclusion was true for this f'; now f'(-2)=-4, f'(2.5)=-1.75, f'(3)=-4 so f decreases on [-2,3], false since f'>0 on (-1,2); Traps prose updated; word_count.full 682.",
-  "Left as preference: thin scoring habits (no point_types)."
+  "Left as preference: thin scoring habits (no point_types).",
+  "st-1 contrast not_this taken from BC-QA-05004; representations text drops 'Sign table for ex-1:'; ex-1 step 1 cue drops 'Turning points first:'; word_count 702/449 to 700/448.",
+  "Delivery reasons renumbered to the TEMPLATE selection rules (figure and promoted interactive rule 4, table rule 5, text rule 6) in the record and the Delivery prose."
  ]
 }

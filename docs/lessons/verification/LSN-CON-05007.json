@@ -120,8 +120,8 @@
    },
    {
     "id": "chk-1",
-    "verdict": "lint",
-    "evidence": "Served stem opens 'The ex-1 f' falls only from x = 2 to x = 4.', a block id in served text; block unchanged since 2026-09-29, when it was marked ok."
+    "verdict": "ok",
+    "evidence": "fixed 2026-09-29: stem now opens 'The example's f' falls only from x = 2 to x = 4.'; values, key (2, 4) and word count unchanged. Reworded check for a delta blind re-solve: chk-1."
    },
    {
     "id": "chk-2",
@@ -140,15 +140,17 @@
    "Delivery reasons cite rule 3 for figure and interactive and rule 5 for text; under the current TEMPLATE.md numbering these are rules 4 and 6."
   ],
   "counts": {
-   "ok": 18,
+   "ok": 19,
    "unsourced": 0,
    "wrong": 0,
    "over_cap": 0,
-   "lint": 1
+   "lint": 0
   }
  },
  "fix_notes": [
   "Fixed err-BC-ERR-05016 (advice defect): wrong step now reads f' rises on (4, 6), so f increases on (4, 6); right step f is concave up on (4, 6), matching the record's observed_behavior (increase reported where the derivative graph rises); Traps prose line updated; word_count 550/437, read_minutes 3.7/3.0.",
-  "Left as preference: a sentence on the compound condition in the scoring line."
+  "Left as preference: a sentence on the compound condition in the scoring line.",
+  "chk-1 stem reworded to drop the block id 'ex-1'; key unchanged; needs a delta blind re-solve of chk-1.",
+  "Delivery reasons renumbered to the TEMPLATE selection rules (figure and promoted interactive rule 4, table rule 5, text rule 6) in the record and the Delivery prose."
  ]
 }

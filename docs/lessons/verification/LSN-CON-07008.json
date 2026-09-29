@@ -45,100 +45,127 @@
   "auditor": "claude-opus-5-5",
   "blocks": [
    {
+    "id": "prediction",
+    "verdict": "ok",
+    "evidence": "SymPy: 3 + Integral(2e^(-t^2), (t, 1, x)) has derivative 2e^(-x^2) and value 3 at 1, so exactly one solution passes through (1,3); B and C false; resolution matches BC-EK-FUN-7E1 (only one particular solution through a given point)."
+   },
+   {
     "id": "orientation",
     "verdict": "ok",
-    "evidence": "Paraphrases BC-CON-07008 description_plain and the research 7.7 paragraph."
+    "evidence": "Shortened; still from the 7.7 Timing of the substitution and Sign and branch paragraphs."
    },
    {
     "id": "ki-1",
     "verdict": "ok",
-    "evidence": "FUN-7.E.1 on ced:143 plus BC-ERR-07029 and BC-PRQ-07004 for substitution before the form changes and the branch."
+    "evidence": "FUN-7.E.1 on ced:143 plus BC-ERR-07029 and BC-PRQ-07004 for substitution before the form changes and the branch.",
+    "note": "unchanged since 2026-09-29"
    },
    {
     "id": "ki-2",
     "verdict": "ok",
-    "evidence": "FUN-7.E.2 on ced:143: F(x) = y0 plus the integral from a to x."
+    "evidence": "Shortened; BC-EK-FUN-7E2 accumulation form, 7.7 Accumulation form paragraph."
    },
    {
     "id": "st-1",
     "verdict": "ok",
-    "evidence": "Rival is BC-QA-07011 wrong_approaches[0]; accumulation method is in the parameter_spec notes and asked_to_produce."
+    "evidence": "Label strip and shortening; BC-QA-07011 fields."
+   },
+   {
+    "id": "st-1.contrast",
+    "verdict": "ok",
+    "evidence": "this matches BC-QA-07011 typical_wording (particular solution with the initial condition); not_this (general solution, no initial condition) is not BC-QA-07011's stem, and is the BC-CON-07003 near miss the Recognition section names; why_not and feature follow BC-EK-FUN-7E1."
    },
    {
     "id": "st-2",
     "verdict": "ok",
-    "evidence": "Method is BC-QA-07003 expected_solution_path[3]; rival is its wrong_approaches[0]."
+    "evidence": "Label strip and shortening; BC-QA-07003 fields."
    },
    {
     "id": "ex-1",
     "verdict": "ok",
-    "evidence": "SymPy: derivative of 3 + Integral(2*exp(-t**2),(t,1,x)) minus 2*exp(-x**2) is 0, value at x = 1 is 3."
+    "evidence": "SymPy: derivative of 3 + Integral(2*exp(-t**2),(t,1,x)) minus 2*exp(-x**2) is 0, value at x = 1 is 3.",
+    "note": "unchanged since 2026-09-29"
    },
    {
     "id": "ex-2",
     "verdict": "ok",
-    "evidence": "SymPy dsolve check residual 0 and initial value 0: y = sqrt(2x**2 + 7), C = 7/2."
+    "evidence": "Whys shortened; fade_from 4: shown steps give y dy = 2x dx, y^2/2 = x^2 + C and 9/2 = 1 + C; SymPy solve gives C = 7/2 and sqrt(2x^2 + 7) satisfies y' = 2x/y with y(1) = 3, so the withheld constant and branch are reachable and valued (BC-PT-99031, 99032)."
    },
    {
     "id": "reader-ex-2",
     "verdict": "ok",
-    "evidence": "Lines for BC-PT-99028, 99029, 99031, 99032 carry the point_types text."
+    "evidence": "Lines for BC-PT-99028, 99029, 99031, 99032 carry the point_types text.",
+    "note": "unchanged since 2026-09-29"
    },
    {
     "id": "err-BC-ERR-07009",
     "verdict": "ok",
-    "evidence": "BC-MIS-07005 text matches; family left with C."
+    "evidence": "Only change fix_prompt true; relation distinct; exprs differ."
    },
    {
     "id": "err-BC-ERR-07029",
     "verdict": "ok",
-    "evidence": "C = 7/2 put into sqrt(2x**2 + C) gives sqrt(2x**2 + 7/2), not the solution."
+    "evidence": "Only change fix_prompt true; relation distinct; 7/2 against 7 inside the root."
    },
    {
     "id": "err-BC-ERR-07033",
     "verdict": "ok",
-    "evidence": "Observed behavior and consequence match the bundle."
+    "evidence": "Only change fix_prompt true; relation distinct; exprs differ."
    },
    {
     "id": "err-BC-ERR-99014",
     "verdict": "ok",
-    "evidence": "dy/y = 2x dx leaves y misplaced for dy/dx = 2x/y; consequence quoted."
+    "evidence": "Only change fix_prompt true; relation distinct; exprs differ."
    },
    {
     "id": "representations",
     "verdict": "ok",
-    "evidence": "null; no figure-bearing representation."
+    "evidence": "null; no figure-bearing representation.",
+    "note": "unchanged since 2026-09-29"
    },
    {
     "id": "bridge-BC-PRQ-07004",
     "verdict": "ok",
-    "evidence": "Matches description_plain and failure_signature."
+    "evidence": "Shortened; BC-PRQ-07004 description_plain (sign decided from the initial condition)."
    },
    {
     "id": "chk-1",
     "verdict": "ok",
-    "evidence": "Same accumulation key as ex-1, verified above."
+    "evidence": "Same accumulation key as ex-1, verified above.",
+    "note": "unchanged since 2026-09-29"
    },
    {
     "id": "chk-2",
     "verdict": "ok",
-    "evidence": "SymPy: derivative of 2 + Integral(-sin(t**2),(t,0,x)) is -sin(x**2), value 2 at 0."
+    "evidence": "SymPy: derivative of 2 + Integral(-sin(t**2),(t,0,x)) is -sin(x**2), value 2 at 0.",
+    "note": "unchanged since 2026-09-29"
    },
    {
     "id": "chk-3",
     "verdict": "ok",
-    "evidence": "SymPy dsolve check residual 0 and initial value 0 for sqrt(3x**2 + 4); C: C = 2 into sqrt(3x**2 + C); D: ln y = 3x**2/2 + C, C = ln 4 - 6 gives 4e^(3x**2/2 - 6)."
+    "evidence": "SymPy dsolve check residual 0 and initial value 0 for sqrt(3x**2 + 4); C: C = 2 into sqrt(3x**2 + C); D: ln y = 3x**2/2 + C, C = ln 4 - 6 gives 4e^(3x**2/2 - 6).",
+    "note": "unchanged since 2026-09-29"
+   },
+   {
+    "id": "no_figure_reason",
+    "verdict": "unsourced",
+    "evidence": "Says the skills carry \"symbolic, contextual and differential-equation\" representations; the bundle gives BC-REP-01, 06 and BC-REP-04 (Verbal description in data/taxonomies.json), not BC-REP-05 Contextual model. The rest of the reason is true: none figure-bearing, no process key idea."
+   },
+   {
+    "id": "delivery.pr-1",
+    "verdict": "ok",
+    "evidence": "text by TEMPLATE Delivery rule 6; not a drawn block."
    }
   ],
   "advice": [
-   "st-1 rival (branch chosen by the sign of C) does not arise in the accumulation form that st-1 and ex-1 teach; the separating feature is thin for that shape.",
-   "st-2 rival (y treated as a constant) does not contrast with its separating feature (C fixed while it stands alone); BC-ERR-07029 is the natural rival here.",
-   "ex-1 step 2 carries no expression; a reader sees a cue with no written line.",
-   "The BC-PT-99032 reader line says any equivalent exponential form, while ex-2 ends in a square root; the source wording, but a reader may be confused."
+   "Change \"contextual\" to \"verbal\" in no_figure_reason (BC-REP-04 is Verbal description).",
+   "The prediction stem states the premise (solutions differ by a constant), so the question tests the consequence, not the premise; acceptable, but it makes the key close to given.",
+   "The four reader-score lines carry page citations; verbatim record text the reader strips, not lint.",
+   "Earlier advice on st-1 and st-2 rivals, ex-1 step 2 with no expression, and the BC-PT-99032 exponential-form wording still stands."
   ],
   "counts": {
-   "ok": 17,
-   "unsourced": 0,
+   "ok": 20,
+   "unsourced": 1,
    "wrong": 0,
    "over_cap": 0,
    "lint": 0

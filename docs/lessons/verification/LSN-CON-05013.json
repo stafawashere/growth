@@ -60,8 +60,8 @@
    },
    {
     "id": "st-1.contrast",
-    "verdict": "unsourced",
-    "evidence": "not_this 'V(x)=x(20-2x)^2 on 0<=x<=10. Find its largest value.' is a form of BC-QA-05011 itself: multipart_structure 'or a multiple choice item that supplies the reduced objective' and 5.10 Assessment behaviour 'MCQ forms supply the reduced objective already and ask for the extremum'. this (typical_wording[0]) and why_not are true; SymPy crit 10/3."
+    "verdict": "ok",
+    "evidence": "fixed 2026-09-29: not_this now a bare function, '\\(g(x)=6x-x^2\\) on \\([0,5]\\). Where does \\(g\\) attain its absolute maximum?' (BC-QA-05006 typical_wording, outside BC-QA-05011), why_not 'No situation; the function is given.'; this and feature unchanged. SymPy: g'(x) = 6 - 2x zero at 3, g(0) = 0, g(3) = 9, g(5) = 5, so x = 3. Recognition and Sources prose updated."
    },
    {
     "id": "ex-1",
@@ -123,8 +123,8 @@
    "Recognition, first line and rival are taught; the scoring habit (candidates test with both endpoints) is shown in ex-1 but not named as a scored point, since BC-QA-05011 has no point_types."
   ],
   "counts": {
-   "ok": 14,
-   "unsourced": 1,
+   "ok": 15,
+   "unsourced": 0,
    "wrong": 0,
    "over_cap": 0,
    "lint": 0
@@ -133,6 +133,8 @@
  "fix_notes": [
   "st-1 evidence_tag fixed by the orchestrator.",
   "Fixed err-BC-ERR-05053 (advice defect): wrong step now dV/dw = 0 once w is replaced, so every x is critical, matching chk-3 option D; word_count.full 595.",
-  "Left as preferences: sources naming sg-25:5; BC-ERR-05054 block; naming the candidates test as a scored point."
+  "Left as preferences: sources naming sg-25:5; BC-ERR-05054 block; naming the candidates test as a scored point.",
+  "st-1 contrast not_this replaced by a bare BC-QA-05006 function; word counts unchanged (605/448).",
+  "Delivery reasons renumbered to the TEMPLATE selection rules (figure and promoted interactive rule 4, table rule 5, text rule 6) in the record and the Delivery prose."
  ]
 }

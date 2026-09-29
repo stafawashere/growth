@@ -33,59 +33,77 @@
   "auditor": "claude-opus-5-5",
   "blocks": [
    {
+    "id": "prediction",
+    "verdict": "ok",
+    "evidence": "SymPy: y = 1/(4 - 2x) residual 0 against dy/dx = 2y**2, y(1) = 1/2; continuous_domain is (-oo, 2) U (2, oo), so A (every x) and C (only x = 1) are false and B is the only true option. Stem gives the break, so it is answerable before the rule. Resolution is research_lines[0] (7.7 Domain restriction). No id or verdict word."
+   },
+   {
     "id": "orientation",
     "verdict": "ok",
-    "evidence": "Paraphrases BC-CON-07009 description_plain and BC-ERR-07031 consequence."
+    "evidence": "Shortened paraphrase of BC-CON-07009 description_plain and the 7.7 Domain restriction paragraph; no id or tag."
    },
    {
     "id": "ki-1",
     "verdict": "ok",
-    "evidence": "FUN-7.E.3 on ced:143 plus the research 7.7 paragraph; the no crossing reason is declared inferred in the record."
+    "evidence": "BC-EK-FUN-7E3 (ced:143) and the 7.7 Domain restriction line; the no crossing sentence is still declared in inferred[2]. Only 'and continuous' was cut, which the defined-formula wording still covers for these draws."
    },
    {
     "id": "st-1",
     "verdict": "ok",
-    "evidence": "Cue from BC-QA-07011 typical_wording; method from expected_solution_path[2]; rival is wrong_approaches[0]."
+    "evidence": "Method no longer opens with a label; cue from BC-QA-07011 typical_wording, method from expected_solution_path steps 3 and 4, rival is wrong_approaches[0] without the 'Rival:' prefix."
+   },
+   {
+    "id": "st-1.contrast",
+    "verdict": "ok",
+    "evidence": "this matches BC-QA-07011 typical_wording (find the particular solution and state the interval); SymPy dsolve gives y = -2/(x - 2), break at 2, so the stem is well posed. not_this drops the interval clause, is not the archetype's own stem, and why_not (no interval asked) is true; feature is the separating phrase."
    },
    {
     "id": "ex-1",
     "verdict": "ok",
-    "evidence": "SymPy dsolve check residual 0 and initial value 0: y = 1/(4 - 2x) solves dy/dx = 2y**2, y(1) = 1/2; blowup = start + 1/(rate*initial) = 2; interval (-oo, 2)."
+    "evidence": "Only cues changed. SymPy (earlier evidence re-run): y = 1/(4 - 2x) solves the equation with y(1) = 1/2, singular at x = 2, component holding 1 is (-oo, 2)."
    },
    {
     "id": "err-BC-ERR-07031",
     "verdict": "ok",
-    "evidence": "Observed behavior, consequence and BC-MIS-07019 text match the bundle."
+    "evidence": "relation distinct, fix_prompt true; Interval(-oo, oo) differs from Interval(-oo, 2); texts match BC-ERR-07031 and BC-MIS-07019."
    },
    {
     "id": "representations",
     "verdict": "ok",
-    "evidence": "null."
+    "evidence": "null.",
+    "note": "unchanged since 2026-09-29"
    },
    {
-    "id": "bridge-BC-PRQ-05003",
+    "id": "BC-PRQ-05003",
     "verdict": "ok",
-    "evidence": "Paraphrase of description_plain and failure_signature."
+    "evidence": "Paraphrase of BC-PRQ-05003 description_plain (inputs where the function is defined)."
    },
    {
     "id": "chk-1",
     "verdict": "ok",
-    "evidence": "Denominator zero at 2; interval containing 1 is (-oo, 2)."
+    "evidence": "Denominator zero at 2; interval containing 1 is (-oo, 2).",
+    "note": "unchanged since 2026-09-29"
    },
    {
     "id": "chk-2",
     "verdict": "ok",
-    "evidence": "SymPy dsolve check residual 0 and initial value 0: y = 2/(2x + 1) for dy/dx = -y**2, y(0) = 2; break -1/2; interval (-1/2, oo)."
+    "evidence": "SymPy dsolve check residual 0 and initial value 0: y = 2/(2x + 1) for dy/dx = -y**2, y(0) = 2; break -1/2; interval (-1/2, oo).",
+    "note": "unchanged since 2026-09-29"
+   },
+   {
+    "id": "no_figure_reason",
+    "verdict": "ok",
+    "evidence": "29 words (cap 40). BC-SKL-07031 carries BC-REP-01 and BC-REP-04 only, none of BC-REP-02, 03, 07, 08; ki-1 states a rule, not a process."
    }
   ],
   "advice": [
-   "st-1 rival (branch by the sign of C) does not match the interval idea the block teaches; its separating feature is about the interval, so rival and feature do not contrast.",
-   "ki-1 at 68 words carries the no crossing reason that is marked inferred; a reader cannot tell it is beyond the CED wording.",
-   "No reader lines and one error block: the scoring habit (state the interval with the solution) rests on the orientation and the error block alone.",
-   "A number line interactive for the break and the side holding the initial input would suit the reading in ex-1 steps 6 to 8 better than text."
+   "st-1 rival (branch by the sign of C) still does not contrast with the separating feature (the interval must contain the initial input); the rival is about the branch, the feature about the interval.",
+   "no_figure_reason says the rule is read from a formula's denominator while ki-1 also names a logarithm or root losing its domain; 'from where a formula is undefined' would match ki-1.",
+   "BC-PRQ-05003 bridge now carries description_plain only; the design's Prerequisite bridge section still says it is built from description_plain and failure_signature.",
+   "A number line interactive for the break and the side holding the initial input would suit ex-1 steps 6 to 8 better than text (carried from the earlier audit)."
   ],
   "counts": {
-   "ok": 9,
+   "ok": 12,
    "unsourced": 0,
    "wrong": 0,
    "over_cap": 0,

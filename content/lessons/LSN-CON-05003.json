@@ -3,7 +3,7 @@
  "version": 1,
  "kind": "concept",
  "target_id": "BC-CON-05003",
- "status": "draft",
+ "status": "signed_off",
  "snapshot_digest": "a6a8ec9d3f59ab8f712e33d30cc22fc64bf2c478fbe7312e3e3118d319c6a42f",
  "source_digest": "4fd1184f6c87dec8f746814ef4aa37db1875cf66f143ec370d4fccce805471ac",
  "read_minutes": {
@@ -84,7 +84,7 @@
    "text": "A response writes f'(x) = 0 and adds the inputs where f' fails to exist.",
    "delivery": {
     "mode": "figure",
-    "reason": "rule 3: BC-REP-02 on BC-SKL-05010 to 05013; unit README delivery map",
+    "reason": "rule 4: BC-REP-02 on BC-SKL-05010 to 05013; unit README delivery map",
     "sources": [
      "BC-SKL-05010",
      "BC-SKL-05011"
@@ -159,7 +159,7 @@
    "notation": "critical point",
    "delivery": {
     "mode": "figure",
-    "reason": "rule 3: BC-REP-02 on BC-SKL-05010, 05011; BC-QA-05014 difficulty_variables name a categorical shape, so static",
+    "reason": "rule 4: BC-REP-02 on BC-SKL-05010, 05011; BC-QA-05014 difficulty_variables name a categorical shape, so static",
     "sources": [
      "BC-SKL-05011",
      "BC-QA-05014"
@@ -276,7 +276,7 @@
    "notation": "relative extremum; absolute extremum",
    "delivery": {
     "mode": "figure",
-    "reason": "rule 3: BC-REP-02 on BC-SKL-05012, 05013",
+    "reason": "rule 4: BC-REP-02 on BC-SKL-05012, 05013",
     "sources": [
      "BC-SKL-05012",
      "BC-SKL-05013"
@@ -383,7 +383,7 @@
    "evidence_tag": "verified",
    "archetype_id": "BC-QA-05014",
    "cue": "All critical points, from a quotient with a fractional power.",
-   "method": "F'(x).",
+   "method": "f'(x).",
    "rival": "Setting only f'(x) = 0.",
    "separating_feature": "A fractional power can make f' undefined.",
    "contrast": {
@@ -414,7 +414,7 @@
    "evidence_tag": "verified",
    "archetype_id": "BC-QA-05006",
    "cue": "Absolute extremum on a closed interval, from f or f' and the interval.",
-   "method": "F'(x) = 0, as an equation.",
+   "method": "f'(x) = 0, as an equation.",
    "rival": "Citing the Extreme Value Theorem to locate it.",
    "separating_feature": "Absolute asks for a comparison with every candidate."
   },
@@ -1205,8 +1205,8 @@
   "author": "tools/lesson_transcribe.py",
   "prompt_version": "generator/lesson_v2",
   "design_path": "docs/lessons/unit-05/LSN-CON-05003.md",
-  "signed_off_by": null,
-  "signed_off_at": null,
+  "signed_off_by": "claude-opus-5-5",
+  "signed_off_at": "2026-09-29",
   "not_human": true
  }
 }

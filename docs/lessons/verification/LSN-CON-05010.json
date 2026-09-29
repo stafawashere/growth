@@ -54,8 +54,8 @@
    },
    {
     "id": "st-1.contrast",
-    "verdict": "unsourced",
-    "evidence": "this ('Justify that f has an absolute minimum' on x > 0) matches neither BC-QA-05013 typical_wording (classify the critical point as relative minimum, maximum or neither) nor its asked_to_produce (the second derivative, the classification), and not_this ('Justify that f has a relative minimum at x = 2') is that archetype's own stem. The math holds (SymPy: x^3 - 12x on x > 0, only critical point 2, minimum -16), and the difficulty variable 'whether the question demands a global claim' is the nearest support, but it is not a stem."
+    "verdict": "ok",
+    "evidence": "fixed 2026-09-29: rebuilt around BC-QA-05013: this '\\(f(x)=x^3-12x\\) on \\(x>0\\). Is \\(x=2\\) a relative minimum, maximum or neither, and is it absolute?' (typical_wording plus the difficulty variable 'whether the question demands a global claim'); not_this '\\(f(x)=x^3-12x\\). Find the absolute minimum value of \\(f\\) on \\([0,3]\\).' (BC-QA-05006 typical_wording, outside the archetype); why_not 'A closed interval with endpoints asks for the candidates test.'; feature 'A classified critical point, or candidates compared.' SymPy: f' zeros -2, 2, f''(2) = 12, so a relative minimum and, as the only critical point on x > 0, absolute; on [0, 3] f(0) = 0, f(2) = -16, f(3) = -9, minimum -16."
    },
    {
     "id": "ex-1",
@@ -94,14 +94,16 @@
    "Earlier advice stands: the st-1 rival (sign of the function value) is not the rival this lesson is about; the local verdict without the uniqueness clause (BC-ERR-05039) is."
   ],
   "counts": {
-   "ok": 10,
-   "unsourced": 1,
+   "ok": 11,
+   "unsourced": 0,
    "wrong": 0,
    "over_cap": 0,
    "lint": 0
   }
  },
  "fix_notes": [
-  "No findings and no defects; left as preferences: naming BC-ERR-05039 as the st-1 rival; a check with two critical points in the interval."
+  "No findings and no defects; left as preferences: naming BC-ERR-05039 as the st-1 rival; a check with two critical points in the interval.",
+  "st-1 contrast pair rebuilt with a BC-QA-05013 this stem and a BC-QA-05006 candidates-test not_this; Recognition and Sources prose updated; word_count 441/441 to 443/443.",
+  "Delivery reasons renumbered to the TEMPLATE selection rules (figure and promoted interactive rule 4, table rule 5, text rule 6) in the record and the Delivery prose."
  ]
 }

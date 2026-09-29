@@ -48,100 +48,109 @@
   "auditor": "claude-opus-5-5",
   "blocks": [
    {
+    "id": "prediction",
+    "verdict": "ok",
+    "evidence": "SymPy: x^3 - 3x has f' zeros -1, 1, f''(-1) = -6; values at -2, -1, 1, 3 are -2, 2, -2, 18, so only B (x = 3) is true; A gives 2, C gives -2; resolution matches; answerable from ex-1 numbers; BC-CON-05006 description_plain names endpoints."
+   },
+   {
     "id": "orientation",
     "verdict": "ok",
-    "evidence": "Paraphrase of BC-CON-05006 and the 5.5 topic; 28 words."
+    "evidence": "Shortened paraphrase of BC-CON-05006 description_plain and BC-QA-05006 expected_solution_path; no id or count."
    },
    {
     "id": "ki-1",
     "verdict": "ok",
-    "evidence": "Quote matches ced:103 verbatim; missing endpoint and evaluation error losses from sg-23:15 via BC-PT-99011."
+    "evidence": "Shortened text; quote unchanged, verbatim substring of cache/text/ced/page-103.txt; value against location per sg-23:15 via the 5.5 section."
    },
    {
     "id": "st-1",
     "verdict": "ok",
-    "evidence": "fixed 2026-09-29: sources now cite BC-ERR-99004 for the local test rival; Method choice prose says so."
+    "evidence": "method no longer opens with a label ('f'(x) = 0, as an equation.' is expected_solution_path[0]); rival sourced by BC-ERR-99004; no id in served fields."
+   },
+   {
+    "id": "st-1.contrast",
+    "verdict": "ok",
+    "evidence": "this matches BC-QA-05006 typical_wording (absolute extremum on a closed interval, justify); SymPy: x^3 - 12x on [-4, 5] candidates -4, -2, 2, 5 give -16, 16, -16, 65; not_this (relative minimum at x = 2, f'(2) = 0, f''(2) = 12) is a first derivative test stem, BC-CON-05005, with sg-26:8 in research/scoring/justification-requirements.md; why_not true."
    },
    {
     "id": "ex-1",
     "verdict": "ok",
-    "evidence": "SymPy: f' zeros -1, 1; f at -2, -1, 1, 3 is -2, 2, -2, 18; maximum 18."
+    "evidence": "Only cues and one why shortened; SymPy values -2, 2, -2, 18, maximum 18 unchanged."
    },
    {
     "id": "ex-2",
     "verdict": "ok",
-    "evidence": "SymPy: 1 - 4/x^2 zeros -2, 2; f at 1, 2, 4 is 5, 4, 5; minimum 4."
+    "evidence": "fade_from 4: shown steps give f' = 0, roots {-2, 2} and the candidate list {1, 2, 4}; SymPy f(1), f(2), f(4) = 5, 4, 5, so a student can finish; withheld steps 4 and 5 carry values Tuple(5, 4, 5) and 4."
    },
    {
     "id": "reader-ex-1",
     "verdict": "ok",
-    "evidence": "BC-PT-99011 text verbatim; in BC-QA-05006 point_types."
+    "evidence": "BC-PT-99011 text verbatim; in BC-QA-05006 point_types. (unchanged since 2026-09-29)"
    },
    {
     "id": "reader-ex-2",
     "verdict": "ok",
-    "evidence": "Empty entry; no claim made."
+    "evidence": "Empty entry; no claim made. (unchanged since 2026-09-29)"
    },
    {
     "id": "err-BC-ERR-05011",
     "verdict": "ok",
-    "evidence": "Record text verbatim; BC-MIS-05009 paraphrased."
+    "evidence": "relation distinct, fix_prompt true; only fix_prompt added, no expr rewritten, other fields as audited"
    },
    {
     "id": "err-BC-ERR-05025",
     "verdict": "ok",
-    "evidence": "SymPy: f(-2) = -4 for x + 4/x; record text verbatim."
+    "evidence": "relation distinct, fix_prompt true; only fix_prompt added, no expr rewritten, other fields as audited"
    },
    {
     "id": "err-BC-ERR-05026",
     "verdict": "ok",
-    "evidence": "Interior values 2 and -2 give 2; f(3) = 18; record text verbatim."
+    "evidence": "relation distinct, fix_prompt true; only fix_prompt added, no expr rewritten, other fields as audited"
    },
    {
     "id": "err-BC-ERR-05027",
     "verdict": "ok",
-    "evidence": "27 - 3 = 24 versus 27 - 9 = 18; record text verbatim."
+    "evidence": "relation distinct, fix_prompt true; only fix_prompt added, no expr rewritten, other fields as audited"
    },
    {
     "id": "representations",
     "verdict": "ok",
-    "evidence": "Table values match ex-1 evaluations."
+    "evidence": "Table values match ex-1 evaluations. (unchanged since 2026-09-29)"
    },
    {
-    "id": "bridge-BC-PRQ-05004",
+    "id": "BC-PRQ-05004",
     "verdict": "ok",
-    "evidence": "Paraphrase of description_plain."
+    "evidence": "Shortened to '[a, b] includes both endpoints.'; still a paraphrase of description_plain."
    },
    {
-    "id": "bridge-BC-PRQ-06005",
+    "id": "BC-PRQ-06005",
     "verdict": "ok",
-    "evidence": "Paraphrase of description_plain."
+    "evidence": "Shortened to 'f(3) is a value of f.'; still a paraphrase of description_plain."
    },
    {
     "id": "chk-1",
     "verdict": "ok",
-    "evidence": "Largest of -2, 2, -2, 18 is 18."
+    "evidence": "Largest of -2, 2, -2, 18 is 18. (unchanged since 2026-09-29)"
    },
    {
     "id": "chk-2",
     "verdict": "ok",
-    "evidence": "SymPy: f' zeros 0, 2; f at -2, 0, 2, 5 is 24, 4, 8, -46; minimum -46."
+    "evidence": "SymPy: f' zeros 0, 2; f at -2, 0, 2, 5 is 24, 4, 8, -46; minimum -46. (unchanged since 2026-09-29)"
    },
    {
     "id": "chk-3",
     "verdict": "ok",
-    "evidence": "SymPy: x + 9/x at -3, 1, 3, 6 is -6, 10, 6, 15/2; key 6; option D 10/3 is 3 + 9/3 misread as 3 + 1/3, matching its derivation."
+    "evidence": "SymPy: x + 9/x at -3, 1, 3, 6 is -6, 10, 6, 15/2; key 6; option D 10/3 is 3 + 9/3 misread as 3 + 1/3, matching its derivation. (unchanged since 2026-09-29)"
    }
   ],
   "advice": [
-   "ex-2 is a justify problem but its reader-scores entry is empty and its last step carries no BC-PT-99011 tag; tag it as ex-1 is.",
-   "err-BC-ERR-05011 has no anchor example: ex-1 and ex-2 have f' defined on the whole interval, so the block shows no missed input.",
-   "st-1 rival differs from BC-QA-05006 wrong_approaches (EVT as locating); both are sourced, but citing BC-ERR-99004 in st-1 sources would make it traceable.",
-   "BC-ERR-05024 and BC-ERR-05028 (input versus value, largest versus smallest) are in the bundle; ki-1 covers 05024 in one sentence; no check probes either.",
-   "Table for the candidate list is the right mode for tabular data."
+   "The ex-1 reader line (generated by reader_line from BC-PT-99011) carries '(sg-25:5, sg-25:19)' and other sg citations in served text; the block is unchanged and keeps its ok, but the generator should strip citations before serving.",
+   "The delivery reasons cite rule 3 for the ki-1 figure, rule 4 for the table and rule 5 for text; under the current TEMPLATE.md numbering those are rules 4, 5 and 6.",
+   "The Key ideas prose says the anchor quote has 18 words; it has 19.",
+   "err-BC-ERR-05011 still has no anchor input where f' is undefined (earlier advice); a cusp or corner in a check would make it concrete."
   ],
   "counts": {
-   "ok": 17,
+   "ok": 19,
    "unsourced": 0,
    "wrong": 0,
    "over_cap": 0,

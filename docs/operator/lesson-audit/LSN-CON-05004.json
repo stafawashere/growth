@@ -42,99 +42,109 @@
   "auditor": "claude-opus-5-5",
   "blocks": [
    {
+    "id": "prediction",
+    "verdict": "ok",
+    "evidence": "Posed on ex-1's f'; SymPy: f' > 0 on (-1, 1) U (3, oo); A (-1, 3) includes (1, 3) where f' < 0 (BC-ERR-05017), C (-oo, -1) has f'(-2) = -10/3 < 0 (BC-ERR-05014); resolution is ced:101 FUN-4.A.1; no verdict word, no id."
+   },
+   {
     "id": "orientation",
     "verdict": "ok",
-    "evidence": "Paraphrase of BC-CON-05004 and the 5.3 topic; 30 words."
+    "evidence": "Shortened paraphrase of BC-CON-05004 and the 5.3 Assessment behaviour (partition, cite the sign of f'); sourced, see advice on wording."
    },
    {
     "id": "ki-1",
     "verdict": "ok",
-    "evidence": "Quote is a substring of ced:101 FUN-4.A.1 verbatim; 41 words."
+    "evidence": "Paraphrase of ced:101 FUN-4.A.1 and the 5.3 section (partition at zeros and undefined points); quote dropped (null)."
    },
    {
     "id": "st-1",
     "verdict": "ok",
-    "evidence": "BC-QA-05008 path[0] and wrong_approaches (testing a single input and generalising)."
+    "evidence": "method 'Zeros of f' and undefined points.' has no label; BC-QA-05008 path[0]; rival shortened from wrong_approaches 'testing a single input and generalising'."
+   },
+   {
+    "id": "st-1.contrast",
+    "verdict": "ok",
+    "evidence": "this matches BC-QA-05008 TW 'on what open intervals is the function increasing'; not_this asks concavity, the swap BC-ERR-05016 and BC-MIS-05020 name; SymPy: increasing on (-oo, -3) U (2, oo), f'' = -5/(x - 2)^2 so the not_this answer (never concave up) differs; why_not and feature true."
    },
    {
     "id": "ex-1",
     "verdict": "ok",
-    "evidence": "SymPy: f'(0) = 6, f'(2) = -6, f'(-2) = -10/3, f'(4) = 10/3; positive on (-1, 1) and (3, oo)."
+    "evidence": "SymPy: f'(0) = 6, f'(2) = -6, f'(-2) = -10/3, f'(4) = 10/3; positive on (-1, 1) and (3, oo). (unchanged since 2026-09-29)"
    },
    {
     "id": "reader-ex-1",
     "verdict": "ok",
-    "evidence": "fixed 2026-09-29: ex-1 reason step and scoring line retagged BC-PT-99005 (answer with supporting work), listed by BC-QA-05008, since ex-1 asks a single condition and BC-PT-99063 earns only a compound condition reason (sg-26:16); line is reader_checks(['BC-PT-99005']). Brief text trimmed to the cap (orientation, ki-1, st-1, ex-1 wording, chk-2 stem, bridges) with the teaching kept; word counts 585 and 450."
+    "evidence": "fixed 2026-09-29: ex-1 reason step and scoring line retagged BC-PT-99005 (answer with supporting work), listed by BC-QA-05008, since ex-1 asks a single condition and BC-PT-99063 earns only a compound condition reason (sg-26:16); line is reader_checks(['BC-PT-99005']). Brief text trimmed to the cap (orientation, ki-1, st-1, ex-1 wording, chk-2 stem, bridges) with the teaching kept; word counts 585 and 450. (unchanged since 2026-09-29)"
    },
    {
     "id": "err-BC-ERR-05014",
     "verdict": "ok",
-    "evidence": "Record text verbatim; f'(-2) < 0 so (-oo, -1) is wrongly added."
+    "evidence": "fix_prompt true equals relation distinct; wrong and right expr differ (Union(Interval.open(-oo, -1), Interval.open(-1, 1), Interval.open(3, oo)) against Union(Interval.open(-1, 1), Interval.open(3, oo))); record text unchanged otherwise. Earlier: Record text verbatim; f'(-2) < 0 so (-oo, -1) is wrongly added."
    },
    {
     "id": "err-BC-ERR-05015",
     "verdict": "ok",
-    "evidence": "Record text verbatim; BC-MIS-05011 paraphrased."
+    "evidence": "fix_prompt true equals relation distinct; wrong and right expr differ (plotted_curve_rises against plotted_curve_above_axis); record text unchanged otherwise. Earlier: Record text verbatim; BC-MIS-05011 paraphrased."
    },
    {
     "id": "err-BC-ERR-05016",
     "verdict": "ok",
-    "evidence": "Record text verbatim; BC-MIS-05020 paraphrased."
+    "evidence": "fix_prompt true equals relation distinct; wrong and right expr differ (f_prime_increasing against f_prime_positive); record text unchanged otherwise. Earlier: Record text verbatim; BC-MIS-05020 paraphrased."
    },
    {
     "id": "err-BC-ERR-05017",
     "verdict": "ok",
-    "evidence": "Record text verbatim; with no split at 1 the test value f'(0) = 6 marks (-1, 3)."
+    "evidence": "fix_prompt true equals relation distinct; wrong and right expr differ (Union(Interval.open(-1, 3), Interval.open(3, oo)) against Union(Interval.open(-1, 1), Interval.open(3, oo))); record text unchanged otherwise. Earlier: Record text verbatim; with no split at 1 the test value f'(0) = 6 marks (-1, 3)."
    },
    {
     "id": "representations",
     "verdict": "ok",
-    "evidence": "null."
+    "evidence": "null. (unchanged since 2026-09-29)"
    },
    {
-    "id": "bridge-BC-PRQ-05001",
+    "id": "BC-PRQ-05001",
     "verdict": "ok",
-    "evidence": "Paraphrase of description_plain."
+    "evidence": "Text 'Zero factors.' shortened; still a paraphrase of the BC-PRQ-05001 description_plain; no id in served text."
    },
    {
-    "id": "bridge-BC-PRQ-05002",
+    "id": "BC-PRQ-05002",
     "verdict": "ok",
-    "evidence": "Paraphrase of description_plain."
+    "evidence": "Text 'Test a value.' shortened; still a paraphrase of the BC-PRQ-05002 description_plain; no id in served text."
    },
    {
-    "id": "bridge-BC-PRQ-05003",
+    "id": "BC-PRQ-05003",
     "verdict": "ok",
-    "evidence": "Paraphrase of description_plain."
+    "evidence": "Text 'Skip gaps.' shortened; still a paraphrase of the BC-PRQ-05003 description_plain; no id in served text."
    },
    {
-    "id": "bridge-BC-PRQ-05006",
+    "id": "BC-PRQ-05006",
     "verdict": "ok",
-    "evidence": "Paraphrase of failure_signature."
+    "evidence": "Text 'f or f'?' shortened; still a paraphrase of the BC-PRQ-05006 description_plain; no id in served text."
    },
    {
     "id": "chk-1",
     "verdict": "ok",
-    "evidence": "Signs -, +, -, + match ex-1; key (-1, 1) U (3, oo)."
+    "evidence": "Signs -, +, -, + match ex-1; key (-1, 1) U (3, oo). (unchanged since 2026-09-29)"
    },
    {
     "id": "chk-2",
     "verdict": "ok",
-    "evidence": "f'(0) = -4; decreasing on (-2, 2)."
+    "evidence": "f'(0) = -4; decreasing on (-2, 2). (unchanged since 2026-09-29)"
    },
    {
     "id": "chk-3",
     "verdict": "ok",
-    "evidence": "SymPy: sign of x(x-4)/(x-2) positive on (0, 2) and (4, oo); derivative of f' is (x^2 - 4x + 8)/(x - 2)^2 > 0, so option C value checks."
+    "evidence": "SymPy: sign of x(x-4)/(x-2) positive on (0, 2) and (4, oo); derivative of f' is (x^2 - 4x + 8)/(x - 2)^2 > 0, so option C value checks. (unchanged since 2026-09-29)"
    }
   ],
   "advice": [
-   "Replace BC-PT-99063 on ex-1 with a point type whose earning text fits a single increasing question, or add the compound condition to the stem; otherwise the reader-scores line teaches a criterion the example does not meet.",
-   "Orientation is delivered as a figure while the unit pattern serves orientation as text; the ki-1 interactive already carries the same curve, so the orientation figure duplicates it.",
-   "ki-1 interactive (drag a point and read the sign) matches a reading task; good fit.",
-   "BC-ERR-05019 (two intervals merged across a gap) and BC-ERR-99001 (unnamed referent) are in the bundle and relevant; 05017 covers most of 05019."
+   "Orientation 'A response partitions, then cites the sign of f'.' does not say what is partitioned; 'partitions at zeros of f' and undefined points' fits the cap.",
+   "st-1 separating_feature 'Each partition point ends one.' has an unclear referent; 'Each partition point ends an interval.'",
+   "Bridges ('Zero factors.', 'Test a value.', 'Skip gaps.', 'f or f'?') are now so short that the failure_signature they bridge is not recoverable from the text.",
+   "The contrast not_this (concave up for f' = (x + 3)/(x - 2)) has answer 'nowhere' (f'' = -5/(x - 2)^2 < 0); a draw with a nonempty concave up set would make the contrast less of a trick."
   ],
   "counts": {
-   "ok": 17,
+   "ok": 19,
    "unsourced": 0,
    "wrong": 0,
    "over_cap": 0,

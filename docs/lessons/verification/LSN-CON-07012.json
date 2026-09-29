@@ -39,88 +39,104 @@
   "auditor": "claude-opus-5-5",
   "blocks": [
    {
+    "id": "prediction",
+    "verdict": "ok",
+    "evidence": "SymPy: 2P/5 - P**2/2000 has zeros {0, 800}, vertex 400, values 256/5, 80, 0 at 160, 400, 800; neither increasing nor decreasing on [160, 800], so B is the only true option and A, C are false. Resolution from BC-EK-FUN-7H4 and the 7.9 Fastest change paragraph. No id or verdict word."
+   },
+   {
     "id": "orientation",
     "verdict": "ok",
-    "evidence": "Paraphrases BC-CON-07012 description_formal and research 7.9 (reasoning without solving); 39 words."
+    "evidence": "Shortened paraphrase of BC-CON-07012 and the 7.9 Reasoning without solving paragraph."
    },
    {
     "id": "ki-1",
     "verdict": "ok",
-    "evidence": "Research 7.9 Carrying capacity paragraph and FUN-7.H.3 (ced:145); zeros of 2P/5 - P^2/2000 are {0, 800} by SymPy."
+    "evidence": "7.9 Carrying capacity paragraph and FUN-7.H.3 (ced:145); only the 'as t grows without bound' and 'sign, not a solved formula' clauses were cut."
    },
    {
     "id": "ki-2",
     "verdict": "ok",
-    "evidence": "Research 7.9 Fastest change paragraph; SymPy: derivative 2/5 - P/1000 vanishes at 400 = 800/2."
+    "evidence": "7.9 Fastest change paragraph and FUN-7.H.4; SymPy vertex of 2P/5 - P**2/2000 is 400 = 800/2."
    },
    {
     "id": "ki-3",
     "verdict": "ok",
-    "evidence": "FUN-7.H.2 on ced:145; inflection at a/2 quoted in research 7.9 Fastest change."
+    "evidence": "FUN-7.H.2 on ced:145; inflection at a/2 quoted in research 7.9 Fastest change.",
+    "note": "unchanged since 2026-09-29"
    },
    {
     "id": "st-1",
     "verdict": "ok",
-    "evidence": "Rival is BC-ERR-07044 and BC-MIS-07025; cue matches BC-QA-07009 draw; cue 17 words."
+    "evidence": "Method 'The zeros of the right side, then the sign or the vertex.' no longer opens with a label; expected_solution_path steps 1, 3, 4; rival is wrong_approaches[0] without the prefix."
+   },
+   {
+    "id": "st-1.contrast",
+    "verdict": "ok",
+    "evidence": "this matches the fastest-change clause of BC-QA-07009 typical_wording; SymPy fastest at 500. not_this (solve for P(t)) is not the archetype's own stem; why_not (partial fractions) matches wrong_approaches[0] and BC-MIS-07025; feature true."
    },
    {
     "id": "ex-1",
     "verdict": "ok",
-    "evidence": "SymPy: solve gives {0, 800}; rate at 160 is 256/5 > 0; vertex 400; answer (800, 400)."
+    "evidence": "Only cues changed. SymPy: zeros {0, 800}, rate 256/5 at 160, derivative 2/5 - P/1000, vertex 400."
    },
    {
     "id": "err-BC-ERR-07040",
     "verdict": "ok",
-    "evidence": "Text matches BC-ERR-07040 record; 2/5 distinct from 800."
+    "evidence": "relation distinct, fix_prompt true; 2/5 differs from 800."
    },
    {
     "id": "err-BC-ERR-07041",
     "verdict": "ok",
-    "evidence": "Text matches BC-ERR-07041 record; value 800 same, reason missing, relation equivalent is right."
+    "evidence": "relation equivalent, fix_prompt false; both 800, the reason is what is missing."
    },
    {
     "id": "err-BC-ERR-07042",
     "verdict": "ok",
-    "evidence": "Text matches BC-ERR-07042; SymPy rate at 800 is 0, fastest at 400."
+    "evidence": "relation distinct, fix_prompt true; 800 differs from 400, rate 0 at 800."
    },
    {
     "id": "err-BC-ERR-07044",
     "verdict": "ok",
-    "evidence": "Text matches BC-ERR-07044; SymPy: 800/(1 + 4e^(-2t/5)) satisfies the ODE with P(0) = 160 and tends to 800."
+    "evidence": "relation distinct, fix_prompt true; SymPy 800/(1 + 4*exp(-2t/5)) residual 0 against the ODE, value 160 at t = 0."
    },
    {
     "id": "representations",
     "verdict": "ok",
-    "evidence": "null; nothing to audit."
+    "evidence": "null; nothing to audit.",
+    "note": "unchanged since 2026-09-29"
    },
    {
     "id": "BC-PRQ-05001",
     "verdict": "ok",
-    "evidence": "Prerequisite BC-PRQ-05001 is in the bundle (remediation target of BC-SKL-07040); 14 words."
+    "evidence": "Paraphrase of BC-PRQ-05001 description_plain (factored expression equal to zero)."
    },
    {
     "id": "chk-1",
     "verdict": "ok",
-    "evidence": "SymPy: derivative 2/5 - P/1000, zero at 400; key (800, 400)."
+    "evidence": "SymPy: derivative 2/5 - P/1000, zero at 400; key (800, 400).",
+    "note": "unchanged since 2026-09-29"
    },
    {
     "id": "chk-2",
     "verdict": "ok",
-    "evidence": "SymPy: zeros {0, 1200}; derivative of A/3(1 - A/1200) is 1/3 - A/1800, zero at 600; key (1200, 600)."
+    "evidence": "SymPy: zeros {0, 1200}; derivative of A/3(1 - A/1200) is 1/3 - A/1800, zero at 600; key (1200, 600).",
+    "note": "unchanged since 2026-09-29"
    },
    {
     "id": "chk-3",
     "verdict": "ok",
-    "evidence": "SymPy: vertex 500; distractors 1000 (ceiling, BC-ERR-07042), 1/10 (1/5 halved), 0 (zero halved) all follow their stated derivations."
+    "evidence": "SymPy: vertex 500; distractors 1000 (ceiling, BC-ERR-07042), 1/10 (1/5 halved), 0 (zero halved) all follow their stated derivations.",
+    "note": "unchanged since 2026-09-29"
    }
   ],
   "advice": [
-   "The ki-1 interactive with a stepper on P(0) fits a process idea; ki-2 as text is acceptable since the curve already marks P = 400, though a small contrast of rate at 400 versus 800 would sharpen the BC-ERR-07042 distinction.",
-   "No reader-scores block: the reason point that BC-ERR-07041 says is lost is never shown as a scored line, so the scoring habit of writing the sign argument rests on the error block alone.",
-   "The stepper values 400, 640 and 960 are outside the archetype parameter_spec (flagged in inferred); 960 shows approach from above, which the text never states in words."
+   "The BC-PRQ-05001 bridge dropped its failure_signature clause while the design's Prerequisite bridge section still says it is built from description_plain and failure_signature.",
+   "The prediction's resolution names the peak at 400 but not that the rate is 0 at 800, which is the fact that rules out option A; one clause would close it.",
+   "No reader-scores block: the reason point that BC-ERR-07041 says is lost is never shown as a scored line (carried).",
+   "The stepper values 400, 640 and 960 are outside the archetype parameter_spec; 960 shows approach from above, which the text never states (carried)."
   ],
   "counts": {
-   "ok": 15,
+   "ok": 17,
    "unsourced": 0,
    "wrong": 0,
    "over_cap": 0,

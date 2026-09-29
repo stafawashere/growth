@@ -55,13 +55,13 @@
    },
    {
     "id": "st-1",
-    "verdict": "unsourced",
-    "evidence": "rival shortened to 'The second derivative test.'; BC-QA-05003 wrong_approaches is 'applying the second derivative test where only the derivative graph is available and its slope is not discussed', so the served rival drops the condition that makes it wrong and reads as if the test itself were barred. method has no label."
+    "verdict": "ok",
+    "evidence": "fixed 2026-09-29: rival now 'The second derivative test with only f' given and its slope not discussed.', carrying the BC-QA-05003 wrong_approaches condition."
    },
    {
     "id": "st-1.contrast",
-    "verdict": "wrong",
-    "evidence": "this is a BC-QA-05003 stem (SymPy: 2(x + 3)^2(x - 4) goes from negative to positive at 4, a relative minimum). not_this 'Find the absolute maximum value of f on [-5, 6]' gives only f', so the value is not determinable: f' <= 0 on [-5, 4] and > 0 on (4, 6], the candidates are f(-5) and f(6), and no f value is given; BC-QA-05006 common_givens carry 'one known function value'. why_not and feature are true; the stem needs a known value such as f(4), or should ask for the input."
+    "verdict": "ok",
+    "evidence": "fixed 2026-09-29: not_this now 'f'(x) = 2(x + 3)^2(x - 4). Find where f attains its absolute maximum on [-5, 6].' (BC-QA-05006 typical_wording, input form), why_not 'It needs the candidates test.' SymPy: zeros of f' are -3, 4; f' <= 0 on [-5, 4], > 0 on (4, 6]; integral of f' from -5 to 6 is -1001/6, so f(6) < f(-5) and the maximum is at x = -5, determinable with no function value. Recognition prose and Sources name BC-QA-05006."
    },
    {
     "id": "st-2",
@@ -124,15 +124,18 @@
    "st-2 (BC-QA-05007) still has no worked example or check, as the earlier audit noted."
   ],
   "counts": {
-   "ok": 14,
-   "unsourced": 1,
-   "wrong": 1,
+   "ok": 16,
+   "unsourced": 0,
+   "wrong": 0,
    "over_cap": 0,
    "lint": 0
   }
  },
  "fix_notes": [
   "ki-1 interactive window y widened from [-10, 12] to [-50, 15]; SymPy: on [-3, 2] f'(x) = 3(x - 1)^2(x + 2) has minimum -48 and maximum 12, f'(-2.5) = -18.375; Delivery prose states the window.",
-  "Left as preferences: st-2 with no example or check; BC-ERR-05023 not served as an error block or distractor."
+  "Left as preferences: st-2 with no example or check; BC-ERR-05023 not served as an error block or distractor.",
+  "st-1 rival carries the 'only the derivative given, slope not discussed' condition; contrast not_this asks for the input (x = -5 by SymPy) instead of an undeterminable value.",
+  "To hold the brief cap the prediction resolution became 'Near 1, f' > 0 on both sides. No sign change, so neither.' and the orientation 'A response classifies the critical point and gives the sign behaviour of f' there as its reason.'; word_count 629/450 to 625/446.",
+  "Delivery reasons renumbered to the TEMPLATE selection rules (figure and promoted interactive rule 4, table rule 5, text rule 6) in the record and the Delivery prose."
  ]
 }

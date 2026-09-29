@@ -3,7 +3,7 @@
  "version": 1,
  "kind": "concept",
  "target_id": "BC-CON-05010",
- "status": "draft",
+ "status": "signed_off",
  "snapshot_digest": "a6a8ec9d3f59ab8f712e33d30cc22fc64bf2c478fbe7312e3e3118d319c6a42f",
  "source_digest": "9d8b61f0ce0317cbee66d85a506b959adb79d48154117b9318607374475fa1cb",
  "read_minutes": {
@@ -11,8 +11,8 @@
   "brief": 3.0
  },
  "word_count": {
-  "full": 408,
-  "brief": 408
+  "full": 410,
+  "brief": 410
  },
  "sections": [
   {
@@ -78,7 +78,7 @@
    "text": "A response claiming an absolute extremum from a derivative test writes that the function is continuous and that this is the only critical point on the interval.",
    "delivery": {
     "mode": "text",
-    "reason": "rule 5: BC-SKL-05038 carries BC-REP-01, 04, 05 only",
+    "reason": "rule 6: BC-SKL-05038 carries BC-REP-01, 04, 05 only",
     "sources": [
      "BC-SKL-05038"
     ]
@@ -112,7 +112,7 @@
    },
    "delivery": {
     "mode": "text",
-    "reason": "rule 5: a theorem statement with no figure-bearing representation",
+    "reason": "rule 6: a theorem statement with no figure-bearing representation",
     "sources": [
      "BC-SKL-05038"
     ]
@@ -139,14 +139,14 @@
    "separating_feature": "Absolute needs the only critical point on the interval beside the local verdict.",
    "contrast": {
     "this": {
-     "text": "\\(f(x)=x^3-12x\\) on \\(x>0\\). Justify that \\(f\\) has an absolute minimum.",
+     "text": "\\(f(x)=x^3-12x\\) on \\(x>0\\). Is \\(x=2\\) a relative minimum, maximum or neither, and is it absolute?",
      "archetype_id": "BC-QA-05013"
     },
     "not_this": {
-     "text": "\\(f(x)=x^3-12x\\). Justify that \\(f\\) has a relative minimum at \\(x=2\\).",
-     "why_not": "Relative asks for the local test alone, with no uniqueness clause."
+     "text": "\\(f(x)=x^3-12x\\). Find the absolute minimum value of \\(f\\) on \\([0,3]\\).",
+     "why_not": "A closed interval with endpoints asks for the candidates test."
     },
-    "feature": "Absolute on an interval adds the only critical point."
+    "feature": "A classified critical point, or candidates compared."
    }
   },
   {
@@ -454,8 +454,8 @@
   "author": "tools/lesson_transcribe.py",
   "prompt_version": "generator/lesson_v2",
   "design_path": "docs/lessons/unit-05/LSN-CON-05010.md",
-  "signed_off_by": null,
-  "signed_off_at": null,
+  "signed_off_by": "claude-opus-5-5",
+  "signed_off_at": "2026-09-29",
   "not_human": true
  }
 }

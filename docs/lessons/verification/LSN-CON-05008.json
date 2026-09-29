@@ -110,8 +110,8 @@
    },
    {
     "id": "chk-1",
-    "verdict": "lint",
-    "evidence": "Served stem opens 'The ex-1 f' has slopes 2, 3, 1, -2, -1, -2', a block id in served text; block unchanged since 2026-09-29, when it was marked ok."
+    "verdict": "ok",
+    "evidence": "fixed 2026-09-29: stem now opens 'The example's f' has slopes 2, 3, 1, -2, -1, -2'; values, key {3} and word count unchanged. Reworded check for a delta blind re-solve: chk-1."
    },
    {
     "id": "chk-2",
@@ -132,14 +132,16 @@
    "Delivery reasons cite rule 3 for figure and interactive and rule 5 for text; under the current TEMPLATE.md numbering these are rules 4 and 6."
   ],
   "counts": {
-   "ok": 16,
+   "ok": 17,
    "unsourced": 0,
    "wrong": 0,
    "over_cap": 0,
-   "lint": 1
+   "lint": 0
   }
  },
  "fix_notes": [
-  "No findings and no defects; left as preferences: a sentence tying an unchanged slope sign to the same sign of f''; BC-ERR-99023 not illustrated."
+  "No findings and no defects; left as preferences: a sentence tying an unchanged slope sign to the same sign of f''; BC-ERR-99023 not illustrated.",
+  "chk-1 stem reworded to drop the block id 'ex-1'; key unchanged; needs a delta blind re-solve of chk-1.",
+  "Delivery reasons renumbered to the TEMPLATE selection rules (figure and promoted interactive rule 4, table rule 5, text rule 6) in the record and the Delivery prose."
  ]
 }

@@ -60,8 +60,8 @@
    },
    {
     "id": "st-1.contrast",
-    "verdict": "unsourced",
-    "evidence": "not_this 'Find the dimensions for the largest volume.' is BC-QA-05011's own typical_wording[0] 'find the dimensions that make the described quantity as large as possible', so the pair contrasts two stems of one archetype; this (typical_wording[1]), why_not and feature are true."
+    "verdict": "ok",
+    "evidence": "fixed 2026-09-29: not_this now '\\(h(x)=6x-x^2\\) on \\([0,5]\\). Find the absolute maximum value of \\(h\\).' (BC-QA-05006 typical_wording, outside BC-QA-05011, the 'no context' case the Recognition line names), why_not 'No context, so the value carries no units.', feature 'A value in context with units, or a bare value.' SymPy: h'(x) = 6 - 2x zero at 3, h(0) = 0, h(3) = 9, h(5) = 5, value 9."
    },
    {
     "id": "ex-1",
@@ -118,8 +118,8 @@
    "No prerequisite bridge; the bundle offers none for this concept, which is consistent."
   ],
   "counts": {
-   "ok": 13,
-   "unsourced": 1,
+   "ok": 14,
+   "unsourced": 0,
    "wrong": 0,
    "over_cap": 0,
    "lint": 0
@@ -127,6 +127,8 @@
  },
  "fix_notes": [
   "st-1 evidence_tag fixed by the orchestrator.",
-  "Left as preferences: st-1 rival choice; ex-1 practising the objective line; no prerequisite bridge."
+  "Left as preferences: st-1 rival choice; ex-1 practising the objective line; no prerequisite bridge.",
+  "st-1 contrast not_this replaced by a bare BC-QA-05006 function with no units; Recognition and Sources prose updated; word_count 588/447 to 571/430.",
+  "Delivery reasons renumbered to the TEMPLATE selection rules (figure and promoted interactive rule 4, table rule 5, text rule 6) in the record and the Delivery prose."
  ]
 }

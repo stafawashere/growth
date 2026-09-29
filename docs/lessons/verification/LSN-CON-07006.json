@@ -39,86 +39,103 @@
   "auditor": "claude-opus-5-5",
   "blocks": [
    {
+    "id": "prediction",
+    "verdict": "ok",
+    "evidence": "SymPy: slope at (0,1) is 2, estimate 1 + (1/2)(2) = 2; B gives 1 and C gives 3, both false; resolution matches BC-CON-07006 description_plain (each new approximation starts the next step); no id or verdict word."
+   },
+   {
     "id": "orientation",
     "verdict": "ok",
-    "evidence": "Paraphrases the 7.5 Procedure and Step size paragraphs and the labelled table standard; table rows 0,1,2,1 and 1/2,2,4,2 checked."
+    "evidence": "Shortened; still from the 7.5 Procedure paragraph and the show-every-step requirement (sg-24:17)."
    },
    {
     "id": "ki-1",
     "verdict": "ok",
-    "evidence": "SymPy dsolve y' = 2x + y + 1, y(0) = 1 gives 4*exp(x) - 2*x - 3, equal to true_curve; y(1) = 5.873, y(1.2) = 7.880 inside the y window [0, 8]; frames (0,1), (1/2,2), (1,4) are the Euler points; text matches the 7.5 Procedure and Step size paragraphs; ced:141 quote verbatim.",
-    "reaudited": "2026-09-29"
+    "evidence": "Shortened; step size and update rule match the 7.5 Step size and Procedure paragraphs; ced:141 quote unchanged (the cache prints a curly apostrophe in Euler's, as before)."
    },
    {
     "id": "st-1",
     "verdict": "ok",
-    "evidence": "BC-QA-07004 expected_solution_path[0] and [1], wrong_approaches."
+    "evidence": "Label strip only; BC-QA-07004 expected_solution_path[0] and wrong_approaches."
+   },
+   {
+    "id": "st-1.contrast",
+    "verdict": "ok",
+    "evidence": "this matches BC-QA-07004 typical_wording (Euler, two equal steps, approximate); not_this is not a BC-QA-07004 stem; SymPy: 2xy factors as 2x times y and dsolve gives 2e^(x^2), so why_not (exact, by separation) is true; the rival is the archetype's wrong_approaches entry."
    },
    {
     "id": "ex-1",
     "verdict": "ok",
-    "evidence": "SymPy: h = 1/2; slope 2 at (0,1), y1 = 2; slope 4 at (1/2,2), y2 = 4."
+    "evidence": "Cues shortened; SymPy values unchanged: step 1/2, slopes 2 and 4, approximations 2 and 4."
    },
    {
     "id": "what_a_reader_scores:ex-1",
     "verdict": "ok",
-    "evidence": "BC-PT-99034 line matches the bundle fields."
+    "evidence": "BC-PT-99034 line matches the bundle fields.",
+    "note": "unchanged since 2026-09-29"
    },
    {
     "id": "err-BC-ERR-07018",
     "verdict": "ok",
-    "evidence": "Record fields verbatim; SymPy: d/dx(2x+y+1) with y' substituted is 2x+y+3."
+    "evidence": "Only change fix_prompt true; relation distinct; 2x+y+1 against 2x+y+3 differ."
    },
    {
     "id": "err-BC-ERR-07019",
     "verdict": "ok",
-    "evidence": "Record fields verbatim; one step of 1 gives 1+2 = 3 against 4."
+    "evidence": "Only change fix_prompt true; relation distinct; 3 against 4."
    },
    {
     "id": "err-BC-ERR-07020",
     "verdict": "ok",
-    "evidence": "Wrong step evaluates the derivative at the target input, a behaviour the record names: SymPy f(1,1) = 4, y1 = 3, f(1/2,3) = 5, y(1) = 11/2; right f(0,1) = 2, y1 = 2, f(1/2,2) = 4, y(1) = 4; distinct.",
-    "reaudited": "2026-09-29"
+    "evidence": "Only change fix_prompt true; relation distinct; 11/2 against 4."
    },
    {
     "id": "err-BC-ERR-07021",
     "verdict": "ok",
-    "evidence": "Second slope at (1/2, 1) keeps the initial output, the record's non_conceptual_causes entry 'carried the new input forward and the old output' and BC-MIS-07012 'advances the input but not the output'; SymPy f(1/2,1) = 3, 2 + 3/2 = 7/2 against 4; distinct.",
-    "reaudited": "2026-09-29"
+    "evidence": "Only change fix_prompt true; relation distinct; 7/2 against 4."
    },
    {
     "id": "representations",
     "verdict": "ok",
-    "evidence": "Paraphrases the 7.5 Representations conversion BC-REP-06 to BC-REP-03."
+    "evidence": "Paraphrases the 7.5 Representations conversion BC-REP-06 to BC-REP-03.",
+    "note": "unchanged since 2026-09-29"
    },
    {
     "id": "BC-PRQ-07005",
     "verdict": "ok",
-    "evidence": "Paraphrases failure_signature (restarting from the initial value)."
+    "evidence": "Shortened; matches failure_signature (restarts each row from the initial value)."
    },
    {
     "id": "chk-1",
     "verdict": "ok",
-    "evidence": "SymPy: slope 4 at (1/2,2); 2+4/2 = 4."
+    "evidence": "SymPy: slope 4 at (1/2,2); 2+4/2 = 4.",
+    "note": "unchanged since 2026-09-29"
    },
    {
     "id": "chk-2",
     "verdict": "ok",
-    "evidence": "SymPy: slopes 1 at x = 1 and 2 at x = 3/2; 3+1/2+1 = 9/2."
+    "evidence": "SymPy: slopes 1 at x = 1 and 2 at x = 3/2; 3+1/2+1 = 9/2.",
+    "note": "unchanged since 2026-09-29"
    },
    {
     "id": "chk-3",
     "verdict": "ok",
-    "evidence": "SymPy: slopes 2 then 9/2, key 17/4; distractors 3 (one step), 21/4 (first slope at (1,1) = 3, then 11/2 at (1/2,5/2)), 13/4 (second slope 5/2 at (1/2,1)) all reproduce."
+    "evidence": "SymPy: slopes 2 then 9/2, key 17/4; distractors 3 (one step), 21/4 (first slope at (1,1) = 3, then 11/2 at (1/2,5/2)), 13/4 (second slope 5/2 at (1/2,1)) all reproduce.",
+    "note": "unchanged since 2026-09-29"
+   },
+   {
+    "id": "delivery.pr-1",
+    "verdict": "ok",
+    "evidence": "text by TEMPLATE Delivery rule 6; not a drawn block."
    }
   ],
   "advice": [
-   "Fix the ki-1 true_curve to y = 4e^x - 2x - 3; the figure otherwise shows the Euler points off the drawn solution from the start.",
-   "In err-BC-ERR-07020 and 07021, either show the slope values (4 and 2; 3 and 4) or relabel the lines as the resulting approximations (11/2 against 4; 7/2 against 4).",
-   "Table for the orientation, motion for the replacing point and a model for the row by row sequence suit their ideas; recognition, first line (step size) and rival are taught, and the labelled table scoring habit is present."
+   "Orientation \"Step size, then step times slope at each point.\" no longer says the product is added to the previous y; ki-1 carries it, but the orientation on its own reads as a fragment.",
+   "The reader-score line on ex-1 carries page citations; verbatim record text the reader strips, not lint.",
+   "Earlier advice on err-BC-ERR-07020 and 07021 labels is met in the current record (lines now name the resulting approximations)."
   ],
   "counts": {
-   "ok": 14,
+   "ok": 17,
    "unsourced": 0,
    "wrong": 0,
    "over_cap": 0,

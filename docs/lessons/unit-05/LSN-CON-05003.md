@@ -83,9 +83,9 @@ BC-QA-05014 is `no_calculator` and a single multiple choice or short answer ques
 
 ## Delivery
 
-- orientation: figure. Rule 3 on BC-REP-02 in BC-SKL-05010 to 05013 (docs/lessons/unit-05/README.md, section 6) [inferred; settled by the modality A/B].
-- ki-1: figure (a smooth turn, a cusp, a corner and a vertical tangent). Rule 3; BC-QA-05014 `difficulty_variables` "whether the failure is a cusp, a vertical tangent or a corner" is categorical, so static.
-- ki-2: figure (a relative maximum below an endpoint value; a flat point with no sign change). Rule 3 on BC-REP-02 in BC-SKL-05012, 05013.
+- orientation: figure. Rule 4 on BC-REP-02 in BC-SKL-05010 to 05013 (docs/lessons/unit-05/README.md, section 6) [inferred; settled by the modality A/B].
+- ki-1: figure (a smooth turn, a cusp, a corner and a vertical tangent). Rule 4; BC-QA-05014 `difficulty_variables` "whether the failure is a cusp, a vertical tangent or a corner" is categorical, so static.
+- ki-2: figure (a relative maximum below an endpoint value; a flat point with no sign change). Rule 4 on BC-REP-02 in BC-SKL-05012, 05013.
 - ex-1 and the four error blocks: step_reveal. Rule 1.
 
 ## Band plan
@@ -196,7 +196,7 @@ BC-QA-05014 is `no_calculator` and a single multiple choice or short answer ques
    "id": "st-1",
    "archetype_id": "BC-QA-05014",
    "cue": "All critical points, from a quotient with a fractional power.",
-   "method": "F'(x).",
+   "method": "f'(x).",
    "rival": "Setting only f'(x) = 0.",
    "separating_feature": "A fractional power can make f' undefined.",
    "sources": [
@@ -219,7 +219,7 @@ BC-QA-05014 is `no_calculator` and a single multiple choice or short answer ques
    "id": "st-2",
    "archetype_id": "BC-QA-05006",
    "cue": "Absolute extremum on a closed interval, from f or f' and the interval.",
-   "method": "F'(x) = 0, as an equation.",
+   "method": "f'(x) = 0, as an equation.",
    "rival": "Citing the Extreme Value Theorem to locate it.",
    "separating_feature": "Absolute asks for a comparison with every candidate.",
    "sources": [
@@ -623,7 +623,7 @@ BC-QA-05014 is `no_calculator` and a single multiple choice or short answer ques
   {
    "block": "orientation",
    "mode": "figure",
-   "reason": "rule 3: BC-REP-02 on BC-SKL-05010 to 05013; unit README delivery map",
+   "reason": "rule 4: BC-REP-02 on BC-SKL-05010 to 05013; unit README delivery map",
    "sources": [
     "BC-SKL-05010",
     "BC-SKL-05011"
@@ -677,7 +677,7 @@ BC-QA-05014 is `no_calculator` and a single multiple choice or short answer ques
   {
    "block": "ki-1",
    "mode": "figure",
-   "reason": "rule 3: BC-REP-02 on BC-SKL-05010, 05011; BC-QA-05014 difficulty_variables name a categorical shape, so static",
+   "reason": "rule 4: BC-REP-02 on BC-SKL-05010, 05011; BC-QA-05014 difficulty_variables name a categorical shape, so static",
    "sources": [
     "BC-SKL-05011",
     "BC-QA-05014"
@@ -772,7 +772,7 @@ BC-QA-05014 is `no_calculator` and a single multiple choice or short answer ques
   {
    "block": "ki-2",
    "mode": "figure",
-   "reason": "rule 3: BC-REP-02 on BC-SKL-05012, 05013",
+   "reason": "rule 4: BC-REP-02 on BC-SKL-05012, 05013",
    "sources": [
     "BC-SKL-05012",
     "BC-SKL-05013"

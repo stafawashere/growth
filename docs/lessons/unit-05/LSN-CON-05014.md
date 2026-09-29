@@ -28,7 +28,7 @@ All four skills map to BC-EK-FUN-4C1 (ced:109): one core block, both bands.
 BC-QA-05011 (research/question-analysis/question-archetypes.md#BC-QA-05011 Applied optimisation with model setup, domain, and verification): `typical_wording` "using correct units, state the largest value the modelled quantity attains on the stated interval"; `asked_to_produce` the verification and the interpreted value; `common_givens` a contextual range. The signal: "using correct units", "largest value", "what does it mean". Shape: an MCQ asking what the value means, or the interpretation sentence inside an FRQ, scored apart from the computation; no `official_examples` in the record.
 
 What says "not this concept": "find the dimensions" (the input, BC-CON-05013), or no context.
-The contrast pair on st-1 comes from the paragraph above. `this` asks for the largest volume with correct units. `not_this` is the same sheet asking for the dimensions that give it, the sibling concept the "not this concept" line names (BC-CON-05013). `feature` is which quantity the wording asks for: the value with units, or the input.
+The contrast pair on st-1 comes from the paragraph above. `this` asks for the largest volume with correct units. `not_this` is a bare function with no context asking for its absolute maximum value, a BC-QA-05006 `typical_wording` stem from outside this archetype (BC-CON-05006), the "no context" case the line above names: \(h'(x)=6-2x\) is zero at 3, and h(0) = 0, h(3) = 9, h(5) = 5, so the value is 9 with no units (SymPy). `feature` is whether the value sits in a context that gives it units.
 
 ## Method choice
 
@@ -76,19 +76,20 @@ BC-QA-05011 is `either`, so Section I Part A, 2.14 minutes per question (researc
 
 ## Delivery
 
-- orientation, ki-1: text. Rule 5: BC-SKL-05054 to 05057 carry BC-REP-01, 04, 05 only (docs/lessons/unit-05/README.md, section 6).
+- orientation, ki-1: text. Rule 6: BC-SKL-05054 to 05057 carry BC-REP-01, 04, 05 only (docs/lessons/unit-05/README.md, section 6).
 - ex-1 and the four error blocks: step_reveal. Rule 1.
 - pr-1: text. Rule 6. Figure presence: no drawn block fits, and the record carries `no_figure_reason`: no skill carries a figure-bearing representation, the key ideas describe no process, and no BC-REP-03 givens appear, so rules 2 to 5 select nothing.
 
 ## Band plan
-- Low (full): pr-1, orientation, ki-1, st-1 with its contrast pair, ex-1, chk-1, the four error blocks, chk-2, chk-3. 588 words, 4.0 minutes (cap 900 and 6).
-- Mid (brief): pr-1, orientation, ki-1, st-1 with its contrast pair, ex-1, chk-1, err-BC-ERR-05026, err-BC-ERR-05055, chk-2. 447 words, 3.0 minutes (cap 450 and 3).
+- Low (full): pr-1, orientation, ki-1, st-1 with its contrast pair, ex-1, chk-1, the four error blocks, chk-2, chk-3. 571 words, 4.0 minutes (cap 900 and 6).
+- Mid (brief): pr-1, orientation, ki-1, st-1 with its contrast pair, ex-1, chk-1, err-BC-ERR-05026, err-BC-ERR-05055, chk-2. 430 words, 3.0 minutes (cap 450 and 3).
 - Refresher: ki-1, the four error blocks, ex-1. No prediction and no check.
 
 ## Sources
 
 - BC-CON-05014; BC-SKL-05054, BC-SKL-05055, BC-SKL-05056, BC-SKL-05057; BC-EK-FUN-4C1; ced:109
 - BC-QA-05011; sg-23:2
+- BC-QA-05006, BC-CON-05006 (the not-this stem of the contrast pair); research/question-analysis/question-archetypes.md#BC-QA-05006 Absolute extremum by the candidates test with a global justification
 - BC-ERR-05026, BC-ERR-05055, BC-ERR-05024, BC-ERR-05056; BC-MIS-05016, BC-MIS-07023, BC-MIS-05015
 - research/units/unit-05-analytical-applications-differentiation.md#5.11 Solving Optimization Problems
 - research/question-analysis/question-archetypes.md#BC-QA-05011 Applied optimisation with model setup, domain, and verification
@@ -114,7 +115,7 @@ BC-QA-05011 is `either`, so Section I Part A, 2.14 minutes per question (researc
   {"id": "ki-1", "ek_id": "BC-EK-FUN-4C1", "depth": "core", "text": "The optimal value and its input both carry units. An interpretation names the quantity, units and input together. Largest volume asks for the volume; dimensions ask for the input.", "notation": "units; optimal value", "quote": {"text": "Minimum and maximum values of a function take on specific meanings in applied contexts.", "source": "ced:109"}, "sources": ["BC-EK-FUN-4C1", "ced:109", "sg-23:2", "research/units/unit-05-analytical-applications-differentiation.md#5.11 Solving Optimization Problems"]}
  ],
  "strategy": [
-  {"id": "st-1", "archetype_id": "BC-QA-05011", "cue": "Correct units, on a contextual range.", "method": "Define the variables and write the objective, each letter with its units.", "rival": "Substituting a number before differentiating.", "separating_feature": "The last line answers the asked quantity, with units.", "sources": ["BC-QA-05011"], "evidence_tag": "inferred", "contrast": {"this": {"text": "A 30 by 30 cm sheet with corner cuts of side \\(x\\) cm makes a tray. State the largest volume, with units.", "archetype_id": "BC-QA-05011"}, "not_this": {"text": "A 30 by 30 cm sheet with corner cuts of side \\(x\\) cm makes a tray. Find the dimensions for the largest volume.", "why_not": "It asks for the input where the maximum occurs."}, "feature": "Largest volume asks for the value with units; dimensions ask for the input."}}
+  {"id": "st-1", "archetype_id": "BC-QA-05011", "cue": "Correct units, on a contextual range.", "method": "Define the variables and write the objective, each letter with its units.", "rival": "Substituting a number before differentiating.", "separating_feature": "The last line answers the asked quantity, with units.", "sources": ["BC-QA-05011"], "evidence_tag": "inferred", "contrast": {"this": {"text": "A 30 by 30 cm sheet with corner cuts of side \\(x\\) cm makes a tray. State the largest volume, with units.", "archetype_id": "BC-QA-05011"}, "not_this": {"text": "\\(h(x)=6x-x^2\\) on \\([0,5]\\). Find the absolute maximum value of \\(h\\).", "why_not": "No context, so the value carries no units."}, "feature": "A value in context with units, or a bare value."}}
  ],
  "worked_examples": [
   {"id": "ex-1", "archetype_id": "BC-QA-05011", "bands": ["low", "mid"], "parameter_draw": {"scale": 2, "height_cap": 1, "sheet_shape": "strip", "material": "cardboard", "purpose": "planter", "length_unit": "centimeters", "domain_limit": "none"}, "problem": {"text": "A planter is folded from an 18 by 48 cm sheet after cutting corner squares of side \\(x\\) cm, \\(0\\le x\\le 9\\). The only critical point inside is \\(x=4\\). Using correct units, state the largest volume.", "command_verb": "state"}, "calculator_status": "no_calculator", "steps": [{"cue": "Volume in cubic centimeters, from the cut \\(x\\).", "why": "\\(V(x)=x(18-2x)(48-2x)\\).", "expr": "x*(18 - 2*x)*(48 - 2*x)", "relation": "new"}, {"cue": "Interior candidate \\(x=4\\).", "why": "\\(4\\cdot10\\cdot40\\).", "expr": "1600", "relation": "evaluate", "subs": {"x": "4"}}, {"cue": "Closed range: the ends compete.", "why": "\\(V(0)=V(9)=0<1600\\)."}, {"cue": "The stem asks for the volume, with units.", "why": "The largest volume is 1600 cubic centimeters, when the cut is 4 cm."}], "answer": {"form": "numeric", "expr": "1600"}}
@@ -136,8 +137,8 @@ BC-QA-05011 is `either`, so Section I Part A, 2.14 minutes per question (researc
  ],
  "delivery": [
   {"block": "pr-1", "mode": "text", "reason": "rule 6: a question about the wording of an answer", "sources": ["BC-CON-05014"]},
-  {"block": "orientation", "mode": "text", "reason": "rule 5: BC-SKL-05054 to 05057 carry BC-REP-01, 04, 05 only", "sources": ["BC-SKL-05054"]},
-  {"block": "ki-1", "mode": "text", "reason": "rule 5: a statement about meaning and units", "sources": ["BC-SKL-05055"]},
+  {"block": "orientation", "mode": "text", "reason": "rule 6: BC-SKL-05054 to 05057 carry BC-REP-01, 04, 05 only", "sources": ["BC-SKL-05054"]},
+  {"block": "ki-1", "mode": "text", "reason": "rule 6: a statement about meaning and units", "sources": ["BC-SKL-05055"]},
   {"block": "ex-1", "mode": "step_reveal", "reason": "rule 1", "sources": []},
   {"block": "err-BC-ERR-05026", "mode": "step_reveal", "reason": "rule 1", "sources": []},
   {"block": "err-BC-ERR-05055", "mode": "step_reveal", "reason": "rule 1", "sources": []},
@@ -146,7 +147,7 @@ BC-QA-05011 is `either`, so Section I Part A, 2.14 minutes per question (researc
  ],
  "refresher": ["ki-1", "err-BC-ERR-05026", "err-BC-ERR-05055", "err-BC-ERR-05024", "err-BC-ERR-05056", "ex-1"],
  "read_minutes": {"full": 4.0, "brief": 3.0},
- "word_count": {"full": 588, "brief": 447},
+ "word_count": {"full": 571, "brief": 430},
  "research_lines": [
   {"file": "research/scoring/common-point-losses.md", "line": "An interpretation point asks what a computed value means in the setting of the problem, in words, with the quantity and the interval named."}
  ],
@@ -155,7 +156,7 @@ BC-QA-05011 is `either`, so Section I Part A, 2.14 minutes per question (researc
   {"claim": "Units are carried in the SymPy strings as the symbol cm, so a key with units and a bare number compare as distinct.", "settles": "A units convention for keys and options in plan 15's content model."},
   {"claim": "The prediction and the contrast stems are authored on ex-1's draw and on the archetype's typical wording; no record supplies them.", "settles": "The blind re-solve of the prediction key and a pretest measurement of the prediction's option choices."}
  ],
- "sources": ["BC-CON-05014", "BC-SKL-05054", "BC-SKL-05055", "BC-SKL-05056", "BC-SKL-05057", "BC-EK-FUN-4C1", "ced:109", "BC-QA-05011", "sg-23:2", "BC-ERR-05026", "BC-ERR-05055", "BC-ERR-05024", "BC-ERR-05056", "BC-MIS-05016", "BC-MIS-07023", "BC-MIS-05015", "research/units/unit-05-analytical-applications-differentiation.md#5.11 Solving Optimization Problems", "research/question-analysis/question-archetypes.md#BC-QA-05011 Applied optimisation with model setup, domain, and verification", "research/scoring/common-point-losses.md#Interpretation points", "research/scoring/common-point-losses.md#Units points", "research/exam/exam-structure.md#Section and part layout"],
+ "sources": ["BC-CON-05014", "BC-SKL-05054", "BC-SKL-05055", "BC-SKL-05056", "BC-SKL-05057", "BC-EK-FUN-4C1", "ced:109", "BC-QA-05011", "BC-QA-05006", "BC-CON-05006", "sg-23:2", "BC-ERR-05026", "BC-ERR-05055", "BC-ERR-05024", "BC-ERR-05056", "BC-MIS-05016", "BC-MIS-07023", "BC-MIS-05015", "research/units/unit-05-analytical-applications-differentiation.md#5.11 Solving Optimization Problems", "research/question-analysis/question-archetypes.md#BC-QA-05011 Applied optimisation with model setup, domain, and verification", "research/scoring/common-point-losses.md#Interpretation points", "research/scoring/common-point-losses.md#Units points", "research/exam/exam-structure.md#Section and part layout"],
  "no_figure_reason": "The skills carry symbolic, verbal and contextual representations only, and the key ideas describe no process, so no figure, table or motion would show more than the sentence about value, units and input."
 }
 ```

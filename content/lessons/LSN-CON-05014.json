@@ -3,7 +3,7 @@
  "version": 1,
  "kind": "concept",
  "target_id": "BC-CON-05014",
- "status": "draft",
+ "status": "signed_off",
  "snapshot_digest": "a6a8ec9d3f59ab8f712e33d30cc22fc64bf2c478fbe7312e3e3118d319c6a42f",
  "source_digest": "6f34ee492d67520d33f132cff973bd2139bca8e6f4f78889d3268bb18c1f3ce7",
  "read_minutes": {
@@ -11,8 +11,8 @@
   "brief": 3.0
  },
  "word_count": {
-  "full": 538,
-  "brief": 412
+  "full": 521,
+  "brief": 395
  },
  "sections": [
   {
@@ -87,7 +87,7 @@
    "text": "A response compares the candidate with the ends and states the asked quantity with its units and input.",
    "delivery": {
     "mode": "text",
-    "reason": "rule 5: BC-SKL-05054 to 05057 carry BC-REP-01, 04, 05 only",
+    "reason": "rule 6: BC-SKL-05054 to 05057 carry BC-REP-01, 04, 05 only",
     "sources": [
      "BC-SKL-05054"
     ]
@@ -123,7 +123,7 @@
    },
    "delivery": {
     "mode": "text",
-    "reason": "rule 5: a statement about meaning and units",
+    "reason": "rule 6: a statement about meaning and units",
     "sources": [
      "BC-SKL-05055"
     ]
@@ -157,10 +157,10 @@
      "archetype_id": "BC-QA-05011"
     },
     "not_this": {
-     "text": "A 30 by 30 cm sheet with corner cuts of side \\(x\\) cm makes a tray. Find the dimensions for the largest volume.",
-     "why_not": "It asks for the input where the maximum occurs."
+     "text": "\\(h(x)=6x-x^2\\) on \\([0,5]\\). Find the absolute maximum value of \\(h\\).",
+     "why_not": "No context, so the value carries no units."
     },
-    "feature": "Largest volume asks for the value with units; dimensions ask for the input."
+    "feature": "A value in context with units, or a bare value."
    }
   },
   {
@@ -715,8 +715,8 @@
   "author": "tools/lesson_transcribe.py",
   "prompt_version": "generator/lesson_v2",
   "design_path": "docs/lessons/unit-05/LSN-CON-05014.md",
-  "signed_off_by": null,
-  "signed_off_at": null,
+  "signed_off_by": "claude-opus-5-5",
+  "signed_off_at": "2026-09-29",
   "not_human": true
  }
 }

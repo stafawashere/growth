@@ -46,10 +46,21 @@ from app.engine.select import (
    session_now,
 )
 from app.engine.state import Confidence
+from app.lessons import constants as lesson_constants
+from app.lessons import gate, refresh
+from app.lessons.plan import FIRST_CONTACT, plan_lesson
 
 COVERAGE_GAP_ACTION = "coverage_gap_fail_closed"
 
 OPENER_GAP_ACTION = "opener_gap_fail_open"
+
+ITEM_KIND = "item"
+LESSON_KIND = "lesson"
+READING_KINDS = ("lesson", "refresher")
+EXAMPLE_FIRST = "example_first"
+LESSON_COUNT = "lesson_count"
+READING_SHARE = "reading_share"
+BLOCK_MINUTES = "block_minutes"
 
 
 @dataclass
@@ -67,6 +78,9 @@ class Session:
    unit_counts: dict = field(default_factory=dict)
    opener_concepts: list = field(default_factory=list)
    opener_gaps: list = field(default_factory=list)
+   lessons: list = field(default_factory=list)
+   lesson_minutes: float = 0.0
+   lesson_deferrals: list = field(default_factory=list)
 
    @property
    def blocks(self):
@@ -81,8 +95,17 @@ class Session:
 
    @property
    def forecast_total(self):
-      """11-phased-delivery.md Q9: the sum of the per-archetype forecast over every served item."""
-      return sum(self.forecast(item) for item in self.served)
+      """11-phased-delivery.md Q9: the sum of the per-archetype forecast over every served item,
+      plus the lesson and refresher minutes (15, Session assembly)."""
+      return sum(self.forecast(item) for item in self.served) + self.lesson_minutes
+
+   @property
+   def first_contact_count(self):
+      return sum(1 for entry in self.lessons if entry["kind"] == LESSON_KIND)
+
+   @property
+   def refresher_count(self):
+      return sum(1 for entry in self.lessons if entry["kind"] == refresh.REFRESHER)
 
 
 def forecast_minutes(archetype_id, attempts_history):
@@ -550,6 +573,294 @@ def eligible_records(states, graph, bank, unsupported_successes, retrieval_entry
    return pool
 
 
+@dataclass
+class FirstContact:
+   """One block 2 item's lesson decision (15, First-contact target): the entries to place before
+   it, or the deferral that sends the lesson to the concept's next item, and the item's link."""
+
+   concept_id: str
+   entries: list
+   deferral: dict | None
+   link: dict | None
+
+
+class LessonPlacement:
+   """The lesson layer inside one assembly. It reads the lesson inputs and the session as it is
+   built and never writes a state (15, invariant L0); the service persists what it returns."""
+
+   def __init__(self, session, inputs, states, graph, retrievability):
+      self.session = session
+      self.inputs = inputs
+      self.states = states
+      self.graph = graph
+      self.retrievability = retrievability
+      self.statuses = {
+         lesson_id: gate.status_of(inputs.lesson_states, lesson_id) for lesson_id in inputs.lesson_states
+      } if inputs is not None else {}
+      self.targets = list(inputs.refreshers) if inputs is not None else []
+      self.taken = set()
+      self.read_again = []
+
+   @property
+   def is_active(self):
+      return self.inputs is not None
+
+   def reading_fits(self, extra, block2_left):
+      """15 condition (d): lesson plus refresher minutes at most LESSON_SHARE_MAX of the forecast.
+      While the session is still being built the forecast is projected as block 2 filling its
+      budget; trim_to_share re-checks against the forecast actually assembled."""
+      reading = self.session.lesson_minutes + extra
+      projected = self.session.forecast_total + extra + max(block2_left, 0.0)
+
+      return reading <= lesson_constants.LESSON_SHARE_MAX * projected
+
+   def serves_example_first(self, concept_id, archetype):
+      chooser = self.inputs.example_first
+
+      if chooser is None:
+         return False
+
+      return bool(chooser(concept_id, archetype))
+
+   def lesson_entry(self, target_id, band, item, prerequisite_ids=()):
+      lesson_id, version = self.inputs.servable[target_id]
+      body = self.inputs.bodies.get(lesson_id)
+
+      if body is None:
+         return None
+
+      plan = plan_lesson(body, band, FIRST_CONTACT, prerequisite_ids=prerequisite_ids)
+
+      return {
+         "kind": LESSON_KIND,
+         "lesson_id": lesson_id,
+         "version": version,
+         "band": band,
+         "reason": FIRST_CONTACT,
+         "concept_id": target_id,
+         "before_item_id": item["id"],
+         "minutes": gate.lesson_forecast(plan.minutes, self.inputs.completion_ratios),
+         "plan": plan.as_dict(),
+      }
+
+   def deferral(self, concept_id, band, item, reason):
+      lesson_id, version = self.inputs.servable[concept_id]
+      deferral = {
+         "concept_id": concept_id,
+         "lesson_id": lesson_id,
+         "version": version,
+         "band": band,
+         "reason": reason,
+         "before_item_id": item["id"],
+      }
+
+      return FirstContact(concept_id, [], deferral, {"lesson_id": lesson_id, "version": version})
+
+   def prerequisite_entries(self, flipped, band, item):
+      """15 Across concepts: a LSN-PRQ lesson due for a flipped parent goes first. It is due while
+      its state is unseen (15, By prerequisite gap)."""
+      entries = []
+
+      for prerequisite_id in flipped:
+         found = self.inputs.servable.get(prerequisite_id)
+         is_due = found is not None and self.statuses.get(found[0]) in (None, gate.UNSEEN)
+
+         if not is_due:
+            continue
+
+         entry = self.lesson_entry(prerequisite_id, band, item)
+
+         if entry is not None:
+            entries.append(entry)
+
+      return entries
+
+   def first_contact(self, item, assembled):
+      concept_id = gate.lesson_target(item, self.states, self.graph, self.statuses, self.inputs.servable)
+      has_target = concept_id is not None
+
+      if not has_target:
+         return None
+
+      archetype = self.graph.archetypes[item["archetype_id"]]
+      band = gate.lesson_band(archetype, self.states, self.graph, self.retrievability)
+      lesson_id, version = self.inputs.servable[concept_id]
+      is_expert = band == gate.NONE
+
+      if is_expert:
+         return FirstContact(concept_id, [], None, {"lesson_id": lesson_id, "version": version})
+
+      is_first_contact = self.statuses.get(lesson_id) in (None, gate.UNSEEN)
+
+      if is_first_contact and self.serves_example_first(concept_id, archetype):
+         return self.deferral(concept_id, band, item, EXAMPLE_FIRST)
+
+      flipped = gate.flipped_prerequisites(archetype, self.states)
+      entry = self.lesson_entry(concept_id, band, item, prerequisite_ids=tuple(flipped))
+
+      if entry is None:
+         return None
+
+      return self.within_caps(concept_id, band, item, entry, flipped, assembled)
+
+   def within_caps(self, concept_id, band, item, entry, flipped, assembled):
+      """15 conditions (c) and (d); a LSN-PRQ lesson rides only when the caps hold with it too."""
+      count = self.session.first_contact_count
+      under_count = count + 1 <= lesson_constants.LESSONS_PER_SESSION_MAX
+
+      if not under_count:
+         return self.deferral(concept_id, band, item, LESSON_COUNT)
+
+      block2_left = constants.BLOCK2_MAX_MINUTES - assembled - entry["minutes"]
+
+      if not self.reading_fits(entry["minutes"], block2_left):
+         return self.deferral(concept_id, band, item, READING_SHARE)
+
+      entries = [entry]
+
+      for prerequisite in self.prerequisite_entries(flipped, band, item):
+         minutes = sum(chosen["minutes"] for chosen in entries) + prerequisite["minutes"]
+         fits_count = count + len(entries) + 1 <= lesson_constants.LESSONS_PER_SESSION_MAX
+         fits_share = self.reading_fits(minutes, constants.BLOCK2_MAX_MINUTES - assembled - minutes)
+
+         if fits_count and fits_share:
+            entries.insert(len(entries) - 1, prerequisite)
+
+      return FirstContact(concept_id, entries, None, None)
+
+   def place(self, block, decision, item):
+      """Write the decision into the block and the item; the minutes it adds."""
+      if decision is None:
+         return 0.0
+
+      if decision.link is not None:
+         item["lesson_link"] = dict(decision.link)
+
+      if decision.deferral is not None:
+         self.session.lesson_deferrals.append(decision.deferral)
+         self.statuses[decision.deferral["lesson_id"]] = gate.DEFERRED
+
+      minutes = 0.0
+
+      for entry in decision.entries:
+         block.append(entry)
+         self.session.lessons.append(entry)
+         self.session.lesson_minutes += entry["minutes"]
+         self.statuses[entry["lesson_id"]] = gate.SERVED
+         minutes += entry["minutes"]
+
+      has_entries = len(decision.entries) > 0
+
+      if has_entries:
+         concept_entry = decision.entries[-1]
+         item["preceded_by_lesson_id"] = concept_entry["lesson_id"]
+         item["preceded_by_lesson_version"] = concept_entry["version"]
+
+      return minutes
+
+   def refresher_for(self, block_name, item, block2_left):
+      if not self.is_active:
+         return None
+
+      target = refresh.matching_target(self.targets, item, self.graph, block_name, self.taken)
+
+      if target is None:
+         return None
+
+      body = self.inputs.bodies.get(target.lesson_id)
+
+      if body is None:
+         return None
+
+      return target, refresh.refresher_entry(target, body, item)
+
+   def place_refresher(self, block, block_name, item, block2_left):
+      found = self.refresher_for(block_name, item, block2_left)
+
+      if found is None:
+         return 0.0
+
+      target, entry = found
+
+      def reading_fits(extra):
+         return self.reading_fits(extra, block2_left - extra)
+
+      is_served = refresh.serve_refresher(block, entry, self.session.refresher_count, reading_fits)
+
+      if not is_served:
+         return 0.0
+
+      self.taken.add(target.lesson_id)
+      self.session.lessons.append(entry)
+      self.session.lesson_minutes += entry["minutes"]
+
+      return entry["minutes"]
+
+   def note_block3(self, item):
+      """15 Re-teaching, T2 row: a match in block 3 never cues the criterion item, so it becomes a
+      "Read again" link in block 4."""
+      if not self.is_active:
+         return
+
+      target = refresh.matching_target(self.targets, item, self.graph, "block2", self.taken)
+
+      if target is None:
+         return
+
+      self.taken.add(target.lesson_id)
+      self.read_again.append(refresh.read_again_entry(target))
+
+   def trim_to_share(self):
+      """Invariant L5's share cap on the forecast actually assembled: the last reading entries are
+      taken out until it holds, a first-contact lesson becoming a deferral of its item."""
+      while self.session.lesson_minutes > lesson_constants.LESSON_SHARE_MAX * self.session.forecast_total:
+         has_reading = len(self.session.lessons) > 0
+
+         if not has_reading:
+            break
+
+         self.remove_group(self.session.lessons[-1])
+
+   def remove_group(self, last):
+      before_item_id = last["before_item_id"]
+      group = [
+         entry for entry in self.session.lessons
+         if entry["before_item_id"] == before_item_id and entry["kind"] == last["kind"]
+      ]
+
+      for block in (self.session.block1, self.session.block2):
+         block[:] = [entry for entry in block if not any(entry is chosen for chosen in group)]
+
+      self.session.lessons[:] = [entry for entry in self.session.lessons if not any(entry is chosen for chosen in group)]
+      self.session.lesson_minutes -= sum(entry["minutes"] for entry in group)
+      is_first_contact = last["kind"] == LESSON_KIND
+
+      if not is_first_contact:
+         return
+
+      item = next(entry for entry in self.session.block2 if entry.get("id") == before_item_id)
+      item.pop("preceded_by_lesson_id", None)
+      item.pop("preceded_by_lesson_version", None)
+      item["lesson_link"] = {"lesson_id": last["lesson_id"], "version": last["version"]}
+      self.session.lesson_deferrals.append({
+         "concept_id": last["concept_id"],
+         "lesson_id": last["lesson_id"],
+         "version": last["version"],
+         "band": last["band"],
+         "reason": READING_SHARE,
+         "before_item_id": before_item_id,
+      })
+
+
+def takes_lessons(item):
+   """A probe measures and an opener is a generation attempt, so neither is preceded by a lesson
+   (15, Invariants L3; the opener order is L6's, wired where the opener is)."""
+   is_probe = item.get("is_probe") is True
+   is_opener = item.get("is_opener") is True
+
+   return not is_probe and not is_opener
+
+
 def assemble_session(
    states,
    graph,
@@ -567,14 +878,19 @@ def assemble_session(
    ordering=None,
    retrieval_entry=None,
    openers=False,
+   lessons=None,
 ):
    """openers places the productive-failure opener in block 2 and sets concept_opener_done on
    the in-memory state of the concept's first skill; the caller persists the flag. Only a learning
-   session asks for it (app/session/service.py open_session)."""
+   session asks for it (app/session/service.py open_session).
+
+   lessons is a gate.LessonInputs, given only for a learning session (15, condition (e)); None
+   serves no lesson and no refresher, which is how every other caller assembles."""
    retrievability = retrievability_map(states, today, retrievability)
    now = session_now(today, now)
    history = []
    session = Session()
+   placement = LessonPlacement(session, lessons, states, graph, retrievability)
    session.due_queue = due_today_queue(
       states, graph, bank, attempts_history, today, retrievability
    )
@@ -595,6 +911,9 @@ def assemble_session(
    def serve(block, item, shortfalls=()):
       for rule_name in shortfalls:
          session.shortfalls.append({"position": len(session.served), "rule": rule_name})
+
+      if block is session.block2:
+         item["kind"] = ITEM_KIND
 
       block.append(item)
       session.served.append(item)
@@ -666,6 +985,7 @@ def assemble_session(
       if not fits(assembled, served, constants.BLOCK1_MAX_MINUTES):
          break
 
+      placement.place_refresher(session.block1, "block1", served, constants.BLOCK2_MAX_MINUTES)
       assembled += serve(session.block1, served, shortfalls)
 
       if is_requeue_turn:
@@ -725,7 +1045,22 @@ def assemble_session(
       if not fits(assembled, selection.item, constants.BLOCK2_MAX_MINUTES):
          break
 
-      assembled += serve(session.block2, selection.item, selection.shortfalls)
+      item = selection.item
+      block2_left = constants.BLOCK2_MAX_MINUTES - assembled - forecast_for(item)
+      assembled += placement.place_refresher(session.block2, "block2", item, block2_left)
+      decision = None
+
+      if placement.is_active and takes_lessons(item):
+         decision = placement.first_contact(item, assembled)
+
+      reading = sum(entry["minutes"] for entry in decision.entries) if decision is not None else 0.0
+      overruns_block = reading > 0 and not fits(assembled + reading, item, constants.BLOCK2_MAX_MINUTES)
+
+      if overruns_block:
+         decision = placement.deferral(decision.concept_id, decision.entries[-1]["band"], item, BLOCK_MINUTES)
+
+      assembled += placement.place(session.block2, decision, item)
+      assembled += serve(session.block2, item, selection.shortfalls)
 
    session.coverage_gaps = gaps
    has_gaps = len(gaps) > 0
@@ -758,8 +1093,10 @@ def assemble_session(
       if not fits(assembled, selection.item, constants.BLOCK3_MAX_MINUTES):
          break
 
+      placement.note_block3(selection.item)
       assembled += serve(session.block3, selection.item, selection.shortfalls)
 
-   session.block4 = corrected_today(attempts_history, today)
+   session.block4 = corrected_today(attempts_history, today) + placement.read_again
+   placement.trim_to_share()
 
    return session

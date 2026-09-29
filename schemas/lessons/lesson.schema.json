@@ -123,7 +123,6 @@
    "required": [
     "author",
     "prompt_version",
-    "generated_at",
     "signed_off_by",
     "signed_off_at",
     "not_human"
@@ -133,6 +132,7 @@
     "author": {"type": "string", "minLength": 1},
     "prompt_version": {"type": "string", "minLength": 1},
     "generated_at": {"type": "string", "minLength": 10},
+    "design_path": {"type": "string", "pattern": "^docs/lessons/.+\\.md$"},
     "signed_off_by": {"type": ["string", "null"]},
     "signed_off_at": {"type": ["string", "null"]},
     "not_human": {"const": true}
@@ -162,8 +162,17 @@
     },
     "fallback": {"type": "string"},
     "keyboard": {"type": "string"},
-    "reduced_motion": {"type": "string"}
+    "reduced_motion": {"type": "string"},
+    "sources": {"type": "array", "items": {"type": "string"}}
    }
+  },
+  "relation_fields": {
+   "relation": {"enum": ["new", "equivalent", "differentiate", "integrate", "evaluate", "solve", "limit"]},
+   "subs": {"type": "object", "additionalProperties": {"type": ["string", "number"]}},
+   "approx": {"type": "boolean"},
+   "variable": {"type": "string", "minLength": 1},
+   "point": {"type": ["string", "number"]},
+   "dir": {"enum": ["+", "-", "+-"]}
   },
   "section_id": {
    "type": "string",
@@ -273,7 +282,13 @@
     "cue": {"$ref": "#/$defs/text"},
     "why": {"$ref": "#/$defs/text"},
     "expression": {"$ref": "#/$defs/mathjson"},
-    "point_type_id": {"type": "string", "pattern": "^BC-PT-\\d{5}$"}
+    "point_type_id": {"type": "string", "pattern": "^BC-PT-\\d{5}$"},
+    "relation": {"$ref": "#/$defs/relation_fields/relation"},
+    "subs": {"$ref": "#/$defs/relation_fields/subs"},
+    "approx": {"$ref": "#/$defs/relation_fields/approx"},
+    "variable": {"$ref": "#/$defs/relation_fields/variable"},
+    "point": {"$ref": "#/$defs/relation_fields/point"},
+    "dir": {"$ref": "#/$defs/relation_fields/dir"}
    }
   },
   "worked_example": {
@@ -407,7 +422,13 @@
     "text": {"$ref": "#/$defs/text"},
     "mathjson": {"$ref": "#/$defs/mathjson"},
     "point_type_id": {"type": "string", "pattern": "^BC-PT-\\d{5}$"},
-    "rule_named": {"type": "string"}
+    "rule_named": {"type": "string"},
+    "relation": {"$ref": "#/$defs/relation_fields/relation"},
+    "subs": {"$ref": "#/$defs/relation_fields/subs"},
+    "approx": {"$ref": "#/$defs/relation_fields/approx"},
+    "variable": {"$ref": "#/$defs/relation_fields/variable"},
+    "point": {"$ref": "#/$defs/relation_fields/point"},
+    "dir": {"$ref": "#/$defs/relation_fields/dir"}
    }
   },
   "check": {
@@ -446,7 +467,6 @@
     "answer_key": {"$ref": "#/$defs/answer"},
     "worked_solution": {
      "type": "array",
-     "minItems": 1,
      "items": {"$ref": "#/$defs/solution_step"}
     },
     "options": {

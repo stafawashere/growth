@@ -255,8 +255,12 @@ def test_the_third_new_concept_is_deferred_and_its_item_carries_the_link():
 
 
 def test_the_share_cap_defers_a_lesson_whose_minutes_would_pass_it():
+   """Five completions read at three times the authored minutes switch the forecast to the running
+   median (15, Forecast), and a lesson forecast that long passes the share cap."""
    graph = build_graph(load_fixture())
-   session, _ = assemble(lesson_inputs(fixture_concepts(graph), full=6.0, brief=3.0))
+   inputs = lesson_inputs(fixture_concepts(graph), full=6.0, brief=3.0)
+   inputs.completion_ratios = (3.0,) * 5
+   session, _ = assemble(inputs)
 
    assert session.lesson_minutes <= 0.30 * session.forecast_total
    assert any(deferral["reason"] == "reading_share" for deferral in session.lesson_deferrals)
@@ -274,9 +278,16 @@ def test_the_example_first_arm_serves_the_item_and_defers_the_lesson():
    graph = build_graph(load_fixture())
    session, _ = assemble(lesson_inputs(fixture_concepts(graph), example_first=lambda concept_id, archetype: True))
 
-   assert lesson_entries(session.block2) == []
+   deferred_items = {deferral["before_item_id"]: deferral["lesson_id"] for deferral in session.lesson_deferrals}
+   positions = {entry.get("id"): index for index, entry in enumerate(session.block2)}
+
    assert len(session.lesson_deferrals) > 0
    assert {deferral["reason"] for deferral in session.lesson_deferrals} == {"example_first"}
+
+   for lesson in lesson_entries(session.block2):
+      first_item = next(item_id for item_id, lesson_id in deferred_items.items() if lesson_id == lesson["lesson_id"])
+
+      assert positions[first_item] < positions[lesson["before_item_id"]]
 
 
 def test_the_control_arm_serves_the_lesson_first():

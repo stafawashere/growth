@@ -15,6 +15,7 @@ from app.experiments import switches
 from app.feedback import render, tutor
 from app.items.grade import grade
 from app.items.verify import ChildDiedError
+from app.lessons import repository as lesson_repository
 from app.providers.guard import BudgetStopped
 from app.providers.router import chain_for
 from app.providers.subscription import SubscriptionLimitReached
@@ -175,9 +176,21 @@ def read_next_item(
    if is_exhausted:
       return {"item": None}
 
+   if service.is_reading(item):
+      return {"item": dict(item, concept_name=concept_name(settings, item.get("concept_id")))}
+
    prompt = render.pre_submission_prompt(item["stage"], item["served_steps"])
 
    return {"item": dict(item, self_explanation_prompt=prompt)}
+
+
+def concept_name(settings, concept_id):
+   """The name the lesson top bar reads (15 UI); None when the context carries no snapshot."""
+   snapshot = settings.session_context.snapshot
+   concepts = getattr(snapshot, "concepts", None) or {}
+   record = concepts.get(concept_id) or {}
+
+   return record.get("name")
 
 
 def diagnostic_advancer(db, settings, row, today):
@@ -380,8 +393,74 @@ def read_feedback(
       feedback = render.verification_only(feedback)
 
    sentence, tutor_unavailable = tutor_sentence_for(settings, db, user, attempt, feedback)
+   link = None if is_verification_only else lesson_link_for(db, attempt, archetype, error_path, context.graph)
 
-   return dict(render.as_dict(feedback), sentence=sentence, tutor_unavailable=tutor_unavailable)
+   return dict(render.as_dict(feedback), sentence=sentence, tutor_unavailable=tutor_unavailable, lesson_link=link)
+
+
+def attempt_diagnoses(db, attempt):
+   return db.scalars(select(models.Diagnosis).where(models.Diagnosis.attempt_id == attempt.id)).all()
+
+
+def is_probe_tied(db, diagnoses):
+   """15 By misconception candidate: a top-two tie that writes a probe carries no lesson link, so
+   the probe stays uncontaminated (03, Rival handling)."""
+   for diagnosis in diagnoses:
+      has_scheduled_probe = diagnosis.probe_scheduled is not None
+      pending = db.scalars(select(models.PendingProbe.id).where(models.PendingProbe.diagnosis_id == diagnosis.id)).first()
+
+      if has_scheduled_probe or pending is not None:
+         return True
+
+   return False
+
+
+def named_errors(error_path, diagnoses):
+   named = [error_path] if error_path else []
+
+   for diagnosis in diagnoses:
+      observed = json.loads(diagnosis.observed_errors) if diagnosis.observed_errors else []
+      named.extend(error_id for error_id in observed if isinstance(error_id, str))
+
+   return list(dict.fromkeys(named))
+
+
+def lesson_link_for(db, attempt, archetype, error_path, graph):
+   """15 Diagnosis links: the graded option's error_path, or an observed error of the diagnosis,
+   names a BC-ERR the item's concept lesson anchors as #err-<id>. The concepts are read in the
+   archetype's skills order, primary first, as the first-contact gate reads them."""
+   diagnoses = attempt_diagnoses(db, attempt)
+   error_ids = named_errors(error_path, diagnoses)
+   has_errors = len(error_ids) > 0
+
+   if not has_errors or is_probe_tied(db, diagnoses):
+      return None
+
+   servable = lesson_repository.servable_map(db)
+   concepts = []
+
+   for skill_id in archetype["skills"]:
+      concept_id = (graph.skills.get(skill_id) or {}).get("concept")
+
+      if concept_id is not None and concept_id not in concepts:
+         concepts.append(concept_id)
+
+   for concept_id in concepts:
+      found = servable.get(concept_id)
+
+      if found is None:
+         continue
+
+      row = db.get(models.Lesson, found)
+      section_ids = {section["id"] for section in row.body.get("sections", [])}
+
+      for error_id in error_ids:
+         anchor = f"{row.id}#err-{error_id}"
+
+         if anchor in section_ids:
+            return {"lesson_id": row.id, "version": row.version, "anchor": anchor}
+
+   return None
 
 
 def tutor_sentence_for(settings, db, user, attempt, feedback):

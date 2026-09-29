@@ -89,14 +89,19 @@
          "value": [
             "Divide",
             [
-               "Sqrt",
-               6
+               "Multiply",
+               2,
+               [
+                  "Sqrt",
+                  2
+               ]
             ],
             3
          ],
          "is_key": false,
-         "error_path": "BC-ERR-10021",
-         "violated_step": 0
+         "error_path": "BC-ERR-10036",
+         "violated_step": 3,
+         "derivation": "the interval |x| < sqrt(2)/3 solved correctly and its length, 2 sqrt(2)/3, reported in place of the radius"
       },
       {
          "id": "B",
@@ -120,7 +125,8 @@
          ],
          "is_key": false,
          "error_path": "BC-ERR-10021",
-         "violated_step": 0
+         "violated_step": 0,
+         "derivation": "n replaced by n + 1 in the power of x with a step of 1 instead of 2, so the ratio is 9|x|/2 and |x| < 2/9"
       },
       {
          "id": "D",
@@ -131,7 +137,8 @@
          ],
          "is_key": false,
          "error_path": "BC-ERR-10021",
-         "violated_step": 0
+         "violated_step": 0,
+         "derivation": "the 2^n in the denominator left at n when n is replaced by n + 1, so the ratio is 9|x|^2 and |x| < 1/3"
       }
    ],
    "calculator_status": "no_calculator",

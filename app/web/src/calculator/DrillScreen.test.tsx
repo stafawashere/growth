@@ -3,6 +3,7 @@ import { afterEach, beforeAll, beforeEach, describe, expect, it, vi } from "vite
 
 import * as client from "../api/client";
 import { OPEN_DESMOS_LABEL } from "../input/DesmosPanel";
+import { VIEWPORT_WIDTHS, declared, setViewportWidth } from "../testing/cascade";
 import { activate, defineKeyboardMathField, pointerEvents, press, startRecordingPointer, stopRecordingPointer, tabbables, tabTo } from "../testing/keyboard";
 import { CalculatorRoute } from "./CalculatorRoute";
 import { DrillScreen } from "./DrillScreen";
@@ -247,5 +248,42 @@ describe("a drill from the keyboard alone", () => {
       expect(mocked.startCalculatorDrill).toHaveBeenCalledTimes(2);
       expect(document.activeElement).toBe(screen.getByTestId("drill-task"));
       expect(pointerEvents).toEqual([]);
+   });
+});
+
+describe("the skip link on the drill screen", () => {
+   beforeEach(() => {
+      mocked.readCalculatorMeasured.mockResolvedValue(measured());
+      mocked.startCalculatorDrill.mockResolvedValue(drill("DRL-1"));
+   });
+
+   afterEach(() => {
+      setViewportWidth(VIEWPORT_WIDTHS[0]);
+   });
+
+   it("is the app's skip link with no positioned ancestor, so it hides above the page until focused", async () => {
+      render(<CalculatorRoute section="drill" capability="integral" go={vi.fn()} />);
+      await settle();
+
+      const skipLink = screen.getByRole("link", { name: SKIP_TO_RESULT });
+
+      expect(skipLink.classList.contains("skip-link")).toBe(true);
+
+      for (const width of VIEWPORT_WIDTHS) {
+         setViewportWidth(width);
+         const positionedAncestors: string[] = [];
+
+         for (let ancestor = skipLink.parentElement; ancestor !== null; ancestor = ancestor.parentElement) {
+            const position = declared(ancestor, "position");
+            const isPositioned = position !== null && position !== "static";
+
+            if (isPositioned) {
+               positionedAncestors.push(ancestor.className || ancestor.tagName);
+            }
+         }
+
+         expect(declared(skipLink, "position")).toBe("absolute");
+         expect({ width, positionedAncestors }).toEqual({ width, positionedAncestors: [] });
+      }
    });
 });

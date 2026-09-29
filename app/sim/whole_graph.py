@@ -295,19 +295,26 @@ def run_days(
    start=START_DAY,
    rules=None,
    ordering=None,
+   on_day=None,
+   world_model=None,
 ):
    """Daily assembled sessions answered by the hidden student.
 
    arm "control" holds retrievability at 1.0, which empties the due set, so every choice is the
    uniform draw inside the gated fringe, the random-within-fringe control of 10. ordering, when
-   given, replaces block 2's two-term ordering, which is how app/sim/five_term.py runs.
+   given, replaces block 2's two-term ordering, which is how app/sim/five_term.py runs. on_day,
+   when given, is called with the day and the states after that day's answers are applied, so
+   a caller can read mastery as it stands each day without chunking the run. world_model, when
+   given, replaces the fixed-knowledge World of app/sim/runner.py; app/sim/learning.py's
+   LearningWorld is the one whose answer also takes the served stage, because it can learn.
    """
    world = library()
    graph = world.graph
    engine_graph = world.engine_graph
    states = fresh_states() if states is None else states
    engine_rng = random.Random(seed)
-   world_model = World(student_trajectory(student), random.Random(seed + 104729))
+   has_world = world_model is not None
+   world_model = world_model if has_world else World(student_trajectory(student), random.Random(seed + 104729))
    attempts = []
    history = []
    served_total = 0
@@ -341,7 +348,7 @@ def run_days(
       for item in session.served:
          record = graph.archetypes[item["archetype_id"]]
          predicted = p_knowledge(record, states, engine_graph.hard_parents, retrievability)
-         is_correct = world_model.answer(record, item["format"], today)
+         is_correct = answer_item(world_model, record, item, today)
          predictions.append((predicted, is_correct))
          per_skill = rule_based_mastery_states(record, {"correct": is_correct})
          observation = Observation(
@@ -370,7 +377,20 @@ def run_days(
          predictions=predictions,
       ))
 
+      if on_day is not None:
+         on_day(today, states)
+
    return history, states, world_model, served_total
+
+
+def answer_item(world_model, record, item, today):
+   """A world that learns reads the served stage; the fixed World of the P1 runner does not."""
+   can_learn = hasattr(world_model, "learn")
+
+   if can_learn:
+      return world_model.answer(record, item["format"], item["stage"], today)
+
+   return world_model.answer(record, item["format"], today)
 
 
 def true_known_mastered(states, world_model, graph):

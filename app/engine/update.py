@@ -200,8 +200,9 @@ def required_distinct_archetypes(archetypes_available):
    return max(1, min(constants.MASTERY_MIN_DISTINCT_ARCHETYPES, archetypes_available))
 
 
-def evaluate_mastery(state, today, archetypes_available=None):
-   """The six conditions of docs/plan/02, Q6 in docs/plan/11."""
+def mastery_conditions(state, today, archetypes_available=None):
+   """Each of the six conditions of docs/plan/02 by name, so a caller can say which one holds a
+   skill back rather than only that mastery is not met."""
    retention = fsrs.retrievability(
       state.stability,
       elapsed_days(state.last_practised_at, today),
@@ -210,23 +211,21 @@ def evaluate_mastery(state, today, archetypes_available=None):
    days = sorted(state.success_days)
    has_days = len(days) > 0
    span_days = (days[-1] - days[0]).days if has_days else 0
-
-   meets_strength = probability(state) >= constants.MASTERY_THRESHOLD
-   meets_successes = state.unaided_success_count >= constants.MASTERY_MIN_UNAIDED_SUCCESSES
    required_archetypes = required_distinct_archetypes(archetypes_available)
-   meets_archetypes = len(state.distinct_archetypes_succeeded) >= required_archetypes
-   meets_days = len(days) >= constants.MASTERY_MIN_DISTINCT_DAYS
-   meets_span = span_days >= constants.MASTERY_MIN_DAY_SPAN
-   meets_retention = retention >= constants.desired_retention(today)
 
-   return (
-      meets_strength
-      and meets_successes
-      and meets_archetypes
-      and meets_days
-      and meets_span
-      and meets_retention
-   )
+   return {
+      "strength": probability(state) >= constants.MASTERY_THRESHOLD,
+      "unaided_successes": state.unaided_success_count >= constants.MASTERY_MIN_UNAIDED_SUCCESSES,
+      "distinct_archetypes": len(state.distinct_archetypes_succeeded) >= required_archetypes,
+      "distinct_days": len(days) >= constants.MASTERY_MIN_DISTINCT_DAYS,
+      "day_span": span_days >= constants.MASTERY_MIN_DAY_SPAN,
+      "retention": retention >= constants.desired_retention(today),
+   }
+
+
+def evaluate_mastery(state, today, archetypes_available=None):
+   """The six conditions of docs/plan/02, Q6 in docs/plan/11."""
+   return all(mastery_conditions(state, today, archetypes_available).values())
 
 
 def evaluate_unmastery(state, failed_at_unsupported):

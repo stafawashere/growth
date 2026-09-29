@@ -2388,6 +2388,71 @@ items) and items 3 and 6 (Slices 3 and 4). Every gate 11 names for P2 now exists
   fading stage), condition 3's second archetype still gated behind other unmastered skills (13),
   and strength alone (3). Those two are the levers for the next ruling.
 
+- 2026-09-29, mastery pace, third session, on the operator's delegation. The goal is that a
+  synthetic student at unit ability 3.0 masters every teachable skill between 2026-10-01 and
+  2027-05-07 with false mastery at 0.
+  Instrument. `tools/throughput.py` runs `app/sim/whole_graph.run_days` once per seed over the
+  whole span (219 days, never chunked) and prints the mastered count by unit at checkpoints, the
+  day each unit completes, the failure rate by 30-day window and, for every unmastered teachable
+  skill with at least 10 observations, the mastery conditions that fail, its counts, its serve
+  profile (as primary, as secondary, at which stage) and its unmastered blocking parents. `--fast`
+  is 60 days on the first seed; `--trace SKILL` lists every serve that loaded a skill; `--world`
+  picks the hidden student. `app/engine/update.py` gained `mastery_conditions`, the six conditions
+  by name, and `evaluate_mastery` now reads them, so the tool and the engine cannot disagree.
+  `run_days` gained `on_day` (a per-day callback, so mastery is read daily without chunking) and
+  `world_model` (a caller-supplied hidden student). `tests/tools/test_throughput.py` covers the
+  pure parts; it went red with the strength condition inverted (3 failures shown in
+  `tests/engine/test_update.py` too) and green on restore.
+  Baseline, fixed world (`app/sim/runner.py` World, what the ability-3.0 runs before this session
+  used), seeds 1, 2, 3: 114, 45 and 80 of 539 mastered on day 219; 20 population students mean
+  7.1 (min 0, max 22); no unit ever completes; the failure rate climbs from 21 to 62 percent.
+  Cause, read from the instrument and a trace: that World has no learning, so the 13 to 19
+  teachable skills the ability-3.0 draw leaves unknown fail their archetypes forever, and every
+  known skill decays from a 5-day half-life after its first practice. Both are things the P7 world
+  in `app/sim/learning.py` already corrects (a per-skill learning rate, as 10 "The world" asks, and
+  the stage 12 consolidated prior recorded in 12), so the tool's ability runs use the learning
+  world with `learning.WORLD`; the fixed world stays available as `--world fixed`.
+  Baseline, learning world, seeds 1, 2, 3: 277, 255 and 288 of 539 on day 219 (35 to 46 by day
+  30, 83 to 98 by day 60, 136 to 144 by day 90, 161 to 202 by day 120); Unit 1 completes on day
+  125 for seed 3 and no other unit completes; the failure rate rises from 13 to 37 percent; 20
+  population students mean 73.6 (min 4, max 140). Stuck skills at the end of seed 1 (76 with at
+  least 10 observations): 23 fail strength alone, all secondaries with 5 to 14 unaided successes
+  and f = 0 whose archetype left block 2 when its primary was mastered; 16 fail all six conditions
+  with no unaided success at all; 9 fail condition 3 alone with 24 to 71 unaided successes on
+  their one servable archetype; 2 meet every condition and are not declared, because propagated
+  credit raised strength after their last direct observation and nothing re-evaluated them.
+  Simulator change, recorded before its effect was measured. `BC-QA-08011` loads nine skills the
+  seed-1 student knew and was answered wrong 90 times over 145 days: once one loaded skill lapsed
+  the item failed, no skill was reinforced, every loaded skill decayed further, and the item could
+  never succeed again. The world let a known skill decay without limit after a lapse, where every
+  spaced-repetition model the plan cites re-encodes a lapsed item at its shortest interval, and
+  the app shows the solution after every attempt (03). `WorldRules.relearn_on_feedback` (on in
+  `WORLD`, off in `LEGACY_WORLD`): a known skill the student could not retrieve for an item is
+  re-anchored, last retrieved today, with no growth. Plan 10 "Forgetting" and 12's register
+  record it.
+  Rejected form, measured first: restarting the lapsed skill at the initial 5-day half-life, SM-2's
+  full reset. Seeds 1, 2, 3 fell to 222, 211 and 259 of 539 (from 277, 255 and 288), because a
+  consolidated skill at the 365-day half-life fails one roll in 17 over a month and each such roll
+  threw it to 5 days. Kept form: one growth step undone (divide by 1.7, never below 5 days), the
+  direction FSRS takes, where post-lapse stability is below the prior stability and not zero.
+  Measured with the kept form, seeds 1, 2, 3: 344, 325 and 329 of 539 on day 219 (from 277, 255
+  and 288); the failure rate holds between 13 and 27 percent across the run instead of rising to
+  37; no unit completes. P7 false mastery: two_term 0 not known of 332 declared, random_control 0
+  of 401, ceiling 0.05 (`eval_false_mastery_within_ceiling` passed). `tests/eval/test_p7_evals.py`
+  gained `test_feedback_relearns_a_lapsed_skill_one_growth_step_down`, which pins the re-anchor,
+  the floor at 5 days and the legacy world's inaction. Stuck skills now: 23, 32 and 54 fail
+  strength alone, nearly all secondaries at p 0.85 to 0.90 with f = 0; 10, 12 and 8 fail
+  condition 3 alone. Budget arithmetic for seed 1: the run delivers c = 12,927 of success credit
+  where reaching 0.9 on every teachable skill needs 5,785 (mean 10.7 per skill from its beta), so
+  the pace is an allocation problem, not a session-length one. The fringe holds 51 to 61 skills
+  from day 90 on while block 2 has only 15 to 20 candidate archetypes, because a candidate must
+  have its primary skill on the fringe (02, `candidates`), and a fringe skill loaded only by
+  archetypes whose primary is already mastered reaches the student through block 3 alone.
+  Checks: `tests/eval/test_p7_evals.py tests/eval/test_selection_study.py
+  tests/eval/test_simulation.py tests/tools/test_throughput.py tests/engine/test_update.py` 2
+  failed, both red at 1f9435f before any change of this session (`test_simulation_prereq_gap_stalls_dependants`,
+  `test_the_decay_arm_serves_differently_from_two_term`), everything else passed.
+
 ## In progress [inferred]
 
 Stage 1, items for Units 4 to 10, is complete in the worktree `../growth-content` on branch

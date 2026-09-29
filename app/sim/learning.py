@@ -74,10 +74,13 @@ class WorldRules:
    keyed_draws: bool = True
    consolidated_prior: bool = True
    daily_growth: bool = True
+   relearn_on_feedback: bool = True
 
 
 WORLD = WorldRules()
-LEGACY_WORLD = WorldRules(keyed_draws=False, consolidated_prior=False, daily_growth=False)
+LEGACY_WORLD = WorldRules(
+   keyed_draws=False, consolidated_prior=False, daily_growth=False, relearn_on_feedback=False
+)
 
 
 @dataclass(frozen=True)
@@ -154,13 +157,19 @@ def make_learning_student(name, seed):
    """The P2 knowledge state closed under hard prerequisites, plus a learning rate per skill."""
    rng = random.Random(seed)
    base = whole_graph.make_student(name, rng)
+
+   return learning_student_from(base, rng)
+
+
+def learning_student_from(base, rng):
+   """A P2 student given the per-skill learning rate of 10's world, drawn from the band."""
    rates = {
       skill_id: rng.uniform(LEARNING_RATE_LOW, LEARNING_RATE_HIGH)
       for skill_id in sorted(base.true_state)
    }
 
    return LearningStudent(
-      name=name,
+      name=base.name,
       known=dict(base.true_state),
       learning_rate=rates,
       slip=base.slip,
@@ -253,6 +262,16 @@ class LearningWorld:
 
       return self.roll("available", skill_id, today) < self.retention(skill_id, today)
 
+   def relearn(self, skill_ids, today):
+      """A known skill that was not retrieved for this item is re-encoded by the feedback: last
+      retrieved today, with one growth step of its half-life undone and never below the initial
+      value. Restarting at the initial half-life instead threw a consolidated skill from 365 days
+      to 5 on one unlucky roll, and mastery fell (222, 211 and 259 against 277, 255 and 288)."""
+      for skill_id in skill_ids:
+         shortened = self.half_life.get(skill_id, INITIAL_HALF_LIFE_DAYS) / HALF_LIFE_GROWTH
+         self.half_life[skill_id] = max(shortened, INITIAL_HALF_LIFE_DAYS)
+         self.last_success[skill_id] = today
+
    def reinforce(self, skill_ids, today):
       for skill_id in skill_ids:
          grew_today = self.grown_on.get(skill_id) == today
@@ -288,7 +307,15 @@ class LearningWorld:
 
    def answer(self, record, response_format, stage, today):
       loaded = record["skills"]
-      all_available = all(self.available(skill_id, today) for skill_id in loaded)
+      relearns = self.rules.relearn_on_feedback
+
+      if relearns:
+         availability = {skill_id: self.available(skill_id, today) for skill_id in loaded}
+         all_available = all(availability.values())
+      else:
+         availability = {}
+         all_available = all(self.available(skill_id, today) for skill_id in loaded)
+
       is_mcq = response_format == "mcq"
       floor = max(self.student.guess, constants.MCQ_GUESS_FLOOR) if is_mcq else self.student.guess
       p_correct = 1.0 - self.student.slip if all_available else floor
@@ -296,6 +323,15 @@ class LearningWorld:
 
       if is_correct and all_available:
          self.reinforce(loaded, today)
+
+      lapsed = [
+         skill_id
+         for skill_id in loaded
+         if self.knows(skill_id) and not availability.get(skill_id, True)
+      ]
+
+      if relearns and lapsed:
+         self.relearn(lapsed, today)
 
       self.learn(loaded, stage, today)
 

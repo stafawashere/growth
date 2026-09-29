@@ -2,6 +2,7 @@
 spends a second tutor call against the budget cap of docs/plan/07-ai-provider-layer.md nor shows
 a different sentence than the one the student already read.
 """
+import pytest
 from sqlalchemy import create_engine
 from sqlalchemy.orm import Session as OrmSession
 from sqlalchemy.pool import StaticPool
@@ -10,6 +11,8 @@ from app.db import models
 from app.engine.state import FadingStage
 from app.feedback import render, tutor
 from app.providers.base import ProviderResult, Usage
+from app.providers.guard import ProviderCallFailed
+from app.providers.subscription import SubscriptionAuthFailed
 
 NOW = "2026-09-20T09:00:00+00:00"
 
@@ -198,3 +201,14 @@ def test_without_a_session_and_attempt_the_function_behaves_as_before():
 
    assert sentence == provider.text
    assert provider.calls == 1
+
+
+class SignedOutProvider:
+   def generate(self, request):
+      raise ProviderCallFailed("subscription", tutor.TUTOR_MODEL, "tutor", SubscriptionAuthFailed.__name__)
+
+
+def test_an_expired_sign_in_is_raised_so_the_caller_can_mark_the_tutor_unavailable():
+   with pytest.raises(SubscriptionAuthFailed):
+      tutor.compose_sentence(SignedOutProvider(), make_feedback())
+

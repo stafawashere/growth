@@ -8,7 +8,10 @@ The question records here are written for the tests, in the shape content/frq_it
 """
 import pytest
 
+from app.grading import judge as model_judge
 from app.grading import point as grader
+from app.providers.guard import ProviderCallFailed
+from app.providers.subscription import SubscriptionAuthFailed
 
 LABELS = {
    "BC-PT-99004": "deterministic",
@@ -173,6 +176,51 @@ def test_an_unsettled_check_falls_through_to_the_model():
    assert asked == ["a1", "a1", "a1"]
 
 
+def test_a_part_written_only_in_words_is_judged_rather_than_failed_as_blank():
+   asked = []
+
+   def judge(record, part_record, point, work, strictness, label):
+      asked.append(point["point_id"])
+
+      return {"decision": "earned", "evidence_quote": "", "rule_field": "earns", "rule_cited": "x", "eligibility_note": ""}
+
+   limit_point = {
+      "point_id": "a1",
+      "point_type_id": "BC-PT-99004",
+      "skills": ["BC-SKL-TEST"],
+      "criterion": "the limit",
+      "eligible_only_if": [],
+      "check": {"kind": "sympy_equivalence", "target": "answer", "expected": "3/4", "variable": "t"},
+   }
+   record = question([part("a", [limit_point])])
+   words = "The long run concentration is the limit as t goes to infinity of 3t/(50+4t), which is 3/4 grams per liter."
+   work = {"parts": [{"part_id": "a", "lines": [{"kind": "text", "content": words}], "answer": ""}]}
+
+   grading = grader.grade_question(record, work, LABELS, judge)
+
+   assert grading.decisions[0].decided_by == grader.MODEL
+   assert grading.decisions[0].earned == 1
+   assert asked == ["a1", "a1", "a1"]
+
+
+def test_a_part_with_no_lines_at_all_is_still_settled_as_no_work():
+   blank_point = {
+      "point_id": "a1",
+      "point_type_id": "BC-PT-99004",
+      "skills": ["BC-SKL-TEST"],
+      "criterion": "the limit",
+      "eligible_only_if": [],
+      "check": {"kind": "sympy_equivalence", "target": "answer", "expected": "3/4", "variable": "t"},
+   }
+   record = question([part("a", [blank_point])])
+   work = {"parts": [{"part_id": "a", "lines": [], "answer": ""}]}
+
+   grading = grader.grade_question(record, work, LABELS, never_asked)
+
+   assert grading.decisions[0].decided_by != grader.MODEL
+   assert grading.decisions[0].earned == 0
+
+
 def scripted(decisions_by_label, quote=""):
    def judge(record, part_record, point, work, strictness, label):
       return {
@@ -332,3 +380,28 @@ def test_a_quote_across_labelled_lines_is_on_the_page_and_one_invented_fragment_
    assert grader.quote_is_verbatim("answer: h(3) = -25", page)
    assert not grader.quote_is_verbatim(with_an_invented_line, page)
    assert not grader.quote_is_verbatim("h(4) = -18", page)
+
+
+class SignedOutProvider:
+   def __init__(self, raised):
+      self.raised = raised
+
+   def generate(self, request):
+      raise self.raised
+
+
+@pytest.mark.parametrize(
+   "raised",
+   [
+      SubscriptionAuthFailed("the Claude sign-in failed on role grader"),
+      ProviderCallFailed("subscription", "claude-sonnet-5", "grader", SubscriptionAuthFailed.__name__),
+   ],
+)
+def test_an_expired_sign_in_makes_the_grader_unavailable_rather_than_an_unread_grading(raised):
+   judge = model_judge.ModelJudge(SignedOutProvider(raised), {})
+
+   with pytest.raises(model_judge.JudgeUnavailable) as unavailable:
+      judge._generate(object())
+
+   assert "sign-in expired" in str(unavailable.value)
+

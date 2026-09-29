@@ -24,7 +24,7 @@ from app.providers.base import (
 from app.providers.call_queue import queue_call
 from app.providers.guard import BudgetStopped, ProviderCallFailed
 from app.providers.model_routing import model_for
-from app.providers.subscription import SubscriptionLimitReached
+from app.providers.subscription import SubscriptionAuthFailed, SubscriptionLimitReached
 
 TEMPLATE_PATH = Path(__file__).resolve().parents[2] / "prompts" / "feedback" / "elaborated_v2.md"
 TUTOR_MODEL = model_for("tutor")
@@ -189,6 +189,7 @@ def compose_sentence(provider, feedback, db=None, attempt=None, user_id=None):
    returned = False
    refused_before_the_wire = False
    limit_reached = False
+   sign_in_failed = False
    result = None
 
    try:
@@ -202,10 +203,14 @@ def compose_sentence(provider, feedback, db=None, attempt=None, user_id=None):
       return None
    except SubscriptionLimitReached:
       limit_reached = True
+   except SubscriptionAuthFailed:
+      sign_in_failed = True
    except ProviderCallFailed as failed:
       limit_reached = failed.exception_type == SubscriptionLimitReached.__name__
+      sign_in_failed = failed.exception_type == SubscriptionAuthFailed.__name__
+      is_other_failure = not limit_reached and not sign_in_failed
 
-      if not limit_reached:
+      if is_other_failure:
          return None
    except Exception:
       return None
@@ -222,6 +227,9 @@ def compose_sentence(provider, feedback, db=None, attempt=None, user_id=None):
 
       if records_the_call:
          record_call(db, attempt, accounting_after if has_this_calls_accounting else None)
+
+   if sign_in_failed:
+      raise SubscriptionAuthFailed(f"the Claude sign-in expired, so the {request.role} is unavailable")
 
    if limit_reached:
       if caches:

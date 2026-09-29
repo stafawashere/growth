@@ -72,6 +72,18 @@ def main():
       print(json.dumps(limited))
       return 1
 
+   if mode == "auth_expired":
+      expired = result_payload(
+         subtype="success",
+         is_error=True,
+         result="Failed to authenticate: OAuth session expired and could not be refreshed",
+         error="authentication_failed",
+         terminal_reason="api_error",
+         total_cost_usd=0,
+      )
+      print(json.dumps(expired))
+      return 1
+
    if mode == "five_hour_limit_stderr":
       print("Claude usage limit reached. Your 5-hour limit resets at 3pm.", file=sys.stderr)
       return 1

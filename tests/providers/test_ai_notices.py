@@ -39,6 +39,7 @@ from app.providers.guard import (
    SubscriptionPacingLedger,
 )
 from app.providers.replay import ReplayProvider
+from app.providers.subscription import SubscriptionAuthFailed
 
 USER = "USR-NOTICE-1"
 MOMENT = datetime(2026, 9, 29, 10, 0, tzinfo=timezone.utc)
@@ -182,6 +183,19 @@ def test_a_failed_call_records_a_failed_notice():
    assert [notice["outcome"] for notice in recorded] == [notices.FAILED]
    assert "RuntimeError" in recorded[0]["answered"]
    assert "socket closed" not in recorded[0]["answered"]
+
+
+def test_an_expired_sign_in_records_a_notice_that_says_so():
+   db = database()
+   expired = SubscriptionAuthFailed("the Claude sign-in failed on role tutor")
+
+   with pytest.raises(ProviderCallFailed):
+      guard(db, Raising(expired), provider_name="subscription").generate(tutor_request())
+
+   recorded = held()
+
+   assert [notice["outcome"] for notice in recorded] == [notices.FAILED]
+   assert "sign-in expired" in recorded[0]["answered"]
 
 
 def test_a_refusal_before_the_wire_records_a_refused_notice():

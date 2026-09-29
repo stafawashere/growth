@@ -18,7 +18,7 @@ from app.items.verify import ChildDiedError
 from app.lessons import repository as lesson_repository
 from app.providers.guard import BudgetStopped
 from app.providers.router import chain_for
-from app.providers.subscription import SubscriptionLimitReached
+from app.providers.subscription import SubscriptionAuthFailed, SubscriptionLimitReached
 from app.session import diagnostic_session, preview, probes, service
 
 router = APIRouter(prefix="/sessions", tags=["sessions"])
@@ -489,6 +489,8 @@ def tutor_sentence_for(settings, db, user, attempt, feedback):
    except BudgetStopped:
       return None, True
    except SubscriptionLimitReached:
+      return None, True
+   except SubscriptionAuthFailed:
       return None, True
 
    return sentence, False

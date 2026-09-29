@@ -116,6 +116,14 @@ def live_math_lines(part_work):
    return [line["content"] for line in live_lines(part_work) if line.get("kind") == "math"]
 
 
+def written_only_in_words(part_work):
+   has_live_lines = len(live_lines(part_work)) > 0
+   has_math = len(live_math_lines(part_work)) > 0
+   has_stated_answer = (part_work.get("answer") or "").strip() != ""
+
+   return has_live_lines and not has_math and not has_stated_answer
+
+
 def answer_line(part_work):
    """The part's stated answer, or its last live math line when the student marked none."""
    stated = (part_work.get("answer") or "").strip()
@@ -228,6 +236,11 @@ def sympy_equivalence(check, part_work, context=NO_CONTEXT):
    left_open = unsettled or len(unreadable) > 0
 
    if has_no_lines:
+      is_words_only = written_only_in_words(part_work)
+
+      if is_words_only:
+         return CheckResult("sympy_equivalence", UNSETTLED, "the part is written in words, not math")
+
       return CheckResult("sympy_equivalence", FAIL, "no work was written for this part")
 
    if left_open:
@@ -260,6 +273,11 @@ def numeric_three_decimals(check, part_work, context=NO_CONTEXT):
    has_line = line != ""
 
    if not has_line:
+      is_words_only = written_only_in_words(part_work)
+
+      if is_words_only:
+         return CheckResult("numeric_three_decimals", UNSETTLED, "the part is written in words, not math")
+
       return CheckResult("numeric_three_decimals", FAIL, "no answer was written for this part")
 
    try:
@@ -572,6 +590,11 @@ def equation_setup(check, part_work, context=NO_CONTEXT):
       return CheckResult("equation_setup", UNSETTLED, "the reference equation did not evaluate")
 
    if not lines:
+      is_words_only = written_only_in_words(part_work)
+
+      if is_words_only:
+         return CheckResult("equation_setup", UNSETTLED, "the part is written in words, not math")
+
       return CheckResult("equation_setup", FAIL, "no work was written for this part")
 
    for line in lines:

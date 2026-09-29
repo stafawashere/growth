@@ -21,7 +21,7 @@ from app.grading.point import JudgeUnavailable, SampleFailed, STRICT
 from app.providers.base import CacheSettings, Message, ProviderRequest, render_template, split_template
 from app.providers.guard import BudgetStopped, ProviderCallFailed, SUBSCRIPTION_MINUTE_RATE
 from app.providers.model_routing import model_for
-from app.providers.subscription import SubscriptionLimitReached
+from app.providers.subscription import SubscriptionAuthFailed, SubscriptionLimitReached
 
 PROMPTS_DIR = Path(__file__).resolve().parents[2] / "prompts" / "grader"
 STANDARD_TEMPLATE = PROMPTS_DIR / "point_liberal_v1.md"
@@ -176,6 +176,13 @@ def is_minute_pacing(stopped):
    return SUBSCRIPTION_MINUTE_RATE in getattr(stopped, "caps", ())
 
 
+SIGN_IN_EXPIRED = "the Claude sign-in expired, so the grader is unavailable"
+
+
+def is_sign_in_failure(failed):
+   return getattr(failed, "exception_type", None) == SubscriptionAuthFailed.__name__
+
+
 def is_usage_limit(failed):
    return getattr(failed, "exception_type", None) == SubscriptionLimitReached.__name__
 
@@ -215,9 +222,14 @@ class ModelJudge:
             waited += PACING_WAIT_SECONDS
          except SubscriptionLimitReached:
             raise JudgeUnavailable("the Claude subscription usage limit was reached") from None
+         except SubscriptionAuthFailed:
+            raise JudgeUnavailable(SIGN_IN_EXPIRED) from None
          except ProviderCallFailed as failed:
             if is_usage_limit(failed):
                raise JudgeUnavailable("the Claude subscription usage limit was reached") from None
+
+            if is_sign_in_failure(failed):
+               raise JudgeUnavailable(SIGN_IN_EXPIRED) from None
 
             raise SampleFailed(f"the grading call failed: {failed.exception_type}") from None
          except Exception as raised:

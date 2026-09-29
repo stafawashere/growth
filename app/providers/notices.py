@@ -351,6 +351,7 @@ def outcome_of(raised):
    are imported here so this module can be imported by the guard without a cycle."""
    from app.providers.base import RefusedBeforeWire
    from app.providers.guard import BudgetStopped, DevSpendCapExceeded, ProviderCallFailed
+   from app.providers.subscription import SubscriptionAuthFailed
 
    if isinstance(raised, GeneratorExit):
       return INTERRUPTED, "The answer stream was closed before it finished."
@@ -367,6 +368,11 @@ def outcome_of(raised):
       kind = getattr(raised, "exception_type", type(raised).__name__)
 
       return REFUSED, clipped(f"Nothing was sent: the model could not take the call ({kind}).")
+
+   is_sign_in_failure = getattr(raised, "exception_type", type(raised).__name__) == SubscriptionAuthFailed.__name__
+
+   if is_sign_in_failure:
+      return FAILED, clipped("Nothing came back: the Claude sign-in expired, so the model is unavailable until it is renewed.")
 
    if isinstance(raised, ProviderCallFailed):
       return FAILED, clipped(f"Nothing came back: the call failed ({raised.exception_type}).")

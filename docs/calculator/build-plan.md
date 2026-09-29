@@ -45,7 +45,7 @@ Files: schemas/calculator/card.schema.json; content/calculator/cards/CCD-*.json,
 
 Checks: `python3 tools/check_calculator.py content/calculator` exit 0 (with `--no-templates` until slice 1a lands, then without); `timeout 120 .venv/bin/python -m pytest tests/tools/test_check_calculator.py`.
 
-Acceptance: ten cards clean; every lint has a red fixture; the checker refuses a card with a dash, a praise word, a library id in student text, a quote not on its page, an unknown template or an unknown error id.
+Acceptance: the cards clean (nine, after "Define f(x) once" and "Evaluate at a point" merged into CCD-value-01 so every drilled card has a template); every lint has a red fixture; the checker refuses a card with a dash, a praise word, a library id in student text, a quote not on its page, an unknown template or an unknown error id.
 
 ## Slice 2. Storage, service, routes, measured [inferred]
 

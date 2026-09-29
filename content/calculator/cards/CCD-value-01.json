@@ -1,0 +1,82 @@
+{
+ "id": "CCD-value-01",
+ "version": 1,
+ "capability": "value",
+ "title": "Define f(x) once, evaluate at a point",
+ "task": "Enter a given function once and read its value at a stated input.",
+ "steps": [
+  {
+   "text": "Type the function once as f(x)= followed by its expression.",
+   "keys": "f(x)="
+  },
+  {
+   "text": "Use the typing shortcuts for powers, roots, fractions and pi as the expression needs them.",
+   "keys": "^ sqrt frac pi"
+  },
+  {
+   "text": "Press Enter for a new expression line.",
+   "keys": "Enter"
+  },
+  {
+   "text": "Type f with the input in parentheses, and the value appears in the expression list.",
+   "keys": "f(3)"
+  }
+ ],
+ "demonstration": {
+  "function_tex": "f(x)=x^{2}e^{-x/3}",
+  "lines": [
+   {
+    "typed": "f(x)=x^2e^(-x/3)",
+    "shows": "the graph of f"
+   },
+   {
+    "typed": "f(2.7)",
+    "shows": "2.963893"
+   }
+  ],
+  "setup_latex": "f(2.7)=(2.7)^{2}e^{-2.7/3}",
+  "answer": "2.964"
+ },
+ "exam_habit": [
+  {
+   "text": "Using the function names given rather than copying analytic expressions keeps the grouping parentheses that a substituted expression can lose.",
+   "error_ids": [
+    "BC-ERR-99009"
+   ]
+  },
+  {
+   "text": "A value obtained from a graphing calculator without the equation, function or definite integral that was entered loses the setup point, so the setup is written beside the result.",
+   "error_ids": [
+    "BC-ERR-99021"
+   ]
+  }
+ ],
+ "bluebook_note": "none",
+ "sources": [
+  {
+   "doc": "desmos-help-functions",
+   "page": 1,
+   "anchor_quote": "Once you've defined a function, you can use it in expressions or within other functions."
+  },
+  {
+   "doc": "desmos-help-functions",
+   "page": 1,
+   "anchor_quote": "Use function notation to evaluate functions for a certain value."
+  },
+  {
+   "doc": "desmos-graphing-shortcuts",
+   "page": 1,
+   "anchor_quote": "StartFraction, \"a\" Over \"b\", EndFraction | frac | frac"
+  },
+  {
+   "doc": "desmos-user-guide-pdf",
+   "page": 13,
+   "anchor_quote": "New expression: Press “enter”"
+  }
+ ],
+ "evidence_tag": "verified",
+ "drills": [
+  "CDT-value-01",
+  "CDT-value-02"
+ ]
+}

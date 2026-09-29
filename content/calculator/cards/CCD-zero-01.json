@@ -1,0 +1,87 @@
+{
+ "id": "CCD-zero-01",
+ "version": 1,
+ "capability": "zero",
+ "title": "Zeros and f(x)=k",
+ "task": "Solve an equation f(x)=k numerically by reading the point where the graphs meet.",
+ "steps": [
+  {
+   "text": "Type the function once as f(x)= followed by its expression.",
+   "keys": "f(x)="
+  },
+  {
+   "text": "For an equation f(x)=k, type y=k on a second line, and for a zero use the x-intercept of f.",
+   "keys": "y=k"
+  },
+  {
+   "text": "Select the curve, click the gray point of interest, and choose Export Point to Expression List to read its coordinates.",
+   "keys": "Export Point to Expression List"
+  }
+ ],
+ "demonstration": {
+  "function_tex": "f(x)=\\ln(x)+\\sqrt{x}",
+  "lines": [
+   {
+    "typed": "f(x)=ln(x)+sqrt(x)",
+    "shows": "the graph of f"
+   },
+   {
+    "typed": "y=1.5",
+    "shows": "a horizontal line meeting f at one gray point"
+   },
+   {
+    "typed": "Export Point to Expression List",
+    "shows": "(1.38277, 1.5)"
+   }
+  ],
+  "setup_latex": "\\ln(x)+\\sqrt{x}=1.5",
+  "answer": "1.383"
+ },
+ "exam_habit": [
+  {
+   "text": "A value read off a trace rather than solving for it is the error readers record, so the solution comes from the point of interest.",
+   "error_ids": [
+    "BC-ERR-99019"
+   ]
+  },
+  {
+   "text": "A value obtained from a graphing calculator without the equation, function or definite integral that was entered loses the setup point, so the setup is written beside the result.",
+   "error_ids": [
+    "BC-ERR-99021"
+   ]
+  }
+ ],
+ "bluebook_note": "none",
+ "sources": [
+  {
+   "doc": "desmos-help-getting-started",
+   "page": 1,
+   "anchor_quote": "When you graph an expression or equation, you will notice points of interest in gray on your graph."
+  },
+  {
+   "doc": "desmos-help-getting-started",
+   "page": 1,
+   "anchor_quote": "Click a point of interest and then Export Point to Expression List to add it to a new expression line."
+  },
+  {
+   "doc": "desmos-help-faqs",
+   "page": 1,
+   "anchor_quote": "gray dots will appear at intercepts, intersection points, maximums, and minimums"
+  },
+  {
+   "doc": "ced",
+   "page": 13,
+   "anchor_quote": "find the zeros of functions (solve equations numerically)"
+  },
+  {
+   "doc": "ced",
+   "page": 13,
+   "anchor_quote": "students are required to write the setup (e.g., the equation being solved, or the derivative or definite integral being evaluated)"
+  }
+ ],
+ "evidence_tag": "inferred",
+ "drills": [
+  "CDT-zero-01",
+  "CDT-zero-02"
+ ]
+}

@@ -1,0 +1,71 @@
+{
+ "id": "CCD-integral-02",
+ "version": 1,
+ "capability": "integral",
+ "title": "Average value",
+ "task": "Calculate the average value of a function on an interval as its integral divided by the length of the interval.",
+ "steps": [
+  {
+   "text": "Type frac to open a fraction template.",
+   "keys": "frac"
+  },
+  {
+   "text": "In the numerator, type int and fill in the bounds, the integrand and the differential.",
+   "keys": "int"
+  },
+  {
+   "text": "Press the down arrow to move to the denominator and type the length of the interval.",
+   "keys": "Down Arrow"
+  }
+ ],
+ "demonstration": {
+  "function_tex": "f(x)=\\sqrt{1+x^{3}}",
+  "lines": [
+   {
+    "typed": "f(x)=sqrt(1+x^3)",
+    "shows": "the graph of f"
+   },
+   {
+    "typed": "frac, then int, 0, 2, f(x), dx over 2",
+    "shows": "1.620655"
+   }
+  ],
+  "setup_latex": "\\frac{1}{2-0}\\int_{0}^{2}\\sqrt{1+x^{3}}\\,dx",
+  "answer": "1.621"
+ },
+ "exam_habit": [
+  {
+   "text": "The written setup shows the division, since a definite integral presented as the average value with no division by the length of the interval is the error readers record.",
+   "error_ids": [
+    "BC-ERR-06016"
+   ]
+  }
+ ],
+ "bluebook_note": "none",
+ "sources": [
+  {
+   "doc": "desmos-graphing-shortcuts",
+   "page": 1,
+   "anchor_quote": "StartFraction, \"a\" Over \"b\", EndFraction | frac | frac"
+  },
+  {
+   "doc": "desmos-graphing-shortcuts",
+   "page": 1,
+   "anchor_quote": "Move to Denominator Within Fraction | DOWN ARROW | DOWN ARROW"
+  },
+  {
+   "doc": "desmos-help-integrals",
+   "page": 1,
+   "anchor_quote": "enter a lower bound, upper bound, integrand, and differential"
+  },
+  {
+   "doc": "sg-25",
+   "page": 3,
+   "anchor_quote": "the correct answer will suffice as evidence of division by 4"
+  }
+ ],
+ "evidence_tag": "inferred",
+ "drills": [
+  "CDT-integral-02"
+ ]
+}

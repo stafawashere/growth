@@ -1,0 +1,86 @@
+{
+ "id": "CCD-integral-01",
+ "version": 1,
+ "capability": "integral",
+ "title": "Definite integral",
+ "task": "Numerically calculate a definite integral of a given function over a stated interval.",
+ "steps": [
+  {
+   "text": "Type int in a new expression line to open the integral template.",
+   "keys": "int"
+  },
+  {
+   "text": "Enter the lower bound, then the upper bound, then the integrand, then the differential.",
+   "keys": "dx"
+  },
+  {
+   "text": "Tab exits the current field once it is filled.",
+   "keys": "Tab"
+  },
+  {
+   "text": "With f defined, the integrand can be f(x) itself.",
+   "keys": "f(x)"
+  }
+ ],
+ "demonstration": {
+  "function_tex": "f(x)=\\ln\\left(1+x^{2}\\right)",
+  "lines": [
+   {
+    "typed": "f(x)=ln(1+x^2)",
+    "shows": "the graph of f"
+   },
+   {
+    "typed": "int, then 1, 4, f(x), dx",
+    "shows": "5.720545"
+   }
+  ],
+  "setup_latex": "\\int_{1}^{4}\\ln\\left(1+x^{2}\\right)\\,dx",
+  "answer": "5.721"
+ },
+ "exam_habit": [
+  {
+   "text": "A value obtained from a graphing calculator without the equation, function or definite integral that was entered loses the setup point, so the setup is written beside the result.",
+   "error_ids": [
+    "BC-ERR-99021"
+   ]
+  },
+  {
+   "text": "A decimal approximation reported to fewer than three places after the decimal point loses the answer point.",
+   "error_ids": [
+    "BC-ERR-02032"
+   ]
+  }
+ ],
+ "bluebook_note": "none",
+ "sources": [
+  {
+   "doc": "desmos-help-integrals",
+   "page": 1,
+   "anchor_quote": "Type int (or integral if working in the Geometry Tool) in an expression line."
+  },
+  {
+   "doc": "desmos-help-integrals",
+   "page": 1,
+   "anchor_quote": "enter a lower bound, upper bound, integrand, and differential"
+  },
+  {
+   "doc": "desmos-graphing-shortcuts",
+   "page": 1,
+   "anchor_quote": "Exit Current Block | Tab | Tab"
+  },
+  {
+   "doc": "ced",
+   "page": 13,
+   "anchor_quote": "numerically calculate the value of a definite integral"
+  },
+  {
+   "doc": "ced",
+   "page": 13,
+   "anchor_quote": "students are required to write the setup (e.g., the equation being solved, or the derivative or definite integral being evaluated)"
+  }
+ ],
+ "evidence_tag": "verified",
+ "drills": [
+  "CDT-integral-01"
+ ]
+}

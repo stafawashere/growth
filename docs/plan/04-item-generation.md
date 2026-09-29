@@ -519,3 +519,10 @@ What that buys generation specifically: the cached prefix is the archetype recor
 | Hand-authored P1 items carrying a provenance record with model "operator" | 02 Prerequisite gating and the outer fringe, which excludes any archetype with no published item and logs it as a coverage gap |
 | Duplicate and copyright gate, provenance logging | 09's data rules and the project's non-negotiable rule that no official stem, figure, or rubric text is served |
 | Batch generation and prompt caching | 07's cost controls and 06's job table, which consumes generation and verification as background work |
+
+## Plan amendments, 2026-09-29, the Today redesign [inferred]
+
+| Section | Amendment | Tag |
+|---|---|---|
+| Checks on the option set | `tools/check_items.py` gains nine standards lints from `docs/pedagogy/today/question-standards.md` section 12 (`app/items/standards.py`): five by default (calculator decimals, choice-worded short answer, command verb, stem length, no all-or-none) and four under `--standards` (option count, distinct error paths, value option type, distractor provenance), because the operator's fixture in tests/fixtures/items_p1 fails the four and a fixture is never edited to pass. The bank measured 1,394 of 3,316 records failing under `--standards` and 98 under the default; the fix order and counts are in `docs/pedagogy/today/design.md` D14 and the ledger | [verified], the counts; [inferred], the split |
+| Distractor mechanisms | The standard that three distractors come from three distinct BC-ERR paths is stated here and enforced by the `distinct_error_paths` lint; 30.1 percent of the bank violates it, mostly agent drafts whose archetypes hold few errors, which is a library gap carried in 12 | [verified] |

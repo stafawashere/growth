@@ -253,3 +253,11 @@ A key error is a generated item whose stated correct answer is wrong, whose work
 **What happens on a failure.** An audit above the threshold blocks the release of generated content for the affected stratum, not the whole bank. Every item in the failing stratum is quarantined, the failure mode is traced to a stage of the verification pipeline, and a regression fixture is added at that stage. Since publication requires unanimous agreement and disagreements go to the review queue rather than being averaged, a raised error rate should show up first as a raised escalation rate, and an audit failure with a flat escalation rate means the verifier is agreeing with the generator for a shared reason, which is the worst case and is investigated as such.
 
 **Re-audit cadence.** Every phase that changes generation, every generator prompt version change, and every 500 newly published items, whichever comes first.
+
+## Plan amendments, 2026-09-29, the Today redesign [inferred]
+
+| Section | Amendment | Tag |
+|---|---|---|
+| Offline simulation, policy comparison | Five candidate arms join the list beside two-term, random and the controls: `retrievability_priority` (block 2), `retrievability_priority_both` (blocks 2 and 3), `elo_target`, `spread` and `review_first` (`app/sim/today_policies.py`, `tools/today_sim_study.py`), run on the recorded seeds over the fixed and legacy worlds at 60 and 226 days under both curves. A candidate replaces two-term only under the ruling of 2026-09-27 read on delayed mastery per item and retention at day 30 together, with skills learned not lower; otherwise it stays behind a switch | [inferred] |
+| A/B readiness | `selection_priority` is a third switch, unit the session, powered for a single student the way `feedback_elaboration` is, with delayed checkpoint accuracy as its outcome | [inferred] |
+| Test strategy | `tools/today_metrics.py` records, per synthetic student, how block 2 choices were decided, what the window changed, how the due queue compresses and how many items a skill takes to mastery; its 60 and 226 day tables are in `docs/pedagogy/today/audit/` | [verified] |

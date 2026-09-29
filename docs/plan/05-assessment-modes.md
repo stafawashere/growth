@@ -204,3 +204,10 @@ Alternative rejected. Fitting a composite-to-score model against third-party rec
 ## Open items this file depends on
 
 Four uncertainties in the research library affect these modes directly and are carried into [12-open-questions.md](12-open-questions.md). Whether AP Calculus BC receives a Bluebook reference sheet is unresolved and changes what the item bank may assume. Whether the Bluebook Desmos satisfies all four CED capabilities is not stated by any cached source. The 2027 booklet layout under the revised 42-question Section I is an assumption, since full-length 2027 sample booklets were promised for early 2027 and are not yet available. And 56 active archetypes carry no `point_types`, which currently limits which units can supply free-response questions to a mock or a unit check.
+
+## Plan amendments, 2026-09-29, the Today redesign [inferred]
+
+| Section | Amendment | Tag |
+|---|---|---|
+| Micro-session, what the student sees | The day screen states the whole due queue when block 1 cannot hold it ("N more skills are due today, about M minutes, beyond this set"), as a count and never a target, and the mixed-practice card names units and a count rather than skills, so the review is not announced before the item. The forecast stays an assembly output, the set still ends when the blocks are empty, and no timer, quota or streak is shown | [inferred], evidence in `docs/pedagogy/today/synthesis.md` ranks 6 and 7 |
+| Micro-session, response formats | A short answer is checked only once the math field holds a value; an attempt is never written with a null answer by a fast submit (`growth-gap-analysis.md`, T18) | [verified], the defect |

@@ -684,3 +684,10 @@ Each policy below names the mechanic in plan document 01 or the engine rule in p
 | Guardrailed tutor that never gives the final answer | 01's teaching thesis, which removes the chat box beside an unsolved problem |
 | Discriminating probe written to `pending_probes` when the top two are within 0.2 | 02 Item selection algorithm, whose three selection functions drain the queue before scoring; 02 Session assembly, which serves a pending probe first in the fringe learning block |
 | Diagnosed prerequisite gap charges the prerequisite, not the target skill | 02 Update rules and their prerequisite propagation; 02 Prerequisite gating and the outer fringe, which the charged prerequisite reopens |
+
+## Plan amendments, 2026-09-29, the Today redesign [inferred]
+
+| Section | Amendment | Tag |
+|---|---|---|
+| Feedback policy, Content | Part 3, what the correct response would have shown, is carried explicitly in the feedback payload as `correct_answer` (the key's MathJSON for a value item, the keyed option's label for a statement or choice item) and shown after the violated step on every wrong answer at every stage. The walk of 2026-09-29 found the panel naming the step and the error and never the correct result (`docs/pedagogy/today/growth-gap-analysis.md`, T16). Timing is unchanged: nothing before submission | [verified], the omission; [inferred], the placement |
+| Feedback policy, the tutor during practice | When the tutor is off, the productive-failure opener's comparison is replaced by one sentence saying the comparison needs the tutor, and the first worked step; the opener never receives a verdict | [inferred] |

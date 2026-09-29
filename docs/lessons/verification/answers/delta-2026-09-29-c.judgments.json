@@ -1,0 +1,10 @@
+{
+ "LSN-CON-01004#ex-1": {"agree": true, "reason": "left limit 3, right limit 4, limit at x = 1 does not exist, matches the key"},
+ "LSN-CON-01004#chk-1": {"agree": true, "reason": "the limit does not exist, same verdict with the same one-sided values"},
+ "LSN-CON-01005#ex-1": {"agree": true, "reason": "left 4 and right 0 differ so the limit does not exist, matches the key"},
+ "LSN-CON-01005#chk-1": {"agree": true, "reason": "the limit does not exist because the one-sided limits 4 and 0 differ"},
+ "LSN-CON-01005#chk-2": {"agree": true, "reason": "sides give -1 and 2 so the limit does not exist, matches the key"},
+ "LSN-CON-04012#ex-1": {"agree": true, "reason": "key expr is overestimate; re-solver says overestimate from f'' = -4x < 0"},
+ "LSN-CON-04012#chk-1": {"agree": true, "reason": "key expr is overestimate; re-solver says overestimate, concave down"},
+ "LSN-CON-04012#chk-2": {"agree": true, "reason": "key expr is underestimate; re-solver says underestimate from f'' = 2x > 0"}
+}

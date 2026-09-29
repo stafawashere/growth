@@ -14,28 +14,28 @@
     "id": "LSN-CON-04010#ex-1",
     "agree": true,
     "detail": "agree (symbolic)",
-    "method": "y=4, 3*4+4y'=0; units m/min (height decreasing)."
+    "method": "y=4, units m/min"
    },
    {
     "id": "LSN-CON-04010#chk-1",
     "agree": true,
     "detail": "agree (symbolic)",
-    "method": "Solve 24+8y'=0; units m/min."
+    "method": "solve, -3 meters per minute"
    },
    {
     "id": "LSN-CON-04010#chk-2",
     "agree": true,
     "detail": "agree (symbolic)",
-    "method": "dV/dt=4*pi*r^2*dr/dt; units m^3/s."
+    "method": "dV/dt=4pi r^2 dr/dt, 300 pi cubic meters per second"
    },
    {
     "id": "LSN-CON-04010#chk-3",
     "agree": true,
-    "detail": "key option A, re-solver A",
-    "method": "y=6, 8*3+6y'=0 gives y'=-4 ft/min, decreasing."
+    "detail": "agree (option A)",
+    "method": "y=6, dy=-8*3/6=-4"
    }
   ],
-  "answers_file": "/tmp/claude-0/-home-user-growth/ac029253-8ff0-5a4b-8b5f-cdcaf5e8ff8d/scratchpad/verify/answers_06.json"
+  "answers_file": "docs/lessons/verification/answers/delta-2026-09-29-c.json"
  },
  "audit": {
   "date": "2026-09-29",

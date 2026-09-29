@@ -3,26 +3,26 @@
  "resolve": {
   "date": "2026-09-29",
   "problems": 4,
-  "agreed": 1,
-  "judgments_pending": 3,
-  "all_agree": false,
+  "agreed": 4,
+  "judgments_pending": 0,
+  "all_agree": true,
   "verdicts": [
    {
     "id": "LSN-CON-01005#ex-1",
-    "agree": null,
-    "detail": "judgment: key says 'The limit does not exist because the left hand limit 4 and the right hand limit 0 differ.'; re-solver says 'Limit does not exist: left limit 4, right limit 0.'",
+    "agree": true,
+    "detail": "judged: left 4 and right 0 differ so the limit does not exist, matches the key",
     "method": "one-sided heights differ"
    },
    {
     "id": "LSN-CON-01005#chk-1",
-    "agree": null,
-    "detail": "judgment: key says 'The limit does not exist; the one sided limits differ.'; re-solver says 'The limit does not exist because left 4 differs from right 0.'",
+    "agree": true,
+    "detail": "judged: the limit does not exist because the one-sided limits 4 and 0 differ",
     "method": "compare"
    },
    {
     "id": "LSN-CON-01005#chk-2",
-    "agree": null,
-    "detail": "judgment: key says 'The limit does not exist; the sides give -1 and 2.'; re-solver says 'The limit does not exist: left limit -1, right limit 2.'",
+    "agree": true,
+    "detail": "judged: sides give -1 and 2 so the limit does not exist, matches the key",
     "method": "one-sided heights"
    },
    {

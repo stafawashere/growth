@@ -99,7 +99,7 @@ describe("the Lessons section of progress", () => {
       fireEvent.click(within(library).getByRole("button", { name: /The product rule/ }));
 
       expect(await screen.findByTestId("lesson-reader")).toBeTruthy();
-      expect(mocked.readLessonPlan).toHaveBeenCalledWith("LSN-CON-02013", "low", "read_again");
+      expect(mocked.readLessonPlan).toHaveBeenCalledWith("LSN-CON-02013", "low", "first_contact");
       expect(screen.getByTestId("lesson-top-bar").textContent).toBe("The product rule");
 
       fireEvent.click(screen.getByTestId("lesson-back"));

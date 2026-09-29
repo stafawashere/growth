@@ -31,7 +31,7 @@ describe("LessonRoute, the library reader", () => {
 
       await screen.findByTestId("lesson-reader");
 
-      expect(mocked.readLessonPlan).toHaveBeenCalledWith("LSN-CON-02013", "low", "read_again");
+      expect(mocked.readLessonPlan).toHaveBeenCalledWith("LSN-CON-02013", "low", "first_contact");
       expect(mocked.postLessonEvent).toHaveBeenCalledWith("LSN-CON-02013", expect.objectContaining({ event: "opened", band: "low" }));
 
       fireEvent.click(screen.getByTestId("lesson-next"));

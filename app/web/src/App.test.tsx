@@ -1371,6 +1371,7 @@ describe("the library lesson reader", () => {
       fireEvent.click(await screen.findByRole("button", { name: /The product rule/ }));
 
       expect(await screen.findByTestId("lesson-reader")).toBeTruthy();
+      expect(screen.getByTestId("lesson-back").textContent).toBe("Back to lessons");
 
       fireEvent.click(screen.getByTestId("lesson-back"));
 

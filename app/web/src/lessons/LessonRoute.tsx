@@ -6,9 +6,10 @@ import { LoadFailed, Loading } from "../status/LoadState";
 import { useLoad } from "../status/load";
 import { LessonReader } from "./LessonReader";
 
-/* The library reader (15 UI, Library), reached from the progress Lessons section only and never
-   from the bar. Any signed-off lesson can be read here whatever the gating, and a library read
-   serves the full lesson, so the plan is read for the low band with reason read_again. Events go
+/* The library reader (15 UI, Library), reached from the Lessons tab or the progress Lessons section,
+   never itself on the bar. Any signed-off lesson can be read here whatever the gating, and a library
+   read serves the full lesson, so the plan is the low band's first-contact plan (read_again is the
+   short refresher subset). Events go
    to the library events route, which writes read with read_source library and no engine state; an
    event that fails to post is not retried and does not hold the student on the page. */
 
@@ -16,12 +17,13 @@ export interface LessonRouteProps {
    lessonId: string;
    conceptName: string;
    onLeave: () => void;
+   backLabel?: string;
 }
 
 const LIBRARY_BAND = "low";
 
-export function LessonRoute({ lessonId, conceptName, onLeave }: LessonRouteProps) {
-   const read = useCallback(() => readLessonPlan(lessonId, LIBRARY_BAND, "read_again"), [lessonId]);
+export function LessonRoute({ lessonId, conceptName, onLeave, backLabel }: LessonRouteProps) {
+   const read = useCallback(() => readLessonPlan(lessonId, LIBRARY_BAND, "first_contact"), [lessonId]);
    const load = useLoad<LessonPlanPayload>(read);
    const openedAt = useRef(Date.now());
    const openedPosted = useRef(false);
@@ -68,6 +70,7 @@ export function LessonRoute({ lessonId, conceptName, onLeave }: LessonRouteProps
          band={LIBRARY_BAND}
          context="library"
          conceptName={conceptName}
+         backLabel={backLabel}
          onComplete={complete}
          onSkip={skip}
          onSectionViewed={(sectionId, mode, elapsedMs) => void post({ event: "section_viewed", section_id: sectionId, mode, elapsed_ms: elapsedMs })}

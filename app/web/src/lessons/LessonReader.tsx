@@ -37,6 +37,8 @@ export interface LessonReaderProps {
    onSectionViewed: (sectionId: string, mode: string, elapsedMs: number) => void;
    onCheckAnswer: (checkId: string, body: LessonCheckAnswerBody) => Promise<LessonCheckVerdict>;
    conceptName?: string;
+   /* The library back and finish label, naming where the reader returns. */
+   backLabel?: string;
    now?: () => number;
 }
 
@@ -133,6 +135,7 @@ function screenMode(screen: Screen) {
 export function LessonReader(props: LessonReaderProps) {
    const { lesson, plan, context, onComplete, onSkip, onSectionViewed, onCheckAnswer, now = Date.now } = props;
    const conceptName = props.conceptName ?? UNNAMED_CONCEPT;
+   const backLabel = props.backLabel ?? "Back to progress";
    const screens = screensFor(lesson, plan);
    const [index, setIndex] = useState(0);
    const [returnTo, setReturnTo] = useState<number | null>(null);
@@ -258,7 +261,7 @@ export function LessonReader(props: LessonReaderProps) {
          <div className="action-row lesson-actions">
             {isEnd ? (
                <button type="button" className="button-primary" data-testid="lesson-finish" onClick={finish}>
-                  {isSession ? "Go to the problem" : "Back to progress"}
+                  {isSession ? "Go to the problem" : backLabel}
                </button>
             ) : (
                <button type="button" className="button-primary" data-testid="lesson-next" onClick={next}>
@@ -280,7 +283,7 @@ export function LessonReader(props: LessonReaderProps) {
 
             {!isEnd && !isSession ? (
                <button type="button" className="text-button" data-testid="lesson-back" onClick={skip}>
-                  Back to progress
+                  {backLabel}
                </button>
             ) : null}
          </div>

@@ -360,6 +360,7 @@ export function App() {
                      lessonId={lessonTarget.lessonId}
                      conceptName={lessonTarget.conceptName}
                      onLeave={() => setDestination(lessonTarget.returnTo)}
+                     backLabel={lessonTarget.returnTo === "lessons" ? "Back to lessons" : "Back to progress"}
                   />
                ) : null}
 

@@ -100,7 +100,8 @@
          "value": -3,
          "is_key": false,
          "error_path": "BC-ERR-01017",
-         "violated_step": 0
+         "violated_step": 0,
+         "derivation": "the right-hand limit taken from the left branch, so both one-sided limits read 8 and only m(4) = 8 is solved, 2k^2 + 2k - 4 = 8, giving k = 2 or k = -3, and -3 is reported"
       },
       {
          "id": "B",
@@ -113,14 +114,16 @@
          "value": -2,
          "is_key": false,
          "error_path": "BC-ERR-01015",
-         "violated_step": 2
+         "violated_step": 2,
+         "derivation": "the one-sided limits matched, k^2 + 4 = 8, and m(4) never compared with them, so k = -2 is accepted"
       },
       {
          "id": "D",
          "value": -4,
          "is_key": false,
-         "error_path": "BC-ERR-01017",
-         "violated_step": 0
+         "error_path": "BC-ERR-01003",
+         "violated_step": 0,
+         "derivation": "the left branch said to have no limit at x = 4 because it has no value there, so only m(4) = k^2 + 4 is solved, 2k^2 + 2k - 4 = k^2 + 4, giving k = 2 or k = -4, and -4 is reported"
       }
    ],
    "drafted_by": "claude-opus-5-5 agent draft, pending operator review",

@@ -123,6 +123,14 @@ def test_calculus_operators_round_trip():
       assert to_sympy(from_sympy(expression)) == expression
 
 
+def test_factorial_round_trips():
+   n = sympy.Symbol("n")
+   factorial = sympy.factorial(2 * n)
+
+   assert from_sympy(factorial) == ["Factorial", ["Multiply", 2, "n"]]
+   assert to_sympy(["Factorial", ["Multiply", 2, "n"]]) == factorial
+
+
 def test_an_unknown_sympy_class_is_refused():
    with pytest.raises(UnsupportedMathJSON):
       from_sympy(sympy.Matrix([[1, 2]]))

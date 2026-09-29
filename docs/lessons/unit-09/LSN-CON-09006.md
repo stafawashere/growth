@@ -415,11 +415,11 @@ BC-QA-09004 is an MCQ in Section I Part B, 2.92 minutes (research/exam/exam-stru
    "scoring_consequence": "The guideline accepts separate components only when they are labelled, so an unlabelled pair can lose a point (sg-23:6).",
    "wrong_step": {
     "text": "\\(\\langle 0.314, -0.240\\rangle\\).",
-    "expr": "Matrix([0.314, -0.240])"
+    "expr": "(0.314, -0.240)"
    },
    "right_step": {
     "text": "\\(\\langle -0.240, 0.314\\rangle\\).",
-    "expr": "Matrix([-0.240, 0.314])"
+    "expr": "(-0.240, 0.314)"
    },
    "relation": "distinct",
    "fix_prompt": true,

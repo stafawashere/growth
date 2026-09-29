@@ -1,7 +1,7 @@
 """MathLive MathJSON to SymPy conversion (https://cortexjs.io/math-json/).
 
 Covers the forms P1 items need: numbers, symbols, the arithmetic and
-transcendental function heads, and the two constant symbols Pi and
+transcendental function heads, Factorial, and the two constant symbols Pi and
 ExponentialE. Lesson records add sets (Set, Interval with Open endpoints, Union,
 SetMinus), List and Tuple, the relations, the infinities and NaN, and the calculus
 operators Integrate, D, Limit, Sum and Subs with Apply for a named function, because the
@@ -32,6 +32,7 @@ _UNARY_FUNCTIONS = {
    "Arccos": sympy.acos,
    "Arctan": sympy.atan,
    "Abs": sympy.Abs,
+   "Factorial": sympy.factorial,
 }
 
 _CONSTANTS = {
@@ -380,6 +381,7 @@ _FUNCTION_HEADS = {
    sympy.exp: "Exp",
    sympy.log: "Ln",
    sympy.Abs: "Abs",
+   sympy.factorial: "Factorial",
 }
 
 _RELATION_HEADS = {

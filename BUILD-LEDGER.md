@@ -2512,6 +2512,23 @@ items) and items 3 and 6 (Slices 3 and 4). Every gate 11 names for P2 now exists
   are 19 deep, each skill needs 2 supported successes and then 3 unaided successes on 3 days
   spanning 7 before the next can open, so a chain served daily needs about 9 days per skill and
   the deepest chain about 170 of the 219 days.
+  Ruling 2 applied to `test_two_term_selection_whole_graph` and `test_interleave_full_constraints`.
+  Their premise was students placed by the diagnostic. Measured on population seeds 900 to 911:
+  10 of 12 students, knowing 96 to 247 skills, were placed into nothing and 2 into 13 and 22
+  skills, because placement classifies a skill in-state from the unit posterior (02, cold start:
+  a unit read as `partial` puts sigmoid(beta) under 0.9 for every skill in it) and every unit of
+  a population student reads partial or not started after 30 items. Every student therefore sat
+  on the Unit 1 fringe: 2 units chosen of the more than 3 asked, 7 units seen of 10. This is the
+  plan's design, not a defect (the same rule keeps placement false mastery at 0), and it is also
+  the largest lever left for a student who knows part of the course, so it is listed for the
+  operator below. The tests now start from `whole_graph.states_across_course`: the interior of
+  the known state (every known teachable skill another known skill sits behind) is mastered as
+  placement would mark it, the outermost known skills stay open, nothing unknown is mastered.
+  Marking every known skill mastered was tried first and left block 3 empty in all 1,000
+  sessions: the fringe then held only unknown skills, which the fixed P2 world never learns, so
+  no unaided success ever made a skill retrieval-eligible. Every assertion of both tests is
+  unchanged. `test_a_student_placed_across_the_course_keeps_the_known_boundary_open` pins the
+  helper.
 
 ## In progress [inferred]
 

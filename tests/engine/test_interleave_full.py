@@ -32,14 +32,17 @@ def unexplained(day_record, pairs):
 
 
 def simulate(bank, students, days, seed_base, rules=None):
+   """Students placed across the course (operator ruling 2, 2026-09-29): the unit-pooled
+   diagnostic places nothing for most population students, so from its output 1,000 sessions
+   reached 7 of 10 units where the gate asks for all 10."""
    sessions = []
 
    for index in range(students):
       seed = seed_base + index
       student = whole_graph.make_student(f"student-{index}", random.Random(seed))
-      placed = whole_graph.run_diagnostic(student, bank, seed=seed)
+      placed = whole_graph.states_across_course(student)
       history, _, _, _ = whole_graph.run_days(
-         student, bank, seed=seed, days=days, states=placed.states, rules=rules
+         student, bank, seed=seed, days=days, states=placed, rules=rules
       )
       sessions.extend(history)
 

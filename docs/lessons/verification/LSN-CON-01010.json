@@ -126,5 +126,8 @@
    "Left as preferences: ki-1 motion and orientation figure, the reversal case never derived by the student, no check asking the student to write the inequality.",
    "2026-09-29: error_blocks fix. err-BC-ERR-99008 restored as the third block (low band only): check_lessons.py computes BC-ERR-01012, 01013, 99008 from the records, all three linked to a high severity misconception, so ordered by id. observed_behavior and scoring_consequence are the record's text; wrong and right steps both 2 (equivalent, the loss is the unshown inequality); possible_reason from BC-MIS-99009. The squeeze reading of a record that names MVT, IVT and L'Hospital's Rule is listed as inferred. Delivery, refresher, sources updated; word_count.full 588, read_minutes.full 4.0. No check changed."
   ]
- }
+ },
+ "fix_notes": [
+  "2026-09-29: err-BC-ERR-99008 re-staged (audit: the squeeze conclusion is not a move the record describes). Wrong step now L'Hospital's Rule on lim x to 1 of 3(x-1)/(x+1) with the form unchecked, giving 3/1 = 3; right step: numerator and denominator limits 0 and 2, not both 0, so the limit is 0/2 = 0; relation distinct. SymPy: limit of the quotient 0, limit of the derivative quotient 3. The quotient is drawn for the block from ex-1's vanishing factor 3(x-1); the move is cr-23:16's (the rule used without first checking both limits were 0). observed_behavior and scoring_consequence verbatim; possible_reason unchanged from BC-MIS-99009. Block sources add cr-23:16; record sources add cr-23:16 and ced:93 (topic 4.7). The carry-over inferred entry replaced by one on staging a Unit 4 rule in a Unit 1 lesson. word_count full 588 to 590, brief 447 unchanged. No example, check stem, key or option changed."
+ ]
 }

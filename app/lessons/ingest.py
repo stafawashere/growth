@@ -23,8 +23,10 @@ replaced, because a lesson record, unlike an item, may be edited under the same 
 is a draft.
 """
 import json
+import os
 import re
 import uuid
+from concurrent.futures import ProcessPoolExecutor
 from datetime import datetime, timezone
 from pathlib import Path
 
@@ -46,6 +48,8 @@ SIGNED_OFF = "signed_off"
 RESOLVE_CHECK = "resolve"
 STALE_CHECK = "stale"
 SCHEMA_LINT = "schema"
+PARALLEL_LINT_MIN_RECORDS = 16
+PARALLEL_LINT_WORKERS_MAX = 8
 ACTOR = "system"
 KIND_CODES = {"concept": "con", "prerequisite": "prq", "decision": "dec"}
 SECTION_ID = re.compile(r"LSN-[A-Z]+-[0-9-]+#[A-Za-z0-9-]+")
@@ -261,9 +265,9 @@ def write_transition_audit(db, record, status, previous_status, reasons, now_mom
       write_audit(db, ACTOR, "lesson_signed_off", subject, {"snapshot_digest": record["snapshot_digest"]}, now=now_moment)
 
 
-def ingest_lesson(db, record, snapshot, snapshot_id, context, now_moment, verification_dir=VERIFICATION_DIR):
+def ingest_lesson(db, record, snapshot, snapshot_id, context, now_moment, verification_dir=VERIFICATION_DIR, linted=None):
    now = now_moment.isoformat()
-   findings, lints_run = lint_record(record, context)
+   findings, lints_run = linted if linted is not None else lint_record(record, context)
    fails_schema = SCHEMA_LINT in findings
    rows = []
 
@@ -293,14 +297,48 @@ def ingest_lesson(db, record, snapshot, snapshot_id, context, now_moment, verifi
    return {"lesson_id": record["id"], "version": record["version"], "status": status, "findings": findings}
 
 
+_worker_context = None
+
+
+def start_lint_worker(snapshot):
+   global _worker_context
+   _worker_context = default_context(snapshot)
+
+
+def lint_in_worker(record):
+   return lint_record(record, _worker_context)
+
+
+def lint_records(records, snapshot, context):
+   """Every record's lints, in record order. The lints are CAS work of about half a second a record,
+   so a directory of PARALLEL_LINT_MIN_RECORDS or more is linted across a process pool, each worker
+   holding one checker context; the findings are the same either way, and every database write
+   stays in this process. A caller that passes its own context keeps the serial path."""
+   is_large = len(records) >= PARALLEL_LINT_MIN_RECORDS
+   uses_default_context = context is None
+   runs_in_pool = is_large and uses_default_context
+
+   if not runs_in_pool:
+      lesson_context = context if context is not None else default_context(snapshot)
+
+      return [lint_record(record, lesson_context) for record in records]
+
+   workers = min(PARALLEL_LINT_WORKERS_MAX, os.cpu_count() or 1)
+
+   with ProcessPoolExecutor(max_workers=workers, initializer=start_lint_worker, initargs=(snapshot,)) as pool:
+      return list(pool.map(lint_in_worker, records, chunksize=4))
+
+
 def ingest_lessons(db, directory, snapshot, snapshot_id, now=None, context=None, verification_dir=VERIFICATION_DIR):
    """Ingests every *.json in directory and returns one result per record, in file name order.
    The caller commits."""
    now_moment = now or datetime.now(timezone.utc)
    lesson_context = context if context is not None else default_context(snapshot)
    paths = sorted(path for path in Path(directory).iterdir() if path.suffix == ".json")
+   records = [json.loads(path.read_text()) for path in paths]
+   linted = lint_records(records, snapshot, context)
 
    return [
-      ingest_lesson(db, json.loads(path.read_text()), snapshot, snapshot_id, lesson_context, now_moment, verification_dir)
-      for path in paths
+      ingest_lesson(db, record, snapshot, snapshot_id, lesson_context, now_moment, verification_dir, linted=result)
+      for record, result in zip(records, linted)
    ]

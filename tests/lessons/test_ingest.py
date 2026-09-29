@@ -212,3 +212,17 @@ def test_a_record_failing_the_schema_is_not_stored(tmp_path, context):
    assert results[0]["status"] is None
    assert row is None
    assert failed_checks(verifications) == {"schema"}
+
+
+def test_a_pooled_lint_gives_the_serial_findings_in_record_order(context, monkeypatch):
+   from app.lessons import ingest
+
+   records = [load_fixture("red_style.json"), load_fixture("resolve/LSN-CON-02013.json"), load_fixture("red_error_blocks.json")]
+   serial = ingest.lint_records(records, context.snapshot, context)
+   monkeypatch.setattr(ingest, "PARALLEL_LINT_MIN_RECORDS", 1)
+   monkeypatch.setattr(ingest, "PARALLEL_LINT_WORKERS_MAX", 2)
+   pooled = ingest.lint_records(records, context.snapshot, None)
+
+   assert [findings for findings, _ in pooled] == [findings for findings, _ in serial]
+   assert "style" in pooled[0][0]
+   assert pooled[1][0] == {}

@@ -41,11 +41,11 @@ None. BC-QA-01005 lists no `point_types`; its `scoring_pattern` names three poin
 
 ## Traps
 
-Three error blocks, all on ex-1's draw, in the bundle's order (each links a high severity misconception, so the order falls to id): BC-ERR-01012 (BC-MIS-01008, BC-MIS-01007) and BC-ERR-01013 (BC-MIS-01008, BC-MIS-01001) in both bands, BC-ERR-99008 (BC-MIS-99009, BC-MIS-01015) in the low band only, since the mid band shows the first two. BC-ERR-99008 is held by BC-SKL-01032 (name what must hold before the theorem may be used). Its record names the Mean Value Theorem, the Intermediate Value Theorem and L'Hospital's Rule; carrying the same unverified-hypothesis pattern over to the squeeze inequality is [inferred].
+Three error blocks, all on ex-1's draw, in the bundle's order (each links a high severity misconception, so the order falls to id): BC-ERR-01012 (BC-MIS-01008, BC-MIS-01007) and BC-ERR-01013 (BC-MIS-01008, BC-MIS-01001) in both bands, BC-ERR-99008 (BC-MIS-99009, BC-MIS-01015) in the low band only, since the mid band shows the first two. BC-ERR-99008 is held by BC-SKL-01032 (name what must hold before the theorem may be used). Its record names only the Mean Value Theorem, the Intermediate Value Theorem and L'Hospital's Rule, so the block stages the L'Hospital move (cr-23:16: the rule used without first checking that the limits of the numerator and of the denominator were both 0) on a quotient drawn for this block from ex-1's vanishing factor \(3(x-1)\). The rule itself is Unit 4 (ced:93); staging it here is [inferred].
 
 - err-BC-ERR-01012. Wrong: \(2-3(x-1)\) as the lower bound. Right: \(2-3|x-1|\). Distinct. Reason, words from BC-MIS-01008.
 - err-BC-ERR-01013. Wrong: the bound evaluated at 1, value 2. Right: the bound's limit, 2. Equivalent: the value agrees, the theorem is not applied, which is the record's consequence. Reason, words from BC-MIS-01008.
-- err-BC-ERR-99008. Wrong: the conclusion 2 stated with no inequality shown near 1. Right: the inequality shown, both bound limits taken, then 2. Equivalent: the value agrees and the condition is missing, which is the record's consequence. Reason, words from BC-MIS-99009.
+- err-BC-ERR-99008. Wrong: L'Hospital's Rule on \(\lim_{x\to1}\frac{3(x-1)}{x+1}\) with the form unchecked, \(\frac{3}{1}=3\). Right: the limits are 0 and 2, not both 0, so the limit is \(\frac{0}{2}=0\). Distinct (SymPy: the quotient's limit is 0, the derivative quotient's is 3). Reason, words from BC-MIS-99009.
 
 ## Representations
 
@@ -75,7 +75,7 @@ Every non-text choice is [inferred], settled by the modality A/B.
 
 ## Band plan
 
-- Low (full): orientation, ki-1, st-1, ex-1, err-BC-ERR-01012, err-BC-ERR-01013, err-BC-ERR-99008, chk-1, chk-2, chk-3, two bridges when gated in. 588 words, 4.0 minutes (cap 900 and 6).
+- Low (full): orientation, ki-1, st-1, ex-1, err-BC-ERR-01012, err-BC-ERR-01013, err-BC-ERR-99008, chk-1, chk-2, chk-3, two bridges when gated in. 590 words, 4.0 minutes (cap 900 and 6).
 - Mid (brief): orientation, ki-1, st-1, ex-1, err-BC-ERR-01012, err-BC-ERR-01013, chk-1, chk-2, bridges when gated in. 447 words, 3.0 minutes (cap 450 and 3).
 - Refresher: ki-1, the three error blocks, ex-1.
 
@@ -84,6 +84,7 @@ Every non-text choice is [inferred], settled by the modality A/B.
 - BC-CON-01010; BC-SKL-01032, BC-SKL-01033, BC-SKL-01034, BC-SKL-01035; BC-EK-LIM-1E2; ced:45
 - BC-QA-01005
 - BC-ERR-01012, BC-ERR-01013, BC-ERR-99008; BC-MIS-01008, BC-MIS-99009
+- cr-23:16; ced:93
 - BC-PRQ-01005, BC-PRQ-01010
 - research/units/unit-01-limits-continuity.md#1.8 Determining Limits Using the Squeeze Theorem
 - research/question-analysis/question-archetypes.md#BC-QA-01005 Limit determined by the squeeze theorem with its hypotheses stated
@@ -93,7 +94,7 @@ Every non-text choice is [inferred], settled by the modality A/B.
 - [inferred] Non-text delivery modes. Settled by the modality A/B.
 - [inferred] The absolute value form of the bound. Settled by an official guideline or CED example.
 - [inferred] Part I-A for the squeeze archetype. Settled by an official FRQ part with a guideline.
-- [inferred] BC-ERR-99008's unverified-hypothesis pattern applied to the squeeze inequality. Settled by a squeeze-scoped error record or an official squeeze guideline naming the condition point.
+- [inferred] BC-ERR-99008's L'Hospital move staged in a Unit 1 lesson on a quotient drawn for the block. Settled by a squeeze-scoped error record or an official Unit 1 item applying the rule to a form that is not indeterminate.
 
 ## Machine record
 
@@ -264,14 +265,14 @@ Every non-text choice is [inferred], settled by the modality A/B.
    "observed_behavior": "Responses apply the Mean Value Theorem, the Intermediate Value Theorem or L'Hospital's Rule without establishing continuity from differentiability, without bounding the target value between two function values, or without confirming the indeterminate form.",
    "scoring_consequence": "The condition point is not earned; in several years this was the point earned by the smallest proportion of responses on the question.",
    "wrong_step": {
-    "text": "\\(\\lim_{x\\to1}f(x)=2\\) by the squeeze theorem, with no inequality shown near 1.",
-    "expr": "2"
+    "text": "L'Hospital's Rule on \\(\\lim_{x\\to1}\\frac{3(x-1)}{x+1}\\) with the form unchecked: \\(\\frac{3}{1}=3\\).",
+    "expr": "3"
    },
    "right_step": {
-    "text": "\\(2-3|x-1|\\le f(x)\\le2+3|x-1|\\) near 1, both bounds tend to 2, so the limit is 2.",
-    "expr": "2"
+    "text": "The numerator tends to 0 and the denominator to 2, not both 0, so the limit is \\(\\frac{0}{2}=0\\).",
+    "expr": "0"
    },
-   "relation": "equivalent",
+   "relation": "distinct",
    "possible_reason": {
     "misconception_id": "BC-MIS-99009",
     "text": "recalls a theorem by its conclusion and applies it without establishing the conditions"
@@ -279,7 +280,8 @@ Every non-text choice is [inferred], settled by the modality A/B.
    "sources": [
     "BC-ERR-99008",
     "BC-MIS-99009",
-    "BC-SKL-01032"
+    "BC-SKL-01032",
+    "cr-23:16"
    ]
   }
  ],
@@ -699,8 +701,8 @@ Every non-text choice is [inferred], settled by the modality A/B.
    "settles": "An official free response part on the squeeze theorem with its scoring guideline."
   },
   {
-   "claim": "BC-ERR-99008 records unverified hypotheses for the Mean Value Theorem, the Intermediate Value Theorem and L'Hospital's Rule; the same pattern on the squeeze inequality is carried over through BC-SKL-01032.",
-   "settles": "A squeeze-scoped error record, or an official squeeze guideline naming the condition point."
+   "claim": "BC-ERR-99008 names no squeeze move, so its L'Hospital's Rule move is staged on a quotient drawn for the block from ex-1's vanishing factor, a rule the student meets in Unit 4 (ced:93).",
+   "settles": "A squeeze-scoped error record, or an official Unit 1 item on which L'Hospital's Rule is applied to a form that is not indeterminate."
   }
  ],
  "sources": [
@@ -717,6 +719,8 @@ Every non-text choice is [inferred], settled by the modality A/B.
   "BC-ERR-99008",
   "BC-MIS-01008",
   "BC-MIS-99009",
+  "cr-23:16",
+  "ced:93",
   "BC-PRQ-01005",
   "BC-PRQ-01010",
   "research/units/unit-01-limits-continuity.md#1.8 Determining Limits Using the Squeeze Theorem",
@@ -730,7 +734,7 @@ Every non-text choice is [inferred], settled by the modality A/B.
   "brief": 3.0
  },
  "word_count": {
-  "full": 588,
+  "full": 590,
   "brief": 447
  }
 }

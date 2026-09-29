@@ -44,14 +44,14 @@ None. BC-QA-02012 lists no `point_types`, so no step carries a point tag and the
 
 ## Traps
 
-Four active errors meet the concept's skills; all four are shown, in the bundle's order. Low band all four, mid band the first two. BC-ERR-04017 is held by BC-SKL-02010; its record is a related rates relation differentiated with respect to a length and stopped before the chain rule. On a notation conversion the same slip shows as the rate written with respect to a length in place of time; that carry-over is [inferred].
+Four active errors meet the concept's skills; all four are shown, in the bundle's order. Low band all four, mid band the first two. BC-ERR-04017 is held by BC-SKL-02010; its record is a relating equation differentiated with respect to a length and stopped before the chain rule. ex-1 has no relating equation, so the block draws one for itself: \(V=3h^2\) with \(\frac{dh}{dt}=-1\) at \(h=1\), chosen so the completed chain rule gives ex-1's \(-6\). The drawn relation is [inferred]; the move on it is the record's.
 
 - err-BC-ERR-02030 (BC-MIS-02015, BC-MIS-02014). Wrong step on ex-1's draw: \(\frac{dV}{dt}=-6\), the input dropped. Right step: \(\left.\frac{dV}{dt}\right|_{t=4}=-6\). Distinct. Possible reason from BC-MIS-02015.
-- err-BC-ERR-04017 (BC-MIS-04008, BC-MIS-99005). Wrong: \(\frac{dV}{dh}=-6\), with \(h\) the depth of the water. Right: \(\frac{dV}{dt}=-6\) at \(t=4\). Distinct. Possible reason from BC-MIS-99005.
+- err-BC-ERR-04017 (BC-MIS-04008, BC-MIS-99005). Wrong: \(\frac{dV}{dh}=6h\) from \(V=3h^2\), and the work stops. Right: \(\frac{dV}{dt}=6h\frac{dh}{dt}=6(1)(-1)=-6\). Distinct (SymPy: \(\frac{d}{dh}3h^2=6h\); \(\frac{d}{dt}3h(t)^2=6h\,h'(t)\), which is \(-6\) at \(h=1\), \(h'=-1\)). Possible reason from BC-MIS-99005.
 - err-BC-ERR-02029 (BC-MIS-02015, BC-MIS-03003). Wrong: \(\frac{V(4)}{4}=-6\). Right: \(\left.\frac{dV}{dt}\right|_{t=4}=-6\). Distinct. Possible reason from BC-MIS-02015.
 - err-BC-ERR-03022 (BC-MIS-03014, BC-MIS-03003). Wrong: \(dV=-6\). Right: \(\frac{dV}{dt}=-6\) at \(t=4\). Distinct. Possible reason from BC-MIS-03014.
 
-The wrong and right steps are SymPy equations over the symbols the notation names (dV, dt, dh, V, t) and over `Derivative` and `Subs`, so the CAS separates them structurally.
+The wrong and right steps are SymPy equations over the symbols the notation names (dV, dt, V, t) and over `Derivative` and `Subs`, so the CAS separates them structurally.
 
 ## Representations
 
@@ -83,8 +83,8 @@ No draw equals a published BC-QA-02012 `parameter_draw` (content/items_gen_unit0
 
 ## Band plan
 
-- Low (full): orientation, ki-1, ki-2, st-1, ex-1, the four error blocks, chk-1, chk-2, chk-3, the bridge. 624 words, 4.2 minutes (cap 900 and 6).
-- Mid (brief): orientation, ki-1, st-1, ex-1, err-02030, err-04017, chk-1, chk-2, the bridge. 406 words, 2.8 minutes (cap 450 and 3).
+- Low (full): orientation, ki-1, ki-2, st-1, ex-1, the four error blocks, chk-1, chk-2, chk-3, the bridge. 622 words, 4.2 minutes (cap 900 and 6).
+- Mid (brief): orientation, ki-1, st-1, ex-1, err-02030, err-04017, chk-1, chk-2, the bridge. 404 words, 2.8 minutes (cap 450 and 3).
 - Refresher: ki-1, err-BC-ERR-02030, err-BC-ERR-04017, err-BC-ERR-02029, err-BC-ERR-03022, ex-1.
 
 ## Sources
@@ -100,7 +100,7 @@ No draw equals a published BC-QA-02012 `parameter_draw` (content/items_gen_unit0
 - research/exam/exam-structure.md#Section and part layout
 - [inferred] The illustrative curve in ki-2's figure. Settled by a figure binding on BC-QA-02012's parameter_spec.
 - [inferred] The figure delivery for ki-2. Settled by the modality A/B.
-- [inferred] BC-ERR-04017's wrong variable of differentiation shown on a notation conversion rather than a related rates relation. Settled by a notation-scoped error record or a published BC-QA-02012 item keyed on the variable of differentiation.
+- [inferred] BC-ERR-04017 staged on a relating equation drawn for the block, since ex-1 has none. Settled by a notation-scoped error record or a published BC-QA-02012 item keyed on the variable of differentiation.
 
 ## Machine record
 
@@ -179,8 +179,8 @@ No draw equals a published BC-QA-02012 `parameter_draw` (content/items_gen_unit0
    "error_id": "BC-ERR-04017",
    "observed_behavior": "The relating equation is differentiated with respect to a length or with respect to x, and the response stops there rather than continuing through the chain rule to a rate with respect to time.",
    "scoring_consequence": "The Chief Reader report for 2024 records that responses differentiating with respect to x needed to continue through the chain rule and that many provided no work beyond that step (cr-24:18); BC-ERR-99013 records the same family across years.",
-   "wrong_step": {"text": "\\(\\frac{dV}{dh}=-6\\), with \\(h\\) the depth: a rate per unit of depth.", "expr": "Eq(dV/dh, -6)"},
-   "right_step": {"text": "\\(\\frac{dV}{dt}=-6\\) at \\(t=4\\): a rate per minute.", "expr": "Eq(dV/dt, -6)"},
+   "wrong_step": {"text": "Given \\(V=3h^2\\) and \\(\\frac{dh}{dt}=-1\\) at \\(h=1\\): \\(\\frac{dV}{dh}=6h\\), and the work stops.", "expr": "Eq(Derivative(V(h), h), 6*h)"},
+   "right_step": {"text": "Through the chain rule: \\(\\frac{dV}{dt}=6h\\frac{dh}{dt}=6(1)(-1)=-6\\).", "expr": "Eq(Derivative(V(t), t), 6*h(t)*Derivative(h(t), t))"},
    "relation": "distinct",
    "possible_reason": {"misconception_id": "BC-MIS-99005", "text": "does not distinguish the variable of differentiation"},
    "sources": ["BC-ERR-04017", "BC-MIS-99005", "cr-24:18"]
@@ -285,7 +285,7 @@ No draw equals a published BC-QA-02012 `parameter_draw` (content/items_gen_unit0
  ],
  "refresher": ["ki-1", "err-BC-ERR-02030", "err-BC-ERR-04017", "err-BC-ERR-02029", "err-BC-ERR-03022", "ex-1"],
  "read_minutes": {"full": 4.2, "brief": 2.8},
- "word_count": {"full": 624, "brief": 406},
+ "word_count": {"full": 622, "brief": 404},
  "research_lines": [
   {"file": "research/scoring/notation-requirements.md", "line": "Loose derivative notation is generally accepted when the intent is clear."},
   {"file": "research/units/unit-02-differentiation-definition-properties.md", "line": "Conceptual variants ask what the notation denotes"}
@@ -293,7 +293,7 @@ No draw equals a published BC-QA-02012 `parameter_draw` (content/items_gen_unit0
  "inferred": [
   {"claim": "The curve V(t) = 100 + 2t - t^2 in ki-2's figure is illustrative, chosen so that V'(4) = -6; the draw gives only the value.", "settles": "A figure binding on the BC-QA-02012 parameter_spec."},
   {"claim": "A static figure with an inset table serves ki-2 better than text.", "settles": "The modality A/B in the build plan: skip rate and time to first credited success by mode."},
-  {"claim": "BC-ERR-04017 records a related rates relation differentiated with respect to a length; on a notation conversion the same slip is shown as the rate written with respect to the depth.", "settles": "A notation-scoped error record, or a published BC-QA-02012 item keyed on the variable of differentiation."}
+  {"claim": "BC-QA-02012 carries no relating equation, so BC-ERR-04017 is staged on a relation drawn for the block, V equal to 3 h squared with the depth falling at 1 per minute at depth 1, chosen to give ex-1's rate of negative 6.", "settles": "A notation-scoped error record, or a published BC-QA-02012 item keyed on the variable of differentiation."}
  ],
  "sources": ["BC-CON-02004", "BC-SKL-02010", "BC-SKL-02011", "BC-EK-CHA-2B3", "BC-EK-CHA-2B4", "ced:61", "BC-QA-02012", "BC-ERR-02030", "BC-ERR-04017", "BC-ERR-02029", "BC-ERR-03022", "BC-MIS-02014", "BC-MIS-02015", "BC-MIS-03003", "BC-MIS-03014", "BC-MIS-04008", "BC-MIS-99005", "crabbc-25:25", "cr-24:18", "BC-PRQ-02004", "sg-25:7", "sg-24:8", "research/units/unit-02-differentiation-definition-properties.md#2.2 Defining the Derivative of a Function and Using Derivative Notation", "research/scoring/notation-requirements.md#Derivative notation", "research/exam/exam-structure.md#Section and part layout"]
 }

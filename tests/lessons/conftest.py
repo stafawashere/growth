@@ -8,7 +8,7 @@ from tools.check_lessons import Context
 
 REPO_ROOT = Path(__file__).resolve().parent.parent.parent
 FIXTURE_DIR = REPO_ROOT / "tests" / "fixtures" / "lessons"
-HAND_AUTHORED = REPO_ROOT / "content" / "lessons" / "LSN-CON-02013.json"
+HAND_AUTHORED = FIXTURE_DIR / "resolve" / "LSN-CON-02013.json"
 
 
 @pytest.fixture(scope="session")

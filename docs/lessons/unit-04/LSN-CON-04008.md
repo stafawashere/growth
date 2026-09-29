@@ -17,7 +17,7 @@ Served text, from BC-CON-04008 `description_plain` and the topic's Assessment be
 
 BC-SKL-04018 and BC-SKL-04021 map to BC-EK-CHA-3D1; BC-SKL-04020 maps to BC-EK-CHA-3D2 (ced:90).
 
-- ki-1 (core), BC-EK-CHA-3D1. Paraphrase of "The relating equation" and "Variables as functions of time": a formula, the Pythagorean theorem or a similar triangles proportion ties the quantities together, and an extra varying dimension is eliminated first. Anchor quote from ced:90 (14 words).
+- ki-1 (core), BC-EK-CHA-3D1. Paraphrase of "The relating equation" and "Variables as functions of time": a formula, the Pythagorean theorem or a similar triangles proportion ties the quantities together, and a dimension with no given or asked rate is eliminated first, as the paragraph and BC-QA-04006 `expected_solution_path` eliminate only a variable the supplied rates cannot support. Anchor quote from ced:90 (14 words).
 - ki-2 (core), BC-EK-CHA-3D2. Core so that the mid band teaches BC-SKL-04020, which no other mid block holds (plan 15, Sourcing, Pipeline step 2). Paraphrase of "Other rules": a term multiplying two varying quantities needs the product rule. Anchor quote from ced:90.
 
 ## Recognition
@@ -30,7 +30,7 @@ Not this concept: a stem that supplies the quantity as a function of time; no re
 
 ## Method choice
 
-- st-1, BC-QA-04006. Method, `expected_solution_path[1]` after naming the quantities: write the relating equation, then eliminate what the rates cannot support. Rival from `wrong_approaches`: a varying dimension treated as constant (BC-ERR-99013). Separating feature: whether the stem gives a rate for every varying dimension.
+- st-1, BC-QA-04006. Method, `expected_solution_path[1]` after naming the quantities: write the relating equation, then eliminate what the rates cannot support. Rival from `wrong_approaches`: a varying dimension treated as constant (BC-ERR-99013). Separating feature: whether every varying dimension has a given or asked rate.
 - st-2, BC-QA-04007. Method, `expected_solution_path[0]`: differentiate the curve equation with respect to time. Rival: the mixed term differentiated as though one variable were constant (BC-ERR-04018). Separating feature: a term such as xy.
 
 ## Solution path
@@ -121,7 +121,7 @@ BC-QA-04006 has `calculator_status` either, so Section I Part A, 2.14 minutes (r
    "id": "ki-1",
    "ek_id": "BC-EK-CHA-3D1",
    "depth": "core",
-   "text": "Each quantity is a function of time, and one equation ties them. A varying dimension with no given rate is eliminated before differentiating.",
+   "text": "Each quantity is a function of time, tied by one equation. A dimension with no given or asked rate is eliminated before differentiating.",
    "notation": "dV/dt, dr/dt, dh/dt",
    "quote": {
     "text": "The chain rule is the basis for differentiating variables in a related rates problem",
@@ -155,9 +155,9 @@ BC-QA-04006 has `calculator_status` either, so Section I Part A, 2.14 minutes (r
    "id": "st-1",
    "archetype_id": "BC-QA-04006",
    "cue": "A figure, one supplied rate, another rate asked at an instant.",
-   "method": "First line: the figure's formula, then eliminate each dimension with no supplied rate.",
+   "method": "First line: the figure's formula, then eliminate each dimension with no given or asked rate.",
    "rival": "A varying dimension held constant (BC-ERR-99013).",
-   "separating_feature": "Count the varying dimensions against the supplied rates.",
+   "separating_feature": "Count varying dimensions against supplied rates.",
    "sources": [
     "BC-QA-04006"
    ],

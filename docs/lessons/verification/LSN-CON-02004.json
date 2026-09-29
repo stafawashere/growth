@@ -129,5 +129,8 @@
    "Left: advice on sg-25:7 notation leniency for err-BC-ERR-02030 and option D framing; sg-25:7 and sg-24:8 remain in sources though uncited; mid band weight of error blocks.",
    "2026-09-29: error_blocks fix. err-BC-ERR-04017 restored in second place (check_lessons.py expects 02030, 04017, 02029, 03022), so the mid band now shows err-02030 and err-04017 and err-02029 moves to low only. Wrong dV/dh = -6 (a rate per unit of depth), right dV/dt = -6 at t = 4, distinct; possible_reason from BC-MIS-99005. Carry-over from a related rates record to a notation conversion listed as inferred. cr-24:18, BC-MIS-04008, BC-MIS-99005 back in sources. word_count 624/406, read_minutes 4.2/2.8. chk-3 unchanged."
   ]
- }
+ },
+ "fix_notes": [
+  "2026-09-29: err-BC-ERR-04017 re-staged (audit: dV/dh = -6 had no relating equation and was not the record's move). The block now draws its own relation: V = 3h^2 with dh/dt = -1 at h = 1. Wrong step: dV/dh = 6h and the work stops, expr Eq(Derivative(V(h), h), 6*h). Right step: dV/dt = 6h dh/dt = 6(1)(-1) = -6, expr Eq(Derivative(V(t), t), 6*h(t)*Derivative(h(t), t)); relation distinct. SymPy: d/dh 3h^2 = 6h; d/dt 3h(t)^2 = 6h(t)h'(t), which is -6 at h = 1, h' = -1, matching ex-1's rate. observed_behavior, scoring_consequence and possible_reason (BC-MIS-99005) unchanged. Inferred entry now names the drawn relation. word_count 624/406 to 622/404. No example, check stem, key or option changed."
+ ]
 }

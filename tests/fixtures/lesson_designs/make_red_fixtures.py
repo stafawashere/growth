@@ -136,6 +136,10 @@ def id_in_rival(record):
    record["strategy"][0]["rival"] += " (BC-ERR-02020)"
 
 
+def labelled_rival(record):
+   record["strategy"][0]["rival"] = "Rival: " + record["strategy"][0]["rival"]
+
+
 def two_features(record):
    record["decision"]["stems"][1]["parameter_draw"]["integrand"] = "sin(t)"
 
@@ -167,6 +171,7 @@ CONCEPT_DEFECTS = {
    "fix_prompt": lambda text: edit(text, fix_prompt_on_equivalent),
    "figure_presence": lambda text: edit(text, no_figure_reason),
    "served_text": lambda text: edit(text, id_in_rival),
+   "served_text__rival": lambda text: edit(text, labelled_rival),
 }
 DECISION_DEFECTS = {
    "decision_stems": lambda text: edit(text, two_features),

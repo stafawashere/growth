@@ -191,8 +191,19 @@ No motion, interactive or model mode applies: the concept has no parameter that 
    "archetype_id": "BC-QA-02008",
    "cue": "The stem asks for the derivative of the product or quotient, from a product or quotient of two differentiable expressions.",
    "method": "name the two factors and their derivatives, \\(f\\), \\(g\\), \\(f'\\), \\(g'\\).",
-   "rival": "The rival is multiplying the derivatives of the two factors.",
+   "rival": "Rival: The rival is multiplying the derivatives of the two factors.",
    "separating_feature": "A product gives two terms, each holding exactly one derivative.",
+   "contrast": {
+    "this": {
+     "text": "Let \\(h(x)=x^3\\sin x\\). Find \\(h'(x)\\).",
+     "archetype_id": "BC-QA-02008"
+    },
+    "not_this": {
+     "text": "Let \\(h(x)=\\sin(x^3)\\). Find \\(h'(x)\\).",
+     "why_not": "The cube sits inside the sine, so the chain rule applies."
+    },
+    "feature": "Two factors multiplied, not one function inside another."
+   },
    "sources": [
     "BC-QA-02008"
    ],

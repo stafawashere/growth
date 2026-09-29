@@ -145,7 +145,14 @@ NO_FIGURE_REASON_WORDS_MAX = 40
 SERVED_ID = re.compile(r"\bBC-[A-Z]{2,4}-[A-Za-z0-9-]+\b")
 SERVED_PAGE = re.compile(r"\b(?:ced|sg-\d{2}|cr-\d{2}|crabbc-\d{2}):\d+\b")
 SERVED_TAG = re.compile(r"\[(?:verified|single-source|inferred|uncertain)\]")
-READER_LABEL_LEAD = re.compile(r"^\s*first line:", re.I)
+READER_LABELS = (
+   ("cue", ("Cue:",)),
+   ("method", ("First line:", "First written line:", "Method:", "First step:")),
+   ("rival", ("Rival:", "Rivals:")),
+   ("separating_feature", ("Separating feature:", "Feature:")),
+   ("contrast.feature", ("Feature:",)),
+   ("contrast.not_this.why_not", ("Why not:",)),
+)
 SERVED_FIELDS = {
    plan.PREDICTION: ("stem.text", "options[].label", "resolution.text"),
    plan.ORIENTATION: ("text",),
@@ -1770,8 +1777,28 @@ def served_problems(text):
    return found
 
 
-def starts_with_reader_label(method):
-   return READER_LABEL_LEAD.match(method or "") is not None
+def reader_label_lead(text, labels):
+   lead = (text or "").lstrip().casefold()
+
+   for label in labels:
+      if lead.startswith(label.casefold()):
+         return label
+
+   return None
+
+
+def reader_label_problems(strategy, record_id):
+   """A strategy text that opens with a label the reader already prints beside it."""
+   messages = []
+
+   for path, labels in READER_LABELS:
+      for text in plan.prose_values(strategy, path):
+         label = reader_label_lead(text, labels)
+
+         if label is not None:
+            messages.append(f"{record_id} {path} starts with the reader's label {label!r}")
+
+   return messages
 
 
 def over_cap(label, text, cap):
@@ -2073,7 +2100,7 @@ def served_records(lesson):
 
 def lint_served_text(lesson, context):
    """No library id, page citation or evidence tag in a text the student reads, and no strategy
-   method that opens with the reader's own "First line:" label. An error's observed behaviour,
+   text that opens with the label the reader prints beside it. An error's observed behaviour,
    consequence and reason and the reader-score lines are record words and are exempt."""
    messages = []
 
@@ -2087,8 +2114,8 @@ def lint_served_text(lesson, context):
 
       is_strategy = record_type == plan.STRATEGY
 
-      if is_strategy and starts_with_reader_label(record["method"]):
-         messages.append(f"{record['id']} method starts with the reader's label 'First line:'")
+      if is_strategy:
+         messages.extend(reader_label_problems(record, record["id"]))
 
    return messages
 

@@ -24,7 +24,9 @@ def context(snapshot):
 
 
 def rule_named_by(path):
-   return path.parent.name[len("red_"):]
+   stem = path.parent.name[len("red_"):]
+
+   return stem.split("__")[0]
 
 
 def design_of(path):
@@ -243,6 +245,13 @@ def test_a_method_opening_with_the_reader_label_fails_served_text(tmp_path, cont
    messages = check_lesson_designs.rule_served_text(design, context)
 
    assert messages == ["st-2 method starts with the reader's label 'First line:'"]
+
+
+def test_a_rival_opening_with_the_reader_label_fails_served_text(context):
+   design = design_of(FIXTURE_DIR / "red_served_text__rival" / "LSN-CON-02013.md")
+   messages = check_lesson_designs.rule_served_text(design, context)
+
+   assert messages == ["st-1 rival starts with the reader's label 'Rival:'"]
 
 
 def test_the_prediction_and_contrast_count_in_both_bands(context):

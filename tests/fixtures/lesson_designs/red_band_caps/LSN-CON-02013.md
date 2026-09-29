@@ -190,7 +190,7 @@ No motion, interactive or model mode applies: the concept has no parameter that 
    "id": "st-1",
    "archetype_id": "BC-QA-02008",
    "cue": "The stem asks for the derivative of the product or quotient, from a product or quotient of two differentiable expressions.",
-   "method": "First written line: name the two factors and their derivatives, \\(f\\), \\(g\\), \\(f'\\), \\(g'\\).",
+   "method": "name the two factors and their derivatives, \\(f\\), \\(g\\), \\(f'\\), \\(g'\\).",
    "rival": "The rival is multiplying the derivatives of the two factors.",
    "separating_feature": "A product gives two terms, each holding exactly one derivative.",
    "contrast": {
@@ -213,7 +213,7 @@ No motion, interactive or model mode applies: the concept has no parameter that 
    "id": "st-2",
    "archetype_id": "BC-QA-02009",
    "cue": "The stem asks for the derivative value at the named input, from a table of two functions and their derivatives.",
-   "method": "First written line: record the four supplied values at the named input, each labelled a value or a derivative.",
+   "method": "record the four supplied values at the named input, each labelled a value or a derivative.",
    "rival": "The rival is placing a function value where the rule calls for a derivative value.",
    "separating_feature": "Each of the four numbers is labelled before it is used.",
    "sources": [
@@ -647,8 +647,8 @@ No motion, interactive or model mode applies: the concept has no parameter that 
   "brief": 3.0
  },
  "word_count": {
-  "full": 677,
-  "brief": 447
+  "full": 671,
+  "brief": 444
  },
  "research_lines": [
   {

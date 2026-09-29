@@ -1921,8 +1921,8 @@ def rule_served_text(design, context):
                   messages.append(f"{label} {path} carries {found!r}")
 
    for block in record.get("strategy") or []:
-      if check_lessons.starts_with_reader_label(block.get("method")):
-         messages.append(f"{block.get('id')} method starts with the reader's label 'First line:'")
+      if isinstance(block, dict):
+         messages.extend(check_lessons.reader_label_problems(block, block.get("id")))
 
    return messages
 

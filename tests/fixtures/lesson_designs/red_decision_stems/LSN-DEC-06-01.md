@@ -90,7 +90,7 @@ The low band serves: orientation, the two stems, st-1, st-2, chk-1, chk-2, chk-3
    "id": "st-1",
    "archetype_id": "BC-QA-06012",
    "cue": "The stem asks for the accumulation function itself, from a rate or integrand and a starting input.",
-   "method": "First written line: \\(F(x)=\\int_a^{x} f(t)\\,dt\\), the starting input in the lower limit and \\(x\\) alone in the upper limit.",
+   "method": "\\(F(x)=\\int_a^{x} f(t)\\,dt\\), the starting input in the lower limit and \\(x\\) alone in the upper limit.",
    "rival": "The rival is differentiating instead, or leaving the answer in terms of \\(t\\).",
    "separating_feature": "The verb is write, and the object asked for is a function of \\(x\\), not its rate.",
    "sources": [
@@ -102,7 +102,7 @@ The low band serves: orientation, the two stems, st-1, st-2, chk-1, chk-2, chk-3
    "id": "st-2",
    "archetype_id": "BC-QA-06012",
    "cue": "The stem asks for the accumulation function's derivative at a stated input, from a graph of the integrand.",
-   "method": "First written line: state that the derivative of the accumulation equals the integrand at the upper limit.",
+   "method": "state that the derivative of the accumulation equals the integrand at the upper limit.",
    "rival": "The rival is evaluating the integrand at the upper limit without the chain rule factor.",
    "separating_feature": "The verb is find the derivative, and a composite upper limit adds the factor of its own derivative.",
    "sources": [
@@ -320,8 +320,8 @@ The low band serves: orientation, the two stems, st-1, st-2, chk-1, chk-2, chk-3
   "brief": 1.6
  },
  "word_count": {
-  "full": 343,
-  "brief": 237
+  "full": 337,
+  "brief": 234
  },
  "research_lines": [],
  "inferred": [

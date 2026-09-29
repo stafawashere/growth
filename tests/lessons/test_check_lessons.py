@@ -252,6 +252,7 @@ NEW_LINT_FINDINGS = {
    "red_figure_presence__drawn.json": "and carries no_figure_reason",
    "red_served_text.json": "carries 'BC-EK-FUN-3B1'",
    "red_served_text__label.json": "starts with the reader's label",
+   "red_served_text__rival.json": "LSN-CON-02013#s4 rival starts with the reader's label 'Rival:'",
    "red_served_text__tag.json": "carries '[inferred]'",
 }
 
@@ -321,6 +322,41 @@ def test_the_new_caps_fire(context, hand_authored):
    assert "s1 stem is 41 words, and the cap is 40" in messages
    assert "contrast why_not is 21 words, and the cap is 20" in messages
    assert "no_figure_reason is 41 words, and the cap is 40" in messages
+
+
+READER_LABEL_PLANTS = [
+   ("cue", "Cue:"),
+   ("method", "First line:"),
+   ("method", "First written line:"),
+   ("method", "Method:"),
+   ("method", "First step:"),
+   ("rival", "Rival:"),
+   ("rival", "Rivals:"),
+   ("separating_feature", "Separating feature:"),
+   ("separating_feature", "Feature:"),
+   ("contrast.feature", "Feature:"),
+   ("contrast.not_this.why_not", "Why not:"),
+]
+
+
+def first_strategy(lesson):
+   return next(section for section in lesson["sections"] if section["type"] == "strategy")
+
+
+@pytest.mark.parametrize("field, label", READER_LABEL_PLANTS)
+def test_a_served_field_opening_with_the_reader_label_is_refused(field, label, context, hand_authored):
+   strategy = first_strategy(hand_authored)
+   *parents, leaf = field.split(".")
+   holder = strategy
+
+   for key in parents:
+      holder = holder[key]
+
+   holder[leaf] = "  " + label.upper() + " " + holder[leaf]
+   messages = check_lessons.lint_served_text(hand_authored, context)
+   expected = f"{strategy['id']} {field} starts with the reader's label {label!r}"
+
+   assert expected in messages, messages
 
 
 def test_error_record_words_are_exempt_from_served_text(context, hand_authored):

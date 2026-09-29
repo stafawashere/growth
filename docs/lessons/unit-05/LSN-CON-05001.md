@@ -9,6 +9,10 @@ purpose: Authoring spec for the concept lesson on BC-CON-05001, the Mean Value T
 
 Concept BC-CON-05001 (skills BC-SKL-05001 to BC-SKL-05006), topic 5.1 of Unit 5, loaded by BC-QA-05001 (primary, family mean-value-theorem) and BC-QA-05002. It opens the unit with no unit parent (docs/lessons/unit-05/README.md, section 1). The written reason, the continuity sentence drawn from differentiability, is the object this lesson teaches first.
 
+## Prediction
+
+One multiple choice question on worked example 1's own numbers, asked before the rule is shown: f is differentiable with \(f(1)=2\) and \(f(6)=17\), and the student picks the value \(f'\) must take somewhere between 1 and 6. The key is 3, the average rate and ex-1's valued step; the distractors are the bare difference 15 and the mean of the two outputs 9.5. The resolution, shown on the key idea screen beside the student's choice, states the quotient and the theorem's conclusion. No verdict word. Sources: BC-CON-05001 and the topic 5.1 section the key idea cites (ced:99).
+
 ## Orientation
 
 Served text, from BC-CON-05001 `description_plain` and the topic's Assessment behaviour paragraph (research/units/unit-05-analytical-applications-differentiation.md#5.1 Using the Mean Value Theorem): a response states that continuity follows from differentiability, computes the average rate as a difference over a difference, and answers yes with the theorem. No count, no frequency.
@@ -17,12 +21,14 @@ Served text, from BC-CON-05001 `description_plain` and the topic's Assessment be
 
 All six skills map to BC-EK-FUN-1B1 (ced:99), so one core block, both bands.
 
-- ki-1 (core). Paraphrase of the Required mathematical knowledge paragraph: the hypotheses (continuous on the closed interval, differentiable on the open one), the conclusion (some interior c with f'(c) equal to the average rate), the Rolle case, and differentiability supplying continuity (sg-23:3). Anchor quote (18 words) from ced:99. Notation line from the concept record.
+- ki-1 (core). Paraphrase of the Required mathematical knowledge paragraph: the hypotheses (continuous on the closed interval, differentiable on the open one), the conclusion (some interior c with f'(c) equal to the average rate), the Rolle case, and differentiability supplying continuity (sg-23:3). The anchor quote is dropped: the brief form sat at 568 words with the prediction and the contrast pair added, and the orientation, the bridges, the strategy fields and the key idea text were shortened first, then the quote as the last resort. Notation line from the concept record.
 
 ## Recognition
 
 - BC-QA-05001 (research/question-analysis/question-archetypes.md#BC-QA-05001 Mean Value Theorem existence justification on an interval): `typical_wording` "must there be a value of c in the open interval at which the derivative takes a stated value, and justify the answer"; `common_givens` a differentiable modelled function, a short table of values, a closed interval; `asked_to_produce` a yes or no answer, the continuity statement, the average rate of change, a named theorem. The signal: "must there be" beside a derivative value and a table. FRQ appearances BC-FRQ-2013-Q3-B, BC-FRQ-2021-Q4-D, BC-FRQ-2023-Q1-B, BC-FRQ-2018-Q4-B; MCQ BC-MCQ-CED-013, BC-MCQ-SAMPLE-014.
 - BC-QA-05002 (research/question-analysis/question-archetypes.md#BC-QA-05002 Solving for the value the Mean Value Theorem provides): `typical_wording` "find the value in the open interval at which the instantaneous rate of change equals the average rate of change"; `common_givens` a formula and a closed interval. The signal: "find the value" with a formula, not a table. No `official_examples`.
+
+The near miss served in the contrast pair of st-1 comes from BC-ERR-05006 and sg-23:3: the same stem shape with a continuous f and a stated value of f itself, which is the Intermediate Value Theorem. The pair differs in the one thing the feature names, whether the stated value belongs to f' or to f.
 
 What says "not this concept": the claim is about a value of f, not of f', which is the Intermediate Value Theorem (BC-ERR-05006, sg-23:3); a largest or smallest value on a closed interval is the Extreme Value Theorem (BC-CON-05002).
 
@@ -33,12 +39,16 @@ Two strategy blocks; st-1 serves both bands, st-2 the low band.
 - st-1, BC-QA-05001. Method, `expected_solution_path[0]`: state that differentiability supplies continuity on the closed interval. Rival, `wrong_approaches`: solving for c when only existence was asked. Separating feature: "must there be" asks existence, so no c is located.
 - st-2, BC-QA-05002. Method, `expected_solution_path[0]`: compute the average rate of change. Rival, `wrong_approaches`: differentiating the average rate of change expression. Separating feature: the average rate is a number, and f' is set equal to it.
 
+The contrast pair sits on st-1 and serves both bands: this is a differentiable f with a stated f' value on a new draw, not this is a continuous f with a stated f value, so the theorem named is the other one.
+
 Both archetypes carry `asked_to_produce` and `common_givens`, so neither block is tagged inferred.
 
 ## Solution path
 
 - ex-1, BC-QA-05001, both bands, no calculator. Draw: inputs 1, 3, 4, 6, 9; outputs 2, 5, -3, 17, 8; rows 0-3; context bare; hypothesis differentiable. The named value 3 equals the average rate over [1, 6], as the spec's notes fix. No published BC-QA-05001 item carries this draw. Steps follow `expected_solution_path`: the continuity sentence (no value), the quotient (new), its value (equivalent), the conclusion (no value, the reason in its why line, tagged BC-PT-99017).
 - ex-2, BC-QA-05002, low band, no calculator. Draw: cubic 1, linear 2, constant 5, low 0, width 3, so f(x) = x^3 + 2x + 5 on [0, 3]; key_square 3, endpoint_slope_square 4.5 and endpoint_value_square 6.5 are distinct, as the constraints require. Steps: quotient (new), value (equivalent), equation (new), roots (solve), the root inside (new).
+
+ex-2 is faded from step 4: steps 1 to 3 (the average rate, its value 11 and the equation \(3c^2+2=11\)) are shown, and the student writes the roots and the root inside (0, 3), the two steps that carry the interval judgement of BC-ERR-05005. Step 3 is valued, so the fade has a shown value before it.
 
 A fluent solver writes every ex-1 line, since each is a scored component (docs/lessons/unit-05/README.md, section 5), and on ex-2 writes the equation and the kept root.
 
@@ -86,8 +96,8 @@ No draw equals a published `parameter_draw` on BC-QA-05001 or BC-QA-05002 (conte
 
 ## Band plan
 
-- Low (full): orientation, ki-1, st-1, st-2, ex-1 with its scoring line, the four error blocks, chk-1 to chk-3, ex-2, representations, the four bridges. 713 words, 4.8 minutes (cap 900 and 6).
-- Mid (brief): orientation, ki-1, st-1, ex-1 with its scoring line, err-BC-ERR-05002, err-BC-ERR-05004, chk-1, chk-2, the bridges. 449 words, 3.0 minutes (cap 450 and 3).
+- Low (full), in served order: prediction, orientation, the four bridges, ki-1, st-1 with its contrast pair, st-2, ex-1 with its scoring line, chk-1, the four error blocks, ex-2 faded from step 4, chk-2, representations, chk-3. 711 words, 4.8 minutes (cap 900 and 6).
+- Mid (brief): prediction, orientation, the bridges, ki-1, st-1 with its contrast pair, ex-1 with its scoring line, chk-1, err-BC-ERR-05002, err-BC-ERR-05004, chk-2. 450 words, 3.0 minutes (cap 450 and 3).
 - Refresher: ki-1, err-BC-ERR-05002, err-BC-ERR-05004, err-BC-ERR-05005, err-BC-ERR-05006, ex-1.
 
 ## Sources
@@ -122,8 +132,38 @@ No draw equals a published `parameter_draw` on BC-QA-05001 or BC-QA-05002 (conte
   "BC-SKL-05005",
   "BC-SKL-05006"
  ],
+ "prediction": {
+  "id": "pr-1",
+  "stem": {
+   "text": "Predict: f is differentiable, f(1) = 2, f(6) = 17. What must f' equal in (1, 6)?",
+   "command_verb": "predict"
+  },
+  "format": "mcq",
+  "options": [
+   {
+    "id": "A",
+    "label": "15",
+    "is_key": false
+   },
+   {
+    "id": "B",
+    "label": "3",
+    "is_key": true
+   },
+   {
+    "id": "C",
+    "label": "9.5",
+    "is_key": false
+   }
+  ],
+  "resolution": "The average rate is 3, so the Mean Value Theorem gives f'(c) = 3 somewhere in (1, 6).",
+  "sources": [
+   "BC-CON-05001",
+   "ced:99"
+  ]
+ },
  "orientation": {
-  "text": "A response states f is continuous because differentiable, writes the average rate as a difference of outputs over a difference of inputs, and answers yes by the Mean Value Theorem.",
+  "text": "A response derives continuity, writes the average rate, and concludes by the theorem.",
   "sources": [
    "BC-CON-05001",
    "research/units/unit-05-analytical-applications-differentiation.md#5.1 Using the Mean Value Theorem"
@@ -134,12 +174,9 @@ No draw equals a published `parameter_draw` on BC-QA-05001 or BC-QA-05002 (conte
    "id": "ki-1",
    "ek_id": "BC-EK-FUN-1B1",
    "depth": "core",
-   "text": "Continuous on [a, b] and differentiable on (a, b): some c in (a, b) has f'(c) equal to the average rate. If f(a) = f(b) that rate is 0 (Rolle). Differentiability supplies continuity, and the response says so.",
+   "text": "Continuous on [a, b], differentiable on (a, b): some c in (a, b) has f'(c) equal to the average rate. Differentiable gives continuity.",
    "notation": "f'(c); average rate of change",
-   "quote": {
-    "text": "guarantees a point within that open interval where the instantaneous rate of change equals the average rate of change",
-    "source": "ced:99"
-   },
+   "quote": null,
    "sources": [
     "BC-EK-FUN-1B1",
     "ced:99",
@@ -152,21 +189,32 @@ No draw equals a published `parameter_draw` on BC-QA-05001 or BC-QA-05002 (conte
   {
    "id": "st-1",
    "archetype_id": "BC-QA-05001",
-   "cue": "Must some c give f' a stated value? A differentiable f and a table.",
-   "method": "First line: f is differentiable, so continuous on the closed interval.",
-   "rival": "Rival: solving for c.",
-   "separating_feature": "Must there be asks existence; no c is located.",
+   "cue": "Must some c give f' a value?",
+   "method": "Differentiable, so continuous on the closed interval.",
+   "rival": "Solving for c.",
+   "separating_feature": "Must there be asks existence.",
    "sources": [
     "BC-QA-05001"
    ],
-   "evidence_tag": "verified"
+   "evidence_tag": "verified",
+   "contrast": {
+    "this": {
+     "text": "f is differentiable; f(1) = 5, f(4) = 11. Must f'(c) = 2 in (1, 4)?",
+     "archetype_id": "BC-QA-05001"
+    },
+    "not_this": {
+     "text": "f is continuous; f(1) = 5, f(4) = 11. Must f(c) = 8 in (1, 4)?",
+     "why_not": "That is a value of f: Intermediate Value Theorem."
+    },
+    "feature": "A value of f' or of f."
+   }
   },
   {
    "id": "st-2",
    "archetype_id": "BC-QA-05002",
    "cue": "Find the value in the open interval, from a formula and a closed interval.",
-   "method": "First line: the average rate of change.",
-   "rival": "Rival: differentiating the average rate expression.",
+   "method": "The average rate of change.",
+   "rival": "Differentiating the average rate expression.",
    "separating_feature": "The average rate is a number; f' is set equal to it.",
    "sources": [
     "BC-QA-05002"
@@ -289,7 +337,8 @@ No draw equals a published `parameter_draw` on BC-QA-05001 or BC-QA-05002 (conte
    "answer": {
     "form": "symbolic",
     "expr": "sqrt(3)"
-   }
+   },
+   "fade_from": 4
   }
  ],
  "what_a_reader_scores": [
@@ -327,7 +376,8 @@ No draw equals a published `parameter_draw` on BC-QA-05001 or BC-QA-05002 (conte
     "BC-MIS-99009"
    ],
    "observed_behavior": "The response asserts that the function is continuous without saying that differentiability supplies it, or omits continuity altogether.",
-   "scoring_consequence": "The point tied to the hypothesis is lost; the 2025 guideline refused a bare statement that the function is continuous."
+   "scoring_consequence": "The point tied to the hypothesis is lost; the 2025 guideline refused a bare statement that the function is continuous.",
+   "fix_prompt": true
   },
   {
    "error_id": "BC-ERR-05004",
@@ -349,7 +399,8 @@ No draw equals a published `parameter_draw` on BC-QA-05001 or BC-QA-05002 (conte
     "BC-MIS-05002"
    ],
    "observed_behavior": "The response computes the needed arithmetic but never says yes and never names a theorem.",
-   "scoring_consequence": "The justification point is lost; the guideline requires an affirmative answer in some form."
+   "scoring_consequence": "The justification point is lost; the guideline requires an affirmative answer in some form.",
+   "fix_prompt": true
   },
   {
    "error_id": "BC-ERR-05005",
@@ -367,7 +418,8 @@ No draw equals a published `parameter_draw` on BC-QA-05001 or BC-QA-05002 (conte
     "BC-ERR-05005"
    ],
    "observed_behavior": "The response solves the derivative equation and reports a solution that is an endpoint or lies outside the interval.",
-   "scoring_consequence": "The answer point is lost because the theorem places the point strictly inside the interval."
+   "scoring_consequence": "The answer point is lost because the theorem places the point strictly inside the interval.",
+   "fix_prompt": true
   },
   {
    "error_id": "BC-ERR-05006",
@@ -389,7 +441,8 @@ No draw equals a published `parameter_draw` on BC-QA-05001 or BC-QA-05002 (conte
     "BC-MIS-05005"
    ],
    "observed_behavior": "The response justifies the existence of an input with a given derivative value by appealing to the Intermediate Value Theorem.",
-   "scoring_consequence": "The justification point is lost outright; the 2023 guideline names this as disqualifying."
+   "scoring_consequence": "The justification point is lost outright; the 2023 guideline names this as disqualifying.",
+   "fix_prompt": true
   }
  ],
  "representations": {
@@ -425,19 +478,19 @@ No draw equals a published `parameter_draw` on BC-QA-05001 or BC-QA-05002 (conte
  "prerequisite_bridges": [
   {
    "prq_id": "BC-PRQ-05001",
-   "text": "Set an expression to zero and solve it."
+   "text": "Solve an expression set to zero."
   },
   {
    "prq_id": "BC-PRQ-05004",
-   "text": "Open (a, b) excludes its ends; [a, b] includes them."
+   "text": "Open excludes the ends."
   },
   {
    "prq_id": "BC-PRQ-05008",
-   "text": "Change in output over change in input, endpoints in matching order."
+   "text": "Output over input change."
   },
   {
    "prq_id": "BC-PRQ-06005",
-   "text": "f(6) is a value of f; f'(c) of f'."
+   "text": "f(6) is a value of f."
   }
  ],
  "time": {
@@ -814,8 +867,8 @@ No draw equals a published `parameter_draw` on BC-QA-05001 or BC-QA-05002 (conte
   "research/exam/exam-structure.md#Section and part layout"
  ],
  "word_count": {
-  "full": 713,
-  "brief": 449
+  "full": 711,
+  "brief": 450
  },
  "read_minutes": {
   "full": 4.8,

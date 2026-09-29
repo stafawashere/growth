@@ -3,7 +3,7 @@
  "version": 1,
  "kind": "concept",
  "target_id": "BC-CON-05003",
- "status": "signed_off",
+ "status": "draft",
  "snapshot_digest": "a6a8ec9d3f59ab8f712e33d30cc22fc64bf2c478fbe7312e3e3118d319c6a42f",
  "source_digest": "4fd1184f6c87dec8f746814ef4aa37db1875cf66f143ec370d4fccce805471ac",
  "read_minutes": {
@@ -11,12 +11,60 @@
   "brief": 3.0
  },
  "word_count": {
-  "full": 589,
-  "brief": 392
+  "full": 595,
+  "brief": 404
  },
  "sections": [
   {
    "id": "LSN-CON-05003#s1",
+   "type": "prediction",
+   "bands": [
+    "low",
+    "mid"
+   ],
+   "skills": [
+    "BC-SKL-05010",
+    "BC-SKL-05011",
+    "BC-SKL-05012",
+    "BC-SKL-05013"
+   ],
+   "sources": [
+    "BC-CON-05003",
+    "ced:100"
+   ],
+   "evidence_tag": "inferred",
+   "stem": {
+    "text": "Predict: f(x) = 3(x - 1)^(2/3)/(x + 2) and f'(x) = (7 - x)/((x - 1)^(1/3)(x + 2)^2). Which inputs are critical points?",
+    "command_verb": "predict"
+   },
+   "format": "mcq",
+   "options": [
+    {
+     "id": "A",
+     "label": "7 only",
+     "is_key": false
+    },
+    {
+     "id": "B",
+     "label": "1 and 7",
+     "is_key": true
+    },
+    {
+     "id": "C",
+     "label": "-2, 1 and 7",
+     "is_key": false
+    }
+   ],
+   "resolution": {
+    "text": "f' is zero at 7 and undefined at 1, where f is defined. At -2, f is undefined."
+   },
+   "delivery": {
+    "mode": "text",
+    "reason": "rule 6"
+   }
+  },
+  {
+   "id": "LSN-CON-05003#s2",
    "type": "orientation",
    "bands": [
     "low",
@@ -33,7 +81,7 @@
     "research/units/unit-05-analytical-applications-differentiation.md#5.2 Extreme Value Theorem, Global Versus Local Extrema, and Critical Points"
    ],
    "evidence_tag": "inferred",
-   "text": "A response writes f'(x) = 0 as an equation, adds the inputs in the domain where f' fails to exist, and never calls a critical point an extremum, or a relative extremum absolute, without an argument.",
+   "text": "A response writes f'(x) = 0 and adds the inputs where f' fails to exist.",
    "delivery": {
     "mode": "figure",
     "reason": "rule 3: BC-REP-02 on BC-SKL-05010 to 05013; unit README delivery map",
@@ -89,7 +137,7 @@
    }
   },
   {
-   "id": "LSN-CON-05003#s2",
+   "id": "LSN-CON-05003#s3",
    "type": "key_ideas",
    "bands": [
     "low",
@@ -104,15 +152,11 @@
     "ced:100",
     "research/units/unit-05-analytical-applications-differentiation.md#5.2 Extreme Value Theorem, Global Versus Local Extrema, and Critical Points"
    ],
-   "evidence_tag": "verified",
+   "evidence_tag": "inferred",
    "ek_id": "BC-EK-FUN-1C2",
    "depth": "core",
-   "text": "Critical points come from two sources: f'(c) = 0, and f'(c) failing to exist (a cusp, corner or vertical tangent). Either way c must be in the domain of f.",
+   "text": "Critical points: f'(c) = 0 or f'(c) failing to exist (cusp, corner, vertical tangent), with c in the domain.",
    "notation": "critical point",
-   "quote": {
-    "text": "A point on a function where the first derivative equals zero or fails to exist is a critical point of the function.",
-    "source": "ced:100"
-   },
    "delivery": {
     "mode": "figure",
     "reason": "rule 3: BC-REP-02 on BC-SKL-05010, 05011; BC-QA-05014 difficulty_variables name a categorical shape, so static",
@@ -209,7 +253,7 @@
    }
   },
   {
-   "id": "LSN-CON-05003#s3",
+   "id": "LSN-CON-05003#s4",
    "type": "key_ideas",
    "bands": [
     "low",
@@ -228,7 +272,7 @@
    "evidence_tag": "inferred",
    "ek_id": "BC-EK-FUN-1C3",
    "depth": "core",
-   "text": "Every relative extremum sits at a critical point, not conversely: f' can be zero with no sign change. A relative extremum beats nearby values only; an absolute one beats every value on the interval.",
+   "text": "Every relative extremum sits at a critical point, not conversely. A relative extremum beats nearby values; an absolute one beats every value.",
    "notation": "relative extremum; absolute extremum",
    "delivery": {
     "mode": "figure",
@@ -323,7 +367,7 @@
    }
   },
   {
-   "id": "LSN-CON-05003#s4",
+   "id": "LSN-CON-05003#s5",
    "type": "strategy",
    "bands": [
     "low",
@@ -338,13 +382,24 @@
    ],
    "evidence_tag": "verified",
    "archetype_id": "BC-QA-05014",
-   "cue": "Find all critical points, from a quotient with a fractional power or absolute value.",
-   "method": "First line: f'(x).",
-   "rival": "Rival: setting only f'(x) = 0.",
-   "separating_feature": "The power or absolute value makes f' fail to exist somewhere."
+   "cue": "All critical points, from a quotient with a fractional power.",
+   "method": "F'(x).",
+   "rival": "Setting only f'(x) = 0.",
+   "separating_feature": "A fractional power can make f' undefined.",
+   "contrast": {
+    "this": {
+     "text": "Find all critical points of f(x) = 5(x + 2)^(2/3)/(x - 4).",
+     "archetype_id": "BC-QA-05014"
+    },
+    "not_this": {
+     "text": "Solve f'(x) = 0 for f(x) = 5(x + 2)^(2/3)/(x - 4).",
+     "why_not": "It asks only for zeros of f'."
+    },
+    "feature": "All critical points, or only zeros of f'."
+   }
   },
   {
-   "id": "LSN-CON-05003#s5",
+   "id": "LSN-CON-05003#s6",
    "type": "strategy",
    "bands": [
     "low",
@@ -359,12 +414,12 @@
    "evidence_tag": "verified",
    "archetype_id": "BC-QA-05006",
    "cue": "Absolute extremum on a closed interval, from f or f' and the interval.",
-   "method": "First line: f'(x) = 0, as an equation.",
-   "rival": "Rival: citing the Extreme Value Theorem to locate it.",
+   "method": "F'(x) = 0, as an equation.",
+   "rival": "Citing the Extreme Value Theorem to locate it.",
    "separating_feature": "Absolute asks for a comparison with every candidate."
   },
   {
-   "id": "LSN-CON-05003#s6",
+   "id": "LSN-CON-05003#s7",
    "type": "strategy",
    "bands": [
     "low",
@@ -379,12 +434,12 @@
    "evidence_tag": "verified",
    "archetype_id": "BC-QA-05003",
    "cue": "Maximum, minimum or neither at a named input, from f' information.",
-   "method": "First line: locate the input on f'.",
-   "rival": "Rival: the second derivative test with the slope of f' never discussed.",
+   "method": "Locate the input on f'.",
+   "rival": "The second derivative test with the slope of f' never discussed.",
    "separating_feature": "No sign change means neither."
   },
   {
-   "id": "LSN-CON-05003#s7",
+   "id": "LSN-CON-05003#s8",
    "type": "worked_example",
    "bands": [
     "low",
@@ -583,7 +638,7 @@
    }
   },
   {
-   "id": "LSN-CON-05003#s8",
+   "id": "LSN-CON-05003#s9",
    "type": "what_a_reader_scores",
    "bands": [
     "low",
@@ -597,7 +652,7 @@
     "BC-PT-99013"
    ],
    "evidence_tag": "verified",
-   "example_id": "LSN-CON-05003#s7",
+   "example_id": "LSN-CON-05003#s8",
    "lines": [
     {
      "point_type_id": "BC-PT-99013",
@@ -631,6 +686,7 @@
     "expression": "derivative_set_equal_to_zero"
    },
    "relation": "distinct",
+   "fix_prompt": true,
    "delivery": {
     "mode": "step_reveal",
     "reason": "rule 1",
@@ -672,6 +728,7 @@
     ]
    },
    "relation": "distinct",
+   "fix_prompt": true,
    "delivery": {
     "mode": "step_reveal",
     "reason": "rule 1",
@@ -712,6 +769,7 @@
     ]
    },
    "relation": "distinct",
+   "fix_prompt": true,
    "possible_reason": {
     "misconception_id": "BC-MIS-05009",
     "text": "does not look for corners, cusps, or vertical tangents"
@@ -769,6 +827,7 @@
     ]
    },
    "relation": "distinct",
+   "fix_prompt": true,
    "possible_reason": {
     "misconception_id": "BC-MIS-05007",
     "text": "takes a local high or low point as the largest or smallest value on the whole interval"
@@ -795,7 +854,7 @@
    ],
    "evidence_tag": "inferred",
    "prerequisite_id": "BC-PRQ-05001",
-   "text": "Set a factor to zero; find where a denominator vanishes."
+   "text": "Zero a factor."
   },
   {
    "id": "LSN-CON-05003#prq-BC-PRQ-05003",
@@ -813,7 +872,7 @@
    ],
    "evidence_tag": "inferred",
    "prerequisite_id": "BC-PRQ-05003",
-   "text": "Keep only inputs where f is defined."
+   "text": "Keep inputs where f exists."
   },
   {
    "id": "LSN-CON-05003#prq-BC-PRQ-05006",
@@ -830,7 +889,7 @@
    ],
    "evidence_tag": "inferred",
    "prerequisite_id": "BC-PRQ-05006",
-   "text": "Check whether the plotted curve is f or f'."
+   "text": "Check whether the curve is f or f'."
   }
  ],
  "checks": [
@@ -849,7 +908,7 @@
     "pole": -2,
     "multiplier": 3
    },
-   "completes": "LSN-CON-05003#s7",
+   "completes": "LSN-CON-05003#s8",
    "stem": {
     "text": "f'(x) = (7 - x)/((x - 1)^(1/3)(x + 2)^2), zero at 7. Finish the critical point list.",
     "command_verb": "find"
@@ -1134,20 +1193,20 @@
   }
  ],
  "refresher": [
-  "LSN-CON-05003#s2",
   "LSN-CON-05003#s3",
+  "LSN-CON-05003#s4",
   "LSN-CON-05003#err-BC-ERR-05009",
   "LSN-CON-05003#err-BC-ERR-05010",
   "LSN-CON-05003#err-BC-ERR-05011",
   "LSN-CON-05003#err-BC-ERR-05012",
-  "LSN-CON-05003#s7"
+  "LSN-CON-05003#s8"
  ],
  "provenance": {
   "author": "tools/lesson_transcribe.py",
-  "prompt_version": "generator/lesson_v1",
+  "prompt_version": "generator/lesson_v2",
   "design_path": "docs/lessons/unit-05/LSN-CON-05003.md",
-  "signed_off_by": "claude-opus-5-5",
-  "signed_off_at": "2026-09-29",
+  "signed_off_by": null,
+  "signed_off_at": null,
   "not_human": true
  }
 }

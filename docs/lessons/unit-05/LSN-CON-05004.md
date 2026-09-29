@@ -9,6 +9,10 @@ purpose: Authoring spec for the concept lesson on BC-CON-05004, monotonicity rea
 
 Concept BC-CON-05004 (skills BC-SKL-05014 to BC-SKL-05018), topic 5.3 of Unit 5, loaded by one archetype, BC-QA-05008 (family monotonicity-analysis, tagged [inferred] in the research). No unit parent (docs/lessons/unit-05/README.md, section 1). The written reason, the sign of the named derivative on the named interval, is the object of the lesson.
 
+## Prediction
+
+One multiple choice question on worked example 1's own numbers, asked before the rule is shown: \(f'(x)=2(x+1)(x-3)/(x-1)\) is given and the student picks where f is increasing. The key is (-1, 1) and (3, oo), ex-1's answer; the distractors are (-1, 3), which leaves out the inputs past the break at 1 (BC-ERR-05017), and (-oo, -1), a piece where f' is negative (BC-ERR-05014). The resolution, shown on the key idea screen beside the student's choice, states the partition points and the sign. No verdict word. Sources: BC-CON-05004 and the topic 5.3 section the key idea cites (ced:101).
+
 ## Orientation
 
 Served text, from BC-CON-05004 `description_plain` and the topic's Assessment behaviour paragraph (research/units/unit-05-analytical-applications-differentiation.md#5.3 Determining Intervals on Which a Function is Increasing or Decreasing): a response partitions at the zeros of f' and where f' or f is undefined, reports open intervals, and gives as reason the sign of f' on each. No count, no frequency.
@@ -17,11 +21,13 @@ Served text, from BC-CON-05004 `description_plain` and the topic's Assessment be
 
 All five skills map to BC-EK-FUN-4A1 (ced:101), so one core block, both bands.
 
-- ki-1 (core). Paraphrase of the Required mathematical knowledge paragraph (Monotonicity test, Partition points, Justification standard): f' positive on an open interval gives f increasing there, negative gives decreasing; the partition points are the zeros of f' and the inputs where f' or f is undefined; the reason names f' and its sign (sg-25:17). Anchor quote (13 words) from ced:101. Notation line from the concept record.
+- ki-1 (core). Paraphrase of the Required mathematical knowledge paragraph (Monotonicity test, Partition points, Justification standard): f' positive on an open interval gives f increasing there, negative gives decreasing; the partition points are the zeros of f' and the inputs where f' or f is undefined; the reason names f' and its sign (sg-25:17). The anchor quote is dropped: with the prediction and the contrast pair added the brief form passed its cap by more than 100 words, and the orientation, the bridges, the strategy fields and the key idea text were shortened first, then the quote as the last resort. Notation line from the concept record.
 
 ## Recognition
 
 - BC-QA-05008 (research/question-analysis/question-archetypes.md#BC-QA-05008 Intervals of increase or decrease justified by the sign of the derivative): `typical_wording` "on what open intervals is the function increasing, and give a reason for the answer"; `common_givens` a function or its derivative, an interval of definition; `asked_to_produce` a union of open intervals, a reason naming the sign of the derivative. The signal: "increasing" or "decreasing" with "on what intervals". FRQ appearances BC-FRQ-2022-Q3-C, BC-FRQ-2024-Q1-D; MCQ BC-MCQ-SAMPLE-012, BC-MCQ-PE2012-030.
+
+The near miss served in the contrast pair of st-1 comes from BC-ERR-05016 and sg-23:14: the same derivative formula with the stem asking where the graph is concave up, which reads the direction of f' and not its sign. The pair differs in the one thing the feature names, the sign of f' against the direction of f'.
 
 What says "not this concept": "concave up" asks whether f' rises, not its sign (BC-CON-05007; BC-ERR-05016, sg-23:14); "relative maximum at x = c" asks for a sign change at one input (BC-CON-05005).
 
@@ -76,8 +82,8 @@ BC-QA-05008 has `calculator_status` either, so the lesson takes Section I Part A
 
 ## Band plan
 
-- Low (full): orientation, ki-1, st-1, ex-1 with its scoring line, the four error blocks, chk-1 to chk-3, the four bridges. 585 words, 3.9 minutes (cap 900 and 6).
-- Mid (brief): orientation, ki-1, st-1, ex-1 with its scoring line, err-BC-ERR-05014, err-BC-ERR-05015, chk-1, chk-2, the bridges. 450 words, 3.0 minutes (cap 450 and 3).
+- Low (full), in served order: prediction, orientation, the four bridges, ki-1, st-1 with its contrast pair, ex-1 with its scoring line, chk-1, the four error blocks, chk-2, chk-3. 584 words, 3.9 minutes (cap 900 and 6). There is one worked example, so nothing is faded.
+- Mid (brief): prediction, orientation, the bridges, ki-1, st-1 with its contrast pair, ex-1 with its scoring line, chk-1, err-BC-ERR-05014, err-BC-ERR-05015, chk-2. 449 words, 3.0 minutes (cap 450 and 3).
 - Refresher: ki-1, err-BC-ERR-05014, err-BC-ERR-05015, err-BC-ERR-05016, err-BC-ERR-05017, ex-1.
 
 ## Sources
@@ -112,8 +118,38 @@ BC-QA-05008 has `calculator_status` either, so the lesson takes Section I Part A
   "BC-SKL-05017",
   "BC-SKL-05018"
  ],
+ "prediction": {
+  "id": "pr-1",
+  "stem": {
+   "text": "Predict: f'(x) = 2(x + 1)(x - 3)/(x - 1). Where is f increasing?",
+   "command_verb": "predict"
+  },
+  "format": "mcq",
+  "options": [
+   {
+    "id": "A",
+    "label": "(-1, 3)",
+    "is_key": false
+   },
+   {
+    "id": "B",
+    "label": "(-1, 1) and (3, oo)",
+    "is_key": true
+   },
+   {
+    "id": "C",
+    "label": "(-oo, -1)",
+    "is_key": false
+   }
+  ],
+  "resolution": "f increases where f' > 0: on (-1, 1) and (3, oo).",
+  "sources": [
+   "BC-CON-05004",
+   "ced:101"
+  ]
+ },
  "orientation": {
-  "text": "A response splits at zeros of f' and where f' or f is undefined, reports open intervals, and cites the sign of f'.",
+  "text": "A response partitions, then cites the sign of f'.",
   "sources": [
    "BC-CON-05004",
    "research/units/unit-05-analytical-applications-differentiation.md#5.3 Determining Intervals on Which a Function is Increasing or Decreasing"
@@ -124,12 +160,9 @@ BC-QA-05008 has `calculator_status` either, so the lesson takes Section I Part A
    "id": "ki-1",
    "ek_id": "BC-EK-FUN-4A1",
    "depth": "core",
-   "text": "f' > 0 on an open interval means f increases there; f' < 0 means it decreases. Intervals end at zeros of f' and where f' or f is undefined. The reason cites the sign of f'.",
+   "text": "f' > 0: f increases. f' < 0: f decreases. Intervals end at zeros of f' and undefined points.",
    "notation": "f' > 0; f' < 0",
-   "quote": {
-    "text": "including intervals where the function is increasing or decreasing.",
-    "source": "ced:101"
-   },
+   "quote": null,
    "sources": [
     "BC-EK-FUN-4A1",
     "ced:101",
@@ -142,14 +175,25 @@ BC-QA-05008 has `calculator_status` either, so the lesson takes Section I Part A
   {
    "id": "st-1",
    "archetype_id": "BC-QA-05008",
-   "cue": "Intervals of increase, from f or f'?",
-   "method": "First line: zeros of f' and where f' or f is undefined.",
-   "rival": "Rival: one test input, generalised.",
-   "separating_feature": "Every partition point, including a domain gap, ends an interval.",
+   "cue": "Where is f increasing?",
+   "method": "Zeros of f' and undefined points.",
+   "rival": "One test input.",
+   "separating_feature": "Each partition point ends one.",
    "sources": [
     "BC-QA-05008"
    ],
-   "evidence_tag": "verified"
+   "evidence_tag": "verified",
+   "contrast": {
+    "this": {
+     "text": "f'(x) = (x + 3)/(x - 2). Where is f increasing?",
+     "archetype_id": "BC-QA-05008"
+    },
+    "not_this": {
+     "text": "f'(x) = (x + 3)/(x - 2). Where is f concave up?",
+     "why_not": "It asks where f' rises."
+    },
+    "feature": "Sign of f' or direction of f'."
+   }
   }
  ],
  "worked_examples": [
@@ -245,7 +289,8 @@ BC-QA-05008 has `calculator_status` either, so the lesson takes Section I Part A
     "BC-ERR-05014"
    ],
    "observed_behavior": "The response assigns the wrong sign to the derivative expression on one of the intervals of its sign chart.",
-   "scoring_consequence": "The reported intervals are wrong, which also forfeits the reason point."
+   "scoring_consequence": "The reported intervals are wrong, which also forfeits the reason point.",
+   "fix_prompt": true
   },
   {
    "error_id": "BC-ERR-05015",
@@ -267,7 +312,8 @@ BC-QA-05008 has `calculator_status` either, so the lesson takes Section I Part A
     "BC-MIS-05011"
    ],
    "observed_behavior": "The response answers a question about the function by describing features of the curve shown, which is the derivative.",
-   "scoring_consequence": "Every part that rests on the plotted object is answered about the wrong function."
+   "scoring_consequence": "Every part that rests on the plotted object is answered about the wrong function.",
+   "fix_prompt": true
   },
   {
    "error_id": "BC-ERR-05016",
@@ -289,7 +335,8 @@ BC-QA-05008 has `calculator_status` either, so the lesson takes Section I Part A
     "BC-MIS-05020"
    ],
    "observed_behavior": "The response reports concavity where monotonicity was asked for, or reports increase of the function where the derivative graph is rising.",
-   "scoring_consequence": "The intervals reported belong to the other question and the reason point is unavailable."
+   "scoring_consequence": "The intervals reported belong to the other question and the reason point is unavailable.",
+   "fix_prompt": true
   },
   {
    "error_id": "BC-ERR-05017",
@@ -311,26 +358,27 @@ BC-QA-05008 has `calculator_status` either, so the lesson takes Section I Part A
     "BC-MIS-05012"
    ],
    "observed_behavior": "The response partitions the number line at the zeros of the derivative only and ignores a vertical asymptote or a domain gap.",
-   "scoring_consequence": "An interval spans a break, so the reported behaviour is claimed where the function does not exist."
+   "scoring_consequence": "An interval spans a break, so the reported behaviour is claimed where the function does not exist.",
+   "fix_prompt": true
   }
  ],
  "representations": null,
  "prerequisite_bridges": [
   {
    "prq_id": "BC-PRQ-05001",
-   "text": "Zero each factor and the denominator."
+   "text": "Zero factors."
   },
   {
    "prq_id": "BC-PRQ-05002",
-   "text": "One test value fixes each piece's sign."
+   "text": "Test a value."
   },
   {
    "prq_id": "BC-PRQ-05003",
-   "text": "No interval crosses an undefined input."
+   "text": "Skip gaps."
   },
   {
    "prq_id": "BC-PRQ-05006",
-   "text": "Axis label: f or f'?"
+   "text": "f or f'?"
   }
  ],
  "time": {
@@ -705,8 +753,8 @@ BC-QA-05008 has `calculator_status` either, so the lesson takes Section I Part A
   "research/exam/exam-structure.md#Section and part layout"
  ],
  "word_count": {
-  "full": 585,
-  "brief": 450
+  "full": 584,
+  "brief": 449
  },
  "read_minutes": {
   "full": 3.9,

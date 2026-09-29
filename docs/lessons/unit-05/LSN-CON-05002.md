@@ -9,6 +9,10 @@ purpose: Authoring spec for the concept lesson on BC-CON-05002, the Extreme Valu
 
 Concept BC-CON-05002 (skills BC-SKL-05007, BC-SKL-05008, BC-SKL-05009), topic 5.2 of Unit 5, loaded by one archetype, BC-QA-05010 (family evt-existence, tagged [inferred] in the research). It has no unit parent (docs/lessons/unit-05/README.md, section 1). The written reason is the single hypothesis, continuity on a closed interval, checked before the conclusion.
 
+## Prediction
+
+One multiple choice question on worked example 1's own numbers, asked before the rule is shown: f is differentiable on \([-1,4]\) with a relative maximum at \(x=1\), and the student picks what follows about a maximum value of f on that interval. The key is that a maximum value is attained at an unnamed input; the distractors are the location claim f(1) (BC-ERR-05008) and no conclusion without a formula. The resolution, shown on the key idea screen beside the student's choice, states the continuity source and the theorem's existence conclusion. No verdict word. Sources: BC-CON-05002 and the topic 5.2 section the key idea cites (ced:100).
+
 ## Orientation
 
 Served text, from BC-CON-05002 `description_plain` and the topic's Assessment behaviour paragraph (research/units/unit-05-analytical-applications-differentiation.md#5.2 Extreme Value Theorem, Global Versus Local Extrema, and Critical Points): a response checks that the interval is closed and that f is continuous on it, then answers that a maximum and a minimum value are attained. No count, no frequency.
@@ -23,6 +27,8 @@ All three skills map to BC-EK-FUN-1C1 (ced:100), so one core block, both bands.
 
 - BC-QA-05010 (research/question-analysis/question-archetypes.md#BC-QA-05010 Extreme Value Theorem existence claim on a closed interval): `typical_wording` "must the function attain a maximum value on the closed interval, and justify the answer"; `common_givens` a continuity or differentiability statement, or a graph with a break, a closed interval; `asked_to_produce` a yes or no answer, the continuity statement, the named theorem. The signal: "must ... attain a maximum (or minimum) value" with an interval in brackets. Shape: a single MCQ, or a short FRQ part; no `official_examples` (library gap).
 
+The near miss served in the contrast pair of st-1 comes from BC-ERR-05008 and the sibling concept BC-CON-05006: the same continuous f on the same closed interval, but the stem asks for the input at which the maximum occurs, which the candidates test answers. The pair differs in the one thing the feature names, existence against location.
+
 What says "not this concept": a stem asking where the maximum occurs, or for its value (the candidates test, BC-CON-05006); a stem asking for c with a named derivative value (the Mean Value Theorem, BC-CON-05001).
 
 ## Method choice
@@ -35,6 +41,8 @@ One strategy block, both bands.
 
 - ex-1, BC-QA-05010, both bands, no calculator. Draw: left_end -1, length 5, jump_offset 3, critical_offset 2, letter f, extreme maximum, situation differentiable, so the interval is [-1, 4] and the relative maximum the spec's notes plant sits at x = 1. Steps follow `expected_solution_path`: closed interval, continuity from differentiability, the conclusion; the last step says why x = 1 is not the answer. No step has a value.
 - ex-2, BC-QA-05010, low band. Draw: left_end 0, length 6, jump_offset 2, critical_offset 4, letter g, extreme minimum, situation jump: a jump at x = 2 inside [0, 6], so the verdict is no (the spec's invariant ties the verdict to the situation).
+
+ex-2 is faded from step 3: steps 1 and 2 (the closed interval, then the jump at x = 2 inside it) are shown, and the student writes the verdict, the step that the failed hypothesis decides. ex-2 had no valued step, so step 1 now carries the interval as its value (`Interval(0, 6)`, a new chain start); the wording of every step is unchanged.
 
 No published BC-QA-05010 item carries either draw. A fluent solver writes the three sentences; none is held in the head.
 
@@ -78,13 +86,14 @@ Every key is a verdict, so each is a statement key with option labels.
 
 ## Band plan
 
-- Low (full): orientation, ki-1, st-1, ex-1, the three error blocks, chk-1 to chk-3, ex-2, the bridge. 524 words, 3.5 minutes (cap 900 and 6).
-- Mid (brief): orientation, ki-1, st-1, ex-1, err-BC-ERR-05007, err-BC-ERR-05008, chk-1, chk-2, the bridge. 352 words, 2.4 minutes (cap 450 and 3).
+- Low (full), in served order: prediction, orientation, the bridge, ki-1, st-1 with its contrast pair, ex-1, chk-1, the three error blocks, ex-2 faded from step 3, chk-2, chk-3. 621 words, 4.2 minutes (cap 900 and 6).
+- Mid (brief): prediction, orientation, the bridge, ki-1, st-1 with its contrast pair, ex-1, chk-1, err-BC-ERR-05007, err-BC-ERR-05008, chk-2. 449 words, 3.0 minutes (cap 450 and 3).
 - Refresher: ki-1, err-BC-ERR-05007, err-BC-ERR-05008, err-BC-ERR-99008, ex-1.
 
 ## Sources
 
 - BC-CON-05002; BC-SKL-05007, BC-SKL-05008, BC-SKL-05009; BC-EK-FUN-1C1; ced:100; ced-clarifications-2026:1
+- BC-CON-05006 (the sibling concept of the not-this stem in the contrast pair)
 - BC-QA-05010; sg-23:3, sg-25:12
 - BC-ERR-05007, BC-ERR-05008, BC-ERR-99008; BC-MIS-05006, BC-MIS-99009
 - BC-PRQ-05004
@@ -109,8 +118,38 @@ Every key is a verdict, so each is a statement key with option labels.
   "BC-SKL-05008",
   "BC-SKL-05009"
  ],
+ "prediction": {
+  "id": "pr-1",
+  "stem": {
+   "text": "Predict: f is differentiable on [-1, 4] with a relative maximum at x = 1. What follows about a maximum value on [-1, 4]?",
+   "command_verb": "predict"
+  },
+  "format": "mcq",
+  "options": [
+   {
+    "id": "A",
+    "label": "f(1) is the maximum value",
+    "is_key": false
+   },
+   {
+    "id": "B",
+    "label": "A maximum value exists; its input is unnamed",
+    "is_key": true
+   },
+   {
+    "id": "C",
+    "label": "Nothing follows",
+    "is_key": false
+   }
+  ],
+  "resolution": "Differentiable gives continuous on the closed interval, so the Extreme Value Theorem gives a maximum value there, not its input.",
+  "sources": [
+   "BC-CON-05002",
+   "ced:100"
+  ]
+ },
  "orientation": {
-  "text": "A response checks that the interval is closed and that f is continuous on it, saying where continuity comes from, then answers that a maximum and a minimum value are attained.",
+  "text": "A response checks the interval is closed and f is continuous on it, saying where continuity comes from, then concludes a maximum and a minimum value are attained.",
   "sources": [
    "BC-CON-05002",
    "research/units/unit-05-analytical-applications-differentiation.md#5.2 Extreme Value Theorem, Global Versus Local Extrema, and Critical Points"
@@ -121,7 +160,7 @@ Every key is a verdict, so each is a statement key with option labels.
    "id": "ki-1",
    "ek_id": "BC-EK-FUN-1C1",
    "depth": "core",
-   "text": "The Extreme Value Theorem has one hypothesis: f continuous on a closed interval [a, b]. A break inside, or an open interval, and the theorem gives nothing. Its conclusion is existence: it says a largest and a smallest value occur, not where.",
+   "text": "The Extreme Value Theorem needs one hypothesis: f continuous on a closed interval [a, b]. It concludes that a largest and a smallest value exist, not where they occur.",
    "notation": "absolute maximum; absolute minimum",
    "quote": {
     "text": "f has at least one minimum value and at least one maximum value on [a, b]",
@@ -139,13 +178,24 @@ Every key is a verdict, so each is a statement key with option labels.
    "id": "st-1",
    "archetype_id": "BC-QA-05010",
    "cue": "Must f attain a maximum or minimum value, from a continuity statement and an interval?",
-   "method": "First line: the interval is closed.",
-   "rival": "Rival: differentiating to locate the extremum.",
+   "method": "The interval is closed.",
+   "rival": "Differentiating to locate the extremum.",
    "separating_feature": "Must attain asks existence; nothing is located.",
    "sources": [
     "BC-QA-05010"
    ],
-   "evidence_tag": "verified"
+   "evidence_tag": "verified",
+   "contrast": {
+    "this": {
+     "text": "h is continuous on [2, 7] with a relative minimum at x = 5. Must h attain a maximum value there?",
+     "archetype_id": "BC-QA-05010"
+    },
+    "not_this": {
+     "text": "h is continuous on [2, 7]. Find the input in [2, 7] where h attains its maximum value.",
+     "why_not": "It asks where the maximum occurs, so the candidates test applies."
+    },
+    "feature": "Whether existence or the location is asked."
+   }
   }
  ],
  "worked_examples": [
@@ -217,7 +267,9 @@ Every key is a verdict, so each is a statement key with option labels.
    "steps": [
     {
      "cue": "Closed interval [0, 6].",
-     "why": "First check passes."
+     "why": "First check passes.",
+     "expr": "Interval(0, 6)",
+     "relation": "new"
     },
     {
      "cue": "Jump at x = 2, inside.",
@@ -232,7 +284,8 @@ Every key is a verdict, so each is a statement key with option labels.
     "form": "statement",
     "expr": "theorem_does_not_apply",
     "label": "No: the Extreme Value Theorem does not apply."
-   }
+   },
+   "fade_from": 3
   }
  ],
  "what_a_reader_scores": [],
@@ -257,7 +310,8 @@ Every key is a verdict, so each is a statement key with option labels.
     "BC-MIS-05006"
    ],
    "observed_behavior": "The response claims that a maximum and a minimum are attained for a function with a break inside the interval, or on an open interval.",
-   "scoring_consequence": "The hypothesis point is lost and the conclusion is unsupported."
+   "scoring_consequence": "The hypothesis point is lost and the conclusion is unsupported.",
+   "fix_prompt": true
   },
   {
    "error_id": "BC-ERR-05008",
@@ -275,7 +329,8 @@ Every key is a verdict, so each is a statement key with option labels.
     "BC-ERR-05008"
    ],
    "observed_behavior": "The response treats the Extreme Value Theorem as though it named the input at which the extremum occurs.",
-   "scoring_consequence": "The response answers a different question and the location it reports is unsupported."
+   "scoring_consequence": "The response answers a different question and the location it reports is unsupported.",
+   "fix_prompt": true
   },
   {
    "error_id": "BC-ERR-99008",
@@ -297,7 +352,8 @@ Every key is a verdict, so each is a statement key with option labels.
     "BC-MIS-99009"
    ],
    "observed_behavior": "Responses apply the Mean Value Theorem, the Intermediate Value Theorem or L'Hospital's Rule without establishing continuity from differentiability, without bounding the target value between two function values, or without confirming the indeterminate form.",
-   "scoring_consequence": "The condition point is not earned; in several years this was the point earned by the smallest proportion of responses on the question."
+   "scoring_consequence": "The condition point is not earned; in several years this was the point earned by the smallest proportion of responses on the question.",
+   "fix_prompt": true
   }
  ],
  "representations": null,
@@ -644,12 +700,12 @@ Every key is a verdict, so each is a statement key with option labels.
   "research/exam/exam-structure.md#Section and part layout"
  ],
  "word_count": {
-  "full": 524,
-  "brief": 352
+  "full": 621,
+  "brief": 449
  },
  "read_minutes": {
-  "full": 3.5,
-  "brief": 2.4
+  "full": 4.2,
+  "brief": 3.0
  }
 }
 ```

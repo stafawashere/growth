@@ -3,20 +3,67 @@
  "version": 1,
  "kind": "concept",
  "target_id": "BC-CON-05002",
- "status": "signed_off",
+ "status": "draft",
  "snapshot_digest": "a6a8ec9d3f59ab8f712e33d30cc22fc64bf2c478fbe7312e3e3118d319c6a42f",
  "source_digest": "b570036893f2a964e8217afc1fcfd1efd098f61ef5398dda8d4a3dc254cf8324",
  "read_minutes": {
-  "full": 3.5,
-  "brief": 2.4
+  "full": 4.2,
+  "brief": 3.0
  },
  "word_count": {
-  "full": 427,
-  "brief": 299
+  "full": 524,
+  "brief": 396
  },
  "sections": [
   {
    "id": "LSN-CON-05002#s1",
+   "type": "prediction",
+   "bands": [
+    "low",
+    "mid"
+   ],
+   "skills": [
+    "BC-SKL-05007",
+    "BC-SKL-05008",
+    "BC-SKL-05009"
+   ],
+   "sources": [
+    "BC-CON-05002",
+    "ced:100"
+   ],
+   "evidence_tag": "inferred",
+   "stem": {
+    "text": "Predict: f is differentiable on [-1, 4] with a relative maximum at x = 1. What follows about a maximum value on [-1, 4]?",
+    "command_verb": "predict"
+   },
+   "format": "mcq",
+   "options": [
+    {
+     "id": "A",
+     "label": "f(1) is the maximum value",
+     "is_key": false
+    },
+    {
+     "id": "B",
+     "label": "A maximum value exists; its input is unnamed",
+     "is_key": true
+    },
+    {
+     "id": "C",
+     "label": "Nothing follows",
+     "is_key": false
+    }
+   ],
+   "resolution": {
+    "text": "Differentiable gives continuous on the closed interval, so the Extreme Value Theorem gives a maximum value there, not its input."
+   },
+   "delivery": {
+    "mode": "text",
+    "reason": "rule 6"
+   }
+  },
+  {
+   "id": "LSN-CON-05002#s2",
    "type": "orientation",
    "bands": [
     "low",
@@ -32,7 +79,7 @@
     "research/units/unit-05-analytical-applications-differentiation.md#5.2 Extreme Value Theorem, Global Versus Local Extrema, and Critical Points"
    ],
    "evidence_tag": "inferred",
-   "text": "A response checks that the interval is closed and that f is continuous on it, saying where continuity comes from, then answers that a maximum and a minimum value are attained.",
+   "text": "A response checks the interval is closed and f is continuous on it, saying where continuity comes from, then concludes a maximum and a minimum value are attained.",
    "delivery": {
     "mode": "text",
     "reason": "rule 5: a statement of what a response shows; the figure-bearing BC-REP-02 is served once, on ki-1",
@@ -42,7 +89,7 @@
    }
   },
   {
-   "id": "LSN-CON-05002#s2",
+   "id": "LSN-CON-05002#s3",
    "type": "key_ideas",
    "bands": [
     "low",
@@ -61,7 +108,7 @@
    "evidence_tag": "verified",
    "ek_id": "BC-EK-FUN-1C1",
    "depth": "core",
-   "text": "The Extreme Value Theorem has one hypothesis: f continuous on a closed interval [a, b]. A break inside, or an open interval, and the theorem gives nothing. Its conclusion is existence: it says a largest and a smallest value occur, not where.",
+   "text": "The Extreme Value Theorem needs one hypothesis: f continuous on a closed interval [a, b]. It concludes that a largest and a smallest value exist, not where they occur.",
    "notation": "absolute maximum; absolute minimum",
    "quote": {
     "text": "f has at least one minimum value and at least one maximum value on [a, b]",
@@ -167,7 +214,7 @@
    }
   },
   {
-   "id": "LSN-CON-05002#s3",
+   "id": "LSN-CON-05002#s4",
    "type": "strategy",
    "bands": [
     "low",
@@ -184,12 +231,23 @@
    "evidence_tag": "verified",
    "archetype_id": "BC-QA-05010",
    "cue": "Must f attain a maximum or minimum value, from a continuity statement and an interval?",
-   "method": "First line: the interval is closed.",
-   "rival": "Rival: differentiating to locate the extremum.",
-   "separating_feature": "Must attain asks existence; nothing is located."
+   "method": "The interval is closed.",
+   "rival": "Differentiating to locate the extremum.",
+   "separating_feature": "Must attain asks existence; nothing is located.",
+   "contrast": {
+    "this": {
+     "text": "h is continuous on [2, 7] with a relative minimum at x = 5. Must h attain a maximum value there?",
+     "archetype_id": "BC-QA-05010"
+    },
+    "not_this": {
+     "text": "h is continuous on [2, 7]. Find the input in [2, 7] where h attains its maximum value.",
+     "why_not": "It asks where the maximum occurs, so the candidates test applies."
+    },
+    "feature": "Whether existence or the location is asked."
+   }
   },
   {
-   "id": "LSN-CON-05002#s4",
+   "id": "LSN-CON-05002#s5",
    "type": "worked_example",
    "bands": [
     "low",
@@ -249,7 +307,7 @@
    }
   },
   {
-   "id": "LSN-CON-05002#s5",
+   "id": "LSN-CON-05002#s6",
    "type": "worked_example",
    "bands": [
     "low"
@@ -281,7 +339,13 @@
    "steps": [
     {
      "cue": "Closed interval [0, 6].",
-     "why": "First check passes."
+     "why": "First check passes.",
+     "expression": [
+      "Interval",
+      0,
+      6
+     ],
+     "relation": "new"
     },
     {
      "cue": "Jump at x = 2, inside.",
@@ -297,6 +361,7 @@
     "mathjson": "theorem_does_not_apply",
     "label": "No: the Extreme Value Theorem does not apply."
    },
+   "fade_from": 3,
    "delivery": {
     "mode": "step_reveal",
     "reason": "rule 1",
@@ -331,6 +396,7 @@
     "expression": "theorem_does_not_apply"
    },
    "relation": "distinct",
+   "fix_prompt": true,
    "possible_reason": {
     "misconception_id": "BC-MIS-05006",
     "text": "applies the Extreme Value Theorem to open intervals or across discontinuities"
@@ -371,6 +437,7 @@
     "expression": "maximum_value_attained_on_closed_interval"
    },
    "relation": "distinct",
+   "fix_prompt": true,
    "delivery": {
     "mode": "step_reveal",
     "reason": "rule 1",
@@ -404,6 +471,7 @@
     "expression": "continuous_because_differentiable"
    },
    "relation": "distinct",
+   "fix_prompt": true,
    "possible_reason": {
     "misconception_id": "BC-MIS-99009",
     "text": "continuity is asserted rather than derived from differentiability"
@@ -451,7 +519,7 @@
     "extreme": "maximum",
     "situation": "differentiable"
    },
-   "completes": "LSN-CON-05002#s4",
+   "completes": "LSN-CON-05002#s5",
    "stem": {
     "text": "[-1, 4] is closed; f is continuous there because differentiable. Finish: must f attain a maximum value?",
     "command_verb": "justify"
@@ -568,18 +636,18 @@
   }
  ],
  "refresher": [
-  "LSN-CON-05002#s2",
+  "LSN-CON-05002#s3",
   "LSN-CON-05002#err-BC-ERR-05007",
   "LSN-CON-05002#err-BC-ERR-05008",
   "LSN-CON-05002#err-BC-ERR-99008",
-  "LSN-CON-05002#s4"
+  "LSN-CON-05002#s5"
  ],
  "provenance": {
   "author": "tools/lesson_transcribe.py",
-  "prompt_version": "generator/lesson_v1",
+  "prompt_version": "generator/lesson_v2",
   "design_path": "docs/lessons/unit-05/LSN-CON-05002.md",
-  "signed_off_by": "claude-opus-5-5",
-  "signed_off_at": "2026-09-29",
+  "signed_off_by": null,
+  "signed_off_at": null,
   "not_human": true
  }
 }

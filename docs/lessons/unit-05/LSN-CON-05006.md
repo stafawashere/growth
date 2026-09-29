@@ -9,6 +9,10 @@ purpose: Authoring spec for the concept lesson on BC-CON-05006, the candidates t
 
 Concept BC-CON-05006 (skills BC-SKL-05024 to BC-SKL-05029), topic 5.5 of Unit 5, loaded by one archetype, BC-QA-05006 (family absolute-extremum-candidates). Unit parents BC-CON-05003 and BC-CON-05004 (docs/lessons/unit-05/README.md, section 1). The written justification, every candidate evaluated and no other input, is the object of the lesson.
 
+## Prediction
+
+Both bands, first. Poses ex-1's own function: f(x) = x^3 - 3x has a relative maximum at x = -1, and the student predicts where the absolute maximum on [-2, 3] sits. Form `mcq`, three options, key B, the endpoint x = 3. The resolution lists the four candidates with their values and says an endpoint can hold the extremum. No rule is stated in the stem. Sources: BC-CON-05006 and the topic 5.5 section.
+
 ## Orientation
 
 Served text, from BC-CON-05006 `description_plain` and the topic's Assessment behaviour paragraph (research/units/unit-05-analytical-applications-differentiation.md#5.5 Using the Candidates Test to Determine Absolute (Global) Extrema): a response writes f'(x) = 0, lists the critical points inside the interval and both endpoints, evaluates f at each and at nothing else, and reports the extreme value. No count, no frequency.
@@ -23,7 +27,7 @@ All six skills map to BC-EK-FUN-4A3 (ced:103), so one core block, both bands.
 
 - BC-QA-05006 (research/question-analysis/question-archetypes.md#BC-QA-05006 Absolute extremum by the candidates test with a global justification): `typical_wording` "find the absolute minimum value of the function on the closed interval and justify the answer"; `common_givens` a function or its derivative, one known function value, a closed interval; `asked_to_produce` the derivative condition considered, a candidate table, the extremum. The signal: "absolute" with "on the closed interval". FRQ appearances BC-FRQ-2013-Q4-B, BC-FRQ-2022-Q3-D, BC-FRQ-2023-Q4-D, BC-FRQ-2025-Q1-D, BC-FRQ-2025-Q4-D, BC-FRQ-2026-Q4-D; the Unit 5 with Unit 6 pairing builds the candidate values from an accumulation function (research/question-analysis/frq-analysis.md#How concepts combine inside one question).
 
-What says "not this concept": "relative" at a named input is a first derivative test (BC-CON-05005), where a candidates test does not earn the classification point (sg-26:8); "must f attain" is existence only (BC-CON-05002).
+What says "not this concept": the contrast pair's near miss comes from the local-test rival (BC-ERR-99004) and from the first derivative test of BC-CON-05005, so `not_this` asks to justify a relative extremum at one input. "Relative" at a named input is a first derivative test (BC-CON-05005), where a candidates test does not earn the classification point (sg-26:8); "must f attain" is existence only (BC-CON-05002).
 
 ## Method choice
 
@@ -34,7 +38,8 @@ One strategy block, both bands.
 ## Solution path
 
 - ex-1, BC-QA-05006, both bands, no calculator. Draw (cubic family): first_critical -1, gap 2, left 1, right 2, orientation 1, shift 0, extreme maximum, root 2, coefficient 1. By the spec's derived values f(x) = x^3 - 3x on [-2, 3], value_low -2, value_high 18, value_first 2, value_second -2; best 18 at the endpoint, local_best 2, as the notes intend. Steps: f' = 0 (new), roots (solve), the candidate list (new), f (new), the values (new), the comparison (new, tagged BC-PT-99011).
-- ex-2, BC-QA-05006, low band. Draw (reciprocal family): first_critical 0, gap 2, left 1, right 2, orientation 1, shift 0, extreme minimum, root 2, coefficient 1; f(x) = x + 4/x on [1, 4]. The critical point -2 lies outside and is discarded; minimum value 4.
+- ex-2, BC-QA-05006, low band, faded from step 4 (`fade_from` 4). Steps 1 to 3 (the equation, the roots, the candidate list with -2 discarded) are shown, so the student meets the interval check first and then writes the values and the comparison. The fade falls there because the two withheld steps are the ones ex-1 has already modelled.
+- ex-2 detail:  Draw (reciprocal family): first_critical 0, gap 2, left 1, right 2, orientation 1, shift 0, extreme minimum, root 2, coefficient 1; f(x) = x + 4/x on [1, 4]. The critical point -2 lies outside and is discarded; minimum value 4.
 
 No published BC-QA-05006 item carries either draw. A fluent solver writes the equation, the candidate table and the sentence naming the value; the solving is held in the head.
 
@@ -78,11 +83,13 @@ BC-QA-05006 has `calculator_status` either, so the lesson takes Section I Part A
 
 ## Band plan
 
-- Low (full): orientation, ki-1, st-1, ex-1 with its scoring line, the four error blocks, chk-1 to chk-3, ex-2, representations, the two bridges. 652 words, 4.4 minutes (cap 900 and 6).
-- Mid (brief): orientation, ki-1, st-1, ex-1 with its scoring line, err-BC-ERR-05011, err-BC-ERR-05025, chk-1, chk-2, the bridges. 413 words, 2.8 minutes (cap 450 and 3).
+- Low (full): served order of 2026-09-29: prediction, orientation, the two bridges, ki-1, st-1 with its contrast pair, ex-1 with its scoring line, chk-1, the four error blocks, ex-2 faded from step 4, chk-2, representations, chk-3. 687 words, 4.6 minutes (cap 900 and 6).
+- Mid (brief): prediction, orientation, the two bridges, ki-1, st-1 with its contrast pair, ex-1 with its scoring line, chk-1, err-BC-ERR-05011 and err-BC-ERR-05025, chk-2. 448 words, 3.0 minutes (cap 450 and 3). The orientation, ki-1 text, strategy fields, bridges and ex-1 cues were shortened to hold the cap; the anchor quote stays.
 - Refresher: ki-1, err-BC-ERR-05011, err-BC-ERR-05025, err-BC-ERR-05026, err-BC-ERR-05027, ex-1.
 
 ## Sources
+
+- Prediction and contrast pair: BC-CON-05006, BC-ERR-99004, sg-26:8 (as above).
 
 - BC-CON-05006; BC-SKL-05024 to BC-SKL-05029; BC-EK-FUN-4A3; ced:103
 - BC-QA-05006; BC-FRQ-2013-Q4-B, BC-FRQ-2022-Q3-D, BC-FRQ-2023-Q4-D, BC-FRQ-2025-Q1-D, BC-FRQ-2025-Q4-D, BC-FRQ-2026-Q4-D
@@ -115,8 +122,38 @@ BC-QA-05006 has `calculator_status` either, so the lesson takes Section I Part A
   "BC-SKL-05028",
   "BC-SKL-05029"
  ],
+ "prediction": {
+  "id": "pr-1",
+  "stem": {
+   "text": "Predict. f(x) = x^3 - 3x has a relative maximum at x = -1. Where is its absolute maximum on [-2, 3]?",
+   "command_verb": "predict"
+  },
+  "format": "mcq",
+  "options": [
+   {
+    "id": "A",
+    "label": "At the relative maximum",
+    "is_key": false
+   },
+   {
+    "id": "B",
+    "label": "At the endpoint x = 3",
+    "is_key": true
+   },
+   {
+    "id": "C",
+    "label": "At the other critical point",
+    "is_key": false
+   }
+  ],
+  "resolution": "The values at -2, -1, 1 and 3 are -2, 2, -2 and 18. The largest, 18, is at the endpoint x = 3.",
+  "sources": [
+   "BC-CON-05006",
+   "research/units/unit-05-analytical-applications-differentiation.md#5.5 Using the Candidates Test to Determine Absolute (Global) Extrema"
+  ]
+ },
  "orientation": {
-  "text": "A response writes f'(x) = 0, lists the critical points inside the interval and both endpoints, evaluates f at each and nothing else, and reports the extreme value.",
+  "text": "A response writes f'(x) = 0, evaluates f at every candidate, and reports the extreme value.",
   "sources": [
    "BC-CON-05006",
    "research/units/unit-05-analytical-applications-differentiation.md#5.5 Using the Candidates Test to Determine Absolute (Global) Extrema"
@@ -127,7 +164,7 @@ BC-QA-05006 has `calculator_status` either, so the lesson takes Section I Part A
    "id": "ki-1",
    "ek_id": "BC-EK-FUN-4A3",
    "depth": "core",
-   "text": "On [a, b] the candidates are the interior critical points and both endpoints. Evaluate f at every one and at no other input; one wrong value or a missing endpoint loses the justification. Report the value, not only where it occurs.",
+   "text": "Evaluate f at every candidate and nowhere else. Report the value.",
    "notation": "candidate list; absolute extreme value",
    "quote": {
     "text": "Absolute (global) extrema of a function on a closed interval can only occur at critical points or at endpoints.",
@@ -146,15 +183,26 @@ BC-QA-05006 has `calculator_status` either, so the lesson takes Section I Part A
   {
    "id": "st-1",
    "archetype_id": "BC-QA-05006",
-   "cue": "Absolute maximum or minimum value on a closed interval, justified?",
-   "method": "First line: f'(x) = 0, as an equation.",
-   "rival": "Rival: a sign change at one point, a local test.",
-   "separating_feature": "Absolute makes every candidate, endpoints included, a competitor.",
+   "cue": "Absolute extreme value on a closed interval?",
+   "method": "f'(x) = 0, as an equation.",
+   "rival": "A local test at one point.",
+   "separating_feature": "Absolute makes every candidate compete.",
    "sources": [
     "BC-QA-05006",
     "BC-ERR-99004"
    ],
-   "evidence_tag": "verified"
+   "evidence_tag": "verified",
+   "contrast": {
+    "this": {
+     "text": "f(x) = x^3 - 12x. Find the absolute maximum value on [-4, 5]. Justify.",
+     "archetype_id": "BC-QA-05006"
+    },
+    "not_this": {
+     "text": "f(x) = x^3 - 12x. Justify a relative minimum at x = 2.",
+     "why_not": "Relative at one input asks for a derivative test."
+    },
+    "feature": "Absolute on a closed interval."
+   }
   }
  ],
  "worked_examples": [
@@ -184,7 +232,7 @@ BC-QA-05006 has `calculator_status` either, so the lesson takes Section I Part A
    "calculator_status": "no_calculator",
    "steps": [
     {
-     "cue": "Absolute on [-2, 3]: candidates.",
+     "cue": "Absolute on [-2, 3].",
      "why": "Write f'(x) = 0 as an equation.",
      "expr": "3*x**2 - 3 = 0",
      "relation": "new"
@@ -197,20 +245,20 @@ BC-QA-05006 has `calculator_status` either, so the lesson takes Section I Part A
      "variable": "x"
     },
     {
-     "cue": "Add both endpoints.",
+     "cue": "Add the endpoints.",
      "why": "Endpoints compete.",
      "expr": "FiniteSet(-2, -1, 1, 3)",
      "relation": "new"
     },
     {
-     "cue": "Evaluate f at each.",
+     "cue": "Evaluate f.",
      "why": "f at -2, -1, 1, 3.",
      "expr": "Tuple(-2, 2, -2, 18)",
      "relation": "new"
     },
     {
-     "cue": "Compare all four.",
-     "why": "18 is the largest candidate value, so the absolute maximum value is 18.",
+     "cue": "Compare.",
+     "why": "18 is largest, so the absolute maximum value is 18.",
      "expr": "18",
      "relation": "new",
      "point_type_id": "BC-PT-99011"
@@ -280,7 +328,8 @@ BC-QA-05006 has `calculator_status` either, so the lesson takes Section I Part A
    "answer": {
     "form": "numeric",
     "expr": "4"
-   }
+   },
+   "fade_from": 4
   }
  ],
  "what_a_reader_scores": [
@@ -323,7 +372,8 @@ BC-QA-05006 has `calculator_status` either, so the lesson takes Section I Part A
     "BC-MIS-05009"
    ],
    "observed_behavior": "The response finds only the zeros of the derivative and skips corners, cusps, and vertical tangents.",
-   "scoring_consequence": "A candidate is missing, so the comparison may select the wrong extremum and the justification is incomplete."
+   "scoring_consequence": "A candidate is missing, so the comparison may select the wrong extremum and the justification is incomplete.",
+   "fix_prompt": true
   },
   {
    "error_id": "BC-ERR-05025",
@@ -341,7 +391,8 @@ BC-QA-05006 has `calculator_status` either, so the lesson takes Section I Part A
     "BC-ERR-05025"
    ],
    "observed_behavior": "The response carries a critical point that lies outside the closed interval into the candidate comparison.",
-   "scoring_consequence": "The justification point is lost because inputs other than the candidates appear in the argument."
+   "scoring_consequence": "The justification point is lost because inputs other than the candidates appear in the argument.",
+   "fix_prompt": true
   },
   {
    "error_id": "BC-ERR-05026",
@@ -363,7 +414,8 @@ BC-QA-05006 has `calculator_status` either, so the lesson takes Section I Part A
     "BC-MIS-05016"
    ],
    "observed_behavior": "The response compares values only at the interior critical points and never evaluates at the ends of the interval.",
-   "scoring_consequence": "The justification point is lost; the 2023 guideline states that a response not considering both endpoints does not earn it."
+   "scoring_consequence": "The justification point is lost; the 2023 guideline states that a response not considering both endpoints does not earn it.",
+   "fix_prompt": true
   },
   {
    "error_id": "BC-ERR-05027",
@@ -381,7 +433,8 @@ BC-QA-05006 has `calculator_status` either, so the lesson takes Section I Part A
     "BC-ERR-05027"
    ],
    "observed_behavior": "One entry of the candidate table is wrong, whether by substitution or by an area computation.",
-   "scoring_consequence": "The justification point is lost outright; the 2023 guideline withholds it for any evaluation error at a candidate."
+   "scoring_consequence": "The justification point is lost outright; the 2023 guideline withholds it for any evaluation error at a candidate.",
+   "fix_prompt": true
   }
  ],
  "representations": {
@@ -415,11 +468,11 @@ BC-QA-05006 has `calculator_status` either, so the lesson takes Section I Part A
  "prerequisite_bridges": [
   {
    "prq_id": "BC-PRQ-05004",
-   "text": "[a, b] includes both endpoints as candidates."
+   "text": "[a, b] includes both endpoints."
   },
   {
    "prq_id": "BC-PRQ-06005",
-   "text": "f(3) is a value of f, not of f'."
+   "text": "f(3) is a value of f."
   }
  ],
  "time": {
@@ -810,12 +863,12 @@ BC-QA-05006 has `calculator_status` either, so the lesson takes Section I Part A
   "research/exam/exam-structure.md#Section and part layout"
  ],
  "word_count": {
-  "full": 652,
-  "brief": 413
+  "full": 687,
+  "brief": 448
  },
  "read_minutes": {
-  "full": 4.4,
-  "brief": 2.8
+  "full": 4.6,
+  "brief": 3.0
  }
 }
 ```

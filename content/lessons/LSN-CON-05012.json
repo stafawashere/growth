@@ -3,7 +3,7 @@
  "version": 1,
  "kind": "concept",
  "target_id": "BC-CON-05012",
- "status": "signed_off",
+ "status": "draft",
  "snapshot_digest": "a6a8ec9d3f59ab8f712e33d30cc22fc64bf2c478fbe7312e3e3118d319c6a42f",
  "source_digest": "b1a6810c817f72347a2c173ce7d1449cd580a81685f697345c4d0af450692cd9",
  "read_minutes": {
@@ -11,12 +11,63 @@
   "brief": 3.0
  },
  "word_count": {
-  "full": 535,
-  "brief": 369
+  "full": 575,
+  "brief": 409
  },
  "sections": [
   {
    "id": "LSN-CON-05012#s1",
+   "type": "prediction",
+   "bands": [
+    "low",
+    "mid"
+   ],
+   "skills": [
+    "BC-SKL-05045",
+    "BC-SKL-05046",
+    "BC-SKL-05047",
+    "BC-SKL-05048"
+   ],
+   "sources": [
+    "BC-CON-05012",
+    "research/units/unit-05-analytical-applications-differentiation.md#5.9 Connecting a Function, Its First Derivative, and Its Second Derivative"
+   ],
+   "evidence_tag": "inferred",
+   "stem": {
+    "text": "Predict: curve B has horizontal tangents at \\(x=-1\\) and \\(x=2\\), and curve C crosses the axis there. How are B and C related?",
+    "command_verb": "predict"
+   },
+   "format": "mcq",
+   "options": [
+    {
+     "id": "A",
+     "label": "C is the derivative of B",
+     "is_key": true
+    },
+    {
+     "id": "B",
+     "label": "B is the derivative of C",
+     "is_key": false
+    },
+    {
+     "id": "C",
+     "label": "C is the second derivative of B",
+     "is_key": false
+    }
+   ],
+   "resolution": {
+    "text": "A curve crossing where B has horizontal tangents is its derivative. Here C is \\(f'\\) and B is \\(f\\)."
+   },
+   "delivery": {
+    "mode": "text",
+    "reason": "rule 6: a question on two named curves; the three curves are drawn on the orientation",
+    "sources": [
+     "BC-CON-05012"
+    ]
+   }
+  },
+  {
+   "id": "LSN-CON-05012#s2",
    "type": "orientation",
    "bands": [
     "low",
@@ -33,7 +84,7 @@
     "research/units/unit-05-analytical-applications-differentiation.md#5.9 Connecting a Function, Its First Derivative, and Its Second Derivative"
    ],
    "evidence_tag": "inferred",
-   "text": "Three curves are \\(f\\), \\(f'\\) and \\(f''\\) in some order. A response matches the turning points of one curve with the sign-changing zeros of another, twice, and names the object each reason is about.",
+   "text": "A response matches turning points with zeros, twice, and names the object each reason is about.",
    "delivery": {
     "mode": "figure",
     "reason": "rule 3: BC-REP-02 on BC-SKL-05045; three fixed curves",
@@ -89,7 +140,7 @@
    }
   },
   {
-   "id": "LSN-CON-05012#s2",
+   "id": "LSN-CON-05012#s3",
    "type": "key_ideas",
    "bands": [
     "low",
@@ -109,7 +160,7 @@
    "evidence_tag": "verified",
    "ek_id": "BC-EK-FUN-4A11",
    "depth": "core",
-   "text": "Extrema of \\(f\\) sit where \\(f'\\) changes sign. Inflection points of \\(f\\) sit where \\(f''\\) changes sign, which are the turning points of \\(f'\\). Concavity of \\(f\\) is the sign of \\(f''\\). So a curve whose sign-changing zeros line up with another curve's turning points is its derivative. Applied twice, this orders all three.",
+   "text": "Extrema of \\(f\\) sit where \\(f'\\) changes sign; inflection points where \\(f''\\) does, at the turning points of \\(f'\\). A curve whose zeros sit under another's turning points is its derivative.",
    "notation": "f, f', f''",
    "quote": {
     "text": "Key features of the graphs of f, f', and f\" are related to one another.",
@@ -184,7 +235,7 @@
    }
   },
   {
-   "id": "LSN-CON-05012#s3",
+   "id": "LSN-CON-05012#s4",
    "type": "strategy",
    "bands": [
     "low",
@@ -201,13 +252,24 @@
    ],
    "evidence_tag": "inferred",
    "archetype_id": "BC-QA-05009",
-   "cue": "The stem asks for an assignment of roles, from two or three plotted curves.",
-   "method": "First written line: find the turning points of each curve.",
-   "rival": "Rival: deciding the order from the vertical scale of the plots.",
-   "separating_feature": "Zeros under another curve's turning points mark its derivative; scale plays no part."
+   "cue": "Two or three plotted curves.",
+   "method": "Find the turning points of each curve.",
+   "rival": "Ordering the plots by vertical scale.",
+   "separating_feature": "Zeros under a curve's turning points mark its derivative.",
+   "contrast": {
+    "this": {
+     "text": "Curves A, B, C are \\(f\\), \\(f'\\), \\(f''\\) in some order. C crosses where B turns. Assign the roles.",
+     "archetype_id": "BC-QA-05009"
+    },
+    "not_this": {
+     "text": "Only the graph of \\(f'\\) is shown. Sketch \\(f\\).",
+     "why_not": "That reconstructs \\(f\\) from \\(f'\\)."
+    },
+    "feature": "Three curves to sort, or one to read."
+   }
   },
   {
-   "id": "LSN-CON-05012#s4",
+   "id": "LSN-CON-05012#s5",
    "type": "worked_example",
    "bands": [
     "low",
@@ -343,6 +405,7 @@
     "expression": "B_is_f_C_is_f1_A_is_f2"
    },
    "relation": "distinct",
+   "fix_prompt": true,
    "possible_reason": {
     "misconception_id": "BC-MIS-05011",
     "text": "reading features of whatever curve is drawn"
@@ -404,6 +467,7 @@
     ]
    },
    "relation": "distinct",
+   "fix_prompt": true,
    "possible_reason": {
     "misconception_id": "BC-MIS-05020",
     "text": "the sign and the direction of the derivative are used interchangeably"
@@ -441,6 +505,7 @@
     "expression": "cut_at_zeros_of_f1_and_f2"
    },
    "relation": "distinct",
+   "fix_prompt": true,
    "possible_reason": {
     "misconception_id": "BC-MIS-05010",
     "text": "decides increase and decrease from whether the function values are positive or negative"
@@ -478,6 +543,7 @@
     "expression": "negative_at_listed_inputs_only"
    },
    "relation": "distinct",
+   "fix_prompt": true,
    "possible_reason": {
     "misconception_id": "BC-MIS-05026",
     "text": "treats a finite table of derivative values as a full description of the function"
@@ -489,7 +555,7 @@
    }
   },
   {
-   "id": "LSN-CON-05012#s5",
+   "id": "LSN-CON-05012#s6",
    "type": "representations",
    "bands": [
     "low"
@@ -609,7 +675,7 @@
    ],
    "evidence_tag": "inferred",
    "prerequisite_id": "BC-PRQ-06005",
-   "text": "\\(f'\\) and \\(f\\) are different objects. Name which curve or table row is which before reading a value, or values are pulled for the wrong object."
+   "text": "Name which curve is which first."
   }
  ],
  "checks": [
@@ -631,7 +697,7 @@
     "lettering": "BCA",
     "framing": "derivatives"
    },
-   "completes": "LSN-CON-05012#s4",
+   "completes": "LSN-CON-05012#s5",
    "stem": {
     "text": "C crosses the axis where B turns; A crosses where C turns. Assign \\(f\\), \\(f'\\), \\(f''\\).",
     "command_verb": "identify"
@@ -876,19 +942,19 @@
   }
  ],
  "refresher": [
-  "LSN-CON-05012#s2",
+  "LSN-CON-05012#s3",
   "LSN-CON-05012#err-BC-ERR-05046",
   "LSN-CON-05012#err-BC-ERR-05047",
   "LSN-CON-05012#err-BC-ERR-05048",
   "LSN-CON-05012#err-BC-ERR-05049",
-  "LSN-CON-05012#s4"
+  "LSN-CON-05012#s5"
  ],
  "provenance": {
   "author": "tools/lesson_transcribe.py",
-  "prompt_version": "generator/lesson_v1",
+  "prompt_version": "generator/lesson_v2",
   "design_path": "docs/lessons/unit-05/LSN-CON-05012.md",
-  "signed_off_by": "claude-opus-5-5",
-  "signed_off_at": "2026-09-29",
+  "signed_off_by": null,
+  "signed_off_at": null,
   "not_human": true
  }
 }

@@ -9,6 +9,10 @@ purpose: Authoring spec for the concept lesson on BC-CON-05007, concavity as the
 
 Concept BC-CON-05007 (skills BC-SKL-05030, BC-SKL-05031), topic 5.6 of Unit 5, loaded by one archetype, BC-QA-05004 (family concavity-analysis). Unit parent BC-CON-05004 (docs/lessons/unit-05/README.md, section 1). The written reason, f' increasing or decreasing on the interval, is the object of the lesson; the sign of f' is the rival it displaces.
 
+## Prediction
+
+Both bands, first. Poses ex-1's own numbers: f' falls from 3 to 1 on (2, 3) and stays positive, and the student predicts the concavity there. Form `mcq`, two options, key A (concave down, since f' falls). The resolution says concavity follows f' falling, not its sign. Sources: BC-CON-05007 and the topic 5.6 section.
+
 ## Orientation
 
 Served text, from BC-CON-05007 `description_plain` and the topic's Assessment behaviour paragraph (research/units/unit-05-analytical-applications-differentiation.md#5.6 Determining Concavity of Functions over Their Domains): a response reports open intervals where f' rises (concave up) or falls (concave down), and gives as reason the behaviour of f', not its sign. No count, no frequency.
@@ -24,7 +28,7 @@ Two BC-EK map to the skills: BC-EK-FUN-4A4 (BC-SKL-05031) and BC-EK-FUN-4A5 (BC-
 
 - BC-QA-05004 (research/question-analysis/question-archetypes.md#BC-QA-05004 Intervals of concavity from derivative information with a reason): `typical_wording` "on what open intervals, if any, is the graph of the function concave down, and give a reason for the answer"; `common_givens` a graph of the derivative, or a formula for the function; `asked_to_produce` a list of open intervals, a reason about the behaviour of the derivative. The signal: "concave" beside a graph labelled f'. FRQ appearances BC-FRQ-2013-Q4-C, BC-FRQ-2014-Q3-B, BC-FRQ-2023-Q4-B, BC-FRQ-2026-Q4-C, BC-FRQ-2018-Q3-C; MCQ BC-MCQ-PE2012-037.
 
-What says "not this concept": "increasing" asks for the sign of f' (BC-CON-05004, BC-ERR-05016); "point of inflection" asks where the concavity changes (BC-CON-05008).
+What says "not this concept" (the contrast pair's near miss comes from BC-CON-05004, where the same graph asked for "increasing" calls for the sign of f', and from BC-ERR-05016, BC-MIS-05020): "increasing" asks for the sign of f' (BC-CON-05004, BC-ERR-05016); "point of inflection" asks where the concavity changes (BC-CON-05008).
 
 ## Method choice
 
@@ -78,11 +82,13 @@ BC-QA-05004 has `calculator_status` either, so the lesson takes Section I Part A
 
 ## Band plan
 
-- Low (full): orientation, ki-1, ki-2, st-1, ex-1 with its scoring line, the four error blocks, chk-1 to chk-3, the three bridges. 550 words, 3.7 minutes (cap 900 and 6).
-- Mid (brief): orientation, ki-1, ki-2, st-1, ex-1 with its scoring line, err-BC-ERR-05015, err-BC-ERR-05016, chk-1, chk-2, the bridges. 437 words, 3.0 minutes (cap 450 and 3).
+- Low (full): served order of 2026-09-29: prediction, orientation, the three bridges, ki-1, ki-2, st-1 with its contrast pair, ex-1 with its scoring line, chk-1, the four error blocks, chk-2, chk-3. 560 words, 3.8 minutes (cap 900 and 6).
+- Mid (brief): prediction, orientation, the bridges, ki-1, ki-2, st-1 with its contrast pair, ex-1 with its scoring line, chk-1, err-BC-ERR-05015 and err-BC-ERR-05016, chk-2. 447 words, 3.0 minutes (cap 450 and 3). The orientation, key idea texts, strategy fields, bridges and ex-1 cues were shortened to hold the cap; the anchor quote stays.
 - Refresher: ki-1, ki-2, err-BC-ERR-05015, err-BC-ERR-05016, err-BC-ERR-05030, err-BC-ERR-05031, ex-1.
 
 ## Sources
+
+- Prediction and contrast pair: BC-CON-05007, BC-CON-05004, BC-ERR-05016, BC-MIS-05020 (as above).
 
 - BC-CON-05007; BC-SKL-05030, BC-SKL-05031; BC-EK-FUN-4A4, BC-EK-FUN-4A5; ced:104
 - BC-QA-05004; BC-FRQ-2013-Q4-C, BC-FRQ-2014-Q3-B, BC-FRQ-2023-Q4-B, BC-FRQ-2026-Q4-C, BC-FRQ-2018-Q3-C, BC-MCQ-PE2012-037
@@ -109,8 +115,33 @@ BC-QA-05004 has `calculator_status` either, so the lesson takes Section I Part A
   "BC-SKL-05030",
   "BC-SKL-05031"
  ],
+ "prediction": {
+  "id": "pr-1",
+  "stem": {
+   "text": "Predict. f' falls from 3 to 1 on (2, 3). Is f concave up or concave down there?",
+   "command_verb": "predict"
+  },
+  "format": "mcq",
+  "options": [
+   {
+    "id": "A",
+    "label": "Down, since f' falls",
+    "is_key": true
+   },
+   {
+    "id": "B",
+    "label": "Up, since f' is positive",
+    "is_key": false
+   }
+  ],
+  "resolution": "f' falls from 3 to 1 on (2, 3), so f is concave down there. Concavity follows f' falling, not its sign.",
+  "sources": [
+   "BC-CON-05007",
+   "research/units/unit-05-analytical-applications-differentiation.md#5.6 Determining Concavity of Functions over Their Domains"
+  ]
+ },
  "orientation": {
-  "text": "A response reports the open intervals where f' rises (concave up) or falls (concave down), and gives as its reason how f' behaves there, not its sign.",
+  "text": "A response reports open intervals where f' rises or falls, with that as the reason.",
   "sources": [
    "BC-CON-05007",
    "research/units/unit-05-analytical-applications-differentiation.md#5.6 Determining Concavity of Functions over Their Domains"
@@ -121,8 +152,8 @@ BC-QA-05004 has `calculator_status` either, so the lesson takes Section I Part A
    "id": "ki-1",
    "ek_id": "BC-EK-FUN-4A4",
    "depth": "core",
-   "text": "Concave up where f' increases, concave down where f' decreases. The reason discusses f' rising or falling, or its slopes; the sign of f' answers a different question.",
-   "notation": "concave up; concave down",
+   "text": "The reason names f' rising or falling, not its sign.",
+   "notation": "concavity",
    "quote": {
     "text": "The graph of a function is concave up (down) on an open interval if the function's derivative is increasing (decreasing) on that interval.",
     "source": "ced:104"
@@ -138,7 +169,7 @@ BC-QA-05004 has `calculator_status` either, so the lesson takes Section I Part A
    "id": "ki-2",
    "ek_id": "BC-EK-FUN-4A5",
    "depth": "core",
-   "text": "From a formula: f'' > 0 means f' increases, so concave up; f'' < 0, concave down.",
+   "text": "From f'': positive is up, negative down.",
    "notation": "f''",
    "quote": null,
    "sources": [
@@ -152,14 +183,25 @@ BC-QA-05004 has `calculator_status` either, so the lesson takes Section I Part A
   {
    "id": "st-1",
    "archetype_id": "BC-QA-05004",
-   "cue": "Concave up or down on what intervals, from a graph of f'?",
-   "method": "First line: where f' decreases (or increases).",
-   "rival": "Rival: where f' is negative (or positive).",
-   "separating_feature": "Concave asks whether f' rises, not its sign.",
+   "cue": "Concave, from a graph of f'?",
+   "method": "Where f' decreases.",
+   "rival": "Where f' is negative.",
+   "separating_feature": "Concave asks whether f' rises.",
    "sources": [
     "BC-QA-05004"
    ],
-   "evidence_tag": "verified"
+   "evidence_tag": "verified",
+   "contrast": {
+    "this": {
+     "text": "f' joins (0, 1), (2, 3), (4, -1), (6, 2). Where is f concave up?",
+     "archetype_id": "BC-QA-05004"
+    },
+    "not_this": {
+     "text": "f' joins (0, 1), (2, 3), (4, -1), (6, 2). Where is f increasing?",
+     "why_not": "Increasing asks for the sign of f'."
+    },
+    "feature": "Concave: f' rises. Increasing: f' is positive."
+   }
   }
  ],
  "worked_examples": [
@@ -189,18 +231,18 @@ BC-QA-05004 has `calculator_status` either, so the lesson takes Section I Part A
    "calculator_status": "no_calculator",
    "steps": [
     {
-     "cue": "Concave down: where f' decreases.",
-     "why": "f' falls only from x = 2 to x = 4."
+     "cue": "Concave down: f' decreases.",
+     "why": "f' falls from x = 2 to 4."
     },
     {
-     "cue": "Write it open.",
+     "cue": "Open.",
      "why": "Endpoints optional.",
      "expr": "Interval.open(2, 4)",
      "relation": "new"
     },
     {
-     "cue": "Give a reason.",
-     "why": "f is concave down on (2, 4) because f' is decreasing there.",
+     "cue": "Reason.",
+     "why": "f is concave down on (2, 4) because f' is decreasing.",
      "point_type_id": "BC-PT-99063"
     }
    ],
@@ -245,7 +287,8 @@ BC-QA-05004 has `calculator_status` either, so the lesson takes Section I Part A
     "BC-MIS-05011"
    ],
    "observed_behavior": "The response answers a question about the function by describing features of the curve shown, which is the derivative.",
-   "scoring_consequence": "Every part that rests on the plotted object is answered about the wrong function."
+   "scoring_consequence": "Every part that rests on the plotted object is answered about the wrong function.",
+   "fix_prompt": true
   },
   {
    "error_id": "BC-ERR-05016",
@@ -267,7 +310,8 @@ BC-QA-05004 has `calculator_status` either, so the lesson takes Section I Part A
     "BC-MIS-05020"
    ],
    "observed_behavior": "The response reports concavity where monotonicity was asked for, or reports increase of the function where the derivative graph is rising.",
-   "scoring_consequence": "The intervals reported belong to the other question and the reason point is unavailable."
+   "scoring_consequence": "The intervals reported belong to the other question and the reason point is unavailable.",
+   "fix_prompt": true
   },
   {
    "error_id": "BC-ERR-05030",
@@ -285,7 +329,8 @@ BC-QA-05004 has `calculator_status` either, so the lesson takes Section I Part A
     "BC-ERR-05030"
    ],
    "observed_behavior": "The response assigns the wrong sign to the second derivative on one interval of its sign chart.",
-   "scoring_consequence": "The concavity intervals are wrong and the reason point is unavailable."
+   "scoring_consequence": "The concavity intervals are wrong and the reason point is unavailable.",
+   "fix_prompt": true
   },
   {
    "error_id": "BC-ERR-05031",
@@ -307,22 +352,23 @@ BC-QA-05004 has `calculator_status` either, so the lesson takes Section I Part A
     "BC-MIS-05020"
    ],
    "observed_behavior": "The response reports concave up where the plotted derivative is above the axis rather than where it is rising.",
-   "scoring_consequence": "The intervals reported are those of increase, so both the interval point and the reason point are lost."
+   "scoring_consequence": "The intervals reported are those of increase, so both the interval point and the reason point are lost.",
+   "fix_prompt": true
   }
  ],
  "representations": null,
  "prerequisite_bridges": [
   {
    "prq_id": "BC-PRQ-05001",
-   "text": "Solve for zeros of an expression."
+   "text": "Zeros."
   },
   {
    "prq_id": "BC-PRQ-05002",
-   "text": "Sign of an expression on each piece."
+   "text": "Signs."
   },
   {
    "prq_id": "BC-PRQ-05006",
-   "text": "Read the label: the curve is f'."
+   "text": "The curve is f'."
   }
  ],
  "time": {
@@ -679,11 +725,11 @@ BC-QA-05004 has `calculator_status` either, so the lesson takes Section I Part A
   "research/exam/exam-structure.md#Section and part layout"
  ],
  "word_count": {
-  "full": 550,
-  "brief": 437
+  "full": 560,
+  "brief": 447
  },
  "read_minutes": {
-  "full": 3.7,
+  "full": 3.8,
   "brief": 3.0
  }
 }

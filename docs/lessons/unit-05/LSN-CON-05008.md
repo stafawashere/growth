@@ -9,6 +9,10 @@ purpose: Authoring spec for the concept lesson on BC-CON-05008, the point of inf
 
 Concept BC-CON-05008 (skills BC-SKL-05032 to BC-SKL-05035), topic 5.6 of Unit 5, loaded by BC-QA-05005 (primary) and BC-QA-05004, both in family concavity-analysis. Unit parent BC-CON-05007 (docs/lessons/unit-05/README.md, section 1). The written reason, phrased through the plotted object the stem supplies, is the object of the lesson.
 
+## Prediction
+
+Both bands, first. Poses ex-1's own graph: f' peaks at x = 3 and crosses zero at 4/3 and 5, and the student predicts where f has its inflection point. Form `mcq`, two options, key A (at the peak of f'). The resolution says f' turns from rising to falling there, so f'' changes sign. Sources: BC-CON-05008 and the topic 5.6 section.
+
 ## Orientation
 
 Served text, from BC-CON-05008 `description_plain` and the topic's Assessment behaviour paragraph (research/units/unit-05-analytical-applications-differentiation.md#5.6 Determining Concavity of Functions over Their Domains): a response lists exactly the inputs where the concavity changes, and gives the reason through the graph the stem supplied, such as f' changing from increasing to decreasing. No count, no frequency.
@@ -24,7 +28,7 @@ All four skills map to BC-EK-FUN-4A6 (ced:104), so one core block, both bands.
 - BC-QA-05005 (research/question-analysis/question-archetypes.md#BC-QA-05005 Points of inflection identified with a reason tied to the given graph): `typical_wording` "find all values in the open interval at which the graph has a point of inflection, and give a reason for the answer"; `common_givens` a graph of the derivative or of an integrand, an open interval; `asked_to_produce` the complete list of inputs, a reason phrased through the given function. The signal: "point of inflection" beside a graph labelled f' or an integrand. FRQ appearances BC-FRQ-2022-Q3-B, BC-FRQ-2025-Q4-B, BC-FRQ-2026-Q4-B, BC-FRQ-2018-Q3-D; MCQ BC-MCQ-CED-014, BC-MCQ-PE2012-034.
 - BC-QA-05004 (research/question-analysis/question-archetypes.md#BC-QA-05004 Intervals of concavity from derivative information with a reason) shares the family and the graph; it asks for intervals, not inputs (BC-CON-05007).
 
-What says "not this concept": "relative maximum" asks where f' changes sign, not where it turns (BC-CON-05005).
+What says "not this concept" (the contrast pair's near miss is the sibling concept BC-CON-05005, where a relative maximum needs f' to change sign, and the zero-of-f' rival of BC-ERR-05033): "relative maximum" asks where f' changes sign, not where it turns (BC-CON-05005).
 
 ## Method choice
 
@@ -78,11 +82,13 @@ BC-QA-05005 is `no_calculator` and one 2-point part of a free-response question,
 
 ## Band plan
 
-- Low (full): orientation, ki-1, st-1, ex-1 with its scoring line, the four error blocks, chk-1 to chk-3, representations, the two bridges. 585 words, 3.9 minutes (cap 900 and 6).
-- Mid (brief): orientation, ki-1, st-1, ex-1 with its scoring line, err-BC-ERR-05032, err-BC-ERR-05033, chk-1, chk-2, the bridges. 448 words, 3.0 minutes (cap 450 and 3).
+- Low (full): served order of 2026-09-29: prediction, orientation, the two bridges, ki-1, st-1 with its contrast pair, ex-1 with its scoring line, chk-1, the four error blocks, chk-2, representations, chk-3. 580 words, 3.9 minutes (cap 900 and 6).
+- Mid (brief): prediction, orientation, the two bridges, ki-1, st-1 with its contrast pair, ex-1 with its scoring line, chk-1, err-BC-ERR-05032 and err-BC-ERR-05033, chk-2. 443 words, 3.0 minutes (cap 450 and 3). The orientation, key idea text, strategy fields, bridges and ex-1 cues were shortened to hold the cap; the anchor quote stays.
 - Refresher: ki-1, err-BC-ERR-05032, err-BC-ERR-05033, err-BC-ERR-05034, err-BC-ERR-05035, ex-1.
 
 ## Sources
+
+- Prediction and contrast pair: BC-CON-05008, BC-CON-05005, BC-ERR-05033 (as above).
 
 - BC-CON-05008; BC-SKL-05032 to BC-SKL-05035; BC-EK-FUN-4A6; ced:104
 - BC-QA-05005, BC-QA-05004; BC-FRQ-2022-Q3-B, BC-FRQ-2025-Q4-B, BC-FRQ-2026-Q4-B, BC-FRQ-2018-Q3-D, BC-MCQ-CED-014, BC-MCQ-PE2012-034
@@ -112,8 +118,33 @@ BC-QA-05005 is `no_calculator` and one 2-point part of a free-response question,
   "BC-SKL-05034",
   "BC-SKL-05035"
  ],
+ "prediction": {
+  "id": "pr-1",
+  "stem": {
+   "text": "Predict. f' peaks at x = 3 and crosses zero at 4/3 and 5. Where is f's inflection point?",
+   "command_verb": "predict"
+  },
+  "format": "mcq",
+  "options": [
+   {
+    "id": "A",
+    "label": "At the peak of f'",
+    "is_key": true
+   },
+   {
+    "id": "B",
+    "label": "At a zero of f'",
+    "is_key": false
+   }
+  ],
+  "resolution": "f' turns from rising to falling at its peak, so f'' changes sign there.",
+  "sources": [
+   "BC-CON-05008",
+   "research/units/unit-05-analytical-applications-differentiation.md#5.6 Determining Concavity of Functions over Their Domains"
+  ]
+ },
  "orientation": {
-  "text": "A response lists exactly the inputs where the concavity changes, and gives its reason through the graph the stem supplied, such as f' changing from increasing to decreasing there.",
+  "text": "A response lists where concavity changes, with a reason through the graph given.",
   "sources": [
    "BC-CON-05008",
    "research/units/unit-05-analytical-applications-differentiation.md#5.6 Determining Concavity of Functions over Their Domains"
@@ -124,8 +155,8 @@ BC-QA-05005 is `no_calculator` and one 2-point part of a free-response question,
    "id": "ki-1",
    "ek_id": "BC-EK-FUN-4A6",
    "depth": "core",
-   "text": "An inflection point at c, in the domain, needs f'' to change sign; a zero of f'' alone is only a candidate. On a graph of f', f' turns from rising to falling or back. The reason names f'.",
-   "notation": "point of inflection; sign change of f''",
+   "text": "A point of inflection needs f'' to change sign.",
+   "notation": "inflection point",
    "quote": {
     "text": "The second derivative of a function may be used to locate points of inflection for the graph of the original function.",
     "source": "ced:104"
@@ -142,14 +173,25 @@ BC-QA-05005 is `no_calculator` and one 2-point part of a free-response question,
   {
    "id": "st-1",
    "archetype_id": "BC-QA-05005",
-   "cue": "All points of inflection, from a graph of f' on an open interval?",
-   "method": "First line: where the plotted f' turns.",
-   "rival": "Rival: the zeros of f', or every corner.",
+   "cue": "Inflection points from a graph of f'?",
+   "method": "Where the plotted f' turns.",
+   "rival": "Its zeros, or every corner.",
    "separating_feature": "f' must switch rising and falling.",
    "sources": [
     "BC-QA-05005"
    ],
-   "evidence_tag": "verified"
+   "evidence_tag": "verified",
+   "contrast": {
+    "this": {
+     "text": "f' peaks at x = 2. Where is the inflection point of f?",
+     "archetype_id": "BC-QA-05005"
+    },
+    "not_this": {
+     "text": "f' crosses zero at x = 4. Where is the relative maximum of f?",
+     "why_not": "A relative maximum needs f' to change sign."
+    },
+    "feature": "Inflection: f' turns. Extremum: f' crosses zero."
+   }
   }
  ],
  "worked_examples": [
@@ -178,17 +220,17 @@ BC-QA-05005 is `no_calculator` and one 2-point part of a free-response question,
    "calculator_status": "no_calculator",
    "steps": [
     {
-     "cue": "Inflection from a graph of f': where it turns.",
-     "why": "Slopes 2, 3, 1, -2, -1, -2: one switch, at x = 3."
+     "cue": "Where f' turns.",
+     "why": "One slope switch, at x = 3."
     },
     {
-     "cue": "List exactly those.",
+     "cue": "List those.",
      "why": "Other corners keep the slope's sign.",
      "expr": "FiniteSet(3)",
      "relation": "new"
     },
     {
-     "cue": "Reason through the graph given.",
+     "cue": "Reason through f'.",
      "why": "At x = 3, f' changes from increasing to decreasing.",
      "point_type_id": "BC-PT-99061"
     }
@@ -230,7 +272,8 @@ BC-QA-05005 is `no_calculator` and one 2-point part of a free-response question,
     "BC-ERR-05032"
    ],
    "observed_behavior": "The response lists a candidate point of inflection at an input where the function is not defined.",
-   "scoring_consequence": "The declared list contains an extra input, which costs the answer point."
+   "scoring_consequence": "The declared list contains an extra input, which costs the answer point.",
+   "fix_prompt": true
   },
   {
    "error_id": "BC-ERR-05033",
@@ -252,7 +295,8 @@ BC-QA-05005 is `no_calculator` and one 2-point part of a free-response question,
     "BC-MIS-05021"
    ],
    "observed_behavior": "The response reports every zero of the second derivative, or every zero of the plotted curve, as a point of inflection.",
-   "scoring_consequence": "An extra input in the list costs the answer point outright."
+   "scoring_consequence": "An extra input in the list costs the answer point outright.",
+   "fix_prompt": true
   },
   {
    "error_id": "BC-ERR-05034",
@@ -270,7 +314,8 @@ BC-QA-05005 is `no_calculator` and one 2-point part of a free-response question,
     "BC-ERR-05034"
    ],
    "observed_behavior": "The response keeps an input where the second derivative reaches zero and returns to the same sign.",
-   "scoring_consequence": "The list has an extra entry, so the answer point is lost."
+   "scoring_consequence": "The list has an extra entry, so the answer point is lost.",
+   "fix_prompt": true
   },
   {
    "error_id": "BC-ERR-05035",
@@ -292,7 +337,8 @@ BC-QA-05005 is `no_calculator` and one 2-point part of a free-response question,
     "BC-MIS-05022"
    ],
    "observed_behavior": "The reason says that the second derivative changes sign there, without tying the claim to the plotted object the question supplied.",
-   "scoring_consequence": "The reason point is lost while the answer point stands; the 2025 guideline names this split directly."
+   "scoring_consequence": "The reason point is lost while the answer point stands; the 2025 guideline names this split directly.",
+   "fix_prompt": true
   }
  ],
  "representations": {
@@ -314,11 +360,11 @@ BC-QA-05005 is `no_calculator` and one 2-point part of a free-response question,
  "prerequisite_bridges": [
   {
    "prq_id": "BC-PRQ-05001",
-   "text": "Find where an expression is zero or undefined."
+   "text": "Zeros."
   },
   {
    "prq_id": "BC-PRQ-05003",
-   "text": "List only inputs where f is defined."
+   "text": "Domain."
   }
  ],
  "time": {
@@ -675,8 +721,8 @@ BC-QA-05005 is `no_calculator` and one 2-point part of a free-response question,
   "research/exam/exam-structure.md#Section and part layout"
  ],
  "word_count": {
-  "full": 585,
-  "brief": 448
+  "full": 580,
+  "brief": 443
  },
  "read_minutes": {
   "full": 3.9,

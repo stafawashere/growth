@@ -9,6 +9,10 @@ purpose: Authoring spec for the concept lesson on BC-CON-05005, the first deriva
 
 Concept BC-CON-05005 (skills BC-SKL-05019 to BC-SKL-05023), topic 5.4 of Unit 5, loaded by BC-QA-05003 (primary) and BC-QA-05007, both in family extremum-classification. Unit parents BC-CON-05003 and BC-CON-05004 (docs/lessons/unit-05/README.md, section 1). The written reason, the sign change of f' at the input or its absence, is the object of the lesson.
 
+## Prediction
+
+One multiple choice question on worked example 1's own numbers, asked before the rule is shown: \(f'(x)=3(x-1)^2(x+2)\) with \(f'(1)=0\), and the student picks what f has at x = 1. The key is neither, ex-1's answer; the distractors are a relative minimum and a relative maximum, the two verdicts a zero of f' invites (BC-ERR-05013). The resolution, shown on the key idea screen beside the student's choice, states the sign of f' on both sides and its consequence. No verdict word. Sources: BC-CON-05005 and the topic 5.4 section the key idea cites (ced:102).
+
 ## Orientation
 
 Served text, from BC-CON-05005 `description_plain` and the topic's Assessment behaviour paragraph (research/units/unit-05-analytical-applications-differentiation.md#5.4 Using the First Derivative Test to Determine Relative (Local) Extrema): a response classifies the critical point and gives the sign behaviour of f' there as the reason, in one sentence naming f'. An unsupported classification earns nothing (sg-23:13). No count, no frequency.
@@ -17,12 +21,14 @@ Served text, from BC-CON-05005 `description_plain` and the topic's Assessment be
 
 All five skills map to BC-EK-FUN-4A2 (ced:102), so one core block, both bands.
 
-- ki-1 (core). Paraphrase of the Required mathematical knowledge paragraph (First derivative test; Sign change is the whole content; Location against value): positive to negative is a maximum, negative to positive a minimum, no change neither; "does not change sign" is accepted, "positive before and after" is not (sg-23:13); the extreme value is f(c), a separate evaluation. Anchor quote (17 words) from ced:102. Notation line from the concept record.
+- ki-1 (core). Paraphrase of the Required mathematical knowledge paragraph (First derivative test; Sign change is the whole content; Location against value): positive to negative is a maximum, negative to positive a minimum, no change neither; "does not change sign" is accepted, "positive before and after" is not (sg-23:13); the extreme value is f(c), a separate evaluation. The anchor quote is dropped: with the prediction and the contrast pair added the brief form passed its cap, and the orientation and the strategy fields were shortened first, then the quote as the last resort. Notation line from the concept record.
 
 ## Recognition
 
 - BC-QA-05003 (research/question-analysis/question-archetypes.md#BC-QA-05003 Relative extremum classified from the behaviour of the first derivative): `typical_wording` "does the function have a relative minimum, a relative maximum, or neither at the named input, and give a reason for the answer"; `common_givens` a graph of the derivative made of segments and arcs, or a derivative formula, a named input; `asked_to_produce` the classification, a reason naming the sign behaviour of the derivative. The signal: "relative" and "neither" with a named input. FRQ appearances BC-FRQ-2013-Q4-A, BC-FRQ-2015-Q4-C, BC-FRQ-2015-Q5-B, BC-FRQ-2023-Q4-A.
 - BC-QA-05007 (research/question-analysis/question-archetypes.md#BC-QA-05007 Critical point located and classified for a function given indirectly): "the input at which the modelled quantity has a critical point, and determine whether it is ... a relative minimum, a relative maximum, or neither", given a differential equation with a sign fact or an accumulation function. FRQ appearances BC-FRQ-2021-Q3-B, BC-FRQ-2015-Q5-C, BC-FRQ-2024-Q3-B, BC-FRQ-2026-Q2-C.
+
+The near miss served in the contrast pair of st-1 comes from the sibling concept BC-CON-05006 and sg-25:5: the same derivative formula with the stem asking for the absolute maximum value on a closed interval, which the candidates test answers and a local sign argument does not. The pair differs in the one thing the feature names, relative at an input against absolute on an interval.
 
 What says "not this concept": "absolute" on a closed interval asks for the candidates test (BC-CON-05006), and a local test does not earn that justification (sg-25:5).
 
@@ -80,13 +86,14 @@ BC-QA-05003 has `calculator_status` either, so the lesson takes Section I Part A
 
 ## Band plan
 
-- Low (full): orientation, ki-1, st-1, st-2, ex-1 with its scoring line, the four error blocks, chk-1 to chk-3. 592 words, 4.0 minutes (cap 900 and 6).
-- Mid (brief): orientation, ki-1, st-1, ex-1 with its scoring line, err-BC-ERR-05013, err-BC-ERR-05018, chk-1, chk-2. 410 words, 2.8 minutes (cap 450 and 3).
+- Low (full), in served order: prediction, orientation, ki-1, st-1 with its contrast pair, st-2, ex-1 with its scoring line, chk-1, the four error blocks, chk-2, chk-3. 629 words, 4.2 minutes (cap 900 and 6). There is one worked example, so nothing is faded.
+- Mid (brief): prediction, orientation, ki-1, st-1 with its contrast pair, ex-1 with its scoring line, chk-1, err-BC-ERR-05013, err-BC-ERR-05018, chk-2. 450 words, 3.0 minutes (cap 450 and 3).
 - Refresher: ki-1, err-BC-ERR-05013, err-BC-ERR-05018, err-BC-ERR-05020, err-BC-ERR-05021, ex-1.
 
 ## Sources
 
 - BC-CON-05005; BC-SKL-05019 to BC-SKL-05023; BC-EK-FUN-4A2; ced:102
+- BC-CON-05006 (the sibling concept of the not-this stem in the contrast pair)
 - BC-QA-05003, BC-QA-05007; BC-FRQ-2013-Q4-A, BC-FRQ-2015-Q4-C, BC-FRQ-2015-Q5-B, BC-FRQ-2023-Q4-A, BC-FRQ-2021-Q3-B, BC-FRQ-2015-Q5-C, BC-FRQ-2024-Q3-B, BC-FRQ-2026-Q2-C
 - BC-PT-99012, BC-PT-99013; sg-23:13, sg-25:5, sg-25:17
 - BC-ERR-05013, BC-ERR-05018, BC-ERR-05020, BC-ERR-05021, BC-ERR-05022, BC-ERR-05023, BC-ERR-99001, BC-ERR-05024; BC-MIS-05008, BC-MIS-05014
@@ -115,8 +122,38 @@ BC-QA-05003 has `calculator_status` either, so the lesson takes Section I Part A
   "BC-SKL-05022",
   "BC-SKL-05023"
  ],
+ "prediction": {
+  "id": "pr-1",
+  "stem": {
+   "text": "Predict: f'(x) = 3(x - 1)^2(x + 2) and f'(1) = 0. What does f have at x = 1?",
+   "command_verb": "predict"
+  },
+  "format": "mcq",
+  "options": [
+   {
+    "id": "A",
+    "label": "A relative minimum",
+    "is_key": false
+   },
+   {
+    "id": "B",
+    "label": "A relative maximum",
+    "is_key": false
+   },
+   {
+    "id": "C",
+    "label": "Neither",
+    "is_key": true
+   }
+  ],
+  "resolution": "Near 1, (x - 1)^2 and x + 2 are positive, so f' > 0 on both sides. f' does not change sign, so neither.",
+  "sources": [
+   "BC-CON-05005",
+   "ced:102"
+  ]
+ },
  "orientation": {
-  "text": "A response classifies the critical point and gives, as its reason, how the sign of f' behaves there, in one sentence that names f'. A classification with no reason earns nothing.",
+  "text": "A response classifies the critical point and gives, as its reason, how the sign of f' behaves there.",
   "sources": [
    "BC-CON-05005",
    "research/units/unit-05-analytical-applications-differentiation.md#5.4 Using the First Derivative Test to Determine Relative (Local) Extrema",
@@ -128,12 +165,9 @@ BC-QA-05003 has `calculator_status` either, so the lesson takes Section I Part A
    "id": "ki-1",
    "ek_id": "BC-EK-FUN-4A2",
    "depth": "core",
-   "text": "At a critical point c: f' from positive to negative is a relative maximum, negative to positive a relative minimum, no sign change neither. Write \"f' does not change sign\", not \"positive before and after\". The extreme value is f(c), found separately.",
+   "text": "At a critical point c: f' from positive to negative is a relative maximum, negative to positive a relative minimum, no sign change neither. Write \"f' does not change sign\".",
    "notation": "sign change of f'",
-   "quote": {
-    "text": "The first derivative of a function can determine the location of relative (local) extrema of the function.",
-    "source": "ced:102"
-   },
+   "quote": null,
    "sources": [
     "BC-EK-FUN-4A2",
     "ced:102",
@@ -146,21 +180,32 @@ BC-QA-05003 has `calculator_status` either, so the lesson takes Section I Part A
   {
    "id": "st-1",
    "archetype_id": "BC-QA-05003",
-   "cue": "Maximum, minimum or neither at a named input, from f' as a graph or formula?",
-   "method": "First line: locate the input on f'.",
-   "rival": "Rival: the second derivative test, slope of f' undiscussed.",
+   "cue": "Maximum, minimum or neither at a named input?",
+   "method": "Locate the input on f'.",
+   "rival": "The second derivative test.",
    "separating_feature": "f' is given; read its sign each side.",
    "sources": [
     "BC-QA-05003"
    ],
-   "evidence_tag": "verified"
+   "evidence_tag": "verified",
+   "contrast": {
+    "this": {
+     "text": "f'(x) = 2(x + 3)^2(x - 4). Relative minimum, maximum or neither at x = 4?",
+     "archetype_id": "BC-QA-05003"
+    },
+    "not_this": {
+     "text": "f'(x) = 2(x + 3)^2(x - 4). Find the absolute maximum value of f on [-5, 6].",
+     "why_not": "It asks for candidate values."
+    },
+    "feature": "Relative at an input, or absolute."
+   }
   },
   {
    "id": "st-2",
    "archetype_id": "BC-QA-05007",
    "cue": "Critical point of a quantity given by a differential equation or an accumulation function.",
-   "method": "First line: the derivative from the relation.",
-   "rival": "Rival: solving the differential equation first.",
+   "method": "The derivative from the relation.",
+   "rival": "Solving the differential equation first.",
    "separating_feature": "The relation already is the derivative.",
    "sources": [
     "BC-QA-05007"
@@ -257,7 +302,8 @@ BC-QA-05003 has `calculator_status` either, so the lesson takes Section I Part A
     "BC-MIS-05008"
    ],
    "observed_behavior": "The response reports a relative maximum or minimum at an input where the derivative is zero but keeps its sign on both sides.",
-   "scoring_consequence": "The single answer with reason point is lost."
+   "scoring_consequence": "The single answer with reason point is lost.",
+   "fix_prompt": true
   },
   {
    "error_id": "BC-ERR-05018",
@@ -275,7 +321,8 @@ BC-QA-05003 has `calculator_status` either, so the lesson takes Section I Part A
     "BC-ERR-05018"
    ],
    "observed_behavior": "The reason says that the function or the graph changes sign, without naming which object is meant.",
-   "scoring_consequence": "The reason point is lost; the 2025 guideline names an ambiguous referent as disqualifying."
+   "scoring_consequence": "The reason point is lost; the 2025 guideline names an ambiguous referent as disqualifying.",
+   "fix_prompt": true
   },
   {
    "error_id": "BC-ERR-05020",
@@ -293,7 +340,8 @@ BC-QA-05003 has `calculator_status` either, so the lesson takes Section I Part A
     "BC-ERR-05020"
    ],
    "observed_behavior": "The response tests inputs that are neither critical points nor endpoints when hunting for a relative extremum.",
-   "scoring_consequence": "Time is spent on inputs that cannot be extrema, and in a candidates argument extra inputs cost the justification point."
+   "scoring_consequence": "Time is spent on inputs that cannot be extrema, and in a candidates argument extra inputs cost the justification point.",
+   "fix_prompt": true
   },
   {
    "error_id": "BC-ERR-05021",
@@ -315,7 +363,8 @@ BC-QA-05003 has `calculator_status` either, so the lesson takes Section I Part A
     "BC-MIS-05014"
    ],
    "observed_behavior": "The response reports a relative maximum where the derivative changes from negative to positive, or the reverse.",
-   "scoring_consequence": "The answer with reason point is lost."
+   "scoring_consequence": "The answer with reason point is lost.",
+   "fix_prompt": true
   }
  ],
  "representations": null,
@@ -613,12 +662,12 @@ BC-QA-05003 has `calculator_status` either, so the lesson takes Section I Part A
   "research/exam/exam-structure.md#Section and part layout"
  ],
  "word_count": {
-  "full": 592,
-  "brief": 410
+  "full": 629,
+  "brief": 450
  },
  "read_minutes": {
-  "full": 4.0,
-  "brief": 2.8
+  "full": 4.2,
+  "brief": 3.0
  }
 }
 ```

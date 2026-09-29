@@ -3,20 +3,70 @@
  "version": 1,
  "kind": "concept",
  "target_id": "BC-CON-05006",
- "status": "signed_off",
+ "status": "draft",
  "snapshot_digest": "a6a8ec9d3f59ab8f712e33d30cc22fc64bf2c478fbe7312e3e3118d319c6a42f",
  "source_digest": "11d5de174e8000ae571dc78e31cd30ac2a0ea0df94ee46b73183af4b74d9f7fd",
  "read_minutes": {
-  "full": 4.4,
-  "brief": 2.8
+  "full": 4.6,
+  "brief": 3.0
  },
  "word_count": {
-  "full": 536,
-  "brief": 365
+  "full": 576,
+  "brief": 405
  },
  "sections": [
   {
    "id": "LSN-CON-05006#s1",
+   "type": "prediction",
+   "bands": [
+    "low",
+    "mid"
+   ],
+   "skills": [
+    "BC-SKL-05024",
+    "BC-SKL-05025",
+    "BC-SKL-05026",
+    "BC-SKL-05027",
+    "BC-SKL-05028",
+    "BC-SKL-05029"
+   ],
+   "sources": [
+    "BC-CON-05006",
+    "research/units/unit-05-analytical-applications-differentiation.md#5.5 Using the Candidates Test to Determine Absolute (Global) Extrema"
+   ],
+   "evidence_tag": "inferred",
+   "stem": {
+    "text": "Predict. f(x) = x^3 - 3x has a relative maximum at x = -1. Where is its absolute maximum on [-2, 3]?",
+    "command_verb": "predict"
+   },
+   "format": "mcq",
+   "options": [
+    {
+     "id": "A",
+     "label": "At the relative maximum",
+     "is_key": false
+    },
+    {
+     "id": "B",
+     "label": "At the endpoint x = 3",
+     "is_key": true
+    },
+    {
+     "id": "C",
+     "label": "At the other critical point",
+     "is_key": false
+    }
+   ],
+   "resolution": {
+    "text": "The values at -2, -1, 1 and 3 are -2, 2, -2 and 18. The largest, 18, is at the endpoint x = 3."
+   },
+   "delivery": {
+    "mode": "text",
+    "reason": "rule 6"
+   }
+  },
+  {
+   "id": "LSN-CON-05006#s2",
    "type": "orientation",
    "bands": [
     "low",
@@ -35,7 +85,7 @@
     "research/units/unit-05-analytical-applications-differentiation.md#5.5 Using the Candidates Test to Determine Absolute (Global) Extrema"
    ],
    "evidence_tag": "inferred",
-   "text": "A response writes f'(x) = 0, lists the critical points inside the interval and both endpoints, evaluates f at each and nothing else, and reports the extreme value.",
+   "text": "A response writes f'(x) = 0, evaluates f at every candidate, and reports the extreme value.",
    "delivery": {
     "mode": "text",
     "reason": "rule 5: a statement of what a response shows; unit README delivery map",
@@ -45,7 +95,7 @@
    }
   },
   {
-   "id": "LSN-CON-05006#s2",
+   "id": "LSN-CON-05006#s3",
    "type": "key_ideas",
    "bands": [
     "low",
@@ -69,7 +119,7 @@
    "evidence_tag": "verified",
    "ek_id": "BC-EK-FUN-4A3",
    "depth": "core",
-   "text": "On [a, b] the candidates are the interior critical points and both endpoints. Evaluate f at every one and at no other input; one wrong value or a missing endpoint loses the justification. Report the value, not only where it occurs.",
+   "text": "Evaluate f at every candidate and nowhere else. Report the value.",
    "notation": "candidate list; absolute extreme value",
    "quote": {
     "text": "Absolute (global) extrema of a function on a closed interval can only occur at critical points or at endpoints.",
@@ -118,7 +168,7 @@
    }
   },
   {
-   "id": "LSN-CON-05006#s3",
+   "id": "LSN-CON-05006#s4",
    "type": "strategy",
    "bands": [
     "low",
@@ -138,13 +188,24 @@
    ],
    "evidence_tag": "verified",
    "archetype_id": "BC-QA-05006",
-   "cue": "Absolute maximum or minimum value on a closed interval, justified?",
-   "method": "First line: f'(x) = 0, as an equation.",
-   "rival": "Rival: a sign change at one point, a local test.",
-   "separating_feature": "Absolute makes every candidate, endpoints included, a competitor."
+   "cue": "Absolute extreme value on a closed interval?",
+   "method": "f'(x) = 0, as an equation.",
+   "rival": "A local test at one point.",
+   "separating_feature": "Absolute makes every candidate compete.",
+   "contrast": {
+    "this": {
+     "text": "f(x) = x^3 - 12x. Find the absolute maximum value on [-4, 5]. Justify.",
+     "archetype_id": "BC-QA-05006"
+    },
+    "not_this": {
+     "text": "f(x) = x^3 - 12x. Justify a relative minimum at x = 2.",
+     "why_not": "Relative at one input asks for a derivative test."
+    },
+    "feature": "Absolute on a closed interval."
+   }
   },
   {
-   "id": "LSN-CON-05006#s4",
+   "id": "LSN-CON-05006#s5",
    "type": "worked_example",
    "bands": [
     "low",
@@ -182,7 +243,7 @@
    "calculator_status": "no_calculator",
    "steps": [
     {
-     "cue": "Absolute on [-2, 3]: candidates.",
+     "cue": "Absolute on [-2, 3].",
      "why": "Write f'(x) = 0 as an equation.",
      "expression": [
       "Equal",
@@ -215,7 +276,7 @@
      "variable": "x"
     },
     {
-     "cue": "Add both endpoints.",
+     "cue": "Add the endpoints.",
      "why": "Endpoints compete.",
      "expression": [
       "Set",
@@ -227,7 +288,7 @@
      "relation": "new"
     },
     {
-     "cue": "Evaluate f at each.",
+     "cue": "Evaluate f.",
      "why": "f at -2, -1, 1, 3.",
      "expression": [
       "Tuple",
@@ -239,8 +300,8 @@
      "relation": "new"
     },
     {
-     "cue": "Compare all four.",
-     "why": "18 is the largest candidate value, so the absolute maximum value is 18.",
+     "cue": "Compare.",
+     "why": "18 is largest, so the absolute maximum value is 18.",
      "expression": 18,
      "point_type_id": "BC-PT-99011",
      "relation": "new"
@@ -257,7 +318,7 @@
    }
   },
   {
-   "id": "LSN-CON-05006#s5",
+   "id": "LSN-CON-05006#s6",
    "type": "worked_example",
    "bands": [
     "low"
@@ -359,6 +420,7 @@
     "form": "numeric",
     "mathjson": 4
    },
+   "fade_from": 4,
    "delivery": {
     "mode": "step_reveal",
     "reason": "rule 1",
@@ -366,7 +428,7 @@
    }
   },
   {
-   "id": "LSN-CON-05006#s6",
+   "id": "LSN-CON-05006#s7",
    "type": "what_a_reader_scores",
    "bands": [
     "low",
@@ -384,7 +446,7 @@
     "BC-PT-99011"
    ],
    "evidence_tag": "verified",
-   "example_id": "LSN-CON-05006#s4",
+   "example_id": "LSN-CON-05006#s5",
    "lines": [
     {
      "point_type_id": "BC-PT-99011",
@@ -419,6 +481,7 @@
     "expression": "zeros_and_undefined_points_of_f_prime"
    },
    "relation": "distinct",
+   "fix_prompt": true,
    "possible_reason": {
     "misconception_id": "BC-MIS-05009",
     "text": "does not look for corners, cusps, or vertical tangents"
@@ -455,6 +518,7 @@
     "expression": 4
    },
    "relation": "distinct",
+   "fix_prompt": true,
    "delivery": {
     "mode": "step_reveal",
     "reason": "rule 1",
@@ -489,6 +553,7 @@
     "expression": 18
    },
    "relation": "distinct",
+   "fix_prompt": true,
    "possible_reason": {
     "misconception_id": "BC-MIS-05016",
     "text": "builds the candidate list from the interior critical points and does not regard the endpoints as competitors"
@@ -525,6 +590,7 @@
     "expression": 18
    },
    "relation": "distinct",
+   "fix_prompt": true,
    "delivery": {
     "mode": "step_reveal",
     "reason": "rule 1",
@@ -532,7 +598,7 @@
    }
   },
   {
-   "id": "LSN-CON-05006#s7",
+   "id": "LSN-CON-05006#s8",
    "type": "representations",
    "bands": [
     "low"
@@ -636,7 +702,7 @@
    ],
    "evidence_tag": "inferred",
    "prerequisite_id": "BC-PRQ-05004",
-   "text": "[a, b] includes both endpoints as candidates."
+   "text": "[a, b] includes both endpoints."
   },
   {
    "id": "LSN-CON-05006#prq-BC-PRQ-06005",
@@ -653,7 +719,7 @@
    ],
    "evidence_tag": "inferred",
    "prerequisite_id": "BC-PRQ-06005",
-   "text": "f(3) is a value of f, not of f'."
+   "text": "f(3) is a value of f."
   }
  ],
  "checks": [
@@ -678,7 +744,7 @@
     "coefficient": 1,
     "family": "cubic"
    },
-   "completes": "LSN-CON-05006#s4",
+   "completes": "LSN-CON-05006#s5",
    "stem": {
     "text": "f(-2) = -2, f(-1) = 2, f(1) = -2, f(3) = 18. Absolute maximum value on [-2, 3]?",
     "command_verb": "find"
@@ -875,19 +941,19 @@
   }
  ],
  "refresher": [
-  "LSN-CON-05006#s2",
+  "LSN-CON-05006#s3",
   "LSN-CON-05006#err-BC-ERR-05011",
   "LSN-CON-05006#err-BC-ERR-05025",
   "LSN-CON-05006#err-BC-ERR-05026",
   "LSN-CON-05006#err-BC-ERR-05027",
-  "LSN-CON-05006#s4"
+  "LSN-CON-05006#s5"
  ],
  "provenance": {
   "author": "tools/lesson_transcribe.py",
-  "prompt_version": "generator/lesson_v1",
+  "prompt_version": "generator/lesson_v2",
   "design_path": "docs/lessons/unit-05/LSN-CON-05006.md",
-  "signed_off_by": "claude-opus-5-5",
-  "signed_off_at": "2026-09-29",
+  "signed_off_by": null,
+  "signed_off_at": null,
   "not_human": true
  }
 }

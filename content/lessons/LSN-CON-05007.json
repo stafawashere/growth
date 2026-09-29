@@ -3,20 +3,61 @@
  "version": 1,
  "kind": "concept",
  "target_id": "BC-CON-05007",
- "status": "signed_off",
+ "status": "draft",
  "snapshot_digest": "a6a8ec9d3f59ab8f712e33d30cc22fc64bf2c478fbe7312e3e3118d319c6a42f",
  "source_digest": "30045372793f7081c8abe7157a530cba7c051ac0c06b42b1d785de72fb398aa6",
  "read_minutes": {
-  "full": 3.7,
+  "full": 3.8,
   "brief": 3.0
  },
  "word_count": {
-  "full": 470,
-  "brief": 378
+  "full": 494,
+  "brief": 402
  },
  "sections": [
   {
    "id": "LSN-CON-05007#s1",
+   "type": "prediction",
+   "bands": [
+    "low",
+    "mid"
+   ],
+   "skills": [
+    "BC-SKL-05030",
+    "BC-SKL-05031"
+   ],
+   "sources": [
+    "BC-CON-05007",
+    "research/units/unit-05-analytical-applications-differentiation.md#5.6 Determining Concavity of Functions over Their Domains"
+   ],
+   "evidence_tag": "inferred",
+   "stem": {
+    "text": "Predict. f' falls from 3 to 1 on (2, 3). Is f concave up or concave down there?",
+    "command_verb": "predict"
+   },
+   "format": "mcq",
+   "options": [
+    {
+     "id": "A",
+     "label": "Down, since f' falls",
+     "is_key": true
+    },
+    {
+     "id": "B",
+     "label": "Up, since f' is positive",
+     "is_key": false
+    }
+   ],
+   "resolution": {
+    "text": "f' falls from 3 to 1 on (2, 3), so f is concave down there. Concavity follows f' falling, not its sign."
+   },
+   "delivery": {
+    "mode": "text",
+    "reason": "rule 6"
+   }
+  },
+  {
+   "id": "LSN-CON-05007#s2",
    "type": "orientation",
    "bands": [
     "low",
@@ -31,7 +72,7 @@
     "research/units/unit-05-analytical-applications-differentiation.md#5.6 Determining Concavity of Functions over Their Domains"
    ],
    "evidence_tag": "inferred",
-   "text": "A response reports the open intervals where f' rises (concave up) or falls (concave down), and gives as its reason how f' behaves there, not its sign.",
+   "text": "A response reports open intervals where f' rises or falls, with that as the reason.",
    "delivery": {
     "mode": "figure",
     "reason": "rule 3: BC-REP-02 on BC-SKL-05031; unit README delivery map",
@@ -74,7 +115,7 @@
    }
   },
   {
-   "id": "LSN-CON-05007#s2",
+   "id": "LSN-CON-05007#s3",
    "type": "key_ideas",
    "bands": [
     "low",
@@ -92,8 +133,8 @@
    "evidence_tag": "verified",
    "ek_id": "BC-EK-FUN-4A4",
    "depth": "core",
-   "text": "Concave up where f' increases, concave down where f' decreases. The reason discusses f' rising or falling, or its slopes; the sign of f' answers a different question.",
-   "notation": "concave up; concave down",
+   "text": "The reason names f' rising or falling, not its sign.",
+   "notation": "concavity",
    "quote": {
     "text": "The graph of a function is concave up (down) on an open interval if the function's derivative is increasing (decreasing) on that interval.",
     "source": "ced:104"
@@ -151,7 +192,7 @@
    }
   },
   {
-   "id": "LSN-CON-05007#s3",
+   "id": "LSN-CON-05007#s4",
    "type": "key_ideas",
    "bands": [
     "low",
@@ -168,7 +209,7 @@
    "evidence_tag": "inferred",
    "ek_id": "BC-EK-FUN-4A5",
    "depth": "core",
-   "text": "From a formula: f'' > 0 means f' increases, so concave up; f'' < 0, concave down.",
+   "text": "From f'': positive is up, negative down.",
    "notation": "f''",
    "delivery": {
     "mode": "text",
@@ -179,7 +220,7 @@
    }
   },
   {
-   "id": "LSN-CON-05007#s4",
+   "id": "LSN-CON-05007#s5",
    "type": "strategy",
    "bands": [
     "low",
@@ -194,13 +235,24 @@
    ],
    "evidence_tag": "verified",
    "archetype_id": "BC-QA-05004",
-   "cue": "Concave up or down on what intervals, from a graph of f'?",
-   "method": "First line: where f' decreases (or increases).",
-   "rival": "Rival: where f' is negative (or positive).",
-   "separating_feature": "Concave asks whether f' rises, not its sign."
+   "cue": "Concave, from a graph of f'?",
+   "method": "Where f' decreases.",
+   "rival": "Where f' is negative.",
+   "separating_feature": "Concave asks whether f' rises.",
+   "contrast": {
+    "this": {
+     "text": "f' joins (0, 1), (2, 3), (4, -1), (6, 2). Where is f concave up?",
+     "archetype_id": "BC-QA-05004"
+    },
+    "not_this": {
+     "text": "f' joins (0, 1), (2, 3), (4, -1), (6, 2). Where is f increasing?",
+     "why_not": "Increasing asks for the sign of f'."
+    },
+    "feature": "Concave: f' rises. Increasing: f' is positive."
+   }
   },
   {
-   "id": "LSN-CON-05007#s5",
+   "id": "LSN-CON-05007#s6",
    "type": "worked_example",
    "bands": [
     "low",
@@ -234,11 +286,11 @@
    "calculator_status": "no_calculator",
    "steps": [
     {
-     "cue": "Concave down: where f' decreases.",
-     "why": "f' falls only from x = 2 to x = 4."
+     "cue": "Concave down: f' decreases.",
+     "why": "f' falls from x = 2 to 4."
     },
     {
-     "cue": "Write it open.",
+     "cue": "Open.",
      "why": "Endpoints optional.",
      "expression": [
       "Interval",
@@ -254,8 +306,8 @@
      "relation": "new"
     },
     {
-     "cue": "Give a reason.",
-     "why": "f is concave down on (2, 4) because f' is decreasing there.",
+     "cue": "Reason.",
+     "why": "f is concave down on (2, 4) because f' is decreasing.",
      "point_type_id": "BC-PT-99063"
     }
    ],
@@ -280,7 +332,7 @@
    }
   },
   {
-   "id": "LSN-CON-05007#s6",
+   "id": "LSN-CON-05007#s7",
    "type": "what_a_reader_scores",
    "bands": [
     "low",
@@ -294,7 +346,7 @@
     "BC-PT-99063"
    ],
    "evidence_tag": "verified",
-   "example_id": "LSN-CON-05007#s5",
+   "example_id": "LSN-CON-05007#s6",
    "lines": [
     {
      "point_type_id": "BC-PT-99063",
@@ -329,6 +381,7 @@
     "expression": "f_prime_decreasing"
    },
    "relation": "distinct",
+   "fix_prompt": true,
    "possible_reason": {
     "misconception_id": "BC-MIS-05011",
     "text": "reading features of whatever curve is drawn"
@@ -366,6 +419,7 @@
     "expression": "f_concave_up_on_4_6"
    },
    "relation": "distinct",
+   "fix_prompt": true,
    "possible_reason": {
     "misconception_id": "BC-MIS-05020",
     "text": "does not distinguish rising from bending upward"
@@ -422,6 +476,7 @@
     ]
    },
    "relation": "distinct",
+   "fix_prompt": true,
    "delivery": {
     "mode": "step_reveal",
     "reason": "rule 1",
@@ -497,6 +552,7 @@
     ]
    },
    "relation": "distinct",
+   "fix_prompt": true,
    "possible_reason": {
     "misconception_id": "BC-MIS-05020",
     "text": "the sign and the direction of the derivative are used interchangeably"
@@ -522,7 +578,7 @@
    ],
    "evidence_tag": "inferred",
    "prerequisite_id": "BC-PRQ-05001",
-   "text": "Solve for zeros of an expression."
+   "text": "Zeros."
   },
   {
    "id": "LSN-CON-05007#prq-BC-PRQ-05002",
@@ -539,7 +595,7 @@
    ],
    "evidence_tag": "inferred",
    "prerequisite_id": "BC-PRQ-05002",
-   "text": "Sign of an expression on each piece."
+   "text": "Signs."
   },
   {
    "id": "LSN-CON-05007#prq-BC-PRQ-05006",
@@ -556,7 +612,7 @@
    ],
    "evidence_tag": "inferred",
    "prerequisite_id": "BC-PRQ-05006",
-   "text": "Read the label: the curve is f'."
+   "text": "The curve is f'."
   }
  ],
  "checks": [
@@ -581,7 +637,7 @@
     ],
     "asked": "down"
    },
-   "completes": "LSN-CON-05007#s5",
+   "completes": "LSN-CON-05007#s6",
    "stem": {
     "text": "The ex-1 f' falls only from x = 2 to x = 4. Where is f concave down?",
     "command_verb": "find"
@@ -856,20 +912,20 @@
   }
  ],
  "refresher": [
-  "LSN-CON-05007#s2",
   "LSN-CON-05007#s3",
+  "LSN-CON-05007#s4",
   "LSN-CON-05007#err-BC-ERR-05015",
   "LSN-CON-05007#err-BC-ERR-05016",
   "LSN-CON-05007#err-BC-ERR-05030",
   "LSN-CON-05007#err-BC-ERR-05031",
-  "LSN-CON-05007#s5"
+  "LSN-CON-05007#s6"
  ],
  "provenance": {
   "author": "tools/lesson_transcribe.py",
-  "prompt_version": "generator/lesson_v1",
+  "prompt_version": "generator/lesson_v2",
   "design_path": "docs/lessons/unit-05/LSN-CON-05007.md",
-  "signed_off_by": "claude-opus-5-5",
-  "signed_off_at": "2026-09-29",
+  "signed_off_by": null,
+  "signed_off_at": null,
   "not_human": true
  }
 }

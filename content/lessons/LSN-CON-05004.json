@@ -3,7 +3,7 @@
  "version": 1,
  "kind": "concept",
  "target_id": "BC-CON-05004",
- "status": "signed_off",
+ "status": "draft",
  "snapshot_digest": "a6a8ec9d3f59ab8f712e33d30cc22fc64bf2c478fbe7312e3e3118d319c6a42f",
  "source_digest": "8421ac506a6bfec3799d735824950e4f0b76e4c897198e7912241266317ef1c9",
  "read_minutes": {
@@ -11,12 +11,61 @@
   "brief": 3.0
  },
  "word_count": {
-  "full": 511,
-  "brief": 395
+  "full": 524,
+  "brief": 408
  },
  "sections": [
   {
    "id": "LSN-CON-05004#s1",
+   "type": "prediction",
+   "bands": [
+    "low",
+    "mid"
+   ],
+   "skills": [
+    "BC-SKL-05014",
+    "BC-SKL-05015",
+    "BC-SKL-05016",
+    "BC-SKL-05017",
+    "BC-SKL-05018"
+   ],
+   "sources": [
+    "BC-CON-05004",
+    "ced:101"
+   ],
+   "evidence_tag": "inferred",
+   "stem": {
+    "text": "Predict: f'(x) = 2(x + 1)(x - 3)/(x - 1). Where is f increasing?",
+    "command_verb": "predict"
+   },
+   "format": "mcq",
+   "options": [
+    {
+     "id": "A",
+     "label": "(-1, 3)",
+     "is_key": false
+    },
+    {
+     "id": "B",
+     "label": "(-1, 1) and (3, oo)",
+     "is_key": true
+    },
+    {
+     "id": "C",
+     "label": "(-oo, -1)",
+     "is_key": false
+    }
+   ],
+   "resolution": {
+    "text": "f increases where f' > 0: on (-1, 1) and (3, oo)."
+   },
+   "delivery": {
+    "mode": "text",
+    "reason": "rule 6"
+   }
+  },
+  {
+   "id": "LSN-CON-05004#s2",
    "type": "orientation",
    "bands": [
     "low",
@@ -34,7 +83,7 @@
     "research/units/unit-05-analytical-applications-differentiation.md#5.3 Determining Intervals on Which a Function is Increasing or Decreasing"
    ],
    "evidence_tag": "inferred",
-   "text": "A response splits at zeros of f' and where f' or f is undefined, reports open intervals, and cites the sign of f'.",
+   "text": "A response partitions, then cites the sign of f'.",
    "delivery": {
     "mode": "figure",
     "reason": "rule 3: BC-REP-02 on BC-SKL-05015; unit README delivery map",
@@ -78,7 +127,7 @@
    }
   },
   {
-   "id": "LSN-CON-05004#s2",
+   "id": "LSN-CON-05004#s3",
    "type": "key_ideas",
    "bands": [
     "low",
@@ -97,15 +146,11 @@
     "sg-25:17",
     "research/units/unit-05-analytical-applications-differentiation.md#5.3 Determining Intervals on Which a Function is Increasing or Decreasing"
    ],
-   "evidence_tag": "verified",
+   "evidence_tag": "inferred",
    "ek_id": "BC-EK-FUN-4A1",
    "depth": "core",
-   "text": "f' > 0 on an open interval means f increases there; f' < 0 means it decreases. Intervals end at zeros of f' and where f' or f is undefined. The reason cites the sign of f'.",
+   "text": "f' > 0: f increases. f' < 0: f decreases. Intervals end at zeros of f' and undefined points.",
    "notation": "f' > 0; f' < 0",
-   "quote": {
-    "text": "including intervals where the function is increasing or decreasing.",
-    "source": "ced:101"
-   },
    "delivery": {
     "mode": "interactive",
     "reason": "rule 3 promoted: BC-REP-02 on BC-SKL-05015; BC-QA-05008 difficulty_variables whether the derivative changes sign at an undefined point, and the stem asks for a reading of intervals",
@@ -160,7 +205,7 @@
    }
   },
   {
-   "id": "LSN-CON-05004#s3",
+   "id": "LSN-CON-05004#s4",
    "type": "strategy",
    "bands": [
     "low",
@@ -178,13 +223,24 @@
    ],
    "evidence_tag": "verified",
    "archetype_id": "BC-QA-05008",
-   "cue": "Intervals of increase, from f or f'?",
-   "method": "First line: zeros of f' and where f' or f is undefined.",
-   "rival": "Rival: one test input, generalised.",
-   "separating_feature": "Every partition point, including a domain gap, ends an interval."
+   "cue": "Where is f increasing?",
+   "method": "Zeros of f' and undefined points.",
+   "rival": "One test input.",
+   "separating_feature": "Each partition point ends one.",
+   "contrast": {
+    "this": {
+     "text": "f'(x) = (x + 3)/(x - 2). Where is f increasing?",
+     "archetype_id": "BC-QA-05008"
+    },
+    "not_this": {
+     "text": "f'(x) = (x + 3)/(x - 2). Where is f concave up?",
+     "why_not": "It asks where f' rises."
+    },
+    "feature": "Sign of f' or direction of f'."
+   }
   },
   {
-   "id": "LSN-CON-05004#s4",
+   "id": "LSN-CON-05004#s5",
    "type": "worked_example",
    "bands": [
     "low",
@@ -333,7 +389,7 @@
    }
   },
   {
-   "id": "LSN-CON-05004#s5",
+   "id": "LSN-CON-05004#s6",
    "type": "what_a_reader_scores",
    "bands": [
     "low",
@@ -350,7 +406,7 @@
     "BC-PT-99005"
    ],
    "evidence_tag": "verified",
-   "example_id": "LSN-CON-05004#s4",
+   "example_id": "LSN-CON-05004#s5",
    "lines": [
     {
      "point_type_id": "BC-PT-99005",
@@ -443,6 +499,7 @@
     ]
    },
    "relation": "distinct",
+   "fix_prompt": true,
    "delivery": {
     "mode": "step_reveal",
     "reason": "rule 1",
@@ -476,6 +533,7 @@
     "expression": "plotted_curve_above_axis"
    },
    "relation": "distinct",
+   "fix_prompt": true,
    "possible_reason": {
     "misconception_id": "BC-MIS-05011",
     "text": "answers questions about the function by reading features of whatever curve is drawn"
@@ -513,6 +571,7 @@
     "expression": "f_prime_positive"
    },
    "relation": "distinct",
+   "fix_prompt": true,
    "possible_reason": {
     "misconception_id": "BC-MIS-05020",
     "text": "the sign and the direction of the derivative are used interchangeably"
@@ -598,6 +657,7 @@
     ]
    },
    "relation": "distinct",
+   "fix_prompt": true,
    "possible_reason": {
     "misconception_id": "BC-MIS-05012",
     "text": "reports one interval of increase or concavity spanning an input where the function does not exist"
@@ -623,7 +683,7 @@
    ],
    "evidence_tag": "inferred",
    "prerequisite_id": "BC-PRQ-05001",
-   "text": "Zero each factor and the denominator."
+   "text": "Zero factors."
   },
   {
    "id": "LSN-CON-05004#prq-BC-PRQ-05002",
@@ -640,7 +700,7 @@
    ],
    "evidence_tag": "inferred",
    "prerequisite_id": "BC-PRQ-05002",
-   "text": "One test value fixes each piece's sign."
+   "text": "Test a value."
   },
   {
    "id": "LSN-CON-05004#prq-BC-PRQ-05003",
@@ -658,7 +718,7 @@
    ],
    "evidence_tag": "inferred",
    "prerequisite_id": "BC-PRQ-05003",
-   "text": "No interval crosses an undefined input."
+   "text": "Skip gaps."
   },
   {
    "id": "LSN-CON-05004#prq-BC-PRQ-05006",
@@ -675,7 +735,7 @@
    ],
    "evidence_tag": "inferred",
    "prerequisite_id": "BC-PRQ-05006",
-   "text": "Axis label: f or f'?"
+   "text": "f or f'?"
   }
  ],
  "checks": [
@@ -697,7 +757,7 @@
     "leading_sign": 1,
     "domain_break": "odd"
    },
-   "completes": "LSN-CON-05004#s4",
+   "completes": "LSN-CON-05004#s5",
    "stem": {
     "text": "Signs of f' on (-oo, -1), (-1, 1), (1, 3), (3, oo): -, +, -, +. Where is f increasing?",
     "command_verb": "find"
@@ -1117,19 +1177,19 @@
   }
  ],
  "refresher": [
-  "LSN-CON-05004#s2",
+  "LSN-CON-05004#s3",
   "LSN-CON-05004#err-BC-ERR-05014",
   "LSN-CON-05004#err-BC-ERR-05015",
   "LSN-CON-05004#err-BC-ERR-05016",
   "LSN-CON-05004#err-BC-ERR-05017",
-  "LSN-CON-05004#s4"
+  "LSN-CON-05004#s5"
  ],
  "provenance": {
   "author": "tools/lesson_transcribe.py",
-  "prompt_version": "generator/lesson_v1",
+  "prompt_version": "generator/lesson_v2",
   "design_path": "docs/lessons/unit-05/LSN-CON-05004.md",
-  "signed_off_by": "claude-opus-5-5",
-  "signed_off_at": "2026-09-29",
+  "signed_off_by": null,
+  "signed_off_at": null,
   "not_human": true
  }
 }

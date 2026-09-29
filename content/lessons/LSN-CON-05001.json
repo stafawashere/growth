@@ -3,7 +3,7 @@
  "version": 1,
  "kind": "concept",
  "target_id": "BC-CON-05001",
- "status": "signed_off",
+ "status": "draft",
  "snapshot_digest": "a6a8ec9d3f59ab8f712e33d30cc22fc64bf2c478fbe7312e3e3118d319c6a42f",
  "source_digest": "602c65cd4468d7be9d74177eb7b5479c565008f9e7d2c8e6b718cc55fd45c22f",
  "read_minutes": {
@@ -11,12 +11,62 @@
   "brief": 3.0
  },
  "word_count": {
-  "full": 574,
-  "brief": 367
+  "full": 590,
+  "brief": 386
  },
  "sections": [
   {
    "id": "LSN-CON-05001#s1",
+   "type": "prediction",
+   "bands": [
+    "low",
+    "mid"
+   ],
+   "skills": [
+    "BC-SKL-05001",
+    "BC-SKL-05002",
+    "BC-SKL-05003",
+    "BC-SKL-05004",
+    "BC-SKL-05005",
+    "BC-SKL-05006"
+   ],
+   "sources": [
+    "BC-CON-05001",
+    "ced:99"
+   ],
+   "evidence_tag": "inferred",
+   "stem": {
+    "text": "Predict: f is differentiable, f(1) = 2, f(6) = 17. What must f' equal in (1, 6)?",
+    "command_verb": "predict"
+   },
+   "format": "mcq",
+   "options": [
+    {
+     "id": "A",
+     "label": "15",
+     "is_key": false
+    },
+    {
+     "id": "B",
+     "label": "3",
+     "is_key": true
+    },
+    {
+     "id": "C",
+     "label": "9.5",
+     "is_key": false
+    }
+   ],
+   "resolution": {
+    "text": "The average rate is 3, so the Mean Value Theorem gives f'(c) = 3 somewhere in (1, 6)."
+   },
+   "delivery": {
+    "mode": "text",
+    "reason": "rule 6"
+   }
+  },
+  {
+   "id": "LSN-CON-05001#s2",
    "type": "orientation",
    "bands": [
     "low",
@@ -35,7 +85,7 @@
     "research/units/unit-05-analytical-applications-differentiation.md#5.1 Using the Mean Value Theorem"
    ],
    "evidence_tag": "inferred",
-   "text": "A response states f is continuous because differentiable, writes the average rate as a difference of outputs over a difference of inputs, and answers yes by the Mean Value Theorem.",
+   "text": "A response derives continuity, writes the average rate, and concludes by the theorem.",
    "delivery": {
     "mode": "text",
     "reason": "rule 5: a statement of what a response shows; no figure-bearing BC-REP on the skills",
@@ -45,7 +95,7 @@
    }
   },
   {
-   "id": "LSN-CON-05001#s2",
+   "id": "LSN-CON-05001#s3",
    "type": "key_ideas",
    "bands": [
     "low",
@@ -65,15 +115,11 @@
     "sg-23:3",
     "research/units/unit-05-analytical-applications-differentiation.md#5.1 Using the Mean Value Theorem"
    ],
-   "evidence_tag": "verified",
+   "evidence_tag": "inferred",
    "ek_id": "BC-EK-FUN-1B1",
    "depth": "core",
-   "text": "Continuous on [a, b] and differentiable on (a, b): some c in (a, b) has f'(c) equal to the average rate. If f(a) = f(b) that rate is 0 (Rolle). Differentiability supplies continuity, and the response says so.",
+   "text": "Continuous on [a, b], differentiable on (a, b): some c in (a, b) has f'(c) equal to the average rate. Differentiable gives continuity.",
    "notation": "f'(c); average rate of change",
-   "quote": {
-    "text": "guarantees a point within that open interval where the instantaneous rate of change equals the average rate of change",
-    "source": "ced:99"
-   },
    "delivery": {
     "mode": "text",
     "reason": "rule 5: hypotheses and conclusion of a theorem, BC-REP-04 on BC-SKL-05001 and 05004",
@@ -84,7 +130,7 @@
    }
   },
   {
-   "id": "LSN-CON-05001#s3",
+   "id": "LSN-CON-05001#s4",
    "type": "strategy",
    "bands": [
     "low",
@@ -102,13 +148,24 @@
    ],
    "evidence_tag": "verified",
    "archetype_id": "BC-QA-05001",
-   "cue": "Must some c give f' a stated value? A differentiable f and a table.",
-   "method": "First line: f is differentiable, so continuous on the closed interval.",
-   "rival": "Rival: solving for c.",
-   "separating_feature": "Must there be asks existence; no c is located."
+   "cue": "Must some c give f' a value?",
+   "method": "Differentiable, so continuous on the closed interval.",
+   "rival": "Solving for c.",
+   "separating_feature": "Must there be asks existence.",
+   "contrast": {
+    "this": {
+     "text": "f is differentiable; f(1) = 5, f(4) = 11. Must f'(c) = 2 in (1, 4)?",
+     "archetype_id": "BC-QA-05001"
+    },
+    "not_this": {
+     "text": "f is continuous; f(1) = 5, f(4) = 11. Must f(c) = 8 in (1, 4)?",
+     "why_not": "That is a value of f: Intermediate Value Theorem."
+    },
+    "feature": "A value of f' or of f."
+   }
   },
   {
-   "id": "LSN-CON-05001#s4",
+   "id": "LSN-CON-05001#s5",
    "type": "strategy",
    "bands": [
     "low",
@@ -124,12 +181,12 @@
    "evidence_tag": "verified",
    "archetype_id": "BC-QA-05002",
    "cue": "Find the value in the open interval, from a formula and a closed interval.",
-   "method": "First line: the average rate of change.",
-   "rival": "Rival: differentiating the average rate expression.",
+   "method": "The average rate of change.",
+   "rival": "Differentiating the average rate expression.",
    "separating_feature": "The average rate is a number; f' is set equal to it."
   },
   {
-   "id": "LSN-CON-05001#s5",
+   "id": "LSN-CON-05001#s6",
    "type": "worked_example",
    "bands": [
     "low",
@@ -206,7 +263,7 @@
    }
   },
   {
-   "id": "LSN-CON-05001#s6",
+   "id": "LSN-CON-05001#s7",
    "type": "worked_example",
    "bands": [
     "low"
@@ -325,6 +382,7 @@
      ]
     ]
    },
+   "fade_from": 4,
    "delivery": {
     "mode": "step_reveal",
     "reason": "rule 1",
@@ -332,7 +390,7 @@
    }
   },
   {
-   "id": "LSN-CON-05001#s7",
+   "id": "LSN-CON-05001#s8",
    "type": "what_a_reader_scores",
    "bands": [
     "low",
@@ -349,7 +407,7 @@
     "BC-PT-99017"
    ],
    "evidence_tag": "verified",
-   "example_id": "LSN-CON-05001#s5",
+   "example_id": "LSN-CON-05001#s6",
    "lines": [
     {
      "point_type_id": "BC-PT-99017",
@@ -385,6 +443,7 @@
     "expression": "continuous_because_differentiable"
    },
    "relation": "distinct",
+   "fix_prompt": true,
    "possible_reason": {
     "misconception_id": "BC-MIS-99009",
     "text": "continuity is asserted rather than derived from differentiability"
@@ -423,6 +482,7 @@
     "expression": "yes_by_mean_value_theorem"
    },
    "relation": "distinct",
+   "fix_prompt": true,
    "possible_reason": {
     "misconception_id": "BC-MIS-05002",
     "text": "the verified hypothesis and the affirmative conclusion are left out"
@@ -491,6 +551,7 @@
     ]
    },
    "relation": "distinct",
+   "fix_prompt": true,
    "delivery": {
     "mode": "step_reveal",
     "reason": "rule 1",
@@ -524,6 +585,7 @@
     "expression": "by_mean_value_theorem"
    },
    "relation": "distinct",
+   "fix_prompt": true,
    "possible_reason": {
     "misconception_id": "BC-MIS-05005",
     "text": "the Intermediate Value Theorem and the Mean Value Theorem are used interchangeably"
@@ -535,7 +597,7 @@
    }
   },
   {
-   "id": "LSN-CON-05001#s8",
+   "id": "LSN-CON-05001#s9",
    "type": "representations",
    "bands": [
     "low"
@@ -640,7 +702,7 @@
    ],
    "evidence_tag": "inferred",
    "prerequisite_id": "BC-PRQ-05001",
-   "text": "Set an expression to zero and solve it."
+   "text": "Solve an expression set to zero."
   },
   {
    "id": "LSN-CON-05001#prq-BC-PRQ-05004",
@@ -657,7 +719,7 @@
    ],
    "evidence_tag": "inferred",
    "prerequisite_id": "BC-PRQ-05004",
-   "text": "Open (a, b) excludes its ends; [a, b] includes them."
+   "text": "Open excludes the ends."
   },
   {
    "id": "LSN-CON-05001#prq-BC-PRQ-05008",
@@ -674,7 +736,7 @@
    ],
    "evidence_tag": "inferred",
    "prerequisite_id": "BC-PRQ-05008",
-   "text": "Change in output over change in input, endpoints in matching order."
+   "text": "Output over input change."
   },
   {
    "id": "LSN-CON-05001#prq-BC-PRQ-06005",
@@ -691,7 +753,7 @@
    ],
    "evidence_tag": "inferred",
    "prerequisite_id": "BC-PRQ-06005",
-   "text": "f(6) is a value of f; f'(c) of f'."
+   "text": "f(6) is a value of f."
   }
  ],
  "checks": [
@@ -723,7 +785,7 @@
     "context": "bare",
     "hypothesis": "differentiable"
    },
-   "completes": "LSN-CON-05001#s5",
+   "completes": "LSN-CON-05001#s6",
    "stem": {
     "text": "Same table; (17 - 2)/(6 - 1) = 3. Finish: must some c in (1, 6) have f'(c) = 3?",
     "command_verb": "justify"
@@ -899,19 +961,19 @@
   }
  ],
  "refresher": [
-  "LSN-CON-05001#s2",
+  "LSN-CON-05001#s3",
   "LSN-CON-05001#err-BC-ERR-05002",
   "LSN-CON-05001#err-BC-ERR-05004",
   "LSN-CON-05001#err-BC-ERR-05005",
   "LSN-CON-05001#err-BC-ERR-05006",
-  "LSN-CON-05001#s5"
+  "LSN-CON-05001#s6"
  ],
  "provenance": {
   "author": "tools/lesson_transcribe.py",
-  "prompt_version": "generator/lesson_v1",
+  "prompt_version": "generator/lesson_v2",
   "design_path": "docs/lessons/unit-05/LSN-CON-05001.md",
-  "signed_off_by": "claude-opus-5-5",
-  "signed_off_at": "2026-09-29",
+  "signed_off_by": null,
+  "signed_off_at": null,
   "not_human": true
  }
 }

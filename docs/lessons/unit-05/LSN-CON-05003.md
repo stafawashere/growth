@@ -9,6 +9,10 @@ purpose: Authoring spec for the concept lesson on BC-CON-05003, critical points 
 
 Concept BC-CON-05003 (skills BC-SKL-05010 to BC-SKL-05013), topic 5.2 of Unit 5. Five archetypes load its skills; BC-QA-05006, BC-QA-05007 and BC-QA-05014 have a first skill in the concept (primary), BC-QA-05003 and BC-QA-05010 do not. The lesson's worked example is BC-QA-05014, the one archetype whose whole demand is the critical point list. No unit parent (docs/lessons/unit-05/README.md, section 1).
 
+## Prediction
+
+One multiple choice question on worked example 1's own numbers, asked before the rule is shown: f is \(3(x-1)^{2/3}/(x+2)\), its derivative is given, and the student picks the inputs that are critical points. The key is 1 and 7, ex-1's answer; the distractors are 7 alone (BC-ERR-05011) and -2, 1 and 7 (BC-ERR-05010). The resolution, shown on the key idea screen beside the student's choice, names the two sources and the domain condition. No verdict word. Sources: BC-CON-05003 and the topic 5.2 section the key ideas cite (ced:100).
+
 ## Orientation
 
 Served text, from BC-CON-05003 `description_plain` and the topic's Assessment behaviour paragraph (research/units/unit-05-analytical-applications-differentiation.md#5.2 Extreme Value Theorem, Global Versus Local Extrema, and Critical Points): a response writes f'(x) = 0 as an equation, adds inputs in the domain where f' fails to exist, and does not call a critical point an extremum, or a relative extremum absolute, without an argument. No count, no frequency.
@@ -17,14 +21,16 @@ Served text, from BC-CON-05003 `description_plain` and the topic's Assessment be
 
 Two BC-EK map to the skills: BC-EK-FUN-1C2 (BC-SKL-05010, 05011) and BC-EK-FUN-1C3 (BC-SKL-05012, 05013), both on ced:100. Two core blocks, both bands.
 
-- ki-1 (core, BC-EK-FUN-1C2). Paraphrase of the Required mathematical knowledge paragraph (Critical point): f' zero or f' failing to exist, with c in the domain. Anchor quote from ced:100.
-- ki-2 (core, BC-EK-FUN-1C3). Paraphrase of One-way containment and Local against global: every local extremum is at a critical point, not conversely (sg-23:13), and a local extremum is compared only with nearby values. No quote, to hold the brief band under its cap.
+- ki-1 (core, BC-EK-FUN-1C2). Paraphrase of the Required mathematical knowledge paragraph (Critical point): f' zero or f' failing to exist, with c in the domain. The anchor quote is dropped: with the prediction and the contrast pair added the brief form passed its cap, and the orientation, the bridges, the strategy fields and the key idea texts were shortened first, then the quote as the last resort.
+- ki-2 (core, BC-EK-FUN-1C3). Paraphrase of One-way containment and Local against global: every local extremum is at a critical point, not conversely (sg-23:13), and a local extremum is compared only with nearby values. No quote.
 
 ## Recognition
 
 - BC-QA-05014 (research/question-analysis/question-archetypes.md#BC-QA-05014 Every critical point found, including inputs where the derivative fails to exist): `typical_wording` "find all critical points of f"; `common_givens` a quotient with a fractional power or an absolute value in the numerator, the input excluded from the domain; `asked_to_produce` the complete list. The signal: "all critical points" beside a fractional power, an absolute value or a denominator. No `official_examples`.
 - BC-QA-05006 (research/question-analysis/question-archetypes.md#BC-QA-05006 Absolute extremum by the candidates test with a global justification): "absolute ... on the closed interval", official BC-FRQ-2013-Q4-B, 2022-Q3-D, 2023-Q4-D, 2025-Q1-D, 2025-Q4-D, 2026-Q4-D. Taught in BC-CON-05006; here only its first point, the equation f'(x) = 0.
 - BC-QA-05003 (research/question-analysis/question-archetypes.md#BC-QA-05003 Relative extremum classified from the behaviour of the first derivative): "relative minimum, relative maximum, or neither at the named input". Here only the neither case: a critical point without a sign change.
+
+The near miss served in the contrast pair of st-1 comes from the `wrong_approaches` entry of BC-QA-05014 and BC-ERR-05011: the same function with the stem asking only for the solutions of f'(x) = 0, which leaves out the inputs where f' fails to exist. The pair differs in the one thing the feature names, all critical points against the zeros of f' only.
 
 BC-QA-05007 and BC-QA-05010 are served by BC-CON-05005 and BC-CON-05002. What says "not this concept": a stem naming an interval of increase (BC-CON-05004).
 
@@ -84,8 +90,8 @@ BC-QA-05014 is `no_calculator` and a single multiple choice or short answer ques
 
 ## Band plan
 
-- Low (full): orientation, ki-1, ki-2, st-1 to st-3, ex-1 with its scoring line, the four error blocks, chk-1 to chk-3, the three bridges. 701 words, 4.7 minutes (cap 900 and 6).
-- Mid (brief): orientation, ki-1, ki-2, st-1, ex-1 with its scoring line, err-BC-ERR-05009, err-BC-ERR-05010, chk-1, chk-2, the bridges. 447 words, 3.0 minutes (cap 450 and 3).
+- Low (full), in served order: prediction, orientation, the three bridges, ki-1, ki-2, st-1 with its contrast pair, st-2, st-3, ex-1 with its scoring line, chk-1, the four error blocks, chk-2, chk-3. 697 words, 4.7 minutes (cap 900 and 6). There is one worked example, so nothing is faded.
+- Mid (brief): prediction, orientation, the bridges, ki-1, ki-2, st-1 with its contrast pair, ex-1 with its scoring line, chk-1, err-BC-ERR-05009, err-BC-ERR-05010, chk-2. 449 words, 3.0 minutes (cap 450 and 3).
 - Refresher: ki-1, ki-2, err-BC-ERR-05009, err-BC-ERR-05010, err-BC-ERR-05011, err-BC-ERR-05012, ex-1.
 
 ## Sources
@@ -119,8 +125,38 @@ BC-QA-05014 is `no_calculator` and a single multiple choice or short answer ques
   "BC-SKL-05012",
   "BC-SKL-05013"
  ],
+ "prediction": {
+  "id": "pr-1",
+  "stem": {
+   "text": "Predict: f(x) = 3(x - 1)^(2/3)/(x + 2) and f'(x) = (7 - x)/((x - 1)^(1/3)(x + 2)^2). Which inputs are critical points?",
+   "command_verb": "predict"
+  },
+  "format": "mcq",
+  "options": [
+   {
+    "id": "A",
+    "label": "7 only",
+    "is_key": false
+   },
+   {
+    "id": "B",
+    "label": "1 and 7",
+    "is_key": true
+   },
+   {
+    "id": "C",
+    "label": "-2, 1 and 7",
+    "is_key": false
+   }
+  ],
+  "resolution": "f' is zero at 7 and undefined at 1, where f is defined. At -2, f is undefined.",
+  "sources": [
+   "BC-CON-05003",
+   "ced:100"
+  ]
+ },
  "orientation": {
-  "text": "A response writes f'(x) = 0 as an equation, adds the inputs in the domain where f' fails to exist, and never calls a critical point an extremum, or a relative extremum absolute, without an argument.",
+  "text": "A response writes f'(x) = 0 and adds the inputs where f' fails to exist.",
   "sources": [
    "BC-CON-05003",
    "research/units/unit-05-analytical-applications-differentiation.md#5.2 Extreme Value Theorem, Global Versus Local Extrema, and Critical Points"
@@ -131,12 +167,9 @@ BC-QA-05014 is `no_calculator` and a single multiple choice or short answer ques
    "id": "ki-1",
    "ek_id": "BC-EK-FUN-1C2",
    "depth": "core",
-   "text": "Critical points come from two sources: f'(c) = 0, and f'(c) failing to exist (a cusp, corner or vertical tangent). Either way c must be in the domain of f.",
+   "text": "Critical points: f'(c) = 0 or f'(c) failing to exist (cusp, corner, vertical tangent), with c in the domain.",
    "notation": "critical point",
-   "quote": {
-    "text": "A point on a function where the first derivative equals zero or fails to exist is a critical point of the function.",
-    "source": "ced:100"
-   },
+   "quote": null,
    "sources": [
     "BC-EK-FUN-1C2",
     "ced:100",
@@ -147,7 +180,7 @@ BC-QA-05014 is `no_calculator` and a single multiple choice or short answer ques
    "id": "ki-2",
    "ek_id": "BC-EK-FUN-1C3",
    "depth": "core",
-   "text": "Every relative extremum sits at a critical point, not conversely: f' can be zero with no sign change. A relative extremum beats nearby values only; an absolute one beats every value on the interval.",
+   "text": "Every relative extremum sits at a critical point, not conversely. A relative extremum beats nearby values; an absolute one beats every value.",
    "notation": "relative extremum; absolute extremum",
    "quote": null,
    "sources": [
@@ -162,21 +195,32 @@ BC-QA-05014 is `no_calculator` and a single multiple choice or short answer ques
   {
    "id": "st-1",
    "archetype_id": "BC-QA-05014",
-   "cue": "Find all critical points, from a quotient with a fractional power or absolute value.",
-   "method": "First line: f'(x).",
-   "rival": "Rival: setting only f'(x) = 0.",
-   "separating_feature": "The power or absolute value makes f' fail to exist somewhere.",
+   "cue": "All critical points, from a quotient with a fractional power.",
+   "method": "F'(x).",
+   "rival": "Setting only f'(x) = 0.",
+   "separating_feature": "A fractional power can make f' undefined.",
    "sources": [
     "BC-QA-05014"
    ],
-   "evidence_tag": "verified"
+   "evidence_tag": "verified",
+   "contrast": {
+    "this": {
+     "text": "Find all critical points of f(x) = 5(x + 2)^(2/3)/(x - 4).",
+     "archetype_id": "BC-QA-05014"
+    },
+    "not_this": {
+     "text": "Solve f'(x) = 0 for f(x) = 5(x + 2)^(2/3)/(x - 4).",
+     "why_not": "It asks only for zeros of f'."
+    },
+    "feature": "All critical points, or only zeros of f'."
+   }
   },
   {
    "id": "st-2",
    "archetype_id": "BC-QA-05006",
    "cue": "Absolute extremum on a closed interval, from f or f' and the interval.",
-   "method": "First line: f'(x) = 0, as an equation.",
-   "rival": "Rival: citing the Extreme Value Theorem to locate it.",
+   "method": "F'(x) = 0, as an equation.",
+   "rival": "Citing the Extreme Value Theorem to locate it.",
    "separating_feature": "Absolute asks for a comparison with every candidate.",
    "sources": [
     "BC-QA-05006"
@@ -187,8 +231,8 @@ BC-QA-05014 is `no_calculator` and a single multiple choice or short answer ques
    "id": "st-3",
    "archetype_id": "BC-QA-05003",
    "cue": "Maximum, minimum or neither at a named input, from f' information.",
-   "method": "First line: locate the input on f'.",
-   "rival": "Rival: the second derivative test with the slope of f' never discussed.",
+   "method": "Locate the input on f'.",
+   "rival": "The second derivative test with the slope of f' never discussed.",
    "separating_feature": "No sign change means neither.",
    "sources": [
     "BC-QA-05003"
@@ -304,7 +348,8 @@ BC-QA-05014 is `no_calculator` and a single multiple choice or short answer ques
     "BC-ERR-05009"
    ],
    "observed_behavior": "The response writes down the inputs at which the derivative vanishes but never presents the equation setting the derivative equal to zero.",
-   "scoring_consequence": "The first point of the candidates test is lost; the 2023 guideline states that listing the zeros is not sufficient."
+   "scoring_consequence": "The first point of the candidates test is lost; the 2023 guideline states that listing the zeros is not sufficient.",
+   "fix_prompt": true
   },
   {
    "error_id": "BC-ERR-05010",
@@ -322,7 +367,8 @@ BC-QA-05014 is `no_calculator` and a single multiple choice or short answer ques
     "BC-ERR-05010"
    ],
    "observed_behavior": "The response keeps an input at which the derivative expression vanishes although the function itself is undefined there.",
-   "scoring_consequence": "The candidate list is wrong and the comparison that follows cannot be correct."
+   "scoring_consequence": "The candidate list is wrong and the comparison that follows cannot be correct.",
+   "fix_prompt": true
   },
   {
    "error_id": "BC-ERR-05011",
@@ -344,7 +390,8 @@ BC-QA-05014 is `no_calculator` and a single multiple choice or short answer ques
     "BC-MIS-05009"
    ],
    "observed_behavior": "The response finds only the zeros of the derivative and skips corners, cusps, and vertical tangents.",
-   "scoring_consequence": "A candidate is missing, so the comparison may select the wrong extremum and the justification is incomplete."
+   "scoring_consequence": "A candidate is missing, so the comparison may select the wrong extremum and the justification is incomplete.",
+   "fix_prompt": true
   },
   {
    "error_id": "BC-ERR-05012",
@@ -366,22 +413,23 @@ BC-QA-05014 is `no_calculator` and a single multiple choice or short answer ques
     "BC-MIS-05007"
    ],
    "observed_behavior": "The response finds a local high or low point and reports it as the largest or smallest value on the interval without comparing the rest.",
-   "scoring_consequence": "The justification point is lost because the argument is local where a global claim was asked for."
+   "scoring_consequence": "The justification point is lost because the argument is local where a global claim was asked for.",
+   "fix_prompt": true
   }
  ],
  "representations": null,
  "prerequisite_bridges": [
   {
    "prq_id": "BC-PRQ-05001",
-   "text": "Set a factor to zero; find where a denominator vanishes."
+   "text": "Zero a factor."
   },
   {
    "prq_id": "BC-PRQ-05003",
-   "text": "Keep only inputs where f is defined."
+   "text": "Keep inputs where f exists."
   },
   {
    "prq_id": "BC-PRQ-05006",
-   "text": "Check whether the plotted curve is f or f'."
+   "text": "Check whether the curve is f or f'."
   }
  ],
  "time": {
@@ -899,8 +947,8 @@ BC-QA-05014 is `no_calculator` and a single multiple choice or short answer ques
   "research/exam/exam-structure.md#Section and part layout"
  ],
  "word_count": {
-  "full": 701,
-  "brief": 447
+  "full": 697,
+  "brief": 449
  },
  "read_minutes": {
   "full": 4.7,

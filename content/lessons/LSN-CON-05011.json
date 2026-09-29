@@ -3,7 +3,7 @@
  "version": 1,
  "kind": "concept",
  "target_id": "BC-CON-05011",
- "status": "signed_off",
+ "status": "draft",
  "snapshot_digest": "a6a8ec9d3f59ab8f712e33d30cc22fc64bf2c478fbe7312e3e3118d319c6a42f",
  "source_digest": "de7a997ba13de315f67d1c9410da2080f6ba44ba7e82fa86d4ef6dd78a9d2505",
  "read_minutes": {
@@ -11,12 +11,64 @@
   "brief": 3.0
  },
  "word_count": {
-  "full": 593,
-  "brief": 395
+  "full": 606,
+  "brief": 408
  },
  "sections": [
   {
    "id": "LSN-CON-05011#s1",
+   "type": "prediction",
+   "bands": [
+    "low",
+    "mid"
+   ],
+   "skills": [
+    "BC-SKL-05040",
+    "BC-SKL-05041",
+    "BC-SKL-05042",
+    "BC-SKL-05043",
+    "BC-SKL-05044"
+   ],
+   "sources": [
+    "BC-CON-05011",
+    "research/units/unit-05-analytical-applications-differentiation.md#5.8 Sketching Graphs of Functions and Their Derivatives"
+   ],
+   "evidence_tag": "inferred",
+   "stem": {
+    "text": "Predict: the graph of \\(f'\\) is \\(y=\\frac{x^2}{2}-2\\). Where does \\(f\\) have an inflection point?",
+    "command_verb": "predict"
+   },
+   "format": "mcq",
+   "options": [
+    {
+     "id": "A",
+     "label": "At \\(x=-2\\) and \\(x=2\\)",
+     "is_key": false
+    },
+    {
+     "id": "B",
+     "label": "At \\(x=0\\)",
+     "is_key": true
+    },
+    {
+     "id": "C",
+     "label": "Cannot be found from \\(f'\\)",
+     "is_key": false
+    }
+   ],
+   "resolution": {
+    "text": "An inflection point of \\(f\\) sits where the graph of \\(f'\\) turns, at \\(x=0\\). The crossings mark extrema of \\(f\\)."
+   },
+   "delivery": {
+    "mode": "text",
+    "reason": "rule 6: a question on a symbolic curve; the figure is served on the orientation",
+    "sources": [
+     "BC-CON-05011"
+    ]
+   }
+  },
+  {
+   "id": "LSN-CON-05011#s2",
    "type": "orientation",
    "bands": [
     "low",
@@ -34,7 +86,7 @@
     "research/units/unit-05-analytical-applications-differentiation.md#5.8 Sketching Graphs of Functions and Their Derivatives"
    ],
    "evidence_tag": "inferred",
-   "text": "Given the graph of \\(f'\\), a response reads \\(f\\): an extremum of \\(f\\) where the graph of \\(f'\\) crosses the axis, an inflection point where it turns. The reason names the graph of \\(f'\\), never \"the function\" or \"the graph\".",
+   "text": "A response reads \\(f\\) from the graph of \\(f'\\): extrema at crossings, inflection where it turns, reasons about \\(f'\\).",
    "delivery": {
     "mode": "figure",
     "reason": "rule 3: BC-REP-02 on BC-SKL-05040 to 05044; a fixed feature, not promoted",
@@ -85,7 +137,7 @@
    }
   },
   {
-   "id": "LSN-CON-05011#s2",
+   "id": "LSN-CON-05011#s3",
    "type": "key_ideas",
    "bands": [
     "low",
@@ -103,7 +155,7 @@
    "evidence_tag": "inferred",
    "ek_id": "BC-EK-FUN-4A9",
    "depth": "core",
-   "text": "Each feature of \\(f\\) has a partner one derivative down. A zero of \\(f'\\) where \\(f'\\) changes sign is an extremum of \\(f\\). A turning point of the graph of \\(f'\\) is an inflection point of \\(f\\). Read the crossing for extrema and the turning for inflection.",
+   "text": "A sign-changing zero of \\(f'\\) is an extremum of \\(f\\). A turning point of the graph of \\(f'\\) is an inflection point of \\(f\\).",
    "notation": "graph of f; graph of f'",
    "delivery": {
     "mode": "figure",
@@ -154,7 +206,7 @@
    }
   },
   {
-   "id": "LSN-CON-05011#s3",
+   "id": "LSN-CON-05011#s4",
    "type": "key_ideas",
    "bands": [
     "low"
@@ -235,7 +287,7 @@
    }
   },
   {
-   "id": "LSN-CON-05011#s4",
+   "id": "LSN-CON-05011#s5",
    "type": "strategy",
    "bands": [
     "low",
@@ -253,13 +305,24 @@
    ],
    "evidence_tag": "verified",
    "archetype_id": "BC-QA-05009",
-   "cue": "The stem asks for a sketch with the correct features, or roles, from plotted curves or a sign table.",
-   "method": "First written line: find the turning points of each curve, then match them with the zeros of the other.",
-   "rival": "Rival: deciding the order from the vertical scale of the plots.",
-   "separating_feature": "A sign-changing zero of \\(f'\\) sits under an extremum of \\(f\\), whatever the scale."
+   "cue": "Plotted curves or a sign table.",
+   "method": "Match the turning points of each curve with the zeros of the other.",
+   "rival": "Ordering the plots by vertical scale.",
+   "separating_feature": "A sign change of \\(f'\\) marks an extremum of \\(f\\).",
+   "contrast": {
+    "this": {
+     "text": "The graph of \\(f'\\) crosses the axis at \\(-2\\) and \\(2\\). Find the minimum and inflection of \\(f\\).",
+     "archetype_id": "BC-QA-05009"
+    },
+    "not_this": {
+     "text": "The graph of \\(f\\) is \\(y=\\frac{x^2}{2}-2\\). Find its minimum.",
+     "why_not": "The plotted curve is \\(f\\), read directly."
+    },
+    "feature": "Which function the plotted curve is."
+   }
   },
   {
-   "id": "LSN-CON-05011#s5",
+   "id": "LSN-CON-05011#s6",
    "type": "worked_example",
    "bands": [
     "low",
@@ -428,6 +491,7 @@
     ]
    },
    "relation": "distinct",
+   "fix_prompt": true,
    "possible_reason": {
     "misconception_id": "BC-MIS-05020",
     "text": "does not distinguish rising from bending upward"
@@ -465,6 +529,7 @@
     "expression": "extremum_of_f_prime_at_inflection_of_f"
    },
    "relation": "distinct",
+   "fix_prompt": true,
    "possible_reason": {
     "misconception_id": "BC-MIS-05011",
     "text": "reading features of whatever curve is drawn"
@@ -509,6 +574,7 @@
     ]
    },
    "relation": "distinct",
+   "fix_prompt": true,
    "possible_reason": {
     "misconception_id": "BC-MIS-05011",
     "text": "reading features of whatever curve is drawn"
@@ -553,6 +619,7 @@
     ]
    },
    "relation": "distinct",
+   "fix_prompt": true,
    "possible_reason": {
     "misconception_id": "BC-MIS-05020",
     "text": "the sign and the direction of the derivative are used interchangeably"
@@ -578,7 +645,7 @@
    ],
    "evidence_tag": "inferred",
    "prerequisite_id": "BC-PRQ-05006",
-   "text": "Label the plotted curve and the function asked about first. Reading the plotted derivative as the function misplaces every feature."
+   "text": "Name the plotted curve first."
   }
  ],
  "checks": [
@@ -600,7 +667,7 @@
     "lettering": "ABC",
     "framing": "derivatives"
    },
-   "completes": "LSN-CON-05011#s5",
+   "completes": "LSN-CON-05011#s6",
    "stem": {
     "text": "\\(f'\\) is negative on \\((-2, 2)\\), zero at \\(-2\\) and \\(2\\), and turns at \\(0\\). Give (minimum, inflection) of \\(f\\).",
     "command_verb": "find"
@@ -880,19 +947,19 @@
   }
  ],
  "refresher": [
-  "LSN-CON-05011#s2",
+  "LSN-CON-05011#s3",
   "LSN-CON-05011#err-BC-ERR-05016",
   "LSN-CON-05011#err-BC-ERR-05041",
   "LSN-CON-05011#err-BC-ERR-05042",
   "LSN-CON-05011#err-BC-ERR-05043",
-  "LSN-CON-05011#s5"
+  "LSN-CON-05011#s6"
  ],
  "provenance": {
   "author": "tools/lesson_transcribe.py",
-  "prompt_version": "generator/lesson_v1",
+  "prompt_version": "generator/lesson_v2",
   "design_path": "docs/lessons/unit-05/LSN-CON-05011.md",
-  "signed_off_by": "claude-opus-5-5",
-  "signed_off_at": "2026-09-29",
+  "signed_off_by": null,
+  "signed_off_at": null,
   "not_human": true
  }
 }

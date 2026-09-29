@@ -3,20 +3,71 @@
  "version": 1,
  "kind": "concept",
  "target_id": "BC-CON-05014",
- "status": "signed_off",
+ "status": "draft",
  "snapshot_digest": "a6a8ec9d3f59ab8f712e33d30cc22fc64bf2c478fbe7312e3e3118d319c6a42f",
  "source_digest": "6f34ee492d67520d33f132cff973bd2139bca8e6f4f78889d3268bb18c1f3ce7",
  "read_minutes": {
-  "full": 3.5,
-  "brief": 2.5
+  "full": 4.0,
+  "brief": 3.0
  },
  "word_count": {
-  "full": 443,
-  "brief": 317
+  "full": 538,
+  "brief": 412
  },
  "sections": [
   {
    "id": "LSN-CON-05014#s1",
+   "type": "prediction",
+   "bands": [
+    "low",
+    "mid"
+   ],
+   "skills": [
+    "BC-SKL-05054",
+    "BC-SKL-05055",
+    "BC-SKL-05056",
+    "BC-SKL-05057"
+   ],
+   "sources": [
+    "BC-CON-05014",
+    "research/units/unit-05-analytical-applications-differentiation.md#5.11 Solving Optimization Problems"
+   ],
+   "evidence_tag": "inferred",
+   "stem": {
+    "text": "Predict: a planter's volume is largest, 1600, at \\(x=4\\) on \\(0\\le x\\le 9\\). Which sentence states the largest volume with correct units?",
+    "command_verb": "predict"
+   },
+   "format": "mcq",
+   "options": [
+    {
+     "id": "A",
+     "label": "The largest volume occurs at a cut of 4 cm.",
+     "is_key": false
+    },
+    {
+     "id": "B",
+     "label": "The maximum is 1600.",
+     "is_key": false
+    },
+    {
+     "id": "C",
+     "label": "The volume is largest, 1600 cubic centimeters, at a 4 cm cut.",
+     "is_key": true
+    }
+   ],
+   "resolution": {
+    "text": "An interpretation names the quantity asked for, its units and where it occurs: the volume is 1600 cubic centimeters when the cut is 4 cm. A bare number, or the input alone, leaves part unstated."
+   },
+   "delivery": {
+    "mode": "text",
+    "reason": "rule 6: a question about the wording of an answer",
+    "sources": [
+     "BC-CON-05014"
+    ]
+   }
+  },
+  {
+   "id": "LSN-CON-05014#s2",
    "type": "orientation",
    "bands": [
     "low",
@@ -33,7 +84,7 @@
     "research/units/unit-05-analytical-applications-differentiation.md#5.11 Solving Optimization Problems"
    ],
    "evidence_tag": "inferred",
-   "text": "A response compares the interior candidate with the ends of the allowed range, returns what the question asked for, the value or the input, and states it as a sentence about the situation: the quantity, its units, and where it occurs.",
+   "text": "A response compares the candidate with the ends and states the asked quantity with its units and input.",
    "delivery": {
     "mode": "text",
     "reason": "rule 5: BC-SKL-05054 to 05057 carry BC-REP-01, 04, 05 only",
@@ -43,7 +94,7 @@
    }
   },
   {
-   "id": "LSN-CON-05014#s2",
+   "id": "LSN-CON-05014#s3",
    "type": "key_ideas",
    "bands": [
     "low",
@@ -64,7 +115,7 @@
    "evidence_tag": "verified",
    "ek_id": "BC-EK-FUN-4C1",
    "depth": "core",
-   "text": "The optimal value and the input where it occurs both mean something in the situation and both carry units. An interpretation names the quantity, its units and the input together. \"Largest volume\" asks for the volume; \"the dimensions that give it\" asks for the input.",
+   "text": "The optimal value and its input both carry units. An interpretation names the quantity, units and input together. Largest volume asks for the volume; dimensions ask for the input.",
    "notation": "units; optimal value",
    "quote": {
     "text": "Minimum and maximum values of a function take on specific meanings in applied contexts.",
@@ -79,7 +130,7 @@
    }
   },
   {
-   "id": "LSN-CON-05014#s3",
+   "id": "LSN-CON-05014#s4",
    "type": "strategy",
    "bands": [
     "low",
@@ -96,13 +147,24 @@
    ],
    "evidence_tag": "inferred",
    "archetype_id": "BC-QA-05011",
-   "cue": "The stem asks for the interpreted value, using correct units, on a contextual range.",
-   "method": "First written line: define the variables and write the objective, each letter with its units.",
-   "rival": "Rival: substituting a numerical value before differentiating.",
-   "separating_feature": "The last line answers the asked quantity, value or input, with units."
+   "cue": "Correct units, on a contextual range.",
+   "method": "Define the variables and write the objective, each letter with its units.",
+   "rival": "Substituting a number before differentiating.",
+   "separating_feature": "The last line answers the asked quantity, with units.",
+   "contrast": {
+    "this": {
+     "text": "A 30 by 30 cm sheet with corner cuts of side \\(x\\) cm makes a tray. State the largest volume, with units.",
+     "archetype_id": "BC-QA-05011"
+    },
+    "not_this": {
+     "text": "A 30 by 30 cm sheet with corner cuts of side \\(x\\) cm makes a tray. Find the dimensions for the largest volume.",
+     "why_not": "It asks for the input where the maximum occurs."
+    },
+    "feature": "Largest volume asks for the value with units; dimensions ask for the input."
+   }
   },
   {
-   "id": "LSN-CON-05014#s4",
+   "id": "LSN-CON-05014#s5",
    "type": "worked_example",
    "bands": [
     "low",
@@ -216,6 +278,7 @@
     "expression": "interior_and_both_ends"
    },
    "relation": "distinct",
+   "fix_prompt": true,
    "possible_reason": {
     "misconception_id": "BC-MIS-05016",
     "text": "does not regard the endpoints as competitors"
@@ -261,6 +324,7 @@
     ]
    },
    "relation": "distinct",
+   "fix_prompt": true,
    "possible_reason": {
     "misconception_id": "BC-MIS-07023",
     "text": "leaves the quantity, the units, and the direction implicit"
@@ -310,6 +374,7 @@
     ]
    },
    "relation": "distinct",
+   "fix_prompt": true,
    "possible_reason": {
     "misconception_id": "BC-MIS-05015",
     "text": "does not separate the input at which the extremum occurs from the extreme value itself"
@@ -347,6 +412,7 @@
     "expression": "quantity_units_and_input_named"
    },
    "relation": "distinct",
+   "fix_prompt": true,
    "possible_reason": {
     "misconception_id": "BC-MIS-07023",
     "text": "reports the number and leaves the quantity, the units, and the direction implicit"
@@ -377,7 +443,7 @@
     "length_unit": "centimeters",
     "domain_limit": "none"
    },
-   "completes": "LSN-CON-05014#s4",
+   "completes": "LSN-CON-05014#s5",
    "stem": {
     "text": "\\(V(x)=x(18-2x)(48-2x)\\) on \\(0\\le x\\le 9\\), critical point 4. Give the largest volume in cubic centimeters.",
     "command_verb": "state"
@@ -637,19 +703,20 @@
   }
  ],
  "refresher": [
-  "LSN-CON-05014#s2",
+  "LSN-CON-05014#s3",
   "LSN-CON-05014#err-BC-ERR-05026",
   "LSN-CON-05014#err-BC-ERR-05055",
   "LSN-CON-05014#err-BC-ERR-05024",
   "LSN-CON-05014#err-BC-ERR-05056",
-  "LSN-CON-05014#s4"
+  "LSN-CON-05014#s5"
  ],
+ "no_figure_reason": "The skills carry symbolic, verbal and contextual representations only, and the key ideas describe no process, so no figure, table or motion would show more than the sentence about value, units and input.",
  "provenance": {
   "author": "tools/lesson_transcribe.py",
-  "prompt_version": "generator/lesson_v1",
+  "prompt_version": "generator/lesson_v2",
   "design_path": "docs/lessons/unit-05/LSN-CON-05014.md",
-  "signed_off_by": "claude-opus-5-5",
-  "signed_off_at": "2026-09-29",
+  "signed_off_by": null,
+  "signed_off_at": null,
   "not_human": true
  }
 }

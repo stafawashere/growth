@@ -78,7 +78,7 @@ Every key is a verdict, so each is a statement key with option labels.
 
 ## Band plan
 
-- Low (full): orientation, ki-1, st-1, ex-1, the three error blocks, chk-1 to chk-3, ex-2, the bridge. 523 words, 3.5 minutes (cap 900 and 6).
+- Low (full): orientation, ki-1, st-1, ex-1, the three error blocks, chk-1 to chk-3, ex-2, the bridge. 524 words, 3.5 minutes (cap 900 and 6).
 - Mid (brief): orientation, ki-1, st-1, ex-1, err-BC-ERR-05007, err-BC-ERR-05008, chk-1, chk-2, the bridge. 352 words, 2.4 minutes (cap 450 and 3).
 - Refresher: ki-1, err-BC-ERR-05007, err-BC-ERR-05008, err-BC-ERR-99008, ex-1.
 
@@ -644,7 +644,7 @@ Every key is a verdict, so each is a statement key with option labels.
   "research/exam/exam-structure.md#Section and part layout"
  ],
  "word_count": {
-  "full": 523,
+  "full": 524,
   "brief": 352
  },
  "read_minutes": {

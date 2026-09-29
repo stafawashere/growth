@@ -27,5 +27,88 @@
    }
   ],
   "answers_file": "/tmp/claude-0/-home-user-growth/ac029253-8ff0-5a4b-8b5f-cdcaf5e8ff8d/scratchpad/verify/answers_11.json"
+ },
+ "audit": {
+  "date": "2026-09-29",
+  "auditor": "claude-opus-5-5",
+  "blocks": [
+   {
+    "id": "orientation",
+    "verdict": "ok",
+    "evidence": "Paraphrases BC-CON-08002 description_formal (units of f versus units per unit input); 27 words."
+   },
+   {
+    "id": "ki-1",
+    "verdict": "ok",
+    "evidence": "CHA-4.B.1 on ced:152; antiderivative agreement stated in research 8.1 Average rate of change paragraph (sg-25:4)."
+   },
+   {
+    "id": "st-1",
+    "verdict": "ok",
+    "evidence": "BC-QA-08002 expected path and wrong_approach 'reporting the average rate of change itself as the time'."
+   },
+   {
+    "id": "st-2",
+    "verdict": "ok",
+    "evidence": "BC-QA-99007 expected path and wrong_approach 'integrating the function and dividing by the interval length'."
+   },
+   {
+    "id": "st-3",
+    "verdict": "ok",
+    "evidence": "BC-QA-08001 path and wrong_approach 'averaging the two endpoint values'."
+   },
+   {
+    "id": "ex-1",
+    "verdict": "ok",
+    "evidence": "SymPy: average rate 5.24945; W'(t) = (3/2)e^(t/2) + 1; solve gives 1 + 2log(e - 1) = 2log(e^(3/2) - e^(1/2)) = 2.08265, in (1, 3); reported 2.083."
+   },
+   {
+    "id": "rs-0",
+    "verdict": "ok",
+    "evidence": "Line reproduces BC-PT-99021 earns, does_not_earn and precision_rules from the bundle."
+   },
+   {
+    "id": "err-BC-ERR-99015",
+    "verdict": "ok",
+    "evidence": "Record text matches; SymPy: average value of W on [1, 3] is 10.499, distinct from the rate 5.249."
+   },
+   {
+    "id": "err-BC-ERR-99005",
+    "verdict": "ok",
+    "evidence": "Record text matches; same value 5.249, units differ, relation equivalent is right."
+   },
+   {
+    "id": "representations",
+    "verdict": "ok",
+    "evidence": "null; nothing to audit."
+   },
+   {
+    "id": "BC-PRQ-06005",
+    "verdict": "ok",
+    "evidence": "In bundle prerequisites; paraphrases its failure_signature (f and f' interchanged)."
+   },
+   {
+    "id": "chk-1",
+    "verdict": "ok",
+    "evidence": "SymPy: solution 2log(e^(3/2) - e^(1/2)) = 2.08265, key 2.083."
+   },
+   {
+    "id": "chk-2",
+    "verdict": "ok",
+    "evidence": "SymPy: average rate 11.3415; W'(t) = 2e^(t/2) + 2; solve gives 2 + 2log(e - 1) = 2log(e^2 - e) = 3.08265, key 3.083."
+   }
+  ],
+  "advice": [
+   "The lesson's own idea is a comparison of two averages, which suits a contrast block; ki-1 is served as text, so the contrast rests on the orientation and st-2 versus st-3 alone.",
+   "No check asks the learner to choose between the two formulas from the wording; both checks are the BC-QA-08002 equation, so recognition of the stem is taught but not checked.",
+   "Units (gallons per hour) appear only in a why line and the BC-ERR-99005 block; no check asks for units."
+  ],
+  "counts": {
+   "ok": 13,
+   "unsourced": 0,
+   "wrong": 0,
+   "over_cap": 0,
+   "lint": 0
+  }
  }
 }

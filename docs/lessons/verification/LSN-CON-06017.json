@@ -33,5 +33,89 @@
    }
   ],
   "answers_file": "/tmp/claude-0/-home-user-growth/ac029253-8ff0-5a4b-8b5f-cdcaf5e8ff8d/scratchpad/verify/answers_10.json"
+ },
+ "audit": {
+  "date": "2026-09-29",
+  "auditor": "claude-opus-5-5",
+  "blocks": [
+   {
+    "id": "orientation",
+    "verdict": "ok",
+    "evidence": "Paraphrases BC-CON-06017 description_plain and research 6.11 Assessment behaviour; 20 words."
+   },
+   {
+    "id": "ki-1",
+    "verdict": "ok",
+    "evidence": "Paraphrases research 6.11 Required mathematical knowledge (Integration by parts, Definite form); 32 words."
+   },
+   {
+    "id": "st-1",
+    "verdict": "ok",
+    "evidence": "Cue from common_givens, method expected_solution_path[0], rival wrong_approaches BC-ERR-06022."
+   },
+   {
+    "id": "ex-1",
+    "verdict": "ok",
+    "evidence": "SymPy: integrate(3x cos 2x,(x,0,pi/6)) = sqrt(3)*pi/8 - 3/8; diff of step 3 antiderivative minus integrand = 0; step 4 difference 0."
+   },
+   {
+    "id": "what_a_reader_scores:ex-1",
+    "verdict": "ok",
+    "evidence": "BC-PT-99057 and BC-PT-99004 earns, does_not_earn, notation and precision fields copied from the bundle."
+   },
+   {
+    "id": "err-BC-ERR-06022",
+    "verdict": "ok",
+    "evidence": "Observed behaviour and consequence verbatim; (3x^2/2)(sin 2x/2) is the product of the factor antiderivatives; BC-MIS-06019 listed."
+   },
+   {
+    "id": "err-BC-ERR-06023",
+    "verdict": "ok",
+    "evidence": "Verbatim record; uv + integral of v du gives 3x sin2x/2 - 3cos2x/4, distinct from the key."
+   },
+   {
+    "id": "err-BC-ERR-99025",
+    "verdict": "ok",
+    "evidence": "SymPy: derivative of 3x^2 cos2x/2 + Integral(3x^2 sin2x) minus 3x cos2x = 0, so relation equivalent holds; record verbatim."
+   },
+   {
+    "id": "representations",
+    "verdict": "ok",
+    "evidence": "null; research 6.11 lists only symbolic and verbal conversions."
+   },
+   {
+    "id": "bridge-BC-PRQ-06005",
+    "verdict": "ok",
+    "evidence": "Paraphrases failure_signature \"f' and f are interchanged\"."
+   },
+   {
+    "id": "chk-1",
+    "verdict": "ok",
+    "evidence": "SymPy: (pi/4)(sqrt3/2) + 3/8 - 3/4 minus key = 0."
+   },
+   {
+    "id": "chk-2",
+    "verdict": "ok",
+    "evidence": "SymPy: integrate(2t sin3t,(t,0,pi/9)) - (sqrt3/9 - pi/27) = 0; draw matches parameter_spec pi/(3 rate)."
+   },
+   {
+    "id": "chk-3",
+    "verdict": "ok",
+    "evidence": "SymPy: integral = 1 + e^2; A 3e^2 - 1 (plus sign), B e^2 (x^2 e^(2x) at 1), D 1 - e^2 (boundary term dropped)."
+   }
+  ],
+  "advice": [
+   "Option D in chk-3 is tagged BC-ERR-99025 for a dropped boundary term; the record instance speaks of limits misplaced between the uv term and the remaining integral, which fits, but the tag could be named in the derivation text.",
+   "err-BC-ERR-99025 shows an equivalent but harder line; as step_reveal it should say plainly that the identity is right and the choice is what fails, or a reader may take it as a sign error.",
+   "BC-PT-99056 (u and dv point) is untagged; the scoring habit that u and dv may be implied is in the design prose but not in any served block.",
+   "Delivery modes fit: text for the rule, step_reveal for the process and each error. The lesson teaches stem recognition, the first written line and the rival."
+  ],
+  "counts": {
+   "ok": 13,
+   "unsourced": 0,
+   "wrong": 0,
+   "over_cap": 0,
+   "lint": 0
+  }
  }
 }

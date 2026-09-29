@@ -33,5 +33,98 @@
    }
   ],
   "answers_file": "/tmp/claude-0/-home-user-growth/ac029253-8ff0-5a4b-8b5f-cdcaf5e8ff8d/scratchpad/verify/answers_11.json"
+ },
+ "audit": {
+  "date": "2026-09-29",
+  "auditor": "claude-opus-5-5",
+  "blocks": [
+   {
+    "id": "orientation",
+    "verdict": "ok",
+    "evidence": "Paraphrases BC-CON-07012 description_formal and research 7.9 (reasoning without solving); 39 words."
+   },
+   {
+    "id": "ki-1",
+    "verdict": "ok",
+    "evidence": "Research 7.9 Carrying capacity paragraph and FUN-7.H.3 (ced:145); zeros of 2P/5 - P^2/2000 are {0, 800} by SymPy."
+   },
+   {
+    "id": "ki-2",
+    "verdict": "ok",
+    "evidence": "Research 7.9 Fastest change paragraph; SymPy: derivative 2/5 - P/1000 vanishes at 400 = 800/2."
+   },
+   {
+    "id": "ki-3",
+    "verdict": "ok",
+    "evidence": "FUN-7.H.2 on ced:145; inflection at a/2 quoted in research 7.9 Fastest change."
+   },
+   {
+    "id": "st-1",
+    "verdict": "ok",
+    "evidence": "Rival is BC-ERR-07044 and BC-MIS-07025; cue matches BC-QA-07009 draw; cue 17 words."
+   },
+   {
+    "id": "ex-1",
+    "verdict": "ok",
+    "evidence": "SymPy: solve gives {0, 800}; rate at 160 is 256/5 > 0; vertex 400; answer (800, 400)."
+   },
+   {
+    "id": "err-BC-ERR-07040",
+    "verdict": "ok",
+    "evidence": "Text matches BC-ERR-07040 record; 2/5 distinct from 800."
+   },
+   {
+    "id": "err-BC-ERR-07041",
+    "verdict": "ok",
+    "evidence": "Text matches BC-ERR-07041 record; value 800 same, reason missing, relation equivalent is right."
+   },
+   {
+    "id": "err-BC-ERR-07042",
+    "verdict": "ok",
+    "evidence": "Text matches BC-ERR-07042; SymPy rate at 800 is 0, fastest at 400."
+   },
+   {
+    "id": "err-BC-ERR-07044",
+    "verdict": "ok",
+    "evidence": "Text matches BC-ERR-07044; SymPy: 800/(1 + 4e^(-2t/5)) satisfies the ODE with P(0) = 160 and tends to 800."
+   },
+   {
+    "id": "representations",
+    "verdict": "ok",
+    "evidence": "null; nothing to audit."
+   },
+   {
+    "id": "BC-PRQ-05001",
+    "verdict": "ok",
+    "evidence": "Prerequisite BC-PRQ-05001 is in the bundle (remediation target of BC-SKL-07040); 14 words."
+   },
+   {
+    "id": "chk-1",
+    "verdict": "ok",
+    "evidence": "SymPy: derivative 2/5 - P/1000, zero at 400; key (800, 400)."
+   },
+   {
+    "id": "chk-2",
+    "verdict": "ok",
+    "evidence": "SymPy: zeros {0, 1200}; derivative of A/3(1 - A/1200) is 1/3 - A/1800, zero at 600; key (1200, 600)."
+   },
+   {
+    "id": "chk-3",
+    "verdict": "ok",
+    "evidence": "SymPy: vertex 500; distractors 1000 (ceiling, BC-ERR-07042), 1/10 (1/5 halved), 0 (zero halved) all follow their stated derivations."
+   }
+  ],
+  "advice": [
+   "The ki-1 interactive with a stepper on P(0) fits a process idea; ki-2 as text is acceptable since the curve already marks P = 400, though a small contrast of rate at 400 versus 800 would sharpen the BC-ERR-07042 distinction.",
+   "No reader-scores block: the reason point that BC-ERR-07041 says is lost is never shown as a scored line, so the scoring habit of writing the sign argument rests on the error block alone.",
+   "The stepper values 400, 640 and 960 are outside the archetype parameter_spec (flagged in inferred); 960 shows approach from above, which the text never states in words."
+  ],
+  "counts": {
+   "ok": 15,
+   "unsourced": 0,
+   "wrong": 0,
+   "over_cap": 0,
+   "lint": 0
+  }
  }
 }

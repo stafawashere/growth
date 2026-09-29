@@ -143,7 +143,7 @@ BC-QA-07009 is `either`, one or two FRQ parts or one MCQ; the MCQ shape is taken
   {
    "id": "st-1",
    "archetype_id": "BC-QA-07009",
-   "cue": "A logistic equation and an initial value between 0 and the capacity; the stem asks for a limit or a meaning.",
+   "cue": "A logistic equation and an initial value between 0 and the capacity; the stem asks a limit or meaning.",
    "method": "First written line: the right side set equal to zero.",
    "rival": "Rival: separating the logistic equation with partial fractions when only the limit was asked for.",
    "separating_feature": "The stem asks for a value or a meaning, not a formula for y.",
@@ -596,8 +596,8 @@ BC-QA-07009 is `either`, one or two FRQ parts or one MCQ; the MCQ shape is taken
   "research/exam/exam-structure.md#Section and part layout"
  ],
  "word_count": {
-  "full": 520,
-  "brief": 396
+  "full": 518,
+  "brief": 394
  },
  "read_minutes": {
   "full": 3.5,

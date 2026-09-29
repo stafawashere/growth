@@ -33,5 +33,99 @@
    }
   ],
   "answers_file": "/tmp/claude-0/-home-user-growth/ac029253-8ff0-5a4b-8b5f-cdcaf5e8ff8d/scratchpad/verify/answers_10.json"
+ },
+ "audit": {
+  "date": "2026-09-29",
+  "auditor": "claude-opus-5-5",
+  "blocks": [
+   {
+    "id": "orientation",
+    "verdict": "ok",
+    "evidence": "Paraphrases BC-CON-06018 description_plain and research 6.12 Procedure; 28 words."
+   },
+   {
+    "id": "ki-1",
+    "verdict": "ok",
+    "evidence": "Paraphrases research 6.12 Procedure paragraph; 31 words."
+   },
+   {
+    "id": "st-1",
+    "verdict": "ok",
+    "evidence": "Cue from common_givens, method expected_solution_path[0], rival wrong_approaches BC-ERR-06026."
+   },
+   {
+    "id": "ex-1",
+    "verdict": "ok",
+    "evidence": "SymPy: apart(7/(2x^2 - 5x - 3)) = -2/(2x+1) + 1/(x-3); derivative of ln(x-3) - ln(2x+1) minus integrand = 0; draw gives N = 7 by parameter_spec."
+   },
+   {
+    "id": "what_a_reader_scores:ex-1",
+    "verdict": "ok",
+    "evidence": "BC-PT-99003 and BC-PT-99004 texts copied from the bundle point_types."
+   },
+   {
+    "id": "err-BC-ERR-06019",
+    "verdict": "ok",
+    "evidence": "Record verbatim; -2 ln|2x+1| drops the 1/2, distinct from the key."
+   },
+   {
+    "id": "err-BC-ERR-06022",
+    "verdict": "ok",
+    "evidence": "SymPy: 7 * ln(2x+1)/2 * ln(x-3) matches the wrong step; record verbatim."
+   },
+   {
+    "id": "err-BC-ERR-06026",
+    "verdict": "ok",
+    "evidence": "SymPy: apart((2x^2 - 5x + 4)/(2x^2 - 5x - 3)) = 1 - 2/(2x+1) + 1/(x-3)."
+   },
+   {
+    "id": "err-BC-ERR-07030",
+    "verdict": "ok",
+    "evidence": "Record verbatim; bars kept versus dropped."
+   },
+   {
+    "id": "representations",
+    "verdict": "ok",
+    "evidence": "null; research 6.12 lists only BC-REP-01."
+   },
+   {
+    "id": "bridge-BC-PRQ-06003",
+    "verdict": "ok",
+    "evidence": "Paraphrases description_plain on absolute value inside ln of a linear expression."
+   },
+   {
+    "id": "bridge-BC-PRQ-06011",
+    "verdict": "ok",
+    "evidence": "Paraphrases description_plain on clearing denominators and substituting values."
+   },
+   {
+    "id": "chk-1",
+    "verdict": "ok",
+    "evidence": "SymPy: decomposition and antiderivative match ex-1."
+   },
+   {
+    "id": "chk-2",
+    "verdict": "ok",
+    "evidence": "SymPy: apart(8/(3x^2 - 4x - 4)) = -3/(3x+2) + 1/(x-2); derivative check 0; N = 8 by parameter_spec."
+   },
+   {
+    "id": "chk-3",
+    "verdict": "ok",
+    "evidence": "SymPy: apart gives 1 - 2/(2x+3) + 1/(x-2); key derivative check 0; A omits x, B doubles the ln coefficient, C product of logs."
+   }
+  ],
+  "advice": [
+   "err-BC-ERR-06022 and err-BC-ERR-07030 carry scoring consequences written for other archetypes (the u and dv point; an initial condition). Served in a partial fraction lesson these read oddly; consider dropping them from the mid band or noting the context.",
+   "err-BC-ERR-07030 wrong step uses the same SymPy string as ex-1 (no bars), so the checker sees the served key and the error alike; the served text must carry the bars.",
+   "BC-PT-99081 (decomposition point) is untagged, so the decomposition has no reader line although it is the step most specific to the concept.",
+   "Delivery modes fit; a two column contrast would serve err-BC-ERR-06026 (proper versus improper) better than step_reveal."
+  ],
+  "counts": {
+   "ok": 15,
+   "unsourced": 0,
+   "wrong": 0,
+   "over_cap": 0,
+   "lint": 0
+  }
  }
 }

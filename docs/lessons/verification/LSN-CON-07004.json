@@ -33,5 +33,107 @@
    }
   ],
   "answers_file": "/tmp/claude-0/-home-user-growth/ac029253-8ff0-5a4b-8b5f-cdcaf5e8ff8d/scratchpad/verify/answers_10.json"
+ },
+ "audit": {
+  "date": "2026-09-29",
+  "auditor": "claude-opus-5-5",
+  "blocks": [
+   {
+    "id": "orientation",
+    "verdict": "ok",
+    "evidence": "Paraphrases BC-CON-07004 description_plain and the Zero slope locus paragraph; 21 words."
+   },
+   {
+    "id": "ki-1",
+    "verdict": "ok",
+    "evidence": "Paraphrases the 7.3 Construction paragraph (BC-EK-FUN-7C1); figure slopes 2 at (0,0) and 4 at (0,1) checked by SymPy."
+   },
+   {
+    "id": "ki-2",
+    "verdict": "wrong",
+    "evidence": "\"With no x in the right side the field repeats along every vertical line; with no y, along every horizontal line\" reads as constant along those lines, which is reversed: for dy/dx = 2(y+1), SymPy gives slope 2 at (0,0) and 4 at (0,1) on the same vertical line; a y only field is constant along horizontal rows. The research Independence paragraph carries the same reversal."
+   },
+   {
+    "id": "st-1",
+    "verdict": "ok",
+    "evidence": "Method from BC-QA-07002 expected_solution_path[0] and [1]; rival from wrong_approaches."
+   },
+   {
+    "id": "st-2",
+    "verdict": "ok",
+    "evidence": "Method from BC-QA-07010 expected_solution_path[0]; rival from wrong_approaches; cue from typical_wording and common_givens."
+   },
+   {
+    "id": "ex-1",
+    "verdict": "ok",
+    "evidence": "SymPy: 2(y-x+1) = 0 gives y = x-1; slopes 2, 0, 4 at (0,0), (1,0), (0,1)."
+   },
+   {
+    "id": "what_a_reader_scores:ex-1",
+    "verdict": "ok",
+    "evidence": "BC-PT-99083 line matches the bundle fields."
+   },
+   {
+    "id": "err-BC-ERR-07010",
+    "verdict": "ok",
+    "evidence": "Record fields verbatim; swapped coordinates give (0,1), slope 4, against 0 at (1,0)."
+   },
+   {
+    "id": "err-BC-ERR-07011",
+    "verdict": "ok",
+    "evidence": "Record fields verbatim; BC-MIS-99015 is linked; tilt 2 of (0,0) against computed 0."
+   },
+   {
+    "id": "err-BC-ERR-07012",
+    "verdict": "ok",
+    "evidence": "Record fields verbatim; locus y = x-1 checked."
+   },
+   {
+    "id": "err-BC-ERR-07013",
+    "verdict": "ok",
+    "evidence": "Record fields verbatim; 2(y+1) versus 2(y-x+1) differ at x = 1."
+   },
+   {
+    "id": "representations",
+    "verdict": "ok",
+    "evidence": "null; the key idea figures carry BC-REP-07."
+   },
+   {
+    "id": "BC-PRQ-06005",
+    "verdict": "ok",
+    "evidence": "Evaluation at a stated input, from description_plain."
+   },
+   {
+    "id": "BC-PRQ-07006",
+    "verdict": "ok",
+    "evidence": "Paraphrases failure_signature (wrong lattice point)."
+   },
+   {
+    "id": "chk-1",
+    "verdict": "ok",
+    "evidence": "SymPy: 2(1-0+1) = 4 at (0,1); key (2,0,4)."
+   },
+   {
+    "id": "chk-2",
+    "verdict": "ok",
+    "evidence": "SymPy: -(y+2t-1) gives 1, -1, 0 at (0,0), (1,0), (0,1)."
+   },
+   {
+    "id": "chk-3",
+    "verdict": "ok",
+    "evidence": "SymPy: 3-4-2 = -3; distractors -9 at (3,2), -2 at (0,0), 1 from y-2 all reproduce."
+   }
+  ],
+  "advice": [
+   "Rewrite ki-2 as \"with no x, every row of segments is identical along the row; with no y, every column is identical\", matching the skill text \"repeats along rows or along columns\"; the research Independence paragraph should be corrected at the same time.",
+   "Figures suit the slope field reading; ex-1 teaches the zero locus as first line and substitution as the rival to solving."
+  ],
+  "counts": {
+   "ok": 16,
+   "unsourced": 0,
+   "wrong": 1,
+   "over_cap": 0,
+   "lint": 0
+  }
  }
 }

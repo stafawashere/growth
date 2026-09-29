@@ -76,7 +76,7 @@ BC-QA-05009 is `either`, so Section I Part A, 2.14 minutes per question (researc
 
 ## Band plan
 
-- Low (full): orientation, ki-1, st-1, ex-1, the four error blocks, chk-1 to chk-3, representations, the bridge. 678 words, 5.0 minutes (cap 900 and 6).
+- Low (full): orientation, ki-1, st-1, ex-1, the four error blocks, chk-1 to chk-3, representations, the bridge. 682 words, 5.0 minutes (cap 900 and 6).
 - Mid (brief): orientation, ki-1, st-1, ex-1, err-BC-ERR-05046, err-BC-ERR-05047, chk-1, chk-2, the bridge. 429 words, 3.0 minutes (cap 450 and 3).
 - Refresher: ki-1, the four error blocks, ex-1.
 
@@ -286,7 +286,7 @@ BC-QA-05009 is `either`, so Section I Part A, 2.14 minutes per question (researc
  ],
  "refresher": ["ki-1", "err-BC-ERR-05046", "err-BC-ERR-05047", "err-BC-ERR-05048", "err-BC-ERR-05049", "ex-1"],
  "read_minutes": {"full": 5.0, "brief": 3.0},
- "word_count": {"full": 678, "brief": 429},
+ "word_count": {"full": 682, "brief": 429},
  "research_lines": [
   {"file": "research/scoring/justification-requirements.md", "line": "the reason point is earned only by reasoning about the graphed object"}
  ],

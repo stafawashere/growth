@@ -33,5 +33,95 @@
    }
   ],
   "answers_file": "/tmp/claude-0/-home-user-growth/ac029253-8ff0-5a4b-8b5f-cdcaf5e8ff8d/scratchpad/verify/answers_10.json"
+ },
+ "audit": {
+  "date": "2026-09-29",
+  "auditor": "claude-opus-5-5",
+  "blocks": [
+   {
+    "id": "orientation",
+    "verdict": "ok",
+    "evidence": "Paraphrases BC-CON-06019 and the scoring_pattern (limit notation carried); 34 words."
+   },
+   {
+    "id": "ki-1",
+    "verdict": "ok",
+    "evidence": "Paraphrases ced:130 LIM-6.A.1: one or both limits infinite or integrand unbounded."
+   },
+   {
+    "id": "ki-2",
+    "verdict": "ok",
+    "evidence": "Paraphrases ced:130 LIM-6.A.2 and expected_solution_path."
+   },
+   {
+    "id": "st-1",
+    "verdict": "ok",
+    "evidence": "Cue from common_givens, method expected_solution_path[0], rival BC-ERR-99007 from wrong_approaches."
+   },
+   {
+    "id": "ex-1",
+    "verdict": "ok",
+    "evidence": "SymPy: integrate(6x/(x^2+2)^2,(x,1,b)) = (b^2 - 1)/(b^2 + 2), limit 1; constraint 1 + 2 != 2 holds."
+   },
+   {
+    "id": "what_a_reader_scores:ex-1",
+    "verdict": "ok",
+    "evidence": "BC-PT-99003 and BC-PT-99004 texts copied from the bundle."
+   },
+   {
+    "id": "err-BC-ERR-06018",
+    "verdict": "ok",
+    "evidence": "SymPy: -3/u at x = b minus at x = 1 gives 3 - 3/b."
+   },
+   {
+    "id": "err-BC-ERR-06019",
+    "verdict": "ok",
+    "evidence": "SymPy: -6/u from u = 3 to b^2 + 2 gives 2 - 6/(b^2 + 2)."
+   },
+   {
+    "id": "err-BC-ERR-99007",
+    "verdict": "ok",
+    "evidence": "Record verbatim; 1 - 3/(oo^2 + 2) evaluates to 1, so relation equivalent holds."
+   },
+   {
+    "id": "err-BC-ERR-06025",
+    "verdict": "ok",
+    "evidence": "fixed 2026-09-29: possible_reason set to null; BC-MIS-06021 does not fit a draw whose integrand tends to 6; SymPy: limit(6x/sqrt(x^2+2), x, oo) = 6, so the integrand does not approach zero; the possible reason BC-MIS-06021 (\"concludes convergence from the integrand approaching zero\") does not fit this draw. The -6sqrt3 value itself is correct for the dropped b term (antiderivative 6sqrt(b^2+2) - 6sqrt3)."
+   },
+   {
+    "id": "representations",
+    "verdict": "ok",
+    "evidence": "null; BC-REP-01 only."
+   },
+   {
+    "id": "chk-1",
+    "verdict": "ok",
+    "evidence": "SymPy: limit of 1 - 3/(b^2 + 2) is 1."
+   },
+   {
+    "id": "chk-2",
+    "verdict": "ok",
+    "evidence": "SymPy: limit of integral of 4x^2/(x^3+1)^2 from 1 to b is 2/3."
+   },
+   {
+    "id": "chk-3",
+    "verdict": "ok",
+    "evidence": "SymPy: limit is 1/6; A 3/4 (x limits), B 1/3 (constant 3), D 2/3 (constant 6), each reproduced."
+   }
+  ],
+  "advice": [
+   "For err-BC-ERR-06025 either use a divergent draw whose integrand tends to zero (none exists in this parameter_spec at power 1/2, degree 2 or 3), set possible_reason to null, or take the reason from BC-MIS-99008.",
+   "parameter_spec invariant len(key) > 20 is not met by any key here (1, 2/3, 1/6); likely a spec artefact, but worth a check.",
+   "chk-3 has two distractors on BC-ERR-06019 and none on BC-ERR-99007, the lesson rival; an option computed with infinity would test the rival directly.",
+   "BC-PT-99053 (limit notation point) is the habit this archetype scores first and is untagged; the scoring habit is only in a why line.",
+   "ki-1 as figure and ki-2 as motion suit the ideas (where the impropriety sits; b moving out)."
+  ],
+  "counts": {
+   "ok": 14,
+   "unsourced": 0,
+   "wrong": 0,
+   "over_cap": 0,
+   "lint": 0
+  }
  }
 }

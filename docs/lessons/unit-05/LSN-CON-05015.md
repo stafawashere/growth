@@ -80,7 +80,7 @@ BC-QA-05012 is `no_calculator` and one FRQ part worth two or three points, so Se
 
 ## Band plan
 
-- Low (full): orientation, ki-1 to ki-3, st-1, ex-1, the four error blocks, chk-1 to chk-3, ex-2, the two bridges. 620 words, 4.5 minutes (cap 900 and 6).
+- Low (full): orientation, ki-1 to ki-3, st-1, ex-1, the four error blocks, chk-1 to chk-3, ex-2, the two bridges. 629 words, 4.5 minutes (cap 900 and 6).
 - Mid (brief): orientation, ki-1, ki-2, st-1, ex-1, err-BC-ERR-03012, err-BC-ERR-03023, chk-1, chk-2, the two bridges. 404 words, 3.0 minutes (cap 450 and 3).
 - Refresher: ki-1, ki-2, the four error blocks, ex-1.
 
@@ -322,7 +322,7 @@ BC-QA-05012 is `no_calculator` and one FRQ part worth two or three points, so Se
  ],
  "refresher": ["ki-1", "ki-2", "err-BC-ERR-03012", "err-BC-ERR-03023", "err-BC-ERR-05060", "err-BC-ERR-05062", "ex-1"],
  "read_minutes": {"full": 4.5, "brief": 3.0},
- "word_count": {"full": 620, "brief": 404},
+ "word_count": {"full": 629, "brief": 404},
  "research_lines": [
   {"file": "research/units/unit-05-analytical-applications-differentiation.md", "line": "so the coordinates must satisfy both the defining equation and the derived condition"}
  ],

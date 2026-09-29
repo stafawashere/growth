@@ -75,7 +75,7 @@ BC-QA-05011 is `either`, so Section I Part A, 2.14 minutes per question, in the 
 
 ## Band plan
 
-- Low (full): orientation, ki-1, st-1, ex-1, the four error blocks, chk-1 to chk-3, the two bridges. 590 words, 4.0 minutes (cap 900 and 6).
+- Low (full): orientation, ki-1, st-1, ex-1, the four error blocks, chk-1 to chk-3, the two bridges. 595 words, 4.0 minutes (cap 900 and 6).
 - Mid (brief): orientation, ki-1, st-1, ex-1, err-BC-ERR-05050, err-BC-ERR-05051, chk-1, chk-2, the two bridges. 438 words, 3.0 minutes (cap 450 and 3).
 - Refresher: ki-1, the four error blocks, ex-1.
 
@@ -665,7 +665,7 @@ BC-QA-05011 is `either`, so Section I Part A, 2.14 minutes per question, in the 
  ],
  "refresher": ["ki-1", "err-BC-ERR-05050", "err-BC-ERR-05051", "err-BC-ERR-05052", "err-BC-ERR-05053", "ex-1"],
  "read_minutes": {"full": 4.0, "brief": 3.0},
- "word_count": {"full": 590, "brief": 438},
+ "word_count": {"full": 595, "brief": 438},
  "research_lines": [
   {"file": "research/scoring/justification-requirements.md", "line": "sg-25:5 requires a global argument that correctly evaluates the function at the interior critical point and at both endpoints."}
  ],

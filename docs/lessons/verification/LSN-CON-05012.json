@@ -50,8 +50,8 @@
    },
    {
     "id": "st-1",
-    "verdict": "wrong",
-    "evidence": "evidence_tag 'verified' but the bundle's BC-QA-05009 record has evidence_tag 'inferred'; the design also says 'Not tagged inferred'."
+    "verdict": "ok",
+    "evidence": "fixed 2026-09-29: evidence_tag set to inferred"
    },
    {
     "id": "ex-1",
@@ -111,11 +111,16 @@
    "The lesson teaches the stem signal, the first written line (turning points) and the rival (vertical scale); scoring habits are thin because BC-QA-05009 has no point_types, which the design states."
   ],
   "counts": {
-   "ok": 12,
+   "ok": 13,
    "unsourced": 0,
-   "wrong": 1,
+   "wrong": 0,
    "over_cap": 0,
    "lint": 0
   }
- }
+ },
+ "fix_notes": [
+  "st-1 evidence_tag fixed by the orchestrator.",
+  "Fixed err-BC-ERR-05049 (advice defect): the wrong conclusion was true for this f'; now f'(-2)=-4, f'(2.5)=-1.75, f'(3)=-4 so f decreases on [-2,3], false since f'>0 on (-1,2); Traps prose updated; word_count.full 682.",
+  "Left as preference: thin scoring habits (no point_types)."
+ ]
 }

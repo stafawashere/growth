@@ -52,7 +52,7 @@ All four active errors meeting the skills, in the bundle's order: BC-ERR-06018, 
 - err-BC-ERR-06018: -3/u evaluated at x = 1 and b, giving 3 - 3/b, against the u limits. No possible reason line.
 - err-BC-ERR-06019: 6x dx read as du, 2 - 6/(b^2 + 2). No possible reason line.
 - err-BC-ERR-99007: 1 - 3/(∞^2 + 2) written. The CAS finds it equivalent to the limit: the number is the same, the notation point is not. Possible reason, words from BC-MIS-99008.
-- err-BC-ERR-06025: on the divergent form of the draw (power 1/2), -6√3 reported where 6√(b^2 + 2) grows without bound [inferred]. Possible reason, words from BC-MIS-06021.
+- err-BC-ERR-06025: on the divergent form of the draw (power 1/2), -6√3 reported where 6√(b^2 + 2) grows without bound [inferred]. No possible reason: the integrand tends to 6, not 0, so BC-MIS-06021 does not fit this draw.
 
 ## Representations
 
@@ -312,10 +312,7 @@ BC-QA-06011 is `no_calculator`, typically one part of a multipart free response 
     "expr": "oo"
    },
    "relation": "distinct",
-   "possible_reason": {
-    "misconception_id": "BC-MIS-06021",
-    "text": "concludes convergence from the integrand approaching zero"
-   },
+   "possible_reason": null,
    "sources": [
     "BC-ERR-06025",
     "BC-MIS-06021"
@@ -773,7 +770,7 @@ BC-QA-06011 is `no_calculator`, typically one part of a multipart free response 
   "brief": 3.0
  },
  "word_count": {
-  "full": 563,
+  "full": 556,
   "brief": 437
  }
 }

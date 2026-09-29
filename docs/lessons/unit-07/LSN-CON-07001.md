@@ -220,7 +220,7 @@ BC-QA-07006 is `either` and its `multipart_structure` names a single MCQ first, 
    "bands": ["low", "mid"],
    "archetype_id": "BC-QA-07006",
    "parameter_draw": {"context": "concentration", "level": 40, "gap": 15, "approach": "from_below", "time_unit": "minutes"},
-   "stem": {"text": "A concentration C, 25 at t = 0 minutes, changes at a rate proportional to 40 minus C, constant k. Write the differential equation.", "command_verb": "write"},
+   "stem": {"text": "A concentration C, 25 at t = 0 minutes, changes at a rate proportional to 40 minus C, with constant k > 0. Write the differential equation.", "command_verb": "write"},
    "key": {"form": "symbolic", "expr": "dC/dt = k*(40 - C)"},
    "steps": [
     {"text": "k times the difference.", "expr": "k*(40 - C)", "relation": "new"},
@@ -263,7 +263,7 @@ BC-QA-07006 is `either` and its `multipart_structure` names a single MCQ first, 
  ],
  "refresher": ["ki-1", "err-BC-ERR-07001", "err-BC-ERR-07002", "err-BC-ERR-07003", "err-BC-ERR-07004", "ex-1"],
  "read_minutes": {"full": 3.8, "brief": 3.0},
- "word_count": {"full": 567, "brief": 445},
+ "word_count": {"full": 570, "brief": 448},
  "research_lines": [
   {"file": "research/units/unit-07-differential-equations.md", "line": "A statement of the value of the quantity at a stated input is the initial condition and is separate from the differential equation itself."}
  ],

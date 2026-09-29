@@ -33,5 +33,99 @@
    }
   ],
   "answers_file": "/tmp/claude-0/-home-user-growth/ac029253-8ff0-5a4b-8b5f-cdcaf5e8ff8d/scratchpad/verify/answers_10.json"
+ },
+ "audit": {
+  "date": "2026-09-29",
+  "auditor": "claude-opus-5-5",
+  "blocks": [
+   {
+    "id": "orientation",
+    "verdict": "ok",
+    "evidence": "Paraphrases research 7.1 Translation rules and Initial condition; 32 words."
+   },
+   {
+    "id": "ki-1",
+    "verdict": "ok",
+    "evidence": "Paraphrases research 7.1 Translation rules, Variables and units, Initial condition; quote found on ced:137."
+   },
+   {
+    "id": "st-1",
+    "verdict": "ok",
+    "evidence": "Cue from common_givens, method expected_solution_path, rival from wrong_approaches (BC-ERR-07005 in bundle)."
+   },
+   {
+    "id": "ex-1",
+    "verdict": "ok",
+    "evidence": "Draw level 70, gap 25, from_above gives initial 95 by the derived rule; with k > 0, k(70 - 95) = -25k < 0 so H falls toward 70."
+   },
+   {
+    "id": "err-BC-ERR-07001",
+    "verdict": "ok",
+    "evidence": "Record verbatim; k omitted."
+   },
+   {
+    "id": "err-BC-ERR-07002",
+    "verdict": "ok",
+    "evidence": "Record verbatim; with k > 0, k(H - 70) moves H away from 70 (parameter_spec note)."
+   },
+   {
+    "id": "err-BC-ERR-07003",
+    "verdict": "ok",
+    "evidence": "Record verbatim; unnamed y and x."
+   },
+   {
+    "id": "err-BC-ERR-07004",
+    "verdict": "ok",
+    "evidence": "Record verbatim; 95 substituted into the equation."
+   },
+   {
+    "id": "representations",
+    "verdict": "ok",
+    "evidence": "null; conversions are verbal to equation."
+   },
+   {
+    "id": "bridge-BC-PRQ-06005",
+    "verdict": "ok",
+    "evidence": "Paraphrases description_plain and failure_signature."
+   },
+   {
+    "id": "bridge-BC-PRQ-07002",
+    "verdict": "ok",
+    "evidence": "Supported by research 7.1 Variables and units; does not address the record failure_signature (see advice)."
+   },
+   {
+    "id": "bridge-BC-PRQ-07003",
+    "verdict": "ok",
+    "evidence": "Paraphrases description_plain and failure_signature."
+   },
+   {
+    "id": "chk-1",
+    "verdict": "ok",
+    "evidence": "Same draw and key as ex-1."
+   },
+   {
+    "id": "chk-2",
+    "verdict": "ok",
+    "evidence": "fixed 2026-09-29: stem now fixes k > 0 as the parameter_spec notes require; Stem says \"constant k\" without k > 0; parameter_spec notes: \"The stem fixes k as a positive constant\". With k unsigned, dC/dt = k(C - 40) is also a correct model, so the key is not unique."
+   },
+   {
+    "id": "chk-3",
+    "verdict": "ok",
+    "evidence": "Draw level 50, gap 10, from_above gives 60; A drops k, B reverses, D folds 60 in; stem states k > 0."
+   }
+  ],
+  "advice": [
+   "BC-PRQ-07002 is about splitting dy/dx for separation and writing the differential on an integral; the bridge text treats it as reading dH/dt as a rate. Either cite a different prerequisite or reword to its failure signature.",
+   "No reader scores block; the scoring_pattern (constant of proportionality and correct derivative required, sg-23:12) could appear in a why line.",
+   "Rival BC-ERR-07005 (exponential formula) has no error block and no distractor, so the rival named in st-1 is never shown.",
+   "A from_below example would show that k(level - quantity) serves both sides; only chk-2 carries it."
+  ],
+  "counts": {
+   "ok": 15,
+   "unsourced": 0,
+   "wrong": 0,
+   "over_cap": 0,
+   "lint": 0
+  }
  }
 }

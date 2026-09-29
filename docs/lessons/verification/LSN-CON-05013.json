@@ -50,8 +50,8 @@
    },
    {
     "id": "st-1",
-    "verdict": "wrong",
-    "evidence": "evidence_tag 'verified' but the bundle's BC-QA-05011 record has evidence_tag 'inferred'; the design also says 'Not tagged inferred'."
+    "verdict": "ok",
+    "evidence": "fixed 2026-09-29: evidence_tag set to inferred"
    },
    {
     "id": "ex-1",
@@ -112,11 +112,16 @@
    "Recognition, first line and rival are taught; the scoring habit (candidates test with both endpoints) is shown in ex-1 but not named as a scored point, since BC-QA-05011 has no point_types."
   ],
   "counts": {
-   "ok": 12,
+   "ok": 13,
    "unsourced": 0,
-   "wrong": 1,
+   "wrong": 0,
    "over_cap": 0,
    "lint": 0
   }
- }
+ },
+ "fix_notes": [
+  "st-1 evidence_tag fixed by the orchestrator.",
+  "Fixed err-BC-ERR-05053 (advice defect): wrong step now dV/dw = 0 once w is replaced, so every x is critical, matching chk-3 option D; word_count.full 595.",
+  "Left as preferences: sources naming sg-25:5; BC-ERR-05054 block; naming the candidates test as a scored point."
+ ]
 }

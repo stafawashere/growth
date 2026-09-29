@@ -33,5 +33,114 @@
    }
   ],
   "answers_file": "/tmp/claude-0/-home-user-growth/ac029253-8ff0-5a4b-8b5f-cdcaf5e8ff8d/scratchpad/verify/answers_11.json"
+ },
+ "audit": {
+  "date": "2026-09-29",
+  "auditor": "claude-opus-5-5",
+  "blocks": [
+   {
+    "id": "orientation",
+    "verdict": "ok",
+    "evidence": "Paraphrases BC-CON-07007 and the research 7.6 line: no separation earns none of the four (sg-23:12)."
+   },
+   {
+    "id": "ki-1",
+    "verdict": "ok",
+    "evidence": "Paraphrase of FUN-7.D.1 on ced:142; the sum case is BC-SKL-07028 and BC-MIS-07014."
+   },
+   {
+    "id": "ki-2",
+    "verdict": "ok",
+    "evidence": "Paraphrase of FUN-7.D.2 on ced:142 and expected_solution_path steps 2 to 5."
+   },
+   {
+    "id": "st-1",
+    "verdict": "ok",
+    "evidence": "Method and rival match BC-QA-07003 expected_solution_path[0] and wrong_approaches[0]."
+   },
+   {
+    "id": "st-2",
+    "verdict": "ok",
+    "evidence": "Method and rival match BC-QA-07012 expected_solution_path[0] and wrong_approaches[0]."
+   },
+   {
+    "id": "ex-1",
+    "verdict": "ok",
+    "evidence": "SymPy dsolve check residual 0 and initial value 0: y = 3*exp(x**2 - 1) solves dy/dx = 2xy, y(1) = 3; C = ln 3 - 1."
+   },
+   {
+    "id": "reader-ex-1",
+    "verdict": "ok",
+    "evidence": "Lines for BC-PT-99028, 99031, 99032 carry the point_types text and its sg citations."
+   },
+   {
+    "id": "err-BC-ERR-07024",
+    "verdict": "ok",
+    "evidence": "Integrating 2xy in x with y fixed gives x**2*y + C; consequence quoted from the bundle."
+   },
+   {
+    "id": "err-BC-ERR-07025",
+    "verdict": "ok",
+    "evidence": "ln y = 2x is the x side left unintegrated; consequence quoted from the bundle."
+   },
+   {
+    "id": "err-BC-ERR-07026",
+    "verdict": "ok",
+    "evidence": "Consequence and BC-MIS-07016 text match the bundle."
+   },
+   {
+    "id": "err-BC-ERR-07028",
+    "verdict": "ok",
+    "evidence": "2xy + 3 has no common factor; BC-MIS-07014 text matches."
+   },
+   {
+    "id": "representations",
+    "verdict": "ok",
+    "evidence": "null; the 7.6 Representations paragraph names BC-REP-01 and BC-REP-06 only."
+   },
+   {
+    "id": "bridge-BC-PRQ-06003",
+    "verdict": "ok",
+    "evidence": "Matches the failure_signature on ln of a negative quantity."
+   },
+   {
+    "id": "bridge-BC-PRQ-07001",
+    "verdict": "ok",
+    "evidence": "Matches the failure_signature on no explicit expression."
+   },
+   {
+    "id": "bridge-BC-PRQ-07002",
+    "verdict": "ok",
+    "evidence": "Matches the failure_signature on the differential not moved across."
+   },
+   {
+    "id": "chk-1",
+    "verdict": "ok",
+    "evidence": "exp(log(3) + x**2 - 1) simplifies to 3*exp(x**2 - 1)."
+   },
+   {
+    "id": "chk-2",
+    "verdict": "ok",
+    "evidence": "SymPy dsolve check residual 0 and initial value 0 for dy/dx = -2x**2 y, y(0) = 5."
+   },
+   {
+    "id": "chk-3",
+    "verdict": "ok",
+    "evidence": "SymPy dsolve check residual 0 and initial value 0 for key; A: y held at 2 gives 4x**2 + C, C = -2; C: ln y = 4x + C gives 2e^(4x - 4); D: ln y = 2x**2 gives e^(2x**2)."
+   }
+  ],
+  "advice": [
+   "Delivery modes fit: text for the rule statements, step_reveal for the process lines.",
+   "st-2 is served low band only, so the mid band never sees the separable or not judgment that BC-QA-07012 and ki-1 raise; err-BC-ERR-07028 is also low band only.",
+   "The reader lines teach the separation, constant and answer habits; the antiderivative points are untagged, so the scoring of the two antiderivatives is not shown (declared inferred).",
+   "err-BC-ERR-07024 right_step writes log(y) without absolute value while ex-1 writes log(Abs(y)); consistent notation would read better."
+  ],
+  "counts": {
+   "ok": 18,
+   "unsourced": 0,
+   "wrong": 0,
+   "over_cap": 0,
+   "lint": 0
+  }
  }
 }

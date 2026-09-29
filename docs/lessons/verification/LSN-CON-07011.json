@@ -33,5 +33,88 @@
    }
   ],
   "answers_file": "/tmp/claude-0/-home-user-growth/ac029253-8ff0-5a4b-8b5f-cdcaf5e8ff8d/scratchpad/verify/answers_11.json"
+ },
+ "audit": {
+  "date": "2026-09-29",
+  "auditor": "claude-opus-5-5",
+  "blocks": [
+   {
+    "id": "orientation",
+    "verdict": "ok",
+    "evidence": "Paraphrases BC-CON-07011 and FUN-7.H.1, FUN-7.H.2."
+   },
+   {
+    "id": "ki-1",
+    "verdict": "ok",
+    "evidence": "FUN-7.H.1 on ced:145 and BC-MIS-07024."
+   },
+   {
+    "id": "ki-2",
+    "verdict": "ok",
+    "evidence": "FUN-7.H.2 and FUN-7.H.3 on ced:145; BC-MIS-07026 on the sign of the rate."
+   },
+   {
+    "id": "st-1",
+    "verdict": "ok",
+    "evidence": "fixed 2026-09-29: cue cut to 19 words; Cue has 21 words, cap 20: \"A logistic equation and an initial value between 0 and the capacity; the stem asks for a limit or a meaning.\""
+   },
+   {
+    "id": "ex-1",
+    "verdict": "ok",
+    "evidence": "SymPy: zeros of P(600 - P)/2400 are 0 and 600; value 24 at P = 120; solution 600/(1 + 4e^(-t/4)) has limit 600."
+   },
+   {
+    "id": "err-BC-ERR-07039",
+    "verdict": "ok",
+    "evidence": "BC-MIS-07024 text matches; consequence quoted."
+   },
+   {
+    "id": "err-BC-ERR-07043",
+    "verdict": "ok",
+    "evidence": "BC-MIS-07023 text matches; consequence quoted."
+   },
+   {
+    "id": "err-BC-ERR-07044",
+    "verdict": "ok",
+    "evidence": "SymPy: 600/(1 + 4*exp(-t/4)) satisfies the ODE with P(0) = 120 (residual 0); BC-MIS-07025 text matches."
+   },
+   {
+    "id": "representations",
+    "verdict": "ok",
+    "evidence": "null."
+   },
+   {
+    "id": "bridge-BC-PRQ-07003",
+    "verdict": "ok",
+    "evidence": "Matches description_plain on jointly proportional."
+   },
+   {
+    "id": "chk-1",
+    "verdict": "ok",
+    "evidence": "Value 24 at P = 120, positive, limit 600."
+   },
+   {
+    "id": "chk-2",
+    "verdict": "ok",
+    "evidence": "SymPy: zeros of F/3 - F**2/2700 are 0 and 900; value 27 at F = 90."
+   },
+   {
+    "id": "chk-3",
+    "verdict": "ok",
+    "evidence": "Key is the complete sentence; A, C, D follow BC-ERR-07039, 07043, 07044."
+   }
+  ],
+  "advice": [
+   "The problem statement gives the constant 1/2400 while chk-3 uses the (1/2)R(1 - R/400) form; ki-1 shows only ky(a - y), so the equivalence of the two forms is never taught.",
+   "BC-QA-07009 expected_solution_path includes half the capacity at fastest change; the lesson defers it to LSN-CON-07012, which is fine but st-1 cue mentions only limit or meaning.",
+   "chk-3 option D (\"Nothing, until solved\") reflects BC-MIS-07026 better than BC-ERR-07044."
+  ],
+  "counts": {
+   "ok": 13,
+   "unsourced": 0,
+   "wrong": 0,
+   "over_cap": 0,
+   "lint": 0
+  }
  }
 }

@@ -78,8 +78,8 @@ BC-QA-05004 has `calculator_status` either, so the lesson takes Section I Part A
 
 ## Band plan
 
-- Low (full): orientation, ki-1, ki-2, st-1, ex-1 with its scoring line, the four error blocks, chk-1 to chk-3, the three bridges. 538 words, 3.6 minutes (cap 900 and 6).
-- Mid (brief): orientation, ki-1, ki-2, st-1, ex-1 with its scoring line, err-BC-ERR-05015, err-BC-ERR-05016, chk-1, chk-2, the bridges. 425 words, 2.9 minutes (cap 450 and 3).
+- Low (full): orientation, ki-1, ki-2, st-1, ex-1 with its scoring line, the four error blocks, chk-1 to chk-3, the three bridges. 550 words, 3.7 minutes (cap 900 and 6).
+- Mid (brief): orientation, ki-1, ki-2, st-1, ex-1 with its scoring line, err-BC-ERR-05015, err-BC-ERR-05016, chk-1, chk-2, the bridges. 437 words, 3.0 minutes (cap 450 and 3).
 - Refresher: ki-1, ki-2, err-BC-ERR-05015, err-BC-ERR-05016, err-BC-ERR-05030, err-BC-ERR-05031, ex-1.
 
 ## Sources
@@ -679,12 +679,12 @@ BC-QA-05004 has `calculator_status` either, so the lesson takes Section I Part A
   "research/exam/exam-structure.md#Section and part layout"
  ],
  "word_count": {
-  "full": 538,
-  "brief": 425
+  "full": 550,
+  "brief": 437
  },
  "read_minutes": {
-  "full": 3.6,
-  "brief": 2.9
+  "full": 3.7,
+  "brief": 3.0
  }
 }
 ```

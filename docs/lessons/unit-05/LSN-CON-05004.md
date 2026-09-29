@@ -76,8 +76,8 @@ BC-QA-05008 has `calculator_status` either, so the lesson takes Section I Part A
 
 ## Band plan
 
-- Low (full): orientation, ki-1, st-1, ex-1 with its scoring line, the four error blocks, chk-1 to chk-3, the four bridges. 581 words, 3.9 minutes (cap 900 and 6).
-- Mid (brief): orientation, ki-1, st-1, ex-1 with its scoring line, err-BC-ERR-05014, err-BC-ERR-05015, chk-1, chk-2, the bridges. 446 words, 3.0 minutes (cap 450 and 3).
+- Low (full): orientation, ki-1, st-1, ex-1 with its scoring line, the four error blocks, chk-1 to chk-3, the four bridges. 585 words, 3.9 minutes (cap 900 and 6).
+- Mid (brief): orientation, ki-1, st-1, ex-1 with its scoring line, err-BC-ERR-05014, err-BC-ERR-05015, chk-1, chk-2, the bridges. 450 words, 3.0 minutes (cap 450 and 3).
 - Refresher: ki-1, err-BC-ERR-05014, err-BC-ERR-05015, err-BC-ERR-05016, err-BC-ERR-05017, ex-1.
 
 ## Sources
@@ -113,7 +113,7 @@ BC-QA-05008 has `calculator_status` either, so the lesson takes Section I Part A
   "BC-SKL-05018"
  ],
  "orientation": {
-  "text": "A response splits at zeros of f' and where f' or f is undefined, reports open intervals, and cites the sign of f' on each.",
+  "text": "A response splits at zeros of f' and where f' or f is undefined, reports open intervals, and cites the sign of f'.",
   "sources": [
    "BC-CON-05004",
    "research/units/unit-05-analytical-applications-differentiation.md#5.3 Determining Intervals on Which a Function is Increasing or Decreasing"
@@ -125,7 +125,7 @@ BC-QA-05008 has `calculator_status` either, so the lesson takes Section I Part A
    "ek_id": "BC-EK-FUN-4A1",
    "depth": "core",
    "text": "f' > 0 on an open interval means f increases there; f' < 0 means it decreases. Intervals end at zeros of f' and where f' or f is undefined. The reason cites the sign of f'.",
-   "notation": "f' > 0; f' < 0; increasing; decreasing",
+   "notation": "f' > 0; f' < 0",
    "quote": {
     "text": "including intervals where the function is increasing or decreasing.",
     "source": "ced:101"
@@ -144,7 +144,7 @@ BC-QA-05008 has `calculator_status` either, so the lesson takes Section I Part A
    "archetype_id": "BC-QA-05008",
    "cue": "Intervals of increase, from f or f'?",
    "method": "First line: zeros of f' and where f' or f is undefined.",
-   "rival": "Rival: testing one input and generalising.",
+   "rival": "Rival: one test input, generalised.",
    "separating_feature": "Every partition point, including a domain gap, ends an interval.",
    "sources": [
     "BC-QA-05008"
@@ -197,14 +197,14 @@ BC-QA-05008 has `calculator_status` either, so the lesson takes Section I Part A
      "why": "f'(0) = 6, f'(2) = -6, f'(4) > 0, f'(-2) < 0."
     },
     {
-     "cue": "Keep the positive pieces.",
+     "cue": "Positive pieces.",
      "why": "Open intervals, split at 1.",
      "expr": "Union(Interval.open(-1, 1), Interval.open(3, oo))",
      "relation": "new"
     },
     {
      "cue": "Give a reason.",
-     "why": "f is increasing there because f'(x) > 0 on (-1, 1) and (3, oo).",
+     "why": "f'(x) > 0 on (-1, 1) and (3, oo), so f increases there.",
      "point_type_id": "BC-PT-99005"
     }
    ],
@@ -322,11 +322,11 @@ BC-QA-05008 has `calculator_status` either, so the lesson takes Section I Part A
   },
   {
    "prq_id": "BC-PRQ-05002",
-   "text": "One test value per piece fixes its sign."
+   "text": "One test value fixes each piece's sign."
   },
   {
    "prq_id": "BC-PRQ-05003",
-   "text": "No interval crosses an input where f is undefined."
+   "text": "No interval crosses an undefined input."
   },
   {
    "prq_id": "BC-PRQ-05006",
@@ -411,7 +411,7 @@ BC-QA-05008 has `calculator_status` either, so the lesson takes Section I Part A
     "domain_break": "none"
    },
    "stem": {
-    "text": "f'(x) = (x + 2)(x - 2). On what open intervals is f decreasing?",
+    "text": "f'(x) = (x + 2)(x - 2). Where is f decreasing?",
     "command_verb": "find"
    },
    "key": {
@@ -705,8 +705,8 @@ BC-QA-05008 has `calculator_status` either, so the lesson takes Section I Part A
   "research/exam/exam-structure.md#Section and part layout"
  ],
  "word_count": {
-  "full": 581,
-  "brief": 446
+  "full": 585,
+  "brief": 450
  },
  "read_minutes": {
   "full": 3.9,

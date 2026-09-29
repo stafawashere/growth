@@ -53,7 +53,7 @@ BC-QA-05014 lists BC-PT-99013; ex-1 tags it on the equation step, and the line i
 Five active errors meet the skills; the first four in the bundle's order are served (low band all four, mid band the first two). BC-ERR-05013 is left out by the cap of 4 and is served in BC-CON-05005.
 
 - err-BC-ERR-05009: the list without the equation, against the equation. Statement-shaped. No possible reason line: neither linked description names the missing equation.
-- err-BC-ERR-05010: -2 kept, against the list without it. No possible reason line: BC-MIS-05012 speaks of intervals, not critical points.
+- err-BC-ERR-05010: f' left unreduced as (7 - x)(x + 2)/((x - 1)^(1/3)(x + 2)^3), whose numerator vanishes at -2, so -2 is kept, against the list without it (f(-2) undefined). No possible reason line: BC-MIS-05012 speaks of intervals, not critical points.
 - err-BC-ERR-05011: {7} against {1, 7}. Possible reason, words from BC-MIS-05009.
 - err-BC-ERR-05012 on ex-1's f over [0, 10]: the relative maximum f(7) = 6^(2/3)/3 reported as the maximum, against f(0) = 3/2. Possible reason, words from BC-MIS-05007.
 
@@ -84,8 +84,8 @@ BC-QA-05014 is `no_calculator` and a single multiple choice or short answer ques
 
 ## Band plan
 
-- Low (full): orientation, ki-1, ki-2, st-1 to st-3, ex-1 with its scoring line, the four error blocks, chk-1 to chk-3, the three bridges. 690 words, 4.6 minutes (cap 900 and 6).
-- Mid (brief): orientation, ki-1, ki-2, st-1, ex-1 with its scoring line, err-BC-ERR-05009, err-BC-ERR-05010, chk-1, chk-2, the bridges. 436 words, 3.0 minutes (cap 450 and 3).
+- Low (full): orientation, ki-1, ki-2, st-1 to st-3, ex-1 with its scoring line, the four error blocks, chk-1 to chk-3, the three bridges. 701 words, 4.7 minutes (cap 900 and 6).
+- Mid (brief): orientation, ki-1, ki-2, st-1, ex-1 with its scoring line, err-BC-ERR-05009, err-BC-ERR-05010, chk-1, chk-2, the bridges. 447 words, 3.0 minutes (cap 450 and 3).
 - Refresher: ki-1, ki-2, err-BC-ERR-05009, err-BC-ERR-05010, err-BC-ERR-05011, err-BC-ERR-05012, ex-1.
 
 ## Sources
@@ -309,11 +309,11 @@ BC-QA-05014 is `no_calculator` and a single multiple choice or short answer ques
   {
    "error_id": "BC-ERR-05010",
    "wrong_step": {
-    "text": "-2 kept.",
+    "text": "Unreduced f' numerator (7 - x)(x + 2) vanishes at -2: kept.",
     "expr": "FiniteSet(-2, 1, 7)"
    },
    "right_step": {
-    "text": "-2 dropped.",
+    "text": "f(-2) undefined: dropped.",
     "expr": "FiniteSet(1, 7)"
    },
    "relation": "distinct",
@@ -899,11 +899,11 @@ BC-QA-05014 is `no_calculator` and a single multiple choice or short answer ques
   "research/exam/exam-structure.md#Section and part layout"
  ],
  "word_count": {
-  "full": 690,
-  "brief": 436
+  "full": 701,
+  "brief": 447
  },
  "read_minutes": {
-  "full": 4.6,
+  "full": 4.7,
   "brief": 3.0
  }
 }

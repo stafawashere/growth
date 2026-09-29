@@ -50,8 +50,8 @@
    },
    {
     "id": "st-1",
-    "verdict": "wrong",
-    "evidence": "evidence_tag 'verified' but the bundle's BC-QA-05011 record has evidence_tag 'inferred'; the design also says 'Not tagged inferred'."
+    "verdict": "ok",
+    "evidence": "fixed 2026-09-29: evidence_tag set to inferred"
    },
    {
     "id": "ex-1",
@@ -101,11 +101,15 @@
    "No prerequisite bridge; the bundle offers none for this concept, which is consistent."
   ],
   "counts": {
-   "ok": 10,
+   "ok": 11,
    "unsourced": 0,
-   "wrong": 1,
+   "wrong": 0,
    "over_cap": 0,
    "lint": 0
   }
- }
+ },
+ "fix_notes": [
+  "st-1 evidence_tag fixed by the orchestrator.",
+  "Left as preferences: st-1 rival choice; ex-1 practising the objective line; no prerequisite bridge."
+ ]
 }

@@ -113,7 +113,7 @@ BC-QA-05008 has `calculator_status` either, so the lesson takes Section I Part A
   "BC-SKL-05018"
  ],
  "orientation": {
-  "text": "A response splits the line at zeros of f' and where f' or f is undefined, reports open intervals, and gives the sign of f' on each as its reason.",
+  "text": "A response splits at zeros of f' and where f' or f is undefined, reports open intervals, and cites the sign of f' on each.",
   "sources": [
    "BC-CON-05004",
    "research/units/unit-05-analytical-applications-differentiation.md#5.3 Determining Intervals on Which a Function is Increasing or Decreasing"
@@ -124,7 +124,7 @@ BC-QA-05008 has `calculator_status` either, so the lesson takes Section I Part A
    "id": "ki-1",
    "ek_id": "BC-EK-FUN-4A1",
    "depth": "core",
-   "text": "f' > 0 on an open interval means f increases there; f' < 0 means it decreases. The intervals end at zeros of f' and where f' or f is undefined. The reason names f' and its sign on that interval.",
+   "text": "f' > 0 on an open interval means f increases there; f' < 0 means it decreases. Intervals end at zeros of f' and where f' or f is undefined. The reason cites the sign of f'.",
    "notation": "f' > 0; f' < 0; increasing; decreasing",
    "quote": {
     "text": "including intervals where the function is increasing or decreasing.",
@@ -142,8 +142,8 @@ BC-QA-05008 has `calculator_status` either, so the lesson takes Section I Part A
   {
    "id": "st-1",
    "archetype_id": "BC-QA-05008",
-   "cue": "On what open intervals is f increasing, from f or f'?",
-   "method": "First line: zeros of f' and inputs where f' or f is undefined.",
+   "cue": "Intervals of increase, from f or f'?",
+   "method": "First line: zeros of f' and where f' or f is undefined.",
    "rival": "Rival: testing one input and generalising.",
    "separating_feature": "Every partition point, including a domain gap, ends an interval.",
    "sources": [
@@ -170,13 +170,13 @@ BC-QA-05008 has `calculator_status` either, so the lesson takes Section I Part A
     "domain_break": "odd"
    },
    "problem": {
-    "text": "f is defined for x ≠ 1, with f'(x) = 2(x + 1)(x - 3)/(x - 1). On what open intervals is f increasing? Give a reason.",
+    "text": "For x ≠ 1, f'(x) = 2(x + 1)(x - 3)/(x - 1). On what open intervals is f increasing? Give a reason.",
     "command_verb": "find"
    },
    "calculator_status": "no_calculator",
    "steps": [
     {
-     "cue": "Intervals asked: partition first.",
+     "cue": "Partition first.",
      "why": "Numerator zeros.",
      "expr": "2*(x + 1)*(x - 3) = 0",
      "relation": "new"
@@ -190,7 +190,7 @@ BC-QA-05008 has `calculator_status` either, so the lesson takes Section I Part A
     },
     {
      "cue": "Denominator x - 1.",
-     "why": "f and f' undefined at 1: a partition point."
+     "why": "Undefined at 1: a partition point."
     },
     {
      "cue": "Sign on each piece.",
@@ -318,7 +318,7 @@ BC-QA-05008 has `calculator_status` either, so the lesson takes Section I Part A
  "prerequisite_bridges": [
   {
    "prq_id": "BC-PRQ-05001",
-   "text": "Set each factor and the denominator to zero."
+   "text": "Zero each factor and the denominator."
   },
   {
    "prq_id": "BC-PRQ-05002",
@@ -330,7 +330,7 @@ BC-QA-05008 has `calculator_status` either, so the lesson takes Section I Part A
   },
   {
    "prq_id": "BC-PRQ-05006",
-   "text": "Read the axis label: f or f'?"
+   "text": "Axis label: f or f'?"
   }
  ],
  "time": {

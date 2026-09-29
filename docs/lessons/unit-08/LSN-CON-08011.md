@@ -75,8 +75,8 @@ BC-QA-08008 is `either`; the design takes Section I Part A, 2.14 minutes per que
 
 ## Band plan
 
-- Low (full): orientation, ki-1, st-1, ex-1 with its reader line, both error blocks, chk-1 to chk-3, both bridges. 0 words.
-- Mid (brief): orientation, ki-1, st-1, ex-1 with its reader line, both error blocks, chk-1, chk-2, both bridges. 0 words.
+- Low (full): orientation, ki-1, st-1, ex-1 with its reader line, both error blocks, chk-1 to chk-3, both bridges. 455 words, 3.1 minutes (cap 900 and 6).
+- Mid (brief): orientation, ki-1, st-1, ex-1 with its reader line, both error blocks, chk-1, chk-2, both bridges. 446 words, 3.0 minutes (cap 450 and 3).
 - Refresher: ki-1, err-BC-ERR-08019, err-BC-ERR-99019, ex-1.
 
 ## Sources
@@ -104,7 +104,7 @@ BC-QA-08008 is `either`; the design takes Section I Part A, 2.14 minutes per que
  "unit": "08",
  "skills": ["BC-SKL-08020", "BC-SKL-08021"],
  "orientation": {
-  "text": "A response takes the limits from where the curves meet, solving f(x) = g(x) by hand or on a calculator, or from the vertical lines that bound the region.",
+  "text": "A response takes the limits from where the curves meet, solving f(x) = g(x) by hand or on a calculator, or from the vertical lines bounding the region.",
   "sources": ["BC-CON-08011", "research/units/unit-08-applications-integration.md#8.4 Finding the Area Between Curves Expressed as Functions of x"]
  },
  "key_ideas": [
@@ -112,7 +112,7 @@ BC-QA-08008 is `either`; the design takes Section I Part A, 2.14 minutes per que
    "id": "ki-1",
    "ek_id": "BC-EK-CHA-5A1",
    "depth": "core",
-   "text": "The limits are the inputs where the region begins and ends: vertical lines the stem names, or the solutions of f(x) = g(x). Every solution is found and those bounding the region are kept. On a calculator the crossings are stored, not retyped, so the area stays correct to three places.",
+   "text": "The limits are the inputs where the region begins and ends: vertical lines the stem names, or the solutions of f(x) = g(x). Every solution is found; those bounding the region are kept. On a calculator the crossings are stored, not retyped, so the area stays correct to three places.",
    "notation": "intersection points as limits",
    "quote": {"text": "Areas of regions in the plane can be calculated with definite integrals.", "source": "ced:155"},
    "sources": ["BC-EK-CHA-5A1", "ced:155", "BC-SKL-08020", "BC-SKL-08021", "research/units/unit-08-applications-integration.md#8.4 Finding the Area Between Curves Expressed as Functions of x"]
@@ -124,7 +124,7 @@ BC-QA-08008 is `either`; the design takes Section I Part A, 2.14 minutes per que
    "archetype_id": "BC-QA-08008",
    "cue": "The stem asks for the area enclosed by two graphs, from curve equations with no vertical line named.",
    "method": "First written line: \\(f(x)=g(x)\\), solved for every input; the solutions are the limits.",
-   "rival": "Rival: limits from other inputs, such as the y coordinates or the window (BC-ERR-08019).",
+   "rival": "Rival: limits from other inputs, such as y coordinates (BC-ERR-08019).",
    "separating_feature": "No vertical line in the stem: the limits come from f = g.",
    "sources": ["BC-QA-08008"],
    "evidence_tag": "verified"
@@ -139,7 +139,7 @@ BC-QA-08008 is `either`; the design takes Section I Part A, 2.14 minutes per que
    "problem": {"text": "Find the area of the region enclosed by \\(f(x)=-x^2+6x-4\\) and \\(g(x)=2x-1\\).", "command_verb": "find"},
    "calculator_status": "no_calculator",
    "steps": [
-    {"cue": "Enclosed, no vertical line: the limits are where the graphs meet.", "why": "The region begins and ends at \\(f=g\\).", "expr": "-x**2 + 6*x - 4 = 2*x - 1", "relation": "new"},
+    {"cue": "Enclosed, no vertical line: limits where the graphs meet.", "why": "The region begins and ends at \\(f=g\\).", "expr": "-x**2 + 6*x - 4 = 2*x - 1", "relation": "new"},
     {"cue": "Collect and factor.", "why": "\\(x^2-4x+3=(x-1)(x-3)\\).", "expr": "FiniteSet(1, 3)", "relation": "solve", "variable": "x"},
     {"cue": "Limits 1 and 3; \\(f(2)=4\\) tops \\(g(2)=3\\).", "why": "Upper minus lower between the meeting points.", "expr": "Integral(-x**2 + 6*x - 4 - (2*x - 1), (x, 1, 3))", "relation": "new", "point_type_id": "BC-PT-99001"},
     {"cue": "Antiderivative at the limits.", "why": "\\(F(x)=-x^3/3+2x^2-3x\\).", "expr": "(-9 + 18 - 9) - (-1/3 + 2 - 3)", "relation": "equivalent"},
@@ -252,8 +252,8 @@ BC-QA-08008 is `either`; the design takes Section I Part A, 2.14 minutes per que
   {"block": "err-BC-ERR-99019", "mode": "step_reveal", "reason": "rule 1", "sources": []}
  ],
  "refresher": ["ki-1", "err-BC-ERR-08019", "err-BC-ERR-99019", "ex-1"],
- "read_minutes": {"full": 4.0, "brief": 3.0},
- "word_count": {"full": 0, "brief": 0},
+ "read_minutes": {"full": 3.1, "brief": 3.0},
+ "word_count": {"full": 455, "brief": 446},
  "research_lines": [
   {"file": "research/units/unit-08-applications-integration.md", "line": "The limits are the inputs where the region begins and ends"}
  ],

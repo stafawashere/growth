@@ -37,9 +37,9 @@
       {
          "id": "A",
          "is_key": false,
-         "error_path": "BC-ERR-99001",
-         "label": "f is not continuous at \\( x = 1 \\), because it has no value there, so it cannot be continuous at \\( x = 1 \\).",
-         "derivation": "a justification about an unnamed it, which reads the missing function value on one branch as missing for f, so the reason given is false",
+         "error_path": "BC-ERR-01017",
+         "label": "f is not continuous at \\( x = 1 \\), because \\( f(1) = 2 \\), which differs from the limit from the right, -2.",
+         "derivation": "f(1) evaluated in the branch for the left side, which does not include x = 1, so the function value seems to differ from the right hand limit",
          "mechanism": "conceptual_confusion"
       },
       {

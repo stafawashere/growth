@@ -211,4 +211,3 @@ class SignedOutProvider:
 def test_an_expired_sign_in_is_raised_so_the_caller_can_mark_the_tutor_unavailable():
    with pytest.raises(SubscriptionAuthFailed):
       tutor.compose_sentence(SignedOutProvider(), make_feedback())
-

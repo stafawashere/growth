@@ -404,4 +404,3 @@ def test_an_expired_sign_in_makes_the_grader_unavailable_rather_than_an_unread_g
       judge._generate(object())
 
    assert "sign-in expired" in str(unavailable.value)
-

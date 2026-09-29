@@ -123,7 +123,7 @@ _AUTH_PATTERNS = tuple(
       r"authentication_failed",
       r"failed to authenticate",
       r"invalid api key",
-      r"oauth",
+      r"oauth session expired",
    )
 )
 

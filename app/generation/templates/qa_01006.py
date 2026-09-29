@@ -122,6 +122,8 @@ def build(names):
       key_label = f"f is not continuous at {math(at)}, because the limits from the left and from the right are {left_limit} and {right_limit}."
       wrong_branch_value = point_value
       far_side = "right" if closes_left else "left"
+      near_side = "left" if closes_left else "right"
+      far_value = right_limit if closes_left else left_limit
       distractors = [
          Distractor(
             error_path="BC-ERR-01014",
@@ -136,9 +138,9 @@ def build(names):
             mechanism="conceptual_confusion",
          ),
          Distractor(
-            error_path="BC-ERR-99001",
-            derivation="a justification about an unnamed it, which reads the missing function value on one branch as missing for f, so the reason given is false",
-            label=f"f is not continuous at {math(at)}, because it has no value there, so it cannot be continuous at {math(at)}.",
+            error_path="BC-ERR-01017",
+            derivation=f"f({boundary}) evaluated in the branch for the {far_side} side, which does not include x = {boundary}, so the function value seems to differ from the {near_side} hand limit",
+            label=f"f is not continuous at {math(at)}, because {math(f'f({boundary}) = {far_value}')}, which differs from the limit from the {near_side}, {point_value}.",
             mechanism="conceptual_confusion",
          ),
       ]

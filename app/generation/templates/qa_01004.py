@@ -50,7 +50,7 @@ def build(names):
    limit_value = sympy.Rational(target - top_root, target - bottom_root)
    top_tex, bottom_tex = tex(numerator), tex(denominator)
    limit_tex = rf"\lim_{{x \to {target}}} \frac{{{top_tex}}}{{{bottom_tex}}}"
-   request = " State the form that substitution produces, and show the work that leads to your answer." if is_stated else ""
+   request = " Give a reason for the answer." if is_stated else ""
    stem = f"Find the exact value of {math(limit_tex)}.{request}"
 
    reduced = (x - top_root) / (x - bottom_root)

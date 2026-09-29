@@ -50,9 +50,19 @@ CONTEXTS = {
    "rainfall": ("W", "the depth of water in a rain barrel", "t", "hours", "hour", "centimeters", "centimeters"),
 }
 
+SUBJECTS_THAT_FALL = {
+   "runner": "the distance a runner has left to cover on a trail",
+   "download": "the amount of a file that is still to be downloaded",
+}
+
 
 def build(names):
    letter, subject, variable, time_plural, time_single, units_heading, units = CONTEXTS[names["context"]]
+   is_decreasing = names["trend"] == "decreasing"
+
+   if is_decreasing:
+      subject = SUBJECTS_THAT_FALL.get(names["context"], subject)
+
    times = [int(value) for value in names["times"]]
    column = [int(value) for value in names["column"]]
    low_time, point_time, high_time = times[1], times[2], times[3]

@@ -185,13 +185,13 @@ def build(names):
             mechanism="conceptual_confusion",
          ),
          Distractor(
-            error_path="BC-ERR-05004",
-            derivation="existence asserted from the arithmetic alone, with no theorem named and no check that one applies",
+            error_path="BC-ERR-05003",
+            derivation="the average rate formed with the subtraction in the wrong order, which gives the opposite of the named value",
             label=(
-               f"Yes. Since {short_quotient}, there is a c with {math(f'{low} < c < {high}')} and {math(derivative_target)}, "
-               "because an average rate of change is always reached by the derivative."
+               f"No. The average rate of change of f over {closed} is {math(reversed_quotient)}, which is not "
+               f"{math(tex(rate))}, so the Mean Value Theorem does not give such a c."
             ),
-            mechanism="theorem_condition_ignored",
+            mechanism="sign_error",
          ),
       ]
 

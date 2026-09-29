@@ -118,6 +118,7 @@ def build(names):
    gap_antiderivative = sympy.integrate(sympy.expand(gap), x)
    area = gap_antiderivative.subs(x, right) - gap_antiderivative.subs(x, left)
    lower_area = sympy.integrate(lower, (x, left, right))
+   squared_gap_area = sympy.integrate(sympy.expand(gap**2), (x, left, right))
 
    functions = f"{math('f(x) = ' + tex_f(upper))} and {math('g(x) = ' + tex_f(lower))}"
 
@@ -167,10 +168,10 @@ def build(names):
 
    distractors = [
       Distractor(
-         error_path="BC-ERR-08020",
-         derivation="the integrand written as g(x) - f(x), lower minus upper",
-         value=-area,
-         mechanism="reversed_quantities",
+         error_path="BC-ERR-99011",
+         derivation="the difference f(x) - g(x) squared in the integrand, as for a volume, so the integral of (f(x) - g(x))^2 is reported",
+         value=squared_gap_area,
+         mechanism="conceptual_confusion",
       ),
       Distractor(
          error_path="BC-ERR-99009",

@@ -71,11 +71,17 @@ def build(names):
       right_side = sympy.Add(x_part * y, constant, evaluate=False)
 
    equation = r"\frac{dy}{dx} = " + tex(right_side)
-   stem = (
-      f"Consider the differential equation {math(equation)}. Decide whether it can be solved by separation of variables. "
-      "If it can, write it with every factor involving y on the side of dy and every factor involving x on the side of dx; "
-      "if it cannot, say so."
-   )
+   if is_separable:
+      stem = (
+         f"Consider the differential equation {math(equation)}. Write it with every factor involving y on the side of dy "
+         "and every factor involving x on the side of dx."
+      )
+   else:
+      stem = (
+         f"Consider the differential equation {math(equation)}. Decide whether it can be solved by separation of variables. "
+         "If it can, write it with every factor involving y on the side of dy and every factor involving x on the side of dx; "
+         "if it cannot, say so."
+      )
 
    if is_separable:
       factored = tex(x_part) + r"\left(" + tex(y + constant) + r"\right)"
@@ -129,5 +135,5 @@ def build(names):
       distractors=distractors,
       representation="BC-REP-06",
       calculator_status="no_calculator",
-      command_verb="determine",
+      command_verb="write" if is_separable else "determine",
    )

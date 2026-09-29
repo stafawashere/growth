@@ -57,11 +57,25 @@ def predicted_success(archetype, settings):
    return round(1 / (1 + math.exp(-logit)), 4)
 
 
+def three_decimal_mathjson(value):
+   """A three-decimal option value that keeps all three places. JSON writes a float as its repr,
+   which drops trailing zeros (4.290 is stored as 4.29), so such a value is written as a MathJSON
+   number string instead."""
+   rounded = float(three_decimals(value))
+   written = f"{rounded:.3f}"
+   repr_keeps_three_places = repr(rounded) == written
+
+   if repr_keeps_three_places:
+      return rounded
+
+   return {"num": written}
+
+
 def _option_value(instance, value):
    is_numeric = instance.key.form == "numeric"
 
    if is_numeric:
-      return from_sympy(three_decimals(value))
+      return three_decimal_mathjson(value)
 
    return from_sympy(sympy.sympify(value))
 

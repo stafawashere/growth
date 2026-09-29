@@ -2,7 +2,7 @@
 import sympy
 
 from app.generation.kit import Distractor, Instance, Key, Step, math, tex
-from app.generation.templates._helpers_d import interval_list_text, merge_touching, pieces_between, sign_on
+from app.generation.templates._helpers_d import interval_list_text, merge_touching, pieces_between, sample_point, sign_on
 
 ARCHETYPE_ID = "BC-QA-05008"
 TEMPLATE_VERSION = "1"
@@ -105,6 +105,41 @@ def _reason(inequality, intervals):
    return f"because {sign_text} {where}"
 
 
+def _function_sign_reason(inequality, intervals):
+   where = "on that interval" if len(intervals) == 1 else "on each of those intervals"
+
+   return f"because {math('f(x) ' + inequality + ' 0')} {where}"
+
+
+def _test_point_missing(low, high, missed):
+   """The test value a student takes in a piece whose chart left out the point missed, moved off
+   that point when the usual choice lands on it."""
+   point = sample_point(low, high)
+   lands_on_missed = point == missed
+
+   if not lands_on_missed:
+      return point
+
+   toward = high if low is None else low
+
+   return (point + toward) / 2
+
+
+def _pieces_missing_a_point(expression, points, missed, wanted_sign):
+   pieces = pieces_between(points)
+   chosen = []
+
+   for low, high in pieces:
+      value = expression.subs(x, _test_point_missing(low, high, missed))
+      value_sign = 1 if value > 0 else -1
+      has_wanted_sign = value_sign == wanted_sign
+
+      if has_wanted_sign:
+         chosen.append((low, high))
+
+   return chosen
+
+
 def _pieces_of_sign(expression, points, wanted_sign):
    pieces = pieces_between(points)
 
@@ -186,9 +221,9 @@ def build(names):
          mechanism="sign_error",
       ),
       Distractor(
-         error_path="BC-ERR-05018",
-         derivation="the right intervals, justified by a pronoun that never says which function is positive or negative",
-         label=_statement(direction, key_intervals, "because it is " + ("positive" if direction_sign == 1 else "negative") + " there"),
+         error_path="BC-ERR-99030",
+         derivation="the sign of f itself offered as the reason, where the direction of f is decided by the sign of f'",
+         label=_statement(direction, key_intervals, _function_sign_reason(inequality, key_intervals)),
          mechanism="conceptual_confusion",
       ),
    ]
@@ -202,11 +237,13 @@ def build(names):
          mechanism="conceptual_confusion",
       ))
    elif domain_break == "odd":
-      numerator_only = derivative * (x - gap)
-      omitted = merge_touching(_pieces_of_sign(numerator_only, [first_zero, second_zero], direction_sign))
+      omitted = merge_touching(_pieces_missing_a_point(derivative, [first_zero, second_zero], gap, direction_sign))
       distractors.append(Distractor(
          error_path="BC-ERR-05017",
-         derivation=f"the sign chart built on the zeros of f' only, leaving out x = {gap} where f' is undefined",
+         derivation=(
+            f"the sign chart cut only at the zeros of f', leaving out x = {gap} where f' is undefined, so one test value "
+            f"decides the sign on the whole piece that contains x = {gap}"
+         ),
          label=_statement(direction, omitted, _reason(inequality, omitted)),
          mechanism="conceptual_confusion",
       ))

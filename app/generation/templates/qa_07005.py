@@ -134,8 +134,8 @@ def build(names):
       ),
       Distractor(
          error_path="BC-ERR-99004",
-         derivation="the sign of the second derivative checked only at the starting point, a local fact offered where the interval is needed",
-         label=_answer(conclusion, f"the second derivative of f is {second_sign} at the starting point, so the graph of f is concave {concavity} at that point"),
+         derivation="the sign of the second derivative checked only at the starting point and carried to the whole interval, a local fact offered where a global one is needed",
+         label=_answer(conclusion, f"the second derivative of f is {second_sign} at the starting point, and a sign found at one point holds on the whole interval"),
          mechanism="conceptual_confusion",
       ),
       Distractor(

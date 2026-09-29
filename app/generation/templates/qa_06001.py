@@ -98,7 +98,7 @@ def build(names):
       stem = (
          f"{opening}, where t is measured in {time_unit} for {window_text}. Selected values of "
          f"R(t) are shown in the table. Using a {endpoint} Riemann sum with the four subintervals indicated by the "
-         f"table, approximate {integral_text}. Show the setup for the sum, and give the answer in {amount_unit}."
+         f"table, approximate {integral_text}, in {amount_unit}."
       )
       representation = "BC-REP-05"
    else:
@@ -106,8 +106,7 @@ def build(names):
       columns = ["t", "R(t)"]
       stem = (
          "The function R is differentiable, and selected values of R(t) are shown in the table. Using a "
-         f"{endpoint} Riemann sum with the four subintervals indicated by the table, approximate {integral_text}. "
-         "Show the setup for the sum."
+         f"{endpoint} Riemann sum with the four subintervals indicated by the table, approximate {integral_text}."
       )
       representation = "BC-REP-03"
 

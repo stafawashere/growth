@@ -91,7 +91,7 @@ def build(names):
    stem = (
       f"A curve is given in polar coordinates by {math('r = ' + tex(radius))}, where "
       f"{math(r'x = r\cos\theta')} and {math(r'y = r\sin\theta')}. {given} A calculator may be used. Without "
-      f"differentiating the polar equation, {request}, and show the work that leads to your answer."
+      f"differentiating the polar equation, {request}."
    )
 
    relation_tex = r"\frac{dy}{dx} = \frac{dy/d\theta}{dx/d\theta}"

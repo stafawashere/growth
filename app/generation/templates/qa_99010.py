@@ -71,16 +71,16 @@ def build(names):
       )
    else:
       comparison_text = (
-         f"{math(r'0 \le g(h) \le b(h)')} for {math(rf'h \ge {split}')}, where b is a function with "
+         f"{math(r'0 \le g(h) \le b(h)')} for {math(rf'h \ge {split}')}, and b is a function with "
          f"{math(rf'\int_{{{split}}}^{{\infty}} b(h)\,dh = {tail}')}"
       )
 
    stem = (
-      f"A vertical shaft is drilled to an unknown depth D meters, where {math(f'D > {split}')}. The amount of {substance} "
-      f"per meter of depth is {math('f(h) = ' + tex(model))} {units} per meter for {math(rf'0 \le h \le {split}')}, where h "
-      f"is the depth in meters. Below depth {split} the amount per meter is an unknown continuous function g(h), and "
-      f"{comparison_text}. Let T be the total amount of {substance}, in {units}, along the whole shaft. Write an expression "
-      f"involving integrals for T, and explain why {math(rf'T \le {bound}')}. Use a calculator for any numerical work."
+      f"A shaft has unknown depth D meters, {math(f'D > {split}')}. At depth h meters it holds "
+      f"{math('f(h) = ' + tex(model))} {units} of {substance} per meter for {math(rf'0 \le h \le {split}')}, and an "
+      f"unknown continuous g(h) {units} per meter below depth {split}, where {comparison_text}. Let T be the total {units} "
+      f"of {substance} in the shaft. Write an expression involving integrals for T, and explain why "
+      f"{math(rf'T \le {bound}')}. Use a calculator."
    )
 
    correct_expression = rf"\int_{{0}}^{{{split}}} f(h)\,dh + \int_{{{split}}}^{{D}} g(h)\,dh"

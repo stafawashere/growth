@@ -157,7 +157,11 @@ def build(names):
    # A dropped (-1)^n that leaves a convergent p-series still reaches a true conclusion, so it is no distractor.
    dropped_is_true = is_left and endpoint_alternates and converges_absolutely
    distractors = [] if dropped_is_true else [first]
-   limit_only = Distractor("BC-ERR-10020", "the alternating series test applied with only the limit condition, the decrease of the sizes never stated", label=option("converges", "the alternating series test", math(rf"\lim_{{n\to\infty}} \frac{{1}}{{{size}}} = 0")))
+   limit_only = Distractor(
+      "BC-ERR-10020",
+      "the alternating series test applied with only the limit condition, the decrease of the sizes never stated and taken as unnecessary",
+      label=option("converges", "the alternating series test", math(rf"\lim_{{n\to\infty}} \frac{{1}}{{{size}}} = 0") + ", and a limit of 0 is all that test needs"),
+   )
 
    if endpoint_alternates and converges_absolutely:
       distractors.append(limit_only)

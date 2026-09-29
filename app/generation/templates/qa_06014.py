@@ -147,6 +147,8 @@ def build(names):
          ),
       ]
       key_label = f"{math(key_sum)}"
+      unindexed_value = _scaled(multiplier, PLAIN_TEX[function](variable))
+      unindexed_sum = rf"\lim_{{n\to\infty}} \sum_{{k=1}}^{{n}} {unindexed_value} \cdot \frac{{{width}}}{{n}}"
       distractors = [
          Distractor(
             error_path="BC-ERR-06003",
@@ -162,9 +164,12 @@ def build(names):
          ),
          Distractor(
             error_path="BC-ERR-99032",
-            derivation=f"the sample points started at 0 instead of {start}, so the sum is over [0, {width}], an interval the integral never gives",
-            label=f"{math(_sum(0, width, width, multiplier, function))}",
-            mechanism="wrong_limits",
+            derivation=(
+               f"the integrand copied into the sum with {variable} left in place of the sample point, so the summand "
+               "never depends on k and the expression is not a Riemann sum"
+            ),
+            label=f"{math(unindexed_sum)}",
+            mechanism="conceptual_confusion",
          ),
       ]
 

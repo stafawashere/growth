@@ -15,6 +15,8 @@ D1. Retrievability priority (T1, T2; synthesis rank 1; science.md 1). A shared e
 
 D2. Where it lands is decided by `simulation-record.md`: it replaces two-term in production only if its paired mean difference against two-term on delayed mastery per item and on retention at day 30 has a 95 percent interval wholly above 0 under both forgetting curves on the fixed world at 60 and 226 days, with skills learned not lower on the same reading. Otherwise it ships behind the switch `selection_priority` in `app/experiments/switches.py` (control `two_term`, treatment `retrievability_priority`, unit the session, default off), so the within-student A/B of plan 10 can decide on delayed checkpoint accuracy.
 
+Outcome, 2026-09-29: `simulation-record.md` (200 students, both worlds, both curves, 60 and 226 days) puts `retrievability_priority` below two_term on delayed mastery per item on every fixed-world reading (-0.00130 to -0.00671, intervals wholly below 0) and below on skills learned everywhere (-9.1 to -48.3), above only on retention day 30; the bar is not met, so it ships behind the switch, default off, and nothing replaces two-term. [verified]
+
 D3. The other candidates (`elo_target`, `spread`, `review_first`) stay in `app/sim` as arms and are not ported unless one clears the bar.
 
 D4. No FSRS parameter, mastery threshold, block cap or retrieval floor moves. The block 1 cap and the review floor are rulings C1 and C2; the redesign instruments them instead: every due skill left unserved is written to the coverage-gap audit with its reason (no published item, below the retrieval floor, refused by the window, past the block cap), so the operator's ruling rests on counts (T3, T17).

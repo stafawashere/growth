@@ -167,3 +167,7 @@ While the panel is open, AI notices for the agent role are not shown, because th
 ## Dark mode and phone width [inferred]
 
 The panel uses the same design tokens as every other surface, so it follows the theme with no additional colour. Boundaries are the tint-ramp ring shadows the redesign uses for hairlines. Under 900 px the sheet replaces the side panel as described above. At 600 px and under the top bar keeps the Ask button, and the sheet covers the bottom tab bar while open.
+
+## The tutor draws, 2026-09-30 [inferred]
+
+On the operator's instruction of 2026-09-30 the tutor can draw one figure into a reply, built on the page step by step as the sentences that explain each step appear, at reading pace, with shapes, text labels and several kinds of stroke. What the student sees, when the tutor may draw, the roles that give a figure its meaning, the step controls, the copy for a figure that could not be drawn, the motion and reduced-motion rules and the accessibility contract are specified in `drawing-design.md`. Every rule above still holds for a reply that draws: a figure that would give away the answer before the item is checked withholds the reply with the same decline, and the figure's words obey the same writing rules as the reply's.

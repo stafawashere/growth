@@ -600,13 +600,43 @@ def answer_skipped_units(db, session_row, item, today, archetypes, engine_graph,
 def skip_diagnostic_unit(db, session_row, item_id, elapsed_ms, today, archetypes, engine_graph, advance):
    """Skip the unit of the diagnostic item on screen: record the unit as skipped and answer the item
    not learned. answer_skipped_units then answers each later item of the unit as it is served."""
+   skip_on_screen_item(
+      db,
+      session_row,
+      item_id,
+      elapsed_ms,
+      today,
+      archetypes,
+      engine_graph,
+      advance,
+      lambda: diagnostic_session.mark_unit_skipped(db, session_row, diagnostic_session.waiting_unit(session_row)),
+   )
+
+
+def skip_whole_diagnostic(db, session_row, item_id, elapsed_ms, today, archetypes, engine_graph, advance):
+   """"I have not learned anything": answer the item on screen not learned, and every later item of
+   every unit through answer_skipped_units as it is served, until the run finishes."""
+   skip_on_screen_item(
+      db,
+      session_row,
+      item_id,
+      elapsed_ms,
+      today,
+      archetypes,
+      engine_graph,
+      advance,
+      lambda: diagnostic_session.mark_everything_skipped(db, session_row),
+   )
+
+
+def skip_on_screen_item(db, session_row, item_id, elapsed_ms, today, archetypes, engine_graph, advance, mark_skipped):
    waiting = advance()
    is_on_screen = waiting is not None and waiting["id"] == item_id
 
    if not is_on_screen:
       raise ValueError(f"item {item_id} is not the diagnostic item waiting for an answer")
 
-   diagnostic_session.mark_unit_skipped(db, session_row, diagnostic_session.waiting_unit(session_row))
+   mark_skipped()
    record_attempt(
       db,
       session_row.id,

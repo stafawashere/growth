@@ -18,6 +18,9 @@ unit is recorded as skipped, and each of its items, the one on screen and any th
 later, is answered "I have not learned this yet" through the ordinary answer path as it is served.
 Nothing else about the run or the placement changes.
 
+"I have not learned anything" is the same answer given to every remaining item of every unit: each
+item the run serves from then on is answered "I have not learned this yet" until the run finishes.
+
 The run finishes when the engine stops it. The placement is then written to skills_state and the
 session is closed, so a first login and a long-gap return both land on home with the queue the
 placed state implies.
@@ -44,6 +47,8 @@ RUN_KEY = "diagnostic"
 ITEMS_KEY = "diagnostic_items"
 
 SKIPPED_UNITS_KEY = "diagnostic_skipped_units"
+
+SKIPS_EVERYTHING_KEY = "diagnostic_skips_everything"
 
 NOT_LEARNED_ANSWER = {"not_learned": True}
 
@@ -90,10 +95,24 @@ def mark_unit_skipped(db, session_row, unit):
    db.flush()
 
 
+def mark_everything_skipped(db, session_row):
+   queue = json.loads(session_row.queue)
+   queue[SKIPS_EVERYTHING_KEY] = True
+   session_row.queue = json.dumps(queue)
+   db.flush()
+
+
+def skips_everything(session_row):
+   return bool(json.loads(session_row.queue).get(SKIPS_EVERYTHING_KEY, False))
+
+
 def waits_in_skipped_unit(session_row):
    unit = waiting_unit(session_row)
 
-   return unit is not None and unit in skipped_units(session_row)
+   if unit is None:
+      return False
+
+   return skips_everything(session_row) or unit in skipped_units(session_row)
 
 
 def empty_queue(run):

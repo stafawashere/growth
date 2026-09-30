@@ -341,6 +341,12 @@ export function skipDiagnosticUnit(sessionId: string, fields: { item_id: string;
    return requestJson<DiagnosticNextItemResponse>(`/sessions/${sessionId}/diagnostic/skip-unit`, jsonInit("POST", fields));
 }
 
+/* app/api/routes/sessions.py skip_whole_diagnostic: "I have not learned this yet" for the item on
+   screen and every later item of every unit, so the reply is the finished run. */
+export function skipWholeDiagnostic(sessionId: string, fields: { item_id: string; elapsed_ms?: number; today?: string }) {
+   return requestJson<DiagnosticNextItemResponse>(`/sessions/${sessionId}/diagnostic/skip-all`, jsonInit("POST", fields));
+}
+
 export function submitAttempt(sessionId: string, fields: SubmitAttemptFields) {
    return requestJson<AttemptResult>(`/sessions/${sessionId}/attempts`, jsonInit("POST", fields));
 }

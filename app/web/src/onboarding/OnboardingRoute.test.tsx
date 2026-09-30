@@ -215,3 +215,29 @@ describe("skipping a unit in the diagnostic", () => {
       expect(screen.queryByTestId("skip-unit-confirmation")).toBeNull();
    });
 });
+
+describe("saying nothing has been learned in the diagnostic", () => {
+   it("asks once more, then skips every remaining item and shows the result", async () => {
+      mocked.readNextItem
+         .mockResolvedValueOnce({ item: item("ITM-A", 0), diagnostic_finished: false })
+         .mockResolvedValue({ item: null, diagnostic_finished: true });
+      mocked.skipWholeDiagnostic.mockResolvedValue({ item: null, diagnostic_finished: true });
+      mocked.readDiagnostic.mockResolvedValue({ units: [] } as unknown as DiagnosticResult);
+      render(<OnboardingRoute reason="first_login" resumeSessionId="SES-D" onFinished={vi.fn()} />);
+
+      await screen.findByText("Evaluate item ITM-A");
+
+      fireEvent.click(screen.getByRole("button", { name: "I have not learned anything" }));
+
+      expect(mocked.skipWholeDiagnostic).not.toHaveBeenCalled();
+
+      fireEvent.click(screen.getByRole("button", { name: "Answer every question that way" }));
+
+      await screen.findByTestId("diagnostic-result");
+
+      expect(mocked.skipWholeDiagnostic).toHaveBeenCalledTimes(1);
+      expect(mocked.skipWholeDiagnostic.mock.calls[0][1]).toMatchObject({ item_id: "ITM-A" });
+      expect(mocked.skipDiagnosticUnit).not.toHaveBeenCalled();
+      expect(mocked.submitAttempt).not.toHaveBeenCalled();
+   });
+});

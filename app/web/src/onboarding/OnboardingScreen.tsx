@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useId, useRef, useState, type KeyboardEvent } from "react";
 
 import type { DiagnosticServedItem, DiagnosticUnit, DiagnosticUnitState } from "../api/types";
 import { MathAnswerField } from "../input/MathAnswerField";
@@ -6,7 +6,7 @@ import { FigureView } from "../figures/FigureView";
 import { MathText } from "../math/MathText";
 import { ANSWER_UNAVAILABLE, COMMIT_LABEL } from "../session/Item";
 import { StudyPlanSection } from "../settings/StudySections";
-import { Icon } from "../ui/Icon";
+import { Icon, type IconName } from "../ui/Icon";
 import { List } from "../ui/List";
 import { Page, PageHeader } from "../ui/Page";
 
@@ -19,6 +19,10 @@ export const NOT_LEARNED_LABEL = "I have not learned this yet";
 export const SKIP_UNIT_LABEL = "Skip this unit";
 
 export const SKIP_UNIT_CONFIRM_LABEL = "Skip the rest of this unit";
+
+export const NOTHING_LEARNED_LABEL = "I have not learned anything";
+
+export const NOTHING_LEARNED_CONFIRM_LABEL = "Answer every question that way";
 
 export const KEEP_ANSWERING_LABEL = "Keep answering";
 
@@ -113,22 +117,117 @@ export interface DiagnosticItemProps {
    onCheck: () => void;
    onNotLearned: () => void;
    onSkipUnit?: () => void;
+   onSkipEverything?: () => void;
 }
 
+type SkipScope = "question" | "unit" | "everything";
+
+type ConfirmableScope = Exclude<SkipScope, "question">;
+
+interface ScopeStep {
+   scope: SkipScope;
+   label: string;
+   reach: string;
+   icon: IconName;
+}
+
+/* The three rungs of the not-learned ladder, narrowest first. Each rung's reach says what the
+   diagnostic does with the rest of the run, so the student sees the scope grow before pressing. */
+const SCOPE_STEPS: ReadonlyArray<ScopeStep> = [
+   { scope: "question", label: NOT_LEARNED_LABEL, reach: "Only this question. The next one comes up.", icon: "spanOne" },
+   { scope: "unit", label: SKIP_UNIT_LABEL, reach: "This question and the rest of its unit. The next unit comes up.", icon: "spanUnit" },
+   {
+      scope: "everything",
+      label: NOTHING_LEARNED_LABEL,
+      reach: "Every question still to come. The diagnostic ends here.",
+      icon: "spanAll"
+   }
+];
+
+const SKIP_CONFIRMATION: Record<ConfirmableScope, { title: string; lead: string; body: string; confirmLabel: string; testId: string }> = {
+   unit: {
+      title: SKIP_UNIT_LABEL,
+      lead: "The rest of this unit is set aside.",
+      body: `Every question still to come from this unit is answered "${NOT_LEARNED_LABEL}", this one included. The other units are still asked.`,
+      confirmLabel: SKIP_UNIT_CONFIRM_LABEL,
+      testId: "skip-unit-confirmation"
+   },
+   everything: {
+      title: NOTHING_LEARNED_LABEL,
+      lead: "This ends the diagnostic.",
+      body: `Every question still to come, from every unit, is answered "${NOT_LEARNED_LABEL}", this one included. You start from the beginning of the course.`,
+      confirmLabel: NOTHING_LEARNED_CONFIRM_LABEL,
+      testId: "skip-everything-confirmation"
+   }
+};
+
 export function DiagnosticItem(props: DiagnosticItemProps) {
-   const { item, state, answerUnavailable, onAnswerChange, onAnswerUnavailable, onCheck, onNotLearned, onSkipUnit } = props;
-   const [isConfirmingSkip, setIsConfirmingSkip] = useState(false);
+   const { item, state, answerUnavailable, onAnswerChange, onAnswerUnavailable, onCheck, onNotLearned, onSkipUnit, onSkipEverything } =
+      props;
+   const [confirmingScope, setConfirmingScope] = useState<ConfirmableScope | null>(null);
+   const keepAnsweringRef = useRef<HTMLButtonElement | null>(null);
+   const ladderId = useId();
 
    const questionNumber = item.diagnostic_position + 1;
    const isSubmitted = state === "submitted";
    const isUnanswered = state === "unanswered";
    const canCheck = !isSubmitted && !isUnanswered && !answerUnavailable;
    const offersCheck = !answerUnavailable;
-   const offersSkip = onSkipUnit !== undefined;
+   const offersSkipUnit = onSkipUnit !== undefined;
+   const offersSkipEverything = onSkipEverything !== undefined;
+   const isConfirming = confirmingScope !== null;
+   const confirmation = isConfirming ? SKIP_CONFIRMATION[confirmingScope] : null;
 
-   function skipUnit() {
-      setIsConfirmingSkip(false);
-      onSkipUnit?.();
+   const offeredSteps = SCOPE_STEPS.filter((step) => {
+      const isUnitStep = step.scope === "unit";
+      const isEverythingStep = step.scope === "everything";
+
+      if (isUnitStep) {
+         return offersSkipUnit;
+      }
+
+      if (isEverythingStep) {
+         return offersSkipEverything;
+      }
+
+      return true;
+   });
+
+   useEffect(() => {
+      if (isConfirming) {
+         keepAnsweringRef.current?.focus();
+      }
+   }, [isConfirming]);
+
+   function pressStep(scope: SkipScope) {
+      if (scope === "question") {
+         setConfirmingScope(null);
+         onNotLearned();
+
+         return;
+      }
+
+      setConfirmingScope(scope);
+   }
+
+   function confirmSkip() {
+      const scope = confirmingScope;
+      setConfirmingScope(null);
+
+      if (scope === "unit") {
+         onSkipUnit?.();
+      }
+
+      if (scope === "everything") {
+         onSkipEverything?.();
+      }
+   }
+
+   function dismissOnEscape(event: KeyboardEvent<HTMLDivElement>) {
+      if (event.key === "Escape") {
+         event.stopPropagation();
+         setConfirmingScope(null);
+      }
    }
 
    return (
@@ -164,23 +263,78 @@ export function DiagnosticItem(props: DiagnosticItemProps) {
                {answerUnavailable ? <p data-testid="answer-unavailable">{ANSWER_UNAVAILABLE}</p> : null}
             </div>
 
-            <div className="submit-row">
-               <div className="cluster">
-                  <button type="button" className="text-button" disabled={isSubmitted} onClick={onNotLearned}>
-                     {NOT_LEARNED_LABEL}
-                  </button>
+            <div className="scope-footer">
+               <section className="scope-ladder" role="group" aria-label="Not learned yet" aria-describedby={`${ladderId}-lead`}>
+                  <p className="scope-ladder-lead" id={`${ladderId}-lead`}>
+                     Not learned yet? Say so and it moves on. Each rung reaches further than the one above it.
+                  </p>
 
-                  {offersSkip && !isConfirmingSkip ? (
-                     <button type="button" className="text-button" disabled={isSubmitted} onClick={() => setIsConfirmingSkip(true)}>
-                        {SKIP_UNIT_LABEL}
-                     </button>
-                  ) : null}
-               </div>
+                  <ol className="scope-steps">
+                     {offeredSteps.map((step, depth) => {
+                        const isConfirmable = step.scope !== "question";
+                        const isOpen = confirmingScope === step.scope;
+                        const showsConfirmation = isOpen && confirmation !== null;
+                        const reachId = `${ladderId}-${step.scope}-reach`;
+
+                        return (
+                           <li key={step.scope} className="scope-step" data-scope={step.scope} data-depth={depth}>
+                              <div className="scope-step-row">
+                                 <button
+                                    type="button"
+                                    className="text-button scope-step-button"
+                                    disabled={isSubmitted}
+                                    aria-describedby={reachId}
+                                    aria-expanded={isConfirmable ? isOpen : undefined}
+                                    onClick={() => pressStep(step.scope)}
+                                 >
+                                    <Icon name={step.icon} />
+                                    <span>{step.label}</span>
+                                 </button>
+
+                                 <span className="scope-step-reach" id={reachId}>
+                                    {step.reach}
+                                 </span>
+                              </div>
+
+                              {showsConfirmation ? (
+                                 <div
+                                    role="alertdialog"
+                                    aria-label={confirmation.title}
+                                    className="scope-confirm"
+                                    data-scope={step.scope}
+                                    data-testid={confirmation.testId}
+                                    onKeyDown={dismissOnEscape}
+                                 >
+                                    <p>
+                                       <strong>{confirmation.lead}</strong> {confirmation.body}
+                                    </p>
+
+                                    <div className="cluster scope-confirm-actions">
+                                       <button ref={keepAnsweringRef} type="button" className="button-secondary button-small" onClick={() => setConfirmingScope(null)}>
+                                          {KEEP_ANSWERING_LABEL}
+                                       </button>
+
+                                       <button
+                                          type="button"
+                                          className={step.scope === "everything" ? "text-button text-button-destructive" : "text-button"}
+                                          disabled={isSubmitted}
+                                          onClick={confirmSkip}
+                                       >
+                                          {confirmation.confirmLabel}
+                                       </button>
+                                    </div>
+                                 </div>
+                              ) : null}
+                           </li>
+                        );
+                     })}
+                  </ol>
+               </section>
 
                {offersCheck ? (
                   <button
                      type="button"
-                     className="motion-instant-submit-answer button-primary"
+                     className="motion-instant-submit-answer button-primary scope-footer-submit"
                      disabled={!canCheck}
                      onClick={onCheck}
                   >
@@ -188,22 +342,6 @@ export function DiagnosticItem(props: DiagnosticItemProps) {
                   </button>
                ) : null}
             </div>
-
-            {offersSkip && isConfirmingSkip ? (
-               <div role="alertdialog" aria-label="Skip this unit" className="callout" data-testid="skip-unit-confirmation">
-                  <p>Every question still to come from this unit is answered &quot;{NOT_LEARNED_LABEL}&quot;, this one included.</p>
-
-                  <div className="cluster">
-                     <button type="button" className="text-button" disabled={isSubmitted} onClick={skipUnit}>
-                        {SKIP_UNIT_CONFIRM_LABEL}
-                     </button>
-
-                     <button type="button" className="text-button" onClick={() => setIsConfirmingSkip(false)}>
-                        {KEEP_ANSWERING_LABEL}
-                     </button>
-                  </div>
-               </div>
-            ) : null}
          </article>
       </Page>
    );

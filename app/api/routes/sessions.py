@@ -249,6 +249,23 @@ def skip_diagnostic_unit(
    """The operator's ruling in the stage 11 brief: "I have not learned this yet" for every
    remaining item of the unit being asked, recorded as that answer is, and nothing else. Replies
    as GET next does."""
+   return skip_diagnostic_items(db, settings, user, session_id, payload, service.skip_diagnostic_unit)
+
+
+@router.post("/{session_id}/diagnostic/skip-all")
+def skip_whole_diagnostic(
+   session_id: str,
+   payload: dict = Body(default=None),
+   db=Depends(get_db, scope="function"),
+   settings=Depends(get_settings),
+   user=Depends(current_user),
+):
+   """"I have not learned anything": "I have not learned this yet" for every remaining item of
+   every unit, recorded as that answer is. Replies as GET next does, which is the finished run."""
+   return skip_diagnostic_items(db, settings, user, session_id, payload, service.skip_whole_diagnostic)
+
+
+def skip_diagnostic_items(db, settings, user, session_id, payload, skip):
    fields = body_of(payload)
    row = owned_session(db, session_id, user)
 
@@ -260,7 +277,7 @@ def skip_diagnostic_unit(
    advance = diagnostic_advancer(db, settings, row, today)
 
    try:
-      service.skip_diagnostic_unit(
+      skip(
          db,
          row,
          fields.get("item_id"),

@@ -1711,6 +1711,153 @@ math-field::part(menu-toggle) {
    gap: var(--growth-space-16);
 }
 
+/* The not-learned ladder on the diagnostic card. Each rung sits one step in from the one above it
+   and hangs off it by an elbow, so the eye reads the three as nested reaches (this question, its
+   unit, everything left) rather than three equal buttons. The confirmation opens under its own rung. */
+
+.scope-footer {
+   display: flex;
+   flex-wrap: wrap;
+   align-items: flex-end;
+   justify-content: space-between;
+   gap: var(--growth-space-16);
+   padding-top: var(--growth-space-16);
+   box-shadow: inset 0 var(--growth-stroke-hairline) 0 var(--growth-accent-tint-3);
+}
+
+.scope-ladder {
+   display: flex;
+   flex: auto;
+   flex-direction: column;
+   gap: var(--growth-space-12);
+}
+
+.scope-footer-submit {
+   flex: none;
+}
+
+.scope-ladder-lead {
+   max-width: 68ch;
+   color: var(--growth-text-secondary);
+   font-size: var(--growth-type-label);
+   line-height: var(--growth-leading-label);
+}
+
+.scope-steps {
+   display: flex;
+   flex-direction: column;
+   gap: var(--growth-space-8);
+   list-style: none;
+   padding: 0;
+   margin: 0;
+}
+
+.scope-step {
+   position: relative;
+   display: flex;
+   flex-direction: column;
+   gap: var(--growth-space-8);
+}
+
+.scope-step[data-depth="1"] {
+   padding-inline-start: var(--growth-space-24);
+}
+
+.scope-step[data-depth="2"] {
+   padding-inline-start: var(--growth-space-48);
+}
+
+.scope-step[data-depth="1"]::before,
+.scope-step[data-depth="2"]::before {
+   content: "";
+   position: absolute;
+   top: calc(var(--growth-space-8) * -1);
+   height: calc(var(--growth-space-8) + var(--growth-space-12));
+   width: var(--growth-space-12);
+   border-left: var(--growth-stroke-hairline) solid var(--growth-accent-tint-4);
+   border-bottom: var(--growth-stroke-hairline) solid var(--growth-accent-tint-4);
+   border-end-start-radius: var(--growth-space-4);
+}
+
+.scope-step[data-depth="1"]::before {
+   left: var(--growth-space-8);
+}
+
+.scope-step[data-depth="2"]::before {
+   left: var(--growth-space-32);
+}
+
+.scope-step-row {
+   display: flex;
+   flex-wrap: wrap;
+   align-items: baseline;
+   gap: var(--growth-space-4) var(--growth-space-12);
+}
+
+.scope-step-button {
+   display: inline-flex;
+   align-items: center;
+   gap: var(--growth-space-8);
+   min-height: var(--growth-space-24);
+   padding: 0;
+   background: none;
+   border: 0;
+   color: var(--growth-text-primary);
+   font-size: var(--growth-type-label);
+   line-height: var(--growth-leading-label);
+   text-align: left;
+   text-decoration: underline;
+   text-decoration-color: transparent;
+   text-underline-offset: var(--growth-space-4);
+   cursor: pointer;
+}
+
+.scope-step-button:hover {
+   color: var(--growth-text-primary);
+   text-decoration-color: currentcolor;
+}
+
+.scope-step-button:disabled {
+   cursor: not-allowed;
+}
+
+.scope-step-button[aria-expanded="true"] {
+   font-family: "Inter Medium", "Inter", system-ui, sans-serif;
+   text-decoration-color: currentcolor;
+}
+
+.scope-step-reach {
+   color: var(--growth-text-muted);
+   font-size: var(--growth-type-caption);
+   line-height: var(--growth-leading-caption);
+}
+
+.scope-confirm {
+   display: flex;
+   flex-direction: column;
+   gap: var(--growth-space-12);
+   max-width: 68ch;
+   padding: var(--growth-space-16) var(--growth-space-24);
+   border-radius: var(--growth-space-4);
+   background: var(--growth-surface-sunken);
+   color: var(--growth-text-secondary);
+   font-size: var(--growth-type-label);
+   line-height: var(--growth-leading-label);
+   box-shadow: inset calc(var(--growth-stroke-hairline) * 3) 0 0 var(--growth-text-muted), 0 0 0 var(--growth-stroke-hairline) var(--growth-accent-tint-3);
+}
+
+.scope-confirm-actions {
+   justify-content: space-between;
+}
+
+.scope-confirm strong {
+   color: var(--growth-text-primary);
+}
+
+.scope-confirm[data-scope="everything"] {
+   box-shadow: inset calc(var(--growth-stroke-hairline) * 3) 0 0 var(--growth-state-incorrect), 0 0 0 var(--growth-stroke-hairline) var(--growth-accent-tint-3);
+}
+
 .feedback {
    gap: var(--growth-space-24);
 }
@@ -2974,6 +3121,22 @@ h3.section-header {
 @media (max-width: 600px) {
    .app-bar {
       padding-inline: var(--growth-space-16);
+   }
+
+   .scope-step[data-depth="1"] {
+      padding-inline-start: var(--growth-space-16);
+   }
+
+   .scope-step[data-depth="2"] {
+      padding-inline-start: var(--growth-space-32);
+   }
+
+   .scope-step[data-depth="1"]::before {
+      left: 0;
+   }
+
+   .scope-step[data-depth="2"]::before {
+      left: var(--growth-space-16);
    }
 
    .lesson-contrast-pair {

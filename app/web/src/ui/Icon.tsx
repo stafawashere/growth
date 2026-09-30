@@ -57,7 +57,10 @@ const PATHS = {
       "M7 4h10a2 2 0 0 1 2 2v13a2 2 0 0 1 -2 2h-10a2 2 0 0 1 -2 -2v-13a2 2 0 0 1 2 -2z",
       "M9 4V3h6v1M9 12l2 2 4-4"
    ],
-   signOut: ["M15 4h4v16h-4", "M10 8l-4 4 4 4M6 12h10"]
+   signOut: ["M15 4h4v16h-4", "M10 8l-4 4 4 4M6 12h10"],
+   spanOne: ["M5 7v6M9.7 7v6M14.3 7v6M19 7v6", "M3 17h4"],
+   spanUnit: ["M5 7v6M9.7 7v6M14.3 7v6M19 7v6", "M3 17h9"],
+   spanAll: ["M5 7v6M9.7 7v6M14.3 7v6M19 7v6", "M3 17h18"]
 } as const;
 
 export type IconName = keyof typeof PATHS;

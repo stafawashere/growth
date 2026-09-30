@@ -5,6 +5,7 @@ import {
    readDiagnostic,
    readNextItem,
    skipDiagnosticUnit,
+   skipWholeDiagnostic,
    submitAttempt,
    type AttemptAnswer,
    type DiagnosticNextItemResponse
@@ -101,6 +102,10 @@ export function OnboardingRoute({ reason, resumeSessionId, onFinished }: Onboard
       await exclusively((sessionId, itemId, elapsedMs) => skipDiagnosticUnit(sessionId, { item_id: itemId, elapsed_ms: elapsedMs }));
    }
 
+   async function skipEverything() {
+      await exclusively((sessionId, itemId, elapsedMs) => skipWholeDiagnostic(sessionId, { item_id: itemId, elapsed_ms: elapsedMs }));
+   }
+
    async function exclusively(action: (sessionId: string, itemId: string, elapsedMs: number) => Promise<unknown>) {
       const isOnItem = stage.kind === "item";
       const canSend = isOnItem && !inFlight.current;
@@ -164,6 +169,7 @@ export function OnboardingRoute({ reason, resumeSessionId, onFinished }: Onboard
          onCheck={() => send({ mathjson: answerMathJson })}
          onNotLearned={() => send({ not_learned: true })}
          onSkipUnit={skipUnit}
+         onSkipEverything={skipEverything}
       />
    );
 }

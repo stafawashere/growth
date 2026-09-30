@@ -238,6 +238,33 @@ def test_skipping_a_unit_places_exactly_as_answering_not_learned_to_each_of_its_
    assert skipped_run == one_by_one_run
 
 
+def test_not_learned_anything_answers_every_remaining_item_of_every_unit_and_finishes(world):
+   client = world.client()
+   world.register(client)
+   session_id = open_diagnostic(client)
+   item = next_item(client, session_id)["item"]
+
+   reply = client.post(
+      f"/sessions/{session_id}/diagnostic/skip-all",
+      json={"item_id": item["id"], "elapsed_ms": 5000, "today": TODAY.isoformat()},
+   )
+
+   assert reply.status_code == 200, reply.text
+   assert reply.json() == {"item": None, "diagnostic_finished": True}
+
+   with OrmSession(world.engine) as db:
+      row = db.get(models.Session, session_id)
+      asked = diagnostic_session.load_run(row).asked
+      is_closed = row.ended_at is not None
+
+   outcomes = {entry["outcome"] for entry in asked}
+   units = {entry["unit"] for entry in asked}
+
+   assert is_closed
+   assert outcomes == {"not_learned"}
+   assert len(units) >= 2
+
+
 def test_skipping_refuses_an_item_that_is_not_on_screen_and_an_ordinary_session(world):
    client = world.client()
    world.register(client)

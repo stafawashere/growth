@@ -72,7 +72,7 @@ queue to teach from now to May 2027.
 ## Desmos fluency, 2026-09-29 [verified]
 
 Built overnight by claude-fable-5-1 orchestrating claude-opus-5-5 code agents under the operator's
-brief of 2026-09-29, on branch `calculator/desmos-fluency` (13 commits from `today/redesign`, 23 ahead of `main`, not
+brief of 2026-09-29, on branch `calculator/desmos-fluency` (14 commits from `today/redesign`, 24 ahead of `main`, not
 pushed, main untouched). The brief: research, design and build a Desmos fluency feature for the two
 calculator parts, with the exam habits carried and nothing credited. Documents: docs/calculator/
 (design.md, architecture.md, build-plan.md, HANDOFF.md, research/ with four documents and a

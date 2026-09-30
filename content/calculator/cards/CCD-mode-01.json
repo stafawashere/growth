@@ -1,0 +1,79 @@
+{
+ "id": "CCD-mode-01",
+ "version": 1,
+ "capability": "mode",
+ "title": "Check radians first",
+ "task": "Confirm that Desmos is in radian mode before any trigonometric value, derivative or integral.",
+ "steps": [
+  {
+   "text": "Open Graph Settings with the shortcut, which is Ctrl+Cmd+G on a Mac.",
+   "keys": "Ctrl+Alt+G"
+  },
+  {
+   "text": "Read which of Radians and Degrees is selected, and select Radians if Degrees is selected.",
+   "keys": "Ctrl+Alt+G"
+  },
+  {
+   "text": "The toggle shortcut, Ctrl+D on a Mac, flips the mode rather than setting it, so Graph Settings is read again after using it.",
+   "keys": "Alt+D"
+  }
+ ],
+ "demonstration": {
+  "function_tex": "\\sin\\left(\\frac{\\pi}{6}\\right)",
+  "lines": [
+   {
+    "typed": "sin(pi/6)",
+    "shows": "0.5 with Radians selected"
+   },
+   {
+    "typed": "Alt+D, then sin(pi/6) again",
+    "shows": "0.009138 with Degrees selected"
+   }
+  ],
+  "setup_latex": "\\sin\\left(\\frac{\\pi}{6}\\right)",
+  "answer": "0.500"
+ },
+ "exam_habit": [
+  {
+   "text": "Numerical values of an integral or of a rate involving a trigonometric function computed in degree mode lose the first point they would have earned.",
+   "error_ids": [
+    "BC-ERR-06032"
+   ]
+  }
+ ],
+ "bluebook_note": "The College Board list of changes names no change to the angle mode, while other testing calculators often open in Degrees, so the setting is read rather than assumed.",
+ "sources": [
+  {
+   "doc": "desmos-graphing-shortcuts",
+   "page": 1,
+   "anchor_quote": "Open or Close the Graph Settings Menu | CTRL + ALT + G | CTRL + COMMAND + G"
+  },
+  {
+   "doc": "desmos-graphing-shortcuts",
+   "page": 1,
+   "anchor_quote": "Toggle Between Degrees and Radians | ALT + D | CTRL + D"
+  },
+  {
+   "doc": "desmos-help-graph-settings",
+   "page": 1,
+   "anchor_quote": "To switch to between degrees and radians, click Graph Settings and then toggle between Radians and Degrees."
+  },
+  {
+   "doc": "desmos-help-testing-calculators",
+   "page": 1,
+   "anchor_quote": "The testing calculator's default angle mode is often set to degrees rather than radians."
+  },
+  {
+   "doc": "desmos-cb-calculators-pdf",
+   "page": 1,
+   "anchor_quote": "Images, folders, and notes are disabled on your test."
+  },
+  {
+   "doc": "sg-25",
+   "page": 2,
+   "anchor_quote": "(Note: Your calculator should be in radian mode.)"
+  }
+ ],
+ "evidence_tag": "verified",
+ "drills": []
+}

@@ -71,6 +71,7 @@ export function LessonRoute({ lessonId, conceptName, onLeave, backLabel }: Lesso
          context="library"
          conceptName={conceptName}
          backLabel={backLabel}
+         calculatorWork={load.value.calculator_work === true}
          onComplete={complete}
          onSkip={skip}
          onSectionViewed={(sectionId, mode, elapsedMs) => void post({ event: "section_viewed", section_id: sectionId, mode, elapsed_ms: elapsedMs })}

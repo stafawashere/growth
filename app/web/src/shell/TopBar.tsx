@@ -3,7 +3,7 @@ import type { MouseEvent, ReactNode } from "react";
 import { hashFor, type Place, type View } from "../routing";
 import { Icon, type IconName } from "../ui/Icon";
 
-export type TabId = "home" | "lessons" | "review" | "progress" | "assessments";
+export type TabId = "home" | "lessons" | "review" | "progress" | "assessments" | "calculator";
 
 export interface TabEntry {
    id: TabId;
@@ -13,14 +13,16 @@ export interface TabEntry {
    views: ReadonlyArray<View>;
 }
 
-/* The redesign's five tabs. Settings and the account sit behind the avatar menu, and a session,
-   onboarding, a lesson, a checkpoint and a probe light the tab they were opened under. */
+/* The redesign's five tabs and the Calculator destination after them (docs/calculator/design.md,
+   Where it lives). Settings and the account sit behind the avatar menu, and a session, onboarding,
+   a lesson, a checkpoint and a probe light the tab they were opened under. */
 export const TABS: ReadonlyArray<TabEntry> = [
    { id: "home", label: "Today", icon: "calendar", place: { view: "home" }, views: ["home", "session", "onboarding"] },
    { id: "lessons", label: "Lessons", icon: "book", place: { view: "lessons" }, views: ["lessons", "lesson"] },
    { id: "review", label: "Review", icon: "refresh", place: { view: "review" }, views: ["review"] },
    { id: "progress", label: "Progress", icon: "chart", place: { view: "progress", tab: "mastery" }, views: ["progress", "checkpoint", "probe"] },
-   { id: "assessments", label: "Assessments", icon: "clipboard", place: { view: "assessments", format: "unit" }, views: ["assessments"] }
+   { id: "assessments", label: "Assessments", icon: "clipboard", place: { view: "assessments", format: "unit" }, views: ["assessments"] },
+   { id: "calculator", label: "Calculator", icon: "graph", place: { view: "calculator", section: "cards" }, views: ["calculator"] }
 ];
 
 export function tabFor(view: View): TabId | null {

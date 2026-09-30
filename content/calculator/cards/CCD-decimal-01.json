@@ -1,0 +1,82 @@
+{
+ "id": "CCD-decimal-01",
+ "version": 1,
+ "capability": "decimal",
+ "title": "Three places, rounded or truncated",
+ "task": "Report a calculator result to three places after the decimal point, rounded or truncated, with its setup beside it.",
+ "steps": [
+  {
+   "text": "When a result shows as a fraction, the decimal shortcut shows it as a decimal, which is Cmd+Shift+A on a Mac.",
+   "keys": "Alt+Shift+A"
+  },
+  {
+   "text": "The round function with 3 as its second input gives the three-place rounded form of a result.",
+   "keys": "round(1.3254, 2)"
+  }
+ ],
+ "demonstration": {
+  "function_tex": "f(x)=e^{x/3}\\cos(x)",
+  "lines": [
+   {
+    "typed": "f(x)=e^(x/3)cos(x)",
+    "shows": "the graph of f"
+   },
+   {
+    "typed": "int, then 0, 2, f(x), dx",
+    "shows": "1.050800"
+   },
+   {
+    "typed": "round(int from 0 to 2 of f(x)dx, 3)",
+    "shows": "1.051, where the truncated form is 1.050"
+   }
+  ],
+  "setup_latex": "\\int_{0}^{2}e^{x/3}\\cos(x)\\,dx",
+  "answer": "1.051"
+ },
+ "exam_habit": [
+  {
+   "text": "A decimal approximation reported to fewer than three places after the decimal point loses the answer point, and three places rounded or truncated both earn it.",
+   "error_ids": [
+    "BC-ERR-02032",
+    "BC-ERR-99019"
+   ]
+  },
+  {
+   "text": "An intermediate value rounded before it is used again moves the reported answer, so only the final result is rounded.",
+   "error_ids": [
+    "BC-ERR-99019"
+   ]
+  },
+  {
+   "text": "A value obtained from a graphing calculator without the equation, function or definite integral that was entered loses the setup point, so the setup is written beside the result.",
+   "error_ids": [
+    "BC-ERR-99021"
+   ]
+  }
+ ],
+ "bluebook_note": "none",
+ "sources": [
+  {
+   "doc": "sg-25",
+   "page": 3,
+   "anchor_quote": "A reported answer should be accurate to three places after the decimal point, rounded or truncated."
+  },
+  {
+   "doc": "sg-25",
+   "page": 2,
+   "anchor_quote": "at most one point is not earned for inappropriate rounding"
+  },
+  {
+   "doc": "desmos-graphing-shortcuts",
+   "page": 1,
+   "anchor_quote": "Show Answer as Decimal or Fraction | ALT + SHIFT + A | COMMAND + SHIFT + A"
+  },
+  {
+   "doc": "desmos-help-supported-functions",
+   "page": 1,
+   "anchor_quote": "value rounded to the nearest integer or given place value"
+  }
+ ],
+ "evidence_tag": "verified",
+ "drills": []
+}

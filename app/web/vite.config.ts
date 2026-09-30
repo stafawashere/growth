@@ -29,6 +29,7 @@ const API_PATHS = [
    "/purge",
    "/notices",
    "/content",
+   "/calculator",
    "/healthz",
    "/growth-tokens.css"
 ];

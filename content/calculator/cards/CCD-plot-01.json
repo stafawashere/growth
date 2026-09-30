@@ -1,0 +1,85 @@
+{
+ "id": "CCD-plot-01",
+ "version": 1,
+ "capability": "plot",
+ "title": "A window that shows the work",
+ "task": "Plot a function in a stated viewing window so that every zero, intersection and extreme value inside it can be read.",
+ "steps": [
+  {
+   "text": "Open Graph Settings and enter the lower and upper bounds for each axis.",
+   "keys": "Ctrl+Alt+G"
+  },
+  {
+   "text": "Zoom to Fit brings the whole curve into view when part of it is off the screen.",
+   "keys": "Shift+Alt+Z"
+  },
+  {
+   "text": "A restriction in curly brackets at the end of the expression shows only the stated interval.",
+   "keys": "{0<x<3}"
+  },
+  {
+   "text": "Select the curve and read each gray point of interest inside the window.",
+   "keys": "Export Point to Expression List"
+  }
+ ],
+ "demonstration": {
+  "function_tex": "f(x)=x\\cos(x),\\quad 0<x<2",
+  "lines": [
+   {
+    "typed": "f(x)=xcos(x){0<x<2}",
+    "shows": "the graph of f on the interval only"
+   },
+   {
+    "typed": "Ctrl+Alt+G, then x from 0 to 2 and y from -1 to 1",
+    "shows": "the whole interval in the window, with one gray maximum"
+   },
+   {
+    "typed": "Export Point to Expression List",
+    "shows": "(0.86033, 0.56110)"
+   }
+  ],
+  "setup_latex": "f'(x)=\\cos(x)-x\\sin(x)=0",
+  "answer": "0.561"
+ },
+ "exam_habit": [
+  {
+   "text": "The window covers the whole stated interval, because when only the outer two crossings are used an interior crossing is integrated across.",
+   "error_ids": [
+    "BC-ERR-08025"
+   ]
+  }
+ ],
+ "bluebook_note": "The default viewport depends on the size of the screen, so the window Bluebook opens with can differ from the one on another device.",
+ "sources": [
+  {
+   "doc": "desmos-help-graph-settings",
+   "page": 1,
+   "anchor_quote": "You can also adjust the domain and range of the viewport manually."
+  },
+  {
+   "doc": "desmos-help-graph-settings",
+   "page": 1,
+   "anchor_quote": "which is pre-defined depending on the size of your screen"
+  },
+  {
+   "doc": "desmos-graphing-shortcuts",
+   "page": 1,
+   "anchor_quote": "Zoom to Fit | SHIFT + ALT + Z | SHIFT + OPTION + Z"
+  },
+  {
+   "doc": "desmos-help-restrictions",
+   "page": 1,
+   "anchor_quote": "Use curly brackets at the end of an expression to add a domain or range restriction in seconds"
+  },
+  {
+   "doc": "ced",
+   "page": 13,
+   "anchor_quote": "plot the graph of a function within an arbitrary viewing window"
+  }
+ ],
+ "evidence_tag": "verified",
+ "drills": [
+  "CDT-plot-01",
+  "CDT-plot-02"
+ ]
+}

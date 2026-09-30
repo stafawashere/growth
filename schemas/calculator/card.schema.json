@@ -1,0 +1,214 @@
+{
+ "$schema": "https://json-schema.org/draft/2020-12/schema",
+ "$id": "calculator/card.schema.json",
+ "title": "Calculator procedure card, docs/calculator/architecture.md content files",
+ "type": "object",
+ "required": [
+  "id",
+  "version",
+  "capability",
+  "title",
+  "task",
+  "steps",
+  "demonstration",
+  "exam_habit",
+  "bluebook_note",
+  "sources",
+  "evidence_tag",
+  "drills"
+ ],
+ "additionalProperties": false,
+ "properties": {
+  "id": {
+   "type": "string",
+   "pattern": "^CCD-(plot|zero|derivative|integral|intersection|value|mode|decimal)-\\d{2}$"
+  },
+  "version": {
+   "type": "integer",
+   "minimum": 1
+  },
+  "capability": {
+   "enum": [
+    "plot",
+    "zero",
+    "derivative",
+    "integral",
+    "intersection",
+    "value",
+    "mode",
+    "decimal"
+   ]
+  },
+  "title": {
+   "type": "string",
+   "minLength": 1
+  },
+  "task": {
+   "type": "string",
+   "minLength": 1
+  },
+  "steps": {
+   "type": "array",
+   "minItems": 1,
+   "items": {
+    "type": "object",
+    "required": [
+     "text",
+     "keys"
+    ],
+    "additionalProperties": false,
+    "properties": {
+     "text": {
+      "type": "string",
+      "minLength": 1
+     },
+     "keys": {
+      "type": "string"
+     }
+    }
+   }
+  },
+  "demonstration": {
+   "type": "object",
+   "required": [
+    "function_tex",
+    "lines",
+    "setup_latex",
+    "answer"
+   ],
+   "additionalProperties": false,
+   "properties": {
+    "function_tex": {
+     "type": "string",
+     "minLength": 1
+    },
+    "lines": {
+     "type": "array",
+     "minItems": 1,
+     "items": {
+      "type": "object",
+      "required": [
+       "typed",
+       "shows"
+      ],
+      "additionalProperties": false,
+      "properties": {
+       "typed": {
+        "type": "string",
+        "minLength": 1
+       },
+       "shows": {
+        "type": "string",
+        "minLength": 1
+       }
+      }
+     }
+    },
+    "setup_latex": {
+     "type": "string",
+     "minLength": 1
+    },
+    "answer": {
+     "type": "string"
+    }
+   }
+  },
+  "exam_habit": {
+   "type": "array",
+   "minItems": 1,
+   "items": {
+    "type": "object",
+    "required": [
+     "text",
+     "error_ids"
+    ],
+    "additionalProperties": false,
+    "properties": {
+     "text": {
+      "type": "string",
+      "minLength": 1
+     },
+     "error_ids": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+       "type": "string",
+       "pattern": "^BC-ERR-\\d{5}$"
+      }
+     }
+    }
+   }
+  },
+  "bluebook_note": {
+   "type": "string",
+   "minLength": 1
+  },
+  "sources": {
+   "type": "array",
+   "minItems": 1,
+   "items": {
+    "type": "object",
+    "required": [
+     "doc",
+     "page",
+     "anchor_quote"
+    ],
+    "additionalProperties": false,
+    "properties": {
+     "doc": {
+      "type": "string",
+      "pattern": "^[a-z0-9-]+$"
+     },
+     "page": {
+      "type": "integer",
+      "minimum": 1
+     },
+     "anchor_quote": {
+      "type": "string",
+      "minLength": 1
+     }
+    }
+   }
+  },
+  "evidence_tag": {
+   "enum": [
+    "verified",
+    "single-source",
+    "inferred",
+    "uncertain"
+   ]
+  },
+  "drills": {
+   "type": "array",
+   "uniqueItems": true,
+   "items": {
+    "type": "string",
+    "pattern": "^CDT-(plot|zero|derivative|integral|intersection|value)-\\d{2}$"
+   }
+  }
+ },
+ "if": {
+  "properties": {
+   "capability": {
+    "enum": [
+     "mode",
+     "decimal"
+    ]
+   }
+  }
+ },
+ "then": {
+  "properties": {
+   "drills": {
+    "maxItems": 0
+   }
+  }
+ },
+ "else": {
+  "properties": {
+   "drills": {
+    "minItems": 1
+   }
+  }
+ }
+}

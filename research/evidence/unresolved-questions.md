@@ -39,7 +39,8 @@ Each entry states the question, what was attempted, and what would resolve it. E
 ## Exam logistics [single-source]
 
 - May 10, 2027 exam date and 8 a.m. start rest on one College Board page (BC-SRC-web-exam-dates).
-- Whether Bluebook's built-in Desmos satisfies all four CED calculator capabilities, and how it counts against the two-handheld limit, is not stated in cached material.
+- How Bluebook's built-in Desmos counts against the two-handheld limit is settled. It sits outside the count, and a student may bring up to two handheld calculators in addition to it (BC-SRC-web-calc-policy p.1, BC-SRC-web-calc-policy-central p.1).
+- Whether Bluebook's built-in Desmos satisfies all four CED calculator capabilities is supported by inference and not stated by College Board or Desmos. The chain is in [../exam/calculator-policy.md](../exam/calculator-policy.md). A Bluebook AP Calculus practice test showing integral, derivative and zero evaluation in the calculator part, or a College Board statement, would settle it.
 
 ## Findings from the skeptic pass and indexing agents [verified]
 

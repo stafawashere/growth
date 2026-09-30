@@ -11,6 +11,8 @@ import type {
    ProbePayload,
    RepresentationMatrixPayload
 } from "../api/types";
+import { CalculatorLink } from "../calculator/CalculatorLink";
+import { CALCULATOR_LINK_SHORT } from "../calculator/words";
 import { CheckpointRoute } from "../evaluation/CheckpointRoute";
 import { ProbeRoute } from "../evaluation/ProbeRoute";
 import { CalibrationCurve } from "./CalibrationCurve";
@@ -93,7 +95,17 @@ function PaceSection() {
       return <SectionFailed testId="pace-failed" what="pace verdict" onRetry={pace.retry} />;
    }
 
-   return <PaceStatement pace={pace.value} />;
+   /* The pace card itself does not change; the calculator's measured times live on their own
+      section, reached by one link (docs/calculator/design.md, The measured view). */
+   return (
+      <>
+         <PaceStatement pace={pace.value} />
+
+         <p>
+            <CalculatorLink label={CALCULATOR_LINK_SHORT} place={{ view: "calculator", section: "measured" }} />
+         </p>
+      </>
+   );
 }
 
 function MasteryTab(props: { onOpenLesson: (lessonId: string, conceptName: string) => void }) {

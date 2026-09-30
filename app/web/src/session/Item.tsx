@@ -1,5 +1,6 @@
 import type { MutableRefObject } from "react";
 import type { Confidence, ServedItem, ServedStep } from "../api/types";
+import { CalculatorLink } from "../calculator/CalculatorLink";
 import { DesmosPanel } from "../input/DesmosPanel";
 import { MathAnswerField } from "../input/MathAnswerField";
 import type { MathFieldReader } from "../input/MathField";
@@ -163,7 +164,7 @@ export function Item(props: ItemProps) {
                   <MathText text={item.stem} />
                </p>
 
-               {allowsCalculator ? <DesmosPanel /> : null}
+               {allowsCalculator ? <DesmosPanel beside={<CalculatorLink />} /> : null}
 
                {hasFigure ? <FigureView spec={item.figure_spec} /> : null}
             </div>

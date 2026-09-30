@@ -1792,7 +1792,9 @@ math-field::part(menu-toggle) {
 
 .desmos-bar {
    display: flex;
+   align-items: center;
    justify-content: flex-end;
+   gap: var(--growth-space-12);
 }
 
 .desmos-frame {
@@ -1802,6 +1804,49 @@ math-field::part(menu-toggle) {
    border: var(--growth-stroke-hairline) solid var(--growth-border-hairline);
    border-radius: var(--growth-space-8);
    background: var(--growth-surface-raised);
+}
+
+/* Calculator practice (docs/calculator/design.md): the capability chooser, the drill with the task
+   and the fields beside Desmos from 1100 px and stacked below, and the clock in the corner the
+   timed drill keeps its timer. The verdict lines reuse .verdict with an icon beside the words, so
+   no state is carried by colour alone. */
+
+.capability-chooser {
+   display: flex;
+   flex-wrap: wrap;
+   gap: var(--growth-space-8);
+}
+
+.capability-choice {
+   justify-content: flex-start;
+   text-align: left;
+}
+
+.procedure-steps {
+   display: flex;
+   flex-direction: column;
+   gap: var(--growth-space-8);
+   padding-left: var(--growth-space-24);
+}
+
+.drill-screen {
+   display: flex;
+   flex-direction: column;
+   gap: var(--growth-space-24);
+}
+
+.drill-layout {
+   display: grid;
+   grid-template-columns: minmax(0, auto);
+   gap: var(--growth-space-24);
+}
+
+.drill-task:focus {
+   outline: none;
+}
+
+.drill-verdicts > [tabindex="-1"]:focus {
+   outline: none;
 }
 
 /* Onboarding. */
@@ -2850,6 +2895,26 @@ h3.section-header {
    column to hold both. */
 
 @media (min-width: 1100px) {
+   .drill-layout {
+      grid-template-columns: minmax(0, auto) minmax(0, auto);
+      grid-template-areas:
+         "task desmos"
+         "answer desmos";
+      align-items: start;
+   }
+
+   .drill-task {
+      grid-area: task;
+   }
+
+   .drill-desmos {
+      grid-area: desmos;
+   }
+
+   .drill-answer {
+      grid-area: answer;
+   }
+
    .app-page > .part-runner[data-graphing-open="true"] {
       max-width: calc(var(--growth-space-96) * 12);
    }
@@ -2902,6 +2967,13 @@ h3.section-header {
 
    .lesson-contrast-pair {
       flex-direction: column;
+   }
+
+   /* The design's phone frame is 60vh tall; the literal-values gate refuses a vh length, so the
+      frame takes the token ladder's nearest step at a 375 by 812 phone. */
+   .drill-desmos .desmos-frame {
+      width: stretch;
+      height: calc(var(--growth-space-96) * 5);
    }
 
    .app-page {

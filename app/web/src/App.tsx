@@ -13,6 +13,7 @@ import { ActionFailed, RETRY_LABEL } from "./status/LoadState";
 
 const AccountPage = lazy(() => import("./account/AccountPage").then((module) => ({ default: module.AccountPage })));
 const AssessmentsRoute = lazy(() => import("./assessment/AssessmentRoute").then((module) => ({ default: module.AssessmentsRoute })));
+const CalculatorRoute = lazy(() => import("./calculator/CalculatorRoute").then((module) => ({ default: module.CalculatorRoute })));
 const CheckpointRoute = lazy(() => import("./evaluation/CheckpointRoute").then((module) => ({ default: module.CheckpointRoute })));
 const MetricsRoute = lazy(() => import("./evaluation/MetricsRoute").then((module) => ({ default: module.MetricsRoute })));
 const ProbeRoute = lazy(() => import("./evaluation/ProbeRoute").then((module) => ({ default: module.ProbeRoute })));
@@ -32,7 +33,8 @@ export interface DestinationEntry {
 }
 
 /* The redesign's information architecture (mockup-redesign/, the operator's ruling of 2026-09-29,
-   amending 08's): Today, Lessons, Review, Progress and Assessments are tabs on the bar; settings and
+   amending 08's): Today, Lessons, Review, Progress and Assessments are tabs on the bar, with
+   Calculator after them (docs/calculator/design.md); settings and
    the account open from the avatar menu; a session and onboarding open from Today, a lesson from
    Lessons or Progress, and a checkpoint or probe from Progress. */
 export const DESTINATIONS: ReadonlyArray<DestinationEntry> = TABS.map((entry) => ({ id: entry.id, label: entry.label }));
@@ -53,6 +55,7 @@ export const UNSUPPLIED_INPUTS: Record<Destination, ReadonlyArray<UnsuppliedInpu
    checkpoint: [],
    probe: [],
    assessments: [],
+   calculator: [],
    settings: [],
    evidence: [],
    account: []
@@ -333,6 +336,7 @@ export function App() {
                   place={place}
                   go={go}
                   barVisits={barVisits}
+                  offline={offline}
                   aiNoticesOn={aiNoticesOn}
                   onAiNoticesChange={setAiNoticesOn}
                   onStartOnboarding={startOnboarding}
@@ -353,6 +357,7 @@ export function App() {
 function PlaceView(props: {
    place: Place;
    barVisits: number;
+   offline: boolean;
    go: (place: Place, options?: GoOptions) => void;
    aiNoticesOn: boolean;
    onAiNoticesChange: (enabled: boolean) => void;
@@ -413,6 +418,17 @@ function PlaceView(props: {
          return <ProbeRoute openAdministrationId={place.openAdministrationId} onLeave={() => go({ view: "progress", tab: "probes" })} />;
       case "assessments":
          return <AssessmentsRoute key={props.barVisits} format={place.format} onChangeFormat={(format) => go({ view: "assessments", format })} />;
+      case "calculator":
+         return (
+            <CalculatorRoute
+               key={props.barVisits}
+               section={place.section}
+               cardId={place.cardId}
+               capability={place.capability}
+               offline={props.offline}
+               go={go}
+            />
+         );
       case "settings":
          return (
             <SettingsPage

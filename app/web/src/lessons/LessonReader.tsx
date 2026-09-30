@@ -56,6 +56,8 @@ export interface LessonReaderProps {
    /* The library back and finish label, naming where the reader returns. */
    backLabel?: string;
    now?: () => number;
+   /* The plan payload's calculator_work, for a lesson record that does not carry it itself. */
+   calculatorWork?: boolean;
 }
 
 export const REFRESHER_REASONS = ["T1", "T2", "T3", "T4", "T5"];
@@ -326,6 +328,7 @@ export function LessonReader(props: LessonReaderProps) {
                   onPromptAnswer={onPromptAnswer}
                   onStepsRemaining={setStepsRemain}
                   now={now}
+                  calculatorWork={props.calculatorWork === true || lesson.calculator_work === true}
                />
             ) : null}
 

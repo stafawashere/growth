@@ -161,6 +161,7 @@ Everything stored, why, for how long, and whether the student can delete it.
 | Generated items | `items` | The shared bank; not personal data | Indefinite | Not personal data, so not subject to the student's deletion |
 | Token and cost usage | `budgets` | Budget enforcement | Until purge | By full purge |
 | Audit log | `audit_log` | Explaining state changes and key actions | Until purge | By full purge, and the purge itself is the last entry written |
+| Calculator drill records: task draw, typed result, typed setup, correctness, elapsed time, which Desmos variant was open (added 2026-09-29) | `calculator_drills` | Fluency measurement per calculator capability; never enters credit assignment | Until purge | Yes, individually, with no mastery consequence |
 
 What is deliberately not stored: no free-text chat history beyond the student's own error notes, because the tutor is guardrailed and turn-based rather than a conversation to be archived; no location; no device fingerprint; no contact details; no third-party analytics identifiers of any kind. There are no third-party analytics at all, which is a D10 rule and also removes an entire category of data-sharing question.
 
@@ -237,3 +238,11 @@ The log is readable by the operator through the same authenticated surface as ev
 | No third-party analytics | none | none | `10-quality-and-evaluation.md`, whose metrics are all derived from local tables |
 | Audit log | none directly | Every engine-external state rewrite is explainable | `06-architecture.md` observability |
 | CSP `connect-src 'self'` | none | none | `06-architecture.md`, since it is what makes the budget guard unbypassable |
+
+## Calculator fluency, 2026-09-29 [inferred]
+
+Data. One table, `calculator_drills`, owned through its `user_id` column, so `owner_clause` puts it under export and purge with no code change; its retention row is in the inventory above. Nothing from inside the Desmos frame is stored, because the app never receives the graph state.
+
+CSP. No directive changes. The drills and the calculator items open https://www.desmos.com/testing/collegeboard/graphing, which is the same origin as the calculator the 2026-09-27 exception already names, so `frame-src https://www.desmos.com` covers it and tests/api/test_security_headers.py is unchanged. The embedded Desmos API was considered and not adopted: it would need `script-src https://www.desmos.com` (every script is self-hosted here) and an API key from an account only the operator can create; the API terms' free Trial Tier permits personal, non-commercial use, so the licence alone would not have blocked it [single-source, BC-SRC-desmos-api-terms p.1]. The decision and what would reverse it are in [../calculator/research/synthesis.md](../calculator/research/synthesis.md).
+
+Terms. The desmos.com Terms of Service state that the Desmos Tools may not be framed or mirrored without Desmos's prior consent [single-source, BC-SRC-desmos-terms p.1]. The frame exists on the operator's instruction; the code carries a one-constant switch to opening the same URL in a new window, and the ruling is recorded in 12.

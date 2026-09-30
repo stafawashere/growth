@@ -215,7 +215,7 @@ def without_input(errors):
 
 
 def create_app(settings):
-   from app.api.routes import assessment, auth, content, evaluation, export, frq, health, lessons, me, notices, progress, purge, review, review_screen, sessions
+   from app.api.routes import assessment, auth, calculator, content, evaluation, export, frq, health, lessons, me, notices, progress, purge, review, review_screen, sessions
    from app.api.routes import settings as settings_routes
    from app.api.security_headers import SecurityHeadersMiddleware
    from app.api.session_renewal import SessionRenewalMiddleware
@@ -241,7 +241,7 @@ def create_app(settings):
 
       return JSONResponse(status_code=422, content={"detail": jsonable_encoder(without_input(exception.errors()))})
 
-   for module in (auth, me, notices, sessions, lessons, frq, assessment, purge, content, review, review_screen, progress, evaluation, settings_routes, export, health):
+   for module in (auth, me, notices, sessions, lessons, frq, assessment, purge, content, review, review_screen, progress, evaluation, settings_routes, export, calculator, health):
       application.include_router(module.router)
 
    return application

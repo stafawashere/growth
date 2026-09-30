@@ -3,7 +3,7 @@
 Covers the forms P1 items need: numbers, symbols, the arithmetic and
 transcendental function heads, Factorial, and the two constant symbols Pi and
 ExponentialE. Lesson records add sets (Set, Interval with Open endpoints, Union,
-SetMinus), List and Tuple, the relations, the infinities and NaN, and the calculus
+SetMinus), List, Tuple, Pair and Triple, the relations, the infinities and NaN, and the calculus
 operators Integrate, D, Limit, Sum and Subs with Apply for a named function, because the
 lesson designs state keys and steps in them (docs/lessons/BUILD-PLAN.md, The design to
 record path). The web client's MathLive field adds what the Compute Engine 0.24 canonical form
@@ -107,7 +107,7 @@ _RELATIONS = {
    "LessEqual": sympy.Le,
 }
 
-_SEQUENCE_HEADS = ("Tuple", "List")
+_SEQUENCE_HEADS = ("Tuple", "Pair", "Triple", "List")
 
 
 def to_sympy(expr):

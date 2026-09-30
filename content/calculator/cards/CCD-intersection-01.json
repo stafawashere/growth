@@ -1,0 +1,86 @@
+{
+ "id": "CCD-intersection-01",
+ "version": 1,
+ "capability": "intersection",
+ "title": "Intersection as a bound",
+ "task": "Find where two curves intersect and use those x-values as the bounds of a definite integral.",
+ "steps": [
+  {
+   "text": "Type each curve on its own line, as f(x)= and g(x)= followed by their expressions.",
+   "keys": "g(x)="
+  },
+  {
+   "text": "Click each gray intersection point and choose Export Point to Expression List.",
+   "keys": "Export Point to Expression List"
+  },
+  {
+   "text": "Type int and enter the exported x-coordinates, with every digit shown, as the bounds.",
+   "keys": "int"
+  },
+  {
+   "text": "Enter the difference of the two functions in parentheses as the integrand, then the differential.",
+   "keys": "(f(x)-g(x))dx"
+  }
+ ],
+ "demonstration": {
+  "function_tex": "f(x)=3-x^{2},\\quad g(x)=e^{x/2}",
+  "lines": [
+   {
+    "typed": "f(x)=3-x^2",
+    "shows": "the graph of f"
+   },
+   {
+    "typed": "g(x)=e^(x/2)",
+    "shows": "the graph of g, crossing f at two gray points"
+   },
+   {
+    "typed": "Export Point to Expression List, for each point",
+    "shows": "(-1.59686, 0.45003) and (1.11837, 1.74925)"
+   },
+   {
+    "typed": "int, then -1.59686, 1.11837, (f(x)-g(x)), dx",
+    "shows": "3.723689"
+   }
+  ],
+  "setup_latex": "\\int_{-1.59686}^{1.11837}\\left(\\left(3-x^{2}\\right)-e^{x/2}\\right)\\,dx",
+  "answer": "3.724"
+ },
+ "exam_habit": [
+  {
+   "text": "Every crossing inside the interval is found first, because when only the outer two crossings are used an interior crossing is integrated across.",
+   "error_ids": [
+    "BC-ERR-08025",
+    "BC-ERR-09038"
+   ]
+  },
+  {
+   "text": "A bound keeps every digit Desmos shows, since an intermediate value rounded before it is used again moves the reported answer.",
+   "error_ids": [
+    "BC-ERR-99019"
+   ]
+  }
+ ],
+ "bluebook_note": "none",
+ "sources": [
+  {
+   "doc": "desmos-help-whats-new",
+   "page": 1,
+   "anchor_quote": "We now show at least 5 decimal places for intersection points and you can copy and paste the points into the expression list."
+  },
+  {
+   "doc": "desmos-help-getting-started",
+   "page": 1,
+   "anchor_quote": "Click a point of interest and then Export Point to Expression List to add it to a new expression line."
+  },
+  {
+   "doc": "desmos-help-integrals",
+   "page": 1,
+   "anchor_quote": "enter a lower bound, upper bound, integrand, and differential"
+  }
+ ],
+ "evidence_tag": "inferred",
+ "drills": [
+  "CDT-intersection-01",
+  "CDT-intersection-02"
+ ]
+}

@@ -61,9 +61,9 @@ const OUT_OF_PHASE_SCREENS: string[] = [];
 
 /* The redesign's bar (the operator's ruling of 2026-09-29, amending 08's information architecture):
    five tabs, with settings and the account behind the avatar menu. */
-const BAR_DESTINATIONS = ["home", "lessons", "review", "progress", "assessments"];
+const BAR_DESTINATIONS = ["home", "lessons", "review", "progress", "assessments", "calculator"];
 
-const BAR_LABELS = ["Today", "Lessons", "Review", "Progress", "Assessments"];
+const BAR_LABELS = ["Today", "Lessons", "Review", "Progress", "Assessments", "Calculator"];
 
 /* A local wall-clock moment, so the calendar date the renderer counts from is the same in every
    time zone the suite runs in. */

@@ -27,6 +27,7 @@ SKIPPED = "skipped"
 OPENED = "opened"
 PLAN_REASONS = (plan.FIRST_CONTACT, plan.READ_AGAIN) + plan.REFRESHER_REASONS
 SLOT_EVENTS = (COMPLETED, SKIPPED)
+CALCULATOR_ARCHETYPE = "calculator"
 
 
 class LessonEventBody(BaseModel):
@@ -94,6 +95,26 @@ def user_state(db, user_id, lesson_id):
    return repository.state_as_dict(repository.lesson_state(db, user_id, lesson_id))
 
 
+def has_calculator_work(lesson_body, settings):
+   """True when a worked example belongs to a calculator archetype, so the reader can offer the
+   Calculator destination beside it (docs/calculator/build-plan.md, Slice 3)."""
+   context = settings.session_context
+   archetypes = context.archetypes if context is not None else None
+
+   if not archetypes:
+      return False
+
+   for section in lesson_body.get("sections") or []:
+      is_worked_example = section.get("type") == plan.WORKED_EXAMPLE
+      archetype = archetypes.get(section.get("archetype_id")) if is_worked_example else None
+      is_calculator_archetype = archetype is not None and archetype.get("calculator_status") == CALCULATOR_ARCHETYPE
+
+      if is_calculator_archetype:
+         return True
+
+   return False
+
+
 @router.get("/lessons")
 def read_library(
    unit: str | None = None,
@@ -116,11 +137,16 @@ def read_lesson(
    lesson_id: str,
    version: int | None = None,
    db=Depends(get_db, scope="function"),
+   settings=Depends(get_settings),
    user=Depends(current_user),
 ):
    row = servable_or_404(db, lesson_id, version)
 
-   return {**row.body, "state": user_state(db, user.id, lesson_id)}
+   return {
+      **row.body,
+      "state": user_state(db, user.id, lesson_id),
+      "calculator_work": has_calculator_work(row.body, settings),
+   }
 
 
 def days_between(earlier_iso, today):
@@ -147,13 +173,20 @@ def read_plan(
    band: Literal["low", "mid"],
    reason: Literal["first_contact", "read_again", "T1", "T2", "T3", "T4", "T5"] = "read_again",
    db=Depends(get_db, scope="function"),
+   settings=Depends(get_settings),
    user=Depends(current_user),
 ):
    row = servable_or_404(db, lesson_id)
    state = user_state(db, user.id, lesson_id)
    lesson_plan = plan.plan_lesson(row.body, band, reason, lesson_state=plan_state(state, date.today()))
 
-   return {"lesson": row.body, "plan": lesson_plan.as_dict(), "band": band, "state": state}
+   return {
+      "lesson": row.body,
+      "plan": lesson_plan.as_dict(),
+      "band": band,
+      "state": state,
+      "calculator_work": has_calculator_work(row.body, settings),
+   }
 
 
 def library_state_fields(row, body, now):

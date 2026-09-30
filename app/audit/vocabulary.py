@@ -50,12 +50,18 @@ inactive; lesson_signed_off, written when ingest first stores a signed_off versi
 Added 2026-09-29 with the Today redesign (docs/pedagogy/today/design.md D4): due_skill_unserved,
 a due skill block 1 leaves unserved with its reason, so the rulings on the block 1 cap and the
 retrieval floor rest on counts. It is bounded one row per user, skill and day.
+
+Added 2026-09-29 with the Desmos fluency drills (docs/calculator/architecture.md, Routes):
+calculator_drill_served and calculator_drill_answered, one row each per drill, so a drill's record
+in calculator_drills has its matching entries in the log.
 """
 AUDIT_ACTIONS = (
    "account_created",
    "budget_call_refused",
    "budget_cap_changed",
    "budget_hard_stop",
+   "calculator_drill_answered",
+   "calculator_drill_served",
    "claudebox_disabled",
    "claudebox_enabled",
    "content_snapshot_reloaded",

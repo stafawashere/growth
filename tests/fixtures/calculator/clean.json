@@ -1,0 +1,77 @@
+{
+ "id": "CCD-derivative-01",
+ "version": 1,
+ "capability": "derivative",
+ "title": "Derivative at a point",
+ "task": "Numerically calculate the derivative of a given function at a stated point.",
+ "steps": [
+  {
+   "text": "Type the function once as f(x)= followed by its expression.",
+   "keys": "f(x)="
+  },
+  {
+   "text": "Type f, the prime, and the point in parentheses to evaluate the derivative there.",
+   "keys": "f'(a)"
+  },
+  {
+   "text": "For the graph of the derivative instead, apply d/dx to f(x).",
+   "keys": "d/dx(f(x))"
+  }
+ ],
+ "demonstration": {
+  "function_tex": "f(x)=\\frac{10x}{1+e^{0.4x}}",
+  "lines": [
+   {
+    "typed": "f(x)=10x/(1+e^(0.4x))",
+    "shows": "the graph of f"
+   },
+   {
+    "typed": "f'(2.5)",
+    "shows": "0.723295"
+   }
+  ],
+  "setup_latex": "f'(2.5)",
+  "answer": "0.723"
+ },
+ "exam_habit": [
+  {
+   "text": "A numerical derivative value with no indication of what was computed loses the setup point, so the derivative at the point is written beside the value.",
+   "error_ids": [
+    "BC-ERR-02031"
+   ]
+  }
+ ],
+ "bluebook_note": "none",
+ "sources": [
+  {
+   "doc": "desmos-help-derivatives",
+   "page": 1,
+   "anchor_quote": "Use prime notation to evaluate the derivative of a function at a given point."
+  },
+  {
+   "doc": "desmos-help-derivatives",
+   "page": 1,
+   "anchor_quote": "Prime notation is supported for functions of a single argument."
+  },
+  {
+   "doc": "desmos-graphing-shortcuts",
+   "page": 1,
+   "anchor_quote": "\"a\" prime | ' | '"
+  },
+  {
+   "doc": "ced",
+   "page": 13,
+   "anchor_quote": "numerically calculate the derivative of a function"
+  },
+  {
+   "doc": "ced",
+   "page": 13,
+   "anchor_quote": "students are required to write the setup (e.g., the equation being solved, or the derivative or definite integral being evaluated)"
+  }
+ ],
+ "evidence_tag": "verified",
+ "drills": [
+  "CDT-derivative-01",
+  "CDT-derivative-02"
+ ]
+}

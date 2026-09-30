@@ -53,7 +53,7 @@ Roles give meaning without relying on colour:
 | constructed | what the tutor adds: a secant, a tangent, rectangles, a brace, an arrow | `accent-base` ink, bold weight |
 | highlight | the one thing a sentence is about | bold `accent-base` over a highlighter underlay in `accent-tint-3` |
 | error | a wrong step drawn for contrast after submission | `state-incorrect`, dashed, and always with a word label such as "right endpoints" |
-| ghost | an element the tutor faded, such as the secant a closer secant replaced | `text-muted`, thin, dotted |
+| ghost | an element the tutor faded, such as the secant a closer secant replaced; not a role the model writes, it follows from `fade` | `text-muted`, thin, dotted |
 
 Fills sit in accent tints with a hairline edge so neighbouring rectangles stay apart; an area below the axis uses a darker tint than one above it and carries a sign label. The accent is monochrome in the operator's tokens, so these roles ride on lightness, weight, dash and the underlay; `state-incorrect` is used for the error role only and never alone. The model picks a role, never a colour.
 
@@ -154,7 +154,7 @@ Graph and diagram shapes:
 | `vline`, `hline` | a number | a vertical or horizontal guide, dashed by default, for asymptotes and levels |
 | `area` | `{"under": "CURVE_ID", "from": a, "to": b}` or `{"between": ["CURVE_ID", "CURVE_ID"], "from": a, "to": b}` | a filled region with an edge; below-axis parts in the darker tint |
 | `riemann` | `{"on": "CURVE_ID", "from": a, "to": b, "n": k, "rule": "left" \| "right" \| "midpoint" \| "trapezoid"}` | k stroked rectangles or trapezoids, n at most 12 |
-| `slope_field` | `{"dy": "EXPR in x and y"}` | short segments on a lattice the server chooses, at most 15 by 15 |
+| `slope_field` | `{"dy": "EXPR in x and y"}` | short segments on a lattice the server chooses, at most 11 by 11 so a field fits the 200-primitive cap |
 | `solution` | `{"dy": "EXPR", "through": P}` | the solution curve through P, traced by the server |
 | `euler` | `{"dy": "EXPR", "start": P, "h": step, "n": k}` | k Euler steps as a polyline with dots, k at most 10 |
 | `sequence` | `{"a": "EXPR in n", "n": [first, last]}`, optional `"sums": true` | dots at (n, a_n), or at (n, S_n) with `sums`, at most 30 |
@@ -171,13 +171,13 @@ Graph and diagram shapes:
 | `callout` | `{"target": P or ID, "at": P, "text": "..."}` | text at `at` with a leader arrow to the target |
 | `ring` | `{"target": P or ID}` | a ring around a point, the board's circling gesture |
 
-Number line shapes: `point` (a number, with `open`), `interval` (`{"from": a, "to": b, "open": [bool, bool]}`, where `null` for an end means unbounded and draws an arrow), `signs` (`{"name": "f'(x)", "at": [c1, c2], "signs": ["+", "-", "+"]}`, one sign per interval, at most 3 rows a figure; a critical value where the function is undefined is written in `undefined`), `text`, `brace`, `callout`, `ring`, `segment`.
+Number line shapes (the targets of `text`, `callout` and `ring` may also be an element id): `point` (a number, with `open`), `interval` (`{"from": a, "to": b, "open": [bool, bool]}`, where `null` for an end means unbounded and draws an arrow), `signs` (`{"name": "f'(x)", "at": [c1, c2], "signs": ["+", "-", "+"]}`, one sign per interval, at most 3 rows a figure; a critical value where the function is undefined is written in `undefined`), `text`, `brace`, `callout`, `ring`, `segment`.
 
-Table shapes: `highlight` with `{"row": i}`, `{"column": j}` or `{"cell": [i, j]}` (0-based over the body rows), in role highlight or error, and `callout` pointing at a cell.
+Table shapes: `highlight` with `{"row": i}`, `{"column": j}` or `{"cell": [i, j]}` (0-based over the body rows), in role highlight or error, and `callout` as `{"cell": [i, j], "text": "..."}`, a labelled highlight on one cell.
 
 ### Caps
 
-The block is at most 2,000 characters, one per reply, 1 to 6 steps, at most 16 elements in all and 4 added per step, at most 3 sign rows, at most 12 Riemann pieces, 15 by 15 slope-field segments, 10 Euler steps, 30 sequence terms and 8 polygon vertices; window spans are above 0 and at most 200; a parametric or polar parameter spans at most 8 pi; every curve is sampled at 161 points and every path at 241, and the compiled figure holds at most 4,000 points and 200 primitives. Expressions are at most 80 characters, 48 tokens and nesting depth 10. The server stops compiling a figure after 100 ms and drops it. JSON is read with `json.loads` under the character cap, and a `RecursionError` is caught with the `ValueError`.
+The block is at most 2,000 characters, one per reply, 1 to 6 steps, at most 16 elements in all and 4 added per step, at most 3 sign rows, at most 12 Riemann pieces, 11 by 11 slope-field segments, 10 Euler steps, 30 sequence terms and 8 polygon vertices; window spans are above 0 and at most 200; a parametric or polar parameter spans at most 8 pi; every curve is sampled at 161 points and every path at 241, and the compiled figure holds at most 4,000 points and 200 primitives. Expressions are at most 80 characters, 48 tokens and nesting depth 10. The server stops compiling a figure after 100 ms and drops it. The schema and the reader add smaller caps: a sign row's name at most 24 characters with at most 8 values, whose undefined points are among its values; vertex names at most 12 characters; every size above 0; every range increasing; and every step after the first changes something. Table elements take the highlight or error role only. JSON is read with `json.loads` under the character cap, and a `RecursionError` is caught with the `ValueError`.
 
 ## From block to screen [inferred]
 
@@ -189,7 +189,7 @@ The block is at most 2,000 characters, one per reply, 1 to 6 steps, at most 16 e
 
 `app/agent/drawing/spec.py` validates the parsed block against `schemas/agent/figure.schema.json` (draft 2020-12, `additionalProperties: false` throughout, enums for every kind, role, style and rule, the numeric and length caps) with `Draft202012Validator`, then checks what a schema cannot: ids unique, references resolve to earlier elements of the right shape, a `fade` or `erase` names an element added in an earlier step, windows ordered, `on` names a curve.
 
-`app/agent/drawing/expression.py` is a Python twin of `app/web/src/lessons/expression.ts`: a tokenizer and recursive-descent parser over the same tokens, precedence and function table, with `**` read as `^`, implicit multiplication after a number or a closing bracket, and the length, token and depth caps. It builds a small tree that evaluates in floats through `math` and converts to a SymPy expression by construction, node by node, for the one check that needs symbols. It never calls `eval`, `exec`, `sympify`, `parse_expr` or `lambdify`, and a name outside the table is a refusal.
+`app/agent/drawing/expression.py` is a Python twin of `app/web/src/lessons/expression.ts`: a tokenizer and recursive-descent parser over the same tokens, precedence and function table, with `**` read as `^`, implicit multiplication after a number or a closing bracket, and the length, token and depth caps. It builds a small tree that evaluates in floats through `math`, returning nothing where a value is undefined or not finite. The model's tree is never converted to SymPy: SymPy evaluates integer powers eagerly, so a curve such as `9^9^9^9` would hang the screen, which a probe on 2026-09-30 showed. It never calls `eval`, `exec`, `sympify`, `parse_expr` or `lambdify`, and a name outside the table is a refusal. The bracket-depth cap counts nesting, function calls included, rather than tree depth, so an ordinary long polynomial is not refused.
 
 `app/agent/drawing/compile.py` turns the validated figure into the render spec: it samples curves (161 points, broken where undefined or beyond 10 window heights), paths (241 points), computes points on curves, tangent slopes by a central difference, secant and tangent lines clipped to the window, region polygons, Riemann and trapezoid pieces with their sample points, slope-field segments on the lattice, the solution curve by fourth-order Runge-Kutta, Euler steps, sequence dots, circles and arcs as sampled paths, triangle vertices with the right-angle mark and equal-side ticks, braces, callout leaders and rings. It also collects, for the screen, every number the figure shows (below).
 
@@ -211,7 +211,7 @@ A table figure's primitives are `cell` highlights `{"row", "column"}` with a rol
 2. Every marked coordinate: points, segment ends, vector ends, polygon and triangle vertices, circle centres and radii, box corners and sizes, sequence dots, Euler points, interval ends, sign-chart critical values, callout and ring targets, the touching point of a tangent and the two points of a secant. Each coordinate is compared with the key's numeric value within `NUMERIC_TOLERANCE` (0.0005). Integers are compared, as a math span's are.
 3. Every line, secant and tangent: slope, y-intercept and x-intercept.
 4. Every area: signed integral and absolute area; every Riemann or trapezoid set: its total.
-5. Every curve: a constant curve's value; and when the key is an expression in a variable, each curve converted to SymPy and compared with the key at 16 sample points in the window.
+5. Every curve: a constant curve's value; and when the key is an expression in a variable, each curve evaluated in floats and compared with the trusted key, evaluated by SymPy, at 16 sample points in the window.
 6. On a multiple-choice item, the key letter patterns and the key option's value, through part 1 and part 2.
 
 Window bounds, tick positions and expression literals are not compared. A failing figure withholds the whole reply exactly as a failing sentence does: `SentenceScreen.withhold(verdict)` releases the fixed decline, nothing after it is released, the turn ends `withheld`, the stored reply is the decline, and `agent_reply_withheld` is written with the check `no_answer_in_figure` (or the sentence check that fired on a figure text) and the part `figure`, never the value.
@@ -268,7 +268,7 @@ Each step's primitives enter together. Paths enter by a wipe: the step's paths a
 
 ## Cost [inferred]
 
-Priced by `tools/cost_model.py` under the names in brackets and quoted in plan 14's amendment. The v2 prefix is about 5,500 tokens against 2,500 for v1, read from the cache on every turn after the first of a conversation. A figure is about 300 output tokens and about 3 seconds of generation. On the subscription the lines are notional and count against pacing only, one call a turn as before.
+Priced by `tools/cost_model.py` under the names in brackets and quoted in plan 14's amendment. The v2 prefix is 30,241 characters, about 9,760 tokens by the 3.1 divisor, against about 2,700 for v1, held under a 10,000-token ceiling by `tests/agent/drawing/test_template_examples.py`; the design's first estimate of 5,500 left room for about five examples and was raised rather than the examples cut. It is read from the cache on every turn after the first of a conversation. A figure is about 300 output tokens and about 3 seconds of generation. On the subscription the lines are notional and count against pacing only, one call a turn as before.
 
 ## Evals [inferred]
 
@@ -288,3 +288,58 @@ Priced by `tools/cost_model.py` under the names in brackets and quoted in plan 1
 - Colouring the matching words of the reply: the reply is plain text by rule, and markup in it would be a second rendering path.
 - The finished figure only under reduced motion, the brief's provisional choice: reduced motion asks for movement to be replaced, plan 08 says replace and not delete, and the benefit rides on segmenting and contiguity; the finished figure with its step list stays as the end state.
 - Raising `MAX_OUTPUT_TOKENS`: a figure is about 300 tokens of the 800, and the cap is raised only if the evals show replies cut off.
+
+## Marks on the page [inferred]
+
+On the operator's instruction of 2026-09-30 the tutor can also annotate the screen the way a teacher marks up a worksheet while talking: underline a phrase of the question, ring a point on the item's own graph, highlight the table row that decides a step, draw a tangent on the item's graph, put a short note in the margin, draw an arrow from the question to the graph, strike through the step the response got wrong after checking. The tutor cannot see pixels, only the structured screen context, so every mark names an anchor the screen declared, and the client places the mark over the real element wherever it is laid out, at any width.
+
+### Anchors
+
+The packet carries `anchors`, the list the model may use on this turn, composed by the server from what the screen shows:
+
+| Anchor | On | Addressed by |
+| --- | --- | --- |
+| `stem` | an item, before and after checking | a quoted phrase of the stem as served, or the whole stem |
+| `item_figure` | an item whose figure is a graph | coordinates in the item figure's own window, or the whole figure |
+| `item_table` | an item whose figure is a table | a row, a column or a cell, 0-based over the body rows |
+| `option_A` to `option_E` | an item after it is checked only | the whole option |
+| `feedback` | an item after checking, when feedback shows | a quoted phrase, or the whole panel |
+| `solution_step_1` to `solution_step_k` | an item after checking, when the worked solution shows | a quoted phrase, or the whole step |
+| `section` | a lesson section | a quoted phrase of the section text, or the whole section |
+| `section_figure` | a lesson section with a figure | the whole figure |
+
+Before an item is checked the option anchors are never listed; a mark that names one withholds the reply exactly as a leaking sentence does, because ringing an option names an answer. Quotes must occur in the anchor's text as the packet holds it (whitespace normalised), at most 80 characters, and a quote that does not occur refuses the block.
+
+### The marks language
+
+A reply may hold one `marks` block beside its one `figure` block, fenced the same way with the info string `marks`: `{"description": "...", "steps": [{"id", "caption", "add": [...], "fade": [...], "erase": [...]}]}`, at most 6 steps, 12 marks and 1,500 characters. Step ids are unique across the reply's figure and marks, and one `[[step:ID]]` marker vocabulary reveals both. Every mark has an `id`, one shape key, and optionally `role` and `stroke` as figure elements do.
+
+| Shape key | Value | Draws |
+| --- | --- | --- |
+| `ring` | a target | a ring around the target |
+| `underline` | `{"anchor": A, "quote": "..."}` | a line under the quoted words |
+| `highlight` | a target, or `{"anchor": "item_table", "row" \| "column" \| "cell": ...}` | a highlighter band behind the target |
+| `strike` | `{"anchor": "feedback" or "solution_step_k", "quote": "..."}`, after checking only | a line through the quoted words, in the error role |
+| `bracket` | `{"anchor": A}` | a bracket in the margin beside the element |
+| `note` | a target plus `"text"` (at most 60 characters, inline `\( \)` allowed) and optional `"side"` (`left`, `right`, `above`, `below`) | a short note beside the target |
+| `arrow` | `{"from": TARGET, "to": TARGET}` | an arrow from one target to another, across the page |
+| `point`, `segment`, `line`, `vline`, `hline` | on `item_figure` only, in its coordinates: `{"anchor": "item_figure", "at": [x, y]}`, `{"from": [x, y], "to": [x, y]}`, `{"point": [x, y], "slope": m}` or `{"through": [[x, y], [x, y]]}`, `{"x": v}`, `{"y": v}` | a construction drawn on the item's own graph |
+
+A target is `{"anchor": A}` (the whole element), `{"anchor": A, "quote": "..."}` (a phrase in a text anchor) or `{"anchor": "item_figure", "at": [x, y]}` (a point of the item's graph, inside its window).
+
+### Screen, events and storage
+
+The server reads, validates and compiles the block as it does a figure (`app/agent/drawing/marks.py`, `schemas/agent/marks.schema.json`), and the screen treats it as a figure: before checking, and on a lesson section that poses a question, every coordinate, slope, intercept and guide level on the item's graph is compared with the key, every note, caption and the description runs the sentence checks, and an option anchor withholds the reply (`no_answer_in_marks`). Quoted phrases are the screen's own served text and are not compared. Drawing open or closed applies to marks exactly as to figures. A passing block goes out as a `marks` event with the compiled marks and the steps; its steps use `figure_step` with the marks block's id; a dropped block sends `figure_refused` with `"part": "marks"`. The stored `agent_turns.figure` record gains a `marks` entry of the same shape.
+
+### What the student sees
+
+Marks draw over the page in a layer above the content and below the top bar and the tutor panel, and never take a click, a keystroke or focus. Each mark enters with its step as figure steps do, at the same reading pace, a stroke wiping in over 300 ms and a note fading in, and under reduced motion only the fade. Marks belong to the screen they were drawn on, on the operator's instruction of 2026-09-30. The screen is identified by its kind and ids (a session's item, a lesson's section, a Progress tab), the same object the panel sends as `screen`. When the student moves to another screen the marks disappear; when they come back to that screen, in the same conversation, its marks are drawn again in their finished state with no motion. A new reply that marks the same screen replaces that screen's previous marks; a reply with no marks leaves them. "Clear marks" under the reply removes the current screen's marks. Marks live in the panel's conversation state and are not restored after a page reload. Figures inside the panel are part of their reply and stay in the conversation whatever the screen. The page is never scrolled to a mark; the step's caption says where it is. When an anchor is not on screen (the phone sheet covers it, or the student scrolled away) the mark is drawn where the element is and is seen when the student scrolls to it.
+
+The reply lists the marks' captions under the text as "Marked on the page", an ordered list with the current step marked, so a screen reader hears what was marked; the marks layer itself is `aria-hidden`. The end-of-reply announcement adds "Marks on the page: {description}". Roles, strokes, tokens, contrast and the greyscale rule are the figure's.
+
+### Rejected
+
+- Marks at page coordinates or CSS selectors the model writes: the model cannot see the page, a layout moves with width and theme, and a selector is a string the browser would interpret.
+- Scrolling the page to a mark: a change of focus or context the student did not ask for (WCAG 3.2.5).
+- Marks on an answer option before checking: ringing or striking an option names or eliminates an answer.
+- A screenshot for the model to annotate: the architecture sends structured state, never a screenshot, and the draft answer must never leave the client.

@@ -193,6 +193,14 @@ MEMORY_CALLS_PER_DAY = 2
 MEMORY_CAP_USD = 0.50
 MEMORY_CAP_TOKENS = 300000
 
+# The tutor draws, docs/agent/drawing-design.md "Cost". [inferred] The v2 template's static prefix
+# is 30,241 characters, 9,755 tokens by CHARACTERS_PER_TOKEN, an estimate until a live call reports
+# the cached count. A figure block is about 300 output tokens. The share of agent turns that draw is
+# a provisional ruling in docs/plan/12-open-questions.md, settled by the turn log's figure counts.
+DRAWING_PREFIX_TOKENS = 9755
+DRAWING_FIGURE_OUTPUT_TOKENS = 300
+DRAWING_TURN_SHARE = 0.3
+
 STANDARD_TIER_VISUAL_TOKENS_3840 = 1560
 HIGH_RES_TIER_VISUAL_TOKENS = 4784
 
@@ -933,6 +941,31 @@ def figures():
    add("memory.cycle_usd", memory_call * MEMORY_CALLS_PER_DAY * STUDY_DAYS)
    add("memory.cap_usd", MEMORY_CAP_USD)
    add("memory.cap_tokens", MEMORY_CAP_TOKENS)
+
+   # The tutor draws (docs/agent/drawing-design.md "Cost"). The agent.* lines above stay the
+   # text-only baseline plan 14 quotes; these price the same conversation on the v2 prefix, with a
+   # figure's output tokens spread over the share of turns that draw.
+   drawing_prefix_read = DRAWING_PREFIX_TOKENS * agent_rates["read"] * USD_PER_MTOK
+   drawing_prefix_write = DRAWING_PREFIX_TOKENS * agent_rates["write_1h"] * USD_PER_MTOK
+   drawing_average_output_tokens = AGENT_OUTPUT_PER_TURN + DRAWING_TURN_SHARE * DRAWING_FIGURE_OUTPUT_TOKENS
+   drawing_figure_turn_output_tokens = AGENT_OUTPUT_PER_TURN + DRAWING_FIGURE_OUTPUT_TOKENS
+   drawing_average_output = drawing_average_output_tokens * agent_rates["output"] * USD_PER_MTOK
+   drawing_figure_turn_output = drawing_figure_turn_output_tokens * agent_rates["output"] * USD_PER_MTOK
+   drawing_conversation = (
+      drawing_prefix_write
+      + (AGENT_TURNS_PER_CONVERSATION - 1) * drawing_prefix_read
+      + AGENT_TURNS_PER_CONVERSATION * (agent_uncached_input + drawing_average_output)
+   )
+   drawing_cycle = drawing_conversation * AGENT_CONVERSATIONS_PER_DAY * STUDY_DAYS
+   add("drawing.prefix_tokens", DRAWING_PREFIX_TOKENS)
+   add("drawing.figure_output_tokens", DRAWING_FIGURE_OUTPUT_TOKENS)
+   add("drawing.turn_share", DRAWING_TURN_SHARE)
+   add("drawing.turn_usd", drawing_prefix_read + agent_uncached_input + drawing_average_output)
+   add("drawing.figure_turn_usd", drawing_prefix_read + agent_uncached_input + drawing_figure_turn_output)
+   add("drawing.conversation_usd", drawing_conversation)
+   add("drawing.day_usd", drawing_conversation * AGENT_CONVERSATIONS_PER_DAY)
+   add("drawing.cycle_usd", drawing_cycle)
+   add("drawing.added_cycle_usd", drawing_cycle - out["agent.cycle_usd"])
 
    return out
 

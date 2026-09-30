@@ -4,12 +4,14 @@ A conversation stays open while turns keep arriving: a turn more than 30 minutes
 closes it and opens a new one, which is_idle decides, and the panel may close one explicitly. The
 student reads the conversations of the last 30 days in Settings and deletes any of them, turns
 and all, and each delete writes agent_conversation_deleted with the ids and the turn count, never
-the text (docs/plan/09-security-and-privacy.md, 2026-09-29 amendment).
+the text (docs/plan/09-security-and-privacy.md, 2026-09-29 amendment). A turn whose figure was shown
+reads back with the figure's title, which the Settings view shows under it.
 """
 from datetime import timedelta
 
 from sqlalchemy import delete, func, select
 
+from app.agent.drawing.record import shown_spec
 from app.agent.memory import parse_moment
 from app.auth.service import as_iso, new_id, write_audit
 from app.db import models
@@ -64,6 +66,7 @@ def append_turn(
    outcome=None,
    model=None,
    link=None,
+   figure=None,
 ):
    is_known_role = role in TURN_ROLES
 
@@ -85,6 +88,7 @@ def append_turn(
       outcome=outcome,
       model=model,
       link=link,
+      figure=figure,
       created_at=stamp,
       updated_at=stamp,
    )
@@ -120,6 +124,13 @@ def conversation_summary(conversation):
    }
 
 
+def shown_figure_title(figure):
+   """The title the Settings view shows under a turn whose figure was shown, or None."""
+   spec = shown_spec(figure)
+
+   return None if spec is None else spec.get("title")
+
+
 def turn_view(turn):
    return {
       "id": turn.id,
@@ -127,6 +138,7 @@ def turn_view(turn):
       "text": turn.text,
       "created_at": turn.created_at,
       "outcome": turn.outcome,
+      "figure_title": shown_figure_title(turn.figure),
    }
 
 

@@ -38,7 +38,7 @@ Slices 2 and 5 are built in parallel against this contract, which `schemas/agent
 }
 ```
 
-`kind` is `graph`, `diagram`, `number_line` or `table`. The client draws a frame (axes, gridlines, numbered ticks, axis titles) for `graph` only; for `diagram` and `number_line` the server emits every line, tick and tick label as primitives. `view.height` is the plot height the server chose (the window's aspect clamped between 180 and `view.width`, or equal scale when `equal_scale`) plus twice the padding. `offset` is in view units. `role` is `given`, `constructed`, `highlight` or `error`; a primitive whose `faded_at` step has been revealed is drawn in the ghost style, and one whose `erased_at` step has been revealed is not drawn. `cell` primitives appear only in a `table` figure, whose `columns` and `rows` are then set. Caps the client re-checks: at most 200 primitives, 4,000 points in all, 6 steps, finite numbers.
+`kind` is `graph`, `diagram`, `number_line` or `table`. The client draws a frame (axes, gridlines, numbered ticks, axis titles) for `graph` only; for `diagram` and `number_line` the server emits every line, tick and tick label as primitives. `view.height` is the plot height the server chose (the window's aspect clamped between 180 and the plot width, `view.width` less twice the padding, as `FigureView` does; or equal scale when `equal_scale`, for which the server widens the window about its centre) plus twice the padding. A `cell` primitive may carry `text`, a labelled highlight. `offset` is in view units. `role` is `given`, `constructed`, `highlight` or `error`; a primitive whose `faded_at` step has been revealed is drawn in the ghost style, and one whose `erased_at` step has been revealed is not drawn. `cell` primitives appear only in a `table` figure, whose `columns` and `rows` are then set. Caps the client re-checks: at most 200 primitives, 4,000 points in all, 6 steps, finite numbers.
 
 ## Slice 1. Expression grammar, schema and validator
 
@@ -62,7 +62,7 @@ Entry: slice 1. Scope: every shape compiles to the render spec, and every leak c
 
 | Path | Change |
 |---|---|
-| app/agent/drawing/compile.py | `compile_figure(figure)`: the geometry of every shape in `drawing-design.md` (curves at 161 samples broken where undefined or beyond ten window heights, paths at 241, points on curves, secants, tangents by central difference, clipped lines, areas with below-axis parts, Riemann and trapezoid pieces, slope-field lattice at most 15 by 15, Runge-Kutta solution, Euler steps, sequences and partial sums, vectors with legs, circles and arcs as paths, angle and right-angle marks, boxes, triangles by kind with the right-angle mark and equal-side ticks, polygons, braces, text, callouts with leader arrows, rings, number-line lines, ticks, intervals and sign rows, table cell highlights), label placement beside the element and clamped inside the view, `view` and `equal_scale`, the fade and erase steps, the 4,000-point, 200-primitive and 100 ms caps; returns the render spec and a `FigureFacts` record of every number and text the figure shows, by channel |
+| app/agent/drawing/compile.py | `compile_figure(figure)`: the geometry of every shape in `drawing-design.md` (curves at 161 samples broken where undefined or beyond ten window heights, paths at 241, points on curves, secants, tangents by central difference, clipped lines, areas with below-axis parts, Riemann and trapezoid pieces, slope-field lattice at most 11 by 11, Runge-Kutta solution, Euler steps, sequences and partial sums, vectors with legs, circles and arcs as paths, angle and right-angle marks, boxes, triangles by kind with the right-angle mark and equal-side ticks, polygons, braces, text, callouts with leader arrows, rings, number-line lines, ticks, intervals and sign rows, table cell highlights), label placement beside the element and clamped inside the view, `view` and `equal_scale`, the fade and erase steps, the 4,000-point, 200-primitive and 100 ms caps; returns the render spec and a `FigureFacts` record of every number and text the figure shows, by channel |
 | schemas/agent/figure_render.schema.json | the render spec contract above |
 | app/evals/figure_checks.py | `figure_texts_pass(facts, packet_facts, forms)` through `agent_checks.SENTENCE_CHECKS`; `no_answer_in_figure(facts, packet_facts, forms)` over the numeric channels of `drawing-design.md` "The screen" with `agent_checks.NUMERIC_TOLERANCE`; `figure_well_formed(block_text)`; `draws_only_when_open(drawing, has_figure)`; `figure_described(figure)`; each returns an `agent_checks.Verdict` |
 
@@ -160,3 +160,31 @@ Entry: none. Scope: a rerunnable captioned screencast of a browser walk.
 Tests: a `--dry-run` that validates a script and prints the planned steps, run by the orchestrator.
 
 Acceptance: one recorded walkthrough of the drawing feature under `var/agent/`.
+
+## Slice 9. Marks on the page, server and template
+
+Entry: slices 3 and 4. Scope: the model can mark named anchors on the screen, screened like a figure (`drawing-design.md`, "Marks on the page").
+
+| Path | Change |
+|---|---|
+| schemas/agent/marks.schema.json | the marks language |
+| app/agent/drawing/marks.py | `read_marks`, validation against the turn's anchors (quotes found in the anchor text, coordinates inside the item figure's window, after-checking-only shapes and anchors), `compile_marks` to the render marks and their facts |
+| app/agent/context.py | the packet's `anchors`: ids, and for text anchors the text they hold where the packet does not already carry it; the item figure's window for `item_figure` |
+| app/agent/drawing/stream.py | the `marks` fence beside the `figure` fence; one block of each per reply |
+| app/evals/figure_checks.py | `no_answer_in_marks`: option anchors before checking, the numeric channels on the item's graph, the texts |
+| app/agent/turn.py, app/agent/drawing/record.py | the `marks` event, steps through `figure_step`, `figure_refused` with part marks, the stored record's `marks` entry, the log line |
+| prompts/agent/live_v2.md | the marks rules, the anchors, and at least four worked examples (underline a phrase of the stem and ring a point on the item's graph; highlight the deciding table row; after checking, strike a worked-solution phrase and note beside it; an arrow from the stem to the item's graph) |
+
+Tests: `tests/agent/drawing/test_marks.py` (every shape reads and compiles; a quote not in the anchor, an unlisted anchor, a coordinate outside the window and an after-checking shape before checking each refuse), red-first screen tests for a mark on an option before checking, a ring at the key's point on the item's graph, a tangent with the key's slope and a note stating the key; route tests for the event order with a figure and marks in one reply; the template example test extended to marks.
+
+## Slice 10. Marks on the page, client
+
+Entry: slice 9's events. Scope: marks drawn over the real elements, in step with the words.
+
+| Path | Change |
+|---|---|
+| app/web/src/session/Item.tsx, ElaboratedPanel.tsx and the worked-solution and option components, app/web/src/figures/FigureView.tsx, app/web/src/lessons/LessonSection.tsx | `data-agent-anchor` attributes on the anchored elements; the item figure's SVG carries its window and plot box so a mark maps its coordinates |
+| app/web/src/agent/PageMarks.tsx | the overlay: finds anchors, measures them (quotes through a text range), follows scroll, resize and layout changes, draws marks by role and stroke with the figure's classes, reveals by step, never takes pointer events or focus |
+| app/web/src/agent/AgentProvider.tsx, AgentPanel.tsx | the `marks` event through the same gate queue; marks kept per screen key for the conversation, hidden when the screen changes and drawn again, finished and without motion, when the student returns; a new reply's marks replace the same screen's earlier set; "Marked on the page" with the captions; "Clear marks" for the current screen; the announcement clause |
+
+Tests: overlay placement against measured anchor rectangles (mocked `getBoundingClientRect` and ranges), step reveal, marks hidden on a screen change and restored on return, replaced by the next reply's marks on the same screen, clearing, the item-figure coordinate mapping, no pointer events, reduced motion, the captions list and announcement, contrast and greyscale screens.

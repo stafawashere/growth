@@ -171,3 +171,36 @@ def test_a_sentence_stating_the_prediction_key_is_withheld(prediction_packet, pr
    assert screen.withheld is not None
    assert screen.withheld.check == "no_answer_before_submission"
    assert released == ["Which height do both sides approach?", screen.decline]
+
+
+def test_boundary_releases_the_buffered_fragment_and_the_stream_goes_on(practice_packet, item):
+   screen = SentenceScreen(practice_packet, agent_checks.key_forms(item))
+   held = screen.feed("Look at the widths first")
+   at_the_fence = screen.boundary()
+   after = screen.feed(" Then the heights. ") + screen.flush()
+
+   assert held == []
+   assert at_the_fence == ["Look at the widths first"]
+   assert after == [" Then the heights.", " "]
+   assert screen.withheld is None
+
+
+def test_boundary_screens_the_fragment_it_releases(practice_packet, item):
+   screen = SentenceScreen(practice_packet, agent_checks.key_forms(item))
+   screen.feed("The sum comes to 72.5 liters")
+
+   assert screen.boundary() == [screen.decline]
+   assert screen.withheld.check == "no_answer_before_submission"
+
+
+def test_withhold_releases_the_decline_once_and_nothing_after_it(practice_packet, item):
+   screen = SentenceScreen(practice_packet, agent_checks.key_forms(item))
+   before = screen.feed("What did you try? Then look")
+   verdict = agent_checks.Verdict(False, "no_answer_in_figure", "a curve (f) equals the key expression")
+
+   assert before == ["What did you try?"]
+   assert screen.withhold(verdict) == [screen.decline]
+   assert screen.withheld == verdict
+   assert screen.feed(" at the table. ") == []
+   assert screen.flush() == []
+   assert screen.withhold(verdict) == []

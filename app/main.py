@@ -108,6 +108,10 @@ GROWTH_BACKUP_DIR     where app/db/backup.py writes a dated copy of the database
 GROWTH_TIMED_ASSESSMENTS on (the default) or off. off switches the full mock and the timed part
                       drills off, 11 P5's rollback; the unit check stays on. Any other value
                       stops the process at startup.
+GROWTH_AGENT_DRAWING  on (the default) or off. off closes drawing on every live tutor turn and
+                      refuses any figure a reply holds with the reason off, the kill switch of
+                      docs/agent/drawing-design.md, The switch. Any other value stops the process
+                      at startup.
 
 This module also mounts the built React client (app/web/dist, docs/plan/06-architecture.md's
 system diagram: the browser speaks REST to one FastAPI process) at the same origin the API
@@ -592,6 +596,7 @@ def settings_from_environment(env=None):
       ai_links=provider_links(env, ai_provider),
       grading_caps=build_grading_caps(env),
       timed_assessments=timed_assessments_enabled(env),
+      agent_drawing=agent_drawing_enabled(env),
    )
 
 
@@ -601,6 +606,16 @@ def timed_assessments_enabled(env):
 
    if not is_known:
       raise ValueError(f"GROWTH_TIMED_ASSESSMENTS must be on or off, got {configured!r}")
+
+   return configured == "on"
+
+
+def agent_drawing_enabled(env):
+   configured = env.get("GROWTH_AGENT_DRAWING", "on")
+   is_known = configured in ("on", "off")
+
+   if not is_known:
+      raise ValueError(f"GROWTH_AGENT_DRAWING must be on or off, got {configured!r}")
 
    return configured == "on"
 

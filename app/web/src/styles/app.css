@@ -3496,6 +3496,245 @@ h3.section-header {
    line-height: var(--growth-leading-label);
 }
 
+/* The tutor's figure in a reply (docs/agent/drawing-design.md, "What the student sees"). A role
+   gives a mark its ink through color, which strokes, dots, arrowheads and labels take as
+   currentcolor; a stroke's weight and dash are the ones the server compiled, except a ghost's,
+   which is always thin and dotted. The accent is monochrome, so the roles also differ by weight,
+   dash and the highlighter under a highlighted mark, and each holds 3:1 over every fill it can
+   cross in both themes. The fills are their accent tints mixed half with transparent, because the
+   frame's hairline gridlines drawn over accent-tint-2 at full strength fall under 3:1 in the dark
+   theme. */
+
+.tutor-figure {
+   display: flex;
+   flex-direction: column;
+   gap: var(--growth-space-8);
+   max-width: calc(var(--growth-space-96) * 4);
+}
+
+.tutor-figure-title {
+   font-family: "Inter Medium", "Inter", system-ui, sans-serif;
+   font-size: var(--growth-type-label);
+   line-height: var(--growth-leading-label);
+}
+
+.tutor-figure-canvas {
+   position: relative;
+   overflow: hidden;
+}
+
+.tutor-figure-svg {
+   display: block;
+   height: auto;
+}
+
+.tutor-figure-given {
+   color: var(--growth-text-secondary);
+}
+
+.tutor-figure-constructed,
+.tutor-figure-highlight {
+   color: var(--growth-accent-base);
+}
+
+.tutor-figure-error {
+   color: var(--growth-state-incorrect);
+}
+
+.tutor-figure-ghost {
+   color: var(--growth-text-muted);
+}
+
+.tutor-figure-stroke {
+   fill: none;
+   stroke: currentcolor;
+   stroke-linecap: round;
+   stroke-linejoin: round;
+}
+
+.tutor-figure-weight-thin,
+.tutor-figure-stroke.tutor-figure-ghost {
+   stroke-width: var(--growth-stroke-hairline);
+}
+
+.tutor-figure-weight-regular {
+   stroke-width: var(--growth-stroke-mark);
+}
+
+.tutor-figure-weight-bold {
+   stroke-width: var(--growth-stroke-curve);
+}
+
+.tutor-figure-style-dashed {
+   stroke-dasharray: calc(var(--growth-space-12) / 2) var(--growth-space-4);
+}
+
+.tutor-figure-style-dotted,
+.tutor-figure-stroke.tutor-figure-ghost {
+   stroke-dasharray: var(--growth-stroke-hairline) var(--growth-space-4);
+}
+
+.tutor-figure-highlighter {
+   fill: var(--growth-accent-tint-3);
+   stroke: none;
+}
+
+.tutor-figure-dot-halo {
+   r: calc(var(--growth-space-4) * 2);
+}
+
+.tutor-figure-fill {
+   stroke: var(--growth-text-muted);
+   stroke-width: var(--growth-stroke-hairline);
+   stroke-linejoin: round;
+}
+
+.tutor-figure-fill-region {
+   fill: color-mix(in srgb, var(--growth-accent-tint-1), transparent);
+}
+
+.tutor-figure-fill-region-below {
+   fill: color-mix(in srgb, var(--growth-accent-tint-2), transparent);
+}
+
+.tutor-figure-fill-ghost {
+   fill: none;
+   stroke-dasharray: var(--growth-stroke-hairline) var(--growth-space-4);
+}
+
+.tutor-figure-dot {
+   r: var(--growth-space-4);
+   fill: currentcolor;
+   stroke: currentcolor;
+   stroke-width: var(--growth-stroke-mark);
+}
+
+.tutor-figure-dot.tutor-figure-constructed,
+.tutor-figure-dot.tutor-figure-highlight {
+   stroke-width: var(--growth-stroke-curve);
+}
+
+.tutor-figure-dot.tutor-figure-error {
+   stroke-dasharray: calc(var(--growth-space-12) / 4) calc(var(--growth-space-4) / 2);
+}
+
+.tutor-figure-dot-open {
+   fill: var(--growth-surface-page);
+}
+
+.tutor-figure-dot.tutor-figure-ghost {
+   fill: none;
+   stroke-width: var(--growth-stroke-hairline);
+   stroke-dasharray: var(--growth-stroke-hairline) calc(var(--growth-space-4) / 2);
+}
+
+.tutor-figure-arrowhead {
+   fill: currentcolor;
+   stroke: none;
+}
+
+.tutor-figure-labels {
+   position: absolute;
+   inset: 0;
+   pointer-events: none;
+}
+
+.tutor-figure-label {
+   position: absolute;
+   display: flex;
+   align-items: flex-end;
+   width: 0;
+   height: 0;
+   white-space: nowrap;
+   font-size: var(--growth-type-caption);
+   line-height: var(--growth-leading-caption);
+}
+
+.tutor-figure-label[data-align="middle"] {
+   justify-content: center;
+}
+
+.tutor-figure-label[data-align="end"] {
+   justify-content: flex-end;
+}
+
+.tutor-figure-label.tutor-figure-highlight {
+   font-family: "Inter SemiBold", "Inter", system-ui, sans-serif;
+}
+
+.tutor-figure-label-text {
+   flex: none;
+}
+
+.tutor-figure-table-frame {
+   min-width: 0;
+   overflow-x: auto;
+}
+
+.tutor-figure-table {
+   border-collapse: collapse;
+   font-size: var(--growth-type-label);
+   line-height: var(--growth-leading-label);
+}
+
+.tutor-figure-table th,
+.tutor-figure-table td {
+   padding: var(--growth-space-4) var(--growth-space-12);
+   border: var(--growth-stroke-hairline) solid var(--growth-border-hairline);
+   text-align: center;
+}
+
+.tutor-figure-table td.tutor-figure-cell-highlight {
+   background: var(--growth-accent-tint-3);
+   border: var(--growth-stroke-hairline) solid var(--growth-text-muted);
+   font-family: "Inter SemiBold", "Inter", system-ui, sans-serif;
+}
+
+.tutor-figure-table td.tutor-figure-cell-error {
+   border: var(--growth-stroke-curve) dashed var(--growth-state-incorrect);
+}
+
+.tutor-figure-table td.tutor-figure-cell-ghost {
+   border: var(--growth-stroke-hairline) dotted var(--growth-text-muted);
+}
+
+.tutor-figure-cell-note {
+   display: block;
+   font-size: var(--growth-type-caption);
+   line-height: var(--growth-leading-caption);
+}
+
+.tutor-figure-step-line {
+   color: var(--growth-text-secondary);
+   font-size: var(--growth-type-label);
+   line-height: var(--growth-leading-label);
+}
+
+.tutor-figure-controls {
+   display: flex;
+   flex-wrap: wrap;
+   align-items: center;
+   gap: var(--growth-space-12);
+}
+
+.tutor-figure-steps summary {
+   color: var(--growth-text-secondary);
+   font-size: var(--growth-type-label);
+   line-height: var(--growth-leading-label);
+}
+
+.tutor-figure-step-list {
+   margin: var(--growth-space-4) 0 0;
+   padding-left: var(--growth-space-24);
+   font-size: var(--growth-type-label);
+   line-height: var(--growth-leading-label);
+}
+
+.tutor-figure-now {
+   margin-left: var(--growth-space-8);
+   font-family: "Inter SemiBold", "Inter", system-ui, sans-serif;
+}
+
 @media (min-width: 900px) {
    .agent-panel {
       position: fixed;

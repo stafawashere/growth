@@ -34,6 +34,15 @@ least three content words with the violated step, and none otherwise, so a point
 the app selected it for that step (docs/agent/research/math-tutoring.md, The library records a tutor
 can ground in). Two shared words were too few: BC-QA-03008's first-derivative substitution step met
 the higher-derivative point on "derivative" and "point" alone (orchestrator ruling, 2026-09-29).
+
+The packet carries drawing, open or closed, which app/agent/moves.py drawing_for decides from the
+move and the drawing switch, and render_prompt fills the template's drawing field with it when the
+template has one: prompts/agent/live_v2.md once it exists, live_v1.md until then. An item with a
+figure adds a summary of what the student sees to the item packet, its kind, window and alt text
+and a table's columns and rows, and nothing else of the figure. An agent turn whose figure was shown
+reaches the history sent to the model as its text and one line naming the figure's title and
+description, never the figure itself (docs/agent/drawing-design.md, The item's own figure in the
+packet, and Storage, privacy and logs).
 """
 import json
 import re
@@ -42,21 +51,34 @@ from pathlib import Path
 
 from jsonschema import Draft202012Validator
 
-from app.agent.moves import AFTER_SUBMISSION, BROWSING, PRACTICE, choose_move
+from app.agent.drawing.record import shown_spec
+from app.agent.moves import (
+   AFTER_SUBMISSION,
+   AGENT_DRAWING_FIELD,
+   BROWSING,
+   DRAWING_CLOSED,
+   PRACTICE,
+   choose_move,
+   drawing_for,
+)
 from app.evals import agent_checks
-from app.providers.base import render_template, split_template
+from app.providers.base import render_template, split_template, template_placeholders
 
 REPOSITORY_ROOT = Path(__file__).resolve().parents[2]
 SCREEN_SCHEMA_PATH = REPOSITORY_ROOT / "schemas" / "agent" / "screen.schema.json"
-LIVE_TEMPLATE_PATH = REPOSITORY_ROOT / "prompts" / "agent" / "live_v1.md"
+LIVE_V1_TEMPLATE_PATH = REPOSITORY_ROOT / "prompts" / "agent" / "live_v1.md"
+LIVE_V2_TEMPLATE_PATH = REPOSITORY_ROOT / "prompts" / "agent" / "live_v2.md"
+LIVE_TEMPLATE_PATH = LIVE_V2_TEMPLATE_PATH if LIVE_V2_TEMPLATE_PATH.exists() else LIVE_V1_TEMPLATE_PATH
 
 MEMORY_ENTRY_LIMIT = 6
 HISTORY_TURN_LIMIT = 20
-HISTORY_ROLES = ("student", "agent")
+AGENT_ROLE = "agent"
+HISTORY_ROLES = ("student", AGENT_ROLE)
 ITEM_SCREEN = "session_item"
 SCREEN_KINDS = ("today", "session_item", "session_lesson", "lesson", "review", "progress", "assessments", "settings", "other")
 LESSON_SCREENS = ("lesson", "session_lesson")
 UNSUPPORTED = "unsupported"
+TABLE_FIGURE = "table"
 MCQ = "mcq"
 SHORT_ANSWER = "short_answer"
 PREDICTION = "prediction"
@@ -118,6 +140,7 @@ class Packet:
    turn_index: int = 0
    memory: tuple = ()
    profile: dict | None = None
+   drawing: str = DRAWING_CLOSED
 
 
 @dataclass(frozen=True)
@@ -479,6 +502,30 @@ def _option_letters(item, item_format):
    return [option["id"] for option in options]
 
 
+def figure_summary(item):
+   """What the item's figure shows the student: its kind, window and alt text, and a table's columns
+   and rows. None for an item without a figure."""
+   spec = _decoded(_field(item, "figure_spec"))
+   is_figure = isinstance(spec, dict)
+
+   if not is_figure:
+      return None
+
+   kind = spec.get("kind")
+   summary = {"kind": kind, "alt": spec.get("alt") or ""}
+
+   if kind == TABLE_FIGURE:
+      summary["columns"] = [str(column) for column in spec.get("columns") or []]
+      summary["rows"] = [[str(cell) for cell in row] for row in spec.get("rows") or []]
+
+      return summary
+
+   has_window = spec.get("domain") is not None and spec.get("range") is not None
+   summary["window"] = {"x": list(spec["domain"]), "y": list(spec["range"])} if has_window else None
+
+   return summary
+
+
 def practice_body(context, screen, item, attempt, archetype, lesson, misconception_names):
    served_stage = _field(attempt, "served_stage") or screen["served_stage"]
    item_format = _field(attempt, "format") or screen["format"]
@@ -503,6 +550,11 @@ def practice_body(context, screen, item, attempt, archetype, lesson, misconcepti
 
    if letters is not None:
       body["item"]["options"] = letters
+
+   figure = figure_summary(item)
+
+   if figure is not None:
+      body["figure"] = figure
 
    if lesson is not None:
       body["lesson"] = dict(_lesson_ref(context, lesson), sections=pointable_sections(lesson, served_stage))
@@ -764,9 +816,10 @@ def compose_packet(
    turn_index_on_item=0,
    student_answered_question=False,
    diagnosis=None,
+   drawing_enabled=True,
 ):
    """The packet and the move for one turn. diagnosis is the attempt's diagnoses row, read only for
-   the leading misconception's probe after submission."""
+   the leading misconception's probe after submission. drawing_enabled is the drawing switch."""
    check = validate_screen(screen)
 
    if check.timed:
@@ -819,9 +872,20 @@ def compose_packet(
       turn_index=turn_index_on_item,
       memory=memory_payload(memory_entries),
       profile=profile_payload(profile),
+      drawing=drawing_for(move, drawing_enabled),
    )
 
    return packet, move
+
+
+def shown_figure_line(figure):
+   """The line an agent turn's shown figure adds to the history, or None."""
+   spec = shown_spec(figure)
+
+   if spec is None:
+      return None
+
+   return f"[Figure shown: {spec.get('title', '')}. {spec.get('description', '')}]"
 
 
 def _history_payload(history):
@@ -831,8 +895,16 @@ def _history_payload(history):
       role = _field(turn, "role")
       is_known_role = role in HISTORY_ROLES
 
-      if is_known_role:
-         turns.append({"role": role, "text": _field(turn, "text") or ""})
+      if not is_known_role:
+         continue
+
+      text = _field(turn, "text") or ""
+      figure_line = shown_figure_line(_field(turn, "figure")) if role == AGENT_ROLE else None
+
+      if figure_line is not None:
+         text = f"{text}\n{figure_line}"
+
+      turns.append({"role": role, "text": text})
 
    return turns
 
@@ -845,7 +917,7 @@ def render_prompt(packet, memory_entries, profile, history, student_message):
    """The system prefix, byte-identical on every turn, and the variable section below the marker,
    where every field is JSON-encoded except the three the app composes itself."""
    text = live_template_text()
-   system, _variable_section = split_template(text)
+   system, variable_section = split_template(text)
    rendered_profile = profile_payload(profile)
    fields = {
       "mode": packet.mode,
@@ -857,5 +929,9 @@ def render_prompt(packet, memory_entries, profile, history, student_message):
       "history": json.dumps(_history_payload(history), ensure_ascii=False),
       "student_message": json.dumps(str(student_message), ensure_ascii=False),
    }
+   asks_for_drawing = AGENT_DRAWING_FIELD in template_placeholders(variable_section)
+
+   if asks_for_drawing:
+      fields[AGENT_DRAWING_FIELD] = packet.drawing
 
    return RenderedPrompt(system=system, user=render_template(text, fields))

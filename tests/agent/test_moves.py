@@ -4,9 +4,14 @@ Practice opens with a question, offers self-questions while the student keeps an
 a rule or points to a section only after a turn the student did not answer. After submission the
 moves follow plan 03's order, and the probe is asked only when a diagnosis wrote one.
 """
+import re
+from pathlib import Path
+
 import pytest
 
-from app.agent.moves import MOVES, choose_move
+from app.agent.moves import MOVES, choose_move, drawing_for
+
+DRAWING_DESIGN_PATH = Path(__file__).resolve().parents[2] / "docs" / "agent" / "drawing-design.md"
 
 
 @pytest.mark.parametrize(
@@ -56,3 +61,28 @@ def test_every_chosen_move_is_in_the_vocabulary_and_an_unknown_mode_is_refused()
 
    with pytest.raises(ValueError):
       choose_move("grading", 0, False)
+
+
+def design_drawing_table():
+   """Move to open or closed, read from the table in drawing-design.md, When the tutor draws."""
+   table = {}
+
+   for line in DRAWING_DESIGN_PATH.read_text().splitlines():
+      cells = [cell.strip() for cell in line.strip().strip("|").split("|")]
+      is_drawing_row = len(cells) == 4 and cells[2] in ("open", "closed")
+
+      if is_drawing_row:
+         for move in re.split(r",\s*", cells[1]):
+            table[move] = cells[2]
+
+   return table
+
+
+def test_the_design_table_names_every_move():
+   assert set(design_drawing_table()) == set(MOVES)
+
+
+@pytest.mark.parametrize("move", MOVES)
+def test_each_move_draws_as_the_design_table_says_and_the_switch_closes_every_move(move):
+   assert drawing_for(move, True) == design_drawing_table()[move]
+   assert drawing_for(move, False) == "closed"

@@ -134,3 +134,107 @@ describe("a turn after its end frame", () => {
       expect(calls).toEqual(["text", "stopped"]);
    });
 });
+
+describe("a reply that draws", () => {
+   afterEach(() => {
+      vi.unstubAllGlobals();
+   });
+
+   function figureHandlers() {
+      const calls: unknown[] = [];
+      const handlers: TurnHandlers = {
+         onStart: () => calls.push("start"),
+         onText: (delta) => calls.push(["text", delta]),
+         onEnd: () => calls.push("end"),
+         onFailure: (failure) => calls.push(["failure", failure.kind]),
+         onStopped: () => calls.push("stopped"),
+         onFigurePending: () => calls.push("figure_pending"),
+         onFigure: (spec) => calls.push(["figure", spec]),
+         onFigureStep: (event) => calls.push(["figure_step", event]),
+         onFigureRefused: (event) => calls.push(["figure_refused", event])
+      };
+
+      return { calls, handlers };
+   }
+
+   async function openTurn(timeoutMilliseconds: number) {
+      const fetchScript = scriptedFetch();
+
+      vi.stubGlobal("fetch", fetchScript.fetchStub);
+
+      const { result, unmount } = renderHook(() => useAgentStream(timeoutMilliseconds));
+      const { calls, handlers } = figureHandlers();
+
+      act(() => {
+         void result.current.start(TURN_BODY, handlers);
+      });
+      await waitFor(() => expect(fetchScript.turns).toHaveLength(1));
+
+      return { turn: fetchScript.turns[0], calls, unmount };
+   }
+
+   async function waitPast(milliseconds: number) {
+      await act(async () => {
+         await new Promise((resolve) => setTimeout(resolve, milliseconds));
+      });
+   }
+
+   const SPEC = { id: "figure", kind: "graph", title: "A curve" };
+
+   it("hands each figure event to its own handler, in the order the frames came", async () => {
+      const { turn, calls } = await openTurn(TIMEOUT_MILLISECONDS * 100);
+
+      await act(async () => {
+         turn.push(frame("text", { delta: "Look first." }));
+         turn.push(frame("figure_pending", {}));
+         turn.push(frame("figure", SPEC));
+         turn.push(frame("figure_step", { figure: "figure", step: "curve" }));
+         turn.push(frame("text", { delta: " The curve." }));
+         turn.push(frame("figure_refused", { reason: "extra", copy: "The figure for this reply could not be drawn." }));
+         turn.push(frame("end", { turn_id: "ATN-1", outcome: "complete", turns_on_item: 0, turns_in_conversation: 1 }));
+      });
+
+      await waitFor(() => expect(calls).toContain("end"));
+
+      expect(calls).toEqual([
+         ["text", "Look first."],
+         "figure_pending",
+         ["figure", SPEC],
+         ["figure_step", { figure: "figure", step: "curve" }],
+         ["text", " The curve."],
+         ["figure_refused", { reason: "extra", copy: "The figure for this reply could not be drawn." }],
+         "end"
+      ]);
+   });
+
+   it("abandons a turn that sends nothing within the first-text wait", async () => {
+      const { turn, calls, unmount } = await openTurn(TIMEOUT_MILLISECONDS);
+
+      await waitPast(TIMEOUT_MILLISECONDS * 3);
+
+      expect(turn.signal().aborted).toBe(true);
+      expect(calls).toEqual([["failure", "offline"]]);
+
+      unmount();
+   });
+
+   it("takes the opening of a figure, or the figure itself, as the reply having begun, so the first-text wait no longer applies", async () => {
+      for (const [event, data] of [
+         ["figure_pending", {}],
+         ["figure", SPEC]
+      ] as const) {
+         const { turn, calls, unmount } = await openTurn(TIMEOUT_MILLISECONDS);
+
+         await act(async () => {
+            turn.push(frame(event, data));
+         });
+         await waitFor(() => expect(calls).toHaveLength(1));
+         await waitPast(TIMEOUT_MILLISECONDS * 3);
+
+         expect(turn.signal().aborted, event).toBe(false);
+         expect(calls, event).not.toContainEqual(["failure", "offline"]);
+
+         unmount();
+      }
+   });
+});

@@ -102,6 +102,31 @@ export const CONVERSATION_CEILING = "This conversation has reached 20 questions.
 
 export const SCREEN_REFUSED = "The tutor could not use what this screen sent. Reload the page and send again.";
 
+/* A figure in a reply, from docs/agent/drawing-design.md "States and copy" and "What the student
+   sees". */
+
+export const DRAWING_A_FIGURE = "Drawing a figure";
+
+export const FIGURE_REFUSED = "The figure for this reply could not be drawn.";
+
+export const PREVIOUS_STEP_LABEL = "Previous";
+
+export const NEXT_STEP_LABEL = "Next";
+
+export const SHOW_ALL_LABEL = "Show all";
+
+export const STEPS_LABEL = "Steps";
+
+export const CURRENT_STEP_WORD = "now";
+
+export function stepLine(step: number, total: number, caption: string) {
+   return `Step ${step} of ${total}: ${caption}`;
+}
+
+export function figureAnnouncement(title: string, description: string) {
+   return `Figure: ${title}. ${description}`;
+}
+
 export function shortcutName(isMac: boolean) {
    return isMac ? "Cmd+/" : "Ctrl+/";
 }

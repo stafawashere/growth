@@ -714,7 +714,10 @@ class AgentConversation(Base):
 
 class AgentTurn(Base):
    """One student or agent turn. screen is the structured screen shape the panel sent, never the
-   draft answer. No usage numbers: the guard's budgets row and the pacing ledger carry them."""
+   draft answer. No usage numbers: the guard's budgets row and the pacing ledger carry them. figure,
+   on an agent turn whose reply held a figure block, is {spec, outcome, revealed}: the validated
+   source figure when it was shown (null otherwise), shown, refused:<reason> or withheld, and the
+   number of steps sent (docs/agent/drawing-design.md, Storage, privacy and logs)."""
 
    __tablename__ = "agent_turns"
 
@@ -731,6 +734,7 @@ class AgentTurn(Base):
    outcome: Mapped[str | None] = mapped_column(Text, nullable=True)
    model: Mapped[str | None] = mapped_column(Text, nullable=True)
    link: Mapped[str | None] = mapped_column(Text, nullable=True)
+   figure: Mapped[dict | None] = mapped_column(JSON, nullable=True)
    created_at: Mapped[str] = mapped_column(Text, nullable=False)
    updated_at: Mapped[str] = mapped_column(Text, nullable=False)
 

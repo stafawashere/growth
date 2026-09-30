@@ -9,6 +9,11 @@ holds, the same functions the eval scores the golden set with. A sentence that p
 The first sentence that fails is never released: the screen records the verdict on `withheld`,
 releases the fixed decline copy from prompts/agent/decline_v1.md in its place, and releases nothing
 after it, so the route ends the turn with outcome withheld and stores the decline.
+
+A figure block splits the reply's prose (docs/agent/drawing-design.md, The splitter). At its opening
+fence the route calls boundary, which screens and releases the fragment buffered so far, so the text
+before a figure is released before the figure. A figure that fails the figure checks is withheld
+through withhold, which releases the decline and nothing after it, exactly as a failing sentence is.
 """
 from pathlib import Path
 
@@ -128,3 +133,18 @@ class SentenceScreen:
          return [remainder] if remainder else []
 
       return self._screened(remainder)
+
+   def boundary(self):
+      """The buffered fragment, screened and released now because a figure follows it; the stream
+      goes on after it."""
+      return self.flush()
+
+   def withhold(self, verdict):
+      """Withholds the reply on a verdict the screen did not reach itself, a figure's."""
+      if self.withheld is not None:
+         return []
+
+      self.withheld = verdict
+      self._buffer = ""
+
+      return [self.decline]

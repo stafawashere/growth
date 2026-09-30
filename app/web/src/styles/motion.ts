@@ -19,14 +19,24 @@ export function motionClass(name: AffordanceName) {
    return MOTION_CLASS_PREFIX + P1_FEEDBACK_AFFORDANCES[name];
 }
 
-/* The live tutor's phone sheet is the one transform transition that is not a P1 feedback
-   affordance (docs/agent/design.md, "Keyboard and motion"). */
+/* Two transform transitions are not P1 feedback affordances: the live tutor's phone sheet
+   (docs/agent/design.md, "Keyboard and motion") and the wipe that builds a step of the tutor's
+   figure (docs/agent/drawing-design.md, "Motion"), whose fade in is opacity alone. */
 export const TUTOR_SHEET_CLASS = "motion-tutor-sheet";
+
+export const FIGURE_WIPE_CLASS = "motion-figure-wipe";
+
+export const FIGURE_STEP_CLASS = "motion-figure-step";
 
 export const TRANSFORM_MOTION_CLASSES = [
    ...Object.values(P1_FEEDBACK_AFFORDANCES).map((affordance) => MOTION_CLASS_PREFIX + affordance),
-   TUTOR_SHEET_CLASS
+   TUTOR_SHEET_CLASS,
+   FIGURE_WIPE_CLASS
 ];
+
+/* A transition on opacity alone is already the cross-fade reduced motion asks for, so it runs the
+   same under either preference. */
+export const OPACITY_MOTION_CLASSES = [FIGURE_STEP_CLASS];
 
 /* 08 names six paths reached by a repeated keystroke and says all of them are instant. */
 
@@ -39,4 +49,4 @@ export const INSTANT_CLASSES = [
    "motion-instant-submit-answer"
 ];
 
-export const MOTION_CLASSES = [...TRANSFORM_MOTION_CLASSES, ...INSTANT_CLASSES];
+export const MOTION_CLASSES = [...TRANSFORM_MOTION_CLASSES, ...OPACITY_MOTION_CLASSES, ...INSTANT_CLASSES];

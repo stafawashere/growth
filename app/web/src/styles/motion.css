@@ -55,6 +55,31 @@
    opacity: 0;
 }
 
+/* A step of the tutor's figure enters with the sentence that introduces it (docs/agent/
+   drawing-design.md, "Motion"). The step's paths sit inside a clip whose rectangle grows from its
+   own left edge, and the whole step fades in. TutorFigure puts both classes on a newly revealed
+   step only and marks the first frame data-entering, so a step already drawn never moves. */
+.motion-figure-wipe {
+   transition: transform 300ms ease-out, opacity 300ms ease-out;
+   transform: none;
+   transform-box: fill-box;
+   transform-origin: left;
+   opacity: 1;
+}
+
+.motion-figure-wipe[data-entering="true"] {
+   transform: scaleX(0);
+}
+
+.motion-figure-step {
+   transition: opacity 300ms ease-out;
+   opacity: 1;
+}
+
+.motion-figure-step[data-entering="true"] {
+   opacity: 0;
+}
+
 .motion-instant-symbol-insertion {
    transition: none;
 }
@@ -111,6 +136,15 @@
    }
 
    .motion-tutor-sheet[data-entering="true"] {
+      transform: none;
+   }
+
+   .motion-figure-wipe {
+      transition: opacity 300ms ease-out;
+      transform: none;
+   }
+
+   .motion-figure-wipe[data-entering="true"] {
       transform: none;
    }
 }

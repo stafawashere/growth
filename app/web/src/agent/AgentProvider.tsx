@@ -1,11 +1,22 @@
 import { createContext, useCallback, useContext, useEffect, useMemo, useRef, useState, type ReactNode, type RefObject } from "react";
 
 import { closeAgentConversation } from "../api/client";
-import type { AgentEndEvent, AgentErrorKind, AgentScreen, AgentStartEvent, AgentTurnOutcome } from "../api/types";
+import type {
+   AgentEndEvent,
+   AgentErrorKind,
+   AgentFigureRefusedEvent,
+   AgentFigureStepEvent,
+   AgentScreen,
+   AgentStartEvent,
+   AgentTurnOutcome,
+   TutorFigureSpec
+} from "../api/types";
 import { latexToAccessibleText, splitInlineMath } from "../math/mathjson";
 import { AgentPanel } from "./AgentPanel";
-import { CONVERSATION_CEILING, REPLY_STOPPED, THIRD_TURN_CEILING, WITHHELD } from "./agentCopy";
+import { CONVERSATION_CEILING, FIGURE_REFUSED, REPLY_STOPPED, THIRD_TURN_CEILING, WITHHELD, figureAnnouncement } from "./agentCopy";
+import { createReplyPacer, type ReplyPacer } from "./figurePacing";
 import { contextLinesFor, type ScreenLabels } from "./screenLines";
+import { parseTutorFigure } from "./TutorFigure";
 import { useAgentStream, type TurnFailure } from "./useAgentStream";
 
 /* The live tutor's client state (docs/agent/architecture.md, "The panel and the settings views"):
@@ -29,12 +40,21 @@ export const MAIN_ID = "main";
 
 export type SheetHeight = "collapsed" | "half" | "full";
 
+/* A reply's figure (docs/agent/drawing-design.md, "States and copy"): announced by its opening
+   fence, drawn at the length of the reply text shown when it arrived, or refused with one line in
+   its place. */
+export type ReplyFigure =
+   | { state: "pending" }
+   | { state: "shown"; spec: TutorFigureSpec; offset: number; revealed: number }
+   | { state: "refused"; offset: number; copy: string };
+
 export interface AgentTurn {
    id: string;
    role: "student" | "agent";
    text: string;
    state: "waiting" | "streaming" | "done";
    outcome: AgentTurnOutcome | null;
+   figure?: ReplyFigure;
 }
 
 export type DegradedKind = AgentErrorKind | "offline" | "conversation_ceiling";
@@ -82,6 +102,7 @@ export interface AgentContextValue {
    changeDraft: (text: string) => void;
    send: () => void;
    stop: () => void;
+   showAll: (turnId: string) => void;
    setSheetHeight: (height: SheetHeight) => void;
 }
 
@@ -146,6 +167,23 @@ function effectiveClaim(claims: Map<symbol, ScreenClaim>): ScreenClaim | null {
 
 function isUncheckedItem(screen: AgentScreen) {
    return screen.kind === "session_item" && !screen.submitted;
+}
+
+function withFigureAt(turn: AgentTurn, spec: TutorFigureSpec | null): AgentTurn {
+   const offset = turn.text.length;
+   const figure: ReplyFigure = spec === null ? { state: "refused", offset, copy: FIGURE_REFUSED } : { state: "shown", spec, offset, revealed: 0 };
+
+   return { ...turn, figure };
+}
+
+function withStepRevealed(turn: AgentTurn, stepIndex: number): AgentTurn {
+   const figure = turn.figure;
+
+   if (figure?.state !== "shown") {
+      return turn;
+   }
+
+   return { ...turn, figure: { ...figure, revealed: Math.max(figure.revealed, stepIndex + 1) } };
 }
 
 /* The status region reads the reply as words: each formula is given as its ASCII reading, the
@@ -218,9 +256,12 @@ export function AgentProvider({ enabled, children }: AgentProviderProps) {
    const [sheetHeight, setSheetHeight] = useState<SheetHeight>("half");
    const [focusRequest, setFocusRequest] = useState(0);
    const [isMac] = useState(detectMac);
+   const [isPacing, setIsPacing] = useState(false);
    const frame = useRef<HTMLDivElement>(null);
    const isNarrow = useSheetLayout(frame, enabled);
    const stream = useAgentStream();
+   const pacing = useRef<{ replyId: string; pacer: ReplyPacer } | null>(null);
+   const isReplying = stream.isStreaming || isPacing;
 
    const askButton = useRef<HTMLButtonElement>(null);
    const composer = useRef<HTMLTextAreaElement>(null);
@@ -463,10 +504,14 @@ export function AgentProvider({ enabled, children }: AgentProviderProps) {
       setTurns((current) => current.map((turn) => (turn.id === id ? change(turn) : turn)));
    }
 
+   useEffect(() => {
+      return () => pacing.current?.pacer.dispose();
+   }, []);
+
    const send = useCallback(() => {
       const message = draft.trim();
       const isDegraded = degraded !== null && !isLapsedUsageLimit(degraded);
-      const isBlocked = message === "" || stream.isStreaming || isDegraded || isTimed;
+      const isBlocked = message === "" || isReplying || isDegraded || isTimed;
 
       if (isBlocked) {
          return;
@@ -478,6 +523,20 @@ export function AgentProvider({ enabled, children }: AgentProviderProps) {
       const replyId = localTurnId("agent");
       const reply: AgentTurn = { id: replyId, role: "agent", text: "", state: "waiting", outcome: null };
       let receivedText = "";
+      let drawnFigure: TutorFigureSpec | null = null;
+      let latestGate = -1;
+
+      /* While a figure is building, each of its steps is a gate: the step and the text after it wait
+         until the words before it could have been read (figurePacing.ts). The end is applied, and the
+         reply announced, once everything received has been shown. */
+      const pacer = createReplyPacer({
+         showText: (delta) => updateTurn(replyId, (turn) => ({ ...turn, text: turn.text + delta, state: "streaming" })),
+         openGate: (stepIndex) => updateTurn(replyId, (turn) => withStepRevealed(turn, stepIndex)),
+         onBusyChange: setIsPacing
+      });
+
+      pacing.current?.pacer.dispose();
+      pacing.current = { replyId, pacer };
 
       setTurns((current) => [...current, studentTurn, reply]);
       setDraft("");
@@ -497,28 +556,69 @@ export function AgentProvider({ enabled, children }: AgentProviderProps) {
             },
             onText: (delta: string) => {
                receivedText += delta;
-               updateTurn(replyId, (turn) => ({ ...turn, text: turn.text + delta, state: "streaming" }));
+               pacer.pushText(delta);
+            },
+            onFigurePending: () => {
+               pacer.pushAction(() => updateTurn(replyId, (turn) => ({ ...turn, figure: { state: "pending" }, state: "streaming" })));
+            },
+            onFigure: (spec: unknown) => {
+               const checked = parseTutorFigure(spec);
+
+               drawnFigure = checked;
+               pacer.pushAction(() => updateTurn(replyId, (turn) => ({ ...withFigureAt(turn, checked), state: "streaming" })));
+            },
+            onFigureStep: (event: AgentFigureStepEvent) => {
+               const figure = drawnFigure;
+               const isThisFigure = figure !== null && event.figure === figure.id;
+               const stepIndex = isThisFigure ? figure.steps.findIndex((step) => step.id === event.step) : -1;
+               const isNextGate = stepIndex > latestGate;
+
+               if (!isNextGate) {
+                  return;
+               }
+
+               latestGate = stepIndex;
+               pacer.pushGate(stepIndex);
+            },
+            onFigureRefused: (event: AgentFigureRefusedEvent) => {
+               const copy = event.copy.trim() === "" ? FIGURE_REFUSED : event.copy;
+
+               pacer.pushAction(() =>
+                  updateTurn(replyId, (turn) => ({ ...turn, figure: { state: "refused", offset: turn.text.length, copy }, state: "streaming" }))
+               );
             },
             onEnd: (event: AgentEndEvent) => {
-               const isWithheld = event.outcome === "withheld";
-               const finalText = isWithheld ? WITHHELD : receivedText;
-               const reachedCeiling = isUncheckedItem(currentScreen.current) && event.turns_on_item >= PER_ITEM_TURN_CEILING;
+               pacer.pushAction(() => {
+                  const isWithheld = event.outcome === "withheld";
+                  const finalText = isWithheld ? WITHHELD : receivedText;
+                  const reachedCeiling = isUncheckedItem(currentScreen.current) && event.turns_on_item >= PER_ITEM_TURN_CEILING;
+                  const figure = isWithheld ? null : drawnFigure;
+                  const figureClause = figure === null ? "" : ` ${figureAnnouncement(figure.title, figure.description)}`;
 
-               updateTurn(replyId, (turn) => ({ ...turn, text: finalText, state: "done", outcome: event.outcome }));
-               setAnnouncement(spokenReply(finalText));
+                  updateTurn(replyId, (turn) => ({
+                     ...turn,
+                     text: finalText,
+                     state: "done",
+                     outcome: event.outcome,
+                     figure: isWithheld ? undefined : turn.figure
+                  }));
+                  setAnnouncement(`${spokenReply(finalText)}${figureClause}`.trim());
 
-               if (reachedCeiling) {
-                  setDegraded({ kind: "ceiling", resetsAt: null, copy: THIRD_TURN_CEILING, screenKey: sentOnKey });
-               }
+                  if (reachedCeiling) {
+                     setDegraded({ kind: "ceiling", resetsAt: null, copy: THIRD_TURN_CEILING, screenKey: sentOnKey });
+                  }
+               });
             },
             onFailure: (failure: TurnFailure) => {
-               const hasText = receivedText !== "";
+               pacer.showEverything();
+
+               const hasReply = receivedText !== "" || drawnFigure !== null;
                const resetsAt = failure.kind === "offline" ? null : failure.resetsAt;
                const copy = failure.kind === "offline" ? null : failure.copy;
                const isConversationCeiling = failure.kind === "ceiling" && copy === CONVERSATION_CEILING;
                const kind: DegradedKind = isConversationCeiling ? "conversation_ceiling" : failure.kind;
 
-               if (hasText) {
+               if (hasReply) {
                   updateTurn(replyId, (turn) => ({ ...turn, state: "done", outcome: "incomplete" }));
                } else {
                   giveBackDraft();
@@ -527,16 +627,35 @@ export function AgentProvider({ enabled, children }: AgentProviderProps) {
                setDegraded({ kind, resetsAt, copy, screenKey: sentOnKey });
             },
             onStopped: () => {
+               pacer.showEverything();
                updateTurn(replyId, (turn) => ({ ...turn, state: "done", outcome: "stopped" }));
                setAnnouncement(REPLY_STOPPED);
             }
          }
       );
-   }, [draft, stream, degraded, isTimed, screen, currentKey, conversationId]);
+   }, [draft, stream, degraded, isTimed, screen, currentKey, conversationId, isReplying]);
+
+   const showAll = useCallback((turnId: string) => {
+      const isPacedReply = pacing.current !== null && pacing.current.replyId === turnId;
+
+      if (isPacedReply) {
+         pacing.current!.pacer.showEverything();
+      }
+   }, []);
+
+   /* Stop opens every waiting step at once. While the reply still streams it also ends the request,
+      and the turn ends stopped; once the server has ended the reply, what it sent is shown and the
+      turn ends as the server said. */
+   const stop = useCallback(() => {
+      pacing.current?.pacer.showEverything();
+      stream.stop();
+   }, [stream]);
 
    const closeConversation = useCallback(() => {
       const closing = conversationId;
 
+      pacing.current?.pacer.dispose();
+      pacing.current = null;
       stream.stop();
       setTurns([]);
       setConversationId(null);
@@ -558,7 +677,7 @@ export function AgentProvider({ enabled, children }: AgentProviderProps) {
       draft,
       turns,
       conversationId,
-      isStreaming: stream.isStreaming,
+      isStreaming: isReplying,
       degraded,
       announcement,
       sheetHeight,
@@ -572,7 +691,8 @@ export function AgentProvider({ enabled, children }: AgentProviderProps) {
       closeConversation,
       changeDraft,
       send,
-      stop: stream.stop,
+      stop,
+      showAll,
       setSheetHeight
    };
 

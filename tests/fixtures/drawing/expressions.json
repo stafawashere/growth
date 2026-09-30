@@ -1,0 +1,668 @@
+{
+   "description": "Expressions both the Python figure grammar (app/agent/drawing/expression.py) and the web grammar (app/web/src/lessons/expression.ts) must agree on: each case lists a variable and points with the value there; each undefined case lists points where the value is undefined (None in Python, not finite in TypeScript); every refusal must refuse in both. python_only_refusals are refused by the figure grammar alone, which declares its variables, keeps the design's function table and carries the length, token and depth caps. Values were computed with Python's math module, not with either grammar.",
+   "tolerance": 1e-09,
+   "cases": [
+      {
+         "expression": "1 + 2*3",
+         "variable": "x",
+         "points": [
+            [
+               0,
+               7
+            ]
+         ]
+      },
+      {
+         "expression": "(1 + 2)*3",
+         "variable": "x",
+         "points": [
+            [
+               0,
+               9
+            ]
+         ]
+      },
+      {
+         "expression": "2^3^2",
+         "variable": "x",
+         "points": [
+            [
+               0,
+               512
+            ]
+         ]
+      },
+      {
+         "expression": "2**3**2",
+         "variable": "x",
+         "points": [
+            [
+               0,
+               512
+            ]
+         ]
+      },
+      {
+         "expression": "-x^2",
+         "variable": "x",
+         "points": [
+            [
+               3,
+               -9
+            ],
+            [
+               -2,
+               -4
+            ]
+         ]
+      },
+      {
+         "expression": "(-x)^2",
+         "variable": "x",
+         "points": [
+            [
+               3,
+               9
+            ]
+         ]
+      },
+      {
+         "expression": "-2^2",
+         "variable": "x",
+         "points": [
+            [
+               0,
+               -4
+            ]
+         ]
+      },
+      {
+         "expression": "2^-1",
+         "variable": "x",
+         "points": [
+            [
+               0,
+               0.5
+            ]
+         ]
+      },
+      {
+         "expression": "10/4/5",
+         "variable": "x",
+         "points": [
+            [
+               0,
+               0.5
+            ]
+         ]
+      },
+      {
+         "expression": "7 - 2 - 1",
+         "variable": "x",
+         "points": [
+            [
+               0,
+               4
+            ]
+         ]
+      },
+      {
+         "expression": "2 - -3",
+         "variable": "x",
+         "points": [
+            [
+               0,
+               5
+            ]
+         ]
+      },
+      {
+         "expression": "+x",
+         "variable": "x",
+         "points": [
+            [
+               1.5,
+               1.5
+            ]
+         ]
+      },
+      {
+         "expression": "x**2 + 1",
+         "variable": "x",
+         "points": [
+            [
+               2,
+               5
+            ],
+            [
+               -0.5,
+               1.25
+            ]
+         ]
+      },
+      {
+         "expression": "2(x + 1)",
+         "variable": "x",
+         "points": [
+            [
+               1,
+               4
+            ]
+         ]
+      },
+      {
+         "expression": "3x^2 - 4x + 6",
+         "variable": "x",
+         "points": [
+            [
+               2,
+               10
+            ],
+            [
+               0.5,
+               4.75
+            ]
+         ]
+      },
+      {
+         "expression": "(x + 1)(x - 1)",
+         "variable": "x",
+         "points": [
+            [
+               3,
+               8
+            ]
+         ]
+      },
+      {
+         "expression": "x(x + 1)",
+         "variable": "x",
+         "points": [
+            [
+               2,
+               6
+            ]
+         ]
+      },
+      {
+         "expression": "x/2x",
+         "variable": "x",
+         "points": [
+            [
+               4,
+               8
+            ]
+         ]
+      },
+      {
+         "expression": "2pi",
+         "variable": "x",
+         "points": [
+            [
+               0,
+               6.283185307179586
+            ]
+         ]
+      },
+      {
+         "expression": "e^x",
+         "variable": "x",
+         "points": [
+            [
+               1,
+               2.718281828459045
+            ],
+            [
+               0,
+               1
+            ]
+         ]
+      },
+      {
+         "expression": "x^(1/2)",
+         "variable": "x",
+         "points": [
+            [
+               4,
+               2
+            ],
+            [
+               2.25,
+               1.5
+            ]
+         ]
+      },
+      {
+         "expression": "(-8)^(1/3)",
+         "variable": "x",
+         "points": [
+            [
+               0,
+               -2
+            ]
+         ]
+      },
+      {
+         "expression": "(-8)^(2/3)",
+         "variable": "x",
+         "points": [
+            [
+               0,
+               4
+            ]
+         ]
+      },
+      {
+         "expression": "sqrt(4x^2 + 5)/(3x + 1)",
+         "variable": "x",
+         "points": [
+            [
+               1,
+               0.75
+            ]
+         ]
+      },
+      {
+         "expression": "exp(0) + ln(e) + log(e) + sin(pi/2) + cos(0) + tan(0)",
+         "variable": "x",
+         "points": [
+            [
+               0,
+               5
+            ]
+         ]
+      },
+      {
+         "expression": "sec(0) + csc(pi/2) + cot(pi/4)",
+         "variable": "x",
+         "points": [
+            [
+               0,
+               3.0
+            ]
+         ]
+      },
+      {
+         "expression": "asin(1) + acos(1) + atan(1)",
+         "variable": "x",
+         "points": [
+            [
+               0,
+               2.356194490192345
+            ]
+         ]
+      },
+      {
+         "expression": "sinh(x) + cosh(x) - tanh(0)",
+         "variable": "x",
+         "points": [
+            [
+               1,
+               2.718281828459045
+            ],
+            [
+               -0.5,
+               0.6065306597126334
+            ]
+         ]
+      },
+      {
+         "expression": "abs(-2.5) + abs(x)",
+         "variable": "x",
+         "points": [
+            [
+               -1,
+               3.5
+            ]
+         ]
+      },
+      {
+         "expression": "1.5e1 + .5",
+         "variable": "x",
+         "points": [
+            [
+               0,
+               15.5
+            ]
+         ]
+      },
+      {
+         "expression": "2sin(x)cos(x)",
+         "variable": "x",
+         "points": [
+            [
+               1,
+               0.9092974268256818
+            ],
+            [
+               0.3,
+               0.5646424733950354
+            ]
+         ]
+      },
+      {
+         "expression": "x^3 - 3x",
+         "variable": "x",
+         "points": [
+            [
+               2,
+               2
+            ],
+            [
+               -1,
+               2
+            ]
+         ]
+      },
+      {
+         "expression": "t^3 - 3t",
+         "variable": "t",
+         "points": [
+            [
+               2,
+               2
+            ]
+         ]
+      },
+      {
+         "expression": "1 + cos(theta)",
+         "variable": "theta",
+         "points": [
+            [
+               0,
+               2
+            ],
+            [
+               3.141592653589793,
+               0
+            ]
+         ]
+      },
+      {
+         "expression": "2sin(3theta)",
+         "variable": "theta",
+         "points": [
+            [
+               0.5235987755982988,
+               2
+            ]
+         ]
+      },
+      {
+         "expression": "1/2^n",
+         "variable": "n",
+         "points": [
+            [
+               3,
+               0.125
+            ],
+            [
+               1,
+               0.5
+            ]
+         ]
+      },
+      {
+         "expression": "(-1)^n/n",
+         "variable": "n",
+         "points": [
+            [
+               3,
+               -0.3333333333333333
+            ],
+            [
+               4,
+               0.25
+            ]
+         ]
+      },
+      {
+         "expression": "1/(1 + x^2)",
+         "variable": "x",
+         "points": [
+            [
+               2,
+               0.2
+            ]
+         ]
+      },
+      {
+         "expression": "ln(x)/x",
+         "variable": "x",
+         "points": [
+            [
+               2.718281828459045,
+               0.36787944117144233
+            ]
+         ]
+      },
+      {
+         "expression": "e^(-x^2/2)",
+         "variable": "x",
+         "points": [
+            [
+               1,
+               0.6065306597126334
+            ]
+         ]
+      },
+      {
+         "expression": "(x - 1)^(1/3)",
+         "variable": "x",
+         "points": [
+            [
+               -7,
+               -2
+            ],
+            [
+               9,
+               2
+            ]
+         ]
+      }
+   ],
+   "undefined": [
+      {
+         "expression": "sqrt(x)",
+         "variable": "x",
+         "points": [
+            -1
+         ]
+      },
+      {
+         "expression": "1/(x - 1)",
+         "variable": "x",
+         "points": [
+            1
+         ]
+      },
+      {
+         "expression": "ln(x)",
+         "variable": "x",
+         "points": [
+            0,
+            -2
+         ]
+      },
+      {
+         "expression": "asin(x)",
+         "variable": "x",
+         "points": [
+            2
+         ]
+      },
+      {
+         "expression": "csc(x)",
+         "variable": "x",
+         "points": [
+            0
+         ]
+      },
+      {
+         "expression": "x^(1/2)",
+         "variable": "x",
+         "points": [
+            -4
+         ]
+      },
+      {
+         "expression": "exp(x)",
+         "variable": "x",
+         "points": [
+            1000
+         ]
+      }
+   ],
+   "refusals": [
+      {
+         "expression": "",
+         "variable": "x"
+      },
+      {
+         "expression": "2 +",
+         "variable": "x"
+      },
+      {
+         "expression": "foo(x)",
+         "variable": "x"
+      },
+      {
+         "expression": "sin x",
+         "variable": "x"
+      },
+      {
+         "expression": "x sin(x)",
+         "variable": "x"
+      },
+      {
+         "expression": "pi x",
+         "variable": "x"
+      },
+      {
+         "expression": "sqrt",
+         "variable": "x"
+      },
+      {
+         "expression": "pi(2)",
+         "variable": "x"
+      },
+      {
+         "expression": "(x + 1",
+         "variable": "x"
+      },
+      {
+         "expression": "x + 1)",
+         "variable": "x"
+      },
+      {
+         "expression": "sin(x",
+         "variable": "x"
+      },
+      {
+         "expression": "2 3",
+         "variable": "x"
+      },
+      {
+         "expression": "2 **",
+         "variable": "x"
+      },
+      {
+         "expression": "x = 1",
+         "variable": "x"
+      },
+      {
+         "expression": "x, 1",
+         "variable": "x"
+      },
+      {
+         "expression": "[x]",
+         "variable": "x"
+      },
+      {
+         "expression": "x.real",
+         "variable": "x"
+      },
+      {
+         "expression": "__import__(\"os\")",
+         "variable": "x"
+      },
+      {
+         "expression": "__import__('os').system('ls')",
+         "variable": "x"
+      },
+      {
+         "expression": "x; 1",
+         "variable": "x"
+      },
+      {
+         "expression": "x!",
+         "variable": "x"
+      },
+      {
+         "expression": "{x}",
+         "variable": "x"
+      }
+   ],
+   "python_only_refusals": [
+      {
+         "expression": "q + 1",
+         "variable": "x",
+         "why": "a name outside the table and the variable"
+      },
+      {
+         "expression": "y + 1",
+         "variable": "x",
+         "why": "a variable not declared for this use"
+      },
+      {
+         "expression": "t^2",
+         "variable": "x",
+         "why": "a variable not declared for this use"
+      },
+      {
+         "expression": "Abs(x)",
+         "variable": "x",
+         "why": "outside the design's function table"
+      },
+      {
+         "expression": "sign(x)",
+         "variable": "x",
+         "why": "outside the design's function table"
+      },
+      {
+         "expression": "E",
+         "variable": "x",
+         "why": "outside the design's constants"
+      },
+      {
+         "expression": "oo",
+         "variable": "x",
+         "why": "no infinity"
+      },
+      {
+         "expression": "1e400",
+         "variable": "x",
+         "why": "a literal that is not finite"
+      },
+      {
+         "expression": "x\u00a0+ 1",
+         "variable": "x",
+         "why": "non-ASCII"
+      },
+      {
+         "expression": "111111111111111111111111111111111111111111111111111111111111111111111111111111111",
+         "variable": "x",
+         "why": "81 characters"
+      },
+      {
+         "expression": "(((((((((((x)))))))))))",
+         "variable": "x",
+         "why": "bracket depth 11"
+      },
+      {
+         "expression": "x+x+x+x+x+x+x+x+x+x+x+x+x+x+x+x+x+x+x+x+x+x+x+x+x",
+         "variable": "x",
+         "why": "49 tokens"
+      }
+   ]
+}

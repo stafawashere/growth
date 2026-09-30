@@ -4,11 +4,14 @@ import { beforeAll, describe, expect, it } from "vitest";
 
 import {
    ANIMATABLE_PROPERTIES,
+   FIGURE_STEP_CLASS,
+   FIGURE_WIPE_CLASS,
    INSTANT_CLASSES,
    MOTION_CLASSES,
    MOTION_CLASS_PREFIX,
    MOTION_DURATION,
    MOTION_EASING,
+   OPACITY_MOTION_CLASSES,
    REDUCED_MOTION_QUERY,
    TRANSFORM_MOTION_CLASSES
 } from "./motion";
@@ -203,6 +206,58 @@ describe("the motion stylesheet", () => {
       const curves = STYLESHEET_TEXT.match(/cubic-bezier\([^)]*\)/g) ?? [];
 
       expect(curves, "motion.css invents an easing curve").toEqual([]);
+   });
+});
+
+describe("the opacity-only transitions", () => {
+   it("fade opacity alone, at the one duration and easing, with no transform at rest", () => {
+      expect(OPACITY_MOTION_CLASSES.length).toBeGreaterThan(0);
+
+      for (const className of OPACITY_MOTION_CLASSES) {
+         const declaration = baseRules.get(className);
+
+         expect(declaration, `${className} has no rule in motion.css`).toBeDefined();
+         expect(transitionedProperties(declaration!), `${className} animates more than opacity`).toEqual(["opacity"]);
+         expect(declaration!.getPropertyValue("transform"), `${className} declares a transform`).toBe("");
+
+         for (const segment of transitionSegments(declaration!)) {
+            const timing = segment.split(/\s+/).slice(1).join(" ");
+
+            expect(timing, `${className} times ${segment} off the single duration and easing`)
+               .toBe(`${MOTION_DURATION} ${MOTION_EASING}`);
+         }
+      }
+   });
+
+   it("still fade under reduced motion, whichever rule applies there", () => {
+      for (const className of OPACITY_MOTION_CLASSES) {
+         const declaration = reducedRules.get(className) ?? baseRules.get(className);
+         const transition = declaration!.getPropertyValue("transition");
+
+         expect(transitionedProperties(declaration!), `${className} stops fading under reduce`).toContain("opacity");
+         expect(transition, `${className} fades without the duration under reduce`).toContain(MOTION_DURATION);
+         expect(declaration!.getPropertyValue("animation"), `${className} ships animation: none under reduce`).not.toBe("none");
+      }
+   });
+});
+
+describe("the tutor figure's step motion", () => {
+   it("wipes from nothing at the left edge of the clip's own box and fades from transparent", () => {
+      const wipe = baseRules.get(FIGURE_WIPE_CLASS)!;
+      const wipeEntering = baseRules.get(`${FIGURE_WIPE_CLASS}[data-entering="true"]`);
+      const stepEntering = baseRules.get(`${FIGURE_STEP_CLASS}[data-entering="true"]`);
+
+      expect(STYLESHEET_TEXT).toMatch(/\.motion-figure-wipe \{[^}]*transform-box: fill-box;[^}]*\}/);
+      expect(STYLESHEET_TEXT).toMatch(/\.motion-figure-wipe \{[^}]*transform-origin: left;[^}]*\}/);
+      expect(wipe.getPropertyValue("transform")).toBe("none");
+      expect(wipeEntering?.getPropertyValue("transform")).toBe("scaleX(0)");
+      expect(stepEntering?.getPropertyValue("opacity")).toBe("0");
+   });
+
+   it("under reduced motion enters at full width, so only the fade runs", () => {
+      const wipeEntering = reducedRules.get(`${FIGURE_WIPE_CLASS}[data-entering="true"]`);
+
+      expect(wipeEntering?.getPropertyValue("transform")).toBe("none");
    });
 });
 

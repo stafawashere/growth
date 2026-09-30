@@ -9,6 +9,7 @@ import {
    COMPOSER_LABEL,
    CONVERSATION_CEILING,
    DAILY_CAP,
+   DRAWING_A_FIGURE,
    EMPTY_ELSEWHERE,
    EMPTY_ON_ITEM,
    FULL_HEIGHT_LABEL,
@@ -32,6 +33,7 @@ import {
 } from "./agentCopy";
 import { COMPOSER_ID, PANEL_ID, isLapsedUsageLimit, useAgent, type AgentTurn, type DegradedState } from "./AgentProvider";
 import { contextLinesFor } from "./screenLines";
+import { TutorFigure } from "./TutorFigure";
 
 /* The tutor panel of docs/agent/design.md, "The panel": from 1100 px an aside beside main, from
    900 px a narrower one, and under 900 px a bottom sheet with three heights and the buttons that
@@ -46,7 +48,10 @@ import { contextLinesFor } from "./screenLines";
 
    The conversation is the panel's one scrolling region, between the header and the composer. It
    follows the newest turn while a reply streams, and stops following once the student scrolls up
-   to read an earlier one, until they scroll back to the end or send again. */
+   to read an earlier one, until they scroll back to the end or send again.
+
+   A reply that draws holds its figure where the model put it: the text shown before the figure
+   arrived, the figure, then the rest (docs/agent/drawing-design.md, "The client"). */
 
 const SCROLL_END_TOLERANCE = 1;
 
@@ -113,7 +118,47 @@ function ReplyText(props: { text: string; isStreaming: boolean }) {
    );
 }
 
-function Turn(props: { turn: AgentTurn }) {
+function ReplyBody(props: { turn: AgentTurn; onShowAll: () => void }) {
+   const { turn } = props;
+   const isStreaming = turn.state !== "done";
+   const figure = turn.figure;
+
+   if (figure === undefined) {
+      return <ReplyText text={turn.text} isStreaming={isStreaming} />;
+   }
+
+   if (figure.state === "pending") {
+      return (
+         <>
+            <ReplyText text={turn.text} isStreaming={isStreaming} />
+            <p className="agent-writing" data-testid="agent-figure-pending">
+               {DRAWING_A_FIGURE}
+            </p>
+         </>
+      );
+   }
+
+   const textBefore = turn.text.slice(0, figure.offset);
+   const textAfter = turn.text.slice(figure.offset);
+
+   return (
+      <>
+         <ReplyText text={textBefore} isStreaming={false} />
+
+         {figure.state === "shown" ? (
+            <TutorFigure spec={figure.spec} revealed={figure.revealed} finished={!isStreaming} onShowAll={props.onShowAll} />
+         ) : (
+            <p className="agent-writing" data-testid="agent-figure-refused">
+               {figure.copy}
+            </p>
+         )}
+
+         <ReplyText text={textAfter} isStreaming={isStreaming} />
+      </>
+   );
+}
+
+function Turn(props: { turn: AgentTurn; onShowAll: (turnId: string) => void }) {
    const { turn } = props;
 
    if (turn.role === "student") {
@@ -126,14 +171,14 @@ function Turn(props: { turn: AgentTurn }) {
    }
 
    const isStreaming = turn.state !== "done";
-   const awaitsFirstText = turn.text === "" && isStreaming;
+   const awaitsFirstText = turn.text === "" && isStreaming && turn.figure === undefined;
 
    return (
       <li className="agent-turn agent-turn-tutor">
          <span className="visually-hidden">{TUTOR_SAID}</span>
 
          <div className="agent-reply" aria-busy={isStreaming} data-testid="agent-reply">
-            {awaitsFirstText ? <p className="agent-writing">{WRITING_A_REPLY}</p> : <ReplyText text={turn.text} isStreaming={isStreaming} />}
+            {awaitsFirstText ? <p className="agent-writing">{WRITING_A_REPLY}</p> : <ReplyBody turn={turn} onShowAll={() => props.onShowAll(turn.id)} />}
          </div>
       </li>
    );
@@ -329,7 +374,7 @@ export function AgentPanel() {
                         ) : (
                            <ol className="agent-turns">
                               {agent.turns.map((turn) => (
-                                 <Turn key={turn.id} turn={turn} />
+                                 <Turn key={turn.id} turn={turn} onShowAll={agent.showAll} />
                               ))}
                            </ol>
                         )}

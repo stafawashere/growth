@@ -30,6 +30,18 @@ profiles that differ in the one field the pair names, with identical labels, so 
 verdict must match across the pair. The applied case of a pair labels each turn profile_applied,
 which agent_checks.profile_applied scores where code can; an adversarial pair carries a profile the
 validator or the renderer must neutralise.
+
+A candidate reply may carry one figure (docs/agent/drawing-design.md, Evals). The reply is split with
+the route's FigureSplitter, the prose checks score the text the route releases, with every
+[[step:ID]] marker and the block taken out, and the block is read and compiled as the route does
+(app/agent/turn.py compiled_figure). Four labels score the figure with app/evals/figure_checks.py on
+the same packet facts and the key forms the route's key_forms_for gives: draws_only_when_open on the
+drawing field app/agent/moves.py drawing_for gives the turn's move with the switch on;
+figure_well_formed, false when the splitter or the reader refuses the block; no_answer_in_figure
+through screen_figure, the route's whole figure screen; figure_described. A turn whose reply opens a
+figure labels the first two, and one whose figure compiles labels all four. A case may carry a
+diagnosis, which reaches the packet as the attempt's diagnoses row does, so that the fourth turn
+after submission is the probe.
 """
 import json
 import math
@@ -37,7 +49,10 @@ from dataclasses import dataclass
 from pathlib import Path
 from types import SimpleNamespace
 
-from app.evals import agent_checks
+from app.agent.drawing import stream as figure_stream
+from app.agent.drawing.spec import FigureRefused
+from app.agent.moves import drawing_for
+from app.evals import agent_checks, figure_checks
 from app.items.distractor_paths import distractor_path_violations, error_ids_for_skills
 from app.items.ingest import run_checks
 
@@ -70,6 +85,12 @@ AGENT_CONFIDENCE = "confident"
 PAIR_ROLE_SETS = ({"applied", "baseline"}, {"adversarial", "baseline"})
 PAIR_SHARED_KEYS = ("item_id", "served_stage", "format", "mode", "screen", "lesson_id", "chosen_option_id", "correct")
 PAIR_SHARED_TURN_KEYS = ("student", "answered_previous", "labels", "acceptable")
+FIGURE_OPENED_CHECKS = (figure_checks.DRAWS_ONLY_WHEN_OPEN, figure_checks.FIGURE_WELL_FORMED)
+FIGURE_SHOWN_CHECKS = (figure_checks.NO_ANSWER_IN_FIGURE, figure_checks.FIGURE_DESCRIBED)
+FIGURE_CHECKS = FIGURE_OPENED_CHECKS + FIGURE_SHOWN_CHECKS
+AGENT_LABELS = agent_checks.CHECKS + FIGURE_CHECKS
+AGENT_FIGURE_ID = "figure"
+DRAWING_SWITCHED_ON = True
 FORBIDDEN_DASHES = (chr(0x2013), chr(0x2014))
 Z_95 = 1.959963984540054
 
@@ -327,6 +348,115 @@ def agent_lesson(lesson_id, directory=LESSONS_DIR):
    return SimpleNamespace(id=body["id"], version=body["version"], target_id=body["target_id"], body=body)
 
 
+@dataclass(frozen=True)
+class SplitReply:
+   """A candidate reply as the route's splitter reads it: the prose it releases, whether a figure
+   fence opened, the first block's text and the splitter's first refusal."""
+
+   prose: str
+   opens_figure: bool
+   block: str | None
+   refusal: str | None
+
+
+@dataclass(frozen=True)
+class FigureReading:
+   """The first block read and compiled as the route does, or the reason it was refused."""
+
+   source: dict | None
+   facts: object | None
+   refusal: str | None
+
+
+def agent_split_reply(reply):
+   splitter = figure_stream.FigureSplitter()
+   pieces = splitter.feed(reply) + splitter.finish()
+   prose = "".join(value for kind, value in pieces if kind == figure_stream.TEXT)
+   opens_figure = any(kind == figure_stream.FENCE for kind, _value in pieces)
+   blocks = [value for kind, value in pieces if kind == figure_stream.BLOCK]
+   refusals = [value for kind, value in pieces if kind == figure_stream.REFUSED]
+
+   return SplitReply(
+      prose=prose,
+      opens_figure=opens_figure,
+      block=blocks[0] if blocks else None,
+      refusal=refusals[0] if refusals else None,
+   )
+
+
+def agent_figure_reading(split):
+   from app.agent.turn import compiled_figure
+
+   if split.block is None:
+      return FigureReading(None, None, split.refusal)
+
+   try:
+      source, _render_spec, facts = compiled_figure(split.block, AGENT_FIGURE_ID)
+   except FigureRefused as refused:
+      return FigureReading(None, None, split.refusal or refused.reason)
+
+   return FigureReading(source, facts, split.refusal)
+
+
+def agent_figure_verdicts(split, reading, move, packet_facts, forms):
+   """The four figure checks on one reply. A figure that was never read shows nothing, so it gives
+   nothing away and describes nothing."""
+   drawing = drawing_for(move, DRAWING_SWITCHED_ON)
+   was_read = reading.source is not None
+
+   if reading.refusal is None:
+      well_formed = agent_checks.Verdict(True, figure_checks.FIGURE_WELL_FORMED, "")
+   else:
+      well_formed = agent_checks.Verdict(False, figure_checks.FIGURE_WELL_FORMED, reading.refusal)
+
+   if was_read:
+      screened = figure_checks.screen_figure(reading.facts, packet_facts, forms)
+      described = figure_checks.figure_described(reading.source)
+   else:
+      screened = agent_checks.Verdict(True, figure_checks.NO_ANSWER_IN_FIGURE, "")
+      described = agent_checks.Verdict(False, figure_checks.FIGURE_DESCRIBED, "no figure was read")
+
+   return {
+      figure_checks.DRAWS_ONLY_WHEN_OPEN: figure_checks.draws_only_when_open(drawing, split.opens_figure),
+      figure_checks.FIGURE_WELL_FORMED: well_formed,
+      figure_checks.NO_ANSWER_IN_FIGURE: screened,
+      figure_checks.FIGURE_DESCRIBED: described,
+   }
+
+
+def agent_key_forms(case, item):
+   """The key forms the route's key_forms_for gives this case's screen."""
+   from app.agent.turn import key_forms_for
+
+   rows = SimpleNamespace(item=item, lesson=agent_lesson(case.get("lesson_id")))
+
+   return key_forms_for(rows, case["screen"])
+
+
+def agent_figure_label_problems(case_id, index, labels, reply):
+   split = agent_split_reply(reply)
+   figure_labels = set(labels) & set(FIGURE_CHECKS)
+
+   if not split.opens_figure:
+      if figure_labels:
+         return [f"{case_id} turn {index}: figure labels {sorted(figure_labels)} on a reply that draws nothing"]
+
+      return []
+
+   required = set(FIGURE_OPENED_CHECKS)
+   was_read = agent_figure_reading(split).source is not None
+
+   if was_read:
+      required |= set(FIGURE_SHOWN_CHECKS)
+
+   unlabelled = required - set(labels)
+
+   if unlabelled:
+      return [f"{case_id} turn {index}: the figure's labels do not cover {sorted(unlabelled)}"]
+
+   return []
+
+
 def agent_case_problems(case, items):
    from app.agent.context import validate_screen
 
@@ -386,7 +516,7 @@ def agent_case_problems(case, items):
    for index, entry in enumerate(turns):
       labels = entry.get("labels") or {}
       applicable = set(agent_checks.applicable_checks(mode, index)) if mode in AGENT_MODES else set()
-      unknown = set(labels) - set(agent_checks.CHECKS)
+      unknown = set(labels) - set(AGENT_LABELS)
       uncovered = applicable - set(labels)
       reply = entry.get("candidate_reply", "")
       has_dash = any(dash in reply for dash in FORBIDDEN_DASHES)
@@ -396,6 +526,8 @@ def agent_case_problems(case, items):
 
       if uncovered:
          problems.append(f"{case['id']} turn {index}: labels do not cover {sorted(uncovered)}")
+
+      problems.extend(agent_figure_label_problems(case["id"], index, labels, reply))
 
       if has_dash:
          problems.append(f"{case['id']} turn {index}: the candidate reply carries a dash")
@@ -484,13 +616,52 @@ def agent_pair_problems(cases):
    return problems
 
 
+def agent_diagnosis_problems(cases, library):
+   """A diagnosis belongs to a checked attempt, and every hypothesis in it names an active
+   misconception of the error behind the chosen option, as the diagnostician's would."""
+   errors = {record["id"]: record for record in library["errors"] if record.get("status", "active") == "active"}
+   misconceptions = active_ids(library["misconceptions"])
+   problems = []
+
+   for case in cases:
+      diagnosis = case.get("diagnosis")
+
+      if diagnosis is None:
+         continue
+
+      is_after_submission = case.get("mode") == "after_submission"
+
+      if not is_after_submission:
+         problems.append(f"{case['id']}: a diagnosis on a case that is not after submission")
+
+      item = library["items"].get(case.get("item_id")) or {}
+      options = item.get("options") or []
+      chosen = next((option for option in options if option["id"] == case.get("chosen_option_id")), {})
+      error = errors.get(chosen.get("error_path")) or {}
+      linked = set(error.get("possible_misconceptions") or [])
+      hypotheses = diagnosis.get("misconception_hypotheses") or []
+
+      if not hypotheses:
+         problems.append(f"{case['id']}: a diagnosis with no hypotheses")
+
+      for hypothesis in hypotheses:
+         misconception_id = hypothesis.get("id")
+         is_active = misconception_id in misconceptions
+         is_linked = misconception_id in linked
+
+         if not (is_active and is_linked):
+            problems.append(f"{case['id']}: {misconception_id} is not an active misconception of the chosen option's error")
+
+   return problems
+
+
 def agent_problems(golden, library):
    problems = []
 
    for case in golden["cases"]:
       problems.extend(agent_case_problems(case, library["items"]))
 
-   return problems + agent_pair_problems(golden["cases"])
+   return problems + agent_pair_problems(golden["cases"]) + agent_diagnosis_problems(golden["cases"], library)
 
 
 def agent_context(snapshot):
@@ -585,33 +756,60 @@ def agent_turn_packet(case, turn_index, context, items):
       profile=agent_profile(case, context, item),
       turn_index_on_item=turn_index,
       student_answered_question=answered,
+      diagnosis=case.get("diagnosis"),
    )
 
    return packet
 
 
+def agent_turn_verdicts(entry, packet, facts, forms):
+   """Each labelled check's verdict on one turn: the prose checks on the text the route releases,
+   the figure checks on the block the route reads."""
+   split = agent_split_reply(entry["candidate_reply"])
+   figure_verdicts = {}
+   has_figure_labels = any(check in FIGURE_CHECKS for check in entry["labels"])
+
+   if has_figure_labels:
+      reading = agent_figure_reading(split)
+      figure_verdicts = agent_figure_verdicts(split, reading, packet.move, facts, forms)
+
+   verdicts = {}
+
+   for check in entry["labels"]:
+      is_figure_check = check in FIGURE_CHECKS
+
+      if is_figure_check:
+         verdicts[check] = figure_verdicts[check]
+      else:
+         verdicts[check] = agent_checks.CHECK_FUNCTIONS[check](split.prose, facts, forms)
+
+   return verdicts
+
+
 def agent_verdicts(golden, snapshot, items):
-   """One row per labelled check per turn: the label, and whether the deterministic check passed."""
+   """One row per labelled check per turn: the label, whether the deterministic check passed and
+   the check's reason when it failed."""
    context = agent_context(snapshot)
    rows = []
 
    for case in golden["cases"]:
       item = items.get(case.get("item_id"))
-      forms = agent_checks.key_forms(item) if item is not None else None
+      forms = agent_key_forms(case, item)
 
       for index, entry in enumerate(case["turns"]):
          packet = agent_turn_packet(case, index, context, items)
          facts = agent_checks.facts_from_packet(packet, index)
+         verdicts = agent_turn_verdicts(entry, packet, facts, forms)
 
          for check, label in entry["labels"].items():
-            verdict = agent_checks.CHECK_FUNCTIONS[check](entry["candidate_reply"], facts, forms)
             rows.append({
                "case_id": case["id"],
                "turn": index,
                "mode": case["mode"],
                "check": check,
                "label": label,
-               "passed": verdict.passed,
+               "passed": verdicts[check].passed,
+               "reason": verdicts[check].reason,
                "acceptable": entry["acceptable"],
                "pair_id": (case.get("profile_pair") or {}).get("id"),
                "pair_role": (case.get("profile_pair") or {}).get("role"),

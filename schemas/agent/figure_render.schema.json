@@ -1,0 +1,565 @@
+{
+   "$schema": "https://json-schema.org/draft/2020-12/schema",
+   "$id": "schemas/agent/figure_render.schema.json",
+   "title": "Tutor figure render spec",
+   "description": "What the client receives in a figure event and draws (docs/agent/drawing-build-plan.md, The render spec contract). Coordinates are world coordinates; the client maps them with view and window as the server laid them out. The plot height is view.height less twice view.padding. A table figure has no window or view and only cell primitives. A cell primitive carries text when it is a table callout or a labelled highlight. The client re-checks the caps no schema can state: 4,000 points in all and finite numbers.",
+   "type": "object",
+   "additionalProperties": false,
+   "required": [
+      "id",
+      "kind",
+      "title",
+      "description",
+      "window",
+      "view",
+      "axes",
+      "grid",
+      "equal_scale",
+      "steps",
+      "columns",
+      "rows",
+      "primitives"
+   ],
+   "properties": {
+      "id": {
+         "type": "string",
+         "minLength": 1
+      },
+      "kind": {
+         "enum": [
+            "graph",
+            "diagram",
+            "number_line",
+            "table"
+         ]
+      },
+      "title": {
+         "type": "string",
+         "minLength": 1,
+         "maxLength": 60
+      },
+      "description": {
+         "type": "string",
+         "minLength": 1,
+         "maxLength": 400
+      },
+      "window": {
+         "oneOf": [
+            {
+               "type": "object",
+               "additionalProperties": false,
+               "required": [
+                  "x",
+                  "y"
+               ],
+               "properties": {
+                  "x": {
+                     "$ref": "#/$defs/range"
+                  },
+                  "y": {
+                     "$ref": "#/$defs/range"
+                  }
+               }
+            },
+            {
+               "type": "null"
+            }
+         ]
+      },
+      "view": {
+         "oneOf": [
+            {
+               "type": "object",
+               "additionalProperties": false,
+               "required": [
+                  "width",
+                  "height",
+                  "padding"
+               ],
+               "properties": {
+                  "width": {
+                     "const": 320
+                  },
+                  "height": {
+                     "type": "number",
+                     "minimum": 220,
+                     "maximum": 320
+                  },
+                  "padding": {
+                     "const": 20
+                  }
+               }
+            },
+            {
+               "type": "null"
+            }
+         ]
+      },
+      "axes": {
+         "oneOf": [
+            {
+               "type": "object",
+               "additionalProperties": false,
+               "required": [
+                  "x",
+                  "y"
+               ],
+               "properties": {
+                  "x": {
+                     "type": "string",
+                     "maxLength": 12
+                  },
+                  "y": {
+                     "type": "string",
+                     "maxLength": 12
+                  }
+               }
+            },
+            {
+               "type": "null"
+            }
+         ]
+      },
+      "grid": {
+         "type": "boolean"
+      },
+      "equal_scale": {
+         "type": "boolean"
+      },
+      "steps": {
+         "type": "array",
+         "minItems": 1,
+         "maxItems": 6,
+         "items": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": [
+               "id",
+               "caption"
+            ],
+            "properties": {
+               "id": {
+                  "$ref": "#/$defs/id"
+               },
+               "caption": {
+                  "type": "string",
+                  "minLength": 1,
+                  "maxLength": 100
+               }
+            }
+         }
+      },
+      "columns": {
+         "oneOf": [
+            {
+               "type": "array",
+               "minItems": 1,
+               "maxItems": 6,
+               "items": {
+                  "type": "string",
+                  "maxLength": 24
+               }
+            },
+            {
+               "type": "null"
+            }
+         ]
+      },
+      "rows": {
+         "oneOf": [
+            {
+               "type": "array",
+               "minItems": 1,
+               "maxItems": 10,
+               "items": {
+                  "type": "array",
+                  "minItems": 1,
+                  "maxItems": 6,
+                  "items": {
+                     "type": "string",
+                     "maxLength": 24
+                  }
+               }
+            },
+            {
+               "type": "null"
+            }
+         ]
+      },
+      "primitives": {
+         "type": "array",
+         "maxItems": 200,
+         "items": {
+            "oneOf": [
+               {
+                  "$ref": "#/$defs/path"
+               },
+               {
+                  "$ref": "#/$defs/dot"
+               },
+               {
+                  "$ref": "#/$defs/label"
+               },
+               {
+                  "$ref": "#/$defs/cell"
+               }
+            ]
+         }
+      }
+   },
+   "$defs": {
+      "id": {
+         "type": "string",
+         "pattern": "^[A-Za-z0-9_]{1,16}$"
+      },
+      "point": {
+         "type": "array",
+         "prefixItems": [
+            {
+               "type": "number"
+            },
+            {
+               "type": "number"
+            }
+         ],
+         "items": false,
+         "minItems": 2
+      },
+      "range": {
+         "type": "array",
+         "prefixItems": [
+            {
+               "type": "number"
+            },
+            {
+               "type": "number"
+            }
+         ],
+         "items": false,
+         "minItems": 2
+      },
+      "path": {
+         "type": "object",
+         "additionalProperties": false,
+         "required": [
+            "type",
+            "step",
+            "element",
+            "role",
+            "points",
+            "closed",
+            "fill",
+            "style",
+            "weight",
+            "arrow",
+            "highlighter",
+            "faded_at",
+            "erased_at"
+         ],
+         "properties": {
+            "type": {
+               "const": "path"
+            },
+            "step": {
+               "$ref": "#/$defs/id"
+            },
+            "element": {
+               "type": "string",
+               "minLength": 1,
+               "maxLength": 16
+            },
+            "role": {
+               "enum": [
+                  "given",
+                  "constructed",
+                  "highlight",
+                  "error"
+               ]
+            },
+            "points": {
+               "type": "array",
+               "minItems": 2,
+               "maxItems": 4000,
+               "items": {
+                  "$ref": "#/$defs/point"
+               }
+            },
+            "closed": {
+               "type": "boolean"
+            },
+            "fill": {
+               "enum": [
+                  "none",
+                  "region",
+                  "region_below"
+               ]
+            },
+            "style": {
+               "enum": [
+                  "solid",
+                  "dashed",
+                  "dotted"
+               ]
+            },
+            "weight": {
+               "enum": [
+                  "thin",
+                  "regular",
+                  "bold"
+               ]
+            },
+            "arrow": {
+               "enum": [
+                  "none",
+                  "end",
+                  "start",
+                  "both"
+               ]
+            },
+            "highlighter": {
+               "type": "boolean"
+            },
+            "faded_at": {
+               "oneOf": [
+                  {
+                     "$ref": "#/$defs/id"
+                  },
+                  {
+                     "type": "null"
+                  }
+               ]
+            },
+            "erased_at": {
+               "oneOf": [
+                  {
+                     "$ref": "#/$defs/id"
+                  },
+                  {
+                     "type": "null"
+                  }
+               ]
+            }
+         }
+      },
+      "dot": {
+         "type": "object",
+         "additionalProperties": false,
+         "required": [
+            "type",
+            "step",
+            "element",
+            "role",
+            "at",
+            "open",
+            "faded_at",
+            "erased_at"
+         ],
+         "properties": {
+            "type": {
+               "const": "dot"
+            },
+            "step": {
+               "$ref": "#/$defs/id"
+            },
+            "element": {
+               "type": "string",
+               "minLength": 1,
+               "maxLength": 16
+            },
+            "role": {
+               "enum": [
+                  "given",
+                  "constructed",
+                  "highlight",
+                  "error"
+               ]
+            },
+            "at": {
+               "$ref": "#/$defs/point"
+            },
+            "open": {
+               "type": "boolean"
+            },
+            "faded_at": {
+               "oneOf": [
+                  {
+                     "$ref": "#/$defs/id"
+                  },
+                  {
+                     "type": "null"
+                  }
+               ]
+            },
+            "erased_at": {
+               "oneOf": [
+                  {
+                     "$ref": "#/$defs/id"
+                  },
+                  {
+                     "type": "null"
+                  }
+               ]
+            }
+         }
+      },
+      "label": {
+         "type": "object",
+         "additionalProperties": false,
+         "required": [
+            "type",
+            "step",
+            "element",
+            "role",
+            "at",
+            "offset",
+            "align",
+            "text",
+            "faded_at",
+            "erased_at"
+         ],
+         "properties": {
+            "type": {
+               "const": "label"
+            },
+            "step": {
+               "$ref": "#/$defs/id"
+            },
+            "element": {
+               "type": "string",
+               "minLength": 1,
+               "maxLength": 16
+            },
+            "role": {
+               "enum": [
+                  "given",
+                  "constructed",
+                  "highlight",
+                  "error"
+               ]
+            },
+            "at": {
+               "$ref": "#/$defs/point"
+            },
+            "offset": {
+               "$ref": "#/$defs/point"
+            },
+            "align": {
+               "enum": [
+                  "start",
+                  "middle",
+                  "end"
+               ]
+            },
+            "text": {
+               "type": "string",
+               "minLength": 1,
+               "maxLength": 60
+            },
+            "faded_at": {
+               "oneOf": [
+                  {
+                     "$ref": "#/$defs/id"
+                  },
+                  {
+                     "type": "null"
+                  }
+               ]
+            },
+            "erased_at": {
+               "oneOf": [
+                  {
+                     "$ref": "#/$defs/id"
+                  },
+                  {
+                     "type": "null"
+                  }
+               ]
+            }
+         }
+      },
+      "cell": {
+         "type": "object",
+         "additionalProperties": false,
+         "required": [
+            "type",
+            "step",
+            "element",
+            "role",
+            "row",
+            "column",
+            "faded_at",
+            "erased_at"
+         ],
+         "properties": {
+            "type": {
+               "const": "cell"
+            },
+            "step": {
+               "$ref": "#/$defs/id"
+            },
+            "element": {
+               "type": "string",
+               "minLength": 1,
+               "maxLength": 16
+            },
+            "role": {
+               "enum": [
+                  "given",
+                  "constructed",
+                  "highlight",
+                  "error"
+               ]
+            },
+            "row": {
+               "oneOf": [
+                  {
+                     "type": "integer",
+                     "minimum": 0,
+                     "maximum": 9
+                  },
+                  {
+                     "type": "null"
+                  }
+               ]
+            },
+            "column": {
+               "oneOf": [
+                  {
+                     "type": "integer",
+                     "minimum": 0,
+                     "maximum": 5
+                  },
+                  {
+                     "type": "null"
+                  }
+               ]
+            },
+            "text": {
+               "type": "string",
+               "minLength": 1,
+               "maxLength": 60
+            },
+            "faded_at": {
+               "oneOf": [
+                  {
+                     "$ref": "#/$defs/id"
+                  },
+                  {
+                     "type": "null"
+                  }
+               ]
+            },
+            "erased_at": {
+               "oneOf": [
+                  {
+                     "$ref": "#/$defs/id"
+                  },
+                  {
+                     "type": "null"
+                  }
+               ]
+            }
+         }
+      }
+   }
+}

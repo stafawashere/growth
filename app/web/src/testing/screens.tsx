@@ -20,7 +20,8 @@ import type {
    PacePayload,
    ServedItem,
    SessionPayload,
-   StepMark
+   StepMark,
+   TutorFigureSpec
 } from "../api/types";
 import { calculatorPart, multipleChoiceQuestion, noCalculatorPart } from "../assessment/fixtures";
 import { PartRunner } from "../assessment/PartRunner";
@@ -48,6 +49,8 @@ import { LessonsRoute } from "../lessons/LessonsRoute";
 import { PaceStatement } from "../progress/PaceStatement";
 import type { SettingsTab } from "../routing";
 import { TutorHarness, UNCHECKED_ITEM, frame } from "./agent";
+import { EVERY_ROLE_FIGURE, LABELLED_TABLE, SECANT_TO_TANGENT, TABLE_OF_VALUES } from "../agent/figureFixtures";
+import { TutorFigure } from "../agent/TutorFigure";
 import { Loading } from "../status/LoadState";
 import type { CountdownPace } from "../ui/Countdown";
 
@@ -827,6 +830,49 @@ const TUTOR_SCREENS: Screen[] = [
    }
 ];
 
+export function tutorFigure(spec: TutorFigureSpec, revealed: number, finished: boolean) {
+   return inPage(
+      <aside className="agent-panel">
+         <div className="agent-reply">
+            <TutorFigure spec={spec} revealed={revealed} finished={finished} reducedMotion={false} />
+         </div>
+      </aside>
+   );
+}
+
+/* The tutor's figure in a reply: a finished graph in every role with arrowheads, a region above the
+   axis and one below it, and the last step fading the constructed marks; a finished table with a
+   highlighted row faded, an error cell and a highlighted column; and a figure still being built,
+   with only Show all under it. */
+const TUTOR_FIGURE_SCREENS: Screen[] = [
+   { name: "tutor figure, every role, finished", mount: async () => tutorFigure(EVERY_ROLE_FIGURE, EVERY_ROLE_FIGURE.steps.length, true) },
+   { name: "tutor figure, a table with its highlights, finished", mount: async () => tutorFigure(TABLE_OF_VALUES, TABLE_OF_VALUES.steps.length, true) },
+   { name: "tutor figure, being built", mount: async () => tutorFigure(SECANT_TO_TANGENT, 2, false) },
+   { name: "tutor figure, a table with labelled cells, finished", mount: async () => tutorFigure(LABELLED_TABLE, LABELLED_TABLE.steps.length, true) },
+   {
+      name: "tutor panel, a reply that drew a figure",
+      mount: async () => {
+         const steps = SECANT_TO_TANGENT.steps.map((step) => frame("figure_step", { figure: SECANT_TO_TANGENT.id, step: step.id }));
+         const container = await tutorPanel(
+            async () =>
+               sseResponse([
+                  frame("start", { conversation_id: "ACV-1", turn_id: "ATN-1", screen_line: "", can_see: [] }),
+                  frame("figure_pending", {}),
+                  frame("figure", SECANT_TO_TANGENT),
+                  ...steps,
+                  frame("text", { delta: "The tangent touches the curve at \\(P\\)." }),
+                  frame("end", { turn_id: "ATN-1", outcome: "complete", turns_on_item: 1, turns_in_conversation: 1 })
+               ]),
+            "Can you draw the tangent?"
+         );
+
+         await waitFor(() => expect(screen.getByTestId("agent-status").textContent).toContain("Figure: Secant to tangent."));
+
+         return container;
+      }
+   }
+];
+
 export const SCREENS: Screen[] = [
    ...LESSON_SCREENS,
    {
@@ -1217,5 +1263,6 @@ export const SCREENS: Screen[] = [
          return container;
       }
    },
-   ...TUTOR_SCREENS
+   ...TUTOR_SCREENS,
+   ...TUTOR_FIGURE_SCREENS
 ];

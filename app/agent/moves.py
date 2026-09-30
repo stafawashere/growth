@@ -16,6 +16,13 @@ wrote one; without a probe the fourth turn repeats the self-explanation question
 fourth stays at the violated step.
 
 On a screen with no item the move is explain on a lesson and navigate everywhere else.
+
+The move also decides whether the turn may draw (docs/agent/drawing-design.md, When the tutor
+draws). A sketch is open on the moves that name a representation, prompt a self-question, name a
+rule, discuss the violated step, ask the self-explanation question, explain or navigate; the first
+reply on an item asks before it tells, a pointer to a section lets the section draw, rubric
+language needs no picture and a probe's answer a figure would bias, so those turns are closed.
+drawing_for closes every turn when the drawing switch is off.
 """
 PRACTICE = "practice"
 AFTER_SUBMISSION = "after_submission"
@@ -41,6 +48,19 @@ NAVIGATE = "navigate"
 BROWSING_MOVES = (EXPLAIN, NAVIGATE)
 
 MOVES = PRACTICE_MOVES + AFTER_SUBMISSION_MOVES + BROWSING_MOVES
+
+DRAWING_OPEN = "open"
+DRAWING_CLOSED = "closed"
+AGENT_DRAWING_FIELD = "drawing"
+DRAWING_OPEN_MOVES = (
+   NAME_REPRESENTATION,
+   NEXT_SELF_QUESTION,
+   NAME_RULE,
+   DISCUSS_STEP,
+   SELF_EXPLANATION_QUESTION,
+   EXPLAIN,
+   NAVIGATE,
+)
 
 LESSON_SCREEN_KINDS = ("lesson", "session_lesson")
 
@@ -88,3 +108,10 @@ def choose_move(mode, turn_index_on_item, student_answered_question, has_probe=F
       return EXPLAIN if screen_kind in LESSON_SCREEN_KINDS else NAVIGATE
 
    raise ValueError(f"unknown mode {mode!r}")
+
+
+def drawing_for(move, enabled):
+   """open when the move may draw and the drawing switch is on, closed otherwise."""
+   may_draw = enabled and move in DRAWING_OPEN_MOVES
+
+   return DRAWING_OPEN if may_draw else DRAWING_CLOSED

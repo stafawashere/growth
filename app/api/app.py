@@ -93,6 +93,7 @@ class Settings:
    frq: Any = None
    grading_sleep: Any = None
    timed_assessments: bool = True
+   agent_drawing: bool = True
 
    def resolve_key_audit_sample_ids(self):
       """docs/operator/key-audit.md: a separate JSON array of the sampled item ids is the sample

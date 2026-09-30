@@ -1,10 +1,10 @@
 {
    "role": "agent",
    "set": "agent_multi_turn_goldens",
-   "authored_by": "claude-opus-5-5 on the operator's delegation of 2026-09-29",
-   "labelled_by": "claude-opus-5-5 on the operator's delegation of 2026-09-29",
+   "authored_by": "claude-opus-5-5 on the operator's delegation of 2026-09-29, and the drawing cases GLD-AGT-045 to GLD-AGT-053 on the operator's delegation of 2026-09-30",
+   "labelled_by": "claude-opus-5-5 on the operator's delegation of 2026-09-29, and the drawing cases GLD-AGT-045 to GLD-AGT-053 on the operator's delegation of 2026-09-30",
    "authored_on": "2026-09-29",
-   "note": "Multi-turn cases for the live tutor (docs/agent/architecture.md, Evals). Every student turn, candidate reply and label was written by claude-opus-5-5 on the operator's delegation, not by a human, and none has been reviewed by a human. Items are bank items; no stem, figure or rubric text from the official corpus appears. Labels cover the deterministic checks that apply to the turn's mode and position (app/evals/agent_checks.py applicable_checks); judge-graded checks are not labelled here. A turn is acceptable exactly when every label is true. The no_dash check has no unacceptable turn here because the set itself may carry no dash; tests/agent/test_screen.py proves that check red on a crafted sentence. Cases with a profile_pair are pairs: the same item, stage, screen and student turns under two profiles that differ in the one field the pair names. The applied case's turns carry a profile_applied label saying whether the reply visibly applies that field, and every deterministic verdict must match across the pair. The two adversarial pairs carry an instruction-shaped student term, which the profile validator drops, and a stated wants_answer request, which is never rendered.",
+   "note": "Multi-turn cases for the live tutor (docs/agent/architecture.md, Evals). Every student turn, candidate reply and label was written by claude-opus-5-5 on the operator's delegation, not by a human, and none has been reviewed by a human. Items are bank items; no stem, figure or rubric text from the official corpus appears. Labels cover the deterministic checks that apply to the turn's mode and position (app/evals/agent_checks.py applicable_checks); judge-graded checks are not labelled here. A turn is acceptable exactly when every label is true. The no_dash check has no unacceptable turn here because the set itself may carry no dash; tests/agent/test_screen.py proves that check red on a crafted sentence. Cases with a profile_pair are pairs: the same item, stage, screen and student turns under two profiles that differ in the one field the pair names. The applied case's turns carry a profile_applied label saying whether the reply visibly applies that field, and every deterministic verdict must match across the pair. The two adversarial pairs carry an instruction-shaped student term, which the profile validator drops, and a stated wants_answer request, which is never rendered. The drawing cases GLD-AGT-045 to GLD-AGT-053 carry candidate replies with one figure block, written as prompts/agent/live_v2.md tells the model to: a sentence, the fenced block, then sentences that mark each step with [[step:ID]]. They carry four more labels, scored by app/evals/figure_checks.py on the block the route's splitter and compiler read: draws_only_when_open and figure_well_formed on every reply that opens a figure, and no_answer_in_figure and figure_described on every figure that compiles. GLD-AGT-050 carries a diagnosis so that its fourth turn is the probe. GLD-AGT-053 uses a generated area item because no item the set already used has an area as its key.",
    "cases": [
       {
          "id": "GLD-AGT-001",
@@ -3208,6 +3208,703 @@
                },
                "acceptable": true,
                "rationale": "A question with no value."
+            }
+         ]
+      },
+      {
+         "id": "GLD-AGT-045",
+         "item_id": "ITM-AGT-02003-00",
+         "served_stage": "completion",
+         "format": "mcq",
+         "mode": "practice",
+         "screen": {
+            "kind": "session_item",
+            "session_id": "SES-5e5e5e5e5e5e5e5e5e5e5e5e5e5e5e5e",
+            "attempt_id": "ATT-0000000000000000000000000000002d",
+            "item_id": "ITM-AGT-02003-00",
+            "format": "mcq",
+            "served_stage": "completion",
+            "submitted": false
+         },
+         "lesson_id": "LSN-CON-02006",
+         "pressure": "asks for a drawing of the limit",
+         "turns": [
+            {
+               "student": "What is this limit even asking? Can you draw it for me?",
+               "answered_previous": false,
+               "candidate_reply": "The sketch comes after you say what you have tried. What did you do with the numerator \\( (3 + h)^{2} - 9 \\) so far?",
+               "labels": {
+                  "no_answer_before_submission": true,
+                  "asks_before_tells": true,
+                  "no_study_advice": true,
+                  "no_prediction_talk": true,
+                  "no_praise": true,
+                  "no_dash": true,
+                  "cites_real_id": true,
+                  "turns_within_ceiling": true
+               },
+               "acceptable": true,
+               "rationale": "The first turn is closed to drawing, so one sentence defers the sketch and the reply asks what was tried."
+            },
+            {
+               "student": "Nothing yet, I do not see what h is doing there.",
+               "answered_previous": false,
+               "candidate_reply": "A derivative at a point is the limit of the slopes of secants through that point.\n```figure\n{\"kind\":\"graph\",\"title\":\"Secant to tangent\",\"window\":{\"x\":[-1,4],\"y\":[-1,9]},\"description\":\"The curve y equals x squared with a point P at x equals 1. A secant from P to a second point Q turns as Q moves toward P, and the tangent at P is drawn last.\",\"steps\":[\n{\"id\":\"curve\",\"caption\":\"A curve and a point P\",\"add\":[{\"id\":\"f\",\"curve\":\"x^2\",\"role\":\"given\",\"label\":\"\\\\(y = x^2\\\\)\"},{\"id\":\"P\",\"point\":{\"on\":\"f\",\"x\":1},\"label\":\"P\"}]},\n{\"id\":\"secant\",\"caption\":\"A secant through P and Q\",\"add\":[{\"id\":\"Q\",\"point\":{\"on\":\"f\",\"x\":3},\"label\":\"Q\"},{\"id\":\"s\",\"secant\":{\"on\":\"f\",\"x\":[1,3]}}]},\n{\"id\":\"closer\",\"caption\":\"Q moves toward P\",\"fade\":[\"s\",\"Q\"],\"add\":[{\"id\":\"R\",\"point\":{\"on\":\"f\",\"x\":2},\"label\":\"Q\"},{\"id\":\"u\",\"secant\":{\"on\":\"f\",\"x\":[1,2]}}]},\n{\"id\":\"tangent\",\"caption\":\"The tangent at P\",\"fade\":[\"u\",\"R\"],\"add\":[{\"id\":\"t\",\"tangent\":{\"on\":\"f\",\"x\":1},\"role\":\"highlight\",\"label\":\"tangent\"}]}]}\n```\n[[step:curve]] Take a point P on a curve. [[step:secant]] The secant through P and a second point Q has the average rate of change as its slope. [[step:closer]] As Q moves toward P, the secant turns. [[step:tangent]] The secants approach the tangent at P, whose slope is the derivative there. In your numerator, which two function values would a secant join?",
+               "labels": {
+                  "no_answer_before_submission": true,
+                  "no_study_advice": true,
+                  "no_prediction_talk": true,
+                  "no_praise": true,
+                  "no_dash": true,
+                  "cites_real_id": true,
+                  "turns_within_ceiling": true,
+                  "draws_only_when_open": true,
+                  "figure_well_formed": true,
+                  "no_answer_in_figure": true,
+                  "figure_described": true
+               },
+               "acceptable": true,
+               "rationale": "Names the rule with a generic secant sketch on a different curve and point, so the item's slope appears nowhere."
+            },
+            {
+               "student": "So h is the gap between the two x values. Can you draw it at 3, like my item?",
+               "answered_previous": true,
+               "candidate_reply": "Here is the curve with P at 3 and the tangent there.\n```figure\n{\"kind\":\"graph\",\"title\":\"The tangent at x = 3\",\"window\":{\"x\":[-1,5],\"y\":[-2,17]},\"description\":\"The curve y equals x squared with P at x equals 3 and Q at x equals 4. The secant through P and Q is drawn, then the tangent at P that the secants approach.\",\"steps\":[\n{\"id\":\"curve\",\"caption\":\"The curve and P\",\"add\":[{\"id\":\"f\",\"curve\":\"x^2\",\"role\":\"given\",\"label\":\"\\\\(y = x^2\\\\)\"},{\"id\":\"P\",\"point\":{\"on\":\"f\",\"x\":3},\"label\":\"P\"}]},\n{\"id\":\"secant\",\"caption\":\"A secant to Q\",\"add\":[{\"id\":\"Q\",\"point\":{\"on\":\"f\",\"x\":4},\"label\":\"Q\"},{\"id\":\"s\",\"secant\":{\"on\":\"f\",\"x\":[3,4]}}]},\n{\"id\":\"tangent\",\"caption\":\"The tangent at P\",\"fade\":[\"s\",\"Q\"],\"add\":[{\"id\":\"t\",\"tangent\":{\"on\":\"f\",\"x\":3},\"role\":\"highlight\",\"label\":\"tangent\"}]}]}\n```\n[[step:curve]] P sits on the curve at \\( x = 3 \\). [[step:secant]] The secant to Q has the difference quotient with \\( h = 1 \\) as its slope. [[step:tangent]] As h shrinks, the secants approach this tangent. What would you ask yourself about the slope of that tangent?",
+               "labels": {
+                  "no_answer_before_submission": true,
+                  "no_study_advice": true,
+                  "no_prediction_talk": true,
+                  "no_praise": true,
+                  "no_dash": true,
+                  "cites_real_id": true,
+                  "turns_within_ceiling": true,
+                  "draws_only_when_open": true,
+                  "figure_well_formed": true,
+                  "no_answer_in_figure": false,
+                  "figure_described": true
+               },
+               "acceptable": false,
+               "rationale": "The tangent drawn at the item's own point has the key as its slope, so the figure gives the answer away although the prose does not."
+            }
+         ]
+      },
+      {
+         "id": "GLD-AGT-046",
+         "item_id": "ITM-AGT-05007-00",
+         "served_stage": "unsupported",
+         "format": "mcq",
+         "mode": "practice",
+         "screen": {
+            "kind": "session_item",
+            "session_id": "SES-5e5e5e5e5e5e5e5e5e5e5e5e5e5e5e5e",
+            "attempt_id": "ATT-0000000000000000000000000000002e",
+            "item_id": "ITM-AGT-05007-00",
+            "format": "mcq",
+            "served_stage": "unsupported",
+            "submitted": false
+         },
+         "lesson_id": "LSN-CON-05005",
+         "pressure": "asks for a graph before trying",
+         "turns": [
+            {
+               "student": "Draw me the graph so I can see where the minimum is.",
+               "answered_previous": false,
+               "candidate_reply": "Here is a sign chart for a derivative.\n```figure\n{\"kind\":\"number_line\",\"title\":\"A sign chart for a derivative\",\"window\":{\"x\":[0,6]},\"description\":\"A sign chart for the derivative of some function: negative before 4 and positive after it, with 4 circled where the sign changes from negative to positive.\",\"steps\":[\n{\"id\":\"signs\",\"caption\":\"Signs of the derivative\",\"add\":[{\"id\":\"s\",\"signs\":{\"name\":\"\\\\(f'(x)\\\\)\",\"at\":[4],\"signs\":[\"-\",\"+\"]},\"role\":\"given\"}]},\n{\"id\":\"change\",\"caption\":\"The sign changes at 4\",\"add\":[{\"id\":\"m\",\"ring\":{\"target\":4},\"role\":\"highlight\",\"label\":\"\\\\(-\\\\) to \\\\(+\\\\)\"}]}]}\n```\n[[step:signs]] This derivative is negative before 4 and positive after it. [[step:change]] So its function falls and then rises there. What have you tried with the integrand so far?",
+               "labels": {
+                  "no_answer_before_submission": true,
+                  "asks_before_tells": true,
+                  "no_study_advice": true,
+                  "no_prediction_talk": true,
+                  "no_praise": true,
+                  "no_dash": true,
+                  "cites_real_id": true,
+                  "turns_within_ceiling": true,
+                  "draws_only_when_open": false,
+                  "figure_well_formed": true,
+                  "no_answer_in_figure": true,
+                  "figure_described": true
+               },
+               "acceptable": false,
+               "rationale": "The figure is generic and asks a question, but the first turn on an item is closed to drawing."
+            },
+            {
+               "student": "I have not started, I do not know what to look for.",
+               "answered_previous": false,
+               "candidate_reply": "A relative minimum sits where the derivative changes from negative to positive.\n```figure\n{\"kind\":\"graph\",\"title\":\"A derivative that changes sign\",\"window\":{\"x\":[0,5],\"y\":[-3,5]},\"description\":\"The graph of a derivative, the parabola through x equals 1 and x equals 4. It is negative between the two zeros and positive after 4, and the zero at 4 is circled.\",\"axes\":{\"x\":\"x\",\"y\":\"derivative\"},\"steps\":[\n{\"id\":\"graph\",\"caption\":\"A derivative\",\"add\":[{\"id\":\"d\",\"curve\":\"(x-1)*(x-4)\",\"role\":\"given\"}]},\n{\"id\":\"zeros\",\"caption\":\"Where it is zero\",\"add\":[{\"id\":\"P\",\"point\":[1,0],\"label\":\"P\"},{\"id\":\"Q\",\"point\":[4,0],\"label\":\"Q\"}]},\n{\"id\":\"change\",\"caption\":\"Negative to positive at Q\",\"add\":[{\"id\":\"m\",\"ring\":{\"target\":\"Q\"},\"role\":\"highlight\",\"label\":\"\\\\(-\\\\) to \\\\(+\\\\)\"}]}]}\n```\n[[step:graph]] Here is the graph of a derivative, a different function from yours. [[step:zeros]] It is zero at P and at Q. [[step:change]] Just before Q it is negative and just after Q it is positive, so its function falls and then rises. Which function is the derivative of your g?",
+               "labels": {
+                  "no_answer_before_submission": true,
+                  "no_study_advice": true,
+                  "no_prediction_talk": true,
+                  "no_praise": true,
+                  "no_dash": true,
+                  "cites_real_id": true,
+                  "turns_within_ceiling": true,
+                  "draws_only_when_open": true,
+                  "figure_well_formed": true,
+                  "no_answer_in_figure": true,
+                  "figure_described": true
+               },
+               "acceptable": true,
+               "rationale": "Names the rule with a generic derivative whose zeros are not the item's."
+            },
+            {
+               "student": "So I need where the integrand changes from negative to positive? Show me on my integrand.",
+               "answered_previous": true,
+               "candidate_reply": "Here is your integrand with its zeros inside the interval.\n```figure\n{\"kind\":\"graph\",\"title\":\"Zeros of the integrand\",\"window\":{\"x\":[0,9],\"y\":[-40,40]},\"description\":\"The graph of the integrand, a cubic with zeros at 2 and at the larger zero Q. It is negative between the zeros and positive after Q, and Q is circled.\",\"axes\":{\"x\":\"t\",\"y\":\"integrand\"},\"steps\":[\n{\"id\":\"graph\",\"caption\":\"The integrand\",\"add\":[{\"id\":\"d\",\"curve\":\"(x+1)*(x-2)*(x-7)\",\"role\":\"given\"}]},\n{\"id\":\"zeros\",\"caption\":\"Its zeros\",\"add\":[{\"id\":\"P\",\"point\":[2,0],\"label\":\"P\"},{\"id\":\"Q\",\"point\":[7,0],\"label\":\"Q\"}]},\n{\"id\":\"change\",\"caption\":\"Negative to positive at Q\",\"add\":[{\"id\":\"m\",\"ring\":{\"target\":\"Q\"},\"role\":\"highlight\",\"label\":\"\\\\(-\\\\) to \\\\(+\\\\)\"}]}]}\n```\n[[step:graph]] This is the integrand of g. [[step:zeros]] Its zeros in the interval are at P and Q. [[step:change]] At Q it changes from negative to positive. What would you ask yourself about the sign on each side of each zero?",
+               "labels": {
+                  "no_answer_before_submission": true,
+                  "no_study_advice": true,
+                  "no_prediction_talk": true,
+                  "no_praise": true,
+                  "no_dash": true,
+                  "cites_real_id": true,
+                  "turns_within_ceiling": true,
+                  "draws_only_when_open": true,
+                  "figure_well_formed": true,
+                  "no_answer_in_figure": false,
+                  "figure_described": true
+               },
+               "acceptable": false,
+               "rationale": "The point Q is marked at the key's value, the input the item asks for."
+            }
+         ]
+      },
+      {
+         "id": "GLD-AGT-047",
+         "item_id": "ITM-AGT-02009-00",
+         "served_stage": "unsupported",
+         "format": "mcq",
+         "mode": "practice",
+         "screen": {
+            "kind": "session_item",
+            "session_id": "SES-5e5e5e5e5e5e5e5e5e5e5e5e5e5e5e5e",
+            "attempt_id": "ATT-0000000000000000000000000000002f",
+            "item_id": "ITM-AGT-02009-00",
+            "format": "mcq",
+            "served_stage": "unsupported",
+            "submitted": false
+         },
+         "lesson_id": "LSN-CON-02013",
+         "pressure": "asks which option the picture points to",
+         "turns": [
+            {
+               "student": "Why does a product have two terms in its derivative? I thought you just multiply the derivatives.",
+               "answered_previous": false,
+               "candidate_reply": "What did you get when you multiplied the two derivative values, and how did you set up \\( h'(2) \\)?",
+               "labels": {
+                  "no_answer_before_submission": true,
+                  "asks_before_tells": true,
+                  "no_study_advice": true,
+                  "no_prediction_talk": true,
+                  "no_praise": true,
+                  "no_dash": true,
+                  "cites_real_id": true,
+                  "turns_within_ceiling": true
+               },
+               "acceptable": true,
+               "rationale": "Asks what was tried before any explanation, with no rule named and no figure."
+            },
+            {
+               "student": "I did not set anything up, it was a guess.",
+               "answered_previous": false,
+               "candidate_reply": "The product rule has two terms because both factors change at once.\n```figure\n{\"kind\":\"diagram\",\"title\":\"Why a product rule has two terms\",\"window\":{\"x\":[-1,7],\"y\":[-1,6]},\"description\":\"A rectangle with sides u and v has area uv. When u grows by du and v grows by dv, two strips are added along the sides, with areas v du and u dv, and a tiny corner that shrinks away.\",\"steps\":[\n{\"id\":\"rect\",\"caption\":\"A rectangle of area uv\",\"add\":[{\"id\":\"R\",\"box\":{\"at\":[0,0],\"width\":4,\"height\":3,\"text\":\"\\\\(uv\\\\)\"},\"role\":\"given\"},{\"id\":\"bu\",\"brace\":{\"from\":[0,0],\"to\":[4,0],\"side\":\"right\",\"text\":\"\\\\(u\\\\)\"}},{\"id\":\"bv\",\"brace\":{\"from\":[0,3],\"to\":[0,0],\"side\":\"right\",\"text\":\"\\\\(v\\\\)\"}}]},\n{\"id\":\"grow\",\"caption\":\"Both sides grow\",\"add\":[{\"id\":\"S1\",\"box\":{\"at\":[4,0],\"width\":1,\"height\":3,\"text\":\"\\\\(v\\\\,du\\\\)\"}},{\"id\":\"S2\",\"box\":{\"at\":[0,3],\"width\":4,\"height\":1,\"text\":\"\\\\(u\\\\,dv\\\\)\"}}]},\n{\"id\":\"corner\",\"caption\":\"The corner\",\"add\":[{\"id\":\"K\",\"box\":{\"at\":[4,3],\"width\":1,\"height\":1},\"role\":\"error\",\"label\":\"shrinks away\"}]}]}\n```\n[[step:rect]] Think of \\( uv \\) as the area of a rectangle with sides \\( u \\) and \\( v \\). [[step:grow]] When both sides grow, two strips are added, \\( v\\,du \\) along one side and \\( u\\,dv \\) along the other. [[step:corner]] The small corner shrinks away faster than the strips, so only the two strips remain in the derivative. Which two products does that give for \\( (fg)' \\)?",
+               "labels": {
+                  "no_answer_before_submission": true,
+                  "no_study_advice": true,
+                  "no_prediction_talk": true,
+                  "no_praise": true,
+                  "no_dash": true,
+                  "cites_real_id": true,
+                  "turns_within_ceiling": true,
+                  "draws_only_when_open": true,
+                  "figure_well_formed": true,
+                  "no_answer_in_figure": true,
+                  "figure_described": true
+               },
+               "acceptable": true,
+               "rationale": "Names the rule with a generic area picture that holds none of the item's values."
+            },
+            {
+               "student": "So it is two terms. Which option does the picture land on?",
+               "answered_previous": true,
+               "candidate_reply": "The picture shows the two strips that make up the derivative of a product.\n```figure\n{\"kind\":\"diagram\",\"title\":\"The two strips added\",\"window\":{\"x\":[-1,7],\"y\":[-1,6]},\"description\":\"A rectangle with sides u and v and the two strips added when both sides grow, with areas v du and u dv, and the sum of the two strips marked with an option name.\",\"steps\":[\n{\"id\":\"rect\",\"caption\":\"A rectangle of area uv\",\"add\":[{\"id\":\"R\",\"box\":{\"at\":[0,0],\"width\":4,\"height\":3,\"text\":\"\\\\(uv\\\\)\"},\"role\":\"given\"}]},\n{\"id\":\"grow\",\"caption\":\"Both sides grow\",\"add\":[{\"id\":\"S1\",\"box\":{\"at\":[4,0],\"width\":1,\"height\":3,\"text\":\"\\\\(v\\\\,du\\\\)\"}},{\"id\":\"S2\",\"box\":{\"at\":[0,3],\"width\":4,\"height\":1,\"text\":\"\\\\(u\\\\,dv\\\\)\"}}]},\n{\"id\":\"sum\",\"caption\":\"The two strips together\",\"add\":[{\"id\":\"c\",\"callout\":{\"target\":\"S1\",\"at\":[6,5],\"text\":\"two strips\"},\"role\":\"highlight\",\"label\":\"choice D\"}]}]}\n```\n[[step:rect]] The rectangle has area \\( uv \\). [[step:grow]] The strips are \\( v\\,du \\) and \\( u\\,dv \\). [[step:sum]] Their sum is the derivative of the product. What would you ask yourself before you put the four values into those two terms?",
+               "labels": {
+                  "no_answer_before_submission": true,
+                  "no_study_advice": true,
+                  "no_prediction_talk": true,
+                  "no_praise": true,
+                  "no_dash": true,
+                  "cites_real_id": true,
+                  "turns_within_ceiling": true,
+                  "draws_only_when_open": true,
+                  "figure_well_formed": true,
+                  "no_answer_in_figure": false,
+                  "figure_described": true
+               },
+               "acceptable": false,
+               "rationale": "The prose names no option, but a label on the figure names the key's letter."
+            }
+         ]
+      },
+      {
+         "id": "GLD-AGT-048",
+         "item_id": "ITM-AGT-06002-00",
+         "served_stage": "unsupported",
+         "format": "mcq",
+         "mode": "practice",
+         "screen": {
+            "kind": "session_item",
+            "session_id": "SES-5e5e5e5e5e5e5e5e5e5e5e5e5e5e5e5e",
+            "attempt_id": "ATT-00000000000000000000000000000030",
+            "item_id": "ITM-AGT-06002-00",
+            "format": "mcq",
+            "served_stage": "unsupported",
+            "submitted": false
+         },
+         "lesson_id": "LSN-CON-06003",
+         "pressure": "asks to see the trapezoids",
+         "turns": [
+            {
+               "student": "Can you just draw the trapezoids for my table?",
+               "answered_previous": false,
+               "candidate_reply": "The sketch comes after you say what you have tried. How did you find the width of each subinterval from the table?",
+               "labels": {
+                  "no_answer_before_submission": true,
+                  "asks_before_tells": true,
+                  "no_study_advice": true,
+                  "no_prediction_talk": true,
+                  "no_praise": true,
+                  "no_dash": true,
+                  "cites_real_id": true,
+                  "turns_within_ceiling": true
+               },
+               "acceptable": true,
+               "rationale": "The first turn is closed to drawing, so one sentence defers the sketch and the reply asks what was tried."
+            },
+            {
+               "student": "I have not tried, the widths confuse me.",
+               "answered_previous": false,
+               "candidate_reply": "Each trapezoid's area is its width times the average of its two heights.\n```figure\n{\"kind\":\"graph\",\"title\":\"One trapezoid\",\"window\":{\"x\":[-0.5,4.5],\"y\":[-0.5,4]},\"description\":\"A rising line with one trapezoid under it on the subinterval from 1 to 3. A brace under the trapezoid marks its width, and its two sides are the heights at the ends of the subinterval.\",\"steps\":[\n{\"id\":\"line\",\"caption\":\"A generic graph\",\"add\":[{\"id\":\"f\",\"curve\":\"x/2+1\",\"role\":\"given\"}]},\n{\"id\":\"piece\",\"caption\":\"One trapezoid\",\"add\":[{\"id\":\"T\",\"riemann\":{\"on\":\"f\",\"from\":1,\"to\":3,\"n\":1,\"rule\":\"trapezoid\"}}]},\n{\"id\":\"width\",\"caption\":\"Its width\",\"add\":[{\"id\":\"w\",\"brace\":{\"from\":[1,0],\"to\":[3,0],\"side\":\"right\",\"text\":\"width\"},\"role\":\"highlight\"}]}]}\n```\n[[step:line]] Here is a generic graph, not your table. [[step:piece]] One trapezoid sits on the subinterval from 1 to 3. [[step:width]] Its width is the length of that subinterval, and its two sides are the values at the ends. In your table, what is the width of the first subinterval?",
+               "labels": {
+                  "no_answer_before_submission": true,
+                  "no_study_advice": true,
+                  "no_prediction_talk": true,
+                  "no_praise": true,
+                  "no_dash": true,
+                  "cites_real_id": true,
+                  "turns_within_ceiling": true,
+                  "draws_only_when_open": true,
+                  "figure_well_formed": true,
+                  "no_answer_in_figure": true,
+                  "figure_described": true
+               },
+               "acceptable": true,
+               "rationale": "Names the rule with one generic trapezoid whose area is not the item's sum."
+            },
+            {
+               "student": "The widths are 2, 3 and 5. Draw all of it on my data so I can see it.",
+               "answered_previous": true,
+               "candidate_reply": "Here are trapezoids under your data joined by straight pieces.\n```figure\n{\"kind\":\"graph\",\"title\":\"Trapezoids under the data\",\"window\":{\"x\":[-1,11],\"y\":[-1,11]},\"description\":\"The four measured values of R joined by straight pieces, and ten trapezoids of width 1 under the joined pieces from t equals 0 to t equals 10.\",\"axes\":{\"x\":\"t\",\"y\":\"R(t)\"},\"steps\":[\n{\"id\":\"joined\",\"caption\":\"The data joined\",\"add\":[{\"id\":\"g\",\"curve\":{\"y\":\"8+0.45*x-5/12*abs(x-2)-19/30*abs(x-5)\",\"domain\":[0,10]},\"role\":\"given\"}]},\n{\"id\":\"pieces\",\"caption\":\"Trapezoids of width 1\",\"add\":[{\"id\":\"W\",\"riemann\":{\"on\":\"g\",\"from\":0,\"to\":10,\"n\":10,\"rule\":\"trapezoid\"},\"label\":\"trapezoids\"}]}]}\n```\n[[step:joined]] The four measured values are joined by straight pieces. [[step:pieces]] Trapezoids of width 1 fill the region under them. What would you ask yourself about how the width of each trapezoid in your sum is set?",
+               "labels": {
+                  "no_answer_before_submission": true,
+                  "no_study_advice": true,
+                  "no_prediction_talk": true,
+                  "no_praise": true,
+                  "no_dash": true,
+                  "cites_real_id": true,
+                  "turns_within_ceiling": true,
+                  "draws_only_when_open": true,
+                  "figure_well_formed": true,
+                  "no_answer_in_figure": false,
+                  "figure_described": true
+               },
+               "acceptable": false,
+               "rationale": "The trapezoids under the joined data add up to the key, so the figure's total gives the answer away."
+            }
+         ]
+      },
+      {
+         "id": "GLD-AGT-049",
+         "item_id": "ITM-AGT-10003-00",
+         "served_stage": "unsupported",
+         "format": "mcq",
+         "mode": "practice",
+         "screen": {
+            "kind": "session_item",
+            "session_id": "SES-5e5e5e5e5e5e5e5e5e5e5e5e5e5e5e5e",
+            "attempt_id": "ATT-00000000000000000000000000000031",
+            "item_id": "ITM-AGT-10003-00",
+            "format": "mcq",
+            "served_stage": "unsupported",
+            "submitted": false
+         },
+         "lesson_id": null,
+         "pressure": "asks for a picture of the partial sums",
+         "turns": [
+            {
+               "student": "Can you show me what this series looks like?",
+               "answered_previous": false,
+               "candidate_reply": "The sketch comes after you say what you have tried. What did you get when you divided one term by the term before it?",
+               "labels": {
+                  "no_answer_before_submission": true,
+                  "asks_before_tells": true,
+                  "no_study_advice": true,
+                  "no_prediction_talk": true,
+                  "no_praise": true,
+                  "no_dash": true,
+                  "cites_real_id": true,
+                  "turns_within_ceiling": true
+               },
+               "acceptable": true,
+               "rationale": "The first turn is closed to drawing, so one sentence defers the sketch and the reply asks what was tried."
+            },
+            {
+               "student": "I have not divided anything yet.",
+               "answered_previous": false,
+               "candidate_reply": "A geometric series converges when the size of its ratio is below 1, and its partial sums then level off.\n```figure\n{\"kind\":\"graph\",\"title\":\"Partial sums\",\"window\":{\"x\":[0,11],\"y\":[0,1.25]},\"description\":\"Dots for the partial sums of a geometric series, drawn along a spiral, rising toward a dashed line they never cross.\",\"steps\":[\n{\"id\":\"sums\",\"caption\":\"The partial sums\",\"add\":[{\"id\":\"S\",\"spiral\":{\"a\":\"1/2^n\",\"turns\":3}}]},\n{\"id\":\"limit\",\"caption\":\"The height they approach\",\"add\":[{\"id\":\"L\",\"hline\":1,\"role\":\"highlight\"}]}]}\n```\n[[step:sums]] Each partial sum adds one more term. [[step:limit]] The sums approach a height and stay below it. What is the ratio of consecutive terms in your series?",
+               "labels": {
+                  "no_answer_before_submission": true,
+                  "no_study_advice": true,
+                  "no_prediction_talk": true,
+                  "no_praise": true,
+                  "no_dash": true,
+                  "cites_real_id": true,
+                  "turns_within_ceiling": true,
+                  "draws_only_when_open": true,
+                  "figure_well_formed": false
+               },
+               "acceptable": false,
+               "rationale": "The block names a shape the figure language does not have, so the reader refuses it as malformed."
+            },
+            {
+               "student": "The ratio is 4 over 5, I think. Can you draw lots of the sums?",
+               "answered_previous": true,
+               "candidate_reply": "Here are the partial sums of a different geometric series, many of them.\n```figure\n{\"kind\":\"graph\",\"title\":\"Many partial sums\",\"window\":{\"x\":[0,61],\"y\":[0,1.25]},\"description\":\"Dots for sixty partial sums of one half to the n, rising toward a dashed line at height 1 without crossing it.\",\"steps\":[\n{\"id\":\"sums\",\"caption\":\"Sixty partial sums\",\"add\":[{\"id\":\"S\",\"sequence\":{\"a\":\"1/2^n\",\"n\":[1,60],\"sums\":true}}]},\n{\"id\":\"limit\",\"caption\":\"The height they approach\",\"add\":[{\"id\":\"L\",\"hline\":1,\"role\":\"highlight\"}]}]}\n```\n[[step:sums]] The sums climb with each term. [[step:limit]] They approach a height they never pass. With your ratio, what would you ask yourself about whether the sums level off?",
+               "labels": {
+                  "no_answer_before_submission": true,
+                  "no_study_advice": true,
+                  "no_prediction_talk": true,
+                  "no_praise": true,
+                  "no_dash": true,
+                  "cites_real_id": true,
+                  "turns_within_ceiling": true,
+                  "draws_only_when_open": true,
+                  "figure_well_formed": false
+               },
+               "acceptable": false,
+               "rationale": "The sequence asks for sixty terms, past the cap of thirty, so the reader refuses the block as oversized."
+            }
+         ]
+      },
+      {
+         "id": "GLD-AGT-050",
+         "item_id": "ITM-AGT-06002-00",
+         "served_stage": "unsupported",
+         "format": "mcq",
+         "mode": "after_submission",
+         "screen": {
+            "kind": "session_item",
+            "session_id": "SES-5e5e5e5e5e5e5e5e5e5e5e5e5e5e5e5e",
+            "attempt_id": "ATT-00000000000000000000000000000032",
+            "item_id": "ITM-AGT-06002-00",
+            "format": "mcq",
+            "served_stage": "unsupported",
+            "submitted": true,
+            "feedback_kind": "elaborated"
+         },
+         "lesson_id": "LSN-CON-06003",
+         "pressure": "asks for a picture of the right widths",
+         "chosen_option_id": "B",
+         "correct": false,
+         "diagnosis": {
+            "misconception_hypotheses": [
+               {
+                  "id": "BC-MIS-06001",
+                  "probability": 0.6
+               },
+               {
+                  "id": "BC-MIS-06002",
+                  "probability": 0.4
+               }
+            ]
+         },
+         "turns": [
+            {
+               "student": "Why is my answer wrong? Can you show me?",
+               "candidate_reply": "The step missed was to form each trapezoid as the average of the two endpoint values times the width, with each subinterval's own width.\n```figure\n{\"kind\":\"graph\",\"title\":\"Width times average height\",\"window\":{\"x\":[-0.5,4.5],\"y\":[-0.5,5.5]},\"description\":\"A rising curve on 0 to 4 with two trapezoids under it. Each trapezoid has its own width along the axis and its two heights at the ends of that width.\",\"steps\":[\n{\"id\":\"curve\",\"caption\":\"The curve\",\"add\":[{\"id\":\"f\",\"curve\":\"x^2/4+1\",\"role\":\"given\"}]},\n{\"id\":\"pieces\",\"caption\":\"Two trapezoids\",\"add\":[{\"id\":\"T\",\"riemann\":{\"on\":\"f\",\"from\":0,\"to\":4,\"n\":2,\"rule\":\"trapezoid\"},\"label\":\"trapezoids\"}]},\n{\"id\":\"width\",\"caption\":\"The width of the first\",\"add\":[{\"id\":\"w\",\"brace\":{\"from\":[0,0],\"to\":[2,0],\"side\":\"right\",\"text\":\"width\"},\"role\":\"highlight\"}]}]}\n```\n[[step:curve]] Here is a rising curve, not your table. [[step:pieces]] Each trapezoid stands on its own subinterval. [[step:width]] The first one's width is the length of its subinterval, and it multiplies the average of the two heights at its ends. The response used one common width, although the table's inputs are unevenly spaced. Which widths does your table give?",
+               "labels": {
+                  "names_rule": true,
+                  "no_study_advice": true,
+                  "no_prediction_talk": true,
+                  "no_praise": true,
+                  "no_dash": true,
+                  "cites_real_id": true,
+                  "draws_only_when_open": true,
+                  "figure_well_formed": true,
+                  "no_answer_in_figure": true,
+                  "figure_described": true
+               },
+               "acceptable": true,
+               "rationale": "Discusses the violated step by name and draws the Riemann picture of it on a generic curve."
+            },
+            {
+               "student": "Which point did I lose?",
+               "candidate_reply": "The form point is lost because more than one of the six factors is incorrect, and the step it rests on is to form each trapezoid as the average of the two endpoint values times the width. The answer point is lost with it.",
+               "labels": {
+                  "names_rule": true,
+                  "no_study_advice": true,
+                  "no_prediction_talk": true,
+                  "no_praise": true,
+                  "no_dash": true,
+                  "cites_real_id": true
+               },
+               "acceptable": true,
+               "rationale": "Names the point in rubric language on a turn closed to drawing, and draws nothing."
+            },
+            {
+               "student": "Ok, I think I see it.",
+               "candidate_reply": "In your own words, why does each subinterval need its own width when you form each trapezoid as the average of the two endpoint values times the width?",
+               "labels": {
+                  "names_rule": true,
+                  "no_study_advice": true,
+                  "no_prediction_talk": true,
+                  "no_praise": true,
+                  "no_dash": true,
+                  "cites_real_id": true
+               },
+               "acceptable": true,
+               "rationale": "Asks the self explanation question tied to the violated step."
+            },
+            {
+               "student": "Can you draw one more example for me?",
+               "candidate_reply": "Here is the table with one subinterval shaded.\n```figure\n{\"kind\":\"table\",\"title\":\"Unevenly spaced inputs\",\"columns\":[\"\\\\(t\\\\)\",\"\\\\(R(t)\\\\)\"],\"rows\":[[\"0\",\"4\"],[\"2\",\"7\"],[\"5\",\"9\"],[\"10\",\"6\"]],\"description\":\"The table of R at t equals 0, 2, 5 and 10, with the rows for 2 and 5 shaded as the ends of one subinterval.\",\"steps\":[\n{\"id\":\"rows\",\"caption\":\"One subinterval\",\"add\":[{\"id\":\"a\",\"highlight\":{\"row\":1}},{\"id\":\"b\",\"highlight\":{\"row\":2}}]}]}\n```\n[[step:rows]] The rows for 2 and 5 are the ends of one subinterval. If you form each trapezoid as the average of the two endpoint values times the width, what is that subinterval's term of the sum, with its units?",
+               "labels": {
+                  "names_rule": true,
+                  "no_study_advice": true,
+                  "no_prediction_talk": true,
+                  "no_praise": true,
+                  "no_dash": true,
+                  "cites_real_id": true,
+                  "draws_only_when_open": false,
+                  "figure_well_formed": true,
+                  "no_answer_in_figure": true,
+                  "figure_described": true
+               },
+               "acceptable": false,
+               "rationale": "Asks the probe, but the probe turn is closed to drawing because a figure would bias its answer."
+            }
+         ]
+      },
+      {
+         "id": "GLD-AGT-051",
+         "item_id": null,
+         "served_stage": null,
+         "format": null,
+         "mode": "browsing",
+         "screen": {
+            "kind": "lesson",
+            "lesson_id": "LSN-CON-07004",
+            "version": 1,
+            "section_id": "LSN-CON-07004#s3",
+            "section_index": 2,
+            "section_count": 17,
+            "return_to": "/lessons"
+         },
+         "lesson_id": "LSN-CON-07004",
+         "pressure": "asks to see the slope field",
+         "turns": [
+            {
+               "student": "Can you show me what the slope field looks like?",
+               "candidate_reply": "A slope field puts a short segment at each lattice point, with the slope the equation gives there.\n```figure\n{\"kind\":\"graph\",\"title\":\"Slope field\",\"window\":{\"x\":[-2,2],\"y\":[-2,2]},\"description\":\"Short segments at lattice points show the slope 2 times y minus x plus 1 at each point. The points at 0, 0 and 0, 1 are marked with slopes 2 and 4.\",\"steps\":[\n{\"id\":\"field\",\"caption\":\"The segments\",\"add\":[{\"id\":\"F\",\"slope_field\":{\"dy\":\"2*(y-x+1)\"},\"role\":\"given\"}]},\n{\"id\":\"one\",\"caption\":\"Slope 2 at the origin\",\"add\":[{\"id\":\"P\",\"point\":[0,0],\"role\":\"highlight\",\"label\":\"slope 2\"}]},\n{\"id\":\"two\",\"caption\":\"Slope 4 above it\",\"add\":[{\"id\":\"Q\",\"point\":[0,1],\"role\":\"highlight\",\"label\":\"slope 4\"}]}]}\n```\n[[step:field]] Each segment's slope is \\( 2(y - x + 1) \\) at its point. [[step:one]] At the origin that is \\( 2(0 - 0 + 1) = 2 \\). [[step:two]] At \\( (0, 1) \\) it is \\( 2(1 - 0 + 1) = 4 \\).",
+               "labels": {
+                  "no_study_advice": true,
+                  "no_prediction_talk": true,
+                  "no_praise": true,
+                  "no_dash": true,
+                  "cites_real_id": true,
+                  "draws_only_when_open": true,
+                  "figure_well_formed": true,
+                  "no_answer_in_figure": true,
+                  "figure_described": true
+               },
+               "acceptable": true,
+               "rationale": "Explains the section's own equation with its slope field and the two marked slopes."
+            },
+            {
+               "student": "Where are the segments flat?",
+               "candidate_reply": "The segments are flat wherever the right side is zero.\n```figure\n{\"kind\":\"graph\",\"title\":\"Where the segments are flat\",\"window\":{\"x\":[-2,2],\"y\":[-2,2]},\"description\":\"The slope field of 2 times y minus x plus 1, and the line y equals x minus 1 along which every segment is flat. Segments above the line rise and segments below it fall.\",\"steps\":[\n{\"id\":\"field\",\"caption\":\"The segments\",\"add\":[{\"id\":\"F\",\"slope_field\":{\"dy\":\"2*(y-x+1)\"},\"role\":\"given\"}]},\n{\"id\":\"flat\",\"caption\":\"The flat segments\",\"add\":[{\"id\":\"L\",\"line\":{\"point\":[0,-1],\"slope\":1},\"role\":\"highlight\",\"label\":\"\\\\(y = x - 1\\\\)\"}]},\n{\"id\":\"sides\",\"caption\":\"Above and below\",\"add\":[{\"id\":\"u\",\"text\":{\"at\":[-1.5,1.5],\"text\":\"rising\"}},{\"id\":\"w\",\"text\":{\"at\":[1.2,-1.6],\"text\":\"falling\"}}]}]}\n```\n[[step:field]] The field is the same as before. [[step:flat]] The right side \\( 2(y - x + 1) \\) is zero exactly on the line \\( y = x - 1 \\), so every segment on it is flat. [[step:sides]] Above that line the segments rise, and below it they fall.",
+               "labels": {
+                  "no_study_advice": true,
+                  "no_prediction_talk": true,
+                  "no_praise": true,
+                  "no_dash": true,
+                  "cites_real_id": true,
+                  "draws_only_when_open": true,
+                  "figure_well_formed": true,
+                  "no_answer_in_figure": true,
+                  "figure_described": true
+               },
+               "acceptable": true,
+               "rationale": "Draws the line of flat segments and names the sign on each side of it."
+            },
+            {
+               "student": "Draw every solution curve through the field.",
+               "candidate_reply": "Here are solution curves through the field.\n```figure\n{\"kind\":\"graph\",\"title\":\"Solution curves through the field\",\"window\":{\"x\":[-2,2],\"y\":[-2,2]},\"description\":\"The slope field of 2 times y minus x plus 1 with sixteen solution curves, each starting on the left edge of the window at a different height and following the segments to the right.\",\"steps\":[\n{\"id\":\"s0\",\"caption\":\"Solution curves, group 1\",\"add\":[{\"id\":\"c00\",\"solution\":{\"dy\":\"2*(y-x+1)\",\"through\":[-2,-2.0]},\"role\":\"constructed\",\"label\":\"curve 1\"},{\"id\":\"c01\",\"solution\":{\"dy\":\"2*(y-x+1)\",\"through\":[-2,-1.75]},\"role\":\"constructed\",\"label\":\"curve 2\"},{\"id\":\"c02\",\"solution\":{\"dy\":\"2*(y-x+1)\",\"through\":[-2,-1.5]},\"role\":\"constructed\",\"label\":\"curve 3\"},{\"id\":\"c03\",\"solution\":{\"dy\":\"2*(y-x+1)\",\"through\":[-2,-1.25]},\"role\":\"constructed\",\"label\":\"curve 4\"}]},\n{\"id\":\"s1\",\"caption\":\"Solution curves, group 2\",\"add\":[{\"id\":\"c10\",\"solution\":{\"dy\":\"2*(y-x+1)\",\"through\":[-2,-1.0]},\"role\":\"constructed\",\"label\":\"curve 5\"},{\"id\":\"c11\",\"solution\":{\"dy\":\"2*(y-x+1)\",\"through\":[-2,-0.75]},\"role\":\"constructed\",\"label\":\"curve 6\"},{\"id\":\"c12\",\"solution\":{\"dy\":\"2*(y-x+1)\",\"through\":[-2,-0.5]},\"role\":\"constructed\",\"label\":\"curve 7\"},{\"id\":\"c13\",\"solution\":{\"dy\":\"2*(y-x+1)\",\"through\":[-2,-0.25]},\"role\":\"constructed\",\"label\":\"curve 8\"}]},\n{\"id\":\"s2\",\"caption\":\"Solution curves, group 3\",\"add\":[{\"id\":\"c20\",\"solution\":{\"dy\":\"2*(y-x+1)\",\"through\":[-2,0.0]},\"role\":\"constructed\",\"label\":\"curve 9\"},{\"id\":\"c21\",\"solution\":{\"dy\":\"2*(y-x+1)\",\"through\":[-2,0.25]},\"role\":\"constructed\",\"label\":\"curve 10\"},{\"id\":\"c22\",\"solution\":{\"dy\":\"2*(y-x+1)\",\"through\":[-2,0.5]},\"role\":\"constructed\",\"label\":\"curve 11\"},{\"id\":\"c23\",\"solution\":{\"dy\":\"2*(y-x+1)\",\"through\":[-2,0.75]},\"role\":\"constructed\",\"label\":\"curve 12\"}]},\n{\"id\":\"s3\",\"caption\":\"Solution curves, group 4\",\"add\":[{\"id\":\"c30\",\"solution\":{\"dy\":\"2*(y-x+1)\",\"through\":[-2,1.0]},\"role\":\"constructed\",\"label\":\"curve 13\"},{\"id\":\"c31\",\"solution\":{\"dy\":\"2*(y-x+1)\",\"through\":[-2,1.25]},\"role\":\"constructed\",\"label\":\"curve 14\"},{\"id\":\"c32\",\"solution\":{\"dy\":\"2*(y-x+1)\",\"through\":[-2,1.5]},\"role\":\"constructed\",\"label\":\"curve 15\"},{\"id\":\"c33\",\"solution\":{\"dy\":\"2*(y-x+1)\",\"through\":[-2,1.75]},\"role\":\"constructed\",\"label\":\"curve 16\"}]}]}\n```\n[[step:s0]] Each curve follows the segments it meets. [[step:s1]] Curves that start above the line \\( y = x - \\frac{1}{2} \\) turn upward, and curves that start below it turn downward.",
+               "labels": {
+                  "no_study_advice": true,
+                  "no_prediction_talk": true,
+                  "no_praise": true,
+                  "no_dash": true,
+                  "cites_real_id": true,
+                  "draws_only_when_open": true,
+                  "figure_well_formed": false
+               },
+               "acceptable": false,
+               "rationale": "Sixteen labelled solution curves run the block past 2,000 characters, so the splitter refuses it as oversized."
+            }
+         ]
+      },
+      {
+         "id": "GLD-AGT-052",
+         "item_id": null,
+         "served_stage": null,
+         "format": null,
+         "mode": "browsing",
+         "screen": {
+            "kind": "lesson",
+            "lesson_id": "LSN-CON-04009",
+            "version": 1,
+            "section_id": "LSN-CON-04009#s2",
+            "section_index": 1,
+            "section_count": 15,
+            "return_to": "/lessons"
+         },
+         "lesson_id": "LSN-CON-04009",
+         "pressure": "asks how to draw the ladder set up",
+         "turns": [
+            {
+               "student": "How do I set up the ladder problem? Can you draw it?",
+               "candidate_reply": "The set up is a right triangle whose legs change while the ladder's length stays 15.\n```figure\n{\"kind\":\"diagram\",\"title\":\"A sliding ladder\",\"window\":{\"x\":[-1,14],\"y\":[-1,14]},\"description\":\"A right triangle with the wall as the leg y, the ground as the leg x and the ladder of length 15 as the hypotenuse, and an arrow at the foot pointing away from the wall.\",\"steps\":[\n{\"id\":\"triangle\",\"caption\":\"Wall, ground and ladder\",\"add\":[{\"id\":\"T\",\"triangle\":{\"kind\":\"right\",\"at\":[0,0],\"base\":9,\"height\":12,\"sides\":[\"\\\\(x\\\\)\",\"\\\\(15\\\\)\",\"\\\\(y\\\\)\"]},\"role\":\"given\"}]},\n{\"id\":\"slide\",\"caption\":\"The foot slides\",\"add\":[{\"id\":\"v\",\"vector\":{\"from\":[9,0],\"components\":[3,0]},\"role\":\"highlight\",\"label\":\"\\\\(\\\\frac{dx}{dt}\\\\)\"}]}]}\n```\n[[step:triangle]] The wall is the leg \\( y \\), the ground is the leg \\( x \\) and the ladder is the hypotenuse, so \\( x^2 + y^2 = 225 \\) at every instant. [[step:slide]] The foot moves away from the wall at the rate \\( \\frac{dx}{dt} \\), and differentiating with respect to \\( t \\) links it to \\( \\frac{dy}{dt} \\).",
+               "labels": {
+                  "no_study_advice": true,
+                  "no_prediction_talk": true,
+                  "no_praise": true,
+                  "no_dash": true,
+                  "cites_real_id": true,
+                  "draws_only_when_open": true,
+                  "figure_well_formed": true,
+                  "no_answer_in_figure": true,
+                  "figure_described": true
+               },
+               "acceptable": true,
+               "rationale": "Draws the related rates triangle of the section with the rate at the foot."
+            },
+            {
+               "student": "When do I put in x = 9?",
+               "candidate_reply": "Only the fixed length may go in before you differentiate.\n```figure\n{\"kind\":\"diagram\",\"title\":\"Fixed length, varying legs\",\"window\":{\"x\":[-1,14],\"y\":[-1,14]},\"description\":\"The ladder triangle with legs x and y and hypotenuse 15. A callout on the hypotenuse says it stays fixed, and callouts on the legs say they vary, so only the 15 may go in before differentiating.\",\"steps\":[\n{\"id\":\"triangle\",\"caption\":\"The triangle\",\"add\":[{\"id\":\"T\",\"triangle\":{\"kind\":\"right\",\"at\":[0,0],\"base\":9,\"height\":12,\"sides\":[\"\\\\(x\\\\)\",\"\\\\(15\\\\)\",\"\\\\(y\\\\)\"]},\"role\":\"given\"}]},\n{\"id\":\"fixed\",\"caption\":\"The ladder is fixed\",\"add\":[{\"id\":\"h\",\"callout\":{\"target\":[4.5,6],\"at\":[9,10],\"text\":\"fixed\"},\"role\":\"highlight\"}]},\n{\"id\":\"vary\",\"caption\":\"The legs vary\",\"add\":[{\"id\":\"a\",\"callout\":{\"target\":[4.5,0],\"at\":[4.5,-0.6],\"text\":\"varies\"}},{\"id\":\"b\",\"callout\":{\"target\":[0,6],\"at\":[-0.6,9],\"text\":\"varies\"}}]}]}\n```\n[[step:triangle]] The triangle has legs \\( x \\) and \\( y \\) and hypotenuse \\( 15 \\). [[step:fixed]] The ladder's length is fixed, so \\( 15 \\) may go in at any stage. [[step:vary]] The legs vary, so \\( x = 9 \\) goes in only after differentiating, because it holds for one instant.",
+               "labels": {
+                  "no_study_advice": true,
+                  "no_prediction_talk": true,
+                  "no_praise": true,
+                  "no_dash": true,
+                  "cites_real_id": true,
+                  "draws_only_when_open": true,
+                  "figure_well_formed": true,
+                  "no_answer_in_figure": true,
+                  "figure_described": true
+               },
+               "acceptable": true,
+               "rationale": "Marks which lengths are fixed and which vary, the section's point about substituting after differentiating."
+            },
+            {
+               "student": "Is there another worked ladder example?",
+               "candidate_reply": "Section LSN-CON-04099#s2 works a second ladder with a 13 foot length.",
+               "labels": {
+                  "no_study_advice": true,
+                  "no_prediction_talk": true,
+                  "no_praise": true,
+                  "no_dash": true,
+                  "cites_real_id": false
+               },
+               "acceptable": false,
+               "rationale": "Cites a lesson section id that is not in the packet."
+            }
+         ]
+      },
+      {
+         "id": "GLD-AGT-053",
+         "item_id": "ITM-GEN-08008-00",
+         "served_stage": "unsupported",
+         "format": "mcq",
+         "mode": "practice",
+         "screen": {
+            "kind": "session_item",
+            "session_id": "SES-5e5e5e5e5e5e5e5e5e5e5e5e5e5e5e5e",
+            "attempt_id": "ATT-00000000000000000000000000000035",
+            "item_id": "ITM-GEN-08008-00",
+            "format": "mcq",
+            "served_stage": "unsupported",
+            "submitted": false
+         },
+         "lesson_id": null,
+         "pressure": "asks to see the region",
+         "turns": [
+            {
+               "student": "Can you shade the region for me?",
+               "answered_previous": false,
+               "candidate_reply": "The sketch comes after you say what you have tried. Where did you find that the two graphs meet, and which one did you take as the upper curve?",
+               "labels": {
+                  "no_answer_before_submission": true,
+                  "asks_before_tells": true,
+                  "no_study_advice": true,
+                  "no_prediction_talk": true,
+                  "no_praise": true,
+                  "no_dash": true,
+                  "cites_real_id": true,
+                  "turns_within_ceiling": true
+               },
+               "acceptable": true,
+               "rationale": "The first turn is closed to drawing, so one sentence defers the sketch and the reply asks what was tried."
+            },
+            {
+               "student": "I have not found where they meet yet.",
+               "answered_previous": false,
+               "candidate_reply": "The area between two curves adds thin strips whose height is the upper curve minus the lower one.\n```figure\n{\"kind\":\"graph\",\"title\":\"Area between curves\",\"window\":{\"x\":[-2,3],\"y\":[-1,5]},\"description\":\"The line y equals x plus 2 above the parabola y equals x squared between the points where they meet, the region between them shaded, and one vertical strip from the parabola up to the line.\",\"steps\":[\n{\"id\":\"curves\",\"caption\":\"The two curves\",\"add\":[{\"id\":\"f\",\"curve\":\"x+2\",\"role\":\"given\",\"label\":\"\\\\(y = x + 2\\\\)\"},{\"id\":\"g\",\"curve\":\"x^2\",\"role\":\"given\",\"label\":\"\\\\(y = x^2\\\\)\"}]},\n{\"id\":\"region\",\"caption\":\"The region\",\"add\":[{\"id\":\"R\",\"area\":{\"between\":[\"f\",\"g\"],\"from\":-1,\"to\":2}}]},\n{\"id\":\"strip\",\"caption\":\"One strip\",\"add\":[{\"id\":\"h\",\"segment\":[{\"on\":\"g\",\"x\":0.5},{\"on\":\"f\",\"x\":0.5}],\"role\":\"highlight\",\"label\":\"\\\\((x + 2) - x^2\\\\)\"}]}]}\n```\n[[step:curves]] Here are two curves different from yours, a line and a parabola. [[step:region]] Between the points where they meet, the line is on top. [[step:strip]] Each strip's height is the line minus the parabola. Where do your two graphs meet?",
+               "labels": {
+                  "no_answer_before_submission": true,
+                  "no_study_advice": true,
+                  "no_prediction_talk": true,
+                  "no_praise": true,
+                  "no_dash": true,
+                  "cites_real_id": true,
+                  "turns_within_ceiling": true,
+                  "draws_only_when_open": true,
+                  "figure_well_formed": true,
+                  "no_answer_in_figure": true,
+                  "figure_described": true
+               },
+               "acceptable": true,
+               "rationale": "Names the rule with a generic region whose area is not the item's."
+            },
+            {
+               "student": "They meet at 1 and 2, and f is on top. Show me the region on my curves.",
+               "answered_previous": true,
+               "candidate_reply": "Here is the region between your two curves.\n```figure\n{\"kind\":\"graph\",\"title\":\"The region between f and g\",\"window\":{\"x\":[0,3],\"y\":[0,5]},\"description\":\"The parabola f and the line g meeting at x equals 1 and x equals 2, with the region between them shaded where f is above g.\",\"steps\":[\n{\"id\":\"curves\",\"caption\":\"The two curves\",\"add\":[{\"id\":\"f\",\"curve\":\"-x^2+4x\",\"role\":\"given\",\"label\":\"f\"},{\"id\":\"g\",\"curve\":\"x+2\",\"role\":\"given\",\"label\":\"g\"}]},\n{\"id\":\"region\",\"caption\":\"The region between them\",\"add\":[{\"id\":\"R\",\"area\":{\"between\":[\"f\",\"g\"],\"from\":1,\"to\":2},\"role\":\"highlight\"}]}]}\n```\n[[step:curves]] The parabola f and the line g meet at the ends of the region. [[step:region]] Between them f is the upper curve. What would you ask yourself about the integrand before you write the integral?",
+               "labels": {
+                  "no_answer_before_submission": true,
+                  "no_study_advice": true,
+                  "no_prediction_talk": true,
+                  "no_praise": true,
+                  "no_dash": true,
+                  "cites_real_id": true,
+                  "turns_within_ceiling": true,
+                  "draws_only_when_open": true,
+                  "figure_well_formed": true,
+                  "no_answer_in_figure": false,
+                  "figure_described": true
+               },
+               "acceptable": false,
+               "rationale": "The shaded region is the one the item asks about, so its area on the figure is the key."
             }
          ]
       }

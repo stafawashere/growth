@@ -16,6 +16,7 @@ from types import SimpleNamespace
 import pytest
 import sympy
 
+from app.agent import context as context_module
 from app.agent.context import (
    TimedPartRefused,
    compose_packet,
@@ -25,6 +26,7 @@ from app.agent.context import (
    screen_line,
    validate_screen,
 )
+from app.agent.drawing.record import stored_figure
 from app.content.loader import load_snapshot
 from app.evals import agent_checks, golden
 from app.feedback import render
@@ -385,3 +387,84 @@ def test_an_orientation_section_stays_browsing(context):
    assert packet.mode == "browsing"
    assert move == "explain"
    assert packet.body["lesson"]["section"]["text"].startswith(section["text"])
+
+
+def test_the_packet_carries_drawing_from_the_move_and_the_switch(context, item):
+   first_on_item, move = compose_packet(context, item_screen(item), item=item)
+   today, today_move = compose_packet(context, {"kind": "today"})
+   switched_off, _move = compose_packet(context, {"kind": "today"}, drawing_enabled=False)
+
+   assert (move, first_on_item.drawing) == ("ask_what_tried", "closed")
+   assert (today_move, today.drawing) == ("navigate", "open")
+   assert switched_off.drawing == "closed"
+
+
+def test_render_prompt_fills_drawing_only_for_a_template_that_asks_for_it(context, monkeypatch, tmp_path):
+   packet, _move = compose_packet(context, {"kind": "today"})
+   drawing_template = tmp_path / "live_drawing.md"
+   drawing_template.write_text(context_module.LIVE_V1_TEMPLATE_PATH.read_text() + "\nDrawing: {{ drawing }}\n")
+
+   monkeypatch.setattr(context_module, "LIVE_TEMPLATE_PATH", context_module.LIVE_V1_TEMPLATE_PATH)
+   without_field = render_prompt(packet, [], None, [], "hello")
+   monkeypatch.setattr(context_module, "LIVE_TEMPLATE_PATH", drawing_template)
+   with_field = render_prompt(packet, [], None, [], "hello")
+   closed = render_prompt(dataclasses.replace(packet, drawing="closed"), [], None, [], "hello")
+
+   assert "Drawing:" not in without_field.user
+   assert "Drawing: open" in with_field.user
+   assert "Drawing: closed" in closed.user
+
+
+GRAPH_FIGURE = {
+   "kind": "function_graph",
+   "domain": [-1, 4],
+   "range": [-2, 6],
+   "curves": [{"segments": [[[0, 0], [1, 1]]], "style": "solid"}],
+   "marks": [{"type": "point", "at": [2, 5]}],
+   "labels": [{"text": "LABEL-9d1c", "anchor": [1, 1]}],
+   "gridlines": True,
+   "axis_titles": ["x", "y"],
+   "alt": "A line through the origin.",
+}
+TABLE_FIGURE = {"kind": "table", "columns": ["x", "f(x)"], "rows": [["0", "1"], ["2", "5"]], "labels": [], "alt": "Two rows."}
+
+
+@pytest.mark.parametrize(
+   "figure_spec, expected",
+   [
+      (GRAPH_FIGURE, {"kind": "function_graph", "alt": "A line through the origin.", "window": {"x": [-1, 4], "y": [-2, 6]}}),
+      (TABLE_FIGURE, {"kind": "table", "alt": "Two rows.", "columns": ["x", "f(x)"], "rows": [["0", "1"], ["2", "5"]]}),
+   ],
+   ids=["graph", "table"],
+)
+def test_an_item_figure_reaches_the_packet_as_its_kind_window_alt_and_table_only(context, item, figure_spec, expected):
+   with_figure = dict(item, figure_spec=json.dumps(figure_spec))
+   packet, _move = compose_packet(context, item_screen(item), item=with_figure)
+   plain, _move = compose_packet(context, item_screen(item), item=dict(item, figure_spec=None))
+
+   assert packet.body["figure"] == expected
+   assert "LABEL-9d1c" not in json.dumps(packet.body)
+   assert "figure" not in plain.body
+
+
+def history_sent(rendered):
+   line = next(line for line in rendered.user.splitlines() if line.startswith("Conversation so far: "))
+
+   return json.loads(line[len("Conversation so far: "):])
+
+
+def test_a_shown_figure_adds_its_title_and_description_to_the_history_and_nothing_else(context):
+   packet, _move = compose_packet(context, {"kind": "today"})
+   source = {"kind": "graph", "title": "Secant to tangent", "description": "A secant moves toward P.", "steps": []}
+   history = [
+      {"role": "agent", "text": "Look at the curve.", "figure": stored_figure("shown", source, 2)},
+      {"role": "agent", "text": "Again.", "figure": stored_figure("refused:closed", source)},
+      {"role": "student", "text": "Why?", "figure": None},
+   ]
+   sent = history_sent(render_prompt(packet, [], None, history, "hello"))
+
+   assert [turn["text"] for turn in sent] == [
+      "Look at the curve.\n[Figure shown: Secant to tangent. A secant moves toward P.]",
+      "Again.",
+      "Why?",
+   ]

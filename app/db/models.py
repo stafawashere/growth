@@ -33,6 +33,14 @@ two nullable preceded_by_lesson columns, added to an existing file by app/db/mig
 
 The Desmos fluency layer adds calculator_drills (docs/calculator/architecture.md), which carries
 user_id and so is exported and purged with the student's other rows.
+
+The live tutor agent adds four tables (docs/agent/architecture.md, "The memory store", and the
+2026-09-29 amendment rows of docs/plan/09-security-and-privacy.md, "Data retention"):
+agent_conversations, agent_turns, tutor_memories and tutor_profiles. Each carries user_id, so
+export and purge reach them by the same rule, and nothing under app/engine, app/grading or the
+diagnostician reads them. users gains agent_memory_paused and attempts gains
+agent_turns_before_submit, both additive, the second so the tutor_profile readout never joins
+provider logs.
 """
 from sqlalchemy import JSON, Integer, LargeBinary, Text, event, text
 from sqlalchemy.orm import DeclarativeBase, Mapped, mapped_column
@@ -55,6 +63,7 @@ class User(Base):
    failed_login_count: Mapped[int] = mapped_column(Integer, nullable=False, default=0, server_default=text("0"))
    locked_until: Mapped[str | None] = mapped_column(Text, nullable=True)
    study_plan: Mapped[str | None] = mapped_column(Text, nullable=True)
+   agent_memory_paused: Mapped[int | None] = mapped_column(Integer, nullable=True)
    created_at: Mapped[str] = mapped_column(Text, nullable=False)
    updated_at: Mapped[str] = mapped_column(Text, nullable=False)
 
@@ -228,6 +237,9 @@ class Attempt(Base):
    credit_record: Mapped[str | None] = mapped_column(Text, nullable=True)
    preceded_by_lesson_id: Mapped[str | None] = mapped_column(Text, nullable=True)
    preceded_by_lesson_version: Mapped[int | None] = mapped_column(Integer, nullable=True)
+   agent_turns_before_submit: Mapped[int] = mapped_column(
+      Integer, nullable=False, default=0, server_default=text("0")
+   )
    snapshot_id: Mapped[str] = mapped_column(Text, nullable=False)
    created_at: Mapped[str] = mapped_column(Text, nullable=False)
    updated_at: Mapped[str] = mapped_column(Text, nullable=False)
@@ -676,6 +688,92 @@ class CalculatorDrill(Base):
    setup_shown: Mapped[int] = mapped_column(Integer, nullable=False, default=0, server_default=text("0"))
    setup_correct: Mapped[int | None] = mapped_column(Integer, nullable=True)
    setup_reason: Mapped[str | None] = mapped_column(Text, nullable=True)
+   created_at: Mapped[str] = mapped_column(Text, nullable=False)
+   updated_at: Mapped[str] = mapped_column(Text, nullable=False)
+
+
+class AgentConversation(Base):
+   """One conversation with the live tutor (docs/agent/architecture.md, "The memory store"). It
+   closes when a turn arrives more than 30 minutes after last_turn_at or when the panel posts a
+   close, and consolidated_at is set by the consolidation job. Kept 30 days (09 amendment,
+   2026-09-29)."""
+
+   __tablename__ = "agent_conversations"
+
+   id: Mapped[str] = mapped_column(Text, primary_key=True)
+   user_id: Mapped[str] = mapped_column(Text, nullable=False)
+   opened_at: Mapped[str] = mapped_column(Text, nullable=False)
+   last_turn_at: Mapped[str] = mapped_column(Text, nullable=False)
+   closed_at: Mapped[str | None] = mapped_column(Text, nullable=True)
+   consolidated_at: Mapped[str | None] = mapped_column(Text, nullable=True)
+   opened_on_screen: Mapped[str] = mapped_column(Text, nullable=False)
+   turn_count: Mapped[int] = mapped_column(Integer, nullable=False, default=0)
+   created_at: Mapped[str] = mapped_column(Text, nullable=False)
+   updated_at: Mapped[str] = mapped_column(Text, nullable=False)
+
+
+class AgentTurn(Base):
+   """One student or agent turn. screen is the structured screen shape the panel sent, never the
+   draft answer. No usage numbers: the guard's budgets row and the pacing ledger carry them."""
+
+   __tablename__ = "agent_turns"
+
+   id: Mapped[str] = mapped_column(Text, primary_key=True)
+   conversation_id: Mapped[str] = mapped_column(Text, nullable=False)
+   user_id: Mapped[str] = mapped_column(Text, nullable=False)
+   role: Mapped[str] = mapped_column(Text, nullable=False)
+   text: Mapped[str] = mapped_column(Text, nullable=False)
+   screen: Mapped[dict | None] = mapped_column(JSON, nullable=True)
+   move: Mapped[str | None] = mapped_column(Text, nullable=True)
+   mode: Mapped[str | None] = mapped_column(Text, nullable=True)
+   item_id: Mapped[str | None] = mapped_column(Text, nullable=True)
+   attempt_id: Mapped[str | None] = mapped_column(Text, nullable=True)
+   outcome: Mapped[str | None] = mapped_column(Text, nullable=True)
+   model: Mapped[str | None] = mapped_column(Text, nullable=True)
+   link: Mapped[str | None] = mapped_column(Text, nullable=True)
+   created_at: Mapped[str] = mapped_column(Text, nullable=False)
+   updated_at: Mapped[str] = mapped_column(Text, nullable=False)
+
+
+class TutorMemory(Base):
+   """A memory entry: a preference, a confusion in the student's words, a stated difficulty or the
+   last conversation's episode note. skill_ids are library ids held as attributes. A tombstone keeps
+   kind and skill_ids with text erased and deleted_at set. Active means not superseded, deleted,
+   expired or resolved (docs/agent/architecture.md, "The memory store"; 09 amendment, 2026-09-29)."""
+
+   __tablename__ = "tutor_memories"
+
+   id: Mapped[str] = mapped_column(Text, primary_key=True)
+   user_id: Mapped[str] = mapped_column(Text, nullable=False)
+   kind: Mapped[str] = mapped_column(Text, nullable=False)
+   text: Mapped[str | None] = mapped_column(Text, nullable=True)
+   skill_ids: Mapped[list] = mapped_column(JSON, nullable=False)
+   source: Mapped[str] = mapped_column(Text, nullable=False)
+   source_conversation_id: Mapped[str | None] = mapped_column(Text, nullable=True)
+   evidence_count: Mapped[int] = mapped_column(Integer, nullable=False, default=1)
+   last_confirmed_at: Mapped[str] = mapped_column(Text, nullable=False)
+   last_used_at: Mapped[str | None] = mapped_column(Text, nullable=True)
+   expires_at: Mapped[str | None] = mapped_column(Text, nullable=True)
+   superseded_by: Mapped[str | None] = mapped_column(Text, nullable=True)
+   invalid_at: Mapped[str | None] = mapped_column(Text, nullable=True)
+   resolved_at: Mapped[str | None] = mapped_column(Text, nullable=True)
+   edited_by_student: Mapped[int] = mapped_column(Integer, nullable=False, default=0)
+   deleted_at: Mapped[str | None] = mapped_column(Text, nullable=True)
+   created_at: Mapped[str] = mapped_column(Text, nullable=False)
+   updated_at: Mapped[str] = mapped_column(Text, nullable=False)
+
+
+class TutorProfile(Base):
+   """One version of the tutoring profile; the current profile is the highest version. body holds
+   the typed fields and evidence their counts and dates (docs/agent/architecture.md, "The self-tuning
+   loop"). Presentation only, behind the tutor_profile switch."""
+
+   __tablename__ = "tutor_profiles"
+
+   user_id: Mapped[str] = mapped_column(Text, primary_key=True)
+   version: Mapped[int] = mapped_column(Integer, primary_key=True)
+   body: Mapped[dict] = mapped_column(JSON, nullable=False)
+   evidence: Mapped[dict] = mapped_column(JSON, nullable=False)
    created_at: Mapped[str] = mapped_column(Text, nullable=False)
    updated_at: Mapped[str] = mapped_column(Text, nullable=False)
 

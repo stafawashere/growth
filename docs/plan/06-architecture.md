@@ -389,7 +389,7 @@ Owned by this document.
 | --- | --- | --- |
 | id | TEXT primary key | |
 | user_id | TEXT | |
-| role | TEXT | tutor, generator, verifier, grader, diagnostician, transcriber |
+| role | TEXT | tutor, generator, verifier, grader, diagnostician, transcriber, agent, memory (the last two added 2026-09-29, 07 R17) |
 | day | TEXT | ISO date |
 | tokens_in, tokens_out, tokens_cached_read, tokens_cached_write | INTEGER | tokens_cached_read and tokens_cached_write sum only the values a provider reported; a null usage field adds nothing to them (07, "a null usage field means the provider did not report") |
 | cost_usd | REAL | |

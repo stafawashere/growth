@@ -3,7 +3,8 @@ import { join } from "node:path";
 import { afterEach, beforeEach, describe, expect, it, vi } from "vitest";
 import { cleanup, fireEvent, render, screen } from "@testing-library/react";
 import { AFFORDANCE_ATTRIBUTE, P1_FEEDBACK_AFFORDANCES } from "../affordances";
-import { MOTION_CLASS_PREFIX, REDUCED_MOTION_QUERY, TRANSFORM_MOTION_CLASSES } from "../styles/motion";
+import { MOTION_CLASS_PREFIX, REDUCED_MOTION_QUERY, TRANSFORM_MOTION_CLASSES, TUTOR_SHEET_CLASS } from "../styles/motion";
+import { TutorHarness } from "../testing/agent";
 import type {
    AttemptResult,
    FadingStage,
@@ -369,5 +370,47 @@ describe("reduced motion replaces transform with an opacity cross-fade", () => {
       );
 
       expect(foreign).toEqual([]);
+   });
+});
+
+/* Under 900 px app.css fixes the tutor panel's frame over the viewport, which is how the panel
+   knows it is the phone sheet. jsdom evaluates no width media query, so the phone width is stood
+   in for by that one declaration. */
+function standInForPhoneWidth() {
+   const element = document.createElement("style");
+
+   element.textContent = ".agent-frame { position: fixed; }";
+   document.head.appendChild(element);
+}
+
+describe("reduced motion and the tutor's phone sheet", () => {
+   it("puts the sheet motion class on the phone sheet only, never on the desktop panel", () => {
+      const { unmount } = render(<TutorHarness screen={{ kind: "today" }} />);
+
+      fireEvent.click(screen.getByRole("button", { name: "Ask, Ctrl+/" }));
+
+      expect(screen.getByTestId("agent-panel").classList.contains(TUTOR_SHEET_CLASS)).toBe(false);
+
+      unmount();
+      standInForPhoneWidth();
+      render(<TutorHarness screen={{ kind: "today" }} />);
+      fireEvent.click(screen.getByRole("button", { name: "Ask, Ctrl+/" }));
+
+      expect(screen.getByTestId("agent-panel").classList.contains(TUTOR_SHEET_CLASS)).toBe(true);
+   });
+
+   it("slides the sheet in on transform and opacity, and under reduce only fades it", () => {
+      const { base, reduce } = readMotionRules(motionStyleSheet());
+      const selector = `.${TUTOR_SHEET_CLASS}`;
+      const entering = `${selector}[data-entering="true"]`;
+
+      expect(transitionOf(base.get(selector) as CSSStyleRule)).toContain("transform");
+      expect((base.get(entering) as CSSStyleRule).style.getPropertyValue("transform")).not.toBe("none");
+
+      const reducedTransition = transitionOf(reduce.get(selector) as CSSStyleRule);
+
+      expect(reducedTransition).toContain("opacity");
+      expect(reducedTransition).not.toContain("transform");
+      expect((reduce.get(entering) as CSSStyleRule).style.getPropertyValue("transform")).toBe("none");
    });
 });

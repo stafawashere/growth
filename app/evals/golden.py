@@ -15,18 +15,36 @@ The grader, the diagnostician and the transcriber arrive with P3 and the generat
 sets are validated now and scored when the role exists. The transcriber set has no images: every
 page is a specification and a reference transcript waiting for a photograph of a hand-written page,
 which no session can take.
+
+The agent set is multi-turn (docs/agent/architecture.md, Evals). Each turn's candidate reply is
+scored by the deterministic checks of app/evals/agent_checks.py against the packet
+app/agent/context.py composes for that turn from the case's bank item, lesson and chosen option, so
+the replay measures the same checks, on the same packet, that the live output screen runs.
+
+A case may carry a profile, which reaches the packet the way the route renders it
+(app/agent/profile.py profile_for_prompt): validated, stated_requests and provenance removed, the
+per-kind fields given for the item's skill kind, and the first rung clipped to the item's
+guardrail level. Cases with a profile_pair come in pairs under one pair id (docs/agent/research/
+self-tuning.md, "The eval that guards it"): the same item, stage, screen and student turns under two
+profiles that differ in the one field the pair names, with identical labels, so every deterministic
+verdict must match across the pair. The applied case of a pair labels each turn profile_applied,
+which agent_checks.profile_applied scores where code can; an adversarial pair carries a profile the
+validator or the renderer must neutralise.
 """
 import json
 import math
 from dataclasses import dataclass
 from pathlib import Path
+from types import SimpleNamespace
 
+from app.evals import agent_checks
 from app.items.distractor_paths import distractor_path_violations, error_ids_for_skills
 from app.items.ingest import run_checks
 
 REPOSITORY_ROOT = Path(__file__).resolve().parents[2]
 GOLDEN_DIR = REPOSITORY_ROOT / "content" / "golden"
-ROLES = ("tutor", "grader", "transcriber", "diagnostician", "generator", "verifier")
+LESSONS_DIR = REPOSITORY_ROOT / "content" / "lessons"
+ROLES = ("tutor", "grader", "transcriber", "diagnostician", "generator", "verifier", "agent")
 DELEGATION_MARK = "on the operator's delegation of"
 GRADER_CATEGORIES = (
    "fully_correct",
@@ -45,6 +63,13 @@ VERIFIER_DEFECTS = (
    "wrong_worked_step",
 )
 TUTOR_CHECKS = ("names_rule", "states_consequence", "describes_correct_response")
+AGENT_MODES = ("practice", "after_submission", "browsing")
+AGENT_ITEM_MODES = ("practice", "after_submission")
+AGENT_ATTEMPT_STAMP = "2026-09-29T00:00:00+00:00"
+AGENT_CONFIDENCE = "confident"
+PAIR_ROLE_SETS = ({"applied", "baseline"}, {"adversarial", "baseline"})
+PAIR_SHARED_KEYS = ("item_id", "served_stage", "format", "mode", "screen", "lesson_id", "chosen_option_id", "correct")
+PAIR_SHARED_TURN_KEYS = ("student", "answered_previous", "labels", "acceptable")
 FORBIDDEN_DASHES = (chr(0x2013), chr(0x2014))
 Z_95 = 1.959963984540054
 
@@ -277,6 +302,351 @@ def transcriber_problems(golden, library):
    return problems
 
 
+def agent_expected_mode(screen):
+   is_item = screen.get("kind") == "session_item"
+
+   if not is_item:
+      return "browsing"
+
+   return "after_submission" if screen.get("submitted") else "practice"
+
+
+def agent_lesson(lesson_id, directory=LESSONS_DIR):
+   """A lesson record from content/lessons shaped like the lessons row the route passes."""
+   if lesson_id is None:
+      return None
+
+   path = Path(directory) / f"{lesson_id}.json"
+   has_file = path.exists()
+
+   if not has_file:
+      return None
+
+   body = json.loads(path.read_text())
+
+   return SimpleNamespace(id=body["id"], version=body["version"], target_id=body["target_id"], body=body)
+
+
+def agent_case_problems(case, items):
+   from app.agent.context import validate_screen
+
+   problems = []
+   mode = case.get("mode")
+   screen = case.get("screen") or {}
+
+   if mode not in AGENT_MODES:
+      problems.append(f"{case['id']}: unknown mode {mode!r}")
+
+   try:
+      validate_screen(screen)
+   except ValueError as refused:
+      problems.append(f"{case['id']}: {refused}")
+
+   if agent_expected_mode(screen) != mode:
+      problems.append(f"{case['id']}: the mode does not follow from the screen")
+
+   needs_item = mode in AGENT_ITEM_MODES
+   item = items.get(case.get("item_id"))
+
+   is_missing_item = needs_item and item is None
+   names_another_item = needs_item and screen.get("item_id") != case.get("item_id")
+
+   if is_missing_item:
+      problems.append(f"{case['id']}: {case.get('item_id')} is not a bank item")
+
+   if names_another_item:
+      problems.append(f"{case['id']}: the screen names another item")
+
+   has_unused_item = not needs_item and case.get("item_id") is not None
+
+   if has_unused_item:
+      problems.append(f"{case['id']}: a browsing case names an item")
+
+   names_a_lesson = case.get("lesson_id") is not None
+   is_missing_lesson = names_a_lesson and agent_lesson(case["lesson_id"]) is None
+
+   if is_missing_lesson:
+      problems.append(f"{case['id']}: {case['lesson_id']} is not a lesson in content/lessons")
+
+   is_after_submission = mode == "after_submission"
+   chosen_id = case.get("chosen_option_id")
+   names_a_chosen_option = is_after_submission and item is not None and chosen_id is not None
+
+   if names_a_chosen_option:
+      option_ids = {option["id"] for option in item.get("options") or []}
+
+      if chosen_id not in option_ids:
+         problems.append(f"{case['id']}: {chosen_id} is not an option of {item['id']}")
+
+   turns = case.get("turns") or []
+
+   if not turns:
+      problems.append(f"{case['id']}: no turns")
+
+   for index, entry in enumerate(turns):
+      labels = entry.get("labels") or {}
+      applicable = set(agent_checks.applicable_checks(mode, index)) if mode in AGENT_MODES else set()
+      unknown = set(labels) - set(agent_checks.CHECKS)
+      uncovered = applicable - set(labels)
+      reply = entry.get("candidate_reply", "")
+      has_dash = any(dash in reply for dash in FORBIDDEN_DASHES)
+
+      if unknown:
+         problems.append(f"{case['id']} turn {index}: unknown checks {sorted(unknown)}")
+
+      if uncovered:
+         problems.append(f"{case['id']} turn {index}: labels do not cover {sorted(uncovered)}")
+
+      if has_dash:
+         problems.append(f"{case['id']} turn {index}: the candidate reply carries a dash")
+
+      if entry.get("acceptable") != all(labels.values()):
+         problems.append(f"{case['id']} turn {index}: acceptable does not follow from the labels")
+
+   return problems
+
+
+def profile_field_names():
+   from app.agent import profile
+
+   return profile.FIELDS
+
+
+def differing_profile_fields(first, second):
+   first = first or {}
+   second = second or {}
+
+   return {name for name in set(first) | set(second) if first.get(name) != second.get(name)}
+
+
+def agent_pair_problems(cases):
+   problems = []
+   pairs = {}
+   known_fields = set(profile_field_names())
+
+   for case in cases:
+      unknown_fields = set(case.get("profile") or {}) - known_fields
+
+      if unknown_fields:
+         problems.append(f"{case['id']}: unknown profile fields {sorted(unknown_fields)}")
+
+      marker = case.get("profile_pair")
+
+      if marker is not None:
+         pairs.setdefault(marker.get("id"), []).append(case)
+
+   for pair_id, members in sorted(pairs.items()):
+      if len(members) != 2:
+         problems.append(f"{pair_id}: a pair needs two cases, found {len(members)}")
+         continue
+
+      first, second = members
+      roles = {first["profile_pair"].get("role"), second["profile_pair"].get("role")}
+      field_name = first["profile_pair"].get("field")
+      is_one_field = second["profile_pair"].get("field") == field_name and field_name in known_fields
+
+      if roles not in PAIR_ROLE_SETS:
+         problems.append(f"{pair_id}: roles {sorted(roles, key=str)} are not a pair")
+
+      if not is_one_field:
+         problems.append(f"{pair_id}: the two cases do not name one known field")
+
+      if differing_profile_fields(first.get("profile"), second.get("profile")) != {field_name}:
+         problems.append(f"{pair_id}: the profiles do not differ in exactly {field_name}")
+
+      for key in PAIR_SHARED_KEYS:
+         if first.get(key) != second.get(key):
+            problems.append(f"{pair_id}: the cases differ in {key}")
+
+      first_turns = first.get("turns") or []
+      second_turns = second.get("turns") or []
+
+      if len(first_turns) != len(second_turns):
+         problems.append(f"{pair_id}: the cases have different turn counts")
+         continue
+
+      for index, (left, right) in enumerate(zip(first_turns, second_turns)):
+         for key in PAIR_SHARED_TURN_KEYS:
+            if left.get(key) != right.get(key):
+               problems.append(f"{pair_id} turn {index}: the cases differ in {key}")
+
+      for member in members:
+         is_applied = member["profile_pair"].get("role") == "applied"
+         unlabelled = [
+            index
+            for index, entry in enumerate(member.get("turns") or [])
+            if not isinstance(entry.get("profile_applied"), bool)
+         ]
+
+         if is_applied and unlabelled:
+            problems.append(f"{member['id']}: turns {unlabelled} carry no profile_applied label")
+
+   return problems
+
+
+def agent_problems(golden, library):
+   problems = []
+
+   for case in golden["cases"]:
+      problems.extend(agent_case_problems(case, library["items"]))
+
+   return problems + agent_pair_problems(golden["cases"])
+
+
+def agent_context(snapshot):
+   """The slice of the SessionContext the composer reads, built from a loaded snapshot."""
+   return SimpleNamespace(
+      archetypes=dict(snapshot.archetypes),
+      errors=dict(snapshot.errors),
+      snapshot=snapshot,
+      unit_titles={},
+   )
+
+
+def agent_feedback(case, item, archetype, errors):
+   from app.feedback import render
+
+   chosen = next((option for option in item.get("options") or [] if option["id"] == case.get("chosen_option_id")), None)
+   error_path = (chosen or {}).get("error_path")
+
+   return render.render_feedback(
+      case["served_stage"],
+      archetype,
+      {"worked_solution": json.dumps(item["worked_solution"])},
+      submitted=True,
+      correct=case["correct"],
+      chosen_option=chosen,
+      error_record=errors.get(error_path) if error_path else None,
+      confidence=AGENT_CONFIDENCE,
+   )
+
+
+def agent_profile(case, context, item):
+   """The case's profile as the route would render it into this case's packet, or None."""
+   from app.agent import profile
+
+   stored = case.get("profile")
+
+   if stored is None:
+      return None
+
+   snapshot = getattr(context, "snapshot", None)
+   body, _clips = profile.normalised(stored, profile.active_concept_ids(snapshot))
+   names = profile.concept_names(snapshot)
+   skill_ids = list((item or {}).get("skills") or [])
+
+   if not skill_ids:
+      return profile.rendered_profile(body, names=names)
+
+   rendered, _clipped = profile.profile_for_prompt(
+      body,
+      profile.skill_kind(skill_ids[0]),
+      case["mode"],
+      case["served_stage"],
+      case["format"],
+      names=names,
+   )
+
+   return rendered
+
+
+def agent_turn_packet(case, turn_index, context, items):
+   """The packet the live route would compose for this turn of the case."""
+   from app.agent.context import compose_packet
+
+   mode = case["mode"]
+   item = items.get(case.get("item_id"))
+   lesson = agent_lesson(case.get("lesson_id"))
+   answered = bool(case["turns"][turn_index].get("answered_previous"))
+   attempt = None
+   feedback = None
+
+   if mode in AGENT_ITEM_MODES:
+      is_after_submission = mode == "after_submission"
+      correct = case.get("correct")
+      attempt = SimpleNamespace(
+         submitted_at=AGENT_ATTEMPT_STAMP if is_after_submission else None,
+         served_stage=case["served_stage"],
+         format=case["format"],
+         correct=None if correct is None else int(correct),
+      )
+
+   if mode == "after_submission":
+      archetype = context.archetypes[item["archetype_id"]]
+      feedback = agent_feedback(case, item, archetype, context.errors)
+
+   packet, _move = compose_packet(
+      context,
+      case["screen"],
+      item=item,
+      attempt=attempt,
+      lesson=lesson,
+      feedback=feedback,
+      profile=agent_profile(case, context, item),
+      turn_index_on_item=turn_index,
+      student_answered_question=answered,
+   )
+
+   return packet
+
+
+def agent_verdicts(golden, snapshot, items):
+   """One row per labelled check per turn: the label, and whether the deterministic check passed."""
+   context = agent_context(snapshot)
+   rows = []
+
+   for case in golden["cases"]:
+      item = items.get(case.get("item_id"))
+      forms = agent_checks.key_forms(item) if item is not None else None
+
+      for index, entry in enumerate(case["turns"]):
+         packet = agent_turn_packet(case, index, context, items)
+         facts = agent_checks.facts_from_packet(packet, index)
+
+         for check, label in entry["labels"].items():
+            verdict = agent_checks.CHECK_FUNCTIONS[check](entry["candidate_reply"], facts, forms)
+            rows.append({
+               "case_id": case["id"],
+               "turn": index,
+               "mode": case["mode"],
+               "check": check,
+               "label": label,
+               "passed": verdict.passed,
+               "acceptable": entry["acceptable"],
+               "pair_id": (case.get("profile_pair") or {}).get("id"),
+               "pair_role": (case.get("profile_pair") or {}).get("role"),
+            })
+
+   return rows
+
+
+def agent_profile_verdicts(golden, snapshot, items):
+   """One row per turn of every applied pair case: the profile_applied label and the deterministic
+   verdict, None where no code reads the field off a reply."""
+   context = agent_context(snapshot)
+   rows = []
+
+   for case in golden["cases"]:
+      marker = case.get("profile_pair") or {}
+      is_applied = marker.get("role") == "applied"
+
+      if not is_applied:
+         continue
+
+      for index, entry in enumerate(case["turns"]):
+         packet = agent_turn_packet(case, index, context, items)
+         verdict = agent_checks.profile_applied(entry["candidate_reply"], packet.profile, marker["field"])
+         rows.append({
+            "case_id": case["id"],
+            "turn": index,
+            "field": marker["field"],
+            "label": entry["profile_applied"],
+            "passed": None if verdict is None else verdict.passed,
+         })
+
+   return rows
+
+
 ROLE_CHECKS = {
    "grader": grader_problems,
    "diagnostician": diagnostician_problems,
@@ -284,6 +654,7 @@ ROLE_CHECKS = {
    "generator": generator_problems,
    "verifier": verifier_problems,
    "transcriber": transcriber_problems,
+   "agent": agent_problems,
 }
 
 

@@ -221,6 +221,27 @@ function lengthOffenders(rule: Rule, measure: number) {
    return offenders;
 }
 
+function declared(selector: string, property: string) {
+   return RULES.filter((rule) => rule.selector.split(",").map((part) => part.trim()).includes(selector))
+      .flatMap((rule) => rule.declarations)
+      .filter((declaration) => declaration.property === property)
+      .map((declaration) => declaration.value);
+}
+
+describe("the tutor panel's layout", () => {
+   it("scrolls the conversation alone, between a fixed header and a fixed composer", () => {
+      expect(declared(".agent-conversation", "overflow-y")).toEqual(["auto"]);
+      expect(declared(".agent-conversation", "min-height")).toEqual(["0"]);
+      expect(declared(".agent-conversation", "flex")).toEqual(["auto"]);
+      expect(declared(".agent-panel", "overflow")).toContain("hidden");
+      expect(declared(".agent-panel", "flex-direction")).toEqual(["column"]);
+
+      for (const fixedPart of [".agent-header", ".agent-guardrail", ".agent-composer"]) {
+         expect(declared(fixedPart, "flex")).toEqual(["none"]);
+      }
+   });
+});
+
 describe("the application stylesheet", () => {
    it("parses into rules and declarations", () => {
       expect(RULES.length, "app.css parsed to no rules").toBeGreaterThan(0);

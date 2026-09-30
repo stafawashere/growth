@@ -1,10 +1,12 @@
-import { useCallback, useEffect, useRef } from "react";
+import { useCallback, useEffect, useRef, useState } from "react";
 
 import { answerLessonCheck, answerLessonPrompt, postLessonEvent, readLessonPlan } from "../api/client";
 import type { LessonCheckAnswerBody, LessonEventBody, LessonPlanPayload, LessonPromptAnswerBody } from "../api/types";
+import { useAgentScreen } from "../agent/AgentProvider";
+import { hashFor, type LessonReturn } from "../routing";
 import { LoadFailed, Loading } from "../status/LoadState";
 import { useLoad } from "../status/load";
-import { LessonReader } from "./LessonReader";
+import { LessonReader, type LessonPosition } from "./LessonReader";
 
 /* The library reader (15 UI, Library), reached from the Lessons tab or the progress Lessons section,
    never itself on the bar. Any signed-off lesson can be read here whatever the gating, and a library
@@ -18,15 +20,45 @@ export interface LessonRouteProps {
    conceptName: string;
    onLeave: () => void;
    backLabel?: string;
+   /* Where the reader goes back to, sent to the live tutor as its screen's return_to. */
+   returnTo?: LessonReturn;
 }
 
 const LIBRARY_BAND = "low";
 
-export function LessonRoute({ lessonId, conceptName, onLeave, backLabel }: LessonRouteProps) {
+function returnPath(returnTo: LessonReturn | undefined) {
+   if (returnTo === undefined) {
+      return null;
+   }
+
+   const place = returnTo === "lessons" ? ({ view: "lessons" } as const) : ({ view: "progress", tab: "lessons" } as const);
+
+   return hashFor(place).replace(/^#/, "");
+}
+
+export function LessonRoute({ lessonId, conceptName, onLeave, backLabel, returnTo }: LessonRouteProps) {
    const read = useCallback(() => readLessonPlan(lessonId, LIBRARY_BAND, "first_contact"), [lessonId]);
    const load = useLoad<LessonPlanPayload>(read);
    const openedAt = useRef(Date.now());
    const openedPosted = useRef(false);
+   const [position, setPosition] = useState<LessonPosition | null>(null);
+   const lesson = load.kind === "loaded" ? load.value.lesson : null;
+   const describesLesson = lesson !== null && position !== null;
+
+   useAgentScreen(
+      describesLesson
+         ? {
+              kind: "lesson",
+              lesson_id: lesson.id,
+              version: lesson.version,
+              section_id: position.sectionId,
+              section_index: position.index,
+              section_count: position.count,
+              return_to: returnPath(returnTo)
+           }
+         : null,
+      { conceptName, posesQuestion: position?.posesQuestion === true }
+   );
 
    const post = useCallback(
       (body: Omit<LessonEventBody, "band">) => postLessonEvent(lessonId, { ...body, band: LIBRARY_BAND }).catch(() => undefined),
@@ -72,6 +104,7 @@ export function LessonRoute({ lessonId, conceptName, onLeave, backLabel }: Lesso
          conceptName={conceptName}
          backLabel={backLabel}
          calculatorWork={load.value.calculator_work === true}
+         onPositionChange={setPosition}
          onComplete={complete}
          onSkip={skip}
          onSectionViewed={(sectionId, mode, elapsedMs) => void post({ event: "section_viewed", section_id: sectionId, mode, elapsed_ms: elapsedMs })}

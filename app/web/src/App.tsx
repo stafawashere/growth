@@ -1,6 +1,7 @@
 import { Suspense, lazy, useCallback, useEffect, useRef, useState } from "react";
 
 import { AccountScreen } from "./account/AccountScreen";
+import { AgentProvider, useAgent, useAgentScreen } from "./agent/AgentProvider";
 import { accountFrom, forgetCachedAccount, readCachedAccount, saveCachedAccount, type CachedAccount } from "./account/cachedAccount";
 import { ApiError, SESSION_ENDED_EVENT, readAuthStatus, readMe, signOut, type MePayload } from "./api/client";
 import { HomeRoute } from "./home/HomeRoute";
@@ -111,6 +112,33 @@ function TokenNotice() {
          operator fills the token file and the build writes the stylesheet from it.
       </p>
    );
+}
+
+/* The views that describe their own screen to the tutor with useAgentScreen. Every other view is
+   "other", named by the shell (docs/agent/architecture.md, "The screen context"). */
+const VIEWS_WITH_OWN_SCREEN: ReadonlyArray<View> = ["home", "session", "lesson", "review", "progress", "assessments", "settings"];
+
+const OTHER_VIEW_NAMES: Partial<Record<View, string>> = {
+   onboarding: "Getting started",
+   lessons: "Lessons",
+   checkpoint: "Progress, a checkpoint",
+   probe: "Progress, a concept probe",
+   evidence: "Settings, evidence of learning",
+   account: "Account"
+};
+
+function OtherViewScreen(props: { view: View }) {
+   const hasOwnScreen = VIEWS_WITH_OWN_SCREEN.includes(props.view);
+
+   useAgentScreen(hasOwnScreen ? null : { kind: "other", view: props.view }, { viewName: OTHER_VIEW_NAMES[props.view] });
+
+   return null;
+}
+
+function ShellNotices(props: { active: boolean }) {
+   const agent = useAgent();
+
+   return <AiNotices active={props.active} hideAgentNotices={agent?.isOpen === true} />;
 }
 
 function OfflineNotice(props: { onRetry: () => void }) {
@@ -304,7 +332,7 @@ export function App() {
    const menuCurrent = place.view === "account" ? "account" : place.view === "settings" || place.view === "evidence" ? "settings" : null;
 
    return (
-      <>
+      <AgentProvider enabled={access === "signedIn"}>
          <a className="skip-link" href="#main">
             Skip to content
          </a>
@@ -348,9 +376,10 @@ export function App() {
             </Suspense>
          </main>
 
+         <OtherViewScreen view={place.view} />
 
-         <AiNotices active={showsAiNotices} />
-      </>
+         <ShellNotices active={showsAiNotices} />
+      </AgentProvider>
    );
 }
 
@@ -396,6 +425,7 @@ function PlaceView(props: {
             <LessonRoute
                lessonId={place.lessonId}
                conceptName={place.conceptName}
+               returnTo={place.returnTo}
                onLeave={() => go(place.returnTo === "lessons" ? { view: "lessons" } : { view: "progress", tab: "lessons" })}
                backLabel={place.returnTo === "lessons" ? "Back to lessons" : "Back to progress"}
             />

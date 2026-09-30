@@ -9,7 +9,7 @@ export type ProgressTab = "mastery" | "calibration" | "representations" | "check
 
 export type AssessmentFormat = "unit" | "frq" | "drill" | "mock" | "checkpoint";
 
-export type SettingsTab = "study" | "providers" | "budgets" | "accessibility" | "operator" | "data";
+export type SettingsTab = "study" | "providers" | "budgets" | "accessibility" | "operator" | "data" | "tutor";
 
 export type LessonReturn = "lessons" | "progress";
 
@@ -39,7 +39,7 @@ export const ASSESSMENT_FORMATS: ReadonlyArray<AssessmentFormat> = ["unit", "frq
 
 export const CALCULATOR_SECTIONS: ReadonlyArray<CalculatorSection> = ["cards", "drill", "measured"];
 
-export const SETTINGS_TABS: ReadonlyArray<SettingsTab> = ["study", "providers", "budgets", "accessibility", "operator", "data"];
+export const SETTINGS_TABS: ReadonlyArray<SettingsTab> = ["study", "providers", "budgets", "accessibility", "operator", "data", "tutor"];
 
 const ONBOARDING_REASONS: ReadonlyArray<OnboardingReason> = ["first_login", "long_gap"];
 

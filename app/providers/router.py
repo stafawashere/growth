@@ -145,6 +145,38 @@ class CooldownBoard:
          return cooling
 
 
+@dataclass
+class StreamProgress:
+   showed_text: bool = False
+
+
+def forwarded(events, progress):
+   """events with progress marking the first text event. The replay provider streams bare
+   strings, which become text events here, the shape the chain gave before it streamed. Closing
+   this generator closes events, so a guarded stream the consumer abandons still takes its
+   worst-case charge."""
+   try:
+      while True:
+         try:
+            event = next(events)
+         except StopIteration as finished:
+            return finished.value
+
+         is_bare_text = isinstance(event, str)
+
+         if is_bare_text:
+            event = {"type": "text", "delta": event}
+
+         is_text = isinstance(event, dict) and event.get("type") == "text"
+
+         if is_text:
+            progress.showed_text = True
+
+         yield event
+   finally:
+      events.close()
+
+
 def failure_type_of(raised):
    is_bounded = isinstance(raised, ProviderCallFailed)
 
@@ -186,14 +218,63 @@ class FallbackChain(Provider):
       return self._run(request, lambda guarded: guarded.generate(request))
 
    def stream(self, request):
-      """The chain decides a link before any text is shown, so a stream is the chosen link's whole
-      result as one delta, the shape SubscriptionProvider.stream already gives."""
-      result = self.generate(request)
+      """Each link's events are forwarded as they arrive. A link that raises before its first text
+      event is passed over exactly as _run passes over a failed call; once a text event has been
+      shown, a failure ends the stream there, because splicing a second model's words onto the
+      first would show one answer as another (docs/agent/architecture.md, Streaming end to end)."""
+      self.last_accounting = None
+      self.served_by = None
+      first_failure = None
+      first_unavailable = None
 
-      if result.text:
-         yield {"type": "text", "delta": result.text}
+      for link in self._links:
+         now = self._clock()
+         cooled_by = self._board.cooling(request.role, link.name, now)
+         is_cooling = cooled_by is not None
 
-      return result
+         if is_cooling:
+            skipped = CoolingDown(link.name, request.model, request.role, cooled_by)
+            first_failure = first_failure or skipped
+
+            continue
+
+         guarded = self.guarded(link)
+         progress = StreamProgress()
+
+         try:
+            result = yield from forwarded(guarded.stream(request), progress)
+         except RefusedBeforeWire as unavailable:
+            if progress.showed_text:
+               raise
+
+            first_unavailable = first_unavailable or unavailable
+
+            continue
+         except (BudgetStopped, DevSpendCapExceeded) as stopped:
+            if progress.showed_text:
+               raise
+
+            first_failure = first_failure or stopped
+
+            continue
+         except ProviderCallFailed as failed:
+            self._keep_accounting(guarded)
+            self._board.failed(request.role, link.name, failure_type_of(failed), self._clock())
+
+            if progress.showed_text:
+               raise
+
+            first_failure = first_failure or failed
+
+            continue
+
+         self._keep_accounting(guarded)
+         self._board.succeeded(request.role, link.name)
+         self.served_by = link.name
+
+         return result
+
+      self._raise_exhausted(request, first_failure, first_unavailable)
 
    def _run(self, request, call):
       self.last_accounting = None
@@ -237,6 +318,9 @@ class FallbackChain(Provider):
 
          return result
 
+      self._raise_exhausted(request, first_failure, first_unavailable)
+
+   def _raise_exhausted(self, request, first_failure, first_unavailable):
       if first_failure is not None:
          raise first_failure
 

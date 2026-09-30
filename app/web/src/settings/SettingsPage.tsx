@@ -1,3 +1,6 @@
+import { AgentSettingsSection } from "../agent/AgentSettingsSection";
+import { SETTINGS_TAB_LABEL } from "../agent/agentCopy";
+import { useAgentScreen } from "../agent/AgentProvider";
 import { AiNoticesSetting } from "../notices/AiNotices";
 import type { SettingsTab } from "../routing";
 import { Page, PageHeader } from "../ui/Page";
@@ -7,7 +10,7 @@ import { OperatorSettings } from "./ExperimentsSection";
 import { SettingsRoute } from "./SettingsRoute";
 import { DeletePhotosSection, StartingPointSection, StudyPlanSection } from "./StudySections";
 
-/* Settings, opened from the avatar menu: the redesign's six tabs. SettingsRoute draws the sections
+/* Settings, opened from the avatar menu: the redesign's six tabs and the live tutor's Tutor tab. SettingsRoute draws the sections
    11's scope 17 gives it for the chosen tab, and the sections the later phases added sit beside
    them in the tab they belong to. */
 
@@ -17,7 +20,8 @@ const SETTINGS_TAB_ITEMS: ReadonlyArray<{ id: SettingsTab; label: string }> = [
    { id: "budgets", label: "Budgets" },
    { id: "accessibility", label: "Accessibility" },
    { id: "operator", label: "Operator" },
-   { id: "data", label: "Your data" }
+   { id: "data", label: "Your data" },
+   { id: "tutor", label: SETTINGS_TAB_LABEL }
 ];
 
 export interface SettingsPageProps {
@@ -33,6 +37,9 @@ export interface SettingsPageProps {
 
 export function SettingsPage(props: SettingsPageProps) {
    const { tab } = props;
+   const tabName = SETTINGS_TAB_ITEMS.find((item) => item.id === tab)?.label ?? tab;
+
+   useAgentScreen({ kind: "settings", tab }, { tabName });
 
    return (
       <Page header={<PageHeader eyebrow="Your preferences" title="Settings" />}>
@@ -59,6 +66,8 @@ export function SettingsPage(props: SettingsPageProps) {
                {tab === "accessibility" ? <AccessibilitySection /> : null}
 
                {tab === "operator" ? <OperatorSettings onOpenEvidence={props.onOpenEvidence} /> : null}
+
+               {tab === "tutor" ? <AgentSettingsSection /> : null}
             </TabPanel>
          </div>
       </Page>

@@ -3,11 +3,16 @@
 
 It reads its mode from $HOME/fake_claude_mode, writes what it was given (argv, stdin, the
 environment and the working directory's contents) to $HOME/fake_claude_record.json, and prints
-a canned result for the mode.
+a canned result for the mode. The consolidate mode returns $HOME/fake_claude_structured_output.json
+as its structured_output, or an empty consolidation when the file is absent. The stream_leak mode
+streams the text of $HOME/fake_claude_stream_text.txt as one delta, or the stream mode's deltas when
+the file is absent. The stream_limit mode reports a rejected usage window before its retry line.
 """
 import json
 import os
+import signal
 import sys
+import time
 from pathlib import Path
 
 USAGE = {
@@ -35,6 +40,86 @@ def result_payload(**overrides):
    return payload
 
 
+STREAMED_DELTAS = ("First sentence. ", "Second ", "sentence?")
+FIVE_HOUR_WINDOW_SECONDS = 3600
+SEVEN_DAY_WINDOW_SECONDS = 86400
+
+
+def rate_limit_info(status, five_hour_utilization, seven_day_utilization):
+   """Reset times an hour and a day past the clock, so a walk against the fake shows a reset still
+   to come."""
+   now = int(time.time())
+   five_hour_reset = now + FIVE_HOUR_WINDOW_SECONDS
+
+   return {
+      "status": status,
+      "resetsAt": five_hour_reset,
+      "rateLimitType": "five_hour",
+      "overageStatus": "rejected",
+      "unifiedWindows": {
+         "five_hour": {"utilization": five_hour_utilization, "resetsAt": five_hour_reset},
+         "seven_day": {"utilization": seven_day_utilization, "resetsAt": now + SEVEN_DAY_WINDOW_SECONDS},
+      },
+   }
+
+
+HOLD_WAIT_SECONDS = 10
+EMPTY_CONSOLIDATION = {"proposals": [], "student_terms": [], "stated_requests": []}
+
+
+def emit(event):
+   print(json.dumps(event), flush=True)
+
+
+def init_event():
+   return {"type": "system", "subtype": "init", "tools": [], "mcp_servers": []}
+
+
+def text_delta_event(text):
+   return {
+      "type": "stream_event",
+      "event": {"type": "content_block_delta", "index": 0, "delta": {"type": "text_delta", "text": text}},
+   }
+
+
+def wait_for_release(home):
+   """With fake_claude_hold present, the first delta waits until the test writes
+   fake_claude_release, so a caller that shows nothing before exit is caught."""
+   is_held = (home / "fake_claude_hold").exists()
+
+   if not is_held:
+      return
+
+   deadline = time.monotonic() + HOLD_WAIT_SECONDS
+
+   while time.monotonic() < deadline:
+      if (home / "fake_claude_release").exists():
+         return
+
+      time.sleep(0.02)
+
+
+def api_retry_event(error):
+   return {
+      "type": "system",
+      "subtype": "api_retry",
+      "attempt": 1,
+      "max_retries": 1,
+      "retry_delay_ms": 1000,
+      "error_status": 429 if error == "rate_limit" else 401,
+      "error": error,
+   }
+
+
+def outputs_stream_json():
+   has_output_format = "--output-format" in sys.argv
+
+   if not has_output_format:
+      return False
+
+   return sys.argv[sys.argv.index("--output-format") + 1] == "stream-json"
+
+
 def main():
    home = Path(os.environ["HOME"])
    mode_file = home / "fake_claude_mode"
@@ -54,6 +139,13 @@ def main():
 
    if mode == "structured":
       print(json.dumps(result_payload(result="", structured_output={"sentence": "Rewrite first."})))
+      return 0
+
+   if mode == "consolidate":
+      chosen_output = home / "fake_claude_structured_output.json"
+      has_chosen_output = chosen_output.exists()
+      structured_output = json.loads(chosen_output.read_text()) if has_chosen_output else EMPTY_CONSOLIDATION
+      print(json.dumps(result_payload(result="", structured_output=structured_output)))
       return 0
 
    if mode == "weekly_limit":
@@ -95,6 +187,41 @@ def main():
       print(json.dumps({"type": "assistant", "message": {"content": []}}))
       print(json.dumps(result_event))
       return 0
+
+   if mode in ("stream", "stream_leak"):
+      chosen_text = home / "fake_claude_stream_text.txt"
+      is_leaking = mode == "stream_leak" and chosen_text.exists()
+      deltas = (chosen_text.read_text(),) if is_leaking else STREAMED_DELTAS
+
+      if not outputs_stream_json():
+         print(json.dumps(result_payload(result="".join(deltas))))
+         return 0
+
+      emit(init_event())
+
+      for index, delta in enumerate(deltas):
+         emit(text_delta_event(delta))
+
+         if index == 0:
+            wait_for_release(home)
+
+      emit({"type": "rate_limit_event", "rate_limit_info": rate_limit_info("allowed", 0.18, 0.29), "session_id": "fake-session-0001"})
+      emit(result_payload(result="".join(deltas)))
+      return 0
+
+   if mode in ("stream_limit", "stream_auth"):
+      # The real CLI handles SIGINT itself. A test run started from a background shell inherits
+      # SIGINT ignored, and this fake would keep that without the default handler put back.
+      signal.signal(signal.SIGINT, signal.default_int_handler)
+      error = "rate_limit" if mode == "stream_limit" else "authentication_failed"
+      emit(init_event())
+
+      if mode == "stream_limit":
+         emit({"type": "rate_limit_event", "rate_limit_info": rate_limit_info("rejected", 1.0, 0.41), "session_id": "fake-session-0001"})
+
+      emit(api_retry_event(error))
+      time.sleep(30)
+      return 1
 
    if mode == "malformed":
       print("this is not json")

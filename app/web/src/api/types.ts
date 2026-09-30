@@ -524,6 +524,13 @@ export interface ExperimentComparison {
    interval_high: number | null;
    stated: boolean;
    minimum_outcomes_per_arm: number;
+   guards: ComparisonGuards | null;
+}
+
+/* app/experiments/analysis.py tutor_profile_comparison: the calibration guard by arm, present on
+   the tutor profile comparison and null on the others. */
+export interface ComparisonGuards {
+   calibration: Record<string, CalibrationBin[]>;
 }
 
 /* app/api/routes/evaluation.py read_metrics. */
@@ -1574,4 +1581,171 @@ export interface CalculatorMeasuredPayload {
    capabilities: CalculatorCapabilityMeasure[];
    budget_seconds: CalculatorBudgetSeconds;
    recent: CalculatorRecentDrill[];
+}
+
+/* The live tutor's Tutor tab in Settings, app/api/routes/agent.py (docs/agent/architecture.md,
+   "The panel and the settings views"). Each group carries the kind's plain label from
+   docs/agent/design.md; only preferences and confusions are editable. */
+export type AgentMemoryKind = "preference" | "confusion" | "stated_difficulty" | "episode";
+
+export interface AgentMemoryEntry {
+   id: string;
+   kind: AgentMemoryKind;
+   text: string;
+   skill_ids: string[];
+   created_at: string;
+   source_conversation_id: string | null;
+   editable: boolean;
+}
+
+export interface AgentMemoryGroup {
+   kind: AgentMemoryKind;
+   label: string;
+   entries: AgentMemoryEntry[];
+}
+
+export interface AgentMemoriesPayload {
+   memory_paused: boolean;
+   groups: AgentMemoryGroup[];
+}
+
+export interface AgentMemoryDeleted {
+   deleted: string;
+}
+
+/* DELETE /agent/memories: the counts of rows removed per table, never their text. */
+export interface AgentMemoryCleared {
+   cleared: {
+      tutor_memories: number;
+      agent_turns: number;
+      agent_conversations: number;
+      tutor_profiles: number;
+   };
+}
+
+export type AgentScreenKind =
+   | "today"
+   | "session_item"
+   | "session_lesson"
+   | "lesson"
+   | "review"
+   | "progress"
+   | "assessments"
+   | "settings"
+   | "other";
+
+export interface AgentConversationSummary {
+   id: string;
+   opened_at: string;
+   last_turn_at: string;
+   closed_at: string | null;
+   opened_on_screen: AgentScreenKind;
+   turn_count: number;
+}
+
+export type AgentTurnOutcome = "complete" | "stopped" | "incomplete" | "withheld" | "declined";
+
+export interface AgentConversationTurn {
+   id: string;
+   role: "student" | "agent";
+   text: string;
+   created_at: string;
+   outcome: AgentTurnOutcome | null;
+}
+
+export interface AgentConversationsPayload {
+   conversations: AgentConversationSummary[];
+}
+
+export interface AgentConversationPayload extends AgentConversationSummary {
+   turns: AgentConversationTurn[];
+}
+
+export interface AgentConversationDeleted {
+   deleted: string;
+}
+
+export interface AgentSettingsPayload {
+   memory_paused: boolean;
+}
+
+/* GET /agent/profile: the highest tutor_profiles version, and the tutor_profile switch's state, or
+   "absent" while the switch has no definition. */
+export interface AgentProfilePayload {
+   profile: Record<string, unknown> | null;
+   version: number | null;
+   experiment: ExperimentState | "absent";
+}
+
+/* The one structured shape the client sends with every turn as screen (docs/agent/architecture.md,
+   "The screen context"; schemas/agent/screen.schema.json). Never the draft answer, the selected
+   option or a key. section_index counts from 0. */
+export type AgentScreen =
+   | { kind: "today" }
+   | {
+        kind: "session_item";
+        session_id: string;
+        attempt_id: string;
+        item_id: string;
+        format: ServedFormat;
+        served_stage: FadingStage;
+        submitted: boolean;
+        feedback_kind?: string;
+     }
+   | {
+        kind: "session_lesson";
+        session_id: string;
+        lesson_id: string;
+        version: number;
+        section_id: string;
+        section_index: number;
+        section_count: number;
+     }
+   | {
+        kind: "lesson";
+        lesson_id: string;
+        version: number;
+        section_id: string;
+        section_index: number;
+        section_count: number;
+        return_to: string | null;
+     }
+   | { kind: "review" }
+   | { kind: "progress"; tab: string; skill_id?: string }
+   | { kind: "assessments"; format: string; timed?: boolean }
+   | { kind: "settings"; tab: string }
+   | { kind: "other"; view: string };
+
+/* POST /agent/turns, answered as text/event-stream (docs/agent/architecture.md, "Streaming end to
+   end"). */
+export interface AgentTurnBody {
+   conversation_id: string | null;
+   screen: AgentScreen;
+   message: string;
+}
+
+export type AgentErrorKind = "usage_limit" | "daily_cap" | "minute_cap" | "sign_in" | "unavailable" | "timed" | "ceiling" | "refused";
+
+export interface AgentStartEvent {
+   conversation_id: string;
+   turn_id: string;
+   screen_line: string;
+   can_see: string[];
+}
+
+export interface AgentTextEvent {
+   delta: string;
+}
+
+export interface AgentEndEvent {
+   turn_id: string;
+   outcome: AgentTurnOutcome;
+   turns_on_item: number;
+   turns_in_conversation: number;
+}
+
+export interface AgentErrorEvent {
+   kind: AgentErrorKind;
+   resets_at?: string | null;
+   copy?: string;
 }

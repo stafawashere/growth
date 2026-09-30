@@ -8,8 +8,13 @@ import time
 from datetime import timedelta
 
 import pytest
+from sqlalchemy import select
+from sqlalchemy.orm import Session as OrmSession
 
-from app.auth.service import utc_now
+from app.agent import conversations
+from app.agent.consolidate import JOB_TYPE
+from app.auth.service import as_iso, utc_now
+from app.db import models
 from app.feedback.autodrain import AutoDrain, auto_drain_enabled, can_drain
 from app.feedback.drain import DONE_STATE, LIMIT_RETRY_AFTER
 from app.main import build_application
@@ -165,3 +170,32 @@ def test_the_server_starts_the_drain_with_itself_unless_it_is_switched_off(tmp_p
 
    with pytest.raises(ValueError):
       auto_drain_enabled({"GROWTH_AUTO_DRAIN": "sometimes"})
+
+
+def test_a_pass_sweeps_idle_conversations_and_runs_the_agent_drain(world, cli, no_paid_api):
+   cli.mode("consolidate")
+   now = utc_now()
+   user_id = "USR-agent-drain"
+
+   with OrmSession(world.engine) as db:
+      db.add(models.User(id=user_id, created_at=as_iso(now), updated_at=as_iso(now)))
+      idle = conversations.open_conversation(db, user_id, "session_item", now - timedelta(minutes=31))
+      conversations.append_turn(db, idle, "student", "Where did I stop last time", now - timedelta(minutes=31))
+      db.commit()
+      idle_id = idle.id
+
+   drain = auto_drain(world, cli, Clock(now), board=CooldownBoard())
+   drain.run_pass()
+   agent_report = drain.last_agent_report
+
+   assert (agent_report.swept, agent_report.done, agent_report.stopped_by) == (1, 1, None)
+
+   with OrmSession(world.engine) as db:
+      conversation = db.get(models.AgentConversation, idle_id)
+      job = db.scalars(select(models.Job).where(models.Job.type == JOB_TYPE)).one()
+
+      assert conversation.closed_at is not None
+      assert conversation.consolidated_at is not None
+      assert job.state == DONE_STATE
+
+   assert "--json-schema" in " ".join(cli.record()["argv"])

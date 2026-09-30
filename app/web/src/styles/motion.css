@@ -41,6 +41,20 @@
    opacity: 1;
 }
 
+/* The tutor's bottom sheet under 900 px slides up as it opens (docs/agent/design.md, "Keyboard and
+   motion"). AgentPanel puts this class on the sheet only, so the desktop panel has no transition,
+   and marks the first frame data-entering so the sheet starts from below and transparent. */
+.motion-tutor-sheet {
+   transition: transform 300ms ease-out, opacity 300ms ease-out;
+   transform: translateY(0);
+   opacity: 1;
+}
+
+.motion-tutor-sheet[data-entering="true"] {
+   transform: translateY(var(--growth-space-96));
+   opacity: 0;
+}
+
 .motion-instant-symbol-insertion {
    transition: none;
 }
@@ -88,6 +102,15 @@
 
    .motion-error-note-field {
       transition: opacity 300ms ease-out;
+      transform: none;
+   }
+
+   .motion-tutor-sheet {
+      transition: opacity 300ms ease-out;
+      transform: none;
+   }
+
+   .motion-tutor-sheet[data-entering="true"] {
       transform: none;
    }
 }

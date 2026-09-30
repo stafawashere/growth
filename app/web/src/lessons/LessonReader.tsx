@@ -1,4 +1,4 @@
-import { useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 
 import type {
    LessonBand,
@@ -55,9 +55,19 @@ export interface LessonReaderProps {
    conceptName?: string;
    /* The library back and finish label, naming where the reader returns. */
    backLabel?: string;
+   /* Told the screen on show each time it changes, for the live tutor's context line. A refresher
+      is one panel, so it reports its first section as part 1 of 1. */
+   onPositionChange?: (position: LessonPosition) => void;
    now?: () => number;
    /* The plan payload's calculator_work, for a lesson record that does not carry it itself. */
    calculatorWork?: boolean;
+}
+
+export interface LessonPosition {
+   sectionId: string;
+   index: number;
+   count: number;
+   posesQuestion: boolean;
 }
 
 export const REFRESHER_REASONS = ["T1", "T2", "T3", "T4", "T5"];
@@ -75,6 +85,28 @@ type Screen =
    | { kind: "check"; id: string; check: LessonCheckRecord }
    | { kind: "contrast"; id: string }
    | { kind: "end"; id: string };
+
+/* A part the student is meant to answer: the prediction, a check, an error block with a fix prompt
+   and a faded example. The tutor's server applies the same rule to the lesson record
+   (app/agent/context.py poses_question); the panel reads it for its guardrail line. */
+export function sectionPosesQuestion(lesson: LessonRecord, sectionId: string) {
+   const isCheck = lesson.checks.some((check) => check.id === sectionId);
+   const section = lesson.sections.find((entry) => entry.id === sectionId);
+
+   if (isCheck) {
+      return true;
+   }
+
+   if (section === undefined) {
+      return false;
+   }
+
+   const isPrediction = section.type === "prediction";
+   const isFixPrompt = section.type === "common_error" && section.fix_prompt === true;
+   const isFadedExample = section.type === "worked_example" && section.fade_from !== undefined;
+
+   return isPrediction || isFixPrompt || isFadedExample;
+}
 
 export function minutesPhrase(minutes: number) {
    const whole = Math.max(1, Math.round(minutes));
@@ -200,6 +232,16 @@ export function LessonReader(props: LessonReaderProps) {
    const [showAllSteps, setShowAllSteps] = useState(false);
    const enteredAt = useRef(now());
    const isRefresher = REFRESHER_REASONS.includes(plan.reason);
+   const shownIndex = Math.min(index, screens.length - 1);
+   const positionSectionId = isRefresher ? plan.sections[0]?.id ?? lesson.id : screens[shownIndex].id;
+   const positionIndex = isRefresher ? 0 : shownIndex;
+   const positionCount = isRefresher ? 1 : screens.length;
+   const positionPosesQuestion = sectionPosesQuestion(lesson, positionSectionId);
+   const onPositionChange = props.onPositionChange;
+
+   useEffect(() => {
+      onPositionChange?.({ sectionId: positionSectionId, index: positionIndex, count: positionCount, posesQuestion: positionPosesQuestion });
+   }, [onPositionChange, positionSectionId, positionIndex, positionCount, positionPosesQuestion]);
 
    if (isRefresher) {
       return (

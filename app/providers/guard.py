@@ -128,7 +128,7 @@ CAP_CHANGED_ACTION = "budget_cap_changed"
 DEV_SPEND_CAP_REFUSED_ACTION = "dev_spend_cap_refused"
 DEV_LEDGER_RECONCILE_FAILED_ACTION = "dev_spend_ledger_reconcile_failed"
 
-ROLES = ("tutor", "generator", "verifier", "grader", "diagnostician", "transcriber")
+ROLES = ("tutor", "generator", "verifier", "grader", "diagnostician", "transcriber", "agent", "memory")
 
 UNCONFIGURED = "unconfigured"
 CAP_SEPARATOR = ","
@@ -157,9 +157,19 @@ SUBSCRIPTION_CALLS_PER_MINUTE_ENV_VAR = "GROWTH_SUBSCRIPTION_CALLS_PER_MINUTE"
 # P3 on the operator's delegation, 2026-09-24: one free-response question with five judged points
 # is fifteen grader calls, one transcriber call and one diagnostician call, so the grader's day
 # holds about eight questions and its minute rate lets one question grade in about a minute and a
-# half rather than four. See BUILD-LEDGER.md, decisions of 2026-09-24, stage 4.
-DEFAULT_SUBSCRIPTION_CALLS_PER_DAY = {"tutor": 60, "grader": 120, "transcriber": 30, "diagnostician": 30}
-DEFAULT_SUBSCRIPTION_CALLS_PER_MINUTE_BY_ROLE = {"grader": 12}
+# half rather than four. See BUILD-LEDGER.md, decisions of 2026-09-24, stage 4. The live tutor
+# agent's two roles arrived on 2026-09-29: agent at 80 a day and 6 a minute, four conversations
+# of 20 turns, and memory at 10 a day and 2 a minute for consolidation (docs/agent/architecture.md,
+# "Roles, models, caps and the chain").
+DEFAULT_SUBSCRIPTION_CALLS_PER_DAY = {
+   "tutor": 60,
+   "grader": 120,
+   "transcriber": 30,
+   "diagnostician": 30,
+   "agent": 80,
+   "memory": 10,
+}
+DEFAULT_SUBSCRIPTION_CALLS_PER_MINUTE_BY_ROLE = {"grader": 12, "agent": 6, "memory": 2}
 DEFAULT_SUBSCRIPTION_CALLS_PER_DAY_OTHER_ROLE = 20
 DEFAULT_SUBSCRIPTION_CALLS_PER_MINUTE = 4
 PACING_WINDOW_SECONDS = 60
@@ -492,8 +502,10 @@ class SubscriptionPacingLedger(DevSpendLedger):
 
 
 def pacing_caps_from_environment(env=None):
-   """GROWTH_SUBSCRIPTION_<ROLE>_CALLS_PER_DAY and GROWTH_SUBSCRIPTION_CALLS_PER_MINUTE, each a
-   positive whole number; anything else stops the process at startup with the variable named."""
+   """GROWTH_SUBSCRIPTION_<ROLE>_CALLS_PER_DAY, GROWTH_SUBSCRIPTION_CALLS_PER_MINUTE and, for each
+   role in DEFAULT_SUBSCRIPTION_CALLS_PER_MINUTE_BY_ROLE, GROWTH_SUBSCRIPTION_<ROLE>_CALLS_PER_MINUTE,
+   each a positive whole number; anything else stops the process at startup with the variable
+   named."""
    env = os.environ if env is None else env
    calls_per_day = dict(DEFAULT_SUBSCRIPTION_CALLS_PER_DAY)
 

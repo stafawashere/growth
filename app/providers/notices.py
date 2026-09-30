@@ -11,6 +11,14 @@ text itself, whose first characters are template boilerplate. A structured answe
 from its fields rather than shown. No brief carries image bytes, a key, a template or the student's
 full work, and each is cut to BRIEF_LIMIT characters.
 
+The live tutor's two roles carry the student's own words in their fields: the message, the
+conversation so far, the memory entries and the packet for agent, the turns, the entries and the
+notes for memory. STUDENT_DERIVED_FIELDS are dropped as soon as the fields are recovered, so no brief
+can quote them; the agent's asked brief is its mode, move and screen line, the words the panel
+already shows (docs/agent/architecture.md, Guard, pacing, audit, purge and export). The agent's
+answered brief does not repeat the reply either, because the reply the model wrote may be one the
+output screen withheld from the student.
+
 Notices live in a bounded per-user buffer in this process and are never written to the database.
 Recording one must never change a call, so every entry point here swallows its own failures.
 """
@@ -36,6 +44,15 @@ INTERRUPTED = "interrupted"
 QUEUED = "queued"
 
 REPLAY_MARKERS = ("replay", "cassette")
+STUDENT_DERIVED_FIELDS = frozenset({
+   "student_message",
+   "history",
+   "memory",
+   "packet",
+   "turns",
+   "active_entries",
+   "own_notes",
+})
 
 _PLACEHOLDER_RE = re.compile(r"\{\{\s*([a-zA-Z_][a-zA-Z0-9_]*)\s*\}\}")
 _PART_ID_RE = re.compile(r"part \(([^)]*)\)")
@@ -131,6 +148,16 @@ def _role_templates(role):
 
       return (observe.TEMPLATE_PATH,)
 
+   if role == "agent":
+      from app.agent import context
+
+      return (context.LIVE_TEMPLATE_PATH,)
+
+   if role == "memory":
+      from app.agent import consolidate
+
+      return (consolidate.TEMPLATE_PATH,)
+
    return ()
 
 
@@ -199,7 +226,7 @@ def supplied_fields(request):
       fields = fields_from_rendered(pieces, rendered)
 
       if fields is not None:
-         return fields
+         return {name: value for name, value in fields.items() if name not in STUDENT_DERIVED_FIELDS}
 
    return None
 
@@ -265,6 +292,20 @@ def asked_brief(request):
 
       return clipped("Asked what might explain the points you lost.")
 
+   if role == "agent":
+      mode = _field(fields, "mode").replace("_", " ")
+      move = _field(fields, "move").replace("_", " ")
+      line = _field(fields, "screen_line")
+      has_brief = mode and move and line
+
+      if has_brief:
+         return clipped(f"Asked the tutor to reply in {mode} mode with the move {move}. {line}")
+
+      return clipped("Asked the tutor to reply to your message.")
+
+   if role == "memory":
+      return clipped("Asked what to remember from a closed tutor conversation.")
+
    return clipped(f"Asked the {role} model for help.")
 
 
@@ -329,6 +370,11 @@ def answered_brief(request, result):
 
    if is_blank:
       return "Returned no text."
+
+   is_agent = request.role == "agent"
+
+   if is_agent:
+      return "Returned a reply, shown in the tutor panel sentence by sentence after the app's checks."
 
    payload = _structured(text)
    expects_structure = request.output_schema is not None

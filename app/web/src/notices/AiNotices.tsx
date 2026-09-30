@@ -112,8 +112,14 @@ export function AiNoticeToast(props: AiNoticeToastProps) {
    );
 }
 
+/* The live tutor's own calls are recorded under the role "agent". While its panel is open the panel
+   already says a call is being made, so those notices are skipped and every other role still shows
+   (docs/agent/design.md, "Keyboard and motion"). */
+export const AGENT_ROLE = "agent";
+
 export interface AiNoticesProps {
    active: boolean;
+   hideAgentNotices?: boolean;
    pollMilliseconds?: number;
    visibleMilliseconds?: number;
 }
@@ -126,6 +132,10 @@ export function AiNotices(props: AiNoticesProps) {
    const [shown, setShown] = useState<AiNotice[]>([]);
    const cursor = useRef<number | null>(null);
    const polling = useRef(false);
+   const hidesAgent = props.hideAgentNotices === true;
+   const skipsAgent = useRef(hidesAgent);
+
+   skipsAgent.current = hidesAgent;
 
    const dismiss = useCallback((id: number) => {
       setShown((current) => current.filter((notice) => notice.id !== id));
@@ -158,7 +168,12 @@ export function AiNotices(props: AiNoticesProps) {
 
             const isPriming = cursor.current === null;
             const seen = cursor.current ?? 0;
-            const fresh = payload.notices.filter((notice) => notice.id > seen);
+            const fresh = payload.notices.filter((notice) => {
+               const isUnseen = notice.id > seen;
+               const isSkipped = skipsAgent.current && notice.role === AGENT_ROLE;
+
+               return isUnseen && !isSkipped;
+            });
             cursor.current = Math.max(seen, payload.latest);
 
             const hasNew = !isPriming && fresh.length > 0;
@@ -187,9 +202,11 @@ export function AiNotices(props: AiNoticesProps) {
       return null;
    }
 
+   const visible = hidesAgent ? shown.filter((notice) => notice.role !== AGENT_ROLE) : shown;
+
    return (
       <div className="ai-notices" role="status" aria-live="polite" data-testid="ai-notices">
-         {shown.map((notice) => (
+         {visible.map((notice) => (
             <AiNoticeToast key={notice.id} notice={notice} visibleMilliseconds={visibleFor} onDismiss={dismiss} />
          ))}
       </div>

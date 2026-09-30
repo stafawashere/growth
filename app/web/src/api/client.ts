@@ -1,4 +1,14 @@
 import type {
+   AgentConversationDeleted,
+   AgentConversationPayload,
+   AgentConversationsPayload,
+   AgentMemoriesPayload,
+   AgentMemoryCleared,
+   AgentMemoryDeleted,
+   AgentMemoryEntry,
+   AgentProfilePayload,
+   AgentSettingsPayload,
+   AgentTurnBody,
    MasteryNodeState,
    AssessmentAnswer,
    AssessmentResult,
@@ -883,4 +893,71 @@ export function answerCalculatorDrill(drillId: string, fields: CalculatorAnswerF
 
 export function readCalculatorMeasured() {
    return requestJson<CalculatorMeasuredPayload>("/calculator/measured");
+}
+
+/* The live tutor's Tutor tab, app/api/routes/agent.py. Clearing everything sends the typed phrase
+   the student entered, and the server refuses anything but "forget everything". */
+function agentMemoryPath(memoryId: string) {
+   return `/agent/memories/${encodeURIComponent(memoryId)}`;
+}
+
+function agentConversationPath(conversationId: string) {
+   return `/agent/conversations/${encodeURIComponent(conversationId)}`;
+}
+
+export function readAgentMemories() {
+   return requestJson<AgentMemoriesPayload>("/agent/memories");
+}
+
+export function editAgentMemory(memoryId: string, text: string) {
+   return requestJson<AgentMemoryEntry>(agentMemoryPath(memoryId), jsonInit("PUT", { text }));
+}
+
+export function deleteAgentMemory(memoryId: string) {
+   return requestJson<AgentMemoryDeleted>(agentMemoryPath(memoryId), jsonInit("DELETE"));
+}
+
+export function clearAgentMemory(confirmation: string) {
+   return requestJson<AgentMemoryCleared>("/agent/memories", jsonInit("DELETE", { confirmation }));
+}
+
+export function readAgentConversations() {
+   return requestJson<AgentConversationsPayload>("/agent/conversations");
+}
+
+export function readAgentConversation(conversationId: string) {
+   return requestJson<AgentConversationPayload>(agentConversationPath(conversationId));
+}
+
+export function deleteAgentConversation(conversationId: string) {
+   return requestJson<AgentConversationDeleted>(agentConversationPath(conversationId), jsonInit("DELETE"));
+}
+
+export function readAgentSettings() {
+   return requestJson<AgentSettingsPayload>("/agent/settings");
+}
+
+export function updateAgentSettings(fields: AgentSettingsPayload) {
+   return requestJson<AgentSettingsPayload>("/agent/settings", jsonInit("PUT", fields));
+}
+
+export function readAgentProfile() {
+   return requestJson<AgentProfilePayload>("/agent/profile");
+}
+
+/* POST /agent/turns answers text/event-stream, so the body is handed back unread for
+   agent/useAgentStream.ts to parse frame by frame. A refusal is not thrown here: the caller reads a
+   4xx JSON body as the turn's error and treats a 5xx like no connection. */
+export function openAgentTurnStream(body: AgentTurnBody, signal: AbortSignal) {
+   return fetch("/agent/turns", {
+      method: "POST",
+      credentials: "include",
+      headers: { "Content-Type": "application/json", Accept: "text/event-stream" },
+      body: JSON.stringify(body),
+      signal
+   });
+}
+
+export async function closeAgentConversation(conversationId: string) {
+   await request(`${agentConversationPath(conversationId)}/close`, jsonInit("POST", {}));
 }

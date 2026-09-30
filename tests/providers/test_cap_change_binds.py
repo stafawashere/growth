@@ -34,14 +34,15 @@ def roles_named_by_the_budgets_table():
    text = (PLAN_ROOT / "06-architecture.md").read_text()
    budgets_section = text.split("### budgets", 1)[1].split("###", 1)[0]
    role_line = next(line for line in budgets_section.splitlines() if line.startswith("| role |"))
-   listed = role_line.strip("|").split("|")[2]
+   listed_with_amendment_note = role_line.strip("|").split("|")[2]
+   listed = re.sub(r"\s*\([^)]*\)\s*$", "", listed_with_amendment_note)
 
    return tuple(name.strip() for name in listed.split(","))
 
 
 def roles_named_by_the_provider_layer():
    text = (PLAN_ROOT / "07-ai-provider-layer.md").read_text()
-   sentence = re.search(r"Six roles, and only six: ([a-z, ]+)\.", text).group(1)
+   sentence = re.search(r"Eight roles, and only eight: ([a-z, ]+)\.", text).group(1)
 
    return tuple(name.strip() for name in sentence.split(","))
 

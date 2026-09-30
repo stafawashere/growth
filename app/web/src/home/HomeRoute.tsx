@@ -5,6 +5,7 @@ import type { PacePayload, ProgressPayload } from "../api/types";
 import type { OnboardingReason } from "../onboarding/OnboardingScreen";
 import { daysToExam, formatPlanDate } from "./dates";
 import { HomeScreen, type HomeScreenStatus, type QueueLine } from "./HomeScreen";
+import { useAgentScreen } from "../agent/AgentProvider";
 import { useLoad } from "../status/load";
 import { LoadFailed, Loading } from "../status/LoadState";
 
@@ -97,6 +98,8 @@ export function HomeRoute({ today, onStartSession, onResumeSession, onStartOnboa
    const load = useLoad(readHome);
    const pace = usePace();
    const redirects = load.kind === "loaded" && sendsToOnboarding(load.value.progress);
+
+   useAgentScreen({ kind: "today" });
 
    useEffect(() => {
       const canRedirect = redirects && load.kind === "loaded" && onStartOnboarding !== undefined;

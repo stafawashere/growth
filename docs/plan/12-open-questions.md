@@ -171,3 +171,16 @@ Every parameter below is [inferred] unless noted. The authoritative per-engine l
 | Simulated half-life growth | at most once per calendar day per skill, from 01's same-day repeats rule (Rohrer and Taylor 2006) | 10, 01, stage 12 | a lag-dependent world checked against delayed checkpoint accuracy |
 | Simulated relearning on feedback | a known skill not retrieved for an item is last retrieved that day with one growth step of its half-life undone, never below 5 days (app/sim/learning.py WorldRules, 2026-09-29) | 10, 03 | the observed success rate on the next serve of a skill after a failed attempt, against the world's |
 | Delayed mastery per item | skills the run taught, retention 30 days after the run, per item served; 10's day-30 delay | 10, stage 12 | nothing; it is a reading of 10's day-30 retention |
+
+## Rulings the live tutor agent needs, 2026-09-29 [uncertain]
+
+Raised by the live tutor agent research and design (`docs/agent/research/synthesis.md`, "Rulings that need the operator"). Each was decided provisionally so the build could proceed, and the provisional choice is named.
+
+- Whether a minor who is not the subscription holder may converse through the operator's Claude login. The consumer terms require users to be 18 or older and bar making the account available to anyone else (research/providers.md). Provisional: the build proceeds on the single-user rule as ruled on 2026-09-23; the agent changes only the volume of calls. Settled by: the operator, not research.
+- Whether the operator's Claude model-improvement setting is off. On the subscription path it decides whether the student's words may be kept de-identified up to 5 years. Provisional: `docs/operator/provider-key.md` tells the operator to check it. Settled by: the operator reading the setting.
+- How long conversation turns are kept. Provisional: 30 days, readable and deletable in Settings. The alternative is a buffer deleted within 7 days of consolidation (research/memory.md). Settled by: the operator.
+- Whether memory consolidation may read `attempts.error_note` and `attempts.self_explanation` from sessions where the agent was never opened. Provisional: no, only from the conversation's own session. Settled by: the operator.
+- Whether to build an Ollama offline floor for the agent. Provisional: not built; the offline state is copy. Settled by: measuring memory, speed and accuracy of `qwen3:8b` or `phi4-mini-reasoning:3.8b` on a sample of BC items on the operator's machine.
+- Whether Ctrl+/ fires on the keyboard layouts the student uses. Provisional: Ctrl+/ and Cmd+/. Settled by: pressing it on the student's keyboard.
+- The KaTeX `maxExpand` for model output. Provisional: 100, which covers the stacked-limit macro. Settled by: nothing further unless a formula fails to render.
+- The agent's subscription pacing, 80 calls a day and 6 a minute. Provisional, sized at five times the tutor's measured load against windows whose size is not published. Settled by: the five-hour and seven-day utilisation the CLI now reports on every call, read over the first week of use.

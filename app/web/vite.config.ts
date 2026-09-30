@@ -25,6 +25,7 @@ const API_PATHS = [
    "/checkpoints",
    "/probe",
    "/settings",
+   "/agent",
    "/export",
    "/purge",
    "/notices",

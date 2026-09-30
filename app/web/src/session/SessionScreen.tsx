@@ -1,4 +1,4 @@
-import { useCallback, useEffect, useRef, useState } from "react";
+import { useCallback, useEffect, useMemo, useRef, useState } from "react";
 import {
    answerLessonCheck,
    answerLessonPrompt,
@@ -29,7 +29,9 @@ import type {
    SessionPayload
 } from "../api/types";
 import { isServedLesson } from "../api/types";
-import { LessonReader } from "../lessons/LessonReader";
+import type { AgentScreen } from "../api/types";
+import { unsubmittedAttemptId, useAgentScreen } from "../agent/AgentProvider";
+import { LessonReader, type LessonPosition } from "../lessons/LessonReader";
 import { FigureView } from "../figures/FigureView";
 import { MathText } from "../math/MathText";
 import { MathValue } from "../math/MathValue";
@@ -66,6 +68,57 @@ const OPTION_KEYS = ["a", "b", "c", "d", "e"];
 interface Remaining {
    items: number;
    minutes: number;
+}
+
+/* What the live tutor is told about this screen (docs/agent/architecture.md, "The screen context"):
+   ids and the item's state, never the draft answer or the option picked. An attempt has a row only
+   once it is submitted, so until then attempt_id is the placeholder unsubmittedAttemptId minted
+   for this item. */
+function tutorScreen(
+   session: SessionPayload | null,
+   item: ServedItem | null,
+   pendingAttemptId: string,
+   committed: AttemptResult | null,
+   feedback: FeedbackPayload | null,
+   lesson: ServedLesson | null,
+   lessonPosition: LessonPosition | null
+): AgentScreen {
+   const showsLesson = session !== null && lesson !== null && lessonPosition !== null;
+
+   if (showsLesson) {
+      return {
+         kind: "session_lesson",
+         session_id: session.id,
+         lesson_id: lesson.lesson_id,
+         version: lesson.version,
+         section_id: lessonPosition.sectionId,
+         section_index: lessonPosition.index,
+         section_count: lessonPosition.count
+      };
+   }
+
+   const showsItem = session !== null && item !== null && lesson === null;
+
+   if (!showsItem) {
+      return { kind: "today" };
+   }
+
+   const isSubmitted = committed !== null;
+   const itemScreen: AgentScreen = {
+      kind: "session_item",
+      session_id: session.id,
+      attempt_id: isSubmitted ? committed.id : pendingAttemptId,
+      item_id: item.id,
+      format: item.format,
+      served_stage: item.stage,
+      submitted: isSubmitted
+   };
+
+   if (isSubmitted && feedback !== null) {
+      itemScreen.feedback_kind = feedback.kind;
+   }
+
+   return itemScreen;
 }
 
 function isLessonSlot(slot: MarkedQueueSlot | SessionLessonSlot): slot is SessionLessonSlot {
@@ -242,6 +295,7 @@ export function SessionScreen({ resumeSessionId, onLeave, onOpened }: SessionScr
    const [remaining, setRemaining] = useState<Remaining | null>(null);
    const [worked, setWorked] = useState({ items: 0, corrected: 0 });
    const [openAttempt, setOpenAttempt] = useState(0);
+   const [lessonPosition, setLessonPosition] = useState<LessonPosition | null>(null);
 
    const opened = useRef(false);
    const shortcut = useRef<(event: KeyboardEvent) => void>(() => undefined);
@@ -277,6 +331,7 @@ export function SessionScreen({ resumeSessionId, onLeave, onOpened }: SessionScr
          const served = next.item;
 
          setItem(null);
+         setLessonPosition(null);
          setLesson(served);
          lessonOpenedAt.current = Date.now();
          postSessionLessonEvent(sessionId, served.lesson_id, lessonEventBody(served, { event: "opened", elapsed_ms: 0 })).catch(
@@ -570,6 +625,15 @@ export function SessionScreen({ resumeSessionId, onLeave, onOpened }: SessionScr
       [session, lesson, advance]
    );
 
+   const showsSession = !finished && !loadFailed;
+   const servedItemId = item?.id ?? null;
+   const pendingAttemptId = useMemo(() => (servedItemId === null ? "" : unsubmittedAttemptId()), [servedItemId]);
+
+   useAgentScreen(
+      showsSession ? tutorScreen(session, item, pendingAttemptId, committed, feedback, lesson, lessonPosition) : { kind: "today" },
+      { conceptName: lesson?.concept_name ?? null, posesQuestion: lesson !== null && lessonPosition?.posesQuestion === true }
+   );
+
    shortcut.current = () => undefined;
 
    if (finished) {
@@ -646,6 +710,7 @@ export function SessionScreen({ resumeSessionId, onLeave, onOpened }: SessionScr
                   onComplete={() => leaveLesson("completed")}
                   onSkip={(sectionIndex) => leaveLesson("skipped", sectionIndex)}
                   onSectionViewed={sectionViewed}
+                  onPositionChange={setLessonPosition}
                   onCheckAnswer={checkAnswer}
                   onPromptAnswer={promptAnswer}
                />

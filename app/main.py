@@ -61,6 +61,13 @@ GROWTH_TUTOR_CAP_USD  the tutor role's daily dollar cap, enforced by app/provide
 GROWTH_TUTOR_CAP_TOKENS the tutor role's daily token cap. Default 250,000, the same row of 12,
                       set by 13-ai-engineering.md so the two caps bind within a few calls of each
                       other. Whichever is crossed first binds.
+GROWTH_AGENT_CAP_USD  the live tutor agent's daily dollar cap on the api backend. Default 1.50
+                      (docs/agent/architecture.md, "Roles, models, caps and the chain").
+GROWTH_AGENT_CAP_TOKENS the agent's daily token cap. Default 1,500,000.
+GROWTH_MEMORY_CAP_USD the memory consolidation role's daily dollar cap on the api backend.
+                      Default 0.50, from the same section.
+GROWTH_MEMORY_CAP_TOKENS the memory role's daily token cap. Default 300,000. On the subscription
+                      backend both roles are paced by call counts instead.
 GROWTH_TOKENS_PATH    path to a filled design-token file (the shape
                       docs/operator/design-tokens.template.json fixes). Ruled 2026-09-23:
                       unset by default, defaults to app/design/growth-tokens.json, the file
@@ -171,6 +178,10 @@ DEFAULT_DB_PATH = REPO_ROOT / "var" / "growth.db"
 DEFAULT_CONTENT_ROOT = REPO_ROOT / "data"
 DEFAULT_TUTOR_CAP_USD = 1.00
 DEFAULT_TUTOR_CAP_TOKENS = 250000
+DEFAULT_AGENT_CAPS = {
+   "agent": (1.50, 1500000),
+   "memory": (0.50, 300000),
+}
 DEFAULT_WEB_DIST_DIR = REPO_ROOT / "app" / "web" / "dist"
 ASSET_CACHE_CONTROL = "public, max-age=31536000, immutable"
 DEFAULT_TOKENS_PATH = REPO_ROOT / "app" / "design" / "growth-tokens.json"
@@ -396,6 +407,19 @@ def build_tutor_caps(env):
    return {"tutor": BudgetCaps(cap_tokens=cap_tokens, cap_usd=cap_usd)}
 
 
+def build_agent_caps(env):
+   """The live tutor agent's two roles, docs/agent/architecture.md "Roles, models, caps and the
+   chain", each capped in dollars and tokens on the api backend the way the tutor is."""
+   caps = {}
+
+   for role, (default_usd, default_tokens) in DEFAULT_AGENT_CAPS.items():
+      cap_usd = startup_cap(env, f"GROWTH_{role.upper()}_CAP_USD", str(default_usd))
+      cap_tokens = startup_cap(env, f"GROWTH_{role.upper()}_CAP_TOKENS", str(default_tokens))
+      caps[role] = BudgetCaps(cap_tokens=cap_tokens, cap_usd=cap_usd)
+
+   return caps
+
+
 def build_subscription_pacing(env):
    on_the_subscription = resolve_ai_backend(env) == "subscription"
 
@@ -557,6 +581,8 @@ def settings_from_environment(env=None):
       tutor=tutor,
       tutor_links=provider_links(env, tutor),
       tutor_caps=build_tutor_caps(env),
+      agent_links=provider_links(env, tutor),
+      agent_caps=build_agent_caps(env),
       subscription_pacing=build_subscription_pacing(env),
       key_audit_sample_path=env.get("GROWTH_KEY_AUDIT_SAMPLE_PATH"),
       items_directories=items_directories(env),
@@ -698,7 +724,14 @@ def back_up_before_opening(db_path, env):
 def start_the_auto_drain(application, settings, engine, env):
    """app/feedback/autodrain.py, started with the server and stopped with it. Building the
    application starts nothing."""
-   auto_drain = AutoDrain(engine, settings.tutor_links, settings.tutor_caps, settings.provider_cooldowns)
+   auto_drain = AutoDrain(
+      engine,
+      settings.tutor_links,
+      settings.tutor_caps,
+      settings.provider_cooldowns,
+      agent_links=settings.agent_links,
+      agent_caps=settings.agent_caps,
+   )
    application.state.auto_drain = auto_drain
 
    if auto_drain_enabled(env):

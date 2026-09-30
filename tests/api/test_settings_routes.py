@@ -130,7 +130,7 @@ def test_put_settings_refuses_what_it_cannot_store(world):
    assert (after.exam_date, after.purge_after) == (before.exam_date, before.purge_after)
 
 
-def test_providers_lists_the_six_roles_and_only_the_wired_tutor(world):
+def test_providers_lists_the_eight_roles_and_only_the_wired_tutor(world):
    world.settings.tutor = CountingProvider()
    client = world.client()
    world.register(client)
@@ -141,7 +141,12 @@ def test_providers_lists_the_six_roles_and_only_the_wired_tutor(world):
    assert all(set(entry) == PROVIDER_FIELDS for entry in roles)
    assert by_role["tutor"] == {"role": "tutor", "provider": "replay", "model": TUTOR_MODEL, "wired": True}
 
+   rides_the_tutors_chain = ("agent", "memory")
+
    for role in ROLES[1:]:
+      if role in rides_the_tutors_chain:
+         continue
+
       assert by_role[role] == {"role": role, "provider": None, "model": None, "wired": False}
 
 
@@ -428,3 +433,28 @@ def test_put_budgets_refuses_a_cap_that_is_not_a_finite_number(world):
 
    assert budget_rows(world.engine) == []
    assert cap_changes(world.engine) == []
+
+
+def test_providers_lists_the_agent_roles_on_the_tutors_chain(world):
+   world.settings.tutor = CountingProvider()
+   client = world.client()
+   world.register(client)
+   view = client.get("/settings/providers").json()
+   by_role = {entry["role"]: entry for entry in view["roles"]}
+
+   assert by_role["agent"] == {"role": "agent", "provider": "replay", "model": "claude-sonnet-5-5", "wired": True}
+   assert by_role["memory"] == {"role": "memory", "provider": "replay", "model": "claude-sonnet-5-5", "wired": True}
+   assert view["chains"]["agent"] == view["chains"]["tutor"]
+   assert set(view["chains"]) == {"tutor", "grading", "agent"}
+
+
+def test_providers_reports_the_agent_roles_unwired_without_a_tutor(world):
+   world.settings.tutor = None
+   client = world.client()
+   world.register(client)
+   view = client.get("/settings/providers").json()
+   by_role = {entry["role"]: entry for entry in view["roles"]}
+
+   assert by_role["agent"] == {"role": "agent", "provider": None, "model": None, "wired": False}
+   assert by_role["memory"] == {"role": "memory", "provider": None, "model": None, "wired": False}
+   assert view["chains"]["agent"] == []

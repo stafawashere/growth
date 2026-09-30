@@ -1,5 +1,7 @@
 import type { MouseEvent, ReactNode } from "react";
 
+import { ASK_LABEL, TIMED_PART, askAccessibleName } from "../agent/agentCopy";
+import { PANEL_ID, useAgent } from "../agent/AgentProvider";
 import { hashFor, type Place, type View } from "../routing";
 import { Icon, type IconName } from "../ui/Icon";
 
@@ -40,6 +42,46 @@ function followWithoutReload(event: MouseEvent<HTMLAnchorElement>, go: () => voi
    go();
 }
 
+const ASK_REASON_ID = "ask-reason";
+
+/* The tutor's one entry point (docs/agent/design.md, "The entry point"): a disclosure button left
+   of the avatar menu at every width, named with its shortcut, and on a timed part disabled with the
+   reason written under it. Outside the signed-in shell there is no tutor and no button. */
+function AskButton() {
+   const agent = useAgent();
+
+   if (agent === null) {
+      return null;
+   }
+
+   const isDisabled = agent.isTimed;
+
+   return (
+      <div className="ask-control">
+         <button
+            ref={agent.askButton}
+            type="button"
+            className="ask-button"
+            aria-expanded={agent.isOpen}
+            aria-controls={PANEL_ID}
+            aria-label={askAccessibleName(agent.isMac)}
+            aria-describedby={isDisabled ? ASK_REASON_ID : undefined}
+            disabled={isDisabled}
+            onClick={agent.togglePanel}
+         >
+            <Icon name="question" />
+            <span>{ASK_LABEL}</span>
+         </button>
+
+         {isDisabled ? (
+            <span className="ask-reason" id={ASK_REASON_ID} data-testid="ask-reason">
+               {TIMED_PART}
+            </span>
+         ) : null}
+      </div>
+   );
+}
+
 export function TopBar(props: { view: View | null; go: (place: Place) => void; menu?: ReactNode }) {
    const activeTab = props.view === null ? null : tabFor(props.view);
    const showsTabs = props.view !== null;
@@ -68,7 +110,11 @@ export function TopBar(props: { view: View | null; go: (place: Place) => void; m
                </nav>
             ) : null}
 
-            {props.menu}
+            <div className="app-bar-end">
+               <AskButton />
+
+               {props.menu}
+            </div>
          </div>
       </header>
    );

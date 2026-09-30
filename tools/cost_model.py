@@ -151,6 +151,8 @@ CLAUDE_ONLY_ROLE_MODELS = {
    "diagnostician": "claude-sonnet-5-5",
    "generator": "claude-opus-5-5",
    "verifier": "claude-haiku-4-5",
+   "agent": "claude-sonnet-5-5",
+   "memory": "claude-sonnet-5-5",
 }
 
 TUTOR_AS_BUILT_INPUT = 703
@@ -159,6 +161,37 @@ TUTOR_MAX_OUTPUT = 600
 TUTOR_WORST_CASE_PROMPT = 1274
 TUTOR_CAP_USD = 1.00
 TUTOR_CAP_TOKENS = 250000
+
+# The live tutor agent, docs/agent/architecture.md "Roles, models, caps and the chain" and
+# "Templates and the cached prefix". [inferred] Every token count is the design's estimate, not a
+# measurement. A turn reads the 2,500-token system prefix from the 1-hour cache and sends below the
+# breakpoint the memory block, the screen packet and the conversation so far, which grows by about
+# 450 tokens a turn, so over a 20-turn conversation the history averages 450 x 9.5 tokens.
+AGENT_MODEL = "claude-sonnet-5-5"
+AGENT_PREFIX_TOKENS = 2500
+AGENT_MEMORY_TOKENS = 300
+AGENT_SCREEN_PACKET_TOKENS = 500
+AGENT_HISTORY_TOKENS_PER_TURN = 450
+AGENT_TURNS_PER_CONVERSATION = 20
+AGENT_CONVERSATIONS_PER_DAY = 4
+AGENT_UNCACHED_INPUT_PER_TURN = (
+   AGENT_MEMORY_TOKENS
+   + AGENT_SCREEN_PACKET_TOKENS
+   + AGENT_HISTORY_TOKENS_PER_TURN * (AGENT_TURNS_PER_CONVERSATION - 1) // 2
+)
+AGENT_OUTPUT_PER_TURN = 400
+# The guard reserves this before a turn: a long conversation sent whole at the 800-token ceiling.
+AGENT_WORST_CASE_INPUT = 15000
+AGENT_MAX_OUTPUT = 800
+AGENT_CAP_USD = 1.50
+AGENT_CAP_TOKENS = 1500000
+
+# Memory consolidation runs uncached, twice a day, on the same model.
+MEMORY_INPUT_TOKENS = 3000
+MEMORY_OUTPUT_TOKENS = 500
+MEMORY_CALLS_PER_DAY = 2
+MEMORY_CAP_USD = 0.50
+MEMORY_CAP_TOKENS = 300000
 
 STANDARD_TIER_VISUAL_TOKENS_3840 = 1560
 HIGH_RES_TIER_VISUAL_TOKENS = 4784
@@ -861,6 +894,45 @@ def figures():
    add("lessons.signoff_calls", lesson_signoff_calls)
    add("lessons.signoff_cycle", lesson_signoff_calls * out["verifier.call_on_haiku_batch"])
    add("lessons.total", out["lessons.author_cycle"] + out["lessons.verify_cycle"] + out["lessons.signoff_cycle"])
+
+   # The live tutor agent (docs/agent/architecture.md), priced at API rates. On the subscription
+   # these calls are paced by count and never billed per token.
+   agent_rates = price(AGENT_MODEL, False)
+   agent_turns_per_day = AGENT_TURNS_PER_CONVERSATION * AGENT_CONVERSATIONS_PER_DAY
+   agent_prefix_read = AGENT_PREFIX_TOKENS * agent_rates["read"] * USD_PER_MTOK
+   agent_prefix_write = AGENT_PREFIX_TOKENS * agent_rates["write_1h"] * USD_PER_MTOK
+   agent_uncached_input = AGENT_UNCACHED_INPUT_PER_TURN * agent_rates["input"] * USD_PER_MTOK
+   agent_output = AGENT_OUTPUT_PER_TURN * agent_rates["output"] * USD_PER_MTOK
+   agent_conversation = (
+      agent_prefix_write
+      + (AGENT_TURNS_PER_CONVERSATION - 1) * agent_prefix_read
+      + AGENT_TURNS_PER_CONVERSATION * (agent_uncached_input + agent_output)
+   )
+   agent_worst_case_turn = (
+      AGENT_WORST_CASE_INPUT * agent_rates["input"] + AGENT_MAX_OUTPUT * agent_rates["output"]
+   ) * USD_PER_MTOK
+   add("agent.prefix_tokens", AGENT_PREFIX_TOKENS)
+   add("agent.uncached_input_per_turn", AGENT_UNCACHED_INPUT_PER_TURN)
+   add("agent.output_per_turn", AGENT_OUTPUT_PER_TURN)
+   add("agent.turns_per_conversation", AGENT_TURNS_PER_CONVERSATION)
+   add("agent.conversations_per_day", AGENT_CONVERSATIONS_PER_DAY)
+   add("agent.turns_per_day", agent_turns_per_day)
+   add("agent.turn_usd", agent_prefix_read + agent_uncached_input + agent_output)
+   add("agent.conversation_usd", agent_conversation)
+   add("agent.day_usd", agent_conversation * AGENT_CONVERSATIONS_PER_DAY)
+   add("agent.cycle_usd", agent_conversation * AGENT_CONVERSATIONS_PER_DAY * STUDY_DAYS)
+   add("agent.cap_usd", AGENT_CAP_USD)
+   add("agent.cap_tokens", AGENT_CAP_TOKENS)
+   add("agent.worst_case_turn_usd", agent_worst_case_turn)
+
+   memory_call = (MEMORY_INPUT_TOKENS * agent_rates["input"] + MEMORY_OUTPUT_TOKENS * agent_rates["output"]) * USD_PER_MTOK
+   add("memory.input_tokens", MEMORY_INPUT_TOKENS)
+   add("memory.output_tokens", MEMORY_OUTPUT_TOKENS)
+   add("memory.consolidation_usd", memory_call)
+   add("memory.calls_per_day", MEMORY_CALLS_PER_DAY)
+   add("memory.cycle_usd", memory_call * MEMORY_CALLS_PER_DAY * STUDY_DAYS)
+   add("memory.cap_usd", MEMORY_CAP_USD)
+   add("memory.cap_tokens", MEMORY_CAP_TOKENS)
 
    return out
 

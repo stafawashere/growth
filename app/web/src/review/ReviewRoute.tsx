@@ -3,6 +3,7 @@ import { useState } from "react";
 import { ApiError, askForReread, readReview, submitErrorNote } from "../api/client";
 import type { ErrorNoteEntry, ReviewPayload } from "../api/types";
 import { ReviewScreen } from "./ReviewScreen";
+import { useAgentScreen } from "../agent/AgentProvider";
 import { useLoad } from "../status/load";
 import { Loading } from "../status/LoadState";
 import { Page, PageHeader } from "../ui/Page";
@@ -23,6 +24,8 @@ function saveFailure(problem: unknown) {
 export function ReviewRoute(props: ReviewRouteProps) {
    const load = useLoad(readReview);
    const [edited, setEdited] = useState<ReviewPayload | null>(null);
+
+   useAgentScreen({ kind: "review" });
 
    if (load.kind === "waiting") {
       return <Loading testId="review-waiting" />;

@@ -52,7 +52,7 @@ function SettingsRow(props: { title: ReactNode; meta?: ReactNode; children?: Rea
    );
 }
 
-function useAction<Args extends unknown[]>(run: (...args: Args) => Promise<boolean>) {
+export function useAction<Args extends unknown[]>(run: (...args: Args) => Promise<boolean>) {
    const [working, setWorking] = useState(false);
    const [done, setDone] = useState(false);
 
@@ -435,7 +435,8 @@ export const SECTIONS_BY_TAB: Record<SettingsTab, ReadonlyArray<string>> = {
    budgets: ["Budgets"],
    accessibility: [],
    operator: [],
-   data: ["Data export", "Purge"]
+   data: ["Data export", "Purge"],
+   tutor: []
 };
 
 export function SettingsScreen(props: SettingsScreenProps) {

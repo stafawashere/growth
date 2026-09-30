@@ -1,0 +1,285 @@
+{
+   "$schema": "https://json-schema.org/draft/2020-12/schema",
+   "$id": "schemas/agent/screen.schema.json",
+   "title": "Agent screen context",
+   "description": "The one structured shape the client sends with every agent turn (docs/agent/architecture.md, The screen context). Never a screenshot and never the draft answer. section_index counts from 0.",
+   "type": "object",
+   "required": [
+      "kind"
+   ],
+   "properties": {
+      "kind": {
+         "enum": [
+            "today",
+            "session_item",
+            "session_lesson",
+            "lesson",
+            "review",
+            "progress",
+            "assessments",
+            "settings",
+            "other"
+         ]
+      }
+   },
+   "oneOf": [
+      {
+         "type": "object",
+         "additionalProperties": false,
+         "required": [
+            "kind"
+         ],
+         "properties": {
+            "kind": {
+               "const": "today"
+            }
+         }
+      },
+      {
+         "type": "object",
+         "additionalProperties": false,
+         "required": [
+            "kind",
+            "session_id",
+            "attempt_id",
+            "item_id",
+            "format",
+            "served_stage",
+            "submitted"
+         ],
+         "properties": {
+            "kind": {
+               "const": "session_item"
+            },
+            "session_id": {
+               "type": "string",
+               "pattern": "^SES-[0-9a-f]{32}$"
+            },
+            "attempt_id": {
+               "type": "string",
+               "pattern": "^ATT-[0-9a-f]{32}$"
+            },
+            "item_id": {
+               "type": "string",
+               "pattern": "^ITM-[A-Z0-9]+(-[A-Z0-9]+)+$"
+            },
+            "format": {
+               "enum": [
+                  "mcq",
+                  "short_answer",
+                  "free_response"
+               ]
+            },
+            "served_stage": {
+               "enum": [
+                  "example",
+                  "completion",
+                  "unsupported"
+               ]
+            },
+            "submitted": {
+               "type": "boolean"
+            },
+            "feedback_kind": {
+               "enum": [
+                  "step_verification",
+                  "withheld",
+                  "elaborated",
+                  "correct",
+                  "ungraded",
+                  "verification",
+                  "comparison"
+               ]
+            }
+         },
+         "if": {
+            "properties": {
+               "submitted": {
+                  "const": false
+               }
+            }
+         },
+         "then": {
+            "not": {
+               "required": [
+                  "feedback_kind"
+               ]
+            }
+         }
+      },
+      {
+         "type": "object",
+         "additionalProperties": false,
+         "required": [
+            "kind",
+            "session_id",
+            "lesson_id",
+            "version",
+            "section_id",
+            "section_index",
+            "section_count"
+         ],
+         "properties": {
+            "kind": {
+               "const": "session_lesson"
+            },
+            "session_id": {
+               "type": "string",
+               "pattern": "^SES-[0-9a-f]{32}$"
+            },
+            "lesson_id": {
+               "type": "string",
+               "pattern": "^LSN-[A-Z]+-[0-9A-Z]+$"
+            },
+            "version": {
+               "type": "integer",
+               "minimum": 1
+            },
+            "section_id": {
+               "type": "string",
+               "pattern": "^LSN-[A-Z]+-[0-9A-Z]+#[A-Za-z0-9-]{1,64}$"
+            },
+            "section_index": {
+               "type": "integer",
+               "minimum": 0
+            },
+            "section_count": {
+               "type": "integer",
+               "minimum": 1
+            }
+         }
+      },
+      {
+         "type": "object",
+         "additionalProperties": false,
+         "required": [
+            "kind",
+            "lesson_id",
+            "version",
+            "section_id",
+            "section_index",
+            "section_count",
+            "return_to"
+         ],
+         "properties": {
+            "kind": {
+               "const": "lesson"
+            },
+            "lesson_id": {
+               "type": "string",
+               "pattern": "^LSN-[A-Z]+-[0-9A-Z]+$"
+            },
+            "version": {
+               "type": "integer",
+               "minimum": 1
+            },
+            "section_id": {
+               "type": "string",
+               "pattern": "^LSN-[A-Z]+-[0-9A-Z]+#[A-Za-z0-9-]{1,64}$"
+            },
+            "section_index": {
+               "type": "integer",
+               "minimum": 0
+            },
+            "section_count": {
+               "type": "integer",
+               "minimum": 1
+            },
+            "return_to": {
+               "type": [
+                  "string",
+                  "null"
+               ],
+               "pattern": "^/[A-Za-z0-9/_-]{0,120}$"
+            }
+         }
+      },
+      {
+         "type": "object",
+         "additionalProperties": false,
+         "required": [
+            "kind"
+         ],
+         "properties": {
+            "kind": {
+               "const": "review"
+            }
+         }
+      },
+      {
+         "type": "object",
+         "additionalProperties": false,
+         "required": [
+            "kind",
+            "tab"
+         ],
+         "properties": {
+            "kind": {
+               "const": "progress"
+            },
+            "tab": {
+               "type": "string",
+               "pattern": "^[a-z][a-z_]{0,31}$"
+            },
+            "skill_id": {
+               "type": "string",
+               "pattern": "^BC-SKL-[0-9]{5}$"
+            }
+         }
+      },
+      {
+         "type": "object",
+         "additionalProperties": false,
+         "required": [
+            "kind",
+            "format"
+         ],
+         "properties": {
+            "kind": {
+               "const": "assessments"
+            },
+            "format": {
+               "type": "string",
+               "pattern": "^[a-z][a-z_]{0,31}$"
+            },
+            "timed": {
+               "type": "boolean"
+            }
+         }
+      },
+      {
+         "type": "object",
+         "additionalProperties": false,
+         "required": [
+            "kind",
+            "tab"
+         ],
+         "properties": {
+            "kind": {
+               "const": "settings"
+            },
+            "tab": {
+               "type": "string",
+               "pattern": "^[a-z][a-z_]{0,31}$"
+            }
+         }
+      },
+      {
+         "type": "object",
+         "additionalProperties": false,
+         "required": [
+            "kind",
+            "view"
+         ],
+         "properties": {
+            "kind": {
+               "const": "other"
+            },
+            "view": {
+               "type": "string",
+               "pattern": "^[a-z][a-z_]{0,31}$"
+            }
+         }
+      }
+   ]
+}

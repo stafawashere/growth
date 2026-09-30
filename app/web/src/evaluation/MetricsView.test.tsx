@@ -53,7 +53,8 @@ const stated: ExperimentComparison = {
    interval_low: -0.3398,
    interval_high: 0.0736,
    stated: true,
-   minimum_outcomes_per_arm: 30
+   minimum_outcomes_per_arm: 30,
+   guards: null
 };
 
 const notStated: ExperimentComparison = {
@@ -64,7 +65,8 @@ const notStated: ExperimentComparison = {
    interval_low: null,
    interval_high: null,
    stated: false,
-   minimum_outcomes_per_arm: 30
+   minimum_outcomes_per_arm: 30,
+   guards: null
 };
 
 const payload: MetricsPayload = {

@@ -19,9 +19,14 @@ export function motionClass(name: AffordanceName) {
    return MOTION_CLASS_PREFIX + P1_FEEDBACK_AFFORDANCES[name];
 }
 
-export const TRANSFORM_MOTION_CLASSES = Object.values(P1_FEEDBACK_AFFORDANCES).map(
-   (affordance) => MOTION_CLASS_PREFIX + affordance
-);
+/* The live tutor's phone sheet is the one transform transition that is not a P1 feedback
+   affordance (docs/agent/design.md, "Keyboard and motion"). */
+export const TUTOR_SHEET_CLASS = "motion-tutor-sheet";
+
+export const TRANSFORM_MOTION_CLASSES = [
+   ...Object.values(P1_FEEDBACK_AFFORDANCES).map((affordance) => MOTION_CLASS_PREFIX + affordance),
+   TUTOR_SHEET_CLASS
+];
 
 /* 08 names six paths reached by a repeated keystroke and says all of them are instant. */
 

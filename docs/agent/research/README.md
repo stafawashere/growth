@@ -19,6 +19,7 @@ Research for the live tutor agent that lives in Growth's top bar. Written 2026-0
 | `math-tutoring.md` | What makes a tutor good at AP Calculus BC: the guardrail evidence, the conversational moves, the grounding packet, the AP scoring language rules and the multi-turn eval checks | Opus 5.5 agent |
 | `self-tuning.md` | A per-learner tutoring profile, its evaluation signals and their arithmetic, the experiment switch, the guarding eval and the failure modes | Opus 5.5 agent |
 | `synthesis.md` | The ranked decisions the strands support, the disagreements and their resolution, and the rulings that need the operator | Orchestrator |
+| `drawing.md` | The tutor draws, added 2026-09-30: board practice, products, the learning science of dynamic and static figures, the library's figure needs, whiteboard shapes and strokes, safe model drawing, leak channels, stream synchronisation, accessibility, what Growth has, and the ranked decisions with the rulings | Four Opus 5.5 strand agents, synthesised by the orchestrator |
 
 ## Conventions [verified]
 

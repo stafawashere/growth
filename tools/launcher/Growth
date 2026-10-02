@@ -1,0 +1,156 @@
+#!/bin/zsh
+
+export PATH="/usr/local/bin:/opt/homebrew/bin:/usr/bin:/bin:/usr/sbin:/sbin"
+
+repo_root="__REPO_ROOT__"
+api_port=8000
+web_port=5173
+app_url="http://localhost:${web_port}"
+log_dir="$HOME/Library/Logs/Growth"
+
+mkdir -p "$log_dir"
+exec >>"$log_dir/launcher.log" 2>&1
+echo "--- $(date '+%Y-%m-%d %H:%M:%S') launch"
+
+notify() {
+   osascript -e "display notification \"$1\" with title \"Growth\""
+}
+
+fail() {
+   echo "error: $1"
+   osascript -e "display alert \"Growth could not start\" message \"$1\n\nLogs: $log_dir\"" >/dev/null
+   exit 1
+}
+
+stop_listeners_on() {
+   local port=$1
+   local listener_pids=$(lsof -tiTCP:"$port" -sTCP:LISTEN)
+
+   if [[ -z "$listener_pids" ]]; then
+      return
+   fi
+
+   echo "stopping port $port: $listener_pids"
+   kill $listener_pids 2>/dev/null
+
+   for attempt in {1..30}; do
+      if [[ -z "$(lsof -tiTCP:"$port" -sTCP:LISTEN)" ]]; then
+         return
+      fi
+      sleep 0.2
+   done
+
+   kill -9 $(lsof -tiTCP:"$port" -sTCP:LISTEN) 2>/dev/null
+   sleep 0.5
+}
+
+wait_for_url() {
+   local url=$1
+
+   for attempt in {1..480}; do
+      if curl -s -o /dev/null --max-time 1 "$url"; then
+         return 0
+      fi
+      sleep 0.5
+   done
+
+   return 1
+}
+
+default_browser_id() {
+   local handlers_plist="$HOME/Library/Preferences/com.apple.LaunchServices/com.apple.launchservices.secure.plist"
+   local browser_id=$(plutil -convert json -o - "$handlers_plist" 2>/dev/null \
+      | /usr/bin/python3 -c 'import json, sys
+handlers = json.load(sys.stdin).get("LSHandlers", [])
+matches = [entry.get("LSHandlerRoleAll") for entry in handlers if entry.get("LSHandlerURLScheme") == "http"]
+print(matches[0] if matches else "")')
+
+   echo "${browser_id:-com.apple.safari}"
+}
+
+focus_existing_tab() {
+   local browser_id=$1
+   local is_running=$(osascript -e "application id \"$browser_id\" is running")
+
+   if [[ "$is_running" != "true" ]]; then
+      return 1
+   fi
+
+   if [[ "$browser_id" == "com.apple.safari" ]]; then
+      osascript <<APPLESCRIPT
+tell application id "com.apple.safari"
+   repeat with browser_window in windows
+      repeat with browser_tab in tabs of browser_window
+         if URL of browser_tab starts with "$app_url" or URL of browser_tab starts with "http://127.0.0.1:$web_port" then
+            set current tab of browser_window to browser_tab
+            set index of browser_window to 1
+            tell browser_tab to do JavaScript "location.reload()"
+            activate
+            return "found"
+         end if
+      end repeat
+   end repeat
+end tell
+return "missing"
+APPLESCRIPT
+      return $?
+   fi
+
+   osascript <<APPLESCRIPT
+tell application id "$browser_id"
+   repeat with browser_window in windows
+      set tab_index to 0
+      repeat with browser_tab in tabs of browser_window
+         set tab_index to tab_index + 1
+         if URL of browser_tab starts with "$app_url" or URL of browser_tab starts with "http://127.0.0.1:$web_port" then
+            set active tab index of browser_window to tab_index
+            set index of browser_window to 1
+            tell browser_tab to reload
+            activate
+            return "found"
+         end if
+      end repeat
+   end repeat
+end tell
+return "missing"
+APPLESCRIPT
+}
+
+if [[ ! -d "$repo_root" ]]; then
+   fail "Repository not found at $repo_root"
+fi
+
+notify "Restarting the Growth servers"
+
+stop_listeners_on $web_port
+stop_listeners_on $api_port
+
+cd "$repo_root" || fail "Cannot enter $repo_root"
+
+echo "--- $(date '+%Y-%m-%d %H:%M:%S') launch" >>"$log_dir/api.log"
+echo "--- $(date '+%Y-%m-%d %H:%M:%S') launch" >>"$log_dir/web.log"
+
+nohup env \
+   GROWTH_TOKENS_PATH="$repo_root/app/design/growth-tokens.json" \
+   GROWTH_ORIGIN="$app_url" \
+   GROWTH_RP_ID=localhost \
+   "$repo_root/.venv/bin/python" -m uvicorn app.main:application --host 127.0.0.1 --port $api_port \
+   </dev/null >>"$log_dir/api.log" 2>&1 &
+disown
+
+nohup env GROWTH_API="http://127.0.0.1:$api_port" \
+   npm --prefix "$repo_root/app/web" run dev -- --port $web_port --strictPort \
+   </dev/null >>"$log_dir/web.log" 2>&1 &
+disown
+
+wait_for_url "http://127.0.0.1:$api_port/" || fail "The API server did not come up on port $api_port."
+wait_for_url "$app_url/" || fail "The web server did not come up on port $web_port."
+echo "servers up after ${SECONDS}s"
+
+browser_id=$(default_browser_id)
+tab_result=$(focus_existing_tab "$browser_id")
+echo "browser $browser_id tab: ${tab_result:-not running}"
+
+if [[ "$tab_result" != "found" ]]; then
+   open -b "$browser_id" "$app_url"
+fi

@@ -32,7 +32,7 @@ import sympy
 REPO = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(REPO))
 
-from app.items.verify import equivalence
+from app.items.verify import ChildDiedError, equivalence
 
 MESSAGES_URL = "https://api.anthropic.com/v1/messages"
 ANTHROPIC_VERSION = "2023-06-01"
@@ -431,7 +431,12 @@ def step_is_vacuous(previous, current):
    if nothing_before:
       return False
 
-   verdict = equivalence(previous, current)
+   try:
+      verdict = equivalence(previous, current)
+   except ChildDiedError:
+      raise
+   except Exception:
+      return False
 
    return verdict == "equivalent"
 
@@ -510,7 +515,12 @@ def key_agrees(key, final):
    if nothing_to_compare:
       return "unsettled"
 
-   return equivalence(key, final)
+   try:
+      return equivalence(key, final)
+   except ChildDiedError:
+      raise
+   except Exception:
+      return "unsettled"
 
 
 def run_draws(template, draws=DRAWS, seed=20260920):

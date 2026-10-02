@@ -335,12 +335,20 @@ def _bounded_settle(left, right):
 
 
 def _expression_outcome(entered, key):
+   if _is_relation(entered):
+      return "not_equivalent"
+
    settled = _bounded_settle(entered, key)
 
    if settled is None:
       return "unsettled"
 
-   return verify.equivalence(*settled)
+   try:
+      return verify.equivalence(*settled)
+   except verify.ChildDiedError:
+      raise
+   except Exception:
+      return "unsettled"
 
 
 def _is_relation(expression):

@@ -4,10 +4,17 @@ key verification"; docs/plan/11-phased-delivery.md R9's settle-rate measurement.
 import json
 from pathlib import Path
 
+import pytest
 import sympy
 
 from app.items.mathjson import to_sympy
-from app.items.verify import compare_expressions, distractor_checks, equivalence, verify_item
+from app.items.verify import (
+   UNSETTLED_VIOLATION,
+   compare_expressions,
+   distractor_checks,
+   equivalence,
+   verify_item,
+)
 
 ROOT = Path(__file__).resolve().parents[2]
 PAIRS_PATH = ROOT / "tests" / "fixtures" / "answers_equiv" / "pairs.json"
@@ -188,11 +195,25 @@ def test_equations_are_equivalent_when_their_zero_forms_agree_up_to_sign():
    assert equivalence(sympy.Eq(k + m, 2), sympy.Eq(k + m, 3)) == "not_equivalent"
 
 
-def test_an_equation_against_an_expression_is_not_equivalent_and_does_not_crash():
+def test_an_equation_against_an_expression_raises_and_is_never_called_distinct():
+   """03 sends a check that cannot decide to the model rather than calling it wrong, and whether
+   k + m = 2 answers a key of k + m - 2 is a reading, not algebra. The comparison raises, as the
+   subtraction always did, and the distractor checks read the raise as unsettled."""
    k, m = sympy.symbols("k m")
 
-   assert equivalence(sympy.Eq(k + m, 2), k + m - 2) == "not_equivalent"
-   assert compare_expressions(sympy.Eq(k + m, 2), k + m - 2) == "distinct"
+   with pytest.raises(TypeError):
+      equivalence(sympy.Eq(k + m, 2), k + m - 2)
+
+   violations = distractor_checks(k + m - 2, [sympy.Eq(k + m, 2)], ["BC-ERR-00001"], {"BC-ERR-00001"})
+
+   assert violations == [UNSETTLED_VIOLATION]
+
+
+def test_a_set_holding_an_equation_and_a_number_still_matches_element_by_element():
+   k = sympy.Symbol("k")
+
+   assert equivalence(sympy.FiniteSet(sympy.Eq(k, 5), 3), sympy.FiniteSet(3, sympy.Eq(k - 5, 0))) == "equivalent"
+   assert equivalence(sympy.FiniteSet(sympy.Eq(k, 5), 3), sympy.FiniteSet(3, 5)) == "unsettled"
 
 
 def test_finite_sets_compare_element_by_element():
@@ -208,8 +229,11 @@ def test_finite_sets_compare_element_by_element():
    assert compare_expressions(key, other) == "distinct"
 
 
-def test_nan_against_a_finite_value_is_distinct():
-   assert compare_expressions(sympy.nan, sympy.Integer(3)) == "distinct"
-   assert equivalence(sympy.nan, sympy.Integer(3)) == "not_equivalent"
+def test_nan_or_an_infinity_against_another_value_is_unsettled_and_against_itself_equivalent():
+   """No point evaluates a difference with NaN or an infinity in it, so the comparison has not
+   settled, and 04 counts an unsettled comparison as no pass in either direction."""
+   assert compare_expressions(sympy.nan, sympy.Integer(3)) == UNSETTLED_VIOLATION
+   assert equivalence(sympy.nan, sympy.Integer(3)) == "unsettled"
+   assert equivalence(sympy.zoo, sympy.Integer(-1)) == "unsettled"
    assert equivalence(sympy.nan, sympy.nan) == "equivalent"
    assert equivalence(sympy.oo, sympy.oo) == "equivalent"

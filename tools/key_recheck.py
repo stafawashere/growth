@@ -33,6 +33,7 @@ fails.
 import argparse
 import importlib.util
 import json
+import math
 import random
 import re
 import sys
@@ -465,8 +466,20 @@ def mean_value_points(rate, lower, upper, variable=t, grid=60, digits=30):
 def equivalent(left, right):
    """Symbolic simplification, then numeric evaluation at seeded points between 1.1 and 2.9. Two
    antiderivatives written with the constant of integration C are equivalent when they differ by
-   a constant, and one written without C is compared as C = 0."""
-   difference = sympy.sympify(left) - sympy.sympify(right)
+   a constant, and one written without C is compared as C = 0. A point where the difference is
+   NaN or infinite says nothing either way and is not counted, so a key of 1/0 against 3 is
+   undecided rather than equal, and two answers of different kinds are undecided too."""
+   left, right = sympy.sympify(left), sympy.sympify(right)
+   is_identical = left == right
+
+   if is_identical:
+      return True
+
+   try:
+      difference = left - right
+   except TypeError as unlike:
+      raise ComparisonUndecided(f"{left} and {right} cannot be subtracted: {unlike}")
+
    carries_constant = INTEGRATION_CONSTANT in difference.free_symbols
 
    if carries_constant:
@@ -488,6 +501,11 @@ def equivalent(left, right):
       try:
          value = complex(difference.subs(point).evalf())
       except (TypeError, ValueError):
+         continue
+
+      is_finite = math.isfinite(value.real) and math.isfinite(value.imag)
+
+      if not is_finite:
          continue
 
       evaluated += 1

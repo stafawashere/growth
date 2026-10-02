@@ -261,3 +261,13 @@ def test_the_two_callers_keep_their_different_unsettled_policies(p1_error_ids):
    assert verify.UNSETTLED_VIOLATION in check_violations
    assert "rule_5" not in check_violations
    assert "rule_6" not in check_violations
+
+def test_an_equation_distractor_is_reported_as_unsettled_by_the_gate(p1_error_ids):
+   record = clean_record()
+   option_by_id(record, "B")["value"] = ["Equal", "a", -1]
+
+   violations = distractor_path_violations(record, p1_error_ids)
+   mentions_settling = [text for text in violations if "did not settle" in text]
+
+   assert len(mentions_settling) > 0
+   assert "B" in mentions_settling[0]

@@ -101,3 +101,30 @@ def test_the_clean_fixture_record_still_verifies_its_distractors():
    by_type = {result["check_type"]: result["outcome"] for result in results}
 
    assert by_type["distractor_distinct"] == ingest.PASS
+
+
+def test_a_key_the_solution_cannot_be_compared_with_leaves_the_item_in_review():
+   """An equation as the last worked step against a number as the key makes SymPy raise. That has
+   not settled the key, so both key checks are indeterminate and the item stays a draft in review
+   instead of the bank ingest stopping on the error."""
+   record = clean_record()
+   record["worked_solution"][-1]["mathjson"] = ["Equal", "a", 3]
+
+   results = ingest.run_checks(record, active_error_ids_for(record))
+   by_type = {result["check_type"]: result for result in results}
+
+   assert by_type["sympy_equivalence"]["outcome"] == ingest.INDETERMINATE
+   assert by_type["sympy_equivalence"]["detail"]["raised"] == "TypeError"
+   assert ingest.status_for(results) == "draft"
+   assert ingest.needs_review(results) is True
+
+
+def test_an_equation_distractor_is_unsettled_rather_than_distinct_from_the_key():
+   record = clean_record()
+   option_by_id(record, first_distractor_id(record))["value"] = ["Equal", "a", -1]
+
+   results = ingest.run_checks(record, active_error_ids_for(record))
+   by_type = {result["check_type"]: result["outcome"] for result in results}
+
+   assert by_type["distractor_distinct"] == ingest.INDETERMINATE
+   assert ingest.status_for(results) == "draft"

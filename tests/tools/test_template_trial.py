@@ -637,3 +637,11 @@ def test_an_incidental_that_changes_the_form_of_a_step_fails_the_gate():
    report = trial.run_draws(template, draws=5, seed=1)
 
    assert report["roles"]["incidental_changes_path"] == []
+
+
+def test_a_final_step_of_another_kind_than_the_key_is_unsettled_and_not_vacuous():
+   x = sympy.Symbol("x")
+
+   assert trial.key_agrees(x, sympy.Eq(x, 1)) == "unsettled"
+   assert trial.step_is_vacuous(sympy.Eq(x, 1), x) is False
+

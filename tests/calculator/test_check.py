@@ -189,6 +189,12 @@ def test_a_different_equation_or_a_bare_expression_is_not_equivalent(entered):
    assert (verdict.shown, verdict.correct, verdict.reason) == (True, False, "not_equivalent")
 
 
+def test_an_equation_typed_for_an_expression_setup_is_not_that_setup():
+   verdict = check_setup(["Equal", "y", ["Add", "x", 2]], INTEGRAL_TASK)
+
+   assert (verdict.shown, verdict.correct, verdict.reason) == (True, False, "not_equivalent")
+
+
 @pytest.mark.parametrize("entered", [None, "", [], ["Sequence"], "Nothing"])
 def test_nothing_entered_is_missing_and_not_shown(entered):
    verdict = check_setup(entered, INTEGRAL_TASK)

@@ -106,6 +106,21 @@ def test_a_comparison_that_cannot_be_evaluated_is_never_called_equal():
       key_recheck.equivalent(unevaluable, 0)
 
 
+@pytest.mark.parametrize("undefined", [sympy.nan, sympy.zoo, sympy.oo])
+def test_an_undefined_or_infinite_answer_is_never_called_equal_to_a_number(undefined):
+   """A NaN difference is never larger than the tolerance, so before points that evaluate to NaN
+   or an infinity were skipped, 1/0 rechecked as equal to 3."""
+   with pytest.raises(key_recheck.ComparisonUndecided):
+      key_recheck.equivalent(undefined, 3)
+
+   assert key_recheck.equivalent(undefined, undefined) is True
+
+
+def test_an_equation_against_a_number_is_undecided_rather_than_an_error():
+   with pytest.raises(key_recheck.ComparisonUndecided):
+      key_recheck.equivalent(sympy.Eq(key_recheck.x, 1), 1)
+
+
 def test_the_control_holds_on_an_answer_of_minus_one(tmp_path):
    """2v + 1 leaves -1 fixed, so a bank whose sampled answer was -1 once failed its control while
    the comparator was sound (ITM-AGT-10003-04, 2026-09-24)."""

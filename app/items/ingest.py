@@ -21,6 +21,7 @@ import uuid
 from app.db import models
 from app.items.mathjson import to_sympy
 from app.items.verify import (
+   ChildDiedError,
    RULE_6,
    RULE_7,
    UNSETTLED_VIOLATION,
@@ -111,7 +112,14 @@ def option_set_violations(record):
 
 
 def sympy_equivalence_check(record):
-   result = equivalence(key_expression(record), solution_expression(record))
+   key, solution = key_expression(record), solution_expression(record)
+
+   try:
+      result = equivalence(key, solution)
+   except ChildDiedError:
+      raise
+   except Exception as failure:
+      return INDETERMINATE, {"comparison": "unsettled", "raised": type(failure).__name__}
 
    if result == "equivalent":
       return PASS, {"comparison": result}
@@ -123,7 +131,14 @@ def sympy_equivalence_check(record):
 
 
 def numeric_probe_check(record):
-   result = numeric_check(key_expression(record), solution_expression(record))
+   key, solution = key_expression(record), solution_expression(record)
+
+   try:
+      result = numeric_check(key, solution)
+   except ChildDiedError:
+      raise
+   except Exception as failure:
+      return INDETERMINATE, {"agrees": None, "raised": type(failure).__name__}
 
    if result is True:
       return PASS, {"agrees": True}

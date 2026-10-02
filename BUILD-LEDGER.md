@@ -3251,6 +3251,11 @@ Stage 11, progression, 2026-10-02, worktree `../growth-progression` on branch `p
 regression fix, the candidate amendment, the throughput tool and the test premises are built and
 merged to main (Done, 2026-10-02, stage 11). What remains is listed under Known defects,
 2026-10-02, stage 11.
+Stage 10 of the 2026-10-02 run, answer checking, worktree `../growth-checking` on branch
+`checking`: the fix to `app/items/verify.py` and its callers is written and its tests are shown
+red then green; the bank checks and the full suite run before the slice merges. A later session
+resumes from Done, "stage 10 (checking)", once that entry exists, and otherwise from this
+paragraph: the eight red tests named in the stage prompt pass on the branch.
 
 ## Live API spend log [verified]
 
@@ -4508,6 +4513,27 @@ From the eleventh session, 2026-09-21, found and not fixed.
   unanimous cassette, passes on this branch after the rebase onto 4e602af0's re-recording ("1 passed"). `tests/e2e/test_agent_drafts_served.py` stays order dependent
   (passed alone in 405 s this session; it needs a Unit 2 agent draft within 12 sessions 8 days
   apart from an unplaced cold start, which the measured pace makes marginal).
+- 2026-10-02, stage 10 (checking), open. The tutor reply screen's leak check,
+  `_equals_key` in `app/evals/agent_checks.py`, reads a comparison that raised or did not settle
+  as "not the key", so a key written in a form SymPy cannot settle against it is not flagged as a
+  leak. Its policy is undocumented and the stage 10 prompt did not name it among the callers to
+  align; treating unsettled as a leak would block replies that mention any unsettled expression,
+  so it needs its own ruling and a measured false positive rate before it changes.
+- 2026-10-02, stage 10 (checking), open. Whether a bank checks clean depends on host load,
+  because a comparison that outlives the 5 s bound is unsettled. Measured with a 60 s bound at
+  load 45 to 70: the slowest option pair of each of ITM-AGT-03009-00 to -12 took 0.8 to 6.5 s and
+  every one settled distinct. At load 115 to 160, `tools/check_items.py` flagged 1 record in
+  items_gen_unit02, 2 in items_gen_unit06 and 4 in items_unit03_agent as unsettled, and main
+  flagged a different 03009 record; at load 15 all three banks are clean (191, 330 and 20). It
+  fails safe, toward review, never toward a wrong verdict. `_settles_to_zero` now computes
+  simplify once and stops at the first zero, which cut the ITM-GEN-02010-02 A against B pair from
+  over 5 s to 0.8 s at load 59. Run bank checks on a quiet host until the bound is measured.
+- 2026-10-02, stage 10 (checking), fixed. `tools/key_recheck.py` `equivalent` counted a point
+  where the difference evaluated to NaN or an infinity as agreeing, because NaN is never larger
+  than the tolerance: a key of 1/0 or NaN rechecked as equal to 3 (measured before the fix,
+  `equivalent(nan, 3)` and `equivalent(zoo, 3)` both True). It now skips such points, so the pair
+  is `comparison_undecided`, and an equation against a number is undecided rather than an
+  uncaught TypeError.
 
 ## Plan corrections applied [verified]
 
@@ -5110,6 +5136,23 @@ Session 2026-09-20 (seventh).
   and rejected; days to Unit 2 for a strong student are placement's to set. Numbers in Decisions,
   2026-10-02. No mastery condition, threshold or retention rule moved.
 
+- 2026-10-02, stage 10 (checking), a ruling on two tests, not on the plan text. 67029adb ("Engine
+  insertion, checker alignment and audits in progress", 2026-09-29) added
+  `_structured_outcome` to `app/items/verify.py`, which called an equation against an expression,
+  any non-SymPy operand, and any pair holding NaN or an infinity "not_equivalent", and pinned that
+  with `test_an_equation_against_an_expression_is_not_equivalent_and_does_not_crash` and
+  `test_nan_against_a_finite_value_is_distinct` in `tests/items/test_verify.py`. That turned the
+  eight stage 10 tests red: a short answer of x = 1 against a key of x was marked wrong instead of
+  ungraded, a 1/0 distractor read as distinct from the key so the item verified instead of going
+  to review, and `equivalence("left", "right")` returned instead of raising. Both 67029adb tests
+  contradict 03 ("Deterministic pre-checks decide the mechanical points": an unsettled check falls through to the model path
+  rather than defaulting to earned or not earned) and 04 ("Independent key verification": an
+  unsettled comparison is not a pass), because subtracting the pair raises or no point evaluates
+  it, which is the definition of not settled. They were rewritten to the plan's behaviour (the
+  comparison raises TypeError and the distractor checks read it as unsettled; NaN or zoo against
+  a number is unsettled; identical special values stay equivalent). No assertion in the eight
+  stage 10 tests changed. Ruled by the model on the operator's delegation of 2026-10-02.
+
 ## Decisions taken on the operator's instruction, 2026-10-02 [inferred]
 
 Stage 13 (frq), decided by Claude Opus 5.5 on the operator's delegation of 2026-10-02.
@@ -5281,6 +5324,27 @@ reason.
   written twice, two calls each, and the difference of the second calls' cache reads (2,969 minus
   1,499) is 1,470 tokens, the count count_tokens gave on `claude-sonnet-5` on 2026-09-23. The
   measurement is a model's (claude-opus-5-5), not a human's, and says so in the fixture.
+
+- Stage 10 (checking). Kinds that cannot be subtracted (an equation against an expression, a
+  tuple against a number, a set against a tuple, anything not a SymPy object) make
+  `equivalence` and `compare_expressions` raise TypeError rather than answer. Reason: whether
+  y = 2x answers a key of 2x is a reading of the student's intent, and 03 sends what a check
+  cannot decide to the model. Every caller turns the raise into its own unsettled verdict:
+  `grade` ungraded, ingest's symbolic and numeric checks indeterminate, `comparison_findings`
+  `UNSETTLED_VIOLATION` (so gate 30 calls it a violation and ingest routes to review),
+  `template_trial.key_agrees` unsettled, the FRQ `run_check` unsettled, and the lesson design
+  checker's boolean `equivalent` falls back to its numeric probe as before.
+- Stage 10 (checking). Inside a set or tuple, two elements of different kinds leave that element
+  pair unsettled instead of ending the comparison, so {k = 5, 3} still matches {3, k - 5 = 0}.
+- Stage 10 (checking). NaN and the infinities get no shortcut: identical values are equivalent,
+  anything else goes to the scalar comparison, which cannot evaluate a point and reports
+  unsettled. Reason: the stage 10 tests pin 1/0 against -1 as unsettled, and a rule calling NaN
+  against 3 distinct but zoo against -1 unsettled would be arbitrary.
+- Stage 10 (checking). The calculator setup check keeps its own shape rule both ways: a bare
+  expression typed for an equation setup was already "not_equivalent", and an equation typed for
+  an expression setup now is too, explicitly, instead of reaching SymPy. Reason: the drill asks
+  for a setup of a stated shape, which is a decided fact about the entry, and without the rule
+  the entry would raise inside the route.
 
 ## Decisions taken on the operator's instruction, 2026-09-29 [inferred]
 

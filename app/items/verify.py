@@ -233,11 +233,24 @@ def _answer_parent(function, arguments, connection):
 
 
 def _structured_outcome(left, right):
-   """Equivalent, not_equivalent, or None when the pair is two plain expressions and the scalar
-   comparison below decides it. Lesson keys and steps carry equations, sets and tuples, which
-   cannot be subtracted, and NaN or an infinity, whose difference with anything is NaN; the rules
-   mirror tools/check_lesson_designs.equivalent, the design checker the lesson records are
-   transcribed from (docs/lessons/BUILD-PLAN.md, The design to record path)."""
+   """Equivalent, not_equivalent, unsettled, or None when the pair is two plain expressions and
+   the scalar comparison below decides it. Lesson keys and steps carry equations, sets and
+   tuples, which cannot be subtracted; the rules mirror tools/check_lesson_designs.equivalent,
+   the design checker the lesson records are transcribed from (docs/lessons/BUILD-PLAN.md, The
+   design to record path).
+
+   A pair of different kinds, an equation against an expression or a tuple against a number,
+   raises TypeError as subtracting them always did, because whether a student who wrote y = 2x
+   meant the key 2x is a reading, not an algebraic fact, and 03 sends a check that cannot decide
+   to the model rather than calling it wrong. NaN and the infinities are left to the scalar
+   comparison, which cannot evaluate them at any point and so reports them unsettled unless the
+   two sides are identical.
+   """
+   both_are_sympy = isinstance(left, sympy.Basic) and isinstance(right, sympy.Basic)
+
+   if not both_are_sympy:
+      raise TypeError(_mismatch_message(left, right))
+
    is_identical = left == right
 
    if is_identical:
@@ -249,30 +262,23 @@ def _structured_outcome(left, right):
    if left_is_equation and right_is_equation:
       return _equation_outcome(left, right)
 
-   if left_is_equation or right_is_equation:
-      return "not_equivalent"
-
    left_is_collection = isinstance(left, (sympy.Set, sympy.Tuple))
    right_is_collection = isinstance(right, (sympy.Set, sympy.Tuple))
+   both_are_collections = left_is_collection and right_is_collection
 
-   if left_is_collection or right_is_collection:
+   if both_are_collections:
       return _collection_outcome(left, right)
 
    is_expression_pair = isinstance(left, sympy.Expr) and isinstance(right, sympy.Expr)
 
    if not is_expression_pair:
-      return "not_equivalent"
-
-   has_special_value = _is_special_value(left) or _is_special_value(right)
-
-   if has_special_value:
-      return "not_equivalent"
+      raise TypeError(_mismatch_message(left, right))
 
    return None
 
 
-def _is_special_value(expression):
-   return expression.has(sympy.nan) or expression in (sympy.oo, -sympy.oo, sympy.zoo)
+def _mismatch_message(left, right):
+   return f"cannot compare {type(left).__name__} with {type(right).__name__}"
 
 
 def _equation_outcome(left, right):
@@ -309,7 +315,10 @@ def _collection_outcome(left, right):
 
    both_sets = isinstance(left, sympy.Set) and isinstance(right, sympy.Set)
 
-   if both_sets and sympy.simplify(left) == sympy.simplify(right):
+   if not both_sets:
+      raise TypeError(_mismatch_message(left, right))
+
+   if sympy.simplify(left) == sympy.simplify(right):
       return "equivalent"
 
    return "not_equivalent"
@@ -322,7 +331,7 @@ def _elementwise_outcome(left_parts, right_parts, ordered):
       return "not_equivalent"
 
    if ordered:
-      outcomes = [_equivalence_impl(a, b) for a, b in zip(left_parts, right_parts)]
+      outcomes = [_part_outcome(a, b) for a, b in zip(left_parts, right_parts)]
 
       if all(outcome == "equivalent" for outcome in outcomes):
          return "equivalent"
@@ -339,7 +348,7 @@ def _elementwise_outcome(left_parts, right_parts, ordered):
       match = None
 
       for index, candidate in enumerate(unmatched):
-         outcome = _equivalence_impl(part, candidate)
+         outcome = _part_outcome(part, candidate)
 
          if outcome == "equivalent":
             match = index
@@ -354,6 +363,16 @@ def _elementwise_outcome(left_parts, right_parts, ordered):
       unmatched.pop(match)
 
    return "equivalent"
+
+
+def _part_outcome(left, right):
+   """One element of a set or tuple against another. Two elements of different kinds leave the
+   pair unsettled instead of ending the whole comparison, so a set that holds an equation and a
+   number can still be matched element by element."""
+   try:
+      return _equivalence_impl(left, right)
+   except TypeError:
+      return "unsettled"
 
 
 def _equivalence_impl(left, right):
@@ -380,15 +399,21 @@ def _equivalence_impl(left, right):
 
 
 def _settles_to_zero(difference):
-   candidates = (
-      sympy.simplify(difference),
-      sympy.simplify(sympy.expand_trig(difference)),
-      sympy.simplify(sympy.logcombine(difference, force=True)),
-      sympy.radsimp(sympy.simplify(difference)),
+   """Each rewrite runs only when the ones before it left a nonzero form, and the plain simplify
+   is computed once, since radsimp starts from it."""
+   simplified = sympy.simplify(difference)
+
+   if simplified == 0:
+      return True
+
+   later_rewrites = (
+      lambda: sympy.simplify(sympy.expand_trig(difference)),
+      lambda: sympy.simplify(sympy.logcombine(difference, force=True)),
+      lambda: sympy.radsimp(simplified),
    )
 
-   for candidate in candidates:
-      is_zero = candidate == 0
+   for rewrite in later_rewrites:
+      is_zero = rewrite() == 0
 
       if is_zero:
          return True
@@ -550,7 +575,7 @@ def comparison_findings(key, distractors):
             "kind": KEY_COMPARISON,
             "left": None,
             "right": index,
-            "comparison": compare_expressions(key, distractor),
+            "comparison": _settled_comparison(key, distractor),
          })
 
    for left_index in range(len(distractors)):
@@ -559,12 +584,23 @@ def comparison_findings(key, distractors):
             "kind": PAIR_COMPARISON,
             "left": left_index,
             "right": right_index,
-            "comparison": compare_expressions(
-               distractors[left_index], distractors[right_index]
-            ),
+            "comparison": _settled_comparison(distractors[left_index], distractors[right_index]),
          })
 
    return findings
+
+
+def _settled_comparison(left, right):
+   """compare_expressions, with a comparison that raised read as one that did not settle: an
+   option of another kind than the key, an equation against a number, has not been shown to
+   differ from it. A child that died is still raised, because it says nothing about the pair.
+   """
+   try:
+      return compare_expressions(left, right)
+   except ChildDiedError:
+      raise
+   except Exception:
+      return UNSETTLED_VIOLATION
 
 
 def error_path_findings(error_paths, active_error_ids):

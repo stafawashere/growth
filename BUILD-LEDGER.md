@@ -3209,6 +3209,13 @@ cache/pdf linked: 4 failed, 3437 passed, 0 errors in 1192 s. The four are owned 
 reads the checkout's var pacing file (4f47db08), and `eval_simulation_mastery_growth` and
 `test_the_decay_arm_serves_differently_from_two_term` are stage 11's operator-owned gates.
 
+- 2026-10-02, stage 11 (progression), the full suite after the merge, run once in a detached
+  worktree at 27239c95: "4 failed, 3437 passed in 2932.80s". The four: `eval_simulation_mastery_growth`
+  and `test_the_decay_arm_serves_differently_from_two_term` (operator's gates, Known defects,
+  2026-10-02, stage 11), `test_agent_drafts_served.py` (order dependent, same entry) and
+  `test_unauthenticated_reachable_routes_match_the_documented_list` (`/assets` is mounted only when
+  `app/web/dist` is built, which a fresh worktree lacks, as recorded 2026-09-29).
+
 ## In progress [inferred]
 
 Stage 1, items for Units 4 to 10, is complete in the worktree `../growth-content` on branch

@@ -251,16 +251,6 @@ export const LESSON: LessonRecord = {
    }
 };
 
-export function sectionNamed(id: string): LessonSection {
-   const found = LESSON.sections.find((section) => section.id === id);
-
-   if (found === undefined) {
-      throw new Error(`fixture has no section ${id}`);
-   }
-
-   return found;
-}
-
 export function planFor(sectionIds: string[], checkIds: string[] = [], reason: LessonPlan["reason"] = "first_contact"): LessonPlan {
    const byId = new Map(LESSON.sections.map((section) => [section.id, section.type] as const));
 

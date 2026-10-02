@@ -5,6 +5,7 @@ import { FigureView } from "../figures/FigureView";
 import { MathText } from "../math/MathText";
 import { ANSWER_UNAVAILABLE } from "../session/Item";
 import { PageHeader } from "../ui/Page";
+import { Workbench } from "../ui/Workbench";
 
 /* The stable concept probe (11 P7 scope item 6). Items come one at a time in the set's fixed order,
    with no feedback and no confidence rating, because the probe measures and must not teach
@@ -79,48 +80,50 @@ export function ProbeItemView(props: ProbeItemViewProps) {
    const servesMcq = item.format === "mcq";
 
    return (
-      <article className="card item sheet" data-testid="probe-item">
-         <div className="sheet-row sheet-row-ruled question">
-            <h1 className="sheet-margin sheet-tag">Concept probe</h1>
+      <section className="screen">
+         <PageHeader title="Concept probe" intro={PROBE_NOTE} />
 
-            <div className="sheet-body question-stem">
-               <p className="item-stem" data-testid="item-stem"><MathText text={item.stem} /></p>
+         <Workbench
+            testId="probe-item"
+            stem={
+               <div className="bench-part">
+                  <p className="bench-tag">{servesMcq ? "Concept check" : "Solve"}</p>
 
-               {item.figure_spec ? <FigureView spec={item.figure_spec} /> : null}
-            </div>
-         </div>
+                  <div className="question-stem">
+                     <p className="item-stem" data-testid="item-stem">
+                        <MathText text={item.stem} />
+                     </p>
 
-         {servesMcq ? (
-            <div className="sheet-answer sheet-options" data-testid="mcq-answer">
-               <McqControl
-                  groupLabel="My answer"
-                  options={item.options ?? []}
-                  selectedId={selectedOptionId}
-                  onSelect={onOptionChange}
-               />
-            </div>
-         ) : (
-            <div className="sheet-row sheet-answer" data-testid="math-answer">
-               <span className="sheet-margin sheet-tag" aria-hidden="true">
-                  My answer
-               </span>
-
-               <div className="sheet-body sheet-body-stack">
-                  <MathAnswerField key={item.id} label="My answer" onChange={onAnswerChange} onLoadFailure={onAnswerUnavailable} />
-
-                  {answerUnavailable ? <p data-testid="answer-unavailable">{ANSWER_UNAVAILABLE}</p> : null}
+                     {item.figure_spec ? <FigureView spec={item.figure_spec} /> : null}
+                  </div>
                </div>
-            </div>
-         )}
+            }
+            work={
+               <>
+                  <p className="bench-tag" aria-hidden="true">
+                     My answer
+                  </p>
 
-         <div className="sheet-foot">
-            <span />
+                  {servesMcq ? (
+                     <div className="bench-answer" data-testid="mcq-answer">
+                        <McqControl groupLabel="My answer" options={item.options ?? []} selectedId={selectedOptionId} onSelect={onOptionChange} />
+                     </div>
+                  ) : (
+                     <div className="bench-answer" data-testid="math-answer">
+                        <MathAnswerField key={item.id} label="My answer" onChange={onAnswerChange} onLoadFailure={onAnswerUnavailable} />
 
-            <button type="button" className="button-primary" disabled={!canSend} onClick={onSend}>
-               {NEXT_LABEL}
-            </button>
-         </div>
-      </article>
+                        {answerUnavailable ? <p data-testid="answer-unavailable">{ANSWER_UNAVAILABLE}</p> : null}
+                     </div>
+                  )}
+               </>
+            }
+            foot={
+               <button type="button" className="button-primary" disabled={!canSend} onClick={onSend}>
+                  {NEXT_LABEL}
+               </button>
+            }
+         />
+      </section>
    );
 }
 

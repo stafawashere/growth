@@ -426,19 +426,6 @@ function PurgeSection(props: {
    );
 }
 
-/* The sections this screen owns, by the settings tab each belongs to. 11's scope 17 names these
-   five and no more; the study plan, accessibility, AI notices and the operator's switches are drawn
-   beside them by SettingsPage. */
-export const SECTIONS_BY_TAB: Record<SettingsTab, ReadonlyArray<string>> = {
-   study: ["Queue settings"],
-   providers: ["Providers"],
-   budgets: ["Budgets"],
-   accessibility: [],
-   operator: [],
-   data: ["Data export", "Purge"],
-   tutor: []
-};
-
 export function SettingsScreen(props: SettingsScreenProps) {
    const { tab } = props;
 

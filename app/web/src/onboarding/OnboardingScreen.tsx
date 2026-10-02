@@ -9,6 +9,7 @@ import { StudyPlanSection } from "../settings/StudySections";
 import { Icon, type IconName } from "../ui/Icon";
 import { List } from "../ui/List";
 import { Page, PageHeader } from "../ui/Page";
+import { QuestionTrack, trackState, Workbench } from "../ui/Workbench";
 
 export type OnboardingReason = "first_login" | "long_gap";
 
@@ -244,111 +245,117 @@ export function DiagnosticItem(props: DiagnosticItemProps) {
             />
          }
       >
-         <article className="card item sheet" data-testid="diagnostic-item" data-state={state}>
-            <div className="sheet-row sheet-row-ruled question">
-               <span className="sheet-margin sheet-tag">Solve</span>
+         <QuestionTrack
+            marks={Array.from({ length: item.diagnostic_cap }, (_, position) => ({
+               state: trackState(position === item.diagnostic_position, position < item.diagnostic_position)
+            }))}
+            count={`${item.diagnostic_position} of at most ${item.diagnostic_cap} answered`}
+         />
 
-               <div className="sheet-body question-stem">
-                  <p className="item-stem" data-testid="item-stem">
-                     <MathText text={item.stem} />
+         <Workbench
+            testId="diagnostic-item"
+            data={{ "data-state": state }}
+            stem={
+               <div className="bench-part">
+                  <p className="bench-tag">Solve</p>
+
+                  <div className="question-stem">
+                     <p className="item-stem" data-testid="item-stem">
+                        <MathText text={item.stem} />
+                     </p>
+
+                     {item.figure_spec ? <FigureView spec={item.figure_spec} /> : null}
+                  </div>
+               </div>
+            }
+            work={
+               <>
+                  <p className="bench-tag" aria-hidden="true">
+                     My answer
                   </p>
 
-                  {item.figure_spec ? <FigureView spec={item.figure_spec} /> : null}
-               </div>
-            </div>
+                  <div className="bench-answer" data-testid="math-answer">
+                     <MathAnswerField key={item.id} label="My answer" onChange={onAnswerChange} onLoadFailure={onAnswerUnavailable} />
 
-            <div className="sheet-row sheet-answer" data-testid="math-answer">
-               <span className="sheet-margin sheet-tag" aria-hidden="true">
-                  My answer
-               </span>
+                     {answerUnavailable ? <p data-testid="answer-unavailable">{ANSWER_UNAVAILABLE}</p> : null}
+                  </div>
 
-               <div className="sheet-body sheet-body-stack">
-                  <MathAnswerField key={item.id} label="My answer" onChange={onAnswerChange} onLoadFailure={onAnswerUnavailable} />
+                  <section className="scope-ladder" role="group" aria-label="Not learned yet" aria-describedby={`${ladderId}-lead`}>
+                     <p className="scope-ladder-lead" id={`${ladderId}-lead`}>
+                        Not learned yet? Say so and it moves on. Each rung reaches further than the one above it.
+                     </p>
 
-                  {answerUnavailable ? <p data-testid="answer-unavailable">{ANSWER_UNAVAILABLE}</p> : null}
-               </div>
-            </div>
+                     <ol className="scope-steps">
+                        {offeredSteps.map((step, depth) => {
+                           const isConfirmable = step.scope !== "question";
+                           const isOpen = confirmingScope === step.scope;
+                           const showsConfirmation = isOpen && confirmation !== null;
+                           const reachId = `${ladderId}-${step.scope}-reach`;
 
-            <div className="scope-footer">
-               <section className="scope-ladder" role="group" aria-label="Not learned yet" aria-describedby={`${ladderId}-lead`}>
-                  <p className="scope-ladder-lead" id={`${ladderId}-lead`}>
-                     Not learned yet? Say so and it moves on. Each rung reaches further than the one above it.
-                  </p>
+                           return (
+                              <li key={step.scope} className="scope-step" data-scope={step.scope} data-depth={depth}>
+                                 <div className="scope-step-row">
+                                    <button
+                                       type="button"
+                                       className="text-button scope-step-button"
+                                       disabled={isSubmitted}
+                                       aria-describedby={reachId}
+                                       aria-expanded={isConfirmable ? isOpen : undefined}
+                                       onClick={() => pressStep(step.scope)}
+                                    >
+                                       <Icon name={step.icon} />
+                                       <span>{step.label}</span>
+                                    </button>
 
-                  <ol className="scope-steps">
-                     {offeredSteps.map((step, depth) => {
-                        const isConfirmable = step.scope !== "question";
-                        const isOpen = confirmingScope === step.scope;
-                        const showsConfirmation = isOpen && confirmation !== null;
-                        const reachId = `${ladderId}-${step.scope}-reach`;
-
-                        return (
-                           <li key={step.scope} className="scope-step" data-scope={step.scope} data-depth={depth}>
-                              <div className="scope-step-row">
-                                 <button
-                                    type="button"
-                                    className="text-button scope-step-button"
-                                    disabled={isSubmitted}
-                                    aria-describedby={reachId}
-                                    aria-expanded={isConfirmable ? isOpen : undefined}
-                                    onClick={() => pressStep(step.scope)}
-                                 >
-                                    <Icon name={step.icon} />
-                                    <span>{step.label}</span>
-                                 </button>
-
-                                 <span className="scope-step-reach" id={reachId}>
-                                    {step.reach}
-                                 </span>
-                              </div>
-
-                              {showsConfirmation ? (
-                                 <div
-                                    role="alertdialog"
-                                    aria-label={confirmation.title}
-                                    className="scope-confirm"
-                                    data-scope={step.scope}
-                                    data-testid={confirmation.testId}
-                                    onKeyDown={dismissOnEscape}
-                                 >
-                                    <p>
-                                       <strong>{confirmation.lead}</strong> {confirmation.body}
-                                    </p>
-
-                                    <div className="cluster scope-confirm-actions">
-                                       <button ref={keepAnsweringRef} type="button" className="button-secondary button-small" onClick={() => setConfirmingScope(null)}>
-                                          {KEEP_ANSWERING_LABEL}
-                                       </button>
-
-                                       <button
-                                          type="button"
-                                          className={step.scope === "everything" ? "text-button text-button-destructive" : "text-button"}
-                                          disabled={isSubmitted}
-                                          onClick={confirmSkip}
-                                       >
-                                          {confirmation.confirmLabel}
-                                       </button>
-                                    </div>
+                                    <span className="scope-step-reach" id={reachId}>
+                                       {step.reach}
+                                    </span>
                                  </div>
-                              ) : null}
-                           </li>
-                        );
-                     })}
-                  </ol>
-               </section>
 
-               {offersCheck ? (
-                  <button
-                     type="button"
-                     className="motion-instant-submit-answer button-primary scope-footer-submit"
-                     disabled={!canCheck}
-                     onClick={onCheck}
-                  >
+                                 {showsConfirmation ? (
+                                    <div
+                                       role="alertdialog"
+                                       aria-label={confirmation.title}
+                                       className="scope-confirm"
+                                       data-scope={step.scope}
+                                       data-testid={confirmation.testId}
+                                       onKeyDown={dismissOnEscape}
+                                    >
+                                       <p>
+                                          <strong>{confirmation.lead}</strong> {confirmation.body}
+                                       </p>
+
+                                       <div className="cluster scope-confirm-actions">
+                                          <button ref={keepAnsweringRef} type="button" className="button-secondary button-small" onClick={() => setConfirmingScope(null)}>
+                                             {KEEP_ANSWERING_LABEL}
+                                          </button>
+
+                                          <button
+                                             type="button"
+                                             className={step.scope === "everything" ? "text-button text-button-destructive" : "text-button"}
+                                             disabled={isSubmitted}
+                                             onClick={confirmSkip}
+                                          >
+                                             {confirmation.confirmLabel}
+                                          </button>
+                                       </div>
+                                    </div>
+                                 ) : null}
+                              </li>
+                           );
+                        })}
+                     </ol>
+                  </section>
+               </>
+            }
+            foot={
+               offersCheck ? (
+                  <button type="button" className="motion-instant-submit-answer button-primary" disabled={!canCheck} onClick={onCheck}>
                      {COMMIT_LABEL}
                   </button>
-               ) : null}
-            </div>
-         </article>
+               ) : null
+            }
+         />
       </Page>
    );
 }

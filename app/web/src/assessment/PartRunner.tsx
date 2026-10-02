@@ -19,7 +19,9 @@ import { clockText, FIVE_MINUTE_ANNOUNCEMENT, partHeading } from "./format";
 import { GraphingPanel } from "./graphing/GraphingPanel";
 import { DesmosPanel } from "../input/DesmosPanel";
 import { Icon } from "../ui/Icon";
-import { QuestionStepper, stepperState, type StepperMark } from "./QuestionStepper";
+import { QuestionStepper } from "./QuestionStepper";
+import { PageHeader } from "../ui/Page";
+import { QuestionTrack, trackState, type TrackMark } from "../ui/Workbench";
 
 const PART_OPTION_KEYS = ["a", "b", "c", "d", "e"];
 
@@ -537,82 +539,51 @@ export function PartRunner({ part, radianNote, sectionCount, onSave, onSubmit, o
    const stemText = stemElement?.textContent ?? "";
    const shortAnswerLatex = current.answer?.mathjson === undefined ? undefined : mathJsonToLatex(current.answer.mathjson);
 
-   const stepperMarks: StepperMark[] = questions.map((entry, position) => {
+   const trackMarks: TrackMark[] = questions.map((entry, position) => {
       const entryWork = work[entry.number];
       const isCurrent = position === index;
 
-      return { state: stepperState(isCurrent, isAnswered(entryWork)), marked: entryWork.marked };
+      return { state: trackState(isCurrent, isAnswered(entryWork)), marked: entryWork.marked };
    });
+
+   const answeredCount = questions.filter((entry) => isAnswered(work[entry.number])).length;
+   const markedCount = questions.filter((entry) => work[entry.number].marked).length;
+   const markedWords = markedCount > 0 ? `, ${markedCount} marked for review` : "";
+   const trackCount = `${answeredCount} of ${questions.length} answered${markedWords}`;
 
    const offersMarkForReview = tools.has("mark_for_review");
    const offersQuestionMenu = tools.has("question_menu");
    const offersZoom = tools.has("zoom");
-   const offersToolbar = offersMarkForReview || offersQuestionMenu || offersZoom;
+   const offersHighlight = tools.has("highlight_and_notes");
+   const offersRail = offersMarkForReview || offersQuestionMenu || offersZoom || offersHighlight;
    const offersGraphing = tools.has("graphing_panel");
    const showsGraphingBeside = offersGraphing && isGraphingOpen;
+   const answerKind = freeResponse ? "Free response" : offersOptions ? "Multiple choice" : "Short answer";
+
+   const position = (
+      <span data-testid="question-position">
+         Question {question.number}
+         {sectionCount !== null ? ` of ${sectionCount}` : null}
+      </span>
+   );
+
+   const aside = (
+      <>
+         <p className="calculator-label" data-testid="calculator-label">
+            {part.calculator_label}
+         </p>
+
+         {tools.has("timer") ? <PartTimer part={part} onTimeUp={timeUp} /> : null}
+      </>
+   );
 
    return (
-      <section className="card part-runner" data-testid="part-runner" data-graphing-open={showsGraphingBeside ? "true" : undefined}>
-         <header className="part-header">
-            <div className="part-title">
-               <p className="label-heading">{partHeading(part)}</p>
+      <section className="part-runner workbench" data-testid="part-runner" data-graphing-open={showsGraphingBeside ? "true" : undefined}>
+         <PageHeader eyebrow={partHeading(part)} title={position} aside={aside} />
 
-               <p className="part-position" data-testid="question-position">
-                  Question {question.number}
-                  {sectionCount !== null ? ` of ${sectionCount}` : null}
-               </p>
-            </div>
+         <QuestionTrack marks={trackMarks} count={trackCount} />
 
-            {tools.has("timer") ? <PartTimer part={part} onTimeUp={timeUp} /> : null}
-         </header>
-
-         <div className="part-notes">
-            <p className="calculator-label" data-testid="calculator-label">
-               {part.calculator_label}
-            </p>
-
-            {part.calculator_note !== null ? (
-               <p className="caption" data-testid="calculator-note">
-                  {part.calculator_note}
-               </p>
-            ) : null}
-         </div>
-
-         {offersToolbar ? (
-            <div className="exam-toolbar">
-               {tools.has("mark_for_review") ? (
-                  <label className="mark-for-review">
-                     <input
-                        type="checkbox"
-                        className="motion-instant-mark-for-review"
-                        checked={current.marked}
-                        onChange={(event) => toggleMarked(event.target.checked)}
-                     />{" "}
-                     <Icon name="flag" />
-                     Mark for review
-                  </label>
-               ) : null}
-
-               {tools.has("question_menu") ? (
-                  <button type="button" className="text-button" aria-expanded={isMenuOpen} onClick={() => setIsMenuOpen(!isMenuOpen)}>
-                     <Icon name="grid" />
-                     Question menu
-                  </button>
-               ) : null}
-
-               {tools.has("zoom") ? (
-                  <div role="group" aria-label="Zoom" className="choice-row" data-testid="zoom">
-                     {ZOOM_STEPS.map((step) => (
-                        <button key={step} type="button" className="text-button" aria-pressed={zoom === step} onClick={() => setZoom(step)}>
-                           {step} percent
-                        </button>
-                     ))}
-                  </div>
-               ) : null}
-            </div>
-         ) : null}
-
-         {tools.has("question_menu") && isMenuOpen ? (
+         {offersQuestionMenu && isMenuOpen ? (
             <QuestionMenuList
                questions={questions}
                work={work}
@@ -630,31 +601,112 @@ export function PartRunner({ part, radianNote, sectionCount, onSave, onSubmit, o
             {offersGraphing ? <GraphingPanel onOpenChange={setIsGraphingOpen} /> : null}
 
             <div className="question-column">
-               <div className="question-area sheet" data-testid="question-area" data-zoom={zoom} style={{ fontSize: `${zoom}%` }}>
-                  <div className={freeResponse ? "sheet-row" : "sheet-row sheet-row-ruled"}>
-                     <span className="sheet-margin sheet-number" aria-hidden="true">
-                        {question.number}
-                     </span>
-
-                     <div className="sheet-body question-stem">
-                        {item.radian_note ? (
-                           <p className="caption" data-testid="radian-note">
-                              {radianNote}
-                           </p>
+               <div className="bench" data-testid="question-area" data-zoom={zoom} style={{ fontSize: `${zoom}%` }}>
+                  {offersRail ? (
+                     <div className="bench-rail" role="group" aria-label="Question tools">
+                        {offersMarkForReview ? (
+                           <label className="bench-tool" data-checked={current.marked ? "true" : undefined}>
+                              <input
+                                 type="checkbox"
+                                 className="motion-instant-mark-for-review"
+                                 checked={current.marked}
+                                 onChange={(event) => toggleMarked(event.target.checked)}
+                              />
+                              {current.marked ? "Marked" : "Mark for review"}
+                           </label>
                         ) : null}
 
-                        <p className="item-stem" data-testid="question-stem" ref={setStemElement}>
-                           <MathText text={item.stem} />
-                        </p>
+                        {offersHighlight ? (
+                           <button type="button" className="bench-tool" onClick={highlightSelection}>
+                              <Icon name="highlight" size="md" />
+                              <span>
+                                 Highlight<span className="visually-hidden"> selection</span>
+                              </span>
+                           </button>
+                        ) : null}
 
-                        {hasFigure ? <FigureView spec={(item as AssessmentItem).figure_spec} /> : null}
+                        {offersQuestionMenu ? (
+                           <button type="button" className="bench-tool" aria-expanded={isMenuOpen} onClick={() => setIsMenuOpen(!isMenuOpen)}>
+                              <Icon name="grid" size="md" />
+                              Question menu
+                           </button>
+                        ) : null}
+
+                        {offersZoom ? (
+                           <div role="group" aria-label="Zoom" className="bench-tool-group" data-testid="zoom">
+                              <p className="bench-tag" aria-hidden="true">
+                                 Zoom
+                              </p>
+
+                              {ZOOM_STEPS.map((step) => (
+                                 <button key={step} type="button" className="bench-tool" aria-pressed={zoom === step} onClick={() => setZoom(step)}>
+                                    {step}
+                                    <span className="visually-hidden"> percent</span>
+                                 </button>
+                              ))}
+                           </div>
+                        ) : null}
                      </div>
-                  </div>
+                  ) : null}
 
-                  {freeResponse ? <FreeResponseBody question={question} /> : null}
+                  <section className="bench-pane bench-stem" aria-label="Question">
+                     <div className="bench-part">
+                        <p className="bench-tag">{answerKind}</p>
 
-                  {offersOptions ? (
-                     <div className="sheet-answer sheet-options">
+                        <div className="question-stem">
+                           {item.radian_note ? (
+                              <p className="caption" data-testid="radian-note">
+                                 {radianNote}
+                              </p>
+                           ) : null}
+
+                           <p className="item-stem" data-testid="question-stem" ref={setStemElement}>
+                              <MathText text={item.stem} />
+                           </p>
+
+                           {hasFigure ? <FigureView spec={(item as AssessmentItem).figure_spec} /> : null}
+                        </div>
+                     </div>
+
+                     {offersHighlight ? (
+                        <div className="bench-part question-tools" data-testid="highlight-and-notes">
+                           {highlightProblem !== null ? <p role="alert">{highlightProblem}</p> : null}
+
+                           {current.highlights.length > 0 ? (
+                              <ul className="review-list" aria-label="Highlights">
+                                 {current.highlights.map((highlight, position) => (
+                                    <li key={`${highlight.start}-${highlight.end}-${position}`}>
+                                       <mark className="stem-highlight">{stemText.slice(highlight.start, highlight.end)}</mark>
+
+                                       <button type="button" className="text-button" onClick={() => removeHighlight(position)}>
+                                          Remove highlight
+                                       </button>
+                                    </li>
+                                 ))}
+                              </ul>
+                           ) : null}
+
+                           <label className="form-field">
+                              <span className="field-label">Notes on this question</span>
+                              <textarea
+                                 className="input"
+                                 value={current.notes}
+                                 onChange={(event) => update(question.number, { notes: event.target.value })}
+                                 onBlur={saveNotes}
+                              />
+                           </label>
+                        </div>
+                     ) : null}
+                  </section>
+
+                  <section className="bench-pane bench-work" aria-label="Your answer">
+                     <p className="bench-tag" aria-hidden="true">
+                        Your answer
+                     </p>
+
+                     {freeResponse ? <FreeResponseBody question={question} /> : null}
+
+                     {offersOptions ? (
                         <McqControl
                            key={question.number}
                            groupLabel={`Question ${question.number}`}
@@ -664,16 +716,10 @@ export function PartRunner({ part, radianNote, sectionCount, onSave, onSubmit, o
                            eliminatedIds={current.eliminated}
                            onToggleEliminated={offersEliminator ? toggleEliminated : undefined}
                         />
-                     </div>
-                  ) : null}
+                     ) : null}
 
-                  {!freeResponse && !offersOptions ? (
-                     <div className="sheet-row sheet-answer" data-testid="math-answer">
-                        <span className="sheet-margin sheet-tag" aria-hidden="true">
-                           My answer
-                        </span>
-
-                        <div className="sheet-body sheet-body-stack">
+                     {!freeResponse && !offersOptions ? (
+                        <div className="bench-answer" data-testid="math-answer">
                            <MathAnswerField
                               key={question.number}
                               label="My answer"
@@ -684,55 +730,28 @@ export function PartRunner({ part, radianNote, sectionCount, onSave, onSubmit, o
 
                            {answerUnavailable ? <p role="alert">The math keyboard did not load, so this question cannot take an answer.</p> : null}
                         </div>
-                     </div>
-                  ) : null}
-               </div>
-
-               {tools.has("highlight_and_notes") ? (
-                  <div className="question-tools" data-testid="highlight-and-notes">
-                     <button type="button" className="text-button" onClick={highlightSelection}>
-                        <Icon name="highlight" />
-                        Highlight selection
-                     </button>
-
-                     {highlightProblem !== null ? <p role="alert">{highlightProblem}</p> : null}
-
-                     {current.highlights.length > 0 ? (
-                        <ul className="review-list" aria-label="Highlights">
-                           {current.highlights.map((highlight, position) => (
-                              <li key={`${highlight.start}-${highlight.end}-${position}`}>
-                                 <mark className="stem-highlight">{stemText.slice(highlight.start, highlight.end)}</mark>
-
-                                 <button type="button" className="text-button" onClick={() => removeHighlight(position)}>
-                                    Remove highlight
-                                 </button>
-                              </li>
-                           ))}
-                        </ul>
                      ) : null}
 
-                     <label className="form-field">
-                        <span className="field-label">Notes on this question</span>
-                        <textarea
-                           className="input"
-                           value={current.notes}
-                           onChange={(event) => update(question.number, { notes: event.target.value })}
-                           onBlur={saveNotes}
-                        />
-                     </label>
-                  </div>
-               ) : null}
+                     <div className="bench-foot">
+                        <QuestionStepper isFirst={isFirst} isLast={isLast} onBack={() => goTo(index - 1)} onNext={() => goTo(index + 1)} />
+                     </div>
+                  </section>
+               </div>
             </div>
          </div>
 
-         <div className="exam-bottom">
-            <QuestionStepper marks={stepperMarks} isFirst={isFirst} isLast={isLast} onBack={() => goTo(index - 1)} onNext={() => goTo(index + 1)} />
+         <div className="bench-status">
+            <div className="bench-foot-lead">
+               {part.calculator_note !== null ? (
+                  <p data-testid="calculator-note">{part.calculator_note}</p>
+               ) : null}
+
+               <p className="key-hint exam-key-hint">{PART_KEY_HINT}</p>
+            </div>
 
             <button type="button" className="button-secondary" onClick={() => setIsConfirmingSubmit(true)}>
                Submit part
             </button>
-
-            <p className="caption key-hint exam-key-hint">{PART_KEY_HINT}</p>
          </div>
 
          {isConfirmingSubmit ? (

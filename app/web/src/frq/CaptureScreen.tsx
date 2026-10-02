@@ -21,6 +21,7 @@ import { GradingView } from "./GradingView";
 import { ReadBackEditor, ReadBackView, emptyReadBack } from "./ReadBack";
 import { TypedEntry } from "./TypedEntry";
 import { PageHeader } from "../ui/Page";
+import { Workbench } from "../ui/Workbench";
 
 /* One free-response question inside a unit check, in the order 05 fixes: a booklet-shaped page to
    print, a photograph, the image check, the read-back to confirm or correct, then per-point
@@ -371,30 +372,42 @@ export function CaptureScreen({ sessionId, question, pollMilliseconds, readFile,
          {stage === "reading" ? <p aria-busy="true">Reading your page.</p> : null}
 
          {stage === "confirming" && readBack !== null && attempt !== null ? (
-            <div data-testid="read-back-confirm">
-               <div className="read-back-pair">
-                  {accepted.slice(-1).map((verdict) => (
-                     <img key={verdict.image_id} src={photoAddress(attempt.attempt_id, verdict.image_id)} alt="Your photographed page" className="read-back-photo" />
-                  ))}
+            <Workbench
+               testId="read-back-confirm"
+               stemLabel="Your page"
+               workLabel="Read back"
+               stem={
+                  <>
+                     <p className="bench-tag">Your page</p>
 
-                  <ReadBackView readBack={readBack} />
-               </div>
+                     {accepted.slice(-1).map((verdict) => (
+                        <img key={verdict.image_id} src={photoAddress(attempt.attempt_id, verdict.image_id)} alt="Your photographed page" className="read-back-photo" />
+                     ))}
+                  </>
+               }
+               work={
+                  <>
+                     <p className="bench-tag">As read</p>
 
-               {ratingFor === "as-read" ? <ConfidencePrompt value={confidence} onChange={rateThenConfirm} onClose={() => setRatingFor(null)} /> : null}
+                     <ReadBackView readBack={readBack} />
 
-               <p>Is this what you wrote?</p>
+                     <p>Is this what you wrote?</p>
+                  </>
+               }
+               foot={
+                  <>
+                     <button type="button" className="text-button" onClick={() => setStage("editing")}>
+                        No, let me fix it
+                     </button>
 
-               <div className="choice-row">
-                  <button type="button" className="button-primary" onClick={() => setRatingFor("as-read")}>
-                     Yes, grade it
-                  </button>
-                  <button type="button" className="text-button" onClick={() => setStage("editing")}>
-                     No, let me fix it
-                  </button>
-               </div>
-
-               <p className="muted">Nothing is scored until you confirm this.</p>
-            </div>
+                     <button type="button" className="button-primary" onClick={() => setRatingFor("as-read")}>
+                        Yes, grade it
+                     </button>
+                  </>
+               }
+               status={<p>Nothing is scored until you confirm this.</p>}
+               after={ratingFor === "as-read" ? <ConfidencePrompt value={confidence} onChange={rateThenConfirm} onClose={() => setRatingFor(null)} /> : null}
+            />
          ) : null}
 
          {stage === "editing" && readBack !== null ? (

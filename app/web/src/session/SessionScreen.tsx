@@ -47,6 +47,7 @@ import { SelfExplanationPrompt } from "./SelfExplanationPrompt";
 import { StepMarks, solutionStepAnchor } from "./StepMarks";
 import { Icon } from "../ui/Icon";
 import { Page, PageHeader } from "../ui/Page";
+import { QuestionTrack, trackState, Workbench } from "../ui/Workbench";
 
 export const SET_FINISHED = "That is today's set finished.";
 
@@ -184,27 +185,29 @@ function isActivatingTarget(target: HTMLElement) {
 
 export const NEXT_LABEL = "Next item";
 
-/* The verdict line at the top of feedback: a glyph and a word as well as the colour, so the
+/* The verdict at the head of the answer pane: a glyph and a word as well as the colour, so the
    greyscale render says the same thing. An opener carries no verdict, only the comparison. */
 function FeedbackHead(props: { correct: boolean | null; isOpener: boolean }) {
    const hasVerdict = props.correct !== null && !props.isOpener;
 
    if (!hasVerdict) {
-      return (
-         <div className="sheet-row sheet-row-ruled feedback-head">
-            <span className="sheet-margin sheet-tag">Feedback</span>
-         </div>
-      );
+      return <p className="bench-tag feedback-head">Feedback</p>;
    }
 
+   const tone = props.correct ? "text-correct" : "text-incorrect";
+
    return (
-      <div className="sheet-row sheet-row-ruled feedback-head" data-testid="feedback-verdict">
-         <span className={props.correct ? "sheet-margin status-icon text-correct" : "sheet-margin status-icon text-incorrect"}>
+      <header className="verdict-head" data-testid="feedback-verdict">
+         <span className={`status-icon ${tone}`}>
             <Icon name={props.correct ? "check" : "alert"} size="md" />
          </span>
 
-         <h2 className="sheet-body">{props.correct ? "That holds." : "Not yet. Here is where it turned."}</h2>
-      </div>
+         <span className={`verdict-word ${tone}`} aria-hidden="true">
+            {props.correct ? "Correct" : "Not yet"}
+         </span>
+
+         <h2>{props.correct ? "That holds." : "Not yet. Here is where it turned."}</h2>
+      </header>
    );
 }
 
@@ -235,8 +238,9 @@ function stageTitle(item: ServedItem) {
    return item.is_opener === true ? OPENER_TITLE : STAGE_TITLE[item.stage];
 }
 
-/* The set's progress as steps: the items already worked, the current one, and those still to come.
-   It is drawn only once GET /sessions/{id} has said what remains. */
+/* The set's progress on the connected bar: the items already worked, the current one, and those
+   still to come, with the position in words beside it. It is drawn only once GET /sessions/{id} has
+   said what remains. */
 function SetProgress(props: { worked: number; remaining: Remaining }) {
    const total = props.worked + props.remaining.items;
    const hasSteps = total > 0;
@@ -246,29 +250,9 @@ function SetProgress(props: { worked: number; remaining: Remaining }) {
    }
 
    const current = Math.min(props.worked, total - 1);
-   const steps = Array.from({ length: total }, (_, index) => {
-      if (index < current) {
-         return "done";
-      }
+   const marks = Array.from({ length: total }, (_, index) => ({ state: trackState(index === current, index < current) }));
 
-      return index === current ? "current" : "ahead";
-   });
-
-   return (
-      <div
-         className="progress-steps"
-         role="progressbar"
-         aria-label="Items in this set"
-         aria-valuemin={1}
-         aria-valuemax={total}
-         aria-valuenow={current + 1}
-         data-testid="set-progress"
-      >
-         {steps.map((state, index) => (
-            <span key={index} className="progress-step" data-state={state} />
-         ))}
-      </div>
-   );
+   return <QuestionTrack testId="set-progress" marks={marks} count={`Item ${current + 1} of ${total}`} />;
 }
 
 export function SessionScreen({ resumeSessionId, onLeave, onOpened }: SessionScreenProps) {
@@ -938,92 +922,87 @@ export function SessionScreen({ resumeSessionId, onLeave, onOpened }: SessionScr
          {actionFailed ? <ActionFailed /> : null}
 
          {showsFeedback ? (
-            <section className="card feedback sheet" data-testid="feedback">
-               <FeedbackHead correct={committed?.correct ?? null} isOpener={isOpener} />
+            <Workbench
+               testId="feedback"
+               stem={
+                  <div className="bench-part">
+                     <p className="bench-tag">{choiceServed ? "Concept check" : "Solve"}</p>
 
-               {comparison !== null ? <ComparisonPanel comparison={comparison} attempt={youWrote} /> : youWrote}
+                     <div className="question-stem">
+                        <p className="item-stem">
+                           <MathText text={item.stem} />
+                        </p>
 
-               {hasFigure ? (
-                  <div className="sheet-row" data-testid="feedback-figure">
-                     <div className="sheet-body">
-                        <FigureView spec={item.figure_spec} isItemFigure />
-                     </div>
-                  </div>
-               ) : null}
-
-               {marksSteps ? <StepMarks marks={feedback.step_marks} /> : null}
-
-               {showsStepResult ? <CorrectResult answer={correctAnswer} /> : null}
-
-               {openerWithoutComparison ? (
-                  <section className="comparison sheet-row" data-testid="opener-without-tutor">
-                     <p className="sheet-margin sheet-tag">{COMPARISON_LABEL}</p>
-
-                     <div className="sheet-body comparison">
-                        <p>{OPENER_WITHOUT_TUTOR}</p>
-
-                        {openerFirstStep !== null ? (
-                           <div data-testid="opener-first-step">
-                              <p className="eyebrow">{METHOD_LABEL}</p>
-
-                              <ol className="worked-steps">
-                                 <li data-step-index={openerFirstStep.index} data-agent-anchor={solutionStepAnchor(openerFirstStep.index)}>
-                                    <MathText text={openerFirstStep.text} />
-                                 </li>
-                              </ol>
+                        {hasFigure ? (
+                           <div data-testid="feedback-figure">
+                              <FigureView spec={item.figure_spec} isItemFigure />
                            </div>
                         ) : null}
                      </div>
-                  </section>
-               ) : null}
-
-               {showsReinforcement ? (
-                  <div className="sheet-row">
-                     <p className="sheet-body tutor-note" data-testid="tutor-sentence">
-                        {reinforcement}
-                     </p>
                   </div>
-               ) : null}
+               }
+               work={
+                  <>
+                     <FeedbackHead correct={committed?.correct ?? null} isOpener={isOpener} />
 
-               {showsElaborated ? (
-                  <ElaboratedPanel
-                     elaborated={feedback.elaborated}
-                     sentence={feedback.sentence}
-                     lessonLink={feedback.lesson_link ?? null}
-                     correctAnswer={isOpener ? null : correctAnswer}
-                  />
-               ) : null}
+                     {comparison !== null ? <ComparisonPanel comparison={comparison} attempt={youWrote} /> : youWrote}
 
-               {asksToExplainAfter ? (
-                  <div className="sheet-row">
-                     <div className="sheet-body">
+                     {marksSteps ? <StepMarks marks={feedback.step_marks} /> : null}
+
+                     {showsStepResult ? <CorrectResult answer={correctAnswer} /> : null}
+
+                     {openerWithoutComparison ? (
+                        <section className="comparison sheet-row" data-testid="opener-without-tutor">
+                           <p className="sheet-margin sheet-tag">{COMPARISON_LABEL}</p>
+
+                           <div className="sheet-body comparison">
+                              <p>{OPENER_WITHOUT_TUTOR}</p>
+
+                              {openerFirstStep !== null ? (
+                                 <div data-testid="opener-first-step">
+                                    <p className="eyebrow">{METHOD_LABEL}</p>
+
+                                    <ol className="worked-steps">
+                                       <li data-step-index={openerFirstStep.index} data-agent-anchor={solutionStepAnchor(openerFirstStep.index)}>
+                                          <MathText text={openerFirstStep.text} />
+                                       </li>
+                                    </ol>
+                                 </div>
+                              ) : null}
+                           </div>
+                        </section>
+                     ) : null}
+
+                     {showsReinforcement ? (
+                        <p className="tutor-note" data-testid="tutor-sentence">
+                           {reinforcement}
+                        </p>
+                     ) : null}
+
+                     {showsElaborated ? (
+                        <ElaboratedPanel
+                           elaborated={feedback.elaborated}
+                           sentence={feedback.sentence}
+                           lessonLink={feedback.lesson_link ?? null}
+                           correctAnswer={isOpener ? null : correctAnswer}
+                        />
+                     ) : null}
+
+                     {asksToExplainAfter ? (
                         <SelfExplanationPrompt prompt={explanationPromptAfter} value={selfExplanation} onChange={setSelfExplanation} />
-                     </div>
-                  </div>
-               ) : null}
+                     ) : null}
 
-               {wasCorrected ? (
-                  <div className="sheet-row">
-                     <div className="sheet-body">
-                        <ErrorNoteField value={errorNote} onChange={setErrorNote} />
-                     </div>
-                  </div>
-               ) : null}
-
-               <div className="sheet-foot">
-                  {owesNote ? <p className="helper">Write the note first, so the retry comes back with it.</p> : <span />}
-
-                  <button
-                     type="button"
-                     className="motion-instant-question-move button-primary"
-                     disabled={owesNote}
-                     onClick={moveOn}
-                  >
+                     {wasCorrected ? <ErrorNoteField value={errorNote} onChange={setErrorNote} /> : null}
+                  </>
+               }
+               foot={
+                  <button type="button" className="motion-instant-question-move button-primary" disabled={owesNote} onClick={moveOn}>
                      {NEXT_LABEL}
                      <Icon name="next" />
                   </button>
-               </div>
-            </section>
+               }
+               status={owesNote ? <p>Write the note first, so the retry comes back with it.</p> : null}
+            />
          ) : (
             <Item
                item={item}

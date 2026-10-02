@@ -3115,7 +3115,9 @@ golden_sets 11, p2 4, p5 2, p7 10 passed; selection_study "1 failed, 4 passed" a
 failed, 2 passed", both the same on main 2d608113. tests/e2e: cold_start, full_mock_run,
 offline_session, unit_6_item_served 1 passed each; session_login_to_feedback "1 failed, 1 passed"
 and exit_criteria_mastery "2 failed", both the same on main; agent_drafts_served "1 failed" (no
-Unit 2 item served in 12 sessions). tests/providers/test_ai_notices.py "1 failed, 19 passed" (the
+Unit 2 item served in 12 sessions) four times in the worktree, and "1 passed in 428.62s" once the
+worktree's `var/` (the pacing and spend files the recording and the walk wrote) was moved aside; see
+Known defects, 2026-10-02, the e2e isolation leak. tests/providers/test_ai_notices.py "1 failed, 19 passed" (the
 stale v1 test). tests/api ai_notices_route 4 and ungraded_flow 5 passed; generation
 no_official_text 2 passed. Client: `npx vitest run` "Tests 1 failed | 1167 passed | 6 skipped
 (1174)", the failure App.test "reaches progress", which passed alone ("Tests 50 passed"); the
@@ -4403,6 +4405,15 @@ From the eleventh session, 2026-09-21, found and not fixed.
   test_the_grader_receives_every_field_of_the_point_record_and_nothing_undeclared` fails for the
   same reason on both v2 templates; main (2d608113) gives the same "3 failed, 25 passed" over the
   two files.
+
+- 2026-10-02, stage 13 (frq), open, test isolation. `tests/e2e/test_agent_drafts_served.py` reads
+  the checkout's own `var/subscription_pacing.json`: in the frq worktree, after the cassette
+  recording and the live walk had written that file, it failed four runs in four ("no Unit 2 item
+  was served in 12 sessions"), and with `var/` moved aside it passed ("1 passed in 428.62s"); on
+  main and in a scratch worktree with no `var/` it passed three in three. A test that builds the
+  app should point every `var/` path at its tmp directory. The e2e failures that main shows
+  (session_login_to_feedback, exit_criteria_mastery) should be rerun with main's `var/` moved aside
+  before they are taken for engine faults.
 
 - 2026-10-02, stage 13 (frq), note. `tools/check_items.py content/frq_items` stops with
   `KeyError: 'answer_key'`: it checks multiple-choice and short-answer banks. The free-response

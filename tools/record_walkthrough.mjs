@@ -13,6 +13,7 @@ Each step names its kind in "do":
    {"do": "navigate", "url": "http://localhost:5176/"}
    {"do": "cookie", "name": "session", "value": "...", "url": "http://localhost:5176/"}
    {"do": "click", "selector": "#draw"} or {"do": "click", "text": "Show all", "role": "button"}
+   {"do": "drag", "selector": ".board-title", "by": [120, 80], "steps": 12, "duration_ms": 600}
    {"do": "type", "selector": "textarea", "text": "sketch y = x^2"}
    {"do": "press", "key": "Meta+/"}
    {"do": "wait_for", "selector": "svg.figure", "timeout_ms": 20000} or {"do": "wait_for", "text": "Figure:"}
@@ -25,7 +26,9 @@ Each step names its kind in "do":
 
 Any step may carry "caption", which shows from that step until the next caption; an empty caption
 clears it. Click by text looks at buttons, links and [role] elements, and wait_for a selector waits
-until it is visible. Recording starts once the first navigate step has loaded, so setup before it
+until it is visible. A drag presses the left button at the centre of the selector's first match,
+moves it by "by" in "steps" moves spread over "duration_ms" (12 and 600 when left out) and lets go
+there, so a component listening for pointer events sees a real drag. Recording starts once the first navigate step has loaded, so setup before it
 stays out of the video. The video is the size of the starting viewport in device pixels, and frames
 from later viewports are scaled to fit it. Paths are relative to the working directory. Typed text
 and cookie values are never printed.
@@ -66,6 +69,10 @@ const LETTERBOX_COLOR = "0x101014";
 const DEFAULT_VIEWPORT = { width: 1280, height: 800, deviceScaleFactor: 1, mobile: false };
 const DEFAULT_FPS = 10;
 const MAX_FPS = 60;
+const DEFAULT_DRAG_STEPS = 12;
+const MAX_DRAG_STEPS = 60;
+const DEFAULT_DRAG_DURATION_MS = 600;
+const MAX_DRAG_DURATION_MS = 5000;
 
 const SCRIPT_FIELDS = { required: { steps: "object" }, optional: { viewport: "object", fps: "number" } };
 const VIEWPORT_FIELDS = { required: { width: "number", height: "number" }, optional: { deviceScaleFactor: "number", mobile: "boolean" } };
@@ -74,6 +81,7 @@ const COMMON_STEP_FIELDS = { do: "string", caption: "string" };
 const STEP_FIELDS = {
    navigate: { required: { url: "string" }, optional: { timeout_ms: "number" } },
    click: { required: {}, optional: { selector: "string", text: "string", role: "string", timeout_ms: "number" } },
+   drag: { required: { selector: "string", by: "object" }, optional: { steps: "number", duration_ms: "number", timeout_ms: "number" } },
    type: { required: { text: "string" }, optional: { selector: "string", timeout_ms: "number" } },
    press: { required: { key: "string" }, optional: {} },
    wait_for: { required: {}, optional: { selector: "string", text: "string", timeout_ms: "number" } },
@@ -258,6 +266,32 @@ function checkStepMeaning(step, where, problems) {
 
          if (roleWithoutText) {
             problems.push(`${where}: "role" only narrows a click by text`);
+         }
+         break;
+      }
+      case "drag": {
+         const emptySelector = step.selector === "";
+         const byIsList = Array.isArray(step.by);
+         const byIsPair = byIsList && step.by.length === 2 && step.by.every(Number.isFinite);
+         const stepsIsValid = Number.isInteger(step.steps) && step.steps >= 1 && step.steps <= MAX_DRAG_STEPS;
+         const badSteps = step.steps !== undefined && !stepsIsValid;
+         const durationIsValid = step.duration_ms > 0 && step.duration_ms <= MAX_DRAG_DURATION_MS;
+         const badDuration = step.duration_ms !== undefined && !durationIsValid;
+
+         if (emptySelector) {
+            problems.push(`${where}: "selector" is empty`);
+         }
+
+         if (!byIsPair) {
+            problems.push(`${where}: "by" must be a pair of finite numbers, as in [120, 80]`);
+         }
+
+         if (badSteps) {
+            problems.push(`${where}: "steps" must be a whole number from 1 to ${MAX_DRAG_STEPS}`);
+         }
+
+         if (badDuration) {
+            problems.push(`${where}: "duration_ms" must be above 0 and at most ${MAX_DRAG_DURATION_MS}`);
          }
          break;
       }
@@ -449,6 +483,14 @@ function describeStep(step) {
       case "click":
          description = `click ${describeTarget(step)}`;
          break;
+      case "drag": {
+         const [dx, dy] = step.by;
+         const moveCount = step.steps ?? DEFAULT_DRAG_STEPS;
+         const durationMs = step.duration_ms ?? DEFAULT_DRAG_DURATION_MS;
+
+         description = `drag ${step.selector} by (${dx}, ${dy}) in ${moveCount} moves over ${durationMs} ms`;
+         break;
+      }
       case "type":
          description = `type into ${step.selector ?? "the focused element"} (value hidden)`;
          break;
@@ -984,7 +1026,7 @@ async function navigate(page, step) {
    await page.waitUntil("document.readyState === \"complete\"", timeoutMs, "the page to finish loading");
 }
 
-async function click(page, step) {
+function elementCentre(page, step) {
    const pointExpression = `(() => {
       const element = (${elementLocator(step)})();
 
@@ -999,13 +1041,39 @@ async function click(page, step) {
       return { x: box.left + box.width / 2, y: box.top + box.height / 2 };
    })()`;
 
-   const point = await page.waitUntil(pointExpression, step.timeout_ms ?? DEFAULT_WAIT_TIMEOUT_MS, describeTarget(step));
+   return page.waitUntil(pointExpression, step.timeout_ms ?? DEFAULT_WAIT_TIMEOUT_MS, describeTarget(step));
+}
+
+async function click(page, step) {
+   const point = await elementCentre(page, step);
 
    for (const type of ["mouseMoved", "mousePressed", "mouseReleased"]) {
       const buttons = type === "mousePressed" ? 1 : 0;
 
       await page.send("Input.dispatchMouseEvent", { type, x: point.x, y: point.y, button: "left", buttons, clickCount: 1 });
    }
+}
+
+async function drag(page, step) {
+   const start = await elementCentre(page, step);
+   const [dx, dy] = step.by;
+   const end = { x: start.x + dx, y: start.y + dy };
+   const moveCount = step.steps ?? DEFAULT_DRAG_STEPS;
+   const pauseMs = (step.duration_ms ?? DEFAULT_DRAG_DURATION_MS) / moveCount;
+
+   await page.send("Input.dispatchMouseEvent", { type: "mouseMoved", x: start.x, y: start.y, button: "none", buttons: 0 });
+   await page.send("Input.dispatchMouseEvent", { type: "mousePressed", x: start.x, y: start.y, button: "left", buttons: 1, clickCount: 1 });
+
+   for (let move = 1; move <= moveCount; move += 1) {
+      const progress = move / moveCount;
+      const x = start.x + dx * progress;
+      const y = start.y + dy * progress;
+
+      await sleep(pauseMs);
+      await page.send("Input.dispatchMouseEvent", { type: "mouseMoved", x, y, button: "left", buttons: 1 });
+   }
+
+   await page.send("Input.dispatchMouseEvent", { type: "mouseReleased", x: end.x, y: end.y, button: "left", buttons: 0, clickCount: 1 });
 }
 
 async function typeText(page, step) {
@@ -1129,6 +1197,9 @@ async function runStep(context, step) {
          break;
       case "click":
          await click(page, step);
+         break;
+      case "drag":
+         await drag(page, step);
          break;
       case "type":
          await typeText(page, step);

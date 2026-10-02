@@ -7,11 +7,13 @@ bank ids do not match the screen schema's ITM pattern, so the practice item, its
 lesson are written straight into the database. Every stored row is read back from the database,
 never from the response.
 """
+import gc
 import json
 import logging
 import time
 from datetime import datetime, timedelta, timezone
 
+import anyio
 import pytest
 import sympy
 from sqlalchemy import select
@@ -45,6 +47,8 @@ PRACTICE_LINE = "Can see: Today, practice item, not checked yet. Cannot see: you
 FAKE_FIVE_HOUR_WINDOW_SECONDS = 3600
 AGENT_CAPS = {"agent": BudgetCaps(cap_usd=1.50, cap_tokens=1_500_000)}
 MISSING_BINARY = FAKE_CLAUDE.parent / "no_such_claude"
+STOPPED_SCRIPT = "First sentence. Second sentence? Third sentence."
+STOP_BOUND_SECONDS = 30
 
 
 @pytest.fixture(scope="module")
@@ -253,6 +257,95 @@ def test_the_student_and_agent_turns_are_stored_with_the_screen_and_the_outcome(
 
    assert conversation.turn_count == 2
    assert conversation.opened_on_screen == "session_item"
+
+
+def stop_after_first_text(world, client, screen, message="I plugged in 3 and got 0/0."):
+   """Drives the whole app as uvicorn does, on ASGI spec 2.3, with the client gone once the first
+   text event is written, as the panel's Stop aborts the request: receive reports the disconnect and
+   send drops whatever is written after it. TestClient cannot do this, since it answers
+   http.disconnect only once the response is complete. Returns the events and the agent turns
+   stored when the app's call returned; the collection after it runs while the loop is still up, as
+   it does in the server, before the loop's own shutdown could close the stream."""
+   body = json.dumps({"conversation_id": None, "screen": screen, "message": message}).encode()
+   cookie = "; ".join(f"{name}={value}" for name, value in client.cookies.items())
+   scope = {
+      "type": "http",
+      "asgi": {"version": "3.0", "spec_version": "2.3"},
+      "http_version": "1.1",
+      "method": "POST",
+      "scheme": "http",
+      "path": "/agent/turns",
+      "raw_path": b"/agent/turns",
+      "root_path": "",
+      "query_string": b"",
+      "headers": [(b"host", b"127.0.0.1"), (b"content-type", b"application/json"), (b"cookie", cookie.encode())],
+      "client": ("127.0.0.1", 40000),
+      "server": ("127.0.0.1", 80),
+   }
+   written = []
+   stored_on_return = []
+
+   async def drive():
+      first_text_written = anyio.Event()
+      request_read = False
+
+      async def receive():
+         nonlocal request_read
+
+         if not request_read:
+            request_read = True
+            return {"type": "http.request", "body": body, "more_body": False}
+
+         await first_text_written.wait()
+
+         return {"type": "http.disconnect"}
+
+      async def send(message):
+         if first_text_written.is_set():
+            return
+
+         chunk = message.get("body", b"")
+         written.append(chunk)
+
+         if b"event: text" in chunk:
+            first_text_written.set()
+
+      with anyio.fail_after(STOP_BOUND_SECONDS):
+         await world.app(scope, receive, send)
+
+      stored_on_return.extend(agent_turns(world, "agent"))
+      gc.collect()
+
+   anyio.run(drive)
+
+   return parsed_events(b"".join(written).decode()), stored_on_return
+
+
+def test_a_reply_stopped_after_its_first_text_is_stored_as_stopped_with_the_released_text(agent, cli):
+   """The Stop path once ran only when the garbage collector reached the abandoned stream, after the
+   conversation it updates had been collected, so no stopped reply was stored. The reply is stored
+   by the time the server is done with the aborted request. The stream keeps releasing sentences
+   until the disconnect reaches it, so the stored text is a prefix of the reply that starts with
+   what the client was sent and may run past it."""
+   cli.mode("stream_script")
+   (cli.home / "fake_claude_stream_text.txt").write_text(STOPPED_SCRIPT)
+   client, _user_id, screen = practice(agent)
+   events, stored_on_return = stop_after_first_text(agent, client, screen)
+
+   assert names_of(events) == ["start", "text"]
+
+   start, first = (data for _name, data in events)
+   reply = agent_turns(agent, "agent")
+
+   assert [row.outcome for row in reply] == ["stopped"]
+   assert [row.id for row in stored_on_return] == [reply[0].id]
+   assert reply[0].text.startswith(first["delta"])
+   assert STOPPED_SCRIPT.startswith(reply[0].text)
+   assert reply[0].conversation_id == start["conversation_id"]
+
+   conversation = rows_of(agent, models.AgentConversation, id=start["conversation_id"])[0]
+
+   assert conversation.turn_count == 2
 
 
 def test_the_screen_line_is_echoed_for_a_lesson_and_for_progress(agent, snapshot):

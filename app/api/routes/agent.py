@@ -11,10 +11,15 @@ architecture.md, Streaming end to end). The request's own database session commi
 handler returns, which is before the stream has finished, so the stream opens its own session on
 the application's engine and holds it for the life of the stream: run_turn commits the student's
 turn before the first byte and the reply after the end event. The route logs nothing of the turn;
-run_turn logs the turn id, the outcome, the link and the elapsed time.
+run_turn logs the turn id, the outcome, the link and the elapsed time. When the student presses Stop
+the client aborts the request, and the response closes the stream at once, inside the stream's
+session, so run_turn stores the stopped reply then rather than whenever the garbage collector
+reaches the abandoned generator.
 """
 import json
+from contextlib import closing
 
+import anyio
 from fastapi import APIRouter, Body, Depends, HTTPException, Request
 from fastapi.responses import StreamingResponse
 from sqlalchemy.orm import Session as OrmSession
@@ -160,19 +165,37 @@ def sse_frame(turn_event):
    return f"event: {turn_event['event']}\ndata: {json.dumps(turn_event['data'])}\n\n"
 
 
+class ClosingStreamingResponse(StreamingResponse):
+   """Starlette leaves a sync body open when the client disconnects. A generator collected in a
+   reference cycle has its weak references cleared before it is closed, so run_turn's Stop path met
+   a conversation SQLAlchemy could no longer track and stored nothing."""
+
+   def __init__(self, generator, **kwargs):
+      super().__init__(generator, **kwargs)
+      self.generator = generator
+
+   async def stream_response(self, send):
+      try:
+         await super().stream_response(send)
+      finally:
+         with anyio.CancelScope(shield=True):
+            await anyio.to_thread.run_sync(self.generator.close)
+
+
 def turn_stream(request, user_id, body, now):
    settings = request.app.state.settings
 
    with OrmSession(request.app.state.engine) as db:
       user = db.get(models.User, user_id)
 
-      for turn_event in run_turn(settings, db, user, body, now):
-         yield sse_frame(turn_event)
+      with closing(run_turn(settings, db, user, body, now)) as turn_events:
+         for turn_event in turn_events:
+            yield sse_frame(turn_event)
 
 
 @router.post("/agent/turns")
 def post_turn(request: Request, payload: dict = Body(default=None), user=Depends(current_user)):
-   return StreamingResponse(
+   return ClosingStreamingResponse(
       turn_stream(request, user.id, payload, auth_service.utc_now()),
       media_type=EVENT_STREAM,
       headers=dict(STREAM_HEADERS),

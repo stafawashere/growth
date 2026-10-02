@@ -36,8 +36,29 @@ screen JSON, with tutor_profile_clipped when the guardrail level clipped a value
 only in the stored row: the screen the composer validates and the prompt carries are the ones the
 panel sent, and the history sent to the model holds roles and text only.
 
-Only the turn id, the outcome, the link and the elapsed milliseconds are logged, never a delta, a
-prompt, a memory entry or the student's message.
+A reply may hold one figure (docs/agent/drawing-design.md, From block to screen and Events and
+order). The provider's deltas pass through app/agent/drawing/stream.py FigureSplitter before the
+sentence screen. At the first block's opening fence the screen releases the fragment it holds and
+figure_pending goes out; on a turn whose move does not draw, or with the drawing switch off, the
+block is refused there with the reason closed or off. A closed block is read, compiled and put
+through app/evals/figure_checks.py: a figure that fails is withheld exactly as a failing sentence
+is, the decline and nothing after it, with part figure in the audit detail and no figure event; one
+that passes goes out as the figure event. A step marked in a sentence goes out as figure_step
+immediately before that sentence's text event, and the steps no sentence marked go out after the
+last sentence and before end. figure_refused carries the reason and one line of copy, and the text
+goes on. The agent turn stores the figure's record (app/agent/drawing/record.py).
+
+A reply may also hold one marks block, which marks anchors the packet lists on the page itself
+(docs/agent/drawing-design.md, Marks on the page). It is read against the turn's anchors
+(app/agent/drawing/marks.py), screened by screen_marks and withheld exactly as a figure is, with
+part marks in the audit detail; it goes out as the marks event, its steps as figure_step events with
+the marks block's id, and a dropped block as figure_refused with part marks. The move and the switch
+open and close it as they do a figure, and step ids are unique across the figure and the marks,
+since one marker vocabulary reveals both. The stored record carries it as its marks entry.
+
+Only the turn id, the outcome, the link, the elapsed milliseconds, the figure's outcome and the
+number of steps sent are logged, never a delta, a prompt, a memory entry, the student's message or
+anything the figure holds.
 """
 import json
 import logging
@@ -50,6 +71,11 @@ from sqlalchemy import select
 
 from app.agent import consolidate, conversations, memory, profile
 from app.agent import copy as agent_copy
+from app.agent.drawing import record as figure_record
+from app.agent.drawing import stream as figure_stream
+from app.agent.drawing.compile import compile_figure
+from app.agent.drawing.marks import compile_marks, read_marks
+from app.agent.drawing.spec import FigureRefused, read_figure
 from app.agent.context import (
    TimedPartRefused,
    compose_packet,
@@ -57,14 +83,15 @@ from app.agent.context import (
    question_key_forms,
    question_section,
    render_prompt,
+   turn_anchors,
    validate_screen,
 )
-from app.agent.moves import AFTER_SUBMISSION, PRACTICE
+from app.agent.moves import AFTER_SUBMISSION, DRAWING_OPEN, PRACTICE
 from app.agent.screen import SentenceScreen
 from app.api.routes.sessions import attempt_diagnoses, chosen_option, owned_attempt, owned_session
-from app.auth.service import write_audit
+from app.auth.service import new_id, write_audit
 from app.db import models
-from app.evals import agent_checks
+from app.evals import agent_checks, figure_checks
 from app.experiments import switches
 from app.feedback import render
 from app.lessons import repository as lesson_repository
@@ -121,6 +148,21 @@ START_EVENT = "start"
 TEXT_EVENT = "text"
 END_EVENT = "end"
 ERROR_EVENT = "error"
+FIGURE_PENDING_EVENT = "figure_pending"
+FIGURE_EVENT = "figure"
+FIGURE_STEP_EVENT = "figure_step"
+FIGURE_REFUSED_EVENT = "figure_refused"
+
+MARKS_EVENT = "marks"
+
+FIGURE_REFUSED_COPY = "The figure for this reply could not be drawn."
+MARKS_REFUSED_COPY = "The marks for this reply could not be drawn."
+FIGURE_PART = "figure"
+MARKS_PART = "marks"
+CLOSED_FIGURE = "closed"
+SWITCHED_OFF_FIGURE = "off"
+MALFORMED_FIGURE = "malformed"
+NO_FIGURE = "none"
 
 
 class TurnRefused(Exception):
@@ -170,10 +212,60 @@ class TurnProfile:
 
 
 @dataclass
+class FigureState:
+   """The reply's first figure, or its first marks block when part is marks: may_draw and
+   switched_on come from the move and the switch, outcome is set once the block is shown, refused or
+   withheld, and steps keeps the markers once shown."""
+
+   figure_id: str
+   may_draw: bool
+   switched_on: bool
+   part: str = FIGURE_PART
+   outcome: str | None = None
+   spec: dict | None = None
+   steps: figure_stream.StepMarkers | None = None
+   withheld: bool = False
+
+   def record(self):
+      if self.outcome is None:
+         return None
+
+      revealed = len(self.steps.revealed) if self.steps is not None else 0
+
+      return figure_record.stored_figure(self.outcome, self.spec, revealed)
+
+   def log_fields(self):
+      revealed = len(self.steps.revealed) if self.steps is not None else 0
+
+      return (self.outcome or NO_FIGURE, revealed)
+
+
+@dataclass
 class StreamState:
    released: list = field(default_factory=list)
    failure: Exception | None = None
    late_first_text: bool = False
+   fed_length: int = 0
+   released_length: int = 0
+   figure: FigureState | None = None
+   marks: FigureState | None = None
+   anchors: list = field(default_factory=list)
+   options_hidden: bool = False
+
+   def blocks(self):
+      return [block for block in (self.figure, self.marks) if block is not None]
+
+   def taken_step_ids(self, block):
+      """The step ids the reply's other block has shown, which this block may not reuse."""
+      taken = set()
+
+      for other in self.blocks():
+         is_other_shown = other is not block and other.steps is not None
+
+         if is_other_shown:
+            taken.update(other.steps.step_ids)
+
+      return taken
 
 
 def event(name, data):
@@ -200,8 +292,20 @@ def elapsed_ms(clock, started):
    return int(round((clock() - started) * 1000))
 
 
-def log_turn(turn_id, outcome, link, clock, started):
-   logger.info("agent turn %s outcome=%s link=%s elapsed_ms=%d", turn_id, outcome, link, elapsed_ms(clock, started))
+def log_turn(turn_id, outcome, link, clock, started, figure=None, marks=None):
+   figure_outcome, steps = figure.log_fields() if figure is not None else (NO_FIGURE, 0)
+   marks_outcome, marks_steps = marks.log_fields() if marks is not None else (NO_FIGURE, 0)
+   logger.info(
+      "agent turn %s outcome=%s link=%s elapsed_ms=%d figure=%s steps=%d marks=%s marks_steps=%d",
+      turn_id,
+      outcome,
+      link,
+      elapsed_ms(clock, started),
+      figure_outcome,
+      steps,
+      marks_outcome,
+      marks_steps,
+   )
 
 
 def fields_of(body):
@@ -474,7 +578,7 @@ def conversation_history(db, conversation):
       .order_by(models.AgentTurn.created_at, models.AgentTurn.id)
    )
 
-   return [{"role": turn.role, "text": turn.text} for turn in db.scalars(statement).all()]
+   return [{"role": turn.role, "text": turn.text, "figure": turn.figure} for turn in db.scalars(statement).all()]
 
 
 def answered_previous_question(history, message):
@@ -588,6 +692,7 @@ def prepare_turn(settings, db, user, body, now):
          turn_index_on_item=prior_on_item,
          student_answered_question=answered_previous_question(history, message),
          diagnosis=rows.diagnosis,
+         drawing_enabled=drawing_switched_on(settings),
       )
    except TimedPartRefused:
       raise TurnRefused(agent_copy.TIMED) from None
@@ -624,6 +729,10 @@ def prepare_turn(settings, db, user, body, now):
       turns_on_item=prior_on_item + 1 if is_on_an_item else 0,
       turns_in_conversation=prior_in_conversation + 1,
    )
+
+
+def drawing_switched_on(settings):
+   return getattr(settings, "agent_drawing", True) is not False
 
 
 def key_forms_for(rows, screen):
@@ -728,15 +837,19 @@ def withheld_already_recorded(db, user_id, day):
    return False
 
 
-def record_withheld(db, user_id, verdict, turn_id, now):
+def record_withheld(db, user_id, verdict, turn_id, now, part=None):
    """One row per user per day, the bound guard.py keeps for a pacing refusal. The detail names the
-   check and the turn, never the text."""
+   check, the turn and, for a figure, the part, never the text or a value."""
    day = now.date().isoformat()
 
    if withheld_already_recorded(db, user_id, day):
       return
 
    detail = {"check": verdict.check, "turn_id": turn_id, "day": day}
+
+   if part is not None:
+      detail["part"] = part
+
    write_audit(db, user_id, WITHHELD_ACTION, f"agent_turns:{turn_id}", detail, now=now)
 
 
@@ -751,12 +864,227 @@ def released_event(sentence, sentence_screen, state):
    return event(TEXT_EVENT, {"delta": delta})
 
 
+def step_event(figure, step_id):
+   return event(FIGURE_STEP_EVENT, {"figure": figure.figure_id, "step": step_id})
+
+
+def refused_event(reason, part=FIGURE_PART):
+   """A dropped figure's event is unchanged; a dropped marks block's names its part."""
+   is_marks = part == MARKS_PART
+
+   if is_marks:
+      return event(FIGURE_REFUSED_EVENT, {"reason": reason, "copy": MARKS_REFUSED_COPY, "part": MARKS_PART})
+
+   return event(FIGURE_REFUSED_EVENT, {"reason": reason, "copy": FIGURE_REFUSED_COPY})
+
+
+def sentence_events(sentences, sentence_screen, state):
+   """Each released sentence as its text event, preceded by the figure and marks steps marked
+   inside it."""
+   for sentence in sentences:
+      is_decline = sentence_screen.withheld is not None and sentence == sentence_screen.decline
+
+      if not is_decline:
+         state.released_length += len(sentence)
+
+         for block in state.blocks():
+            has_steps = block.steps is not None
+
+            if has_steps:
+               for step_id in block.steps.due_before(state.released_length):
+                  yield step_event(block, step_id)
+
+      yield released_event(sentence, sentence_screen, state)
+
+
+def refuse_figure(figure, reason):
+   """The first block's refusal; a block already refused, shown or withheld keeps its outcome."""
+   if figure.outcome is not None:
+      return []
+
+   figure.outcome = figure_record.refused_outcome(reason)
+
+   return [refused_event(reason, figure.part)]
+
+
+def refuse_closed(block):
+   if not block.switched_on:
+      return refuse_figure(block, SWITCHED_OFF_FIGURE)
+
+   if not block.may_draw:
+      return refuse_figure(block, CLOSED_FIGURE)
+
+   return []
+
+
+def opening_fence_events(sentence_screen, state):
+   yield from sentence_events(sentence_screen.boundary(), sentence_screen, state)
+
+   if sentence_screen.withheld is not None:
+      return
+
+   yield event(FIGURE_PENDING_EVENT, {})
+   yield from refuse_closed(state.figure)
+
+
+def marks_fence_events(sentence_screen, state):
+   yield from sentence_events(sentence_screen.boundary(), sentence_screen, state)
+
+   if sentence_screen.withheld is not None:
+      return
+
+   yield from refuse_closed(state.marks)
+
+
+def compiled_figure(block_text, figure_id):
+   """(source, render_spec, facts) for a block, or FigureRefused. A figure the compiler cannot handle
+   for any other reason is refused as malformed rather than allowed to end the reply."""
+   try:
+      source = read_figure(block_text)
+      render_spec, facts = compile_figure(source, figure_id=figure_id)
+   except FigureRefused:
+      raise
+   except Exception as raised:
+      logger.warning("agent figure could not be compiled: %s", type(raised).__name__)
+      raise FigureRefused(MALFORMED_FIGURE) from None
+
+   return source, render_spec, facts
+
+
+def compiled_marks(block_text, marks_id, anchors, options_hidden):
+   """(source, render_marks, facts) for a marks block read against the turn's anchors, or
+   FigureRefused, with any other failure refused as malformed."""
+   try:
+      source = read_marks(block_text, anchors, options_hidden)
+      render_marks, facts = compile_marks(source, anchors, marks_id=marks_id, options_hidden=options_hidden)
+   except FigureRefused:
+      raise
+   except Exception as raised:
+      logger.warning("agent marks could not be compiled: %s", type(raised).__name__)
+      raise FigureRefused(MALFORMED_FIGURE) from None
+
+   return source, render_marks, facts
+
+
+def shared_step_ids(state, block, step_ids):
+   return len(set(step_ids) & state.taken_step_ids(block)) > 0
+
+
+def marks_block_events(block_text, sentence_screen, state):
+   marks = state.marks
+
+   if marks.outcome is not None:
+      return
+
+   try:
+      source, render_marks, facts = compiled_marks(
+         block_text,
+         marks.figure_id,
+         state.anchors,
+         state.options_hidden,
+      )
+   except FigureRefused as refused:
+      yield from refuse_figure(marks, refused.reason)
+      return
+
+   step_ids = [step["id"] for step in render_marks["steps"]]
+
+   if shared_step_ids(state, marks, step_ids):
+      yield from refuse_figure(marks, MALFORMED_FIGURE)
+      return
+
+   verdict = figure_checks.screen_marks(facts, sentence_screen.facts, sentence_screen.key_forms)
+
+   if not verdict.passed:
+      marks.outcome = figure_record.WITHHELD
+      marks.withheld = True
+      yield from sentence_events(sentence_screen.withhold(verdict), sentence_screen, state)
+      return
+
+   marks.outcome = figure_record.SHOWN
+   marks.spec = source
+   marks.steps = figure_stream.StepMarkers(step_ids)
+   yield event(MARKS_EVENT, render_marks)
+
+
+def figure_block_events(block_text, sentence_screen, state):
+   figure = state.figure
+
+   if figure.outcome is not None:
+      return
+
+   try:
+      source, render_spec, facts = compiled_figure(block_text, figure.figure_id)
+   except FigureRefused as refused:
+      yield from refuse_figure(figure, refused.reason)
+      return
+
+   if shared_step_ids(state, figure, [step["id"] for step in render_spec["steps"]]):
+      yield from refuse_figure(figure, MALFORMED_FIGURE)
+      return
+
+   verdict = figure_checks.screen_figure(facts, sentence_screen.facts, sentence_screen.key_forms)
+
+   if not verdict.passed:
+      figure.outcome = figure_record.WITHHELD
+      figure.withheld = True
+      yield from sentence_events(sentence_screen.withhold(verdict), sentence_screen, state)
+      return
+
+   figure.outcome = figure_record.SHOWN
+   figure.spec = source
+   figure.steps = figure_stream.StepMarkers(step["id"] for step in render_spec["steps"])
+   yield event(FIGURE_EVENT, render_spec)
+
+
+def piece_events(pieces, sentence_screen, state):
+   """The events for the splitter's pieces, in order, stopping at a withheld reply."""
+   for kind, value in pieces:
+      if kind == figure_stream.TEXT:
+         state.fed_length += len(value)
+         yield from sentence_events(sentence_screen.feed(value), sentence_screen, state)
+      elif kind == figure_stream.MARKER:
+         for block in state.blocks():
+            has_steps = block.steps is not None
+
+            if has_steps:
+               block.steps.mark(value, state.fed_length)
+      elif kind == figure_stream.FENCE:
+         yield from opening_fence_events(sentence_screen, state)
+      elif kind == figure_stream.BLOCK:
+         yield from figure_block_events(value, sentence_screen, state)
+      elif kind == figure_stream.MARKS_FENCE:
+         yield from marks_fence_events(sentence_screen, state)
+      elif kind == figure_stream.MARKS_BLOCK:
+         yield from marks_block_events(value, sentence_screen, state)
+      elif value == figure_stream.EXTRA:
+         is_marks = kind == figure_stream.MARKS_REFUSED
+         yield refused_event(value, MARKS_PART if is_marks else FIGURE_PART)
+      elif kind == figure_stream.REFUSED:
+         yield from refuse_figure(state.figure, value)
+      elif kind == figure_stream.MARKS_REFUSED:
+         yield from refuse_figure(state.marks, value)
+
+      if sentence_screen.withheld is not None:
+         return
+
+
+def remaining_step_events(state):
+   for block in state.blocks():
+      has_steps = block.steps is not None
+
+      if has_steps:
+         for step_id in block.steps.remaining():
+            yield step_event(block, step_id)
+
+
 def screened_text(chain, request, sentence_screen, state, clock):
-   """Text events for the sentences the screen releases. A withheld sentence or a late first delta
+   """Text and figure events for what the screen releases. A withheld reply or a late first delta
    stops reading, and closing the chain's stream there leaves the guard's worst-case charge."""
    events = chain.stream(request)
    call_started = clock()
    saw_text = False
+   splitter = figure_stream.FigureSplitter()
 
    try:
       for provider_event in events:
@@ -773,14 +1101,22 @@ def screened_text(chain, request, sentence_screen, state, clock):
             state.late_first_text = True
             return
 
-         for sentence in sentence_screen.feed(provider_event["delta"]):
-            yield released_event(sentence, sentence_screen, state)
+         yield from piece_events(splitter.feed(provider_event["delta"]), sentence_screen, state)
 
          if sentence_screen.withheld is not None:
             return
 
-      for sentence in sentence_screen.flush():
-         yield released_event(sentence, sentence_screen, state)
+      yield from piece_events(splitter.finish(), sentence_screen, state)
+
+      if sentence_screen.withheld is not None:
+         return
+
+      yield from sentence_events(sentence_screen.flush(), sentence_screen, state)
+
+      if sentence_screen.withheld is not None:
+         return
+
+      yield from remaining_step_events(state)
    except Exception as raised:
       state.failure = raised
    finally:
@@ -791,7 +1127,14 @@ def reply_moment(now, clock, started):
    return now + max(timedelta(seconds=clock() - started), REPLY_STAMP_GAP)
 
 
-def store_reply(db, prepared, text, outcome, link, moment):
+def stored_blocks(figure, marks):
+   figure_part = figure.record() if figure is not None else None
+   marks_part = marks.record() if marks is not None else None
+
+   return figure_record.stored_turn_figure(figure_part, marks_part)
+
+
+def store_reply(db, prepared, text, outcome, link, moment, figure=None, marks=None):
    screen = prepared.screen
 
    return conversations.append_turn(
@@ -807,6 +1150,7 @@ def store_reply(db, prepared, text, outcome, link, moment):
       outcome=outcome,
       model=prepared.request.model,
       link=link,
+      figure=stored_blocks(figure, marks),
    )
 
 
@@ -850,7 +1194,16 @@ def run_turn(settings, db, user, body, now, clock=None):
       return
 
    sentence_screen = SentenceScreen(prepared.packet, key_forms_for(prepared.rows, prepared.screen))
-   state = StreamState()
+   may_draw = prepared.packet.drawing == DRAWING_OPEN
+   switched_on = drawing_switched_on(settings)
+   figure = FigureState(figure_id=new_id("FIG"), may_draw=may_draw, switched_on=switched_on)
+   marks = FigureState(figure_id=new_id("MRK"), may_draw=may_draw, switched_on=switched_on, part=MARKS_PART)
+   state = StreamState(
+      figure=figure,
+      marks=marks,
+      anchors=turn_anchors(prepared.packet.body),
+      options_hidden=prepared.packet.mode == PRACTICE,
+   )
 
    try:
       yield from screened_text(chain, prepared.request, sentence_screen, state, clock)
@@ -859,10 +1212,10 @@ def run_turn(settings, db, user, body, now, clock=None):
 
       if has_released:
          moment = reply_moment(now, clock, started)
-         store_reply(db, prepared, "".join(state.released), STOPPED, chain.served_by, moment)
+         store_reply(db, prepared, "".join(state.released), STOPPED, chain.served_by, moment, figure, marks)
 
       db.commit()
-      log_turn(student_turn_id, STOPPED, chain.served_by, clock, started)
+      log_turn(student_turn_id, STOPPED, chain.served_by, clock, started, figure, marks)
       raise
 
    has_released = len(state.released) > 0
@@ -873,7 +1226,7 @@ def run_turn(settings, db, user, body, now, clock=None):
    if failed_before_any_text:
       kind = agent_copy.UNAVAILABLE if state.late_first_text else failure_kind(state.failure)
       db.commit()
-      log_turn(student_turn_id, kind, chain.served_by, clock, started)
+      log_turn(student_turn_id, kind, chain.served_by, clock, started, figure, marks)
       yield failure_event(settings, kind)
       return
 
@@ -885,10 +1238,12 @@ def run_turn(settings, db, user, body, now, clock=None):
       outcome = COMPLETE
 
    moment = reply_moment(now, clock, started)
-   reply_turn = store_reply(db, prepared, "".join(state.released), outcome, chain.served_by, moment)
+   reply_turn = store_reply(db, prepared, "".join(state.released), outcome, chain.served_by, moment, figure, marks)
 
    if is_withheld:
-      record_withheld(db, user.id, sentence_screen.withheld, reply_turn.id, now)
+      withheld_parts = [block.part for block in (figure, marks) if block.withheld]
+      part = withheld_parts[0] if withheld_parts else None
+      record_withheld(db, user.id, sentence_screen.withheld, reply_turn.id, now, part=part)
 
    db.flush()
 
@@ -896,4 +1251,4 @@ def run_turn(settings, db, user, body, now, clock=None):
       yield end_event(prepared, reply_turn.id, outcome)
    finally:
       db.commit()
-      log_turn(reply_turn.id, outcome, chain.served_by, clock, started)
+      log_turn(reply_turn.id, outcome, chain.served_by, clock, started, figure, marks)

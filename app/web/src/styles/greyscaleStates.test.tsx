@@ -3,7 +3,10 @@ import type { ReactElement } from "react";
 import { afterAll, afterEach, beforeEach, describe, expect, it, vi } from "vitest";
 
 import * as client from "../api/client";
-import type { ExperimentState, MasteryNodeState } from "../api/types";
+import type { ExperimentState, MasteryNodeState, TutorFigurePrimitive, TutorFigureRole } from "../api/types";
+import { SECANT_TO_TANGENT, TABLE_OF_VALUES, figureCell, figureDot, figurePath, markTarget, pageMark } from "../agent/figureFixtures";
+import { PageMarks } from "../agent/PageMarks";
+import { TutorFigure } from "../agent/TutorFigure";
 import { multipleChoiceQuestion, noCalculatorPart } from "../assessment/fixtures";
 import { FigureView } from "../figures/FigureView";
 import { ReadBackView } from "../frq/ReadBack";
@@ -22,6 +25,7 @@ import { DESKTOP_WIDTH, VIEWPORT_WIDTHS, colourlessDeclarations, isSvgElement, r
 import {
    CALIBRATION,
    EVERY_STEP_MARK,
+   artBoard,
    FUNCTION_GRAPH,
    READ_BACK,
    gradings,
@@ -226,6 +230,79 @@ describe.each(VIEWPORT_WIDTHS)("eval_greyscale_states at %i px", (width) => {
          described(<FigureView spec={{ ...FUNCTION_GRAPH, marks: [{ type, at: [1, 1] }] }} />, (container) => container.querySelector("circle")!);
 
       expectDistinct({ filled: point("point"), open: point("open_point") });
+   });
+
+   it("every role of the tutor's figure reads without colour, on a stroke and on a dot", () => {
+      const roles: TutorFigureRole[] = ["given", "constructed", "highlight", "error"];
+      const twoSteps = [
+         { id: "one", caption: "One" },
+         { id: "two", caption: "Two" }
+      ];
+      const drawing = (container: HTMLElement) => container.querySelector("svg")!;
+      const drawnWith = (primitive: TutorFigurePrimitive) =>
+         described(<TutorFigure spec={{ ...SECANT_TO_TANGENT, kind: "diagram", axes: null, grid: false, steps: twoSteps, primitives: [primitive] }} revealed={2} finished />, drawing);
+
+      const strokes = Object.fromEntries(roles.map((role) => [role, drawnWith(figurePath("one", "m", role, [[-0.5, 1], [2, 6]]))]));
+      const dots = Object.fromEntries(roles.map((role) => [role, drawnWith(figureDot("one", "m", role, [1, 1]))]));
+
+      expectDistinct({ ...strokes, ghost: drawnWith(figurePath("one", "m", "constructed", [[-0.5, 1], [2, 6]], { faded_at: "two" })) });
+      expectDistinct({ ...dots, ghost: drawnWith(figureDot("one", "m", "constructed", [1, 1], { faded_at: "two" })) });
+   });
+
+   it("every role of the tutor's marks on the page reads without colour", () => {
+      const roles: TutorFigureRole[] = ["given", "constructed", "highlight", "error"];
+      const steps = [
+         { id: "one", caption: "One" },
+         { id: "two", caption: "Two" }
+      ];
+      const markedWith = (mark: ReturnType<typeof pageMark>) =>
+         described(
+            <>
+               <p data-agent-anchor="stem">The same words</p>
+               <PageMarks spec={{ id: "marks", description: "Marks.", steps, marks: [mark] }} revealed={2} />
+            </>
+         );
+      const underlines = Object.fromEntries(roles.map((role) => [role, markedWith(pageMark("one", "m", role, "underline", { target: markTarget("stem") }))]));
+
+      expectDistinct({ ...underlines, ghost: markedWith(pageMark("one", "m", "constructed", "underline", { target: markTarget("stem"), faded_at: "two" })) });
+   });
+
+   it("a tutor table's highlighted, wrong, faded and plain cells read without colour", () => {
+      const oneColumn = {
+         ...TABLE_OF_VALUES,
+         columns: ["\\(x\\)"],
+         rows: [["1"], ["1"], ["1"], ["1"]],
+         steps: [
+            { id: "one", caption: "One" },
+            { id: "two", caption: "Two" }
+         ],
+         primitives: [
+            figureCell("one", "a", "highlight", 0, null),
+            figureCell("one", "b", "error", 1, null),
+            figureCell("one", "c", "highlight", 2, null, { faded_at: "two" })
+         ]
+      };
+      const table = <TutorFigure spec={oneColumn} revealed={2} finished />;
+      const cell = (row: number) => described(table, (container) => container.querySelectorAll("tbody td")[row]);
+
+      expectDistinct({ highlighted: cell(0), wrong: cell(1), faded: cell(2), plain: cell(3) });
+   });
+
+   it("the art board's Previous and Next read as disabled without colour at the first and the last figure", () => {
+      function figureButtonsAt(current: number) {
+         const container = artBoard("open", false, current);
+         const buttons = ["Previous figure", "Next figure"].map((name) => colourless(within(container).getByRole("button", { name })));
+
+         cleanup();
+
+         return buttons;
+      }
+
+      const [previousAtFirst, nextAtFirst] = figureButtonsAt(0);
+      const [previousAtLast, nextAtLast] = figureButtonsAt(1);
+
+      expectDistinct({ disabled: previousAtFirst, enabled: previousAtLast });
+      expectDistinct({ enabled: nextAtFirst, disabled: nextAtLast });
    });
 
    it("the calibration curve's observed point, its interval and an empty level read without colour", () => {

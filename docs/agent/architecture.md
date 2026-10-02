@@ -146,3 +146,7 @@ The eval that guards the loop is the multi-turn golden set below plus a paired-p
 ## What is behind a switch [inferred]
 
 The `tutor_profile` experiment switch (default off) gates the profile's application. The memory pause switch in settings gates retrieval and consolidation per student. `GROWTH_AI_BACKEND=none` wires no agent link, so the panel shows the unavailable state and the rest of the app is unchanged; there is no separate feature flag for the panel, because a panel that cannot answer is the unavailable state, which the design specifies.
+
+## Drawing, 2026-09-30 [inferred]
+
+The drawing ability adds one package, `app/agent/drawing/` (`stream.py` the splitter between the provider's deltas and `SentenceScreen`, `expression.py` a closed expression grammar with no `eval`, `sympify`, `parse_expr` or `lambdify`, `spec.py` validation against `schemas/agent/figure.schema.json`, `compile.py` the geometry), one shared check module, `app/evals/figure_checks.py`, four server-sent events (`figure_pending`, `figure`, `figure_refused`, `figure_step`), one additive column (`agent_turns.figure`), one template (`prompts/agent/live_v2.md` with the app-composed `drawing` field), one kill switch (`GROWTH_AGENT_DRAWING`) and one client component (`app/web/src/agent/TutorFigure.tsx` on a graph frame shared with `FigureView`). It changes no role, cap, route, table key or boundary above; `SentenceScreen` gains `boundary()` and `withhold(verdict)`. The specification is `drawing-design.md` and the build order `drawing-build-plan.md`.

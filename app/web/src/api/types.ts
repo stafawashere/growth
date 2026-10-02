@@ -68,6 +68,147 @@ export type TableFigureSpec = {
 
 export type FigureSpec = GraphFigureSpec | TableFigureSpec;
 
+/* The live tutor's figure as the server compiles it (docs/agent/drawing-build-plan.md, "The render
+   spec contract"). Coordinates are world coordinates, y up, mapped into view with window and view
+   the way the server laid them out; a label's offset is in view units. Nothing here names a colour,
+   a class or a URL: a primitive carries a role and the client draws the role. */
+export type TutorFigureKind = "graph" | "diagram" | "number_line" | "table";
+
+export type TutorFigureRole = "given" | "constructed" | "highlight" | "error";
+
+export type TutorFigureStrokeStyle = "solid" | "dashed" | "dotted";
+
+export type TutorFigureStrokeWeight = "thin" | "regular" | "bold";
+
+export type TutorFigureArrow = "none" | "end" | "start" | "both";
+
+export type TutorFigureFill = "none" | "region" | "region_below";
+
+export type TutorFigureAlign = "start" | "middle" | "end";
+
+export interface TutorFigurePrimitiveBase {
+   step: string;
+   element: string;
+   role: TutorFigureRole;
+   faded_at: string | null;
+   erased_at: string | null;
+}
+
+export interface TutorFigurePath extends TutorFigurePrimitiveBase {
+   type: "path";
+   points: FigurePoint[];
+   closed: boolean;
+   fill: TutorFigureFill;
+   style: TutorFigureStrokeStyle;
+   weight: TutorFigureStrokeWeight;
+   arrow: TutorFigureArrow;
+   highlighter: boolean;
+}
+
+export interface TutorFigureDot extends TutorFigurePrimitiveBase {
+   type: "dot";
+   at: FigurePoint;
+   open: boolean;
+}
+
+export interface TutorFigureLabel extends TutorFigurePrimitiveBase {
+   type: "label";
+   at: FigurePoint;
+   offset: FigurePoint;
+   align: TutorFigureAlign;
+   text: string;
+}
+
+export interface TutorFigureCell extends TutorFigurePrimitiveBase {
+   type: "cell";
+   row: number | null;
+   column: number | null;
+   text?: string;
+}
+
+export type TutorFigurePrimitive = TutorFigurePath | TutorFigureDot | TutorFigureLabel | TutorFigureCell;
+
+export interface TutorFigureStep {
+   id: string;
+   caption: string;
+}
+
+/* Marks the tutor draws over the page itself (docs/agent/drawing-build-plan.md, "The marks
+   contract"). Every mark names an anchor the screen declared with data-agent-anchor; the client
+   finds the element and draws over it wherever it is laid out. A target's unused fields are null. */
+export type TutorMarkKind =
+   | "ring"
+   | "underline"
+   | "highlight"
+   | "strike"
+   | "bracket"
+   | "note"
+   | "arrow"
+   | "point"
+   | "segment"
+   | "line"
+   | "vline"
+   | "hline";
+
+export type TutorMarkSide = "left" | "right" | "above" | "below";
+
+export interface TutorMarkTarget {
+   anchor: string;
+   quote: string | null;
+   at: FigurePoint | null;
+   row: number | null;
+   column: number | null;
+   cell: [number, number] | null;
+}
+
+export interface TutorMarkStroke {
+   style: TutorFigureStrokeStyle;
+   weight: TutorFigureStrokeWeight;
+   arrow: TutorFigureArrow;
+   highlighter: boolean;
+}
+
+export interface TutorMark {
+   step: string;
+   element: string;
+   role: TutorFigureRole;
+   stroke: TutorMarkStroke;
+   faded_at: string | null;
+   erased_at: string | null;
+   kind: TutorMarkKind;
+   target?: TutorMarkTarget | null;
+   from?: TutorMarkTarget | null;
+   to?: TutorMarkTarget | null;
+   text?: string | null;
+   side?: TutorMarkSide | null;
+   at?: FigurePoint | null;
+   open?: boolean | null;
+   points?: [FigurePoint, FigurePoint] | null;
+}
+
+export interface TutorMarksSpec {
+   id: string;
+   description: string;
+   steps: TutorFigureStep[];
+   marks: TutorMark[];
+}
+
+export interface TutorFigureSpec {
+   id: string;
+   kind: TutorFigureKind;
+   title: string;
+   description: string;
+   window: { x: [number, number]; y: [number, number] } | null;
+   view: { width: number; height: number; padding: number } | null;
+   axes: { x: string; y: string } | null;
+   grid: boolean;
+   equal_scale: boolean;
+   steps: TutorFigureStep[];
+   columns: string[] | null;
+   rows: string[][] | null;
+   primitives: TutorFigurePrimitive[];
+}
+
 /* A queue slot as sessions.queue stores it: app/runtime/bank.py _as_item_dict plus the fields
    app/engine/select.py dress_item writes onto it. */
 export interface QueueSlot {
@@ -1742,6 +1883,21 @@ export interface AgentEndEvent {
    outcome: AgentTurnOutcome;
    turns_on_item: number;
    turns_in_conversation: number;
+}
+
+/* The figure events of docs/agent/drawing-design.md, "Events and order". figure_pending carries no
+   data and figure carries the render spec, TutorFigureSpec, which the client checks again. */
+export interface AgentFigureStepEvent {
+   figure: string;
+   step: string;
+}
+
+export type AgentFigureRefusedReason = "malformed" | "oversized" | "unclosed" | "extra" | "closed" | "off";
+
+export interface AgentFigureRefusedEvent {
+   reason: AgentFigureRefusedReason;
+   copy: string;
+   part?: "figure" | "marks";
 }
 
 export interface AgentErrorEvent {

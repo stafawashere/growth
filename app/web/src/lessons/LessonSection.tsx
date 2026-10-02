@@ -122,7 +122,7 @@ export function DeliveryBlock({ delivery }: { delivery: LessonDelivery | undefin
             {DELIVERY_TAGS[mode]}
          </span>
 
-         <div className="sheet-body">{drawn}</div>
+         <div className="sheet-body" data-agent-anchor="section_figure">{drawn}</div>
       </div>
    );
 }
@@ -463,6 +463,7 @@ export function LessonSection(props: LessonSectionProps) {
          data-testid="lesson-section"
          data-section-type={section.type}
          data-mode={sectionMode(section)}
+         data-agent-anchor="section"
       >
          {section.type === "prediction" ? (
             <Row heading={heading} ruled={asksForPrediction}>

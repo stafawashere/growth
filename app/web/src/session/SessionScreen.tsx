@@ -44,7 +44,7 @@ import { CorrectResult, ElaboratedPanel } from "./ElaboratedPanel";
 import { ErrorNoteField } from "./ErrorNoteField";
 import { collectsConfidence, Item, servesChoice } from "./Item";
 import { SelfExplanationPrompt } from "./SelfExplanationPrompt";
-import { StepMarks } from "./StepMarks";
+import { StepMarks, solutionStepAnchor } from "./StepMarks";
 import { Icon } from "../ui/Icon";
 import { Page, PageHeader } from "../ui/Page";
 
@@ -946,7 +946,7 @@ export function SessionScreen({ resumeSessionId, onLeave, onOpened }: SessionScr
                {hasFigure ? (
                   <div className="sheet-row" data-testid="feedback-figure">
                      <div className="sheet-body">
-                        <FigureView spec={item.figure_spec} />
+                        <FigureView spec={item.figure_spec} isItemFigure />
                      </div>
                   </div>
                ) : null}
@@ -967,7 +967,7 @@ export function SessionScreen({ resumeSessionId, onLeave, onOpened }: SessionScr
                               <p className="eyebrow">{METHOD_LABEL}</p>
 
                               <ol className="worked-steps">
-                                 <li data-step-index={openerFirstStep.index}>
+                                 <li data-step-index={openerFirstStep.index} data-agent-anchor={solutionStepAnchor(openerFirstStep.index)}>
                                     <MathText text={openerFirstStep.text} />
                                  </li>
                               </ol>

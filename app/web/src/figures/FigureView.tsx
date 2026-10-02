@@ -8,6 +8,19 @@ import type {
    TableFigureSpec
 } from "../api/types";
 import { MathText } from "../math/MathText";
+import {
+   FrameAxes,
+   FrameAxisTitles,
+   FrameGridlines,
+   FrameTicks,
+   frameTickLabels,
+   graphLayout,
+   textBox,
+   withoutMathDelimiters,
+   type TickLabel
+} from "./GraphFrame";
+
+export { gridStep, tickText, type TickLabel } from "./GraphFrame";
 
 /* Draws the declarative figure spec app/generation/kit.py builds (prompts/generator/
    figure_spec_v1.md). The spec arrives from the server as JSON, so it is checked here before
@@ -16,6 +29,10 @@ import { MathText } from "../math/MathText";
 
 export interface FigureViewProps {
    spec: unknown;
+   /* The figure of the item on screen, which the live tutor may mark: the graph carries its window
+      and plot box so a mark maps the item's own coordinates (docs/agent/drawing-build-plan.md, "The
+      marks contract"). */
+   isItemFigure?: boolean;
 }
 
 const GRAPH_KINDS: GraphFigureKind[] = [
@@ -38,25 +55,6 @@ const PLOT_WIDTH = VIEW_WIDTH - PLOT_PADDING * 2;
 const MINIMUM_PLOT_HEIGHT = 180;
 
 const MAXIMUM_PLOT_HEIGHT = PLOT_WIDTH;
-
-const MAXIMUM_GRIDLINES_PER_AXIS = 16;
-
-const GRID_STEPS = [0.5, 1, 2, 5, 10, 20, 50, 100, 200, 500, 1000];
-
-/* Where text sits relative to the line it labels, and how much room a line of caption text takes,
-   in the plot's own units. These place and space text inside the drawing; its size and colour come
-   from the figure classes in app.css. */
-const TEXT_GAP = 4;
-
-const TICK_LABEL_OFFSET = 14;
-
-const AXIS_TITLE_OFFSET = 6;
-
-const AXIS_TITLE_DROP = 14;
-
-const CAPTION_CHARACTER_WIDTH = 8;
-
-const CAPTION_LINE_HEIGHT = 14;
 
 function isRecord(value: unknown): value is Record<string, unknown> {
    return typeof value === "object" && value !== null && !Array.isArray(value);
@@ -190,33 +188,6 @@ export function parseFigureSpec(value: unknown): FigureSpec | null {
    return isGraphKind ? asGraphSpec(value) : null;
 }
 
-export function gridStep(span: number) {
-   for (const step of GRID_STEPS) {
-      const lineCount = span / step;
-
-      if (lineCount <= MAXIMUM_GRIDLINES_PER_AXIS) {
-         return step;
-      }
-   }
-
-   return GRID_STEPS[GRID_STEPS.length - 1];
-}
-
-function gridValues(low: number, high: number) {
-   const step = gridStep(high - low);
-   const values: number[] = [];
-
-   for (let value = Math.ceil(low / step) * step; value <= high; value += step) {
-      values.push(value);
-   }
-
-   return values;
-}
-
-function withoutMathDelimiters(text: string) {
-   return text.replace(/\\\(|\\\)/g, "").trim();
-}
-
 function plotHeightFor(spec: GraphFigureSpec) {
    const domainSpan = spec.domain[1] - spec.domain[0];
    const rangeSpan = spec.range[1] - spec.range[0];
@@ -235,168 +206,25 @@ function pointList(points: FigurePoint[], toView: (point: FigurePoint) => Figure
       .join(" ");
 }
 
-type TextAnchor = "start" | "middle" | "end";
-
-type TextBaseline = "auto" | "middle";
-
-interface TextBox {
-   left: number;
-   right: number;
-   top: number;
-   bottom: number;
+function layoutFor(spec: GraphFigureSpec) {
+   return graphLayout(spec, VIEW_WIDTH, PLOT_PADDING, plotHeightFor(spec));
 }
 
-export interface TickLabel {
-   axis: "x" | "y";
-   text: string;
-   x: number;
-   y: number;
-   anchor: TextAnchor;
-   baseline: TextBaseline;
-}
-
-export function tickText(value: number) {
-   return String(Number(value.toFixed(6)) + 0);
-}
-
-function textBox(x: number, y: number, text: string, anchor: TextAnchor, baseline: TextBaseline): TextBox {
-   const width = text.length * CAPTION_CHARACTER_WIDTH;
-   const leftByAnchor = { start: x, middle: x - width / 2, end: x - width };
-   const top = baseline === "middle" ? y - CAPTION_LINE_HEIGHT / 2 : y - CAPTION_LINE_HEIGHT;
-
-   return { left: leftByAnchor[anchor], right: leftByAnchor[anchor] + width, top, bottom: top + CAPTION_LINE_HEIGHT };
-}
-
-function boxesOverlap(first: TextBox, second: TextBox) {
-   const apartHorizontally = first.right <= second.left || second.right <= first.left;
-   const apartVertically = first.bottom <= second.top || second.bottom <= first.top;
-
-   return !apartHorizontally && !apartVertically;
-}
-
-interface GraphLayout {
-   viewX: (x: number) => number;
-   viewY: (y: number) => number;
-   left: number;
-   top: number;
-   xAxisY: number;
-   yAxisX: number;
-   showsXAxis: boolean;
-   showsYAxis: boolean;
-}
-
-function layoutFor(spec: GraphFigureSpec): GraphLayout & { right: number; bottom: number; viewHeight: number } {
-   const [xMin, xMax] = spec.domain;
-   const [yMin, yMax] = spec.range;
-   const plotHeight = plotHeightFor(spec);
-
-   const viewX = (x: number) => PLOT_PADDING + ((x - xMin) / (xMax - xMin)) * PLOT_WIDTH;
-   const viewY = (y: number) => PLOT_PADDING + ((yMax - y) / (yMax - yMin)) * plotHeight;
-
-   const left = viewX(xMin);
-   const bottom = viewY(yMin);
-   const showsXAxis = yMin <= 0 && 0 <= yMax;
-   const showsYAxis = xMin <= 0 && 0 <= xMax;
-
-   return {
-      viewX,
-      viewY,
-      left,
-      right: viewX(xMax),
-      top: viewY(yMax),
-      bottom,
-      viewHeight: plotHeight + PLOT_PADDING * 2,
-      xAxisY: showsXAxis ? viewY(0) : bottom,
-      yAxisX: showsYAxis ? viewX(0) : left,
-      showsXAxis,
-      showsYAxis
-   };
-}
-
-function axisTitleBoxes(spec: GraphFigureSpec, layout: GraphLayout & { right: number }) {
-   const [xTitle, yTitle] = spec.axis_titles;
-   const boxes: TextBox[] = [];
-
-   if (xTitle) {
-      boxes.push(textBox(layout.right - TEXT_GAP, layout.xAxisY - AXIS_TITLE_OFFSET, xTitle, "end", "auto"));
-   }
-
-   if (yTitle) {
-      boxes.push(textBox(layout.yAxisX + AXIS_TITLE_OFFSET, layout.top + AXIS_TITLE_DROP, yTitle, "start", "auto"));
-   }
-
-   return boxes;
-}
-
-/* A number at every gridline on both axes, so a value can be read off the graph rather than
-   counted in grid squares. A tick label is left out where it would sit across the other axis or
-   over a label or axis title already in the figure, and the y labels move to the right of the axis
-   when the left side has no room inside the drawing. */
 export function tickLabelsFor(spec: GraphFigureSpec): TickLabel[] {
    const layout = layoutFor(spec);
-   const taken = [
-      ...spec.labels.map((label) =>
-         textBox(
-            layout.viewX(label.anchor[0]),
-            layout.viewY(label.anchor[1]),
-            withoutMathDelimiters(label.text),
-            "start",
-            "auto"
-         )
-      ),
-      ...axisTitleBoxes(spec, layout)
-   ];
-   const ticks: TickLabel[] = [];
+   const labelBoxes = spec.labels.map((label) =>
+      textBox(layout.viewX(label.anchor[0]), layout.viewY(label.anchor[1]), withoutMathDelimiters(label.text), "start", "auto")
+   );
 
-   function place(candidate: TickLabel) {
-      const box = textBox(candidate.x, candidate.y, candidate.text, candidate.anchor, candidate.baseline);
-      const crossesYAxis = layout.showsYAxis && box.left < layout.yAxisX && layout.yAxisX < box.right;
-      const crossesXAxis = layout.showsXAxis && box.top < layout.xAxisY && layout.xAxisY < box.bottom;
-      const coversText = taken.some((other) => boxesOverlap(box, other));
-      const collides = crossesYAxis || crossesXAxis || coversText;
-
-      if (collides) {
-         return;
-      }
-
-      taken.push(box);
-      ticks.push(candidate);
-   }
-
-   for (const x of gridValues(spec.domain[0], spec.domain[1])) {
-      place({
-         axis: "x",
-         text: tickText(x),
-         x: layout.viewX(x),
-         y: layout.xAxisY + TICK_LABEL_OFFSET,
-         anchor: "middle",
-         baseline: "auto"
-      });
-   }
-
-   for (const y of gridValues(spec.range[0], spec.range[1])) {
-      const text = tickText(y);
-      const leftSideStart = layout.yAxisX - TEXT_GAP - text.length * CAPTION_CHARACTER_WIDTH;
-      const fitsOnTheLeft = leftSideStart >= 0;
-
-      place({
-         axis: "y",
-         text,
-         x: fitsOnTheLeft ? layout.yAxisX - TEXT_GAP : layout.yAxisX + TEXT_GAP,
-         y: layout.viewY(y),
-         anchor: fitsOnTheLeft ? "end" : "start",
-         baseline: "middle"
-      });
-   }
-
-   return ticks;
+   return frameTickLabels(spec, layout, spec.axis_titles, labelBoxes);
 }
 
-function GraphFigure({ spec }: { spec: GraphFigureSpec }) {
+function GraphFigure({ spec, isItemFigure }: { spec: GraphFigureSpec; isItemFigure: boolean }) {
    const layout = layoutFor(spec);
-   const { viewX, viewY, left, right, top, bottom, xAxisY, yAxisX, showsXAxis, showsYAxis, viewHeight } = layout;
+   const { viewX, viewY, viewHeight } = layout;
+   const agentWindow = `${spec.domain[0]} ${spec.domain[1]} ${spec.range[0]} ${spec.range[1]}`;
+   const agentPlot = `${layout.left} ${layout.top} ${layout.right} ${layout.bottom}`;
    const toView = (point: FigurePoint): FigurePoint => [viewX(point[0]), viewY(point[1])];
-   const [xTitle, yTitle] = spec.axis_titles;
 
    return (
       <svg
@@ -406,26 +234,17 @@ function GraphFigure({ spec }: { spec: GraphFigureSpec }) {
          className="figure-graph"
          data-testid="figure-graph"
          data-kind={spec.kind}
+         data-agent-anchor={isItemFigure ? "item_figure" : undefined}
+         data-agent-window={isItemFigure ? agentWindow : undefined}
+         data-agent-plot={isItemFigure ? agentPlot : undefined}
       >
          {spec.fills.map((fill, index) => (
             <polygon key={`fill${index}`} className="figure-region" points={pointList(fill.points, toView)} stroke="none" />
          ))}
 
-         {spec.gridlines ? (
-            <g className="figure-gridlines" stroke="var(--growth-border-hairline)" data-testid="figure-gridlines">
-               {gridValues(spec.domain[0], spec.domain[1]).map((x) => (
-                  <line key={`x${x}`} x1={viewX(x)} x2={viewX(x)} y1={top} y2={bottom} />
-               ))}
-               {gridValues(spec.range[0], spec.range[1]).map((y) => (
-                  <line key={`y${y}`} x1={left} x2={right} y1={viewY(y)} y2={viewY(y)} />
-               ))}
-            </g>
-         ) : null}
+         {spec.gridlines ? <FrameGridlines plotWindow={spec} layout={layout} /> : null}
 
-         <g className="figure-axes" stroke="var(--growth-text-secondary)">
-            {showsXAxis ? <line x1={left} x2={right} y1={xAxisY} y2={xAxisY} data-testid="figure-x-axis" /> : null}
-            {showsYAxis ? <line x1={yAxisX} x2={yAxisX} y1={top} y2={bottom} data-testid="figure-y-axis" /> : null}
-         </g>
+         <FrameAxes layout={layout} />
 
          {spec.curves.map((curve, curveIndex) =>
             curve.segments.map((segment, segmentIndex) => (
@@ -473,23 +292,7 @@ function GraphFigure({ spec }: { spec: GraphFigureSpec }) {
             );
          })}
 
-         {spec.gridlines ? (
-            <g data-testid="figure-ticks">
-               {tickLabelsFor(spec).map((tick) => (
-                  <text
-                     key={`${tick.axis}${tick.text}`}
-                     className="figure-tick"
-                     x={tick.x}
-                     y={tick.y}
-                     textAnchor={tick.anchor}
-                     dominantBaseline={tick.baseline}
-                     data-axis={tick.axis}
-                  >
-                     {tick.text}
-                  </text>
-               ))}
-            </g>
-         ) : null}
+         {spec.gridlines ? <FrameTicks ticks={tickLabelsFor(spec)} /> : null}
 
          {spec.labels.map((label, index) => (
             <text
@@ -503,24 +306,14 @@ function GraphFigure({ spec }: { spec: GraphFigureSpec }) {
             </text>
          ))}
 
-         {xTitle ? (
-            <text className="figure-axis-title" x={right - TEXT_GAP} y={xAxisY - AXIS_TITLE_OFFSET} textAnchor="end">
-               {xTitle}
-            </text>
-         ) : null}
-
-         {yTitle ? (
-            <text className="figure-axis-title" x={yAxisX + AXIS_TITLE_OFFSET} y={top + AXIS_TITLE_DROP} textAnchor="start">
-               {yTitle}
-            </text>
-         ) : null}
+         <FrameAxisTitles layout={layout} axisTitles={spec.axis_titles} />
       </svg>
    );
 }
 
-function TableFigure({ spec }: { spec: TableFigureSpec }) {
+function TableFigure({ spec, isItemFigure }: { spec: TableFigureSpec; isItemFigure: boolean }) {
    return (
-      <table className="figure-table" data-testid="figure-table">
+      <table className="figure-table" data-testid="figure-table" data-agent-anchor={isItemFigure ? "item_table" : undefined}>
          <caption className="visually-hidden">{spec.alt}</caption>
          <thead>
             <tr>
@@ -546,7 +339,7 @@ function TableFigure({ spec }: { spec: TableFigureSpec }) {
    );
 }
 
-export function FigureView({ spec }: FigureViewProps) {
+export function FigureView({ spec, isItemFigure = false }: FigureViewProps) {
    const figure = parseFigureSpec(spec);
 
    if (figure === null) {
@@ -555,7 +348,7 @@ export function FigureView({ spec }: FigureViewProps) {
 
    return (
       <div className="item-figure" data-testid="item-figure">
-         {figure.kind === "table" ? <TableFigure spec={figure} /> : <GraphFigure spec={figure} />}
+         {figure.kind === "table" ? <TableFigure spec={figure} isItemFigure={isItemFigure} /> : <GraphFigure spec={figure} isItemFigure={isItemFigure} />}
       </div>
    );
 }

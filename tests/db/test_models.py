@@ -76,6 +76,7 @@ AGENT_TABLE_COLUMNS = {
       "outcome",
       "model",
       "link",
+      "figure",
       "created_at",
       "updated_at",
    },

@@ -20,7 +20,9 @@ import type {
    PacePayload,
    ServedItem,
    SessionPayload,
-   StepMark
+   StepMark,
+   TutorFigureSpec,
+   TutorMarksSpec
 } from "../api/types";
 import { calculatorPart, multipleChoiceQuestion, noCalculatorPart } from "../assessment/fixtures";
 import { PartRunner } from "../assessment/PartRunner";
@@ -48,6 +50,11 @@ import { LessonsRoute } from "../lessons/LessonsRoute";
 import { PaceStatement } from "../progress/PaceStatement";
 import type { SettingsTab } from "../routing";
 import { TutorHarness, UNCHECKED_ITEM, frame } from "./agent";
+import { ArtBoard, type BoardMode } from "../agent/ArtBoard";
+import { EVERY_ROLE_FIGURE, EVERY_ROLE_MARKS, ITEM_MARKS, LABELLED_TABLE, SECANT_TO_TANGENT, TABLE_MARKS, TABLE_OF_VALUES, TRIANGLE_DIAGRAM } from "../agent/figureFixtures";
+import { PageMarks } from "../agent/PageMarks";
+import { Item } from "../session/Item";
+import { TutorFigure } from "../agent/TutorFigure";
 import { Loading } from "../status/LoadState";
 import type { CountdownPace } from "../ui/Countdown";
 
@@ -868,6 +875,145 @@ const TUTOR_SCREENS: Screen[] = [
    }
 ];
 
+export function tutorFigure(spec: TutorFigureSpec, revealed: number, finished: boolean) {
+   return inPage(
+      <aside className="agent-panel">
+         <div className="agent-reply">
+            <TutorFigure spec={spec} revealed={revealed} finished={finished} reducedMotion={false} />
+         </div>
+      </aside>
+   );
+}
+
+/* The tutor's figure in a reply: a finished graph in every role with arrowheads, a region above the
+   axis and one below it, and the last step fading the constructed marks; a finished table with a
+   highlighted row faded, an error cell and a highlighted column; and a figure still being built,
+   with only Show all under it. */
+/* A practice item with the tutor's marks over it, finished: every role and kind on the stem and the
+   graph, and a table row and cell. */
+function markedItem(item: ServedItem, marks: TutorMarksSpec) {
+   return inPage(
+      <>
+         <Item
+            item={item}
+            onAnswerChange={vi.fn()}
+            answerUnavailable={false}
+            onAnswerUnavailable={vi.fn()}
+            selectedOptionId={null}
+            onOptionChange={vi.fn()}
+            confidence={null}
+            onConfidenceChange={vi.fn()}
+            selfExplanation=""
+            onSelfExplanationChange={vi.fn()}
+            onCommit={vi.fn()}
+            awaitingConfidence={false}
+         />
+         <PageMarks spec={marks} revealed={marks.steps.length} />
+      </>
+   );
+}
+
+/* The tutor's art board holding two finished figures, on the first of them: floating, minimized to
+   its bar, and docked under the top bar as it is under 900 px. */
+export function artBoard(mode: BoardMode, isNarrow: boolean, current = 0) {
+   const figures = [SECANT_TO_TANGENT, TRIANGLE_DIAGRAM].map((spec, index) => ({ turnId: `reply-${index}`, spec, revealed: spec.steps.length, finished: true }));
+
+   return inPage(
+      <ArtBoard
+         figures={figures}
+         current={current}
+         mode={mode}
+         isNarrow={isNarrow}
+         isPanelOpen={false}
+         panel={{ current: null }}
+         focusFigure={false}
+         onFigureFocused={vi.fn()}
+         onChoose={vi.fn()}
+         onMinimize={vi.fn()}
+         onRestore={vi.fn()}
+         onClose={vi.fn()}
+         onShowAll={vi.fn()}
+      />
+   );
+}
+
+const TUTOR_FIGURE_SCREENS: Screen[] = [
+   { name: "tutor art board, floating, the first of two figures", mount: async () => artBoard("open", false) },
+   { name: "tutor art board, minimized to its bar", mount: async () => artBoard("minimized", false) },
+   { name: "tutor art board, docked under the top bar under 900 px", mount: async () => artBoard("open", true) },
+   { name: "tutor marks on an item, every role and kind, finished", mount: async () => markedItem(servedItem(), EVERY_ROLE_MARKS) },
+   { name: "tutor marks on an item's table, finished", mount: async () => markedItem(servedItem({ figure_spec: TABLE_FIGURE }), TABLE_MARKS) },
+   { name: "tutor figure, every role, finished", mount: async () => tutorFigure(EVERY_ROLE_FIGURE, EVERY_ROLE_FIGURE.steps.length, true) },
+   { name: "tutor figure, a table with its highlights, finished", mount: async () => tutorFigure(TABLE_OF_VALUES, TABLE_OF_VALUES.steps.length, true) },
+   { name: "tutor figure, being built", mount: async () => tutorFigure(SECANT_TO_TANGENT, 2, false) },
+   { name: "tutor figure, a table with labelled cells, finished", mount: async () => tutorFigure(LABELLED_TABLE, LABELLED_TABLE.steps.length, true) },
+   {
+      name: "tutor panel, a reply that drew a figure",
+      mount: async () => {
+         const steps = SECANT_TO_TANGENT.steps.map((step) => frame("figure_step", { figure: SECANT_TO_TANGENT.id, step: step.id }));
+         const container = await tutorPanel(
+            async () =>
+               sseResponse([
+                  frame("start", { conversation_id: "ACV-1", turn_id: "ATN-1", screen_line: "", can_see: [] }),
+                  frame("figure_pending", {}),
+                  frame("figure", SECANT_TO_TANGENT),
+                  ...steps,
+                  frame("text", { delta: "The tangent touches the curve at \\(P\\)." }),
+                  frame("end", { turn_id: "ATN-1", outcome: "complete", turns_on_item: 1, turns_in_conversation: 1 })
+               ]),
+            "Can you draw the tangent?"
+         );
+
+         await waitFor(() => expect(screen.getByTestId("agent-status").textContent).toContain("Figure: Secant to tangent."));
+
+         return container;
+      }
+   },
+   {
+      name: "tutor panel, a figure while it builds",
+      mount: async () => {
+         const container = await tutorPanel(
+            async () =>
+               sseResponse(
+                  [
+                     frame("start", { conversation_id: "ACV-1", turn_id: "ATN-1", screen_line: "", can_see: [] }),
+                     frame("text", { delta: "Look at the curve first. " }),
+                     frame("figure", SECANT_TO_TANGENT),
+                     frame("figure_step", { figure: SECANT_TO_TANGENT.id, step: SECANT_TO_TANGENT.steps[0].id })
+                  ],
+                  true
+               ),
+            "Can you draw the tangent?"
+         );
+
+         await screen.findByTestId("tutor-figure");
+
+         return container;
+      }
+   },
+   {
+      name: "tutor panel, a reply that marked the page",
+      mount: async () => {
+         const steps = ITEM_MARKS.steps.map((step) => frame("figure_step", { figure: ITEM_MARKS.id, step: step.id }));
+         const container = await tutorPanel(
+            async () =>
+               sseResponse([
+                  frame("start", { conversation_id: "ACV-1", turn_id: "ATN-1", screen_line: "", can_see: [] }),
+                  frame("marks", ITEM_MARKS),
+                  ...steps,
+                  frame("text", { delta: "The phrase and the point are marked on the page." }),
+                  frame("end", { turn_id: "ATN-1", outcome: "complete", turns_on_item: 1, turns_in_conversation: 1 })
+               ]),
+            "Where should I look?"
+         );
+
+         await waitFor(() => expect(screen.getByTestId("agent-status").textContent).toContain("Marks on the page:"));
+
+         return container;
+      }
+   }
+];
+
 export const SCREENS: Screen[] = [
    ...LESSON_SCREENS,
    {
@@ -1291,5 +1437,6 @@ export const SCREENS: Screen[] = [
          return container;
       }
    },
-   ...TUTOR_SCREENS
+   ...TUTOR_SCREENS,
+   ...TUTOR_FIGURE_SCREENS
 ];

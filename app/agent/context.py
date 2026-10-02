@@ -34,6 +34,24 @@ least three content words with the violated step, and none otherwise, so a point
 the app selected it for that step (docs/agent/research/math-tutoring.md, The library records a tutor
 can ground in). Two shared words were too few: BC-QA-03008's first-derivative substitution step met
 the higher-derivative point on "derivative" and "point" alone (orchestrator ruling, 2026-09-29).
+
+The packet carries drawing, open or closed, which app/agent/moves.py drawing_for decides from the
+move and the drawing switch, and render_prompt fills the template's drawing field with it when the
+template has one: prompts/agent/live_v2.md once it exists, live_v1.md until then. An item with a
+figure adds a summary of what the student sees to the item packet, its kind, window and alt text
+and a table's columns and rows, and nothing else of the figure. An agent turn whose figure was shown
+reaches the history sent to the model as its text and one line naming the figure's title and
+description, never the figure itself (docs/agent/drawing-design.md, The item's own figure in the
+packet, and Storage, privacy and logs).
+
+The packet lists the anchors the tutor may mark on this turn (docs/agent/drawing-design.md, Marks
+on the page, and the marks contract in docs/agent/drawing-build-plan.md), composed from what the
+screen shows: the stem and the item's graph with its window or its table with its row and column
+counts on an item; the feedback and each worked solution step only once the item is checked and
+only when they are shown; the section and a drawn section figure on a lesson. The options are never
+listed, because before checking ringing one names an answer and after checking the session screen
+shows no options. A text anchor's text is text the packet already carries, and turn_anchors attaches
+it for the marks reader.
 """
 import json
 import re
@@ -42,21 +60,42 @@ from pathlib import Path
 
 from jsonschema import Draft202012Validator
 
-from app.agent.moves import AFTER_SUBMISSION, BROWSING, PRACTICE, choose_move
+from app.agent.drawing.record import shown_spec
+from app.agent.moves import (
+   AFTER_SUBMISSION,
+   AGENT_DRAWING_FIELD,
+   BROWSING,
+   DRAWING_CLOSED,
+   PRACTICE,
+   choose_move,
+   drawing_for,
+)
 from app.evals import agent_checks
-from app.providers.base import render_template, split_template
+from app.providers.base import render_template, split_template, template_placeholders
 
 REPOSITORY_ROOT = Path(__file__).resolve().parents[2]
 SCREEN_SCHEMA_PATH = REPOSITORY_ROOT / "schemas" / "agent" / "screen.schema.json"
-LIVE_TEMPLATE_PATH = REPOSITORY_ROOT / "prompts" / "agent" / "live_v1.md"
+LIVE_V1_TEMPLATE_PATH = REPOSITORY_ROOT / "prompts" / "agent" / "live_v1.md"
+LIVE_V2_TEMPLATE_PATH = REPOSITORY_ROOT / "prompts" / "agent" / "live_v2.md"
+LIVE_TEMPLATE_PATH = LIVE_V2_TEMPLATE_PATH if LIVE_V2_TEMPLATE_PATH.exists() else LIVE_V1_TEMPLATE_PATH
 
 MEMORY_ENTRY_LIMIT = 6
 HISTORY_TURN_LIMIT = 20
-HISTORY_ROLES = ("student", "agent")
+AGENT_ROLE = "agent"
+HISTORY_ROLES = ("student", AGENT_ROLE)
 ITEM_SCREEN = "session_item"
 SCREEN_KINDS = ("today", "session_item", "session_lesson", "lesson", "review", "progress", "assessments", "settings", "other")
 LESSON_SCREENS = ("lesson", "session_lesson")
 UNSUPPORTED = "unsupported"
+TABLE_FIGURE = "table"
+TEXT_ANCHOR = "text"
+GRAPH_ANCHOR = "graph"
+TABLE_ANCHOR = "table"
+ELEMENT_ANCHOR = "element"
+DRAWN_DELIVERY_MODES = ("figure", "table", "motion", "interactive", "model")
+FEEDBACK_TEXT_FIELDS = ("violated_step", "observed_behavior", "scoring_consequence")
+ELABORATED_FEEDBACK = "elaborated"
+STEP_VERIFICATION_FEEDBACK = "step_verification"
 MCQ = "mcq"
 SHORT_ANSWER = "short_answer"
 PREDICTION = "prediction"
@@ -118,6 +157,7 @@ class Packet:
    turn_index: int = 0
    memory: tuple = ()
    profile: dict | None = None
+   drawing: str = DRAWING_CLOSED
 
 
 @dataclass(frozen=True)
@@ -479,6 +519,31 @@ def _option_letters(item, item_format):
    return [option["id"] for option in options]
 
 
+def figure_summary(item):
+   """What the item's figure shows the student: its kind, window and alt text, and a table's columns
+   and rows. None for an item without a figure. An items row holds it as figure_spec and a bank
+   record as figure."""
+   spec = _decoded(_field(item, "figure_spec")) or _decoded(_field(item, "figure"))
+   is_figure = isinstance(spec, dict)
+
+   if not is_figure:
+      return None
+
+   kind = spec.get("kind")
+   summary = {"kind": kind, "alt": spec.get("alt") or ""}
+
+   if kind == TABLE_FIGURE:
+      summary["columns"] = [str(column) for column in spec.get("columns") or []]
+      summary["rows"] = [[str(cell) for cell in row] for row in spec.get("rows") or []]
+
+      return summary
+
+   has_window = spec.get("domain") is not None and spec.get("range") is not None
+   summary["window"] = {"x": list(spec["domain"]), "y": list(spec["range"])} if has_window else None
+
+   return summary
+
+
 def practice_body(context, screen, item, attempt, archetype, lesson, misconception_names):
    served_stage = _field(attempt, "served_stage") or screen["served_stage"]
    item_format = _field(attempt, "format") or screen["format"]
@@ -503,6 +568,11 @@ def practice_body(context, screen, item, attempt, archetype, lesson, misconcepti
 
    if letters is not None:
       body["item"]["options"] = letters
+
+   figure = figure_summary(item)
+
+   if figure is not None:
+      body["figure"] = figure
 
    if lesson is not None:
       body["lesson"] = dict(_lesson_ref(context, lesson), sections=pointable_sections(lesson, served_stage))
@@ -750,6 +820,106 @@ def profile_payload(profile):
    return {key: value for key, value in dict(profile).items() if key not in PROFILE_FIELDS_NEVER_RENDERED}
 
 
+def _item_figure_anchor(figure):
+   if figure is None:
+      return None
+
+   if figure["kind"] == TABLE_FIGURE:
+      return {"id": "item_table", "kind": TABLE_ANCHOR, "rows": len(figure["rows"]), "columns": len(figure["columns"])}
+
+   window = figure.get("window")
+
+   return None if window is None else {"id": "item_figure", "kind": GRAPH_ANCHOR, "window": window}
+
+
+def feedback_text(feedback):
+   parts = [feedback.get(field) for field in FEEDBACK_TEXT_FIELDS]
+
+   return " ".join(part for part in parts if isinstance(part, str) and part.strip() != "")
+
+
+def item_anchors(mode, body):
+   anchors = [{"id": "stem", "kind": TEXT_ANCHOR}]
+   figure_anchor = _item_figure_anchor(body.get("figure"))
+
+   if figure_anchor is not None:
+      anchors.append(figure_anchor)
+
+   is_checked = mode == AFTER_SUBMISSION
+
+   if not is_checked:
+      return anchors
+
+   feedback = body.get("feedback") or {}
+   kind = feedback.get("kind")
+   is_unsupported = body["item"]["served_stage"] == UNSUPPORTED
+   has_feedback_text = feedback_text(feedback) != ""
+
+   # app/web/src/session/SessionScreen.tsx shows the elaborated panel only at the unsupported stage
+   # and the step marks only below it.
+   shows_elaborated_panel = is_unsupported and kind == ELABORATED_FEEDBACK and has_feedback_text
+   shows_step_marks = not is_unsupported and kind == STEP_VERIFICATION_FEEDBACK
+
+   if shows_elaborated_panel:
+      anchors.append({"id": "feedback", "kind": TEXT_ANCHOR})
+
+   if not shows_step_marks:
+      return anchors
+
+   for number, _step in enumerate(feedback.get("worked_solution") or [], start=1):
+      anchors.append({"id": f"solution_step_{number}", "kind": TEXT_ANCHOR})
+
+   return anchors
+
+
+def lesson_anchors(section):
+   anchors = [{"id": "section", "kind": TEXT_ANCHOR}]
+   delivery = (section or {}).get("delivery") or {}
+   is_drawn = delivery.get("mode") in DRAWN_DELIVERY_MODES and delivery.get("spec") is not None
+
+   if is_drawn:
+      anchors.append({"id": "section_figure", "kind": ELEMENT_ANCHOR})
+
+   return anchors
+
+
+def anchor_texts(body):
+   """The text of every text anchor, read from the fields the packet carries for it."""
+   texts = {}
+   stem = (body.get("item") or {}).get("stem")
+   section = (body.get("lesson") or {}).get("section") or {}
+   feedback = body.get("feedback") or {}
+   is_lesson_question = body.get("screen") in LESSON_SCREENS and isinstance(stem, str)
+
+   if isinstance(stem, str):
+      texts["stem"] = stem
+
+   if section.get("text"):
+      texts["section"] = section["text"]
+   elif is_lesson_question:
+      texts["section"] = stem
+
+   if feedback_text(feedback):
+      texts["feedback"] = feedback_text(feedback)
+
+   for number, step in enumerate(feedback.get("worked_solution") or [], start=1):
+      texts[f"solution_step_{number}"] = str(step)
+
+   return texts
+
+
+def turn_anchors(body):
+   """The packet's anchors with each text anchor's text attached, as the marks reader takes them."""
+   texts = anchor_texts(body)
+   anchors = []
+
+   for anchor in body.get("anchors") or []:
+      is_text = anchor["kind"] == TEXT_ANCHOR
+      anchors.append(dict(anchor, text=texts.get(anchor["id"], "")) if is_text else dict(anchor))
+
+   return anchors
+
+
 def compose_packet(
    context,
    screen,
@@ -764,9 +934,10 @@ def compose_packet(
    turn_index_on_item=0,
    student_answered_question=False,
    diagnosis=None,
+   drawing_enabled=True,
 ):
    """The packet and the move for one turn. diagnosis is the attempt's diagnoses row, read only for
-   the leading misconception's probe after submission."""
+   the leading misconception's probe after submission. drawing_enabled is the drawing switch."""
    check = validate_screen(screen)
 
    if check.timed:
@@ -779,8 +950,11 @@ def compose_packet(
 
    if mode == BROWSING:
       body = browsing_body(context, screen, lesson)
+      is_lesson = check.kind in LESSON_SCREENS
+      body["anchors"] = lesson_anchors(screen_section(screen, lesson)) if is_lesson else []
    elif lesson_question is not None:
       body = lesson_question_body(context, screen, lesson, lesson_question)
+      body["anchors"] = lesson_anchors(lesson_question)
    else:
       has_item = item is not None and _field(item, "id") == screen["item_id"]
 
@@ -804,6 +978,11 @@ def compose_packet(
          served_stage = body["item"]["served_stage"]
          body["lesson"]["sections"] = pointable_sections(lesson, served_stage, matched)
 
+   is_on_an_item = "anchors" not in body
+
+   if is_on_an_item:
+      body["anchors"] = item_anchors(mode, body)
+
    move = choose_move(
       mode,
       turn_index_on_item,
@@ -819,9 +998,20 @@ def compose_packet(
       turn_index=turn_index_on_item,
       memory=memory_payload(memory_entries),
       profile=profile_payload(profile),
+      drawing=drawing_for(move, drawing_enabled),
    )
 
    return packet, move
+
+
+def shown_figure_line(figure):
+   """The line an agent turn's shown figure adds to the history, or None."""
+   spec = shown_spec(figure)
+
+   if spec is None:
+      return None
+
+   return f"[Figure shown: {spec.get('title', '')}. {spec.get('description', '')}]"
 
 
 def _history_payload(history):
@@ -831,8 +1021,16 @@ def _history_payload(history):
       role = _field(turn, "role")
       is_known_role = role in HISTORY_ROLES
 
-      if is_known_role:
-         turns.append({"role": role, "text": _field(turn, "text") or ""})
+      if not is_known_role:
+         continue
+
+      text = _field(turn, "text") or ""
+      figure_line = shown_figure_line(_field(turn, "figure")) if role == AGENT_ROLE else None
+
+      if figure_line is not None:
+         text = f"{text}\n{figure_line}"
+
+      turns.append({"role": role, "text": text})
 
    return turns
 
@@ -845,7 +1043,7 @@ def render_prompt(packet, memory_entries, profile, history, student_message):
    """The system prefix, byte-identical on every turn, and the variable section below the marker,
    where every field is JSON-encoded except the three the app composes itself."""
    text = live_template_text()
-   system, _variable_section = split_template(text)
+   system, variable_section = split_template(text)
    rendered_profile = profile_payload(profile)
    fields = {
       "mode": packet.mode,
@@ -857,5 +1055,9 @@ def render_prompt(packet, memory_entries, profile, history, student_message):
       "history": json.dumps(_history_payload(history), ensure_ascii=False),
       "student_message": json.dumps(str(student_message), ensure_ascii=False),
    }
+   asks_for_drawing = AGENT_DRAWING_FIELD in template_placeholders(variable_section)
+
+   if asks_for_drawing:
+      fields[AGENT_DRAWING_FIELD] = packet.drawing
 
    return RenderedPrompt(system=system, user=render_template(text, fields))

@@ -1,23 +1,28 @@
-import { useEffect, useRef, useState, type FormEvent, type KeyboardEvent } from "react";
+import { useEffect, useLayoutEffect, useRef, useState, type FormEvent, type KeyboardEvent } from "react";
 
 import { MathText } from "../math/MathText";
 import { holdUnclosedMath } from "../math/mathjson";
 import { TUTOR_SHEET_CLASS } from "../styles/motion";
 import { Icon } from "../ui/Icon";
 import {
+   CLEAR_MARKS,
    CLOSE_LABEL,
    COMPOSER_LABEL,
+   CURRENT_STEP_WORD,
    CONVERSATION_CEILING,
    DAILY_CAP,
+   DRAWING_A_FIGURE,
    EMPTY_ELSEWHERE,
    EMPTY_ON_ITEM,
    FULL_HEIGHT_LABEL,
+   MARKED_ON_THE_PAGE,
    MINUTE_CAP,
    OFFLINE,
    PANEL_TITLE,
    SCREEN_REFUSED,
    SEND_LABEL,
    SHOW_ITEM_LABEL,
+   SHOW_ON_THE_BOARD,
    SIGN_IN_EXPIRED,
    STOP_LABEL,
    THIRD_TURN_CEILING,
@@ -28,9 +33,10 @@ import {
    WRITING_A_REPLY,
    YOU_SAID,
    closeHint,
+   figureOnTheBoard,
    usageLimitUntil
 } from "./agentCopy";
-import { COMPOSER_ID, PANEL_ID, isLapsedUsageLimit, useAgent, type AgentTurn, type DegradedState } from "./AgentProvider";
+import { COMPOSER_ID, PANEL_ID, isLapsedUsageLimit, useAgent, type AgentTurn, type DegradedState, type ReplyMarks } from "./AgentProvider";
 import { contextLinesFor } from "./screenLines";
 
 /* The tutor panel of docs/agent/design.md, "The panel": from 1100 px an aside beside main, from
@@ -46,7 +52,12 @@ import { contextLinesFor } from "./screenLines";
 
    The conversation is the panel's one scrolling region, between the header and the composer. It
    follows the newest turn while a reply streams, and stops following once the student scrolls up
-   to read an earlier one, until they scroll back to the end or send again. */
+   to read an earlier one, until they scroll back to the end or send again.
+
+   A reply that draws keeps one line where the model put the figure, with the text shown before
+   the figure arrived above it and the rest below, and the figure itself is built on the art board
+   (docs/agent/drawing-design.md, "The art board"). Under 900 px the sheet starts below the board
+   where the board docks under the top bar. */
 
 const SCROLL_END_TOLERANCE = 1;
 
@@ -113,8 +124,101 @@ function ReplyText(props: { text: string; isStreaming: boolean }) {
    );
 }
 
-function Turn(props: { turn: AgentTurn }) {
+function ReplyBody(props: { turn: AgentTurn; onShowOnBoard: () => void }) {
    const { turn } = props;
+   const isStreaming = turn.state !== "done";
+   const figure = turn.figure;
+
+   if (figure === undefined) {
+      return <ReplyText text={turn.text} isStreaming={isStreaming} />;
+   }
+
+   if (figure.state === "pending") {
+      return (
+         <>
+            <ReplyText text={turn.text} isStreaming={isStreaming} />
+            <p className="agent-writing" data-testid="agent-figure-pending">
+               {DRAWING_A_FIGURE}
+            </p>
+         </>
+      );
+   }
+
+   const textBefore = turn.text.slice(0, figure.offset);
+   const textAfter = turn.text.slice(figure.offset);
+
+   return (
+      <>
+         <ReplyText text={textBefore} isStreaming={false} />
+
+         {figure.state === "shown" ? (
+            <p className="agent-board-line" data-testid="agent-figure-on-board">
+               <span>{figureOnTheBoard(figure.spec.title)}</span>
+
+               <button type="button" className="text-button" onClick={props.onShowOnBoard}>
+                  {SHOW_ON_THE_BOARD}
+               </button>
+            </p>
+         ) : (
+            <p className="agent-writing" data-testid="agent-figure-refused">
+               {figure.copy}
+            </p>
+         )}
+
+         <ReplyText text={textAfter} isStreaming={isStreaming} />
+      </>
+   );
+}
+
+/* What the reply marked on the page, for everyone and for a screen reader, since the marks layer
+   itself is hidden from assistive technology: the captions of the steps shown so far, the latest
+   marked now, and Clear marks while the marks are on the screen the student is on. */
+function MarkedOnThePage(props: { marks: ReplyMarks; canClear: boolean; onClear: () => void }) {
+   const { marks } = props;
+
+   if (marks.state === "refused") {
+      return (
+         <p className="agent-writing" data-testid="agent-marks-refused">
+            {marks.copy}
+         </p>
+      );
+   }
+
+   const shownSteps = marks.spec.steps.slice(0, marks.revealed);
+
+   if (shownSteps.length === 0) {
+      return null;
+   }
+
+   return (
+      <div className="agent-marks" data-testid="agent-marks">
+         <p className="agent-marks-heading">{MARKED_ON_THE_PAGE}</p>
+
+         <ol className="tutor-figure-step-list">
+            {shownSteps.map((step, index) => {
+               const isCurrent = index === shownSteps.length - 1;
+
+               return (
+                  <li key={step.id} aria-current={isCurrent ? "step" : undefined}>
+                     <MathText text={step.caption} renderer="tutor" />
+                     {isCurrent ? <span className="tutor-figure-now">{CURRENT_STEP_WORD}</span> : null}
+                  </li>
+               );
+            })}
+         </ol>
+
+         {props.canClear ? (
+            <button type="button" className="text-button" onClick={props.onClear}>
+               {CLEAR_MARKS}
+            </button>
+         ) : null}
+      </div>
+   );
+}
+
+function Turn(props: { turn: AgentTurn; onShowOnBoard: (turnId: string) => void; marksTurnId: string | null; onClearMarks: () => void }) {
+   const { turn } = props;
+   const isStreaming = turn.state !== "done";
 
    if (turn.role === "student") {
       return (
@@ -125,15 +229,17 @@ function Turn(props: { turn: AgentTurn }) {
       );
    }
 
-   const isStreaming = turn.state !== "done";
-   const awaitsFirstText = turn.text === "" && isStreaming;
+   const awaitsFirstText = turn.text === "" && isStreaming && turn.figure === undefined;
+   const marks = turn.marks !== undefined ? <MarkedOnThePage marks={turn.marks} canClear={props.marksTurnId === turn.id} onClear={props.onClearMarks} /> : null;
 
    return (
       <li className="agent-turn agent-turn-tutor">
          <span className="visually-hidden">{TUTOR_SAID}</span>
 
          <div className="agent-reply" aria-busy={isStreaming} data-testid="agent-reply">
-            {awaitsFirstText ? <p className="agent-writing">{WRITING_A_REPLY}</p> : <ReplyText text={turn.text} isStreaming={isStreaming} />}
+            {awaitsFirstText ? <p className="agent-writing">{WRITING_A_REPLY}</p> : <ReplyBody turn={turn} onShowOnBoard={() => props.onShowOnBoard(turn.id)} />}
+
+            {marks}
          </div>
       </li>
    );
@@ -157,7 +263,9 @@ export function AgentPanel() {
    const isOpen = agent?.isOpen ?? false;
    const isNarrow = agent?.isNarrow ?? false;
    const conversation = useRef<HTMLDivElement>(null);
+   const spacer = useRef<HTMLDivElement>(null);
    const followsNewest = useRef(true);
+   const boardDockBottom = agent?.boardDockBottom ?? null;
    const turns = agent?.turns;
    const turnCount = turns?.length ?? 0;
 
@@ -173,6 +281,24 @@ export function AgentPanel() {
          region.scrollTop = region.scrollHeight;
       }
    }, [turns, isOpen]);
+
+   /* The sheet's spacer takes the height the sheet does not, so a spacer at least as tall as the
+      docked board keeps the sheet, and its composer, below the board at every sheet height. */
+   useLayoutEffect(() => {
+      const node = spacer.current;
+
+      if (node === null) {
+         return;
+      }
+
+      const isBelowBoard = isNarrow && boardDockBottom !== null;
+
+      if (isBelowBoard) {
+         node.style.minHeight = `${Math.ceil(boardDockBottom)}px`;
+      } else {
+         node.style.removeProperty("min-height");
+      }
+   }, [isNarrow, boardDockBottom]);
 
    useEffect(() => {
       const animatesIn = isOpen && isNarrow;
@@ -239,7 +365,7 @@ export function AgentPanel() {
    return (
       <>
          <div ref={agent.frame} className="agent-frame" hidden={!agent.isOpen} data-sheet-height={isNarrow ? agent.sheetHeight : undefined}>
-            <div className="agent-frame-spacer" />
+            <div className="agent-frame-spacer" ref={spacer} />
 
             <aside
                id={PANEL_ID}
@@ -329,7 +455,7 @@ export function AgentPanel() {
                         ) : (
                            <ol className="agent-turns">
                               {agent.turns.map((turn) => (
-                                 <Turn key={turn.id} turn={turn} />
+                                 <Turn key={turn.id} turn={turn} onShowOnBoard={agent.showOnBoard} marksTurnId={agent.marksTurnId} onClearMarks={agent.clearMarks} />
                               ))}
                            </ol>
                         )}

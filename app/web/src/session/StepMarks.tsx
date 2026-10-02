@@ -21,6 +21,12 @@ export const INCORRECT_WORD = "Not yet";
 
 export const GIVEN_WORD = "given";
 
+/* The live tutor names each shown step of the worked solution solution_step_1 onward, numbered as
+   the steps are. */
+export function solutionStepAnchor(index: number) {
+   return `solution_step_${index}`;
+}
+
 export interface StepMarksProps {
    marks: StepMark[];
 }
@@ -30,6 +36,7 @@ function GivenStep({ mark }: { mark: StepMark }) {
       <li
          data-testid={`step-mark-${mark.index}`}
          data-given="true"
+         data-agent-anchor={solutionStepAnchor(mark.index)}
          style={{ color: "var(--growth-text-secondary)" }}
       >
          <span className="sheet-margin step-mark-verdict">
@@ -45,7 +52,7 @@ function BlankStep({ mark }: { mark: StepMark }) {
 
    if (!hasVerdict) {
       return (
-         <li data-testid={`step-mark-${mark.index}`}>
+         <li data-testid={`step-mark-${mark.index}`} data-agent-anchor={solutionStepAnchor(mark.index)}>
             <span className="sheet-body math-overflow"><MathText text={mark.text} /></span>
          </li>
       );
@@ -56,7 +63,7 @@ function BlankStep({ mark }: { mark: StepMark }) {
    const token = mark.correct ? "var(--growth-state-correct)" : "var(--growth-state-incorrect)";
 
    return (
-      <li data-testid={`step-mark-${mark.index}`} style={{ color: token }}>
+      <li data-testid={`step-mark-${mark.index}`} data-agent-anchor={solutionStepAnchor(mark.index)} style={{ color: token }}>
          <span className="sheet-margin step-mark-verdict">
             <span data-glyph aria-hidden="true">
                {glyph}

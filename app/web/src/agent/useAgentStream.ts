@@ -1,13 +1,24 @@
 import { useCallback, useEffect, useRef, useState } from "react";
 
 import { SESSION_ENDED_EVENT, openAgentTurnStream } from "../api/client";
-import type { AgentEndEvent, AgentErrorEvent, AgentErrorKind, AgentStartEvent, AgentTextEvent, AgentTurnBody } from "../api/types";
+import type {
+   AgentEndEvent,
+   AgentErrorEvent,
+   AgentErrorKind,
+   AgentFigureRefusedEvent,
+   AgentFigureStepEvent,
+   AgentStartEvent,
+   AgentTextEvent,
+   AgentTurnBody
+} from "../api/types";
 
 /* One turn of the tutor over POST /agent/turns (docs/agent/architecture.md, "Streaming end to end").
    EventSource cannot POST, so the body is read as a stream and split into server-sent event frames
    here. A frame may arrive in pieces and a chunk may carry several frames, so the parser keeps what
    it has not yet seen the end of. No connection, a 5xx and no first text within 15 seconds are one
-   state, "offline" (docs/agent/design.md, the degraded states); a 4xx carries its reason as JSON. */
+   state, "offline" (docs/agent/design.md, the degraded states); a 4xx carries its reason as JSON.
+   A reply that draws adds the figure events of docs/agent/drawing-design.md, "Events and order";
+   the opening of a figure or the figure itself counts as the reply having begun. */
 
 export const FIRST_TEXT_TIMEOUT_MILLISECONDS = 15000;
 
@@ -92,6 +103,11 @@ export interface TurnHandlers {
    onEnd: (event: AgentEndEvent) => void;
    onFailure: (failure: TurnFailure) => void;
    onStopped: () => void;
+   onFigurePending?: () => void;
+   onFigure?: (spec: unknown) => void;
+   onFigureStep?: (event: AgentFigureStepEvent) => void;
+   onFigureRefused?: (event: AgentFigureRefusedEvent) => void;
+   onMarks?: (spec: unknown) => void;
 }
 
 const OFFLINE: TurnFailure = { kind: "offline" };
@@ -138,6 +154,7 @@ async function refusalFrom(response: Response): Promise<TurnFailure> {
 export async function runAgentTurn(body: AgentTurnBody, handlers: TurnHandlers, signal: AbortSignal, isStopped: () => boolean) {
    let settled = false;
    let hasText = false;
+   let hasFigure = false;
 
    function settle(action: () => void) {
       if (settled) {
@@ -213,6 +230,54 @@ export async function runAgentTurn(body: AgentTurnBody, handlers: TurnHandlers, 
          return;
       }
 
+      if (frame.event === "figure_pending") {
+         handlers.onFigurePending?.();
+
+         return;
+      }
+
+      if (frame.event === "figure") {
+         const spec = parsed<unknown>(frame.data);
+
+         if (spec !== null) {
+            hasFigure = true;
+            handlers.onFigure?.(spec);
+         }
+
+         return;
+      }
+
+      if (frame.event === "marks") {
+         const spec = parsed<unknown>(frame.data);
+
+         if (spec !== null) {
+            hasFigure = true;
+            handlers.onMarks?.(spec);
+         }
+
+         return;
+      }
+
+      if (frame.event === "figure_step") {
+         const step = parsed<AgentFigureStepEvent>(frame.data);
+         const namesAStep = step !== null && typeof step.figure === "string" && typeof step.step === "string";
+
+         if (namesAStep) {
+            handlers.onFigureStep?.(step);
+         }
+
+         return;
+      }
+
+      if (frame.event === "figure_refused") {
+         const refusal = parsed<AgentFigureRefusedEvent>(frame.data);
+         const hasCopy = refusal !== null && typeof refusal.copy === "string";
+
+         handlers.onFigureRefused?.(hasCopy ? refusal : { reason: "malformed", copy: "" });
+
+         return;
+      }
+
       if (frame.event === "end") {
          const end = parsed<AgentEndEvent>(frame.data);
 
@@ -259,7 +324,9 @@ export async function runAgentTurn(body: AgentTurnBody, handlers: TurnHandlers, 
       return;
    }
 
-   if (endedWithoutEnd && hasText) {
+   const hasReply = hasText || hasFigure;
+
+   if (endedWithoutEnd && hasReply) {
       settle(() => handlers.onEnd({ turn_id: "", outcome: "incomplete", turns_on_item: 0, turns_in_conversation: 0 }));
 
       return;
@@ -325,10 +392,22 @@ export function useAgentStream(timeoutMilliseconds = FIRST_TEXT_TIMEOUT_MILLISEC
          }
 
          const guarded: TurnHandlers = {
-            onStart: handlers.onStart,
+            ...handlers,
             onText: (delta) => {
                clearTimer();
                handlers.onText(delta);
+            },
+            onFigurePending: () => {
+               clearTimer();
+               handlers.onFigurePending?.();
+            },
+            onFigure: (spec) => {
+               clearTimer();
+               handlers.onFigure?.(spec);
+            },
+            onMarks: (spec) => {
+               clearTimer();
+               handlers.onMarks?.(spec);
             },
             onEnd: (event) => {
                release();

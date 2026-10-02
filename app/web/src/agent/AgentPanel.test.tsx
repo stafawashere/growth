@@ -22,6 +22,9 @@ import {
    WRITING_A_REPLY
 } from "./agentCopy";
 import { resetTimeText } from "./AgentPanel";
+import { DRAWING_A_FIGURE, FIGURE_REFUSED, figureAnnouncement } from "./agentCopy";
+import { SECANT_TO_TANGENT } from "./figureFixtures";
+import { SHORT_SHARE } from "./ArtBoard";
 
 let fetchScript: ReturnType<typeof scriptedFetch>;
 
@@ -588,5 +591,221 @@ describe("the conversation region", () => {
       fireEvent.keyDown(composer(), { key: "Enter" });
 
       await waitFor(() => expect(scrollTopWrites).toContain(900));
+   });
+});
+
+describe("a reply that draws", () => {
+   const END = frame("end", { turn_id: "ATN-1", outcome: "complete", turns_on_item: 0, turns_in_conversation: 1 });
+
+   function reply() {
+      return screen.getByTestId("agent-reply");
+   }
+
+   function partsOfReply() {
+      return Array.from(reply().children).map((part) => part.getAttribute("data-testid") ?? part.textContent?.trim());
+   }
+
+   it("puts one line where the figure arrived, between the text shown before it and the text after, and draws the figure on the board", async () => {
+      render(<TutorHarness screen={{ kind: "today" }} />);
+
+      await openAndSend("Draw it");
+      await act(async () => {
+         fetchScript.turns[0].push(frame("text", { delta: "Look at this. " }));
+         fetchScript.turns[0].push(frame("figure", SECANT_TO_TANGENT));
+         fetchScript.turns[0].push(frame("text", { delta: "Then read on." }));
+         fetchScript.turns[0].push(END);
+         fetchScript.turns[0].close();
+      });
+
+      await waitFor(() => expect(reply().getAttribute("aria-busy")).toBe("false"));
+
+      expect(partsOfReply()).toEqual(["Look at this.", "agent-figure-on-board", "Then read on."]);
+      expect(within(screen.getByRole("region", { name: "Art board" })).getByRole("img", { name: SECANT_TO_TANGENT.title })).toBeTruthy();
+      expect(screen.getByTestId("agent-status").textContent).toBe(
+         `Look at this. Then read on. ${figureAnnouncement(SECANT_TO_TANGENT.title, SECANT_TO_TANGENT.description)}`
+      );
+   });
+
+   it("shows Drawing a figure under the text while the figure is written, then the board line in its place", async () => {
+      render(<TutorHarness screen={{ kind: "today" }} />);
+
+      await openAndSend("Draw it");
+      await act(async () => {
+         fetchScript.turns[0].push(frame("text", { delta: "Here is a sketch. " }));
+         fetchScript.turns[0].push(frame("figure_pending", {}));
+      });
+
+      await waitFor(() => expect(partsOfReply()).toEqual(["Here is a sketch.", "agent-figure-pending"]));
+
+      expect(screen.getByTestId("agent-figure-pending").textContent).toBe(DRAWING_A_FIGURE);
+      expect(screen.getByTestId("agent-figure-pending").className).toBe("agent-writing");
+
+      await act(async () => {
+         fetchScript.turns[0].push(frame("figure", SECANT_TO_TANGENT));
+      });
+
+      await waitFor(() => expect(partsOfReply()).toEqual(["Here is a sketch.", "agent-figure-on-board"]));
+   });
+
+   it("shows Drawing a figure in place of Writing a reply when the figure opens before any text", async () => {
+      render(<TutorHarness screen={{ kind: "today" }} />);
+
+      await openAndSend("Draw it");
+      await act(async () => {
+         fetchScript.turns[0].push(frame("figure_pending", {}));
+      });
+
+      await waitFor(() => expect(reply().textContent).toBe(DRAWING_A_FIGURE));
+   });
+
+   it("shows the refused line where the figure would have been, and the reply goes on", async () => {
+      render(<TutorHarness screen={{ kind: "today" }} />);
+
+      await openAndSend("Draw it");
+      await act(async () => {
+         fetchScript.turns[0].push(frame("text", { delta: "Look. " }));
+         fetchScript.turns[0].push(frame("figure_pending", {}));
+         fetchScript.turns[0].push(frame("figure_refused", { reason: "oversized", copy: FIGURE_REFUSED }));
+         fetchScript.turns[0].push(frame("text", { delta: "More text." }));
+         fetchScript.turns[0].push(END);
+         fetchScript.turns[0].close();
+      });
+
+      await waitFor(() => expect(reply().getAttribute("aria-busy")).toBe("false"));
+
+      expect(partsOfReply()).toEqual(["Look.", "agent-figure-refused", "More text."]);
+      expect(screen.getByTestId("agent-figure-refused").textContent).toBe(FIGURE_REFUSED);
+      expect(screen.getByTestId("agent-figure-refused").className).toBe("agent-writing");
+      expect(screen.getByTestId("agent-status").textContent).toBe("Look. More text.");
+   });
+
+   it("drops the figure with the rest of a reply that was withheld", async () => {
+      render(<TutorHarness screen={{ kind: "today" }} />);
+
+      await openAndSend("Draw it");
+      await act(async () => {
+         fetchScript.turns[0].push(frame("text", { delta: "Look at this. " }));
+         fetchScript.turns[0].push(frame("figure", SECANT_TO_TANGENT));
+         fetchScript.turns[0].push(frame("end", { turn_id: "ATN-1", outcome: "withheld", turns_on_item: 1, turns_in_conversation: 1 }));
+         fetchScript.turns[0].close();
+      });
+
+      await waitFor(() => expect(reply().textContent).toBe(WITHHELD));
+
+      expect(within(reply()).queryByRole("img")).toBeNull();
+      expect(screen.getByTestId("agent-status").textContent).toBe(WITHHELD);
+   });
+
+   it("shows the refused line for a figure that does not check out on the client", async () => {
+      render(<TutorHarness screen={{ kind: "today" }} />);
+
+      await openAndSend("Draw it");
+      await act(async () => {
+         fetchScript.turns[0].push(frame("text", { delta: "Look. " }));
+         fetchScript.turns[0].push(frame("figure", { ...SECANT_TO_TANGENT, primitives: "not a list" }));
+         fetchScript.turns[0].push(END);
+         fetchScript.turns[0].close();
+      });
+
+      await waitFor(() => expect(reply().getAttribute("aria-busy")).toBe("false"));
+
+      expect(partsOfReply()).toEqual(["Look.", "agent-figure-refused"]);
+      expect(screen.getByTestId("agent-figure-refused").textContent).toBe(FIGURE_REFUSED);
+      expect(screen.getByTestId("agent-status").textContent).toBe("Look.");
+   });
+
+   it("takes a withheld reply's figure off the art board", async () => {
+      render(<TutorHarness screen={{ kind: "today" }} />);
+
+      await openAndSend("Draw it");
+      await act(async () => {
+         fetchScript.turns[0].push(frame("text", { delta: "Look at this. " }));
+         fetchScript.turns[0].push(frame("figure", SECANT_TO_TANGENT));
+      });
+
+      await waitFor(() => expect(screen.queryByRole("region", { name: "Art board" })).not.toBeNull());
+
+      await act(async () => {
+         fetchScript.turns[0].push(frame("end", { turn_id: "ATN-1", outcome: "withheld", turns_on_item: 1, turns_in_conversation: 1 }));
+         fetchScript.turns[0].close();
+      });
+
+      await waitFor(() => expect(reply().textContent).toBe(WITHHELD));
+
+      expect(screen.queryByRole("region", { name: "Art board" })).toBeNull();
+   });
+
+   it("starts the phone sheet below the art board docked under the top bar, so the board never covers the composer", async () => {
+      const sheetLayout = document.createElement("style");
+
+      sheetLayout.textContent = ".agent-frame { position: fixed; }";
+      document.head.append(sheetLayout);
+
+      try {
+         render(<TutorHarness screen={{ kind: "today" }} />);
+
+         await openAndSend("Draw it");
+         await act(async () => {
+            fetchScript.turns[0].push(frame("figure", SECANT_TO_TANGENT));
+            fetchScript.turns[0].push(END);
+            fetchScript.turns[0].close();
+         });
+
+         const board = await screen.findByRole("region", { name: "Art board" });
+         const spacer = panel().parentElement!.querySelector<HTMLElement>(".agent-frame-spacer")!;
+
+         expect(board.getAttribute("data-docked")).toBe("true");
+         expect(spacer.style.minHeight).toBe(`${Math.round(window.innerHeight * SHORT_SHARE)}px`);
+
+         fireEvent.click(within(board).getByRole("button", { name: "Close the art board" }));
+
+         expect(spacer.style.minHeight).toBe("");
+      } finally {
+         sheetLayout.remove();
+      }
+   });
+});
+
+describe("the Drawing a figure line", () => {
+   function reply() {
+      return screen.getByTestId("agent-reply");
+   }
+
+   it("goes as soon as words follow it with no figure between, as when the reply is withheld", async () => {
+      render(<TutorHarness screen={UNCHECKED_ITEM} />);
+
+      await openAndSend("Draw it");
+      await act(async () => {
+         fetchScript.turns[0].push(frame("text", { delta: "Here is a sketch. " }));
+         fetchScript.turns[0].push(frame("figure_pending", {}));
+      });
+
+      await waitFor(() => expect(screen.queryByTestId("agent-figure-pending")).not.toBeNull());
+
+      await act(async () => {
+         fetchScript.turns[0].push(frame("text", { delta: WITHHELD }));
+      });
+
+      await waitFor(() => expect(reply().textContent).toContain(WITHHELD));
+
+      expect(screen.queryByTestId("agent-figure-pending")).toBeNull();
+      expect(reply().getAttribute("aria-busy")).toBe("true");
+   });
+
+   it("goes when the reply ends, whatever came before", async () => {
+      render(<TutorHarness screen={{ kind: "today" }} />);
+
+      await openAndSend("Draw it");
+      await act(async () => {
+         fetchScript.turns[0].push(frame("text", { delta: "Here is a sketch. " }));
+         fetchScript.turns[0].push(frame("figure_pending", {}));
+         fetchScript.turns[0].push(frame("end", { turn_id: "ATN-1", outcome: "complete", turns_on_item: 0, turns_in_conversation: 1 }));
+         fetchScript.turns[0].close();
+      });
+
+      await waitFor(() => expect(reply().getAttribute("aria-busy")).toBe("false"));
+
+      expect(screen.queryByTestId("agent-figure-pending")).toBeNull();
+      expect(reply().textContent).toBe("Here is a sketch. ");
    });
 });

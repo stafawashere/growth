@@ -1,18 +1,33 @@
 import { createContext, useCallback, useContext, useEffect, useMemo, useRef, useState, type ReactNode, type RefObject } from "react";
 
 import { closeAgentConversation } from "../api/client";
-import type { AgentEndEvent, AgentErrorKind, AgentScreen, AgentStartEvent, AgentTurnOutcome } from "../api/types";
+import type {
+   AgentEndEvent,
+   AgentErrorKind,
+   AgentFigureRefusedEvent,
+   AgentFigureStepEvent,
+   AgentScreen,
+   AgentStartEvent,
+   AgentTurnOutcome,
+   TutorFigureSpec,
+   TutorMarksSpec
+} from "../api/types";
 import { latexToAccessibleText, splitInlineMath } from "../math/mathjson";
 import { AgentPanel } from "./AgentPanel";
-import { CONVERSATION_CEILING, REPLY_STOPPED, THIRD_TURN_CEILING, WITHHELD } from "./agentCopy";
+import { ArtBoard, readBoardPlacement, type BoardFigure } from "./ArtBoard";
+import { CONVERSATION_CEILING, FIGURE_REFUSED, MARKS_REFUSED, REPLY_STOPPED, THIRD_TURN_CEILING, WITHHELD, figureAnnouncement, marksAnnouncement } from "./agentCopy";
+import { createReplyPacer, type ReplyPacer } from "./figurePacing";
+import { PageMarks, parseTutorMarks } from "./PageMarks";
 import { contextLinesFor, type ScreenLabels } from "./screenLines";
+import { parseTutorFigure } from "./TutorFigure";
 import { useAgentStream, type TurnFailure } from "./useAgentStream";
 
 /* The live tutor's client state (docs/agent/architecture.md, "The panel and the settings views"):
    whether the panel is open, the screen every route describes through useAgentScreen, the
    conversation and its turns, the one streaming turn, and the Ctrl+/ or Cmd+/ shortcut
    (docs/agent/design.md, "The entry point"). The provider renders the panel beside its children,
-   so the aside is a sibling of main.
+   so the aside is a sibling of main, and the art board after the panel, so the board paints over
+   the page and follows the panel in the tab order.
 
    Each route claims the screen with useAgentScreen. A route drawn inside another claims after it
    (its first render comes later), and a claim that changes goes to the top, so the screen is the
@@ -29,12 +44,26 @@ export const MAIN_ID = "main";
 
 export type SheetHeight = "collapsed" | "half" | "full";
 
+/* A reply's figure (docs/agent/drawing-design.md, "States and copy" and "The art board"):
+   announced by its opening fence, drawn on the art board with one line in the reply at the length
+   of the text shown when it arrived, or refused with one line in its place. */
+export type ReplyFigure =
+   | { state: "pending" }
+   | { state: "shown"; spec: TutorFigureSpec; offset: number; revealed: number }
+   | { state: "refused"; offset: number; copy: string };
+
+/* A reply's marks on the page (docs/agent/drawing-design.md, "Marks on the page"), kept with the
+   key of the screen the reply was asked on, or refused with one line under the reply. */
+export type ReplyMarks = { state: "shown"; spec: TutorMarksSpec; revealed: number; screenKey: string } | { state: "refused"; copy: string };
+
 export interface AgentTurn {
    id: string;
    role: "student" | "agent";
    text: string;
    state: "waiting" | "streaming" | "done";
    outcome: AgentTurnOutcome | null;
+   figure?: ReplyFigure;
+   marks?: ReplyMarks;
 }
 
 export type DegradedKind = AgentErrorKind | "offline" | "conversation_ceiling";
@@ -82,8 +111,16 @@ export interface AgentContextValue {
    changeDraft: (text: string) => void;
    send: () => void;
    stop: () => void;
+   marksTurnId: string | null;
+   clearMarks: () => void;
    setSheetHeight: (height: SheetHeight) => void;
+   showOnBoard: (turnId: string) => void;
+   /* Where the art board docked under the top bar ends, under 900 px, so the sheet starts below it. */
+   boardDockBottom: number | null;
 }
+
+/* Whether the art board is drawn, and how (docs/agent/drawing-design.md, "The art board"). */
+type BoardState = "open" | "minimized" | "closed";
 
 const AgentContext = createContext<AgentContextValue | null>(null);
 
@@ -133,6 +170,29 @@ export function screenKey(screen: AgentScreen) {
    return JSON.stringify(screen);
 }
 
+/* The screen marks belong to: its kind and the ids that name what it shows, so an item keeps its
+   marks from before it was checked to after, and a lesson's marks are its section's. */
+export function marksScreenKey(screen: AgentScreen) {
+   switch (screen.kind) {
+      case "session_item":
+         return JSON.stringify([screen.kind, screen.session_id, screen.item_id]);
+      case "session_lesson":
+         return JSON.stringify([screen.kind, screen.session_id, screen.lesson_id, screen.version, screen.section_id]);
+      case "lesson":
+         return JSON.stringify([screen.kind, screen.lesson_id, screen.version, screen.section_id]);
+      case "progress":
+         return JSON.stringify([screen.kind, screen.tab, screen.skill_id ?? null]);
+      case "assessments":
+         return JSON.stringify([screen.kind, screen.format]);
+      case "settings":
+         return JSON.stringify([screen.kind, screen.tab]);
+      case "other":
+         return JSON.stringify([screen.kind, screen.view]);
+      default:
+         return JSON.stringify([screen.kind]);
+   }
+}
+
 function effectiveClaim(claims: Map<symbol, ScreenClaim>): ScreenClaim | null {
    const all = Array.from(claims.values());
    const timed = all.find((claim) => isTimedScreen(claim.screen));
@@ -146,6 +206,59 @@ function effectiveClaim(claims: Map<symbol, ScreenClaim>): ScreenClaim | null {
 
 function isUncheckedItem(screen: AgentScreen) {
    return screen.kind === "session_item" && !screen.submitted;
+}
+
+function withFigureAt(turn: AgentTurn, spec: TutorFigureSpec | null): AgentTurn {
+   const offset = turn.text.length;
+   const figure: ReplyFigure = spec === null ? { state: "refused", offset, copy: FIGURE_REFUSED } : { state: "shown", spec, offset, revealed: 0 };
+
+   return { ...turn, figure };
+}
+
+function withoutReply(marksByScreen: Record<string, string>, replyId: string) {
+   return Object.fromEntries(Object.entries(marksByScreen).filter(([, turnId]) => turnId !== replyId));
+}
+
+function withoutPendingFigure(turn: AgentTurn): AgentTurn {
+   const isPending = turn.figure?.state === "pending";
+
+   return isPending ? { ...turn, figure: undefined } : turn;
+}
+
+function boardFiguresOf(turns: AgentTurn[]): BoardFigure[] {
+   return turns.flatMap((turn) => {
+      const figure = turn.figure;
+
+      if (figure?.state !== "shown") {
+         return [];
+      }
+
+      return [{ turnId: turn.id, spec: figure.spec, revealed: figure.revealed, finished: turn.state === "done" }];
+   });
+}
+
+function initialBoardState(): BoardState {
+   return readBoardPlacement().minimized ? "minimized" : "open";
+}
+
+function withMarksStepRevealed(turn: AgentTurn, stepIndex: number): AgentTurn {
+   const marks = turn.marks;
+
+   if (marks?.state !== "shown") {
+      return turn;
+   }
+
+   return { ...turn, marks: { ...marks, revealed: Math.max(marks.revealed, stepIndex + 1) } };
+}
+
+function withStepRevealed(turn: AgentTurn, stepIndex: number): AgentTurn {
+   const figure = turn.figure;
+
+   if (figure?.state !== "shown") {
+      return turn;
+   }
+
+   return { ...turn, figure: { ...figure, revealed: Math.max(figure.revealed, stepIndex + 1) } };
 }
 
 /* The status region reads the reply as words: each formula is given as its ASCII reading, the
@@ -218,9 +331,17 @@ export function AgentProvider({ enabled, children }: AgentProviderProps) {
    const [sheetHeight, setSheetHeight] = useState<SheetHeight>("half");
    const [focusRequest, setFocusRequest] = useState(0);
    const [isMac] = useState(detectMac);
+   const [isPacing, setIsPacing] = useState(false);
+   const [marksByScreen, setMarksByScreen] = useState<Record<string, string>>({});
+   const [boardTurnId, setBoardTurnId] = useState<string | null>(null);
+   const [boardState, setBoardState] = useState<BoardState>(initialBoardState);
+   const [focusesBoardFigure, setFocusesBoardFigure] = useState(false);
+   const [boardDockBottom, setBoardDockBottom] = useState<number | null>(null);
    const frame = useRef<HTMLDivElement>(null);
    const isNarrow = useSheetLayout(frame, enabled);
    const stream = useAgentStream();
+   const pacing = useRef<{ replyId: string; pacer: ReplyPacer } | null>(null);
+   const isReplying = stream.isStreaming || isPacing;
 
    const askButton = useRef<HTMLButtonElement>(null);
    const composer = useRef<HTMLTextAreaElement>(null);
@@ -259,6 +380,7 @@ export function AgentProvider({ enabled, children }: AgentProviderProps) {
    const labels = claim?.labels ?? {};
    const isTimed = isTimedScreen(screen);
    const currentKey = screenKey(screen);
+   const currentMarksKey = marksScreenKey(screen);
    const currentScreen = useRef(screen);
 
    currentScreen.current = screen;
@@ -362,6 +484,12 @@ export function AgentProvider({ enabled, children }: AgentProviderProps) {
    }, [isTimed, isOpen, stream]);
 
    useEffect(() => {
+      if (isTimed) {
+         setBoardState("closed");
+      }
+   }, [isTimed]);
+
+   useEffect(() => {
       setDegraded((current) => {
          const belongsToScreen = current !== null && CLEARS_ON_SCREEN_CHANGE.includes(current.kind);
          const screenChanged = current !== null && current.screenKey !== currentKey;
@@ -463,10 +591,14 @@ export function AgentProvider({ enabled, children }: AgentProviderProps) {
       setTurns((current) => current.map((turn) => (turn.id === id ? change(turn) : turn)));
    }
 
+   useEffect(() => {
+      return () => pacing.current?.pacer.dispose();
+   }, []);
+
    const send = useCallback(() => {
       const message = draft.trim();
       const isDegraded = degraded !== null && !isLapsedUsageLimit(degraded);
-      const isBlocked = message === "" || stream.isStreaming || isDegraded || isTimed;
+      const isBlocked = message === "" || isReplying || isDegraded || isTimed;
 
       if (isBlocked) {
          return;
@@ -474,10 +606,34 @@ export function AgentProvider({ enabled, children }: AgentProviderProps) {
 
       const sentOn = screen;
       const sentOnKey = currentKey;
+      const sentOnMarksKey = currentMarksKey;
       const studentTurn: AgentTurn = { id: localTurnId("student"), role: "student", text: message, state: "done", outcome: null };
       const replyId = localTurnId("agent");
       const reply: AgentTurn = { id: replyId, role: "agent", text: "", state: "waiting", outcome: null };
       let receivedText = "";
+      let drawnFigure: TutorFigureSpec | null = null;
+      let drawnMarks: TutorMarksSpec | null = null;
+      let awaitsFigure = false;
+      let latestFigureGate = -1;
+      let latestMarksGate = -1;
+      const gates: Array<() => void> = [];
+
+      /* While a figure or the marks are building, each of their steps is a gate: the step and the
+         text after it wait until the words before it could have been read (figurePacing.ts). The end
+         is applied, and the reply announced, once everything received has been shown. */
+      const pacer = createReplyPacer({
+         showText: (delta) => updateTurn(replyId, (turn) => ({ ...turn, text: turn.text + delta, state: "streaming" })),
+         openGate: (gate) => gates[gate]?.(),
+         onBusyChange: setIsPacing
+      });
+
+      function pushGate(open: () => void) {
+         gates.push(open);
+         pacer.pushGate(gates.length - 1);
+      }
+
+      pacing.current?.pacer.dispose();
+      pacing.current = { replyId, pacer };
 
       setTurns((current) => [...current, studentTurn, reply]);
       setDraft("");
@@ -497,28 +653,121 @@ export function AgentProvider({ enabled, children }: AgentProviderProps) {
             },
             onText: (delta: string) => {
                receivedText += delta;
-               updateTurn(replyId, (turn) => ({ ...turn, text: turn.text + delta, state: "streaming" }));
+
+               /* Text after the opening of a figure with neither the figure nor its refusal between
+                  them means the server dropped the figure or withheld the reply, so the pending line
+                  goes. */
+               if (awaitsFigure) {
+                  awaitsFigure = false;
+                  pacer.pushAction(() => updateTurn(replyId, withoutPendingFigure));
+               }
+
+               pacer.pushText(delta);
             },
-            onEnd: (event: AgentEndEvent) => {
-               const isWithheld = event.outcome === "withheld";
-               const finalText = isWithheld ? WITHHELD : receivedText;
-               const reachedCeiling = isUncheckedItem(currentScreen.current) && event.turns_on_item >= PER_ITEM_TURN_CEILING;
+            onFigurePending: () => {
+               awaitsFigure = true;
+               pacer.pushAction(() => updateTurn(replyId, (turn) => ({ ...turn, figure: { state: "pending" }, state: "streaming" })));
+            },
+            onFigure: (spec: unknown) => {
+               const checked = parseTutorFigure(spec);
 
-               updateTurn(replyId, (turn) => ({ ...turn, text: finalText, state: "done", outcome: event.outcome }));
-               setAnnouncement(spokenReply(finalText));
+               awaitsFigure = false;
+               drawnFigure = checked;
 
-               if (reachedCeiling) {
-                  setDegraded({ kind: "ceiling", resetsAt: null, copy: THIRD_TURN_CEILING, screenKey: sentOnKey });
+               /* The board opens on the new figure, or comes back from its bar, without taking focus. */
+               pacer.pushAction(() => {
+                  updateTurn(replyId, (turn) => ({ ...withFigureAt(turn, checked), state: "streaming" }));
+
+                  if (checked !== null) {
+                     setBoardTurnId(replyId);
+                     setBoardState("open");
+                  }
+               });
+            },
+            onMarks: (spec: unknown) => {
+               const checked = parseTutorMarks(spec);
+
+               drawnMarks = checked;
+               pacer.pushAction(() => {
+                  if (checked === null) {
+                     updateTurn(replyId, (turn) => ({ ...turn, marks: { state: "refused", copy: MARKS_REFUSED } }));
+                     return;
+                  }
+
+                  updateTurn(replyId, (turn) => ({ ...turn, marks: { state: "shown", spec: checked, revealed: 0, screenKey: sentOnMarksKey }, state: "streaming" }));
+                  setMarksByScreen((current) => ({ ...current, [sentOnMarksKey]: replyId }));
+               });
+            },
+            onFigureStep: (event: AgentFigureStepEvent) => {
+               const figure = drawnFigure;
+               const marks = drawnMarks;
+               const isFigureStep = figure !== null && event.figure === figure.id;
+               const isMarksStep = marks !== null && event.figure === marks.id;
+               const figureStep = isFigureStep ? figure.steps.findIndex((step) => step.id === event.step) : -1;
+               const marksStep = isMarksStep ? marks.steps.findIndex((step) => step.id === event.step) : -1;
+               const opensFigureStep = figureStep > latestFigureGate;
+               const opensMarksStep = marksStep > latestMarksGate;
+
+               if (opensFigureStep) {
+                  latestFigureGate = figureStep;
+                  pushGate(() => updateTurn(replyId, (turn) => withStepRevealed(turn, figureStep)));
+               } else if (opensMarksStep) {
+                  latestMarksGate = marksStep;
+                  pushGate(() => updateTurn(replyId, (turn) => withMarksStepRevealed(turn, marksStep)));
                }
             },
+            onFigureRefused: (event: AgentFigureRefusedEvent) => {
+               const isMarks = event.part === "marks";
+               const fallback = isMarks ? MARKS_REFUSED : FIGURE_REFUSED;
+               const copy = event.copy.trim() === "" ? fallback : event.copy;
+
+               awaitsFigure = awaitsFigure && isMarks;
+
+               pacer.pushAction(() =>
+                  updateTurn(replyId, (turn) =>
+                     isMarks ? { ...turn, marks: { state: "refused", copy } } : { ...turn, figure: { state: "refused", offset: turn.text.length, copy }, state: "streaming" }
+                  )
+               );
+            },
+            onEnd: (event: AgentEndEvent) => {
+               pacer.pushAction(() => {
+                  const isWithheld = event.outcome === "withheld";
+                  const finalText = isWithheld ? WITHHELD : receivedText;
+                  const reachedCeiling = isUncheckedItem(currentScreen.current) && event.turns_on_item >= PER_ITEM_TURN_CEILING;
+                  const figure = isWithheld ? null : drawnFigure;
+                  const marks = isWithheld ? null : drawnMarks;
+                  const figureClause = figure === null ? "" : ` ${figureAnnouncement(figure.title, figure.description)}`;
+                  const marksClause = marks === null ? "" : ` ${marksAnnouncement(marks.description)}`;
+
+                  updateTurn(replyId, (turn) => ({
+                     ...turn,
+                     text: finalText,
+                     state: "done",
+                     outcome: event.outcome,
+                     figure: isWithheld ? undefined : withoutPendingFigure(turn).figure,
+                     marks: isWithheld ? undefined : turn.marks
+                  }));
+                  setAnnouncement(`${spokenReply(finalText)}${figureClause}${marksClause}`.trim());
+
+                  if (isWithheld) {
+                     setMarksByScreen((current) => withoutReply(current, replyId));
+                  }
+
+                  if (reachedCeiling) {
+                     setDegraded({ kind: "ceiling", resetsAt: null, copy: THIRD_TURN_CEILING, screenKey: sentOnKey });
+                  }
+               });
+            },
             onFailure: (failure: TurnFailure) => {
-               const hasText = receivedText !== "";
+               pacer.showEverything();
+
+               const hasReply = receivedText !== "" || drawnFigure !== null || drawnMarks !== null;
                const resetsAt = failure.kind === "offline" ? null : failure.resetsAt;
                const copy = failure.kind === "offline" ? null : failure.copy;
                const isConversationCeiling = failure.kind === "ceiling" && copy === CONVERSATION_CEILING;
                const kind: DegradedKind = isConversationCeiling ? "conversation_ceiling" : failure.kind;
 
-               if (hasText) {
+               if (hasReply) {
                   updateTurn(replyId, (turn) => ({ ...turn, state: "done", outcome: "incomplete" }));
                } else {
                   giveBackDraft();
@@ -527,18 +776,69 @@ export function AgentProvider({ enabled, children }: AgentProviderProps) {
                setDegraded({ kind, resetsAt, copy, screenKey: sentOnKey });
             },
             onStopped: () => {
+               pacer.showEverything();
                updateTurn(replyId, (turn) => ({ ...turn, state: "done", outcome: "stopped" }));
                setAnnouncement(REPLY_STOPPED);
             }
          }
       );
-   }, [draft, stream, degraded, isTimed, screen, currentKey, conversationId]);
+   }, [draft, stream, degraded, isTimed, screen, currentKey, currentMarksKey, conversationId, isReplying]);
+
+   const clearMarks = useCallback(() => {
+      setMarksByScreen((current) => {
+         const next = { ...current };
+
+         delete next[currentMarksKey];
+
+         return next;
+      });
+   }, [currentMarksKey]);
+
+   const showOnBoard = useCallback((turnId: string) => {
+      setBoardTurnId(turnId);
+      setBoardState("open");
+      setFocusesBoardFigure(true);
+   }, []);
+
+   const minimizeBoard = useCallback(() => setBoardState("minimized"), []);
+
+   const restoreBoard = useCallback(() => setBoardState("open"), []);
+
+   const boardFigureFocused = useCallback(() => setFocusesBoardFigure(false), []);
+
+   /* The Close button goes with the board, so focus goes to Ask, which every screen with a tutor has. */
+   const closeBoard = useCallback(() => {
+      setBoardState("closed");
+      setFocusesBoardFigure(false);
+      askButton.current?.focus();
+   }, []);
+
+   const showAll = useCallback((turnId: string) => {
+      const isPacedReply = pacing.current !== null && pacing.current.replyId === turnId;
+
+      if (isPacedReply) {
+         pacing.current!.pacer.showEverything();
+      }
+   }, []);
+
+   /* Stop opens every waiting step at once. While the reply still streams it also ends the request,
+      and the turn ends stopped; once the server has ended the reply, what it sent is shown and the
+      turn ends as the server said. */
+   const stop = useCallback(() => {
+      pacing.current?.pacer.showEverything();
+      stream.stop();
+   }, [stream]);
 
    const closeConversation = useCallback(() => {
       const closing = conversationId;
 
+      pacing.current?.pacer.dispose();
+      pacing.current = null;
       stream.stop();
       setTurns([]);
+      setMarksByScreen({});
+      setBoardTurnId(null);
+      setBoardState("closed");
       setConversationId(null);
       setDegraded(null);
       hidePanel();
@@ -547,6 +847,20 @@ export function AgentProvider({ enabled, children }: AgentProviderProps) {
          closeAgentConversation(closing).catch(() => undefined);
       }
    }, [conversationId, stream, hidePanel]);
+
+   /* The marks of the screen the student is on, drawn over the page between the page and the panel.
+      Keyed by the screen and the reply, so returning to a screen draws its marks again from scratch,
+      finished and without motion. */
+   const marksTurnId = marksByScreen[currentMarksKey] ?? null;
+   const marksTurn = marksTurnId === null ? undefined : turns.find((turn) => turn.id === marksTurnId);
+   const pageMarks = marksTurn?.marks?.state === "shown" ? marksTurn.marks : null;
+
+   /* The conversation's figures, in the order they were drawn. A withheld reply leaves no figure, so
+      its figure leaves the board, and the board shows the latest one left. */
+   const boardFigures = boardFiguresOf(turns);
+   const chosenFigure = boardFigures.findIndex((figure) => figure.turnId === boardTurnId);
+   const boardIndex = chosenFigure >= 0 ? chosenFigure : boardFigures.length - 1;
+   const showsBoard = enabled && !isTimed && boardFigures.length > 0 && boardState !== "closed";
 
    const value: AgentContextValue = {
       isOpen: enabled && isOpen,
@@ -558,7 +872,7 @@ export function AgentProvider({ enabled, children }: AgentProviderProps) {
       draft,
       turns,
       conversationId,
-      isStreaming: stream.isStreaming,
+      isStreaming: isReplying,
       degraded,
       announcement,
       sheetHeight,
@@ -572,8 +886,12 @@ export function AgentProvider({ enabled, children }: AgentProviderProps) {
       closeConversation,
       changeDraft,
       send,
-      stop: stream.stop,
-      setSheetHeight
+      stop,
+      marksTurnId,
+      clearMarks,
+      setSheetHeight,
+      showOnBoard,
+      boardDockBottom
    };
 
    return (
@@ -581,7 +899,28 @@ export function AgentProvider({ enabled, children }: AgentProviderProps) {
          <AgentContext.Provider value={enabled ? value : null}>
             {children}
 
+            {enabled && pageMarks !== null ? <PageMarks key={`${currentMarksKey} ${marksTurnId}`} spec={pageMarks.spec} revealed={pageMarks.revealed} /> : null}
+
             {enabled ? <AgentPanel /> : null}
+
+            {showsBoard ? (
+               <ArtBoard
+                  figures={boardFigures}
+                  current={boardIndex}
+                  mode={boardState === "minimized" ? "minimized" : "open"}
+                  isNarrow={isNarrow}
+                  isPanelOpen={isOpen}
+                  panel={panel}
+                  focusFigure={focusesBoardFigure}
+                  onFigureFocused={boardFigureFocused}
+                  onChoose={setBoardTurnId}
+                  onMinimize={minimizeBoard}
+                  onRestore={restoreBoard}
+                  onClose={closeBoard}
+                  onShowAll={showAll}
+                  onDock={setBoardDockBottom}
+               />
+            ) : null}
          </AgentContext.Provider>
       </ScreenRegistryContext.Provider>
    );

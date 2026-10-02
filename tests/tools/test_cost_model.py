@@ -200,3 +200,110 @@ def test_an_agent_turn_is_one_prefix_read_the_uncached_input_and_the_output():
    assert figures["agent.uncached_input_per_turn"] == 5075
    assert figures["agent.turn_usd"] == pytest.approx(by_hand)
    assert by_hand == pytest.approx(0.01465)
+
+
+DRAWING_FIGURE_NAMES = (
+   "drawing.prefix_tokens",
+   "drawing.figure_output_tokens",
+   "drawing.turn_share",
+   "drawing.turn_usd",
+   "drawing.figure_turn_usd",
+   "drawing.conversation_usd",
+   "drawing.day_usd",
+   "drawing.cycle_usd",
+   "drawing.added_cycle_usd",
+)
+
+
+def test_the_drawing_figures_are_emitted():
+   """Plan 14's 2026-09-30 amendment quotes the drawing block by these names."""
+   figures = cost_model.figures()
+
+   missing = [name for name in DRAWING_FIGURE_NAMES if name not in figures]
+
+   assert missing == []
+
+
+def test_a_drawing_turn_costs_more_than_a_text_turn_and_less_than_a_turn_that_draws():
+   """An average turn carries a figure's output on the drawing share of turns only. Charging the
+   full figure on every turn, or dropping it, puts drawing.turn_usd on one of the bounds."""
+   figures = cost_model.figures()
+
+   is_above_text_turn = figures["agent.turn_usd"] < figures["drawing.turn_usd"]
+   is_below_figure_turn = figures["drawing.turn_usd"] < figures["drawing.figure_turn_usd"]
+
+   assert is_above_text_turn
+   assert is_below_figure_turn
+
+
+def test_the_added_drawing_cycle_is_measured_against_the_text_only_agent_cycle():
+   figures = cost_model.figures()
+
+   difference = figures["drawing.cycle_usd"] - figures["agent.cycle_usd"]
+
+   assert figures["drawing.added_cycle_usd"] == pytest.approx(difference)
+
+
+def test_a_drawing_conversation_writes_the_v2_prefix_once_and_reads_it_on_every_later_turn():
+   """Pricing the conversation on the v1 prefix, or charging the prefix as a write on every turn,
+   moves this number."""
+   figures = cost_model.figures()
+   sonnet = cost_model.PRICES[cost_model.AGENT_MODEL]
+   turns = cost_model.AGENT_TURNS_PER_CONVERSATION
+   prefix = cost_model.DRAWING_PREFIX_TOKENS
+   average_output = cost_model.AGENT_OUTPUT_PER_TURN + \
+      cost_model.DRAWING_TURN_SHARE * cost_model.DRAWING_FIGURE_OUTPUT_TOKENS
+
+   per_turn = cost_model.AGENT_UNCACHED_INPUT_PER_TURN * sonnet["input"] + average_output * sonnet["output"]
+   by_hand = (prefix * sonnet["write_1h"] + (turns - 1) * prefix * sonnet["read"] + turns * per_turn) / 1e6
+
+   assert figures["drawing.conversation_usd"] == pytest.approx(by_hand)
+   assert figures["drawing.cycle_usd"] == pytest.approx(
+      by_hand * cost_model.AGENT_CONVERSATIONS_PER_DAY * cost_model.STUDY_DAYS
+   )
+
+
+def test_the_text_only_agent_figures_do_not_move_with_the_drawing_block():
+   """Plan 14 quotes the agent.* lines as the text-only baseline. Folding the v2 prefix or the
+   figure's output into the agent block would move them."""
+   figures = cost_model.figures()
+   sonnet = cost_model.PRICES[cost_model.AGENT_MODEL]
+   turns = cost_model.AGENT_TURNS_PER_CONVERSATION
+   prefix = cost_model.AGENT_PREFIX_TOKENS
+   uncached = cost_model.AGENT_UNCACHED_INPUT_PER_TURN
+   output = cost_model.AGENT_OUTPUT_PER_TURN
+
+   turn = (prefix * sonnet["read"] + uncached * sonnet["input"] + output * sonnet["output"]) / 1e6
+   conversation = (
+      prefix * sonnet["write_1h"] + (turns - 1) * prefix * sonnet["read"]
+      + turns * (uncached * sonnet["input"] + output * sonnet["output"])
+   ) / 1e6
+   day = conversation * cost_model.AGENT_CONVERSATIONS_PER_DAY
+   worst_case_turn = (
+      cost_model.AGENT_WORST_CASE_INPUT * sonnet["input"] + cost_model.AGENT_MAX_OUTPUT * sonnet["output"]
+   ) / 1e6
+
+   assert figures["agent.prefix_tokens"] == prefix
+   assert figures["agent.uncached_input_per_turn"] == uncached
+   assert figures["agent.output_per_turn"] == output
+   assert figures["agent.turns_per_conversation"] == turns
+   assert figures["agent.conversations_per_day"] == cost_model.AGENT_CONVERSATIONS_PER_DAY
+   assert figures["agent.turns_per_day"] == turns * cost_model.AGENT_CONVERSATIONS_PER_DAY
+   assert figures["agent.turn_usd"] == pytest.approx(turn)
+   assert figures["agent.conversation_usd"] == pytest.approx(conversation)
+   assert figures["agent.day_usd"] == pytest.approx(day)
+   assert figures["agent.cycle_usd"] == pytest.approx(day * cost_model.STUDY_DAYS)
+   assert figures["agent.cap_usd"] == cost_model.AGENT_CAP_USD
+   assert figures["agent.cap_tokens"] == cost_model.AGENT_CAP_TOKENS
+   assert figures["agent.worst_case_turn_usd"] == pytest.approx(worst_case_turn)
+
+   quoted_in_plan_14 = {
+      "agent.turn_usd": "0.0146",
+      "agent.conversation_usd": "0.3025",
+      "agent.day_usd": "1.21",
+      "agent.cycle_usd": "278.30",
+      "agent.worst_case_turn_usd": "0.0380",
+   }
+   printed = {name: cost_model.render(figures[name]) for name in quoted_in_plan_14}
+
+   assert printed == quoted_in_plan_14

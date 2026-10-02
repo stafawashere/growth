@@ -16,6 +16,7 @@ from types import SimpleNamespace
 import pytest
 import sympy
 
+from app.agent import context as context_module
 from app.agent.context import (
    TimedPartRefused,
    compose_packet,
@@ -23,8 +24,10 @@ from app.agent.context import (
    question_key_forms,
    render_prompt,
    screen_line,
+   turn_anchors,
    validate_screen,
 )
+from app.agent.drawing.record import stored_figure
 from app.content.loader import load_snapshot
 from app.evals import agent_checks, golden
 from app.feedback import render
@@ -385,3 +388,214 @@ def test_an_orientation_section_stays_browsing(context):
    assert packet.mode == "browsing"
    assert move == "explain"
    assert packet.body["lesson"]["section"]["text"].startswith(section["text"])
+
+
+def test_the_packet_carries_drawing_from_the_move_and_the_switch(context, item):
+   first_on_item, move = compose_packet(context, item_screen(item), item=item)
+   today, today_move = compose_packet(context, {"kind": "today"})
+   switched_off, _move = compose_packet(context, {"kind": "today"}, drawing_enabled=False)
+
+   assert (move, first_on_item.drawing) == ("ask_what_tried", "closed")
+   assert (today_move, today.drawing) == ("navigate", "open")
+   assert switched_off.drawing == "closed"
+
+
+def test_render_prompt_fills_drawing_only_for_a_template_that_asks_for_it(context, monkeypatch, tmp_path):
+   packet, _move = compose_packet(context, {"kind": "today"})
+   drawing_template = tmp_path / "live_drawing.md"
+   drawing_template.write_text(context_module.LIVE_V1_TEMPLATE_PATH.read_text() + "\nDrawing: {{ drawing }}\n")
+
+   monkeypatch.setattr(context_module, "LIVE_TEMPLATE_PATH", context_module.LIVE_V1_TEMPLATE_PATH)
+   without_field = render_prompt(packet, [], None, [], "hello")
+   monkeypatch.setattr(context_module, "LIVE_TEMPLATE_PATH", drawing_template)
+   with_field = render_prompt(packet, [], None, [], "hello")
+   closed = render_prompt(dataclasses.replace(packet, drawing="closed"), [], None, [], "hello")
+
+   assert "Drawing:" not in without_field.user
+   assert "Drawing: open" in with_field.user
+   assert "Drawing: closed" in closed.user
+
+
+GRAPH_FIGURE = {
+   "kind": "function_graph",
+   "domain": [-1, 4],
+   "range": [-2, 6],
+   "curves": [{"segments": [[[0, 0], [1, 1]]], "style": "solid"}],
+   "marks": [{"type": "point", "at": [2, 5]}],
+   "labels": [{"text": "LABEL-9d1c", "anchor": [1, 1]}],
+   "gridlines": True,
+   "axis_titles": ["x", "y"],
+   "alt": "A line through the origin.",
+}
+TABLE_FIGURE = {"kind": "table", "columns": ["x", "f(x)"], "rows": [["0", "1"], ["2", "5"]], "labels": [], "alt": "Two rows."}
+
+
+@pytest.mark.parametrize(
+   "figure_spec, expected",
+   [
+      (GRAPH_FIGURE, {"kind": "function_graph", "alt": "A line through the origin.", "window": {"x": [-1, 4], "y": [-2, 6]}}),
+      (TABLE_FIGURE, {"kind": "table", "alt": "Two rows.", "columns": ["x", "f(x)"], "rows": [["0", "1"], ["2", "5"]]}),
+   ],
+   ids=["graph", "table"],
+)
+def test_an_item_figure_reaches_the_packet_as_its_kind_window_alt_and_table_only(context, item, figure_spec, expected):
+   with_figure = dict(item, figure_spec=json.dumps(figure_spec))
+   packet, _move = compose_packet(context, item_screen(item), item=with_figure)
+   plain, _move = compose_packet(context, item_screen(item), item=dict(item, figure_spec=None))
+
+   assert packet.body["figure"] == expected
+   assert "LABEL-9d1c" not in json.dumps(packet.body)
+   assert "figure" not in plain.body
+
+
+def history_sent(rendered):
+   line = next(line for line in rendered.user.splitlines() if line.startswith("Conversation so far: "))
+
+   return json.loads(line[len("Conversation so far: "):])
+
+
+def test_a_shown_figure_adds_its_title_and_description_to_the_history_and_nothing_else(context):
+   packet, _move = compose_packet(context, {"kind": "today"})
+   source = {"kind": "graph", "title": "Secant to tangent", "description": "A secant moves toward P.", "steps": []}
+   history = [
+      {"role": "agent", "text": "Look at the curve.", "figure": stored_figure("shown", source, 2)},
+      {"role": "agent", "text": "Again.", "figure": stored_figure("refused:closed", source)},
+      {"role": "student", "text": "Why?", "figure": None},
+   ]
+   sent = history_sent(render_prompt(packet, [], None, history, "hello"))
+
+   assert [turn["text"] for turn in sent] == [
+      "Look at the curve.\n[Figure shown: Secant to tangent. A secant moves toward P.]",
+      "Again.",
+      "Why?",
+   ]
+
+
+def anchor_ids(packet):
+   return [anchor["id"] for anchor in packet.body["anchors"]]
+
+
+def test_a_practice_item_lists_its_stem_and_graph_and_never_an_option(context, item):
+   packet, _move = compose_packet(context, item_screen(item), item=dict(item, figure_spec=json.dumps(GRAPH_FIGURE)))
+   texts = {anchor["id"]: anchor.get("text") for anchor in turn_anchors(packet.body)}
+
+   assert packet.body["anchors"] == [
+      {"id": "stem", "kind": "text"},
+      {"id": "item_figure", "kind": "graph", "window": {"x": [-1, 4], "y": [-2, 6]}},
+   ]
+   assert texts["stem"] == packet.body["item"]["stem"]
+
+
+def test_the_anchors_never_name_an_option_before_or_after_checking(context, item):
+   """Before checking, ringing an option names an answer; after checking, the session screen shows
+   the feedback in place of the item and no options."""
+   practice, _move = compose_packet(context, item_screen(item), item=item)
+   checked, _move = after_submission_packet(context, item)
+
+   for packet in (practice, checked):
+      option_anchors = [anchor_id for anchor_id in anchor_ids(packet) if anchor_id.startswith("option_")]
+
+      assert packet.body["item"]["options"] == ["A", "B", "C", "D"]
+      assert option_anchors == []
+
+
+def test_a_table_item_lists_its_row_and_column_counts(context, item):
+   packet, _move = compose_packet(context, item_screen(item), item=dict(item, figure_spec=json.dumps(TABLE_FIGURE)))
+
+   assert packet.body["anchors"][1] == {"id": "item_table", "kind": "table", "rows": 2, "columns": 2}
+
+
+def checked_packet(context, item, served_stage, chosen_id):
+   archetype = context.archetypes[item["archetype_id"]]
+   chosen = next(option for option in item["options"] if option["id"] == chosen_id)
+   error_path = chosen.get("error_path")
+   feedback = render.render_feedback(
+      served_stage,
+      archetype,
+      {"worked_solution": json.dumps(item["worked_solution"])},
+      submitted=True,
+      correct=chosen["is_key"],
+      chosen_option=chosen,
+      error_record=context.errors[error_path] if error_path else None,
+      confidence="confident",
+   )
+   attempt = SimpleNamespace(
+      submitted_at="2026-09-29T00:00:00+00:00",
+      served_stage=served_stage,
+      format="mcq",
+      correct=int(chosen["is_key"]),
+   )
+   screen = item_screen(item, submitted=True, served_stage=served_stage, feedback_kind=feedback.kind.value)
+   packet, _move = compose_packet(context, screen, item=item, attempt=attempt, feedback=feedback)
+
+   return packet
+
+
+def test_after_a_wrong_answer_at_the_unsupported_stage_the_feedback_is_an_anchor_and_no_solution_step(context, item):
+   """The session screen shows the elaborated panel at the unsupported stage and no worked steps."""
+   packet, _move = after_submission_packet(context, item)
+   texts = {anchor["id"]: anchor.get("text") for anchor in turn_anchors(packet.body)}
+
+   assert packet.body["feedback"]["worked_solution"] != []
+   assert anchor_ids(packet) == ["stem", "feedback"]
+   assert packet.body["feedback"]["observed_behavior"] in texts["feedback"]
+
+
+def test_after_a_right_answer_at_the_unsupported_stage_neither_the_feedback_nor_a_step_is_an_anchor(context, item):
+   """A right answer at the unsupported stage has no elaborated panel, and that stage shows no
+   worked steps."""
+   packet = checked_packet(context, item, "unsupported", "A")
+
+   assert packet.body["feedback"]["kind"] == "correct"
+   assert packet.body["feedback"]["worked_solution"] != []
+   assert anchor_ids(packet) == ["stem"]
+
+
+def test_at_a_supported_stage_each_marked_step_is_an_anchor_and_the_feedback_is_not(context, item):
+   """Below the unsupported stage the session screen marks every worked step and shows no
+   elaborated panel."""
+   packet = checked_packet(context, item, "completion", "B")
+   steps = packet.body["feedback"]["worked_solution"]
+   texts = {anchor["id"]: anchor.get("text") for anchor in turn_anchors(packet.body)}
+
+   assert packet.body["feedback"]["kind"] == "step_verification"
+   assert len(steps) == len(item["worked_solution"])
+   assert anchor_ids(packet) == ["stem"] + [f"solution_step_{number}" for number in range(1, len(steps) + 1)]
+   assert texts["solution_step_1"] == steps[0]
+
+
+def is_drawn(section):
+   delivery = section.get("delivery") or {}
+   is_drawn_mode = delivery.get("mode") in ("figure", "table", "motion", "interactive", "model")
+
+   return is_drawn_mode and delivery.get("spec") is not None
+
+
+def test_a_lesson_section_lists_the_section_and_its_drawn_figure(context):
+   lesson = golden.agent_lesson(LESSON_ID)
+   drawn = [(index, section) for index, section in enumerate(lesson.body["sections"]) if is_drawn(section)]
+   index, section = drawn[0]
+   packet, _move = compose_packet(context, lesson_screen_on(lesson, section["id"], index), lesson=lesson)
+   texts = {anchor["id"]: anchor.get("text") for anchor in turn_anchors(packet.body)}
+
+   assert packet.mode == "browsing"
+   assert anchor_ids(packet) == ["section", "section_figure"]
+   assert texts["section"] == packet.body["lesson"]["section"]["text"]
+
+
+def test_a_lesson_question_anchors_its_section_to_the_question_as_served(context):
+   lesson = golden.agent_lesson(PREDICTION_LESSON_ID)
+   section = lesson.body["sections"][0]
+   packet, _move = compose_packet(context, lesson_screen_on(lesson, section["id"], 0), lesson=lesson)
+   texts = {anchor["id"]: anchor.get("text") for anchor in turn_anchors(packet.body)}
+
+   assert packet.mode == "practice"
+   assert anchor_ids(packet)[0] == "section"
+   assert texts["section"] == section["stem"]["text"]
+   assert not any(anchor_id.startswith("option_") for anchor_id in anchor_ids(packet))
+
+
+def test_a_screen_with_nothing_to_mark_lists_no_anchors(context):
+   packet, _move = compose_packet(context, {"kind": "today"})
+
+   assert packet.body["anchors"] == []

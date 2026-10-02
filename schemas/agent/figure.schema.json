@@ -1,0 +1,2550 @@
+{
+   "$schema": "https://json-schema.org/draft/2020-12/schema",
+   "$id": "schemas/agent/figure.schema.json",
+   "title": "Tutor figure",
+   "description": "The one figure block the live tutor may write in a reply (docs/agent/drawing-design.md, The figure language). The model writes shapes, numbers and expressions; the server computes every point. Semantic rules a schema cannot state (unique ids, references to earlier elements, fade and erase of earlier steps, ordered windows, spans, the 16-element cap) are checked in app/agent/drawing/spec.py.",
+   "type": "object",
+   "additionalProperties": false,
+   "required": [
+      "kind",
+      "title",
+      "description",
+      "steps"
+   ],
+   "properties": {
+      "kind": {
+         "enum": [
+            "graph",
+            "diagram",
+            "number_line",
+            "table"
+         ]
+      },
+      "title": {
+         "type": "string",
+         "minLength": 1,
+         "maxLength": 60
+      },
+      "description": {
+         "type": "string",
+         "minLength": 1,
+         "maxLength": 400
+      },
+      "window": {
+         "type": "object",
+         "additionalProperties": false,
+         "required": [
+            "x"
+         ],
+         "properties": {
+            "x": {
+               "$ref": "#/$defs/range"
+            },
+            "y": {
+               "$ref": "#/$defs/range"
+            }
+         }
+      },
+      "axes": {
+         "type": "object",
+         "additionalProperties": false,
+         "properties": {
+            "x": {
+               "type": "string",
+               "minLength": 1,
+               "maxLength": 12
+            },
+            "y": {
+               "type": "string",
+               "minLength": 1,
+               "maxLength": 12
+            }
+         }
+      },
+      "grid": {
+         "type": "boolean"
+      },
+      "columns": {
+         "type": "array",
+         "minItems": 1,
+         "maxItems": 6,
+         "items": {
+            "$ref": "#/$defs/cell_text"
+         }
+      },
+      "rows": {
+         "type": "array",
+         "minItems": 1,
+         "maxItems": 10,
+         "items": {
+            "type": "array",
+            "minItems": 1,
+            "maxItems": 6,
+            "items": {
+               "$ref": "#/$defs/cell_text"
+            }
+         }
+      },
+      "steps": {
+         "type": "array",
+         "minItems": 1,
+         "maxItems": 6
+      }
+   },
+   "allOf": [
+      {
+         "if": {
+            "properties": {
+               "kind": {
+                  "const": "graph"
+               }
+            }
+         },
+         "then": {
+            "required": [
+               "window"
+            ],
+            "properties": {
+               "window": {
+                  "required": [
+                     "x",
+                     "y"
+                  ]
+               },
+               "steps": {
+                  "items": {
+                     "$ref": "#/$defs/graph_step"
+                  }
+               }
+            },
+            "not": {
+               "anyOf": [
+                  {
+                     "required": [
+                        "columns"
+                     ]
+                  },
+                  {
+                     "required": [
+                        "rows"
+                     ]
+                  }
+               ]
+            }
+         }
+      },
+      {
+         "if": {
+            "properties": {
+               "kind": {
+                  "const": "diagram"
+               }
+            }
+         },
+         "then": {
+            "required": [
+               "window"
+            ],
+            "properties": {
+               "window": {
+                  "required": [
+                     "x",
+                     "y"
+                  ]
+               },
+               "steps": {
+                  "items": {
+                     "$ref": "#/$defs/graph_step"
+                  }
+               }
+            },
+            "allOf": [
+               {
+                  "not": {
+                     "anyOf": [
+                        {
+                           "required": [
+                              "columns"
+                           ]
+                        },
+                        {
+                           "required": [
+                              "rows"
+                           ]
+                        }
+                     ]
+                  }
+               },
+               {
+                  "not": {
+                     "anyOf": [
+                        {
+                           "required": [
+                              "axes"
+                           ]
+                        },
+                        {
+                           "required": [
+                              "grid"
+                           ]
+                        }
+                     ]
+                  }
+               }
+            ]
+         }
+      },
+      {
+         "if": {
+            "properties": {
+               "kind": {
+                  "const": "number_line"
+               }
+            }
+         },
+         "then": {
+            "required": [
+               "window"
+            ],
+            "properties": {
+               "window": {
+                  "not": {
+                     "required": [
+                        "y"
+                     ]
+                  }
+               },
+               "steps": {
+                  "items": {
+                     "$ref": "#/$defs/number_line_step"
+                  }
+               }
+            },
+            "allOf": [
+               {
+                  "not": {
+                     "anyOf": [
+                        {
+                           "required": [
+                              "columns"
+                           ]
+                        },
+                        {
+                           "required": [
+                              "rows"
+                           ]
+                        }
+                     ]
+                  }
+               },
+               {
+                  "not": {
+                     "anyOf": [
+                        {
+                           "required": [
+                              "axes"
+                           ]
+                        },
+                        {
+                           "required": [
+                              "grid"
+                           ]
+                        }
+                     ]
+                  }
+               }
+            ]
+         }
+      },
+      {
+         "if": {
+            "properties": {
+               "kind": {
+                  "const": "table"
+               }
+            }
+         },
+         "then": {
+            "required": [
+               "columns",
+               "rows"
+            ],
+            "properties": {
+               "steps": {
+                  "items": {
+                     "$ref": "#/$defs/table_step"
+                  }
+               }
+            },
+            "allOf": [
+               {
+                  "not": {
+                     "required": [
+                        "window"
+                     ]
+                  }
+               },
+               {
+                  "not": {
+                     "anyOf": [
+                        {
+                           "required": [
+                              "axes"
+                           ]
+                        },
+                        {
+                           "required": [
+                              "grid"
+                           ]
+                        }
+                     ]
+                  }
+               }
+            ]
+         }
+      }
+   ],
+   "$defs": {
+      "id": {
+         "type": "string",
+         "pattern": "^[A-Za-z0-9_]{1,16}$"
+      },
+      "role": {
+         "enum": [
+            "given",
+            "constructed",
+            "highlight",
+            "error"
+         ]
+      },
+      "label": {
+         "type": "string",
+         "minLength": 1,
+         "maxLength": 40
+      },
+      "text": {
+         "type": "string",
+         "minLength": 1,
+         "maxLength": 60
+      },
+      "cell_text": {
+         "type": "string",
+         "maxLength": 24
+      },
+      "number": {
+         "type": "number",
+         "minimum": -1000,
+         "maximum": 1000
+      },
+      "positive": {
+         "type": "number",
+         "exclusiveMinimum": 0,
+         "maximum": 1000
+      },
+      "expression": {
+         "type": "string",
+         "minLength": 1,
+         "maxLength": 80
+      },
+      "range": {
+         "type": "array",
+         "prefixItems": [
+            {
+               "$ref": "#/$defs/number"
+            },
+            {
+               "$ref": "#/$defs/number"
+            }
+         ],
+         "items": false,
+         "minItems": 2
+      },
+      "stroke": {
+         "type": "object",
+         "additionalProperties": false,
+         "properties": {
+            "style": {
+               "enum": [
+                  "solid",
+                  "dashed",
+                  "dotted"
+               ]
+            },
+            "weight": {
+               "enum": [
+                  "thin",
+                  "regular",
+                  "bold"
+               ]
+            },
+            "arrow": {
+               "enum": [
+                  "none",
+                  "end",
+                  "start",
+                  "both"
+               ]
+            },
+            "highlighter": {
+               "type": "boolean"
+            }
+         }
+      },
+      "on_curve": {
+         "type": "object",
+         "additionalProperties": false,
+         "required": [
+            "on",
+            "x"
+         ],
+         "properties": {
+            "on": {
+               "$ref": "#/$defs/id"
+            },
+            "x": {
+               "$ref": "#/$defs/number"
+            }
+         }
+      },
+      "point": {
+         "oneOf": [
+            {
+               "type": "array",
+               "prefixItems": [
+                  {
+                     "$ref": "#/$defs/number"
+                  },
+                  {
+                     "$ref": "#/$defs/number"
+                  }
+               ],
+               "items": false,
+               "minItems": 2
+            },
+            {
+               "$ref": "#/$defs/id"
+            },
+            {
+               "$ref": "#/$defs/on_curve"
+            }
+         ]
+      },
+      "vertex_names": {
+         "type": "array",
+         "prefixItems": [
+            {
+               "$ref": "#/$defs/name"
+            },
+            {
+               "$ref": "#/$defs/name"
+            },
+            {
+               "$ref": "#/$defs/name"
+            }
+         ],
+         "items": false,
+         "minItems": 3
+      },
+      "side_labels": {
+         "type": "array",
+         "prefixItems": [
+            {
+               "$ref": "#/$defs/label"
+            },
+            {
+               "$ref": "#/$defs/label"
+            },
+            {
+               "$ref": "#/$defs/label"
+            }
+         ],
+         "items": false,
+         "minItems": 3
+      },
+      "name": {
+         "type": "string",
+         "minLength": 1,
+         "maxLength": 12
+      },
+      "side": {
+         "enum": [
+            "left",
+            "right"
+         ]
+      },
+      "graph_curve": {
+         "type": "object",
+         "additionalProperties": false,
+         "required": [
+            "id",
+            "curve"
+         ],
+         "properties": {
+            "id": {
+               "$ref": "#/$defs/id"
+            },
+            "role": {
+               "$ref": "#/$defs/role"
+            },
+            "label": {
+               "$ref": "#/$defs/label"
+            },
+            "stroke": {
+               "$ref": "#/$defs/stroke"
+            },
+            "curve": {
+               "oneOf": [
+                  {
+                     "$ref": "#/$defs/expression"
+                  },
+                  {
+                     "type": "object",
+                     "additionalProperties": false,
+                     "required": [
+                        "y"
+                     ],
+                     "properties": {
+                        "y": {
+                           "$ref": "#/$defs/expression"
+                        },
+                        "domain": {
+                           "$ref": "#/$defs/range"
+                        }
+                     }
+                  }
+               ]
+            }
+         }
+      },
+      "graph_parametric": {
+         "type": "object",
+         "additionalProperties": false,
+         "required": [
+            "id",
+            "parametric"
+         ],
+         "properties": {
+            "id": {
+               "$ref": "#/$defs/id"
+            },
+            "role": {
+               "$ref": "#/$defs/role"
+            },
+            "label": {
+               "$ref": "#/$defs/label"
+            },
+            "stroke": {
+               "$ref": "#/$defs/stroke"
+            },
+            "parametric": {
+               "type": "object",
+               "additionalProperties": false,
+               "required": [
+                  "x",
+                  "y",
+                  "t"
+               ],
+               "properties": {
+                  "x": {
+                     "$ref": "#/$defs/expression"
+                  },
+                  "y": {
+                     "$ref": "#/$defs/expression"
+                  },
+                  "t": {
+                     "$ref": "#/$defs/range"
+                  }
+               }
+            }
+         }
+      },
+      "graph_polar": {
+         "type": "object",
+         "additionalProperties": false,
+         "required": [
+            "id",
+            "polar"
+         ],
+         "properties": {
+            "id": {
+               "$ref": "#/$defs/id"
+            },
+            "role": {
+               "$ref": "#/$defs/role"
+            },
+            "label": {
+               "$ref": "#/$defs/label"
+            },
+            "stroke": {
+               "$ref": "#/$defs/stroke"
+            },
+            "polar": {
+               "type": "object",
+               "additionalProperties": false,
+               "required": [
+                  "r",
+                  "theta"
+               ],
+               "properties": {
+                  "r": {
+                     "$ref": "#/$defs/expression"
+                  },
+                  "theta": {
+                     "$ref": "#/$defs/range"
+                  }
+               }
+            }
+         }
+      },
+      "graph_point": {
+         "type": "object",
+         "additionalProperties": false,
+         "required": [
+            "id",
+            "point"
+         ],
+         "properties": {
+            "id": {
+               "$ref": "#/$defs/id"
+            },
+            "role": {
+               "$ref": "#/$defs/role"
+            },
+            "label": {
+               "$ref": "#/$defs/label"
+            },
+            "stroke": {
+               "$ref": "#/$defs/stroke"
+            },
+            "point": {
+               "$ref": "#/$defs/point"
+            },
+            "open": {
+               "type": "boolean"
+            }
+         }
+      },
+      "graph_line": {
+         "type": "object",
+         "additionalProperties": false,
+         "required": [
+            "id",
+            "line"
+         ],
+         "properties": {
+            "id": {
+               "$ref": "#/$defs/id"
+            },
+            "role": {
+               "$ref": "#/$defs/role"
+            },
+            "label": {
+               "$ref": "#/$defs/label"
+            },
+            "stroke": {
+               "$ref": "#/$defs/stroke"
+            },
+            "line": {
+               "oneOf": [
+                  {
+                     "type": "object",
+                     "additionalProperties": false,
+                     "required": [
+                        "through"
+                     ],
+                     "properties": {
+                        "through": {
+                           "type": "array",
+                           "prefixItems": [
+                              {
+                                 "$ref": "#/$defs/point"
+                              },
+                              {
+                                 "$ref": "#/$defs/point"
+                              }
+                           ],
+                           "items": false,
+                           "minItems": 2
+                        }
+                     }
+                  },
+                  {
+                     "type": "object",
+                     "additionalProperties": false,
+                     "required": [
+                        "point",
+                        "slope"
+                     ],
+                     "properties": {
+                        "point": {
+                           "$ref": "#/$defs/point"
+                        },
+                        "slope": {
+                           "$ref": "#/$defs/number"
+                        }
+                     }
+                  }
+               ]
+            }
+         }
+      },
+      "graph_segment": {
+         "type": "object",
+         "additionalProperties": false,
+         "required": [
+            "id",
+            "segment"
+         ],
+         "properties": {
+            "id": {
+               "$ref": "#/$defs/id"
+            },
+            "role": {
+               "$ref": "#/$defs/role"
+            },
+            "label": {
+               "$ref": "#/$defs/label"
+            },
+            "stroke": {
+               "$ref": "#/$defs/stroke"
+            },
+            "segment": {
+               "type": "array",
+               "prefixItems": [
+                  {
+                     "$ref": "#/$defs/point"
+                  },
+                  {
+                     "$ref": "#/$defs/point"
+                  }
+               ],
+               "items": false,
+               "minItems": 2
+            }
+         }
+      },
+      "graph_secant": {
+         "type": "object",
+         "additionalProperties": false,
+         "required": [
+            "id",
+            "secant"
+         ],
+         "properties": {
+            "id": {
+               "$ref": "#/$defs/id"
+            },
+            "role": {
+               "$ref": "#/$defs/role"
+            },
+            "label": {
+               "$ref": "#/$defs/label"
+            },
+            "stroke": {
+               "$ref": "#/$defs/stroke"
+            },
+            "secant": {
+               "type": "object",
+               "additionalProperties": false,
+               "required": [
+                  "on",
+                  "x"
+               ],
+               "properties": {
+                  "on": {
+                     "$ref": "#/$defs/id"
+                  },
+                  "x": {
+                     "$ref": "#/$defs/range"
+                  }
+               }
+            }
+         }
+      },
+      "graph_tangent": {
+         "type": "object",
+         "additionalProperties": false,
+         "required": [
+            "id",
+            "tangent"
+         ],
+         "properties": {
+            "id": {
+               "$ref": "#/$defs/id"
+            },
+            "role": {
+               "$ref": "#/$defs/role"
+            },
+            "label": {
+               "$ref": "#/$defs/label"
+            },
+            "stroke": {
+               "$ref": "#/$defs/stroke"
+            },
+            "tangent": {
+               "type": "object",
+               "additionalProperties": false,
+               "required": [
+                  "on",
+                  "x"
+               ],
+               "properties": {
+                  "on": {
+                     "$ref": "#/$defs/id"
+                  },
+                  "x": {
+                     "$ref": "#/$defs/number"
+                  },
+                  "length": {
+                     "$ref": "#/$defs/positive"
+                  }
+               }
+            }
+         }
+      },
+      "graph_vline": {
+         "type": "object",
+         "additionalProperties": false,
+         "required": [
+            "id",
+            "vline"
+         ],
+         "properties": {
+            "id": {
+               "$ref": "#/$defs/id"
+            },
+            "role": {
+               "$ref": "#/$defs/role"
+            },
+            "label": {
+               "$ref": "#/$defs/label"
+            },
+            "stroke": {
+               "$ref": "#/$defs/stroke"
+            },
+            "vline": {
+               "$ref": "#/$defs/number"
+            }
+         }
+      },
+      "graph_hline": {
+         "type": "object",
+         "additionalProperties": false,
+         "required": [
+            "id",
+            "hline"
+         ],
+         "properties": {
+            "id": {
+               "$ref": "#/$defs/id"
+            },
+            "role": {
+               "$ref": "#/$defs/role"
+            },
+            "label": {
+               "$ref": "#/$defs/label"
+            },
+            "stroke": {
+               "$ref": "#/$defs/stroke"
+            },
+            "hline": {
+               "$ref": "#/$defs/number"
+            }
+         }
+      },
+      "graph_area": {
+         "type": "object",
+         "additionalProperties": false,
+         "required": [
+            "id",
+            "area"
+         ],
+         "properties": {
+            "id": {
+               "$ref": "#/$defs/id"
+            },
+            "role": {
+               "$ref": "#/$defs/role"
+            },
+            "label": {
+               "$ref": "#/$defs/label"
+            },
+            "stroke": {
+               "$ref": "#/$defs/stroke"
+            },
+            "area": {
+               "oneOf": [
+                  {
+                     "type": "object",
+                     "additionalProperties": false,
+                     "required": [
+                        "under",
+                        "from",
+                        "to"
+                     ],
+                     "properties": {
+                        "under": {
+                           "$ref": "#/$defs/id"
+                        },
+                        "from": {
+                           "$ref": "#/$defs/number"
+                        },
+                        "to": {
+                           "$ref": "#/$defs/number"
+                        }
+                     }
+                  },
+                  {
+                     "type": "object",
+                     "additionalProperties": false,
+                     "required": [
+                        "between",
+                        "from",
+                        "to"
+                     ],
+                     "properties": {
+                        "between": {
+                           "type": "array",
+                           "prefixItems": [
+                              {
+                                 "$ref": "#/$defs/id"
+                              },
+                              {
+                                 "$ref": "#/$defs/id"
+                              }
+                           ],
+                           "items": false,
+                           "minItems": 2
+                        },
+                        "from": {
+                           "$ref": "#/$defs/number"
+                        },
+                        "to": {
+                           "$ref": "#/$defs/number"
+                        }
+                     }
+                  }
+               ]
+            }
+         }
+      },
+      "graph_riemann": {
+         "type": "object",
+         "additionalProperties": false,
+         "required": [
+            "id",
+            "riemann"
+         ],
+         "properties": {
+            "id": {
+               "$ref": "#/$defs/id"
+            },
+            "role": {
+               "$ref": "#/$defs/role"
+            },
+            "label": {
+               "$ref": "#/$defs/label"
+            },
+            "stroke": {
+               "$ref": "#/$defs/stroke"
+            },
+            "riemann": {
+               "type": "object",
+               "additionalProperties": false,
+               "required": [
+                  "on",
+                  "from",
+                  "to",
+                  "n",
+                  "rule"
+               ],
+               "properties": {
+                  "on": {
+                     "$ref": "#/$defs/id"
+                  },
+                  "from": {
+                     "$ref": "#/$defs/number"
+                  },
+                  "to": {
+                     "$ref": "#/$defs/number"
+                  },
+                  "n": {
+                     "type": "integer",
+                     "minimum": 1,
+                     "maximum": 12
+                  },
+                  "rule": {
+                     "enum": [
+                        "left",
+                        "right",
+                        "midpoint",
+                        "trapezoid"
+                     ]
+                  }
+               }
+            }
+         }
+      },
+      "graph_slope_field": {
+         "type": "object",
+         "additionalProperties": false,
+         "required": [
+            "id",
+            "slope_field"
+         ],
+         "properties": {
+            "id": {
+               "$ref": "#/$defs/id"
+            },
+            "role": {
+               "$ref": "#/$defs/role"
+            },
+            "label": {
+               "$ref": "#/$defs/label"
+            },
+            "stroke": {
+               "$ref": "#/$defs/stroke"
+            },
+            "slope_field": {
+               "type": "object",
+               "additionalProperties": false,
+               "required": [
+                  "dy"
+               ],
+               "properties": {
+                  "dy": {
+                     "$ref": "#/$defs/expression"
+                  }
+               }
+            }
+         }
+      },
+      "graph_solution": {
+         "type": "object",
+         "additionalProperties": false,
+         "required": [
+            "id",
+            "solution"
+         ],
+         "properties": {
+            "id": {
+               "$ref": "#/$defs/id"
+            },
+            "role": {
+               "$ref": "#/$defs/role"
+            },
+            "label": {
+               "$ref": "#/$defs/label"
+            },
+            "stroke": {
+               "$ref": "#/$defs/stroke"
+            },
+            "solution": {
+               "type": "object",
+               "additionalProperties": false,
+               "required": [
+                  "dy",
+                  "through"
+               ],
+               "properties": {
+                  "dy": {
+                     "$ref": "#/$defs/expression"
+                  },
+                  "through": {
+                     "$ref": "#/$defs/point"
+                  }
+               }
+            }
+         }
+      },
+      "graph_euler": {
+         "type": "object",
+         "additionalProperties": false,
+         "required": [
+            "id",
+            "euler"
+         ],
+         "properties": {
+            "id": {
+               "$ref": "#/$defs/id"
+            },
+            "role": {
+               "$ref": "#/$defs/role"
+            },
+            "label": {
+               "$ref": "#/$defs/label"
+            },
+            "stroke": {
+               "$ref": "#/$defs/stroke"
+            },
+            "euler": {
+               "type": "object",
+               "additionalProperties": false,
+               "required": [
+                  "dy",
+                  "start",
+                  "h",
+                  "n"
+               ],
+               "properties": {
+                  "dy": {
+                     "$ref": "#/$defs/expression"
+                  },
+                  "start": {
+                     "$ref": "#/$defs/point"
+                  },
+                  "h": {
+                     "$ref": "#/$defs/number"
+                  },
+                  "n": {
+                     "type": "integer",
+                     "minimum": 1,
+                     "maximum": 10
+                  }
+               }
+            }
+         }
+      },
+      "graph_sequence": {
+         "type": "object",
+         "additionalProperties": false,
+         "required": [
+            "id",
+            "sequence"
+         ],
+         "properties": {
+            "id": {
+               "$ref": "#/$defs/id"
+            },
+            "role": {
+               "$ref": "#/$defs/role"
+            },
+            "label": {
+               "$ref": "#/$defs/label"
+            },
+            "stroke": {
+               "$ref": "#/$defs/stroke"
+            },
+            "sequence": {
+               "type": "object",
+               "additionalProperties": false,
+               "required": [
+                  "a",
+                  "n"
+               ],
+               "properties": {
+                  "a": {
+                     "$ref": "#/$defs/expression"
+                  },
+                  "n": {
+                     "type": "array",
+                     "prefixItems": [
+                        {
+                           "type": "integer",
+                           "minimum": 0,
+                           "maximum": 1000
+                        },
+                        {
+                           "type": "integer",
+                           "minimum": 0,
+                           "maximum": 1000
+                        }
+                     ],
+                     "items": false,
+                     "minItems": 2
+                  },
+                  "sums": {
+                     "type": "boolean"
+                  }
+               }
+            }
+         }
+      },
+      "graph_vector": {
+         "type": "object",
+         "additionalProperties": false,
+         "required": [
+            "id",
+            "vector"
+         ],
+         "properties": {
+            "id": {
+               "$ref": "#/$defs/id"
+            },
+            "role": {
+               "$ref": "#/$defs/role"
+            },
+            "label": {
+               "$ref": "#/$defs/label"
+            },
+            "stroke": {
+               "$ref": "#/$defs/stroke"
+            },
+            "vector": {
+               "oneOf": [
+                  {
+                     "type": "object",
+                     "additionalProperties": false,
+                     "required": [
+                        "from",
+                        "to"
+                     ],
+                     "properties": {
+                        "from": {
+                           "$ref": "#/$defs/point"
+                        },
+                        "to": {
+                           "$ref": "#/$defs/point"
+                        },
+                        "legs": {
+                           "type": "boolean"
+                        }
+                     }
+                  },
+                  {
+                     "type": "object",
+                     "additionalProperties": false,
+                     "required": [
+                        "from",
+                        "components"
+                     ],
+                     "properties": {
+                        "from": {
+                           "$ref": "#/$defs/point"
+                        },
+                        "components": {
+                           "type": "array",
+                           "prefixItems": [
+                              {
+                                 "$ref": "#/$defs/number"
+                              },
+                              {
+                                 "$ref": "#/$defs/number"
+                              }
+                           ],
+                           "items": false,
+                           "minItems": 2
+                        },
+                        "legs": {
+                           "type": "boolean"
+                        }
+                     }
+                  }
+               ]
+            }
+         }
+      },
+      "graph_circle": {
+         "type": "object",
+         "additionalProperties": false,
+         "required": [
+            "id",
+            "circle"
+         ],
+         "properties": {
+            "id": {
+               "$ref": "#/$defs/id"
+            },
+            "role": {
+               "$ref": "#/$defs/role"
+            },
+            "label": {
+               "$ref": "#/$defs/label"
+            },
+            "stroke": {
+               "$ref": "#/$defs/stroke"
+            },
+            "circle": {
+               "type": "object",
+               "additionalProperties": false,
+               "required": [
+                  "center",
+                  "radius"
+               ],
+               "properties": {
+                  "center": {
+                     "$ref": "#/$defs/point"
+                  },
+                  "radius": {
+                     "$ref": "#/$defs/positive"
+                  }
+               }
+            }
+         }
+      },
+      "graph_arc": {
+         "type": "object",
+         "additionalProperties": false,
+         "required": [
+            "id",
+            "arc"
+         ],
+         "properties": {
+            "id": {
+               "$ref": "#/$defs/id"
+            },
+            "role": {
+               "$ref": "#/$defs/role"
+            },
+            "label": {
+               "$ref": "#/$defs/label"
+            },
+            "stroke": {
+               "$ref": "#/$defs/stroke"
+            },
+            "arc": {
+               "type": "object",
+               "additionalProperties": false,
+               "required": [
+                  "center",
+                  "radius",
+                  "from",
+                  "to"
+               ],
+               "properties": {
+                  "center": {
+                     "$ref": "#/$defs/point"
+                  },
+                  "radius": {
+                     "$ref": "#/$defs/positive"
+                  },
+                  "from": {
+                     "$ref": "#/$defs/number"
+                  },
+                  "to": {
+                     "$ref": "#/$defs/number"
+                  }
+               }
+            }
+         }
+      },
+      "graph_angle": {
+         "type": "object",
+         "additionalProperties": false,
+         "required": [
+            "id",
+            "angle"
+         ],
+         "properties": {
+            "id": {
+               "$ref": "#/$defs/id"
+            },
+            "role": {
+               "$ref": "#/$defs/role"
+            },
+            "label": {
+               "$ref": "#/$defs/label"
+            },
+            "stroke": {
+               "$ref": "#/$defs/stroke"
+            },
+            "angle": {
+               "type": "object",
+               "additionalProperties": false,
+               "required": [
+                  "at",
+                  "from",
+                  "to"
+               ],
+               "properties": {
+                  "at": {
+                     "$ref": "#/$defs/point"
+                  },
+                  "from": {
+                     "$ref": "#/$defs/point"
+                  },
+                  "to": {
+                     "$ref": "#/$defs/point"
+                  }
+               }
+            }
+         }
+      },
+      "graph_right_angle": {
+         "type": "object",
+         "additionalProperties": false,
+         "required": [
+            "id",
+            "right_angle"
+         ],
+         "properties": {
+            "id": {
+               "$ref": "#/$defs/id"
+            },
+            "role": {
+               "$ref": "#/$defs/role"
+            },
+            "label": {
+               "$ref": "#/$defs/label"
+            },
+            "stroke": {
+               "$ref": "#/$defs/stroke"
+            },
+            "right_angle": {
+               "type": "object",
+               "additionalProperties": false,
+               "required": [
+                  "at",
+                  "from",
+                  "to"
+               ],
+               "properties": {
+                  "at": {
+                     "$ref": "#/$defs/point"
+                  },
+                  "from": {
+                     "$ref": "#/$defs/point"
+                  },
+                  "to": {
+                     "$ref": "#/$defs/point"
+                  }
+               }
+            }
+         }
+      },
+      "graph_box": {
+         "type": "object",
+         "additionalProperties": false,
+         "required": [
+            "id",
+            "box"
+         ],
+         "properties": {
+            "id": {
+               "$ref": "#/$defs/id"
+            },
+            "role": {
+               "$ref": "#/$defs/role"
+            },
+            "label": {
+               "$ref": "#/$defs/label"
+            },
+            "stroke": {
+               "$ref": "#/$defs/stroke"
+            },
+            "box": {
+               "type": "object",
+               "additionalProperties": false,
+               "required": [
+                  "at",
+                  "width",
+                  "height"
+               ],
+               "properties": {
+                  "at": {
+                     "$ref": "#/$defs/point"
+                  },
+                  "width": {
+                     "$ref": "#/$defs/positive"
+                  },
+                  "height": {
+                     "$ref": "#/$defs/positive"
+                  },
+                  "text": {
+                     "$ref": "#/$defs/text"
+                  }
+               }
+            }
+         }
+      },
+      "graph_triangle": {
+         "type": "object",
+         "additionalProperties": false,
+         "required": [
+            "id",
+            "triangle"
+         ],
+         "properties": {
+            "id": {
+               "$ref": "#/$defs/id"
+            },
+            "role": {
+               "$ref": "#/$defs/role"
+            },
+            "label": {
+               "$ref": "#/$defs/label"
+            },
+            "stroke": {
+               "$ref": "#/$defs/stroke"
+            },
+            "triangle": {
+               "oneOf": [
+                  {
+                     "type": "object",
+                     "additionalProperties": false,
+                     "required": [
+                        "kind",
+                        "at",
+                        "base",
+                        "height"
+                     ],
+                     "properties": {
+                        "kind": {
+                           "const": "right"
+                        },
+                        "at": {
+                           "$ref": "#/$defs/point"
+                        },
+                        "base": {
+                           "$ref": "#/$defs/positive"
+                        },
+                        "height": {
+                           "$ref": "#/$defs/positive"
+                        },
+                        "rotate": {
+                           "$ref": "#/$defs/number"
+                        },
+                        "names": {
+                           "$ref": "#/$defs/vertex_names"
+                        },
+                        "sides": {
+                           "$ref": "#/$defs/side_labels"
+                        }
+                     }
+                  },
+                  {
+                     "type": "object",
+                     "additionalProperties": false,
+                     "required": [
+                        "kind",
+                        "at",
+                        "base",
+                        "height"
+                     ],
+                     "properties": {
+                        "kind": {
+                           "const": "isosceles"
+                        },
+                        "at": {
+                           "$ref": "#/$defs/point"
+                        },
+                        "base": {
+                           "$ref": "#/$defs/positive"
+                        },
+                        "height": {
+                           "$ref": "#/$defs/positive"
+                        },
+                        "rotate": {
+                           "$ref": "#/$defs/number"
+                        },
+                        "names": {
+                           "$ref": "#/$defs/vertex_names"
+                        },
+                        "sides": {
+                           "$ref": "#/$defs/side_labels"
+                        }
+                     }
+                  },
+                  {
+                     "type": "object",
+                     "additionalProperties": false,
+                     "required": [
+                        "kind",
+                        "at",
+                        "side"
+                     ],
+                     "properties": {
+                        "kind": {
+                           "const": "equilateral"
+                        },
+                        "at": {
+                           "$ref": "#/$defs/point"
+                        },
+                        "side": {
+                           "$ref": "#/$defs/positive"
+                        },
+                        "rotate": {
+                           "$ref": "#/$defs/number"
+                        },
+                        "names": {
+                           "$ref": "#/$defs/vertex_names"
+                        },
+                        "sides": {
+                           "$ref": "#/$defs/side_labels"
+                        }
+                     }
+                  },
+                  {
+                     "type": "object",
+                     "additionalProperties": false,
+                     "required": [
+                        "kind",
+                        "vertices"
+                     ],
+                     "properties": {
+                        "kind": {
+                           "const": "scalene"
+                        },
+                        "vertices": {
+                           "type": "array",
+                           "prefixItems": [
+                              {
+                                 "$ref": "#/$defs/point"
+                              },
+                              {
+                                 "$ref": "#/$defs/point"
+                              },
+                              {
+                                 "$ref": "#/$defs/point"
+                              }
+                           ],
+                           "items": false,
+                           "minItems": 3
+                        },
+                        "rotate": {
+                           "$ref": "#/$defs/number"
+                        },
+                        "names": {
+                           "$ref": "#/$defs/vertex_names"
+                        },
+                        "sides": {
+                           "$ref": "#/$defs/side_labels"
+                        }
+                     }
+                  }
+               ]
+            }
+         }
+      },
+      "graph_polygon": {
+         "type": "object",
+         "additionalProperties": false,
+         "required": [
+            "id",
+            "polygon"
+         ],
+         "properties": {
+            "id": {
+               "$ref": "#/$defs/id"
+            },
+            "role": {
+               "$ref": "#/$defs/role"
+            },
+            "label": {
+               "$ref": "#/$defs/label"
+            },
+            "stroke": {
+               "$ref": "#/$defs/stroke"
+            },
+            "polygon": {
+               "type": "array",
+               "minItems": 3,
+               "maxItems": 8,
+               "items": {
+                  "$ref": "#/$defs/point"
+               }
+            }
+         }
+      },
+      "graph_brace": {
+         "type": "object",
+         "additionalProperties": false,
+         "required": [
+            "id",
+            "brace"
+         ],
+         "properties": {
+            "id": {
+               "$ref": "#/$defs/id"
+            },
+            "role": {
+               "$ref": "#/$defs/role"
+            },
+            "label": {
+               "$ref": "#/$defs/label"
+            },
+            "stroke": {
+               "$ref": "#/$defs/stroke"
+            },
+            "brace": {
+               "type": "object",
+               "additionalProperties": false,
+               "required": [
+                  "from",
+                  "to"
+               ],
+               "properties": {
+                  "from": {
+                     "$ref": "#/$defs/point"
+                  },
+                  "to": {
+                     "$ref": "#/$defs/point"
+                  },
+                  "text": {
+                     "$ref": "#/$defs/text"
+                  },
+                  "side": {
+                     "$ref": "#/$defs/side"
+                  }
+               }
+            }
+         }
+      },
+      "graph_text": {
+         "type": "object",
+         "additionalProperties": false,
+         "required": [
+            "id",
+            "text"
+         ],
+         "properties": {
+            "id": {
+               "$ref": "#/$defs/id"
+            },
+            "role": {
+               "$ref": "#/$defs/role"
+            },
+            "label": {
+               "$ref": "#/$defs/label"
+            },
+            "stroke": {
+               "$ref": "#/$defs/stroke"
+            },
+            "text": {
+               "type": "object",
+               "additionalProperties": false,
+               "required": [
+                  "at",
+                  "text"
+               ],
+               "properties": {
+                  "at": {
+                     "$ref": "#/$defs/point"
+                  },
+                  "text": {
+                     "$ref": "#/$defs/text"
+                  }
+               }
+            }
+         }
+      },
+      "graph_callout": {
+         "type": "object",
+         "additionalProperties": false,
+         "required": [
+            "id",
+            "callout"
+         ],
+         "properties": {
+            "id": {
+               "$ref": "#/$defs/id"
+            },
+            "role": {
+               "$ref": "#/$defs/role"
+            },
+            "label": {
+               "$ref": "#/$defs/label"
+            },
+            "stroke": {
+               "$ref": "#/$defs/stroke"
+            },
+            "callout": {
+               "type": "object",
+               "additionalProperties": false,
+               "required": [
+                  "target",
+                  "at",
+                  "text"
+               ],
+               "properties": {
+                  "target": {
+                     "$ref": "#/$defs/point"
+                  },
+                  "at": {
+                     "$ref": "#/$defs/point"
+                  },
+                  "text": {
+                     "$ref": "#/$defs/text"
+                  }
+               }
+            }
+         }
+      },
+      "graph_ring": {
+         "type": "object",
+         "additionalProperties": false,
+         "required": [
+            "id",
+            "ring"
+         ],
+         "properties": {
+            "id": {
+               "$ref": "#/$defs/id"
+            },
+            "role": {
+               "$ref": "#/$defs/role"
+            },
+            "label": {
+               "$ref": "#/$defs/label"
+            },
+            "stroke": {
+               "$ref": "#/$defs/stroke"
+            },
+            "ring": {
+               "type": "object",
+               "additionalProperties": false,
+               "required": [
+                  "target"
+               ],
+               "properties": {
+                  "target": {
+                     "$ref": "#/$defs/point"
+                  }
+               }
+            }
+         }
+      },
+      "number_line_point": {
+         "type": "object",
+         "additionalProperties": false,
+         "required": [
+            "id",
+            "point"
+         ],
+         "properties": {
+            "id": {
+               "$ref": "#/$defs/id"
+            },
+            "role": {
+               "$ref": "#/$defs/role"
+            },
+            "label": {
+               "$ref": "#/$defs/label"
+            },
+            "stroke": {
+               "$ref": "#/$defs/stroke"
+            },
+            "point": {
+               "$ref": "#/$defs/number"
+            },
+            "open": {
+               "type": "boolean"
+            }
+         }
+      },
+      "number_line_interval": {
+         "type": "object",
+         "additionalProperties": false,
+         "required": [
+            "id",
+            "interval"
+         ],
+         "properties": {
+            "id": {
+               "$ref": "#/$defs/id"
+            },
+            "role": {
+               "$ref": "#/$defs/role"
+            },
+            "label": {
+               "$ref": "#/$defs/label"
+            },
+            "stroke": {
+               "$ref": "#/$defs/stroke"
+            },
+            "interval": {
+               "type": "object",
+               "additionalProperties": false,
+               "required": [
+                  "from",
+                  "to"
+               ],
+               "properties": {
+                  "from": {
+                     "oneOf": [
+                        {
+                           "$ref": "#/$defs/number"
+                        },
+                        {
+                           "type": "null"
+                        }
+                     ]
+                  },
+                  "to": {
+                     "oneOf": [
+                        {
+                           "$ref": "#/$defs/number"
+                        },
+                        {
+                           "type": "null"
+                        }
+                     ]
+                  },
+                  "open": {
+                     "type": "array",
+                     "prefixItems": [
+                        {
+                           "type": "boolean"
+                        },
+                        {
+                           "type": "boolean"
+                        }
+                     ],
+                     "items": false,
+                     "minItems": 2
+                  }
+               }
+            }
+         }
+      },
+      "number_line_signs": {
+         "type": "object",
+         "additionalProperties": false,
+         "required": [
+            "id",
+            "signs"
+         ],
+         "properties": {
+            "id": {
+               "$ref": "#/$defs/id"
+            },
+            "role": {
+               "$ref": "#/$defs/role"
+            },
+            "label": {
+               "$ref": "#/$defs/label"
+            },
+            "stroke": {
+               "$ref": "#/$defs/stroke"
+            },
+            "signs": {
+               "type": "object",
+               "additionalProperties": false,
+               "required": [
+                  "name",
+                  "at",
+                  "signs"
+               ],
+               "properties": {
+                  "name": {
+                     "type": "string",
+                     "minLength": 1,
+                     "maxLength": 24
+                  },
+                  "at": {
+                     "type": "array",
+                     "minItems": 1,
+                     "maxItems": 8,
+                     "items": {
+                        "$ref": "#/$defs/number"
+                     }
+                  },
+                  "signs": {
+                     "type": "array",
+                     "minItems": 2,
+                     "maxItems": 9,
+                     "items": {
+                        "enum": [
+                           "+",
+                           "-"
+                        ]
+                     }
+                  },
+                  "undefined": {
+                     "type": "array",
+                     "maxItems": 8,
+                     "items": {
+                        "$ref": "#/$defs/number"
+                     }
+                  }
+               }
+            }
+         }
+      },
+      "number_line_text": {
+         "type": "object",
+         "additionalProperties": false,
+         "required": [
+            "id",
+            "text"
+         ],
+         "properties": {
+            "id": {
+               "$ref": "#/$defs/id"
+            },
+            "role": {
+               "$ref": "#/$defs/role"
+            },
+            "label": {
+               "$ref": "#/$defs/label"
+            },
+            "stroke": {
+               "$ref": "#/$defs/stroke"
+            },
+            "text": {
+               "type": "object",
+               "additionalProperties": false,
+               "required": [
+                  "at",
+                  "text"
+               ],
+               "properties": {
+                  "at": {
+                     "oneOf": [
+                        {
+                           "$ref": "#/$defs/number"
+                        },
+                        {
+                           "$ref": "#/$defs/id"
+                        }
+                     ]
+                  },
+                  "text": {
+                     "$ref": "#/$defs/text"
+                  }
+               }
+            }
+         }
+      },
+      "number_line_brace": {
+         "type": "object",
+         "additionalProperties": false,
+         "required": [
+            "id",
+            "brace"
+         ],
+         "properties": {
+            "id": {
+               "$ref": "#/$defs/id"
+            },
+            "role": {
+               "$ref": "#/$defs/role"
+            },
+            "label": {
+               "$ref": "#/$defs/label"
+            },
+            "stroke": {
+               "$ref": "#/$defs/stroke"
+            },
+            "brace": {
+               "type": "object",
+               "additionalProperties": false,
+               "required": [
+                  "from",
+                  "to"
+               ],
+               "properties": {
+                  "from": {
+                     "$ref": "#/$defs/number"
+                  },
+                  "to": {
+                     "$ref": "#/$defs/number"
+                  },
+                  "text": {
+                     "$ref": "#/$defs/text"
+                  },
+                  "side": {
+                     "$ref": "#/$defs/side"
+                  }
+               }
+            }
+         }
+      },
+      "number_line_callout": {
+         "type": "object",
+         "additionalProperties": false,
+         "required": [
+            "id",
+            "callout"
+         ],
+         "properties": {
+            "id": {
+               "$ref": "#/$defs/id"
+            },
+            "role": {
+               "$ref": "#/$defs/role"
+            },
+            "label": {
+               "$ref": "#/$defs/label"
+            },
+            "stroke": {
+               "$ref": "#/$defs/stroke"
+            },
+            "callout": {
+               "type": "object",
+               "additionalProperties": false,
+               "required": [
+                  "target",
+                  "at",
+                  "text"
+               ],
+               "properties": {
+                  "target": {
+                     "oneOf": [
+                        {
+                           "$ref": "#/$defs/number"
+                        },
+                        {
+                           "$ref": "#/$defs/id"
+                        }
+                     ]
+                  },
+                  "at": {
+                     "$ref": "#/$defs/number"
+                  },
+                  "text": {
+                     "$ref": "#/$defs/text"
+                  }
+               }
+            }
+         }
+      },
+      "number_line_ring": {
+         "type": "object",
+         "additionalProperties": false,
+         "required": [
+            "id",
+            "ring"
+         ],
+         "properties": {
+            "id": {
+               "$ref": "#/$defs/id"
+            },
+            "role": {
+               "$ref": "#/$defs/role"
+            },
+            "label": {
+               "$ref": "#/$defs/label"
+            },
+            "stroke": {
+               "$ref": "#/$defs/stroke"
+            },
+            "ring": {
+               "type": "object",
+               "additionalProperties": false,
+               "required": [
+                  "target"
+               ],
+               "properties": {
+                  "target": {
+                     "oneOf": [
+                        {
+                           "$ref": "#/$defs/number"
+                        },
+                        {
+                           "$ref": "#/$defs/id"
+                        }
+                     ]
+                  }
+               }
+            }
+         }
+      },
+      "number_line_segment": {
+         "type": "object",
+         "additionalProperties": false,
+         "required": [
+            "id",
+            "segment"
+         ],
+         "properties": {
+            "id": {
+               "$ref": "#/$defs/id"
+            },
+            "role": {
+               "$ref": "#/$defs/role"
+            },
+            "label": {
+               "$ref": "#/$defs/label"
+            },
+            "stroke": {
+               "$ref": "#/$defs/stroke"
+            },
+            "segment": {
+               "type": "array",
+               "prefixItems": [
+                  {
+                     "$ref": "#/$defs/number"
+                  },
+                  {
+                     "$ref": "#/$defs/number"
+                  }
+               ],
+               "items": false,
+               "minItems": 2
+            }
+         }
+      },
+      "table_highlight": {
+         "type": "object",
+         "additionalProperties": false,
+         "required": [
+            "id",
+            "highlight"
+         ],
+         "properties": {
+            "id": {
+               "$ref": "#/$defs/id"
+            },
+            "role": {
+               "enum": [
+                  "highlight",
+                  "error"
+               ]
+            },
+            "label": {
+               "$ref": "#/$defs/label"
+            },
+            "stroke": {
+               "$ref": "#/$defs/stroke"
+            },
+            "highlight": {
+               "oneOf": [
+                  {
+                     "type": "object",
+                     "additionalProperties": false,
+                     "required": [
+                        "row"
+                     ],
+                     "properties": {
+                        "row": {
+                           "type": "integer",
+                           "minimum": 0,
+                           "maximum": 9
+                        }
+                     }
+                  },
+                  {
+                     "type": "object",
+                     "additionalProperties": false,
+                     "required": [
+                        "column"
+                     ],
+                     "properties": {
+                        "column": {
+                           "type": "integer",
+                           "minimum": 0,
+                           "maximum": 5
+                        }
+                     }
+                  },
+                  {
+                     "type": "object",
+                     "additionalProperties": false,
+                     "required": [
+                        "cell"
+                     ],
+                     "properties": {
+                        "cell": {
+                           "type": "array",
+                           "prefixItems": [
+                              {
+                                 "type": "integer",
+                                 "minimum": 0,
+                                 "maximum": 9
+                              },
+                              {
+                                 "type": "integer",
+                                 "minimum": 0,
+                                 "maximum": 5
+                              }
+                           ],
+                           "items": false,
+                           "minItems": 2
+                        }
+                     }
+                  }
+               ]
+            }
+         }
+      },
+      "table_callout": {
+         "type": "object",
+         "additionalProperties": false,
+         "required": [
+            "id",
+            "callout"
+         ],
+         "properties": {
+            "id": {
+               "$ref": "#/$defs/id"
+            },
+            "role": {
+               "enum": [
+                  "highlight",
+                  "error"
+               ]
+            },
+            "label": {
+               "$ref": "#/$defs/label"
+            },
+            "stroke": {
+               "$ref": "#/$defs/stroke"
+            },
+            "callout": {
+               "type": "object",
+               "additionalProperties": false,
+               "required": [
+                  "cell",
+                  "text"
+               ],
+               "properties": {
+                  "cell": {
+                     "type": "array",
+                     "prefixItems": [
+                        {
+                           "type": "integer",
+                           "minimum": 0,
+                           "maximum": 9
+                        },
+                        {
+                           "type": "integer",
+                           "minimum": 0,
+                           "maximum": 5
+                        }
+                     ],
+                     "items": false,
+                     "minItems": 2
+                  },
+                  "text": {
+                     "$ref": "#/$defs/text"
+                  }
+               }
+            }
+         }
+      },
+      "graph_element": {
+         "oneOf": [
+            {
+               "$ref": "#/$defs/graph_curve"
+            },
+            {
+               "$ref": "#/$defs/graph_parametric"
+            },
+            {
+               "$ref": "#/$defs/graph_polar"
+            },
+            {
+               "$ref": "#/$defs/graph_point"
+            },
+            {
+               "$ref": "#/$defs/graph_line"
+            },
+            {
+               "$ref": "#/$defs/graph_segment"
+            },
+            {
+               "$ref": "#/$defs/graph_secant"
+            },
+            {
+               "$ref": "#/$defs/graph_tangent"
+            },
+            {
+               "$ref": "#/$defs/graph_vline"
+            },
+            {
+               "$ref": "#/$defs/graph_hline"
+            },
+            {
+               "$ref": "#/$defs/graph_area"
+            },
+            {
+               "$ref": "#/$defs/graph_riemann"
+            },
+            {
+               "$ref": "#/$defs/graph_slope_field"
+            },
+            {
+               "$ref": "#/$defs/graph_solution"
+            },
+            {
+               "$ref": "#/$defs/graph_euler"
+            },
+            {
+               "$ref": "#/$defs/graph_sequence"
+            },
+            {
+               "$ref": "#/$defs/graph_vector"
+            },
+            {
+               "$ref": "#/$defs/graph_circle"
+            },
+            {
+               "$ref": "#/$defs/graph_arc"
+            },
+            {
+               "$ref": "#/$defs/graph_angle"
+            },
+            {
+               "$ref": "#/$defs/graph_right_angle"
+            },
+            {
+               "$ref": "#/$defs/graph_box"
+            },
+            {
+               "$ref": "#/$defs/graph_triangle"
+            },
+            {
+               "$ref": "#/$defs/graph_polygon"
+            },
+            {
+               "$ref": "#/$defs/graph_brace"
+            },
+            {
+               "$ref": "#/$defs/graph_text"
+            },
+            {
+               "$ref": "#/$defs/graph_callout"
+            },
+            {
+               "$ref": "#/$defs/graph_ring"
+            }
+         ]
+      },
+      "number_line_element": {
+         "oneOf": [
+            {
+               "$ref": "#/$defs/number_line_point"
+            },
+            {
+               "$ref": "#/$defs/number_line_interval"
+            },
+            {
+               "$ref": "#/$defs/number_line_signs"
+            },
+            {
+               "$ref": "#/$defs/number_line_text"
+            },
+            {
+               "$ref": "#/$defs/number_line_brace"
+            },
+            {
+               "$ref": "#/$defs/number_line_callout"
+            },
+            {
+               "$ref": "#/$defs/number_line_ring"
+            },
+            {
+               "$ref": "#/$defs/number_line_segment"
+            }
+         ]
+      },
+      "table_element": {
+         "oneOf": [
+            {
+               "$ref": "#/$defs/table_highlight"
+            },
+            {
+               "$ref": "#/$defs/table_callout"
+            }
+         ]
+      },
+      "graph_step": {
+         "type": "object",
+         "additionalProperties": false,
+         "required": [
+            "id",
+            "caption"
+         ],
+         "properties": {
+            "id": {
+               "$ref": "#/$defs/id"
+            },
+            "caption": {
+               "type": "string",
+               "minLength": 1,
+               "maxLength": 100
+            },
+            "add": {
+               "type": "array",
+               "maxItems": 4,
+               "items": {
+                  "$ref": "#/$defs/graph_element"
+               }
+            },
+            "fade": {
+               "type": "array",
+               "maxItems": 16,
+               "items": {
+                  "$ref": "#/$defs/id"
+               }
+            },
+            "erase": {
+               "type": "array",
+               "maxItems": 16,
+               "items": {
+                  "$ref": "#/$defs/id"
+               }
+            }
+         }
+      },
+      "number_line_step": {
+         "type": "object",
+         "additionalProperties": false,
+         "required": [
+            "id",
+            "caption"
+         ],
+         "properties": {
+            "id": {
+               "$ref": "#/$defs/id"
+            },
+            "caption": {
+               "type": "string",
+               "minLength": 1,
+               "maxLength": 100
+            },
+            "add": {
+               "type": "array",
+               "maxItems": 4,
+               "items": {
+                  "$ref": "#/$defs/number_line_element"
+               }
+            },
+            "fade": {
+               "type": "array",
+               "maxItems": 16,
+               "items": {
+                  "$ref": "#/$defs/id"
+               }
+            },
+            "erase": {
+               "type": "array",
+               "maxItems": 16,
+               "items": {
+                  "$ref": "#/$defs/id"
+               }
+            }
+         }
+      },
+      "table_step": {
+         "type": "object",
+         "additionalProperties": false,
+         "required": [
+            "id",
+            "caption"
+         ],
+         "properties": {
+            "id": {
+               "$ref": "#/$defs/id"
+            },
+            "caption": {
+               "type": "string",
+               "minLength": 1,
+               "maxLength": 100
+            },
+            "add": {
+               "type": "array",
+               "maxItems": 4,
+               "items": {
+                  "$ref": "#/$defs/table_element"
+               }
+            },
+            "fade": {
+               "type": "array",
+               "maxItems": 16,
+               "items": {
+                  "$ref": "#/$defs/id"
+               }
+            },
+            "erase": {
+               "type": "array",
+               "maxItems": 16,
+               "items": {
+                  "$ref": "#/$defs/id"
+               }
+            }
+         }
+      }
+   }
+}

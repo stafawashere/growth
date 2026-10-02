@@ -184,3 +184,18 @@ Raised by the live tutor agent research and design (`docs/agent/research/synthes
 - Whether Ctrl+/ fires on the keyboard layouts the student uses. Provisional: Ctrl+/ and Cmd+/. Settled by: pressing it on the student's keyboard.
 - The KaTeX `maxExpand` for model output. Provisional: 100, which covers the stacked-limit macro. Settled by: nothing further unless a formula fails to render.
 - The agent's subscription pacing, 80 calls a day and 6 a minute. Provisional, sized at five times the tutor's measured load against windows whose size is not published. Settled by: the five-hour and seven-day utilisation the CLI now reports on every call, read over the first week of use.
+
+## Rulings the tutor drawing needs, 2026-09-30 [uncertain]
+
+Raised by `docs/agent/research/drawing.md` and `docs/agent/drawing-design.md`. Each was decided provisionally so the build could proceed, and the provisional choice is named.
+
+- Stated givens equal to the key. LSN-CON-01006's prediction states an open circle at (3, 2) and its key is 2, so a figure that draws the stated circle is withheld, as a sentence restating it is. Provisional: withhold. Settled by: the operator deciding whether stated givens may be drawn before the check.
+- Integer keys. A generic sketch that happens to mark the key's integer is withheld. Provisional: integers are compared, as in a math span. Settled by: the false-positive rate on the golden set and in use.
+- The reading pace. 238 words a minute is the adult average for non-fiction and school-age readers are slower; mathematical text is slower again. Provisional: 238 words a minute, math spans counted as three words, at most 6 seconds a step, "Show all" to skip. Settled by: watching the student use it.
+- A second hue for constructions. The accent is monochrome in the operator's token values. Provisional: no new hue; roles ride on ink, weight, dash and underlay. Settled by: the operator's token file.
+- The stroke wipe. Kept in normal motion for the whiteboard brief, with no learning evidence of its own (computer-animated drawing, d = 0.33, not significant). Settled by: the operator after seeing it.
+- Figures kept with the turn for 30 days. Provisional: yes, under the turns' row. Settled by: the operator.
+- Drawing on the first practice reply. Provisional: closed, because the first reply asks what was tried. Settled by: the operator.
+- The share of turns that draw, which prices the feature in plan 14. Provisional: 0.3. Settled by: the figure outcome counts on the turn log line after a week of use.
+- The drawing template's size. The v2 prefix is 9,755 tokens by the divisor, held under a 10,000-token ceiling by `tests/agent/drawing/test_template_examples.py`; the design first estimated 5,500, which left room for about five of the fourteen examples. Adding page marks and four marks examples took the prefix to 11,655 tokens; the operator chose in chat on 2026-09-30 to raise the ceiling to 12,000 rather than trim examples. Settled: 12,000, pending the cached count a live call reports.
+- Three existing test inventories were pointed at the new artifacts rather than left red: `tests/db/test_models.py` gained `figure` in the `agent_turns` column set, and `tests/agent/test_prefix.py` names `prompts/agent/live_v2.md` and adds `drawing` to its field list. Each assertion keeps its strength (an exact column set, a counted prefix hash above 512 tokens, a field above the marker refused). Provisional: kept. Settled by: the operator confirming this is maintenance and not a loosening.

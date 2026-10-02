@@ -178,11 +178,11 @@ export function Item(props: ItemProps) {
                   </p>
                ) : null}
 
-               <p className="item-stem" data-testid="item-stem">
+               <p className="item-stem" data-testid="item-stem" data-agent-anchor="stem">
                   <MathText text={item.stem} />
                </p>
 
-               {hasFigure ? <FigureView spec={item.figure_spec} /> : null}
+               {hasFigure ? <FigureView spec={item.figure_spec} isItemFigure /> : null}
 
                {allowsCalculator ? <DesmosPanel beside={<CalculatorLink />} /> : null}
             </div>
@@ -223,6 +223,7 @@ export function Item(props: ItemProps) {
                   options={item.options ?? []}
                   selectedId={selectedOptionId}
                   onSelect={onOptionChange}
+                  anchorsOptions
                />
             </div>
          ) : null}

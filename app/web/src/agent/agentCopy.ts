@@ -102,6 +102,97 @@ export const CONVERSATION_CEILING = "This conversation has reached 20 questions.
 
 export const SCREEN_REFUSED = "The tutor could not use what this screen sent. Reload the page and send again.";
 
+/* A figure in a reply, from docs/agent/drawing-design.md "States and copy" and "What the student
+   sees". */
+
+export const DRAWING_A_FIGURE = "Drawing a figure";
+
+export const FIGURE_REFUSED = "The figure for this reply could not be drawn.";
+
+export const PREVIOUS_STEP_LABEL = "Previous";
+
+export const NEXT_STEP_LABEL = "Next";
+
+export const SHOW_ALL_LABEL = "Show all";
+
+export const STEPS_LABEL = "Steps";
+
+export const CURRENT_STEP_WORD = "now";
+
+export function stepLine(step: number, total: number, caption: string) {
+   return `Step ${step} of ${total}: ${caption}`;
+}
+
+export function figureAnnouncement(title: string, description: string) {
+   return `Figure: ${title}. ${description}`;
+}
+
+/* The art board, from docs/agent/drawing-design.md "The art board". The visible words of the
+   board's buttons begin their accessible names, which say which board or figure they act on. */
+
+export const ART_BOARD_TITLE = "Art board";
+
+export function figureOnTheBoard(title: string) {
+   return `Figure on the board: ${title}`;
+}
+
+export const SHOW_ON_THE_BOARD = "Show on the board";
+
+export function boardFigureCount(figure: number, total: number) {
+   return `Figure ${figure} of ${total}`;
+}
+
+export const PREVIOUS_FIGURE_LABEL = "Previous figure";
+
+export const NEXT_FIGURE_LABEL = "Next figure";
+
+export const MINIMIZE_LABEL = "Minimize";
+
+export const MINIMIZE_BOARD_LABEL = "Minimize the art board";
+
+export const RESTORE_LABEL = "Restore";
+
+export const RESTORE_BOARD_LABEL = "Restore the art board";
+
+export const CLOSE_BOARD_LABEL = "Close the art board";
+
+export const TALLER_LABEL = "Taller";
+
+export const SHORTER_LABEL = "Shorter";
+
+export const MOVE_BOARD_LABEL = "Move the art board";
+
+export const MOVE_LABEL = "Move";
+
+export const MOVE_TO_NEXT_CORNER_LABEL = "Move the art board to the next corner";
+
+export const SIZE_LABEL = "Size";
+
+export const CHANGE_SIZE_LABEL = "Change the art board's size";
+
+export const MOVE_BOARD_HINT = "Arrow keys move the board. Hold Shift to move it further.";
+
+export const RESIZE_BOARD_LABEL = "Resize the art board";
+
+export const RESIZE_BOARD_HINT = "Arrow keys resize the board. Hold Shift to resize it further.";
+
+export function minimizedBoard(title: string) {
+   return `${ART_BOARD_TITLE}: ${title}`;
+}
+
+/* Marks on the page, from docs/agent/drawing-design.md "Marks on the page", "What the student
+   sees". */
+
+export const MARKED_ON_THE_PAGE = "Marked on the page";
+
+export const CLEAR_MARKS = "Clear marks";
+
+export const MARKS_REFUSED = "The marks on the page for this reply could not be drawn.";
+
+export function marksAnnouncement(description: string) {
+   return `Marks on the page: ${description}`;
+}
+
 export function shortcutName(isMac: boolean) {
    return isMac ? "Cmd+/" : "Ctrl+/";
 }

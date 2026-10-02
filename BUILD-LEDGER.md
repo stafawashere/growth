@@ -3381,6 +3381,18 @@ live backend (runs 9 to 12 used `GROWTH_AI_BACKEND` none).
 
 ## Known defects [verified]
 
+- 2026-10-02, paper_to_grade recording, open: a recording made under heavy load can bake a
+  timed-out check into the book. A recording at load average about 200 sent a2 to the grader: its
+  `sympy_equivalence` check runs in a forkserver child bounded at 5 s (`app/items/verify.py`
+  `run_bounded`), outlived the bound, returned unsettled, and the grader call for a2 was recorded,
+  so the book fails `points["a2"]["decided_by"] == "deterministic"` and misses on replay at normal
+  load. The same bound makes a replay under heavy load send a2 to the grader and raise
+  CassetteMiss. Record only at a 1-minute load under 30 and check a2 is deterministic in the
+  summary before committing; a bound that does not count child start-up would remove it. A
+  boundary part (b) was also tried in place of the committed book (the sign of (x - 3)e^x without
+  naming g', and a "relative maximum" conclusion): one recording split b1 2 of 3 with b2 unanimous
+  not_earned, provisional 1. It was not landed because 4e602af0 had already fixed the test, and one
+  recording shows nothing about how stable the split is.
 - 2026-09-23, subscription backend Slice 2, open:
   - The usage-limit wording the adapter matches ("weekly limit", "5-hour limit", "usage limit",
     "rate limit") and whether a limit arrives as `is_error` JSON or on stderr are still

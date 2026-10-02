@@ -3085,6 +3085,36 @@ items) and items 3 and 6 (Slices 3 and 4). Every gate 11 names for P2 now exists
   monte_carlo_invariants 1 passed, generated_banks 13 passed, duplicate_gate_labelled 3 passed,
   template_gate 18 passed, statement_items 7 passed, parameter_specs 3 passed, template_stems 2
   passed, generated_provenance 2 passed.
+- 2026-10-02, stage 12 (prompts), slice 1, on the operator's delegation (Decisions,
+  2026-10-02). Tutor pin moved to `claude-sonnet-5-5`; grader golden test on the v2 per-part
+  contract; AI notices read the v2 grader's `points` and `verdicts`; the metrics view compares all
+  five switches; digest goldens for `generator/lesson_v1`, `lesson_v2` and `memory/consolidate_v2`
+  by `tools/record_prompt_goldens.py`; output goldens for the seven templates without one, on
+  five subscription recordings (`tools/record_prompt_outputs.py`), the agent golden set and the
+  lesson checker; `prompts/memory/consolidate_v2.md` live; the tutor prefix measured at 1,470
+  tokens on `claude-sonnet-5-5` (`tools/count_prompt_tokens.py --subscription`). Red then green:
+  the notices grader tests on the old `notices.py` (2 failed) and on the new; the grader field
+  test on two judge mutations (2 failed each); the two new outcome tests on two analysis
+  mutations (2 failed); nine mutations of the new output checks, each red. Checks, one pytest
+  process per file over tests/providers, grading, api, eval, agent, agent/drawing, experiments and
+  tools (122 files): 1924 passed, 6 failed, 24 errors before the last edits, every failure listed
+  under Known defects 2026-10-02 or rerun green alone (drawing compile budget under load:
+  `40 passed`, `95 passed`; notices `20 passed`); `test_frq_bank.py` timed out at 900 s under
+  load; alone it stops on the pre-existing bank checker failure (Known defects). The seven named exit tests: `tests/providers/test_prompts.py` 3
+  passed, `test_prompt_output_goldens.py::test_every_template_has_an_output_golden` passed,
+  `tests/grading/test_prompt_goldens.py` 9 passed, `test_prompt_cache_prefix_length.py` 2
+  passed, `test_feedback_sentence.py` passed, `test_ai_notices.py` 20 passed,
+  `test_evaluation_routes.py` 8 passed. `tools/cost_model.py --check docs/plan/14-token-economy.md`
+  exit 0; tsc exit 0; qa exit 0. Rebased onto 8a0d4289, after stage 13 (frq) re-recorded the
+  cassette books for `claude-sonnet-5-5`: both stages had fixed the grader notices, and the merge
+  keeps this stage's briefs (they name the points and read a single v2 verdict) with stage 13's
+  whole-part test on registry point types, its expected strings set to the kept wording. The 225
+  files `tools/affected_checks.py` selects, one process each: 3020 passed, 17 failed, every
+  failure one that fails on main (Known defects 2026-10-02), `tests/lessons/test_invariants.py`
+  run on its own cap. `tests/eval/test_prompt_output_goldens.py` `22 passed`, so every
+  parametrized `eval_prompt_goldens` case passes; `test_p3_evals.py` `5 passed`;
+  `test_frq_bank.py::test_every_served_record_passes_the_bank_checker` `1 passed`; vitest
+  `client.test.ts` `248 passed`.
 
 Stage 13 (frq), 2026-10-02, free response end to end, by Claude Opus 5.5 on the operator's
 delegation. The causes are under In progress and Known defects; the rulings under Decisions,
@@ -3196,6 +3226,10 @@ decided all four points where the test asks for one provisional; the 10 FRQ-AGT 
 `corrections-archetypes-skill-load.json`; and the server sent the two tutor fields outside
 `gradings_payload`, the function the client contract reads. What stays open is under Known
 defects, 2026-10-02.
+
+Stage 12, prompts and models, 2026-10-02, worktree `../growth-prompts` on branch `prompts`:
+complete and merged (Done, "stage 12 (prompts)"; Decisions, 2026-10-02). What stays open after it is
+listed under Known defects, 2026-10-02; the engine's simulation failures belong to another stage.
 
 ## Live API spend log [verified]
 
@@ -3380,6 +3414,13 @@ Stage 13 (content2), 2026-09-27: $0.00 on the API key. 12 authoring subagents (g
 of them resumed for replacements) and 3 blind re-solve subagents ran inside this Claude Code
 session on the operator's subscription; no test called a live model and no app route ran with a
 live backend (runs 9 to 12 used `GROWTH_AI_BACKEND` none).
+
+Stage 12 (prompts), 2026-10-02: $0.00 on the API key; no key was read. Nine calls on the
+operator's subscription through the claude CLI with the production argv, all on
+`claude-sonnet-5-5`: four for the tutor prefix measurement (`tools/count_prompt_tokens.py
+--subscription`), and five recordings (`tools/record_prompt_outputs.py`: two
+correct_reinforcement, one frq_points, one consolidation on v1 and one on v2). No test called a
+live model.
 
 ## Known defects [verified]
 
@@ -4419,6 +4460,24 @@ From the eleventh session, 2026-09-21, found and not fixed.
   `KeyError: 'answer_key'`: it checks multiple-choice and short-answer banks. The free-response
   bank's checker is `tools/check_frq_items.py` (via `tests/grading/test_frq_bank.py`).
 
+- 2026-10-02, stage 12 (prompts), open. `app/feedback/tutor.py` `point_line` writes the
+  criterion and the grader's rationale followed by a period, and both usually end in one already,
+  so the frq_points message reads "present.." (seen in `tutor_frq_points_live_00.json`). Cosmetic,
+  in the user message only.
+- 2026-10-02, stage 12 (prompts), open. The output golden for `feedback/elaborated_v2` still
+  checks the eight Haiku recordings of 2026-09-23, not a recording on the routed
+  `claude-sonnet-5-5`; `tools/record_prompt_outputs.py` can record them when the template next
+  changes.
+- 2026-10-02, stage 12 (prompts), open, not this stage's. On main at 8a0d4289 the engine and
+  item tests fail as they did before this stage: `test_selection_study` (decay arm),
+  `test_simulation` (prereq gap, mastery growth), `test_today_policies` (retrieval ordering), the
+  e2e mastery paths and login to feedback, the items comparison tests, and the unit check.
+  `tests/api/test_unauthenticated_routes.py` needs a built `app/web/dist` and a worktree needs
+  `cache/web` linked beside `cache/pdf`, or `qa/00_manifest` reports the Desmos web sources
+  missing. One `tools/affected_checks.py` run hung for over 12 minutes with pytest blocked on a
+  read from an idle forkserver worker after `tests/items` started; per-file processes under a
+  900 s cap finished.
+
 ## Plan corrections applied [verified]
 
 Session 2026-09-23 (fourteenth). No plan file was edited. Readings applied in code:
@@ -5043,6 +5102,81 @@ Stage 13 (frq), decided by Claude Opus 5.5 on the operator's delegation of 2026-
 - The walk ran the worktree's code on ports 8031 and 5184 against the shared `var/test.db`,
   because port 5174 was held by another session's dev server; the two temporary launch entries
   were removed afterwards.
+
+- 2026-10-02, stage 12 (prompts), on the operator's delegation: 03 and 07, the grader's unit is
+  one call per part per sample carrying every open point with its full record (landed in b6f9aa27
+  without a row); 07, the tutor and the other Sonnet roles run on `claude-sonnet-5-5`, the
+  template front matter `model:` line is corrected at its next version, the tutor's prefix is
+  1,470 tokens on Sonnet 5.5 measured through the subscription, and the memory role renders
+  `consolidate_v2.md`; 10, the metrics view compares all five switches, with the outcomes of
+  `lesson_first_contact` and `selection_priority` defined. Each sits in the plan file's own
+  "Plan amendments, 2026-10-02, prompts and models" table.
+
+## Decisions taken on the operator's instruction, 2026-10-02 [inferred]
+
+Stage 12, prompts and models, worktree `../growth-prompts` on branch `prompts`. Decided by
+claude-opus-5-5 on the operator's delegation of 2026-10-02, whose one goal is the most efficient and
+effective AP Calculus BC tutor for the operator's exam on 10 May 2027. Each decision names its
+reason.
+
+- The tutor stays on `claude-sonnet-5-5`, and the tests that pinned `claude-sonnet-5` were stale.
+  The move came in commit b6f9aa27 on 2026-09-29 together with plan rows in 07, 13 and 14 and the
+  `tools/cost_model.py` table, but no ledger entry records it as the operator's decision, and the
+  2026-09-23 orchestration status had said the tutor stays on Sonnet 5. It is kept on this
+  delegation because: the two models are priced alike (13, the claude-api skill's table,
+  [inferred]); Sonnet 5.5's cache minimum is 512 tokens against Sonnet 5's 1,024 (07,
+  [single-source]); the live agent, the memory role and the subscription measurements of
+  2026-09-29 are all on Sonnet 5.5, so one model serves the tutor everywhere; and reverting would
+  make 07, 13, 14 and the cost model wrong. `tests/api/test_feedback_sentence.py` now pins
+  `claude-sonnet-5-5`, citing `app/providers/model_routing.py` and this entry.
+- The grader keeps one call per part per sample (b6f9aa27), not 03's one call per point. A part
+  holds one to three open points, the v2 templates tell the model to decide each point on its own
+  record, and a 9-point question costs 3 calls per sample instead of 9 on a subscription paced by
+  call counts. `tests/grading/test_prompt_goldens.py` now traces every BC-PT record field and the
+  criterion through `judge.prompt_fields` into the rendered message, checks the field set equals
+  the template's declared set, and keeps the refusal of an undeclared field (`answer_key`) and of
+  a missing one; 03 and 07 carry the amendment. Red shown twice: the eligibility line removed
+  from `point_block` (2 failed) and an `answer_key` field added to `prompt_fields` (2 failed).
+- The AI notices drifted from the v2 grader, not the other way round: the asked brief looked for
+  the v1 field `point_type_name` and the answered brief for a top-level `decision`, so every real
+  grading call read "Asked whether your work earns one scoring point" and "Returned a grading
+  with no clear decision". `app/providers/notices.py` now reads the point names from the declared
+  `points` field (record text, never the student's work) and summarises the `verdicts` list: one
+  point as before, several as "earns 2 points: A and B" and "Judged 1 of 2 points earned". The
+  test helper builds its request through `judge.request_for`.
+- The metrics view drifted from 10, which compares every switch on delayed accuracy:
+  `lesson_first_contact` and `selection_priority` had no comparison. Outcomes, [inferred]: the
+  first practice attempt on a skill of the assigned concept 14 to 28 days after assignment, and
+  for each primary skill an assigned session practised, the first practice attempt on that skill
+  14 to 28 days after the session; the window is `retrieval_entry`'s. 10 carries the amendment.
+- Digest goldens are written by a new `tools/record_prompt_goldens.py`, which records a missing
+  golden from the file's bytes and refuses to rewrite one that disagrees (that needs a new
+  version). `generator/lesson_v1` and `lesson_v2` were pinned at their bytes of commit ca73c137.
+- Output goldens for the six templates without one. The tutor's `correct_reinforcement_v1` and
+  `frq_points_v1` and the memory role's template are checked on calls recorded on the operator's
+  subscription on the routed model by a new `tools/record_prompt_outputs.py`; the items and the
+  free-response record are the repository's, and the grader rows, the observed error and the six
+  conversation turns are constructed by the model and say so in each cassette. `agent/live_v2` is
+  checked on the golden set's 12 acceptable replies that draw, split, compiled and checked as the
+  route does. `generator/lesson_v2` is checked by `tools/check_lessons.py` on a sample of three of
+  the 127 lessons, all of which name v2; `lesson_v1` is superseded, no lesson names it, and its
+  kept output, the decision lesson control, passes every lint.
+- `prompts/memory/consolidate_v2.md` replaces v1. v1's recording lost one of its three proposals,
+  a confusion kept in the student's words ("I always forget the chain rule..."), to the content
+  screen's instruction word "always", because v1 asks for the student's own words and the screen
+  drops any entry that contains always, never, must and the like. v2 names the screen's words and
+  asks for the meaning without them; its recording keeps all three proposals. The screen was not
+  touched.
+- The front matter `model:` line of seven templates still says `claude-sonnet-5` (the tutor's
+  three, the transcriber's and the diagnostician's, `feedback/elaborated_v1` among them). It is
+  sent as part of the system prefix, so changing it is a new version, which would invalidate the
+  recordings, the prefix measurement and the transcription cassettes stage 13 is re-recording.
+  Each is corrected when its template next changes for a reason of substance.
+- The cache prefix of `prompts/feedback/elaborated_v2.md` was measured on `claude-sonnet-5-5`
+  through the subscription, since the CLI has no count_tokens: the prefix alone and the prefix
+  written twice, two calls each, and the difference of the second calls' cache reads (2,969 minus
+  1,499) is 1,470 tokens, the count count_tokens gave on `claude-sonnet-5` on 2026-09-23. The
+  measurement is a model's (claude-opus-5-5), not a human's, and says so in the fixture.
 
 ## Decisions taken on the operator's instruction, 2026-09-29 [inferred]
 

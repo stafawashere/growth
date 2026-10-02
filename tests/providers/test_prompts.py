@@ -147,6 +147,7 @@ AGENT_TEMPLATE_FIELDS = {
       "student_message",
    },
    PROMPTS_DIR / "memory" / "consolidate_v1.md": {"turns", "active_entries", "own_notes", "active_skill_ids"},
+   PROMPTS_DIR / "memory" / "consolidate_v2.md": {"turns", "active_entries", "own_notes", "active_skill_ids"},
 }
 DECLINE_TEMPLATE = PROMPTS_DIR / "agent" / "decline_v1.md"
 

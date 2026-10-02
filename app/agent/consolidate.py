@@ -7,7 +7,7 @@ agent_consolidate:<conversation_id>, so a conversation closed twice is consolida
 payload names the student and the conversation and carries no text, because the jobs table is read
 by the export and the purge and a job outlives the turns it points at.
 
-run_job renders prompts/memory/consolidate_v1.md with the conversation's turns, the student's
+run_job renders prompts/memory/consolidate_v2.md with the conversation's turns, the student's
 active entries, the error notes and self-explanations of attempts in the sessions those turns
 touched, and the student's skill ids, all JSON-encoded below the marker, and calls the memory role
 through the chain it is given, under schemas/agent/consolidation.schema.json. The output is
@@ -61,7 +61,7 @@ from app.providers.model_routing import model_for
 from app.providers.subscription import SubscriptionLimitReached
 
 REPO_ROOT = Path(__file__).resolve().parents[2]
-TEMPLATE_PATH = REPO_ROOT / "prompts" / "memory" / "consolidate_v1.md"
+TEMPLATE_PATH = REPO_ROOT / "prompts" / "memory" / "consolidate_v2.md"
 SCHEMA_PATH = REPO_ROOT / "schemas" / "agent" / "consolidation.schema.json"
 
 JOB_TYPE = "agent_consolidate"
@@ -207,6 +207,11 @@ def build_request(db, conversation, template, now=None):
       "own_notes": json.dumps(own_notes(db, user_id, turns)),
       "active_skill_ids": json.dumps(active_skill_ids(db, user_id)),
    }
+
+   return request_for_fields(fields, template)
+
+
+def request_for_fields(fields, template):
    system, _variable_section = split_template(template)
    rendered = render_template(template, fields)
 

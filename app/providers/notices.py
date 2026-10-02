@@ -56,8 +56,8 @@ STUDENT_DERIVED_FIELDS = frozenset({
 
 _PLACEHOLDER_RE = re.compile(r"\{\{\s*([a-zA-Z_][a-zA-Z0-9_]*)\s*\}\}")
 _PART_ID_RE = re.compile(r"part \(([^)]*)\)")
+_POINT_NAME_RE = re.compile(r"^Point [^:\n]+: point type [^,\n]+, (.+)\.$", re.MULTILINE)
 _WHITESPACE_RE = re.compile(r"\s+")
-_POINT_BLOCK_RE = re.compile(r"^Point \S+:", re.MULTILINE)
 
 
 class NoticeBoard:
@@ -263,19 +263,21 @@ def asked_brief(request):
       return clipped("Asked the tutor for a feedback sentence on your answer.")
 
    if role == "grader":
-      point_name = _field(fields, "point_type_name")
+      point_names = _POINT_NAME_RE.findall(str(fields.get("points") or ""))
       part_id = _field(fields, "part_id")
-      open_points = len(_POINT_BLOCK_RE.findall(str(fields.get("points") or "")))
-      names_one_point = point_name and part_id
-      names_open_points = part_id and open_points > 0
+      has_part = part_id != ""
+      asks_one_point = len(point_names) == 1 and has_part
+      asks_several_points = len(point_names) > 1 and has_part
 
-      if names_one_point:
-         return clipped(f"Asked whether your work on part ({part_id}) earns the point for {point_name}.")
+      if asks_one_point:
+         return clipped(f"Asked whether your work on part ({part_id}) earns the point for {point_names[0]}.")
 
-      if names_open_points:
-         return clipped(f"Asked which of the {_plural(open_points, 'open point')} on part ({part_id}) your work earns.")
+      if asks_several_points:
+         listed = ", ".join(point_names[:-1]) + f" and {point_names[-1]}"
 
-      return clipped("Asked whether your work earns one scoring point.")
+         return clipped(f"Asked whether your work on part ({part_id}) earns {len(point_names)} points: {listed}.")
+
+      return clipped("Asked whether your work earns its scoring points.")
 
    if role == "transcriber":
       pages = _plural(len(request.images or ()), "photographed page")
@@ -333,33 +335,47 @@ def _list_of(payload, key):
    return value if isinstance(value, list) else []
 
 
+def _one_verdict_brief(verdict_payload):
+   decision = verdict_payload.get("decision") if isinstance(verdict_payload, dict) else None
+   rule_field = verdict_payload.get("rule_field") if isinstance(verdict_payload, dict) else None
+   verdicts = {"earned": "Judged the point earned", "not_earned": "Judged the point not earned"}
+   verdict = verdicts.get(decision)
+
+   if verdict is None:
+      return "Returned a grading with no clear decision."
+
+   has_rule = isinstance(rule_field, str) and rule_field.strip() != ""
+
+   if has_rule:
+      return f"{verdict}, citing the {rule_field.replace('_', ' ')} rule."
+
+   return f"{verdict}."
+
+
+def _grader_brief(payload):
+   """The grader answers one verdict per point of the part (app/grading/judge.py grader_schema)."""
+   verdicts = _list_of(payload, "verdicts")
+
+   if len(verdicts) == 0:
+      return "Returned a grading with no clear decision."
+
+   if len(verdicts) == 1:
+      return _one_verdict_brief(verdicts[0])
+
+   decisions = [verdict.get("decision") if isinstance(verdict, dict) else None for verdict in verdicts]
+   earned = decisions.count("earned")
+   decided = earned + decisions.count("not_earned")
+   all_decided = decided == len(verdicts)
+
+   if all_decided:
+      return f"Judged {earned} of {len(verdicts)} points earned."
+
+   return f"Judged {earned} of {len(verdicts)} points earned, {len(verdicts) - decided} with no clear decision."
+
+
 def _structured_brief(role, payload):
-   if role == "grader" and "verdicts" in payload:
-      decisions = [verdict.get("decision") for verdict in _list_of(payload, "verdicts") if isinstance(verdict, dict)]
-      earned = decisions.count("earned")
-      not_earned = decisions.count("not_earned")
-      has_decision = earned + not_earned > 0
-
-      if not has_decision:
-         return "Returned a grading with no clear decision."
-
-      return f"Judged {_plural(earned, 'point')} earned and {not_earned} not earned."
-
    if role == "grader":
-      decision = payload.get("decision")
-      rule_field = payload.get("rule_field")
-      verdicts = {"earned": "Judged the point earned", "not_earned": "Judged the point not earned"}
-      verdict = verdicts.get(decision)
-
-      if verdict is None:
-         return "Returned a grading with no clear decision."
-
-      has_rule = isinstance(rule_field, str) and rule_field.strip() != ""
-
-      if has_rule:
-         return f"{verdict}, citing the {rule_field.replace('_', ' ')} rule."
-
-      return f"{verdict}."
+      return _grader_brief(payload)
 
    if role == "transcriber":
       parts = _plural(len(_list_of(payload, "parts")), "part")

@@ -32,7 +32,7 @@ Screenshots `var/agent/drawing/01` to `30`, the walkthrough video `var/agent/dra
 - The route refuses a marks block whose step ids repeat a shown figure's, and the golden set has no case for it.
 - A correct opener whose first worked step shows on screen is not listed as a `solution_step` anchor, because the packet cannot see that.
 - The reading pace (238 words a minute) is an adult average applied to a school-age reader; the first week of use should set it.
-- Carried from the live tutor handoff and still open: the reader's `#end` and a decision lesson's `#stems` screens send ids the server refuses; an answered lesson question stays in practice mode; the `usage_limit` copy with no reset time; `tests/eval/test_prompt_output_goldens.py` has no recorded output for `memory/consolidate_v1` (it now also has none for `agent/live_v2`).
+- Carried from the live tutor handoff and still open: the reader's `#end` and a decision lesson's `#stems` screens send ids the server refuses; an answered lesson question stays in practice mode; the `usage_limit` copy with no reset time. The missing output goldens for `memory/consolidate_v1` and `agent/live_v2` were added on 2026-10-02 (BUILD-LEDGER.md, Done, stage 12 prompts).
 - Four checks fail on `main` at fa514089 and on this branch, confirmed on a clean `main` checkout on 2026-10-01: `tests/providers/test_ai_notices.py::test_a_grader_brief_summarises_the_decision_and_leaves_out_the_student_work`, `tests/providers/test_prompt_cache_prefix_length.py::test_prompt_cache_prefix_length`, `tests/providers/test_prompts.py::test_prompt_templates_are_versioned_and_golden` (no golden digest for `prompts/generator/lesson_v1.md` and `lesson_v2.md`), and the web test `client.test.ts` `GradingsPayload`.
 
 ## Next actions [inferred]

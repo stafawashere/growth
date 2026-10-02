@@ -1,4 +1,4 @@
-"""Delayed-accuracy comparisons for the two A/B switches, docs/plan/10 "A/B readiness".
+"""Delayed-accuracy comparisons for the A/B switches, docs/plan/10 "A/B readiness".
 
 Each comparison is within the one student, so it is a difference in delayed accuracy between arms
 with a Newcombe hybrid score interval (method 10 of Newcombe 1998), built from the two Wilson
@@ -15,6 +15,14 @@ Outcomes:
 - retrieval_entry. The unit is the skill. An outcome is the first attempt on an item whose primary
   skill is the assigned skill, submitted DELAY_LOW_DAYS to DELAY_HIGH_DAYS after the assignment,
   the two to four week delayed checkpoint of 01. Attempts inside a practice session only.
+- lesson_first_contact (docs/plan/15-lessons.md, Within-student A/B). The unit is the concept. An
+  outcome is the first attempt on an item whose primary skill belongs to the assigned concept,
+  submitted DELAY_LOW_DAYS to DELAY_HIGH_DAYS after the assignment: 15's delayed accuracy at the
+  2 to 4 week checkpoint. Attempts inside a practice session only.
+- selection_priority (docs/pedagogy/today/design.md D2). The unit is the session. An outcome is,
+  for each primary skill the assigned session practised, the first attempt on that skill submitted
+  DELAY_LOW_DAYS to DELAY_HIGH_DAYS after the session, the delayed checkpoint accuracy 10 names
+  for this switch. Attempts inside a practice session only.
 - tutor_profile (docs/agent/architecture.md, The self-tuning loop). The unit is the skill. An
   outcome follows an attempt the live tutor assisted before submission under a recorded arm: the
   next graded attempt on the same archetype, on a later calendar day, with no practice turn before
@@ -129,21 +137,74 @@ def assignments(db, user_id, name):
    ).scalars().all()
 
 
+def graded_practice(attempts):
+   return [record for record in attempts if record.updates_mastery and record.correct is not None]
+
+
+def delayed_outcome(practice, start_day, skills):
+   """1 or 0 for the first attempt on one of skills in the delayed checkpoint window after
+   start_day, or None when no attempt falls in it."""
+   for record in practice:
+      is_skill = record.primary_skill in skills
+      delay = (record.day - start_day).days
+      is_in_window = DELAY_LOW_DAYS <= delay <= DELAY_HIGH_DAYS
+
+      if is_skill and is_in_window:
+         return 1 if record.correct else 0
+
+   return None
+
+
+def assigned_day(assignment):
+   return date.fromisoformat(assignment.assigned_at[:10])
+
+
 def retrieval_outcomes(assigned, attempts):
-   practice = [record for record in attempts if record.updates_mastery and record.correct is not None]
+   practice = graded_practice(attempts)
    outcomes = {}
 
    for assignment in assigned:
-      assigned_on = date.fromisoformat(assignment.assigned_at[:10])
+      outcome = delayed_outcome(practice, assigned_day(assignment), {assignment.unit_id})
+
+      if outcome is not None:
+         outcomes.setdefault(assignment.arm, []).append(outcome)
+
+   return outcomes
+
+
+def lesson_first_contact_outcomes(assigned, attempts, concept_skills):
+   practice = graded_practice(attempts)
+   outcomes = {}
+
+   for assignment in assigned:
+      skills = set(concept_skills.get(assignment.unit_id, ()))
+      outcome = delayed_outcome(practice, assigned_day(assignment), skills)
+
+      if outcome is not None:
+         outcomes.setdefault(assignment.arm, []).append(outcome)
+
+   return outcomes
+
+
+def selection_priority_outcomes(assigned, attempts):
+   practice = graded_practice(attempts)
+   outcomes = {}
+
+   for assignment in assigned:
+      session_skills = []
 
       for record in practice:
-         is_skill = record.primary_skill == assignment.unit_id
-         delay = (record.day - assigned_on).days
-         is_in_window = DELAY_LOW_DAYS <= delay <= DELAY_HIGH_DAYS
+         is_in_session = record.session_id == assignment.unit_id
+         is_new_skill = record.primary_skill is not None and record.primary_skill not in session_skills
 
-         if is_skill and is_in_window:
-            outcomes.setdefault(assignment.arm, []).append(1 if record.correct else 0)
-            break
+         if is_in_session and is_new_skill:
+            session_skills.append(record.primary_skill)
+
+      for skill in session_skills:
+         outcome = delayed_outcome(practice, assigned_day(assignment), {skill})
+
+         if outcome is not None:
+            outcomes.setdefault(assignment.arm, []).append(outcome)
 
    return outcomes
 
@@ -217,12 +278,24 @@ def tutor_profile_comparison(db, user_id, attempts):
    )
 
 
-def comparisons(db, user_id, attempts):
+def comparisons(db, user_id, attempts, concept_skills=None):
+   """One comparison per switch in switches.DEFINITIONS. concept_skills maps a BC-CON id to its
+   skills (the engine graph's concept_skills); without it lesson_first_contact counts no outcome."""
    return [
       compare(switches.FEEDBACK_ELABORATION, feedback_outcomes(attempts)),
       compare(
          switches.RETRIEVAL_ENTRY,
          retrieval_outcomes(assignments(db, user_id, switches.RETRIEVAL_ENTRY), attempts),
+      ),
+      compare(
+         switches.LESSON_FIRST_CONTACT,
+         lesson_first_contact_outcomes(
+            assignments(db, user_id, switches.LESSON_FIRST_CONTACT), attempts, concept_skills or {}
+         ),
+      ),
+      compare(
+         switches.SELECTION_PRIORITY,
+         selection_priority_outcomes(assignments(db, user_id, switches.SELECTION_PRIORITY), attempts),
       ),
       tutor_profile_comparison(db, user_id, attempts),
    ]

@@ -39,6 +39,44 @@ def test_a_retrieval_outcome_is_the_first_attempt_two_to_four_weeks_after_assign
    assert outcomes == {"entry_3": [1]}
 
 
+def test_a_lesson_first_contact_outcome_is_the_first_attempt_on_the_concept_two_to_four_weeks_later():
+   assignment = SimpleNamespace(unit_id="BC-CON-01001", arm="example_first", assigned_at="2026-10-01T12:00:00+00:00")
+   concept_skills = {"BC-CON-01001": ("BC-SKL-01001", "BC-SKL-01002")}
+   too_early = record(1, False, day="2026-10-14", primary="BC-SKL-01002")
+   other_concept = record(2, False, day="2026-10-15", primary="BC-SKL-02001")
+   first_in_window = record(3, True, day="2026-10-16", primary="BC-SKL-01002")
+   second_in_window = record(4, False, day="2026-10-17")
+
+   attempts = [too_early, other_concept, first_in_window, second_in_window]
+   outcomes = analysis.lesson_first_contact_outcomes([assignment], attempts, concept_skills)
+
+   assert outcomes == {"example_first": [1]}
+
+
+def test_a_selection_priority_outcome_follows_each_skill_the_session_practised_two_to_four_weeks_later():
+   assignment = SimpleNamespace(unit_id="SES-1", arm="retrievability_priority", assigned_at="2026-10-01T12:00:00+00:00")
+   practised_first = record(1, True, day="2026-10-01", primary="BC-SKL-01001")
+   practised_second = record(2, False, day="2026-10-01", primary="BC-SKL-01002")
+   other_session = replace(record(3, True, day="2026-10-01", primary="BC-SKL-03001"), session_id="SES-2")
+   first_skill_later = replace(record(4, False, day="2026-10-16", primary="BC-SKL-01001"), session_id="SES-3")
+   second_skill_later = replace(record(5, True, day="2026-10-20", primary="BC-SKL-01002"), session_id="SES-3")
+   unpractised_skill_later = replace(record(6, True, day="2026-10-20", primary="BC-SKL-03001"), session_id="SES-3")
+   past_the_window = replace(record(7, True, day="2026-10-30", primary="BC-SKL-01001"), session_id="SES-4")
+
+   attempts = [
+      practised_first,
+      practised_second,
+      other_session,
+      first_skill_later,
+      second_skill_later,
+      unpractised_skill_later,
+      past_the_window,
+   ]
+   outcomes = analysis.selection_priority_outcomes([assignment], attempts)
+
+   assert outcomes == {"retrievability_priority": [0, 1]}
+
+
 APPLIED = switches.DEFINITIONS[switches.TUTOR_PROFILE].treatment_arm
 WITHHELD = switches.DEFINITIONS[switches.TUTOR_PROFILE].control_arm
 

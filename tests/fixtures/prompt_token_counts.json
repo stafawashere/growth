@@ -59,6 +59,51 @@
          "model": "claude-sonnet-5",
          "prefix_tokens": 1470,
          "sha256": "89961a6a51101a1ea3d264dc508cc9c64f5a44425adc6870f817bf6358bda867"
+      },
+      "claude-sonnet-5-5": {
+         "backend": "subscription",
+         "calls": {
+            "doubled": [
+               {
+                  "cache_creation_input_tokens": 3401,
+                  "cache_read_input_tokens": 0,
+                  "input_tokens": 2,
+                  "model": "claude-sonnet-5-5",
+                  "output_tokens": 244
+               },
+               {
+                  "cache_creation_input_tokens": 431,
+                  "cache_read_input_tokens": 2969,
+                  "input_tokens": 2,
+                  "model": "claude-sonnet-5-5",
+                  "output_tokens": 266
+               }
+            ],
+            "single": [
+               {
+                  "cache_creation_input_tokens": 1933,
+                  "cache_read_input_tokens": 0,
+                  "input_tokens": 2,
+                  "model": "claude-sonnet-5-5",
+                  "output_tokens": 375
+               },
+               {
+                  "cache_creation_input_tokens": 434,
+                  "cache_read_input_tokens": 1499,
+                  "input_tokens": 2,
+                  "model": "claude-sonnet-5-5",
+                  "output_tokens": 365
+               }
+            ]
+         },
+         "doubled_prefix_cache_read": 2969,
+         "measured_by": "claude-opus-5-5 on the operator's delegation of 2026-10-02; a model's measurement, not a human's",
+         "measured_on": "2026-10-02",
+         "method": "prompt cache reads through the claude CLI on the operator's subscription, with the production argv of app/providers/subscription.py: the tutor request with the static prefix as its system prompt, sent twice with two different user messages, and the same with the prefix written out twice; the prefix count is the second doubled call's cache_read_input_tokens minus the second single call's, so a constant the CLI adds cancels and the two-character separator between the copies is counted with the prefix",
+         "model": "claude-sonnet-5-5",
+         "prefix_tokens": 1470,
+         "sha256": "89961a6a51101a1ea3d264dc508cc9c64f5a44425adc6870f817bf6358bda867",
+         "single_prefix_cache_read": 1499
       }
    },
    "prompts/tutor/guardrailed_practice_v1.md": {

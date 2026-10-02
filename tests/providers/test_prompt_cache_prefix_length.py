@@ -3,8 +3,9 @@
 The tutor template's static prefix has to exceed the cache minimum of the model the tutor is
 routed to, or Anthropic processes it uncached with no error (R30). Nothing here calls the network:
 the count comes from tests/fixtures/prompt_token_counts.json, written by
-tools/count_prompt_tokens.py against the free count_tokens endpoint, and it is only believed for
-the exact prefix bytes it was measured on. The model is the one app/feedback/tutor.py routes to
+tools/count_prompt_tokens.py against the free count_tokens endpoint or, with --subscription, from
+the prompt cache reads of the claude CLI on the operator's subscription, and it is only believed
+for the exact prefix bytes it was measured on. The model is the one app/feedback/tutor.py routes to
 and the minimum is read out of the sentence in docs/plan/07-ai-provider-layer.md that states it,
 so neither is typed here.
 """

@@ -217,7 +217,7 @@ def test_the_tutor_receives_only_the_four_selected_fields(world):
    assert "answer_key" not in sent
    assert "{{" not in sent
    assert request.role == "tutor"
-   assert request.model == "claude-sonnet-5"
+   assert request.model == "claude-sonnet-5-5"
 
 
 def test_feedback_without_a_tutor_still_returns_the_selected_payload(world):

@@ -21,6 +21,7 @@ from app.agent.context import compose_packet, render_prompt
 from app.db import models
 from app.feedback import tutor
 from app.grading import judge, transcribe
+from app.grading.point import STANDARD
 from app.providers import notices
 from app.providers.base import (
    ImageInput,
@@ -115,34 +116,63 @@ def transcriber_request():
 REPO_ROOT = Path(__file__).resolve().parents[2]
 
 
-def grader_request():
-   text = judge.STANDARD_TEMPLATE.read_text()
-   system, _variables = split_template(text)
-   fields = {
-      "point_type_id": "BC-PT-07",
-      "point_type_name": "answer with supporting work",
+GRADER_RECORD = {
+   "stem": {"text": "A particle moves along the x-axis."},
+   "parts": [
+      {
+         "id": "b",
+         "prompt": "Find the total distance travelled.",
+         "worked_solution": [{"text": "Integrate the speed."}],
+      },
+   ],
+}
+GRADER_WORK = {
+   "parts": [
+      {
+         "part_id": "b",
+         "lines": [{"content": "My whole working, line one."}, {"content": "Line two of my working with 4.137."}],
+         "answer": "4.137",
+      },
+   ],
+}
+
+
+def grader_point_type(point_type_id, name):
+   return {
+      "id": point_type_id,
+      "name": name,
       "earns": "a correct value with supporting work",
       "does_not_earn": "a bare value",
       "notation_requirements": "none",
       "precision_rules": "three decimal places",
       "eligibility_after_error": "no",
-      "dependency": "none",
-      "question_stem": "A particle moves along the x-axis.",
-      "part_id": "b",
-      "part_prompt": "Find the total distance travelled.",
-      "criterion": "integral of |v(t)| from 0 to 3",
-      "solution_skeleton": "Integrate the speed.",
-      "student_work": "My whole working, line one.\nLine two of my working with 4.137.",
+      "requires_previous_work": "no",
+      "setup_alone_earns": "no",
+      "simplification_required": "no",
+      "dependency_on_other_points": "none",
    }
 
-   return ProviderRequest(
-      role="grader",
-      model="claude-sonnet-5",
-      system=system,
-      messages=(Message(role="user", content=render_template(text, fields)),),
-      max_output_tokens=800,
-      output_schema={"type": "object"},
-   )
+
+def grader_request(point_types=None):
+   point_types = point_types or [grader_point_type("BC-PT-07", "answer with supporting work")]
+   points = [
+      {"point_id": f"Q1-b-{index}", "criterion": "integral of |v(t)| from 0 to 3"}
+      for index, _point_type in enumerate(point_types, start=1)
+   ]
+   part = GRADER_RECORD["parts"][0]
+
+   return judge.request_for(GRADER_RECORD, part, points, GRADER_WORK, point_types, STANDARD, "standard-1")
+
+
+def verdict(point_id, decision):
+   return {
+      "point_id": point_id,
+      "decision": decision,
+      "evidence_quote": "My whole working, line one.",
+      "rule_field": "earns",
+      "rule_cited": "x",
+      "eligibility_note": "",
+   }
 
 
 def held():
@@ -295,7 +325,7 @@ def test_a_transcriber_brief_names_the_pages_and_parts_and_carries_no_image_or_t
 
 def test_a_grader_brief_summarises_the_decision_and_leaves_out_the_student_work():
    db = database()
-   answer = '{"decision": "earned", "evidence_quote": "My whole working, line one.", "rule_field": "earns", "rule_cited": "x", "eligibility_note": ""}'
+   answer = json.dumps({"verdicts": [verdict("Q1-b-1", "earned")]})
    request = grader_request()
    grading = GuardedProvider(ReplayProvider(cassette=cassette(answer)), db, user_id=USER, clock=clock, caps={"grader": ROOMY_CAPS})
    grading.generate(request)
@@ -332,8 +362,11 @@ def test_a_grader_brief_for_a_whole_part_counts_its_open_points_and_verdicts():
    grading.generate(request)
    recorded = held()[0]
 
-   assert recorded["asked"] == "Asked which of the 2 open points on part (c) your work earns."
-   assert recorded["answered"] == "Judged 1 point earned and 1 not earned."
+   assert recorded["asked"] == (
+      "Asked whether your work on part (c) earns 2 points: "
+      "Average rate of change expression and Mean Value Theorem or Rolle conclusion."
+   )
+   assert recorded["answered"] == "Judged 1 of 2 points earned."
    assert "A(5) = 62" not in recorded["asked"] + recorded["answered"]
 
 

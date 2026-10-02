@@ -57,15 +57,17 @@ def read_metrics(
    user=Depends(current_user),
 ):
    day = day_of(today)
-   archetypes = settings.session_context.archetypes
+   context = settings.session_context
+   archetypes = context.archetypes
    attempts = load_attempts(db, user.id, archetypes)
+   concept_skills = context.graph.concept_skills
 
    return {
       "as_of": day.isoformat(),
       "metrics": learning_metrics.learning_metrics(db, user.id, archetypes, day),
       "experiments": [
          analysis.comparison_view(comparison)
-         for comparison in analysis.comparisons(db, user.id, attempts)
+         for comparison in analysis.comparisons(db, user.id, attempts, concept_skills)
       ],
    }
 

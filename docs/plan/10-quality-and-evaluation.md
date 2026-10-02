@@ -261,3 +261,11 @@ A key error is a generated item whose stated correct answer is wrong, whose work
 | Offline simulation, policy comparison | Five candidate arms join the list beside two-term, random and the controls: `retrievability_priority` (block 2), `retrievability_priority_both` (blocks 2 and 3), `elo_target`, `spread` and `review_first` (`app/sim/today_policies.py`, `tools/today_sim_study.py`), run on the recorded seeds over the fixed and legacy worlds at 60 and 226 days under both curves. A candidate replaces two-term only under the ruling of 2026-09-27 read on delayed mastery per item and retention at day 30 together, with skills learned not lower; otherwise it stays behind a switch | [inferred] |
 | A/B readiness | `selection_priority` is a third switch, unit the session, powered for a single student the way `feedback_elaboration` is, with delayed checkpoint accuracy as its outcome | [inferred] |
 | Test strategy | `tools/today_metrics.py` records, per synthetic student, how block 2 choices were decided, what the window changed, how the due queue compresses and how many items a skill takes to mastery; its 60 and 226 day tables are in `docs/pedagogy/today/audit/` | [verified] |
+
+## Plan amendments, 2026-10-02, prompts and models [inferred]
+
+Made by claude-opus-5-5 on the operator's delegation of 2026-10-02 (BUILD-LEDGER.md, "Decisions taken on the operator's instruction, 2026-10-02").
+
+| Section amended | Amendment | Tag | Source |
+|---|---|---|---|
+| A/B readiness, switch design | The metrics view compares every switch in `app/experiments/switches.py` on delayed accuracy. `lesson_first_contact`: the first practice attempt on a skill of the assigned concept 14 to 28 days after the assignment. `selection_priority`: for each primary skill the assigned session practised, the first practice attempt on that skill 14 to 28 days after the session. The window is the one `retrieval_entry` already uses | [inferred] | `app/experiments/analysis.py` |

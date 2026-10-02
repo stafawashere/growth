@@ -13,7 +13,7 @@ export interface TypedEntryProps {
    initial: ReadBack;
    confidence: Confidence | null;
    onConfidence: (confidence: Confidence) => void;
-   onSubmit: (typed: ReadBack) => void;
+   onSubmit: (typed: ReadBack, confidence: Confidence) => void;
 }
 
 function LineInput(props: { label: string; line: ReadBackLine; onChange: (line: ReadBackLine) => void }) {
@@ -43,6 +43,13 @@ function LineInput(props: { label: string; line: ReadBackLine; onChange: (line: 
 
 export function TypedEntry({ initial, confidence, onConfidence, onSubmit }: TypedEntryProps) {
    const [typed, setTyped] = useState<ReadBack>(initial);
+   const [isRating, setIsRating] = useState(false);
+
+   function grade(chosen: Confidence) {
+      onConfidence(chosen);
+      setIsRating(false);
+      onSubmit(typed, chosen);
+   }
 
    function setLine(partIndex: number, lineIndex: number, line: ReadBackLine) {
       const parts = typed.parts.map((part, position) => {
@@ -96,9 +103,9 @@ export function TypedEntry({ initial, confidence, onConfidence, onSubmit }: Type
             </fieldset>
          ))}
 
-         <ConfidencePrompt value={confidence} onChange={onConfidence} />
+         {isRating ? <ConfidencePrompt value={confidence} onChange={grade} onClose={() => setIsRating(false)} /> : null}
 
-         <button type="button" className="button-primary" disabled={confidence === null} onClick={() => onSubmit(typed)}>
+         <button type="button" className="button-primary" onClick={() => setIsRating(true)}>
             Grade my answer
          </button>
       </section>

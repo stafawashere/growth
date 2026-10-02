@@ -113,7 +113,7 @@ describe("Item fading stages", () => {
       const stages: FadingStage[] = ["example", "completion", "unsupported"];
 
       for (const stage of stages) {
-         renderItem(stage, "short_answer");
+         renderItem(stage, "short_answer", servedStepsAt(stage), false, vi.fn(), true);
          expect(affordanceValues()).toContain(P1_FEEDBACK_AFFORDANCES.confidencePrompt);
          cleanup();
       }

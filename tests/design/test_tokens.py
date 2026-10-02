@@ -119,6 +119,10 @@ def _complete_tokens():
    theme["accent-contrast-text"] = "#000000"
    theme["state-correct"] = "#000000"
    theme["state-incorrect"] = "#000000"
+   theme["state-caution"] = "#000000"
+   theme["correct-tint-1"] = "#ffffff"
+   theme["incorrect-tint-1"] = "#ffffff"
+   theme["caution-tint-1"] = "#ffffff"
    theme["focus-ring"] = "#000000"
 
    for name in TYPE_TOKENS:

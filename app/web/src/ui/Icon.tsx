@@ -60,7 +60,11 @@ const PATHS = {
    signOut: ["M15 4h4v16h-4", "M10 8l-4 4 4 4M6 12h10"],
    spanOne: ["M5 7v6M9.7 7v6M14.3 7v6M19 7v6", "M3 17h4"],
    spanUnit: ["M5 7v6M9.7 7v6M14.3 7v6M19 7v6", "M3 17h9"],
-   spanAll: ["M5 7v6M9.7 7v6M14.3 7v6M19 7v6", "M3 17h18"]
+   spanAll: ["M5 7v6M9.7 7v6M14.3 7v6M19 7v6", "M3 17h18"],
+   stop: ["M8 6h8a2 2 0 0 1 2 2v8a2 2 0 0 1 -2 2h-8a2 2 0 0 1 -2 -2v-8a2 2 0 0 1 2 -2z"],
+   faceGuess: ["M3 12a9 9 0 1 0 18 0a9 9 0 1 0 -18 0", "M9 10.5h.01M15 10.5h.01", "M8.5 15.5c1.2-1.2 2.3-1.2 3.5 0s2.3 1.2 3.5 0", "M13.5 7.5l3-1"],
+   faceUnsure: ["M3 12a9 9 0 1 0 18 0a9 9 0 1 0 -18 0", "M9 10.5h.01M15 10.5h.01", "M10.5 15.5a1.5 1.3 0 1 0 3 0a1.5 1.3 0 1 0 -3 0"],
+   faceConfident: ["M3 12a9 9 0 1 0 18 0a9 9 0 1 0 -18 0", "M9 10.5h.01M15 10.5h.01", "M8.5 14.5c1 1.6 2.2 2.4 3.5 2.4s2.5-.8 3.5-2.4"]
 } as const;
 
 export type IconName = keyof typeof PATHS;

@@ -77,6 +77,7 @@ export function CaptureScreen({ sessionId, question, pollMilliseconds, readFile,
    const [verdicts, setVerdicts] = useState<PhotoVerdict[]>([]);
    const [readBack, setReadBack] = useState<ReadBack | null>(null);
    const [confidence, setConfidence] = useState<Confidence | null>(null);
+   const [ratingFor, setRatingFor] = useState<"as-read" | "corrected" | null>(null);
    const [gradings, setGradings] = useState<GradingsPayload | null>(null);
    const [rereads, setRereads] = useState<string[]>([]);
    const [problem, setProblem] = useState<string | null>(null);
@@ -202,8 +203,8 @@ export function CaptureScreen({ sessionId, question, pollMilliseconds, readFile,
       }
    }
 
-   async function confirm(corrected: ReadBack | null) {
-      const canConfirm = attempt !== null && confidence !== null;
+   async function confirm(corrected: ReadBack | null, rated: Confidence | null) {
+      const canConfirm = attempt !== null && rated !== null;
 
       if (!canConfirm) {
          return;
@@ -212,15 +213,32 @@ export function CaptureScreen({ sessionId, question, pollMilliseconds, readFile,
       setProblem(null);
 
       try {
-         await confirmReadBack(attempt.attempt_id, corrected === null ? { confidence } : { read_back: corrected, confidence });
+         await confirmReadBack(attempt.attempt_id, corrected === null ? { confidence: rated } : { read_back: corrected, confidence: rated });
          setStage("grading");
       } catch (failure) {
          setProblem(problemText(failure, "The read-back could not be confirmed."));
       }
    }
 
-   async function submitTyped(typed: ReadBack) {
-      const canSubmit = attempt !== null && confidence !== null;
+   /* The rating is asked in the dialog when the student presses the grading action, and the word
+      chosen there confirms the read-back it was asked for. */
+   function rateThenConfirm(chosen: Confidence) {
+      const pending = ratingFor;
+
+      setConfidence(chosen);
+      setRatingFor(null);
+
+      if (pending === "as-read") {
+         return confirm(null, chosen);
+      }
+
+      if (pending === "corrected") {
+         return confirm(readBack, chosen);
+      }
+   }
+
+   async function submitTyped(typed: ReadBack, rated: Confidence) {
+      const canSubmit = attempt !== null;
 
       if (!canSubmit) {
          return;
@@ -229,7 +247,7 @@ export function CaptureScreen({ sessionId, question, pollMilliseconds, readFile,
       setProblem(null);
 
       try {
-         await submitTypedAnswer(attempt.attempt_id, { read_back: typed, confidence });
+         await submitTypedAnswer(attempt.attempt_id, { read_back: typed, confidence: rated });
          setStage("grading");
       } catch (failure) {
          setProblem(problemText(failure, "The answer could not be sent."));
@@ -362,12 +380,12 @@ export function CaptureScreen({ sessionId, question, pollMilliseconds, readFile,
                   <ReadBackView readBack={readBack} />
                </div>
 
-               <ConfidencePrompt value={confidence} onChange={setConfidence} />
+               {ratingFor === "as-read" ? <ConfidencePrompt value={confidence} onChange={rateThenConfirm} onClose={() => setRatingFor(null)} /> : null}
 
                <p>Is this what you wrote?</p>
 
                <div className="choice-row">
-                  <button type="button" className="button-primary" disabled={confidence === null} onClick={() => confirm(null)}>
+                  <button type="button" className="button-primary" onClick={() => setRatingFor("as-read")}>
                      Yes, grade it
                   </button>
                   <button type="button" className="text-button" onClick={() => setStage("editing")}>
@@ -383,9 +401,9 @@ export function CaptureScreen({ sessionId, question, pollMilliseconds, readFile,
             <div data-testid="read-back-fix">
                <ReadBackEditor readBack={readBack} onChange={setReadBack} />
 
-               <ConfidencePrompt value={confidence} onChange={setConfidence} />
+               {ratingFor === "corrected" ? <ConfidencePrompt value={confidence} onChange={rateThenConfirm} onClose={() => setRatingFor(null)} /> : null}
 
-               <button type="button" className="button-primary" disabled={confidence === null} onClick={() => confirm(readBack)}>
+               <button type="button" className="button-primary" onClick={() => setRatingFor("corrected")}>
                   Grade what I wrote
                </button>
 

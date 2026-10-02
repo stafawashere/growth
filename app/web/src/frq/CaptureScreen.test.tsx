@@ -149,13 +149,21 @@ describe("free-response capture", () => {
 
       const confirm = screen.getByRole("button", { name: "Yes, grade it" }) as HTMLButtonElement;
 
-      expect(confirm.disabled).toBe(true);
       expect(screen.getByText("Nothing is scored until you confirm this.")).toBeTruthy();
 
       mocked.confirmReadBack.mockResolvedValue(attempt({ transcription_confirmed: true }));
       mocked.readGradings.mockResolvedValue(GRADED);
-      fireEvent.click(screen.getByLabelText("unsure"));
       fireEvent.click(confirm);
+
+      expect(mocked.confirmReadBack).not.toHaveBeenCalled();
+
+      fireEvent.click(screen.getByRole("button", { name: "Close" }));
+
+      expect(screen.queryByRole("dialog")).toBeNull();
+      expect(mocked.confirmReadBack).not.toHaveBeenCalled();
+
+      fireEvent.click(confirm);
+      fireEvent.click(screen.getByLabelText("unsure"));
 
       await waitFor(() => expect(mocked.confirmReadBack).toHaveBeenCalledWith("ATT-1", { confidence: "unsure" }));
    });
@@ -167,8 +175,8 @@ describe("free-response capture", () => {
 
       fireEvent.click(screen.getByRole("button", { name: "No, let me fix it" }));
       fireEvent.change(screen.getAllByLabelText("Line 1")[0], { target: { value: "x = 4" } });
-      fireEvent.click(screen.getByLabelText("confident"));
       fireEvent.click(screen.getByRole("button", { name: "Grade what I wrote" }));
+      fireEvent.click(screen.getByLabelText("confident"));
 
       await waitFor(() => expect(mocked.confirmReadBack).toHaveBeenCalled());
 
@@ -184,8 +192,8 @@ describe("free-response capture", () => {
       mocked.readGradings.mockResolvedValue(GRADED);
       mocked.askForReread.mockResolvedValue({ grading_id: "GRD-2", attempt_id: "ATT-1", rereading: true });
 
-      fireEvent.click(screen.getByLabelText("unsure"));
       fireEvent.click(screen.getByRole("button", { name: "Yes, grade it" }));
+      fireEvent.click(screen.getByLabelText("unsure"));
 
       expect(await screen.findByTestId("grading-summary")).toBeTruthy();
       expect(screen.getByTestId("grading-summary").textContent).toContain("1 of the 1 decided points earned, 1 provisional and not counted");
@@ -203,8 +211,8 @@ describe("free-response capture", () => {
       mocked.confirmReadBack.mockResolvedValue(attempt({ transcription_confirmed: true }));
       mocked.readGradings.mockResolvedValue({ ...GRADED, tutor_explanation: "Part (b) needed the sign change named.", tutor_unavailable: false });
 
-      fireEvent.click(screen.getByLabelText("unsure"));
       fireEvent.click(screen.getByRole("button", { name: "Yes, grade it" }));
+      fireEvent.click(screen.getByLabelText("unsure"));
 
       expect((await screen.findByTestId("frq-tutor-explanation")).textContent).toBe("Part (b) needed the sign change named.");
    });
@@ -220,8 +228,8 @@ describe("free-response capture", () => {
 
       fireEvent.click(screen.getAllByRole("button", { name: "Add a line of words" })[1]);
       fireEvent.change(screen.getByLabelText("Part (b), line 2, words"), { target: { value: "so a minimum" } });
-      fireEvent.click(screen.getByLabelText("guess"));
       fireEvent.click(screen.getByRole("button", { name: "Grade my answer" }));
+      fireEvent.click(screen.getByLabelText("guess"));
 
       await waitFor(() => expect(mocked.submitTypedAnswer).toHaveBeenCalled());
 
@@ -258,8 +266,8 @@ describe("waiting on the grader", () => {
       mocked.readGradings.mockResolvedValueOnce(GRADED).mockResolvedValueOnce(GRADED).mockResolvedValue(reread);
       mocked.askForReread.mockResolvedValue({ grading_id: "GRD-2", attempt_id: "ATT-1", rereading: true });
 
-      fireEvent.click(screen.getByLabelText("unsure"));
       fireEvent.click(screen.getByRole("button", { name: "Yes, grade it" }));
+      fireEvent.click(screen.getByLabelText("unsure"));
       await screen.findByTestId("provisional-copy");
       fireEvent.click(screen.getAllByRole("button", { name: "Ask for a re-read" })[1]);
 
@@ -272,8 +280,8 @@ describe("waiting on the grader", () => {
       mocked.confirmReadBack.mockResolvedValue(attempt({ transcription_confirmed: true }));
       mocked.readGradings.mockResolvedValue({ ...GRADED, grading_state: "confirmed", points: [] });
 
-      fireEvent.click(screen.getByLabelText("unsure"));
       fireEvent.click(screen.getByRole("button", { name: "Yes, grade it" }));
+      fireEvent.click(screen.getByLabelText("unsure"));
 
       expect(await screen.findByText(/Grading has not finished/, undefined, { timeout: 4000 })).toBeTruthy();
    });

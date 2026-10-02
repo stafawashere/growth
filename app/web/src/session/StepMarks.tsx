@@ -39,8 +39,10 @@ function GivenStep({ mark }: { mark: StepMark }) {
          data-agent-anchor={solutionStepAnchor(mark.index)}
          style={{ color: "var(--growth-text-secondary)" }}
       >
-         <span className="math-overflow"><MathText text={mark.text} /></span>
-         <span>{GIVEN_WORD}</span>
+         <span className="sheet-margin step-mark-verdict">
+            <span>{GIVEN_WORD}</span>
+         </span>
+         <span className="sheet-body math-overflow"><MathText text={mark.text} /></span>
       </li>
    );
 }
@@ -51,7 +53,7 @@ function BlankStep({ mark }: { mark: StepMark }) {
    if (!hasVerdict) {
       return (
          <li data-testid={`step-mark-${mark.index}`} data-agent-anchor={solutionStepAnchor(mark.index)}>
-            <span className="math-overflow"><MathText text={mark.text} /></span>
+            <span className="sheet-body math-overflow"><MathText text={mark.text} /></span>
          </li>
       );
    }
@@ -62,11 +64,13 @@ function BlankStep({ mark }: { mark: StepMark }) {
 
    return (
       <li data-testid={`step-mark-${mark.index}`} data-agent-anchor={solutionStepAnchor(mark.index)} style={{ color: token }}>
-         <span data-glyph aria-hidden="true">
-            {glyph}
+         <span className="sheet-margin step-mark-verdict">
+            <span data-glyph aria-hidden="true">
+               {glyph}
+            </span>
+            <span>{word}</span>
          </span>
-         <span>{word}</span>
-         <span className="math-overflow"><MathText text={mark.text} /></span>
+         <span className="sheet-body math-overflow"><MathText text={mark.text} /></span>
       </li>
    );
 }
@@ -81,7 +85,7 @@ export function StepMarks({ marks }: StepMarksProps) {
    return (
       <ul
          {...affordanceProps("stepVerificationMark")}
-         className={`${motionClass("stepVerificationMark")} step-marks`}
+         className={`${motionClass("stepVerificationMark")} step-marks sheet-list`}
          data-testid="step-marks"
       >
          {marks.map((mark) =>

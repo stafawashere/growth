@@ -19,6 +19,7 @@ import { MathText } from "../math/MathText";
 import { MathValue } from "../math/MathValue";
 import { ConfidencePrompt } from "../session/ConfidencePrompt";
 import { refusalText } from "./format";
+import { QuestionStepper, stepperState, type StepperMark } from "./QuestionStepper";
 import { Loading } from "../status/LoadState";
 import { Page, PageHeader, Section } from "../ui/Page";
 
@@ -163,6 +164,7 @@ export function UnitCheckScreen({ sessionId, initial, unitTitle }: UnitCheckScre
    const [result, setResult] = useState<CheckResult | null>(null);
    const [problem, setProblem] = useState<string | null>(null);
    const [answerUnavailable, setAnswerUnavailable] = useState(false);
+   const [ratingFor, setRatingFor] = useState<"next" | "submit" | null>(null);
    const pendingSaves = useRef<Promise<unknown>>(Promise.resolve());
    const unsavedMath = useRef<{ number: number; answer: AssessmentAnswer } | null>(null);
 
@@ -224,6 +226,51 @@ export function UnitCheckScreen({ sessionId, initial, unitTitle }: UnitCheckScre
       setIndex(target);
    }
 
+   /* Moving on from an answered question asks for its rating first, once; a question left blank
+      or already rated moves on at once. */
+   function needsRating(number: number) {
+      const entry = work[number] ?? { answer: null, confidence: null };
+      const isAnswered = entry.answer !== null;
+      const isUnrated = entry.confidence === null;
+
+      return isAnswered && isUnrated;
+   }
+
+   function next(from: number) {
+      if (needsRating(from)) {
+         setRatingFor("next");
+
+         return;
+      }
+
+      goTo(index + 1);
+   }
+
+   function askThenSubmit(from: number) {
+      if (needsRating(from)) {
+         setRatingFor("submit");
+
+         return;
+      }
+
+      return submit();
+   }
+
+   function rate(number: number, confidence: Confidence) {
+      const pending = ratingFor;
+
+      change(number, { confidence });
+      setRatingFor(null);
+
+      if (pending === "next") {
+         goTo(index + 1);
+      }
+
+      if (pending === "submit") {
+         return submit();
+      }
+   }
+
    async function submit() {
       setProblem(null);
       flushTyped();
@@ -250,6 +297,13 @@ export function UnitCheckScreen({ sessionId, initial, unitTitle }: UnitCheckScre
    const hasFigure = item.figure_spec !== null && item.figure_spec !== undefined;
    const isFirst = index === 0;
    const isLast = index === questions.length - 1;
+   const stepperMarks: StepperMark[] = questions.map((entry, position) => {
+      const isCurrent = position === index;
+      const entryAnswer = work[entry.number]?.answer ?? null;
+      const isAnswered = entryAnswer !== null;
+
+      return { state: stepperState(isCurrent, isAnswered), marked: false };
+   });
 
    return (
       <section data-testid="unit-check">
@@ -273,9 +327,11 @@ export function UnitCheckScreen({ sessionId, initial, unitTitle }: UnitCheckScre
                </p>
             ) : null}
 
-            <article className="card item">
-               <div className="question">
-                  <div className="question-stem">
+            <article className="card item sheet">
+               <div className="sheet-row sheet-row-ruled question">
+                  <span className="sheet-margin sheet-tag">{servesChoice(question) ? "Concept check" : "Solve"}</span>
+
+                  <div className="sheet-body question-stem">
                      <p className="item-stem">
                         <MathText text={item.stem} />
                      </p>
@@ -285,52 +341,58 @@ export function UnitCheckScreen({ sessionId, initial, unitTitle }: UnitCheckScre
                </div>
 
                {servesChoice(question) ? (
-                  <McqControl
-                     key={question.number}
-                     groupLabel="My answer"
-                     options={item.options ?? []}
-                     selectedId={current.answer?.option_id ?? null}
-                     onSelect={(optionId) => change(question.number, { answer: { option_id: optionId } })}
-                  />
-               ) : (
-                  <div data-testid="math-answer">
-                     <MathAnswerField
+                  <div className="sheet-answer sheet-options">
+                     <McqControl
                         key={question.number}
-                        label="My answer"
-                        onChange={(mathjson) => typeAnswer(question.number, mathjson)}
-                        onLoadFailure={() => setAnswerUnavailable(true)}
+                        groupLabel="My answer"
+                        options={item.options ?? []}
+                        selectedId={current.answer?.option_id ?? null}
+                        onSelect={(optionId) => change(question.number, { answer: { option_id: optionId } })}
                      />
+                  </div>
+               ) : (
+                  <div className="sheet-row sheet-answer" data-testid="math-answer">
+                     <span className="sheet-margin sheet-tag" aria-hidden="true">
+                        My answer
+                     </span>
 
-                     {answerUnavailable ? <p role="alert">The math keyboard did not load, so this question cannot take an answer.</p> : null}
+                     <div className="sheet-body sheet-body-stack">
+                        <MathAnswerField
+                           key={question.number}
+                           label="My answer"
+                           onChange={(mathjson) => typeAnswer(question.number, mathjson)}
+                           onLoadFailure={() => setAnswerUnavailable(true)}
+                        />
+
+                        {answerUnavailable ? <p role="alert">The math keyboard did not load, so this question cannot take an answer.</p> : null}
+                     </div>
                   </div>
                )}
 
-               <ConfidencePrompt
-                  key={`confidence-${question.number}`}
-                  value={current.confidence}
-                  onChange={(confidence) => change(question.number, { confidence })}
-               />
-            </article>
+               {ratingFor !== null ? (
+                  <ConfidencePrompt
+                     key={`confidence-${question.number}`}
+                     value={current.confidence}
+                     onChange={(confidence) => rate(question.number, confidence)}
+                     onClose={() => setRatingFor(null)}
+                  />
+               ) : null}
 
-            <div className="submit-row">
-               <div className="cluster">
-                  <button type="button" className="text-button motion-instant-question-move" disabled={isFirst} onClick={() => goTo(index - 1)}>
-                     Back
+               <div className="sheet-foot">
+                  <QuestionStepper
+                     marks={stepperMarks}
+                     isFirst={isFirst}
+                     isLast={isLast}
+                     onBack={() => goTo(index - 1)}
+                     onNext={() => next(question.number)}
+                     caption={`${answeredCount} of ${questions.length} answered.`}
+                  />
+
+                  <button type="button" className="button-primary" onClick={() => askThenSubmit(question.number)}>
+                     Submit check
                   </button>
-
-                  <button type="button" className="text-button motion-instant-question-move" disabled={isLast} onClick={() => goTo(index + 1)}>
-                     Next
-                  </button>
-
-                  <span className="helper">
-                     {answeredCount} of {questions.length} answered.
-                  </span>
                </div>
-
-               <button type="button" className="button-primary" onClick={submit}>
-                  Submit check
-               </button>
-            </div>
+            </article>
          </Page>
       </section>
    );

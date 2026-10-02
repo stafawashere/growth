@@ -57,10 +57,9 @@ export function servesChoice(item: ServedItem) {
 
 /* The keys SessionScreen answers an item with, said beside the button so they can be found. */
 export function keyHint(offersOptions: boolean) {
-   const confidenceKeys = "1, 2 and 3 rate your confidence.";
    const optionKeys = offersOptions ? " A, B, C and D pick an option." : "";
 
-   return `Enter checks your answer. ${confidenceKeys}${optionKeys}`;
+   return `Enter checks your answer.${optionKeys}`;
 }
 
 export interface ItemProps {
@@ -76,9 +75,17 @@ export interface ItemProps {
    onSelfExplanationChange: (text: string) => void;
    onCommit: () => void;
    awaitingConfidence: boolean;
+   asksConfidence?: boolean;
+   onConfidenceClose?: () => void;
    mathReaderRef?: MutableRefObject<MathFieldReader | null>;
    onMathFieldReady?: () => void;
    commitDisabled?: boolean;
+}
+
+/* The foot's word for a rating the student gave from the keys before checking, since the dialog
+   that would show it is not open. */
+export function ratedSentence(confidence: Confidence) {
+   return `Rated ${confidence}.`;
 }
 
 function requiredServedStepCount(stage: ServedItem["stage"]) {
@@ -109,6 +116,8 @@ export function Item(props: ItemProps) {
       onSelfExplanationChange,
       onCommit,
       awaitingConfidence,
+      asksConfidence = false,
+      onConfidenceClose,
       mathReaderRef,
       onMathFieldReady,
       commitDisabled = false
@@ -143,106 +152,133 @@ export function Item(props: ItemProps) {
    const takesNoAnswer = collectsAnswer && !servesMcq && answerUnavailable;
    const isCommitted = awaitingConfidence;
    const showsAnswerArea = canDrawStage && collectsAnswer && !isCommitted;
-   const asksForConfidence = canDrawStage && collectsConfidence(item.stage) && !takesNoAnswer;
+   const collectsRating = canDrawStage && collectsConfidence(item.stage) && !takesNoAnswer;
+   const opensRatingDialog = collectsRating && (isCommitted || asksConfidence);
+   const ratingCanClose = !isCommitted;
    const asksToCommit = canDrawStage && !takesNoAnswer && !isCommitted;
+   const showsRated = asksToCommit && collectsRating && confidence !== null;
 
    const promptKind = servesMcq ? "Concept check" : "Solve";
 
+   const explanationPrompt = item.self_explanation_prompt;
+   const hasExplanationPrompt = explanationPrompt !== null && explanationPrompt.trim().length > 0;
+   const asksToExplain = canDrawStage && isExample && hasExplanationPrompt;
+
+   const problemRowClass = showsAnswerArea ? "sheet-row sheet-row-ruled question" : "sheet-row question";
+
    return (
-      <article className="card item" data-testid="item" data-stage={item.stage}>
-         <div className="question">
-            <div className="question-stem">
+      <article className="card item sheet" data-testid="item" data-stage={item.stage}>
+         <div className={problemRowClass}>
+            <span className="sheet-margin sheet-tag">{promptKind}</span>
+
+            <div className="sheet-body question-stem">
                {isOpener ? (
-                  <p className="eyebrow" data-testid="opener-note">
+                  <p className="caption" data-testid="opener-note">
                      {OPENER_NOTE}
                   </p>
-               ) : (
-                  <span className="eyebrow">{promptKind}</span>
-               )}
+               ) : null}
 
-               <p className={allowsCalculator ? "item-stem item-stem-beside-tool" : "item-stem"} data-testid="item-stem" data-agent-anchor="stem">
+               <p className="item-stem" data-testid="item-stem" data-agent-anchor="stem">
                   <MathText text={item.stem} />
                </p>
 
-               {allowsCalculator ? <DesmosPanel beside={<CalculatorLink />} /> : null}
-
                {hasFigure ? <FigureView spec={item.figure_spec} isItemFigure /> : null}
+
+               {allowsCalculator ? <DesmosPanel beside={<CalculatorLink />} /> : null}
             </div>
-
-            {needsWorkedSteps && !canDrawStage ? (
-               <p className="callout" data-testid="worked-steps-unavailable">
-                  {WORKED_STEPS_MISSING}
-               </p>
-            ) : null}
-
-            {needsWorkedSteps && canDrawStage ? (
-               <div className="stack stack-tight">
-                  <span className="eyebrow">Worked so far</span>
-
-                  <ol className="worked-steps" data-testid="worked-steps">
-                     {shownSteps.map((step) => (
-                        <li key={step.index} data-step-index={step.index}>
-                           <MathText text={step.text} />
-                        </li>
-                     ))}
-
-                     {blankedStep !== null ? (
-                        <li className="blanked-step" data-testid="blanked-step" data-step-index={blankedStep.index}>
-                           This step is mine to write.
-                        </li>
-                     ) : null}
-                  </ol>
-               </div>
-            ) : null}
          </div>
 
-         {showsAnswerArea ? (
-            <div>
-               {servesMcq ? (
-                  <div data-testid="mcq-answer">
-                     <McqControl
-                        groupLabel="My answer"
-                        options={item.options ?? []}
-                        selectedId={selectedOptionId}
-                        onSelect={onOptionChange}
-                        anchorsOptions
-                     />
-                  </div>
-               ) : (
-                  <div data-testid="math-answer">
-                     <MathAnswerField
-                        label="My answer"
-                        onChange={onAnswerChange}
-                        onLoadFailure={onAnswerUnavailable}
-                        readerRef={mathReaderRef}
-                        onReady={onMathFieldReady}
-                     />
-
-                     {takesNoAnswer ? (
-                        <p data-testid="answer-unavailable">{ANSWER_UNAVAILABLE}</p>
-                     ) : null}
-                  </div>
-               )}
+         {needsWorkedSteps && !canDrawStage ? (
+            <div className="sheet-row">
+               <p className="sheet-body callout" data-testid="worked-steps-unavailable">
+                  {WORKED_STEPS_MISSING}
+               </p>
             </div>
          ) : null}
 
-         {canDrawStage && isExample ? (
-            <SelfExplanationPrompt
-               prompt={item.self_explanation_prompt}
-               value={selfExplanation}
-               onChange={onSelfExplanationChange}
-            />
+         {needsWorkedSteps && canDrawStage ? (
+            <div className="sheet-row sheet-row-ruled">
+               <span className="sheet-margin sheet-tag">Worked so far</span>
+
+               <ol className="sheet-body worked-steps" data-testid="worked-steps">
+                  {shownSteps.map((step) => (
+                     <li key={step.index} data-step-index={step.index}>
+                        <MathText text={step.text} />
+                     </li>
+                  ))}
+
+                  {blankedStep !== null ? (
+                     <li className="blanked-step" data-testid="blanked-step" data-step-index={blankedStep.index}>
+                        This step is mine to write.
+                     </li>
+                  ) : null}
+               </ol>
+            </div>
          ) : null}
 
-         {asksForConfidence ? (
-            <ConfidencePrompt value={confidence} onChange={onConfidenceChange} />
+         {showsAnswerArea && servesMcq ? (
+            <div className="sheet-answer sheet-options" data-testid="mcq-answer">
+               <McqControl
+                  groupLabel="My answer"
+                  options={item.options ?? []}
+                  selectedId={selectedOptionId}
+                  onSelect={onOptionChange}
+                  anchorsOptions
+               />
+            </div>
+         ) : null}
+
+         {showsAnswerArea && !servesMcq ? (
+            <div className="sheet-row sheet-answer" data-testid="math-answer">
+               <span className="sheet-margin sheet-tag" aria-hidden="true">
+                  My answer
+               </span>
+
+               <div className="sheet-body sheet-body-stack">
+                  <MathAnswerField
+                     label="My answer"
+                     onChange={onAnswerChange}
+                     onLoadFailure={onAnswerUnavailable}
+                     readerRef={mathReaderRef}
+                     onReady={onMathFieldReady}
+                  />
+
+                  {takesNoAnswer ? (
+                     <p data-testid="answer-unavailable">{ANSWER_UNAVAILABLE}</p>
+                  ) : null}
+               </div>
+            </div>
+         ) : null}
+
+         {asksToExplain ? (
+            <div className="sheet-row">
+               <div className="sheet-body">
+                  <SelfExplanationPrompt
+                     prompt={explanationPrompt}
+                     value={selfExplanation}
+                     onChange={onSelfExplanationChange}
+                  />
+               </div>
+            </div>
+         ) : null}
+
+         {opensRatingDialog ? (
+            <ConfidencePrompt value={confidence} onChange={onConfidenceChange} onClose={ratingCanClose ? onConfidenceClose : undefined} />
          ) : null}
 
          {asksToCommit ? (
-            <div className="submit-row">
-               <p className="helper key-hint" data-testid="key-hint">
-                  {keyHint(servesMcq)}
-               </p>
+            <div className="sheet-foot">
+               <div className="sheet-foot-lead">
+                  <p className="helper key-hint" data-testid="key-hint">
+                     {keyHint(servesMcq)}
+                  </p>
+
+                  {showsRated ? (
+                     <p className="helper rated-note" data-testid="rated-confidence">
+                        {ratedSentence(confidence as Confidence)}
+                     </p>
+                  ) : null}
+               </div>
 
                <button
                   type="button"

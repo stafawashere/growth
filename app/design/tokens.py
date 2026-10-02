@@ -15,10 +15,10 @@ COLOUR_TOKENS is every colour token name 08's Colour system section lists: the n
 ramp, so far as 08 names its steps (surface-page, surface-raised, surface-sunken, border-hairline,
 text-primary, text-secondary, text-muted, text-on-accent, focus-ring), the accent base and its
 tint ramp (08 writes "accent-tint-1 through accent-tint-4", an explicit range, so all four steps
-are encoded), accent-contrast-text, and the two semantic colours, state-correct and
-state-incorrect. 08 names a tint ramp for each semantic colour without enumerating its steps
-("state-correct and its tint ramp"), so no semantic ramp step name is invented here; only the two
-base semantic tokens are in the vocabulary.
+are encoded), accent-contrast-text, and the three semantic colours, state-correct,
+state-incorrect and state-caution, each with the first step of its tint ramp, which 08 names
+(correct-tint-1, incorrect-tint-1, caution-tint-1) since 2026-09-30; no further ramp step is
+invented here.
 
 The pairs token_violations checks are CONTRAST_PAIRS, the ones 08 and 11 name: every general
 text role (text-primary, text-secondary, text-muted) against every surface, text-on-accent against
@@ -84,6 +84,10 @@ COLOUR_TOKENS = (
    "accent-contrast-text",
    "state-correct",
    "state-incorrect",
+   "state-caution",
+   "correct-tint-1",
+   "incorrect-tint-1",
+   "caution-tint-1",
 )
 
 SPACING_TOKENS = {
@@ -139,13 +143,18 @@ SURFACES = ("surface-page", "surface-raised", "surface-sunken")
 ACCENT_CONTRAST_TEXT_BACKGROUNDS = ("accent-tint-1", "accent-tint-2", "accent-tint-3",
                                     "accent-tint-4")
 
-SEMANTIC_COLOURS = ("state-correct", "state-incorrect")
+SEMANTIC_COLOURS = ("state-correct", "state-incorrect", "state-caution")
+
+# The first tint step of each semantic ramp is a ground a row of text sits on, so every text role
+# is held against it the way it is held against a surface.
+SEMANTIC_TINTS = ("correct-tint-1", "incorrect-tint-1", "caution-tint-1")
 
 CONTRAST_PAIRS = (
    [(role, surface) for role in TEXT_ROLES for surface in SURFACES]
    + [("text-on-accent", "accent-base")]
    + [("accent-contrast-text", background) for background in ACCENT_CONTRAST_TEXT_BACKGROUNDS]
    + [(name, surface) for name in SEMANTIC_COLOURS for surface in SURFACES]
+   + [(role, tint) for role in TEXT_ROLES for tint in SEMANTIC_TINTS]
    + [("focus-ring", surface) for surface in SURFACES]
 )
 

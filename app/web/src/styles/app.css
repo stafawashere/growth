@@ -478,6 +478,49 @@ th:last-child {
    line-height: var(--growth-leading-caption);
 }
 
+/* The set's status in the page header: time left and the way out share one quiet strip, the stop
+   set apart by a hairline so it reads as the strip's single action. */
+.set-status {
+   display: inline-flex;
+   flex-wrap: wrap;
+   align-items: stretch;
+   border-radius: var(--growth-space-8);
+   box-shadow: 0 0 0 var(--growth-stroke-hairline) var(--growth-accent-tint-4);
+}
+
+.set-status-time {
+   display: inline-flex;
+   align-items: center;
+   gap: var(--growth-space-8);
+   min-height: var(--growth-space-32);
+   padding-inline: var(--growth-space-12);
+}
+
+.set-status-stop {
+   display: inline-flex;
+   align-items: center;
+   gap: var(--growth-space-8);
+   min-height: var(--growth-space-32);
+   padding-inline: var(--growth-space-12);
+   border-radius: 0 var(--growth-space-8) var(--growth-space-8) 0;
+   color: var(--growth-text-primary);
+   font-family: "Inter Medium", "Inter", system-ui, sans-serif;
+   font-weight: normal;
+   font-size: var(--growth-type-caption);
+   line-height: var(--growth-leading-caption);
+   box-shadow: inset var(--growth-stroke-hairline) 0 0 var(--growth-accent-tint-4);
+   cursor: pointer;
+}
+
+.set-status-stop:only-child {
+   border-radius: var(--growth-space-8);
+   box-shadow: none;
+}
+
+.set-status-stop:hover {
+   background: var(--growth-accent-tint-2);
+}
+
 .back-link {
    display: inline-flex;
    align-items: center;
@@ -664,11 +707,16 @@ th:last-child {
    cursor: pointer;
 }
 
+.button-primary:hover {
+   box-shadow: 0 0 0 var(--growth-stroke-curve) var(--growth-accent-tint-3);
+}
+
+/* Not yet available: the button steps back into the card's own tint and drops to the regular
+   weight, so it reads as waiting rather than broken. No outline, no dashes. */
 .button-primary:disabled {
-   background: var(--growth-surface-sunken);
+   background: var(--growth-accent-tint-2);
    color: var(--growth-text-muted);
-   outline: var(--growth-stroke-hairline) dashed var(--growth-border-hairline);
-   outline-offset: calc(var(--growth-stroke-hairline) * -2);
+   font-family: "Inter", system-ui, sans-serif;
    cursor: not-allowed;
 }
 
@@ -714,9 +762,13 @@ th:last-child {
    color: var(--growth-text-primary);
 }
 
+/* Not yet available: the outline fades to the card's tint and the weight drops, as the primary's
+   waiting state does. No dashes. */
 .button-secondary:disabled {
+   border-color: var(--growth-accent-tint-4);
    color: var(--growth-text-muted);
-   border-style: dashed;
+   font-family: "Inter", system-ui, sans-serif;
+   cursor: not-allowed;
 }
 
 .button-secondary[aria-expanded="true"] {
@@ -819,6 +871,9 @@ th:last-child {
    line-height: var(--growth-leading-caption);
 }
 
+/* A field is a line to write on, one tint off the card so it never reads as a hole cut into it,
+   with the hairline that marks every control's boundary. Focus thickens nothing: the ring alone
+   says where the caret is. */
 .input {
    display: block;
    width: stretch;
@@ -826,7 +881,7 @@ th:last-child {
    padding: var(--growth-space-12);
    border: var(--growth-stroke-hairline) solid var(--growth-border-hairline);
    border-radius: var(--growth-space-4);
-   background: var(--growth-surface-sunken);
+   background: var(--growth-accent-tint-1);
    color: var(--growth-text-primary);
    font-size: var(--growth-type-body);
    line-height: var(--growth-leading-body);
@@ -836,11 +891,13 @@ th:last-child {
    color: var(--growth-text-muted);
 }
 
-.input:hover {
+.input:hover,
+math-field:hover {
    border-color: var(--growth-text-secondary);
 }
 
-.input:focus-visible {
+.input:focus-visible,
+math-field:focus-within {
    outline: calc(var(--growth-space-4) / 2) solid var(--growth-focus-ring);
    outline-offset: calc(var(--growth-space-4) / 2);
 }
@@ -1530,7 +1587,7 @@ textarea.input {
    flex-direction: column;
    padding: var(--growth-space-4) var(--growth-space-16);
    border-radius: var(--growth-space-4);
-   background: var(--growth-surface-sunken);
+   background: var(--growth-accent-tint-1);
    color: var(--growth-text-secondary);
    list-style: decimal inside;
    font-size: var(--growth-type-label);
@@ -1552,17 +1609,46 @@ textarea.input {
    letter-spacing: calc(var(--growth-stroke-hairline) * 0.5);
 }
 
+/* The math answer line: the same field as .input, at display-math size, one line tall until the
+   student writes more. The keyboard toggle is part of the line, at its right end, and the menu
+   toggle is not offered. */
 .field-label + math-field,
 math-field {
    display: block;
-   min-height: calc(var(--growth-space-8) * 10);
-   padding: var(--growth-space-16);
+   min-height: calc(var(--growth-space-8) * 7);
+   padding: var(--growth-space-8) var(--growth-space-8) var(--growth-space-8) var(--growth-space-16);
    border: var(--growth-stroke-hairline) solid var(--growth-border-hairline);
    border-radius: var(--growth-space-4);
-   background: var(--growth-surface-sunken);
+   background: var(--growth-accent-tint-1);
    color: var(--growth-text-primary);
    font-size: var(--growth-type-math-display);
    line-height: var(--growth-leading-math-display);
+}
+
+math-field::part(container) {
+   align-items: center;
+   gap: var(--growth-space-8);
+}
+
+math-field::part(content) {
+   padding-block: var(--growth-space-4);
+}
+
+math-field::part(virtual-keyboard-toggle) {
+   display: inline-flex;
+   align-items: center;
+   justify-content: center;
+   align-self: center;
+   width: var(--growth-space-32);
+   height: var(--growth-space-32);
+   margin: 0;
+   border-radius: var(--growth-space-4);
+   color: var(--growth-text-secondary);
+}
+
+math-field::part(virtual-keyboard-toggle):hover {
+   background: var(--growth-accent-tint-2);
+   color: var(--growth-text-primary);
 }
 
 math-field::part(menu-toggle) {
@@ -1570,22 +1656,26 @@ math-field::part(menu-toggle) {
 }
 
 .latex-inspector {
-   margin-top: var(--growth-space-8);
    color: var(--growth-text-secondary);
    font-size: var(--growth-type-caption);
    line-height: var(--growth-leading-caption);
 }
 
+.latex-inspector[data-empty="true"] {
+   display: none;
+}
+
 .option-list {
    display: flex;
    flex-direction: column;
-   gap: var(--growth-space-8);
+   gap: var(--growth-space-12);
 }
 
 .option-list legend {
    margin-bottom: var(--growth-space-8);
 }
 
+/* An option is a soft filled card with no outline at rest; only the chosen one takes a ring. */
 .option {
    position: relative;
    display: flex;
@@ -1594,20 +1684,19 @@ math-field::part(menu-toggle) {
    flex: auto;
    min-height: var(--growth-space-48);
    padding: var(--growth-space-12) var(--growth-space-16);
-   border-radius: var(--growth-space-4);
-   background: var(--growth-surface-sunken);
+   border-radius: var(--growth-space-12);
+   background: var(--growth-accent-tint-2);
    color: var(--growth-text-primary);
    cursor: pointer;
-   box-shadow: 0 0 0 var(--growth-stroke-hairline) var(--growth-accent-tint-3);
 }
 
 .option:hover {
-   box-shadow: 0 0 0 var(--growth-stroke-hairline) var(--growth-border-hairline);
+   background: var(--growth-accent-tint-3);
 }
 
 .option[data-selected="true"] {
-   background: var(--growth-accent-tint-2);
-   box-shadow: 0 0 0 var(--growth-stroke-curve) var(--growth-text-primary);
+   background: var(--growth-accent-tint-3);
+   box-shadow: inset 0 0 0 calc(var(--growth-stroke-hairline) * 2) var(--growth-accent-base);
 }
 
 .option-letter {
@@ -1618,11 +1707,11 @@ math-field::part(menu-toggle) {
    width: var(--growth-space-32);
    height: var(--growth-space-32);
    border-radius: var(--growth-space-4);
-   color: var(--growth-text-primary);
+   background: var(--growth-surface-sunken);
+   color: var(--growth-text-secondary);
    font-family: "Inter Medium", "Inter", system-ui, sans-serif;
    font-size: var(--growth-type-caption);
    line-height: var(--growth-leading-caption);
-   box-shadow: 0 0 0 var(--growth-stroke-hairline) var(--growth-accent-tint-4);
 }
 
 .option > input[type="radio"] {
@@ -1652,6 +1741,8 @@ math-field::part(menu-toggle) {
 .option-content {
    flex: auto;
    min-width: 0;
+   font-size: var(--growth-type-body);
+   line-height: var(--growth-leading-body);
 }
 
 .crossed-out {
@@ -1665,42 +1756,227 @@ math-field::part(menu-toggle) {
    gap: var(--growth-space-8);
 }
 
+.option-row > .option {
+   flex: auto;
+}
+
+.option-row[data-eliminated="true"] > .option {
+   background: transparent;
+   box-shadow: inset 0 0 0 var(--growth-stroke-hairline) var(--growth-accent-tint-4);
+}
+
 .confidence {
    display: flex;
    flex-direction: column;
    gap: var(--growth-space-12);
 }
 
-.choice-group {
+/* The rating is asked in a dialog at the moment the student moves on. It is one raised sheet over
+   a dimmed page: the question, then the three words as three rows, each with its key, the word
+   and what it means, and a face at the row's end. Each row carries a slight colour of its own
+   along its left edge and in the face, guess in the incorrect tone, unsure neutral, confident in
+   the correct tone; hover deepens it to a tint and the chosen row deepens it further and takes
+   the medium weight, so the choice reads without colour too. Under 600 px the sheet rises from the
+   bottom edge and spans the width. */
+.confidence-scrim {
+   position: fixed;
+   inset: 0;
    display: grid;
-   grid-template-columns: repeat(auto-fit, minmax(calc(var(--growth-space-4) * 28), auto));
+   place-items: center;
+   padding: var(--growth-space-16);
+   background: color-mix(in srgb, var(--growth-surface-sunken), transparent);
+}
+
+.confidence {
+   display: flex;
+   flex-direction: column;
+   gap: var(--growth-space-24);
+   width: stretch;
+   max-width: calc(var(--growth-space-96) * 6);
+   max-height: stretch;
+   overflow: auto;
+   padding: calc(var(--growth-space-4) * 7);
+   border-radius: var(--growth-space-8);
+   background: var(--growth-surface-raised);
+   color: var(--growth-text-primary);
+   box-shadow: 0 0 0 var(--growth-stroke-hairline) var(--growth-accent-tint-4), 0 var(--growth-space-16) var(--growth-space-48) color-mix(in srgb, var(--growth-surface-sunken), transparent);
+}
+
+.confidence-head {
+   display: flex;
+   align-items: flex-start;
+   justify-content: space-between;
+   gap: var(--growth-space-16);
+}
+
+.confidence-title {
+   display: flex;
+   flex-direction: column;
    gap: var(--growth-space-8);
+}
+
+.confidence-question {
+   font-size: var(--growth-type-heading);
+   line-height: var(--growth-leading-heading);
+}
+
+.choice-group {
+   display: flex;
+   flex-direction: column;
+   border-radius: var(--growth-space-4);
+   box-shadow: 0 0 0 var(--growth-stroke-hairline) var(--growth-border-hairline);
 }
 
 .choice-chip {
-   display: flex;
+   position: relative;
+   display: grid;
+   grid-template-columns: var(--growth-space-24) minmax(0, auto) var(--growth-space-32);
    align-items: center;
-   justify-content: center;
-   gap: var(--growth-space-8);
-   min-height: calc(var(--growth-space-4) * 11);
-   padding: var(--growth-space-8) var(--growth-space-12);
-   border-radius: var(--growth-space-4);
-   color: var(--growth-text-secondary);
+   column-gap: var(--growth-space-16);
+   min-height: var(--growth-space-64);
+   padding: var(--growth-space-12) var(--growth-space-16) var(--growth-space-12) var(--growth-space-24);
+   color: var(--growth-text-primary);
    font-size: var(--growth-type-label);
    line-height: var(--growth-leading-label);
    cursor: pointer;
+   box-shadow: inset calc(var(--growth-stroke-hairline) * 3) 0 0 var(--growth-accent-tint-4);
+}
+
+.choice-chip:first-child {
+   border-radius: var(--growth-space-4) var(--growth-space-4) 0 0;
+}
+
+.choice-chip:last-child {
+   border-radius: 0 0 var(--growth-space-4) var(--growth-space-4);
+}
+
+.choice-chip[data-confidence="guess"] {
+   box-shadow: inset calc(var(--growth-stroke-hairline) * 3) 0 0 var(--growth-state-incorrect);
+}
+
+.choice-chip[data-confidence="unsure"] {
+   box-shadow: inset calc(var(--growth-stroke-hairline) * 3) 0 0 var(--growth-state-caution);
+}
+
+.choice-chip[data-confidence="confident"] {
+   box-shadow: inset calc(var(--growth-stroke-hairline) * 3) 0 0 var(--growth-state-correct);
+}
+
+.choice-chip > input[type="radio"] {
+   position: absolute;
+   width: var(--growth-stroke-hairline);
+   height: var(--growth-stroke-hairline);
+   margin: calc(var(--growth-stroke-hairline) * -1);
+   overflow: hidden;
+   clip: rect(0 0 0 0);
+   white-space: nowrap;
+}
+
+.choice-key {
+   display: inline-flex;
+   align-items: center;
+   justify-content: center;
+   width: var(--growth-space-24);
+   height: var(--growth-space-24);
+   border-radius: var(--growth-space-4);
+   color: var(--growth-text-secondary);
+   font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+   font-size: var(--growth-type-caption);
+   line-height: var(--growth-leading-caption);
    box-shadow: 0 0 0 var(--growth-stroke-hairline) var(--growth-accent-tint-4);
 }
 
-.choice-chip:hover {
-   color: var(--growth-text-primary);
+.choice-text {
+   display: flex;
+   flex-direction: column;
+   gap: var(--growth-space-4);
+   min-width: 0;
+}
+
+.choice-word {
+   font-family: "Inter Medium", "Inter", system-ui, sans-serif;
+   font-size: var(--growth-type-body);
+   line-height: var(--growth-leading-body);
+}
+
+.choice-meaning {
+   color: var(--growth-text-secondary);
+   font-size: var(--growth-type-caption);
+   line-height: var(--growth-leading-caption);
+}
+
+.choice-face {
+   display: inline-flex;
+   align-items: center;
+   justify-content: center;
+   justify-self: end;
+   color: var(--growth-text-secondary);
+}
+
+.choice-chip[data-confidence="guess"] .choice-face {
+   color: var(--growth-state-incorrect);
+}
+
+.choice-chip[data-confidence="unsure"] .choice-face {
+   color: var(--growth-state-caution);
+}
+
+.choice-chip[data-confidence="confident"] .choice-face {
+   color: var(--growth-state-correct);
+}
+
+/* Hovered, focused and chosen rows fill with the first tint of their own colour, a ground every
+   text role holds its floor on (app/design/tokens.py SEMANTIC_TINTS). No ring is drawn: the
+   keyboard's row is told apart from the rest, colour aside, by its word stepping up to the
+   medium weight and its face growing, and the chosen row by the same two and its edge doubled. */
+.choice-chip[data-confidence="guess"]:hover,
+.choice-chip[data-confidence="guess"]:focus-within,
+.choice-chip[data-confidence="guess"][data-chosen="true"] {
+   background: var(--growth-incorrect-tint-1);
+}
+
+.choice-chip[data-confidence="unsure"]:hover,
+.choice-chip[data-confidence="unsure"]:focus-within,
+.choice-chip[data-confidence="unsure"][data-chosen="true"] {
+   background: var(--growth-caution-tint-1);
+}
+
+.choice-chip[data-confidence="confident"]:hover,
+.choice-chip[data-confidence="confident"]:focus-within,
+.choice-chip[data-confidence="confident"][data-chosen="true"] {
+   background: var(--growth-correct-tint-1);
+}
+
+.choice-chip:focus-within .choice-word,
+.choice-chip[data-chosen="true"] .choice-word {
+   font-family: "Inter SemiBold", "Inter", system-ui, sans-serif;
+}
+
+.choice-chip:focus-within .choice-face .icon,
+.choice-chip[data-chosen="true"] .choice-face .icon {
+   width: var(--growth-space-32);
+   height: var(--growth-space-32);
 }
 
 .choice-chip[data-chosen="true"] {
-   background: var(--growth-accent-tint-2);
+   font-family: "Inter Medium", "Inter", system-ui, sans-serif;
+}
+
+.choice-chip[data-confidence="guess"][data-chosen="true"] {
+   box-shadow: inset calc(var(--growth-stroke-hairline) * 6) 0 0 var(--growth-state-incorrect);
+}
+
+.choice-chip[data-confidence="unsure"][data-chosen="true"] {
+   box-shadow: inset calc(var(--growth-stroke-hairline) * 6) 0 0 var(--growth-state-caution);
+}
+
+.choice-chip[data-confidence="confident"][data-chosen="true"] {
+   box-shadow: inset calc(var(--growth-stroke-hairline) * 6) 0 0 var(--growth-state-correct);
+}
+
+.rated-note {
    color: var(--growth-text-primary);
    font-family: "Inter Medium", "Inter", system-ui, sans-serif;
-   box-shadow: 0 0 0 var(--growth-stroke-curve) var(--growth-text-primary);
 }
 
 .submit-row {
@@ -1709,6 +1985,405 @@ math-field::part(menu-toggle) {
    align-items: center;
    justify-content: space-between;
    gap: var(--growth-space-16);
+}
+
+/* The worksheet. Every question the student meets, in a set, the diagnostic, a unit check, a timed
+   part, a probe or a lesson, is one sheet with a ruled margin. What says what a line is sits in the
+   margin: the kind of task, an option's letter, a step's verdict, the tag on the answer line, a
+   timed question's number. What the student reads or writes sits on the line to the right of it.
+   The margin's rule is one line the length of the sheet, drawn once on the sheet itself so no row
+   can break it, and every row rule runs the full width of the sheet across it. The foot of the
+   sheet is one row over the rule's end: the quiet actions on the left and the single primary at
+   the right end. A block that must wrap several rows in one element (a prompt with its field and
+   its foot) is a sheet-part, and its rows are laid out as the sheet's own. Under 600 px the margin
+   folds away and each mark sits above its line. */
+
+.sheet,
+.question-area.sheet {
+   position: relative;
+   gap: 0;
+}
+
+.sheet::before {
+   content: "";
+   position: absolute;
+   inset-block: 0;
+   left: calc(var(--growth-space-96) + var(--growth-space-64) - var(--growth-stroke-hairline));
+   width: var(--growth-stroke-hairline);
+   background: var(--growth-accent-tint-3);
+}
+
+.card.sheet::before {
+   inset-block: calc(var(--growth-space-4) * 7);
+   left: calc(var(--growth-space-4) * 7 + var(--growth-space-96) + var(--growth-space-64) - var(--growth-stroke-hairline));
+}
+
+.sheet > .sheet-row,
+.sheet > .sheet-part > .sheet-row,
+.sheet > .sheet-list > li {
+   display: grid;
+   grid-template-columns: calc(var(--growth-space-96) + var(--growth-space-64)) minmax(0, auto);
+   grid-template-areas: "margin line";
+   column-gap: var(--growth-space-24);
+   align-items: baseline;
+}
+
+.sheet > .sheet-row,
+.sheet > .sheet-part > .sheet-row {
+   padding-block: var(--growth-space-24);
+}
+
+.sheet > .sheet-row:first-child,
+.sheet > .sheet-part:first-child > .sheet-row:first-child,
+.sheet > .sheet-list:first-child > li:first-child {
+   padding-top: 0;
+}
+
+.sheet > .sheet-row:last-child,
+.sheet > .sheet-part:last-child > .sheet-row:last-child {
+   padding-bottom: 0;
+}
+
+.sheet > .sheet-row > .sheet-margin,
+.sheet > .sheet-part > .sheet-row > .sheet-margin,
+.sheet > .sheet-list > li > .sheet-margin {
+   display: flex;
+   flex-wrap: wrap;
+   align-items: baseline;
+   justify-content: flex-end;
+   gap: var(--growth-space-4) var(--growth-space-8);
+   grid-area: margin;
+   padding-inline-end: var(--growth-space-16);
+   text-align: end;
+}
+
+.sheet > .sheet-row > .sheet-body,
+.sheet > .sheet-part > .sheet-row > .sheet-body,
+.sheet > .sheet-list > li > .sheet-body {
+   grid-area: line;
+   min-width: 0;
+}
+
+.sheet-body-stack {
+   display: flex;
+   flex-direction: column;
+   gap: var(--growth-space-12);
+}
+
+/* A margin that says two things, a verdict and then the line's name, says them one under the
+   other. */
+.sheet > .sheet-row > .sheet-margin-stack,
+.sheet > .sheet-part > .sheet-row > .sheet-margin-stack {
+   flex-direction: column;
+   align-items: flex-end;
+}
+
+/* A line the student writes on has no first baseline to share, so its tag sits level with the
+   first line of writing inside the field instead. */
+.sheet > .sheet-row.sheet-answer,
+.sheet > .sheet-part > .sheet-row.sheet-answer {
+   align-items: start;
+}
+
+.sheet-answer > .sheet-tag {
+   padding-top: calc(var(--growth-space-16) + var(--growth-space-4));
+}
+
+/* The row's own hairline, the full width of the sheet, where it changes from what is asked to
+   what is answered. */
+.sheet-row-ruled {
+   box-shadow: inset 0 calc(var(--growth-stroke-hairline) * -1) 0 var(--growth-accent-tint-3);
+}
+
+/* A tag breaks only between its words, never inside one, and the margin is wide enough for the
+   longest single word at this size, so no tag is ever clipped at a width the margin is drawn. */
+.sheet-tag {
+   overflow-wrap: normal;
+   word-break: keep-all;
+   hyphens: none;
+   color: var(--growth-text-secondary);
+   font-family: "Inter Medium", "Inter", system-ui, sans-serif;
+   font-weight: normal;
+   font-size: var(--growth-type-caption);
+   line-height: var(--growth-leading-caption);
+   letter-spacing: calc(var(--growth-stroke-hairline) * 0.6);
+   text-transform: uppercase;
+}
+
+/* The number of a timed question, the way the exam booklet prints it beside the stem. */
+.sheet-number {
+   color: var(--growth-text-secondary);
+   font-family: "Inter Medium", "Inter", system-ui, sans-serif;
+   font-weight: normal;
+   font-size: var(--growth-type-heading);
+   line-height: var(--growth-leading-heading);
+}
+
+/* The sheet's own tag names the answer line, so the control's label is read and not drawn. */
+.sheet-answer .field-label,
+.sheet-answer .option-list > legend,
+.sheet-options .option-list > legend {
+   position: absolute;
+   width: var(--growth-stroke-hairline);
+   height: var(--growth-stroke-hairline);
+   margin: calc(var(--growth-stroke-hairline) * -1);
+   padding: 0;
+   overflow: hidden;
+   clip: rect(0 0 0 0);
+   white-space: nowrap;
+   border: 0;
+}
+
+/* Options on the sheet sit in the writing column as cards, clear of the margin rule, so each
+   letter stays next to its answer. */
+.sheet > .sheet-options,
+.sheet > .sheet-part > .sheet-options {
+   padding-block: var(--growth-space-24);
+   padding-inline-start: calc(var(--growth-space-96) + var(--growth-space-64) + var(--growth-space-24));
+   padding-inline-end: var(--growth-space-8);
+}
+
+/* Worked steps on the sheet are numbered lines, each number in a small badge in its own column so
+   every line of math starts at the same place. The step left for the student has its number
+   filled and its line in the primary colour. */
+.sheet .worked-steps {
+   display: flex;
+   flex-direction: column;
+   gap: var(--growth-space-8);
+   margin-block: calc(var(--growth-space-8) * -1);
+   padding: 0;
+   border-radius: 0;
+   background: transparent;
+   color: var(--growth-text-secondary);
+   font-size: var(--growth-type-body);
+   line-height: var(--growth-leading-body);
+   list-style: none;
+   counter-reset: worked-step;
+}
+
+.sheet .worked-steps li {
+   display: grid;
+   grid-template-columns: var(--growth-space-32) minmax(0, auto);
+   column-gap: var(--growth-space-16);
+   align-items: center;
+   padding: var(--growth-space-8) var(--growth-space-12);
+   border: var(--growth-stroke-hairline) solid transparent;
+   border-radius: var(--growth-space-8);
+   box-shadow: none;
+   counter-increment: worked-step;
+}
+
+.sheet .worked-steps li::before {
+   content: counter(worked-step);
+   display: inline-flex;
+   align-items: center;
+   justify-content: center;
+   align-self: start;
+   width: var(--growth-space-32);
+   height: var(--growth-space-32);
+   border-radius: var(--growth-space-4);
+   background: var(--growth-surface-sunken);
+   color: var(--growth-text-secondary);
+   font-family: "Inter Medium", "Inter", system-ui, sans-serif;
+   font-size: var(--growth-type-caption);
+   line-height: var(--growth-leading-caption);
+   font-variant-numeric: tabular-nums;
+}
+
+.sheet .worked-steps li.blanked-step {
+   color: var(--growth-text-primary);
+   font-family: "Inter Medium", "Inter", system-ui, sans-serif;
+   letter-spacing: normal;
+}
+
+.sheet .worked-steps li.blanked-step::before {
+   background: var(--growth-accent-base);
+   color: var(--growth-text-on-accent);
+   box-shadow: none;
+}
+
+/* A step's verdict in the margin: the glyph, then the word, on one baseline. A given step says
+   only that. */
+.step-mark-verdict {
+   display: inline-flex;
+   flex-wrap: wrap;
+   align-items: baseline;
+   justify-content: flex-end;
+   gap: var(--growth-space-4) var(--growth-space-8);
+   font-size: var(--growth-type-caption);
+   line-height: var(--growth-leading-caption);
+}
+
+.sheet > .sheet-list > li {
+   padding-block: var(--growth-space-12);
+}
+
+.sheet > .sheet-list {
+   display: flex;
+   flex-direction: column;
+   padding-block: var(--growth-space-4);
+   list-style: none;
+}
+
+/* The foot of the sheet: quiet actions on the left, the one primary at the right end. It stands
+   on the card's own surface over the end of the margin's rule. */
+.sheet-foot {
+   position: relative;
+   display: flex;
+   flex-wrap: wrap;
+   align-items: center;
+   justify-content: space-between;
+   gap: var(--growth-space-16);
+   padding-top: var(--growth-space-16);
+   background: var(--growth-surface-raised);
+   box-shadow: inset 0 var(--growth-stroke-hairline) 0 var(--growth-accent-tint-3);
+}
+
+.sheet-foot-lead {
+   display: flex;
+   flex-wrap: wrap;
+   align-items: center;
+   gap: var(--growth-space-8) var(--growth-space-16);
+   flex: auto;
+   min-width: 0;
+}
+
+.sheet-foot > .button-primary,
+.sheet-foot > .button-secondary,
+.scope-footer-submit {
+   flex: none;
+   margin-inline-start: auto;
+}
+
+/* The step control: Back and Next joined as one pair, then a mark for every question in the set. An
+   answered question is a filled mark, an open one a ring, the one on screen is wider, and one
+   marked for review stands twice as tall, so each state reads without colour. A disabled end
+   is quiet, set in the lighter weight, and never struck through. */
+.sheet-nav {
+   display: flex;
+   flex-wrap: wrap;
+   align-items: center;
+   gap: var(--growth-space-8) var(--growth-space-16);
+}
+
+.sheet-nav-pair {
+   display: inline-flex;
+   flex: none;
+   border-radius: var(--growth-space-4);
+   box-shadow: 0 0 0 var(--growth-stroke-hairline) var(--growth-accent-tint-4);
+}
+
+.sheet-nav-step {
+   display: inline-flex;
+   align-items: center;
+   gap: var(--growth-space-4);
+   min-height: var(--growth-space-32);
+   padding: 0 var(--growth-space-12);
+   border-radius: var(--growth-space-4);
+   color: var(--growth-text-primary);
+   font-family: "Inter Medium", "Inter", system-ui, sans-serif;
+   font-weight: normal;
+   font-size: var(--growth-type-label);
+   line-height: var(--growth-leading-label);
+}
+
+.sheet-nav-step + .sheet-nav-step {
+   border-top-left-radius: 0;
+   border-bottom-left-radius: 0;
+   box-shadow: inset var(--growth-stroke-hairline) 0 0 var(--growth-accent-tint-4);
+}
+
+.sheet-nav-step:first-child:not(:last-child) {
+   border-top-right-radius: 0;
+   border-bottom-right-radius: 0;
+}
+
+.sheet-nav-step:hover {
+   background: var(--growth-accent-tint-2);
+}
+
+.sheet-nav-step:disabled {
+   color: var(--growth-text-muted);
+   background: none;
+   font-family: "Inter", system-ui, sans-serif;
+   cursor: not-allowed;
+}
+
+.sheet-nav-index {
+   display: flex;
+   flex-direction: column;
+   align-items: center;
+   gap: var(--growth-space-4);
+   min-width: 0;
+}
+
+/* With room to spare the marks sit at the centre of the foot, between the pair and the primary. */
+@media (min-width: 900px) {
+   .sheet > .sheet-foot {
+      position: relative;
+   }
+
+   .sheet-foot .sheet-nav-index {
+      position: absolute;
+      inset: var(--growth-space-16) 0 0;
+      width: fit-content;
+      height: fit-content;
+      margin: auto;
+   }
+}
+
+.sheet-nav-marks {
+   display: flex;
+   flex-wrap: wrap;
+   align-items: center;
+   gap: var(--growth-space-4);
+   max-width: calc(var(--growth-space-96) * 3);
+   margin: 0;
+   padding: 0;
+   list-style: none;
+}
+
+.sheet-nav-mark {
+   width: var(--growth-space-8);
+   height: var(--growth-space-8);
+   border-radius: calc(var(--growth-space-4) / 2);
+   background: var(--growth-text-secondary);
+}
+
+.sheet-nav-mark[data-state="open"] {
+   background: none;
+   box-shadow: inset 0 0 0 var(--growth-stroke-hairline) var(--growth-text-muted);
+}
+
+.sheet-nav-mark[data-state="current"] {
+   width: var(--growth-space-16);
+   background: var(--growth-text-primary);
+   box-shadow: none;
+}
+
+.sheet-nav-mark[data-marked="true"] {
+   height: var(--growth-space-16);
+}
+
+.sheet-nav-caption {
+   margin: 0;
+}
+
+.exam-key-hint {
+   flex: none;
+   width: stretch;
+}
+
+/* A confirmation on the sheet keeps the way back on the left and the step being confirmed at the
+   right end, as the diagnostic's ladder does. */
+.sheet-confirm {
+   display: flex;
+   flex-direction: column;
+   gap: var(--growth-space-12);
+}
+
+.sheet-confirm-actions {
+   justify-content: space-between;
 }
 
 /* The not-learned ladder on the diagnostic card. Each rung sits one step in from the one above it
@@ -1721,6 +2396,7 @@ math-field::part(menu-toggle) {
    align-items: flex-end;
    justify-content: space-between;
    gap: var(--growth-space-16);
+   margin-top: var(--growth-space-16);
    padding-top: var(--growth-space-16);
    box-shadow: inset 0 var(--growth-stroke-hairline) 0 var(--growth-accent-tint-3);
 }
@@ -1730,10 +2406,6 @@ math-field::part(menu-toggle) {
    flex: auto;
    flex-direction: column;
    gap: var(--growth-space-12);
-}
-
-.scope-footer-submit {
-   flex: none;
 }
 
 .scope-ladder-lead {
@@ -1917,7 +2589,7 @@ math-field::part(menu-toggle) {
 .tutor-note {
    padding: var(--growth-space-12) var(--growth-space-16);
    border-radius: var(--growth-space-4);
-   background: var(--growth-surface-sunken);
+   background: var(--growth-accent-tint-1);
    color: var(--growth-text-primary);
 }
 
@@ -2086,6 +2758,8 @@ h3.section-header {
    list-style: none;
 }
 
+/* The library's rows are ruled lines: the concept's name on the line, its state at the right end
+   in the caption size. A row that opens a lesson takes the sheet's row tint under the pointer. */
 .lesson-library-row {
    display: flex;
    flex-wrap: wrap;
@@ -2093,15 +2767,23 @@ h3.section-header {
    justify-content: space-between;
    gap: var(--growth-space-4) var(--growth-space-16);
    width: stretch;
-   padding: var(--growth-space-12) 0;
+   min-height: var(--growth-space-48);
+   padding: var(--growth-space-12) var(--growth-space-8);
+   border-radius: var(--growth-space-4);
    color: var(--growth-text-primary);
    text-decoration: none;
-   box-shadow: inset 0 calc(var(--growth-stroke-hairline) * -1) 0 var(--growth-accent-tint-3);
+   box-shadow: inset 0 calc(var(--growth-stroke-hairline) * -1) 0 var(--growth-accent-tint-2);
+}
+
+button.lesson-library-row:hover {
+   background: var(--growth-accent-tint-1);
+   color: var(--growth-text-primary);
+   text-decoration: none;
 }
 
 .lesson-library-name {
-   font-size: var(--growth-type-label);
-   line-height: var(--growth-leading-label);
+   font-size: var(--growth-type-body);
+   line-height: var(--growth-leading-body);
 }
 
 /* Assessments. */
@@ -2515,6 +3197,11 @@ h3.section-header {
    height: auto;
 }
 
+.figure-graph {
+   align-self: center;
+   margin-inline: auto;
+}
+
 .figure-gridlines,
 .figure-axes,
 .chart-axis {
@@ -2566,20 +3253,65 @@ h3.section-header {
 }
 
 .item-figure {
+   display: flex;
+   flex-direction: column;
+   align-items: center;
+   width: stretch;
+}
+
+.item-figure .figure-graph {
+   width: stretch;
    max-width: calc(var(--growth-space-96) * 5);
 }
 
+/* A data table reads as its own panel centred in the column: a shaded header, tabular figures and
+   a rule between the columns. */
 .figure-table {
-   border-collapse: collapse;
+   align-self: center;
    width: auto;
+   min-width: calc(var(--growth-space-96) * 3);
+   margin: var(--growth-space-8) auto;
+   border-collapse: separate;
+   border-spacing: 0;
+   border: var(--growth-stroke-hairline) solid var(--growth-border-hairline);
+   border-radius: var(--growth-space-8);
+   overflow: hidden;
+   font-size: var(--growth-type-body);
+   line-height: var(--growth-leading-body);
+   font-variant-numeric: tabular-nums;
 }
 
 .figure-table th,
-.figure-table td {
-   padding: var(--growth-space-8) var(--growth-space-12);
-   border: var(--growth-stroke-hairline) solid var(--growth-border-hairline);
+.figure-table td,
+.figure-table th:first-child,
+.figure-table td:first-child,
+.figure-table th:last-child,
+.figure-table td:last-child {
+   padding: var(--growth-space-8) var(--growth-space-24);
    text-align: center;
+   white-space: nowrap;
    box-shadow: none;
+}
+
+.figure-table th,
+.figure-table th:first-child,
+.figure-table th:last-child {
+   background: var(--growth-surface-sunken);
+   color: var(--growth-text-secondary);
+   font-family: "Inter Medium", "Inter", system-ui, sans-serif;
+   font-size: var(--growth-type-label);
+   line-height: var(--growth-leading-label);
+   text-align: center;
+   border-bottom: var(--growth-stroke-hairline) solid var(--growth-border-hairline);
+}
+
+.figure-table th + th,
+.figure-table td + td {
+   border-left: var(--growth-stroke-hairline) solid var(--growth-border-hairline);
+}
+
+.figure-table tbody tr:nth-child(even) td {
+   background: var(--growth-accent-tint-1);
 }
 
 /* Timed parts: the bar, the stem, the tools and the question menu. */
@@ -2600,6 +3332,19 @@ h3.section-header {
    box-shadow: inset 0 calc(var(--growth-stroke-hairline) * -1) 0 var(--growth-accent-tint-3);
 }
 
+.part-title {
+   display: flex;
+   flex-direction: column;
+   gap: var(--growth-space-4);
+}
+
+.part-position {
+   font-family: "Inter Medium", "Inter", system-ui, sans-serif;
+   font-weight: normal;
+}
+
+/* The clock reads as a fact beside the question, not a warning: label size, secondary colour, and
+   a steady width from the tabular figures. It gains weight, not colour, in the final minutes. */
 .part-timer {
    display: flex;
    align-items: center;
@@ -2607,11 +3352,35 @@ h3.section-header {
 }
 
 .part-clock {
-   min-width: calc(var(--growth-space-64) + var(--growth-space-8));
-   font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
-   font-weight: normal;
-   font-size: var(--growth-type-heading);
-   line-height: var(--growth-leading-heading);
+   display: inline-flex;
+   align-items: center;
+   gap: var(--growth-space-8);
+   min-width: calc(var(--growth-space-64) + var(--growth-space-16));
+   color: var(--growth-text-secondary);
+   font-size: var(--growth-type-label);
+   line-height: var(--growth-leading-label);
+}
+
+.part-clock[data-final="true"] {
+   font-family: "Inter SemiBold", "Inter", system-ui, sans-serif;
+}
+
+.part-facts {
+   display: flex;
+   flex-direction: column;
+   gap: var(--growth-space-8);
+}
+
+.part-notes {
+   display: flex;
+   flex-wrap: wrap;
+   align-items: baseline;
+   gap: var(--growth-space-4) var(--growth-space-16);
+}
+
+.frq-part-id {
+   font-family: "Inter Medium", "Inter", system-ui, sans-serif;
+   padding-top: 0;
 }
 
 .calculator-label {
@@ -2703,14 +3472,22 @@ h3.section-header {
    line-height: var(--growth-leading-caption);
 }
 
+/* The foot of a timed part: the stepper on the left, the part's close at the right end as a quiet
+   outlined action, since the loud action in an exam is the next question and not the exit, and
+   the key hint on its own line beneath. */
 .exam-bottom {
    display: flex;
    flex-wrap: wrap;
    align-items: center;
    justify-content: space-between;
-   gap: var(--growth-space-12);
+   gap: var(--growth-space-12) var(--growth-space-16);
    padding-top: var(--growth-space-16);
    box-shadow: inset 0 var(--growth-stroke-hairline) 0 var(--growth-accent-tint-3);
+}
+
+.exam-bottom > .button-secondary {
+   flex: none;
+   margin-inline-start: auto;
 }
 
 .question-area,
@@ -2807,66 +3584,173 @@ h3.section-header {
    gap: var(--growth-space-8) var(--growth-space-16);
 }
 
-/* Lessons: the reader, its mode blocks and their figures. A state drawn in colour here also
-   carries a glyph and a word in the markup (08 Accessibility). */
+/* Lessons: the reader, its mode blocks and their figures. A lesson screen is one sheet, its parts
+   laid out as the sheet's own rows (the worksheet, above), so a lesson reads the way the questions
+   it prepares for do. A state drawn in colour here also carries a glyph and a word in the markup
+   (08 Accessibility). */
 
-.lesson-screen,
 .lesson-section,
-.lesson-check {
+.lesson-check,
+.lesson-prediction,
+.lesson-prompt,
+.lesson-pair,
+.contrast-panel {
+   display: flex;
+   flex-direction: column;
+   min-width: 0;
+}
+
+/* The way through the lesson, under the sheet: the quiet way out on the left, one mark per part
+   with the part's name beneath, the one primary at the right end. From 900 px the marks sit at the
+   centre of the row. */
+.lesson-nav {
+   display: flex;
+   flex-wrap: wrap;
+   align-items: center;
+   justify-content: space-between;
    gap: var(--growth-space-16);
 }
 
-.lesson-section,
-.lesson-check {
-   display: flex;
-   flex-direction: column;
+.lesson-nav-lead {
+   flex: auto;
+   min-width: 0;
 }
 
+.lesson-nav > .button-primary {
+   flex: none;
+   margin-inline-start: auto;
+}
+
+@media (min-width: 900px) {
+   .lesson-nav {
+      position: relative;
+   }
+
+   .lesson-nav-index {
+      position: absolute;
+      inset: 0;
+      width: fit-content;
+      height: fit-content;
+      margin: auto;
+   }
+}
+
+/* A drawn block has no first line of text to share a baseline with, so its tag sits at the top. */
+.sheet > .sheet-row.lesson-delivery {
+   align-items: start;
+}
+
+/* The strategy's four lines, each under its label. */
+.lesson-strategy {
+   display: flex;
+   flex-direction: column;
+   gap: var(--growth-space-12);
+}
+
+.lesson-strategy-line {
+   display: flex;
+   flex-direction: column;
+   gap: var(--growth-space-4);
+}
+
+/* What was predicted and how it resolved, on the first core key idea. */
+.lesson-lead-prediction {
+   color: var(--growth-text-secondary);
+}
+
+.lesson-lead-resolution {
+   font-family: "Inter Medium", "Inter", system-ui, sans-serif;
+}
+
+/* A committed prediction stays on its sheet with the chosen line kept and the rest let go. */
+.lesson-prediction[data-committed="true"] .option {
+   cursor: default;
+}
+
+.lesson-prediction[data-committed="true"] .option:not([data-selected="true"]) {
+   color: var(--growth-text-muted);
+}
+
+.lesson-prediction[data-committed="true"] .option:not([data-selected="true"]) .option-letter {
+   color: var(--growth-text-muted);
+}
+
+/* A verdict's glyph is set the way a step mark's is. */
+.verdict [data-glyph],
+.step-mark-verdict [data-glyph] {
+   font-family: "Inter SemiBold", "Inter", system-ui, sans-serif;
+   text-transform: uppercase;
+}
+
+/* The steps of an example: numbered lines, the number in its own column so every line of math
+   starts at the same place, the why line in the quiet colour beside the step. */
 .lesson-steps {
+   display: flex;
+   flex-direction: column;
    margin: 0;
-   padding: var(--growth-space-8) var(--growth-space-24) var(--growth-space-8) var(--growth-space-48);
-   border-radius: var(--growth-space-4);
-   background: var(--growth-surface-sunken);
+   padding: 0;
+   list-style: none;
+   counter-reset: lesson-step;
 }
 
 .lesson-steps > li {
+   display: grid;
+   grid-template-columns: var(--growth-space-24) minmax(0, auto);
+   column-gap: var(--growth-space-12);
+   align-items: baseline;
    padding-block: var(--growth-space-8);
+   counter-increment: lesson-step;
+}
+
+.lesson-steps > li:first-child {
+   padding-top: 0;
+}
+
+.lesson-steps > li:last-child {
+   padding-bottom: 0;
+}
+
+.lesson-steps > li::before {
+   content: counter(lesson-step);
+   display: inline-flex;
+   align-items: center;
+   justify-content: center;
+   align-self: start;
+   height: var(--growth-space-24);
+   border-radius: var(--growth-space-4);
+   color: var(--growth-text-muted);
+   font-family: "Inter Medium", "Inter", system-ui, sans-serif;
+   font-size: var(--growth-type-caption);
+   line-height: var(--growth-leading-caption);
+   font-variant-numeric: tabular-nums;
 }
 
 .lesson-step-row,
-.lesson-pair,
-.lesson-beside,
-.contrast-grid {
+.lesson-beside {
    display: flex;
    flex-wrap: wrap;
-   gap: var(--growth-space-16) var(--growth-space-24);
+   gap: var(--growth-space-4) var(--growth-space-24);
 }
 
 .lesson-step-row > *,
-.lesson-pair > *,
-.lesson-beside > *,
-.contrast-grid > * {
+.lesson-beside > * {
    flex: auto;
    flex-basis: calc(var(--growth-space-96) * 2);
    min-width: 0;
 }
 
+.lesson-step-math {
+   margin-top: var(--growth-space-4);
+}
+
 .lesson-step-why {
    color: var(--growth-text-secondary);
+   font-size: var(--growth-type-label);
+   line-height: var(--growth-leading-label);
 }
 
-.lesson-pair-side,
-.contrast-stem {
-   display: flex;
-   flex-direction: column;
-   gap: var(--growth-space-8);
-   padding: var(--growth-space-12) var(--growth-space-16);
-   border-radius: var(--growth-space-8);
-   box-shadow: 0 0 0 var(--growth-stroke-hairline) var(--growth-accent-tint-4);
-}
-
-/* The Recognise screen's contrast pair: side by side, stacked at 600 px and under. */
-
+/* The Recognise screen's contrast pair: two stems side by side, each under its heading word,
+   stacked at 600 px and under. */
 .lesson-contrast-pair {
    display: flex;
    gap: var(--growth-space-16) var(--growth-space-24);
@@ -2878,17 +3762,47 @@ h3.section-header {
    min-width: 0;
 }
 
-.lesson-strategy {
+.lesson-pair-side {
    display: flex;
    flex-direction: column;
-   gap: var(--growth-space-12);
+   gap: var(--growth-space-8);
 }
 
+.lesson-contrast-pair > .lesson-pair-side {
+   padding: var(--growth-space-12) var(--growth-space-16);
+   border-radius: var(--growth-space-4);
+   background: var(--growth-accent-tint-1);
+}
+
+/* The wrong and the right step are two rows named in the margin; the second is ruled off from
+   the first so the pair reads as a before and an after. */
+.lesson-pair > .lesson-pair-side[data-side="right"] {
+   box-shadow: inset 0 var(--growth-stroke-hairline) 0 var(--growth-accent-tint-2);
+}
+
+/* What a reader scores: each line marked with the stepper's open ring. */
 .lesson-checklist {
    display: flex;
    flex-direction: column;
    gap: var(--growth-space-8);
    list-style: none;
+}
+
+.lesson-checklist > li {
+   display: grid;
+   grid-template-columns: var(--growth-space-24) minmax(0, auto);
+   column-gap: var(--growth-space-12);
+   align-items: baseline;
+}
+
+.lesson-checklist > li::before {
+   content: "";
+   align-self: center;
+   justify-self: center;
+   width: var(--growth-space-8);
+   height: var(--growth-space-8);
+   border-radius: calc(var(--growth-space-4) / 2);
+   box-shadow: inset 0 0 0 var(--growth-stroke-hairline) var(--growth-text-muted);
 }
 
 .lesson-quote {
@@ -2972,12 +3886,36 @@ h3.section-header {
    border-inline-start: var(--growth-stroke-curve) solid var(--growth-accent-base);
 }
 
+/* The refresher's parts follow one another down one margin, each ruled off from the last, in a
+   panel that scrolls when the re-read is long. The card's own rule serves the panel, so the panel
+   draws none of its own. */
 .lesson-refresher {
    display: flex;
    flex-direction: column;
-   gap: var(--growth-space-32);
    max-height: calc(var(--growth-space-96) * 6);
+   padding-top: var(--growth-space-16);
    overflow-y: auto;
+}
+
+.lesson-refresher > .sheet:not(:last-child) {
+   padding-bottom: var(--growth-space-16);
+}
+
+.lesson-refresher > .sheet + .sheet {
+   padding-top: var(--growth-space-16);
+   box-shadow: inset 0 var(--growth-stroke-hairline) 0 var(--growth-accent-tint-2);
+}
+
+/* The error's part opened below a check it explains, ruled off from the check. */
+.lesson-inline-part {
+   display: flex;
+   flex-direction: column;
+   padding-top: var(--growth-space-16);
+   box-shadow: inset 0 var(--growth-stroke-hairline) 0 var(--growth-accent-tint-3);
+}
+
+.lesson-screen {
+   gap: 0;
 }
 
 .lesson-row {
@@ -3121,6 +4059,84 @@ h3.section-header {
 @media (max-width: 600px) {
    .app-bar {
       padding-inline: var(--growth-space-16);
+   }
+
+   .sheet::before {
+      display: none;
+   }
+
+   .sheet > .sheet-row,
+   .sheet > .sheet-part > .sheet-row,
+   .sheet > .sheet-list > li {
+      grid-template-columns: minmax(0, auto);
+      grid-template-areas: "margin" "line";
+      row-gap: var(--growth-space-8);
+   }
+
+   .sheet > .sheet-row,
+   .sheet > .sheet-part > .sheet-row,
+   .sheet > .sheet-options,
+   .sheet > .sheet-part > .sheet-options,
+   .sheet > .sheet-list {
+      box-shadow: inset 0 var(--growth-stroke-hairline) 0 var(--growth-accent-tint-2);
+   }
+
+   .sheet > .sheet-row:first-child,
+   .sheet > .sheet-part:first-child > .sheet-row:first-child,
+   .sheet > .sheet-options:first-child,
+   .sheet > .sheet-list:first-child {
+      box-shadow: none;
+   }
+
+   .sheet > .sheet-row > .sheet-margin,
+   .sheet > .sheet-part > .sheet-row > .sheet-margin,
+   .sheet > .sheet-list > li > .sheet-margin {
+      justify-content: flex-start;
+      padding-inline-end: 0;
+      text-align: start;
+   }
+
+   .sheet-answer > .sheet-tag {
+      padding-top: 0;
+   }
+
+   .sheet > .sheet-row > .sheet-margin-stack,
+   .sheet > .sheet-part > .sheet-row > .sheet-margin-stack {
+      align-items: flex-start;
+   }
+
+   .sheet > .sheet-options,
+   .sheet > .sheet-part > .sheet-options {
+      padding-inline-start: calc(var(--growth-space-48) + var(--growth-space-8));
+      padding-inline-end: 0;
+   }
+
+   .sheet-number {
+      font-size: var(--growth-type-label);
+      line-height: var(--growth-leading-label);
+   }
+
+   .confidence-scrim {
+      align-items: end;
+      padding: 0;
+   }
+
+   .confidence {
+      max-width: none;
+      padding: var(--growth-space-24) var(--growth-space-16);
+      border-radius: var(--growth-space-8) var(--growth-space-8) 0 0;
+   }
+
+   .sheet-foot > .button-primary,
+   .sheet-foot > .button-secondary,
+   .lesson-nav > .button-primary,
+   .scope-footer-submit,
+   .exam-bottom > .button-secondary {
+      flex: auto;
+   }
+
+   .lesson-nav-index {
+      align-items: flex-start;
    }
 
    .scope-step[data-depth="1"] {

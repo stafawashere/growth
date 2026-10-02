@@ -380,16 +380,19 @@ describe("test_keyboard_only_session", () => {
       await screen.findByTestId("item");
       tabTo(screen.getByLabelText("My answer"));
       typeText("6");
-      tabTo(screen.getByRole("radio", { name: "guess" }));
-      press("ArrowRight");
-      press("ArrowRight");
-      expect(screen.getByRole("radio", { name: "confident" })).toHaveProperty("checked", true);
-
       tabTo(screen.getByRole("button", { name: "Check my answer" }));
-      shiftTab();
-      expect(document.activeElement).toBe(screen.getByRole("radio", { name: "confident" }));
-      tab();
       press("Enter");
+
+      expect(mocked.submitAttempt).not.toHaveBeenCalled();
+      expect(document.activeElement).toBe(screen.getByRole("radio", { name: "guess" }));
+
+      press("ArrowRight");
+      press("ArrowRight");
+      expect(document.activeElement).toBe(screen.getByRole("radio", { name: "confident" }));
+      expect(screen.getByRole("radio", { name: "confident" })).toHaveProperty("checked", false);
+      expect(mocked.submitAttempt).not.toHaveBeenCalled();
+
+      press(" ");
 
       expect((await screen.findByTestId("step-marks")).textContent).toContain("Correct");
       tabTo(screen.getByRole("button", { name: "Next item" }));
@@ -398,10 +401,10 @@ describe("test_keyboard_only_session", () => {
       await screen.findByText("Which is the derivative of x^2?");
       tabTo(screen.getAllByRole("radio")[0]);
       press("ArrowDown");
-      tabTo(screen.getByRole("radio", { name: "guess" }));
-      press(" ");
       tabTo(screen.getByRole("button", { name: "Check my answer" }));
       press("Enter");
+      expect(document.activeElement).toBe(screen.getByRole("radio", { name: "guess" }));
+      press(" ");
 
       const corrected = await screen.findByTestId("elaborated-panel");
 

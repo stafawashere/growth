@@ -125,6 +125,7 @@ describe("checking a short answer", () => {
       await waitFor(() => expect(commit.disabled).toBe(false));
       field.typeWithoutEvent(7);
       fireEvent.click(commit);
+      fireEvent.click(await screen.findByRole("radio", { name: "unsure" }));
 
       await waitFor(() => expect(mocked.submitAttempt).toHaveBeenCalledTimes(1));
       expect(mocked.submitAttempt.mock.calls[0][1].answer).toEqual({ mathjson: 7 });
@@ -137,6 +138,7 @@ describe("checking a short answer", () => {
       await waitFor(() => expect(commit.disabled).toBe(false));
       field.typeWithoutEvent(7);
       pressEnter();
+      fireEvent.click(await screen.findByRole("radio", { name: "unsure" }));
 
       await waitFor(() => expect(mocked.submitAttempt).toHaveBeenCalledTimes(1));
       expect(mocked.submitAttempt.mock.calls[0][1].answer).toEqual({ mathjson: 7 });

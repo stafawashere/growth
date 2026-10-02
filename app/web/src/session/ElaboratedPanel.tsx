@@ -38,10 +38,10 @@ export function CorrectResult({ answer }: { answer: CorrectAnswer | null | undef
    }
 
    return (
-      <div className="stack stack-tight" data-testid="correct-answer">
-         <p className="eyebrow">{CORRECT_RESULT_LABEL}</p>
+      <div className="stack stack-tight sheet-row" data-testid="correct-answer">
+         <p className="sheet-margin sheet-tag">{CORRECT_RESULT_LABEL}</p>
 
-         <p className="note-quote math-overflow">
+         <p className="sheet-body note-quote math-overflow">
             {hasLabel ? <MathText text={answer.label as string} /> : <MathValue value={answer.mathjson} />}
          </p>
       </div>
@@ -127,40 +127,42 @@ export function ElaboratedPanel({ elaborated, sentence, lessonLink = null, corre
    return (
       <section
          {...affordanceProps("elaboratedFeedbackPanel")}
-         className={motionClass("elaboratedFeedbackPanel")}
+         className={`${motionClass("elaboratedFeedbackPanel")} sheet-row`}
          data-testid="elaborated-panel"
          data-agent-anchor="feedback"
       >
-         <p className="verdict" data-testid="elaborated-verdict" style={{ color: "var(--growth-state-incorrect)" }}>
+         <p className="sheet-margin verdict step-mark-verdict" data-testid="elaborated-verdict" style={{ color: "var(--growth-state-incorrect)" }}>
             <span data-glyph aria-hidden="true">
                {INCORRECT_GLYPH}
             </span>
             <span>{INCORRECT_WORD}</span>
          </p>
 
-         {elaborated.violated_step !== null ? (
-            <p data-testid="violated-step">{elaborated.violated_step}</p>
-         ) : null}
+         <div className="sheet-body sheet-body-stack">
+            {elaborated.violated_step !== null ? (
+               <p data-testid="violated-step">{elaborated.violated_step}</p>
+            ) : null}
 
-         <CorrectResult answer={correctAnswer} />
+            <CorrectResult answer={correctAnswer} />
 
-         {elaborated.observed_behavior !== null ? (
-            <p data-testid="observed-behavior">{elaborated.observed_behavior}</p>
-         ) : null}
+            {elaborated.observed_behavior !== null ? (
+               <p data-testid="observed-behavior">{elaborated.observed_behavior}</p>
+            ) : null}
 
-         {elaborated.scoring_consequence !== null ? (
-            <p className="muted" data-testid="scoring-consequence">{elaborated.scoring_consequence}</p>
-         ) : null}
+            {elaborated.scoring_consequence !== null ? (
+               <p className="muted" data-testid="scoring-consequence">{elaborated.scoring_consequence}</p>
+            ) : null}
 
-         {hasSentence ? <p className="tutor-note" data-testid="tutor-sentence">{sentence}</p> : null}
+            {hasSentence ? <p className="tutor-note" data-testid="tutor-sentence">{sentence}</p> : null}
 
-         {lessonLink !== null && !isReading ? (
-            <button type="button" className="text-button" data-testid="read-error-part" data-anchor={lessonLink.anchor} onClick={() => setIsReading(true)}>
-               {READ_THE_PART_LABEL}
-            </button>
-         ) : null}
+            {lessonLink !== null && !isReading ? (
+               <button type="button" className="text-button" data-testid="read-error-part" data-anchor={lessonLink.anchor} onClick={() => setIsReading(true)}>
+                  {READ_THE_PART_LABEL}
+               </button>
+            ) : null}
 
-         {lessonLink !== null && isReading ? <LessonAtAnchor link={lessonLink} onClose={() => setIsReading(false)} /> : null}
+            {lessonLink !== null && isReading ? <LessonAtAnchor link={lessonLink} onClose={() => setIsReading(false)} /> : null}
+         </div>
       </section>
    );
 }

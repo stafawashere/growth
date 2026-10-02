@@ -191,19 +191,19 @@ function FeedbackHead(props: { correct: boolean | null; isOpener: boolean }) {
 
    if (!hasVerdict) {
       return (
-         <div className="feedback-head">
-            <span className="eyebrow">Feedback</span>
+         <div className="sheet-row sheet-row-ruled feedback-head">
+            <span className="sheet-margin sheet-tag">Feedback</span>
          </div>
       );
    }
 
    return (
-      <div className="feedback-head" data-testid="feedback-verdict">
-         <span className={props.correct ? "status-icon text-correct" : "status-icon text-incorrect"}>
+      <div className="sheet-row sheet-row-ruled feedback-head" data-testid="feedback-verdict">
+         <span className={props.correct ? "sheet-margin status-icon text-correct" : "sheet-margin status-icon text-incorrect"}>
             <Icon name={props.correct ? "check" : "alert"} size="md" />
          </span>
 
-         <h2>{props.correct ? "That holds." : "Not yet. Here is where it turned."}</h2>
+         <h2 className="sheet-body">{props.correct ? "That holds." : "Not yet. Here is where it turned."}</h2>
       </div>
    );
 }
@@ -280,6 +280,7 @@ export function SessionScreen({ resumeSessionId, onLeave, onOpened }: SessionScr
    const [feedback, setFeedback] = useState<FeedbackPayload | null>(null);
    const [feedbackUnreadable, setFeedbackUnreadable] = useState(false);
    const [confidence, setConfidence] = useState<Confidence | null>(null);
+   const [isRating, setIsRating] = useState(false);
    const [answerMathJson, setAnswerMathJson] = useState<unknown>(null);
    const [mathFieldReady, setMathFieldReady] = useState(false);
    const mathReader = useRef<MathFieldReader | null>(null);
@@ -309,6 +310,7 @@ export function SessionScreen({ resumeSessionId, onLeave, onOpened }: SessionScr
       setFeedback(null);
       setFeedbackUnreadable(false);
       setConfidence(null);
+      setIsRating(false);
       setAnswerMathJson(null);
       setSelectedOptionId(null);
       setSelfExplanation("");
@@ -423,12 +425,11 @@ export function SessionScreen({ resumeSessionId, onLeave, onOpened }: SessionScr
       }
    }, []);
 
-   const commit = useCallback(async () => {
-      const isIdle = !inFlight.current;
-      const canCommit = session !== null && item !== null && isIdle;
-
-      if (!canCommit) {
-         return;
+   /* The answer as it stands, read from the field itself when the field can be read, or null when
+      there is nothing to send: a typed answer known to be empty. */
+   const readAnswer = useCallback(() => {
+      if (item === null) {
+         return null;
       }
 
       const isMcq = servesChoice(item);
@@ -440,20 +441,35 @@ export function SessionScreen({ resumeSessionId, onLeave, onOpened }: SessionScr
       const refusesEmptyAnswer = !isMcq && knowsTheFieldIsEmpty;
 
       if (refusesEmptyAnswer) {
+         return null;
+      }
+
+      const answer: AttemptAnswer = isMcq ? { option_id: selectedOptionId ?? "" } : { mathjson: typed };
+
+      return { answer, typed, isMcq };
+   }, [item, answerMathJson, mathFieldReady, selectedOptionId]);
+
+   const sendAttempt = useCallback(async (rated: Confidence | null) => {
+      const isIdle = !inFlight.current;
+      const read = readAnswer();
+      const canSend = session !== null && item !== null && isIdle && read !== null;
+
+      if (!canSend) {
          return;
       }
+
+      const { answer, typed, isMcq } = read;
 
       inFlight.current = true;
       setActionFailed(false);
 
       try {
-         const answer: AttemptAnswer = isMcq ? { option_id: selectedOptionId ?? "" } : { mathjson: typed };
-         const ratesConfidence = collectsConfidence(item.stage) && confidence !== null;
+         const ratesConfidence = collectsConfidence(item.stage) && rated !== null;
 
          const result = await submitAttempt(session.id, {
             item_id: item.id,
             answer,
-            confidence: ratesConfidence ? confidence : undefined
+            confidence: ratesConfidence ? rated : undefined
          });
 
          /* An opener miss is not corrected: it is neither requeued nor noted (02, Session
@@ -481,10 +497,33 @@ export function SessionScreen({ resumeSessionId, onLeave, onOpened }: SessionScr
          await showFeedback(session.id, result.id);
       } catch {
          setActionFailed(true);
+         setIsRating(false);
       } finally {
          inFlight.current = false;
       }
-   }, [session, item, selectedOptionId, answerMathJson, mathFieldReady, confidence, showFeedback]);
+   }, [session, item, readAnswer, showFeedback]);
+
+   /* Check my answer. A rating given from the keys travels with the attempt at once; otherwise the
+      rating is asked for in the dialog, and the choice made there sends the attempt. */
+   const commit = useCallback(() => {
+      const isIdle = !inFlight.current;
+      const hasAnswer = readAnswer() !== null;
+      const canCommit = session !== null && item !== null && isIdle && hasAnswer;
+
+      if (!canCommit) {
+         return;
+      }
+
+      const asksFirst = collectsConfidence(item.stage) && confidence === null;
+
+      if (asksFirst) {
+         setIsRating(true);
+
+         return;
+      }
+
+      return sendAttempt(confidence);
+   }, [session, item, readAnswer, confidence, sendAttempt]);
 
    const rateConfidence = useCallback(
       async (value: Confidence) => {
@@ -515,6 +554,28 @@ export function SessionScreen({ resumeSessionId, onLeave, onOpened }: SessionScr
       },
       [session, committed, showFeedback]
    );
+
+   /* A word chosen in the dialog: it completes the check that opened the dialog, or records the
+      rating a committed attempt came back without. The dialog stays up, its row marked, until the
+      feedback takes the item's place or the send fails. */
+   const chooseConfidence = useCallback(
+      (value: Confidence) => {
+         const ratesAfterCommit = committed !== null;
+
+         if (ratesAfterCommit) {
+            return rateConfidence(value);
+         }
+
+         setConfidence(value);
+
+         return sendAttempt(value);
+      },
+      [committed, rateConfidence, sendAttempt]
+   );
+
+   const closeRating = useCallback(() => {
+      setIsRating(false);
+   }, []);
 
    const moveOn = useCallback(async () => {
       const isIdle = !inFlight.current;
@@ -689,8 +750,11 @@ export function SessionScreen({ resumeSessionId, onLeave, onOpened }: SessionScr
                <span className="eyebrow">{shown.kind === "refresher" ? "A short refresher" : "A lesson first"}</span>
 
                {remaining !== null ? (
-                  <span className="helper" data-testid="session-remaining">
-                     {remainingSentence(remaining)}
+                  <span className="set-status">
+                     <span className="set-status-time">
+                        <Icon name="clock" />
+                        <span data-testid="session-remaining">{remainingSentence(remaining)}</span>
+                     </span>
                   </span>
                ) : null}
             </div>
@@ -742,6 +806,8 @@ export function SessionScreen({ resumeSessionId, onLeave, onOpened }: SessionScr
    const openerWithoutComparison = isOpener && feedback !== null && !showsComparison && !showsReinforcement;
    const openerFirstStep = feedback?.first_worked_step ?? null;
    const owesNote = wasCorrected && errorNote.trim().length === 0;
+   const explanationPromptAfter = showsComparison ? null : feedback?.self_explanation_prompt ?? null;
+   const asksToExplainAfter = explanationPromptAfter !== null && explanationPromptAfter.trim().length > 0;
    const awaitsRating =
       committed !== null && collectsConfidence(committed.served_stage) && committed.confidence === null;
 
@@ -752,10 +818,10 @@ export function SessionScreen({ resumeSessionId, onLeave, onOpened }: SessionScr
    const showsWhatWasWritten = chosenOption !== null || wroteMath;
 
    const youWrote = showsWhatWasWritten ? (
-      <div className="you-wrote" data-testid="you-wrote">
-         <p className="eyebrow">{YOU_WROTE_LABEL}</p>
+      <div className="you-wrote sheet-row" data-testid="you-wrote">
+         <p className="sheet-margin sheet-tag">{YOU_WROTE_LABEL}</p>
 
-         <p className="note-quote">
+         <p className="sheet-body note-quote">
             {chosenOption !== null ? (
                chosenOption.label !== undefined ? (
                   <MathText text={chosenOption.label} />
@@ -832,17 +898,21 @@ export function SessionScreen({ resumeSessionId, onLeave, onOpened }: SessionScr
    }
 
    const sessionAside = (
-      <>
+      <div className="set-status">
          {remaining !== null ? (
-            <span data-testid="session-remaining">{remainingSentence(remaining)}</span>
+            <span className="set-status-time">
+               <Icon name="clock" />
+               <span data-testid="session-remaining">{remainingSentence(remaining)}</span>
+            </span>
          ) : null}
 
          {isConfirmingStop ? null : (
-            <button type="button" className="text-button session-stop" onClick={() => setIsConfirmingStop(true)}>
+            <button type="button" className="set-status-stop session-stop" onClick={() => setIsConfirmingStop(true)}>
+               <Icon name="stop" />
                {STOP_LABEL}
             </button>
          )}
-      </>
+      </div>
    );
 
    return (
@@ -850,16 +920,16 @@ export function SessionScreen({ resumeSessionId, onLeave, onOpened }: SessionScr
          {remaining !== null ? <SetProgress worked={worked.items} remaining={remaining} /> : null}
 
          {isConfirmingStop ? (
-            <div role="alertdialog" aria-label="Stop this set" className="callout callout-row" data-testid="stop-confirmation">
+            <div role="alertdialog" aria-label="Stop this set" className="callout" data-testid="stop-confirmation">
                <p>This closes today&apos;s set. What you answered is kept, and Today builds the next set from it.</p>
 
-               <div className="cluster">
-                  <button type="button" className="button-primary" onClick={stop}>
-                     {STOP_CONFIRM_LABEL}
+               <div className="cluster sheet-confirm-actions">
+                  <button type="button" className="button-secondary button-small" onClick={() => setIsConfirmingStop(false)}>
+                     {KEEP_GOING_LABEL}
                   </button>
 
-                  <button type="button" className="text-button" onClick={() => setIsConfirmingStop(false)}>
-                     {KEEP_GOING_LABEL}
+                  <button type="button" className="text-button" onClick={stop}>
+                     {STOP_CONFIRM_LABEL}
                   </button>
                </div>
             </div>
@@ -868,14 +938,16 @@ export function SessionScreen({ resumeSessionId, onLeave, onOpened }: SessionScr
          {actionFailed ? <ActionFailed /> : null}
 
          {showsFeedback ? (
-            <section className="card feedback" data-testid="feedback">
+            <section className="card feedback sheet" data-testid="feedback">
                <FeedbackHead correct={committed?.correct ?? null} isOpener={isOpener} />
 
                {comparison !== null ? <ComparisonPanel comparison={comparison} attempt={youWrote} /> : youWrote}
 
                {hasFigure ? (
-                  <div data-testid="feedback-figure">
-                     <FigureView spec={item.figure_spec} isItemFigure />
+                  <div className="sheet-row" data-testid="feedback-figure">
+                     <div className="sheet-body">
+                        <FigureView spec={item.figure_spec} isItemFigure />
+                     </div>
                   </div>
                ) : null}
 
@@ -884,29 +956,33 @@ export function SessionScreen({ resumeSessionId, onLeave, onOpened }: SessionScr
                {showsStepResult ? <CorrectResult answer={correctAnswer} /> : null}
 
                {openerWithoutComparison ? (
-                  <section className="comparison" data-testid="opener-without-tutor">
-                     <p className="eyebrow">{COMPARISON_LABEL}</p>
+                  <section className="comparison sheet-row" data-testid="opener-without-tutor">
+                     <p className="sheet-margin sheet-tag">{COMPARISON_LABEL}</p>
 
-                     <p>{OPENER_WITHOUT_TUTOR}</p>
+                     <div className="sheet-body comparison">
+                        <p>{OPENER_WITHOUT_TUTOR}</p>
 
-                     {openerFirstStep !== null ? (
-                        <div data-testid="opener-first-step">
-                           <p className="eyebrow">{METHOD_LABEL}</p>
+                        {openerFirstStep !== null ? (
+                           <div data-testid="opener-first-step">
+                              <p className="eyebrow">{METHOD_LABEL}</p>
 
-                           <ol className="worked-steps">
-                              <li data-step-index={openerFirstStep.index} data-agent-anchor={solutionStepAnchor(openerFirstStep.index)}>
-                                 <MathText text={openerFirstStep.text} />
-                              </li>
-                           </ol>
-                        </div>
-                     ) : null}
+                              <ol className="worked-steps">
+                                 <li data-step-index={openerFirstStep.index} data-agent-anchor={solutionStepAnchor(openerFirstStep.index)}>
+                                    <MathText text={openerFirstStep.text} />
+                                 </li>
+                              </ol>
+                           </div>
+                        ) : null}
+                     </div>
                   </section>
                ) : null}
 
                {showsReinforcement ? (
-                  <p className="tutor-note" data-testid="tutor-sentence">
-                     {reinforcement}
-                  </p>
+                  <div className="sheet-row">
+                     <p className="sheet-body tutor-note" data-testid="tutor-sentence">
+                        {reinforcement}
+                     </p>
+                  </div>
                ) : null}
 
                {showsElaborated ? (
@@ -918,15 +994,23 @@ export function SessionScreen({ resumeSessionId, onLeave, onOpened }: SessionScr
                   />
                ) : null}
 
-               <SelfExplanationPrompt
-                  prompt={showsComparison ? null : feedback?.self_explanation_prompt ?? null}
-                  value={selfExplanation}
-                  onChange={setSelfExplanation}
-               />
+               {asksToExplainAfter ? (
+                  <div className="sheet-row">
+                     <div className="sheet-body">
+                        <SelfExplanationPrompt prompt={explanationPromptAfter} value={selfExplanation} onChange={setSelfExplanation} />
+                     </div>
+                  </div>
+               ) : null}
 
-               {wasCorrected ? <ErrorNoteField value={errorNote} onChange={setErrorNote} /> : null}
+               {wasCorrected ? (
+                  <div className="sheet-row">
+                     <div className="sheet-body">
+                        <ErrorNoteField value={errorNote} onChange={setErrorNote} />
+                     </div>
+                  </div>
+               ) : null}
 
-               <div className="submit-row">
+               <div className="sheet-foot">
                   {owesNote ? <p className="helper">Write the note first, so the retry comes back with it.</p> : <span />}
 
                   <button
@@ -949,11 +1033,13 @@ export function SessionScreen({ resumeSessionId, onLeave, onOpened }: SessionScr
                selectedOptionId={selectedOptionId}
                onOptionChange={setSelectedOptionId}
                confidence={confidence}
-               onConfidenceChange={rateConfidence}
+               onConfidenceChange={chooseConfidence}
                selfExplanation={selfExplanation}
                onSelfExplanationChange={setSelfExplanation}
                onCommit={commit}
                awaitingConfidence={awaitsRating}
+               asksConfidence={isRating}
+               onConfidenceClose={closeRating}
                mathReaderRef={mathReader}
                onMathFieldReady={noteMathFieldReady}
                commitDisabled={awaitsMathValue}

@@ -38,8 +38,10 @@ Neutral ramp, so far as 08 names its steps: `surface-page`, `surface-raised`, `s
 Accent: `accent-base` and its tint ramp `accent-tint-1` through `accent-tint-4`, plus
 `accent-contrast-text`.
 
-Semantic: `state-correct`, `state-incorrect`. 08 names a tint ramp for each without enumerating
-steps, so no semantic tint token is in the vocabulary; only these two base tokens are checked.
+Semantic: `state-correct`, `state-incorrect`, `state-caution`, and the first step of each one's
+tint ramp, `correct-tint-1`, `incorrect-tint-1`, `caution-tint-1`, which 08 names since
+2026-09-30. The three base tokens are checked on every surface; every text role is checked on each
+tint step.
 
 Type: `TYPE_TOKENS`, the nine rows of 08's type scale table. Each value is the right-hand side of
 a CSS declaration. `app/design/css.py` refuses a missing, empty or unsafe type value when it

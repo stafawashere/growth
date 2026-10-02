@@ -14,3 +14,15 @@ describe("mathJsonToLatex", () => {
       expect(markup).toContain("<mi mathvariant=\"normal\">e</mi>");
    });
 });
+
+describe("mathJsonToLatex decimal strings", () => {
+   it("keeps the trailing zeros of a decimal string number", () => {
+      expect(mathJsonToLatex({ num: "4.290" })).toBe("4.290");
+      expect(mathJsonToLatex({ num: "0.100" })).toBe("0.100");
+   });
+
+   it("keeps the trailing zeros of a decimal string inside an expression", () => {
+      expect(mathJsonToLatex(["Negate", { num: "0.760" }])).toBe("-0.760");
+      expect(mathJsonToLatex(["Add", "x", { num: "2.500" }])).toContain("2.500");
+   });
+});

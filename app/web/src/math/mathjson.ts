@@ -21,15 +21,63 @@ const STACKED_LIMIT_MACROS = {
    "\\lim": "\\mathop{\\mathrm{lim}}\\limits"
 };
 
+/* Calculator options store three-decimal values such as {"num": "4.290"}, and the compute engine
+   would print that as 4.29. Each decimal string is swapped for an integer placeholder, which the
+   engine prints unchanged, and written back verbatim after conversion. */
+const DECIMAL_STRING = /^-?\d+\.\d+$/;
+const PLACEHOLDER_BASE = 7390518260000;
+
+function isDecimalStringNumber(node: unknown): node is { num: string } {
+   const isObject = typeof node === "object" && node !== null && !Array.isArray(node);
+
+   if (!isObject) {
+      return false;
+   }
+
+   const num = (node as { num?: unknown }).num;
+
+   return typeof num === "string" && DECIMAL_STRING.test(num);
+}
+
+function holdDecimalStrings(node: unknown, held: string[]): unknown {
+   if (isDecimalStringNumber(node)) {
+      const isNegative = node.num.startsWith("-");
+      const placeholder = PLACEHOLDER_BASE + held.length;
+
+      held.push(node.num.replace("-", ""));
+
+      return isNegative ? -placeholder : placeholder;
+   }
+
+   if (Array.isArray(node)) {
+      return node.map((child) => holdDecimalStrings(child, held));
+   }
+
+   return node;
+}
+
+/* The engine groups long digit runs with \, so the placeholder is matched with or without them. */
+function placeholderPattern(index: number): RegExp {
+   const digits = String(PLACEHOLDER_BASE + index).split("");
+
+   return new RegExp(digits.join("(?:\\\\,)?"), "g");
+}
+
+function restoreDecimalStrings(latex: string, held: string[]): string {
+   return held.reduce((restored, decimal, index) => restored.replace(placeholderPattern(index), decimal), latex);
+}
+
 export function mathJsonToLatex(node: unknown): string {
    if (node === null || node === undefined) {
       return "";
    }
 
    try {
-      const latex = convertMathJsonToLatex(node as Parameters<typeof convertMathJsonToLatex>[0]);
+      const held: string[] = [];
+      const heldNode = holdDecimalStrings(node, held);
+      const latex = convertMathJsonToLatex(heldNode as Parameters<typeof convertMathJsonToLatex>[0]);
 
-      return latex.replace(COMPUTE_ENGINE_E, "\\mathrm{e}");
+      return restoreDecimalStrings(latex, held).replace(COMPUTE_ENGINE_E, "\\mathrm{e}");
    } catch {
       return "";
    }

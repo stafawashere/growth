@@ -15,6 +15,7 @@ import type {
 import { MathValue } from "../math/MathValue";
 import { Icon } from "../ui/Icon";
 import { PageHeader } from "../ui/Page";
+import { QuestionTrack, trackState } from "../ui/Workbench";
 import { ContrastPanel } from "./ContrastPanel";
 import { LessonCheck } from "./LessonCheck";
 import { sectionIdMatches } from "./LessonLink";
@@ -217,14 +218,6 @@ function PredictionLine({ committed }: { committed: CommittedPrediction }) {
    );
 }
 
-function markState(position: number, index: number) {
-   if (position < index) {
-      return "done";
-   }
-
-   return position === index ? "current" : "open";
-}
-
 export function LessonReader(props: LessonReaderProps) {
    const { lesson, plan, context, onComplete, onSkip, onSectionViewed, onCheckAnswer, onPromptAnswer, now = Date.now } = props;
    const conceptName = props.conceptName ?? UNNAMED_CONCEPT;
@@ -346,9 +339,21 @@ export function LessonReader(props: LessonReaderProps) {
             <PageHeader eyebrow="Lesson" title={<span data-testid="lesson-top-bar">{topBar}</span>} />
          )}
 
+         <QuestionTrack
+            marks={screens.map((_, position) => ({ state: trackState(position === index, position < index) }))}
+            count={
+               <>
+                  <span data-testid="lesson-part">
+                     Part {partNumber} of {screens.length}
+                  </span>
+                  , <span data-testid="lesson-part-name">{partName(current)}</span>
+               </>
+            }
+         />
+
          <div
             key={`${current.id}-${index}`}
-            className="card lesson-screen"
+            className={current.kind === "check" ? "lesson-screen lesson-screen-bench" : "card lesson-screen"}
             data-testid="lesson-screen"
             data-screen-kind={current.kind}
             data-section-id={current.kind === "end" ? undefined : current.id}
@@ -417,21 +422,6 @@ export function LessonReader(props: LessonReaderProps) {
                      {backLabel}
                   </button>
                ) : null}
-            </div>
-
-            <div className="sheet-nav-index lesson-nav-index">
-               <ol className="sheet-nav-marks" aria-hidden="true">
-                  {screens.map((screen, position) => (
-                     <li key={`${screen.id}-${position}`} className="sheet-nav-mark" data-state={markState(position, index)} />
-                  ))}
-               </ol>
-
-               <p className="helper sheet-nav-caption">
-                  <span data-testid="lesson-part">
-                     Part {partNumber} of {screens.length}
-                  </span>
-                  , <span data-testid="lesson-part-name">{partName(current)}</span>
-               </p>
             </div>
 
             {isEnd ? (

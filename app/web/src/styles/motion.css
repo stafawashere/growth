@@ -29,10 +29,10 @@
    opacity: 1;
 }
 
-/* The confidence dialog rises into place on its first frame the way the tutor sheet does;
-   ConfidencePrompt marks that frame data-entering. */
+/* The confidence drawer slides in from the right edge on its first frame; ConfidencePrompt marks
+   that frame data-entering. */
 .motion-confidence-prompt[data-entering="true"] {
-   transform: translateY(var(--growth-space-24));
+   transform: translateX(var(--growth-space-24));
    opacity: 0;
 }
 

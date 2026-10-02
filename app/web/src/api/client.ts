@@ -692,20 +692,12 @@ export function uploadPhoto(attemptId: string, fields: PhotoFields) {
    return requestJson<PhotoVerdict>(`/attempts/${encodeURIComponent(attemptId)}/images`, jsonInit("POST", fields));
 }
 
-export interface PhotoDeleted {
-   deleted: string;
-}
-
 export interface PhotosDeleted {
    deleted: number;
 }
 
 export function deleteEveryPhoto() {
    return requestJson<PhotosDeleted>("/frq/photos", jsonInit("DELETE"));
-}
-
-export function deletePhoto(attemptId: string, imageId: string) {
-   return requestJson<PhotoDeleted>(photoAddress(attemptId, imageId), jsonInit("DELETE"));
 }
 
 export function requestReadBack(attemptId: string) {
@@ -937,10 +929,6 @@ export function readAgentConversation(conversationId: string) {
 
 export function deleteAgentConversation(conversationId: string) {
    return requestJson<AgentConversationDeleted>(agentConversationPath(conversationId), jsonInit("DELETE"));
-}
-
-export function readAgentSettings() {
-   return requestJson<AgentSettingsPayload>("/agent/settings");
 }
 
 export function updateAgentSettings(fields: AgentSettingsPayload) {

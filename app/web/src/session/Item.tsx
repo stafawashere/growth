@@ -6,6 +6,7 @@ import { MathAnswerField } from "../input/MathAnswerField";
 import type { MathFieldReader } from "../input/MathField";
 import { FigureView } from "../figures/FigureView";
 import { McqControl } from "../input/McqControl";
+import { Workbench } from "../ui/Workbench";
 import { MathText } from "../math/MathText";
 import { ConfidencePrompt } from "./ConfidencePrompt";
 import { SelfExplanationPrompt } from "./SelfExplanationPrompt";
@@ -164,14 +165,12 @@ export function Item(props: ItemProps) {
    const hasExplanationPrompt = explanationPrompt !== null && explanationPrompt.trim().length > 0;
    const asksToExplain = canDrawStage && isExample && hasExplanationPrompt;
 
-   const problemRowClass = showsAnswerArea ? "sheet-row sheet-row-ruled question" : "sheet-row question";
+   const stem = (
+      <>
+         <div className="bench-part">
+            <p className="bench-tag">{promptKind}</p>
 
-   return (
-      <article className="card item sheet" data-testid="item" data-stage={item.stage}>
-         <div className={problemRowClass}>
-            <span className="sheet-margin sheet-tag">{promptKind}</span>
-
-            <div className="sheet-body question-stem">
+            <div className="question-stem">
                {isOpener ? (
                   <p className="caption" data-testid="opener-note">
                      {OPENER_NOTE}
@@ -189,18 +188,16 @@ export function Item(props: ItemProps) {
          </div>
 
          {needsWorkedSteps && !canDrawStage ? (
-            <div className="sheet-row">
-               <p className="sheet-body callout" data-testid="worked-steps-unavailable">
-                  {WORKED_STEPS_MISSING}
-               </p>
-            </div>
+            <p className="callout" data-testid="worked-steps-unavailable">
+               {WORKED_STEPS_MISSING}
+            </p>
          ) : null}
 
          {needsWorkedSteps && canDrawStage ? (
-            <div className="sheet-row sheet-row-ruled">
-               <span className="sheet-margin sheet-tag">Worked so far</span>
+            <div className="bench-part">
+               <p className="bench-tag">Worked so far</p>
 
-               <ol className="sheet-body worked-steps" data-testid="worked-steps">
+               <ol className="worked-steps" data-testid="worked-steps">
                   {shownSteps.map((step) => (
                      <li key={step.index} data-step-index={step.index}>
                         <MathText text={step.text} />
@@ -215,9 +212,17 @@ export function Item(props: ItemProps) {
                </ol>
             </div>
          ) : null}
+      </>
+   );
 
-         {showsAnswerArea && servesMcq ? (
-            <div className="sheet-answer sheet-options" data-testid="mcq-answer">
+   const work = showsAnswerArea ? (
+      <>
+         <p className="bench-tag" aria-hidden="true">
+            My answer
+         </p>
+
+         {servesMcq ? (
+            <div className="bench-answer" data-testid="mcq-answer">
                <McqControl
                   groupLabel="My answer"
                   options={item.options ?? []}
@@ -226,70 +231,59 @@ export function Item(props: ItemProps) {
                   anchorsOptions
                />
             </div>
-         ) : null}
+         ) : (
+            <div className="bench-answer" data-testid="math-answer">
+               <MathAnswerField
+                  label="My answer"
+                  onChange={onAnswerChange}
+                  onLoadFailure={onAnswerUnavailable}
+                  readerRef={mathReaderRef}
+                  onReady={onMathFieldReady}
+               />
 
-         {showsAnswerArea && !servesMcq ? (
-            <div className="sheet-row sheet-answer" data-testid="math-answer">
-               <span className="sheet-margin sheet-tag" aria-hidden="true">
-                  My answer
-               </span>
-
-               <div className="sheet-body sheet-body-stack">
-                  <MathAnswerField
-                     label="My answer"
-                     onChange={onAnswerChange}
-                     onLoadFailure={onAnswerUnavailable}
-                     readerRef={mathReaderRef}
-                     onReady={onMathFieldReady}
-                  />
-
-                  {takesNoAnswer ? (
-                     <p data-testid="answer-unavailable">{ANSWER_UNAVAILABLE}</p>
-                  ) : null}
-               </div>
+               {takesNoAnswer ? <p data-testid="answer-unavailable">{ANSWER_UNAVAILABLE}</p> : null}
             </div>
-         ) : null}
+         )}
 
          {asksToExplain ? (
-            <div className="sheet-row">
-               <div className="sheet-body">
-                  <SelfExplanationPrompt
-                     prompt={explanationPrompt}
-                     value={selfExplanation}
-                     onChange={onSelfExplanationChange}
-                  />
-               </div>
-            </div>
+            <SelfExplanationPrompt prompt={explanationPrompt} value={selfExplanation} onChange={onSelfExplanationChange} />
          ) : null}
+      </>
+   ) : null;
 
-         {opensRatingDialog ? (
-            <ConfidencePrompt value={confidence} onChange={onConfidenceChange} onClose={ratingCanClose ? onConfidenceClose : undefined} />
+   const foot = asksToCommit ? (
+      <button type="button" className="motion-instant-submit-answer button-primary" disabled={commitDisabled} onClick={onCommit}>
+         {commitLabel}
+      </button>
+   ) : null;
+
+   const status = asksToCommit ? (
+      <>
+         <p className="key-hint" data-testid="key-hint">
+            {keyHint(servesMcq)}
+         </p>
+
+         {showsRated ? (
+            <p className="rated-note" data-testid="rated-confidence">
+               {ratedSentence(confidence as Confidence)}
+            </p>
          ) : null}
+      </>
+   ) : null;
 
-         {asksToCommit ? (
-            <div className="sheet-foot">
-               <div className="sheet-foot-lead">
-                  <p className="helper key-hint" data-testid="key-hint">
-                     {keyHint(servesMcq)}
-                  </p>
-
-                  {showsRated ? (
-                     <p className="helper rated-note" data-testid="rated-confidence">
-                        {ratedSentence(confidence as Confidence)}
-                     </p>
-                  ) : null}
-               </div>
-
-               <button
-                  type="button"
-                  className="motion-instant-submit-answer button-primary"
-                  disabled={commitDisabled}
-                  onClick={onCommit}
-               >
-                  {commitLabel}
-               </button>
-            </div>
-         ) : null}
-      </article>
+   return (
+      <Workbench
+         testId="item"
+         data={{ "data-stage": item.stage }}
+         stem={stem}
+         work={work}
+         foot={foot}
+         status={status}
+         after={
+            opensRatingDialog ? (
+               <ConfidencePrompt value={confidence} onChange={onConfidenceChange} onClose={ratingCanClose ? onConfidenceClose : undefined} />
+            ) : null
+         }
+      />
    );
 }

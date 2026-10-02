@@ -68,8 +68,6 @@ export const UNSUPPLIED_INPUTS: Record<Destination, ReadonlyArray<UnsuppliedInpu
    than a value the client reads off a route. */
 export const PURGE_CONFIRMATION_PHRASE = "delete my data";
 
-export const OPERATOR_EXPERIMENTS_SUMMARY = "For the operator: experiments and evidence of learning";
-
 export const OFFLINE_TEXT = "The app could not reach its server, so what you see may be out of date. You are still signed in.";
 
 const TOKEN_PROBE = "--growth-surface-page";

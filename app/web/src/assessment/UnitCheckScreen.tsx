@@ -19,7 +19,8 @@ import { MathText } from "../math/MathText";
 import { MathValue } from "../math/MathValue";
 import { ConfidencePrompt } from "../session/ConfidencePrompt";
 import { refusalText } from "./format";
-import { QuestionStepper, stepperState, type StepperMark } from "./QuestionStepper";
+import { QuestionStepper } from "./QuestionStepper";
+import { QuestionTrack, trackState, Workbench, type TrackMark } from "../ui/Workbench";
 import { Loading } from "../status/LoadState";
 import { Page, PageHeader, Section } from "../ui/Page";
 
@@ -297,12 +298,12 @@ export function UnitCheckScreen({ sessionId, initial, unitTitle }: UnitCheckScre
    const hasFigure = item.figure_spec !== null && item.figure_spec !== undefined;
    const isFirst = index === 0;
    const isLast = index === questions.length - 1;
-   const stepperMarks: StepperMark[] = questions.map((entry, position) => {
+   const trackMarks: TrackMark[] = questions.map((entry, position) => {
       const isCurrent = position === index;
       const entryAnswer = work[entry.number]?.answer ?? null;
       const isAnswered = entryAnswer !== null;
 
-      return { state: stepperState(isCurrent, isAnswered), marked: false };
+      return { state: trackState(isCurrent, isAnswered) };
    });
 
    return (
@@ -327,72 +328,69 @@ export function UnitCheckScreen({ sessionId, initial, unitTitle }: UnitCheckScre
                </p>
             ) : null}
 
-            <article className="card item sheet">
-               <div className="sheet-row sheet-row-ruled question">
-                  <span className="sheet-margin sheet-tag">{servesChoice(question) ? "Concept check" : "Solve"}</span>
+            <div className="workbench">
+               <QuestionTrack marks={trackMarks} count={`${answeredCount} of ${questions.length} answered`} />
 
-                  <div className="sheet-body question-stem">
-                     <p className="item-stem">
-                        <MathText text={item.stem} />
-                     </p>
+               <Workbench
+                  stem={
+                     <div className="bench-part">
+                        <p className="bench-tag">{servesChoice(question) ? "Concept check" : "Solve"}</p>
 
-                     {hasFigure ? <FigureView spec={item.figure_spec} /> : null}
-                  </div>
-               </div>
+                        <div className="question-stem">
+                           <p className="item-stem">
+                              <MathText text={item.stem} />
+                           </p>
 
-               {servesChoice(question) ? (
-                  <div className="sheet-answer sheet-options">
-                     <McqControl
-                        key={question.number}
-                        groupLabel="My answer"
-                        options={item.options ?? []}
-                        selectedId={current.answer?.option_id ?? null}
-                        onSelect={(optionId) => change(question.number, { answer: { option_id: optionId } })}
-                     />
-                  </div>
-               ) : (
-                  <div className="sheet-row sheet-answer" data-testid="math-answer">
-                     <span className="sheet-margin sheet-tag" aria-hidden="true">
-                        My answer
-                     </span>
-
-                     <div className="sheet-body sheet-body-stack">
-                        <MathAnswerField
-                           key={question.number}
-                           label="My answer"
-                           onChange={(mathjson) => typeAnswer(question.number, mathjson)}
-                           onLoadFailure={() => setAnswerUnavailable(true)}
-                        />
-
-                        {answerUnavailable ? <p role="alert">The math keyboard did not load, so this question cannot take an answer.</p> : null}
+                           {hasFigure ? <FigureView spec={item.figure_spec} /> : null}
+                        </div>
                      </div>
-                  </div>
-               )}
+                  }
+                  work={
+                     <>
+                        <p className="bench-tag" aria-hidden="true">
+                           My answer
+                        </p>
 
-               {ratingFor !== null ? (
-                  <ConfidencePrompt
-                     key={`confidence-${question.number}`}
-                     value={current.confidence}
-                     onChange={(confidence) => rate(question.number, confidence)}
-                     onClose={() => setRatingFor(null)}
-                  />
-               ) : null}
+                        {servesChoice(question) ? (
+                           <McqControl
+                              key={question.number}
+                              groupLabel="My answer"
+                              options={item.options ?? []}
+                              selectedId={current.answer?.option_id ?? null}
+                              onSelect={(optionId) => change(question.number, { answer: { option_id: optionId } })}
+                           />
+                        ) : (
+                           <div className="bench-answer" data-testid="math-answer">
+                              <MathAnswerField
+                                 key={question.number}
+                                 label="My answer"
+                                 onChange={(mathjson) => typeAnswer(question.number, mathjson)}
+                                 onLoadFailure={() => setAnswerUnavailable(true)}
+                              />
 
-               <div className="sheet-foot">
-                  <QuestionStepper
-                     marks={stepperMarks}
-                     isFirst={isFirst}
-                     isLast={isLast}
-                     onBack={() => goTo(index - 1)}
-                     onNext={() => next(question.number)}
-                     caption={`${answeredCount} of ${questions.length} answered.`}
-                  />
-
-                  <button type="button" className="button-primary" onClick={() => askThenSubmit(question.number)}>
-                     Submit check
-                  </button>
-               </div>
-            </article>
+                              {answerUnavailable ? <p role="alert">The math keyboard did not load, so this question cannot take an answer.</p> : null}
+                           </div>
+                        )}
+                     </>
+                  }
+                  foot={<QuestionStepper isFirst={isFirst} isLast={isLast} onBack={() => goTo(index - 1)} onNext={() => next(question.number)} />}
+                  status={
+                     <button type="button" className="button-secondary" onClick={() => askThenSubmit(question.number)}>
+                        Submit check
+                     </button>
+                  }
+                  after={
+                     ratingFor !== null ? (
+                        <ConfidencePrompt
+                           key={`confidence-${question.number}`}
+                           value={current.confidence}
+                           onChange={(confidence) => rate(question.number, confidence)}
+                           onClose={() => setRatingFor(null)}
+                        />
+                     ) : null
+                  }
+               />
+            </div>
          </Page>
       </section>
    );

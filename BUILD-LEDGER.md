@@ -3203,6 +3203,11 @@ failing ids leave 2 failed, 46 passed, and both 2 (`eval_simulation_mastery_grow
 11 to 13 (selection and simulation) per the stage plan. vitest 1174 passed, tsc exit 0, qa
 12_report exit 0 with the gitignored cache/web linked in (00_manifest fails in a worktree without
 it). Every comparison verdict here is a model's work on the operator's delegation, not a human's.
+Full suite on merged main 27239c95, 6 xdist workers, in a detached worktree with cache/web and
+cache/pdf linked: 4 failed, 3437 passed, 0 errors in 1192 s. The four are owned elsewhere:
+`test_unauthenticated_routes` needs a built app/web/dist (stage 12 note), `test_agent_drafts_served`
+reads the checkout's var pacing file (4f47db08), and `eval_simulation_mastery_growth` and
+`test_the_decay_arm_serves_differently_from_two_term` are stage 11's operator-owned gates.
 
 ## In progress [inferred]
 

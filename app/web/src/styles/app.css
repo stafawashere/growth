@@ -3642,10 +3642,29 @@ button.lesson-library-row:hover {
    outline: var(--growth-stroke-hairline) solid var(--growth-border-hairline);
 }
 
+.graded-points li {
+   flex-direction: column;
+   align-items: flex-start;
+}
+
+.read-back-edit-part,
 .read-back-edit-line {
    display: flex;
+   flex-direction: column;
+   min-width: 0;
+}
+
+.read-back-edit-part {
+   gap: var(--growth-space-16);
+}
+
+.read-back-edit-line {
+   gap: var(--growth-space-8);
+}
+
+.read-back-edit-flags {
+   display: flex;
    flex-wrap: wrap;
-   align-items: center;
    gap: var(--growth-space-8) var(--growth-space-16);
 }
 

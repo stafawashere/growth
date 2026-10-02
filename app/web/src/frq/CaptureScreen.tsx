@@ -410,18 +410,29 @@ export function CaptureScreen({ sessionId, question, pollMilliseconds, readFile,
             />
          ) : null}
 
-         {stage === "editing" && readBack !== null ? (
-            <div data-testid="read-back-fix">
-               <ReadBackEditor readBack={readBack} onChange={setReadBack} />
+         {stage === "editing" && readBack !== null && attempt !== null ? (
+            <Workbench
+               testId="read-back-fix"
+               stemLabel="Your page"
+               workLabel="Fix what I read"
+               stem={
+                  <>
+                     <p className="bench-tag">Your page</p>
 
-               {ratingFor === "corrected" ? <ConfidencePrompt value={confidence} onChange={rateThenConfirm} onClose={() => setRatingFor(null)} /> : null}
-
-               <button type="button" className="button-primary" onClick={() => setRatingFor("corrected")}>
-                  Grade what I wrote
-               </button>
-
-               <p className="muted">Nothing is scored until you confirm this.</p>
-            </div>
+                     {accepted.slice(-1).map((verdict) => (
+                        <img key={verdict.image_id} src={photoAddress(attempt.attempt_id, verdict.image_id)} alt="Your photographed page" className="read-back-photo" />
+                     ))}
+                  </>
+               }
+               work={<ReadBackEditor readBack={readBack} onChange={setReadBack} />}
+               foot={
+                  <button type="button" className="button-primary" onClick={() => setRatingFor("corrected")}>
+                     Grade what I wrote
+                  </button>
+               }
+               status={<p>Nothing is scored until you confirm this.</p>}
+               after={ratingFor === "corrected" ? <ConfidencePrompt value={confidence} onChange={rateThenConfirm} onClose={() => setRatingFor(null)} /> : null}
+            />
          ) : null}
 
          {stage === "typing" ? (
@@ -443,7 +454,11 @@ export function CaptureScreen({ sessionId, question, pollMilliseconds, readFile,
          ) : null}
 
          {stage === "graded" && gradings !== null ? (
-            <GradingView gradings={gradings} onAskForReread={reread} rereadAskedFor={rereads} />
+            <Workbench
+               testId="frq-graded"
+               stemLabel="Points"
+               stem={<GradingView gradings={gradings} onAskForReread={reread} rereadAskedFor={rereads} />}
+            />
          ) : null}
       </section>
    );

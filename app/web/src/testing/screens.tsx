@@ -278,7 +278,9 @@ export function gradings(): GradingsPayload {
       total: 3,
       provisional: 1,
       worked_solution: [{ part_id: "a", answer_latex: "x = 3", steps: [{ text: "Set", latex: "g'(x) = 0" }] }],
-      probe_scheduled: null
+      probe_scheduled: null,
+      tutor_explanation: null,
+      tutor_unavailable: false
    };
 }
 

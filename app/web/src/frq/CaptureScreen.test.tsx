@@ -97,7 +97,9 @@ const GRADED: GradingsPayload = {
    total: 2,
    provisional: 1,
    worked_solution: [],
-   probe_scheduled: null
+   probe_scheduled: null,
+   tutor_explanation: null,
+   tutor_unavailable: false
 };
 
 function photoFile() {
@@ -197,7 +199,7 @@ describe("free-response capture", () => {
 
       expect(await screen.findByTestId("grading-summary")).toBeTruthy();
       expect(screen.getByTestId("grading-summary").textContent).toContain("1 of the 1 decided points earned, 1 provisional and not counted");
-      expect(screen.getByTestId("provisional-copy").textContent).toContain("This point is provisional.");
+      expect(screen.getByTestId("provisional-copy").textContent).toContain("This point is provisional. The gradings disagreed, 2 of 3 earned");
       expect(screen.getAllByRole("button", { name: "Ask for a re-read" })).toHaveLength(2);
       expect(screen.queryByText(/AP score/)).toBeNull();
 
@@ -215,6 +217,19 @@ describe("free-response capture", () => {
       fireEvent.click(screen.getByLabelText("unsure"));
 
       expect((await screen.findByTestId("frq-tutor-explanation")).textContent).toBe("Part (b) needed the sign change named.");
+   });
+
+   it("says the tutor is unavailable when the graded result comes without its paragraph for that reason", async () => {
+      await reachReadBack();
+      mocked.confirmReadBack.mockResolvedValue(attempt({ transcription_confirmed: true }));
+      mocked.readGradings.mockResolvedValue({ ...GRADED, tutor_explanation: null, tutor_unavailable: true });
+
+      fireEvent.click(screen.getByRole("button", { name: "Yes, grade it" }));
+      fireEvent.click(screen.getByLabelText("unsure"));
+
+      expect((await screen.findByTestId("frq-tutor-unavailable")).textContent).toContain("The tutor is unavailable for the rest of today");
+      expect(screen.getByTestId("frq-graded").contains(screen.getByTestId("grading-summary"))).toBe(true);
+      expect(screen.queryByTestId("frq-tutor-explanation")).toBeNull();
    });
 
    it("grades a typed answer without a photograph or a read-back", async () => {

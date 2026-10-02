@@ -956,9 +956,9 @@ export interface GradingsPayload {
    provisional: number;
    worked_solution: WorkedPart[];
    probe_scheduled: string | null;
-   /* app/api/routes/frq.py read_gradings: the tutor's stored paragraph on the points not earned. */
-   tutor_explanation?: string | null;
-   tutor_unavailable?: boolean;
+   /* The tutor's stored paragraph on the points not earned, and whether the tutor could not be reached. */
+   tutor_explanation: string | null;
+   tutor_unavailable: boolean;
 }
 
 export interface DisputeResult {

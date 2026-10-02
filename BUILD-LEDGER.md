@@ -3086,6 +3086,56 @@ items) and items 3 and 6 (Slices 3 and 4). Every gate 11 names for P2 now exists
   template_gate 18 passed, statement_items 7 passed, parameter_specs 3 passed, template_stems 2
   passed, generated_provenance 2 passed.
 
+Stage 13 (frq), 2026-10-02, free response end to end, by Claude Opus 5.5 on the operator's
+delegation. The causes are under In progress and Known defects; the rulings under Decisions,
+2026-10-02. Shipped: the three P3 cassette books re-recorded on the subscription for
+`claude-sonnet-5-5` ($0.00 API; transcription 122 calls, grader goldens 450, paper-to-grade 19)
+and `docs/operator/p3-grader-eval.md` republished from them; the 10 FRQ-AGT records' skills synced
+to their archetypes; `gradings_payload` returns `tutor_explanation` and `tutor_unavailable`; the
+grader notices read the whole-part answer; on the client the unavailable line, the graded and the
+editing stages on the Workbench, a usable read-back editor, stacked graded points, sentence-case
+provisional copy and typeset transcriber notes.
+
+Tests shown red then green: `test_a_lost_point_with_the_tutor_out_of_its_window_reads_as_unavailable`
+("assert False is True" with the field hard-coded), the CaptureScreen unavailable case ("1 failed |
+12 passed" with the line removed), the strengthened provisional-copy assertion (same, with the
+rationale left lowercase), the ReadBack notes case ("1 failed | 1 passed"), and
+`test_a_grader_brief_for_a_whole_part_counts_its_open_points_and_verdicts` ("'Returned a g...ear
+decision.' == 'Judged 1 poi...1 not earned.'").
+
+Checks, one process per file, at load averages between 40 and 115. The stage's named reds now
+pass: tests/eval/test_p3_evals.py "5 passed", tests/e2e/test_paper_to_grade.py "1 passed",
+tests/eval/test_prompt_output_goldens.py "1 failed, 14 passed" (the 14 eval_prompt_goldens cases
+pass; the failure is test_every_template_has_an_output_golden, templates with no recording, already
+recorded under Tutor drawing), tests/grading/test_frq_bank.py checker "PASSED", and the
+`GradingsPayload` contract inside the client run. tests/grading: credit 2, latex 20, frq_tutor 3,
+metric_nine 1, point 21, probe_queue 1, frq_gates 9, question_definitions 23 passed;
+prompt_goldens "2 failed, 7 passed" (stale v1 fields, same on main). tests/eval: agent_golden 20,
+golden_sets 11, p2 4, p5 2, p7 10 passed; selection_study "1 failed, 4 passed" and simulation "2
+failed, 2 passed", both the same on main 2d608113. tests/e2e: cold_start, full_mock_run,
+offline_session, unit_6_item_served 1 passed each; session_login_to_feedback "1 failed, 1 passed"
+and exit_criteria_mastery "2 failed", both the same on main; agent_drafts_served "1 failed" (no
+Unit 2 item served in 12 sessions). tests/providers/test_ai_notices.py "1 failed, 19 passed" (the
+stale v1 test). tests/api ai_notices_route 4 and ungraded_flow 5 passed; generation
+no_official_text 2 passed. Client: `npx vitest run` "Tests 1 failed | 1167 passed | 6 skipped
+(1174)", the failure App.test "reaches progress", which passed alone ("Tests 50 passed"); the
+contrast file timed out in its 60 s setup on this branch and on main alike at load 44 to 56.
+`npx tsc --noEmit` exit 0. `qa/12_report.py` exit 0 with the gitignored `cache/web` linked. The
+full pytest run was not made, on the operator's 2026-10-02 instruction to cut time and tokens;
+every file in tests/grading, tests/eval and tests/e2e and every other test file that reads the
+changed code ran instead.
+
+Live walk on `var/test.db`, worktree code on ports 8031 and 5184, on the subscription: a Unit 5
+free-response unit check. Typed (FRQ-AGT-05001-01): entry, confidence, grading in about 2.5
+minutes, 5 of 9 points, the tutor's paragraph on the four lost. Photo (FRQ-AGT-05001-02, a page
+rendered by `tools/render_frq_pages.py` with one struck line): image gate passed, a faithful
+read-back that flagged the struck fraction as unsure, the fix editor (line marked crossed out),
+grading, 7 of 7 decided and 2 provisional, both listed on Review, Provisional points, and one
+re-read asked for. Graded views at 1280 and 375 in both themes, no horizontal scroll (scrollWidth
+1280 and 375). Screenshots are kept outside the repository, in the session's tool-results folder
+under `~/.claude/projects/-Users-mahfujm-dev-growth/`. What it found is under Known defects,
+2026-10-02.
+
 ## In progress [inferred]
 
 Stage 1, items for Units 4 to 10, is complete in the worktree `../growth-content` on branch
@@ -3135,6 +3185,15 @@ branch `content2`: complete and merged (Done, "stage 13 (content2)"). Nothing re
 progress. What stays open is listed under Known defects: integrand points with a constant factor
 outside the integral are never decided by a check, and the full test suite was not rerun after
 the bank was added (the operator asked to merge on targeted checks).
+
+Stage 13 (frq), free response end to end, 2026-10-02, worktree `../growth-frq` on branch `frq`:
+complete and merged (Done, "Stage 13 (frq)"). Causes found: b6f9aa27 moved every role from
+`claude-sonnet-5` to `claude-sonnet-5-5`, and the model is part of the cassette digest, so the
+transcription and grader golden books missed on every call; its own paper-to-grade recording
+decided all four points where the test asks for one provisional; the 10 FRQ-AGT records predated
+`corrections-archetypes-skill-load.json`; and the server sent the two tutor fields outside
+`gradings_payload`, the function the client contract reads. What stays open is under Known
+defects, 2026-10-02.
 
 ## Live API spend log [verified]
 
@@ -4260,6 +4319,83 @@ From the eleventh session, 2026-09-21, found and not fixed.
   builds the app errors at import. Stage 13's targeted run put `webauthn` on a scratch
   PYTHONPATH; the shared venv was not touched. Whoever lands that auth change owns the venv.
 
+- 2026-10-02, stage 13 (frq), fixed. b6f9aa27 merged red: moving the roles to
+  `claude-sonnet-5-5` changed every grader and transcriber request digest, so the transcription
+  and grader golden books missed on every call (116 and 450), and its own re-recorded
+  paper-to-grade book decided all four points where `test_paper_to_grade` asks for one
+  provisional. Any change to `app/providers/model_routing.py` for a role with a cassette book
+  needs the books re-recorded in the same commit; `tools/p3_evals.py record-transcription`,
+  `record-goldens` and `tools/record_grading_cassettes.py paper_to_grade` are the tools.
+
+- 2026-10-02, stage 13 (frq), finding, the re-recorded read-backs. On the 17 golden set 3 pages
+  the quality gate accepts, Sonnet 5.5 finds the same 30 of 43 point-bearing expressions as
+  Sonnet 5 and marks the same 3 of 3 struck lines, but it leaves the part's `answer` field empty
+  on 9 pages where Sonnet 5 copied the last line into it. The prompt asks for an answer only
+  when one is marked, boxed, underlined or clearly stated last, so both readings are within it,
+  and grading is unaffected because `app/grading/checks.py` `answer_line` falls back to the last
+  live math line. On GLD-TRN-001 the new reading names `f''(x) = 6x`, the last line, where the
+  old named `f'(x) = 3x^2 - 4`; on GLD-TRN-015 it reads the answer as `4\pi` without `A =`, so
+  that page's point-bearing count drops from 2 to 1 while GLD-TRN-002 rises from 2 to 3.
+
+- 2026-10-02, stage 13 (frq), open. No screen reads `FeedbackPayload.tutor_unavailable`, so on
+  a multiple-choice or short answer the line plan 07's hard-stop table asks for ("the tutor is
+  unavailable for the rest of today") never shows; the free-response result now shows it
+  (`app/web/src/frq/GradingView.tsx`). Left for the session screen's owner, because this stage
+  is free response only.
+
+- 2026-10-02, stage 13 (frq), finding, the grader golden set on Sonnet 5.5. Replayed from the
+  re-recorded book (`docs/operator/p3-grader-eval.json`), against the Sonnet 5 record it replaces:
+  escalations 4 to 18 of 150 targets (2.67 to 12.0 percent), published points 146 to 132, exact
+  agreement on published points 0.9315 to 0.9924, mean absolute error per point 0.0685 to 0.0076,
+  single-sample agreement 0.9133 to 0.9333. The grader defers more and is right more often when it
+  does decide. Transcription: errors caused by reading 1 to 2 and decisions changed by reading 5 to
+  4, over 20 golden set 2 pages. These are a model's grades of model-written golden responses, not
+  a human's measurement (2026-09-24 ruling).
+
+- 2026-10-02, stage 13 (frq), finding, the paper-to-grade recording. Six fresh recordings of the
+  same page replay with 2, 3, 0, 1, 2 and 3 provisional points. The fourth, with one, is committed
+  because `test_paper_to_grade` exercises the path from one provisional point to the review queue;
+  the spread itself says the borderline justification on that page splits the live grader.
+
+- 2026-10-02, stage 13 (frq), open, item. FRQ-AGT-05001-01 part (c) scores only the Mean Value
+  Theorem or Rolle route (c1 the equal endpoint values, c2 eligible only after c1). On the live walk
+  a valid argument, h' continuous because h is twice differentiable and h'(3) = 3 > 0 > -4 = h'(8),
+  so the Intermediate Value Theorem gives h'(w) = 0, earned 0 of 2, and the tutor's paragraph told
+  the student that theorem cannot earn the point. The record format has no alternative route for a
+  point, so the fix is a format change (an alternative criterion per point, or a second point set
+  per part), not a record edit. Other records that name the IVT as not earning a point should be
+  read for the same gap (11 records mention it).
+
+- 2026-10-02, stage 13 (frq), open, grader wording. On FRQ-AGT-05001-01 part (d) the student wrote
+  only h''(v) = 1; the grader's cited rule called it "a bare quotient template with no values
+  substituted", and the tutor's paragraph repeated that description to the student. The decision
+  (not earned) was right and the description was wrong. The tutor composes from the grader's cited
+  rule, so a misdescribed rule reaches the student unchecked.
+
+- 2026-10-02, stage 13 (frq), open, display, found on the live walk. The point criteria and the
+  grader's rationale are shown as plain text (`0 <= x <= 2`, `(1 - 4)/8`), and a deterministic
+  point shows its check name to the student ("sympy_equivalence: ... equals -3/8"). A part's answer
+  of "No" in a read-back is typeset as italic mathematics. A transcriber note with undelimited LaTeX
+  (`\frac{62-20}{10}`) still shows its backslashes; delimited notes are now typeset. In the typed
+  entry, the first click on "Add a line of words" after typing in a math field is swallowed and a
+  second click is needed, and the words input has no accessible name (its visible label is not
+  associated with it). The unit check's question list shows "Open" for a question already graded.
+  The question screen before an answer (choosing, typing, photographing) is not on the Workbench.
+
+- 2026-10-02, stage 13 (frq), open, test. `tests/providers/test_ai_notices.py::
+  test_a_grader_brief_summarises_the_decision_and_leaves_out_the_student_work` has failed since
+  b6f9aa27: it renders the v2 grader template with the v1 single-point fields ("unknown template
+  fields: ['criterion', ...]"). The single-point request it describes no longer exists. It is left
+  unchanged, because only the operator loosens or retires a gate; the new test beside it covers the
+  whole-part request the grader now sends. `tests/grading/test_prompt_goldens.py::
+  test_the_grader_receives_every_field_of_the_point_record_and_nothing_undeclared` fails for the
+  same reason on both v2 templates; main (2d608113) gives the same "3 failed, 25 passed" over the
+  two files.
+
+- 2026-10-02, stage 13 (frq), note. `tools/check_items.py content/frq_items` stops with
+  `KeyError: 'answer_key'`: it checks multiple-choice and short-answer banks. The free-response
+  bank's checker is `tools/check_frq_items.py` (via `tests/grading/test_frq_bank.py`).
+
 ## Plan corrections applied [verified]
 
 Session 2026-09-23 (fourteenth). No plan file was edited. Readings applied in code:
@@ -4853,6 +4989,37 @@ Session 2026-09-20 (seventh).
   kept and reported. A challenger clears only with the interval wholly above 0 under both curves;
   the two-term floor fails only with it wholly below 0. Ruled by the model on the operator's
   explicit delegation of that ruling ("decide for me"), and written into 10.
+
+## Decisions taken on the operator's instruction, 2026-10-02 [inferred]
+
+Stage 13 (frq), decided by Claude Opus 5.5 on the operator's delegation of 2026-10-02.
+
+- The client contract: the server side was right. Plan 03 has the tutor name a point not earned
+  after submission, and plan 07's hard-stop table asks for a visible line when the tutor is
+  unavailable, so `tutor_explanation` and `tutor_unavailable` stay. `gradings_payload` now returns
+  both, so the shape the client contract reads is the shape the route sends; the client type marks
+  them required, and GradingView shows the unavailable line. The contract test is unchanged.
+- The 10 FRQ-AGT records take their archetypes' skills. The archetype registry is the source of
+  truth (`corrections-archetypes-skill-load.json`), and each added skill (composite
+  decomposition, why a critical point need not be an extremum, trigonometric and power
+  antiderivatives, the constant of integration) is exercised by the records' own parts. The edit
+  is the top-level `skills` field only, done by a scratch script that wrote each list in the
+  file's existing layout; no key, point or worked solution changed, so no key recheck was owed.
+- The three cassette books were re-recorded fresh on the operator's subscription (`--fresh` for
+  paper-to-grade; the two P3 books deleted first), so no stale Sonnet 5 entry lingers. Cost $0.00
+  API. The new readings were compared with the old page by page before the books were trusted
+  (Known defects, the re-recorded read-backs).
+- Of six paper-to-grade recordings the one with a single provisional point is committed, as the
+  first recording was in stage 4; the spread is logged.
+- Found on the live walk and fixed in this stage because they sit on the free-response path: the
+  read-back editor's layout (a `.form-field` that was also a centred wrapping row), the editing
+  step seated on the Workbench beside the photograph, the graded stage on the Workbench, graded
+  points stacked one per line, the provisional copy's sentence case, transcriber notes typeset,
+  and the grader notices, which since b6f9aa27 said "no clear decision" and "one scoring point"
+  on every whole-part grading call. The rest are logged under Known defects.
+- The walk ran the worktree's code on ports 8031 and 5184 against the shared `var/test.db`,
+  because port 5174 was held by another session's dev server; the two temporary launch entries
+  were removed afterwards.
 
 ## Decisions taken on the operator's instruction, 2026-09-29 [inferred]
 

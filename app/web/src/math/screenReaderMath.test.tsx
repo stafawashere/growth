@@ -253,7 +253,9 @@ describe("eval_screen_reader_math", () => {
          total: 1,
          provisional: 0,
          worked_solution: [{ part_id: "a", answer_latex: "x = 3", steps: [{ text: "Set the derivative to zero", latex: "g'(x) = 0" }] }],
-         probe_scheduled: null
+         probe_scheduled: null,
+         tutor_explanation: null,
+         tutor_unavailable: false
       };
       const graded = render(<GradingView gradings={gradings} onAskForReread={vi.fn()} rereadAskedFor={[]} />);
 

@@ -21,6 +21,10 @@ export function pointVerdict(point: GradedPoint) {
    return point.earned === 1 ? "Earned" : "Not earned";
 }
 
+function asSentence(text: string) {
+   return text.charAt(0).toUpperCase() + text.slice(1);
+}
+
 function PointEntry(props: { point: GradedPoint; onAskForReread: (gradingId: string) => void; asked: boolean }) {
    const { point, onAskForReread, asked } = props;
    const hasQuote = (point.evidence_quote ?? "") !== "";
@@ -38,7 +42,7 @@ function PointEntry(props: { point: GradedPoint; onAskForReread: (gradingId: str
 
          {point.provisional ? (
             <p data-testid="provisional-copy">
-               This point is provisional. {point.rationale}. It is not counted until it is decided, and you
+               This point is provisional. {asSentence(point.rationale)}. It is not counted until it is decided, and you
                can ask for it to be re-read.
             </p>
          ) : (
@@ -80,7 +84,7 @@ export function GradingView({ gradings, onAskForReread, rereadAskedFor }: Gradin
             {hasProvisional ? `, ${gradings.provisional} provisional and not counted` : ""}.
          </p>
 
-         <ul className="review-list">
+         <ul className="review-list graded-points">
             {gradings.points.map((point) => (
                <PointEntry
                   key={point.grading_id}
@@ -94,6 +98,12 @@ export function GradingView({ gradings, onAskForReread, rereadAskedFor }: Gradin
          {hasExplanation ? (
             <p className="tutor-note" data-testid="frq-tutor-explanation">
                {explanation}
+            </p>
+         ) : null}
+
+         {gradings.tutor_unavailable ? (
+            <p className="muted" data-testid="frq-tutor-unavailable">
+               The tutor is unavailable for the rest of today, so the points above come without its explanation.
             </p>
          ) : null}
 

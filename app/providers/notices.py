@@ -57,6 +57,7 @@ STUDENT_DERIVED_FIELDS = frozenset({
 _PLACEHOLDER_RE = re.compile(r"\{\{\s*([a-zA-Z_][a-zA-Z0-9_]*)\s*\}\}")
 _PART_ID_RE = re.compile(r"part \(([^)]*)\)")
 _WHITESPACE_RE = re.compile(r"\s+")
+_POINT_BLOCK_RE = re.compile(r"^Point \S+:", re.MULTILINE)
 
 
 class NoticeBoard:
@@ -264,9 +265,15 @@ def asked_brief(request):
    if role == "grader":
       point_name = _field(fields, "point_type_name")
       part_id = _field(fields, "part_id")
+      open_points = len(_POINT_BLOCK_RE.findall(str(fields.get("points") or "")))
+      names_one_point = point_name and part_id
+      names_open_points = part_id and open_points > 0
 
-      if point_name and part_id:
+      if names_one_point:
          return clipped(f"Asked whether your work on part ({part_id}) earns the point for {point_name}.")
+
+      if names_open_points:
+         return clipped(f"Asked which of the {_plural(open_points, 'open point')} on part ({part_id}) your work earns.")
 
       return clipped("Asked whether your work earns one scoring point.")
 
@@ -327,6 +334,17 @@ def _list_of(payload, key):
 
 
 def _structured_brief(role, payload):
+   if role == "grader" and "verdicts" in payload:
+      decisions = [verdict.get("decision") for verdict in _list_of(payload, "verdicts") if isinstance(verdict, dict)]
+      earned = decisions.count("earned")
+      not_earned = decisions.count("not_earned")
+      has_decision = earned + not_earned > 0
+
+      if not has_decision:
+         return "Returned a grading with no clear decision."
+
+      return f"Judged {_plural(earned, 'point')} earned and {not_earned} not earned."
+
    if role == "grader":
       decision = payload.get("decision")
       rule_field = payload.get("rule_field")

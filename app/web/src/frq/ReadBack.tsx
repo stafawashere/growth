@@ -71,7 +71,9 @@ export function ReadBackView({ readBack }: { readBack: ReadBack }) {
                <p>Places I was not sure of:</p>
                <ul>
                   {readBack.unreadable.map((note, index) => (
-                     <li key={index}>{note}</li>
+                     <li key={index}>
+                        <MathText text={note} />
+                     </li>
                   ))}
                </ul>
             </div>
@@ -110,15 +112,16 @@ export function ReadBackEditor({ readBack, onChange }: ReadBackEditorProps) {
          </h2>
 
          {readBack.parts.map((part, partIndex) => (
-            <fieldset key={part.part_id} data-testid="edit-part">
+            <fieldset key={part.part_id} data-testid="edit-part" className="read-back-edit-part">
                <legend>Part ({part.part_id})</legend>
 
                {part.lines.map((line, lineIndex) => (
-                  <div key={lineIndex} className="form-field read-back-edit-line">
-                     <label>
-                        Line {lineIndex + 1}
+                  <div key={lineIndex} className="read-back-edit-line">
+                     <label className="form-field">
+                        <span className="field-label">Line {lineIndex + 1}</span>
                         <input
                            type="text"
+                           className="input"
                            value={line.content}
                            onChange={(event) =>
                               replacePart(partIndex, editedPart(part, lineIndex, { content: event.target.value }))
@@ -126,27 +129,29 @@ export function ReadBackEditor({ readBack, onChange }: ReadBackEditorProps) {
                         />
                      </label>
 
-                     <label>
-                        <input
-                           type="checkbox"
-                           checked={line.kind === "text"}
-                           onChange={(event) =>
-                              replacePart(partIndex, editedPart(part, lineIndex, { kind: event.target.checked ? "text" : "math" }))
-                           }
-                        />
-                        words, not mathematics
-                     </label>
+                     <div className="read-back-edit-flags">
+                        <label className="check">
+                           <input
+                              type="checkbox"
+                              checked={line.kind === "text"}
+                              onChange={(event) =>
+                                 replacePart(partIndex, editedPart(part, lineIndex, { kind: event.target.checked ? "text" : "math" }))
+                              }
+                           />
+                           words, not mathematics
+                        </label>
 
-                     <label>
-                        <input
-                           type="checkbox"
-                           checked={line.crossed_out}
-                           onChange={(event) =>
-                              replacePart(partIndex, editedPart(part, lineIndex, { crossed_out: event.target.checked }))
-                           }
-                        />
-                        crossed out
-                     </label>
+                        <label className="check">
+                           <input
+                              type="checkbox"
+                              checked={line.crossed_out}
+                              onChange={(event) =>
+                                 replacePart(partIndex, editedPart(part, lineIndex, { crossed_out: event.target.checked }))
+                              }
+                           />
+                           crossed out
+                        </label>
+                     </div>
 
                      <span className="muted">
                         reads as <MathText text={lineText(line)} />
@@ -163,9 +168,10 @@ export function ReadBackEditor({ readBack, onChange }: ReadBackEditorProps) {
                </button>
 
                <label className="form-field">
-                  Answer to part ({part.part_id})
+                  <span className="field-label">Answer to part ({part.part_id})</span>
                   <input
                      type="text"
+                     className="input"
                      value={part.answer}
                      onChange={(event) => replacePart(partIndex, { ...part, answer: event.target.value })}
                   />

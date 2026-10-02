@@ -7,7 +7,9 @@ exception, the accounting, the budget row and the audit rows are the same as wit
 
 No test here opens a socket. The wrapped providers are ReplayProvider doubles.
 """
+import json
 from datetime import datetime, timezone
+from pathlib import Path
 from types import SimpleNamespace
 
 import pytest
@@ -108,6 +110,9 @@ def transcriber_request():
    image = ImageInput(media_type="image/png", data=IMAGE_BYTES, width=1200, height=1600)
 
    return transcribe.request_for(record, [image])
+
+
+REPO_ROOT = Path(__file__).resolve().parents[2]
 
 
 def grader_request():
@@ -300,6 +305,36 @@ def test_a_grader_brief_summarises_the_decision_and_leaves_out_the_student_work(
    assert recorded["answered"] == "Judged the point earned, citing the earns rule."
    assert "My whole working" not in recorded["asked"] + recorded["answered"]
    assert request.messages[0].content[:30] not in recorded["asked"]
+
+
+def part_grader_request():
+   registry = json.loads((REPO_ROOT / "data" / "scoring_points.json").read_text())
+   by_id = {entry["id"]: entry for entry in registry["point_types"]}
+   point_types = [by_id["BC-PT-99021"], by_id["BC-PT-99017"]]
+   part = {
+      "id": "c",
+      "prompt": "Must there be a time t with A'(t) = 0? Justify your answer.",
+      "answer_latex": "yes",
+      "worked_solution": [{"text": "Rolle's Theorem.", "latex": "A(5) = A(12)"}],
+      "points": [{"point_id": "c1", "criterion": "Shows A(5) = A(12)."}, {"point_id": "c2", "criterion": "Invokes Rolle's Theorem."}],
+   }
+   record = {"id": "FRQ-TEST-1", "stem": {"text": "A drone flies over a park."}, "parts": [part]}
+   work = {"parts": [{"part_id": "c", "lines": [{"kind": "math", "content": "A(5) = 62 = A(12)", "crossed_out": False, "outside_box": False}], "answer": "yes"}]}
+
+   return judge.request_for(record, part, part["points"], work, point_types, "standard", "temp0_a")
+
+
+def test_a_grader_brief_for_a_whole_part_counts_its_open_points_and_verdicts():
+   db = database()
+   answer = '{"verdicts": [{"point_id": "c1", "decision": "earned", "evidence_quote": "A(5) = 62 = A(12)", "rule_field": "earns", "rule_cited": "x", "eligibility_note": ""}, {"point_id": "c2", "decision": "not_earned", "evidence_quote": "", "rule_field": "does_not_earn", "rule_cited": "y", "eligibility_note": ""}]}'
+   request = part_grader_request()
+   grading = GuardedProvider(ReplayProvider(cassette=cassette(answer)), db, user_id=USER, clock=clock, caps={"grader": ROOMY_CAPS})
+   grading.generate(request)
+   recorded = held()[0]
+
+   assert recorded["asked"] == "Asked which of the 2 open points on part (c) your work earns."
+   assert recorded["answered"] == "Judged 1 point earned and 1 not earned."
+   assert "A(5) = 62" not in recorded["asked"] + recorded["answered"]
 
 
 def test_every_brief_is_cut_to_the_limit():

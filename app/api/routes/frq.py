@@ -424,13 +424,8 @@ def read_gradings(attempt_id: str, db=Depends(get_db, scope="function"), setting
    attempt, _session_row = owned_attempt(db, attempt_id, user)
    record = record_of(settings, attempt)
    context = frq_context(settings)
-   explanation, tutor_unavailable = frq_explanation_for(settings, db, user, attempt, record, context)
 
-   return dict(
-      gradings_payload(db, attempt, record, context),
-      tutor_explanation=explanation,
-      tutor_unavailable=tutor_unavailable,
-   )
+   return gradings_payload(db, attempt, record, context, settings, user)
 
 
 def frq_explanation_for(settings, db, user, attempt, record, context):
@@ -514,7 +509,8 @@ def attempt_payload(db, attempt):
    }
 
 
-def gradings_payload(db, attempt, record, context):
+def gradings_payload(db, attempt, record, context, settings, user):
+   explanation, tutor_unavailable = frq_explanation_for(settings, db, user, attempt, record, context)
    rows = service.gradings_of(db, attempt.id)
    points = {point["point_id"]: (part, point) for part in record["parts"] for point in part["points"]}
    ordered = sorted(rows, key=lambda row: list(points).index(row.point_id) if row.point_id in points else 0)
@@ -556,4 +552,6 @@ def gradings_payload(db, attempt, record, context):
          for part in record["parts"]
       ] if entries else [],
       "probe_scheduled": diagnosis.probe_scheduled if diagnosis is not None else None,
+      "tutor_explanation": explanation,
+      "tutor_unavailable": tutor_unavailable,
    }

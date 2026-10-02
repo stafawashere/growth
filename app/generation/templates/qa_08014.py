@@ -5,8 +5,8 @@ from app.generation.kit import Distractor, Instance, Key, Step, decimal_text, ma
 from app.generation.templates._helpers_f import tex_f
 
 ARCHETYPE_ID = "BC-QA-08014"
-TEMPLATE_VERSION = "1"
-AUTHORED_BY = "claude-opus-5-5 offline template, stage 5 of 2026-09-24, run F"
+TEMPLATE_VERSION = "2"
+AUTHORED_BY = "claude-opus-5-5 offline template, stage 5 of 2026-09-24, run F, BC-ERR-08041 distractor revised 2026-09-29"
 
 SPEC = {
    "spec_version": "1",
@@ -72,11 +72,11 @@ def build(names):
    derivative_tex = tex_f(derivative)
 
    radical = rf"\sqrt{{1 + \left({derivative_tex}\right)^{{2}}}}"
-   no_radical = rf"\left(1 + \left({derivative_tex}\right)^{{2}}\right)"
+   derivative_alone = rf"\left({derivative_tex}\right)"
    unsquared = rf"\sqrt{{1 + {derivative_tex}}}"
 
    key_tex = _integral_tex(left, right, radical)
-   no_radical_tex = _integral_tex(left, right, no_radical)
+   derivative_alone_tex = _integral_tex(left, right, derivative_alone)
    unsquared_tex = _integral_tex(left, right, unsquared)
    wrong_limits_tex = _integral_tex(0, right, radical)
 
@@ -110,7 +110,7 @@ def build(names):
 
    if is_setup:
       distractors = [
-         Distractor("BC-ERR-08041", "the square root left off the arc length integrand", label=math(no_radical_tex), mechanism="conceptual_confusion"),
+         Distractor("BC-ERR-08041", "the added one left out of the arc length integrand, so the square root of f'(x)^2 is written as f'(x) alone", label=math(derivative_alone_tex), mechanism="conceptual_confusion"),
          Distractor("BC-ERR-08042", "the derivative left unsquared inside the radical", label=math(unsquared_tex), mechanism="algebra_slip"),
          Distractor("BC-ERR-08019", "the lower limit taken as 0, the start of the axis, instead of the left end of the stated interval", label=math(wrong_limits_tex), mechanism="wrong_limits"),
       ]
@@ -135,7 +135,7 @@ def build(names):
       )
    )
    distractors = [
-      Distractor("BC-ERR-08041", "the square root left off, the integral of 1 + f'(x)^2", numeric_integral(1 + derivative**2, x, left, right), mechanism="conceptual_confusion"),
+      Distractor("BC-ERR-08041", "the added one left out, the integral of the square root of f'(x)^2, which is the integral of f'(x)", numeric_integral(derivative, x, left, right), mechanism="conceptual_confusion"),
       Distractor("BC-ERR-08042", "the derivative left unsquared, the integral of the square root of 1 + f'(x)", numeric_integral(sympy.sqrt(1 + derivative), x, left, right), mechanism="algebra_slip"),
       Distractor("BC-ERR-08019", "the arc length integrand integrated from 0 instead of from the left end of the stated interval", numeric_integral(sympy.sqrt(1 + derivative**2), x, 0, right), mechanism="wrong_limits"),
    ]

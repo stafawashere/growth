@@ -74,7 +74,7 @@ MCQ forms give a formula or a graph and ask for the average value, or offer the 
 - BC-ERR-08002 Average taken over an interval the question did not name
 - BC-ERR-08003 Region below the axis counted as positive area in an average
 - BC-ERR-08004 Calculator answer presented with no setup
-- BC-ERR-08005 Intermediate value rounded before the final computation
+- BC-ERR-99019 Decimal presentation error or premature rounding
 - BC-ERR-08006 Average value computed where an average rate of change was asked, or the reverse
 - BC-ERR-08007 Units omitted or built from the wrong factors
 - BC-MIS-08002 The integral of a function is its average, severity high
@@ -254,7 +254,7 @@ MCQ forms ask which expression gives the amount at a later time, or what an inte
 - BC-ERR-08017 Interpretation names the quantity but not the interval
 - BC-ERR-08018 Differential omitted from an integral expression
 - BC-ERR-08019 Limits of integration taken from the wrong inputs
-- BC-ERR-08005 Intermediate value rounded before the final computation
+- BC-ERR-99019 Decimal presentation error or premature rounding
 - BC-MIS-08006 The integral of a rate is the amount of the quantity, severity high
 - BC-MIS-08007 Two rates acting at once combine by addition, severity medium
 - BC-MIS-08008 A local extremum argument settles an absolute extremum, severity high
@@ -331,7 +331,7 @@ MCQ forms present a shaded region and ask which integral gives its area, with th
 - BC-ERR-08020 Difference of the boundary functions taken in the wrong order
 - BC-ERR-08018 Differential omitted from an integral expression
 - BC-ERR-08019 Limits of integration taken from the wrong inputs
-- BC-ERR-08005 Intermediate value rounded before the final computation
+- BC-ERR-99019 Decimal presentation error or premature rounding
 - BC-ERR-08021 Area asserted to equal an expression that is its negative
 - BC-ERR-08022 Limits kept in the old variable after a substitution
 - BC-MIS-08011 The order of subtraction in an area integrand does not matter, severity medium
@@ -545,7 +545,7 @@ MCQ forms ask which integral gives the volume of a solid whose base is a picture
 - BC-ERR-08030 Square of a difference used where a difference of squares is needed
 - BC-ERR-08031 Second dimension of a rectangular cross section omitted
 - BC-ERR-08023 Integrand written in one variable with the differential of another
-- BC-ERR-08005 Intermediate value rounded before the final computation
+- BC-ERR-99019 Decimal presentation error or premature rounding
 - BC-MIS-08016 The cross sectional dimension is a function value, severity high
 - BC-MIS-08015 Every volume integral carries a factor of pi, severity medium
 - BC-MIS-08013 The differential can be changed without changing the integrand, severity high
@@ -683,7 +683,7 @@ MCQ forms ask which integral gives the volume, with the unsquared radius and the
 - BC-ERR-08037 Factor of pi omitted from a solid of revolution integrand
 - BC-ERR-08023 Integrand written in one variable with the differential of another
 - BC-ERR-08024 Limits given as values of the variable not being integrated
-- BC-ERR-08005 Intermediate value rounded before the final computation
+- BC-ERR-99019 Decimal presentation error or premature rounding
 - BC-MIS-08020 A volume of revolution integrates the radius rather than its square, severity high
 - BC-MIS-08013 The differential can be changed without changing the integrand, severity high
 
@@ -962,7 +962,7 @@ MCQ forms ask which integral gives the length of a curve, with the volume and ar
 - BC-ERR-08019 Limits of integration taken from the wrong inputs
 - BC-ERR-08043 Arc length identified without naming the interval
 - BC-ERR-08044 Arc length integral described as an area
-- BC-ERR-08005 Intermediate value rounded before the final computation
+- BC-ERR-99019 Decimal presentation error or premature rounding
 - BC-ERR-08045 Numerical length or volume reported with no integral shown
 - BC-MIS-08024 An integral over an interval measures an area, severity high
 - BC-MIS-08003 A calculator answer stands on its own, severity medium

@@ -3063,6 +3063,28 @@ items) and items 3 and 6 (Slices 3 and 4). Every gate 11 names for P2 now exists
   or scheduling change left inside the binding rules closes the last 140 skills; the evidence
   above says the 19-deep chains with a 7-day span per skill and the placement that starts a
   knowing student at Unit 1 are what remains, and both need an operator ruling.
+- 2026-09-29, BC-QA-08014 distractor path, on the operator's delegation. The template's
+  BC-ERR-08041 distractor was the integral of 1 + f'(x)^2 with the square root left off, a move
+  the record's observed_behavior ("the integral of the derivative, or of the square root of the
+  derivative squared alone") does not describe and no BC-ERR record holds. `qa_08014.py` version 2
+  builds the integral of f'(x) instead, which equals the square root of f'(x)^2 because f' is
+  positive for x at least 1 in every family; the spec is unchanged. Gate: 300 draws, failures 0,
+  254 distinct; red with the key planted as the 08041 value, green on restore. The 22 version 1
+  items (ITM-GEN-08014-00 to 21) were withdrawn to `content/generation_review/rejected/` with
+  reject decisions and replaced under new ids: 22 candidates (22 to 43), a blind re-solve by a
+  separate subagent from the stems alone (`formulations_e08041.py`), publish 20 and 2 held by
+  rule 10 (29 and 39 differ only in scale); `tools/item_review.py duplicates` kept 29 and
+  rejected 39. 21 signed off. `tools/check_items.py content/items_gen_unit08`: 283 read, 283
+  clean. The 08041 value sits 0.125 to 0.678 below the key on the calculator items, because
+  sqrt(1 + f'^2) is close to f' on steep draws. Also: the six unit 8 skills that still named the
+  retired BC-ERR-08005 (08003, 08017, 08021, 08035, 08043, 08059) now name BC-ERR-99019 in
+  common_errors and adaptive, through `corrections-skills-retire-08005.json`; the same swap in the
+  six unit 8 research sections; BC-QA-08014's scoring point types filled in
+  `question-archetypes.md`, where 75 other sections still say "none recorded" against a
+  non-empty registry list. Checks, one pytest process per file in tests/generation:
+  monte_carlo_invariants 1 passed, generated_banks 13 passed, duplicate_gate_labelled 3 passed,
+  template_gate 18 passed, statement_items 7 passed, parameter_specs 3 passed, template_stems 2
+  passed, generated_provenance 2 passed.
 
 ## In progress [inferred]
 

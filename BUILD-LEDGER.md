@@ -3184,6 +3184,27 @@ under `~/.claude/projects/-Users-mahfujm-dev-growth/`. What it found is under Kn
   exit 0; qa 14 PASS, 00_manifest FAIL on cache files absent from the worktree. The full pytest
   suite was not run: the operator asked mid-stage to stop it for time.
 
+Stage 10 (checking), answer checking, 2026-10-02, commit f9d9e86a on top of 10f2e65a. The eight
+red tests named in the stage prompt came from 67029adb (2026-09-29), whose `_structured_outcome`
+in `app/items/verify.py` called an equation against an expression, a non-SymPy operand and any
+pair holding NaN or an infinity "not_equivalent"; bc099056's bounded children were not the cause.
+The fix raises TypeError for kinds that cannot be subtracted and leaves special values to the
+scalar comparison, and every caller reads a raise as its own unsettled verdict (Decisions,
+2026-10-02, stage 10). `tools/key_recheck.py` no longer counts NaN or infinite points, which had
+made 1/0 recheck equal to 3, and `_settles_to_zero` computes simplify once and stops at the first
+zero. Tests: the eight pass; ten new or rewritten tests across tests/items, tests/calculator and
+tests/tools, each shown red with its fix removed and green restored (B1 verify.py at HEAD, 14
+failed then 48 passed; the other seven breaks 1 to 3 failed each, then passed). Banks: all 20
+`content/items_*` banks clean under `tools/check_items.py` (unit02 191, unit06 330 and unit03_agent
+20 at load 15, after 7 load-induced "did not settle" flags at load 115 to 160) and under
+`tools/key_recheck.py` (20 exits 0). Full suite before the rebase, 6 xdist workers: 20 failed, 3392
+passed, 17 errors in 1246 s, against main's 27 failed and 17 errors; on the rebased branch the 37
+failing ids leave 2 failed, 46 passed, and both 2 (`eval_simulation_mastery_growth`,
+`test_the_decay_arm_serves_differently_from_two_term`) also fail on main 8a0d4289, owned by stages
+11 to 13 (selection and simulation) per the stage plan. vitest 1174 passed, tsc exit 0, qa
+12_report exit 0 with the gitignored cache/web linked in (00_manifest fails in a worktree without
+it). Every comparison verdict here is a model's work on the operator's delegation, not a human's.
+
 ## In progress [inferred]
 
 Stage 1, items for Units 4 to 10, is complete in the worktree `../growth-content` on branch
@@ -3251,11 +3272,9 @@ Stage 11, progression, 2026-10-02, worktree `../growth-progression` on branch `p
 regression fix, the candidate amendment, the throughput tool and the test premises are built and
 merged to main (Done, 2026-10-02, stage 11). What remains is listed under Known defects,
 2026-10-02, stage 11.
-Stage 10 of the 2026-10-02 run, answer checking, worktree `../growth-checking` on branch
-`checking`: the fix to `app/items/verify.py` and its callers is written and its tests are shown
-red then green; the bank checks and the full suite run before the slice merges. A later session
-resumes from Done, "stage 10 (checking)", once that entry exists, and otherwise from this
-paragraph: the eight red tests named in the stage prompt pass on the branch.
+Stage 10 of the 2026-10-02 run, answer checking: complete and merged (Done, "Stage 10
+(checking)"). What stays open is under Known defects, 2026-10-02: bank cleanliness depends on
+host load through the 5 s bound, and the tutor leak check's unsettled policy needs a ruling.
 
 ## Live API spend log [verified]
 

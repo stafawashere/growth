@@ -18,6 +18,8 @@ import { MathText } from "../math/MathText";
 import { clockText, FIVE_MINUTE_ANNOUNCEMENT, partHeading } from "./format";
 import { GraphingPanel } from "./graphing/GraphingPanel";
 import { DesmosPanel } from "../input/DesmosPanel";
+import { Icon } from "../ui/Icon";
+import { QuestionStepper, stepperState, type StepperMark } from "./QuestionStepper";
 
 const PART_OPTION_KEYS = ["a", "b", "c", "d", "e"];
 
@@ -199,7 +201,8 @@ function PartTimer(props: { part: AssessmentPart; onTimeUp: () => void }) {
    return (
       <div className="part-timer">
          {isHidden ? null : (
-            <p className="part-clock" data-testid="part-timer">
+            <p className="part-clock" data-testid="part-timer" data-final={isInFinalMinutes ? "true" : undefined}>
+               <Icon name="clock" />
                {clockText(remaining)}
             </p>
          )}
@@ -289,22 +292,35 @@ function FreeResponseBody(props: { question: AssessmentQuestion }) {
 
    return (
       <>
-         <ul className="frq-parts">
+         <ul className="frq-parts sheet-list">
             {item.parts.map((entry) => (
                <li key={entry.id}>
-                  ({entry.id}) <MathText text={entry.prompt} />
-                  {entry.setup_required ? <span className="muted"> Show the setup for your calculations.</span> : null}
+                  <span className="sheet-margin frq-part-id">({entry.id})</span>
+
+                  <span className="sheet-body">
+                     <MathText text={entry.prompt} />
+                     {entry.setup_required ? <span className="muted"> Show the setup for your calculations.</span> : null}
+                  </span>
                </li>
             ))}
          </ul>
 
-         <p data-testid="booklet-direction">Write your answer in the booklet, Question {props.question.number}.</p>
+         <div className="sheet-row">
+            <span className="sheet-margin sheet-tag" aria-hidden="true">
+               My answer
+            </span>
 
-         {attemptId !== null ? (
-            <a href={bookletAddress(attemptId)} target="_blank" rel="noreferrer">
-               Print booklet page
-            </a>
-         ) : null}
+            <div className="sheet-body sheet-body-stack">
+               <p data-testid="booklet-direction">Write your answer in the booklet, Question {props.question.number}.</p>
+
+               {attemptId !== null ? (
+                  <a className="text-button" href={bookletAddress(attemptId)} target="_blank" rel="noreferrer">
+                     <Icon name="print" />
+                     Print booklet page
+                  </a>
+               ) : null}
+            </div>
+         </div>
       </>
    );
 }
@@ -521,6 +537,13 @@ export function PartRunner({ part, radianNote, sectionCount, onSave, onSubmit, o
    const stemText = stemElement?.textContent ?? "";
    const shortAnswerLatex = current.answer?.mathjson === undefined ? undefined : mathJsonToLatex(current.answer.mathjson);
 
+   const stepperMarks: StepperMark[] = questions.map((entry, position) => {
+      const entryWork = work[entry.number];
+      const isCurrent = position === index;
+
+      return { state: stepperState(isCurrent, isAnswered(entryWork)), marked: entryWork.marked };
+   });
+
    const offersMarkForReview = tools.has("mark_for_review");
    const offersQuestionMenu = tools.has("question_menu");
    const offersZoom = tools.has("zoom");
@@ -531,21 +554,29 @@ export function PartRunner({ part, radianNote, sectionCount, onSave, onSubmit, o
    return (
       <section className="card part-runner" data-testid="part-runner" data-graphing-open={showsGraphingBeside ? "true" : undefined}>
          <header className="part-header">
-            <p className="label-heading">{partHeading(part)}</p>
+            <div className="part-title">
+               <p className="label-heading">{partHeading(part)}</p>
 
-            <p data-testid="question-position">
-               Question {question.number}
-               {sectionCount !== null ? ` of ${sectionCount}` : null}
-            </p>
+               <p className="part-position" data-testid="question-position">
+                  Question {question.number}
+                  {sectionCount !== null ? ` of ${sectionCount}` : null}
+               </p>
+            </div>
 
             {tools.has("timer") ? <PartTimer part={part} onTimeUp={timeUp} /> : null}
          </header>
 
-         <p className="calculator-label" data-testid="calculator-label">
-            {part.calculator_label}
-         </p>
+         <div className="part-notes">
+            <p className="calculator-label" data-testid="calculator-label">
+               {part.calculator_label}
+            </p>
 
-         {part.calculator_note !== null ? <p data-testid="calculator-note">{part.calculator_note}</p> : null}
+            {part.calculator_note !== null ? (
+               <p className="caption" data-testid="calculator-note">
+                  {part.calculator_note}
+               </p>
+            ) : null}
+         </div>
 
          {offersToolbar ? (
             <div className="exam-toolbar">
@@ -557,12 +588,14 @@ export function PartRunner({ part, radianNote, sectionCount, onSave, onSubmit, o
                         checked={current.marked}
                         onChange={(event) => toggleMarked(event.target.checked)}
                      />{" "}
+                     <Icon name="flag" />
                      Mark for review
                   </label>
                ) : null}
 
                {tools.has("question_menu") ? (
                   <button type="button" className="text-button" aria-expanded={isMenuOpen} onClick={() => setIsMenuOpen(!isMenuOpen)}>
+                     <Icon name="grid" />
                      Question menu
                   </button>
                ) : null}
@@ -597,40 +630,60 @@ export function PartRunner({ part, radianNote, sectionCount, onSave, onSubmit, o
             {offersGraphing ? <GraphingPanel onOpenChange={setIsGraphingOpen} /> : null}
 
             <div className="question-column">
-               <div className="question-area" data-testid="question-area" data-zoom={zoom} style={{ fontSize: `${zoom}%` }}>
-                  {item.radian_note ? <p data-testid="radian-note">{radianNote}</p> : null}
+               <div className="question-area sheet" data-testid="question-area" data-zoom={zoom} style={{ fontSize: `${zoom}%` }}>
+                  <div className={freeResponse ? "sheet-row" : "sheet-row sheet-row-ruled"}>
+                     <span className="sheet-margin sheet-number" aria-hidden="true">
+                        {question.number}
+                     </span>
 
-                  <p className="item-stem" data-testid="question-stem" ref={setStemElement}>
-                     <MathText text={item.stem} />
-                  </p>
+                     <div className="sheet-body question-stem">
+                        {item.radian_note ? (
+                           <p className="caption" data-testid="radian-note">
+                              {radianNote}
+                           </p>
+                        ) : null}
 
-                  {hasFigure ? <FigureView spec={(item as AssessmentItem).figure_spec} /> : null}
+                        <p className="item-stem" data-testid="question-stem" ref={setStemElement}>
+                           <MathText text={item.stem} />
+                        </p>
+
+                        {hasFigure ? <FigureView spec={(item as AssessmentItem).figure_spec} /> : null}
+                     </div>
+                  </div>
 
                   {freeResponse ? <FreeResponseBody question={question} /> : null}
 
                   {offersOptions ? (
-                     <McqControl
-                        key={question.number}
-                        groupLabel={`Question ${question.number}`}
-                        options={(item as AssessmentItem).options ?? []}
-                        selectedId={current.answer?.option_id ?? null}
-                        onSelect={chooseOption}
-                        eliminatedIds={current.eliminated}
-                        onToggleEliminated={offersEliminator ? toggleEliminated : undefined}
-                     />
+                     <div className="sheet-answer sheet-options">
+                        <McqControl
+                           key={question.number}
+                           groupLabel={`Question ${question.number}`}
+                           options={(item as AssessmentItem).options ?? []}
+                           selectedId={current.answer?.option_id ?? null}
+                           onSelect={chooseOption}
+                           eliminatedIds={current.eliminated}
+                           onToggleEliminated={offersEliminator ? toggleEliminated : undefined}
+                        />
+                     </div>
                   ) : null}
 
                   {!freeResponse && !offersOptions ? (
-                     <div data-testid="math-answer">
-                        <MathAnswerField
-                           key={question.number}
-                           label="My answer"
-                           initialLatex={shortAnswerLatex}
-                           onChange={typeShortAnswer}
-                           onLoadFailure={() => setAnswerUnavailable(true)}
-                        />
+                     <div className="sheet-row sheet-answer" data-testid="math-answer">
+                        <span className="sheet-margin sheet-tag" aria-hidden="true">
+                           My answer
+                        </span>
 
-                        {answerUnavailable ? <p role="alert">The math keyboard did not load, so this question cannot take an answer.</p> : null}
+                        <div className="sheet-body sheet-body-stack">
+                           <MathAnswerField
+                              key={question.number}
+                              label="My answer"
+                              initialLatex={shortAnswerLatex}
+                              onChange={typeShortAnswer}
+                              onLoadFailure={() => setAnswerUnavailable(true)}
+                           />
+
+                           {answerUnavailable ? <p role="alert">The math keyboard did not load, so this question cannot take an answer.</p> : null}
+                        </div>
                      </div>
                   ) : null}
                </div>
@@ -638,6 +691,7 @@ export function PartRunner({ part, radianNote, sectionCount, onSave, onSubmit, o
                {tools.has("highlight_and_notes") ? (
                   <div className="question-tools" data-testid="highlight-and-notes">
                      <button type="button" className="text-button" onClick={highlightSelection}>
+                        <Icon name="highlight" />
                         Highlight selection
                      </button>
 
@@ -658,8 +712,9 @@ export function PartRunner({ part, radianNote, sectionCount, onSave, onSubmit, o
                      ) : null}
 
                      <label className="form-field">
-                        <span>Notes on this question</span>
+                        <span className="field-label">Notes on this question</span>
                         <textarea
+                           className="input"
                            value={current.notes}
                            onChange={(event) => update(question.number, { notes: event.target.value })}
                            onBlur={saveNotes}
@@ -671,34 +726,26 @@ export function PartRunner({ part, radianNote, sectionCount, onSave, onSubmit, o
          </div>
 
          <div className="exam-bottom">
-            <div className="choice-row">
-               <button type="button" className="text-button motion-instant-question-move" disabled={isFirst} onClick={() => goTo(index - 1)}>
-                  Back
-               </button>
+            <QuestionStepper marks={stepperMarks} isFirst={isFirst} isLast={isLast} onBack={() => goTo(index - 1)} onNext={() => goTo(index + 1)} />
 
-               <button type="button" className="text-button motion-instant-question-move" disabled={isLast} onClick={() => goTo(index + 1)}>
-                  Next
-               </button>
-            </div>
-
-            <p className="caption key-hint">{PART_KEY_HINT}</p>
-
-            <button type="button" className="text-button" onClick={() => setIsConfirmingSubmit(true)}>
+            <button type="button" className="button-secondary" onClick={() => setIsConfirmingSubmit(true)}>
                Submit part
             </button>
+
+            <p className="caption key-hint exam-key-hint">{PART_KEY_HINT}</p>
          </div>
 
          {isConfirmingSubmit ? (
-            <div role="alertdialog" aria-label="Submit this part" className="notice" data-testid="submit-confirmation">
+            <div role="alertdialog" aria-label="Submit this part" className="notice sheet-confirm" data-testid="submit-confirmation">
                <p>Submitting closes {part.label}. It cannot be reopened, and you cannot return to its questions.</p>
 
-               <div className="choice-row">
-                  <button type="button" className="button-primary motion-instant-submit-answer" onClick={submit}>
-                     Submit and close this part
+               <div className="cluster sheet-confirm-actions">
+                  <button type="button" className="button-secondary button-small" onClick={() => setIsConfirmingSubmit(false)}>
+                     Keep working
                   </button>
 
-                  <button type="button" className="text-button" onClick={() => setIsConfirmingSubmit(false)}>
-                     Keep working
+                  <button type="button" className="text-button text-button-destructive motion-instant-submit-answer" onClick={submit}>
+                     Submit and close this part
                   </button>
                </div>
             </div>

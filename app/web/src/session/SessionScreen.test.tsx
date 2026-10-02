@@ -209,8 +209,11 @@ describe("SessionScreen flow", () => {
       renderScreen();
 
       await screen.findByText("Differentiate f(x) = x^2 sin(x)");
-      fireEvent.click(screen.getByRole("radio", { name: "guess" }));
       fireEvent.click(screen.getByRole("button", { name: "Check my answer" }));
+
+      expect(mocked.submitAttempt).not.toHaveBeenCalled();
+
+      fireEvent.click(screen.getByRole("radio", { name: "guess" }));
 
       await waitFor(() => expect(mocked.readFeedback).toHaveBeenCalled());
 
@@ -231,6 +234,7 @@ describe("SessionScreen flow", () => {
 
       await screen.findByText("Differentiate f(x) = x^2 sin(x)");
       fireEvent.click(screen.getByRole("button", { name: "Check my answer" }));
+      fireEvent.click(await screen.findByRole("radio", { name: "unsure" }));
 
       await screen.findByTestId("elaborated-panel");
 
@@ -247,6 +251,7 @@ describe("SessionScreen flow", () => {
 
       await screen.findByText("Differentiate f(x) = x^2 sin(x)");
       fireEvent.click(screen.getByRole("button", { name: "Check my answer" }));
+      fireEvent.click(await screen.findByRole("radio", { name: "unsure" }));
 
       await screen.findByTestId("step-marks");
 
@@ -262,6 +267,7 @@ describe("SessionScreen flow", () => {
 
       await screen.findByText("Differentiate f(x) = x^2 sin(x)");
       fireEvent.click(screen.getByRole("button", { name: "Check my answer" }));
+      fireEvent.click(await screen.findByRole("radio", { name: "unsure" }));
       await screen.findByTestId("elaborated-panel");
 
       fireEvent.change(screen.getByLabelText("In one line, what went wrong?"), {
@@ -300,6 +306,7 @@ describe("SessionScreen affordance vocabulary", () => {
       renderScreen();
       await screen.findByText("Differentiate f(x) = x^2 sin(x)");
       fireEvent.click(screen.getByRole("button", { name: "Check my answer" }));
+      fireEvent.click(await screen.findByRole("radio", { name: "unsure" }));
       await screen.findByTestId("elaborated-panel");
 
       const rendered = affordanceValues();
@@ -327,6 +334,12 @@ describe("SessionScreen affordance vocabulary", () => {
          }
 
          fireEvent.click(screen.getAllByRole("button", { name: /Check my answer|I have explained this/ })[0]);
+
+         for (const value of affordanceValues()) {
+            seen.add(value as string);
+         }
+
+         fireEvent.click(await screen.findByRole("radio", { name: "unsure" }));
          await screen.findByRole("button", { name: "Next item" });
 
          for (const value of affordanceValues()) {
@@ -419,11 +432,13 @@ function deferred<T>() {
    return { promise, settle };
 }
 
+/* Check my answer opens the rating dialog; the word chosen there sends the attempt. */
 async function commitOn(label: RegExp) {
    renderScreen();
 
    await screen.findByText("Differentiate f(x) = x^2 sin(x)");
    fireEvent.click(screen.getAllByRole("button", { name: label })[0]);
+   fireEvent.click(await screen.findByRole("radio", { name: "unsure" }));
 }
 
 const COMMIT_BUTTONS = /Check my answer|I have explained this/;
@@ -582,6 +597,11 @@ describe("SessionScreen in-flight guard", () => {
       fireEvent.click(commit);
       fireEvent.click(commit);
 
+      const unsure = await screen.findByRole("radio", { name: "unsure" });
+
+      fireEvent.click(unsure);
+      fireEvent.click(unsure);
+
       committed.settle(attempt("unsupported"));
 
       await screen.findByTestId("feedback");
@@ -620,6 +640,7 @@ describe("SessionScreen served steps and self explanation, 11 P1 scope items 8 a
          target: { value: "  The product rule, because f is a product of two factors.  " }
       });
       fireEvent.click(screen.getByRole("button", { name: "Check my answer" }));
+      fireEvent.click(await screen.findByRole("radio", { name: "unsure" }));
       await screen.findByTestId("feedback");
       fireEvent.click(screen.getByRole("button", { name: "Next item" }));
 
@@ -714,6 +735,7 @@ describe("SessionScreen self explanation, written once", () => {
          target: { value: "The product rule, because f is a product of two factors." }
       });
       fireEvent.click(screen.getByRole("button", { name: "Check my answer" }));
+      fireEvent.click(await screen.findByRole("radio", { name: "unsure" }));
       await screen.findByTestId("feedback");
 
       mocked.readNextItem.mockRejectedValueOnce(new Error("the connection dropped"));
@@ -741,6 +763,7 @@ describe("SessionScreen self explanation, written once", () => {
          target: { value: "The product rule." }
       });
       fireEvent.click(screen.getByRole("button", { name: "Check my answer" }));
+      fireEvent.click(await screen.findByRole("radio", { name: "unsure" }));
       await screen.findByTestId("feedback");
       fireEvent.click(screen.getByRole("button", { name: "Next item" }));
 
@@ -914,8 +937,8 @@ describe("SessionScreen, an item that is always a choice", () => {
       render(<SessionScreen resumeSessionId={null} />);
 
       fireEvent.click(await screen.findByRole("radio", { name: "The series diverges" }));
-      fireEvent.click(screen.getByRole("radio", { name: "unsure" }));
       fireEvent.click(screen.getByRole("button", { name: COMMIT_LABEL }));
+      fireEvent.click(screen.getByRole("radio", { name: "unsure" }));
 
       await waitFor(() => expect(mocked.submitAttempt).toHaveBeenCalled());
 
@@ -953,7 +976,7 @@ describe("SessionScreen, keys, position, stopping and the end of a set", () => {
       fireEvent.keyDown(stem, { key: "2" });
 
       expect((screen.getByRole("radio", { name: "The series diverges" }) as HTMLInputElement).checked).toBe(true);
-      expect((screen.getByRole("radio", { name: "unsure" }) as HTMLInputElement).checked).toBe(true);
+      expect(screen.getByTestId("rated-confidence").textContent).toBe("Rated unsure.");
 
       fireEvent.keyDown(stem, { key: "Enter" });
 
@@ -981,7 +1004,8 @@ describe("SessionScreen, keys, position, stopping and the end of a set", () => {
       fireEvent.keyDown(explanation, { key: "2" });
       fireEvent.keyDown(explanation, { key: "Enter" });
 
-      expect((screen.getByRole("radio", { name: "unsure" }) as HTMLInputElement).checked).toBe(false);
+      expect(screen.queryByTestId("rated-confidence")).toBeNull();
+      expect(screen.queryByRole("dialog")).toBeNull();
       expect(mocked.submitAttempt).not.toHaveBeenCalled();
    });
 
@@ -1021,8 +1045,8 @@ describe("SessionScreen, keys, position, stopping and the end of a set", () => {
       render(<SessionScreen resumeSessionId={null} />);
 
       fireEvent.click(await screen.findByRole("radio", { name: "The series diverges" }));
-      fireEvent.click(screen.getByRole("radio", { name: "unsure" }));
       fireEvent.click(screen.getByRole("button", { name: COMMIT_LABEL }));
+      fireEvent.click(screen.getByRole("radio", { name: "unsure" }));
 
       const wrote = await screen.findByTestId("you-wrote");
 

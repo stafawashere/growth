@@ -79,15 +79,19 @@ export function ProbeItemView(props: ProbeItemViewProps) {
    const servesMcq = item.format === "mcq";
 
    return (
-      <article className="card item" data-testid="probe-item">
-         <h1 className="eyebrow">Concept probe</h1>
+      <article className="card item sheet" data-testid="probe-item">
+         <div className="sheet-row sheet-row-ruled question">
+            <h1 className="sheet-margin sheet-tag">Concept probe</h1>
 
-         <p className="item-stem" data-testid="item-stem"><MathText text={item.stem} /></p>
+            <div className="sheet-body question-stem">
+               <p className="item-stem" data-testid="item-stem"><MathText text={item.stem} /></p>
 
-         {item.figure_spec ? <FigureView spec={item.figure_spec} /> : null}
+               {item.figure_spec ? <FigureView spec={item.figure_spec} /> : null}
+            </div>
+         </div>
 
          {servesMcq ? (
-            <div data-testid="mcq-answer">
+            <div className="sheet-answer sheet-options" data-testid="mcq-answer">
                <McqControl
                   groupLabel="My answer"
                   options={item.options ?? []}
@@ -96,16 +100,26 @@ export function ProbeItemView(props: ProbeItemViewProps) {
                />
             </div>
          ) : (
-            <div data-testid="math-answer">
-               <MathAnswerField key={item.id} label="My answer" onChange={onAnswerChange} onLoadFailure={onAnswerUnavailable} />
+            <div className="sheet-row sheet-answer" data-testid="math-answer">
+               <span className="sheet-margin sheet-tag" aria-hidden="true">
+                  My answer
+               </span>
 
-               {answerUnavailable ? <p data-testid="answer-unavailable">{ANSWER_UNAVAILABLE}</p> : null}
+               <div className="sheet-body sheet-body-stack">
+                  <MathAnswerField key={item.id} label="My answer" onChange={onAnswerChange} onLoadFailure={onAnswerUnavailable} />
+
+                  {answerUnavailable ? <p data-testid="answer-unavailable">{ANSWER_UNAVAILABLE}</p> : null}
+               </div>
             </div>
          )}
 
-         <button type="button" className="button-primary" disabled={!canSend} onClick={onSend}>
-            {NEXT_LABEL}
-         </button>
+         <div className="sheet-foot">
+            <span />
+
+            <button type="button" className="button-primary" disabled={!canSend} onClick={onSend}>
+               {NEXT_LABEL}
+            </button>
+         </div>
       </article>
    );
 }

@@ -62,10 +62,11 @@ Accent, one hue only, with the full tint ramp predefined:
 - `accent-tint-1` through `accent-tint-4`, backgrounds and accent borders. An accent border on an otherwise plain element is the cheap way to introduce colour [single-source, same URL].
 - `accent-contrast-text`, a tint of the accent's own hue, never grey. Grey text on a coloured background goes muddy, and the correct move is a tint of the background hue itself [single-source, same URL]. This rule is absolute in this app: no grey on colour, anywhere, including on the correct and incorrect states below.
 
-Semantic, exactly two beyond the accent:
+Semantic, exactly three beyond the accent (two until 2026-09-30, when the operator added the caution hue for the middle confidence rating):
 
-- `state-correct` and its tint ramp.
-- `state-incorrect` and its tint ramp.
+- `state-correct` and its tint ramp, whose first step is `correct-tint-1`, a ground for a row or a panel in that state.
+- `state-incorrect` and its tint ramp, whose first step is `incorrect-tint-1`.
+- `state-caution`, an amber for the rating between a guess and confident, and its tint ramp, whose first step is `caution-tint-1`.
 
 Neither semantic colour is ever the only channel carrying its meaning. A correct answer also carries a check glyph and the word "Correct" in text; an incorrect answer also carries a cross glyph and the word "Not yet" in text. A colour-blind student must be able to read every state with the colour channel removed entirely, and the quickest test is to render the screen in greyscale and confirm nothing is lost [inferred, track 4 type and colour direction].
 

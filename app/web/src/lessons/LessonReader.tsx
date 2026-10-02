@@ -10,8 +10,7 @@ import type {
    LessonPromptAnswerBody,
    LessonPromptVerdict,
    LessonRecord,
-   LessonSection as LessonSectionRecord,
-   LessonSectionType
+   LessonSection as LessonSectionRecord
 } from "../api/types";
 import { MathValue } from "../math/MathValue";
 import { Icon } from "../ui/Icon";
@@ -20,7 +19,7 @@ import { ContrastPanel } from "./ContrastPanel";
 import { LessonCheck } from "./LessonCheck";
 import { sectionIdMatches } from "./LessonLink";
 import type { CommittedPrediction } from "./LessonPrompts";
-import { LessonSection, sectionMode } from "./LessonSection";
+import { LessonSection, PART_NAMES, sectionMode } from "./LessonSection";
 import { LessonText } from "./LessonText";
 import { RefresherPanel } from "./RefresherPanel";
 
@@ -35,7 +34,11 @@ import { RefresherPanel } from "./RefresherPanel";
 
    The v2 screens: a prediction's Commit comes before "Next part"; the first core key idea opens
    with what was predicted and its resolution; a worked example with steps still hidden offers
-   "Show all steps" in place of "Next part". Prompt answers go through onPromptAnswer. */
+   "Show all steps" in place of "Next part". Prompt answers go through onPromptAnswer.
+
+   Each screen is one sheet (app.css, the worksheet), the part's tag in its margin, and under it
+   the way through the lesson: the quiet way out on the left, a mark per part with the part's
+   name in the middle, the one primary at the right end. */
 
 export type LessonContext = "session" | "library";
 
@@ -182,19 +185,7 @@ function screenMode(screen: Exclude<Screen, { kind: "end" }>): LessonEventMode {
    return screen.kind;
 }
 
-/* The pacing line names each part: "Part 3 of 13, Key idea". A reader's scoring lines belong to
-   the example before them. */
-export const PART_NAMES: Record<LessonSectionType, string> = {
-   prediction: "Predict",
-   orientation: "What a response shows",
-   prerequisite_bridge: "From earlier",
-   key_ideas: "Key idea",
-   strategy: "Recognise",
-   worked_example: "Example",
-   what_a_reader_scores: "Example",
-   common_error: "Trap",
-   representations: "Reading the representation"
-};
+export { PART_NAMES };
 
 export function partName(screen: Screen) {
    if (screen.kind === "section") {
@@ -208,15 +199,30 @@ export function partName(screen: Screen) {
    return names[screen.kind];
 }
 
+/* What was predicted, then how it resolved, on one line: the prediction in the quiet colour and
+   the resolution in the primary one, so the eye lands on the resolution. */
 function PredictionLine({ committed }: { committed: CommittedPrediction }) {
    const predicted = committed.optionLabel !== null ? <LessonText text={committed.optionLabel} /> : <MathValue value={committed.value} />;
 
    return (
-      <p data-testid="lesson-prediction-resolution">
-         You predicted {predicted}.{committed.resolution !== null ? " " : null}
-         {committed.resolution !== null ? <LessonText text={committed.resolution} /> : null}
+      <p className="lesson-lead" data-testid="lesson-prediction-resolution">
+         <span className="lesson-lead-prediction">You predicted {predicted}.</span>
+         {committed.resolution !== null ? " " : null}
+         {committed.resolution !== null ? (
+            <span className="lesson-lead-resolution">
+               <LessonText text={committed.resolution} />
+            </span>
+         ) : null}
       </p>
    );
+}
+
+function markState(position: number, index: number) {
+   if (position < index) {
+      return "done";
+   }
+
+   return position === index ? "current" : "open";
 }
 
 export function LessonReader(props: LessonReaderProps) {
@@ -328,6 +334,8 @@ export function LessonReader(props: LessonReaderProps) {
    const isFirstCoreKeyIdea = isSectionScreen && firstCoreKeyIdea !== undefined && firstCoreKeyIdea.id === current.id;
    const lead = isFirstCoreKeyIdea && committed !== null ? <PredictionLine committed={committed} /> : null;
 
+   const endTag = isSession ? "Next up" : "End";
+
    return (
       <section className="lesson-reader stack stack-loose" data-testid="lesson-reader" data-context={context}>
          {isSession ? (
@@ -337,21 +345,6 @@ export function LessonReader(props: LessonReaderProps) {
          ) : (
             <PageHeader eyebrow="Lesson" title={<span data-testid="lesson-top-bar">{topBar}</span>} />
          )}
-
-         <div className="stack stack-tight">
-            <p className="helper">
-               <span data-testid="lesson-part">
-                  Part {partNumber} of {screens.length}
-               </span>
-               , <span data-testid="lesson-part-name">{partName(current)}</span>
-            </p>
-
-            <div className="progress-steps" aria-hidden="true">
-               {screens.map((screen, position) => (
-                  <span key={`${screen.id}-${position}`} className="progress-step" data-state={position < index ? "done" : position === index ? "current" : "ahead"} />
-               ))}
-            </div>
-         </div>
 
          <div
             key={`${current.id}-${index}`}
@@ -380,21 +373,32 @@ export function LessonReader(props: LessonReaderProps) {
 
             {current.kind === "check" ? (
                <>
-                  <h2 className="section-heading">Check</h2>
                   <LessonCheck check={current.check} sections={lesson.sections} onCheckAnswer={onCheckAnswer} onOpenAnchor={openAnchor} now={now} />
                   {inlineSection !== undefined ? (
-                     <div className="lesson-inline" data-testid="lesson-inline-section" data-section-id={inlineSection.id}>
+                     <div className="lesson-inline-part" data-testid="lesson-inline-section" data-section-id={inlineSection.id}>
                         <LessonSection section={inlineSection} revealAll />
                      </div>
                   ) : null}
                </>
             ) : null}
 
-            {current.kind === "end" ? <p data-testid="lesson-end">{isSession ? END_OF_SESSION_LESSON : END_OF_LIBRARY_LESSON}</p> : null}
+            {current.kind === "end" ? (
+               <div className="sheet">
+                  <div className="sheet-row">
+                     <span className="sheet-margin sheet-tag" aria-hidden="true">
+                        {endTag}
+                     </span>
+
+                     <p className="sheet-body" data-testid="lesson-end">
+                        {isSession ? END_OF_SESSION_LESSON : END_OF_LIBRARY_LESSON}
+                     </p>
+                  </div>
+               </div>
+            ) : null}
          </div>
 
-         <div className="submit-row lesson-actions">
-            <div className="cluster">
+         <div className="lesson-nav">
+            <div className="cluster lesson-nav-lead">
                {returnTo !== null ? (
                   <button type="button" className="text-button" data-testid="lesson-return" onClick={backToCheck}>
                      <Icon name="back" />
@@ -413,6 +417,21 @@ export function LessonReader(props: LessonReaderProps) {
                      {backLabel}
                   </button>
                ) : null}
+            </div>
+
+            <div className="sheet-nav-index lesson-nav-index">
+               <ol className="sheet-nav-marks" aria-hidden="true">
+                  {screens.map((screen, position) => (
+                     <li key={`${screen.id}-${position}`} className="sheet-nav-mark" data-state={markState(position, index)} />
+                  ))}
+               </ol>
+
+               <p className="helper sheet-nav-caption">
+                  <span data-testid="lesson-part">
+                     Part {partNumber} of {screens.length}
+                  </span>
+                  , <span data-testid="lesson-part-name">{partName(current)}</span>
+               </p>
             </div>
 
             {isEnd ? (

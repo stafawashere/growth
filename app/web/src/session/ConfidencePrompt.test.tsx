@@ -57,4 +57,74 @@ describe("ConfidencePrompt", () => {
 
       cleanup();
    });
+
+   it("is a modal dialog that takes focus on its first word and hands it back when it closes", () => {
+      const opener = document.createElement("button");
+
+      document.body.appendChild(opener);
+      opener.focus();
+
+      const { unmount } = render(<ConfidencePrompt value={null} onChange={vi.fn()} onClose={vi.fn()} />);
+      const dialog = screen.getByRole("dialog");
+
+      expect(dialog.getAttribute("aria-modal")).toBe("true");
+      expect(dialog.getAttribute("aria-labelledby")).not.toBeNull();
+      expect(document.activeElement).toBe(screen.getByRole("radio", { name: "guess" }));
+
+      unmount();
+
+      expect(document.activeElement).toBe(opener);
+
+      opener.remove();
+      cleanup();
+   });
+
+   it("chooses on the digit keys and on Space, and only moves between the words on the arrows", () => {
+      const onChange = vi.fn();
+
+      render(<ConfidencePrompt value={null} onChange={onChange} onClose={vi.fn()} />);
+
+      const guess = screen.getByRole("radio", { name: "guess" });
+
+      fireEvent.keyDown(guess, { key: "ArrowDown" });
+
+      expect(document.activeElement).toBe(screen.getByRole("radio", { name: "unsure" }));
+      expect(onChange).not.toHaveBeenCalled();
+
+      fireEvent.keyDown(document.activeElement as HTMLElement, { key: "ArrowUp" });
+
+      expect(document.activeElement).toBe(guess);
+
+      fireEvent.keyDown(guess, { key: "3" });
+
+      expect(onChange).toHaveBeenCalledWith("confident");
+
+      cleanup();
+   });
+
+   it("closes on Escape and on its Close button without choosing, and offers no close when the rating is required", () => {
+      const onChange = vi.fn();
+      const onClose = vi.fn();
+
+      render(<ConfidencePrompt value={null} onChange={onChange} onClose={onClose} />);
+      fireEvent.keyDown(screen.getByRole("radio", { name: "guess" }), { key: "Escape" });
+
+      expect(onClose).toHaveBeenCalledTimes(1);
+
+      fireEvent.click(screen.getByRole("button", { name: "Close" }));
+
+      expect(onClose).toHaveBeenCalledTimes(2);
+      expect(onChange).not.toHaveBeenCalled();
+
+      cleanup();
+      render(<ConfidencePrompt value={null} onChange={onChange} />);
+
+      expect(screen.queryByRole("button", { name: "Close" })).toBeNull();
+
+      fireEvent.keyDown(screen.getByRole("radio", { name: "guess" }), { key: "Escape" });
+
+      expect(onChange).not.toHaveBeenCalled();
+
+      cleanup();
+   });
 });

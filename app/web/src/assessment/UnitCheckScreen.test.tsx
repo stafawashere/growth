@@ -125,8 +125,11 @@ describe("the unit check", () => {
       render(<UnitCheckScreen sessionId="SES-UNIT" initial={unitCheckSession()} />);
 
       fireEvent.click(screen.getByRole("radio", { name: /First choice/ }));
-      fireEvent.click(screen.getByRole("radio", { name: "confident" }));
       fireEvent.click(screen.getByRole("button", { name: "Next" }));
+
+      expect(screen.getByTestId("question-position").textContent).toBe("Question 1 of 2");
+
+      fireEvent.click(screen.getByRole("radio", { name: "confident" }));
       fireEvent.click(screen.getByRole("radio", { name: /Second choice/ }));
 
       const withoutTheUntimedNote = renderedTexts().filter(
@@ -145,6 +148,12 @@ describe("the unit check", () => {
       expect(mocked.submitCheck).not.toHaveBeenCalled();
 
       fireEvent.click(screen.getByRole("button", { name: "Submit check" }));
+
+      expect(mocked.submitCheck).not.toHaveBeenCalled();
+
+      fireEvent.click(screen.getByRole("radio", { name: "unsure" }));
+
+      await waitFor(() => expect(mocked.saveCheckQuestion).toHaveBeenCalledWith("SES-UNIT", 2, { confidence: "unsure" }));
 
       const breakdown = await screen.findByTestId("unit-check-breakdown");
       const items = screen.getAllByTestId("check-item").map((item) => item.textContent);

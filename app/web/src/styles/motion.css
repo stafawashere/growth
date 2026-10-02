@@ -29,6 +29,13 @@
    opacity: 1;
 }
 
+/* The confidence dialog rises into place on its first frame the way the tutor sheet does;
+   ConfidencePrompt marks that frame data-entering. */
+.motion-confidence-prompt[data-entering="true"] {
+   transform: translateY(var(--growth-space-24));
+   opacity: 0;
+}
+
 .motion-self-explanation-prompt {
    transition: transform 300ms ease-out, opacity 300ms ease-out;
    transform: translateY(0);
@@ -111,6 +118,10 @@
    }
 
    .motion-tutor-sheet[data-entering="true"] {
+      transform: none;
+   }
+
+   .motion-confidence-prompt[data-entering="true"] {
       transform: none;
    }
 }

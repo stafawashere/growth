@@ -6,7 +6,8 @@ import { LessonSection, sectionMode } from "./LessonSection";
 /* 15 Re-teaching and UI: a refresher is a short re-read before the next problem, so its sections
    sit in one scrollable panel rather than one per screen, every step already shown, with one way
    out: "Back to the problem". The time on the panel is logged against each section it served in
-   equal shares, since a single panel gives no per-section time. */
+   equal shares, since a single panel gives no per-section time. The panel is one sheet whose
+   parts follow one another down the margin, and the card's foot holds the way out. */
 
 export interface RefresherPanelProps {
    lesson: LessonRecord;
@@ -34,10 +35,16 @@ export function RefresherPanel({ lesson, plan, topBar, onComplete, onSectionView
    }
 
    return (
-      <section className="card lesson-reader" data-testid="lesson-reader" data-context="refresher">
-         <p className="eyebrow" data-testid="lesson-top-bar">
-            {topBar}
-         </p>
+      <section className="card lesson-reader sheet" data-testid="lesson-reader" data-context="refresher">
+         <div className="sheet-row sheet-row-ruled">
+            <span className="sheet-margin sheet-tag" aria-hidden="true">
+               Refresher
+            </span>
+
+            <p className="sheet-body lead" data-testid="lesson-top-bar">
+               {topBar}
+            </p>
+         </div>
 
          <div className="lesson-refresher" data-testid="refresher-panel" tabIndex={0} aria-label="Refresher">
             {served.map((entry) => (
@@ -45,7 +52,9 @@ export function RefresherPanel({ lesson, plan, topBar, onComplete, onSectionView
             ))}
          </div>
 
-         <div className="action-row">
+         <div className="sheet-foot">
+            <span />
+
             <button type="button" className="button-primary" data-testid="refresher-back" onClick={leave}>
                Back to the problem
             </button>

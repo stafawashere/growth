@@ -15,24 +15,26 @@ export interface ComparisonPanelProps {
    side by side, under the one line the server built from the archetype and its error record. */
 export function ComparisonPanel({ comparison, attempt }: ComparisonPanelProps) {
    return (
-      <section className="comparison" data-testid="comparison-panel">
-         <p className="eyebrow">{COMPARISON_LABEL}</p>
+      <section className="comparison sheet-row" data-testid="comparison-panel">
+         <p className="sheet-margin sheet-tag">{COMPARISON_LABEL}</p>
 
-         <p data-testid="comparison-label">{comparison.label}</p>
+         <div className="sheet-body comparison">
+            <p data-testid="comparison-label">{comparison.label}</p>
 
-         <div className="comparison-grid">
-            <div data-testid="comparison-attempt">{attempt}</div>
+            <div className="comparison-grid">
+               <div data-testid="comparison-attempt">{attempt}</div>
 
-            <div data-testid="comparison-method">
-               <p className="eyebrow">{METHOD_LABEL}</p>
+               <div data-testid="comparison-method">
+                  <p className="eyebrow">{METHOD_LABEL}</p>
 
-               <ol className="worked-steps">
-                  {comparison.worked_steps.map((step) => (
-                     <li key={step.index} data-step-index={step.index}>
-                        <MathText text={step.text} />
-                     </li>
-                  ))}
-               </ol>
+                  <ol className="worked-steps">
+                     {comparison.worked_steps.map((step) => (
+                        <li key={step.index} data-step-index={step.index}>
+                           <MathText text={step.text} />
+                        </li>
+                     ))}
+                  </ol>
+               </div>
             </div>
          </div>
       </section>

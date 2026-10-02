@@ -110,6 +110,7 @@ async function answerAndReadFeedback(item: ServedItem, result: AttemptResult, fe
 
    await screen.findByText("Find the limit");
    fireEvent.click(screen.getByRole("button", { name: COMMIT_LABEL }));
+   fireEvent.click(await screen.findByRole("radio", { name: "unsure" }));
    await screen.findByTestId("feedback");
 }
 

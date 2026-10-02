@@ -193,6 +193,12 @@ async function affordancesReachedAt(stage: FadingStage) {
    }
 
    fireEvent.click(screen.getAllByRole("button", { name: /Check my answer|I have explained this/ })[0]);
+
+   for (const value of affordanceValues()) {
+      reached.add(value);
+   }
+
+   fireEvent.click(await screen.findByRole("radio", { name: "confident" }));
    await screen.findByRole("button", { name: "Next item" });
 
    for (const value of affordanceValues()) {

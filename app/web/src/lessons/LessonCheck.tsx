@@ -22,13 +22,18 @@ import { LessonLink, sectionIdMatches } from "./LessonLink";
    right step and the consequence on the exam, then the link to that error's part and one "Try
    again"; a second wrong answer shows the worked solution and no further retry. There is no
    praise, no score and no percent, and a right answer reads Correct with its glyph and nothing
-   more. A wrong answer with no error block to point at shows the worked solution at once. */
+   more. A wrong answer with no error block to point at shows the worked solution at once.
+
+   On the sheet the check is drawn as a question is: the stem beside its tag, the lettered options
+   or the line to write on, the foot with the one action, and the verdict on a feedback row. */
 
 export const NOT_YET = "Not yet.";
 
 export const RIGHT_STEP_PREFIX = "The right step: ";
 
 export const CONSEQUENCE_PREFIX = "On the exam: ";
+
+export const CHECK_HEADING = "Check";
 
 export const ANSWER_UNAVAILABLE_TEXT = "The math keyboard did not load, so this check cannot take an answer here.";
 
@@ -120,6 +125,7 @@ export function LessonCheck({ check, sections, onCheckAnswer, onOpenAnchor, now 
    const errorSection = verdict === null || verdict.correct ? null : errorSectionFor(verdict, sections);
    const anchor = errorSection === null ? null : verdict?.anchor ?? errorSection.id;
    const isWrong = verdict !== null && !verdict.correct;
+   const isRight = verdict !== null && verdict.correct;
    const namesError = errorSection !== null && anchor !== null;
    const offersRetry = isWrong && namesError && !hasRetried;
    const showsSolution = isWrong && (!namesError || hasRetried);
@@ -130,13 +136,19 @@ export function LessonCheck({ check, sections, onCheckAnswer, onOpenAnchor, now 
    const consequence = verdict?.scoring_consequence ?? errorSection?.scoring_consequence ?? null;
 
    return (
-      <div className="lesson-check" data-testid="lesson-check">
-         <p className="item-stem">
-            <LessonText text={check.stem.text} />
-         </p>
+      <div className="lesson-check sheet" data-testid="lesson-check">
+         <div className="sheet-row sheet-row-ruled">
+            <h2 className="sheet-margin sheet-tag">{CHECK_HEADING}</h2>
+
+            <div className="sheet-body">
+               <p className="item-stem">
+                  <LessonText text={check.stem.text} />
+               </p>
+            </div>
+         </div>
 
          {isMcq ? (
-            <div data-testid="mcq-answer">
+            <div className="sheet-answer sheet-options" data-testid="mcq-answer">
                <McqControl
                   groupLabel="My answer"
                   options={servedOptions(check)}
@@ -145,13 +157,114 @@ export function LessonCheck({ check, sections, onCheckAnswer, onOpenAnchor, now 
                />
             </div>
          ) : (
-            <div data-testid="math-answer">
-               <MathAnswerField key={fieldKey} label="My answer" onChange={(value) => setAnswer({ kind: "math", value })} onLoadFailure={() => setFieldFailed(true)} />
-               {fieldFailed ? <p data-testid="answer-unavailable">{ANSWER_UNAVAILABLE_TEXT}</p> : null}
+            <div className="sheet-row sheet-answer" data-testid="math-answer">
+               <span className="sheet-margin sheet-tag" aria-hidden="true">
+                  My answer
+               </span>
+
+               <div className="sheet-body sheet-body-stack">
+                  <MathAnswerField key={fieldKey} label="My answer" onChange={(value) => setAnswer({ kind: "math", value })} onLoadFailure={() => setFieldFailed(true)} />
+                  {fieldFailed ? <p data-testid="answer-unavailable">{ANSWER_UNAVAILABLE_TEXT}</p> : null}
+                  {failed ? <ActionFailed /> : null}
+               </div>
             </div>
          )}
 
-         <div className="submit-row">
+         {isMcq && failed ? (
+            <div className="sheet-row">
+               <div className="sheet-body">
+                  <ActionFailed />
+               </div>
+            </div>
+         ) : null}
+
+         {isRight ? (
+            <div className="sheet-row">
+               <span className="sheet-margin sheet-tag" aria-hidden="true">
+                  Feedback
+               </span>
+
+               <div className="sheet-body">
+                  <p className="verdict text-correct" data-testid="lesson-check-verdict">
+                     <span data-glyph aria-hidden="true">
+                        {CORRECT_GLYPH}
+                     </span>{" "}
+                     <span>{CORRECT_WORD}</span>
+                  </p>
+               </div>
+            </div>
+         ) : null}
+
+         {isWrong ? (
+            <div className="sheet-row">
+               <span className="sheet-margin sheet-tag" aria-hidden="true">
+                  Feedback
+               </span>
+
+               <div className="sheet-body sheet-body-stack" data-testid="lesson-check-verdict" aria-live="polite">
+                  <p className="verdict text-incorrect">
+                     <span data-glyph aria-hidden="true">
+                        {INCORRECT_GLYPH}
+                     </span>{" "}
+                     <span>{NOT_YET}</span>
+                  </p>
+
+                  {namesError ? (
+                     <>
+                        <p>
+                           <LessonText text={errorSection.observed_behavior ?? ""} />
+                        </p>
+
+                        {rightStepText !== null ? (
+                           <p data-testid="lesson-verdict-right-step">
+                              {RIGHT_STEP_PREFIX}
+                              <LessonText text={rightStepText} />
+                              {showsRightStepValue ? (
+                                 <>
+                                    {" "}
+                                    <MathValue value={rightStepValue} />
+                                 </>
+                              ) : null}
+                           </p>
+                        ) : null}
+
+                        {consequence !== null ? (
+                           <p data-testid="lesson-verdict-consequence">
+                              {CONSEQUENCE_PREFIX}
+                              <LessonText text={consequence} />
+                           </p>
+                        ) : null}
+
+                        <div className="cluster">
+                           <LessonLink anchor={anchor} onOpen={onOpenAnchor}>
+                              Go to the part on that error
+                           </LessonLink>
+
+                           {offersRetry ? (
+                              <button type="button" className="text-button" data-testid="lesson-check-retry" onClick={retry}>
+                                 Try again
+                              </button>
+                           ) : null}
+                        </div>
+                     </>
+                  ) : null}
+
+                  {showsSolution ? (
+                     <ol className="worked-steps" data-testid="lesson-check-solution">
+                        {(check.worked_solution ?? []).map((step) => (
+                           <li key={step.step}>
+                              <LessonText text={step.text} />
+                           </li>
+                        ))}
+                     </ol>
+                  ) : null}
+               </div>
+            </div>
+         ) : null}
+
+         <div className="sheet-foot">
+            <span />
+
             <button
                type="button"
                className="button-primary motion-instant-submit-answer"
@@ -162,72 +275,6 @@ export function LessonCheck({ check, sections, onCheckAnswer, onOpenAnchor, now 
                Check my answer
             </button>
          </div>
-
-         {failed ? <ActionFailed /> : null}
-
-         {verdict !== null && verdict.correct ? (
-            <p className="verdict" data-testid="lesson-check-verdict" style={{ color: "var(--growth-state-correct)" }}>
-               <span aria-hidden="true">{CORRECT_GLYPH}</span> <span>{CORRECT_WORD}</span>
-            </p>
-         ) : null}
-
-         {isWrong ? (
-            <div className="stack stack-tight" data-testid="lesson-check-verdict" aria-live="polite">
-               <p className="verdict" style={{ color: "var(--growth-state-incorrect)" }}>
-                  <span aria-hidden="true">{INCORRECT_GLYPH}</span> <span>{NOT_YET}</span>
-               </p>
-
-               {namesError ? (
-                  <>
-                     <p>
-                        <LessonText text={errorSection.observed_behavior ?? ""} />
-                     </p>
-
-                     {rightStepText !== null ? (
-                        <p data-testid="lesson-verdict-right-step">
-                           {RIGHT_STEP_PREFIX}
-                           <LessonText text={rightStepText} />
-                           {showsRightStepValue ? (
-                              <>
-                                 {" "}
-                                 <MathValue value={rightStepValue} />
-                              </>
-                           ) : null}
-                        </p>
-                     ) : null}
-
-                     {consequence !== null ? (
-                        <p data-testid="lesson-verdict-consequence">
-                           {CONSEQUENCE_PREFIX}
-                           <LessonText text={consequence} />
-                        </p>
-                     ) : null}
-
-                     <div className="cluster">
-                        <LessonLink anchor={anchor} onOpen={onOpenAnchor}>
-                           Go to the part on that error
-                        </LessonLink>
-
-                        {offersRetry ? (
-                           <button type="button" className="text-button" data-testid="lesson-check-retry" onClick={retry}>
-                              Try again
-                           </button>
-                        ) : null}
-                     </div>
-                  </>
-               ) : null}
-
-               {showsSolution ? (
-                  <ol className="worked-steps" data-testid="lesson-check-solution">
-                     {(check.worked_solution ?? []).map((step) => (
-                        <li key={step.step}>
-                           <LessonText text={step.text} />
-                        </li>
-                     ))}
-                  </ol>
-               ) : null}
-            </div>
-         ) : null}
       </div>
    );
 }

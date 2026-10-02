@@ -106,6 +106,7 @@ async function commitTheOpener() {
    render(<SessionScreen resumeSessionId={null} />);
    await screen.findByText("Find the accumulated change");
    fireEvent.click(screen.getByRole("button", { name: "Check my answer" }));
+   fireEvent.click(await screen.findByRole("radio", { name: "unsure" }));
    await screen.findByTestId("feedback");
 }
 

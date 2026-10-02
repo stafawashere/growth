@@ -198,6 +198,7 @@ export async function sessionFeedback(stage: ServedItem["stage"]) {
    const container = inPage(<SessionScreen resumeSessionId={null} />);
 
    fireEvent.click(await screen.findByRole("button", { name: "Check my answer" }));
+   fireEvent.click(await screen.findByRole("radio", { name: "unsure" }));
    await screen.findByTestId("feedback");
 
    return container;
@@ -443,6 +444,46 @@ const LESSON_SCREENS: Screen[] = [
       }
    },
    { name: "lesson, key idea with its quote", mount: async () => lessonReader(["LSN-CON-02013#s2"]) },
+   {
+      name: "lesson, prediction committed",
+      mount: async () => {
+         const container = lessonReader(["LSN-CON-02013#s0"], [], { onPromptAnswer: vi.fn().mockResolvedValue({ correct: false, resolution: "A product gives two terms." }) });
+
+         fireEvent.click(container.querySelector("input[type='radio']")!);
+         fireEvent.click(screen.getByTestId("lesson-prediction-commit"));
+         await screen.findByTestId("lesson-next");
+         await waitFor(() => expect(screen.queryByTestId("lesson-prediction-commit")).toBeNull());
+
+         return container;
+      }
+   },
+   {
+      name: "lesson, key idea after a committed prediction",
+      mount: async () => {
+         const container = lessonReader(["LSN-CON-02013#s0", "LSN-CON-02013#s2"], [], { onPromptAnswer: vi.fn().mockResolvedValue({ correct: false, resolution: "A product gives two terms." }) });
+
+         fireEvent.click(container.querySelector("input[type='radio']")!);
+         fireEvent.click(screen.getByTestId("lesson-prediction-commit"));
+         await waitFor(() => expect(screen.queryByTestId("lesson-prediction-commit")).toBeNull());
+         fireEvent.click(screen.getByTestId("lesson-next"));
+         await screen.findByTestId("lesson-prediction-resolution");
+
+         return container;
+      }
+   },
+   {
+      name: "lesson, check wrong with the error's part opened below it",
+      mount: async () => {
+         const container = lessonReader([], ["LSN-CON-02013#chk-3"]);
+
+         fireEvent.click(container.querySelector("input[type='radio']")!);
+         fireEvent.click(screen.getByTestId("lesson-check-submit"));
+         fireEvent.click(await screen.findByTestId("lesson-link"));
+         await screen.findByTestId("lesson-inline-section");
+
+         return container;
+      }
+   },
    { name: "lesson, strategy", mount: async () => lessonReader(["LSN-CON-02013#s3"]) },
    { name: "lesson, figure", mount: async () => lessonReader(["LSN-CON-02013#r-figure"]) },
    { name: "lesson, table with marked rows", mount: async () => lessonReader(["LSN-CON-02013#r-table"]) },
@@ -889,7 +930,7 @@ export const SCREENS: Screen[] = [
       }
    },
    {
-      name: "session item at completion, with a figure",
+      name: "session item at completion, with a figure, the answer field focused",
       mount: async () => {
          mocked.openSession.mockResolvedValue(SESSION);
          mocked.readNextItem.mockResolvedValue({ item: servedItem() });
@@ -897,6 +938,32 @@ export const SCREENS: Screen[] = [
          const container = inPage(<SessionScreen resumeSessionId={null} />);
 
          await screen.findByTestId("item");
+
+         /* MathLive makes its host focusable; its stand-in here does not, so the fixture does. */
+         const field = container.querySelector("math-field") as HTMLElement;
+
+         field.tabIndex = 0;
+         field.focus();
+
+         return container;
+      }
+   },
+   {
+      name: "session item with two items still to come, the set's progress drawn",
+      mount: async () => {
+         const inProgress: SessionPayload = {
+            ...SESSION,
+            queue: { ...SESSION.queue, forecasts: { "BC-ARCH-0301": 3 } },
+            remaining: [servedItem(), servedItem({ id: "ITM-2" })] as SessionPayload["remaining"]
+         };
+
+         mocked.openSession.mockResolvedValue(inProgress);
+         mocked.readSession.mockResolvedValue(inProgress);
+         mocked.readNextItem.mockResolvedValue({ item: servedItem() });
+
+         const container = inPage(<SessionScreen resumeSessionId={null} />);
+
+         await screen.findByTestId("set-progress");
 
          return container;
       }
@@ -914,20 +981,27 @@ export const SCREENS: Screen[] = [
          return container;
       }
    },
-   {
-      name: "session item at completion, with a confidence chosen",
+   ...(["guess", "unsure", "confident"] as const).map((word) => ({
+      name: `session item at completion, the confidence dialog open with ${word} chosen`,
       mount: async () => {
          mocked.openSession.mockResolvedValue(SESSION);
-         mocked.readNextItem.mockResolvedValue({ item: servedItem({ figure_spec: null }) });
+         mocked.readNextItem.mockResolvedValue({ item: servedItem({ figure_spec: null, format: "mcq", requires_choice: true, options: [{ id: "A", label: "2x" }, { id: "B", label: "x" }] }) });
+         mocked.submitAttempt.mockReturnValue(new Promise(() => undefined));
 
          const container = inPage(<SessionScreen resumeSessionId={null} />);
 
          await screen.findByTestId("item");
-         fireEvent.click(screen.getByRole("radio", { name: "unsure" }));
+         fireEvent.click(screen.getByRole("radio", { name: "2x" }));
+         fireEvent.click(screen.getByRole("button", { name: "Check my answer" }));
+
+         const chosen = await screen.findByRole("radio", { name: word });
+
+         fireEvent.click(chosen);
+         chosen.focus();
 
          return container;
       }
-   },
+   })),
    {
       name: "onboarding, diagnostic introduction",
       mount: async () => inPage(<DiagnosticIntro reason="first_login" onStart={vi.fn()} />)

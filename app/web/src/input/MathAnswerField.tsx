@@ -24,12 +24,14 @@ export function MathAnswerField(props: MathFieldProps) {
       onLoadFailure(reason);
    }
 
+   const isEmpty = latex.trim().length === 0;
+
    return (
       <>
          <MathField {...props} onLatexChange={showLatex} onLoadFailure={failed} />
 
          {keyboardFailed ? null : (
-            <p className="latex-inspector" data-testid="latex-inspector">
+            <p className="latex-inspector" data-testid="latex-inspector" data-empty={isEmpty ? "true" : undefined}>
                <span className="latex-inspector-label">{LATEX_INSPECTOR_LABEL}: </span>
                <code>{latex}</code>
             </p>

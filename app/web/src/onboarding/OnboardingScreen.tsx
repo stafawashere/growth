@@ -244,11 +244,11 @@ export function DiagnosticItem(props: DiagnosticItemProps) {
             />
          }
       >
-         <article className="card item" data-testid="diagnostic-item" data-state={state}>
-            <div className="question">
-               <div className="question-stem">
-                  <span className="eyebrow">Solve</span>
+         <article className="card item sheet" data-testid="diagnostic-item" data-state={state}>
+            <div className="sheet-row sheet-row-ruled question">
+               <span className="sheet-margin sheet-tag">Solve</span>
 
+               <div className="sheet-body question-stem">
                   <p className="item-stem" data-testid="item-stem">
                      <MathText text={item.stem} />
                   </p>
@@ -257,10 +257,16 @@ export function DiagnosticItem(props: DiagnosticItemProps) {
                </div>
             </div>
 
-            <div data-testid="math-answer">
-               <MathAnswerField key={item.id} label="My answer" onChange={onAnswerChange} onLoadFailure={onAnswerUnavailable} />
+            <div className="sheet-row sheet-answer" data-testid="math-answer">
+               <span className="sheet-margin sheet-tag" aria-hidden="true">
+                  My answer
+               </span>
 
-               {answerUnavailable ? <p data-testid="answer-unavailable">{ANSWER_UNAVAILABLE}</p> : null}
+               <div className="sheet-body sheet-body-stack">
+                  <MathAnswerField key={item.id} label="My answer" onChange={onAnswerChange} onLoadFailure={onAnswerUnavailable} />
+
+                  {answerUnavailable ? <p data-testid="answer-unavailable">{ANSWER_UNAVAILABLE}</p> : null}
+               </div>
             </div>
 
             <div className="scope-footer">

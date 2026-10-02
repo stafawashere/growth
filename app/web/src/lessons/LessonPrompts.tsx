@@ -11,12 +11,14 @@ import { McqControl } from "../input/McqControl";
 import { CORRECT_GLYPH, CORRECT_WORD, INCORRECT_GLYPH } from "../session/StepMarks";
 import { ActionFailed } from "../status/LoadState";
 import { ANSWER_UNAVAILABLE_TEXT, NOT_YET } from "./LessonCheck";
-import { LessonText } from "./LessonText";
 
 /* The prompts of the v2 reader, each posted to POST /lessons/{id}/prompts/{section_id}/answers:
    the prediction that opens a concept lesson, an error block's fix prompt and a faded example's
    answer. A prediction is committed rather than marked, so it shows no verdict; the other two
-   read Correct. or Not yet. and then reveal what they held back. */
+   read Correct. or Not yet. and then reveal what they held back.
+
+   Each prompt is a part of the sheet its section sits on: the options as lettered lines, or the
+   line to write on with its tag in the margin, then the sheet's foot with the one action. */
 
 export type PromptAnswer = (sectionId: string, body: LessonPromptAnswerBody) => Promise<LessonPromptVerdict>;
 
@@ -39,11 +41,14 @@ function elapsedSince(shownAt: number, now: () => number) {
 export function PromptVerdictLine({ correct }: { correct: boolean }) {
    const glyph = correct ? CORRECT_GLYPH : INCORRECT_GLYPH;
    const word = correct ? `${CORRECT_WORD}.` : NOT_YET;
-   const colour = correct ? "var(--growth-state-correct)" : "var(--growth-state-incorrect)";
+   const className = correct ? "verdict text-correct" : "verdict text-incorrect";
 
    return (
-      <p className="verdict" data-testid="lesson-prompt-verdict" aria-live="polite" style={{ color: colour }}>
-         <span aria-hidden="true">{glyph}</span> <span>{word}</span>
+      <p className={className} data-testid="lesson-prompt-verdict" aria-live="polite">
+         <span data-glyph aria-hidden="true">
+            {glyph}
+         </span>{" "}
+         <span>{word}</span>
       </p>
    );
 }
@@ -103,29 +108,35 @@ export function LessonPrediction({ section, committed, onCommit, onPromptAnswer,
    }
 
    return (
-      <div className="lesson-check" data-testid="lesson-prediction">
-         <p className="item-stem">
-            <LessonText text={section.stem?.text ?? ""} />
-         </p>
-
+      <div className="lesson-prediction sheet-part" data-testid="lesson-prediction" data-committed={isCommitted ? "true" : undefined}>
          {isMcq ? (
-            <McqControl
-               groupLabel="My prediction"
-               options={predictionOptions(section)}
-               selectedId={answer.kind === "option" ? answer.id : null}
-               onSelect={(id) => choose({ kind: "option", id })}
-            />
+            <div className="sheet-answer sheet-options">
+               <McqControl
+                  groupLabel="My prediction"
+                  options={predictionOptions(section)}
+                  selectedId={answer.kind === "option" ? answer.id : null}
+                  onSelect={(id) => choose({ kind: "option", id })}
+               />
+            </div>
          ) : (
-            <div>
-               <MathAnswerField label="My prediction" onChange={(value) => choose({ kind: "math", value })} onLoadFailure={() => setFieldFailed(true)} />
-               {fieldFailed ? <p data-testid="answer-unavailable">{ANSWER_UNAVAILABLE_TEXT}</p> : null}
+            <div className="sheet-row sheet-answer">
+               <span className="sheet-margin sheet-tag" aria-hidden="true">
+                  My prediction
+               </span>
+
+               <div className="sheet-body sheet-body-stack">
+                  <MathAnswerField label="My prediction" onChange={(value) => choose({ kind: "math", value })} onLoadFailure={() => setFieldFailed(true)} />
+                  {fieldFailed ? <p data-testid="answer-unavailable">{ANSWER_UNAVAILABLE_TEXT}</p> : null}
+               </div>
             </div>
          )}
 
          {isCommitted ? (
-            <p aria-live="polite">{COMMITTED}</p>
+            <p className="visually-hidden" aria-live="polite">{COMMITTED}</p>
          ) : (
-            <div className="submit-row">
+            <div className="sheet-foot">
+               <span />
+
                <button
                   type="button"
                   className="button-primary motion-instant-submit-answer"
@@ -180,14 +191,21 @@ export function PromptField({ label, testId, submitTestId, sectionId, onPromptAn
    }
 
    return (
-      <div className="lesson-check" data-testid={testId}>
-         <div>
-            <MathAnswerField label={label} onChange={(value) => setAnswer({ kind: "math", value })} onLoadFailure={() => setFieldFailed(true)} />
-            {fieldFailed ? <p data-testid="answer-unavailable">{ANSWER_UNAVAILABLE_TEXT}</p> : null}
+      <div className="lesson-prompt sheet-part" data-testid={testId}>
+         <div className="sheet-row sheet-answer">
+            <span className="sheet-margin sheet-tag" aria-hidden="true">
+               {label}
+            </span>
+
+            <div className="sheet-body sheet-body-stack">
+               <MathAnswerField label={label} onChange={(value) => setAnswer({ kind: "math", value })} onLoadFailure={() => setFieldFailed(true)} />
+               {fieldFailed ? <p data-testid="answer-unavailable">{ANSWER_UNAVAILABLE_TEXT}</p> : null}
+               {failed ? <ActionFailed /> : null}
+            </div>
          </div>
 
-         <div className="submit-row">
-            <div className="cluster">{secondary}</div>
+         <div className="sheet-foot">
+            <div className="sheet-foot-lead">{secondary}</div>
 
             <button
                type="button"
@@ -199,8 +217,6 @@ export function PromptField({ label, testId, submitTestId, sectionId, onPromptAn
                Check my answer
             </button>
          </div>
-
-         {failed ? <ActionFailed /> : null}
       </div>
    );
 }

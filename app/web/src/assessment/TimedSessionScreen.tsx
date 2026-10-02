@@ -101,15 +101,17 @@ function PartFacts(props: { part: AssessmentPart }) {
    const { part } = props;
 
    return (
-      <>
-         <p>
+      <div className="part-facts">
+         <p className="part-position">
             {part.label}: {part.question_count} questions, {part.minutes} minutes.
          </p>
 
-         <p className="calculator-label">{part.calculator_label}</p>
+         <div className="part-notes">
+            <p className="calculator-label">{part.calculator_label}</p>
 
-         {part.calculator_note !== null ? <p>{part.calculator_note}</p> : null}
-      </>
+            {part.calculator_note !== null ? <p className="caption">{part.calculator_note}</p> : null}
+         </div>
+      </div>
    );
 }
 

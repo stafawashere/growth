@@ -1,7 +1,7 @@
 import { act, cleanup, fireEvent, render, screen, waitFor, within } from "@testing-library/react";
 import { afterEach, describe, expect, it, vi } from "vitest";
 
-import type { TutorFigurePath } from "../api/types";
+import type { TutorFigurePath, TutorFigureSpec } from "../api/types";
 import { REDUCED_MOTION_QUERY } from "../styles/motion";
 import { EVERY_ROLE_FIGURE, SECANT_TO_TANGENT, TABLE_OF_VALUES, TRIANGLE_DIAGRAM, figureCell, figureDot, figurePath } from "./figureFixtures";
 import { TutorFigure, parseTutorFigure } from "./TutorFigure";
@@ -541,5 +541,59 @@ describe("TutorFigure labelled table cells", () => {
       const numbered = { ...TABLE_OF_VALUES, primitives: [{ ...figureCell("row", "r1", "highlight", 1, null), text: 5 }] };
 
       expect(parseTutorFigure(numbered)).toBeNull();
+   });
+});
+
+describe("TutorFigure keeps tick numbers out from under its labels", () => {
+   /* Window x from -1 to 9 and y from -2 to 24, as the live Riemann figure had: the x axis sits at
+      260 in view units, and the number 2 sits under x = 104, in the box from 260 to 274. A width
+      label sits under x = 2, its baseline 34 units below the axis at 294. */
+   const widths: TutorFigureSpec = {
+      ...SECANT_TO_TANGENT,
+      window: { x: [-1, 9], y: [-2, 24] },
+      steps: [{ id: "curve", caption: "The widths" }],
+      primitives: [{ type: "label", step: "curve", element: "w", role: "given", at: [2, 0], offset: [0, 34], align: "middle", text: "\\(4\\)", faded_at: null, erased_at: null }]
+   };
+
+   function xTicks(container: HTMLElement) {
+      return Array.from(container.querySelectorAll("text.figure-tick[data-axis='x']")).map((tick) => tick.textContent);
+   }
+
+   function drawAt(element: Element | null, rect: { left: number; top: number; width: number; height: number }) {
+      Object.defineProperty(element, "getBoundingClientRect", {
+         configurable: true,
+         value: () => ({ ...rect, right: rect.left + rect.width, bottom: rect.top + rect.height, x: rect.left, y: rect.top, toJSON: () => ({}) })
+      });
+   }
+
+   it("leaves out the number a label covers once the figure is drawn smaller than its view, where the label is larger in view units", () => {
+      const { container, rerender } = render(<TutorFigure spec={widths} revealed={1} finished />);
+
+      drawAt(container.querySelector(".tutor-figure-canvas"), { left: 0, top: 0, width: 320, height: 300 });
+      rerender(<TutorFigure spec={widths} revealed={1} finished />);
+
+      expect(xTicks(container)).toContain("2");
+
+      drawAt(container.querySelector(".tutor-figure-canvas"), { left: 0, top: 0, width: 160, height: 150 });
+      rerender(<TutorFigure spec={widths} revealed={1} finished />);
+
+      expect(xTicks(container)).not.toContain("2");
+      expect(xTicks(container)).toContain("1");
+      expect(xTicks(container)).toContain("3");
+   });
+
+   it("leaves out the number under a label as the label is actually drawn, not only as estimated", () => {
+      const { container, rerender } = render(<TutorFigure spec={widths} revealed={1} finished />);
+
+      drawAt(container.querySelector(".tutor-figure-canvas"), { left: 0, top: 0, width: 320, height: 300 });
+      rerender(<TutorFigure spec={widths} revealed={1} finished />);
+
+      expect(xTicks(container)).toContain("2");
+
+      drawAt(container.querySelector(".tutor-figure-label-text"), { left: 96, top: 262, width: 16, height: 32 });
+      rerender(<TutorFigure spec={widths} revealed={1} finished />);
+
+      expect(xTicks(container)).not.toContain("2");
+      expect(xTicks(container)).toContain("3");
    });
 });

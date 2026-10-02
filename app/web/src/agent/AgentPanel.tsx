@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState, type FormEvent, type KeyboardEvent } from "react";
+import { useEffect, useLayoutEffect, useRef, useState, type FormEvent, type KeyboardEvent, type ReactNode, type RefObject } from "react";
 
 import { MathText } from "../math/MathText";
 import { holdUnclosedMath } from "../math/mathjson";
@@ -121,6 +121,82 @@ function ReplyText(props: { text: string; isStreaming: boolean }) {
    );
 }
 
+/* While a reply's figure builds, the panel follows the newest words, which would push the figure up
+   and out of the conversation. So until the reply has ended and every step has opened, the figure
+   holds at the top of the conversation on the panel's own surface and the words run on beneath it,
+   the way captions run under a board.
+
+   The words beneath carry formulas whose typeset parts are positioned, and a positioned element
+   later in the page paints over an earlier one. So while the figure builds it comes last in the
+   reply and a grid of named areas puts it back between the words before it and the words after
+   it; once the reply has finished, the reply returns to its reading order. */
+export const FIGURE_BUILDING_CLASS = "agent-figure-building";
+
+/* A figure is held only while two lines of words still show beneath it, in CSS pixels at the
+   reply's line height. In a short conversation, the phone sheet at half height among them, a held
+   figure would hide every word, so there it stays in the flow as any figure does. */
+const WORDS_BELOW_A_HELD_FIGURE = 52;
+
+function useFigureFitsHeld(item: RefObject<HTMLLIElement>, isBuilding: boolean) {
+   const [fits, setFits] = useState(true);
+
+   useLayoutEffect(() => {
+      const node = item.current;
+      const region = node?.closest("[data-testid='agent-conversation']");
+      const figure = node?.querySelector("[data-testid='tutor-figure']");
+      const canMeasure = isBuilding && region !== null && region !== undefined && figure !== null && figure !== undefined;
+
+      if (!canMeasure) {
+         return undefined;
+      }
+
+      function measure() {
+         const regionHeight = region!.clientHeight;
+         const figureHeight = figure!.getBoundingClientRect().height;
+         const hasLayout = regionHeight > 0;
+
+         setFits(!hasLayout || regionHeight - figureHeight >= WORDS_BELOW_A_HELD_FIGURE);
+      }
+
+      measure();
+
+      const observer = typeof ResizeObserver === "function" ? new ResizeObserver(measure) : null;
+
+      observer?.observe(region);
+      observer?.observe(figure);
+
+      return () => observer?.disconnect();
+   }, [item, isBuilding, fits]);
+
+   return fits;
+}
+
+function BuildingReply(props: { turn: AgentTurn; figure: Extract<AgentTurn["figure"], { state: "shown" }>; onShowAll: () => void; marks: ReactNode }) {
+   const { turn, figure } = props;
+   const textBefore = turn.text.slice(0, figure.offset);
+   const textAfter = turn.text.slice(figure.offset);
+
+   return (
+      <>
+         {textBefore.trim() !== "" ? (
+            <div className="agent-reply-part agent-reply-before">
+               <ReplyText text={textBefore} isStreaming={false} />
+            </div>
+         ) : null}
+
+         {textAfter.trim() !== "" ? (
+            <div className="agent-reply-part agent-reply-after">
+               <ReplyText text={textAfter} isStreaming />
+            </div>
+         ) : null}
+
+         {props.marks}
+
+         <TutorFigure spec={figure.spec} revealed={figure.revealed} finished={false} onShowAll={props.onShowAll} className={FIGURE_BUILDING_CLASS} />
+      </>
+   );
+}
+
 function ReplyBody(props: { turn: AgentTurn; onShowAll: () => void }) {
    const { turn } = props;
    const isStreaming = turn.state !== "done";
@@ -209,6 +285,11 @@ function MarkedOnThePage(props: { marks: ReplyMarks; canClear: boolean; onClear:
 
 function Turn(props: { turn: AgentTurn; onShowAll: (turnId: string) => void; marksTurnId: string | null; onClearMarks: () => void }) {
    const { turn } = props;
+   const item = useRef<HTMLLIElement>(null);
+   const isStreaming = turn.state !== "done";
+   const figure = turn.figure;
+   const isBuilding = turn.role === "agent" && isStreaming && figure?.state === "shown";
+   const figureFits = useFigureFitsHeld(item, isBuilding);
 
    if (turn.role === "student") {
       return (
@@ -219,17 +300,31 @@ function Turn(props: { turn: AgentTurn; onShowAll: (turnId: string) => void; mar
       );
    }
 
-   const isStreaming = turn.state !== "done";
    const awaitsFirstText = turn.text === "" && isStreaming && turn.figure === undefined;
+   const buildingFigure = isBuilding && figureFits && figure?.state === "shown" ? figure : null;
+   const onShowAll = () => props.onShowAll(turn.id);
+   const marks = turn.marks !== undefined ? <MarkedOnThePage marks={turn.marks} canClear={props.marksTurnId === turn.id} onClear={props.onClearMarks} /> : null;
+
+   if (buildingFigure !== null) {
+      return (
+         <li className="agent-turn agent-turn-tutor" ref={item}>
+            <span className="visually-hidden">{TUTOR_SAID}</span>
+
+            <div className="agent-reply agent-reply-building" aria-busy="true" data-testid="agent-reply">
+               <BuildingReply turn={turn} figure={buildingFigure} onShowAll={onShowAll} marks={marks} />
+            </div>
+         </li>
+      );
+   }
 
    return (
-      <li className="agent-turn agent-turn-tutor">
+      <li className="agent-turn agent-turn-tutor" ref={item}>
          <span className="visually-hidden">{TUTOR_SAID}</span>
 
          <div className="agent-reply" aria-busy={isStreaming} data-testid="agent-reply">
-            {awaitsFirstText ? <p className="agent-writing">{WRITING_A_REPLY}</p> : <ReplyBody turn={turn} onShowAll={() => props.onShowAll(turn.id)} />}
+            {awaitsFirstText ? <p className="agent-writing">{WRITING_A_REPLY}</p> : <ReplyBody turn={turn} onShowAll={onShowAll} />}
 
-            {turn.marks !== undefined ? <MarkedOnThePage marks={turn.marks} canClear={props.marksTurnId === turn.id} onClear={props.onClearMarks} /> : null}
+            {marks}
          </div>
       </li>
    );

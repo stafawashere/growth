@@ -713,3 +713,47 @@ describe("a reply that draws", () => {
       expect(screen.getByTestId("agent-status").textContent).toBe("Look.");
    });
 });
+
+describe("the Drawing a figure line", () => {
+   function reply() {
+      return screen.getByTestId("agent-reply");
+   }
+
+   it("goes as soon as words follow it with no figure between, as when the reply is withheld", async () => {
+      render(<TutorHarness screen={UNCHECKED_ITEM} />);
+
+      await openAndSend("Draw it");
+      await act(async () => {
+         fetchScript.turns[0].push(frame("text", { delta: "Here is a sketch. " }));
+         fetchScript.turns[0].push(frame("figure_pending", {}));
+      });
+
+      await waitFor(() => expect(screen.queryByTestId("agent-figure-pending")).not.toBeNull());
+
+      await act(async () => {
+         fetchScript.turns[0].push(frame("text", { delta: WITHHELD }));
+      });
+
+      await waitFor(() => expect(reply().textContent).toContain(WITHHELD));
+
+      expect(screen.queryByTestId("agent-figure-pending")).toBeNull();
+      expect(reply().getAttribute("aria-busy")).toBe("true");
+   });
+
+   it("goes when the reply ends, whatever came before", async () => {
+      render(<TutorHarness screen={{ kind: "today" }} />);
+
+      await openAndSend("Draw it");
+      await act(async () => {
+         fetchScript.turns[0].push(frame("text", { delta: "Here is a sketch. " }));
+         fetchScript.turns[0].push(frame("figure_pending", {}));
+         fetchScript.turns[0].push(frame("end", { turn_id: "ATN-1", outcome: "complete", turns_on_item: 0, turns_in_conversation: 1 }));
+         fetchScript.turns[0].close();
+      });
+
+      await waitFor(() => expect(reply().getAttribute("aria-busy")).toBe("false"));
+
+      expect(screen.queryByTestId("agent-figure-pending")).toBeNull();
+      expect(reply().textContent).toBe("Here is a sketch. ");
+   });
+});

@@ -212,6 +212,12 @@ function withoutReply(marksByScreen: Record<string, string>, replyId: string) {
    return Object.fromEntries(Object.entries(marksByScreen).filter(([, turnId]) => turnId !== replyId));
 }
 
+function withoutPendingFigure(turn: AgentTurn): AgentTurn {
+   const isPending = turn.figure?.state === "pending";
+
+   return isPending ? { ...turn, figure: undefined } : turn;
+}
+
 function withMarksStepRevealed(turn: AgentTurn, stepIndex: number): AgentTurn {
    const marks = turn.marks;
 
@@ -574,6 +580,7 @@ export function AgentProvider({ enabled, children }: AgentProviderProps) {
       let receivedText = "";
       let drawnFigure: TutorFigureSpec | null = null;
       let drawnMarks: TutorMarksSpec | null = null;
+      let awaitsFigure = false;
       let latestFigureGate = -1;
       let latestMarksGate = -1;
       const gates: Array<() => void> = [];
@@ -613,14 +620,25 @@ export function AgentProvider({ enabled, children }: AgentProviderProps) {
             },
             onText: (delta: string) => {
                receivedText += delta;
+
+               /* Text after the opening of a figure with neither the figure nor its refusal between
+                  them means the server dropped the figure or withheld the reply, so the pending line
+                  goes. */
+               if (awaitsFigure) {
+                  awaitsFigure = false;
+                  pacer.pushAction(() => updateTurn(replyId, withoutPendingFigure));
+               }
+
                pacer.pushText(delta);
             },
             onFigurePending: () => {
+               awaitsFigure = true;
                pacer.pushAction(() => updateTurn(replyId, (turn) => ({ ...turn, figure: { state: "pending" }, state: "streaming" })));
             },
             onFigure: (spec: unknown) => {
                const checked = parseTutorFigure(spec);
 
+               awaitsFigure = false;
                drawnFigure = checked;
                pacer.pushAction(() => updateTurn(replyId, (turn) => ({ ...withFigureAt(turn, checked), state: "streaming" })));
             },
@@ -661,6 +679,8 @@ export function AgentProvider({ enabled, children }: AgentProviderProps) {
                const fallback = isMarks ? MARKS_REFUSED : FIGURE_REFUSED;
                const copy = event.copy.trim() === "" ? fallback : event.copy;
 
+               awaitsFigure = awaitsFigure && isMarks;
+
                pacer.pushAction(() =>
                   updateTurn(replyId, (turn) =>
                      isMarks ? { ...turn, marks: { state: "refused", copy } } : { ...turn, figure: { state: "refused", offset: turn.text.length, copy }, state: "streaming" }
@@ -682,7 +702,7 @@ export function AgentProvider({ enabled, children }: AgentProviderProps) {
                      text: finalText,
                      state: "done",
                      outcome: event.outcome,
-                     figure: isWithheld ? undefined : turn.figure,
+                     figure: isWithheld ? undefined : withoutPendingFigure(turn).figure,
                      marks: isWithheld ? undefined : turn.marks
                   }));
                   setAnnouncement(`${spokenReply(finalText)}${figureClause}${marksClause}`.trim());

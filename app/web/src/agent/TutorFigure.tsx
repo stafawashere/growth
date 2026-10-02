@@ -1,4 +1,4 @@
-import { useEffect, useId, useLayoutEffect, useMemo, useRef, useState, type KeyboardEvent, type ReactNode } from "react";
+import { useCallback, useEffect, useId, useLayoutEffect, useMemo, useRef, useState, type KeyboardEvent, type ReactNode, type RefObject } from "react";
 
 import type {
    FigurePoint,
@@ -12,7 +12,7 @@ import type {
    TutorFigureRole,
    TutorFigureSpec
 } from "../api/types";
-import { CAPTION_CHARACTER_WIDTH, CAPTION_LINE_HEIGHT, GraphFrame, graphLayout, textBox, withoutMathDelimiters, type GraphLayout } from "../figures/GraphFrame";
+import { GraphFrame, graphLayout, withoutMathDelimiters, type GraphLayout, type TextBox } from "../figures/GraphFrame";
 import { prefersReducedMotion } from "../lessons/FrameStepper";
 import { MathText } from "../math/MathText";
 import { FIGURE_STEP_CLASS, FIGURE_WIPE_CLASS } from "../styles/motion";
@@ -42,6 +42,8 @@ export interface TutorFigureProps {
    onStep?: (stepIndex: number) => void;
    /* Stands in for the prefers-reduced-motion query. */
    reducedMotion?: boolean;
+   /* A class the caller adds to the figure's wrapper, such as the panel's while a reply builds. */
+   className?: string;
 }
 
 export const MAXIMUM_PRIMITIVES = 200;
@@ -393,15 +395,27 @@ function anchorInside(x: number, width: number, align: TutorFigureAlign, viewWid
    return { x, align };
 }
 
+/* The label layer is HTML at the caption type's own size, in CSS pixels, while the drawing scales
+   with the width it is given, so a label is larger in view units the smaller the figure is drawn.
+   These are the caption's estimated width per character and its line height. */
+const LABEL_CHARACTER_PIXELS = 8;
+
+const LABEL_LINE_PIXELS = 18;
+
+function labelWidth(label: TutorFigureLabel, scale: number) {
+   return (withoutMathDelimiters(label.text).length * LABEL_CHARACTER_PIXELS) / scale;
+}
+
 /* A label sits on its anchor the way SVG text sits on its baseline. It is kept inside the view by
-   an estimate of its width; one that would run off an edge is anchored to that edge instead, so
-   the text grows back into the figure whatever its typeset width turns out to be. */
-function placeLabel(index: number, label: TutorFigureLabel, presence: Presence, layout: GraphLayout): PlacedLabel {
-   const width = withoutMathDelimiters(label.text).length * CAPTION_CHARACTER_WIDTH;
+   an estimate of its width at the scale the figure is drawn at; one that would run off an edge is
+   anchored to that edge instead, so the text grows back into the figure whatever its typeset width
+   turns out to be. */
+function placeLabel(index: number, label: TutorFigureLabel, presence: Presence, layout: GraphLayout, scale: number): PlacedLabel {
+   const width = labelWidth(label, scale);
    const anchorX = layout.viewX(label.at[0]) + label.offset[0];
    const anchorY = layout.viewY(label.at[1]) + label.offset[1];
    const placed = anchorInside(anchorX, width, label.align, layout.viewWidth);
-   const y = Math.min(Math.max(anchorY, CAPTION_LINE_HEIGHT), layout.viewHeight);
+   const y = Math.min(Math.max(anchorY, LABEL_LINE_PIXELS / scale), layout.viewHeight);
 
    return {
       index,
@@ -470,6 +484,7 @@ function PositionedLabel(props: { placed: PlacedLabel; motionClass: string; isFi
          className={`tutor-figure-label tutor-figure-${roleClassOf(placed.label, placed.presence)} ${props.motionClass}`.trim()}
          data-align={placed.align}
          data-element={placed.label.element}
+         data-index={placed.index}
          data-entering={props.isFirstFrame ? "true" : undefined}
          data-testid="tutor-figure-label"
       >
@@ -555,9 +570,86 @@ function emptyLayers(): Layers {
    return { fills: [], underlays: [], underlayDots: [], strokes: [], dots: [] };
 }
 
+interface DrawnLabels {
+   scale: number;
+   boxes: Record<number, TextBox>;
+}
+
+function estimatedLabelBox(placed: PlacedLabel, scale: number): TextBox {
+   const width = labelWidth(placed.label, scale);
+   const left = { start: placed.x, middle: placed.x - width / 2, end: placed.x - width }[placed.align];
+
+   return { left, right: left + width, top: placed.y - LABEL_LINE_PIXELS / scale, bottom: placed.y };
+}
+
+/* The scale the figure is drawn at and, for each label drawn, where it is in view units, measured
+   after layout and again whenever the figure changes size, so the frame leaves out the tick numbers
+   a label covers. Without layout (or before it) the scale is 1 and no label is measured. */
+function useDrawnLabels(canvas: RefObject<HTMLDivElement>, viewWidth: number) {
+   const [drawn, setDrawn] = useState<DrawnLabels>({ scale: 1, boxes: {} });
+   const lastDrawn = useRef(JSON.stringify(drawn));
+
+   const measure = useCallback(() => {
+      const node = canvas.current;
+      const frame = node?.getBoundingClientRect();
+      const hasLayout = node !== null && node !== undefined && frame !== undefined && frame.width > 0;
+
+      if (!hasLayout) {
+         return;
+      }
+
+      const scale = frame.width / viewWidth;
+      const inView = (pixels: number) => rounded(pixels / scale);
+      const boxes: Record<number, TextBox> = {};
+
+      node.querySelectorAll("[data-testid='tutor-figure-label']").forEach((label) => {
+         const text = label.querySelector(".tutor-figure-label-text")?.getBoundingClientRect();
+         const isDrawn = text !== undefined && text.width > 0;
+
+         if (isDrawn) {
+            boxes[Number(label.getAttribute("data-index"))] = {
+               left: inView(text.left - frame.left),
+               right: inView(text.right - frame.left),
+               top: inView(text.top - frame.top),
+               bottom: inView(text.bottom - frame.top)
+            };
+         }
+      });
+
+      const next = { scale: rounded(scale), boxes };
+      const serialised = JSON.stringify(next);
+
+      if (serialised !== lastDrawn.current) {
+         lastDrawn.current = serialised;
+         setDrawn(next);
+      }
+   }, [canvas, viewWidth]);
+
+   useLayoutEffect(measure);
+
+   useEffect(() => {
+      const node = canvas.current;
+      const canObserve = node !== null && typeof ResizeObserver === "function";
+
+      if (!canObserve) {
+         return undefined;
+      }
+
+      const observer = new ResizeObserver(measure);
+
+      observer.observe(node);
+
+      return () => observer.disconnect();
+   }, [canvas, measure]);
+
+   return drawn;
+}
+
 function Drawing(props: { figure: TutorFigureSpec; shown: number; entering: EnteringSteps; uid: string; titleId: string; describedBy: string }) {
    const { figure, shown, entering, uid } = props;
+   const canvas = useRef<HTMLDivElement>(null);
    const view = figure.view!;
+   const drawnLabels = useDrawnLabels(canvas, view.width);
    const plotWindow = { domain: figure.window!.x, range: figure.window!.y };
    const layout = graphLayout(plotWindow, view.width, view.padding, view.height - view.padding * 2);
    const toView = (point: FigurePoint): FigurePoint => [layout.viewX(point[0]), layout.viewY(point[1])];
@@ -566,11 +658,14 @@ function Drawing(props: { figure: TutorFigureSpec; shown: number; entering: Ente
    const labels: PlacedLabel[] = [];
    const hasArrows = figure.primitives.some((primitive) => primitive.type === "path" && primitive.arrow !== "none");
 
-   const allLabels = figure.primitives.filter((primitive): primitive is TutorFigureLabel => primitive.type === "label");
-   const labelBoxes = allLabels.map((label, index) => {
-      const placed = placeLabel(index, label, "drawn", layout);
+   const labelBoxes = figure.primitives.flatMap((primitive, index) => {
+      if (primitive.type !== "label") {
+         return [];
+      }
 
-      return textBox(placed.x, placed.y, withoutMathDelimiters(label.text), placed.align, "auto");
+      const measured = drawnLabels.boxes[index];
+
+      return [measured ?? estimatedLabelBox(placeLabel(index, primitive, "drawn", layout, drawnLabels.scale), drawnLabels.scale)];
    });
 
    figure.primitives.forEach((primitive, index) => {
@@ -585,7 +680,7 @@ function Drawing(props: { figure: TutorFigureSpec; shown: number; entering: Ente
       const isGhost = presence === "ghost";
 
       if (primitive.type === "label") {
-         labels.push(placeLabel(index, primitive, presence, layout));
+         labels.push(placeLabel(index, primitive, presence, layout, drawnLabels.scale));
          return;
       }
 
@@ -642,7 +737,7 @@ function Drawing(props: { figure: TutorFigureSpec; shown: number; entering: Ente
    const clipIdOf = (index: number) => `${uid}-wipe-${index}`;
 
    return (
-      <div className="tutor-figure-canvas">
+      <div className="tutor-figure-canvas" ref={canvas}>
          <svg
             role="img"
             aria-labelledby={props.titleId}
@@ -874,7 +969,7 @@ function DrawnFigure(props: Omit<TutorFigureProps, "spec"> & { figure: TutorFigu
 
    return (
       <div
-         className="tutor-figure"
+         className={props.className === undefined ? "tutor-figure" : `tutor-figure ${props.className}`}
          role="group"
          tabIndex={0}
          aria-labelledby={titleId}

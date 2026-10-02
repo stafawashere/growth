@@ -235,7 +235,7 @@ A marker before the figure arrived, for an unknown step or repeated, is ignored.
 
 `app/web/src/agent/TutorFigure.tsx` renders the figure frame at once and each primitive when its step is revealed, in an SVG with a 320-unit view width, so ticks and strokes render near 1:1 in the 320 to 384 px panel. It reuses the graph frame from `app/web/src/figures/FigureView.tsx` (layout, axes, gridlines, numbered ticks), which is factored into a shared component with the item figure's output unchanged. Labels are an HTML layer over the SVG, positioned in percentages of the view box and typeset with `MathText` on the tutor renderer, clamped inside the figure. The client re-validates the render spec (types, finite numbers, the point and primitive caps) and draws nothing from a spec that fails, showing the refused line instead.
 
-Placement: the reply renders its text up to the figure's offset, the figure, then the rest, so the figure sits where the model put it, under the sentence that introduces it.
+Placement: the reply renders its text up to the figure's offset, the figure, then the rest, so the figure sits where the model put it, under the sentence that introduces it. While the figure is building it is pinned (sticky) at the top of the conversation region on an opaque surface, so the sentences that reveal its steps scroll beneath it the way captions run under a board; when the reply has finished and every step has appeared it returns to normal flow. The live walk on 2026-10-01 found that without this the panel's follow-the-newest-text scrolling pushed the figure out of view at an 800 px window height while it built.
 
 ## Motion [inferred]
 

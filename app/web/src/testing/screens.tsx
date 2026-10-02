@@ -901,6 +901,28 @@ const TUTOR_FIGURE_SCREENS: Screen[] = [
       }
    },
    {
+      name: "tutor panel, a figure while it builds",
+      mount: async () => {
+         const container = await tutorPanel(
+            async () =>
+               sseResponse(
+                  [
+                     frame("start", { conversation_id: "ACV-1", turn_id: "ATN-1", screen_line: "", can_see: [] }),
+                     frame("text", { delta: "Look at the curve first. " }),
+                     frame("figure", SECANT_TO_TANGENT),
+                     frame("figure_step", { figure: SECANT_TO_TANGENT.id, step: SECANT_TO_TANGENT.steps[0].id })
+                  ],
+                  true
+               ),
+            "Can you draw the tangent?"
+         );
+
+         await screen.findByTestId("tutor-figure");
+
+         return container;
+      }
+   },
+   {
       name: "tutor panel, a reply that marked the page",
       mount: async () => {
          const steps = ITEM_MARKS.steps.map((step) => frame("figure_step", { figure: ITEM_MARKS.id, step: step.id }));

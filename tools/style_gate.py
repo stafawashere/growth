@@ -1,6 +1,8 @@
 """PostToolUse hook: reject em dashes, spaced en dashes, and missing front matter in research and data files.
 
-Reads the hook payload from stdin, checks the written file, and exits 2 with a message when the file breaks a rule.
+As a hook it reads the payload from stdin and checks the written file. Given paths on the command line
+(`python3 tools/style_gate.py FILE...`) it checks those instead and never reads stdin. Either way it exits
+2 with a message when a file breaks a rule.
 """
 import json
 import re
@@ -8,23 +10,17 @@ import sys
 from pathlib import Path
 
 
-def main():
-   try:
-      payload = json.load(sys.stdin)
-   except Exception:
-      return
-
-   file_path = payload.get("tool_input", {}).get("file_path", "")
+def file_problems(file_path):
    is_library_file = "/research/" in file_path or "/data/" in file_path or "/docs/" in file_path or file_path.endswith(".py")
 
    if not is_library_file:
-      return
+      return []
 
-   path = Path(file_path)
-   has_file = path.exists()
+   path = Path(file_path).resolve()
+   has_file = path.is_file()
 
    if not has_file:
-      return
+      return []
 
    text = path.read_text(errors="ignore")
    problems = []
@@ -46,8 +42,30 @@ def main():
    if has_predictive:
       problems.append("predictive exam language present")
 
-   if problems:
-      print(f"style_gate: {path.name}: " + "; ".join(problems), file=sys.stderr)
+   return problems
+
+
+def main():
+   file_paths = [str(Path(argument).resolve()) for argument in sys.argv[1:]]
+
+   if not file_paths:
+      try:
+         payload = json.load(sys.stdin)
+      except Exception:
+         return
+
+      file_paths = [payload.get("tool_input", {}).get("file_path", "")]
+
+   failed = False
+
+   for file_path in file_paths:
+      problems = file_problems(file_path)
+
+      if problems:
+         print(f"style_gate: {Path(file_path).name}: " + "; ".join(problems), file=sys.stderr)
+         failed = True
+
+   if failed:
       sys.exit(2)
 
 

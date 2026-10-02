@@ -247,7 +247,7 @@ def next_item_learning(
          return Selection(served)
 
    fringe = outer_fringe(states, graph)
-   available, coverage_gaps = candidates(fringe, graph, bank)
+   available, coverage_gaps = candidates(fringe, graph, bank, states)
    allowed, shortfalls = constrained_candidates(
       available, history, graph, bank, excluded_ids, rules, unit_counts
    )

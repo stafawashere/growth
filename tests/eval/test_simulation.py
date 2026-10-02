@@ -69,7 +69,7 @@ def test_simulation_prereq_gap_stalls_dependants():
       assert crediting_primaries.isdisjoint(set(dependants))
 
    served_primaries = {record["primary_skill"] for record in result.trace}
-   blocked = [record for record in result.trace if record["unmastered_hard_ancestors"]]
+   blocked = [record for record in result.trace if record["unmastered_blocking_ancestors"]]
 
    assert len(result.trace) > 0
    assert blocked == []

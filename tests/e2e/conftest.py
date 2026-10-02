@@ -12,18 +12,23 @@ out while the flow ran.
 """
 import json
 import socket
-from datetime import date
+from datetime import date, datetime
 from pathlib import Path
 
 import pytest
 from sqlalchemy.orm import Session as OrmSession
 
 from app.db import models
+from app.engine.state import SkillState
 from app.items import ingest
 from app.main import build_application
+from app.session import repository
 
 REPO_ROOT = Path(__file__).resolve().parents[2]
 ITEMS_DIRECTORY = REPO_ROOT / "tests" / "fixtures" / "items_p1"
+AGENT_ITEMS_DIRECTORY = REPO_ROOT / "content" / "items_p1_agent"
+COLD_START_P1_ARCHETYPES = ("BC-QA-01004", "BC-QA-01015")
+GRAPH_P1_FIXTURE = REPO_ROOT / "tests" / "fixtures" / "graph_p1.json"
 CASSETTE_PATH = (
    REPO_ROOT / "tests" / "fixtures" / "provider_cassettes" / "tutor_elaborated_v1.json"
 )
@@ -75,10 +80,26 @@ def forbid_network(monkeypatch):
    return refuse_network_socket
 
 
-def fixture_records():
+def synthetic_records():
    paths = sorted(path for path in ITEMS_DIRECTORY.iterdir() if path.suffix == ".json")
 
    return [json.loads(path.read_text()) for path in paths]
+
+
+def cold_start_agent_records():
+   """The signed-off P1 drafts of the two P1 archetypes a fresh student's fringe opens. Since
+   ff528291 stopped seeding BC-SKL-01044 mastered, BC-QA-01008 is gated at cold start and none of
+   the six synthetic archetypes is servable in a first session, so without these the bank holds
+   nothing the fringe can reach.
+   """
+   paths = sorted(path for path in AGENT_ITEMS_DIRECTORY.iterdir() if path.suffix == ".json")
+   records = [json.loads(path.read_text()) for path in paths]
+
+   return [record for record in records if record["archetype_id"] in COLD_START_P1_ARCHETYPES]
+
+
+def fixture_records():
+   return synthetic_records() + cold_start_agent_records()
 
 
 def answers_by_item(records):
@@ -154,15 +175,48 @@ class World:
          }
 
 
+def seed_parents_outside_p1(world):
+   """The P1 world the exit criteria were set in: 02 R15 seeds every parent outside the loaded
+   subgraph mastered. Production stopped seeding the six BC-SKL among them on 2026-09-26, and the
+   root gates of 2026-09-28 put further Unit 1 parents above the P1 skills, so from a production
+   cold start the P1 bank reaches only BC-QA-01004 and BC-QA-01015 and never Unit 2. Seeding the
+   parents outside the 54 P1 skills, as R15 states it, restores the subgraph those criteria name.
+   Returns the seeded ids.
+   """
+   fixture = json.loads(GRAPH_P1_FIXTURE.read_text())
+   p1_skills = {record["id"] for record in fixture["skills"]}
+   graph = world.settings.session_context.graph
+   outside = sorted({
+      parent
+      for skill_id in p1_skills
+      for parent in graph.gating_parents(skill_id)
+      if parent in graph.skills and parent not in p1_skills
+   })
+
+   with OrmSession(world.engine) as db:
+      states = repository.load_states(db, world.user_id)
+      created_at = db.get(models.User, world.user_id).created_at
+      seeded_at = datetime.fromisoformat(created_at)
+
+      for skill_id in outside:
+         states[skill_id] = SkillState.seeded_mastered(skill_id, seeded_at)
+
+      repository.save_states(db, world.user_id, states, world.settings.session_context.snapshot_id, seeded_at)
+      db.commit()
+
+   return outside
+
+
 def publish_fixture_items(world):
    """The fixture items reach the bank through app/items/ingest.py, the path the operator uses."""
    context = world.settings.session_context
    active_error_ids = set(context.errors)
 
    with OrmSession(world.engine) as db:
-      results = ingest.ingest_directory(
-         db, ITEMS_DIRECTORY, active_error_ids, context.snapshot_id, INGESTED_AT
-      )
+      results = [
+         ingest.ingest_item(db, record, active_error_ids, context.snapshot_id, INGESTED_AT)
+         for record in fixture_records()
+      ]
       db.commit()
 
    rejected = [result for result in results if result["status"] != "verified"]

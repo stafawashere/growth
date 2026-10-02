@@ -42,7 +42,7 @@ def test_two_term_selection_whole_graph(library):
       states, bank = placed_states(library, 900 + seed)
       later = TODAY + timedelta(days=12)
       retrievability = current_retrievability(states, later)
-      available, _ = candidates(outer_fringe(states, graph), graph, bank)
+      available, _ = candidates(outer_fringe(states, graph), graph, bank, states)
       covers = {record["id"]: due_coverage(record, states, graph, later, retrievability) for record in available}
       best = max(covers.values())
       selection = next_item_learning(
@@ -62,7 +62,7 @@ def test_ties_resolve_uniformly_inside_the_fringe(library):
    graph = library.graph
    states = whole_graph.fresh_states()
    bank = whole_graph.synthetic_bank(graph)
-   available, _ = candidates(outer_fringe(states, graph), graph, bank)
+   available, _ = candidates(outer_fringe(states, graph), graph, bank, states)
    draws = Counter()
    rounds = 60 * len(available)
    rng = random.Random(4)

@@ -7,7 +7,7 @@ reached a new account's first set on 2026-09-28.
 """
 import random
 
-from app.engine.fringe import outer_fringe
+from app.engine.fringe import candidates, outer_fringe
 from app.engine.update import required_distinct_archetypes
 from app.sim import whole_graph
 
@@ -163,3 +163,60 @@ def test_a_student_placed_across_the_course_keeps_the_known_boundary_open():
 
    assert boundary
    assert set(outer_fringe(states, graph)) & boundary
+
+
+def secondary_only_case(graph):
+   """An archetype whose second skill no archetype leads with, both skills on a Unit 1 chain."""
+   primaries = {graph.primary_skill(archetype_id) for archetype_id in graph.archetypes}
+
+   for archetype_id, record in sorted(graph.archetypes.items()):
+      primary = graph.primary_skill(archetype_id)
+      secondaries = [
+         skill_id
+         for skill_id in record["skills"][1:]
+         if skill_id in graph.skills and skill_id not in primaries
+      ]
+      is_entry = graph.blocking_parents(primary) == []
+      has_case = is_entry and len(secondaries) > 0
+
+      if has_case:
+         return archetype_id, primary, secondaries[0]
+
+   return None
+
+
+def test_an_archetype_reaches_a_fringe_skill_beside_its_mastered_primary():
+   """02, Plan amendments 2026-10-02: a skill no archetype leads with is practised only beside
+   another skill's primary, so once that primary is mastered the archetype must stay a block 2
+   candidate while it loads a fringe skill. Without it a perfect student placed by the diagnostic
+   left 50 such fringe skills unobserved for 219 days."""
+   library = whole_graph.library()
+   graph = library.graph
+   bank = whole_graph.synthetic_bank(graph)
+   case = secondary_only_case(graph)
+
+   assert case is not None, "no secondary-only skill beside an entry primary, so nothing was measured"
+
+   archetype_id, primary, secondary = case
+   states = whole_graph.fresh_states()
+
+   for parent in graph.blocking_parents(secondary):
+      states[parent].mastered = True
+
+   states[primary].mastered = True
+   fringe = outer_fringe(states, graph)
+   available, _ = candidates(fringe, graph, bank, states)
+
+   assert secondary in fringe
+   assert archetype_id in {record["id"] for record in available}
+
+   states[secondary].mastered = True
+   others_on_fringe = [
+      skill_id
+      for skill_id in graph.archetypes[archetype_id]["skills"][1:]
+      if skill_id in outer_fringe(states, graph)
+   ]
+   available, _ = candidates(outer_fringe(states, graph), graph, bank, states)
+   offered = {record["id"] for record in available}
+
+   assert (archetype_id in offered) == (len(others_on_fringe) > 0)

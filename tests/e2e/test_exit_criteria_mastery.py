@@ -6,10 +6,13 @@ docs/plan/02-adaptive-engine.md, "Mastery declaration and un-mastery": each cond
 from the attempts rows (served_stage, per_skill_states, format, submitted_at and the item's
 archetype) up to the attempt at which skills_state flipped.
 
-The items are the synthetic fixtures in tests/fixtures/items_p1/, which count toward no item-quality
-gate. What these tests demonstrate is the engine path from a route to a mastery transition, not the
-quality of any item.
+The items are the synthetic fixtures in tests/fixtures/items_p1/ and the signed-off P1 drafts of
+BC-QA-01004 and BC-QA-01015, which count toward no item-quality gate here, and the student starts in
+the P1 world of 02 R15, every parent outside the 54 P1 skills seeded mastered. What these tests
+demonstrate is the engine path from a route to a mastery transition, not the quality of any item.
 """
+import csv
+import functools
 import json
 import math
 import re
@@ -21,7 +24,7 @@ from app.auth import service as auth_service
 from app.db import models
 from app.engine import fsrs
 from app.engine.state import FADING_ORDER, FadingStage, MasteryState, ResponseFormat
-from tests.e2e.conftest import FIRST_DAY, REPO_ROOT
+from tests.e2e.conftest import FIRST_DAY, REPO_ROOT, seed_parents_outside_p1
 from tests.e2e.test_session_login_to_feedback import (
    answer_for,
    collects_confidence,
@@ -32,6 +35,7 @@ from tests.e2e.test_session_login_to_feedback import (
 PLAN_PHASES = REPO_ROOT / "docs" / "plan" / "11-phased-delivery.md"
 GRAPH_FIXTURE = REPO_ROOT / "tests" / "fixtures" / "graph_p1.json"
 ARCHETYPE_REGISTRY = REPO_ROOT / "data" / "archetypes.json"
+EDGE_REGISTRY = REPO_ROOT / "data" / "prereq_edges.csv"
 UNIT_TWO = "BC-UNIT-02"
 
 PLAN_MASTERY_THRESHOLD = 0.9
@@ -43,6 +47,7 @@ PLAN_MIN_DAY_SPAN = 7
 PLAN_DESIRED_RETENTION = 0.90
 PLAN_GAMMA = 1.0
 PLAN_RHO = -0.5
+PLAN_PROPAGATION_HARD_ONE_HOP = 0.3
 PLAN_MCQ_SUCCESS_CREDIT = 0.75
 PLAN_FADING_ADVANCE_AFTER = 2
 PLAN_FADING_DROP_AFTER = 2
@@ -109,20 +114,49 @@ def fixture_primary_skills():
    return [record["skills"][0] for record in fixture["archetypes"]]
 
 
-def active_archetype_count(skill_id):
-   """Condition 3's ceiling: the archetypes of the active snapshot that list the skill."""
+def servable_archetype_count(world, skill_id, rows):
+   """Condition 3's ceiling as 02 corrected it on 2026-09-29: the active archetypes listing the
+   skill that the student can be served at that moment, meaning every blocking parent of the
+   archetype's primary skill is mastered in the skills_state rows read after the attempt."""
    registry = json.loads(ARCHETYPE_REGISTRY.read_text())["archetypes"]
+   graph = world.settings.session_context.graph
    count = 0
 
    for record in registry:
       is_active = record.get("status", "active") == "active"
       lists_skill = skill_id in record["skills"]
-      counts = is_active and lists_skill
+      primary = record["skills"][0]
+      gate_clear = all(
+         rows[parent]["mastered"] == 1
+         for parent in graph.blocking_parents(primary)
+         if parent in rows
+      )
+      counts = is_active and lists_skill and gate_clear
 
       if counts:
          count += 1
 
    return count
+
+
+@functools.cache
+def hard_parents_by_child():
+   with EDGE_REGISTRY.open() as handle:
+      rows = list(csv.DictReader(handle))
+
+   parents = {}
+
+   for row in rows:
+      is_hard = row["type"] == "hard_prerequisite"
+
+      if is_hard:
+         parents.setdefault(row["to"], set()).add(row["from"])
+
+   return parents
+
+
+def hard_parents_of(skill_id):
+   return hard_parents_by_child().get(skill_id, set())
 
 
 def skill_rows(world):
@@ -204,24 +238,33 @@ def sigmoid(logit):
    return 1.0 / (1.0 + math.exp(-logit))
 
 
-def six_conditions(evidence, skill_id, beta, stability, difficulty):
+def six_conditions(evidence, skill_id, beta, stability, difficulty, servable_count):
    """D2's six conditions recomputed from attempts up to and including the flip attempt.
 
-   Condition 1 counts direct credit only. Propagated credit from a descendant can only add to c_k
-   in P1, because no rule-based diagnosis emits prerequisite_gap, so a strength that clears the
-   threshold here clears it in the engine too.
+   Condition 1 counts direct credit and the one-hop share of 02's propagation table: 0.3 of every
+   credited success on a skill whose hard_prerequisite parent this is, from an attempt that did not
+   load this skill beside it. The two-hop and supporting shares are left out, and propagated credit
+   can only add to c_k in P1 because no rule-based diagnosis emits prerequisite_gap, so this is a
+   lower bound on the engine's strength and one that clears the threshold here clears it there too.
    """
    loading = [entry for entry in evidence if skill_id in entry["per_skill_states"]]
+   propagated = sum(
+      PLAN_PROPAGATION_HARD_ONE_HOP * credited_success(entry, child)
+      for entry in evidence
+      if skill_id not in entry["per_skill_states"]
+      for child in entry["per_skill_states"]
+      if skill_id in hard_parents_of(child)
+   )
    unaided = [entry for entry in loading if is_unaided_success(entry, skill_id)]
    days = sorted({entry["day"] for entry in unaided})
    has_days = len(days) > 0
    span = (days[-1] - days[0]).days if has_days else 0
    archetypes = {entry["archetype_id"] for entry in unaided}
    required_archetypes = max(
-      1, min(PLAN_MIN_DISTINCT_ARCHETYPES, active_archetype_count(skill_id))
+      1, min(PLAN_MIN_DISTINCT_ARCHETYPES, servable_count)
    )
 
-   successes = sum(credited_success(entry, skill_id) for entry in loading)
+   successes = sum(credited_success(entry, skill_id) for entry in loading) + propagated
    failures = sum(credited_failure(entry, skill_id) for entry in loading)
    strength = beta + PLAN_GAMMA * math.log1p(successes) + PLAN_RHO * math.log1p(failures)
 
@@ -332,6 +375,10 @@ def start(world):
 
    assert registered.status_code == 200, registered.text
 
+   seeded = seed_parents_outside_p1(world)
+
+   assert len(seeded) > 0
+
    return Run(world, client)
 
 
@@ -340,8 +387,10 @@ def conditions_after(world, run, skill_id, position):
    after = run.after_attempt[attempt_id][skill_id]
    evidence = attempt_evidence(world, run.attempt_ids[: position + 1])
 
+   servable_count = servable_archetype_count(world, skill_id, run.after_attempt[attempt_id])
+
    return six_conditions(
-      evidence, skill_id, after["beta"], after["stability"], after["difficulty"]
+      evidence, skill_id, after["beta"], after["stability"], after["difficulty"], servable_count
    )
 
 

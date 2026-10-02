@@ -10,6 +10,13 @@ least --min-observations observations, which of the six mastery conditions of do
    PYTHONPATH=. .venv/bin/python tools/throughput.py --fast
    PYTHONPATH=. .venv/bin/python tools/throughput.py --population 20
    PYTHONPATH=. .venv/bin/python tools/throughput.py --seeds 1 --trace BC-SKL-01054
+   PYTHONPATH=. .venv/bin/python tools/throughput.py --world perfect --diagnostic
+   PYTHONPATH=. .venv/bin/python tools/throughput.py --secondary-candidates off
+
+--world perfect answers every item correctly and knows every skill. --diagnostic runs the
+first-login placement over the synthetic bank before day 1, answered by the same hidden student.
+--secondary-candidates off reproduces block 2 as it was before 2026-10-02, when an archetype was a
+candidate only while its primary skill sat on the fringe.
 
 Nothing here writes to data/ and nothing here modifies the engine.
 """
@@ -19,7 +26,7 @@ import random
 from collections import Counter
 from datetime import date, timedelta
 
-from app.engine import diagnostic
+from app.engine import constants, diagnostic
 from app.engine.strength import probability
 from app.engine.update import mastery_conditions, required_distinct_archetypes
 from app.sim import learning, whole_graph
@@ -27,7 +34,9 @@ from app.sim import learning, whole_graph
 EXAM_EVE = date(2027, 5, 7)
 WORLD_FIXED = "fixed"
 WORLD_LEARNING = "learning"
-WORLDS = (WORLD_FIXED, WORLD_LEARNING)
+WORLD_PERFECT = "perfect"
+WORLDS = (WORLD_FIXED, WORLD_LEARNING, WORLD_PERFECT)
+SWITCH_STATES = ("on", "off")
 DEFAULT_CHECKPOINTS = (30, 60, 90, 120, 150, 180, 219)
 DEFAULT_MIN_OBSERVATIONS = 10
 FAST_DAYS = 60
@@ -271,14 +280,105 @@ def make_student(seed, ability, graph):
    )
 
 
+class PerfectWorld:
+   """A student who knows every skill and never slips."""
+
+   def learn(self, skill_ids, stage, today):
+      return None
+
+   def answer(self, record, response_format, stage, today):
+      return True
+
+   def knows(self, skill_id):
+      return True
+
+
+def diagnostic_answer(world_model, record, today):
+   can_learn = hasattr(world_model, "learn")
+
+   if can_learn:
+      return world_model.answer(record, "short_answer", "unsupported", today)
+
+   return world_model.answer(record, "short_answer", today)
+
+
+def place_by_diagnostic(states, bank, seed, world_model, library):
+   """The first-login diagnostic answered by the run's own hidden student: every scored answer
+   goes through the ordinary update and the placement is applied at the end, as the service does.
+   A miss is recorded as incorrect, never as "not learned yet". Returns (items asked, placed)."""
+   graph = library.graph
+   today = whole_graph.START_DAY
+   rng = random.Random(seed)
+   retrievability = whole_graph.current_retrievability(states, today)
+   run = diagnostic.start_run(states, graph, bank, retrievability, rng, "short_answer")
+   asked = 0
+
+   while True:
+      record = diagnostic.next_archetype(run, graph, bank, rng)
+
+      if record is None:
+         break
+
+      asked += 1
+      is_correct = diagnostic_answer(world_model, record, today)
+      outcome = diagnostic.OUTCOME_CORRECT if is_correct else diagnostic.OUTCOME_INCORRECT
+      entry = run.pending
+      diagnostic.record_outcome(run, record, outcome, item_id=f"{record['id']}-SYN00")
+
+      if not entry["held_out"]:
+         whole_graph.apply_diagnostic_observation(
+            states, library.engine_graph, record, outcome, "short_answer", today
+         )
+
+   placement = diagnostic.place(run, states, graph, today)
+
+   return asked, len(placement["newly_mastered"])
+
+
+def unit_reach(history, graph, snapshots, by_unit):
+   """The first day an item led by each unit was served, and the first day each unit had a
+   mastered teachable skill."""
+   first_served = {}
+   first_mastered = {}
+
+   for offset, day_record in enumerate(history, start=1):
+      for record in day_record.records:
+         first_served.setdefault(record["primary_unit"], offset)
+
+   for offset, counts in snapshots:
+      for unit in by_unit:
+         has_mastered = counts.get(unit, 0) > 0
+
+         if has_mastered:
+            first_mastered.setdefault(unit, offset)
+
+   return first_served, first_mastered
+
+
+def all_mastered_day(snapshots, by_unit):
+   teachable_count = sum(len(skills) for skills in by_unit.values())
+
+   for offset, counts in snapshots:
+      is_complete = sum(counts.values()) == teachable_count
+
+      if is_complete:
+         return offset
+
+   return None
+
+
 def make_world(student, seed, world, hard_parents):
    """The fixed World of the P1 runner, or 10's learning world with the stage 12 rules: a
    per-skill learning rate, prior knowledge consolidated at the capped half-life, and half-life
    growth at most once a day."""
    is_fixed = world == WORLD_FIXED
+   is_perfect = world == WORLD_PERFECT
 
    if is_fixed:
       return None
+
+   if is_perfect:
+      return PerfectWorld()
 
    learner = learning.learning_student_from(student, random.Random(seed + 31))
 
@@ -292,13 +392,23 @@ def make_world(student, seed, world, hard_parents):
    )
 
 
-def run_one(seed, ability, days, checkpoints, min_observations, trace=None, world=WORLD_FIXED):
+def run_one(
+   seed, ability, days, checkpoints, min_observations, trace=None, world=WORLD_FIXED, placed=False
+):
    library = whole_graph.library()
    graph = library.graph
    engine_graph = library.engine_graph
    bank = whole_graph.synthetic_bank(graph)
    student = make_student(seed, ability, graph)
    world_model = make_world(student, seed, world, engine_graph.hard_parents)
+   states = whole_graph.fresh_states()
+   asked, placed_count = 0, 0
+
+   if placed:
+      placement_world = world_model if world_model is not None else whole_graph.World(
+         whole_graph.student_trajectory(student), random.Random(seed + 7919)
+      )
+      asked, placed_count = place_by_diagnostic(states, bank, seed, placement_world, library)
    known_at_start = sum(1 for skill_id in teachable_skills(graph) if student.true_state.get(skill_id))
    teachable = teachable_skills(graph)
    by_unit = skills_by_unit(graph, teachable)
@@ -315,8 +425,9 @@ def run_one(seed, ability, days, checkpoints, min_observations, trace=None, worl
          checkpoint_counts[offset] = counts
 
    history, states, world_model, served = whole_graph.run_days(
-      student, bank, seed=seed, days=days, on_day=on_day, world_model=world_model
+      student, bank, seed=seed, days=days, states=states, on_day=on_day, world_model=world_model
    )
+   first_served, first_mastered = unit_reach(history, graph, snapshots, by_unit)
    last_day = whole_graph.START_DAY + timedelta(days=days - 1)
    profile = serve_profile(history, graph)
    weights = blocker_weights(states, graph, teachable)
@@ -339,6 +450,11 @@ def run_one(seed, ability, days, checkpoints, min_observations, trace=None, worl
       "checkpoints": checkpoint_counts,
       "unit_sizes": {unit: len(skills) for unit, skills in by_unit.items()},
       "completion": unit_completion_days(snapshots, by_unit),
+      "diagnostic_items": asked,
+      "placed": placed_count,
+      "first_served": first_served,
+      "first_mastered": first_mastered,
+      "all_mastered_day": all_mastered_day(snapshots, by_unit),
       "stuck": stuck_rows(states, graph, engine_graph, world_model, last_day, min_observations, profile),
       "unmastered_by_observations": observation_histogram(states, teachable),
       "top_blockers": [
@@ -378,6 +494,12 @@ def format_run(result):
       lines.append(f"day {offset:>6} " + " ".join(f"{counts.get(unit, 0):>4}" for unit in units) + f" {total:>5}")
 
    lines.append("unit sizes " + " ".join(f"{result['unit_sizes'][unit]:>4}" for unit in units))
+   lines.append("1st served " + " ".join(f"{result['first_served'].get(unit, '-'):>4}" for unit in units))
+   lines.append("1st master " + " ".join(f"{result['first_mastered'].get(unit, '-'):>4}" for unit in units))
+   lines.append(
+      f"diagnostic items {result['diagnostic_items']}, placed {result['placed']}, every teachable "
+      f"skill mastered on day {result['all_mastered_day'] if result['all_mastered_day'] else 'never'}"
+   )
    completion = result["completion"]
    lines.append("completes  " + " ".join(f"{completion[unit] if completion[unit] is not None else '-':>4}" for unit in units))
    lines.append("failure rate by 30-day window: " + ", ".join(
@@ -449,12 +571,15 @@ def parse_args(argv=None):
    parser.add_argument("--trace", default=None, help="print every serve that loaded this skill")
    parser.add_argument("--world", choices=WORLDS, default=WORLD_FIXED, help="the hidden student model")
    parser.add_argument("--json", default=None, help="write the raw results here")
+   parser.add_argument("--diagnostic", action="store_true", help="place the student by the diagnostic first")
+   parser.add_argument("--secondary-candidates", choices=SWITCH_STATES, default="on")
 
    return parser.parse_args(argv)
 
 
 def main(argv=None):
    args = parse_args(argv)
+   constants.CANDIDATES_REACH_SECONDARY_FRINGE = args.secondary_candidates == "on"
    days = args.days if args.days is not None else day_count(whole_graph.START_DAY, args.end)
    seeds = list(args.seeds)
    population = args.population
@@ -474,7 +599,14 @@ def main(argv=None):
 
    for seed in seeds:
       result = run_one(
-         seed, args.ability, days, checkpoints, args.min_observations, trace=args.trace, world=args.world
+         seed,
+         args.ability,
+         days,
+         checkpoints,
+         args.min_observations,
+         trace=args.trace,
+         world=args.world,
+         placed=args.diagnostic,
       )
       results.append(result)
       print(format_run(result))
@@ -484,7 +616,9 @@ def main(argv=None):
 
    for index in range(population):
       seed = POPULATION_SEED_BASE + index
-      result = run_one(seed, None, days, checkpoints, args.min_observations, world=args.world)
+      result = run_one(
+         seed, None, days, checkpoints, args.min_observations, world=args.world, placed=args.diagnostic
+      )
       population_results.append(result)
 
    if population_results:

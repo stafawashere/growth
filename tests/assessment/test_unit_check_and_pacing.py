@@ -14,9 +14,45 @@ from app.session import repository
 from tests.assessment.conftest import key_option_id, session_part
 
 
+def key_mathjson(application, item_id):
+   with OrmSession(application.state.engine) as db:
+      return json.loads(db.get(models.Item, item_id).answer_key)["mathjson"]
+
+
+def place_through_the_diagnostic(application, client):
+   """The first-login diagnostic answered correctly throughout. Since the root gates of 2026-09-28
+   a student nobody has placed can be served six Unit 1 archetypes and nothing else, so no unit can
+   supply the eight items a check holds; a student the diagnostic placed can be checked, which is
+   when 05 offers a check at all, once a unit's fringe-adjacent skills are at or near mastery."""
+   opened = client.post("/sessions", json={"mode": "diagnostic"})
+
+   assert opened.status_code == 200, opened.text
+
+   session_id = opened.json()["id"]
+
+   while True:
+      served = client.get(f"/sessions/{session_id}/next")
+
+      assert served.status_code == 200, served.text
+
+      body = served.json()
+
+      if body["diagnostic_finished"]:
+         return
+
+      item = body["item"]
+      submitted = client.post(
+         f"/sessions/{session_id}/attempts",
+         json={"item_id": item["id"], "answer": {"mathjson": key_mathjson(application, item["id"])}, "elapsed_ms": 60000},
+      )
+
+      assert submitted.status_code == 200, submitted.text
+
+
 def test_unit_check_covers_the_unit_and_withholds_feedback(assessment_app):
    application, client, user_id = assessment_app
    context = application.state.settings.session_context
+   place_through_the_diagnostic(application, client)
    units = client.get("/unit-checks/units").json()["units"]
    unit_id = next(entry["unit_id"] for entry in units if entry["available"] and entry["items"] >= unit_check.MIN_ITEMS)
    opened = client.post("/unit-checks", json={"unit_id": unit_id})

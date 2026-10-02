@@ -1,16 +1,25 @@
 """The Today candidate policies of app/sim/today_policies.py, and the block 3 hook the running app
-never passes."""
+never passes by default."""
 import random
-from datetime import date
+import re
+from datetime import date, datetime
 from pathlib import Path
 
+from sqlalchemy.orm import Session as OrmSession
+
+from app.db import models
 from app.engine.fringe import Graph
+from app.engine.priority import retrievability_priority_ordering
 from app.engine.state import SkillState
+from app.experiments import switches
+from app.main import experiment_default_state
 from app.sim import learning, p7_evals, today_policies
 
 REPOSITORY_ROOT = Path(__file__).resolve().parents[2]
 TODAY = date(2026, 10, 1)
 SHUFFLE_SEEDS = range(20)
+SWITCH_USER_ID = "USER-switch"
+SWITCH_NOW = datetime(2026, 10, 1, 9, 0, 0)
 
 
 def archetype(archetype_id, skills, family="FAM-1", unit="U01"):
@@ -126,9 +135,32 @@ def test_review_first_keeps_block_2_and_changes_block_3(monkeypatch):
       assert review_first[day][0] == two_term[day][0]
 
 
-def test_the_running_app_passes_no_retrieval_ordering():
+def selection_orderings(tmp_path, default_state):
+   state = switches.resolve_default(default_state, switches.SELECTION_PRIORITY)
+   engine = models.make_engine(tmp_path / f"{state}.db")
+
+   with OrmSession(engine) as db:
+      return switches.selection_ordering(db, SWITCH_USER_ID, "SES-switch", default_state, SWITCH_NOW)
+
+
+def test_the_running_app_passes_a_retrieval_ordering_only_under_the_switch(tmp_path):
+   """02, Plan amendments 2026-09-29: retrievability priority reaches blocks 2 and 3 of the running
+   app only behind selection_priority, default off. The hook was simulation-only when this test
+   first read the source for the name; the switch now carries it, so the test reads what the
+   session is handed instead."""
+   running = experiment_default_state({})
+   switched_on = {**running, switches.SELECTION_PRIORITY: switches.ON}
+
+   assert switches.resolve_default(running, switches.SELECTION_PRIORITY) == switches.OFF
+   assert selection_orderings(tmp_path, running) == (None, None)
+   assert selection_orderings(tmp_path, switched_on) == (
+      retrievability_priority_ordering,
+      retrievability_priority_ordering,
+   )
+
    for relative in ("app/session/service.py", "app/session/preview.py"):
       source = (REPOSITORY_ROOT / relative).read_text()
+      handed_from_the_switch = re.findall(r"retrieval_ordering = ([\w.]+)", source)
 
       assert "assemble_session" in source
-      assert "retrieval_ordering" not in source
+      assert set(handed_from_the_switch) <= {"None", "preview_orderings", "switches.selection_ordering"}

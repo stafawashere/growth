@@ -193,16 +193,38 @@ def gated_records(records, states, graph):
    ]
 
 
-def candidates(fringe, graph, bank):
-   """Fringe archetypes with at least one published item, plus the coverage gaps (R18)."""
+def reaches_fringe_through_secondary(record, on_fringe, states, graph):
+   """An archetype whose primary skill is mastered and still servable, loading a fringe skill
+   beside it: the only way a skill no archetype leads with reaches block 2 once its primaries are
+   mastered."""
+   if states is None:
+      return False
+
+   primary = primary_skill(record)
+   primary_mastered = is_mastered(primary, states)
+   primary_servable = parents_mastered(primary, states, graph)
+   loads_fringe_skill = any(skill_id in on_fringe for skill_id in record["skills"][1:])
+
+   return primary_mastered and primary_servable and loads_fringe_skill
+
+
+def candidates(fringe, graph, bank, states=None):
+   """Fringe archetypes with at least one published item, plus the coverage gaps (R18). With
+   states, an archetype that reaches a fringe skill beside its mastered primary is one too (02,
+   Plan amendments 2026-10-02)."""
    on_fringe = set(fringe)
    available = []
    coverage_gaps = []
 
    for archetype_id, record in graph.archetypes.items():
-      is_on_fringe = primary_skill(record) in on_fringe
+      leads_with_fringe_skill = primary_skill(record) in on_fringe
+      reaches_through_secondary = (
+         constants.CANDIDATES_REACH_SECONDARY_FRINGE
+         and reaches_fringe_through_secondary(record, on_fringe, states, graph)
+      )
+      is_candidate = leads_with_fringe_skill or reaches_through_secondary
 
-      if not is_on_fringe:
+      if not is_candidate:
          continue
 
       if bank.has_published_item(archetype_id):

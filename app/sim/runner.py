@@ -24,7 +24,7 @@ from pathlib import Path
 
 from app.engine import constants
 from app.engine.fringe import DictItemBank, Graph
-from app.engine.prior import beta_for_skill, hard_ancestors, p_compensatory, p_knowledge
+from app.engine.prior import beta_for_skill, p_compensatory, p_knowledge
 from app.engine.retention import current_retrievability
 from app.engine.state import Confidence, ResponseFormat, SkillState
 from app.engine.update import EngineGraph, Observation, apply_observation, rule_based_mastery_states
@@ -269,12 +269,23 @@ class World:
       return is_correct
 
 
-def unmastered_hard_ancestors(skill_id, states, engine_graph):
-   """Invariant 3 read off the served item: nothing above it on the hard chain is still open.
+def unmastered_blocking_ancestors(skill_id, states, graph):
+   """Invariant 3 read off the served item: nothing above it on the blocking chain is still open.
 
-   The ancestors come from the EngineGraph, so the inert BC-TOP endpoints are already gone (R13).
+   The chain is the one the fringe gates on (02, Prerequisite gating, the corrections of 2026-09-26
+   and 2026-09-28): a parent no archetype loads, and a parent practised inside the skill's own
+   archetype, do not gate, so neither is followed.
    """
-   ancestors = hard_ancestors(skill_id, engine_graph.hard_parents)
+   ancestors = set()
+   frontier = list(graph.blocking_parents(skill_id))
+
+   while frontier:
+      parent = frontier.pop()
+      is_new = parent not in ancestors
+
+      if is_new:
+         ancestors.add(parent)
+         frontier.extend(graph.blocking_parents(parent))
 
    return sorted(
       ancestor
@@ -338,7 +349,7 @@ def run_simulation(trajectory, seed, arm="policy", days=SIMULATED_DAYS):
          for item in block:
             record = graph.archetypes[item["archetype_id"]]
             primary = graph.primary_skill(record["id"])
-            unmastered = unmastered_hard_ancestors(primary, states, engine_graph)
+            unmastered = unmastered_blocking_ancestors(primary, states, graph)
             split = p_knowledge(record, states, engine_graph.hard_parents, retrievability)
             compensatory = p_compensatory(record, states, retrievability)
             is_correct = world.answer(record, item["format"], today)
@@ -368,7 +379,7 @@ def run_simulation(trajectory, seed, arm="policy", days=SIMULATED_DAYS):
                "item_id": item["id"],
                "archetype_id": record["id"],
                "primary_skill": primary,
-               "unmastered_hard_ancestors": unmastered,
+               "unmastered_blocking_ancestors": unmastered,
                "stage": item["stage"].value,
                "format": ResponseFormat(item["format"]).value,
                "correct": is_correct,

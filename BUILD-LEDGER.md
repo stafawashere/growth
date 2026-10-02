@@ -3168,6 +3168,22 @@ re-read asked for. Graded views at 1280 and 375 in both themes, no horizontal sc
 under `~/.claude/projects/-Users-mahfujm-dev-growth/`. What it found is under Known defects,
 2026-10-02.
 
+- 2026-10-02, stage 11 (progression), by claude-opus-5-5 on the operator's delegation. Block 2
+  reaches a fringe skill beside a mastered primary (02, Plan amendments 2026-10-02); the end-to-end
+  world serves the P1 archetypes a fresh fringe opens; `tools/throughput.py` gains `--world
+  perfect`, `--diagnostic` and `--secondary-candidates`; stale test premises aligned with the
+  plan's gating and mastery corrections (Decisions, 2026-10-02). Checks, one process per file:
+  tests/engine, tests/session, tests/sim, tests/eval, tests/e2e, the unit check file and
+  tests/tools/test_throughput.py, 46 files, 40 passing on the first run; `test_selection.py` and
+  `test_two_term_whole_graph.py` then aligned with the amended candidate rule ("17 passed", "6
+  passed"; the selection oracle red with the fringe-skill condition removed); still red:
+  `eval_simulation_mastery_growth` and the decay-arm test (operator's gates, Known defects),
+  `test_prompt_output_goldens.py` (`agent/live_v2.md` has no recorded output, not this stage's) and
+  `test_agent_drafts_served.py` (order dependent, Known defects). vitest "Tests 2 failed | 1164
+  passed", the failing set changing between runs at load 90 to 200 besides GradingsPayload; tsc
+  exit 0; qa 14 PASS, 00_manifest FAIL on cache files absent from the worktree. The full pytest
+  suite was not run: the operator asked mid-stage to stop it for time.
+
 ## In progress [inferred]
 
 Stage 1, items for Units 4 to 10, is complete in the worktree `../growth-content` on branch
@@ -3230,6 +3246,11 @@ defects, 2026-10-02.
 Stage 12, prompts and models, 2026-10-02, worktree `../growth-prompts` on branch `prompts`:
 complete and merged (Done, "stage 12 (prompts)"; Decisions, 2026-10-02). What stays open after it is
 listed under Known defects, 2026-10-02; the engine's simulation failures belong to another stage.
+
+Stage 11, progression, 2026-10-02, worktree `../growth-progression` on branch `progression`: the
+regression fix, the candidate amendment, the throughput tool and the test premises are built and
+merged to main (Done, 2026-10-02, stage 11). What remains is listed under Known defects,
+2026-10-02, stage 11.
 
 ## Live API spend log [verified]
 
@@ -4478,6 +4499,16 @@ From the eleventh session, 2026-09-21, found and not fixed.
   read from an idle forkserver worker after `tests/items` started; per-file processes under a
   900 s cap finished.
 
+- 2026-10-02, stage 11. `tests/eval/test_simulation.py::eval_simulation_mastery_growth` (gate 31)
+  red since d6d8e165: the two-term policy does not beat random within the fringe on 30-day mastery
+  per item (20 seed sets: -0.00122, 95 percent interval [-0.00354, 0.00110]). A gate the operator
+  owns. `tests/eval/test_selection_study.py::test_the_decay_arm_serves_differently_from_two_term`
+  red since the root gates: 6 days from cold start leave LAMBDA nothing to change. The operator
+  owns its horizon. `tests/e2e/test_paper_to_grade.py`, red since b6f9aa27 on a
+  unanimous cassette, passes on this branch after the rebase onto 4e602af0's re-recording ("1 passed"). `tests/e2e/test_agent_drafts_served.py` stays order dependent
+  (passed alone in 405 s this session; it needs a Unit 2 agent draft within 12 sessions 8 days
+  apart from an unplaced cold start, which the measured pace makes marginal).
+
 ## Plan corrections applied [verified]
 
 Session 2026-09-23 (fourteenth). No plan file was edited. Readings applied in code:
@@ -5072,6 +5103,13 @@ Session 2026-09-20 (seventh).
   the two-term floor fails only with it wholly below 0. Ruled by the model on the operator's
   explicit delegation of that ruling ("decide for me"), and written into 10.
 
+- 2026-10-02, stage 11 (progression), on the operator's delegation, by claude-opus-5-5. 02 gains
+  "Plan amendments, 2026-10-02, progression": block 2 candidates include an archetype whose
+  mastered, servable primary loads a fringe skill beside it; invariant 3 reads blocking parents as
+  the 2026-09-26 and 2026-09-28 gating corrections define them; the secured-parent gate was measured
+  and rejected; days to Unit 2 for a strong student are placement's to set. Numbers in Decisions,
+  2026-10-02. No mastery condition, threshold or retention rule moved.
+
 ## Decisions taken on the operator's instruction, 2026-10-02 [inferred]
 
 Stage 13 (frq), decided by Claude Opus 5.5 on the operator's delegation of 2026-10-02.
@@ -5111,6 +5149,72 @@ Stage 13 (frq), decided by Claude Opus 5.5 on the operator's delegation of 2026-
   `consolidate_v2.md`; 10, the metrics view compares all five switches, with the outcomes of
   `lesson_first_contact` and `selection_priority` defined. Each sits in the plan file's own
   "Plan amendments, 2026-10-02, prompts and models" table.
+
+Stage 11, progression, worktree `../growth-progression`. Every decision below was taken by
+claude-opus-5-5 on the operator's delegation of 2026-10-02; every number is a model's measurement
+on simulated students or on the test worlds, not a human's.
+
+- The regression. Bisected with a cold-start probe rather than the slow test: at ff528291^
+  BC-SKL-01051, the primary of BC-QA-01008, is on a fresh student's fringe; at ff528291 ("Stop
+  seeding six BC-SKL parents mastered", 2026-09-26) it is gated behind BC-SKL-01044, and the root
+  gates of 2026-09-28 closed the rest. The six archetypes `tests/fixtures/items_p1/` covers were
+  then all shut at cold start, so the end-to-end world's bank held nothing a new student could be
+  served and every session drained empty. The engine is right; the world was stale. The world now
+  also publishes the signed-off P1 drafts of BC-QA-01004 and BC-QA-01015, the two P1 archetypes a
+  fresh fringe opens (`tests/e2e/conftest.py`). Red before ("assert 0 > 0"), green after. The
+  running app was never affected: a learning session opened on `var/test.db` with this branch's
+  code queued 9 items (block 1 1, block 2 7, block 4 1), the first ITM-GEN-01001-00.
+- The throughput ruling the 2026-09-29 entries waited for. Two levers were built and measured on
+  `tools/throughput.py`, extended for this with `--world perfect`, `--diagnostic` (placement before
+  day 1) and `--secondary-candidates on|off`, and per-unit first-served and first-mastered days.
+  Kept: block 2 also offers an archetype whose mastered, servable primary loads a fringe skill
+  beside it (plans 02, Plan amendments 2026-10-02). Rejected: opening dependants on a "secured"
+  parent (strength 0.9 and 1 or 3 unaided successes) before mastery's day rules are met; it moved
+  neither the day Unit 2 opens nor the totals, because strength is what holds a parent. Numbers,
+  day 219 = 2027-05-07, before (off) and after (on), in mastered of 539 teachable:
+  perfect, unplaced, seeds 1 to 3: 449, 465, 486, never complete; after 539 each, complete on days
+  204, 211, 209; Unit 2 first served day 10, 11, 10 and first mastered 18, 19, 18 both times.
+  perfect, placed by the diagnostic (206, 219, 202 placed): 416, 415, 417; after 539 each, complete
+  on days 155, 158, 158; Unit 2 served day 1 to 3.
+  ability 3.0 learning world, unplaced, seeds 1 to 8: mean 399.8 (396, 405, 396, 395, 439, 386,
+  380, 401); after 407.2 (409, 387, 429, 420, 398, 412, 433, 370); Unit 2 first served day 10 to
+  22, unchanged; no seed completes.
+  ability 3.0, placed: mean 399.1 (405, 381, 413, 406, 415, 394, 382, 397); after 457.0 (467,
+  455, 419, 448, 474, 418, 509, 466), higher on all 8 seeds; Unit 2 served day 1 or 2 on 7 seeds,
+  day 10 on seed 3, whose diagnostic stopped after 15 items and placed nothing.
+  False mastery 0 in all 44 runs. Days to Unit 2 for a student who answers well are therefore set
+  by placement: unplaced, the first Unit 1 parent needs about 10 successes to reach strength 0.9,
+  which is the plan's rule and was not moved.
+- `retrieval_ordering` in the running app: plan 02's amendment of 2026-09-29 puts retrievability
+  priority in blocks 2 and 3 behind `selection_priority`, default off, so the app carrying the hook
+  is the plan. `tests/sim/test_today_policies.py::test_the_running_app_passes_no_retrieval_ordering`
+  read the source for the name, a premise from before the switch; it is replaced by
+  `test_the_running_app_passes_a_retrieval_ordering_only_under_the_switch`, which reads what
+  `switches.selection_ordering` hands the session under the running default ((None, None)) and
+  with the switch on (the priority ordering for both blocks), and that service and preview take
+  the ordering from nowhere else. `tests/session/test_selection_switch.py` already holds the
+  running default to the two-term session on 8 seeds.
+- Premises restored, assertions untouched. (a) `tests/assessment/test_unit_check_and_pacing.py`:
+  an unplaced student can be served six Unit 1 archetypes, under the check's 8-item floor, so the
+  cover test now places its student through the first-login diagnostic answered correctly, the
+  state in which 05 offers a check; red before (StopIteration), green after. (b)
+  `tests/e2e/test_exit_criteria_mastery.py`: from a production cold start the P1 bank reaches
+  only BC-QA-01004 and BC-QA-01015 and never Unit 2, so both tests start in 02 R15's P1 world, every
+  hard parent outside the 54 P1 skills seeded mastered (`seed_parents_outside_p1`). Its oracle
+  followed two plan rules the engine had since corrected: condition 1 now adds the one-hop 0.3
+  propagation share (a lower bound, as its docstring always argued), and condition 3 counts the
+  archetypes servable at the flip (02, corrected 2026-09-29). (c) `app/sim/runner.py` measures
+  invariant 3 on the blocking chain; with gating broken the prerequisite-gap trajectory flags 78
+  serves, restored 0 of 291.
+- Left red, for the operator, because only the operator loosens a gate:
+  `eval_simulation_mastery_growth` flipped at d6d8e165 (the example skip): 105 of 1773 against 113
+  of 1767; over 20 further seed sets the policy minus control is -0.00122 per item, 95 percent
+  interval [-0.00354, 0.00110], the policy ahead on 6 of 20, so the two-term policy does not beat
+  random within the fringe on 30-day mastery per item, as the selection study found at scale.
+  `test_the_decay_arm_serves_differently_from_two_term`: in 6 days from a cold start on the six
+  Unit 1 archetypes the root gates leave open, LAMBDA 2 changes nothing served; widening the horizon
+  would loosen it. `tests/e2e/test_paper_to_grade.py` was red on b6f9aa27's unanimous cassette and passes after the
+  rebase onto 4e602af0, which re-recorded it.
 
 ## Decisions taken on the operator's instruction, 2026-10-02 [inferred]
 

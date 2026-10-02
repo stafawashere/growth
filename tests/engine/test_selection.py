@@ -734,8 +734,15 @@ def test_never_serve_unmastered_prereq():
       if selection.item is not None:
          learning_served += 1
          primary = graph.primary_skill(selection.item["archetype_id"])
+         loaded = graph.archetypes[selection.item["archetype_id"]]["skills"]
+         opens_a_fringe_skill = any(
+            skill_id in graph.skills
+            and not states[skill_id].mastered
+            and all(states[parent].mastered for parent in graph.blocking_parents(skill_id) if parent in states)
+            for skill_id in loaded[1:]
+         )
 
-         assert not states[primary].mastered
+         assert not states[primary].mastered or opens_a_fringe_skill
 
          assert_gating_held(selection.item, fixture, graph, states)
 

@@ -24,6 +24,7 @@ import {
 import { resetTimeText } from "./AgentPanel";
 import { DRAWING_A_FIGURE, FIGURE_REFUSED, figureAnnouncement } from "./agentCopy";
 import { SECANT_TO_TANGENT } from "./figureFixtures";
+import { SHORT_SHARE } from "./ArtBoard";
 
 let fetchScript: ReturnType<typeof scriptedFetch>;
 
@@ -604,7 +605,7 @@ describe("a reply that draws", () => {
       return Array.from(reply().children).map((part) => part.getAttribute("data-testid") ?? part.textContent?.trim());
    }
 
-   it("draws the figure where it arrived, between the text shown before it and the text after", async () => {
+   it("puts one line where the figure arrived, between the text shown before it and the text after, and draws the figure on the board", async () => {
       render(<TutorHarness screen={{ kind: "today" }} />);
 
       await openAndSend("Draw it");
@@ -618,14 +619,14 @@ describe("a reply that draws", () => {
 
       await waitFor(() => expect(reply().getAttribute("aria-busy")).toBe("false"));
 
-      expect(partsOfReply()).toEqual(["Look at this.", "tutor-figure", "Then read on."]);
-      expect(within(reply()).getByRole("img", { name: SECANT_TO_TANGENT.title })).toBeTruthy();
+      expect(partsOfReply()).toEqual(["Look at this.", "agent-figure-on-board", "Then read on."]);
+      expect(within(screen.getByRole("region", { name: "Art board" })).getByRole("img", { name: SECANT_TO_TANGENT.title })).toBeTruthy();
       expect(screen.getByTestId("agent-status").textContent).toBe(
          `Look at this. Then read on. ${figureAnnouncement(SECANT_TO_TANGENT.title, SECANT_TO_TANGENT.description)}`
       );
    });
 
-   it("shows Drawing a figure under the text while the figure is written, then the figure in its place", async () => {
+   it("shows Drawing a figure under the text while the figure is written, then the board line in its place", async () => {
       render(<TutorHarness screen={{ kind: "today" }} />);
 
       await openAndSend("Draw it");
@@ -643,7 +644,7 @@ describe("a reply that draws", () => {
          fetchScript.turns[0].push(frame("figure", SECANT_TO_TANGENT));
       });
 
-      await waitFor(() => expect(partsOfReply()).toEqual(["Here is a sketch.", "tutor-figure"]));
+      await waitFor(() => expect(partsOfReply()).toEqual(["Here is a sketch.", "agent-figure-on-board"]));
    });
 
    it("shows Drawing a figure in place of Writing a reply when the figure opens before any text", async () => {
@@ -711,6 +712,57 @@ describe("a reply that draws", () => {
       expect(partsOfReply()).toEqual(["Look.", "agent-figure-refused"]);
       expect(screen.getByTestId("agent-figure-refused").textContent).toBe(FIGURE_REFUSED);
       expect(screen.getByTestId("agent-status").textContent).toBe("Look.");
+   });
+
+   it("takes a withheld reply's figure off the art board", async () => {
+      render(<TutorHarness screen={{ kind: "today" }} />);
+
+      await openAndSend("Draw it");
+      await act(async () => {
+         fetchScript.turns[0].push(frame("text", { delta: "Look at this. " }));
+         fetchScript.turns[0].push(frame("figure", SECANT_TO_TANGENT));
+      });
+
+      await waitFor(() => expect(screen.queryByRole("region", { name: "Art board" })).not.toBeNull());
+
+      await act(async () => {
+         fetchScript.turns[0].push(frame("end", { turn_id: "ATN-1", outcome: "withheld", turns_on_item: 1, turns_in_conversation: 1 }));
+         fetchScript.turns[0].close();
+      });
+
+      await waitFor(() => expect(reply().textContent).toBe(WITHHELD));
+
+      expect(screen.queryByRole("region", { name: "Art board" })).toBeNull();
+   });
+
+   it("starts the phone sheet below the art board docked under the top bar, so the board never covers the composer", async () => {
+      const sheetLayout = document.createElement("style");
+
+      sheetLayout.textContent = ".agent-frame { position: fixed; }";
+      document.head.append(sheetLayout);
+
+      try {
+         render(<TutorHarness screen={{ kind: "today" }} />);
+
+         await openAndSend("Draw it");
+         await act(async () => {
+            fetchScript.turns[0].push(frame("figure", SECANT_TO_TANGENT));
+            fetchScript.turns[0].push(END);
+            fetchScript.turns[0].close();
+         });
+
+         const board = await screen.findByRole("region", { name: "Art board" });
+         const spacer = panel().parentElement!.querySelector<HTMLElement>(".agent-frame-spacer")!;
+
+         expect(board.getAttribute("data-docked")).toBe("true");
+         expect(spacer.style.minHeight).toBe(`${Math.round(window.innerHeight * SHORT_SHARE)}px`);
+
+         fireEvent.click(within(board).getByRole("button", { name: "Close the art board" }));
+
+         expect(spacer.style.minHeight).toBe("");
+      } finally {
+         sheetLayout.remove();
+      }
    });
 });
 

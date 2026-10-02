@@ -50,7 +50,8 @@ import { LessonsRoute } from "../lessons/LessonsRoute";
 import { PaceStatement } from "../progress/PaceStatement";
 import type { SettingsTab } from "../routing";
 import { TutorHarness, UNCHECKED_ITEM, frame } from "./agent";
-import { EVERY_ROLE_FIGURE, EVERY_ROLE_MARKS, ITEM_MARKS, LABELLED_TABLE, SECANT_TO_TANGENT, TABLE_MARKS, TABLE_OF_VALUES } from "../agent/figureFixtures";
+import { ArtBoard, type BoardMode } from "../agent/ArtBoard";
+import { EVERY_ROLE_FIGURE, EVERY_ROLE_MARKS, ITEM_MARKS, LABELLED_TABLE, SECANT_TO_TANGENT, TABLE_MARKS, TABLE_OF_VALUES, TRIANGLE_DIAGRAM } from "../agent/figureFixtures";
 import { PageMarks } from "../agent/PageMarks";
 import { Item } from "../session/Item";
 import { TutorFigure } from "../agent/TutorFigure";
@@ -871,7 +872,34 @@ function markedItem(item: ServedItem, marks: TutorMarksSpec) {
    );
 }
 
+/* The tutor's art board holding two finished figures, on the first of them: floating, minimized to
+   its bar, and docked under the top bar as it is under 900 px. */
+export function artBoard(mode: BoardMode, isNarrow: boolean, current = 0) {
+   const figures = [SECANT_TO_TANGENT, TRIANGLE_DIAGRAM].map((spec, index) => ({ turnId: `reply-${index}`, spec, revealed: spec.steps.length, finished: true }));
+
+   return inPage(
+      <ArtBoard
+         figures={figures}
+         current={current}
+         mode={mode}
+         isNarrow={isNarrow}
+         isPanelOpen={false}
+         panel={{ current: null }}
+         focusFigure={false}
+         onFigureFocused={vi.fn()}
+         onChoose={vi.fn()}
+         onMinimize={vi.fn()}
+         onRestore={vi.fn()}
+         onClose={vi.fn()}
+         onShowAll={vi.fn()}
+      />
+   );
+}
+
 const TUTOR_FIGURE_SCREENS: Screen[] = [
+   { name: "tutor art board, floating, the first of two figures", mount: async () => artBoard("open", false) },
+   { name: "tutor art board, minimized to its bar", mount: async () => artBoard("minimized", false) },
+   { name: "tutor art board, docked under the top bar under 900 px", mount: async () => artBoard("open", true) },
    { name: "tutor marks on an item, every role and kind, finished", mount: async () => markedItem(servedItem(), EVERY_ROLE_MARKS) },
    { name: "tutor marks on an item's table, finished", mount: async () => markedItem(servedItem({ figure_spec: TABLE_FIGURE }), TABLE_MARKS) },
    { name: "tutor figure, every role, finished", mount: async () => tutorFigure(EVERY_ROLE_FIGURE, EVERY_ROLE_FIGURE.steps.length, true) },

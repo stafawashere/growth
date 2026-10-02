@@ -3465,43 +3465,18 @@ h3.section-header {
    gap: var(--growth-space-8);
 }
 
-.agent-reply-building {
-   display: grid;
-   grid-template-areas: "before" "figure" "after" "marks";
-}
-
-.agent-reply-part {
-   display: flex;
-   flex-direction: column;
-   gap: var(--growth-space-8);
-}
-
-.agent-reply-before {
-   grid-area: before;
-}
-
-.agent-reply-after {
-   grid-area: after;
-}
-
-.agent-reply-building > .agent-marks {
-   grid-area: marks;
-}
-
-.agent-reply-building > .agent-figure-building {
-   grid-area: figure;
-}
-
-.agent-figure-building {
-   position: sticky;
-   top: 0;
-   padding-bottom: var(--growth-space-8);
-   background: var(--growth-surface-page);
-   box-shadow: inset 0 calc(var(--growth-stroke-hairline) * -1) 0 var(--growth-accent-tint-3);
-}
-
 .agent-writing {
    color: var(--growth-text-muted);
+}
+
+.agent-board-line {
+   display: flex;
+   flex-wrap: wrap;
+   align-items: baseline;
+   gap: var(--growth-space-4) var(--growth-space-12);
+   color: var(--growth-text-secondary);
+   font-size: var(--growth-type-label);
+   line-height: var(--growth-leading-label);
 }
 
 .agent-composer {
@@ -3824,6 +3799,147 @@ h3.section-header {
 .tutor-figure-now {
    margin-left: var(--growth-space-8);
    font-family: "Inter SemiBold", "Inter", system-ui, sans-serif;
+}
+
+/* The tutor's art board (docs/agent/drawing-design.md, "The art board"): a window over the page on
+   the raised surface with a hairline ring. ArtBoard sets its place and size from measurements, and
+   it paints above the page because the provider renders it after the page and the panel. Floating,
+   its title bar and grip take the pointer for themselves, so a drag on a touch screen moves the
+   board and not the page. Docked under 900 px it spans the width under the top bar. A figure keeps
+   its own width limit, so its strokes and ticks stay near the size they were designed at however
+   large the board is made, and its own title, which the title bar shows, is kept for assistive
+   technology only. */
+
+.art-board {
+   position: fixed;
+   display: flex;
+   flex-direction: column;
+   border-radius: var(--growth-space-8);
+   background: var(--growth-surface-raised);
+   color: var(--growth-text-primary);
+   box-shadow: 0 0 0 var(--growth-stroke-hairline) var(--growth-accent-tint-3);
+}
+
+.art-board[data-docked="true"] {
+   left: 0;
+   right: 0;
+   border-radius: 0;
+}
+
+.art-board[data-minimized="true"] {
+   flex-direction: row;
+   flex-wrap: wrap;
+   align-items: center;
+   gap: var(--growth-space-4) var(--growth-space-12);
+   padding: var(--growth-space-8) var(--growth-space-16);
+}
+
+.art-board-bar-title {
+   min-width: 0;
+   font-family: "Inter Medium", "Inter", system-ui, sans-serif;
+   font-size: var(--growth-type-label);
+   line-height: var(--growth-leading-label);
+}
+
+.art-board-title-bar {
+   display: flex;
+   flex: none;
+   flex-direction: column;
+   gap: var(--growth-space-4);
+   padding: var(--growth-space-8) var(--growth-space-16);
+   box-shadow: inset 0 calc(var(--growth-stroke-hairline) * -1) 0 var(--growth-accent-tint-3);
+}
+
+.art-board[data-docked="false"] .art-board-title-bar {
+   cursor: move;
+   touch-action: none;
+   user-select: none;
+}
+
+.art-board-title-row {
+   display: flex;
+   flex-wrap: wrap;
+   align-items: baseline;
+   gap: var(--growth-space-4) var(--growth-space-12);
+}
+
+.art-board-heading {
+   font-family: "Inter SemiBold", "Inter", system-ui, sans-serif;
+   font-size: var(--growth-type-label);
+   line-height: var(--growth-leading-label);
+}
+
+.art-board-figure-title {
+   flex: auto;
+   flex-basis: 0;
+   min-width: 0;
+   overflow: hidden;
+   color: var(--growth-text-secondary);
+   font-size: var(--growth-type-label);
+   line-height: var(--growth-leading-label);
+   text-overflow: ellipsis;
+   white-space: nowrap;
+}
+
+.art-board-actions,
+.art-board-figures {
+   display: flex;
+   flex-wrap: wrap;
+   align-items: center;
+   gap: var(--growth-space-12);
+}
+
+.art-board-count {
+   color: var(--growth-text-secondary);
+   font-size: var(--growth-type-label);
+   line-height: var(--growth-leading-label);
+}
+
+.art-board-body {
+   flex: auto;
+   min-height: 0;
+   overflow: auto;
+   overscroll-behavior: contain;
+   padding: var(--growth-space-12) var(--growth-space-16) var(--growth-space-24);
+}
+
+.art-board-body .tutor-figure-title {
+   position: absolute;
+   width: var(--growth-stroke-hairline);
+   height: var(--growth-stroke-hairline);
+   margin: calc(var(--growth-stroke-hairline) * -1);
+   overflow: hidden;
+   clip: rect(0 0 0 0);
+   white-space: nowrap;
+}
+
+.art-board-grip {
+   position: absolute;
+   right: 0;
+   bottom: 0;
+   display: flex;
+   align-items: center;
+   justify-content: center;
+   width: var(--growth-space-24);
+   height: var(--growth-space-24);
+   padding: 0;
+   border: 0;
+   background: none;
+   color: var(--growth-text-secondary);
+   cursor: nwse-resize;
+   touch-action: none;
+}
+
+.art-board-grip-mark {
+   width: var(--growth-space-12);
+   height: var(--growth-space-12);
+}
+
+.art-board-grip-mark path {
+   fill: none;
+   stroke: var(--growth-text-secondary);
+   stroke-width: var(--growth-stroke-mark);
+   stroke-linecap: round;
 }
 
 @media (min-width: 900px) {

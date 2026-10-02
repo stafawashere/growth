@@ -2,8 +2,6 @@ import { act, cleanup, fireEvent, render, screen, within } from "@testing-librar
 import { afterEach, beforeEach, describe, expect, it, vi } from "vitest";
 
 import { TutorHarness, frame, scriptedFetch } from "../testing/agent";
-import { declared, readingUnchangedDom } from "../testing/cascade";
-import { FIGURE_BUILDING_CLASS } from "./AgentPanel";
 import { REPLY_STOPPED, figureAnnouncement } from "./agentCopy";
 import { SECANT_TO_TANGENT } from "./figureFixtures";
 
@@ -72,8 +70,12 @@ function reply() {
    return screen.getByTestId("agent-reply");
 }
 
+function board() {
+   return screen.getByTestId("art-board");
+}
+
 function drawn(element: string) {
-   return reply().querySelector(`svg [data-element="${element}"]`);
+   return board().querySelector(`svg [data-element="${element}"]`);
 }
 
 function status() {
@@ -89,7 +91,7 @@ describe("a reply that draws is shown at reading pace", () => {
       await streamFigureReply(turn, true);
 
       expect(reply().textContent).toContain("Look at the curve first.");
-      expect(reply().querySelector("svg")).not.toBeNull();
+      expect(board().querySelector("svg")).not.toBeNull();
       expect(drawn("f")).toBeNull();
       expect(reply().textContent).not.toContain("It rises");
 
@@ -138,7 +140,7 @@ describe("a reply that draws is shown at reading pace", () => {
 
       await streamFigureReply(turn, false);
 
-      fireEvent.click(within(reply()).getByRole("button", { name: "Show all" }));
+      fireEvent.click(within(board()).getByRole("button", { name: "Show all" }));
 
       expect(drawn("f")).not.toBeNull();
       expect(drawn("s1")).not.toBeNull();
@@ -168,7 +170,7 @@ describe("a reply that draws is shown at reading pace", () => {
       expect(turn.signal().aborted).toBe(true);
       expect(status()).toBe(REPLY_STOPPED);
       expect(reply().getAttribute("aria-busy")).toBe("false");
-      expect(within(reply()).getByRole("button", { name: "Previous" })).toBeTruthy();
+      expect(within(board()).getByRole("button", { name: "Previous" })).toBeTruthy();
    });
 
    it("on Stop after the server has ended the reply, shows the rest at once and keeps the server's outcome", async () => {
@@ -223,65 +225,4 @@ describe("a reply that draws is shown at reading pace", () => {
 
       expect(drawn("f")).not.toBeNull();
    });
-
-   it("holds the figure at the top of the conversation while it builds, and lets it go once the reply has ended and every step has opened", async () => {
-      const turn = await ask();
-      const figure = () => within(reply()).getByTestId("tutor-figure");
-
-      await streamFigureReply(turn, true);
-
-      expect(figure().classList.contains(FIGURE_BUILDING_CLASS)).toBe(true);
-      expect(reply().lastElementChild).toBe(figure());
-      expect(readingUnchangedDom(() => declared(figure(), "grid-area"))).toBe("figure");
-      expect(readingUnchangedDom(() => [declared(figure(), "position"), declared(figure(), "top"), declared(figure(), "background")])).toEqual([
-         "sticky",
-         "0",
-         "var(--growth-surface-page)"
-      ]);
-
-      await advance(5 * MILLISECONDS_PER_WORD + 1);
-
-      expect(figure().classList.contains(FIGURE_BUILDING_CLASS)).toBe(true);
-
-      await advance(7 * MILLISECONDS_PER_WORD);
-
-      expect(reply().getAttribute("aria-busy")).toBe("false");
-      expect(figure().classList.contains(FIGURE_BUILDING_CLASS)).toBe(false);
-      expect(figure().nextElementSibling?.textContent).toContain("It rises on both sides of zero.");
-   });
-
-   it("leaves the figure in the flow where holding it would hide every word, as on the phone sheet at half height", async () => {
-      const figureHeight = 389;
-      const measured = vi.spyOn(HTMLElement.prototype, "getBoundingClientRect").mockImplementation(function (this: HTMLElement) {
-         const height = this.getAttribute("data-testid") === "tutor-figure" ? figureHeight : 0;
-
-         return { left: 0, top: 0, right: 0, bottom: height, width: 0, height, x: 0, y: 0, toJSON: () => ({}) } as DOMRect;
-      });
-
-      async function figureWhileBuilding(regionHeight: number) {
-         const turn = await ask();
-
-         Object.defineProperty(screen.getByTestId("agent-conversation"), "clientHeight", { configurable: true, value: regionHeight });
-         await streamFigureReply(turn, false);
-
-         return within(reply()).getByTestId("tutor-figure");
-      }
-
-      const short = await figureWhileBuilding(118);
-
-      expect(reply().getAttribute("aria-busy")).toBe("true");
-      expect(short.classList.contains(FIGURE_BUILDING_CLASS)).toBe(false);
-      expect(reply().classList.contains("agent-reply-building")).toBe(false);
-
-      cleanup();
-      fetchScript = scriptedFetch();
-      vi.stubGlobal("fetch", fetchScript.fetchStub);
-
-      const tall = await figureWhileBuilding(600);
-
-      expect(tall.classList.contains(FIGURE_BUILDING_CLASS)).toBe(true);
-
-      measured.mockRestore();
-   });
 });
-

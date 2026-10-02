@@ -25,6 +25,7 @@ import { DESKTOP_WIDTH, VIEWPORT_WIDTHS, colourlessDeclarations, isSvgElement, r
 import {
    CALIBRATION,
    EVERY_STEP_MARK,
+   artBoard,
    FUNCTION_GRAPH,
    READ_BACK,
    gradings,
@@ -285,6 +286,23 @@ describe.each(VIEWPORT_WIDTHS)("eval_greyscale_states at %i px", (width) => {
       const cell = (row: number) => described(table, (container) => container.querySelectorAll("tbody td")[row]);
 
       expectDistinct({ highlighted: cell(0), wrong: cell(1), faded: cell(2), plain: cell(3) });
+   });
+
+   it("the art board's Previous and Next read as disabled without colour at the first and the last figure", () => {
+      function figureButtonsAt(current: number) {
+         const container = artBoard("open", false, current);
+         const buttons = ["Previous figure", "Next figure"].map((name) => colourless(within(container).getByRole("button", { name })));
+
+         cleanup();
+
+         return buttons;
+      }
+
+      const [previousAtFirst, nextAtFirst] = figureButtonsAt(0);
+      const [previousAtLast, nextAtLast] = figureButtonsAt(1);
+
+      expectDistinct({ disabled: previousAtFirst, enabled: previousAtLast });
+      expectDistinct({ enabled: nextAtFirst, disabled: nextAtLast });
    });
 
    it("the calibration curve's observed point, its interval and an empty level read without colour", () => {

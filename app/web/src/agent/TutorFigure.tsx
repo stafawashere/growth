@@ -42,8 +42,6 @@ export interface TutorFigureProps {
    onStep?: (stepIndex: number) => void;
    /* Stands in for the prefers-reduced-motion query. */
    reducedMotion?: boolean;
-   /* A class the caller adds to the figure's wrapper, such as the panel's while a reply builds. */
-   className?: string;
 }
 
 export const MAXIMUM_PRIMITIVES = 200;
@@ -969,7 +967,7 @@ function DrawnFigure(props: Omit<TutorFigureProps, "spec"> & { figure: TutorFigu
 
    return (
       <div
-         className={props.className === undefined ? "tutor-figure" : `tutor-figure ${props.className}`}
+         className="tutor-figure"
          role="group"
          tabIndex={0}
          aria-labelledby={titleId}

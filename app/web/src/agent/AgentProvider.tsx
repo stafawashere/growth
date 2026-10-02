@@ -14,6 +14,7 @@ import type {
 } from "../api/types";
 import { latexToAccessibleText, splitInlineMath } from "../math/mathjson";
 import { AgentPanel } from "./AgentPanel";
+import { ArtBoard, readBoardPlacement, type BoardFigure } from "./ArtBoard";
 import { CONVERSATION_CEILING, FIGURE_REFUSED, MARKS_REFUSED, REPLY_STOPPED, THIRD_TURN_CEILING, WITHHELD, figureAnnouncement, marksAnnouncement } from "./agentCopy";
 import { createReplyPacer, type ReplyPacer } from "./figurePacing";
 import { PageMarks, parseTutorMarks } from "./PageMarks";
@@ -25,7 +26,8 @@ import { useAgentStream, type TurnFailure } from "./useAgentStream";
    whether the panel is open, the screen every route describes through useAgentScreen, the
    conversation and its turns, the one streaming turn, and the Ctrl+/ or Cmd+/ shortcut
    (docs/agent/design.md, "The entry point"). The provider renders the panel beside its children,
-   so the aside is a sibling of main.
+   so the aside is a sibling of main, and the art board after the panel, so the board paints over
+   the page and follows the panel in the tab order.
 
    Each route claims the screen with useAgentScreen. A route drawn inside another claims after it
    (its first render comes later), and a claim that changes goes to the top, so the screen is the
@@ -42,9 +44,9 @@ export const MAIN_ID = "main";
 
 export type SheetHeight = "collapsed" | "half" | "full";
 
-/* A reply's figure (docs/agent/drawing-design.md, "States and copy"): announced by its opening
-   fence, drawn at the length of the reply text shown when it arrived, or refused with one line in
-   its place. */
+/* A reply's figure (docs/agent/drawing-design.md, "States and copy" and "The art board"):
+   announced by its opening fence, drawn on the art board with one line in the reply at the length
+   of the text shown when it arrived, or refused with one line in its place. */
 export type ReplyFigure =
    | { state: "pending" }
    | { state: "shown"; spec: TutorFigureSpec; offset: number; revealed: number }
@@ -109,11 +111,16 @@ export interface AgentContextValue {
    changeDraft: (text: string) => void;
    send: () => void;
    stop: () => void;
-   showAll: (turnId: string) => void;
    marksTurnId: string | null;
    clearMarks: () => void;
    setSheetHeight: (height: SheetHeight) => void;
+   showOnBoard: (turnId: string) => void;
+   /* Where the art board docked under the top bar ends, under 900 px, so the sheet starts below it. */
+   boardDockBottom: number | null;
 }
+
+/* Whether the art board is drawn, and how (docs/agent/drawing-design.md, "The art board"). */
+type BoardState = "open" | "minimized" | "closed";
 
 const AgentContext = createContext<AgentContextValue | null>(null);
 
@@ -218,6 +225,22 @@ function withoutPendingFigure(turn: AgentTurn): AgentTurn {
    return isPending ? { ...turn, figure: undefined } : turn;
 }
 
+function boardFiguresOf(turns: AgentTurn[]): BoardFigure[] {
+   return turns.flatMap((turn) => {
+      const figure = turn.figure;
+
+      if (figure?.state !== "shown") {
+         return [];
+      }
+
+      return [{ turnId: turn.id, spec: figure.spec, revealed: figure.revealed, finished: turn.state === "done" }];
+   });
+}
+
+function initialBoardState(): BoardState {
+   return readBoardPlacement().minimized ? "minimized" : "open";
+}
+
 function withMarksStepRevealed(turn: AgentTurn, stepIndex: number): AgentTurn {
    const marks = turn.marks;
 
@@ -310,6 +333,10 @@ export function AgentProvider({ enabled, children }: AgentProviderProps) {
    const [isMac] = useState(detectMac);
    const [isPacing, setIsPacing] = useState(false);
    const [marksByScreen, setMarksByScreen] = useState<Record<string, string>>({});
+   const [boardTurnId, setBoardTurnId] = useState<string | null>(null);
+   const [boardState, setBoardState] = useState<BoardState>(initialBoardState);
+   const [focusesBoardFigure, setFocusesBoardFigure] = useState(false);
+   const [boardDockBottom, setBoardDockBottom] = useState<number | null>(null);
    const frame = useRef<HTMLDivElement>(null);
    const isNarrow = useSheetLayout(frame, enabled);
    const stream = useAgentStream();
@@ -455,6 +482,12 @@ export function AgentProvider({ enabled, children }: AgentProviderProps) {
          setIsOpen(false);
       }
    }, [isTimed, isOpen, stream]);
+
+   useEffect(() => {
+      if (isTimed) {
+         setBoardState("closed");
+      }
+   }, [isTimed]);
 
    useEffect(() => {
       setDegraded((current) => {
@@ -640,7 +673,16 @@ export function AgentProvider({ enabled, children }: AgentProviderProps) {
 
                awaitsFigure = false;
                drawnFigure = checked;
-               pacer.pushAction(() => updateTurn(replyId, (turn) => ({ ...withFigureAt(turn, checked), state: "streaming" })));
+
+               /* The board opens on the new figure, or comes back from its bar, without taking focus. */
+               pacer.pushAction(() => {
+                  updateTurn(replyId, (turn) => ({ ...withFigureAt(turn, checked), state: "streaming" }));
+
+                  if (checked !== null) {
+                     setBoardTurnId(replyId);
+                     setBoardState("open");
+                  }
+               });
             },
             onMarks: (spec: unknown) => {
                const checked = parseTutorMarks(spec);
@@ -752,6 +794,25 @@ export function AgentProvider({ enabled, children }: AgentProviderProps) {
       });
    }, [currentMarksKey]);
 
+   const showOnBoard = useCallback((turnId: string) => {
+      setBoardTurnId(turnId);
+      setBoardState("open");
+      setFocusesBoardFigure(true);
+   }, []);
+
+   const minimizeBoard = useCallback(() => setBoardState("minimized"), []);
+
+   const restoreBoard = useCallback(() => setBoardState("open"), []);
+
+   const boardFigureFocused = useCallback(() => setFocusesBoardFigure(false), []);
+
+   /* The Close button goes with the board, so focus goes to Ask, which every screen with a tutor has. */
+   const closeBoard = useCallback(() => {
+      setBoardState("closed");
+      setFocusesBoardFigure(false);
+      askButton.current?.focus();
+   }, []);
+
    const showAll = useCallback((turnId: string) => {
       const isPacedReply = pacing.current !== null && pacing.current.replyId === turnId;
 
@@ -776,6 +837,8 @@ export function AgentProvider({ enabled, children }: AgentProviderProps) {
       stream.stop();
       setTurns([]);
       setMarksByScreen({});
+      setBoardTurnId(null);
+      setBoardState("closed");
       setConversationId(null);
       setDegraded(null);
       hidePanel();
@@ -791,6 +854,13 @@ export function AgentProvider({ enabled, children }: AgentProviderProps) {
    const marksTurnId = marksByScreen[currentMarksKey] ?? null;
    const marksTurn = marksTurnId === null ? undefined : turns.find((turn) => turn.id === marksTurnId);
    const pageMarks = marksTurn?.marks?.state === "shown" ? marksTurn.marks : null;
+
+   /* The conversation's figures, in the order they were drawn. A withheld reply leaves no figure, so
+      its figure leaves the board, and the board shows the latest one left. */
+   const boardFigures = boardFiguresOf(turns);
+   const chosenFigure = boardFigures.findIndex((figure) => figure.turnId === boardTurnId);
+   const boardIndex = chosenFigure >= 0 ? chosenFigure : boardFigures.length - 1;
+   const showsBoard = enabled && !isTimed && boardFigures.length > 0 && boardState !== "closed";
 
    const value: AgentContextValue = {
       isOpen: enabled && isOpen,
@@ -817,10 +887,11 @@ export function AgentProvider({ enabled, children }: AgentProviderProps) {
       changeDraft,
       send,
       stop,
-      showAll,
       marksTurnId,
       clearMarks,
-      setSheetHeight
+      setSheetHeight,
+      showOnBoard,
+      boardDockBottom
    };
 
    return (
@@ -831,6 +902,25 @@ export function AgentProvider({ enabled, children }: AgentProviderProps) {
             {enabled && pageMarks !== null ? <PageMarks key={`${currentMarksKey} ${marksTurnId}`} spec={pageMarks.spec} revealed={pageMarks.revealed} /> : null}
 
             {enabled ? <AgentPanel /> : null}
+
+            {showsBoard ? (
+               <ArtBoard
+                  figures={boardFigures}
+                  current={boardIndex}
+                  mode={boardState === "minimized" ? "minimized" : "open"}
+                  isNarrow={isNarrow}
+                  isPanelOpen={isOpen}
+                  panel={panel}
+                  focusFigure={focusesBoardFigure}
+                  onFigureFocused={boardFigureFocused}
+                  onChoose={setBoardTurnId}
+                  onMinimize={minimizeBoard}
+                  onRestore={restoreBoard}
+                  onClose={closeBoard}
+                  onShowAll={showAll}
+                  onDock={setBoardDockBottom}
+               />
+            ) : null}
          </AgentContext.Provider>
       </ScreenRegistryContext.Provider>
    );

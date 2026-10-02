@@ -235,7 +235,7 @@ A marker before the figure arrived, for an unknown step or repeated, is ignored.
 
 `app/web/src/agent/TutorFigure.tsx` renders the figure frame at once and each primitive when its step is revealed, in an SVG with a 320-unit view width, so ticks and strokes render near 1:1 in the 320 to 384 px panel. It reuses the graph frame from `app/web/src/figures/FigureView.tsx` (layout, axes, gridlines, numbered ticks), which is factored into a shared component with the item figure's output unchanged. Labels are an HTML layer over the SVG, positioned in percentages of the view box and typeset with `MathText` on the tutor renderer, clamped inside the figure. The client re-validates the render spec (types, finite numbers, the point and primitive caps) and draws nothing from a spec that fails, showing the refused line instead.
 
-Placement: the reply renders its text up to the figure's offset, the figure, then the rest, so the figure sits where the model put it, under the sentence that introduces it. While the figure is building it is pinned (sticky) at the top of the conversation region on an opaque surface, so the sentences that reveal its steps scroll beneath it the way captions run under a board; when the reply has finished and every step has appeared it returns to normal flow. The live walk on 2026-10-01 found that without this the panel's follow-the-newest-text scrolling pushed the figure out of view at an 800 px window height while it built.
+Placement, superseded on 2026-10-01 by "The art board": the reply renders its text up to the figure's offset, one line naming the figure with "Show on the board", then the rest, and the figure itself is built on the art board. Before the board, the figure sat in the reply and was held sticky at the top of the conversation while it built, because the live walk on 2026-10-01 found that following the newest text pushed it out of view at an 800 px window height; the board replaces that hold.
 
 ## Motion [inferred]
 
@@ -342,3 +342,19 @@ The reply lists the marks' captions under the text as "Marked on the page", an o
 - Scrolling the page to a mark: a change of focus or context the student did not ask for (WCAG 3.2.5).
 - Marks on an answer option before checking: ringing or striking an option names or eliminates an answer.
 - A screenshot for the model to annotate: the architecture sends structured state, never a screenshot, and the draft answer must never leave the client.
+
+## The art board, 2026-10-01 [inferred]
+
+On the operator's instruction of 2026-10-01, figures leave the chat. A reply that draws shows one line where the figure would have been, "Figure on the board: {title}", with a "Show on the board" text button, and the figure is built on the tutor's art board, a separate window that opens whenever the tutor draws, so the conversation stays short and the student never scrolls back and forth between words and picture. Marks on the page are unchanged: they belong to the page, not the board.
+
+The board is a non-modal window over the page: a title bar reading "Art board" with the current figure's title, Previous and Next between the conversation's figures ("Figure {k} of {n}"), Minimize and Close; the figure with its step line, step controls and step list exactly as before; and a resize grip in the lower right corner.
+
+- Opening. A `figure` event opens the board, restores it if minimized, and makes the new figure current; its steps build there in time with the words, gated at reading pace as before. Opening never takes focus (WCAG 3.2.5). "Show on the board" opens the board on that reply's figure and moves focus to it, because the student asked.
+- Moving and sizing. From 900 px wide the board floats: drag the title bar to move it, drag the grip to resize it, both kept inside the viewport and out of the tutor panel's column, with a minimum of 280 by 240 and at most the viewport less the top bar. Every drag has a keyboard alternative (with the title bar focused, arrow keys move the board 16 px, Shift for 64 px; with the grip focused, arrow keys resize it) and a single-pointer alternative, two text buttons in the title bar: "Move" sends the board to the next corner of the free area and "Size" cycles small, medium and large. Under 900 px the board does not float: it docks full width under the top bar, above the tutor sheet, with Minimize and a height toggle.
+- Minimized, the board is a small bar, "Art board: {title}", with Restore; it stays in place and covers nothing else.
+- The position, size and open state are remembered in this browser's storage, wrapped in try and catch, and a missing or refused store falls back to the default: to the left of the tutor panel, under the top bar.
+- The board can cover part of the item, which the panel never does; that is the operator's choice, and moving, resizing and minimizing are the remedy. It never covers the top bar or the tutor panel's composer.
+- No transition opens or closes it; figure steps keep their own motion classes and reduced-motion rule. Colours, strokes and contrast are the figure's tokens; the board's surface is the raised surface with a hairline ring.
+- Accessibility: the board is a `region` labelled "Art board", reachable by Tab after the tutor panel; the figure inside keeps its `group` and `img` contract; the end-of-reply announcement keeps "Figure: {title}. {description}".
+
+Rejected: figures inline in the chat (the operator found the scrolling back and forth costly), a modal board (it would trap focus and stop work on the item), and a board that opens only on request (the operator asked for it to open whenever the tutor draws).

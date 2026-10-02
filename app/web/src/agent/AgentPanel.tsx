@@ -1,4 +1,4 @@
-import { useEffect, useLayoutEffect, useRef, useState, type FormEvent, type KeyboardEvent, type ReactNode, type RefObject } from "react";
+import { useEffect, useLayoutEffect, useRef, useState, type FormEvent, type KeyboardEvent } from "react";
 
 import { MathText } from "../math/MathText";
 import { holdUnclosedMath } from "../math/mathjson";
@@ -22,6 +22,7 @@ import {
    SCREEN_REFUSED,
    SEND_LABEL,
    SHOW_ITEM_LABEL,
+   SHOW_ON_THE_BOARD,
    SIGN_IN_EXPIRED,
    STOP_LABEL,
    THIRD_TURN_CEILING,
@@ -32,11 +33,11 @@ import {
    WRITING_A_REPLY,
    YOU_SAID,
    closeHint,
+   figureOnTheBoard,
    usageLimitUntil
 } from "./agentCopy";
 import { COMPOSER_ID, PANEL_ID, isLapsedUsageLimit, useAgent, type AgentTurn, type DegradedState, type ReplyMarks } from "./AgentProvider";
 import { contextLinesFor } from "./screenLines";
-import { TutorFigure } from "./TutorFigure";
 
 /* The tutor panel of docs/agent/design.md, "The panel": from 1100 px an aside beside main, from
    900 px a narrower one, and under 900 px a bottom sheet with three heights and the buttons that
@@ -53,8 +54,10 @@ import { TutorFigure } from "./TutorFigure";
    follows the newest turn while a reply streams, and stops following once the student scrolls up
    to read an earlier one, until they scroll back to the end or send again.
 
-   A reply that draws holds its figure where the model put it: the text shown before the figure
-   arrived, the figure, then the rest (docs/agent/drawing-design.md, "The client"). */
+   A reply that draws keeps one line where the model put the figure, with the text shown before
+   the figure arrived above it and the rest below, and the figure itself is built on the art board
+   (docs/agent/drawing-design.md, "The art board"). Under 900 px the sheet starts below the board
+   where the board docks under the top bar. */
 
 const SCROLL_END_TOLERANCE = 1;
 
@@ -121,83 +124,7 @@ function ReplyText(props: { text: string; isStreaming: boolean }) {
    );
 }
 
-/* While a reply's figure builds, the panel follows the newest words, which would push the figure up
-   and out of the conversation. So until the reply has ended and every step has opened, the figure
-   holds at the top of the conversation on the panel's own surface and the words run on beneath it,
-   the way captions run under a board.
-
-   The words beneath carry formulas whose typeset parts are positioned, and a positioned element
-   later in the page paints over an earlier one. So while the figure builds it comes last in the
-   reply and a grid of named areas puts it back between the words before it and the words after
-   it; once the reply has finished, the reply returns to its reading order. */
-export const FIGURE_BUILDING_CLASS = "agent-figure-building";
-
-/* A figure is held only while two lines of words still show beneath it, in CSS pixels at the
-   reply's line height. In a short conversation, the phone sheet at half height among them, a held
-   figure would hide every word, so there it stays in the flow as any figure does. */
-const WORDS_BELOW_A_HELD_FIGURE = 52;
-
-function useFigureFitsHeld(item: RefObject<HTMLLIElement>, isBuilding: boolean) {
-   const [fits, setFits] = useState(true);
-
-   useLayoutEffect(() => {
-      const node = item.current;
-      const region = node?.closest("[data-testid='agent-conversation']");
-      const figure = node?.querySelector("[data-testid='tutor-figure']");
-      const canMeasure = isBuilding && region !== null && region !== undefined && figure !== null && figure !== undefined;
-
-      if (!canMeasure) {
-         return undefined;
-      }
-
-      function measure() {
-         const regionHeight = region!.clientHeight;
-         const figureHeight = figure!.getBoundingClientRect().height;
-         const hasLayout = regionHeight > 0;
-
-         setFits(!hasLayout || regionHeight - figureHeight >= WORDS_BELOW_A_HELD_FIGURE);
-      }
-
-      measure();
-
-      const observer = typeof ResizeObserver === "function" ? new ResizeObserver(measure) : null;
-
-      observer?.observe(region);
-      observer?.observe(figure);
-
-      return () => observer?.disconnect();
-   }, [item, isBuilding, fits]);
-
-   return fits;
-}
-
-function BuildingReply(props: { turn: AgentTurn; figure: Extract<AgentTurn["figure"], { state: "shown" }>; onShowAll: () => void; marks: ReactNode }) {
-   const { turn, figure } = props;
-   const textBefore = turn.text.slice(0, figure.offset);
-   const textAfter = turn.text.slice(figure.offset);
-
-   return (
-      <>
-         {textBefore.trim() !== "" ? (
-            <div className="agent-reply-part agent-reply-before">
-               <ReplyText text={textBefore} isStreaming={false} />
-            </div>
-         ) : null}
-
-         {textAfter.trim() !== "" ? (
-            <div className="agent-reply-part agent-reply-after">
-               <ReplyText text={textAfter} isStreaming />
-            </div>
-         ) : null}
-
-         {props.marks}
-
-         <TutorFigure spec={figure.spec} revealed={figure.revealed} finished={false} onShowAll={props.onShowAll} className={FIGURE_BUILDING_CLASS} />
-      </>
-   );
-}
-
-function ReplyBody(props: { turn: AgentTurn; onShowAll: () => void }) {
+function ReplyBody(props: { turn: AgentTurn; onShowOnBoard: () => void }) {
    const { turn } = props;
    const isStreaming = turn.state !== "done";
    const figure = turn.figure;
@@ -225,7 +152,13 @@ function ReplyBody(props: { turn: AgentTurn; onShowAll: () => void }) {
          <ReplyText text={textBefore} isStreaming={false} />
 
          {figure.state === "shown" ? (
-            <TutorFigure spec={figure.spec} revealed={figure.revealed} finished={!isStreaming} onShowAll={props.onShowAll} />
+            <p className="agent-board-line" data-testid="agent-figure-on-board">
+               <span>{figureOnTheBoard(figure.spec.title)}</span>
+
+               <button type="button" className="text-button" onClick={props.onShowOnBoard}>
+                  {SHOW_ON_THE_BOARD}
+               </button>
+            </p>
          ) : (
             <p className="agent-writing" data-testid="agent-figure-refused">
                {figure.copy}
@@ -283,13 +216,9 @@ function MarkedOnThePage(props: { marks: ReplyMarks; canClear: boolean; onClear:
    );
 }
 
-function Turn(props: { turn: AgentTurn; onShowAll: (turnId: string) => void; marksTurnId: string | null; onClearMarks: () => void }) {
+function Turn(props: { turn: AgentTurn; onShowOnBoard: (turnId: string) => void; marksTurnId: string | null; onClearMarks: () => void }) {
    const { turn } = props;
-   const item = useRef<HTMLLIElement>(null);
    const isStreaming = turn.state !== "done";
-   const figure = turn.figure;
-   const isBuilding = turn.role === "agent" && isStreaming && figure?.state === "shown";
-   const figureFits = useFigureFitsHeld(item, isBuilding);
 
    if (turn.role === "student") {
       return (
@@ -301,28 +230,14 @@ function Turn(props: { turn: AgentTurn; onShowAll: (turnId: string) => void; mar
    }
 
    const awaitsFirstText = turn.text === "" && isStreaming && turn.figure === undefined;
-   const buildingFigure = isBuilding && figureFits && figure?.state === "shown" ? figure : null;
-   const onShowAll = () => props.onShowAll(turn.id);
    const marks = turn.marks !== undefined ? <MarkedOnThePage marks={turn.marks} canClear={props.marksTurnId === turn.id} onClear={props.onClearMarks} /> : null;
 
-   if (buildingFigure !== null) {
-      return (
-         <li className="agent-turn agent-turn-tutor" ref={item}>
-            <span className="visually-hidden">{TUTOR_SAID}</span>
-
-            <div className="agent-reply agent-reply-building" aria-busy="true" data-testid="agent-reply">
-               <BuildingReply turn={turn} figure={buildingFigure} onShowAll={onShowAll} marks={marks} />
-            </div>
-         </li>
-      );
-   }
-
    return (
-      <li className="agent-turn agent-turn-tutor" ref={item}>
+      <li className="agent-turn agent-turn-tutor">
          <span className="visually-hidden">{TUTOR_SAID}</span>
 
          <div className="agent-reply" aria-busy={isStreaming} data-testid="agent-reply">
-            {awaitsFirstText ? <p className="agent-writing">{WRITING_A_REPLY}</p> : <ReplyBody turn={turn} onShowAll={onShowAll} />}
+            {awaitsFirstText ? <p className="agent-writing">{WRITING_A_REPLY}</p> : <ReplyBody turn={turn} onShowOnBoard={() => props.onShowOnBoard(turn.id)} />}
 
             {marks}
          </div>
@@ -348,7 +263,9 @@ export function AgentPanel() {
    const isOpen = agent?.isOpen ?? false;
    const isNarrow = agent?.isNarrow ?? false;
    const conversation = useRef<HTMLDivElement>(null);
+   const spacer = useRef<HTMLDivElement>(null);
    const followsNewest = useRef(true);
+   const boardDockBottom = agent?.boardDockBottom ?? null;
    const turns = agent?.turns;
    const turnCount = turns?.length ?? 0;
 
@@ -364,6 +281,24 @@ export function AgentPanel() {
          region.scrollTop = region.scrollHeight;
       }
    }, [turns, isOpen]);
+
+   /* The sheet's spacer takes the height the sheet does not, so a spacer at least as tall as the
+      docked board keeps the sheet, and its composer, below the board at every sheet height. */
+   useLayoutEffect(() => {
+      const node = spacer.current;
+
+      if (node === null) {
+         return;
+      }
+
+      const isBelowBoard = isNarrow && boardDockBottom !== null;
+
+      if (isBelowBoard) {
+         node.style.minHeight = `${Math.ceil(boardDockBottom)}px`;
+      } else {
+         node.style.removeProperty("min-height");
+      }
+   }, [isNarrow, boardDockBottom]);
 
    useEffect(() => {
       const animatesIn = isOpen && isNarrow;
@@ -430,7 +365,7 @@ export function AgentPanel() {
    return (
       <>
          <div ref={agent.frame} className="agent-frame" hidden={!agent.isOpen} data-sheet-height={isNarrow ? agent.sheetHeight : undefined}>
-            <div className="agent-frame-spacer" />
+            <div className="agent-frame-spacer" ref={spacer} />
 
             <aside
                id={PANEL_ID}
@@ -520,7 +455,7 @@ export function AgentPanel() {
                         ) : (
                            <ol className="agent-turns">
                               {agent.turns.map((turn) => (
-                                 <Turn key={turn.id} turn={turn} onShowAll={agent.showAll} marksTurnId={agent.marksTurnId} onClearMarks={agent.clearMarks} />
+                                 <Turn key={turn.id} turn={turn} onShowOnBoard={agent.showOnBoard} marksTurnId={agent.marksTurnId} onClearMarks={agent.clearMarks} />
                               ))}
                            </ol>
                         )}

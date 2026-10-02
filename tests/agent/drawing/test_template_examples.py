@@ -6,6 +6,12 @@ sentence. The prose never names the machinery, no point carries an option letter
 and sentence passes the interface writing checks, and the examples together cover the figures the
 design lists. The template is ASCII with no dash, its prefix fits the token budget, and its variable
 section is v1's with drawing added after the move.
+
+Every marks example (docs/agent/drawing-design.md, Marks on the page) reads and compiles against a
+synthetic anchor list that holds the words it quotes; its prose marks each step of its marks, and of
+the figure beside it when there is one, once, in order, after the block; no practice example marks
+an option; and the examples cover the marks the build plan lists. The token budget was raised from
+10,000 to 12,000 when the marks rules and examples took the prefix to about 11,655 tokens.
 """
 import re
 from dataclasses import dataclass
@@ -14,6 +20,8 @@ from pathlib import Path
 import pytest
 
 from app.agent.drawing.compile import compile_figure
+from app.agent.drawing.marks import compile_marks, marks_in_order, read_marks
+from app.agent.drawing.marks import shape_of as mark_shape_of
 from app.agent.drawing.spec import elements_in_order, read_figure, shape_of
 from app.evals import agent_checks, figure_checks
 from app.providers.base import split_template, template_placeholders
@@ -23,11 +31,14 @@ V1_PATH = REPOSITORY_ROOT / "prompts" / "agent" / "live_v1.md"
 V2_PATH = REPOSITORY_ROOT / "prompts" / "agent" / "live_v2.md"
 
 MINIMUM_EXAMPLES = 12
-TOKEN_BUDGET = 10000
+TOKEN_BUDGET = 12000
+MINIMUM_MARKS_EXAMPLES = 4
 CHARACTERS_PER_TOKEN = 3.1
 
-EXAMPLE_PATTERN = re.compile(r"^Example (\d+)\. (.*?)\n(.*?)(?=^Example \d+\. |\Z)", re.MULTILINE | re.DOTALL)
+EXAMPLE_PATTERN = re.compile(r"^Example (\d+)\. (.*?)\n(.*?)(?=^Example \d+\. |^Marks on the page\. |\Z)", re.MULTILINE | re.DOTALL)
+MARKS_EXAMPLE_PATTERN = re.compile(r"^Marks example (\d+)\. (.*?)\n(.*?)(?=^Marks example \d+\. |\Z)", re.MULTILINE | re.DOTALL)
 BLOCK_PATTERN = re.compile(r"^```figure\n(.*?)\n```$", re.MULTILINE | re.DOTALL)
+MARKS_BLOCK_PATTERN = re.compile(r"^```marks\n(.*?)\n```$", re.MULTILINE | re.DOTALL)
 MARKER_PATTERN = re.compile(r"\[\[step:([A-Za-z0-9_]+)\]\]")
 MATH_DELIMITERS = re.compile(r"\\[()]")
 MACHINERY_WORDS = re.compile(
@@ -396,3 +407,172 @@ def test_the_variable_section_is_v1s_fields_with_drawing_after_the_move():
 
    assert v2_lines[drawing_index - 1] == "Move: {{ move }}"
    assert v2_lines[:drawing_index] + v2_lines[drawing_index + 1:] == v1_lines
+
+
+SYNTHETIC_ANCHORS = [
+   {"id": "stem", "kind": "text", "text": "f is given by the graph shown. Find the average rate of change of f on the interval [1, 3]."},
+   {"id": "item_figure", "kind": "graph", "window": {"x": [0, 5], "y": [-1, 9]}},
+   {"id": "item_table", "kind": "table", "rows": 4, "columns": 2},
+   {"id": "feedback", "kind": "text", "text": "The response used one width for every subinterval."},
+   {"id": "solution_step_1", "kind": "text", "text": "Each subinterval contributes its width times the average of its endpoint values."},
+   {"id": "solution_step_2", "kind": "text", "text": "A width of 2 for every subinterval would miss the widths, which are 2, 3 and 5."},
+]
+
+
+@dataclass(frozen=True)
+class MarksExample:
+   number: int
+   situation: str
+   reply: str
+   marks_blocks: tuple
+   figure_blocks: tuple
+
+
+def _marks_examples():
+   prefix, _variable_section = split_template(V2_PATH.read_text())
+   examples = []
+
+   for match in MARKS_EXAMPLE_PATTERN.finditer(prefix):
+      reply = match.group(3).strip()
+      examples.append(MarksExample(
+         number=int(match.group(1)),
+         situation=match.group(2),
+         reply=reply,
+         marks_blocks=tuple(MARKS_BLOCK_PATTERN.finditer(reply)),
+         figure_blocks=tuple(BLOCK_PATTERN.finditer(reply)),
+      ))
+
+   return examples
+
+
+MARKS_EXAMPLES = _marks_examples()
+MARKS_EXAMPLE_IDS = [f"marks_example_{example.number}" for example in MARKS_EXAMPLES]
+
+
+def _read_marks(example):
+   return read_marks(example.marks_blocks[0].group(1), SYNTHETIC_ANCHORS)
+
+
+def _marks_prose(example):
+   prose = MARKS_BLOCK_PATTERN.sub(" ", BLOCK_PATTERN.sub(" ", example.reply))
+
+   return MARKER_PATTERN.sub(" ", prose)
+
+
+def test_the_template_holds_four_marks_examples_one_of_them_beside_a_figure():
+   assert len(MARKS_EXAMPLES) >= MINIMUM_MARKS_EXAMPLES
+   assert all(len(example.marks_blocks) == 1 for example in MARKS_EXAMPLES)
+   assert any(len(example.figure_blocks) == 1 for example in MARKS_EXAMPLES)
+
+
+@pytest.mark.parametrize("example", MARKS_EXAMPLES, ids=MARKS_EXAMPLE_IDS)
+def test_every_marks_example_reads_and_compiles_against_the_anchors(example):
+   compile_marks(_read_marks(example), SYNTHETIC_ANCHORS)
+
+   for block in example.figure_blocks:
+      compile_figure(read_figure(block.group(1)))
+
+
+def _step_ids_of(example):
+   blocks = [(block, [step["id"] for step in _read_marks(example)["steps"]]) for block in example.marks_blocks]
+   blocks += [(block, [step["id"] for step in read_figure(block.group(1))["steps"]]) for block in example.figure_blocks]
+
+   return blocks
+
+
+@pytest.mark.parametrize("example", MARKS_EXAMPLES, ids=MARKS_EXAMPLE_IDS)
+def test_the_prose_marks_every_step_once_in_order_after_its_block(example):
+   blocks = _step_ids_of(example)
+   every_step = [step_id for _block, step_ids in blocks for step_id in step_ids]
+   markers = [(marker.start(), marker.group(1)) for marker in MARKER_PATTERN.finditer(example.reply)]
+
+   assert len(set(every_step)) == len(every_step), "a step id is used by both the figure and the marks"
+   assert sorted(step_id for _start, step_id in markers) == sorted(every_step)
+
+   for block, step_ids in blocks:
+      marked = [(start, step_id) for start, step_id in markers if step_id in step_ids]
+
+      assert [step_id for _start, step_id in marked] == step_ids
+      assert all(start > block.end() for start, _step_id in marked)
+
+
+@pytest.mark.parametrize("example", MARKS_EXAMPLES, ids=MARKS_EXAMPLE_IDS)
+def test_the_marks_prose_never_names_the_machinery(example):
+   found = MACHINERY_WORDS.search(_marks_prose(example))
+
+   assert found is None, f"the prose says {found.group(0)!r}"
+
+
+@pytest.mark.parametrize("example", MARKS_EXAMPLES, ids=MARKS_EXAMPLE_IDS)
+def test_every_marks_text_and_sentence_passes_the_interface_writing_checks(example):
+   _render, facts = compile_marks(_read_marks(example), SYNTHETIC_ANCHORS)
+   texts = figure_checks.figure_texts_pass(facts, BROWSING_FACTS, None)
+   verdicts = agent_checks.run_checks(_marks_prose(example), BROWSING_FACTS, None, agent_checks.EVERY_TURN_CHECKS)
+
+   assert texts.passed, texts.reason
+   assert [verdict.check for verdict in verdicts if not verdict.passed] == []
+
+
+PRACTICE_MARKS_EXAMPLES = [example for example in MARKS_EXAMPLES if example.situation.startswith("Practice")]
+
+
+@pytest.mark.parametrize("example", PRACTICE_MARKS_EXAMPLES, ids=[f"marks_example_{example.number}" for example in PRACTICE_MARKS_EXAMPLES])
+def test_no_practice_example_marks_an_option_or_strikes(example):
+   shapes = [mark_shape_of(mark) for _step_id, mark in marks_in_order(_read_marks(example))]
+   _render, facts = compile_marks(_read_marks(example), SYNTHETIC_ANCHORS)
+   options = [shown.anchor for shown in facts.anchors if shown.anchor.startswith("option_")]
+
+   assert options == []
+   assert "strike" not in shapes
+
+
+def _marks_of(example):
+   return [(mark_shape_of(mark), mark[mark_shape_of(mark)]) for _step_id, mark in marks_in_order(_read_marks(example))]
+
+
+def _values_of(example, wanted):
+   return [value for shape, value in _marks_of(example) if shape == wanted]
+
+
+def _underline_and_ring_on_the_graph(example):
+   has_underline = any(value["anchor"] == "stem" for value in _values_of(example, "underline"))
+   has_ring = any("at" in value for value in _values_of(example, "ring"))
+
+   return has_underline and has_ring
+
+
+def _highlighted_table_row(example):
+   return any("row" in value for value in _values_of(example, "highlight"))
+
+
+def _strike_with_a_note_after_checking(example):
+   is_after_submission = example.situation.startswith("After submission")
+   has_strike = any(value["anchor"].startswith("solution_step_") for value in _values_of(example, "strike"))
+   has_note = len(_values_of(example, "note")) > 0
+
+   return is_after_submission and has_strike and has_note
+
+
+def _points_from_the_stem_to_the_graph(arrow):
+   starts_at_the_stem = arrow["from"]["anchor"] == "stem"
+   ends_at_the_graph = arrow["to"]["anchor"] == "item_figure"
+
+   return starts_at_the_stem and ends_at_the_graph
+
+
+def _arrow_from_the_stem_to_the_graph(example):
+   return any(_points_from_the_stem_to_the_graph(value) for value in _values_of(example, "arrow"))
+
+
+MARKS_COVERAGE = (
+   _underline_and_ring_on_the_graph,
+   _highlighted_table_row,
+   _strike_with_a_note_after_checking,
+   _arrow_from_the_stem_to_the_graph,
+)
+
+
+def test_the_marks_examples_cover_what_the_build_plan_lists():
+   missing = [covers.__name__ for covers in MARKS_COVERAGE if not any(covers(example) for example in MARKS_EXAMPLES)]
+
+   assert missing == []

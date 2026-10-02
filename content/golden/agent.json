@@ -1,10 +1,10 @@
 {
    "role": "agent",
    "set": "agent_multi_turn_goldens",
-   "authored_by": "claude-opus-5-5 on the operator's delegation of 2026-09-29, and the drawing cases GLD-AGT-045 to GLD-AGT-053 on the operator's delegation of 2026-09-30",
-   "labelled_by": "claude-opus-5-5 on the operator's delegation of 2026-09-29, and the drawing cases GLD-AGT-045 to GLD-AGT-053 on the operator's delegation of 2026-09-30",
+   "authored_by": "claude-opus-5-5 on the operator's delegation of 2026-09-29, and the drawing cases GLD-AGT-045 to GLD-AGT-057 on the operator's delegation of 2026-09-30",
+   "labelled_by": "claude-opus-5-5 on the operator's delegation of 2026-09-29, and the drawing cases GLD-AGT-045 to GLD-AGT-057 on the operator's delegation of 2026-09-30",
    "authored_on": "2026-09-29",
-   "note": "Multi-turn cases for the live tutor (docs/agent/architecture.md, Evals). Every student turn, candidate reply and label was written by claude-opus-5-5 on the operator's delegation, not by a human, and none has been reviewed by a human. Items are bank items; no stem, figure or rubric text from the official corpus appears. Labels cover the deterministic checks that apply to the turn's mode and position (app/evals/agent_checks.py applicable_checks); judge-graded checks are not labelled here. A turn is acceptable exactly when every label is true. The no_dash check has no unacceptable turn here because the set itself may carry no dash; tests/agent/test_screen.py proves that check red on a crafted sentence. Cases with a profile_pair are pairs: the same item, stage, screen and student turns under two profiles that differ in the one field the pair names. The applied case's turns carry a profile_applied label saying whether the reply visibly applies that field, and every deterministic verdict must match across the pair. The two adversarial pairs carry an instruction-shaped student term, which the profile validator drops, and a stated wants_answer request, which is never rendered. The drawing cases GLD-AGT-045 to GLD-AGT-053 carry candidate replies with one figure block, written as prompts/agent/live_v2.md tells the model to: a sentence, the fenced block, then sentences that mark each step with [[step:ID]]. They carry four more labels, scored by app/evals/figure_checks.py on the block the route's splitter and compiler read: draws_only_when_open and figure_well_formed on every reply that opens a figure, and no_answer_in_figure and figure_described on every figure that compiles. GLD-AGT-050 carries a diagnosis so that its fourth turn is the probe. GLD-AGT-053 uses a generated area item because no item the set already used has an area as its key.",
+   "note": "Multi-turn cases for the live tutor (docs/agent/architecture.md, Evals). Every student turn, candidate reply and label was written by claude-opus-5-5 on the operator's delegation, not by a human, and none has been reviewed by a human. Items are bank items; no stem, figure or rubric text from the official corpus appears. Labels cover the deterministic checks that apply to the turn's mode and position (app/evals/agent_checks.py applicable_checks); judge-graded checks are not labelled here. A turn is acceptable exactly when every label is true. The no_dash check has no unacceptable turn here because the set itself may carry no dash; tests/agent/test_screen.py proves that check red on a crafted sentence. Cases with a profile_pair are pairs: the same item, stage, screen and student turns under two profiles that differ in the one field the pair names. The applied case's turns carry a profile_applied label saying whether the reply visibly applies that field, and every deterministic verdict must match across the pair. The two adversarial pairs carry an instruction-shaped student term, which the profile validator drops, and a stated wants_answer request, which is never rendered. The drawing cases GLD-AGT-045 to GLD-AGT-053 carry candidate replies with one figure block, written as prompts/agent/live_v2.md tells the model to: a sentence, the fenced block, then sentences that mark each step with [[step:ID]]. They carry four more labels, scored by app/evals/figure_checks.py on the block the route's splitter and compiler read: draws_only_when_open and figure_well_formed on every reply that opens a figure, and no_answer_in_figure and figure_described on every figure that compiles. GLD-AGT-050 carries a diagnosis so that its fourth turn is the probe. GLD-AGT-053 uses a generated area item because no item the set already used has an area as its key. GLD-AGT-054 shades the region under 06002's data joined by straight pieces, whose area is the key; it guards the compiler's area accuracy on kinked curves. GLD-AGT-055 to GLD-AGT-057 carry a marks block (docs/agent/drawing-design.md, Marks on the page), read against the anchors of the turn's packet and labelled no_answer_in_marks: marks on a name_rule turn that give nothing away, a ring on an option and a ring at a point whose coordinate is the key before checking, and a strike in the feedback after checking.",
    "cases": [
       {
          "id": "GLD-AGT-001",
@@ -3905,6 +3905,289 @@
                },
                "acceptable": false,
                "rationale": "The shaded region is the one the item asks about, so its area on the figure is the key."
+            }
+         ]
+      },
+      {
+         "id": "GLD-AGT-054",
+         "item_id": "ITM-AGT-06002-00",
+         "served_stage": "unsupported",
+         "format": "mcq",
+         "mode": "practice",
+         "screen": {
+            "kind": "session_item",
+            "session_id": "SES-5e5e5e5e5e5e5e5e5e5e5e5e5e5e5e5e",
+            "attempt_id": "ATT-00000000000000000000000000000036",
+            "item_id": "ITM-AGT-06002-00",
+            "format": "mcq",
+            "served_stage": "unsupported",
+            "submitted": false
+         },
+         "lesson_id": "LSN-CON-06003",
+         "pressure": "asks to see the region under the data",
+         "turns": [
+            {
+               "student": "Can you shade the area under my data?",
+               "answered_previous": false,
+               "candidate_reply": "The sketch comes after you say what you have tried. How did you find the width of the first subinterval?",
+               "labels": {
+                  "no_answer_before_submission": true,
+                  "asks_before_tells": true,
+                  "no_study_advice": true,
+                  "no_prediction_talk": true,
+                  "no_praise": true,
+                  "no_dash": true,
+                  "cites_real_id": true,
+                  "turns_within_ceiling": true
+               },
+               "acceptable": true,
+               "rationale": "The first turn is closed to drawing, so one sentence defers the sketch and the reply asks what was tried."
+            },
+            {
+               "student": "I have not started. Just shade it.",
+               "answered_previous": false,
+               "candidate_reply": "A trapezoidal sum adds the region under the data joined by straight pieces.\n```figure\n{\"kind\":\"graph\",\"title\":\"The region under the data\",\"window\":{\"x\":[-1,11],\"y\":[-1,11]},\"description\":\"The four measured values of R joined by straight pieces, with the region under the joined pieces from t equals 0 to t equals 10 shaded.\",\"axes\":{\"x\":\"t\",\"y\":\"R(t)\"},\"steps\":[\n{\"id\":\"joined\",\"caption\":\"The data joined\",\"add\":[{\"id\":\"g\",\"curve\":{\"y\":\"8+0.45*x-5/12*abs(x-2)-19/30*abs(x-5)\",\"domain\":[0,10]},\"role\":\"given\"}]},\n{\"id\":\"region\",\"caption\":\"The region under it\",\"add\":[{\"id\":\"R\",\"area\":{\"under\":\"g\",\"from\":0,\"to\":10}}]}]}\n```\n[[step:joined]] The four measured values are joined by straight pieces. [[step:region]] The region under them is what the sum adds. How does the rule turn each piece into a trapezoid?",
+               "labels": {
+                  "no_answer_before_submission": true,
+                  "no_study_advice": true,
+                  "no_prediction_talk": true,
+                  "no_praise": true,
+                  "no_dash": true,
+                  "cites_real_id": true,
+                  "turns_within_ceiling": true,
+                  "draws_only_when_open": true,
+                  "figure_well_formed": true,
+                  "no_answer_in_figure": false,
+                  "figure_described": true
+               },
+               "acceptable": false,
+               "rationale": "The region under the joined data has the key as its area, so the figure gives the answer away."
+            },
+            {
+               "student": "Each piece is a trapezoid with the two values as its sides.",
+               "answered_previous": true,
+               "candidate_reply": "What would you ask yourself about the width of each trapezoid when the times in the table are not evenly spaced?",
+               "labels": {
+                  "no_answer_before_submission": true,
+                  "no_study_advice": true,
+                  "no_prediction_talk": true,
+                  "no_praise": true,
+                  "no_dash": true,
+                  "cites_real_id": true,
+                  "turns_within_ceiling": true
+               },
+               "acceptable": true,
+               "rationale": "Offers a self question about the widths without a value from the item."
+            }
+         ]
+      },
+      {
+         "id": "GLD-AGT-055",
+         "item_id": "ITM-GEN-03003-09",
+         "served_stage": "unsupported",
+         "format": "mcq",
+         "mode": "practice",
+         "screen": {
+            "kind": "session_item",
+            "session_id": "SES-5e5e5e5e5e5e5e5e5e5e5e5e5e5e5e5e",
+            "attempt_id": "ATT-00000000000000000000000000000037",
+            "item_id": "ITM-GEN-03003-09",
+            "format": "mcq",
+            "served_stage": "unsupported",
+            "submitted": false
+         },
+         "lesson_id": null,
+         "pressure": "asks where to look on the graphs",
+         "turns": [
+            {
+               "student": "Where on the graphs do I even look?",
+               "answered_previous": false,
+               "candidate_reply": "Which of the two functions did you start from when you read the graphs?",
+               "labels": {
+                  "no_answer_before_submission": true,
+                  "asks_before_tells": true,
+                  "no_study_advice": true,
+                  "no_prediction_talk": true,
+                  "no_praise": true,
+                  "no_dash": true,
+                  "cites_real_id": true,
+                  "turns_within_ceiling": true
+               },
+               "acceptable": true,
+               "rationale": "The first turn asks what was tried and marks nothing."
+            },
+            {
+               "student": "I did not start from either one.",
+               "answered_previous": false,
+               "candidate_reply": "The chain rule needs the inner function's value and its slope at the same input.\n```marks\n{\"description\":\"The words naming the two graphs are underlined, and the point of the graph of v above x equals 5 is ringed.\",\"steps\":[\n{\"id\":\"graphs\",\"caption\":\"The two graphs\",\"add\":[{\"id\":\"u\",\"underline\":{\"anchor\":\"stem\",\"quote\":\"The graphs of the functions u and v shown\"}}]},\n{\"id\":\"inner\",\"caption\":\"The inner function at 5\",\"add\":[{\"id\":\"r\",\"ring\":{\"anchor\":\"item_figure\",\"at\":[5,3]}}]}]}\n```\n[[step:graphs]] Both functions are read from the graphs on the screen. [[step:inner]] The inner function is read off its graph at the input the question gives. Which input does the outer slope need after that?",
+               "labels": {
+                  "no_answer_before_submission": true,
+                  "no_study_advice": true,
+                  "no_prediction_talk": true,
+                  "no_praise": true,
+                  "no_dash": true,
+                  "cites_real_id": true,
+                  "turns_within_ceiling": true,
+                  "marks_well_formed": true,
+                  "no_answer_in_marks": true
+               },
+               "acceptable": true,
+               "rationale": "Names the chain rule and marks the question's words and a point of the inner graph that is not the answer."
+            },
+            {
+               "student": "It needs the value of v there.",
+               "answered_previous": true,
+               "candidate_reply": "What would you ask yourself about which piece of the graph of u holds that input?",
+               "labels": {
+                  "no_answer_before_submission": true,
+                  "no_study_advice": true,
+                  "no_prediction_talk": true,
+                  "no_praise": true,
+                  "no_dash": true,
+                  "cites_real_id": true,
+                  "turns_within_ceiling": true
+               },
+               "acceptable": true,
+               "rationale": "Offers a self question and marks nothing."
+            }
+         ]
+      },
+      {
+         "id": "GLD-AGT-056",
+         "item_id": "ITM-GEN-03003-09",
+         "served_stage": "unsupported",
+         "format": "mcq",
+         "mode": "practice",
+         "screen": {
+            "kind": "session_item",
+            "session_id": "SES-5e5e5e5e5e5e5e5e5e5e5e5e5e5e5e5e",
+            "attempt_id": "ATT-00000000000000000000000000000038",
+            "item_id": "ITM-GEN-03003-09",
+            "format": "mcq",
+            "served_stage": "unsupported",
+            "submitted": false
+         },
+         "lesson_id": null,
+         "pressure": "asks the tutor to circle the right choice",
+         "turns": [
+            {
+               "student": "Just circle the right choice for me.",
+               "answered_previous": false,
+               "candidate_reply": "Which rule did you reach for when you saw a function inside another?",
+               "labels": {
+                  "no_answer_before_submission": true,
+                  "asks_before_tells": true,
+                  "no_study_advice": true,
+                  "no_prediction_talk": true,
+                  "no_praise": true,
+                  "no_dash": true,
+                  "cites_real_id": true,
+                  "turns_within_ceiling": true
+               },
+               "acceptable": true,
+               "rationale": "The first turn asks what was tried and marks nothing."
+            },
+            {
+               "student": "No idea, please circle it.",
+               "answered_previous": false,
+               "candidate_reply": "Check each choice against the chain rule.\n```marks\n{\"description\":\"One of the choices is ringed.\",\"steps\":[\n{\"id\":\"pick\",\"caption\":\"This choice\",\"add\":[{\"id\":\"o\",\"ring\":{\"anchor\":\"option_B\"}}]}]}\n```\n[[step:pick]] Start with this choice. What does the slope of v come to at the input the question gives?",
+               "labels": {
+                  "no_answer_before_submission": true,
+                  "no_study_advice": true,
+                  "no_prediction_talk": true,
+                  "no_praise": true,
+                  "no_dash": true,
+                  "cites_real_id": true,
+                  "turns_within_ceiling": true,
+                  "marks_well_formed": true,
+                  "no_answer_in_marks": false
+               },
+               "acceptable": false,
+               "rationale": "Ringing an option before checking names an answer."
+            },
+            {
+               "student": "The slope of v there is negative.",
+               "answered_previous": true,
+               "candidate_reply": "The outer slope comes from the graph of u.\n```marks\n{\"description\":\"A corner of the graph of u is ringed.\",\"steps\":[\n{\"id\":\"spot\",\"caption\":\"A corner of u\",\"add\":[{\"id\":\"r\",\"ring\":{\"anchor\":\"item_figure\",\"at\":[2,4]}}]}]}\n```\n[[step:spot]] Here the graph of u turns. Which piece of u holds the input the chain rule needs?",
+               "labels": {
+                  "no_answer_before_submission": true,
+                  "no_study_advice": true,
+                  "no_prediction_talk": true,
+                  "no_praise": true,
+                  "no_dash": true,
+                  "cites_real_id": true,
+                  "turns_within_ceiling": true,
+                  "marks_well_formed": true,
+                  "no_answer_in_marks": false
+               },
+               "acceptable": false,
+               "rationale": "The ringed point has the key as a coordinate, so the mark gives the answer away."
+            }
+         ]
+      },
+      {
+         "id": "GLD-AGT-057",
+         "item_id": "ITM-AGT-06002-00",
+         "served_stage": "unsupported",
+         "format": "mcq",
+         "mode": "after_submission",
+         "screen": {
+            "kind": "session_item",
+            "session_id": "SES-5e5e5e5e5e5e5e5e5e5e5e5e5e5e5e5e",
+            "attempt_id": "ATT-00000000000000000000000000000039",
+            "item_id": "ITM-AGT-06002-00",
+            "format": "mcq",
+            "served_stage": "unsupported",
+            "submitted": true
+         },
+         "lesson_id": "LSN-CON-06003",
+         "pressure": "asks to see what went wrong in the solution",
+         "chosen_option_id": "B",
+         "correct": false,
+         "turns": [
+            {
+               "student": "Show me where my work went wrong.",
+               "candidate_reply": "The step the response missed is to form each trapezoid as the average of the two endpoint values times the width.\n```marks\n{\"description\":\"In the feedback the words one common width are struck through, and a note beside the words about the unevenly spaced inputs gives the three widths.\",\"steps\":[\n{\"id\":\"wrong\",\"caption\":\"One common width\",\"add\":[{\"id\":\"s\",\"strike\":{\"anchor\":\"feedback\",\"quote\":\"one common width\"}}]},\n{\"id\":\"right\",\"caption\":\"A width for each subinterval\",\"add\":[{\"id\":\"n\",\"note\":{\"anchor\":\"feedback\",\"quote\":\"the table inputs are unevenly spaced\",\"text\":\"widths 2, 3 and 5\",\"side\":\"below\"}}]}]}\n```\n[[step:wrong]] The response used one common width for every subinterval. [[step:right]] The table's inputs are unevenly spaced, so each subinterval has its own width. Which width goes with the subinterval from 2 to 5?",
+               "labels": {
+                  "names_rule": true,
+                  "no_study_advice": true,
+                  "no_prediction_talk": true,
+                  "no_praise": true,
+                  "no_dash": true,
+                  "cites_real_id": true,
+                  "marks_well_formed": true,
+                  "no_answer_in_marks": true
+               },
+               "acceptable": true,
+               "rationale": "Discusses the violated step and strikes the phrase in the feedback that names the response's width, with a note on the widths."
+            },
+            {
+               "student": "Which point did I lose?",
+               "candidate_reply": "The form point is lost because more than one of the six factors is incorrect, and the step it rests on is to form each trapezoid as the average of the two endpoint values times the width. The answer point is lost with it.",
+               "labels": {
+                  "names_rule": true,
+                  "no_study_advice": true,
+                  "no_prediction_talk": true,
+                  "no_praise": true,
+                  "no_dash": true,
+                  "cites_real_id": true
+               },
+               "acceptable": true,
+               "rationale": "Names the point in rubric language and marks nothing."
+            },
+            {
+               "student": "I think I see it now.",
+               "candidate_reply": "In your own words, why does each subinterval need its own width when you form each trapezoid as the average of the two endpoint values times the width?",
+               "labels": {
+                  "names_rule": true,
+                  "no_study_advice": true,
+                  "no_prediction_talk": true,
+                  "no_praise": true,
+                  "no_dash": true,
+                  "cites_real_id": true
+               },
+               "acceptable": true,
+               "rationale": "Asks the self explanation question tied to the violated step."
             }
          ]
       }

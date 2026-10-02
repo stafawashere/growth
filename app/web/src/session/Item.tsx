@@ -160,13 +160,13 @@ export function Item(props: ItemProps) {
                   <span className="eyebrow">{promptKind}</span>
                )}
 
-               <p className={allowsCalculator ? "item-stem item-stem-beside-tool" : "item-stem"} data-testid="item-stem">
+               <p className={allowsCalculator ? "item-stem item-stem-beside-tool" : "item-stem"} data-testid="item-stem" data-agent-anchor="stem">
                   <MathText text={item.stem} />
                </p>
 
                {allowsCalculator ? <DesmosPanel beside={<CalculatorLink />} /> : null}
 
-               {hasFigure ? <FigureView spec={item.figure_spec} /> : null}
+               {hasFigure ? <FigureView spec={item.figure_spec} isItemFigure /> : null}
             </div>
 
             {needsWorkedSteps && !canDrawStage ? (
@@ -205,6 +205,7 @@ export function Item(props: ItemProps) {
                         options={item.options ?? []}
                         selectedId={selectedOptionId}
                         onSelect={onOptionChange}
+                        anchorsOptions
                      />
                   </div>
                ) : (

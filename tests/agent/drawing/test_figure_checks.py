@@ -12,7 +12,8 @@ from pathlib import Path
 import pytest
 
 from app.agent.drawing.compile import compile_figure
-from app.agent.drawing.spec import read_figure
+from app.agent.drawing.marks import compile_marks, read_marks
+from app.agent.drawing.spec import FigureRefused, read_figure
 from app.evals import agent_checks, figure_checks
 
 REPOSITORY_ROOT = Path(__file__).resolve().parents[3]
@@ -219,3 +220,77 @@ def test_a_figure_whose_description_only_repeats_its_title_is_not_described():
    assert figure_checks.figure_described(figure).passed is True
    assert figure_checks.figure_described({**figure, "description": figure["title"]}).passed is False
    assert figure_checks.figure_described({**figure, "description": "A curve."}).passed is False
+
+
+JOINED_DATA_06002 = "8+0.45*x-5/12*abs(x-2)-19/30*abs(x-5)"
+
+
+def test_the_region_under_the_joined_data_of_06002_is_exact_and_withheld():
+   """The item's table, 4, 7, 9 and 6 at 0, 2, 5 and 10, joined by straight pieces bounds a region of
+   area 72.5, the item's key. Kinks at 2 and 5 sit inside Simpson panels."""
+   joined = {"id": "g", "curve": {"y": JOINED_DATA_06002, "domain": [0, 10]}, "role": "given"}
+   region = {"id": "R", "area": {"under": "g", "from": 0, "to": 10}}
+   figure = _figure(joined, region, window={"x": [-1, 11], "y": [-1, 11]})
+   facts = _facts(figure)
+   forms = agent_checks.key_forms(json.loads(AGENT_ITEM_PATH.read_text()))
+   exact = (4 + 7) / 2 * 2 + (7 + 9) / 2 * 3 + (9 + 6) / 2 * 5
+
+   assert exact == 72.5
+   assert [abs(shown.value - exact) <= 1e-6 for shown in facts.areas] == [True, True]
+   _assert_withheld(figure_checks.screen_figure(facts, PRACTICE, forms), "no_answer_in_figure", "an area", "(R)")
+
+
+GRAPH_ANCHORS = [
+   {"id": "stem", "kind": "text", "text": "The graph of f is shown. What is the slope of the line tangent to f at x = 2?"},
+   {"id": "item_figure", "kind": "graph", "window": {"x": [-1, 5], "y": [-2, 6]}},
+]
+
+
+def _marks_facts(*marks, options_hidden=True):
+   block = {"description": "Marks on the item for the screen test.", "steps": [{"id": "only", "caption": "The marks", "add": list(marks)}]}
+   read = read_marks(json.dumps(block), GRAPH_ANCHORS, options_hidden)
+   _render, facts = compile_marks(read, GRAPH_ANCHORS, options_hidden=options_hidden)
+
+   return facts
+
+
+def test_a_mark_on_an_option_before_checking_is_withheld_and_after_checking_is_refused():
+   facts = _marks_facts({"id": "o", "ring": {"anchor": "option_B"}})
+   verdict = figure_checks.screen_marks(facts, PRACTICE, _forms({"numeric": 3}))
+
+   _assert_withheld(verdict, "no_answer_in_marks", "(o)", "answer option")
+
+   with pytest.raises(FigureRefused) as refusal:
+      _marks_facts({"id": "o", "ring": {"anchor": "option_B"}}, options_hidden=False)
+
+   assert refusal.value.reason == "malformed"
+
+
+def test_a_ring_at_the_keys_point_on_the_item_graph_is_withheld():
+   facts = _marks_facts({"id": "r", "ring": {"anchor": "item_figure", "at": [2, 3.5]}})
+   verdict = figure_checks.screen_marks(facts, PRACTICE, _forms({"numeric": 3.5}))
+
+   _assert_withheld(verdict, "no_answer_in_marks", "marked coordinate", "(r)", value_text="3.5")
+
+
+def test_a_tangent_with_the_keys_slope_on_the_item_graph_is_withheld():
+   facts = _marks_facts({"id": "t", "line": {"anchor": "item_figure", "point": [2, 1], "slope": 1.5}})
+   verdict = figure_checks.screen_marks(facts, PRACTICE, _forms({"numeric": 1.5}))
+
+   _assert_withheld(verdict, "no_answer_in_marks", "slope or intercept", "(t)", value_text="1.5")
+
+
+def test_a_note_stating_the_key_is_withheld():
+   facts = _marks_facts({"id": "n", "note": {"anchor": "stem", "quote": "slope of the line", "text": "it is \\(1.5\\)"}})
+   verdict = figure_checks.screen_marks(facts, PRACTICE, _forms({"numeric": 1.5}))
+
+   _assert_withheld(verdict, "no_answer_before_submission", "note of n", value_text="1.5")
+
+
+def test_generic_marks_pass_before_checking():
+   facts = _marks_facts(
+      {"id": "u", "underline": {"anchor": "stem", "quote": "tangent to f at x = 2"}},
+      {"id": "r", "ring": {"anchor": "item_figure", "at": [2, 1]}},
+   )
+
+   assert figure_checks.screen_marks(facts, PRACTICE, _forms({"numeric": 1.5})).passed is True

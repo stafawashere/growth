@@ -13,15 +13,25 @@ trapezoid totals, constant curves and numeric table cells. When the key is an ex
 variable, each curve is evaluated in floats and compared with the key, evaluated by SymPy, at 16
 points across its visible stretch; the model's curve never reaches SymPy. A failing verdict names
 the channel and the element, never the value.
+
+Marks on the page are screened as a figure is (docs/agent/drawing-design.md, Marks on the page):
+their notes, captions and description through the sentence checks in every mode, and, before an
+item is checked or on a lesson section that poses a question, no_answer_in_marks, which fails on a
+mark that names an answer option and compares every coordinate, slope, intercept and guide level
+drawn on the item's graph with the key. Quoted phrases are the screen's own text and are not
+compared.
 """
 import math
 
 from app.agent.drawing import expression
+from app.agent.drawing.marks import is_option_anchor
 from app.agent.drawing.compile import compile_figure
 from app.agent.drawing.spec import FigureRefused, read_figure
 from app.evals import agent_checks
 
 NO_ANSWER_IN_FIGURE = "no_answer_in_figure"
+NO_ANSWER_IN_MARKS = "no_answer_in_marks"
+MARKS_WELL_FORMED = "marks_well_formed"
 FIGURE_TEXTS = "figure_texts"
 FIGURE_WELL_FORMED = "figure_well_formed"
 DRAWS_ONLY_WHEN_OPEN = "draws_only_when_open"
@@ -132,6 +142,56 @@ def no_answer_in_figure(facts, packet_facts, forms):
             return _failed(check, f"a curve ({curve.element}) equals the key expression")
 
    return _passed(check)
+
+
+MARKS_NUMBER_CHANNELS = NUMBER_CHANNELS[:2]
+
+
+def _number_leak(facts, channels, key_value):
+   """The first number of the channels that equals the key, as (description, element), or None."""
+   for channel, description in channels:
+      for shown in getattr(facts, channel):
+         if abs(shown.value - key_value) <= agent_checks.NUMERIC_TOLERANCE:
+            return description, shown.element
+
+   return None
+
+
+def no_answer_in_marks(facts, packet_facts, forms):
+   check = NO_ANSWER_IN_MARKS
+   is_practice = packet_facts.get("mode") == agent_checks.PRACTICE
+
+   if not is_practice:
+      return _passed(check)
+
+   for shown in facts.anchors:
+      if is_option_anchor(shown.anchor):
+         return _failed(check, f"a mark ({shown.element}) names an answer option")
+
+   key_value = agent_checks._numeric_value(forms.expression) if forms is not None else None
+
+   if key_value is None:
+      return _passed(check)
+
+   leak = _number_leak(facts, MARKS_NUMBER_CHANNELS, key_value)
+
+   if leak is not None:
+      description, element = leak
+
+      return _failed(check, f"{description} ({element}) on the item's graph equals the key")
+
+   return _passed(check)
+
+
+def screen_marks(facts, packet_facts, forms):
+   """The first failing marks check, or a pass: the texts in every mode, then the options and the
+   numbers before checking."""
+   texts = figure_texts_pass(facts, packet_facts, forms)
+
+   if not texts.passed:
+      return texts
+
+   return no_answer_in_marks(facts, packet_facts, forms)
 
 
 def screen_figure(facts, packet_facts, forms):

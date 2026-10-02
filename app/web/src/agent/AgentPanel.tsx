@@ -5,14 +5,17 @@ import { holdUnclosedMath } from "../math/mathjson";
 import { TUTOR_SHEET_CLASS } from "../styles/motion";
 import { Icon } from "../ui/Icon";
 import {
+   CLEAR_MARKS,
    CLOSE_LABEL,
    COMPOSER_LABEL,
+   CURRENT_STEP_WORD,
    CONVERSATION_CEILING,
    DAILY_CAP,
    DRAWING_A_FIGURE,
    EMPTY_ELSEWHERE,
    EMPTY_ON_ITEM,
    FULL_HEIGHT_LABEL,
+   MARKED_ON_THE_PAGE,
    MINUTE_CAP,
    OFFLINE,
    PANEL_TITLE,
@@ -31,7 +34,7 @@ import {
    closeHint,
    usageLimitUntil
 } from "./agentCopy";
-import { COMPOSER_ID, PANEL_ID, isLapsedUsageLimit, useAgent, type AgentTurn, type DegradedState } from "./AgentProvider";
+import { COMPOSER_ID, PANEL_ID, isLapsedUsageLimit, useAgent, type AgentTurn, type DegradedState, type ReplyMarks } from "./AgentProvider";
 import { contextLinesFor } from "./screenLines";
 import { TutorFigure } from "./TutorFigure";
 
@@ -158,7 +161,53 @@ function ReplyBody(props: { turn: AgentTurn; onShowAll: () => void }) {
    );
 }
 
-function Turn(props: { turn: AgentTurn; onShowAll: (turnId: string) => void }) {
+/* What the reply marked on the page, for everyone and for a screen reader, since the marks layer
+   itself is hidden from assistive technology: the captions of the steps shown so far, the latest
+   marked now, and Clear marks while the marks are on the screen the student is on. */
+function MarkedOnThePage(props: { marks: ReplyMarks; canClear: boolean; onClear: () => void }) {
+   const { marks } = props;
+
+   if (marks.state === "refused") {
+      return (
+         <p className="agent-writing" data-testid="agent-marks-refused">
+            {marks.copy}
+         </p>
+      );
+   }
+
+   const shownSteps = marks.spec.steps.slice(0, marks.revealed);
+
+   if (shownSteps.length === 0) {
+      return null;
+   }
+
+   return (
+      <div className="agent-marks" data-testid="agent-marks">
+         <p className="agent-marks-heading">{MARKED_ON_THE_PAGE}</p>
+
+         <ol className="tutor-figure-step-list">
+            {shownSteps.map((step, index) => {
+               const isCurrent = index === shownSteps.length - 1;
+
+               return (
+                  <li key={step.id} aria-current={isCurrent ? "step" : undefined}>
+                     <MathText text={step.caption} renderer="tutor" />
+                     {isCurrent ? <span className="tutor-figure-now">{CURRENT_STEP_WORD}</span> : null}
+                  </li>
+               );
+            })}
+         </ol>
+
+         {props.canClear ? (
+            <button type="button" className="text-button" onClick={props.onClear}>
+               {CLEAR_MARKS}
+            </button>
+         ) : null}
+      </div>
+   );
+}
+
+function Turn(props: { turn: AgentTurn; onShowAll: (turnId: string) => void; marksTurnId: string | null; onClearMarks: () => void }) {
    const { turn } = props;
 
    if (turn.role === "student") {
@@ -179,6 +228,8 @@ function Turn(props: { turn: AgentTurn; onShowAll: (turnId: string) => void }) {
 
          <div className="agent-reply" aria-busy={isStreaming} data-testid="agent-reply">
             {awaitsFirstText ? <p className="agent-writing">{WRITING_A_REPLY}</p> : <ReplyBody turn={turn} onShowAll={() => props.onShowAll(turn.id)} />}
+
+            {turn.marks !== undefined ? <MarkedOnThePage marks={turn.marks} canClear={props.marksTurnId === turn.id} onClear={props.onClearMarks} /> : null}
          </div>
       </li>
    );
@@ -374,7 +425,7 @@ export function AgentPanel() {
                         ) : (
                            <ol className="agent-turns">
                               {agent.turns.map((turn) => (
-                                 <Turn key={turn.id} turn={turn} onShowAll={agent.showAll} />
+                                 <Turn key={turn.id} turn={turn} onShowAll={agent.showAll} marksTurnId={agent.marksTurnId} onClearMarks={agent.clearMarks} />
                               ))}
                            </ol>
                         )}

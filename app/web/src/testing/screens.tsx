@@ -21,7 +21,8 @@ import type {
    ServedItem,
    SessionPayload,
    StepMark,
-   TutorFigureSpec
+   TutorFigureSpec,
+   TutorMarksSpec
 } from "../api/types";
 import { calculatorPart, multipleChoiceQuestion, noCalculatorPart } from "../assessment/fixtures";
 import { PartRunner } from "../assessment/PartRunner";
@@ -49,7 +50,9 @@ import { LessonsRoute } from "../lessons/LessonsRoute";
 import { PaceStatement } from "../progress/PaceStatement";
 import type { SettingsTab } from "../routing";
 import { TutorHarness, UNCHECKED_ITEM, frame } from "./agent";
-import { EVERY_ROLE_FIGURE, LABELLED_TABLE, SECANT_TO_TANGENT, TABLE_OF_VALUES } from "../agent/figureFixtures";
+import { EVERY_ROLE_FIGURE, EVERY_ROLE_MARKS, ITEM_MARKS, LABELLED_TABLE, SECANT_TO_TANGENT, TABLE_MARKS, TABLE_OF_VALUES } from "../agent/figureFixtures";
+import { PageMarks } from "../agent/PageMarks";
+import { Item } from "../session/Item";
 import { TutorFigure } from "../agent/TutorFigure";
 import { Loading } from "../status/LoadState";
 import type { CountdownPace } from "../ui/Countdown";
@@ -844,7 +847,33 @@ export function tutorFigure(spec: TutorFigureSpec, revealed: number, finished: b
    axis and one below it, and the last step fading the constructed marks; a finished table with a
    highlighted row faded, an error cell and a highlighted column; and a figure still being built,
    with only Show all under it. */
+/* A practice item with the tutor's marks over it, finished: every role and kind on the stem and the
+   graph, and a table row and cell. */
+function markedItem(item: ServedItem, marks: TutorMarksSpec) {
+   return inPage(
+      <>
+         <Item
+            item={item}
+            onAnswerChange={vi.fn()}
+            answerUnavailable={false}
+            onAnswerUnavailable={vi.fn()}
+            selectedOptionId={null}
+            onOptionChange={vi.fn()}
+            confidence={null}
+            onConfidenceChange={vi.fn()}
+            selfExplanation=""
+            onSelfExplanationChange={vi.fn()}
+            onCommit={vi.fn()}
+            awaitingConfidence={false}
+         />
+         <PageMarks spec={marks} revealed={marks.steps.length} />
+      </>
+   );
+}
+
 const TUTOR_FIGURE_SCREENS: Screen[] = [
+   { name: "tutor marks on an item, every role and kind, finished", mount: async () => markedItem(servedItem(), EVERY_ROLE_MARKS) },
+   { name: "tutor marks on an item's table, finished", mount: async () => markedItem(servedItem({ figure_spec: TABLE_FIGURE }), TABLE_MARKS) },
    { name: "tutor figure, every role, finished", mount: async () => tutorFigure(EVERY_ROLE_FIGURE, EVERY_ROLE_FIGURE.steps.length, true) },
    { name: "tutor figure, a table with its highlights, finished", mount: async () => tutorFigure(TABLE_OF_VALUES, TABLE_OF_VALUES.steps.length, true) },
    { name: "tutor figure, being built", mount: async () => tutorFigure(SECANT_TO_TANGENT, 2, false) },
@@ -867,6 +896,27 @@ const TUTOR_FIGURE_SCREENS: Screen[] = [
          );
 
          await waitFor(() => expect(screen.getByTestId("agent-status").textContent).toContain("Figure: Secant to tangent."));
+
+         return container;
+      }
+   },
+   {
+      name: "tutor panel, a reply that marked the page",
+      mount: async () => {
+         const steps = ITEM_MARKS.steps.map((step) => frame("figure_step", { figure: ITEM_MARKS.id, step: step.id }));
+         const container = await tutorPanel(
+            async () =>
+               sseResponse([
+                  frame("start", { conversation_id: "ACV-1", turn_id: "ATN-1", screen_line: "", can_see: [] }),
+                  frame("marks", ITEM_MARKS),
+                  ...steps,
+                  frame("text", { delta: "The phrase and the point are marked on the page." }),
+                  frame("end", { turn_id: "ATN-1", outcome: "complete", turns_on_item: 1, turns_in_conversation: 1 })
+               ]),
+            "Where should I look?"
+         );
+
+         await waitFor(() => expect(screen.getByTestId("agent-status").textContent).toContain("Marks on the page:"));
 
          return container;
       }

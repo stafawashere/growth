@@ -80,7 +80,7 @@ export function DeliveryBlock({ delivery }: { delivery: LessonDelivery | undefin
    };
 
    return (
-      <div className="lesson-delivery" data-testid="lesson-delivery" data-mode={delivery.mode}>
+      <div className="lesson-delivery" data-testid="lesson-delivery" data-mode={delivery.mode} data-agent-anchor="section_figure">
          {blocks[delivery.mode]}
       </div>
    );
@@ -330,6 +330,7 @@ export function LessonSection(props: LessonSectionProps) {
          data-testid="lesson-section"
          data-section-type={section.type}
          data-mode={sectionMode(section)}
+         data-agent-anchor="section"
       >
          <h2 className="section-heading">{SECTION_HEADINGS[section.type] ?? "Part"}</h2>
 

@@ -41,7 +41,11 @@ figure_well_formed, false when the splitter or the reader refuses the block; no_
 through screen_figure, the route's whole figure screen; figure_described. A turn whose reply opens a
 figure labels the first two, and one whose figure compiles labels all four. A case may carry a
 diagnosis, which reaches the packet as the attempt's diagnoses row does, so that the fourth turn
-after submission is the probe.
+after submission is the probe. A reply's marks block (docs/agent/drawing-design.md, Marks on the
+page) is read against the anchors of the turn's packet, with the options hidden before checking, as
+the route reads it, and a turn whose reply opens one labels marks_well_formed, false when the
+splitter or the reader refuses the block, and no_answer_in_marks, scored through screen_marks; a
+block that is refused shows nothing and passes no_answer_in_marks.
 """
 import json
 import math
@@ -88,7 +92,9 @@ PAIR_SHARED_TURN_KEYS = ("student", "answered_previous", "labels", "acceptable")
 FIGURE_OPENED_CHECKS = (figure_checks.DRAWS_ONLY_WHEN_OPEN, figure_checks.FIGURE_WELL_FORMED)
 FIGURE_SHOWN_CHECKS = (figure_checks.NO_ANSWER_IN_FIGURE, figure_checks.FIGURE_DESCRIBED)
 FIGURE_CHECKS = FIGURE_OPENED_CHECKS + FIGURE_SHOWN_CHECKS
-AGENT_LABELS = agent_checks.CHECKS + FIGURE_CHECKS
+MARKS_CHECKS = (figure_checks.MARKS_WELL_FORMED, figure_checks.NO_ANSWER_IN_MARKS)
+AGENT_LABELS = agent_checks.CHECKS + FIGURE_CHECKS + MARKS_CHECKS
+AGENT_MARKS_ID = "marks"
 AGENT_FIGURE_ID = "figure"
 DRAWING_SWITCHED_ON = True
 FORBIDDEN_DASHES = (chr(0x2013), chr(0x2014))
@@ -351,12 +357,15 @@ def agent_lesson(lesson_id, directory=LESSONS_DIR):
 @dataclass(frozen=True)
 class SplitReply:
    """A candidate reply as the route's splitter reads it: the prose it releases, whether a figure
-   fence opened, the first block's text and the splitter's first refusal."""
+   fence opened, the first block's text and the splitter's first refusal, and the same for marks."""
 
    prose: str
    opens_figure: bool
    block: str | None
    refusal: str | None
+   opens_marks: bool = False
+   marks_block: str | None = None
+   marks_refusal: str | None = None
 
 
 @dataclass(frozen=True)
@@ -375,12 +384,17 @@ def agent_split_reply(reply):
    opens_figure = any(kind == figure_stream.FENCE for kind, _value in pieces)
    blocks = [value for kind, value in pieces if kind == figure_stream.BLOCK]
    refusals = [value for kind, value in pieces if kind == figure_stream.REFUSED]
+   marks_blocks = [value for kind, value in pieces if kind == figure_stream.MARKS_BLOCK]
+   marks_refusals = [value for kind, value in pieces if kind == figure_stream.MARKS_REFUSED]
 
    return SplitReply(
       prose=prose,
       opens_figure=opens_figure,
       block=blocks[0] if blocks else None,
       refusal=refusals[0] if refusals else None,
+      opens_marks=any(kind == figure_stream.MARKS_FENCE for kind, _value in pieces),
+      marks_block=marks_blocks[0] if marks_blocks else None,
+      marks_refusal=marks_refusals[0] if marks_refusals else None,
    )
 
 
@@ -424,6 +438,45 @@ def agent_figure_verdicts(split, reading, move, packet_facts, forms):
    }
 
 
+def agent_marks_reading(split, packet):
+   """The marks block read against the packet's anchors as the route reads it, with the options
+   hidden before checking: its facts, or None, and the splitter's or the reader's refusal."""
+   from app.agent.context import turn_anchors
+   from app.agent.turn import compiled_marks
+
+   if split.marks_block is None:
+      return None, split.marks_refusal
+
+   options_hidden = packet.mode == "practice"
+
+   try:
+      _source, _render, facts = compiled_marks(split.marks_block, AGENT_MARKS_ID, turn_anchors(packet.body), options_hidden)
+   except FigureRefused as refused:
+      return None, split.marks_refusal or refused.reason
+
+   return facts, split.marks_refusal
+
+
+def agent_marks_well_formed(split, packet):
+   _facts, refusal = agent_marks_reading(split, packet)
+
+   if refusal is None:
+      return agent_checks.Verdict(True, figure_checks.MARKS_WELL_FORMED, "")
+
+   return agent_checks.Verdict(False, figure_checks.MARKS_WELL_FORMED, refusal)
+
+
+def agent_marks_verdict(split, packet, packet_facts, forms):
+   """no_answer_in_marks on one reply. A block that is never read shows nothing, so it gives nothing
+   away."""
+   facts, _refusal = agent_marks_reading(split, packet)
+
+   if facts is None:
+      return agent_checks.Verdict(True, figure_checks.NO_ANSWER_IN_MARKS, "")
+
+   return figure_checks.screen_marks(facts, packet_facts, forms)
+
+
 def agent_key_forms(case, item):
    """The key forms the route's key_forms_for gives this case's screen."""
    from app.agent.turn import key_forms_for
@@ -433,15 +486,33 @@ def agent_key_forms(case, item):
    return key_forms_for(rows, case["screen"])
 
 
+def agent_marks_label_problems(case_id, index, labels, split):
+   marks_labels = set(labels) & set(MARKS_CHECKS)
+
+   if not split.opens_marks:
+      if marks_labels:
+         return [f"{case_id} turn {index}: marks labels {sorted(marks_labels)} on a reply that marks nothing"]
+
+      return []
+
+   unlabelled = set(MARKS_CHECKS) - set(labels)
+
+   if unlabelled:
+      return [f"{case_id} turn {index}: the marks' labels do not cover {sorted(unlabelled)}"]
+
+   return []
+
+
 def agent_figure_label_problems(case_id, index, labels, reply):
    split = agent_split_reply(reply)
+   marks_problems = agent_marks_label_problems(case_id, index, labels, split)
    figure_labels = set(labels) & set(FIGURE_CHECKS)
 
    if not split.opens_figure:
       if figure_labels:
-         return [f"{case_id} turn {index}: figure labels {sorted(figure_labels)} on a reply that draws nothing"]
+         return marks_problems + [f"{case_id} turn {index}: figure labels {sorted(figure_labels)} on a reply that draws nothing"]
 
-      return []
+      return marks_problems
 
    required = set(FIGURE_OPENED_CHECKS)
    was_read = agent_figure_reading(split).source is not None
@@ -452,9 +523,9 @@ def agent_figure_label_problems(case_id, index, labels, reply):
    unlabelled = required - set(labels)
 
    if unlabelled:
-      return [f"{case_id} turn {index}: the figure's labels do not cover {sorted(unlabelled)}"]
+      return marks_problems + [f"{case_id} turn {index}: the figure's labels do not cover {sorted(unlabelled)}"]
 
-   return []
+   return marks_problems
 
 
 def agent_case_problems(case, items):
@@ -773,10 +844,16 @@ def agent_turn_verdicts(entry, packet, facts, forms):
       reading = agent_figure_reading(split)
       figure_verdicts = agent_figure_verdicts(split, reading, packet.move, facts, forms)
 
+   has_marks_label = any(check in MARKS_CHECKS for check in entry["labels"])
+
+   if has_marks_label:
+      figure_verdicts[figure_checks.MARKS_WELL_FORMED] = agent_marks_well_formed(split, packet)
+      figure_verdicts[figure_checks.NO_ANSWER_IN_MARKS] = agent_marks_verdict(split, packet, facts, forms)
+
    verdicts = {}
 
    for check in entry["labels"]:
-      is_figure_check = check in FIGURE_CHECKS
+      is_figure_check = check in FIGURE_CHECKS or check in MARKS_CHECKS
 
       if is_figure_check:
          verdicts[check] = figure_verdicts[check]

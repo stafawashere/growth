@@ -188,3 +188,17 @@ Entry: slice 9's events. Scope: marks drawn over the real elements, in step with
 | app/web/src/agent/AgentProvider.tsx, AgentPanel.tsx | the `marks` event through the same gate queue; marks kept per screen key for the conversation, hidden when the screen changes and drawn again, finished and without motion, when the student returns; a new reply's marks replace the same screen's earlier set; "Marked on the page" with the captions; "Clear marks" for the current screen; the announcement clause |
 
 Tests: overlay placement against measured anchor rectangles (mocked `getBoundingClientRect` and ranges), step reveal, marks hidden on a screen change and restored on return, replaced by the next reply's marks on the same screen, clearing, the item-figure coordinate mapping, no pointer events, reduced motion, the captions list and announcement, contrast and greyscale screens.
+
+## The marks contract [inferred]
+
+Slices 9 and 10 are built in parallel against this contract, encoded by `schemas/agent/marks_render.schema.json` (slice 9) and mirrored by `TutorMarksSpec` in `app/web/src/api/types.ts` (slice 10).
+
+The `marks` event carries `{"id", "description", "steps": [{"id", "caption"}], "marks": [...]}`. Each mark has `step`, `element`, `role`, `stroke` (`style`, `weight`, `arrow`, `highlighter`), `faded_at`, `erased_at` and `kind`, one of `ring`, `underline`, `highlight`, `strike`, `bracket`, `note`, `arrow`, `point`, `segment`, `line`, `vline`, `hline`, with:
+
+- `target` for ring, underline, highlight, strike, bracket and note; `from` and `to` for arrow. A target is `{"anchor", "quote", "at", "row", "column", "cell"}` with the unused fields null: `quote` a phrase of a text anchor, `at` a point in the item figure's coordinates, `row`, `column` or `cell` in the item's table.
+- `text` and `side` (`left`, `right`, `above`, `below`) for note.
+- `at` and `open` for point; `points` (two world points on the item's graph, lines and guides already clipped to its window by the server) for segment, line, vline and hline.
+
+In the page, an anchored element carries `data-agent-anchor="<id>"`. The item figure's SVG carries `data-agent-window="xmin xmax ymin ymax"` and `data-agent-plot="left top right bottom"` in its view units, so the overlay maps a point through the plot box and the SVG's screen matrix. The item table's body rows are the anchor's `tbody tr` elements in order.
+
+The packet's `anchors` is a list of `{"id", "kind"}` with `kind` one of `text`, `graph`, `table`, `element`, plus `window` for a graph and `rows` and `columns` for a table. Text anchors' text is the text the packet already carries for them (the stem, the section text, the feedback fields, the worked solution steps).

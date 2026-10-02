@@ -11,6 +11,8 @@ export interface McqControlProps {
    onSelect: (optionId: string) => void;
    eliminatedIds?: ReadonlyArray<string>;
    onToggleEliminated?: (optionId: string) => void;
+   /* Names each option option_A to option_E for the live tutor's marks on a practice item. */
+   anchorsOptions?: boolean;
 }
 
 /* An option carries a human label when one was authored, and otherwise a MathJSON value: a bare
@@ -29,7 +31,7 @@ function optionMathSource(option: ServedOption) {
 const OPTION_LETTERS = ["A", "B", "C", "D", "E"];
 
 export function McqControl(props: McqControlProps) {
-   const { groupLabel, options, selectedId, onSelect, eliminatedIds, onToggleEliminated } = props;
+   const { groupLabel, options, selectedId, onSelect, eliminatedIds, onToggleEliminated, anchorsOptions = false } = props;
    const groupName = useId();
    const offersEliminator = onToggleEliminated !== undefined;
 
@@ -47,7 +49,12 @@ export function McqControl(props: McqControlProps) {
             const optionText = hasLabel ? <MathText text={option.label!} /> : <MathValue value={mathSource ?? option.id} className="option-math" />;
 
             const choice = (
-               <label key={option.id} className="option" data-selected={isSelected ? "true" : undefined}>
+               <label
+                  key={option.id}
+                  className="option"
+                  data-selected={isSelected ? "true" : undefined}
+                  data-agent-anchor={anchorsOptions ? `option_${letter}` : undefined}
+               >
                   <input
                      type="radio"
                      name={groupName}

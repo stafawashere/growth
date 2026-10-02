@@ -194,10 +194,10 @@ MEMORY_CAP_USD = 0.50
 MEMORY_CAP_TOKENS = 300000
 
 # The tutor draws, docs/agent/drawing-design.md "Cost". [inferred] The v2 template's static prefix
-# is 30,241 characters, 9,755 tokens by CHARACTERS_PER_TOKEN, an estimate until a live call reports
+# is 36,136 characters, 11,657 tokens by CHARACTERS_PER_TOKEN, an estimate until a live call reports
 # the cached count. A figure block is about 300 output tokens. The share of agent turns that draw is
 # a provisional ruling in docs/plan/12-open-questions.md, settled by the turn log's figure counts.
-DRAWING_PREFIX_TOKENS = 9755
+DRAWING_PREFIX_TOKENS = 11657
 DRAWING_FIGURE_OUTPUT_TOKENS = 300
 DRAWING_TURN_SHARE = 0.3
 

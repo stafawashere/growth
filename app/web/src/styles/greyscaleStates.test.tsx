@@ -4,7 +4,8 @@ import { afterAll, afterEach, beforeEach, describe, expect, it, vi } from "vites
 
 import * as client from "../api/client";
 import type { ExperimentState, MasteryNodeState, TutorFigurePrimitive, TutorFigureRole } from "../api/types";
-import { SECANT_TO_TANGENT, TABLE_OF_VALUES, figureCell, figureDot, figurePath } from "../agent/figureFixtures";
+import { SECANT_TO_TANGENT, TABLE_OF_VALUES, figureCell, figureDot, figurePath, markTarget, pageMark } from "../agent/figureFixtures";
+import { PageMarks } from "../agent/PageMarks";
 import { TutorFigure } from "../agent/TutorFigure";
 import { multipleChoiceQuestion, noCalculatorPart } from "../assessment/fixtures";
 import { FigureView } from "../figures/FigureView";
@@ -245,6 +246,24 @@ describe.each(VIEWPORT_WIDTHS)("eval_greyscale_states at %i px", (width) => {
 
       expectDistinct({ ...strokes, ghost: drawnWith(figurePath("one", "m", "constructed", [[-0.5, 1], [2, 6]], { faded_at: "two" })) });
       expectDistinct({ ...dots, ghost: drawnWith(figureDot("one", "m", "constructed", [1, 1], { faded_at: "two" })) });
+   });
+
+   it("every role of the tutor's marks on the page reads without colour", () => {
+      const roles: TutorFigureRole[] = ["given", "constructed", "highlight", "error"];
+      const steps = [
+         { id: "one", caption: "One" },
+         { id: "two", caption: "Two" }
+      ];
+      const markedWith = (mark: ReturnType<typeof pageMark>) =>
+         described(
+            <>
+               <p data-agent-anchor="stem">The same words</p>
+               <PageMarks spec={{ id: "marks", description: "Marks.", steps, marks: [mark] }} revealed={2} />
+            </>
+         );
+      const underlines = Object.fromEntries(roles.map((role) => [role, markedWith(pageMark("one", "m", role, "underline", { target: markTarget("stem") }))]));
+
+      expectDistinct({ ...underlines, ghost: markedWith(pageMark("one", "m", "constructed", "underline", { target: markTarget("stem"), faded_at: "two" })) });
    });
 
    it("a tutor table's highlighted, wrong, faded and plain cells read without colour", () => {

@@ -9,12 +9,14 @@ import type {
    AgentScreen,
    AgentStartEvent,
    AgentTurnOutcome,
-   TutorFigureSpec
+   TutorFigureSpec,
+   TutorMarksSpec
 } from "../api/types";
 import { latexToAccessibleText, splitInlineMath } from "../math/mathjson";
 import { AgentPanel } from "./AgentPanel";
-import { CONVERSATION_CEILING, FIGURE_REFUSED, REPLY_STOPPED, THIRD_TURN_CEILING, WITHHELD, figureAnnouncement } from "./agentCopy";
+import { CONVERSATION_CEILING, FIGURE_REFUSED, MARKS_REFUSED, REPLY_STOPPED, THIRD_TURN_CEILING, WITHHELD, figureAnnouncement, marksAnnouncement } from "./agentCopy";
 import { createReplyPacer, type ReplyPacer } from "./figurePacing";
+import { PageMarks, parseTutorMarks } from "./PageMarks";
 import { contextLinesFor, type ScreenLabels } from "./screenLines";
 import { parseTutorFigure } from "./TutorFigure";
 import { useAgentStream, type TurnFailure } from "./useAgentStream";
@@ -48,6 +50,10 @@ export type ReplyFigure =
    | { state: "shown"; spec: TutorFigureSpec; offset: number; revealed: number }
    | { state: "refused"; offset: number; copy: string };
 
+/* A reply's marks on the page (docs/agent/drawing-design.md, "Marks on the page"), kept with the
+   key of the screen the reply was asked on, or refused with one line under the reply. */
+export type ReplyMarks = { state: "shown"; spec: TutorMarksSpec; revealed: number; screenKey: string } | { state: "refused"; copy: string };
+
 export interface AgentTurn {
    id: string;
    role: "student" | "agent";
@@ -55,6 +61,7 @@ export interface AgentTurn {
    state: "waiting" | "streaming" | "done";
    outcome: AgentTurnOutcome | null;
    figure?: ReplyFigure;
+   marks?: ReplyMarks;
 }
 
 export type DegradedKind = AgentErrorKind | "offline" | "conversation_ceiling";
@@ -103,6 +110,8 @@ export interface AgentContextValue {
    send: () => void;
    stop: () => void;
    showAll: (turnId: string) => void;
+   marksTurnId: string | null;
+   clearMarks: () => void;
    setSheetHeight: (height: SheetHeight) => void;
 }
 
@@ -154,6 +163,29 @@ export function screenKey(screen: AgentScreen) {
    return JSON.stringify(screen);
 }
 
+/* The screen marks belong to: its kind and the ids that name what it shows, so an item keeps its
+   marks from before it was checked to after, and a lesson's marks are its section's. */
+export function marksScreenKey(screen: AgentScreen) {
+   switch (screen.kind) {
+      case "session_item":
+         return JSON.stringify([screen.kind, screen.session_id, screen.item_id]);
+      case "session_lesson":
+         return JSON.stringify([screen.kind, screen.session_id, screen.lesson_id, screen.version, screen.section_id]);
+      case "lesson":
+         return JSON.stringify([screen.kind, screen.lesson_id, screen.version, screen.section_id]);
+      case "progress":
+         return JSON.stringify([screen.kind, screen.tab, screen.skill_id ?? null]);
+      case "assessments":
+         return JSON.stringify([screen.kind, screen.format]);
+      case "settings":
+         return JSON.stringify([screen.kind, screen.tab]);
+      case "other":
+         return JSON.stringify([screen.kind, screen.view]);
+      default:
+         return JSON.stringify([screen.kind]);
+   }
+}
+
 function effectiveClaim(claims: Map<symbol, ScreenClaim>): ScreenClaim | null {
    const all = Array.from(claims.values());
    const timed = all.find((claim) => isTimedScreen(claim.screen));
@@ -174,6 +206,20 @@ function withFigureAt(turn: AgentTurn, spec: TutorFigureSpec | null): AgentTurn 
    const figure: ReplyFigure = spec === null ? { state: "refused", offset, copy: FIGURE_REFUSED } : { state: "shown", spec, offset, revealed: 0 };
 
    return { ...turn, figure };
+}
+
+function withoutReply(marksByScreen: Record<string, string>, replyId: string) {
+   return Object.fromEntries(Object.entries(marksByScreen).filter(([, turnId]) => turnId !== replyId));
+}
+
+function withMarksStepRevealed(turn: AgentTurn, stepIndex: number): AgentTurn {
+   const marks = turn.marks;
+
+   if (marks?.state !== "shown") {
+      return turn;
+   }
+
+   return { ...turn, marks: { ...marks, revealed: Math.max(marks.revealed, stepIndex + 1) } };
 }
 
 function withStepRevealed(turn: AgentTurn, stepIndex: number): AgentTurn {
@@ -257,6 +303,7 @@ export function AgentProvider({ enabled, children }: AgentProviderProps) {
    const [focusRequest, setFocusRequest] = useState(0);
    const [isMac] = useState(detectMac);
    const [isPacing, setIsPacing] = useState(false);
+   const [marksByScreen, setMarksByScreen] = useState<Record<string, string>>({});
    const frame = useRef<HTMLDivElement>(null);
    const isNarrow = useSheetLayout(frame, enabled);
    const stream = useAgentStream();
@@ -300,6 +347,7 @@ export function AgentProvider({ enabled, children }: AgentProviderProps) {
    const labels = claim?.labels ?? {};
    const isTimed = isTimedScreen(screen);
    const currentKey = screenKey(screen);
+   const currentMarksKey = marksScreenKey(screen);
    const currentScreen = useRef(screen);
 
    currentScreen.current = screen;
@@ -519,21 +567,30 @@ export function AgentProvider({ enabled, children }: AgentProviderProps) {
 
       const sentOn = screen;
       const sentOnKey = currentKey;
+      const sentOnMarksKey = currentMarksKey;
       const studentTurn: AgentTurn = { id: localTurnId("student"), role: "student", text: message, state: "done", outcome: null };
       const replyId = localTurnId("agent");
       const reply: AgentTurn = { id: replyId, role: "agent", text: "", state: "waiting", outcome: null };
       let receivedText = "";
       let drawnFigure: TutorFigureSpec | null = null;
-      let latestGate = -1;
+      let drawnMarks: TutorMarksSpec | null = null;
+      let latestFigureGate = -1;
+      let latestMarksGate = -1;
+      const gates: Array<() => void> = [];
 
-      /* While a figure is building, each of its steps is a gate: the step and the text after it wait
-         until the words before it could have been read (figurePacing.ts). The end is applied, and the
-         reply announced, once everything received has been shown. */
+      /* While a figure or the marks are building, each of their steps is a gate: the step and the
+         text after it wait until the words before it could have been read (figurePacing.ts). The end
+         is applied, and the reply announced, once everything received has been shown. */
       const pacer = createReplyPacer({
          showText: (delta) => updateTurn(replyId, (turn) => ({ ...turn, text: turn.text + delta, state: "streaming" })),
-         openGate: (stepIndex) => updateTurn(replyId, (turn) => withStepRevealed(turn, stepIndex)),
+         openGate: (gate) => gates[gate]?.(),
          onBusyChange: setIsPacing
       });
+
+      function pushGate(open: () => void) {
+         gates.push(open);
+         pacer.pushGate(gates.length - 1);
+      }
 
       pacing.current?.pacer.dispose();
       pacing.current = { replyId, pacer };
@@ -567,24 +624,47 @@ export function AgentProvider({ enabled, children }: AgentProviderProps) {
                drawnFigure = checked;
                pacer.pushAction(() => updateTurn(replyId, (turn) => ({ ...withFigureAt(turn, checked), state: "streaming" })));
             },
+            onMarks: (spec: unknown) => {
+               const checked = parseTutorMarks(spec);
+
+               drawnMarks = checked;
+               pacer.pushAction(() => {
+                  if (checked === null) {
+                     updateTurn(replyId, (turn) => ({ ...turn, marks: { state: "refused", copy: MARKS_REFUSED } }));
+                     return;
+                  }
+
+                  updateTurn(replyId, (turn) => ({ ...turn, marks: { state: "shown", spec: checked, revealed: 0, screenKey: sentOnMarksKey }, state: "streaming" }));
+                  setMarksByScreen((current) => ({ ...current, [sentOnMarksKey]: replyId }));
+               });
+            },
             onFigureStep: (event: AgentFigureStepEvent) => {
                const figure = drawnFigure;
-               const isThisFigure = figure !== null && event.figure === figure.id;
-               const stepIndex = isThisFigure ? figure.steps.findIndex((step) => step.id === event.step) : -1;
-               const isNextGate = stepIndex > latestGate;
+               const marks = drawnMarks;
+               const isFigureStep = figure !== null && event.figure === figure.id;
+               const isMarksStep = marks !== null && event.figure === marks.id;
+               const figureStep = isFigureStep ? figure.steps.findIndex((step) => step.id === event.step) : -1;
+               const marksStep = isMarksStep ? marks.steps.findIndex((step) => step.id === event.step) : -1;
+               const opensFigureStep = figureStep > latestFigureGate;
+               const opensMarksStep = marksStep > latestMarksGate;
 
-               if (!isNextGate) {
-                  return;
+               if (opensFigureStep) {
+                  latestFigureGate = figureStep;
+                  pushGate(() => updateTurn(replyId, (turn) => withStepRevealed(turn, figureStep)));
+               } else if (opensMarksStep) {
+                  latestMarksGate = marksStep;
+                  pushGate(() => updateTurn(replyId, (turn) => withMarksStepRevealed(turn, marksStep)));
                }
-
-               latestGate = stepIndex;
-               pacer.pushGate(stepIndex);
             },
             onFigureRefused: (event: AgentFigureRefusedEvent) => {
-               const copy = event.copy.trim() === "" ? FIGURE_REFUSED : event.copy;
+               const isMarks = event.part === "marks";
+               const fallback = isMarks ? MARKS_REFUSED : FIGURE_REFUSED;
+               const copy = event.copy.trim() === "" ? fallback : event.copy;
 
                pacer.pushAction(() =>
-                  updateTurn(replyId, (turn) => ({ ...turn, figure: { state: "refused", offset: turn.text.length, copy }, state: "streaming" }))
+                  updateTurn(replyId, (turn) =>
+                     isMarks ? { ...turn, marks: { state: "refused", copy } } : { ...turn, figure: { state: "refused", offset: turn.text.length, copy }, state: "streaming" }
+                  )
                );
             },
             onEnd: (event: AgentEndEvent) => {
@@ -593,16 +673,23 @@ export function AgentProvider({ enabled, children }: AgentProviderProps) {
                   const finalText = isWithheld ? WITHHELD : receivedText;
                   const reachedCeiling = isUncheckedItem(currentScreen.current) && event.turns_on_item >= PER_ITEM_TURN_CEILING;
                   const figure = isWithheld ? null : drawnFigure;
+                  const marks = isWithheld ? null : drawnMarks;
                   const figureClause = figure === null ? "" : ` ${figureAnnouncement(figure.title, figure.description)}`;
+                  const marksClause = marks === null ? "" : ` ${marksAnnouncement(marks.description)}`;
 
                   updateTurn(replyId, (turn) => ({
                      ...turn,
                      text: finalText,
                      state: "done",
                      outcome: event.outcome,
-                     figure: isWithheld ? undefined : turn.figure
+                     figure: isWithheld ? undefined : turn.figure,
+                     marks: isWithheld ? undefined : turn.marks
                   }));
-                  setAnnouncement(`${spokenReply(finalText)}${figureClause}`.trim());
+                  setAnnouncement(`${spokenReply(finalText)}${figureClause}${marksClause}`.trim());
+
+                  if (isWithheld) {
+                     setMarksByScreen((current) => withoutReply(current, replyId));
+                  }
 
                   if (reachedCeiling) {
                      setDegraded({ kind: "ceiling", resetsAt: null, copy: THIRD_TURN_CEILING, screenKey: sentOnKey });
@@ -612,7 +699,7 @@ export function AgentProvider({ enabled, children }: AgentProviderProps) {
             onFailure: (failure: TurnFailure) => {
                pacer.showEverything();
 
-               const hasReply = receivedText !== "" || drawnFigure !== null;
+               const hasReply = receivedText !== "" || drawnFigure !== null || drawnMarks !== null;
                const resetsAt = failure.kind === "offline" ? null : failure.resetsAt;
                const copy = failure.kind === "offline" ? null : failure.copy;
                const isConversationCeiling = failure.kind === "ceiling" && copy === CONVERSATION_CEILING;
@@ -633,7 +720,17 @@ export function AgentProvider({ enabled, children }: AgentProviderProps) {
             }
          }
       );
-   }, [draft, stream, degraded, isTimed, screen, currentKey, conversationId, isReplying]);
+   }, [draft, stream, degraded, isTimed, screen, currentKey, currentMarksKey, conversationId, isReplying]);
+
+   const clearMarks = useCallback(() => {
+      setMarksByScreen((current) => {
+         const next = { ...current };
+
+         delete next[currentMarksKey];
+
+         return next;
+      });
+   }, [currentMarksKey]);
 
    const showAll = useCallback((turnId: string) => {
       const isPacedReply = pacing.current !== null && pacing.current.replyId === turnId;
@@ -658,6 +755,7 @@ export function AgentProvider({ enabled, children }: AgentProviderProps) {
       pacing.current = null;
       stream.stop();
       setTurns([]);
+      setMarksByScreen({});
       setConversationId(null);
       setDegraded(null);
       hidePanel();
@@ -666,6 +764,13 @@ export function AgentProvider({ enabled, children }: AgentProviderProps) {
          closeAgentConversation(closing).catch(() => undefined);
       }
    }, [conversationId, stream, hidePanel]);
+
+   /* The marks of the screen the student is on, drawn over the page between the page and the panel.
+      Keyed by the screen and the reply, so returning to a screen draws its marks again from scratch,
+      finished and without motion. */
+   const marksTurnId = marksByScreen[currentMarksKey] ?? null;
+   const marksTurn = marksTurnId === null ? undefined : turns.find((turn) => turn.id === marksTurnId);
+   const pageMarks = marksTurn?.marks?.state === "shown" ? marksTurn.marks : null;
 
    const value: AgentContextValue = {
       isOpen: enabled && isOpen,
@@ -693,6 +798,8 @@ export function AgentProvider({ enabled, children }: AgentProviderProps) {
       send,
       stop,
       showAll,
+      marksTurnId,
+      clearMarks,
       setSheetHeight
    };
 
@@ -700,6 +807,8 @@ export function AgentProvider({ enabled, children }: AgentProviderProps) {
       <ScreenRegistryContext.Provider value={registry}>
          <AgentContext.Provider value={enabled ? value : null}>
             {children}
+
+            {enabled && pageMarks !== null ? <PageMarks key={`${currentMarksKey} ${marksTurnId}`} spec={pageMarks.spec} revealed={pageMarks.revealed} /> : null}
 
             {enabled ? <AgentPanel /> : null}
          </AgentContext.Provider>

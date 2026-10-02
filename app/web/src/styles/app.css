@@ -3698,6 +3698,62 @@ h3.section-header {
    border: var(--growth-stroke-hairline) dotted var(--growth-text-muted);
 }
 
+/* The tutor's marks on the page (docs/agent/drawing-design.md, "Marks on the page"): two fixed
+   layers over the page that take no pointer events. The highlighter layer blends with the page so
+   the words under a band stay readable, multiplying on the light ground and screening on the dark
+   one. The SVG in each layer is sized to the viewport by PageMarks, since the browser paints no SVG
+   without a box, and draws in the page's own pixels. A note sits on the raised surface so it reads
+   over whatever is beneath it. */
+
+.page-marks {
+   position: fixed;
+   inset: 0;
+   overflow: hidden;
+   pointer-events: none;
+}
+
+.page-marks-highlights {
+   mix-blend-mode: multiply;
+}
+
+:root[data-theme="dark"] .page-marks-highlights {
+   mix-blend-mode: screen;
+}
+
+.page-marks-svg {
+   position: absolute;
+   top: 0;
+   left: 0;
+   overflow: visible;
+}
+
+.page-marks-note {
+   position: absolute;
+   max-width: calc(var(--growth-space-96) * 2);
+   padding: var(--growth-space-4) var(--growth-space-8);
+   border-radius: var(--growth-space-4);
+   background: var(--growth-surface-raised);
+   box-shadow: 0 0 0 var(--growth-stroke-hairline) var(--growth-accent-tint-3);
+   font-size: var(--growth-type-caption);
+   line-height: var(--growth-leading-caption);
+}
+
+.page-marks-note.tutor-figure-highlight {
+   font-family: "Inter SemiBold", "Inter", system-ui, sans-serif;
+}
+
+.agent-marks {
+   display: flex;
+   flex-direction: column;
+   gap: var(--growth-space-4);
+}
+
+.agent-marks-heading {
+   color: var(--growth-text-secondary);
+   font-size: var(--growth-type-label);
+   line-height: var(--growth-leading-label);
+}
+
 .tutor-figure-cell-note {
    display: block;
    font-size: var(--growth-type-caption);

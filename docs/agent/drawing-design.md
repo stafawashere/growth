@@ -268,7 +268,7 @@ Each step's primitives enter together. Paths enter by a wipe: the step's paths a
 
 ## Cost [inferred]
 
-Priced by `tools/cost_model.py` under the names in brackets and quoted in plan 14's amendment. The v2 prefix is 30,241 characters, about 9,760 tokens by the 3.1 divisor, against about 2,700 for v1, held under a 10,000-token ceiling by `tests/agent/drawing/test_template_examples.py`; the design's first estimate of 5,500 left room for about five examples and was raised rather than the examples cut. It is read from the cache on every turn after the first of a conversation. A figure is about 300 output tokens and about 3 seconds of generation. On the subscription the lines are notional and count against pacing only, one call a turn as before.
+Priced by `tools/cost_model.py` under the names in brackets and quoted in plan 14's amendment. The v2 prefix is 36,136 characters, about 11,657 tokens by the 3.1 divisor, against about 2,700 for v1, held under a 12,000-token ceiling by `tests/agent/drawing/test_template_examples.py`; the design's first estimate of 5,500 left room for about five examples and was raised rather than the examples cut. It is read from the cache on every turn after the first of a conversation. A figure is about 300 output tokens and about 3 seconds of generation. On the subscription the lines are notional and count against pacing only, one call a turn as before.
 
 ## Evals [inferred]
 
@@ -302,13 +302,12 @@ The packet carries `anchors`, the list the model may use on this turn, composed 
 | `stem` | an item, before and after checking | a quoted phrase of the stem as served, or the whole stem |
 | `item_figure` | an item whose figure is a graph | coordinates in the item figure's own window, or the whole figure |
 | `item_table` | an item whose figure is a table | a row, a column or a cell, 0-based over the body rows |
-| `option_A` to `option_E` | an item after it is checked only | the whole option |
 | `feedback` | an item after checking, when feedback shows | a quoted phrase, or the whole panel |
 | `solution_step_1` to `solution_step_k` | an item after checking, when the worked solution shows | a quoted phrase, or the whole step |
 | `section` | a lesson section | a quoted phrase of the section text, or the whole section |
 | `section_figure` | a lesson section with a figure | the whole figure |
 
-Before an item is checked the option anchors are never listed; a mark that names one withholds the reply exactly as a leaking sentence does, because ringing an option names an answer. Quotes must occur in the anchor's text as the packet holds it (whitespace normalised), at most 80 characters, and a quote that does not occur refuses the block.
+The answer options are never an anchor: before checking, ringing an option names an answer, and after checking the session screen replaces the item with its feedback and shows no options (found by the client build). A mark that names an option before checking withholds the reply exactly as a leaking sentence does; after checking it is refused like any anchor the packet did not list. The `feedback` anchor is listed only when the client shows the elaborated panel, which it does only at the unsupported stage, and the `solution_step_k` anchors only when it shows the step marks, which it does only below that stage. Quotes must occur in the anchor's text as the packet holds it (whitespace normalised), at most 80 characters, and a quote that does not occur refuses the block.
 
 ### The marks language
 

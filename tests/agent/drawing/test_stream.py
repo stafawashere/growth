@@ -128,3 +128,48 @@ def test_a_marked_step_goes_out_before_its_sentence_with_every_earlier_step_firs
    assert steps.due_before(60) == []
    assert steps.remaining() == ["tangent"]
    assert steps.revealed == ["curve", "secant", "tangent"]
+
+
+MARKED_UP_REPLY = (
+   "Look at the question first.\n"
+   "```marks\n"
+   '{"description": "d", "steps": []}\n'
+   "```\n"
+   "[[step:phrase]] This phrase sets the interval.\n"
+   "```figure\n"
+   "{}\n"
+   "```\n"
+   "```marks\n"
+   "second\n"
+   "```\n"
+   "Done."
+)
+
+MARKED_UP_EXPECTED = [
+   ("text", "Look at the question first.\n"),
+   ("marks_fence", None),
+   ("marks_block", '{"description": "d", "steps": []}'),
+   ("marker", "phrase"),
+   ("text", " This phrase sets the interval.\n"),
+   ("fence", None),
+   ("block", "{}"),
+   ("marks_refused", "extra"),
+   ("text", "Done."),
+]
+
+
+@pytest.mark.parametrize("cut", range(1, len(MARKED_UP_REPLY)))
+def test_a_marks_block_beside_a_figure_splits_the_same_at_every_position(cut):
+   assert _split([MARKED_UP_REPLY[:cut], MARKED_UP_REPLY[cut:]]) == MARKED_UP_EXPECTED
+
+
+def test_a_marks_block_past_1500_characters_is_refused_oversized_and_one_of_1500_is_read():
+   over = _split(["```marks\n", "x" * 1501, "\n```\nAfter."])
+   at_the_cap = _split(["```marks\n", "x" * 1500, "\n```\n"])
+
+   assert over == [("marks_fence", None), ("marks_refused", "oversized"), ("text", "After.")]
+   assert at_the_cap == [("marks_fence", None), ("marks_block", "x" * 1500)]
+
+
+def test_an_unclosed_marks_block_is_refused_unclosed():
+   assert _split(["One.\n```marks\n{\"description\""]) == [("text", "One.\n"), ("marks_fence", None), ("marks_refused", "unclosed")]

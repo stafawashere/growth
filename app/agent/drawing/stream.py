@@ -10,8 +10,11 @@ is a pair:
 - ("block", text), the first block's text once its closing fence is seen
 - ("refused", reason): oversized when the first block grows past 2,000 characters, extra at the
   opening fence of any later block, unclosed when the stream ends inside the first block
+- ("marks_fence", None), ("marks_block", text) and ("marks_refused", reason), the same for the
+  reply's one marks block (docs/agent/drawing-design.md, Marks on the page), whose cap is 1,500
 
-A fence is a line of its own: ```figure opens a block and ``` closes it. Anything that could still
+A fence is a line of its own: ```figure or ```marks opens a block and ``` closes it. A reply holds
+one block of each kind, and a second of either kind is refused extra. Anything that could still
 become a fence or a marker is held until a later delta decides it. Nothing inside \\( \\) or \\[ \\]
 is read as a marker or a fence. A refused block is swallowed whole and the prose after its closing
 fence goes on.
@@ -26,6 +29,7 @@ only kept from the moment the figure is shown. remaining gives the steps no sent
 import re
 
 MAX_BLOCK_CHARACTERS = 2000
+MAX_MARKS_CHARACTERS = 1500
 FENCE_SLACK = 16
 
 TEXT = "text"
@@ -33,6 +37,15 @@ MARKER = "marker"
 FENCE = "fence"
 BLOCK = "block"
 REFUSED = "refused"
+MARKS_FENCE = "marks_fence"
+MARKS_BLOCK = "marks_block"
+MARKS_REFUSED = "marks_refused"
+FIGURE_KIND = "figure"
+MARKS_KIND = "marks"
+PIECE_KINDS = {
+   FIGURE_KIND: (FENCE, BLOCK, REFUSED, MAX_BLOCK_CHARACTERS),
+   MARKS_KIND: (MARKS_FENCE, MARKS_BLOCK, MARKS_REFUSED, MAX_MARKS_CHARACTERS),
+}
 
 OVERSIZED = "oversized"
 EXTRA = "extra"
@@ -41,9 +54,9 @@ UNCLOSED = "unclosed"
 MARKER_HEAD = "[[step:"
 MARKER_PATTERN = r"\[\[step:([A-Za-z0-9_]{1,16})\]\]"
 MARKER_TAIL_PATTERN = r"[A-Za-z0-9_]{0,16}\]?"
-FENCE_HEAD = "```figure"
-OPENING_FENCE_PATTERN = r"```figure[ \t]*\r?\n"
-FINAL_OPENING_FENCE_PATTERN = r"```figure[ \t]*\Z"
+FENCE_HEADS = ("```figure", "```marks")
+OPENING_FENCE_PATTERN = r"```(figure|marks)[ \t]*\r?\n"
+FINAL_OPENING_FENCE_PATTERN = r"```(figure|marks)[ \t]*\Z"
 LINE_SPACE_PATTERN = r"[ \t\r]*"
 CLOSING_MARK = "```"
 MATH_OPENERS = {"\\(": "\\)", "\\[": "\\]"}
@@ -62,15 +75,19 @@ def _could_become_marker(rest):
 
 
 def _could_become_fence(rest):
-   head = rest[: len(FENCE_HEAD)]
+   for fence_head in FENCE_HEADS:
+      head = rest[: len(fence_head)]
 
-   if not FENCE_HEAD.startswith(head):
-      return False
+      if not fence_head.startswith(head):
+         continue
 
-   if len(rest) <= len(FENCE_HEAD):
-      return True
+      if len(rest) <= len(fence_head):
+         return True
 
-   return re.fullmatch(LINE_SPACE_PATTERN, rest[len(FENCE_HEAD):]) is not None
+      if re.fullmatch(LINE_SPACE_PATTERN, rest[len(fence_head):]) is not None:
+         return True
+
+   return False
 
 
 def _merged(pieces):
@@ -98,7 +115,8 @@ class FigureSplitter:
       self._at_line_start = True
       self._in_block = False
       self._block_text = ""
-      self._blocks_opened = 0
+      self._block_kind = FIGURE_KIND
+      self._blocks_opened = {FIGURE_KIND: 0, MARKS_KIND: 0}
       self._block_refused = False
 
    def feed(self, delta):
@@ -108,10 +126,11 @@ class FigureSplitter:
 
    def finish(self):
       pieces = self._drained(final=True)
-      is_first_block_open = self._in_block and self._blocks_opened == 1 and not self._block_refused
+      opened_of_its_kind = self._blocks_opened[self._block_kind]
+      is_first_block_open = self._in_block and opened_of_its_kind == 1 and not self._block_refused
 
       if is_first_block_open:
-         pieces.append((REFUSED, UNCLOSED))
+         pieces.append((PIECE_KINDS[self._block_kind][2], UNCLOSED))
 
       self._in_block = False
       self._block_text = ""
@@ -127,13 +146,15 @@ class FigureSplitter:
 
       return _merged(pieces)
 
-   def _open_block(self, pieces):
-      is_first = self._blocks_opened == 0
-      self._blocks_opened += 1
+   def _open_block(self, pieces, block_kind):
+      fence, _block, refused, _cap = PIECE_KINDS[block_kind]
+      is_first = self._blocks_opened[block_kind] == 0
+      self._blocks_opened[block_kind] += 1
+      self._block_kind = block_kind
       self._in_block = True
       self._block_text = ""
       self._block_refused = not is_first
-      pieces.append((FENCE, None) if is_first else (REFUSED, EXTRA))
+      pieces.append((fence, None) if is_first else (refused, EXTRA))
 
    def _scan_prose(self, pieces, final):
       """Prose up to the next opening fence; True when a block opened."""
@@ -197,7 +218,7 @@ class FigureSplitter:
             if fence is not None:
                pieces.append((TEXT, text[plain_start:position]))
                self._pending = rest[fence.end():]
-               self._open_block(pieces)
+               self._open_block(pieces, fence.group(1))
 
                return True
 
@@ -258,8 +279,10 @@ class FigureSplitter:
       self._pending = ""
       closing = self._closing_fence(final)
 
+      _fence, block, _refused, cap = PIECE_KINDS[self._block_kind]
+
       if closing is None:
-         is_past_the_cap = len(self._block_text) > MAX_BLOCK_CHARACTERS + FENCE_SLACK
+         is_past_the_cap = len(self._block_text) > cap + FENCE_SLACK
 
          if is_past_the_cap:
             self._refuse_oversized(pieces)
@@ -272,13 +295,13 @@ class FigureSplitter:
 
       if ends_its_line:
          content = content[:-1]
-      is_oversized = len(content) > MAX_BLOCK_CHARACTERS
+      is_oversized = len(content) > cap
 
       if is_oversized:
          self._refuse_oversized(pieces)
 
       if not self._block_refused:
-         pieces.append((BLOCK, content))
+         pieces.append((block, content))
 
       self._pending = self._block_text[resume_at:]
       self._block_text = ""
@@ -292,7 +315,7 @@ class FigureSplitter:
          return
 
       self._block_refused = True
-      pieces.append((REFUSED, OVERSIZED))
+      pieces.append((PIECE_KINDS[self._block_kind][2], OVERSIZED))
 
 
 class StepMarkers:

@@ -133,6 +133,66 @@ export interface TutorFigureStep {
    caption: string;
 }
 
+/* Marks the tutor draws over the page itself (docs/agent/drawing-build-plan.md, "The marks
+   contract"). Every mark names an anchor the screen declared with data-agent-anchor; the client
+   finds the element and draws over it wherever it is laid out. A target's unused fields are null. */
+export type TutorMarkKind =
+   | "ring"
+   | "underline"
+   | "highlight"
+   | "strike"
+   | "bracket"
+   | "note"
+   | "arrow"
+   | "point"
+   | "segment"
+   | "line"
+   | "vline"
+   | "hline";
+
+export type TutorMarkSide = "left" | "right" | "above" | "below";
+
+export interface TutorMarkTarget {
+   anchor: string;
+   quote: string | null;
+   at: FigurePoint | null;
+   row: number | null;
+   column: number | null;
+   cell: [number, number] | null;
+}
+
+export interface TutorMarkStroke {
+   style: TutorFigureStrokeStyle;
+   weight: TutorFigureStrokeWeight;
+   arrow: TutorFigureArrow;
+   highlighter: boolean;
+}
+
+export interface TutorMark {
+   step: string;
+   element: string;
+   role: TutorFigureRole;
+   stroke: TutorMarkStroke;
+   faded_at: string | null;
+   erased_at: string | null;
+   kind: TutorMarkKind;
+   target?: TutorMarkTarget | null;
+   from?: TutorMarkTarget | null;
+   to?: TutorMarkTarget | null;
+   text?: string | null;
+   side?: TutorMarkSide | null;
+   at?: FigurePoint | null;
+   open?: boolean | null;
+   points?: [FigurePoint, FigurePoint] | null;
+}
+
+export interface TutorMarksSpec {
+   id: string;
+   description: string;
+   steps: TutorFigureStep[];
+   marks: TutorMark[];
+}
+
 export interface TutorFigureSpec {
    id: string;
    kind: TutorFigureKind;
@@ -1837,6 +1897,7 @@ export type AgentFigureRefusedReason = "malformed" | "oversized" | "unclosed" | 
 export interface AgentFigureRefusedEvent {
    reason: AgentFigureRefusedReason;
    copy: string;
+   part?: "figure" | "marks";
 }
 
 export interface AgentErrorEvent {

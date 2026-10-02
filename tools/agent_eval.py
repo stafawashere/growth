@@ -6,10 +6,10 @@
 Replay composes, for every turn of every case in content/golden/agent.json, the packet the live
 route would compose (app/evals/golden.py agent_turn_packet), runs each labelled check of
 app/evals/agent_checks.py on the prose the route would release from the recorded candidate reply,
-and the four figure checks of app/evals/figure_checks.py on its figure block, read and compiled as
-the route does, and prints the pass rate per check with its denominator, the prose checks first and
-the figure checks after them, and the ids of every turn where a check and its label disagree. No
-model is called.
+the four figure checks of app/evals/figure_checks.py on its figure block, read and compiled as the
+route does, and marks_well_formed and no_answer_in_marks on its marks block, and prints the pass rate per check with its
+denominator, the prose checks first, then the figure and the marks checks, and the ids of every turn
+where a check and its label disagree. No model is called.
 A live run needs the agent role's provider chain, which the turn route wires (docs/agent/
 build-plan.md, slice 4), so --live is parsed and exits with a message instead of calling anything.
 
@@ -79,6 +79,12 @@ def main(argv=None):
    print(f"figure checks, {len(figure_turns)} turns with a figure")
 
    for check, (passed, total) in pass_rates(rows, golden.FIGURE_CHECKS).items():
+      print(f"{check}: {passed}/{total} passed")
+
+   marks_turns = {(row["case_id"], row["turn"]) for row in rows if row["check"] in golden.MARKS_CHECKS}
+   print(f"marks checks, {len(marks_turns)} turns with marks")
+
+   for check, (passed, total) in pass_rates(rows, golden.MARKS_CHECKS).items():
       print(f"{check}: {passed}/{total} passed")
 
    disagreeing = disagreements(rows)

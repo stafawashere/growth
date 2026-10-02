@@ -70,7 +70,7 @@ const HIGHLIGHTER_HALF_WIDTH = 5;
 /* Where the highlighter bends by more than this, a round join fills the outside of the bend. */
 const HIGHLIGHTER_JOIN_ANGLE = Math.PI / 12;
 
-type RoleClass = TutorFigureRole | "ghost";
+export type RoleClass = TutorFigureRole | "ghost";
 
 const ARROWHEAD_ROLES: RoleClass[] = ["given", "constructed", "highlight", "error", "ghost"];
 
@@ -271,9 +271,18 @@ export function parseTutorFigure(value: unknown): TutorFigureSpec | null {
    };
 }
 
-type Presence = "hidden" | "drawn" | "ghost";
+export type Presence = "hidden" | "drawn" | "ghost";
 
-function presenceOf(primitive: TutorFigurePrimitive, stepIndex: Map<string, number>, shown: number): Presence {
+/* Anything added by a step and perhaps faded or erased by a later one: a figure's primitive or a
+   mark on the page. */
+export interface Stepped {
+   step: string;
+   role: TutorFigureRole;
+   faded_at: string | null;
+   erased_at: string | null;
+}
+
+export function presenceOf(primitive: Stepped, stepIndex: Map<string, number>, shown: number): Presence {
    const isAdded = (stepIndex.get(primitive.step) ?? Infinity) < shown;
    const isErased = primitive.erased_at !== null && (stepIndex.get(primitive.erased_at) ?? Infinity) < shown;
    const isFaded = primitive.faded_at !== null && (stepIndex.get(primitive.faded_at) ?? Infinity) < shown;
@@ -285,15 +294,15 @@ function presenceOf(primitive: TutorFigurePrimitive, stepIndex: Map<string, numb
    return isFaded ? "ghost" : "drawn";
 }
 
-function roleClassOf(primitive: TutorFigurePrimitive, presence: Presence): RoleClass {
+export function roleClassOf(primitive: Stepped, presence: Presence): RoleClass {
    return presence === "ghost" ? "ghost" : primitive.role;
 }
 
-function rounded(value: number) {
+export function rounded(value: number) {
    return Math.round(value * 100) / 100;
 }
 
-function pathData(points: FigurePoint[], closed: boolean) {
+export function pathData(points: FigurePoint[], closed: boolean) {
    const moves = points.map(([x, y], index) => `${index === 0 ? "M" : "L"}${rounded(x)} ${rounded(y)}`);
 
    return `${moves.join(" ")}${closed ? " Z" : ""}`;
@@ -301,7 +310,7 @@ function pathData(points: FigurePoint[], closed: boolean) {
 
 /* A circle wound the same way as the segment outlines, so where they overlap the nonzero fill
    rule fills them as one shape. */
-function circleData([x, y]: FigurePoint, radius: number) {
+export function circleData([x, y]: FigurePoint, radius: number) {
    const right = `${rounded(x + radius)} ${rounded(y)}`;
    const left = `${rounded(x - radius)} ${rounded(y)}`;
 
@@ -319,7 +328,7 @@ function turnAngle(before: FigurePoint, at: FigurePoint, after: FigurePoint) {
 /* The highlighter is drawn as a filled outline around the stroke rather than as a wide stroke, so
    it is ground that the stroke sits on: a band along each segment, with round ends and round
    joins where the stroke bends. */
-function highlighterData(points: FigurePoint[], closed: boolean) {
+export function highlighterData(points: FigurePoint[], closed: boolean) {
    const vertices = closed ? [...points, points[0]] : points;
    const pieces: string[] = [];
 
@@ -406,7 +415,7 @@ function placeLabel(index: number, label: TutorFigureLabel, presence: Presence, 
    };
 }
 
-interface EnteringSteps {
+export interface EnteringSteps {
    lastShown: number;
    from: number;
    to: number;
@@ -416,7 +425,7 @@ interface EnteringSteps {
 /* The steps revealed by the latest increase in the shown count. Their first frame is marked so the
    stylesheet starts them collapsed and transparent; the next frame lets them run. When another
    step arrives, the previous ones leave the entering set and jump to their end state. */
-function useEnteringSteps(shown: number) {
+export function useEnteringSteps(shown: number) {
    const [entering, setEntering] = useState<EnteringSteps>({ lastShown: shown, from: shown, to: shown, isFirstFrame: false });
    let current = entering;
 

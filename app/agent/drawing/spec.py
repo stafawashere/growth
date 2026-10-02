@@ -132,7 +132,7 @@ def _is_cap(error):
    return is_size_cap or is_count_cap
 
 
-def _schema_reason(errors):
+def schema_reason(errors):
    is_over_a_cap = any(_is_cap(error) for error in _every_error(errors))
 
    return OVERSIZED if is_over_a_cap else MALFORMED
@@ -143,7 +143,7 @@ def _validated(figure):
    has_errors = len(errors) > 0
 
    if has_errors:
-      raise FigureRefused(_schema_reason(errors))
+      raise FigureRefused(schema_reason(errors))
 
 
 def _check_range(pair, maximum_span):

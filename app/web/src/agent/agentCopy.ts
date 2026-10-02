@@ -127,6 +127,19 @@ export function figureAnnouncement(title: string, description: string) {
    return `Figure: ${title}. ${description}`;
 }
 
+/* Marks on the page, from docs/agent/drawing-design.md "Marks on the page", "What the student
+   sees". */
+
+export const MARKED_ON_THE_PAGE = "Marked on the page";
+
+export const CLEAR_MARKS = "Clear marks";
+
+export const MARKS_REFUSED = "The marks on the page for this reply could not be drawn.";
+
+export function marksAnnouncement(description: string) {
+   return `Marks on the page: ${description}`;
+}
+
 export function shortcutName(isMac: boolean) {
    return isMac ? "Cmd+/" : "Ctrl+/";
 }

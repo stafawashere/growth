@@ -36,6 +36,8 @@ from tests.api.test_agent_turn import (
 
 REPOSITORY_ROOT = Path(__file__).resolve().parents[2]
 RENDER_SCHEMA = json.loads((REPOSITORY_ROOT / "schemas" / "agent" / "figure_render.schema.json").read_text())
+MARKS_RENDER_SCHEMA = json.loads((REPOSITORY_ROOT / "schemas" / "agent" / "marks_render.schema.json").read_text())
+MARKS_REFUSED_COPY = "The marks for this reply could not be drawn."
 TODAY_SCREEN = {"kind": "today"}
 REFUSED_COPY = "The figure for this reply could not be drawn."
 FIGURE = {
@@ -299,3 +301,88 @@ def test_the_settings_view_names_a_shown_figure_under_its_turn(agent, cli):
    opened = client.get(f"/agent/conversations/{events[0][1]['conversation_id']}").json()
 
    assert [(turn["role"], turn["figure_title"]) for turn in opened["turns"]] == [("student", None), ("agent", FIGURE["title"])]
+
+
+MARKS = {
+   "description": "The question's wording underlined, then bracketed.",
+   "steps": [
+      {"id": "phrase", "caption": "What is asked", "add": [{"id": "u", "underline": {"anchor": "stem", "quote": "stem"}}]},
+      {"id": "whole", "caption": "The whole question", "add": [{"id": "b", "bracket": {"anchor": "stem"}}]},
+   ],
+}
+
+
+def fenced_marks(marks):
+   text = marks if isinstance(marks, str) else json.dumps(marks)
+
+   return f"```marks\n{text}\n```\n"
+
+
+FIGURE_AND_MARKS_REPLY = (
+   "Start from the question.\n"
+   + fenced_marks(MARKS)
+   + "[[step:phrase]] This names what is asked. "
+   + "Here is a generic sketch of the rule.\n"
+   + fenced(FIGURE)
+   + "[[step:curve]] Start with a curve. [[step:secant]] Join two of its points. "
+   + "[[step:whole]] The question asks about one such limit. [[step:tangent]] The tangent is where secants end up."
+)
+
+
+def test_marks_and_a_figure_in_one_reply_arrive_in_order_before_their_sentences(agent, cli, caplog):
+   caplog.set_level(logging.DEBUG)
+   _user_id, events = second_practice_turn(agent, cli, FIGURE_AND_MARKS_REPLY)
+   marks = events_named(events, "marks")[0]
+   figure = events_named(events, "figure")[0]
+   order = [(name, data.get("step") or data.get("delta", "").strip()) for name, data in events if name in ("figure_step", "text")]
+   block_of = {data["step"]: data["figure"] for data in events_named(events, "figure_step")}
+   reply = agent_turns(agent, "agent")[-1]
+   turn_lines = [record.getMessage() for record in caplog.records if record.name == "app.agent.turn"]
+
+   assert names_of(events).index("marks") < names_of(events).index("figure_pending") < names_of(events).index("figure")
+   assert order.index(("figure_step", "phrase")) == order.index(("text", "This names what is asked.")) - 1
+   assert order.index(("figure_step", "curve")) == order.index(("text", "Start with a curve.")) - 1
+   assert order.index(("figure_step", "whole")) == order.index(("text", "The question asks about one such limit.")) - 1
+   assert block_of == {"phrase": marks["id"], "whole": marks["id"], "curve": figure["id"], "secant": figure["id"], "tangent": figure["id"]}
+   assert list(Draft202012Validator(MARKS_RENDER_SCHEMA).iter_errors(marks)) == []
+   assert reply.figure == {"spec": FIGURE, "outcome": "shown", "revealed": 3, "marks": {"spec": MARKS, "outcome": "shown", "revealed": 2}}
+   assert any("figure=shown steps=3 marks=shown marks_steps=2" in line for line in turn_lines)
+
+
+def test_marks_on_an_option_before_checking_withhold_the_reply(agent, cli):
+   ring = {"id": "o", "ring": {"anchor": "option_A"}}
+   ringed = {"description": "The option ringed.", "steps": [{"id": "pick", "caption": "One option", "add": [ring]}]}
+   _user_id, events = second_practice_turn(agent, cli, "Look here.\n" + fenced_marks(ringed) + "After the marks.")
+   reply = agent_turns(agent, "agent")[-1]
+   audit = withheld_rows(agent)
+
+   assert events_named(events, "marks") == []
+   assert events[-1][1]["outcome"] == "withheld"
+   assert "After the marks" not in texts(events)
+   assert reply.figure == {"spec": None, "outcome": None, "revealed": 0, "marks": {"spec": None, "outcome": "withheld", "revealed": 0}}
+   assert len(audit) == 1
+   assert {key: value for key, value in json.loads(audit[0].detail).items() if key != "day"} == {
+      "check": "no_answer_in_marks",
+      "turn_id": reply.id,
+      "part": "marks",
+   }
+
+
+def test_marks_on_a_turn_whose_move_does_not_draw_are_refused_with_part_marks(agent, cli):
+   client, _user_id, screen = practice(agent)
+   scripted(cli, "What did you try?\n" + fenced_marks(MARKS) + "Tell me first.")
+   _response, events = post_turn(client, screen)
+
+   assert events_named(events, "figure_refused") == [{"reason": "closed", "copy": MARKS_REFUSED_COPY, "part": "marks"}]
+   assert events_named(events, "marks") == []
+   assert texts(events).endswith("Tell me first.")
+
+
+def test_marks_that_quote_words_not_on_the_screen_are_refused_and_the_text_goes_on(agent, cli):
+   underline = {"id": "u", "underline": {"anchor": "stem", "quote": "not in the question"}}
+   misquoted = dict(MARKS, steps=[{"id": "phrase", "caption": "What is asked", "add": [underline]}])
+   _user_id, events = second_practice_turn(agent, cli, "Look here.\n" + fenced_marks(misquoted) + "After the marks.")
+
+   assert events_named(events, "figure_refused") == [{"reason": "malformed", "copy": MARKS_REFUSED_COPY, "part": "marks"}]
+   assert texts(events).endswith("After the marks.")
+   assert events[-1][1]["outcome"] == "complete"

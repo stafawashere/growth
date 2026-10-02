@@ -107,6 +107,7 @@ export interface TurnHandlers {
    onFigure?: (spec: unknown) => void;
    onFigureStep?: (event: AgentFigureStepEvent) => void;
    onFigureRefused?: (event: AgentFigureRefusedEvent) => void;
+   onMarks?: (spec: unknown) => void;
 }
 
 const OFFLINE: TurnFailure = { kind: "offline" };
@@ -241,6 +242,17 @@ export async function runAgentTurn(body: AgentTurnBody, handlers: TurnHandlers, 
          if (spec !== null) {
             hasFigure = true;
             handlers.onFigure?.(spec);
+         }
+
+         return;
+      }
+
+      if (frame.event === "marks") {
+         const spec = parsed<unknown>(frame.data);
+
+         if (spec !== null) {
+            hasFigure = true;
+            handlers.onMarks?.(spec);
          }
 
          return;
@@ -392,6 +404,10 @@ export function useAgentStream(timeoutMilliseconds = FIRST_TEXT_TIMEOUT_MILLISEC
             onFigure: (spec) => {
                clearTimer();
                handlers.onFigure?.(spec);
+            },
+            onMarks: (spec) => {
+               clearTimer();
+               handlers.onMarks?.(spec);
             },
             onEnd: (event) => {
                release();

@@ -29,6 +29,10 @@ export { gridStep, tickText, type TickLabel } from "./GraphFrame";
 
 export interface FigureViewProps {
    spec: unknown;
+   /* The figure of the item on screen, which the live tutor may mark: the graph carries its window
+      and plot box so a mark maps the item's own coordinates (docs/agent/drawing-build-plan.md, "The
+      marks contract"). */
+   isItemFigure?: boolean;
 }
 
 const GRAPH_KINDS: GraphFigureKind[] = [
@@ -215,9 +219,11 @@ export function tickLabelsFor(spec: GraphFigureSpec): TickLabel[] {
    return frameTickLabels(spec, layout, spec.axis_titles, labelBoxes);
 }
 
-function GraphFigure({ spec }: { spec: GraphFigureSpec }) {
+function GraphFigure({ spec, isItemFigure }: { spec: GraphFigureSpec; isItemFigure: boolean }) {
    const layout = layoutFor(spec);
    const { viewX, viewY, viewHeight } = layout;
+   const agentWindow = `${spec.domain[0]} ${spec.domain[1]} ${spec.range[0]} ${spec.range[1]}`;
+   const agentPlot = `${layout.left} ${layout.top} ${layout.right} ${layout.bottom}`;
    const toView = (point: FigurePoint): FigurePoint => [viewX(point[0]), viewY(point[1])];
 
    return (
@@ -228,6 +234,9 @@ function GraphFigure({ spec }: { spec: GraphFigureSpec }) {
          className="figure-graph"
          data-testid="figure-graph"
          data-kind={spec.kind}
+         data-agent-anchor={isItemFigure ? "item_figure" : undefined}
+         data-agent-window={isItemFigure ? agentWindow : undefined}
+         data-agent-plot={isItemFigure ? agentPlot : undefined}
       >
          {spec.fills.map((fill, index) => (
             <polygon key={`fill${index}`} className="figure-region" points={pointList(fill.points, toView)} stroke="none" />
@@ -302,9 +311,9 @@ function GraphFigure({ spec }: { spec: GraphFigureSpec }) {
    );
 }
 
-function TableFigure({ spec }: { spec: TableFigureSpec }) {
+function TableFigure({ spec, isItemFigure }: { spec: TableFigureSpec; isItemFigure: boolean }) {
    return (
-      <table className="figure-table" data-testid="figure-table">
+      <table className="figure-table" data-testid="figure-table" data-agent-anchor={isItemFigure ? "item_table" : undefined}>
          <caption className="visually-hidden">{spec.alt}</caption>
          <thead>
             <tr>
@@ -330,7 +339,7 @@ function TableFigure({ spec }: { spec: TableFigureSpec }) {
    );
 }
 
-export function FigureView({ spec }: FigureViewProps) {
+export function FigureView({ spec, isItemFigure = false }: FigureViewProps) {
    const figure = parseFigureSpec(spec);
 
    if (figure === null) {
@@ -339,7 +348,7 @@ export function FigureView({ spec }: FigureViewProps) {
 
    return (
       <div className="item-figure" data-testid="item-figure">
-         {figure.kind === "table" ? <TableFigure spec={figure} /> : <GraphFigure spec={figure} />}
+         {figure.kind === "table" ? <TableFigure spec={figure} isItemFigure={isItemFigure} /> : <GraphFigure spec={figure} isItemFigure={isItemFigure} />}
       </div>
    );
 }

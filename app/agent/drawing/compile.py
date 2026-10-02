@@ -56,7 +56,10 @@ MAX_POINTS = 4000
 MAX_PRIMITIVES = 200
 COMPILE_BUDGET_SECONDS = 0.1
 ESCAPE_HEIGHTS = 10
-AREA_INTERVALS = 64
+AREA_PANELS = 64
+PANEL_TOLERANCE = 1e-10
+AREA_MAX_DEPTH = 40
+AREA_MAX_EVALUATIONS = 60000
 ROOT_BISECTIONS = 60
 DERIVATIVE_STEP = 1e-5
 SLOPE_FIELD_PER_AXIS = 11
@@ -517,7 +520,7 @@ def _anchor_on(segments, share=0.8):
    return _along(longest, share)
 
 
-def _clip_line(layout, origin, direction):
+def clip_line(layout, origin, direction):
    """The part of the line through origin along direction inside the window, or None."""
    low_parameter = -math.inf
    high_parameter = math.inf
@@ -543,7 +546,7 @@ def _clip_line(layout, origin, direction):
    return [_plus(origin, direction, low_parameter), _plus(origin, direction, high_parameter)]
 
 
-def _line_numbers(origin, direction):
+def line_numbers(origin, direction):
    """The slope, y-intercept and x-intercept a line shows, as far as it has them."""
    is_vertical = direction[0] == 0
 
@@ -561,9 +564,9 @@ def _line_numbers(origin, direction):
 
 
 def _line_parts(scene, element_id, origin, direction):
-   clipped = _clip_line(scene.layout, origin, direction)
+   clipped = clip_line(scene.layout, origin, direction)
 
-   for value in _line_numbers(origin, direction):
+   for value in line_numbers(origin, direction):
       scene.number("lines", element_id, value)
 
    if clipped is None:
@@ -706,7 +709,7 @@ def _tangent(scene, element):
    if not has_length:
       return _line_parts(scene, element["id"], touching, direction)
 
-   for number in _line_numbers(touching, direction):
+   for number in line_numbers(touching, direction):
       scene.number("lines", element["id"], number)
 
    unit = _unit(direction)
@@ -731,15 +734,46 @@ def _hline(scene, element):
    return [_path([(scene.layout.x_low, y), (scene.layout.x_high, y)])], (scene.layout.x_high, y)
 
 
-def _simpson(function, low, high, intervals=AREA_INTERVALS):
-   width = (high - low) / intervals
-   total = function(low) + function(high)
+def _integral(function, low, high):
+   """The integral by Simpson's rule on AREA_PANELS panels, each halved until its two halves agree
+   with it within the panel's share of the tolerance, so a kink inside a panel, where the joined data
+   of a table turns, costs no accuracy. The halving stops at a depth and an evaluation count, which
+   keeps a wildly oscillating curve inside the compile budget."""
+   evaluations = 0
+   width = (high - low) / AREA_PANELS
+   pending = []
+   total = 0.0
 
-   for index in range(1, intervals):
-      weight = 4 if index % 2 == 1 else 2
-      total += weight * function(low + index * width)
+   for index in range(AREA_PANELS):
+      left = low + index * width
+      right = high if index == AREA_PANELS - 1 else low + (index + 1) * width
+      middle = (left + right) / 2
+      left_value, middle_value, right_value = function(left), function(middle), function(right)
+      evaluations += 3
+      whole = (right - left) / 6 * (left_value + 4 * middle_value + right_value)
+      pending.append((left, left_value, middle, middle_value, right, right_value, whole, PANEL_TOLERANCE, 0))
 
-   return total * width / 3
+   while pending:
+      left, left_value, middle, middle_value, right, right_value, whole, tolerance, depth = pending.pop()
+      left_middle = (left + middle) / 2
+      right_middle = (middle + right) / 2
+      left_middle_value = function(left_middle)
+      right_middle_value = function(right_middle)
+      evaluations += 2
+      left_half = (middle - left) / 6 * (left_value + 4 * left_middle_value + middle_value)
+      right_half = (right - middle) / 6 * (middle_value + 4 * right_middle_value + right_value)
+      correction = left_half + right_half - whole
+      is_settled = abs(correction) <= 15 * tolerance
+      must_stop = depth >= AREA_MAX_DEPTH or evaluations >= AREA_MAX_EVALUATIONS
+
+      if is_settled or must_stop:
+         total += left_half + right_half + correction / 15
+         continue
+
+      pending.append((left, left_value, left_middle, left_middle_value, middle, middle_value, left_half, tolerance / 2, depth + 1))
+      pending.append((middle, middle_value, right_middle, right_middle_value, right, right_value, right_half, tolerance / 2, depth + 1))
+
+   return total
 
 
 def _bisected_root(function, low, high):
@@ -816,7 +850,7 @@ def _area(scene, element):
       inside = [x for x in grid if piece_low < x < piece_high]
       xs = [piece_low] + inside + [piece_high]
       middle = (piece_low + piece_high) / 2
-      integral = _simpson(height, piece_low, piece_high)
+      integral = _integral(height, piece_low, piece_high)
       is_below = height(middle) < 0
       outline = [(x, upper(x)) for x in xs] + [(x, lower(x)) for x in reversed(xs)]
       fill = "region_below" if is_below else "region"

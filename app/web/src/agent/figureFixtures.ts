@@ -5,7 +5,10 @@ import type {
    TutorFigureLabel,
    TutorFigurePath,
    TutorFigureRole,
-   TutorFigureSpec
+   TutorFigureSpec,
+   TutorMark,
+   TutorMarkTarget,
+   TutorMarksSpec
 } from "../api/types";
 
 /* Hand-written render specs in the shape of docs/agent/drawing-build-plan.md, "The render spec
@@ -205,5 +208,85 @@ export const LABELLED_TABLE: TutorFigureSpec = {
       figureCell("row", "r1", "highlight", 1, null, { text: "\\(x = 1\\)" }),
       figureCell("cell", "c22", "error", 2, 2, { text: "read as 3" }),
       figureCell("column", "k1", "highlight", null, 1)
+   ]
+};
+
+/* Marks on the page, in the shape of drawing-build-plan.md "The marks contract". A mark takes its
+   role's default stroke, as a figure element does. */
+export function markTarget(anchor: string, extra: Partial<TutorMarkTarget> = {}): TutorMarkTarget {
+   return { anchor, quote: null, at: null, row: null, column: null, cell: null, ...extra };
+}
+
+export function pageMark(step: string, element: string, role: TutorFigureRole, kind: TutorMark["kind"], extra: Partial<TutorMark> = {}): TutorMark {
+   const { style, weight, highlighter } = ROLE_STROKES[role];
+
+   return {
+      step,
+      element,
+      role,
+      kind,
+      stroke: { style, weight, highlighter, arrow: kind === "arrow" ? "end" : "none" },
+      faded_at: null,
+      erased_at: null,
+      ...extra
+   };
+}
+
+/* An item's stem underlined and its graph marked: the phrase, then a ring at P with a note, then an
+   arrow from the stem to the graph and the tangent drawn on it, then the table row that decides. */
+export const ITEM_MARKS: TutorMarksSpec = {
+   id: "marks",
+   description: "The phrase about the tangent is underlined, the point P is ringed on the graph with the tangent drawn through it, and the second row of the table is highlighted.",
+   steps: [
+      { id: "phrase", caption: "The phrase the question turns on" },
+      { id: "point", caption: "The point P on the graph" },
+      { id: "tangent", caption: "The tangent at P" },
+      { id: "row", caption: "The row that decides it" }
+   ],
+   marks: [
+      pageMark("phrase", "u", "highlight", "underline", { target: markTarget("stem", { quote: "the tangent line" }) }),
+      pageMark("point", "p", "constructed", "ring", { target: markTarget("item_figure", { at: [1, 1] }) }),
+      pageMark("point", "n", "given", "note", { target: markTarget("item_figure", { at: [1, 1] }), text: "\\(P = (1, 1)\\)", side: "right" }),
+      pageMark("tangent", "a", "constructed", "arrow", { from: markTarget("stem"), to: markTarget("item_figure", { at: [1, 1] }) }),
+      pageMark("tangent", "t", "highlight", "line", { points: [[0, -1], [2, 3]] }),
+      pageMark("row", "r", "highlight", "highlight", { target: markTarget("item_table", { row: 1 }) })
+   ]
+};
+
+/* Every role and every kind a practice item's page can carry, the last step fading the constructed
+   underline and a note, for the contrast and greyscale screens. Whole anchors are named rather than
+   phrases, because a test page has no layout to measure a phrase against. */
+export const EVERY_ROLE_MARKS: TutorMarksSpec = {
+   id: "marks",
+   description: "The stem and the graph are marked in every role.",
+   steps: [
+      { id: "one", caption: "The stem" },
+      { id: "two", caption: "The graph" },
+      { id: "three", caption: "The first marks fade" }
+   ],
+   marks: [
+      pageMark("one", "given-ring", "given", "ring", { target: markTarget("stem") }),
+      pageMark("one", "made-underline", "constructed", "underline", { target: markTarget("stem"), faded_at: "three" }),
+      pageMark("one", "highlight-band", "highlight", "highlight", { target: markTarget("stem") }),
+      pageMark("one", "error-underline", "error", "underline", { target: markTarget("stem") }),
+      pageMark("one", "error-band", "error", "highlight", { target: markTarget("stem") }),
+      pageMark("one", "lit-bracket", "highlight", "bracket", { target: markTarget("stem") }),
+      pageMark("one", "given-note", "given", "note", { target: markTarget("stem"), text: "given", side: "right" }),
+      pageMark("one", "error-note", "error", "note", { target: markTarget("stem"), text: "the response read this", side: "below", faded_at: "three" }),
+      pageMark("two", "arrow", "constructed", "arrow", { from: markTarget("stem"), to: markTarget("item_figure", { at: [1, 1] }) }),
+      pageMark("two", "point", "given", "point", { at: [1, 1], open: true }),
+      pageMark("two", "tangent", "highlight", "line", { points: [[-2, -2], [2, 2]] }),
+      pageMark("two", "highlight-note", "highlight", "note", { target: markTarget("item_figure"), text: "\\(P\\)", side: "left" })
+   ]
+};
+
+/* The item's table with a row highlighted and a wrong cell outlined. */
+export const TABLE_MARKS: TutorMarksSpec = {
+   id: "marks",
+   description: "The first row of the table is highlighted.",
+   steps: [{ id: "row", caption: "The row that decides it" }],
+   marks: [
+      pageMark("row", "row", "highlight", "highlight", { target: markTarget("item_table", { row: 0 }) }),
+      pageMark("row", "cell", "error", "highlight", { target: markTarget("item_table", { cell: [0, 1] }) })
    ]
 };

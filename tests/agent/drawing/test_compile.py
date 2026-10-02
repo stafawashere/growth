@@ -145,6 +145,35 @@ def test_the_area_between_two_curves_is_their_difference():
    assert _numbers(facts, "areas", "A") == [pytest.approx(1 / 6, abs=1e-6), pytest.approx(1 / 6, abs=1e-6)]
 
 
+@pytest.mark.parametrize(
+   "curve, low, high, signed, absolute",
+   [
+      ("abs(x - 0.3)", -1, 2, 2.29, 2.29),
+      ("8+0.45*x-5/12*abs(x-2)-19/30*abs(x-5)", 0, 10, 72.5, 72.5),
+      ("abs(sin(x))", 0, 4, 3 + math.cos(4), 3 + math.cos(4)),
+      ("x - abs(x - 1)", -1, 3, 0.0, 4.5),
+   ],
+   ids=["one kink", "joined data", "kinks at the zeros of sine", "a kink and a sign change"],
+)
+def test_areas_on_kinked_curves_are_accurate_to_a_millionth(curve, low, high, signed, absolute):
+   region = {"id": "A", "area": {"under": "g", "from": low, "to": high}}
+   figure = _graph({"id": "g", "curve": curve}, region, window={"x": [-2, 11], "y": [-3, 11]})
+   _spec, facts = _compiled(figure)
+   compiled_signed, compiled_absolute = _numbers(facts, "areas", "A")
+
+   assert abs(compiled_signed - signed) <= 1e-6
+   assert abs(compiled_absolute - absolute) <= 1e-6
+
+
+def test_a_trapezoid_total_on_a_kinked_curve_is_exact():
+   riemann = {"id": "R", "riemann": {"on": "g", "from": -1, "to": 2, "n": 3, "rule": "trapezoid"}}
+   _spec, facts = _compiled(_graph({"id": "g", "curve": "abs(x - 0.3)"}, riemann, window={"x": [-2, 3], "y": [-1, 3]}))
+   heights = [1.3, 0.3, 0.7, 1.7]
+   exact = sum((left + right) / 2 for left, right in zip(heights, heights[1:]))
+
+   assert _numbers(facts, "approximations", "R") == [pytest.approx(exact, abs=1e-12)]
+
+
 def test_a_curve_is_broken_at_its_asymptote_and_not_joined_across_it():
    spec, _facts = _compiled(_graph({"id": "h", "curve": "1/x"}, window={"x": [-2, 2.9], "y": [-50, 50]}))
    segments = [path["points"] for path in _primitives(spec, "h", "path")]

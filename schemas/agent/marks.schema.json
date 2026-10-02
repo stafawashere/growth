@@ -1,0 +1,758 @@
+{
+   "$schema": "https://json-schema.org/draft/2020-12/schema",
+   "$id": "schemas/agent/marks.schema.json",
+   "title": "Tutor marks on the page",
+   "description": "The one marks block the live tutor may write in a reply (docs/agent/drawing-design.md, Marks on the page). Every mark names an anchor the turn's packet lists; the server places nothing by page coordinates. Rules a schema cannot state (anchors listed on this turn, quotes found in the anchor's text, points inside the item figure's window, unique ids, fade and erase of earlier steps, the 12-mark cap) are checked in app/agent/drawing/marks.py.",
+   "type": "object",
+   "additionalProperties": false,
+   "required": [
+      "description",
+      "steps"
+   ],
+   "properties": {
+      "description": {
+         "type": "string",
+         "minLength": 1,
+         "maxLength": 400
+      },
+      "steps": {
+         "type": "array",
+         "minItems": 1,
+         "maxItems": 6,
+         "items": {
+            "$ref": "#/$defs/step"
+         }
+      }
+   },
+   "$defs": {
+      "id": {
+         "type": "string",
+         "pattern": "^[A-Za-z0-9_]{1,16}$"
+      },
+      "role": {
+         "enum": [
+            "given",
+            "constructed",
+            "highlight",
+            "error"
+         ]
+      },
+      "number": {
+         "type": "number",
+         "minimum": -1000,
+         "maximum": 1000
+      },
+      "pair": {
+         "type": "array",
+         "prefixItems": [
+            {
+               "$ref": "#/$defs/number"
+            },
+            {
+               "$ref": "#/$defs/number"
+            }
+         ],
+         "items": false,
+         "minItems": 2
+      },
+      "anchor": {
+         "type": "string",
+         "pattern": "^(stem|item_figure|item_table|option_[A-E]|feedback|solution_step_[1-9][0-9]?|section|section_figure)$"
+      },
+      "quote": {
+         "type": "string",
+         "minLength": 1,
+         "maxLength": 80
+      },
+      "stroke": {
+         "type": "object",
+         "additionalProperties": false,
+         "properties": {
+            "style": {
+               "enum": [
+                  "solid",
+                  "dashed",
+                  "dotted"
+               ]
+            },
+            "weight": {
+               "enum": [
+                  "thin",
+                  "regular",
+                  "bold"
+               ]
+            },
+            "arrow": {
+               "enum": [
+                  "none",
+                  "end",
+                  "start",
+                  "both"
+               ]
+            },
+            "highlighter": {
+               "type": "boolean"
+            }
+         }
+      },
+      "target": {
+         "type": "object",
+         "additionalProperties": false,
+         "required": [
+            "anchor"
+         ],
+         "maxProperties": 2,
+         "properties": {
+            "anchor": {
+               "$ref": "#/$defs/anchor"
+            },
+            "quote": {
+               "$ref": "#/$defs/quote"
+            },
+            "at": {
+               "$ref": "#/$defs/pair"
+            },
+            "row": {
+               "type": "integer",
+               "minimum": 0,
+               "maximum": 9
+            },
+            "column": {
+               "type": "integer",
+               "minimum": 0,
+               "maximum": 5
+            },
+            "cell": {
+               "type": "array",
+               "prefixItems": [
+                  {
+                     "type": "integer",
+                     "minimum": 0,
+                     "maximum": 9
+                  },
+                  {
+                     "type": "integer",
+                     "minimum": 0,
+                     "maximum": 5
+                  }
+               ],
+               "items": false,
+               "minItems": 2
+            }
+         }
+      },
+      "ring": {
+         "type": "object",
+         "additionalProperties": false,
+         "required": [
+            "id",
+            "ring"
+         ],
+         "properties": {
+            "id": {
+               "$ref": "#/$defs/id"
+            },
+            "role": {
+               "$ref": "#/$defs/role"
+            },
+            "stroke": {
+               "$ref": "#/$defs/stroke"
+            },
+            "ring": {
+               "$ref": "#/$defs/target"
+            }
+         }
+      },
+      "underline": {
+         "type": "object",
+         "additionalProperties": false,
+         "required": [
+            "id",
+            "underline"
+         ],
+         "properties": {
+            "id": {
+               "$ref": "#/$defs/id"
+            },
+            "role": {
+               "$ref": "#/$defs/role"
+            },
+            "stroke": {
+               "$ref": "#/$defs/stroke"
+            },
+            "underline": {
+               "type": "object",
+               "additionalProperties": false,
+               "required": [
+                  "anchor",
+                  "quote"
+               ],
+               "properties": {
+                  "anchor": {
+                     "$ref": "#/$defs/anchor"
+                  },
+                  "quote": {
+                     "$ref": "#/$defs/quote"
+                  }
+               }
+            }
+         }
+      },
+      "highlight": {
+         "type": "object",
+         "additionalProperties": false,
+         "required": [
+            "id",
+            "highlight"
+         ],
+         "properties": {
+            "id": {
+               "$ref": "#/$defs/id"
+            },
+            "role": {
+               "$ref": "#/$defs/role"
+            },
+            "stroke": {
+               "$ref": "#/$defs/stroke"
+            },
+            "highlight": {
+               "$ref": "#/$defs/target"
+            }
+         }
+      },
+      "strike": {
+         "type": "object",
+         "additionalProperties": false,
+         "required": [
+            "id",
+            "strike"
+         ],
+         "properties": {
+            "id": {
+               "$ref": "#/$defs/id"
+            },
+            "role": {
+               "$ref": "#/$defs/role"
+            },
+            "stroke": {
+               "$ref": "#/$defs/stroke"
+            },
+            "strike": {
+               "type": "object",
+               "additionalProperties": false,
+               "required": [
+                  "anchor",
+                  "quote"
+               ],
+               "properties": {
+                  "anchor": {
+                     "type": "string",
+                     "pattern": "^(feedback|solution_step_[1-9][0-9]?)$"
+                  },
+                  "quote": {
+                     "$ref": "#/$defs/quote"
+                  }
+               }
+            }
+         }
+      },
+      "bracket": {
+         "type": "object",
+         "additionalProperties": false,
+         "required": [
+            "id",
+            "bracket"
+         ],
+         "properties": {
+            "id": {
+               "$ref": "#/$defs/id"
+            },
+            "role": {
+               "$ref": "#/$defs/role"
+            },
+            "stroke": {
+               "$ref": "#/$defs/stroke"
+            },
+            "bracket": {
+               "type": "object",
+               "additionalProperties": false,
+               "required": [
+                  "anchor"
+               ],
+               "properties": {
+                  "anchor": {
+                     "$ref": "#/$defs/anchor"
+                  }
+               }
+            }
+         }
+      },
+      "note": {
+         "type": "object",
+         "additionalProperties": false,
+         "required": [
+            "id",
+            "note"
+         ],
+         "properties": {
+            "id": {
+               "$ref": "#/$defs/id"
+            },
+            "role": {
+               "$ref": "#/$defs/role"
+            },
+            "stroke": {
+               "$ref": "#/$defs/stroke"
+            },
+            "note": {
+               "type": "object",
+               "additionalProperties": false,
+               "required": [
+                  "anchor",
+                  "text"
+               ],
+               "properties": {
+                  "anchor": {
+                     "$ref": "#/$defs/anchor"
+                  },
+                  "quote": {
+                     "$ref": "#/$defs/quote"
+                  },
+                  "at": {
+                     "$ref": "#/$defs/pair"
+                  },
+                  "row": {
+                     "type": "integer",
+                     "minimum": 0,
+                     "maximum": 9
+                  },
+                  "column": {
+                     "type": "integer",
+                     "minimum": 0,
+                     "maximum": 5
+                  },
+                  "cell": {
+                     "type": "array",
+                     "prefixItems": [
+                        {
+                           "type": "integer",
+                           "minimum": 0,
+                           "maximum": 9
+                        },
+                        {
+                           "type": "integer",
+                           "minimum": 0,
+                           "maximum": 5
+                        }
+                     ],
+                     "items": false,
+                     "minItems": 2
+                  },
+                  "text": {
+                     "type": "string",
+                     "minLength": 1,
+                     "maxLength": 60
+                  },
+                  "side": {
+                     "enum": [
+                        "left",
+                        "right",
+                        "above",
+                        "below"
+                     ]
+                  }
+               },
+               "not": {
+                  "anyOf": [
+                     {
+                        "required": [
+                           "quote",
+                           "at"
+                        ]
+                     },
+                     {
+                        "required": [
+                           "quote",
+                           "row"
+                        ]
+                     },
+                     {
+                        "required": [
+                           "quote",
+                           "column"
+                        ]
+                     },
+                     {
+                        "required": [
+                           "quote",
+                           "cell"
+                        ]
+                     },
+                     {
+                        "required": [
+                           "at",
+                           "row"
+                        ]
+                     },
+                     {
+                        "required": [
+                           "at",
+                           "column"
+                        ]
+                     },
+                     {
+                        "required": [
+                           "at",
+                           "cell"
+                        ]
+                     },
+                     {
+                        "required": [
+                           "row",
+                           "column"
+                        ]
+                     },
+                     {
+                        "required": [
+                           "row",
+                           "cell"
+                        ]
+                     },
+                     {
+                        "required": [
+                           "column",
+                           "cell"
+                        ]
+                     }
+                  ]
+               }
+            }
+         }
+      },
+      "arrow": {
+         "type": "object",
+         "additionalProperties": false,
+         "required": [
+            "id",
+            "arrow"
+         ],
+         "properties": {
+            "id": {
+               "$ref": "#/$defs/id"
+            },
+            "role": {
+               "$ref": "#/$defs/role"
+            },
+            "stroke": {
+               "$ref": "#/$defs/stroke"
+            },
+            "arrow": {
+               "type": "object",
+               "additionalProperties": false,
+               "required": [
+                  "from",
+                  "to"
+               ],
+               "properties": {
+                  "from": {
+                     "$ref": "#/$defs/target"
+                  },
+                  "to": {
+                     "$ref": "#/$defs/target"
+                  }
+               }
+            }
+         }
+      },
+      "point": {
+         "type": "object",
+         "additionalProperties": false,
+         "required": [
+            "id",
+            "point"
+         ],
+         "properties": {
+            "id": {
+               "$ref": "#/$defs/id"
+            },
+            "role": {
+               "$ref": "#/$defs/role"
+            },
+            "stroke": {
+               "$ref": "#/$defs/stroke"
+            },
+            "point": {
+               "type": "object",
+               "additionalProperties": false,
+               "required": [
+                  "anchor",
+                  "at"
+               ],
+               "properties": {
+                  "anchor": {
+                     "const": "item_figure"
+                  },
+                  "at": {
+                     "$ref": "#/$defs/pair"
+                  },
+                  "open": {
+                     "type": "boolean"
+                  }
+               }
+            }
+         }
+      },
+      "segment": {
+         "type": "object",
+         "additionalProperties": false,
+         "required": [
+            "id",
+            "segment"
+         ],
+         "properties": {
+            "id": {
+               "$ref": "#/$defs/id"
+            },
+            "role": {
+               "$ref": "#/$defs/role"
+            },
+            "stroke": {
+               "$ref": "#/$defs/stroke"
+            },
+            "segment": {
+               "type": "object",
+               "additionalProperties": false,
+               "required": [
+                  "from",
+                  "to"
+               ],
+               "properties": {
+                  "anchor": {
+                     "const": "item_figure"
+                  },
+                  "from": {
+                     "$ref": "#/$defs/pair"
+                  },
+                  "to": {
+                     "$ref": "#/$defs/pair"
+                  }
+               }
+            }
+         }
+      },
+      "line": {
+         "type": "object",
+         "additionalProperties": false,
+         "required": [
+            "id",
+            "line"
+         ],
+         "properties": {
+            "id": {
+               "$ref": "#/$defs/id"
+            },
+            "role": {
+               "$ref": "#/$defs/role"
+            },
+            "stroke": {
+               "$ref": "#/$defs/stroke"
+            },
+            "line": {
+               "oneOf": [
+                  {
+                     "type": "object",
+                     "additionalProperties": false,
+                     "required": [
+                        "point",
+                        "slope"
+                     ],
+                     "properties": {
+                        "anchor": {
+                           "const": "item_figure"
+                        },
+                        "point": {
+                           "$ref": "#/$defs/pair"
+                        },
+                        "slope": {
+                           "$ref": "#/$defs/number"
+                        }
+                     }
+                  },
+                  {
+                     "type": "object",
+                     "additionalProperties": false,
+                     "required": [
+                        "through"
+                     ],
+                     "properties": {
+                        "anchor": {
+                           "const": "item_figure"
+                        },
+                        "through": {
+                           "type": "array",
+                           "prefixItems": [
+                              {
+                                 "$ref": "#/$defs/pair"
+                              },
+                              {
+                                 "$ref": "#/$defs/pair"
+                              }
+                           ],
+                           "items": false,
+                           "minItems": 2
+                        }
+                     }
+                  }
+               ]
+            }
+         }
+      },
+      "vline": {
+         "type": "object",
+         "additionalProperties": false,
+         "required": [
+            "id",
+            "vline"
+         ],
+         "properties": {
+            "id": {
+               "$ref": "#/$defs/id"
+            },
+            "role": {
+               "$ref": "#/$defs/role"
+            },
+            "stroke": {
+               "$ref": "#/$defs/stroke"
+            },
+            "vline": {
+               "type": "object",
+               "additionalProperties": false,
+               "required": [
+                  "x"
+               ],
+               "properties": {
+                  "anchor": {
+                     "const": "item_figure"
+                  },
+                  "x": {
+                     "$ref": "#/$defs/number"
+                  }
+               }
+            }
+         }
+      },
+      "hline": {
+         "type": "object",
+         "additionalProperties": false,
+         "required": [
+            "id",
+            "hline"
+         ],
+         "properties": {
+            "id": {
+               "$ref": "#/$defs/id"
+            },
+            "role": {
+               "$ref": "#/$defs/role"
+            },
+            "stroke": {
+               "$ref": "#/$defs/stroke"
+            },
+            "hline": {
+               "type": "object",
+               "additionalProperties": false,
+               "required": [
+                  "y"
+               ],
+               "properties": {
+                  "anchor": {
+                     "const": "item_figure"
+                  },
+                  "y": {
+                     "$ref": "#/$defs/number"
+                  }
+               }
+            }
+         }
+      },
+      "mark": {
+         "oneOf": [
+            {
+               "$ref": "#/$defs/ring"
+            },
+            {
+               "$ref": "#/$defs/underline"
+            },
+            {
+               "$ref": "#/$defs/highlight"
+            },
+            {
+               "$ref": "#/$defs/strike"
+            },
+            {
+               "$ref": "#/$defs/bracket"
+            },
+            {
+               "$ref": "#/$defs/note"
+            },
+            {
+               "$ref": "#/$defs/arrow"
+            },
+            {
+               "$ref": "#/$defs/point"
+            },
+            {
+               "$ref": "#/$defs/segment"
+            },
+            {
+               "$ref": "#/$defs/line"
+            },
+            {
+               "$ref": "#/$defs/vline"
+            },
+            {
+               "$ref": "#/$defs/hline"
+            }
+         ]
+      },
+      "step": {
+         "type": "object",
+         "additionalProperties": false,
+         "required": [
+            "id",
+            "caption"
+         ],
+         "properties": {
+            "id": {
+               "$ref": "#/$defs/id"
+            },
+            "caption": {
+               "type": "string",
+               "minLength": 1,
+               "maxLength": 100
+            },
+            "add": {
+               "type": "array",
+               "maxItems": 12,
+               "items": {
+                  "$ref": "#/$defs/mark"
+               }
+            },
+            "fade": {
+               "type": "array",
+               "maxItems": 12,
+               "items": {
+                  "$ref": "#/$defs/id"
+               }
+            },
+            "erase": {
+               "type": "array",
+               "maxItems": 12,
+               "items": {
+                  "$ref": "#/$defs/id"
+               }
+            }
+         }
+      }
+   }
+}

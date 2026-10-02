@@ -129,6 +129,7 @@ export function ElaboratedPanel({ elaborated, sentence, lessonLink = null, corre
          {...affordanceProps("elaboratedFeedbackPanel")}
          className={motionClass("elaboratedFeedbackPanel")}
          data-testid="elaborated-panel"
+         data-agent-anchor="feedback"
       >
          <p className="verdict" data-testid="elaborated-verdict" style={{ color: "var(--growth-state-incorrect)" }}>
             <span data-glyph aria-hidden="true">

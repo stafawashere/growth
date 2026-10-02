@@ -362,3 +362,61 @@ def test_validation_refuses_figure_labels_that_break_the_contract(document, libr
    assert any("GLD-AGT-045 turn 0" in problem and "draws nothing" in problem for problem in problems)
    assert any("GLD-AGT-046 turn 1" in problem and "figure_is_pretty" in problem for problem in problems)
    assert any("GLD-AGT-050" in problem and "BC-MIS-02011" in problem for problem in problems)
+
+
+MARKS_LEAK_REASONS = ("names an answer option", "a marked coordinate")
+
+
+def test_every_marks_label_agrees_with_its_check_and_the_leaks_cover_options_and_the_graph(rows):
+   marks_rows = [row for row in rows if row["check"] in golden.MARKS_CHECKS]
+   disagreeing = [(row["case_id"], row["turn"]) for row in marks_rows if row["label"] != row["passed"]]
+   leaks = [row["reason"] for row in marks_rows if not row["label"]]
+
+   assert len(marks_rows) >= 4
+   assert any(row["label"] for row in marks_rows)
+   assert disagreeing == []
+
+   for reason in MARKS_LEAK_REASONS:
+      assert any(reason in leak for leak in leaks), reason
+
+
+FEEDBACK_NOTE = '{"anchor":"feedback","quote":"the table inputs are unevenly spaced"'
+STEP_NOTE = '{"anchor":"solution_step_1","quote":"its width times the average of its two endpoint values"'
+
+
+def test_a_marks_block_on_an_anchor_the_screen_does_not_show_disagrees_with_a_well_formed_label(document, snapshot, library):
+   """GLD-AGT-057 is checked at the unsupported stage, where the session screen shows the feedback
+   and no solution step, so its note put back on the first solution step is refused."""
+   case = copy.deepcopy(next(case for case in document["cases"] if case["id"] == "GLD-AGT-057"))
+   entry = case["turns"][0]
+   reply = entry["candidate_reply"]
+   kept_rows = golden.agent_verdicts({"cases": [case]}, snapshot, library["items"])
+
+   assert reply.count(FEEDBACK_NOTE) == 1
+   assert entry["labels"][figure_checks.MARKS_WELL_FORMED] is True
+   assert agent_eval.disagreements(kept_rows) == []
+
+   entry["candidate_reply"] = reply.replace(FEEDBACK_NOTE, STEP_NOTE)
+   moved_rows = golden.agent_verdicts({"cases": [case]}, snapshot, library["items"])
+   disagreeing = [(row["turn"], row["check"], row["reason"]) for row in agent_eval.disagreements(moved_rows)]
+
+   assert disagreeing == [(0, figure_checks.MARKS_WELL_FORMED, "malformed")]
+
+
+def test_a_marks_block_the_splitter_refuses_is_not_well_formed(document, snapshot, library):
+   case = next(case for case in document["cases"] if case["id"] == "GLD-AGT-057")
+   packet = golden.agent_turn_packet(case, 0, golden.agent_context(snapshot), library["items"])
+   unclosed = golden.agent_split_reply('The widths differ.\n```marks\n{"description":"Never closed.","steps":[]}')
+
+   assert golden.agent_marks_well_formed(unclosed, packet) == agent_checks.Verdict(False, figure_checks.MARKS_WELL_FORMED, "unclosed")
+
+
+def test_validation_requires_marks_well_formed_on_every_reply_that_opens_marks(document, library):
+   broken = copy.deepcopy(document)
+   cases = {case["id"]: case for case in broken["cases"]}
+   cases["GLD-AGT-055"]["turns"][1]["labels"].pop(figure_checks.MARKS_WELL_FORMED)
+   cases["GLD-AGT-055"]["turns"][0]["labels"][figure_checks.MARKS_WELL_FORMED] = True
+   problems = golden.validate("agent", broken, library)
+
+   assert any("GLD-AGT-055 turn 1" in problem and "marks_well_formed" in problem for problem in problems)
+   assert any("GLD-AGT-055 turn 0" in problem and "marks nothing" in problem for problem in problems)

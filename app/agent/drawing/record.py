@@ -1,7 +1,8 @@
 """The figure an agent turn stores in agent_turns.figure (docs/agent/drawing-design.md, Storage,
 privacy and logs): the validated source figure only when it was shown, the outcome (shown,
 refused:<reason> or withheld) and the number of steps sent. A withheld or refused figure keeps no
-spec, so nothing the screen stopped is stored.
+spec, so nothing the screen stopped is stored. A reply's marks block is kept the same way under
+marks (Marks on the page); a reply with marks and no figure stores a null figure outcome beside it.
 """
 SHOWN = "shown"
 WITHHELD = "withheld"
@@ -25,3 +26,14 @@ def shown_spec(figure):
    was_shown = is_record and figure.get("outcome") == SHOWN and isinstance(spec, dict)
 
    return spec if was_shown else None
+
+
+def stored_turn_figure(figure, marks):
+   """The agent_turns.figure value: the figure's record, with the marks block's under marks, or None
+   when the reply held neither."""
+   if marks is None:
+      return figure
+
+   base = figure if figure is not None else {"spec": None, "outcome": None, "revealed": 0}
+
+   return dict(base, marks=marks)

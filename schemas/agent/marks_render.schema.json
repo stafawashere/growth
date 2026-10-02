@@ -1,0 +1,714 @@
+{
+   "$schema": "https://json-schema.org/draft/2020-12/schema",
+   "$id": "schemas/agent/marks_render.schema.json",
+   "title": "Tutor marks render spec",
+   "description": "What the client receives in a marks event and draws over the page (docs/agent/drawing-build-plan.md, The marks contract). A target names the anchored element and, with the unused fields null, a quote of a text anchor, a point of the item figure in its own coordinates, or a row, column or cell of the item's table. Segments, lines and guides carry two points on the item's graph, already clipped to its window.",
+   "type": "object",
+   "additionalProperties": false,
+   "required": [
+      "id",
+      "description",
+      "steps",
+      "marks"
+   ],
+   "properties": {
+      "id": {
+         "type": "string",
+         "minLength": 1
+      },
+      "description": {
+         "type": "string",
+         "minLength": 1,
+         "maxLength": 400
+      },
+      "steps": {
+         "type": "array",
+         "minItems": 1,
+         "maxItems": 6,
+         "items": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": [
+               "id",
+               "caption"
+            ],
+            "properties": {
+               "id": {
+                  "type": "string",
+                  "pattern": "^[A-Za-z0-9_]{1,16}$"
+               },
+               "caption": {
+                  "type": "string",
+                  "minLength": 1,
+                  "maxLength": 100
+               }
+            }
+         }
+      },
+      "marks": {
+         "type": "array",
+         "maxItems": 12,
+         "items": {
+            "oneOf": [
+               {
+                  "$ref": "#/$defs/targeted"
+               },
+               {
+                  "$ref": "#/$defs/note"
+               },
+               {
+                  "$ref": "#/$defs/arrow"
+               },
+               {
+                  "$ref": "#/$defs/point_mark"
+               },
+               {
+                  "$ref": "#/$defs/drawn"
+               }
+            ]
+         }
+      }
+   },
+   "$defs": {
+      "anchor": {
+         "type": "string",
+         "pattern": "^(stem|item_figure|item_table|option_[A-E]|feedback|solution_step_[1-9][0-9]?|section|section_figure)$"
+      },
+      "point": {
+         "type": "array",
+         "prefixItems": [
+            {
+               "type": "number"
+            },
+            {
+               "type": "number"
+            }
+         ],
+         "items": false,
+         "minItems": 2
+      },
+      "target": {
+         "type": "object",
+         "additionalProperties": false,
+         "required": [
+            "anchor",
+            "quote",
+            "at",
+            "row",
+            "column",
+            "cell"
+         ],
+         "properties": {
+            "anchor": {
+               "$ref": "#/$defs/anchor"
+            },
+            "quote": {
+               "oneOf": [
+                  {
+                     "type": "string",
+                     "minLength": 1,
+                     "maxLength": 80
+                  },
+                  {
+                     "type": "null"
+                  }
+               ]
+            },
+            "at": {
+               "oneOf": [
+                  {
+                     "$ref": "#/$defs/point"
+                  },
+                  {
+                     "type": "null"
+                  }
+               ]
+            },
+            "row": {
+               "oneOf": [
+                  {
+                     "type": "integer",
+                     "minimum": 0
+                  },
+                  {
+                     "type": "null"
+                  }
+               ]
+            },
+            "column": {
+               "oneOf": [
+                  {
+                     "type": "integer",
+                     "minimum": 0
+                  },
+                  {
+                     "type": "null"
+                  }
+               ]
+            },
+            "cell": {
+               "oneOf": [
+                  {
+                     "type": "array",
+                     "prefixItems": [
+                        {
+                           "type": "integer",
+                           "minimum": 0
+                        },
+                        {
+                           "type": "integer",
+                           "minimum": 0
+                        }
+                     ],
+                     "items": false,
+                     "minItems": 2
+                  },
+                  {
+                     "type": "null"
+                  }
+               ]
+            }
+         }
+      },
+      "targeted": {
+         "type": "object",
+         "additionalProperties": false,
+         "required": [
+            "step",
+            "element",
+            "role",
+            "stroke",
+            "faded_at",
+            "erased_at",
+            "kind",
+            "target"
+         ],
+         "properties": {
+            "step": {
+               "type": "string",
+               "pattern": "^[A-Za-z0-9_]{1,16}$"
+            },
+            "element": {
+               "type": "string",
+               "minLength": 1,
+               "maxLength": 16
+            },
+            "role": {
+               "enum": [
+                  "given",
+                  "constructed",
+                  "highlight",
+                  "error"
+               ]
+            },
+            "stroke": {
+               "type": "object",
+               "additionalProperties": false,
+               "required": [
+                  "style",
+                  "weight",
+                  "arrow",
+                  "highlighter"
+               ],
+               "properties": {
+                  "style": {
+                     "enum": [
+                        "solid",
+                        "dashed",
+                        "dotted"
+                     ]
+                  },
+                  "weight": {
+                     "enum": [
+                        "thin",
+                        "regular",
+                        "bold"
+                     ]
+                  },
+                  "arrow": {
+                     "enum": [
+                        "none",
+                        "end",
+                        "start",
+                        "both"
+                     ]
+                  },
+                  "highlighter": {
+                     "type": "boolean"
+                  }
+               }
+            },
+            "faded_at": {
+               "oneOf": [
+                  {
+                     "type": "string",
+                     "pattern": "^[A-Za-z0-9_]{1,16}$"
+                  },
+                  {
+                     "type": "null"
+                  }
+               ]
+            },
+            "erased_at": {
+               "oneOf": [
+                  {
+                     "type": "string",
+                     "pattern": "^[A-Za-z0-9_]{1,16}$"
+                  },
+                  {
+                     "type": "null"
+                  }
+               ]
+            },
+            "kind": {
+               "enum": [
+                  "ring",
+                  "underline",
+                  "highlight",
+                  "strike",
+                  "bracket"
+               ]
+            },
+            "target": {
+               "$ref": "#/$defs/target"
+            }
+         }
+      },
+      "note": {
+         "type": "object",
+         "additionalProperties": false,
+         "required": [
+            "step",
+            "element",
+            "role",
+            "stroke",
+            "faded_at",
+            "erased_at",
+            "kind",
+            "target",
+            "text",
+            "side"
+         ],
+         "properties": {
+            "step": {
+               "type": "string",
+               "pattern": "^[A-Za-z0-9_]{1,16}$"
+            },
+            "element": {
+               "type": "string",
+               "minLength": 1,
+               "maxLength": 16
+            },
+            "role": {
+               "enum": [
+                  "given",
+                  "constructed",
+                  "highlight",
+                  "error"
+               ]
+            },
+            "stroke": {
+               "type": "object",
+               "additionalProperties": false,
+               "required": [
+                  "style",
+                  "weight",
+                  "arrow",
+                  "highlighter"
+               ],
+               "properties": {
+                  "style": {
+                     "enum": [
+                        "solid",
+                        "dashed",
+                        "dotted"
+                     ]
+                  },
+                  "weight": {
+                     "enum": [
+                        "thin",
+                        "regular",
+                        "bold"
+                     ]
+                  },
+                  "arrow": {
+                     "enum": [
+                        "none",
+                        "end",
+                        "start",
+                        "both"
+                     ]
+                  },
+                  "highlighter": {
+                     "type": "boolean"
+                  }
+               }
+            },
+            "faded_at": {
+               "oneOf": [
+                  {
+                     "type": "string",
+                     "pattern": "^[A-Za-z0-9_]{1,16}$"
+                  },
+                  {
+                     "type": "null"
+                  }
+               ]
+            },
+            "erased_at": {
+               "oneOf": [
+                  {
+                     "type": "string",
+                     "pattern": "^[A-Za-z0-9_]{1,16}$"
+                  },
+                  {
+                     "type": "null"
+                  }
+               ]
+            },
+            "kind": {
+               "enum": [
+                  "note"
+               ]
+            },
+            "target": {
+               "$ref": "#/$defs/target"
+            },
+            "text": {
+               "type": "string",
+               "minLength": 1,
+               "maxLength": 60
+            },
+            "side": {
+               "enum": [
+                  "left",
+                  "right",
+                  "above",
+                  "below"
+               ]
+            }
+         }
+      },
+      "arrow": {
+         "type": "object",
+         "additionalProperties": false,
+         "required": [
+            "step",
+            "element",
+            "role",
+            "stroke",
+            "faded_at",
+            "erased_at",
+            "kind",
+            "from",
+            "to"
+         ],
+         "properties": {
+            "step": {
+               "type": "string",
+               "pattern": "^[A-Za-z0-9_]{1,16}$"
+            },
+            "element": {
+               "type": "string",
+               "minLength": 1,
+               "maxLength": 16
+            },
+            "role": {
+               "enum": [
+                  "given",
+                  "constructed",
+                  "highlight",
+                  "error"
+               ]
+            },
+            "stroke": {
+               "type": "object",
+               "additionalProperties": false,
+               "required": [
+                  "style",
+                  "weight",
+                  "arrow",
+                  "highlighter"
+               ],
+               "properties": {
+                  "style": {
+                     "enum": [
+                        "solid",
+                        "dashed",
+                        "dotted"
+                     ]
+                  },
+                  "weight": {
+                     "enum": [
+                        "thin",
+                        "regular",
+                        "bold"
+                     ]
+                  },
+                  "arrow": {
+                     "enum": [
+                        "none",
+                        "end",
+                        "start",
+                        "both"
+                     ]
+                  },
+                  "highlighter": {
+                     "type": "boolean"
+                  }
+               }
+            },
+            "faded_at": {
+               "oneOf": [
+                  {
+                     "type": "string",
+                     "pattern": "^[A-Za-z0-9_]{1,16}$"
+                  },
+                  {
+                     "type": "null"
+                  }
+               ]
+            },
+            "erased_at": {
+               "oneOf": [
+                  {
+                     "type": "string",
+                     "pattern": "^[A-Za-z0-9_]{1,16}$"
+                  },
+                  {
+                     "type": "null"
+                  }
+               ]
+            },
+            "kind": {
+               "enum": [
+                  "arrow"
+               ]
+            },
+            "from": {
+               "$ref": "#/$defs/target"
+            },
+            "to": {
+               "$ref": "#/$defs/target"
+            }
+         }
+      },
+      "point_mark": {
+         "type": "object",
+         "additionalProperties": false,
+         "required": [
+            "step",
+            "element",
+            "role",
+            "stroke",
+            "faded_at",
+            "erased_at",
+            "kind",
+            "at",
+            "open"
+         ],
+         "properties": {
+            "step": {
+               "type": "string",
+               "pattern": "^[A-Za-z0-9_]{1,16}$"
+            },
+            "element": {
+               "type": "string",
+               "minLength": 1,
+               "maxLength": 16
+            },
+            "role": {
+               "enum": [
+                  "given",
+                  "constructed",
+                  "highlight",
+                  "error"
+               ]
+            },
+            "stroke": {
+               "type": "object",
+               "additionalProperties": false,
+               "required": [
+                  "style",
+                  "weight",
+                  "arrow",
+                  "highlighter"
+               ],
+               "properties": {
+                  "style": {
+                     "enum": [
+                        "solid",
+                        "dashed",
+                        "dotted"
+                     ]
+                  },
+                  "weight": {
+                     "enum": [
+                        "thin",
+                        "regular",
+                        "bold"
+                     ]
+                  },
+                  "arrow": {
+                     "enum": [
+                        "none",
+                        "end",
+                        "start",
+                        "both"
+                     ]
+                  },
+                  "highlighter": {
+                     "type": "boolean"
+                  }
+               }
+            },
+            "faded_at": {
+               "oneOf": [
+                  {
+                     "type": "string",
+                     "pattern": "^[A-Za-z0-9_]{1,16}$"
+                  },
+                  {
+                     "type": "null"
+                  }
+               ]
+            },
+            "erased_at": {
+               "oneOf": [
+                  {
+                     "type": "string",
+                     "pattern": "^[A-Za-z0-9_]{1,16}$"
+                  },
+                  {
+                     "type": "null"
+                  }
+               ]
+            },
+            "kind": {
+               "enum": [
+                  "point"
+               ]
+            },
+            "at": {
+               "$ref": "#/$defs/point"
+            },
+            "open": {
+               "type": "boolean"
+            }
+         }
+      },
+      "drawn": {
+         "type": "object",
+         "additionalProperties": false,
+         "required": [
+            "step",
+            "element",
+            "role",
+            "stroke",
+            "faded_at",
+            "erased_at",
+            "kind",
+            "points"
+         ],
+         "properties": {
+            "step": {
+               "type": "string",
+               "pattern": "^[A-Za-z0-9_]{1,16}$"
+            },
+            "element": {
+               "type": "string",
+               "minLength": 1,
+               "maxLength": 16
+            },
+            "role": {
+               "enum": [
+                  "given",
+                  "constructed",
+                  "highlight",
+                  "error"
+               ]
+            },
+            "stroke": {
+               "type": "object",
+               "additionalProperties": false,
+               "required": [
+                  "style",
+                  "weight",
+                  "arrow",
+                  "highlighter"
+               ],
+               "properties": {
+                  "style": {
+                     "enum": [
+                        "solid",
+                        "dashed",
+                        "dotted"
+                     ]
+                  },
+                  "weight": {
+                     "enum": [
+                        "thin",
+                        "regular",
+                        "bold"
+                     ]
+                  },
+                  "arrow": {
+                     "enum": [
+                        "none",
+                        "end",
+                        "start",
+                        "both"
+                     ]
+                  },
+                  "highlighter": {
+                     "type": "boolean"
+                  }
+               }
+            },
+            "faded_at": {
+               "oneOf": [
+                  {
+                     "type": "string",
+                     "pattern": "^[A-Za-z0-9_]{1,16}$"
+                  },
+                  {
+                     "type": "null"
+                  }
+               ]
+            },
+            "erased_at": {
+               "oneOf": [
+                  {
+                     "type": "string",
+                     "pattern": "^[A-Za-z0-9_]{1,16}$"
+                  },
+                  {
+                     "type": "null"
+                  }
+               ]
+            },
+            "kind": {
+               "enum": [
+                  "segment",
+                  "line",
+                  "vline",
+                  "hline"
+               ]
+            },
+            "points": {
+               "type": "array",
+               "prefixItems": [
+                  {
+                     "$ref": "#/$defs/point"
+                  },
+                  {
+                     "$ref": "#/$defs/point"
+                  }
+               ],
+               "items": false,
+               "minItems": 2
+            }
+         }
+      }
+   }
+}

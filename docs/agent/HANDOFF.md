@@ -7,13 +7,14 @@ purpose: State where the live tutor agent build stands, now with its drawing abi
 
 # Live tutor agent, handoff
 
-Branch `agent/drawing`, worktree `/Users/mahfujm/dev/growth-drawing`, from `main` at fa514089, which already holds the merged live tutor agent. Nothing pushed, `main` untouched. The full record is the "Tutor drawing, 2026-09-30" entry in `BUILD-LEDGER.md`; the live tutor's own entry, "Live tutor agent, 2026-09-29", is unchanged.
+Branch `agent/drawing`, worktree `/Users/mahfujm/dev/growth-drawing`, from `main` at fa514089, merged with `main` at 0f80de16 (another session's restyle) on 2026-10-01 and then merged into `main` with `--no-ff` on the operator's instruction. Nothing pushed. The full record is the "Tutor drawing, 2026-09-30" entry in `BUILD-LEDGER.md`; the live tutor's own entry, "Live tutor agent, 2026-09-29", is unchanged.
 
 ## State [verified]
 
 Built and verified live in the running app on 2026-10-01 (the subscription backend, the shared `var/test.db`, the drawing server on 5191 and 8741):
 
 - The tutor draws one figure per reply when the move allows it: a closed, declarative figure language the model writes as a fenced block, compiled and screened on the server, built in the panel step by step with the sentences that introduce each step, at reading pace, with step controls, a step list, a description for assistive technology, roles that read without colour, and a sticky hold so the figure stays in view while it builds.
+- The art board (2026-10-01): figures open on a movable, resizable, minimizable board instead of in the chat, which keeps one line per figure with "Show on the board".
 - Marks on the page: underlines, highlights, rings, notes, arrows and constructions on the item's own graph, drawn over the real elements, bound to the screen they were drawn on (hidden when the student leaves, restored when they return).
 - The guardrail: a figure or marks block that shows the key before checking withholds the reply with the fixed decline; malformed, oversized, cut-off, extra and closed-turn blocks are dropped with one line and the reply continues; option anchors are never offered.
 
@@ -37,7 +38,7 @@ Screenshots `var/agent/drawing/01` to `30`, the walkthrough video `var/agent/dra
 ## Next actions [inferred]
 
 1. Read the rulings in `docs/plan/12-open-questions.md`, "Rulings the tutor drawing needs, 2026-09-30", in particular the three test inventories pointed at the new template and column, the 12,000-token prefix ceiling approved in chat, stated givens equal to the key, and the reading pace.
-2. Decide whether to merge `agent/drawing` into `main`. The main checkout has another session's uncommitted edits to `app/web/src/session/Item.tsx`, `SessionScreen.tsx`, `ElaboratedPanel.tsx` and `StepMarks.tsx`, which this branch also changes (anchors), so expect a conflict there.
+2. Run the next tutor run from the prompt at `var/agent/tutor-next-run-prompt.md` (kept outside git): it audits what the tutor lacks in reaching the page and builds the skills that close the gaps. Watch `useAgentStream.test.ts` "a turn after its end frame", which failed once under load with "Controller is already closed" and passed alone.
 3. Watch a week of `figure=` and `steps=` on the agent's log lines and the `agent_turns.figure` outcomes to set the share of turns that draw (plan 14 assumes 0.3) and to see how often a figure is dropped or withheld.
 4. Remove the `growth-drawing` entry from `/Users/mahfujm/dev/growth/.claude/launch.json` when the walk server is no longer wanted.
 
